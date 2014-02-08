@@ -6,7 +6,7 @@ A quickstart guide to setting up your Raspberry Pi
 
 ### Essential (for general use)
 
-- [SD Card](sd-cards.md)
+- [SD Card](../installation/sd-cards.md)
     - We recommend an 8GB class 4 SD card - ideally preinstalled with [NOOBS](../installation/noobs.md)
 
 - [Display & connectivity cable](monitor-connection.md)
