@@ -10,7 +10,7 @@ The easiest way to get NOOBS is to buy an SD card with NOOBS preinstalled - avai
 
 ### Download
 
-Alternatively, NOOBS is available for download on the Raspberry Pi website: [http://downloads.raspberrypi.org/NOOBS_latest]
+Alternatively, NOOBS is available for download on the Raspberry Pi website: http://downloads.raspberrypi.org/NOOBS_latest
 
 #### How to install NOOBS on an SD card
 
@@ -68,7 +68,7 @@ Note that the Operating System images on the full version can be outdated if a n
 
 ### Latest NOOBS release
 
-The latest NOOBS release is **v1.3.4**, released on **9th January 2014***
+The latest NOOBS release is **v1.3.4**, released on **9th January 2014**
 
 ### NOOBS Documentation
 
