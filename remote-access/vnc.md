@@ -14,15 +14,21 @@ Because the framebuffer isn't the real framebuffer you cannot take advantage of 
 
 - On your Pi (using a monitor or via [SSH](ssh.md)), install the TightVNC package:
 
-    ```sudo apt-get install tightvncserver```
+    ```
+    sudo apt-get install tightvncserver
+    ```
     
 - Next Run TightVNC Server which will prompt you to enter a Password and an optional View Only Password
 
-    ```tightvncserver```
+    ```
+    tightvncserver
+    ```
 
 - Start a VNC server from the shell prompt. This example starts a session on VNC display zero (```:0```) with full HD resolution:
 
-    ```vncserver :0 -geometry 1920x1080 -depth 24```
+    ```
+    vncserver :0 -geometry 1920x1080 -depth 24
+    ```
     
 - Now on your computer, install and run the VNC client:
 
@@ -47,21 +53,29 @@ You can create a simple file with the command to run the VNC server on the Pi, t
 
 - Make the file executable:
 
-    ```chmod +x vnc.sh```
+    ```
+    chmod +x vnc.sh
+    ```
     
 - Then run at any time with:
 
-    ```./vnc.sh```
+    ```
+    ./vnc.sh
+    ```
     
 To run at boot:
 
 - Log in to a root shell on the Pi:
 
-    ```sudo su```
+    ```
+    sudo su
+    ```
     
 - Navigate to the directory ```/etc/init.d/```:
 
-    ```cd /etc/init.d/```
+    ```
+    cd /etc/init.d/
+    ```
     
 - Create a new file here containing the following script:
 
@@ -109,22 +123,32 @@ To run at boot:
 
 - Make this file executable:
 
-    ```chmod 755 vncboot```
+    ```
+    chmod 755 vncboot
+    ```
     
 - Enable dependency based boot sequencing:
 
-    ```update-rc.d /etc/init.d/vncboot defaults```
+    ```
+    update-rc.d /etc/init.d/vncboot defaults
+    ```
     
 - If enabling dependency based boot sequencing was successful, it says:
 
-    ```update-rc.d: using dependency based boot sequencing```
+    ```
+    update-rc.d: using dependency based boot sequencing
+    ```
     
 - But if it says:
 
-    ```update-rc.d: error: unable to read /etc/init.d//etc/init.d/vncboot```
+    ```
+    update-rc.d: error: unable to read /etc/init.d//etc/init.d/vncboot
+    ```
     
 - then try the following command:
 
-    ```update-rc.d vncboot defaults```
+    ```
+    update-rc.d vncboot defaults
+    ```
     
 - Reboot your Raspberry PI and you should find a vncserver already started
