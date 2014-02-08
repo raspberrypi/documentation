@@ -6,7 +6,7 @@
 
 ### Buy a preinstalled SD card
 
-The easiest way to get NOOBS is to buy an SD card with NOOBS preinstalled - available for £4 on the swag store.
+The easiest way to get NOOBS is to buy an SD card with NOOBS preinstalled - available for £4 on the [swag store](http://swag.raspberrypi.org/collections/frontpage/products/noobs-8gb-sd-card).
 
 ### Download
 
