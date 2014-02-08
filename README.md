@@ -4,13 +4,13 @@ This is the official documentation for the Raspberry Pi, written by the Raspberr
 
 ## Contents
 
-- [Setup / Quickstart](http://github.com/raspberrypi/documentation/tree/master/setup)
-- [Installation](http://github.com/raspberrypi/documentation/tree/master/installation)
-- [Remote Access](http://github.com/raspberrypi/documentation/tree/master/remote-access)
-- [Configuration](http://github.com/raspberrypi/documentation/tree/master/configuration)
-- [Troubleshooting](http://github.com/raspberrypi/documentation/tree/master/troubleshooting)
-- [Linux](http://github.com/raspberrypi/documentation/tree/master/linux)
-- [Hardware](http://github.com/raspberrypi/documentation/tree/master/hardware)
+- [Setup / Quickstart](setup)
+- [Installation](installation)
+- [Remote Access](remote-access)
+- [Configuration](configuration)
+- [Troubleshooting](troubleshooting)
+- [Linux](linux)
+- [Hardware](hardware)
 
 ## Contributions
 
