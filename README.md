@@ -5,20 +5,28 @@ This is the official documentation for the Raspberry Pi, written by the Raspberr
 ## Contents
 
 - [Setup / Quickstart](setup)
+    - Getting started with your Raspberry Pi, including what you need and how to get it booted
 
 - [Installation](installation)
+    - Installing an Operating System on your Raspberry Pi
 
 - [Remote Access](remote-access)
+    - Accessing your Pi remotely via SSH, VLC or over the web
 
 - [Configuration](configuration)
+    - Configuring the Pi's settings to suit your needs
 
 - [Troubleshooting](troubleshooting)
+    - Got a problem with your Pi? Start here
 
 - [Linux](linux)
+    - Fundamental Linux usage for beginners and more complex information for power users
 
 - [Usage](usage)
+    - Basic examples to help you get started with the software installed by default in Raspbian
 
 - [Hardware](hardware)
+    - Technical specifications about the Raspberry Pi hardware and the camera module
 
 ## Contributions
 
