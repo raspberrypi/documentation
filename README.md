@@ -5,11 +5,19 @@ This is the official documentation for the Raspberry Pi, written by the Raspberr
 ## Contents
 
 - [Setup / Quickstart](setup)
+
 - [Installation](installation)
+
 - [Remote Access](remote-access)
+
 - [Configuration](configuration)
+
 - [Troubleshooting](troubleshooting)
+
 - [Linux](linux)
+
+- [Usage](usage)
+
 - [Hardware](hardware)
 
 ## Contributions
