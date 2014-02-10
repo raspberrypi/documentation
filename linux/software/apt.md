@@ -14,23 +14,23 @@ Also note that a lock is performed while software is installing, so you cannot i
 
 APT keeps a list of software sources on your Pi, in a file at  ```/etc/apt/sources.list```. Before installing software, you should update your package list with ```apt-get update```:
 
-    ```
-    sudo apt-get update
-    ```
+```
+sudo apt-get update
+```
 
 ## Installing a package with APT
 
 Installing a package with APT:
 
-    ```
-    sudo apt-get install tree
-    ```
+```
+sudo apt-get install tree
+```
     
 Typing this command should prompt the user informing them how much disk space the package will take up and to ask for confirmation of the package installation. Entering '```Y```' will allow the installation to occur. This can be bypassed by adding the ```-y``` flag to the command:
 
-    ```
-    sudo apt-get install tree -y
-    ```
+```
+sudo apt-get install tree -y
+```
 
 Installing this package makes ```tree``` available for the user.
 
@@ -40,23 +40,25 @@ Installing this package makes ```tree``` available for the user.
 
 - Typing ```tree``` runs the tree command. For example:
 
-    ```
-    tree
-    ..
-    ├── hello.py
-    ├── games
-    │   ├── asteroids.py
-    │   ├── pacman.py
-    │   ├── README.txt
-    │   └── tetris.py
-    
-    ```
+```
+tree
+..
+├── hello.py
+├── games
+│   ├── asteroids.py
+│   ├── pacman.py
+│   ├── README.txt
+│   └── tetris.py
+
+```
  
 - Typing ```man tree``` gives the manual entry for the package ```tree```
 
 - Typing ```whereis tree``` shows where ```tree``` lives:
 
-    ```tree: /usr/bin/tree```
+```
+tree: /usr/bin/tree
+```
     
 ## Uninstalling a package with APT
     
@@ -64,9 +66,9 @@ Installing this package makes ```tree``` available for the user.
 
 You can uninstall a package with ```apt-get remove```:
 
-    ```
-    sudo apt-get remove tree
-    ```
+```
+sudo apt-get remove tree
+```
     
 The user is prompted to confirm the removal. Again, the ```-y``` flag will auto-confirm.
 
@@ -74,9 +76,9 @@ The user is prompted to confirm the removal. Again, the ```-y``` flag will auto-
 
 You can also choose to completely remove the package and its associated configuration files with ```apt-get purge```:
 
-    ```
-    sudo apt-get purge tree
-    ```
+```
+sudo apt-get purge tree
+```
     
 ## Upgrading existing software
 
@@ -86,7 +88,7 @@ If software updates are available, you can get the updates with ```apt-get updat
 
 You can search the archives for a package with a given keyword with ```apt-cache search```:
     
-    ```
-    apt-cache search locomotive
-    sl - Correct you if you type `sl' by mistake
-    ```
+```
+apt-cache search locomotive
+sl - Correct you if you type `sl' by mistake
+```
