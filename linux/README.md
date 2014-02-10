@@ -11,6 +11,8 @@ Explanation of some fundamental Linux usage  and commands for getting around the
 
 - [Commands](commands.md)
 
+- [Text editors](text-editors.md)
+
 - [Root](root.md)
 
 - [Users](users.md)
