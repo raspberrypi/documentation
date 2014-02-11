@@ -1,6 +1,6 @@
 # Linux
 
-Explanation of some fundamental Linux usage  and commands for getting around the Pi and managing its filesystem and users.
+Explanation of some fundamental Linux usage and commands for getting around the Pi and managing its filesystem and users
 
 ## Contents
 
@@ -19,16 +19,11 @@ Explanation of some fundamental Linux usage  and commands for getting around the
 
 - [Software](software)
     - [APT](software/apt.md)
-    
     - [Pi Store](software/pi-store.md)
-    
     - [Python](software/python.md)
-    
     - [Ruby](software/ruby.md)
 
 - [Kernel](kernel)
     - [Headers](kernel/headers.md)
-    
     - [Building](kernel/building.md)
-    
     - [Configuring](kernel/configuring.md)
