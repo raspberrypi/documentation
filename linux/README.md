@@ -4,7 +4,7 @@ Explanation of some fundamental Linux usage  and commands for getting around the
 
 ## Contents
 
-- [Filesystem](filesystem)
+- [Filesystem](filesystem/README.md)
     - [Home](filesystem/home.md)
     - [Backup](filesystem/backup.md)
     - [Whole Filesystem](filesystem/whole-filesystem.md)
@@ -17,18 +17,18 @@ Explanation of some fundamental Linux usage  and commands for getting around the
 
 - [Users](users.md)
 
-- [Software](software)
+- [Software](software/README.md)
     - [APT](software/apt.md)
-    
+
     - [Pi Store](software/pi-store.md)
-    
+
     - [Python](software/python.md)
-    
+
     - [Ruby](software/ruby.md)
 
-- [Kernel](kernel)
+- [Kernel](kernel/README.md)
     - [Headers](kernel/headers.md)
-    
+
     - [Building](kernel/building.md)
-    
+
     - [Configuring](kernel/configuring.md)
