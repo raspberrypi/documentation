@@ -5,7 +5,5 @@ It is important to have a basic understanding of the fundamentals of the Linux f
 # Contents
 
 - [Home](home.md)
-
 - [Backups](backups.md)
-
 - [Whole filesystem](whole-filesystem.md)
