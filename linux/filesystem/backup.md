@@ -56,10 +56,10 @@ This will create an image file on your PC which you can use to write to another 
 
 ```
 dd bs=4M if=raspbian.img of=/dev/sdb
-``
+```
 
 See more about [installing SD card images](../../installation/installing-images.md)
 
 ## Automation
 
-You could write a bash script to perform each of these processes automatically, and even have it performed periodically using crontab.
+You could write a bash script to perform each of these processes automatically, and even have it performed periodically using [crontab](../cron.md).
