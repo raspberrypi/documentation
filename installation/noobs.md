@@ -56,6 +56,8 @@ The following Operating Systems are currently included in NOOBS:
 
 - Pidora
 
+Read about the different [distributions](distributions.md)
+
 ## NOOBS and NOOBS Lite
 
 NOOBS is available in two forms: offline and network install or network install only.
