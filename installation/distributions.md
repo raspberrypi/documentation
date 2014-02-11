@@ -36,7 +36,7 @@ The following distributions are included in [NOOBS](noobs.md) and are downloadab
 - RISC OS
     - RISC OS is a very fast and compact system
     - Latest version released: 2013-07-10
-    - URL: [raspbian.org](http://www.raspbian.org/)
+    - URL: [riscosopen.org](https://www.riscosopen.org/wiki/documentation/show/Welcome%20to%20RISC%20OS%20Pi)
 
 - Arch Linux
     - An Arch Linux port for ARM devices
