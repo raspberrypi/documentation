@@ -1,6 +1,11 @@
-# VNC
+# VNC, Virtual Network Computing
 
+## Introduction
 Sometimes it is not convenient to work directly on the Raspberry Pi. Maybe you would like to work on it but from another computer by remote control.
+
+VNC is a graphical desktop sharing system that allows you to remotely control the desktop interface of one computer from another.  It transmits the keyboard and mouse events from the controller and receives back updates to the screen over the network from the remote host.
+
+You will see the desktop of the Raspberry Pi inside a window on your PC/Laptop.  You’ll be able to control it as though you were working on the Raspberry Pi itself.
 
 ## How does it work
 
@@ -9,6 +14,9 @@ The commands described below start a "virtual" graphical session. Instead of usi
 This way you can run a desktop session on the Raspberry Pi, but display and control it elsewhere.
 
 Because the framebuffer isn't the real framebuffer you cannot take advantage of the GPU to accelerate operations on the screen.
+
+## Why should you use it?
+VNC is ideal if you don’t have enough space to set up a keyboard, mouse and monitor for a Raspberry Pi.  If you use VNC you’ll only need to connect the Raspberry Pi to your network and plug in its power.
 
 ## Instructions
 
