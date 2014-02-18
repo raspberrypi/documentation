@@ -26,6 +26,10 @@ That then causes the command to be executed by the Raspberry Pi remotely.  In th
 
 Below are separate instructions for Windows, OSX and Linux.
 
+[![image](./images/win.jpg)](#microsoft-windows-xp-visa-7-and-8)
+[![image](./images/osx.jpg)](#apple-os-x-all-versions)
+[![image](./images/tux.jpg)](#ubuntulinux)
+
 ##Microsoft Windows (XP, Visa, 7 and 8)
 On Windows you will need to download an SSH client program.  The most commonly used one is called PuTTY and can be downloaded from here: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 
