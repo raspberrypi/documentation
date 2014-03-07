@@ -74,7 +74,7 @@ The latest NOOBS release is **v1.3.4**, released on **9th January 2014**
 
 ### NOOBS Documentation
 
-A more comprehensive documentation including more avdanced configuration of NOOBS is available on [GitHub](https://github.com/raspberrypi/noobs/README.md)
+A more comprehensive documentation including more advanced configuration of NOOBS is available on [GitHub](hhttps://github.com/raspberrypi/noobs/blob/master/README.md)
 
 ### NOOBS source code
 
