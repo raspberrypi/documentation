@@ -517,7 +517,7 @@ Encode a 5s camera stream and send image data to file
 
 The applications described here will return a standard error code to the shell on completion. Possible error codes are : 
 
-EX_OK		0	Application ran successfully.
-EX_USAGE		64	Bad command line parameter
-EX_SOFTWARE	70	Software or camera error
-			130	Application terminated by ctrl-C.
+* EX_OK		0	Application ran successfully.
+* EX_USAGE	64	Bad command line parameter
+* EX_SOFTWARE	70	Software or camera error
+* 		130	Application terminated by ctrl-C.
