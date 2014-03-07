@@ -18,3 +18,6 @@ Some basic guides in configuring your Raspberry Pi
     
 - [Audio Config](audio-config.md)
     - Switch your audio output between HDMI and the 3.5mm jack
+
+- [Camera Config](camera.md)
+    - Installing and setting up the Raspberry Pi camera board
