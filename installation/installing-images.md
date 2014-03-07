@@ -2,7 +2,7 @@
 
 How to install a Raspberry Pi Operating System image on an SD card
 
-Note: this guide is for advanced users wanting to install a specific OS image to an SD card. Beginners are adviced to use the easy installer tool [NOOBS](https://github.com/raspberrypi/documentation/blob/master/installation/noobs.md)
+Note: this guide is for advanced users wanting to install a specific OS image to an SD card. Beginners are advised to use the easy installer tool [NOOBS](https://github.com/raspberrypi/documentation/blob/master/installation/noobs.md)
 
 ## Download the image
 
