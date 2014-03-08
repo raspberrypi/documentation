@@ -13,6 +13,8 @@ Having trouble with your Pi? Start here:
         - [IP Address](hardware/networking/ip-address.md)
         - [Wifi Configuration](hardware/networking/wifi-config.md)
 
+    - [Camera](hardware/camera.md)
+    
 ## Forums
 
 If you can't find what you're looking for, try asking for help in our [forums](http://www.raspberrypi.org/forums/).
