@@ -40,7 +40,7 @@ fi
 
 The `if` statement here checks the file exists before including it.
 
-Then you just create the file .bash_aliases and add more aliases like so:
+Then you just create the file `.bash_aliases` and add more aliases like so:
 
 ```
 alias gs='git status'
