@@ -22,10 +22,8 @@ Explanation of some fundamental Linux usage and commands for getting around the 
         - The `root` user and the `sudo` prefix
     - [Cron / Crontab](usage/cron.md)
         - Setting up scheduled tasks
-    - [.bashrc](usage/bashrc.md)
-        - Your shell configuration
-    - [.bash_aliases](usage/bash-aliases.md)
-        - Making aliases for commands
+    - [.bashrc and .bash_aliases](usage/bashrc.md)
+        - Your shell configuration and aliases
     - [rc.local](usage/rc-local.md)
         - Configuration of initialisation
 - [Software](software/README.md)
