@@ -27,4 +27,4 @@ If you have anything to fix or details to add, first [file an issue](http://gith
 
 This is not intended to be an open wiki; we want to keep it concise and minimal but will accept fixes and suitable additions.
 
-# License
+## License
