@@ -21,13 +21,13 @@ The following distributions are included in [NOOBS](noobs.md) and are downloadab
     - URL: [pidora.ca](http://pidora.ca/)
 
 - RaspBMC
-    - RaspBMC is an [XBMC](http://xbmc.org/) media center distribution for Raspberry Pi
+    - RaspBMC is an [XBMC](http://xbmc.org/) Media Centre distribution for Raspberry Pi
     - Latest version released: 2013-12-23
     - Kernel version: 3.10
     - URL: [raspbmc.com](http://www.raspbmc.com/)
 
 - OpenELEC
-    - OpenELEC is a fast and user friendly XBMC Mediacenter distribution
+    - OpenELEC is a fast and user friendly XBMC Media Centre distribution
     - Latest version released: 2013-09-14
     - Version number: 3.2.0
     - Kernel version: 3.10.11
