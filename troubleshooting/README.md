@@ -3,16 +3,12 @@
 Having trouble with your Pi? Start here:
 
 - [Power](power.md)
-
 - [Hardware](hardware/README.md)
     - [SD Cards](hardware/sd-cards.md)
-
     - [USB](hardware/usb.md)
-
     - [Networking](hardware/networking/README.md)
         - [IP Address](hardware/networking/ip-address.md)
         - [Wifi Configuration](hardware/networking/wifi-config.md)
-
     - [Camera](hardware/camera.md)
     
 ## Forums
