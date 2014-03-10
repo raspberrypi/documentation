@@ -32,9 +32,9 @@ Explanation of some fundamental Linux usage and commands for getting around the 
     - [Pi Store](software/pi-store.md)
         - Installing software from the Pi Store
     - [Python](software/python.md)
-        - Installing software with Python Package Index
+        - Installing software using a Python package manager such as `pip`
     - [Ruby](software/ruby.md)
-        - Installing software with Ruby Gems
+        - Installing software with Ruby's package manager `ruby gems`
 - [Kernel](kernel/README.md)
     - [Updating](kernel/updating.md)
         - Updating your Linux kernel on Raspberry Pi
