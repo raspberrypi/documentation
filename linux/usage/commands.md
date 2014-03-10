@@ -36,15 +36,21 @@ Here are some fundamental and common Linux commands with example usage:
 
 ### df
 
+### unzip
+
 ### tar
 
 ### pipes
 
 ### tree
 
-### AND
+### &
 
 ### wget
+
+### curl
+
+### man
 
 
 
@@ -63,5 +69,7 @@ Here are some fundamental and common Linux commands with example usage:
 ## Networking
 
 ### nmap
+
+### hostname
 
 ### ifconfig

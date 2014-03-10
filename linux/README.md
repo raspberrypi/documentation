@@ -4,20 +4,45 @@ Explanation of some fundamental Linux usage and commands for getting around the 
 
 ## Contents
 
-- [Filesystem](filesystem)
+- [Filesystem](filesystem/README.md)
     - [Home](filesystem/home.md)
-    - [Backup](filesystem/backup.md)
+        - Your user's home folder on the Pi - where you keep your files
     - [Whole Filesystem](filesystem/whole-filesystem.md)
-- [Commands](commands.md)
-- [Text editors](text-editors.md)
-- [Root](root.md)
-- [Users](users.md)
-- [Software](software)
+        - The rest of the Linux filesystem
+    - [Backup](filesystem/backup.md)
+        - Backing up your files and your Operating System image
+- [Usage](usage/README.md)
+    - [Commands](usage/commands.md)
+        - Some basic and more advanced Linux commands
+    - [Text editors](usage/text-editors.md)
+        - A selection of text editors available on the Pi
+    - [Users](usage/users.md)
+        - Setting up multiple Linux users on your Pi system
+    - [Root](usage/root.md)
+        - The `root` user and the `sudo` prefix
+    - [Cron / Crontab](usage/cron.md)
+        - Setting up scheduled tasks
+    - [.bashrc](usage/bashrc.md)
+        - Your shell configuration
+    - [.bash_aliases](usage/bash-aliases.md)
+        - Making aliases for commands
+    - [rc.local](usage/rc-local.md)
+        - Configuration of initialisation
+- [Software](software/README.md)
     - [APT](software/apt.md)
+        - Installing software with APT
     - [Pi Store](software/pi-store.md)
+        - Installing software from the Pi Store
     - [Python](software/python.md)
+        - Installing software with Python Package Index
     - [Ruby](software/ruby.md)
-- [Kernel](kernel)
-    - [Headers](kernel/headers.md)
+        - Installing software with Ruby Gems
+- [Kernel](kernel/README.md)
+    - [Updating](kernel/updating.md)
+        - Updating your Linux kernel on Raspberry Pi
     - [Building](kernel/building.md)
+        - Building the Linux kernel on Raspberry Pi
     - [Configuring](kernel/configuring.md)
+        - Configuring the Linux kernel on Raspberry Pi
+    - [Headers](kernel/headers.md)
+        - Getting the kernel headers
