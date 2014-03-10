@@ -16,7 +16,7 @@ Basic examples to help you get started with some of the software available in Ra
     -  The Raspberry Pi camera module is capable of taking full HD 1080p photo and video and can be controlled programmatically
 - [GPIO](gpio.md)
     - The General Purpose Input/Output pins allow you to control and interact with the real world from Python, Scratch or other programming environments
-- [Minecraft](mincecraft.md)
+- [Minecraft](minecraft.md)
     - A free version of Minecraft is available for the Pi, and this is the only edition that has a programming interface, meaning you can control Minecraft with Python code - and even interact with the real world through GPIO
 - [Python Games](python-games.md)
     - Raspbian ships with some ready made Python games for you to play on your Raspberry Pi - and why not browse the code, hack the games and learn to make your own?
