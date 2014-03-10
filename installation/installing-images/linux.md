@@ -28,12 +28,13 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
 
 - Run `df -h` again. The device that wasn't there last time is your SD card. The left column gives the device name of your SD card. It will be listed as something like `/dev/mmcblk0p1` or `/dev/sdd1`. The last part (`p1` or `1` respectively) is the partition number, but you want to write to the whole SD card, not just one partition, so you need to remove that part from the name (getting for example `/dev/mmcblk0` or `/dev/sdd`) as the device for the whole SD card. Note that the SD card can show up more than once in the output of df: in fact it will if you have previously written a Raspberry Pi image to this SD card, because the Raspberry Pi SD images have more than one partition.
 
-- Now that you've noted what the device name is, you need to unmount it so that files can't be read or written to the SD card while you are copying over the SD image. So run the command below, replacing "/dev/sdd1" with whatever your SD card's device name is (including the partition number)
-umount `/dev/sdd1`
+- Now that you've noted what the device name is, you need to unmount it so that files can't be read or written to the SD card while you are copying over the SD image.
 
-- If your SD card shows up more than once in the output of df due to having multiple partitions on the SD card, you should unmount all of these partitions.
+- Run `umount /dev/sdd1` replacing `sdd1` with whatever your SD card's device name is (including the partition number)
 
-- In the terminal write the image to the card with this command, making sure you replace the input file `if=` argument with the path to your `.img` file, and the `/dev/sdd` in the output file `of=` argument with the right device name (this is very important: you will lose all data on the hard drive on your computer if you get the wrong device name). Make sure the device name is the name of the whole SD card as described above, not just a partition of it (for example, `sdd`, not `sdds1` or `sddp1`, or `mmcblk0` not `mmcblk0p1`)
+- If your SD card shows up more than once in the output of `df` due to having multiple partitions on the SD card, you should unmount all of these partitions.
+
+- In the Terminal, write the image to the card with this command, making sure you replace the input file `if=` argument with the path to your `.img` file, and the `/dev/sdd` in the output file `of=` argument with the right device name (this is very important: you will lose all data on the hard drive on your computer if you get the wrong device name). Make sure the device name is the name of the whole SD card as described above, not just a partition of it (for example, `sdd`, not `sdds1` or `sddp1`, or `mmcblk0` not `mmcblk0p1`)
 
     ```
     dd bs=4M if=2014-01-07-wheezy-raspbian.img of=/dev/sdd
