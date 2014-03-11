@@ -16,6 +16,6 @@ With the image file of the distribution of your choice, you need to use an image
 
 See our guide for your system:
 
-- [Linux](installing-images/linux.md)
-- [Mac OS](installing-images/mac.md)
-- [Windows](installing-images/windows.md)
+- [Linux](linux.md)
+- [Mac OS](mac.md)
+- [Windows](windows.md)
