@@ -8,5 +8,5 @@ Beginners should start with [NOOBS](noobs.md)
 
 - [NOOBS](noobs.md)
 - [Distributions](distributions.md)
-- [Installing Images](installing-images.md)
+- [Installing Images](installing-images/README.md)
 - [SD Cards](sd-cards.md)
