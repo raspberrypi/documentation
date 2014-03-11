@@ -1,6 +1,6 @@
-# SSH using Linux
+# SSH using Linux or Mac OS
 
-You can use SSH to connect to your Raspberry Pi from a Linux computer (or another Pi) from the Terminal, without installing additional software.
+You can use SSH to connect to your Raspberry Pi from a Linux computer or Mac (or another Pi) from the Terminal, without installing additional software.
 
 You'll need to know your Pi's IP address to connect to it. To find this, type `hostname -I` in the Terminal. Alternatively if you're running the Pi headless (without a screen), you can also look at the device list on your router or use a tool like `nmap`.
 
@@ -12,11 +12,7 @@ ssh pi@<IP>
 
 If you receive a `connection timed out` error it's likely that you've entered the wrong IP address for the Raspberry Pi.
 
-When the connection works you'll see the security/authenticity warning below.
-
-![](images/ssh/linux/ssh-ubuntu-login.png)
-
-You will have to type *yes* to continue. You'll only see this warning the first time you connect to a Pi that it has never been seen by this computer before.
+When the connection works you'll see a security/authenticity warning. Type `yes` to continue. You'll only see this warning the first time you connect.
 
 In the event your Pi has taken the IP address of a device to which your computer has connected before (even on another network), you may be given a warning and asked to clear the record from your list of known devices. Following this instruction and trying the `ssh` command again should be successful.
 
