@@ -12,8 +12,6 @@ Basic examples to help you get started with some of the software available in Ra
     - Write code to make music with Sonic Pi
 - [Terminal](terminal.md)
     - The Linux terminal is a powerful tool for getting around the filesystem and issuing commands
-- [Camera Module](camera.md)
-    -  The Raspberry Pi camera module is capable of taking full HD 1080p photo and video and can be controlled programmatically
 - [GPIO](gpio.md)
     - The General Purpose Input/Output pins allow you to control and interact with the real world from Python, Scratch or other programming environments
 - [Minecraft](minecraft.md)
@@ -24,3 +22,8 @@ Basic examples to help you get started with some of the software available in Ra
     - Set up a web server on your Raspberry Pi and install content management and blogging system WordPress
 - [Mathematica](mathematica.md)
     - Mathematica is an industry leading computational platform - available for free on Raspberry Pi
+- [Camera Module](camera/README.md)
+    - The Raspberry Pi camera module is capable of taking full HD 1080p photo and video and can be controlled programmatically
+    - Libraries are available for:
+        - [Shell](camera/raspi-commands.md) (Linux command line)
+        - [Python](camera/python-picamera.md)
