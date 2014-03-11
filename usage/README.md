@@ -25,5 +25,11 @@ Basic examples to help you get started with some of the software available in Ra
 - [Camera Module](camera/README.md)
     - The Raspberry Pi camera module is capable of taking full HD 1080p photo and video and can be controlled programmatically
     - Libraries are available for:
-        - [Shell](camera/raspi-commands.md) (Linux command line)
+        - [Bash](camera/raspi-commands.md) (Linux command line)
         - [Python](camera/python-picamera.md)
+- [XBMC](xbmc.md)
+    - Installing media centre software on your Raspberry Pi
+- [Playing audio](audio.md)
+    - Playing audio on your Raspberry Pi
+- [Playing video](video.md)
+    - Playing video on your Raspberry Pi
