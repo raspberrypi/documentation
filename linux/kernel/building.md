@@ -18,13 +18,14 @@ Add missing dependencies:
 $ sudo apt-get install bc
 ```
 
-Build the kernel
+Build the kernel (takes a _lot_ of time...)
 
 ```
 $ make bcmrpi_defconfig
 $ make
 $ make modules
 $ sudo make modules_install
+$ sudo cp arch/arm/boot/Image /boot/kernel.img
 ```
 
 ## Links
