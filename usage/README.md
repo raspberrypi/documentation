@@ -27,6 +27,8 @@ Basic examples to help you get started with some of the software available in Ra
     - Libraries are available for:
         - [Bash](camera/raspi-commands.md) (Linux command line)
         - [Python](camera/python-picamera.md)
+- [Webcams](webcams.md)
+    - Using a standard webcam instead of the Raspberry Pi camera module
 - [XBMC](xbmc.md)
     - Installing media centre software on your Raspberry Pi
 - [Playing audio](audio.md)
