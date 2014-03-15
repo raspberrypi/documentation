@@ -26,7 +26,7 @@ Select `Enable camera` and hit `Enter`, then go to `Finish` and you'll be prompt
 
 Libraries for using the camera are available in:
 
-- [Shell](raspi-commands.md) (Linux command line)
+- [Shell](raspicam/README.md) (Linux command line)
 - [Python](python-picamera.md)
 
 See detailed [technical specs](../../hardware/camera.md) of the camera hardware and software.
