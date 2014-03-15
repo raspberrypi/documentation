@@ -4,7 +4,7 @@
 
 ## Basic usage of raspistill
 
-With the camera module [connected and enabled](README.md), enter the following command in the Terminal to take a picture:
+With the camera module [connected and enabled](../README.md), enter the following command in the Terminal to take a picture:
 
 ```
 raspistill -o cam.jpg
