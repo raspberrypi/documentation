@@ -2,7 +2,7 @@
 
 `raspivid` is the command line tool for capturing video with the camera module.
 
-## Basic usage
+## Basic usage of raspivid
 
 To record a video with the camera module, use the following command:
 

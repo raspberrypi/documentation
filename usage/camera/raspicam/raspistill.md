@@ -2,7 +2,7 @@
 
 `raspistill` is the command line tool for capturing still photographs with the camera module.
 
-## Basic usage of `raspistill`
+## Basic usage of raspistill
 
 With the camera module [connected and enabled](README.md), enter the following command in the Terminal to take a picture:
 
