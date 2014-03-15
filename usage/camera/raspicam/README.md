@@ -8,7 +8,7 @@ See guides for basic usage of each of the commands:
 
 - [raspistill](raspistill.md)
     - Capturing still photographs with the camera module
-- [raspivid](raspistill.md)
+- [raspivid](raspivid.md)
     - Capturing video with the camera module
     - [Streaming video](streaming/README.md) with the camera module
 - [Time-lapse](timelapse.md)
