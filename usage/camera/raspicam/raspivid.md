@@ -4,11 +4,13 @@
 
 ## Basic usage of raspivid
 
-To record a video with the camera module, use the following command:
+With the camera module [connected and enabled](../README.md), record a video using the following command:
 
 ```
 raspivid -o vid.h264
 ```
+
+Remember to use `-hf` and `-vf` to flip the image if required, like with [raspistill](raspistill.md)
 
 This will save a 5 second video file to the path given here as `vid.h264` (default length of time).
 
