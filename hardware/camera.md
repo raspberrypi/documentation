@@ -1,4 +1,4 @@
-#RaspiCam Documentation
+# Raspberry Pi Camera Module
 
 This document describes the use of the three Raspberry Pi camera applications as of December 7th 2013.
 
@@ -14,18 +14,17 @@ In addition it is possible to omit the filename option, in which case the previe
      
 Command line help is available by typing just the application name in on the command line.
 
-
-##Setting up
+## Setting up
 
 See [Camera Setup](../../../blob/master/configuration/camera.md)
 
-##Troubleshooting
+## Troubleshooting
 
 See [Camera TroubleShooting](../../../blob/master/troubleshooting/hardware/camera.md)
 
-##Common Command line Options
-###Preview Window
+## Common Command line Options
 
+### Preview Window
 
 	--preview,	-p   	Preview window settings <'x,y,w,h'>
 
@@ -106,9 +105,11 @@ Note that not all of these settings may be implemented, depending on camera tuni
 * horizon		Horizon mode
   
 Note that not all of these settings may be implemented, depending on camera type.
+
 ```
   --imxfx,    -ifx	Set image effect
 ```
+
 Set an effect to be applied to the image
 
 * none		NO effect (default)
@@ -269,7 +270,7 @@ The camera is run for the requested time (-t), and a captures can be initiated t
 
 		kill -USR1 <process id of raspistill>
 
-###raspistillyuv
+### raspistillyuv
 
 
 Many of the options for raspistillyuv are the same as those for raspistill. This section shows the differences.
@@ -286,7 +287,7 @@ This option forces the image to be saved as RGB data with 8 bits per channel, ra
 Note that the image buffers saved in raspistillyuv are padded to a horizontal size divisible by 16 (so there may be unused bytes at the end of each line to make the width divisible by 16). Buffers are also padded vertically to be divisible by 16, and in the YUV mode, each plane of Y,U,V is padded in this way.
 
 
-###raspivid
+### raspivid
 
 
 	--width,		-w	Set image width <size>
@@ -345,10 +346,12 @@ Forces the stream to include PPS and SPS headers on every I-frame. Needed for ce
 
 This options allows the video capture to be paused and restarted at particular time intervals. Two values are required, the On time and the Off time. On time is the amount of time the video is captured, off time is the amount it is paused. The total time of the recording is defined by the timeout option. Note the recording may take slightly over the timeout setting depending on the On and Off times.
 
-For example
+For example:
+
 ```
 	raspivid -o test.h264 -t 25000 -timed 2500,5000
 ```
+
 will record for a period of 25 seconds. The recording will be over a timeframe consisting of 2500ms (2.5s) segments with 5000ms (5s) gaps, repeating over the 20s. So the entire recording will actually be only 10s long, since 4 segments of 2.5s = 10s separated by 5s gaps.
 
 2.5 record – 5 pause - 2.5 record – 5 pause -2.5  record – 5 pause – 2.5 record
@@ -449,7 +452,7 @@ Run camera forever, taking a picture when Enter is pressed
 
 	raspistill -t 0 -k -o my_pics%02d.jpg 
 
-###Video Captures
+### Video Captures
 
 Image size and preview settings are the same as for stills capture. Default size for video recording is 1080p (1920x1080)
 
@@ -475,7 +478,7 @@ Encode a 5s camera stream and send image data to file
 
 
 
-##Shell Error Codes
+## Shell Error Codes
 
 The applications described here will return a standard error code to the shell on completion. Possible error codes are : 
 
