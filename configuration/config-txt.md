@@ -6,8 +6,6 @@ The Raspberry Pi config.txt file is read by the GPU before the ARM core is initi
 
 This file is an optional file on the boot partition.  It would normally be accessible as /boot/config.txt from Linux, but from Windows (or OS X) it would be seen as a file in the accessible part of the card.
 
-To edit the configuration file, see the instructions at [[R-Pi_ConfigurationFile]].
-
 You can get your current active settings with the following commands:
 ```
  vcgencmd get_config <config> - lists a specific config value. E.g. vcgencmd get_config arm_freq
