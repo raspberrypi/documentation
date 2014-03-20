@@ -1,8 +1,9 @@
-# WiFi configuration, installation and useful tools
+# WiFi
 
-Setting up WiFi is quite a complex business although there are a number of different tools that can make it very simple
+There are a large number of different ways of setting up WiFi on the Raspberry Pi here are two different guides
+showing two main methods:
 
-* [GUI based](wireless_gui.md)
-* [wicd-curses terminal based setup](wireless_curses.md)
-* [Direct editing of the wpa_supplicant](wireless_edit.md)
+* [Using wicd-curses] (http://www.raspyfi.com/wi-fi-on-raspberry-pi-a-simple-guide/)
+* [Using GUI application] (http://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/setting-up-wifi-with-raspbian)
+
 
