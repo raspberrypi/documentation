@@ -14,3 +14,5 @@ Some basic guides in configuring your Raspberry Pi
     - Switch your audio output between HDMI and the 3.5mm jack
 - [Camera Config](camera.md)
     - Installing and setting up the Raspberry Pi camera board
+- [Localisation](localisation.md)
+    - Setting up your Pi to work in your local language / timezone / etc.
