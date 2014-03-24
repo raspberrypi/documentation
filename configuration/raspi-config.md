@@ -12,7 +12,7 @@ sudo `raspi-config`
 
 from the command line. The `sudo` is required because you will be changing files that you as user `pi` do not own.
 
-You should see a blue background screen with options in a grey box in the centre of the screen.
+You should see a blue background screen with options in a grey box in the centre of the screen, like so:
 
 ![](images/raspi-config.png)
 
@@ -35,8 +35,6 @@ Setup Options
 
                                    <Select>                                  <Finish>
 ```
-
-![](images/raspi-config.png)
 
 ### Moving Around the Menu
 
