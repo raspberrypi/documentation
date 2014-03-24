@@ -13,7 +13,7 @@ There are two ways of setting the audio output.
 The following command, entered in the command line, will switch the audio output to HDMI:
 
 ```
-sudo amixer cset numid=3 1
+amixer cset numid=3 1
 ```
 
 Here the output is being set to `1`, which is HDMI.
