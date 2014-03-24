@@ -58,6 +58,8 @@ The menu items explained
 
 The usual distribution images are around 2GB. When you write the image to a larger SD card you have a portion of that card unused. This option expands the initial image to expand to fill the rest of the SD card, giving you more space to use for files. You need to reboot the Raspberry Pi to make this available. Note there is no confirmation - selecting the option begins the partition expansion immediately.
 
+If you've installed Raspbian through NOOBS then you do not need to expand the filesystem, it is done for you automatically when installing.
+
 ### Change User Password
 
 The default user on Raspbian is `pi` with the password `raspberry`. You can change that here. Read about other [users](../linux/usage/users.md).
