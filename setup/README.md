@@ -23,7 +23,7 @@ A quickstart guide to setting up your Raspberry Pi
 
 - Ethernet (network) cable [Model B only]
     - An ethernet cable is used to connect your Pi to a local network and the internet
-- [USB wireless dongle](../configuration/wireless.md)
+- [USB wireless dongle](../configuration/wireless/README.md)
     - Alternatively you can connect to a wireless network using a USB wireless dongle, which requires configuration
 - Audio lead
     - Audio can be played through speakers or headphones using a standard 3.5mm jack
