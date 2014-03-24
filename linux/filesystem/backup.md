@@ -49,7 +49,7 @@ It may be sensible for you to keep a copy of the entire SD card image, so you ca
 In Linux or Mac (example):
 
 ```
-dd if=/dev/sdb of=raspbian.img
+dd bs=4M if=/dev/sdb of=raspbian.img
 ```
 
 This will create an image file on your PC which you can use to write to another SD card, and have the exact same contents and settings. To restore or clone to another card, use `dd` in reverse:
