@@ -1,4 +1,4 @@
-# `raspi-config`
+# raspi-config
 
 `raspi-config` is the Raspberry Pi configuration tool written and maintained by [Alex Bradbury](https://github.com/asb).
 
@@ -44,7 +44,7 @@ Use the up and down arrow keys move the highlighted selection between the option
 
 Note that in long lists of option values (like the list of timezone cities), you can also type a letter to skip to that section of the list, e.g. entering `L` will skip you to Lisbon, just two options away from London, to save you scrolling all the way through the alphabet.
 
-### What `raspi-config` does
+### What raspi-config does
 
 Some menu entries modify the file `/boot/config.txt`. This file, out of the box, contains a number of commented out configuration entries; `raspi-config` adds entries at the end of this file. You can see what `raspi-config` has done to the file by viewing it on the Pi using a text editor. Read more information on editing [config.txt](config-txt.md).
 
