@@ -7,7 +7,7 @@
 You will be shown `raspi-config` on your first boot in to Raspbian. To open the configuration tool another time, simply run:
 
 ```
-sudo `raspi-config`
+sudo raspi-config
 ```
 
 from the command line. The `sudo` is required because you will be changing files that you as user `pi` do not own.
