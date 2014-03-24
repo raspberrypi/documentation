@@ -82,7 +82,7 @@ This is the source of a default WordPress installation. The files you edit to cu
 
 ## Your WordPress Database
 
-To get your WordPress site set up, you need a database. Run the ```mysql``` command in the Terminal, and provide your login credentials (e.g. username `root`, password `password`):
+To get your WordPress site set up, you need a database. Run the `mysql` command in the Terminal, and provide your login credentials (e.g. username `root`, password `password`):
 
 ```
 mysql -uroot -ppassword
@@ -130,15 +130,40 @@ Database Host:      localhost
 Table Prefix:       wp_
 ```
 
-Upon successful database connection, you will be given the contents of your `wp-config.php` file. Copy this text and return to the terminal on the Pi and type `nano wp-config.php` then paste the text in and save and exit with `Ctrl + X`, then `Y` for yes and `Enter`.
+Upon successful database connection, you will be given the contents of your `wp-config.php` file:
+
+![](images/wp-config.png)
+
+Copy this text and return to the terminal on the Pi and edit the file with `nano wp-config.php` then paste the text in and save and exit with `Ctrl + X`, then `Y` for yes and `Enter`.
 
 Now hit the `Run the install` button.
 
 ### Welcome screen
 
-Now you're getting close. Fill out the information - give your site a title, create yourself a username and password, put in your email address, untick the search engines box and hit the `Install WordPress` button, then log in using the account you just created.
+Now you're getting close.
+
+![](images/wp-info.png)
+
+Fill out the information - give your site a title, create yourself a username and password, put in your email address, untick the search engines box and hit the `Install WordPress` button, then log in using the account you just created.
 
 Now you're logged in and have your site set up - you can see the website by visiting your IP address in the browser on the Pi or another computer on the network. To log in again (or on another computer), go to `http://YOUR-IP-ADDRESS/wp-admin`.
+
+It's recommended you change your permalink settings to make your URLs more friendly. To do this, log in to WordPress and go to the dashboard. Go to `Settings` then `Permalinks`. Select the `Post name` option and click `Save Changes`. After saving, you will be prompted to update your `.htaccess` file. You probably don't have one yet - so add one in `/var/www/` by typing `nano .htaccess` (note this is a hidden file, so it starts with a dot) and paste in the contents provided:
+
+```
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+```
+
+Save the file and return to the website homepage. Click on the post title or the sample page link and you'll probably see a `Not Found` error page. This is because the `rewrite` module has not been enabled in Apache. To do this, enter `sudo a2enmod rewrite`.
+
+You'll also need to tell the virtual host serving the site to allow requests to be overwritten. Do this by editing the virtual host file (with root permissions): `sudo nano /etc/apache2/sites-available/default` and change the `AllowOverride` setting on line 11 (inside the `<Directory /var/www/>` block) from `None` to `All`. Save the file and then restart Apache with `sudo service apache2 restart`. Once it's restarted, refresh the page and it should load successfully. Now posts have URLs like `/hello-world/` instead of `/?p=123` and pages have URLs like `/sample-page/` instead of `/?page_id=2`.
 
 ## Customisation
 
