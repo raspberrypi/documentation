@@ -2,17 +2,17 @@
 
 The easiest way to manage installing, upgrading and removing software is using APT (Advanced Packaging Tool) which comes from Debian. If a piece of software is packaged in Debian, and works on the Raspberry Pi's ARM architecture, it should also be available in Raspbian.
 
-To install or remove packages you need root user permissions, so your user needs to be in `sudoers` or you must be logged in as `root`. Read more about [users](../../usage/users.md) and [root](../../usage/root.md).
+To install or remove packages you need root user permissions, so your user needs to be in `sudoers` or you must be logged in as `root`. Read more about [users](../usage/users.md) and [root](../usage/root.md).
 
 To install new packages or update existing ones you will need an internet connection.
 
-Note that installing software uses up disk space (on your SD card) so you should keep ene eye on disk usage and use an appropriately sized SD card.
+Note that installing software uses up disk space (on your SD card) so you should keep an eye on disk usage and use an appropriately sized SD card.
 
 Also note that a lock is performed while software is installing, so you cannot install multiple packages at the same time.
 
 ## Software sources
 
-APT keeps a list of software sources on your Pi, in a file at  `/etc/apt/sources.list`. Before installing software, you should update your package list with `apt-get update`:
+APT keeps a list of software sources on your Pi, in a file at `/etc/apt/sources.list`. Before installing software, you should update your package list with `apt-get update`:
 
 ```
 sudo apt-get update
