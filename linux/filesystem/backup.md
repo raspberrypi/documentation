@@ -62,4 +62,4 @@ See more about [installing SD card images](../../installation/installing-images.
 
 ## Automation
 
-You could write a bash script to perform each of these processes automatically, and even have it performed periodically using [crontab](../cron.md).
+You could write a bash script to perform each of these processes automatically, and even have it performed periodically using [cron](../usage/cron.md).
