@@ -14,7 +14,7 @@ crontab -e
 
 ### Select an editor
 
-The first time you run `crontab`
+The first time you run `crontab` you'll be prompted to select an editor - if you don't know the difference, choose `nano` by hitting `Enter`.
 
 The layout for a cron entry is made up of six components:
 
