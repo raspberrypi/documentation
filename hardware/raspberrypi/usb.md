@@ -65,3 +65,35 @@ In this case, there are no error messages in dmesg and the pendrive is detected 
 
 If a device enumerates without any errors, but doesn't appear to do anything, then it is likely there are no drivers installed for it. Search around, based on the manufacturer's name for the device or the USB IDs that are displayed in lsusb (e.g. 05dc:a781). The device may not be supported with default Linux drivers - and you may need to download or compile your own third-party software.
 
+##Hubs
+
+In the USB2.0 specification, there is a large section dedicated to how a USB hub must be implemented and the behaviours that it must perform, for example, when devices are plugged in that exceed its own upstream power capabilities. In addition, there are two implementation choices available to hub chip manufacturers: these alter the behaviour when talking to low- or full-speed (USB1.1) devices plugged into a USB2.0 hub.
+
+Not all hubs are created equal.
+
+### Transaction Translators (TTs)
+
+USB2.0 defines three bus speeds: Low (1.5mbps), Full (12mbps) and High (480mbps). The choice of speed class for a device is a function of how much bandwidth the device requires, the cost when designing the chip and cost when designing the circuit board inside the device.
+
+Keyboards and mice are classically Low-speed devices, as the bandwidth requirement is of the order of bytes per second. Audio and bluetooth devices are typically Full-speed and most video devices (excluding the cheapest) are High-speed.
+
+To talk to a Low- or Full-speed device on a High speed bus, a hub must be used. Hubs contain at least one Transaction Translator (or TT) - a function of the hub chip that takes high-speed packets and buffers them for transmission at slow speed to the lower-speed device. Similarly, data from the lower-speed device the data is buffered and then transmitted in a faster burst to the host.
+
+Hubs are allowed to implement either a Single TT (one TT for all ports, shared between them) or Multiple TT (one TT per port). Note that this definition is per hub *chip*, not per physical hub as we will see later.
+
+### Hubs and the Pi
+
+Because of certain hardware constraints within the USB OTG hardware on the Pi, the use of a Multi-TT hub is strongly recommended when using multiple full- or low-speed devices.
+
+In the absence of a Multi-TT hub, spread devices out between hubs as much as possible. 
+
+### Common deviations from the Hub Specification
+
+1. Back-powering
+   The USB specification states that no hub shall present power from the downstream external power source to the upstream port. Cheap hubs are terrible at complying with this requirement: the 5V is simply connected straight from upstream to the external power adapter.
+2. No overcurrent protection or switching
+   Hubs must protect against overcurrent conditions on downstream ports, either by switching off the port automatically or allowing a resettable polyfuse to blow. Many hubs have no such protections and just connect all downstream port power together.
+3. Daisy-chained hubs
+   A 7-port hub is rarely a 7-port hub. Cheaper versions of these will typically use two 4-port hub ICs and package them together to make a "7 port" variant. There is a limitation in the USB specification on how "deep" hubs can be daisy-chained: up to a maximum of 5 hubs between the host and the device.
+4. Broken hub descriptors
+   Hubs have implementation-specific descriptors that should detail how many ports are available, whether port power switching is ganged or single-port and how much total bus current the hub can supply. Certain broken hubs have bogus information in these descriptors: claiming to be only able to supply 2mA or other nonsense. Linux will comply with the standard and refuse to enumerate devices without enough power available.

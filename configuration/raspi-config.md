@@ -1,18 +1,18 @@
-# `raspi-config`
+# raspi-config
 
-`raspi-config` is the Raspberry Pi configuration tool written and maintained by [Alex Bradbury](https://github.com/asb).
+`raspi-config` is the Raspberry Pi configuration tool written and maintained by [Alex Bradbury](https://github.com/asb). It targets Raspbian.
 
 ## Usage
 
 You will be shown `raspi-config` on your first boot in to Raspbian. To open the configuration tool another time, simply run:
 
 ```
-sudo `raspi-config`
+sudo raspi-config
 ```
 
 from the command line. The `sudo` is required because you will be changing files that you as user `pi` do not own.
 
-You should see a blue background screen with options in a grey box in the centre of the screen.
+You should see a blue background screen with options in a grey box in the centre of the screen, like so:
 
 ![](images/raspi-config.png)
 
@@ -36,19 +36,15 @@ Setup Options
                                    <Select>                                  <Finish>
 ```
 
-![](images/raspi-config.png)
-
 ### Moving Around the Menu
 
 Use the up and down arrow keys move the highlighted selection between the options available. Pressing the right arrow key will jump out of the options menu and take you to the `<Select>` and `<Finish>` buttons. Pressing left will take you back to the options. Alternatively use the Tab key to switch between these.
 
 Note that in long lists of option values (like the list of timezone cities), you can also type a letter to skip to that section of the list, e.g. entering `L` will skip you to Lisbon, just two options away from London, to save you scrolling all the way through the alphabet.
 
-### What `raspi-config` does
+### What raspi-config does
 
-Some menu entries modify the file `/boot/config.txt`. This file, out of the box, contains a number of commented out configuration entries; `raspi-config` adds entries at the end of this file. You can see what `raspi-config` has done to the file by viewing it on the Pi using a text editor. Read more information on editing [config.txt](config-txt.md).
-
-Other entries modify Linux configuration files. Some take effect immediately, others at the next boot.
+Generally speaking, `raspi-config` aims to provide the functionality to make the most common configuration changes. This may result in automated edits to `/boot/config.txt` and various standard Linux configuration files. Some options require a reboot to take effect. If you changed any of those, raspi-config will ask if you wish to reboot now when you select the `<Finish>` button.
 
 ## Menu Options
 
@@ -56,7 +52,7 @@ The menu items explained
 
 ### Expand Filesystem
 
-The usual distribution images are around 2GB. When you write the image to a larger SD card you have a portion of that card unused. This option expands the initial image to expand to fill the rest of the SD card, giving you more space to use for files. You need to reboot the Raspberry Pi to make this available. Note there is no confirmation - selecting the option begins the partition expansion immediately.
+In the case that you installed Raspbian using NOOBS, there's nothing to be done here as the filesystem was expanded automatically during installation. However, if you wrote the image to SD card yourself then a portion of the card will be unused (anything over 3 gigabytes in fact). Choosing this option will expand your installation to fill the rest of the SD card, giving you more space to use for files. You need to reboot the Raspberry Pi to make this available. Note there is no confirmation - selecting the option begins the partition expansion immediately.
 
 ### Change User Password
 
@@ -80,11 +76,11 @@ Select your correct timezone, starting with the region e.g. `Europe`, then selec
 
 #### Change Keyboard Layout
 
-Selecting this option should automatically detect your keyboard layout. Note this take a few seconds and returns you to the configuration tool options screen without feedback.
+This option opens another menu which allows you to select your keyboard layout. It is slow to display, while it reads all the keyboard types. Changes usually take effect immediately, but may require a reboot.
 
 ### Enable Camera
 
-In order to use the Raspberry Pi camera module, you must enable it here. Select the option and proceed to `Enable`.
+In order to use the Raspberry Pi camera module, you must enable it here. Select the option and proceed to `Enable`. This will make sure at least 128 megabytes of RAM is dedicated to the GPU.
 
 ### Add to Rastrack
 
@@ -94,7 +90,7 @@ You can use this option to add your location to the map.
 
 ### Overclock
 
-It is possible to overclock your Raspberry Pi's CPU. The default is 700MHz but can be clocked up to 1000MHz. Note this is not generally recommended as it is less stable. Selecting this option shows the following warning:
+It is possible to overclock your Raspberry Pi's CPU. The default is 700MHz but can be clocked up to 1000MHz. The overclock you're able to achieve will vary, and overclocking too high may result in instability. Selecting this option shows the following warning:
 
 ```
 Be aware that overclocking may reduce the lifetime of your Raspberry Pi. If overclocking at a certain level causes system instability, try a more modest overclock. Hold down shift during boot to temporarily disable overclock.
@@ -110,12 +106,6 @@ Any changes will take effect after a reboot. You can have greater control over t
 
 On some displays, particularly monitors, just disabling Overscan will make the picture fill the whole screen and correct the resolution. For other displays it may be necessary to leave overscan enabled and adjust the Overscan values.
 
-You then select specific options:
-
-- No AltGr key
-- [Compose key](http://en.wikipedia.org/wiki/Compose_key) - many people choose not to set up a Compose key, but it can be useful for typing symbols or accented characters on a regular keyboard.
-- Shut down X-Server (use `Ctrl + Alt + Backspace` all pressed at the same time)
-
 #### Hostname
 
 Set the visible name for this Pi on a network.
@@ -128,7 +118,7 @@ Change the amount of memory made available to the GPU.
 
 Enable/Disable remote command line access to your Pi using SSH.
 
-SSH allows you to remotely access the command line of the Raspberry Pi from another computer. Disabling this ensures the SSH service does not start on boot, freeing up processing resources. Read more about using [SSH](../remote-access/ssh/README.md).
+SSH allows you to remotely access the command line of the Raspberry Pi from another computer. Disabling this ensures the SSH service does not start on boot, freeing up processing resources. Read more about using [SSH](../remote-access/ssh/README.md). Note that SSH is enabled by default. If connecting your Pi directly to a public network, you should disable SSH unless you have set up secure passwords for all users.
 
 #### SPI
 
@@ -136,7 +126,7 @@ Enable/Disable automatic loading of SPI kernel module (needed for e.g. PiFace).
 
 #### Audio
 
-Force audio out through HDMI or 3.5mm jack. Read more about [audo configuration](audio-config.md).
+Force audio out through HDMI or 3.5mm jack. Read more about [audio configuration](audio-config.md).
 
 #### Update
 
@@ -150,7 +140,7 @@ Selecting this option shows the following text information:
 This tool provides a straight-forward way of doing initial configuration of the Raspberry Pi. Although it can be run at any time, some of the options may have difficulties if you have heavily customised your installation.
 ```
 
-### <Finish>
+### \<Finish\>
 
 Use this button when you have completed your changes. You will be asked whether you want to reboot or not. When used for the first time its best to reboot. This should restart your Pi. There will be a delay if you have chosen to resize your SD card.
 
