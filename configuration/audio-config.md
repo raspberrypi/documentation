@@ -24,7 +24,7 @@ The default setting is `0` which is automatic.
 
 ### raspi-config
 
-Open up `raspi-config` by entering the following in to the command line:
+Open up [raspi-config](raspi-config.md) by entering the following in to the command line:
 
 ```
 sudo raspi-config
