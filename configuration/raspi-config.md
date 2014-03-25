@@ -76,8 +76,6 @@ Select your correct timezone, starting with the region e.g. `Europe`, then selec
 
 #### Change Keyboard Layout
 
-Selecting this option should automatically detect your keyboard layout. Note this take a few seconds and returns you to the configuration tool options screen without feedback.
-
 This option opens another menu which allows you to select your keyboard layout. It is slow to display, while it reads all the keyboard types. Changes usually take effect immediately, but may require a reboot.
 
 ### Enable Camera
@@ -142,7 +140,7 @@ Selecting this option shows the following text information:
 This tool provides a straight-forward way of doing initial configuration of the Raspberry Pi. Although it can be run at any time, some of the options may have difficulties if you have heavily customised your installation.
 ```
 
-### <Finish>
+### \<Finish\>
 
 Use this button when you have completed your changes. You will be asked whether you want to reboot or not. When used for the first time its best to reboot. This should restart your Pi. There will be a delay if you have chosen to resize your SD card.
 
