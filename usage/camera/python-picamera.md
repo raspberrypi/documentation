@@ -13,19 +13,17 @@ sudo apt-get update
 sudo apt-get install python-picamera
 ```
 
-Alternatively, the Python3 package is installed with `apt-get install python3-picamera`. Also the documentation is available with `apt-get install python-picamera-docs`.
+Alternatively, the Python3 package is installed with `sudo apt-get install python3-picamera`. An offline version of the [documentation](http://picamera.readthedocs.org/) is available with `sudo apt-get install python-picamera-docs`.
 
 ## Usage
 
-First, in the Python prompt or at the top of a Python file, enter:
+First, at the Python prompt or at the top of a Python script, enter:
 
 ```
 import picamera
 ```
 
-This will make the library available to the script.
-
-Now create an instance of the PiCamera class:
+This will make the library available to the script. Now create an instance of the PiCamera class:
 
 ```
 camera = picamera.PiCamera()
@@ -50,21 +48,19 @@ Be sure to use an upper case `T` in `True` as this is a keyword in Python.
 
 ### Preview
 
-You can open a preview window showing the camera feed on screen (note this will overlay your Python window if you're using the Pi desktop):
+You can display a preview showing the camera feed on screen. Warning: this will overlay your Python session by default; if you have trouble stopping the preview, simply pressing `Ctrl+D` to terminate the Python session is usually enough to restore the display:
 
 ```
 camera.start_preview()
 ```
 
-Then use the `stop_preview` method to end:
+You can use the `stop_preview` method to remove the preview overlay and restore the display:
 
 ```
 camera.stop_preview()
 ```
 
-If the preview overlays your Python window you can still type this (blindly) and it should break out of the preview.
-
-Alternatively, you can access the Pi using [SSH](../../remote-access/ssh/README.md) from another computer, open a Python prompt and enter these commands, displaying the preview on a monitor connected to the Pi (not the computer you're connected from).
+Alternatively, you can access the Pi using [SSH](../../remote-access/ssh/README.md) from another computer, open a Python prompt and enter these commands, displaying the preview on the monitor connected to the Pi (not the computer you're connected from).
 
 ### Camera settings
 
@@ -138,4 +134,5 @@ Full documentation for `python-picamera` is available at [picamera.readthedocs.o
 
 ## Development
 
-The `python-picamera` project is written and maintained by [Dave Jones](https://github.com/waveform80) and the source can be found at [github.com/waveform80/picamera](https://github.com/waveform80/picamera) where you can open issues or create pull requests.
+The `python-picamera` project is written and maintained by [Dave Jones](https://github.com/waveform80) and the source can be found at [github.com/waveform80/picamera](https://github.com/waveform80/picamera) where you can open issues or contribute code (via pull requests).
+
