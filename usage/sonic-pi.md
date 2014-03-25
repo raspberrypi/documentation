@@ -6,7 +6,7 @@ The code you write in Sonic Pi is based on Ruby, which is really nice and clean.
 
 ## Getting started
 
-You'll find Sonic Pi on the Raspbian desktop and in the applications menu under **Education**. Open it up and you'll see a window like this:
+You'll find Sonic Pi on Raspbian in the applications menu under **Education**. Open it up and you'll see a window like this:
 
 ![](images/sonic-pi.png)
 
