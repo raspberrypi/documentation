@@ -19,8 +19,11 @@ The cat in the white preview window is an example of a **sprite** in Scratch. Cu
 5. Now click the green flag icon in the top right hand side of the screen and see the cat move!
 6. How would you get the cat to move further?
 
+![](images/scratch-1.png)
 
 ## Changing the way the Sprite looks
+
+All sprites in Scratch can wear different costumes. 
 
 1. Click on your sprite to select it. In the **Scripts** area in the middle of the screen, click on the **Costumes** tab.
 2. You will see that the cat has two costumes. click on Copy to make a third costume and a new cat costume should appear.
@@ -30,3 +33,12 @@ The cat in the white preview window is an example of a **sprite** in Scratch. Cu
 6. Select *costume3* from the drop down menu on the purple block. 
 7. Now run your program to see the costume change.
 
+![](images/scratch-2.png)
+
+## Add Sprites
+If you feel that the Scratch cat sprite does not suit your needs then you can add other sprites, or even create your own!
+
+1. At the top of the Sprites Palette are three icons to create a new sprite. 
+
+
+## Add Backgrounds
