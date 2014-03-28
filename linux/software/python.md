@@ -32,4 +32,4 @@ Note that no `python-` prefix is required when using `pip`. To update a Python p
 sudo pip install -U simplejson
 ```
 
-You can specify multiple packages to upgrade, but there is no option to upgrade all packages installed with `pip` universally (hence why Apt-based installations are generally considered easier to maintain).
+You can only specify a single package to upgrade at a time, and there is no option to upgrade all packages installed with `pip` universally (hence why Apt-based installations are generally considered easier to maintain).
