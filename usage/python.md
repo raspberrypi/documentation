@@ -153,9 +153,36 @@ names = ["Bob", "Jane", "James", "Alice"]
 print(len(names))  # 4
 ```
 
-## Python2 vs. Python3
+You can use `if` statements for control flow:
 
+```python
+name = "Joe"
 
+if len(name) > 3:
+    print("Nice name,")
+    print(name")
+else:
+    print("That's a short name,")
+    print(name)
+```
+
+## Python 2 vs. Python 3
+
+The short version: Python 2 is legacy, Python 3 is the present and future of the language.
+
+Python 2 was released in 2000, and Python 3 was released in 2008. Python 3 is recommended, but some libraries have not yet been ported to Python 3 which is why Python 2 is still present and widely used.
+
+If you are familiar with Python 2 but not Python 3, here is a summary of the basic key differences:
+
+- Print
+    - In Python 2, `print` is a statement and did not require brackets, e.g. `print "Hello"` whereas in Python 3, `print` is a function, so you pass in what you want to print as parameters, e.g. `print("Hello")` or `print("My age is", age)`.
+    - Using brackets for `print` in Python 2 works fine, so it's common to see this used for compatability. However printing multiple objects in the same `print` command works differently. In Python 3 this prints each one, space separated, and in Python 2 the collection of items is printed as a tuple, e.g. `("My age is", 15)`
+-  Input / Raw input
+    -  In Python 2, the function `raw_input` takes input from the user, and in Python 3, the function is called `input`.
+
+Python 2.7.6 was released in 2013. The 2.x branch will have no further major releases.
+
+Read more on the differences on the [Python wiki](https://wiki.python.org/moin/Python2orPython3)
 
 ## Convention
 
