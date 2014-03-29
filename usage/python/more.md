@@ -128,7 +128,7 @@ Read more on [installing software in Python](../../linux/software/python.md)
 
 ## GPIO
 
-Using Python on the Raspberry Pi opens up the opportunity to connect to the real world through the Pi's GPIO pins. You'll need to install the RPi GPIO library:
+Using Python on the Raspberry Pi opens up the opportunity to connect to the real world through the Pi's GPIO pins. This can be done with the RPi GPIO library. It is preinstalled on recent Raspbian images, but if you have an older one you can install it with:
 
 ```
 sudo apt-get install python-rpi.gpio
