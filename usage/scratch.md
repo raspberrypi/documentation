@@ -6,7 +6,7 @@ Scratch is a visual programming tool allowing the user to create animations and 
 
 You'll find Scratch on the desktop of Raspbian and in the applications menu under **Education**. Once opened you will see a window like this:
 
-![](images/sratch-interface.png)
+![](images/scratch-interface.png)
 
 ## Make the Scratch cat move
 
@@ -36,6 +36,7 @@ All sprites in Scratch can wear different costumes.
 ![](images/scratch-2.png)
 
 ## Add Sprites
+
 If you feel that the Scratch cat sprite does not suit your needs then you can add other sprites, or even create your own!
 
 1. At the top of the Sprites Palette are three icons to create a new sprite. 
@@ -43,4 +44,4 @@ If you feel that the Scratch cat sprite does not suit your needs then you can ad
 3. The second icon, allows you to **Choose a new sprite** from those already built into Scratch or saved on your Raspberry Pi. Click on this and you will be able to naviagte to the folders containing those sprites and select one you like.
 4. The third icon will, when clicked, give you a **surprise sprite**. Click this and see what happens!
 
-![](new-sprite.png)
+![](images/new-sprite.png)
