@@ -10,7 +10,7 @@ The easiest way to get NOOBS is to buy an SD card with NOOBS preinstalled - avai
 
 ### Download
 
-Alternatively, NOOBS is available for download on the Raspberry Pi website: http://downloads.raspberrypi.org/NOOBS_latest
+Alternatively, NOOBS is available for download on the Raspberry Pi website: [raspberrypi.org/downloads](http://www.raspberrypi.org/downloads)
 
 #### How to install NOOBS on an SD card
 
