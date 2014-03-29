@@ -124,7 +124,7 @@ sudo apt-get install python-pip
 sudo pip install simplejson
 ```
 
-Read more on (installing software in Python](https://github.com/raspberrypi/documentation/blob/master/linux/software/python.md)
+Read more on [installing software in Python](../../linux/software/python.md)
 
 ## GPIO
 
