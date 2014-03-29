@@ -6,7 +6,7 @@ Basic examples to help you get started with some of the software available in Ra
 
 - [Scratch](scratch.md)
     - Scratch is a visual programming tool allowing the user to create animations and games with a drag-and-drop interface
-- [Python](python.md)
+- [Python](python/README.md)
     - Python is a general purpose programming language that is easy to pick up and also very powerful
 - [Sonic Pi](sonic-pi.md)
     - Write code to make music with Sonic Pi
@@ -16,7 +16,7 @@ Basic examples to help you get started with some of the software available in Ra
     - The General Purpose Input/Output pins allow you to control and interact with the real world from Python, Scratch or other programming environments
 - [Minecraft](minecraft.md)
     - A free version of Minecraft is available for the Pi, and this is the only edition that has a programming interface, meaning you can control Minecraft with Python code - and even interact with the real world through GPIO
-- [Python Games](python-games.md)
+- [Python Games](python/python-games.md)
     - Raspbian ships with some ready made Python games for you to play on your Raspberry Pi - and why not browse the code, hack the games and learn to make your own?
 - [WordPress](wordpress.md)
     - Set up a web server on your Raspberry Pi and install content management and blogging system WordPress
