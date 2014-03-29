@@ -18,7 +18,7 @@ If you are familiar with Python 2 but not Python 3, here is a summary of the bas
     -  In Python 3, the function is called `input`.
 - Integer division
     - In Python 2 `/` is used for exact integer division, always returning an integer. This means it returns the value of the number of times one number divides in to another whole, and ignores the remainder, e.g. `1 / 2` returns `0`, `2 / 2` returns `1` and `3 / 2` returns `1`.
-    - In Python 3, `/` does 'true' division, returning a floating point number (decimal) if necessary, e.g. `1 / 2` returns `0.5`.
+    - In Python 3, `/` does 'true' division, returning a floating point number (decimal), e.g. `1 / 2` returns `0.5`.
     - To get floating point division in Python 2, convert one or both numbers to a float first, e.g. `1.0 / 2` which returns `0.5`.
     - To get exact integer division in Python 3, use `//`, e.g. `1 // 2` returns `0`.
 
