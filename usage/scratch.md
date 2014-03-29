@@ -43,4 +43,4 @@ If you feel that the Scratch cat sprite does not suit your needs then you can ad
 3. The second icon, allows you to **Choose a new sprite** from those already built into Scratch or saved on your Raspberry Pi. Click on this and you will be able to naviagte to the folders containing those sprites and select one you like.
 4. The third icon will, when clicked, give you a **surprise sprite**. Click this and see what happens!
 
-## Add Backgrounds
+![](new-sprite.png)
