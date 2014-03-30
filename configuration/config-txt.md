@@ -17,7 +17,7 @@ You can get your current active settings with the following commands:
 
 The format is "property=value" where value is an integer. You may specify only one option per line. Comments may be added by starting a line with the '#' character.                                                                                                                                     
 
-Note: In the newer Raspberry Pi models there is # before every line, if you want changes to have an effect then 'uncomment' meaning remove the #.
+Note: In the newer Raspberry Pi models there is # before every line. If you want changes to have an effect then 'uncomment', (i.e. remove the #).
 
 Here is an example file:
 ```
