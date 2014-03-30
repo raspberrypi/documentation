@@ -25,7 +25,7 @@ Setup Options
 
     1 Expand Filesystem              Ensures that all of the SD card storage is available to the OS
     2 Change User Password           Change password for the default user (pi)
-    3 Enable Boot to Desktop/Scratch Choose whether to boot into a desktop environment, Scratch, or the command-line
+    3 Enable Boot to Desktop/Scratch Choose whether to boot into a desktop environment, Scratch, or the command line
     4 Internationalisation Options   Set up language and regional settings to match your location
     5 Enable Camera                  Enable this Pi to work with the Raspberry Pi Camera
     6 Add to Rastrack                Add this Pi to the online Raspberry Pi Map (Rastrack)
@@ -38,9 +38,9 @@ Setup Options
 
 ### Moving Around the Menu
 
-Use the up and down arrow keys move the highlighted selection between the options available. Pressing the right arrow key will jump out of the options menu and take you to the `<Select>` and `<Finish>` buttons. Pressing left will take you back to the options. Alternatively use the Tab key to switch between these.
+Use the up and down arrow keys to move the highlighted selection between the options available. Pressing the right arrow key will jump out of the options menu and take you to the `<Select>` and `<Finish>` buttons. Pressing left will take you back to the options. Alternatively, use the `Tab` key to switch between these.
 
-Note that in long lists of option values (like the list of timezone cities), you can also type a letter to skip to that section of the list, e.g. entering `L` will skip you to Lisbon, just two options away from London, to save you scrolling all the way through the alphabet.
+Note that in long lists of option values (like the list of timezone cities), you can also type a letter to skip to that section of the list. E.g. entering `L` will skip you to Lisbon, just two options away from London, to save you scrolling all the way through the alphabet.
 
 ### What raspi-config does
 
@@ -48,11 +48,11 @@ Generally speaking, `raspi-config` aims to provide the functionality to make the
 
 ## Menu Options
 
-The menu items explained
+The menu items explained.
 
 ### Expand Filesystem
 
-In the case that you installed Raspbian using NOOBS, there's nothing to be done here as the filesystem was expanded automatically during installation. However, if you wrote the image to SD card yourself then a portion of the card will be unused (anything over 3 gigabytes in fact). Choosing this option will expand your installation to fill the rest of the SD card, giving you more space to use for files. You need to reboot the Raspberry Pi to make this available. Note there is no confirmation - selecting the option begins the partition expansion immediately.
+In the case that you installed Raspbian using NOOBS, there's nothing to be done here as the filesystem was expanded automatically during installation. However, if you wrote the image to SD card yourself, then a portion of the card will be unused (anything over three gigabytes). Choosing this option will expand your installation to fill the rest of the SD card, giving you more space to use for files. You will need to reboot the Raspberry Pi to make this available. Note there is no confirmation; selecting the option begins the partition expansion immediately.
 
 ### Change User Password
 
@@ -60,7 +60,7 @@ The default user on Raspbian is `pi` with the password `raspberry`. You can chan
 
 ### Enable Boot to Desktop/Scratch
 
-You can change what happens when your Pi boots. Use this option to change your boot preference to command line, desktop or straight to Scratch.
+You can change what happens when your Pi boots. Use this option to change your boot preference to command line, desktop, or straight to Scratch.
 
 ### Internationalisation Options
 
@@ -72,7 +72,7 @@ Select a locale, e.g. `en_GB.UTF-8 UTF-8`.
 
 #### Change Timezone
 
-Select your correct timezone, starting with the region e.g. `Europe`, then selecting a city, e.g. `London`. Type a letter to skip down the list to that point in the alphabet.
+Select your local timezone, starting with the region e.g. `Europe`; then selecting a city, e.g. `London`. Type a letter to skip down the list to that point in the alphabet.
 
 #### Change Keyboard Layout
 
@@ -84,7 +84,7 @@ In order to use the Raspberry Pi camera module, you must enable it here. Select 
 
 ### Add to Rastrack
 
-Rastrack is a user contributed Google Map to which people in the community have added their location (as Pi users), which shows a heat map of where Pi users are known to be around the world. This was set up by young Pi enthusiast [Ryan Walmsley](http://ryanteck.org.uk/) in 2012. Rastrack is located at [rastrack.co.uk](http://rastrack.co.uk/).
+Rastrack is a user-contributed Google Map to which people in the community have added their location (as Pi users), which shows a heat map of where Pi users are known to be around the world. This was set up by young Pi enthusiast [Ryan Walmsley](http://ryanteck.org.uk/) in 2012. Rastrack is located at [rastrack.co.uk](http://rastrack.co.uk/).
 
 You can use this option to add your location to the map.
 
@@ -93,18 +93,18 @@ You can use this option to add your location to the map.
 It is possible to overclock your Raspberry Pi's CPU. The default is 700MHz but can be clocked up to 1000MHz. The overclock you're able to achieve will vary, and overclocking too high may result in instability. Selecting this option shows the following warning:
 
 ```
-Be aware that overclocking may reduce the lifetime of your Raspberry Pi. If overclocking at a certain level causes system instability, try a more modest overclock. Hold down shift during boot to temporarily disable overclock.
+Be aware that overclocking may reduce the lifetime of your Raspberry Pi. If overclocking at a certain level causes system instability, try a more modest overclock. Hold down `shift` during boot to temporarily disable overclock.
 ```
 
 ### Advanced Options
 
 #### Overscan
 
-Old photographs had a border round the outside to allow for handling and mounting. Old TV sets had a significant variation in the size of the picture it produced; some had cabinets that overlapped the screen. Like the photographs, the TV pictures were given a black border so that none of the picture was lost. This is called overscan. Modern TVs and monitors don't need, and the signal doesn't have, the border. If the initial text shown on the screen disappears off the edge you need to enable overscan to add back the border.
+Old photographs had a border round the outside to allow for handling and mounting. Old TV sets had a significant variation in the size of the picture they produced; some had cabinets that overlapped the screen. Like the photographs, the TV pictures were given a black border so that none of the picture was lost. This is called overscan. Modern TVs and monitors don't need the border, and the signal doesn't have allow for it. If the initial text shown on the screen disappears off the edge, you need to enable overscan to add back the border.
 
 Any changes will take effect after a reboot. You can have greater control over the settings by editing [config.txt](config-txt.md).
 
-On some displays, particularly monitors, just disabling Overscan will make the picture fill the whole screen and correct the resolution. For other displays it may be necessary to leave overscan enabled and adjust the Overscan values.
+On some displays, particularly monitors, just disabling Overscan will make the picture fill the whole screen and correct the resolution. For other displays it may be necessary to leave overscan enabled, and adjust the Overscan values.
 
 #### Hostname
 
@@ -116,7 +116,7 @@ Change the amount of memory made available to the GPU.
 
 #### SSH
 
-Enable/Disable remote command line access to your Pi using SSH.
+Enable/Disable remote command-line access to your Pi using SSH.
 
 SSH allows you to remotely access the command line of the Raspberry Pi from another computer. Disabling this ensures the SSH service does not start on boot, freeing up processing resources. Read more about using [SSH](../remote-access/ssh/README.md). Note that SSH is enabled by default. If connecting your Pi directly to a public network, you should disable SSH unless you have set up secure passwords for all users.
 
