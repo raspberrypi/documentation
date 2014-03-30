@@ -52,7 +52,7 @@ Here is an example file:
 
 The firmware and kernel as of 19. November 2012 supports CMA, which means the memory split between ARM and GPU is managed dynamically at runtime. 
 
-You can find an [http://www.raspberrypi.org/phpBB3/viewtopic.php?p=223549#p223549 example config.txt here].
+You can find an [example config.txt here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=223549#p223549).
 
 ```cma_lwm```	When GPU has less than cma_lwm (low water mark) memory available it will request some from ARM.
 
@@ -90,7 +90,7 @@ Note: As per https://github.com/raspberrypi/linux/issues/503 popcornmix states t
 ```hdmi_ignore_edid``` Enables the ignoring of EDID/display data if your display doesn't have an accurate EDID.
   hdmi_ignore_edid=0xa5000080
 
-```hdmi_edid_file``` when set to 1, will read the edid data from the edid.dat file instead of from the monitor.<ref name=hdmi_edid_file>http://www.raspberrypi.org/phpBB3/viewtopic.php?p=173430#p173430</ref>
+```hdmi_edid_file``` when set to 1, will read the EDID data from the edid.dat file instead of from the monitor.<ref name=hdmi_edid_file>http://www.raspberrypi.org/phpBB3/viewtopic.php?p=173430#p173430</ref>
  hdmi_edid_file=1
 
 ```hdmi_force_edid_audio``` Pretends all audio formats are supported by display, allowing passthrough of DTS/AC3 even when not reported as supported.
@@ -99,10 +99,10 @@ Note: As per https://github.com/raspberrypi/linux/issues/503 popcornmix states t
 ```hdmi_ignore_edid_audio``` Pretends all audio formats are unsupported by display. This means ALSA will default to analogue.
   hdmi_ignore_edid_audio=1
 
-```hdmi_force_edid_3d``` Pretends all CEA modes support 3D, even when edid doesn't indicate support for them.
+```hdmi_force_edid_3d``` Pretends all CEA modes support 3D, even when EDID doesn't indicate support for them.
   hdmi_force_edid_3d=1
 
-```avoid_edid_fuzzy_match``` Avoid fuzzy matching of modes described in edid. Picks the standard mode with matching resolution and closest framerate even if blanking is wrong.
+```avoid_edid_fuzzy_match``` Avoid fuzzy matching of modes described in EDID. Picks the standard mode with matching resolution and closest framerate even if blanking is wrong.
   avoid_edid_fuzzy_match=1
 
 ```hdmi_ignore_cec_init``` Doesn't sent initial active source message. Avoids bringing (CEC enabled) TV out of standby and channel switch when rebooting.
@@ -117,7 +117,7 @@ Note: As per https://github.com/raspberrypi/linux/issues/503 popcornmix states t
 ```hdmi_ignore_hotplug``` Pretends HDMI hotplug signal is not asserted so it appears a HDMI display is not attached.
   hdmi_ignore_hotplug=1 Use composite mode even if HDMI monitor is detected.
 
-```hdmi_pixel_encoding``` Force the pixel encoding mode. By default it will use the mode requested from edid so shouldn't need changing.
+```hdmi_pixel_encoding``` Force the pixel encoding mode. By default it will use the mode requested from EDID so shouldn't need changing.
   hdmi_pixel_encoding=0 default       (limited for CEA, full for DMT)
   hdmi_pixel_encoding=1 RGB limited   (16-235)
   hdmi_pixel_encoding=2 RGB full      ( 0-255)
@@ -130,13 +130,13 @@ Note: As per https://github.com/raspberrypi/linux/issues/503 popcornmix states t
 
 ```hdmi_group``` defines the HDMI type
 
-Not specifying the group, or setting to 0 will use the preferred group reported by the edid.
+Not specifying the group, or setting to 0 will use the preferred group reported by the EDID.
 
  hdmi_group=1   CEA
  hdmi_group=2   DMT
 
 ```hdmi_mode``` defines screen resolution in CEA or DMT format.
-(For other modes not listed here have a look at [http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=24679 this thread].)
+(For other modes not listed here have a look at [this thread](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=24679).)
 
  ```These values are valid if hdmi_group=1 (CEA)```
  hdmi_mode=1    VGA
