@@ -1,15 +1,15 @@
 #Setting up the Camera hardware
 
 
-**Warning**. Cameras are static sensitive. Earth yourself prior to handling the PCB, a sink tap/faucet or similar should suffice if you don’t have an earthing strap.
+**Warning**. Cameras are static sensitive. Earth yourself prior to handling the PCB. A sink tap/faucet or similar should suffice if you don’t have an earthing strap.
 
-The camera board attaches to the Raspberry Pi via a 15 way ribbon cable. There are only two connections to make, the ribbon cable need to be attached to the camera PCB and the Raspberry Pi itself. You need to get it the right way round or the camera will not work. On the camera PCB, the blue backing on the cable should be away from the PCB, and on the Raspberry Pi it should be towards the Ethernet connection (or where the Ethernet connector would be if you are using a model A).
+The camera board attaches to the Raspberry Pi via a 15-way ribbon cable. There are only two connections to make: the ribbon cable needs to be attached to the camera PCB, and to the Raspberry Pi itself. You need to get the cable the right way round, or the camera will not work. On the camera PCB, the blue backing on the cable should face away from the PCB, and on the Raspberry Pi it should face towards the Ethernet connection (or where the Ethernet connector would be if you are using a model A).
 
-Although the connectors on the PCB and the Pi are different, they work in a similar way. On the Raspberry Pi, pull up the tabs on each end of the connector. It should slide up easily, and be able to pivot around slightly. Fully insert the ribbon cable into the slot, ensuring it is straight, then gently press down the tabs to clip it into place. The camera PCB itself also requires you to pull the tabs away from the board, gently insert the cable, then push the tabs back. The PCB connector is a little more awkward than the one on the Pi itself. 
+Although the connectors on the PCB and the Pi are different, they work in a similar way. On the Raspberry Pi itself, pull up the tabs on each end of the connector. It should slide up easily, and be able to pivot around slightly. Fully insert the ribbon cable into the slot, ensuring it is set straight, then gently press down the tabs to clip it into place. The camera PCB connector also requires you to pull the tabs away from the board, gently insert the cable, then push the tabs back. The PCB connector can be a little more awkward than the one on the Pi itself. 
 
 #Setting up the Camera software
 
-Execute the following instructions on the command line to download and install the latest kernel,  GPU firmware and applications. You will need a internet connection for this to work correctly.
+Execute the following instructions on the command line to download and install the latest kernel, GPU firmware and applications. You will need a internet connection for this to work correctly.
 ```
 sudo apt-get update
 sudo apt-get upgrade
@@ -18,13 +18,13 @@ Now you need to enable camera support using the raspi-config program you will ha
 ```
 sudo raspi-config
 ```
-Use the cursor keys to move to the camera option and select enable. On exiting raspi-config it will ask to reboot. The enable option will ensure that on reboot the correct GPU firmware will be running (with the camera driver and tuning), and the GPU memory split is sufficient to allow the camera to acquire enough memory to run correctly. 
+Use the cursor keys to move to the camera option, and select enable. On exiting raspi-config, it will ask to reboot. The enable option will ensure that on reboot the correct GPU firmware will be running (with the camera driver and tuning), and the GPU memory split is sufficient to allow the camera to acquire enough memory to run correctly. 
 
-To test that the system is installed and working, try the following command : 
+To test that the system is installed and working, try the following command: 
 ```
 raspistill -v -o test.jpg
 ```
-The display should show a 5 second preview from the camera and then take a picture, saved to the file test.jpg, whilst display various informational messages.
+The display should show a five-second preview from the camera and then take a picture, saved to the file test.jpg, whilst displaying various informational messages.
 
 #Troubleshooting
 
