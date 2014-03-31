@@ -152,3 +152,7 @@ You'll now use a VNC *client* program on your PC/Laptop to connect to the VNC se
 - [Linux](linux.md)
 - [Mac OS](mac.md)
 - [Windows](windows.md)
+
+---
+
+*This article uses content from the eLinux wiki page [RPi VNC server](http://elinux.org/RPi_VNC_Server), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](http://creativecommons.org/licenses/by-sa/3.0/)*
