@@ -1,6 +1,6 @@
 # NOOBS
 
-**New Out Of the Box Software** - an easy Operating System install manager for the Raspberry Pi
+**New Out Of the Box Software** - an easy operating system install manager for the Raspberry Pi
 
 ## How to get NOOBS
 
@@ -18,11 +18,11 @@ Once you've downloaded the NOOBS zip file, you'll need to copy the contents to a
 
 To setup a blank SD card with NOOBS:
 
-- Format an SD card that is 4GB or greater in size as FAT (see instructions on how to do this below)
+- Format an SD card that is 4GB or greater in size as FAT (see instructions on how to do this below).
 
-- Download and extract the files from the NOOBS zip file
+- Download and extract the files from the NOOBS zip file.
 
-- Copy the extracted files onto the SD card that you just formatted so that this file is at the root directory of the SD card. Please note that in some cases it may extract the files into a folder, if this is the case then please copy across the files from inside the folder rather than the folder itself.
+- Copy the extracted files onto the SD card that you just formatted so that this file is at the root directory of the SD card. Please note that in some cases it may extract the files into a folder; if this is the case then please copy across the files from inside the folder rather than the folder itself.
 
 - On first boot the "RECOVERY" FAT partition will be automatically resized to a minimum and a list of OSes that are available to install will be displayed.
 
@@ -34,7 +34,7 @@ For Windows users, we recommend formatting your SD card using the SD Association
 
 ##### Mac OS
 
-The SD Association's Formatting Tool is also available for Mac users although the default OSX Disk Utility is also capable of formatting the entire disk (select the SD card volume and choose "Erase" with "MS-DOS" format).
+The SD Association's Formatting Tool is also available for Mac users, although the default OSX Disk Utility is also capable of formatting the entire disk (select the SD card volume and choose "Erase" with "MS-DOS" format).
 
 ##### Linux
 
@@ -60,11 +60,11 @@ Read about the different [distributions](distributions.md)
 
 ## NOOBS and NOOBS Lite
 
-NOOBS is available in two forms: offline and network install or network install only.
+NOOBS is available in two forms: offline and network install; or network install only.
 
-The full version has the images of each of the Operating Systems included, so they can be installed from the SD card while offline, whereas NOOBS Lite requires an internet connection to download the selected Operating System.
+The full version has the images of each of the operating systems included, so they can be installed from the SD card while offline, whereas NOOBS Lite requires an internet connection to download the selected operating system.
 
-Note that the Operating System images on the full version can be outdated if a new version of the OS is released, but if connected to the internet you will be shown the option of downloading the new version of the OS if there is a newer one available.
+Note that the operating system images on the full version can be outdated if a new version of the OS is released, but if connected to the internet you will be shown the option of downloading the new version of the OS if there is a newer one available.
 
 ## NOOBS Development
 
@@ -74,8 +74,8 @@ The latest NOOBS release is **v1.3.4**, released on **9th January 2014**
 
 ### NOOBS Documentation
 
-A more comprehensive documentation including more advanced configuration of NOOBS is available on [GitHub](https://github.com/raspberrypi/noobs/blob/master/README.md)
+A more comprehensive documentation including more advanced configuration of NOOBS is available on [GitHub](https://github.com/raspberrypi/noobs/blob/master/README.md).
 
 ### NOOBS source code
 
-See the NOOBS source code on [GitHub](https://github.com/raspberrypi/noobs)
+See the NOOBS source code on [GitHub](https://github.com/raspberrypi/noobs).
