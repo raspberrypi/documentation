@@ -1,6 +1,6 @@
 # Monitor Connection
 
-For regular use, you'll want to plug the Raspberry Pi in to a visual display: a monitor or a TV. 
+For regular use, you'll want to plug the Raspberry Pi in to a visual display: a monitor or a TV.
 
 ## HDMI Port
 
@@ -17,3 +17,9 @@ For monitors with VGA only, you can use an HDMI-to-VGA adapter.
 ## Composite
 
 For analogue TVs you can use a standard RCA composite video lead.
+
+For monitors with VGA only, you can use an HDMI-to-VGA adaptor.
+
+## Composite
+
+For analogue TVs, you can use a standard RCA composite video lead.

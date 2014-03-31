@@ -4,9 +4,9 @@
 
 ## How to get NOOBS
 
-### Buy a preinstalled SD card
+### Buy a pre-installed SD card
 
-The easiest way to get NOOBS is to buy an SD card with NOOBS preinstalled - available for £4 on the [swag store](http://swag.raspberrypi.org/collections/frontpage/products/noobs-8gb-sd-card).
+The easiest way to get NOOBS is to buy an SD card with NOOBS pre-installed; this is available for £4 on the [swag store](http://swag.raspberrypi.org/collections/frontpage/products/noobs-8gb-sd-card).
 
 ### Download
 
@@ -16,47 +16,41 @@ Alternatively, NOOBS is available for download on the Raspberry Pi website: [ras
 
 Once you've downloaded the NOOBS zip file, you'll need to copy the contents to a fomatted SD card on your computer.
 
-To setup a blank SD card with NOOBS:
+To set up a blank SD card with NOOBS:
 
 - Format an SD card that is 4GB or greater in size as FAT (see instructions on how to do this below).
-
 - Download and extract the files from the NOOBS zip file.
-
 - Copy the extracted files onto the SD card that you just formatted so that this file is at the root directory of the SD card. Please note that in some cases it may extract the files into a folder; if this is the case then please copy across the files from inside the folder rather than the folder itself.
+- Format an SD card that is 4GB or larger as FAT. See instructions on how to do this below.
+- Download and extract the files from the NOOBS zip file.
+- On first boot the "RECOVERY" FAT partition will be automatically resized to a minimum, and a list of OSs that are available to install will be displayed.
 
-- On first boot the "RECOVERY" FAT partition will be automatically resized to a minimum and a list of OSes that are available to install will be displayed.
-
-#### How to Format an SD card as FAT
+#### How to format an SD card as FAT
 
 ##### Windows
 
-For Windows users, we recommend formatting your SD card using the SD Association's Formatting Tool, which can be downloaded from [sdcard.org](https://www.sdcard.org/downloads/formatter_4/). You will need to set "FORMAT SIZE ADJUSTMENT" option to "ON" in the "Options" menu to ensure that the entire SD card volume is formatted - not just a single partition.
+For Windows users we recommend formatting your SD card using the SD Association's Formatting Tool, which can be downloaded from [sdcard.org](https://www.sdcard.org/downloads/formatter_4/). You will need to set "FORMAT SIZE ADJUSTMENT" option to "ON" in the "Options" menu to ensure that the entire SD card volume is formatted, and not just a single partition.
 
 ##### Mac OS
 
-The SD Association's Formatting Tool is also available for Mac users, although the default OSX Disk Utility is also capable of formatting the entire disk (select the SD card volume and choose "Erase" with "MS-DOS" format).
+The SD Association's Formatting Tool is also available for Mac users, although the default OSX Disk Utility is also capable of formatting the entire disk. To do this, select the SD card volume and choose `Erase` with `MS-DOS` format.
 
 ##### Linux
 
-For Linux users we recommend ```gparted``` (or the command line version ```parted```). Norman Dunbar has written up [instructions](http://qdosmsq.dunbar-it.co.uk/blog/2013/06/noobs-for-raspberry-pi/) for Linux users.
+For Linux users we recommend `gparted` (or the command line version `parted`). Norman Dunbar has written up [instructions](http://qdosmsq.dunbar-it.co.uk/blog/2013/06/noobs-for-raspberry-pi/) for Linux users.
 
 ## What's included in NOOBS
 
 The following Operating Systems are currently included in NOOBS:
 
 - Raspbian
-
 - OpenELEC
-
 - RISC OS
-
 - Arch Linux
-
 - RaspBMC
-
 - Pidora
 
-Read about the different [distributions](distributions.md)
+You can read more about the different [distributions](distributions.md).
 
 ## NOOBS and NOOBS Lite
 
@@ -70,11 +64,11 @@ Note that the operating system images on the full version can be outdated if a n
 
 ### Latest NOOBS release
 
-The latest NOOBS release is **v1.3.4**, released on **9th January 2014**
+The latest NOOBS release is **v1.3.4**, released on **9th January 2014**.
 
 ### NOOBS Documentation
 
-A more comprehensive documentation including more advanced configuration of NOOBS is available on [GitHub](https://github.com/raspberrypi/noobs/blob/master/README.md).
+A more comprehensive documentation, including more advanced configuration of NOOBS, is available on [GitHub](https://github.com/raspberrypi/noobs/blob/master/README.md).
 
 ### NOOBS source code
 
