@@ -140,7 +140,7 @@ Selecting this option shows the following text information:
 This tool provides a straight-forward way of doing initial configuration of the Raspberry Pi. Although it can be run at any time, some of the options may have difficulties if you have heavily customised your installation.
 ```
 
-### \<Finish\>
+### Finish
 
 Use this button when you have completed your changes. You will be asked whether you want to reboot or not. When used for the first time its best to reboot. This should restart your Pi. There will be a delay if you have chosen to resize your SD card.
 
