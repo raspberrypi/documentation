@@ -7,7 +7,7 @@ This is the official documentation for the Raspberry Pi, written by the [Raspber
 - [Setup / Quickstart](setup/README.md)
     - Getting started with your Raspberry Pi, including what you need and how to get it booted
 - [Installation](installation/README.md)
-    - Installing an Operating System on your Raspberry Pi
+    - Installing an operating system on your Raspberry Pi
 - [Usage](usage/README.md)
     - Basic examples to help you get started with the software installed by default in Raspbian
 - [Configuration](configuration/README.md)
@@ -25,7 +25,7 @@ This is the official documentation for the Raspberry Pi, written by the [Raspber
 
 ## Contributions
 
-If you have anything to fix or details to add, first [file an issue](http://github.com/raspberrypi/documentation/issues) on github to see if it is likely to be accepted, then file a pull request with your change (one PR per issue).
+If you have anything to fix or details to add, first [file an issue](http://github.com/raspberrypi/documentation/issues) on GitHub to see if it is likely to be accepted, then file a pull request with your change (one PR per issue).
 
 This is not intended to be an open wiki; we want to keep it concise and minimal but will accept fixes and suitable additions.
 
