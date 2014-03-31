@@ -22,4 +22,4 @@ rsync -avz -e ssh pi@192.168.1.10:camera/ camera/
 
 This will copy all files from the Pi's `camera` folder to your computer's new `camera` folder.
 
-In order to keep the folders in sync, run this command in [cron](../../linux/cron.md).
+In order to keep the folders in sync, run this command in [cron](../../linux/usage/cron.md).
