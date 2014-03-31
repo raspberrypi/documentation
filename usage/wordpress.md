@@ -4,7 +4,7 @@ Here we'll show you how to set up an instance of a WordPress site running on you
 
 ## Set up the web server
 
-First of all, follow the steps to [set up an Apache web server](../remote-access/web-servers/apache.md), then return here to continue with the WordPress installation
+First of all, follow the steps to [set up an Apache web server](../remote-access/web-server/apache.md), then return here to continue with the WordPress installation
 
 ## Install PHP and MySQL
 
