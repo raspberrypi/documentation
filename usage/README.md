@@ -25,7 +25,7 @@ Basic examples to help you get started with some of the software available in Ra
 - [Camera Module](camera/README.md)
     - The Raspberry Pi camera module is capable of taking full HD 1080p photo and video and can be controlled programmatically
     - Libraries are available for:
-        - [Bash](camera/raspi-commands.md) (Linux command line)
+        - [Bash](camera/raspicam/README.md) (Linux command line)
         - [Python](camera/python-picamera.md)
 - [Webcams](webcams.md)
     - Using a standard USB webcam instead of the Raspberry Pi camera module
