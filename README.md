@@ -17,7 +17,7 @@ This is the official documentation for the Raspberry Pi, written by the [Raspber
 - [Linux](linux/README.md)
     - Fundamental Linux usage for beginners and more advanced information for power users
 - [Raspbian](raspbian/README.md)
-    - Information about the recommended Operating System for Raspberry Pi
+    - Information about the recommended operating system for Raspberry Pi
 - [Hardware](hardware/README.md)
     - Technical specifications about the Raspberry Pi hardware and the camera module
 - [Troubleshooting](troubleshooting/README.md)
