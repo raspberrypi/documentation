@@ -341,7 +341,7 @@ Your HDMI monitor may support only a limited set of formats. To find out which f
 The edid.dat should also be provided when troubleshooting problems with the default HDMI mode.
 
 #Licensed codecs
-Hardware decoding of additional codecs can be enabled by [http://swag.raspberrypi.org/collections/software purchasing a license] that is locked to the CPU serial number of your Raspberry Pi.
+Hardware decoding of additional codecs can be enabled by [purchasing a licence](http://swag.raspberrypi.org/collections/software) that is locked to the CPU serial number of your Raspberry Pi.
 
 ```decode_MPG2``` Licence key to allow hardware MPEG-2 decoding.
   decode_MPG2=0x12345678
