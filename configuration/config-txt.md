@@ -13,7 +13,7 @@ You can get your current active settings with the following commands:
  vcgencmd get_config str - lists all the string config options that are set (non-null)
 ```
 
-#File format
+# File format
 
 The format is "property=value" where value is an integer. You may specify only one option per line. Comments may be added by starting a line with the '#' character.                                                                                                                                     
 
@@ -36,7 +36,7 @@ Here is an example file:
  overscan_bottom=10
 ```
 
-#Memory
+# Memory
 
 ```disable_l2cache```	 disables ARM access to GPU's L2 cache. Needs corresponding L2 disabled kernel. Default 0.
 
@@ -48,7 +48,7 @@ Here is an example file:
 
 ```disable_pvt```       Disable adjusting the refresh rate of RAM every 500ms (measuring RAM temparature).
 
-##CMA - Dynamic Memory Split
+## CMA - Dynamic Memory Split
 
 The firmware and kernel as of 19. November 2012 supports CMA, which means the memory split between ARM and GPU is managed dynamically at runtime. 
 
@@ -63,23 +63,29 @@ The following options need to be in cmdline.txt for CMA to work:
 
 Note: As per https://github.com/raspberrypi/linux/issues/503 popcornmix states that CMA is not officially supported.
 
-#Camera
+# Camera
 
 ```disable_camera_led``` turns off the red camera led when recording video or taking a still picture.
   disable_camera_led=1
 
-#Video
-##Video mode options
+# Video
+## Video mode options
 ```sdtv_mode``` defines the TV standard for composite output (default=0).
- sdtv_mode=0    Normal NTSC
- sdtv_mode=1    Japanese version of NTSC – no pedestal
- sdtv_mode=2    Normal PAL
- sdtv_mode=3    Brazilian version of PAL – 525/60 rather than 625/50, different subcarrier
+
+| sdtv_mode | result |
+| --- | --- |
+| 0 | Normal NTSC |
+| 1 | Japanese version of NTSC – no pedestal |
+| 2 | Normal PAL |
+| 3 | Brazilian version of PAL – 525/60 rather than 625/50, different subcarrier |
 
 ```sdtv_aspect``` defines the aspect ratio for composite output (default=1).
- sdtv_aspect=1  4:3
- sdtv_aspect=2  14:9
- sdtv_aspect=3  16:9
+
+| sdtv_mode | result |
+| --- | --- |
+| 1 | 4:3 |
+| 2 | 14:9 |
+| 3 | 16:9 |
 
 ```sdtv_disable_colourburst``` disables colour burst on composite output. The picture will be monochrome, but possibly sharper.
  sdtv_disable_colourburst=1  colour burst is disabled.
@@ -118,179 +124,193 @@ Note: As per https://github.com/raspberrypi/linux/issues/503 popcornmix states t
   hdmi_ignore_hotplug=1 Use composite mode even if HDMI monitor is detected.
 
 ```hdmi_pixel_encoding``` Force the pixel encoding mode. By default it will use the mode requested from EDID so shouldn't need changing.
-  hdmi_pixel_encoding=0 default       (limited for CEA, full for DMT)
-  hdmi_pixel_encoding=1 RGB limited   (16-235)
-  hdmi_pixel_encoding=2 RGB full      ( 0-255)
-  hdmi_pixel_encoding=3 YCbCr limited (16-235)
-  hdmi_pixel_encoding=4 YCbCr limited ( 0-255)
+
+| hdmi_pixel_encoding | result |
+| --- | --- |
+| 0 | RGB limited (16-235) |
+| 1 | RGB full (0-255) |
+| 2 | YCbCr limited (16-235) |
+| 3 | YCbCr full (0-255) |
 
 ```hdmi_drive``` chooses between HDMI and DVI modes
-  hdmi_drive=1 Normal DVI mode (No sound)
-  hdmi_drive=2 Normal HDMI mode (Sound will be sent if supported and enabled)
+
+| hdmi_drive | result |
+| --- | --- |
+| 1 | Normal DVI mode (No sound) |
+| 2 | Normal HDMI mode (Sound will be sent if supported and enabled) |
 
 ```hdmi_group``` defines the HDMI type
 
 Not specifying the group, or setting to 0 will use the preferred group reported by the EDID.
 
- hdmi_group=1   CEA
- hdmi_group=2   DMT
+| hdmi_group | result |
+| --- | --- |
+| 0 | Auto-detect from EDID |
+| 1 | CEA |
+| 2 |  DMT |
 
 ```hdmi_mode``` defines screen resolution in CEA or DMT format.
 (For other modes not listed here have a look at [this thread](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=24679).)
 
  ```These values are valid if hdmi_group=1 (CEA)```
- hdmi_mode=1    VGA
- hdmi_mode=2    480p  60Hz
- hdmi_mode=3    480p  60Hz  H
- hdmi_mode=4    720p  60Hz
- hdmi_mode=5    1080i 60Hz
- hdmi_mode=6    480i  60Hz
- hdmi_mode=7    480i  60Hz  H
- hdmi_mode=8    240p  60Hz
- hdmi_mode=9    240p  60Hz  H
- hdmi_mode=10   480i  60Hz  4x
- hdmi_mode=11   480i  60Hz  4x H
- hdmi_mode=12   240p  60Hz  4x
- hdmi_mode=13   240p  60Hz  4x H
- hdmi_mode=14   480p  60Hz  2x
- hdmi_mode=15   480p  60Hz  2x H
- hdmi_mode=16   1080p 60Hz
- hdmi_mode=17   576p  50Hz
- hdmi_mode=18   576p  50Hz  H
- hdmi_mode=19   720p  50Hz
- hdmi_mode=20   1080i 50Hz
- hdmi_mode=21   576i  50Hz
- hdmi_mode=22   576i  50Hz  H
- hdmi_mode=23   288p  50Hz
- hdmi_mode=24   288p  50Hz  H
- hdmi_mode=25   576i  50Hz  4x
- hdmi_mode=26   576i  50Hz  4x H
- hdmi_mode=27   288p  50Hz  4x
- hdmi_mode=28   288p  50Hz  4x H
- hdmi_mode=29   576p  50Hz  2x
- hdmi_mode=30   576p  50Hz  2x H
- hdmi_mode=31   1080p 50Hz
- hdmi_mode=32   1080p 24Hz
- hdmi_mode=33   1080p 25Hz
- hdmi_mode=34   1080p 30Hz
- hdmi_mode=35   480p  60Hz  4x
- hdmi_mode=36   480p  60Hz  4xH
- hdmi_mode=37   576p  50Hz  4x
- hdmi_mode=38   576p  50Hz  4x H
- hdmi_mode=39   1080i 50Hz  reduced blanking
- hdmi_mode=40   1080i 100Hz
- hdmi_mode=41   720p  100Hz
- hdmi_mode=42   576p  100Hz
- hdmi_mode=43   576p  100Hz H
- hdmi_mode=44   576i  100Hz
- hdmi_mode=45   576i  100Hz H
- hdmi_mode=46   1080i 120Hz
- hdmi_mode=47   720p  120Hz
- hdmi_mode=48   480p  120Hz
- hdmi_mode=49   480p  120Hz H
- hdmi_mode=50   480i  120Hz
- hdmi_mode=51   480i  120Hz H
- hdmi_mode=52   576p  200Hz
- hdmi_mode=53   576p  200Hz H
- hdmi_mode=54   576i  200Hz
- hdmi_mode=55   576i  200Hz H
- hdmi_mode=56   480p  240Hz
- hdmi_mode=57   480p  240Hz H
- hdmi_mode=58   480i  240Hz
- hdmi_mode=59   480i  240Hz H
- H means 16:9 variant (of a normally 4:3 mode).
- 2x means pixel doubled (i.e. higher clock rate, with each pixel repeated twice).
- 4x means pixel quadrupled (i.e. higher clock rate, with each pixel repeated four times).
+ 
+| hdmi_mode | resolution | frequency | notes |
+| --- | --- | --- | --- |
+| 1 | VGA (640x480) |  |  |
+| 2 | 480p | 60Hz |  |
+| 3 | 480p | 60Hz | 16:9 aspect ratio |
+| 4 | 720p | 60Hz |  |
+| 5 | 1080i | 60Hz |  |
+| 6 | 480i | 60Hz |  |
+| 7 | 480i | 60Hz | 16:9 aspect ratio |
+| 8 | 240p | 60Hz |  |
+| 9 | 240p | 60Hz | 16:9 aspect ratio |
+| 10 | 480i | 60Hz | pixel quadrupling |
+| 11 | 480i | 60Hz | pixel quadrupling, 16:9 aspect ratio |
+| 12 | 240p | 60Hz | pixel quadrupling |
+| 13 | 240p | 60Hz | pixel quadrupling, 16:9 aspect ratio |
+| 14 | 480p | 60Hz | pixel doubling |
+| 15 | 480p | 60Hz | pixel doubling, 16:9 aspect ratio |
+| 16 | 1080p | 60Hz |  |
+| 17 | 576p | 50Hz |  |
+| 18 | 576p | 50Hz | 16:9 aspect ratio |
+| 19 | 720p | 50Hz |  |
+| 20 | 1080i | 50Hz |  |
+| 21 | 576i | 50Hz |  |
+| 22 | 576i | 50Hz | 16:9 aspect ratio |
+| 23 | 288p | 50Hz |  |
+| 24 | 288p | 50Hz | 16:9 aspect ratio |
+| 25 | 576i | 50Hz | pixel quadrupling |
+| 26 | 576i | 50Hz | pixel quadrupling, 16:9 aspect ratio |
+| 27 | 288p | 50Hz | pixel quadrupling |
+| 28 | 288p | 50Hz | pixel quadrupling, 16:9 aspect ratio |
+| 29 | 576p | 50Hz | pixel doubling |
+| 30 | 576p | 50Hz | pixel doubling, 16:9 aspect ratio |
+| 31 | 1080p | 50Hz |  |
+| 32 | 1080p | 24Hz |  |
+| 33 | 1080p | 25Hz |  |
+| 34 | 1080p | 30Hz |  |
+| 35 | 480p | 60Hz | pixel quadrupling |
+| 36 | 480p | 60Hz | pixel quadrupling, 16:9 aspect ratio |
+| 37 | 576p | 50Hz | pixel quadrupling |
+| 38 | 576p | 50Hz | pixel quadrupling, 16:9 aspect ratio |
+| 39 | 1080i | 50Hz | reduced blanking |
+| 40 | 1080i | 100Hz |  |
+| 41 | 720p | 100Hz |  |
+| 42 | 576p | 100Hz |  |
+| 43 | 576p | 100Hz | 16:9 aspect ratio |
+| 44 | 576i | 100Hz |  |
+| 45 | 576i | 100Hz | 16:9 aspect ratio |
+| 46 | 1080i | 120Hz |  |
+| 47 | 720p | 120Hz |  |
+| 48 | 480p | 120Hz |  |
+| 49 | 480p | 120Hz | 16:9 aspect ratio |
+| 50 | 480i | 120Hz |  |
+| 51 | 480i | 120Hz | 16:9 aspect ratio |
+| 52 | 576p | 200Hz |  |
+| 53 | 576p | 200Hz | 16:9 aspect ratio |
+| 54 | 576o | 200Hz |  |
+| 55 | 576o | 200Hz | 16:9 aspect ratio |
+| 56 | 480p | 240Hz |  |
+| 57 | 480p | 240Hz | 16:9 aspect ratio |
+| 58 | 480i | 240Hz |  |
+| 59 | 480i | 240Hz | 16:9 aspect ratio |
+
+ In the table above the 16:9 aspect rations are a variant of a mode which usually has 4:3 aspect ratio.
+ Pixel doubling and quadrupling indicates a higher clock rate, with each pixel repeated two or four times respectively.
 
  ```These values are valid if hdmi_group=2 (DMT)```
  Note: according to http://www.raspberrypi.org/phpBB3/viewtopic.php?f=26&t=20155&p=195417&hilit=2560x1600#p195443 
  there is a pixel clock limit which means the highest supported mode is 1920x1200 @60Hz with reduced blanking.
- hdmi_mode=1    640x350   85Hz
- hdmi_mode=2    640x400   85Hz
- hdmi_mode=3    720x400   85Hz
- hdmi_mode=4    640x480   60Hz
- hdmi_mode=5    640x480   72Hz
- hdmi_mode=6    640x480   75Hz
- hdmi_mode=7    640x480   85Hz
- hdmi_mode=8    800x600   56Hz
- hdmi_mode=9    800x600   60Hz
- hdmi_mode=10   800x600   72Hz
- hdmi_mode=11   800x600   75Hz
- hdmi_mode=12   800x600   85Hz
- hdmi_mode=13   800x600   120Hz
- hdmi_mode=14   848x480   60Hz
- hdmi_mode=15   1024x768  43Hz  DO NOT USE
- hdmi_mode=16   1024x768  60Hz
- hdmi_mode=17   1024x768  70Hz
- hdmi_mode=18   1024x768  75Hz
- hdmi_mode=19   1024x768  85Hz
- hdmi_mode=20   1024x768  120Hz
- hdmi_mode=21   1152x864  75Hz
- hdmi_mode=22   1280x768        reduced blanking
- hdmi_mode=23   1280x768  60Hz
- hdmi_mode=24   1280x768  75Hz
- hdmi_mode=25   1280x768  85Hz
- hdmi_mode=26   1280x768  120Hz reduced blanking
- hdmi_mode=27   1280x800        reduced blanking
- hdmi_mode=28   1280x800  60Hz
- hdmi_mode=29   1280x800  75Hz
- hdmi_mode=30   1280x800  85Hz
- hdmi_mode=31   1280x800  120Hz reduced blanking
- hdmi_mode=32   1280x960  60Hz
- hdmi_mode=33   1280x960  85Hz
- hdmi_mode=34   1280x960  120Hz reduced blanking
- hdmi_mode=35   1280x1024 60Hz
- hdmi_mode=36   1280x1024 75Hz
- hdmi_mode=37   1280x1024 85Hz
- hdmi_mode=38   1280x1024 120Hz reduced blanking
- hdmi_mode=39   1360x768  60Hz
- hdmi_mode=40   1360x768  120Hz reduced blanking
- hdmi_mode=41   1400x1050       reduced blanking
- hdmi_mode=42   1400x1050 60Hz
- hdmi_mode=43   1400x1050 75Hz
- hdmi_mode=44   1400x1050 85Hz
- hdmi_mode=45   1400x1050 120Hz reduced blanking
- hdmi_mode=46   1440x900        reduced blanking
- hdmi_mode=47   1440x900  60Hz
- hdmi_mode=48   1440x900  75Hz
- hdmi_mode=49   1440x900  85Hz
- hdmi_mode=50   1440x900  120Hz reduced blanking
- hdmi_mode=51   1600x1200 60Hz
- hdmi_mode=52   1600x1200 65Hz
- hdmi_mode=53   1600x1200 70Hz
- hdmi_mode=54   1600x1200 75Hz
- hdmi_mode=55   1600x1200 85Hz
- hdmi_mode=56   1600x1200 120Hz reduced blanking
- hdmi_mode=57   1680x1050       reduced blanking
- hdmi_mode=58   1680x1050 60Hz
- hdmi_mode=59   1680x1050 75Hz
- hdmi_mode=60   1680x1050 85Hz
- hdmi_mode=61   1680x1050 120Hz reduced blanking
- hdmi_mode=62   1792x1344 60Hz
- hdmi_mode=63   1792x1344 75Hz
- hdmi_mode=64   1792x1344 120Hz reduced blanking
- hdmi_mode=65   1856x1392 60Hz
- hdmi_mode=66   1856x1392 75Hz
- hdmi_mode=67   1856x1392 120Hz reduced blanking
- hdmi_mode=68   1920x1200       reduced blanking
- hdmi_mode=69   1920x1200 60Hz
- hdmi_mode=70   1920x1200 75Hz
- hdmi_mode=71   1920x1200 85Hz
- hdmi_mode=72   1920x1200 120Hz reduced blanking
- hdmi_mode=73   1920x1440 60Hz
- hdmi_mode=74   1920x1440 75Hz
- hdmi_mode=75   1920x1440 120Hz reduced blanking
- hdmi_mode=76   2560x1600       reduced blanking
- hdmi_mode=77   2560x1600 60Hz
- hdmi_mode=78   2560x1600 75Hz
- hdmi_mode=79   2560x1600 85Hz
- hdmi_mode=80   2560x1600 120Hz reduced blanking
- hdmi_mode=81   1366x768  60Hz
- hdmi_mode=82   1080p     60Hz
- hdmi_mode=83   1600x900        reduced blanking
- hdmi_mode=84   2048x1152       reduced blanking
- hdmi_mode=85   720p      60Hz
- hdmi_mode=86   1366x768        reduced blanking
+
+| hdmi_mode | resolution | frequency | notes |
+| --- | --- | --- | --- |
+| 1 | 640x350 | 85Hz |  |
+| 2 | 640x400 | 85Hz |  |
+| 3 | 720x400 | 85Hz |  |
+| 4 | 640x480 | 60Hz |  |
+| 5 | 640x480 | 72Hz |  |
+| 6 | 640x480 | 75Hz |  |
+| 7 | 640x480 | 85Hz |  |
+| 8 | 800x600 | 56Hz |  |
+| 9 | 800x600 | 60Hz |  |
+| 10 | 800x600 | 72Hz |  |
+| 11 | 800x600 | 75Hz |  |
+| 12 | 800x600 | 85Hz |  |
+| 13 | 800x600 | 120Hz |  |
+| 14 | 848x480 | 60Hz |  |
+| 15 | 1024x768 | 43Hz | incompatible with the Raspberry Pi |
+| 16 | 1024x768 | 60Hz |  |
+| 17 | 1024x768 | 70Hz |  |
+| 18 | 1024x768 | 75Hz |  |
+| 19 | 1024x768 | 85Hz |  |
+| 20 | 1024x768 | 120Hz |  |
+| 21 | 1152x864 | 75Hz |  |
+| 22 | 1280x768 |  | reduced blanking |
+| 23 | 1280x768 | 60Hz |  |
+| 24 | 1280x768 | 75Hz |  |
+| 25 | 1280x768 | 85Hz |  |
+| 26 | 1280x768 | 120Hz | reduced blanking |
+| 27 | 1280x800 |  | reduced blanking |
+| 28 | 1280x800 | 60Hz |  |
+| 29 | 1280x800 | 75Hz |  |
+| 30 | 1280x800 | 85Hz |  |
+| 31 | 1280x800 | 120Hz | reduced blanking |
+| 32 | 1280x960 | 60Hz |  |
+| 33 | 1280x960 | 85Hz |  |
+| 34 | 1280x960 | 120Hz | reduced blanking |
+| 35 | 1280x1024 | 60Hz |  |
+| 36 | 1280x1024 | 75Hz |  |
+| 37 | 1280x1024 | 85Hz |  |
+| 38 | 1280x1024 | 120Hz | reduced blanking |
+| 39 | 1360x768 | 60Hz |  |
+| 40 | 1360x768 | 120Hz | reduced blanking |
+| 41 | 1400x1050 |  | reduced blanking |
+| 42 | 1400x1050 | 60Hz |  |
+| 43 | 1400x1050 | 75Hz |  |
+| 44 | 1400x1050 | 85Hz |  |
+| 45 | 1400x1050 | 120Hz | reduced blanking |
+| 46 | 1440x900 |  | reduced blanking |
+| 47 | 1440x900 | 60Hz |  |
+| 48 | 1440x900 | 75Hz |  |
+| 49 | 1440x900 | 85Hz |  |
+| 50 | 1440x900 | 120Hz | reduced blanking |
+| 51 | 1600x1200 | 60Hz |  |
+| 52 | 1600x1200 | 65Hz |  |
+| 53 | 1600x1200 | 70Hz |  |
+| 54 | 1600x1200 | 75Hz |  |
+| 55 | 1600x1200 | 85Hz |  |
+| 56 | 1600x1200 | 120Hz | reduced blanking |
+| 57 | 1680x1050 |  | reduced blanking |
+| 58 | 1680x1050 | 60Hz |  |
+| 59 | 1680x1050 | 75Hz |  |
+| 60 | 1680x1050 | 85Hz |  |
+| 61 | 1680x1050 | 120Hz | reduced blanking |
+| 62 | 1792x1344 | 60Hz |  |
+| 63 | 1792x1344 | 75Hz |  |
+| 64 | 1792x1344 | 120Hz | reduced blanking |
+| 65 | 1856x1392 | 60Hz |  |
+| 66 | 1856x1392 | 75Hz |  |
+| 67 | 1856x1392 | 120Hz | reduced blanking |
+| 68 | 1920x1200 |  | reduced blanking |
+| 69 | 1920x1200 | 60Hz |  |
+| 70 | 1920x1200 | 75Hz |  |
+| 71 | 1920x1200 | 85Hz |  |
+| 72 | 1920x1200 | 120Hz | reduced blanking |
+| 73 | 1920x1440 | 60Hz |  |
+| 74 | 1920x1440 | 75Hz |  |
+| 75 | 1920x1440 | 120Hz | reduced blanking |
+| 76 | 2560x1600 |  | reduced blanking |
+| 77 | 2560x1600 | 60Hz |  |
+| 78 | 2560x1600 | 75Hz |  |
+| 79 | 2560x1600 | 85Hz |  |
+| 80 | 2560x1600 | 120Hz | reduced blanking |
+| 81 | 1366x768 | 60Hz |  |
+| 82 | 1920x1080 | 60Hz | 1080p |
+| 83 | 1600x900 |  | reduced blanking |
+| 84 | 2048x1152 |  | reduced blanking |
+| 85 | 1280x720 | 60Hz | 720p |
+| 86 | 1366x768 |  | reduced blanking |
 
 ```overscan_left```	 number of pixels to skip on left.
 
