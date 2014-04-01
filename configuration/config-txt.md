@@ -151,7 +151,7 @@ This allows you to choose between HDMI and DVI output modes.
 | 2 | Normal HDMI mode (Sound will be sent if supported and enabled) |
 
 ##### config_hdmi_boost
-Configures the signal strength of the HDMI interface. Default is 0. Try 4 if you have interference issues with hdmi. 7 is the maximum.
+Configures the signal strength of the HDMI interface. Default is 0. Try 4 if you have interference issues with HDMI. 7 is the maximum.
 
 ##### hdmi_group
 This defines the HDMI output group to be either [CEA](http://en.wikipedia.org/wiki/Consumer_Electronics_Association) (Consumer Electronics Association - the standard typically used by TVs) or DMT (Display Monitor Timings - the standard typically used by monitors). This setting should be used in conjunction with `hdmi_mode`.
@@ -346,7 +346,7 @@ Setting this to 1 pretends HDMI hotplug signal is asserted so it appears a HDMI 
 Setting this to 1 pretends HDMI hotplug signal is not asserted so it appears a HDMI display is not attached, i.e. composite output mode will be used even if a HDMI monitor is detected.
 
 ##### disable_overscan
-Set to 1 to disable overscan.
+Set to 1 to disable [overscan](raspi-config.md#overscan).
 
 ##### overscan_left
 Number of pixels to skip on left edge of the screen. Increase this value if the text flows off the left edge of the screen, or decrease it if there's a black border between the left edge of the screen and the text.
@@ -485,13 +485,13 @@ Overclock and overvoltage will be disabled at runtime when the SoC reaches 85°C
 | over_voltage_sdram_i | SDRAM I/O voltage adjust. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. Default 0 (1.2V). |
 | over_voltage_sdram_p | SDRAM phy voltage adjust. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. Default 0 (1.2V). |
 | force_turbo | Disables dynamic cpufreq driver and minimum settings below. Enables h264/v3d/isp overclock options. Default 0. May set warranty bit. |
-| initial_turbo | Enables turbo mode from boot for the given value in seconds (up to 60) or until cpufreq sets a frequency. Can help with SD card corruption if overclocked. Default 0 [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=425#p180099) |
+| initial_turbo | Enables turbo mode from boot for the given value in seconds (up to 60) or until cpufreq sets a frequency [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=425#p180099). Can help with SD card corruption if overclocked. Default 0. |
 | arm_freq_min | Minimum value of arm_freq used for dynamic clocking. Default 700. |
 | core_freq_min | Minimum value of core_freq used for dynamic clocking. Default 250. |
 | sdram_freq_min | Minimum value of sdram_freq used for dynamic clocking. Default 400. |
 | over_voltage_min | Minimum value of over_voltage used for dynamic clocking. Default 0. |
 | temp_limit | Overheat protection. Sets clocks and voltages to default when the SoC reaches this Celsius value. Setting this higher than default voids your warranty. Default 85. |
-| current_limit_override | Disables SMPS current limit protection when set to "0x5A000020". Can help if you are currently hitting a reboot failure when overclocking too high. May set warranty bit. [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=325#p170793) |
+| current_limit_override | Disables SMPS current limit protection when set to "0x5A000020". Can help if you are currently hitting a reboot failure when overclocking too high [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=325#p170793). May set warranty bit. |
 
 ##### force_turbo
 `force_turbo=0`
@@ -527,7 +527,7 @@ To view the Pi's temperature, type: `cat /sys/class/thermal/thermal_zone0/temp` 
 
 To view the Pi's current frequency, type: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq` (divide the result by 1000 to get the value in MHz).
 
-To monitor the Pi's PSU voltage, you'll need a multimeter to measure between the TP1 and TP" power supply test points, more info [here](../troubleshooting/power.md).
+To monitor the Pi's PSU voltage, you'll need a multimeter to measure between the TP1 and TP2 power supply test points, more information [here](../troubleshooting/power.md).
 
 It's generally a good idea to keep the core temp below 70 degrees, and the voltage above 4.8V. (Note that some, not necessarily cheap, USB power supplies fall as low as 4.2V; this is because they are usually designed to charge a 3.7V LiPo battery, rather than to supply a solid 5V to a computer). If your overclocked Raspberry Pi is getting hot, a heatsink can be helpful, especially if the Pi is to be run inside a case. A suitable heatsink is the self-adhesive BGA (ball-grid-array) 14x14x10 mm heatsink, part 674-4756 from RS Components.
 
