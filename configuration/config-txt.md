@@ -1,28 +1,21 @@
 # config.txt
 
-As the raspberry PI doesn't have a conventional BIOS, the various system configuration parameters that would normally be kept and set using a BIOS are stored as a text file named "config.txt".
+As it's an embedded platform, the Raspberry Pi doesn't have a BIOS like you'd find on a conventional PC. The various system configuration parameters that would traditionally be edited and stored using a BIOS are stored in an optional text file named `config.txt`. This is read by the GPU before the ARM (and Linux) is initialised, so it must be located on the first (boot) partition of your SD card (alongside `bootcode.bin` and `start.elf`). This file is normally accessible as `/boot/config.txt` from Linux (needs to be edited as [root](../linux/usage/root.md)); but from Windows (or OS X) it is seen as a file in the only accessible part of the card. If you need to apply some of the config settings below but you don't have a `config.txt` on your boot partition yet, then simply create it as a new text file.
 
-The Raspberry Pi config.txt file is read by the GPU before the ARM core is initialised. 
+Any changes will only take effect after you've rebooted your Raspberry Pi. After Linux has booted you can get the current active settings with the following commands:
 
-This file is an optional file on the boot partition.  It is normally accessible as /boot/config.txt from Linux, but from Windows (or OS X) it is seen as a file in the accessible part of the card.
+`vcgencmd get_config <config>` - lists a specific config value. E.g. `vcgencmd get_config arm_freq`
 
-You can get your current active settings with the following commands:
-```
- vcgencmd get_config <config> - lists a specific config value. E.g. vcgencmd get_config arm_freq
- vcgencmd get_config int - lists all the integer config options that are set (non-zero)
- vcgencmd get_config str - lists all the string config options that are set (non-null)
-```
+`vcgencmd get_config int` - lists all the integer config options that are set (non-zero)
+
+`vcgencmd get_config str` - lists all the string config options that are set (non-null)
 
 # File format
 
-The format is "property=value" where value is an integer. You may specify only one option per line. Comments may be added by starting a line with the '#' character.                                                                                                                                     
-
-Note: In the newer Raspberry Pi models there is # before every line. If you want changes to have an effect then 'uncomment', (i.e. remove the #).
+As `config.txt` is read by the early-stage boot firmware it has a very simple file format. The format is a single `property=value` statement on each line, where value is either an integer (i.e. a number) or a string. Comments may be added (or existing config values may be commented out, which disables them) by starting a line with the `#` character.
 
 Here is an example file:
 ```
- # Set stdv mode to PAL (as used in Europe)
- sdtv_mode=2
  # Force the monitor to HDMI mode so that sound will be sent over HDMI cable
  hdmi_drive=2
  # Set monitor mode to DMT
@@ -38,15 +31,15 @@ Here is an example file:
 
 # Memory
 
-```disable_l2cache```	 disables ARM access to GPU's L2 cache. Needs corresponding L2 disabled kernel. Default 0.
+```gpu_mem``` GPU memory in megabytes. Sets the memory split between the ARM (CPU) and GPU. ARM gets the remaining memory. Min 16. Default 64.
 
-```gpu_mem```	 GPU memory in megabyte. Sets the memory split between the ARM and GPU. ARM gets the remaining memory. Min 16. Default 64.
+```gpu_mem_256```	GPU memory in megabytes for the 256MB Raspberry Pi. Ignored by the 512MB RP. Overrides gpu_mem. Max 192. Default not set.
 
-```gpu_mem_256```	GPU memory in megabyte for the 256MB Raspberry Pi. Ignored by the 512MB RP. Overrides gpu_mem. Max 192. Default not set.
+```gpu_mem_512```	GPU memory in megabytes for the 512MB Raspberry Pi. Ignored by the 256MB RP. Overrides gpu_mem. Max 448. Default not set.
 
-```gpu_mem_512```	GPU memory in megabyte for the 512MB Raspberry Pi. Ignored by the 256MB RP. Overrides gpu_mem. Max 448. Default not set.
+```disable_l2cache``` disables ARM access to GPU's L2 cache. Needs corresponding L2 disabled kernel. Default 0.
 
-```disable_pvt```       Disable adjusting the refresh rate of RAM every 500ms (measuring RAM temparature).
+```disable_pvt``` Disable adjusting the refresh rate of RAM every 500ms (measuring RAM temparature).
 
 ## CMA - Dynamic Memory Split
 
@@ -58,8 +51,7 @@ You can find an [example config.txt here](http://www.raspberrypi.org/phpBB3/view
 
 ```cma_hwm```	When GPU has more than cma_hwm (high water mark) memory available it will release some to ARM.
 
-The following options need to be in cmdline.txt for CMA to work:
-  coherent_pool=6M smsc95xx.turbo_mode=N
+The following options need to be in cmdline.txt for CMA to work: `coherent_pool=6M smsc95xx.turbo_mode=N`
 
 Note: As per https://github.com/raspberrypi/linux/issues/503 popcornmix states that CMA is not officially supported.
 
@@ -147,7 +139,7 @@ Not specifying the group, or setting to 0 will use the preferred group reported 
 | --- | --- |
 | 0 | Auto-detect from EDID |
 | 1 | CEA |
-| 2 |  DMT |
+| 2 | DMT |
 
 ```hdmi_mode``` defines screen resolution in CEA or DMT format.
 (For other modes not listed here have a look at [this thread](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=24679).)
@@ -324,7 +316,7 @@ Not specifying the group, or setting to 0 will use the preferred group reported 
 
 ```framebuffer_height```	 console framebuffer height in pixels. Default is display height minus overscan.
 
-```framebuffer_depth```	 console framebuffer depth in bits per pixel. Default is 16.  8bit is valid, but default RGB palette makes an unreadable screen. 24bit looks better but has corruption issues as of 20120615. 32bit has no corruption issues but needs framebuffer_ignore_alpha=1 and shows the wrong colors as of 20120615.
+```framebuffer_depth```	 console framebuffer depth in bits per pixel. Default is 16. 8bit is valid, but default RGB palette makes an unreadable screen. 24bit looks better but has corruption issues as of 20120615. 32bit has no corruption issues but needs framebuffer_ignore_alpha=1 and shows the wrong colors as of 20120615.
 
 ```framebuffer_ignore_alpha``` set to 1 to disable alpha channel. Helps with 32bit.
 
@@ -335,12 +327,12 @@ Not specifying the group, or setting to 0 will use the preferred group reported 
 ```config_hdmi_boost```		configure the signal strength of the HDMI interface. Default is 0. Try 4 if you have interference issues with hdmi. 7 is the maximum.
 
 ```display_rotate``` rotates the display clockwise on the screen (default=0) or flips the display.
- display_rotate=0        Normal
- display_rotate=1        90 degrees
- display_rotate=2        180 degrees
- display_rotate=3        270 degrees
- display_rotate=0x10000  horizontal flip
- display_rotate=0x20000  vertical flip
+ display_rotate=0 Normal
+ display_rotate=1 90 degrees
+ display_rotate=2 180 degrees
+ display_rotate=3 270 degrees
+ display_rotate=0x10000 horizontal flip
+ display_rotate=0x20000 vertical flip
 
 Note: the 90 and 270 degrees rotation options require additional memory on GPU, so won't work with the 16M GPU split. Probably the reason for:
 * Crashes my RPI before Linux boots if set to "1" -- REW 20120913.
@@ -375,42 +367,42 @@ Licence setup for SD-card sharing between multiple Pis. There is a maximum of ei
 #Boot
 ```disable_commandline_tags``` stop start.elf from filling in ATAGS (memory from 0x100) before launching kernel.
 
-```cmdline```                 (string) command line parameters. Can be used instead of cmdline.txt file.
+```cmdline``` (string) command line parameters. Can be used instead of cmdline.txt file.
 
-```kernel```                  (string) alternative name to use when loading kernel. Default "kernel.img".
+```kernel``` (string) alternative name to use when loading kernel. Default "kernel.img".
 
-```kernel_address```          address to load kernel.img file. 
+```kernel_address``` address to load kernel.img file. 
 
-```kernel_old```              (bool) if 1, load kernel at 0x0.
+```kernel_old``` (bool) if 1, load kernel at 0x0.
 
-```ramfsfile```               (string) ramfs file to load.
+```ramfsfile``` (string) ramfs file to load.
 
-```ramfsaddr```               address to load ramfs file.
+```ramfsaddr``` address to load ramfs file.
 
-```initramfs```               (string address) ramfs file and adress to load it at (it's like ramfsfile+ramfsaddr in one option). NOTE: this option uses different syntax than all other options - you should not use "=" character here. Example:
+```initramfs``` (string address) ramfs file and adress to load it at (it's like ramfsfile+ramfsaddr in one option). NOTE: this option uses different syntax than all other options - you should not use "=" character here. Example:
  initramfs initramf.gz 0x00800000
 
-```device_tree_address```     address to load device_tree.
+```device_tree_address``` address to load device_tree.
 
-```init_uart_baud```          initial uart baud rate. Default 115200.
+```init_uart_baud``` initial uart baud rate. Default 115200.
 
-```init_uart_clock```         initial uart clock. Default 3000000 (3Mhz).
+```init_uart_clock``` initial uart clock. Default 3000000 (3Mhz).
 
-```init_emmc_clock```         initial emmc clock. Default 100000000 (100MHz).
+```init_emmc_clock``` initial emmc clock. Default 100000000 (100MHz).
 
-```boot_delay```              wait for given number of seconds in start.elf before loading kernel. delay = 1000 * boot_delay + boot_delay_ms. Default 1.
+```boot_delay``` wait for given number of seconds in start.elf before loading kernel. delay = 1000 * boot_delay + boot_delay_ms. Default 1.
 
-```boot_delay_ms```           wait for given number of milliseconds in start.elf before loading kernel. Default 0.
+```boot_delay_ms``` wait for given number of milliseconds in start.elf before loading kernel. Default 0.
 
-```avoid_safe_mode```         if set to 1, [[RPI_safe_mode|safe_mode]] boot won't be enabled. Default 0.
+```avoid_safe_mode``` if set to 1, [[RPI_safe_mode|safe_mode]] boot won't be enabled. Default 0.
 
-```disable_splash```          if set to 1, avoids the rainbow splash screen on boot.
+```disable_splash``` if set to 1, avoids the rainbow splash screen on boot.
 
 #Overclocking
 ```NOTE:``` Setting parameters other than that available by 'raspi-config' will set a permanent bit within the SOC, making it possible to detect that you Pi has been overclocked. This was originally set to detect a void warranty if the device had been overclocked. Since September 19th 2012 you can overclock your Pi without affecting your warranty<ref>[http://www.raspberrypi.org/archives/2008 Introducing turbo mode: up to 50% more performance for free]</ref>.
 
 The latest kernel has a [http://www.pantz.org/software/cpufreq/usingcpufreqonlinux.html cpufreq] kernel driver with the "ondemand" governor enabled by default. It has no effect if you have no overclock settings.
-But when you do, the ARM frequency will vary with processor load.  Non-default values are only used when needed according to the governor. You can adjust the minimum values with the *_min config options or disable dynamic clocking with force_turbo=1. <ref name=cpufreq>http://www.raspberrypi.org/phpBB3/viewtopic.php?p=169726#p169726</ref>
+But when you do, the ARM frequency will vary with processor load. Non-default values are only used when needed according to the governor. You can adjust the minimum values with the *_min config options or disable dynamic clocking with force_turbo=1. <ref name=cpufreq>http://www.raspberrypi.org/phpBB3/viewtopic.php?p=169726#p169726</ref>
 
 Overclock and overvoltage will be disabled at runtime when the SoC reaches 85°C to cool it down. You should not hit the limit, even with maximum settings at 25°C ambient temperature. <ref name=freq_overheat>http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=11579#p169872</ref>
 
@@ -530,7 +522,7 @@ There are [http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&p=159188&
 
 ##Monitoring Temperature and Voltage 
 
-To monitor the Pi's temperature, look at:  <code>/sys/class/thermal/thermal_zone0/temp</code>.<br>
+To monitor the Pi's temperature, look at: <code>/sys/class/thermal/thermal_zone0/temp</code>.<br>
 To monitor the Pi's current frequency, look at: <code>/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq</code>.<br>
 To monitor the Pi's PSU voltage, you'll need a multimeter, to measure across the power supply test points, or the expansion header.
 
@@ -554,7 +546,7 @@ If the system ''does'' crash, then hold down the ''shift'' key during boot, whic
  #Read the entire SD card 10x. Tests RAM and I/O
  for i in `seq 1 10`; do echo reading: $i; sudo dd if=/dev/mmcblk0 of=/dev/null bs=4M; done
  
- #Writes 512 MB test file,  10x.
+ #Writes 512 MB test file, 10x.
  for i in `seq 1 10`; do echo writing: $i; dd if=/dev/zero of=deleteme.dat bs=1M count=512; sync; done
  
  #Clean up
