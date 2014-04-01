@@ -2,37 +2,31 @@
 
 Here are some example programs to demonstrate the Pi's capabilities.
 
-In order to run these programs you need to be at the command line. Your Pi may boot to the command line (requiring you to enter `startx` to get to the Desktop) - if so, go straight ahead. Otherwise, use the start button to logout of the Desktop.
+In order to run these programs you need to be at the command line. Your Pi may boot to the command line (requiring you to enter `startx` to get to the desktop); if so, go straight ahead. Otherwise, use the start button to log out of the desktop.
 
 ```
 pi@raspberrypi ~ $
 ```
 
-This (above) is the command prompt, try not to be afraid of it. A CLI (command line interface) is actually a very quick and efficient way to use a computer.
+This (above) is the command prompt. It looks difficult to use, but try not to be afraid of it! A CLI or command line interface is actually a very quick and efficient way to use a computer.
 
-Firstly navigate to the `hello_pi` folder where all the demos are stored. Enter the command below to do this.
+To start, navigate to the `hello_pi` folder where all the demos are stored. Enter the command below to do this. **TIP**: You can use the `TAB` key for auto-complete as you enter commands.
 
-TIP: You can use the TAB key to auto-complete commands to save typing them in full.
+`cd /opt/vc/src/hello_pi`
 
-```
-cd /opt/vc/src/hello_pi
-```
+The command prompt should now look like the text below. The blue part shows where you are in the file system of the Pi.
 
-The command prompt should now look like this, the blue part shows where you are in the file system of the Pi.
+`pi@raspberrypi /opt/vc/src/hello_pi $ _`
 
-```
-pi@raspberrypi /opt/vc/src/hello_pi $
-```
+If you enter `ls` and press Enter, you’ll see a list of folders; there is one for each demo. Before you can run them, though, they must be compiled. Don’t worry if you don’t understand what this is or why you need to do it; just follow the instructions for now, and we'll learn more about it later on.
 
-If you enter `ls` and press enter you'll see a list of folders. One for each demo. Before you can run them though they must be compiled. Don't worry if you don't understand why you need to do this, just take it on faith for now.
+There is a small shell script supplied in the `hello_pi` folder called rebuild.sh which will do the compiling for you. Enter the following command to run it; ignore the gobbledygook for now!
 
-There is a small shell script supplied in the `hello_pi` folder called `rebuild.sh` which will do the compile for you, enter the following command to run it. Ignore the Gobbledygook for now!
+`./rebuild.sh`
 
-```
-./rebuild.sh
-```
+A lot of text will scroll up the screen now, but for this exercise you can ignore it. It is just the output of the compiler as it works through the demo code. Wait for the command prompt to return before you continue.
 
-A lot of text will scroll up the screen now, you can ignore it. It is just the output of the compiler as it works through the demo code. Wait for the command prompt to return before you continue.
+Now we’re finally ready to run some demos!
 
 Demo programs:
 
