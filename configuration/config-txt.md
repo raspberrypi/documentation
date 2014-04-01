@@ -568,7 +568,6 @@ If the system ''does'' crash, then hold down the ''shift'' key during boot, whic
  
  echo "Not crashed yet, probably stable."
 
-____
+---
 
-Thanks to eLinux.org
-
+*This article uses content from the eLinux wiki page [RPiconfig](http://elinux.org/RPiconfig), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](http://creativecommons.org/licenses/by-sa/3.0/)*
