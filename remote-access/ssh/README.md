@@ -4,7 +4,7 @@ You can remotely gain access to the command line of a Raspberry Pi from another 
 
 Note you only have access to the command line, not the full desktop environment. For full remote desktop see [VNC](../vnc/README.md).
 
-Firstly, you must enable the SSH Server on your Raspberry Pi. This is done using [raspi-config](../../configuration/raspi-config.md):
+You can enable or disable the SSH Server on your Raspberry Pi (it is enabled by default). This is done using [raspi-config](../../configuration/raspi-config.md):
 
 Enter `sudo raspi-config` in the Terminal, then navigate to `ssh`, hit `Enter` and select `Enable or disable ssh server`.
 
