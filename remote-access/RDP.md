@@ -1,24 +1,22 @@
-RDP (Windows Remote desktop protocol):
+### RDP (Windows Remote desktop protocol):
 
-One easy way to remotely access your pi is to used the well established Windows Remode Desktop Protocol (RDP)
+One easy way to remotely access your pi is to used the well established Windows Remote Desktop Protocol (RDP)
 
-STEP1) on pi (install xrdp):
+**STEP1) on pi (install xrdp):**
 
-sudo ap-get install xrdp
+* sudo ap-get install xrdp
 
 
-STEP2) from host computer:
+**STEP2) from host computer:**
 
-a) From a Window PC:
-menu start -> accessories -> Remote Desktop Vonnection
+* From a Window PC:
+<br>menu start -> accessories -> Remote Desktop Vonnection
 (enter the ip adress of your pi)
 
-b) From an Ipad:
-install from the app store "Microsoft Remote Desktop"
-https://itunes.apple.com/ca/app/microsoft-remote-desktop/id715768417?mt=12
+* From an Ipad:
+<br>install from the app store "Microsoft Remote Desktop":
+[RDP_on_app_store](https://itunes.apple.com/ca/app/microsoft-remote-desktop/id715768417?mt=12)
 
-c) From an Android device:
-
-install from google play "Microsoft Remote Desktop"
-
-http://play.google.com/store/apps/details?id=com.microsoft.rdc.android
+* From an Android device:
+<br>install from google play "Microsoft Remote Desktop":
+[RDP_on_google_play](http://play.google.com/store/apps/details?id=com.microsoft.rdc.android)
