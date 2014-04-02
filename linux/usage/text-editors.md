@@ -34,13 +34,13 @@ GNU Nano is at the easy-to-use end of command line editors. It's installed by de
 
 Vi is a very old (c. 1976) command line editor, which you will find is available on most UNIX systems and is preinstalled on Raspbian. It is succeeded by Vim (Vi Improved), which requires installation.
 
-Unlike most editors, Vi and Vim have a number of different modes. When you open Vim you are in command mode, which means you have to switch to Insert mode to edit the file. To do this, Press the `i` key on the keyboard, then type away. To save the file you must be in command mode, so hit the Escape key to return and the command to save a file is `:w` (then hit Enter).
+Unlike most editors, Vi and Vim have a number of different modes. When you open Vi with `vi somefile.txt`, you start in command mode which does not (directly) permit entry of text. Press `i` to switch to insert mode in order to edit the file, and type away. To save the file you must return to command mode, so hit the `Escape` key and enter `:w` (followed by `Enter`) which is the command to write the file to disk.
 
-To search for the word 'raspberry' in a file, go to command mode and type `/raspberry` and then hit `n` and `N` to flick forward/backward through the results.
+To search for the word 'raspberry' in a file, make sure you're in command mode (press `Escape`), then type `/raspberry` followed by `n` and `N` to flick forward/backward through the results.
 
 To save and exit, enter the command `:wq`. To exit without saving, enter the command `:q!`.
 
-Depending on your keyboard configuration you may find your cursor keys don't work. In this case, you can use the H-J-K-L keys to navigate the file (Left, Down, Up, Right) in command mode.
+Depending on your keyboard configuration you may find your cursor keys don't work. In this case, you can use the H-J-K-L keys to navigate the file (which move left, down, up, and right respectively) in command mode.
 
 ### Vim
 
@@ -50,13 +50,13 @@ Vim is an extension of Vi and works in much the same way, with a number of impro
 sudo apt-get install vim
 ```
 
-Vim also has a graphical version which opens in a window and allows interaction with the mouse. This version is installable separately:
+You can edit a file in vim with `vim somefile.txt`. Vim also has a graphical version which opens in a window and allows interaction with the mouse. This version is installable separately:
 
 ```
 sudo apt-get install vim-gnome
 ```
 
-You can save configuration in a `.vimrc` file in your user's home directory.
+To use the graphical version of vim, use `gvim somefile.txt`. You can save configuration in a `.vimrc` file in your user's home directory. To learn more about editing in Vi and Vim, you can run `vimtutor` and follow the tutorial.
 
 ### Emacs
 
@@ -66,4 +66,4 @@ GNU Emacs is the GNU flavour of powerful command line editors. An extensible, cu
 sudo apt-get install emacs
 ```
 
-Use keyboard combination commands such as `Ctrl + x Ctrl + s` to save and `Ctrl + X Ctrl + c` to close.
+Use keyboard combination commands such as `Ctrl + X Ctrl + S` to save and `Ctrl + X Ctrl + S` to close.
