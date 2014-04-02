@@ -66,4 +66,4 @@ GNU Emacs is the GNU flavour of powerful command line editors. An extensible, cu
 sudo apt-get install emacs
 ```
 
-Use keyboard combination commands such as `Ctrl + X Ctrl + S` to save and `Ctrl + X Ctrl + S` to close.
+Use keyboard combination commands such as `Ctrl + X Ctrl + S` to save and `Ctrl + X Ctrl + C` to close.
