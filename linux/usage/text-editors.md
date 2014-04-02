@@ -40,7 +40,7 @@ To search for the word 'raspberry' in a file, go to command mode and type `/rasp
 
 To save and exit, enter the command `:wq`. To exit without saving, enter the command `:q!`.
 
-Vi requires you to use the H-J-K-L keys to navigate the file (Left, Down, Up, Right).
+Depending on your keyboard configuration you may find your cursor keys don't work. In this case you case use the H-J-K-L keys to navigate the file (Left, Down, Up, Right) in command mode.
 
 ### Vim
 
@@ -53,12 +53,10 @@ sudo apt-get install vim
 One of the notable differences between Vim and Vi is that you can use the arrow keys to navigate the file. Vim also has a graphical version which opens in a window and allows interaction with the mouse. This version is installable separately:
 
 ```
-sudo apt-get install gvim
+sudo apt-get install vim-gnome
 ```
 
 You can save configuration in a `.vimrc` file in your user's home directory.
-
-If Vim is not installed, typing `vim` in the command line opens Vi.
 
 ### Emacs
 
