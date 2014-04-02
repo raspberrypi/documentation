@@ -2,9 +2,9 @@
 
 In your home folder, you will find a hidden file called `.bashrc` which contains some user configuration. You can edit this file to suit your needs.
 
-Some useful adaptions are provided for you, some of which are commented out by default.
+Some useful adaptions are provided for you; some of these are commented out by default.
 
-For example some `ls` aliases:
+For example, some `ls` aliases:
 
 ```
 alias ls='ls --color=auto'
@@ -15,9 +15,9 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 ```
-Aliases like these are provided to help users of other systems like Windows (`dir` is the `ls` of DOS/Windows). Some are to add colour to the output of commands like `ls` and `grep` by default.
+Aliases like these are provided to help users of other systems like Microsoft Windows (`dir` is the `ls` of DOS/Windows). Others are to add colour to the output of commands like `ls` and `grep` by default.
 
-More variations of `ls` are provided:
+More variations of `ls` are also provided:
 
 ```
 # some more ls aliases
@@ -26,7 +26,7 @@ More variations of `ls` are provided:
 #alias l='ls -CF'
 ```
 
-Ubuntu users may be familar with these as they are provided by default in Ubuntu. Uncomment these lines to have access to these aliases in future.
+Ubuntu users may be familar with these as they are provided by default on that distribution. Uncomment these lines to have access to these aliases in future.
 
 The lines starting with a `#` are commented out. To enable them, remove the `#` and they will be active next time you boot your Pi.
 
@@ -46,4 +46,4 @@ Then you just create the file `.bash_aliases` and add more aliases like so:
 alias gs='git status'
 ```
 
-You can add other things directly to this file or you can add things to another file, and include the file like the `.bash_aliases` example above.
+You can add other things directly to this file or to another, and include the file like the `.bash_aliases` example above.
