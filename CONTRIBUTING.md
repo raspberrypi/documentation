@@ -15,6 +15,6 @@ The licence must remain in all derivatives of this work.
 
 ![Creative Commons Licence](http://i.creativecommons.org/l/by-sa/4.0/88x31.png)
 
-***Test Resource*** by the [Raspberry Pi Foundation](http://raspberrypi.org) is licensed under a [Creative Commons Attribution 4.0 International Licence](http://creativecommons.org/licenses/by-sa/4.0/).
+***Raspberry Pi Documentation*** by the [Raspberry Pi Foundation](http://raspberrypi.org) is licensed under a [Creative Commons Attribution 4.0 International Licence](http://creativecommons.org/licenses/by-sa/4.0/).
 
-Based on a work at https://github.com/raspberrypilearning/test-licensed-resource.
+Based on a work at [https://github.com/raspberrypi/documentation](https://github.com/raspberrypi/documentation).
