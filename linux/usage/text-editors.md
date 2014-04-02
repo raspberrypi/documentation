@@ -40,7 +40,7 @@ To search for the word 'raspberry' in a file, go to command mode and type `/rasp
 
 To save and exit, enter the command `:wq`. To exit without saving, enter the command `:q!`.
 
-Depending on your keyboard configuration you may find your cursor keys don't work. In this case you case use the H-J-K-L keys to navigate the file (Left, Down, Up, Right) in command mode.
+Depending on your keyboard configuration you may find your cursor keys don't work. In this case, you can use the H-J-K-L keys to navigate the file (Left, Down, Up, Right) in command mode.
 
 ### Vim
 
