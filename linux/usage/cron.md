@@ -1,8 +1,8 @@
-# Cron / Crontab
+# Cron and Crontab
 
-Cron is a tool for configuring scheduled tasks on Unix systems, used to schedule commands or scripts to run periodically and fixed intervals, such as backing up the system's users' home folders every day at midnight, or logging CPU information every hour.
+Cron is a tool for configuring scheduled tasks on Unix systems, used to schedule commands or scripts to run periodically and at fixed intervals; tasks range from backing up the users' home folders every day at midnight, to logging CPU information every hour.
 
-The command `crontab` (cron table) is used to edit the list of scheduled tasks in operation, and is done on a per-user basis - each user (including `root`) has their own `crontab`.
+The command `crontab` (cron table) is used to edit the list of scheduled tasks in operation, and is done on a per-user basis; each user (including `root`) has their own `crontab`.
 
 ## Editing crontab
 
@@ -14,11 +14,9 @@ crontab -e
 
 ### Select an editor
 
-The first time you run `crontab` you'll be prompted to select an editor - if you don't know the difference, choose `nano` by hitting `Enter`.
+The first time you run `crontab` you'll be prompted to select an editor; if you are not sure which to use, choose `nano` by hitting `Enter`.
 
-The layout for a cron entry is made up of six components:
-
-Minute, Hour, Day of Month, Month of Year, Day of Week and the command to be executed.
+The layout for a cron entry is made up of six components: Minute, hour, day of month, month of year, day of week, and the command to be executed.
 
 ```
 # m h  dom mon dow   command
