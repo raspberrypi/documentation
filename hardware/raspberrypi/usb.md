@@ -20,7 +20,7 @@ The USB ports on a Raspberry Pi have a design loading of 100mA - sufficient to d
 
 In addition, hotplugging high-power devices into the Pi's USB ports may cause a brownout which can cause the Pi to reset.
 
-See [Power](https://github.com/raspberrypi/documentation/blob/master/hardware/raspberrypi/power.md) for more information.
+See [Power](power.md) for more information.
 
 ## Supported devices
 
