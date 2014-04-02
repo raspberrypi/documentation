@@ -10,7 +10,7 @@ sudo apt-get install xrdp
 **STEP2) from host computer:**
 
 * From a Window PC:
-<br>menu start -> accessories -> Remote Desktop Vonnection
+<br>menu start -> accessories -> Remote Desktop Connection
 (enter the ip adress of your pi)
 
 * From an Ipad:
