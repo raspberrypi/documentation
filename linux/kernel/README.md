@@ -18,7 +18,7 @@ There are many reasons you may want to put something into the kernel:
 - You've fixed a generic kernel bug
 - You've fixed a Raspberry Pi-specific kernel bug
 
-Initially you should fork the Linux repository and clone that on your build system; this can be either on the Raspberry Pi or on a Linux machine you're cross compiling on. You can then make your changes, test them, and commit them into your fork.
+Initially you should fork the Linux repository and clone that on your build system; this can be either on the Raspberry Pi or on a Linux machine you're cross-compiling on. You can then make your changes, test them, and commit them into your fork.
 
 Next, depending upon whether the code is Raspberry Pi-specific or not:
 
