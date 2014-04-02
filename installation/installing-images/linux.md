@@ -50,7 +50,7 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
 
 - You can check what's written to the SD card by `dd`-ing from the card back to another image on your hard disk, and then running `diff` (or `md5sum`) on those two images. There should be no difference.
 
-- Run `sudo sync`; this will ensure the write cache is flushed and that it is safe to unmount your SD card.
+- Run `sync`; this will ensure the write cache is flushed and that it is safe to unmount your SD card.
 
 - Remove the SD card from the card reader.
 
