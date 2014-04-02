@@ -4,7 +4,7 @@ One easy way to remotely access your pi is to used the well established Windows 
 
 **STEP1) on pi (install xrdp):**
 ```
-sudo ap-get install xrdp
+sudo apt-get install xrdp
 ```
 
 **STEP2) from host computer:**
