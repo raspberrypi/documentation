@@ -13,7 +13,7 @@ This is the official documentation for the Raspberry Pi, written by the [Raspber
 - [Configuration](configuration/README.md)
     - Configuring the Pi's settings to suit your needs
 - [Remote Access](remote-access/README.md)
-    - Accessing your Pi remotely via SSH, VLC or over the web
+    - Accessing your Pi remotely via SSH, VNC or over the web
 - [Linux](linux/README.md)
     - Fundamental Linux usage for beginners and more advanced information for power users
 - [Raspbian](raspbian/README.md)
