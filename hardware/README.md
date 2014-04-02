@@ -5,6 +5,8 @@ Technical information about the Raspberry Pi hardware, including official add-on
 ## Contents
 
 - [Raspberry Pi](raspberrypi/README.md)
+    - [Schematics](raspberrypi/schematics.md)
+        - Raspberry Pi PCB schematics
     - [BCM2835](raspberrypi/bcm2835.md)
         - The Broadcom processor used in Raspberry Pi Model A and Model B
     - [GPIO](raspberrypi/gpio.md)
