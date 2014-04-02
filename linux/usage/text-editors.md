@@ -50,7 +50,7 @@ Vim is an extension of Vi and works in much the same way, with a number of impro
 sudo apt-get install vim
 ```
 
-One of the notable differences between Vim and Vi is that you can use the arrow keys to navigate the file. Vim also has a graphical version which opens in a window and allows interaction with the mouse. This version is installable separately:
+Vim also has a graphical version which opens in a window and allows interaction with the mouse. This version is installable separately:
 
 ```
 sudo apt-get install vim-gnome
