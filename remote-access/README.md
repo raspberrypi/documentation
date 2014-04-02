@@ -7,7 +7,7 @@ Sometimes you need access to a Raspberry Pi without connecting a monitor to it, 
 - [VNC](vnc/README.md)
     - Remote access to the Pi's graphical interface, viewed in a window on another computer
 
-- [RDP](RDP/RDP.md)
+- [RDP](RDP.md)
     - Remote access to the Pi's graphical interface, without needing any configuration, 
       using well-established Windows Remote desktop Protocol (RDP)
 
