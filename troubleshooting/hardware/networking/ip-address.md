@@ -2,7 +2,7 @@
 
 Any device connected to a Local Area Network is assigned an IP address.
 
-In order to connect to your Raspberry Pi from another machine using [SSH](/remote-access/ssh/README.md) or [VNC](/remote-access/vnc/README.md) you need to know the Pi's IP address. This is easy if you have a display connected, and there are a number of methods for finding it remotely from another machine on the network.
+In order to connect to your Raspberry Pi from another machine using [SSH](../../../remote-access/ssh/README.md) or [VNC](../../../remote-access/vnc/README.md) you need to know the Pi's IP address. This is easy if you have a display connected, and there are a number of methods for finding it remotely from another machine on the network.
 
 ## Using the Pi with a display
 
