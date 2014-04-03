@@ -1,6 +1,6 @@
 # config.txt
 
-As it's an embedded platform, the Raspberry Pi doesn't have a BIOS like you'd find on a conventional PC. The various system configuration parameters that would traditionally be edited and stored using a BIOS are stored in an optional text file named `config.txt`. This is read by the GPU before the ARM (and Linux) is initialised, so it must be located on the first (boot) partition of your SD card (alongside `bootcode.bin` and `start.elf`). This file is normally accessible as `/boot/config.txt` from Linux (needs to be edited as [root](../linux/usage/root.md)); but from Windows (or OS X) it is seen as a file in the only accessible part of the card. If you need to apply some of the config settings below but you don't have a `config.txt` on your boot partition yet, then simply create it as a new text file.
+As it's an embedded platform, the Raspberry Pi doesn't have a [BIOS](https://en.wikipedia.org/wiki/BIOS) like you'd find on a conventional PC. The various system configuration parameters that would traditionally be edited and stored using a BIOS are stored in an optional text file named `config.txt`. This is read by the GPU before the ARM (and Linux) is initialised, so it must be located on the first (boot) partition of your SD card (alongside `bootcode.bin` and `start.elf`). This file is normally accessible as `/boot/config.txt` from Linux (needs to be edited as [root](../linux/usage/root.md)); but from Windows (or OS X) it is seen as a file in the only accessible part of the card. If you need to apply some of the config settings below but you don't have a `config.txt` on your boot partition yet, then simply create it as a new text file.
 
 Any changes will only take effect after you've rebooted your Raspberry Pi. After Linux has booted you can get the current active settings with the following commands:
 
@@ -9,6 +9,8 @@ Any changes will only take effect after you've rebooted your Raspberry Pi. After
 `vcgencmd get_config int` - lists all the integer config options that are set (non-zero).
 
 `vcgencmd get_config str` - lists all the string config options that are set (non-null).
+
+(Be aware that there's a small number of config settings that can't be retrieved using `vcgencmd` though.)
 
 # File format
 
@@ -35,10 +37,10 @@ overscan_bottom=10
 GPU memory in megabytes. Sets the memory split between the ARM (CPU) and GPU. ARM gets the remaining memory. Min 16. Default 64.
 
 ##### gpu_mem_256
-GPU memory in megabytes for the 256MB Raspberry Pi. Ignored by the 512MB RP. Overrides gpu_mem. Max 192. Default not set.
+GPU memory in megabytes for the 256MB Raspberry Pi. Ignored by the 512MB Pi. Overrides gpu_mem. Max 192. Default not set.
 
 ##### gpu_mem_512
-GPU memory in megabytes for the 512MB Raspberry Pi. Ignored by the 256MB RP. Overrides gpu_mem. Max 448. Default not set.
+GPU memory in megabytes for the 512MB Raspberry Pi. Ignored by the 256MB Pi. Overrides gpu_mem. Max 448. Default not set.
 
 ##### disable_l2cache
 Disables ARM access to GPU's L2 cache. Needs corresponding L2 disabled kernel. Default 0.
@@ -109,7 +111,7 @@ overscan_bottom=24
 ```
 
 ##### hdmi_ignore_edid
-Setting this to 0xa5000080 enables the ignoring of EDID/display data if your display doesn't have an accurate [EDID](http://en.wikipedia.org/wiki/Extended_display_identification_data). It requires this unusual value to ensure that it doesn't get enabled accidentally.
+Setting this to 0xa5000080 enables the ignoring of EDID/display data if your display doesn't have an accurate [EDID](http://en.wikipedia.org/wiki/Extended_display_identification_data). It requires this unusual value to ensure that it doesn't get triggered accidentally.
 
 ##### hdmi_edid_file
 Setting this to 1, will cause the GPU to read EDID data from the `edid.dat` file (located in the boot partition) instead of from the monitor. More information [here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=173430#p173430).
@@ -130,7 +132,7 @@ Setting this to 1 avoids "fuzzy matching" of modes described in EDID. Instead it
 Setting this to 1 will prevent the initial active source message being sent during bootup. Avoids bringing a (CEC enabled) TV out of standby and channel switching when rebooting your Raspberry Pi.
 
 ##### hdmi_ignore_cec
-Setting this to 1 pretends CEC is not supported at all by TV. No CEC functions will be supported.
+Setting this to 1 pretends [CEC](https://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC) is not supported at all by TV. No CEC functions will be supported.
 
 ##### hdmi_pixel_encoding
 Force the pixel encoding mode. By default it will use the mode requested from EDID so shouldn't need changing.
@@ -231,7 +233,7 @@ These values are valid if `hdmi_group=1` (CEA):
 | 58 | 480i | 240Hz |  |
 | 59 | 480i | 240Hz | 16:9 aspect ratio |
 
-In the table above the 16:9 aspect rations are a variant of a mode which usually has 4:3 aspect ratio. Pixel doubling and quadrupling indicates a higher clock rate, with each pixel repeated two or four times respectively.
+In the table above the 16:9 aspect ratios are a variant of a mode which usually has 4:3 aspect ratio. Pixel doubling and quadrupling indicates a higher clock rate, with each pixel repeated two or four times respectively.
 
 These values are valid if `hdmi_group=2` (DMT):
 
@@ -405,7 +407,7 @@ Licence key to allow hardware MPEG-2 decoding, e.g. `decode_MPG2=0x12345678`
 ##### decode_WVC1
 Licence key to allow hardware VC-1 decoding, e.g. `decode_WVC1=0x12345678`
 
-If you've got multiple Raspberry Pis, and you've bought a codec licence for each of them, you can list multiple (up to 8) licence keys in a single `config.txt`, which enables you to swap the same SD card between the different Raspberry Pis, e.g. `decode_MPG2=0x12345678,0xabcdabcd,0x87654321`
+If you've got multiple Raspberry Pis, and you've bought a codec licence for each of them, you can list multiple (up to 8) licence keys in a single `config.txt`, which enables you to swap the same SD card between the different Pis, e.g. `decode_MPG2=0x12345678,0xabcdabcd,0x87654321`
 
 # Boot
 ##### disable_commandline_tags
@@ -491,7 +493,7 @@ Overclock and overvoltage will be disabled at runtime when the SoC reaches 85°C
 | sdram_freq_min | Minimum value of sdram_freq used for dynamic clocking. Default 400. |
 | over_voltage_min | Minimum value of over_voltage used for dynamic clocking. Default 0. |
 | temp_limit | Overheat protection. Sets clocks and voltages to default when the SoC reaches this Celsius value. Setting this higher than default voids your warranty. Default 85. |
-| current_limit_override | Disables SMPS current limit protection when set to "0x5A000020". Can help if you are currently hitting a reboot failure when overclocking too high [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=325#p170793). May set warranty bit. |
+| current_limit_override | Disables SMPS current limit protection when set to "0x5A000020"; it requires this unusual value to ensure that it doesn't get triggered accidentally. Can help if you are currently hitting a reboot failure when overclocking too high [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=325#p170793). May set warranty bit. |
 
 ##### force_turbo
 `force_turbo=0`
@@ -529,7 +531,7 @@ To view the Pi's current frequency, type: `cat /sys/devices/system/cpu/cpu0/cpuf
 
 To monitor the Pi's PSU voltage, you'll need a multimeter to measure between the TP1 and TP2 power supply test points, more information [here](../troubleshooting/power.md).
 
-It's generally a good idea to keep the core temp below 70 degrees, and the voltage above 4.8V. (Note that some, not necessarily cheap, USB power supplies fall as low as 4.2V; this is because they are usually designed to charge a 3.7V LiPo battery, rather than to supply a solid 5V to a computer). If your overclocked Raspberry Pi is getting hot, a heatsink can be helpful, especially if the Pi is to be run inside a case. A suitable heatsink is the self-adhesive BGA (ball-grid-array) 14x14x10 mm heatsink, part 674-4756 from RS Components.
+It's generally a good idea to keep the core temperature below 70 degrees, and the voltage above 4.8V. (Note that some, not necessarily cheap, USB power supplies fall as low as 4.2V; this is because they are usually designed to charge a 3.7V LiPo battery, rather than to supply a solid 5V to a computer). If your overclocked Raspberry Pi is getting hot, a heatsink can be helpful, especially if the Pi is to be run inside a case. A suitable heatsink is the self-adhesive BGA (ball-grid-array) 14x14x10 mm heatsink, part 674-4756 from RS Components.
 
 ## Overclocking problems
 
