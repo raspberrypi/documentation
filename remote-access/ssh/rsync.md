@@ -1,6 +1,6 @@
 # rsync
 
-You can use the tool `rsync` to syncronise folders between computers. You might want to transfer some files from your desktop computer or laptop to your Pi, and for them to be kept up to date, or you might want the pictures taken by your Pi transferred to your computer automatically.
+You can use the tool `rsync` to synchronise folders between computers. You might want to transfer some files from your desktop computer or laptop to your Pi, and for them to be kept up to date, or you might want the pictures taken by your Pi transferred to your computer automatically.
 
 Using `rsync` over SSH allows you to transfer files to your computer automatically.
 
@@ -12,9 +12,9 @@ On your computer, create a folder called `camera`:
 mkdir camera
 ```
 
-Look up the Pi's IP address by logging in to it and running `hostname -I`. In this example the Pi is creating a timelapse by capturing a photo every minute and saving the picture with a timestamp in the local folder `camera` on its SD card.
+Look up the Pi's IP address by logging in to it and running `hostname -I`. In this example the Pi is creating a timelapse by capturing a photo every minute, and saving the picture with a timestamp in the local folder `camera` on its SD card.
 
-Now run the following command (replacing your own Pi's IP address):
+Now run the following command (substituting your own Pi's IP address):
 
 ```
 rsync -avz -e ssh pi@192.168.1.10:camera/ camera/
