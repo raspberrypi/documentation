@@ -1,6 +1,6 @@
 # config.txt
 
-As it's an embedded platform, the Raspberry Pi doesn't have a BIOS like you'd find on a conventional PC. The various system configuration parameters, which would traditionally be edited and stored using a BIOS, are stored in an optional text file named `config.txt`. This is read by the GPU before the ARM (and Linux) is initialised; therefore it must be located on the first (boot) partition of your SD card, alongside `bootcode.bin` and `start.elf`. This file is normally accessible as `/boot/config.txt` from Linux and must be edited as [root](../linux/usage/root.md)); but from Windows or OS X it is seen as a file in the only accessible part of the card. If you need to apply some of the config settings below, but you don't have a `config.txt` on your boot partition yet, then simply create it as a new text file.
+As it's an embedded platform, the Raspberry Pi doesn't have a BIOS like you'd find on a conventional PC. The various system configuration parameters, which would traditionally be edited and stored using a BIOS, are stored in an optional text file named `config.txt`. This is read by the GPU before the ARM (and Linux) is initialised; therefore it must be located on the first (boot) partition of your SD card, alongside `bootcode.bin` and `start.elf`. This file is normally accessible as `/boot/config.txt` from Linux and must be edited as [root](../linux/usage/root.md); but from Windows or OS X it is seen as a file in the only accessible part of the card. If you need to apply some of the config settings below, but you don't have a `config.txt` on your boot partition yet, then simply create it as a new text file.
 
 Any changes will only take effect after you've rebooted your Raspberry Pi. After Linux has booted you can get the current active settings with the following commands:
 
@@ -84,7 +84,7 @@ Setting this to 1 prevents the red camera LED from turning on when recording vid
 
 #### sdtv_mode
 
-Defines the TV standard used for composite video output over the yellow RCA jack (default=0).
+Defines the TV standard used for composite video output over the yellow RCA jack; the default value is 0.
 
 | sdtv_mode | result |
 | --- | --- |
@@ -95,7 +95,7 @@ Defines the TV standard used for composite video output over the yellow RCA jack
 
 #### sdtv_aspect
 
-Defines the aspect ratio for composite video output (default=1).
+Defines the aspect ratio for composite video output; the default value is 1.
 
 | sdtv_mode | result |
 | --- | --- |
