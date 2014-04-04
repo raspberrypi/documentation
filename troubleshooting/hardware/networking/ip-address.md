@@ -16,7 +16,7 @@ It is possible to find the IP address of your Pi without connecting to a screen 
 
 ### Router Devices List
 
-Browse to your router's IP address (probably printed on a label on your router) control panel in the web browser, e.g. `http://192.168.1.1` and log in using your credentials, probably also printed on the router or sent to you in paperwork with the router. Browse to the list of connected devices or something similar looking (all routers are different) and you should see some devices you recognise (some you may not). Some devices are detected as PCs, tablets, phones, printers, etc. so you should recognise some and rule them out to deduce which is your Raspberry Pi. Also note the connection type - if your Pis is connected with a wire there should be fewer devices to choose from.
+Browse to your router's IP address (probably printed on a label on your router) control panel in the web browser, e.g. `http://192.168.1.1` and log in using your credentials, probably also printed on the router or sent to you in paperwork with the router. Browse to the list of connected devices or something similar looking (all routers are different) and you should see some devices you recognise (some you may not). Some devices are detected as PCs, tablets, phones, printers, etc. so you should recognise some and rule them out to deduce which is your Raspberry Pi. Also note the connection type - if your Pi is connected with a wire there should be fewer devices to choose from.
 
 ### nmap command
 
