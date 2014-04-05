@@ -18,11 +18,9 @@ Once you've downloaded the NOOBS zip file, you'll need to copy the contents to a
 
 To set up a blank SD card with NOOBS:
 
-- Format an SD card that is 4GB or greater in size as FAT (see instructions on how to do this below).
-- Download and extract the files from the NOOBS zip file.
-- Copy the extracted files onto the SD card that you just formatted so that this file is at the root directory of the SD card. Please note that in some cases it may extract the files into a folder; if this is the case then please copy across the files from inside the folder rather than the folder itself.
 - Format an SD card that is 4GB or larger as FAT. See instructions on how to do this below.
 - Download and extract the files from the NOOBS zip file.
+- Copy the extracted files onto the SD card that you just formatted so that this file is at the root directory of the SD card. Please note that in some cases it may extract the files into a folder; if this is the case then please copy across the files from inside the folder rather than the folder itself.
 - On first boot the "RECOVERY" FAT partition will be automatically resized to a minimum, and a list of OSs that are available to install will be displayed.
 
 #### How to format an SD card as FAT
