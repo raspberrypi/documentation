@@ -6,7 +6,7 @@ On Linux, you have a choice of text editors. Some are easy to use but have limit
 
 ### Leafpad
 
-On Raspbian, you'll find an editor called Leafpad. This is a simple editor which opens in a window like a normal application. It allows use of the mouse and keyboard and has tabs and syntax highlighting.
+On Raspbian, you'll find an editor called Leafpad. This is a simple editor which opens in a window like a normal application. It allows use of the mouse and keyboard, and has tabs and syntax highlighting.
 
 You can use keyboard shortcuts such as `Ctrl + S` to save a file and `Ctrl + X` to exit.
 
@@ -18,7 +18,7 @@ IDLE has independent windows and syntax highlighting. It's somewhat buggy but ge
 
 You can use keyboard shortcuts like `Ctrl + S` to save a file, or `Alt + P` (previous command) and `Alt + N` (next command) in the REPL.
 
-Note IDLE uses Python2 and IDLE 3 uses Python3.
+Note that IDLE uses Python2 and IDLE 3 uses Python3.
 
 ### GVim
 
@@ -28,11 +28,11 @@ See Vim below
 
 ### Nano
 
-GNU Nano is at the easy-to-use end of command line editors. It's installed by default so use `nano somefile.txt` to edit a file and keyboard shortcuts like `Ctrl + O` to save and `Ctrl + X` to exit.
+GNU Nano is at the easy-to-use end of command line editors. It's installed by default, so use `nano somefile.txt` to edit a file and keyboard shortcuts like `Ctrl + O` to save and `Ctrl + X` to exit.
 
 ### Vi
 
-Vi is a very old (c. 1976) command line editor, which you will find is available on most UNIX systems and is preinstalled on Raspbian. It is succeeded by Vim (Vi Improved), which requires installation.
+Vi is a very old (c. 1976) command line editor, which is available on most UNIX systems and is preinstalled on Raspbian. It is succeeded by Vim (Vi Improved), which requires installation.
 
 Unlike most editors, Vi and Vim have a number of different modes. When you open Vi with `vi somefile.txt`, you start in command mode which does not (directly) permit entry of text. Press `i` to switch to insert mode in order to edit the file, and type away. To save the file you must return to command mode, so hit the `Escape` key and enter `:w` (followed by `Enter`) which is the command to write the file to disk.
 
@@ -60,7 +60,7 @@ To use the graphical version of vim, use `gvim somefile.txt`. You can save confi
 
 ### Emacs
 
-GNU Emacs is the GNU flavour of powerful command line editors. An extensible, customisable text editor. You can install it with APT:
+GNU Emacs is the GNU flavour of command line text editors; it is powerful, extensible, and customisable. You can install it with APT:
 
 ```
 sudo apt-get install emacs
