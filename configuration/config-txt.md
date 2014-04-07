@@ -5,7 +5,7 @@ As it's an embedded platform, the Raspberry Pi doesn't have a [BIOS](https://en.
 Any changes will only take effect after you've rebooted your Raspberry Pi. After Linux has booted you can get the current active settings with the following commands:
 
 `vcgencmd get_config <config>` - displays a specific config value, e.g. `vcgencmd get_config arm_freq`.
-
+l
 `vcgencmd get_config int` - lists all the integer config options that are set (non-zero).
 
 `vcgencmd get_config str` - lists all the string config options that are set (non-null).
@@ -445,7 +445,7 @@ Can be used to rotate or flip the screen orientation; the default value is `0`.
 
 Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these won't work with the 16MB GPU split.
 
-## Licensed codecs
+## Licence keys/codecs
 
 Hardware decoding of additional codecs can be enabled by [purchasing a licence](http://swag.raspberrypi.org/collections/software) that is locked to the CPU serial number of your Raspberry Pi.
 
