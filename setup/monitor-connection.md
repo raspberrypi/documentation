@@ -14,12 +14,6 @@ For monitors with a DVI port, you can use an HDMI-to-DVI cable.
 
 For monitors with VGA only, you can use an HDMI-to-VGA adapter.
 
-## Composite
+## Composite Port
 
 For analogue TVs you can use a standard RCA composite video lead.
-
-For monitors with VGA only, you can use an HDMI-to-VGA adaptor.
-
-## Composite
-
-For analogue TVs, you can use a standard RCA composite video lead.
