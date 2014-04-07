@@ -20,6 +20,8 @@ Explanation of some fundamental Linux usage and commands for getting around the 
         - Setting up multiple Linux users on your Pi system
     - [Root](usage/root.md)
         - The `root` user and the `sudo` prefix
+    - [Scripting](usage/scripting.md)
+        - Combining commands to produce more complex actions
     - [Cron / Crontab](usage/cron.md)
         - Setting up scheduled tasks
     - [.bashrc and .bash_aliases](usage/bashrc.md)
