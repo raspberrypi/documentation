@@ -1,6 +1,6 @@
 # config.txt
 
-As it's an embedded platform, the Raspberry Pi doesn't have a [BIOS](https://en.wikipedia.org/wiki/BIOS) like you'd find on a conventional PC. The various system configuration parameters that would traditionally be edited and stored using a BIOS are stored in an optional text file named `config.txt`. This is read by the GPU before the ARM (and Linux) is initialised, so it must be located on the first (boot) partition of your SD card (alongside `bootcode.bin` and `start.elf`). This file is normally accessible as `/boot/config.txt` from Linux (needs to be edited as [root](../linux/usage/root.md)); but from Windows (or OS X) it is seen as a file in the only accessible part of the card. If you need to apply some of the config settings below but you don't have a `config.txt` on your boot partition yet, then simply create it as a new text file.
+As it's an embedded platform, the Raspberry Pi doesn't have a [BIOS](https://en.wikipedia.org/wiki/BIOS) like you'd find on a conventional PC. The various system configuration parameters, which would traditionally be edited and stored using a BIOS, are stored in an optional text file named `config.txt`. This is read by the GPU before the ARM CPU (and Linux) is initialised; therefore it must be located on the first (boot) partition of your SD card, alongside `bootcode.bin` and `start.elf`. This file is normally accessible as `/boot/config.txt` from Linux and must be edited as [root](../linux/usage/root.md); but from Windows or OS X it is seen as a file in the only accessible part of the card. If you need to apply some of the config settings below, but you don't have a `config.txt` on your boot partition yet, then simply create it as a new text file.
 
 Any changes will only take effect after you've rebooted your Raspberry Pi. After Linux has booted you can get the current active settings with the following commands:
 
@@ -10,7 +10,7 @@ Any changes will only take effect after you've rebooted your Raspberry Pi. After
 
 `vcgencmd get_config str` - lists all the string config options that are set (non-null).
 
-(Be aware that there's a small number of config settings that can't be retrieved using `vcgencmd` though.)
+Note that there's a small number of config settings that can't be retrieved using `vcgencmd`.
 
 ## File format
 
@@ -34,33 +34,35 @@ overscan_bottom=10
 
 ## Memory
 
-### gpu_mem
+#### gpu_mem
 
-GPU memory in megabytes. Sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; default is `64`.
+GPU memory in megabytes. Sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; maximum value is either `192` or `448` depending on whether you're using a 256MB or 512MB Pi; default value is `64`.
 
 #### gpu_mem_256
 
-GPU memory in megabytes for the 256MB Raspberry Pi. Ignored by the 512MB Pi. Overrides `gpu_mem`. Max `192`. The default is not set.
+GPU memory in megabytes for the 256MB Raspberry Pi. Ignored by the 512MB Pi. Overrides `gpu_mem`. Maximum value is `192`; default is not set.
 
 #### gpu_mem_512
 
-GPU memory in megabytes for the 512MB Raspberry Pi. Ignored by the 256MB Pi. Overrides `gpu_mem`. Maximum value `448`; default is not set.
+GPU memory in megabytes for the 512MB Raspberry Pi. Ignored by the 256MB Pi. Overrides `gpu_mem`. Maximum value is `448`; default is not set.
 
-### disable_l2cache
+Using `gpu_mem_256` and `gpu_mem_512` allows you to swap the same SD card between both 256MB and 512MB Pis without having to edit `config.txt` each time.
 
-Disables the CPU's access to the GPU's L2 cache; requires a corresponding L2 disabled kernel. Default value is `0`.
+#### disable_l2cache
 
-### disable_pvt
+Setting this to `1` disables the CPU's access to the GPU's L2 cache; requires a corresponding L2 disabled kernel. Default value is `0`.
 
-Disable adjusting the refresh rate of RAM every 500ms; this action measures the RAM's temperature.
+#### disable_pvt
 
-## CMA - Dynamic Memory Split
+Setting this to `1` disables adjusting the refresh rate of RAM every 500ms; this action measures the RAM's temperature. Default value is `0`.
+
+### CMA - Dynamic memory split
 
 The firmware and kernel as of 19th November 2012 supports CMA (Contiguous Memory Allocator), which means the memory split between CPU and GPU is managed dynamically at runtime. However this is not [officially supported](https://github.com/raspberrypi/linux/issues/503).
 
 You can find an [example config.txt here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=223549#p223549).
 
-### cma_lwm
+#### cma_lwm
 
 When the GPU has less than `cma_lwm` (low-water mark) megabytes of memory available, it will request some from the CPU.
 
@@ -68,7 +70,7 @@ When the GPU has less than `cma_lwm` (low-water mark) megabytes of memory availa
 
 When the GPU has more than `cma_hwm` (high-water mark) megabytes of memory available, it will release some to the CPU.
 
-The following options need to be in `cmdline.txt` for CMA to work: 
+The following options need to be in `cmdline.txt` for CMA to work:
 
 ```
 coherent_pool=6M smsc95xx.turbo_mode=N
@@ -76,9 +78,9 @@ coherent_pool=6M smsc95xx.turbo_mode=N
 
 ## Camera
 
-### disable_camera_led
+#### disable_camera_led
 
-Setting this to 1 prevents the red camera LED from turning on when recording video or taking a still picture. Useful for preventing reflections when the camera is facing a window.
+Setting this to `1` prevents the red camera LED from turning on when recording video or taking a still picture. Useful for preventing reflections when the camera is facing a window.
 
 ## Video
 
@@ -109,9 +111,9 @@ Defines the aspect ratio for composite video output; the default value is `1`.
 
 Setting this to `1` disables colour burst on composite video output. The picture will be displayed in monochrome, but it may possibly be sharper.
 
-## HDMI mode options
+### HDMI mode options
 
-### hdmi_safe
+#### hdmi_safe
 
 Setting this to `1` uses "safe mode" settings to try to boot with maximum HDMI compatibility. This is the same as setting the following parameters:
 
@@ -128,40 +130,41 @@ overscan_top=24
 overscan_bottom=24
 ```
 
-##### hdmi_ignore_edid
+#### hdmi_ignore_edid
 
 Setting this to `0xa5000080` enables the ignoring of EDID/display data if your display doesn't have an accurate [EDID](http://en.wikipedia.org/wiki/Extended_display_identification_data). It requires this unusual value to ensure that it doesn't get triggered accidentally.
 
-##### hdmi_edid_file
+#### hdmi_edid_file
 
-Setting this to `1`, will cause the GPU to read EDID data from the `edid.dat` file (located in the boot partition) instead of from the monitor. More information [here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=173430#p173430).
+Setting this to `1`, will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. More information is available [here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=173430#p173430).
 
-##### hdmi_force_edid_audio
-Setting this to `1` pretends all audio formats are supported by display, allowing passthrough of DTS/AC3 even when not reported as supported.
+#### hdmi_force_edid_audio
 
-##### hdmi_ignore_edid_audio
+Setting this to `1` pretends that all audio formats are supported by the display, allowing passthrough of DTS/AC3 even when not reported as supported.
 
-Setting this to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. More information is available [here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=173430#p173430).
+#### hdmi_ignore_edid_audio
 
-##### hdmi_force_edid_3d
+Setting this to `1` pretends that all audio formats are unsupported by the display. This means ALSA will default to the analogue audio (headphone) jack.
 
-Setting this to 1 pretends all CEA modes support 3D, even when EDID doesn't indicate support for them.
+#### hdmi_force_edid_3d
 
-##### avoid_edid_fuzzy_match
+Setting this to `1` pretends that all CEA modes support 3D, even when the EDID doesn't indicate support for them.
 
-Setting this to 1 avoids "fuzzy matching" of modes described in EDID. Instead it will pick the standard mode with the matching resolution and closest framerate even if blanking is wrong.
+#### avoid_edid_fuzzy_match
 
-##### hdmi_ignore_cec_init
+Setting this to `1` avoids "fuzzy matching" of modes described in the EDID. Instead it will pick the standard mode with the matching resolution and closest framerate, even if blanking is wrong.
 
-Setting this to 1 will prevent the initial active source message being sent during bootup. Avoids bringing a (CEC enabled) TV out of standby and channel switching when rebooting your Raspberry Pi.
+#### hdmi_ignore_cec_init
 
-##### hdmi_ignore_cec
+Setting this to `1` will prevent the initial active source message being sent during bootup. This avoids bringing a CEC-enabled TV out of standby and channel switching when rebooting your Raspberry Pi.
 
-Setting this to 1 pretends [CEC](https://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC) is not supported at all by TV. No CEC functions will be supported.
+#### hdmi_ignore_cec
 
-##### hdmi_pixel_encoding
+Setting this to `1` pretends that [CEC](https://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC) is not supported at all by the TV. No CEC functions will be supported.
 
-Force the pixel encoding mode. By default it will use the mode requested from EDID so shouldn't need changing.
+#### hdmi_pixel_encoding
+
+Force the pixel encoding mode. By default it will use the mode requested from the EDID, so it shouldn't need changing.
 
 | hdmi_pixel_encoding | result |
 | --- | --- |
@@ -170,7 +173,7 @@ Force the pixel encoding mode. By default it will use the mode requested from ED
 | 2 | YCbCr limited (16-235) |
 | 3 | YCbCr full (0-255) |
 
-##### hdmi_drive
+#### hdmi_drive
 
 This allows you to choose between HDMI and DVI output modes.
 
@@ -179,13 +182,13 @@ This allows you to choose between HDMI and DVI output modes.
 | 1 | Normal DVI mode (No sound) |
 | 2 | Normal HDMI mode (Sound will be sent if supported and enabled) |
 
-##### config_hdmi_boost
+#### config_hdmi_boost
 
 Configures the signal strength of the HDMI interface; the default value is `0` and the maximum is `7`. Try `4` if you have interference issues with HDMI.
 
-##### hdmi_group
+#### hdmi_group
 
-This defines the HDMI output group to be either [CEA](http://en.wikipedia.org/wiki/Consumer_Electronics_Association) (Consumer Electronics Association - the standard typically used by TVs) or DMT (Display Monitor Timings - the standard typically used by monitors). This setting should be used in conjunction with `hdmi_mode`.
+This defines the HDMI output group to be either CEA (Consumer Electronics Association; the standard typically used by TVs) or DMT (Display Monitor Timings; the standard typically used by monitors). This setting should be used in conjunction with `hdmi_mode`.
 
 | hdmi_group | result |
 | --- | --- |
@@ -193,11 +196,11 @@ This defines the HDMI output group to be either [CEA](http://en.wikipedia.org/wi
 | 1 | CEA |
 | 2 | DMT |
 
-##### hdmi_mode
+#### hdmi_mode
 
-This (together with `hdmi_group`) defines the HDMI output format.
+This, together with `hdmi_group`, defines the HDMI output format.
 
-(For other modes not listed here have a look at [this thread](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=24679).)
+For setting a custom display mode not listed here, see [this thread](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=24679).
 
 These values are valid if `hdmi_group=1` (CEA):
 
@@ -263,7 +266,7 @@ These values are valid if `hdmi_group=1` (CEA):
 | 58 | 480i | 240Hz |  |
 | 59 | 480i | 240Hz | 16:9 aspect ratio |
 
-In the table above the 16:9 aspect ratios are a variant of a mode which usually has 4:3 aspect ratio. Pixel doubling and quadrupling indicates a higher clock rate, with each pixel repeated two or four times respectively.
+In the table above, the modes with a 16:9 aspect ratio are a widescreen variant of a mode which usually has 4:3 aspect ratio. Pixel doubling and quadrupling indicates a higher clock rate, with each pixel repeated two or four times respectively.
 
 These values are valid if `hdmi_group=2` (DMT):
 
@@ -358,7 +361,7 @@ These values are valid if `hdmi_group=2` (DMT):
 
 Note that there is a [pixel clock limit](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=26&t=20155&p=195443#p195443), which means the highest supported mode is 1920x1200 at 60Hz with reduced blanking.
 
-#### Which values are valid for my monitor?
+### Which values are valid for my monitor?
 
 Your HDMI monitor may support only a limited set of formats. To find out which formats are supported, use the following method:
 
@@ -378,11 +381,11 @@ Setting this to `1` pretends that the HDMI hotplug signal is asserted, so it app
 
 #### hdmi_ignore_hotplug
 
-Setting this to `1` pretends HDMI hotplug signal is not asserted so it appears that a HDMI display is not attached, i.e. composite output mode will be used even if a HDMI monitor is detected.
+Setting this to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. In other words, composite output mode will be used even if a HDMI monitor is detected.
 
 #### disable_overscan
 
-Set to 1 to disable [overscan](raspi-config.md#overscan).
+Set to `1` to disable [overscan](raspi-config.md#overscan).
 
 #### overscan_left
 
@@ -392,21 +395,21 @@ Specifies the number of pixels to skip on the left edge of the screen. Increase 
 
 Specifies the number of pixels to skip on the right edge of the screen.
 
-##### overscan_top
+#### overscan_top
 
 Specifies the number of pixels to skip on the top edge of the screen.
 
-##### overscan_bottom
+#### overscan_bottom
 
 Specifies the number of pixels to skip on the bottom edge of the screen.
 
-##### framebuffer_width
+#### framebuffer_width
 
-Specifies the console framebuffer width in pixels. The default is the display width minus the overscan.
+Specifies the console framebuffer width in pixels. The default is the display width minus the total horizontal overscan.
 
-##### framebuffer_height
+#### framebuffer_height
 
-Console framebuffer height in pixels. Default is display height minus overscan.
+Specifies the console framebuffer height in pixels. The default is the display height minus the total vertical overscan.
 
 #### framebuffer_depth
 
@@ -421,7 +424,7 @@ Specifies the console framebuffer depth in bits per pixel; the default value is 
 
 #### framebuffer_ignore_alpha
 
-Set to `1` to disable the alpha channel. Can help with the display of a 32-bit `framebuffer_depth`.
+Set to `1` to disable the alpha channel. Can help with the display of a 32bit `framebuffer_depth`.
 
 #### test_mode
 
@@ -429,7 +432,7 @@ Set to `1` to enable the test sound/image during boot, which is used as a manufa
 
 #### display_rotate
 
-Can be used to rotate or flip the screen orientation; the default value is 0.
+Can be used to rotate or flip the screen orientation; the default value is `0`.
 
 | display_rotate | result |
 | --- | --- |
@@ -442,105 +445,95 @@ Can be used to rotate or flip the screen orientation; the default value is 0.
 
 Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these won't work with the 16MB GPU split.
 
-## Licenced codecs
+## Licensed codecs
 
 Hardware decoding of additional codecs can be enabled by [purchasing a licence](http://swag.raspberrypi.org/collections/software) that is locked to the CPU serial number of your Raspberry Pi.
 
-### decode_MPG2
+#### decode_MPG2
 
-Licence key to allow hardware MPEG-2 decoding, e.g. `decode_MPG2=0x12345678`
+Licence key to allow hardware MPEG-2 decoding, e.g. `decode_MPG2=0x12345678`.
 
-### decode_WVC1
+#### decode_WVC1
 
 Licence key to allow hardware VC-1 decoding, e.g. `decode_WVC1=0x12345678`.
 
+If you've got multiple Raspberry Pis, and you've bought a codec licence for each of them, you can list up to 8 licence keys in a single `config.txt`; for example `decode_MPG2=0x12345678,0xabcdabcd,0x87654321`. This enables you to swap the same SD card between the different Pis without having to edit `config.txt` each time.
+
 ## Boot
 
-### disable_commandline_tags
+#### disable_commandline_tags
 
 Set to `1` to stop `start.elf` from filling in ATAGS (memory from `0x100`) before launching the kernel.
 
-### cmdline
+#### cmdline
 
 The command line parameter string. This can be used instead of a `cmdline.txt` file.
 
-### kernel
+#### kernel
 
 The alternative filename on the boot partition to use when loading the kernel; the default value is `kernel.img`.
 
-### kernel_address
+#### kernel_address
 
-Set to `1` to stop `start.elf` from filling in ATAGS (memory from `0x100`) before launching the kernel.
+The memory address into which the kernel image should be loaded.
 
-### cmdline
+#### kernel_old
 
-Command line parameter string. Can be used instead of `cmdline.txt` file.
+Set to `1` to load the kernel at the memory address `0x0`.
 
-### kernel
-
-Alternative filename (on the boot partition) to use when loading kernel. Default is `kernel.img`.
-
-### kernel_address
-
-Memory address to load the kernel image at.
-
-### kernel_old
-
-Set to 1 to load the kernel at memory address `0x0`.
-
-### ramfsfile
+#### ramfsfile
 
 Optional filename on the boot partition of a ramfs to load. More information is available [here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=63&t=10532).
 
-### ramfsaddr
+#### ramfsaddr
 
-Memory address to load the `ramfsfile` at.
+The memory address into which the `ramfsfile` should be loaded.
 
 #### initramfs
 
 This specifies both the ramfs filename **and** the memory address to load it at; it performs the actions of both `ramfsfile` and `ramfsaddr` in one parameter. Example values are: `initramfs initramf.gz 0x00800000`. **NOTE:** This option uses different syntax to all the other options; you should not use a `=` character here.
 
-### device_tree
+#### device_tree
 
-Specifies a [device tree](http://www.raspberrypi.org/forum/viewtopic.php?f=71&t=53232) filename. This is not officially supported.
+Specifies a [device tree](http://www.raspberrypi.org/forum/viewtopic.php?f=71&t=53232) filename on the boot partition. This is not officially supported.
 
-### device_tree_address
+#### device_tree_address
 
 The memory address into which the `device_tree` should be loaded.
 
-### init_uart_baud
+#### init_uart_baud
 
-The initial UART baud rate; the default value is 115200.
+The initial UART baud rate; the default value is `115200`.
 
-### init_uart_clock
+#### init_uart_clock
 
-Initial uart clock frequency. Default 3000000 (3Mhz).
+The initial UART clock frequency; the default value is `3000000` (3MHz).
 
-### init_emmc_clock
+#### init_emmc_clock
 
-The initial emmc clock frequency; the default value is 100000000 (100MHz).
+The initial emmc clock frequency; the default value is `100000000` (100MHz).
 
-### boot_delay
+#### boot_delay
 
-Wait for a given number of seconds in `start.elf` before loading the kernel; the default value is 1. The total delay in milliseconds is calculated as `(1000 * boot_delay) + boot_delay_ms`. This can be useful if your SD card needs a while to 'get ready' before Linux is able to boot from it.
+Wait for a given number of seconds in `start.elf` before loading the kernel; the default value is `1`. The total delay in milliseconds is calculated as `(1000 x boot_delay) + boot_delay_ms`. This can be useful if your SD card needs a while to 'get ready' before Linux is able to boot from it.
 
-### boot_delay_ms
+#### boot_delay_ms
 
-Wait for a given number of milliseconds in `start.elf`, together with `boot_delay`, before loading the kernel. The default value is 0.
+Wait for a given number of milliseconds in `start.elf`, together with `boot_delay`, before loading the kernel. The default value is `0`.
 
-### avoid_safe_mode
+#### avoid_safe_mode
 
-If set to 1, [safe_mode](http://elinux.org/RPI_safe_mode) boot won't be enabled; the default value is 0.
+If set to `1`, [safe_mode](http://elinux.org/RPI_safe_mode) boot won't be enabled; the default value is `0`.
 
-### disable_splash
+#### disable_splash
 
-If set to 1, don't show the rainbow splash screen on boot.
+If set to `1`, don't show the rainbow splash screen on boot; the default value is `0`.
 
 ## Overclocking
 
 **NOTE:** Setting any overclocking parameters to values other than those used by [raspi-config](raspi-config.md#overclock) will set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. This was originally set to detect a void warranty if the device had been overclocked. Since September 19th 2012 you can overclock your Pi without affecting your warranty; for more information [see here](http://www.raspberrypi.org/archives/2008).
 
-The latest kernel has a [cpufreq](http://www.pantz.org/software/cpufreq/usingcpufreqonlinux.html) kernel driver with the "ondemand" governor enabled by default. It has no effect if you have no overclock settings; if you overclock, the ARM frequency will vary with processor load. Non-default values are only used when needed according to the governor. You can adjust the minimum values with the `*_min` config options, or disable dynamic clocking with `force_turbo=1`; for more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=169726#p169726).
+The latest kernel has a [cpufreq](http://www.pantz.org/software/cpufreq/usingcpufreqonlinux.html) kernel driver with the "ondemand" governor enabled by default. It has no effect if you have no overclock settings; if you overclock, the CPU frequency will vary with processor load. Non-default values are only used when needed according to the governor. You can adjust the minimum values with the `*_min` config options, or disable dynamic clocking with `force_turbo=1`; for more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=169726#p169726).
 
 Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85°C to cool it down. You should not hit the limit, even with maximum settings at 25°C ambient temperature; for more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=11579#p169872).
 
@@ -548,84 +541,56 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 
 | Option | Description |
 | --- | --- |
-| arm_freq | Frequency of ARM in MHz. Default 700. |
-| gpu_freq | Sets core_freq, h264_freq, isp_freq, v3d_freq together. Default 250. |
-| core_freq | Frequency of GPU processor core in MHz. It has an impact on ARM performance since it drives L2 cache. Default 250. |
-| h264_freq | Frequency of hardware video block in MHz. Default 250. |
-| isp_freq | Frequency of image sensor pipeline block in MHz. Default 250. |
-| v3d_freq | Frequency of 3D block in MHz. Default 250. |
-| avoid_pwm_pll | Don't dedicate a pll to PWM audio. This will reduce analogue audio quality slightly. The spare PLL allows the core_freq to be set independently from the rest of the gpu allowing more control over overclocking. Default 0.|
-| sdram_freq | Frequency of SDRAM in MHz. Default 400. |
-| over_voltage | ARM/GPU core voltage adjust. [-16,8] equates to [0.8V,1.4V] with 0.025V steps (i.e. specifying -16 will give 0.8V as the GPU/core voltage, and specifying 8 will give 1.4V) Default is 0 (1.2V). Values above 6 are only allowed when force_turbo or current_limit_override are specified (which sets the warranty bit).|
-| over_voltage_sdram | Sets over_voltage_sdram_c, over_voltage_sdram_i, over_voltage_sdram_p together. |
-| over_voltage_sdram_c | SDRAM controller voltage adjust. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. Default 0 (1.2V). |
-| over_voltage_sdram_i | SDRAM I/O voltage adjust. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. Default 0 (1.2V). |
-| over_voltage_sdram_p | SDRAM phy voltage adjust. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. Default 0 (1.2V). |
-| force_turbo | Disables dynamic cpufreq driver and minimum settings below. Enables h264/v3d/isp overclock options. Default 0. May set warranty bit. |
-| initial_turbo | Enables turbo mode from boot for the given value in seconds (up to 60) or until cpufreq sets a frequency [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=425#p180099). Can help with SD card corruption if overclocked. Default 0. |
-| arm_freq_min | Minimum value of arm_freq used for dynamic clocking. Default 700. |
-| core_freq_min | Minimum value of core_freq used for dynamic clocking. Default 250. |
-| sdram_freq_min | Minimum value of sdram_freq used for dynamic clocking. Default 400. |
-| over_voltage_min | Minimum value of over_voltage used for dynamic clocking. Default 0. |
-| temp_limit | Overheat protection. Sets clocks and voltages to default when the SoC reaches this Celsius value. Setting this higher than default voids your warranty. Default 85. |
-| current_limit_override | Disables SMPS current limit protection when set to "0x5A000020"; it requires this unusual value to ensure that it doesn't get triggered accidentally. Can help if you are currently hitting a reboot failure when overclocking too high [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=325#p170793). May set warranty bit. |
-
-#### force_turbo
-
-| arm_freq | Frequency of the ARM CPU in MHz. The default value is 700. |
-| gpu_freq | Sets `core_freq`, `h264_freq`, `isp_freq`, and `v3d_freq` together. The default value is 250. |
-| core_freq | Frequency of the GPU processor core in MHz. It has an impact on CPU performance since it drives the L2 cache. The default value is 250. |
-| h264_freq | Frequency of the hardware video block in MHz. The default value is 250.
-| isp_freq | Frequency of the image sensor pipeline block in MHz. The default value is 250. |
-| v3d_freq | Frequency of 3D block in MHz. The default value is 250. |
-| avoid_pwm_pll | Don't dedicate a pll to PWM audio. This will reduce analogue audio quality slightly. The spare PLL allows the `core_freq` to be set independently from the rest of the GPU, allowing for more control over overclocking. The default value is 0.|
-| sdram_freq | Frequency of the SDRAM in MHz. The default value is 400. |
-| over_voltage | CPU/GPU core voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps; in other words, specifying -16 will give 0.8V as the GPU/core voltage, and specifying 8 will give 1.4V. The default value is 0 (1.2V). Values above 6 are only allowed when `force_turbo` or `current_limit_override` are specified; this sets the warranty bit.
+| arm_freq | Frequency of the ARM CPU in MHz. The default value is `700`. |
+| gpu_freq | Sets `core_freq`, `h264_freq`, `isp_freq`, and `v3d_freq` together. The default value is `250`. |
+| core_freq | Frequency of the GPU processor core in MHz. It has an impact on CPU performance since it drives the L2 cache. The default value is `250`. |
+| h264_freq | Frequency of the hardware video block in MHz. The default value is `250`. |
+| isp_freq | Frequency of the image sensor pipeline block in MHz. The default value is `250`. |
+| v3d_freq | Frequency of 3D block in MHz. The default value is `250`. |
+| avoid_pwm_pll | Don't dedicate a pll to PWM audio. This will reduce analogue audio quality slightly. The spare PLL allows the `core_freq` to be set independently from the rest of the GPU, allowing for more control over overclocking. The default value is `0`.|
+| sdram_freq | Frequency of the SDRAM in MHz. The default value is `400`. |
+| over_voltage | CPU/GPU core voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps; in other words, specifying -16 will give 0.8V as the GPU/core voltage, and specifying 8 will give 1.4V. The default value is `0` (1.2V). Values above 6 are only allowed when `force_turbo` or `current_limit_override` are specified; this sets the warranty bit. |
 | over_voltage_sdram | Sets `over_voltage_sdram_c`, `over_voltage_sdram_i`, and `over_voltage_sdram_p` together. |
-| over_voltage_sdram_c | SDRAM controller voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is 0 (1.2V). |
-| over_voltage_sdram_i | SDRAM I/O voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is 0 (1.2V). |
-| over_voltage_sdram_p | SDRAM phy voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is 0 (1.2V). |
-| force_turbo | Disables the dynamic cpufreq driver and minimum settings described below. Enables h264/v3d/isp overclocking options. The default value is 0. Enabling this may set the warranty bit. |
-| initial_turbo | Enables turbo mode from boot for the given value in seconds up to 60, or until cpufreq sets a frequency; for more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=425#p180099). This option can help with SD card corruption if the Pi is overclocked. The default value is 0. |
-| arm_freq_min | Minimum value of `arm_freq` used for dynamic frequency clocking. The default value is 700. |
-| core_freq_min | Minimum value of `core_freq` used for dynamic frequency clocking. The default value is 250. |
-| sdram_freq_min | Minimum value of `sdram_freq` used for dynamic frequency clocking. The default value is 400. |
-| over_voltage_min | Minimum value of `over_voltage` used for dynamic frequency clocking. The default value is 0. |
-| temp_limit | Overheat protection. This sets the clocks and voltages to default when the SoC reaches this value in Celsius. Setting this higher than the default voids your warranty; the default value is 85. |
-| current_limit_override | Disables SMPS current limit protection when set to 0x5A000020. This can help if you are currently hitting a reboot failure when specifying a value for overclocking that is too high. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=325#p170793). Changing this option may set the warranty bit. |
+| over_voltage_sdram_c | SDRAM controller voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
+| over_voltage_sdram_i | SDRAM I/O voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
+| over_voltage_sdram_p | SDRAM phy voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
+| force_turbo | Disables the dynamic cpufreq driver and minimum settings described below. Enables h264/v3d/isp overclocking options. The default value is `0`. Enabling this may set the warranty bit. |
+| initial_turbo | Enables turbo mode from boot for the given value in seconds up to 60, or until cpufreq sets a frequency; for more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=425#p180099). This option can help with SD card corruption if the Pi is overclocked. The default value is `0`. |
+| arm_freq_min | Minimum value of `arm_freq` used for dynamic frequency clocking. The default value is `700`. |
+| core_freq_min | Minimum value of `core_freq` used for dynamic frequency clocking. The default value is `250`. |
+| sdram_freq_min | Minimum value of `sdram_freq` used for dynamic frequency clocking. The default value is `400`. |
+| over_voltage_min | Minimum value of `over_voltage` used for dynamic frequency clocking. The default value is `0`. |
+| temp_limit | Overheat protection. This sets the clocks and voltages to default when the SoC reaches this value in Celsius. Setting this higher than the default voids your warranty; the default value is `85`. |
+| current_limit_override | Disables SMPS current limit protection when set to `0x5A000020`; it requires this unusual value to ensure that it doesn't get triggered accidentally. This can help if you are currently hitting a reboot failure when specifying a value for overclocking that is too high. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=325#p170793). Changing this option may set the warranty bit. |
 
 #### force_turbo
 
 `force_turbo=0`
 
-Enables dynamic clocks and voltage for the ARM core, GPU core and SDRAM.
-
-When busy, ARM frequency goes up to `arm_freq` and down to `arm_freq_min` on idle.
+This enables dynamic clocks and voltage for the CPU, GPU core and SDRAM. When busy, the CPU frequency goes up to `arm_freq` and down to `arm_freq_min` on idle.
 
 `core_freq`/`core_freq_min`, `sdram_freq`/`sdram_freq_min` and `over_voltage`/`over_voltage_min` behave in a similar manner. `over_voltage` is limited to 6 (1.35V). Non-default values for the h264/v3d/isp frequencies are ignored.
-
-Non-default values for the h264/v3d/isp frequencies are ignored.
 
 `force_turbo=1`
 
 Disables dynamic frequency clocking, so that all frequencies and voltages stay high. Overclocking of h264/v3d/isp GPU parts is allowed, as well as setting `over_voltage` up to 8 (1.4V). For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&sid=852d546291ae711ffcd8bf23d3214581&start=325#p170793).
 
-## Clocks relationship
+### Clocks relationship
 
-The GPU core, h264, v3d, and ISP share a [PLL](http://en.wikipedia.org/wiki/Phase-locked_loop#Clock_generation) and therefore need to have related frequencies. The CPU, SDRAM and GPU each have their own PLLs and can have unrelated frequencies; for more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=275#p168042).
+The GPU core, h264, v3d, and ISP blocks all share a [PLL](http://en.wikipedia.org/wiki/Phase-locked_loop#Clock_generation) and therefore need to have related frequencies. The CPU, SDRAM and GPU each have their own PLLs and can have unrelated frequencies; for more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=275#p168042).
 
 The frequencies are calculated as follows:
 
 ```
-  pll_freq = floor(2400 / (2 * core_freq)) * (2 * core_freq)
+  pll_freq = floor(2400 / (2 x core_freq)) x (2 x core_freq)
   gpu_freq = pll_freq / [even number]
 ```
 
 The effective `gpu_freq` is automatically rounded to the nearest even integer; asking for `core_freq=500` and `gpu_freq=300` will result in the divisor of 2000/300 = 6.666 => 6 and so result in a `gpu_freq` of 333.33MHz.
 
-### avoid_pwm_pll
+#### avoid_pwm_pll
 
-Setting this to 1 will decouple a PLL from the PWM hardware. This will result in more hiss on the analogue audio output, but will allow you to set the `gpu_freq` independently of the `core_freq`.
+Setting this to `1` will decouple a PLL from the PWM hardware. This will result in more hiss on the analogue audio output, but will allow you to set the `gpu_freq` independently of the `core_freq`.
 
 ### Monitoring temperature and voltage
 
