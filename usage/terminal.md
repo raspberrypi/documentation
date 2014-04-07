@@ -1,6 +1,6 @@
 # Terminal
 
-The terminal (or 'command-line') on a computer allows a user a great deal of control over their system (or in this case, Pi!). Users of Windows may already have come across `Command Prompt` or `Powershell` and Mac OS users may be familiar with `Terminal`. All of these tools allow a user to directly manipulate their system through the use of commands. These commands can be chained together and/or combined together into complex scripts that can be potentially more efficient at completing tasks than much larger traditional software packages.
+The terminal (or 'command-line') on a computer allows a user a great deal of control over their system (or in this case, Pi!). Users of Windows may already have come across `Command Prompt` or `Powershell` and Mac OS users may be familiar with `Terminal`. All of these tools allow a user to directly manipulate their system through the use of commands. These commands can be chained together and/or combined together into complex scripts that can potentially complete tasks more efficiently than much larger traditional software packages.
 
 ## Starting LXTerminal
 
@@ -12,9 +12,9 @@ You should be able to see a line saying something similar to:
 
 `pi@raspberrypi ~ $`
 
-However this may vary for you, in this example `pi` is the name of the currently logged in user and `raspberrypi` is the 'hostname' of the Pi (so if your user name was Fred and the hostname was `fredsraspberry` then it would be `fred@fredsraspberry`).
+However this may vary for you. In this example `pi` is the name of the currently logged in user and `raspberrypi` is the 'hostname' of the Pi (so if your user name was Fred and the hostname was `fredsraspberry` then it would be `fred@fredsraspberry`).
 
-Now, let's try running a command. Type `pwd` followed by the `enter` key. This should display something along the lines of `\home\pi` (again this depends on your user name!). This command displays your 'present working directory' (hence `pwd`!).
+Now, let's try running a command. Type `pwd` followed by the `enter` key. This should display something like `\home\pi` (again this depends on your user name!). This command displays your 'present working directory' (hence `pwd`!).
 
 ## Navigating and browsing your Pi
 
@@ -22,7 +22,7 @@ One of the key aspects of using a terminal is being able to navigate your file s
 
 ![](images/lsresult.png)
 
-The `ls` command lists the contents of the directory that you are currently in (your present working directory). The `-la` component of the command is what's known as a 'flag', these modify the command that's being run. In this case the `l` displays the contents of the directory in a list, showing data such as their sizes and when they were last edited, and the `a` displays all files, including those beginning with a . - known as 'dotfiles'. Dotfiles usually act as configuration files for software and as they are written in text, they can be modified by simply editing them. 
+The `ls` command lists the contents of the directory that you are currently in (your present working directory). The `-la` component of the command is what's known as a 'flag'. Flags modify the command that's being run. In this case the `l` displays the contents of the directory in a list, showing data such as their sizes and when they were last edited, and the `a` displays all files, including those beginning with a `.`, known as 'dotfiles'. Dotfiles usually act as configuration files for software and as they are written in text, they can be modified by simply editing them. 
 
 In order to navigate to other directories the change directory command, `cd`, can be used. You can specify the directory that you want to go to by either the 'absolute' or the 'relative' path. So if you wanted to navigate to the `python_games` directory, you could either do `cd /home/pi/python_games` or just `cd python_games` (if you are currently in `/home/pi`). There are some special cases that may be useful: `~` acts as an alias for your home directory, so `~/python_games` is the same as `/home/pi/python_games`; `.` and `..` are aliases for the current directory and the parent directory respectively, e.g. if you were in `/home/pi/python_games`, `cd ..` would take you to `/home/pi`.
 
@@ -40,7 +40,7 @@ do
 echo Raspberry Pi!
 done
 ```
-Now, save this with the name `fun-script`. Before you can run it you must first make it executable, this can be done by using the change mode command `chmod`. Each file and directory has it's own set of permissions that dictate what a user can and can't do to it. In this case, by running the command `chmod +x fun-script`, the file `fun-script` will now be executable. You can then run it by typing `./fun-script` (assuming that it is in your current directory). This script infinitely loops and prints `Raspberry Pi!`, in order to stop it press `ctrl-C`, this kills any command that's currently being run in the terminal.
+Now, save this with the name `fun-script`. Before you can run it you must first make it executable, this can be done by using the change mode command `chmod`. Each file and directory has its own set of permissions that dictate what a user can and can't do to it. In this case, by running the command `chmod +x fun-script`, the file `fun-script` will now be executable. You can then run it by typing `./fun-script` (assuming that it is in your current directory). This script infinitely loops and prints `Raspberry Pi!`, in order to stop it press `ctrl-C`, this kills any command that's currently being run in the terminal.
 
 ## Sudo
 
