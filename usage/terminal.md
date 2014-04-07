@@ -12,9 +12,9 @@ You should be able to see a line saying something similar to:
 
 `pi@raspberrypi ~ $`
 
-However this may vary for you. In this example `pi` is the name of the currently logged in user and `raspberrypi` is the 'hostname' of the Pi (so if your user name was Fred and the hostname was `fredsraspberry` then it would be `fred@fredsraspberry`).
+However this may vary for you. In this example `pi` is the name of the currently logged in user and `raspberrypi` is the 'hostname' of the Pi (so if your user name was `fred` and the hostname was `fredsraspberry` then it would be `fred@fredsraspberry`).
 
-Now, let's try running a command. Type `pwd` followed by the `enter` key. This should display something like `\home\pi` (again this depends on your user name!). This command displays your 'present working directory' (hence `pwd`!).
+Now, let's try running a command. Type `pwd` followed by the `enter` key. This should display something like `/home/pi` (again this depends on your user name!). This command displays your 'present working directory' (hence `pwd`!).
 
 ## Navigating and browsing your Pi
 
@@ -58,7 +58,7 @@ There are a few other commands that you may find useful, these are listed below:
 * `mv`: This moves a file and places it at the specified location (so where `cp` performs a 'copy-paste', `mv` performs a 'cut-paste'). The usage is similar to `cp`, so `mv ~/fileA /home/otherUser/` would move the file `fileA` from your home directory to that of the user otherUser.
 * `rm`: This will remove the specified file (or directory when used with `-r`). Be careful with this! Files deleted in this way are mostly gone for good!
 * `mkdir`: This makes a new directory, e.g. `mkdir newDir` would create the directory `newDir` in the present working directory.
-* `rmdir`: The will remove an empty directory, e.g. `mkdir oldDir` will remove the directory `oldDir` only if it is empty.
+* `rmdir`: The will remove an empty directory, e.g. `rmdir oldDir` will remove the directory `oldDir` only if it is empty.
 * `cat`: Lists the contents of file(s), e.g. `cat thisFile` will display the contents of `thisFile`.
 
 ## Finding out about a command
