@@ -52,14 +52,7 @@ Rather than using the Pi Store to download new software you can use the command 
 
 ## Other useful commands
 
-There are a few other commands that you may find useful, these are listed below:
-
-* `cp`: This makes a copy of a file and places it at the specified location (essentially doing a 'copy-paste'), for example - `cp ~/fileA /home/otherUser/` would copy the file `fileA` from your home directory to that of the user `otherUser` (assuming you have permission to copy it there!).
-* `mv`: This moves a file and places it at the specified location (so where `cp` performs a 'copy-paste', `mv` performs a 'cut-paste'). The usage is similar to `cp`, so `mv ~/fileA /home/otherUser/` would move the file `fileA` from your home directory to that of the user otherUser.
-* `rm`: This will remove the specified file (or directory when used with `-r`). Be careful with this! Files deleted in this way are mostly gone for good!
-* `mkdir`: This makes a new directory, e.g. `mkdir newDir` would create the directory `newDir` in the present working directory.
-* `rmdir`: The will remove an empty directory, e.g. `mkdir oldDir` will remove the directory `oldDir` only if it is empty.
-* `cat`: Lists the contents of file(s), e.g. `cat thisFile` will display the contents of `thisFile`.
+Other commands that you may find useful can be found on this [page](../linux/usage/commands.md).
 
 ## Finding out about a command
 
