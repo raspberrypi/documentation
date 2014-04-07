@@ -16,7 +16,7 @@ This makes a new directory, e.g. `mkdir newDir` would create the directory `newD
 
 ### rmdir
 
-The will remove an empty directory, e.g. `mkdir oldDir` will remove the directory `oldDir` only if it is empty.
+The will remove an empty directory, e.g. `rmdir oldDir` will remove the directory `oldDir` only if it is empty.
 
 ### rm
 

@@ -8,13 +8,15 @@ On the Raspberry Pi (running Raspbian), the default terminal application is `LXT
 
 ![](images/lxterminal.png)
 
-You should be able to see a line saying something similar to:
+You should be able to see the following prompt:
 
-`pi@raspberrypi ~ $`
+```
+pi@raspberrypi ~ $
+```
 
-However this may vary for you. In this example `pi` is the name of the currently logged in user and `raspberrypi` is the 'hostname' of the Pi (so if your user name was Fred and the hostname was `fredsraspberry` then it would be `fred@fredsraspberry`).
+This shows your username and the hostname of the Pi. Here the username is `pi` and the hostname is `raspberrypi`.
 
-Now, let's try running a command. Type `pwd` followed by the `enter` key. This should display something like `\home\pi` (again this depends on your user name!). This command displays your 'present working directory' (hence `pwd`!).
+Now, let's try running a command. Type `pwd` (present working directory) followed by the `Enter` key. This should display something like `/home/pi`.
 
 ## Navigating and browsing your Pi
 
@@ -22,7 +24,7 @@ One of the key aspects of using a terminal is being able to navigate your file s
 
 ![](images/lsresult.png)
 
-The `ls` command lists the contents of the directory that you are currently in (your present working directory). The `-la` component of the command is what's known as a 'flag'. Flags modify the command that's being run. In this case the `l` displays the contents of the directory in a list, showing data such as their sizes and when they were last edited, and the `a` displays all files, including those beginning with a `.`, known as 'dotfiles'. Dotfiles usually act as configuration files for software and as they are written in text, they can be modified by simply editing them. 
+The `ls` command lists the contents of the directory that you are currently in (your present working directory). The `-la` component of the command is what's known as a 'flag'. Flags modify the command that's being run. In this case the `l` displays the contents of the directory in a list, showing data such as their sizes and when they were last edited, and the `a` displays all files, including those beginning with a `.`, known as 'dotfiles'. Dotfiles usually act as configuration files for software and as they are written in text, they can be modified by simply editing them.
 
 In order to navigate to other directories the change directory command, `cd`, can be used. You can specify the directory that you want to go to by either the 'absolute' or the 'relative' path. So if you wanted to navigate to the `python_games` directory, you could either do `cd /home/pi/python_games` or just `cd python_games` (if you are currently in `/home/pi`). There are some special cases that may be useful: `~` acts as an alias for your home directory, so `~/python_games` is the same as `/home/pi/python_games`; `.` and `..` are aliases for the current directory and the parent directory respectively, e.g. if you were in `/home/pi/python_games`, `cd ..` would take you to `/home/pi`.
 
@@ -40,7 +42,8 @@ do
 echo Raspberry Pi!
 done
 ```
-Now, save this with the name `fun-script`. Before you can run it you must first make it executable, this can be done by using the change mode command `chmod`. Each file and directory has its own set of permissions that dictate what a user can and can't do to it. In this case, by running the command `chmod +x fun-script`, the file `fun-script` will now be executable. You can then run it by typing `./fun-script` (assuming that it is in your current directory). This script infinitely loops and prints `Raspberry Pi!`, in order to stop it press `ctrl-C`, this kills any command that's currently being run in the terminal.
+
+Now, save this with the name `fun-script`. Before you can run it you must first make it executable, this can be done by using the change mode command `chmod`. Each file and directory has its own set of permissions that dictate what a user can and can't do to it. In this case, by running the command `chmod +x fun-script`, the file `fun-script` will now be executable. You can then run it by typing `./fun-script` (assuming that it is in your current directory). This script infinitely loops and prints `Raspberry Pi!`, in order to stop it press `Ctrl + C`. This kills any command that's currently being run in the terminal.
 
 ## Sudo
 
@@ -52,8 +55,16 @@ Rather than using the Pi Store to download new software you can use the command 
 
 ## Other useful commands
 
-Other commands that you may find useful can be found on this [page](../linux/usage/commands.md).
+There are a few other commands that you may find useful, these are listed below:
+
+- `cp` makes a copy of a file and places it at the specified location (essentially doing a 'copy-paste'), for example - `cp file_a /home/other_user/` would copy the file `file_a` from your home directory to that of the user `other_user` (assuming you have permission to copy it there). Note that if the target is a folder, the filename will remain the same, but if the target is a filename, it will give the file the new name.
+- `mv` moves a file and places it at the specified location (so where `cp` performs a 'copy-paste', `mv` performs a 'cut-paste'). The usage is similar to `cp`, so `mv file_a /home/other_user/` would move the file `file_a` from your home directory to that of the specified user. `mv` is also used to rename a file, i.e. move it to a new location, e.g. `mv hello.txt story.txt`.
+- `rm` removes the specified file (or directory when used with `-r`). **Warning:** Files deleted in this way are generally not restorable.
+- `mkdir`: This makes a new directory, e.g. `mkdir new_dir` would create the directory `new_dir` in the present working directory.
+- `cat` lists the contents of files, e.g. `cat some_file` will display the contents of `some_file`.
+
+Other commands you may find useful can be found in the [commands page](../linux/usage/commands.md).
 
 ## Finding out about a command
 
-To find out more information about a particular command then you can run the `man` followed by the command you want to know more about (e.g. `man ls`). The man-page (or manual page) for that command will be displayed, including information about the flags for that program and what effect they have. Some man-pages will give examples of usage or even list current bugs!
+To find out more information about a particular command then you can run the `man` followed by the command you want to know more about (e.g. `man ls`). The man-page (or manual page) for that command will be displayed, including information about the flags for that program and what effect they have. Some man-pages will give example usage.
