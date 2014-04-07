@@ -1,6 +1,6 @@
 # Terminal
 
-The terminal (or 'command-line') on a computer allows a user a great deal of control over their system (or in this case, Pi!). Users of Windows may already have come across `Command Prompt` or `Powershell` and Mac OS users may be familiar with `Terminal`. All of these tools allow a user to directly manipulate their system through the use of commands. These commands can be chained together and/or combined together into complex scripts that can potentially complete tasks more efficiently than much larger traditional software packages.
+The terminal (or 'command-line') on a computer allows a user a great deal of control over their system (or in this case, Pi!). Users of Windows may already have come across `Command Prompt` or `Powershell` and Mac OS users may be familiar with `Terminal`. All of these tools allow a user to directly manipulate their system through the use of commands. These commands can be chained together and/or combined together into complex scripts (see the [linux usage page on scripting](../linux/usage/scripting.md)) that can potentially complete tasks more efficiently than much larger traditional software packages.
 
 ## Starting LXTerminal
 
@@ -32,26 +32,17 @@ In order to navigate to other directories the change directory command, `cd`, ca
 
 Rather than type every command, the terminal allows you to scroll through previous commands that you've run by pressing the `up` or `down` keys on your keyboard. If you are writing the name of a file or directory as part of a command then pressing `tab` will attempt to auto-complete the name of what you are typing. For example, if you have a file in a directory called `aLongFileName` then pressing tab after typing `a` will allow you to choose from all file and directory names beginning with `a` in the current directory, allowing you to choose `aLongFileName`.
 
-## Shell scripts
-
-Commands can be combined together into a file which can then be executed. As a (silly) example, copy the following into your favourite text editor:
-
-```bash
-while 1
-do
-echo Raspberry Pi!
-done
-```
-
-Now, save this with the name `fun-script`. Before you can run it you must first make it executable, this can be done by using the change mode command `chmod`. Each file and directory has its own set of permissions that dictate what a user can and can't do to it. In this case, by running the command `chmod +x fun-script`, the file `fun-script` will now be executable. You can then run it by typing `./fun-script` (assuming that it is in your current directory). This script infinitely loops and prints `Raspberry Pi!`, in order to stop it press `Ctrl + C`. This kills any command that's currently being run in the terminal.
-
 ## Sudo
 
 Some commands that make permanent changes to the state of your system require you to have root privileges to run. The command `sudo` temporarily gives your account (if you're not already logged in as root) the ability to run these commands, provided your user name is in a list of users ('sudoers'). When you append `sudo` to the start of a command and press `enter` you will be asked for your password, if that is entered correctly then the command you want to run will be run using root privileges. Be careful though, some commands that require `sudo` to run can irreparably damage your system so be careful!
 
+Further information on `sudo` and the root user can be found on the [linux root page](../linux/usage/root.md).
+
 ## Installing software through apt-get
 
 Rather than using the Pi Store to download new software you can use the command `apt-get`, this is the 'package manager' that is included with any Debian based Linux distributions (including Raspbian). It allows you to install and manage new software packages on your Pi. In order to install a new package you would type `sudo apt-get install <package-name>` (where `<pacakge-name>` is the package that you want to install). Running `sudo apt-get update` updates a list of software packages that are available on your system. If a new version of a package is available then `sudo apt-get upgrade` will update any old packages to the new version. Finally, `sudo apt-get remove <pacakge-name>` removes or uninstalls a package from your system.
+
+More information about this can be found in the [linux usage section on apt](../linux/software/apt.md).
 
 ## Other useful commands
 
