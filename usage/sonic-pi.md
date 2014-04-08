@@ -102,6 +102,13 @@ def frere
   sleep 0.5
 end
 ```
+Then call the function by typing `frere`. For example in a loop:
+
+```ruby
+4.times do
+  frere
+end
+```
 
 ## Synths
 
@@ -124,14 +131,6 @@ with_synth "fm"
   sleep 0.5
   play 62
   sleep 0.5
-end
-```
-
-Then call the function by typing `frere`. For example in a loop:
-
-```ruby
-4.times do
-  frere
 end
 ```
 
