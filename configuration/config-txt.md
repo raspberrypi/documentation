@@ -5,7 +5,7 @@ As it's an embedded platform, the Raspberry Pi doesn't have a [BIOS](https://en.
 Any changes will only take effect after you've rebooted your Raspberry Pi. After Linux has booted you can get the current active settings with the following commands:
 
 `vcgencmd get_config <config>` - displays a specific config value, e.g. `vcgencmd get_config arm_freq`.
-l
+
 `vcgencmd get_config int` - lists all the integer config options that are set (non-zero).
 
 `vcgencmd get_config str` - lists all the string config options that are set (non-null).
@@ -14,7 +14,7 @@ Note that there's a small number of config settings that can't be retrieved usin
 
 ## File format
 
-As `config.txt` is read by the early-stage boot firmware it has a very simple file format. The format is a single `property=value` statement on each line, where value is either an integer or a string. Comments may be added, or existing config values may be commented out and disabled, by starting a line with the `#` character.
+As `config.txt` is read by the early-stage boot firmware it has a very simple file format. The format is a single `property=value` statement on each line, where value is either an integer or a string. Comments may be added, or existing config values may be commented out and disabled by starting a line with the `#` character.
 
 Here is an example file:
 
@@ -36,17 +36,17 @@ overscan_bottom=10
 
 #### gpu_mem
 
-GPU memory in megabytes. Sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; maximum value is either `192` or `448` depending on whether you're using a 256MB or 512MB Pi; default value is `64`.
+GPU memory in megabytes. Sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; maximum value is either `192` or `448` depending on whether you're using a 256MB or 512MB Pi. The default value is `64`.
+
+Using `gpu_mem_256` and `gpu_mem_512` allows you to swap the same SD card between both 256MB and 512MB Pis without having to edit `config.txt` each time:
 
 #### gpu_mem_256
 
-GPU memory in megabytes for the 256MB Raspberry Pi. Ignored by the 512MB Pi. Overrides `gpu_mem`. Maximum value is `192`; default is not set.
+GPU memory in megabytes for the 256MB Raspberry Pi (ignored by the 512MB Pi). This overrides `gpu_mem`. The maximum value is `192` and the default is not set.
 
 #### gpu_mem_512
 
-GPU memory in megabytes for the 512MB Raspberry Pi. Ignored by the 256MB Pi. Overrides `gpu_mem`. Maximum value is `448`; default is not set.
-
-Using `gpu_mem_256` and `gpu_mem_512` allows you to swap the same SD card between both 256MB and 512MB Pis without having to edit `config.txt` each time.
+GPU memory in megabytes for the 512MB Raspberry Pi (ignored by the 256MB Pi). This overrides `gpu_mem`. The maximum value is `448` and the default is not set.
 
 #### disable_l2cache
 
@@ -99,7 +99,7 @@ Defines the TV standard used for composite video output over the yellow RCA jack
 
 #### sdtv_aspect
 
-Defines the aspect ratio for composite video output; the default value is `1`.
+This defines the aspect ratio for composite video output. The default value is `1`.
 
 | sdtv_mode | result |
 | --- | --- |
@@ -381,7 +381,7 @@ Setting this to `1` pretends that the HDMI hotplug signal is asserted, so it app
 
 #### hdmi_ignore_hotplug
 
-Setting this to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. In other words, composite output mode will be used even if a HDMI monitor is detected.
+Setting this to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. In other words, composite output mode will be used even if an HDMI monitor is detected.
 
 #### disable_overscan
 
@@ -413,7 +413,7 @@ Specifies the console framebuffer height in pixels. The default is the display h
 
 #### framebuffer_depth
 
-Specifies the console framebuffer depth in bits per pixel; the default value is `16`.
+Specifies the console framebuffer depth in bits per pixel. The default value is `16`.
 
 | framebuffer_depth | result | notes |
 | --- | --- | --- |
@@ -523,15 +523,15 @@ Wait for a given number of milliseconds in `start.elf`, together with `boot_dela
 
 #### avoid_safe_mode
 
-If set to `1`, [safe_mode](http://elinux.org/RPI_safe_mode) boot won't be enabled; the default value is `0`.
+If set to `1`, [safe_mode](http://elinux.org/RPI_safe_mode) boot won't be enabled. The default value is `0`.
 
 #### disable_splash
 
-If set to `1`, don't show the rainbow splash screen on boot; the default value is `0`.
+If set to `1`, don't show the rainbow splash screen on boot. The default value is `0`.
 
 ## Overclocking
 
-**NOTE:** Setting any overclocking parameters to values other than those used by [raspi-config](raspi-config.md#overclock) will set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. This was originally set to detect a void warranty if the device had been overclocked. Since September 19th 2012 you can overclock your Pi without affecting your warranty; for more information [see here](http://www.raspberrypi.org/archives/2008).
+**NOTE:** Setting any overclocking parameters to values other than those used by [raspi-config](raspi-config.md#overclock) will set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. This was originally set to detect a void warranty if the device had been overclocked. Since September 19th 2012 you hav been able to overclock your Pi without affecting your warranty; for more information [see the blog post on *Turbo Mode*](http://www.raspberrypi.org/introducing-turbo-mode-up-to-50-more-performance-for-free/).
 
 The latest kernel has a [cpufreq](http://www.pantz.org/software/cpufreq/usingcpufreqonlinux.html) kernel driver with the "ondemand" governor enabled by default. It has no effect if you have no overclock settings; if you overclock, the CPU frequency will vary with processor load. Non-default values are only used when needed according to the governor. You can adjust the minimum values with the `*_min` config options, or disable dynamic clocking with `force_turbo=1`; for more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=169726#p169726).
 
@@ -582,8 +582,8 @@ The GPU core, h264, v3d, and ISP blocks all share a [PLL](http://en.wikipedia.or
 The frequencies are calculated as follows:
 
 ```
-  pll_freq = floor(2400 / (2 x core_freq)) x (2 x core_freq)
-  gpu_freq = pll_freq / [even number]
+pll_freq = floor(2400 / (2 x core_freq)) x (2 x core_freq)
+gpu_freq = pll_freq / [even number]
 ```
 
 The effective `gpu_freq` is automatically rounded to the nearest even integer; asking for `core_freq=500` and `gpu_freq=300` will result in the divisor of 2000/300 = 6.666 => 6 and so result in a `gpu_freq` of 333.33MHz.
@@ -600,7 +600,7 @@ To view the Pi's current frequency, type: `cat /sys/devices/system/cpu/cpu0/cpuf
 
 To monitor the Pi's PSU voltage, you'll need a multimeter to measure between the TP1 and TP2 power supply test points; more information is available in [power](../troubleshooting/power.md).
 
-It's generally a good idea to keep the core temperature below 70 degrees and the voltage above 4.8V. Note that some USB power supplies fall as low as 4.2V; this is because they are usually designed to charge a 3.7V LiPo battery, rather than to supply 5V to a computer. If your overclocked Raspberry Pi is getting hot a heatsink can be helpful, especially if the Pi is to be run inside a case. A suitable heatsink is the self-adhesive BGA (ball-grid-array) 14x14x10 mm heatsink, available from [RS Components](http://uk.rs-online.com/web/p/heatsinks/6744756/?searchTerm=674-4756&relevancy-data=636F3D3126696E3D4931384E525353746F636B4E756D6265724D504E266C753D656E266D6D3D6D61746368616C6C26706D3D5E5C647B337D5B5C732D2F255C2E2C5D5C647B332C347D2426706F3D313426736E3D592673743D52535F53544F434B5F4E554D4245522677633D4E4F4E45267573743D3637342D3437353626).
+It's generally a good idea to keep the core temperature below 70 degrees and the voltage above 4.8V. Note that some USB power supplies fall as low as 4.2V; this is because they are usually designed to charge a 3.7V LiPo battery, rather than to supply 5V to a computer. If your overclocked Raspberry Pi is getting hot a heatsink can be helpful, especially if the Pi is to be run inside a case. A suitable heatsink is the self-adhesive BGA (ball-grid-array) 14x14x10 mm heatsink, available from [RS Components](http://uk.rs-online.com/web/p/heatsinks/6744756/).
 
 ### Overclocking problems
 
