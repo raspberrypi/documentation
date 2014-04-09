@@ -38,13 +38,23 @@ Moves a file and places it at the specified location (so where `cp` performs a '
 
 ### touch
 
+Either sets the last modified time-stamp of the specified file(s) or creates it if it does not already exist.
+
 ### cat
 
 Lists the contents of file(s), e.g. `cat thisFile` will display the contents of `thisFile`. Can be used to list the contents of multiple files, i.e. `cat *.txt` will list the contents of all `.txt` files in the current directory.
 
-### head & tail
+### head
+
+Displays the beginning of a file. Can be used with `-n` to specify the number of lines to show (by default 10), or with `-c` to specify the number of bytes.
+
+### tail
+
+Displays the end of a file. The starting point in the file can be specified either through `-b` for 512 byte blocks, `-c` for bytes, or `-n` for number of lines.
 
 ### chmod
+
+
 
 ### chown
 
@@ -90,8 +100,18 @@ Lists the contents of file(s), e.g. `cat thisFile` will display the contents of 
 
 ## Networking
 
+### ping
+
+Utility usually used to check if communication can be made with another host. Can be used with default settings by just specifying a hostname (e.g. `ping raspberrypi.org`) or an IP address (e.g. `ping 8.8.8.8`). Can specify the number of packets to send with the `-c` flag.
+
 ### nmap
+
+Network exploration and scanning tool. Can return port and OS information about a host or a range of hosts. Running just `nmap` will display the options available as well as example usage.
 
 ### hostname
 
+Displays the current hostname of the system. A privileged (super) user can set the hostname to a new one by supplying it as an argument (e.g. `hostname new-host`).
+
 ### ifconfig
+
+Displays the network configuration details for the interfaces on the current system when run without any arguments (i.e. `ifconfig`). By supplying the command with the name of an interface (e.g. `eth0` or `lo0`) you can then alter the configuration (check the man-page for more details).
