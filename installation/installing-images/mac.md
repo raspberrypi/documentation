@@ -28,9 +28,9 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
 
     e.g. `diskutil unmountDisk /dev/disk4`
 
-    `sudo dd bs=1m if=image.img of=/dev/DISK`
+    `sudo dd bs=1M if=image.img of=/dev/DISK`
 
-    e.g. `sudo dd bs=1m if=2014-01-07-wheezy-raspbian.img of=/dev/disk4`
+    e.g. `sudo dd bs=1M if=2014-01-07-wheezy-raspbian.img of=/dev/disk4`
 
     This will take a few minutes.
 
