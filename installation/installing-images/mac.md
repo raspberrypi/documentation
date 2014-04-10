@@ -32,6 +32,11 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
 
     e.g. `sudo dd bs=1m if=2014-01-07-wheezy-raspbian.img of=/dev/disk4`
 
+    This may result in an ``dd: invalid number '1m'`` error if you have GNU
+    coreutils installed. In that case you need to use ``1M``:
+
+    `sudo dd bs=1M if=image.img of=/dev/DISK`
+
     This will take a few minutes.
 
 ## Alternative method
