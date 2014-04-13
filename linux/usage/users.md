@@ -35,8 +35,8 @@ The default `pi` user on Raspbian is a sudoer. This gives the abiliy to run comm
 To add a new user to sudoers, type `sudo visudo` (from a sudoer user) and find the line `root    ALL=(ALL:ALL) ALL`, found under the commented header '# User privilege specification'. This will prompt you for a default editor the first time you run it (if you don't have a preference, try Nano). Copy this line and switch from `root` to the username. To allow passwordless root access, change to `NOPASSWD: ALL`. The example below gives the user `bob` passwordless sudo access:
 
 ```bash
-# User privilege specification                                                  
-root    ALL=(ALL:ALL) ALL                                                       
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
 bob ALL = NOPASSWD: ALL
 ```
 
