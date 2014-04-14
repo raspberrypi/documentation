@@ -8,11 +8,11 @@ When logged in as the `pi` user you can change your password with the `passwd` c
 
 Enter `passwd` on the command line and hit `Enter`. You'll be prompted to enter your current password to authenticate, and then asked for a new password. Hit `Enter` on completion and you'll be asked to confirm it. Note that no characters will be displayed while entering your password. Once you've correctly confirmed, you'll be shown a success message (`passwd: password updated successfully`) and the new password will be in effect immediately.
 
-If your user has sudo permissions, you can change another user's password with `passwd` proceeded by the user's username, e.g. `passwd bob` will allow you to set the user `bob`'s password, and then some additional optional values for the user such as their name. Just hit `Enter` to skip each of these options.
+If your user has sudo permissions, you can change another user's password with `passwd` proceeded by the user's username, e.g. `sudo passwd bob` will allow you to set the user `bob`'s password, and then some additional optional values for the user such as their name. Just hit `Enter` to skip each of these options.
 
 ### Remove a user's password
 
-You can remove the password for the user `bob` with `passwd bob -d`.
+You can remove the password for the user `bob` with `sudo passwd bob -d`.
 
 ## Create a new user
 
