@@ -6,7 +6,7 @@ Most users are allowed to run most programs, and to save and edit files stored i
 ## Sudo
 You will not normally log into to the computer as root, but can instead use the sudo command to provide access as the superuser. If you log into your Raspberry Pi as the `pi` user then you are logging in as a normal user. You can run commands as the root user by using the `sudo` command before the program you want to run. 
 
-For example if you want to install additional software on Raspbian then you normally user the apt-get tool. To be able to update the list of available software then you need to prefix the `apt-get` command command with sudo.
+For example if you want to install additional software on Raspbian then you normally use the apt-get tool. To be able to update the list of available software then you need to prefix the `apt-get` command command with sudo.
 `sudo apt-get update`
 [Find out more about the apt commands](../software/apt.md)
 
