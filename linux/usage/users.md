@@ -47,5 +47,5 @@ Save and exit to apply the changes. **Be careful**
 You can delete a user on your system with the command `userdel`. Apply the `-r` flag to remove their home folder too:
 
 ```bash
-userdel -r bob
+sudo userdel -r bob
 ```
