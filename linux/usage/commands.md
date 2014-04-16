@@ -54,47 +54,90 @@ Displays the end of a file. The starting point in the file can be specified eith
 
 ### chmod
 
-
+Normally used to change the permissions for a file. The `chmod` command can use symbols `u` (user that owns the file), `g` (the files group) , `o` (other users) and the permissions r (read), w (write) and x (execute). Using `chmod u+x *filename*` will add execute permission for the owner of the file.
 
 ### chown
 
+Changes the user and/or group that owns a file. It normally needs to be run as root using sudo e.g. `sudo chown pi:root *filename*` will change the owner to pi and the group to root. 
+
 ### ssh
+
+Secure shell. Connect to another computer using an encrypted network connection.
 
 ### scp
 
-### su
+Copies a file from one computer to another using ssh.
+
+### sudo
+
+Run a command as a superuser, or another user. Use `sudo -s` for a superuser shell.
 
 ### dd
 
+Copies a file converting the file as specified. It is often used to copy an entire disk to a single file or back again eg. `dd if=/dev/sdd of=backup.img` will create a backup image from an SD card or USB disk drive at /dev/sdd. Make sure to use the correct drive when copying an image to the SD card as it can overwrite the entire disk.
+
 ### df
+
+Display the disk space available and used on the mounted filesystems. Use `df -h` to see the output in a human readable format using M for MBs rather than showing number of bytes. 
 
 ### unzip
 
+Extracts the files from a compressed zip file. 
+
 ### tar
+
+Store or extract files from a tape archive file. It can also reduce the space required by compressing the file similar to a zip file. 
+
+To create a compressed file use `tar -cvzf *filename.tar.gz* *directory/*`
+To extract the contents of a file use `tar -xvzf *filename.tar.gz*`
+
 
 ### pipes
 
+A pipe allows the output from one command to be used as the input for another command. The pipe symbol is a vertical line `|`. For example to only show the first 10 entries of the ls command it can be piped through the head command `ls | head`
+
 ### tree
+
+Show a directory and all subdirectories and files indented as a tree structure.
 
 ### &
 
+Run a command in the background freeing up the shell for future commands. 
+
 ### wget
+
+Download a file from the web directly to the computer e.g. `wget http://www.raspberrypi.org/documentation/linux/usage/commands.md` will download this file to your computer as `commands.md`
 
 ### curl
 
+Download or upload a file to/from a server. By default it will output the file contents of the file to the screen.
+
+
 ### man
 
+Show the manual page for a file. To find out more run `man man` to view the manual page of the man command. 
 
 
 ## Search
 
 ### grep
 
+Search inside files for certain search patterns e.g. `grep "search" *.txt` will look in all the files in the current directory ending with .txt for the string search.
+
+Supports regular expressions which allows special letter combinations to be included in the search.
+
 ### awk
+
+Programming language useful for searching and manipulating text files.
 
 ### find
 
+Searches a directory and subdirectories for files matching certain patterns. 
+
+
 ### whereis
+
+Finds the location or a command. Looks through standard program locations until it finds the requested command.
 
 
 
