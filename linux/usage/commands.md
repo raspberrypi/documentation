@@ -63,14 +63,17 @@ Changes the user and/or group that owns a file. It normally needs to be run as r
 ### ssh
 
 Secure shell. Connect to another computer using an encrypted network connection.
+For more details see [SSH (secure shell)](../../remote-access/ssh/)
 
 ### scp
 
 Copies a file from one computer to another using ssh.
+For more details see [SCP (secure copy)](../../remote-access/ssh/scp.md)
 
 ### sudo
 
 Run a command as a superuser, or another user. Use `sudo -s` for a superuser shell.
+For more details see [Root user / sudo](root.md)
 
 ### dd
 
