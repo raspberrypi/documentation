@@ -18,10 +18,15 @@ Add missing dependencies:
 $ sudo apt-get install bc
 ```
 
-Build the kernel; this step takes a **lot** of time...
+Configure the kernel - as well as the default configuration you may wish to [configure your kernel in more detail](configuring.md) or [apply patches from another source](patching.md) to add or remove required functionality:
 
 ```
 $ make bcmrpi_defconfig
+```
+
+Build the kernel; this step takes a **lot** of time...
+
+```
 $ make
 $ make modules
 $ sudo make modules_install
@@ -119,6 +124,14 @@ $ sudo umount mnt/ext4
 ```
 
 Unplug the card and boot the Pi!
+
+Another option is to copy the kernel into the same place, but with a different filename - for instance, kernel-myconfig.img. You can then edit the config.txt file to select the kernel to use.
+
+```
+kernel=kernel-rt.img
+```
+
+This has the advantage of keeping your kernel seperate from the kernel image managed by the system, and allowing you to easily revert to a stock kernel in the event that your kernel cannot boot.
 
 ## Links
 

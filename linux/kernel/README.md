@@ -7,6 +7,7 @@ The main Linux kernel is continuously updating; we take long-term releases of th
 - [Updating your kernel](updating.md)
 - [Building a new kernel](building.md)
 - [Configuring the kernel](configuring.md)
+- [Applying patches to the kernel](patching.md)
 - [Getting the kernel headers](headers.md)
 
 ## Getting your code into the kernel
