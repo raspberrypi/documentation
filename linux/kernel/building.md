@@ -115,23 +115,24 @@ $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/ext4 mod
 $ sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/ext4 modules_install
 ```
 
-Finally, copy the kernel onto the SD card:
+Finally, copy the kernel onto the SD card, making sure to back up your old kernel:
 
 ```
+$ sudo cp mnt/fat32/kernel.img mnt/fat32/kernel-backup.img
 $ sudo cp arch/arm/boot/Image mnt/fat32/kernel.img
 $ sudo umount mnt/fat32
 $ sudo umount mnt/ext4
 ```
 
+Another option is to copy the kernel into the same place, but with a different filename - for instance, kernel-myconfig.img - rather than overwriting the kernel.img file. You can then edit the config.txt file to select the kernel that the Pi will boot into.
+
+```
+kernel=kernel-myconfig.img
+```
+
+This has the advantage of keeping your kernel seperate from the kernel image managed by the system and any automatic update tools, and allowing you to easily revert to a stock kernel in the event that your kernel cannot boot.
+
 Unplug the card and boot the Pi!
-
-Another option is to copy the kernel into the same place, but with a different filename - for instance, kernel-myconfig.img. You can then edit the config.txt file to select the kernel to use.
-
-```
-kernel=kernel-rt.img
-```
-
-This has the advantage of keeping your kernel seperate from the kernel image managed by the system, and allowing you to easily revert to a stock kernel in the event that your kernel cannot boot.
 
 ## Links
 
