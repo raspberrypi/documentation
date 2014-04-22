@@ -18,10 +18,15 @@ Add missing dependencies:
 $ sudo apt-get install bc
 ```
 
-Build the kernel; this step takes a **lot** of time...
+Configure the kernel - as well as the default configuration you may wish to [configure your kernel in more detail](configuring.md) or [apply patches from another source](patching.md) to add or remove required functionality:
 
 ```
 $ make bcmrpi_defconfig
+```
+
+Build the kernel; this step takes a **lot** of time...
+
+```
 $ make
 $ make modules
 $ sudo make modules_install
@@ -110,13 +115,22 @@ $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/ext4 mod
 $ sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/ext4 modules_install
 ```
 
-Finally, copy the kernel onto the SD card:
+Finally, copy the kernel onto the SD card, making sure to back up your old kernel:
 
 ```
+$ sudo cp mnt/fat32/kernel.img mnt/fat32/kernel-backup.img
 $ sudo cp arch/arm/boot/Image mnt/fat32/kernel.img
 $ sudo umount mnt/fat32
 $ sudo umount mnt/ext4
 ```
+
+Another option is to copy the kernel into the same place, but with a different filename - for instance, kernel-myconfig.img - rather than overwriting the kernel.img file. You can then edit the config.txt file to select the kernel that the Pi will boot into.
+
+```
+kernel=kernel-myconfig.img
+```
+
+This has the advantage of keeping your kernel seperate from the kernel image managed by the system and any automatic update tools, and allowing you to easily revert to a stock kernel in the event that your kernel cannot boot.
 
 Unplug the card and boot the Pi!
 
