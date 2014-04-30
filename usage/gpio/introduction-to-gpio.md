@@ -8,7 +8,7 @@ One powerful feature of the Raspberry Pi is the row of GPIO (general purpose inp
 
 ![Fritzing diagram of GPIO showing GPIO pins and grounds + 5v and 3v3](basic-gpio-layout.png)
 
-##What are they for? What can I do with them
+##What are they for? What can I do with them?
 You can program the pins to do stuff and interact in amazing ways with the real world. Inputs don't have to come from a physical switch: for example, it could be input from a sensor or a signal from another computer or device. And the output can do anything from turning on an LED to sending a signal or data to another device. If the Raspberry Pi is on a network you can control devices that are attached to it from anywhere\*\* and those devices can send data back. Connectivity and control of physical devices over the internet is a powerful and exciting thing and the Raspberry Pi is ideal for this. There are lots of brilliant examples of physical computing on [our blog][].
 > 
 > \*\*Note: not *literally* anywhere of course. You need things like access to the network and a network capable computing device. And electricity and stuff. Please do not write to us to point this out :)
