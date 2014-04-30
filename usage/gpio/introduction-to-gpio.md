@@ -1,4 +1,3 @@
-
 #Connecting your Raspberry Pi to the real world
 ###An introduction to GPIO and physical computing on the Raspberry Pi
 One powerful feature of the Raspberry Pi is the row of GPIO (general purpose input/output) pins along the edge of the board, next to the yellow video out socket.
@@ -25,7 +24,7 @@ You can program the pins to do stuff and interact in amazing ways with the real 
 
 Ignoring the Pi for a moment, one of the simplest electrical circuits that you can build is a battery connected to a light source and a switch (the resistor is there to protect the LED):
 
-![simple circuit](simple-circuit.PNG)
+![simple circuit](simple-circuit.png)
 
 When we use a GPIO pin as an output, the Raspberry Pi replaces *both the switch and the battery* in the above diagram. Each pin can turn on or off (or go HIGH or LOW in computing terms). When the pin is HIGH it outputs 3.3 volts (3v3). When the pin is LOW it is off.
 
