@@ -15,9 +15,9 @@ The following distributions are included in [NOOBS](noobs.md) and are downloadab
 
 - Pidora
     - Pidora is a [Fedora](http://fedoraproject.org/) Remix optimised for the Raspberry Pi
-    - Latest version released: 2013-08-09
-    - Fedora version: 18
-    - Kernel version: 3.6.11
+    - Latest version released: 2014-04-30
+    - Fedora version: 20
+    - Kernel version: 3.12.17
     - URL: [pidora.ca](http://pidora.ca/)
 
 - RaspBMC
