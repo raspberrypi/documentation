@@ -1,34 +1,89 @@
 # USB
 
-USB on the Raspberry Pi
+## Page Contents
 
-## Overview
+* [Overview](overview)  
+   * [Supported Devices](support)
+   * [General Limitations](genlimits)
+   * [Port Power Limits](powerlimits)
+* [Known Issues](issues)
+* [Troubleshooting](troubleshooting)
 
-The Raspberry Pi Model B is equipped with two USB2.0 ports. These are connected to the LAN9512 combo hub/Ethernet chip IC3, which is itself a USB device connected to BCM2835.
+
+## <a name="overview"></a>Overview
+
+The Raspberry Pi Model B is equipped with two USB2.0 ports. These are connected to the LAN9512 combo hub/Ethernet chip IC3, which is itself a USB device connected to the single upstream USB port on BCM2835.
 
 On the Model A, the single USB2.0 port is directly wired to BCM2835.
 
-The USB host inside BCM2835 is an On-The-Go (OTG) host as BCM2835 was originally intended to be used in the mobile market: i.e. as the single USB port on a phone for connection to a PC, or to a single device.
+The USB ports enable the attachment of peripherals such as keyboards, mice, webcams that provide the Pi with additional functionality. 
 
-OTG in general supports all types of USB devices, but does so by providing a simpler level of autonomous support than a PC host does in order to keep costs low. To provide an adequate level of functionality for most of the USB devices that one might plug into a Pi, the system driver has to perform more processing in software.
+There are some differences between the USB hardware on the Raspberry Pi and the USB hardware on desktop computers or laptop/tablet devices.
 
-## Port Power
+The USB host port inside the Pi is an On-The-Go (OTG) host as the application processor powering the Pi, BCM2835, was originally intended to be used in the mobile market: i.e. as the single USB port on a phone for connection to a PC, or to a single device. In essence, the OTG hardware is simpler than the equivalent hardware on a PC.
 
-USB2.0 devices have defined power requirements, in units of 100mA from 100mA to 500mA. The device advertises its own power requirements to the USB host when it is first connected.
+OTG in general supports communication to all types of USB device, but to provide an adequate level of functionality for most of the USB devices that one might plug into a Pi, the system software has to do more work.
 
-The USB ports on a Raspberry Pi have a design loading of 100mA - sufficient to drive "low-power" devices such as mice and keyboards. Devices such as Wi-Fi adapters, USB hard drives, USB pen drives all consume much more current and should be powered from an external hub with its own power supply. While it is possible to plug a 500mA device into a Pi and have it work with a sufficiently powerful supply, reliable operation is not guaranteed.
+
+### <a name="support"></a>Supported devices
+
+In general, every device supported by Linux is possible to use with the Pi, subject to a few caveats detailed further down. Linux has probably the most comprehensive driver database for legacy hardware of any operating system (it can lag behind for modern device support as it requires open-source drivers for Linux to recognise the device by default).
+
+If you have a device and wish to use it with a Pi, then plug it in. Chances are that it'll "just work". If you are running in a graphical interface (such as the LXDE desktop environment in Raspbian), then it's likely that an icon or similar will pop up announcing the new device.
+
+If the device doesn't appear to work, then refer to the Troubleshooting section.
+
+
+### <a name="genlimits"></a>General limitations
+
+The OTG hardware on Raspberry Pi has a simpler level of support for certain devices, which may present a higher software processing overhead. The Raspberry Pi also has only one root USB port: all traffic from all connected devices is funnelled down this bus, which operates at a maximum speed of 480mbps.
+
+The USB specification defines three device speeds - Low, Full and High. Most mice and keyboards are Low-speed, most USB sound devices are Full-speed and most video devices (webcams or video capture) are High-speed.
+
+Generally, there are no issues with connecting multiple High-speed USB devices to a Pi.
+
+The software overhead incurred when talking to Low- and Full-speed devices means that there are soft limitations on the number of simultaneously active Low- and Full-speed devices. Small numbers of these types of devices connected to a Pi will cause no issues.
+
+
+### <a name="powerlimits"></a>Port Power Limits
+
+USB devices have defined power requirements, in units of 100mA from 100mA to 500mA. The device advertises its own power requirements to the USB host when it is first connected. In theory, the actual power consumed by the device should not exceed its stated 
+
+The USB ports on a Raspberry Pi have a design loading of 100mA each - sufficient to drive "low-power" devices such as mice and keyboards. Devices such as Wi-Fi adapters, USB hard drives, USB pen drives all consume much more current and should be powered from an external hub with its own power supply. While it is possible to plug a 500mA device into a Pi and have it work with a sufficiently powerful supply, reliable operation is not guaranteed.
 
 In addition, hotplugging high-power devices into the Pi's USB ports may cause a brownout which can cause the Pi to reset.
 
 See [Power](power.md) for more information.
 
-## Supported devices
 
-In general, every device supported by Linux is possible to use with the Pi. Linux has probably the most comprehensive driver database for legacy hardware of any operating system (it can lag behind for modern device support as it requires open-source drivers for Linux to recognise the device by default).
+## <a name="knownissues"></a>Devices with known issues  
 
-If you have a device and wish to use it with a Pi, then plug it in. Chances are that it'll "just work".
+**1. Interoperability between the Raspberry Pi and USB3.0 hubs**  
+   There is an issue with USB3.0 hubs in conjuntion with the use of Full- or Low-speed devices (most mice, most keyboards) and the Raspberry Pi. A bug in most USB3.0 hub hardware means that the Raspberry Pi cannot talk to Full- or Low-speed devices connected to a USB3.0 hub.
+  
+   USB2.0 high-speed devices, including USB2.0 hubs, operate correctly when connected via a USB3.0 hub.
+  
+   Avoid connecting Low- or Full-speed devices into a USB3.0 hub. As a workaround, plug a USB2.0 hub into the downstream port of the USB3.0 hub and connect the low-speed device, or use a USB2.0 hub between the Pi and the USB3.0 hub, then plug low-speed devices into the USB2.0 hub.
 
-If a device doesn't work, then the first step is to see if it is detected at all. There are two commands that can be entered into a terminal for this: lsusb and dmesg. The first will print out all devices attached to USB, whether they are actually recognised or not, and the second will print out the kernel message buffer (which can be quite big after booting - try doing sudo dmesg -C then plug in your device and retype dmesg to see new messages).
+**2. USB1.1 webcams**  
+   Old webcams may be Full-speed devices. Because these devices transfer a lot of data and incur additional software overhead, reliable operation is not guaranteed.  
+   As a workaround, try to use the camera at a lower resolution.
+
+**3. Esoteric USB sound cards**  
+  Expensive "audiophile" sound cards typically use far more bandwidth than is necessary to stream audio playback. Reliable operation with 96kHz/192kHz DACs is not guaranteed.  
+  As a workaround, forcing the output stream to be CD quality (44.1kHz/48kHz 16-bit) will reduce the stream bandwidth to reliable levels.
+
+**4. Single-TT USB hubs**  
+  USB2.0 and 3.0 hubs have a mechanism for talking to Full- or Low-speed devices connected to their downstream ports called a Transaction Translator. This device buffers high-speed requests from the host (i.e. the Pi) and transmits them at Full- or Low-speed to the downstream device. Two configurations of hub are allowed by the USB specification: Single-TT (one TT for all ports) and Multi-TT (one TT per port).  
+  Because of the OTG hardware limitations, if too many Full- or Low-speed devices are plugged into a single-TT hub, unreliable operation of the devices may occur. It is recommended to use a Multi-TT hub to interface with multiple lower-speed devices.  
+  As a workaround, spread lower-speed devices out between the Pi's own USB port and the single-TT hub.
+
+
+## <a name="troubleshooting"></a>Troubleshooting
+
+### If your device doesn't work at all
+
+The first step is to see if it is detected at all. There are two commands that can be entered into a terminal for this: `lsusb` and `dmesg`. The first will print out all devices attached to USB, whether they are actually recognised by a device driver or not, and the second will print out the kernel message buffer (which can be quite big after booting - try doing `sudo dmesg -C` then plug in your device and retype `dmesg` to see new messages).
 
 As an example with a USB pendrive:
 ```
@@ -61,39 +116,15 @@ pi@raspberrypi ~ $ dmesg
 [ 8908.213724] sd 1:0:0:0: [sda] Attached SCSI removable disk
 ```
 
-In this case, there are no error messages in dmesg and the pendrive is detected by usb-storage. If your device did not have a driver available, then typically only the first 6 new lines will appear in the dmesg printout.
+In this case, there are no error messages in `dmesg` and the pendrive is detected by the usb-storage driver. If your device did not have a driver available, then typically only the first 6 new lines will appear in the dmesg printout.
 
 If a device enumerates without any errors, but doesn't appear to do anything, then it is likely there are no drivers installed for it. Search around, based on the manufacturer's name for the device or the USB IDs that are displayed in lsusb (e.g. 05dc:a781). The device may not be supported with default Linux drivers - and you may need to download or compile your own third-party software.
 
-##Hubs
+#### If your device has intermittent behaviour
 
-In the USB2.0 specification, there is a large section dedicated to how a USB hub must be implemented and the behaviours that it must perform, for example, when devices are plugged in that exceed its own upstream power capabilities. In addition, there are two implementation choices available to hub chip manufacturers: these alter the behaviour when talking to low- or full-speed (USB1.1) devices plugged into a USB2.0 hub.
+Poor quality power is the most common cause of devices not working, disconnecting or generally being unreliable.  
 
-Not all hubs are created equal.
+* If you are using an external powered hub, try swapping the power adapter supplied with the hub for another compatible power supply with the same voltage rating and polarity.
+* Check to see if the problem resolves itself if you remove other devices from the hub's downstream ports.
+* Temporarily plug the device directly into the Pi and see if the behaviour improves.
 
-### Transaction Translators (TTs)
-
-USB2.0 defines three bus speeds: Low (1.5mbps), Full (12mbps) and High (480mbps). The choice of speed class for a device is a function of how much bandwidth the device requires, the cost when designing the chip and cost when designing the circuit board inside the device.
-
-Keyboards and mice are classically Low-speed devices, as the bandwidth requirement is of the order of bytes per second. Audio and bluetooth devices are typically Full-speed and most video devices (excluding the cheapest) are High-speed.
-
-To talk to a Low- or Full-speed device on a High speed bus, a hub must be used. Hubs contain at least one Transaction Translator (or TT) - a function of the hub chip that takes high-speed packets and buffers them for transmission at slow speed to the lower-speed device. Similarly, data from the lower-speed device the data is buffered and then transmitted in a faster burst to the host.
-
-Hubs are allowed to implement either a Single TT (one TT for all ports, shared between them) or Multiple TT (one TT per port). Note that this definition is per hub *chip*, not per physical hub as we will see later.
-
-### Hubs and the Pi
-
-Because of certain hardware constraints within the USB OTG hardware on the Pi, the use of a Multi-TT hub is strongly recommended when using multiple full- or low-speed devices.
-
-In the absence of a Multi-TT hub, spread devices out between hubs as much as possible. 
-
-### Common deviations from the Hub Specification
-
-1. Back-powering
-   The USB specification states that no hub shall present power from the downstream external power source to the upstream port. Cheap hubs are terrible at complying with this requirement: the 5V is simply connected straight from upstream to the external power adapter.
-2. No overcurrent protection or switching
-   Hubs must protect against overcurrent conditions on downstream ports, either by switching off the port automatically or allowing a resettable polyfuse to blow. Many hubs have no such protections and just connect all downstream port power together.
-3. Daisy-chained hubs
-   A 7-port hub is rarely a 7-port hub. Cheaper versions of these will typically use two 4-port hub ICs and package them together to make a "7 port" variant. There is a limitation in the USB specification on how "deep" hubs can be daisy-chained: up to a maximum of 5 hubs between the host and the device.
-4. Broken hub descriptors
-   Hubs have implementation-specific descriptors that should detail how many ports are available, whether port power switching is ganged or single-port and how much total bus current the hub can supply. Certain broken hubs have bogus information in these descriptors: claiming to be only able to supply 2mA or other nonsense. Linux will comply with the standard and refuse to enumerate devices without enough power available.
