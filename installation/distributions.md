@@ -40,6 +40,6 @@ The following distributions are included in [NOOBS](noobs.md) and are downloadab
 
 - Arch Linux
     - An Arch Linux port for ARM devices.
-    - Latest version released: 2014-01-06
+    - Latest version released: 2014-05-01
     - Kernel version: 3.10
     - URL: [archlinuxarm.org](http://archlinuxarm.org/platforms/armv6/raspberry-pi)
