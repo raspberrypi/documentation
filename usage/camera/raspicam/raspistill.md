@@ -62,7 +62,13 @@ Then run with:
 
 ### More options
 
-For a full list of possible options, run `raspistill` with no arguments, then use <kbd>shift</kbd>+<kbd>page up</kbd> and <kbd>shift</kbd>+<kbd>page down</kbd> to scroll up and down.
+For a full list of possible options, run `raspistill` with no arguments. To scroll, redirect stderr to stdout and pipe the output to `less`:
+
+```
+raspistill 2>&1 | less
+```
+
+Use the arrow keys to scroll and type `q` to exit.
 
 ## Full documentation
 
