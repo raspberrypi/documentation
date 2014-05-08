@@ -62,10 +62,10 @@ Then run with:
 
 ### More options
 
-For a full list of possible options, run `raspistill` with no arguments, or pipe this command through `less` and scroll through:
+For a full list of possible options, run `raspistill` with no arguments. To scroll, redirect stderr to stdout and pipe the output to `less`:
 
 ```
-raspistill | less
+raspistill 2>&1 | less
 ```
 
 Use the arrow keys to scroll and type `q` to exit.
