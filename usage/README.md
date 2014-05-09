@@ -12,7 +12,7 @@ Basic examples to help you get started with some of the software available in Ra
     - Write code to make music with Sonic Pi
 - [Terminal](terminal.md)
     - The Linux terminal is a powerful tool for getting around the filesystem and issuing commands
-- [GPIO](gpio.md)
+- [GPIO](gpio/README.md)
     - The General Purpose Input/Output pins allow you to control and interact with the real world from Python, Scratch or other programming environments
 - [Minecraft](minecraft.md)
     - A free version of Minecraft is available for the Pi, and this is the only edition that has a programming interface, meaning you can control Minecraft with Python code - and even interact with the real world through GPIO
