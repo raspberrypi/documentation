@@ -2,7 +2,7 @@
 
 To play an MP3 file, navigate to the location of the .mp3 file in the terminal using `cd` and then type the following command: 
 
-```
+```bash
 omxplayer example.mp3
 ```
     
@@ -10,7 +10,7 @@ This will play the audio file `example.mp3` through either your monitor's built-
 
 If you need an example file you can download one from here using the following command:
 
-```
+```bash
 wget http://goo.gl/MOXGX3 -O la.mp3 --no-check-certificate
 ```
 
