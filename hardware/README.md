@@ -17,3 +17,5 @@ Technical information about the Raspberry Pi hardware, including official add-on
         - USB on the Raspberry Pi
 - [Camera Module](camera.md)
     - The Raspberry Pi camera module
+- [Compute Module](compute-module.md)
+    - The Raspberry Pi industrial module
