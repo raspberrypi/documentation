@@ -49,7 +49,7 @@ GPIO28-45_VREF | See note [2]
 
 ## Module booting and flashing the eMMC
 
-The 4GB eMMC Flash device on the Compute Module is directly connected to the primary BCM28235 SD/eMMC interface. These connections are not accessible on the module pins.
+The 4GB eMMC Flash device on the Compute Module is directly connected to the primary BCM2835 SD/eMMC interface. These connections are not accessible on the module pins.
 
 When initially powered on, or after the RUN pin has been held low and then released, the BCM2835 will try to access the eMMC device. It will then look for a file called bootcode.bin on the primary partition (which must be FAT) to start booting the system. If it cannot access the eMMC device or the boot code cannot be found, it will fall back to waiting for boot code to be written to it over USB; in other words, its USB port is in slave mode waiting to accept boot code from a suitable host.
 
