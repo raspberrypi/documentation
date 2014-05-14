@@ -8,7 +8,7 @@ Currently Minecraft is not installed by default in Raspbian. To install it, down
 
 Open a terminal window and type the following commands:
 
-```
+```bash
 wget http://goo.gl/o2aene -O mcpi.tar.gz --no-check-certificate
 tar xzf mcpi.tar.gz
 ```
@@ -17,7 +17,7 @@ tar xzf mcpi.tar.gz
 
 Now you should have a folder called mcpi in your home folder. To run Minecraft type:
 
-```
+```bash
 cd mcpi
 ./minecraft-pi
 ```
@@ -32,7 +32,7 @@ With Minecraft running, return to your terminal window and open a new tab by cli
 
 In the new tab, navigate to the Python API directory:
 
-```
+```bash
 cd ~/mcpi/api/python
 ```
 
