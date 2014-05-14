@@ -8,7 +8,7 @@ Note that the quality and configurability of the camera module is highly superio
 
 First, install the `fswebcam` package:
 
-```
+```bash
 sudo apt-get install fswebcam
 ```
 
@@ -16,7 +16,7 @@ sudo apt-get install fswebcam
 
 Enter the command `fswebcam` followed by a filename and a picture will be taken using the webcam, and saved to the filename specified:
 
-```
+```bash
 fswebcam image.jpg
 ```
 
@@ -43,7 +43,7 @@ Note the small default resolution used, and the presence of a banner showing the
 
 The webcam used in this example has a resolution of `1280 x 720` so to specify the resolution I want the image to be taken at, use the `-r` flag:
 
-```
+```bash
 fswebcam -r 1280x720 image2.jpg
 ```
 
@@ -69,7 +69,7 @@ Picture not taken at the full resolution of the webcam, with the banner present.
 
 Now add the `--no-banner` flag:
 
-```
+```bash
 fswebcam -r 1280x720 --no-banner image3.jpg
 ```
 
@@ -96,7 +96,7 @@ Now the picture is taken at full resolution with no banner.
 
 You can write a Bash script which takes a picture with the webcam. To create a script, open up your editor of choice and write the following example code:
 
-```
+```bash
 #!/bin/bash
 
 DATE=$(date +"%Y-%m-%d_%H%M")
@@ -106,13 +106,13 @@ fswebcam -r 1280x720 --no-banner /home/pi/webcam/$DATE.jpg
 
 This script will take a picture and name the file with a timestamp. Say we saved it as `webcam.sh`, we would first make the file executable:
 
-```
+```bash
 chmod +x webcam.sh
 ```
 
 Then run with:
 
-```
+```bash
 ./webcam.sh
 ```
 
@@ -143,13 +143,13 @@ crontab -e
 
 This will either ask which editor you would like to use, or open in your default editor. Once you have the file open in an editor, add the following line to schedule taking a picture every minute (referring to the Bash script from above):
 
-```
+```bash
 * * * * * /home/pi/webcam.sh 2>&1
 ```
 
 Save and exit and you should see the message:
 
-```
+```bash
 crontab: installing new crontab
 ```
 
