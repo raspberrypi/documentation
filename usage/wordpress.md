@@ -16,7 +16,7 @@ PHP is a preprocessor; it's code that runs when the server receives a request fo
 
 Install the PHP and Apache packages with the following command:
 
-```
+```bash
 sudo apt-get install php5 libapache2-mod-php5 -y
 ```
 
@@ -26,7 +26,7 @@ MySQL (pronounced *My Sequel* or *My S-Q-L*) is a popular database engine. Like 
 
 Install the MySQL Server and PHP-MySQL packages by entering the following command into the terminal:
 
-```
+```bash
 sudo apt-get install mysql-server php5-mysql -y
 ```
 
@@ -38,7 +38,7 @@ You can download WordPress from [wordpress.org](http://wordpress.org/) using the
 
 Navigate to `/var/www/`, and download WordPress to this location. You'll need to empty the folder first (be sure to check you're not deleting files you need before running `rm`); change the ownership of this folder to the `pi` user too.
 
-```
+```bash
 cd /var/www
 chown pi: .
 rm *
@@ -47,7 +47,7 @@ wget http://wordpress.com/latest.tar.gz
 
 Now extract the tarball, move the contents of the folder it extracted (`wordpress`) to the current directory and remove the (now empty) folder and the tarball to tidy up:
 
-```
+```bash
 tar xzf latest.tar.gz
 mv wordpress/* .
 rm -rf wordpress latest.tar.gz
@@ -55,7 +55,7 @@ rm -rf wordpress latest.tar.gz
 
 Running the `ls` or (`tree -L 1`) command here will show you the contents of a WordPress project:
 
-```
+```bash
 .
 ├── index.php
 ├── license.txt
@@ -84,7 +84,7 @@ This is the source of a default WordPress installation. The files you edit to cu
 
 To get your WordPress site set up, you need a database. Run the `mysql` command in the terminal, and provide your login credentials (e.g. username `root`, password `password`):
 
-```
+```bash
 mysql -uroot -ppassword
 ```
 
@@ -92,7 +92,7 @@ Here I have provided my password (the word `password`) on the command line; ther
 
 Alternatively you can simply supply an empty `-p` flag and wait to be asked for a password:
 
-```
+```bash
 mysql -uroot -p
 ```
 
