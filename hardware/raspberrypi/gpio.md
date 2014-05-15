@@ -4,7 +4,7 @@ General Purpose Input/Output pins on the Raspberry Pi
 
 ## Overview
 
-This page expands on the technical features of the GPIO pins available on BCM2835 in general. For usage examples, see the [GPIO Usage](../../usage/gpio/README.md) section. When reading this page, reference should be made to the BCM2835 ARM Peripherals Datasheet, section 6.
+This page expands on the technical features of the GPIO pins available on BCM2835 in general. For usage examples, see the [GPIO Usage](../../usage/gpio/README.md) section. When reading this page, reference should be made to the BCM2835 ARM Peripherals [Datasheet](bcm2835.md), section 6.
 
 GPIO pins can be configured as either general-purpose input, general-purpose output or as one of up to 5 special alternate settings, the functions of which are pin-dependant.
 
@@ -21,7 +21,7 @@ The GPIO connections on the BCM2835 package are sometimes referred to in the per
 The pads are configurable CMOS push-pull output drivers/input buffers. Register-based control settings are available for
 
 * Internal pull-up / pull-down enable/disable
-* Output drive strength
+* Output [drive strength](http://www.scribd.com/doc/101830961/GPIO-Pads-Control2)
 * Input Schmitt-trigger filtering
 
 ### Power-On States
