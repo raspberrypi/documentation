@@ -52,7 +52,7 @@ Add-ons provide extra functionality or enable connection to web services like Yo
 
 The YouTube add-on showing search results:
 
-![](images/xbmc-youtube.png)
+![](images/xbmc-youtube.jpg)
 
 You can configure add-ons from the settings menu. A selection is available for you to browse. Select one and you'll be prompted to install it. Each add-on has its own configurations.
 
