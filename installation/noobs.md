@@ -2,6 +2,8 @@
 
 **New Out Of the Box Software** - an easy operating system install manager for the Raspberry Pi
 
+![](images/noobs.png)
+
 ## How to get NOOBS
 
 ### Buy a pre-installed SD card
