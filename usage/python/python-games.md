@@ -4,7 +4,7 @@ On the Raspbian desktop you'll find an icon with the Python logo labelled `Pytho
 
 ![](images/python-games-icon.png)
 
-Double click this icon to start. This will prompt you to set your audio configuration to output sound over HDMI or the headphone jack. Make a selection or leave on auto and proceed.
+Double click this icon to start. This will prompt you to set your audio configuration to output sound over HDMI or the headphone jack. Make a selection or leave it as it is and click `OK` to proceed.
 
 ![](images/audio-output.png)
 
