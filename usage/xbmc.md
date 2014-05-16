@@ -1,4 +1,4 @@
-# Installing XBMC on the Raspberry Pi
+# Using XBMC on the Raspberry Pi
 
 XBMC is media centre software which runs on Raspberry Pi.
 
