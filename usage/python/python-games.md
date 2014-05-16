@@ -38,7 +38,7 @@ The `python_games` folder contents in a the file manager window:
 
 The Python source code for the *Four in a Row* game, open for editing in `IDLE`.
 
-![](images/four-in-a-row-source.png)
+![](images/four-in-a-row-code.png)
 
 ### Hack the game
 
