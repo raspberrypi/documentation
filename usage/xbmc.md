@@ -32,6 +32,16 @@ You may be shown a Welcome screen which will help you configure your setup and h
 
 ![](images/openelec-main.png)
 
+## Power
+
+You can power your Pi the conventional way with a wall socket USB micro cable, or if your TV has a USB port you can connect the Pi directly with a USB micro cable. This means your Pi will be powered when the TV is turned on, and powered down when the TV is turned off.
+
+## Control
+
+You can use a keyboard and mouse with XBMC, or you can buy a TV remote with a USB receiver, or even use a presentation clicker with directional buttons.
+
+You can also use an XBMC app on your smartphone (search for `XBMC` in your phone's app store), configure it to connect to your XBMC Pi's IP address and you can use the on-screen remote control or navigate the files from your phone and select what to play.
+
 ### Playing video files
 
 You can copy video files on to your Pi's SD card or put them on a USB stick or external hard drive. To play these files, simply choose **VIDEOS** in the slider on the main screen, then **Files** and you should see your inserted media in the list of sources. Select your device and you should be able to navigate it like you would on a computer. Find the video file you wish to play, select it and it will play.
@@ -55,9 +65,3 @@ The YouTube add-on showing search results:
 ![](images/xbmc-youtube.jpg)
 
 You can configure add-ons from the settings menu. A selection is available for you to browse. Select one and you'll be prompted to install it. Each add-on has its own configurations.
-
-## Control
-
-You can use a keyboard and mouse with XBMC, or you can buy a TV remote with a USB receiver, or even use a presentation clicker with directional buttons.
-
-You can also use an XBMC app on your smartphone (search for `XBMC` in your phone's app store), configure it to connect to your XBMC Pi's IP address and you can use the on-screen remote control or navigate the files from your phone and select what to play.
