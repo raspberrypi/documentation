@@ -16,7 +16,7 @@ With NOOBS on your SD Card, you should be able to boot the Raspberry Pi to the N
 
 Select **OpenELEC** or **RaspBMC** and hit the `Install` button.
 
-You'll be prompted to confirm  (this will delete any data on the SD card - so if you previously had Raspbian on it, be sure to back up your files first). If you're sure, click `Yes` to continue and the installation. This will take some time, and when complete will show a window saying:
+You'll be prompted to confirm  (this will delete any data on the SD card - so if you previously had Raspbian on it, be sure to back up your files first). If you're sure, click `Yes` to continue and start the installation. This will take some time, and when complete will show a window saying:
 
 ```
 OS(es) Installed Successfully
