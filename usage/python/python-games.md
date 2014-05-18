@@ -44,4 +44,4 @@ The Python source code for the *Four in a Row* game, open for editing in `IDLE`.
 
 You can edit the source of these games. Why not make a copy of a Python file, look through the code and change some numbers? See what happens.
 
-If you can figure out how the game works, try to hack it to make it better, make it harder (or easier) to win, or add some features to the game! You could add GPIO interaction so lights flash when you win, or add input buttons.
+If you can figure out how the game works, try to hack it to make it better, make it harder (or easier) to win, or add some features to the game! You could add [GPIO](../gpio/README.md) interaction so lights flash when you win, or add input buttons.
