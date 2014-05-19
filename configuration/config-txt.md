@@ -101,7 +101,7 @@ Defines the TV standard used for composite video output over the yellow RCA jack
 
 This defines the aspect ratio for composite video output. The default value is `1`.
 
-| sdtv_mode | result |
+| sdtv_aspect | result |
 | --- | --- |
 | 1 | 4:3 |
 | 2 | 14:9 |
