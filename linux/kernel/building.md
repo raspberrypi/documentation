@@ -66,7 +66,7 @@ Enter the following commands to build the sources:
 
 ```
 $ cd linux
-$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi-defconfig
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
 ```
 
