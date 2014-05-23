@@ -467,7 +467,7 @@ Set to `1` to stop `start.elf` from filling in ATAGS (memory from `0x100`) befor
 
 #### cmdline
 
-The command line parameter string. This can be used instead of a `cmdline.txt` file.
+The alternative filename on the boot partition to read the kernel command line string from; the default value is `cmdline.txt`.
 
 #### kernel
 
