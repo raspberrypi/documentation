@@ -8,8 +8,8 @@ This is the official documentation for the Raspberry Pi, written by the [Raspber
     - Getting started with your Raspberry Pi, including what you need and how to get it booted
 - [Installation](installation/README.md)
     - Installing an operating system on your Raspberry Pi
-- [Usage](usage/README.md)
-    - Basic examples to help you get started with the software installed by default in Raspbian
+- [Usage Guide](usage/README.md)
+    - Explore the desktop and try out all the main applications
 - [Configuration](configuration/README.md)
     - Configuring the Pi's settings to suit your needs
 - [Remote Access](remote-access/README.md)
