@@ -1,4 +1,4 @@
-# Compute Module
+# Compute Module Design Guide
 
 ## Powering the module
 
@@ -193,6 +193,6 @@ The maximum component height on the underside of the Compute Module is 1.2mm.
 
 The maximum component height on the top side of the Compute Module is 1.5mm.
 
-The Compute Module PCB thickness is 1.0mm +/- 10%*.
+The Compute Module PCB thickness is 1.0mm +/- 10%.
 
 Note that the location and arrangement of components on the Compute Module may change slightly over time due to revisions for cost and manufacturing considerations; however, maximum component heights and PCB thickness will be kept as specified.
