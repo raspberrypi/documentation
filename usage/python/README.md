@@ -233,7 +233,7 @@ See [more advanced](more.md) information covering:
 - Installing Python libraries
 - GPIO
 
-Also see the page on running the preinstalled [Python Games](python-games.md)
+Also see the page on running the preinstalled [Python Games](../python-games/README.md)
 
 ## Python Documentation
 

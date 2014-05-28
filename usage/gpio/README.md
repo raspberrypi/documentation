@@ -4,11 +4,11 @@ An introduction to GPIO and physical computing on the Raspberry Pi
 
 One powerful feature of the Raspberry Pi is the row of GPIO (general purpose input/output) pins along the edge of the board, next to the yellow video out socket.
 
-![](gpio-pins.jpg)
+![](images/gpio-pins.jpg)
 
  These pins are a physical interface between the Pi and the outside world. At the simplest level you can think of them as switches that you can turn on or off (input) or that the Pi can turn on or off (output). Seventeen of the 26 pins are GPIO pins; the others are power or ground pins.
 
-![](basic-gpio-layout.png)
+![](images/basic-gpio-layout.png)
 
 ## What are they for? What can I do with them?
 
@@ -24,13 +24,13 @@ You can program the pins to do stuff and interact in amazing ways with the real 
 
 Ignoring the Pi for a moment, one of the simplest electrical circuits that you can build is a battery connected to a light source and a switch (the resistor is there to protect the LED):
 
-![](simple-circuit.png)
+![](images/simple-circuit.png)
 
 When we use a GPIO pin as an output, the Raspberry Pi replaces *both the switch and the battery* in the above diagram. Each pin can turn on or off (or go HIGH or LOW in computing terms). When the pin is HIGH it outputs 3.3 volts (3v3). When the pin is LOW it is off.
 
 Here's the same circuit using the Raspberry Pi. The LED is connected to a GPIO pin (which can output +3v3) and a ground pin (which is 0v and acts like the negative terminal of the battery):
 
-![](gpio-led.png)
+![](images/gpio-led.png)
 
 The next step is to write a program to tell the pin to go HIGH or LOW. Here's an example using [Python](http://www.raspberrypi.org/learning/robot-antenna/) (see Step 2) and here's how to do it in [Scratch](http://www.raspberrypi.org/learning/quick-reaction-game/).
 

@@ -18,4 +18,4 @@ If you cannot hear anything, make sure your headphones or speakers are connected
 
 ## Audio Configuration
 
-To switch your audio output between HDMI and the headphone jack, use either the `raspi-config` tool or the `amixer` command. See [audio configuration](../configuration/audio-config.md)
+To switch your audio output between HDMI and the headphone jack, use either the `raspi-config` tool or the `amixer` command. See [audio configuration](../../configuration/audio-config.md)

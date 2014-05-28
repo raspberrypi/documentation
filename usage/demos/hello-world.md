@@ -4,7 +4,7 @@ First, let's do a quick test that will ensure the previous compilation step work
 
 Enter the following commands to go inside the `hello_world` folder and list the files:
 
-```
+```bash
 cd hello_world
 ls
 ```
@@ -13,5 +13,7 @@ You’ll notice the `.bin` file is shown in green; this is because it is an exec
 
 Use the following command to run the demo. You need the `./` to specify the current directory; otherwise the Linux system folders will be searched for the filename you type.
 
-`./hello_world.bin`
+```bash
+./hello_world.bin
+```
 

@@ -16,7 +16,7 @@ The camera may come with a small piece of translucent blue plastic film covering
 
 Open the `raspi-config` tool from the Terminal:
 
-```
+```bash
 sudo raspi-config
 ```
 
@@ -27,6 +27,6 @@ Select `Enable camera` and hit `Enter`, then go to `Finish` and you'll be prompt
 Libraries for using the camera are available in:
 
 - [Shell](raspicam/README.md) (Linux command line)
-- [Python](python-picamera.md)
+- [Python](python/README.md)
 
 See detailed [technical specs](../../hardware/camera.md) of the camera hardware and software.

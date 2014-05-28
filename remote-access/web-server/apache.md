@@ -8,7 +8,7 @@ On its own, Apache can serve HTML files over HTTP, and with additional modules c
 
 First install the `apache2` package by typing the following command in to the Terminal:
 
-```
+```bash
 sudo apt-get install apache2 -y
 ```
 
@@ -33,7 +33,7 @@ ls -al
 
 This will show you:
 
-```
+```bash
 total 12
 drwxr-xr-x  2 root root 4096 Jan  8 01:29 .
 drwxr-xr-x 12 root root 4096 Jan  8 01:28 ..
@@ -63,40 +63,40 @@ If you know HTML you can put your own HTML files and other assets in this direct
 
 To allow your Apache server to process PHP files, you'll need to install PHP5 and the PHP5 module for Apache. Type the following command to install these:
 
-```
+```bash
 sudo apt-get install php5 libapache2-mod-php5 -y
 ```
 
 Now move the `index.html` file to `index.php`:
 
-```
+```bash
 sudo mv index.html index.php
 ```
 
 and edit the file:
 
-```
+```bash
 sudo nano index.php
 ```
 
 to put some PHP content in it:
 
-```
+```php
 <?php echo "hello world";
 ```
 
 Now save and refresh your browser. You should see "hello world". This is not dynamic but still served by PHP. Try something dynamic:
 
-```
+```php
 <?php echo date('Y-m-d H:i:s');
 ```
 
 or show your PHP info:
 
-```
+```php
 <?php phpinfo();
 ```
 
 ### Further - WordPress
 
-Now you have Apache and PHP installed you can progress to setting up a WordPress site on your Pi. Continue to [WordPress usage](../../usage/wordpress.md).
+Now you have Apache and PHP installed you can progress to setting up a WordPress site on your Pi. Continue to [WordPress usage](../../usage/wordpress/README.md).

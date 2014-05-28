@@ -159,11 +159,11 @@ Ensure your scipt does not save each picture taken with the same filename. This 
 
 Other tools are available that may come in handy when using the camera or a webcam:
 
-- [SSH](../remote-access/ssh/README.md)
+- [SSH](../../remote-access/ssh/README.md)
     - Use SSH to remotely access the Raspberry Pi over your local network
-- [SCP](../remote-access/ssh/scp.md)
+- [SCP](../../remote-access/ssh/scp.md)
     - Copy files over SSH to get copies of pictures taken on the Pi on your main computer
-- [rsync](../remote-access/ssh/rsync.md)
+- [rsync](../../remote-access/ssh/rsync.md)
     - Use `rsync` to syncronise the folder of pictures taken in a folder between your Pi to your computer
-- [cron](../linux/cron.md)
+- [cron](../../linux/cron.md)
     - Use `cron` to schedule taking a picture at a given interval, such as every minute to capture a time-lapse

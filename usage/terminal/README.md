@@ -1,6 +1,6 @@
 # Terminal
 
-The terminal (or 'command-line') on a computer allows a user a great deal of control over their system (or in this case, Pi!). Users of Windows may already have come across `Command Prompt` or `Powershell` and Mac OS users may be familiar with `Terminal`. All of these tools allow a user to directly manipulate their system through the use of commands. These commands can be chained together and/or combined together into complex scripts (see the [linux usage page on scripting](../linux/usage/scripting.md)) that can potentially complete tasks more efficiently than much larger traditional software packages.
+The terminal (or 'command-line') on a computer allows a user a great deal of control over their system (or in this case, Pi!). Users of Windows may already have come across `Command Prompt` or `Powershell` and Mac OS users may be familiar with `Terminal`. All of these tools allow a user to directly manipulate their system through the use of commands. These commands can be chained together and/or combined together into complex scripts (see the [linux usage page on scripting](../../linux/usage/scripting.md)) that can potentially complete tasks more efficiently than much larger traditional software packages.
 
 ## Starting LXTerminal
 
@@ -10,7 +10,7 @@ On the Raspberry Pi (running Raspbian), the default terminal application is `LXT
 
 You should be able to see the following prompt:
 
-```
+```bash
 pi@raspberrypi ~ $
 ```
 
@@ -36,13 +36,13 @@ Rather than type every command, the terminal allows you to scroll through previo
 
 Some commands that make permanent changes to the state of your system require you to have root privileges to run. The command `sudo` temporarily gives your account (if you're not already logged in as root) the ability to run these commands, provided your user name is in a list of users ('sudoers'). When you append `sudo` to the start of a command and press `enter` you will be asked for your password, if that is entered correctly then the command you want to run will be run using root privileges. Be careful though, some commands that require `sudo` to run can irreparably damage your system so be careful!
 
-Further information on `sudo` and the root user can be found on the [linux root page](../linux/usage/root.md).
+Further information on `sudo` and the root user can be found on the [linux root page](../../linux/usage/root.md).
 
 ## Installing software through apt-get
 
-Rather than using the Pi Store to download new software you can use the command `apt-get`, this is the 'package manager' that is included with any Debian based Linux distributions (including Raspbian). It allows you to install and manage new software packages on your Pi. In order to install a new package you would type `sudo apt-get install <package-name>` (where `<pacakge-name>` is the package that you want to install). Running `sudo apt-get update` updates a list of software packages that are available on your system. If a new version of a package is available then `sudo apt-get upgrade` will update any old packages to the new version. Finally, `sudo apt-get remove <pacakge-name>` removes or uninstalls a package from your system.
+Rather than using the Pi Store to download new software you can use the command `apt-get`, this is the 'package manager' that is included with any Debian based Linux distributions (including Raspbian). It allows you to install and manage new software packages on your Pi. In order to install a new package you would type `sudo apt-get install <package-name>` (where `<pacakge-name>` is the package that you want to install). Running `sudo apt-get update` updates a list of software packages that are available on your system. If a new version of a package is available then `sudo apt-get upgrade` will update any old packages to the new version. Finally, `sudo apt-get remove <package-name>` removes or uninstalls a package from your system.
 
-More information about this can be found in the [linux usage section on apt](../linux/software/apt.md).
+More information about this can be found in the [linux usage section on apt](../../linux/software/apt.md).
 
 ## Other useful commands
 
@@ -54,7 +54,7 @@ There are a few other commands that you may find useful, these are listed below:
 - `mkdir`: This makes a new directory, e.g. `mkdir new_dir` would create the directory `new_dir` in the present working directory.
 - `cat` lists the contents of files, e.g. `cat some_file` will display the contents of `some_file`.
 
-Other commands you may find useful can be found in the [commands page](../linux/usage/commands.md).
+Other commands you may find useful can be found in the [commands page](../../linux/usage/commands.md).
 
 ## Finding out about a command
 

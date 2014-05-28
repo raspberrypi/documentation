@@ -38,7 +38,7 @@ cd ~/mcpi/api/python
 
 Now open the Python interpreter by typing `python` and hitting Enter. With the Python interpreter loaded, start by importing the Minecraft library; this lives in the `mcpi/api/python/` directory which is why you must navigate here to access it.
 
-You can either type commands in Python's interactive mode, or create a file with a list of commands, then execute the file at will. See more about [using Python](python.md).
+You can either type commands in Python's interactive mode, or create a file with a list of commands, then execute the file at will. See more about [using Python](../python/README.md).
 
 Next, import the Minecraft library with the following command:
 

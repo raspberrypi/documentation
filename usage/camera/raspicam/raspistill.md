@@ -6,7 +6,7 @@
 
 With the camera module [connected and enabled](../README.md), enter the following command in the Terminal to take a picture:
 
-```
+```bash
 raspistill -o cam.jpg
 ```
 
@@ -18,7 +18,7 @@ In this example the camera has been positioned upside-down. If the camera is pla
 
 With the camera placed upside-down, the image must be rotated 180° to be displayed correctly. The way to correct for this is to apply both a vertical and a horizontal flip by passing in the `-vf` and `-hf` flags:
 
-```
+```bash
 raspistill -vf -hf -o cam2.jpg
 ```
 
@@ -40,7 +40,7 @@ Taking 1 photo per minute would take up 1GB in about 7 hours. This is a rate of 
 
 You can create a Bash script which takes a picture with the camera. To create a script, open up your editor of choice and write the following example code:
 
-```
+```bash
 #!/bin/bash
 
 DATE=$(date +"%Y-%m-%d_%H%M")
@@ -50,13 +50,13 @@ raspistill -vf -hf -o /home/pi/camera/$DATE.jpg
 
 This script will take a picture and name the file with a timestamp. Say we saved it as `camera.sh`, we would first make the file executable:
 
-```
+```bash
 chmod +x camera.sh
 ```
 
 Then run with:
 
-```
+```bash
 ./camera.sh
 ```
 
@@ -64,7 +64,7 @@ Then run with:
 
 For a full list of possible options, run `raspistill` with no arguments. To scroll, redirect stderr to stdout and pipe the output to `less`:
 
-```
+```bash
 raspistill 2>&1 | less
 ```
 
