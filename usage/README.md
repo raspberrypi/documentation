@@ -20,7 +20,7 @@ Basic examples to help you get started with some of the software available in Ra
     - Raspbian ships with some ready made Python games for you to play on your Raspberry Pi - and why not browse the code, hack the games and learn to make your own?
 - [WordPress](wordpress.md)
     - Set up a web server on your Raspberry Pi and install content management and blogging system WordPress
-- [Mathematica](mathematica.md)
+- [Mathematica](mathematica/README.md)
     - Mathematica is an industry leading computational platform - available for free on Raspberry Pi
 - [Camera Module](camera/README.md)
     - The Raspberry Pi camera module is capable of taking full HD 1080p photo and video and can be controlled programmatically
