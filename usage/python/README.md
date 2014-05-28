@@ -2,13 +2,21 @@
 
 Python is a wonderful and powerful programming language that's easy to use (easy to read **and** write) and with Raspberry Pi lets you connect your project to the real world.
 
+![](images/python-logo.png)
+
 Python syntax is very clean, with an emphasis on readability and uses standard English keywords. Start by opening IDLE from the desktop.
 
 ## IDLE
 
-The easiest introduction to Python is through IDLE. Double click the IDLE icon on the Desktop (or IDLE3 for Python3) and you're given a REPL (Read-Evaluate-Print-Loop) which is a prompt you can enter Python commands in to. As it's a REPL you even get the output of commands printed to the screen without using `print`.
+The easiest introduction to Python is through IDLE. Double click the IDLE icon on the Desktop (or IDLE3 for Python 3):
+
+![](images/idle-icons.png)
+
+and you're given a REPL (Read-Evaluate-Print-Loop) which is a prompt you can enter Python commands in to. As it's a REPL you even get the output of commands printed to the screen without using `print`.
 
 For the examples on this page you can use IDLE or IDLE3 (see [Python 2 vs. Python 3](more.md)).
+
+![](images/idle.png)
 
 You can use variables if you need to but you can even use it like a calculator. For example:
 
@@ -157,18 +165,25 @@ O
 
 ### Range
 
-The integer data type is not iterable and tryng to iterate over it will produce an error:
+The integer data type is not iterable and tryng to iterate over it will produce an error. For example:
+
+```python
+for i in 3:
+    print(i)
+```
+
+will produce:
 
 ```python
 TypeError: 'int' object is not iterable
 ```
 
+![](images/python-error.png)
+
 However you can make an iterable object using the `range` function:
 
 ```python
-n = 3
-
-for i in range(n):
+for i in range(3):
     print(i)
 ```
 

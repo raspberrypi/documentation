@@ -44,6 +44,8 @@ The philosophy of Python is summarised in [PEP 20](http://legacy.python.org/dev/
 
 The standard built-in Python REPL is accessed by typing `python` in the Terminal. Type `python3` for Python 3.
 
+![](images/run-python.png)
+
 This REPL is a prompt ready for Python commands to be entered. You can use this the same as IDLE, but it does not have syntax highlighting or autocompletion. You can look back on the history of the commands you've entered in the REPL by using the Up/Down keys. Use `Ctrl + D` to exit.
 
 ### IPython
@@ -100,6 +102,8 @@ In `python` this would have printed on one line:
 {1: 1, 2: 8, 3: 27, 4: 64, 5: 125, 6: 216, 7: 343, 8: 512, 9: 729, 10: 1000, 11: 1331}
 ```
 
+![](images/python-vs-ipython.png)
+
 You can look back on the history of the commands you've entered in the REPL by using the Up/Down keys like in `python` but it also persists over sessions, so you can exit `ipython` and return (or switch between v2/3) and the history remains. Use `Ctrl + D` to exit.
 
 ## Installing Python libraries
@@ -108,7 +112,7 @@ You can look back on the history of the commands you've entered in the REPL by u
 
 Some Python packages can be found in the Raspbian archives, and can be installed using APT, for example:
 
-```
+```bash
 sudo apt-get update
 sudo apt-get install python-picamera
 ```
@@ -119,7 +123,7 @@ This is a preferable method of installing things as it means that the modules yo
 
 Not all Python packages are available in the Raspbian archives, and those that are can sometimes be out of date. If you can't find a suitable version in the Raspbian archives you can install packages from the [Python Package Index](http://pypi.python.org/) (also known as PyPI). To do so, use the `pip` tool (which is installed with the `python-pip` package in Raspbian:
 
-```
+```bash
 sudo apt-get install python-pip
 sudo pip install simplejson
 ```
@@ -130,13 +134,13 @@ Read more on [installing software in Python](../../linux/software/python.md)
 
 Using Python on the Raspberry Pi opens up the opportunity to connect to the real world through the Pi's GPIO pins. This can be done with the RPi GPIO library. It is preinstalled on recent Raspbian images, but if you have an older one you can install it with:
 
-```
+```bash
 sudo apt-get install python-rpi.gpio
 ```
 
 or
 
-```
+```bash
 sudo apt-get install python3-rpi.gpio
 ```
 
@@ -144,7 +148,7 @@ To control the GPIO pins you'll need root access, so run `sudo python`, `sudo ip
 
 In your Python script (or in the REPL), import the GPIO module, set the board mode to that of your preference, set up the pins you want to use and turn them on:
 
-```
+```python
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)  # set board mode to Broadcom
