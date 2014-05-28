@@ -16,6 +16,8 @@ You need to install some additional tools for WordPress to run on the web server
 
 PHP is a preprocessor; it's code that runs when the server receives a request for a web page. It runs, works out what needs to be shown on the page, then sends that page to the browser. Unlike static HTML, PHP can show different content under different circumstances. Other languages are capable of this, but since WordPress is written in PHP, that's what we need to use this time. PHP is a very popular language on the web; large projects like Facebook and Wikipedia are written in PHP.
 
+![](images/php-logo.png)
+
 Install the PHP and Apache packages with the following command:
 
 ```bash
@@ -25,6 +27,8 @@ sudo apt-get install php5 libapache2-mod-php5 -y
 ### MySQL
 
 MySQL (pronounced *My Sequel* or *My S-Q-L*) is a popular database engine. Like PHP, its overwhelming presence on web servers enhanced its popularity. This is why projects like WordPress use it, and why those projects are so popular.
+
+![](images/mysql-logo.png)
 
 Install the MySQL Server and PHP-MySQL packages by entering the following command into the terminal:
 
