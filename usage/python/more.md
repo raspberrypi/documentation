@@ -44,8 +44,6 @@ The philosophy of Python is summarised in [PEP 20](http://legacy.python.org/dev/
 
 The standard built-in Python REPL is accessed by typing `python` in the Terminal. Type `python3` for Python 3.
 
-![](images/run-python.png)
-
 This REPL is a prompt ready for Python commands to be entered. You can use this the same as IDLE, but it does not have syntax highlighting or autocompletion. You can look back on the history of the commands you've entered in the REPL by using the Up/Down keys. Use `Ctrl + D` to exit.
 
 ### IPython

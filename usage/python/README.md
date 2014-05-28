@@ -238,6 +238,8 @@ Then save this file (`File > Save` or `Ctrl + S`) and run (`Run > Run Module` or
 
 You can write a Python file in a standard editor like Vim, Nano or LeafPad, and run it as a Python script from the command line. Just navigate to the directory the file is saved (use `cd` and `ls` for guidance) and run with `python`, e.g. `python hello.py`.
 
+![](images/run-python.png)
+
 ## More
 
 See [more advanced](more.md) information covering:
