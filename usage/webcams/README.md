@@ -1,6 +1,6 @@
 # Using a standard USB webcam
 
-Rather than using the Raspberry Pi [camera module](camera/README.md), you can use a standard USB webcam to take pictures and video on the Raspberry Pi.
+Rather than using the Raspberry Pi [camera module](../camera/README.md), you can use a standard USB webcam to take pictures and video on the Raspberry Pi.
 
 Note that the quality and configurability of the camera module is highly superior to a standard USB webcam.
 
