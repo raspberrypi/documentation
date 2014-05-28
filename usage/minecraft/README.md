@@ -2,20 +2,33 @@
 
 Minecraft is a popular sandbox open world building game. A free version of Minecraft is available for the Raspberry Pi; it is the only edition of the game with a programming interface. This means you can write commands and scripts in Python code, to build things in the game automatically as well as manually.
 
+![](images/minecraft-pi-banner.png)
+
 ## Installation
 
 Currently Minecraft is not installed by default in Raspbian. To install it, download the files from the web.
 
-Open a terminal window and type the following commands:
+Open a terminal window and type the following command:
 
 ```bash
 wget http://goo.gl/o2aene -O mcpi.tar.gz --no-check-certificate
+```
+
+You'll see some information about the downloading file, like so:
+
+![](images/mcpi-install.png)
+
+Once you see `'mcpi.tar.gz' saved` and are returned to the prompt, type:
+
+```bash
 tar xzf mcpi.tar.gz
 ```
 
+to extract the files. This will create a new directory in your home folder called `mcpi`, which is where the Minecraft installation lives.
+
 ## Run
 
-Now you should have a folder called mcpi in your home folder. To run Minecraft type:
+To run Minecraft type:
 
 ```bash
 cd mcpi
@@ -111,4 +124,8 @@ for dx in range(1, 101, 2):
             mc.setBlock(x + dx, y + dy, z + dz)
 ```
 
-This is just a taster; there is plenty more you can do. See an API reference at [stuffaboutcode.com](http://www.stuffaboutcode.com/p/minecraft-api-reference.html).
+![](images/steve.png)
+
+## API Reference
+
+See an API reference at [stuffaboutcode.com](http://www.stuffaboutcode.com/p/minecraft-api-reference.html).
