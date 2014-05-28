@@ -259,8 +259,8 @@ These values are valid if `hdmi_group=1` (CEA):
 | 51 | 480i | 120Hz | 16:9 aspect ratio |
 | 52 | 576p | 200Hz |  |
 | 53 | 576p | 200Hz | 16:9 aspect ratio |
-| 54 | 576o | 200Hz |  |
-| 55 | 576o | 200Hz | 16:9 aspect ratio |
+| 54 | 576i | 200Hz |  |
+| 55 | 576i | 200Hz | 16:9 aspect ratio |
 | 56 | 480p | 240Hz |  |
 | 57 | 480p | 240Hz | 16:9 aspect ratio |
 | 58 | 480i | 240Hz |  |
