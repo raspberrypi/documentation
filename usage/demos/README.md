@@ -2,6 +2,8 @@
 
 Here are some example programs to demonstrate the Pi's capabilities.
 
+![](images/mandelbrot.jpg)
+
 In order to run these programs you need to be at the command line. Your Pi may boot to the command line (requiring you to enter `startx` to get to the desktop); if so, go straight ahead. Otherwise, use the start button to log out of the desktop.
 
 ```bash
@@ -19,7 +21,7 @@ cd /opt/vc/src/hello_pi
 The command prompt should now look like the text below. The blue part shows where you are in the file system of the Pi.
 
 ```bash
-pi@raspberrypi /opt/vc/src/hello_pi $ _
+pi@raspberrypi /opt/vc/src/hello_pi $
 ```
 
 If you enter `ls` and press Enter, you’ll see a list of folders; there is one for each demo. Before you can run them, though, they must be compiled. Don’t worry if you don’t understand what this is or why you need to do it; just follow the instructions for now, and we'll learn more about it later on.
@@ -39,7 +41,7 @@ Demo programs:
 - [Hello world](hello-world.md)
 - [Hello video](hello-video.md)
 - [Hello triangle](hello-triangle.md)
-- [Hello triangle 2](hello-triangle2.md)
+- [Hello fractal](hello-fractal.md)
 - [Hello teapot](hello-teapot.md)
 - [Hello audio](hello-audio.md)
 
