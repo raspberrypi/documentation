@@ -10,7 +10,7 @@ This will play the `example.mp4` in full screen. Hit `Ctrl + C` to exit.
 
 ## Example video sample: Big Buck Bunny
 
-There is an video sample of the animated film *Big Buck Bunny* available on the Pi. To play, it enter the following command into the terminal:
+There is a video sample of the animated film *Big Buck Bunny* available on the Pi. To play, it enter the following command into the terminal:
 
 ```bash
 omxplayer /opt/vc/src/hello_pi/hello_video/test.h264
