@@ -19,7 +19,7 @@ sudo apt-get update
 sudo apt-get install wolfram-engine
 ```
 
-This may take some time.
+Note this is a 200MB so may take some time.
 
 ## Mathematica
 
