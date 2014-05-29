@@ -428,7 +428,7 @@ Set to `1` to disable the alpha channel. Can help with the display of a 32bit `f
 
 #### test_mode
 
-Set to `1` to enable the test sound/image during boot, which is used as a manufacturing test.
+Displays a test image and sound during boot (but only over the composite video and analogue audio outputs) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test; the default value is `0`.
 
 #### display_rotate
 
