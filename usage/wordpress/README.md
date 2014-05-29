@@ -46,9 +46,9 @@ Navigate to `/var/www/`, and download WordPress to this location. You'll need to
 
 ```bash
 cd /var/www
-chown pi: .
+sudo chown pi: .
 rm *
-wget http://wordpress.com/latest.tar.gz
+wget http://wordpress.org/latest.tar.gz
 ```
 
 Now extract the tarball, move the contents of the folder it extracted (`wordpress`) to the current directory and remove the (now empty) folder and the tarball to tidy up:
