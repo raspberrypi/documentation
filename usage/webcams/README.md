@@ -92,6 +92,14 @@ Writing JPEG image to 'image3.jpg'.
 
 Now the picture is taken at full resolution with no banner.
 
+## Bad Pictures
+
+You may experience poor quality pictures with a USB webcam, such as this accidentally artistic piece:
+
+![](images/jack.png)
+
+Some webcams are more reliable than others, but this sort of issue may occur with poor quality webcams. If the problem persists, ensure your system is [up to date](../../raspbian/updating.md). Also try other webcams, but you'll get the best performance from the Raspberry Pi [camera module](http://www.raspberrypi.org/help/camera-module-setup/).
+
 ## Bash script
 
 You can write a Bash script which takes a picture with the webcam. To create a script, open up your editor of choice and write the following example code:
