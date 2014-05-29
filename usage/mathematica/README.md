@@ -225,6 +225,6 @@ wolfram -script test.m
 
 See the [next page](advanced.md) for more advanced usage of Mathematica including GPIO, the Raspberry Pi camera,
 
-Read about the use of Mathematica and Wolfram on Raspberry Pi on our blog (see [mathematica](http://www.raspberrypi.org/tag/mathematica/), [wolfram language](http://www.raspberrypi.org/tag/wolfram-language/) and [wolfram research](http://www.raspberrypi.org/tag/wolfram-research/) tags).
+Read about the use of Mathematica and Wolfram on Raspberry Pi on our blog (see [mathematica](http://www.raspberrypi.org/tag/mathematica/), [wolfram](http://www.raspberrypi.org/tag/wolfram/), [wolfram language](http://www.raspberrypi.org/tag/wolfram-language/) and [wolfram research](http://www.raspberrypi.org/tag/wolfram-research/) tags).
 
 Also read up on Mathematica performance on Pi and see benchmark results by Mike Croucher: [Playing with Mathematica on Raspberry Pi](http://www.walkingrandomly.com/?p=5220)
