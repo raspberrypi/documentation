@@ -1,4 +1,4 @@
-# Compute Module Design Guide
+# Compute Module Hardware Design Guide
 
 ## Powering the module
 
@@ -47,7 +47,7 @@ GPIO28-45_VREF | See note [2]
 
 [2] Note that each GPIO bank will only need a few mW if unused; however when in use, the requirements will vary depending on the number of IOs in use and the load on each. The designer is responsible for calculating or measuring this based on their particular use case.
 
-## Module booting and flashing the eMMC
+## <a name="modulebootingandflashing"></a> Module booting and flashing the eMMC
 
 The 4GB eMMC Flash device on the Compute Module is directly connected to the primary BCM2835 SD/eMMC interface. These connections are not accessible on the module pins.
 
@@ -59,63 +59,7 @@ The Compute Module has a pin called EMMC_DISABLE_N which when shorted to GND wil
 
 **Note that once booted over USB, BCM2835 needs to re-enable the eMMC device (by releasing EMMC_DISABLE_N) to allow access to it as mass storage. It expects to be able to do this by driving the GPIO47_1V8 pin LOW, which at boot is initially an input with a pull up to 1V8. If an end user wishes to add the ability to access the eMMC over USB in their product, similar circuitry to that used on the Compute Module IO Board to enable/disable the USB boot and eMMC must be used; that is, EMMC_DISABLE_N pulled low via MOSFET(s) and released again by MOSFET, with the gate controlled by GPIO47_1V8. Ensure you use MOSFETs suitable for switching at 1.8V (i.e. use a device with Vt << 1.8V).**
 
-### Steps to flash the eMMC on a Compute Module using a Compute Module IO Board
-
-You need a host Linux system; a Raspberry Pi will do.
-
-**On your Compute Module IO Board:**
-
-Make sure that J4 (USB SLAVE BOOT ENABLE) is set to the 'EN' position.
-
-**On your host system:**
-
-Git may produce an error if the date is not set correctly, so on a Raspberry Pi enter the following:
-
-```bash
-sudo date MMDDhhmm
-```
-
-where MM is month, DD day and hh mm hours and minutes respectively.
-
-Clone the usbboot tool repository and install libusb:
-
-```bash
-sudo git clone --depth=1 https://github.com/raspberrypi/tools
-cd tools/usbboot
-sudo apt-get install libusb-1.0-0-dev
-```
-
-Build the usbboot tool:
-
-```bash
-sudo make
-```
-
-Run the usbboot tool and it will wait for a connection:
-
-```bash
-sudo ./rpiboot
-```
-
-Now plug the host machine into the Compute Module IO Board USB slave port (J15) and power on the CMIO board. The usbboot tool will discover the Compute Module and send boot code to allow access to the eMMC. Once complete you will see a new device appear; this is commonly /dev/sda but it could be another location such as /dev/sdb, so check in /dev/ before running rpiboot so you can see what changes.
-
-You now need to write a raw OS image (such as [Raspbian](http://downloads.raspberrypi.org/raspbian_latest)) to the device. Note the following command may take some time to complete, depending on the size of the image:
-
-```bash
-sudo dd if=raw_os_image_of_your_choice.img of=/dev/sda bs=4MiB
-```
-
-Once the image has been written, unplug and re-plug the USB; you should see 2 partitions appear (for Raspian) in /dev. In total you should see something similar to this:
-
-```bash
-/dev/sda    <- Device
-/dev/sda1   <- First partition (FAT)
-/dev/sda2   <- Second partition (Linux filesystem)
-```
-
-The `/dev/sda1` and `/dev/sda2` partitions can now be mounted normally.
-
-Make sure J4 (USB SLAVE BOOT ENABLE) is set to the disabled position and/or nothing is plugged into the USB slave port. Power cycling the IO board should now result in the Compute Module booting from eMMC.
+For a step by step guide to flashing the eMMC please see [here](cm-emmc-flashing.md)
 
 ## Compute Module interfaces
 
