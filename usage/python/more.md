@@ -11,7 +11,7 @@ If you are familiar with Python 2 but not Python 3, here is a summary of the bas
 - Print
     - In Python 2, `print` is a statement and did not require brackets, e.g. `print "Hello"`.
     - In Python 3, `print` is a function, so you pass in what you want to print as parameters, e.g. `print("Hello")` or `print("My age is", age)`.
-    - Using brackets for `print` in Python 2 works fine, so it's common to see this used for compatability. However printing multiple objects in the same `print` command works differently.
+    - Using brackets for `print` in Python 2 works fine, so it's common to see this used for compatibility. However printing multiple objects in the same `print` command works differently.
     - In Python 3 this prints each one, space separated, and in Python 2 the collection of items is printed as a tuple, e.g. `("My age is", 15)`
 -  Input / Raw input
     -  In Python 2, the function `raw_input` takes input from the user.

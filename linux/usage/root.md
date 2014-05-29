@@ -17,6 +17,6 @@ You can also run a superuser shell by using `sudo su`. When running commands as 
 
 ## Who can use Sudo?
 
-It would defeat the point of the security if anyone could just put sudo in front of their commands, so only approved users can use sudo to gain administrator privilages. The `pi` user is included in the sudoers file. To allow other users to act as a superuser then you could add the user to the `sudo` group or add them using `visudo`.
+It would defeat the point of the security if anyone could just put sudo in front of their commands, so only approved users can use sudo to gain administrator privileges. The `pi` user is included in the sudoers file. To allow other users to act as a superuser then you could add the user to the `sudo` group or add them using `visudo`.
 
 [Find out more about users](users.md)

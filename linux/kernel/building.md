@@ -130,7 +130,7 @@ Another option is to copy the kernel into the same place, but with a different f
 kernel=kernel-myconfig.img
 ```
 
-This has the advantage of keeping your kernel seperate from the kernel image managed by the system and any automatic update tools, and allowing you to easily revert to a stock kernel in the event that your kernel cannot boot.
+This has the advantage of keeping your kernel separate from the kernel image managed by the system and any automatic update tools, and allowing you to easily revert to a stock kernel in the event that your kernel cannot boot.
 
 Unplug the card and boot the Pi!
 
