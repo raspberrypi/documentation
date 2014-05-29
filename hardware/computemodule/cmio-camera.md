@@ -10,9 +10,9 @@ To make the Raspberry Pi Camera work with a standard Raspian OS the same GPIOs a
 
 ## Steps to attach a Raspberry Pi Camera (to CAM1)
 
-1.  Attach one of the included 0.5mm 22W FFC flexis to the CAM1 connector (flex contacts face down).
+1.  Attach the 0.5mm 22W FFC flexi (included with the adaptor board) to the CAM1 connector (flex contacts face down).
 2.  Attach the camera adaptor board to the other end of the 0.5mm flex (flex contacts face down).
-3.  Attach a Raspberry Pi Camera to the other, larger 15W 1mm FFC on the camera adaptor board (*contacts on the Raspberry Pi Camera flex must face up*).
+3.  Attach a Raspberry Pi Camera to the other, larger 15W 1mm FFC on the camera adaptor board (**contacts on the Raspberry Pi Camera flex must face up**).
 4.  Attach CD1_SDA (J6 pin 37) to GPIO0 (J5 pin 1).
 5.  Attach CD1_SCL (J6 pin 39) to GPIO1 (J5 pin 2).
 6.  Attach CAM1_IO1 (J6 pin 41) to GPIO5 (J5 pin 11).
@@ -26,6 +26,6 @@ Attaching a second camera is a repeat of the above steps 1-3 for the second (CAM
 
 The difference is that the second I2C interface must be used for CD0_SDA and CD0_SCL (you can't put both cameras on the same I2C bus as they have the same address) as well as 2 different GPIOs for CAM0_IO0 and CAM0_IO1.
 
-*TODO*
+**TODO**
 
 
