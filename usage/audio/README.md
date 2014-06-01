@@ -14,8 +14,16 @@ If you need an example file you can download one from here using the following c
 wget http://goo.gl/MOXGX3 -O la.mp3 --no-check-certificate
 ```
 
-If you cannot hear anything, make sure your headphones or speakers are connected correctly. Be sure to check your audio configuration settings, as described below.
+If you cannot hear anything, make sure your headphones or speakers are connected correctly. Note that omxplayer doesn't use ALSA and so ignores the [audio configuration](../../configuration/audio-config.md) set by `raspi-config` or `amixer`.
 
-## Audio Configuration
+If omxplayer's auto-detection of the correct audio output device fails, you can force output over hdmi with:
 
-To switch your audio output between HDMI and the headphone jack, use either the `raspi-config` tool or the `amixer` command. See [audio configuration](../../configuration/audio-config.md)
+```bash
+omxplayer -o hdmi example.mp3
+```
+
+or you can force output over the headphone jack with:
+
+```bash
+omxplayer -o local example.mp3
+```
