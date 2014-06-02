@@ -1,25 +1,5 @@
 # Installing Operating System Images on Linux
 
-On Linux systems you have the choice of the command line `dd` tool or the graphical tool ImageWriter to write the image to your SD card.
-
-## Using ImageWriter (Graphical Interface)
-
-- Insert the SD card into your computer or connect the SD card reader with the SD card inside.
-
-- Install the ImageWriter tool from the Ubuntu Software Center.
-
-- Launch the ImageWriter tool; it needs your administrator password.
-
-- Select the image file (e.g. `2014-01-07-wheezy-raspbian.img`) to be written to the SD card. Note that because you started ImageWriter as administrator, the starting point when selecting the image file is the administrator's home folder; therefore, you need to change to your own home folder to select the image file.
-
-- Select the target device to write the image to; your device will be something like `/dev/mmcblk0` or `/dev/sdc`.
-
-- Click the `Write to device` button.
-
-- Wait for the process to finish and remove the SD card.
-
-## Command Line Interface
-
 Please note that the use of the `dd` tool can overwrite any partition of your machine. If you specify the wrong device in the instructions below you could delete your primary Linux partition. Please be careful.
 
 - Run `df -h` to see what devices are currently mounted.
@@ -36,7 +16,7 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
 
 - In the terminal, write the image to the card with the command below, making sure you replace the input file `if=` argument with the path to your `.img` file, and the `/dev/sdd` in the output file `of=` argument with the right device name. This is very important, as you will lose all data on the hard drive if you provide the wrong device name. Make sure the device name is the name of the whole SD card as described above, not just a partition of it; for example `sdd`, not `sdds1` or `sddp1`; or `mmcblk0`, not `mmcblk0p1`.
 
-    ```
+    ```bash
     dd bs=4M if=2014-01-07-wheezy-raspbian.img of=/dev/sdd
     ```
 
