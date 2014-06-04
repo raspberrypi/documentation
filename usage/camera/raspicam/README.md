@@ -10,7 +10,6 @@ See guides for basic usage of each of the commands:
     - Capturing still photographs with the camera module
 - [raspivid](raspivid.md)
     - Capturing video with the camera module
-    - [Streaming video](streaming/README.md) with the camera module
 - [Time-lapse](timelapse.md)
     - Taking pictures at regular intervals and stitching them together in to a video
 - [raspiyuv](raspiyuv.md)
