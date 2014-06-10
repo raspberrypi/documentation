@@ -223,7 +223,7 @@ wolfram -script test.m
 
 ## More
 
-See the [next page](advanced.md) for more advanced usage of Mathematica including GPIO, the Raspberry Pi camera,
+See the [next page](advanced.md) for more advanced usage of Mathematica including matrix operations, plotting, GPIO and using the Raspberry Pi camera.
 
 Read about the use of Mathematica and Wolfram on Raspberry Pi on our blog (see [mathematica](http://www.raspberrypi.org/tag/mathematica/), [wolfram](http://www.raspberrypi.org/tag/wolfram/), [wolfram language](http://www.raspberrypi.org/tag/wolfram-language/) and [wolfram research](http://www.raspberrypi.org/tag/wolfram-research/) tags).
 
