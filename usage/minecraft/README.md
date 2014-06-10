@@ -26,6 +26,8 @@ tar xzf mcpi.tar.gz
 
 to extract the files. This will create a new directory in your home folder called `mcpi`, which is where the Minecraft installation lives.
 
+It is safe to delete the `mcpi.tar.gz` file once you have extracted its contents. To do this, enter `rm mcpi.tar.gz`.
+
 ## Run
 
 To run Minecraft type:
