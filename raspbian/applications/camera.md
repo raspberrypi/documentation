@@ -210,7 +210,7 @@ The specific value is the time between shots in milliseconds. Note you should sp
 
 		-t 30000 -tl 2000 -o image%04d.jpg
 
-will produce a capture every 2 seconds, over a total period of 30s, named image1.jpg, image0002.jpg..image0015.jpg. Note that the %04d indicates a 4 digit number with leading zero's added to pad to the required number of digits. So, for example,  %08d would result in an 8 digit number.
+will produce a capture every 2 seconds, over a total period of 30s, named image0001.jpg, image0002.jpg..image0015.jpg. Note that the %04d indicates a 4 digit number with leading zero's added to pad to the required number of digits. So, for example,  %08d would result in an 8 digit number.
 
 If a timelapse value of 0 is entered, the application will take pictures as fast as possible. Note there is an minimum enforced pause of 30ms between captures to ensure that exposure calculations can be made. 
 
