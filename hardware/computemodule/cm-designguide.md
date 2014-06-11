@@ -40,12 +40,12 @@ VBAT | 2000mW [1]
 3V3 | 250mA
 1V8 | 250mA
 VDAC | 25mA
-GPIO0-27_VREF | See note [2]
-GPIO28-45_VREF | See note [2]
+GPIO0-27_VREF | 50mA [2]
+GPIO28-45_VREF | 50mA [2]
 
 [1] Note that VBAT is heavily dependent upon the application. For example, with video encoding, 3D and the camera all running the power requirements can be substantial.
 
-[2] Note that each GPIO bank will only need a few mW if unused; however when in use, the requirements will vary depending on the number of IOs in use and the load on each. The designer is responsible for calculating or measuring this based on their particular use case.
+[2] Note that each GPIO bank will only need a few mW if unused; however when in use, the requirements will vary depending on the number of IOs in use and the load on each. The maximum load per GPIO bank must not exceed 50mA.
 
 ## <a name="modulebootingandflashing"></a> Module booting and flashing the eMMC
 
