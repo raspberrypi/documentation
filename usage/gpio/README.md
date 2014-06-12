@@ -32,7 +32,7 @@ Here's the same circuit using the Raspberry Pi. The LED is connected to a GPIO p
 
 ![](images/gpio-led.png)
 
-The next step is to write a program to tell the pin to go HIGH or LOW. Here's an example using [Python](http://www.raspberrypi.org/learning/robot-antenna/) (see Step 2) and here's how to do it in [Scratch](http://www.raspberrypi.org/learning/quick-reaction-game/).
+The next step is to write a program to tell the pin to go HIGH or LOW. Here's an example using [Python](http://www.raspberrypi.org/learning/quick-reaction-game/) (see Step 2) and here's how to do it in [Scratch](http://www.raspberrypi.org/learning/robot-antenna/).
 
 ### Input
 
