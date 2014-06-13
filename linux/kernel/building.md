@@ -48,7 +48,7 @@ Use the following command:
 $ git clone https://github.com/raspberrypi/tools
 ```
 
-You can then copy the toolchain to a common location such as `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian`, and add a path to that directory into the .bashrc in your home directory. While this step is not strictly necessary, it does make it easier for later command lines!
+You can then copy the toolchain to a common location such as `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian`, and add `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin` to your $PATH in the .bashrc in your home directory. While this step is not strictly necessary, it does make it easier for later command lines!
 
 ### Get sources
 
