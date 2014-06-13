@@ -38,7 +38,7 @@ $ sudo cp arch/arm/boot/Image /boot/kernel.img
 First you are going to require a suitable Linux cross-compilation host. We tend to use Ubuntu; since Raspbian is 
 also a Debian distribution it means using similar command lines and so on.
 
-You can either do this using VirtualBox (or VMWare) on Windows, or install it directly onto your computer. For reference you can follow instructions online [at Wikihow] (http://www.wikihow.com/Install-Ubuntu-on-VirtualBox).
+You can either do this using VirtualBox (or VMWare) on Windows, or install it directly onto your computer. For reference you can follow instructions online [at Wikihow](http://www.wikihow.com/Install-Ubuntu-on-VirtualBox).
 
 ### Install toolchain
 
@@ -52,7 +52,7 @@ You can then copy the toolchain to a common location such as `/tools/arm-bcm2708
 
 ### Get sources
 
-To get the sources, refer to the original [GitHub] (https://github.com/raspberrypi/linux
+To get the sources, refer to the original [GitHub](https://github.com/raspberrypi/linux
 ) repository for the various branches.
 ```
 $ git clone --depth=1 https://github.com/raspberrypi/linux
