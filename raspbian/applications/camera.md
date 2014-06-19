@@ -170,6 +170,7 @@ Flips the preview and saved image vertically.
 Allows the specification of the area of the sensor to be used as the source for the preview and capture. This is defined as x,y for the top left corner, and a width and height, all values in normalised coordinates (0.0-1.0). So to set a ROI at half way across and down the sensor, and an width and height of a quarter of the sensor use :
 
 		-roi 0.5,0.5,0.25,0.25
+		
 ```
 	--shutter,	-ss	Set shutter speed
 ```
