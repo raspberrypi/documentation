@@ -1,6 +1,6 @@
 # Raspberry Pi Camera Module
 
-This document describes the use of the three Raspberry Pi camera applications as of December 7th 2013.
+This document describes the use of the three Raspberry Pi camera applications as of June 19th 2014.
 
 There are three applications provided, raspistill, raspivid and raspistillyuv. raspistill and raspistillyuv are very similar and are intended for capturing images, raspivid is for capturing video.
 
@@ -168,12 +168,12 @@ Flips the preview and saved image vertically.
 	--roi,		-roi	Set sensor region of interest 
 
 Allows the specification of the area of the sensor to be used as the source for the preview and capture. This is defined as x,y for the top left corner, and a width and height, all values in normalised coordinates (0.0-1.0). So to set a ROI at half way across and down the sensor, and an width and height of a quarter of the sensor use :
-
+```
 		-roi 0.5,0.5,0.25,0.25
-		
-```
-	--shutter,	-ss	Set shutter speed
-```
+```		
+
+    --shutter,	-ss	Set shutter speed
+
 Set the shutter speed to the specified value (in microseconds). There is currently an upper limit of approximately 330000us (330ms, 0.33s) past which operation is undefined. This is being investigated.
 
 	--drc,		-drc	Enable/Disable Dynamic Range compression
@@ -191,9 +191,9 @@ DRC changes the images by increasing the range of dark areas of the image, and d
 
 ###raspistill
 
-  --width,    -w		Set image width <size>
-  --height,   -h		Set image height <size>
-  --quality,  -q		Set jpeg quality <0 to 100>
+    --width,    -w		Set image width <size>
+    --height,   -h		Set image height <size>
+    --quality,  -q		Set jpeg quality <0 to 100>
 
 Quality 100 is almost completely uncompressed. 75 is a good all round value
 
@@ -495,7 +495,9 @@ Encode a 5s camera stream and send image data to file
 
 The applications described here will return a standard error code to the shell on completion. Possible error codes are : 
 
-* EX_OK		0	Application ran successfully.
-* EX_USAGE	64	Bad command line parameter
-* EX_SOFTWARE	70	Software or camera error
-* 		130	Application terminated by ctrl-C.
+| C Define | Code | Description |
+|----------|------|-------------|
+| EX_OK	| 0 | Application ran successfully|
+| EX_USAGE | 64 | Bad command line parameter |
+| EX_SOFTWARE | 70 | Software or camera error |
+| 	| 130 | Application terminated by ctrl-C |
