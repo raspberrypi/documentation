@@ -64,6 +64,7 @@ set the colour saturation of the image. 0 is the default.
 	--ISO,       	-ISO	Set capture ISO
 
 Sets the ISO to be used for captures. Range is 100 to 800.
+
 	--vstab,     	-vs  	Turn on video stabilisation
 
 In video mode only, turn on video stabilisation.
@@ -169,10 +170,21 @@ Flips the preview and saved image vertically.
 Allows the specification of the area of the sensor to be used as the source for the preview and capture. This is defined as x,y for the top left corner, and a width and height, all values in normalised coordinates (0.0-1.0). So to set a ROI at half way across and down the sensor, and an width and height of a quarter of the sensor use :
 
 		-roi 0.5,0.5,0.25,0.25
-
+```
 	--shutter,	-ss	Set shutter speed
-
+```
 Set the shutter speed to the specified value (in microseconds). There is currently an upper limit of approximately 330000us (330ms, 0.33s) past which operation is undefined. This is being investigated.
+
+	--drc,		-drc	Enable/Disable Dynamic Range compression
+	
+DRC changes the images by increasing the range of dark areas of the image, and decreasing the brighter areas. This can improve the image in low light areas. By default, DRC is off.
+
+* off
+* low
+* medium
+* high
+ 
+
 
 ##Application specific settings
 
