@@ -14,7 +14,7 @@ To make the Raspberry Pi Camera work with a standard Raspian OS the same GPIOs a
 2.  Attach the camera adaptor board to the other end of the 0.5mm flex (flex contacts face down).
 3.  Attach a Raspberry Pi Camera to the other, larger 15W 1mm FFC on the camera adaptor board (**contacts on the Raspberry Pi Camera flex must face up**).
 4.  Attach CD1_SDA (J6 pin 37) to GPIO0 (J5 pin 1).
-5.  Attach CD1_SCL (J6 pin 39) to GPIO1 (J5 pin 2).
+5.  Attach CD1_SCL (J6 pin 39) to GPIO1 (J5 pin 3).
 6.  Attach CAM1_IO1 (J6 pin 41) to GPIO5 (J5 pin 11).
 7.  Attach CAM1_IO0 (J6 pin 43) to GPIO 21 (J5 pin 43).
 
