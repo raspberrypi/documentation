@@ -48,7 +48,15 @@ DATE=$(date +"%Y-%m-%d_%H%M")
 raspistill -vf -hf -o /home/pi/camera/$DATE.jpg
 ```
 
-This script will take a picture and name the file with a timestamp. Say we saved it as `camera.sh`, we would first make the file executable:
+This script will take a picture and name the file with a timestamp.
+
+You'll also need to make sure the path exists by creating the `camera` folder:
+
+```bash
+mkdir camera
+```
+
+Say we saved it as `camera.sh`, we would first make the file executable:
 
 ```bash
 chmod +x camera.sh
