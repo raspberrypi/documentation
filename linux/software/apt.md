@@ -79,7 +79,7 @@ sudo apt-get purge tree
 
 ## Upgrading existing software
 
-If software updates are available, you can get the updates with `apt-get update` and install the updates with `apt-get upgrade`, which will upgrade all of your packages.
+If software updates are available, you can get the updates with `sudo apt-get update` and install the updates with `sudo apt-get upgrade`, which will upgrade all of your packages. To upgrade a specific package, without upgrading all the other out-of-date packages at the same time, you can use `sudo apt-get install somepackage` (which may be useful if you're low on disk space or you have limited download bandwidth).
 
 ## Searching for software
 
