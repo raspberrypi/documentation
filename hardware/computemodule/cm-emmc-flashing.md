@@ -25,7 +25,7 @@ where MM is month, DD day and hh mm hours and minutes respectively.
 Clone the usbboot tool repository and install libusb:
 
 ```bash
-sudo git clone --depth=1 https://github.com/raspberrypi/tools
+git clone --depth=1 https://github.com/raspberrypi/tools
 cd tools/usbboot
 sudo apt-get install libusb-1.0-0-dev
 ```
@@ -33,7 +33,7 @@ sudo apt-get install libusb-1.0-0-dev
 Build the usbboot tool:
 
 ```bash
-sudo make
+make
 ```
 
 Run the usbboot tool and it will wait for a connection:
