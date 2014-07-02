@@ -56,3 +56,28 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 2.41 seconds
 ```
 
 Here you can see a device with hostname `raspberrypi` has IP address `192.168.1.8`.
+
+
+### lsleases command
+
+The `lsleases` command is a free and open-source tool to list assigned IP addresses from an DHCP Server in your local network.
+
+To get the tool, download the corresponding package for your platfrom from http://github.com/j-keck/lsleases/releases/latest.
+
+Install per:
+  - Debian based: `sudo dpkg -i <PKG_NAME>.deb`
+  - RedHat based: `sudo rpm -i <PKG_NAME>.rpm`
+  - Windows: use the installer: `lsleases_installer_<VERSION>_<ARCH>.exe`
+
+After installation, startup your pi / re-plug the network cord from the pi (wait ca. 10 seconds, before re-plug).
+
+Now use the `lsleases` command to list assigned IP's.
+
+Example output:
+
+      j@main:~> lsleases
+      Ip               Mac                Name
+      192.168.1.189    10:bf:48:xx:xx:xx  android-f6c6dca2130b287
+      192.168.1.122    b8:27:eb:xx:xx:xx  raspberrypi
+      192.168.1.178    00:22:fb:xx:xx:xx  laptop
+  
