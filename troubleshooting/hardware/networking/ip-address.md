@@ -56,3 +56,7 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 2.41 seconds
 ```
 
 Here you can see a device with hostname `raspberrypi` has IP address `192.168.1.8`.
+
+### More tools
+
+Also see [lsleases](https://github.com/j-keck/lsleases)
