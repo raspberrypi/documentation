@@ -1,12 +1,12 @@
 # Minecraft Pi
 
-Minecraft is a popular sandbox open world building game. A free version of Minecraft is available for the Raspberry Pi; it is the only edition of the game with a programming interface. This means you can write commands and scripts in Python code, to build things in the game automatically as well as manually.
+Minecraft is a popular sandbox open world-building game. A free version of Minecraft is available for the Raspberry Pi; it is the only edition of the game with a programming interface. This means you can write commands and scripts in Python code to build things in the game, automatically as well as manually.
 
 ![](images/minecraft-pi-banner.png)
 
 ## Installation
 
-Currently Minecraft is not installed by default in Raspbian. To install it, download the files from the web.
+Currently, Minecraft is not installed by default in Raspbian. To install it, download the files from the web.
 
 Open a terminal window and type the following command:
 
@@ -18,13 +18,13 @@ You'll see some information about the downloading file, like so:
 
 ![](images/mcpi-install.png)
 
-Once you see `'mcpi.tar.gz' saved` and are returned to the prompt, type:
+Once you see `'mcpi.tar.gz' saved` and you are returned to the prompt, type the following to extract the files:
 
 ```bash
 tar xzf mcpi.tar.gz
 ```
 
-to extract the files. This will create a new directory in your home folder called `mcpi`, which is where the Minecraft installation lives.
+This will create a new directory in your home folder called `mcpi`, which is where the Minecraft installation is stored.
 
 It is safe to delete the `mcpi.tar.gz` file once you have extracted its contents. To do this, enter `rm mcpi.tar.gz`.
 
@@ -51,7 +51,7 @@ In the new tab, navigate to the Python API directory:
 cd ~/mcpi/api/python
 ```
 
-Now open the Python interpreter by typing `python` and hitting Enter. With the Python interpreter loaded, start by importing the Minecraft library; this lives in the `mcpi/api/python/` directory which is why you must navigate here to access it.
+Now open the Python interpreter by typing `python` and pressing Enter. With the Python interpreter loaded, start by importing the Minecraft library. This is located in the `mcpi/api/python/` directory, which is why you must navigate here to access it.
 
 You can either type commands in Python's interactive mode, or create a file with a list of commands, then execute the file at will. See more about [using Python](../python/README.md).
 
@@ -61,7 +61,7 @@ Next, import the Minecraft library with the following command:
 import mcpi.minecraft as minecraft
 ```
 
-With the library available you can connect to your game with:
+With the library available, you can connect to your game with:
 
 ```python
 mc = minecraft.Minecraft.create()
@@ -69,7 +69,7 @@ mc = minecraft.Minecraft.create()
 
 ### Post a message
 
-To post a message to the screen (for all players in the game on the network to see), type the following Python command:
+To post a message to the screen for all players in the game on the network to see, type the following Python command:
 
 ```python
 mc.postToChat("Type your message here")
@@ -128,6 +128,6 @@ for dx in range(1, 101, 2):
 
 ![](images/steve.png)
 
-## API Reference
+## API reference
 
 See an API reference at [stuffaboutcode.com](http://www.stuffaboutcode.com/p/minecraft-api-reference.html).
