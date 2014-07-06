@@ -12,3 +12,5 @@ The hardware in the Raspberry Pi
     - Powering the Raspberry Pi
 - [USB](usb.md)
     - USB on the Raspberry Pi
+- [SPI](spi.md)
+    - SPI on the Raspberry Pi
