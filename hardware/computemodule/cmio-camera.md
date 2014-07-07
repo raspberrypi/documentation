@@ -1,6 +1,6 @@
 # Attaching a Raspberry Pi Camera to the Compute Module IO Board
 
-The 15-way 1mm FFC camera connetor on the Raspberry Pi model A and B is attached to the CAM1 interface (though only uses 2 of the 4 available lanes).
+The 15-way 1mm FFC camera connector on the Raspberry Pi model A and B is attached to the CAM1 interface (though only uses 2 of the 4 available lanes).
 
 The Compute Module IO Board has a 22-way 0.5mm FFC for each camera port, with CAM0 being a 2-lane interface and CAM1 being the full 4-lane interface.
 

@@ -44,9 +44,9 @@ sleep 2
 play 69
 ```
 
-## A Tune: Frere Jacques
+## A Tune: Frère Jacques
 
-The song *Frere Jacques* begins with:
+The song *Frère Jacques* begins with:
 
 `C D E C` or `60 62 64 60` 	in MIDI notes.
 

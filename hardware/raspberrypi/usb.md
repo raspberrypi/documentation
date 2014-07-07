@@ -59,7 +59,7 @@ See [Power](power.md) for more information.
 ## <a name="knownissues"></a>Devices with known issues  
 
 **1. Interoperability between the Raspberry Pi and USB3.0 hubs**  
-   There is an issue with USB3.0 hubs in conjuntion with the use of Full- or Low-speed devices (most mice, most keyboards) and the Raspberry Pi. A bug in most USB3.0 hub hardware means that the Raspberry Pi cannot talk to Full- or Low-speed devices connected to a USB3.0 hub.
+   There is an issue with USB3.0 hubs in conjunction with the use of Full- or Low-speed devices (most mice, most keyboards) and the Raspberry Pi. A bug in most USB3.0 hub hardware means that the Raspberry Pi cannot talk to Full- or Low-speed devices connected to a USB3.0 hub.
   
    USB2.0 high-speed devices, including USB2.0 hubs, operate correctly when connected via a USB3.0 hub.
   

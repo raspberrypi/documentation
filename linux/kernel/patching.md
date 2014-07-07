@@ -2,7 +2,7 @@
 
 When [building](building.md) your custom kernel you may wish to apply patches, or collections of patches ('patchsets') to the Linux kernel.
 
-Patchsets are often provided with newer hardware as a temporary measure before the patches are applied to the upstream Linux kernel ('mainline') and then propogated down to the Raspberry Pi kernel sources. However, patchsets for other purposes exist; for instance to enable a fully preemptible kernel for real-time usage.
+Patchsets are often provided with newer hardware as a temporary measure before the patches are applied to the upstream Linux kernel ('mainline') and then propagated down to the Raspberry Pi kernel sources. However, patchsets for other purposes exist; for instance to enable a fully preemptible kernel for real-time usage.
 
 ## Version Identification
 

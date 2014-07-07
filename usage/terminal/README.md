@@ -40,7 +40,7 @@ Further information on `sudo` and the root user can be found on the [linux root 
 
 ## Installing software through apt-get
 
-Rather than using the Pi Store to download new software you can use the command `apt-get`, this is the 'package manager' that is included with any Debian based Linux distributions (including Raspbian). It allows you to install and manage new software packages on your Pi. In order to install a new package you would type `sudo apt-get install <package-name>` (where `<pacakge-name>` is the package that you want to install). Running `sudo apt-get update` updates a list of software packages that are available on your system. If a new version of a package is available then `sudo apt-get upgrade` will update any old packages to the new version. Finally, `sudo apt-get remove <package-name>` removes or uninstalls a package from your system.
+Rather than using the Pi Store to download new software you can use the command `apt-get`, this is the 'package manager' that is included with any Debian based Linux distributions (including Raspbian). It allows you to install and manage new software packages on your Pi. In order to install a new package you would type `sudo apt-get install <package-name>` (where `<package-name>` is the package that you want to install). Running `sudo apt-get update` updates a list of software packages that are available on your system. If a new version of a package is available then `sudo apt-get upgrade` will update any old packages to the new version. Finally, `sudo apt-get remove <package-name>` removes or uninstalls a package from your system.
 
 More information about this can be found in the [linux usage section on apt](../../linux/software/apt.md).
 

@@ -16,7 +16,7 @@ Alternatively, NOOBS is available for download on the Raspberry Pi website: [ras
 
 #### How to install NOOBS on an SD card
 
-Once you've downloaded the NOOBS zip file, you'll need to copy the contents to a fomatted SD card on your computer.
+Once you've downloaded the NOOBS zip file, you'll need to copy the contents to a formatted SD card on your computer.
 
 To set up a blank SD card with NOOBS:
 
