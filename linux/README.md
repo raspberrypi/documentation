@@ -44,5 +44,7 @@ Explanation of some fundamental Linux usage and commands for getting around the 
         - Building the Linux kernel on Raspberry Pi
     - [Configuring](kernel/configuring.md)
         - Configuring the Linux kernel on Raspberry Pi
+    - [Patching](kernel/patching.md)
+        - Applying patches to the Linux kernel on Raspberry Pi
     - [Headers](kernel/headers.md)
         - Getting the kernel headers
