@@ -42,19 +42,13 @@ This is why you will see phrases like "pull up" and "pull down" in Raspberry Pi 
 
 If you'd like to have a go at using the GPIO as an input then have a look at our [screaming jelly baby](http://www.raspberrypi.org/learning/screaming-jellybaby/) and [quick reaction game](http://www.raspberrypi.org/learning/quick-reaction-game/) tutorials for Python, or a [reaction game](http://www.raspberrypi.org/learning/reaction-game/) for Scratch.
 
-## The end of the guide. The start of something amazing.
+## The end of the guide. The start of something amazing
 
 We hope that this has encouraged you to have a go at physical computing using the Pi's GPIO; it's really not as daunting as it looks. It all starts with a simple LED, but it can take you to incredible places. Do not underestimate the fun, creativity and sense of achievement you can get from a little computer and a bunch of pins. Have fun! And if you do make something cool please let us know. :)
 
+---
+
 ## Glossary
-
-### BCM mode
-
-GPIO pin numbering system where pins are referred to as they are seen by the SoC (System on a Chip, the "brains" of the Raspberry Pi). The system has its basis in engineering, so to most people it appears random. BCM is short for Broadcom, who make the SoC.
-
-### BOARD mode
-
-GPIO pin numbering system, where pin 1 is top left with the SD card slot at the top; the pins are counted across and down. The pins in the vertical column on the left are odd-numbered, those in the right column even-numbered, with pin 26 bottom right.
 
 ### GPIO
 
@@ -70,7 +64,7 @@ Computing that involves tangible things connected to a computer, beyond standard
 
 ---
 
-### A technical note on pin numbering.
+### Appendix 1. A technical note on pin numbering
 
 When programming the GPIO pins there are two different ways to refer to them. You can count across and down from pin 1 at the top left (nearest to the SD card), as in the diagram at the top of the page. You may see this referred to as BOARD mode in Python. Alternatively, you can refer to the pins as the computer sees them (BCM mode). You can see this on the Raspberry Pi LED circuit above; for example, physical pin 3 is labelled "2" and physical pin 11 is labelled "17".
 
