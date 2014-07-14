@@ -3,7 +3,7 @@
 The hardware in the Raspberry Pi
 
 - [Schematics](schematics.md)
-    - Schematics for the Raspberry Pi Model A and Model B
+    - Schematics for the Raspberry Pi Model A, B and B+
 - [BCM2835](bcm2835.md)
     - The Broadcom processor used in Raspberry Pi Model A, B and B+
 - [Mechanical Drawing](Raspberry-Pi-B-Plus-V1.2-Mechanical-Drawing.pdf)
