@@ -10,6 +10,8 @@ Sometimes you need access to a Raspberry Pi without connecting a monitor to it: 
     - Access the command line of the Pi from another computer
 - [FTP](ftp.md)
     - Copy files between your Pi and another computer using FTP
+- [SFTP](ssh/sftp.md)
+    - Copy files between your Pi and another computer using SFTP (more secure than FTP)
 - [SCP](ssh/scp.md)
     - Copy files between your Pi and another computer using SCP (more secure than FTP)
 - [rsync](ssh/rsync.md)
