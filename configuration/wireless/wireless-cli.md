@@ -15,7 +15,7 @@ You will also need the password for the WiFi network. For most home routers this
    
 Open the `wpa-supplicant` configuration file in nano:
 
-`sudo nano etc/wpa_supplicant/wpa_supplicant.conf`  
+`sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`  
 
 Go to the bottom of the file and add the following:   
 
