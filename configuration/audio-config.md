@@ -13,12 +13,12 @@ There are two ways of setting the audio output.
 The following command, entered in the command line, will switch the audio output to HDMI:
 
 ```
-amixer cset numid=3 1
+amixer cset numid=3 2
 ```
 
-Here the output is being set to `1`, which is HDMI.
+Here the output is being set to `2`, which is HDMI.
 
-Setting the output to `2` switches to analogue (headphone jack).
+Setting the output to `1` switches to analogue (headphone jack).
 
 The default setting is `0` which is automatic.
 
