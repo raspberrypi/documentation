@@ -4,7 +4,7 @@ Schematics for the various Raspberry Pi board versions:
 
 ## Model B+
 
-- [Revision 2.1](Raspberry-Pi-B-Plus-V1.2-Schematics.pdf)
+- [Revision 1.2](Raspberry-Pi-B-Plus-V1.2-Schematics.pdf)
 
 ## Model A and B
 
