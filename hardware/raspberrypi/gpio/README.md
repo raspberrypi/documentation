@@ -6,7 +6,7 @@ General Purpose Input/Output pins on the Raspberry Pi
 
 This page expands on the technical features of the GPIO pins available on BCM2835 in general. For usage examples, see the [GPIO Usage](../../../usage/gpio/README.md) section. When reading this page, reference should be made to the BCM2835 ARM Peripherals [Datasheet](../bcm2835/README.md), section 6.
 
-GPIO pins can be configured as either general-purpose input, general-purpose output or as one of up to 5 special alternate settings, the functions of which are pin-dependant.
+GPIO pins can be configured as either general-purpose input, general-purpose output or as one of up to 6 special alternate settings, the functions of which are pin-dependant.
 
 There are 3 GPIO banks on BCM2835.
 
