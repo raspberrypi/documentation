@@ -2,7 +2,7 @@
 
 Here are some example programs to demonstrate the Pi's capabilities.
 
-![](images/mandelbrot.jpg)
+![Mandelbrot fractal](images/mandelbrot.jpg)
 
 In order to run these programs you need to be at the command line. Your Pi may boot to the command line (requiring you to enter `startx` to get to the desktop); if so, go straight ahead. Otherwise, use the start button to log out of the desktop.
 
