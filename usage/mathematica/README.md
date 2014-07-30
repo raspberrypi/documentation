@@ -2,11 +2,11 @@
 
 Mathematica is a computational programming tool used in science, maths, computing and engineering first released in 1988. It is proprietary software that you can use for free on the Raspberry Pi and has been bundled with Raspbian and NOOBS since late 2013. Read the announcement on the Raspberry Pi blog: [The Wolfram Language and Mathematica on Raspberry Pi, for free](http://www.raspberrypi.org/the-wolfram-language-and-mathematica-on-raspberry-pi-for-free/).
 
-![](images/3d-plot.png)
+![3D graph](images/3d-plot.png)
 
 If your SD card was updated since late 2013 then you should have Mathematica and Wolfram pre-installed and should see their icons on the Raspbian desktop:
 
-![](images/icons.png)
+![Wolfram and Mathematica icons](images/icons.png)
 
 or find the programs in your applications menu under *Education*.
 
@@ -25,17 +25,17 @@ Note this is a 200MB download so may take some time.
 
 Double click the `Mathematica` icon on the Desktop or open it from the applications menu to start. You'll see a splash screen with the red mathematica logo while the program loads:
 
-![](images/splash.png)
+![Mathematica splash screen](images/splash.png)
 
 Once loaded, you'll see two windows:
 
 The Wolfram information dialogue:
 
-![](images/info.png)
+![Wolfram information dialogue](images/info.png)
 
 and the Mathematica notebook:
 
-![](images/notebook.png)
+![Mathematica notebook](images/notebook.png)
 
 The Wolfram information dialogue shows web links to:
 
@@ -55,7 +55,7 @@ Print["Hello world"]
 
 and hit `Shift + Enter` and it will run the command and print "Hello world" to the screen like so:
 
-![](images/hello-world.png)
+![Hello World](images/hello-world.png)
 
 You can perform mathematical calculations such as:
 
@@ -171,7 +171,7 @@ Do[Print[i ^ 2], {i, nums}] (*Print the square of each item in the list nums*)
 
 You can get usage help for a function by prepending the function name with a question mark (`?`) and hitting `Shift + Enter`:
 
-![](images/sqrt.png)
+![Square root function help](images/sqrt.png)
 
 #### Function Search
 
@@ -181,7 +181,7 @@ You can also search for functions by entering part of the function name to find 
 In[15]:= ?Device*
 ```
 
-![](images/function-search.png)
+![Function search](images/function-search.png)
 
 You can use multiple wildcards:
 
@@ -189,7 +189,7 @@ You can use multiple wildcards:
 In[16]:= ?*Close*
 ```
 
-![](images/function-search2.png)
+![Search wildcards](images/function-search2.png)
 
 #### Comments
 
@@ -203,7 +203,7 @@ Print["Hello"] (*Print "Hello" to the screen*)
 
 You can also access the Wolfram language from the command line by entering `wolfram` in the termina, or double clicking the Wolfram Desktop icon. This will give a text-only (non-graphical) programming environment with the `In[x]` / `Out[x]` style interface but without interactive notebook functionality. The Mathematica functions will still work as expected:
 
-![](images/command-line.png)
+![Wolfram command line](images/command-line.png)
 
 You'll find the command line interface faster to use due to the lack of graphical processing required to run the notebook, but without the interactivity and graphical pretty printing.
 
@@ -219,7 +219,7 @@ To run `test.m`:
 wolfram -script test.m
 ```
 
-![](images/script.png)
+![Wolfram script](images/script.png)
 
 ## More
 
