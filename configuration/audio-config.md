@@ -32,7 +32,7 @@ sudo raspi-config
 
 This will open the configuration screen:
 
-![](images/raspi-config.png)
+![configuration screen](images/raspi-config.png)
 
 Select Option 8 `Advanced Options` and hit `Enter`, then select Option A6: `Audio` and hit `Enter`.
 
