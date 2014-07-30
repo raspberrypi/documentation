@@ -32,7 +32,7 @@ task :clean do
   sh "rm -rf #{BUILD_DIR}"
 end
 
-desc "Test the"
+desc "Test the build"
 task :test do
   HTML::Proofer.new(BUILD_DIR, { :ext => ".md" }).run
 end
