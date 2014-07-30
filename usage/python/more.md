@@ -100,7 +100,7 @@ In `python` this would have printed on one line:
 {1: 1, 2: 8, 3: 27, 4: 64, 5: 125, 6: 216, 7: 343, 8: 512, 9: 729, 10: 1000, 11: 1331}
 ```
 
-![](images/python-vs-ipython.png)
+![Python vs ipython](images/python-vs-ipython.png)
 
 You can look back on the history of the commands you've entered in the REPL by using the Up/Down keys like in `python` but it also persists over sessions, so you can exit `ipython` and return (or switch between v2/3) and the history remains. Use `Ctrl + D` to exit.
 
