@@ -36,7 +36,7 @@ You can view this list as a matrix by typing:
 m // MatrixForm
 ```
 
-![](images/matrix.png)
+![Matrix](images/matrix.png)
 
 You can perform matrix operations such as [dot product](https://en.wikipedia.org/wiki/Dot_product):
 
@@ -46,13 +46,13 @@ m2 = {{10, 20, 30}, {40, 50, 60}};
 m . m2 // MatrixForm
 ```
 
-![](images/dot-product.png)
+![Dot product](images/dot-product.png)
 
 ## Plotting
 
 You can plot interesting things using Mathematica:
 
-![](images/batman-plot.png)
+![Batman plot](images/batman-plot.png)
 
 For example, plot an [echidnahedron](http://mathworld.wolfram.com/Echidnahedron.html) with the following command:
 
@@ -60,7 +60,7 @@ For example, plot an [echidnahedron](http://mathworld.wolfram.com/Echidnahedron.
 Graphics3D[{Opacity[.8], Glow[RGBColor[1,0,0]], EdgeForm[White], Lighting -> None, PolyhedronData["Echidnahedron", "Faces"]}]
 ```
 
-![](images/echidnahedron.png)
+![Echidnahedron](images/echidnahedron.png)
 
 ## GPIO
 
@@ -88,7 +88,7 @@ button = DeviceRead["GPIO", 14]
 
 The variable `button` should now contain `0` for off or `1` for on.
 
-![](images/gpio.png)
+![GPIO](images/gpio.png)
 
 Read more about GPIO in general on the [GPIO usage](../gpio/README.md) page.
 
