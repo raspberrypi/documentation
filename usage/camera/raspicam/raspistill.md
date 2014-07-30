@@ -10,7 +10,7 @@ With the camera module [connected and enabled](../README.md), enter the followin
 raspistill -o cam.jpg
 ```
 
-![](images/cam.jpg)
+![Upside-down photo](images/cam.jpg)
 
 In this example the camera has been positioned upside-down. If the camera is placed in this position, the image must be flipped to appear the right way up.
 
@@ -22,7 +22,7 @@ With the camera placed upside-down, the image must be rotated 180° to be displa
 raspistill -vf -hf -o cam2.jpg
 ```
 
-![](images/cam2.jpg)
+![Vertical and horizontal flipped photo](images/cam2.jpg)
 
 Now the photo has been captured correctly.
 
