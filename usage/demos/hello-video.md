@@ -2,7 +2,7 @@
 
 This will play a 15 second long full HD 1080p video clip with no sound. The intention here is to demonstrate video decode and playback capability. You’ll see that the video is very smooth!
 
-![](images/bbb.jpg)
+![Big Buck Bunny screenshot](images/bbb.jpg)
  
 Enter the following commands to navigate to the `hello_video` folder and list the files:
 
