@@ -1,5 +1,7 @@
 # Raspberry Pi Documentation
 
+[![Build Status](https://travis-ci.org/raspberrypi/documentation.svg?branch=master)](https://travis-ci.org/raspberrypi/documentation)
+
 This is the official documentation for the Raspberry Pi, written by the [Raspberry Pi Foundation](http://raspberrypi.org).
 
 ## Contents
