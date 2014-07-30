@@ -2,7 +2,7 @@
 
 Minecraft is a popular sandbox open world-building game. A free version of Minecraft is available for the Raspberry Pi; it is the only edition of the game with a programming interface. This means you can write commands and scripts in Python code to build things in the game, automatically as well as manually.
 
-![](images/minecraft-pi-banner.png)
+![Minecraft Pi banner](images/minecraft-pi-banner.png)
 
 ## Installation
 
@@ -16,7 +16,7 @@ wget http://goo.gl/o2aene -O mcpi.tar.gz --no-check-certificate
 
 You'll see some information about the downloading file, like so:
 
-![](images/mcpi-install.png)
+![Minecraft Pi downloading](images/mcpi-install.png)
 
 Once you see `'mcpi.tar.gz' saved` and you are returned to the prompt, type the following to extract the files:
 
@@ -126,7 +126,7 @@ for dx in range(1, 101, 2):
             mc.setBlock(x + dx, y + dy, z + dz)
 ```
 
-![](images/steve.png)
+![Minecraft Pi screenshot](images/steve.png)
 
 ## API reference
 
