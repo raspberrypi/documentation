@@ -2,7 +2,7 @@
 
 Here we'll show you how to set up an instance of a WordPress site to run on your Raspberry Pi using the Apache Web Server.
 
-![](images/wordpress-logo.png)
+![Wordpress logo](images/wordpress-logo.png)
 
 ## Set up the web server
 
@@ -16,7 +16,7 @@ You need to install some additional tools for WordPress to run on the web server
 
 PHP is a preprocessor; it's code that runs when the server receives a request for a web page. It runs, works out what needs to be shown on the page, then sends that page to the browser. Unlike static HTML, PHP can show different content under different circumstances. Other languages are capable of this, but since WordPress is written in PHP, that's what we need to use this time. PHP is a very popular language on the web; large projects like Facebook and Wikipedia are written in PHP.
 
-![](images/php-logo.png)
+![PHP logo](images/php-logo.png)
 
 Install the PHP and Apache packages with the following command:
 
@@ -28,7 +28,7 @@ sudo apt-get install php5 libapache2-mod-php5 -y
 
 MySQL (pronounced *My Sequel* or *My S-Q-L*) is a popular database engine. Like PHP, its overwhelming presence on web servers enhanced its popularity. This is why projects like WordPress use it, and why those projects are so popular.
 
-![](images/mysql-logo.png)
+![MySQL logo](images/mysql-logo.png)
 
 Install the MySQL Server and PHP-MySQL packages by entering the following command into the terminal:
 
@@ -138,7 +138,7 @@ Table Prefix:       wp_
 
 Upon successful database connection, you will be given the contents of your `wp-config.php` file:
 
-![](images/wp-config.png)
+![wp-config file](images/wp-config.png)
 
 Copy this text, return to the terminal on the Pi and edit the file with `nano wp-config.php`. Paste the text into this file, and save and exit with `Ctrl + X`, then `Y` for yes and `Enter`.
 
@@ -148,7 +148,7 @@ Now hit the `Run the install` button.
 
 Now you're getting close.
 
-![](images/wp-info.png)
+![Wordpress welcome screen](images/wp-info.png)
 
 Fill out the information: give your site a title, create a username and password, put in your email address and untick the search engines box. Hit the `Install WordPress` button, then log in using the account you just created.
 
