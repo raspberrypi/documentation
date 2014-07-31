@@ -14,7 +14,7 @@ A guide to setting up your Raspberry Pi
     - Any standard USB keyboard and mouse will work with your Raspberry Pi.
     - Wireless keyboards and mice will work if already paired.
     - For keyboard layout configuration options see [raspi-config](../configuration/raspi-config.md).
-- [Power supply](../hardware/raspberrypi/power.md)
+- [Power supply](../hardware/raspberrypi/power/README.md)
     - The Pi is powered by a USB Micro power supply (like most standard mobile phone chargers).
     - You'll need a good-quality power supply that can supply at least 700mA at 5V.
     - Low ampage (~700mA) power supplies will work for basic usage, but are likely to cause the Pi to reboot if it draws too much power.
