@@ -19,11 +19,12 @@ task :build do
   # render markdown
   redcarpet = Redcarpet::Markdown.new Redcarpet::Render::HTML.new({}), {}
 
-  md_files = File.join BUILD_DIR, "**", "*.md"
-  Dir.glob md_files do |md|
+  md_files = Dir.glob File.join(BUILD_DIR, "**", "*.md")
+  md_files.each do |md|
     html = redcarpet.render File.open(md).read
     File.open(md, File::WRONLY).write html
   end
+  puts "Rendered #{md_files.length} markdown files."
 end
 
 desc "Remove the build"
