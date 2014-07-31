@@ -2,7 +2,7 @@
 
 **New Out Of the Box Software** - an easy operating system install manager for the Raspberry Pi
 
-![](images/noobs.png)
+![NOOBS OS selection](images/noobs.png)
 
 ## How to get NOOBS
 
