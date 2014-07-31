@@ -13,7 +13,7 @@
 
 The Raspberry Pi is equipped with one [SPI](http://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus) bus that has 2 chip selects.
 
-The SPI master driver is disabled by default on Raspian. To enable it, remove the blacklisting for `spi-bcm2708` in `/etc/modprobe.d/raspi-blacklist.conf`, or use [raspi-config](../../configuration/raspi-config.md).
+The SPI master driver is disabled by default on Raspian. To enable it, remove the blacklisting for `spi-bcm2708` in `/etc/modprobe.d/raspi-blacklist.conf`, or use [raspi-config](../../../configuration/raspi-config.md).
 Reboot or load the driver manually with:
 
 ```bash
