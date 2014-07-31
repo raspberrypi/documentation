@@ -173,5 +173,5 @@ Other tools are available that may come in handy when using the camera or a webc
     - Copy files over SSH to get copies of pictures taken on the Pi on your main computer
 - [rsync](../../remote-access/ssh/rsync.md)
     - Use `rsync` to synchronise the folder of pictures taken in a folder between your Pi to your computer
-- [cron](../../linux/cron.md)
+- [cron](../../linux/usage/cron.md)
     - Use `cron` to schedule taking a picture at a given interval, such as every minute to capture a time-lapse
