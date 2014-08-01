@@ -70,7 +70,6 @@ SCLK - Serial CLocK
 CE   - Chip Enable (often called Chip Select)
 MOSI - Master Out Slave In
 MISO - Master In Slave Out
-SDA  - Serial DAta
 MOMI - Master Out Master In
 MIMO - Master In Master Out
 ```
@@ -111,8 +110,6 @@ If CDIV is set to 0, the divisor is 65536. The divisor must be a power of 2. Odd
 See the [Linux driver](#driver) section for more info.
 
 ### Chip Select
-
-The controller supports 3 Chip selects, but only 2 is available on the header.
 
 Setup and Hold times related to the automatic assertion and de-assertion of the CS lines when operating in **DMA** mode are as follows:
 
