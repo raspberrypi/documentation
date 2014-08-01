@@ -11,25 +11,25 @@ task :default => [:test]
 
 desc "Generate the build"
 task :build do
-  md_files = File.join "**", "*.md"
-  Dir.glob(md_files) { |f|
-    # input
-    markdown = File.open(f).read
-    html = Redcarpet::Markdown.new(
-      Redcarpet::Render::HTML.new({}), {}
-    ).render(markdown)
+  # copy files
+  files = Dir.glob("*")
+  mkdir BUILD_DIR
+  cp_r files, BUILD_DIR
 
-    # output
-    dir = File.dirname File.join(BUILD_DIR, f)
-    base = File.basename f
-    FileUtils.mkdir_p dir
-    File.open(File.join(dir, base), "w").write html
-  }
+  # render markdown
+  redcarpet = Redcarpet::Markdown.new Redcarpet::Render::HTML.new({}), {}
+
+  md_files = Dir.glob File.join(BUILD_DIR, "**", "*.md")
+  md_files.each do |md|
+    html = redcarpet.render File.open(md).read
+    File.open(md, File::WRONLY).write html
+  end
+  puts "Rendered #{md_files.length} markdown files."
 end
 
 desc "Remove the build"
 task :clean do
-  sh "rm -rf #{BUILD_DIR}"
+  rm_rf BUILD_DIR
 end
 
 desc "Test the build"
