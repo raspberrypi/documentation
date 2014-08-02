@@ -25,4 +25,4 @@ If things are still not working, try the following:
 ```
 sudo rpi-update
 ```
-*   If after trying all the above the camera still does not work, it may be defective; have you been careful not to expose it to static shock? Try posting on the [Raspberry Pi forum (Camera section)](http://www.raspberrypi.org/forum/viewforum.php?f=43&sid=96b56e43b9c878ba6b89ab59b510d05d) to see if there is any more help available there. Failing that, it may need replacing. 
+*   If after trying all the above the camera still does not work, it may be defective; have you been careful not to expose it to static shock? Try posting on the [Raspberry Pi forum (Camera section)](http://www.raspberrypi.org/forum/viewforum.php?f=43) to see if there is any more help available there. Failing that, it may need replacing. 
