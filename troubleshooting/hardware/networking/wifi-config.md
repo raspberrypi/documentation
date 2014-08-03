@@ -1,1 +1,1 @@
-# Wifi Configuration
+# WiFi Configuration
