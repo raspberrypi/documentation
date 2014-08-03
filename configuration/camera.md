@@ -36,4 +36,4 @@ The display should show a five-second preview from the camera and then take a pi
 
 ##Troubleshooting
 
-See [Camera TroubleShooting](../../../blob/master/troubleshooting/hardware/camera.md).
+See [Camera TroubleShooting](../troubleshooting/hardware/camera.md).
