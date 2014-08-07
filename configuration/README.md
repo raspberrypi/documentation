@@ -16,3 +16,5 @@ Some basic guides to configuring your Raspberry Pi
     - Installing and setting up the Raspberry Pi camera board.
 - [Localisation](localisation.md)
     - Setting up your Pi to work in your local language / timezone / etc.
+- [Default pin configuration](pin-configuration.md)
+    - Changing the default pin states.
