@@ -103,6 +103,17 @@ If this did not work, delete your keys with `rm ~/.ssh/id*` and follow the instr
 
 You can also send files over SSH using the `scp` command (secure copy). See the [SCP guide](scp.md) for more information.
 
+### Macs
+
+Note that `ssh-copy-id` is not natively on OSX. You need to install [`brew`](http://brew.sh) and then execute:
+
+```
+brew update
+brew install ssh-copy-id
+```
+
+Additionally, brew has a ton of other useful command line tools available for our mac. 
+
 ## Disable Password Logins Over SSH
 
 Passwords have become inherently weak. Any password a person can think of, a computer can guess. Now that we have setup a strong Public Key Infrastructure (PKI), it is a liability to leave password logins enabled.
