@@ -2,9 +2,19 @@
 
 You can use SSH to connect to your Raspberry Pi from a Linux computer or Mac (or another Pi) from the Terminal, without installing additional software.
 
-You'll need to know your Pi's IP address to connect to it. To find this, type `hostname -I` in the Terminal. Alternatively if you're running the Pi headless (without a screen), you can also look at the device list on your router or use a tool like `nmap`.
+You'll need to know your Pi's IP address to connect to it. To find this, type `hostname -I` in the Terminal. Alternatively if you're running the Pi headless (without a screen), you can also look at the device list on your router or use a tool like `nmap`. 
 
-Copy and paste the following command into the Terminal window but replace `<IP>` with the IP address of the Raspberry Pi. Use `Ctrl + Shift + V` to paste in the Terminal.
+Nmap would be something like this:
+
+```
+nmap -n -sP 192.168.1.0/24
+```
+
+where the `192.168.1.0/24` is your local network and the `0/24` means to scan all potential 256 clients on `192.168.1`.
+
+You can also use [Fing](http://www.overlooksoft.com/download) which is a free Network scanner for iPhone, Android, OSX, Windows, Linux, and Raspberry Pi.
+
+Copy and paste the following command into the Terminal window but replace `<IP>` with the IP address of the Raspberry Pi.
 
 ```
 ssh pi@<IP>
