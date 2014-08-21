@@ -2,6 +2,8 @@
 
 The hardware in the Raspberry Pi
 
+- [Models](models/README.md)
+    - Raspberry PI Models and Revisions
 - [Schematics](schematics/README.md)
     - Schematics for the Raspberry Pi Model A, B and B+
 - [BCM2835](bcm2835/README.md)
