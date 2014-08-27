@@ -34,5 +34,5 @@ end
 
 desc "Test the build"
 task :test do
-  HTML::Proofer.new(BUILD_DIR, { :ext => ".md" }).run
+  HTML::Proofer.new(BUILD_DIR, { :ext => ".md", :directory_index_file => "README.md" }).run
 end
