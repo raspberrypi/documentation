@@ -38,6 +38,8 @@ overscan_bottom=10
 
 GPU memory in megabytes. Sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; maximum value is either `192` or `448` depending on whether you're using a 256MB or 512MB Pi. The default value is `64`.
 
+Setting `gpu_mem` to low values may automatically disable certain firmware features (as there are some things the GPU simply can't do with too little memory). So if a certain feature you're trying to use isn't working, try setting a larger GPU memory split.
+
 Using `gpu_mem_256` and `gpu_mem_512` allows you to swap the same SD card between both 256MB and 512MB Pis without having to edit `config.txt` each time:
 
 #### gpu_mem_256
