@@ -14,7 +14,7 @@ If not, open a terminal window and type the following commands (you must be onli
 
 ```bash
 sudo apt-get update
-sudo apt-get install minecraft-pi python-minecraftpi
+sudo apt-get install minecraft-pi
 ```
 
 Once that finishes, Minecraft Pi and the Python library should be installed.
