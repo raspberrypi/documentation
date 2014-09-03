@@ -6,10 +6,11 @@ Minecraft is a popular sandbox open world-building game. A free version of Minec
 
 ## Installation
 
-Minecraft may be installed by default with a desktop shortcut.   
-![Minecraft Pi shortcut](images/minecraft-pi-shortcut.png)
+Minecraft may be installed by default with a desktop shortcut.
 
-If not, open a terminal window and type the following commands:
+![Minecraft Pi shortcut icon](images/minecraft-pi-shortcut.png)
+
+If not, open a terminal window and type the following commands (you must be online):
 
 ```bash
 sudo apt-get update
@@ -110,3 +111,11 @@ for dx in range(1, 101, 2):
 ## API reference
 
 See an API reference at [stuffaboutcode.com](http://www.stuffaboutcode.com/p/minecraft-api-reference.html).
+
+---
+
+Note: Minecraft was previously installed by downloading the files with `wget`. These instructions has been updated as the installation is now possible with Raspbian's package manager.
+
+Previously any Python code accessing the API had to be saved in the `api/python` folder. Now you can save the Python code wherever you like.
+
+If you installed Minecraft the old way, you should delete the folder with `rm -rf mcpi` from the home folder, and follow the instructions above to install the new way.
