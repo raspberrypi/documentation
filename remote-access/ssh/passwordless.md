@@ -64,6 +64,12 @@ Note that this time you will have to authenticate with your password.
 
 Now try `ssh <USER>@<IP-ADDRESS>` and you should connect without a password prompt.
 
+If you see a message "Agent admitted failure to sign using the key." then add your RSA or DSA identities to the authentication agent, ssh-agent 
+the execute the following command:  
+```
+ssh-add
+```
+
 If this did not work, delete your keys with `rm ~/.ssh/id*` and follow the instructions again.
 
 You can also send files over SSH using the `scp` command (secure copy). See the [SCP guide](scp.md) for more information.
