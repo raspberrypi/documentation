@@ -38,6 +38,8 @@ overscan_bottom=10
 
 GPU memory in megabytes. Sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; maximum value is either `192` or `448` depending on whether you're using a 256MB or 512MB Pi. The default value is `64`.
 
+Setting `gpu_mem` to low values may automatically disable certain firmware features (as there are some things the GPU simply can't do with too little memory). So if a certain feature you're trying to use isn't working, try setting a larger GPU memory split.
+
 Using `gpu_mem_256` and `gpu_mem_512` allows you to swap the same SD card between both 256MB and 512MB Pis without having to edit `config.txt` each time:
 
 #### gpu_mem_256
@@ -598,7 +600,7 @@ To view the Pi's temperature, type: `cat /sys/class/thermal/thermal_zone0/temp`.
 
 To view the Pi's current frequency, type: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`. Divide the result by 1000 to get the value in MHz.
 
-To monitor the Pi's PSU voltage, you'll need a multimeter to measure between the TP1 and TP2 power supply test points; more information is available in [power](../troubleshooting/power.md).
+To monitor the Pi's PSU voltage, you'll need a multimeter to measure between the TP1 and TP2 power supply test points; more information is available in [power](../hardware/raspberrypi/power/README.md).
 
 It's generally a good idea to keep the core temperature below 70 degrees and the voltage above 4.8V. Note that some USB power supplies fall as low as 4.2V; this is because they are usually designed to charge a 3.7V LiPo battery, rather than to supply 5V to a computer. If your overclocked Raspberry Pi is getting hot a heatsink can be helpful, especially if the Pi is to be run inside a case. A suitable heatsink is the self-adhesive BGA (ball-grid-array) 14x14x10 mm heatsink, available from [RS Components](http://uk.rs-online.com/web/p/heatsinks/6744756/).
 

@@ -8,7 +8,7 @@ The code you write in Sonic Pi is based on Ruby, which is really nice and clean.
 
 You'll find Sonic Pi on Raspbian in the applications menu under **Education**. Open it up and you'll see a window like this:
 
-![](images/sonic-pi.png)
+![Sonic Pi interface](images/sonic-pi.png)
 
 This is the Sonic Pi application interface. It has three sections to the window. The largest one is for writing your code and we call it the Programming Panel. The top right hand window is the Output Panel and it displays information about your program as it runs. Underneath is the third window: the Error Panel which displays information if there is a problem with your code.
 

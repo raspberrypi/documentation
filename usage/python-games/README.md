@@ -2,15 +2,15 @@
 
 On the Raspbian desktop you'll find an icon with the Python logo labelled `Python Games`:
 
-![](images/python-games-icon.png)
+![Python Games icon](images/python-games-icon.png)
 
 Double click this icon to start. This will prompt you to set your audio configuration to output sound over HDMI or the headphone jack. Make a selection or leave it as it is and click `OK` to proceed.
 
-![](images/audio-output.png)
+![Audio configuration](images/audio-output.png)
 
 Now you'll be shown a tall window with the list of games available:
 
-![](images/python-games-selection.png)
+![Python Games selection screen](images/python-games-selection.png)
 
 Pick a game, click it and hit `OK` to play.
 
@@ -18,11 +18,11 @@ Pick a game, click it and hit `OK` to play.
 
 ### Four in a Row
 
-![](images/four-in-a-row.png)
+![Four in a Row](images/four-in-a-row.png)
 
 ### Flippy
 
-![](images/flippy.png)
+![Flippy](images/flippy.png)
 
 ## Game source code
 
@@ -30,15 +30,15 @@ The source of each of these games is available on the Pi. Simply navigate to the
 
 The `python_games` directory listing in a terminal window:
 
-![](images/python-games-terminal.png)
+![Python Games in a terminal](images/python-games-terminal.png)
 
 The `python_games` folder contents in a the file manager window:
 
-![](images/python-games-folder.png)
+![Python Games in File Manager](images/python-games-folder.png)
 
 The Python source code for the *Four in a Row* game, open for editing in `IDLE`.
 
-![](images/four-in-a-row-code.png)
+![Four in a Row source code](images/four-in-a-row-code.png)
 
 ### Hack the game
 

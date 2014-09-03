@@ -2,7 +2,7 @@
 
 Python is a wonderful and powerful programming language that's easy to use (easy to read **and** write) and with Raspberry Pi lets you connect your project to the real world.
 
-![](images/python-logo.png)
+![Python logo](images/python-logo.png)
 
 Python syntax is very clean, with an emphasis on readability and uses standard English keywords. Start by opening IDLE from the desktop.
 
@@ -10,13 +10,13 @@ Python syntax is very clean, with an emphasis on readability and uses standard E
 
 The easiest introduction to Python is through IDLE. Double click the IDLE icon on the Desktop (or IDLE3 for Python 3):
 
-![](images/idle-icons.png)
+![IDLE icon](images/idle-icons.png)
 
 and you're given a REPL (Read-Evaluate-Print-Loop) which is a prompt you can enter Python commands in to. As it's a REPL you even get the output of commands printed to the screen without using `print`.
 
 For the examples on this page you can use IDLE or IDLE3 (see [Python 2 vs. Python 3](more.md)).
 
-![](images/idle.png)
+![IDLE](images/idle.png)
 
 You can use variables if you need to but you can even use it like a calculator. For example:
 
@@ -178,7 +178,7 @@ will produce:
 TypeError: 'int' object is not iterable
 ```
 
-![](images/python-error.png)
+![Python error](images/python-error.png)
 
 However you can make an iterable object using the `range` function:
 
@@ -238,7 +238,7 @@ Then save this file (`File > Save` or `Ctrl + S`) and run (`Run > Run Module` or
 
 You can write a Python file in a standard editor like Vim, Nano or LeafPad, and run it as a Python script from the command line. Just navigate to the directory the file is saved (use `cd` and `ls` for guidance) and run with `python`, e.g. `python hello.py`.
 
-![](images/run-python.png)
+![Python command line](images/run-python.png)
 
 ## More
 

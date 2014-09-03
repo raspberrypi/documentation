@@ -13,12 +13,12 @@ There are two ways of setting the audio output.
 The following command, entered in the command line, will switch the audio output to HDMI:
 
 ```
-amixer cset numid=3 1
+amixer cset numid=3 2
 ```
 
-Here the output is being set to `1`, which is HDMI.
+Here the output is being set to `2`, which is HDMI.
 
-Setting the output to `2` switches to analogue (headphone jack).
+Setting the output to `1` switches to analogue (headphone jack).
 
 The default setting is `0` which is automatic.
 
@@ -32,11 +32,11 @@ sudo raspi-config
 
 This will open the configuration screen:
 
-![](images/raspi-config.png)
+![raspi-config screen](images/raspi-config.png)
 
 Select Option 8 `Advanced Options` and hit `Enter`, then select Option A6: `Audio` and hit `Enter`.
 
-![](images/raspi-config-audio.png)
+![Audio configuration screen](images/raspi-config-audio.png)
 
 Now you are presented with the two modes explained above as an alternative to the default `Auto` option. Select a mode, hit `Enter` and press the right arrow key to exit the options list, then select `Finish` to exit the configuration tool.
 

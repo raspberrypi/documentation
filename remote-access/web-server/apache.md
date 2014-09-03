@@ -18,7 +18,7 @@ By default, Apache puts a test HTML file in the web folder. This default web pag
 
 Browse to the default web page either on the Pi or from another computer on the network and you should see the following:
 
-![](images/apache-it-works.png)
+![Apache success message](images/apache-it-works.png)
 
 This means you have Apache working!
 

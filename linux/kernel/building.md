@@ -21,6 +21,7 @@ $ sudo apt-get install bc
 Configure the kernel - as well as the default configuration you may wish to [configure your kernel in more detail](configuring.md) or [apply patches from another source](patching.md) to add or remove required functionality:
 
 ```
+$ cd linux
 $ make bcmrpi_defconfig
 ```
 

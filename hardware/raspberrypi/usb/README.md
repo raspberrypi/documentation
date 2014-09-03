@@ -2,21 +2,21 @@
 
 ## Page Contents
 
-* [Overview](#overview)  
-   * [Supported Devices](#support)
-   * [General Limitations](#genlimits)
-   * [Port Power Limits](#powerlimits)
-* [Known Issues](#issues)
-* [Troubleshooting](#troubleshooting)
+- [Overview](#overview)  
+   - [Supported Devices](#support)
+   - [General Limitations](#genlimits)
+   - [Port Power Limits](#powerlimits)
+- [Known Issues](#knownissues)
+- [Troubleshooting](#troubleshooting)
 
-
-## <a name="overview"></a>Overview
+<a name="overview"></a>
+## Overview
 
 The Raspberry Pi Model B is equipped with two USB2.0 ports. These are connected to the LAN9512 combo hub/Ethernet chip IC3, which is itself a USB device connected to the single upstream USB port on BCM2835.
 
 On the Model A, the single USB2.0 port is directly wired to BCM2835.
 
-The USB ports enable the attachment of peripherals such as keyboards, mice, webcams that provide the Pi with additional functionality. 
+The USB ports enable the attachment of peripherals such as keyboards, mice, webcams that provide the Pi with additional functionality.
 
 There are some differences between the USB hardware on the Raspberry Pi and the USB hardware on desktop computers or laptop/tablet devices.
 
@@ -24,8 +24,8 @@ The USB host port inside the Pi is an On-The-Go (OTG) host as the application pr
 
 OTG in general supports communication to all types of USB device, but to provide an adequate level of functionality for most of the USB devices that one might plug into a Pi, the system software has to do more work.
 
-
-### <a name="support"></a>Supported devices
+<a name="support"></a>
+### Supported devices
 
 In general, every device supported by Linux is possible to use with the Pi, subject to a few caveats detailed further down. Linux has probably the most comprehensive driver database for legacy hardware of any operating system (it can lag behind for modern device support as it requires open-source drivers for Linux to recognise the device by default).
 
@@ -33,8 +33,8 @@ If you have a device and wish to use it with a Pi, then plug it in. Chances are 
 
 If the device doesn't appear to work, then refer to the Troubleshooting section.
 
-
-### <a name="genlimits"></a>General limitations
+<a name="genlimits"></a>
+### General limitations
 
 The OTG hardware on Raspberry Pi has a simpler level of support for certain devices, which may present a higher software processing overhead. The Raspberry Pi also has only one root USB port: all traffic from all connected devices is funnelled down this bus, which operates at a maximum speed of 480mbps.
 
@@ -44,25 +44,25 @@ Generally, there are no issues with connecting multiple High-speed USB devices t
 
 The software overhead incurred when talking to Low- and Full-speed devices means that there are soft limitations on the number of simultaneously active Low- and Full-speed devices. Small numbers of these types of devices connected to a Pi will cause no issues.
 
-
-### <a name="powerlimits"></a>Port Power Limits
+<a name="powerlimits"></a>
+### Port Power Limits
 
 USB devices have defined power requirements, in units of 100mA from 100mA to 500mA. The device advertises its own power requirements to the USB host when it is first connected. In theory, the actual power consumed by the device should not exceed its stated requirement.
 
-The USB ports on a Raspberry Pi have a design loading of 100mA each - sufficient to drive "low-power" devices such as mice and keyboards. Devices such as Wi-Fi adapters, USB hard drives, USB pen drives all consume much more current and should be powered from an external hub with its own power supply. While it is possible to plug a 500mA device into a Pi and have it work with a sufficiently powerful supply, reliable operation is not guaranteed.
+The USB ports on a Raspberry Pi have a design loading of 100mA each - sufficient to drive "low-power" devices such as mice and keyboards. Devices such as WiFi adapters, USB hard drives, USB pen drives all consume much more current and should be powered from an external hub with its own power supply. While it is possible to plug a 500mA device into a Pi and have it work with a sufficiently powerful supply, reliable operation is not guaranteed.
 
 In addition, hotplugging high-power devices into the Pi's USB ports may cause a brownout which can cause the Pi to reset.
 
-See [Power](power.md) for more information.
+See [Power](../power/README.md) for more information.
 
-
-## <a name="knownissues"></a>Devices with known issues  
+<a name="knownissues"></a>
+## Devices with known issues  
 
 **1. Interoperability between the Raspberry Pi and USB3.0 hubs**  
    There is an issue with USB3.0 hubs in conjunction with the use of Full- or Low-speed devices (most mice, most keyboards) and the Raspberry Pi. A bug in most USB3.0 hub hardware means that the Raspberry Pi cannot talk to Full- or Low-speed devices connected to a USB3.0 hub.
-  
+
    USB2.0 high-speed devices, including USB2.0 hubs, operate correctly when connected via a USB3.0 hub.
-  
+
    Avoid connecting Low- or Full-speed devices into a USB3.0 hub. As a workaround, plug a USB2.0 hub into the downstream port of the USB3.0 hub and connect the low-speed device, or use a USB2.0 hub between the Pi and the USB3.0 hub, then plug low-speed devices into the USB2.0 hub.
 
 **2. USB1.1 webcams**  
@@ -78,15 +78,16 @@ See [Power](power.md) for more information.
   Because of the OTG hardware limitations, if too many Full- or Low-speed devices are plugged into a single-TT hub, unreliable operation of the devices may occur. It is recommended to use a Multi-TT hub to interface with multiple lower-speed devices.  
   As a workaround, spread lower-speed devices out between the Pi's own USB port and the single-TT hub.
 
-
-## <a name="troubleshooting"></a>Troubleshooting
+<a name="troubleshooting"></a>
+## Troubleshooting
 
 ### If your device doesn't work at all
 
 The first step is to see if it is detected at all. There are two commands that can be entered into a terminal for this: `lsusb` and `dmesg`. The first will print out all devices attached to USB, whether they are actually recognised by a device driver or not, and the second will print out the kernel message buffer (which can be quite big after booting - try doing `sudo dmesg -C` then plug in your device and retype `dmesg` to see new messages).
 
 As an example with a USB pendrive:
-```
+
+```bash
 pi@raspberrypi ~ $ lsusb
 Bus 001 Device 002: ID 0424:9512 Standard Microsystems Corp.
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
@@ -124,7 +125,6 @@ If a device enumerates without any errors, but doesn't appear to do anything, th
 
 Poor quality power is the most common cause of devices not working, disconnecting or generally being unreliable.  
 
-* If you are using an external powered hub, try swapping the power adapter supplied with the hub for another compatible power supply with the same voltage rating and polarity.
-* Check to see if the problem resolves itself if you remove other devices from the hub's downstream ports.
-* Temporarily plug the device directly into the Pi and see if the behaviour improves.
-
+- If you are using an external powered hub, try swapping the power adapter supplied with the hub for another compatible power supply with the same voltage rating and polarity.
+- Check to see if the problem resolves itself if you remove other devices from the hub's downstream ports.
+- Temporarily plug the device directly into the Pi and see if the behaviour improves.

@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - 2.1
+
+before_install:
+  - export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+
+branches:
+  - master
+
+notifications:
+  email: false

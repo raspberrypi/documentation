@@ -6,7 +6,7 @@ The terminal (or 'command-line') on a computer allows a user a great deal of con
 
 On the Raspberry Pi (running Raspbian), the default terminal application is `LXTerminal`. This is known as a 'terminal emulator', this means that it emulates the old style video terminals (from before graphical user interfaces were developed) in a graphical environment. The application can be found on the Raspberry Pi desktop and when started will look something like this:
 
-![](images/lxterminal.png)
+![LXTerminal screenshot](images/lxterminal.png)
 
 You should be able to see the following prompt:
 
@@ -22,7 +22,7 @@ Now, let's try running a command. Type `pwd` (present working directory) followe
 
 One of the key aspects of using a terminal is being able to navigate your file system. Firstly, run the following command: `ls -la`. You should see something similar to:
 
-![](images/lsresult.png)
+![ls result](images/lsresult.png)
 
 The `ls` command lists the contents of the directory that you are currently in (your present working directory). The `-la` component of the command is what's known as a 'flag'. Flags modify the command that's being run. In this case the `l` displays the contents of the directory in a list, showing data such as their sizes and when they were last edited, and the `a` displays all files, including those beginning with a `.`, known as 'dotfiles'. Dotfiles usually act as configuration files for software and as they are written in text, they can be modified by simply editing them.
 

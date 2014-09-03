@@ -6,7 +6,7 @@ Look for `putty.exe` under the heading `For Windows on Intel x86`.
 
 It doesn't have an installer package, it's just a standalone `.exe` file. When you run it you'll see the configuration screen below:
 
-![](images/ssh-win-config.png)
+![PuTTY configuration](images/ssh-win-config.png)
 
 Type the IP address of the Pi into the `Host Name` field and click the `Open` button. If nothing happens for a while when you click the `Open` button and eventually see a message saying `Network error: Connection timed out` it's likely that you've entered the wrong IP address for the Pi.
 
@@ -14,7 +14,7 @@ If you don't know the IP address just type `hostname -I` in the Raspberry Pi com
 
 When the connection works you'll see this security warning (below), you can safely ignore it and click the Yes button. You'll only see this warning the first time when PuTTY connects to a Pi that it has never seen before.
 
-![](images/ssh-win-warning.png)
+![PuTTY warning](images/ssh-win-warning.png)
 
 You'll now have the usual login prompt, login with the same username and password as you would use on the Pi itself. The default login for Raspbian is `pi` with the password `raspberry`.
 
@@ -24,7 +24,7 @@ You should now have the Raspberry Pi prompt which will be identical to the one f
 pi@raspberrypi ~ $
 ```
 
-![](images/ssh-win-window.png)
+![PuTTY window](images/ssh-win-window.png)
 
 You can type `exit` to close the PuTTY window.
 

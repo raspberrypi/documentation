@@ -18,7 +18,7 @@ By default, NGINX puts a test HTML file in the web folder. This default web page
 
 Browse to the default web page either on the Pi or from another computer on the network and you should see the following:
 
-![](images/nginx-welcome.png)
+![NGINX welcome page](images/nginx-welcome.png)
  
 
 ### Changing the default web page

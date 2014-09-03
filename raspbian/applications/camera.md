@@ -16,11 +16,11 @@ Command line help is available by typing just the application name in on the com
 
 ## Setting up
 
-See [Camera Setup](../../../blob/master/configuration/camera.md)
+See [Camera Setup](../../configuration/camera.md)
 
 ## Troubleshooting
 
-See [Camera TroubleShooting](../../../blob/master/troubleshooting/hardware/camera.md)
+See [Camera TroubleShooting](../../troubleshooting/hardware/camera.md)
 
 ## Common Command line Options
 
