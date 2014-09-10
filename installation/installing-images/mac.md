@@ -62,6 +62,12 @@ These commands and actions need to be performed from an account that has adminis
     ```
 
     If the above command reports an error (`dd: bs: illegal numeric value`), please change `bs=1M` to `bs=1m`.
+    
+    If the above command reports an error `dd: /dev/rdisk3: Permission denied` then that is because the partition table of the SD card is being protected against being overwritten by MacOS. Erase the SD card's partition table using this command:
+    ```
+    sudo diskutil partitionDisk /dev/disk3 1 MBR "Free Space" "%noformat%" 100%
+    ```
+    That command will also set the permissions on the device to allow writing. Now try the `dd` command again.
 
     Note that `dd` will not feedback any information until there is an error or it is finished; information will be shown and the disk will re-mount when complete. However if you wish to view the progress you can use 'ctrl-T'; this generates SIGINFO, the status argument of your tty, and will display information on the process.
 - After the `dd` command finishes, eject the card:
