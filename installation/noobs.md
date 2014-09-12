@@ -62,7 +62,7 @@ Note that the operating system images on the full version can be outdated if a n
 
 ### Latest NOOBS release
 
-The latest NOOBS release is **v1.3.9**, released on **8th July 2014**.
+The latest NOOBS release is **v1.3.10**, released on **12th September 2014**.
 
 ### NOOBS Documentation
 
