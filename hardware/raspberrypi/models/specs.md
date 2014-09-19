@@ -21,5 +21,4 @@ Note, the Compute module column refers to the bare Compute module, not connected
 | Size | 85 x 56 x 15mm | 85 x 56 x 17mm | 85 x 56 x 17mm | 62 x 30 x 3mm |
 
 
-* Early Model B boards had 256MB RAM
-
+- * Early Model B boards had 256MB RAM
