@@ -6,11 +6,11 @@ Minecraft is a popular sandbox open world-building game. A free version of Minec
 
 ## Installation
 
-Minecraft may be installed by default with a desktop shortcut.
+Minecraft has been installed by default in Raspbian since September 2014.
 
 ![Minecraft Pi shortcut icon](images/minecraft-pi-shortcut.png)
 
-If not, open a terminal window and type the following commands (you must be online):
+If you're using an older version of Raspbian, open a terminal window and type the following commands (you must be online):
 
 ```bash
 sudo apt-get update
