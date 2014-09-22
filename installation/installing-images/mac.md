@@ -30,7 +30,7 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
 
     `sudo dd bs=1m if=image.img of=/dev/DISK`
 
-    e.g. `sudo dd bs=1m if=2014-06-20-wheezy-raspbian.img of=/dev/disk4`
+    e.g. `sudo dd bs=1m if=2014-09-09-wheezy-raspbian.img of=/dev/disk4`
 
     This may result in an ``dd: invalid number '1m'`` error if you have GNU
     coreutils installed. In that case you need to use ``1M``:
@@ -58,10 +58,16 @@ These commands and actions need to be performed from an account that has adminis
 - Using the device name of the partition, work out the raw device name for the entire disk by omitting the final "s1" and replacing "disk" with "rdisk". This is very important as you will lose all data on the hard drive if you provide the wrong device name. Make sure the device name is the name of the whole SD card as described above, not just a partition of it (for example, rdisk3, not rdisk3s1). Similarly, you might have another SD drive name/number like rdisk2 or rdisk4; you can check again by using the `df -h` command both before and after you insert your SD card reader into your Mac. For example, `/dev/disk3s1` becomes `/dev/rdisk3`.
 - In the terminal, write the image to the card with this command, using the raw disk device name from above. Read the above step carefully to be sure you use the correct rdisk number here:
     ```
-    sudo dd bs=1m if=2014-06-20-wheezy-raspbian/2014-06-20-wheezy-raspbian.img of=/dev/rdisk3
+    sudo dd bs=1m if=2014-06-20-wheezy-raspbian/2014-09-09-wheezy-raspbian.img of=/dev/rdisk3
     ```
 
     If the above command reports an error (`dd: bs: illegal numeric value`), please change `bs=1M` to `bs=1m`.
+    
+    If the above command reports an error `dd: /dev/rdisk3: Permission denied` then that is because the partition table of the SD card is being protected against being overwritten by MacOS. Erase the SD card's partition table using this command:
+    ```
+    sudo diskutil partitionDisk /dev/disk3 1 MBR "Free Space" "%noformat%" 100%
+    ```
+    That command will also set the permissions on the device to allow writing. Now try the `dd` command again.
 
     Note that `dd` will not feedback any information until there is an error or it is finished; information will be shown and the disk will re-mount when complete. However if you wish to view the progress you can use 'ctrl-T'; this generates SIGINFO, the status argument of your tty, and will display information on the process.
 - After the `dd` command finishes, eject the card:

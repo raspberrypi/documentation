@@ -50,19 +50,21 @@ The following Operating Systems are currently included in NOOBS:
 - [RISC OS](https://www.riscosopen.org/wiki/documentation/show/Welcome%20to%20RISC%20OS%20Pi)
 - [Arch Linux](http://archlinuxarm.org/platforms/armv6/raspberry-pi)
 
+As of NOOBS v1.3.10 (September 2014), only Raspbian is installed by default in NOOBS. The others can be installed with a network connection.
+
 ## NOOBS and NOOBS Lite
 
 NOOBS is available in two forms: offline and network install; or network install only.
 
 The full version has the images of each of the operating systems included, so they can be installed from the SD card while offline, whereas NOOBS Lite requires an internet connection to download the selected operating system.
 
-Note that the operating system images on the full version can be outdated if a new version of the OS is released, but if connected to the internet you will be shown the option of downloading the new version of the OS if there is a newer one available.
+Note that the operating system images on the full version can be outdated if a new version of the OS is released, but if connected to the internet you will be shown the option of downloading the latest version of the OS if there is a newer one available.
 
 ## NOOBS Development
 
 ### Latest NOOBS release
 
-The latest NOOBS release is **v1.3.9**, released on **8th July 2014**.
+The latest NOOBS release is **v1.3.10**, released on **12th September 2014**.
 
 ### NOOBS Documentation
 

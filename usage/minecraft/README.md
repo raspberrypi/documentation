@@ -6,36 +6,22 @@ Minecraft is a popular sandbox open world-building game. A free version of Minec
 
 ## Installation
 
-Currently, Minecraft is not installed by default in Raspbian. To install it, download the files from the web.
+Minecraft may be installed by default with a desktop shortcut.
 
-Open a terminal window and type the following command:
+![Minecraft Pi shortcut icon](images/minecraft-pi-shortcut.png)
 
-```bash
-wget http://goo.gl/o2aene -O mcpi.tar.gz --no-check-certificate
-```
-
-You'll see some information about the downloading file, like so:
-
-![Minecraft Pi downloading](images/mcpi-install.png)
-
-Once you see `'mcpi.tar.gz' saved` and you are returned to the prompt, type the following to extract the files:
+If not, open a terminal window and type the following commands (you must be online):
 
 ```bash
-tar xzf mcpi.tar.gz
+sudo apt-get update
+sudo apt-get install minecraft-pi
 ```
 
-This will create a new directory in your home folder called `mcpi`, which is where the Minecraft installation is stored.
-
-It is safe to delete the `mcpi.tar.gz` file once you have extracted its contents. To do this, enter `rm mcpi.tar.gz`.
+Once that finishes, Minecraft Pi and the Python library should be installed.
 
 ## Run
 
-To run Minecraft type:
-
-```bash
-cd mcpi
-./minecraft-pi
-```
+To run Minecraft double click on the desktop icon.
 
 When Minecraft Pi has loaded, click on **Start Game**, followed by **Create new**.
 
@@ -45,13 +31,7 @@ You are now in a game of Minecraft! Go walk around, hack things, and build thing
 
 With Minecraft running, return to your terminal window and open a new tab by clicking **File** and **New Tab**.
 
-In the new tab, navigate to the Python API directory:
-
-```bash
-cd ~/mcpi/api/python
-```
-
-Now open the Python interpreter by typing `python` and pressing Enter. With the Python interpreter loaded, start by importing the Minecraft library. This is located in the `mcpi/api/python/` directory, which is why you must navigate here to access it.
+Now open the Python interpreter by typing `python` and pressing Enter. With the Python interpreter loaded, start by importing the Minecraft library. 
 
 You can either type commands in Python's interactive mode, or create a file with a list of commands, then execute the file at will. See more about [using Python](../python/README.md).
 
@@ -131,3 +111,11 @@ for dx in range(1, 101, 2):
 ## API reference
 
 See an API reference at [stuffaboutcode.com](http://www.stuffaboutcode.com/p/minecraft-api-reference.html).
+
+---
+
+Note: Minecraft was previously installed by downloading the files with `wget`. These instructions has been updated as the installation is now possible with Raspbian's package manager.
+
+Previously any Python code accessing the API had to be saved in the `api/python` folder. Now you can save the Python code wherever you like.
+
+If you installed Minecraft the old way, you should delete the folder with `rm -rf mcpi` from the home folder, and follow the instructions above to install the new way.
