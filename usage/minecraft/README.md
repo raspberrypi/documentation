@@ -21,7 +21,7 @@ Once that finishes, Minecraft Pi and the Python library should be installed.
 
 ## Run
 
-To run Minecraft double click on the desktop icon or enter `minecraft-pi` in the terminal.
+To run Minecraft double click the desktop icon or enter `minecraft-pi` in the terminal.
 
 ![](images/mcpi-start.png)
 
