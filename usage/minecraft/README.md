@@ -23,11 +23,11 @@ Once that finishes, Minecraft Pi and the Python library should be installed.
 
 To run Minecraft double click the desktop icon or enter `minecraft-pi` in the terminal.
 
-![](images/mcpi-start.png)
+![Minecraft Menu](images/mcpi-start.png)
 
 When Minecraft Pi has loaded, click on **Start Game**, followed by **Create new**. You'll notice that the containing window is offset slightly. This means to drag the window around you have to grab the title bar behind the Minecraft window.
 
-![](images/mcpi-game.png)
+![Minecraft Game](images/mcpi-game.png)
 
 You are now in a game of Minecraft! Go walk around, hack things, and build things!
 
@@ -47,11 +47,11 @@ Use the mouse to look around and use the following keys on the keyboard:
 
 You can select an item from the quick draw panel with the mouse's scroll wheel (or use the numbers on your keyboard), or press `E` and select something from the inventory.
 
-![](images/mcpi-inventory.png)
+![Minecraft Inventory](images/mcpi-inventory.png)
 
 You can also double tap the space bar to fly in to the air. You'll stop flying when you release the space bar and if you double tap it again you'll fall back to the ground.
 
-![](images/mcpi-flying.png)
+![Flying in Minecraft](images/mcpi-flying.png)
 
 With the sword in your hand you can click on blocks in front of you to remove them (or to dig) and with a block in your hand you can use right click to place that block in front of you, or left click to remove a block.
 
@@ -75,7 +75,7 @@ mc.postToChat("Hello world")
 
 If you're entering commands directly in to the Python window, just hit `Enter` after each line. If it's a file, save with `Ctrl + S` and run with `F5`. When your code runs, you should see your message on screen in the game.
 
-![](images/mcpi-idle.png)
+![Minecraft Pi with IDLE](images/mcpi-idle.png)
 
 ### Find your location
 
@@ -121,7 +121,7 @@ mc.setBlock(x+1, y, z, 1)
 
 Now a stone block should appear beside where you're standing. If it's not immediately in front of you it may be beside or behind you. Return to the Minecraft window and use the mouse to spin around on the spot until you see a grey block directly in front of you.
 
-![](images/mcpi-setblock.png)
+![Minecraft setBlock()](images/mcpi-setblock.png)
 
 The arguments passed the `set block` are `x`, `y`, `z` and `id`. The `(x, y, z)` refers to the position in the world (we specified one block away from where the player is standing with `x + 1`) and the `id` refers to the type of block we'd like to place. `1` is stone.
 
@@ -141,7 +141,7 @@ mc.setBlock(x+1, y, z, 2)
 
 You should see the grey stone block change in front of your eyes!
 
-![](images/mcpi-setblock2.png)
+![Minecraft setBlock()](images/mcpi-setblock2.png)
 
 #### Blocks as variables
 
@@ -192,7 +192,7 @@ mc.setBlocks(x+1, y+1, z+1, x+11, y+11, z+11, stone)
 
 This will fill in a 10 x 10 x 10 cube of solid stone.
 
-![](images/mcpi-setblocks.png)
+![Minecraft setBlocks()](images/mcpi-setblocks.png)
 
 You can create bigger volumes with the `setBlocks` function but it may take longer to generate!
 
@@ -216,13 +216,13 @@ while True:
 
 Now walk forward for a while and turn around to see the flowers left behind.
 
-![](images/mcpi-flowers.png)
+![Minecraft Flowers](images/mcpi-flowers.png)
 
 Since we used a `while True` loop this will go on forever. To stop it, hit `Ctrl + C` in the Python window.
 
 Try flying through the air and see the flowers you leave in the sky:
 
-![](images/mcpi-flowers-sky.png)
+![Minecraft flowers in the sky](images/mcpi-flowers-sky.png)
 
 What if we only wanted to drop flowers when the player walks on grass? We can use `getBlock` to find out what type a block is:
 
@@ -251,7 +251,7 @@ while True:
     print(block_beneath)
 ```
 
-![](images/mcpi-block-test.png)
+![Minecraft IDLE test blocks](images/mcpi-block-test.png)
 
 We can use an `if` statement to choose whether or not we plant a flower:
 
@@ -279,7 +279,7 @@ else:
 
 Now we can walk forward and if we walk on grass, we'll leave a flower behind. If it's not grass, it turns in to grass. Then when we turn around and walk back, we leave a flower behind as it's now grass.
 
-![](images/mcpi-flowers-grass.png)
+![Minecraft flowers on grass](images/mcpi-flowers-grass.png)
 
 ### TNT blocks
 
@@ -290,7 +290,7 @@ tnt = 46
 mc.setBlock(x, y, z, tnt)
 ```
 
-![](images/mcpi-tnt.png)
+![Minecraft TNT](images/mcpi-tnt.png)
 
 However this TNT block is fairly boring. Try applying `data` as `1`:
 
@@ -308,11 +308,11 @@ tnt = 46
 mc.setBlocks(x+1, y+1, z+1, x+11, y+11, z+11, tnt, 1)
 ```
 
-![](images/mcpi-tnt-blocks.png)
+![Minecraft TNT blocks](images/mcpi-tnt-blocks.png)
 
 Now you'll see a big cube full of TNT blocks. Go and activate one of the blocks and then run away to watch the show! It'll be really slow to render the graphics as so many things are changing at once.
 
-![](images/mcpi-tnt-explode.png)
+![Minecraft exploding TNT blocks](images/mcpi-tnt-explode.png)
 
 ## Networked game
 
