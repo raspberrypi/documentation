@@ -33,11 +33,13 @@ sudo apt-get remove python3-rpi.gpio --purge
 
 Not all Python packages are available in the Raspbian archives, and those that are can sometimes be out of date. If you can't find a suitable version in the Raspbian archives you can install packages from the [Python Package Index](http://pypi.python.org/) (also known as PyPI). To do so, use the `pip` tool.
 
-First install `pip` with `apt`:
+First install `pip` with `apt`.
 
 ```bash
 sudo apt-get install python3-pip
 ```
+
+or the Python 2 version:
 
 ```bash
 sudo apt-get install python-pip
