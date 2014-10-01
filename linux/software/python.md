@@ -4,7 +4,7 @@
 
 Some Python packages can be found in the Raspbian archives and can be installed using APT, for example:
 
-```
+```bash
 sudo apt-get update
 sudo apt-get install python-picamera
 ```
@@ -13,13 +13,13 @@ This is a preferable method of installing software, as it means that the modules
 
 Python packages in Raspbian which are compatible with Python 2.x will always have a `python-` prefix. So, the `picamera` package for Python 2.x is named `python-picamera` (as shown in the example above). Python 3 packages always have a `python3-` prefix. So, to install `rpi.gpio` for Python 3 you would use:
 
-```
+```bash
 sudo apt-get install python3-rpi.gpio
 ```
 
 Uninstalling packages installed via APT can be accomplished as follows:
 
-```
+```bash
 sudo apt-get remove python3-rpi.gpio
 ```
 
