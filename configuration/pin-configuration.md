@@ -48,10 +48,10 @@ including the Compute Module to set up the alternate settings correctly. The fol
       * `pull_up`
       * `pull_down`
       * `no_pulling`
-   3.`startup_state`
+   3. `startup_state`
       * `active`
       * `inactive`
-   4.`function`
+   4. `function`
       * `input`
       * `output`
       * `sdcard`
