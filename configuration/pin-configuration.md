@@ -95,7 +95,7 @@ clock_setup {
 };
 ```
 
-The above will set the PLLA to a source VCO running at 1.96608GHz (the limits for this VCO are 600MHz - 2.4GHz), the APER channel to /4 and configures GPCLK0 to be sourced from PLLA through APER.  This is used specifically to give an audio codec the 12288000 MHz it needs to do the 48000 range of frequencies.
+The above will set the PLLA to a source VCO running at 1.96608GHz (the limits for this VCO are 600MHz - 2.4GHz), the APER channel to /4 and configures GPCLK0 to be sourced from PLLA through APER.  This is used specifically to give an audio codec the 12288000Hz it needs to do the 48000 range of frequencies.
 ## Sample device tree source file
 **NOTE:** As this is a new feature, there is no reference dts file which is guaranteed to be supported by future firmware revisions.
 
