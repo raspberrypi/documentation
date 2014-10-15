@@ -107,7 +107,7 @@ Note that the port is capable of being used as a true OTG port, but there is cur
 
 It is recommended that users follow a similar arrangement to the Compute Module IO Board circuitry for HDMI output.
 
-The HDMI CK_P/N (clock) and D0-D3_P/N (data) pins must each be routed as matched length 100 ohm differential PCB traces. It is also important to make sure that each differential pair is closely phase matched. Finally, keep HDMI traces well away from other noise sources and as short as possible.
+The HDMI CK_P/N (clock) and D0-D2_P/N (data) pins must each be routed as matched length 100 ohm differential PCB traces. It is also important to make sure that each differential pair is closely phase matched. Finally, keep HDMI traces well away from other noise sources and as short as possible.
 
 **Failure to observe these design rules is likely to result in EMC failure.**
 
