@@ -7,8 +7,8 @@
 | Weight | 3 g |
 | Still resolution | 5 Megapixels |
 | Video modes | 1080p30, 720p60 and 640x480p60/90 |
-| Video stabilisation | Digital |
 | Linux integration | via V4L2 driver |
+| C programming API | OpenMAX IL and others available |
 | Sensor | OmniVision OV5647 |
 | Sensor resolution | 2592 x 1944 pixels |
 | Sensor image area | 3.76 x 2.74 mm |
