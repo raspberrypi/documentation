@@ -4,6 +4,8 @@ Embedded Raspberry Pi
 
 - [Schematics](schematics.md)
     - Schematics for the Compute Module and Compute Module IO Board
+- [CMIO and CMCDA Design Files](designfiles.md)
+    - Design data for Compute Module IO and camera / display adaptor boards
 - [Compute Module Hardware Design Guide](cm-designguide.md)
     - How to design with the Compute Module
 - [Flashing the Compute Module eMMC](cm-emmc-flashing.md)
