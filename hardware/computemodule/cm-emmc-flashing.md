@@ -34,6 +34,7 @@ Build the usbboot tool:
 
 ```bash
 make
+sudo make install
 ```
 
 Run the usbboot tool and it will wait for a connection:
