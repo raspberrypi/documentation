@@ -40,7 +40,7 @@ sudo make install
 Run the usbboot tool and it will wait for a connection:
 
 ```bash
-sudo ./rpiboot
+sudo rpiboot
 ```
 
 Now plug the host machine into the Compute Module IO Board USB slave port (J15) and power on the CMIO board. The usbboot tool will discover the Compute Module and send boot code to allow access to the eMMC. Once complete you will see a new device appear; this is commonly /dev/sda but it could be another location such as /dev/sdb, so check in /dev/ before running rpiboot so you can see what changes.
