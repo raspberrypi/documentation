@@ -6,7 +6,7 @@ Please also read the section on [Module booting and flashing the eMMC](cm-design
 
 ## Steps to flash the eMMC on a Compute Module
 
-You need a host Linux system; a Raspberry Pi will do.
+You need a host Linux system; a Raspberry Pi will do.  A Mac will not, there is a bug in the BCM2835 bootloader which means we return slightly the wrong information, Windows and Linux don't care and carry on regardless (it's completely benign) but MacOS drops the packet
 
 **On your Compute Module IO Board:**
 
