@@ -23,6 +23,8 @@ To make the Raspberry Pi Camera work with a standard Raspian OS the GPIOs and I2
 6.  Attach CAM1_IO1 (J6 pin 41) to GPIO2 (J5 pin 5).
 7.  Attach CAM1_IO0 (J6 pin 43) to GPIO3 (J5 pin 7).
 
+**The numbers in brackets are conventional, physical pin numbers, numbered from left to right, top to bottom. The numbers on the silkscreen correspond to the Broadcom SoC GPIO numbers.**
+
 ## Configuring default pin states
 
 The GPIOs used by the camera, default to input mode on the compute module. In order to [override the default pin states](../../configuration/pin-configuration.md) and define the pins used by the camera, the dts file needs to be modified.
