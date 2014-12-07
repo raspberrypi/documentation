@@ -74,6 +74,7 @@ cd /etc/init.d/
 - Create a new file here containing the following script:
 
 ```
+#!/bin/sh
 ### BEGIN INIT INFO
 # Provides: vncboot
 # Required-Start: $remote_fs $syslog
@@ -84,30 +85,35 @@ cd /etc/init.d/
 # Description: Start VNC Server at boot time.
 ### END INIT INFO
 
-#! /bin/sh
 # /etc/init.d/vncboot
 
-USER=root
-HOME=/root
 
-export USER HOME
+. /lib/lsb/init-functions
+
+# Set the VNCUSER variable to the name of the user to start tightvncserver under
+VNCUSER='pi'
+
+# Set the geometry (resolution) under
+GEOMETRY='1024x720'
+eval cd ~$VNCUSER
 
 case "$1" in
- start)
-  echo "Starting VNC Server"
-  #Insert your favoured settings for a VNC session
-  /usr/bin/vncserver :0 -geometry 1280x800 -depth 16 -pixelformat rgb565
-  ;;
 
- stop)
-  echo "Stopping VNC Server"
-  /usr/bin/vncserver -kill :0
-  ;;
+start)
+su $VNCUSER -c "/usr/bin/tightvncserver :1 -geometry $GEOMETRY"
+echo "Starting TightVNC server for $VNCUSER "
+;;
 
- *)
-  echo "Usage: /etc/init.d/vncboot {start|stop}"
-  exit 1
-  ;;
+stop)
+pkill Xtightvnc
+echo "Tightvncserver stopped"
+;;
+*)
+
+echo "Usage: /etc/init.d/tightvncserver {start|stop}"
+exit 1
+;;
+
 esac
 
 exit 0
