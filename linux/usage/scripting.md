@@ -3,7 +3,7 @@
 Commands can be combined together into a file which can then be executed. As a (silly) example, copy the following into your favourite text editor:
 
 ```bash
-while 1
+while :
 do
 echo Raspberry Pi!
 done
