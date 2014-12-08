@@ -53,8 +53,7 @@ You can then copy the toolchain to a common location such as `/tools/arm-bcm2708
 
 ### Get sources
 
-To get the sources, refer to the original [GitHub](https://github.com/raspberrypi/linux
-) repository for the various branches.
+To get the sources, refer to the original [GitHub](https://github.com/raspberrypi/linux) repository for the various branches.
 ```
 $ git clone --depth=1 https://github.com/raspberrypi/linux
 ```
