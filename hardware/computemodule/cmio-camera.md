@@ -4,10 +4,10 @@
 
 *For the camera to work with the compute module, the firmware needs to be July 23rd 2014 or newer (use `vcgencmd version` to check).*
 
-# Quickstart
+## Quickstart
 
-1. Run `sudo raspi-config` and enable the camera.
-1. Save [dt-blob-dualcam.bin](dt-blob-dualcam.bin?raw=true) as `/boot/dt-blob.bin`.
+1. On the compute module, run `sudo raspi-config` and enable the camera.
+1. Next, run `sudo wget http://www.raspberrypi.org/documentation/hardware/computemodule/dt-blob-dualcam.bin -O /boot/dt-blob.bin`.
 1. Connect adapter board and camera to CAM1 port.
 
     ![Connecting the adapter board](images/CMAIO-Cam-Adapter.jpg)
@@ -20,9 +20,9 @@
 
     ![GPIO connection with additional camera](images/CMIO-Cam-GPIO2.jpg)
 
-1. Reboot for the dt-blob.bin file to be read.
+1. Finally, reboot for the dt-blob.bin file to be read.
 
-## Software support
+### Software support
 
 Recent raspicam binaries (*raspivid* and *raspistill*) have the -cs (--camselect) option to specify which camera should be used.
 
@@ -33,7 +33,7 @@ MMAL_PARAMETER_INT32_T camera_num = {{MMAL_PARAMETER_CAMERA_NUM, sizeof(camera_n
 status = mmal_port_parameter_set(camera->control, &camera_num.hdr);
 ```
 
-# Advanced
+## Advanced
 
 The 15-way 1mm FFC camera connector on the Raspberry Pi model A and B is attached to the CAM1 interface (though only uses 2 of the 4 available lanes).
 
@@ -45,7 +45,7 @@ To make the Raspberry Pi Camera work with a standard Raspian OS the GPIOs and I2
 
 **The pin numbers below are provided only as an example. LED and SHUTDOWN pins can be shared by both cameras, if required.** The SDA and SCL pins must be either GPIO0 and GPIO1 or GPIO28 and 29 and must be individual to each camera.
 
-## Steps to attach a Raspberry Pi Camera (to CAM1)
+### Steps to attach a Raspberry Pi Camera (to CAM1)
 
 1. Attach the 0.5mm 22W FFC flexi (included with the adaptor board) to the CAM1 connector (flex contacts face down).
 1. Attach the camera adaptor board to the other end of the 0.5mm flex (flex contacts face down).
@@ -57,7 +57,7 @@ To make the Raspberry Pi Camera work with a standard Raspian OS the GPIOs and I2
 
 **The numbers in brackets are conventional, physical pin numbers, numbered from left to right, top to bottom. The numbers on the silkscreen correspond to the Broadcom SoC GPIO numbers.**
 
-## Configuring default pin states
+### Configuring default pin states
 
 The GPIOs used by the camera, default to input mode on the compute module. In order to [override the default pin states](../../configuration/pin-configuration.md) and define the pins used by the camera, the dts file needs to be modified.
 
@@ -81,7 +81,7 @@ pin_define@CAMERA_0_SDA_PIN { type = "internal"; number = <0>; };
 pin_define@CAMERA_0_SCL_PIN { type = "internal"; number = <1>; };
 ```
 
-## How to attach two cameras
+### How to attach two cameras
 
 Attach the second camera to the (CAM0) connector as before.
 
@@ -110,7 +110,8 @@ pin_define@CAMERA_1_SDA_PIN { type = "internal"; number = <28>; };
 pin_define@CAMERA_1_SCL_PIN { type = "internal"; number = <29>; };
 ```
 
-## Sample device tree source files
+<a name="sample-device-tree-source-files"></a>
+### Sample device tree source files
 
 [Enable a CAM1 only](dt-blob-cam1.dts)
 
