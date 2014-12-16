@@ -7,7 +7,7 @@
 ## Quickstart
 
 1. On the compute module, run `sudo raspi-config` and enable the camera.
-1. Next, run `sudo wget http://www.raspberrypi.org/documentation/hardware/computemodule/dt-blob-dualcam.bin -O /boot/dt-blob.bin`.
+1. Next, run `sudo wget http://goo.gl/lozvZB -O /boot/dt-blob.bin`
 1. Connect adapter board and camera to CAM1 port.
 
     ![Connecting the adapter board](images/CMAIO-Cam-Adapter.jpg)
