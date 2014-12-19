@@ -4,7 +4,7 @@
 
 - [Overview](#overview)
 - [The Model B+](#modelbplus)
-- [The Model A+](#modela)
+- [The Model A+](#modelaplus)
 - [The Model B](#modelb)
 - [The Model A](#modela)
 - [The Compute Module](#computemodule)
