@@ -160,7 +160,7 @@ It is often necessary for one part of the tree to refer to another, and there ar
 
 How to construct a device tree -- how best to use it to capture the configuration of some hardware -- is a large and complex subject. There are many resources available, some of which are listed below, and this document isn't going to be another. But there are a few things that deserve a mention.
 
-`compatible` properties are the link between the hardware description and the driver software. When an OS encounters a node with a `compatible` property it looks it up in its database of device drivers to findthe best match. In Linux this usually results in the driver module being automatically loaded, provided it has been appropriately labelled and not blacklisted.
+`compatible` properties are the link between the hardware description and the driver software. When an OS encounters a node with a `compatible` property it looks it up in its database of device drivers to find the best match. In Linux this usually results in the driver module being automatically loaded, provided it has been appropriately labelled and not blacklisted.
 
 The `status` property indicates whether a device is enabled or disabled. If the `status` is `ok`, `okay` or absent, then the device is enabled. Otherwise `status` should be `disabled`, which means what you think it means. It can be useful to place devices in a .dtsi file with the status set to `disabled`.  A derived configuration can then include that .dtsi and set the status for the devices which are needed to `okay`.
 
