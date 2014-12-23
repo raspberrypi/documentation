@@ -146,7 +146,7 @@ It is often necessary for one part of the tree to refer to another, and there ar
 
 2. phandles
 
-   A phandle is a unique 32-bit integer assigned to a node in its `phandle` property. (For historical reason you tend to also see a redundant matching `linux,phandle`.) phandles are numbered sequentially starting from 1 -- 0 is not a valid phandle -- and are usually allocated by the DT compiler when it encounters a reference to a node in an integer context, usually in the form of a label (see below). References to nodes using phandles are simply encoded as the corresponding integer (cell) values; there is no markup to indicate that they should be interpreted as phandles -- that is application defined.
+   A phandle is a unique 32-bit integer assigned to a node in its `phandle` property. (For historical reasons, you tend to also see a redundant, matching `linux,phandle`). phandles are numbered sequentially starting from 1 -- 0 is not a valid phandle -- and are usually allocated by the DT compiler when it encounters a reference to a node in an integer context, usually in the form of a label (see below). References to nodes using phandles are simply encoded as the corresponding integer (cell) values; there is no markup to indicate that they should be interpreted as phandles -- that is application defined.
 
 3. Labels
 
@@ -162,7 +162,7 @@ How to construct a device tree -- how best to use it to capture the configuratio
 
 `compatible` properties are the link between the hardware description and the driver software. When an OS encounters a node with a `compatible` property it looks it up in its database of device drivers to find the best match. In Linux this usually results in the driver module being automatically loaded, provided it has been appropriately labelled and not blacklisted.
 
-The `status` property indicates whether a device is enabled or disabled. If the `status` is `ok`, `okay` or absent, then the device is enabled. Otherwise `status` should be `disabled`, which means what you think it means. It can be useful to place devices in a .dtsi file with the status set to `disabled`.  A derived configuration can then include that .dtsi and set the status for the devices which are needed to `okay`.
+The `status` property indicates whether a device is enabled or disabled. If the `status` is `ok`, `okay` or absent, then the device is enabled. Otherwise `status` should be `disabled`, which means what you think it means. It can be useful to place devices in a `.dtsi` file with the status set to `disabled`.  A derived configuration can then include that `.dtsi` and set the status for the devices which are needed to `okay`.
 
 Here are some articles about writing Device Trees:
 
@@ -201,7 +201,7 @@ A DT Overlay comprises a number of fragments, each of which targets one node (an
 
 The `compatible` string identifies this as being for bcm2708, which is the base architecture of the BCM2835 part. Then comes the first (and in this case only) fragment. Fragments are numbered sequentially from zero. Failure to adhere to this may cause some or all of your fragments to be missed.
 
-Each fragment consists of two parts -- a `target` property, identifying the node to apply the overlay to, and the `__overlay__` itself. The example above can be interpreted as if it were written like this:
+Each fragment consists of two parts -- a `target` property, identifying the node to apply the overlay to, and the `__overlay__` itself, the body of which is added to the target node. The example above can be interpreted as if it were written like this:
 
 ```
 /dts-v1/;
