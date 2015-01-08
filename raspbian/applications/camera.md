@@ -167,7 +167,7 @@ Flips the preview and saved image vertically.
 
 	--roi,		-roi	Set sensor region of interest 
 
-Allows the specification of the area of the sensor to be used as the source for the preview and capture. This is defined as x,y for the top left corner, and a width and height, all values in normalised coordinates (0.0-1.0). So to set a ROI at half way across and down the sensor, and an width and height of a quarter of the sensor use :
+Allows the specification of the area of the sensor to be used as the source for the preview and capture. This is defined as x,y for the top left corner, and a width and height, all values in normalised coordinates (0.0-1.0). So to set a ROI at half way across and down the sensor, and a width and height of a quarter of the sensor use :
 ```
 		-roi 0.5,0.5,0.25,0.25
 ```		
@@ -178,16 +178,18 @@ Set the shutter speed to the specified value (in microseconds). There is current
 
 	--drc,		-drc	Enable/Disable Dynamic Range compression
 	
-DRC changes the images by increasing the range of dark areas of the image, and decreasing the brighter areas. This can improve the image in low light areas. By default, DRC is off.
+DRC changes the images by increasing the range of dark areas of the image, and decreasing the brighter areas. This can improve the image in low light areas. 
 
 * off
 * low
 * medium
 * high
- 
+
+By default, DRC is off.
+
 	--stats,	-st	Display image statistics
 
-Displays the exposure, analoguew and digvital gains, and AWB settings used during run.
+Displays the exposure, analogue and digital gains, and AWB settings used during camera run.
 
 	--awbgains,	-awbg
 	
@@ -210,7 +212,7 @@ Sets a specified sensor mode, disabling the automatic selection. Possible values
 
 	--camselect,	-cs
 	
-Select which camera (on a multi camera system_ to use. Use 0 or 1.
+Select which camera (on a multi camera system) to use. Use 0 or 1.
 
 
 ##Application specific settings
