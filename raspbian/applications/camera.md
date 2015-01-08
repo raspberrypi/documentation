@@ -1,6 +1,6 @@
 # Raspberry Pi Camera Module
 
-This document describes the use of the three Raspberry Pi camera applications as of June 19th 2014.
+This document describes the use of the three Raspberry Pi camera applications as of January 8th 2015.
 
 There are three applications provided, raspistill, raspivid and raspistillyuv. raspistill and raspistillyuv are very similar and are intended for capturing images, raspivid is for capturing video.
 
@@ -174,7 +174,7 @@ Allows the specification of the area of the sensor to be used as the source for 
 
     --shutter,	-ss	Set shutter speed
 
-Set the shutter speed to the specified value (in microseconds). There is currently an upper limit of approximately 330000us (330ms, 0.33s) past which operation is undefined. This is being investigated.
+Set the shutter speed to the specified value (in microseconds). There is currently an upper limit of approximately 6000000us (6000ms, 6s) past which operation is undefined. 
 
 	--drc,		-drc	Enable/Disable Dynamic Range compression
 	
@@ -185,6 +185,32 @@ DRC changes the images by increasing the range of dark areas of the image, and d
 * medium
 * high
  
+	--stats,	-st	Display image statistics
+
+Displays the exposure, analoguew and digvital gains, and AWB settings used during run.
+
+	--awbgains,	-awbg
+	
+Sets blue and red gains (as floating point numbers) to be applied when -awb off is set. e.g. -awbg 1.5,1.2
+
+	--mode, 	-md
+	
+Sets a specified sensor mode, disabling the automatic selection. Possible values are :	
+
+|Mode| Size | Aspect Ratio |Frame rates | FOV | Binning |
+|----|------|--------------|------------|-----|---------|
+|0| automatic selection |||||
+|1|1920x1080|16:9| 1-30fps|Partial|None|
+|2|2592x1944|4:3|1-15fps|Full|None|
+|3|2592x1944|4:3|0.1666-1fps|Full|None|
+|4|1296x972|4:3|1-42fps|Full|2x2|
+|5|1296x730|16:9|1-49fps|Full|2x2|
+|6|640x480|4:3|42.1-60fps|Full|2x2 plus skip|
+|7|640x480|4:3|60.1-90fps|Full|2x2 plus skip|
+
+	--camselect,	-cs
+	
+Select which camera (on a multi camera system_ to use. Use 0 or 1.
 
 
 ##Application specific settings
