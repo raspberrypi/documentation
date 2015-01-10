@@ -287,7 +287,7 @@
 
                }; // pin_config
                pin_defines {
-                   pin_define@NUM_CAMERAS { type = "internal"; number = <2>; };
+                   pin_define@NUM_CAMERAS { type = "internal"; number = <1>; };
                    pin_define@CAMERA_0_LED { type = "internal"; number = <2>; };
                    pin_define@CAMERA_0_SHUTDOWN { type = "internal"; number = <3>; };
                    pin_define@CAMERA_0_UNICAM_PORT { type = "internal"; number = <1>; };
