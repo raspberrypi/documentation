@@ -201,7 +201,7 @@ Print["Hello"] (*Print "Hello" to the screen*)
 
 ## Wolfram command line access
 
-You can also access the Wolfram language from the command line by entering `wolfram` in the termina, or double clicking the Wolfram Desktop icon. This will give a text-only (non-graphical) programming environment with the `In[x]` / `Out[x]` style interface but without interactive notebook functionality. The Mathematica functions will still work as expected:
+You can also access the Wolfram language from the command line by entering `wolfram` in the terminal, or double clicking the Wolfram Desktop icon. This will give a text-only (non-graphical) programming environment with the `In[x]` / `Out[x]` style interface but without interactive notebook functionality. The Mathematica functions will still work as expected:
 
 ![Wolfram command line](images/command-line.png)
 
