@@ -288,7 +288,7 @@ After the verbose description of the file structure, there is our fragment. But 
 
 If you write more complicated fragments the compiler may generate two more nodes -- `__local_fixups__` and `__symbols__`. The former is required if any node in the fragments has a phandle, because the programme performing the merge will have to ensure that phandle numbers are sequential and unique, but the latter is the key to how unresolved symbols are dealt with.
 
-Back in section 1.3 I wrote that *"the original labels do not appear in the compiled output"*, but this isn't true when using the `-@` switch. Instead, every label results in a property in the `__symbols__` node, mapping a label to a path, exactly like the `aliases` node. In fact, the mechanism is so similar that when resolving symbols, the Raspberry Pi loader will search the "aliases" node in the absence of a `__symbols__` node. This is useful because by providing sufficient aliases we can allow an older `dtc` to be used to build the base DTB files.
+Back in section 1.3 it says that *"the original labels do not appear in the compiled output"*, but this isn't true when using the `-@` switch. Instead, every label results in a property in the `__symbols__` node, mapping a label to a path, exactly like the `aliases` node. In fact, the mechanism is so similar that when resolving symbols, the Raspberry Pi loader will search the "aliases" node in the absence of a `__symbols__` node. This is useful because by providing sufficient aliases we can allow an older `dtc` to be used to build the base DTB files.
 
 ## 2.2: Device tree parameters
 
@@ -356,7 +356,7 @@ There are several ways to tell that the kernel is using device tree:
 
 With a device tree, the kernel will automatically search for and load modules that support the indicated, enabled devices. As a result, it should no longer be necessary to blacklist files that used to be loaded as a result of platform devices defined in the board support code. The flip-side is that by creating an appropriate DT overlay for a device, you save users of the device from having to edit `/etc/modules` -- all of the configuration goes in config.txt. And in the case of a HAT, even that step is unnecessary.
 
-### 3.2: Pi parameters
+### 3.2: DT parameters
 
 As described above, DT parameters are a convenient way to make small changes to a device's configuration. The current base DTBs support four parameters -- `i2c0`, `i2c1`, `i2s` and `spi` -- that allow you to enable those interfaces without using dedicated overlays. In use, parameters look like this:
 
@@ -398,6 +398,10 @@ Overlay parameters are only in scope until the next overlay is loaded. In the ev
 dtoverlay=
 ```
 
+### 3.3: Supported overlays and parameters
+
+Rather than documenting the individual overlays here, the reader is directed to the README file found alongside the overlay .dtb files in `/boot/overlays`. It will be updated with additions and changes.
+
 ## Part 4: Troubleshooting, and Pro tips
 
 ### 4.1: Debugging
@@ -428,7 +432,7 @@ Failing that, `depmod` has failed or the updated modules haven't been installed 
 
 ### 4.2: Forcing a specific device tree
 
-If you have very specific needs that aren't supported by the default DTBs (in particular, people experimenting with the pure-DT approach used by the ARCH_2835 project), or if you just want to experiment with writing your own DTs, you can tell the loader to load an alternate DTB file like this:
+If you have very specific needs that aren't supported by the default DTBs (in particular, people experimenting with the pure-DT approach used by the ARCH_BCM2835 project), or if you just want to experiment with writing your own DTs, you can tell the loader to load an alternate DTB file like this:
 
 ```
 device_tree=my-pi.dtb
