@@ -18,21 +18,7 @@ However, there are occasional changes made in the Foundation's Raspbian image th
 
 ## Updating the kernel and firmware
 
-The kernel and firmware are installed as a Debian package, and so will also get updates when using the procedure above. These packages are updated infrequently (after extensive testing); if you want to try more recent experimental software, it's also easy to update to the latest available version using the [rpi-update](https://github.com/Hexxeh/rpi-update) tool.
-
-To run this update, simply run from the command line:
-
-```bash
-sudo rpi-update
-```
-
-You'll need the latest version of the tool, so make sure you've recently run `apt-get update` and `upgrade` first.
-
-Your system date/time will need to be accurate too, or it will fail to communicate with the server. To manually set your system time, run the following command (with the *actual* time and date):
-
-```bash
-sudo date -s "8 JAN 2015 12:00:00"
-```
+The kernel and firmware are installed as a Debian package, and so will also get updates when using the procedure above. These packages are updated infrequently and after extensive testing.
 
 ## Running out of space
 
