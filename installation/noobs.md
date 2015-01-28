@@ -56,15 +56,15 @@ As of NOOBS v1.3.10 (September 2014), only Raspbian is installed by default in N
 
 NOOBS is available in two forms: offline and network install; or network install only.
 
-The full version has the images of each of the operating systems included, so they can be installed from the SD card while offline, whereas NOOBS Lite requires an internet connection to download the selected operating system.
+The full version has Raspbian included, so it can be installed from the SD card while offline, whereas using NOOBS Lite,  or installing any other operating system, requires an internet connection during installation.
 
-Note that the operating system images on the full version can be outdated if a new version of the OS is released, but if connected to the internet you will be shown the option of downloading the latest version of the OS if there is a newer one available.
+Note that the operating system image on the full version can be outdated if a new version of the OS is released, but if connected to the internet you will be shown the option of downloading the latest version if there is a newer one available.
 
 ## NOOBS Development
 
 ### Latest NOOBS release
 
-The latest NOOBS release is **v1.3.10**, released on **12th September 2014**.
+The latest NOOBS release is **v1.3.11**, released on **24th December 2014**.
 
 ### NOOBS Documentation
 
