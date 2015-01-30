@@ -4,7 +4,7 @@ Ever wanted to make funky music like Daft Punk or will.i.am but you're not sure 
 
 ## Step 1: First sounds with Sonic Pi
 
-![](images/sonic-pi.png)
+![Sonic Pi](images/sonic-pi.png)
 
 This is the Sonic Pi interface; it has three main windows. The largest one is for writing your code, and we call it the Programming Panel. There is also an output panel that displays information about your program as it runs. When you click on the **help** button at the top of the window, the third panel appears along the bottom displaying help documentation. This contains information about different code you can try and use, as well as different synth sounds, samples, and much more.
 
@@ -238,13 +238,12 @@ Sonic Pi has been developed to be a platform for the live coding of music, so th
 
 1. Press **play** to start the program.
 
-1. Whilst the tune is playing, comment out the last three lines by adding a `#` symbol to the start of each line like this:
+1. While the tune is playing, comment out the last three lines by adding a `#` symbol to the start of each line like this:
 
 	```ruby
 	# loop do
 	#   play_my_synth
 	# end
 	```
-1. Next change some of code in the function, and press **play** again. Now you are really rocking! 
-
-Sonic Pi offers so much more functionality to both coders and musicians alike than has been mentioned here. If you want to try some more features then move onto [the next tutorial here](worksheet-2.md)
+	
+1. Next change some of code in the function, and press **play** again. Now you are really rocking!
