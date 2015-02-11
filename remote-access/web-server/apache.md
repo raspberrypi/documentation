@@ -67,19 +67,19 @@ To allow your Apache server to process PHP files, you'll need to install PHP5 an
 sudo apt-get install php5 libapache2-mod-php5 -y
 ```
 
-Now move the `index.html` file to `index.php`:
+Now remove the `index.html` file:
 
 ```bash
-sudo mv index.html index.php
+sudo rm index.html
 ```
 
-and edit the file:
+and create the file `index.php`:
 
 ```bash
 sudo nano index.php
 ```
 
-to put some PHP content in it:
+and put some PHP content in it:
 
 ```php
 <?php echo "hello world";
