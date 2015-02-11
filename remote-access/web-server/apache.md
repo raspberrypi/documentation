@@ -82,19 +82,19 @@ sudo nano index.php
 and put some PHP content in it:
 
 ```php
-<?php echo "hello world";
+<?php echo "hello world";?>
 ```
 
 Now save and refresh your browser. You should see "hello world". This is not dynamic but still served by PHP. Try something dynamic:
 
 ```php
-<?php echo date('Y-m-d H:i:s');
+<?php echo date('Y-m-d H:i:s');?>
 ```
 
 or show your PHP info:
 
 ```php
-<?php phpinfo();
+<?php phpinfo();?>
 ```
 
 ### Further - WordPress
