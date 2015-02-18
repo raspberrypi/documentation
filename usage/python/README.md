@@ -10,11 +10,9 @@ Python syntax is very clean, with an emphasis on readability and uses standard E
 
 The easiest introduction to Python is through IDLE, a Python development environment. Open IDLE from the Desktop or applications menu:
 
-![Python in the applications menu](images/idle-icons.png)
+![Python in the applications menu](images/app-menu-python3.png)
 
 IDLE gives you a REPL (Read-Evaluate-Print-Loop) which is a prompt you can enter Python commands in to. As it's a REPL you even get the output of commands printed to the screen without using `print`.
-
-![IDLE](images/app-menu-python3.png)
 
 *Note two versions of Python are available: Python 2 and Python 3. Python 3 is the newest version and is recommended, however Python 2 is available for legacy applications which do not support Python 3 yet. For the examples on this page you can use Python 2 or 3 (see [Python 2 vs. Python 3](more.md)).*
 
