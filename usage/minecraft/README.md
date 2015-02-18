@@ -8,8 +8,6 @@ Minecraft is a popular sandbox open world-building game. A free version of Minec
 
 Minecraft has been installed by default in Raspbian since September 2014.
 
-![Minecraft Pi desktop icon](images/minecraft-pi-shortcut.png)
-
 If you're using an older version of Raspbian, open a terminal window and type the following commands (you must be online):
 
 ```bash
@@ -21,11 +19,15 @@ Once that finishes, Minecraft Pi and the Python library should be installed.
 
 ## Run
 
-To run Minecraft double click the desktop icon or enter `minecraft-pi` in the terminal.
+Open Minecraft from the Desktop or applications menu:
+
+![Minecraft in applications menu](images/app-menu-minecraft.png)
+
+Then you should see the Minecraft Pi splash screen:
 
 ![Minecraft Menu](images/mcpi-start.png)
 
-When Minecraft Pi has loaded, click on **Start Game**, followed by **Create new**. You'll notice that the containing window is offset slightly. This means to drag the window around you have to grab the title bar behind the Minecraft window.
+Click on **Start Game**, followed by **Create new**. You'll notice that the containing window is offset slightly. This means to drag the window around you have to grab the title bar behind the Minecraft window.
 
 ![Minecraft Game](images/mcpi-game.png)
 
@@ -57,7 +59,9 @@ With the sword in your hand you can click on blocks in front of you to remove th
 
 ## Programming interface
 
-With Minecraft running, and the world created, bring your focus away from the game by pressing the `Tab` key, which will free your mouse. Open IDLE (not IDLE3) on the Desktop and move the windows so they're side-by-side.
+With Minecraft running, and the world created, bring your focus away from the game by pressing the `Tab` key, which will free your mouse. Open a Python window and move the windows so they're side-by-side. Use Python 2 (IDLE 2) as Python 3 is not currently supported. Open Python 2 from the Desktop or applications menu:
+
+![Python 2 in applications menu](images/app-menu-python2.png)
 
 You can either type commands directly in to the Python window or create a file so you can save your code and run it again another time.
 
@@ -321,11 +325,3 @@ If multiple people connect Raspberry Pis to a local network they can join the sa
 ## API reference
 
 For a more extensive documentation of functions and a full list of block IDs see an API reference at [stuffaboutcode.com](http://www.stuffaboutcode.com/p/minecraft-api-reference.html).
-
----
-
-Note: Minecraft was previously installed by downloading the files with `wget`. These instructions has been updated as the installation is now possible with Raspbian's package manager.
-
-Previously any Python code accessing the API had to be saved in the `api/python` folder. Now you can save the Python code wherever you like.
-
-If you installed Minecraft the old way, you should delete the folder with `rm -rf mcpi` from the home folder, and follow the instructions above to install the new way.

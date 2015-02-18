@@ -2,7 +2,11 @@
 
 Ever wanted to make funky music like Daft Punk or will.i.am but you're not sure how to hold a cello, let alone play it? Sonic Pi could get you there.
 
-## Step 1: First sounds with Sonic Pi
+Open Sonic Pi from the Desktop or applications menu:
+
+![Sonic Pi in the applications menu](images/application-menu-sonic-pi.png)
+
+## First sounds with Sonic Pi
 
 ![Sonic Pi](images/sonic-pi.png)
 
@@ -15,7 +19,7 @@ This is the Sonic Pi interface; it has three main windows. The largest one is fo
 	```ruby
 	play 60
 	```
-	
+
 1. Click on the **play** icon at the top of the screen. What happens?
 
 1. What happens if you type `pley 60` and click on the play icon?
@@ -29,7 +33,7 @@ This is the Sonic Pi interface; it has three main windows. The largest one is fo
 	play 67
 	play 69
 	```
-	
+
 1. Click on the play icon at the top of the screen. What happens?
 
 1. The computer is playing each note in sequence (one after the other), but it is happening so fast that to us they sound like they are playing at the same time.
@@ -62,7 +66,7 @@ Now you have mastered the basics of Sonic Pi, let's code a tune!
     sleep 0.5
     ```
 
-3. Now click on the play icon at the top of the screen and it will play the first part of a tune. Can you tell what it is? 
+3. Now click on the play icon at the top of the screen and it will play the first part of a tune. Can you tell what it is?
 
 	*Answer: Frère Jacques!*.
 
@@ -100,7 +104,7 @@ Now you have mastered the basics of Sonic Pi, let's code a tune!
     ```
 ### Loop forever?
 
-Looping notes for a set number of times is certainly useful, but what if you want to loop your tune forever? 
+Looping notes for a set number of times is certainly useful, but what if you want to loop your tune forever?
 
 Instead of using `2.times do` and `end` you can use `loop do` and `end`, like this:
 
@@ -109,8 +113,8 @@ loop do
   play 60
   sleep 0.5
 end
-```      
-    
+```
+
 ## Step 3: MIDI notes and music notes
 
 The values that you have been typing after the word `play` represent notes; in fact, they are MIDI note numbers. This means we can translate songs played on a piano into Sonic Pi using a table like so:
@@ -139,7 +143,7 @@ This is quite a long process if you know the notes of the song you are trying to
 	play :c4
 	sleep 0.5
 	```
-1. Press **play** to hear your tune. Does it sound the same as when you used MIDI notes?	
+1. Press **play** to hear your tune. Does it sound the same as when you used MIDI notes?
 
 ## Step 4: Change the sounds
 
@@ -180,7 +184,7 @@ end
 
 ### Samples to try
 
-There are lots of samples included with Sonic Pi. To find the names of them, click on **help** followed by **samples** on the left hand side of the help window. Click on any of the sample names to get more information on how to use it. 
+There are lots of samples included with Sonic Pi. To find the names of them, click on **help** followed by **samples** on the left hand side of the help window. Click on any of the sample names to get more information on how to use it.
 
 ## Step 6: Playing two tunes at the same time
 
@@ -200,7 +204,7 @@ Music often has a repeating backing track, with a separate melody played over th
         sample :loop_amen
         sleep 1.753
       end
-    end       
+    end
     ```
 
     This first 'thread' will act as the melody of your music. Underneath, you can type the code for your backing track or baseline.
@@ -215,9 +219,9 @@ Music often has a repeating backing track, with a separate melody played over th
         play 74
         sleep 0.25
       end
-    end 
+    end
     ```
-5. Now press **play** and you should hear both threads playing at the same time.     
+5. Now press **play** and you should hear both threads playing at the same time.
 
 ## Step 7: Live code!
 
@@ -231,7 +235,7 @@ Sonic Pi has been developed to be a platform for the live coding of music, so th
   	  play 50, attack: 0.2, release: 1.3
       sleep 0.5
     end
-    
+
     loop do
       play_my_synth
     ```
@@ -245,5 +249,5 @@ Sonic Pi has been developed to be a platform for the live coding of music, so th
 	#   play_my_synth
 	# end
 	```
-	
+
 1. Next change some of code in the function, and press **play** again. Now you are really rocking!

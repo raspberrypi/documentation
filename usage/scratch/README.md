@@ -4,7 +4,11 @@ Scratch is a visual programming tool which allows the user to create animations 
 
 ## Getting started
 
-You'll find Scratch on the desktop of Raspbian and in the applications menu under **Education**. Once opened you will see a window like this:
+Open Scratch from the Desktop or applications menu:
+
+![Scratch in applications menu](images/app-menu-scratch.png)
+
+Once opened you will see a window like this:
 
 ![Scratch interface](images/scratch-interface.png)
 

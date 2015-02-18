@@ -1,8 +1,8 @@
 # Python Games
 
-On the Raspbian desktop you'll find an icon with the Python logo labelled `Python Games`:
+You'll find Python Games on the Desktop or in the application menu:
 
-![Python Games icon](images/python-games-icon.png)
+![Python Games in the application menu](images/app-menu-python-games.png)
 
 Double click this icon to start. This will prompt you to set your audio configuration to output sound over HDMI or the headphone jack. Make a selection or leave it as it is and click `OK` to proceed.
 
