@@ -400,7 +400,7 @@ dtoverlay=
 
 ### 3.3: Supported overlays and parameters
 
-Rather than documenting the individual overlays here, the reader is directed to the README file found alongside the overlay .dtb files in `/boot/overlays`. It will be updated with additions and changes.
+Rather than documenting the individual overlays here, the reader is directed to the [README](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README) file found alongside the overlay .dtb files in `/boot/overlays`. It will be updated with additions and changes.
 
 ## Part 4: Troubleshooting, and Pro tips
 
