@@ -132,10 +132,25 @@ Enable/disable remote command line access to your Pi using SSH.
 
 SSH allows you to remotely access the command line of the Raspberry Pi from another computer. Disabling this ensures the SSH service does not start on boot, freeing up processing resources. Read more about using [SSH](../remote-access/ssh/README.md). Note that SSH is enabled by default. If connecting your Pi directly to a public network, you should disable SSH unless you have set up secure passwords for all users.
 
+<a name="device-tree"></a>
+#### Device Tree
+
+Enable/Disable the use of Device Tree. Read more about [Device Trees Config](device-tree.md).
+
 <a name="spi"></a>
 #### SPI
 
-Enable/disable automatic loading of SPI kernel module, needed for products such as PiFace.
+Enable/Disable SPI interfaces and automatic loading of SPI kernel module, needed for products such as PiFace.
+
+<a name="i2c"></a>
+#### I2C
+
+Enable/Disable I2C interfaces and automatic loading of I2C kernel module.
+
+<a name="serial"></a>
+#### Serial
+
+Enable/Disable shell and kernel messages on the serial connection.
 
 <a name="audio"></a>
 #### Audio

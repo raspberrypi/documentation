@@ -18,3 +18,5 @@ Some basic guides to configuring your Raspberry Pi
     - Setting up your Pi to work in your local language / timezone / etc.
 - [Default pin configuration](pin-configuration.md)
     - Changing the default pin states.
+- [Device Trees Config](device-tree.md)
+    - Device Trees, Overlays and Parameters.
