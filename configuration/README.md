@@ -18,3 +18,5 @@ Some basic guides to configuring your Raspberry Pi
     - Setting up your Pi to work in your local language / timezone / etc.
 - [Default pin configuration](pin-configuration.md)
     - Changing the default pin states.
+- [Zeroconf or Bonjour (Apple)](avahi.md)
+    - Setup Avahi and Netatalk so that your Raspberry Pi will easily work in a network using Zeroconf or Bonjour (Apple). This will make like easier if you use a Mac.
