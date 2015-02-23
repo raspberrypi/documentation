@@ -376,6 +376,10 @@ There are some situations where it is convenient to be able to set the same valu
 ```
 (example taken from the `w1-gpio` overlay)
 
+## 2.2.3: Further overlay examples
+
+There is a growing collection of overlay source files hosted in the raspberrypi/linux github repository [here](https://github.com/raspberrypi/linux/tree/rpi-3.18.y/arch/arm/boot/dts) -- look for `*-overlay.dts`.
+
 ## Part 3: Using device trees on Raspberry Pi
 
 ### 3.1: Overlays and config.txt
