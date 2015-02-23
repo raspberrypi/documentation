@@ -143,7 +143,7 @@ It is often necessary for one part of the tree to refer to another, and there ar
 
 1. Path strings
 
-    Paths should be self explanatory, by analogy to a filesystem -- `/soc/i2c@7e205000` is the full path to the i2c0 device in BCM2835. Note that although it is easy to construct a path to a property (`/soc/i2c@7e205000/clocks` -- see, I just did it), the standard APIs don't do that; you first find a node, then choose properties of that node.
+    Paths should be self explanatory, by analogy to a filesystem -- `/soc/i2s@7e203000` is the full path to the I2S device in BCM2835 and BCM2836. Note that although it is easy to construct a path to a property (`/soc/i2s@7e203000/status` -- see, I just did it), the standard APIs don't do that; you first find a node, then choose properties of that node.
 
 2. phandles
 
@@ -184,7 +184,7 @@ What is needed is a way to describe these optional components using partial devi
 A DT Overlay comprises a number of fragments, each of which targets one node (and its subnodes). Although the concept sounds simple enough, the syntax seems rather strange at first:
 
 ```
-// Enable the i2c-1 device
+// Enable the i2s interface
 /dts-v1/;
 /plugin/;
 
@@ -192,7 +192,7 @@ A DT Overlay comprises a number of fragments, each of which targets one node (an
     compatible = "brcm,bcm2708";
 
     fragment@0 {
-        target = <&i2c1>;
+        target = <&i2s>;
         __overlay__ {
             status = "okay";
         };
@@ -211,12 +211,12 @@ Each fragment consists of two parts -- a `target` property, identifying the node
     compatible = "brcm,bcm2708";
 };
 
-&i2c1 {
+&i2s {
     status = "okay";
 };
 ```
 
-The effect of merging that overlay with a standard Raspberry Pi base device tree (`bcm2708-rpi-b-plus.dtb`, for example), provided the overlay is loaded afterwards, would be to enable the second i2c interface by changing its status to `okay`. But if you try to compile this overlay, using:
+The effect of merging that overlay with a standard Raspberry Pi base device tree (`bcm2708-rpi-b-plus.dtb`, for example), provided the overlay is loaded afterwards, would be to enable the i2s interface by changing its status to `okay`. But if you try to compile this overlay, using:
 
 ```
 dtc -I dts -O dtb -o 2nd-overlay.dtb 2nd-overlay.dts
@@ -225,10 +225,10 @@ dtc -I dts -O dtb -o 2nd-overlay.dtb 2nd-overlay.dts
 you will get an error:
 
 ```
-Label or path i2c1 not found
+Label or path i2s not found
 ```
 
-This shouldn't be too unexpected, since there is no reference to the base `.dtb` or `.dts` file enabling the compiler to find the `i2c1` label.
+This shouldn't be too unexpected, since there is no reference to the base `.dtb` or `.dts` file enabling the compiler to find the `i2s` label.
 
 Trying again, this time with the original example:
 
@@ -248,7 +248,7 @@ chmod +x dtc.sh
 
 Note: This script will download the mainline source, apply some patches, then build and install it. You may want to edit `dtc.sh` before running it to change the download path (currently `~/git/dtc`) and install path (`/usr/local/bin`).
 
-If instead you see `Reference to non-existent node or label "i2c1"` then all you need to do is change the command line to tell the compiler to allow unresolved symbols, by adding `-@`:
+If instead you see `Reference to non-existent node or label "i2s"` then all you need to do is change the command line to tell the compiler to allow unresolved symbols, by adding `-@`:
 
 ```
 dtc -@ -I dts -O dtb -o 1st-overlay.dtb 1st-overlay.dts
@@ -280,12 +280,12 @@ $ fdtdump 1st-overlay.dtb
         };
     };
     __fixups__ {
-        i2c1 = "/fragment@0:target:0";
+        i2s = "/fragment@0:target:0";
     };
 };
 ```
 
-After the verbose description of the file structure, there is our fragment. But look carefully -- where we wrote `&i2c1` it now says `0xdeadbeef`, a clue that something strange has happened. After the fragment is a new node, `__fixups__`. This contains a list of properties mapping the names of unresolved symbols to lists of paths to cells within the fragments that need patching with the phandle of the target node, once that target has been located. In this case, the path is to the `0xdeadbeef` value of `target`, but fragments can contain other unresolved references which would require additional fix-ups.
+After the verbose description of the file structure, there is our fragment. But look carefully -- where we wrote `&i2s` it now says `0xdeadbeef`, a clue that something strange has happened. After the fragment is a new node, `__fixups__`. This contains a list of properties mapping the names of unresolved symbols to lists of paths to cells within the fragments that need patching with the phandle of the target node, once that target has been located. In this case, the path is to the `0xdeadbeef` value of `target`, but fragments can contain other unresolved references which would require additional fix-ups.
 
 If you write more complicated fragments the compiler may generate two more nodes -- `__local_fixups__` and `__symbols__`. The former is required if any node in the fragments has a phandle, because the programme performing the merge will have to ensure that phandle numbers are sequential and unique, but the latter is the key to how unresolved symbols are dealt with.
 
@@ -308,6 +308,9 @@ Here is an example from `bcm2708-rpi-b-plus.dts` showing four string parameters:
         spi = <&spi0>,"status";
         i2c0 = <&i2c0>,"status";
         i2c1 = <&i2c1>,"status";
+		i2c0_baudrate = <&i2c0>,"clock-frequency:0";
+		i2c1_baudrate = <&i2c1>,"clock-frequency:0";
+		...
     };
 };
 ```
@@ -331,7 +334,7 @@ and one from `lirc-rpi-overlay.dts` showing some integer (cell) parameters:
 };
 ```
 
-Note that the `gpio_out_pin` and `gpio_in_pin` parameters refer to adjacent cells in the `brcm,pins` property.
+Note that the numeric I2C parameters should not normally be used directly -- see [3.3 Board-specific labels and parameters](#3-3-Board-specific-labels-and-parameters). Note also that the `gpio_out_pin` and `gpio_in_pin` parameters refer to adjacent cells in the `brcm,pins` property.
 
 ## 2.2.1: Parameter sizes
 In addition to the original strings and 32-bit integers, a recent firmware update added support for other parameter sizes -- 8-, 16- and 64-bit values can now be targetted using different separator characters -- `.` for 8-bit, `;` for 16-bit, and `#` for 64-bit:
@@ -408,10 +411,10 @@ The flip-side is that because platform devices don't get created unless requeste
 
 ### 3.2: DT parameters
 
-As described above, DT parameters are a convenient way to make small changes to a device's configuration. The current base DTBs support four parameters -- `i2c0`, `i2c1`, `i2s` and `spi` -- that allow you to enable those interfaces without using dedicated overlays. In use, parameters look like this:
+As described above, DT parameters are a convenient way to make small changes to a device's configuration. The current base DTBs support parameters for enabling and controlling the I2C, I2S and SPI interfaces without using dedicated overlays. In use, parameters look like this:
 
 ```
-dtparam=i2c_arm=on,spi=on
+dtparam=i2c_arm=on,i2c_arm_baudrate=400000,spi=on
 ```
 
 Note that multiple assignments can be placed on the same line (but don't exceed the 80 (or is it 79?) character limit, because *it would be bad*).
