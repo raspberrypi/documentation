@@ -297,7 +297,7 @@ To avoid the need for lots of device tree overlays, and (we hope) to restrict th
 
 Parameters are defined in the DTS by adding an `__overrides__` node to the root. It contains properties whose names are the required parameter names, and the values are a sequence comprising a phandle for the target node and a string naming the target property. If the target is a cell then the property name must be followed by a colon and the byte offset (in decimal by default, usually 0) into the property value where the cell to be patched can be found; otherwise, the parameter is treated as a string parameter to be overwritten by the supplied value. Note that cell parameters must refer to an existing cell, whereas a string parameter can cause the target property to grow.
 
-Here is an example from `bcm2708-rpi-b-plus.dts` showing four string parameters:
+Here is an example from `bcm2708-rpi-b-plus.dts` showing four string parameters and two integer parameters:
 
 ```
 / {
@@ -308,14 +308,14 @@ Here is an example from `bcm2708-rpi-b-plus.dts` showing four string parameters:
         spi = <&spi0>,"status";
         i2c0 = <&i2c0>,"status";
         i2c1 = <&i2c1>,"status";
-		i2c0_baudrate = <&i2c0>,"clock-frequency:0";
-		i2c1_baudrate = <&i2c1>,"clock-frequency:0";
-		...
+        i2c0_baudrate = <&i2c0>,"clock-frequency:0";
+        i2c1_baudrate = <&i2c1>,"clock-frequency:0";
+        ...
     };
 };
 ```
 
-and one from `lirc-rpi-overlay.dts` showing some integer (cell) parameters:
+and one from `lirc-rpi-overlay.dts` showing some more integer parameters:
 
 ```
 / {
@@ -325,11 +325,7 @@ and one from `lirc-rpi-overlay.dts` showing some integer (cell) parameters:
         gpio_out_pin =  <&lirc_pins>,"brcm,pins:0";
         gpio_in_pin =   <&lirc_pins>,"brcm,pins:4";
         gpio_in_pull =  <&lirc_pins>,"brcm,pull:4";
-
-        sense =         <&lirc_rpi>,"rpi,sense:0";
-        softcarrier =   <&lirc_rpi>,"rpi,softcarrier:0";
-        invert =        <&lirc_rpi>,"rpi,invert:0";
-        debug =         <&lirc_rpi>,"rpi,debug:0";
+        ...
     };
 };
 ```
