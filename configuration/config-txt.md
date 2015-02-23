@@ -36,19 +36,23 @@ overscan_bottom=10
 
 #### gpu_mem
 
-GPU memory in megabytes. Sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; maximum value is either `192` or `448` depending on whether you're using a 256MB or 512MB Pi. The default value is `64`.
+GPU memory in megabytes. Sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; maximum value is either `192`, `448` or `944` depending on whether you're using a 256M, 512MB or 1024MB Pi. The default value is `64`.
 
 Setting `gpu_mem` to low values may automatically disable certain firmware features (as there are some things the GPU simply can't do with too little memory). So if a certain feature you're trying to use isn't working, try setting a larger GPU memory split.
 
-Using `gpu_mem_256` and `gpu_mem_512` allows you to swap the same SD card between both 256MB and 512MB Pis without having to edit `config.txt` each time:
+Using `gpu_mem_256`, `gpu_mem_512` and `gpu_mem_1024` allows you to swap the same SD card between 256MB, 512MB and 1024MB Pis without having to edit `config.txt` each time:
 
 #### gpu_mem_256
 
-GPU memory in megabytes for the 256MB Raspberry Pi (ignored by the 512MB Pi). This overrides `gpu_mem`. The maximum value is `192` and the default is not set.
+GPU memory in megabytes for the 256MB Raspberry Pi (ignored if memory size is not 256M). This overrides `gpu_mem`. The maximum value is `192` and the default is not set.
 
 #### gpu_mem_512
 
-GPU memory in megabytes for the 512MB Raspberry Pi (ignored by the 256MB Pi). This overrides `gpu_mem`. The maximum value is `448` and the default is not set.
+GPU memory in megabytes for the 512MB Raspberry Pi (ignored if memory size is not 512M). This overrides `gpu_mem`. The maximum value is `448` and the default is not set.
+
+#### gpu_mem_1024
+
+GPU memory in megabytes for the 1024MB Raspberry Pi 2 (ignored if memory size is not 1024M). This overrides `gpu_mem`. The maximum value is `944` and the default is not set.
 
 #### disable_l2cache
 
