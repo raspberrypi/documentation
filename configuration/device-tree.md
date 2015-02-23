@@ -1,6 +1,6 @@
 # Device Trees, Overlays and Parameters
 
-Raspberry Pi's latest kernels and firmware now by default use Device Tree (DT) to manage some resource allocation and module loading, including Raspbian and NOOBS releases. This change is to ease the management of multiple drivers contending for system resources, and to allow HAT modules to be auto-configured.
+Raspberry Pi's latest kernels and firmware, including Raspbian and NOOBS releases, now by default use Device Tree (DT) to manage some resource allocation and module loading. This change is to alleviate the problem of multiple drivers contending for system resources, and to allow HAT modules to be auto-configured.
 
 The current implementation is not a pure Device Tree system -- there is still board support code that creates some platform devices -- but the external interfaces (i2c, i2s, spi) and the audio devices that use them must now be instantiated using a Device Tree Blob (DTB) passed to the kernel by the loader (`start.elf`).
 
@@ -548,7 +548,7 @@ dtparam=i2c,i2s
 You can also use some alternative separators if you think that `=` is overused. These are all legal:
 ```
 dtoverlay thing:name=value,othername=othervalue
-dtparam setme andsetme="long string with spaces and ' "
+dtparam setme andsetme='long string with spaces and "a quote"'
 dtparam quote="'"
 ```
 These examples use whitespace to separate the directive from the rest of the line instead of `=`. They also use a colon to separate the overlay from its parameters, and `setme` is given the default value 1/true/on/okay.
