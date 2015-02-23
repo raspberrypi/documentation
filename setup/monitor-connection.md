@@ -16,4 +16,4 @@ For monitors with VGA only, you can use an HDMI-to-VGA adapter.
 
 ## Composite Port
 
-For analogue TVs you can use a standard RCA composite video lead.
+For analogue TVs you can use a standard RCA composite video lead. The B+ and Pi 2 Model B do not have the large composite port, but can still be used with an analogue TV by plugging in to the 3.5mm socket that is also used for audio: you'll need a 3.5mm composite video/audio lead. 
