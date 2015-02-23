@@ -1,31 +1,32 @@
 # Device Trees, Overlays and Parameters
 
-Raspberry Pi's latest kernels and firmware now by default use Device Tree (DT) to manage some resource allocation module usage. At the time of writing this only applies to `BRANCH=next`, but at some point the master branch will also switch over at which time all users who update will be affected. This change is to ease the management of multiple drivers contending for system resources, and to allow HAT modules to be auto-configured.
+Raspberry Pi's latest kernels and firmware now by default use Device Tree (DT) to manage some resource allocation and module loading, including Raspbian and NOOBS releases. This change is to ease the management of multiple drivers contending for system resources, and to allow HAT modules to be auto-configured.
 
-The current solution is not a pure Device Tree system -- there is still board support code that creates some platform devices -- but the external interfaces (i2c, i2s, spi) and the audio devices that use them must now be instantiated using a Device Tree Blob (DTB) passed to the kernel by the loader (`start.elf`).
+The current implementation is not a pure Device Tree system -- there is still board support code that creates some platform devices -- but the external interfaces (i2c, i2s, spi) and the audio devices that use them must now be instantiated using a Device Tree Blob (DTB) passed to the kernel by the loader (`start.elf`).
 
-The main impact of using Device Tree is to change from *everything on*, relying on module blacklisting to manage contention, to *everything off unless requested by the DTB*. In order to continue to use external interfaces and the peripherals that attach to them, you will need to add some new settings to your `config.txt`:
+The main impact of using Device Tree is to change from *everything on*, relying on module blacklisting to manage contention, to *everything off unless requested by the DTB*. In order to continue to use external interfaces and the peripherals that attach to them, you will need to add some new settings to your `config.txt`. See [Part 3](#part-3-using-device-trees-on-raspberry-pi) for more information, but in the meantime here are a few examples:
 
 ```bash
 # Uncomment some or all of these to enable the optional hardware interfaces
-#device_tree_param=i2c1=on
-#device_tree_param=i2s=on
-#device_tree_param=spi=on
+#dtparam=i2c_arm=on
+#dtparam=i2s=on
+#dtparam=spi=on
 
 # Uncomment one of these lines to enable an audio interface
-#device_tree_overlay=hifiberry-dac
-#device_tree_overlay=hifiberry-dacplus
-#device_tree_overlay=hifiberry-digi
-#device_tree_overlay=iqaudio-dac
-#device_tree_overlay=iqaudio-dacplus
+#dtoverlay=hifiberry-amp
+#dtoverlay=hifiberry-dac
+#dtoverlay=hifiberry-dacplus
+#dtoverlay=hifiberry-digi
+#dtoverlay=iqaudio-dac
+#dtoverlay=iqaudio-dacplus
 
 # Uncomment this to enable the lirc-rpi module
-#device_tree_overlay=lirc-rpi
+#dtoverlay=lirc-rpi
 
 # Uncomment this to override the defaults for the lirc-rpi module
-#device_tree_param=gpio_out_pin=16
-#device_tree_param=gpio_in_pin=17
-#device_tree_param=gpio_in_pull=down
+#dtparam=gpio_out_pin=16
+#dtparam=gpio_in_pin=17
+#dtparam=gpio_in_pull=down
 ```
 
 ## Part 1: Device Trees
@@ -332,6 +333,50 @@ and one from `lirc-rpi-overlay.dts` showing some integer (cell) parameters:
 
 Note that the `gpio_out_pin` and `gpio_in_pin` parameters refer to adjacent cells in the `brcm,pins` property.
 
+## 2.2.1: Parameter sizes
+In addition to the original strings and 32-bit integers, a recent firmware update added support for other parameter sizes -- 8-, 16- and 64-bit values can now be targetted using different separator characters -- `.` for 8-bit, `;` for 16-bit, and `#` for 64-bit:
+
+```
+/ {
+	fragment@0 {
+		target-path = "/";
+		__overlay__ {
+
+			test: test {
+				bytes = /bits/ 8 <0x67 0x89>;
+				u16s = /bits/ 16 <0xabcd 0xef01>;
+				u32s = /bits/ 32 <0xfedcba98 0x76543210>;
+				u64s = /bits/ 64 < 0xaaaaa5a55a5a5555 0x0000111122223333>;
+			};
+		};
+	};
+
+    __overrides__ {
+		byte_0 =      <&test>,"bytes.0";
+		byte_1 =      <&test>,"bytes.1";
+		u16_0 =       <&test>,"u16s;0";
+		u16_1 =       <&test>,"u16s;2";
+		u32_0 =       <&test>,"u32s:0";
+		u32_1 =       <&test>,"u32s:4";
+		u64_0 =       <&test>,"u64s#0";
+		u64_1 =       <&test>,"u64s#8";
+    };
+};
+```
+
+## 2.2.2: Parameters with multiple targets
+
+There are some situations where it is convenient to be able to set the same value in multiple locations within the device tree. Rather than the ungainly approach of creating multiple parameters, it is possible to add multiple targets to a single parameter by concatenating them, like this:
+
+```
+    __overrides__ {
+        gpiopin = <&w1>,"gpios:4",
+                  <&w1_pins>,"brcm,pins:0";
+        ...
+    };
+```
+(example taken from the `w1-gpio` overlay)
+
 ## Part 3: Using device trees on Raspberry Pi
 
 ### 3.1: Overlays and config.txt
@@ -343,25 +388,30 @@ N.B. DT and ATAGs are mutually exclusive. As a result, passing a DT blob to a ke
 In order to manage device tree and overlays, the loader supports a number of new `config.txt` directives:
 
 ```
-device_tree_overlay=overlays/acme-board-overlay.dtb
+dtoverlay=acme-board
+dtparam=foo=bar,level=42
 ```
+
+This will cause the loader to look for `overlays/acme-board-overlay.dtb` in the firmware partition, which Raspbian mounts on `/boot`. It will then search for parameters `foo` and `level`, and assign them the indicated values.
 
 The loader will also search for an attached HAT with a programmed EEPROM, and load the supporting overlay from there; this happens without any user intervention.
 
 There are several ways to tell that the kernel is using device tree:
 
-1. The "Machine model:" kernel message during boot up says "Raspberry Pi Model B+" (or B) instead of "BCM2708".
+1. The "Machine model:" kernel message during boot up has a board-specific value such as "Raspberry Pi 2 Model B", rather than "BCM2709".
 2. Some time later there is another kernel message saying "No ATAGs?" -- this is expected.
 3. `/proc/device-tree` exists, and contains subdirectories and files that exactly mirror the nodes and properties of the DT.
 
-With a device tree, the kernel will automatically search for and load modules that support the indicated, enabled devices. As a result, it should no longer be necessary to blacklist files that used to be loaded as a result of platform devices defined in the board support code. The flip-side is that by creating an appropriate DT overlay for a device, you save users of the device from having to edit `/etc/modules` -- all of the configuration goes in config.txt. And in the case of a HAT, even that step is unnecessary.
+With a device tree, the kernel will automatically search for and load modules that support the indicated, enabled devices. As a result, by creating an appropriate DT overlay for a device, you save users of the device from having to edit `/etc/modules` -- all of the configuration goes in config.txt (and in the case of a HAT, even that step is unnecessary). Note, however, that layered modules such as `i2c-dev` still need to be loaded explicitly.
+
+The flip-side is that because platform devices don't get created unless requested by the DTB, it should no longer be necessary to blacklist modules that used to be loaded as a result of platform devices defined in the board support code. In fact, current Raspbian images ship without a blacklist file.
 
 ### 3.2: DT parameters
 
 As described above, DT parameters are a convenient way to make small changes to a device's configuration. The current base DTBs support four parameters -- `i2c0`, `i2c1`, `i2s` and `spi` -- that allow you to enable those interfaces without using dedicated overlays. In use, parameters look like this:
 
 ```
-device_tree_param=i2c1=on,spi=on
+dtparam=i2c_arm=on,spi=on
 ```
 
 Note that multiple assignments can be placed on the same line (but don't exceed the 80 (or is it 79?) character limit, because *it would be bad*).
@@ -370,18 +420,18 @@ A future default `config.txt` may contain a section like this:
 
 ```
 # Uncomment some or all of these to enable the optional hardware interfaces
-#device_tree_param=i2c1=on
-#device_tree_param=i2s=on
-#device_tree_param=spi=on
+#dtparam=i2c_arm=on
+#dtparam=i2s=on
+#dtparam=spi=on
 ```
 
 If you have an overlay that defines some parameters, they can be specified either on subsequent lines like this:
 
 ```
-device_tree_overlay=overlays/lirc-rpi-overlay.dtb
-device_tree_param=gpio_out_pin=16
-device_tree_param=gpio_in_pin=17
-device_tree_param=gpio_in_pull=down
+dtoverlay=lirc-rpi
+dtparam=gpio_out_pin=16
+dtparam=gpio_in_pin=17
+dtparam=gpio_in_pull=down
 ```
 
 or appended to the overlay line like this:
@@ -398,9 +448,39 @@ Overlay parameters are only in scope until the next overlay is loaded. In the ev
 dtoverlay=
 ```
 
-### 3.3: Supported overlays and parameters
+### 3.3: Board-specific labels and parameters
 
-Rather than documenting the individual overlays here, the reader is directed to the [README](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README) file found alongside the overlay .dtb files in `/boot/overlays`. It will be updated with additions and changes.
+Raspberry Pi boards have two I2C interfaces. These are nominally split -- one for the ARM, and one for VideoCore (the "GPU"). On almost all models, `i2c1` belongs to the ARM and `i2c0` to VC, where it is used to control the camera and read the HAT EEPROM. However, there are two early revisions of the Model B that have those roles reversed.
+
+To make it possible to use one set of overlays and parameters with all Pis, the firmware creates some board-specific DT parameters. These are:
+```
+i2c/i2c_arm
+i2c_vc
+i2c_baudrate/i2c_arm_baudrate
+i2c_vc_baudrate
+```
+These are aliases for `i2c0`, `i2c1`, `i2c0_baudrate` and `i2c1_baudrate`. It is recommended that you only use `i2c_vc` and `i2c_vc_baudrate` if you really need to - for example, if you are programming a HAT EEPROM. Enabling `i2c_vc` can stop the Pi Camera being detected.
+
+For people writing overlays, the same aliasing has been applied to the labels on the I2C DT nodes. Thus you should write:
+```
+fragment@0 {
+	target = <&i2c_arm>;
+	__overlay__ {
+		status = "okay";
+	};
+};
+```
+Any overlays using the numeric variants will be modified to use the new aliases.
+
+### 3.4: HATs and device tree
+
+A Raspberry Pi HAT is an add-on card for a "Plus"-shaped (A+, B+ or Pi 2 B) Raspberry Pi with an embedded EEPROM. The EEPROM includes any DT overlay required to enable the board, and this overlay can also expose parameters.
+
+The HAT overlay is automatically loaded by the firmware after the base DTB, so its parameters are accessible until any other overlays are loaded (or until the overlay scope is ended using `dtoverlay=`. If for some reason you want to suppress the loading of the HAT overlay, put `dtoverlay=` before any other `dtoverlay` or `dtparam` directive.
+
+### 3.5: Supported overlays and parameters
+
+Rather than documenting the individual overlays here, the reader is directed to the [README](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README) file found alongside the overlay .dtb files in `/boot/overlays`. It is kept up-to-date with additions and changes.
 
 ## Part 4: Troubleshooting, and Pro tips
 
@@ -414,7 +494,7 @@ sudo vcdbg log msg
 
 Extra debugging can be enabled by adding `dtdebug=1` to `config.txt`.
 
-If the kernel fails to come up in DT mode, this is probably because the kernel image does not have a valid trailer. Use [knlinfo](https://github.com/raspberrypi/tools/blob/master/mkimage/knlinfo) to check for one, and [mkknlimg](https://github.com/raspberrypi/tools/blob/master/mkimage/mkknlimg) utility to add one.
+If the kernel fails to come up in DT mode, **this is probably because the kernel image does not have a valid trailer**. Use [knlinfo](https://github.com/raspberrypi/tools/blob/master/mkimage/knlinfo) to check for one, and [mkknlimg](https://github.com/raspberrypi/tools/blob/master/mkimage/mkknlimg) utility to add one.
 
 If kernel modules don't load as expected, check that they aren't blacklisted (in `/etc/modprobe.d/raspi-blacklist.conf`); blacklisting shouldn't be necessary when using device tree. If that shows nothing untoward you can also check that the module is exporting the correct aliases by searching `/lib/modules/<version>/modules.alias` for the `compatible` value. If not, your driver is probably missing either:
 
@@ -448,31 +528,27 @@ device_tree=
 
 to `config.txt`.  Note, however, that future kernel releases may at some point no longer support this option.
 
-### 4.4: Short-cuts
+### 4.4: Short-cuts and syntax variants
 
-If typing `device_tree_overlay` is just too many keystrokes, there are a few short-cuts:
-
-```
-device_tree_overlay=overlays/acme-board-overlay.dtb
-```
-
-can be abbreviated to:
+The loader understands a few short-cuts:
 
 ```
-dtoverlay=acme-board
-```
-
-Similarly:
-
-```
-device_tree_param=i2c1=on
-device_tree_param=i2s=on
+dtparam=i2c_arm=on
+dtparam=i2s=on
 ```
 
 can be shortened to:
 
 ```
-dtparam=i2c1,i2s
+dtparam=i2c,i2s
 ```
 
-(the `=on` is assumed).
+(`i2c` is an alias of `i2c_arm`, and the `=on` is assumed). It also still accepts the long-form versions -- `device_tree_overlay` and `device_tree_param`.
+
+You can also use some alternative separators if you think that `=` is overused. These are all legal:
+```
+dtoverlay thing:name=value,othername=othervalue
+dtparam setme andsetme="long string with spaces and ' "
+dtparam quote="'"
+```
+These examples use whitespace to separate the directive from the rest of the line instead of `=`. They also use a colon to separate the overlay from its parameters, and `setme` is given the default value 1/true/on/okay.
