@@ -4,7 +4,7 @@ Raspberry Pi's latest kernels and firmware, including Raspbian and NOOBS release
 
 The current implementation is not a pure Device Tree system -- there is still board support code that creates some platform devices -- but the external interfaces (i2c, i2s, spi) and the audio devices that use them must now be instantiated using a Device Tree Blob (DTB) passed to the kernel by the loader (`start.elf`).
 
-The main impact of using Device Tree is to change from *everything on*, relying on module blacklisting to manage contention, to *everything off unless requested by the DTB*. In order to continue to use external interfaces and the peripherals that attach to them, you will need to add some new settings to your `config.txt`. See [Part 3](#part-3-using-device-trees-on-raspberry-pi) for more information, but in the meantime here are a few examples:
+The main impact of using Device Tree is to change from *everything on*, relying on module blacklisting to manage contention, to *everything off unless requested by the DTB*. In order to continue to use external interfaces and the peripherals that attach to them, you will need to add some new settings to your `config.txt`. See [Part 3](#part3) for more information, but in the meantime here are a few examples:
 
 ```bash
 # Uncomment some or all of these to enable the optional hardware interfaces
@@ -29,12 +29,14 @@ The main impact of using Device Tree is to change from *everything on*, relying 
 #dtparam=gpio_in_pull=down
 ```
 
+<a name="part1"></a>
 ## Part 1: Device Trees
 
 A Device Tree (DT) is a description of the hardware in a system. It should include the name of the base CPU, its memory configuration and any peripherals (internal and external). A DT should not be used to describe the software, although by listing the hardware modules it does usually cause driver modules to be loaded. It helps to remember that DTs are supposed to be OS-neutral, so anything which is Linux-specific probably shouldn't be there.
 
 Device Trees represents the hardware configuration as a hierarchy of nodes. Each node may contain properties and subnodes. Properties are named arrays of bytes, which may contain strings, numbers (big-endian), arbitrary sequences of byte, and any combination thereof. By analogy to a filesystem, nodes are directories and properties are files. The locations of nodes and properties within the tree can be described using a path, with slashes as separators and a single slash (`/`) to indicate the root.
 
+<a name="part1.1"></a>
 ### 1.1: Basic DTS syntax
 
 [ This section borrows heavily from [devicetree.org](http://devicetree.org/Device_Tree_Usage) ]
@@ -118,6 +120,7 @@ Commas are also used to create lists of strings:
 string-list = "red fish", "blue fish";
 ```
 
+<a name="part1.2"></a>
 ### 1.2: An aside about /include/
 
 The `/include/` directive results in simple textual inclusion, much like C's `#include` directive, but a feature of the device tree compiler leads to different usage patterns. Given that nodes are named, potentially with absolute paths, it is possible for the same node to appear twice in a DTS file (and its inclusions). When this happens, the nodes and properties are combined, interleaving and overwriting properties as required (later values override earlier ones).
@@ -137,6 +140,7 @@ In the example above, the second appearanace of `/node2` causes a new property t
 
 It is thus possible for one `.dtsi` to overwrite (or provide defaults for) multiple places in a tree.
 
+<a name="part1.3"></a>
 ### 1.3: Labels and References
 
 It is often necessary for one part of the tree to refer to another, and there are four ways to do this:
@@ -157,6 +161,7 @@ It is often necessary for one part of the tree to refer to another, and there ar
 
    Aliases are similar to labels, except that they do appear in the FDT output as a form of index. They are stored as properties of the `/aliases` node, with each property mapping an alias name to a path string. Although the aliases node appears in the source, the path strings usually appear as references to labels (`&node`) rather then being written out in full. DT APIs that resolve a path string to a node typically look at the first character of the path, treating paths that do not start with a slash as aliases that must first be converted to a path using the `/aliases` table.
 
+<a name="part1.4"></a>
 ### 1.4: Device Tree semantics
 
 How to construct a device tree -- how best to use it to capture the configuration of some hardware -- is a large and complex subject. There are many resources available, some of which are listed below, and this document isn't going to be another. But there are a few things that deserve a mention.
@@ -171,6 +176,7 @@ Here are some articles about writing Device Trees:
 - [elinux.org/...](http://elinux.org/images/4/48/Experiences_With_Device_Tree_Support_Development_For_ARM-Based_SOC%27s.pdf)
 - [power.org/...](https://www.power.org/download.php?popup=1&file=7920&referer=/documentation/epapr-version-1-1/) (requires registration...)
 
+<a name="part2"></a>
 ## Part 2: Device Tree Overlays
 
 A modern SoC (System-on-Chip) is a very complicated device -- a complete device tree could be hundreds of lines long. Taking that one step further and placing the SoC on a board with other components only makes matters worse. To keep that manageable, particularly if there are related devices that share components, it makes sense to put the common elements in .dtsi files to be included from possibly multiple .dts files.
@@ -179,6 +185,7 @@ But when a system like Raspberry Pi supports optional plug-in accessories, such 
 
 What is needed is a way to describe these optional components using partial device trees, and then to be able to build a complete tree by taking a base DT and adding a number of optional elements. Well, you can, and these optional elements are called "overlays".
 
+<a name="part2.1"></a>
 ### 2.1: Fragments
 
 A DT Overlay comprises a number of fragments, each of which targets one node (and its subnodes). Although the concept sounds simple enough, the syntax seems rather strange at first:
@@ -291,6 +298,7 @@ If you write more complicated fragments the compiler may generate two more nodes
 
 Back in section 1.3 it says that *"the original labels do not appear in the compiled output"*, but this isn't true when using the `-@` switch. Instead, every label results in a property in the `__symbols__` node, mapping a label to a path, exactly like the `aliases` node. In fact, the mechanism is so similar that when resolving symbols, the Raspberry Pi loader will search the "aliases" node in the absence of a `__symbols__` node. This is useful because by providing sufficient aliases we can allow an older `dtc` to be used to build the base DTB files.
 
+<a name="part2.2"></a>
 ## 2.2: Device tree parameters
 
 To avoid the need for lots of device tree overlays, and (we hope) to restrict the need to write DTS files to peripheral makers, the Raspberry Pi loader supports a new feature -- device tree parameters. This permits small changes to the DT using named parameters, similar to the way kernel modules receive parameters from the kernel command line. Parameters can be exposed by the base DTBs and by overlays, including HAT overlays.
@@ -330,8 +338,9 @@ and one from `lirc-rpi-overlay.dts` showing some more integer parameters:
 };
 ```
 
-Note that the numeric I2C parameters should not normally be used directly -- see [3.3 Board-specific labels and parameters](#3-3-Board-specific-labels-and-parameters). Note also that the `gpio_out_pin` and `gpio_in_pin` parameters refer to adjacent cells in the `brcm,pins` property.
+Note that the numeric I2C parameters should not normally be used directly -- see [3.3 Board-specific labels and parameters](#part3.3). Note also that the `gpio_out_pin` and `gpio_in_pin` parameters refer to adjacent cells in the `brcm,pins` property.
 
+<a name="part2.2.1"></a>
 ## 2.2.1: Parameter sizes
 In addition to the original strings and 32-bit integers, a recent firmware update added support for other parameter sizes -- 8-, 16- and 64-bit values can now be targetted using different separator characters -- `.` for 8-bit, `;` for 16-bit, and `#` for 64-bit:
 
@@ -363,6 +372,7 @@ In addition to the original strings and 32-bit integers, a recent firmware updat
 };
 ```
 
+<a name="part2.2.2"></a>
 ## 2.2.2: Parameters with multiple targets
 
 There are some situations where it is convenient to be able to set the same value in multiple locations within the device tree. Rather than the ungainly approach of creating multiple parameters, it is possible to add multiple targets to a single parameter by concatenating them, like this:
@@ -376,12 +386,15 @@ There are some situations where it is convenient to be able to set the same valu
 ```
 (example taken from the `w1-gpio` overlay)
 
+<a name="part2.2.3"></a>
 ## 2.2.3: Further overlay examples
 
 There is a growing collection of overlay source files hosted in the raspberrypi/linux github repository [here](https://github.com/raspberrypi/linux/tree/rpi-3.18.y/arch/arm/boot/dts) -- look for `*-overlay.dts`.
 
+<a name="part3"></a>
 ## Part 3: Using device trees on Raspberry Pi
 
+<a name="part3.1"></a>
 ### 3.1: Overlays and config.txt
 
 On Raspberry Pi it is the job of the loader (one of the start*.elf images) to combine overlays with an appropriate base device tree, and then to pass a fully resolved device tree to the kernel. The base device trees are located alongside start.elf in the FAT partition (/boot from linux), named `bcm2708-rpi-b.dtb` and `bcm2708-rpi-b-plus.dtb`. Here, the presence or absence of the "-plus" is the significant thing, not the "b" -- Model A's and A+'s will use the "b" and "b-plus" variants, respectively. This selection is automatic, and allows the same SD card image to be used in a variety of devices.
@@ -409,6 +422,7 @@ With a device tree, the kernel will automatically search for and load modules th
 
 The flip-side is that because platform devices don't get created unless requested by the DTB, it should no longer be necessary to blacklist modules that used to be loaded as a result of platform devices defined in the board support code. In fact, current Raspbian images ship without a blacklist file.
 
+<a name="part3.2"></a>
 ### 3.2: DT parameters
 
 As described above, DT parameters are a convenient way to make small changes to a device's configuration. The current base DTBs support parameters for enabling and controlling the I2C, I2S and SPI interfaces without using dedicated overlays. In use, parameters look like this:
@@ -451,6 +465,7 @@ Overlay parameters are only in scope until the next overlay is loaded. In the ev
 dtoverlay=
 ```
 
+<a name="part3.3"></a>
 ### 3.3: Board-specific labels and parameters
 
 Raspberry Pi boards have two I2C interfaces. These are nominally split -- one for the ARM, and one for VideoCore (the "GPU"). On almost all models, `i2c1` belongs to the ARM and `i2c0` to VC, where it is used to control the camera and read the HAT EEPROM. However, there are two early revisions of the Model B that have those roles reversed.
@@ -475,18 +490,22 @@ fragment@0 {
 ```
 Any overlays using the numeric variants will be modified to use the new aliases.
 
+<a name="part3.4"></a>
 ### 3.4: HATs and device tree
 
 A Raspberry Pi HAT is an add-on card for a "Plus"-shaped (A+, B+ or Pi 2 B) Raspberry Pi with an embedded EEPROM. The EEPROM includes any DT overlay required to enable the board, and this overlay can also expose parameters.
 
 The HAT overlay is automatically loaded by the firmware after the base DTB, so its parameters are accessible until any other overlays are loaded (or until the overlay scope is ended using `dtoverlay=`. If for some reason you want to suppress the loading of the HAT overlay, put `dtoverlay=` before any other `dtoverlay` or `dtparam` directive.
 
+<a name="part3.5"></a>
 ### 3.5: Supported overlays and parameters
 
 Rather than documenting the individual overlays here, the reader is directed to the [README](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README) file found alongside the overlay .dtb files in `/boot/overlays`. It is kept up-to-date with additions and changes.
 
+<a name="part4"></a>
 ## Part 4: Troubleshooting, and Pro tips
 
+<a name="part4.1"></a>
 ### 4.1: Debugging
 
 The loader will skip over missing overlays and bad parameters, but if there are serious errors such as a missing or corrupt base dtb or a failed overlay merge then the loader will fall back to a non-DT boot. If this happens, or if your settings don't behave as you expect, it is worth checking for warnings or errors from the loader:
@@ -513,6 +532,7 @@ MODULE_DEVICE_TABLE(of, xxx_of_match);
 
 Failing that, `depmod` has failed or the updated modules haven't been installed on the target filesystem.
 
+<a name="part4.2"></a>
 ### 4.2: Forcing a specific device tree
 
 If you have very specific needs that aren't supported by the default DTBs (in particular, people experimenting with the pure-DT approach used by the ARCH_BCM2835 project), or if you just want to experiment with writing your own DTs, you can tell the loader to load an alternate DTB file like this:
@@ -521,6 +541,7 @@ If you have very specific needs that aren't supported by the default DTBs (in pa
 device_tree=my-pi.dtb
 ```
 
+<a name="part4.3"></a>
 ## 4.3: Disabling device tree usage
 
 If you decide this DT lark isn't for you (or for diagnostic purposes), you can disable DT loading and force the kernel to revert to the old behaviour by adding:
@@ -531,6 +552,7 @@ device_tree=
 
 to `config.txt`.  Note, however, that future kernel releases may at some point no longer support this option.
 
+<a name="part4.4"></a>
 ### 4.4: Short-cuts and syntax variants
 
 The loader understands a few short-cuts:
