@@ -22,7 +22,8 @@ You can use variables if you need to but you can even use it like a calculator. 
 >>> 1 + 2
 3
 >>> name = "Sarah"
-"Hello " + name
+>>> "Hello " + name
+'Hello Sarah'
 ```
 
 IDLE also has syntax highlighting built in and some support for autocompletion. You can look back on the history of the commands you've entered in the REPL with `Alt + P` (previous) and `Alt + N` (next).
