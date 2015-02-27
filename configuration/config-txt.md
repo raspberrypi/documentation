@@ -379,6 +379,33 @@ Your HDMI monitor may support only a limited set of formats. To find out which f
 
 The `edid.dat` should also be provided when troubleshooting problems with the default HDMI mode.
 
+### Custom mode
+
+If your monitor requires a mode that is not in one of the tables above, then it is possible to define a custom [CVT](http://en.wikipedia.org/wiki/Coordinated_Video_Timings) mode for it instead:
+
+    hdmi_cvt=<width> <height> <framerate> <aspect> <margins> <interlace> <rb>
+
+| Value | Default | Description |
+| --- | --- | --- |
+| width | (required) | width in pixels |
+| height | (required) | height in pixels |
+| framerate | (required) | framerate in Hz |
+| aspect | 3 | aspect ratio 1=4:3, 2=14:9, 3=16:9, 4=5:4, 5=16:10, 6=15:9 |
+| margins | 0 | 0=margins disabled, 1=margins enabled |
+| interlace | 0 | 0=progressive, 1=interlaced |
+| rb | 0 | 0=normal, 1=reduced blanking |
+
+(Fields at the end can be omitted to use the default values.)
+
+Note that this simply _creates_ the mode (group 2 mode 87); in order to make the Pi use this by default you must add some additional settings.  As an example, the following selects an 800x480 resolution and enables audio drive:
+
+    hdmi_cvt=800 480 60 6
+    hdmi_group=2
+    hdmi_mode=87
+    hdmi_drive=2
+
+This may not work if your monitor does not support standard CVT timings.
+
 ### Generic display options
 
 #### hdmi_force_hotplug
@@ -611,6 +638,96 @@ It's generally a good idea to keep the core temperature below 70 degrees and the
 ### Overclocking problems
 
 Most overclocking issues show up immediately with a failure to boot. If this occurs, hold down the `shift` key during the next boot which will temporarily disable all overclocking; this will allow you to boot successfully and then edit your settings.
+
+## Conditional Filters
+
+When a single SD card (or card image) is only being used with one Pi and one monitor, it's easy to simply set `config.txt` as required for that specific combination and keep it that way, amending only when something changes.
+
+However if one Pi is swapped between different monitors, or if the SD card (or card image) is being swapped between multiple Pis, a single set of settings may no longer be sufficient.  Conditional filters allow you to make certain sections of the config file used only in specific cases, allowing a single `config.txt` to create different configurations when read by different hardware.
+
+### The `[all]` filter
+
+This is the most basic filter: it resets all previously set filters and allows any settings listed below it to be applied to all hardware.
+
+    [all]
+
+It is usually a good idea to add an `[all]` filter at the end of groups of filtered settings to avoid unintentionally combining filters (see below).
+
+### The `[pi1]` and `[pi2]` filters
+
+Any settings below a `[pi1]` filter will only be applied to Pi1 (A, A+, B, B+) hardware.
+Any settings below a `[pi2]` filter will only be applied to Pi2 hardware.
+
+    [pi1]
+    [pi2]
+
+These are particularly useful for defining different `kernel`, `initramfs`, and `cmdline` settings, as the Pi1 and Pi2 require different kernels.  They can also be useful to define different overclocking settings for each, since they have different default speeds.  For example, to define separate initramfs images for each:
+
+    [pi1]
+    initramfs initrd.img-3.18.7+ followkernel
+    [pi2]
+    initramfs initrd.img-3.18.7-v7+ followkernel
+    [all]
+
+Remember to use the `[all]` filter at the end, so that any subsequent settings aren't limited to Pi2 hardware only.
+
+### The `[EDID=*]` filter
+
+When switching between multiple monitors while using a single SD card in your Pi, and where a blank config is not sufficient to automatically select the desired resolution for each one, this allows specific settings to be chosen based on the monitors' EDID names.
+
+To view the EDID name of a specific monitor, run the following command:
+
+    tvservice -n
+
+This will print something like this:
+
+    device_name=VSC-TD2220
+
+You can then specify settings that apply only to this monitor like so:
+
+    [EDID=VSC-TD2220]
+    hdmi_group=2
+    hdmi_mode=82
+    [all]
+
+This forces 1920x1080 DVT mode for this monitor, without affecting any other monitors.
+
+Note that these settings apply only at boot, so the monitor must be connected at boot time and the Pi must be able to read its EDID information to get the correct name.  Hotplugging a different monitor after boot will not reselect different settings.
+
+### The serial number filter
+
+Sometimes settings should only be applied to a single specific Pi, even if you swap the SD card to a different one.  Examples include license keys and overclocking settings (although the license keys already support SD card swapping in a different way).  You can also use this to select different display settings even if the EDID identification above is not possible for some reason (provided that you don't swap monitors between your Pis) -- for example if your monitor does not supply a usable EDID name or if you are using composite output (for which EDID cannot be read).
+
+To view the serial number of your Pi, run the following command:
+
+    cat /proc/cpuinfo
+
+The serial will be shown as a 16-digit hex value at the bottom.  For example, if you see:
+
+    Serial          : 0000000012345678
+
+Then you can define settings that will only be applied to this specific Pi like so:
+
+    [0x12345678]
+    # settings here are applied only to the Pi with this serial
+    [all]
+    # settings here are applied to all hardware
+
+### Combining conditional filters
+
+Filters of the same type replace each other (so `[pi2]` overrides `[pi1]`, as it is not possible for both to be true at once).
+
+Filters of different types can be combined simply by listing them one after the other, eg:
+
+    # settings here are applied to all hardware
+    [EDID=VSC-TD2220]
+    # settings here are applied only if monitor VSC-TD2220 is connected
+    [pi2]
+    # settings here are applied only if monitor VSC-TD2220 is connected *and* on a Pi2
+    [all]
+    # settings here are applied to all hardware
+
+Use the `[all]` filter to reset all previous filters and avoid unintentionally combining different filter types.
 
 ---
 
