@@ -5,7 +5,7 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
 ## (Mostly) graphical interface
 
 - Connect the SD card reader with the SD card inside. Note that it must be formatted in FAT32.
-- From the Apple menu, choose About This Mac, then click on More info...; if you are using Mac OS X 10.8.x Mountain Lion then click on System Report.
+- From the Apple menu, choose About This Mac, then click on System Report (or, if you are using Mac OS X 10.7.x Lion or older, click on More info)
 - Click on USB (or Card Reader if using a built-in SD card reader) then search for your SD card in the upper right section of the window. Click on it, then search for the BSD name in the lower right section; it will look something like 'diskn' where n is a number (for example, disk4). Make sure you take a note of this number.
 - Unmount the partition so that you will be allowed to overwrite the disk; to do this, open Disk Utility and unmount it (do not eject it, or you will have to reconnect it). Note that On Mac OS X 10.8.x Mountain Lion, "Verify Disk" (before unmounting) will display the BSD name as "/dev/disk1s1" or similar, allowing you to skip the previous two steps.
 - From the terminal run:
