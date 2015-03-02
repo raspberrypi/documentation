@@ -28,7 +28,15 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
 
 - Instead of `dd` you can use `dcfldd`; it will give a progress report about how much has been written.
 
-- You can check what's written to the SD card by `dd`-ing from the card back to another image on your hard disk, and then running `diff` (or `md5sum`) on those two images. There should be no difference.
+- You can check what's written to the SD card by `dd`-ing from the card back to another image on your hard disk, truncating the new image to the same size as the original, and then running `md5sum` (or `sha1sum`) on those two images.
+
+- The SD card might be bigger than the original image, and dd will make a copy of the whole card. We must therefore truncate the new image to the size of the original image.  Make sure you replace the input file if= argument with the right device name. There should be no difference in the MD5 sums of the images
+
+    ```bash
+    dd bs=4M if=/dev/sdd of=from-sd-card.img
+    truncate --reference 2015-02-16-raspbian-wheezy.img from-sd-card.img
+    md5sum from-sd-card.img 2015-02-16-raspbian-wheezy.img
+    ```
 
 - Run `sync`; this will ensure the write cache is flushed and that it is safe to unmount your SD card.
 
