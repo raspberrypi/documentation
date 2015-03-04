@@ -12,7 +12,7 @@ For monitors with a DVI port, you can use an HDMI-to-DVI cable.
 
 ### VGA
 
-For monitors with VGA only, you can use an HDMI-to-VGA adapter.
+For monitors with VGA only, you can use an HDMI-to-VGA adapter. We suggest using only powered HDMI-to-VGA adapters (with an external power source). Using an unpowered adapter may damage your Pi and therefore is not advised.
 
 ## Composite Port
 
