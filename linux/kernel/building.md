@@ -20,9 +20,19 @@ $ sudo apt-get install bc
 
 Configure the kernel - as well as the default configuration you may wish to [configure your kernel in more detail](configuring.md) or [apply patches from another source](patching.md) to add or remove required functionality:
 
+Run the following commands depending on your Raspberry Pi version.
+
+####Raspberry Pi 1 Default Build Configuration
+
 ```
 $ cd linux
 $ make bcmrpi_defconfig
+```
+
+####Raspberry Pi 2 Default Build Configuration
+```
+$ cd linux
+$ make bcm2709_defconfig
 ```
 
 Build the kernel; this step takes a **lot** of time...
