@@ -61,7 +61,7 @@ These commands and actions need to be performed from an account that has adminis
     sudo dd bs=1m if=2015-02-16-raspbian-wheezy.img of=/dev/rdisk3
     ```
 
-    If the above command reports an error (`dd: bs: illegal numeric value`), please change `bs=1M` to `bs=1m`.
+    If the above command reports an error (`dd: bs: illegal numeric value`), please change `bs=1m` to `bs=1M`.
     
     If the above command reports an error `dd: /dev/rdisk3: Permission denied` then that is because the partition table of the SD card is being protected against being overwritten by MacOS. Erase the SD card's partition table using this command:
     ```
