@@ -29,6 +29,7 @@ A guide to setting up your Raspberry Pi
     - Audio can be played through speakers or headphones using a standard 3.5mm jack.
     - Without an HDMI cable, an audio lead is necessary to produce sound.
     - No separate audio lead is necessary if you're using an HDMI cable to connect to a monitor with speakers, as audio can be played directly through the display; but it is possible to connect one if you prefer to have the audio played through other speakers - this requires [configuration](../configuration/audio-config.md).
+    - Help scripts to automate your personalised setup: https://github.com/iugamarian/raspberrypisetup/tree/master
 
 ## Troubleshooting
 
