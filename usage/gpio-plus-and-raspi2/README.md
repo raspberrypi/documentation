@@ -1,5 +1,7 @@
 # GPIO: Models A+, B+ and Raspberry Pi 2
 
+### An introduction to GPIO and physical computing on the Raspberry Pi
+
 One powerful feature of the Raspberry Pi is the row of GPIO (general purpose input/output) pins along the top edge of the board.
 
 ![GPIO pins](images/gpio-pins-pi2.jpg)
