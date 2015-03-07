@@ -1,6 +1,6 @@
-# GPIO
+# GPIO: Raspberry Pi Models A and B
 
-An introduction to GPIO and physical computing on the Raspberry Pi
+### An introduction to GPIO and physical computing on the Raspberry Pi
 
 One powerful feature of the Raspberry Pi is the row of GPIO (general purpose input/output) pins along the edge of the board, next to the yellow video out socket.
 
@@ -8,7 +8,7 @@ One powerful feature of the Raspberry Pi is the row of GPIO (general purpose inp
 
 These pins are a physical interface between the Pi and the outside world. At the simplest level, you can think of them as switches that you can turn on or off (input) or that the Pi can turn on or off (output). Seventeen of the 26 pins are GPIO pins; the others are power or ground pins.
 
-![GPIO layout](images/basic-gpio-layout.png)
+![GPIO layout](images/a-and-b-gpio-numbers.png)
 
 ## What are they for? What can I do with them?
 
@@ -64,10 +64,24 @@ Computing that involves tangible things connected to a computer, beyond standard
 
 ---
 
-### Appendix 1. A technical note on pin numbering
+## Appendix 1. A note on pin numbering
 
-When programming the GPIO pins there are two different ways to refer to them. You can count across and down from pin 1 at the top left (nearest to the SD card), as in the diagram at the top of the page. You may see this referred to as BOARD mode in Python. Alternatively, you can refer to the pins as the computer sees them (BCM mode). You can see this on the Raspberry Pi LED circuit above; for example, physical pin 3 is labelled "2" and physical pin 11 is labelled "17".
+When programming the GPIO pins there are two different ways to refer to them: GPIO numbering and physical numbering. 
 
-While there are good reasons for software engineers to use the BCM numbering system (the GPIO pins can do more than just simple input and output), most beginners find the **human readable** numbering system more useful. Counting down the pins is simple, and you don't need a reference or have to remember which is which. Take your pick though; as long as you use the same scheme within a program then all will be well. Note that pin numbering can also depend on what programming language you are using; for example, Scratch GPIO enforces certain pins as input and output.
+#### GPIO numbering
+
+These are the GPIO pins as the computer sees them. The numbers don't make any sense to humans, they jump about all over the place, so there is no easy way to remember them. You will need a printed reference or a reference board that fits over the pins. 
+
+#### Physical numbering
+
+The other way to refer to the pins is by simply counting across and down from pin 1 at the top left (nearest to the SD card). This is 'physical numbering' and it looks like this:
+
+![GPIO layout](images/a-and-b-physical-pin-numbers.png)
+
+#### Which system should I use?
+
+Beginners and young children may find the physical numbering system simpler -- you simply count the pins. You'll still need a diagram like the one above to know which are GPIO pins, which are ground and which are power though. 
+
+Generally we recommend using the GPIO numbering. It's good practice and most resources use this system. Take your pick though -- as long as you use the same system within a program then all will be well. Note that pin numbering can also depend on what programming language you are using: Scratch GPIO, for example, uses physical pin numbers whereas in Python you can choose which to use.
 
 For more details on the advanced capabilities of the GPIO pins see gadgetoid's [interactive pinout diagram](http://pi.gadgetoid.com/pinout).
