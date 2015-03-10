@@ -526,14 +526,6 @@ The memory address into which the `ramfsfile` should be loaded.
 
 This specifies both the ramfs filename **and** the memory address to load it at; it performs the actions of both `ramfsfile` and `ramfsaddr` in one parameter. Example values are: `initramfs initramf.gz 0x00800000`. **NOTE:** This option uses different syntax to all the other options; you should not use a `=` character here.
 
-#### device_tree
-
-Specifies a [device tree](http://www.raspberrypi.org/forum/viewtopic.php?f=71&t=53232) filename on the boot partition. This is not officially supported.
-
-#### device_tree_address
-
-The memory address into which the `device_tree` should be loaded.
-
 #### init_uart_baud
 
 The initial UART baud rate; the default value is `115200`.
@@ -561,6 +553,10 @@ If set to `1`, [safe_mode](http://elinux.org/RPI_safe_mode) boot won't be enable
 #### disable_splash
 
 If set to `1`, don't show the rainbow splash screen on boot. The default value is `0`.
+
+## Device Tree
+
+There are several `config.txt` paramters related to Device Tree setup, and these are documented separately [here](device-tree.md).
 
 ## Overclocking
 
