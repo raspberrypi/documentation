@@ -207,7 +207,7 @@ A DT Overlay comprises a number of fragments, each of which targets one node (an
 };
 ```
 
-The `compatible` string identifies this as being for bcm2708, which is the base architecture of the BCM2835 part. Then comes the first (and in this case only) fragment. Fragments are numbered sequentially from zero. Failure to adhere to this may cause some or all of your fragments to be missed.
+The `compatible` string identifies this as being for bcm2708, which is the base architecture of the BCM2835 part. For the BCM2836 part you could use a compatible string of "brcm,bcm2709", but unless you are targeting features of the ARM CPUs then the two architectures ought to be equivalent, so sticking to "brcm,bcm2708" is reasonable. Then comes the first (and in this case only) fragment. Fragments are numbered sequentially from zero. Failure to adhere to this may cause some or all of your fragments to be missed.
 
 Each fragment consists of two parts -- a `target` property, identifying the node to apply the overlay to, and the `__overlay__` itself, the body of which is added to the target node. The example above can be interpreted as if it were written like this:
 
@@ -299,50 +299,51 @@ If you write more complicated fragments the compiler may generate two more nodes
 Back in section 1.3 it says that *"the original labels do not appear in the compiled output"*, but this isn't true when using the `-@` switch. Instead, every label results in a property in the `__symbols__` node, mapping a label to a path, exactly like the `aliases` node. In fact, the mechanism is so similar that when resolving symbols, the Raspberry Pi loader will search the "aliases" node in the absence of a `__symbols__` node. This is useful because by providing sufficient aliases we can allow an older `dtc` to be used to build the base DTB files.
 
 <a name="part2.2"></a>
-## 2.2: Device tree parameters
+### 2.2: Device tree parameters
 
-To avoid the need for lots of device tree overlays, and (we hope) to restrict the need to write DTS files to peripheral makers, the Raspberry Pi loader supports a new feature -- device tree parameters. This permits small changes to the DT using named parameters, similar to the way kernel modules receive parameters from the kernel command line. Parameters can be exposed by the base DTBs and by overlays, including HAT overlays.
+To avoid the need for lots of device tree overlays, and (we hope) to restrict the need to write DTS files to peripheral makers, the Raspberry Pi loader supports a new feature -- device tree parameters. This permits small changes to the DT using named parameters, similar to the way kernel modules receive parameters from `modprobe` and the kernel command line. Parameters can be exposed by the base DTBs and by overlays, including HAT overlays.
 
-Parameters are defined in the DTS by adding an `__overrides__` node to the root. It contains properties whose names are the required parameter names, and the values are a sequence comprising a phandle for the target node and a string naming the target property. If the target is a cell then the property name must be followed by a colon and the byte offset (in decimal by default, usually 0) into the property value where the cell to be patched can be found; otherwise, the parameter is treated as a string parameter to be overwritten by the supplied value. Note that cell parameters must refer to an existing cell, whereas a string parameter can cause the target property to grow.
-
-Here is an example from `bcm2708-rpi-b-plus.dts` showing four string parameters and two integer parameters:
-
-```
-/ {
-    ...
-
-    __overrides__ {
-        i2s = <&i2s>,"status";
-        spi = <&spi0>,"status";
-        i2c0 = <&i2c0>,"status";
-        i2c1 = <&i2c1>,"status";
-        i2c0_baudrate = <&i2c0>,"clock-frequency:0";
-        i2c1_baudrate = <&i2c1>,"clock-frequency:0";
-        ...
-    };
-};
-```
-
-and one from `lirc-rpi-overlay.dts` showing some more integer parameters:
-
-```
-/ {
-    ...
-
-    __overrides__ {
-        gpio_out_pin =  <&lirc_pins>,"brcm,pins:0";
-        gpio_in_pin =   <&lirc_pins>,"brcm,pins:4";
-        gpio_in_pull =  <&lirc_pins>,"brcm,pull:4";
-        ...
-    };
-};
-```
-
-Note that the numeric I2C parameters should not normally be used directly -- see [3.3 Board-specific labels and parameters](#part3.3). Note also that the `gpio_out_pin` and `gpio_in_pin` parameters refer to adjacent cells in the `brcm,pins` property.
+Parameters are defined in the DTS by adding an `__overrides__` node to the root. It contains properties whose names are the chosen parameter names, and whose values are a sequence comprising a phandle (reference to a label) for the target node, and a string indicating the target property; string, integer (cell) and boolean properties are supported.
 
 <a name="part2.2.1"></a>
-## 2.2.1: Parameter sizes
-In addition to the original strings and 32-bit integers, a recent firmware update added support for other parameter sizes -- 8-, 16- and 64-bit values can now be targetted using different separator characters -- `.` for 8-bit, `;` for 16-bit, and `#` for 64-bit:
+#### 2.2.1: String parameters
+
+String parameters are declared like this:
+```
+name = <&label>,"property";
+```
+where `label` and `property` are replaced by suitable values. String parameters can cause their target properties to grow, shrink, or be created.
+
+Note that properties called `status` are treated specially - non-zero/true/yes/on values are converted to the string `"okay"`, while zero/false/no/off becomes `"disabled"`.
+
+<a name="part2.2.2"></a>
+#### 2.2.2: Integer parameters
+
+Integer parameters are declared like this:
+```
+name = <&label>,"property.offset"; // 8-bit
+name = <&label>,"property;offset"; // 16-bit
+name = <&label>,"property:offset"; // 32-bit
+name = <&label>,"property#offset"; // 64-bit
+```
+where `label`, `property` and `offset` are replaced by suitable values; the offset is specified in bytes relative to the start of the property (in decimal by default), and the preceding separator dictates the size of the parameter. Integer parameters must refer to an existing part of a property - they cannot cause their target properties to grow.
+
+<a name="part2.2.3"></a>
+#### 2.2.3: Boolean parameters
+
+Device Tree encodes boolean values as zero-length properties - if present then the property is true, otherwise it is false. They are defined like this:
+```
+boolean_property; // Set 'boolean_property' to true
+```
+Note that a property is assigned the value false by not defining it. Boolean parameters are declared like this:
+```
+name = <&label>,"property?";
+```
+where `label` and `property` are replaced by suitable values. Boolean parameters can cause properties to be created or deleted.
+
+<a name="part2.2.4"></a>
+#### 2.2.4 Examples
+Here are some examples of different types of properties, with parameters to modify them:
 
 ```
 / {
@@ -350,16 +351,22 @@ In addition to the original strings and 32-bit integers, a recent firmware updat
 		target-path = "/";
 		__overlay__ {
 
-			test: test {
+			test: test_node {
+				string = "hello";
+				status = "disabled";
 				bytes = /bits/ 8 <0x67 0x89>;
 				u16s = /bits/ 16 <0xabcd 0xef01>;
 				u32s = /bits/ 32 <0xfedcba98 0x76543210>;
 				u64s = /bits/ 64 < 0xaaaaa5a55a5a5555 0x0000111122223333>;
+				bool1; // Defaults to true
+				       // bool2 defaults to false
 			};
 		};
 	};
 
     __overrides__ {
+		string =      <&test>,"string";
+		enable =      <&test>,"status";
 		byte_0 =      <&test>,"bytes.0";
 		byte_1 =      <&test>,"bytes.1";
 		u16_0 =       <&test>,"u16s;0";
@@ -368,12 +375,14 @@ In addition to the original strings and 32-bit integers, a recent firmware updat
 		u32_1 =       <&test>,"u32s:4";
 		u64_0 =       <&test>,"u64s#0";
 		u64_1 =       <&test>,"u64s#8";
+		bool1 =       <&test>,"bool1?";
+		bool2 =       <&test>,"bool2?";
     };
 };
 ```
 
-<a name="part2.2.2"></a>
-## 2.2.2: Parameters with multiple targets
+<a name="part2.2.5"></a>
+#### 2.2.5: Parameters with multiple targets
 
 There are some situations where it is convenient to be able to set the same value in multiple locations within the device tree. Rather than the ungainly approach of creating multiple parameters, it is possible to add multiple targets to a single parameter by concatenating them, like this:
 
@@ -386,8 +395,10 @@ There are some situations where it is convenient to be able to set the same valu
 ```
 (example taken from the `w1-gpio` overlay)
 
-<a name="part2.2.3"></a>
-## 2.2.3: Further overlay examples
+Note that it is even possible to target properties of different types with a single parameter. You could reasonably connect an "enable" parameter to a `status` string, cells containing zero or one, and a proper boolean property.
+
+<a name="part2.2.6"></a>
+#### 2.2.6: Further overlay examples
 
 There is a growing collection of overlay source files hosted in the raspberrypi/linux github repository [here](https://github.com/raspberrypi/linux/tree/rpi-3.18.y/arch/arm/boot/dts) -- look for `*-overlay.dts`.
 
