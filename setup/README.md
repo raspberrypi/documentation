@@ -21,7 +21,7 @@ A guide to setting up your Raspberry Pi
 
 ### Optional
 
-- Ethernet (network) cable [Model B only]
+- Ethernet (network) cable [Model B/B+ only]
     - An Ethernet cable is used to connect your Pi to a local network and the internet.
 - [USB wireless dongle](../configuration/wireless/README.md)
     - Alternatively, you can connect to a wireless network using a USB wireless dongle, which will require configuration.
