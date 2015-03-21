@@ -26,7 +26,7 @@ mysqldump recipes > recipes.sql
 This command will back up the `recipes` database to the file `recipes.sql`. Note that in this case no username and password have been supplied to the `mysqldump` command. If you do not have your MySQL credentials in a `.my.cnf` configuration file in your home folder, then supply the username and password with flags:
 
 ```
-mysqldump -uroot -ppass recipes > recipes.sql
+mysqldump -u root -ppass recipes > recipes.sql
 ```
 
 To restore a MySQL database from a dumpfile, pipe the dumpfile into the `mysql` command; provide credentials if necessary and the database name. Note that the database must exist, so create it first:
