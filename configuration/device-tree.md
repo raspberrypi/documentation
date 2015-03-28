@@ -468,7 +468,7 @@ or appended to the overlay line like this:
 dtoverlay=lirc-rpi:gpio_out_pin=16,gpio_in_pin=17,gpio_in_pull=down
 ```
 
-Note here the use of the abbreviations -- the `overlays/` and `-overlay.dtb` are assumed.
+Note here the use of a colon (`:`) to separate the overlay name from its parameters, which is a supported syntax variant.
 
 Overlay parameters are only in scope until the next overlay is loaded. In the event of a parameter with the same name being exported by both the overlay and the base (don't do this -- it's just confusing), the parameter in the overlay takes precedence. To expose the parameter exported by the base DTB instead, end the current overlay scope using:
 
