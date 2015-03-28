@@ -115,4 +115,8 @@ Add some dynamic PHP content by replacing the current content:
 <? echo phpinfo(); ?>
 ``` 
 
-Save and refresh your browser. You should see a page with the PHP version, logo and current configuration settings.
+Save and restart the nginx http server
+``` bash
+sudo /etc/init.d/nginx restart
+```
+and refresh your browser. You should see a page with the PHP version, logo and current configuration settings.
