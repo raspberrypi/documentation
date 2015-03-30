@@ -538,6 +538,12 @@ The initial UART clock frequency; the default value is `3000000` (3MHz).
 
 The initial emmc clock frequency; the default value is `100000000` (100MHz).
 
+#### bootcode_delay
+
+Wait for a given number of seconds in `bootcode.bin` before loading `start.elf`; the default value is `0`.
+
+This is useful in particular to insert a delay before reading the EDID of the monitor, which can be useful if the Pi and monitor are powered from the same source but the monitor takes longer to start up than the Pi.  Try setting this value if the display detection is "wrong" on initial boot but correct if you soft-reboot the Pi without removing power from the monitor.
+
 #### boot_delay
 
 Wait for a given number of seconds in `start.elf` before loading the kernel; the default value is `1`. The total delay in milliseconds is calculated as `(1000 x boot_delay) + boot_delay_ms`. This can be useful if your SD card needs a while to 'get ready' before Linux is able to boot from it.
@@ -556,7 +562,7 @@ If set to `1`, don't show the rainbow splash screen on boot. The default value i
 
 ## Device Tree
 
-There are several `config.txt` paramters related to Device Tree setup, and these are documented separately [here](device-tree.md).
+There are several `config.txt` parameters related to Device Tree setup, and these are documented separately [here](device-tree.md).
 
 ## Overclocking
 
