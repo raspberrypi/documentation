@@ -126,7 +126,7 @@ Set an effect to be applied to the image
 * none		NO effect (default)
 * negative	Negate the image
 * solarise	Solarise the image
-* posterize	Posterise the image
+* posterise	Posterise the image
 * whiteboard	Whiteboard effect
 * blackboard	Blackboard effect
 * sketch	Sketch style effect
