@@ -32,7 +32,7 @@ After a short while the driver will finish being installed and you should be abl
 
 ![Windows Driver Install 3](images/libusb-bcm270x-boot.jpg)
 
-Finally follow the remainder of the instructions below (in a Cygwin terminal).
+Finally follow the remainder of the instructions below (in a Cygwin terminal) **Note** that when performing the below commands in a Cygwin terminal you don't need to use sudo bfore them.
 
 **On your Compute Module IO Board:**
 
