@@ -6,13 +6,13 @@ Please also read the section on [Module booting and flashing the eMMC](cm-design
 
 ## Steps to flash the eMMC on a Compute Module
 
-You need a host Linux system; a Raspberry Pi is recommended, Linux PC, or you can now use this tool via Cygwin on Windows.
+You need a host Linux system; a Raspberry Pi is recommended but you should be able to use any recent Linux distribution and you can also now use this tool via Cygwin on Windows.
 
 Note that there is a bug in the BCM2835 bootloader which returns a slightly incorrect USB packet to the host. Most USB hosts seem to ignore this benign bug and work OK, however we do see some USB ports that due to this bug do not work. We don't quote understand why some ports fail - it doesn't seem to be correlated with whether they are USB2 or USB3 (we have seen both types working) but is likely specific to the host controller and driver.
 
 **For Windows Users**
 
-To use the tool under Cygwin on Windows firstly you'll need to install [Cygwin](https://www.cygwin.com/). You'll need to make sure to install the libusb-1.0 and libusb-1.0-devel packages (NB tested using version 1.0.19-1) as well as gcc.
+To use the tool under Cygwin on Windows firstly you'll need to install [Cygwin](https://www.cygwin.com/). You'll need to make sure to install the libusb-1.0 and libusb-1.0-devel packages (NB tested using version 1.0.19-1) as well as gcc and Make.
 
 You then need to install the Windows driver which can be downloaded here: [bcm270x-boot-driver.zip](bcm270x-boot-driver.zip). To install the driver firstly plug the host machine into the Compute Module IO Board USB slave port (J15) and power on the CMIO board. Windows will see a new USB hardware device "BCM2708 Boot".
 
