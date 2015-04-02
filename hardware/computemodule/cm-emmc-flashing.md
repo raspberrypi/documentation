@@ -75,7 +75,11 @@ Run the usbboot tool and it will wait for a connection:
 sudo rpiboot
 ```
 
-Now plug the host machine into the Compute Module IO Board USB slave port (J15) and power on the CMIO board. The usbboot tool will discover the Compute Module and send boot code to allow access to the eMMC. Once complete you will see a new device appear; this is commonly /dev/sda but it could be another location such as /dev/sdb, so check in /dev/ before running rpiboot so you can see what changes.
+Now plug the host machine into the Compute Module IO Board USB slave port (J15) and power on the CMIO board. The usbboot tool will discover the Compute Module and send boot code to allow access to the eMMC. 
+
+**In Cygwin** you'll see a new drive appear, which can be formatted or written with an image just like an SD card using this [guide](http://www.raspberrypi.org/documentation/installation/installing-images/windows.md).
+
+**In Linux** once complete you will see a new device appear; this is commonly /dev/sda but it could be another location such as /dev/sdb, so check in /dev/ before running rpiboot so you can see what changes.
 
 You now need to write a raw OS image (such as [Raspbian](http://downloads.raspberrypi.org/raspbian_latest)) to the device. Note the following command may take some time to complete, depending on the size of the image:
 
