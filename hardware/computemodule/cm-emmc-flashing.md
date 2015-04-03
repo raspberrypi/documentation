@@ -26,7 +26,7 @@ Go to Windows Device Manager and you'll see an unknown device with a yellow excl
 
 ![Windows Driver Install 3](images/cm-driver-devmanager-install.jpg)
 
-Right click on this unknown device and select "Update Driver Software", then select "Browse my computer for driver software". In the next dialog box select "Browse" and browse to the directory containing the unzipped bcm270x-boot-driver.zip (the directory containing bcm270x.inf) and select "Next". Finally click "Install this driver software anyway" when Windows compains it cannot verify the publisher.
+Right click on this unknown device and select "Update Driver Software", then select "Browse my computer for driver software". In the next dialog box select "Browse" and browse to the directory containing the unzipped bcm270x-boot-driver.zip (the directory containing bcm270x.inf) and select "Next". Finally click "Install this driver software anyway" when Windows complains it cannot verify the publisher.
 
 After a short while the driver will finish being installed and you should be able to see it in Device Manager.
 
@@ -77,7 +77,7 @@ sudo rpiboot
 
 Now plug the host machine into the Compute Module IO Board USB slave port (J15) and power on the CMIO board. The usbboot tool will discover the Compute Module and send boot code to allow access to the eMMC. 
 
-**In Cygwin** you'll see a new drive appear, which can be formatted or written with an image just like an SD card using this [guide](http://www.raspberrypi.org/documentation/installation/installing-images/windows.md).
+**In Cygwin** you'll see a new drive appear, which can be formatted or written with an image just like an SD card using this [guide](../../installation/installing-images/windows.md).
 
 **In Linux** once complete you will see a new device appear; this is commonly /dev/sda but it could be another location such as /dev/sdb, so check in /dev/ before running rpiboot so you can see what changes.
 
