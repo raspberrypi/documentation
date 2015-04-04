@@ -2,6 +2,23 @@
 
 On Mac OS you have the choice of the command line `dd` tool or using the graphical tool ImageWriter to write the image to your SD card.
 
+## Formaating your SD card first (Optional)
+
+If you have used your SD card for other purposes in the past (like using it in a camera) it may be appropritate to format your SD card first.
+
+- Connect the SD card reader with the SD card inside.
+
+- Open 'Disk Utillity', you can find this by searching for it (command, space).
+
+- Click the left were it has your SD card.
+
+- Click the erase option.
+
+- Select MS-DOS if you have a SD card 32GB or smaller. Select ExFat if you have a 64GB SD card.
+
+- Change the name to something you can remember and then click Erase.
+
+
 ## (Mostly) graphical interface
 
 - Connect the SD card reader with the SD card inside. Note that it must be formatted in FAT32.
