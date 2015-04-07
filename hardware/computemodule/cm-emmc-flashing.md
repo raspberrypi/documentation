@@ -8,7 +8,7 @@ Please also read the section on [Module booting and flashing the eMMC](cm-design
 
 You need a host Linux system; a Raspberry Pi is recommended but you should be able to use any recent Linux distribution and you can also use this tool via Cygwin on Windows.
 
-Note that there is a bug in the BCM2835 bootloader which returns a slightly incorrect USB packet to the host. Most USB hosts seem to ignore this benign bug and work OK, however we do see some USB ports that due to this bug do not work. We don't quote understand why some ports fail - it doesn't seem to be correlated with whether they are USB2 or USB3 (we have seen both types working) but is likely specific to the host controller and driver.
+**Note that there is a bug in the BCM2835 bootloader which returns a slightly incorrect USB packet to the host. Most USB hosts seem to ignore this benign bug and work OK, however we do see some USB ports that due to this bug do not work. We don't quite understand why some ports fail - it doesn't seem to be correlated with whether they are USB2 or USB3 (we have seen both types working) but is likely specific to the host controller and driver.**
 
 **For Windows Users**
 
