@@ -24,6 +24,7 @@ To set up a blank SD card with NOOBS:
 - Download and extract the files from the NOOBS zip file.
 - Copy the extracted files onto the SD card that you just formatted so that this file is at the root directory of the SD card. Please note that in some cases it may extract the files into a folder; if this is the case then please copy across the files from inside the folder rather than the folder itself.
 - On first boot the "RECOVERY" FAT partition will be automatically resized to a minimum, and a list of OSs that are available to install will be displayed.
+- Cards larger than 32gb will not work with NOOBS (they get formatted as exFat and NOOBS boot does not work). It is possible to install an Operation system image directly on these cards.
 
 #### How to format an SD card as FAT
 
