@@ -59,7 +59,7 @@ echo -ne "\x01\x02\x03" > /dev/spidev0.0
 ## Hardware
 
 The BCM2835 on the Raspberry Pi has 3 SPI Controllers. Only the SPI0 controller is available on the header.
-Chapter 10 in the [BCM2835 ARM Peripherals](http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf) datasheet describes this controller.
+Chapter 10 in the [BCM2835 ARM Peripherals](../bcm2835/BCM2835-ARM-Peripherals.pdf) datasheet describes this controller.
 
 ### Master modes
 
