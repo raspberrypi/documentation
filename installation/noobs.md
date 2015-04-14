@@ -27,6 +27,8 @@ To set up a blank SD card with NOOBS:
 
 #### How to format an SD card as FAT
 
+**Note:** If you're formatting an SD (or micro SD) card that has a capacity over 32 GB (i.e. 64GB and above) then see the separate [SDXC formatting](sdxc_formatting.md) instructions.
+
 ##### Windows
 
 For Windows users we recommend formatting your SD card using the SD Association's Formatting Tool, which can be downloaded from [sdcard.org](https://www.sdcard.org/downloads/formatter_4/). You will need to set "FORMAT SIZE ADJUSTMENT" option to "ON" in the "Options" menu to ensure that the entire SD card volume is formatted, and not just a single partition.
