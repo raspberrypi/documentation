@@ -76,12 +76,21 @@ To build the sources for cross-compilation there may be extra dependencies beyon
 
 Enter the following commands to build the sources:
 
+For Raspberry Pi 1:
+
 ```
 $ cd linux
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
 ```
 
+For Raspberry Pi 2:
+
+```
+$ cd linux
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
+```
 Note: To speed up compilation on multiprocessor systems, and get some improvement on single processor ones, use ```-j n``` where n is number of processors * 1.5. Alternatively, feel free to experiment and see what works!
 
 ### Install
