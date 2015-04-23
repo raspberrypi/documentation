@@ -87,8 +87,8 @@ cd /etc/init.d/
 #! /bin/sh
 # /etc/init.d/vncboot
 
-USER=root
-HOME=/root
+USER=pi
+HOME=/home/pi
 
 export USER HOME
 
@@ -96,7 +96,7 @@ case "$1" in
  start)
   echo "Starting VNC Server"
   #Insert your favoured settings for a VNC session
-  /usr/bin/vncserver :0 -geometry 1280x800 -depth 16 -pixelformat rgb565
+  su - pi -c "/usr/bin/vncserver :0 -geometry 1280x800 -depth 16 -pixelformat rgb565"
   ;;
 
  stop)
