@@ -309,9 +309,9 @@ Valid options are jpg, bmp, gif and png. Note that unaccelerated image types (gi
 ```
 	--exif,	-x		EXIF tag to apply to captures (format as 'key=value')
 ```
-Allows the insertion of specific exif tags in to the JPEG image. You can have up to 32 exif tge entries. This is useful for things like adding GPS metadata. For example, to set the Longitude
+Allows the insertion of specific exif tags in to the JPEG image. You can have up to 32 exif tag entries. This is useful for things like adding GPS metadata. For example, to set the Longitude
 ```
-		--exif GPS.GPSLongitude=5/1,10/1,15/100
+		--exif GPS.GPSLongitude=5/1,10/1,15/1
 ```
 would set the Longitude to 5degs, 10 minutes, 15 seconds. See exif documentation for more details on the range of tags available; the supported tags are as follows.
 
