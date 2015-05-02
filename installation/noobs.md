@@ -48,7 +48,7 @@ The following Operating Systems are currently included in NOOBS:
 - [Raspbian](http://raspbian.org/)
 - [Pidora](http://pidora.ca/)
 - [OpenELEC](http://wiki.openelec.tv/index.php?title=Raspberry_Pi_FAQ)
-- [RaspBMC](http://www.raspbmc.com/)
+- [OSMC](http://osmc.tv/)
 - [RISC OS](https://www.riscosopen.org/wiki/documentation/show/Welcome%20to%20RISC%20OS%20Pi)
 - [Arch Linux](http://archlinuxarm.org/platforms/armv6/raspberry-pi)
 
