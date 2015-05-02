@@ -4,7 +4,7 @@ XBMC is media centre software which runs on Raspberry Pi.
 
 ![OpenELEC](images/openelec.png)
 
-Two XBMC distributions are included in our easy Operating System installer [NOOBS](../../installation/noobs.md): **OpenELEC** and **RaspBMC**.
+Two XBMC distributions are included in our easy Operating System installer [NOOBS](../../installation/noobs.md): **OpenELEC** and **OSMC**.
 
 ## NOOBS
 
@@ -14,7 +14,7 @@ With NOOBS on your SD card, you should be able to boot the Raspberry Pi to the N
 
 ![NOOBS OS selection screen](../../installation/images/noobs.png)
 
-Select **OpenELEC** or **RaspBMC** and press the `Install` button.
+Select **OpenELEC** or **OSMC** and press the `Install` button.
 
 You'll be prompted to confirm. This will delete any data on the SD card, so if you previously had Raspbian on it be sure to back up your files first. If you're sure, click `Yes` to continue and start the installation. This will take some time; when it is complete NOOBS will show a window saying:
 
