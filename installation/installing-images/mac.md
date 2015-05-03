@@ -11,7 +11,7 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
 - From the terminal run:
 
     ```
-    sudo dd bs=1m if=path_of_your_image.img of=/dev/diskn
+    sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskn
     ```
 
     Remember to replace `n` with the number that you noted before!
@@ -22,20 +22,25 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
 
     `diskutil list`
 
-- Identify the disk (not partition) of your SD card e.g. `disk4` (not `disk4s1`):
+- Identify the disk (not partition) of your SD card e.g. `disk4` (not `disk4s1`). It will look something like 'diskn' where n is a number (for example, disk4). Make sure you take a note of this number.
 
-    `diskutil unmountDisk /dev/<disk# from diskutil>`
+    `diskutil unmountDisk /dev/diskn`
 
     e.g. `diskutil unmountDisk /dev/disk4`
+    
 
-    `sudo dd bs=1m if=image.img of=/dev/<disk# from diskutil>`
+    `sudo dd bs=1m if=image.img of=/dev/rdiskn`
+    
+    Remember to replace `n` with the number that you noted before!
 
-    e.g. `sudo dd bs=1m if=2015-02-16-raspbian-wheezy.img of=/dev/disk4`
+    e.g. `sudo dd bs=1m if=2015-02-16-raspbian-wheezy.img of=/dev/rdisk4`
 
     This may result in an ``dd: invalid number '1m'`` error if you have GNU
     coreutils installed. In that case you need to use ``1M``:
 
-    `sudo dd bs=1M if=image.img of=/dev/<disk# from diskutil>`
+    `sudo dd bs=1M if=image.img of=/dev/rdiskn`
+    
+    (Remember to replace `n` with the number that you noted before!)
 
     This will take a few minutes.
 
