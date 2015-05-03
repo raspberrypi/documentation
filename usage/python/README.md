@@ -235,7 +235,7 @@ Then save this file (`File > Save` or `Ctrl + S`) and run (`Run > Run Module` or
 
 ## Executing Python files from the command line
 
-You can write a Python file in a standard editor like Vim, Nano or LeafPad, and run it as a Python script from the command line. Just navigate to the directory the file is saved (use `cd` and `ls` for guidance) and run with `python`, e.g. `python hello.py`.
+You can write a Python file in a standard [editor](../../linux/usage/text-editors.md) like Vim, Nano or LeafPad, and run it as a Python script from the command line. Just navigate to the directory the file is saved (use `cd` and `ls` for guidance) and run with `python`, e.g. `python hello.py`.
 
 ![Python command line](images/run-python.png)
 
