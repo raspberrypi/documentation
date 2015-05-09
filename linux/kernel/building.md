@@ -82,6 +82,8 @@ $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
 ```
 
+For the Raspberry Pi 2, use `bcm2709_defconfig` instead of `bcmrpi_defconfig` on the second line.
+
 Note: To speed up compilation on multiprocessor systems, and get some improvement on single processor ones, use ```-j n``` where n is number of processors * 1.5. Alternatively, feel free to experiment and see what works!
 
 ### Install
