@@ -410,7 +410,7 @@ There is a growing collection of overlay source files hosted in the raspberrypi/
 
 On Raspberry Pi it is the job of the loader (one of the start*.elf images) to combine overlays with an appropriate base device tree, and then to pass a fully resolved device tree to the kernel. The base device trees are located alongside start.elf in the FAT partition (/boot from linux), named `bcm2708-rpi-b.dtb` and `bcm2708-rpi-b-plus.dtb`. Here, the presence or absence of the "-plus" is the significant thing, not the "b" -- Model A's and A+'s will use the "b" and "b-plus" variants, respectively. This selection is automatic, and allows the same SD card image to be used in a variety of devices.
 
-N.B. DT and ATAGs are mutually exclusive. As a result, passing a DT blob to a kernel that doesn't understand it causes a boot failure. To guard against this, the loader checks kernel images for DT-compatibility, which is marked by a trailer added by the mkknlimg utility (found [here](https://github.com/raspberrypi/tools/blob/master/mkimage/mkknlimg)). Any kernel without a trailer is assumed to be non-DT-capable.
+N.B. DT and ATAGs are mutually exclusive. As a result, passing a DT blob to a kernel that doesn't understand it causes a boot failure. To guard against this, the loader checks kernel images for DT-compatibility, which is marked by a trailer added by the mkknlimg utility (found [here](https://github.com/raspberrypi/tools/blob/master/mkimage/mkknlimg), or in the scripts directory of a recent kernel source tree). Any kernel without a trailer is assumed to be non-DT-capable.
 
 In order to manage device tree and overlays, the loader supports a number of new `config.txt` directives:
 
@@ -527,7 +527,7 @@ sudo vcdbg log msg
 
 Extra debugging can be enabled by adding `dtdebug=1` to `config.txt`.
 
-If the kernel fails to come up in DT mode, **this is probably because the kernel image does not have a valid trailer**. Use [knlinfo](https://github.com/raspberrypi/tools/blob/master/mkimage/knlinfo) to check for one, and [mkknlimg](https://github.com/raspberrypi/tools/blob/master/mkimage/mkknlimg) utility to add one.
+If the kernel fails to come up in DT mode, **this is probably because the kernel image does not have a valid trailer**. Use [knlinfo](https://github.com/raspberrypi/tools/blob/master/mkimage/knlinfo) to check for one, and [mkknlimg](https://github.com/raspberrypi/tools/blob/master/mkimage/mkknlimg) utility to add one. Note that both utilities are also included in the scripts directory of newer kernel source trees.
 
 If kernel modules don't load as expected, check that they aren't blacklisted (in `/etc/modprobe.d/raspi-blacklist.conf`); blacklisting shouldn't be necessary when using device tree. If that shows nothing untoward you can also check that the module is exporting the correct aliases by searching `/lib/modules/<version>/modules.alias` for the `compatible` value. If not, your driver is probably missing either:
 
