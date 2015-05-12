@@ -60,7 +60,7 @@ $ git clone https://github.com/raspberrypi/tools
 ```
 
 You can then copy the toolchain to a common location such as `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian`, and add `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin` to your $PATH in the .bashrc in your home directory.
-For 64bit, use /tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin.
+For 64bit, use `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin`.
 While this step is not strictly necessary, it does make it easier for later command lines!
 
 ### Get sources
@@ -83,6 +83,15 @@ $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
 ```
 
 Note: To speed up compilation on multiprocessor systems, and get some improvement on single processor ones, use ```-j n``` where n is number of processors * 1.5. Alternatively, feel free to experiment and see what works!
+
+### Use specific toolchain
+
+You can also specify `make` to use a specific toolchain, ignoring the PATH defautls.
+Use:
+```
+$ make ARCH=arm CROSS_COMPILE=/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf-
+```
+This is util in case that you have installed another version of the `arm-linux-gnueabihf` toolchain from your distro's repositories, and you don't want to uninstall it or add this toolchain to PATH, because the shell will prefer the incorrect version in some cases.
 
 ### Install
 
