@@ -2,7 +2,7 @@
 
 If the camera is not working correctly, there are number of things to try:
 
-*   Is the ribbon cable attached to the Camera Serial Interface (CSI), not the Display Serial Interface (DSI)?  The ribbon connector will fit into either port.  The Camera port is located near the Ethernet connector.
+*   Is the ribbon cable attached to the Camera Serial Interface (CSI), not the Display Serial Interface (DSI)?  The ribbon connector will fit into either port.  The Camera port is located near the HDMI connector.
 
 *   Are the ribbon connectors all firmly seated, and are they the right way round? They must be straight in their sockets.
 
