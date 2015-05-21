@@ -238,6 +238,7 @@ Sonic Pi has been developed to be a platform for the live coding of music, so th
 
     loop do
       play_my_synth
+    end
     ```
 
 1. Press **play** to start the program.
