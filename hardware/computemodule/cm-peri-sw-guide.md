@@ -83,7 +83,7 @@ bcm2708-rpi-cm.dtb (Used for Pi Compute Module)
 
 NOTE on Raspbian releases 2015-05-05 and earlier bcm2708-rpi-cm.dtb is missing, do a 'sudo rpi-update' to get it.
 
-NOTE dt-blob.bin by default does not exist as there is a 'default' version compiled into start.elf, but for most Compute Moudle projects it will be necessary to provide a dt-blob.bin (which overrides the default in-built one).
+NOTE dt-blob.bin by default does not exist as there is a 'default' version compiled into start.elf, but for most Compute Module projects it will be necessary to provide a dt-blob.bin (which overrides the default in-built one).
 
 Note that dt-blob.bin is in compiled device tree format, but is only read by the GPU firmware to set up functions exclusive to the GPU - see below).
 
