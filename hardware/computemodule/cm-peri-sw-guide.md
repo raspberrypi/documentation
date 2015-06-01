@@ -16,9 +16,9 @@ Note that using Device Tree is the officially supported method of doing things (
 
 ##BCM283x GPIOs
 
-BCM283x has 3 banks of General Purpose Input Output (GPIO) pins (28 pins on bank0, 18 pins on bank1 and 8 pins on bank2; 54 pins in total). These pins can be used as true GPIO (i.e. software can set them as inputs or outputs, read and/or set state and use them as interrupts) but also can be set to 'alternate functions' such as I2C, SPI, I2S, UART, SD card and others.
+BCM283x has 3 banks of General Purpose Input Output (GPIO) pins (28 pins on Bank0, 18 pins on Bank1 and 8 pins on Bank2; 54 pins in total). These pins can be used as true GPIO (i.e. software can set them as inputs or outputs, read and/or set state and use them as interrupts) but also can be set to 'alternate functions' such as I2C, SPI, I2S, UART, SD card and others.
 
-On a Compute Module both BANK0 and BANK1 are free to use with BANK2 used for eMMC and HDMI hot plug detect and ACT LED / USB boot control.
+On a Compute Module both Bank0 and Bank1 are free to use with Bank2 used for eMMC and HDMI hot plug detect and ACT LED / USB boot control.
 
 It is useful on a running system to look at the state of each of the GPIO pins (what function they are set to, and the voltage level at the pin) - so that one can see if the system is set up as expected (this is particularly useful to see if a Device Tree is working as expected or to get a look at the pin states during hardware debug).
 
@@ -191,7 +191,7 @@ NOTE we could use this dt-blob.dts with no changes, as the Linux Device Tree wil
 
 Compile dt-blob.bin:
 
-``bash
+```bash
 sudo dtc -I dts -O dtb -o /boot/dt-blob.bin /boot/minimal-cm-dt-blob.dts
 ```
 
@@ -213,7 +213,10 @@ Note that ignore_lcd=1 is currently needed to stop the firmware for the upcoming
 Now save and reboot.
 
 Once rebooted you should see an rtc0 entry in /dev and running:
+
+```bash
 sudo hwclock
+```
 
 will return with the hardware clock time, and not an error.
 
