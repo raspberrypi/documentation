@@ -38,7 +38,7 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
     `sudo dd bs=1M if=image.img of=/dev/<disk# from diskutil>`
 
     This will take a few minutes, depending on the image file size.
-    You can check the advancement by sending a `SIGINFO` signal pressing <kbd>Ctrl</kbd>+<kbd>T</kbd>.
+    You can check the progress by sending a `SIGINFO` signal pressing <kbd>Ctrl</kbd>+<kbd>T</kbd>.
 
 ## Alternative method
 
