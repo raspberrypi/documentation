@@ -245,7 +245,14 @@ dtc -I dts -O dtb -o 1st-overlay.dtb 1st-overlay.dts
 
 you will get one of two errors.
 
-If `dtc` returns an error about the third line, then it doesn't have the extensions required for overlay work. The `/plugin/` directive is a signal to the compiler that it needs the ability to generate linkage information allowing unresolved symbols to be patched up later. To build an updated compiler, follow these steps in a suitable directory:
+If `dtc` returns an error about the third line, then it doesn't have the extensions required for overlay work. The `/plugin/` directive is a signal to the compiler that it needs the ability to generate linkage information allowing unresolved symbols to be patched up later.
+
+To install an appropriate `dtc` on a Pi, type:
+```
+sudo apt-get install device-tree-compiler
+```
+
+On other platforms, you have two options: if you download the kernel sources from the raspberrypi github and `make ARCH=arm dtbs` then it will build a suitable `dtc` in `scripts/dtc`. Alternatively, follow these steps in a suitable directory:
 
 ```bash
 wget -c https://raw.githubusercontent.com/RobertCNelson/tools/master/pkgs/dtc.sh
@@ -400,7 +407,7 @@ Note that it is even possible to target properties of different types with a sin
 <a name="part2.2.6"></a>
 #### 2.2.6: Further overlay examples
 
-There is a growing collection of overlay source files hosted in the raspberrypi/linux github repository [here](https://github.com/raspberrypi/linux/tree/rpi-3.18.y/arch/arm/boot/dts) -- look for `*-overlay.dts`.
+There is a growing collection of overlay source files hosted in the raspberrypi/linux github repository [here](https://github.com/raspberrypi/linux/tree/rpi-3.18.y/arch/arm/boot/dts/overlays).
 
 <a name="part3"></a>
 ## Part 3: Using device trees on Raspberry Pi
@@ -408,9 +415,11 @@ There is a growing collection of overlay source files hosted in the raspberrypi/
 <a name="part3.1"></a>
 ### 3.1: Overlays and config.txt
 
-On Raspberry Pi it is the job of the loader (one of the start*.elf images) to combine overlays with an appropriate base device tree, and then to pass a fully resolved device tree to the kernel. The base device trees are located alongside start.elf in the FAT partition (/boot from linux), named `bcm2708-rpi-b.dtb` and `bcm2708-rpi-b-plus.dtb`. Here, the presence or absence of the "-plus" is the significant thing, not the "b" -- Model A's and A+'s will use the "b" and "b-plus" variants, respectively. This selection is automatic, and allows the same SD card image to be used in a variety of devices.
+On Raspberry Pi it is the job of the loader (one of the start*.elf images) to combine overlays with an appropriate base device tree, and then to pass a fully resolved device tree to the kernel. The base device trees are located alongside start.elf in the FAT partition (/boot from linux), named `bcm2708-rpi-b.dtb`, `bcm2708-rpi-b-plus.dtb`, `bcm2708-rpi-cm.dtb` and `bcm2709-rpi-2-b.dtb`. Note that Model A's and A+'s will use the "b" and "b-plus" variants, respectively. This selection is automatic, and allows the same SD card image to be used in a variety of devices.
 
 N.B. DT and ATAGs are mutually exclusive. As a result, passing a DT blob to a kernel that doesn't understand it causes a boot failure. To guard against this, the loader checks kernel images for DT-compatibility, which is marked by a trailer added by the mkknlimg utility (found [here](https://github.com/raspberrypi/tools/blob/master/mkimage/mkknlimg), or in the scripts directory of a recent kernel source tree). Any kernel without a trailer is assumed to be non-DT-capable.
+
+The loader now also support builds using bcm2835_defconfig, which select the upstreamed BCM2835 support. This configuration will cause `bcm2835-rpi-b.dtb` and `bcm2835-rpi-b-plus.dtb` to be built. If these files are copied with the kernel, and if the kernel has been tagged by a recent `mkknlimg`, then the loader will attempt to load one of those DTBs by default.
 
 In order to manage device tree and overlays, the loader supports a number of new `config.txt` directives:
 
@@ -527,7 +536,13 @@ sudo vcdbg log msg
 
 Extra debugging can be enabled by adding `dtdebug=1` to `config.txt`.
 
-If the kernel fails to come up in DT mode, **this is probably because the kernel image does not have a valid trailer**. Use [knlinfo](https://github.com/raspberrypi/tools/blob/master/mkimage/knlinfo) to check for one, and [mkknlimg](https://github.com/raspberrypi/tools/blob/master/mkimage/mkknlimg) utility to add one. Note that both utilities are also included in the scripts directory of newer kernel source trees.
+If the kernel fails to come up in DT mode, **this is probably because the kernel image does not have a valid trailer**. Use [knlinfo](https://github.com/raspberrypi/tools/blob/master/mkimage/knlinfo) to check for one, and [mkknlimg](https://github.com/raspberrypi/tools/blob/master/mkimage/mkknlimg) utility to add one. Note that both utilities are also included in the scripts directory of current raspberrypi kernel source trees.
+
+You can create a (semi-)human readable representation of the current state of DT like this:
+```
+dtc -I fs /proc/device-tree
+```
+which can be useful to see the effect of merging overlays onto the underlying tree.
 
 If kernel modules don't load as expected, check that they aren't blacklisted (in `/etc/modprobe.d/raspi-blacklist.conf`); blacklisting shouldn't be necessary when using device tree. If that shows nothing untoward you can also check that the module is exporting the correct aliases by searching `/lib/modules/<version>/modules.alias` for the `compatible` value. If not, your driver is probably missing either:
 
