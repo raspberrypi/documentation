@@ -124,7 +124,7 @@ To compile these dts files to dtb files requires an up-to-date version of the De
 ```bash
 sudo apt-get install device-tree-compiler
 ```
-If you are building your own kernel then the build host also gets a version in `scripts/dtc`, and you can arrange that your overlays are built automatically by adding them to `Makefile` in `arch/arm/boot/dts/overlays`.
+If you are building your own kernel then the build host also gets a version in `scripts/dtc`, and you can arrange that your overlays are built automatically by adding them to `Makefile` in `arch/arm/boot/dts/overlays` and using the "dtbs" make target.
 
 ##Device Tree Debugging
 
