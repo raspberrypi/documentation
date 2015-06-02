@@ -23,18 +23,17 @@ On a Compute Module both Bank0 and Bank1 are free to use with Bank2 used for eMM
 It is useful on a running system to look at the state of each of the GPIO pins (what function they are set to, and the voltage level at the pin) - so that one can see if the system is set up as expected (this is particularly useful to see if a Device Tree is working as expected or to get a look at the pin states during hardware debug).
 
 Raspberry Pi provide the `raspi-gpio` package which is a tool for hacking / debugging GPIO (NOTE you need to run it as root).
-To install raspi-gpio:
-
+To install `raspi-gpio`:
 ```
 sudo apt-get install raspi-gpio
 ```
 
-If apt-get can't find the raspi-gpio package you need to do an update first:
+If `apt-get` can't find the `raspi-gpio` package you need to do an update first:
 ```
 sudo apt-get update
 ```
 
-To get help on raspi-gpio run it with the help argument:
+To get help on `raspi-gpio` run it with the `help` argument:
 ```
 sudo raspi-gpio help
 ```
@@ -44,7 +43,7 @@ For example to see the current function and level of all GPIO pins use:
 sudo raspi-gpio get
 ```
 
-Note raspi-gpio can be used with the funcs argument to get a list of all supported GPIO functions per pin, it will print out a table in CSV format. The idea is to pipe the table to a .csv file and then load this file using e.g. Excel:
+Note `raspi-gpio` can be used with the `funcs` argument to get a list of all supported GPIO functions per pin, it will print out a table in CSV format. The idea is to pipe the table to a `.csv` file and then load this file using e.g. Excel:
 ```
 sudo raspi-gpio funcs > gpio-funcs.csv
 ```
@@ -61,7 +60,7 @@ The BCM283x devices as used on Raspberry Pi and Compute Module boards have a 3 s
 
 2. The second stage boot loader (`bootcode.bin` on the sdcard or `usbbootcode.bin` for usb boot) is responsible for setting up the LPDDR2 SDRAM interface and various other critical system funcions and then loading and executing the main GPU firmware (called start.elf, again on the primary SD card partition). 
 
-3. Start.elf takes over and is responsible for further system setup and booting up the ARM processor subsystem, and contains the firmware that runs on the various parts of the GPU. It first reads `dt-blob.bin` to determine initial GPIO pin states and GPU-specific interfaces and clocks, then parses `config.txt`. It then loads an ARM device tree file (e.g. `bcm2708-rpi-cm.dtb` for a Compute Module) and any device tree overlays specified in config.txt before starting the ARM subsystem and passing the device tree data to the booting Linux kernel.
+3. `start.elf` takes over and is responsible for further system setup and booting up the ARM processor subsystem, and contains the firmware that runs on the various parts of the GPU. It first reads `dt-blob.bin` to determine initial GPIO pin states and GPU-specific interfaces and clocks, then parses `config.txt`. It then loads an ARM device tree file (e.g. `bcm2708-rpi-cm.dtb` for a Compute Module) and any device tree overlays specified in `config.txt` before starting the ARM subsystem and passing the device tree data to the booting Linux kernel.
 
 ##Device Tree
 
@@ -69,7 +68,7 @@ The BCM283x devices as used on Raspberry Pi and Compute Module boards have a 3 s
 
 On a Pi or Compute Module there are several files in the first FAT partition of the SD/eMMC that are binary 'Device Tree' files. These binary files (usually with extension `.dtb`) are compiled from human readable text descriptions (usually files with extension `.dts`) by the Device Tree compiler.
 
-On a standard Raspbian image in the first (FAT) partition you will find two different types of device tree files, one is used by the GPU only (dt-blob.bin) and the rest are standard ARM device tree files for each of the BCM283x based Pi products:
+On a standard Raspbian image in the first (FAT) partition you will find two different types of device tree files, one is used by the GPU only and the rest are standard ARM device tree files for each of the BCM283x based Pi products:
 
 * `dt-blob.bin` (used by the GPU)
 * `bcm2708-rpi-b.dtb` (Used for Pi model A and B)
@@ -88,7 +87,7 @@ A comprehensive guide to the Linux Device Tree for Raspberry Pi is [here](https:
 
 During boot, the user can specify a specific ARM device tree to use via the `device_tree` parameter in `config.txt` (e.g. add the line `device_tree=mydt.dtb` to `config.txt` where `mydt.dtb` is the dtb file to load instead of one of the standard ARM dtb files).
 
-In addition to loading an ARM dtb, `start.elf` supports loading aditional Device Tree 'overlays' via the `dtoverlay` parameter in `config.txt`. (e.g. add as many `dtoverlay=myoverlay` lines as required overlays to `config.txt` noting that overlays live in `/boot/overlays` and are suffixed `-overlay.dtb` e.g. `/boot/overlays/myoverlay-overlay.dtb`). Overlays are merged with the base dtb file before the data is passed to the Linux kernel when it starts.
+In addition to loading an ARM dtb, `start.elf` supports loading aditional Device Tree 'overlays' via the `dtoverlay` parameter in `config.txt`. (e.g. add as many `dtoverlay=myoverlay` lines as required overlays to `config.txt` noting that overlays live in `/overlays` and are suffixed `-overlay.dtb` e.g. `/overlays/myoverlay-overlay.dtb`). Overlays are merged with the base dtb file before the data is passed to the Linux kernel when it starts.
 
 Overlays are used to add data to the base dtb that describes non board-specific hardware, which includes GPIO pins used and their function as well as the device(s) attached (so correct drivers can be loaded). The convention is that on a Raspberry Pi all hardware attached to the Bank0 GPIOs (the GPIO header) should be described using an overlay. On a Compute Module all hardware attached to the Bank0 and Bank1 GPIOs should be described in an overlay file. You don't have to follow these conventions (you can roll all information into one single dtb file, replacing `bcm2708-rpi-cm.dtb`) but following the conventions means that you can use a 'standard' Raspbian release with its standard base dtb and all the product-specific infotmation is contained in a separate overlay. Occasionally the base dtb might change - usually in a way that will not break overlays - which is why using an overlay is suggested.
 
@@ -99,7 +98,6 @@ When `start.elf` runs it first reads something called `dt-blob.bin` which is a s
 [minimal-cm-dt-blob.dts](minimal-cm-dt-blob.dts) is an example `.dts` device tree file that sets up the HDMI hot plug detect and ACT LED (these are GPIOs 46 and 47 which we state must be used only for these functions on all Compute Module designs) and sets all other GPIOs to be inputs with default pulls.
 
 To compile the `minimal-cm-dt-blob.dts` to `dt-blob.bin` use the Device Tree Compiler `dtc`:
-
 ```
 dtc -I dts -O dtb -o dt-blob.bin minimal-cm-dt-blob.dts
 ```
@@ -119,7 +117,6 @@ The Raspbian image provides compiled dtb files, but where are the source dts fil
 Some default overlay dts files live in `arch/arm/boot/dts/overlays` (corresponding overlays for standard hardware that can be attached to a *Raspberry Pi* in the Raspbian image are on the FAT partition in the `/overlays` directory - note these assume certain pins as they are for use on a Raspberry Pi, so in general use the source of these standard overlays as a guide to creating your own unless you are using the exact same GPIO pins as you would be using if the hardware were plugged into the GPIO header of a Raspberry Pi).
 
 To compile these dts files to dtb files requires an up-to-date version of the Device Tree compiler `dtc`. More info can be found [here](https://www.raspberrypi.org/documentation/configuration/device-tree.md), but the easy way to install an appropriate version on a Pi is to run:
-
 ```
 sudo apt-get install device-tree-compiler
 ```
@@ -131,19 +128,16 @@ If you are building your own kernel then the build host also gets a version in `
 When the Linux kernel is booted on the ARM core(s) the GPU provides it with a fully assembled device tree (assembled from the base dts and any overlays). This full tree is available via the Linux proc interface in `/proc/device-tree`, where nodes become directories and properties become files.
 
 You can use `dtc` to write this out as a human readable dts file for debugging (you can see the fully assembled device tree which is often very useful):
-
 ```
 dtc -I fs -O dts -o proc-dt.dts /proc/device-tree
 ```
 
 As previously explained in the GPIO section it is also very useful to use `raspi-gpio` to look at the setup of the GPIO pins to see if they are as you expect:
-
 ```
 raspi-gpio get
 ```
 
 If something seems to be going awry useful information can also be found by dumping the GPU log messages:
-
 ```
 sudo vcdbg log msg
 ```
@@ -175,20 +169,17 @@ In this simple example we wire an NXP PCF8523 real time clock (RTC) to the CMIO 
 Download [minimal-cm-dt-blob.dts](minimal-cm-dt-blob.dts) and copy it to the SD card FAT partition (located in `/boot` when the CM has booted).
 
 Edit `minimal-cm-dt-blob.dts` and change the pin states of GPIO44 and 45 to be I2C1 with pull-ups:
-
 ```
 sudo nano /boot/minimal-cm-dt-blob.dts
 ```
 
 Change lines:
-
 ```
 pin@p44 { function = "input"; termination = "pull_down"; }; // DEFAULT STATE WAS INPUT NO PULL
 pin@p45 { function = "input"; termination = "pull_down"; }; // DEFAULT STATE WAS INPUT NO PULL
 ```
 
 to:
-
 ```
 pin@p44 { function = "i2c1"; termination = "pull_up"; }; // SDA1
 pin@p45 { function = "i2c1"; termination = "pull_up"; }; // SCL1
@@ -197,20 +188,17 @@ pin@p45 { function = "i2c1"; termination = "pull_up"; }; // SCL1
 NOTE we could use this `dt-blob.dts` with no changes, as the Linux Device Tree will (re)configure these pins during Linux kernel boot when the specific drivers are loaded, so it is up to you whether you modify `dt-blob.dts`. I like to configure `dt-blob.dts` to what I expect the final GPIOs to be, as they are then set to their final state as soon as possbile (during the GPU boot stage) but this is not strictly necessary. You may find that in some cases you do need pins to be configured at GPU boot time so they are in a specific state when Linux drivers are loaded (e.g. maybe a reset line needs to be held in the correct orientation).
 
 Compile `dt-blob.bin`:
-
 ```
 sudo dtc -I dts -O dtb -o /boot/dt-blob.bin /boot/minimal-cm-dt-blob.dts
 ```
 
 Grab [example1-overlay.dts](example1-overlay.dts) and put it in `/boot` then compile it:
-
 ```
 sudo dtc -@ -I dts -O dtb -o /boot/overlays/example1-overlay.dtb /boot/example1-overlay.dts
 ```
 Note the '-@' in the `dtc` command line - this is necessary if you are compiling dts files with external references, as overlays tend to be.
 
 Edit `/boot/config.txt` and add the line:
-
 ```
 dtoverlay=example1
 ```
@@ -218,7 +206,6 @@ dtoverlay=example1
 Now save and reboot.
 
 Once rebooted you should see an rtc0 entry in /dev and running:
-
 ```
 sudo hwclock
 ```
