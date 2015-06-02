@@ -37,7 +37,8 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
 
     `sudo dd bs=1M if=image.img of=/dev/<disk# from diskutil>`
 
-    This will take a few minutes.
+    This will take a few minutes, depending on the image file size.
+    You can check the advancement by sending a `SIGINFO` signal pressing <kbd>Ctrl</kbd>+<kbd>T</kbd>.
 
 ## Alternative method
 
@@ -62,7 +63,7 @@ These commands and actions need to be performed from an account that has adminis
     ```
 
     If the above command reports an error (`dd: bs: illegal numeric value`), please change `bs=1m` to `bs=1M`.
-    
+
     If the above command reports an error `dd: /dev/rdisk3: Permission denied` then that is because the partition table of the SD card is being protected against being overwritten by MacOS. Erase the SD card's partition table using this command:
     ```
     sudo diskutil partitionDisk /dev/disk3 1 MBR "Free Space" "%noformat%" 100%
