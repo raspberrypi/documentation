@@ -79,12 +79,12 @@ Enter the following commands to build the sources:
 ```
 $ cd linux
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
-$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules
 ```
 
 Note: To speed up compilation on multiprocessor systems, and get some improvement on single processor ones, use ```-j n``` where n is number of processors * 1.5. Alternatively, feel free to experiment and see what works!
 
-### Install
+### Install directly onto the SD card
 
 Having built the kernel you need to copy it onto your Raspberry Pi and install the modules; this is best done directly using an SD card reader.
 
@@ -123,7 +123,6 @@ Adjust the partition numbers for the NOOBS images.
 Next, install the modules:
 
 ```
-$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/ext4 modules
 $ sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/ext4 modules_install
 ```
 
@@ -131,7 +130,7 @@ Finally, copy the kernel onto the SD card, making sure to back up your old kerne
 
 ```
 $ sudo cp mnt/fat32/kernel.img mnt/fat32/kernel-backup.img
-$ sudo cp arch/arm/boot/Image mnt/fat32/kernel.img
+$ sudo cp arch/arm/boot/zImage mnt/fat32/kernel.img
 $ sudo umount mnt/fat32
 $ sudo umount mnt/ext4
 ```
