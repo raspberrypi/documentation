@@ -148,9 +148,9 @@ You can include more diagnostics in the output by adding `dtdebug=1` to `config.
 
 Please use the [Device Tree subforum](https://www.raspberrypi.org/forums/viewforum.php?f=107) on the Raspberry Pi forums to ask Device Tree related questions.
 
-##Worked Examples
+##Examples
 
-For these simple worked examples I used a CMIO board with peripherals attached via jumper wires.
+For these simple examples I used a CMIO board with peripherals attached via jumper wires.
 
 For each of the examples we assume a CM+CMIO board with a clean install of the latest Raspbian version on the CM. See instructions [here](https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md).
 
@@ -162,7 +162,7 @@ If you suspect any issues or bugs with Device Tree it is always best to try a `s
 
 Please post any issues / bugs / questions on the Raspberry Pi [Device Tree subforum](https://www.raspberrypi.org/forums/viewforum.php?f=107).
 
-##Worked Example 1 - attaching an I2C RTC
+##Example 1 - attaching an I2C RTC
 
 In this simple example we wire an NXP PCF8523 real time clock (RTC) to the CMIO board GPIO pins (3V3, GND, I2C1_SDA on GPIO44 and I2C1_SCL on GPIO45).
 
@@ -212,7 +212,41 @@ sudo hwclock
 
 will return with the hardware clock time, and not an error.
 
-##Worked Example 2 - Attaching an ENC28J60 SPI Ethernet Controller
+##Example 2 - Attaching an ENC28J60 SPI Ethernet Controller
 
-Coming soon...
+In this example we take the first RTC example and add another peripheral - an ENC28J60 SPI Ethernet Controller. The Ethernet controller is connected to SPI pins CE0, MISO, MOSI and SCLK (GPIO8-11 respectively), as well as GPIO12 for a falling edge interrupt, and of course GND and 3V3.
 
+In this example we won't change `dt-blob.bin` (though of course you can if you wish) and we should see that Linux Device Tree correctly sets up the pins.
+
+Grab [example2-overlay.dts](example2-overlay.dts) and put it in `/boot` then compile it:
+```
+sudo dtc -@ -I dts -O dtb -o /boot/overlays/example2-overlay.dtb /boot/example2-overlay.dts
+```
+
+Edit `/boot/config.txt` and add the line:
+```
+dtoverlay=example2
+```
+
+Now save and reboot.
+
+Once rebooted you should see, as before, an rtc0 entry in /dev and running:
+```
+sudo hwclock
+```
+
+will return with the hardware clock time, and not an error.
+
+You should also have Ethernet connectivity:
+```
+ping 8.8.8.8
+```
+
+should work.
+
+finally running:
+```
+sudo raspi-gpio get
+```
+
+should show that GPIO8-11 have changed to ALT0 (SPI) functions.

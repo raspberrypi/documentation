@@ -16,37 +16,33 @@
         brcm,pins = <44 45>;
         brcm,function = <6>; /* alt2 */
       };
+      spi0_pins: spi0_pins {
+        brcm,pins = <7 8 9 10 11>;
+        brcm,function = <4>; /* alt0 */
+      };
     };
   };
 
   //
-  // I2C at 100KHz
+  // I2C Device(s)
   //
   fragment@1 {
     target = <&i2c1>;
     __overlay__ {
+      #address-cells = <1>; /* needed to avoid dtc warning */
+      #size-cells = <0>; /* needed to avoid dtc warning */
       pinctrl-names = "default";
       pinctrl-0 = <&i2c1_pins>;
       clock-frequency = <100000>;
-    };
-  };
-
-  //
-  // Add devices to I2C1 Bus:
-  //  PCF8523 RTC device
-  //
-  fragment@2 {
-    target = <&i2c1>;
-    __overlay__ {
-      #address-cells = <1>;
-      #size-cells = <0>;
       status = "okay";
-      pcf8523@68 {
+      // PCF8523 RTC device
+      pcf8523@68 { 
         compatible = "nxp,pcf8523";
         reg = <0x68>;
         status = "okay";
       };
     };
   };
+
 
 };
