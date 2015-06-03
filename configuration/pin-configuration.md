@@ -26,11 +26,15 @@ including the Compute Module to set up the alternate settings correctly. The fol
 
 2. `pins_*`
 
-   There are up to four separate pins_* sections these are:
+   There are up to eight separate pins_* sections, namely:
    1. **pins_rev1** Rev1 pin setup.  There are some difference because of the moved I2C pins
    2. **pins_rev2** Rev2 pin setup.  This includes the additional codec pins on P5
-   3. **pins_bplus** B+ revision including the full 40pin connector
-   4. **pins_cm** The Compute Module, note the default for this is the default for the chip so can be a useful source of information about default pullups / downs on the chip.
+   3. **pins_bplus1** Model B+ rev 1.1, including the full 40pin connector
+   4. **pins_bplus2** Model B+ rev 1.2, swapping the low-power and lan-run pins
+   5. **pins_aplus** Model A+, lacking ethernet
+   6. **pins_2b1** Pi 2 Model B rev 1.0, controls the SMPS via I2C0
+   7. **pins_2b2** Pi 2 Model B rev 1.1, controls the SMPS via software I2C on 42&43
+   8. **pins_cm** The Compute Module, note the default for this is the default for the chip so can be a useful source of information about default pullups / downs on the chip.
    
    Each `pins_*` section can contain `pin_config` and `pin_defines` sections.
 
@@ -99,4 +103,4 @@ The above will set the PLLA to a source VCO running at 1.96608GHz (the limits fo
 ## Sample device tree source file
 **NOTE:** As this is a new feature, there is no reference dts file which is guaranteed to be supported by future firmware revisions.
 
-The dts file used for the dtb compiled into the August 1st 2014 firmware can be downloaded from [here](images/dt-blob.dts).
+The dts file used for the dtb compiled into the May 30th 2015 firmware can be downloaded from [here](images/dt-blob.dts).
