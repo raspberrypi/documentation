@@ -250,3 +250,6 @@ sudo raspi-gpio get
 ```
 
 should show that GPIO8-11 have changed to ALT0 (SPI) functions.
+
+##Attaching a camera or cameras
+To attach a camera or cameras see the documentation [here](cmio-camera.md)
