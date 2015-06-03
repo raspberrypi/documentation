@@ -82,8 +82,8 @@ NOTE `dt-blob.bin` by default does not exist as there is a 'default' version com
 
 Note that `dt-blob.bin` is in compiled device tree format, but is only read by the GPU firmware to set up functions exclusive to the GPU - see below.
 
-A guide to creating dt-blob.bin is [here](../../pin-configuration.md).
-A comprehensive guide to the Linux Device Tree for Raspberry Pi is [here](../../device-tree.md).
+A guide to creating dt-blob.bin is [here](../../configuration/pin-configuration.md).
+A comprehensive guide to the Linux Device Tree for Raspberry Pi is [here](../../configuration/device-tree.md).
 
 During boot, the user can specify a specific ARM device tree to use via the `device_tree` parameter in `config.txt` (e.g. add the line `device_tree=mydt.dtb` to `config.txt` where `mydt.dtb` is the dtb file to load instead of one of the standard ARM dtb files).
 
@@ -93,7 +93,7 @@ Overlays are used to add data to the base dtb that describes non board-specific 
 
 ##dt-blob.bin
 
-When `start.elf` runs it first reads something called `dt-blob.bin` which is a special form of Device Tree blob which tells the GPU how to (initially) set up the GPIO pin states, and also any information about GPIOs/peripherals that are controlled (owned) by the GPU (rather than being used via Linux on the ARM). For example the Raspberry Pi Camera peripheral is managed by the GPU, and the GPU needs exclusive access to an I2C interface to talk to it (I2C0 on most Pi Boards and Compute Module is nominally reserved for exclusive GPU use) as well as a couple of control pins. The information on which GPIO pins the GPU should use for I2C0 and to contol the camera functions comes from `dt-blob.bin`. (NOTE the `start.elf` firmware has a 'built-in' default `dt-blob.bin` which is used if no `dt-blob.bin` is found on the root of the first FAT partition, but most Compute Module projects will want to provide their own custom `dt-blob.bin`). Note that `dt-blob.bin` specifies which pin is for HDMI hot plug detect (though this should never change on Compute Module) and can also be used to set up a GPIO to be a GPCLK output and specify and ACT LED that the GPU can use while booting. Other functions may be added in future. For information on `dt-blob.bin` see [here](../../pin-configuration.md).
+When `start.elf` runs it first reads something called `dt-blob.bin` which is a special form of Device Tree blob which tells the GPU how to (initially) set up the GPIO pin states, and also any information about GPIOs/peripherals that are controlled (owned) by the GPU (rather than being used via Linux on the ARM). For example the Raspberry Pi Camera peripheral is managed by the GPU, and the GPU needs exclusive access to an I2C interface to talk to it (I2C0 on most Pi Boards and Compute Module is nominally reserved for exclusive GPU use) as well as a couple of control pins. The information on which GPIO pins the GPU should use for I2C0 and to contol the camera functions comes from `dt-blob.bin`. (NOTE the `start.elf` firmware has a 'built-in' default `dt-blob.bin` which is used if no `dt-blob.bin` is found on the root of the first FAT partition, but most Compute Module projects will want to provide their own custom `dt-blob.bin`). Note that `dt-blob.bin` specifies which pin is for HDMI hot plug detect (though this should never change on Compute Module) and can also be used to set up a GPIO to be a GPCLK output and specify and ACT LED that the GPU can use while booting. Other functions may be added in future. For information on `dt-blob.bin` see [here](../../configuration/pin-configuration.md).
 
 [minimal-cm-dt-blob.dts](minimal-cm-dt-blob.dts) is an example `.dts` device tree file that sets up the HDMI hot plug detect and ACT LED (these are GPIOs 46 and 47 which we state must be used only for these functions on all Compute Module designs) and sets all other GPIOs to be inputs with default pulls.
 
@@ -104,7 +104,7 @@ dtc -I dts -O dtb -o dt-blob.bin minimal-cm-dt-blob.dts
 
 ##ARM Linux Device Tree
 
-After `start.elf` has read `dt-blob.bin` and set up the initial pin states and clocks, it reads `config.txt` which contains many other options for system setup (see [here](../../config-txt.md) for a comprehensive guide).
+After `start.elf` has read `dt-blob.bin` and set up the initial pin states and clocks, it reads `config.txt` which contains many other options for system setup (see [here](../../configuration/config-txt.md) for a comprehensive guide).
 
 After reading `config.txt` another device tree file specific to the board the hardware is running on is read; this is `bcm2708-rpi-cm.dtb` for a Compute Module. This file is a standard ARM Linux device tree file, which details how hardware is attached to the processor (what peripheral devices exist in the SoC and where, which GPIOs are used, what functions those GPIOs have, and what physical devices are connected). This file will set up the GPIOs appropriately (it will overwrite pin state set up in `dt-blob.bin` if it is different) and will also try and load driver(s) for the specific device(s).
 
@@ -116,7 +116,7 @@ The Raspbian image provides compiled dtb files, but where are the source dts fil
 
 Some default overlay dts files live in `arch/arm/boot/dts/overlays` (corresponding overlays for standard hardware that can be attached to a *Raspberry Pi* in the Raspbian image are on the FAT partition in the `/overlays` directory - note these assume certain pins as they are for use on a Raspberry Pi, so in general use the source of these standard overlays as a guide to creating your own unless you are using the exact same GPIO pins as you would be using if the hardware were plugged into the GPIO header of a Raspberry Pi).
 
-To compile these dts files to dtb files requires an up-to-date version of the Device Tree compiler `dtc`. More info can be found [here](../../device-tree.md), but the easy way to install an appropriate version on a Pi is to run:
+To compile these dts files to dtb files requires an up-to-date version of the Device Tree compiler `dtc`. More info can be found [here](../../configuration/device-tree.md), but the easy way to install an appropriate version on a Pi is to run:
 ```
 sudo apt-get install device-tree-compiler
 ```
