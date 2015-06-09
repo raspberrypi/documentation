@@ -88,6 +88,18 @@ coherent_pool=6M smsc95xx.turbo_mode=N
 
 Setting this to `1` prevents the red camera LED from turning on when recording video or taking a still picture. Useful for preventing reflections when the camera is facing a window.
 
+## Onboard Analogue Audio (3.5mm jack)
+
+The onboard audio output has a few config options that alter the behaviour of how the analogue audio is driven and whether some firmware features are enabled or not.
+
+#### disable_audio_dither
+
+By default, a 1.0LSB dither is applied to the audio stream if it's routed to the analogue audio output. This can create audible background "hiss" in some situations, such as if the ALSA volume is set to a low level. Set this to `1` to disable dither application.
+
+#### pwm_sample_bits
+
+Adjust the bit depth of the analogue audio output. The default bit depth is `11`. Selecting bit depths below `8` will result in nonfunctional audio - settings below `8` result in a PLL frequency too low to support. Generally only useful as a demonstration of how bit depth affects quantisation noise.
+
 ## Video
 
 ### Composite video mode options
