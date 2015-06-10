@@ -186,10 +186,11 @@ Force the pixel encoding mode. By default it will use the mode requested from th
 
 | hdmi_pixel_encoding | result |
 | --- | --- |
-| 0 | RGB limited (16-235) |
-| 1 | RGB full (0-255) |
-| 2 | YCbCr limited (16-235) |
-| 3 | YCbCr full (0-255) |
+| 0 | default (RGB limited for CEA, RGB full for DMT) |
+| 1 | RGB limited (16-235) |
+| 2 | RGB full (0-255) |
+| 3 | YCbCr limited (16-235) |
+| 4 | YCbCr full (0-255) |
 
 #### hdmi_drive
 
