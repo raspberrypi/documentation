@@ -44,6 +44,7 @@ $ make zImage modules dtbs
 $ sudo make modules_install
 $ sudo cp arch/arm/boot/dts/*.dtb /boot/
 $ sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
+$ sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
 $ sudo scripts/mkknlimg arch/arm/boot/zImage /boot/$KERNEL.img
 ```
 
@@ -147,6 +148,7 @@ $ sudo cp mnt/fat32/$KERNEL.img mnt/fat32/$KERNEL-backup.img
 $ sudo scripts/mkknlimg arch/arm/boot/zImage mnt/fat32/$KERNEL.img
 $ sudo cp arch/arm/boot/dts/*.dtb mnt/fat32/
 $ sudo cp arch/arm/boot/dts/overlays/*.dtb* mnt/fat32/overlays/
+$ sudo cp arch/arm/boot/dts/overlays/README mnt/fat32/overlays/
 $ sudo umount mnt/fat32
 $ sudo umount mnt/ext4
 ```
