@@ -13,7 +13,7 @@
 - [设置](configuration/README.md)
     - 各种设置，打造专属树莓派；
 - [远程连接](remote-access/README.md)
-    - 通过SSH，VNC或其他“暗黑技术”远程连接树莓派；
+    - 通过SSH，VNC或其他“***暗黑技术***”远程连接树莓派；
 - [Linux](linux/README.md)
     - 入门级别的Linux使用向导和其他进阶信息；
 - [Raspbian](raspbian/README.md)
