@@ -1,27 +1,27 @@
-# Raspberry Pi Documentation
+# 树莓派（Raspberry Pi）帮助文档
 
-This is the official documentation for the Raspberry Pi, written by the [Raspberry Pi Foundation](https://www.raspberrypi.org/) with community contributions.
+本文档为树莓派官方帮助文档，由[树莓派基金会（Raspberry Pi Foundation）](https://www.raspberrypi.org/)以及基社区贡献者撰写。本帮助文档中方版本由[聪头话斋](https://alexlee.cn)发起和维护。
 
-## Contents
+## 目录
 
-- [Setup / Quickstart](setup/README.md)
-    - Getting started with your Raspberry Pi, including what you need and how to get it booted
-- [Installation](installation/README.md)
-    - Installing an operating system on your Raspberry Pi
-- [Usage Guide](usage/README.md)
-    - Explore the desktop and try out all the main applications
-- [Configuration](configuration/README.md)
-    - Configuring the Pi's settings to suit your needs
-- [Remote Access](remote-access/README.md)
-    - Accessing your Pi remotely via SSH, VNC or over the web
+- [设置 / 马上开始](setup/README.md)
+    - 准备捣鼓树莓派，介绍玩家必备物品、开机等信息；
+- [安装](installation/README.md)
+    - 为树莓派安装操作系统；
+- [向导](usage/README.md)
+    - 探索图形用户界面，试用预装应用程序；
+- [设置](configuration/README.md)
+    - 各种设置，打造专属树莓派；
+- [远程连接](remote-access/README.md)
+    - 通过SSH，VNC或其他“暗黑技术”远程连接树莓派；
 - [Linux](linux/README.md)
-    - Fundamental Linux usage for beginners and more advanced information for power users
+    - 入门级别的Linux使用向导和其他进阶信息；
 - [Raspbian](raspbian/README.md)
-    - Information about the recommended operating system for Raspberry Pi
-- [Hardware](hardware/README.md)
-    - Technical specifications about the Raspberry Pi hardware and the camera module
-- [Troubleshooting](troubleshooting/README.md)
-    - Got a problem with your Pi? Start here
+    - 关于树莓派首推操作系统的信息；
+- [硬件](hardware/README.md)
+    - 树莓派和摄像头模块的技术资料；
+- [故障处理](troubleshooting/README.md)
+    - 有什么疑难杂症，来这里碰下运气吧？
 
 ## Contributions
 
