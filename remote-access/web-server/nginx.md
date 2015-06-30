@@ -95,6 +95,12 @@ It should look like this:
         }
 ```
 
+Reload the configuration file
+
+```bash
+sudo /etc/init.d/nginx reload
+```
+
 ### Test PHP
 
 Rename `index.html` to `index.php`:
