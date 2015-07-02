@@ -78,9 +78,15 @@ make a file named `AnonymousCantUpload` and type `yes`.
 make a file named `AnonymousCanCreateDirs` and type `no`.
 
 make a file named `DisplayDotFiles` and type`no`.
+
 make a file named `DontResolve` and type `yes`.
+
 make a file named `ProhibitDotFilesRead` and type `yes`.
+
 make a file named `ProhibitDotFilesWrite` and type `yes`.
+
 make a file named `FSCharset` and type`UTF-8`.
+
+...
 
 For more information of Pure-FTPd and documentation, please get on official website of [Pure-FTPd](http://www.pureftpd.org/project/pure-ftpd).
