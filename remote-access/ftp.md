@@ -1,6 +1,6 @@
 # FTP
 
-FTP (File Transfer Protocol) can be used to transfer files between a Raspberry Pi and another computer. Although with default program `sftp-server` of Raspbian the users with sufficient privilege can transfer files or directories, access to the filesystem of the limited users is also required oftenly. Follow the the steps below to set up an FTP server:
+FTP (File Transfer Protocol) can be used to transfer files between a Raspberry Pi and another computer. Although with default program `sftp-server` of Raspbian the users with sufficient privilege can transfer files or directories, access to the filesystem of the limited users is also required oftenly. Follow the steps below to set up an FTP server:
 
 ## Install Pure-FTPd
 
@@ -12,7 +12,7 @@ sudo apt-get install pure-ftpd
 
 ## Basic Configurations
 
-We need to creat a new user group named `ftpgroup` and a new user named `ftpuser` for FTP users, and make sure this "user" has NO log in priviledg and NO home directory:
+We need to creat a new user group named `ftpgroup` and a new user named `ftpuser` for FTP users, and make sure this "user" has NO log in privilge and NO home directory:
 
 ```bash
 groupadd ftpgroup;
@@ -61,7 +61,7 @@ Test it with an FTP client, like FileZilla.
 
 ## More Detailed Configurations:
 
-The configuration of Pure-FTPd is simple and intuitive. The administrator only needs to define the necessary settings by making files with option names, like `ChrootEveryone`, and type `yes` stored in the directory `/etc/pure-ftpd/conf`, if all FTP users are to be locked in their FTP home directory (`/home/pi/FTP`). Here are some recommended settings:
+The configuration of Pure-FTPd is simple and intuitive. The administrator only needs to define the necessary settings by making files with option names, like `ChrootEveryone`, and typing `yes`, then storing in the directory `/etc/pure-ftpd/conf`, if all FTP users are to be locked in their FTP home directory (`/home/pi/FTP`). Here are some recommended settings:
 
 ```bash
 sudo nano /etc/pure-ftpd/conf/ChrootEveryone
@@ -71,22 +71,28 @@ Type `yes`, and press ``Ctrl+X``, ``Y``, and ``Enter``.
 
 Likewise, 
 
-make a file named `NoAnonymous` and type `yes`.
+make a file named `NoAnonymous` and type `yes`;
 
-make a file named `AnonymousCantUpload` and type `yes`.
+make a file named `AnonymousCantUpload` and type `yes`;
 
-make a file named `AnonymousCanCreateDirs` and type `no`.
+make a file named `AnonymousCanCreateDirs` and type `no`;
 
-make a file named `DisplayDotFiles` and type`no`.
+make a file named `DisplayDotFiles` and type`no`;
 
-make a file named `DontResolve` and type `yes`.
+make a file named `DontResolve` and type `yes`;
 
-make a file named `ProhibitDotFilesRead` and type `yes`.
+make a file named `ProhibitDotFilesRead` and type `yes`;
 
-make a file named `ProhibitDotFilesWrite` and type `yes`.
+make a file named `ProhibitDotFilesWrite` and type `yes`;
 
-make a file named `FSCharset` and type`UTF-8`.
+make a file named `FSCharset` and type`UTF-8`;
 
 ...
+
+Restart `pure-ftpd` again and apply the above settings.
+
+```bash
+sudo service pure-ftpd restart
+```
 
 For more information of Pure-FTPd and documentation, please get on official website of [Pure-FTPd](http://www.pureftpd.org/project/pure-ftpd).
