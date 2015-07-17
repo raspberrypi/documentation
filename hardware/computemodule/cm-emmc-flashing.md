@@ -6,11 +6,25 @@ Please also read the section on [Module booting and flashing the eMMC](cm-design
 
 ## Steps to flash the eMMC on a Compute Module
 
-You need a host Linux system; a Raspberry Pi is recommended but you should be able to use any recent Linux distribution and you can also use this tool via Cygwin on Windows.
+To Flash the Compute Module eMMC you either need a Linux system (a Raspberry Pi is recommended, or Ubuntu on a PC) or a Windows sysem (Windows 7 recommended).
 
 **Note that there is a bug in the BCM2835 bootloader which returns a slightly incorrect USB packet to the host. Most USB hosts seem to ignore this benign bug and work OK, however we do see some USB ports that due to this bug do not work. We don't quite understand why some ports fail - it doesn't seem to be correlated with whether they are USB2 or USB3 (we have seen both types working) but is likely specific to the host controller and driver.**
 
 **For Windows Users**
+
+Under Windows an installer is availble to automatically install the required drivers and boot tool. Alternatively a user can compile and run it using Cygwin and/or install the drivers manually.
+
+### Windows Installer
+
+For those who just want to enable the Compute Module eMMC as a mass storage device under Windows the standalone installer is the recommended option. This installer has been tested on Windows 7 32-bit and 64-bit. It also works under Windows 8 but you have to jump through some hoops as the driver is not signed, see [here](http://revryl.com/2013/08/06/install-unsigned-drivers/) for instructions.
+
+1. Download and run the [Windows installer](CM-Boot-Installer.exe) to install the drivers and boot tool
+1. Plug your host PC USB into the CMIO USB SLAVE port
+1. Apply power to the CMIO board and Windows should now find the hardware and install the driver
+1. Once the driver install is complete run the RPiBoot.exe tool that was previously installed
+1. After a few seconds the Compute Module eMMC will pop up under Windows as a disk (USB mass storage device)
+
+### Manual Cygwin Install
 
 To use the tool under Cygwin on Windows firstly you'll need to install [Cygwin](https://www.cygwin.com/). You'll need to make sure to install the libusb-1.0 and libusb-1.0-devel packages (NB tested using version 1.0.19-1) as well as gcc and Make.
 
