@@ -24,18 +24,18 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
 
 - Identify the disk (not partition) of your SD card e.g. `disk4` (not `disk4s1`):
 
-    `diskutil unmountDisk /dev/<disk# from diskutil>`
+    `diskutil unmountDisk /dev/disk<disk# from diskutil>`
 
     e.g. `diskutil unmountDisk /dev/disk4`
 
-    `sudo dd bs=1m if=image.img of=/dev/<disk# from diskutil>`
+    `sudo dd bs=1m if=image.img of=/dev/disk<disk# from diskutil>`
 
     e.g. `sudo dd bs=1m if=2015-05-05-raspbian-wheezy.img of=/dev/disk4`
 
     This may result in an ``dd: invalid number '1m'`` error if you have GNU
     coreutils installed. In that case you need to use ``1M``:
 
-    `sudo dd bs=1M if=image.img of=/dev/<disk# from diskutil>`
+    `sudo dd bs=1M if=image.img of=/dev/disk<disk# from diskutil>`
 
     This will take a few minutes, depending on the image file size.
     You can check the progress by sending a `SIGINFO` signal pressing <kbd>Ctrl</kbd>+<kbd>T</kbd>.
