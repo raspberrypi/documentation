@@ -19,7 +19,7 @@ Under Windows an installer is availble to automatically install the required dri
 For those who just want to enable the Compute Module eMMC as a mass storage device under Windows the standalone installer is the recommended option. This installer has been tested on Windows 7 32-bit and 64-bit. It also works under Windows 8 but you have to jump through some hoops as the driver is not signed, see [here](http://revryl.com/2013/08/06/install-unsigned-drivers/) for instructions.
 
 1. Download and run the [Windows installer](CM-Boot-Installer.exe) to install the drivers and boot tool
-1. Plug your host PC USB into the CMIO USB SLAVE port
+1. Plug your host PC USB into the CMIO USB SLAVE port making sure J4 is set to EN position
 1. Apply power to the CMIO board and Windows should now find the hardware and install the driver
 1. Once the driver install is complete run the RPiBoot.exe tool that was previously installed
 1. After a few seconds the Compute Module eMMC will pop up under Windows as a disk (USB mass storage device)
