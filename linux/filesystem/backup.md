@@ -58,6 +58,19 @@ This will create an image file on your PC which you can use to write to another 
 sudo dd bs=4M if=raspbian.img of=/dev/sdb
 ```
 
+These files can be very large, and compress well. To compress, you can pipe the output of ```dd``` to gzip as well to get a compressed file that is significantly smaller than the original size:
+
+```
+sudo dd bs=4M if=/dev/sdb | gzip > rasbian.img.gz
+```
+
+To restore, pipe the output of gunzip to dd:
+
+```
+sudo gunzip --stdout rasbian.img.gz | dd bs=4m of=/dev/sdb
+```
+
+
 See more about [installing SD card images](../../installation/installing-images/README.md).
 
 ## Automation
