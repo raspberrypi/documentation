@@ -11,7 +11,7 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
 - From the terminal run:
 
     ```
-    sudo dd bs=1m if=path_of_your_image.img of=/dev/diskn
+    sudo dd bs=1M if=path_of_your_image.img of=/dev/diskn
     ```
 
     Remember to replace `n` with the number that you noted before!
