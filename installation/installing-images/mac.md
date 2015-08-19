@@ -24,7 +24,7 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
 
 ## Command line
 
-- If you are comfortable with the command line, you can image a card without any additional software. Run:
+- If you are comfortable with the command line, you can write the image to a SD card without any additional software. Open a terminal, then run:
 
     `diskutil list`
 
