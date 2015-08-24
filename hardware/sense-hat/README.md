@@ -19,7 +19,6 @@ In order to work correctly, the Sense HAT requires an up to date kernel, I2C ena
 1. The python-sense-hat library requires pillow to be installed in order to work under Python 3:
 
     ```bash
-    sudo apt-get install python3-pip
     sudo pip-3.2 install pillow
     ```
 
