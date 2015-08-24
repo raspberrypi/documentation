@@ -6,23 +6,32 @@ In order to work correctly, the Sense HAT requires an up to date kernel, I2C ena
 
 1. Ensure your apt package list is up to date:
 
-        sudo apt-get update
+    ```bash
+    sudo apt-get update
+    ```
 
-2. Next, install the sense-hat package, which will ensure the kernel is up to date, enable I2C and install the necessary libraries and programs:
+1. Next, install the sense-hat package, which will ensure the kernel is up to date, enable I2C and install the necessary libraries and programs:
 
-        sudo apt-get install sense-hat
+    ```bash
+    sudo apt-get install sense-hat
+    ```
 
-3. The python-sense-hat library requires pillow to be installed in order to work under Python 3:
+1. The python-sense-hat library requires pillow to be installed in order to work under Python 3:
 
-        sudo pip-3.2 install pillow
+    ```bash
+    sudo apt-get install python3-pip
+    sudo pip-3.2 install pillow
+    ```
 
-4. Finally, a reboot may be required if I2C was disabled or the kernel was not up to date prior to the install:
+1. Finally, a reboot may be required if I2C was disabled or the kernel was not up to date prior to the install:
 
-        sudo shutdown -r now
+    ```bash
+    sudo reboot
+    ```
 
 ## Software overview
 
-After installation, example code can be found under /usr/src/sense-hat/examples.
+After installation, example code can be found under `/usr/src/sense-hat/examples`.
 
 These can be copied to the user's home directory by running `cp /usr/src/sense-hat/examples ~/ -a`.
 
@@ -36,7 +45,7 @@ The RTIMULibDrive11 example comes pre-compiled to help ensure everything works a
 
 sense-hat is the officially supported library for the Sense HAT and provides access to all of the on-board sensors and the LED matrix.
 
-Complete documentation can be found [here](https://pythonhosted.org/sense-hat/).
+Complete documentation can be found at [pythonhosted.org/sense-hat](https://pythonhosted.org/sense-hat/).
 
 ### RTIMULib
 
