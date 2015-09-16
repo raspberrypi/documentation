@@ -31,6 +31,8 @@ overscan_right=12
 overscan_top=10
 overscan_bottom=10
 ```
+# Force overscan settings to non-framebuffer layers.
+overscan_scale=1
 
 ## Memory
 
@@ -179,6 +181,11 @@ Setting this to `1` will prevent the initial active source message being sent du
 #### hdmi_ignore_cec
 
 Setting this to `1` pretends that [CEC](https://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC) is not supported at all by the TV. No CEC functions will be supported.
+
+#### cec_osd_name
+
+Set intial cec name of the device.
+Default is Raspberry Pi
 
 #### hdmi_pixel_encoding
 
