@@ -78,7 +78,6 @@ The following is a simple tree in the `.dts` format:
 
 This tree contains:
 
- - List item
  - a required header -- `/dts-v1/`.
  - The inclusion of another DTS file, conventionally named `*.dtsi`, analogous to a `.h` header file in C -- see _An aside about /include/_ below.
  - a single root node: `/`
