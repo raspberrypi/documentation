@@ -124,7 +124,7 @@ Display numbers are:
 
 ### How do I enable right click?
 
-You can emulate a right click, which works by pressing and holding the touchscreen with a setting change. Just:
+You can emulate a right click with a setting change. Just:
 
 ```bash
 sudo nano /etc/X11/xorg.conf
@@ -149,6 +149,8 @@ Hit `CTRL+C` and `y` to save. Then:
 ```bash
 sudo reboot
 ```
+
+Once enabled, right click works by pressing and holding the touchscreen and will be activated after a short delay.
 
 ### How do I get an on-screen keyboard?
 
