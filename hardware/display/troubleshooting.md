@@ -28,6 +28,31 @@ sudo reboot
 * Make sure you've updated Raspbian, see above for steps.
 * Check the smaller ribbon cable is seated properly
 
+
+### My screen is upside-down!
+
+Depending on your display stand you might find that the LCD display defaults to being upside-down, you can fix this by rotating it in `/boot/config.txt`
+
+```bash
+sudo nano /boot/config.txt
+```
+
+Then add:
+
+```bash
+lcd_rotate=2
+```
+
+Hit `CTRL+C` and `y` to save. And finally:
+
+```
+sudo reboot
+```
+
+### My display fades out to weird patterns when I shutdown/reboot my Pi
+
+Don't Panic! This is perfectly normal.
+
 ### My display is black
 
 * Make sure you've updated Raspbian, see above for steps.
@@ -70,6 +95,32 @@ You can usually reveal hidden buttons and fields by;
 If you don't have a mouse, see the right click fix below.
 
 ## Tips & Tricks
+
+### How do I use multiple monitors?
+
+At the moment you can't use HDMI and the LCD together in the X desktop, but you can send the output of certain applications to one screen or the other.
+
+Omxplayer is one example, it has been modified to enable secondary display output.
+
+To start displaying a video onto the LCD display (assuming it is the default display) just type:
+
+```bash
+omxplayer video.mkv
+```
+
+To start a second video onto the HDMI type:
+
+```bash
+omxplayer --display=5 video.mkv
+```
+
+**Please note:** *you may need to increase the amount of memory allocated to the GPU to 128MB if the videos are 1080P, adjust the gpu_mem value in config.txt for this. The Raspberry Pi headline figures are 1080P30 decode, so if you are using two 1080P clips it may not play correctly depending on the complexity of the videos.*
+
+Display numbers are:
+
+* LCD: 4
+* TV/HDMI: 5
+* Auto select non-default display: 6
 
 ### How do I enable right click?
 
