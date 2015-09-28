@@ -4,6 +4,10 @@
 
 The Raspberry Pi display is an LCD display which connects to the Raspberry Pi through the DSI connector, it allows the use of both the HDMI and LCD displays at the same time in some situations (this implies requiring software support)
 
+## Troubleshooting
+
+Read our troubleshooting steps, tips and tricks here: [Raspberry Pi Display Troubleshooting](troubleshooting.md)
+
 ## Specifications
 
 * 800x480 RGB LCD display
@@ -15,4 +19,6 @@ The Raspberry Pi display is an LCD display which connects to the Raspberry Pi th
 
 ## Module mechanical specification
 
-Download [here](7InchDisplayDrawing-14092015.pdf)
+* Outer dimensions: 192.96 x 112.76mm
+* Viewable area: 154.08 x 95.92mm
+* [Download mechanical drawing (PDF, 592kb)](7InchDisplayDrawing-14092015.pdf)
