@@ -10,6 +10,8 @@ Official images for recommended Operating Systems are available to download from
 
 Alternative distributions are available from third party vendors.
 
+After downloading the .zip file, unzip it to get the image file (.img) for writing to your SD card.
+
 ## Writing an image to the SD card
 
 With the image file of the distribution of your choice, you need to use an image writing tool to install it on your SD card.

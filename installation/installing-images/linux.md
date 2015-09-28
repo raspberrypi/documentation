@@ -17,7 +17,7 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
 - In the terminal, write the image to the card with the command below, making sure you replace the input file `if=` argument with the path to your `.img` file, and the `/dev/sdd` in the output file `of=` argument with the right device name. This is very important, as you will lose all data on the hard drive if you provide the wrong device name. Make sure the device name is the name of the whole SD card as described above, not just a partition of it; for example `sdd`, not `sdds1` or `sddp1`; or `mmcblk0`, not `mmcblk0p1`.
 
     ```bash
-    dd bs=4M if=2014-12-24-wheezy-raspbian.img of=/dev/sdd
+    dd bs=4M if=2015-05-05-raspbian-wheezy.img of=/dev/sdd
     ```
 
 - Please note that block size set to `4M` will work most of the time; if not, please try `1M`, although this will take considerably longer.
@@ -28,7 +28,15 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
 
 - Instead of `dd` you can use `dcfldd`; it will give a progress report about how much has been written.
 
-- You can check what's written to the SD card by `dd`-ing from the card back to another image on your hard disk, and then running `diff` (or `md5sum`) on those two images. There should be no difference.
+- You can check what's written to the SD card by `dd`-ing from the card back to another image on your hard disk, truncating the new image to the same size as the original, and then running `diff` (or `md5sum`) on those two images.
+
+- The SD card might be bigger than the original image, and dd will make a copy of the whole card. We must therefore truncate the new image to the size of the original image.  Make sure you replace the input file if= argument with the right device name. `diff` should report that the files are identical.
+
+    ```bash
+    dd bs=4M if=/dev/sdd of=from-sd-card.img
+    truncate --reference 2015-05-05-raspbian-wheezy.img from-sd-card.img
+    diff -s from-sd-card.img 2015-05-05-raspbian-wheezy.img
+    ```
 
 - Run `sync`; this will ensure the write cache is flushed and that it is safe to unmount your SD card.
 

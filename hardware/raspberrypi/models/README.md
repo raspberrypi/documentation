@@ -14,7 +14,7 @@
 
 This page describes the models of Raspberry Pi available. It does not attempt to provide full specifications, and is intended as an overview in order to help prospective purchasers make a decision as to which device they need.
 
-There are currently five Raspberry Pi models. They are the [Model B+](http://www.raspberrypi.org/product/model-b-plus/), the [Model A+](http://www.raspberrypi.org/products/model-a-plus/), the [Model B](http://www.raspberrypi.org/products/model-b/), the [Model A](http://www.raspberrypi.org/products/model-a/), and the Compute Module (currently only available as part of the [Compute Module development kit](http://www.raspberrypi.org/productd/compute-module-development-kit/) ). All models use the same SoC (System on Chip - combined CPU & GPU), the [BCM2835](../bcm2835/README.md), but other hardware features differ.
+There are currently five Raspberry Pi models. They are the [Model B+](http://www.raspberrypi.org/product/model-b-plus/), the [Model A+](http://www.raspberrypi.org/products/model-a-plus/), the [Model B](http://www.raspberrypi.org/products/model-b/), the [Model A](http://www.raspberrypi.org/products/model-a/), and the Compute Module (currently only available as part of the [Compute Module development kit](http://www.raspberrypi.org/products/compute-module-development-kit/) ). All models use the same SoC (System on Chip - combined CPU & GPU), the [BCM2835](../bcm2835/README.md), but other hardware features differ.
 
 The A and B use the same PCB, whilst the B+ and A+ are a new design but of very similar form factor. The Compute Module is an entirely different form factor and cannot be used standalone.
 

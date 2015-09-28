@@ -17,11 +17,11 @@ A guide to setting up your Raspberry Pi
 - [Power supply](../hardware/raspberrypi/power/README.md)
     - The Pi is powered by a USB Micro power supply (like most standard mobile phone chargers).
     - You'll need a good-quality power supply that can supply at least 700mA at 5V.
-    - Low ampage (~700mA) power supplies will work for basic usage, but are likely to cause the Pi to reboot if it draws too much power.
+    - Low current (~700mA) power supplies will work for basic usage, but are likely to cause the Pi to reboot if it draws too much power.
 
 ### Optional
 
-- Ethernet (network) cable [Model B only]
+- Ethernet (network) cable [Model B/B+ only]
     - An Ethernet cable is used to connect your Pi to a local network and the internet.
 - [USB wireless dongle](../configuration/wireless/README.md)
     - Alternatively, you can connect to a wireless network using a USB wireless dongle, which will require configuration.

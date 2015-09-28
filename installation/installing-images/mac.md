@@ -5,39 +5,59 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
 ## (Mostly) graphical interface
 
 - Connect the SD card reader with the SD card inside. Note that it must be formatted in FAT32.
-- From the Apple menu, choose About This Mac, then click on More info...; if you are using Mac OS X 10.8.x Mountain Lion then click on System Report.
+- From the Apple menu, choose About This Mac, then click on More info...; if you are using Mac OS X 10.8.x Mountain Lion or newer then click on System Report.
 - Click on USB (or Card Reader if using a built-in SD card reader) then search for your SD card in the upper right section of the window. Click on it, then search for the BSD name in the lower right section; it will look something like 'diskn' where n is a number (for example, disk4). Make sure you take a note of this number.
 - Unmount the partition so that you will be allowed to overwrite the disk; to do this, open Disk Utility and unmount it (do not eject it, or you will have to reconnect it). Note that On Mac OS X 10.8.x Mountain Lion, "Verify Disk" (before unmounting) will display the BSD name as "/dev/disk1s1" or similar, allowing you to skip the previous two steps.
 - From the terminal run:
 
     ```
-    sudo dd bs=1m if=path_of_your_image.img of=/dev/diskn
+    sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskn
     ```
 
     Remember to replace `n` with the number that you noted before!
 
+   - If this command fails, try using `disk` instead of `rdisk`:
+    
+       ```
+       sudo dd bs=1m if=path_of_your_image.img of=/dev/diskn
+       ```
+
 ## Command line
 
-- If you are comfortable with the command line, you can image a card without any additional software. Run:
+- If you are comfortable with the command line, you can write the image to a SD card without any additional software. Open a terminal, then run:
 
     `diskutil list`
 
-- Identify the disk (not partition) of your SD card e.g. `disk4` (not `disk4s1`):
+- Identify the disk (not partition) of your SD card e.g. `disk4` (not `disk4s1`).
+- Unmount your SD card by using the disk identifier to prepare copying data to it:
 
-    `diskutil unmountDisk /dev/<disk# from diskutil>`
+    `diskutil unmountDisk /dev/disk<disk# from diskutil>`
 
     e.g. `diskutil unmountDisk /dev/disk4`
+    
+- Copy the data to your SD card:
 
-    `sudo dd bs=1m if=image.img of=/dev/DISK`
+    `sudo dd bs=1m if=image.img of=/dev/rdisk<disk# from diskutil>`
 
-    e.g. `sudo dd bs=1m if=2014-09-09-wheezy-raspbian.img of=/dev/disk4`
+    e.g. `sudo dd bs=1m if=2015-05-05-raspbian-wheezy.img of=/dev/rdisk4`
 
-    This may result in an ``dd: invalid number '1m'`` error if you have GNU
+    - This may result in an ``dd: invalid number '1m'`` error if you have GNU
     coreutils installed. In that case you need to use ``1M``:
 
-    `sudo dd bs=1M if=image.img of=/dev/DISK`
+       `sudo dd bs=1M if=image.img of=/dev/rdisk<disk# from diskutil>`
 
-    This will take a few minutes.
+    This will take a few minutes, depending on the image file size.
+    You can check the progress by sending a `SIGINFO` signal pressing <kbd>Ctrl</kbd>+<kbd>T</kbd>.
+    
+    - If this command still fails, try using `disk` instead of `rdisk`:
+    
+       ```
+       e.g. `sudo dd bs=1m if=2015-05-05-raspbian-wheezy.img of=/dev/disk4`
+       ```
+       or
+       ```
+       e.g. `sudo dd bs=1M if=2015-05-05-raspbian-wheezy.img of=/dev/disk4`
+       ```
 
 ## Alternative method
 
@@ -58,11 +78,11 @@ These commands and actions need to be performed from an account that has adminis
 - Using the device name of the partition, work out the raw device name for the entire disk by omitting the final "s1" and replacing "disk" with "rdisk". This is very important as you will lose all data on the hard drive if you provide the wrong device name. Make sure the device name is the name of the whole SD card as described above, not just a partition of it (for example, rdisk3, not rdisk3s1). Similarly, you might have another SD drive name/number like rdisk2 or rdisk4; you can check again by using the `df -h` command both before and after you insert your SD card reader into your Mac. For example, `/dev/disk3s1` becomes `/dev/rdisk3`.
 - In the terminal, write the image to the card with this command, using the raw disk device name from above. Read the above step carefully to be sure you use the correct rdisk number here:
     ```
-    sudo dd bs=1m if=2014-06-20-wheezy-raspbian/2014-09-09-wheezy-raspbian.img of=/dev/rdisk3
+    sudo dd bs=1m if=2015-05-05-raspbian-wheezy.img of=/dev/rdisk3
     ```
 
-    If the above command reports an error (`dd: bs: illegal numeric value`), please change `bs=1M` to `bs=1m`.
-    
+    If the above command reports an error (`dd: bs: illegal numeric value`), please change `bs=1m` to `bs=1M`.
+
     If the above command reports an error `dd: /dev/rdisk3: Permission denied` then that is because the partition table of the SD card is being protected against being overwritten by MacOS. Erase the SD card's partition table using this command:
     ```
     sudo diskutil partitionDisk /dev/disk3 1 MBR "Free Space" "%noformat%" 100%

@@ -39,7 +39,7 @@ cat recipes.sql | mysql recipes
 Alternatively, you can use the `pv` command (not installed by default, so install with `apt-get install pv`) to see a progress meter as the dumpfile is processed by MySQL. This is useful for large files:
 
 ```
-pv recipes | mysql recipes
+pv recipes.sql | mysql recipes
 ```
 
 ## SD card image

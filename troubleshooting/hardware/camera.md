@@ -2,6 +2,8 @@
 
 If the camera is not working correctly, there are number of things to try:
 
+*   Is the ribbon cable attached to the Camera Serial Interface (CSI), not the Display Serial Interface (DSI)?  The ribbon connector will fit into either port.  The Camera port is located near the HDMI connector.
+
 *   Are the ribbon connectors all firmly seated, and are they the right way round? They must be straight in their sockets.
 
 *   Is the camera module connector, between the smaller black camera module itself and the camera PCB, firmly attached? Sometimes this connection can come loose during transit or when putting the camera module in a case. Using a fingernail, flip up the connector on the PCB, then reseat it with gentle pressure. It engages with a very slight click. Don't force it; if it doesn't engage, it's probably slightly misaligned. 

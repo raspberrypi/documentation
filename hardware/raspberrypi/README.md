@@ -2,12 +2,12 @@
 
 The hardware in the Raspberry Pi
 
-- [Models](models/README.md)
-    - Raspberry PI Models and Revisions
 - [Schematics](schematics/README.md)
-    - Schematics for the Raspberry Pi Model A, B and B+
+    - Schematics for the Raspberry Pi Model A, B, A+ and B+
 - [BCM2835](bcm2835/README.md)
-    - The Broadcom processor used in Raspberry Pi Model A, B and B+
+    - The Broadcom processor used in Raspberry Pi 1
+- [BCM2836](bcm2836/README.md)
+    - The Broadcom processor used in Raspberry Pi 2
 - [Mechanical Drawings](mechanical/README.md)
     - Mechanical drawings of the Raspberry Pi Model B+
 - [Power](power/README.md)

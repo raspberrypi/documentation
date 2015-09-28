@@ -10,5 +10,7 @@ Embedded Raspberry Pi
     - How to design with the Compute Module
 - [Flashing the Compute Module eMMC](cm-emmc-flashing.md)
     - How to (re)write the eMMC flash on the Compute Module using a Compute Module IO Board
+- [Compute Module Attaching & Enabling Peripherals Guide](cm-peri-sw-guide.md)
+    - Guide to wiring up peripherals and enabling them using Device Tree
 - [Attaching a Raspberry Pi Camera](cmio-camera.md) 
     - How to attach a Raspberry Pi Camera to the Compute Module IO Board

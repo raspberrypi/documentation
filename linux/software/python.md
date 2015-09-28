@@ -45,12 +45,12 @@ or the Python 2 version:
 sudo apt-get install python-pip
 ```
 
-`pip-3.3` installs modules for Python 3 and `pip` installs modules for Python 2.
+`pip-3.2` installs modules for Python 3 and `pip` installs modules for Python 2.
 
 For example, the folowing command installs the Pibrella library for Python 3:
 
 ```bash
-pip-3.3 install pibrella
+pip-3.2 install pibrella
 ```
 
 and the folowing command installs the Pibrella library for Python 2:
@@ -59,6 +59,6 @@ and the folowing command installs the Pibrella library for Python 2:
 pip install pibrella
 ```
 
-Uninstall Python modules with `pip-3.3 uninstall` or `pip uninstall`.
+Uninstall Python modules with `pip-3.2 uninstall` or `pip uninstall`.
 
 Upload your own Python modules to `pip` with the [guide at PyPI](https://wiki.python.org/moin/CheeseShopTutorial#Submitting_Packages_to_the_Package_Index).

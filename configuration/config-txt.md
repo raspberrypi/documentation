@@ -36,19 +36,23 @@ overscan_bottom=10
 
 #### gpu_mem
 
-GPU memory in megabytes. Sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; maximum value is either `192` or `448` depending on whether you're using a 256MB or 512MB Pi. The default value is `64`.
+GPU memory in megabytes. Sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; maximum value is either `192`, `448` or `944` depending on whether you're using a 256M, 512MB or 1024MB Pi. The default value is `64`.
 
 Setting `gpu_mem` to low values may automatically disable certain firmware features (as there are some things the GPU simply can't do with too little memory). So if a certain feature you're trying to use isn't working, try setting a larger GPU memory split.
 
-Using `gpu_mem_256` and `gpu_mem_512` allows you to swap the same SD card between both 256MB and 512MB Pis without having to edit `config.txt` each time:
+Using `gpu_mem_256`, `gpu_mem_512` and `gpu_mem_1024` allows you to swap the same SD card between 256MB, 512MB and 1024MB Pis without having to edit `config.txt` each time:
 
 #### gpu_mem_256
 
-GPU memory in megabytes for the 256MB Raspberry Pi (ignored by the 512MB Pi). This overrides `gpu_mem`. The maximum value is `192` and the default is not set.
+GPU memory in megabytes for the 256MB Raspberry Pi (ignored if memory size is not 256M). This overrides `gpu_mem`. The maximum value is `192` and the default is not set.
 
 #### gpu_mem_512
 
-GPU memory in megabytes for the 512MB Raspberry Pi (ignored by the 256MB Pi). This overrides `gpu_mem`. The maximum value is `448` and the default is not set.
+GPU memory in megabytes for the 512MB Raspberry Pi (ignored if memory size is not 512M). This overrides `gpu_mem`. The maximum value is `448` and the default is not set.
+
+#### gpu_mem_1024
+
+GPU memory in megabytes for the 1024MB Raspberry Pi 2 (ignored if memory size is not 1024M). This overrides `gpu_mem`. The maximum value is `944` and the default is not set.
 
 #### disable_l2cache
 
@@ -83,6 +87,18 @@ coherent_pool=6M smsc95xx.turbo_mode=N
 #### disable_camera_led
 
 Setting this to `1` prevents the red camera LED from turning on when recording video or taking a still picture. Useful for preventing reflections when the camera is facing a window.
+
+## Onboard Analogue Audio (3.5mm jack)
+
+The onboard audio output has a few config options that alter the behaviour of how the analogue audio is driven and whether some firmware features are enabled or not.
+
+#### disable_audio_dither
+
+By default, a 1.0LSB dither is applied to the audio stream if it's routed to the analogue audio output. This can create audible background "hiss" in some situations, such as if the ALSA volume is set to a low level. Set this to `1` to disable dither application.
+
+#### pwm_sample_bits
+
+Adjust the bit depth of the analogue audio output. The default bit depth is `11`. Selecting bit depths below `8` will result in nonfunctional audio - settings below `8` result in a PLL frequency too low to support. Generally only useful as a demonstration of how bit depth affects quantisation noise.
 
 ## Video
 
@@ -170,10 +186,11 @@ Force the pixel encoding mode. By default it will use the mode requested from th
 
 | hdmi_pixel_encoding | result |
 | --- | --- |
-| 0 | RGB limited (16-235) |
-| 1 | RGB full (0-255) |
-| 2 | YCbCr limited (16-235) |
-| 3 | YCbCr full (0-255) |
+| 0 | default (RGB limited for CEA, RGB full for DMT) |
+| 1 | RGB limited (16-235) |
+| 2 | RGB full (0-255) |
+| 3 | YCbCr limited (16-235) |
+| 4 | YCbCr full (0-255) |
 
 #### hdmi_drive
 
@@ -375,6 +392,33 @@ Your HDMI monitor may support only a limited set of formats. To find out which f
 
 The `edid.dat` should also be provided when troubleshooting problems with the default HDMI mode.
 
+### Custom mode
+
+If your monitor requires a mode that is not in one of the tables above, then it is possible to define a custom [CVT](http://en.wikipedia.org/wiki/Coordinated_Video_Timings) mode for it instead:
+
+    hdmi_cvt=<width> <height> <framerate> <aspect> <margins> <interlace> <rb>
+
+| Value | Default | Description |
+| --- | --- | --- |
+| width | (required) | width in pixels |
+| height | (required) | height in pixels |
+| framerate | (required) | framerate in Hz |
+| aspect | 3 | aspect ratio 1=4:3, 2=14:9, 3=16:9, 4=5:4, 5=16:10, 6=15:9 |
+| margins | 0 | 0=margins disabled, 1=margins enabled |
+| interlace | 0 | 0=progressive, 1=interlaced |
+| rb | 0 | 0=normal, 1=reduced blanking |
+
+(Fields at the end can be omitted to use the default values.)
+
+Note that this simply _creates_ the mode (group 2 mode 87); in order to make the Pi use this by default you must add some additional settings.  As an example, the following selects an 800x480 resolution and enables audio drive:
+
+    hdmi_cvt=800 480 60 6
+    hdmi_group=2
+    hdmi_mode=87
+    hdmi_drive=2
+
+This may not work if your monitor does not support standard CVT timings.
+
 ### Generic display options
 
 #### hdmi_force_hotplug
@@ -495,14 +539,6 @@ The memory address into which the `ramfsfile` should be loaded.
 
 This specifies both the ramfs filename **and** the memory address to load it at; it performs the actions of both `ramfsfile` and `ramfsaddr` in one parameter. Example values are: `initramfs initramf.gz 0x00800000`. **NOTE:** This option uses different syntax to all the other options; you should not use a `=` character here.
 
-#### device_tree
-
-Specifies a [device tree](http://www.raspberrypi.org/forum/viewtopic.php?f=71&t=53232) filename on the boot partition. This is not officially supported.
-
-#### device_tree_address
-
-The memory address into which the `device_tree` should be loaded.
-
 #### init_uart_baud
 
 The initial UART baud rate; the default value is `115200`.
@@ -514,6 +550,12 @@ The initial UART clock frequency; the default value is `3000000` (3MHz).
 #### init_emmc_clock
 
 The initial emmc clock frequency; the default value is `100000000` (100MHz).
+
+#### bootcode_delay
+
+Wait for a given number of seconds in `bootcode.bin` before loading `start.elf`; the default value is `0`.
+
+This is useful in particular to insert a delay before reading the EDID of the monitor, which can be useful if the Pi and monitor are powered from the same source but the monitor takes longer to start up than the Pi.  Try setting this value if the display detection is "wrong" on initial boot but correct if you soft-reboot the Pi without removing power from the monitor.
 
 #### boot_delay
 
@@ -530,6 +572,10 @@ If set to `1`, [safe_mode](http://elinux.org/RPI_safe_mode) boot won't be enable
 #### disable_splash
 
 If set to `1`, don't show the rainbow splash screen on boot. The default value is `0`.
+
+## Device Tree
+
+There are several `config.txt` parameters related to Device Tree setup, and these are documented separately [here](device-tree.md).
 
 ## Overclocking
 
@@ -607,6 +653,96 @@ It's generally a good idea to keep the core temperature below 70 degrees and the
 ### Overclocking problems
 
 Most overclocking issues show up immediately with a failure to boot. If this occurs, hold down the `shift` key during the next boot which will temporarily disable all overclocking; this will allow you to boot successfully and then edit your settings.
+
+## Conditional Filters
+
+When a single SD card (or card image) is only being used with one Pi and one monitor, it's easy to simply set `config.txt` as required for that specific combination and keep it that way, amending only when something changes.
+
+However if one Pi is swapped between different monitors, or if the SD card (or card image) is being swapped between multiple Pis, a single set of settings may no longer be sufficient.  Conditional filters allow you to make certain sections of the config file used only in specific cases, allowing a single `config.txt` to create different configurations when read by different hardware.
+
+### The `[all]` filter
+
+This is the most basic filter: it resets all previously set filters and allows any settings listed below it to be applied to all hardware.
+
+    [all]
+
+It is usually a good idea to add an `[all]` filter at the end of groups of filtered settings to avoid unintentionally combining filters (see below).
+
+### The `[pi1]` and `[pi2]` filters
+
+Any settings below a `[pi1]` filter will only be applied to Pi1 (A, A+, B, B+) hardware.
+Any settings below a `[pi2]` filter will only be applied to Pi2 hardware.
+
+    [pi1]
+    [pi2]
+
+These are particularly useful for defining different `kernel`, `initramfs`, and `cmdline` settings, as the Pi1 and Pi2 require different kernels.  They can also be useful to define different overclocking settings for each, since they have different default speeds.  For example, to define separate initramfs images for each:
+
+    [pi1]
+    initramfs initrd.img-3.18.7+ followkernel
+    [pi2]
+    initramfs initrd.img-3.18.7-v7+ followkernel
+    [all]
+
+Remember to use the `[all]` filter at the end, so that any subsequent settings aren't limited to Pi2 hardware only.
+
+### The `[EDID=*]` filter
+
+When switching between multiple monitors while using a single SD card in your Pi, and where a blank config is not sufficient to automatically select the desired resolution for each one, this allows specific settings to be chosen based on the monitors' EDID names.
+
+To view the EDID name of a specific monitor, run the following command:
+
+    tvservice -n
+
+This will print something like this:
+
+    device_name=VSC-TD2220
+
+You can then specify settings that apply only to this monitor like so:
+
+    [EDID=VSC-TD2220]
+    hdmi_group=2
+    hdmi_mode=82
+    [all]
+
+This forces 1920x1080 DVT mode for this monitor, without affecting any other monitors.
+
+Note that these settings apply only at boot, so the monitor must be connected at boot time and the Pi must be able to read its EDID information to get the correct name.  Hotplugging a different monitor after boot will not reselect different settings.
+
+### The serial number filter
+
+Sometimes settings should only be applied to a single specific Pi, even if you swap the SD card to a different one.  Examples include license keys and overclocking settings (although the license keys already support SD card swapping in a different way).  You can also use this to select different display settings even if the EDID identification above is not possible for some reason (provided that you don't swap monitors between your Pis) -- for example if your monitor does not supply a usable EDID name or if you are using composite output (for which EDID cannot be read).
+
+To view the serial number of your Pi, run the following command:
+
+    cat /proc/cpuinfo
+
+The serial will be shown as a 16-digit hex value at the bottom.  For example, if you see:
+
+    Serial          : 0000000012345678
+
+Then you can define settings that will only be applied to this specific Pi like so:
+
+    [0x12345678]
+    # settings here are applied only to the Pi with this serial
+    [all]
+    # settings here are applied to all hardware
+
+### Combining conditional filters
+
+Filters of the same type replace each other (so `[pi2]` overrides `[pi1]`, as it is not possible for both to be true at once).
+
+Filters of different types can be combined simply by listing them one after the other, eg:
+
+    # settings here are applied to all hardware
+    [EDID=VSC-TD2220]
+    # settings here are applied only if monitor VSC-TD2220 is connected
+    [pi2]
+    # settings here are applied only if monitor VSC-TD2220 is connected *and* on a Pi2
+    [all]
+    # settings here are applied to all hardware
+
+Use the `[all]` filter to reset all previous filters and avoid unintentionally combining different filter types.
 
 ---
 

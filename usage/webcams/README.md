@@ -102,7 +102,13 @@ Some webcams are more reliable than others, but this sort of issue may occur wit
 
 ## Bash script
 
-You can write a Bash script which takes a picture with the webcam. To create a script, open up your editor of choice and write the following example code:
+You can write a Bash script which takes a picture with the webcam. The script below saves the images in the `/home/pi/webcam` directory, so create the `webcam` subdirectory first with:
+
+```bash
+mkdir webcam
+```
+
+To create a script, open up your editor of choice and write the following example code:
 
 ```bash
 #!/bin/bash

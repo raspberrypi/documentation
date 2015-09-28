@@ -9,7 +9,7 @@ An alternative for scheduled task management is cron / crontab.
 On your Pi, edit the file `/etc/rc.local` using the editor of your choice. You must edit with root, for example:
 
 ```
-sudo vim /etc/rc.local
+sudo nano /etc/rc.local
 ```
 
 Add commands below the comment, but leave the line `exit 0` at the end, then save the file and exit.
