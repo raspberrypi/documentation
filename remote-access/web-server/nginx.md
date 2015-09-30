@@ -72,7 +72,7 @@ location ~ \.php$ {
 	fastcgi_split_path_info ^(.+\.php)(/.+)$;
 	fastcgi_pass unix:/var/run/php5-fpm.sock;
 	fastcgi_index index.php;
-	include fastcgi_params;
+	include fastcgi.conf;
 }
 
 ```
@@ -91,7 +91,7 @@ It should look like this:
                 # With php5-fpm:
                 fastcgi_pass unix:/var/run/php5-fpm.sock;
                 fastcgi_index index.php;
-                include fastcgi_params;
+                include fastcgi.conf;
         }
 ```
 
