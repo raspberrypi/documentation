@@ -16,6 +16,16 @@ Read our troubleshooting steps, tips and tricks here: [Raspberry Pi Display Trou
 * 10 point multi-touch touchscreen
 * PWM backlight control and power control over I2C interface
 * Metal framed back with mounting points for Raspberry pi display conversion board and Raspberry Pi
+* Blacklight lifetime: 20000 hours
+* Operating temperature: -20 to +70 degrees centigrade
+* Storage temperature: -30 to +80 degrees centigrade
+* Contrast ratio: 500
+* Average brightness: 250 cd/m<sup>2</sup>
+* Viewing angle (degrees):
+  * Top - 50
+  * Bottom - 70
+  * Left - 70
+  * Right - 70
 
 ## Module mechanical specification
 
