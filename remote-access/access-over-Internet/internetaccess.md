@@ -15,7 +15,7 @@ Install the weavedConnectd package:
 ```
 sudo apt-get install weavedConnectd
 ```
-Next run the weavedinstaller.  Follow the on-screen instructions in the terminal window.  The weavedinstaller program will ask you to input your Weaved account user name (email) and password.  You can create a Weaved user account here: https://developer.weaved.com/portal/index.php
+Next run the weavedinstaller.  The weavedinstaller program will ask you to input your Weaved account user name (email) and password.  You can create a Weaved user account here: https://developer.weaved.com/portal/index.php  After you have created an account, enter the command below and follow the on-screen instructions in the terminal window.
 
 ```
 sudo weavedinstaller
