@@ -6,11 +6,20 @@ One method is to set-up port forwarding on your router.   Port forwarding requir
 
 One alternative to port forwarding is the use of Weaved services.  Weaved is free software you install on your Raspberry Pi that allows you to connect to your Pi from anywhere over the Internet.  SSH, VNC, HTTP, SFTP or any other TCP Port (or "TCP service") running on your Pi can be enabled for secure remote access over the Internet without port forwarding.
 
+On your Pi (using a monitor or via SSH), update your Raspbian package lists:
+sudo apt-get update
 
+Install the weavedConnectd package:
+sudo apt-get install weavedConnectd
+
+Run the weavedinstaller:
+sudo weavedinstaller
+
+Follow the on-screen instructions.  The weavedinstaller program will ask you for your Weaved account user name (email) and password.  You can create a free Weaved account here from any browser.
 
 There are several video tutorials to help you if needed.
 
-You will now be able to connect to your Raspberry Pi using SSH over the Intenet without port forwarding.
+You will now be able to connect to your Raspberry Pi over the Intenet without port forwarding.
 
 For further assistance you may email support@weaved.com.
 
