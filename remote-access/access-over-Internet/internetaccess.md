@@ -2,9 +2,9 @@
 
 You can connect to your Raspberry Pi over the Internet from another computer or mobile device.  
 
-One method is to use port forwarding on your router.   Port forwarding requires you to change the configuration of your router to forward inbound Internet traffic on a specific port to the local IP address of your Raspberry Pi.  Most routers have this feature available through their admin configuration webpage.  However, every router is different so you will need to refer to the user manual for your specific router make and model.  The configurations can be tricky if your Pi is behind a firewall, or behind more than one router.  One disadvantage of port forwarding is that it leaves a network port of your private LAN open to the public Internet.  This is a well known security vulnerability and must be managed carefully.
+One method is to use port forwarding on your router.   Port forwarding requires that you change the configuration of your router to forward inbound Internet traffic on a specific port to the local IP address of your Raspberry Pi.  Most routers have this feature available.  However, every router is different so you will need to consult the user manual for the specific make and model of your router.  The configurations can be tricky if your Pi is behind a firewall or behind more than one router.  One disadvantage of port forwarding is that it leaves a network port on your private LAN open to the public Internet.  This is a well known security vulnerability and must be managed carefully.
 
-One alternative method to port forwarding is the use of Weaved services.  Weaved is free software you can install on your Raspberry Pi that allows you to connect to your Pi from anywhere over the Internet.  SSH, VNC, HTTP, SFTP or any other TCP Port (or "TCP service") can be enabled securely over the Internet without port forwarding.
+One alternative to port forwarding is the use of Weaved services.  Weaved is free software you can install on your Raspberry Pi that allows you to connect to your Pi from anywhere over the Internet.  SSH, VNC, HTTP, SFTP or any other TCP Port (or "TCP service") can be enabled for secure remote access over the Internet without port forwarding.
 
 
 
