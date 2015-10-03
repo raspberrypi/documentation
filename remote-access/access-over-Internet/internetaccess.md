@@ -20,9 +20,7 @@ Next run the weavedinstaller.  Note: the weavedinstaller will ask you to input y
 ```
 sudo weavedinstaller
 ```
-Your Weaved account is now a private Internet VPN connection service to your Pi without port forwarding.
-
-For more information visit www.weaved.com.
+Your Weaved account is now a private Internet VPN connection service to your Pi without port forwarding.  Access your Pi by logging in to your account at www.weaved.com.
 
 For further assistance you may email support@weaved.com.
 
