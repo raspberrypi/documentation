@@ -11,7 +11,7 @@ On your Pi (using a monitor or via SSH), update your Raspbian package lists:
 sudo apt-get update
 ```
 
-Install the weavedConnectd package:
+Install the weavedconnectd package:
 ```
 sudo apt-get install weavedConnectd
 ```
