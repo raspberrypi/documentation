@@ -138,7 +138,7 @@ and sensor variables `Input1` to `Input4` with values (0|1) and the four ADC pin
 
 NB The capacitive input pads are not yet operational, requiring some library level support.
 
-#####AstroPi
+####Sense HAT (as used in the Astro Pi)
 
 This foundation built card provides a range of unusual sensors and a big 8 by 8 array of rgb LEDs.
 The sensors measure
