@@ -5,33 +5,34 @@ The September 2015 release of Scratch for the Pi (included in the Raspbian Jessi
 ## GPIO Server
 
 ### Usage and basic capabilities
+
 Before you can use the GPIO pins you *must* start the GPIO server. There are several ways to do this:
 
- - Choose *Start GPIO server* from the *Edit* menu to turn it on. If the server is running then *Stop GPIO server* will turn it off.
- - A Scratch broadcast of `gpioserveron` or `gpioserveroff` will have the obvious effect.
- - Projects saved when the GPIO server is running will have that status recorded and on loading will try to start the server if it is enabled.
+- Choose *Start GPIO server* from the *Edit* menu to turn it on. If the server is running then *Stop GPIO server* will turn it off.
+- A Scratch broadcast of `gpioserveron` or `gpioserveroff` will have the obvious effect.
+- Projects saved when the GPIO server is running will have that status recorded and on loading will try to start the server if it is enabled.
 
 Without any further setup you now have access to the basics of the GPIO system. This currently uses the Broadcast blocks. For instance, to configure GPIO pin 4 as an out put and turn it on you create the two following broadcasts:
 
-![broadcast config4 out gpio4on](config-on.PNG) 
+![broadcast config4 out gpio4on](images/config-on.png)
 
-As always you can assemble this text with normal join or pick or list handling blocks. For example if `foo` = 17, then 
-  
-![broadcast join gpio join foo 17](broadcastgpio17on.png)   
+As always you can assemble this text with normal join or pick or list handling blocks. For example if `foo` = 17, then
+
+![broadcast join gpio join foo 17](images/broadcastgpio17on.png)   
 
 would broadcast `gpio17on` and thus set the GPIO pin number 17 (under the BCM numbering) to on.
 
 However, the pins need configuring before you can meaningfully use them to do anything. We can set the direction of the pin (in, out, outputpwm) and for input pins the pull-up mode (up, down, none). Currently the pins are only configurable via broadcasts.
 For example -     
 
-![broadcast config 11 inpulldown](broadcastconfig11inpulldown.png)  
- 
+![broadcast config 11 inpulldown](images/broadcastconfig11inpulldown.png)  
+
 Pins set to be inputs are connected to the Scratch sensor variable system, and so they appear in the list of possible values in the sensor blocks.  
 
-![sensor block gpio11](sensorgpio11.png)  
+![sensor block gpio11](images/sensorgpio11.png)  
 
 and can be used in the same manner  
-![if gpio11 sensor value](ifgpio11sensorvalue.png)  
+![if gpio11 sensor value](images/ifgpio11sensorvalue.png)  
 
 With these very simple commands you can build fairly complex gpio handling scripts.
 As an example of how not everything has to be strictly gpio connected to be used from this system, we also have commands to
@@ -42,11 +43,12 @@ As an example of how not everything has to be strictly gpio connected to be used
 
 This script -  
 
-![gpio-demo script](gpio-demo.gif)  
+![gpio-demo script](images/gpio-demo.gif)  
 
 illustrates most of the above by providing (along with a suitably configured breadboard) the ability to turn leds on and off according to a button, to take a photo with a countdown provide by a progressively brightening led, and ways to check the time etc. Note that we can have a single broadcast that includes several messages ie `gpio24on gpio18pwm400` above. The text will be split on the spaces and be treated as a list of independent broadcasts.
 
 ### Basic commands
+
 In the command listings below we use
 `[comm] + pin number + [ on | off]`  
 to indicate a command of the form   
@@ -75,18 +77,19 @@ example `gpio22pwm522`
 - getip
 - photo
 
-###Add on hardware
+### Add-on hardware
 
 We can also plug in Pi add-on cards such as the PiGlow, Pibrella, Explorer Hat etc.
 To set up a card we need to first inform the gpio server what card it is and this is done by creating and setting a variable `AddOn`, like this -  
 
-![set addon to piglow](setaddonpiglow.png) 
- 
+![set addon to piglow](images/setaddonpiglow.png)
+
 Each card has its own set of commands layered on top of the basic gpio facilities described above. In principle the driver for a card could usurp a basic command such as ‘gpio’ and there may need to be some mechanism added to prevent this if simple common sense is not in sufficient supply.
 Many cards can also make sensible use of the Scratch variable broadcast facility, whereby a suitably named variable is created and its value gets broadcast when it changes. For example, for a PiGlow board it makes sense to have variables named for each led or ring of leds and to set the value as a way of controlling the brightness. It is quite possible to cause confusion with ill-considered use of both forms of control at the same time; broadcasting `myCommand400` in the same script as setting `myValue` to 200 might well result in flickering or apparent non-function or perhaps even hardware failure in extreme cases. All you need to do to use this is create a variable of the appropriate name and set its value.
 Some cards provide inputs that can be accessed via the sensor variables as shown above in the example usage of pin 11.
 
-####PiFace
+#### PiFace
+
 The Piface Digital card provides 8 digital inputs and 8 digital outputs, with the first 4 inputs having parallel switches and the first 2 outputs having 20v/5A relays. There is an observed problem with the inputs being flighty to say the least, and merely holding a finger near the input terminal blocks appears to cause flickering of the read values.
 PiFace has just two commands -
 
@@ -98,7 +101,8 @@ and one variable command
 
 There are also the 8 input sensor variables named `Input1` to `Input8` which have possible values (0|1)
 
-####PiBrella
+#### Pibrella
+
 This provides a nice big red button, three large LEDs, four digital inputs, four digital outputs and a loudly obnoxious buzzer. The commands are
 
 - `[ red | yellow | green ] + [ on | high | off | low ]`
@@ -113,7 +117,8 @@ Variables offered are
 
 The inputs A,B,C,D, and of course the fabulous BigRedButton are provided as sensor variables all having possible values (0|1).
 
-####Explorer HAT Pro
+#### Explorer HAT Pro
+
 This card is a bit more of a challenge to drive since it has  parts that are plain gpio connected and parts that are i2c connected.
 
 - LEDs
@@ -138,7 +143,7 @@ and sensor variables `Input1` to `Input4` with values (0|1) and the four ADC pin
 
 NB The capacitive input pads are not yet operational, requiring some library level support.
 
-####Sense HAT (as used in the Astro Pi)
+#### Sense HAT (as used in the Astro Pi)
 
 This foundation built card provides a range of unusual sensors and a big 8 by 8 array of rgb LEDs.
 The sensors measure
@@ -165,7 +170,8 @@ Commands supported
 
 The accelerometer, gyro & compass raw & scaled X,Y,Z values are available as sensor variables but are not at all well calibrated as yet. The maths to convert them to useful integrated values remains to be done.
 
-####PiLite
+#### PiLite
+
 This card provides a simple array of while LEDs that can be addressed individually or treated as a scrolling text display, a bargraph or a vu meter. It works via the gpio serial port and presents some interesting challenges despite its apparent simplicity.
 
 Commands currently supported
@@ -175,8 +181,9 @@ Commands currently supported
 - `bargraph[1..14],[1-100]` sets the bar shown on one of the 14 columns of leds to represent the percentage.
 - `vumeter[1|2],[1…100]`
 
-####RyanTek & Pololu motor controller
-Both of these little cards can drive two dc motors. Though they work quite differently they share the same commands.
+#### RyanTeck & Pololu motor controller
+
+Both of these little cards can drive two DC motors. Though they work quite differently they share the same commands.
 
 - `motor + motor number (1|2) + speed + value (-100..100)`
 
@@ -184,7 +191,7 @@ And matching variable forms
 
 - `motor + motor number (0|1) = (-100..100)`
 
-###Demo project scripts
+### Demo project scripts
 
 In the Scratch `Examples` directory (found via the `File->open` dialogue and the `Examples` shortcut) you will find a `Motors and Sensors` directory; several new gpio scripts are included.
 
@@ -206,8 +213,8 @@ In the Scratch `Examples` directory (found via the `File->open` dialogue and the
     + connect an led to output 1 and 5v
 - `gpio-SenseHAT` - some snippets to show displaying & clearing the LEDs and reading one of the sensor variables.
 
+## Appendix: Enabling and disabling the GPIO server
 
-##Appendix: Enabling and disabling the GPIO server
 In normal use you shouldn't need to enable the GPIO server as by default it is enabled but stopped. We can change this by adding  a line to the init file (in the HOME directory we can have a file named `.scratch.ini` - the initial dot is important to make it a hidden unix file)
 Simply add a line
 `gpioserver=X`
