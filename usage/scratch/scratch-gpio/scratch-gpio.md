@@ -11,9 +11,9 @@ Before you can use the GPIO pins you *must* start the GPIO server. There are sev
  - A Scratch broadcast of `gpioserveron` or `gpioserveroff` will have the obvious effect.
  - Projects saved when the GPIO server is running will have that status recorded and on loading will try to start the server if it is enabled.
 
-Without any further setup you now have access to the basics of the GPIO system. This currently uses the Broadcast blocks. For instance, to configure GPIO pin 4 as an out put and turn it on you create the two following broadcasts@
+Without any further setup you now have access to the basics of the GPIO system. This currently uses the Broadcast blocks. For instance, to configure GPIO pin 4 as an out put and turn it on you create the two following broadcasts:
 
-![broadcast config4 out gpio4on](config-on.png) 
+![broadcast config4 out gpio4on](config-on.PNG) 
 
 As always you can assemble this text with normal join or pick or list handling blocks. For example if `foo` = 17, then 
   
