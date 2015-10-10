@@ -59,6 +59,14 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
        e.g. `sudo dd bs=1M if=2015-09-24-raspbian-jessie.img of=/dev/disk4`
        ```
 
+- After the `dd` command finishes, eject the card:
+
+    ```
+    sudo diskutil eject /dev/rdisk3
+    ```
+
+    (or: open Disk Utility and eject the SD card)
+
 ## Alternative method
 
 **Note: Some users have reported issues with using Mac OS X to create SD cards.**
