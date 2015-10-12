@@ -74,6 +74,9 @@ cd /etc/init.d/
 - Create a new file here containing the following script:
 
 ```
+#! /bin/sh
+# /etc/init.d/vncboot
+
 ### BEGIN INIT INFO
 # Provides: vncboot
 # Required-Start: $remote_fs $syslog
@@ -83,9 +86,6 @@ cd /etc/init.d/
 # Short-Description: Start VNC Server at boot time
 # Description: Start VNC Server at boot time.
 ### END INIT INFO
-
-#! /bin/sh
-# /etc/init.d/vncboot
 
 USER=pi
 HOME=/home/pi
