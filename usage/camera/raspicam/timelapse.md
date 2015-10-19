@@ -68,9 +68,6 @@ If your files has got names in the form of "IMG0001.JPG", etc, use the following
 avconv -r 10 -i IMG%04d.JPG -b:v 1000k test.mp4
 ```
 
-Now run the following command:
-
-
 ### On Mac OS
 
 
