@@ -52,6 +52,25 @@ mencoder -nosound -ovc lavc -lavcopts vcodec=mpeg4:aspect=16/9:vbitrate=8000000 
 
 Once that's completed, you should have a video file called `timelapse.avi` containing a time-lapse from your images.
 
+### Raspbian Jessie
+
+In the latest release of Raspbian, the mplayer and mencoder packages no longer exist, and are replaced by libav-tools and mpv.
+
+Install the packages:
+
+```
+sudo apt-get install libav-tools mpv
+```
+
+If your files has got names in the form of "IMG0001.JPG", etc, use the following command:
+
+```
+avconv -r 10 -i IMG%04d.JPG -b:v 1000k test.mp4
+```
+
+Now run the following command:
+
+
 ### On Mac OS
 
 
