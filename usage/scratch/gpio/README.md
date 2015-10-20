@@ -71,7 +71,7 @@ The basic gpio layer command list is
 example `config12in`  
 - gpio + pin number + [ on | high | off | low ]
 example `gpio17on`
-- gpio + pin number + pwm + [ 0..1024 ] (we can use the software driven pwm output facility)
+- gpio + pin number + pwm + [ 0..1024 ] \(we can use the software driven pwm output facility)
 example `gpio22pwm522`
 - gettime
 - getip
