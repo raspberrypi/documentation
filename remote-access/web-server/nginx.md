@@ -118,7 +118,7 @@ sudo nano index.php
 
 Add some dynamic PHP content by replacing the current content:
 ```php
-<? echo phpinfo(); ?>
+<?php echo phpinfo(); ?>
 ``` 
 
 Save and refresh your browser. You should see a page with the PHP version, logo and current configuration settings.
