@@ -264,7 +264,7 @@ Text may include date/time placeholders by using '%' character as used by <a tit
 ```
 	--annotateex,	-ae		Set extra annotation parameters
 ```
-Specify annotation size,text-colour,bacground-colour.  Colours are in hex YUV format.
+Specify annotation size,text-colour,bakcground-colour.  Colours are in hex YUV format.
 
 Size ranges from 6 to 160, default is 32. Asking for an invalid size should give you the default.
 
