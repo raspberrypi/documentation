@@ -236,6 +236,44 @@ Sets a specified sensor mode, disabling the automatic selection. Possible values
 Select which camera (on a multi camera system) to use. Use 0 or 1.
 
 
+```
+	--annotate,	-a		Enable/Set annotate flags or text
+```
+Add some text and/or metadata to the picture.
+
+Metadata is indicated using a bitmask notation, so add them together to show multiple parameters. For example, 12 will show time(4) and date(8) since 4+8=12.
+
+Text may include date/time placeholders by using '%' character as used by <a title="strftime man page" href="http://man7.org/linux/man-pages/man3/strftime.3.html">strftime</a>.
+
+|Value| Meaning | Example Output |
+|-----|---------|----------------|
+|-a 4|Time|20:09:33|
+|-a 8|Date|10/28/15|
+|-a 12|4+8=12 Show the date(4) and time(8)|20:09:33 10/28/15|
+|-a 16|Shutter Settings||
+|-a 32|CAF Settings||
+|-a 64|Gain Settings||
+|-a 128|Lens Settings||
+|-a 256|Motion Settings||
+|-a 512|Frame Number||
+|-a 1024|Black Background||
+|-a "ABC %Y-%m-%d %X"|Show some text|ABC %Y-%m-%d %X|
+|-a 4 -a "ABC %Y-%m-%d %X"|Show custom <a title="strftime man page" href="http://man7.org/linux/man-pages/man3/strftime.3.html">formatted</a> date/time.|ABC 2015-10-28 20:09:33|
+|-a 8 -a "ABC %Y-%m-%d %X"|Show custom <a title="strftime man page" href="http://man7.org/linux/man-pages/man3/strftime.3.html">formatted</a> date/time.|ABC 2015-10-28 20:09:33|
+
+```
+	--annotateex,	-ae		Set extra annotation parameters
+```
+Specify annotation size,text-colour,bacground-colour.  Colours are in hex YUV format.
+
+Size ranges from 6 to 160, default is 32. Asking for an invalid size should give you the default.
+
+|Example|Explanation|
+|-------|-----------|
+|-ae 32,0xff,0x808000 -a "Wibble gibber gibber"|gives size 32 white text on black background|
+|-ae 10,0x00,0x8080FF -a "Wibble gibber gibber"|gives size 10 black text on white background|
+
+
 ## Application specific settings
 
 ### raspistill
