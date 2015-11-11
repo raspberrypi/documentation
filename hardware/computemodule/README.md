@@ -14,3 +14,5 @@ Embedded Raspberry Pi
     - Guide to wiring up peripherals and enabling them using Device Tree
 - [Attaching a Raspberry Pi Camera](cmio-camera.md) 
     - How to attach a Raspberry Pi Camera to the Compute Module IO Board
+- [Attaching the Official 7 inch Display](cmio-display.md)
+	- How to attach the Raspberry Pi 7 inch display to the Compute Module IO Board
