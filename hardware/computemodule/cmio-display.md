@@ -18,7 +18,7 @@ For the display to work with the compute module, the firmware needs to be Octobe
 
 	```sudo wget https://goo.gl/Ah6XD5 -O /boot/dt-blob.bin```
 
-1. Make the 7 inch display as the default by adding the following line into `/boot/config.txt`:
+1. Make the 7 inch display the default by adding the following line into `/boot/config.txt`:
 
 	```
 	display_default_lcd=1
@@ -27,7 +27,7 @@ For the display to work with the compute module, the firmware needs to be Octobe
 1. Reboot for the `dt-blob.bin` file to be read.
 
 ## Quickstart - Display and Camera
-* This will enable `disp1` and `cam1` *
+* This will enable `disp1` and `cam1`*
 
 1. Connect the display to the DISP1 port on the Compute Module IO Board through the 22W to 15W display adaptor.
 1. Connect the camera to the CAM1 port on the Compute Module IO Board through the 22W to 15W camera adaptor.
