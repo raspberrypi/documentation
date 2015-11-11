@@ -66,5 +66,5 @@ There is no additional configuration required to enable the touch screen. The to
 
 
 ### Sources
-- [dt-blob-disp1-cam1.dts](images/dt-blob-disp1-cam1.dts)
-- [dt-blob-disp1-only.dts](images/dt-blob-disp1-only.dts)
+- [dt-blob-disp1-cam1.dts](dt-blob-disp1-cam1.dts)
+- [dt-blob-disp1-only.dts](dt-blob-disp1-only.dts)
