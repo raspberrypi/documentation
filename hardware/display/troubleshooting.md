@@ -43,7 +43,7 @@ Then add:
 lcd_rotate=2
 ```
 
-Hit `CTRL+C` and `y` to save. And finally:
+Hit `CTRL+X` and `y` to save. And finally:
 
 ```
 sudo reboot
@@ -57,6 +57,7 @@ Don't Panic! This is perfectly normal.
 
 * Make sure you've updated Raspbian, see above for steps.
 * Check the ribbon cable between your Pi and the LCD is properly seated
+* Make sure you have a SD card properly inserted into your Pi.
 
 ### My display is white
 
@@ -144,7 +145,7 @@ Section "InputClass"
 EndSection
 ```
 
-Hit `CTRL+C` and `y` to save. Then:
+Hit `CTRL+X` and `y` to save. Then:
 
 ```bash
 sudo reboot
