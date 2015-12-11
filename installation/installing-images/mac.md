@@ -1,4 +1,4 @@
-# Installing Operating System Images on Mac OS
+# Installing Operating System Images from Mac OS
 
 On Mac OS you have the choice of the command line `dd` tool or using the graphical tool ImageWriter to write the image to your SD card.
 
