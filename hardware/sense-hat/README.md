@@ -61,8 +61,73 @@ The LED matrix is an RGB565 [framebuffer](https://www.kernel.org/doc/Documentati
 The joystick comes up as an input event device named "Raspberry Pi Sense HAT Joystick", mapped to the arrow keys and enter. It should be supported by any library which is capable of handling inputs or directly through the [evdev interface](https://www.kernel.org/doc/Documentation/input/input.txt). Suitable libraries include SDL, [pygame](http://www.pygame.org/docs/) and [python-evdev](https://python-evdev.readthedocs.org/en/latest/). The included 'snake' example shows how to access the joystick directly.
 
 ## Calibration
+Taken from this [forum post](https://www.raspberrypi.org/forums/viewtopic.php?f=104&t=109064&p=750616#p810193)
 
-...
+Install some software and run the calibration programe.
+
+````
+sudp apt-get update
+sudo apt-get install octave -y
+cd
+cp /usr/share/librtimulib-utils/RTEllipsoidFit ./ -a
+cd RTEllipsoidFit
+RTIMULibCal
+````
+You will then see this menu:
+
+    Options are:
+
+      m - calibrate magnetometer with min/max
+      e - calibrate magnetometer with ellipsoid (do min/max first)
+      a - calibrate accelerometers
+      x - exit
+
+    Enter option:
+
+Press lower case `m`
+
+This message will then show, press any key to start.
+
+````
+    Magnetometer min/max calibration
+    --------------------------------
+    Waggle the IMU chip around, ensuring that all six axes
+    (+x, -x, +y, -y and +z, -z) go through their extrema.
+    When all extrema have been achieved, enter 's' to save, 'r' to reset
+    or 'x' to abort and discard the data.
+
+    Press any key to start...
+````
+After it starts you will see this kind of thing scrolling up the screen.
+
+    Min x:  51.60  min y:  69.39  min z:  65.91
+    Max x:  53.15  max y:  70.97  max z:  67.97
+
+Focus on the two lines at the very bottom of the screen as these are the most recently posted measurements from the program.
+Now you have to move the Astro Pi around in every possible way you can think of.
+
+It helps if you unplug all non essential cables so you don't create a birds nest :)
+
+Try and get a complete circle in each of the pitch, roll and yaw axes.
+TAKE CARE TO NOT ACCIDENTALLY EJECT THE SD CARD WHEN YOU'RE DOING THIS.
+Spend a few minutes doing this and stop when you find that the numbers are not changing any more.
+
+Now press lower case `s`
+
+Now press lower case `x` to exit the program.
+
+If you run the ls command now you'll see a new RTIMULib.ini file has been created.
+
+    ls
+    
+In addition to those steps, you can also do the ellipsoid fit, repeat the steps above byt press `e` instead of `m`.
+
+When you're done, copy the resulting RTIMULib.ini to /etc/ and remove the local copy in ~/.config/sense_hat/
+
+    rm ~/.config/sense_hat/RTIMULib.ini
+    sudo cp RTIMULib.ini /etc
+    
+You are now done.
 
 ## Updating the AVR firmware
 
