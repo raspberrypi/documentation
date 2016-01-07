@@ -28,6 +28,28 @@ pi@raspberrypi ~ $
 
 You are now connected to the Pi remotely and can execute commands.
 
+## X-forwarding
+
+You can also forward your X session over SSH to allow use of graphical applications by using the `-Y` flag:
+
+```bash
+ssh -Y pi@192.168.1.5
+```
+
+Now you're on the command line as before, but you have the ability to open up graphical windows, for example:
+
+```bash
+idle3 &
+```
+
+This will open up the Python editor IDLE in a graphical window.
+
+```bash
+scratch &
+```
+
+This will open up Scratch!
+
 For further documentation on the `ssh` command just enter `man ssh` into the Terminal.
 
 To configure your Pi to allow passwordless SSH access with a public/private key pair see the [passwordless SSH](passwordless.md) guide.
