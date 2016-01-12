@@ -3,7 +3,7 @@
 | | |
 | --- | --- |
 | Net price | 25 $ |
-| Size | around 25 x 20 x 9 mm |
+| Size | around 25 x 24 x 9 mm |
 | Weight | 3 g |
 | Still resolution | 5 Megapixels |
 | Video modes | 1080p30, 720p60 and 640x480p60/90 |
