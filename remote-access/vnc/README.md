@@ -18,12 +18,19 @@ sudo apt-get install tightvncserver
 tightvncserver
 ```
 
-- Start a VNC server from the terminal. This example starts a session on VNC display zero (```:0```) with full HD resolution:
+- Start a VNC server from the terminal. Since a desktop ist typically already running we stop it first:
+
+```
+service lightdm stop
+```
+
+- This example starts a session on VNC display zero (```:0```) with full HD resolution:
 
 ```
 vncserver :0 -geometry 1920x1080 -depth 24
 ```
 
+- Alternatively you could start the VNC server at a different display (e.g. ```:1```) but this would normally be a waste of resources.
 - Now, on your computer, install and run the VNC client:
 
   - On a Linux machine install the package `xtightvncviewer`:
@@ -96,7 +103,7 @@ case "$1" in
  start)
   echo "Starting VNC Server"
   #Insert your favoured settings for a VNC session
-  su - pi -c "/usr/bin/vncserver :0 -geometry 1280x800 -depth 16 -pixelformat rgb565"
+  su - $USER -c "/usr/bin/vncserver :0 -geometry 1280x800 -depth 16 -pixelformat rgb565"
   ;;
 
  stop)
@@ -124,7 +131,8 @@ chmod 755 vncboot
 - Enable dependency-based boot sequencing:
 
 ```
-update-rc.d /etc/init.d/vncboot defaults
+update-rc.d lightdm remove
+update-rc.d vncboot defaults
 ```
 
 - If enabling dependency-based boot sequencing was successful, you will see this:
@@ -133,16 +141,10 @@ update-rc.d /etc/init.d/vncboot defaults
 update-rc.d: using dependency based boot sequencing
 ```
 
-- But if you see this:
+- But if you get an error then try the following command:
 
 ```
-update-rc.d: error: unable to read /etc/init.d//etc/init.d/vncboot
-```
-
-- then try the following command:
-
-```
-update-rc.d vncboot defaults
+update-rc.d /etc/init.d/vncboot defaults
 ```
 
 - Reboot your Raspberry Pi and you should find a VNC server already started.
