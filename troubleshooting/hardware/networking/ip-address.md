@@ -8,7 +8,7 @@ In order to connect to your Raspberry Pi from another machine using [SSH](../../
 
 If you boot to the command line instead of the desktop, your IP address should be shown in the last few messages before the login prompt.
 
-Using the terminal (boot to the command line or open LXTerminal from the desktop), simply type `hostname -I` which will reveal your Pi's IP address.
+Using the terminal (boot to the command line or open LXTerminal from the desktop), simply type `hostname -I` (note: This will only work on your Pi's command line) which will reveal your Pi's IP address.
 
 ## Using the Pi headless (without a display)
 
@@ -28,7 +28,7 @@ The `nmap` command (Network Mapper) is a free and open-source tool for network d
 
 To use `nmap` to scan the devices on your network, you need to know the subnet you are connected to. First find your own IP address, in other words the one of the computer you're using to find your Pi's IP address:
 
-- On **Linux** (or **Mac OS** terminal), type `hostname -I` into a terminal window
+- On **Linux** (or **Mac OS** terminal), type `hostname -i` into a terminal window
 - On **Mac OS**, go to `System Preferences` then `Network` and select your active network connection to view the IP address
 - On **Windows**, go to the Control Panel, then under `Network and Sharing Center`, click `View network connections`, select your active network connection and click `View status of this connection` to view the IP address
 
