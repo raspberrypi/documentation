@@ -595,10 +595,4 @@ dtparam=i2c,i2s
 
 (`i2c` is an alias of `i2c_arm`, and the `=on` is assumed). It also still accepts the long-form versions -- `device_tree_overlay` and `device_tree_param`.
 
-You can also use some alternative separators if you think that `=` is overused. These are all legal:
-```
-dtoverlay thing:name=value,othername=othervalue
-dtparam setme andsetme='long string with spaces and "a quote"'
-dtparam quote="'"
-```
-These examples use whitespace to separate the directive from the rest of the line instead of `=`. They also use a colon to separate the overlay from its parameters, and `setme` is given the default value 1/true/on/okay.
+The loader used to accept the use of whitespace and colons as separators, but support for these has been discontinued for simplicity and so they can be used within parameter values without quotes.
