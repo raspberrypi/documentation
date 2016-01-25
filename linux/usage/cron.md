@@ -6,7 +6,13 @@ The command `crontab` (cron table) is used to edit the list of scheduled tasks i
 
 ## Cron GUI
 
-A graphical application for Cron
+A graphical application for Cron is available by installing the `gnome-schedule` package:
+
+```bash
+sudo apt-get install gnome-schedule
+```
+
+Then launching the program **Scheduled Tasks** from the main menu.
 
 ## Editing crontab
 
