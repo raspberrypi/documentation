@@ -41,3 +41,15 @@ For example:
 ```
 
 This cron entry would run the `backup.sh` script every day at midnight.
+
+To run a command everytime the Raspberry Pi starts up, write `@reboot` instead of the time and date. For example:
+
+```
+@reboot python /home/pi/MyScript.py
+```
+
+This will run your python script every time the Raspberry Pi reboots. If you want your command to be run in the background while the Raspberry Pi continues starting up, add a space and `&` at the end of the line, like this:
+
+```
+@reboot python /home/pi/MyScript.py &
+```
