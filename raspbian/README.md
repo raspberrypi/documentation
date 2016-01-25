@@ -11,7 +11,6 @@ Raspbian is a community project under active development, with an emphasis on im
 - [Installing Raspbian](../installation/installing-images/README.md)
 - [Installing software in Raspbian](../linux/software/apt.md)
 - [Updating/Upgrading Raspbian](updating.md)
-- [Packaging software for Raspbian](packaging.md)
 - Configuring Raspbian
     - [raspi-config](../configuration/raspi-config.md)
     - [config.txt](../configuration/config-txt.md)
