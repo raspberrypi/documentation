@@ -5,18 +5,20 @@ Sometimes you need access to a Raspberry Pi without connecting a monitor to it: 
 ## Contents
 
 - [Access over Internet](access-over-Internet/internetaccess.md)
-    - Remote access to the Pi over the Internet
+    - Remote access to the Pi over the Internet using Weaved
 - [VNC](vnc/README.md)
     - Remote access to the Pi's graphical interface, viewed in a window on another computer
 - [SSH](ssh/README.md)
     - Access the command line of the Pi from another computer
-- [FTP](ftp.md)
-    - Copy files between your Pi and another computer using FTP
 - [SFTP](ssh/sftp.md)
-    - Copy files between your Pi and another computer using SFTP (more secure than FTP)
+    - Copy files between your Pi and another computer using SFTP (Secure FTP)
 - [SCP](ssh/scp.md)
-    - Copy files between your Pi and another computer using SCP (more secure than FTP)
+    - Copy files between your Pi and another computer using SCP (Secure Copy)
+- [SSHFS](ssh/sshfs.md)
+    - Copy files between your Pi and another computer using SSHFS (SSH Filesystem)
 - [rsync](ssh/rsync.md)
     - Synchronise folders between the Pi and another computer using `rsync` over SSH
+- [FTP](ftp.md)
+    - Copy files between your Pi and another computer using FTP
 - [Web Server](web-server/README.md)
     - Set up a website or a web page to display some information about the Pi, using a web browser on another machine, on the network, or on the internet
