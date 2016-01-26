@@ -1,6 +1,6 @@
 # BCM2835
 
-The Broadcom chip used in the Raspberry Pi Model A, B, B+ and Compute Module
+The Broadcom chip used in the Raspberry Pi Model A, B, B+, Compute Module and Raspberry Pi Zero
 
 Please refer to:
 
