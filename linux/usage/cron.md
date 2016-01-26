@@ -1,6 +1,6 @@
 # Scheduling tasks with Cron
 
-Cron is a tool for configuring scheduled tasks on Unix systems, used to schedule commands or scripts to run periodically and at fixed intervals; tasks range from backing up the users' home folders every day at midnight, to logging CPU information every hour.
+Cron is a tool for configuring scheduled tasks on Unix systems, used to schedule commands or scripts to run periodically and at fixed intervals. Tasks range from backing up the user's home folders every day at midnight, to logging CPU information every hour.
 
 The command `crontab` (cron table) is used to edit the list of scheduled tasks in operation, and is done on a per-user basis; each user (including `root`) has their own `crontab`.
 
@@ -12,7 +12,7 @@ A graphical application for Cron is available by installing the `gnome-schedule`
 sudo apt-get install gnome-schedule
 ```
 
-Then launching the program **Scheduled Tasks** from the main menu.
+You can then launch the program **Scheduled Tasks** from the main menu.
 
 ## Editing crontab
 
@@ -24,11 +24,11 @@ crontab -e
 
 ### Select an editor
 
-The first time you run `crontab` you'll be prompted to select an editor; if you are not sure which to use, choose `nano` by hitting `Enter`.
+The first time you run `crontab` you'll be prompted to select an editor; if you are not sure which one to use, choose `nano` by pressing `Enter`.
 
 ### Add a scheduled task
 
-The layout for a cron entry is made up of six components: Minute, hour, day of month, month of year, day of week, and the command to be executed.
+The layout for a cron entry is made up of six components: minute, hour, day of month, month of year, day of week, and the command to be executed.
 
 ```
 # m h  dom mon dow   command
@@ -70,7 +70,7 @@ To run a command every time the Raspberry Pi starts up, write `@reboot` instead 
 @reboot python /home/pi/myscript.py
 ```
 
-This will run your python script every time the Raspberry Pi reboots. If you want your command to be run in the background while the Raspberry Pi continues starting up, add a space and `&` at the end of the line, like this:
+This will run your Python script every time the Raspberry Pi reboots. If you want your command to be run in the background while the Raspberry Pi continues starting up, add a space and `&` at the end of the line, like this:
 
 ```
 @reboot python /home/pi/myscript.py &
