@@ -2,13 +2,13 @@
 
 Any device connected to a Local Area Network is assigned an IP address.
 
-In order to connect to your Raspberry Pi from another machine using [SSH](../../../remote-access/ssh/README.md) or [VNC](../../../remote-access/vnc/README.md), you need to know the Pi's IP address. This is easy if you have a display connected, and there are a number of methods for finding it remotely from another machine on the network.
+In order to connect to your Raspberry Pi from another machine using [SSH](ssh/README.md) or [VNC](vnc/README.md), you need to know the Pi's IP address. This is easy if you have a display connected, and there are a number of methods for finding it remotely from another machine on the network.
 
 ## Using the Pi with a display
 
 If you boot to the command line instead of the desktop, your IP address should be shown in the last few messages before the login prompt.
 
-Using the terminal (boot to the command line or open LXTerminal from the desktop), simply type `hostname -I` which will reveal your Pi's IP address.
+Using the terminal (boot to the command line or open a Terminal window from the desktop), simply type `hostname -I` which will reveal your Pi's IP address.
 
 ## Using the Pi headless (without a display)
 
@@ -36,7 +36,7 @@ Now you have the IP address of your computer, you will scan the whole subnet for
 
 Now use the `nmap` command with the `-sn` flag (ping scan) on the whole subnet range. This may take a few seconds:
 
-```
+```bash
 nmap -sn 192.168.1.0/24
 ```
 

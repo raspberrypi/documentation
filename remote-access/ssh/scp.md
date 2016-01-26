@@ -2,7 +2,7 @@
 
 `scp` is a command for sending files over SSH. This means you can copy files between computers, say from your Raspberry Pi to your desktop or laptop, or vice-versa.
 
-First of all, you'll need to know your Raspberry Pi's [IP address](../../troubleshooting/hardware/networking/ip-address.md).
+First of all, you'll need to know your Raspberry Pi's [IP address](../ip-address.md).
 
 ## Copying files to your Raspberry Pi
 

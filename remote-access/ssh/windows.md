@@ -10,7 +10,7 @@ It doesn't have an installer package, it's just a standalone `.exe` file. When y
 
 Type the IP address of the Pi into the `Host Name` field and click the `Open` button. If nothing happens for a while when you click the `Open` button and eventually see a message saying `Network error: Connection timed out` it's likely that you've entered the wrong IP address for the Pi.
 
-If you don't know the IP address just type `hostname -I` in the Raspberry Pi command line. See [more methods](../../troubleshooting/hardware/networking/ip-address.md) of finding your IP address.
+If you don't know the IP address just type `hostname -I` in the Raspberry Pi command line. See [more methods](../ip-address.md) of finding your IP address.
 
 When the connection works you'll see this security warning (below), you can safely ignore it and click the Yes button. You'll only see this warning the first time when PuTTY connects to a Pi that it has never seen before.
 

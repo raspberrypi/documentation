@@ -26,7 +26,6 @@
 | Vertical field of view | 41.41 +/- 0.11 degress |
 | Focal ratio (F-Stop) | 2.9 |
 
-
 ## Hardware Features
 
 | Available | Implemented |

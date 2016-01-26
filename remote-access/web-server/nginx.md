@@ -20,7 +20,7 @@ sudo /etc/init.d/nginx start
 
 ## Test the web server
 
-By default, NGINX puts a test HTML file in the web folder. This default web page is served when you browse to `http://localhost/` on the Pi itself, or `http://192.168.1.10` (whatever the Pi's IP address is) from another computer on the network. To find the Pi's IP address, type `hostname -I` at the command line (or read more about finding your [IP address](../../troubleshooting/hardware/networking/ip-address.md)).
+By default, NGINX puts a test HTML file in the web folder. This default web page is served when you browse to `http://localhost/` on the Pi itself, or `http://192.168.1.10` (whatever the Pi's IP address is) from another computer on the network. To find the Pi's IP address, type `hostname -I` at the command line (or read more about finding your [IP address](../ip-address.md)).
 
 Browse to the default web page either on the Pi or from another computer on the network and you should see the following:
 
@@ -41,10 +41,11 @@ sudo apt-get install php5-fpm
 
 ```bash
 cd /etc/nginx
-sudo nano sites-enabled/default 
+sudo nano sites-enabled/default
 ```
 
-find the line 
+find the line
+
 ```
 index index.html index.htm;
 ```
@@ -60,9 +61,9 @@ index index.php index.html index.htm;
 Scroll down until you find a section with the following content:
 
 ```
-	# pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
-	#
-	# location ~ \.php$ {
+# pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+#
+# location ~ \.php$ {
 ```
 
 Edit by removing the `#` characters on the following lines:
@@ -74,7 +75,6 @@ location ~ \.php$ {
 	fastcgi_index index.php;
 	include fastcgi.conf;
 }
-
 ```
 
 It should look like this:
@@ -119,6 +119,6 @@ sudo nano index.php
 Add some dynamic PHP content by replacing the current content:
 ```php
 <?php echo phpinfo(); ?>
-``` 
+```
 
 Save and refresh your browser. You should see a page with the PHP version, logo and current configuration settings.

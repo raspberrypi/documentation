@@ -31,7 +31,7 @@ In general, every device supported by Linux is possible to use with the Pi, subj
 
 If you have a device and wish to use it with a Pi, then plug it in. Chances are that it'll "just work". If you are running in a graphical interface (such as the LXDE desktop environment in Raspbian), then it's likely that an icon or similar will pop up announcing the new device.
 
-If the device doesn't appear to work, then refer to the Troubleshooting section.
+If the device doesn't appear to work, then refer to the Troubleshooting section below.
 
 <a name="genlimits"></a>
 ### General limitations

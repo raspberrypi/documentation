@@ -10,7 +10,7 @@ Download the latest FileZilla Client version for your operating system from [fil
 
 Launch FileZilla and go to `File > Site manager`.
 
-Fill in the IP address, user name and password (by default the user name is `pi` and the password `raspberry`) of your Raspberry Pi in the dialog and choose `SFTP` as the protocol.
+Fill in the [IP address](../ip-address.md), user name and password (by default the user name is `pi` and the password `raspberry`) of your Raspberry Pi in the dialog and choose `SFTP` as the protocol.
 
 Click `Connect` and you will see the home folder of the user.
 
@@ -27,5 +27,3 @@ Port: 22 (default)
 User name: pi (default)
 Password: raspberry (default)
 ```
-
-See [IP address](../../troubleshooting/hardware/networking/ip-address.md).
