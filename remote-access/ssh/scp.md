@@ -18,17 +18,17 @@ scp myfile.txt pi@192.168.1.3:project/
 
 ## Copying files from your Raspberry Pi
 
-Copy the the `myfile.txt` from your Raspberry Pi to the current directory on your other computer:
+Copy the `myfile.txt` from your Raspberry Pi to the current directory on your other computer:
 
 ```bash
 scp pi@192.168.1.3:myfile.txt .
 ```
 
-Copy the the `myfile.txt` from your Raspberry Pi to your other computer:
+Copy the `myfile.txt` from your Raspberry Pi to your other computer:
 
 ## Copying multiple files
 
-Copy multiple files by space separating them:
+Copy multiple files by separating them with spaces:
 
 ```bash
 scp myfile.txt myfile2.txt pi@192.168.1.3:
