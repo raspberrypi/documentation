@@ -1,1 +1,0 @@
-# SD Card Issues
