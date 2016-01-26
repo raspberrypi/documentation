@@ -2,6 +2,8 @@
 
 `scp` is a command for sending files over SSH. This means you can copy files between computers, say from your Raspberry Pi to your desktop or laptop, or vice-versa.
 
+First of all, you'll need to know your Raspberry Pi's [IP address](../../troubleshooting/hardware/networking/ip-address.md).
+
 ## Copying files to your Raspberry Pi
 
 Copy the file `myfile.txt` from your computer to the `pi` user's home folder of your Raspberry Pi at the IP address `192.168.1.3` with the following command:
@@ -10,7 +12,7 @@ Copy the file `myfile.txt` from your computer to the `pi` user's home folder of 
 scp myfile.txt pi@192.168.1.3:
 ```
 
-To copy the file to the `/home/pi/project/` directory on your Raspberry Pi (the `project` folder must already exist):
+Copy the file to the `/home/pi/project/` directory on your Raspberry Pi (the `project` folder must already exist):
 
 ```bash
 scp myfile.txt pi@192.168.1.3:project/
@@ -23,8 +25,6 @@ Copy the `myfile.txt` from your Raspberry Pi to the current directory on your ot
 ```bash
 scp pi@192.168.1.3:myfile.txt .
 ```
-
-Copy the `myfile.txt` from your Raspberry Pi to your other computer:
 
 ## Copying multiple files
 
