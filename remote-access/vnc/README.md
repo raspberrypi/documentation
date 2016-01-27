@@ -18,7 +18,7 @@ sudo apt-get install tightvncserver
 tightvncserver
 ```
 
-- Start a VNC server from the terminal. Since a desktop ist typically already running we stop it first:
+- Start a VNC server from the terminal. Since a desktop is typically already running we stop it first:
 
 ```
 service lightdm stop
@@ -30,7 +30,8 @@ service lightdm stop
 vncserver :0 -geometry 1920x1080 -depth 24
 ```
 
-- Alternatively you could start the VNC server at a different display (e.g. ```:1```) but this would normally be a waste of resources.
+- Alternatively you could start the VNC server at a different display (e.g. ```:1```) in which case there is no need to stop lightdm.
+- In this case you have two X sessions running which would normally be a waste of resources.
 - Now, on your computer, install and run the VNC client:
 
   - On a Linux machine install the package `xtightvncviewer`:
