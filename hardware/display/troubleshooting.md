@@ -80,7 +80,7 @@ This is probably also a side-effect of overscan being enabled, try the solution 
 
 ### My screen isn't working with my old Model B or Model A Pi
 
-At the moment Raspbian isn't compatible with the Model A or B Pi and Touchscreen combo. This will be fixed in time.
+The Model A or B Pi need a couple of extra connections, and an extra line of config. Please see section "Attaching to Model A/B boards" of [the main display page](Readme.md).
 
 ### Some windows are cut off at the bottom of the screen so I can't use them!
 
