@@ -18,12 +18,19 @@ sudo apt-get install tightvncserver
 tightvncserver
 ```
 
-- Start a VNC server from the terminal. This example starts a session on VNC display zero (```:0```) with full HD resolution:
+- Start a VNC server from the terminal:  This example starts a session on VNC display one (```:1```) with full HD resolution:
 
 ```
-vncserver :0 -geometry 1920x1080 -depth 24
+vncserver :1 -geometry 1920x1080 -depth 24
 ```
 
+Note that since by default an X session is started on display zero, you will get an error in case you use ```:0```.
+
+- Since there are now two X sessions running, which would normally be a waste of resources, it is suggested to stop the displaymanager running on ```:0``` using
+
+```
+service lightdm stop
+```
 - Now, on your computer, install and run the VNC client:
 
   - On a Linux machine install the package `xtightvncviewer`:
@@ -40,7 +47,7 @@ You can create a simple file with the command to run the VNC server on the Pi, t
 
 ```
 #!/bin/sh
-vncserver :0 -geometry 1920x1080 -depth 24 -dpi 96
+vncserver :1 -geometry 1920x1080 -depth 24 -dpi 96
 ```
 
 - Save this as ```vnc.sh``` (for example)
@@ -96,12 +103,12 @@ case "$1" in
  start)
   echo "Starting VNC Server"
   #Insert your favoured settings for a VNC session
-  su - pi -c "/usr/bin/vncserver :0 -geometry 1280x800 -depth 16 -pixelformat rgb565"
+  su - $USER -c "/usr/bin/vncserver :1 -geometry 1280x800 -depth 16 -pixelformat rgb565"
   ;;
 
  stop)
   echo "Stopping VNC Server"
-  /usr/bin/vncserver -kill :0
+  /usr/bin/vncserver -kill :1
   ;;
 
  *)
@@ -124,25 +131,14 @@ chmod 755 vncboot
 - Enable dependency-based boot sequencing:
 
 ```
-update-rc.d /etc/init.d/vncboot defaults
+update-rc.d lightdm remove
+update-rc.d vncboot defaults
 ```
 
 - If enabling dependency-based boot sequencing was successful, you will see this:
 
 ```
 update-rc.d: using dependency based boot sequencing
-```
-
-- But if you see this:
-
-```
-update-rc.d: error: unable to read /etc/init.d//etc/init.d/vncboot
-```
-
-- then try the following command:
-
-```
-update-rc.d vncboot defaults
 ```
 
 - Reboot your Raspberry Pi and you should find a VNC server already started.
