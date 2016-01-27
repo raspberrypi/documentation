@@ -24,7 +24,7 @@ tightvncserver
 vncserver :1 -geometry 1920x1080 -depth 24
 ```
 
-- Note: Since by default an X session is started on display zero you will get an error in case you use ```:0```.
+- Since by default an X session is started on display zero you will get an error in case you use ```:0```.
 - Since there are now two X sessions running, which would normally be a waste of resources, it is suggested to stop the displaymanager on ```:0``` using
 - 
 ```
