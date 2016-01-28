@@ -8,4 +8,4 @@ Technical information about the Raspberry Pi hardware, including official add-on
 - [Camera Module](camera.md)
 - [Compute Module](computemodule/README.md)
 - [Sense HAT](sense-hat/README.md)
-- [Display](display/Readme.md)
+- [Display](display/README.md)
