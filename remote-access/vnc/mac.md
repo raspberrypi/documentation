@@ -1,7 +1,7 @@
 ## Connecting to a Pi over VNC using Mac OS
 
-For Mac OS you will not need any extra software. Just select ``Go -> Connect to server ...`` (&#8984; K) from the Finder menue and enter
-``vnc://raspberrypi.local:1`` as the Server Address and click ``Connect``. Here the ``:1`` must correspond to the display on which you started the vnc server on your pi. In case of problems you could also try to replace ``raspberrypi.local`` the the IP address of your pi.
+For Mac OS you will not need any extra software. Just select ``Go -> Connect to server ...`` (&#8984; K) from the Finder menu and enter
+``vnc://raspberrypi.local:1`` as the Server Address and click ``Connect``. Here ``:1`` must correspond to the display on which you started the vnc server on your pi. In case of problems you could also try to replace ``raspberrypi.local`` by the IP address of your pi.
 
 Alternatively you can use a program called RealVNC which is known to work with the Raspberry Pi VNC server, it can be downloaded from [realvnc.com](http://www.realvnc.com/download/vnc/latest)
 
