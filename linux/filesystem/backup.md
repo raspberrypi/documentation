@@ -58,7 +58,7 @@ This will create an image file on your PC which you can use to write to another 
 sudo dd bs=4M if=raspbian.img of=/dev/sdb
 ```
 
-These files can be very large, and compress well. To compress, you can pipe the output of ```dd``` to ```gzip``` as well to get a compressed file that is significantly smaller than the original size:
+These files can be very large, and compress well. To compress, you can pipe the output of `dd` to `gzip` as well to get a compressed file that is significantly smaller than the original size:
 
 ```bash
 sudo dd bs=4M if=/dev/sdb | gzip > rasbian.img.gz
