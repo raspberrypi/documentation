@@ -64,6 +64,12 @@ chmod +x vnc.sh
 ./vnc.sh
 ```
 
+- If your prefer your mouse pointer in the VNC client to appear as an arrow as opposed to an "x" which is default, in ```./vnc/xstartup``` add the following parameter to ```xsetroot``` 
+
+```
+-cursor_name left_ptr
+```
+
 To run at boot:
 
 - Log into a terminal on the Pi as root:
