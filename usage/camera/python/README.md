@@ -4,6 +4,10 @@
 
 Also see the [camera setup](README.md) page.
 
+## Enable the camera
+
+Run `sudo raspi-config` and choose in the menu to enable the pi camera. A reboot is needed after this.
+
 ## Installation
 
 The `python-picamera` library is available in the Raspbian archives. Install with `apt`:
