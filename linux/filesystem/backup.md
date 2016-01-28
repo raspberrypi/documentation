@@ -58,6 +58,8 @@ This will create an image file on your PC which you can use to write to another 
 sudo dd bs=4M if=raspbian.img of=/dev/sdb
 ```
 
+To save space, you can use `sudo dd bs=4M if=/dev/sda | zip > raspbian.img.zip` to compress it and `unzip raspbian.img.zip | sudo dd bs=4M of=/dev/sda` to decompress it. You can use other other data compression tools such as `gzip` for speed and `xz` for better compression.
+
 See more about [installing SD card images](../../installation/installing-images/README.md).
 
 ## Automation
