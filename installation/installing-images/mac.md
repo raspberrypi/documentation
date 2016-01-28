@@ -15,6 +15,9 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
     ```
 
     Remember to replace `n` with the number that you noted before!
+    
+    This will take a few minutes, depending on the image file size.
+    You can check the progress by sending a `SIGINFO` signal pressing <kbd>Ctrl</kbd>+<kbd>T</kbd>.
 
    - If this command fails, try using `disk` instead of `rdisk`:
     
