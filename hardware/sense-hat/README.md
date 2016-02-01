@@ -16,17 +16,15 @@ In order to work correctly, the Sense HAT requires an up to date kernel, I2C ena
     sudo apt-get install sense-hat
     ```
 
-1. The python-sense-hat library requires pillow to be installed in order to work under Python 3:
-
-    ```bash
-    sudo pip-3.2 install pillow
-    ```
-
 1. Finally, a reboot may be required if I2C was disabled or the kernel was not up to date prior to the install:
 
     ```bash
     sudo reboot
     ```
+
+## Hardware
+
+The schematics can be found [here](images/Sense-HAT-V1_0.pdf).
 
 ## Software overview
 
@@ -61,6 +59,7 @@ The LED matrix is an RGB565 [framebuffer](https://www.kernel.org/doc/Documentati
 The joystick comes up as an input event device named "Raspberry Pi Sense HAT Joystick", mapped to the arrow keys and enter. It should be supported by any library which is capable of handling inputs or directly through the [evdev interface](https://www.kernel.org/doc/Documentation/input/input.txt). Suitable libraries include SDL, [pygame](http://www.pygame.org/docs/) and [python-evdev](https://python-evdev.readthedocs.org/en/latest/). The included 'snake' example shows how to access the joystick directly.
 
 ## Calibration
+
 Taken from this [forum post](https://www.raspberrypi.org/forums/viewtopic.php?f=104&t=109064&p=750616#p810193)
 
 Install some software and run the calibration programe.
@@ -119,20 +118,74 @@ Now press lower case `x` to exit the program.
 If you run the ls command now you'll see a new RTIMULib.ini file has been created.
 
     ls
-    
+
 In addition to those steps, you can also do the ellipsoid fit, repeat the steps above byt press `e` instead of `m`.
 
 When you're done, copy the resulting RTIMULib.ini to /etc/ and remove the local copy in ~/.config/sense_hat/
 
     rm ~/.config/sense_hat/RTIMULib.ini
     sudo cp RTIMULib.ini /etc
-    
+
 You are now done.
 
 ## Updating the AVR firmware
 
 ...
 
-## Updating the EEPROM data
+## EEPROM data
 
-...
+*These steps may not work on all models of the Raspberry Pi*
+
+1. Enable I2C0 and I2C1 by adding the following line to `/boot/config.txt`:
+
+    ```
+    dtparam=i2c_vc=on
+    dtparam=i2c_arm=on
+    ```
+1. Enter the following command to reboot:
+
+    ```bash
+    sudo systemctl reboot
+    ```
+1. Download and build the flash tool:
+
+    ```bash
+    git clone https://github.com/raspberrypi/hats.git
+    cd hats/eepromutils
+    make
+    ```
+
+### Reading
+
+1. EEPROM data can be read with the following command:
+
+    ```bash
+    sudo ./eepflash.sh -f=sense_read.eep -t=24c32 -r
+    ```
+
+### Writing
+
+1. Download EEPROM settings and build the .eep binary:
+
+    ```bash
+    wget https://github.com/raspberrypi/rpi-sense/raw/master/eeprom/eeprom_settings.txt -O sense_eeprom.txt
+    ./eepmake sense_eeprom.txt sense.eep /boot/overlays/rpi-sense-overlay.dtb
+    ```
+
+1. Disable write protection:
+
+    ```bash
+    i2cset -y -f 1 0x46 0xf3 1
+    ```
+
+1. Write the EEPROM data:
+
+    ```bash
+    sudo ./eepflash.sh -f=sense.eep -t=24c32 -w
+
+    ```
+1. Re-enable write protection:
+
+    ```bash
+    i2cset -y -f 1 0x46 0xf3 0
+    ```
