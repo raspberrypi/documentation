@@ -58,7 +58,7 @@ If your Pi does not have an .ssh directory you will need to set one up so that y
 
 ```
 cd ~
-mkdir .ssh
+install -d -m 700 ~/.ssh
 touch .ssh/authorized_keys
 ```
 
