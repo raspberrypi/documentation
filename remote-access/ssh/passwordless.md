@@ -59,7 +59,6 @@ If your Pi does not have an .ssh directory you will need to set one up so that y
 ```
 cd ~
 install -d -m 700 ~/.ssh
-touch .ssh/authorized_keys
 ```
 
 To copy your public key to your Raspberry Pi, use the following command to append the public key to your `authorized_keys` file on the Pi, sending it over SSH:
