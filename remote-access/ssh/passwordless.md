@@ -57,7 +57,6 @@ ssh-rsa <REALLY LONG STRING OF RANDOM CHARACTERS> eben@pi
 If your Pi does not have an .ssh directory you will need to set one up so that you can copy the key from your computer.
 
 ```
-cd ~
 install -d -m 700 ~/.ssh
 ```
 
@@ -67,10 +66,10 @@ To copy your public key to your Raspberry Pi, use the following command to appen
 cat ~/.ssh/id_rsa.pub | ssh <USERNAME>@<IP-ADDRESS> 'cat >> .ssh/authorized_keys'
 ```
 
-The `authorized_keys` file will be created for you.  Prevent it from being executed by running:
+The `authorized_keys` file will be created for you.  Give read and write permissions only for the current user:
 
 ```
-chmod 600 .ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
 ```
 
 Note that this time you will have to authenticate with your password.
