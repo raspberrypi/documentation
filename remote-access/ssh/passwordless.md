@@ -67,6 +67,12 @@ To copy your public key to your Raspberry Pi, use the following command to appen
 cat ~/.ssh/id_rsa.pub | ssh <USERNAME>@<IP-ADDRESS> 'cat >> .ssh/authorized_keys'
 ```
 
+The `authorized_keys` file will be created for you.  Prevent it from being executed by running:
+
+```
+chmod 600 .ssh/authorized_keys
+```
+
 Note that this time you will have to authenticate with your password.
 
 Now try `ssh <USER>@<IP-ADDRESS>` and you should connect without a password prompt.
