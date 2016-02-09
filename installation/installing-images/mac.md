@@ -39,7 +39,7 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
 
     `sudo dd bs=1m if=image.img of=/dev/rdisk<disk# from diskutil>`
 
-    e.g. `sudo dd bs=1m if=2016-02-03-raspbian-jessie.img of=/dev/rdisk4`
+    e.g. `sudo dd bs=1m if=2016-02-09-raspbian-jessie.img of=/dev/rdisk4`
 
     - This may result in an ``dd: invalid number '1m'`` error if you have GNU
     coreutils installed. In that case you need to use ``1M``:
@@ -52,11 +52,11 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
     - If this command still fails, try using `disk` instead of `rdisk`:
     
        ```
-       e.g. `sudo dd bs=1m if=2016-02-03-raspbian-jessie.img of=/dev/disk4`
+       e.g. `sudo dd bs=1m if=2016-02-09-raspbian-jessie.img of=/dev/disk4`
        ```
        or
        ```
-       e.g. `sudo dd bs=1M if=2016-02-03-raspbian-jessie.img of=/dev/disk4`
+       e.g. `sudo dd bs=1M if=2016-02-09-raspbian-jessie.img of=/dev/disk4`
        ```
 
 ## Alternative method
@@ -78,7 +78,7 @@ These commands and actions need to be performed from an account that has adminis
 - Using the device name of the partition, work out the raw device name for the entire disk by omitting the final "s1" and replacing "disk" with "rdisk". This is very important as you will lose all data on the hard drive if you provide the wrong device name. Make sure the device name is the name of the whole SD card as described above, not just a partition of it (for example, rdisk3, not rdisk3s1). Similarly, you might have another SD drive name/number like rdisk2 or rdisk4; you can check again by using the `df -h` command both before and after you insert your SD card reader into your Mac. For example, `/dev/disk3s1` becomes `/dev/rdisk3`.
 - In the terminal, write the image to the card with this command, using the raw disk device name from above. Read the above step carefully to be sure you use the correct rdisk number here:
     ```
-    sudo dd bs=1m if=2016-02-03-raspbian-jessie.img of=/dev/rdisk3
+    sudo dd bs=1m if=2016-02-09-raspbian-jessie.img of=/dev/rdisk3
     ```
 
     If the above command reports an error (`dd: bs: illegal numeric value`), please change `bs=1m` to `bs=1M`.
