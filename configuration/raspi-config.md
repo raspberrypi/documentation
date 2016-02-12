@@ -178,7 +178,7 @@ Use this button when you have completed your changes. You will be asked whether 
 
 ## Development of this tool
 
-See this tool's source at [github.com/asb/raspi-config](https://github.com/asb/raspi-config), where you can open issues and create pull requests.
+See this tool's source at [github.com/RPi-Distro/raspi-config](https://github.com/RPi-Distro/raspi-config), where you can open issues and create pull requests.
 
 ---
 
