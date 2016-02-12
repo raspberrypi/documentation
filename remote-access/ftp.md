@@ -1,10 +1,10 @@
 # FTP
 
-FTP (File Transfer Protocol) can be used to transfer files between a Raspberry Pi and another computer. Although with default program `sftp-server` of Raspbian the users with sufficient privilege can transfer files or directories, access to the filesystem of the limited users is also required oftenly. Follow the steps below to set up an FTP server:
+FTP (File Transfer Protocol) can be used to transfer files between a Raspberry Pi and another computer. Although with default program `sftp-server` of Raspbian the users with sufficient privilege can transfer files or directories, access to the filesystem of the limited users is also required often. Follow the steps below to set up an FTP server:
 
 ## Install Pure-FTPd
 
-Firstly install `Pure-FTPd` using the following command line in Terminal:
+First, install `Pure-FTPd` using the following command line in Terminal:
 
 ```bash
 sudo apt-get install pure-ftpd
@@ -12,7 +12,7 @@ sudo apt-get install pure-ftpd
 
 ## Basic Configurations
 
-We need to creat a new user group named `ftpgroup` and a new user named `ftpuser` for FTP users, and make sure this "user" has NO log in privilge and NO home directory:
+We need to create a new user group named `ftpgroup` and a new user named `ftpuser` for FTP users, and make sure this "user" has NO log in privilge and NO home directory:
 
 ```bash
 groupadd ftpgroup
@@ -27,7 +27,7 @@ For instance, make a new directory named `FTP` for the first user:
 sudo mkdir /home/pi/FTP
 ```
 
-Make sure the directory is accessable for `ftpuser`:
+Make sure the directory is accessible for `ftpuser`:
 
 ```bash
 sudo chown -R ftpuser:ftpgroup /home/pi/FTP
@@ -71,21 +71,21 @@ Type `yes`, and press ``Ctrl+X``, ``Y``, and ``Enter``.
 
 Likewise,
 
-make a file named `NoAnonymous` and type `yes`;
+Make a file named `NoAnonymous` and type `yes`;
 
-make a file named `AnonymousCantUpload` and type `yes`;
+Make a file named `AnonymousCantUpload` and type `yes`;
 
-make a file named `AnonymousCanCreateDirs` and type `no`;
+Make a file named `AnonymousCanCreateDirs` and type `no`;
 
-make a file named `DisplayDotFiles` and type`no`;
+Make a file named `DisplayDotFiles` and type`no`;
 
-make a file named `DontResolve` and type `yes`;
+Make a file named `DontResolve` and type `yes`;
 
-make a file named `ProhibitDotFilesRead` and type `yes`;
+Make a file named `ProhibitDotFilesRead` and type `yes`;
 
-make a file named `ProhibitDotFilesWrite` and type `yes`;
+Make a file named `ProhibitDotFilesWrite` and type `yes`;
 
-make a file named `FSCharset` and type`UTF-8`;
+Make a file named `FSCharset` and type`UTF-8`;
 
 ...
 
