@@ -1,12 +1,12 @@
 # Updating the Kernel
 
-If you are using the Raspberry Pi stock kernel, your system can be kept up to date by the `rpi-update` utility:
+It is highly recommended to update your kernel as part of your regular system updates instead of manually updating it.
 
-```
-$ sudo rpi-update
-```
+The Raspberry Pi Foundation kernel is part of the `raspberrypi-bootloader` package. This package also contains the necessary bootloader files for the Broadcom chip.
 
-This will install the latest packages, including the Linux kernel image. You will have to reboot your Pi after upgrading the kernel to switch to the updated kernel.
+You can also manually update the Rasperry Pi stock kernel, but this is not recommended. The `rpi-update` utility will download the latest version and copy all files into your system. Make sure it does not conflict with your distribution packages. It does not provide a way of automatically uninstalling the files.
+
+You will have to reboot your Pi after upgrading the kernel to switch to the updated kernel.
 
 If you are using a compiled kernel you will need to [rebuild](building.md) your kernel again.
 
