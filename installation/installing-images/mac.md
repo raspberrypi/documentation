@@ -2,6 +2,15 @@
 
 On Mac OS you have the choice of the command line `dd` tool or using the graphical tool ImageWriter to write the image to your SD card.
 
+## Completely graphical interface
+- Connect the SD card reader with the SD card inside.
+- Install ApplePi-Baker from http://www.tweaking4all.com/hardware/raspberry-pi/macosx-apple-pi-baker/
+- Select device from list (Pi-Crust)
+- Prep the card for NOOBS (Prepare)
+- Select the IMG file you downloaded earlier
+- Click Resotre Backup
+- Wait for Baking IMG Recipe to complete
+
 ## (Mostly) graphical interface
 
 - Connect the SD card reader with the SD card inside. Note that it must be formatted in FAT32.
