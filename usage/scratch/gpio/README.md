@@ -12,7 +12,7 @@ Before you can use the GPIO pins you *must* start the GPIO server. There are sev
 - A Scratch broadcast of `gpioserveron` or `gpioserveroff` will have the obvious effect.
 - Projects saved when the GPIO server is running will have that status recorded and on loading will try to start the server if it is enabled.
 
-Without any further setup you now have access to the basics of the GPIO system. This currently uses the Broadcast blocks. For instance, to configure GPIO pin 4 as an out put and turn it on you create the two following broadcasts:
+Without any further setup you now have access to the basics of the GPIO system. This currently uses the Broadcast blocks. For instance, to configure GPIO pin 4 as an output and turn it on you create the two following broadcasts:
 
 ![broadcast config4 out gpio4on](images/config-on.png)
 
@@ -70,7 +70,7 @@ The basic gpio layer command list is
     + outputpwm to set as a pwm pin
 example `config12in`  
 - gpio + pin number + [ on | high | off | low ]
-example `gpio17on`
+example `gpio17on`p
 - gpio + pin number + pwm + [ 0..1024 ] \(we can use the software driven pwm output facility)
 example `gpio22pwm522`
 - gettime
@@ -88,13 +88,32 @@ Each card has its own set of commands layered on top of the basic gpio facilitie
 Many cards can also make sensible use of the Scratch variable broadcast facility, whereby a suitably named variable is created and its value gets broadcast when it changes. For example, for a PiGlow board it makes sense to have variables named for each led or ring of leds and to set the value as a way of controlling the brightness. It is quite possible to cause confusion with ill-considered use of both forms of control at the same time; broadcasting `myCommand400` in the same script as setting `myValue` to 200 might well result in flickering or apparent non-function or perhaps even hardware failure in extreme cases. All you need to do to use this is create a variable of the appropriate name and set its value.
 Some cards provide inputs that can be accessed via the sensor variables as shown above in the example usage of pin 11.
 
+#### PiGlow
+The little PiGlow board has several rings of brightly coloured LEDs that can be controlled as rings, legs, individually or all together. Beware that it can be a bit bright to look at and a diffuser is a good idea.
+Set `AddOn` to `PiGlow`.
+PiGlow has quite a few commands
+- `leg + leg number [ 1 | 2 | 3 ] + [ on | high | off | low ]` i.e. `leg2off`
+- `arm` - as leg
+- `all +  [ on | high | off | low ]`
+- `[ led | light ] + led number +  [ on | high | off | low ]` i.e. light12high
+- `bright + [ 0 .. 255 ]` ( sets the brightness multiplier for any subsequent  led on command)
+- `[ red | orange | yellow | green | blue | white ] +  [ on | high | off | low ]` i.e. redlow
+
+and for variables
+
+- bright = ( 0 .. 255)
+- [ leg | arm ] + [ 1 | 2 | 3 ] = (0 .. 255)
+- [ led | light ] + led number (1..18) = (0 .. 255)
+- [ red | orange | yellow | green | blue | white ] = ( 0 .. 255)
+- ledpattern = (an 18 character string treated as a binary number as in ‘011111101010101010’ where anything non 0 is considered a 1)
 #### PiFace
 
-The Piface Digital card provides 8 digital inputs and 8 digital outputs, with the first 4 inputs having parallel switches and the first 2 outputs having 20v/5A relays. There is an observed problem with the inputs being flighty to say the least, and merely holding a finger near the input terminal blocks appears to cause flickering of the read values.
+The Piface Digital card provides 8 digital inputs and 8 digital outputs, with the first 4 inputs having parallel switches and the first 2 outputs having 20v/5A relays. 
+Set `AddOn` to `PiFace` to activate.
 PiFace has just two commands -
 
 - `all + [ on | off]`
-- `output + output number + [ on | high | off | low ]`
+- `output + output number + [ on | high | off | low ]` i.e. output6on
 
 and one variable command  
 - `output + [ 0 .. 7 ] = (0 |1 )` - the value is rounded and subjected to max/min  limiting so -1 rounds up to 0, 400000000 rounds down to 1
@@ -103,10 +122,12 @@ There are also the 8 input sensor variables named `Input1` to `Input8` which hav
 
 #### Pibrella
 
-This provides a nice big red button, three large LEDs, four digital inputs, four digital outputs and a loudly obnoxious buzzer. The commands are
+This provides a nice big red button, three large LEDs, four digital inputs, four digital outputs and a loudly obnoxious buzzer. 
+Set `AddOn` to `Pibrella`.
+The commands are
 
-- `[ red | yellow | green ] + [ on | high | off | low ]`
-- `Buzzer + (0 .. 4000)`
+- `[ red | yellow | green ] + [ on | high | off | low ]` i.e. `yellowhigh`
+- `Buzzer + (0 .. 4000)` i.e. `buzzer2100`
 - `Output + [ E | F | G | H ] + [ on | high | off | low ]`
 
 Variables offered are
@@ -119,19 +140,21 @@ The inputs A,B,C,D, and of course the fabulous BigRedButton are provided as sens
 
 #### Explorer HAT Pro
 
-This card is a bit more of a challenge to drive since it has  parts that are plain gpio connected and parts that are i2c connected.
+This card is a bit more of a challenge to drive since it has  parts that are simply gpio connected and parts that are i2c connected.
 
-- LEDs
-- Output connectors
-- Input connectors
-- Motor driver (2 off)
-- ADCs (4 off)
+- 4 LEDs
+- 4 5v output connectors
+- 4 buffered input connectors
+- 2 H-bridge motor drivers
+- 4 analogue inputs
+- 4 capacitive input pads
 
+Set `AddOn` to `ExplorerHAT`.
 The commands currently operational are
 
 - `led + led number ( 1 .. 3) +  [ on | high | off | low ]`
 - `output + input number ( 1 .. 3) +  [ on | high | off | low ]`
-- `motor + motor number (1|2) + speed + (0..100)` - motor speed is set as a percentage.
+- `motor + motor number (1|2) + speed + (0..100)` - motor speed is set as a percentage i.e. `motor1speed42`
 
 They have matching variable forms
 
@@ -155,25 +178,27 @@ The sensors measure
 - magnetometer/compass
 - mini-joystick actions left/right/up/down/return
 
+Set `AddOn` to `SenseHAT`.
 Commands supported
 
 - `clearleds` - sets all LEDs to background colour
 - `ledbackground`
 - `ledforeground` - set the background & foreground colours for the string & graph commands to use. Colour is specified with either
-    + a name from the list `red cyan blue gray black white green brown orange yellow magenta palered paletan lightred paleblue palebuff darkgray lightblue…`
+    + a name from the list `red cyan blue gray black white green brown orange yellow magenta palered paletan lightred paleblue palebuff darkgray lightblue…` ie `ledforegroundcyan`
     + an html style six hex digit number `#RRGGBB`
 - `ledscrollspeed` - number of milliseconds delay per step of scrolling a string
-- `ledscrollstring` - scroll the following string with the previously set foreground & background colours
+- `ledscrollstring` - scroll the following string with the previously set foreground & background colours i.e. `ledscrollstringHelloWorld`
 - `ledshowchar` - show just a single character with the previously set foreground & background colours
-- `ledbargraph12345678` - make a simple bar graph of up to 8 digits (values 0..8) with the previously set foreground & background colours
-- `ledshowsprite+name of sprite` - display the named sprite on the LEDs; the sprite is centred over the 8x8 array and so you may see very little of a large sprite.
+- `ledbargraph` + 8 digits - make a simple bar graph of up to 8 digits (values 0..8) with the previously set foreground & background colours i.e. `ledbargraph20614590`
+- `ledshowsprite+name of sprite` - display the named sprite on the LEDs; the sprite is centred over the 8x8 array and so you may see very little of a large sprite i.e `ledshowspriteSprite1`
 
 The accelerometer, gyro & compass raw & scaled X,Y,Z values are available as sensor variables but are not at all well calibrated as yet. The maths to convert them to useful integrated values remains to be done.
 
 #### PiLite
 
-This card provides a simple array of while LEDs that can be addressed individually or treated as a scrolling text display, a bargraph or a vu meter. It works via the gpio serial port and presents some interesting challenges despite its apparent simplicity.
+This card provides a simple array of while LEDs that can be addressed individually or treated as a scrolling text display, a bargraph or a vu meter. It works via the gpio serial port and presents some interesting challenges despite its apparent simplicity, not least in setting up the serial connection.
 
+Set `AddOn` to `PiLite`.
 Commands currently supported
 
 - `allon`, `alloff`
@@ -181,9 +206,14 @@ Commands currently supported
 - `bargraph[1..14],[1-100]` sets the bar shown on one of the 14 columns of leds to represent the percentage.
 - `vumeter[1|2],[1…100]`
 
-#### RyanTeck & Pololu motor controller
+#### RyanTeck,  Pololu and CamJam Edukit 3 motor controller
 
-Both of these little cards can drive two DC motors. Though they work quite differently they share the same commands.
+These little cards can drive two DC motors. 
+Set `AddOn` to 
+- `RyanTek001` for the RyanTek board
+- `Pololu8835` for the Pololu board
+- `EdukitMotorBoard` for the CamJam board
+Though they work quite differently they share the same commands.
 
 - `motor + motor number (1|2) + speed + value (-100..100)`
 
@@ -195,7 +225,7 @@ And matching variable forms
 
 In the Scratch `Examples` directory (found via the `File->open` dialogue and the `Examples` shortcut) you will find a `Motors and Sensors` directory; several new gpio scripts are included.
 
-- `gpio-demo` - shown above, this is a test of all the basics.
+- `gpio-demo` - shown in the picture above, this is a test of all the basics.
     + Connect a breadboard to your Pi.
     + connect an led to gpio 18 with a 220ohm resistor to ground
     + connect an led to gpio 24 with a 220ohm resistor to ground
@@ -223,4 +253,4 @@ to the file, where X is:
    - `1` - to enable the GPIO server but leave it turned off; this is the default when there is no .scratch.ini file
    - `2` - to both enable and start the server, perhaps useful in a classroom when the lesson will be about GPIO use
 
-Note that the older mesh/network server setup is currently semi-hidden under the Share menu - you have to hold down the shift key whilst opening that menu.
+Note that the older mesh/network server setup is currently semi-hidden under the Share menu - you have to hold down the shift key whilst opening that menu. It works exactly as before and still conencts to external socket based servers.
