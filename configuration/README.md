@@ -1,6 +1,6 @@
 # Configuration
 
-Some basic guides to configuring your Raspberry Pi
+Some basic guides to configuring your Raspberry Pi.
 
 ## Contents
 
@@ -15,8 +15,8 @@ Some basic guides to configuring your Raspberry Pi
 - [Camera Config](camera.md)
     - Installing and setting up the Raspberry Pi camera board.
 - [Localisation](localisation.md)
-    - Setting up your Pi to work in your local language / timezone / etc.
+    - Setting up your Pi to work in your local language/timezone.
 - [Default pin configuration](pin-configuration.md)
     - Changing the default pin states.
 - [Device Trees Config](device-tree.md)
-    - Device Trees, Overlays and Parameters.
+    - Device Trees, overlays and parameters.
