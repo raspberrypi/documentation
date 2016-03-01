@@ -6,7 +6,7 @@ The Raspberry Pi should work with any SD-compatible cards, although there are so
 - SD card class. The card class determines the sustained write speed for the card; a class 4 card will be able to write at 4MB/s, whereas a class 10 should be able to attain 10 MB/s. However it should be noted that this does not mean a class 10 card will outperform a class 4 card for general usage, because often this write speed is achieved at the cost of read speed and increased seek times.
 - SD card physical size. The original [Raspberry Pi Model A](https://www.raspberrypi.org/products/model-a/) and [Raspberry Pi Model B](https://www.raspberrypi.org/products/model-b/) require full-size SD cards. The newer [Raspberry Pi Model A+](https://www.raspberrypi.org/products/model-a-plus/), [Raspberry Pi Model B+](https://www.raspberrypi.org/products/model-b-plus/) and [Raspberry Pi 2 Model B](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/) require micro-SD cards.
 
-We recommend buying the [Raspberry Pi SD card](http://swag.raspberrypi.org/products/noobs-8gb-sd-card); this is an 8GB class 6 microSD card (with a full-size SD adaptor) that outperforms almost all other SD cards on the market and is a good value solution.
+We recommend buying the Raspberry Pi SD card, which is available [here](https://shop.pimoroni.com/products/noobs-8gb-sd-card), as well as from other retailers; this is an 8GB class 6 microSD card (with a full-size SD adaptor) that outperforms almost all other SD cards on the market and is a good value solution.
 
 If you are having trouble with corruption of your SD cards, make sure you follow these steps:
 
