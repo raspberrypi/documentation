@@ -162,7 +162,7 @@ They have matching variable forms:
 - `output + led number  = (0 |1 )`
 - `motor + motor number (0|1) = (0..100)`
 
-There are also sensor variables `Input1` to `Input4` with values (0|1), and the four ADC pins (1 .. 4) with values +-6.1V. If the signal is derived from a pot connected to the Explorer HAT's 5V/GND, then the range is (0 .. ~5).
+There are also sensor variables `Input1` to `Input4` with values (0|1), and the four ADC pins (1 .. 4) with values +-6.1V. If the signal is derived from a potentiometer connected to the Explorer HAT's 5V/GND, then the range is (0 .. ~5).
 
 Note that the capacitive input pads are not yet operational, requiring some library level support.
 
