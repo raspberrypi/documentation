@@ -8,8 +8,6 @@ The most common is through command line tool APT (Advanced Packaging Tool), and 
 
 - [APT](apt.md)
     - Use `apt-get install` to install software from the Raspbian archives
-- [Pi Store](pi-store.md)
-    - The Pi Store is an application found on the Raspbian desktop, which provides a graphical interface to installing community contributed software and games
 - [Python](python.md)
     - Some Python software can be installed using a Python package manager such as `pip`
 - [Ruby](ruby.md)
