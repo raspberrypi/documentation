@@ -565,10 +565,6 @@ Wait for a given number of seconds in `start.elf` before loading the kernel; the
 
 Wait for a given number of milliseconds in `start.elf`, together with `boot_delay`, before loading the kernel. The default value is `0`.
 
-### avoid_safe_mode
-
-If set to `1`, [safe_mode](http://elinux.org/RPI_safe_mode) boot won't be enabled. The default value is `0`.
-
 ### disable_splash
 
 If set to `1`, don't show the rainbow splash screen on boot. The default value is `0`.
