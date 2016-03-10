@@ -34,5 +34,5 @@ end
 
 desc "Test the build"
 task :test do
-  HTMLProofer.check_directory(BUILD_DIR, { :ext => ".md", :directory_index_file => "README.md" }).run
+  HTMLProofer.check_directory(BUILD_DIR, { :extension => ".md", :directory_index_file => "README.md" }).run
 end
