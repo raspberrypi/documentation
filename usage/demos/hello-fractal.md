@@ -1,6 +1,6 @@
 # Hello Fractal
 
-This one displays two superimposed fractals, one on top of the other. You can move the mouse to change the shape of the fractal in real time. This is also intended to demonstrate OpenGL ES rendering. Some of you may recognise that this is the [Mandelbrot fractal](http://en.wikipedia.org/wiki/Mandelbrot_set).
+This one displays two superimposed fractals, one on top of the other. You can move the mouse to change the shape of the fractal in real time. This is also intended to demonstrate OpenGL ES rendering. Some of you may recognise that this is the [Mandelbrot fractal](https://en.wikipedia.org/wiki/Mandelbrot_set).
 
 ![Mandelbrot fractal](images/mandelbrot.jpg)
 
