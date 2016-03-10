@@ -1,6 +1,6 @@
 # Hello Teapot
 
-This displays a spinning teapot with the video clip from `hello_video` texture-mapped onto its surface. It's pretty impressive! You may recognise the teapot model if you’re familiar with a piece of software called [Blender] (http://en.wikipedia.org/wiki/Blender_(software)). This demonstrates OpenGL ES rendering and video decoding/playback at the same time.
+This displays a spinning teapot with the video clip from `hello_video` texture-mapped onto its surface. It's pretty impressive! You may recognise the teapot model if you’re familiar with a piece of software called [Blender] (https://en.wikipedia.org/wiki/Blender_(software)). This demonstrates OpenGL ES rendering and video decoding/playback at the same time.
 
 ![Teapot](images/teapot.jpg)
 

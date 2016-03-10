@@ -150,7 +150,7 @@ overscan_bottom=24
 
 #### hdmi_ignore_edid
 
-Setting this to `0xa5000080` enables the ignoring of EDID/display data if your display doesn't have an accurate [EDID](http://en.wikipedia.org/wiki/Extended_display_identification_data). It requires this unusual value to ensure that it doesn't get triggered accidentally.
+Setting this to `0xa5000080` enables the ignoring of EDID/display data if your display doesn't have an accurate [EDID](https://en.wikipedia.org/wiki/Extended_display_identification_data). It requires this unusual value to ensure that it doesn't get triggered accidentally.
 
 #### hdmi_edid_file
 
@@ -394,7 +394,7 @@ The `edid.dat` should also be provided when troubleshooting problems with the de
 
 ### Custom mode
 
-If your monitor requires a mode that is not in one of the tables above, then it's possible to define a custom [CVT](http://en.wikipedia.org/wiki/Coordinated_Video_Timings) mode for it instead:
+If your monitor requires a mode that is not in one of the tables above, then it's possible to define a custom [CVT](https://en.wikipedia.org/wiki/Coordinated_Video_Timings) mode for it instead:
 
     hdmi_cvt=<width> <height> <framerate> <aspect> <margins> <interlace> <rb>
 
@@ -621,7 +621,7 @@ Disables dynamic frequency clocking, so that all frequencies and voltages stay h
 
 ### Clocks relationship
 
-The GPU core, h264, v3d, and ISP blocks all share a [PLL](http://en.wikipedia.org/wiki/Phase-locked_loop#Clock_generation) and therefore need to have related frequencies. The CPU, SDRAM and GPU each have their own PLLs and can have unrelated frequencies; for more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=275#p168042).
+The GPU core, h264, v3d, and ISP blocks all share a [PLL](https://en.wikipedia.org/wiki/Phase-locked_loop#Clock_generation) and therefore need to have related frequencies. The CPU, SDRAM and GPU each have their own PLLs and can have unrelated frequencies; for more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=275#p168042).
 
 The frequencies are calculated as follows:
 

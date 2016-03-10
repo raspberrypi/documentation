@@ -1,4 +1,7 @@
 language: ruby
+sudo: false
+git:
+  depth: 10
 rvm:
 - 2.1
 before_install:
