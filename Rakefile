@@ -1,7 +1,7 @@
 require "rubygems"
 require "rake"
 require "redcarpet"
-require "html/proofer"
+require "html-proofer"
 
 BUILD_DIR = "./_build"
 
