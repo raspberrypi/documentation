@@ -157,6 +157,8 @@ You are now done.
 
 ### Writing
 
+*Please note that this operation is potentially dangerous. If an error occurs during these steps, the HAT may no longer be automatically detected.*
+
 1. Download EEPROM settings and build the `.eep` binary:
 
     ```bash
