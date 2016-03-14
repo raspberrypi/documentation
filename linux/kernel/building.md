@@ -30,7 +30,7 @@ KERNEL=kernel
 make bcmrpi_defconfig
 ```
 
-### Raspberry Pi 2 Default Build Configuration
+### Raspberry Pi 2/3 Default Build Configuration
 
 ```bash
 cd linux
@@ -49,7 +49,7 @@ sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
 sudo scripts/mkknlimg arch/arm/boot/zImage /boot/$KERNEL.img
 ```
 
-Note: On a Raspberry Pi 2, adding `-j4` (`make -j4 zImage modules dtbs`) splits the work between all four cores, speeding up compilation significantly.
+Note: On a Raspberry Pi 2/3, adding `-j4` (`make -j4 zImage modules dtbs`) splits the work between all four cores, speeding up compilation significantly.
 
 ## Cross-compiling
 
@@ -67,7 +67,7 @@ git clone https://github.com/raspberrypi/tools
 ```
 
 You can then copy the toolchain to a common location such as `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian`, and add `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin` to your $PATH in the .bashrc in your home directory.
-For 64bit, use /tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin.
+For 64-bit host systems, use /tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin.
 While this step is not strictly necessary, it does make it easier for later command lines!
 
 ### Get sources
@@ -91,7 +91,7 @@ KERNEL=kernel
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
 ```
 
-For Pi 2:
+For Pi 2/3:
 
 ```bash
 cd linux
