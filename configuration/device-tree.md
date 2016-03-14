@@ -34,7 +34,7 @@ The main impact of using Device Tree is to change from *everything on*, relying 
 
 A Device Tree (DT) is a description of the hardware in a system. It should include the name of the base CPU, its memory configuration, and any peripherals (internal and external). A DT should not be used to describe the software, although by listing the hardware modules it does usually cause driver modules to be loaded. It helps to remember that DTs are supposed to be OS-neutral, so anything which is Linux-specific probably shouldn't be there.
 
-Device Trees represents the hardware configuration as a hierarchy of nodes. Each node may contain properties and subnodes. Properties are named arrays of bytes, which may contain strings, numbers (big-endian), arbitrary sequences of bytes, and any combination thereof. By analogy with a filesystem, nodes are directories and properties are files. The locations of nodes and properties within the tree can be described using a path, with slashes as separators and a single slash (`/`) to indicate the root.
+A Device Tree represents the hardware configuration as a hierarchy of nodes. Each node may contain properties and subnodes. Properties are named arrays of bytes, which may contain strings, numbers (big-endian), arbitrary sequences of bytes, and any combination thereof. By analogy with a filesystem, nodes are directories and properties are files. The locations of nodes and properties within the tree can be described using a path, with slashes as separators and a single slash (`/`) to indicate the root.
 
 <a name="part1.1"></a>
 ### 1.1: Basic DTS syntax
@@ -182,7 +182,7 @@ A modern SoC (System-on-Chip) is a very complicated device; a complete Device Tr
 
 But when a system like Raspberry Pi supports optional plug-in accessories, such as HATs, the problem grows further. Ultimately, each possible configuration requires a Device Tree to describe it, but once you factor in different base hardware (models A, B, A+, and B+) and gadgets only requiring the use of a few GPIO pins that can coexist, the number of combinations starts to multiply rapidly.
 
-What is needed is a way to describe these optional components using partial Device Tree, and then to be able to build a complete tree by taking a base DT and adding a number of optional elements. Well, you can, and these optional elements are called "overlays".
+What is needed is a way to describe these optional components using a partial Device Tree, and then to be able to build a complete tree by taking a base DT and adding a number of optional elements. Well, you can, and these optional elements are called "overlays".
 
 <a name="part2.1"></a> 
 ### 2.1: Fragments
@@ -417,7 +417,7 @@ Note that it is even possible to target properties of different types with a sin
 <a name="part2.2.6"></a> 
 #### 2.2.6: Further overlay examples
 
-There is a growing collection of overlay source files hosted in the Raspberry Pi/Linux GitHub repository [here](https://github.com/raspberrypi/linux/tree/rpi-3.18.y/arch/arm/boot/dts/overlays).
+There is a growing collection of overlay source files hosted in the Raspberry Pi/Linux GitHub repository [here](https://github.com/raspberrypi/linux/tree/rpi-4.1.y/arch/arm/boot/dts/overlays).
 
 <a name="part3"></a> 
 ## Part 3: Using Device Trees on Raspberry Pi
