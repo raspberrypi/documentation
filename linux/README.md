@@ -31,8 +31,6 @@ Explanation of some fundamental Linux usage and commands for getting around the 
 - [Software](software/README.md)
     - [APT](software/apt.md)
         - Installing software with APT
-    - [Pi Store](software/pi-store.md)
-        - Installing software from the Pi Store
     - [Python](software/python.md)
         - Installing software using a Python package manager such as `pip`
     - [Ruby](software/ruby.md)
