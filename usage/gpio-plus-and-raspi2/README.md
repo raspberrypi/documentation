@@ -1,4 +1,4 @@
-# GPIO: Models A+, B+ and Raspberry Pi 2
+# GPIO: Models A+, B+, Raspberry Pi 2 B and Raspberry Pi 3 B
 
 ### An introduction to GPIO and physical computing on the Raspberry Pi
 
