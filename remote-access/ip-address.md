@@ -28,7 +28,7 @@ The `nmap` command (Network Mapper) is a free and open-source tool for network d
 
 To use `nmap` to scan the devices on your network, you need to know the subnet you are connected to. First find your own IP address, in other words the one of the computer you're using to find your Pi's IP address:
 
-- On **Linux** (or **Mac OS** terminal), type `hostname -I` into a terminal window
+- On **Linux**, type `hostname -I` into a terminal window
 - On **Mac OS**, go to `System Preferences` then `Network` and select your active network connection to view the IP address
 - On **Windows**, go to the Control Panel, then under `Network and Sharing Center`, click `View network connections`, select your active network connection and click `View status of this connection` to view the IP address
 
