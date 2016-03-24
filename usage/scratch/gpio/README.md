@@ -238,7 +238,7 @@ In the Scratch `Examples` directory (found via the `File->Open` dialogue and the
     + connect an LED to GPIO 24 with a 220ohm resistor to ground
     + connect a normally open button to GPIO 22 and ground
     + start the GPIO server
-    + click on the green Go button to initalise pin config
+    + click on the green Go button to initialise pin config
     + ‘o’ will loop and if the button is pressed, it should turn on the LED attached to GPIO 24 and dimly light the other LED, otherwise both should be off
     + ‘p’ will gradually brighten the LED attached to GPIO 18, then make it fully bright and take a photo with an attached Pi camera module.
     + other blocks show how to read the time, find the machine IP number, etc

@@ -87,7 +87,7 @@ including the Compute Module, to set up the alternative settings correctly. The 
 
 5. `pin_defines`
 
-   This section is used to set specific VideoCore functionality to particular pins. This enables the user to move the camera power enable pin to somewhere different, or move the HDMI hotplug postion; in other words, things that Linux has no control over. Please refer to the example DTS file below.
+   This section is used to set specific VideoCore functionality to particular pins. This enables the user to move the camera power enable pin to somewhere different, or move the HDMI hotplug position; in other words, things that Linux has no control over. Please refer to the example DTS file below.
 
 ## Clock configuration
 
