@@ -47,13 +47,13 @@ sudo apt-get install python-pip
 
 `pip-3.2` installs modules for Python 3 and `pip` installs modules for Python 2.
 
-For example, the folowing command installs the Pibrella library for Python 3:
+For example, the following command installs the Pibrella library for Python 3:
 
 ```bash
 pip-3.2 install pibrella
 ```
 
-and the folowing command installs the Pibrella library for Python 2:
+and the following command installs the Pibrella library for Python 2:
 
 ```bash
 pip install pibrella
