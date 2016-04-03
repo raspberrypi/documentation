@@ -1,6 +1,6 @@
-# Playing audio on the Raspberry Pi
+# 在Raspberry Pi 3 上面播放音频文件(.mp3)。
 
-To play an MP3 file, navigate to the location of the .mp3 file in the terminal using `cd` and then type the following command: 
+要播放一个MP3 文件, 在终端中使用'cd'命令，导航到 .mp3 文件所在的位置，然后输入以下命令: 
 
 ```bash
 omxplayer example.mp3
