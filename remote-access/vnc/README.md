@@ -67,7 +67,7 @@ You can create a simple file with the command to run the VNC server on the Pi, t
     ./vnc.sh
     ```
 
-- If you prefer your mouse pointer in the VNC client to appear as an arrow as opposed to an "x" which is default, in `./vnc/xstartup` add the following parameter to `xsetroot`:
+- If you prefer your mouse pointer in the VNC client to appear as an arrow as opposed to an "x" which is default, in `/home/pi/.vnc/xstartup` add the following parameter to `xsetroot`:
 
     ```bash
     -cursor_name left_ptr
