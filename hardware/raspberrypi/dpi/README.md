@@ -1,6 +1,6 @@
 # DPI (Parallel Display Interface)
 
-An up-to-24-bit parallel RGB interface is available one all Raspberry Pi boards with the 40 way header (A+,B+,Pi2,Pi3,Zero) and Compute Moudule. This interface allows parellel RGB displays to be attached to the Raspberry Pi GPIO either in RGB24 (8 bits for Red, green abd Blue) or RGB666 (6 bits per colour).
+An up-to-24-bit parallel RGB interface is available on all Raspberry Pi boards with the 40 way header (A+,B+,Pi2,Pi3,Zero) and Compute Moudule. This interface allows parallel RGB displays to be attached to the Raspberry Pi GPIO either in RGB24 (8 bits for red, green and blue) or RGB666 (6 bits per colour).
 
 This interface is controlled by the GPU firmware and can be programmed by a user via special config.txt parameters and by enabling the correct Linux Device Tree overlay.
 
@@ -10,9 +10,7 @@ One of the alternate functions selectable on Bank 0 of the Raspbery Pi GPIO is D
 
 ![DPI Alternate GPIO function](dpi-altfn2.png)
 
-For more detailed pinning information (what alternate functions are available on which GPIO) use the raspi-gpio tool on a recent Raspbian distribution with the funcs argument to dump the alternate function table.
-
-Note that there are varous ways that the colour values can be presented on the DPI output pins in either 565, 666 or 24-bit modes (see the following table and the `otutput_format` part of the `dpi_output_format` parameter below):
+Note that there are various ways that the colour values can be presented on the DPI output pins in either 565, 666 or 24-bit modes (see the following table and the `otutput_format` part of the `dpi_output_format` parameter below):
 
 ![DPI Colour Ouptut](dpi-packing.png)
 
@@ -27,7 +25,7 @@ dtparam=spi=off
 
 ## Controlling Output Format
 
-The output format (clock, colour format, sync polarity, enable) can be controlled with a magic number (unsigned integer) passed to the `dpi_output_format` parameter in config.txt created from the following fields:
+The output format (clock, colour format, sync polarity, enable) can be controlled with a magic number (unsigned integer or hex value prefixed with 0x) passed to the `dpi_output_format` parameter in config.txt created from the following fields:
 
 ```
 output_format          = (dpi_output_format >>  0) & 0xf;
@@ -79,13 +77,13 @@ the `dpi_group` and `dpi_mode` config.txt parameters are used to set either pred
 To generate a custom HDMI mode start here:
 https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=24679
 
-If you set up a custom hdmi mode, then in config.txt use:
+If you set up a custom HDMI mode, then in config.txt use:
 ```
 dpi_group=2
 dpi_mode=87
 ```
 
-which will use the custom hdmi timings for DPI.
+which will use the custom HDMI timings for DPI.
 
 The other option is to use the hdmi_timings config.txt parameter to set the HDMI (DPI) timings directly. You still need the `dpi_group=2` and `dpi_mode=87` parameters in config.txt 
 
@@ -166,7 +164,7 @@ enable_dpi_lcd=1
 display_default_lcd=1
 dpi_group=2
 dpi_mode=87
-dpi_output_format=454661
+dpi_output_format=0x6f005
 hdmi_timings=800 0 40 48 88 480 0 13 3 32 0 0 0 60 0 32000000 6
 ```
 
