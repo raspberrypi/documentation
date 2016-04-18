@@ -18,3 +18,5 @@ The hardware in the Raspberry Pi
     - General Purpose Input/Output pins on the Raspberry Pi
 - [SPI](spi/README.md)
     - SPI on the Raspberry Pi
+- [DPI (Parallel/RGB Display)](dpi/README.md)
+    - DPI on the Raspberry Pi
