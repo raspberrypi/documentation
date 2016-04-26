@@ -16,7 +16,7 @@ Note that there are various ways that the colour values can be presented on the 
 
 ## Disable other GPIO peripherals
 
-NOTE that all other peripheral overlays that use conflicting GPIO pins must be disabled. In config.txt, take care to comment out or invert any dtparams that enable I2C, SPI:
+Note that all other peripheral overlays that use conflicting GPIO pins must be disabled. In config.txt, take care to comment out or invert any dtparams that enable I2C or SPI:
 
 ```
 dtparam=i2c_arm=off
@@ -61,18 +61,28 @@ rgb_order:
    3: DPI_RGB_ORDER_GRB
    4: DPI_RGB_ORDER_BRG
 
-output_enable_mode                 : 0: DPI_OUTPUT_ENABLE_MODE_DATA_VALID  1: DPI_OUTPUT_ENABLE_MODE_COMBINED_SYNCS
-invert_pixel_clock                 : 0: RGB Data changes on rising edge and is stable at falling edge  1: RGB Data changes on falling edge and is stable at rising edge.
-hsync/vsync/output_enable_polarity : 0: default for HDMI mode  1: inverted
-hsync/vsync/oe phases              : 0: DPI_PHASE_POSEDGE  1: DPI_PHASE_NEGEDGE
+output_enable_mode:
+   0: DPI_OUTPUT_ENABLE_MODE_DATA_VALID
+   1: DPI_OUTPUT_ENABLE_MODE_COMBINED_SYNCS
 
+invert_pixel_clock:
+   0: RGB Data changes on rising edge and is stable at falling edge
+   1: RGB Data changes on falling edge and is stable at rising edge.
+
+hsync/vsync/output_enable_polarity:
+   0: default for HDMI mode
+   1: inverted
+
+hsync/vsync/oe phases:
+   0: DPI_PHASE_POSEDGE
+   1: DPI_PHASE_NEGEDGE
 ```
 
 NB the single bit fields all act as an "invert default behaviour".
 
 ## Controlling Timings / Resolutions
 
-the `dpi_group` and `dpi_mode` config.txt parameters are used to set either predetermined modes (DMT or CEA modes as used by HDMI) or a user can generate custom modes.
+The `dpi_group` and `dpi_mode` config.txt parameters are used to set either predetermined modes (DMT or CEA modes as used by HDMI) or a user can generate custom modes.
 
 To generate a custom HDMI mode start here:
 https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=24679
@@ -87,7 +97,7 @@ which will use the custom HDMI timings for DPI.
 
 The other option is to use the hdmi_timings config.txt parameter to set the HDMI (DPI) timings directly. You still need the `dpi_group=2` and `dpi_mode=87` parameters in config.txt 
 
-The hdmi_timings parameters are specified as a space delimited set of parameters:
+The hdmi_timings parameters are specified as a space-delimited set of parameters:
 
 ```
 hdmi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> <h_back_porch> <v_active_lines> <v_sync_polarity> <v_front_porch> <v_sync_pulse> <v_back_porch> <v_sync_offset_a> <v_sync_offset_b> <pixel_rep> <frame_rate> <interlaced> <pixel_freq> <aspect_ratio>
@@ -128,9 +138,9 @@ A Linux Device Tree overlay is used to switch the GPIO pins into the correct mod
 
 A 'full fat' DPI overlay (dpi24.dtb) is provided which sets all 28 GPIOs to ALT2 mode, providing the full 24 bits of colour bus as well as the h and v-sync, enable and pixel clock. Note this uses *all* of the bank 0 GPIO pins.
 
-A second overlay (vga666.dtb) is provided for driving VGA monitor signals in 666 mode which don't need the clock and DE pins (GPIO 0 and 1) and only require GPIOs 4-21 for colour (using mode 5)
+A second overlay (vga666.dtb) is provided for driving VGA monitor signals in 666 mode which don't need the clock and DE pins (GPIO 0 and 1) and only require GPIOs 4-21 for colour (using mode 5).
 
-These overlys are fairly trivial and a user can edit them to create a custom overlay to enable just the pins required for the specific use case. For example if one was using a DPI display using vsync, hsync, pclk and de but in RGB565 mode (mode 2) then the dpi24.dtb overlay could be edited so that GPIOs 20-27 were not switched to DPI mode and hence could be used for other purposes. 
+These overlays are fairly trivial and a user can edit them to create a custom overlay to enable just the pins required for their specific use case. For example if one was using a DPI display using vsync, hsync, pclk and de but in RGB565 mode (mode 2) then the dpi24.dtb overlay could be edited so that GPIOs 20-27 were not switched to DPI mode and hence could be used for other purposes.
 
 ## Example config.txt settings
 
@@ -172,4 +182,4 @@ hdmi_timings=800 0 40 48 88 480 0 13 3 32 0 0 0 60 0 32000000 6
 
 Many thanks goes to authors of the following examples!
 
-[How to attach an LCD screen to a Pi] (http://blog.reasonablycorrect.com/raw-dpi-raspberry-pi/) - NOTE that the author in this example compiles a dt-blob.bin file which is now unecessary, please use the relevant Linux device tree overlay.
+[How to attach an LCD screen to a Pi](http://blog.reasonablycorrect.com/raw-dpi-raspberry-pi/) - Note that the author in this example compiles a dt-blob.bin file which is now unecessary, please use the relevant Linux device tree overlay.
