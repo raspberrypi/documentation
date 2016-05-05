@@ -140,7 +140,7 @@ To run at boot:
 - Enable dependency-based boot sequencing:
 
     ```bash
-    update-rc.d lightdm remove
+    update-rc.d -f lightdm remove
     update-rc.d vncboot defaults
     ```
 
