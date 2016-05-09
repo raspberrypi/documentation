@@ -5,7 +5,7 @@ Technical information about the Raspberry Pi hardware, including official add-on
 ## Contents
 
 - [Raspberry Pi](raspberrypi/README.md)
-- [Camera Module](camera.md)
+- [Camera Module](camera/README.md)
 - [Compute Module](computemodule/README.md)
 - [Sense HAT](sense-hat/README.md)
 - [Display](display/README.md)

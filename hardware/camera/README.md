@@ -1,30 +1,34 @@
-# Camera
+# Camera Module
 
-| | |
-| --- | --- |
-| Net price | $25 |
-| Size | around 25 x 24 x 9 mm |
-| Weight | 3g |
-| Still resolution | 5 Megapixels |
-| Video modes | 1080p30, 720p60 and 640x480p60/90 |
-| Linux integration | V4L2 driver available |
-| C programming API | OpenMAX IL and others available |
-| Sensor | OmniVision OV5647 |
-| Sensor resolution | 2592 x 1944 pixels |
-| Sensor image area | 3.76 x 2.74 mm |
-| Pixel size | 1.4 µm x 1.4 µm |
-| Optical size	| 1/4" |
-| Full-frame SLR lens equivalent | 35 mm |
-| S/N ratio | 36 dB |
-| Dynamic range | 67 dB @ 8x gain |
-| Sensitivity | 680 mV/lux-sec |
-| Dark current | 16 mV/sec @ 60 C |
-| Well capacity | 4.3 Ke- |
-| Fixed focus | 1 m to infinity|
-| Focal length | 3.60 mm +/- 0.01 |
-| Horizontal field of view | 53.50  +/- 0.13 degrees |
-| Vertical field of view | 41.41 +/- 0.11 degress |
-| Focal ratio (F-Stop) | 2.9 |
+The Raspberry Pi camera module is an official product from the Raspberry Pi Foundation. The original 5-megapixel model was [released](https://www.raspberrypi.org/blog/camera-board-available-for-sale/) in 2013, and an 8-megapixel V2 was [released](https://www.raspberrypi.org/blog/new-8-megapixel-camera-board-sale-25/) in 2016. For both iterations of the camera there are visible light and infra-red versions.
+
+## Hardware specification
+
+| | Camera V1 | Camera V2 |
+| --- | --- | --- |
+| Net price | $25 | $25 |
+| Size | around 25 x 24 x 9 mm | |
+| Weight | 3g | |
+| Still resolution | 5 Megapixels | 8 Megapixels |
+| Video modes | 1080p30, 720p60 and 640x480p60/90 | 1080p30, 720p60 and 640x480p60/90 |
+| Linux integration | V4L2 driver available | V4L2 driver available |
+| C programming API | OpenMAX IL and others available | OpenMAX IL and others available |
+| Sensor | OmniVision OV5647 | [Sony IMX219](http://www.sony.net/Products/SC-HP/new_pro/april_2014/imx219_e.html) |
+| Sensor resolution | 2592 x 1944 pixels | 3280 x 2464 pixels |
+| Sensor image area | 3.76 x 2.74 mm | |
+| Pixel size | 1.4 µm x 1.4 µm | |
+| Optical size	| 1/4" | |
+| Full-frame SLR lens equivalent | 35 mm | |
+| S/N ratio | 36 dB | |
+| Dynamic range | 67 dB @ 8x gain | |
+| Sensitivity | 680 mV/lux-sec | |
+| Dark current | 16 mV/sec @ 60 C | |
+| Well capacity | 4.3 Ke- | |
+| Fixed focus | 1 m to infinity | |
+| Focal length | 3.60 mm +/- 0.01 | |
+| Horizontal field of view | 53.50  +/- 0.13 degrees | |
+| Vertical field of view | 41.41 +/- 0.11 degrees | |
+| Focal ratio (F-Stop) | 2.9 | |
 
 ## Hardware features
 
@@ -56,7 +60,7 @@
 
 ## Software features
 
-Full camera software documentation can be found at [raspbian/applications/camera](../raspbian/applications/camera.md).
+Full camera software documentation can be found at [raspbian/applications/camera](../../raspbian/applications/camera.md).
 
 | | |
 | --- | --- |
@@ -68,3 +72,7 @@ Full camera software documentation can be found at [raspbian/applications/camera
 | Automatic white balance modes | off, auto, sun, cloud, shade, tungsten, fluorescent, incandescent, flash, horizon |
 | Triggers | Keypress, UNIX signal, timeout |
 | Extra modes | demo, burst/timelapse, circular buffer, video with motion vectors, segmented video, live preview on 3D models |
+
+## Mechanical drawing
+
+- Camera module V2 [PDF](rpi-cam-v2_1-dimensions.pdf)
