@@ -51,11 +51,11 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
     - If this command still fails, try using `disk` instead of `rdisk`, for example:
     
        ```
-       `sudo dd bs=1m if=2016-03-18-raspbian-jessie.img of=/dev/disk4`
+       sudo dd bs=1m if=2016-03-18-raspbian-jessie.img of=/dev/disk4
        ```
        or
        ```
-       `sudo dd bs=1M if=2016-03-18-raspbian-jessie.img of=/dev/disk4`
+       sudo dd bs=1M if=2016-03-18-raspbian-jessie.img of=/dev/disk4
        ```
 
 ## Alternative method

@@ -41,7 +41,7 @@ make bcm2709_defconfig
 Build and install the kernel, modules and Device Tree blobs; this step takes a **long** time...
 
 ```bash
-make zImage modules dtbs
+make -j4 zImage modules dtbs
 sudo make modules_install
 sudo cp arch/arm/boot/dts/*.dtb /boot/
 sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
@@ -49,7 +49,7 @@ sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
 sudo scripts/mkknlimg arch/arm/boot/zImage /boot/$KERNEL.img
 ```
 
-Note: On a Raspberry Pi 2/3, adding `-j4` (`make -j4 zImage modules dtbs`) splits the work between all four cores, speeding up compilation significantly.
+Note: On a Raspberry Pi 2/3, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
 
 ## Cross-compiling
 
