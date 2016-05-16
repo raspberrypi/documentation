@@ -10,4 +10,4 @@ Based on a work at https://github.com/raspberrypi/documentation/tree/master/usag
 
 GPIO diagrams provided under CC BY SA from [Fritzing](http://fritzing.org/home/).
 
-GPIO pins photo based on [Raspberry Pi 2 Model B v1.1 top new (bg cut out)](http://commons.wikimedia.org/wiki/File:Raspberry_Pi_2_Model_B_v1.1_top_new_%28bg_cut_out%29.jpg#mediaviewer/File:Raspberry_Pi_2_Model_B_v1.1_top_new_%28bg_cut_out%29.jpg) by Multicherry. Licensed under CC BY-SA 4.0 via Wikimedia Commons
+GPIO pins photo based on [Raspberry Pi 2 Model B v1.1 top new (bg cut out)](https://commons.wikimedia.org/wiki/File:Raspberry_Pi_2_Model_B_v1.1_top_new_%28bg_cut_out%29.jpg) by Multicherry. Licensed under CC BY-SA 4.0 via Wikimedia Commons
