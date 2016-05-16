@@ -29,4 +29,4 @@ Libraries for using the camera are available in:
 - [Shell](raspicam/README.md) (Linux command line)
 - [Python](python/README.md)
 
-See detailed [technical specs](../../hardware/camera.md) of the camera hardware and software.
+See detailed [technical specs](../../hardware/camera/README.md) of the camera hardware and software.
