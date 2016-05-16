@@ -171,7 +171,7 @@ The `status` property indicates whether a device is enabled or disabled. If the 
 
 Here are some articles about writing Device Trees:
 
-- [devicetree.org/Device_Tree_Usage](http://devicetree.org/Device_Tree_Usage)
+- [http://elinux.org/Device_Tree_Usage](http://elinux.org/Device_Tree_Usage)
 - [elinux.org/...](http://elinux.org/images/4/48/Experiences_With_Device_Tree_Support_Development_For_ARM-Based_SOC%27s.pdf)
 - [power.org/...](https://www.power.org/download.php?popup=1&file=7920&referer=/documentation/epapr-version-1-1/) (requires registration...)
 
