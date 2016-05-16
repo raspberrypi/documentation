@@ -67,7 +67,7 @@ The configuration of Pure-FTPd is simple and intuitive. The administrator only n
 sudo nano /etc/pure-ftpd/conf/ChrootEveryone
 ```
 
-Type `yes`, and press ``Ctrl+X``, ``Y``, and ``Enter``.
+Type `yes`, and press `Ctrl + X`, `Y`, and Enter.
 
 Likewise,
 
