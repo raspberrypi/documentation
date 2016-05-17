@@ -629,7 +629,7 @@ The loading of overlays at runtime is a recent addition to the kernel, and so fa
 
 * Some overlays work better at run-time than others. Parts of the Device Tree are only used at boot time - changing them using an overlay will not have any effect.
 
-* Applying or removing some overlays may cause unexpected behaviour, so it should be done with caution. This is one of the reaons it requires `sudo`.
+* Applying or removing some overlays may cause unexpected behaviour, so it should be done with caution. This is one of the reasons it requires `sudo`.
 
 * Unloading the overlay for an ALSA card can stall if something is actively using ALSA - the LXPanel volume slider plugin demonstrates this effect. To enable overlays for sound cards to be removed, the `lxpanelctl` utility has been given two new options -- `alsastop` and `alsastart` -- and these are called from the auxilliary scripts dtoverlay-pre and dtoverlay-post before and after overlays are loaded or unloaded, respectively.
 
