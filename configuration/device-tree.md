@@ -637,6 +637,8 @@ The loading of overlays at runtime is a recent addition to the kernel, and so fa
 
 * Overlays have to be removed in reverse order. The commands will allow you to remove an earlier one, but all the intermediate ones will be removed and re-applied, which may have unintended consequences.
 
+* Adding clocks under the /clocks node at run-time doesn't cause a new clock provider to be registered, so `devm_clk_get` will fail for a clock created in an overlay.
+
 <a name="part3.6"></a>
 ### 3.6: Supported overlays and parameters
 
