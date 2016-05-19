@@ -119,20 +119,22 @@ sdb
    sdb2
 ```
 
+with `sdb1` being the FAT (boot) partition, and `sdb2` being the ext4 filesystem (root) partition.
+
 If it is a NOOBS card you should see something like this:
 
 ```
 sdb
   sdb1
   sdb2
-  sdb3
   sdb5
   sdb6
+  sdb7
 ```
 
-In the first case `sdb1/sdb5` is the FAT partition, and `sdb2/sdb6` is the ext4 filesystem image (NOOBS).
+with `sdb6` being the FAT (boot) partition, and `sdb7` being the ext4 filesystem (root) partition.
 
-Mount these first:
+Mount these first: (adjust the partition numbers for NOOBS cards)
 
 ```bash
 mkdir mnt/fat32
@@ -140,8 +142,6 @@ mkdir mnt/ext4
 sudo mount /dev/sdb1 mnt/fat32
 sudo mount /dev/sdb2 mnt/ext4
 ```
-
-Adjust the partition numbers for the NOOBS images.
 
 Next, install the modules:
 
