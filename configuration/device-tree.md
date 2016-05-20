@@ -631,7 +631,7 @@ The loading of overlays at runtime is a recent addition to the kernel, and so fa
 
 * Applying or removing some overlays may cause unexpected behaviour, so it should be done with caution. This is one of the reasons it requires `sudo`.
 
-* Unloading the overlay for an ALSA card can stall if something is actively using ALSA - the LXPanel volume slider plugin demonstrates this effect. To enable overlays for sound cards to be removed, the `lxpanelctl` utility has been given two new options -- `alsastop` and `alsastart` -- and these are called from the auxilliary scripts dtoverlay-pre and dtoverlay-post before and after overlays are loaded or unloaded, respectively.
+* Unloading the overlay for an ALSA card can stall if something is actively using ALSA - the LXPanel volume slider plugin demonstrates this effect. To enable overlays for sound cards to be removed, the `lxpanelctl` utility has been given two new options -- `alsastop` and `alsastart` -- and these are called from the auxiliary scripts dtoverlay-pre and dtoverlay-post before and after overlays are loaded or unloaded, respectively.
 
 * Removing an overlay will not cause a loaded module to be unloaded, but it may cause the reference count of some modules to drop to zero. Running `rmmod -a` twice will cause unused modules to be unloaded.
 

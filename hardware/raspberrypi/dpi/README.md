@@ -182,4 +182,4 @@ hdmi_timings=800 0 40 48 88 480 0 13 3 32 0 0 0 60 0 32000000 6
 
 Many thanks goes to authors of the following examples!
 
-[How to attach an LCD screen to a Pi](http://blog.reasonablycorrect.com/raw-dpi-raspberry-pi/) - Note that the author in this example compiles a dt-blob.bin file which is now unecessary, please use the relevant Linux device tree overlay.
+[How to attach an LCD screen to a Pi](http://blog.reasonablycorrect.com/raw-dpi-raspberry-pi/) - Note that the author in this example compiles a dt-blob.bin file which is now unnecessary, please use the relevant Linux device tree overlay.
