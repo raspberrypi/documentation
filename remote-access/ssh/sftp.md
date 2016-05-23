@@ -47,6 +47,5 @@ The IP address or
 The hostname (default is `raspberrypi`)
 Enter port 22 (Not the one shown next to the IP address on your pi)
 Add user `pi` and the password (default is `raspberry`)
-
 ```
-If you encounter another dialog box for security, click **Allow** or **Accept**. 
+You may encounter another dialog box for security; if you do, click **Allow** or **Accept**. 
