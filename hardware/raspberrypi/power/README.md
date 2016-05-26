@@ -1,6 +1,6 @@
 # Power Supply
 
-The device is powered by a 5V micro USB supply. Exactly how much current (mA) the Raspberry Pi requires is dependent on what you connect to it. We have found that purchasing a 1.2A (1200mA) power supply from a reputable retailer will provide you with ample power to run your Raspberry Pi.
+The Raspberry Pi 3 is powered by a +5.1V micro USB supply. Exactly how much current (mA) the Raspberry Pi requires is dependent on what you connect to it. We have found that purchasing a 2.5A power supply from a reputable retailer will provide you with ample power to run your Raspberry Pi. You can purchase the [official Raspberry Pi Power Supply](https://www.raspberrypi.org/products/universal-power-supply/) from our website, and you can learn more about the differing power requirements of the various models of the Raspberry Pi on our [FAQ page](https://www.raspberrypi.org/help/faqs/#power). 
 
 Typically, the model B uses between 700-1000mA depending on what peripherals are connected; the model A can use as little as 500mA with no peripherals attached. The maximum power the Raspberry Pi can use is 1 Amp. If you need to connect a USB device that will take the power requirements above 1 Amp, then you must connect it to an externally-powered USB hub.
 
