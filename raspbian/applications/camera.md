@@ -375,7 +375,7 @@ Outputs debugging/information messages during the program run.
 The program will run for this length of time, then take the capture (if output is specified). If not specified, this is set to 5 seconds.
 
 ```
---time-lapse,	-tl		time-lapse mode.
+--timelapse,	-tl		time-lapse mode.
 ```
 
 The specific value is the time between shots in milliseconds. Note you should specify %04d at the point in the filename where you want a frame count number to appear. e.g:
