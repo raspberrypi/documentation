@@ -454,7 +454,7 @@ There is a growing collection of overlay source files hosted in the Raspberry Pi
 
 On a Raspberry Pi it is the job of the loader (one of the `start.elf` images) to combine overlays with an appropriate base device tree, and then to pass a fully resolved Device Tree to the kernel. The base Device Trees are located alongside `start.elf` in the FAT partition (/boot from Linux), named `bcm2708-rpi-b.dtb`, `bcm2708-rpi-b-plus.dtb`, `bcm2708-rpi-cm.dtb`, and `bcm2709-rpi-2-b.dtb`. Note that Model As and A+s will use the "b" and "b-plus" variants, respectively. This selection is automatic, and allows the same SD card image to be used in a variety of devices.
 
-Note that DT and ATAGs are mutually exclusive. As a result, passing a DT blob to a kernel that doesn't understand it causes a boot failure. To guard against this, the loader checks kernel images for DT-compatibility, which is marked by a trailer added by the mkknlimg utility; this can be found [here](https://github.com/raspberrypi/tools/blob/master/mkimage/mkknlimg), or in the scripts directory of a recent kernel source tree. Any kernel without a trailer is assumed to be non-DT-capable.
+Note that DT and ATAGs are mutually exclusive. As a result, passing a DT blob to a kernel that doesn't understand it causes a boot failure. To guard against this, the loader checks kernel images for DT-compatibility, which is marked by a trailer added by the `mkknlimg` utility; this can be found in the `scripts` directory of a recent kernel source tree. Any kernel without a trailer is assumed to be non-DT-capable.
 
 A kernel built from the rpi-4.4.y tree (and later) will not function without a DTB, so from the 4.4 releases onwards, any kernel without a trailer is assumed to be DT-capable. You can override this by adding a trailer without the DTOK flag or by putting `device_tree=` in config.txt, but don't be surprised if it doesn't work.
 N.B. A corollary to this is that if the kernel has a trailer indicating DT capability then `device_tree=` will be ignored.
@@ -658,7 +658,7 @@ sudo vcdbg log msg
 
 Extra debugging can be enabled by adding `dtdebug=1` to `config.txt`.
 
-If the kernel fails to come up in DT mode, **this is probably because the kernel image does not have a valid trailer**. Use [knlinfo](https://github.com/raspberrypi/tools/blob/master/mkimage/knlinfo) to check for one, and the [mkknlimg](https://github.com/raspberrypi/tools/blob/master/mkimage/mkknlimg) utility to add one. Note that both utilities are also included in the scripts directory of current Raspberry Pi kernel source trees.
+If the kernel fails to come up in DT mode, **this is probably because the kernel image does not have a valid trailer**. Use `knlinfo` to check for one, and the `mkknlimg` utility to add one. Both utilities are included in the `scripts` directory of current Raspberry Pi kernel source trees.
 
 You can create a human-readable representation of the current state of DT like this:
 
