@@ -73,7 +73,7 @@ You can create a simple file with the command to run the VNC server on the Pi, t
     -cursor_name left_ptr
     ```
 
-- To share clipboard with VNC Viewer, install autocutsel by ```sudo apt-get install autocutsel``` then add the following line before ```/etc/X11/Xsession```:
+- To share clipboard with clients, install autocutsel by ```sudo apt-get install autocutsel```, then add the following line before ```/etc/X11/Xsession``` in `/home/pi/.vnc/xstartup`:
     ```bash
     autocutsel -fork
     ```
