@@ -140,7 +140,7 @@ Searches a directory and subdirectories for files matching certain patterns.
 
 ### whereis
 
-Finds the location or a command. Looks through standard program locations until it finds the requested command.
+Finds the location of a command. Looks through standard program locations until it finds the requested command.
 
 
 
