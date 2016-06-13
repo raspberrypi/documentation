@@ -1,0 +1,2 @@
+# Raspberry Pi boot modes
+
