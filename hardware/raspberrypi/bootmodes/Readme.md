@@ -1,3 +1,7 @@
+# IMPORTANT
+This is preliminary information used by the beta testers for the development of the bootcode for mass storage and ethernet boot, but it is currently incorrect and not working.  If you'd like to join the beta test then please send your email to @gsholling on Twitter and I'll invite you to the Slack channel which we're using to discuss this...
+
+
 # Raspberry Pi boot modes
 
 ## Introduction
