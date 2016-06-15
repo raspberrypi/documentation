@@ -122,7 +122,7 @@ Plug the SD card into the SERVER and boot the server, with it connected to the i
 ```
 sudo apt-get install tcpdump
 sudo apt-get install dnsmasq
-sudo apt-get remove dhcpcd
+echo "denyinterfaces eth0" | sudo tee -a /etc/dhcpcd.conf
 ```
 
 After this we'll need to fix DNS because dnsmasq breaks it a bit...
@@ -186,6 +186,27 @@ cp /boot/bootcode.bin /tftpboot
 cp /boot/start.elf /tftpboot
 ```
 
-Now when you power off and then power on the CLIENT tcpdump should give lots of data (you should also notice the LEDs flashing for longer when it boots).
+Now when you power off and then power on the CLIENT tcpdump should give lots of data and the result should be the green LED flashing (this means it couldn't find the kernel, not surprising since we didn't give it one...)
 
+Next, we need to provide the other files (kernel and dt overlays etc) which are currently stored on the SERVER's boot directory, so:
 
+```
+cp -r /boot/* /tftpboot
+```
+
+This should now allow your Pi to boot through until it tried to load a root filesystem (which it doesn't have)...  This is the point where you need to provide a filing system which is beyond this tutorial... Although I'll give you some clues for sharing the SERVERS filesystem with the client...
+
+* Reboot SERVER with a normal ethernet connection (you'll probably need to remove the dhcpcd.conf line to re-enable the client)
+* `sudo apt-get install nfs-kernel-server`
+* `sudo vi /etc/exports`
+* Add the line "/ *(rw,sync,no_subtree_check)" to exports
+* sudo systemctl restart rpcbind.service
+* sudo systemctl restart nfs-kernel-server.service
+* Reboot with the ethernet connected to the CLIENT and do the static IP thing again
+* Check the mount is working using something like `sudo mount 192.168.1.1:/ tmp`
+* edit /tftpboot/cmdline.txt and change to
+  * "root=/dev/nfs nfsroot=192.168.1.1:/ rw ip=dhcp rootwait"
+* edit /etc/fstab and remove the /dev/mmcblkp1 and p2 lines
+* edit /boot/cmdline.txt (the SERVER's cmdline) and add "rw" to the line
+
+Think that's it... Good luck...
