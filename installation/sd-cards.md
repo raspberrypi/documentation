@@ -2,7 +2,7 @@
 
 The Raspberry Pi should work with any compatible SD card, although there are some guidelines that should be followed:
 
-- SD card size (capacity). For installation of NOOBS, the minimum recommended card size is 8GB. For image installations we recommend a minimum of 4GB; some distributions can run on much smaller cards, specifically OpenELEC and Arch.
+- SD card size (capacity). For installation of NOOBS, the minimum recommended card size is 8GB. For image installations we recommend a minimum of 4GB; some distributions can run on much smaller cards, specifically LibreELEC and Arch.
 - SD card class. The card class determines the sustained write speed for the card; a class 4 card will be able to write at 4MB/s, whereas a class 10 should be able to attain 10 MB/s. However, it should be noted that this does not mean a class 10 card will outperform a class 4 card for general usage, because often this write speed is achieved at the cost of read speed and increased seek times.
 - SD card physical size. The original [Raspberry Pi Model A](https://www.raspberrypi.org/products/model-a/) and [Raspberry Pi Model B](https://www.raspberrypi.org/products/model-b/) require full-size SD cards. The newer [Raspberry Pi Model A+](https://www.raspberrypi.org/products/model-a-plus/), [Raspberry Pi Model B+](https://www.raspberrypi.org/products/model-b-plus/), [Raspberry Pi 2 Model B](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/), [Raspberry Pi Zero](https://www.raspberrypi.org/products/pi-zero/), and [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/) require micro SD cards.
 
