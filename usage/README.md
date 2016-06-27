@@ -31,7 +31,7 @@ Basic examples to help you get started with some of the software available in Ra
         - [Python](camera/python/README.md)
 - [Webcams](webcams/README.md)
     - Using a standard USB webcam instead of the Raspberry Pi camera module
-- [Kodi](xbmc/README.md)
+- [Kodi](kodi/README.md)
     - Installing media centre software on your Raspberry Pi
 - [Playing audio](audio/README.md)
     - Playing audio on your Raspberry Pi
