@@ -13,14 +13,10 @@ There are two ways of setting the audio output.
 The following command, entered in the command line, will switch the audio output to HDMI:
 
 ```
-amixer cset numid=3 1
+amixer cset numid=3 2
 ```
 
-Here the output is being set to `1`, which is HDMI.
-
-Setting the output to `2` switches to analogue (headphone jack).
-
-The default setting is `0` which is automatic.
+Here the output is being set to `2`, which is HDMI. Setting the output to `1` switches to analogue (headphone jack). The default setting is `0` which is automatic.
 
 ### raspi-config
 
@@ -32,14 +28,14 @@ sudo raspi-config
 
 This will open the configuration screen:
 
-![](images/raspi-config.png)
+![raspi-config screen](images/raspi-config.png)
 
-Select Option 8 `Advanced Options` and hit `Enter`, then select Option A6: `Audio` and hit `Enter`.
+Select Option 8 `Advanced Options` and press `Enter`, then select Option A6: `Audio` and press `Enter`:
 
-![](images/raspi-config-audio.png)
+![Audio configuration screen](images/raspi-config-audio.png)
 
-Now you are presented with the two modes explained above as an alternative to the default `Auto` option. Select a mode, hit `Enter` and press the right arrow key to exit the options list, then select `Finish` to exit the configuration tool.
+Now you are presented with the two modes explained above as an alternative to the default `Auto` option. Select a mode, press `Enter` and press the right arrow key to exit the options list, then select `Finish` to exit the configuration tool.
 
 ## If you're still not getting sound via HDMI
 
-In some rare cases, it is necessary to edit config.txt to force HDMI mode (as opposed to DVI mode, which does not send sound). You can do this by editing `/boot/config.txt` and setting `hdmi_drive=2`, then rebooting for the change to take effect.
+In some rare cases, it is necessary to edit `config.txt` to force HDMI mode (as opposed to DVI mode, which does not send sound). You can do this by editing `/boot/config.txt` and setting `hdmi_drive=2`, then rebooting for the change to take effect.

@@ -11,7 +11,7 @@ If you are familiar with Python 2 but not Python 3, here is a summary of the bas
 - Print
     - In Python 2, `print` is a statement and did not require brackets, e.g. `print "Hello"`.
     - In Python 3, `print` is a function, so you pass in what you want to print as parameters, e.g. `print("Hello")` or `print("My age is", age)`.
-    - Using brackets for `print` in Python 2 works fine, so it's common to see this used for compatability. However printing multiple objects in the same `print` command works differently.
+    - Using brackets for `print` in Python 2 works fine, so it's common to see this used for compatibility. However printing multiple objects in the same `print` command works differently.
     - In Python 3 this prints each one, space separated, and in Python 2 the collection of items is printed as a tuple, e.g. `("My age is", 15)`
 -  Input / Raw input
     -  In Python 2, the function `raw_input` takes input from the user.
@@ -100,6 +100,8 @@ In `python` this would have printed on one line:
 {1: 1, 2: 8, 3: 27, 4: 64, 5: 125, 6: 216, 7: 343, 8: 512, 9: 729, 10: 1000, 11: 1331}
 ```
 
+![Python vs ipython](images/python-vs-ipython.png)
+
 You can look back on the history of the commands you've entered in the REPL by using the Up/Down keys like in `python` but it also persists over sessions, so you can exit `ipython` and return (or switch between v2/3) and the history remains. Use `Ctrl + D` to exit.
 
 ## Installing Python libraries
@@ -108,7 +110,7 @@ You can look back on the history of the commands you've entered in the REPL by u
 
 Some Python packages can be found in the Raspbian archives, and can be installed using APT, for example:
 
-```
+```bash
 sudo apt-get update
 sudo apt-get install python-picamera
 ```
@@ -119,7 +121,7 @@ This is a preferable method of installing things as it means that the modules yo
 
 Not all Python packages are available in the Raspbian archives, and those that are can sometimes be out of date. If you can't find a suitable version in the Raspbian archives you can install packages from the [Python Package Index](http://pypi.python.org/) (also known as PyPI). To do so, use the `pip` tool (which is installed with the `python-pip` package in Raspbian:
 
-```
+```bash
 sudo apt-get install python-pip
 sudo pip install simplejson
 ```
@@ -130,13 +132,13 @@ Read more on [installing software in Python](../../linux/software/python.md)
 
 Using Python on the Raspberry Pi opens up the opportunity to connect to the real world through the Pi's GPIO pins. This can be done with the RPi GPIO library. It is preinstalled on recent Raspbian images, but if you have an older one you can install it with:
 
-```
+```bash
 sudo apt-get install python-rpi.gpio
 ```
 
 or
 
-```
+```bash
 sudo apt-get install python3-rpi.gpio
 ```
 
@@ -144,7 +146,7 @@ To control the GPIO pins you'll need root access, so run `sudo python`, `sudo ip
 
 In your Python script (or in the REPL), import the GPIO module, set the board mode to that of your preference, set up the pins you want to use and turn them on:
 
-```
+```python
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)  # set board mode to Broadcom

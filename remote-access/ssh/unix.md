@@ -2,9 +2,11 @@
 
 You can use SSH to connect to your Raspberry Pi from a Linux computer or Mac (or another Pi) from the Terminal, without installing additional software.
 
-You'll need to know your Pi's IP address to connect to it. To find this, type `hostname -I` in the Terminal. Alternatively if you're running the Pi headless (without a screen), you can also look at the device list on your router or use a tool like `nmap`.
+You'll need to know your Pi's IP address to connect to it. To find this from your Pi's terminal type `hostname -I`.
 
-Copy and paste the following command into the Terminal window but replace `<IP>` with the IP address of the Raspberry Pi. Use `Ctrl + Shift + V` to paste in the Terminal.
+Alternatively if you're running the Pi without a screen, aka headless, you can also look at the device list on your router or use a tool like `nmap`, which is described in detail in our [IP Address](../ip-address.md) doc.
+
+To connect to your Pi from a different computer, copy and paste the following command into the terminal window but replace `<IP>` with the IP address of the Raspberry Pi. Use `Ctrl + Shift + V` to paste in the terminal.
 
 ```
 ssh pi@<IP>
@@ -25,6 +27,28 @@ pi@raspberrypi ~ $
 ```
 
 You are now connected to the Pi remotely and can execute commands.
+
+## X-forwarding
+
+You can also forward your X session over SSH to allow use of graphical applications by using the `-Y` flag:
+
+```bash
+ssh -Y pi@192.168.1.5
+```
+
+Now you're on the command line as before, but you have the ability to open up graphical windows, for example:
+
+```bash
+idle3 &
+```
+
+This will open up the Python editor IDLE in a graphical window.
+
+```bash
+scratch &
+```
+
+This will open up Scratch!
 
 For further documentation on the `ssh` command just enter `man ssh` into the Terminal.
 

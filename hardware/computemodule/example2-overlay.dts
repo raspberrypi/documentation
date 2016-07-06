@@ -1,0 +1,80 @@
+// Example overlay for PCF8523 RTC device + ENC28J60 Ethernet
+/dts-v1/;
+/plugin/;
+
+/ {
+  compatible = "brcm,bcm2708";
+
+  //
+  // Set up GPIOs:
+  //  I2C1 on GPIO44,45
+  //  SPI on GPIO8-11
+  //  ENC28J60 interrupt on GPIO12
+  //
+  fragment@0 {
+    target = <&gpio>;
+    __overlay__ {
+      i2c1_pins: i2c1 {
+        brcm,pins = <44 45>;
+        brcm,function = <6>; /* alt2 */
+      };
+      spi0_pins: spi0_pins {
+        brcm,pins = <8 9 10 11>;
+        brcm,function = <4>; /* alt0 */
+      };
+      // ENC28J60 Ethernet Interrupt GPIO
+      eth1_pins: eth1_pins {
+        brcm,pins = <12>;
+        brcm,function = <0>; /* in */
+        brcm,pull = <0>; /* none */
+      };
+    };
+  };
+
+  //
+  // I2C Device(s)
+  //
+  fragment@1 {
+    target = <&i2c1>;
+    __overlay__ {
+      #address-cells = <1>; /* needed to avoid dtc warning */
+      #size-cells = <0>; /* needed to avoid dtc warning */
+      pinctrl-names = "default";
+      pinctrl-0 = <&i2c1_pins>;
+      clock-frequency = <100000>;
+      status = "okay";
+      // PCF8523 RTC device
+      pcf8523@68 { 
+        compatible = "nxp,pcf8523";
+        reg = <0x68>;
+        status = "okay";
+      };
+    };
+  };
+
+  //
+  // SPI Device(s)
+  //
+  fragment@2 {
+    target = <&spi0>;
+    __overlay__ {
+      #address-cells = <1>; /* needed to avoid dtc warning */
+      #size-cells = <0>; /* needed to avoid dtc warning */
+      pinctrl-names = "default";
+      pinctrl-0 = <&spi0_pins>;
+      status = "okay";
+      // ENC28J60 SPI Device
+      eth1: enc28j60@0{
+        compatible = "microchip,enc28j60";
+        reg = <0>; /* CE0 */
+        pinctrl-names = "default";
+        pinctrl-0 = <&eth1_pins>;
+        interrupt-parent = <&gpio>;
+        interrupts = <12 0x2>; /* falling edge */
+        spi-max-frequency = <12000000>;
+        status = "okay";
+      };
+    };
+  };
+
+};

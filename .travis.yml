@@ -1,0 +1,14 @@
+language: ruby
+sudo: false
+git:
+  depth: 10
+rvm:
+- 2.1
+before_install:
+- export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+branches:
+- master
+notifications:
+  email: false
+  slack:
+    secure: HuJz5cWVd4cTEpUKSIfSnrc20wgoBUM3Oxe+T4H3dVqxQPbYTsmXL6pSZ86oHs3GEgDngbxp1D7+ucl/8N14I4xXJdjYbQnnjb4+LGWAAnqGL7cU2yigkEtZ1VtqgyujP3S0hdnAeRbC/8+hojxvqu5kC4EeFHd5twRCH3HxkCk=

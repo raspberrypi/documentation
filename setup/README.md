@@ -1,4 +1,4 @@
-# Setup 
+# Setup
 
 A guide to setting up your Raspberry Pi
 
@@ -9,19 +9,19 @@ A guide to setting up your Raspberry Pi
 - [SD Card](../installation/sd-cards.md)
     - We recommend an 8GB class 4 SD card - ideally preinstalled with [NOOBS](../installation/noobs.md).
 - [Display & connectivity cable](monitor-connection.md)
-    - Any HDMI/DVI monitor and any TV should work as a display for the Pi. For best results, use one with HDMI input, but other connections are available for older devices. 
+    - Any HDMI/DVI monitor and any TV should work as a display for the Pi. For best results, use one with HDMI input, but other connections are available for older devices.
 - Keyboard and mouse
     - Any standard USB keyboard and mouse will work with your Raspberry Pi.
     - Wireless keyboards and mice will work if already paired.
     - For keyboard layout configuration options see [raspi-config](../configuration/raspi-config.md).
-- [Power supply](../hardware/raspberrypi/power.md)
+- [Power supply](../hardware/raspberrypi/power/README.md)
     - The Pi is powered by a USB Micro power supply (like most standard mobile phone chargers).
-    - You'll need a good-quality power supply that can supply at least 700mA at 5V.
-    - Low ampage (~700mA) power supplies will work for basic usage, but are likely to cause the Pi to reboot if it draws too much power.
+    - You'll need a good-quality power supply that can supply at least 2A at 5V for the Model 3B, or 700mA at 5V for the earlier, lower powered models.
+    - Low current (~700mA) power supplies will work for basic usage, but are likely to cause the Pi to reboot if it draws too much power.
 
 ### Optional
 
-- Ethernet (network) cable [Model B only]
+- Ethernet (network) cable [Model B/B+ only]
     - An Ethernet cable is used to connect your Pi to a local network and the internet.
 - [USB wireless dongle](../configuration/wireless/README.md)
     - Alternatively, you can connect to a wireless network using a USB wireless dongle, which will require configuration.
@@ -32,4 +32,4 @@ A guide to setting up your Raspberry Pi
 
 ## Troubleshooting
 
-For any issues during setup, see [troubleshooting](../troubleshooting/README.md).
+For any issues during setup, search [the forums](https://www.raspberrypi.org/forums/) for a solution. If you cannot find one, please post your problem, providing as much detail as possible.

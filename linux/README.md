@@ -31,8 +31,6 @@ Explanation of some fundamental Linux usage and commands for getting around the 
 - [Software](software/README.md)
     - [APT](software/apt.md)
         - Installing software with APT
-    - [Pi Store](software/pi-store.md)
-        - Installing software from the Pi Store
     - [Python](software/python.md)
         - Installing software using a Python package manager such as `pip`
     - [Ruby](software/ruby.md)
@@ -44,5 +42,7 @@ Explanation of some fundamental Linux usage and commands for getting around the 
         - Building the Linux kernel on Raspberry Pi
     - [Configuring](kernel/configuring.md)
         - Configuring the Linux kernel on Raspberry Pi
+    - [Patching](kernel/patching.md)
+        - Applying patches to the Linux kernel on Raspberry Pi
     - [Headers](kernel/headers.md)
         - Getting the kernel headers

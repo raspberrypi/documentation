@@ -1,32 +1,12 @@
-# Installing Operating System Images on Linux
+# Installing operating system images on Linux
 
-On Linux systems you have the choice of the command line `dd` tool or the graphical tool ImageWriter to write the image to your SD card.
-
-## Using ImageWriter (Graphical Interface)
-
-- Insert the SD card into your computer or connect the SD card reader with the SD card inside.
-
-- Install the ImageWriter tool from the Ubuntu Software Center.
-
-- Launch the ImageWriter tool; it needs your administrator password.
-
-- Select the image file (e.g. `2014-01-07-wheezy-raspbian.img`) to be written to the SD card. Note that because you started ImageWriter as administrator, the starting point when selecting the image file is the administrator's home folder; therefore, you need to change to your own home folder to select the image file.
-
-- Select the target device to write the image to; your device will be something like `/dev/mmcblk0` or `/dev/sdc`.
-
-- Click the `Write to device` button.
-
-- Wait for the process to finish and remove the SD card.
-
-## Command Line Interface
-
-Please note that the use of the `dd` tool can overwrite any partition of your machine. If you specify the wrong device in the instructions below you could delete your primary Linux partition. Please be careful.
+Please note that the use of the `dd` tool can overwrite any partition of your machine. If you specify the wrong device in the instructions below, you could delete your primary Linux partition. Please be careful.
 
 - Run `df -h` to see what devices are currently mounted.
 
 - If your computer has a slot for SD cards, insert the card. If not, insert the card into an SD card reader, then connect the reader to your computer.
 
-- Run `df -h` again. The new device that has appeared is your SD card. The left column gives the device name of your SD card; it will be listed as something like `/dev/mmcblk0p1` or `/dev/sdd1`. The last part (`p1` or `1` respectively) is the partition number but you want to write to the whole SD card, not just one partition. Therefore you need to remove that part from the name (getting, for example, `/dev/mmcblk0` or `/dev/sdd`) as the device for the whole SD card. Note that the SD card can show up more than once in the output of df; it will do this if you have previously written a Raspberry Pi image to this SD card, because the Raspberry Pi SD images have more than one partition.
+- Run `df -h` again. The new device that has appeared is your SD card. The left column gives the device name of your SD card; it will be listed as something like `/dev/mmcblk0p1` or `/dev/sdd1`. The last part (`p1` or `1` respectively) is the partition number but you want to write to the whole SD card, not just one partition. You therefore need to remove that part from the name, getting, for example, `/dev/mmcblk0` or `/dev/sdd` as the device name for the whole SD card. Note that the SD card can show up more than once in the output of `df`; it will do this if you have previously written a Raspberry Pi image to this SD card, because the Raspberry Pi SD images have more than one partition.
 
 - Now that you've noted what the device name is, you need to unmount it so that files can't be read or written to the SD card while you are copying over the SD image.
 
@@ -34,10 +14,10 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
 
 - If your SD card shows up more than once in the output of `df` due to having multiple partitions on the SD card, you should unmount all of these partitions.
 
-- In the terminal, write the image to the card with the command below, making sure you replace the input file `if=` argument with the path to your `.img` file, and the `/dev/sdd` in the output file `of=` argument with the right device name. This is very important, as you will lose all data on the hard drive if you provide the wrong device name. Make sure the device name is the name of the whole SD card as described above, not just a partition of it; for example `sdd`, not `sdds1` or `sddp1`; or `mmcblk0`, not `mmcblk0p1`.
+- In the terminal, write the image to the card with the command below, making sure you replace the input file `if=` argument with the path to your `.img` file, and the `/dev/sdd` in the output file `of=` argument with the right device name. This is very important, as you will lose all data on the hard drive if you provide the wrong device name. Make sure the device name is the name of the whole SD card as described above, not just a partition of it; for example, `sdd`, not `sdds1` or `sddp1`, and `mmcblk0`, not `mmcblk0p1`.
 
-    ```
-    dd bs=4M if=2014-01-07-wheezy-raspbian.img of=/dev/sdd
+    ```bash
+    dd bs=4M if=2016-05-27-raspbian-jessie.img of=/dev/sdd
     ```
 
 - Please note that block size set to `4M` will work most of the time; if not, please try `1M`, although this will take considerably longer.
@@ -48,7 +28,15 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
 
 - Instead of `dd` you can use `dcfldd`; it will give a progress report about how much has been written.
 
-- You can check what's written to the SD card by `dd`-ing from the card back to another image on your hard disk, and then running `diff` (or `md5sum`) on those two images. There should be no difference.
+- You can check what's written to the SD card by `dd`-ing from the card back to another image on your hard disk, truncating the new image to the same size as the original, and then running `diff` (or `md5sum`) on those two images.
+
+- The SD card might be bigger than the original image, and `dd` will make a copy of the whole card. We must therefore truncate the new image to the size of the original image. Make sure you replace the input file `if=` argument with the right device name. `diff` should report that the files are identical.
+
+    ```bash
+    dd bs=4M if=/dev/sdd of=from-sd-card.img
+    truncate --reference 2016-05-27-raspbian-jessie.img from-sd-card.img
+    diff -s from-sd-card.img 2016-05-27-raspbian-jessie.img
+    ```
 
 - Run `sync`; this will ensure the write cache is flushed and that it is safe to unmount your SD card.
 
