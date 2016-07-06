@@ -54,7 +54,7 @@ Now that your Rasberry Pi3 is USB Boot enabled you can start creating a USB Stic
   
 8. add the following line to the config.txt file in the boot partition
 
-        dtoverlay-mmc
+        dtoverlay=mmc
 
 9. Adjust the cmdline.txt to remove the "init=/usr/lib/raspi-config/init_resize.sh" part and change the "root=/dev/mmcblk0p2" to "root=/dev/sda2" it should then look like this
 
