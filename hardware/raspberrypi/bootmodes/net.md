@@ -1,5 +1,9 @@
 # Network booting
 
+This section describes how network booting works, alongside this there is a tutorial to set up a working bootable system...
+
+[Network boot tutorial](net_tutorial.md)
+
 To network boot the bootrom does the following:
 
 * Initialise LAN9500
@@ -13,130 +17,91 @@ To network boot the bootrom does the following:
   * File exists: Server will reply with the first block (512 bytes) of data for the file with a block number in the header
     * Pi replys with TFTP ACK packet containing the block number, repeats until the last block which is not 512 bytes
 * TFTP RRQ 'bootsig.bin'
-  * This will normally result in an error file not found...
+  * This will normally result in an error file not found.  This is fine it is expected and TFTP boot servers should be able to handle this fine.
 
 From this point the bootcode.bin code continues to load the system, the first file it will try to access is [`serial_number`]/start.elf if this does __not__ result in a error then any other files to be read will be pre-pended with the `serial_number`.  This is useful because if enables you to create separate directories with separate start.elf / kernels for your Pis
 To get the serial number for the device you can either try this boot mode and see what file is accessed using tcpdump / wireshark or you can run a standard Raspbian SD card and `cat /proc/cpuinfo`
 
 If you put all your files into the root of your tftp directory then all following files will be accessed from there.
 
-# Setting up a DHCP / TFTP server
+## Debugging the NFS boot mode
 
-This tutorial is written to explain how to set up a simple DHCP / TFTP server to boot a Raspberry Pi 3 from the network.  This first tutorial assumes you only have a Raspberry Pi for the SERVER and a Pi 3 as a CLIENT to be booted.
-
-Install a standard Raspbian lite (or heavy if you want) from the [Downloads page](https://www.raspberrypi.org/downloads/raspbian/) onto an SD card using whatever process you like (dd or Win32DiskImager or something similar).  Before booting the Client edit the config.txt and add the following to config.txt
-
-```
-program_usb_boot_mode=1
-```
-
-Now copy [start.elf](start.elf) and [bootcode.bin](bootcode.bin) to the sdcard overwriting the currently existing start.elf and bootcode.bin, you should also:
-
-```
-rm start_* fixup*
-```
-
-Plug the SD card into the CLIENT and boot it with a keyboard and HDMI connected.  When it boots, log in and check that the OTP is correctly programmed
+The first thing to check is that the OTP bit is correctly programmed, to do this you need to add `program_usb_boot_mode=1` to config.txt and reboot (with a standard SD card that boots correctly into Raspbian.  Once you've done this, you should be able to do:
 
 ```
 $ vcgencmd otp_dump | grep 17:
 17:3020000a
 ```
 
-Make sure the 0x3020000a is correct.
+If row 17 contains that value then the OTP is correctly programmed.  You should now be able to remove the SD card and plug in Ethernet
+and then around 5 seconds after powering up the Pi the Ethernet LEDs should light up.
 
-Now, shutdown the Pi gracefully and re-edit the config.txt file to remove the `program_usb_boot_mode` (you don't actually have to do this, it will enable USB boot modes but shouldn't break anything.)
+To capture the ethernet packets on the server use tcpdump on the tftpboot server (or DHCP server if they are different) you will need to capture the packets there otherwise you will not be able to see packets that get sent directly because network switches are not hubs!
 
-Plug the SD card into the SERVER and boot the server, with it connected to the internet install some useful applications:
-
-```
-sudo apt-get install tcpdump
-sudo apt-get install dnsmasq
-echo "denyinterfaces eth0" | sudo tee -a /etc/dhcpcd.conf
+``` 
+sudo tcpdump -i eth0 -w dump.pcap
 ```
 
-After this we'll need to fix DNS because dnsmasq breaks it a bit...
+This will write everything from eth0 to a file dump.pcap you can then post process it or upload it to cloudshark.com for communication
+
+### DHCP Request / Reply
+
+As a minimum you should see a DHCP request and reply looking like the following:
 
 ```
-sudo rm /etc/resolvconf/update.d/dnsmasq
-sudo reboot
+6:44:38.717115 IP (tos 0x0, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 348)
+    0.0.0.0.68 > 255.255.255.255.67: [no cksum] BOOTP/DHCP, Request from b8:27:eb:28:f6:6d, length 320, xid 0x26f30339, Flags [none] (0x0000)
+	  Client-Ethernet-Address b8:27:eb:28:f6:6d
+	  Vendor-rfc1048 Extensions
+	    Magic Cookie 0x63825363
+	    DHCP-Message Option 53, length 1: Discover
+	    Parameter-Request Option 55, length 12: 
+	      Vendor-Option, Vendor-Class, BF, Option 128
+	      Option 129, Option 130, Option 131, Option 132
+	      Option 133, Option 134, Option 135, TFTP
+	    ARCH Option 93, length 2: 0
+	    NDI Option 94, length 3: 1.2.1
+	    GUID Option 97, length 17: 0.68.68.68.68.68.68.68.68.68.68.68.68.68.68.68.68
+	    Vendor-Class Option 60, length 32: "PXEClient:Arch:00000:UNDI:002001"
+	    END Option 255, length 0
+16:44:41.224619 IP (tos 0x0, ttl 64, id 57713, offset 0, flags [none], proto UDP (17), length 372)
+    192.168.1.1.67 > 192.168.1.139.68: [udp sum ok] BOOTP/DHCP, Reply, length 344, xid 0x26f30339, Flags [none] (0x0000)
+	  Your-IP 192.168.1.139
+	  Server-IP 192.168.1.1
+	  Client-Ethernet-Address b8:27:eb:28:f6:6d
+	  Vendor-rfc1048 Extensions
+	    Magic Cookie 0x63825363
+	    DHCP-Message Option 53, length 1: Offer
+	    Server-ID Option 54, length 4: 192.168.1.1
+	    Lease-Time Option 51, length 4: 43200
+	    RN Option 58, length 4: 21600
+	    RB Option 59, length 4: 37800
+	    Subnet-Mask Option 1, length 4: 255.255.255.0
+	    BR Option 28, length 4: 192.168.1.255
+	    Vendor-Class Option 60, length 9: "PXEClient"
+	    GUID Option 97, length 17: 0.68.68.68.68.68.68.68.68.68.68.68.68.68.68.68.68
+	    Vendor-Option Option 43, length 32: 6.1.3.10.4.0.80.88.69.9.20.0.0.17.82.97.115.112.98.101.114.114.121.32.80.105.32.66.111.111.116.255
+	    END Option 255, length 0
 ```
 
-Now Take an ethernet cable and plug it directly between the SERVER and the CLIENT and set a static IP address on the SERVER:
+The important part of the reply is the Vendor-Option Option 43...  This needs to contain the string "Raspberry Pi Boot", although due
+to a bug in the bootrom you may need to add three spaces to the end of the string.
+
+### TFTP file read
+
+You will know whether the Vendor option is correctly specified because if it is you'll see a subsequent TFTP RRQ packet being sent, RRQs
+can be replied by either the first block of data or an error saying file not found.  In a couple of cases it even receives the first packet and then the transmission is aborted by the Pi (this is checking whether a file exists).  The example below is just three packets:
+the original read request, the first data block (always 516 bytes containing a header and 512 bytes of data, the last block is always
+less than 512 bytes and may be zero length.  The third packet is the ACK which contains a frame number to match the frame number in the data block.
 
 ```
-sudo ifconfig eth0 down
-sudo ifconfig eth0 up 192.168.1.1 netmask 255.255.255.0 broadcast 192.168.1.255
-sudo tcpdump -i eth0
-```
-Now power the CLIENT
-
-Check that the LEDs illuminate on the CLIENT after around 10 seconds, then you get a packet from the CLIENT "DHCP/BOOTP, Request from ..."
-
-Now we need to modify the dnsmasq configuration to enable DHCP to reply to the device ...
-
-```
-sudo echo | sudo tee /etc/dnsmasq.conf
-sudo nano /etc/dnsmasq.conf
+16:44:41.224964 IP (tos 0x0, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 49)
+    192.168.1.139.49152 > 192.168.1.1.69: [no cksum]  21 RRQ "bootcode.bin" octet 
+16:44:41.227223 IP (tos 0x0, ttl 64, id 57714, offset 0, flags [none], proto UDP (17), length 544)
+    192.168.1.1.55985 > 192.168.1.139.49152: [udp sum ok] UDP, length 516
+16:44:41.227418 IP (tos 0x0, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 32)
+    192.168.1.139.49152 > 192.168.1.1.55985: [no cksum] UDP, length 4
 ```
 
-Then replace the contents of dnsmasq.conf with:
-
-```
-port=0
-log-dhcp
-enable-tftp
-tftp-root=/tftpboot
-dhcp-range=eth0,192.168.1.100,192.168.1.150,12h
-pxe-service=0,"Raspberry Pi Boot"
-```
-
-It's important that the 192.168.1.x matches the subnet you used in the static IP settings, the range is what it'll share
-
-Now create a /tftpboot directory
-
-```
-$ sudo mkdir /tftpboot
-$ sudo chmod 777 /tftpboot
-$ sudo systemctl restart dnsmasq.service
-```
-
-Next we can try the tcpdump again...
-
-```
-sudo tcpdump -i eth0
-```
-
-You should see a DHCP REPLY packet and a TFTP read request packet, for "bootcode.bin"
-
-Next, you will need to copy [bootcode.bin](bootcode.bin) and [start.elf](start.elf) into the /tftpboot directory, you should be able to do this by just copying the files from /boot since they are the right ones...
-
-```
-cp /boot/bootcode.bin /tftpboot
-cp /boot/start.elf /tftpboot
-```
-
-Now when you power off and then power on the CLIENT tcpdump should give lots of data and the result should be the green LED flashing (this means it couldn't find the kernel, not surprising since we didn't give it one...)
-
-Next, we need to provide the other files (kernel and dt overlays etc) which are currently stored on the SERVER's boot directory, so:
-
-```
-cp -r /boot/* /tftpboot
-```
-
-This should now allow your Pi to boot through until it tried to load a root filesystem (which it doesn't have)...  This is the point where you need to provide a filing system which is beyond this tutorial... Although I'll give you some clues for sharing the SERVERS filesystem with the client...
-
-* Reboot SERVER with a normal ethernet connection (you'll probably need to remove the dhcpcd.conf line to re-enable the client)
-* `sudo apt-get install nfs-kernel-server`
-* `sudo vi /etc/exports`
-* Add the line "/ *(rw,sync,no_subtree_check)" to exports
-* sudo systemctl restart rpcbind.service
-* sudo systemctl restart nfs-kernel-server.service
-* Reboot with the ethernet connected to the CLIENT and do the static IP thing again
-* Check the mount is working using something like `sudo mount 192.168.1.1:/ tmp`
-* edit /tftpboot/cmdline.txt and change to
-  * "root=/dev/nfs nfsroot=192.168.1.1:/ rw ip=dhcp rootwait"
-* edit /etc/fstab and remove the /dev/mmcblkp1 and p2 lines
-* edit /boot/cmdline.txt (the SERVER's cmdline) and add "rw" to the line
-
-Think that's it... Good luck...
+See Also:
+* [Network boot tutorial](net_tutorial.md)
