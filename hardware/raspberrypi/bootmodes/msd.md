@@ -1,5 +1,5 @@
 # How to boot from a USB Mass Storage Device on a Raspberry Pi 3
-When the Raspberry Pi 3 was announced it was also mentioned that it had the capability to boot from USB Mass Storage Devices or via the network. This document describes the current methode to configure a standard Rasbian image in such a way that can use these new boot modes
+When the Raspberry Pi 3 was announced it was also mentioned that it had the capability to boot from USB Mass Storage Devices or via the network. This document describes the current method to configure a standard Rasbian image in such a way that can use these new boot modes
 **WARNING: This is very experimental and only available to selected tests users**
 
 ## preparing the Rasberry Pi3
