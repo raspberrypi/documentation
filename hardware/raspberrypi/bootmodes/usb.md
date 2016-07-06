@@ -6,5 +6,5 @@ and is enabled by default on all Raspberry Pi devices.  The second bit enables U
 reads the OTGID pin to device whether to boot as a host (driven to zero as on the Pi Model B) or as a device (left floating).  The
 Pi Zero has access to this pin through the OTGID pin on the USB connector, the compute module has access to this pin on the edge connector.
 
-* [usb_host.md](USB host boot mode)
-* [usb_device.md](USB device boot mode)
+* [USB host boot](host.md)
+* [USB device boot](device.md)
