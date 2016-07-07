@@ -204,4 +204,4 @@ substituting your network settings as necessary.
 
 Finally, edit /nfs/client1/etc/fstab and remove the /dev/mmcblkp1 and p2 lines (only proc should be left).
 
-Good luck!
+Good luck! If it doesn't boot first time keep trying. It can take a minute or so for the Pi to boot, so be patient.
