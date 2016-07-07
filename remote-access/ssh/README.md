@@ -3,7 +3,7 @@
 You can access the command line of a Raspberry Pi remotely from another computer or device on the same network using `ssh`.
 
 ##1. Setup your local network and Wi-Fi
-Make sure your Raspberry Pi is properly set up and connected. If you're using [Wi-Fi](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md), this is done using the `wpa_supplicant.conf` config file. 
+Make sure your Raspberry Pi is properly set up and connected. If you're using [Wi-Fi](../../configuration/wireless/wireless-cli.md), this is done using the `wpa_supplicant.conf` config file. 
 
 Add the following data to the file:
 ```
