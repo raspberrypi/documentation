@@ -75,7 +75,7 @@ Finally note down the address of your DNS server, which is the same address as y
 cat /etc/resolv.conf
 ```
 
-Configure a static network adddress on your server Pi by with `sudo nano /etc/network/interfaces` (where you replace nano with an editor of your choice). Change the line, `iface eth0 inet manual` so that the address is the first address from the command before last, the address as `255.255.255.0` and the gateway address as the number received from the last command. 
+Configure a static network adddress on your server Pi by with `sudo nano /etc/network/interfaces` (where you replace nano with an editor of your choice). Change the line, `iface eth0 inet manual` so that the address is the first address from the command before last, the netmask address as `255.255.255.0` and the gateway address as the number received from the last command. 
 
 ```
 auto eth0
@@ -102,7 +102,7 @@ At this point, you won't have working DNS, so you'll need to add the server you 
 echo "nameserver 10.42.0.1" | sudo tee /etc/resolv.conf
 ```
 
-Then make the file immutable as other processes will keep changing it by...
+Then make the file immutable (because otherwise dnsmasq will interfear) with...
 ```
 sudo chattr +i /etc/resolv.conf
 ```
@@ -131,7 +131,7 @@ Connect the client Pi to your network and power it on. Check that the LEDs illum
 IP 0.0.0.0.bootpc > 255.255.255.255.bootps: BOOTP/DHCP, Request from b8:27:eb...
 ```
 
-Now we need to modify the dnsmasq configuration to enable DHCP to reply to the device ... Press `CTRL+Z` on the keyboard to exit the tcpdump program, then...
+Now we need to modify the dnsmasq configuration to enable DHCP to reply to the device ... Press `CTRL+C` on the keyboard to exit the tcpdump program, then...
 
 ```
 sudo echo | sudo tee /etc/dnsmasq.conf
