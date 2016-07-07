@@ -13,7 +13,7 @@ A prompt asking you to allow notifications will pop up, click ‘Allow’ (recom
 
 Enter an `alias`, ‘Raspberry Pi’, for example. Then enter the IP address under `hostname`. Fill out the `username` and `password` and hit ‘save’ in the top right corner. 
 
-If you don't know the IP address just type `hostname -I` in the Raspberry Pi. See more [methods](https://www.raspberrypi.org/documentation/remote-access/ip-address.md) of finding your IP address. The default login for Raspbian is `pi` with the password `raspberry`.
+If you don't know the IP address just type `hostname -I` in the Raspberry Pi. See more [methods](../ip-address.md) of finding your IP address. The default login for Raspbian is `pi` with the password `raspberry`.
 
 
 ##2. Connect
