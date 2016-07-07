@@ -1,6 +1,5 @@
-# Setting up a DHCP / TFTP server
-
-This tutorial is written to explain how to set up a simple DHCP / TFTP server to boot a Raspberry Pi 3 from the network. The tutorial assumes you only have a Raspberry Pi for the SERVER and a Pi 3 as a CLIENT to be booted. Only one SD card is needed because the CLIENT will be booted from the SERVER after the initial client configuration.
+# Network Boot Your Raspberry Pi
+This tutorial is written to explain how to set up a simple DHCP / TFTP server that will allow you to boot a Raspberry Pi 3 from the network. The tutorial assumes you have an existing home network, and want to use a Raspberry Pi for the SERVER. You will need a second Pi 3 as a CLIENT to be booted. Only one SD card is needed because the CLIENT will be booted from the SERVER after the initial client configuration.
 
 ## Client configuration
 Before a Pi will network boot, it needs to be booted with a config option to enable USB Boot Mode. Enabling this config option requires a special `start.elf` and `bootcode.bin` file. 
@@ -33,8 +32,24 @@ Ensure the output `0x3020000a` is correct.
 
 The client configuration is almost done. The final thing to do is to remove the `program_usb_boot_mode` line from config.txt. You can do this with `sudo nano /boot/config.txt` for example. Finally, shut down the client Pi with `sudo poweroff`
 
-### Server configuration
-Plug the SD card into the SERVER and boot the server, with it connected to the internet install some useful applications:
+## Server configuration
+Plug the SD card into the SERVER and boot the server. Before you do anything else, make sure you have ran `sudo raspi-config` and expanded the root filesystem to take up the entire SD card.
+
+The client Pi will need a root filesystem to boot off, so before we do anything else on the server, we're going to make a full copy of its filesystem and put it in a directory called /nfs/client1.
+
+```
+sudo mkdir -p /nfs/client1
+sudo apt-get install rsync
+sudo rsync -xa --progress --exclude /nfs / /nfs/client1
+```
+
+Regenerate ssh host keys on client filesystem by chrooting into it
+```
+sudo chroot /nfs/client1
+rm /etc/ssh/ssh_host_*
+dpkg-reconfigure openssh-server
+exit
+```
 
 You need to find the settings of your local network. You need to find the address of your router (or gateway), which you can find with:
 ```
@@ -167,19 +182,26 @@ Restart dnsmasq for good measure
 sudo systemctl restart dnsmasq
 ```
 
-This should now allow your Pi to boot through until it tried to load a root filesystem (which it doesn't have)...  This is the point where you need to provide a filing system which is beyond this tutorial... Although I'll give you some clues for sharing the SERVERS filesystem with the client...
+### Set up NFS root
+This should now allow your Pi to boot through until it tried to load a root filesystem (which it doesn't have). All we have to do to get this working is to export the `/nfs/client1` filesystem we created earlier.
 
-* Reboot SERVER with a normal ethernet connection (you'll probably need to remove the dhcpcd.conf line to re-enable the client)
-* `sudo apt-get install nfs-kernel-server`
-* `sudo vi /etc/exports`
-* Add the line "/ *(rw,sync,no_subtree_check)" to exports
-* sudo systemctl restart rpcbind.service
-* sudo systemctl restart nfs-kernel-server.service
-* Reboot with the ethernet connected to the CLIENT and do the static IP thing again
-* Check the mount is working using something like `sudo mount 192.168.1.1:/ tmp`
-* edit /tftpboot/cmdline.txt and change to
-  * "root=/dev/nfs nfsroot=192.168.1.1:/ rw ip=dhcp rootwait"
-* edit /etc/fstab and remove the /dev/mmcblkp1 and p2 lines
-* edit /boot/cmdline.txt (the SERVER's cmdline) and add "rw" to the line
+```
+sudo apt-get install nfs-kernel-server
+echo "/nfs/client1 *(rw,sync,no_subtree_check)" | sudo tee -a /etc/exports
+sudo systemctl enable rpcbind
+sudo systemctl restart rpcbind
+sudo systemctl enable nfs-kernel-server
+sudo systemctl restart nfs-kernel-server
+```
 
-Think that's it... Good luck...
+Edit /tftpboot/cmdline.txt and from `root=` onwards, replace it with:
+
+```
+root=/dev/nfs nfsroot=10.42.0.2:/nfs/client1 rw ip=dhcp rootwait
+```
+
+substituting your network settings as necessary.
+
+Finally, edit /nfs/client1/etc/fstab and remove the /dev/mmcblkp1 and p2 lines (only proc should be left).
+
+Good luck!
