@@ -40,6 +40,6 @@ In case a dialogue saying `Connection failed Connecting to 192.xxx.xxx.xxx port 
 
 ##3. Modify an entry, troubleshooting and more
 
-A connection might be unsuccessful due to various reasons. Most likely your device or Raspberry Pi are [not connected properly](../../configuration/wireless/wireless-cli.md), [SSH is disabled](../../configuration/raspi-config.md), you might have made a typo, or the IP address or credentials have changed. In this later cases, you need to update the host.
+A connection might be unsuccessful due to various reasons. Most likely your device or Raspberry Pi are [not connected properly](../../configuration/wireless/wireless-cli.md), [SSH is disabled](../../configuration/raspi-config.md), you might have made a typo, or the IP address or credentials have changed. In the latter cases, you need to update the host.
 
 To do so, in the ‘Hosts’ screen, tap and hold the particular entry. In the top right corner, new functions will pop up. Tap the little pencil icon. A new screen titled ‘Edit Host’ will pop up.
