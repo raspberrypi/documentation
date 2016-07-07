@@ -33,20 +33,6 @@ You can type `exit` to close the PuTTY window.
 ##3. Modify troubleshooting and more
 The next time you use PuTTY look for the `Saved Sessions` section on the bottom half of the configuration screen. If you use this I recommend switching to the `Connection` page in the left hand tree and setting the `Seconds between keepalives` value to `30`. Then switch back to the `Session` page in the tree before you click `Save`. Using this setting allows you to leave a PuTTY window open for long periods of time with no activity and the Pi will not time out and disconnect you.
 
-For further PuTTY documentation please see the [putty docs](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)
+A connection might be unsuccessful due to various reasons. Most likely your device or Raspberry Pi are [not connected properly](../../configuration/wireless/wireless-cli.md), [SSH is disabled](../../configuration/raspi-config.md), you might have made a typo, or the IP address or credentials have changed. In the latter cases, you need to update the host. How to update a host and for further PuTTY documentation please see the [putty docs](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)
 
-###Check your local network and Wi-Fi status
-Make sure your Raspberry Pi is properly set up and connected, if you're using [Wi_Fi](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md), this is done using the `wpa_supplicant.conf` config file. 
 
-Add the following data to the file:
-```
-network={
-    ssid="Your_SSID"
-    psk="Your_wifi_password"
-}
-```
-
-###Is SSH Enabled?
-The Raspberry Pi has an SSH Server enabled by default. The SSH server on your Raspberry Pi may be disabled, in this case you have to enable it manually. This is done using [raspi-config](../../configuration/raspi-config.md):
-
-Enter `sudo raspi-config` in the terminal, then navigate to `ssh`, hit `Enter` and select `Enable or disable ssh server`.

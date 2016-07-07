@@ -2,7 +2,7 @@
 
 To use SSH on your mobile device you need to download a client. There are several different good quality clients available, such as [Serverauditor](http://www.serverauditor.com), [Prompt 2](https://panic.com/prompt/), and  [Cathode](http://www.secretgeometry.com/apps/cathode/). 
 
-For the sake of this tutorials we'll use Serverauditor, because it's a popular cross platform SSH client. It can be downloaded from [iTunes](https://itunes.apple.com/en/app/serverauditor-ssh-shell-console/id549039908?mt=8). But the principle is applicable to other clients as well. 
+For the sake of this tutorial we'll use Serverauditor, because it's a popular cross platform SSH client. But the principle is applicable to other clients as well. 
 
 ##1. Add your Raspberry pi as a host.
 Download Serverauditor from [iTunes](https://itunes.apple.com/en/app/serverauditor-ssh-shell-console/id549039908?mt=8), if you haven’t installed it yet. And click to open the app.
@@ -13,7 +13,7 @@ A prompt asking you to allow notifications will pop up, click ‘Allow’ (recom
 
 Enter an `alias`, ‘Raspberry Pi’, for example. Then enter the IP address under `hostname`. Fill out the `username` and `password` and hit ‘save’ in the top right corner. 
 
-If you don't know the IP address just type `hostname -I` in the Raspberry Pi. See more [methods](https://www.raspberrypi.org/documentation/remote-access/ip-address.md) of finding your IP address. The default login for Raspbian is `pi` with the password `raspberry`.
+If you don't know the IP address just type `hostname -I` in the Raspberry Pi. See more [methods](../ip-address.md) of finding your IP address. The default login for Raspbian is `pi` with the password `raspberry`.
 
 
 ##2. Connect
@@ -37,24 +37,6 @@ You can type `exit` to close the terminal window.
 In case a red exclamation mark will appear, something went wrong. Tap the exclamation mark for the error description. ‘Connection establishment time out.’  means you’ve most likely entered a wrong IP address. Otherwise, Wi_Fi on your mobile device might be turned off, the Raspberry Pi might be turned off,  or it in a different network than your mobile device.
 
 ##3. Modify an entry, troubleshooting and more
-
-### Modify
-You might have made a typo, or the IP address or credentials have changed. In this case you need to update the host.
+A connection might be unsuccessful due to various reasons. Most likely your device or Raspberry Pi are [not connected properly](../../configuration/wireless/wireless-cli.md), [SSH is disabled](../../configuration/raspi-config.md), you might have made a typo, or the IP address or credentials have changed. In the latter cases, you need to update the host.
 
 To do so, in the ‘Hosts’ screen, swype the particular host to the left, and new functions will appear. Tap edit. A new screen titled ‘Edit Host’ will pop up.
-
-###Check your local network and Wi-Fi status
-Make sure your Raspberry Pi is properly set up and connected, if you're using [Wi-Fi](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md), this is done using the `wpa_supplicant.conf` config file. 
-
-Add the following data to the file:
-```
-network={
-    ssid="Your_SSID"
-    psk="Your_wifi_password"
-}
-```
-
-###Is SSH Enabled?
-The Raspberry Pi has an SSH Server enabled by default. The SSH server on your Raspberry Pi may be disabled, in this case you have to enable it manually. This is done using [raspi-config](../../configuration/raspi-config.md):
-
-Enter `sudo raspi-config` in the terminal, then navigate to `ssh`, hit `Enter` and select `Enable or disable ssh server`.
