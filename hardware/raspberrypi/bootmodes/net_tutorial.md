@@ -68,14 +68,14 @@ which should give an output like:
 inet 10.42.0.211/24 brd 10.42.0.255 scope global eth0
 ```
 
-The first address is the IP address of your server Pi on the network, and the part after the slash is the network size. It is highly likely that yours will be a `/24`, which means you can use any address between 10.42.0.1 and 10.42.0.254. When picking an address for your Pi, you need to exclude the gateway address. For example, if your gateway is 10.42.0.1 we suggest using 10.42.0.2 for your server Pi. Also note the `brd` (broadcast) address of the network.
+The first address is the IP address of your server Pi on the network, and the part after the slash is the network size. It is highly likely that yours will be a `/24`, which means you can use any address between 10.42.0.1 and 10.42.0.254. When picking an address for your Pi, you need to exclude the gateway address. For example, if your gateway is 10.42.0.1 we suggest using 10.42.0.2 for your server Pi. Also note the `brd` (broadcast) address of the network. Note down the output of the previous two commands.
 
 Finally note down the address of your DNS server, which is very likely the same address as your gateway. You can find this with:
 ```
 cat /etc/resolv.conf
 ```
 
-Configure a static network adddress on your server Pi by with `sudo nano /etc/network/interfaces` (where you replace nano with an editor of your choice). Change the line, `iface eth0 inet manual` to look something like:
+Configure a static network adddress on your server Pi by with `sudo nano /etc/network/interfaces` (where you replace nano with an editor of your choice). Change the line, `iface eth0 inet manual` to look something like, where the address is the first address from the command before last, the address as `255.255.255.0` and the gateway address as the number received from the last command. 
 
 ```
 auto eth0
