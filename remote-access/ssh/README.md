@@ -3,7 +3,7 @@
 You can access the command line of a Raspberry Pi remotely from another computer or device on the same network using `ssh`.
 
 ##1. Setup your client
-SSH is built into Linux distributions and Mac OS. For Windows and mobile devices, a third-party SSH client is available. See the following guides for using SSH depending on the OS used by the computer or devices you are connecting from:
+SSH is built into Linux distributions and Mac OS. For Windows and mobile devices, third-party SSH clients are available. See the following guides for using SSH depending on the OS used by the computer or device you are connecting from:
 
 - [Linux & Mac OS](unix.md)
 - [Windows](windows.md)
