@@ -102,6 +102,11 @@ At this point, you won't have working DNS, so you'll need to add the server you 
 echo "nameserver 10.42.0.1" | sudo tee /etc/resolv.conf
 ```
 
+Then make the file immutable as other processes will keep changing it by...
+```
+sudo chattr +i /etc/resolv.conf
+```
+
 Then install software we need:
 ```
 sudo apt-get update
@@ -112,11 +117,6 @@ Stop dnsmasq breaking DNS resolving:
 ```
 sudo rm /etc/resolvconf/update.d/dnsmasq
 sudo reboot
-```
-
-Then set your nameserver again (because dnsmasq broke it):
-```
-echo "nameserver 10.42.0.1" | sudo tee /etc/resolv.conf
 ```
 
 Now start tcpdump so you can search for DHCP packets from the client Pi:
@@ -131,7 +131,7 @@ Connect the client Pi to your network and power it on. Check that the LEDs illum
 IP 0.0.0.0.bootpc > 255.255.255.255.bootps: BOOTP/DHCP, Request from b8:27:eb...
 ```
 
-Now we need to modify the dnsmasq configuration to enable DHCP to reply to the device ...
+Now we need to modify the dnsmasq configuration to enable DHCP to reply to the device ... Press `CTRL+Z` on the keyboard to exit the tcpdump program, then...
 
 ```
 sudo echo | sudo tee /etc/dnsmasq.conf
@@ -149,15 +149,15 @@ tftp-root=/tftpboot
 pxe-service=0,"Raspberry Pi Boot"
 ```
 
-Where the first address of the `dhcp-range` line is the broadcast address you noted down earlier.
+Where the first address of the `dhcp-range` line is, use the broadcast address you noted down earlier.
 
 Now create a /tftpboot directory
 
 ```
-$ sudo mkdir /tftpboot
-$ sudo chmod 777 /tftpboot
-$ sudo systemctl enable dnsmasq.service
-$ sudo systemctl restart dnsmasq.service
+sudo mkdir /tftpboot
+sudo chmod 777 /tftpboot
+sudo systemctl enable dnsmasq.service
+sudo systemctl restart dnsmasq.service
 ```
 
 Now monitor the dnsmasq log
@@ -172,6 +172,8 @@ raspberrypi dnsmasq-tftp[1903]: file /tftpboot/bootcode.bin not found
 ```
 
 Next, you will need to copy [bootcode.bin](bootcode.bin) and [start.elf](start.elf) into the /tftpboot directory, you should be able to do this by just copying the files from /boot since they are the right ones. Also we need a kernel so might as well copy the entire boot directory.
+
+First, use Ctrl+Z to exit the monitoring state. Then...
 
 ```
 cp -r /boot/* /tftpboot
@@ -200,7 +202,7 @@ Edit /tftpboot/cmdline.txt and from `root=` onwards, replace it with:
 root=/dev/nfs nfsroot=10.42.0.2:/nfs/client1 rw ip=dhcp rootwait elevator=deadline
 ```
 
-substituting your network settings as necessary.
+substituting the IP address as the IP address you have noted down.
 
 Finally, edit /nfs/client1/etc/fstab and remove the /dev/mmcblkp1 and p2 lines (only proc should be left).
 
