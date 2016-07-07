@@ -187,7 +187,7 @@ This should now allow your Pi to boot through until it tried to load a root file
 
 ```
 sudo apt-get install nfs-kernel-server
-echo "/nfs/client1 *(rw,sync,no_subtree_check)" | sudo tee -a /etc/exports
+echo "/nfs/client1 *(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
 sudo systemctl enable rpcbind
 sudo systemctl restart rpcbind
 sudo systemctl enable nfs-kernel-server
@@ -197,7 +197,7 @@ sudo systemctl restart nfs-kernel-server
 Edit /tftpboot/cmdline.txt and from `root=` onwards, replace it with:
 
 ```
-root=/dev/nfs nfsroot=10.42.0.2:/nfs/client1 rw ip=dhcp rootwait
+root=/dev/nfs nfsroot=10.42.0.2:/nfs/client1 rw ip=dhcp rootwait elevator=deadline
 ```
 
 substituting your network settings as necessary.
