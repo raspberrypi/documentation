@@ -43,12 +43,12 @@ Now that your Rasberry Pi3 is USB Boot enabled you can start creating a USB Stic
 
 5. Check where the two partitions are mounted on the Raspberry Pi using the following command
 
-             mount
+        mount
 
 6. It should show somewhere a line that looks like this
 
-       /dev/sda1 on /media/pi/boot
-       /dev/sda2 on /media/pi/2f84--something-long--231c
+        /dev/sda1 on /media/pi/boot
+        /dev/sda2 on /media/pi/2f84--something-long--231c
 
 7. Go to the boot partition mount point and also replace the bootcode.bin and start.elf files on the USB MSD device
   
