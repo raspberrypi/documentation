@@ -18,5 +18,5 @@ The USB host boot mode follows the following sequence:
 * Go through MSD device list
   * [Boot from MSD](msd.md)
 * Go through Ethernet device list
-  * [Boot from Ethernet](eth.md)
+  * [Boot from Ethernet](net.md)
 
