@@ -18,7 +18,7 @@ Make sure your Raspberry Pi is properly set up and connected. If you're using [W
 Otherwise, plug your Raspberry Pi directly into the router.
 
 ##3. Enable SSH
-The Raspberry Pi has an SSH Server enabled by default. The SSH server on your Raspberry Pi may be disabled, in this case you have to enable it manually. This is done using [raspi-config](../../configuration/raspi-config.md):
+The Raspberry Pi has an SSH server enabled by default. The SSH server on your Raspberry Pi may be disabled, in this case you have to enable it manually. This is done using [raspi-config](../../configuration/raspi-config.md):
 
 Enter `sudo raspi-config` in the terminal, then navigate to `ssh`, hit `Enter` and select `Enable or disable ssh server`.
 
