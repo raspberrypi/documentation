@@ -34,7 +34,7 @@ You can type `exit` to close the terminal window.
 
 ![Serverauditor Terminal](images/ssh-android-window.png)
 
-In case a dialogue saying `Connection failed Connecting to 192.xxx.xxx.xxx port 22` appears it is likely you have entered an incorrect IP address. Otherwise, WiFi on your mobile device might be turned off, the Raspberry Pi might be turned off, or it may be connected to a different network from your mobile device.
+If a dialogue saying `Connection failed Connecting to 192.xxx.xxx.xxx port 22` appears, it is likely you have entered an incorrect IP address. Otherwise, WiFi on your mobile device might be turned off, the Raspberry Pi might be turned off, or it may be connected to a different network from your mobile device.
 
 
 ##3. Modify an entry, troubleshooting, and more
