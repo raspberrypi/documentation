@@ -7,7 +7,7 @@ To use SSH on your mobile device you need to download a client. There are severa
 
 Download Serverauditor from [Google Play](https://play.google.com/store/apps/details?id=com.server.auditor.ssh.client), if you haven't installed it already. Click to open the app.
 
-The app should open showing ‘no hosts’. To get started, you should tap the blue `+` button in the lower left corner. Then tap ‘New Host’. 
+The app should open showing ‘No Hosts’. To get started, you should tap the blue `+` button in the lower left corner. Then tap ‘New Host’. 
 
 ![Serverauditor ‘New Host’ configuration](images/ssh-android-config.png)
 
@@ -18,7 +18,7 @@ If you don't know the IP address, just type `hostname -I` in command line on the
 
 ##2. Connect
 
-After you’ve saved the new host, you’ll be sent back to the ‘hosts’ screen. There you’ll find the new entry. Make sure your mobile device has WiFi turned on and connected to the same network as your Raspberry Pi.
+After you’ve saved the new host, you’ll be sent back to the ‘Hosts’ screen. There you’ll find the new entry. Make sure your mobile device has WiFi turned on and connected to the same network as your Raspberry Pi.
 
 Tap the new entry once, when the connection works you’ll see a [security warning](http://www.lysium.de/blog/index.php?/archives/186-How-to-get-ssh-server-fingerprint-information.html). Don’t worry: everything is fine. Click ‘Connect’. You’ll only see this warning the first time Serverauditor connects to a Pi that it hasn’t seen before.
 
@@ -39,6 +39,6 @@ In case a dialogue saying `Connection failed Connecting to 192.xxx.xxx.xxx port 
 
 ##3. Modify an entry, troubleshooting, and more
 
-A connection might be unsuccessful due to various reasons. Most likely your device or Raspberry Pi are [not connected properly](../../configuration/wireless/wireless-cli.md), [SSH is disabled](../../configuration/raspi-config.md), you might have made a typo, or the IP address or credentials have changed. In the latter cases, you need to update the host.
+A connection might be unsuccessful for various reasons. The most likely is that your device or Raspberry Pi are [not connected properly](../../configuration/wireless/wireless-cli.md), [SSH is disabled](../../configuration/raspi-config.md), there may be a typo in your code, or the IP address or credentials have changed. In the latter cases, you need to update the host.
 
-To do so, in the ‘Hosts’ screen, tap and hold the particular entry. In the top right corner, new functions will pop up. Tap the little pencil icon. A new screen titled ‘Edit Host’ will pop up.
+To do this, go to the ‘Hosts’ screen, and tap and hold the particular entry. In the top right corner, new functions will pop up. Tap the pencil icon. A new screen titled ‘Edit Host’ will pop up.
