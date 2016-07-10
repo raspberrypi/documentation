@@ -10,7 +10,7 @@ SSH is built into Linux distributions and Mac OS. For Windows and mobile devices
 - [iOS](ios.md)
 - [Android](android.md)
 
-*Note you only have access to the command line, not the full desktop environment. For full remote desktop see [VNC](../vnc/README.md).*
+Note you only have access to the command line, not the full desktop environment. For full remote desktop see [VNC](../vnc/README.md).
 
 ##2. Setup your local network and Wi-Fi
 Make sure your Raspberry Pi is properly set up and connected. If you're using [Wi-Fi](../../configuration/wireless/wireless-cli.md), this is done using the `wpa_supplicant.conf` config file. 
