@@ -6,7 +6,7 @@ This is preliminary information used by the beta testers for the development of 
 
 ## Introduction
 
-The Raspberry Pi has a number of different stages of booting, this document is meant to help explain how the boot modes work, which ones are supported for Linux booting and how they work.
+The Raspberry Pi has a number of different stages of booting. This document is meant to help explain how the boot modes work, and which ones are supported for Linux booting.
 
 * [Bootflow](bootflow.md) Boot sequence description
 * [SD card](sdcard.md) SD card boot description
