@@ -39,4 +39,4 @@ cd pi
 ls
 ```
 
-You can also browse the Pi's filesystem using your computer's file manager (including drag-and-drop to copy files between devices), and use your computer's applications (text editors, image processing tools, etc) to edit files directly on the Pi.
+You can also browse the Pi's filesystem using your computer's file manager (including drag-and-drop to copy files between devices), and use your computer's applications (text editors, image processing tools, and so on) to edit files directly on the Pi.
