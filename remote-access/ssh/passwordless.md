@@ -4,7 +4,7 @@ It is possible to configure your Pi to allow your computer to access it without 
 
 ## Check for existing SSH keys
 
-First, check whether there are already keys on your computer (the one you're connecting from):
+First, check whether there are already keys on your computer (i.e. the computer you are using to connect to the Raspberry Pi):
 
 ```
 ls ~/.ssh
