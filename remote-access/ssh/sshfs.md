@@ -6,13 +6,13 @@ SSHFS allows you to mount a Raspberry Pi's files over an SSH session.
 
 ### Linux
 
-Install sshfs on your computer with:
+Install SSHFS on your computer with:
 
 ```bash
 sudo apt-get install sshfs
 ```
 
-(assuming a Debian based system)
+(This assumes you are using a Debian-based system)
 
 ### Mac
 
@@ -32,11 +32,11 @@ Then mount the Raspberry Pi's filesystem to this location:
 sshfs pi@192.168.1.3: pi
 ```
 
-Now enter this directory as if it's a regular folder and you should see and be able to access the contents of the Raspberry Pi:
+Now enter this directory as if it is a regular folder; you should be able to see and access the contents of the Raspberry Pi:
 
 ```bash
 cd pi
 ls
 ```
 
-You can also browse the Pi's filesystem using your computer's file manager (including drag-and-drog to copy files between devices), and use your computer's applications (text editors, image processing tools, etc.) to edit files directly on the Pi.
+You can also browse the Pi's filesystem using your computer's file manager (including drag-and-drop to copy files between devices), and use your computer's applications (text editors, image processing tools, etc) to edit files directly on the Pi.
