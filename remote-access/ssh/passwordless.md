@@ -4,7 +4,7 @@ It is possible to configure your Pi to allow your computer to access it without 
 
 ## Check for existing SSH keys
 
-First, check whether there are already keys on your computer (i.e. the computer you are using to connect to the Raspberry Pi):
+First, check whether there are already keys on your computer you are using to connect to the Raspberry Pi:
 
 ```
 ls ~/.ssh
@@ -24,7 +24,7 @@ You can also use a more descriptive comment using quotes if you have spaces, e.g
 
 Upon entering this command, you'll be asked where to save the key. We suggest you save it in the default location (`/home/pi/.ssh/id_rsa`) by just hitting `Enter`.
 
-You'll also be asked to enter a passphrase. This is extra security which will make the key unusable without your passphrase, so if someone else copied your key, they could not impersonate you to gain access. If you choose to use a passphrase, type it here and press `Enter`, then type it again when prompted. Leave empty for no passphrase.
+You'll also be asked to enter a passphrase. This is extra security which will make the key unusable without your passphrase, so if someone else copied your key, they could not impersonate you to gain access. If you choose to use a passphrase, type it here and press `Enter`, then type it again when prompted. Leave the field empty for no passphrase.
 
 Now you should see the files `id_rsa` and `id_rsa.pub` in your `.ssh` directory in your home folder:
 
@@ -71,8 +71,7 @@ Note that this time you will have to authenticate with your password.
 
 Now try `ssh <USER>@<IP-ADDRESS>` and you should connect without a password prompt.
 
-If you see a message "Agent admitted failure to sign using the key." then add your RSA or DSA identities to the authentication agent, ssh-agent 
-the execute the following command:  
+If you see a message "Agent admitted failure to sign using the key" then add your RSA or DSA identities to the authentication agent `ssh-agent` then execute the following command:  
 ```
 ssh-add
 ```
