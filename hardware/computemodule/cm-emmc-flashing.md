@@ -16,7 +16,9 @@ Under Windows an installer is available to automatically install the required dr
 
 ### Windows installer
 
-For those who just want to enable the Compute Module eMMC as a mass storage device under Windows, the standalone installer is the recommended option. This installer has been tested on Windows 7 32-bit and 64-bit. It also works under Windows 8, but you have to jump through some hoops as the driver is not signed; see [here](http://revryl.com/2013/08/06/install-unsigned-drivers/) for instructions.
+For those who just want to enable the Compute Module eMMC as a mass storage device under Windows, the standalone installer is the recommended option. This installer has been tested on Windows 10 32-bit and 64-bit, and Windows XP 32 bit.
+
+Please ensure you are not writing to any USB devices whilst the installer is running.
 
 1. Download and run the [Windows installer](CM-Boot-Installer.exe) to install the drivers and boot tool.
 1. Plug your host PC USB into the CMIO USB SLAVE port, making sure J4 is set to the EN position.
