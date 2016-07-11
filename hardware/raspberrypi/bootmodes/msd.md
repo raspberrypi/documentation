@@ -1,69 +1,94 @@
 # How to boot from a USB Mass Storage Device on a Raspberry Pi 3
-When the Raspberry Pi 3 was announced it was also mentioned that it had the capability to boot from USB Mass Storage Devices or via the network. This document describes the current method to configure a standard Rasbian image in such a way that can use these new boot modes
-**WARNING: This is very experimental and only available to selected tests users**
+This tutorial explains how to boot your Raspberry Pi 3 from a USB mass storage device such as a flash drive or USB hard disk. Be warned that this feature is experimental and may not work with all USB mass storage devices.
 
-## preparing the Rasberry Pi3
-Before we can boot the Raspberry Pi3 from a USB Mass Storage Device (MSD Boot) we need to enable this option on the Rasberry Pi3. This is done using a special setting in the config.txt.
+## Program USB Boot Mode
+Before a Pi will network boot, it needs to be booted with a config option to enable USB Boot Mode. Enabling this config option requires a special `start.elf` and `bootcode.bin` file. 
 
-1. Download a standard Rasbian image and use the standard methodes to write it a normal SD Card.
-https://www.raspberrypi.org/documentation/installation/installing-images/README.md
+Install Raspbian from the [Downloads page](https://www.raspberrypi.org/downloads/raspbian/) onto an SD card using `Win32DiskImager` if you are on Windows, or `dd` if you are on Linux/Mac. Boot the Pi.
 
-2. After writing the image reinsert the new image so that the "boot"  FAT patition of the SD card is mounted in your operating system.
+First, prepare the `/boot` directory with new `start.elf` and `bootcode.bin` files:
+```
+cd /boot
+sudo rm start.elf bootcode.bin start_* fixup*
+sudo wget https://github.com/raspberrypi/documentation/raw/master/hardware/raspberrypi/bootmodes/start.elf 
+sudo wget https://github.com/raspberrypi/documentation/raw/master/hardware/raspberrypi/bootmodes/bootcode.bin
+sudo sync
+```
 
-3. replace the bootcode.bin and start.elf files with the new version of these two files
+Then enable USB Boot Mode with:
+```
+echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
+```
 
-4. Open config.txt with an text editor and add the following line to the bottom the config.txt file
+which adds `program_usb_boot_mode=1` to the end of `/boot/config.txt`. Then reboot the Pi with `sudo reboot`. Once the Pi has rebooted, check that the OTP is has been programmed with:
 
-		program_usb_boot_mode=1
+```
+$ vcgencmd otp_dump | grep 17:
+17:3020000a
+```
 
-5. Put the adjusted SD Card into the Raspberry Pi3 and let it boot once from this SD Card.
+Ensure the output `0x3020000a` is correct.
 
-6. Verify if the Raspberry Pi3 has the new USB boot modes activated by running the following command:
+Optionally, you can remove the `program_usb_boot_mode` line from config.txt (make sure there is no blank line at the end) so that if you put the SD card in another Pi, it won't program usb boot mode.. You can do this with `sudo nano /boot/config.txt` for example.
 
-        vcgencmd otp_dump
+## Prepare the USB storage device
+Now that your Pi 3 is USB Boot enabled we can prepare a USB storage device to boot from. Start by inserting the USB storage device (which will be completely erased) into the Pi. Rather than downloading the Raspbian image again, we will copy it from the SD card on the Pi. The source device (sd card) will be `/dev/mmcblk0` and the destination device (USB disk) should be `/dev/sda` assuming you have no other USB devices connected.
 
-7. This should produce a list of settings. Make sure that lines 17 and 18 are showing the following:
+We will start by using parted to create a 100MB fat32 partition, followed by a Linux ext4 partition that will take up the rest of the disk.
 
-          17:3020000a
-          18:3020000a
+```
+sudo umount /dev/sda
+sudo parted /dev/sda
 
-8. Now you know that this Raspberry Pi3 is USB boot enabled.
+(parted) mktable msdos
+Warning: The existing disk label on /dev/sda will be destroyed and all data on this disk will be lost. Do you want to continue?
+Yes/No? Yes
+(parted) mkpart primary fat32 0% 100M
+(parted) mkpart primary ext4 100M 100%
+(parted) print
+Model: SanDisk Ultra (scsi)
+Disk /dev/sda: 30.8GB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+Disk Flags:
 
-## Writing the USB MSD
+Number  Start   End     Size    Type     File system  Flags
+ 1      1049kB  99.6MB  98.6MB  primary  fat32        lba
+ 2      99.6MB  30.8GB  30.7GB  primary  ext4         lba
+```
+Your `parted print` output should look similar to the one above.
 
-Now that your Rasberry Pi3 is USB Boot enabled you can start creating a USB Stick that you can use for your first boot. For this we ofcourse use the Raspberry Pi itself
+Create the boot and root filesystems:
+```
+sudo mkfs.vfat -n BOOT -F 32 /dev/sda1
+sudo mkfs.ext4 /dev/sda2
+```
 
-1. Insert your empty USB MSD into a free USB slot of the Raspberry Pi3 **warning: all information on this USB MSD will be lost**
+Mount the target filesystems and copy the running raspbian system to it:
+```
+sudo mkdir /mnt/target
+sudo mount /dev/sda2 /mnt/target/
+sudo mkdir /mnt/target/boot
+sudo mount /dev/sda1 /mnt/target/boot/
+sudo rsync -ax --progress / /boot /mnt/target
+```
 
-2. Download the latest Rasbian image from the Raspberry Pi website and unzip into a directory
+Edit `/boot/cmdline.txt` so that it uses the USB storage device as the root filesystem instead of the SD card.
 
-3. Determine the correct device of the USB MSD and write the Rasbian image to it using the linux instructions on the website
+```
+sudo sed -i "s,root=/dev/mmcblk0p2,root=/dev/sda2," /mnt/target/boot/cmdline.txt
+```
 
-4. After writing the image you should remove the USB MSD and then reinsert it again so that Rasbian will mount the two paritions on it
+The same needs to be done for fstab
+```
+sudo sed -i "s,/dev/mmcblk0p,/dev/sda," /mnt/target/etc/fstab
+```
 
-5. Check where the two partitions are mounted on the Raspberry Pi using the following command
+Finally, unmount the target filesystems, and power off the Pi.
+```
+sudo umount /mnt/target/boot 
+sudo umount /mnt/target
+sudo poweroff 
+```
 
-        mount
-
-6. It should show somewhere a line that looks like this
-
-        /dev/sda1 on /media/pi/boot
-        /dev/sda2 on /media/pi/2f84--something-long--231c
-
-7. Go to the boot partition mount point and also replace the bootcode.bin and start.elf files on the USB MSD device
-  
-8. add the following line to the config.txt file in the boot partition
-
-        dtoverlay=mmc
-
-9. Adjust the cmdline.txt to remove the "init=/usr/lib/raspi-config/init_resize.sh" part and change the "root=/dev/mmcblk0p2" to "root=/dev/sda2" it should then look like this
-
-          dwc_otg.lpm_enable=0 console=serial0,115200 console=tty1 root=/dev/sda2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet 
-
-10. Go the root directory mount point on the Raspberry Pi3 and edit the /etc/fstab file to point to /dev/sda1 and /dev/sda2 for boot and root
-
-11. Shutdown your Raspberry Pi3 and remove the SD Card (leave the USB MSD in the RaspBerry Pi3)
-
-12. Power cycle the Raspberry Pi3 (unplug/plug USB Power supply) and watch the Raspberry Pi3 boot from the newly created USB MSD.
-
-13. Be proud of your self :-)
+Disconnect the power supply from the Pi, remove the SD card and reconnect the power supply. If all has gone well the Pi should begin to boot after a few seconds.
