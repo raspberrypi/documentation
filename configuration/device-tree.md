@@ -19,6 +19,7 @@ The main impact of using Device Tree is to change from *everything on*, relying 
 #dtoverlay=hifiberry-digi
 #dtoverlay=iqaudio-dac
 #dtoverlay=iqaudio-dacplus
+#dtoverlay=audioinjector-wm8731-audio
 
 # Uncomment this to enable the lirc-rpi module
 #dtoverlay=lirc-rpi
