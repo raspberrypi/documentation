@@ -15,12 +15,12 @@ sudo wget https://github.com/raspberrypi/documentation/raw/master/hardware/raspb
 sudo sync
 ```
 
-Then enable USB Boot Mode with:
+Then enable USB boot mode with:
 ```
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
 ```
 
-This adds `program_usb_boot_mode=1` to the end of `/boot/config.txt`. Then reboot the Pi with `sudo reboot`. Once the Pi has rebooted, check that the OTP is has been programmed with:
+This adds `program_usb_boot_mode=1` to the end of `/boot/config.txt`. Reboot the Pi with `sudo reboot`, then check that the OTP has been programmed with:
 
 ```
 $ vcgencmd otp_dump | grep 17:
@@ -29,10 +29,10 @@ $ vcgencmd otp_dump | grep 17:
 
 Ensure the output `0x3020000a` is correct.
 
-Optionally, you can remove the `program_usb_boot_mode` line from config.txt (make sure there is no blank line at the end) so that if you put the SD card in another Pi, it won't program usb boot mode.. You can do this with `sudo nano /boot/config.txt` for example.
+If you wish, you can remove the `program_usb_boot_mode` line from config.txt (make sure there is no blank line at the end) so that if you put the SD card in another Pi, it won't program USB boot mode. You can do this with `sudo nano /boot/config.txt`, for example.
 
 ## Prepare the USB storage device
-Now that your Pi 3 is USB Boot enabled we can prepare a USB storage device to boot from. Start by inserting the USB storage device (which will be completely erased) into the Pi. Rather than downloading the Raspbian image again, we will copy it from the SD card on the Pi. The source device (sd card) will be `/dev/mmcblk0` and the destination device (USB disk) should be `/dev/sda` assuming you have no other USB devices connected.
+Now that your Pi 3 is USB boot-enabled, we can prepare a USB storage device to boot from. Start by inserting the USB storage device (which will be completely erased) into the Pi. Rather than downloading the Raspbian image again, we will copy it from the SD card on the Pi. The source device (sd card) will be `/dev/mmcblk0` and the destination device (USB disk) should be `/dev/sda` assuming you have no other USB devices connected.
 
 We will start by using parted to create a 100MB fat32 partition, followed by a Linux ext4 partition that will take up the rest of the disk.
 
