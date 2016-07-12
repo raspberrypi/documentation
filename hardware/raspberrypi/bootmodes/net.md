@@ -1,6 +1,6 @@
 # Network booting
 
-This section describes how network booting works. There is a tutorial to set up a working bootable system.
+This section describes how network booting works. There is also a tutorial to set up a working bootable system.
 
 [Network boot tutorial](net_tutorial.md)
 
