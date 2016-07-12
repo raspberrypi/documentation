@@ -102,7 +102,7 @@ At this point, you won't have working DNS, so you'll need to add the server you 
 echo "nameserver 10.42.0.1" | sudo tee /etc/resolv.conf
 ```
 
-Then make the file immutable (because otherwise dnsmasq will interfear) with...
+Then make the file immutable (because otherwise dnsmasq will interfere) with...
 ```
 sudo chattr +i /etc/resolv.conf
 ```
