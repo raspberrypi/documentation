@@ -1,8 +1,6 @@
 # Network booting
 
-This section describes how network booting works. There is also a tutorial to set up a working bootable system.
-
-[Network boot tutorial](net_tutorial.md)
+This section describes how network booting works. There is also a [tutorial](net_tutorial.md) to set up a working bootable system.
 
 To network boot, the boot ROM does the following:
 
