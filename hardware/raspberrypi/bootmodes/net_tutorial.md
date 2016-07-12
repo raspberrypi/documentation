@@ -4,7 +4,7 @@ This tutorial is written to explain how to set up a simple DHCP / TFTP server wh
 ## Client configuration
 Before a Pi will network boot, it needs to be booted with a config option to enable USB boot mode. Enabling this config option requires a special `start.elf` and `bootcode.bin` file. 
 
-Install Raspbian lite (or heavy if you want) from the [Downloads page](https://www.raspberrypi.org/downloads/raspbian/) onto an SD card using `Win32DiskImager` if you are on Windows, or `dd` if you are on Linux/Mac. Boot the CLIENT Pi.
+Install Raspbian lite (or heavy if you want) from the [Downloads page](https://www.raspberrypi.org/downloads/raspbian/) onto an SD card using `Win32DiskImager` if you are on Windows, or `dd` if you are on Linux/Mac. Boot the **client** Pi.
 
 ### Program USB Boot Mode
 First, prepare the `/boot` directory with new `start.elf` and `bootcode.bin` files:
@@ -16,12 +16,12 @@ sudo wget https://github.com/raspberrypi/documentation/raw/master/hardware/raspb
 sudo sync
 ```
 
-Then enable USB Boot Mode with:
+Then enable USB boot mode with:
 ```
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
 ```
 
-which adds `program_usb_boot_mode=1` to the end of `/boot/config.txt`. Then reboot the Pi with `sudo reboot`. Once the client Pi has rebooted, check that the OTP is has been programmed with:
+This adds `program_usb_boot_mode=1` to the end of `/boot/config.txt`. Reboot the Pi with `sudo reboot`. Once the client Pi has rebooted, check that the OTP is has been programmed with:
 
 ```
 $ vcgencmd otp_dump | grep 17:
@@ -33,7 +33,7 @@ Ensure the output `0x3020000a` is correct.
 The client configuration is almost done. The final thing to do is to remove the `program_usb_boot_mode` line from config.txt (make sure there is no blank line at the end). You can do this with `sudo nano /boot/config.txt` for example. Finally, shut down the client Pi with `sudo poweroff`
 
 ## Server configuration
-Plug the SD card into the SERVER and boot the server. Before you do anything else, make sure you have ran `sudo raspi-config` and expanded the root filesystem to take up the entire SD card.
+Plug the SD card into the **server** and boot the server. Before you do anything else, make sure you have ran `sudo raspi-config` and expanded the root filesystem to take up the entire SD card.
 
 The client Pi will need a root filesystem to boot off, so before we do anything else on the server, we're going to make a full copy of its filesystem and put it in a directory called /nfs/client1.
 
@@ -91,7 +91,7 @@ sudo systemctl disable dhcpcd
 sudo systemctl enable networking
 ```
 
-Reboot for the changes to take effect
+Reboot for the changes to take effect:
 ```
 sudo reboot
 ```
@@ -102,7 +102,7 @@ At this point, you won't have working DNS, so you'll need to add the server you 
 echo "nameserver 10.42.0.1" | sudo tee /etc/resolv.conf
 ```
 
-Then make the file immutable (because otherwise dnsmasq will interfere) with...
+Then make the file immutable (because otherwise dnsmasq will interfere) with the following command:
 ```
 sudo chattr +i /etc/resolv.conf
 ```
@@ -125,13 +125,13 @@ Now start tcpdump so you can search for DHCP packets from the client Pi:
 sudo tcpdump -i eth0 port bootpc
 ```
 
-Connect the client Pi to your network and power it on. Check that the LEDs illuminate on the CLIENT after around 10 seconds, then should get a packet from the CLIENT "DHCP/BOOTP, Request from ..."
+Connect the client Pi to your network and power it on. Check that the LEDs illuminate on the client after around 10 seconds, then you should get a packet from the client "DHCP/BOOTP, Request from ..."
 
 ```
 IP 0.0.0.0.bootpc > 255.255.255.255.bootps: BOOTP/DHCP, Request from b8:27:eb...
 ```
 
-Now we need to modify the dnsmasq configuration to enable DHCP to reply to the device ... Press `CTRL+C` on the keyboard to exit the tcpdump program, then...
+Now we need to modify the dnsmasq configuration to enable DHCP to reply to the device. Press `CTRL+C` on the keyboard to exit the tcpdump program, then type the following:
 
 ```
 sudo echo | sudo tee /etc/dnsmasq.conf
@@ -151,7 +151,7 @@ pxe-service=0,"Raspberry Pi Boot"
 
 Where the first address of the `dhcp-range` line is, use the broadcast address you noted down earlier.
 
-Now create a /tftpboot directory
+Now create a /tftpboot directory:
 
 ```
 sudo mkdir /tftpboot
@@ -160,18 +160,18 @@ sudo systemctl enable dnsmasq.service
 sudo systemctl restart dnsmasq.service
 ```
 
-Now monitor the dnsmasq log
+Now monitor the dnsmasq log:
 
 ```
 tail -f /var/log/daemon.log
 ```
 
-You should see something like:
+You should see something like this:
 ```
 raspberrypi dnsmasq-tftp[1903]: file /tftpboot/bootcode.bin not found
 ```
 
-Next, you will need to copy [bootcode.bin](bootcode.bin) and [start.elf](start.elf) into the /tftpboot directory, you should be able to do this by just copying the files from /boot since they are the right ones. Also we need a kernel so might as well copy the entire boot directory.
+Next, you will need to copy [bootcode.bin](bootcode.bin) and [start.elf](start.elf) into the /tftpboot directory; you should be able to do this by just copying the files from /boot since they are the right ones. We need a kernel, so we might as well copy the entire boot directory.
 
 First, use Ctrl+Z to exit the monitoring state. Then...
 
