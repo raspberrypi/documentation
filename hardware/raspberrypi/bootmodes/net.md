@@ -1,10 +1,10 @@
 # Network booting
 
-This section describes how network booting works, alongside this there is a tutorial to set up a working bootable system...
+This section describes how network booting works. There is a tutorial to set up a working bootable system.
 
 [Network boot tutorial](net_tutorial.md)
 
-To network boot the bootrom does the following:
+To network boot, the boot ROM does the following:
 
 * Initialise LAN9500
 * Send DHCP request
@@ -15,28 +15,28 @@ To network boot the bootrom does the following:
 * TFTP RRQ 'bootcode.bin'
   * File not found: Server replies with TFTP error response with textual error message
   * File exists: Server will reply with the first block (512 bytes) of data for the file with a block number in the header
-    * Pi replys with TFTP ACK packet containing the block number, repeats until the last block which is not 512 bytes
+    * Pi replies with TFTP ACK packet containing the block number, and repeats until the last block which is not 512 bytes
 * TFTP RRQ 'bootsig.bin'
-  * This will normally result in an error file not found.  This is fine it is expected and TFTP boot servers should be able to handle this fine.
+  * This will normally result in an error `file not found`. This is to be expected, and TFTP boot servers should be able to handle it.
 
-From this point the bootcode.bin code continues to load the system, the first file it will try to access is [`serial_number`]/start.elf if this does __not__ result in a error then any other files to be read will be pre-pended with the `serial_number`.  This is useful because if enables you to create separate directories with separate start.elf / kernels for your Pis
+From this point the bootcode.bin code continues to load the system, the first file it will try to access is [`serial_number`]/start.elf if this does __not__ result in a error then any other files to be read will be pre-pended with the `serial_number`. This is useful because if enables you to create separate directories with separate start.elf / kernels for your Pis
 To get the serial number for the device you can either try this boot mode and see what file is accessed using tcpdump / wireshark or you can run a standard Raspbian SD card and `cat /proc/cpuinfo`
 
 If you put all your files into the root of your tftp directory then all following files will be accessed from there.
 
 ## Debugging the NFS boot mode
 
-The first thing to check is that the OTP bit is correctly programmed, to do this you need to add `program_usb_boot_mode=1` to config.txt and reboot (with a standard SD card that boots correctly into Raspbian.  Once you've done this, you should be able to do:
+The first thing to check is that the OTP bit is correctly programmed, to do this you need to add `program_usb_boot_mode=1` to config.txt and reboot (with a standard SD card that boots correctly into Raspbian. Once you've done this, you should be able to do:
 
 ```
 $ vcgencmd otp_dump | grep 17:
 17:3020000a
 ```
 
-If row 17 contains that value then the OTP is correctly programmed.  You should now be able to remove the SD card and plug in Ethernet
-and then around 5 seconds after powering up the Pi the Ethernet LEDs should light up.
+If row 17 contains that value then the OTP is correctly programmed. You should now be able to remove the SD card, plug in Ethernet,
+and then the Ethernet LEDs should light up around 5 seconds after the Pi powers up.
 
-To capture the ethernet packets on the server use tcpdump on the tftpboot server (or DHCP server if they are different) you will need to capture the packets there otherwise you will not be able to see packets that get sent directly because network switches are not hubs!
+To capture the ethernet packets on the server, use tcpdump on the tftpboot server (or DHCP server if they are different). You will need to capture the packets there otherwise you will not be able to see packets that get sent directly because network switches are not hubs!
 
 ``` 
 sudo tcpdump -i eth0 -w dump.pcap
@@ -46,7 +46,7 @@ This will write everything from eth0 to a file dump.pcap you can then post proce
 
 ### DHCP Request / Reply
 
-As a minimum you should see a DHCP request and reply looking like the following:
+As a minimum you should see a DHCP request and reply which looks like the following:
 
 ```
 6:44:38.717115 IP (tos 0x0, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 348)
@@ -84,15 +84,12 @@ As a minimum you should see a DHCP request and reply looking like the following:
 	    END Option 255, length 0
 ```
 
-The important part of the reply is the Vendor-Option Option 43...  This needs to contain the string "Raspberry Pi Boot", although due
-to a bug in the bootrom you may need to add three spaces to the end of the string.
+The important part of the reply is the Vendor-Option Option 43. This needs to contain the string "Raspberry Pi Boot", although, due
+to a bug in the boot ROM, you may need to add three spaces to the end of the string.
 
 ### TFTP file read
 
-You will know whether the Vendor option is correctly specified because if it is you'll see a subsequent TFTP RRQ packet being sent, RRQs
-can be replied by either the first block of data or an error saying file not found.  In a couple of cases it even receives the first packet and then the transmission is aborted by the Pi (this is checking whether a file exists).  The example below is just three packets:
-the original read request, the first data block (always 516 bytes containing a header and 512 bytes of data, the last block is always
-less than 512 bytes and may be zero length.  The third packet is the ACK which contains a frame number to match the frame number in the data block.
+You will know whether the Vendor Option is correctly specified because if it is you'll see a subsequent TFTP RRQ packet being sent, RRQs can be replied by either the first block of data or an error saying file not found. In a couple of cases it even receives the first packet and then the transmission is aborted by the Pi (this is checking whether a file exists). The example below is just three packets: the original read request, the first data block (which is always 516 bytes containing a header and 512 bytes of data, although the last block is always less than 512 bytes and may be zero length), and the third packet (the ACK which contains a frame number to match the frame number in the data block).
 
 ```
 16:44:41.224964 IP (tos 0x0, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 49)
