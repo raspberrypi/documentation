@@ -4,7 +4,7 @@ This tutorial explains how to boot your Raspberry Pi 3 from a USB mass storage d
 ## Program USB Boot Mode
 Before a Pi will network boot, it needs to be booted with a config option to enable USB Boot Mode. Enabling this config option requires a special `start.elf` and `bootcode.bin` file. 
 
-Install Raspbian from the [Downloads page](https://www.raspberrypi.org/downloads/raspbian/) onto an SD card using `Win32DiskImager` if you are on Windows, or `dd` if you are on Linux/Mac. Boot the Pi.
+Go to the [Downloads page](https://www.raspberrypi.org/downloads/raspbian/) and install Raspbian onto an SD card using `Win32DiskImager` if you are on Windows, or `dd` if you are on Linux/Mac. Boot the Pi.
 
 First, prepare the `/boot` directory with new `start.elf` and `bootcode.bin` files:
 ```
@@ -20,7 +20,7 @@ Then enable USB Boot Mode with:
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
 ```
 
-which adds `program_usb_boot_mode=1` to the end of `/boot/config.txt`. Then reboot the Pi with `sudo reboot`. Once the Pi has rebooted, check that the OTP is has been programmed with:
+This adds `program_usb_boot_mode=1` to the end of `/boot/config.txt`. Then reboot the Pi with `sudo reboot`. Once the Pi has rebooted, check that the OTP is has been programmed with:
 
 ```
 $ vcgencmd otp_dump | grep 17:
