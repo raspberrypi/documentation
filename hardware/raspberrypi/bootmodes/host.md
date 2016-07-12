@@ -1,6 +1,6 @@
 # USB Host boot mode
 
-The USB host boot mode follows the following sequence:
+The USB host boot mode follows this sequence:
 
 * Enable the USB port and wait for D+ line to be pulled high indicating a USB 2.0 device (we only support USB2.0)
 * If the device is a hub:
