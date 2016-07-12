@@ -1,8 +1,8 @@
 # Network Boot Your Raspberry Pi
-This tutorial is written to explain how to set up a simple DHCP / TFTP server that will allow you to boot a Raspberry Pi 3 from the network. The tutorial assumes you have an existing home network, and want to use a Raspberry Pi for the SERVER. You will need a second Pi 3 as a CLIENT to be booted. Only one SD card is needed because the CLIENT will be booted from the SERVER after the initial client configuration.
+This tutorial is written to explain how to set up a simple DHCP / TFTP server which will allow you to boot a Raspberry Pi 3 from the network. The tutorial assumes you have an existing home network, and want to use a Raspberry Pi for the **server**. You will need a second Pi 3 as a **client** to be booted. Only one SD card is needed because the **client** will be booted from the **server** after the initial client configuration.
 
 ## Client configuration
-Before a Pi will network boot, it needs to be booted with a config option to enable USB Boot Mode. Enabling this config option requires a special `start.elf` and `bootcode.bin` file. 
+Before a Pi will network boot, it needs to be booted with a config option to enable USB boot mode. Enabling this config option requires a special `start.elf` and `bootcode.bin` file. 
 
 Install Raspbian lite (or heavy if you want) from the [Downloads page](https://www.raspberrypi.org/downloads/raspbian/) onto an SD card using `Win32DiskImager` if you are on Windows, or `dd` if you are on Linux/Mac. Boot the CLIENT Pi.
 
