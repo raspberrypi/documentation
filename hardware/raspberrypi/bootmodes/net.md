@@ -87,7 +87,7 @@ to a bug in the boot ROM, you may need to add three spaces to the end of the str
 
 ### TFTP file read
 
-You will know whether the Vendor Option is correctly specified because if it is you'll see a subsequent TFTP RRQ packet being sent, RRQs can be replied by either the first block of data or an error saying file not found. In a couple of cases it even receives the first packet and then the transmission is aborted by the Pi (this is checking whether a file exists). The example below is just three packets: the original read request, the first data block (which is always 516 bytes containing a header and 512 bytes of data, although the last block is always less than 512 bytes and may be zero length), and the third packet (the ACK which contains a frame number to match the frame number in the data block).
+You will know whether the Vendor Option is correctly specified because if it is you'll see a subsequent TFTP RRQ packet being sent. RRQs can be replied to by either the first block of data or an error saying file not found. In a couple of cases they even receive the first packet and then the transmission is aborted by the Pi (this happens when checking whether a file exists). The example below is just three packets: the original read request, the first data block (which is always 516 bytes containing a header and 512 bytes of data, although the last block is always less than 512 bytes and may be zero length), and the third packet (the ACK which contains a frame number to match the frame number in the data block).
 
 ```
 16:44:41.224964 IP (tos 0x0, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 49)
