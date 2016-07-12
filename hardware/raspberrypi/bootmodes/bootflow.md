@@ -2,7 +2,7 @@
 
 The flow of boot begins with reading the OTP to decide on the valid boot modes enabled. By default this is SD card boot followed by USB device boot. Subsequently, the bootrom checks to see if `program_gpio_bootmode` OTP bit is set, if it is then it reads either GPIOs 22-26 or 39-43 (depending on the value of `program_gpio_bootpos`) and uses those bits to disable boot modes.  This means it is possible to use a hardware switch to switch between different boot modes if there are more than one available.
 
-Next the bootron checks each of the boot sources for a file called bootcode.bin; if it is successful it will load the code into the local 128K cache and jump to it. The overall boot mode process is as follows:
+Next the bootrom checks each of the boot sources for a file called bootcode.bin; if it is successful it will load the code into the local 128K cache and jump to it. The overall boot mode process is as follows:
 
 * 2837 boots
 * Reads bootrom enabled boot modes from OTP
