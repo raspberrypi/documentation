@@ -70,11 +70,11 @@ You can find an [example config.txt here](http://www.raspberrypi.org/phpBB3/view
 
 #### cma_lwm
 
-When the GPU has less than `cma_lwm` (low-watermark) megabytes of memory available, it will request some from the CPU.
+When the GPU has less than `cma_lwm` megabytes of memory available (the low-water mark), it will request some from the CPU.
 
 #### cma_hwm
 
-When the GPU has more than `cma_hwm` (high-watermark) megabytes of memory available, it will release some to the CPU.
+When the GPU has more than `cma_hwm` megabytes of memory available (the high-water mark), it will release some to the CPU.
 
 The following options need to be in `cmdline.txt` for CMA to work:
 
