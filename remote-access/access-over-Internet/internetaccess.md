@@ -1,6 +1,6 @@
 # Access your Raspberry Pi over the Internet
 
-You can connect to your Raspberry Pi over the Internet from another computer or a mobile device.
+You can connect to your Raspberry Pi over the internet from another computer or a mobile device.
 
 One method is to set-up port forwarding on your router. To set-up port forwarding you must change the configuration of your router to forward all inbound traffic from the Internet on a specific port to the local IP address of your Raspberry Pi. Most routers have this feature available. However, every router is different so you will need to consult your router's user manual for instructions. The settings can be tricky if your Pi is behind a firewall or more than one router. One disadvantage of port forwarding is that it exposes a network port on your private LAN to the public Internet. This is a known security vulnerability and must be managed carefully.
 
