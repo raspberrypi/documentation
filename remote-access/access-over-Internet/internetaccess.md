@@ -1,4 +1,4 @@
-# Access your Raspberry Pi over the Internet
+# Access your Raspberry Pi over the internet
 
 You can connect to your Raspberry Pi over the internet from another computer or a mobile device. There are a number of ways to do this, which we cover below. 
 
