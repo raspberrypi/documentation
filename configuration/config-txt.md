@@ -10,7 +10,7 @@ Any changes will only take effect after you've rebooted your Raspberry Pi. After
 
 `vcgencmd get_config str` - lists all the string config options that are set (non-null).
 
-Note that there's a small number of config settings that can't be retrieved using `vcgencmd`.
+Note that there's a small number of config settings which can't be retrieved using `vcgencmd`.
 
 ## File format
 
@@ -36,11 +36,11 @@ overscan_bottom=10
 
 ### gpu_mem
 
-GPU memory in megabytes. Sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; maximum value is `192`, `448` or `944`, depending on whether you're using a 256M, 512MB or 1024MB Pi. The default value is `64`.
+GPU memory in megabytes. This sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; maximum value is `192`, `448`, or `944`, depending on whether you're using a 256M, 512MB, or 1024MB Pi. The default value is `64`.
 
 Setting `gpu_mem` to low values may automatically disable certain firmware features, as there are some things the GPU simply can't do with too little memory. So if a certain feature you're trying to use isn't working, try setting a larger GPU memory split.
 
-Using `gpu_mem_256`, `gpu_mem_512` and `gpu_mem_1024` allows you to swap the same SD card between 256MB, 512MB and 1024MB Pis without having to edit `config.txt` each time:
+Using `gpu_mem_256`, `gpu_mem_512`, and `gpu_mem_1024` allows you to swap the same SD card between 256MB, 512MB, and 1024MB Pis without having to edit `config.txt` each time:
 
 ### gpu_mem_256
 
@@ -64,7 +64,7 @@ Setting this to `1` disables adjusting the refresh rate of RAM every 500ms; this
 
 ### CMA - Dynamic memory split
 
-The firmware and kernel as of 19th November 2012 supports CMA (Contiguous Memory Allocator), which means the memory split between CPU and GPU is managed dynamically at runtime. However, this is not [officially supported](https://github.com/raspberrypi/linux/issues/503).
+As of 19th November 2012, the firmware and kernel support CMA (Contiguous Memory Allocator), which means the memory split between CPU and GPU is managed dynamically at runtime. However, this is not [officially supported](https://github.com/raspberrypi/linux/issues/503).
 
 You can find an [example config.txt here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=223549#p223549).
 
@@ -86,19 +86,19 @@ coherent_pool=6M smsc95xx.turbo_mode=N
 
 ### disable_camera_led
 
-Setting this to `1` prevents the red camera LED from turning on when recording video or taking a still picture. Useful for preventing reflections when the camera is facing a window.
+Setting this to `1` prevents the red camera LED from turning on when recording video or taking a still picture. This is useful for preventing reflections when the camera is facing a window, for example.
 
 ## Onboard analogue audio (3.5mm jack)
 
-The onboard audio output has a few config options that alter the behaviour of how the analogue audio is driven and whether some firmware features are enabled or not.
+The onboard audio output has a few config options which alter the way the analogue audio is driven and whether some firmware features are enabled or not.
 
 ### disable_audio_dither
 
-By default, a 1.0LSB dither is applied to the audio stream if it's routed to the analogue audio output. This can create audible background "hiss" in some situations, such as if the ALSA volume is set to a low level. Set this to `1` to disable dither application.
+By default, a 1.0LSB dither is applied to the audio stream if it is routed to the analogue audio output. This can create audible background "hiss" in some situations, such as if the ALSA volume is set to a low level. Set this to `1` to disable dither application.
 
 ### pwm_sample_bits
 
-Adjust the bit depth of the analogue audio output. The default bit depth is `11`. Selecting bit depths below `8` will result in nonfunctional audio - settings below `8` result in a PLL frequency too low to support. Generally only useful as a demonstration of how bit depth affects quantisation noise.
+Adjust the bit depth of the analogue audio output. The default bit depth is `11`. Selecting bit depths below `8` will result in nonfunctional audio, as settings below `8` result in a PLL frequency too low to support. This is generally only useful as a demonstration of how bit depth affects quantisation noise.
 
 ## Video
 
