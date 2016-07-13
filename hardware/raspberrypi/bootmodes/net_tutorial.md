@@ -30,7 +30,7 @@ $ vcgencmd otp_dump | grep 17:
 
 Ensure the output `0x3020000a` is correct.
 
-The client configuration is almost done. The final thing to do is to remove the `program_usb_boot_mode` line from config.txt (make sure there is no blank line at the end). You can do this with `sudo nano /boot/config.txt` for example. Finally, shut down the client Pi with `sudo poweroff`
+The client configuration is almost done. The final thing to do is to remove the `program_usb_boot_mode` line from config.txt (make sure there is no blank line at the end). You can do this with `sudo nano /boot/config.txt` for example. Finally, shut down the client Pi with `sudo poweroff`.
 
 ## Server configuration
 Plug the SD card into the **server** and boot the server. Before you do anything else, make sure you have ran `sudo raspi-config` and expanded the root filesystem to take up the entire SD card.
@@ -43,7 +43,7 @@ sudo apt-get install rsync
 sudo rsync -xa --progress --exclude /nfs / /nfs/client1
 ```
 
-Regenerate ssh host keys on client filesystem by chrooting into it
+Regenerate ssh host keys on client filesystem by chrooting into it:
 ```
 sudo chroot /nfs/client1
 rm /etc/ssh/ssh_host_*
@@ -85,7 +85,7 @@ iface eth0 inet static
         gateway 10.42.0.1
 ```
 
-Then disable the DHCP client daemon and switch to standard Debian networking
+Then disable the DHCP client daemon and switch to standard Debian networking:
 ```
 sudo systemctl disable dhcpcd
 sudo systemctl enable networking
