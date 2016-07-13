@@ -20,8 +20,8 @@ We recommend buying the Raspberry Pi SD card which is available [here](https://s
 
 If you are having trouble with corruption of your SD cards, make sure you follow these steps:
 
-1. Make sure you are using a genuine SD card. There are many cheap SD cards available that are actually smaller than advertised or will not last very long.
+1. Make sure you are using a genuine SD card. There are many cheap SD cards available that are actually smaller than advertised or whih will not last very long.
 2. Make sure you are using a good quality power supply. You can check your power supply by measuring the voltage between TP1 and TP2 on the Raspberry Pi; if this drops below 4.75V when doing complex tasks then it is most likely unsuitable.
 3. Make sure you are using a good quality USB cable for the power supply. When using a high quality power supply, the TP1->TP2 voltage can drop below 4.75V. This is generally due to the resistance of the wires in the USB power cable; to save money, USB cables have as little copper in them as possible, and as much as 1V (or 1W) can be lost over the length of the cable.
-4. Make sure you are properly shutting down your Raspberry Pi before powering it off. Type `sudo halt` and wait for the Pi to signal it is ready to be powered off by flashing the activity LED.
-5. Finally, corruption has been observed if you are overclocking the Pi. This problem has previously been fixed, although the workaround used may mean that it can still happen. If after checking the steps above you are still having problems with corruption, please let us know.
+4. Make sure you are shutting your Raspberry Pi down properly before powering it off. Type `sudo halt` and wait for the Pi to signal it is ready to be powered off by flashing the activity LED.
+5. Finally, corruption has been observed if you are overclocking the Pi. This problem has been fixed previously, although the workaround used may mean that it can still happen. If after checking the steps above you are still having problems with corruption, please let us know.
