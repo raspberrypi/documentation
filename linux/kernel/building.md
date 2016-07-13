@@ -4,7 +4,7 @@ There are two main methods for building the kernel. You can build locally on a R
 
 ## Local building
 
-On a Raspberry Pi first install the latest version of [Raspbian](https://www.raspberrypi.org/downloads) from the downloads page. Then boot your Pi, plug in Ethernet to give you access to the sources, and log in.
+On a Raspberry Pi first install the latest version of [Raspbian](https://www.raspberrypi.org/downloads/) from the downloads page. Then boot your Pi, plug in Ethernet to give you access to the sources, and log in.
 
 First get the sources, which will take some time:
 
