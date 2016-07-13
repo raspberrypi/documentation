@@ -173,19 +173,19 @@ raspberrypi dnsmasq-tftp[1903]: file /tftpboot/bootcode.bin not found
 
 Next, you will need to copy [bootcode.bin](bootcode.bin) and [start.elf](start.elf) into the /tftpboot directory; you should be able to do this by just copying the files from /boot since they are the right ones. We need a kernel, so we might as well copy the entire boot directory.
 
-First, use Ctrl+Z to exit the monitoring state. Then...
+First, use Ctrl+Z to exit the monitoring state. Then type the following: 
 
 ```
 cp -r /boot/* /tftpboot
 ```
 
-Restart dnsmasq for good measure
+Restart dnsmasq for good measure:
 ```
 sudo systemctl restart dnsmasq
 ```
 
 ### Set up NFS root
-This should now allow your Pi to boot through until it tried to load a root filesystem (which it doesn't have). All we have to do to get this working is to export the `/nfs/client1` filesystem we created earlier.
+This should now allow your Pi to boot through until it tries to load a root filesystem (which it doesn't have). All we have to do to get this working is to export the `/nfs/client1` filesystem we created earlier.
 
 ```
 sudo apt-get install nfs-kernel-server
@@ -202,7 +202,7 @@ Edit /tftpboot/cmdline.txt and from `root=` onwards, replace it with:
 root=/dev/nfs nfsroot=10.42.0.2:/nfs/client1 rw ip=dhcp rootwait elevator=deadline
 ```
 
-substituting the IP address as the IP address you have noted down.
+You should substitute the IP address here with the IP address you have noted down.
 
 Finally, edit /nfs/client1/etc/fstab and remove the /dev/mmcblkp1 and p2 lines (only proc should be left).
 
