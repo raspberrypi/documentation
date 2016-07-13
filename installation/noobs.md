@@ -12,7 +12,7 @@ SD cards with NOOBS preinstalled are available from many of our distributors and
 
 ### Download
 
-Alternatively, NOOBS is available for download on the Raspberry Pi website: [raspberrypi.org/downloads](http://www.raspberrypi.org/downloads)
+Alternatively, NOOBS is available for download on the Raspberry Pi website: [raspberrypi.org/downloads](https://www.raspberrypi.org/downloads/)
 
 #### How to install NOOBS on an SD card
 
