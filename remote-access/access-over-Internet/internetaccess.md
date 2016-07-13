@@ -34,4 +34,4 @@ For further assistance, email support@weaved.com.
 
 ## Alternatives
 
-- [dataplicity](https://dataplicity.com)
+- Dataplicity: this connects to your Pi using client-initiated HTTPS. See the [Dataplicity website](https://dataplicity.com) for more information. 
