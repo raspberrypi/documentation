@@ -4,13 +4,13 @@ This document describes the use of the three Raspberry Pi camera applications as
 
 There are three applications provided, `raspistill`, `raspivid`, and `raspistillyuv`. `raspistill` and `raspistillyuv` are very similar and are intended for capturing images; `raspivid` is for capturing video.
 
-All the applications are command-line-driven, written to take advantage of the mmal API which runs over OpenMAX. The mmal API provides an easier to use system than that presented by OpenMAX. Note that mmal is a Broadcom-specific API used only on Videocore 4 systems.
+All the applications are driven from the command line, and written to take advantage of the mmal API which runs over OpenMAX. The mmal API provides an easier to use system than that presented by OpenMAX. Note that mmal is a Broadcom-specific API used only on Videocore 4 systems.
 
 The applications use up to four OpenMAX(mmal) components: camera, preview,  encoder, and null_sink. All applications use the camera component, `raspistill` uses the Image Encode component, `raspivid` uses the Video Encode component and `raspistillyuv` does not use an encoder, and sends its YUV or RGB output direct from camera component to file.
 
 The preview display is optional, but can be used full-screen or directed to a specific rectangular area on the display. If preview is disabled, the null_sink component is used to 'absorb' the preview frames. It is necessary for the camera to produce preview frames even if these are not required for display, as they are used for calculating exposure and white balance settings.
 
-In addition, it is possible to omit the filename option, in which case the preview is displayed but no file is written, or to redirect all output to stdout.
+In addition, it is possible to omit the filename option (in which case the preview is displayed but no file is written), or to redirect all output to stdout.
 
 Command line help is available by typing just the application name in on the command line.
 
@@ -20,19 +20,19 @@ See [Camera Setup](../../configuration/camera.md)
 
 ## Troubleshooting
 
-If the camera is not working correctly, there are number of things to try:
+If the Camera Module is not working correctly, there are number of things to try:
 
 - Is the ribbon cable attached to the Camera Serial Interface (CSI), not the Display Serial Interface (DSI)? The ribbon connector will fit into either port. The Camera port is located near the HDMI connector.
 
 - Are the ribbon connectors all firmly seated, and are they the right way round? They must be straight in their sockets.
 
-- Is the camera module connector, between the smaller black camera module itself and the camera PCB, firmly attached? Sometimes this connection can come loose during transit or when putting the camera module in a case. Using a fingernail, flip up the connector on the PCB, then reconnect it with gentle pressure. It engages with a very slight click. Don't force it; if it doesn't engage, it's probably slightly misaligned.
+- Is the Camera Module connector, between the smaller black camera module itself and the camera PCB, firmly attached? Sometimes this connection can come loose during transit or when putting the camera module in a case. Using a fingernail, flip up the connector on the PCB, then reconnect it with gentle pressure. It engages with a very slight click. Don't force it; if it doesn't engage, it's probably slightly misaligned.
 
 - Have `sudo apt-get update`, `sudo apt-get upgrade` been run?
 
-- Has `raspi-config` been run and the camera enabled?
+- Has `raspi-config` been run and the Camera Module enabled?
 
-- Is your power supply sufficient? The camera adds about 200-250mA to the power requirements of your Raspberry Pi.
+- Is your power supply sufficient? The Camera Module adds about 200-250mA to the power requirements of your Raspberry Pi.
 
 If things are still not working, try the following:
 
@@ -42,13 +42,13 @@ If things are still not working, try the following:
 
 - `Error : ENOSPC displayed`. The Camera Module is probably running out of GPU memory. Check `config.txt` in the /boot/ folder. The gpu_mem option should be at least 128. Alternatively, use the Memory Split option in the Advanced section of `raspi-config` to set this.
 
-- If after all the above the camera is still not working, you may need to upgrade the firmware on the Raspberry Pi. Use the following command to get the very latest (but experimental) firmware.
+- If you have checked all the above issues and the Camera Module is still not working, you may need to upgrade the firmware on the Raspberry Pi. Use the following command to get the very latest (but experimental) firmware.
 
     ```bash
     sudo rpi-update
     ```
 
-- If after trying all the above the camera still does not work, it may be defective; have you been careful not to expose it to static shock? Try posting on the [Raspberry Pi forum (Camera section)](http://www.raspberrypi.org/forum/viewforum.php?f=43) to see if there is any more help available there. Failing that, it may need replacing.
+- If even a firmware update does not fix the problem, your Camera Module may be defective, and may need to be replaced.
 
 ## Common Command line Options
 
@@ -739,7 +739,7 @@ raspivid -t 5000 -o - > my_file.h264
 
 ## Shell Error Codes
 
-The applications described here will return a standard error code to the shell on completion. Possible error codes are :
+The applications described here will return a standard error code to the shell on completion. Possible error codes are:
 
 | C Define | Code | Description |
 |----------|------|-------------|
