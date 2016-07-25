@@ -330,7 +330,7 @@ Size ranges from 6 to 160, default is 32. Asking for an invalid size should give
 |-ae 10,0x00,0x8080FF -a "Wibble gibber gibber"|gives size 10 black text on white background|
 
 
-## Application specific settings
+## Application-specific settings
 
 ### raspistill
 
@@ -342,25 +342,25 @@ Size ranges from 6 to 160, default is 32. Asking for an invalid size should give
 --quality,	-q		Set jpeg quality <0 to 100>
 ```
 
-Quality 100 is almost completely uncompressed. 75 is a good all round value
+Quality 100 is almost completely uncompressed. 75 is a good all round value.
 
 ```
 --raw,	-r		Add raw bayer data to jpeg metadata
 ```
 
-This option inserts the raw Bayer data from the camera in to the JPEG metadata
+This option inserts the raw Bayer data from the camera in to the JPEG metadata.
 
 ```
 --output,	-o		Output filename <filename>.
 ```
 
-Specify the output filename. If not specified, no file is saved. If the filename is '-', then all output is sent to stdout.
+Specifies the output filename. If not specified, no file is saved. If the filename is '-', then all output is sent to stdout.
 
 ```
 --latest,	-l		Link latest frame to filename <filename>
 ```
 
-Make a file system link under this name to the latest frame.
+Makes a file system link under this name to the latest frame.
 
 ```
 --verbose,	-v		Output verbose information during run
@@ -378,13 +378,13 @@ The program will run for this length of time, then take the capture (if output i
 --timelapse,	-tl		time-lapse mode.
 ```
 
-The specific value is the time between shots in milliseconds. Note you should specify %04d at the point in the filename where you want a frame count number to appear. e.g:
+The specific value is the time between shots in milliseconds. Note you should specify %04d at the point in the filename where you want a frame count number to appear. So, for example, the code below will produce a capture every 2 seconds, over a total period of 30s, named image0001.jpg, image0002.jpg..image0015.jpg. 
 
 ```
 -t 30000 -tl 2000 -o image%04d.jpg
 ```
 
-will produce a capture every 2 seconds, over a total period of 30s, named image0001.jpg, image0002.jpg..image0015.jpg. Note that the %04d indicates a 4 digit number with leading zero's added to pad to the required number of digits. So, for example,  %08d would result in an 8 digit number.
+Note that the %04d indicates a 4 digit number with leading zero's added to pad to the required number of digits. So, for example,  %08d would result in an 8 digit number.
 
 If a time-lapse value of 0 is entered, the application will take pictures as fast as possible. Note there is an minimum enforced pause of 30ms between captures to ensure that exposure calculations can be made.
 
@@ -400,13 +400,13 @@ if `--thumb none` is specified, no thumbnail information will be placed in the f
 --demo,	-d		Run a demo mode <milliseconds>
 ```
 
-This options cycles through range of camera options, no capture is done, the demo will end at the end of the timeout period, irrespective of whether all the options have been cycled. The time between cycles should be specified as a millisecond value.
+This options cycles through range of camera options. No capture is taken, and the demo will end at the end of the timeout period, irrespective of whether all the options have been cycled. The time between cycles should be specified as a millisecond value.
 
 ```
 --encoding,	-e		Encoding to use for output file
 ```
 
-Valid options are jpg, bmp, gif and png. Note that unaccelerated image types (gif, png, bmp) will take much longer to save than JPG which is hardware accelerated. Also note that the filename suffix is completely ignored when deciding the encoding of a file.
+Valid options are jpg, bmp, gif, and png. Note that unaccelerated image types (gif, png, bmp) will take much longer to save than jpg which is hardware accelerated. Also note that the filename suffix is completely ignored when deciding the encoding of a file.
 
 ```
 --exif,	-x		EXIF tag to apply to captures (format as 'key=value')
