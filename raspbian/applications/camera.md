@@ -84,25 +84,25 @@ Sets the opacity of the preview windows. 0 = invisible, 255 = fully opaque.
 	--sharpness,	-sh		Set image sharpness (-100 to 100)
 ```
 
-Set the sharpness of the image, 0 is the default.
+Sets the sharpness of the image. 0 is the default.
 
 ```
 	--contrast,	-co		Set image contrast (-100 to 100)
 ```
 
-Set the contrast of the image, 0 is the default
+Sets the contrast of the image. 0 is the default
 
 ```
 	--brightness,	-br		Set image brightness (0 to 100)
 ```
 
-Set the brightness of the image, 50 is the default. 0 is black, 100 is white.
+Sets the brightness of the image. 50 is the default. 0 is black, 100 is white.
 
 ```
 	--saturation,	-sa		Set image saturation (-100 to 100)
 ```
 
-set the colour saturation of the image. 0 is the default.
+Sets the colour saturation of the image. 0 is the default.
 
 ```
 	--ISO,	-ISO		Set capture ISO
@@ -114,13 +114,13 @@ Sets the ISO to be used for captures. Range is 100 to 800.
 	--vstab,	-vs		Turn on video stabilisation
 ```
 
-In video mode only, turn on video stabilisation.
+In video mode only, turns on video stabilisation.
 
 ```
 	--ev,	-ev		Set EV compensation
 ```
 
-Set the EV compensation of the image. Range is -10 to +10, default is 0.
+Sets the EV compensation of the image. Range is -10 to +10, default is 0.
 
 ```
 	--exposure,	-ex		Set exposure mode
@@ -241,7 +241,7 @@ Allows the specification of the area of the sensor to be used as the source for 
 --shutter,	-ss		Set shutter speed
 ```
 
-Set the shutter speed to the specified value (in microseconds). There is currently an upper limit of approximately 6000000us (6000ms, 6s) past which operation is undefined.
+Sets the shutter speed to the specified value (in microseconds). There is currently an upper limit of approximately 6000000us (6000ms, 6s) past which operation is undefined.
 
 ```
 --drc,	-drc		Enable/Disable Dynamic Range compression
@@ -288,13 +288,13 @@ Sets a specified sensor mode, disabling the automatic selection. Possible values
 ```
 	--camselect,	-cs
 ```
-Select which camera (on a multi camera system) to use. Use 0 or 1.
+Selects which camera (on a multi camera system) to use. Use 0 or 1.
 
 
 ```
 	--annotate,	-a		Enable/Set annotate flags or text
 ```
-Add some text and/or metadata to the picture.
+Adds some text and/or metadata to the picture.
 
 Metadata is indicated using a bitmask notation, so add them together to show multiple parameters. For example, 12 will show time(4) and date(8) since 4+8=12.
 
@@ -320,7 +320,7 @@ Text may include date/time placeholders by using '%' character as used by <a tit
 --annotateex,	-ae		Set extra annotation parameters
 ```
 
-Specify annotation size,text-colour,background-colour.  Colours are in hex YUV format.
+Specifies annotation size, text-colour, background-colour. Colours are in hex YUV format.
 
 Size ranges from 6 to 160, default is 32. Asking for an invalid size should give you the default.
 
