@@ -1,16 +1,16 @@
 # DPI (Parallel Display Interface)
 
-An up-to-24-bit parallel RGB interface is available on all Raspberry Pi boards with the 40 way header (A+,B+,Pi2,Pi3,Zero) and Compute Moudule. This interface allows parallel RGB displays to be attached to the Raspberry Pi GPIO either in RGB24 (8 bits for red, green and blue) or RGB666 (6 bits per colour) or RGB565 (5 bits red, 6 green and 5 blue).
+An up-to-24-bit parallel RGB interface is available on all Raspberry Pi boards with the 40 way header (A+, B+, Pi2, Pi3, Zero) and Compute Module. This interface allows parallel RGB displays to be attached to the Raspberry Pi GPIO either in RGB24 (8 bits for red, green and blue) or RGB666 (6 bits per colour) or RGB565 (5 bits red, 6 green, and 5 blue).
 
-This interface is controlled by the GPU firmware and can be programmed by a user via special config.txt parameters and by enabling the correct Linux Device Tree overlay.
+This interface is controlled by the GPU firmware and can be programmed by a user via special config.txt parameters and by enabling the correct Linux device tree overlay.
 
 ## GPIO Pins
 
-One of the alternate functions selectable on Bank 0 of the Raspbery Pi GPIO is DPI (Display Parallel Interface) which is a simple clocked parallel interface (up to 8 bits of R, G and B; clock, enable, hsync and vsync). This interface is available as alternate function 2 (ALT2) on GPIO Bank 0:
+One of the alternate functions selectable on bank 0 of the Raspbery Pi GPIO is DPI (Display Parallel Interface) which is a simple clocked parallel interface (up to 8 bits of R, G and B; clock, enable, hsync, and vsync). This interface is available as alternate function 2 (ALT2) on GPIO bank 0:
 
 ![DPI Alternate GPIO function](dpi-altfn2.png)
 
-Note that there are various ways that the colour values can be presented on the DPI output pins in either 565, 666 or 24-bit modes (see the following table and the `otutput_format` part of the `dpi_output_format` parameter below):
+Note that there are various ways that the colour values can be presented on the DPI output pins in either 565, 666, or 24-bit modes (see the following table and the `otutput_format` part of the `dpi_output_format` parameter below):
 
 ![DPI Colour Ouptut](dpi-packing.png)
 
@@ -84,8 +84,7 @@ NB the single bit fields all act as an "invert default behaviour".
 
 The `dpi_group` and `dpi_mode` config.txt parameters are used to set either predetermined modes (DMT or CEA modes as used by HDMI) or a user can generate custom modes.
 
-To generate a custom HDMI mode start here:
-https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=24679
+To generate a custom HDMI mode start [here](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=24679).
 
 If you set up a custom HDMI mode, then in config.txt use:
 ```
@@ -93,7 +92,7 @@ dpi_group=2
 dpi_mode=87
 ```
 
-which will use the custom HDMI timings for DPI.
+This will use the custom HDMI timings for DPI.
 
 The other option is to use the hdmi_timings config.txt parameter to set the HDMI (DPI) timings directly. You still need the `dpi_group=2` and `dpi_mode=87` parameters in config.txt 
 
@@ -118,9 +117,9 @@ hdmi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> 
 <frame_rate>      = screen refresh rate in Hz
 <interlaced>      = leave at zero
 <pixel_freq>      = clock frequency (width*height*framerate)
-<aspect_ratio>    =*
+<aspect_ratio>    = \*
 
-*The aspect ratio can be set to one of 8 values (choose closest for your screen):
+\*The aspect ratio can be set to one of 8 values (choose closest for your screen):
 
 HDMI_ASPECT_4_3 = 1
 HDMI_ASPECT_14_9 = 2
