@@ -8,7 +8,7 @@
 
 ### Buy a pre-installed SD card
 
-SD cards with NOOBS preinstalled are available from many of our distributors and independent retailers, such as [Pimoroni](https://shop.pimoroni.com/products/noobs-8gb-sd-card), [Adafruit](https://www.adafruit.com/products/1583), and [Pi Hut](http://thepihut.com/collections/raspberry-pi-sd-cards-and-adapters/products/noobs-preinstalled-sd-card).
+SD cards with NOOBS preinstalled are available from many of our distributors and independent retailers, including [Pimoroni](https://shop.pimoroni.com/products/noobs-8gb-sd-card), [Adafruit](https://www.adafruit.com/products/1583), and [Pi Hut](http://thepihut.com/collections/raspberry-pi-sd-cards-and-adapters/products/noobs-preinstalled-sd-card).
 
 ### Download
 
@@ -20,7 +20,7 @@ Once you've downloaded the NOOBS zip file, you'll need to copy the contents to a
 
 To set up a blank SD card with NOOBS:
 
-- Format an SD card that is 4GB or larger as FAT. See instructions on how to do this below.
+- Format an SD card which is 4GB or larger as FAT. See the instructions given below.
 - Download and extract the files from the NOOBS zip file.
 - Copy the extracted files onto the SD card that you just formatted, so that this file is at the root directory of the SD card. Please note that in some cases it may extract the files into a folder; if this is the case, then please copy across the files from inside the folder rather than the folder itself.
 - On first boot, the "RECOVERY" FAT partition will be automatically resized to a minimum, and a list of OSes that are available to install will be displayed.
