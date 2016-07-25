@@ -4,7 +4,7 @@ Raspberry Pi's latest kernels and firmware, including Raspbian and NOOBS release
 
 The current implementation is not a pure Device Tree system - there is still board support code that creates some platform devices - but the external interfaces (I2C, I2S, SPI), and the audio devices that use them, must now be instantiated using a Device Tree Blob (DTB) passed to the kernel by the loader (`start.elf`).
 
-The main impact of using Device Tree is to change from **everything on**, relying on module blacklisting to manage contention, to **everything off unless requested by the DTB**. In order to continue to use external interfaces and the peripherals that attach to them, you will need to add some new settings to your `config.txt`. See [Part 3](#part3) for more information, but in the meantime here are a few examples:
+The main impact of using Device Tree is to change from **everything on**, relying on module blacklisting to manage contention, to **everything off unless requested by the DTB**. In order to continue to use external interfaces and the peripherals that attach to them, you will need to add some new settings to your `config.txt`. Full details are given in [Part 3](#part3), but these are a few examples:
 
 ```
 # Uncomment some or all of these to enable the optional hardware interfaces
