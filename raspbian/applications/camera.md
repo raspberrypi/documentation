@@ -8,9 +8,9 @@ All the applications are command-line-driven, written to take advantage of the m
 
 The applications use up to four OpenMAX(mmal) components: camera, preview,  encoder, and null_sink. All applications use the camera component, `raspistill` uses the Image Encode component, `raspivid` uses the Video Encode component and `raspistillyuv` does not use an encoder, and sends its YUV or RGB output direct from camera component to file.
 
-The preview display is optional, but can be used full screen or directed to a specific rectangular area on the display. If preview is disabled, the null_sink component is used to 'absorb' the preview frames. It is necessary for the camera to produce preview frames even if not required for display, as they are used for calculating exposure and white balance settings.
+The preview display is optional, but can be used full-screen or directed to a specific rectangular area on the display. If preview is disabled, the null_sink component is used to 'absorb' the preview frames. It is necessary for the camera to produce preview frames even if these are not required for display, as they are used for calculating exposure and white balance settings.
 
-In addition it is possible to omit the filename option, in which case the preview is displayed but no file is written, or to redirect all output to stdout.
+In addition, it is possible to omit the filename option, in which case the preview is displayed but no file is written, or to redirect all output to stdout.
 
 Command line help is available by typing just the application name in on the command line.
 
@@ -38,9 +38,9 @@ If things are still not working, try the following:
 
 - `Error : raspistill/raspivid` not found. This probably means your update/upgrade failed in some way. Try it again.
 
-- `Error : ENOMEM displayed`. Camera is not starting up. Check all connections again.
+- `Error : ENOMEM displayed`. The Camera Module is not starting up. Check all connections again.
 
-- `Error : ENOSPC displayed`. Camera is probably running out of GPU memory. Check `config.txt` in the /boot/ folder. The gpu_mem option should be at least 128. Alternatively, use the Memory Split option in the Advanced section of `raspi-config` to set this.
+- `Error : ENOSPC displayed`. The Camera Module is probably running out of GPU memory. Check `config.txt` in the /boot/ folder. The gpu_mem option should be at least 128. Alternatively, use the Memory Split option in the Advanced section of `raspi-config` to set this.
 
 - If after all the above the camera is still not working, you may need to upgrade the firmware on the Raspberry Pi. Use the following command to get the very latest (but experimental) firmware.
 
