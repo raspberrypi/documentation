@@ -133,7 +133,7 @@ HDMI_ASPECT_64_27 = 8
 
 ## Overlays
 
-A Linux device tree overlay is used to switch the GPIO pins into the correct mode (alt function 2). As previously mentioned, the GPU is responsible for driving the DPI display. Hence there is no Linux driver; the overlay simply sets the GPIO alt functions correctly.
+A Linux Device Tree overlay is used to switch the GPIO pins into the correct mode (alt function 2). As previously mentioned, the GPU is responsible for driving the DPI display. Hence there is no Linux driver; the overlay simply sets the GPIO alt functions correctly.
 
 A 'full fat' DPI overlay (dpi24.dtb) is provided which sets all 28 GPIOs to ALT2 mode, providing the full 24 bits of colour bus as well as the h and v-sync, enable and pixel clock. Note this uses **all** of the bank 0 GPIO pins.
 
@@ -179,4 +179,4 @@ hdmi_timings=800 0 40 48 88 480 0 13 3 32 0 0 0 60 0 32000000 6
 
 ## Useful Third Party Instructions / Examples
 
-[How to attach an LCD screen to a Pi](http://blog.reasonablycorrect.com/raw-dpi-raspberry-pi/). Note that the author compiles a dt-blob.bin file which is now unnecessary. Please use the relevant Linux device tree overlay.
+[How to attach an LCD screen to a Pi](http://blog.reasonablycorrect.com/raw-dpi-raspberry-pi/). Note that the author compiles a dt-blob.bin file which is now unnecessary. Please use the relevant Linux Device Tree overlay.
