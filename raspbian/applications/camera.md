@@ -26,7 +26,7 @@ If the Camera Module is not working correctly, there are number of things to try
 
 - Are the ribbon connectors all firmly seated, and are they the right way round? They must be straight in their sockets.
 
-- Is the Camera Module connector, between the smaller black Camera Module itself and the Camera PCB, firmly attached? Sometimes this connection can come loose during transit or when putting the camera module in a case. Using a fingernail, flip up the connector on the PCB, then reconnect it with gentle pressure. It engages with a very slight click. Don't force it; if it doesn't engage, it's probably slightly misaligned.
+- Is the Camera Module connector, between the smaller black Camera Module itself and the PCB, firmly attached? Sometimes this connection can come loose during transit or when putting the Camera Module in a case. Using a fingernail, flip up the connector on the PCB, then reconnect it with gentle pressure. It engages with a very slight click. Don't force it; if it doesn't engage, it's probably slightly misaligned.
 
 - Have `sudo apt-get update`, `sudo apt-get upgrade` been run?
 
