@@ -10,7 +10,7 @@ Any changes will only take effect after you've rebooted your Raspberry Pi. After
 
 `vcgencmd get_config str` - lists all the string config options that are set (non-null).
 
-Note that there's a small number of config settings which can't be retrieved using `vcgencmd`.
+Note that there are a few config settings which can't be retrieved using `vcgencmd`.
 
 ## File format
 
