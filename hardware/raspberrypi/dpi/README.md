@@ -117,9 +117,9 @@ hdmi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> 
 <frame_rate>      = screen refresh rate in Hz
 <interlaced>      = leave at zero
 <pixel_freq>      = clock frequency (width*height*framerate)
-<aspect_ratio>    = \*
+<aspect_ratio>    = *
 
-\*The aspect ratio can be set to one of 8 values (choose closest for your screen):
+* The aspect ratio can be set to one of 8 values (choose closest for your screen):
 
 HDMI_ASPECT_4_3 = 1
 HDMI_ASPECT_14_9 = 2
@@ -133,9 +133,9 @@ HDMI_ASPECT_64_27 = 8
 
 ## Overlays
 
-A Linux Device Tree overlay is used to switch the GPIO pins into the correct mode (alt function 2). As previously mentioned the GPU is responsible for driving the DPI display and hence there is no Linux driver; the overlay simply sets the GPIO alt functions correctly.
+A Linux device tree overlay is used to switch the GPIO pins into the correct mode (alt function 2). As previously mentioned, the GPU is responsible for driving the DPI display. Hence there is no Linux driver; the overlay simply sets the GPIO alt functions correctly.
 
-A 'full fat' DPI overlay (dpi24.dtb) is provided which sets all 28 GPIOs to ALT2 mode, providing the full 24 bits of colour bus as well as the h and v-sync, enable and pixel clock. Note this uses *all* of the bank 0 GPIO pins.
+A 'full fat' DPI overlay (dpi24.dtb) is provided which sets all 28 GPIOs to ALT2 mode, providing the full 24 bits of colour bus as well as the h and v-sync, enable and pixel clock. Note this uses **all** of the bank 0 GPIO pins.
 
 A second overlay (vga666.dtb) is provided for driving VGA monitor signals in 666 mode which don't need the clock and DE pins (GPIO 0 and 1) and only require GPIOs 4-21 for colour (using mode 5).
 
@@ -147,7 +147,7 @@ These overlays are fairly trivial and a user can edit them to create a custom ov
 
 This setup is for the [Gert VGA adaptor](https://github.com/fenlogic/vga666)
 
-Note that the instructions provided in the documentation in the above GitHub link are somewhat out of date, please use the below settings.
+Note that the instructions provided in the documentation in the above GitHub link are somewhat out of date, please use the settings below.
 
 ```
 dtoverlay=vga666
@@ -159,7 +159,7 @@ dpi_mode=82
 
 ### 800x480 LCD panel
 
-Note this was tested with [Adafruit's DPI add-on board and 800x480 LCD panel](https://www.adafruit.com/products/2453)
+Note: this was tested with [Adafruit's DPI add-on board and 800x480 LCD panel](https://www.adafruit.com/products/2453)
 
 ```
 dtoverlay=dpi24
@@ -179,6 +179,4 @@ hdmi_timings=800 0 40 48 88 480 0 13 3 32 0 0 0 60 0 32000000 6
 
 ## Useful Third Party Instructions / Examples
 
-Many thanks goes to authors of the following examples!
-
-[How to attach an LCD screen to a Pi](http://blog.reasonablycorrect.com/raw-dpi-raspberry-pi/) - Note that the author in this example compiles a dt-blob.bin file which is now unnecessary, please use the relevant Linux device tree overlay.
+[How to attach an LCD screen to a Pi](http://blog.reasonablycorrect.com/raw-dpi-raspberry-pi/). Note that the author compiles a dt-blob.bin file which is now unnecessary. Please use the relevant Linux device tree overlay.
