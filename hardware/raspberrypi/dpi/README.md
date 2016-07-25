@@ -139,7 +139,7 @@ A 'full fat' DPI overlay (dpi24.dtb) is provided which sets all 28 GPIOs to ALT2
 
 A second overlay (vga666.dtb) is provided for driving VGA monitor signals in 666 mode which don't need the clock and DE pins (GPIO 0 and 1) and only require GPIOs 4-21 for colour (using mode 5).
 
-These overlays are fairly trivial and a user can edit them to create a custom overlay to enable just the pins required for their specific use case. For example if one was using a DPI display using vsync, hsync, pclk and de but in RGB565 mode (mode 2) then the dpi24.dtb overlay could be edited so that GPIOs 20-27 were not switched to DPI mode and hence could be used for other purposes.
+These overlays are fairly trivial and a user can edit them to create a custom overlay to enable just the pins required for their specific use case. For example, if one was using a DPI display using vsync, hsync, pclk, and de but in RGB565 mode (mode 2), then the dpi24.dtb overlay could be edited so that GPIOs 20-27 were not switched to DPI mode and hence could be used for other purposes.
 
 ## Example config.txt settings
 
