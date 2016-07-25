@@ -2,11 +2,11 @@
 
 This document describes the use of the three Raspberry Pi camera applications as of January 8th 2015.
 
-There are three applications provided, `raspistill`, `raspivid`, and `raspistillyuv`. `raspistill` and `raspistillyuv` are very similar and are intended for capturing images, `raspivid` is for capturing video.
+There are three applications provided, `raspistill`, `raspivid`, and `raspistillyuv`. `raspistill` and `raspistillyuv` are very similar and are intended for capturing images; `raspivid` is for capturing video.
 
-All the applications are command line driven, written to take advantage of the mmal API which runs over OpenMAX. The mmal API provides an easier to use system than that presented by OpenMAX. Note that mmal is a Broadcom specific API used only on Videocore 4 systems.
+All the applications are command-line-driven, written to take advantage of the mmal API which runs over OpenMAX. The mmal API provides an easier to use system than that presented by OpenMAX. Note that mmal is a Broadcom-specific API used only on Videocore 4 systems.
 
-The applications use up to four OpenMAX(mmal) components - camera, preview,  encoder and null_sink. All applications use the camera component, `raspistill` uses the Image Encode component, `raspivid` uses the Video Encode component and `raspistillyuv` does not use an encoder, and sends its YUV or RGB output direct from camera component to file.
+The applications use up to four OpenMAX(mmal) components: camera, preview,  encoder, and null_sink. All applications use the camera component, `raspistill` uses the Image Encode component, `raspivid` uses the Video Encode component and `raspistillyuv` does not use an encoder, and sends its YUV or RGB output direct from camera component to file.
 
 The preview display is optional, but can be used full screen or directed to a specific rectangular area on the display. If preview is disabled, the null_sink component is used to 'absorb' the preview frames. It is necessary for the camera to produce preview frames even if not required for display, as they are used for calculating exposure and white balance settings.
 
@@ -22,7 +22,7 @@ See [Camera Setup](../../configuration/camera.md)
 
 If the camera is not working correctly, there are number of things to try:
 
-- Is the ribbon cable attached to the Camera Serial Interface (CSI), not the Display Serial Interface (DSI)?  The ribbon connector will fit into either port.  The Camera port is located near the HDMI connector.
+- Is the ribbon cable attached to the Camera Serial Interface (CSI), not the Display Serial Interface (DSI)? The ribbon connector will fit into either port. The Camera port is located near the HDMI connector.
 
 - Are the ribbon connectors all firmly seated, and are they the right way round? They must be straight in their sockets.
 
