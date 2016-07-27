@@ -7,7 +7,7 @@ sudo pip3 install tabulate
 
 # Get network info
 NAMESERVER=$(cat /etc/resolv.conf | grep nameserver | head -n 1 | cut -d " " -f2)
-GATEWAY=$(ip -4 route | grep default | cut -d " " -f3)
+GATEWAY=$(ip -4 route | grep default | head -n 1 | cut -d " " -f3)
 IP=$(ifconfig eth0 | grep "inet addr" | cut -d " " -f 12 | cut -d ":" -f 2)
 BRD=$(ifconfig eth0 | grep "inet addr" | cut -d " " -f 14 | cut -d ":" -f 2)
 NETMASK=$(ifconfig eth0 | grep "inet addr" | cut -d " " -f 16 | cut -d ":" -f 2)
@@ -32,6 +32,8 @@ iface eth0 inet static
 	gateway $GATEWAY
 EOF
 
+sudo systemctl stop dhcpcd
+sudo systemctl disable dhcpcd
 sudo systemctl restart networking
 
 # In case it is already set
