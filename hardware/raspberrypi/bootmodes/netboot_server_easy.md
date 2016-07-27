@@ -9,6 +9,8 @@ sudo raspi-config
 
 sudo wget https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/raspberrypi/bootmodes/pxetools/prepare_pxetools
 bash prepare_pxetools
-
-prepare_pxetools should prepare everything you need to use pxetools
 ```
+
+When prompted about saving iptables rules, say no.
+
+prepare_pxetools should prepare everything you need to use pxetools.
