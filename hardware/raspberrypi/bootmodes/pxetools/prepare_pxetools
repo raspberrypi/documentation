@@ -6,7 +6,7 @@ sudo apt-get update; sudo apt-get -y upgrade
 sudo apt-get install -y rpi-update
 sudo BRANCH=next rpi-update
 
-sudo apt-get install python3 python3-pip ipcalc
+sudo apt-get install -y python3 python3-pip ipcalc
 sudo pip3 install tabulate
 
 # Get network info
