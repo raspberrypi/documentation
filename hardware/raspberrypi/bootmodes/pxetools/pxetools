@@ -96,7 +96,7 @@ def add():
     cmd("iptables -t raw -I DHCP_clients -m mac --mac-source {0} -j ACCEPT".format(mac(serial))) 
     cmd("iptables-save > /etc/iptables/rules.v4")
     cmd("mkdir {}".format(tftp_path))
-    cmd("cp -r /tftpboot/base/* /{}".format(tftp_path))
+    cmd("cp -r /tftpboot/base/* {}".format(tftp_path))
     cmd("mkdir {}".format(nfs_path))
     cmd("echo \"{} *(rw,sync,no_subtree_check,no_root_squash)\" >> /etc/exports".format(nfs_path))
     cmd("exportfs -a")
