@@ -73,12 +73,12 @@ sudo rsync -ax --progress / /boot /mnt/target
 
 Regenerate ssh host keys:
 ```
-sudo rm /mnt/target/etc/ssh/ssh_host*
 cd /mnt/target
 sudo mount --bind /dev dev
 sudo mount --bind /sys sys
 sudo mount --bind /proc proc
 sudo chroot /mnt/target
+rm /etc/ssh/ssh_host*
 dpkg-reconfigure openssh-server
 exit
 sudo umount dev

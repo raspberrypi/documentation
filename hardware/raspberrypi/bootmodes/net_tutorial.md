@@ -2,18 +2,16 @@
 This tutorial is written to explain how to set up a simple DHCP / TFTP server which will allow you to boot a Raspberry Pi 3 from the network. The tutorial assumes you have an existing home network, and want to use a Raspberry Pi for the **server**. You will need a second Pi 3 as a **client** to be booted. Only one SD card is needed because the **client** will be booted from the **server** after the initial client configuration.
 
 ## Client configuration
-Before a Pi will network boot, it needs to be booted with a config option to enable USB boot mode. Enabling this config option requires a special `start.elf` and `bootcode.bin` file. 
+Before a Pi will network boot, it needs to be booted with a config option to enable USB boot mode. Enabling this config option requires a special `start.elf` and `bootcode.bin` file. These can be installed by using the "next" branch on rpi-update.
 
 Install Raspbian lite (or heavy if you want) from the [Downloads page](https://www.raspberrypi.org/downloads/raspbian/) onto an SD card using `Win32DiskImager` if you are on Windows, or `dd` if you are on Linux/Mac. Boot the **client** Pi.
 
 ### Program USB Boot Mode
-First, prepare the `/boot` directory with new `start.elf` and `bootcode.bin` files:
+First, prepare the `/boot` directory with experimental boot files:
 ```
-cd /boot
-sudo rm start.elf bootcode.bin start_* fixup*
-sudo wget https://github.com/raspberrypi/documentation/raw/master/hardware/raspberrypi/bootmodes/start.elf 
-sudo wget https://github.com/raspberrypi/documentation/raw/master/hardware/raspberrypi/bootmodes/bootcode.bin
-sudo sync
+# If on raspbian lite you need to install rpi-update before you can use it:
+$ sudo apt-get update; sudo apt-get install rpi-update
+$ sudo BRANCH=next rpi-update
 ```
 
 Then enable USB boot mode with:
@@ -45,10 +43,17 @@ sudo rsync -xa --progress --exclude /nfs / /nfs/client1
 
 Regenerate ssh host keys on client filesystem by chrooting into it:
 ```
-sudo chroot /nfs/client1
+cd /nfs/client1
+sudo mount --bind /dev dev
+sudo mount --bind /sys sys
+sudo mount --bind /proc proc
+sudo chroot .
 rm /etc/ssh/ssh_host_*
 dpkg-reconfigure openssh-server
 exit
+sudo umount dev
+sudo umount sys
+sudo umount proc
 ```
 
 You need to find the settings of your local network. You need to find the address of your router (or gateway), which you can find with:
