@@ -2,17 +2,15 @@
 This tutorial explains how to boot your Raspberry Pi 3 from a USB mass storage device such as a flash drive or USB hard disk. Be warned that this feature is experimental and may not work with all USB mass storage devices.
 
 ## Program USB Boot Mode
-Before a Pi will network boot, it needs to be booted with a config option to enable USB boot mode. Enabling this config option requires a special `start.elf` and `bootcode.bin` file. 
+Before a Pi will network boot, it needs to be booted with a config option to enable USB boot mode. Enabling this config option requires a special `start.elf` and `bootcode.bin` file. These can be installed by using the "next" branch on rpi-update.
 
 Go to the [Downloads page](https://www.raspberrypi.org/downloads/raspbian/) and install Raspbian onto an SD card using `Win32DiskImager` if you are on Windows, or `dd` if you are on Linux/Mac. Boot the Pi.
 
-First, prepare the `/boot` directory with new `start.elf` and `bootcode.bin` files:
+First, prepare the `/boot` directory with experimental boot files:
 ```
-cd /boot
-sudo rm start.elf bootcode.bin start_* fixup*
-sudo wget https://github.com/raspberrypi/documentation/raw/master/hardware/raspberrypi/bootmodes/start.elf 
-sudo wget https://github.com/raspberrypi/documentation/raw/master/hardware/raspberrypi/bootmodes/bootcode.bin
-sudo sync
+# If on raspbian lite you need to install rpi-update before you can use it:
+$ sudo apt-get update; sudo apt-get install rpi-update
+$ sudo BRANCH=next rpi-update
 ```
 
 Then enable USB boot mode with:
@@ -37,7 +35,6 @@ Now that your Pi 3 is USB boot-enabled, we can prepare a USB storage device to b
 We will start by using parted to create a 100MB fat32 partition, followed by a Linux ext4 partition that will take up the rest of the disk.
 
 ```
-sudo umount /dev/sda
 sudo parted /dev/sda
 
 (parted) mktable msdos
@@ -70,7 +67,23 @@ sudo mkdir /mnt/target
 sudo mount /dev/sda2 /mnt/target/
 sudo mkdir /mnt/target/boot
 sudo mount /dev/sda1 /mnt/target/boot/
+sudo apt-get update; sudo apt-get install rsync
 sudo rsync -ax --progress / /boot /mnt/target
+```
+
+Regenerate ssh host keys:
+```
+sudo rm /mnt/target/etc/ssh/ssh_host*
+cd /mnt/target
+sudo mount --bind /dev dev
+sudo mount --bind /sys sys
+sudo mount --bind /proc proc
+sudo chroot /mnt/target
+dpkg-reconfigure openssh-server
+exit
+sudo umount dev
+sudo umount sys
+sudo umount proc
 ```
 
 Edit `/boot/cmdline.txt` so that it uses the USB storage device as the root filesystem instead of the SD card.
@@ -86,6 +99,7 @@ sudo sed -i "s,/dev/mmcblk0p,/dev/sda," /mnt/target/etc/fstab
 
 Finally, unmount the target filesystems, and power off the Pi.
 ```
+cd ~
 sudo umount /mnt/target/boot 
 sudo umount /mnt/target
 sudo poweroff 
