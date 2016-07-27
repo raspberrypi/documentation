@@ -7,7 +7,12 @@ sudo raspi-config
 # Finish
 # Reboot
 
-sudo wget https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/raspberrypi/bootmodes/pxetools/prepare_pxetools
+sudo apt-get update; sudo apt-get -y upgrade
+sudo apt-get install -y rpi-update
+sudo BRANCH=next rpi-update
+sudo reboot
+
+wget https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/raspberrypi/bootmodes/pxetools/prepare_pxetools
 bash prepare_pxetools
 ```
 
