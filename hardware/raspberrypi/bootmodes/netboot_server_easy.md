@@ -19,3 +19,10 @@ bash prepare_pxetools
 When prompted about saving iptables rules, say no.
 
 prepare_pxetools should prepare everything you need to use pxetools.
+
+We found that we needed to restart the nfs server after using pxetools for the first time. Do this with:
+```
+sudo systemctl restart nfs-kernel-server
+```
+
+Then plug in your Pi and it should boot!
