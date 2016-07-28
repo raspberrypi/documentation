@@ -217,6 +217,9 @@ def list():
     print(tabulate(tbl, headers="firstrow"))
 
 if __name__ == "__main__":
+    if os.geteuid() != 0:
+        exit("Please run with sudo or as root user")
+
     if len(sys.argv) == 1:
         print(HELP)
     elif sys.argv[1] == "--list":
