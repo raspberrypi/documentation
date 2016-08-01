@@ -219,8 +219,8 @@ if __name__ == "__main__":
     if os.geteuid() != 0:
         exit("Please run with sudo or as root user")
 
-    LAN = cmd('ip -4 addr show dev eth0 | grep inet | cut -d " " -f6 | xargs ipcalc | grep Network | cut -d " " -f4', print_cmd=False)
-    NFS_IP = cmd('ifconfig eth0 | grep "inet addr" | cut -d " " -f 12 | cut -d ":" -f 2', print_cmd=False)
+    LAN = cmd('ip -4 addr show dev eth0 | grep inet | cut -d " " -f6 | xargs ipcalc | grep Network | cut -d " " -f4', print_cmd=False).rstrip()
+    NFS_IP = cmd('ifconfig eth0 | grep "inet addr" | cut -d " " -f 12 | cut -d ":" -f 2', print_cmd=False).rstrip()
 
     if len(sys.argv) == 1:
         print(HELP)
