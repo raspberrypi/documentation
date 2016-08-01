@@ -11,7 +11,6 @@ GATEWAY=$(ip -4 route | grep default | head -n 1 | cut -d " " -f3)
 IP=$(ifconfig eth0 | grep "inet addr" | cut -d " " -f 12 | cut -d ":" -f 2)
 BRD=$(ifconfig eth0 | grep "inet addr" | cut -d " " -f 14 | cut -d ":" -f 2)
 NETMASK=$(ifconfig eth0 | grep "inet addr" | cut -d " " -f 16 | cut -d ":" -f 2)
-NETWORK=$(ip -4 addr show dev eth0 | grep inet | cut -d " " -f6 | xargs ipcalc | grep Network | cut -d " " -f4)
 
 echo "IP: $IP"
 echo "Netmask: $NETMASK"
@@ -99,8 +98,5 @@ sudo rm raspbian_latest.zip
 
 sudo wget  -O /usr/local/sbin/pxetools https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/raspberrypi/bootmodes/pxetools/pxetools
 sudo chmod +x /usr/local/sbin/pxetools
-
-sudo sed -i "s,LAN = \"10.3.14.0/24\",LAN = \"$NETWORK\"," /usr/local/sbin/pxetools
-sudo sed -i "s,NFS_IP = \"10.3.14.18\",NFS_IP = \"$IP\"," /usr/local/sbin/pxetools
 
 echo "Now run sudo pxetools --add \$serial"

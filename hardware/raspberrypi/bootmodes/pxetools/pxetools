@@ -12,8 +12,8 @@ HELP = "Usage:\n\
 \tpxetools --remove serial\n\
 \tpxetools --list\n"
 
-LAN = "10.3.14.0/24"
-NFS_IP = "10.3.14.18"
+LAN = None
+NFS_IP = None
 
 def cmd(cmd, print_out=False, print_cmd=True, can_fail=False):
     if print_cmd:
@@ -32,7 +32,6 @@ def cmd(cmd, print_out=False, print_cmd=True, can_fail=False):
 
     return out
         
-
 def add():
     serial = None
     if len(sys.argv) != 3:
@@ -219,6 +218,9 @@ def list():
 if __name__ == "__main__":
     if os.geteuid() != 0:
         exit("Please run with sudo or as root user")
+
+    LAN = cmd('ip -4 addr show dev eth0 | grep inet | cut -d " " -f6 | xargs ipcalc | grep Network | cut -d " " -f4', print_cmd=False)
+    NFS_IP = cmd('ifconfig eth0 | grep "inet addr" | cut -d " " -f 12 | cut -d ":" -f 2', print_cmd=False)
 
     if len(sys.argv) == 1:
         print(HELP)
