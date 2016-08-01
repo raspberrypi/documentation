@@ -176,7 +176,7 @@ You should see something like this:
 raspberrypi dnsmasq-tftp[1903]: file /tftpboot/bootcode.bin not found
 ```
 
-Next, you will need to copy [bootcode.bin](bootcode.bin) and [start.elf](start.elf) into the /tftpboot directory; you should be able to do this by just copying the files from /boot since they are the right ones. We need a kernel, so we might as well copy the entire boot directory.
+Next, you will need to copy `bootcode.bin` and `start.elf` into the /tftpboot directory; you should be able to do this by just copying the files from /boot since they are the right ones. We need a kernel, so we might as well copy the entire boot directory.
 
 First, use Ctrl+Z to exit the monitoring state. Then type the following: 
 
