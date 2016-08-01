@@ -55,6 +55,11 @@ def add():
     else:
         serial = sys.argv[2]
     
+    # Validate serial
+    serial = serial.lstrip("0")
+    if not re.search("^[0-9a-f]{8}$", serial):
+            raise Exception("Invalid serial number {}".format(serial))
+
     print("Serial: {}".format(serial))
     owner = input("Owner Name (ex Gordon): ")
     name = input("Name for pi: ")
@@ -65,11 +70,6 @@ def add():
         print("\t{}. {}".format(i + 1, selection[i]))
     
     img_choice = input("Enter an option number: ")
-
-    # Validate stuff
-    serial = serial.lstrip("0")
-    if not re.search("^[0-9a-f]{8}$", serial):
-            raise Exception("Invalid serial number {}".format(serial))
 
     tftp_path = "/tftpboot/{}".format(serial)
     nfs_path = "/nfs/{}".format(serial)
