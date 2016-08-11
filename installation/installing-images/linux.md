@@ -34,7 +34,7 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
 ### Checking if the image was correctly written to the SD card
 - After `dd` has finished copying, you can check what's written to the SD card by `dd`-ing from the card back to another image on your hard disk, truncating the new image to the same size as the original, and then running `diff` (or `md5sum`) on those two images.
 
-- If the SD card is bigger than the original image size, and `dd` will make a copy of the whole card. We must therefore truncate the new image to the size of the original image. Make sure you replace the input file `if=` argument with the right device name. `diff` should report that the files are identical.
+- If the SD card is bigger than the original image size, `dd` will make a copy of the whole card. We must therefore truncate the new image to the size of the original image. Make sure you replace the input file `if=` argument with the right device name. `diff` should report that the files are identical.
 
     ```bash
     dd bs=4M if=/dev/sdd of=from-sd-card.img
