@@ -477,7 +477,7 @@ Extra Options :
 ```
 This option forces the image to be saved as RGB data with 8 bits per channel, rather than YUV420.
 
-Note that the image buffers saved in `raspistillyuv` are padded to a horizontal size divisible by 16 (so there may be unused bytes at the end of each line to make the width divisible by 16). Buffers are also padded vertically to be divisible by 16, and in the YUV mode, each plane of Y,U,V is padded in this way.
+Note that the image buffers saved in `raspistillyuv` are padded to a horizontal size divisible by 32 (so there may be unused bytes at the end of each line to make the width divisible by 32). Buffers are also padded vertically to be divisible by 16, and in the YUV mode, each plane of Y,U,V is padded in this way.
 
 
 ### raspivid
