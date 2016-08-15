@@ -8,13 +8,13 @@ One method is to set port forwarding up on your router. To set port forwarding u
 
 ## Dataplicity
 
-[Dataplicity](https://dataplicity.com) allows you to connect and control your Pi's shell remotely from a web browser and its mobile apps. You can use Dataplicity's Wormhole feature to host a website or API directly from your Pi and provides automatic HTTPS/SSL with no configuration or certificates required.
+[Dataplicity](https://dataplicity.com) allows you to connect and control your Pi's shell remotely from a web browser and its mobile apps. You can use Dataplicity's Wormhole feature to host a website or API directly from your Pi and automatically enable HTTPS/SSL with no configuration or certificates.
 
 [It uses WebSockets over HTTPS](https://docs.dataplicity.com/docs/how-it-works) to provide an opportunistic connection and requires a single line install.
 
-Dataplicity provides a free tier and free support by e-mail/in-app messenger. 
+Dataplicity provides free support by e-mail/in-app messenger. 
 
-![Dataplicity](images/dataplicity-add-new-device.png)
+[![Adding a device on Dataplicity](images/dataplicity-add-new-device.png)](https://dataplicity.com)
 
 ## Weaved
 
