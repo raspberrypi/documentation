@@ -6,6 +6,16 @@ You can connect to your Raspberry Pi over the internet from another computer or 
 
 One method is to set port forwarding up on your router. To set port forwarding up, you must change the configuration of your router to forward all inbound traffic from the internet on a specific port to the local IP address of your Raspberry Pi. Most routers have this feature available. However, every router is different so you will need to consult your router's user manual for instructions. The settings can be tricky if your Pi is behind a firewall or if there is more than one router. One disadvantage of port forwarding is that it exposes a network port on your private LAN to the public internet. This is a known security vulnerability and must be managed carefully.
 
+## Dataplicity
+
+[Dataplicity](https://dataplicity.com) allows you to connect and control your Pi's shell remotely from a web browser and its mobile apps. You can use Dataplicity's Wormhole feature to host a website or API directly from your Pi and provides automatic HTTPS/SSL with no configuration or certificates required.
+
+[It uses WebSockets over HTTPS](https://docs.dataplicity.com/docs/how-it-works) to provide an opportunistic connection and requires a single line install.
+
+Dataplicity provides a free tier and free support by e-mail/in-app messenger. 
+
+![Dataplicity](images/dataplicity-add-new-device.png)
+
 ## Weaved
 
 One secure alternative to port forwarding is the Weaved service. Weaved is software you install on your Raspberry Pi which lets you connect to your Pi from anywhere over the internet. SSH, VNC, HTTP, SFTP file transfer, and any other TCP service running on your Pi can be enabled for secure remote access over the internet without port forwarding.
@@ -31,7 +41,3 @@ sudo weavedinstaller
 Your Weaved account is now a private internet VPN connection service to your Pi without port forwarding. Access your Pi by logging into your account at www.weaved.com.
 
 For further assistance, email support@weaved.com.
-
-## Alternatives
-
-- Dataplicity: this connects to your Pi using client-initiated HTTPS. See the [Dataplicity website](https://dataplicity.com) for more information. 
