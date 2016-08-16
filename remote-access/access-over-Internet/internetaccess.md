@@ -32,6 +32,12 @@ Your Weaved account is now a private internet VPN connection service to your Pi 
 
 For further assistance, email support@weaved.com.
 
-## Alternatives
+## Dataplicity
 
-- Dataplicity: this connects to your Pi using client-initiated HTTPS. See the [Dataplicity website](https://dataplicity.com) for more information. 
+[Dataplicity](https://dataplicity.com) allows you to connect and control your Pi's shell remotely from a web browser and its mobile apps. You can use Dataplicity's Wormhole feature to host a website or API directly from your Pi and automatically enable HTTPS/SSL with no configuration or certificates.
+
+[It uses WebSockets over HTTPS](https://docs.dataplicity.com/docs/how-it-works) to provide an opportunistic connection and requires a single line install.
+
+Dataplicity provides free support by e-mail/in-app messenger. 
+
+[![Adding a device on Dataplicity](images/dataplicity-add-new-device.png)](https://dataplicity.com)
