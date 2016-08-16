@@ -6,7 +6,11 @@ You can connect to your Raspberry Pi over the internet from another computer or 
 
 One method is to set port forwarding up on your router. To set port forwarding up, you must change the configuration of your router to forward all inbound traffic from the internet on a specific port to the local IP address of your Raspberry Pi. Most routers have this feature available. However, every router is different so you will need to consult your router's user manual for instructions. The settings can be tricky if your Pi is behind a firewall or if there is more than one router. One disadvantage of port forwarding is that it exposes a network port on your private LAN to the public internet. This is a known security vulnerability and must be managed carefully.
 
-## Weaved
+## Alternatives
+
+Alternative online services are available.
+
+### Weaved
 
 One secure alternative to port forwarding is the Weaved service. Weaved is software you install on your Raspberry Pi which lets you connect to your Pi from anywhere over the internet. SSH, VNC, HTTP, SFTP file transfer, and any other TCP service running on your Pi can be enabled for secure remote access over the internet without port forwarding.
 
@@ -32,7 +36,7 @@ Your Weaved account is now a private internet VPN connection service to your Pi 
 
 For further assistance, email support@weaved.com.
 
-## Dataplicity
+### Dataplicity
 
 [Dataplicity](https://dataplicity.com) allows you to connect and control your Pi's shell remotely from a web browser and its mobile apps. You can use Dataplicity's Wormhole feature to host a website or API directly from your Pi and automatically enable HTTPS/SSL with no configuration or certificates.
 
