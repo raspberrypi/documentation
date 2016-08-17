@@ -20,7 +20,7 @@ $ KERNEL=kernel
 $ make bcmrpi_defconfig
 ```
 
-For all Raspberry PI 2
+For all Raspberry PI 2/3
 ```
 $ KERNEL=kernel7
 $ make bcm2709_defconfig
