@@ -14,13 +14,13 @@ $ sudo apt-get install libncurses5-dev
 
 You will also need to download and prepare your kernel sources as described in the [build guide](building.md). In particular ensure you have installed the default configuration:
 
-For all Raspberry PI 1 (includes compute module) 
+For all Raspberry Pi 1 (includes Compute Module and Pi Zero) 
 ```
 $ KERNEL=kernel
 $ make bcmrpi_defconfig
 ```
 
-For all Raspberry PI 2/3
+For all Raspberry Pi 2/3
 ```
 $ KERNEL=kernel7
 $ make bcm2709_defconfig
