@@ -12,10 +12,18 @@ The menuconfig tool requires the ncurses development headers to compile properly
 $ sudo apt-get install libncurses5-dev
 ```
 
-You will also need to download and prepare your kernel sources as described in the [build guide](building.md). In particular ensure you have installed the default configuration for the Raspberry Pi with the following command:
+You will also need to download and prepare your kernel sources as described in the [build guide](building.md). In particular ensure you have installed the default configuration:
 
+For all Raspberry Pi 1 (includes Compute Module and Pi Zero) 
 ```
+$ KERNEL=kernel
 $ make bcmrpi_defconfig
+```
+
+For all Raspberry Pi 2/3
+```
+$ KERNEL=kernel7
+$ make bcm2709_defconfig
 ```
 
 ## Using menuconfig
