@@ -88,7 +88,8 @@ For Pi 1 or Compute Module:
 ```bash
 cd linux
 KERNEL=kernel
-make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- \
+bcmrpi_defconfig
 ```
 
 For Pi 2/3:
@@ -96,13 +97,15 @@ For Pi 2/3:
 ```bash
 cd linux
 KERNEL=kernel7
-make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- \
+bcm2709_defconfig
 ```
 
 Then for both:
 
 ```bash
-make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- \
+zImage modules dtbs
 ```
 
 Note: To speed up compilation on multiprocessor systems, and get some improvement on single processor ones, use ```-j n``` where n is number of processors * 1.5. Alternatively, feel free to experiment and see what works!
@@ -146,7 +149,8 @@ sudo mount /dev/sdb2 mnt/ext4
 Next, install the modules:
 
 ```bash
-sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/ext4 modules_install
+sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- \
+INSTALL_MOD_PATH=mnt/ext4 modules_install
 ```
 
 Finally, copy the kernel and Device Tree blobs onto the SD card, making sure to back up your old kernel:
