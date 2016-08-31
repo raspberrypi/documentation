@@ -20,4 +20,4 @@ You'll need the `./` to specify the current directory again:
 ./hello_video.bin test.h264
 ```
 
-You should now see the video clip play. It is taken from the open source film [Big Buck Bunny] (http://en.wikipedia.org/wiki/Big_Buck_Bunny).
+You should now see the video clip play. It is taken from the open source film [Big Buck Bunny] (https://en.wikipedia.org/wiki/Big_Buck_Bunny).

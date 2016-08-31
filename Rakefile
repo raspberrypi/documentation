@@ -1,7 +1,7 @@
 require "rubygems"
 require "rake"
 require "redcarpet"
-require "html/proofer"
+require "html-proofer"
 
 BUILD_DIR = "./_build"
 
@@ -34,5 +34,9 @@ end
 
 desc "Test the build"
 task :test do
-  HTML::Proofer.new(BUILD_DIR, { :ext => ".md", :directory_index_file => "README.md" }).run
+  options = {
+              :extension => ".md",
+              :directory_index_file => "README.md"
+            }
+  HTMLProofer.check_directory(BUILD_DIR, options).run
 end

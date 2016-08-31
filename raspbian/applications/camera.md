@@ -2,15 +2,15 @@
 
 This document describes the use of the three Raspberry Pi camera applications as of January 8th 2015.
 
-There are three applications provided, `raspistill`, `raspivid` and `raspistillyuv`. `raspistill` and `raspistillyuv` are very similar and are intended for capturing images, `raspivid` is for capturing video.
+There are three applications provided, `raspistill`, `raspivid`, and `raspistillyuv`. `raspistill` and `raspistillyuv` are very similar and are intended for capturing images; `raspivid` is for capturing video.
 
-All the applications are command line driven, written to take advantage of the mmal API which runs over OpenMAX. The mmal API provides an easier to use system than that presented by OpenMAX. Note that mmal is a Broadcom specific API used only on Videocore 4 systems.
+All the applications are driven from the command line, and written to take advantage of the mmal API which runs over OpenMAX. The mmal API provides an easier to use system than that presented by OpenMAX. Note that mmal is a Broadcom-specific API used only on Videocore 4 systems.
 
-The applications use up to four OpenMAX(mmal) components - camera, preview,  encoder and null_sink. All applications use the camera component, `raspistill` uses the Image Encode component, `raspivid` uses the Video Encode component and `raspistillyuv` does not use an encoder, and sends its YUV or RGB output direct from camera component to file.
+The applications use up to four OpenMAX(mmal) components: camera, preview,  encoder, and null_sink. All applications use the camera component, `raspistill` uses the Image Encode component, `raspivid` uses the Video Encode component and `raspistillyuv` does not use an encoder, and sends its YUV or RGB output direct from camera component to file.
 
-The preview display is optional, but can be used full screen or directed to a specific rectangular area on the display. If preview is disabled, the null_sink component is used to 'absorb' the preview frames. It is necessary for the camera to produce preview frames even if not required for display, as they are used for calculating exposure and white balance settings.
+The preview display is optional, but can be used full-screen or directed to a specific rectangular area on the display. If preview is disabled, the null_sink component is used to 'absorb' the preview frames. It is necessary for the camera to produce preview frames even if these are not required for display, as they are used for calculating exposure and white balance settings.
 
-In addition it is possible to omit the filename option, in which case the preview is displayed but no file is written, or to redirect all output to stdout.
+In addition, it is possible to omit the filename option (in which case the preview is displayed but no file is written), or to redirect all output to stdout.
 
 Command line help is available by typing just the application name in on the command line.
 
@@ -20,35 +20,35 @@ See [Camera Setup](../../configuration/camera.md)
 
 ## Troubleshooting
 
-If the camera is not working correctly, there are number of things to try:
+If the Camera Module is not working correctly, there are number of things to try:
 
-- Is the ribbon cable attached to the Camera Serial Interface (CSI), not the Display Serial Interface (DSI)?  The ribbon connector will fit into either port.  The Camera port is located near the HDMI connector.
+- Is the ribbon cable attached to the Camera Serial Interface (CSI), not the Display Serial Interface (DSI)? The ribbon connector will fit into either port. The Camera port is located near the HDMI connector.
 
 - Are the ribbon connectors all firmly seated, and are they the right way round? They must be straight in their sockets.
 
-- Is the camera module connector, between the smaller black camera module itself and the camera PCB, firmly attached? Sometimes this connection can come loose during transit or when putting the camera module in a case. Using a fingernail, flip up the connector on the PCB, then reconnect it with gentle pressure. It engages with a very slight click. Don't force it; if it doesn't engage, it's probably slightly misaligned.
+- Is the Camera Module connector, between the smaller black Camera Module itself and the PCB, firmly attached? Sometimes this connection can come loose during transit or when putting the Camera Module in a case. Using a fingernail, flip up the connector on the PCB, then reconnect it with gentle pressure. It engages with a very slight click. Don't force it; if it doesn't engage, it's probably slightly misaligned.
 
 - Have `sudo apt-get update`, `sudo apt-get upgrade` been run?
 
-- Has `raspi-config` been run and the camera enabled?
+- Has `raspi-config` been run and the Camera Module enabled?
 
-- Is your power supply sufficient? The camera adds about 200-250mA to the power requirements of your Raspberry Pi.
+- Is your power supply sufficient? The Camera Module adds about 200-250mA to the power requirements of your Raspberry Pi.
 
 If things are still not working, try the following:
 
 - `Error : raspistill/raspivid` not found. This probably means your update/upgrade failed in some way. Try it again.
 
-- `Error : ENOMEM displayed`. Camera is not starting up. Check all connections again.
+- `Error : ENOMEM displayed`. The Camera Module is not starting up. Check all connections again.
 
-- `Error : ENOSPC displayed`. Camera is probably running out of GPU memory. Check `config.txt` in the /boot/ folder. The gpu_mem option should be at least 128. Alternatively, use the Memory Split option in the Advanced section of `raspi-config` to set this.
+- `Error : ENOSPC displayed`. The Camera Module is probably running out of GPU memory. Check `config.txt` in the /boot/ folder. The gpu_mem option should be at least 128. Alternatively, use the Memory Split option in the Advanced section of `raspi-config` to set this.
 
-- If after all the above the camera is still not working, you may need to upgrade the firmware on the Raspberry Pi. Use the following command to get the very latest (but experimental) firmware.
+- If you have checked all the above issues and the Camera Module is still not working, you may need to upgrade the firmware on the Raspberry Pi. Use the following command to get the very latest (but experimental) firmware.
 
     ```bash
     sudo rpi-update
     ```
 
-- If after trying all the above the camera still does not work, it may be defective; have you been careful not to expose it to static shock? Try posting on the [Raspberry Pi forum (Camera section)](http://www.raspberrypi.org/forum/viewforum.php?f=43) to see if there is any more help available there. Failing that, it may need replacing.
+- If even a firmware update does not fix the problem, your Camera Module may be defective, and may need to be replaced.
 
 ## Common Command line Options
 
@@ -84,25 +84,25 @@ Sets the opacity of the preview windows. 0 = invisible, 255 = fully opaque.
 	--sharpness,	-sh		Set image sharpness (-100 to 100)
 ```
 
-Set the sharpness of the image, 0 is the default.
+Sets the sharpness of the image. 0 is the default.
 
 ```
 	--contrast,	-co		Set image contrast (-100 to 100)
 ```
 
-Set the contrast of the image, 0 is the default
+Sets the contrast of the image. 0 is the default
 
 ```
 	--brightness,	-br		Set image brightness (0 to 100)
 ```
 
-Set the brightness of the image, 50 is the default. 0 is black, 100 is white.
+Sets the brightness of the image. 50 is the default. 0 is black, 100 is white.
 
 ```
 	--saturation,	-sa		Set image saturation (-100 to 100)
 ```
 
-set the colour saturation of the image. 0 is the default.
+Sets the colour saturation of the image. 0 is the default.
 
 ```
 	--ISO,	-ISO		Set capture ISO
@@ -114,13 +114,13 @@ Sets the ISO to be used for captures. Range is 100 to 800.
 	--vstab,	-vs		Turn on video stabilisation
 ```
 
-In video mode only, turn on video stabilisation.
+In video mode only, turns on video stabilisation.
 
 ```
 	--ev,	-ev		Set EV compensation
 ```
 
-Set the EV compensation of the image. Range is -10 to +10, default is 0.
+Sets the EV compensation of the image. Range is -10 to +10, default is 0.
 
 ```
 	--exposure,	-ex		Set exposure mode
@@ -241,7 +241,7 @@ Allows the specification of the area of the sensor to be used as the source for 
 --shutter,	-ss		Set shutter speed
 ```
 
-Set the shutter speed to the specified value (in microseconds). There is currently an upper limit of approximately 6000000us (6000ms, 6s) past which operation is undefined.
+Sets the shutter speed to the specified value (in microseconds). There is currently an upper limit of approximately 6000000us (6000ms, 6s) past which operation is undefined.
 
 ```
 --drc,	-drc		Enable/Disable Dynamic Range compression
@@ -288,13 +288,13 @@ Sets a specified sensor mode, disabling the automatic selection. Possible values
 ```
 	--camselect,	-cs
 ```
-Select which camera (on a multi camera system) to use. Use 0 or 1.
+Selects which camera (on a multi camera system) to use. Use 0 or 1.
 
 
 ```
 	--annotate,	-a		Enable/Set annotate flags or text
 ```
-Add some text and/or metadata to the picture.
+Adds some text and/or metadata to the picture.
 
 Metadata is indicated using a bitmask notation, so add them together to show multiple parameters. For example, 12 will show time(4) and date(8) since 4+8=12.
 
@@ -320,7 +320,7 @@ Text may include date/time placeholders by using '%' character as used by <a tit
 --annotateex,	-ae		Set extra annotation parameters
 ```
 
-Specify annotation size,text-colour,background-colour.  Colours are in hex YUV format.
+Specifies annotation size, text-colour, background-colour. Colours are in hex YUV format.
 
 Size ranges from 6 to 160, default is 32. Asking for an invalid size should give you the default.
 
@@ -330,7 +330,7 @@ Size ranges from 6 to 160, default is 32. Asking for an invalid size should give
 |-ae 10,0x00,0x8080FF -a "Wibble gibber gibber"|gives size 10 black text on white background|
 
 
-## Application specific settings
+## Application-specific settings
 
 ### raspistill
 
@@ -342,25 +342,25 @@ Size ranges from 6 to 160, default is 32. Asking for an invalid size should give
 --quality,	-q		Set jpeg quality <0 to 100>
 ```
 
-Quality 100 is almost completely uncompressed. 75 is a good all round value
+Quality 100 is almost completely uncompressed. 75 is a good all round value.
 
 ```
 --raw,	-r		Add raw bayer data to jpeg metadata
 ```
 
-This option inserts the raw Bayer data from the camera in to the JPEG metadata
+This option inserts the raw Bayer data from the camera in to the JPEG metadata.
 
 ```
 --output,	-o		Output filename <filename>.
 ```
 
-Specify the output filename. If not specified, no file is saved. If the filename is '-', then all output is sent to stdout.
+Specifies the output filename. If not specified, no file is saved. If the filename is '-', then all output is sent to stdout.
 
 ```
 --latest,	-l		Link latest frame to filename <filename>
 ```
 
-Make a file system link under this name to the latest frame.
+Makes a file system link under this name to the latest frame.
 
 ```
 --verbose,	-v		Output verbose information during run
@@ -375,16 +375,16 @@ Outputs debugging/information messages during the program run.
 The program will run for this length of time, then take the capture (if output is specified). If not specified, this is set to 5 seconds.
 
 ```
---time-lapse,	-tl		time-lapse mode.
+--timelapse,	-tl		time-lapse mode.
 ```
 
-The specific value is the time between shots in milliseconds. Note you should specify %04d at the point in the filename where you want a frame count number to appear. e.g:
+The specific value is the time between shots in milliseconds. Note you should specify %04d at the point in the filename where you want a frame count number to appear. So, for example, the code below will produce a capture every 2 seconds, over a total period of 30s, named image0001.jpg, image0002.jpg..image0015.jpg. 
 
 ```
 -t 30000 -tl 2000 -o image%04d.jpg
 ```
 
-will produce a capture every 2 seconds, over a total period of 30s, named image0001.jpg, image0002.jpg..image0015.jpg. Note that the %04d indicates a 4 digit number with leading zero's added to pad to the required number of digits. So, for example,  %08d would result in an 8 digit number.
+Note that the %04d indicates a 4 digit number with leading zero's added to pad to the required number of digits. So, for example,  %08d would result in an 8 digit number.
 
 If a time-lapse value of 0 is entered, the application will take pictures as fast as possible. Note there is an minimum enforced pause of 30ms between captures to ensure that exposure calculations can be made.
 
@@ -400,13 +400,13 @@ if `--thumb none` is specified, no thumbnail information will be placed in the f
 --demo,	-d		Run a demo mode <milliseconds>
 ```
 
-This options cycles through range of camera options, no capture is done, the demo will end at the end of the timeout period, irrespective of whether all the options have been cycled. The time between cycles should be specified as a millisecond value.
+This options cycles through range of camera options. No capture is taken, and the demo will end at the end of the timeout period, irrespective of whether all the options have been cycled. The time between cycles should be specified as a millisecond value.
 
 ```
 --encoding,	-e		Encoding to use for output file
 ```
 
-Valid options are jpg, bmp, gif and png. Note that unaccelerated image types (gif, png, bmp) will take much longer to save than JPG which is hardware accelerated. Also note that the filename suffix is completely ignored when deciding the encoding of a file.
+Valid options are jpg, bmp, gif, and png. Note that unaccelerated image types (gif, png, bmp) will take much longer to save than jpg which is hardware accelerated. Also note that the filename suffix is completely ignored when deciding the encoding of a file.
 
 ```
 --exif,	-x		EXIF tag to apply to captures (format as 'key=value')
@@ -477,7 +477,7 @@ Extra Options :
 ```
 This option forces the image to be saved as RGB data with 8 bits per channel, rather than YUV420.
 
-Note that the image buffers saved in `raspistillyuv` are padded to a horizontal size divisible by 16 (so there may be unused bytes at the end of each line to make the width divisible by 16). Buffers are also padded vertically to be divisible by 16, and in the YUV mode, each plane of Y,U,V is padded in this way.
+Note that the image buffers saved in `raspistillyuv` are padded to a horizontal size divisible by 32 (so there may be unused bytes at the end of each line to make the width divisible by 32). Buffers are also padded vertically to be divisible by 16, and in the YUV mode, each plane of Y,U,V is padded in this way.
 
 
 ### raspivid
@@ -739,7 +739,7 @@ raspivid -t 5000 -o - > my_file.h264
 
 ## Shell Error Codes
 
-The applications described here will return a standard error code to the shell on completion. Possible error codes are :
+The applications described here will return a standard error code to the shell on completion. Possible error codes are:
 
 | C Define | Code | Description |
 |----------|------|-------------|

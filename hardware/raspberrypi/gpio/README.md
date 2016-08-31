@@ -44,4 +44,4 @@ The normal rising/falling edge detection has a small amount of synchronisation b
 
 Almost all of the GPIO pins have alternative functions. Peripheral blocks internal to BCM2835 can be selected to appear on one or more of a set of GPIO pins, for example the I2C busses can be configured to at least 3 separate locations. Pad control, such as drive strength or Schmitt filtering, still applies when the pin is configured as an alternate function.
 
-For more detailed information see the [Low level peripherals](http://elinux.org/RPi_Low-level_peripherals) page on the elinux wiki
+

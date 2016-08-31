@@ -67,7 +67,7 @@ sudo dd bs=4M if=/dev/sdb | gzip > rasbian.img.gz
 To restore, pipe the output of `gunzip` to `dd`:
 
 ```bash
-sudo gunzip --stdout rasbian.img.gz | dd bs=4m of=/dev/sdb
+gunzip --stdout rasbian.img.gz | sudo dd bs=4M of=/dev/sdb
 ```
 
 See more about [installing SD card images](../../installation/installing-images/README.md).

@@ -4,7 +4,7 @@ There are two main methods for building the kernel. You can build locally on a R
 
 ## Local building
 
-On a Raspberry Pi first install the latest version of [Raspbian](https://www.raspberrypi.org/downloads) from the downloads page. Then boot your Pi, plug in Ethernet to give you access to the sources, and log in.
+On a Raspberry Pi first install the latest version of [Raspbian](https://www.raspberrypi.org/downloads/) from the downloads page. Then boot your Pi, plug in Ethernet to give you access to the sources, and log in.
 
 First get the sources, which will take some time:
 
@@ -30,7 +30,7 @@ KERNEL=kernel
 make bcmrpi_defconfig
 ```
 
-### Raspberry Pi 2 Default Build Configuration
+### Raspberry Pi 2/3 Default Build Configuration
 
 ```bash
 cd linux
@@ -41,7 +41,7 @@ make bcm2709_defconfig
 Build and install the kernel, modules and Device Tree blobs; this step takes a **long** time...
 
 ```bash
-make zImage modules dtbs
+make -j4 zImage modules dtbs
 sudo make modules_install
 sudo cp arch/arm/boot/dts/*.dtb /boot/
 sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
@@ -49,7 +49,7 @@ sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
 sudo scripts/mkknlimg arch/arm/boot/zImage /boot/$KERNEL.img
 ```
 
-Note: On a Raspberry Pi 2, adding `-j4` (`make -j4 zImage modules dtbs`) splits the work between all four cores, speeding up compilation significantly.
+Note: On a Raspberry Pi 2/3, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
 
 ## Cross-compiling
 
@@ -66,8 +66,8 @@ Use the following command:
 git clone https://github.com/raspberrypi/tools
 ```
 
-You can then copy the toolchain to a common location such as `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian`, and add `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin` to your $PATH in the .bashrc in your home directory.
-For 64bit, use /tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin.
+You can then copy the following directory to a common location `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian`, and add `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin` to your $PATH in the .bashrc in your home directory.
+For 64-bit host systems, use /tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin.
 While this step is not strictly necessary, it does make it easier for later command lines!
 
 ### Get sources
@@ -91,7 +91,7 @@ KERNEL=kernel
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
 ```
 
-For Pi 2:
+For Pi 2/3:
 
 ```bash
 cd linux
@@ -119,20 +119,22 @@ sdb
    sdb2
 ```
 
+with `sdb1` being the FAT (boot) partition, and `sdb2` being the ext4 filesystem (root) partition.
+
 If it is a NOOBS card you should see something like this:
 
 ```
 sdb
   sdb1
   sdb2
-  sdb3
   sdb5
   sdb6
+  sdb7
 ```
 
-In the first case `sdb1/sdb5` is the FAT partition, and `sdb2/sdb6` is the ext4 filesystem image (NOOBS).
+with `sdb6` being the FAT (boot) partition, and `sdb7` being the ext4 filesystem (root) partition.
 
-Mount these first:
+Mount these first: (adjust the partition numbers for NOOBS cards)
 
 ```bash
 mkdir mnt/fat32
@@ -140,8 +142,6 @@ mkdir mnt/ext4
 sudo mount /dev/sdb1 mnt/fat32
 sudo mount /dev/sdb2 mnt/ext4
 ```
-
-Adjust the partition numbers for the NOOBS images.
 
 Next, install the modules:
 

@@ -27,3 +27,25 @@ Port: 22 (default)
 User name: pi (default)
 Password: raspberry (default)
 ```
+## Chrome OS file manager (tested on Acer Chromebook)
+
+Open the Chromebook's file manager app.
+
+Scroll to the bottom of the file tree in the left panel.
+
+Click `Add new services`
+
+```
+Select and click
+SFTP file system
+```
+
+In the dialog box that opens, enter:
+
+```
+The IP address or
+The hostname (default is `raspberrypi`)
+Enter port 22 (Not the one shown next to the IP address on your pi)
+Add user `pi` and the password (default is `raspberry`)
+```
+You may encounter another dialog box for security; if you do, click **Allow** or **Accept**. 
