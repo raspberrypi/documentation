@@ -1,6 +1,6 @@
 # Localisation
 
-Setting up your Raspberry Pi to match your regional settings.
+Set your Raspberry Pi up to match your regional settings.
 
 
 ## Language
