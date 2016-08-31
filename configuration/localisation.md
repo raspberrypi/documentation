@@ -33,7 +33,7 @@ If you've installed Raspbian using NOOBS, it should automatically pick up the sa
 
 ### NOOBS
 
-There's no part of NOOBS that uses the time, so consequently there's no option for changing the timezone.
+No part of NOOBS uses the time; consequently there is no option for changing the timezone.
 
 ### Raspbian
 
