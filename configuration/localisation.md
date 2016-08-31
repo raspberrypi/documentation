@@ -37,4 +37,4 @@ No part of NOOBS uses the time; consequently there is no option for changing the
 
 ### Raspbian
 
-Once again, this is something else you can change using the [raspi-config](raspi-config.md#change-timezone) tool.
+Once again, this is something you can change using the [raspi-config](raspi-config.md#change-timezone) tool.
