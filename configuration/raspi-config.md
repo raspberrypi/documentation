@@ -47,7 +47,7 @@ Note that in long lists of option values (like the list of timezone cities), you
 <a name="what-raspi-config-does"></a>
 ### What raspi-config does
 
-Generally speaking, `raspi-config` aims to provide the functionality to make the most common configuration changes. This may result in automated edits to `/boot/config.txt` and various standard Linux configuration files. Some options require a reboot to take effect. If you changed any of those, raspi-config will ask if you wish to reboot now when you select the `<Finish>` button.
+Generally speaking, `raspi-config` aims to provide the functionality to make the most common configuration changes. This may result in automated edits to `/boot/config.txt` and various standard Linux configuration files. Some options require a reboot to take effect. If you changed any of those, `raspi-config` will ask if you wish to reboot now when you select the `<Finish>` button.
 
 <a name="menu-options"></a>
 ## Menu options
