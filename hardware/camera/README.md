@@ -15,8 +15,8 @@ The Raspberry Pi Camera Module is an official product from the Raspberry Pi Foun
 | C programming API | OpenMAX IL and others available | OpenMAX IL and others available |
 | Sensor | OmniVision OV5647 | [Sony IMX219](http://www.sony.net/Products/SC-HP/new_pro/april_2014/imx219_e.html) |
 | Sensor resolution | 2592 × 1944 pixels | 3280 × 2464 pixels |
-| Sensor image area | 3.76 x 2.74 mm | |
-| Pixel size | 1.4 µm x 1.4 µm | |
+| Sensor image area | 3.76 × 2.74 mm | |
+| Pixel size | 1.4 µm × 1.4 µm | |
 | Optical size	| 1/4" | |
 | Full-frame SLR lens equivalent | 35 mm | |
 | S/N ratio | 36 dB | |
@@ -49,7 +49,7 @@ The Raspberry Pi Camera Module is an official product from the Raspberry Pi Foun
 | 10-bit RAW RGB data | Yes - format conversions available via GPU |
 | Support for LED and flash strobe mode | LED flash |
 | Support for internal and external frame synchronisation for frame exposure mode | No |
-| Support for 2x2 binning for better SNR in low light conditions | Anything output res below 1296 x 976 will use the 2 x 2 binned mode |
+| Support for 2 × 2 binning for better SNR in low light conditions | Anything output res below 1296 x 976 will use the 2 x 2 binned mode |
 | Support for horizontal and vertical sub-sampling | Yes, via binning and skipping |
 | On-chip phase lock loop (PLL) | Yes |
 | Standard serial SCCB interface | Yes |
@@ -75,4 +75,4 @@ Full camera software documentation can be found at [raspbian/applications/camera
 
 ## Mechanical drawing
 
-- Camera module V2 [PDF](rpi-cam-v2_1-dimensions.pdf)
+- Camera Module v2 [PDF](rpi-cam-v2_1-dimensions.pdf)
