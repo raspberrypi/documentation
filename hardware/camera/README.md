@@ -7,7 +7,7 @@ The Raspberry Pi Camera Module is an official product from the Raspberry Pi Foun
 | | Camera Module v1 | Camera Module v2 |
 | --- | --- | --- |
 | Net price | $25 | $25 |
-| Size | around 25 x 24 x 9 mm | |
+| Size | Around 25 x 24 x 9 mm | |
 | Weight | 3g | |
 | Still resolution | 5 Megapixels | 8 Megapixels |
 | Video modes | 1080p30, 720p60 and 640x480p60/90 | 1080p30, 720p60 and 640x480p60/90 |
