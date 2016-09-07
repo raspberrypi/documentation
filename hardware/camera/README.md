@@ -49,7 +49,7 @@ The Raspberry Pi Camera Module is an official product from the Raspberry Pi Foun
 | 10-bit RAW RGB data | Yes - format conversions available via GPU |
 | Support for LED and flash strobe mode | LED flash |
 | Support for internal and external frame synchronisation for frame exposure mode | No |
-| Support for 2x2 binning for better SNR in low light conditions | Anything output res below 1296x976 will use the 2x2 binned mode |
+| Support for 2x2 binning for better SNR in low light conditions | Anything output res below 1296 x 976 will use the 2 x 2 binned mode |
 | Support for horizontal and vertical sub-sampling | Yes, via binning and skipping |
 | On-chip phase lock loop (PLL) | Yes |
 | Standard serial SCCB interface | Yes |
