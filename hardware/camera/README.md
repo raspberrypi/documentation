@@ -40,7 +40,7 @@ The Raspberry Pi Camera Module is an official product from the Raspberry Pi Foun
 | Automatic white balance (AWB) | No - done by ISP instead |
 | Automatic black level calibration (ABLC) | No - done by ISP instead |
 | Automatic 50/60 Hz luminance detection | No - done by ISP instead |
-| Frame rate up to 120 fps | max 90fps. Limitations on frame size for the higher frame rates (VGA only for above 47fps) |
+| Frame rate up to 120 fps | Max 90fps. Limitations on frame size for the higher frame rates (VGA only for above 47fps) |
 | AEC/AGC 16-zone size/position/weight control | No - done by ISP instead |
 | Mirror and flip | Yes |
 | Cropping | No - done by ISP instead (except 1080p mode) |
