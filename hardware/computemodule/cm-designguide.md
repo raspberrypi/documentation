@@ -117,15 +117,13 @@ The TVDAC pin can be used to output composite video. Please route this signal aw
 
 Note that the TV DAC is powered from the VDAC supply which must be a clean supply of 2.5-2.8V. It is recommended users generate this supply from 3V3 using a low noise LDO.
 
-If the TVDAC output is not used VDAC can be connected to 3V3, but it must be powered even if the TV-out functionality is unused.
+If the TVDAC output is not used, VDAC can be connected to 3V3 but it must be powered even if the TV-out functionality is unused.
 
 ## Compute Module temperature range
 
 The operating temperature range of the module is set by the lowest maximum and highest minimum of any of the components.
 
-The Samsung eMMC and Samsung LPDDR2 are all rated for -25 to +80 degrees Celsius, so the range is -25 to +80. BCM2835 and the analogue switch have a greater range; the ceramic capacitors are specified from -25 to +85.
-
-However, this range is the maximum for the silicon die; therefore, users would have to take into account the heat generated when in use and make sure this does not cause the temperature to exceed 80 degrees Celsius.
+The Samsung eMMC and Samsung LPDDR2 are all rated for -25 to +80 degrees Celsius, so the range is -25 to +80. BCM2835 and the analogue switch have a greater range; the ceramic capacitors are specified from -25 to +85. This range is the maximum for the silicon die; users would therefore have to take into account the heat generated when in use and make sure this does not cause the temperature to exceed 80 degrees Celsius.
 
 **The user is responsible for designing and testing their system so that these limits are not exceeded.**
 
