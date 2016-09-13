@@ -104,7 +104,7 @@ sudo reboot
 At this point, you won't have working DNS, so you'll need to add the server you noted down before to `/etc/resolv.conf`. Do this by using the following command, where the ip address is that of the gateway address you found before.
 
 ```
-echo "nameserver 10.42.0.1" | sudo tee /etc/resolv.conf
+echo "nameserver 10.42.0.1" | sudo tee -a /etc/resolv.conf
 ```
 
 Then make the file immutable (because otherwise dnsmasq will interfere) with the following command:
