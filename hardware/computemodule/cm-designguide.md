@@ -59,25 +59,25 @@ The Compute Module has a pin called EMMC_DISABLE_N which when shorted to GND wil
 
 **Note that once booted over USB, BCM2835 needs to re-enable the eMMC device (by releasing EMMC_DISABLE_N) to allow access to it as mass storage. It expects to be able to do this by driving the GPIO47_1V8 pin LOW, which at boot is initially an input with a pull up to 1V8. If an end user wishes to add the ability to access the eMMC over USB in their product, similar circuitry to that used on the Compute Module IO Board to enable/disable the USB boot and eMMC must be used; that is, EMMC_DISABLE_N pulled low via MOSFET(s) and released again by MOSFET, with the gate controlled by GPIO47_1V8. Ensure you use MOSFETs suitable for switching at 1.8V (i.e. use a device with Vt << 1.8V).**
 
-For a step by step guide to flashing the eMMC please see [here](cm-emmc-flashing.md)
+For a step by step guide to flashing the eMMC, please see [here](cm-emmc-flashing.md).
 
 ## Compute Module interfaces
 
 ### GPIOs
 
-**Note that the GPIO46_1V8 and GPIO47_1V8 pins are 1.8V IO only and are reserved for special functions (HDMI hot plug detect and boot control respectively). Please don’t use these pins for any other purpose, as the software for the Compute Module will always expect these pins to have these special functions. If they are unused please leave them unconnected.**
+**Note that the GPIO46_1V8 and GPIO47_1V8 pins are 1.8V IO only and are reserved for special functions (HDMI hot plug detect and boot control respectively). Please don’t use these pins for any other purpose, as the software for the Compute Module will always expect these pins to have these special functions. If they are unused, please leave them unconnected.**
 
 The remaining GPIOs are available for general use and are split into two banks. GPIO0 to GPIO27 are bank 0 and GPIO28-45 make up bank 1. GPIO0-27_VREF is the power supply for bank 0 and GPIO28-45_VREF is the power supply for bank 1. These supplies can be in the range 1.8V-3.3V. These supplies are not optional; each bank must be powered, even when none of the GPIOs for that bank are used.
 
-All GPIOs except GPIO28, 29, 44 and 45 have weak in-pad pull-ups or pull-downs enabled when the device is powered on. Whether the GPIO is pulled up or down is documented in the BCM2835 peripherals document section 6.2. **It is recommended to add off-chip pulls to GPIO28, 29, 44 and 45 to make sure they never float during power on and initial boot.**
+All GPIOs except GPIO28, 29, 44 and 45 have weak in-pad pull-ups or pull-downs enabled when the device is powered on. Whether the GPIO is pulled up or down is documented in the BCM2835 peripherals document section 6.2. **It is recommended to add off-chip pulls to GPIO28, 29, 44, and 45 to make sure they never float during power-on and initial boot.**
 
 ### CSI (MIPI serial camera)
 
 The Compute Module has two MIPI serial camera interfaces (CSI); Interface 0 and Interface 1.
 
-Interface 0 is a 2-lane interface; one clock lane and two data lanes.
+Interface 0 is a 2-lane interface: one clock lane and two data lanes.
 
-Interface 1 is a 4-lane interface; one clock lane and four data lanes.
+Interface 1 is a 4-lane interface: one clock lane and four data lanes.
 
 Note that the Raspberry Pi Model A/B camera connector uses Interface 1, but only in a 2-lane configuration.
 
@@ -87,9 +87,9 @@ The camera interface(s) clock and data pins must be routed as matched length, ma
 
 The Compute Module has 2 MIPI serial display interfaces (DSI); Interface 0 and Interface 1.
 
-Interface 0 is a 2-lane interface; one clock lane and two data lanes.
+Interface 0 is a 2-lane interface: one clock lane and two data lanes.
 
-Interface 1 is a 4-lane interface; one clock lane and four data lanes.
+Interface 1 is a 4-lane interface: one clock lane and four data lanes.
 
 Note that the Raspberry Pi Model A/B  display connector uses Interface 1, but only in a 2-lane configuration.
 
@@ -101,7 +101,7 @@ The BCM2835 USB port is On-The-Go (OTG) capable. If using either as a fixed slav
 
 The USB port (Pins USB_DP and USB_DM) must be routed as matched-phase 90 ohm differential PCB traces.
 
-Note that the port is capable of being used as a true OTG port, but there is currently no documentation, code or examples for this use case.
+Note that the port is capable of being used as a true OTG port, but there is currently no documentation, code, or examples for this use case.
 
 ### HDMI
 
