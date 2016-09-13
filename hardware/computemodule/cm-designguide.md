@@ -20,11 +20,11 @@ VDAC | 2.5-2.8V (can connect to 3V3 if unused) | +/- 5%
 GPIO0-27_VREF | 1.8-3.3V | +/- 5%
 GPIO28-45_VREF | 1.8-3.3V | +/- 5%
 
-[1] Note that the voltage range for best SMPS efficiency is ~3.3-4.3V.
+Note that the voltage range for best SMPS efficiency is ~3.3-4.3V.
 
 ### Power sequencing
 
-Supplies must be synchronised to come up at exactly the same time. Alternatively, they should be staggered so that the highest voltage comes up first, then the remaining voltages in descending order. This is to avoid forward biasing internal (on-chip) diodes between supplies, and causing latch-up.
+Supplies should be synchronised to come up at exactly the same time. Alternatively, they should be staggered so that the highest voltage comes up first, followed by the remaining voltages in descending order. This is to avoid forward biasing internal (on-chip) diodes between supplies, and causing latch-up.
 
 ### Power requirements
 
@@ -32,7 +32,7 @@ Exact power requirements will be heavily dependent upon the individual use case.
 
 Powerchain design is critical for stable and reliable operation of the Compute Module. We strongly recommend that designers spend time measuring and verifying power requirements for their particular use case and application, as well as paying careful attention to power supply sequencing and maximum supply voltage tolerance.
 
-The following table gives a rough guide to minimum supply requirements. **However, the user is responsible for verifying that their powerchain is designed to be sufficient for their application. In some more unusual use cases these minimum requirements may well be too low!**
+The following table gives a rough guide to minimum supply requirements. **However, the user is responsible for verifying that their powerchain is designed to be sufficient for their application. Be aware that, in some more unusual use cases, these minimum requirements may be too low.**
 
 Supply | Minimum Requirement (mA or mW)
 -------|-------------------------------
@@ -43,9 +43,9 @@ VDAC | 25mA
 GPIO0-27_VREF | 50mA [2]
 GPIO28-45_VREF | 50mA [2]
 
-[1] Note that VBAT is heavily dependent upon the application. For example, with video encoding, 3D and the camera all running the power requirements can be substantial.
+Note that VBAT is heavily dependent upon the application. For example, with video encoding, 3D, and the camera all running the power requirements can be substantial.
 
-[2] Note that each GPIO bank will only need a few mW if unused; however when in use, the requirements will vary depending on the number of IOs in use and the load on each. The maximum load per GPIO bank must not exceed 50mA.
+Note too that each GPIO bank will only need a few mW if unused. When in use, however, the requirements will vary depending on the number of IOs in use and the load on each. The maximum load per GPIO bank must not exceed 50mA.
 
 ## <a name="modulebootingandflashing"></a> Module booting and flashing the eMMC
 
