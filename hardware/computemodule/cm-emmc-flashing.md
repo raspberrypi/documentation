@@ -12,7 +12,7 @@ To flash the Compute Module eMMC, you either need a Linux system (a Raspberry Pi
 
 **For Windows users**
 
-Under Windows an installer is available to automatically install the required drivers and boot tool. Alternatively, a user can compile and run it using Cygwin and/or install the drivers manually.
+Under Windows, an installer is available to install the required drivers and boot tool automatically. Alternatively, a user can compile and run it using Cygwin and/or install the drivers manually.
 
 ### Windows installer
 
@@ -50,7 +50,7 @@ After a short while, the driver will finish being installed and you should be ab
 
 Finally, follow the remainder of the instructions below in a Cygwin terminal. **Note** When performing the commands below in a Cygwin terminal, **don't** prefix them with `sudo`.
 
-**On your Compute Module IO board:**
+**On your Compute Module IO board**
 
 Make sure that J4 (USB SLAVE BOOT ENABLE) is set to the 'EN' position.
 
@@ -62,7 +62,7 @@ Git may produce an error if the date is not set correctly, so on a Raspberry Pi 
 sudo date MMDDhhmm
 ```
 
-where MM is month, DD day and hh mm hours and minutes respectively.
+where `MM` is month, `DD` is day, and `hh` and `mm` are hours and minutes respectively.
 
 Clone the `usbboot` tool repository:
 
@@ -90,7 +90,7 @@ Run the `usbboot` tool and it will wait for a connection:
 sudo rpiboot
 ```
 
-Now plug the host machine into the Compute Module IO board USB slave port (J15) and power on the CMIO board. The `rpiboot` tool will discover the Compute Module and send boot code to allow access to the eMMC. 
+Now plug the host machine into the Compute Module IO board USB slave port (J15) and power the CMIO board on. The `rpiboot` tool will discover the Compute Module and send boot code to allow access to the eMMC. 
 
 ## Writing to the eMMC - Cygwin
 
