@@ -4,21 +4,21 @@
 
 This guide is designed to help developers using the Compute Module get to grips with how to wire up peripherals to the Compute Module pins, and how to make changes to the software to enable these peripherals to work correctly.
 
-The Compute Module contains the Raspberry Pi BCM2835 System On Chip (SoC) or "processor", memory, and eMMC. The eMMC is basically like an SD card but soldered onto the board; unlike SD cards, eMMC is specifically designed to be used as a disk and has extra features that make it more reliable in this use case. Most of the pins of the SoC (GPIO, 2 CSI camera interfaces, two DSI display interfaces, HDMI etc) are freely available and can be wired up as the user sees fit (or, if unused, can usually be left unconnected). The Compute Module is a DDR2 SODIMM form factor compatible module, so any DDR2 SODIMM socket should be able to be used (note the pinout is NOT the same as an actual SODIMM memory module).
+The Compute Module contains the Raspberry Pi BCM2835 System On Chip (SoC) or "processor", memory, and eMMC. The eMMC is similar to an SD card but is soldered onto the board; unlike SD cards, eMMC is specifically designed to be used as a disk and has extra features that make it more reliable in this use case. Most of the pins of the SoC (GPIO, two CSI camera interfaces, two DSI display interfaces, HDMI etc) are freely available and can be wired up as the user sees fit (or, if unused, can usually be left unconnected). The Compute Module is a DDR2 SODIMM form-factor-compatible module, so any DDR2 SODIMM socket should be able to be used (note the pinout is NOT the same as an actual SODIMM memory module).
 
 To use the Compute Module, a user needs to design a (relatively simple) 'motherboard' which can provide power to the Compute Module (3.3V and 1.8V at minimum) and which wires the pins up to the required peripherals for the user's application.
 
-Raspberry Pi provide a minimal motherboard for the Compute Module (called the Compute Module IO Board or CMIO Board) which powers the module, brings out the GPIO to pin headers, brings the camera and display interfaces out to FFC connectors, provides HDMI, USB and an 'ACT' LED as well as the ability to program the eMMC of a module via USB from a PC or Raspberry Pi.
+Raspberry Pi provides a minimal motherboard for the Compute Module (called the Compute Module IO Board, or CMIO Board) which powers the module, brings out the GPIO to pin headers, and brings the camera and display interfaces out to FFC connectors. It also provides HDMI, USB, and an 'ACT' LED as well as the ability to program the eMMC of a module via USB from a PC or Raspberry Pi.
 
-This guide first explains the boot process and how Device Tree is used to describe attached hardware (which are essential things to understand when designing with the Compute Module). It then provides a worked example of attaching an I2C and an SPI peripheral to a CMIO Board and creating the Device Tree files necessary to make both peripherals work under Linux (starting from a vanilla Raspbian OS image).
+This guide first explains the boot process and how Device Tree is used to describe attached hardware; these are essential things to understand when designing with the Compute Module. It then provides a worked example of attaching an I2C and an SPI peripheral to a CMIO Board and creating the Device Tree files necessary to make both peripherals work under Linux, starting from a vanilla Raspbian OS image.
 
-Note that using Device Tree is the officially supported method of doing things (for both a Compute Module and a Raspberry Pi), you *can* at the moment turn off device tree in the kernel altogether but we won't be providing support for this.
+Note that using Device Tree is the officially supported method of doing things, for both a Compute Module and a Raspberry Pi. It is currently possible to Device Tree off altogether in the kernel, but we won't be providing support for this.
 
 ##BCM283x GPIOs
 
 BCM283x has 3 banks of General Purpose Input Output (GPIO) pins (28 pins on Bank0, 18 pins on Bank1 and 8 pins on Bank2; 54 pins in total). These pins can be used as true GPIO (i.e. software can set them as inputs or outputs, read and/or set state and use them as interrupts) but also can be set to 'alternate functions' such as I2C, SPI, I2S, UART, SD card and others.
 
-On a Compute Module both Bank0 and Bank1 are free to use with Bank2 used for eMMC and HDMI hot plug detect and ACT LED / USB boot control.
+On a Compute Module both Bank 0 and Bank 1 are free to use with Bank 2 used for eMMC and HDMI hot plug detect and ACT LED / USB boot control.
 
 It is useful on a running system to look at the state of each of the GPIO pins (what function they are set to, and the voltage level at the pin) - so that one can see if the system is set up as expected (this is particularly useful to see if a Device Tree is working as expected or to get a look at the pin states during hardware debug).
 
