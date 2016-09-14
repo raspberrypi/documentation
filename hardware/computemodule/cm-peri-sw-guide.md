@@ -16,9 +16,9 @@ Note that using Device Tree is the officially supported method of doing things, 
 
 ##BCM283x GPIOs
 
-BCM283x has 3 banks of General Purpose Input Output (GPIO) pins (28 pins on Bank0, 18 pins on Bank1 and 8 pins on Bank2; 54 pins in total). These pins can be used as true GPIO (i.e. software can set them as inputs or outputs, read and/or set state and use them as interrupts) but also can be set to 'alternate functions' such as I2C, SPI, I2S, UART, SD card and others.
+BCM283x has three banks of General-Purpose Input/Output (GPIO) pins: 28 pins on Bank 0, 18 pins on Bank 1, and 8 pins on Bank 2, making 54 pins in total. These pins can be used as true GPIO  pins, i.e. software can set them as inputs or outputs, read and/or set state, and use them as interrupts. They also can be set to 'alternate functions' such as I2C, SPI, I2S, UART, SD card, and others.
 
-On a Compute Module both Bank 0 and Bank 1 are free to use with Bank 2 used for eMMC and HDMI hot plug detect and ACT LED / USB boot control.
+On a Compute Module, both Bank 0 and Bank 1 are free to use. Bank 2 is used for eMMC and HDMI hot plug detect and ACT LED / USB boot control.
 
 It is useful on a running system to look at the state of each of the GPIO pins (what function they are set to, and the voltage level at the pin) - so that one can see if the system is set up as expected (this is particularly useful to see if a Device Tree is working as expected or to get a look at the pin states during hardware debug).
 
