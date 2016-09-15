@@ -1,4 +1,4 @@
-# Compute Module Attaching & Enabling Peripherals Guide
+# Compute Module Attaching and Enabling Peripherals Guide
 
 ##Introduction
 
