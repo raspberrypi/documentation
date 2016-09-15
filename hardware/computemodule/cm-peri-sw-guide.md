@@ -20,15 +20,15 @@ BCM283x has three banks of General-Purpose Input/Output (GPIO) pins: 28 pins on 
 
 On a Compute Module, both Bank 0 and Bank 1 are free to use. Bank 2 is used for eMMC and HDMI hot plug detect and ACT LED / USB boot control.
 
-It is useful on a running system to look at the state of each of the GPIO pins (what function they are set to, and the voltage level at the pin) - so that one can see if the system is set up as expected (this is particularly useful to see if a Device Tree is working as expected or to get a look at the pin states during hardware debug).
+It is useful on a running system to look at the state of each of the GPIO pins (what function they are set to, and the voltage level at the pin) so that you can see if the system is set up as expected. This is particularly helpful if you want to see if a Device Tree is working as expected or to get a look at the pin states during hardware debug.
 
-Raspberry Pi provide the `raspi-gpio` package which is a tool for hacking / debugging GPIO (NOTE you need to run it as root).
+Raspberry Pi provides the `raspi-gpio` package which is a tool for hacking and debugging GPIO (NOTE you need to run it as root).
 To install `raspi-gpio`:
 ```
 sudo apt-get install raspi-gpio
 ```
 
-If `apt-get` can't find the `raspi-gpio` package you need to do an update first:
+If `apt-get` can't find the `raspi-gpio` package, you will need to do an update first:
 ```
 sudo apt-get update
 ```
@@ -38,12 +38,12 @@ To get help on `raspi-gpio` run it with the `help` argument:
 sudo raspi-gpio help
 ```
 
-For example to see the current function and level of all GPIO pins use:
+For example, to see the current function and level of all GPIO pins use:
 ```
 sudo raspi-gpio get
 ```
 
-Note `raspi-gpio` can be used with the `funcs` argument to get a list of all supported GPIO functions per pin, it will print out a table in CSV format. The idea is to pipe the table to a `.csv` file and then load this file using e.g. Excel:
+Note that `raspi-gpio` can be used with the `funcs` argument to get a list of all supported GPIO functions per pin. It will print out a table in CSV format. The idea is to pipe the table to a `.csv` file and then load this file using e.g. Excel:
 ```
 sudo raspi-gpio funcs > gpio-funcs.csv
 ```
