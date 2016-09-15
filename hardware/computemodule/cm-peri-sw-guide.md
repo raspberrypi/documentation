@@ -12,7 +12,7 @@ Raspberry Pi provides a minimal motherboard for the Compute Module (called the C
 
 This guide first explains the boot process and how Device Tree is used to describe attached hardware; these are essential things to understand when designing with the Compute Module. It then provides a worked example of attaching an I2C and an SPI peripheral to a CMIO Board and creating the Device Tree files necessary to make both peripherals work under Linux, starting from a vanilla Raspbian OS image.
 
-Note that using Device Tree is the officially supported method of doing things, for both a Compute Module and a Raspberry Pi. It is currently possible to Device Tree off altogether in the kernel, but we won't be providing support for this.
+Note that using Device Tree is the officially supported method of doing things, for both a Compute Module and a Raspberry Pi. It is currently possible to turn Device Tree off altogether in the kernel, but we won't be providing support for this.
 
 ##BCM283x GPIOs
 
