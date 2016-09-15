@@ -1,62 +1,62 @@
-# Compute Module Attaching & Enabling Peripherals Guide
+# Compute Module Attaching and Enabling Peripherals Guide
 
 ##Introduction
 
 This guide is designed to help developers using the Compute Module get to grips with how to wire up peripherals to the Compute Module pins, and how to make changes to the software to enable these peripherals to work correctly.
 
-The Compute Module contains the Raspberry Pi BCM2835 System On Chip (SoC) or "processor", memory and eMMC (eMMC is basically like an SD card but soldered onto the board, eMMC (unlike SD cards) is specifically designed to be used as a disk and has extra features that make it more reliable in this use case). Most of the pins of the SoC (GPIO, 2 CSI camera interfaces, 2 DSI display interfaces, HDMI etc.) are freely available and can be wired up as the user sees fit (or if unused can usually be left unconnected). The Compute Module is a DDR2 SODIMM form factor compatible module, so any DDR2 SODIMM socket should be able to be used (note the pinout is NOT the same as an actual SODIMM memory module).
+The Compute Module contains the Raspberry Pi BCM2835 system on a chip (SoC) or "processor", memory, and eMMC. The eMMC is similar to an SD card but is soldered onto the board; unlike SD cards, the eMMC is specifically designed to be used as a disk and has extra features that make it more reliable in this use case. Most of the pins of the SoC (GPIO, two CSI camera interfaces, two DSI display interfaces, HDMI etc) are freely available and can be wired up as the user sees fit (or, if unused, can usually be left unconnected). The Compute Module is a DDR2 SODIMM form-factor-compatible module, so any DDR2 SODIMM socket should be able to be used (note the pinout is NOT the same as an actual SODIMM memory module).
 
-To use the Compute Module a user needs to design a (relatively simple) 'motherboard' that can provide power to the Compute Module (3.3V and 1.8V at minimum) and wires the pins up to the required peripherals for the user's application.
+To use the Compute Module, a user needs to design a (relatively simple) 'motherboard' which can provide power to the Compute Module (3.3V and 1.8V at minimum) and which wires the pins up to the required peripherals for the user's application.
 
-Raspberry Pi provide a minimal motherboard for the Compute Module (called the Compute Module IO Board or CMIO Board) which powers the module, brings out the GPIO to pin headers, brings the camera and display interfaces out to FFC connectors, provides HDMI, USB and an 'ACT' LED as well as the ability to program the eMMC of a module via USB from a PC or Raspberry Pi.
+Raspberry Pi provides a minimal motherboard for the Compute Module (called the Compute Module IO Board, or CMIO Board) which powers the module, brings out the GPIO to pin headers, and brings the camera and display interfaces out to FFC connectors. It also provides HDMI, USB, and an 'ACT' LED as well as the ability to program the eMMC of a module via USB from a PC or Raspberry Pi.
 
-This guide first explains the boot process and how Device Tree is used to describe attached hardware (which are essential things to understand when designing with the Compute Module). It then provides a worked example of attaching an I2C and an SPI peripheral to a CMIO Board and creating the Device Tree files necessary to make both peripherals work under Linux (starting from a vanilla Raspbian OS image).
+This guide first explains the boot process and how Device Tree is used to describe attached hardware; these are essential things to understand when designing with the Compute Module. It then provides a worked example of attaching an I2C and an SPI peripheral to a CMIO Board and creating the Device Tree files necessary to make both peripherals work under Linux, starting from a vanilla Raspbian OS image.
 
-Note that using Device Tree is the officially supported method of doing things (for both a Compute Module and a Raspberry Pi), you *can* at the moment turn off device tree in the kernel altogether but we won't be providing support for this.
+Note that using Device Tree is the officially supported method of doing things, for both a Compute Module and a Raspberry Pi. It is currently possible to turn Device Tree off altogether in the kernel, but we won't be providing support for this.
 
 ##BCM283x GPIOs
 
-BCM283x has 3 banks of General Purpose Input Output (GPIO) pins (28 pins on Bank0, 18 pins on Bank1 and 8 pins on Bank2; 54 pins in total). These pins can be used as true GPIO (i.e. software can set them as inputs or outputs, read and/or set state and use them as interrupts) but also can be set to 'alternate functions' such as I2C, SPI, I2S, UART, SD card and others.
+BCM283x has three banks of General-Purpose Input/Output (GPIO) pins: 28 pins on Bank 0, 18 pins on Bank 1, and 8 pins on Bank 2, making 54 pins in total. These pins can be used as true GPIO  pins, i.e. software can set them as inputs or outputs, read and/or set state, and use them as interrupts. They also can be set to 'alternate functions' such as I2C, SPI, I2S, UART, SD card, and others.
 
-On a Compute Module both Bank0 and Bank1 are free to use with Bank2 used for eMMC and HDMI hot plug detect and ACT LED / USB boot control.
+On a Compute Module, both Bank 0 and Bank 1 are free to use. Bank 2 is used for eMMC and HDMI hot plug detect and ACT LED / USB boot control.
 
-It is useful on a running system to look at the state of each of the GPIO pins (what function they are set to, and the voltage level at the pin) - so that one can see if the system is set up as expected (this is particularly useful to see if a Device Tree is working as expected or to get a look at the pin states during hardware debug).
+It is useful on a running system to look at the state of each of the GPIO pins (what function they are set to, and the voltage level at the pin) so that you can see if the system is set up as expected. This is particularly helpful if you want to see if a Device Tree is working as expected or to get a look at the pin states during hardware debug.
 
-Raspberry Pi provide the `raspi-gpio` package which is a tool for hacking / debugging GPIO (NOTE you need to run it as root).
+Raspberry Pi provides the `raspi-gpio` package which is a tool for hacking and debugging GPIO (NOTE you need to run it as root).
 To install `raspi-gpio`:
 ```
 sudo apt-get install raspi-gpio
 ```
 
-If `apt-get` can't find the `raspi-gpio` package you need to do an update first:
+If `apt-get` can't find the `raspi-gpio` package, you will need to do an update first:
 ```
 sudo apt-get update
 ```
 
-To get help on `raspi-gpio` run it with the `help` argument:
+To get help on `raspi-gpio`, run it with the `help` argument:
 ```
 sudo raspi-gpio help
 ```
 
-For example to see the current function and level of all GPIO pins use:
+For example, to see the current function and level of all GPIO pins use:
 ```
 sudo raspi-gpio get
 ```
 
-Note `raspi-gpio` can be used with the `funcs` argument to get a list of all supported GPIO functions per pin, it will print out a table in CSV format. The idea is to pipe the table to a `.csv` file and then load this file using e.g. Excel:
+Note that `raspi-gpio` can be used with the `funcs` argument to get a list of all supported GPIO functions per pin. It will print out a table in CSV format. The idea is to pipe the table to a `.csv` file and then load this file using e.g. Excel:
 ```
 sudo raspi-gpio funcs > gpio-funcs.csv
 ```
 
 ##BCM283x Boot Process
 
-BCM283x devices consist of a VideoCore 'GPU' and ARM 'CPU' cores. The GPU is in fact a system consisting of a DSP processor and hardware accelerators for imaging, video encode and decode, 3D graphics and image compositing.
+BCM283x devices consist of a VideoCore GPU and ARM CPU cores. The GPU is in fact a system consisting of a DSP processor and hardware accelerators for imaging, video encode and decode, 3D graphics, and image compositing.
 
-In BCM283x devices it is the DSP core in the GPU that boots first and is responsible for general setup and housekeeping before booting up the main ARM processor(s).
+In BCM283x devices, it is the DSP core in the GPU that boots first. It is responsible for general setup and housekeeping before booting up the main ARM processor(s).
 
 The BCM283x devices as used on Raspberry Pi and Compute Module boards have a 3 stage boot process:
 
-1. The GPU DSP comes out of reset and executes code from a small internal ROM (the Boot ROM). The sole purpose of this code is to load a 'second stage' boot loader via one of the external interfaces. On a Pi or Compute Module this code first looks for a 2nd stage boot loader on the SD card (eMMC) and expects it to be called `bootcode.bin` and be on the first partition (which must be FAT32). If no SD card is found or no `bootcode.bin` is found, the Boot ROM sits and waits in 'USB boot' mode, waiting for a host to give it a second stage boot loader via the USB interface.
+1. The GPU DSP comes out of reset and executes code from a small internal ROM (the boot ROM). The sole purpose of this code is to load a second stage boot loader via one of the external interfaces. On a Raspberry Pi or Compute Module, this code first looks for a second stage boot loader on the SD card (eMMC); it expects this to be called `bootcode.bin` and to be on the first partition (which must be FAT32). If no SD card is found or `bootcode.bin` is found, the Boot ROM sits and waits in 'USB boot' mode, waiting for a host to give it a second stage boot loader via the USB interface.
 
 2. The second stage boot loader (`bootcode.bin` on the sdcard or `usbbootcode.bin` for usb boot) is responsible for setting up the LPDDR2 SDRAM interface and various other critical system funcions and then loading and executing the main GPU firmware (called `start.elf`, again on the primary SD card partition). 
 

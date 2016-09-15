@@ -2,11 +2,11 @@
 
 ## Powering the module
 
-The Compute Module has six separate supplies that must be present and powered at all times; you cannot leave any of them unpowered, even if a specific interface or GPIO bank is unused. The six supplies are as follows:
+The Compute Module has six separate supplies which must be present and powered at all times; you cannot leave any of them unpowered, even if a specific interface or GPIO bank is unused. The six supplies are as follows:
 
 1. VBAT is used to power the BCM2835 processor core. It feeds the SMPS that generates the chip core voltage.
-2. 3V3 powers various BCM2835 PHYs, IO and the eMMC Flash.
-3. 1V8 powers various BCM2835 PHYs, IO and SDRAM.
+2. 3V3 powers various BCM2835 PHYs, IO, and the eMMC Flash.
+3. 1V8 powers various BCM2835 PHYs, IO, and SDRAM.
 4. VDAC powers the composite (TV-out) DAC.
 5. GPIO0-27_VREF powers the GPIO 0-27 IO bank.
 6. GPIO28-45_VREF powers the GPIO 28-45 IO bank.
@@ -20,11 +20,11 @@ VDAC | 2.5-2.8V (can connect to 3V3 if unused) | +/- 5%
 GPIO0-27_VREF | 1.8-3.3V | +/- 5%
 GPIO28-45_VREF | 1.8-3.3V | +/- 5%
 
-[1] Note that the voltage range for best SMPS efficiency is ~3.3-4.3V.
+Note that the voltage range for best SMPS efficiency is ~3.3-4.3V.
 
 ### Power sequencing
 
-Supplies must be synchronised to come up at exactly the same time. Alternatively, they should be staggered so that the highest voltage comes up first, then the remaining voltages in descending order. This is to avoid forward biasing internal (on-chip) diodes between supplies, and causing latch-up.
+Supplies should be synchronised to come up at exactly the same time. Alternatively, they should be staggered so that the highest voltage comes up first, followed by the remaining voltages in descending order. This is to avoid forward biasing internal (on-chip) diodes between supplies, and causing latch-up.
 
 ### Power requirements
 
@@ -32,7 +32,7 @@ Exact power requirements will be heavily dependent upon the individual use case.
 
 Powerchain design is critical for stable and reliable operation of the Compute Module. We strongly recommend that designers spend time measuring and verifying power requirements for their particular use case and application, as well as paying careful attention to power supply sequencing and maximum supply voltage tolerance.
 
-The following table gives a rough guide to minimum supply requirements. **However, the user is responsible for verifying that their powerchain is designed to be sufficient for their application. In some more unusual use cases these minimum requirements may well be too low!**
+The following table gives a rough guide to minimum supply requirements. **However, the user is responsible for verifying that their powerchain is designed to be sufficient for their application. Be aware that, in some more unusual use cases, these minimum requirements may be too low.**
 
 Supply | Minimum Requirement (mA or mW)
 -------|-------------------------------
@@ -43,9 +43,9 @@ VDAC | 25mA
 GPIO0-27_VREF | 50mA [2]
 GPIO28-45_VREF | 50mA [2]
 
-[1] Note that VBAT is heavily dependent upon the application. For example, with video encoding, 3D and the camera all running the power requirements can be substantial.
+Note that VBAT is heavily dependent upon the application. For example, with video encoding, 3D, and the camera all running the power requirements can be substantial.
 
-[2] Note that each GPIO bank will only need a few mW if unused; however when in use, the requirements will vary depending on the number of IOs in use and the load on each. The maximum load per GPIO bank must not exceed 50mA.
+Note too that each GPIO bank will only need a few mW if unused. When in use, however, the requirements will vary depending on the number of IOs in use and the load on each. The maximum load per GPIO bank must not exceed 50mA.
 
 ## <a name="modulebootingandflashing"></a> Module booting and flashing the eMMC
 
@@ -59,25 +59,25 @@ The Compute Module has a pin called EMMC_DISABLE_N which when shorted to GND wil
 
 **Note that once booted over USB, BCM2835 needs to re-enable the eMMC device (by releasing EMMC_DISABLE_N) to allow access to it as mass storage. It expects to be able to do this by driving the GPIO47_1V8 pin LOW, which at boot is initially an input with a pull up to 1V8. If an end user wishes to add the ability to access the eMMC over USB in their product, similar circuitry to that used on the Compute Module IO Board to enable/disable the USB boot and eMMC must be used; that is, EMMC_DISABLE_N pulled low via MOSFET(s) and released again by MOSFET, with the gate controlled by GPIO47_1V8. Ensure you use MOSFETs suitable for switching at 1.8V (i.e. use a device with Vt << 1.8V).**
 
-For a step by step guide to flashing the eMMC please see [here](cm-emmc-flashing.md)
+For a step by step guide to flashing the eMMC, please see [here](cm-emmc-flashing.md).
 
 ## Compute Module interfaces
 
 ### GPIOs
 
-**Note that the GPIO46_1V8 and GPIO47_1V8 pins are 1.8V IO only and are reserved for special functions (HDMI hot plug detect and boot control respectively). Please don’t use these pins for any other purpose, as the software for the Compute Module will always expect these pins to have these special functions. If they are unused please leave them unconnected.**
+**Note that the GPIO46_1V8 and GPIO47_1V8 pins are 1.8V IO only and are reserved for special functions (HDMI hot plug detect and boot control respectively). Please don’t use these pins for any other purpose, as the software for the Compute Module will always expect these pins to have these special functions. If they are unused, please leave them unconnected.**
 
 The remaining GPIOs are available for general use and are split into two banks. GPIO0 to GPIO27 are bank 0 and GPIO28-45 make up bank 1. GPIO0-27_VREF is the power supply for bank 0 and GPIO28-45_VREF is the power supply for bank 1. These supplies can be in the range 1.8V-3.3V. These supplies are not optional; each bank must be powered, even when none of the GPIOs for that bank are used.
 
-All GPIOs except GPIO28, 29, 44 and 45 have weak in-pad pull-ups or pull-downs enabled when the device is powered on. Whether the GPIO is pulled up or down is documented in the BCM2835 peripherals document section 6.2. **It is recommended to add off-chip pulls to GPIO28, 29, 44 and 45 to make sure they never float during power on and initial boot.**
+All GPIOs except GPIO28, 29, 44 and 45 have weak in-pad pull-ups or pull-downs enabled when the device is powered on. Whether the GPIO is pulled up or down is documented in the BCM2835 peripherals document section 6.2. **It is recommended to add off-chip pulls to GPIO28, 29, 44, and 45 to make sure they never float during power-on and initial boot.**
 
 ### CSI (MIPI serial camera)
 
 The Compute Module has two MIPI serial camera interfaces (CSI); Interface 0 and Interface 1.
 
-Interface 0 is a 2-lane interface; one clock lane and two data lanes.
+Interface 0 is a 2-lane interface: one clock lane and two data lanes.
 
-Interface 1 is a 4-lane interface; one clock lane and four data lanes.
+Interface 1 is a 4-lane interface: one clock lane and four data lanes.
 
 Note that the Raspberry Pi Model A/B camera connector uses Interface 1, but only in a 2-lane configuration.
 
@@ -87,9 +87,9 @@ The camera interface(s) clock and data pins must be routed as matched length, ma
 
 The Compute Module has 2 MIPI serial display interfaces (DSI); Interface 0 and Interface 1.
 
-Interface 0 is a 2-lane interface; one clock lane and two data lanes.
+Interface 0 is a 2-lane interface: one clock lane and two data lanes.
 
-Interface 1 is a 4-lane interface; one clock lane and four data lanes.
+Interface 1 is a 4-lane interface: one clock lane and four data lanes.
 
 Note that the Raspberry Pi Model A/B  display connector uses Interface 1, but only in a 2-lane configuration.
 
@@ -101,7 +101,7 @@ The BCM2835 USB port is On-The-Go (OTG) capable. If using either as a fixed slav
 
 The USB port (Pins USB_DP and USB_DM) must be routed as matched-phase 90 ohm differential PCB traces.
 
-Note that the port is capable of being used as a true OTG port, but there is currently no documentation, code or examples for this use case.
+Note that the port is capable of being used as a true OTG port, but there is currently no documentation, code, or examples for this use case.
 
 ### HDMI
 
@@ -117,15 +117,13 @@ The TVDAC pin can be used to output composite video. Please route this signal aw
 
 Note that the TV DAC is powered from the VDAC supply which must be a clean supply of 2.5-2.8V. It is recommended users generate this supply from 3V3 using a low noise LDO.
 
-If the TVDAC output is not used VDAC can be connected to 3V3, but it must be powered even if the TV-out functionality is unused.
+If the TVDAC output is not used, VDAC can be connected to 3V3 but it must be powered even if the TV-out functionality is unused.
 
 ## Compute Module temperature range
 
 The operating temperature range of the module is set by the lowest maximum and highest minimum of any of the components.
 
-The Samsung eMMC and Samsung LPDDR2 are all rated for -25 to +80 degrees Celsius, so the range is -25 to +80. BCM2835 and the analogue switch have a greater range; the ceramic capacitors are specified from -25 to +85.
-
-However, this range is the maximum for the silicon die; therefore, users would have to take into account the heat generated when in use and make sure this does not cause the temperature to exceed 80 degrees Celsius.
+The Samsung eMMC and Samsung LPDDR2 are all rated for -25 to +80 degrees Celsius, so the range is -25 to +80. BCM2835 and the analogue switch have a greater range; the ceramic capacitors are specified from -25 to +85. This range is the maximum for the silicon die; users would therefore have to take into account the heat generated when in use and make sure this does not cause the temperature to exceed 80 degrees Celsius.
 
 **The user is responsible for designing and testing their system so that these limits are not exceeded.**
 

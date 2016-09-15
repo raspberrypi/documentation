@@ -1,18 +1,18 @@
 # Flashing the Compute Module eMMC
 
-The Compute module has an on-board eMMC device connected to the primary SD card interface. This guide explains how to write data to the eMMC storage using a Compute Module IO board.
+The Compute Module has an on-board eMMC device connected to the primary SD card interface. This guide explains how to write data to the eMMC storage using a Compute Module IO board.
 
 Please also read the section on [Module booting and flashing the eMMC](cm-designguide.md#modulebootingandflashing) in the [Compute Module hardware design guide](cm-designguide.md).
 
 ## Steps to flash the eMMC on a Compute Module
 
-To flash the Compute Module eMMC you either need a Linux system (a Raspberry Pi is recommended, or Ubuntu on a PC) or a Windows system (Windows 7 is recommended).  For BCM2837 (CM3) the bug which affected the Mac has been fixed so this will also work.
+To flash the Compute Module eMMC, you either need a Linux system (a Raspberry Pi is recommended, or Ubuntu on a PC) or a Windows system (Windows 7 is recommended). For BCM2837 (CM3), a bug which affected the Mac has been fixed, so this will also work.
 
-**Note** There is a bug in the BCM2835 bootloader which returns a slightly incorrect USB packet to the host. Most USB hosts seem to ignore this benign bug and work fine; however we do see some USB ports that don't work due to this bug. We don't quite understand why some ports fail - it doesn't seem to be correlated with whether they are USB2 or USB3 (we have seen both types working), but it's likely to be specific to the host controller and driver.  This bug has been fixed in BCM2837
+**Note** There is a bug in the BCM2835 bootloader which returns a slightly incorrect USB packet to the host. Most USB hosts seem to ignore this benign bug and work fine; we do however see some USB ports that don't work due to this bug. We don't quite understand why some ports fail, as it doesn't seem to be correlated with whether they are USB2 or USB3 (we have seen both types working), but it's likely to be specific to the host controller and driver. This bug has been fixed in BCM2837
 
 **For Windows users**
 
-Under Windows an installer is available to automatically install the required drivers and boot tool. Alternatively, a user can compile and run it using Cygwin and/or install the drivers manually.
+Under Windows, an installer is available to install the required drivers and boot tool automatically. Alternatively, a user can compile and run it using Cygwin and/or install the drivers manually.
 
 ### Windows installer
 
@@ -50,7 +50,7 @@ After a short while, the driver will finish being installed and you should be ab
 
 Finally, follow the remainder of the instructions below in a Cygwin terminal. **Note** When performing the commands below in a Cygwin terminal, **don't** prefix them with `sudo`.
 
-**On your Compute Module IO board:**
+**On your Compute Module IO board**
 
 Make sure that J4 (USB SLAVE BOOT ENABLE) is set to the 'EN' position.
 
@@ -62,7 +62,7 @@ Git may produce an error if the date is not set correctly, so on a Raspberry Pi 
 sudo date MMDDhhmm
 ```
 
-where MM is month, DD day and hh mm hours and minutes respectively.
+where `MM` is month, `DD` is day, and `hh` and `mm` are hours and minutes respectively.
 
 Clone the `usbboot` tool repository:
 
@@ -90,7 +90,7 @@ Run the `usbboot` tool and it will wait for a connection:
 sudo rpiboot
 ```
 
-Now plug the host machine into the Compute Module IO board USB slave port (J15) and power on the CMIO board. The `rpiboot` tool will discover the Compute Module and send boot code to allow access to the eMMC. 
+Now plug the host machine into the Compute Module IO board USB slave port (J15) and power the CMIO board on. The `rpiboot` tool will discover the Compute Module and send boot code to allow access to the eMMC. 
 
 ## Writing to the eMMC - Cygwin
 
@@ -108,7 +108,7 @@ You now need to write a raw OS image (such as [Raspbian](http://downloads.raspbe
 sudo dd if=raw_os_image_of_your_choice.img of=/dev/sda bs=4MiB
 ```
 
-Once the image has been written, unplug and re-plug the USB; you should see 2 partitions appear (for Raspian) in `/dev`. In total, you should see something similar to this:
+Once the image has been written, unplug and re-plug the USB; you should see two partitions appear (for Raspian) in `/dev`. In total, you should see something similar to this:
 
 ```bash
 /dev/sda    <- Device
