@@ -33,7 +33,7 @@ If `apt-get` can't find the `raspi-gpio` package, you will need to do an update 
 sudo apt-get update
 ```
 
-To get help on `raspi-gpio` run it with the `help` argument:
+To get help on `raspi-gpio`, run it with the `help` argument:
 ```
 sudo raspi-gpio help
 ```
@@ -50,13 +50,13 @@ sudo raspi-gpio funcs > gpio-funcs.csv
 
 ##BCM283x Boot Process
 
-BCM283x devices consist of a VideoCore 'GPU' and ARM 'CPU' cores. The GPU is in fact a system consisting of a DSP processor and hardware accelerators for imaging, video encode and decode, 3D graphics and image compositing.
+BCM283x devices consist of a VideoCore GPU and ARM CPU cores. The GPU is in fact a system consisting of a DSP processor and hardware accelerators for imaging, video encode and decode, 3D graphics, and image compositing.
 
-In BCM283x devices it is the DSP core in the GPU that boots first and is responsible for general setup and housekeeping before booting up the main ARM processor(s).
+In BCM283x devices, it is the DSP core in the GPU that boots first. It is responsible for general setup and housekeeping before booting up the main ARM processor(s).
 
 The BCM283x devices as used on Raspberry Pi and Compute Module boards have a 3 stage boot process:
 
-1. The GPU DSP comes out of reset and executes code from a small internal ROM (the Boot ROM). The sole purpose of this code is to load a 'second stage' boot loader via one of the external interfaces. On a Pi or Compute Module this code first looks for a 2nd stage boot loader on the SD card (eMMC) and expects it to be called `bootcode.bin` and be on the first partition (which must be FAT32). If no SD card is found or no `bootcode.bin` is found, the Boot ROM sits and waits in 'USB boot' mode, waiting for a host to give it a second stage boot loader via the USB interface.
+1. The GPU DSP comes out of reset and executes code from a small internal ROM (the boot ROM). The sole purpose of this code is to load a second stage boot loader via one of the external interfaces. On a Raspberry Pi or Compute Module, this code first looks for a second stage boot loader on the SD card (eMMC); it expects this to be called `bootcode.bin` and to be on the first partition (which must be FAT32). If no SD card is found or `bootcode.bin` is found, the Boot ROM sits and waits in 'USB boot' mode, waiting for a host to give it a second stage boot loader via the USB interface.
 
 2. The second stage boot loader (`bootcode.bin` on the sdcard or `usbbootcode.bin` for usb boot) is responsible for setting up the LPDDR2 SDRAM interface and various other critical system funcions and then loading and executing the main GPU firmware (called `start.elf`, again on the primary SD card partition). 
 
