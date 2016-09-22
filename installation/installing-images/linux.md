@@ -34,7 +34,7 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
 
     ```bash
     dd bs=4M if=/dev/sdd of=from-sd-card.img
-    truncate --reference 2016-05-27-raspbian-jessie.img from-sd-card.img
+    truncate --reference from-sd-card.img 2016-05-27-raspbian-jessie.img
     diff -s from-sd-card.img 2016-05-27-raspbian-jessie.img
     ```
 
