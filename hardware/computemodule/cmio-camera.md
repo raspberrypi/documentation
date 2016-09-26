@@ -35,11 +35,11 @@ status = mmal_port_parameter_set(camera->control, &camera_num.hdr);
 
 ## Advanced
 
-The 15-way 1mm FFC camera connector on the Raspberry Pi model A and B is attached to the CAM1 interface (though only uses two of the four available lanes).
+The 15-way 1mm FFC camera connector on the Raspberry Pi model A and B is attached to the CAM1 interface (though it only uses two of the four available lanes).
 
-The Compute Module IO Board has a 22-way 0.5mm FFC for each camera port, with CAM0 being a two-lane interface and CAM1 being the full four-lane interface.
+The Compute Module IO board has a 22-way 0.5mm FFC for each camera port, with CAM0 being a two-lane interface and CAM1 being the full four-lane interface.
 
-To attach a standard Raspberry Pi Camera to the Compute Module IO Board, a small adaptor board is available. It adapts the 22W FFC to the Pi 15W FFC.
+To attach a standard Raspberry Pi Camera to the Compute Module IO board, a small adaptor board is available. It adapts the 22W FFC to the Pi 15W FFC.
 
 To make the Raspberry Pi Camera Module work with a standard Raspian OS, the GPIOs and I2C interface must be wired to the CAM1 connector. This is done by bridging the correct GPIOs from the J6 GPIO connector to the CD1_SDA/SCL and CAM1_IO0/1 pins on the J5 connector using jumper wires. Additionally, a **dt-blob.bin** file needs to be provided to override default pin states (the dt-blob.bin file is a file that tells the GPU what pins to use when controlling the camera. For more information on this, see the relevant section in the guide to attaching peripherals to a Compute Module [here](cm-peri-sw-guide.md)).
 
