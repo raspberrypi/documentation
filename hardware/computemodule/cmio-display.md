@@ -1,4 +1,4 @@
-# Attaching Raspberry Pi Official 7 inch Display to the Compute Module IO Board
+# Attaching Raspberry Pi Official 7" Display to the Compute Module IO Board
 
 **This document is a work in progress and is intended for advanced users.**
 
