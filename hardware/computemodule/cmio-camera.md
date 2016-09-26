@@ -113,7 +113,7 @@ pin_define@CAMERA_1_SCL_PIN { type = "internal"; number = <29>; };
 <a name="sample-device-tree-source-files"></a>
 ### Sample device tree source files
 
-[Enable a CAM1 only](dt-blob-cam1.dts)
+[Enable CAM1 only](dt-blob-cam1.dts)
 
 [Enable both cameras](dt-blob-dualcam.dts)
 
