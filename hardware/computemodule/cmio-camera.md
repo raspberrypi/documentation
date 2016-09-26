@@ -1,8 +1,8 @@
 # Attaching a Raspberry Pi Camera to the Compute Module IO Board
 
-*This document is a work in progress and is intended for advanced users.*
+**This document is a work in progress and is intended for advanced users.**
 
-*For the camera to work with the compute module, the firmware needs to be July 23rd 2014 or newer (use `vcgencmd version` to check).*
+**For the camera to work with the compute module, the firmware needs to be July 23rd 2014 or newer (use `vcgencmd version` to check).**
 
 ## Quickstart
 
@@ -16,7 +16,7 @@
 
     ![GPIO connection for a single camera](images/CMIO-Cam-GPIO.jpg)
 
-1. *(Optional)* To add an additional camera, repeat step 3 with CAM0 and connect the GPIO pins for the second camera.
+1. (Optional) To add an additional camera, repeat step 3 with CAM0 and connect the GPIO pins for the second camera.
 
     ![GPIO connection with additional camera](images/CMIO-Cam-GPIO2.jpg)
 
@@ -24,7 +24,7 @@
 
 ### Software support
 
-Recent raspicam binaries (*raspivid* and *raspistill*) have the -cs (--camselect) option to specify which camera should be used.
+Recent raspicam binaries (**raspivid** and **raspistill**) have the -cs (--camselect) option to specify which camera should be used.
 
 From other applications, MMAL can be told which camera to use by setting MMAL_PARAMETER_CAMERA_NUM accordingly.
 
@@ -35,13 +35,13 @@ status = mmal_port_parameter_set(camera->control, &camera_num.hdr);
 
 ## Advanced
 
-The 15-way 1mm FFC camera connector on the Raspberry Pi model A and B is attached to the CAM1 interface (though only uses 2 of the 4 available lanes).
+The 15-way 1mm FFC camera connector on the Raspberry Pi model A and B is attached to the CAM1 interface (though only uses two of the four available lanes).
 
-The Compute Module IO Board has a 22-way 0.5mm FFC for each camera port, with CAM0 being a 2-lane interface and CAM1 being the full 4-lane interface.
+The Compute Module IO Board has a 22-way 0.5mm FFC for each camera port, with CAM0 being a two-lane interface and CAM1 being the full four-lane interface.
 
-To attach a standard Raspberry Pi Camera to the Compute module IO Board a small adaptor board is available that adapts the 22W FFC to the Pi 15W FFC.
+To attach a standard Raspberry Pi Camera to the Compute Module IO Board, a small adaptor board is available. It adapts the 22W FFC to the Pi 15W FFC.
 
-To make the Raspberry Pi Camera work with a standard Raspian OS the GPIOs and I2C interface must be wired to the CAM1 connector. This is done by bridging the correct GPIOs from the J6 GPIO connector to the CD1_SDA/SCL and CAM1_IO0/1 pins on the J5 connector using jumper wires. Additionally, a *dt-blob.bin* file needs to be provided to override default pin states (the dt-blob.bin file is a file that tells the GPU what pins to use when controlling the camera, for more information on this see the relevant section in the guide to attaching peripherals to a Compute Moule [here](cm-peri-sw-guide.md)).
+To make the Raspberry Pi Camera Module work with a standard Raspian OS, the GPIOs and I2C interface must be wired to the CAM1 connector. This is done by bridging the correct GPIOs from the J6 GPIO connector to the CD1_SDA/SCL and CAM1_IO0/1 pins on the J5 connector using jumper wires. Additionally, a **dt-blob.bin** file needs to be provided to override default pin states (the dt-blob.bin file is a file that tells the GPU what pins to use when controlling the camera. For more information on this, see the relevant section in the guide to attaching peripherals to a Compute Module [here](cm-peri-sw-guide.md)).
 
 **The pin numbers below are provided only as an example. LED and SHUTDOWN pins can be shared by both cameras, if required.** The SDA and SCL pins must be either GPIO0 and GPIO1 or GPIO28 and 29 and must be individual to each camera.
 
@@ -59,7 +59,7 @@ To make the Raspberry Pi Camera work with a standard Raspian OS the GPIOs and I2
 
 ### Configuring default pin states
 
-The GPIOs used by the camera, default to input mode on the compute module. In order to [override the default pin states](../../configuration/pin-configuration.md) and define the pins used by the camera, we need to create a *dt-blob.bin* file from a source dts file with the relevant information for the GPU, and place this on the root of the first FAT partition.
+The GPIOs used by the camera default to input mode on the Compute Module. In order to [override the default pin states](../../configuration/pin-configuration.md) and define the pins used by the camera, we need to create a **dt-blob.bin** file from a source dts file with the relevant information for the GPU, and place this on the root of the first FAT partition.
 
 [Sample device tree source files](#sample-device-tree-source-files) are provided at the bottom of this document.
 
@@ -92,14 +92,14 @@ Connect up the I2C and GPIO lines.
 1. Attach CAM0_IO1 (J6 pin 49) to GPIO30 (J6 pin 5).
 1. Attach CAM0_IO0 (J6 pin 51) to GPIO31 (J6 pin 7).
 
-The compute module's **pin_config** secion needs the second camera's LED and power enable pins configured:
+The Compute Module's **pin_config** secion needs the second camera's LED and power enable pins configured:
 
 ```
 pin@p30 { function = "output"; termination = "no_pulling"; };
 pin@p31 { function = "output"; termination = "no_pulling"; };
 ```
 
-In the compute module's **pin_defines** section of the dts file, change the *NUM_CAMERAS* parameter to 2 and add the following:
+In the Compute Module's **pin_defines** section of the dts file, change the **NUM_CAMERAS** parameter to 2 and add the following:
 
 ```
 pin_define@CAMERA_1_LED { type = "internal"; number = <30>; };
@@ -117,4 +117,4 @@ pin_define@CAMERA_1_SCL_PIN { type = "internal"; number = <29>; };
 
 [Enable both cameras](dt-blob-dualcam.dts)
 
-*As of 2015-04-17 some users are reporting issues with GPIO pin 2 and 3 for camera control. Pin 4 and 5 is reported to work. The issue is being investigated.*
+*As of 2015-04-17, some users are reporting issues with GPIO pins 2 and 3 for camera control. Pins 4 and 5 are  reported to work. The issue is being investigated.*
