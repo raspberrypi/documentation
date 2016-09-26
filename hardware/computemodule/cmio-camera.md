@@ -117,4 +117,4 @@ pin_define@CAMERA_1_SCL_PIN { type = "internal"; number = <29>; };
 
 [Enable both cameras](dt-blob-dualcam.dts)
 
-*As of 2015-04-17, some users are reporting issues with GPIO pins 2 and 3 for camera control. Pins 4 and 5 are  reported to work. The issue is being investigated.*
+*As of 2015-04-17, some users are reporting issues with GPIO pins 2 and 3 for camera control. Pins 4 and 5 are reported to work. The issue is being investigated.*
