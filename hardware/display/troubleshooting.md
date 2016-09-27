@@ -4,13 +4,13 @@
 
 ### Have you got a good power supply?
 
-Having intermittent problems, or seeing a **little rainbow square** in the top right corner? You need a better power supply.
+Having intermittent problems, or seeing a little rainbow square in the top right corner? It is likely that you need a better power supply.
 
-We recommend our official 2A adapter because we know it works, but any good 2A supply should work.
+We recommend our official 2.5A adapter because we know it works, but any good 2.5A supply should work.
 
 ### Have you updated Raspbian?
 
-If not, many problems will be solved by making sure you're up-to date.
+If not, many problems will be solved by making sure your software is up-to date.
 
 You can undo any previous use of `rpi-update` and get your Pi back to the latest stable software by connecting
 to a network and running:
@@ -25,8 +25,8 @@ sudo reboot
 
 ### My touchscreen doesn't work, or works intermittently
 
-* Make sure you've updated Raspbian, see above for steps.
-* Check the smaller ribbon cable is seated properly
+- Make sure you've updated Raspbian, see above for steps.
+- Check the smaller ribbon cable is seated properly
 
 If you want to make sure your Pi has detected your touchscreen, try running:
 
