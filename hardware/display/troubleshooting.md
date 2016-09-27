@@ -49,9 +49,7 @@ cat /proc/cmdline | grep bcm2708_fb
 
 ### My screen is upside-down!
 
-Depending on your display stand, you might find that the LCD display defaults to being upside-down. You can fix this by rotating it:
-
-`/boot/config.txt`
+Depending on your display stand, you might find that the LCD display defaults to being upside-down. You can fix this by rotating it with `/boot/config.txt`.
 
 ```bash
 sudo nano /boot/config.txt
