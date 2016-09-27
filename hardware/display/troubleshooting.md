@@ -91,9 +91,9 @@ Disable it by running raspi-config:
 sudo raspi-config
 ```
 
-And then navigating to "Advanced Options -> Overscan" and picking "Disable."
+And then navigating to **Advanced Options** > **Overscan** and picking **Disable**. 
 
-### My touchscreen isn't aligned correctly: my taps are slightly out!
+### My touchscreen isn't aligned correctly: my taps are slightly out
 
 This is probably also a side-effect of overscan being enabled, try the solution above.
 
@@ -101,15 +101,15 @@ This is probably also a side-effect of overscan being enabled, try the solution 
 
 The Model A or B Pi need a couple of extra connections, and an extra line of config. Please see section "Attaching to Model A/B boards" of [the main display page](README.md).
 
-### Some windows are cut off at the bottom of the screen so I can't use them!
+### Some windows are cut off at the bottom of the screen so I can't use them
 
-Some windows in X are cut off at the side/bottom of the screen, this is unfortunately a side-effect of developers assuming a minimum screen resolution of 1024x768 pixels.
+If some windows in X are cut off at the side/bottom of the screen, this is unfortunately a side-effect of developers assuming a minimum screen resolution of 1024x768 pixels.
 
 You can usually reveal hidden buttons and fields by;
 
-* right clicking on the edge or top of the window,
-* picking "move"
-* using the up arrow key to nudge the window up off the top of the screen
+- right clicking on the edge or top of the window,
+- picking "move"
+- using the up arrow key to nudge the window up off the top of the screen
 
 If you don't have a mouse, see the right click fix below.
 
@@ -119,7 +119,7 @@ If you don't have a mouse, see the right click fix below.
 
 At the moment you can't use HDMI and the LCD together in the X desktop, but you can send the output of certain applications to one screen or the other.
 
-Omxplayer is one example, it has been modified to enable secondary display output.
+Omxplayer is one example. It has been modified to enable secondary display output.
 
 To start displaying a video onto the LCD display (assuming it is the default display) just type:
 
@@ -133,7 +133,7 @@ To start a second video onto the HDMI type:
 omxplayer --display=5 video.mkv
 ```
 
-**Please note: you may need to increase the amount of memory allocated to the GPU to 128MB if the videos are 1080P, adjust the gpu_mem value in config.txt for this. The Raspberry Pi headline figures are 1080P30 decode, so if you are using two 1080P clips it may not play correctly depending on the complexity of the videos.**
+**Please note: you may need to increase the amount of memory allocated to the GPU to 128MB if the videos are 1080P. Adjust the gpu_mem value in config.txt for this. The Raspberry Pi headline figures are 1080P30 decode, so if you are using two 1080P clips it may not play correctly depending on the complexity of the videos.**
 
 Display numbers are:
 
@@ -189,5 +189,5 @@ Install like so:
 sudo apt-get install matchbox-keyboard
 ```
 
-And then find in Accessories > Keyboard.
+And then find in **Accessories** > **Keyboard**.
 
