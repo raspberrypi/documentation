@@ -25,7 +25,7 @@ sudo reboot
 
 ### My touchscreen doesn't work, or works intermittently
 
-- Make sure you've updated Raspbian, see above for steps.
+- Make sure you've updated Raspbian (see above for steps)
 - Check the smaller ribbon cable is seated properly
 
 If you want to make sure your Pi has detected your touchscreen, try running:
@@ -41,7 +41,7 @@ You should see a couple of lines that look like this:
 [ 5.225960] input: FT5406 memory based driver as /devices/virtual/input/input3
 ```
 
-A detected touchscreen will also cause the `fbheight` and `fbwidth` parameters in `/proc/cmdline` to equal 480 and 800 respectively ( the resolution of the screen ), you can verify this by running:
+A detected touchscreen will also cause the `fbheight` and `fbwidth` parameters in `/proc/cmdline` to equal 480 and 800 respectively (the resolution of the screen). You can verify this by running:
 
 ```
 cat /proc/cmdline | grep bcm2708_fb
@@ -49,7 +49,9 @@ cat /proc/cmdline | grep bcm2708_fb
 
 ### My screen is upside-down!
 
-Depending on your display stand you might find that the LCD display defaults to being upside-down, you can fix this by rotating it in `/boot/config.txt`
+Depending on your display stand, you might find that the LCD display defaults to being upside-down. You can fix this by rotating it:
+
+`/boot/config.txt`
 
 ```bash
 sudo nano /boot/config.txt
@@ -69,19 +71,19 @@ sudo reboot
 
 ### My display fades out to weird patterns when I shutdown/reboot my Pi
 
-Don't Panic! This is perfectly normal.
+Don't panic! This is perfectly normal.
 
 ### My display is black
 
-* Make sure you've updated Raspbian, see above for steps.
+* Make sure you've updated Raspbian (see above for steps)
 * Check the ribbon cable between your Pi and the LCD is properly seated
-* Make sure you have a SD card properly inserted into your Pi.
+* Make sure you have a SD card properly inserted into your Pi
 
 ### My display is white
 
 * Check the larger ribbon cable between the display and driver board is properly seated
 
-### Raspbian says my screen is 752x448, surely that's wrong?
+### Raspbian says my screen is 752x448. Surely that's wrong?
 
 Yes, the screen should be 800x480. This is a result of overscan being enabled.
 
@@ -93,7 +95,7 @@ sudo raspi-config
 
 And then navigating to "Advanced Options -> Overscan" and picking "Disable."
 
-### My touchscreen isn't aligned correctly, my taps are slightly out!
+### My touchscreen isn't aligned correctly: my taps are slightly out!
 
 This is probably also a side-effect of overscan being enabled, try the solution above.
 
@@ -133,7 +135,7 @@ To start a second video onto the HDMI type:
 omxplayer --display=5 video.mkv
 ```
 
-**Please note:** *you may need to increase the amount of memory allocated to the GPU to 128MB if the videos are 1080P, adjust the gpu_mem value in config.txt for this. The Raspberry Pi headline figures are 1080P30 decode, so if you are using two 1080P clips it may not play correctly depending on the complexity of the videos.*
+**Please note: you may need to increase the amount of memory allocated to the GPU to 128MB if the videos are 1080P, adjust the gpu_mem value in config.txt for this. The Raspberry Pi headline figures are 1080P30 decode, so if you are using two 1080P clips it may not play correctly depending on the complexity of the videos.**
 
 Display numbers are:
 
