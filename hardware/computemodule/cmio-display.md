@@ -45,7 +45,7 @@ For the display to work with the Compute Module, the firmware needs to be Octobe
 
 	```sudo wget https://goo.gl/1V3ReK -O /boot/dt-blob.bin```
 
-1. Make the 7 inch display as the default by adding the following line into `/boot/config.txt`:
+1. Make the 7" display as the default by adding the following line into `/boot/config.txt`:
 
 	```
 	display_default_lcd=1
