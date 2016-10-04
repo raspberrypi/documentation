@@ -11,7 +11,7 @@ Next the boot ROM checks each of the boot sources for a file called bootcode.bin
   * Success - Boot
   * Fail - timeout (5 seconds)
 * If enabled: Check secondary SD
-  * Sucess - Boot
+  * Success - Boot
   * Fail - timeout (5 seconds)
 * If enabled: Check NAND
 * If enabled: Check SPI
