@@ -2,7 +2,7 @@
 
 There are different ways of installing software on your Raspberry Pi, depending on where the source of the software lives.
 
-The most common is through command line tool APT (Advanced Packaging Tool), and there is the Pi Store - the Raspberry Pi's own user contributed app store. Also some software can be installed using other package managers.
+The most common is through the command line tool APT (Advanced Packaging Tool), and there's also the Pi Store, the Raspberry Pi's own user-contributed app store. Some software can also be installed using other package managers.
 
 ## Contents
 
