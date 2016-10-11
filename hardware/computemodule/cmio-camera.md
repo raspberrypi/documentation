@@ -2,12 +2,14 @@
 
 **This document is a work in progress and is intended for advanced users.**
 
-**For the camera to work with the compute module, the firmware needs to be July 23rd 2014 or newer (use `vcgencmd version` to check).**
+**For the camera to work with the Compute Module 3 (CM3), the firmware needs to be September 21st 2016 or newer (use `vcgencmd version` to check).**
+
+** Note that unless explicitly stated otherwise, these instructions will work identically on Compute Module and Compute Module 3 Module+IO board(s).
 
 ## Quickstart
 
 1. On the compute module, run `sudo raspi-config` and enable the camera.
-1. Next, run `sudo wget http://goo.gl/lozvZB -O /boot/dt-blob.bin`
+1. Next, run `sudo wget http://goo.gl/U4t12b -O /boot/dt-blob.bin`
 1. Connect adapter board and camera to CAM1 port.
 
     ![Connecting the adapter board](images/CMAIO-Cam-Adapter.jpg)
@@ -63,7 +65,7 @@ The GPIOs used by the camera default to input mode on the Compute Module. In ord
 
 [Sample device tree source files](#sample-device-tree-source-files) are provided at the bottom of this document.
 
-The **pin_config** section in the `pins_cm { }` (compute module) section of the source dts needs the camera's LED and power enable pins set to outputs:
+The **pin_config** section in the `pins_cm { }` (compute module) or `pins_cm3 { }` (compute module3) section of the source dts needs the camera's LED and power enable pins set to outputs:
 
 ```
 pin@p2  { function = "output"; termination = "no_pulling"; };
@@ -116,5 +118,3 @@ pin_define@CAMERA_1_SCL_PIN { type = "internal"; number = <29>; };
 [Enable CAM1 only](dt-blob-cam1.dts)
 
 [Enable both cameras](dt-blob-dualcam.dts)
-
-*As of 2015-04-17, some users are reporting issues with GPIO pins 2 and 3 for camera control. Pins 4 and 5 are reported to work. The issue is being investigated.*
