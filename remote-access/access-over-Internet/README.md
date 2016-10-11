@@ -12,7 +12,7 @@ Alternative online services are available.
 
 ### remot3.it ("remote it" by Weaved, Inc.)
 
-One secure alternative to port forwarding is the [remot3.it](https://www.remot3.it) service from Weaved. remot3.it is software you install on your Raspberry Pi to access a single Pi, or manage a fleet of 100s or 1000s of Pi, from anywhere over the Internet. Use remot3.it to access your Pi's SSH, VNC, HTTP(S), and RDP services, or any other TCP port on your Pi.   Without port forwarding.
+One secure alternative to port forwarding is the [remot3.it](https://www.remot3.it). remot3.it ("remote it") is software you install on your Raspberry Pi to access a single Pi, or manage a fleet of 100s or 1000s of Pi, from anywhere over the Internet. Use remot3.it to access your Pi's SSH, VNC, HTTP(S), and/or RDP services.  Remote access any TCP port 
 
 From the command line on your Pi update your Raspbian package lists:
 
