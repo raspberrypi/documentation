@@ -12,7 +12,7 @@ Alternative online services are available.
 
 ### remot3.it ("remote it" by Weaved, Inc.)
 
-One secure alternative to port forwarding is [remot3.it](https://www.remot3.it). remot3.it ("remote it") is software you install on your Raspberry Pi to access a single Pi, or manage a large fleet of Pi, from anywhere over the Internet. Use remot3.it to access any TCP port on your Pi from over the web including SSH, VNC, HTTP(S), RDP, or custom TCP services.
+One secure alternative to port forwarding is [remot3.it](https://www.remot3.it). remot3.it ("remote it") is software you install on your Raspberry Pi to access a single Pi, or manage a large fleet of Pi, from anywhere over the Internet. Use remot3.it to access any TCP port on your Pi over the web including SSH, VNC, HTTP(S), RDP, or custom TCP services.
 
 From the command line on your Pi update your Raspbian package lists:
 
@@ -32,9 +32,9 @@ Next, run the remot3.it installer with the command below.
 sudo weavedinstaller
 ```
 
-The remot3.it installer will ask you to create a remot3.it user account by entering an email address and a password.  Or you can create an account here www.remot3.it.  Follow the on-screen menus to give your Pi a device name and choose what TCP ports/services to enable.
+The remot3.it installer will ask you to create a remot3.it user account by entering an email address and a password.  Follow the on-screen menus to give your Pi a device name and choose what TCP ports/services to enable.
 
-Now access your Pi from anywhere by Signing In to www.remot3.it.
+Now access your Pi by Signing In to www.remot3.it.
 
 For more detailed instructions and examples see [Getting Started with remot3.it for Pi](http://forum.weaved.com/t/how-to-get-started-with-remot3-it-for-pi/1029).
 
