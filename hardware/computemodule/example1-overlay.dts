@@ -16,10 +16,6 @@
         brcm,pins = <44 45>;
         brcm,function = <6>; /* alt2 */
       };
-      spi0_pins: spi0_pins {
-        brcm,pins = <7 8 9 10 11>;
-        brcm,function = <4>; /* alt0 */
-      };
     };
   };
 
