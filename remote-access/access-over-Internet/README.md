@@ -32,9 +32,9 @@ Next, run the remot3.it installer with the command below.
 sudo weavedinstaller
 ```
 
-The remot3.it installer will ask you to create a remot3.it user account by entering an email address and a password.  Follow the on-screen menus to give your Pi a device name and choose what TCP ports/services to enable for remote access.
+The remot3.it installer will ask you to create a remot3.it user account by entering an email address and a password.  Or you can create an account here www.remot3.it.  Follow the on-screen menus to give your Pi a device name and choose what TCP ports/services to enable for remote access.
 
-Sign In to your account at www.remot3.it   Your remot3.it account is now a private Internet VPN connection service to your Pi without port forwarding.  
+Now access your Pi from anywhere by Signing In to www.remot3.it.
 
 For more detailed instructions and examples see [Getting Started with remot3.it for Pi](http://forum.weaved.com/t/how-to-get-started-with-remot3-it-for-pi/1029).  For further assistance email support@remot3.it
 
