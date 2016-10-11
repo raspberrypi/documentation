@@ -32,9 +32,9 @@ Next, run the remot3.it installer with the command below.
 sudo weavedinstaller
 ```
 
-The remot3.it installer will ask you to create a remot3.it user account by entering an email address and a password.  Follow the on-screen menus to give your Pi a device name and choose what TCP ports/services to enable.
+The remot3.it installer will first ask you to create a user account by entering an email address and a password.  Follow the on-screen menus to give your Pi a device name and choose what TCP ports/services to enable.
 
-Now access your Pi by Signing In to www.remot3.it.
+Now access your Pi over the Internet by Signing In to www.remot3.it.
 
 For more detailed instructions and examples see [Getting Started with remot3.it for Pi](http://forum.weaved.com/t/how-to-get-started-with-remot3-it-for-pi/1029).
 
