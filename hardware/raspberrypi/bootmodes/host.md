@@ -7,7 +7,7 @@ The USB host boot mode follows this sequence:
   * Enable power to all downstream ports of the hub
   * For each port, loop for a maximum of two seconds (or five seconds if `program_usb_timeout=1` has been set)
     * Release from reset and wait for D+ to be driven high to indicate that a device is connected
-    * If device is detected
+    * If adevice is detected:
       * Send "Get Device Descriptor"
         * If VID == SMSC && PID == 9500
           * Add device to Ethernet device list
