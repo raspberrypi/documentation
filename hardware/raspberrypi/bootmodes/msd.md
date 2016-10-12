@@ -92,7 +92,7 @@ Edit `/boot/cmdline.txt` so that it uses the USB storage device as the root file
 sudo sed -i "s,root=/dev/mmcblk0p2,root=/dev/sda2," /mnt/target/boot/cmdline.txt
 ```
 
-The same needs to be done for fstab
+The same needs to be done for `fstab`:
 ```
 sudo sed -i "s,/dev/mmcblk0p,/dev/sda," /mnt/target/etc/fstab
 ```
