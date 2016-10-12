@@ -35,16 +35,16 @@ NOTES:
 
 * If there is no SD card inserted, the SD boot mode takes five seconds to fail. To reduce this and fall back to USB more quickly, you can either insert an SD card with nothing on it or use the `program_gpio_bootmode` OTP to only enable USB.
 * The default pull for the GPIOs is defined on page 102 of the [ARM Peripherals datasheet](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf). If the value at boot time does not equal the default pull, then that boot mode is enabled.
-* USB enumeration is a means of enabling power to the downstream devices on a hub then waiting for the devices to pull the D+ and D- lines to indicate if it is either USB 1 or USB 2. This can take time and on some devices it can take up to three seconds for a hard disk drive to spin up and start the enumeration process. Because this is the only way of detecting that the hardware is attached, we have to wait for a minimum amount of time (two seconds). If the device fails to respond after this maximum timeout, it is possible to increase the timeout to five seconds using `program_usb_timeout=1` in **config.txt**.
+* USB enumeration is a means of enabling power to the downstream devices on a hub, then waiting for the device to pull the D+ and D- lines to indicate if it is either USB 1 or USB 2. This can take time: on some devices it can take up to three seconds for a hard disk drive to spin up and start the enumeration process. Because this is the only way of detecting that the hardware is attached, we have to wait for a minimum amount of time (two seconds). If the device fails to respond after this maximum timeout, it is possible to increase the timeout to five seconds using `program_usb_timeout=1` in **config.txt**.
 * MSD takes precedence over Ethernet boot.
-* It is no longer necessary for the first partition to be the FAT partition, the MSD boot will continue to search for a FAT partition beyond the first one.
-* The boot ROM also now supports GUID partitioning and has been tested with hard drives partitioned using Mac, Windows and Linux.
+* It is no longer necessary for the first partition to be the FAT partition, as the MSD boot will continue to search for a FAT partition beyond the first one.
+* The boot ROM also now supports GUID partitioning and has been tested with hard drives partitioned using Mac, Windows, and Linux.
 
-The primary SD card boot mode is as standard set to be GPIOs 49-53 it is possible (although we've not yet enabled) the ability to boot from the secondary SD card on a second set of pins (i.e. to add a secondary SD card to the GPIO pins).
+The primary SD card boot mode is, as standard, set to be GPIOs 49-53. It is possible to boot from the secondary SD card on a second set of pins, i.e. to add a secondary SD card to the GPIO pins. However, we have not yet enabled this ability.
 
 NAND boot and SPI boot modes do work, although they do not yet have full GPU support.
 
-By default the USB device boot mode is enabled at manufacture time, but the USB host boot mode is only enabled with the `program_usb_boot_mode=1` once enabled the processor will use the value of the OTGID pin on the processor to decide between the two modes. On a Raspberry Pi Model B the OTGID pin is driven to '0' and therefore will only boot via host mode once enabled (it is not possible to boot through device mode because of the LAN9515 device in the way)
+The USB device boot mode is enabled by default at the time of manufacture, but the USB host boot mode is only enabled with `program_usb_boot_mode=1`. Once enabled, the processor will use the value of the OTGID pin on the processor to decide between the two modes. On a Raspberry Pi Model B, the OTGID pin is driven to '0' and therefore will only boot via host mode once enabled (it is not possible to boot through device mode because the LAN9515 device is in the way).
 
 The USB will boot as a USB device on Pi Zero or Compute Module if the OTGID pin is left floating (when plugged into a PC for example) so you can 'squirt' the bootcode.bin into the device. The code for doing this is [usbboot](https://github.com/raspberrypi/tools/tree/master/usbboot).
 
