@@ -2,7 +2,7 @@
 This tutorial explains how to boot your Raspberry Pi 3 from a USB mass storage device such as a flash drive or USB hard disk. Be warned that this feature is experimental and may not work with all USB mass storage devices.
 
 ## Program USB Boot Mode
-Before a Pi will network boot, it needs to be booted with a config option to enable USB boot mode. Enabling this config option requires a special `start.elf` and `bootcode.bin` file. These can be installed by using the "next" branch on rpi-update.
+Before a Pi will network boot, it needs to be booted with a config option to enable USB boot mode. Enabling this config option requires special `start.elf` and `bootcode.bin` files. These can be installed by using the "next" branch on `rpi-update`.
 
 Go to the [Downloads page](https://www.raspberrypi.org/downloads/raspbian/) and install Raspbian onto an SD card using `Win32DiskImager` if you are on Windows, or `dd` if you are on Linux/Mac. Boot the Pi.
 
@@ -13,7 +13,7 @@ $ sudo apt-get update; sudo apt-get install rpi-update
 $ sudo BRANCH=next rpi-update
 ```
 
-Then enable USB boot mode with:
+Then enable USB boot mode with this code:
 ```
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
 ```
@@ -30,9 +30,9 @@ Ensure the output `0x3020000a` is correct.
 If you wish, you can remove the `program_usb_boot_mode` line from config.txt (make sure there is no blank line at the end) so that if you put the SD card in another Pi, it won't program USB boot mode. You can do this with `sudo nano /boot/config.txt`, for example.
 
 ## Prepare the USB storage device
-Now that your Pi 3 is USB boot-enabled, we can prepare a USB storage device to boot from. Start by inserting the USB storage device (which will be completely erased) into the Pi. Rather than downloading the Raspbian image again, we will copy it from the SD card on the Pi. The source device (sd card) will be `/dev/mmcblk0` and the destination device (USB disk) should be `/dev/sda` assuming you have no other USB devices connected.
+Now that your Pi is USB boot-enabled, we can prepare a USB storage device to boot from. Start by inserting the USB storage device (which will be completely erased) into the Pi. Rather than downloading the Raspbian image again, we will copy it from the SD card on the Pi. The source device (sd card) will be `/dev/mmcblk0` and the destination device (USB disk) should be `/dev/sda` assuming you have no other USB devices connected.
 
-We will start by using parted to create a 100MB fat32 partition, followed by a Linux ext4 partition that will take up the rest of the disk.
+We will start by using Parted to create a 100MB FAT32 partition, followed by a Linux ext4 partition that will take up the rest of the disk.
 
 ```
 sudo parted /dev/sda
