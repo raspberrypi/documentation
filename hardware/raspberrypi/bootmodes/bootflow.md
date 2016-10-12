@@ -6,7 +6,7 @@ Next the boot ROM checks each of the boot sources for a file called bootcode.bin
 
 * 2837 boots
 * Reads boot ROM enabled boot modes from OTP
-* Uses gpio_bootmode to disable some modes by reading GPIOs 22-26 or 39-43 to see if the default values do not equal the default pull to '0'.  If it is low it will disable that boot mode for each of SD1, SD2, NAND, SPI, USB. If the value read is a '1' then that boot mode is enabled, note this cannot enable boot modes that have not already been enabled in the OTP. The default pull resistance is around 50k ohms, so a smaller pull up of 5K should suffice to enable the boot mode but still allow the GPIO to be operational without consuming too much power.
+* Uses gpio_bootmode to disable some modes by reading GPIOs 22-26 or 39-43 to see if the default values do not equal the default pull to '0'.  If it is low it will disable that boot mode for each of SD1, SD2, NAND, SPI, USB. If the value read is a '1' then that boot mode is enabled (note this cannot enable boot modes that have not already been enabled in the OTP). The default pull resistance is around 50k ohms, so a smaller pull up of 5K should suffice to enable the boot mode but still allow the GPIO to be operational without consuming too much power.
 * If enabled: Check primary SD for bootcode.bin
   * Success - Boot
   * Fail - timeout (5 seconds)
