@@ -10,7 +10,8 @@ Official images for recommended operating systems are available to download from
 
 Alternative distributions are available from third-party vendors.
 
-After downloading the `.zip` file, unzip it to get the image file (`.img`) for writing to your SD card.
+After downloading the `.zip` file, unzip it to get the image file (`.img`) for writing to your SD card. You can unzip the file by issuing the following command at the linux prompt:
+`unzip my-downloaded-image.img.zip` in the folder where your image lives.
 
 ## Writing an image to the SD card
 
