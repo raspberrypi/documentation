@@ -55,13 +55,13 @@ Number  Start   End     Size    Type     File system  Flags
 ```
 Your `parted print` output should look similar to the one above.
 
-Create the boot and root filesystems:
+Create the boot and root file systems:
 ```
 sudo mkfs.vfat -n BOOT -F 32 /dev/sda1
 sudo mkfs.ext4 /dev/sda2
 ```
 
-Mount the target filesystems and copy the running raspbian system to it:
+Mount the target file system and copy the running raspbian system to it:
 ```
 sudo mkdir /mnt/target
 sudo mount /dev/sda2 /mnt/target/
@@ -86,7 +86,7 @@ sudo umount sys
 sudo umount proc
 ```
 
-Edit `/boot/cmdline.txt` so that it uses the USB storage device as the root filesystem instead of the SD card.
+Edit `/boot/cmdline.txt` so that it uses the USB storage device as the root file system instead of the SD card.
 
 ```
 sudo sed -i "s,root=/dev/mmcblk0p2,root=/dev/sda2," /mnt/target/boot/cmdline.txt
@@ -97,7 +97,7 @@ The same needs to be done for fstab
 sudo sed -i "s,/dev/mmcblk0p,/dev/sda," /mnt/target/etc/fstab
 ```
 
-Finally, unmount the target filesystems, and power off the Pi.
+Finally, unmount the target file systems, and power the Pi off.
 ```
 cd ~
 sudo umount /mnt/target/boot 
@@ -105,4 +105,4 @@ sudo umount /mnt/target
 sudo poweroff 
 ```
 
-Disconnect the power supply from the Pi, remove the SD card and reconnect the power supply. If all has gone well the Pi should begin to boot after a few seconds.
+Disconnect the power supply from the Pi, remove the SD card, and reconnect the power supply. If all has gone well, the Pi should begin to boot after a few seconds.
