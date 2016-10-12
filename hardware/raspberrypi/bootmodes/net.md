@@ -1,6 +1,6 @@
 # Network booting
 
-This section describes how network booting works. There is also a [tutorial](net_tutorial.md) to set up a working bootable system.
+This section describes how network booting works. There is also a [tutorial](net_tutorial.md) available on setting up a working bootable system.
 
 To network boot, the boot ROM does the following:
 
@@ -17,7 +17,7 @@ To network boot, the boot ROM does the following:
 * TFTP RRQ 'bootsig.bin'
   * This will normally result in an error `file not found`. This is to be expected, and TFTP boot servers should be able to handle it.
 
-From this point the bootcode.bin code continues to load the system. The first file it will try to access is [`serial_number`]/start.elf. If this does not result in a error then any other files to be read will be pre-pended with the `serial_number`. This is useful because it enables you to create separate directories with separate start.elf / kernels for your Pis
+From this point the `bootcode.bin` code continues to load the system. The first file it will try to access is [`serial_number`]/start.elf. If this does not result in a error then any other files to be read will be pre-pended with the `serial_number`. This is useful because it enables you to create separate directories with separate start.elf / kernels for your Pis
 To get the serial number for the device you can either try this boot mode and see what file is accessed using tcpdump / wireshark, or you can run a standard Raspbian SD card and `cat /proc/cpuinfo`.
 
 If you put all your files into the root of your tftp directory then all following files will be accessed from there.
@@ -87,7 +87,7 @@ to a bug in the boot ROM, you may need to add three spaces to the end of the str
 
 ### TFTP file read
 
-You will know whether the Vendor Option is correctly specified because if it is you'll see a subsequent TFTP RRQ packet being sent. RRQs can be replied to by either the first block of data or an error saying file not found. In a couple of cases they even receive the first packet and then the transmission is aborted by the Pi (this happens when checking whether a file exists). The example below is just three packets: the original read request, the first data block (which is always 516 bytes containing a header and 512 bytes of data, although the last block is always less than 512 bytes and may be zero length), and the third packet (the ACK which contains a frame number to match the frame number in the data block).
+You will know whether the Vendor Option is correctly specified: if it is, you'll see a subsequent TFTP RRQ packet being sent. RRQs can be replied to by either the first block of data or an error saying file not found. In a couple of cases they even receive the first packet and then the transmission is aborted by the Pi (this happens when checking whether a file exists). The example below is just three packets: the original read request, the first data block (which is always 516 bytes containing a header and 512 bytes of data, although the last block is always less than 512 bytes and may be zero length), and the third packet (the ACK which contains a frame number to match the frame number in the data block).
 
 ```
 16:44:41.224964 IP (tos 0x0, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 49)
