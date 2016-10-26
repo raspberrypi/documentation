@@ -211,4 +211,4 @@ You should substitute the IP address here with the IP address you have noted dow
 
 Finally, edit /nfs/client1/etc/fstab and remove the /dev/mmcblkp1 and p2 lines (only proc should be left).
 
-Good luck! If it doesn't boot first time keep trying. It can take a minute or so for the Pi to boot, so be patient.
+Good luck! If it doesn't boot on the first attempt, keep trying. It can take a minute or so for the Pi to boot, so be patient.
