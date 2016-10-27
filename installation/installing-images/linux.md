@@ -24,7 +24,7 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
 
 - Also note that if you are not logged in as root you will need to prefix this with `sudo`.
 
-- The `dd` command does not give any information of its progress and so may appear to have frozen; it could take more than five minutes to finish writing to the card. If your card reader has an LED it may blink during the write process. To see the progress of the copy operation you can run `pkill -USR1 -n -x dd` in another terminal, prefixed with `sudo` if you are not logged in as root. The progress will be displayed in the original window and not the window with the `pkill` command; it may not display immediately, due to buffering.
+- The `dd` command does not give any information of its progress and so may appear to have frozen; it could take more than five minutes to finish writing to the card. In some operating systems you can use ctrl+t whilst the command is running to see the progress. If your card reader has an LED it may blink during the write process. To see the progress of the copy operation you can run `pkill -USR1 -n -x dd` in another terminal, prefixed with `sudo` if you are not logged in as root. The progress will be displayed in the original window and not the window with the `pkill` command; it may not display immediately, due to buffering.
 
 - Instead of `dd` you can use `dcfldd`; it will give a progress report about how much has been written.
 
