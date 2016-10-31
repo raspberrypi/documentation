@@ -14,7 +14,7 @@ $ sudo apt-get update; sudo apt-get install rpi-update
 $ sudo BRANCH=next rpi-update
 ```
 
-Now, enable USB boot mode with:
+Now, enable USB boot mode with the following command:
 ```
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
 ```
@@ -41,7 +41,7 @@ sudo apt-get install rsync
 sudo rsync -xa --progress --exclude /nfs / /nfs/client1
 ```
 
-Regenerate ssh host keys on client filesystem by chrooting into it:
+Regenerate ssh host keys on the client filesystem by chrooting into it:
 ```
 cd /nfs/client1
 sudo mount --bind /dev dev
@@ -56,7 +56,7 @@ sudo umount sys
 sudo umount proc
 ```
 
-You need to find the settings of your local network. You need to find the address of your router (or gateway), which you can find with:
+Now, you have to find the settings of your local network. You need to find the address of your router (or gateway), which can be done with:
 ```
 ip route | grep default | awk '{print $3}'
 ```
