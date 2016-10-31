@@ -14,7 +14,7 @@ $ sudo apt-get update; sudo apt-get install rpi-update
 $ sudo BRANCH=next rpi-update
 ```
 
-Then enable USB boot mode with:
+Now, enable USB boot mode with:
 ```
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
 ```
@@ -28,7 +28,7 @@ $ vcgencmd otp_dump | grep 17:
 
 Ensure the output `0x3020000a` is correct.
 
-The client configuration is almost done. The final thing to do is to remove the `program_usb_boot_mode` line from config.txt (make sure there is no blank line at the end). You can do this with `sudo nano /boot/config.txt` for example. Finally, shut down the client Pi with `sudo poweroff`.
+The client configuration is almost done. The final thing to do is to remove the `program_usb_boot_mode` line from config.txt (make sure there is no blank line at the end). You can do this with `sudo nano /boot/config.txt`, for example. Finally, shut the client Pi down with `sudo poweroff`.
 
 ## Server configuration
 Plug the SD card into the server Pi. Boot the server. Before you do anything else, make sure you have run `sudo raspi-config` and expanded the root filesystem to take up the entire SD card.
