@@ -44,4 +44,4 @@ Resist the temptation to enable or disable a lot of things on your first attempt
 
 ## Exiting, saving, and loading configurations
 
-Once you're done making the changes you want, press Escape until you're prompted to save your new configuration. By default, this will save to the `.config` file. You can save and load configurations by copying this file around.
+Once you're done making the changes you want, press Escape until you're prompted to save your new configuration. By default, this will save to the `.config` file. You can save and load configuration by copying this file around.
