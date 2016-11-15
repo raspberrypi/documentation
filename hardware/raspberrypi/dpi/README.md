@@ -177,6 +177,3 @@ dpi_output_format=0x6f005
 hdmi_timings=800 0 40 48 88 480 0 13 3 32 0 0 0 60 0 32000000 6
 ```
 
-## Useful Third Party Instructions / Examples
-
-[How to attach an LCD screen to a Pi](http://blog.reasonablycorrect.com/raw-dpi-raspberry-pi/). Note that the author compiles a dt-blob.bin file which is now unnecessary. Please use the relevant Linux Device Tree overlay.
