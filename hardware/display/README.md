@@ -52,3 +52,7 @@ Read our troubleshooting steps, tips and tricks here: [Raspberry Pi Display Trou
 * Outer dimensions: 192.96 x 112.76mm
 * Viewable area: 154.08 x 85.92mm
 * [Download mechanical drawing (PDF, 592kb)](7InchDisplayDrawing-14092015.pdf)
+
+Also further mechanical information concerning radius of corners and thickness of glass
+
+[Further mechanical drawing](radius.png)
