@@ -68,6 +68,8 @@ git clone https://github.com/raspberrypi/tools
 
 You can then copy the `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian` directory to a common location, and add `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin` to your $PATH in the `.bashrc` in your home directory. For 64-bit host systems, use `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin`. While this step isn't strictly necessary, it does make it easier for later command lines!
 
+**Note**: The newest toolchain is available at <https://releases.linaro.org/components/toolchain/binaries/latest/arm-linux-gnueabihf/>.
+
 ### Get sources
 
 To get the sources, refer to the original [GitHub](https://github.com/raspberrypi/linux) repository for the various branches.
