@@ -9,4 +9,4 @@ Please refer to:
 - [BCM2836 ARM-local peripherals](QA7_rev3.4.pdf)
 - [Cortex-A7 MPcore Processor Reference Manual](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0464f/index.html)
 
-Also see the Raspberry Pi 1's chip [BCM2835](../bcm2835/README.md)
+Also see the chip used in the Raspberry Pi Model A, B, B+, the Compute Module, and the Raspberry Pi Zero, [BCM2835](../bcm2835/README.md)

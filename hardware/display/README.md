@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Raspberry Pi display is an LCD display which connects to the Raspberry Pi through the DSI connector, it allows the use of both the HDMI and LCD displays at the same time in some situations (this implies requiring software support)
+The Raspberry Pi display is an LCD display which connects to the Raspberry Pi through the DSI connector. It allows for the use of both the HDMI and LCD displays at the same time in some situations (this requires software support).
 
 ## Board Support
 
@@ -10,9 +10,9 @@ The DSI display is designed to work with Raspberry Pi models that have mounting 
 
 ### Attaching to Model A/B boards
 
-The DSI connector on Model A/B boards does not have the I2C connections required to talk to the touchscreen controller and DSI controller. This can be worked around by using the additional set of jumpers provided with the display kit to wire up the I2C bus on the GPIO pins to the display controller board.
+The DSI connector on Model A/B boards does not have the I2C connections required to talk to the touchscreen controller and DSI controller. This can be worked around by using the additional set of jumper cables provided with the display kit to wire the I2C bus on the GPIO pins up to the display controller board.
 
-Using the wire jumpers, connect SCL/SDA on the GPIO header to the horizontal pins marked SCL/SDA on the display board. It is also recommended to power the Model A/B via the GPIO pins using the jumpers.
+Using the jumper cables, connect SCL/SDA on the GPIO header to the horizontal pins marked SCL/SDA on the display board. It is also recommended to power the Model A/B via the GPIO pins using the jumpers.
 
 For the GPIO header pinout, see this diagram: http://pinout.xyz/
 
@@ -20,7 +20,7 @@ DSI display autodetection is disabled by default on these boards. To enable dete
 
 `ignore_lcd=0`
 
-Power the setup via the PWR IN micro-USB connector on the Display board. Do not power the setup via the Pi's micro-USB port: the input polyfuse's maxiumum current rating will be exceeded as the display consumes approximately 400mA.
+Power the setup via the `PWR IN` micro-USB connector on the display board. Do not power the setup via the Pi's micro-USB port: the input polyfuse's maxiumum current rating will be exceeded as the display consumes approximately 400mA.
 
 NB: With the display connected to the GPIO I2C pins, the GPU will assume control of the respective I2C bus. The host operating system should not access this I2C bus as simultaneous use of the bus by both the GPU and Linux will result in sporadic crashes.
 
@@ -52,3 +52,7 @@ Read our troubleshooting steps, tips and tricks here: [Raspberry Pi Display Trou
 * Outer dimensions: 192.96 x 112.76mm
 * Viewable area: 154.08 x 85.92mm
 * [Download mechanical drawing (PDF, 592kb)](7InchDisplayDrawing-14092015.pdf)
+
+Also further mechanical information concerning radius of corners and thickness of glass
+
+[Further mechanical drawing](radius.png)

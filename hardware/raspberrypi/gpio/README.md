@@ -4,7 +4,7 @@ General Purpose Input/Output pins on the Raspberry Pi
 
 ## Overview
 
-This page expands on the technical features of the GPIO pins available on BCM2835 in general. For usage examples, see the [GPIO Usage](../../../usage/gpio/README.md) section. When reading this page, reference should be made to the BCM2835 ARM Peripherals [Datasheet](../bcm2835/README.md), section 6.
+This page expands on the technical features of the GPIO pins available on BCM2835 in general. For usage examples, see [GPIO Usage for A+ and newer](../../../usage/gpio-plus-and-raspi2/README.md) or [GPIO Usage for models A and B](../../../usage/gpio/README.md). When reading this page, reference should be made to the BCM2835 ARM Peripherals [Datasheet](../bcm2835/README.md), section 6.
 
 GPIO pins can be configured as either general-purpose input, general-purpose output or as one of up to 6 special alternate settings, the functions of which are pin-dependant.
 
@@ -44,4 +44,4 @@ The normal rising/falling edge detection has a small amount of synchronisation b
 
 Almost all of the GPIO pins have alternative functions. Peripheral blocks internal to BCM2835 can be selected to appear on one or more of a set of GPIO pins, for example the I2C busses can be configured to at least 3 separate locations. Pad control, such as drive strength or Schmitt filtering, still applies when the pin is configured as an alternate function.
 
-For more detailed information see the [Low level peripherals](http://elinux.org/RPi_Low-level_peripherals) page on the elinux wiki
+

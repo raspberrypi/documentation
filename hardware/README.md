@@ -1,6 +1,6 @@
 # Raspberry Pi Hardware
 
-Technical information about the Raspberry Pi hardware, including official add-ons and the Pi itself.
+Technical information about Raspberry Pi hardware, including official add-ons and the Pi itself.
 
 ## Contents
 

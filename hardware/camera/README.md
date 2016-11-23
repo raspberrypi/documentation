@@ -1,22 +1,22 @@
 # Camera Module
 
-The Raspberry Pi camera module is an official product from the Raspberry Pi Foundation. The original 5-megapixel model was [released](https://www.raspberrypi.org/blog/camera-board-available-for-sale/) in 2013, and an 8-megapixel V2 was [released](https://www.raspberrypi.org/blog/new-8-megapixel-camera-board-sale-25/) in 2016. For both iterations of the camera there are visible light and infra-red versions.
+The Raspberry Pi Camera Module is an official product from the Raspberry Pi Foundation. The original 5-megapixel model was [released](https://www.raspberrypi.org/blog/camera-board-available-for-sale/) in 2013, and an 8-megapixel Camera Module v2 was [released](https://www.raspberrypi.org/blog/new-8-megapixel-camera-board-sale-25/) in 2016. For both iterations, there are visible light and infrared versions.
 
 ## Hardware specification
 
-| | Camera V1 | Camera V2 |
+| | Camera Module v1 | Camera Module v2 |
 | --- | --- | --- |
 | Net price | $25 | $25 |
-| Size | around 25 x 24 x 9 mm | |
+| Size | Around 25 × 24 × 9 mm | |
 | Weight | 3g | |
 | Still resolution | 5 Megapixels | 8 Megapixels |
-| Video modes | 1080p30, 720p60 and 640x480p60/90 | 1080p30, 720p60 and 640x480p60/90 |
+| Video modes | 1080p30, 720p60 and 640 × 480p60/90 | 1080p30, 720p60 and 640 × 480p60/90 |
 | Linux integration | V4L2 driver available | V4L2 driver available |
 | C programming API | OpenMAX IL and others available | OpenMAX IL and others available |
 | Sensor | OmniVision OV5647 | [Sony IMX219](http://www.sony.net/Products/SC-HP/new_pro/april_2014/imx219_e.html) |
-| Sensor resolution | 2592 x 1944 pixels | 3280 x 2464 pixels |
-| Sensor image area | 3.76 x 2.74 mm | |
-| Pixel size | 1.4 µm x 1.4 µm | |
+| Sensor resolution | 2592 × 1944 pixels | 3280 × 2464 pixels |
+| Sensor image area | 3.76 × 2.74 mm | |
+| Pixel size | 1.4 µm × 1.4 µm | |
 | Optical size	| 1/4" | |
 | Full-frame SLR lens equivalent | 35 mm | |
 | S/N ratio | 36 dB | |
@@ -40,7 +40,7 @@ The Raspberry Pi camera module is an official product from the Raspberry Pi Foun
 | Automatic white balance (AWB) | No - done by ISP instead |
 | Automatic black level calibration (ABLC) | No - done by ISP instead |
 | Automatic 50/60 Hz luminance detection | No - done by ISP instead |
-| Frame rate up to 120 fps | max 90fps. Limitations on frame size for the higher frame rates (VGA only for above 47fps) |
+| Frame rate up to 120 fps | Max 90fps. Limitations on frame size for the higher frame rates (VGA only for above 47fps) |
 | AEC/AGC 16-zone size/position/weight control | No - done by ISP instead |
 | Mirror and flip | Yes |
 | Cropping | No - done by ISP instead (except 1080p mode) |
@@ -49,7 +49,7 @@ The Raspberry Pi camera module is an official product from the Raspberry Pi Foun
 | 10-bit RAW RGB data | Yes - format conversions available via GPU |
 | Support for LED and flash strobe mode | LED flash |
 | Support for internal and external frame synchronisation for frame exposure mode | No |
-| Support for 2x2 binning for better SNR in low light conditions | Anything output res below 1296x976 will use the 2x2 binned mode |
+| Support for 2 × 2 binning for better SNR in low light conditions | Anything output res below 1296 x 976 will use the 2 x 2 binned mode |
 | Support for horizontal and vertical sub-sampling | Yes, via binning and skipping |
 | On-chip phase lock loop (PLL) | Yes |
 | Standard serial SCCB interface | Yes |
@@ -75,4 +75,4 @@ Full camera software documentation can be found at [raspbian/applications/camera
 
 ## Mechanical drawing
 
-- Camera module V2 [PDF](rpi-cam-v2_1-dimensions.pdf)
+- Camera Module v2 [PDF](rpi-cam-v2_1-dimensions.pdf)

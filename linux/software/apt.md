@@ -1,14 +1,14 @@
 # APT
 
-The easiest way to manage installing, upgrading, and removing software is using APT (Advanced Packaging Tool) which comes from Debian. If a piece of software is packaged in Debian and works on the Raspberry Pi's ARM architecture, it should also be available in Raspbian.
+The easiest way to manage installing, upgrading, and removing software is using APT (Advanced Packaging Tool) from Debian. If a piece of software is packaged in Debian and it works on the Raspberry Pi's ARM architecture, it should also be available in Raspbian.
 
 To install or remove packages you need root user permissions, so your user needs to be in `sudoers` or you must be logged in as `root`. Read more about [users](../usage/users.md) and [root](../usage/root.md).
 
-To install new packages, or update existing ones, you will need an internet connection.
+To install new packages, or update existing ones, you'll need an internet connection.
 
 Note that installing software uses up disk space on your SD card, so you should keep an eye on disk usage and use an appropriately sized SD card.
 
-Also note that a lock is performed while software is installing, so you cannot install multiple packages at the same time.
+Also note that a lock is performed while software is installing, so you can't install multiple packages at the same time.
 
 ## Software sources
 
@@ -24,7 +24,7 @@ sudo apt-get update
 sudo apt-get install tree
 ```
 
-Typing this command should inform the user how much disk space the package will take up and asks for confirmation of the package installation. Entering `Y` (or just hitting `Enter`, as yes is the default action) will allow the installation to occur. This can be bypassed by adding the `-y` flag to the command:
+Typing this command should inform the user how much disk space the package will take up and asks for confirmation of the package installation. Entering `Y` (or just pressing `Enter`, as yes is the default action) will allow the installation to occur. This can be bypassed by adding the `-y` flag to the command:
 
 ```bash
 sudo apt-get install tree -y
@@ -34,7 +34,7 @@ Installing this package makes `tree` available for the user.
 
 ## Using an installed package
 
-`tree` is a command line tool which provides a visualisation of the directory structure of the current directory, and all it contains.
+`tree` is a command-line tool which provides a visualisation of the structure of the current directory, and all its contents.
 
 - Typing `tree` runs the tree command. For example:
 
@@ -50,7 +50,7 @@ tree
 
 ```
 
-- Typing `man tree` gives the manual entry for the package `tree`
+- Typing `man tree` gives the manual entry for the package `tree`.
 - Typing `whereis tree` shows where `tree` lives:
 
 ```bash

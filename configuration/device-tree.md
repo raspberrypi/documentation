@@ -1,10 +1,10 @@
-# Device Trees, overlays and parameters
+# Device Trees, overlays, and parameters
 
 Raspberry Pi's latest kernels and firmware, including Raspbian and NOOBS releases, now by default use Device Tree (DT) to manage some resource allocation and module loading. This change is to alleviate the problem of multiple drivers contending for system resources, and to allow HAT modules to be auto-configured.
 
 The current implementation is not a pure Device Tree system - there is still board support code that creates some platform devices - but the external interfaces (I2C, I2S, SPI), and the audio devices that use them, must now be instantiated using a Device Tree Blob (DTB) passed to the kernel by the loader (`start.elf`).
 
-The main impact of using Device Tree is to change from *everything on*, relying on module blacklisting to manage contention, to *everything off unless requested by the DTB*. In order to continue to use external interfaces and the peripherals that attach to them, you will need to add some new settings to your `config.txt`. See [Part 3](#part3) for more information, but in the meantime here are a few examples:
+The main impact of using Device Tree is to change from **everything on**, relying on module blacklisting to manage contention, to **everything off unless requested by the DTB**. In order to continue to use external interfaces and the peripherals that attach to them, you will need to add some new settings to your `config.txt`. Full details are given in [Part 3](#part3), but these are a few examples:
 
 ```
 # Uncomment some or all of these to enable the optional hardware interfaces
@@ -19,6 +19,7 @@ The main impact of using Device Tree is to change from *everything on*, relying 
 #dtoverlay=hifiberry-digi
 #dtoverlay=iqaudio-dac
 #dtoverlay=iqaudio-dacplus
+#dtoverlay=audioinjector-wm8731-audio
 
 # Uncomment this to enable the lirc-rpi module
 #dtoverlay=lirc-rpi
@@ -38,8 +39,6 @@ A Device Tree represents the hardware configuration as a hierarchy of nodes. Eac
 
 <a name="part1.1"></a>
 ### 1.1: Basic DTS syntax
-
-[ This section borrows heavily from the [elinux wiki](http://elinux.org/Device_Tree_Usage) ]
 
 Device Trees are usually written in a textual form known as Device Tree Source (DTS) and stored in files with a `.dts` suffix. DTS syntax is C-like, with braces for grouping and semicolons at the end of each line. Note that DTS requires semicolons after closing braces - think of C `struct`s rather than functions. The compiled binary format is referred to as Flattened Device Tree (FDT) or Device Tree Blob (DTB), and is stored in `.dtb` files.
 
@@ -168,12 +167,6 @@ How to construct a Device Tree, and how best to use it to capture the configurat
 `compatible` properties are the link between the hardware description and the driver software. When an OS encounters a node with a `compatible` property, it looks it up in its database of device drivers to find the best match. In Linux, this usually results in the driver module being automatically loaded, provided it has been appropriately labelled and not blacklisted.
 
 The `status` property indicates whether a device is enabled or disabled. If the `status` is `ok`, `okay` or absent, then the device is enabled. Otherwise, `status` should be `disabled`, so the device will be disabled. It can be useful to place devices in a `.dtsi` file with the status set to `disabled`. A derived configuration can then include that `.dtsi` and set the status for the devices which are needed to `okay`.
-
-Here are some articles about writing Device Trees:
-
-- [http://elinux.org/Device_Tree_Usage](http://elinux.org/Device_Tree_Usage)
-- [elinux.org/...](http://elinux.org/images/4/48/Experiences_With_Device_Tree_Support_Development_For_ARM-Based_SOC%27s.pdf)
-- [power.org/...](https://www.power.org/download.php?popup=1&file=7920&referer=/documentation/epapr-version-1-1/) (requires registration...)
 
 <a name="part2"></a>
 ## Part 2: Device Tree overlays
