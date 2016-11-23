@@ -521,7 +521,7 @@ The alternative filename on the boot partition to use when loading the kernel; t
 
 ### kernel_address
 
-The memory address into which the kernel image should be loaded.
+The memory address into which the kernel image should be loaded. 32-bit kernels are loaded to address `0x8000` by default, and 64-bit kernels to address `0x80000`. If `kernel_old` is set, kernels are loaded to the address `0x0`.
 
 ### kernel_old
 
