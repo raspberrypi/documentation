@@ -1,14 +1,24 @@
-# GPIO: Raspberry Pi Models A and B
+# GPIO on Raspberry Pi
 
 ### An introduction to GPIO and physical computing on the Raspberry Pi
 
-One powerful feature of the Raspberry Pi is the row of GPIO (general purpose input/output) pins along the edge of the board, next to the yellow video out socket.
+One powerful feature of the Raspberry Pi is the row of GPIO (general purpose input/output) pins along the top edge of the board.
+
+![GPIO pins](images/pi2-gpio-pins.jpg)
+
+Models A and B:
 
 ![GPIO pins](images/a-and-b-gpio-pins.jpg)
 
-These pins are a physical interface between the Pi and the outside world. At the simplest level, you can think of them as switches that you can turn on or off (input) or that the Pi can turn on or off (output). Seventeen of the 26 pins are GPIO pins; the others are power or ground pins.
+These pins are a physical interface between the Pi and the outside world. At the simplest level, you can think of them as switches that you can turn on or off (input) or that the Pi can turn on or off (output). Of the 40 pins, 26 are GPIO pins and the others are power or ground pins (plus two ID EEPROM pins which you should not play with unless you know your stuff!)
+
+![GPIO layout](images/pi2-gpio-numbers.png)
+
+On models A and B, seventeen of the 26 pins are GPIO pins; the others are power or ground pins.
 
 ![GPIO layout](images/a-and-b-gpio-numbers.png)
+
+Note that the numbering of the GPIO pins is rather weird. *Appendix 1: A note on pin numbering*  below explains why.
 
 ## What are they for? What can I do with them?
 
@@ -29,6 +39,10 @@ Ignoring the Pi for a moment, one of the simplest electrical circuits that you c
 When we use a GPIO pin as an output, the Raspberry Pi replaces **both the switch and the battery** in the above diagram. Each pin can turn on or off,or go HIGH or LOW in computing terms. When the pin is HIGH it outputs 3.3 volts (3v3); when the pin is LOW it is off.
 
 Here's the same circuit using the Raspberry Pi. The LED is connected to a GPIO pin (which can output +3v3) and a ground pin (which is 0v and acts like the negative terminal of the battery):
+
+![GPIO wth LED](images/pi2-gpio-led.png)
+
+LED connection on Models A and B:
 
 ![GPIO wth LED](images/a-and-b-gpio-led.png)
 
@@ -75,6 +89,8 @@ These are the GPIO pins as the computer sees them. The numbers don't make any se
 #### Physical numbering
 
 The other way to refer to the pins is by simply counting across and down from pin 1 at the top left (nearest to the SD card). This is 'physical numbering' and it looks like this:
+
+![GPIO layout](images/pi2-physical-pin-numbers.png)
 
 ![GPIO layout](images/a-and-b-physical-pin-numbers.png)
 
