@@ -4,7 +4,7 @@
 
 One powerful feature of the Raspberry Pi is the row of GPIO (general purpose input/output) pins along the edge of the board, next to the yellow video out socket.
 
-![GPIO pins](images/gpio-pins.jpg)
+![GPIO pins](images/a-and-b-gpio-pins.jpg)
 
 These pins are a physical interface between the Pi and the outside world. At the simplest level, you can think of them as switches that you can turn on or off (input) or that the Pi can turn on or off (output). Seventeen of the 26 pins are GPIO pins; the others are power or ground pins.
 
@@ -30,7 +30,7 @@ When we use a GPIO pin as an output, the Raspberry Pi replaces **both the switch
 
 Here's the same circuit using the Raspberry Pi. The LED is connected to a GPIO pin (which can output +3v3) and a ground pin (which is 0v and acts like the negative terminal of the battery):
 
-![GPIO wth LED](images/gpio-led.png)
+![GPIO wth LED](images/a-and-b-gpio-led.png)
 
 The next step is to write a program to tell the pin to go HIGH or LOW. Here's an example using [Python](https://www.raspberrypi.org/learning/quick-reaction-game/) (see Step 2), and here's how to do it in [Scratch](https://www.raspberrypi.org/learning/robot-antenna/).
 
