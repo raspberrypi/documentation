@@ -28,7 +28,7 @@ Browse to the default web page either on the Pi or from another computer on the 
 
 ### Changing the default web page
 
-NGINX defaults its web page location to `/usr/share/nginx/www` on Raspbian. Navigate to this folder and edit or replace index.html as you like. You can confirm the default page location at `/etc/nginx/sites-available` on the line which starts with 'root', should you need to.
+NGINX defaults its web page location to `/var/www/html` on Raspbian. Navigate to this folder and edit or replace index.nginx-debian.html as you like. You can confirm the default page location at `/etc/nginx/sites-available` on the line which starts with 'root', should you need to.
 
 
 ## Additional - Install PHP
