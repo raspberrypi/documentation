@@ -8,7 +8,7 @@ A guide to setting up your Raspberry Pi
 
 - [SD Card](../installation/sd-cards.md)
     - We recommend an 8GB class 4 SD card, ideally preinstalled with [NOOBS](../installation/noobs.md).
-- [Display & connectivity cable](monitor-connection.md)
+- [Display and connectivity cable](monitor-connection.md)
     - Any HDMI/DVI monitor and any TV should work as a display for the Pi. For best results, use one with HDMI input, but other connections are available for older devices.
 - Keyboard and mouse
     - Any standard USB keyboard and mouse will work with your Raspberry Pi.
