@@ -18,7 +18,7 @@ You can remove the password for the user `bob` with `sudo passwd bob -d`.
 
 You can create additional users on your Raspbian installation with the `adduser` command.
 
-Enter `sudo adduser bob` and you'll be prompted for a password for the new user `bob`. Leave this blank if you don't want a password.
+Enter `sudo useradd bob` and you'll be prompted for a password for the new user `bob`. Leave this blank if you don't want a password.
 
 ### Home folder
 
