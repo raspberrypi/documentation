@@ -135,7 +135,7 @@ Change the amount of memory made available to the GPU.
 
 Enable/disable remote command line access to your Pi using SSH.
 
-SSH allows you to remotely access the command line of the Raspberry Pi from another computer. Disabling this ensures the SSH service does not start on boot, freeing up processing resources. Read more about using SSH on the [SSH documentation page](../remote-access/ssh/README.md). Note that SSH is enabled by default. If connecting your Pi directly to a public network, you should disable SSH unless you have set up secure passwords for all users.
+SSH allows you to remotely access the command line of the Raspberry Pi from another computer. SSH is disabled by default. Read more about using SSH on the [SSH documentation page](../remote-access/ssh/README.md). If connecting your Pi directly to a public network, you should not enable SSH unless you have set up secure passwords for all users.
 
 <a name="device-tree"></a>
 #### Device Tree
