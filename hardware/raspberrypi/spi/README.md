@@ -66,7 +66,6 @@ CE   - Chip Enable (often called Chip Select)
 MOSI - Master Out Slave In
 MISO - Master In Slave Out
 MOMI - Master Out Master In
-MIMO - Master In Master Out
 ```
 
 #### Standard mode
@@ -75,7 +74,7 @@ In Standard SPI master mode the peripheral implements the standard 3 wire serial
 
 #### Bidirectional mode
 
-In bidirectional SPI master mode the same SPI standard is implemented except that a single wire is used for data (MIMO) instead of two as in standard mode (MISO and MOSI).
+In bidirectional SPI master mode the same SPI standard is implemented except that a single wire is used for data (MOMI) instead of two as in standard mode (MISO and MOSI). In this mode, the MOSI pin serves as MOMI pin,
 
 #### LoSSI mode (Low Speed Serial Interface)
 
@@ -152,9 +151,10 @@ SPI_CPOL    - Clock polarity
 SPI_CPHA    - Clock phase
 SPI_CS_HIGH - Chip Select active high
 SPI_NO_CS   - 1 device per bus, no Chip Select
+SPI_3WIRE   - Bidirectional mode, data in and out pin shared
 ```
 
-Bidirectional mode is currently not supported.
+Bidirectional or "3-wire" mode is supported by the spi-bcm2835 kernel module. Please note that in this mode, either the tx or rx field of the spi_transfer struct must be a NULL pointer, since only half-duplex communication is possible. Otherwise, the transfer will fail. The spidev_test.c source code does not consider this correctly and therefore does not work at all in 3-wire mode.
 
 ### Supported bits per word
 
