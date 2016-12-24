@@ -65,7 +65,7 @@ Taken from this [forum post](https://www.raspberrypi.org/forums/viewtopic.php?f=
 Install the necessary software and run the calibration program as follows:
 
 ````
-sudp apt-get update
+sudo apt-get update
 sudo apt-get install octave -y
 cd
 cp /usr/share/librtimulib-utils/RTEllipsoidFit ./ -a
