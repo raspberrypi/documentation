@@ -17,6 +17,13 @@ Open the `wpa-supplicant` configuration file in nano:
 
 `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`  
 
+At the top of the file make sure that `update_config=1` is on a new line
+
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+```
+
 Go to the bottom of the file and add the following:   
 
 ```
@@ -36,6 +43,12 @@ network={
 ```
    
 Now save the file by pressing **Ctrl+X** then **Y**, then finally press **Enter**.  
+
+You can verify that the configuration file `wpa_supplicant.conf` works by using the command:
+
+```
+sudo wpa_supplicant -iwlan0 -c/etc/wpa_supplicant/wpa_supplicant.conf -d
+```
 
 At this point, `wpa-supplicant` will normally notice a change has occurred within a few seconds, and it will try and connect to the network. If it does not, either manually restart the interface with `sudo ifdown wlan0` and `sudo ifup wlan0`, or reboot your Raspberry Pi with `sudo reboot`.   
 
