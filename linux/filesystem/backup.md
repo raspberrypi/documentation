@@ -10,7 +10,7 @@ A sensible way to keep your home folder backed up is to use the `tar` command to
 
 ```bash
 cd /home/
-tar czf pi_home.tar.gz pi
+sudo tar czf pi_home.tar.gz pi
 ```
 
 This creates a tar archive called `pi_home.tar.gz` in `/home/`. You should copy this file to a USB stick or transfer it to another machine on your network.
