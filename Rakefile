@@ -8,6 +8,22 @@ BUILD_DIR = "./_build"
 task :build => [:clean]
 task :test => [:build]
 task :default => [:test]
+task :html => [:build]
+
+desc "change markdown files to html files for website deploy"
+task :html do
+  #get markdown files in BUILD_DIR
+  md_files = Dir.glob File.join(BUILD_DIR,"**","*.md")
+  md_files.each do |md|
+    html = md.clone
+    if html.include?("README.md")
+      html["README.md"]="index.html"
+    else 
+      html[".md"] = ".html"
+    end
+    File.rename(md,html)
+  end
+end
 
 desc "Generate the build"
 task :build do
