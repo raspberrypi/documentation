@@ -39,7 +39,7 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
 
     `sudo dd bs=1m if=image.img of=/dev/rdisk<disk# from diskutil>`
 
-    where `disk` is your BSD name e.g. `sudo dd bs=1m if=2016-11-25-raspbian-jessie.img of=/dev/rdisk4`
+    where `disk` is your BSD name e.g. `sudo dd bs=1m if=2017-01-11-raspbian-jessie.img of=/dev/rdisk4`
 
     - This may result in a ``dd: invalid number '1m'`` error if you have GNU
     coreutils installed. In that case, you need to use a block size of `1M` in the `bs=` section, as follows:
@@ -51,11 +51,11 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
     - If this command still fails, try using `disk` instead of `rdisk`, for example:
     
        ```
-       sudo dd bs=1m if=2016-11-25-raspbian-jessie.img of=/dev/disk4
+       sudo dd bs=1m if=2017-01-11-raspbian-jessie.img of=/dev/disk4
        ```
        or
        ```
-       sudo dd bs=1M if=2016-11-25-raspbian-jessie.img of=/dev/disk4
+       sudo dd bs=1M if=2017-01-11-raspbian-jessie.img of=/dev/disk4
        ```
 
 ## Alternative method
@@ -78,7 +78,7 @@ These commands and actions need to be performed from an account that has adminis
 - In the terminal, write the image to the card with this command, using the raw device name from above. Read the above step carefully to be sure you use the correct `rdisk` number here:
     
     ```
-    sudo dd bs=1m if=2016-11-25-raspbian-jessie.img of=/dev/rdisk3
+    sudo dd bs=1m if=2017-01-11-raspbian-jessie.img of=/dev/rdisk3
     ```
 
     If the above command reports the error `dd: bs: illegal numeric value`, please change the block size `bs=1m` to `bs=1M`.
