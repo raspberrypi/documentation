@@ -1,8 +1,8 @@
 # config.txt
 
-As it's an embedded platform, the Raspberry Pi doesn't have a [BIOS](https://en.wikipedia.org/wiki/BIOS) like you'd find on a conventional PC. The various system configuration parameters, which would traditionally be edited and stored using a BIOS, are stored in an optional text file named `config.txt`. This is read by the GPU before the ARM CPU and Linux are initialised, therefore it must be located on the first (boot) partition of your SD card, alongside `bootcode.bin` and `start.elf`. This file is normally accessible as `/boot/config.txt` from Linux and must be edited as [root](../linux/usage/root.md), but from Windows or OS X it's seen as a file in the only accessible part of the card. If you need to apply some of the config settings below, but you don't have a `config.txt` on your boot partition yet, then simply create it as a new text file.
+The Raspberry Pi doesn't have a [BIOS](https://en.wikipedia.org/wiki/BIOS) like you'd find on a conventional PC. This is because it is an embedded platform. The various system configuration parameters, which would traditionally be edited and stored using a BIOS, are stored in an optional text file named `config.txt`. This is read by the GPU before the ARM CPU and Linux are initialised; it must therefore be located on the first (boot) partition of your SD card, alongside `bootcode.bin` and `start.elf`. This file is normally accessible as `/boot/config.txt` from Linux and must be edited as [root](../linux/usage/root.md), but from Windows or OS X it is seen as a file in the only accessible part of the card. If you need to apply some of the config settings below, but you don't have a `config.txt` on your boot partition yet, then simply create it as a new text file.
 
-Any changes will only take effect after you've rebooted your Raspberry Pi. After Linux has booted you can get the current active settings with the following commands:
+Any changes will only take effect after you've rebooted your Raspberry Pi. After Linux has booted, you can get the current active settings with the following commands:
 
 `vcgencmd get_config <config>` - displays a specific config value, e.g. `vcgencmd get_config arm_freq`.
 
@@ -10,7 +10,7 @@ Any changes will only take effect after you've rebooted your Raspberry Pi. After
 
 `vcgencmd get_config str` - lists all the string config options that are set (non-null).
 
-Note that there's a small number of config settings that can't be retrieved using `vcgencmd`.
+Note that there are a few config settings which can't be retrieved using `vcgencmd`.
 
 ## File format
 
@@ -36,11 +36,11 @@ overscan_bottom=10
 
 ### gpu_mem
 
-GPU memory in megabytes. Sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; maximum value is `192`, `448` or `944`, depending on whether you're using a 256M, 512MB or 1024MB Pi. The default value is `64`.
+GPU memory in megabytes. This sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; maximum value is `192`, `448`, or `944`, depending on whether you're using a 256M, 512MB, or 1024MB Pi. The default value is `64`.
 
 Setting `gpu_mem` to low values may automatically disable certain firmware features, as there are some things the GPU simply can't do with too little memory. So if a certain feature you're trying to use isn't working, try setting a larger GPU memory split.
 
-Using `gpu_mem_256`, `gpu_mem_512` and `gpu_mem_1024` allows you to swap the same SD card between 256MB, 512MB and 1024MB Pis without having to edit `config.txt` each time:
+Using `gpu_mem_256`, `gpu_mem_512`, and `gpu_mem_1024` allows you to swap the same SD card between 256MB, 512MB, and 1024MB Pis without having to edit `config.txt` each time:
 
 ### gpu_mem_256
 
@@ -64,17 +64,17 @@ Setting this to `1` disables adjusting the refresh rate of RAM every 500ms; this
 
 ### CMA - Dynamic memory split
 
-The firmware and kernel as of 19th November 2012 supports CMA (Contiguous Memory Allocator), which means the memory split between CPU and GPU is managed dynamically at runtime. However, this is not [officially supported](https://github.com/raspberrypi/linux/issues/503).
+As of 19th November 2012, the firmware and kernel support CMA (Contiguous Memory Allocator), which means the memory split between CPU and GPU is managed dynamically at runtime. However, this is not [officially supported](https://github.com/raspberrypi/linux/issues/503).
 
 You can find an [example config.txt here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=223549#p223549).
 
 #### cma_lwm
 
-When the GPU has less than `cma_lwm` (low-watermark) megabytes of memory available, it will request some from the CPU.
+When the GPU has less than `cma_lwm` megabytes of memory available (the low-water mark), it will request some from the CPU.
 
 #### cma_hwm
 
-When the GPU has more than `cma_hwm` (high-watermark) megabytes of memory available, it will release some to the CPU.
+When the GPU has more than `cma_hwm` megabytes of memory available (the high-water mark), it will release some to the CPU.
 
 The following options need to be in `cmdline.txt` for CMA to work:
 
@@ -86,19 +86,19 @@ coherent_pool=6M smsc95xx.turbo_mode=N
 
 ### disable_camera_led
 
-Setting this to `1` prevents the red camera LED from turning on when recording video or taking a still picture. Useful for preventing reflections when the camera is facing a window.
+Setting this to `1` prevents the red camera LED from turning on when recording video or taking a still picture. This is useful for preventing reflections when the camera is facing a window, for example.
 
 ## Onboard analogue audio (3.5mm jack)
 
-The onboard audio output has a few config options that alter the behaviour of how the analogue audio is driven and whether some firmware features are enabled or not.
+The onboard audio output has a few config options which alter the way the analogue audio is driven and whether some firmware features are enabled or not.
 
 ### disable_audio_dither
 
-By default, a 1.0LSB dither is applied to the audio stream if it's routed to the analogue audio output. This can create audible background "hiss" in some situations, such as if the ALSA volume is set to a low level. Set this to `1` to disable dither application.
+By default, a 1.0LSB dither is applied to the audio stream if it is routed to the analogue audio output. This can create audible background "hiss" in some situations, such as if the ALSA volume is set to a low level. Set this to `1` to disable dither application.
 
 ### pwm_sample_bits
 
-Adjust the bit depth of the analogue audio output. The default bit depth is `11`. Selecting bit depths below `8` will result in nonfunctional audio - settings below `8` result in a PLL frequency too low to support. Generally only useful as a demonstration of how bit depth affects quantisation noise.
+Adjust the bit depth of the analogue audio output. The default bit depth is `11`. Selecting bit depths below `8` will result in nonfunctional audio, as settings below `8` result in a PLL frequency too low to support. This is generally only useful as a demonstration of how bit depth affects quantisation noise.
 
 ## Video
 
@@ -575,7 +575,7 @@ There are several `config.txt` parameters related to device tree setup, and thes
 
 ## Overclocking
 
-**NOTE:** Setting any overclocking parameters to values other than those used by [raspi-config](raspi-config.md#overclock) will set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. This was originally set to detect a void warranty if the device had been overclocked. Since September 19th 2012, you can overclock your Pi without affecting your warranty; for more information [see the blog post on *turbo mode*](http://www.raspberrypi.org/introducing-turbo-mode-up-to-50-more-performance-for-free/).
+**NOTE:** Setting any overclocking parameters to values other than those used by [raspi-config](raspi-config.md#overclock) will set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. This was originally set to detect a void warranty if the device had been overclocked. Since September 19th 2012, you can overclock your Pi without affecting your warranty; for more information see the [blog post on Turbo Mode](https://www.raspberrypi.org/blog/introducing-turbo-mode-up-to-50-more-performance-for-free/).
 
 The latest kernel has a [cpufreq](http://www.pantz.org/software/cpufreq/usingcpufreqonlinux.html) kernel driver with the "ondemand" governor enabled by default. It has no effect if you have no overclock settings; if you overclock, the CPU frequency will vary with processor load. Non-default values are only used when needed according to the governor. You can adjust the minimum values with the `*_min` config options, or disable dynamic clocking with `force_turbo=1`; for more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=169726#p169726).
 

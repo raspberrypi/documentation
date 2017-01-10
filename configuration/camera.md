@@ -2,7 +2,7 @@
 
 ## Setting up the camera hardware
 
-**Warning**: Cameras are static sensitive. Earth yourself prior to handling the PCB. A sink tap or similar should suffice if you don’t have an earthing strap.
+**Warning**: Cameras are sensitive to static. Earth yourself prior to handling the PCB. A sink tap or similar should suffice if you don’t have an earthing strap.
 
 The camera board attaches to the Raspberry Pi via a 15-way ribbon cable. There are only two connections to make: the ribbon cable needs to be attached to the camera PCB, and to the Raspberry Pi itself. You need to get the cable the right way round, or the camera will not work. On the camera PCB, the blue backing on the cable should face away from the PCB, and on the Raspberry Pi it should face towards the Ethernet connection (or where the Ethernet connector would be if you're using a model A).
 
@@ -10,7 +10,7 @@ Although the connectors on the PCB and the Pi are different, they work in a simi
 
 ## Setting up the camera software
 
-Execute the following instructions on the command line to download and install the latest kernel, GPU firmware and applications. You'll need an internet connection for this to work correctly.
+Execute the following instructions on the command line to download and install the latest kernel, GPU firmware, and applications. You'll need an internet connection for this to work correctly.
 
 ```bash
 sudo apt-get update

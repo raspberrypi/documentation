@@ -1,6 +1,6 @@
 # Localisation
 
-Setting up your Raspberry Pi to match your regional settings.
+Set your Raspberry Pi up to match your regional settings.
 
 
 ## Language
@@ -33,8 +33,8 @@ If you've installed Raspbian using NOOBS, it should automatically pick up the sa
 
 ### NOOBS
 
-There's no part of NOOBS that uses the time, so consequently there's no option for changing the timezone.
+No part of NOOBS uses the time; consequently there is no option for changing the timezone.
 
 ### Raspbian
 
-Once again, this is something else you can change using the [raspi-config](raspi-config.md#change-timezone) tool.
+Once again, this is something you can change using the [raspi-config](raspi-config.md#change-timezone) tool.

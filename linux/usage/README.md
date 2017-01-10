@@ -1,6 +1,6 @@
-# Linux Usage
+# Linux usage
 
-Some general help with Linux usage
+Some general help with Linux usage.
 
 ## Contents
 

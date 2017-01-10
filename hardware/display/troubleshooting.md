@@ -4,13 +4,13 @@
 
 ### Have you got a good power supply?
 
-Having intermittent problems, or seeing a **little rainbow square** in the top right corner? You need a better power supply.
+Having intermittent problems, or seeing a little rainbow square in the top right corner? It is likely that you need a better power supply.
 
-We recommend our official 2A adapter because we know it works, but any good 2A supply should work.
+We recommend our official 2.5A adapter because we know it works, but any good 2.5A supply should work.
 
 ### Have you updated Raspbian?
 
-If not, many problems will be solved by making sure you're up-to date.
+If not, many problems will be solved by making sure your software is up-to date.
 
 You can undo any previous use of `rpi-update` and get your Pi back to the latest stable software by connecting
 to a network and running:
@@ -25,8 +25,8 @@ sudo reboot
 
 ### My touchscreen doesn't work, or works intermittently
 
-* Make sure you've updated Raspbian, see above for steps.
-* Check the smaller ribbon cable is seated properly
+- Make sure you've updated Raspbian (see above for steps)
+- Check the smaller ribbon cable is seated properly
 
 If you want to make sure your Pi has detected your touchscreen, try running:
 
@@ -41,7 +41,7 @@ You should see a couple of lines that look like this:
 [ 5.225960] input: FT5406 memory based driver as /devices/virtual/input/input3
 ```
 
-A detected touchscreen will also cause the `fbheight` and `fbwidth` parameters in `/proc/cmdline` to equal 480 and 800 respectively ( the resolution of the screen ), you can verify this by running:
+A detected touchscreen will also cause the `fbheight` and `fbwidth` parameters in `/proc/cmdline` to equal 480 and 800 respectively (the resolution of the screen). You can verify this by running:
 
 ```
 cat /proc/cmdline | grep bcm2708_fb
@@ -49,7 +49,7 @@ cat /proc/cmdline | grep bcm2708_fb
 
 ### My screen is upside-down!
 
-Depending on your display stand you might find that the LCD display defaults to being upside-down, you can fix this by rotating it in `/boot/config.txt`
+Depending on your display stand, you might find that the LCD display defaults to being upside-down. You can fix this by rotating it with `/boot/config.txt`.
 
 ```bash
 sudo nano /boot/config.txt
@@ -69,19 +69,19 @@ sudo reboot
 
 ### My display fades out to weird patterns when I shutdown/reboot my Pi
 
-Don't Panic! This is perfectly normal.
+Don't panic! This is perfectly normal.
 
 ### My display is black
 
-* Make sure you've updated Raspbian, see above for steps.
+* Make sure you've updated Raspbian (see above for steps)
 * Check the ribbon cable between your Pi and the LCD is properly seated
-* Make sure you have a SD card properly inserted into your Pi.
+* Make sure you have a SD card properly inserted into your Pi
 
 ### My display is white
 
 * Check the larger ribbon cable between the display and driver board is properly seated
 
-### Raspbian says my screen is 752x448, surely that's wrong?
+### Raspbian says my screen is 752x448. Surely that's wrong?
 
 Yes, the screen should be 800x480. This is a result of overscan being enabled.
 
@@ -91,9 +91,9 @@ Disable it by running raspi-config:
 sudo raspi-config
 ```
 
-And then navigating to "Advanced Options -> Overscan" and picking "Disable."
+And then navigating to **Advanced Options** > **Overscan** and picking **Disable**. 
 
-### My touchscreen isn't aligned correctly, my taps are slightly out!
+### My touchscreen isn't aligned correctly: my taps are slightly out
 
 This is probably also a side-effect of overscan being enabled, try the solution above.
 
@@ -101,15 +101,15 @@ This is probably also a side-effect of overscan being enabled, try the solution 
 
 The Model A or B Pi need a couple of extra connections, and an extra line of config. Please see section "Attaching to Model A/B boards" of [the main display page](README.md).
 
-### Some windows are cut off at the bottom of the screen so I can't use them!
+### Some windows are cut off at the bottom of the screen so I can't use them
 
-Some windows in X are cut off at the side/bottom of the screen, this is unfortunately a side-effect of developers assuming a minimum screen resolution of 1024x768 pixels.
+If some windows in X are cut off at the side/bottom of the screen, this is unfortunately a side-effect of developers assuming a minimum screen resolution of 1024x768 pixels.
 
 You can usually reveal hidden buttons and fields by;
 
-* right clicking on the edge or top of the window,
-* picking "move"
-* using the up arrow key to nudge the window up off the top of the screen
+- right clicking on the edge or top of the window,
+- picking "move"
+- using the up arrow key to nudge the window up off the top of the screen
 
 If you don't have a mouse, see the right click fix below.
 
@@ -119,7 +119,7 @@ If you don't have a mouse, see the right click fix below.
 
 At the moment you can't use HDMI and the LCD together in the X desktop, but you can send the output of certain applications to one screen or the other.
 
-Omxplayer is one example, it has been modified to enable secondary display output.
+Omxplayer is one example. It has been modified to enable secondary display output.
 
 To start displaying a video onto the LCD display (assuming it is the default display) just type:
 
@@ -133,7 +133,7 @@ To start a second video onto the HDMI type:
 omxplayer --display=5 video.mkv
 ```
 
-**Please note:** *you may need to increase the amount of memory allocated to the GPU to 128MB if the videos are 1080P, adjust the gpu_mem value in config.txt for this. The Raspberry Pi headline figures are 1080P30 decode, so if you are using two 1080P clips it may not play correctly depending on the complexity of the videos.*
+**Please note: you may need to increase the amount of memory allocated to the GPU to 128MB if the videos are 1080P. Adjust the gpu_mem value in config.txt for this. The Raspberry Pi headline figures are 1080P30 decode, so if you are using two 1080P clips it may not play correctly depending on the complexity of the videos.**
 
 Display numbers are:
 
@@ -189,5 +189,5 @@ Install like so:
 sudo apt-get install matchbox-keyboard
 ```
 
-And then find in Accessories > Keyboard.
+And then find in **Accessories** > **Keyboard**.
 

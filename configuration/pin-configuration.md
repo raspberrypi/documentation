@@ -14,7 +14,7 @@ sudo dtc -I dts -O dtb -o /boot/dt-blob.bin dt-blob.dts
 
 **NOTE:** In the case of NOOBS installs, the DTB file should be placed on the recovery partition instead.
 
-Similarly, a DTB file can be converted back to a DTS file, if required.
+Similarly, a `.dtb` file can be converted back to a `.dts` file, if required.
 
 ```
 dtc -I dtb -O dts -o dt-blob.dts /boot/dt-blob.bin

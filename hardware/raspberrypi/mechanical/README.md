@@ -5,7 +5,7 @@
 - [PDF](RPI-3B-V1_2.pdf)
 - [DXF](RPI-3B-V1_2.dxf)
 
-## Raspberry Pi Zero
+## Raspberry Pi Zero (v1.2)
 
 - [PDF](rpi-zero-v1_2_dimensions.pdf)
 

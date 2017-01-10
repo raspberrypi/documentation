@@ -8,6 +8,10 @@ The hardware in the Raspberry Pi
     - The Broadcom processor used in Raspberry Pi 1
 - [BCM2836](bcm2836/README.md)
     - The Broadcom processor used in Raspberry Pi 2
+- [BCM2837](bcm2837/README.md)
+    - The Broadcom processor used in Raspberry Pi 3
+- [Bootmodes](bootmodes/README.md)
+    - A description of the BCM2835/6/7 bootmodes available 
 - [Mechanical Drawings](mechanical/README.md)
     - Mechanical drawings of the Raspberry Pi
 - [Power](power/README.md)
