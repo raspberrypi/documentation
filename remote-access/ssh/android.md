@@ -1,4 +1,4 @@
-# SSH USING ANDROID
+# SSH using Android
 
 To use SSH on your mobile device you need to download a client. There are several different good quality clients available, such as [Termius](http://www.termius.com), [JuiceSSH](https://juicessh.com/), and [Connectbot](https://connectbot.org/). For the sake of this tutorial we'll use Termius, because it's a popular cross platform SSH client. But the principle is similar and applicable to other clients as well. 
 
@@ -41,4 +41,4 @@ If a dialogue saying `Connection failed Connecting to 192.xxx.xxx.xxx port 22` a
 
 A connection might be unsuccessful for various reasons. The most likely is that your device or Raspberry Pi are [not connected properly](../../configuration/wireless/wireless-cli.md), [SSH is disabled](../../configuration/raspi-config.md), there may be a typo in your code, or the IP address or credentials have changed. In the latter cases, you need to update the host.
 
-To do this, go to the ‘Hosts’ screen, and tap and hold the particular entry. In the top right corner, new functions will pop up. Tap the pencil icon. A new screen titled ‘Edit Host’ will pop up.
+To do this, go to the Hosts screen, and tap and hold the particular entry. In the top right corner, new functions will pop up. Tap the pencil icon. A new screen titled 'Edit Host' will pop up.
