@@ -70,10 +70,8 @@ Edit by removing the `#` characters on the following lines:
 
 ```
 location ~ \.php$ {
-	fastcgi_split_path_info ^(.+\.php)(/.+)$;
+	include snippets/fastcgi-php.conf;
 	fastcgi_pass unix:/var/run/php5-fpm.sock;
-	fastcgi_index index.php;
-	include fastcgi.conf;
 }
 ```
 
@@ -83,15 +81,12 @@ It should look like this:
         # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
         #
         location ~ \.php$ {
-                fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        #       # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
-        #
-        #       # With php5-cgi alone:
+                include snippets/fastcgi-php.conf;
+        
+                # With php5-cgi alone:
         #       fastcgi_pass 127.0.0.1:9000;
                 # With php5-fpm:
                 fastcgi_pass unix:/var/run/php5-fpm.sock;
-                fastcgi_index index.php;
-                include fastcgi.conf;
         }
 ```
 
@@ -106,7 +101,7 @@ sudo /etc/init.d/nginx reload
 Rename `index.html` to `index.php`:
 
 ```bash
-cd /usr/share/nginx/www/
+cd /var/www/html/
 sudo mv index.html index.php
 ```
 
