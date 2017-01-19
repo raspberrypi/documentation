@@ -11,3 +11,8 @@ After upgrading the kernel, you'll have to reboot your Pi to switch to the updat
 If you're using a compiled kernel, you'll need to [rebuild](building.md) your kernel again.
 
 Custom [configurations](configuring.md) can usually be copied over between minor kernel updates, but it's safer to use the `diff` utility to see what's changed and repeat your changes on the new configuration.
+
+To revert to the current stock Raspbian kernel after trying `rpi-update` or a custom kernel, run:
+```
+sudo apt-get install --reinstall raspberrypi-bootloader
+```
