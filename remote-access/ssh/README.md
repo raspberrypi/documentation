@@ -22,4 +22,4 @@ As of the November 2016 release, Raspbian has the SSH server disabled by default
 
 Enter `sudo raspi-config` in the terminal, first select `Interfacing options`, then navigate to `ssh`, press `Enter` and select `Enable or disable ssh server`.
 
-For headless setup, SSH can be enabled by placing a file named 'ssh', without any extension, onto the boot partition of the SD card.
+For headless setup, SSH can be enabled by placing a file named 'ssh', without any extension, onto the boot partition of the SD card. When the Pi boots, it looks for the 'ssh' file; if it is found, SSH is enabled and then the file is deleted. The content of the file doesn't matter: it could contain any text or nothing at all.
