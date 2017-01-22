@@ -24,15 +24,14 @@ It has the following options available:
 
 Setup Options
 
-    1 Expand Filesystem              Ensures that all of the SD card storage is available to the OS
-    2 Change User Password           Change password for the default user (pi)
-    3 Enable Boot to Desktop/Scratch Choose whether to boot into a desktop environment, Scratch, or the command line
-    4 Internationalisation Options   Set up language and regional settings to match your location
-    5 Enable Camera                  Enable this Pi to work with the Raspberry Pi camera
-    6 Add to Rastrack                Add this Pi to the online Raspberry Pi Map (Rastrack)
-    7 Overclock                      Configure overclocking for your Pi
-    8 Advanced Options               Configure advanced settings
-    9 About `raspi-config`           Information about this configuration tool
+    1 Expand Filesystem               Ensures that all of the SD card storage is available to the OS
+    2 Change User Password            Change password for the default user (pi)
+    3 Boot Options                    Configure options for start-up
+    4 Localisation Options            Set up language and regional settings to match your location
+    5 Interfacing Options             Configure connections to peripherals
+    6 Overclock                       Configure overclocking for your Pi                                            │ 
+    7 Advanced Options                Configure advanced settings                                                   │ 
+    8 About raspi-config              Information about this configuration tool 
 
                                    <Select>                                  <Finish>
 ```
