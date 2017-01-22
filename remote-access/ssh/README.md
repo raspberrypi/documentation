@@ -20,6 +20,6 @@ Otherwise, plug your Raspberry Pi directly into the router.
 ##3. Enable SSH
 As of the November 2016 release, Raspbian has the SSH server disabled by default. You will have to enable it manually. This is done using [raspi-config](../../configuration/raspi-config.md):
 
-Enter `sudo raspi-config` in the terminal, first select `Interfacing options`, then navigate to `ssh`, press `Enter` and select `Enable or disable ssh server`.
+Enter `sudo raspi-config` in the terminal, first select `Advanced options`, then navigate to `ssh`, press `Enter` and select `Enable or disable ssh server`.
 
 For headless setup, SSH can be enabled by placing a file named 'ssh', without any extension, onto the boot partition of the SD card.
