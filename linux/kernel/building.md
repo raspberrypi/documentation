@@ -6,16 +6,16 @@ There are two main methods for building the kernel. You can build locally on a R
 
 On a Raspberry Pi, first install the latest version of [Raspbian](https://www.raspberrypi.org/downloads/). Then boot your Pi, plug in Ethernet to give you access to the sources, and log in.
 
-First get the sources, which will take some time:
+First install git and the build dependencies:
+
+```bash
+sudo apt-get install git bc
+```
+
+Next get the sources, which will take some time:
 
 ```bash
 git clone --depth=1 https://github.com/raspberrypi/linux
-```
-
-Add missing dependencies:
-
-```bash
-sudo apt-get install bc
 ```
 
 Configure the kernel; as well as the default configuration, you may wish to [configure your kernel in more detail](configuring.md) or [apply patches from another source](patching.md), to add or remove required functionality:
