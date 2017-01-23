@@ -50,24 +50,36 @@ After a short while, the driver will finish being installed and you should be ab
 
 Finally, follow the remainder of the instructions below in a Cygwin terminal. **Note** When performing the commands below in a Cygwin terminal, **don't** prefix them with `sudo`.
 
-**On your Compute Module IO board**
+### Setting up the Compute Module IO board
+
+Ensure the Compute Module itself is correctly installed on the IO board. It should lie parallel with the board, with the engagement clips clicked into place.
 
 Make sure that J4 (USB SLAVE BOOT ENABLE) is set to the 'EN' position.
 
-**On your host system:**
+Use a Micro USB cable to connect the IO board to the host device.
 
-Git may produce an error if the date is not set correctly, so on a Raspberry Pi enter the following:
+Do not power up yet.
+
+### Building rpiboot on your host system (Cygin/Linux)
+
+We will be using Git to get the rpiboot source code, so ensure Git is installed. In Cygwin, use the cygwin installer. On a Pi or other Debian-based Linux machine, use the following:
+
+```bash
+sudo apt-get install git
+```
+
+Git may produce an error if the date is not set correctly: on a Raspberry Pi, enter the following to correct this:
 
 ```bash
 sudo date MMDDhhmm
 ```
 
-where `MM` is month, `DD` is day, and `hh` and `mm` are hours and minutes respectively.
+where `MM` is the month, `DD` is the date, and `hh` and `mm` are hours and minutes respectively.
 
 Clone the `usbboot` tool repository:
 
 ```bash
-git clone --depth=1 https://github.com/raspberrypi/tools
+git clone --depth=1 https://github.com/raspberrypi/usbboot
 cd tools/usbboot
 ```
 
@@ -81,24 +93,23 @@ Now build and install the `usbboot` tool:
 
 ```bash
 make
-sudo make install
 ```
 
 Run the `usbboot` tool and it will wait for a connection:
 
 ```bash
-sudo rpiboot
+sudo ./rpiboot
 ```
 
 Now plug the host machine into the Compute Module IO board USB slave port (J15) and power the CMIO board on. The `rpiboot` tool will discover the Compute Module and send boot code to allow access to the eMMC. 
 
-## Writing to the eMMC - Cygwin
+### Writing to the eMMC - Cygwin
 
 After `rpiboot` completes, a new USB mass storage drive will appear in Windows. We recommend following this [guide](../../installation/installing-images/windows.md) and using Win32DiskImager to write images to the drive, rather than trying to use `/dev/sda` etc. from Cygwin.
 
 Once you have written an OS image, make sure J4 (USB SLAVE BOOT ENABLE) is set to the disabled position and/or nothing is plugged into the USB slave port. Power cycling the IO board should result in the Compute Module booting the OS image from eMMC.
 
-## Writing to the eMMC - Linux
+### Writing to the eMMC - Linux
 
 After `rpiboot` completes, you will see a new device appear; this is commonly `/dev/sda` on a Pi but it could be another location such as `/dev/sdb`, so check in `/dev/` before running `rpiboot` so you can see what changes.
 
