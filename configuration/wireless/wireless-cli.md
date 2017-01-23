@@ -48,7 +48,7 @@ network={
 }
 ```
 
-If you are using `wpa_passphrase` you can redirect its output to your configuration file by calling `wpa_passphrase "testing" >> /etc/wpa_supplicant/wpa_supplicant.conf`. Note that this requires you to change to `root` (by executing `sudo su`) or find another way to redirect the output since the file we write to can be altered only by a user with administrative privileges. Last but not least make sure you use `>>` (which is used to append text to an existing file) since `>` will erase all contents and **then** append the output to the specified file.
+If you are using `wpa_passphrase` you can redirect its output to your configuration file by calling `wpa_passphrase "testing" "testingPassword" >> /etc/wpa_supplicant/wpa_supplicant.conf`. Note that this requires you to change to `root` (by executing `sudo su`) or find another way to redirect the output since the file we write to can be altered only by a user with administrative privileges. Last but not least make sure you use `>>` (which is used to append text to an existing file) since `>` will erase all contents and **then** append the output to the specified file.
    
 Now save the file by pressing **Ctrl+X** then **Y**, then finally press **Enter**.  
 
