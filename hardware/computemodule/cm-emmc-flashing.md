@@ -52,29 +52,29 @@ Finally, follow the remainder of the instructions below in a Cygwin terminal. **
 
 ### Setting up the Compute Module IO board
 
-Ensure the Compute module itself is correctly installed on the IO board, it should lie parallel with the board, with the engagement clips clicked into place.
+Ensure the Compute Module itself is correctly installed on the IO board. It should lie parallel with the board, with the engagement clips clicked into place.
 
 Make sure that J4 (USB SLAVE BOOT ENABLE) is set to the 'EN' position.
 
-Use a MicroUSB cable to connect the IO board to the host device.
+Use a Micro USB cable to connect the IO board to the host device.
 
 Do not power up yet.
 
 ### Building rpiboot on your host system (Cygin/Linux)
 
-We will be using Git to get the rpiboot source code, so ensure Git is installed. In Cygwin, use the cygwin installer, on a Pi or other Debian-based Linux machine use the following:
+We will be using Git to get the rpiboot source code, so ensure Git is installed. In Cygwin, use the cygwin installer. On a Pi or other Debian-based Linux machine, use the following:
 
 ```bash
 sudo apt-get install git
 ```
 
-Git may produce an error if the date is not set correctly, so on a Raspberry Pi enter the following:
+Git may produce an error if the date is not set correctly: on a Raspberry Pi, enter the following to correct this:
 
 ```bash
 sudo date MMDDhhmm
 ```
 
-where `MM` is month, `DD` is day, and `hh` and `mm` are hours and minutes respectively.
+where `MM` is the month, `DD` is the date, and `hh` and `mm` are hours and minutes respectively.
 
 Clone the `usbboot` tool repository:
 
