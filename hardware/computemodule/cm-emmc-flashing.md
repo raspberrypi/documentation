@@ -80,7 +80,7 @@ Clone the `usbboot` tool repository:
 
 ```bash
 git clone --depth=1 https://github.com/raspberrypi/usbboot
-cd tools/usbboot
+cd usbboot
 ```
 
 `libusb` must be installed. If you are using Cygwin, please make sure `libusb` is installed as previously described. On the Raspberry Pi or other Debian-based Linux enter the following command:
