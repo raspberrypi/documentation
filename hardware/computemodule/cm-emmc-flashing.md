@@ -2,13 +2,13 @@
 
 The Compute Module has an on-board eMMC device connected to the primary SD card interface. This guide explains how to write data to the eMMC storage using a Compute Module IO board.
 
-Please also read the section on [Compute Module Datasheet](https://www.raspberrypi.org/documentation/hardware/computemodule/RPI-CM-DATASHEET-V1_0.pdf).
+Please also read the section on the [Compute Module Datasheet](https://www.raspberrypi.org/documentation/hardware/computemodule/RPI-CM-DATASHEET-V1_0.pdf).
 
 ## Steps to flash the eMMC on a Compute Module
 
 To flash the Compute Module eMMC, you either need a Linux system (a Raspberry Pi is recommended, or Ubuntu on a PC) or a Windows system (Windows 7 is recommended). For BCM2837 (CM3), a bug which affected the Mac has been fixed, so this will also work.
 
-**Note** There is a bug in the BCM2835 bootloader which returns a slightly incorrect USB packet to the host. Most USB hosts seem to ignore this benign bug and work fine; we do however see some USB ports that don't work due to this bug. We don't quite understand why some ports fail, as it doesn't seem to be correlated with whether they are USB2 or USB3 (we have seen both types working), but it's likely to be specific to the host controller and driver. This bug has been fixed in BCM2837
+**Note** There is a bug in the BCM2835 bootloader which returns a slightly incorrect USB packet to the host. Most USB hosts seem to ignore this benign bug and work fine; we do, however, see some USB ports that don't work due to this bug. We don't quite understand why some ports fail, as it doesn't seem to be correlated with whether they are USB2 or USB3 (we have seen both types working), but it's likely to be specific to the host controller and driver. This bug has been fixed in BCM2837.
 
 **For Windows users**
 
@@ -16,7 +16,7 @@ Under Windows, an installer is available to install the required drivers and boo
 
 ### Windows installer
 
-For those who just want to enable the Compute Module eMMC as a mass storage device under Windows, the standalone installer is the recommended option. This installer has been tested on Windows 10 32-bit and 64-bit, and Windows XP 32 bit.
+For those who just want to enable the Compute Module eMMC as a mass storage device under Windows, the stand-alone installer is the recommended option. This installer has been tested on Windows 10 32-bit and 64-bit, and Windows XP 32-bit.
 
 Please ensure you are not writing to any USB devices whilst the installer is running.
 
@@ -56,19 +56,19 @@ Ensure the Compute Module itself is correctly installed on the IO board. It shou
 
 Make sure that J4 (USB SLAVE BOOT ENABLE) is set to the 'EN' position.
 
-Use a Micro USB cable to connect the IO board to the host device.
+Use a micro USB cable to connect the IO board to the host device.
 
 Do not power up yet.
 
-### Building rpiboot on your host system (Cygin/Linux)
+### Building rpiboot on your host system (Cygwin/Linux)
 
-We will be using Git to get the rpiboot source code, so ensure Git is installed. In Cygwin, use the cygwin installer. On a Pi or other Debian-based Linux machine, use the following:
+We will be using Git to get the rpiboot source code, so ensure Git is installed. In Cygwin, use the Cygwin installer. On a Pi or other Debian-based Linux machine, use the following command:
 
 ```bash
 sudo apt-get install git
 ```
 
-Git may produce an error if the date is not set correctly: on a Raspberry Pi, enter the following to correct this:
+Git may produce an error if the date is not set correctly. On a Raspberry Pi, enter the following to correct this:
 
 ```bash
 sudo date MMDDhhmm
@@ -83,7 +83,7 @@ git clone --depth=1 https://github.com/raspberrypi/usbboot
 cd usbboot
 ```
 
-`libusb` must be installed. If you are using Cygwin, please make sure `libusb` is installed as previously described. On the Raspberry Pi or other Debian-based Linux enter the following command:
+`libusb` must be installed. If you are using Cygwin, please make sure `libusb` is installed as previously described. On the Raspberry Pi or other Debian-based Linux, enter the following command:
 
 ```bash
 sudo apt-get install libusb-1.0-0-dev
