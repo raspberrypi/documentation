@@ -13,7 +13,7 @@ The Raspberry Pi Camera Module is an official product from the Raspberry Pi Foun
 | Video modes | 1080p30, 720p60 and 640 × 480p60/90 | 1080p30, 720p60 and 640 × 480p60/90 |
 | Linux integration | V4L2 driver available | V4L2 driver available |
 | C programming API | OpenMAX IL and others available | OpenMAX IL and others available |
-| Sensor | OmniVision OV5647 | [Sony IMX219](http://www.sony.net/Products/SC-HP/new_pro/april_2014/imx219_e.html) |
+| Sensor | OmniVision OV5647 | [Sony IMX219](http://www.sony-semicon.co.jp/products_en/new_pro/april_2014/imx219_e.html) |
 | Sensor resolution | 2592 × 1944 pixels | 3280 × 2464 pixels |
 | Sensor image area | 3.76 × 2.74 mm | |
 | Pixel size | 1.4 µm × 1.4 µm | |
