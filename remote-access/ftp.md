@@ -48,7 +48,7 @@ sudo pure-pw mkdb
 Last but not least, define an authentication method by making a link of file `/etc/pure-ftpd/conf/PureDB`, the number `60` is only for demonstration, make it as small as necessary:
 
 ```bash
-ln -s /etc/pure-ftpd/conf/PureDB /etc/pure-ftpd/auth/60puredb
+sudo ln -s /etc/pure-ftpd/conf/PureDB /etc/pure-ftpd/auth/60puredb
 ```
 
 Restart the program:
