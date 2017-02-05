@@ -64,7 +64,7 @@ install -d -m 700 ~/.ssh
 To copy your public key to your Raspberry Pi, use the following command to append the public key to your `authorized_keys` file on the Pi, sending it over SSH:
 
 ```
-cat ~/.ssh/id_rsa.pub | ssh <USERNAME>@<IP-ADDRESS> 'cat >> .ssh/authorized_keys'
+ssh-copy-id ~/.ssh/id_rsa.pub <USERNAME>@<IP-ADDRESS>
 ```
 
 Note that this time you will have to authenticate with your password.
