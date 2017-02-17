@@ -2,6 +2,14 @@
 
 On Mac OS you have the choice of the command line `dd` tool or using the graphical tool ImageWriter to write the image to your SD card.
 
+## Installing operating system images using Etcher
+
+- Connect the SD card reader with the SD card inside. Note that it must be formatted as FAT32.
+- Download [Etcher](https://etcher.io/) and install it to your Mac's `Applications` folder.
+- Open `Etcher.app`, select the Raspberry Pi `.img` file you wish to write to the SD card from your Mac's hard drive.
+- After selecting the `.img` file in Step 1 you will now select the SD card you wish to write the `.img` file to.
+- Review your selections and click "Flash!" to begin writing data to the SD card. Once complete you can eject the mounted SD card from your Mac using `Finder.app`.
+
 ## (Mostly) graphical interface
 
 - Connect the SD card reader with the SD card inside. Note that it must be formatted as FAT32.
