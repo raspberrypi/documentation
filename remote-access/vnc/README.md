@@ -16,10 +16,11 @@ However, you can also use VNC Server to gain graphical remote access to your Ras
 
 ## Enabling VNC Server
 
-On your Raspberry Pi, run the following command to make sure you have the latest version of VNC Connect:
+On your Raspberry Pi, run the following commands to make sure you have the latest version of VNC Connect:
 
 
 ```bash
+sudo apt-get update
 sudo apt-get install realvnc-vnc-server realvnc-vnc-viewer
 ```
 
