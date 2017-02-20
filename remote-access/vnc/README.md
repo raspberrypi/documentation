@@ -20,7 +20,7 @@ On your Raspberry Pi, run the following command to make sure you have the latest
 
 
 ```bash
-sudo apt-get upgrade realvnc-vnc-server realvnc-vnc-viewer
+sudo apt-get install realvnc-vnc-server realvnc-vnc-viewer
 ```
 
 Then, enable VNC Server. You can do this graphically or at the command line.
