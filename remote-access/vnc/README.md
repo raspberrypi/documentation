@@ -67,7 +67,7 @@ Direct connections are quick and simple providing you're joined to the same priv
 
 You are entitled to use RealVNC's cloud service for free providing remote access is for educational or non-commercial purposes only.
 
-Cloud connections are convenient and encrypted end-to-end, and highly recommended for connecting to your Raspberry Pi over the Internet. There's no firewall or router reconfiguration, and you don't need to know the IP address of your Raspberry Pi, or provide a static one.
+Cloud connections are convenient and encrypted end-to-end, and highly recommended for connecting to your Raspberry Pi over the internet. There's no firewall or router reconfiguration, and you don't need to know the IP address of your Raspberry Pi, or provide a static one.
 
 - Sign up for a RealVNC account [here](https://www.realvnc.com/raspberrypi/#sign-up); it's free and only takes a few seconds.
 
@@ -85,7 +85,7 @@ Cloud connections are convenient and encrypted end-to-end, and highly recommende
 
 To complete either a direct or cloud connection, you must authenticate to VNC Server. 
 
-If you're connecting from the [compatible VNC Viewer app](https://www.realvnc.com/download/viewer/) from RealVNC, enter the user name and password you normally use to *log in* to your user account on the Raspberry Pi. By default, these credentials are `pi` and `raspberry`.
+If you're connecting from the [compatible VNC Viewer app](https://www.realvnc.com/download/viewer/) from RealVNC, enter the user name and password you normally use to log in to your user account on the Raspberry Pi. By default, these credentials are `pi` and `raspberry`.
 
 If you're connecting from a non-RealVNC Viewer app, you'll first need to downgrade VNC Server's authentication scheme, specify a password unique to VNC Server, and then enter that instead. To do this, open the VNC Server dialog on your Raspberry Pi, select **Menu > Options > Security**, and choose  **VNC password** from the **Authentication** dropdown.
 
