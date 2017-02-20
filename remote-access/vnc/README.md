@@ -10,9 +10,9 @@ You will see the desktop of the Raspberry Pi inside a window on your computer or
 
 VNC® Connect from RealVNC® is included with Raspbian. It consists of both a VNC Server, so you can remotely control your Raspberry Pi, and a VNC Viewer, so you can remotely control desktop computers from your Raspberry Pi should you want to.
 
-You must enable VNC Server; see below. By default, it gives you remote access to the graphical desktop running on your Raspberry Pi, as though you were sitting in front of it.
+You must enable VNC Server; see below for instructions. By default, it gives you remote access to the graphical desktop running on your Raspberry Pi, as though you were sitting in front of it.
 
-However, you can also use VNC Server to gain graphical remote access to your Raspberry Pi if it is headless or not running a graphical desktop; see *Creating a virtual desktop*, further below. 
+However, you can also use VNC Server to gain graphical remote access to your Raspberry Pi if it is headless or not running a graphical desktop; see **Creating a virtual desktop**, further below. 
 
 ## Enabling VNC Server
 
