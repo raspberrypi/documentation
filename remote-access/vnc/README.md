@@ -53,9 +53,9 @@ There are two ways to connect to your Raspberry Pi; you can use either or both.
 
 ### Establishing a direct connection
 
-Direct connections are quick and simple providing you're joined to the same private local network as your Raspberry Pi (for example, a wired or Wi-Fi network at home, school or in the office).
+Direct connections are quick and simple providing you're joined to the same private local network as your Raspberry Pi (for example, a wired or wireless network at home, at school, or in the office).
 
-- On your Raspberry Pi (using Terminal or via SSH) use [these instructions](../ip-address.md) or run `ifconfig` to discover your private IP address. 
+- On your Raspberry Pi (using a terminal window or via SSH) use [these instructions](../ip-address.md) or run `ifconfig` to discover your private IP address. 
 
 - On the device you'll use to take control, download VNC Viewer. For best results, use the [compatible app](https://www.realvnc.com/download/viewer/) from RealVNC. 
 
@@ -113,7 +113,7 @@ If performance seems impaired, try [these troubleshooting steps](https://www.rea
 
 If your Raspberry Pi is headless (not plugged into a monitor) or controlling a robot, it is unlikely to be running a graphical desktop.
 
-VNC Server can create a *virtual desktop* for you, giving you graphical remote access on demand. This virtual desktop exists only in your Raspberry Pi's memory:
+VNC Server can create a **virtual desktop** for you, giving you graphical remote access on demand. This virtual desktop exists only in your Raspberry Pi's memory:
 
 ![Connecting to an in-memory virtual desktop](images/raspberry-pi-virtual.png)
 
