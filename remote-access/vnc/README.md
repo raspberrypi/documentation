@@ -24,7 +24,7 @@ sudo apt-get update
 sudo apt-get install realvnc-vnc-server realvnc-vnc-viewer
 ```
 
-Then, enable VNC Server. You can do this graphically or at the command line.
+Now enable VNC Server. You can do this graphically or at the command line.
 
 ### Enabling VNC Server graphically
 
