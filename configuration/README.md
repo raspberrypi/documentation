@@ -14,6 +14,8 @@ Some basic guides to configuring your Raspberry Pi.
     - Switch your audio output between HDMI and the 3.5mm jack.
 - [Camera Config](camera.md)
     - Installing and setting up the Raspberry Pi camera board.
+- [External Storage Config](external-storage.md)
+    - Mounting and setting up external storage on Raspberry Pi.
 - [Localisation](localisation.md)
     - Setting up your Pi to work in your local language/timezone.
 - [Default pin configuration](pin-configuration.md)
