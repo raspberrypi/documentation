@@ -2,6 +2,24 @@
 
 To create a time-lapse video, you simply configure the Raspberry Pi to take a picture at a regular interval, such as every minute, then use an application to stitch the pictures together in a video.
 
+There are a couple of ways of doing this.
+
+## Using Raspistill's inbuilt Timelapse Mode
+
+The raspstill application has a built in timelapse mode, using the --timelapse (or -tl for less typing) command line switch.
+
+The value that follows the switch is the time between shots in milliseconds.
+```
+raspistill -t 30000 -tl 2000 -o image%04d.jpg
+```
+Note the %04d in the output filename, this indicates the point in the filename where you want a frame count number to appear. So, for example, the command above will produce a capture every 2 seconds (2000ms), over a total period of 30s (30000ms), named image0001.jpg, image0002.jpg and so on, through to image0015.jpg.
+
+The %04d indicates a 4-digit number, with leading zeroes added to make the required number of digits. So, for example,  %08d would result in an 8-digit number. You can miss out the 0 if you don't want leading zero's.
+
+If a time-lapse value of 0 is entered, the application will take pictures as fast as possible. Note that there's an minimum enforced pause of approximately 30ms between captures to ensure that exposure calculations can be made.
+
+## Using Cron
+
 A good way to automate taking a picture at a regular interval is using `cron`.
 
 Open the cron table for editing:
