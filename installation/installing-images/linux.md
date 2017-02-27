@@ -19,6 +19,10 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
     ```bash
     dd bs=4M if=2017-01-11-raspbian-jessie.img of=/dev/sdd
     ```
+    or
+    ```bash
+    sudo dcfldd bs=4M if=2014-09-09-wheezy-raspbian.img of=/dev/mmcblk0
+    ```
 
 - Please note that block size set to `4M` will work most of the time; if not, please try `1M`, although this will take considerably longer.
 
