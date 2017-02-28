@@ -24,8 +24,8 @@ For the display to work with the Compute Module, the firmware needs to be from O
 This will enable `disp1` and `cam1`, with the option of enabling `cam0`.
 
 1. Connect the display to the DISP1 port on the Compute Module IO board through the 22W to 15W display adaptor.
-1. Connect the camera to the CAM1 port on the Compute Module IO board through the 22W to 15W camera adaptor.
-1. (Optional) Connect the camera to the CAM0 port on the Compute Module IO board through the 22W to 15W camera adaptor.
+1. Connect the Camera Module to the CAM1 port on the Compute Module IO board through the 22W to 15W camera adaptor.
+1. (Optional) Connect the Camera Module to the CAM0 port on the Compute Module IO board through the 22W to 15W camera adaptor.
 1. Connect these pins together with jumper wires:
 
 	```
@@ -34,7 +34,7 @@ This will enable `disp1` and `cam1`, with the option of enabling `cam0`.
 	GPIO4 - CAM1_IO1
 	GPIO5 - CAM1_IO0
 	```
-Please note that the wiring is slightly different from that on the camera page, in that you are using GPIO pins 4 and 5 instead of 2 and 3.
+Please note that the wiring is slightly different from that on the Camera page, in that you are using GPIO pins 4 and 5 instead of 2 and 3.
 
 1. For `cam0`, add links:
 
@@ -45,21 +45,21 @@ Please note that the wiring is slightly different from that on the camera page, 
 	GPIO31 - CAM0_IO0
 	```
 
-	![GPIO connection for a single display and two cameras](images/CMIO-Cam-Disp-GPIO.jpg)
-	(Please note this image needs to be updated to show two cameras, or have the extra jumper leads removed)
+	![GPIO connection for a single display and two Camera Modules](images/CMIO-Cam-Disp-GPIO.jpg)
+	(Please note this image needs to be updated to show two Camera Modules, or have the extra jumper leads removed)
 
-1. On the Compute Module, for the display and one camera run:
+1. On the Compute Module, for the display and one Camera Module, run:
 
 	```sudo wget https://goo.gl/gaqNrO -O /boot/dt-blob.bin```  
 
-  For display and two cameras run:
+  For the display and two Camera Modules, run:
 
 	```sudo wget https://goo.gl/htHv7m -O /boot/dt-blob.bin```
 
 1. Reboot for the `dt-blob.bin` file to be read.
 
 	![Camera Preview on the 7 inch display](images/CMIO-Cam-Disp-Example.jpg)
-	(Please note this image needs to be updated to show two cameras, or have the extra jumper leads removed)
+	(Please note this image needs to be updated to show two Camera Modules, or have the extra jumper leads removed)
 
 ### Software support
 
