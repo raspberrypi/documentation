@@ -22,7 +22,7 @@ To work with the Compute Module 3, the firmware needs to be from October 2016 or
 1. Reboot for the `dt-blob.bin` file to be read.
 
 ## Quickstart - Display and Camera(s)
-This will enable `disp1` and `cam1`, with optionally `cam0`.
+This will enable `disp1` and `cam1`, with the option of enabling `cam0`.
 
 1. Connect the display to the DISP1 port on the Compute Module IO board through the 22W to 15W display adaptor.
 1. Connect the camera to the CAM1 port on the Compute Module IO board through the 22W to 15W camera adaptor.
