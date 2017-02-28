@@ -9,9 +9,17 @@ sudo apt-get update
 Next, **upgrade** all your installed packages to their latest versions with the command:
 
 ```bash
-sudo apt-get dist-upgrade
+sudo apt-get upgrade
 ```
 
+If you wish to upgrade the distribution version. Ex. From Wheezy to Jessie
+```bash
+sed -i 's/wheezy/jessie/g' /etc/apt/sources.list
+sudo apt-get update
+(if you receive a error similar to E: Release file expired. run apt-get -o Acquire::Check-Valid-Until=false update )
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+```
 Generally speaking, doing this regularly will keep your installation up to date, in that it will be equivalent to the latest released image available from [raspberrypi.org/downloads](http://www.raspberrypi.org/downloads/).
 
 However, there are occasional changes made in the Foundation's Raspbian image that require manual intervention, for example a newly introduced package. These are not installed with an upgrade, as this command only updates the packages you already have installed.
