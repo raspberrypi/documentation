@@ -2,8 +2,7 @@
 
 **This document is a work in progress and is intended for advanced users.**
 
-For the display to work with the Compute Module, the firmware needs to be October 23rd 2015 or newer (use `vcgencmd version` to check).
-To work with the Compute Module 3, the firmware needs to be from October 2016 or later.
+For the display to work with the Compute Module, the firmware needs to be from October 23rd 2015 or later (use `vcgencmd version` to check). For the display to work with the Compute Module 3, the firmware needs to be from October 2016 or later.
 
 ## Quickstart - Display Only
 
@@ -15,7 +14,7 @@ To work with the Compute Module 3, the firmware needs to be from October 2016 or
 	GPIO1 - CD1_SCL
 	```
 
-1. On the compute module, run:
+1. On the Compute Module, run:
 
 	```sudo wget https://goo.gl/iiVxuA -O /boot/dt-blob.bin```
 
@@ -35,7 +34,7 @@ This will enable `disp1` and `cam1`, with the option of enabling `cam0`.
 	GPIO4 - CAM1_IO1
 	GPIO5 - CAM1_IO0
 	```
-Please note that the wiring is slightly different from that on the camera page in using GPIOs 4&5 instead of 2&3.
+Please note that the wiring is slightly different from that on the camera page, in that you are using GPIO pins 4 and 5 instead of 2 and 3.
 
 1. For `cam0`, add links:
 
@@ -49,7 +48,7 @@ Please note that the wiring is slightly different from that on the camera page i
 	![GPIO connection for a single display and two cameras](images/CMIO-Cam-Disp-GPIO.jpg)
 	(Please note this image needs to be updated to show two cameras, or have the extra jumper leads removed)
 
-1. On the compute module, for display and one camera run:
+1. On the Compute Module, for the display and one camera run:
 
 	```sudo wget https://goo.gl/gaqNrO -O /boot/dt-blob.bin```  
 
@@ -64,7 +63,7 @@ Please note that the wiring is slightly different from that on the camera page i
 
 ### Software support
 
-There is no additional configuration required to enable the touch screen. The touch interface should out work of the box once the screen is successfully detected.
+There is no additional configuration required to enable the touchscreen. The touch interface should out work of the box once the screen is successfully detected.
 
 
 ### Sources
