@@ -7,7 +7,7 @@ Sometimes you need to access a Raspberry Pi without connecting it to a monitor. 
 - [IP address](ip-address.md)
     - How to find your Raspberry Pi's IP address in order to connect to it
 - [Access over Internet](access-over-Internet/README.md)
-    - Remote access to the Pi over the internet using Weaved
+    - Remote access to the Pi over the internet using Weaved or Dataplicity
 - [VNC](vnc/README.md)
     - Remote access to the Pi's graphical interface, viewed in a window on another computer
 - [SSH](ssh/README.md)

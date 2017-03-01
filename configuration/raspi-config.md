@@ -29,10 +29,9 @@ Setup Options
     3 Enable Boot to Desktop/Scratch Choose whether to boot into a desktop environment, Scratch, or the command line
     4 Internationalisation Options   Set up language and regional settings to match your location
     5 Enable Camera                  Enable this Pi to work with the Raspberry Pi camera
-    6 Add to Rastrack                Add this Pi to the online Raspberry Pi Map (Rastrack)
-    7 Overclock                      Configure overclocking for your Pi
-    8 Advanced Options               Configure advanced settings
-    9 About `raspi-config`           Information about this configuration tool
+    6 Overclock                      Configure overclocking for your Pi
+    7 Advanced Options               Configure advanced settings
+    8 About `raspi-config`           Information about this configuration tool
 
                                    <Select>                                  <Finish>
 ```
@@ -92,13 +91,6 @@ This option opens another menu which allows you to select your keyboard layout. 
 
 In order to use the Raspberry Pi Camera Module, you must enable it here. Select the option and proceed to `Enable`. This will make sure at least 128MB of RAM is dedicated to the GPU.
 
-<a name="add-to-rastrack"></a>
-### Add to Rastrack
-
-Rastrack is a user-contributed Google Map to which Pi users in the community have added their location; it shows a heat map of where Pi users are known to be around the world. This was set up by Pi enthusiast [Ryan Walmsley](https://ryanteck.uk/) in 2012. Rastrack is located at [rastrack.co.uk](http://rastrack.co.uk/).
-
-You can use this option to add your location to the map.
-
 <a name="overclock"></a>
 ### Overclock
 
@@ -135,7 +127,7 @@ Change the amount of memory made available to the GPU.
 
 Enable/disable remote command line access to your Pi using SSH.
 
-SSH allows you to remotely access the command line of the Raspberry Pi from another computer. Disabling this ensures the SSH service does not start on boot, freeing up processing resources. Read more about using SSH on the [SSH documentation page](../remote-access/ssh/README.md). Note that SSH is enabled by default. If connecting your Pi directly to a public network, you should disable SSH unless you have set up secure passwords for all users.
+SSH allows you to remotely access the command line of the Raspberry Pi from another computer. SSH is disabled by default. Read more about using SSH on the [SSH documentation page](../remote-access/ssh/README.md). If connecting your Pi directly to a public network, you should not enable SSH unless you have set up secure passwords for all users.
 
 <a name="device-tree"></a>
 #### Device Tree

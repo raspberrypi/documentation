@@ -591,7 +591,6 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | h264_freq | Frequency of the hardware video block in MHz. The default value is `250`. |
 | isp_freq | Frequency of the image sensor pipeline block in MHz. The default value is `250`. |
 | v3d_freq | Frequency of the 3D block in MHz. The default value is `250`. |
-| avoid_pwm_pll | Don't dedicate a PLL to PWM audio. This will reduce analogue audio quality slightly. The spare PLL allows the `core_freq` to be set independently from the rest of the GPU, allowing for more control over overclocking. The default value is `0`.|
 | sdram_freq | Frequency of the SDRAM in MHz. The default value is `400`. |
 | over_voltage | CPU/GPU core voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps; in other words, specifying -16 will give 0.8V as the GPU/core voltage, and specifying 8 will give 1.4V. The default value is `0` (1.2V). Values above 6 are only allowed when `force_turbo` or `current_limit_override` are specified; this sets the warranty bit. |
 | over_voltage_sdram | Sets `over_voltage_sdram_c`, `over_voltage_sdram_i`, and `over_voltage_sdram_p` together. |
@@ -631,10 +630,6 @@ gpu_freq = pll_freq / [even number]
 ```
 
 The effective `gpu_freq` is automatically rounded to the nearest even integer; asking for `core_freq=500` and `gpu_freq=300` will result in the divisor of 2000/300 = 6.666 => 6 and so result in a `gpu_freq` of 333.33MHz.
-
-#### avoid_pwm_pll
-
-Setting this to `1` will decouple a PLL from the PWM hardware. This will result in more hiss on the analogue audio output, but will allow you to set the `gpu_freq` independently of the `core_freq`.
 
 ### Monitoring temperature and voltage
 

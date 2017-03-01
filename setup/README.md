@@ -7,8 +7,8 @@ A guide to setting up your Raspberry Pi
 ### Essential (for general use)
 
 - [SD Card](../installation/sd-cards.md)
-    - We recommend an 8GB class 4 SD card - ideally preinstalled with [NOOBS](../installation/noobs.md).
-- [Display & connectivity cable](monitor-connection.md)
+    - We recommend an 8GB class 4 SD card, ideally preinstalled with [NOOBS](../installation/noobs.md).
+- [Display and connectivity cable](monitor-connection.md)
     - Any HDMI/DVI monitor and any TV should work as a display for the Pi. For best results, use one with HDMI input, but other connections are available for older devices.
 - Keyboard and mouse
     - Any standard USB keyboard and mouse will work with your Raspberry Pi.
@@ -21,7 +21,7 @@ A guide to setting up your Raspberry Pi
 
 ### Optional
 
-- Ethernet (network) cable [Model B/B+ only]
+- Ethernet (network) cable [Model B/B+/2/3 only]
     - An Ethernet cable is used to connect your Pi to a local network and the internet.
 - [USB wireless dongle](../configuration/wireless/README.md)
     - Alternatively, you can connect to a wireless network using a USB wireless dongle, which will require configuration.
