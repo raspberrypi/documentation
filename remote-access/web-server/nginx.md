@@ -105,7 +105,7 @@ cd /var/www/html/
 sudo mv index.nginx-debian.html index.php
 ```
 
-Open `index.php` for with a text editor:
+Open `index.php` with a text editor:
 
 ```bash
 sudo nano index.php
