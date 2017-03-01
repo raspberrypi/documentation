@@ -20,3 +20,5 @@ Some basic guides to configuring your Raspberry Pi.
     - Changing the default pin states.
 - [Device Trees Config](device-tree.md)
     - Device Trees, overlays and parameters.
+- [Kernel Command line](cmdline-txt.md)
+    - How to set options in the kernel command line.
