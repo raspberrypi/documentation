@@ -98,11 +98,11 @@ sudo /etc/init.d/nginx reload
 
 ### Test PHP
 
-Rename `index.html` to `index.php`:
+Rename `index.nginx-debian.html` to `index.php`:
 
 ```bash
 cd /var/www/html/
-sudo mv index.html index.php
+sudo mv index.nginx-debian.html index.php
 ```
 
 Open `index.php` for with a text editor:
