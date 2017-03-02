@@ -23,13 +23,13 @@ If you have MySQL databases running on your Raspberry Pi, it would be wise to ke
 mysqldump recipes > recipes.sql
 ```
 
-This command will back up the `recipes` database to the file `recipes.sql`. Note that in this case, no username and password have been supplied to the `mysqldump` command. If you don't have your MySQL credentials in a `.my.cnf` configuration file in your home folder, then supply the username and password with flags:
+This command will back up the `recipes` database to the file `recipes.sql`. Note that, in this case, no username and password have been supplied to the `mysqldump` command. If you don't have your MySQL credentials in a `.my.cnf` configuration file in your home folder, then supply the username and password with flags:
 
 ```bash
 mysqldump -uroot -ppass recipes > recipes.sql
 ```
 
-To restore a MySQL database from a dumpfile, pipe the dumpfile into the `mysql` command; provide credentials, if necessary, and the database name. Note that the database must exist, so create it first:
+To restore a MySQL database from a dumpfile, pipe the dumpfile into the `mysql` command. Provide credentials, if necessary, and the database name. Note that the database must exist, so create it first:
 
 ```bash
 mysql -Bse "create database recipes"
@@ -52,7 +52,7 @@ In Linux or on a Mac, for example:
 sudo dd bs=4M if=/dev/sdb of=raspbian.img
 ```
 
-This will create an image file on your PC which you can use to write to another SD card, and keep exactly the same contents and settings. To restore or clone to another card, use `dd` in reverse:
+This will create an image file on your computer which you can use to write to another SD card, and keep exactly the same contents and settings. To restore or clone to another card, use `dd` in reverse:
 
 ```bash
 sudo dd bs=4M if=raspbian.img of=/dev/sdb
