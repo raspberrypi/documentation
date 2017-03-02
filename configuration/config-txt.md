@@ -194,7 +194,7 @@ Force the pixel encoding mode. By default, it will use the mode requested from t
 
 #### hdmi_blanking
 
-This allows you to choose whether the HDMI output should be switched off when DPMS is triggered, this is to mimic behaviour of other computers, after a specific amount of time the display not only blanks, but will also go into Low-Power/Standby Mode due to "No Signal"
+This allows you to choose whether the HDMI output should be switched off when DPMS is triggered. This is to mimic the behaviour of other computers. After a specific amount of time the display not only blanks, but will also go into low-power/standby mode due to "No Signal"
 
 **NOTE:** This feature may cause issues when using applications which don't use the framebuffer, such as omxplayer.
 
