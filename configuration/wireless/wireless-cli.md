@@ -40,3 +40,42 @@ Now save the file by pressing **Ctrl+X** then **Y**, then finally press **Enter*
 At this point, `wpa-supplicant` will normally notice a change has occurred within a few seconds, and it will try and connect to the network. If it does not, either manually restart the interface with `sudo ifdown wlan0` and `sudo ifup wlan0`, or reboot your Raspberry Pi with `sudo reboot`.   
 
 You can verify if it has successfully connected using `ifconfig wlan0`. If the `inet addr` field has an address beside it, the Pi has connected to the network. If not, check your password and ESSID are correct.   
+
+## Adding multiple wireless network configurations
+
+On recent versions of Raspian, it is possible to set up multiple configurations for wireless networking, for example for home and school. 
+
+For example 
+```
+network={
+    ssid="SchoolNetworkSSID"
+    psk="passwordSchool"
+    id_str="school"
+}
+
+network={
+    ssid="HomeNetworkSSID"
+    psk="passwordHome"
+    id_str="home"
+}
+```
+
+If you have two networks in range and need to chose between them, then you can also add the priority option. The network, in range, with the highest priority, will be the one that is connected.
+
+```
+network={
+    ssid="HomeOneSSID"
+    psk="passwordOne"
+    priority=1
+    id_str="homeOne"
+}
+
+network={
+    ssid="HomeTwoSSID"
+    psk="passwordTwo"
+    priority=2
+    id_str="homeTwo"
+}
+```
+
+
