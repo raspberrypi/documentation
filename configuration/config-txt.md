@@ -184,8 +184,8 @@ Setting this to `1` pretends that [CEC](https://en.wikipedia.org/wiki/Consumer_E
 
 #### cec_osd_name
 
-Set intial cec name of the device.
-Default is Raspberry Pi
+Set intial CEC name of the device.
+Default is Raspberry Pi.
 
 #### hdmi_pixel_encoding
 
