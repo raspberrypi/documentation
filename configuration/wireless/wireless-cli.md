@@ -43,7 +43,7 @@ You can verify if it has successfully connected using `ifconfig wlan0`. If the `
 
 ## Adding multiple wireless network configurations
 
-On recent versions of Raspian, it is possible to set up multiple configurations for wireless networking, for example for home and school. 
+On recent versions of Raspian, it is possible to set up multiple configurations for wireless networking. For example, you could set up one for home and one for school. 
 
 For example 
 ```
@@ -60,7 +60,7 @@ network={
 }
 ```
 
-If you have two networks in range and need to chose between them, then you can also add the priority option. The network, in range, with the highest priority, will be the one that is connected.
+If you have two networks in range, you can add the priority option to chose between them. The network in range, with the highest priority, will be the one that is connected.
 
 ```
 network={
