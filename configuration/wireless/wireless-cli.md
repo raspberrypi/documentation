@@ -43,7 +43,7 @@ You can verify if it has successfully connected using `ifconfig wlan0`. If the `
 
 ## Hidden Networks
 
-If you are using a hidden network, an extra option, scan_ssid, in the wpa_supplicant file may help connection.
+If you are using a hidden network, an extra option in the `wpa_supplicant file`, `scan_ssid`, may help connection.
 
 ```
 network={
