@@ -192,6 +192,17 @@ Force the pixel encoding mode. By default, it will use the mode requested from t
 | 3 | YCbCr limited (16-235) |
 | 4 | YCbCr full (0-255) |
 
+#### hdmi_blanking
+
+This allows you to choose whether the HDMI output should be switched off when DPMS is triggered. This is to mimic the behaviour of other computers. After a specific amount of time the display not only blanks, but will also go into low-power/standby mode due to "No Signal"
+
+**NOTE:** This feature may cause issues when using applications which don't use the framebuffer, such as omxplayer.
+
+| hdmi_blanking | result |
+| --- | --- |
+| 0 | HDMI Output will Blank instead of being Disabled |
+| 1 | HDMI Output will be Disabled rather than just Blank |
+
 #### hdmi_drive
 
 This allows you to choose between HDMI and DVI output modes.
