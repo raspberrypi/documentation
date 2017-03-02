@@ -21,7 +21,7 @@ $ KERNEL=kernel
 $ make bcmrpi_defconfig
 ```
 
-and if you're cross compiling the second line should be:
+If you're cross-compiling, the second line should be:
 
 ```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
@@ -34,7 +34,7 @@ $ KERNEL=kernel7
 $ make bcm2709_defconfig
 ```
 
-and if you're cross compiling the second line should be:
+If you're cross-compiling, the second line should be:
 
 ```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
@@ -48,12 +48,11 @@ Once you've got everything set up and ready to go, you can compile and run the `
 $ make menuconfig
 ```
 
-and if you're cross compiling:
+If you're cross-compiling,:
 
 ```
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
 ```
-
 
 The `menuconfig` utility has simple keyboard navigation. After a brief compilation, you'll be presented with a list of submenus containing all the options you can configure; there's a lot, so take your time to read through them and get acquainted.
 
