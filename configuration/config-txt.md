@@ -203,9 +203,9 @@ This allows you to choose between HDMI and DVI output modes.
 
 #### config_hdmi_boost
 
-Configures the signal strength of the HDMI interface; the default value is `0` and the maximum is `11`.
+Configures the signal strength of the HDMI interface. The default value is `0` and the maximum is `11`.
 
-The default value for the Pi1 (A and B) is 2, the default value for the Pi1 B+ and all later models is 5. 
+The default value for the Pi1 (A and B) is 2. The default value for the Pi1 B+ and all later models is 5. 
 
 If you are seeing HDMI issues (speckling, interference) then try `7`. Very long HDMI cables may need up to `11`, but values this high should not be used unless absolutely necessary.
 
