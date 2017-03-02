@@ -11,7 +11,7 @@ To scan for WiFi networks, use the command `sudo iwlist wlan0 scan`. This will l
 
 1. `IE: IEEE 802.11i/WPA2 Version 1` is the authentication used; in this case it's WPA2, the newer and more secure wireless standard which replaces WPA. This guide should work for WPA or WPA2, but may not work for WPA2 enterprise; for WEP hex keys, see the last example [here](http://www.freebsd.org/cgi/man.cgi?query=wpa_supplicant.conf&sektion=5&apropos=0&manpath=NetBSD+6.1.5). You'll also need the password for the wireless network. For most home routers, this is found on a sticker on the back of the router. The ESSID (ssid) for the network in this case is `testing` and the password (psk) is `testingPassword`.
 
-1. If `security` is a concern entering a password as plain text is not recommended. You can use the `wpa_passphrase` to create a unique token and enter it instead. As arguments the command requires the ESSID and the password. With the example from above calling the command will be `wpa_passphrase "testing" "testingPassword` which will output a ready-to-use wpa-compliant network profile:
+1. If `security` is a concern, entering a password as plain text is not recommended. You can use `wpa_passphrase` to create a unique token and enter it instead. As arguments, the command requires the ESSID and the password. With the example from above, calling the command will be `wpa_passphrase "testing" "testingPassword` which will output a ready-to-use wpa-compliant network profile:
 
   ```
   network={
@@ -21,7 +21,7 @@ To scan for WiFi networks, use the command `sudo iwlist wlan0 scan`. This will l
   }
   ```
   
-  As you can see the password `testingPassword` is still visible as a comment namely `#psk="testingPassword"`. When pasting the produced profile in your configuration file make sure to remove this line (otherwise the whole procedure of generating the secret token would be pointless). The tool requires a password with at least 8 and up to 63 characters. You can also extract the content of a text file and use it as input of `wpa_passphrase` if the password is stored as plain text inside a file somewhere by calling `wpa_passphrase "testing" << file_where_password_is_stored`.
+  As you can see, the password `testingPassword` is still visible as a comment, namely `#psk="testingPassword"`. When pasting the produced profile in your configuration file, make sure to remove this line (otherwise the whole procedure of generating the secret token would be pointless). The tool requires a password with at between eight and 63 characters. You can also extract the content of a text file and use it as input of `wpa_passphrase` if the password is stored as plain text inside a file somewhere by calling `wpa_passphrase "testing" << file_where_password_is_stored`.
   
   
 ## Adding the network details to the Raspberry Pi
