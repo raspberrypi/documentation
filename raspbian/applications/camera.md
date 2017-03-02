@@ -146,17 +146,19 @@ Note that not all of these settings may be implemented, depending on camera tuni
 ```
 	--awb,	-awb		Set Automatic White Balance (AWB) mode
 ```
+Modes for which colour temperature ranges (K) are available have these settings in brackets.
 
 - off		Turn off white balance calculation
 - auto		Automatic mode (default)
-- sun		Sunny mode
-- cloud		Cloudy mode
-- shade		Shade mode
-- tungsten	Tungsten lighting mode
-- fluorescent	Fluorescent lighting mode
+- sun		Sunny mode (between 5000K and 6500K) 
+- cloud		Cloudy mode (between 6500K and 12000K)
+- shade		Shade mode 
+- tungsten	Tungsten lighting mode (between 2500K and 3500K)
+- fluorescent	Fluorescent lighting mode (between 2500K and 4500K)
 - incandescent	Incandescent lighting mode
 - flash		Flash mode
 - horizon	Horizon mode
+
 
 Note that not all of these settings may be implemented, depending on camera type.
 
