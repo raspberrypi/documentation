@@ -31,11 +31,11 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
 
 - By default, the `dd` command does not give any information about its progress and so may appear to have frozen; it could take more than five minutes to finish writing to the card. If your card reader has an LED, it may blink during the write process. 
 
-- To see the progress of the copy operation you can run the dd command with the status option.
+- To see the progress of the copy operation, you can run the dd command with the status option.
    ```
     dd bs=4M if=2017-02-16-raspbian-jessie.img of=/dev/sdd status=progress
    ```
-- If you are using an older version of `dd`, the status option may not be available, you may be able to use the `dcfldd` command instead; it will give a progress report about how much has been written.
+- If you are using an older version of `dd`, the status option may not be available. You may be able to use the `dcfldd` command instead, which will give a progress report about how much has been written.
 
 ### Checking if the image was correctly written to the SD card
 
