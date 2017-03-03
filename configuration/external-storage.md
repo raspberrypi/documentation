@@ -51,7 +51,7 @@ You can modify the `fstab` file to define the location where the HDD will be aut
 
 4. Add the following line in the `fstab` file. 
     ```
-    UID=5C24-1453 /mnt/PIHDD exfat defaults,auto,umask=000,users,rw 0 0
+    UUID=5C24-1453 /mnt/PIHDD exfat defaults,auto,umask=000,users,rw 0 0
     ```
 
 For more information on the Linux commands, refer to the specific manual pages using the `man` command. For example, `man fstab`.
