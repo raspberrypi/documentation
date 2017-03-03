@@ -20,7 +20,7 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
 - In a terminal window, write the image to the card with the command below, making sure you replace the input file `if=` argument with the path to your `.img` file, and the `/dev/sdd` in the output file `of=` argument with the right device name. This is very important, as you will lose all data on the hard drive if you provide the wrong device name. Make sure the device name is the name of the whole SD card as described above, not just a partition of it; for example, `sdd`, not `sdds1` or `sddp1`, and `mmcblk0`, not `mmcblk0p1`.
 
     ```bash
-    dd bs=4M if=2017-02-16-raspbian-jessie.img of=/dev/sdd
+    dd bs=4M if=2017-03-02-raspbian-jessie.img of=/dev/sdd
     ```
 
 - Please note that block size set to `4M` will work most of the time; if not, please try `1M`, although this will take considerably longer.
@@ -33,7 +33,7 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
 
 - To see the progress of the copy operation, you can run the dd command with the status option.
    ```
-    dd bs=4M if=2017-02-16-raspbian-jessie.img of=/dev/sdd status=progress
+    dd bs=4M if=2017-03-02-raspbian-jessie.img of=/dev/sdd status=progress
    ```
 - If you are using an older version of `dd`, the status option may not be available. You may be able to use the `dcfldd` command instead, which will give a progress report about how much has been written.
 
@@ -45,8 +45,8 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
 
     ```bash
     dd bs=4M if=/dev/sdd of=from-sd-card.img
-    truncate --reference 2017-02-16-raspbian-jessie.img from-sd-card.img
-    diff -s from-sd-card.img 2017-02-16-raspbian-jessie.img
+    truncate --reference 2017-03-02-raspbian-jessie.img from-sd-card.img
+    diff -s from-sd-card.img 2017-03-02-raspbian-jessie.img
     ```
 
 - Run `sync`; this will ensure the write cache is flushed and that it is safe to unmount your SD card.
