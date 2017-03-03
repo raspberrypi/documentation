@@ -55,7 +55,7 @@ Generally speaking, `raspi-config` aims to provide the functionality to make the
 <a name="expand-filesystem"></a>
 ### Expand filesystem
 
-If you have installed Raspbian using NOOBS, the filesystem will have been expanded automatically. If for some reason you have not done this, you should use this option to expand your installation to fill the whole SD card, giving you more space to use for files. You will need to reboot the Raspberry Pi to make this available. Note that there is no confirmation: selecting the option begins the partition expansion immediately.
+If you have installed Raspbian using NOOBS, the filesystem will have been expanded automatically. There may be a rare occasion where this is not the case, e.g. if you have copied a smaller SD card onto a larger one. In this case, you should use this option to expand your installation to fill the whole SD card, giving you more space to use for files. You will need to reboot the Raspberry Pi to make this available. Note that there is no confirmation: selecting the option begins the partition expansion immediately.
 
 <a name="change-user-password"></a>
 ### Change user password
