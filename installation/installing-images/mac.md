@@ -24,7 +24,7 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
        ```
        sudo dd bs=1m if=path_of_your_image.img of=/dev/diskn
        ```
-This will take a few minutes, depending on the image file size. To check the progress open Activity Monitor, click the Disk tab and find the process with the name of `dd`. If `dd` is not in the list, you may need to select `All Processes` from the View menu. The Bytes Read column will display the amount of data that has been read from the image. Compare that to the file size of the image to determine progress.
+This will take a few minutes, depending on the image file size. To check the progress open Activity Monitor, click the Disk tab and find the process with the name `dd`. If `dd` is not in the list, you may need to select All Processes from the View menu. The Bytes Read column will display the amount of data that has been read from the image. Compare that to the file size of the image to determine progress.
 
 
 ## Command line
