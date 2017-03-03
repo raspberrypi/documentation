@@ -68,4 +68,41 @@ network={
 }
 ```
 
+You can verify if it has successfully connected using `ifconfig wlan0`. If the `inet addr` field has an address beside it, the Pi has connected to the network. If not, check your password and ESSID are correct.   
 
+## Adding multiple wireless network configurations
+
+On recent versions of Raspbian, it is possible to set up multiple configurations for wireless networking. For example, you could set up one for home and one for school. 
+
+For example 
+```
+network={
+    ssid="SchoolNetworkSSID"
+    psk="passwordSchool"
+    id_str="school"
+}
+
+network={
+    ssid="HomeNetworkSSID"
+    psk="passwordHome"
+    id_str="home"
+}
+```
+
+If you have two networks in range, you can add the priority option to chose between them. The network in range, with the highest priority, will be the one that is connected.
+
+```
+network={
+    ssid="HomeOneSSID"
+    psk="passwordOne"
+    priority=1
+    id_str="homeOne"
+}
+
+network={
+    ssid="HomeTwoSSID"
+    psk="passwordTwo"
+    priority=2
+    id_str="homeTwo"
+}
+```
