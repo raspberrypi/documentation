@@ -43,7 +43,7 @@ There are a large number of options that can be put in the config.txt file. Thes
 - [Camera](camera.md)
 - [Boot](boot.md)
 - [Device Tree](../device-tree.md)
-- [Overclocking](overclock.md)
+- [Overclocking](overclocking.md)
 - [Conditional Filters](conditional.md)
 
 
