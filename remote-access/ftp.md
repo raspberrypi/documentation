@@ -12,7 +12,7 @@ sudo apt-get install pure-ftpd
 
 ## Basic Configurations
 
-We need to create a new user group named `ftpgroup` and a new user named `ftpuser` for FTP users, and make sure this "user" has NO log in privilge and NO home directory:
+We need to create a new user group named `ftpgroup` and a new user named `ftpuser` for FTP users, and make sure this "user" has **no** login privilge and **no** home directory:
 
 ```bash
 sudo groupadd ftpgroup
