@@ -108,7 +108,7 @@ Be aware that overclocking may reduce the lifetime of your Raspberry Pi. If over
 
 Old TV sets had a significant variation in the size of the picture they produced; some had cabinets that overlapped the screen. TV pictures were therefore given a black border so that none of the picture was lost; this is called overscan. Modern TVs and monitors don't need the border, and the signal doesn't allow for it. If the initial text shown on the screen disappears off the edge, you need to enable overscan to bring the border back.
 
-Any changes will take effect after a reboot. You can have greater control over the settings by editing [config.txt](config-txt.md).
+Any changes will take effect after a reboot. You can have greater control over the settings by editing [config.txt](config-txt/README.md).
 
 On some displays, particularly monitors, disabling overscan will make the picture fill the whole screen and correct the resolution. For other displays, it may be necessary to leave overscan enabled and adjust its values.
 
@@ -181,4 +181,3 @@ See this tool's source at [github.com/RPi-Distro/raspi-config](https://github.co
 ---
 
 *This article uses content from the eLinux wiki page [RPi raspi-config](http://elinux.org/RPi_raspi-config), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](http://creativecommons.org/licenses/by-sa/3.0/)*
-
