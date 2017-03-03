@@ -27,9 +27,13 @@ Please note that the use of the `dd` tool can overwrite any partition of your ma
 - Also note that if you are not logged in as root you will need to prefix this with `sudo`.
 
 ### Checking the image copy progress
-- The `dd` command does not give any information of its progress and so may appear to have frozen; it could take more than five minutes to finish writing to the card. If your card reader has an LED it may blink during the write process. To see the progress of the copy operation you can run `pkill -USR1 -n -x dd` in another terminal, prefixed with `sudo` if you are not logged in as root. The progress will be displayed in the original window and not the window with the `pkill` command; it may not display immediately, due to buffering.
+- By default, the `dd` command does not give any information of its progress and so may appear to have frozen; it could take more than five minutes to finish writing to the card. If your card reader has an LED it may blink during the write process. 
 
-- Instead of `dd` you can use `dcfldd`; it will give a progress report about how much has been written.
+- To see the progress of the copy operation you can run the dd command with the status option.
+   ```
+    dd bs=4M if=2017-02-16-raspbian-jessie.img of=/dev/sdd status=progress
+   ```
+- If you are using an older version of `dd`, the status option may not be available, you may be able to use the `dcfldd` command instead; it will give a progress report about how much has been written.
 
 ### Checking if the image was correctly written to the SD card
 - After `dd` has finished copying, you can check what's written to the SD card by `dd`-ing from the card back to another image on your hard disk, truncating the new image to the same size as the original, and then running `diff` (or `md5sum`) on those two images.
