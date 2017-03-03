@@ -21,11 +21,23 @@ $ KERNEL=kernel
 $ make bcmrpi_defconfig
 ```
 
+If you're cross-compiling, the second line should be:
+
+```
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
+```
+
 For all models of Raspberry Pi 2/3:
 
 ```
 $ KERNEL=kernel7
 $ make bcm2709_defconfig
+```
+
+If you're cross-compiling, the second line should be:
+
+```
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
 ```
 
 ## Using menuconfig
@@ -34,6 +46,12 @@ Once you've got everything set up and ready to go, you can compile and run the `
 
 ```
 $ make menuconfig
+```
+
+If you're cross-compiling,:
+
+```
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
 ```
 
 The `menuconfig` utility has simple keyboard navigation. After a brief compilation, you'll be presented with a list of submenus containing all the options you can configure; there's a lot, so take your time to read through them and get acquainted.

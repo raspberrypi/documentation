@@ -206,9 +206,3 @@ FF FF FF FF FF FF
 DE AD BE EF BA AD
 F0 0D
 ```
-
-If you get compilation errors, try the latest version instead:
-
-```bash
-wget https://raw.github.com/torvalds/linux/master/Documentation/spi/spidev_test.c
-```

@@ -31,6 +31,8 @@ overscan_right=12
 overscan_top=10
 overscan_bottom=10
 ```
+# Force overscan settings to non-framebuffer layers.
+overscan_scale=1
 
 ## Memory
 
@@ -180,6 +182,11 @@ Setting this to `1` will prevent the initial active source message being sent du
 
 Setting this to `1` pretends that [CEC](https://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC) is not supported at all by the TV. No CEC functions will be supported.
 
+#### cec_osd_name
+
+Set intial CEC name of the device.
+Default is Raspberry Pi.
+
 #### hdmi_pixel_encoding
 
 Force the pixel encoding mode. By default, it will use the mode requested from the EDID, so it shouldn't need changing.
@@ -192,6 +199,17 @@ Force the pixel encoding mode. By default, it will use the mode requested from t
 | 3 | YCbCr limited (16-235) |
 | 4 | YCbCr full (0-255) |
 
+#### hdmi_blanking
+
+This allows you to choose whether the HDMI output should be switched off when DPMS is triggered. This is to mimic the behaviour of other computers. After a specific amount of time the display not only blanks, but will also go into low-power/standby mode due to "No Signal"
+
+**NOTE:** This feature may cause issues when using applications which don't use the framebuffer, such as omxplayer.
+
+| hdmi_blanking | result |
+| --- | --- |
+| 0 | HDMI Output will Blank instead of being Disabled |
+| 1 | HDMI Output will be Disabled rather than just Blank |
+
 #### hdmi_drive
 
 This allows you to choose between HDMI and DVI output modes.
@@ -203,7 +221,11 @@ This allows you to choose between HDMI and DVI output modes.
 
 #### config_hdmi_boost
 
-Configures the signal strength of the HDMI interface; the default value is `0` and the maximum is `7`. Try `4` if you have interference issues with HDMI.
+Configures the signal strength of the HDMI interface. The default value is `0` and the maximum is `11`.
+
+The default value for the Raspberry Pi 1 (A and B) is `2`. The default value for the Raspberry Pi 1 B+ and all later models is `5`. 
+
+If you are seeing HDMI issues (speckling, interference) then try `7`. Very long HDMI cables may need up to `11`, but values this high should not be used unless absolutely necessary.
 
 #### hdmi_group
 
@@ -521,7 +543,7 @@ The alternative filename on the boot partition to use when loading the kernel; t
 
 ### kernel_address
 
-The memory address into which the kernel image should be loaded.
+The memory address into which the kernel image should be loaded. 32-bit kernels are loaded to address `0x8000` by default, and 64-bit kernels to address `0x80000`. If `kernel_old` is set, kernels are loaded to the address `0x0`.
 
 ### kernel_old
 

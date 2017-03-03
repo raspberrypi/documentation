@@ -15,8 +15,11 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
     ```
 
     Remember to replace `n` with the number that you noted before!
+    
+    This will take a few minutes, depending on the image file size. You can check the progress by sending a SIGINFO signal                  (press **Ctrl+T**).
 
-   - If this command fails, try using `disk` instead of `rdisk`:
+
+    - If this command fails, try using `disk` instead of `rdisk`:
     
        ```
        sudo dd bs=1m if=path_of_your_image.img of=/dev/diskn
