@@ -10,7 +10,7 @@ Licence key to allow hardware MPEG-2 decoding, e.g. `decode_MPG2=0x12345678`.
 
 Licence key to allow hardware VC-1 decoding, e.g. `decode_WVC1=0x12345678`.
 
-If you've got multiple Raspberry Pis and you've bought a codec licence for each of them, you can list up to 8 licence keys in a single `config.txt`, for example `decode_MPG2=0x12345678,0xabcdabcd,0x87654321`. This enables you to swap the same SD card between the different Pis without having to edit `config.txt` each time.
+If you have multiple Raspberry Pis and you've bought a codec licence for each of them, you can list up to 8 licence keys in a single `config.txt`, for example `decode_MPG2=0x12345678,0xabcdabcd,0x87654321`. This enables you to swap the same SD card between the different Pis without having to edit `config.txt` each time.
 
 
 
