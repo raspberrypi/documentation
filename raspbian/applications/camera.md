@@ -250,10 +250,10 @@ Sets the shutter speed to the specified value (in microseconds). There's current
 
 DRC changes the images by increasing the range of dark areas, and decreasing the brighter areas. This can improve the image in low light areas.
 
-- Off
-- Low
-- Medium
-- High
+- off
+- low
+- medium
+- high
 
 By default, DRC is off.
 
