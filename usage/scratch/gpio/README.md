@@ -326,3 +326,4 @@ In normal use you shouldn't need to enable the GPIO server, as by default it is 
    - `2` - to both enable and start the server; perhaps useful in a classroom when the lesson will be about GPIO use
 
 Note that the older mesh/network server setup is currently semi-hidden under the Share menu - you have to hold down the shift key whilst opening that menu. It works exactly as before and still connects to external socket-based servers.
+ 
