@@ -81,83 +81,82 @@ The `dd` command copies a file converting the file as specified. It is often use
 
 ### df
 
-Use `df` to disply the disk space available and used on the mounted filesystems. Use `df -h` to see the output in a human readable format using M for MBs rather than showing number of bytes. 
+Use `df` to display the disk space available and used on the mounted filesystems. Use `df -h` to see the output in a human-readable format using M for MBs rather than showing number of bytes. 
 
 ### unzip
 
-Extracts the files from a compressed zip file. 
+The `unzip` command extracts the files from a compressed zip file. 
 
 ### tar
 
-Store or extract files from a tape archive file. It can also reduce the space required by compressing the file similar to a zip file. 
+Use `tar` to store or extract files from a tape archive file. It can also reduce the space required by compressing the file similar to a zip file. 
 
-To create a compressed file use `tar -cvzf *filename.tar.gz* *directory/*`
-To extract the contents of a file use `tar -xvzf *filename.tar.gz*`
+To create a compressed file, use `tar -cvzf *filename.tar.gz* *directory/*`
+To extract the contents of a file, use `tar -xvzf *filename.tar.gz*`
 
 
 ### pipes
 
-A pipe allows the output from one command to be used as the input for another command. The pipe symbol is a vertical line `|`. For example to only show the first 10 entries of the ls command it can be piped through the head command `ls | head`
+A pipe allows the output from one command to be used as the input for another command. The pipe symbol is a vertical line `|`. For example, to only show the first ten entries of the `ls` command it can be piped through the head command `ls | head`
 
 ### tree
 
-Show a directory and all subdirectories and files indented as a tree structure.
+Use the `tree` command to show a directory and all subdirectories and files indented as a tree structure.
 
 ### &
 
-Run a command in the background freeing up the shell for future commands. 
+Run a command in the background with `&`, freeing up the shell for future commands. 
 
 ### wget
 
-Download a file from the web directly to the computer e.g. `wget http://www.raspberrypi.org/documentation/linux/usage/commands.md` will download this file to your computer as `commands.md`
+Download a file from the web directly to the computer with `wget`. So `wget http://www.raspberrypi.org/documentation/linux/usage/commands.md` will download this file to your computer as `commands.md`
 
 ### curl
 
-Download or upload a file to/from a server. By default it will output the file contents of the file to the screen.
+Use `curl` to download or upload a file to/from a server. By default, it will output the file contents of the file to the screen.
 
 
 ### man
 
-Show the manual page for a file. To find out more run `man man` to view the manual page of the man command. 
+Show the manual page for a file with `man`. To find out more, run `man man` to view the manual page of the man command. 
 
 
 ## Search
 
 ### grep
 
-Search inside files for certain search patterns e.g. `grep "search" *.txt` will look in all the files in the current directory ending with .txt for the string search.
+Use `grep` to search inside files for certain search patterns. For example, `grep "search" *.txt` will look in all the files in the current directory ending with .txt for the string search.
 
-Supports regular expressions which allows special letter combinations to be included in the search.
+The `grep` command supports regular expressions which allows special letter combinations to be included in the search.
 
 ### awk
 
-Programming language useful for searching and manipulating text files.
+`awk` is a programming language useful for searching and manipulating text files.
 
 ### find
 
-Searches a directory and subdirectories for files matching certain patterns. 
+The `find` command searches a directory and subdirectories for files matching certain patterns. 
 
 
 ### whereis
 
-Finds the location of a command. Looks through standard program locations until it finds the requested command.
-
+Use `whereis` to find the location of a command. It looks through standard program locations until it finds the requested command.
 
 
 ## Networking
 
 ### ping
 
-Utility usually used to check if communication can be made with another host. Can be used with default settings by just specifying a hostname (e.g. `ping raspberrypi.org`) or an IP address (e.g. `ping 8.8.8.8`). Can specify the number of packets to send with the `-c` flag.
+The `ping` utility is usually used to check if communication can be made with another host. It can be used with default settings by just specifying a hostname (e.g. `ping raspberrypi.org`) or an IP address (e.g. `ping 8.8.8.8`). It can specify the number of packets to send with the `-c` flag.
 
 ### nmap
 
-Network exploration and scanning tool. Can return port and OS information about a host or a range of hosts. Running just `nmap` will display the options available as well as example usage.
+`nmap` is a network exploration and scanning tool. It can return port and OS information about a host or a range of hosts. Running just `nmap` will display the options available as well as example usage.
 
 ### hostname
 
-Displays the current hostname of the system. A privileged (super) user can set the hostname to a new one by supplying it as an argument (e.g. `hostname new-host`).
+The `hostname` command displays the current hostname of the system. A privileged (super) user can set the hostname to a new one by supplying it as an argument (e.g. `hostname new-host`).
 
 ### ifconfig
 
-Displays the network configuration details for the interfaces on the current system when run without any arguments (i.e. `ifconfig`). By supplying the command with the name of an interface (e.g. `eth0` or `lo`) you can then alter the configuration (check the man-page for more details).
+Use `ifconfig` to display the network configuration details for the interfaces on the current system when run without any arguments (i.e. `ifconfig`). By supplying the command with the name of an interface (e.g. `eth0` or `lo`) you can then alter the configuration (check the man-page for more details).
