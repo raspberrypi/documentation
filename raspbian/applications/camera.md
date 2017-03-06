@@ -206,7 +206,7 @@ The supplied U and V parameters (range 0 - 255) are applied to the U and Y chann
 Specify the metering mode used for the preview and capture:
 
 - Average: average the whole frame for metering
-- spot: spot metering
+- Spot: spot metering
 - Backlit: assume a backlit image
 - Matrix: matrix metering
 
