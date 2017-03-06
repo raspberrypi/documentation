@@ -1,6 +1,6 @@
 # Access your Raspberry Pi over the internet
 
-You can connect to your Raspberry Pi over the internet from another computer or a mobile device. There are a number of ways to do this, which we cover below. 
+You can connect to your Raspberry Pi over the internet from another computer or a mobile device. There are a number of ways to do this, which we cover below.
 
 ## Port forwarding
 
@@ -47,3 +47,13 @@ It uses WebSockets over HTTPS to provide a connection, and requires a single-lin
 Dataplicity provides free support by e-mail and in-app messenger.
 
 For more information, consult the [documentation](https://docs.dataplicity.com/).
+
+### Losant
+
+Losant is an easy-to-use developer platform designed to help you quickly and securely build connected applications. Losant provides powerful data collection, aggregation, and visualization.
+
+With [Losant](https://losant.com), you can easily control and listen to the Raspberry Pi's GPIO. Losant's drag-and-drop workflow editor allows you to trigger actions, notifications, and machine-to-machine communication without programming.
+
+For detailed instructions, check out this [guide](https://www.losant.com/blog/how-to-access-your-raspberry-pis-gpio-over-the-internet).
+
+Losant uses open communication standards like REST and MQTT to provide connectivity to devices.
