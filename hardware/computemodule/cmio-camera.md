@@ -1,13 +1,15 @@
-# Attaching a Raspberry Pi Camera to the Compute Module IO Board
+# Attaching a Raspberry Pi Camera Module to the Compute Module IO Board
 
-*This document is a work in progress and is intended for advanced users.*
+**This document is a work in progress and is intended for advanced users.**
 
-*For the camera to work with the compute module, the firmware needs to be July 23rd 2014 or newer (use `vcgencmd version` to check).*
+**For the camera to work with the Compute Module 3 (CM3), the firmware needs to be September 21st 2016 or newer (use `vcgencmd version` to check).**
+
+** Note that unless explicitly stated otherwise, these instructions will work identically on Compute Module and Compute Module 3 Module+IO board(s). **
 
 ## Quickstart
 
 1. On the compute module, run `sudo raspi-config` and enable the camera.
-1. Next, run `sudo wget http://goo.gl/lozvZB -O /boot/dt-blob.bin`
+1. Next, run `sudo wget http://goo.gl/U4t12b -O /boot/dt-blob.bin`
 1. Connect adapter board and camera to CAM1 port.
 
     ![Connecting the adapter board](images/CMAIO-Cam-Adapter.jpg)
@@ -16,7 +18,7 @@
 
     ![GPIO connection for a single camera](images/CMIO-Cam-GPIO.jpg)
 
-1. *(Optional)* To add an additional camera, repeat step 3 with CAM0 and connect the GPIO pins for the second camera.
+1. (Optional) To add an additional camera, repeat step 3 with CAM0 and connect the GPIO pins for the second camera.
 
     ![GPIO connection with additional camera](images/CMIO-Cam-GPIO2.jpg)
 
@@ -24,7 +26,7 @@
 
 ### Software support
 
-Recent raspicam binaries (*raspivid* and *raspistill*) have the -cs (--camselect) option to specify which camera should be used.
+Recent raspicam binaries (**raspivid** and **raspistill**) have the -cs (--camselect) option to specify which camera should be used.
 
 From other applications, MMAL can be told which camera to use by setting MMAL_PARAMETER_CAMERA_NUM accordingly.
 
@@ -35,13 +37,13 @@ status = mmal_port_parameter_set(camera->control, &camera_num.hdr);
 
 ## Advanced
 
-The 15-way 1mm FFC camera connector on the Raspberry Pi model A and B is attached to the CAM1 interface (though only uses 2 of the 4 available lanes).
+The 15-way 1mm FFC camera connector on the Raspberry Pi model A and B is attached to the CAM1 interface (though it only uses two of the four available lanes).
 
-The Compute Module IO Board has a 22-way 0.5mm FFC for each camera port, with CAM0 being a 2-lane interface and CAM1 being the full 4-lane interface.
+The Compute Module IO board has a 22-way 0.5mm FFC for each camera port, with CAM0 being a two-lane interface and CAM1 being the full four-lane interface.
 
-To attach a standard Raspberry Pi Camera to the Compute module IO Board a small adaptor board is available that adapts the 22W FFC to the Pi 15W FFC.
+To attach a standard Raspberry Pi Camera to the Compute Module IO board, a small adaptor board is available. It adapts the 22W FFC to the Pi 15W FFC.
 
-To make the Raspberry Pi Camera work with a standard Raspian OS the GPIOs and I2C interface must be wired to the CAM1 connector. This is done by bridging the correct GPIOs from the J6 GPIO connector to the CD1_SDA/SCL and CAM1_IO0/1 pins on the J5 connector using jumper wires. Additionally, a *dt-blob.bin* file needs to be provided to override default pin states (the dt-blob.bin file is a file that tells the GPU what pins to use when controlling the camera, for more information on this see the relevant section in the guide to attaching peripherals to a Compute Moule [here](cm-peri-sw-guide.md)).
+To make the Raspberry Pi Camera Module work with a standard Raspian OS, the GPIOs and I2C interface must be wired to the CAM1 connector. This is done by bridging the correct GPIOs from the J6 GPIO connector to the CD1_SDA/SCL and CAM1_IO0/1 pins on the J5 connector using jumper wires. Additionally, a **dt-blob.bin** file needs to be provided to override default pin states (the dt-blob.bin file is a file that tells the GPU what pins to use when controlling the camera. For more information on this, see the relevant section in the guide to attaching peripherals to a Compute Module [here](cm-peri-sw-guide.md)).
 
 **The pin numbers below are provided only as an example. LED and SHUTDOWN pins can be shared by both cameras, if required.** The SDA and SCL pins must be either GPIO0 and GPIO1 or GPIO28 and 29 and must be individual to each camera.
 
@@ -59,11 +61,11 @@ To make the Raspberry Pi Camera work with a standard Raspian OS the GPIOs and I2
 
 ### Configuring default pin states
 
-The GPIOs used by the camera, default to input mode on the compute module. In order to [override the default pin states](../../configuration/pin-configuration.md) and define the pins used by the camera, we need to create a *dt-blob.bin* file from a source dts file with the relevant information for the GPU, and place this on the root of the first FAT partition.
+The GPIOs used by the camera default to input mode on the Compute Module. In order to [override the default pin states](../../configuration/pin-configuration.md) and define the pins used by the camera, we need to create a **dt-blob.bin** file from a source dts file with the relevant information for the GPU, and place this on the root of the first FAT partition.
 
 [Sample device tree source files](#sample-device-tree-source-files) are provided at the bottom of this document.
 
-The **pin_config** section in the `pins_cm { }` (compute module) section of the source dts needs the camera's LED and power enable pins set to outputs:
+The **pin_config** section in the `pins_cm { }` (compute module) or `pins_cm3 { }` (compute module3) section of the source dts needs the camera's LED and power enable pins set to outputs:
 
 ```
 pin@p2  { function = "output"; termination = "no_pulling"; };
@@ -92,14 +94,14 @@ Connect up the I2C and GPIO lines.
 1. Attach CAM0_IO1 (J6 pin 49) to GPIO30 (J6 pin 5).
 1. Attach CAM0_IO0 (J6 pin 51) to GPIO31 (J6 pin 7).
 
-The compute module's **pin_config** secion needs the second camera's LED and power enable pins configured:
+The Compute Module's **pin_config** secion needs the second camera's LED and power enable pins configured:
 
 ```
 pin@p30 { function = "output"; termination = "no_pulling"; };
 pin@p31 { function = "output"; termination = "no_pulling"; };
 ```
 
-In the compute module's **pin_defines** section of the dts file, change the *NUM_CAMERAS* parameter to 2 and add the following:
+In the Compute Module's **pin_defines** section of the dts file, change the **NUM_CAMERAS** parameter to 2 and add the following:
 
 ```
 pin_define@CAMERA_1_LED { type = "internal"; number = <30>; };
@@ -113,8 +115,6 @@ pin_define@CAMERA_1_SCL_PIN { type = "internal"; number = <29>; };
 <a name="sample-device-tree-source-files"></a>
 ### Sample device tree source files
 
-[Enable a CAM1 only](dt-blob-cam1.dts)
+[Enable CAM1 only](dt-blob-cam1.dts)
 
 [Enable both cameras](dt-blob-dualcam.dts)
-
-*As of 2015-04-17 some users are reporting issues with GPIO pin 2 and 3 for camera control. Pin 4 and 5 is reported to work. The issue is being investigated.*

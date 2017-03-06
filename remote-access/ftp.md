@@ -12,11 +12,11 @@ sudo apt-get install pure-ftpd
 
 ## Basic Configurations
 
-We need to create a new user group named `ftpgroup` and a new user named `ftpuser` for FTP users, and make sure this "user" has NO log in privilge and NO home directory:
+We need to create a new user group named `ftpgroup` and a new user named `ftpuser` for FTP users, and make sure this "user" has **no** login privilge and **no** home directory:
 
 ```bash
-groupadd ftpgroup
-useradd ftpuser -g ftpgroup -s /sbin/nologin -d /dev/null
+sudo groupadd ftpgroup
+sudo useradd ftpuser -g ftpgroup -s /sbin/nologin -d /dev/null
 ```
 
 ### FTP Home Directory, Virtual User, and User Group
@@ -48,7 +48,7 @@ sudo pure-pw mkdb
 Last but not least, define an authentication method by making a link of file `/etc/pure-ftpd/conf/PureDB`, the number `60` is only for demonstration, make it as small as necessary:
 
 ```bash
-ln -s /etc/pure-ftpd/conf/PureDB /etc/pure-ftpd/auth/60puredb
+sudo ln -s /etc/pure-ftpd/conf/PureDB /etc/pure-ftpd/auth/60puredb
 ```
 
 Restart the program:

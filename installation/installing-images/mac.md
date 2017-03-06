@@ -1,6 +1,14 @@
 # Installing operating system images on Mac OS
 
-On Mac OS you have the choice of the command line `dd` tool or using the graphical tool ImageWriter to write the image to your SD card.
+On Mac OS you can either use the command line `dd` tool or the graphical tool ImageWriter to write the image to your SD card.
+
+## Installing operating system images using Etcher
+
+- Connect the SD card reader with the SD card inside. Note that it must be formatted as FAT32.
+- Download [Etcher](https://etcher.io/) and install it to your Mac's Applications folder.
+- Open `Etcher.app`, select the Raspberry Pi `.img` file you wish to write to the SD card from your Mac's hard drive.
+- After selecting the `.img` file in Step 1, you will now select the SD card you wish to write the `.img` file to.
+- Review your selections and click "Flash!" to begin writing data to the SD card. Once complete, you can eject the mounted SD card from your Mac using `Finder.app`.
 
 ## (Mostly) graphical interface
 
@@ -15,12 +23,17 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
     ```
 
     Remember to replace `n` with the number that you noted before!
+    
+    This will take a few minutes, depending on the image file size. You can check the progress by sending a SIGINFO signal                  (press **Ctrl+T**).
 
-   - If this command fails, try using `disk` instead of `rdisk`:
+
+    - If this command fails, try using `disk` instead of `rdisk`:
     
        ```
        sudo dd bs=1m if=path_of_your_image.img of=/dev/diskn
        ```
+This will take a few minutes, depending on the image file size. To check the progress open Activity Monitor, click the Disk tab and find the process with the name `dd`. If `dd` is not in the list, you may need to select All Processes from the View menu. The Bytes Read column will display the amount of data that has been read from the image. Compare that to the file size of the image to determine progress.
+
 
 ## Command line
 
@@ -39,7 +52,7 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
 
     `sudo dd bs=1m if=image.img of=/dev/rdisk<disk# from diskutil>`
 
-    where `disk` is your BSD name e.g. `sudo dd bs=1m if=2016-05-27-raspbian-jessie.img of=/dev/rdisk4`
+    where `disk` is your BSD name e.g. `sudo dd bs=1m if=2017-03-02-raspbian-jessie.img of=/dev/rdisk4`
 
     - This may result in a ``dd: invalid number '1m'`` error if you have GNU
     coreutils installed. In that case, you need to use a block size of `1M` in the `bs=` section, as follows:
@@ -51,11 +64,11 @@ On Mac OS you have the choice of the command line `dd` tool or using the graphic
     - If this command still fails, try using `disk` instead of `rdisk`, for example:
     
        ```
-       sudo dd bs=1m if=2016-05-27-raspbian-jessie.img of=/dev/disk4
+       sudo dd bs=1m if=2017-03-02-raspbian-jessie.img of=/dev/disk4
        ```
        or
        ```
-       sudo dd bs=1M if=2016-05-27-raspbian-jessie.img of=/dev/disk4
+       sudo dd bs=1M if=2017-03-02-raspbian-jessie.img of=/dev/disk4
        ```
 
 ## Alternative method
@@ -78,7 +91,7 @@ These commands and actions need to be performed from an account that has adminis
 - In the terminal, write the image to the card with this command, using the raw device name from above. Read the above step carefully to be sure you use the correct `rdisk` number here:
     
     ```
-    sudo dd bs=1m if=2016-05-27-raspbian-jessie.img of=/dev/rdisk3
+    sudo dd bs=1m if=2017-03-02-raspbian-jessie.img of=/dev/rdisk3
     ```
 
     If the above command reports the error `dd: bs: illegal numeric value`, please change the block size `bs=1m` to `bs=1M`.

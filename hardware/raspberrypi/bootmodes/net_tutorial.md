@@ -1,10 +1,10 @@
 # Network Boot Your Raspberry Pi
-This tutorial is written to explain how to set up a simple DHCP / TFTP server which will allow you to boot a Raspberry Pi 3 from the network. The tutorial assumes you have an existing home network, and want to use a Raspberry Pi for the **server**. You will need a second Pi 3 as a **client** to be booted. Only one SD card is needed because the **client** will be booted from the **server** after the initial client configuration.
+This tutorial is written to explain how to set up a simple DHCP/TFTP server which will allow you to boot a Raspberry Pi 3 from the network. The tutorial assumes that you have an existing home network, and that you want to use a Raspberry Pi for the **server**. You will need a second Pi 3 as a **client** to be booted. Only one SD card is needed because the client will be booted from the server after the initial client configuration.
 
 ## Client configuration
-Before a Pi will network boot, it needs to be booted with a config option to enable USB boot mode. Enabling this config option requires a special `start.elf` and `bootcode.bin` file. These can be installed by using the "next" branch on rpi-update.
+Before a Pi will network boot, it needs to be booted with a config option to enable USB boot mode. Enabling this config option requires a special `start.elf` and `bootcode.bin` file. These can be installed by using the "next" branch on `rpi-update`.
 
-Install Raspbian lite (or heavy if you want) from the [Downloads page](https://www.raspberrypi.org/downloads/raspbian/) onto an SD card using `Win32DiskImager` if you are on Windows, or `dd` if you are on Linux/Mac. Boot the **client** Pi.
+Install Raspbian lite (or heavy if you want) from the [Downloads page](https://www.raspberrypi.org/downloads/raspbian/) onto an SD card using `Win32DiskImager` if you are on Windows, or `dd` if you are on Linux/Mac. Boot the client Pi.
 
 ### Program USB Boot Mode
 First, prepare the `/boot` directory with experimental boot files:
@@ -14,7 +14,7 @@ $ sudo apt-get update; sudo apt-get install rpi-update
 $ sudo BRANCH=next rpi-update
 ```
 
-Then enable USB boot mode with:
+Now, enable USB boot mode with the following command:
 ```
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
 ```
@@ -28,10 +28,10 @@ $ vcgencmd otp_dump | grep 17:
 
 Ensure the output `0x3020000a` is correct.
 
-The client configuration is almost done. The final thing to do is to remove the `program_usb_boot_mode` line from config.txt (make sure there is no blank line at the end). You can do this with `sudo nano /boot/config.txt` for example. Finally, shut down the client Pi with `sudo poweroff`.
+The client configuration is almost done. The final thing to do is to remove the `program_usb_boot_mode` line from config.txt (make sure there is no blank line at the end). You can do this with `sudo nano /boot/config.txt`, for example. Finally, shut the client Pi down with `sudo poweroff`.
 
 ## Server configuration
-Plug the SD card into the **server** and boot the server. Before you do anything else, make sure you have ran `sudo raspi-config` and expanded the root filesystem to take up the entire SD card.
+Plug the SD card into the server Pi. Boot the server. Before you do anything else, make sure you have run `sudo raspi-config` and expanded the root filesystem to take up the entire SD card.
 
 The client Pi will need a root filesystem to boot off, so before we do anything else on the server, we're going to make a full copy of its filesystem and put it in a directory called /nfs/client1.
 
@@ -41,7 +41,7 @@ sudo apt-get install rsync
 sudo rsync -xa --progress --exclude /nfs / /nfs/client1
 ```
 
-Regenerate ssh host keys on client filesystem by chrooting into it:
+Regenerate ssh host keys on the client filesystem by chrooting into it:
 ```
 cd /nfs/client1
 sudo mount --bind /dev dev
@@ -56,7 +56,7 @@ sudo umount sys
 sudo umount proc
 ```
 
-You need to find the settings of your local network. You need to find the address of your router (or gateway), which you can find with:
+Now, you have to find the settings of your local network. You need to find the address of your router (or gateway), which can be done with:
 ```
 ip route | grep default | awk '{print $3}'
 ```
@@ -104,7 +104,7 @@ sudo reboot
 At this point, you won't have working DNS, so you'll need to add the server you noted down before to `/etc/resolv.conf`. Do this by using the following command, where the ip address is that of the gateway address you found before.
 
 ```
-echo "nameserver 10.42.0.1" | sudo tee /etc/resolv.conf
+echo "nameserver 10.42.0.1" | sudo tee -a /etc/resolv.conf
 ```
 
 Then make the file immutable (because otherwise dnsmasq will interfere) with the following command:
@@ -211,4 +211,4 @@ You should substitute the IP address here with the IP address you have noted dow
 
 Finally, edit /nfs/client1/etc/fstab and remove the /dev/mmcblkp1 and p2 lines (only proc should be left).
 
-Good luck! If it doesn't boot first time keep trying. It can take a minute or so for the Pi to boot, so be patient.
+Good luck! If it doesn't boot on the first attempt, keep trying. It can take a minute or so for the Pi to boot, so be patient.

@@ -1,16 +1,18 @@
 # Installing Ruby packages
 
-Ruby has a neat package manager called Ruby Gems. You can browse gems available on [rubygems.org](http://rubygems.org/gems)
+Ruby's package manager is called Ruby Gems. You can browse the available gems at [rubygems.org](http://rubygems.org/gems).
 
 ## Install Ruby Gems
 
-Install Ruby Gems on your Raspberry Pi using APT:
+You can install Ruby Gems on your Raspberry Pi using APT:
 
 ```
 sudo apt-get install rubygems
 ```
 
 ## Install packages using Ruby Gems
+
+You can install packages using Gems. For example, to install `jekyll`:
 
 ```
 sudo gem install jekyll

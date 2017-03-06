@@ -8,16 +8,16 @@ The Raspberry Pi Camera Module is an official product from the Raspberry Pi Foun
 | --- | --- | --- |
 | Net price | $25 | $25 |
 | Size | Around 25 × 24 × 9 mm | |
-| Weight | 3g | |
+| Weight | 3g | 3g |
 | Still resolution | 5 Megapixels | 8 Megapixels |
 | Video modes | 1080p30, 720p60 and 640 × 480p60/90 | 1080p30, 720p60 and 640 × 480p60/90 |
 | Linux integration | V4L2 driver available | V4L2 driver available |
 | C programming API | OpenMAX IL and others available | OpenMAX IL and others available |
-| Sensor | OmniVision OV5647 | [Sony IMX219](http://www.sony.net/Products/SC-HP/new_pro/april_2014/imx219_e.html) |
+| Sensor | OmniVision OV5647 | [Sony IMX219](http://www.sony-semicon.co.jp/products_en/new_pro/april_2014/imx219_e.html) |
 | Sensor resolution | 2592 × 1944 pixels | 3280 × 2464 pixels |
-| Sensor image area | 3.76 × 2.74 mm | |
-| Pixel size | 1.4 µm × 1.4 µm | |
-| Optical size	| 1/4" | |
+| Sensor image area | 3.76 × 2.74 mm | 3.68 x 2.76 mm (4.6 mm diagonal) |
+| Pixel size | 1.4 µm × 1.4 µm | 1.12 µm x 1.12 µm  |
+| Optical size	| 1/4" | 1/4" |
 | Full-frame SLR lens equivalent | 35 mm | |
 | S/N ratio | 36 dB | |
 | Dynamic range | 67 dB @ 8x gain | |
@@ -25,10 +25,10 @@ The Raspberry Pi Camera Module is an official product from the Raspberry Pi Foun
 | Dark current | 16 mV/sec @ 60 C | |
 | Well capacity | 4.3 Ke- | |
 | Fixed focus | 1 m to infinity | |
-| Focal length | 3.60 mm +/- 0.01 | |
-| Horizontal field of view | 53.50  +/- 0.13 degrees | |
-| Vertical field of view | 41.41 +/- 0.11 degrees | |
-| Focal ratio (F-Stop) | 2.9 | |
+| Focal length | 3.60 mm +/- 0.01 | 3.04 mm |
+| Horizontal field of view | 53.50  +/- 0.13 degrees | 62.2 degrees |
+| Vertical field of view | 41.41 +/- 0.11 degrees | 48.8 degrees |
+| Focal ratio (F-Stop) | 2.9 | 2.0 |
 
 ## Hardware features
 

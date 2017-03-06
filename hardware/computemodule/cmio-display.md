@@ -1,12 +1,12 @@
-# Attaching Raspberry Pi Official 7 inch Display to the Compute Module IO Board
+# Attaching Raspberry Pi Official 7" Display to the Compute Module IO Board
 
-*This document is a work in progress and is intended for advanced users.*
+**This document is a work in progress and is intended for advanced users.**
 
-For the display to work with the compute module, the firmware needs to be October 23rd 2015 or newer (use `vcgencmd version` to check).
+For the display to work with the Compute Module, the firmware needs to be from October 23rd 2015 or later (use `vcgencmd version` to check). For the display to work with the Compute Module 3, the firmware needs to be from October 2016 or later.
 
 ## Quickstart - Display Only
 
-1. Connect the display to the DISP1 port on the Compute Module IO Board through the 22W to 15W display adaptor.
+1. Connect the display to the DISP1 port on the Compute Module IO board through the 22W to 15W display adaptor.
 1. Connect these pins together with jumper wires:
 
 	```
@@ -14,51 +14,59 @@ For the display to work with the compute module, the firmware needs to be Octobe
 	GPIO1 - CD1_SCL
 	```
 
-1. On the compute module, run:
+1. On the Compute Module, run:
 
-	```sudo wget https://goo.gl/Ah6XD5 -O /boot/dt-blob.bin```
+	```sudo wget https://goo.gl/iiVxuA -O /boot/dt-blob.bin```
 
 1. Reboot for the `dt-blob.bin` file to be read.
 
-## Quickstart - Display and Camera
-*This will enable `disp1` and `cam1`*
+## Quickstart - Display and Camera(s)
+This will enable `disp1` and `cam1`, with the option of enabling `cam0`.
 
-1. Connect the display to the DISP1 port on the Compute Module IO Board through the 22W to 15W display adaptor.
-1. Connect the camera to the CAM1 port on the Compute Module IO Board through the 22W to 15W camera adaptor.
+1. Connect the display to the DISP1 port on the Compute Module IO board through the 22W to 15W display adaptor.
+1. Connect the Camera Module to the CAM1 port on the Compute Module IO board through the 22W to 15W camera adaptor.
+1. (Optional) Connect the Camera Module to the CAM0 port on the Compute Module IO board through the 22W to 15W camera adaptor.
 1. Connect these pins together with jumper wires:
 
 	```
-	GPIO0 - CD0_SDA
-	GPIO1 - CD0_SCL
-	GPIO4 - CAM0_IO1
-	GPIO5 - CAM0_IO0
-
-	GPIO28 - CD1_SDA
-	GPIO29 - CD1_SCL
-	GPIO30 - CAM1_IO1
-	GPIO31 - CAM1_IO0
+	GPIO0 - CD1_SDA
+	GPIO1 - CD1_SCL
+	GPIO4 - CAM1_IO1
+	GPIO5 - CAM1_IO0
 	```
+Please note that the wiring is slightly different from that on the Camera page, in that you are using GPIO pins 4 and 5 instead of 2 and 3.
 
-	![GPIO connection for a single display and a single camera](images/CMIO-Cam-Disp-GPIO.jpg)
-
-1. On the compute module, run:
-
-	```sudo wget https://goo.gl/1V3ReK -O /boot/dt-blob.bin```
-
-1. Make the 7 inch display as the default by adding the following line into `/boot/config.txt`:
+1. For `cam0`, add links:
 
 	```
-	display_default_lcd=1
+	GPIO28 - CD0_SDA
+	GPIO29 - CD0_SCL
+	GPIO30 - CAM0_IO1
+	GPIO31 - CAM0_IO0
 	```
+
+	![GPIO connection for a single display and two Camera Modules](images/CMIO-Cam-Disp-GPIO.jpg)
+	(Please note this image needs to be updated to show two Camera Modules, or have the extra jumper leads removed)
+
+1. On the Compute Module, for the display and one Camera Module, run:
+
+	```sudo wget https://goo.gl/gaqNrO -O /boot/dt-blob.bin```  
+
+  For the display and two Camera Modules, run:
+
+	```sudo wget https://goo.gl/htHv7m -O /boot/dt-blob.bin```
+
 1. Reboot for the `dt-blob.bin` file to be read.
 
 	![Camera Preview on the 7 inch display](images/CMIO-Cam-Disp-Example.jpg)
+	(Please note this image needs to be updated to show two Camera Modules, or have the extra jumper leads removed)
 
 ### Software support
 
-There is no additional configuration required to enable the touch screen. The touch interface should out work of the box once the screen is successfully detected.
+There is no additional configuration required to enable the touchscreen. The touch interface should out work of the box once the screen is successfully detected.
 
 
 ### Sources
-- [dt-blob-disp1-cam1.dts](dt-blob-disp1-cam1.dts)
 - [dt-blob-disp1-only.dts](dt-blob-disp1-only.dts)
+- [dt-blob-disp1-cam1.dts](dt-blob-disp1-cam1.dts)
+- [dt-blob-disp1-cam2.dts](dt-blob-disp1-cam2.dts)

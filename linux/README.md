@@ -1,16 +1,16 @@
 # Linux
 
-Explanation of some fundamental Linux usage and commands for getting around the Pi and managing its filesystem and users
+Explanation of some fundamental Linux usage, and commands for getting around the Pi and managing its file system and users.
 
 ## Contents
 
 - [Filesystem](filesystem/README.md)
     - [Home](filesystem/home.md)
-        - Your user's home folder on the Pi - where you keep your files
-    - [Whole Filesystem](filesystem/whole-filesystem.md)
-        - The rest of the Linux filesystem
+        - Your user's home folder on the Pi, where you keep your files
+    - [Whole File system](filesystem/whole-filesystem.md)
+        - The rest of the Linux file system
     - [Backup](filesystem/backup.md)
-        - Backing up your files and your Operating System image
+        - Backing up your files and your operating system image
 - [Usage](usage/README.md)
     - [Commands](usage/commands.md)
         - Some basic and more advanced Linux commands

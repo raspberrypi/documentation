@@ -13,7 +13,7 @@ $ sudo apt-get update; sudo apt-get install rpi-update
 $ sudo BRANCH=next rpi-update
 ```
 
-Then enable USB boot mode with:
+Then enable USB boot mode with this code:
 ```
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
 ```
@@ -30,9 +30,9 @@ Ensure the output `0x3020000a` is correct.
 If you wish, you can remove the `program_usb_boot_mode` line from config.txt (make sure there is no blank line at the end) so that if you put the SD card in another Pi, it won't program USB boot mode. You can do this with `sudo nano /boot/config.txt`, for example.
 
 ## Prepare the USB storage device
-Now that your Pi 3 is USB boot-enabled, we can prepare a USB storage device to boot from. Start by inserting the USB storage device (which will be completely erased) into the Pi. Rather than downloading the Raspbian image again, we will copy it from the SD card on the Pi. The source device (sd card) will be `/dev/mmcblk0` and the destination device (USB disk) should be `/dev/sda` assuming you have no other USB devices connected.
+Now that your Pi is USB boot-enabled, we can prepare a USB storage device to boot from. Start by inserting the USB storage device (which will be completely erased) into the Pi. Rather than downloading the Raspbian image again, we will copy it from the SD card on the Pi. The source device (sd card) will be `/dev/mmcblk0` and the destination device (USB disk) should be `/dev/sda` assuming you have no other USB devices connected.
 
-We will start by using parted to create a 100MB fat32 partition, followed by a Linux ext4 partition that will take up the rest of the disk.
+We will start by using Parted to create a 100MB FAT32 partition, followed by a Linux ext4 partition that will take up the rest of the disk.
 
 ```
 sudo parted /dev/sda
@@ -55,13 +55,13 @@ Number  Start   End     Size    Type     File system  Flags
 ```
 Your `parted print` output should look similar to the one above.
 
-Create the boot and root filesystems:
+Create the boot and root file systems:
 ```
 sudo mkfs.vfat -n BOOT -F 32 /dev/sda1
 sudo mkfs.ext4 /dev/sda2
 ```
 
-Mount the target filesystems and copy the running raspbian system to it:
+Mount the target file system and copy the running raspbian system to it:
 ```
 sudo mkdir /mnt/target
 sudo mount /dev/sda2 /mnt/target/
@@ -86,18 +86,18 @@ sudo umount sys
 sudo umount proc
 ```
 
-Edit `/boot/cmdline.txt` so that it uses the USB storage device as the root filesystem instead of the SD card.
+Edit `/boot/cmdline.txt` so that it uses the USB storage device as the root file system instead of the SD card.
 
 ```
 sudo sed -i "s,root=/dev/mmcblk0p2,root=/dev/sda2," /mnt/target/boot/cmdline.txt
 ```
 
-The same needs to be done for fstab
+The same needs to be done for `fstab`:
 ```
 sudo sed -i "s,/dev/mmcblk0p,/dev/sda," /mnt/target/etc/fstab
 ```
 
-Finally, unmount the target filesystems, and power off the Pi.
+Finally, unmount the target file systems, and power the Pi off.
 ```
 cd ~
 sudo umount /mnt/target/boot 
@@ -105,4 +105,4 @@ sudo umount /mnt/target
 sudo poweroff 
 ```
 
-Disconnect the power supply from the Pi, remove the SD card and reconnect the power supply. If all has gone well the Pi should begin to boot after a few seconds.
+Disconnect the power supply from the Pi, remove the SD card, and reconnect the power supply. If all has gone well, the Pi should begin to boot after a few seconds.
