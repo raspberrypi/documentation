@@ -4,7 +4,7 @@
 
 #### sdtv_mode
 
-Defines the TV standard used for composite video output over the yellow RCA jack; the default value is `0`.
+Defines the TV standard used for composite video output over the yellow RCA jack. The default value is `0`.
 
 | sdtv_mode | result |
 | --- | --- |
@@ -25,7 +25,7 @@ This defines the aspect ratio for composite video output. The default value is `
 
 #### sdtv_disable_colourburst
 
-Setting this to `1` disables colour burst on composite video output. The picture will be displayed in monochrome, but it may possibly be sharper.
+Setting this to `1` disables colour burst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
 
 ### HDMI mode options
 
@@ -48,7 +48,7 @@ overscan_bottom=24
 
 #### hdmi_ignore_edid
 
-Setting this to `0xa5000080` enables the ignoring of EDID/display data if your display doesn't have an accurate [EDID](https://en.wikipedia.org/wiki/Extended_display_identification_data). It requires this unusual value to ensure that it doesn't get triggered accidentally.
+Setting this to `0xa5000080` enables the ignoring of EDID/display data if your display does not have an accurate [EDID](https://en.wikipedia.org/wiki/Extended_display_identification_data). It requires this unusual value to ensure that it is not triggered accidentally.
 
 #### hdmi_edid_file
 
@@ -64,15 +64,15 @@ Setting this to `1` pretends that all audio formats are unsupported by the displ
 
 #### hdmi_force_edid_3d
 
-Setting this to `1` pretends that all CEA modes support 3D, even when the EDID doesn't indicate support for them.
+Setting this to `1` pretends that all CEA modes support 3D, even when the EDID does not indicate support for this.
 
 #### avoid_edid_fuzzy_match
 
-Setting this to `1` avoids "fuzzy matching" of modes described in the EDID. Instead, it will pick the standard mode with the matching resolution and closest framerate, even if blanking is wrong.
+Setting this to `1` avoids "fuzzy matching" of modes described in the EDID. Instead, it will pick the standard mode with the matching resolution and closest framerate, even if the blanking settings are wrong.
 
 #### hdmi_ignore_cec_init
 
-Setting this to `1` will prevent the initial active source message being sent during bootup. This avoids bringing a CEC-enabled TV out of standby and channel switching when rebooting your Raspberry Pi.
+Setting this to `1` will stop the initial active source message being sent during bootup. This prevents a CEC-enabled TV from coming out of standby and channel switching when you are rebooting your Raspberry Pi.
 
 #### hdmi_ignore_cec
 
@@ -85,7 +85,7 @@ Default is Raspberry Pi.
 
 #### hdmi_pixel_encoding
 
-Force the pixel encoding mode. By default, it will use the mode requested from the EDID, so it shouldn't need changing.
+Force the pixel encoding mode. By default, it will use the mode requested from the EDID, so you shouldn't need to change it.
 
 | hdmi_pixel_encoding | result |
 | --- | --- |
@@ -137,7 +137,7 @@ This defines the HDMI output group to be either CEA (Consumer Electronics Associ
 
 This, together with `hdmi_group`, defines the HDMI output format.
 
-For setting a custom display mode not listed here, see [this thread](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=24679).
+To set a custom display mode not listed here, see [this thread](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=24679).
 
 These values are valid if `hdmi_group=1` (CEA):
 
@@ -296,7 +296,7 @@ These values are valid if `hdmi_group=2` (DMT):
 | 85 | 1280x720 | 60Hz | 720p |
 | 86 | 1366x768 |  | reduced blanking |
 
-Note that there is a [pixel clock limit](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=26&t=20155&p=195443#p195443), which means the highest supported mode is 1920x1200 at 60Hz with reduced blanking.
+Note that there is a [pixel clock limit](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=26&t=20155&p=195443#p195443).The highest supported mode is 1920x1200 at 60Hz with reduced blanking.
 
 ### Which values are valid for my monitor?
 
@@ -328,7 +328,7 @@ If your monitor requires a mode that is not in one of the tables above, then it'
 
 Fields at the end can be omitted to use the default values.
 
-Note that this simply _creates_ the mode (group 2 mode 87); in order to make the Pi use this by default, you must add some additional settings.  As an example, the following selects an 800x480 resolution and enables audio drive:
+Note that this simply _creates_ the mode (group 2 mode 87). In order to make the Pi use this by default, you must add some additional settings.  For example, the following selects an 800x480 resolution and enables audio drive:
 
     hdmi_cvt=800 480 60 6
     hdmi_group=2
@@ -353,7 +353,7 @@ Set to `1` to disable [overscan](raspi-config.md#overscan).
 
 #### overscan_left
 
-Specifies the number of pixels to skip on the left edge of the screen. Increase this value if the text flows off the left edge of the screen; decrease it if there's a black border between the left edge of the screen and the text.
+Specifies the number of pixels to skip on the left edge of the screen. Increase this value if the text flows off the left edge of the screen; decrease it if there is a black border between the left edge of the screen and the text.
 
 #### overscan_right
 
@@ -369,7 +369,7 @@ Specifies the number of pixels to skip on the bottom edge of the screen.
 
 #### overscan_scale
 
-Set to 1 to force any non-framebuffer layers to conform to the overscan settings.
+Set to `1` to force any non-framebuffer layers to conform to the overscan settings.
 
 #### framebuffer_width
 
@@ -396,7 +396,7 @@ Set to `1` to disable the alpha channel. Can help with the display of a 32bit `f
 
 #### test_mode
 
-Displays a test image and sound during boot (but only over the composite video and analogue audio outputs) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test; the default value is `0`.
+Displays a test image and sound during boot (but only over the composite video and analogue audio outputs) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test: the default value is `0`.
 
 #### display_rotate
 
@@ -411,7 +411,7 @@ Can be used to rotate or flip the screen orientation; the default value is `0`.
 | 0x10000 | horizontal flip |
 | 0x20000 | vertical flip |
 
-Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these won't work with the 16MB GPU split.
+Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16MB GPU split.
 
 
 *This article uses content from the eLinux wiki page [RPiconfig](http://elinux.org/RPiconfig), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](http://creativecommons.org/licenses/by-sa/3.0/)*
