@@ -111,3 +111,8 @@ clock_setup {
 
 The above will set the PLLA to a source VCO running at 1.96608GHz (the limits for this VCO are 600MHz - 2.4GHz), change the APER channel to /4, and configure GPCLK0 to be sourced from PLLA through APER. This is used specifically to give an audio codec the 12288000Hz it needs to do the 48000 range of frequencies.
 
+## Sample File
+
+This example file is from the firmware repository and is the master Raspberry Pi blob from which others are usually derived.
+
+https://github.com/raspberrypi/firmware/blob/master/extra/dt-blob.dts
