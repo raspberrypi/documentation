@@ -31,14 +31,14 @@ overscan_right=12
 overscan_top=10
 overscan_bottom=10
 ```
-# Force overscan settings to non-framebuffer layers.
+# Force overscan settings to non-framebuffer layers
 overscan_scale=1
 
 ## Memory
 
 ### gpu_mem
 
-GPU memory in megabytes. This sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; maximum value is `192`, `448`, or `944`, depending on whether you're using a 256M, 512MB, or 1024MB Pi. The default value is `64`.
+GPU memory in megabytes. `gpu_mem` sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; maximum value is `192`, `448`, or `944`, depending on whether you're using a 256M, 512MB, or 1024MB Pi. The default value is `64`.
 
 Setting `gpu_mem` to low values may automatically disable certain firmware features, as there are some things the GPU simply can't do with too little memory. So if a certain feature you're trying to use isn't working, try setting a larger GPU memory split.
 
@@ -46,23 +46,23 @@ Using `gpu_mem_256`, `gpu_mem_512`, and `gpu_mem_1024` allows you to swap the sa
 
 ### gpu_mem_256
 
-GPU memory in megabytes for the 256MB Raspberry Pi (ignored if memory size is not 256MB). This overrides `gpu_mem`. The maximum value is `192` and the default is not set.
+GPU memory in megabytes for the 256MB Raspberry Pi (ignored if memory size is not 256MB). `gpu_mem_256` overrides `gpu_mem`. The maximum value is `192` and the default is not set.
 
 ### gpu_mem_512
 
-GPU memory in megabytes for the 512MB Raspberry Pi (ignored if memory size is not 512MB). This overrides `gpu_mem`. The maximum value is `448` and the default is not set.
+GPU memory in megabytes for the 512MB Raspberry Pi (ignored if memory size is not 512MB). `gpu_mem_512` overrides `gpu_mem`. The maximum value is `448` and the default is not set.
 
 ### gpu_mem_1024
 
-GPU memory in megabytes for the 1024MB Raspberry Pi 2 (ignored if memory size is not 1024MB). This overrides `gpu_mem`. The maximum value is `944` and the default is not set.
+GPU memory in megabytes for the 1024MB Raspberry Pi 2 (ignored if memory size is not 1024MB). `gpu_mem_1024` overrides `gpu_mem`. The maximum value is `944` and the default is not set.
 
 ### disable_l2cache
 
-Setting this to `1` disables the CPU's access to the GPU's L2 cache; requires a corresponding L2 disabled kernel. Default value is `0`.
+Setting `disable_l2cache` to `1` disables the CPU's access to the GPU's L2 cache; requires a corresponding L2 disabled kernel. Default value is `0`.
 
 ### disable_pvt
 
-Setting this to `1` disables adjusting the refresh rate of RAM every 500ms; this action measures the RAM's temperature. Default value is `0`.
+Setting `disable_pvt` to `1` disables adjusting the refresh rate of RAM every 500ms; this action measures the RAM's temperature. Default value is `0`.
 
 ### CMA - Dynamic memory split
 
@@ -88,7 +88,7 @@ coherent_pool=6M smsc95xx.turbo_mode=N
 
 ### disable_camera_led
 
-Setting this to `1` prevents the red camera LED from turning on when recording video or taking a still picture. This is useful for preventing reflections when the camera is facing a window, for example.
+Setting `disable_camera_led` to `1` prevents the red camera LED from turning on when recording video or taking a still picture. This is useful for preventing reflections when the camera is facing a window, for example.
 
 ## Onboard analogue audio (3.5mm jack)
 
@@ -96,11 +96,11 @@ The onboard audio output has a few config options which alter the way the analog
 
 ### disable_audio_dither
 
-By default, a 1.0LSB dither is applied to the audio stream if it is routed to the analogue audio output. This can create audible background "hiss" in some situations, such as if the ALSA volume is set to a low level. Set this to `1` to disable dither application.
+By default, a 1.0LSB dither is applied to the audio stream if it is routed to the analogue audio output. This can create audible background "hiss" in some situations, such as if the ALSA volume is set to a low level. Set `disable_audio_dither` to `1` to disable dither application.
 
 ### pwm_sample_bits
 
-Adjust the bit depth of the analogue audio output. The default bit depth is `11`. Selecting bit depths below `8` will result in nonfunctional audio, as settings below `8` result in a PLL frequency too low to support. This is generally only useful as a demonstration of how bit depth affects quantisation noise.
+Use `pwm_sample_bits` to adjust the bit-depth of the analogue audio output. The default bit depth is `11`. Selecting bit depths below `8` will result in nonfunctional audio, as settings below `8` result in a PLL frequency too low to support. This is generally only useful as a demonstration of how bit depth affects quantisation noise.
 
 ## Video
 
@@ -108,7 +108,7 @@ Adjust the bit depth of the analogue audio output. The default bit depth is `11`
 
 #### sdtv_mode
 
-Defines the TV standard used for composite video output over the yellow RCA jack; the default value is `0`.
+The `sdtv_mode` command defines the TV standard used for composite video output over the yellow RCA jack; the default value is `0`.
 
 | sdtv_mode | result |
 | --- | --- |
@@ -119,7 +119,7 @@ Defines the TV standard used for composite video output over the yellow RCA jack
 
 #### sdtv_aspect
 
-This defines the aspect ratio for composite video output. The default value is `1`.
+The `sdtv_aspect` defines the aspect ratio for composite video output. The default value is `1`.
 
 | sdtv_aspect | result |
 | --- | --- |
@@ -129,13 +129,13 @@ This defines the aspect ratio for composite video output. The default value is `
 
 #### sdtv_disable_colourburst
 
-Setting this to `1` disables colour burst on composite video output. The picture will be displayed in monochrome, but it may possibly be sharper.
+Setting `sdtv_disable_colourburst` to `1` disables colour burst on composite video output. The picture will be displayed in monochrome, but it may possibly be sharper.
 
 ### HDMI mode options
 
 #### hdmi_safe
 
-Setting this to `1` uses "safe mode" settings to try to boot with maximum HDMI compatibility. This is the same as setting the following parameters:
+Setting `hdmi_safe` to `1` uses "safe mode" settings to try to boot with maximum HDMI compatibility. This is the same as setting the following parameters:
 
 ```
 hdmi_force_hotplug=1
@@ -152,44 +152,43 @@ overscan_bottom=24
 
 #### hdmi_ignore_edid
 
-Setting this to `0xa5000080` enables the ignoring of EDID/display data if your display doesn't have an accurate [EDID](https://en.wikipedia.org/wiki/Extended_display_identification_data). It requires this unusual value to ensure that it doesn't get triggered accidentally.
+Setting `hdmi_ignore_edid` to `0xa5000080` enables the ignoring of EDID/display data if your display doesn't have an accurate [EDID](https://en.wikipedia.org/wiki/Extended_display_identification_data). It requires this unusual value to ensure that it doesn't get triggered accidentally.
 
 #### hdmi_edid_file
 
-Setting this to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. More information is available [here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=173430#p173430).
+Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. More information is available [here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=173430#p173430).
 
 #### hdmi_force_edid_audio
 
-Setting this to `1` pretends that all audio formats are supported by the display, allowing passthrough of DTS/AC3 even when not reported as supported.
+Setting `hdmi_force_edid_audio` to `1` pretends that all audio formats are supported by the display, allowing passthrough of DTS/AC3 even when not reported as supported.
 
 #### hdmi_ignore_edid_audio
 
-Setting this to `1` pretends that all audio formats are unsupported by the display. This means ALSA will default to the analogue audio (headphone) jack.
+Setting `hdmi_ignore_edid_audio` to `1` pretends that all audio formats are unsupported by the display. This means ALSA will default to the analogue audio (headphone) jack.
 
 #### hdmi_force_edid_3d
 
-Setting this to `1` pretends that all CEA modes support 3D, even when the EDID doesn't indicate support for them.
+Setting `hdmi_force_edid_3d` to `1` pretends that all CEA modes support 3D, even when the EDID doesn't indicate support for them.
 
 #### avoid_edid_fuzzy_match
 
-Setting this to `1` avoids "fuzzy matching" of modes described in the EDID. Instead, it will pick the standard mode with the matching resolution and closest framerate, even if blanking is wrong.
+Setting `avoid_edid_fuzzy_match` to `1` avoids "fuzzy matching" of modes described in the EDID. Instead, it will pick the standard mode with the matching resolution and closest framerate, even if blanking is wrong.
 
 #### hdmi_ignore_cec_init
 
-Setting this to `1` will prevent the initial active source message being sent during bootup. This avoids bringing a CEC-enabled TV out of standby and channel switching when rebooting your Raspberry Pi.
+Setting `hdmi_ignore_cec_init` to `1` will prevent the initial active source message being sent during bootup. This avoids bringing a CEC-enabled TV out of standby and channel switching when rebooting your Raspberry Pi.
 
 #### hdmi_ignore_cec
 
-Setting this to `1` pretends that [CEC](https://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC) is not supported at all by the TV. No CEC functions will be supported.
+Setting `hdmi_ignore_cec` to `1` pretends that [CEC](https://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC) is not supported at all by the TV. No CEC functions will be supported.
 
 #### cec_osd_name
 
-Set intial CEC name of the device.
-Default is Raspberry Pi.
+The `cec_osd_name`command sets the intial CEC name of the device. The default is Raspberry Pi.
 
 #### hdmi_pixel_encoding
 
-Force the pixel encoding mode. By default, it will use the mode requested from the EDID, so it shouldn't need changing.
+The `hdmi_pixel_encoding` command forces the pixel encoding mode. By default, it will use the mode requested from the EDID, so it shouldn't need changing.
 
 | hdmi_pixel_encoding | result |
 | --- | --- |
@@ -201,7 +200,7 @@ Force the pixel encoding mode. By default, it will use the mode requested from t
 
 #### hdmi_blanking
 
-This allows you to choose whether the HDMI output should be switched off when DPMS is triggered. This is to mimic the behaviour of other computers. After a specific amount of time the display not only blanks, but will also go into low-power/standby mode due to "No Signal"
+The `hdmi_blanking` command allows you to choose whether the HDMI output should be switched off when DPMS is triggered. This is to mimic the behaviour of other computers. After a specific amount of time the display not only blanks, but will also go into low-power/standby mode due to "No Signal"
 
 **NOTE:** This feature may cause issues when using applications which don't use the framebuffer, such as omxplayer.
 
@@ -212,7 +211,7 @@ This allows you to choose whether the HDMI output should be switched off when DP
 
 #### hdmi_drive
 
-This allows you to choose between HDMI and DVI output modes.
+The `hdmi_drive` command allows you to choose between HDMI and DVI output modes.
 
 | hdmi_drive | result |
 | --- | --- |
@@ -221,7 +220,7 @@ This allows you to choose between HDMI and DVI output modes.
 
 #### config_hdmi_boost
 
-Configures the signal strength of the HDMI interface. The default value is `0` and the maximum is `11`.
+Use `config_hdmi_boost` to configure the signal strength of the HDMI interface. The default value is `0` and the maximum is `11`.
 
 The default value for the Raspberry Pi 1 (A and B) is `2`. The default value for the Raspberry Pi 1 B+ and all later models is `5`. 
 
@@ -229,7 +228,7 @@ If you are seeing HDMI issues (speckling, interference) then try `7`. Very long 
 
 #### hdmi_group
 
-This defines the HDMI output group to be either CEA (Consumer Electronics Association, the standard typically used by TVs) or DMT (Display Monitor Timings, the standard typically used by monitors). This setting should be used in conjunction with `hdmi_mode`.
+The `hdmi_group` command defines the HDMI output group to be either CEA (Consumer Electronics Association, the standard typically used by TVs) or DMT (Display Monitor Timings, the standard typically used by monitors). This setting should be used in conjunction with `hdmi_mode`.
 
 | hdmi_group | result |
 | --- | --- |
@@ -239,7 +238,7 @@ This defines the HDMI output group to be either CEA (Consumer Electronics Associ
 
 #### hdmi_mode
 
-This, together with `hdmi_group`, defines the HDMI output format.
+`hdmi_mode`, together with `hdmi_group`, defines the HDMI output format.
 
 For setting a custom display mode not listed here, see [this thread](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=24679).
 
@@ -445,43 +444,43 @@ This may not work if your monitor does not support standard CVT timings.
 
 #### hdmi_force_hotplug
 
-Setting this to `1` pretends that the HDMI hotplug signal is asserted, so it appears that a HDMI display is attached. In other words, HDMI output mode will be used, even if no HDMI monitor is detected.
+Setting `hdmi_force_hotplug` to `1` pretends that the HDMI hotplug signal is asserted, so it appears that a HDMI display is attached. In other words, HDMI output mode will be used, even if no HDMI monitor is detected.
 
 #### hdmi_ignore_hotplug
 
-Setting this to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. In other words, composite output mode will be used, even if an HDMI monitor is detected.
+Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. In other words, composite output mode will be used, even if an HDMI monitor is detected.
 
 #### disable_overscan
 
-Set to `1` to disable [overscan](raspi-config.md#overscan).
+Set `disable_overscan` to `1` to disable [overscan](raspi-config.md#overscan).
 
 #### overscan_left
 
-Specifies the number of pixels to skip on the left edge of the screen. Increase this value if the text flows off the left edge of the screen; decrease it if there's a black border between the left edge of the screen and the text.
+`overscan_left` specifies the number of pixels to skip on the left edge of the screen. Increase this value if the text flows off the left edge of the screen; decrease it if there's a black border between the left edge of the screen and the text.
 
 #### overscan_right
 
-Specifies the number of pixels to skip on the right edge of the screen.
+`overscan_right` specifies the number of pixels to skip on the right edge of the screen.
 
 #### overscan_top
 
-Specifies the number of pixels to skip on the top edge of the screen.
+`overscan_top` specifies the number of pixels to skip on the top edge of the screen.
 
 #### overscan_bottom
 
-Specifies the number of pixels to skip on the bottom edge of the screen.
+`overscan_bottom` specifies the number of pixels to skip on the bottom edge of the screen.
 
 #### framebuffer_width
 
-Specifies the console framebuffer width in pixels. The default is the display width minus the total horizontal overscan.
+`framebuffer_width` specifies the console framebuffer width in pixels. The default is the display width minus the total horizontal overscan.
 
 #### framebuffer_height
 
-Specifies the console framebuffer height in pixels. The default is the display height minus the total vertical overscan.
+`framebuffer_height` specifies the console framebuffer height in pixels. The default is the display height minus the total vertical overscan.
 
 #### framebuffer_depth
 
-Specifies the console framebuffer depth in bits per pixel. The default value is `16`.
+`framebuffer_depth` specifies the console framebuffer depth in bits-per-pixel. The default value is `16`.
 
 | framebuffer_depth | result | notes |
 | --- | --- | --- |
@@ -492,15 +491,15 @@ Specifies the console framebuffer depth in bits per pixel. The default value is 
 
 #### framebuffer_ignore_alpha
 
-Set to `1` to disable the alpha channel. Can help with the display of a 32bit `framebuffer_depth`.
+Set `framebuffer_ignore_alpha` to `1` to disable the alpha channel. Can help with the display of a 32bit `framebuffer_depth`.
 
 #### test_mode
 
-Displays a test image and sound during boot (but only over the composite video and analogue audio outputs) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test; the default value is `0`.
+`test_mode` displays a test image and sound during boot (but only over the composite video and analogue audio outputs) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test; the default value is `0`.
 
 #### display_rotate
 
-Can be used to rotate or flip the screen orientation; the default value is `0`.
+`display_rotate` can be used to rotate or flip the screen orientation; the default value is `0`.
 
 | display_rotate | result |
 | --- | --- |
