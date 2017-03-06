@@ -44,13 +44,16 @@ First install MP4Box with this command:
 sudo apt-get install -y gpac
 ```
 
-Then capture your raw video with raspivid and wrap it in an MP4 container all at once this:
+Then capture your raw video with raspivid and wrap it in an MP4 container like this:
 
 ```bash
-raspivid -t 30000 -w 640 -h 480 -fps 25 -b 1200000 -p 0,0,640,480 -o pivideo.h264 && MP4Box -add pivideo.h264 pivideo.mp4 && rm pivideo.h264
+# Capture 30 seconds of raw video at 640x480 and 150kB/s bit rate into a pivideo.h264 file:
+raspivid -t 30000 -w 640 -h 480 -fps 25 -b 1200000 -p 0,0,640,480 -o pivideo.h264 
+# Wrap the raw video with an MP4 container: 
+MP4Box -add pivideo.h264 pivideo.mp4
+# Remove the source raw file, leaving the remaining pivideo.mp4 file to play
+rm pivideo.h264
 ```
-
-(the above command captures a 30 second video at 640x480 size with a 150kB/s bitrate, then adds an MP4 wrapper and removes the original raw video file afterwards) 
 
 Or simply wrap MP4 around your existing raspivid output like this:
 
