@@ -1,6 +1,6 @@
 # Installing operating system images on Mac OS
 
-On Mac OS you can either use the command line `dd` tool or the graphical tool ImageWriter to write the image to your SD card.
+On Mac OS you can either use the command line `dd` tool or the graphical tool Etcher to write the image to your SD card.
 
 ## Installing operating system images using Etcher
 
