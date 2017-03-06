@@ -6,82 +6,82 @@ Here are some fundamental and common Linux commands with example usage:
 
 ### ls
 
-Lists the content of the current directory (or one that is specified). Can be used with the `-l` flag to display additional information (permissions, owner, group, size, date and timestamp of last edit) about each file and directory in a list format. The `-a` flag allows you to view files beginning with `.` (i.e. dotfiles).
+The `ls` command lists the content of the current directory (or one that is specified). It can be used with the `-l` flag to display additional information (permissions, owner, group, size, date and timestamp of last edit) about each file and directory in a list format. The `-a` flag allows you to view files beginning with `.` (i.e. dotfiles).
 
 ### cd
 
-Changes the current directory to the one specified. Can use relative (i.e. `cd directoryA`) or absolute (i.e. `cd /home/pi/directoryA`) paths.
+Using `cd` changes the current directory to the one specified. You can use relative (i.e. `cd directoryA`) or absolute (i.e. `cd /home/pi/directoryA`) paths.
 
 ### pwd
 
-Displays the name of the current working directory, i.e. `pwd` will output something like `/home/pi`.
+The `pwd` command displays the name of the present working directory: on a Raspberry Pi, entering `pwd` will output something like `/home/pi`.
 
 ### mkdir
 
-Makes a new directory, e.g. `mkdir newDir` would create the directory `newDir` in the present working directory.
+You can use `mkdir` to create a new directory, e.g. `mkdir newDir` would create the directory `newDir` in the present working directory.
 
 ### rmdir
 
-Remove empty directories, e.g. `rmdir oldDir` will remove the directory `oldDir` only if it is empty.
+To remove empty directories, use `rmdir`. So, for example, `rmdir oldDir` will remove the directory `oldDir` only if it is empty.
 
 ### rm
 
-Removes the specified file (or recursively from a directory when used with `-r`). Be careful with this! Files deleted in this way are mostly gone for good!
+The command `rm`removes the specified file (or recursively from a directory when used with `-r`). Be careful with this command: files deleted in this way are mostly gone for good!
 
 ### cp
 
-Makes a copy of a file and places it at the specified location (essentially doing a 'copy-paste'), for example - `cp ~/fileA /home/otherUser/` would copy the file `fileA` from your home directory to that of the user `otherUser` (assuming you have permission to copy it there!). This command can either take `FILE FILE` (`cp fileA fileB`), `FILE DIR` (`cp fileA /directoryB/`) or `-r DIR DIR` (which recursively copies the contents of directories) as arguments.
+Using `cp` makes a copy of a file and places it at the specified location (this is similar to copying and pasting). For example, `cp ~/fileA /home/otherUser/` would copy the file `fileA` from your home directory to that of the user `otherUser` (assuming you have permission to copy it there). This command can either take `FILE FILE` (`cp fileA fileB`), `FILE DIR` (`cp fileA /directoryB/`) or `-r DIR DIR` (which recursively copies the contents of directories) as arguments.
 
 ### mv
 
-Moves a file and places it at the specified location (so where `cp` performs a 'copy-paste', `mv` performs a 'cut-paste'). The usage is similar to `cp`, so `mv ~/fileA /home/otherUser/` would move the file `fileA` from your home directory to that of the user otherUser. This command can either take `FILE FILE` (`mv fileA fileB`), `FILE DIR` (`mv fileA /directoryB/`) or `DIR DIR` (`mv /directoryB /directoryC`) as arguments. This command is also useful as a method to rename files and directories after they've been created.
+The `mv` command moves a file and places it at the specified location (so where `cp` performs a 'copy-paste', `mv` performs a 'cut-paste'). The usage is similar to `cp`. So `mv ~/fileA /home/otherUser/` would move the file `fileA` from your home directory to that of the user otherUser. This command can either take `FILE FILE` (`mv fileA fileB`), `FILE DIR` (`mv fileA /directoryB/`) or `DIR DIR` (`mv /directoryB /directoryC`) as arguments. This command is also useful as a method to rename files and directories after they've been created.
 
 ### touch
 
-Either sets the last modified time-stamp of the specified file(s) or creates it if it does not already exist.
+The command `touch` sets the last modified time-stamp of the specified file(s) or creates it if it does not already exist.
 
 ### cat
 
-Lists the contents of file(s), e.g. `cat thisFile` will display the contents of `thisFile`. Can be used to list the contents of multiple files, i.e. `cat *.txt` will list the contents of all `.txt` files in the current directory.
+You can use `cat` to list the contents of file(s), e.g. `cat thisFile` will display the contents of `thisFile`. Can be used to list the contents of multiple files, i.e. `cat *.txt` will list the contents of all `.txt` files in the current directory.
 
 ### head
 
-Displays the beginning of a file. Can be used with `-n` to specify the number of lines to show (by default 10), or with `-c` to specify the number of bytes.
+The `head` command displays the beginning of a file. Can be used with `-n` to specify the number of lines to show (by default ten), or with `-c` to specify the number of bytes.
 
 ### tail
 
-Displays the end of a file. The starting point in the file can be specified either through `-b` for 512 byte blocks, `-c` for bytes, or `-n` for number of lines.
+The opposite of `head`, `tail` displays the end of a file. The starting point in the file can be specified either through `-b` for 512 byte blocks, `-c` for bytes, or `-n` for number of lines.
 
 ### chmod
 
-Normally used to change the permissions for a file. The `chmod` command can use symbols `u` (user that owns the file), `g` (the files group) , `o` (other users) and the permissions r (read), w (write) and x (execute). Using `chmod u+x *filename*` will add execute permission for the owner of the file.
+You would normally use `chmod` to change the permissions for a file. The `chmod` command can use symbols `u` (user that owns the file), `g` (the files group) ,  and `o` (other users) and the permissions `r` (read), `w` (write), and `x` (execute). Using `chmod u+x *filename*` will add execute permission for the owner of the file.
 
 ### chown
 
-Changes the user and/or group that owns a file. It normally needs to be run as root using sudo e.g. `sudo chown pi:root *filename*` will change the owner to pi and the group to root. 
+The `chown` command changes the user and/or group that owns a file. It normally needs to be run as root using sudo e.g. `sudo chown pi:root *filename*` will change the owner to pi and the group to root. 
 
 ### ssh
 
-Secure shell. Connect to another computer using an encrypted network connection.
+`ssh` denotes the secure shell. Connect to another computer using an encrypted network connection.
 For more details see [SSH (secure shell)](../../remote-access/ssh/)
 
 ### scp
 
-Copies a file from one computer to another using ssh.
+The `scp` command copies a file from one computer to another using `ssh`.
 For more details see [SCP (secure copy)](../../remote-access/ssh/scp.md)
 
 ### sudo
 
-Run a command as a superuser, or another user. Use `sudo -s` for a superuser shell.
+The `sudo` command enables you to run a command as a superuser, or another user. Use `sudo -s` for a superuser shell.
 For more details see [Root user / sudo](root.md)
 
 ### dd
 
-Copies a file converting the file as specified. It is often used to copy an entire disk to a single file or back again eg. `dd if=/dev/sdd of=backup.img` will create a backup image from an SD card or USB disk drive at /dev/sdd. Make sure to use the correct drive when copying an image to the SD card as it can overwrite the entire disk.
+The `dd` command copies a file converting the file as specified. It is often used to copy an entire disk to a single file or back again. So, for example, `dd if=/dev/sdd of=backup.img` will create a backup image from an SD card or USB disk drive at /dev/sdd. Make sure to use the correct drive when copying an image to the SD card as it can overwrite the entire disk.
 
 ### df
 
-Display the disk space available and used on the mounted filesystems. Use `df -h` to see the output in a human readable format using M for MBs rather than showing number of bytes. 
+Use `df` to disply the disk space available and used on the mounted filesystems. Use `df -h` to see the output in a human readable format using M for MBs rather than showing number of bytes. 
 
 ### unzip
 
