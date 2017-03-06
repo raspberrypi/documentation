@@ -111,8 +111,3 @@ clock_setup {
 
 The above will set the PLLA to a source VCO running at 1.96608GHz (the limits for this VCO are 600MHz - 2.4GHz), change the APER channel to /4, and configure GPCLK0 to be sourced from PLLA through APER. This is used specifically to give an audio codec the 12288000Hz it needs to do the 48000 range of frequencies.
 
-## Sample Device Tree source file
-
-**NOTE:** As this is a new feature, there is no reference DTS file which is guaranteed to be supported by future firmware revisions.
-
-The DTS file used for the DTB compiled into the 30 May 2015 firmware can be downloaded from [here](images/dt-blob.dts).
