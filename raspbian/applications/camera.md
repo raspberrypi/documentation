@@ -128,18 +128,18 @@ Sets the EV compensation of the image. Default is 0.
 
 Possible options are:
                                                                
-- Auto: use automatic exposure mode
-- Night: select setting for night shooting
-- Nightpreview: 
-- Backlight: select setting for backlit subject
-- Spotlight:  
-- Sports: select setting for sports (fast shutter etc.)
-- Snow: select setting optimised for snowy scenery
-- Beach: select setting optimised for beach
-- Verylong: select setting for long exposures
-- Fixedfps: constrain fps to a fixed value
-- Antishake: antishake mode
-- Fireworks: select setting optimised for fireworks
+- auto: use automatic exposure mode
+- night: select setting for night shooting
+- nightpreview: 
+- backlight: select setting for backlit subject
+- spotlight:  
+- sports: select setting for sports (fast shutter etc.)
+- snow: select setting optimised for snowy scenery
+- beach: select setting optimised for beach
+- verylong: select setting for long exposures
+- fixedfps: constrain fps to a fixed value
+- antishake: antishake mode
+- fireworks: select setting optimised for fireworks
 
 Note that not all of these settings may be implemented, depending on camera tuning.
 
@@ -148,16 +148,16 @@ Note that not all of these settings may be implemented, depending on camera tuni
 ```
 Modes for which colour temperature ranges (K) are available have these settings in brackets.
 
-- Off: turn off white balance calculation
-- Auto: automatic mode (default)
-- Sun: sunny mode (between 5000K and 6500K) 
-- Cloud: cloudy mode (between 6500K and 12000K)
-- Shade: shade mode 
-- Tungsten: tungsten lighting mode (between 2500K and 3500K)
-- Fluorescent: fluorescent lighting mode (between 2500K and 4500K)
-- Incandescent: incandescent lighting mode
-- Flash: flash mode
-- Horizon: horizon mode
+- off: turn off white balance calculation
+- auto: automatic mode (default)
+- sun: sunny mode (between 5000K and 6500K) 
+- cloud: cloudy mode (between 6500K and 12000K)
+- shade: shade mode 
+- tungsten: tungsten lighting mode (between 2500K and 3500K)
+- fluorescent: fluorescent lighting mode (between 2500K and 4500K)
+- incandescent: incandescent lighting mode
+- flash: flash mode
+- horizon: horizon mode
 
 
 Note that not all of these settings may be implemented, depending on camera type.
@@ -168,28 +168,28 @@ Note that not all of these settings may be implemented, depending on camera type
 
 Set an effect to be applied to the image:
 
-- None: no effect (default)
-- Negative: invert the image colours
-- Solarise: solarise the image
-- Posterise: posterise the image
-- Whiteboard: whiteboard effect
-- Blackboard: blackboard effect
-- Sketch: sketch effect
-- Denoise: denoise the image
-- Emboss: emboss the image
-- Oilpaint: oil paint effect
-- Hatch: hatch sketch effect
-- Gpen: graphite sketch effect
-- Pastel: pastel effect
-- Watercolour: watercolour effect
-- Film: film grain effect
-- Blur: blur the image
-- Saturation: colour saturate the image
-- Colourswap: not fully implemented
-- Washedout: not fully implemented
-- Colourpoint: not fully implemented
-- Colourbalance: not fully implemented
-- Cartoon: not fully implemented
+- none: no effect (default)
+- negative: invert the image colours
+- solarise: solarise the image
+- posterise: posterise the image
+- whiteboard: whiteboard effect
+- blackboard: blackboard effect
+- sketch: sketch effect
+- denoise: denoise the image
+- emboss: emboss the image
+- oilpaint: oil paint effect
+- hatch: hatch sketch effect
+- gpen: graphite sketch effect
+- pastel: pastel effect
+- watercolour: watercolour effect
+- film: film grain effect
+- blur: blur the image
+- saturation: colour saturate the image
+- colourswap: not fully implemented
+- washedout: not fully implemented
+- colourpoint: not fully implemented
+- colourbalance: not fully implemented
+- cartoon: not fully implemented
 
 Note that not all of these settings may be available in all circumstances.
 
@@ -205,10 +205,10 @@ The supplied U and V parameters (range 0 - 255) are applied to the U and Y chann
 
 Specify the metering mode used for the preview and capture:
 
-- Average: average the whole frame for metering
-- Spot: spot metering
-- Backlit: assume a backlit image
-- Matrix: matrix metering
+- average: average the whole frame for metering
+- spot: spot metering
+- backlit: assume a backlit image
+- matrix: matrix metering
 
 ```
 	--rotation,	-rot		Set image rotation (0 - 359)
