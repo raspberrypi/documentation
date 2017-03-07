@@ -10,7 +10,7 @@ Make sure your Raspberry Pi is properly set up and connected. If you're using Wi
 
 If you are using a ethernet cable, just plug your Raspberry Pi directly into your router, and wired networking will be set up automatically.
 
-You will need to note down the IP address of your Pi in order to connect to it later. Using the `ipconfig` command will display information about the current network status, including the IP address.
+You will need to note down the IP address of your Pi in order to connect to it later. Using the `ipconfig` command will display information about the current network status, including the IP address, or you can use `hostname -I` to just display the IP addresses associated with the device.
 
 ##2. Enable SSH
 As of the November 2016 release, Raspbian has the SSH server disabled by default. It can be enabled manually from the desktop:
