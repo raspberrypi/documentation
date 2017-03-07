@@ -349,7 +349,7 @@ Setting this to `1` pretends that the HDMI hotplug signal is not asserted, so it
 
 #### disable_overscan
 
-Set to `1` to disable [overscan](raspi-config.md#overscan).
+Set to `1` to disable [overscan](../raspi-config.md#overscan).
 
 #### overscan_left
 
