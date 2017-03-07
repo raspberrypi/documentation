@@ -6,6 +6,8 @@ Before a Pi will USB boot, it needs to be booted with a config option to enable 
 
 Go to the [Downloads page](https://www.raspberrypi.org/downloads/raspbian/) and install Raspbian onto an SD card using `Win32DiskImager` if you are on Windows, or `dd` if you are on Linux/Mac. Boot the Pi.
 
+**Note:** Make sure you verify that the system time is set correctly as incorrect dates can cause certificate validation errors in curl
+
 First, prepare the `/boot` directory with experimental boot files:
 ```
 # If on raspbian lite you need to install rpi-update before you can use it:
@@ -54,6 +56,8 @@ Number  Start   End     Size    Type     File system  Flags
  2      99.6MB  30.8GB  30.7GB  primary  ext4         lba
 ```
 Your `parted print` output should look similar to the one above.
+
+Type `quit` to exit parted.
 
 Create the boot and root file systems:
 ```
