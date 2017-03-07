@@ -27,7 +27,7 @@ GND     P1-25   P1-26    CE1
 <a name="software"></a>
 ## Software
 
-.### WiringPi
+### WiringPi
 
 WiringPi includes a library which can make it easier to use the Raspberry Pi's on-board SPI interface. Accesses the hardware registers directly.
 
