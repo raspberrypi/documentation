@@ -8,7 +8,7 @@ Note that you only have access to the command line, not the full desktop environ
 
 Make sure your Raspberry Pi is properly set up and connected. If you're using Wifi, this can be done via Pixel's [user interface](../../configuration/wireless/README.md), or entirely on the [command line](../../configuration/wireless/wireless-cli.md). 
 
-If you are using a ethernet cable, just plug your Raspberry Pi directly into your router, and wired networking will be set up automatically.
+If you are using an ethernet cable, just plug your Raspberry Pi directly into your router, and wired networking will be set up automatically.
 
 You will need to note down the IP address of your Pi in order to connect to it later. Using the `ipconfig` command will display information about the current network status, including the IP address, or you can use `hostname -I` to just display the IP addresses associated with the device.
 
