@@ -38,6 +38,6 @@ You can type `exit` to close the terminal window.
 If a red exclamation mark appears, this indicates that something went wrong. Tap the exclamation mark for the error description. ‘Connection establishment time out’ means you have probably entered an incorrect IP address. Otherwise, WiFi on your mobile device might be turned off, the Raspberry Pi might be turned off,  or it might be connected to a different network from your mobile device.
 
 ##3. Modify an entry, troubleshooting, and more
-A connection might be unsuccessful for various reasons. It is likely that your device or Raspberry Pi is [not connected properly](../../configuration/wireless/wireless-cli.md), [SSH is disabled](README.md), you might have made a typo in your code, or the IP address or credentials have changed. In the latter cases, you need to update the host.
+A connection might be unsuccessful for various reasons. It is likely that your device or Raspberry Pi is [not connected properly](../../configuration/wireless/wireless-cli.md), [SSH is disabled](../../configuration/raspi-config.md), you might have made a typo in your code, or the IP address or credentials have changed. In the latter cases, you need to update the host.
 
 To do so, go to the ‘Hosts’ screen, swipe left on the host you need to edit, and new functions will appear. Tap edit. A new screen titled ‘Edit Host’ will pop up.
