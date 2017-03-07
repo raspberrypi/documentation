@@ -4,7 +4,7 @@ You can access the command line of a Raspberry Pi remotely from another computer
 
 ##1. Set up your client
 
-SSH is built into Linux distributions and Mac OS. For Windows and mobile devices, third-party SSH clients are available. See the following guides for using SSH depending on the OS used by the computer or device you are connecting from:
+SSH is built into Linux distributions and Mac OS. For Windows and mobile devices, third-party SSH clients are available. See the following guides for using SSH with the OS on your computer or device:
 
 - [Linux & Mac OS](unix.md)
 - [Windows](windows.md)
@@ -13,11 +13,11 @@ SSH is built into Linux distributions and Mac OS. For Windows and mobile devices
 
 Note that you only have access to the command line, not the full desktop environment. For the full remote desktop, see [VNC](../vnc/README.md).
 
-##2. Set up your local network and WiFi
+##2. Set up your local network and wireless connectivity
 
-Make sure your Raspberry Pi is properly set up and connected. If you're using [WiFi](../../configuration/wireless/wireless-cli.md), this is done using the `wpa_supplicant.conf` config file. 
+Make sure your Raspberry Pi is properly set up and connected. If you are using [wireless connectivity](../../configuration/wireless/wireless-cli.md), use the `wpa_supplicant.conf` config file. 
 
-Otherwise, plug your Raspberry Pi directly into the router.
+If you are not using wireless connectivity, plug your Raspberry Pi directly into the router.
 
 ##3. Enable SSH
 As of the November 2016 release, Raspbian has the SSH server disabled by default. It can be enabled manually from the desktop:
@@ -36,4 +36,4 @@ Alternatively, [raspi-config](../../configuration/raspi-config.md) can be used:
 1. Select `Ok`
 1. Choose `Finish`
 
-For headless setup, SSH can be enabled by placing a file named 'ssh', without any extension, onto the boot partition of the SD card. When the Pi boots, it looks for the 'ssh' file; if it is found, SSH is enabled and then the file is deleted. The content of the file doesn't matter: it could contain either text or nothing at all.
+For headless setup, SSH can be enabled by placing a file named 'ssh', without any extension, onto the boot partition of the SD card. When the Pi boots, it looks for the 'ssh' file. If it is found, SSH is enabled, and the file is deleted. The content of the file does not matter: it could contain text, or nothing at all.
