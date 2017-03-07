@@ -1,6 +1,6 @@
 ## config.txt - Overclocking options
 
-**NOTE:** Setting any overclocking parameters to values other than those used by [raspi-config](raspi-config.md#overclock) will set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. This was originally set to detect a void warranty if the device had been overclocked. Since September 19th 2012, you can overclock your Pi without affecting your warranty. For more information see the [blog post on Turbo Mode](https://www.raspberrypi.org/blog/introducing-turbo-mode-up-to-50-more-performance-for-free/).
+**NOTE:** Setting any overclocking parameters to values other than those used by [raspi-config](../raspi-config.md#overclock) will set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. This was originally set to detect a void warranty if the device had been overclocked. Since September 19th 2012, you can overclock your Pi without affecting your warranty. For more information see the [blog post on Turbo Mode](https://www.raspberrypi.org/blog/introducing-turbo-mode-up-to-50-more-performance-for-free/).
 
 The latest kernel has a [cpufreq](http://www.pantz.org/software/cpufreq/usingcpufreqonlinux.html) kernel driver with the "ondemand" governor enabled by default. It has no effect if you have no overclock settings, but if you overclock, the CPU frequency will vary with processor load. Non-default values are only used when required, according to the governor. You can adjust the minimum values with the `*_min` config options, or disable dynamic clocking with `force_turbo=1`. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=169726#p169726).
 
@@ -62,7 +62,7 @@ To view the Pi's temperature, type: `cat /sys/class/thermal/thermal_zone0/temp`.
 
 To view the Pi's current frequency, type: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`. Divide the result by 1000 to find the value in MHz.
 
-To monitor the Pi's PSU voltage, you will need to use a multimeter to measure between the TP1 and TP2 power supply test points. More information is available in [power](../hardware/raspberrypi/power/README.md).
+To monitor the Pi's PSU voltage, you will need to use a multimeter to measure between the TP1 and TP2 power supply test points. More information is available in [power](../../hardware/raspberrypi/power/README.md).
 
 It is a good idea to keep the core temperature below 70 degrees and the voltage above 4.8V. Note that some USB power supplies fall as low as 4.2V. This is because they are usually designed to charge a 3.7V LiPo battery, rather than to supply 5V to a computer. If your overclocked Raspberry Pi is getting hot, a heatsink can be helpful, especially if the Pi is to be run inside a case. A suitable heatsink is the self-adhesive BGA (ball-grid-array) 14x14x10 mm heatsink, available from [RS Components](http://uk.rs-online.com/web/p/heatsinks/6744756/).
 
