@@ -76,7 +76,6 @@ In Standard SPI master mode the peripheral implements the standard 3 wire serial
 In bidirectional SPI master mode the same SPI standard is implemented, except that a single wire is used for data (MOMI) instead of the two used in standard mode (MISO and MOSI). In this mode, the MOSI pin serves as MOMI pin.
 
 #### LoSSI mode (Low Speed Serial Interface)
-
 The LoSSI standard allows issuing of commands to peripherals (LCD) and to transfer data to and from them. LoSSI commands and parameters are 8 bits long, but an extra bit is used to indicate whether the byte is a command or parameter/data. This extra bit is set high for a data and low for a command. The resulting 9-bit value is serialized to the output. LoSSI is commonly used with [MIPI DBI](http://mipi.org/specifications/display-interface) type C compatible LCD controllers.
 
 **Note:**
@@ -111,7 +110,7 @@ Setup and Hold times related to the automatic assertion and de-assertion of the 
 
 <a name="driver"></a>
 ## Linux driver
-,
+
 The default Linux driver is [spi-bcm2708](https://github.com/raspberrypi/linux/blob/rpi-3.12.y/drivers/spi/spi-bcm2708.c).
 
 The following information was valid 2014-07-05.
