@@ -39,6 +39,6 @@ If a dialogue saying `Connection failed Connecting to 192.xxx.xxx.xxx port 22` a
 
 ##3. Modify an entry, troubleshooting, and more
 
-A connection might be unsuccessful for various reasons. The most likely is that your device or Raspberry Pi are [not connected properly](../../configuration/wireless/wireless-cli.md), [SSH is disabled](../../configuration/raspi-config.md), there may be a typo in your code, or the IP address or credentials have changed. In the latter cases, you need to update the host.
+A connection might be unsuccessful for various reasons. The most likely is that your device or Raspberry Pi are [not connected properly](../../configuration/wireless/wireless-cli.md), [SSH is disabled](README.md), there may be a typo in your code, or the IP address or credentials have changed. In the latter cases, you need to update the host.
 
 To do this, go to the Hosts screen, and tap and hold the particular entry. In the top right corner, new functions will pop up. Tap the pencil icon. A new screen titled 'Edit Host' will pop up.
