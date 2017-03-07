@@ -1,5 +1,6 @@
 # WiFi
 
+##GUI
 A GUI is provided for setting up WiFi connections in the current Raspbian release.
 
 WiFi connections can be made via the network icon at the right-hand end of the menu bar. If a WiFi dongle is plugged in, left-clicking this icon will bring up a list of available WiFi networks, as shown below. If no networks are found, it will show the message "No APs found - scanning..." - just wait a few seconds without closing the menu, and it should find your network.
@@ -13,6 +14,10 @@ The icons on the right show whether a network is secured or not, and its signal 
 
 Enter the key and press OK, then wait a couple of seconds. The network icon will flash briefly to show that a connection is being made; once it is ready, the icon stops flashing and shows the signal strength.
 
+##Headless
+As of the May 2016 release, `wpa_supplicant.conf` can be configured by placing it in the boot partition of the SD card. When the Pi boots, it will move the `wpa_supplicant.conf` to `/etc/wpa_supplicant/`. This method can be used to setup a WiFi connection headlessly. 
+
+##Alternative Methods
 In older versions of Raspbian, there are alternative ways of setting up WiFi. Here are 3 different ways to configure it:
   
 - [Using GUI application](http://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/setting-up-wifi-with-raspbian)
