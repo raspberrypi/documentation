@@ -27,7 +27,7 @@ GND     P1-25   P1-26    CE1
 <a name="software"></a>
 ## Software
 
-### WiringPi
+.### WiringPi
 
 WiringPi includes a library which can make it easier to use the Raspberry Pi's on-board SPI interface. Accesses the hardware registers directly.
 
@@ -38,7 +38,6 @@ http://wiringpi.com/
 This is a C library for Raspberry Pi (RPi). It provides access to GPIO and other IO functions on the Broadcom BCM 2835 chip. Accesses the hardware registers directly.
 
 http://www.airspayce.com/mikem/bcm2835/
-
 ### Use spidev from C
 
 There's a loopback test program in the Linux documentation that can be used as a starting point. See the [Troubleshooting](#troubleshooting) section. Uses the Linux `spidev` driver to access the bus.
@@ -74,7 +73,7 @@ In Standard SPI master mode the peripheral implements the standard 3 wire serial
 
 #### Bidirectional mode
 
-In bidirectional SPI master mode the same SPI standard is implemented except that a single wire is used for data (MOMI) instead of two as in standard mode (MISO and MOSI). In this mode, the MOSI pin serves as MOMI pin,
+In bidirectional SPI master mode the same SPI standard is implemented, except that a single wire is used for data (MOMI) instead of the two used in standard mode (MISO and MOSI). In this mode, the MOSI pin serves as MOMI pin.
 
 #### LoSSI mode (Low Speed Serial Interface)
 
@@ -112,7 +111,7 @@ Setup and Hold times related to the automatic assertion and de-assertion of the 
 
 <a name="driver"></a>
 ## Linux driver
-
+,
 The default Linux driver is [spi-bcm2708](https://github.com/raspberrypi/linux/blob/rpi-3.12.y/drivers/spi/spi-bcm2708.c).
 
 The following information was valid 2014-07-05.
@@ -154,7 +153,7 @@ SPI_NO_CS   - 1 device per bus, no Chip Select
 SPI_3WIRE   - Bidirectional mode, data in and out pin shared
 ```
 
-Bidirectional or "3-wire" mode is supported by the spi-bcm2835 kernel module. Please note that in this mode, either the tx or rx field of the spi_transfer struct must be a NULL pointer, since only half-duplex communication is possible. Otherwise, the transfer will fail. The spidev_test.c source code does not consider this correctly and therefore does not work at all in 3-wire mode.
+Bidirectional or "3-wire" mode is supported by the spi-bcm2835 kernel module. Please note that in this mode, either the tx or rx field of the spi_transfer struct must be a NULL pointer, since only half-duplex communication is possible. Otherwise, the transfer will fail. The spidev_test.c source code does not consider this correctly, and therefore does not work at all in 3-wire mode.
 
 ### Supported bits per word
 
