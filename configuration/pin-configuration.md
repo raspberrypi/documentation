@@ -30,17 +30,22 @@ The `dt-blob.bin` is used to configure the binary blob (VideoCore) at boot time.
 
 2. `pins_*`
 
-   There are up to eight separate pins_* sections, namely:
+   There are a number of separate `pins_*` sections, based on particular Raspberry Pi models, namely:
    
-   1. **pins_rev1** Rev1 pin setup. There are some differences because of the moved I2C pins.
-   2. **pins_rev2** Rev2 pin setup. This includes the additional codec pins on P5.
-   3. **pins_bplus1** Model B+ rev 1.1, including the full 40pin connector.
-   4. **pins_bplus2** Model B+ rev 1.2, swapping the low-power and lan-run pins.
-   5. **pins_aplus** Model A+, lacking Ethernet.
-   6. **pins_2b1** Pi 2 Model B rev 1.0; controls the SMPS via I2C0.
-   7. **pins_2b2** Pi 2 Model B rev 1.1; controls the SMPS via software I2C on 42 and 43.
-   8. **pins_cm** The Compute Module. The default for this is the default for the chip, so it is a useful source of information about default pull ups/downs on the chip.
-   
+ - **pins_rev1** Rev1 pin setup. There are some differences because of the moved I2C pins.
+ - **pins_rev2** Rev2 pin setup. This includes the additional codec pins on P5.
+ - **pins_bplus1** Model B+ rev 1.1, including the full 40pin connector.
+ - **pins_bplus2** Model B+ rev 1.2, swapping the low-power and lan-run pins.
+ - **pins_aplus** Model A+, lacking Ethernet.
+ - **pins_2b1** Pi 2 Model B rev 1.0; controls the SMPS via I2C0.
+ - **pins_2b2** Pi 2 Model B rev 1.1; controls the SMPS via software I2C on 42 and 43.
+ - **pins_3b1** Pi 3 Model B rev 1.0
+ - **pins_3b2** Pi 3 Model B rev 1.2
+ - **pins_pi0** The Pi Zero
+ - **pins_pi0w** The PiZero wireless
+ - **pins_cm** The Compute Module. The default for this is the default for the chip, so it is a useful source of information about default pull ups/downs on the chip.
+ - **pins_cm3** The Compute Module version 3
+  
    Each `pins_*` section can contain `pin_config` and `pin_defines` sections.
 
 3. `pin_config`
