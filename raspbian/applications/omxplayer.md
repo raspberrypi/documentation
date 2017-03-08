@@ -1,43 +1,44 @@
 # OMXPlayer: An accelerated command line media player
 
-Installed on Raspbian is a command line media player, called omxplayer. This is HW accelerated, and can play back many popular file formats, both audio and video.
+Installed on Raspbian is a command line media player, called OMXPlayer. This is HW accelerated, and can play back many popular audio and video file formats.
 
-omxplayer was developed by the Kodi project's Edgar Hucek.
+OMXPlayer was developed by the Kodi project's Edgar Hucek.
 
-omxplayer uses the OpenMAX (omx) hardware acceleration interface (API) which is the officially supported media API on the Raspberry Pi.
+OMXPlayer uses the OpenMAX (omx) hardware acceleration interface (API) which is the officially supported media API on the Raspberry Pi.
 
 ## Basic usage
 
-The simplest command line is `omxplayer <name of media file>`. The media file can be audio or video or both. For the examples below an H264 video file that is included with the standard Rasbian installation has been used.
+The simplest command line is `omxplayer <name of media file>`. The media file can be audio or video or both. For the examples below, we used an H264 video file that is included with the standard Rasbian installation.
 
 ```
-omxplayer /opt/vc/src/hello_pi/hello_video/test.h264```
+omxplayer /opt/vc/src/hello_pi/hello_video/test.h264
+```
 
-By default the audio is sent to the analog port so if you are using a HDMI equiped display device with speakers, you need to tell omxplayer to send the audio signal over the HDMI link.
+By default the audio is sent to the analog port. If you are using a HDMI-equiped display device with speakers, you need to tell omxplayer to send the audio signal over the HDMI link.
 
 ```
 omxplayer -adev hdmi /opt/vc/src/hello_pi/hello_video/test.h264
 ```
 
-When displaying video, the whole display will be used as output. You can however, specifiy which part of the display you want the video to be on using the window option.
+When displaying video, the whole display will be used as output. You can specifiy which part of the display you want the video to be on using the window option.
 
 ```
 omxplayer --win 0,0,640,480 /opt/vc/src/hello_pi/hello_video/test.h264
 ```
 
-You can also specify which part of the video you want to be displayed, this is called a crop window. This portion of the video will be scaled up to match the display, unless you also use the window option.
+You can also specify which part of the video you want to be displayed: this is called a crop window. This portion of the video will be scaled up to match the display, unless you also use the window option.
 
 ```
 omxplayer --crop 100,100,300,300 /opt/vc/src/hello_pi/hello_video/test.h264
 ```
-If you are using the Raspberry Pi Foundations touchscreen display, and want to use it for video output, use the display option to specify which display to use, where `n` is 5 for HDMI, 4 for the touchscreen.
+If you are using the Raspberry Pi Foundation's touchscreen display, and you want to use it for video output, use the display option to specify which display to use. `n` is 5 for HDMI, 4 for the touchscreen.
 
 ```
 omxplayer --display n /opt/vc/src/hello_pi/hello_video/test.h264
 ```
 ## Options available during playback
 
-There are a number of options available during playback, actioned by pressing the appropriate key. Note, not all options will be available on all files. The list of key bindings can be displayed using `omxplayer --keys`
+There are a number of options available during playback, actioned by pressing the appropriate key. Not all options will be available on all files. The list of key bindings can be displayed using `omxplayer --keys`:
 
 ```
     1           decrease speed
@@ -69,7 +70,7 @@ There are a number of options available during playback, actioned by pressing th
 
 ## All command line options
 
-This is a full list of options available in the build from 23rd September 2016, displayed using `omxplayer --help`.
+This is a full list of options available in the build from 23rd September 2016, displayed using `omxplayer --help`:
 
 ```
  -h  --help                  Print this help
@@ -113,7 +114,7 @@ This is a full list of options available in the build from 23rd September 2016, 
  --win x1,y1,x2,y2       Set position of video window
  --crop 'x1 y1 x2 y2'    Set crop area for input video
  --crop x1,y1,x2,y2      Set crop area for input video
- --aspect-mode type      Letterbox, fill, stretch. Default: stretch if win is specified, letterbox otherwise
+ --aspect-mode type      Letterbox, fill, stretch. Default is stretch if win is specified, letterbox otherwise
  --audio_fifo  n         Size of audio output fifo in seconds
  --video_fifo  n         Size of video output fifo in MB
  --audio_queue n         Size of audio input queue in MB
