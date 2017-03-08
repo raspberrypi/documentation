@@ -2,7 +2,7 @@
 
 You can access the command line of a Raspberry Pi remotely from another computer or device on the same network using SSH.
 
-The Raspberry Pi will act as a remote device, to which you can connect using a client on another machine. 
+The Raspberry Pi will act as a remote device: you can connect to it using a client on another machine. 
 
 You only have access to the command line, not the full desktop environment. For a full remote desktop, see [VNC](../vnc/README.md).
 
