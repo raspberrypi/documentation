@@ -2,19 +2,14 @@
 This tutorial explains how to boot your Raspberry Pi 3 from a USB mass storage device such as a flash drive or USB hard disk. Be warned that this feature is experimental and may not work with all USB mass storage devices.
 
 ## Program USB Boot Mode
-Before a Raspberry Pi will USB boot, it needs to be booted with a config option to enable USB boot mode. Enabling this config option requires a special `start.elf` and `bootcode.bin` file. These can be installed by using the "next" branch on rpi-update.
+Before a Pi will boot from a mass storage device, it needs to be booted from an SD card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Pi SoC that enables network booting. Once this is done, the SD card is no longer required. 
 
-Go to the [Downloads page](https://www.raspberrypi.org/downloads/raspbian/) and install Raspbian onto an SD card using `Win32DiskImager` if you are on Windows, or `dd` if you are on Linux/Mac. Boot the Raspberry Pi.
+Install Raspbian lite (or heavy if you want) on the SD card in the normal way [See here](../../../installation/installing-images/README.md).
 
-**Note:** Make sure you verify that the system time is set correctly. Incorrect dates can cause certificate validation errors in curl.
-
-First, prepare the `/boot` directory with experimental boot files:
+First, prepare the `/boot` directory with up to date boot files:
 ```
-# On Raspbian Lite, you will need to install rpi-update before you can use it:
-$ sudo apt-get update; sudo apt-get install rpi-update
-$ sudo BRANCH=next rpi-update
+$ sudo apt-get update
 ```
-
 Then enable USB boot mode with this code:
 ```
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
