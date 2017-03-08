@@ -2,15 +2,15 @@
 This tutorial explains how to boot your Raspberry Pi 3 from a USB mass storage device such as a flash drive or USB hard disk. Be warned that this feature is experimental and may not work with all USB mass storage devices.
 
 ## Program USB Boot Mode
-Before a Pi will USB boot, it needs to be booted with a config option to enable USB boot mode. Enabling this config option requires a special `start.elf` and `bootcode.bin` file. These can be installed by using the "next" branch on rpi-update.
+Before a Raspberry Pi will USB boot, it needs to be booted with a config option to enable USB boot mode. Enabling this config option requires a special `start.elf` and `bootcode.bin` file. These can be installed by using the "next" branch on rpi-update.
 
-Go to the [Downloads page](https://www.raspberrypi.org/downloads/raspbian/) and install Raspbian onto an SD card using `Win32DiskImager` if you are on Windows, or `dd` if you are on Linux/Mac. Boot the Pi.
+Go to the [Downloads page](https://www.raspberrypi.org/downloads/raspbian/) and install Raspbian onto an SD card using `Win32DiskImager` if you are on Windows, or `dd` if you are on Linux/Mac. Boot the Raspberry Pi.
 
-**Note:** Make sure you verify that the system time is set correctly as incorrect dates can cause certificate validation errors in curl
+**Note:** Make sure you verify that the system time is set correctly. Incorrect dates can cause certificate validation errors in curl.
 
 First, prepare the `/boot` directory with experimental boot files:
 ```
-# If on raspbian lite you need to install rpi-update before you can use it:
+# On Raspbian Lite, you will need to install rpi-update before you can use it:
 $ sudo apt-get update; sudo apt-get install rpi-update
 $ sudo BRANCH=next rpi-update
 ```
@@ -20,7 +20,7 @@ Then enable USB boot mode with this code:
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
 ```
 
-This adds `program_usb_boot_mode=1` to the end of `/boot/config.txt`. Reboot the Pi with `sudo reboot`, then check that the OTP has been programmed with:
+This adds `program_usb_boot_mode=1` to the end of `/boot/config.txt`. Reboot the Raspberry Pi with `sudo reboot`, then check that the OTP has been programmed with:
 
 ```
 $ vcgencmd otp_dump | grep 17:
@@ -29,10 +29,10 @@ $ vcgencmd otp_dump | grep 17:
 
 Ensure the output `0x3020000a` is correct.
 
-If you wish, you can remove the `program_usb_boot_mode` line from config.txt (make sure there is no blank line at the end) so that if you put the SD card in another Pi, it won't program USB boot mode. You can do this with `sudo nano /boot/config.txt`, for example.
+If you wish, you can remove the `program_usb_boot_mode` line from config.txt, so that if you put the SD card in another Raspberry Pi, it won't program USB boot mode. Make sure there is no blank line at the end of config.txt. You can do this with `sudo nano /boot/config.txt`, for example.
 
 ## Prepare the USB storage device
-Now that your Pi is USB boot-enabled, we can prepare a USB storage device to boot from. Start by inserting the USB storage device (which will be completely erased) into the Pi. Rather than downloading the Raspbian image again, we will copy it from the SD card on the Pi. The source device (sd card) will be `/dev/mmcblk0` and the destination device (USB disk) should be `/dev/sda` assuming you have no other USB devices connected.
+Now that your Raspberry Pi is USB boot-enabled, you can prepare a USB storage device to boot from. Start by inserting the USB storage device into the Raspberry Pi. Note that the USB storage device will be completely erased. Rather than downloading the Raspbian image again, we will copy it from the SD card on the Raspberry Pi. The source device (SD card) will be `/dev/mmcblk0` and the destination device (USB disk) should be `/dev/sda`, assuming you have no other USB devices connected.
 
 We will start by using Parted to create a 100MB FAT32 partition, followed by a Linux ext4 partition that will take up the rest of the disk.
 
@@ -65,7 +65,7 @@ sudo mkfs.vfat -n BOOT -F 32 /dev/sda1
 sudo mkfs.ext4 /dev/sda2
 ```
 
-Mount the target file system and copy the running raspbian system to it:
+Mount the target file system and copy the running Raspbian system to it:
 ```
 sudo mkdir /mnt/target
 sudo mount /dev/sda2 /mnt/target/
@@ -75,7 +75,7 @@ sudo apt-get update; sudo apt-get install rsync
 sudo rsync -ax --progress / /boot /mnt/target
 ```
 
-Regenerate ssh host keys:
+Regenerate SSH host keys:
 ```
 cd /mnt/target
 sudo mount --bind /dev dev
@@ -90,7 +90,7 @@ sudo umount sys
 sudo umount proc
 ```
 
-Edit `/boot/cmdline.txt` so that it uses the USB storage device as the root file system instead of the SD card.
+Edit `/boot/cmdline.txt` so that it uses the USB storage device as the root file system, instead of the SD card.
 
 ```
 sudo sed -i "s,root=/dev/mmcblk0p2,root=/dev/sda2," /mnt/target/boot/cmdline.txt
@@ -101,7 +101,7 @@ The same needs to be done for `fstab`:
 sudo sed -i "s,/dev/mmcblk0p,/dev/sda," /mnt/target/etc/fstab
 ```
 
-Finally, unmount the target file systems, and power the Pi off.
+Finally, unmount the target file systems, and power the Raspberry Pi off.
 ```
 cd ~
 sudo umount /mnt/target/boot 
@@ -109,4 +109,4 @@ sudo umount /mnt/target
 sudo poweroff 
 ```
 
-Disconnect the power supply from the Pi, remove the SD card, and reconnect the power supply. If all has gone well, the Pi should begin to boot after a few seconds.
+Disconnect the power supply from the Raspberry Pi, remove the SD card, and reconnect the power supply. If all has gone well, the Raspberry Pi should begin to boot after a few seconds.
