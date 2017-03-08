@@ -42,7 +42,7 @@ The `dt-blob.bin` is used to configure the binary blob (VideoCore) at boot time.
  - **pins_3b1** Pi 3 Model B rev 1.0
  - **pins_3b2** Pi 3 Model B rev 1.2
  - **pins_pi0** The Pi Zero
- - **pins_pi0w** The PiZero wireless
+ - **pins_pi0w** The Pi Zero W
  - **pins_cm** The Compute Module. The default for this is the default for the chip, so it is a useful source of information about default pull ups/downs on the chip.
  - **pins_cm3** The Compute Module version 3
   
