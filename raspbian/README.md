@@ -13,6 +13,6 @@ Raspbian is a community project under active development, with an emphasis on im
 - [Updating/Upgrading Raspbian](updating.md)
 - Configuring Raspbian
     - [raspi-config](../configuration/raspi-config.md)
-    - [config.txt](../configuration/config-txt.md)
+    - [config.txt](../configuration/config-txt/README.md)
 - [Applications](applications/README.md)
     - [Camera](applications/camera.md)
