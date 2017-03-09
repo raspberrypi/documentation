@@ -17,7 +17,7 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | isp_freq | Frequency of the image sensor pipeline block in MHz. The default value is `250`. |
 | v3d_freq | Frequency of the 3D block in MHz. The default value is `250`. |
 | sdram_freq | Frequency of the SDRAM in MHz. The default value is `400`. |
-| over_voltage | CPU/GPU core voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. In other words, specifying -16 will give 0.8V as the GPU/core voltage, and specifying 8 will give 1.4V. The default value is `0` (1.2V). Values above 6 are only allowed when `force_turbo` or `current_limit_override` are specified: this sets the warranty bit. |
+| over_voltage | CPU/GPU core voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. In other words, specifying -16 will give 0.8V as the GPU/core voltage, and specifying 8 will give 1.4V. For defaults see table below. Values above 6 are only allowed when `force_turbo` or `current_limit_override` are specified: this sets the warranty bit. |
 | over_voltage_sdram | Sets `over_voltage_sdram_c`, `over_voltage_sdram_i`, and `over_voltage_sdram_p` together. |
 | over_voltage_sdram_c | SDRAM controller voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
 | over_voltage_sdram_i | SDRAM I/O voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
@@ -30,6 +30,15 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | over_voltage_min | Minimum value of `over_voltage` used for dynamic frequency clocking. The default value is `0`. |
 | temp_limit | Overheat protection. This sets the clocks and voltages to default when the SoC reaches this value in Celsius. Setting this higher than the default voids your warranty. The default value is `85`. |
 | current_limit_override | Disables SMPS current limit protection when set to `0x5A000020`. It requires this unusual value to ensure that it is not triggered accidentally. This can help if you are hitting a reboot failure when specifying a value for overclocking that is too high. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=325#p170793). Changing this option may set the warranty bit. |
+
+This table describes the overvoltage settings for the various Pi versions.
+
+| Version | Default Overvoltage | Setting |
+| --- | --- | --- |
+| Pi1 | 1.2v | 0 |
+| Pi2 | 1.3125 | 4.5 |
+| Pi3 | 1.3125 | 4.5 |
+| Pi0 | 1.35 | 6 |
 
 #### force_turbo
 
