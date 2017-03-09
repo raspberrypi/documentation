@@ -4,7 +4,7 @@
 
 The latest kernel has a [cpufreq](http://www.pantz.org/software/cpufreq/usingcpufreqonlinux.html) kernel driver with the "ondemand" governor enabled by default. It has no effect if you have no overclock settings, but if you overclock, the CPU frequency will vary with processor load. Non-default values are only used when required, according to the governor. You can adjust the minimum values with the `*_min` config options, or disable dynamic clocking with `force_turbo=1`. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=169726#p169726).
 
-Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85°C, in order to cool it down. You should not hit this limit, even with maximum settings at 25°C ambient temperature. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=11579#p169872).
+Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85°C, in order to cool it down. You should not hit this limit on Raspberry Pi versions 1 or 2, but it is more likely with the Raspberry Pi 3. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=11579#p169872).
 
 ### Overclocking options
 
@@ -56,15 +56,23 @@ gpu_freq = pll_freq / [even number]
 
 The effective `gpu_freq` is automatically rounded to the nearest even integer; asking for `core_freq=500` and `gpu_freq=300` will result in the divisor of 2000/300 = 6.666 => 6 and so result in a `gpu_freq` of 333.33MHz.
 
-### Monitoring temperature and voltage
+### Monitoring core temperature
 
 To view the Pi's temperature, type: `cat /sys/class/thermal/thermal_zone0/temp`. Divide the result by 1000 to find the value in Celsius.
 
+It is a good idea to keep the core temperature below 70 degrees. If your Raspberry Pi is getting overly hot, a heatsink can be helpful, especially if the Pi is to be run inside a case. A suitable heatsink is the self-adhesive BGA (ball-grid-array) 14x14x10 mm heatsink, available from [RS Components](http://uk.rs-online.com/web/p/heatsinks/6744756/). Airflow over the heatsink will also help greatly with cooling.
+
 To view the Pi's current frequency, type: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`. Divide the result by 1000 to find the value in MHz.
+
+With firmware from 12th September 2016 or later, if the core temperature is between 80'C and 85'C, a warning icon showing a red half filled thermometer will be displayed, and the ARM cores will be throttled back. If the temperature exceeds 85'C then a icon showing a fully filled thermometer will be displayed, and both the ARM cores and the GPU will be throttled back.
+
+### Monitoring voltage
+
+It is essential to keep the supply voltage above 4.8V for reliable performance. Note that some USB chargers/power supplies can fall as low as 4.2V. This is because they are usually designed to charge a 3.7V LiPo battery, rather than to supply 5V to a computer. 
 
 To monitor the Pi's PSU voltage, you will need to use a multimeter to measure between the TP1 and TP2 power supply test points. More information is available in [power](../../hardware/raspberrypi/power/README.md).
 
-It is a good idea to keep the core temperature below 70 degrees and the voltage above 4.8V. Note that some USB power supplies fall as low as 4.2V. This is because they are usually designed to charge a 3.7V LiPo battery, rather than to supply 5V to a computer. If your overclocked Raspberry Pi is getting hot, a heatsink can be helpful, especially if the Pi is to be run inside a case. A suitable heatsink is the self-adhesive BGA (ball-grid-array) 14x14x10 mm heatsink, available from [RS Components](http://uk.rs-online.com/web/p/heatsinks/6744756/).
+If the voltage drops below 4.63v (+-5%), recent versions of firmware will display a yellow lightening bolt symbol on the display to indicate a lack of power.
 
 ### Overclocking problems
 
