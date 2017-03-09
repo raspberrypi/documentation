@@ -60,19 +60,19 @@ The effective `gpu_freq` is automatically rounded to the nearest even integer; a
 
 To view the Pi's temperature, type: `cat /sys/class/thermal/thermal_zone0/temp`. Divide the result by 1000 to find the value in Celsius.
 
-It is a good idea to keep the core temperature below 70 degrees. If your Raspberry Pi is getting overly hot, a heatsink can be helpful, especially if the Pi is to be run inside a case. A suitable heatsink is the self-adhesive BGA (ball-grid-array) 14x14x10 mm heatsink, available from [RS Components](http://uk.rs-online.com/web/p/heatsinks/6744756/). Airflow over the heatsink will also help greatly with cooling.
+It is a good idea to keep the core temperature below 70 degrees. If your Raspberry Pi is heating up, a heatsink can help to control the core temperature. This is especially useful if the Pi is running inside a case. Airflow over the heatsink will make cooling more efficient. A suitable heatsink is the self-adhesive BGA (ball-grid-array) 14x14x10 mm heatsink, available from [RS Components](http://uk.rs-online.com/web/p/heatsinks/6744756/). 
 
 To view the Pi's current frequency, type: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`. Divide the result by 1000 to find the value in MHz.
 
-With firmware from 12th September 2016 or later, if the core temperature is between 80'C and 85'C, a warning icon showing a red half filled thermometer will be displayed, and the ARM cores will be throttled back. If the temperature exceeds 85'C then a icon showing a fully filled thermometer will be displayed, and both the ARM cores and the GPU will be throttled back.
+With firmware from 12th September 2016 or later, when the core temperature is between 80'C and 85'C, a warning icon showing a red half-filled thermometer will be displayed, and the ARM cores will be throttled back. If the temperature exceeds 85'C, an icon showing a fully-filled thermometer will be displayed, and both the ARM cores and the GPU will be throttled back.
 
 ### Monitoring voltage
 
-It is essential to keep the supply voltage above 4.8V for reliable performance. Note that some USB chargers/power supplies can fall as low as 4.2V. This is because they are usually designed to charge a 3.7V LiPo battery, rather than to supply 5V to a computer. 
+It is essential to keep the supply voltage above 4.8V for reliable performance. Note that the voltage from some USB chargers/power supplies can fall as low as 4.2V. This is because they are usually designed to charge a 3.7V LiPo battery, not to supply 5V to a computer. 
 
 To monitor the Pi's PSU voltage, you will need to use a multimeter to measure between the TP1 and TP2 power supply test points. More information is available in [power](../../hardware/raspberrypi/power/README.md).
 
-If the voltage drops below 4.63v (+-5%), recent versions of firmware will display a yellow lightening bolt symbol on the display to indicate a lack of power.
+If the voltage drops below 4.63v (+-5%), recent versions of the firmware will show a yellow lightning bolt symbol on the display to indicate a lack of power.
 
 ### Overclocking problems
 
