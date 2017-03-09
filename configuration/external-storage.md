@@ -1,23 +1,23 @@
 # External Storage configuration
-You can connect your external hard disk drive (HDD) to any of the USB ports on the Raspberry Pi and mount the file system to access the data stored on your HDD. 
+You can connect your external hard disk drive (HDD) to any of the USB ports on the Raspberry Pi, and mount the file system to access the data stored on your HDD. 
 
 By default, Raspberry Pi automatically mounts some of the popular file systems such as FAT, NTFS, and HFS+ at `/media/pi/<HARD-DRIVE-LABEL>` location. 
 
-To setup your HDD such that it always mounts to a specific location of your choice, you must manually mount yout HDD.
+To set up your HDD so that it always mounts to a specific location of your choice, you must manually mount your HDD.
 
-If your HDD has an exFAT partition, first install the exFAT driver.
+If your HDD has an exFAT partition, install the exFAT driver.
 
 ## Installing the exFAT driver
-Run the following commands in the command line to update the Aptitude repository and then install the exFAT driver using the Aptitude Package Manager. 
+Run the following commands in the command line to update the Aptitude repository, then install the exFAT driver using the Aptitude Package Manager. 
 ```
 sudo apt-get update
 sudo apt-get install exfat-fuse
 ```
 
-## Mounting a HDD 
+## Mounting an HDD 
 You can mount your HDD at specific empty folder locations.
 
-1. Plug-in the external HDD to a USB port on the Raspberry Pi. 
+1. Plug in the external HDD to a USB port on the Raspberry Pi. 
 2. List the disk partitions on the device. Run the following command: 
 
     ```
@@ -32,7 +32,7 @@ You can mount your HDD at specific empty folder locations.
     ```
     For example, `/dev/sda1`.
 5. Create a target folder to be the mount point of the HDD. 
-   The mount point name used in this case is `PIHDD`. You can specify a different name of your choice. 
+   The mount point name used in this case is `PIHDD`. You can specify a name of your choice. 
    Run the following command: 
 
     ```
@@ -71,7 +71,7 @@ You can modify the `fstab` file to define the location where the HDD will be aut
 
 For more information on the Linux commands, refer to the specific manual pages using the `man` command. For example, `man fstab`.
 
-## Unmounting a HDD
+## Unmounting an HDD
 Before you unmount your HDD, ensure that there are no programs accessing the HDD. You can do this using the `lsof` command. 
 
 1. Run the following commands to install `lsof`.
@@ -85,7 +85,7 @@ Before you unmount your HDD, ensure that there are no programs accessing the HDD
     ```
     lsof /mnt/PIHDD
     ```
-   where, `PIHDD` is the mount point name.
+   where `PIHDD` is the mount point name.
 3. Manually close all the programs that are using the mount point.  
 4. Unmount the HDD. Run the following command:  
 
