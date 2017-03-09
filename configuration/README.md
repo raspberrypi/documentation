@@ -15,7 +15,7 @@ Some basic guides to configuring your Raspberry Pi.
 - [Camera Config](camera.md)
     - Installing and setting up the Raspberry Pi camera board.
 - [External Storage Config](external-storage.md)
-    - Mounting and setting up external storage on Raspberry Pi.
+    - Mounting and setting up external storage on a Raspberry Pi.
 - [Localisation](localisation.md)
     - Setting up your Pi to work in your local language/timezone.
 - [Default pin configuration](pin-configuration.md)
