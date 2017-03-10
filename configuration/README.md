@@ -24,3 +24,5 @@ Some basic guides to configuring your Raspberry Pi.
     - Device Trees, overlays and parameters.
 - [Kernel Command line](cmdline-txt.md)
     - How to set options in the kernel command line.
+- [Firmware Warning Icons](warning-icons.md)
+    - Description of warning icons displayed if the firmware detects issues.
