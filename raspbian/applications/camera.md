@@ -586,7 +586,7 @@ Sending a `USR1` signal to the `raspivid` process will toggle between recording 
 kill -USR1 <process id of raspivid>
 ```
 
-Note that the timeout value will be used to indicate the end of recording, but is only checked after each receipt of the `SIGUSR1` signal; so if the system is waiting for a signal, even if the timeout has expired, it will still wait for the signal before exiting.
+Note that the timeout value will be used to indicate the end of recording, but this is only checked after each receipt of the `SIGUSR1` signal. If the system is waiting for a signal, even if the timeout has expired, it will still wait for the signal before exiting.
 
 ```
 --initial,	-i		Define initial state on startup
