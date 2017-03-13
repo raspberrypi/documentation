@@ -24,13 +24,13 @@ As always, you can assemble this text with normal join, pick or list handling bl
 
 would broadcast `gpio17on` and thus set the GPIO pin number 17 (under the BCM numbering - not the physical or wiringPi numbers!) to `on`.
 
-The pins need configuring before you can use them to do anything. We can set the direction of the pin (in or out) and for input pins the pull-up mode (up, down, none).
+The pins need configuring before you can use them to do anything. We can set the direction of the pin (in or out) and, for input pins, the pull-up mode (up, down, none).
 
-- For input pins we can use 'in' or 'input'. Both of these are treated the same as 'inpullup' or 'inputpullup' and default to setting the pull up resistor to pull up the signal.
-    + To set the pull up resistor to pull the signal down, we use 'inpulldown' or 'inputpulldown'
-    + We can set the pullup resistor to float with 'inpullnone' or 'inputpullnone'
+- For input pins we can use 'in' or 'input'. Both of these are treated the same as 'inpullup' or 'inputpullup' and default to setting the pull-up resistor to pull up the signal.
+    + To set the pull-up resistor to pull the signal down, we use 'inpulldown' or 'inputpulldown'
+    + We can set the pull-up resistor to float with 'inpullnone' or 'inputpullnone'
 - Output pins are configured simply by 'out' or 'output'
-- Output with PWM - useful to make LEDs glow part-bright or to make motors run with variable speed etc -  is configured with 'outputpwm'
+- Output with PWM, which is useful to make LEDs glow part-bright or to make motors run with variable speed etc., is configured with 'outputpwm'
 
 For example:     
 ![broadcast config 11 inpulldown](images/broadcastconfig11inpulldown.png)  
@@ -42,16 +42,18 @@ Pins set to be inputs are connected to the Scratch sensor variable system, and s
 and can be used in the same manner:  
 
 ![if gpio11 sensor value](images/ifgpio11sensorvalue.png)  
-You won't find your input pin in the list until after running your config broadcast though - until then the GPIO server can't know that you want it to be an input. When you save your project the input will still be hooked up.
+You won't find your input pin in the list until after running your config broadcast. Until then, the GPIO server can't know that you want it to be an input. When you save your project, the input will still be hooked up.
 
-With these very simple commands, you can build fairly complex GPIO handling scripts to read buttons and operate LEDs and motors etc. We also have commands to return the time, return the machine IP address, read various temperatures, read an ultrasonic distance sensor, fetch a weather report and even take a photo with an attached Pi camera and set it as the current costume.
+With these very simple commands, you can build fairly complex GPIO handling scripts to read buttons and operate LEDs and motors etc. We also have commands to return the time, return the machine IP address, read various temperatures, read an ultrasonic distance sensor, fetch a weather report, and even take a photo with an attached Raspberry Pi Camera Module and set it as the current costume.
 
 This script (provided in the Sensors and Motors folder as 'Sensors and Motors/gpio-demo') illustrates most of the above :  
 
 ![gpio-demo script](images/gpio-demo.gif)  
 
-Along with a suitably configured breadboard, it provides the ability to turn LEDs on and off with a button, take a photo with a countdown provided by a progressively brightening LED, ways to check the time and so on. 
+Along with a suitably configured breadboard, it provides the ability to turn LEDs on and off with the press of a button, to take a photo with a countdown provided by a progressively brightening LED, ways to check the time, and so on. 
+
 ![gpio-demo-breadboard](images/gpio-demo-breadboard.png)
+
 Note that we can have a single broadcast that includes several messages, such as `gpio24on gpio18pwm400` in the script above.
 
 ### Basic GPIO commands
@@ -66,7 +68,7 @@ indicates a variable named `led5` may have a value from 0 to 100. Likewise,
 indicates the variable `foo` may be set to 1, 4 or 7.
 
 #### Simple GPIO control
-The basic GPIO command list of things you can do without any HATs plugged into your Pi is:
+The basic GPIO command list of things you can do without any HATs plugged into your Pi is as follows:
 
 - `config + pin number +`
     + `in`, `input`, `inpullup` or `inputpullup` to set as input with pull-up
@@ -75,14 +77,14 @@ The basic GPIO command list of things you can do without any HATs plugged into y
     + `out` or `output` to set as digital output
     + `outputpwm` to set as a PWM pin  
     
-  For example, `config12in` to set pin 12 as an input with the default pullup and add a sensor variable `gpio12`.  
+  For example, `config12in` to set pin 12 as an input with the default pull-up and add a sensor variable `gpio12`.  
 
 - `gpio + pin number + [ on | high | off | low ]` to turn an output on or off
 For example, `gpio17on` to turn on pin 17.
 
 - `gpio + pin number + pwm + [ 0..1024 ]` to use the PWM output
 
-  For example, `gpio22pwm522` to set the PWM duty cycle to 522 out of 1024 - or roughly half power. Note that many LEDs don't appear to change their brightness in a simple linear manner so 522 might be barely glowing or nearly full brightness.
+  For example, `gpio22pwm522` to set the PWM duty cycle to 522 out of 1024, or roughly half power. Note that many LEDs don't appear to change their brightness in a simple linear manner, so 522 might be barely glowing or nearly full brightness.
 
 #### Servo driving
 - `servo + pin number + [percent | %] + [-100...100]` to move a connected servo to position. 
@@ -90,15 +92,17 @@ For example, `gpio17on` to turn on pin 17.
   For example `servo15%0` to position a servo in the centre of its range.
 - `servo stop` to turn off the servo driver.
 
-In the 'Servos and Motors/gpio-servoDemo' script you can see how to move a servo or connect it to a variable like the position of a sprite. You will need to wire your servo like this ![gpio servo wiring layout](images/gpio-servoDemo.png)
+In the 'Servos and Motors/gpio-servoDemo' script, you can see how to move a servo or connect it to a variable like the position of a sprite. You will need to wire your servo like this 
 
-
+![gpio servo wiring layout](images/gpio-servoDemo.png)
 
 #### Ultrasonic sensor
 - `ultrasonic + trigger + trigger pin + echo  + echo pin` to connect a typical SR04 ultrasonic sensor
 - `ultrasonic stop` to turn off the sensor support at the end of your script
 
-Here is an example wiring layout using pin 16 as the trigger and 26 as the echo ![gpio ultrasonic wiring layout](images/gpio-ultrasonic.png)
+Here is an example wiring layout using pin 16 as the trigger and 26 as the echo: 
+
+![gpio ultrasonic wiring layout](images/gpio-ultrasonic.png)
 
 If you use this wiring setup with the script in 'Sensors and Motors/gpio-ultrasonicDemo you will see how to read the distance and move a sprite accordigly. The other ultrasonic demo in 'Sensor and Motors/gpio-ultrasonicIntruderAlarm' requires a camera as well, and will take a snapshot when anyone gets too close.
 
