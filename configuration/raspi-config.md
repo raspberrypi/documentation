@@ -39,14 +39,14 @@ Setup Options
 <a name="moving-around-the-menu"></a>
 ### Moving around the menu
 
-Use the `up` and `down` arrow keys to move the highlighted selection between the options available. Pressing the `right` arrow key will jump out of the options menu and take you to the `<Select>` and `<Finish>` buttons. Pressing `left` will take you back to the options. Alternatively, use the `Tab` key to switch between these.
+Use the **up** and **down** arrow keys to move the highlighted selection between the options available. Pressing the **right** arrow key will jump out of the Options menu and take you to the **<Select>** and **<Finish>** buttons. Pressing **left** will take you back to the options. Alternatively, you can use the **tab** key to switch between these.
 
 Note that in long lists of option values (like the list of timezone cities), you can also type a letter to skip to that section of the list. For example, entering `L` will skip you to Lisbon, just two options away from London, to save you scrolling all the way through the alphabet.
 
 <a name="what-raspi-config-does"></a>
 ### What raspi-config does
 
-Generally speaking, `raspi-config` aims to provide the functionality to make the most common configuration changes. This may result in automated edits to `/boot/config.txt` and various standard Linux configuration files. Some options require a reboot to take effect. If you changed any of those, `raspi-config` will ask if you wish to reboot now when you select the `<Finish>` button.
+Generally speaking, `raspi-config` aims to provide the functionality to make the most common configuration changes. This may result in automated edits to `/boot/config.txt` and various standard Linux configuration files. Some options require a reboot to take effect. If you changed any of those, `raspi-config` will ask if you wish to reboot now when you select the **<Finish>** button.
 
 <a name="menu-options"></a>
 ## Menu options
