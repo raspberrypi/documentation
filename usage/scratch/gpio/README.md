@@ -1,15 +1,15 @@
 # Scratch GPIO
 
-With the September 2015 release of Scratch for the Pi, included in the Raspbian Jessie release, we introduced a new GPIO server to make driving LEDs, buzzers, HATS and other devices and components easier.
+With the September 2015 release of Scratch for the Pi, included in the Raspbian Jessie release, we introduced a new GPIO server to make driving LEDs, buzzers, HATS, and other devices and components easier.
 
 ### Usage and basic capabilities
 ##### Starting the server
-Before you can use the GPIO pins you must start the GPIO server. There are several ways to do this:
+Before you can use the GPIO pins, you must start the GPIO server. There are several ways to do this:
 
-- Choose *Start GPIO server* from the *Edit* menu to turn it on. If the server is already running then *Stop GPIO server* will turn it off.
+- Choose **Start GPIO server** from the **Edit** menu to turn it on. If the server is already running, then **Stop GPIO server** will turn it off.
 - A Scratch broadcast of `gpioserveron` or `gpioserveroff` will have the same effects.
 - Projects saved when the GPIO server is running will have that status recorded and, on loading, will try to start the server if it is enabled.
-- You can also set an option in the scratch ini file. See the Appendix below
+- You can also set an option in the scratch INI file. See the Appendix below.
 
 ##### Basic GPIO usage
 Without any further setup, you now have access to the basics of the GPIO system. This currently uses the broadcast blocks to send commands to the GPIO server just like the original Mesh Network based broadcast messages.
