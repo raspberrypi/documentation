@@ -16,13 +16,13 @@ Note that using Device Tree is the officially supported method of doing things, 
 
 ##BCM283x GPIOs
 
-BCM283x has three banks of General-Purpose Input/Output (GPIO) pins: 28 pins on Bank 0, 18 pins on Bank 1, and 8 pins on Bank 2, making 54 pins in total. These pins can be used as true GPIO  pins, i.e. software can set them as inputs or outputs, read and/or set state, and use them as interrupts. They also can be set to 'alternate functions' such as I2C, SPI, I2S, UART, SD card, and others.
+BCM283x has three banks of General-Purpose Input/Output (GPIO) pins: 28 pins on Bank 0, 18 pins on Bank 1, and eight pins on Bank 2, making 54 pins in total. These pins can be used as true GPIO  pins, i.e. software can set them as inputs or outputs, read and/or set state, and use them as interrupts. They also can be set to 'alternate functions' such as I2C, SPI, I2S, UART, SD card, and others.
 
 On a Compute Module, both Bank 0 and Bank 1 are free to use. Bank 2 is used for eMMC and HDMI hot plug detect and ACT LED / USB boot control.
 
 It is useful to look at the state of each of the GPIO pins on a running system (what function they are set to, and the voltage level at the pin) so that you can see if the system is set up as expected. This is particularly helpful if you want to see if a Device Tree is working as expected or to get a look at the pin states during hardware debug.
 
-Raspberry Pi provides the `raspi-gpio` package which is a tool for hacking and debugging GPIO (NOTE you need to run it as root).
+Raspberry Pi provides the `raspi-gpio` package which is a tool for hacking and debugging GPIO (please note you need to run it as root).
 To install `raspi-gpio`:
 ```
 sudo apt-get install raspi-gpio
@@ -43,7 +43,7 @@ For example, to see the current function and level of all GPIO pins, use:
 sudo raspi-gpio get
 ```
 
-Note that `raspi-gpio` can be used with the `funcs` argument to get a list of all supported GPIO functions per pin. It will print out a table in CSV format. The idea is to pipe the table to a `.csv` file and then load this file using e.g. Excel:
+Note that `raspi-gpio` can be used with the `funcs` argument to get a list of all supported GPIO functions per pin. It will print out a table in CSV format. The idea is to pipe the table to a `.csv` file and then load this file using a program such as Excel:
 ```
 sudo raspi-gpio funcs > gpio-funcs.csv
 ```
@@ -54,13 +54,13 @@ BCM283x devices consist of a VideoCore GPU and ARM CPU cores. The GPU is in fact
 
 In BCM283x devices, it is the DSP core in the GPU that boots first. It is responsible for general setup and housekeeping before booting up the main ARM processor(s).
 
-The BCM283x devices as used on Raspberry Pi and Compute Module boards have a 3 stage boot process:
+The BCM283x devices as used on Raspberry Pi and Compute Module boards have a three-stage boot process:
 
-1. The GPU DSP comes out of reset and executes code from a small internal ROM (the boot ROM). The sole purpose of this code is to load a second stage boot loader via one of the external interfaces. On a Raspberry Pi or Compute Module, this code first looks for a second stage boot loader on the SD card (eMMC); it expects this to be called `bootcode.bin` and to be on the first partition (which must be FAT32). If no SD card is found or `bootcode.bin` is found, the Boot ROM sits and waits in 'USB boot' mode, waiting for a host to give it a second stage boot loader via the USB interface.
+1. The GPU DSP comes out of reset and executes code from a small internal ROM (the boot ROM). The sole purpose of this code is to load a second stage boot loader via one of the external interfaces. On a Raspberry Pi or Compute Module, this code first looks for a second stage boot loader on the SD card (eMMC); it expects that this will be called `bootcode.bin` and that it will be on the first partition (which must be FAT32). If no SD card is found or `bootcode.bin` is found, the Boot ROM sits and waits in 'USB boot' mode, waiting for a host to give it a second stage boot loader via the USB interface.
 
-2. The second stage boot loader (`bootcode.bin` on the sdcard or `usbbootcode.bin` for usb boot) is responsible for setting up the LPDDR2 SDRAM interface and various other critical system funcions and then loading and executing the main GPU firmware (called `start.elf`, again on the primary SD card partition). 
+1. The second stage boot loader (`bootcode.bin` on the sdcard or `usbbootcode.bin` for usb boot) is responsible for setting up the LPDDR2 SDRAM interface and various other critical system funcions and then loading and executing the main GPU firmware (called `start.elf`, again on the primary SD card partition). 
 
-3. `start.elf` takes over and is responsible for further system setup and booting up the ARM processor subsystem, and contains the firmware that runs on the various parts of the GPU. It first reads `dt-blob.bin` to determine initial GPIO pin states and GPU-specific interfaces and clocks, then parses `config.txt`. It then loads an ARM device tree file (e.g. `bcm2708-rpi-cm.dtb` for a Compute Module) and any device tree overlays specified in `config.txt` before starting the ARM subsystem and passing the device tree data to the booting Linux kernel.
+1. `start.elf` takes over and is responsible for further system setup and for booting up the ARM processor subsystem. It contains the firmware that runs on the various parts of the GPU. It first reads `dt-blob.bin` to determine initial GPIO pin states and GPU-specific interfaces and clocks, then parses `config.txt`. It then loads an ARM device tree file (e.g. `bcm2708-rpi-cm.dtb` for a Compute Module) and any device tree overlays specified in `config.txt` before starting the ARM subsystem and passing the device tree data to the booting Linux kernel.
 
 ##Device Tree
 
