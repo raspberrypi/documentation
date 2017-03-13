@@ -63,7 +63,7 @@ Now to can use the tools to convert your JPEG files in to an H264 video file.
 ```
 avconv -r 10 -i image%04d.jpg -r 10 -vcodec libx264 -vf scale=1280:720 timelapse.mp4
 ```
-On a Raspberry Pi 3 this can encode a little more than one frame per second, while other Pi models will vary. The parameters used are:
+On a Raspberry Pi 3, this can encode a little more than one frame per second. The performance of other Pi models will vary. The parameters used are:
 
  - -r 10 Assume ten frames per second in input and output files.
  - -i image%04.jpg The input file specification (to match the files produced during the capture).
