@@ -75,9 +75,9 @@ All GPIOs except GPIO28, 29, 44 and 45 have weak in-pad pull-ups or pull-downs e
 
 The Compute Module has two MIPI serial camera interfaces (CSI); Interface 0 and Interface 1.
 
-Interface 0 is a 2-lane interface: one clock lane and two data lanes.
+Interface 0 is a two-lane interface: one clock lane and two data lanes.
 
-Interface 1 is a 4-lane interface: one clock lane and four data lanes.
+Interface 1 is a four-lane interface: one clock lane and four data lanes.
 
 Note that the Raspberry Pi Model A/B camera connector uses Interface 1, but only in a 2-lane configuration.
 
@@ -87,11 +87,11 @@ The camera interface(s) clock and data pins must be routed as matched length, ma
 
 The Compute Module has 2 MIPI serial display interfaces (DSI); Interface 0 and Interface 1.
 
-Interface 0 is a 2-lane interface: one clock lane and two data lanes.
+Interface 0 is a two-lane interface: one clock lane and two data lanes.
 
-Interface 1 is a 4-lane interface: one clock lane and four data lanes.
+Interface 1 is a four-lane interface: one clock lane and four data lanes.
 
-Note that the Raspberry Pi Model A/B  display connector uses Interface 1, but only in a 2-lane configuration.
+Note that the Raspberry Pi Model A/B  display connector uses Interface 1, but only in a two-lane configuration.
 
 The display interface(s) clock and data pins must be routed as matched length, matched phase 100 ohm differential PCB traces.
 
@@ -115,7 +115,7 @@ The HDMI CK_P/N (clock) and D0-D2_P/N (data) pins must each be routed as matched
 
 The TVDAC pin can be used to output composite video. Please route this signal away from noise sources and use a 75 ohm PCB trace.
 
-Note that the TV DAC is powered from the VDAC supply which must be a clean supply of 2.5-2.8V. It is recommended users generate this supply from 3V3 using a low noise LDO.
+Note that the TVDAC is powered from the VDAC supply which must be a clean supply of 2.5-2.8V. It is recommended users generate this supply from 3V3 using a low noise LDO.
 
 If the TVDAC output is not used, VDAC can be connected to 3V3 but it must be powered even if the TV-out functionality is unused.
 
