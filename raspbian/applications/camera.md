@@ -371,27 +371,27 @@ Outputs debugging/information messages during the program run.
 --timeout,	-t		Time before the camera takes picture and shuts down
 ```
 
-The program will run for this length of time, then take the capture (if output is specified). If not specified, this is set to 5 seconds.
+The program will run for this length of time, then take the capture (if output is specified). If not specified, this is set to five seconds.
 
 ```
 --timelapse,	-tl		time-lapse mode
 ```
 
-The specific value is the time between shots in milliseconds. Note that you should specify `%04d` at the point in the filename where you want a frame count number to appear. So, for example, the code below will produce a capture every 2 seconds, over a total period of 30s, named `image0001.jpg`, `image0002.jpg` and so on, through to `image0015.jpg`. 
+The specific value is the time between shots in milliseconds. Note that you should specify `%04d` at the point in the filename where you want a frame count number to appear. So, for example, the code below will produce a capture every two seconds, over a total period of 30 seconds, named `image0001.jpg`, `image0002.jpg` and so on, through to `image0015.jpg`. 
 
 ```
 -t 30000 -tl 2000 -o image%04d.jpg
 ```
 
-Note that the `%04d` indicates a 4-digit number, with leading zeroes added to make the required number of digits. So, for example,  `%08d` would result in an 8-digit number.
+Note that the `%04d` indicates a four-digit number, with leading zeroes added to make the required number of digits. So, for example,  `%08d` would result in an eight-digit number.
 
-If a time-lapse value of 0 is entered, the application will take pictures as fast as possible. Note that there's an minimum enforced pause of 30ms between captures to ensure that exposure calculations can be made.
+If a time-lapse value of 0 is entered, the application will take pictures as fast as possible. Note that there's an minimum enforced pause of 30 ms between captures to ensure that exposure calculations can be made.
 
 ```
 --thumb,	-th		Set thumbnail parameters (x:y:quality)
 ```
 
-Allows specification of the thumbnail image inserted into the JPEG file. If not specified, defaults are a size of 64x48 at quality 35.
+Allows specification of the thumbnail image inserted into the JPEG file. If not specified, defaults are a size of 64 × 48 at quality 35.
 
 if `--thumb none` is specified, no thumbnail information will be placed in the file. This reduces the file size slightly.
 
@@ -447,7 +447,7 @@ This runs the preview window using the full resolution capture mode. Maximum fra
 --keypress,	-k		Keypress mode
 ```
 
-The camera is run for the requested time (`-t`), and a capture can be initiated throughout that time by pressing the Enter key. Pressing X then Enter will exit the application before the timeout is reached. If the timeout is set to 0, the camera will run indefinitely until the user presses X then Enter. Using the verbose option (`-v`) will display a prompt asking for user input, otherwise no prompt is displayed.
+The camera is run for the requested time (`-t`), and a capture can be initiated throughout that time by pressing the **Enter** key. Pressing **X** then **Enter** will exit the application before the timeout is reached. If the timeout is set to 0, the camera will run indefinitely until the user presses **X** then **Enter**. Using the verbose option (`-v`) will display a prompt asking for user input, otherwise no prompt is displayed.
 
 ```
 --signal,	-s		Signal mode
