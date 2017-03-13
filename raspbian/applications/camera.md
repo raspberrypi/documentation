@@ -474,9 +474,9 @@ Extra options :
 ```
 --rgb,	-rgb		Save uncompressed data as RGB888
 ```
-This option forces the image to be saved as RGB data with 8 bits per channel, rather than YUV420.
+This option forces the image to be saved as RGB data with eight bits per channel, rather than YUV420.
 
-Note that the image buffers saved in `raspistillyuv` are padded to a horizontal size divisible by 32, so there may be unused bytes at the end of each line. Buffers are also padded vertically to be divisible by 16, and in the YUV mode, each plane of Y,U,V is padded in this way.
+Note that the image buffers saved in `raspistillyuv` are padded to a horizontal size divisible by 32, so there may be unused bytes at the end of each line. Buffers are also padded vertically to be divisible by 16, and in the YUV mode, each plane of Y, U, V is padded in this way.
 
 
 ### raspivid
@@ -510,7 +510,7 @@ Outputs debugging/information messages during the program run.
 --timeout,	-t		Time before the camera takes picture and shuts down
 ```
 
-The program will run for this length of time, then take the capture (if output is specified). If not specified, this is set to 5 seconds. Setting 0 will mean the application will run continuously until stopped with Ctrl-C.
+The program will run for this length of time, then take the capture (if output is specified). If not specified, this is set to five seconds. Setting 0 will mean the application will run continuously until stopped with Ctrl-C.
 
 ```
 --demo,	-d		Run a demo mode <milliseconds>
@@ -531,7 +531,7 @@ Switch on an option to display the preview after compression. This will show any
 ```
 --intra,	-g		Specify the intra refresh period (key frame rate/GoP)
 ```
-Sets the intra refresh period (GoP) rate for the recorded video. H264 video uses a complete frame (I-frame) every intra refresh period, from which subsequent frames are based. This option specifies the number of frames between each I-frame. Larger numbers here will reduce the size of the resulting video, and smaller numbers make the stream less error-prone.
+Sets the intra refresh period (GoP) rate for the recorded video. H264 video uses a complete frame (I-frame) every intra refresh period, from which subsequent frames are based. This option specifies the number of frames between each I-frame. Larger numbers here will reduce the size of the resulting video, and smaller numbers make the stream less prone to error.
 
 ```
 --qp,	-qp		Set quantisation parameter
