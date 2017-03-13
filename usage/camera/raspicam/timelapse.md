@@ -68,14 +68,14 @@ On a Raspberry Pi 3, this can encode a little more than one frame per second. Th
  - -r 10 Assume ten frames per second in input and output files.
  - -i image%04.jpg The input file specification (to match the files produced during the capture).
  - -vcodec libx264 Use the software x264 encoder.
- - -vf scale=1280:720 Scale to 720p. You can also use 1920:1080, or lower resolutions, depending on your requirements. Note the Pi can only play back up tp 1080p video, but if you are intending to play back at, for example, 4K, you coudl set that here.
+ - -vf scale=1280:720 Scale to 720p. You can also use 1920:1080, or lower resolutions, depending on your requirements. Note the Pi can only play back up to 1080p video, but if you are intending to play back at, for example, 4K, you could set that here.
  - timelapse.mp4 The name of the output file.
 
-`avconv` has a comprehensive parameter set for varying encoding options and other settings, these can be listed using `avconv --help`.
+`avconv` has a comprehensive parameter set for varying encoding options and other settings. These can be listed using `avconv --help`.
 
 ### On another Linux computer
 
-You can use the same instructions as for the Raspberry Pi, or an alternative package such as  `mencoder`:
+You can use the same instructions as for the Raspberry Pi, or an alternative package such as `mencoder`:
 
 ```
 sudo apt-get install mencoder
