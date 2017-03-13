@@ -18,7 +18,7 @@ For instance, to configure GPIO pin 4 as an output and turn it on, you create th
 
 ![broadcast config4 out gpio4on](images/config-on.png)
 
-As always, you can assemble this text with normal join, pick or list handling blocks. For example, if `foo` = 17, then
+As always, you can assemble this text with normal join, pick, or list-handling blocks. For example, if `foo` = 17, then
 
 ![broadcast join gpio join foo 17](images/broadcastgpio17on.png)   
 
@@ -44,7 +44,7 @@ and can be used in the same manner:
 ![if gpio11 sensor value](images/ifgpio11sensorvalue.png)  
 You won't find your input pin in the list until after running your config broadcast. Until then, the GPIO server can't know that you want it to be an input. When you save your project, the input will still be hooked up.
 
-With these very simple commands, you can build fairly complex GPIO handling scripts to read buttons and operate LEDs and motors etc. We also have commands to return the time, return the machine IP address, read various temperatures, read an ultrasonic distance sensor, fetch a weather report, and even take a photo with an attached Raspberry Pi Camera Module and set it as the current costume.
+With these very simple commands, you can build fairly complex GPIO-handling scripts to read buttons and operate LEDs and motors etc. We also have commands to return the time, return the machine IP address, read various temperatures, read an ultrasonic distance sensor, fetch a weather report, and even take a photo with an attached Raspberry Pi Camera Module and set it as the current costume.
 
 This script (provided in the Sensors and Motors folder as 'Sensors and Motors/gpio-demo') illustrates most of the above :  
 
@@ -104,7 +104,7 @@ Here is an example wiring layout using pin 16 as the trigger and 26 as the echo:
 
 ![gpio ultrasonic wiring layout](images/gpio-ultrasonic.png)
 
-If you use this wiring setup with the script in 'Sensors and Motors/gpio-ultrasonicDemo you will see how to read the distance and move a sprite accordigly. The other ultrasonic demo in 'Sensor and Motors/gpio-ultrasonicIntruderAlarm' requires a camera as well, and will take a snapshot when anyone gets too close.
+If you use this wiring setup with the script in 'Sensors and Motors/gpio-ultrasonicDemo', you will see how to read the distance and move a sprite accordigly. The other ultrasonic demo in 'Sensor and Motors/gpio-ultrasonicIntruderAlarm' requires a camera as well, and will take a snapshot when anyone gets too close.
 
 #### Weather reports
 - `getweather + city name + , + country two-letter code + , + your user key from [OpenWeatherMaps](http://www.openweathermaps.org)` will create sensor variables for the named city's temperature, wind speed and direction, rainfall and cloud cover. You must sign up (free accounts are available) to get a key from them. See [OpenWeatherMaps](http://www.openweathermaps.org) for details.
