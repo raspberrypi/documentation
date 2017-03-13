@@ -12,7 +12,7 @@ Before you can use the GPIO pins, you must start the GPIO server. There are seve
 - You can also set an option in the scratch INI file. See the Appendix below.
 
 ##### Basic GPIO usage
-Without any further setup, you now have access to the basics of the GPIO system. This currently uses the broadcast blocks to send commands to the GPIO server just like the original Mesh Network based broadcast messages.
+Without any further setup, you now have access to the basics of the GPIO system. This currently uses the broadcast blocks to send commands to the GPIO server just like the original mesh network-based broadcast messages.
 
 For instance, to configure GPIO pin 4 as an output and turn it on, you create the two following broadcasts:
 
