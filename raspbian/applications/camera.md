@@ -598,18 +598,17 @@ Define whether the camera will start paused or will immediately start recording.
 --segment,	-sg		Segment the stream into multiple files
 ```
 
-Rather than creating a single file, the file is split into segments of approximately the numer of milliseconds specified. In order to provide different filenames, you should add  `%04d` or similar at the point in the filename where you want a segment count number to appear e.g:
-
+Rather than creating a single file, the file is split into segments of approximately the numer of milliseconds specified. In order to provide different filenames, you should add  `%04d` or similar at the point in the filename where you want a segment count number to appear. So, for example: 
 ```
 --segment 3000 -o video%04d.h264
 ```
 
-will produce video clips of approximately 3000ms (3s) long, named `video0001.h264`, `video0002.h264` etc. The clips should be seamless (no frame drops between clips), but the accuracy of each clip length will depend on the intraframe period, as the segments will always start on an I-frame. They will therefore always be equal or longer to the specified period.
+will produce video clips of approximately 3000ms (3s) long, named `video0001.h264`, `video0002.h264` etc. The clips should be seamless (no frame drops between clips), but the accuracy of each clip length will depend on the intraframe period, as the segments will always start on an I-frame. They will therefore always be equal to or longer than the specified period.
 
 ```
 --wrap,	-wr		Set the maximum value for segment number
 ```
-When outputting segments, this is the maximum the segment number can reach before it's reset to 1,  giving the ability to keep recording segments, but overwriting the oldest one. So if set to 4, in the segment example above, the files produced will be `video0001.h264`, `video0002.h264`, `video0003.h264`, and `video0004.h264`. Once `video0004.h264` is recorded, the count will reset to 1, and `video0001.h264` will be overwritten.
+When outputting segments, this is the maximum the segment number can reach before it is reset to 1, giving the ability to keep recording segments, but overwriting the oldest one. If this is set to 4, as in the segment example above, the files produced will be `video0001.h264`, `video0002.h264`, `video0003.h264`, and `video0004.h264`. Once `video0004.h264` is recorded, the count will reset to 1, and `video0001.h264` will be overwritten.
 
 ```
 --start,	-sn		Set the initial segment number
@@ -640,7 +639,7 @@ Reduce the quality considerably to reduce file size:
 raspistill -t 2000 -o image.jpg -q 5
 ```
 
-Force the preview to appear at coordinate 100,100, with width 300 pixels and height 200 pixels:
+Force the preview to appear at the coordinates 100,100 with width 300 pixels and height 200 pixels:
 
 ```bash
 raspistill -t 2000 -o image.jpg -p 100,100,300,200
@@ -682,7 +681,7 @@ Run preview for 2s, with no saved image:
 raspistill -t 2000
 ```
 
-Take a time-lapse picture, every 10 seconds for 10 minutes (10 minutes = 600000ms), naming the files `image_num_001_today.jpg`, `image_num_002_today.jpg` and so on, with the latest picture also available under the name `latest.jpg`:
+Take a time-lapse picture, every ten seconds for ten minutes (ten minutes = 600000ms), naming the files `image_num_001_today.jpg`, `image_num_002_today.jpg` and so on, with the latest picture also available under the name `latest.jpg`:
 
 ```bash
 raspistill -t 600000 -tl 10000 -o image_num_%03d_today.jpg -l latest.jpg
