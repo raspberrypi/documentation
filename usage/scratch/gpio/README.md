@@ -1,6 +1,6 @@
 # Scratch GPIO
 
-With the September 2015 release of Scratch for the Pi, included in the Raspbian Jessie release, we introduced a new GPIO server to make driving LEDs, buzzers, HATS, and other devices and components easier.
+With the September 2015 release of Scratch for the Raspberry Pi, included in the Raspbian Jessie release, we introduced a new GPIO server to make driving LEDs, buzzers, HATS, and other devices and components easier.
 
 ### Usage and basic capabilities
 ##### Starting the server
