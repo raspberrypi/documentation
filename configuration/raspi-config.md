@@ -40,7 +40,7 @@ Setup Options
 <a name="moving-around-the-menu"></a>
 ### Moving around the menu
 
-Use the `up` and `down` arrow keys to move the highlighted selection between the options available. Pressing the `right` arrow key will jump out of the options menu and take you to the `<Select>` and `<Finish>` buttons. Pressing `left` will take you back to the options. Alternatively, use the `Tab` key to switch between these.
+Use the **up** and **down** arrow keys to move the highlighted selection between the options available. Pressing the **right** arrow key will jump out of the Options menu and take you to the **<Select>** and **<Finish>** buttons. Pressing **left** will take you back to the options. Alternatively, you can use the **Tab** key to switch between these.
 
 Note that in long lists of option values (like the list of timezone cities), you can also type a letter to skip to that section of the list. For example, entering `L` will skip you to Lisbon, just two options away from London, to save you scrolling all the way through the alphabet.
 
