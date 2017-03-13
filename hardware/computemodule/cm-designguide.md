@@ -59,7 +59,7 @@ The Compute Module has a pin called EMMC_DISABLE_N which when shorted to GND wil
 
 **Note that once booted over USB, BCM2835 needs to re-enable the eMMC device (by releasing EMMC_DISABLE_N) to allow access to it as mass storage. It expects to be able to do this by driving the GPIO47_1V8 pin LOW, which at boot is initially an input with a pull up to 1V8. If an end user wishes to add the ability to access the eMMC over USB in their product, similar circuitry to that used on the Compute Module IO Board to enable/disable the USB boot and eMMC must be used; that is, EMMC_DISABLE_N pulled low via MOSFET(s) and released again by MOSFET, with the gate controlled by GPIO47_1V8. Ensure you use MOSFETs suitable for switching at 1.8V (i.e. use a device with Vt << 1.8V).**
 
-For a step by step guide to flashing the eMMC, please see [here](cm-emmc-flashing.md).
+For a step-by-step guide to flashing the eMMC, please see [here](cm-emmc-flashing.md).
 
 ## Compute Module interfaces
 
