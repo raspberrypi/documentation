@@ -55,7 +55,7 @@ ls *.jpg > stills.txt
 ```
 ### On the Raspberry Pi
 
-Although it wil be slow (due to encoding in software rather than using the Raspberry Pi hardware acceleration) you can stitch your JPEG images together using various available tools. This documentation will use avconv, which needs to be installed.
+Although it wil be slow (due to encoding in software rather than using the Raspberry Pi hardware acceleration), you can stitch your JPEG images together using various available tools. This documentation will use `avconv`, which needs to be installed.
 ```
 sudo apt-get install libav-tools
 ```
@@ -63,9 +63,9 @@ Now to can use the tools to convert your JPEG files in to an H264 video file.
 ```
 avconv -r 10 -i image%04d.jpg -r 10 -vcodec libx264 -vf scale=1280:720 timelapse.mp4
 ```
-On a Pi3 this can encode a little more than one frame per second, other Pi models will vary. The parameters used are:
+On a Raspberry Pi 3 this can encode a little more than one frame per second, while other Pi models will vary. The parameters used are:
 
- - -r 10 Assume 10 frames per second in input and output files.
+ - -r 10 Assume ten frames per second in input and output files.
  - -i image%04.jpg The input file specification (to match the files produced during the capture).
  - -vcodec libx264 Use the software x264 encoder.
  - -vf scale=1280:720 Scale to 720p. You can also use 1920:1080, or lower resolutions, depending on your requirements. Note the Pi can only play back up tp 1080p video, but if you are intending to play back at, for example, 4K, you coudl set that here.
