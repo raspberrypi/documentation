@@ -8,7 +8,7 @@ Please also read the section on [Module booting and flashing the eMMC](cm-design
 
 To flash the Compute Module eMMC, you either need a Linux system (a Raspberry Pi is recommended, or Ubuntu on a PC) or a Windows system (Windows 7 is recommended). For BCM2837 (CM3), a bug which affected the Mac has been fixed, so this will also work.
 
-**Note** There is a bug in the BCM2835 bootloader which returns a slightly incorrect USB packet to the host. Most USB hosts seem to ignore this benign bug and work fine; we do however see some USB ports that don't work due to this bug. We don't quite understand why some ports fail, as it doesn't seem to be correlated with whether they are USB2 or USB3 (we have seen both types working), but it's likely to be specific to the host controller and driver. This bug has been fixed in BCM2837
+**Note**: there is a bug in the BCM2835 bootloader which returns a slightly incorrect USB packet to the host. Most USB hosts seem to ignore this benign bug and work fine; we do however see some USB ports that don't work due to this bug. We don't quite understand why some ports fail, as it doesn't seem to be correlated with whether they are USB2 or USB3 (we have seen both types working), but it's likely to be specific to the host controller and driver. This bug has been fixed in BCM2837
 
 **For Windows users**
 
@@ -56,7 +56,7 @@ Make sure that J4 (USB SLAVE BOOT ENABLE) is set to the 'EN' position.
 
 **On your host system:**
 
-Git may produce an error if the date is not set correctly, so on a Raspberry Pi enter the following:
+Git may produce an error if the date is not set correctly. On a Raspberry Pi, you should enter the following:
 
 ```bash
 sudo date MMDDhhmm
