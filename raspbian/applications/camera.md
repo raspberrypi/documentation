@@ -4,7 +4,7 @@ This document describes the use of the three Raspberry Pi camera applications, a
 
 There are three applications provided: `raspistill`, `raspivid`, and `raspistillyuv`. `raspistill` and `raspistillyuv` are very similar and are intended for capturing images; `raspivid` is for capturing video.
 
-All the applications are driven from the command line, and written to take advantage of the MMAL API which runs over OpenMAX. The MMAL API provides an easier to use system than that presented by OpenMAX. Note that MMAL is a Broadcom-specific API used only on Videocore 4 systems.
+All the applications are driven from the command line, and written to take advantage of the MMAL API which runs over OpenMAX. The MMAL API provides an easier-to-use system than that presented by OpenMAX. Note that MMAL is a Broadcom-specific API used only on VideoCore-IV systems.
 
 The applications use up to four OpenMAX (MMAL) components: camera, preview, encoder, and null_sink. All applications use the camera component; `raspistill` uses the Image Encode component; `raspivid` uses the Video Encode component; and `raspistillyuv` doesn't use an encoder, and sends its YUV or RGB output directly from the camera component to file.
 
@@ -22,11 +22,11 @@ See [Camera Setup](../../configuration/camera.md).
 
 If the Camera Module isn't working correctly, there are number of things to try:
 
-- Is the ribbon cable attached to the Camera Serial Interface (CSI), not the Display Serial Interface (DSI)? The ribbon connector will fit into either port. The Camera port is located near the HDMI connector.
+- Is the ribbon cable attached to the Camera Serial Interface (CSI), and not the Display Serial Interface (DSI)? The ribbon connector will fit into either port. The CSI port is located near the HDMI connector.
 
 - Are the ribbon connectors all firmly seated, and are they the right way round? They must be straight in their sockets.
 
-- Is the Camera Module connector, between the smaller black Camera Module itself and the PCB, firmly attached? Sometimes this connection can come loose during transit or when putting the Camera Module in a case. Using a fingernail, flip up the connector on the PCB, then reconnect it with gentle pressure. It engages with a very slight click. Don't force it; if it doesn't engage, it's probably slightly misaligned.
+- Is the Camera Module connector, between the smaller black Camera Module itself and the PCB, firmly attached? Sometimes this connection can come loose during transit or when putting the Camera Module into a case. Using a fingernail, flip up the connector on the PCB, then reconnect it with gentle pressure. It engages with a very slight click. Don't force it; if it doesn't engage, it's probably slightly misaligned.
 
 - Have `sudo apt-get update` and `sudo apt-get upgrade` been run?
 
@@ -34,9 +34,9 @@ If the Camera Module isn't working correctly, there are number of things to try:
 
 - Is your power supply sufficient? The Camera Module adds about 200-250mA to the power requirements of your Raspberry Pi.
 
-If things are still not working, try the following:
+If things are still not working, adn you are receiving one of the following error messages, try the suggested fixes:
 
-- `Error : raspistill/raspivid command not found`. This probably means your update/upgrade failed in some way. Try it again.
+- `Error : raspistill/raspivid command not found`. This probably means your update/upgrade failed in some way. Try updating/upgrading again.
 
 - `Error : ENOMEM`. The Camera Module is not starting up. Check all connections again.
 
@@ -173,7 +173,7 @@ Set an effect to be applied to the image:
 - whiteboard	Whiteboard effect
 - blackboard	Blackboard effect
 - sketch	Sketch effect
-- denoise	Denoise the image
+- denoise	Remove noise from the image
 - emboss	Emboss the image
 - oilpaint	Oil paint effect
 - hatch		Hatch sketch effect
