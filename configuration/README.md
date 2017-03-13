@@ -9,7 +9,7 @@ Some basic guides to configuring your Raspberry Pi.
 - [config.txt](config-txt/README.md)
     - The Raspberry Pi configuration file.
 - [Wireless](wireless/README.md)
-    - Configuring your Pi to connect to a wireless network using a wireless dongle.
+    - Configuring your Pi to connect to a wireless network using the inbuilt Raspberry Pi 3 wireless features, or a USB wireless dongle.
 - [Audio Config](audio-config.md)
     - Switch your audio output between HDMI and the 3.5mm jack.
 - [Camera Config](camera.md)
