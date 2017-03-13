@@ -44,7 +44,7 @@ and can be used in the same manner:
 ![if gpio11 sensor value](images/ifgpio11sensorvalue.png)  
 You won't find your input pin in the list until after running your config broadcast. Until then, the GPIO server can't know that you want it to be an input. When you save your project, the input will still be hooked up.
 
-With these very simple commands, you can build fairly complex GPIO-handling scripts to read buttons and operate LEDs and motors etc. We also have commands to return the time, return the machine IP address, read various temperatures, read an ultrasonic distance sensor, fetch a weather report, and even take a photo with an attached Raspberry Pi Camera Module and set it as the current costume.
+With these very simple commands, you can build fairly complex GPIO-handling scripts to read buttons and operate LEDs, motors, and so on. We also have commands to return the time, return the machine IP address, read various temperatures, read an ultrasonic distance sensor, fetch a weather report, and even take a photo with an attached Raspberry Pi Camera Module and set it as the current costume.
 
 This script (provided in the Sensors and Motors folder as **Sensors and Motors/gpio-demo**) illustrates most of the above :  
 
@@ -155,9 +155,10 @@ Some boards provide inputs that can be accessed via the sensor variables, as sho
 
 #### PiGlow
 
-The PiGlow board has several rings of brightly coloured LEDs that can be controlled as rings, legs, individually or all together. Beware - it can be a bit bright to look at so a diffuser - some tracing paper or tinted perspex -  is a good idea. To use the board, set `AddOn` to `PiGlow`.
+The PiGlow board has several rings of brightly coloured LEDs that can be controlled as rings, legs, individually or all together. Be careful: it can be a bit bright to look at so a diffuser made from some tracing paper or tinted perspex is a good idea. To use the board, set `AddOn` to `PiGlow`.
 
-PiGlow has quite a few commands and many of them are demonstrated in the 'Sensors and Motors/gpio-PiGlow' project.
+PiGlow has quite a few commands, and many of these are demonstrated in the **Sensors and Motors/gpio-PiGlow** project.
+
 #####Commands supported
 
 - `leg + leg number [ 1 | 2 | 3 ] + [ on | high | off | low ]` e.g. `leg2off`
@@ -177,7 +178,7 @@ PiGlow has quite a few commands and many of them are demonstrated in the 'Sensor
 
 #### PiFace
 
-The Piface Digital board provides 8 digital inputs and 8 digital outputs, with the first 4 inputs having parallel switches and the first 2 outputs having 20V/5A relays. Set `AddOn` to `PiFace` to activate this board.
+The PiFace Digital board provides eight digital inputs and eight digital outputs, with the first four inputs having parallel switches and the first two outputs having 20V/5A relays. Set `AddOn` to `PiFace` to activate this board.
 
 #####Commands supported
 
@@ -186,10 +187,9 @@ The Piface Digital board provides 8 digital inputs and 8 digital outputs, with t
 
 #####Variables
 
-
 - `output + [ 0 .. 7 ] = (0 |1 )` - the value is rounded and subjected to max/min limiting, so -1 rounds up to 0 and 400000000 rounds down to 1.
 
-There are also 8 input sensor variables, named `Input1` to `Input8`, which have possible values (0|1). The 'Sensors and Motors/gpio-PiFace' project illustrates how to make it work.
+There are also eight input sensor variables, named `Input1` to `Input8`, which have possible values (0/1). The **Sensors and Motors/gpio-PiFace** project illustrates how to make it work.
 
 #### Pibrella
 
@@ -207,18 +207,18 @@ This provides a nice big red button, three large LEDs, four digital inputs, four
 - `[ red | green | yellow ]  = (0 |1 )`
 - `Output + [ E | F | G | H ]  = (0 |1 )`
 
-The inputs A, B, C, D, and the big red button are provided as sensor variables, all having possible values (0|1). There is a demo in 'Motors and Sensors/gpio-pibrella'
+The inputs A, B, C, D, and the big red button are provided as sensor variables, all having possible values (0/1). There is a demo in **Motors and Sensors/gpio-pibrella**. 
 
 #### Explorer HAT Pro
 
 This board is a bit more of a challenge to drive, since it has parts that are GPIO connected and parts that are I2C connected:
 
-- 4 LEDs
-- 4 5V output connectors
-- 4 buffered input connectors
-- 2 H-bridge motor drivers
-- 4 analogue inputs
-- 4 capacitive input pads
+- Four LEDs
+- Four 5V output connectors
+- Four buffered input connectors
+- Two H-bridge motor drivers
+- Four analogue inputs
+- Four capacitive input pads
 
 To use this board, set `AddOn` to `ExplorerHAT`.
 
@@ -238,8 +238,7 @@ They have matching variable forms:
 
 There are also sensor variables `Input1` to `Input4` with values (0|1), and the four ADC pins (1 .. 4) with values +-6.1V. If the signal is derived from a potentiometer connected to the Explorer HAT's 5V/GND, then the range is (0 .. ~5).
 
-The demo script in 'Sensors and Motors/gpio-ExplorerHAT' requires that you wire up a motor, led, rotary potentiometer etc like this  - ![this diagram](images/gpio-ExplorerHAT.png)
-
+The demo script in **Sensors and Motors/gpio-ExplorerHAT** requires that you wire up a motor, led, rotary potentiometer etc. as shown in [this diagram](images/gpio-ExplorerHAT.png)
 
 Note that the capacitive input pads are not yet operational, requiring some library level support.
 
@@ -260,18 +259,17 @@ To use this board, set `AddOn` to `SenseHAT`.
 
 #####Commands supported
 
-- `clearleds`  sets all LEDs to background colour
-- `ledbackground + colour` or `ledforeground + colour` sets the background and foreground colours for the string and graph commands to use. Colour is specified with either
-    + a name from the list red cyan blue gray black white green brown orange yellow magenta palered paletan lightred paleblue palebuff darkgray lightblue…
-    e.g. `ledforegroundcyan`
-    + an HTML-style six hex digit number starting with a hash sign such as `#34F2A0`
-    + or an R,G, B triplet of numbers between 0 and 255, such as `42, 234, 17`
-- `ledscrollspeed + number of milliseconds delay per step of scrolling` a string
-- `ledscrollstring + string` scroll the following string with the previously set foreground and background colours e.g. `ledscrollstring HelloWorld`
-- `ledshowchar + character` show just a single character with the previously set foreground and background colours
-- `ledbargraph + 8 digits [0..8]` - make a simple bar graph of up to 8 digits  with the previously set foreground and background colours e.g. `ledbargraph20614590`
-- `ledshowsprite + name of sprite` - display the named sprite on the LEDs e.g. `ledshowsprite Sprite1`. The sprite is centred over the 8 x 8 array and so you may see very little of a large sprite.
-- `ledpixel + [ x | at] + [0..7] + [y | @] + [0..7] + [colour | color] + colour name or code as ledbackground`. For example `ledpixelx4y3colourwhite` or `ledpixelat2@7color42,231,97` or `ledpixelx3@1colour#4A76A0`
+- `clearleds`: set all LEDs to background colour
+- `ledbackground + colour` or `ledforeground + colour`: set the background and foreground colours for the string and graph commands to use. Colour is specified with one of the following:
+    + a name from the list red cyan blue gray black white green brown orange yellow magenta palered paletan lightred paleblue palebuff darkgray lightblue... e.g. `ledforegroundcyan`
+    + an HTML-style six-digit hex number starting with a hash sign such as `#34F2A0`
+    + or an RGB triplet of numbers between 0 and 255, such as `42, 234, 17`
+- `ledscrollspeed + [number of milliseconds delay per step of scrolling]`: a string
+- `ledscrollstring + [string]`: scroll the following string with the previously set foreground and background colours e.g. `ledscrollstring HelloWorld`
+- `ledshowchar + [character]`: show just a single character with the previously set foreground and background colours
+- `ledbargraph + [8 digits 0..8]`: make a simple bar graph of up to eight digits with the previously set foreground and background colours e.g. `ledbargraph20614590`
+- `ledshowsprite + [name of sprite]`: display the named sprite on the LEDs e.g. `ledshowsprite Sprite1`. The sprite is centred over the 8 x 8 array and so you may see very little of a large sprite.
+- `ledpixel + [ x | at] + [0..7] + [y | @] + [0..7] + [colour | color] + [colour name or code as ledbackground]`. For example: `ledpixelx4y3colourwhite` or `ledpixelat2@7color42,231,97` or `ledpixelx3@1colour#4A76A0`
 
 #####Variables 
 
@@ -288,9 +286,9 @@ To use this board, set `AddOn` to `SenseHAT`.
 - `pressure`
 - `humidity`
 
-#### PiLite
+#### Pi-LITE
 
-This board provides a simple array of white LEDs that can be addressed individually or treated as a scrolling text display, a bar graph or a VU meter. It works via the GPIO serial port and presents some interesting challenges, especially setting up the serial connection as detailed in [raspberrypi-spy's pilite instructions] (http://www.raspberrypi-spy.co.uk/2013/09/how-to-setup-the-pi-lite-led-matrix-board/).
+The Pi-LITE board provides a simple array of white LEDs that can be addressed individually or treated as a scrolling text display, a bar graph, or a VU meter. It works via the GPIO serial port and presents some interesting challenges, especially setting up the serial connection as detailed in [RaspberryPi-Spy's Pi-LITE instructions] (http://www.raspberrypi-spy.co.uk/2013/09/how-to-setup-the-pi-lite-led-matrix-board/).
 
 To use this board, set `AddOn` to `PiLite`.
 
@@ -299,9 +297,9 @@ To use this board, set `AddOn` to `PiLite`.
 - `alloff`
 - `scrollstringABCDEF` to display ABCDEF.
 - `bargraph[1..14],[1-100]` sets the bar shown on one of the 14 columns of LEDs to represent the percentage.
-- `vumeter[1|2],[1…100]` displays a two column bar graph in the style of 1980's boom-box graphic equalisers. 
+- `vumeter[1|2],[1…100]` displays a two-column bar graph in the style of 1980's boom-box graphic equalisers. 
 
-#### RyanTeck,  Pololu and CamJam Edukit 3 motor controller
+#### RyanTeck, Pololu and CamJam EduKit 3 motor controller
 
 These boards can drive two DC motors. 
 
@@ -320,13 +318,13 @@ Although they work quite differently, they share the same commands:
 
 - `motor + motor number (0|1) = (-100..100)`
 
-## Appendix: Enabling and disabling the GPIO server
+## Appendix: enabling and disabling the GPIO server
 
 In normal use you shouldn't need to enable the GPIO server, as by default it is enabled but stopped. We can change this by adding a line to the init file. In the Home directory we can have a file named `.scratch.ini` - the initial dot is important to make it a hidden Unix file. Simply add the line `gpioserver=X` to the file, where X is:
 
    - `0` - to disable the GPIO server, preventing users or loaded projects from using it
-   - `1` - to enable the GPIO server but leave it turned off; this is the default when there is no `.scratch.ini` file
-   - `2` - to both enable and start the server; perhaps useful in a classroom when the lesson will be about GPIO use
+   - `1` - to enable the GPIO server but leave it turned off, which is the default when there is no `.scratch.ini` file
+   - `2` - to both enable and start the server, which might perhaps be useful in a classroom when the lesson will be about GPIO use
 
-Note that the older mesh/network server setup is currently semi-hidden under the Share menu - you have to hold down the shift key whilst opening that menu. It works exactly as before and still connects to external socket-based servers.
+Note that the older mesh/network server setup is currently semi-hidden under the **Share menu**: you have to hold down the shift key whilst opening that menu. It works exactly as before and still connects to external socket-based servers.
  
