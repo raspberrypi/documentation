@@ -34,7 +34,7 @@ If the Camera Module isn't working correctly, there are number of things to try:
 
 - Is your power supply sufficient? The Camera Module adds about 200-250mA to the power requirements of your Raspberry Pi.
 
-If things are still not working, adn you are receiving one of the following error messages, try the suggested fixes:
+If things are still not working, and you are receiving one of the following error messages, try the suggested fixes:
 
 - `Error : raspistill/raspivid command not found`. This probably means your update/upgrade failed in some way. Try updating/upgrading again.
 
