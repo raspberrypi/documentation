@@ -46,7 +46,7 @@ You won't find your input pin in the list until after running your config broadc
 
 With these very simple commands, you can build fairly complex GPIO-handling scripts to read buttons and operate LEDs and motors etc. We also have commands to return the time, return the machine IP address, read various temperatures, read an ultrasonic distance sensor, fetch a weather report, and even take a photo with an attached Raspberry Pi Camera Module and set it as the current costume.
 
-This script (provided in the Sensors and Motors folder as 'Sensors and Motors/gpio-demo') illustrates most of the above :  
+This script (provided in the Sensors and Motors folder as **Sensors and Motors/gpio-demo**) illustrates most of the above :  
 
 ![gpio-demo script](images/gpio-demo.gif)  
 
@@ -92,7 +92,7 @@ For example, `gpio17on` to turn on pin 17.
   For example `servo15%0` to position a servo in the centre of its range.
 - `servo stop` to turn off the servo driver.
 
-In the 'Servos and Motors/gpio-servoDemo' script, you can see how to move a servo or connect it to a variable like the position of a sprite. You will need to wire your servo like this 
+In the **Servos and Motors/gpio-servoDemo** script, you can see how to move a servo or connect it to a variable like the position of a sprite. You will need to wire your servo up like this: 
 
 ![gpio servo wiring layout](images/gpio-servoDemo.png)
 
@@ -104,42 +104,41 @@ Here is an example wiring layout using pin 16 as the trigger and 26 as the echo:
 
 ![gpio ultrasonic wiring layout](images/gpio-ultrasonic.png)
 
-If you use this wiring setup with the script in 'Sensors and Motors/gpio-ultrasonicDemo', you will see how to read the distance and move a sprite accordigly. The other ultrasonic demo in 'Sensor and Motors/gpio-ultrasonicIntruderAlarm' requires a camera as well, and will take a snapshot when anyone gets too close.
+If you use this wiring setup with the script in **Sensors and Motors/gpio-ultrasonicDemo**, you will see how to read the distance and move a sprite accordigly. The other ultrasonic demo in **Sensor and Motors/gpio-ultrasonicIntruderAlarm** requires a Camera Module, and will take a snapshot when anyone gets too close.
 
 #### Weather reports
-- `getweather + city name + , + country two-letter code + , + your user key from [OpenWeatherMaps](http://www.openweathermaps.org)` will create sensor variables for the named city's temperature, wind speed and direction, rainfall and cloud cover. You must sign up (free accounts are available) to get a key from them. See [OpenWeatherMaps](http://www.openweathermaps.org) for details.
+- `getweather + city name + , + country two-letter code + , + your user key from [OpenWeatherMaps](http://www.openweathermaps.org)` will create sensor variables for the named city's temperature, wind speed and direction, rainfall, and cloud cover. You must sign up to get a key from them (free accounts are available). See [OpenWeatherMaps](http://www.openweathermaps.org) for details.
 
-For example  
+For example 
+
 `getweather Rio de Janeiro, BR, 1234EF65B42DEAD`  
+
 would make the sensor variables  
+
 `Rain in Rio de Janeiro`  
 `Temp in Rio de Janeir0`  
-etc. The commas between the city name and country code and your key are vital to let the gpio server know where to split things. Some cities have simple names like 'Ee' or 'Manchester' whilst others get a bit more involved like 'Sault Ste Marie' or 'Llanfair­pwllgwyngyll­gogery­chwyrn­drobwll­llan­tysilio­gogo­goch'. Note that the OpenWeatherMaps server doesn't know every city in every country, nor does it have every kind of weather data for all those it does know, so sometime you will get no useful information.
+
+...and so on. The commas between the city name and country code and your key are vital to let the GPIO server know where to split things. Some cities have simple names like 'Ee' or 'Manchester' whilst others get a bit more involved like 'Sault Ste Marie' or 'Llanfair­pwllgwyngyll­gogery­chwyrn­drobwll­llan­tysilio­gogo­goch'. Note that the OpenWeatherMaps server doesn't know every city in every country, nor does it have every kind of weather data for all those it does know, so sometimes you will get no useful information.
  
-The script 'Sensors and Motors/gpio-citytemperaturegraph' shows how to get the weather data for London and plot the temperature. Since weather data doesn't normally change rapidly we only fetch the data every 15 minutes at their suggestion in order to not overload the website.
+The script **Sensors and Motors/gpio-citytemperaturegraph** shows how to get the weather data for London and plot the temperature. Since weather data doesn't normally change rapidly we only fetch the data every 15 minutes in order to not overload the website.
 
 #### Reading temperatures
 - `gettemp` connects to a couple of possible temperature sensors.
-    + `gettemp + cpu` reads the cpu temperature and creates a sensor variable cputtemp.  
-    For example `gettempcpu`  
-    An example project that plots a graph of the cpu temp can be found in the 'Sensors and Motors/gpio-cputtemperaturegraph' project.
-    + `gettemp` on its own will try to find an attached 1-wire DS18B20 thermal sensor and creates a sensor variable named temp + the 12 digit sensor ID.
-    + `gettemp + a previously discovered 12 digit 1-wire id` will directly connect to that identified DS18B20 sensor if possible.
+    + `gettemp + cpu` reads the cpu temperature and creates a sensor variable `cputtemp`. For example: `gettempcpu`. 
+    An example project that plots a graph of the CPU temperature can be found in the **Sensors and Motors/gpio-cputtemperaturegraph** project.
+    + `gettemp` on its own will try to find an attached 1-wire DS18B20 thermal sensor and creates a sensor variable named `temp + [the twelve-digit sensor ID]`.
+    + `gettemp + [a previously discovered twelve-digit 1-wire id]` will directly connect to that identified DS18B20 sensor if possible.
       
-      Note that 1-wire sensors take about half a second to read, so it may make Scratch appear to get very slow if you were to read the sensor frequently.
+      Note that 1-wire sensors take about half a second to read, so reading the sensor frequently may make Scratch appear to get very slow.
 
 #### Photos      
 - `photo` uses the camera to take a photo and insert it as the current costume of the sprite (or stage if that is selected).
-- `photo + [ big | large]` A 'big' photo is the same size as the stage.
-
-    For example `photobig` or `photo large`
-    
-- `photo + width @ height` takes a photo size width by height pixels, up to the limits of the camera. You can try almost any reasonable number for the width and height but remember that very small numbers (under 32 or so) sometimes don't produce a proper image and very large numbers can make an image so big it seems to crash Scratch.  
-   For example `photo800@600` will normally be acceptable but `photo2000@1600` may cause problems.
+- `photo + [big/large]`: a 'big' photo is the same size as the stage. For example: `photobig` or `photo large`.
+- `photo + [width @ height]` takes a photo size width by height pixels, up to the limits of the camera. You can try almost any reasonable number for the width and height but remember that very small numbers (under 32 or so) don't necessarily produce a proper image and very large numbers can make an image so big it seems to crash Scratch. For example, `photo800@600` will normally be acceptable but `photo2000@1600` may cause problems.
 
 #### Miscellaneous      
-- `gettime` adds some time values to the sensor variables - the `hours` value, the `minutes` value and the full date and time as `YYMMDDhhmmss`. 
-- `getip` adds a sensor variable for the machine's local host address IP number
+- `gettime` adds some time values to the sensor variables, specifically the `hours` value, the `minutes` value, and the full date and time as `YYMMDDhhmmss`. 
+- `getip` adds a sensor variable for the machine's local host address IP number.
 
 ## Add-on hardware
 
