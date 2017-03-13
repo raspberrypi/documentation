@@ -20,7 +20,7 @@ BCM283x has three banks of General-Purpose Input/Output (GPIO) pins: 28 pins on 
 
 On a Compute Module, both Bank 0 and Bank 1 are free to use. Bank 2 is used for eMMC and HDMI hot plug detect and ACT LED / USB boot control.
 
-It is useful on a running system to look at the state of each of the GPIO pins (what function they are set to, and the voltage level at the pin) so that you can see if the system is set up as expected. This is particularly helpful if you want to see if a Device Tree is working as expected or to get a look at the pin states during hardware debug.
+It is useful to look at the state of each of the GPIO pins on a running system (what function they are set to, and the voltage level at the pin) so that you can see if the system is set up as expected. This is particularly helpful if you want to see if a Device Tree is working as expected or to get a look at the pin states during hardware debug.
 
 Raspberry Pi provides the `raspi-gpio` package which is a tool for hacking and debugging GPIO (NOTE you need to run it as root).
 To install `raspi-gpio`:
