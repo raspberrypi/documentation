@@ -38,7 +38,7 @@ To get help on `raspi-gpio`, run it with the `help` argument:
 sudo raspi-gpio help
 ```
 
-For example, to see the current function and level of all GPIO pins use:
+For example, to see the current function and level of all GPIO pins, use:
 ```
 sudo raspi-gpio get
 ```
