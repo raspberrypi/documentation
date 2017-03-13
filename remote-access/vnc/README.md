@@ -44,7 +44,7 @@ sudo raspi-config
 
 Now, enable VNC Server by doing the following:
 
-- Navigate to **Advanced Options**.
+- Navigate to **Interfacing Options**.
 
 - Scroll down and select **VNC > Yes**.
 
