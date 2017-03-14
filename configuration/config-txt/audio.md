@@ -1,4 +1,4 @@
-## Onboard analogue audio options in config.txt(3.5mm jack)
+## Onboard analogue audio options in config.txt (3.5mm jack)
 
 The onboard audio output uses config options to change the way the analogue audio is driven, and whether some firmware features are enabled or not.
 
