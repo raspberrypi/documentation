@@ -1,4 +1,4 @@
-##Setting up a Raspberry Pi as an access point
+## Setting up a Raspberry Pi as an access point
 
 The Raspberry Pi can be used as a wireless access point, either by using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access points.
 
@@ -14,7 +14,7 @@ sudo apt-get install dnsmasq hostapd
 
 To act as a server we need the server to have a static IP address. This documentation assumes we are using the standard 192.168.x.x IP address for our wireless network, so we will assign the server the IP address 192.168.0.1
 
-Firstly the standard interface handling for wlan0 needs to be disabled. Normally the dhcpd daemon will search the network for another DHCP server to assign a IP address to wlan0, this is disabled by editing the configuration file
+Firstly the standard interface handling for `wlan0` needs to be disabled. Normally the dhcpd daemon will search the network for another DHCP server to assign a IP address to `wlan0`, this is disabled by editing the configuration file
 ```
 nano /etc/dhcp.conf
 ```
@@ -24,7 +24,7 @@ To configure the static IP address, edit the interfaces configuration file with
 ```
 sudo nano /etc/netowrk/interfaces
 ```
-Find the wlan0 section and edit it so its looks like the following.
+Find the `wlan0` section and edit it so its looks like the following.
 ```
 allow-hotplug wlan0  
 iface wlan0 inet static  
@@ -33,7 +33,7 @@ iface wlan0 inet static
     network 192.168.0.0
 ```
 
-Now restart the DHCP daemon and set up the new wlan0 configuration
+Now restart the DHCP daemon and set up the new `wlan0` configuration
 
 ```
 sudo service dhcpd restart
@@ -53,7 +53,7 @@ Type or copy the following information into the dnsmasq configuration file.
 interface=wlan0      # Use the require wireless interface - usually wlan0
   dhcp-range=192.168.0.2,192.168.0.20,255.255.255.0, 24h
 ```
-So for wlan0 we are going to provide IP addresses between 192.168.0.2 and 192.168.0.20, with a lease time of 24 hours. If you are providing DHCP services for other network devices (e.g. eth0), you could add more sections with the appropriate interface header, with the range of addresses you intend to provide to that interface.
+So for `wlan0` we are going to provide IP addresses between 192.168.0.2 and 192.168.0.20, with a lease time of 24 hours. If you are providing DHCP services for other network devices (e.g. eth0), you could add more sections with the appropriate interface header, with the range of addresses you intend to provide to that interface.
 
 dnsmasq has many more options, see the dnsmasq documentation for more details.
 
