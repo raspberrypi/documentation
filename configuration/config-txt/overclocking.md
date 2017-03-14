@@ -11,9 +11,9 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | Option | Description |
 | --- | --- |
 | arm_freq | Frequency of the ARM CPU in MHz. The default value is `1000` for the Pi0 and Pi0W, `700` for Pi1, `900` for Pi2, `1200` for the Pi3. |
-| gpu_freq | Sets `core_freq`, `h264_freq`, `isp_freq`, and `v3d_freq` together. The default value is `250` for Pi1/Pi2, `300` for Pi3/Pi0/Pi0W. |
+| gpu_freq | Sets `core_freq`, `h264_freq`, `isp_freq`, and `v3d_freq` together. On Pi1/Pi2 the default value is `250` for all items, on Pi3/Pi0/Pi0W `core_freq` defaults to `400` and `h264_freq`, `isp_freq` and `v3d_freq`default to `300`. |
 | core_freq | Frequency of the GPU processor core in MHz. It has an impact on CPU performance because it drives the L2 cache and memory bus. The default value is `250` for the Pi1/Pi2 and `400` for the Pi3 and Pi0 and Pi0W. Note that the L2 cache benefits only the Pi0/Pi0W and Pi1, but there is a small benefit for SDRAM on the Pi2/Pi3. |
-| h264_freq | Frequency of the hardware video block in MHz. The default value is `250` for Pi1/Pi2, `300` on Pi3, Pi0 and Pi0W. |
+| h264_freq | Frequency of the hardware video block in MHz. Individual override of the `gpu_freq` setting. |
 | isp_freq | Frequency of the image sensor pipeline block in MHz. Individual override of the `gpu_freq` setting. |
 | v3d_freq | Frequency of the 3D block in MHz. Individual override of the `gpu_freq` setting. |
 | sdram_freq | Frequency of the SDRAM in MHz. The default value is `400` for the Pi1 and Pi2, `450` on the Pi3, Pi0 and Pi0W. |
@@ -23,9 +23,12 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | over_voltage_sdram_i | SDRAM I/O voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
 | over_voltage_sdram_p | SDRAM phy voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
 | force_turbo | Disables the dynamic cpufreq driver and minimum settings described below. Enables h264/v3d/isp overclocking options. The default value is `0`. Enabling this may set the warranty bit if `over_voltage_*` is also set. |
-| initial_turbo | Enables turbo mode from boot for the given value in seconds up to 60, or until cpufreq sets a frequency. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=425#p180099). The default value is `60`. |
+| initial_turbo | Enables turbo mode from boot for the given value in seconds up to 60, or until cpufreq sets a frequency. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=425#p180099). The default value is `0`, maximum value is `60`. |
 | arm_freq_min | Minimum value of arm_freq used for dynamic frequency clocking. The default value is `700` for Pi0/Pi1, `600` for the Pi2/Pi3. |
 | core_freq_min | Minimum value of `core_freq` used for dynamic frequency clocking. The default value is `250`. |
+| h264_freq_min | Minimum value of `h264_freq` used for dynamic frequency clocking. The default value is `250`. |
+| isp_freq_min | Minimum value of `isp_freq` used for dynamic frequency clocking. The default value is `250`. |
+| v3d_freq_min | Minimum value of `v3d_freq` used for dynamic frequency clocking. The default value is `250`. |
 | sdram_freq_min | Minimum value of `sdram_freq` used for dynamic frequency clocking. The default value is `400`. |
 | over_voltage_min | Minimum value of `over_voltage` used for dynamic frequency clocking. The default value is `0`. |
 | temp_limit | Overheat protection. This sets the clocks and voltages to default when the SoC reaches this value in Celsius.  The default value is `85`. Values over 85 are clamped to 85.|
