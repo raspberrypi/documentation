@@ -1,15 +1,9 @@
 # Wireless connectivity
 
-A GUI is provided for setting up wireless connections in the current Raspbian with the Pixel desktop. If you are not using the Pixel desktop, you can set up wireless networking from the [command line](wireless-cli.md).
+Depdnding on what you need to do there are various guides to setting up wireless networking.
 
-Wireless connections can be made via the network icon at the right hand end of the menu bar. If a wireless dongle is plugged in, left clicking this icon will bring up a list of available wireless networks, as shown below. If no networks are found, it will show the message "No APs found - scanning..." - wait a few seconds without closing the menu, and it should find your network.
+The most common case is conecting to a existing wireless network using the Pixel Desktop. A simple GUI is provided for do [precisely this](pixel-desktop.md).
 
-![wifi2](images/wifi2.png)
+If you are not using the Pixel desktop, you can set up wireless networking from the [command line](wireless-cli.md).
 
-The icons on the right show whether a network is secured or not, and its signal strength. Click the network that you want to connect to. If it is secured, a dialogue box is will prompt you to enter the network key:
-
-![key](images/key.png)
-
-
-Enter the key and press OK, then wait a couple of seconds. The network icon will flash briefly to show that a connection is being made. When it is ready, the icon will stop flashing and show the signal strength.
-
+If you want to make you Raspberry Pi work as a wireless access point, i.e. creating your own wireless network that other devices can log in to, try [this page](access-point.md).
