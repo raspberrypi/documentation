@@ -1,10 +1,10 @@
-## config.txt - Video
+## Video options in config.txt 
 
 ### Composite video mode options
 
 #### sdtv_mode
 
-Defines the TV standard used for composite video output over the yellow RCA jack. The default value is `0`.
+The `sdtv_mode` command defines the TV standard used for composite video output over the yellow RCA jack. The default value is `0`.
 
 | sdtv_mode | result |
 | --- | --- |
@@ -15,7 +15,7 @@ Defines the TV standard used for composite video output over the yellow RCA jack
 
 #### sdtv_aspect
 
-This defines the aspect ratio for composite video output. The default value is `1`.
+The `sdtv_aspect` command defines the aspect ratio for composite video output. The default value is `1`.
 
 | sdtv_aspect | result |
 | --- | --- |
@@ -25,13 +25,13 @@ This defines the aspect ratio for composite video output. The default value is `
 
 #### sdtv_disable_colourburst
 
-Setting this to `1` disables colour burst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
+Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
 
 ### HDMI mode options
 
 #### hdmi_safe
 
-Setting this to `1` uses "safe mode" settings to try to boot with maximum HDMI compatibility. This is the same as setting the following parameters:
+Setting `hdmi_safe` to `1` uses "safe mode" settings to try to boot with maximum HDMI compatibility. This is the same as setting the following parameters:
 
 ```
 hdmi_force_hotplug=1
@@ -48,44 +48,43 @@ overscan_bottom=24
 
 #### hdmi_ignore_edid
 
-Setting this to `0xa5000080` enables the ignoring of EDID/display data if your display does not have an accurate [EDID](https://en.wikipedia.org/wiki/Extended_display_identification_data). It requires this unusual value to ensure that it is not triggered accidentally.
+Setting `hdmi_ignore_edid` to `0xa5000080` enables the ignoring of EDID/display data if your display does not have an accurate [EDID](https://en.wikipedia.org/wiki/Extended_display_identification_data). It requires this unusual value to ensure that it is not triggered accidentally.
 
 #### hdmi_edid_file
 
-Setting this to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. More information is available [here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=173430#p173430).
+Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. More information is available [here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=173430#p173430).
 
 #### hdmi_force_edid_audio
 
-Setting this to `1` pretends that all audio formats are supported by the display, allowing passthrough of DTS/AC3 even when not reported as supported.
+Setting `hdmi_force_edid_audio` to `1` pretends that all audio formats are supported by the display, allowing passthrough of DTS/AC3 even when this is not reported as supported.
 
 #### hdmi_ignore_edid_audio
 
-Setting this to `1` pretends that all audio formats are unsupported by the display. This means ALSA will default to the analogue audio (headphone) jack.
+Setting `hdmi_ignore_edid_audio` to `1` pretends that all audio formats are unsupported by the display. This means ALSA will default to the analogue audio (headphone) jack.
 
 #### hdmi_force_edid_3d
 
-Setting this to `1` pretends that all CEA modes support 3D, even when the EDID does not indicate support for this.
+Setting `hdmi_force_edid_3d` to `1` pretends that all CEA modes support 3D, even when the EDID does not indicate support for this.
 
 #### avoid_edid_fuzzy_match
 
-Setting this to `1` avoids "fuzzy matching" of modes described in the EDID. Instead, it will pick the standard mode with the matching resolution and closest framerate, even if the blanking settings are wrong.
+Setting `avoid_edid_fuzzy_match` to `1` avoids [fuzzy matching](https://en.wikipedia.org/wiki/Fuzzy_matching_(computer-assisted_translation)) of modes described in the EDID. Instead, it will pick the standard mode with the matching resolution and closest framerate, even if the blanking settings are wrong.
 
 #### hdmi_ignore_cec_init
 
-Setting this to `1` will stop the initial active source message being sent during bootup. This prevents a CEC-enabled TV from coming out of standby and channel switching when you are rebooting your Raspberry Pi.
+Setting `hdmi_ignore_cec_init` to `1` will stop the initial active source message being sent during bootup. This prevents a CEC-enabled TV from coming out of standby and channel switching when you are rebooting your Raspberry Pi.
 
 #### hdmi_ignore_cec
 
-Setting this to `1` pretends that [CEC](https://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC) is not supported at all by the TV. No CEC functions will be supported.
+Setting `hdmi_ignore_cec` to `1` pretends that [CEC](https://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC) is not supported at all by the TV. No CEC functions will be supported.
 
 #### cec_osd_name
 
-Set intial CEC name of the device.
-Default is Raspberry Pi.
+The `cec_osd_name` command sets the intial CEC name of the device. The default is Raspberry Pi.
 
 #### hdmi_pixel_encoding
 
-Force the pixel encoding mode. By default, it will use the mode requested from the EDID, so you shouldn't need to change it.
+The `hdmi_pixel_encoding` command forces the pixel encoding mode. By default, it will use the mode requested from the EDID, so you shouldn't need to change it.
 
 | hdmi_pixel_encoding | result |
 | --- | --- |
@@ -97,7 +96,7 @@ Force the pixel encoding mode. By default, it will use the mode requested from t
 
 #### hdmi_blanking
 
-This allows you to choose whether the HDMI output should be switched off when DPMS is triggered. This is to mimic the behaviour of other computers. After a specific amount of time the display not only blanks, but will also go into low-power/standby mode due to "No Signal"
+The `hdmi_blanking` command allows you to choose whether the HDMI output should be switched off when DPMS is triggered. This is to mimic the behaviour of other computers. After a specific amount of time the display not only blanks, but will also go into low-power/standby mode due to 'No Signal'.
 
 **NOTE:** This feature may cause issues when using applications which don't use the framebuffer, such as omxplayer.
 
