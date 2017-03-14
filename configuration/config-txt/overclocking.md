@@ -22,7 +22,7 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | over_voltage_sdram_c | SDRAM controller voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
 | over_voltage_sdram_i | SDRAM I/O voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
 | over_voltage_sdram_p | SDRAM phy voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
-| force_turbo | Disables the dynamic cpufreq driver and minimum settings described below. Enables h264/v3d/isp overclocking options. The default value is `0`. Enabling this may set the warranty bit if `over_voltage_*` is also set. |
+| force_turbo | Forces turbo mode frequencies even when the ARM cores are not busy. Enabling this may set the warranty bit if `over_voltage_*` is also set." |
 | initial_turbo | Enables turbo mode from boot for the given value in seconds, or until cpufreq sets a frequency. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=425#p180099). The default value is `0`, maximum value is `60`. |
 | arm_freq_min | Minimum value of arm_freq used for dynamic frequency clocking. The default value is `700` for Pi0/Pi1, `600` for the Pi2/Pi3. |
 | core_freq_min | Minimum value of `core_freq` used for dynamic frequency clocking. The default value is `250`. |
@@ -44,21 +44,13 @@ This table describes the overvoltage settings for the various Pi versions. The f
 
 #### force_turbo
 
-`force_turbo=0`
+By default (`force_turbo=0`) the "On Demand" CPU frequency driver will raise clocks to their maximum frequencies when the ARM cores are busy and will lower them to the minimum frequencies when the ARM cores are idle.
 
-This enables dynamic clocks and voltage for the CPU, GPU core, and SDRAM. The CPU frequency goes up to `arm_freq` when busy, and down to `arm_freq_min` on idle.
-
-`core_freq`/`core_freq_min`, `sdram_freq`/`sdram_freq_min` and `over_voltage`/`over_voltage_min` behave in a similar manner. `over_voltage` is limited to 6 (1.35V). Non-default values for the h264/v3d/isp frequencies are ignored.
-
-`force_turbo=1`
-
-Disables dynamic frequency clocking, so that all frequencies and voltages stay high. Overclocking of h264/v3d/isp GPU parts is allowed, as well as setting `over_voltage` up to 8 (1.4V). For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&sid=852d546291ae711ffcd8bf23d3214581&start=325#p170793).
+`force_turbo=1` overrides this behaviour and forces maximum frequencies even when the ARM cores are not busy.
 
 ### Clocks relationship
 
 The GPU core, CPU, SDRAM and GPU each have their own PLLs and can have unrelated frequencies. The h264, v3d and ISP blocks share a PLL. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=275#p168042).
-
-The effective `gpu_freq` is automatically rounded to the nearest even integer; asking for `core_freq=500` and `gpu_freq=300` will result in the divisor of 2000/300 = 6.666 => 6 and so result in a `gpu_freq` of 333.33MHz.
 
 To view the Pi's current frequency, type: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`. Divide the result by 1000 to find the value in MHz.
 
