@@ -96,35 +96,35 @@ The `hdmi_pixel_encoding` command forces the pixel encoding mode. By default, it
 
 #### hdmi_blanking
 
-The `hdmi_blanking` command allows you to choose whether the HDMI output should be switched off when DPMS is triggered. This is to mimic the behaviour of other computers. After a specific amount of time the display not only blanks, but will also go into low-power/standby mode due to 'No Signal'.
+The `hdmi_blanking` command allows you to choose whether the HDMI output should be switched off when DPMS is triggered. This is to mimic the behaviour of other computers. After a specific amount of time, the display will blank and go into low-power/standby mode due to receiving no signal.
 
 **NOTE:** This feature may cause issues when using applications which don't use the framebuffer, such as omxplayer.
 
 | hdmi_blanking | result |
 | --- | --- |
-| 0 | HDMI Output will Blank instead of being Disabled |
-| 1 | HDMI Output will be Disabled rather than just Blank |
+| 0 | HDMI Output will blank instead of being disabled |
+| 1 | HDMI Output will be disabled rather than just blanking |
 
 #### hdmi_drive
 
-This allows you to choose between HDMI and DVI output modes.
+The `hdmi_drive` command allows you to choose between HDMI and DVI output modes.
 
 | hdmi_drive | result |
 | --- | --- |
-| 1 | Normal DVI mode (No sound) |
-| 2 | Normal HDMI mode (Sound will be sent if supported and enabled) |
+| 1 | Normal DVI mode (no sound) |
+| 2 | Normal HDMI mode (sound will be sent if supported and enabled) |
 
 #### config_hdmi_boost
 
 Configures the signal strength of the HDMI interface. The default value is `0` and the maximum is `11`.
 
-The default value for the Raspberry Pi 1 (A and B) is `2`. The default value for the Raspberry Pi 1 B+ and all later models is `5`.
+The default value for the original Model B and A is `2`. The default value for the Model B+ and all later models is `5`.
 
 If you are seeing HDMI issues (speckling, interference) then try `7`. Very long HDMI cables may need up to `11`, but values this high should not be used unless absolutely necessary.
 
 #### hdmi_group
 
-This defines the HDMI output group to be either CEA (Consumer Electronics Association, the standard typically used by TVs) or DMT (Display Monitor Timings, the standard typically used by monitors). This setting should be used in conjunction with `hdmi_mode`.
+The `hdmi_group` command defines the HDMI output group to be either CEA (Consumer Electronics Association, the standard typically used by TVs) or DMT (Display Monitor Timings, the standard typically used by monitors). This setting should be used in conjunction with `hdmi_mode`.
 
 | hdmi_group | result |
 | --- | --- |
@@ -134,7 +134,7 @@ This defines the HDMI output group to be either CEA (Consumer Electronics Associ
 
 #### hdmi_mode
 
-This, together with `hdmi_group`, defines the HDMI output format.
+Together with `hdmi_group`, `hdmi_mode` defines the HDMI output format.
 
 To set a custom display mode not listed here, see [this thread](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=24679).
 
@@ -299,13 +299,13 @@ Note that there is a [pixel clock limit](http://www.raspberrypi.org/phpBB3/viewt
 
 ### Which values are valid for my monitor?
 
-Your HDMI monitor may support only a limited set of formats. To find out which formats are supported, use the following method:
+Your HDMI monitor may only support a limited set of formats. To find out which formats are supported, use the following method:
 
   1. Set the output format to VGA 60Hz (`hdmi_group=1` and `hdmi_mode=1`) and boot up your Raspberry Pi
-  2. Enter the following command to give a list of CEA supported modes: `/opt/vc/bin/tvservice -m CEA`
-  3. Enter the following command to give a list of DMT supported modes: `/opt/vc/bin/tvservice -m DMT`
-  4. Enter the following command to show your current state: `/opt/vc/bin/tvservice -s`
-  5. Enter the following commands to dump more detailed information from your monitor: `/opt/vc/bin/tvservice -d edid.dat; /opt/vc/bin/edidparser edid.dat`
+  1. Enter the following command to give a list of CEA-supported modes: `/opt/vc/bin/tvservice -m CEA`
+  1. Enter the following command to give a list of DMT-supported modes: `/opt/vc/bin/tvservice -m DMT`
+  1. Enter the following command to show your current state: `/opt/vc/bin/tvservice -s`
+  1. Enter the following commands to dump more detailed information from your monitor: `/opt/vc/bin/tvservice -d edid.dat; /opt/vc/bin/edidparser edid.dat`
 
 The `edid.dat` should also be provided when troubleshooting problems with the default HDMI mode.
 
@@ -327,7 +327,7 @@ If your monitor requires a mode that is not in one of the tables above, then it'
 
 Fields at the end can be omitted to use the default values.
 
-Note that this simply _creates_ the mode (group 2 mode 87). In order to make the Pi use this by default, you must add some additional settings.  For example, the following selects an 800x480 resolution and enables audio drive:
+Note that this simply **creates** the mode (group 2 mode 87). In order to make the Pi use this by default, you must add some additional settings. For example, the following selects an 800 × 480 resolution and enables audio drive:
 
     hdmi_cvt=800 480 60 6
     hdmi_group=2
@@ -340,47 +340,47 @@ This may not work if your monitor does not support standard CVT timings.
 
 #### hdmi_force_hotplug
 
-Setting this to `1` pretends that the HDMI hotplug signal is asserted, so it appears that a HDMI display is attached. In other words, HDMI output mode will be used, even if no HDMI monitor is detected.
+Setting `hdmi_force_hotplug` to `1` pretends that the HDMI hotplug signal is asserted, so it appears that a HDMI display is attached. In other words, HDMI output mode will be used, even if no HDMI monitor is detected.
 
 #### hdmi_ignore_hotplug
 
-Setting this to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. In other words, composite output mode will be used, even if an HDMI monitor is detected.
+Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. In other words, composite output mode will be used, even if an HDMI monitor is detected.
 
 #### disable_overscan
 
-Set to `1` to disable [overscan](../raspi-config.md#overscan).
+Set `disable_overscan` to `1` to disable [overscan](../raspi-config.md#overscan).
 
 #### overscan_left
 
-Specifies the number of pixels to skip on the left edge of the screen. Increase this value if the text flows off the left edge of the screen; decrease it if there is a black border between the left edge of the screen and the text.
+The `overscan_left` command specifies the number of pixels to skip on the left edge of the screen. Increase this value if the text flows off the left edge of the screen; decrease it if there is a black border between the left edge of the screen and the text.
 
 #### overscan_right
 
-Specifies the number of pixels to skip on the right edge of the screen.
+The `overscan_right` command specifies the number of pixels to skip on the right edge of the screen.
 
 #### overscan_top
 
-Specifies the number of pixels to skip on the top edge of the screen.
+The `overscan_top` command specifies the number of pixels to skip on the top edge of the screen.
 
 #### overscan_bottom
 
-Specifies the number of pixels to skip on the bottom edge of the screen.
+The `overscan_bottom` command specifies the number of pixels to skip on the bottom edge of the screen.
 
 #### overscan_scale
 
-Set to `1` to force any non-framebuffer layers to conform to the overscan settings.
+Set `overscan_scale` to `1` to force any non-framebuffer layers to conform to the overscan settings.
 
 #### framebuffer_width
 
-Specifies the console framebuffer width in pixels. The default is the display width minus the total horizontal overscan.
+The `framebuffer_width` command specifies the console framebuffer width in pixels. The default is the display width minus the total horizontal overscan.
 
 #### framebuffer_height
 
-Specifies the console framebuffer height in pixels. The default is the display height minus the total vertical overscan.
+The `framebuffer_height` command specifies the console framebuffer height in pixels. The default is the display height minus the total vertical overscan.
 
 #### framebuffer_depth
 
-Specifies the console framebuffer depth in bits per pixel. The default value is `16`.
+Use `framebuffer_depth` to specify the console framebuffer depth in bits per pixel. The default value is `16`.
 
 | framebuffer_depth | result | notes |
 | --- | --- | --- |
@@ -391,15 +391,15 @@ Specifies the console framebuffer depth in bits per pixel. The default value is 
 
 #### framebuffer_ignore_alpha
 
-Set to `1` to disable the alpha channel. Can help with the display of a 32bit `framebuffer_depth`.
+Set `framebuffer_ignore_alpha` to `1` to disable the alpha channel. Can help with the display of a 32bit `framebuffer_depth`.
 
 #### test_mode
 
-Displays a test image and sound during boot (but only over the composite video and analogue audio outputs) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test: the default value is `0`.
+The `test_mode` command displays a test image and sound during boot (over the composite video and analogue audio outputs only) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test: the default value is `0`.
 
 #### display_rotate
 
-Can be used to rotate or flip the screen orientation; the default value is `0`.
+Use `display_rotate` to rotate or flip the screen orientation. The default value is `0`.
 
 | display_rotate | result |
 | --- | --- |
