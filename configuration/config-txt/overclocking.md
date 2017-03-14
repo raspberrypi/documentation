@@ -68,7 +68,7 @@ To view the Pi's temperature, type: `cat /sys/class/thermal/thermal_zone0/temp`.
 
 Whilst hitting the temperature limit is not harmful to the SoC, it will cause CPU throttling. A heatsink can help to control the core temperature and therefore performance. This is especially useful if the Pi is running inside a case. Airflow over the heatsink will make cooling more efficient. A suitable heatsink is the self-adhesive BGA (ball-grid-array) 14x14x10 mm heatsink, available from [RS Components](http://uk.rs-online.com/web/p/heatsinks/6744756/).
 
-With firmware from 12th September 2016 or later, when the core temperature is between 80'C and 85'C, a warning icon showing a red half-filled thermometer will be displayed, and the ARM cores will be throttled back. If the temperature exceeds 85'C, an icon showing a fully filled thermometer will be displayed, and both the ARM cores and the GPU will be throttled back.
+With firmware from 12 September 2016 or later, when the core temperature is between 80C and 85C, a warning icon showing a red half-filled thermometer will be displayed, and the ARM cores will be throttled back. If the temperature exceeds 85C, an icon showing a fully filled thermometer will be displayed, and both the ARM cores and the GPU will be throttled back.
 
 See the page on [warning icons](../warning-icons.md) for more details.
 
