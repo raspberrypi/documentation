@@ -1,12 +1,12 @@
-## config.txt - Conditional filters
+## Conditional filters in config.txt
 
 When a single SD card (or card image) is only being used with one Pi and one monitor, it's easy to simply set `config.txt` as required for that specific combination and keep it that way, amending only when something changes.
 
-However, if one Pi is swapped between different monitors, or if the SD card (or card image) is being swapped between multiple Pis, a single set of settings may no longer be sufficient. Conditional filters allow you to make certain sections of the config file used only in specific cases, allowing a single `config.txt` to create different configurations when read by different hardware.
+However, if one Pi is swapped between different monitors, or if the SD card (or card image) is being swapped between multiple Pis, a single set of settings may no longer be sufficient. Conditional filters allow you to that certain sections of the config file are used only in specific cases, allowing a single `config.txt` to create different configurations when read by different hardware.
 
 ### The `[all]` filter
 
-This is the most basic filter: it resets all previously set filters and allows any settings listed below it to be applied to all hardware.
+The `[all]` filter is the most basic filter: it resets all previously set filters and allows any settings listed below it to be applied to all hardware.
 
     [all]
 
@@ -88,7 +88,6 @@ Filters of different types can be combined simply by listing them one after the 
 
 Use the `[all]` filter to reset all previous filters and avoid unintentionally combining different filter types.
 
----
 
 
 
