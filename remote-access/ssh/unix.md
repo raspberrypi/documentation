@@ -35,6 +35,7 @@ You can also forward your X session over SSH, to allow the use of graphical appl
 ```bash
 ssh -Y pi@192.168.1.5
 ```
+Note that [X11 is no longer present on Mac's with OSX](https://support.apple.com/en-gb/HT201341), so you will have to [download](https://www.xquartz.org/) and install it.
 
 Now you are on the command line as before, but you have the ability to open up graphical windows, for example:
 
