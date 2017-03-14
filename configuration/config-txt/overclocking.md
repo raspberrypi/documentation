@@ -1,10 +1,10 @@
-## config.txt - Overclocking options
+## Overclocking options in config.txt 
 
-**NOTE:** Setting any overclocking parameters to values other than those used by [raspi-config](../raspi-config.md#overclock) may set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. The specific circumstances where the overclock bit is set is if `force_turbo` is set to `1` and any of the `over_voltage_*` options are set to a value > `0`. See the [blog post on Turbo Mode](https://www.raspberrypi.org/blog/introducing-turbo-mode-up-to-50-more-performance-for-free/) for more information.
+**NOTE:** setting any overclocking parameters to values other than those used by [raspi-config](../raspi-config.md#overclock) may set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. The specific circumstances where the overclock bit is set is if `force_turbo` is set to `1` and any of the `over_voltage_*` options are set to a value > `0`. See the [blog post on Turbo Mode](https://www.raspberrypi.org/blog/introducing-turbo-mode-up-to-50-more-performance-for-free/) for more information.
 
 The latest kernel has a [cpufreq](http://www.pantz.org/software/cpufreq/usingcpufreqonlinux.html) kernel driver with the "ondemand" governor enabled by default. It has no effect if you have no overclock settings, but if you overclock, the CPU frequency will vary with processor load. Non-default values are only used when required, according to the governor. You can adjust the minimum values with the `*_min` config options, or disable dynamic clocking (and force overclocking) with `force_turbo=1`. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=169726#p169726).
 
-Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85°C, in order to cool it down. You should not hit this limit on Raspberry Pi versions 1 or 2, but it is more likely with the Raspberry Pi 3. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=11579#p169872). Overclocking and overvoltage are also disabled when an under voltage situation is detected.
+Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85°C, in order to cool it down. You should not hit this limit on earlier models of the Raspberry Pi, but it is more likely with the Pi 3. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=11579#p169872). Overclocking and overvoltage are also disabled when an undervoltage situation is detected.
 
 ### Overclocking options
 
@@ -28,9 +28,9 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | core_freq_min | Minimum value of `core_freq` used for dynamic frequency clocking. The default value is `250`. |
 | sdram_freq_min | Minimum value of `sdram_freq` used for dynamic frequency clocking. The default value is `400`. |
 | over_voltage_min | Minimum value of `over_voltage` used for dynamic frequency clocking. The default value is `0`. |
-| temp_limit | Overheat protection. This sets the clocks and voltages to default when the SoC reaches this value in Celsius.  The default value is `85`. Values over 85 are clamped to 85.|
+| temp_limit | Overheat protection. This sets the clocks and voltages to default when the SoC reaches this value in Celsius. The default value is `85`. Values over 85 are clamped to 85.|
 
-This table describes the overvoltage settings for the various Pi versions. The firmware using Adaptive Voltage Scaling (AVS) to determine the optimum voltage to set. Note that for each integer rise in over_voltage, the voltage will be 25mV higher.
+This table describes the overvoltage settings for the various Pi versions. The firmware using Adaptive Voltage Scaling (AVS) to determine the optimum voltage to set. Note that for each integer rise in `over_voltage`, the voltage will be 25mV higher.
 
 | Version | Default Overvoltage | Setting |
 | --- | --- | --- |
@@ -41,15 +41,11 @@ This table describes the overvoltage settings for the various Pi versions. The f
 
 #### force_turbo
 
-`force_turbo=0`
-
-This enables dynamic clocks and voltage for the CPU, GPU core, and SDRAM. The CPU frequency goes up to `arm_freq` when busy, and down to `arm_freq_min` on idle.
+Using `force_turbo=0` enables dynamic clocks and voltage for the CPU, GPU core, and SDRAM. The CPU frequency goes up to `arm_freq` when busy, and down to `arm_freq_min` on idle.
 
 `core_freq`/`core_freq_min`, `sdram_freq`/`sdram_freq_min` and `over_voltage`/`over_voltage_min` behave in a similar manner. `over_voltage` is limited to 6 (1.35V). Non-default values for the h264/v3d/isp frequencies are ignored.
 
-`force_turbo=1`
-
-Disables dynamic frequency clocking, so that all frequencies and voltages stay high. Overclocking of h264/v3d/isp GPU parts is allowed, as well as setting `over_voltage` up to 8 (1.4V). For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&sid=852d546291ae711ffcd8bf23d3214581&start=325#p170793).
+Using `force_turbo=1` disables dynamic frequency clocking, so that all frequencies and voltages stay high. Overclocking of h264/v3d/isp GPU parts is allowed, as well as setting `over_voltage` up to 8 (1.4V). For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&sid=852d546291ae711ffcd8bf23d3214581&start=325#p170793).
 
 ### Clocks relationship
 
@@ -72,9 +68,9 @@ To view the Pi's temperature, type: `cat /sys/class/thermal/thermal_zone0/temp`.
 
 Whilst hitting the temperature limit is not harmful to the SoC, it will cause CPU throttling. A heatsink can help to control the core temperature and therefore performance. This is especially useful if the Pi is running inside a case. Airflow over the heatsink will make cooling more efficient. A suitable heatsink is the self-adhesive BGA (ball-grid-array) 14x14x10 mm heatsink, available from [RS Components](http://uk.rs-online.com/web/p/heatsinks/6744756/).
 
-With firmware from 12th September 2016 or later, when the core temperature is between 80'C and 85'C, a warning icon showing a red half-filled thermometer will be displayed, and the ARM cores will be throttled back. If the temperature exceeds 85'C, an icon showing a fully-filled thermometer will be displayed, and both the ARM cores and the GPU will be throttled back.
+With firmware from 12th September 2016 or later, when the core temperature is between 80'C and 85'C, a warning icon showing a red half-filled thermometer will be displayed, and the ARM cores will be throttled back. If the temperature exceeds 85'C, an icon showing a fully filled thermometer will be displayed, and both the ARM cores and the GPU will be throttled back.
 
-See the page on [warning icons](../warning-icons.md) for more details
+See the page on [warning icons](../warning-icons.md) for more details.
 
 ### Monitoring voltage
 
@@ -88,8 +84,7 @@ See the page on [warning icons](../warning-icons.md) for more details
 
 ### Overclocking problems
 
-Most overclocking issues show up immediately with a failure to boot. If this occurs, hold down the `shift` key during the next boot. This will temporarily disable all overclocking, allowing you to boot successfully and then edit your settings.
-
+Most overclocking issues show up immediately with a failure to boot. If this occurs, hold down the **shift** key during the next boot. This will temporarily disable all overclocking, allowing you to boot successfully and then edit your settings.
 
 
 
