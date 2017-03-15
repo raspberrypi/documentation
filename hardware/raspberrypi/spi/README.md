@@ -38,7 +38,6 @@ http://wiringpi.com/
 This is a C library for Raspberry Pi (RPi). It provides access to GPIO and other IO functions on the Broadcom BCM 2835 chip. Accesses the hardware registers directly.
 
 http://www.airspayce.com/mikem/bcm2835/
-
 ### Use spidev from C
 
 There's a loopback test program in the Linux documentation that can be used as a starting point. See the [Troubleshooting](#troubleshooting) section. Uses the Linux `spidev` driver to access the bus.
@@ -66,7 +65,6 @@ CE   - Chip Enable (often called Chip Select)
 MOSI - Master Out Slave In
 MISO - Master In Slave Out
 MOMI - Master Out Master In
-MIMO - Master In Master Out
 ```
 
 #### Standard mode
@@ -75,10 +73,9 @@ In Standard SPI master mode the peripheral implements the standard 3 wire serial
 
 #### Bidirectional mode
 
-In bidirectional SPI master mode the same SPI standard is implemented except that a single wire is used for data (MIMO) instead of two as in standard mode (MISO and MOSI).
+In bidirectional SPI master mode the same SPI standard is implemented, except that a single wire is used for data (MOMI) instead of the two used in standard mode (MISO and MOSI). In this mode, the MOSI pin serves as MOMI pin.
 
 #### LoSSI mode (Low Speed Serial Interface)
-
 The LoSSI standard allows issuing of commands to peripherals (LCD) and to transfer data to and from them. LoSSI commands and parameters are 8 bits long, but an extra bit is used to indicate whether the byte is a command or parameter/data. This extra bit is set high for a data and low for a command. The resulting 9-bit value is serialized to the output. LoSSI is commonly used with [MIPI DBI](http://mipi.org/specifications/display-interface) type C compatible LCD controllers.
 
 **Note:**
@@ -152,9 +149,10 @@ SPI_CPOL    - Clock polarity
 SPI_CPHA    - Clock phase
 SPI_CS_HIGH - Chip Select active high
 SPI_NO_CS   - 1 device per bus, no Chip Select
+SPI_3WIRE   - Bidirectional mode, data in and out pin shared
 ```
 
-Bidirectional mode is currently not supported.
+Bidirectional or "3-wire" mode is supported by the spi-bcm2835 kernel module. Please note that in this mode, either the tx or rx field of the spi_transfer struct must be a NULL pointer, since only half-duplex communication is possible. Otherwise, the transfer will fail. The spidev_test.c source code does not consider this correctly, and therefore does not work at all in 3-wire mode.
 
 ### Supported bits per word
 
@@ -205,10 +203,4 @@ FF FF FF FF FF FF
 FF FF FF FF FF FF
 DE AD BE EF BA AD
 F0 0D
-```
-
-If you get compilation errors, try the latest version instead:
-
-```bash
-wget https://raw.github.com/torvalds/linux/master/Documentation/spi/spidev_test.c
 ```

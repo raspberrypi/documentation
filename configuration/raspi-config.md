@@ -29,10 +29,9 @@ Setup Options
     3 Enable Boot to Desktop/Scratch Choose whether to boot into a desktop environment, Scratch, or the command line
     4 Internationalisation Options   Set up language and regional settings to match your location
     5 Enable Camera                  Enable this Pi to work with the Raspberry Pi camera
-    6 Add to Rastrack                Add this Pi to the online Raspberry Pi Map (Rastrack)
-    7 Overclock                      Configure overclocking for your Pi
-    8 Advanced Options               Configure advanced settings
-    9 About `raspi-config`           Information about this configuration tool
+    6 Overclock                      Configure overclocking for your Pi
+    7 Advanced Options               Configure advanced settings
+    8 About `raspi-config`           Information about this configuration tool
 
                                    <Select>                                  <Finish>
 ```
@@ -40,7 +39,7 @@ Setup Options
 <a name="moving-around-the-menu"></a>
 ### Moving around the menu
 
-Use the `up` and `down` arrow keys to move the highlighted selection between the options available. Pressing the `right` arrow key will jump out of the options menu and take you to the `<Select>` and `<Finish>` buttons. Pressing `left` will take you back to the options. Alternatively, use the `Tab` key to switch between these.
+Use the `up` and `down` arrow keys to move the highlighted selection between the options available. Pressing the `right` arrow key will jump out of the Options menu and take you to the `<Select>` and `<Finish>` buttons. Pressing `left` will take you back to the options. Alternatively, you can use the `Tab` key to switch between these.
 
 Note that in long lists of option values (like the list of timezone cities), you can also type a letter to skip to that section of the list. For example, entering `L` will skip you to Lisbon, just two options away from London, to save you scrolling all the way through the alphabet.
 
@@ -55,7 +54,7 @@ Generally speaking, `raspi-config` aims to provide the functionality to make the
 <a name="expand-filesystem"></a>
 ### Expand filesystem
 
-If you installed Raspbian using NOOBS, you can ignore this section as the file system was expanded automatically during installation. However, if you wrote the image to an SD card yourself, then a portion of the card will be unused; this can be any amount over 3GB. Choosing this option will expand your installation to fill the rest of the SD card, giving you more space to use for files. You will need to reboot the Raspberry Pi to make this available. Note there is no confirmation; selecting the option begins the partition expansion immediately.
+If you have installed Raspbian using NOOBS, the filesystem will have been expanded automatically. There may be a rare occasion where this is not the case, e.g. if you have copied a smaller SD card onto a larger one. In this case, you should use this option to expand your installation to fill the whole SD card, giving you more space to use for files. You will need to reboot the Raspberry Pi to make this available. Note that there is no confirmation: selecting the option begins the partition expansion immediately.
 
 <a name="change-user-password"></a>
 ### Change user password
@@ -92,13 +91,6 @@ This option opens another menu which allows you to select your keyboard layout. 
 
 In order to use the Raspberry Pi Camera Module, you must enable it here. Select the option and proceed to `Enable`. This will make sure at least 128MB of RAM is dedicated to the GPU.
 
-<a name="add-to-rastrack"></a>
-### Add to Rastrack
-
-Rastrack is a user-contributed Google Map to which Pi users in the community have added their location; it shows a heat map of where Pi users are known to be around the world. This was set up by Pi enthusiast [Ryan Walmsley](https://ryanteck.uk/) in 2012. Rastrack is located at [rastrack.co.uk](http://rastrack.co.uk/).
-
-You can use this option to add your location to the map.
-
 <a name="overclock"></a>
 ### Overclock
 
@@ -116,7 +108,7 @@ Be aware that overclocking may reduce the lifetime of your Raspberry Pi. If over
 
 Old TV sets had a significant variation in the size of the picture they produced; some had cabinets that overlapped the screen. TV pictures were therefore given a black border so that none of the picture was lost; this is called overscan. Modern TVs and monitors don't need the border, and the signal doesn't allow for it. If the initial text shown on the screen disappears off the edge, you need to enable overscan to bring the border back.
 
-Any changes will take effect after a reboot. You can have greater control over the settings by editing [config.txt](config-txt.md).
+Any changes will take effect after a reboot. You can have greater control over the settings by editing [config.txt](config-txt/README.md).
 
 On some displays, particularly monitors, disabling overscan will make the picture fill the whole screen and correct the resolution. For other displays, it may be necessary to leave overscan enabled and adjust its values.
 
@@ -189,4 +181,3 @@ See this tool's source at [github.com/RPi-Distro/raspi-config](https://github.co
 ---
 
 *This article uses content from the eLinux wiki page [RPi raspi-config](http://elinux.org/RPi_raspi-config), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](http://creativecommons.org/licenses/by-sa/3.0/)*
-

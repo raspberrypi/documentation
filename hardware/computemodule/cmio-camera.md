@@ -1,4 +1,4 @@
-# Attaching a Raspberry Pi Camera to the Compute Module IO Board
+# Attaching a Raspberry Pi Camera Module to the Compute Module IO Board
 
 **This document is a work in progress and is intended for advanced users.**
 

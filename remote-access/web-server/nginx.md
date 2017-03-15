@@ -28,7 +28,7 @@ Browse to the default web page either on the Pi or from another computer on the 
 
 ### Changing the default web page
 
-NGINX defaults its web page location to `/usr/share/nginx/www` on Raspbian. Navigate to this folder and edit or replace index.html as you like. You can confirm the default page location at `/etc/nginx/sites-available` on the line which starts with 'root', should you need to.
+NGINX defaults its web page location to `/var/www/html` on Raspbian. Navigate to this folder and edit or replace index.nginx-debian.html as you like. You can confirm the default page location at `/etc/nginx/sites-available` on the line which starts with 'root', should you need to.
 
 
 ## Additional - Install PHP
@@ -70,10 +70,8 @@ Edit by removing the `#` characters on the following lines:
 
 ```
 location ~ \.php$ {
-	fastcgi_split_path_info ^(.+\.php)(/.+)$;
+	include snippets/fastcgi-php.conf;
 	fastcgi_pass unix:/var/run/php5-fpm.sock;
-	fastcgi_index index.php;
-	include fastcgi.conf;
 }
 ```
 
@@ -83,15 +81,12 @@ It should look like this:
         # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
         #
         location ~ \.php$ {
-                fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        #       # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
-        #
-        #       # With php5-cgi alone:
+                include snippets/fastcgi-php.conf;
+        
+                # With php5-cgi alone:
         #       fastcgi_pass 127.0.0.1:9000;
                 # With php5-fpm:
                 fastcgi_pass unix:/var/run/php5-fpm.sock;
-                fastcgi_index index.php;
-                include fastcgi.conf;
         }
 ```
 
@@ -103,14 +98,14 @@ sudo /etc/init.d/nginx reload
 
 ### Test PHP
 
-Rename `index.html` to `index.php`:
+Rename `index.nginx-debian.html` to `index.php`:
 
 ```bash
-cd /usr/share/nginx/www/
-sudo mv index.html index.php
+cd /var/www/html/
+sudo mv index.nginx-debian.html index.php
 ```
 
-Open `index.php` for with a text editor:
+Open `index.php` with a text editor:
 
 ```bash
 sudo nano index.php
