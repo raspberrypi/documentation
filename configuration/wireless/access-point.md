@@ -107,5 +107,31 @@ ssh pi@192.168.0.1
 ```
 
 
+## Using the Raspberry Pi as an Access Point to share an internet connection
+
+One common use of the Raspberry Pi as an access point is to provide wireless conections to a wired ethernet connection, so anyone logged in to the access point can access the internet, providing of course that the wire ethernet in the Pi can connect to the internet via some sort of router.
+
+To do this, a `bridge` needs to put in place between the wireless device and the ethernet device on the access point Pi to pass all traffic between the two interfaces. Install the following utility package to help with bridging.
+```
+sudo apt-get install brige_utils
+```
+Add a new bridge, in this case called `br0`
+```
+brctl addbr br0
+```
+Connect the network ports, in this case `eth0` to `wlan0`.
+```
+brctl addif br0 etho wlan0
+```
+Now edit the interfaces file to ensure the bridge starts up each reboot. `sudo nano /etc/netowrk/interfaces` and add the bridge setup at the end
+```
+# Bridge setup
+iface br0 inet 
+    bridge_ports eth0 wlan0
+    
+
+
+
+
 
 
