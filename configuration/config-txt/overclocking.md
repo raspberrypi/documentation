@@ -1,70 +1,78 @@
 ## config.txt - Overclocking options
 
-**NOTE:** Setting any overclocking parameters to values other than those used by [raspi-config](../raspi-config.md#overclock) will set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. This was originally set to detect a void warranty if the device had been overclocked. Since September 19th 2012, you can overclock your Pi without affecting your warranty. For more information see the [blog post on Turbo Mode](https://www.raspberrypi.org/blog/introducing-turbo-mode-up-to-50-more-performance-for-free/).
+**NOTE:** Setting any overclocking parameters to values other than those used by [raspi-config](../raspi-config.md#overclock) may set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. The specific circumstances where the overclock bit is set is if `force_turbo` is set to `1` and any of the `over_voltage_*` options are set to a value > `0`. See the [blog post on Turbo Mode](https://www.raspberrypi.org/blog/introducing-turbo-mode-up-to-50-more-performance-for-free/) for more information.
 
-The latest kernel has a [cpufreq](http://www.pantz.org/software/cpufreq/usingcpufreqonlinux.html) kernel driver with the "ondemand" governor enabled by default. It has no effect if you have no overclock settings, but if you overclock, the CPU frequency will vary with processor load. Non-default values are only used when required, according to the governor. You can adjust the minimum values with the `*_min` config options, or disable dynamic clocking with `force_turbo=1`. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=169726#p169726).
+The latest kernel has a [cpufreq](http://www.pantz.org/software/cpufreq/usingcpufreqonlinux.html) kernel driver with the "ondemand" governor enabled by default. It has no effect if you have no overclock settings, but if you overclock, the CPU frequency will vary with processor load. Non-default values are only used when required, according to the governor. You can adjust the minimum values with the `*_min` config options, or disable dynamic clocking (and force overclocking) with `force_turbo=1`. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=169726#p169726).
 
-Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85°C, in order to cool it down. You should not hit this limit, even with maximum settings at 25°C ambient temperature. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=11579#p169872).
+Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85°C, in order to cool it down. You should not hit this limit on Raspberry Pi versions 1 or 2, but it is more likely with the Raspberry Pi 3. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=11579#p169872). Overclocking and overvoltage are also disabled when an under voltage situation is detected.
 
 ### Overclocking options
 
 | Option | Description |
 | --- | --- |
-| arm_freq | Frequency of the ARM CPU in MHz. The default value is `700`. |
-| gpu_freq | Sets `core_freq`, `h264_freq`, `isp_freq`, and `v3d_freq` together. The default value is `250`. |
-| core_freq | Frequency of the GPU processor core in MHz. It has an impact on CPU performance because it drives the L2 cache. The default value is `250`. |
-| h264_freq | Frequency of the hardware video block in MHz. The default value is `250`. |
-| isp_freq | Frequency of the image sensor pipeline block in MHz. The default value is `250`. |
-| v3d_freq | Frequency of the 3D block in MHz. The default value is `250`. |
-| sdram_freq | Frequency of the SDRAM in MHz. The default value is `400`. |
-| over_voltage | CPU/GPU core voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. In other words, specifying -16 will give 0.8V as the GPU/core voltage, and specifying 8 will give 1.4V. The default value is `0` (1.2V). Values above 6 are only allowed when `force_turbo` or `current_limit_override` are specified: this sets the warranty bit. |
+| arm_freq | Frequency of the ARM CPU in MHz. The default value is `1000` for the Pi0 and Pi0W, `700` for Pi1, `900` for Pi2, `1200` for the Pi3. |
+| gpu_freq | Sets `core_freq`, `h264_freq`, `isp_freq`, and `v3d_freq` together. On Pi1/Pi2 the default value is `250` for all items, on Pi3/Pi0/Pi0W `core_freq` defaults to `400` and `h264_freq`, `isp_freq` and `v3d_freq`default to `300`. |
+| core_freq | Frequency of the GPU processor core in MHz. It has an impact on CPU performance because it drives the L2 cache and memory bus. The default value is `250` for the Pi1/Pi2 and `400` for the Pi3 and Pi0 and Pi0W. Note that the L2 cache benefits only the Pi0/Pi0W and Pi1, but there is a small benefit for SDRAM on the Pi2/Pi3. |
+| h264_freq | Frequency of the hardware video block in MHz. Individual override of the `gpu_freq` setting. |
+| isp_freq | Frequency of the image sensor pipeline block in MHz. Individual override of the `gpu_freq` setting. |
+| v3d_freq | Frequency of the 3D block in MHz. Individual override of the `gpu_freq` setting. |
+| sdram_freq | Frequency of the SDRAM in MHz. The default value is `400` for the Pi1 and Pi2, `450` on the Pi3, Pi0 and Pi0W. |
+| over_voltage | CPU/GPU core voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. In other words, specifying -16 will give 0.8V as the GPU/core voltage, and specifying 8 will give 1.4V. For defaults see table below. Values above 6 are only allowed when `force_turbo` is specified: this sets the warranty bit if `over_voltage_*` is also set. |
 | over_voltage_sdram | Sets `over_voltage_sdram_c`, `over_voltage_sdram_i`, and `over_voltage_sdram_p` together. |
 | over_voltage_sdram_c | SDRAM controller voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
 | over_voltage_sdram_i | SDRAM I/O voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
 | over_voltage_sdram_p | SDRAM phy voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
-| force_turbo | Disables the dynamic cpufreq driver and minimum settings described below. Enables h264/v3d/isp overclocking options. The default value is `0`. Enabling this may set the warranty bit. |
-| initial_turbo | Enables turbo mode from boot for the given value in seconds up to 60, or until cpufreq sets a frequency. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=425#p180099). This option can help with SD card corruption if the Pi is overclocked. The default value is `0`. |
-| arm_freq_min | Minimum value of `arm_freq` used for dynamic frequency clocking. The default value is `700`. |
+| force_turbo | Forces turbo mode frequencies even when the ARM cores are not busy. Enabling this may set the warranty bit if `over_voltage_*` is also set." |
+| initial_turbo | Enables turbo mode from boot for the given value in seconds, or until cpufreq sets a frequency. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=425#p180099). The default value is `0`, maximum value is `60`. |
+| arm_freq_min | Minimum value of arm_freq used for dynamic frequency clocking. The default value is `700` for Pi0/Pi1, `600` for the Pi2/Pi3. |
 | core_freq_min | Minimum value of `core_freq` used for dynamic frequency clocking. The default value is `250`. |
+| h264_freq_min | Minimum value of `h264_freq` used for dynamic frequency clocking. The default value is `250`. |
+| isp_freq_min | Minimum value of `isp_freq` used for dynamic frequency clocking. The default value is `250`. |
+| v3d_freq_min | Minimum value of `v3d_freq` used for dynamic frequency clocking. The default value is `250`. |
 | sdram_freq_min | Minimum value of `sdram_freq` used for dynamic frequency clocking. The default value is `400`. |
 | over_voltage_min | Minimum value of `over_voltage` used for dynamic frequency clocking. The default value is `0`. |
-| temp_limit | Overheat protection. This sets the clocks and voltages to default when the SoC reaches this value in Celsius. Setting this higher than the default voids your warranty. The default value is `85`. |
-| current_limit_override | Disables SMPS current limit protection when set to `0x5A000020`. It requires this unusual value to ensure that it is not triggered accidentally. This can help if you are hitting a reboot failure when specifying a value for overclocking that is too high. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=325#p170793). Changing this option may set the warranty bit. |
+| temp_limit | Overheat protection. This sets the clocks and voltages to default when the SoC reaches this value in Celsius.  The default value is `85`. Values over 85 are clamped to 85.|
+
+This table describes the overvoltage settings for the various Pi versions. The firmware uses Adaptive Voltage Scaling (AVS) to determine the optimum voltage to set. Note that for each integer rise in over_voltage, the voltage will be 25mV higher.
+
+| Version | Default Overvoltage | Setting |
+| --- | --- | --- |
+| Pi1 | 1.2V | 0 |
+| Pi2 | 1.2-1.3125V | 0 |
+| Pi3 | 1.2-1.3125V | 0 |
+| Pi0 | 1.35V | 6 |
 
 #### force_turbo
 
-`force_turbo=0`
+By default (`force_turbo=0`) the "On Demand" CPU frequency driver will raise clocks to their maximum frequencies when the ARM cores are busy and will lower them to the minimum frequencies when the ARM cores are idle.
 
-This enables dynamic clocks and voltage for the CPU, GPU core, and SDRAM. The CPU frequency goes up to `arm_freq` when busy, and down to `arm_freq_min` on idle.
-
-`core_freq`/`core_freq_min`, `sdram_freq`/`sdram_freq_min` and `over_voltage`/`over_voltage_min` behave in a similar manner. `over_voltage` is limited to 6 (1.35V). Non-default values for the h264/v3d/isp frequencies are ignored.
-
-`force_turbo=1`
-
-Disables dynamic frequency clocking, so that all frequencies and voltages stay high. Overclocking of h264/v3d/isp GPU parts is allowed, as well as setting `over_voltage` up to 8 (1.4V). For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&sid=852d546291ae711ffcd8bf23d3214581&start=325#p170793).
+`force_turbo=1` overrides this behaviour and forces maximum frequencies even when the ARM cores are not busy.
 
 ### Clocks relationship
 
-The GPU core, h264, v3d, and ISP blocks all share a [PLL](https://en.wikipedia.org/wiki/Phase-locked_loop#Clock_generation) and therefore need to have related frequencies. The CPU, SDRAM and GPU each have their own PLLs and can have unrelated frequencies. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=275#p168042).
-
-The frequencies are calculated as follows:
-
-```
-pll_freq = floor(2400 / (2 x core_freq)) x (2 x core_freq)
-gpu_freq = pll_freq / [even number]
-```
-
-The effective `gpu_freq` is automatically rounded to the nearest even integer; asking for `core_freq=500` and `gpu_freq=300` will result in the divisor of 2000/300 = 6.666 => 6 and so result in a `gpu_freq` of 333.33MHz.
-
-### Monitoring temperature and voltage
-
-To view the Pi's temperature, type: `cat /sys/class/thermal/thermal_zone0/temp`. Divide the result by 1000 to find the value in Celsius.
+The GPU core, CPU, SDRAM and GPU each have their own PLLs and can have unrelated frequencies. The h264, v3d and ISP blocks share a PLL. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=275#p168042).
 
 To view the Pi's current frequency, type: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`. Divide the result by 1000 to find the value in MHz.
 
-To monitor the Pi's PSU voltage, you will need to use a multimeter to measure between the TP1 and TP2 power supply test points. More information is available in [power](../../hardware/raspberrypi/power/README.md).
+### Monitoring core temperature
 
-It is a good idea to keep the core temperature below 70 degrees and the voltage above 4.8V. Note that some USB power supplies fall as low as 4.2V. This is because they are usually designed to charge a 3.7V LiPo battery, rather than to supply 5V to a computer. If your overclocked Raspberry Pi is getting hot, a heatsink can be helpful, especially if the Pi is to be run inside a case. A suitable heatsink is the self-adhesive BGA (ball-grid-array) 14x14x10 mm heatsink, available from [RS Components](http://uk.rs-online.com/web/p/heatsinks/6744756/).
+To view the Pi's temperature, type: `cat /sys/class/thermal/thermal_zone0/temp`. Divide the result by 1000 to find the value in Celsius.
+
+Whilst hitting the temperature limit is not harmful to the SoC, it will cause CPU throttling. A heatsink can help to control the core temperature and therefore performance. This is especially useful if the Pi is running inside a case. Airflow over the heatsink will make cooling more efficient. A suitable heatsink is the self-adhesive BGA (ball-grid-array) 14x14x10 mm heatsink, available from [RS Components](http://uk.rs-online.com/web/p/heatsinks/6744756/).
+
+With firmware from 12th September 2016 or later, when the core temperature is between 80'C and 85'C, a warning icon showing a red half-filled thermometer will be displayed, and the ARM cores will be throttled back. If the temperature exceeds 85'C, an icon showing a fully-filled thermometer will be displayed, and both the ARM cores and the GPU will be throttled back.
+
+See the page on [warning icons](../warning-icons.md) for more details
+
+### Monitoring voltage
+
+It is essential to keep the supply voltage above 4.8V for reliable performance. Note that the voltage from some USB chargers/power supplies can fall as low as 4.2V. This is because they are usually designed to charge a 3.7V LiPo battery, not to supply 5V to a computer. 
+
+To monitor the Pi's PSU voltage, you will need to use a multimeter to measure between a VCC and GND pins on the GPIO. More information is available in [power](../../hardware/raspberrypi/power/README.md).
+
+If the voltage drops below 4.63v (+-5%), recent versions of the firmware will show a yellow lightning bolt symbol on the display to indicate a lack of power.
+
+See the page on [warning icons](../warning-icons.md) for more details
 
 ### Overclocking problems
 
