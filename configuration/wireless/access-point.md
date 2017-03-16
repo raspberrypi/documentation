@@ -16,7 +16,7 @@ To act as a server, the Raspberry Pi needs to have a static IP address assigned 
 
 First the standard interface handling for `wlan0` needs to be disabled. Normally the dhcpd daemon will search the network for another DHCP server to assign a IP address to `wlan0`, this is disabled by editing the configuration file
 ```
-sudo nano /etc/dhcp.conf
+sudo nano /etc/dhcpcd.conf
 ```
 Add `denyinterfaces wlan0` to the end of the file but above any other added `interface` lines and save the file.
 
@@ -113,22 +113,47 @@ One common use of the Raspberry Pi as an access point is to provide wireless con
 
 To do this, a `bridge` needs to put in place between the wireless device and the ethernet device on the access point Raspberry Pi to pass all traffic between the two interfaces. Install the following utility package to help with bridging.
 ```
-sudo apt-get install brige_utils
+sudo apt-get install bridge-utils
 ```
+Bridging creates a higher level construct over the two ports being bridged, and it is the bridge that is 'the network device' so we need to stop the `eth0` and `wlan0` ports being allocated IP address by the dhcp client on the Raspberry Pi.
+```
+sudo nano /etc/dhcpcd.conf
+```
+Add `denyinterfaces wlan0` and `denyinterfaces eth0` to the end of the file but above any other added `interface` lines and save the file.
+
 Add a new bridge, in this case called `br0`
 ```
-brctl addbr br0
+sudo brctl addbr br0
 ```
 Connect the network ports, in this case `eth0` to `wlan0`.
 ```
-brctl addif br0 etho wlan0
+sudo brctl addif br0 etho wlan0
 ```
-Now edit the interfaces file to ensure the bridge starts up each reboot. `sudo nano /etc/netowrk/interfaces` and add the bridge setup at the end
+Now the interfaces file needs to be edited to adjust the various devices to work with bridging. `sudo nano /etc/netowrk/interfaces` make the following edits.
+
+Change the wlan entry to manual and remove any other entries e.g. the static address.
+```
+allow-hotplug wlan0
+ iface wlan0 inet manual
+```
+Add the bridging information at the end of the file.
 ```
 # Bridge setup
-iface br0 inet 
-    bridge_ports eth0 wlan0
-    
+auto br0
+iface br0 inet dhcp
+bridge_ports eth0 wlan0
+```    
+
+Now edit the host access point configuration to tell it about the bridge, `sudo nano /etc/hostapd/hostapd.conf` and add a line `bridge=br0` below the `interface=wlan0` line as follows
+```
+interface=wlan0
+bridge=br0
+driver=nl80211
+...
+```
+
+
+
 
 
 
