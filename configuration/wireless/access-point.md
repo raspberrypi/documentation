@@ -12,17 +12,17 @@ sudo apt-get install dnsmasq hostapd
 
 ## Configuring a static IP
 
-To act as a server we need the server to have a static IP address. This documentation assumes we are using the standard 192.168.x.x IP address for our wireless network, so we will assign the server the IP address 192.168.0.1
+To act as a server, the Raspberry Pi needs to have a static IP address assigned tothe wireless port. This documentation assumes we are using the standard 192.168.x.x IP address for our wireless network, so we will assign the server the IP address 192.168.0.1. It is also assumed that the wireless device being use is `wlan0`.
 
-Firstly the standard interface handling for `wlan0` needs to be disabled. Normally the dhcpd daemon will search the network for another DHCP server to assign a IP address to `wlan0`, this is disabled by editing the configuration file
+First the standard interface handling for `wlan0` needs to be disabled. Normally the dhcpd daemon will search the network for another DHCP server to assign a IP address to `wlan0`, this is disabled by editing the configuration file
 ```
-nano /etc/dhcp.conf
+sudo nano /etc/dhcp.conf
 ```
 Add `denyinterfaces wlan0` to the end of the file but above any other added `interface` lines and save the file.
 
 To configure the static IP address, edit the interfaces configuration file with 
 ```
-sudo nano /etc/netowrk/interfaces
+sudo nano /etc/network/interfaces
 ```
 Find the `wlan0` section and edit it so its looks like the following.
 ```
@@ -36,7 +36,7 @@ iface wlan0 inet static
 Now restart the DHCP daemon and set up the new `wlan0` configuration
 
 ```
-sudo service dhcpd restart
+sudo service dhcpcd restart
 sudo ifdown wlan0
 sudo ifup wlan0
 ```
@@ -48,21 +48,21 @@ dnsmasq provides the needed DHCP service. By default the configuration file cont
 sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig  
 sudo nano /etc/dnsmasq.conf
 ```
-Type or copy the following information into the dnsmasq configuration file.
+Type or copy the following information into the dnsmasq configuration file and save it.
 ```
 interface=wlan0      # Use the require wireless interface - usually wlan0
   dhcp-range=192.168.0.2,192.168.0.20,255.255.255.0, 24h
 ```
 So for `wlan0` we are going to provide IP addresses between 192.168.0.2 and 192.168.0.20, with a lease time of 24 hours. If you are providing DHCP services for other network devices (e.g. eth0), you could add more sections with the appropriate interface header, with the range of addresses you intend to provide to that interface.
 
-dnsmasq has many more options, see the dnsmasq documentation for more details.
+dnsmasq has many more options, see the [dnsmasq documentation](http://www.thekelleys.org.uk/dnsmasq/doc.html) for more details.
 
 ### Configuring the Access Point host software (hostapd)
 
 You need to edit the hostapd configuration file, located at /etc/hostapd/hostapd.conf, to add the various parameters for your wireless network. After initial install, this will be a new/empty file.
 
 ```
-sudo nano /etc/hostapd/hostapd.confg
+sudo nano /etc/hostapd/hostapd.conf
 ```
 Add the following information to the configuration file, editing in the appropriate entry for options inside <...>
 ```
@@ -86,7 +86,7 @@ We now need to tell the system where to find this configuration file.
 ```
 sudo nano /etc/default/hostapd
 ```
-Find the line with #DAEMON_CONF, and repalce with
+Find the line with #DAEMON_CONF, and replace with
 ```
 DAEMON_CONF="/etc/hostapd/hostapd.conf"
 ```
@@ -98,20 +98,20 @@ Now start up the remaining services
 sudo service hostapd start  
 sudo service dnsmasq start  
 ```
-
 Using a wireless device, search for networks, and the network SSID you specified in the hostapd configuration should now be present, and accessible with the specified password.
 
 If SSH is enabled on the Raspberry Pi access point it should be possible to connect to it from another Linux box (or system with SSH connectivity present) as follows, assuming the `pi` account is present.
 ```
 ssh pi@192.168.0.1
 ```
+By this point, the Raspberry Pi is acting as an access point, and other devices can associate with it. Associated devices can access the AP by its IP address, for operations such as `rsync`, `scp`, or `ssh`
 
 
 ## Using the Raspberry Pi as an Access Point to share an internet connection
 
-One common use of the Raspberry Pi as an access point is to provide wireless conections to a wired ethernet connection, so anyone logged in to the access point can access the internet, providing of course that the wire ethernet in the Pi can connect to the internet via some sort of router.
+One common use of the Raspberry Pi as an access point is to provide wireless conections to a wired ethernet connection, so anyone logged in to the access point can access the internet, providing of course that the wired ethernet on the Pi can connect to the internet via some sort of router.
 
-To do this, a `bridge` needs to put in place between the wireless device and the ethernet device on the access point Pi to pass all traffic between the two interfaces. Install the following utility package to help with bridging.
+To do this, a `bridge` needs to put in place between the wireless device and the ethernet device on the access point Raspberry Pi to pass all traffic between the two interfaces. Install the following utility package to help with bridging.
 ```
 sudo apt-get install brige_utils
 ```
