@@ -144,11 +144,11 @@ iface br0 inet dhcp
 bridge_ports eth0 wlan0
 ```    
 
-Now edit the host access point configuration to tell it about the bridge, `sudo nano /etc/hostapd/hostapd.conf` and add a line `bridge=br0` below the `interface=wlan0` line as follows
+Now edit the host access point configuration to tell it about the bridge, `sudo nano /etc/hostapd/hostapd.conf` and add a line `bridge=br0` below the `interface=wlan0` line. Remove or comment out the driver file.
 ```
 interface=wlan0
 bridge=br0
-driver=nl80211
+#driver=nl80211
 ...
 ```
 
