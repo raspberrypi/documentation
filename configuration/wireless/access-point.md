@@ -151,12 +151,9 @@ bridge=br0
 #driver=nl80211
 ...
 ```
+Now reboot the Raspberry Pi.
 
+There should now be a functioning bridge between the wireless LAN and the ethernet connection on the Raspberry Pi, and any device associated with the Raspberry Pi access point will act as if it connected to the AP's wired ethernet.
 
-
-
-
-
-
-
+`ifconfig` will show the bridge, which will have been allocated a IP address via the wired ethernet's DHCP server. The `wlan0` and `eth0` no longer have IP addresses, they are now controlled by the bridge. It is possible to use a static IP address for the bridge if required, but generally, if the Raspbery Pi AP is connected to a ADSL router then the DHCP address will be fine.
 
