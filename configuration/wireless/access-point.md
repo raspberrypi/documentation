@@ -1,4 +1,4 @@
-## Setting up a Raspberry Pi as an access point
+## Setting up a Raspberry Pi as an Access Point
 
 The Raspberry Pi can be used as a wireless access point, either by using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access points.
 
