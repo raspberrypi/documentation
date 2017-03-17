@@ -10,7 +10,7 @@ Install all the required software in one go with
 sudo apt-get install dnsmasq hostapd
 ```
 
-## Configuring a static IP
+### Configuring a static IP
 
 To act as a server, the Raspberry Pi needs to have a static IP address assigned tothe wireless port. This documentation assumes we are using the standard 192.168.x.x IP address for our wireless network, so we will assign the server the IP address 192.168.0.1. It is also assumed that the wireless device being use is `wlan0`.
 
