@@ -91,7 +91,7 @@ Find the line with #DAEMON_CONF, and replace with
 DAEMON_CONF="/etc/hostapd/hostapd.conf"
 ```
 
-## Start it up
+### Start it up
 
 Now start up the remaining services
 ```
@@ -104,7 +104,7 @@ If SSH is enabled on the Raspberry Pi access point it should be possible to conn
 ```
 ssh pi@192.168.0.1
 ```
-By this point, the Raspberry Pi is acting as an access point, and other devices can associate with it. Associated devices can access the AP by its IP address, for operations such as `rsync`, `scp`, or `ssh`
+By this point, the Raspberry Pi is acting as an access point, and other devices can associate with it. Associated devices can access the Raspberry Pi access point by its IP address, for operations such as `rsync`, `scp`, or `ssh`.
 
 
 ## Using the Raspberry Pi as an Access Point to share an internet connection
