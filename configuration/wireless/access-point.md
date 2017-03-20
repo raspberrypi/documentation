@@ -1,6 +1,8 @@
-## Setting up a Raspberry Pi as an Access Point in a stanalone network
+## Setting up a Raspberry Pi as an Access Point in a standalone network
 
-The Raspberry Pi can be used as a wireless access point, running a standalone network, either by using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access points. Note that this documentation was tested on a Raspberry Pi 3, and it is possible some USB dongles may need slight changes to settings. If you are having trouble with a USB wireless dongle, please check the forums.
+The Raspberry Pi can be used as a wireless access point, running a standalone network, either by using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access points. 
+
+Note that this documentation was tested on a Raspberry Pi 3, and it is possible some USB dongles may need slight changes to settings. If you are having trouble with a USB wireless dongle, please check the forums.
 
 To add a Raspberry Pi based access point to an existing network, see [this section](#using-the-raspberry-pi-as-an-access-point-to-share-an-internet-connection)
 
@@ -10,6 +12,11 @@ Install all the required software in one go with
 
 ```
 sudo apt-get install dnsmasq hostapd
+```
+Since the configuration files are not ready yet, turn the new softwre off as follows: 
+```
+sudo systemctl stop dnsmasq
+sudo systemctl stop hostapd
 ```
 
 ### Configuring a static IP
@@ -62,7 +69,6 @@ dnsmasq has many more options, see the [dnsmasq documentation](http://www.thekel
 ### Configuring the Access Point host software (hostapd)
 
 You need to edit the hostapd configuration file, located at /etc/hostapd/hostapd.conf, to add the various parameters for your wireless network. After initial install, this will be a new/empty file.
-
 ```
 sudo nano /etc/hostapd/hostapd.conf
 ```
@@ -113,9 +119,9 @@ By this point, the Raspberry Pi is acting as an access point, and other devices 
 
 One common use of the Raspberry Pi as an access point is to provide wireless conections to a wired ethernet connection, so anyone logged in to the access point can access the internet, providing of course that the wired ethernet on the Pi can connect to the internet via some sort of router.
 
-To do this, a `bridge` needs to put in place between the wireless device and the ethernet device on the access point Raspberry Pi to pass all traffic between the two interfaces. Install the following utility package to help with bridging.
+To do this, a `bridge` needs to put in place between the wireless device and the ethernet device on the access point Raspberry Pi to pass all traffic between the two interfaces. Install the following packages to enable the access point setup and bridging.
 ```
-sudo apt-get install bridge-utils
+sudo apt-get install hostapd bridge-utils
 ```
 Bridging creates a higher level construct over the two ports being bridged, and it is the bridge that is 'the network device' so we need to stop the `eth0` and `wlan0` ports being allocated IP address by the dhcp client on the Raspberry Pi.
 ```
@@ -146,7 +152,7 @@ iface br0 inet dhcp
 bridge_ports eth0 wlan0
 ```    
 
-Now edit the host access point configuration to tell it about the bridge, `sudo nano /etc/hostapd/hostapd.conf` and add a line `bridge=br0` below the `interface=wlan0` line. Remove or comment out the driver file.
+The access point setup is almost the same as that shown in the previous section, follow those instructions to setup the `hostapd.conf` file, but add a line `bridge=br0` below the `interface=wlan0` line and remove or comment out the driver line.
 ```
 interface=wlan0
 bridge=br0
@@ -157,5 +163,5 @@ Now reboot the Raspberry Pi.
 
 There should now be a functioning bridge between the wireless LAN and the ethernet connection on the Raspberry Pi, and any device associated with the Raspberry Pi access point will act as if it connected to the AP's wired ethernet.
 
-`ifconfig` will show the bridge, which will have been allocated a IP address via the wired ethernet's DHCP server. The `wlan0` and `eth0` no longer have IP addresses, they are now controlled by the bridge. It is possible to use a static IP address for the bridge if required, but generally, if the Raspbery Pi AP is connected to a ADSL router then the DHCP address will be fine.
+`ifconfig` will show the bridge, which will have been allocated a IP address via the wired ethernet's DHCP server. The `wlan0` and `eth0` no longer have IP addresses, they are now controlled by the bridge. It is possible to use a static IP address for the bridge if required, but generally, if the Raspberry Pi AP is connected to a ADSL router then the DHCP address will be fine.
 
