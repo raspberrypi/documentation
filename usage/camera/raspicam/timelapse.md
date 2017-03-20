@@ -6,7 +6,7 @@ There are a couple of ways of doing this.
 
 ## Using Raspistill's inbuilt Timelapse Mode
 
-The raspstill application has a built in timelapse mode, using the `--timelapse` (or `-tl`) command line switch.
+The raspistill application has a built in timelapse mode, using the `--timelapse` (or `-tl`) command line switch.
 
 The value that follows the switch is the time between shots in milliseconds.
 ```
