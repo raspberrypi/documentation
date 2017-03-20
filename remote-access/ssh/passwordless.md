@@ -67,8 +67,13 @@ To copy your public key to your Raspberry Pi, use the following command to appen
 cat ~/.ssh/id_rsa.pub | ssh <USERNAME>@<IP-ADDRESS> 'cat >> .ssh/authorized_keys'
 ```
 
-Note that this time you will have to authenticate with your password.
+You will have to authenticate with your password.
 
+Note. When you run the above command you may see an error along the lines of: `.ssh/authorized_keys: No such file or directory`
+This is because in some cases the hidden directory `.ssh` or the file called `authorized_keys` may not already exist.  If this happens try the following:
+```
+cat ~/.ssh/id_rsa.pub | ssh <USERNAME>@<IP-ADDRESS> 'mkdir .ssh/ && cat >> .ssh/authorized_keys'
+```
 Now try `ssh <USER>@<IP-ADDRESS>` and you should connect without a password prompt.
 
 If you see a message "Agent admitted failure to sign using the key" then add your RSA or DSA identities to the authentication agent `ssh-agent` then execute the following command:  
