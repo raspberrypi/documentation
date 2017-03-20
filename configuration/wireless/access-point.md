@@ -1,6 +1,8 @@
-## Setting up a Raspberry Pi as an Access Point
+## Setting up a Raspberry Pi as an Access Point in a stanalone network
 
-The Raspberry Pi can be used as a wireless access point, either by using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access points.
+The Raspberry Pi can be used as a wireless access point, running a standalone network, either by using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access points. Note that this documentation was tested on a Raspberry Pi 3, and it is possible some USB dongles may need slight changes to settings. If you are having trouble with a USB wireless dongle, please check the forums.
+
+To add a Raspberry Pi based access point to an existing network, see [this section](#using-the-raspberry-pi-as-an-access-point-to-share-an-internet-connection)
 
 In order to work as an access point, the Raspberry Pi will need to have access point software installed, along with a DHCP server software, to provide connecting devices with a network address.
 
@@ -12,7 +14,7 @@ sudo apt-get install dnsmasq hostapd
 
 ### Configuring a static IP
 
-To act as a server, the Raspberry Pi needs to have a static IP address assigned tothe wireless port. This documentation assumes we are using the standard 192.168.x.x IP address for our wireless network, so we will assign the server the IP address 192.168.0.1. It is also assumed that the wireless device being use is `wlan0`.
+Because we are configuring a standalone network, to act as a server, the Raspberry Pi needs to have a static IP address assigned to the wireless port. This documentation assumes we are using the standard 192.168.x.x IP addresses for our wireless network, so we will assign the server the IP address 192.168.0.1. It is also assumed that the wireless device being used is `wlan0`.
 
 First the standard interface handling for `wlan0` needs to be disabled. Normally the dhcpd daemon will search the network for another DHCP server to assign a IP address to `wlan0`, this is disabled by editing the configuration file
 ```
@@ -51,7 +53,7 @@ sudo nano /etc/dnsmasq.conf
 Type or copy the following information into the dnsmasq configuration file and save it.
 ```
 interface=wlan0      # Use the require wireless interface - usually wlan0
-  dhcp-range=192.168.0.2,192.168.0.20,255.255.255.0, 24h
+  dhcp-range=192.168.0.2,192.168.0.20,255.255.255.0,24h
 ```
 So for `wlan0` we are going to provide IP addresses between 192.168.0.2 and 192.168.0.20, with a lease time of 24 hours. If you are providing DHCP services for other network devices (e.g. eth0), you could add more sections with the appropriate interface header, with the range of addresses you intend to provide to that interface.
 
@@ -64,19 +66,19 @@ You need to edit the hostapd configuration file, located at /etc/hostapd/hostapd
 ```
 sudo nano /etc/hostapd/hostapd.conf
 ```
-Add the following information to the configuration file, editing in the appropriate entry for options inside <...>
+Add the following information to the configuration file, this configuration assumes we are using channel 7, with a network name of NameOfNetwork, and a password AardvarkBadgerHedgehog. Note that the name and password should NOT have quotes around them. 
 ```
-interface=<Usually wlan0, but check ifconfig to determine the name of the wireless device to use>
+interface=wlan0
 driver=nl80211
-ssid=<name of you wireless network here>
+ssid=NameOfNetwork
 hw_mode=g
-channel=<required channel number, between 1 and 13>
+channel=7
 wmm_enabled=0
 macaddr_acl=0
 auth_algs=1
 ignore_broadcast_ssid=0
 wpa=2
-wpa_passphrase=<your wireless network password>
+wpa_passphrase=AardvarkBadgerHedgehog
 wpa_key_mgmt=WPA-PSK
 wpa_pairwise=TKIP
 rsn_pairwise=CCMP
