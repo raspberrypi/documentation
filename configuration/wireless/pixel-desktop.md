@@ -1,6 +1,6 @@
-# Wireless connectivity in the Pixel desktop
+# Wireless connectivity in the PIXEL desktop
 
-A GUI is provided for setting up wireless connections in the current Raspbian with the Pixel desktop. If you are not using the Pixel desktop, you can set up wireless networking from the [command line](wireless-cli.md).
+A GUI is provided for setting up wireless connections in Raspbian with the PIXEL desktop. If you are not using the PIXEL desktop, you can set up wireless networking from the [command line](wireless-cli.md).
 
 Wireless connections can be made via the network icon at the right hand end of the menu bar. If a wireless dongle is plugged in, left-clicking this icon will bring up a list of available wireless networks, as shown below. If no networks are found, it will show the message "No APs found - scanning...". Wait a few seconds without closing the menu, and it should find your network.
 
