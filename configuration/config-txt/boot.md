@@ -22,7 +22,7 @@ Set `kernel_old` to `1` to load the kernel at the memory address `0x0`.
 
 ### ramfsfile
 
-`ramfsfile` is the optional filename on the boot partition of a ramfs to load. More information is available [here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=63&t=10532).
+`ramfsfile` is the optional filename on the boot partition of a ramfs to load. More information is available [here](https://www.raspberrypi.org/phpBB3/viewtopic.php?f=63&t=10532).
 
 ### ramfsaddr
 

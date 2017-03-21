@@ -140,7 +140,7 @@ The driver supports the following speeds:
 
 When asking for say 24 MHz, the actual speed will be 15.6 MHz.
 
-Forum post: [SPI has more speeds](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=44&t=43442&p=347073)
+Forum post: [SPI has more speeds](https://www.raspberrypi.org/phpBB3/viewtopic.php?f=44&t=43442&p=347073)
 
 ### Supported Mode bits
 
@@ -173,7 +173,7 @@ bcm2708_spi bcm2708_spi.0: master is unqueued, this is deprecated
 
 ### SPI driver latency
 
-This [thread](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=44&t=19489) discusses latency problems.
+This [thread](https://www.raspberrypi.org/phpBB3/viewtopic.php?f=44&t=19489) discusses latency problems.
 
 ### DMA capable driver
 

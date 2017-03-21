@@ -14,7 +14,7 @@ Note that the numbering of the GPIO pins is rather weird. *Appendix 1: A note on
 
 ## What are they for? What can I do with them?
 
-You can program the pins to interact in amazing ways with the real world. Inputs don't have to come from a physical switch; it could be input from a sensor or a signal from another computer or device, for example. The output can also do anything, from turning on an LED to sending a signal or data to another device. If the Raspberry Pi is on a network, you can control devices that are attached to it from anywhere\*\* and those devices can send data back. Connectivity and control of physical devices over the internet is a powerful and exciting thing, and the Raspberry Pi is ideal for this. There are lots of brilliant examples of physical computing on [our blog](http://www.raspberrypi.org/blog/).
+You can program the pins to interact in amazing ways with the real world. Inputs don't have to come from a physical switch; it could be input from a sensor or a signal from another computer or device, for example. The output can also do anything, from turning on an LED to sending a signal or data to another device. If the Raspberry Pi is on a network, you can control devices that are attached to it from anywhere\*\* and those devices can send data back. Connectivity and control of physical devices over the internet is a powerful and exciting thing, and the Raspberry Pi is ideal for this. There are lots of brilliant examples of physical computing on [our blog](https://www.raspberrypi.org/blog/).
 
 **Note**: Not **literally** anywhere, of course. You need things like access to the network, a network capable computing device, and electricity. Please do not write to us to point this out. :)
 
@@ -34,7 +34,7 @@ Here's the same circuit using the Raspberry Pi. The LED is connected to a GPIO p
 
 ![GPIO wth LED](images/gpio-led-pi2.png)
 
-The next step is to write a program to tell the pin to go HIGH or LOW. Here's an example using [Python](http://www.raspberrypi.org/learning/quick-reaction-game/) (see Step 2), and here's how to do it in [Scratch](http://www.raspberrypi.org/learning/robot-antenna/).
+The next step is to write a program to tell the pin to go HIGH or LOW. Here's an example using [Python](https://www.raspberrypi.org/learning/quick-reaction-game/) (see Step 2), and here's how to do it in [Scratch](https://www.raspberrypi.org/learning/robot-antenna/).
 
 ### Input
 
@@ -42,7 +42,7 @@ GPIO **outputs** are easy; they are on or off, HIGH or LOW, 3v3 or 0v. **Inputs*
 
 This is why you will see phrases like "pull up" and "pull down" in Raspberry Pi GPIO tutorials. It's a way of giving the input pin a reference so it knows for certain when an input is received.
 
-If you'd like to have a go at using the GPIO as an input then have a look at our [burping jelly baby](http://www.raspberrypi.org/learning/burping-jelly-baby/) and [quick reaction game](http://www.raspberrypi.org/learning/quick-reaction-game/) tutorials for Python, or a [reaction game](http://www.raspberrypi.org/learning/reaction-game/) for Scratch.
+If you'd like to have a go at using the GPIO as an input then have a look at our [burping jelly baby](https://www.raspberrypi.org/learning/burping-jelly-baby/) and [quick reaction game](https://www.raspberrypi.org/learning/quick-reaction-game/) tutorials for Python, or a [reaction game](https://www.raspberrypi.org/learning/reaction-game/) for Scratch.
 
 ## The end of the guide. The start of something amazing
 

@@ -16,7 +16,7 @@ Next, **upgrade** all your installed packages to their latest versions with the 
 sudo apt-get dist-upgrade
 ```
 
-Generally speaking, doing this regularly will keep your installation up to date, in that it will be equivalent to the latest released image available from [raspberrypi.org/downloads](http://www.raspberrypi.org/downloads/).
+Generally speaking, doing this regularly will keep your installation up to date, in that it will be equivalent to the latest released image available from [raspberrypi.org/downloads](https://www.raspberrypi.org/downloads/).
 
 However, there are occasional changes made in the Foundation's Raspbian image that require manual intervention, for example a newly introduced package. These are not installed with an upgrade, as this command only updates the packages you already have installed.
 

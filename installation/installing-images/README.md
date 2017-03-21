@@ -6,7 +6,7 @@ We recommend most users download [NOOBS](../noobs.md), which is designed to be v
 
 ## Download the image
 
-Official images for recommended operating systems are available to download from the Raspberry Pi website [Downloads page](http://www.raspberrypi.org/downloads/).
+Official images for recommended operating systems are available to download from the Raspberry Pi website [Downloads page](https://www.raspberrypi.org/downloads/).
 
 Alternative distributions are available from third-party vendors.
 
