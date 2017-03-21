@@ -50,11 +50,11 @@ For more information, consult the [documentation](https://docs.dataplicity.com/)
 
 ### Yaler.net
 
-[Yaler.net](https://yaler.net/) enables secure Web, SSH and VNC access to your Pi from anywhere.
+[Yaler.net](https://yaler.net/) enables secure web, SSH, and VNC access to your Pi from anywhere.
 
 The open source (Simplified BSD) YalerTunnel daemon is written in portable C.
 
-To remotely access your Pi via the Yaler relay infrastructure, [get started here](https://yaler.net/raspberrypi).
+To access your Pi remotely via the Yaler relay infrastructure, [get started here](https://yaler.net/raspberrypi).
 
 ### Losant
 
