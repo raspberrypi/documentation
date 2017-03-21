@@ -14,11 +14,17 @@ The Linux console can be re-enabled by adding the `enable_uart=1` to config.txt.
 
 The default value of the `enable_uart` flag depends on the actual roles of the UARTS, so that if ttyAMA0 is assigned to the BT module, `enable_uart` defaults to 0, if the mini-UART is assigned to the BT module, then `enable_uart` defaults to 1. Note that if the UARTS are reassigned using a device tree overlay (see below), `enable_uart` defaults will still obey this rule.
 
+## Disabling Linux's use of console UART
+
+In a default install of Raspbian, the primary UART (serial0) is assigned to the Linux console. Using the serial port for other purposes requires this default behaviour to be changed. On startup, `systemd` checks the Linux kernel command line for any console entries and will use the console defined therein. To stop this behaviour the command line needs to have the serial console setting removed.
+
+Edit the kernel command line with `sudo nano /boot/cmdline.txt`. Find the console entry that refers to the serial0 device, and remove it, including the baud rate setting. It will look something like `console=serial0,115200`. Make sure the rest of the line remains the same, as errors in this configuration can stop the Raspberry Pi from booting.
+
+Reboot the Raspberry Pi for the change to take effect.
 
 ### UART output on GPIO pins
 
 By default the UART transmit and receive pins are on GPIO 14 and GPIO 15 respectively, which are pins 8 and 10 on the GPIO header.
-
 
 ### UARTs and Device Tree
 
