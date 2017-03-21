@@ -58,7 +58,7 @@ You can verify if it has successfully connected using `ifconfig wlan0`. If the `
 
 ## Unsecured Networks
 
-If the network you are connecting to does not use a password, the wpa_supplicant entry for the network will need to include the correct `key_mgmt` entry.
+If the network you are connecting to does not use a password, the `wpa_supplicant` entry for the network will need to include the correct `key_mgmt` entry.
 e.g.
 ```
 network={
