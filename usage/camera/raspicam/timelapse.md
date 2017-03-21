@@ -1,12 +1,12 @@
-# Timelapse
+# Time-lapse
 
-To create a timelapse video, you simply configure the Raspberry Pi to take a picture at a regular interval, such as every minute, then use an application to stitch the pictures together in a video.
+To create a time-lapse video, you simply configure the Raspberry Pi to take a picture at a regular interval, such as every minute, then use an application to stitch the pictures together into a video.
 
 There are a couple of ways of doing this.
 
-## Using Raspistill's inbuilt Timelapse Mode
+## Using Raspistill's inbuilt time-lapse mode
 
-The raspstill application has a built in timelapse mode, using the `--timelapse` (or `-tl`) command line switch.
+The raspistill application has a built in time-lapse mode, using the `--timelapse` (or `-tl`) command line switch.
 
 The value that follows the switch is the time between shots in milliseconds.
 ```
@@ -18,7 +18,7 @@ The `%04d` indicates a four-digit number, with leading zeroes added to make up t
 
 If a timelapse value of 0 is entered, the application will take pictures as fast as possible. Note that there's an minimum enforced pause of approximately 30 milliseconds between captures to ensure that exposure calculations can be made.
 
-## Using Cron
+## Using cron
 
 A good way to automate taking a picture at a regular interval is using `cron`.
 
@@ -44,7 +44,7 @@ Ensure your scipt does not save each picture taken with the same filename. This 
 
 ## Stitching images together
 
-Now you'll need to stitch the photos together in to a video.
+Now you'll need to stitch the photos together into a video.
 
 You can do this on the Pi using `mencoder` but the processing will be slow. You may prefer to transfer the image files to your desktop computer or laptop and processing the video there.
 
@@ -59,7 +59,7 @@ Although it wil be slow (due to encoding in software rather than using the Raspb
 ```
 sudo apt-get install libav-tools
 ```
-Now to can use the tools to convert your JPEG files in to an H264 video file.
+Now you can use the tools to convert your JPEG files in to an H264 video file.
 ```
 avconv -r 10 -i image%04d.jpg -r 10 -vcodec libx264 -vf scale=1280:720 timelapse.mp4
 ```
