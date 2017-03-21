@@ -53,10 +53,29 @@ Navigate to the folder containing all your images and list the file names in to 
 ```
 ls *.jpg > stills.txt
 ```
+### On the Raspberry Pi
 
-### On Raspberry Pi or other Linux computer
+Although it wil be slow (due to encoding in software rather than using the Raspberry Pi hardware acceleration), you can stitch your JPEG images together using various available tools. This documentation will use `avconv`, which needs to be installed.
+```
+sudo apt-get install libav-tools
+```
+Now to can use the tools to convert your JPEG files in to an H264 video file.
+```
+avconv -r 10 -i image%04d.jpg -r 10 -vcodec libx264 -vf scale=1280:720 timelapse.mp4
+```
+On a Raspberry Pi 3, this can encode a little more than one frame per second. The performance of other Pi models will vary. The parameters used are:
 
-Install the package `mencoder`:
+ - -r 10 Assume ten frames per second in input and output files.
+ - -i image%04.jpg The input file specification (to match the files produced during the capture).
+ - -vcodec libx264 Use the software x264 encoder.
+ - -vf scale=1280:720 Scale to 720p. You can also use 1920:1080, or lower resolutions, depending on your requirements. Note the Pi can only play back up to 1080p video, but if you are intending to play back at, for example, 4K, you could set that here.
+ - timelapse.mp4 The name of the output file.
+
+`avconv` has a comprehensive parameter set for varying encoding options and other settings. These can be listed using `avconv --help`.
+
+### On another Linux computer
+
+You can use the same instructions as for the Raspberry Pi, or an alternative package such as `mencoder`:
 
 ```
 sudo apt-get install mencoder
@@ -69,9 +88,3 @@ mencoder -nosound -ovc lavc -lavcopts vcodec=mpeg4:aspect=16/9:vbitrate=8000000 
 ```
 
 Once that's completed, you should have a video file called `timelapse.avi` containing a time-lapse from your images.
-
-### On Mac OS
-
-
-
-### On Windows

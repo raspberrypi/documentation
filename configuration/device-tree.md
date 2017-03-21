@@ -2,12 +2,12 @@
 
 Raspberry Pi's latest kernels and firmware, including Raspbian and NOOBS releases, now by default use Device Tree (DT) to manage some resource allocation and module loading. This change is to alleviate the problem of multiple drivers contending for system resources, and to allow HAT modules to be auto-configured.
 
-The current implementation is not a pure Device Tree system - there is still board support code that creates some platform devices - but the external interfaces (I2C, I2S, SPI), and the audio devices that use them, must now be instantiated using a Device Tree Blob (DTB) passed to the kernel by the loader (`start.elf`).
+The current implementation is not a pure Device Tree system – there is still board support code that creates some platform devices – but the external interfaces (I2C, I2S, SPI), and the audio devices that use them, must now be instantiated using a Device Tree Blob (DTB) passed to the kernel by the loader (`start.elf`).
 
 The main impact of using Device Tree is to change from **everything on**, relying on module blacklisting to manage contention, to **everything off unless requested by the DTB**. In order to continue to use external interfaces and the peripherals that attach to them, you will need to add some new settings to your `config.txt`. Full details are given in [Part 3](#part3), but these are a few examples:
 
 ```
-# Uncomment some or all of these to enable the optional hardware interfaces
+# Uncomment some or all of these lines to enable the optional hardware interfaces
 #dtparam=i2c_arm=on
 #dtparam=i2s=on
 #dtparam=spi=on
@@ -31,7 +31,7 @@ The main impact of using Device Tree is to change from **everything on**, relyin
 ```
 
 <a name="part1"></a>
-## Part 1: Device Trees
+## Device Trees
 
 A Device Tree (DT) is a description of the hardware in a system. It should include the name of the base CPU, its memory configuration, and any peripherals (internal and external). A DT should not be used to describe the software, although by listing the hardware modules it does usually cause driver modules to be loaded. It helps to remember that DTs are supposed to be OS-neutral, so anything which is Linux-specific probably shouldn't be there.
 
