@@ -2,11 +2,11 @@
 
 The terminal (or 'command-line') on a computer allows a user a great deal of control over their system (or in this case, Pi!). Users of Windows may already have come across `Command Prompt` or `Powershell` and Mac OS users may be familiar with `Terminal`. All of these tools allow a user to directly manipulate their system through the use of commands. These commands can be chained together and/or combined together into complex scripts (see the [linux usage page on scripting](../../linux/usage/scripting.md)) that can potentially complete tasks more efficiently than much larger traditional software packages.
 
-## Starting LXTerminal
+## Opening a Terminal window
 
 On the Raspberry Pi (running Raspbian), the default terminal application is `LXTerminal`. This is known as a 'terminal emulator', this means that it emulates the old style video terminals (from before graphical user interfaces were developed) in a graphical environment. The application can be found on the Raspberry Pi desktop and when started will look something like this:
 
-![LXTerminal screenshot](images/lxterminal.png)
+![Terminal screenshot](images/terminal.png)
 
 You should be able to see the following prompt:
 

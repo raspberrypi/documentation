@@ -1,4 +1,4 @@
-## config.txt - Boot options
+## Boot options in config.txt 
 
 ### disable_commandline_tags
 
@@ -10,7 +10,7 @@ Set the `disable_commandline_tags` command to `1` to stop `start.elf` from filli
 
 ### kernel
 
-`kernel` is the alternative filename on the boot partition to use when loading the kernel; the default value is `kernel.img`.
+`kernel` is the alternative filename on the boot partition to use when loading the kernel. The default value is `kernel.img`.
 
 ### kernel_address
 
@@ -22,7 +22,7 @@ Set `kernel_old` to `1` to load the kernel at the memory address `0x0`.
 
 ### ramfsfile
 
-`ramfsfile` is the optional filename on the boot partition of a ramfs to load. More information is available [here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=63&t=10532).
+`ramfsfile` is the optional filename on the boot partition of a ramfs to load. More information is available [here](https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=10532).
 
 ### ramfsaddr
 
@@ -34,15 +34,15 @@ The `initramfs` command specifies both the ramfs filename **and** the memory add
 
 ### init_uart_baud
 
-`init_uart_baud` is the initial UART baud rate: the default value is `115200`.
+`init_uart_baud` is the initial UART baud rate. The default value is `115200`.
 
 ### init_uart_clock
 
-`init_uart_clock` is the initial UART clock frequency: the default value is `3000000` (3MHz).
+`init_uart_clock` is the initial UART clock frequency. The default value is `3000000` (3MHz).
 
 ### init_emmc_clock
 
-`init_emmc_clock` is the initial eMMC clock frequency: the default value is `100000000` (100MHz).
+`init_emmc_clock` is the initial eMMC clock frequency. The default value is `100000000` (100MHz).
 
 ### bootcode_delay
 
@@ -60,7 +60,7 @@ The `boot_delay_ms` command means wait for a given number of milliseconds in `st
 
 ### disable_splash
 
-If `disable_splash` is set to `1`, don't show the rainbow splash screen on boot. The default value is `0`.
+If `disable_splash` is set to `1`, the rainbow splash screen will not be shown on boot. The default value is `0`.
 
 
 

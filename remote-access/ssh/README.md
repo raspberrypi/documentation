@@ -6,15 +6,16 @@ The Raspberry Pi will act as a remote device: you can connect to it using a clie
 
 You only have access to the command line, not the full desktop environment. For a full remote desktop, see [VNC](../vnc/README.md).
 
-##1. Set up your local network and wireless connectivity
+## 1. Set up your local network and wireless connectivity
 
 Make sure your Raspberry Pi is properly set up and connected. If you are using wireless networking, this can be enabled via Pixel's [user interface](../../configuration/wireless/README.md), or using the [command line](../../configuration/wireless/wireless-cli.md). 
 
 If you are not using wireless connectivity, plug your Raspberry Pi directly into the router.
 
-You will need to note down the IP address of your Pi in order to connect to it later. Using the `ipconfig` command will display information about the current network status, including the IP address, or you can use `hostname -I` to display the IP addresses associated with the device.
+You will need to note down the IP address of your Pi in order to connect to it later. Using the `ifconfig` command will display information about the current network status, including the IP address, or you can use `hostname -I` to display the IP addresses associated with the device.
 
-##2. Enable SSH
+## 2. Enable SSH
+
 As of the November 2016 release, Raspbian has the SSH server disabled by default. It can be enabled manually from the desktop:
 
 1. Launch `Raspberry Pi Configuration` from the `Preferences` menu
@@ -31,11 +32,11 @@ Alternatively, [raspi-config](../../configuration/raspi-config.md) can be used:
 1. Select `Ok`
 1. Choose `Finish`
 
-##3. Enable SSH on a headless Raspberry Pi
+## 3. Enable SSH on a headless Raspberry Pi
 
 For headless setup, SSH can be enabled by placing a file named 'ssh', without any extension, onto the boot partition of the SD card. When the Pi boots, it looks for the 'ssh' file. If it is found, SSH is enabled, and the file is deleted. The content of the file does not matter: it could contain text, or nothing at all.
 
-##4. Set up your client
+## 4. Set up your client
 
 SSH is built into Linux distributions and Mac OS. For Windows and mobile devices, third-party SSH clients are available. See the following guides for using SSH with the OS on your computer or device:
 
@@ -43,4 +44,3 @@ SSH is built into Linux distributions and Mac OS. For Windows and mobile devices
 - [Windows](windows.md)
 - [iOS](ios.md)
 - [Android](android.md)
-

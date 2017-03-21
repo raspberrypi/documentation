@@ -98,7 +98,7 @@ You may experience poor quality pictures with a USB webcam, such as this acciden
 
 ![Bad webcam picture](images/jack.jpg)
 
-Some webcams are more reliable than others, but this sort of issue may occur with poor quality webcams. If the problem persists, ensure your system is [up to date](../../raspbian/updating.md). Also try other webcams, but you'll get the best performance from the Raspberry Pi [camera module](http://www.raspberrypi.org/help/camera-module-setup/).
+Some webcams are more reliable than others, but this sort of issue may occur with poor quality webcams. If the problem persists, ensure your system is [up to date](../../raspbian/updating.md). Also try other webcams, but you'll get the best performance from the Raspberry Pi [camera module](https://www.raspberrypi.org/help/camera-module-setup/).
 
 ## Bash script
 

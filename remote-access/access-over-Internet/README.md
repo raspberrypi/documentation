@@ -48,6 +48,14 @@ Dataplicity provides free support by e-mail and in-app messenger.
 
 For more information, consult the [documentation](https://docs.dataplicity.com/).
 
+### Yaler.net
+
+[Yaler.net](https://yaler.net/) enables secure web, SSH, and VNC access to your Pi from anywhere.
+
+The open source (Simplified BSD) YalerTunnel daemon is written in portable C.
+
+To access your Pi remotely via the Yaler relay infrastructure, [get started here](https://yaler.net/raspberrypi).
+
 ### Losant
 
 Losant is an easy-to-use developer platform designed to help you quickly and securely build connected applications. Losant provides powerful data collection, aggregation, and visualization.

@@ -1,6 +1,10 @@
 # Updating and Upgrading Raspbian
 
-First, **update** your system's package list by entering the following command in LXTerminal or from the command line:
+To update software in Raspbian, you'll need to use the [apt](../linux/software/apt.md) tool in a terminal window. Open the terminal from the taskbar or application menu:
+
+![Terminal](../usage/terminal/images/terminal.png)
+
+First, **update** your system's package list by entering the following command:
 
 ```bash
 sudo apt-get update
@@ -12,7 +16,7 @@ Next, **upgrade** all your installed packages to their latest versions with the 
 sudo apt-get dist-upgrade
 ```
 
-Generally speaking, doing this regularly will keep your installation up to date, in that it will be equivalent to the latest released image available from [raspberrypi.org/downloads](http://www.raspberrypi.org/downloads/).
+Generally speaking, doing this regularly will keep your installation up to date, in that it will be equivalent to the latest released image available from [raspberrypi.org/downloads](https://www.raspberrypi.org/downloads/).
 
 However, there are occasional changes made in the Foundation's Raspbian image that require manual intervention, for example a newly introduced package. These are not installed with an upgrade, as this command only updates the packages you already have installed.
 

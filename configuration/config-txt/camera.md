@@ -2,9 +2,7 @@
 
 ### disable_camera_led
 
-Setting this to `1` prevents the red camera LED from turning on when recording video or taking a still picture. This is useful for preventing reflections when the camera is facing a window, for example.
-
-
+Setting `disable_camera_led` to `1` prevents the red camera LED from turning on when recording video or taking a still picture. This is useful for preventing reflections when the camera is facing a window, for example.
 
 
 

@@ -6,11 +6,17 @@ We recommend most users download [NOOBS](../noobs.md), which is designed to be v
 
 ## Download the image
 
-Official images for recommended operating systems are available to download from the Raspberry Pi website [Downloads page](http://www.raspberrypi.org/downloads/).
+Official images for recommended operating systems are available to download from the Raspberry Pi website [Downloads page](https://www.raspberrypi.org/downloads/).
 
 Alternative distributions are available from third-party vendors.
 
 After downloading the `.zip` file, unzip it to get the image file (`.img`) for writing to your SD card.
+
+Note: the Raspbian with PIXEL image contained in the ZIP archive is over 4GB in size and uses the [ZIP64](https://en.wikipedia.org/wiki/Zip_(file_format)#ZIP64) format. To uncompress the archive, a unzip tool that supports ZIP64 is required. The following zip tools support ZIP64:
+
+- [7-Zip](http://www.7-zip.org/) (Windows)
+- [The Unarchiver](http://unarchiver.c3.cx/unarchiver) (Mac)
+- [Unzip](http://www.info-zip.org/mans/unzip.html) (Linux)
 
 ## Writing an image to the SD card
 

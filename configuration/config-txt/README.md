@@ -4,11 +4,11 @@ The Raspberry Pi uses a configuration file instead of the [BIOS](https://en.wiki
 
 Any changes will only take effect after you've rebooted your Raspberry Pi. After Linux has booted, you can view the current active settings using the following commands:
 
-`vcgencmd get_config <config>` - displays a specific config value, e.g. `vcgencmd get_config arm_freq`.
+- `vcgencmd get_config <config>`: this displays a specific config value, e.g. `vcgencmd get_config arm_freq`.
 
-`vcgencmd get_config int` - lists all the integer config options that are set (non-zero).
+- `vcgencmd get_config int`: this lists all the integer config options that are set (non-zero).
 
-`vcgencmd get_config str` - lists all the string config options that are set (non-null).
+- `vcgencmd get_config str`: this lists all the string config options that are set (non-null).
 
 Note that there are a few config settings that cannot be retrieved using `vcgencmd`.
 
@@ -34,7 +34,7 @@ overscan_bottom=10
 
 # config.txt Options
 
-A range of options can be specified using the config.txt file. These are split into different sections, indexed below.
+A range of options can be specified using the config.txt file. These are split into different sections, indexed below:
 
 - [Memory](memory.md)
 - [Licence Keys/Codecs](codeclicence.md)
