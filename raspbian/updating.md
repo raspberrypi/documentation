@@ -1,6 +1,6 @@
 # Updating and Upgrading Raspbian
 
-To update sofware in Raspbian, you'll need to use the [apt](../linux/software/apt.md) tool in a terminal window. Open the terminal from the taskbar or application menu:
+To update software in Raspbian, you'll need to use the [apt](../linux/software/apt.md) tool in a terminal window. Open the terminal from the taskbar or application menu:
 
 ![Terminal](../usage/terminal/images/terminal.png)
 
