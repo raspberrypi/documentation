@@ -2,8 +2,8 @@
 
 The following documentation is available.
 
-[Pixel Desktop](pixel-desktop.md).
- - A guide on setting up wireless networking using the Pixel desktop.
+[PIXEL Desktop](pixel-desktop.md).
+ - A guide on setting up wireless networking using the PIXEL desktop.
  
 [Command line](wireless-cli.md).
  - A guide on setting up wireless networking from the command line.
