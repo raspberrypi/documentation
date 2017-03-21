@@ -1,6 +1,10 @@
 # Updating and Upgrading Raspbian
 
-First, **update** your system's package list by entering the following command in LXTerminal or from the command line:
+To update sofware in Raspbian, you'll need to use the [apt](../linux/software/apt.md) tool in a terminal window. Open the terminal from the taskbar or application menu:
+
+![Terminal](../usage/terminal/images/terminal.png)
+
+First, **update** your system's package list by entering the following command:
 
 ```bash
 sudo apt-get update
