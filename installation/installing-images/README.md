@@ -12,6 +12,12 @@ Alternative distributions are available from third-party vendors.
 
 After downloading the `.zip` file, unzip it to get the image file (`.img`) for writing to your SD card.
 
+Note: The Raspbian with PIXEL image contained in the ZIP archive is over 4GB in size and uses the [ZIP64](https://en.wikipedia.org/wiki/Zip_(file_format)#ZIP64) format. To uncompress the archive, a unzip tool that supports ZIP64 is required. The following zip tools support ZIP64:
+
+- [7zip](http://www.7-zip.org/) (windows)
+- [The Unarchiver](http://unarchiver.c3.cx/unarchiver) (mac)
+- [Unzip](http://www.info-zip.org/mans/unzip.html) (linux)
+
 ## Writing an image to the SD card
 
 With the image file of the distribution of your choice, you need to use an image writing tool to install it on your SD card.
