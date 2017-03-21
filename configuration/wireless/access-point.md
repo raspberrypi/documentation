@@ -1,4 +1,4 @@
-## Setting up a Raspberry Pi as an Access Point in a standalone network
+## Setting up a Raspberry Pi as an access point in a standalone network
 
 The Raspberry Pi can be used as a wireless access point, running a standalone network, either by using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access points. 
 
@@ -23,19 +23,22 @@ sudo systemctl stop hostapd
 
 ### Configuring a static IP
 
-Because we are configuring a standalone network, to act as a server, the Raspberry Pi needs to have a static IP address assigned to the wireless port. This documentation assumes we are using the standard 192.168.x.x IP addresses for our wireless network, so we will assign the server the IP address 192.168.0.1. It is also assumed that the wireless device being used is `wlan0`.
+Because we are configuring a standalone network to act as a server, the Raspberry Pi needs to have a static IP address assigned to the wireless port. This documentation assumes we are using the standard 192.168.x.x IP addresses for our wireless network, so we will assign the server the IP address 192.168.0.1. It is also assumed that the wireless device being used is `wlan0`.
 
-First the standard interface handling for `wlan0` needs to be disabled. Normally the dhcpd daemon will search the network for another DHCP server to assign a IP address to `wlan0`, this is disabled by editing the configuration file
+First, the standard interface handling for `wlan0` needs to be disabled. Normally the dhcpd daemon will search the network for another DHCP server to assign a IP address to `wlan0`. This is disabled by editing the configuration file:
+
 ```
 sudo nano /etc/dhcpcd.conf
 ```
-Add `denyinterfaces wlan0` to the end of the file but above any other added `interface` lines and save the file.
+
+Add `denyinterfaces wlan0` to the end of the file (but above any other added `interface` lines) and save the file.
 
 To configure the static IP address, edit the interfaces configuration file with 
 ```
 sudo nano /etc/network/interfaces
 ```
-Find the `wlan0` section and edit it so its looks like the following.
+Find the `wlan0` section and edit it so that it looks like the following:
+
 ```
 allow-hotplug wlan0  
 iface wlan0 inet static  
@@ -44,7 +47,7 @@ iface wlan0 inet static
     network 192.168.0.0
 ```
 
-Now restart the DHCP daemon and set up the new `wlan0` configuration
+Now restart the DHCP daemon and set up the new `wlan0` configuration:
 
 ```
 sudo service dhcpcd restart
@@ -54,21 +57,25 @@ sudo ifup wlan0
 
 ### Configuring the DHCP server (dnsmasq)
 
-dnsmasq provides the needed DHCP service. By default the configuration file contains a lot of information that is not needed, and it is easier to start from scratch, so firstly rename this configuration file, and edit a new one.
+The needed DHCP service is provided by dnsmasq. By default, the configuration file contains a lot of information that is not needed, and it is easier to start from scratch. Rename this configuration file, and edit a new one.
+
 ```
 sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig  
 sudo nano /etc/dnsmasq.conf
 ```
-Type or copy the following information into the dnsmasq configuration file and save it.
+
+Type or copy the following information into the dnsmasq configuration file and save it:
+
 ```
 interface=wlan0      # Use the require wireless interface - usually wlan0
   dhcp-range=192.168.0.2,192.168.0.20,255.255.255.0,24h
 ```
-So for `wlan0` we are going to provide IP addresses between 192.168.0.2 and 192.168.0.20, with a lease time of 24 hours. If you are providing DHCP services for other network devices (e.g. eth0), you could add more sections with the appropriate interface header, with the range of addresses you intend to provide to that interface.
 
-dnsmasq has many more options, see the [dnsmasq documentation](http://www.thekelleys.org.uk/dnsmasq/doc.html) for more details.
+So for `wlan0`, we are going to provide IP addresses between 192.168.0.2 and 192.168.0.20, with a lease time of 24 hours. If you are providing DHCP services for other network devices (e.g. eth0), you could add more sections with the appropriate interface header, with the range of addresses you intend to provide to that interface.
 
-### Configuring the Access Point host software (hostapd)
+There are many more options for dnsmasq; see the [dnsmasq documentation](http://www.thekelleys.org.uk/dnsmasq/doc.html) for more details.
+
+### Configuring the access point host software (hostapd)
 
 You need to edit the hostapd configuration file, located at /etc/hostapd/hostapd.conf, to add the various parameters for your wireless network. After initial install, this will be a new/empty file.
 ```
