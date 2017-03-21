@@ -32,7 +32,7 @@ Setting `disable_pvt` to `1` disables adjusting the refresh rate of RAM every 50
 
 As of 19th November 2012, the firmware and kernel support Contiguous Memory Allocator (CMA), which means that the memory split between the CPU and GPU is managed dynamically at runtime. However, this is not [officially supported](https://github.com/raspberrypi/linux/issues/503).
 
-You can find an [example config.txt here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=223549#p223549).
+You can find an [example config.txt here](https://www.raspberrypi.org/forums/viewtopic.php?p=223549#p223549).
 
 #### cma_lwm
 

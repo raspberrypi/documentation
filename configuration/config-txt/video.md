@@ -52,7 +52,7 @@ Setting `hdmi_ignore_edid` to `0xa5000080` enables the ignoring of EDID/display 
 
 #### hdmi_edid_file
 
-Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. More information is available [here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=173430#p173430).
+Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. More information is available [here](https://www.raspberrypi.org/forums/viewtopic.php?p=173430#p173430).
 
 #### hdmi_force_edid_audio
 
@@ -136,7 +136,7 @@ The `hdmi_group` command defines the HDMI output group to be either CEA (Consume
 
 Together with `hdmi_group`, `hdmi_mode` defines the HDMI output format.
 
-To set a custom display mode not listed here, see [this thread](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=24679).
+To set a custom display mode not listed here, see [this thread](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=24679).
 
 These values are valid if `hdmi_group=1` (CEA):
 
@@ -295,7 +295,7 @@ These values are valid if `hdmi_group=2` (DMT):
 | 85 | 1280x720 | 60Hz | 720p |
 | 86 | 1366x768 |  | reduced blanking |
 
-Note that there is a [pixel clock limit](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=26&t=20155&p=195443#p195443).The highest supported mode is 1920x1200 at 60Hz with reduced blanking.
+Note that there is a [pixel clock limit](https://www.raspberrypi.org/forums/viewtopic.php?f=26&t=20155&p=195443#p195443).The highest supported mode is 1920x1200 at 60Hz with reduced blanking.
 
 ### Which values are valid for my monitor?
 

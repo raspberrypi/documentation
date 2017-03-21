@@ -2,9 +2,9 @@
 
 **NOTE:** Setting any overclocking parameters to values other than those used by [raspi-config](../raspi-config.md#overclock) may set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. The specific circumstances where the overclock bit is set is if `force_turbo` is set to `1` and any of the `over_voltage_*` options are set to a value > `0`. See the [blog post on Turbo Mode](https://www.raspberrypi.org/blog/introducing-turbo-mode-up-to-50-more-performance-for-free/) for more information.
 
-The latest kernel has a [cpufreq](http://www.pantz.org/software/cpufreq/usingcpufreqonlinux.html) kernel driver with the "ondemand" governor enabled by default. It has no effect if you have no overclock settings, but if you overclock, the CPU frequency will vary with processor load. Non-default values are only used when required, according to the governor. You can adjust the minimum values with the `*_min` config options, or disable dynamic clocking (and force overclocking) with `force_turbo=1`. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=169726#p169726).
+The latest kernel has a [cpufreq](http://www.pantz.org/software/cpufreq/usingcpufreqonlinux.html) kernel driver with the "ondemand" governor enabled by default. It has no effect if you have no overclock settings, but if you overclock, the CPU frequency will vary with processor load. Non-default values are only used when required, according to the governor. You can adjust the minimum values with the `*_min` config options, or disable dynamic clocking (and force overclocking) with `force_turbo=1`. For more information [see here](https://www.raspberrypi.org/forums/viewtopic.php?p=169726#p169726).
 
-Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85°C, in order to cool it down. You should not hit this limit on Raspberry Pi versions 1 or 2, but it is more likely with the Raspberry Pi 3. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=11579#p169872). Overclocking and overvoltage are also disabled when an under voltage situation is detected.
+Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85°C, in order to cool it down. You should not hit this limit on Raspberry Pi versions 1 or 2, but it is more likely with the Raspberry Pi 3. For more information [see here](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=11579#p169872). Overclocking and overvoltage are also disabled when an under voltage situation is detected.
 
 ### Overclocking options
 
@@ -23,7 +23,7 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | over_voltage_sdram_i | SDRAM I/O voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
 | over_voltage_sdram_p | SDRAM phy voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
 | force_turbo | Forces turbo mode frequencies even when the ARM cores are not busy. Enabling this may set the warranty bit if `over_voltage_*` is also set." |
-| initial_turbo | Enables turbo mode from boot for the given value in seconds, or until cpufreq sets a frequency. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=425#p180099). The default value is `0`, maximum value is `60`. |
+| initial_turbo | Enables turbo mode from boot for the given value in seconds, or until cpufreq sets a frequency. For more information [see here](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=6201&start=425#p180099). The default value is `0`, maximum value is `60`. |
 | arm_freq_min | Minimum value of arm_freq used for dynamic frequency clocking. The default value is `700` for Pi0/Pi1, `600` for the Pi2/Pi3. |
 | core_freq_min | Minimum value of `core_freq` used for dynamic frequency clocking. The default value is `250`. |
 | h264_freq_min | Minimum value of `h264_freq` used for dynamic frequency clocking. The default value is `250`. |
@@ -50,7 +50,7 @@ By default (`force_turbo=0`) the "On Demand" CPU frequency driver will raise clo
 
 ### Clocks relationship
 
-The GPU core, CPU, SDRAM and GPU each have their own PLLs and can have unrelated frequencies. The h264, v3d and ISP blocks share a PLL. For more information [see here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=6201&start=275#p168042).
+The GPU core, CPU, SDRAM and GPU each have their own PLLs and can have unrelated frequencies. The h264, v3d and ISP blocks share a PLL. For more information [see here](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=6201&start=275#p168042).
 
 To view the Pi's current frequency, type: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`. Divide the result by 1000 to find the value in MHz.
 
