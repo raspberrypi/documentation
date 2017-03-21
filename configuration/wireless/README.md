@@ -9,4 +9,4 @@ The following documentation is available.
  - A guide on setting up wireless networking from the command line.
  
 [Access point](access-point.md).
- - A guide on setting up the Raspbery Pi as an access point, and as a internet sharing device.
+ - A guide on setting the Raspberry Pi up as an access point, and as a internet sharing device.
