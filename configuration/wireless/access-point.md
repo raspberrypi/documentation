@@ -143,6 +143,11 @@ To do this, a 'bridge' needs to put in place between the wireless device and the
 sudo apt-get install hostapd bridge-utils
 ```
 
+Since the configuration files are not ready yet, turn the new software off as follows: 
+
+```
+sudo systemctl stop hostapd
+```
 Bridging creates a higher-level construct over the two ports being bridged. It is the bridge that is the network device, so we need to stop the `eth0` and `wlan0` ports being allocated IP addresses by the dhcp client on the Raspberry Pi.
 
 ```
@@ -160,12 +165,12 @@ sudo brctl addbr br0
 Connect the network ports. In this case, connect `eth0` to `wlan0`.
 
 ```
-sudo brctl addif br0 etho wlan0
+sudo brctl addif br0 eth0 wlan0
 ```
 
-Now the interfaces file needs to be edited to adjust the various devices to work with bridging. Use `sudo nano /etc/netowrk/interfaces` make the following edits.
+Now the interfaces file needs to be edited to adjust the various devices to work with bridging. Use `sudo nano /etc/network/interfaces` make the following edits.
 
-Change the wlan entry to manual and remove any other entries e.g. the static address.
+Change the wlan entry to manual if it not already so, and remove any other entries e.g. any static address.
 
 ```
 allow-hotplug wlan0
