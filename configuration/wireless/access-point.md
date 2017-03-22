@@ -168,7 +168,7 @@ Connect the network ports. In this case, connect `eth0` to `wlan0`.
 sudo brctl addif br0 eth0 wlan0
 ```
 
-Now the interfaces file needs to be edited to adjust the various devices to work with bridging. Use `sudo nano /etc/network/interfaces` make the following edits.
+Now the interfaces file needs to be edited to adjust the various devices to work with bridging. `sudo nano /etc/network/interfaces` make the following edits.
 
 Change the wlan entry to manual if it not already so, and remove any other entries e.g. any static address.
 
