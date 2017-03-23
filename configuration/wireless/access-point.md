@@ -49,7 +49,7 @@ iface wlan0 inet static
     network 192.168.0.0
 ```
 
-Now restart the dhcpd daemon and set up the new `wlan0` configuration:
+Now restart the dhcpcd daemon and set up the new `wlan0` configuration:
 
 ```
 sudo service dhcpcd restart
