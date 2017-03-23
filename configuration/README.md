@@ -24,5 +24,7 @@ Some basic guides to configuring your Raspberry Pi.
     - Device Trees, overlays and parameters.
 - [Kernel Command line](cmdline-txt.md)
     - How to set options in the kernel command line.
+- [UART configuration](uart.md)
+    - How to set up the on board UARTS.
 - [Firmware Warning Icons](warning-icons.md)
     - Description of warning icons displayed if the firmware detects issues.
