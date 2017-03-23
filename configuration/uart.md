@@ -18,7 +18,13 @@ The default value of the `enable_uart` flag depends on the actual roles of the U
 
 In a default install of Raspbian, the primary UART (serial0) is assigned to the Linux console. Using the serial port for other purposes requires this default behaviour to be changed. On startup, `systemd` checks the Linux kernel command line for any console entries and will use the console defined therein. To stop this behaviour the command line needs to have the serial console setting removed.
 
-Edit the kernel command line with `sudo nano /boot/cmdline.txt`. Find the console entry that refers to the serial0 device, and remove it, including the baud rate setting. It will look something like `console=serial0,115200`. Make sure the rest of the line remains the same, as errors in this configuration can stop the Raspberry Pi from booting.
+This can be done either by using the [raspi-config](raspi-config.md) utility, or manually.
+```
+sudo raspi-config
+```
+Select option 5, `Interfacing options`, then option P6, `Serial`, and select `No`. Exit raspi-config.
+
+To manually change the settings, edit the kernel command line with `sudo nano /boot/cmdline.txt`. Find the console entry that refers to the serial0 device, and remove it, including the baud rate setting. It will look something like `console=serial0,115200`. Make sure the rest of the line remains the same, as errors in this configuration can stop the Raspberry Pi from booting.
 
 Reboot the Raspberry Pi for the change to take effect.
 
