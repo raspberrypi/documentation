@@ -8,7 +8,7 @@ In Linux device terms, by default, /dev/ttyS0 refers to to the mini-UART, and /d
 
 ## Mini-UART and CPU Core frequency
 
-The baud rate of the Mini-UART is linked to the core frequency of the VPU on the VC4 GPU. This means that as the VPU frequency governor varies the core frequency, the baud rate of the UART also changes. This makes the UART of limited use in the default state. Also, when the linux console uses the mini-UART (Raspberry Pi 3, ZeroW), by default this is disabled for this very reason. 
+The baud rate of the Mini-UART is linked to the core frequency of the VPU on the VC4 GPU. This means that as the VPU frequency governor varies the core frequency, the baud rate of the UART also changes. This makes the UART of limited use in the default state. Also, when the linux console uses the mini-UART (Raspberry Pi 3, ZeroW), this varying baud rate means the console, by default, is disabled. 
 
 The Linux console can be re-enabled by adding the `enable_uart=1` to config.txt. This also fixes the core_freq to 250Mhz (unless force_turbo is set, when it will fixed to 400Mhz) which means the UART baud rate stays consistent. 
 
@@ -53,4 +53,4 @@ The particular deficiencies of the mini-UART compared to the PL011 are :
 - No Receive Time-out interrupt
 - No DCD, DSR, DTR or RI signals. 
 
-Full documentation can be found in the SoC peripherals document [here](https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf)
+Furthur documentation on the mini-UART can be found in the SoC peripherals document [here](https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf)
