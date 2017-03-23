@@ -20,12 +20,12 @@ To scan for WiFi networks, use the command `sudo iwlist wlan0 scan`. This will l
 	  psk=131e1e221f6e06e3911a2d11ff2fac9182665c004de85300f9cac208a6a80531
   }
   ```
-  
+
   As you can see, the password `testingPassword` is still visible as a comment, namely `#psk="testingPassword"`. When pasting the produced profile in your configuration file, make sure to remove this line (otherwise the whole procedure of generating the secret token would be pointless). The tool requires a password with at between eight and 63 characters. You can also extract the content of a text file and use it as input of `wpa_passphrase` if the password is stored as plain text inside a file somewhere by calling `wpa_passphrase "testing" << file_where_password_is_stored`.
-  
-  
+
+
 ## Adding the network details to the Raspberry Pi
-   
+
 Open the `wpa-supplicant` configuration file in nano:
 
 `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`  
@@ -49,7 +49,7 @@ network={
 ```
 
 If you are using `wpa_passphrase` you can redirect its output to your configuration file by calling `wpa_passphrase "testing" "testingPassword" >> /etc/wpa_supplicant/wpa_supplicant.conf`. Note that this requires you to change to `root` (by executing `sudo su`) or find another way to redirect the output since the file we write to can be altered only by a user with administrative privileges. Last but not least make sure you use `>>` (which is used to append text to an existing file) since `>` will erase all contents and **then** append the output to the specified file.
-   
+
 Now save the file by pressing **Ctrl+X** then **Y**, then finally press **Enter**.  
 
 At this point, `wpa-supplicant` will normally notice a change has occurred within a few seconds, and it will try and connect to the network. If it does not, restart the interface with `sudo wpa_cli reconfigure`.   
@@ -83,9 +83,9 @@ You can verify if it has successfully connected using `ifconfig wlan0`. If the `
 
 ## Adding multiple wireless network configurations
 
-On recent versions of Raspbian, it is possible to set up multiple configurations for wireless networking. For example, you could set up one for home and one for school. 
+On recent versions of Raspbian, it is possible to set up multiple configurations for wireless networking. For example, you could set up one for home and one for school.
 
-For example 
+For example
 ```
 network={
     ssid="SchoolNetworkSSID"
@@ -100,7 +100,7 @@ network={
 }
 ```
 
-If you have two networks in range, you can add the priority option to chose between them. The network in range, with the highest priority, will be the one that is connected.
+If you have two networks in range, you can add the priority option to choose between them. The network in range, with the highest priority, will be the one that is connected.
 
 ```
 network={
