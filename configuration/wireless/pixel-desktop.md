@@ -6,7 +6,7 @@ Wireless connections can be made via the network icon at the right hand end of t
 
 ![wifi2](images/wifi2.png)
 
-The icons on the right show whether a network is secured or not, and give an indication of its signal strength. Click the network that you want to connect to. If it is secured, a dialogue box is will prompt you to enter the network key:
+The icons on the right show whether a network is secured or not, and give an indication of its signal strength. Click the network that you want to connect to. If it is secured, a dialogue box will prompt you to enter the network key:
 
 ![key](images/key.png)
 
