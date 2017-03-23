@@ -8,7 +8,7 @@ To add a Raspberry Pi-based access point to an existing network, see [this secti
 
 In order to work as an access point, the Raspberry Pi will need to have access point software installed, along with DHCP server software to provide connecting devices with a network address. Ensure that your Raspberry Pi is using an up-to-date version of Raspbian (dated 2017 or later).
 
-Use the following to update your Raspbian installation.
+Use the following to update your Raspbian installation:
 ```
 sudo apt-get update
 sudo apt-get dist-upgrade
@@ -25,7 +25,7 @@ sudo systemctl stop hostapd
 
 ### Configuring a static IP
 
-Because we are configuring a standalone network to act as a server, the Raspberry Pi needs to have a static IP address assigned to the wireless port. This documentation assumes we are using the standard 192.168.x.x IP addresses for our wireless network, so we will assign the server the IP address 192.168.0.1. It is also assumed that the wireless device being used is `wlan0`.
+We are configuring a standalone network to act as a server, so the Raspberry Pi needs to have a static IP address assigned to the wireless port. This documentation assumes that we are using the standard 192.168.x.x IP addresses for our wireless network, so we will assign the server the IP address 192.168.0.1. It is also assumed that the wireless device being used is `wlan0`.
 
 First, the standard interface handling for `wlan0` needs to be disabled. Normally the dhcpd daemon will search the network for another DHCP server to assign a IP address to `wlan0`. This is disabled by editing the configuration file:
 
@@ -35,7 +35,7 @@ sudo nano /etc/dhcpcd.conf
 
 Add `denyinterfaces wlan0` to the end of the file (but above any other added `interface` lines) and save the file.
 
-To configure the static IP address, edit the interfaces configuration file with 
+To configure the static IP address, edit the interfaces configuration file with: 
 ```
 sudo nano /etc/network/interfaces
 ```
@@ -49,7 +49,7 @@ iface wlan0 inet static
     network 192.168.0.0
 ```
 
-Now restart the DHCP daemon and set up the new `wlan0` configuration:
+Now restart the dhcpd daemon and set up the new `wlan0` configuration:
 
 ```
 sudo service dhcpcd restart
@@ -59,7 +59,7 @@ sudo ifup wlan0
 
 ### Configuring the DHCP server (dnsmasq)
 
-The needed DHCP service is provided by dnsmasq. By default, the configuration file contains a lot of information that is not needed, and it is easier to start from scratch. Rename this configuration file, and edit a new one.
+The DHCP service is provided by dnsmasq. By default, the configuration file contains a lot of information that is not needed, and it is easier to start from scratch. Rename this configuration file, and edit a new one:
 
 ```
 sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig  
@@ -118,7 +118,7 @@ DAEMON_CONF="/etc/hostapd/hostapd.conf"
 
 ### Start it up
 
-Now start up the remaining services
+Now start up the remaining services:
 
 ```
 sudo service hostapd start  
@@ -150,7 +150,7 @@ Since the configuration files are not ready yet, turn the new software off as fo
 ```
 sudo systemctl stop hostapd
 ```
-Bridging creates a higher-level construct over the two ports being bridged. It is the bridge that is the network device, so we need to stop the `eth0` and `wlan0` ports being allocated IP addresses by the dhcp client on the Raspberry Pi.
+Bridging creates a higher-level construct over the two ports being bridged. It is the bridge that is the network device, so we need to stop the `eth0` and `wlan0` ports being allocated IP addresses by the DHCP client on the Raspberry Pi.
 
 ```
 sudo nano /etc/dhcpcd.conf
@@ -188,7 +188,7 @@ iface br0 inet dhcp
 bridge_ports eth0 wlan0
 ```    
 
-The access point setup is almost the same as that shown in the previous section. Follow those instructions to set up the `hostapd.conf` file, but add `bridge=br0` below the `interface=wlan0` line and remove or comment out the driver line.
+The access point setup is almost the same as that shown in the previous section. Follow the instructions above to set up the `hostapd.conf` file, but add `bridge=br0` below the `interface=wlan0` line, and remove or comment out the driver line.
 
 ```
 interface=wlan0
@@ -199,7 +199,7 @@ bridge=br0
 
 Now reboot the Raspberry Pi.
 
-There should now be a functioning bridge between the wireless LAN and the Ethernet connection on the Raspberry Pi, and any device associated with the Raspberry Pi access point will act as if it connected to the access point's wired Ethernet.
+There should now be a functioning bridge between the wireless LAN and the Ethernet connection on the Raspberry Pi, and any device associated with the Raspberry Pi access point will act as if it is connected to the access point's wired Ethernet.
 
 The `ifconfig` command will show the bridge, which will have been allocated an IP address via the wired Ethernet's DHCP server. The `wlan0` and `eth0` no longer have IP addresses, as they are now controlled by the bridge. It is possible to use a static IP address for the bridge if required, but generally, if the Raspberry Pi access point is connected to a ADSL router, the DHCP address will be fine.
 
