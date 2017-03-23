@@ -11,7 +11,7 @@ Some basic guides to configuring your Raspberry Pi.
 - [Wireless](wireless/README.md)
     - Configuring your Pi to connect to a wireless network using the Raspberry Pi 3 and Pi Zero W's inbuilt wireless connectivity, or a USB wireless dongle.
 - [Wireless Access Point](wireless/access-point.md)
-    - Configuring your Pi as a Wireless Access Point using the Raspberry Pi 3 and Pi Zero W's inbuilt wireless connectivity, or a USB wireless dongle.
+    - Configuring your Pi as a wireless access point using the Raspberry Pi 3 and Pi Zero W's inbuilt wireless connectivity, or a USB wireless dongle.
 - [Audio Config](audio-config.md)
     - Switch your audio output between HDMI and the 3.5mm jack.
 - [Camera Config](camera.md)
