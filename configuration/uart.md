@@ -22,11 +22,11 @@ Edit the kernel command line with `sudo nano /boot/cmdline.txt`. Find the consol
 
 Reboot the Raspberry Pi for the change to take effect.
 
-### UART output on GPIO pins
+## UART output on GPIO pins
 
 By default the UART transmit and receive pins are on GPIO 14 and GPIO 15 respectively, which are pins 8 and 10 on the GPIO header.
 
-### UARTs and Device Tree
+## UARTs and Device Tree
 
 Various UART device tree overlay definitions can be found in the kernel github tree. The two most useful overlays are [`pi3-disable-bt`](https://github.com/raspberrypi/linux/blob/rpi-4.11.y/arch/arm/boot/dts/overlays/pi3-disable-bt-overlay.dts) and [`pi3-miniuart-bt`](https://github.com/raspberrypi/linux/blob/rpi-4.11.y/arch/arm/boot/dts/overlays/pi3-miniuart-bt-overlay.dts).
 
@@ -42,7 +42,7 @@ For full instructions on how to use device tree overlays see [this page](./devic
 dtoverlay=pi3-disable-bt
 ...
 ```
-### Relevent differences between PL011 and Mini-UART
+## Relevent differences between PL011 and Mini-UART
 
 The mini-UART has smaller FIFOs, so when combined with the lack of flow control, it is more prone to lose characters at higher baudrates. It is also generally less capable that the PL011, mainly due to its baud rate link to the VPU clock speed.
 
