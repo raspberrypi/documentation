@@ -6,16 +6,18 @@ Note that this documentation was tested on a Raspberry Pi 3, and it is possible 
 
 To add a Raspberry Pi-based access point to an existing network, see [this section](#using-the-raspberry-pi-as-an-access-point-to-share-an-internet-connection).
 
-In order to work as an access point, the Raspberry Pi will need to have access point software installed, along with DHCP server software to provide connecting devices with a network address.
+In order to work as an access point, the Raspberry Pi will need to have access point software installed, along with DHCP server software to provide connecting devices with a network address. Also ensure that your Raspberry Pi is using an up to date version of Raspbian (dated 2017 or later).
 
+Use the following to update your Raspbian installation.
+```
+sudo apt-get update
+sudo apt-get dist-upgrade
+```
 Install all the required software in one go with this command: 
-
 ```
 sudo apt-get install dnsmasq hostapd
 ```
-
 Since the configuration files are not ready yet, turn the new software off as follows: 
-
 ```
 sudo systemctl stop dnsmasq
 sudo systemctl stop hostapd
