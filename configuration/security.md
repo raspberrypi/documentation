@@ -55,7 +55,26 @@ sudo deluser -remove-home pi
 
 SSH is a common way of accessing a Raspberry Pi remotely. By default, logging in with SSH requires a username/password pair, but a more secure method is to use key based authorisation.
 
-A `key` is a 128bit or more encrypted public key. 
+Key pairs are two, cryptographically secure, keys. On is private, one is public, and they can be used to authenticate a client to an SSH server (in this case the Raspberry Pi). 
+
+The client generates two keys, cryptographically linked to each other. The private key should never be released, but the public key can be freely shared. The SSH server takes a copy of the public key, and when a link is requested, uses this key to send the client a challenge message, which the client will encrypt using the private key. If the server can then decrypt this message using the public key back to the original challenge message then the identity of the client is confirmed. 
+
+Generating a key pair in Linux is done using the `ssh-keygen` command on the ***client***, and by default the keys are stored in the `.ssh` folder in the users home directly. The private key will be called id_rsa and the associated public key will be called id_rsa.pub. The key will be 2048 bits long and breaking the encryption on a key of that length would take an extremely long time, so is very secure. You can make longer keys if the situation demands it. Note that you should only do the generation process once, if repeated it will overwrite any previous generated keys. ANything relying on those old keys will need to be updated to the new keys. 
+
+You will be prompted for a passphrase during key generation, this is an extra level of security. For the moment leave this blank.
+
+The public key now needs to be moved on to the server. This can be done by email, or cut and paste, or file copying. Once on the server it needs to be added to the SSH systems authorised keys. It should be emphasised that the `id_rsa` file is the private key and SHOULD NOT LEAVE THE CLIENT, whilst the public key file is `id_rsa.pub`.
+
+Add the new public key to the authorisation file as follows:
+```
+cat id_rsa.pub >> ~/.ssh/authorized_keys
+```
+or by editing the file `sudo nano ~/.ssh/authorized_keys` and copy/pasting the key in. It is perfectly acceptable to have multiple entries in the authorized_keys file, so SSH can support multiple clients.
+
+
+
+
+
 
 
 
