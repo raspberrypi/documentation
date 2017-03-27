@@ -73,15 +73,15 @@ sudo parted /dev/sda
 (parted) mkpart primary fat32 0% 100M
 (parted) mkpart primary ext4 100M 100%
 (parted) print
-Model: SanDisk Ultra (scsi)
-Disk /dev/sda: 30.8GB
-Sector size (logical/physical): 512B/512B
-Partition Table: msdos
-Disk Flags:
+Model: SanDisk Cruzer (scsi)  
+Disk /dev/sda: 7761MB  
+Sector size (logical/physical): 512B/512B  
+Partition Table: msdos  
+Disk Flags:  
 
-Number  Start   End     Size    Type     File system  Flags
- 1      1049kB  99.6MB  98.6MB  primary  fat32        lba
- 2      99.6MB  30.8GB  30.7GB  primary  ext4         lba
+Number  Start   End     Size    Type     File system  Flags  
+ 1      1049kB  99.6MB  98.6MB  primary  fat32        lba  
+ 2      99.6MB  7761MB  7661MB  primary  ext4  
 ```
 Your `parted print` output should look similar to the one above.
 
