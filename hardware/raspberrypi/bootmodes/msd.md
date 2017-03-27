@@ -6,13 +6,14 @@ Check to make sure your SD card partitions are right for this example:
 ```
 $ lsblk
 ```
-NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-mmcblk0     179:0    0  7.4G  0 disk 
-├─mmcblk0p1 179:1    0  2.3G  0 part 
-├─mmcblk0p2 179:2    0    1K  0 part 
-├─mmcblk0p5 179:5    0   32M  0 part /media/pi/SETTINGS
-├─mmcblk0p6 179:6    0   66M  0 part /boot
-└─mmcblk0p7 179:7    0    5G  0 part /
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT  
+mmcblk0     179:0    0  7.4G  0 disk  
+├─mmcblk0p1 179:1    0   66M  0 part /boot  
+├─mmcblk0p2 179:2    0    5G  0 part /  
+├─mmcblk0p5 179:5    0   32M  0 part /media/pi/SETTINGS  
+├─mmcblk0p6 179:6    0  2.3G  0 part  
+└─mmcblk0p7 179:7    0    1K  0 part  
+
 Mountpoint '/boot' (last column) should be assigned to the mmcblk0p6 partition and Mountpoint '/' (root) should be assigned to the mmcblk0p7 partition.  If not, for example if '/boot' and '/' are assigned to mmcblk0p1 and mmcblk0p2 respectively then the sed commands below the "Edit `/boot/cmdline.txt` etc..." and fstab lines will have to be modified to reflect that change.  For example the 3 sed commands would be:
 sudo sed -i "s,root=/dev/mmcblk0p2,root=/dev/sda2," /mnt/target/boot/cmdline.txt
 sudo sed -i "s,/dev/mmcblk0p1,/dev/sda1," /mnt/target/etc/fstab
