@@ -59,7 +59,8 @@ sudo parted /dev/sda
 (parted) mktable msdos
 Warning: Partition(s) on /dev/sda are being used.
 Ignore/Cancel? ignore
-Warning: The existing disk label on /dev/sda will be destroyed and all data on this disk will be lost. Do you want to continue?
+Warning: The existing disk label on /dev/sda will be destroyed and all data on this disk will be lost.  
+Do you want to continue?
 Yes/No? Yes
 Error: Partition(s) 1 on /dev/sda have been written, but we have been unable to
 inform the kernel of the change, probably because it/they are in use. As a
@@ -135,7 +136,8 @@ cd ~
 sudo umount /mnt/target/boot 
 sudo umount /mnt/target
 ```
-(after doing the power off below disconnect the power supply from the Raspberry Pi, remove the SD card, and reconnect the power supply. If all has gone well, the Raspberry Pi should begin to boot after a few seconds.)
+(after doing the power off below disconnect the power supply from the Raspberry Pi, remove the SD card,  
+and reconnect the power supply. If all has gone well, the Raspberry Pi should begin to boot after a few seconds.)
 ```
 sudo poweroff 
 ```
