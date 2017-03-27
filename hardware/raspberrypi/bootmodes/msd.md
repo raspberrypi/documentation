@@ -26,7 +26,7 @@ sudo sed -i "s,/dev/mmcblk0p7,/dev/sda2," /mnt/target/etc/fstab
 ## Program USB Boot Mode
 Before a Raspberry Pi will boot from a mass storage device, it needs to be booted from an SD card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the SD card is no longer required. 
 
-Install Raspbian Lite (or Raspbian with PIXEL) on the SD card in the normal way [See here](../../../installation/installing-images/README.md).
+If this is a blank SD card, then install Raspbian Lite (or Raspbian with PIXEL) on the SD card in the normal way [See here](../../../installation/installing-images/README.md).
 
 First, prepare the `/boot` directory with up to date boot files:
 ```
