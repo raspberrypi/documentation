@@ -2,7 +2,7 @@
 This tutorial explains how to boot your Raspberry Pi 3 from a USB mass storage device such as a flash drive or USB hard disk. Be warned that this feature is experimental and may not work with all USB mass storage devices.
 
 ## Before Starting
-If this is a blank SD card, then install Raspbian Lite (or Raspbian with PIXEL) on the SD card in the normal way [See here](../../../installation/installing-images/README.md).  
+If this is a blank SD card (not setup with NOOBS or the following 'normal way'), then install Raspbian Lite (or Raspbian with PIXEL) on the SD card in the normal way [See here](../../../installation/installing-images/README.md).  
 
 Check to make sure your SD card partitions are right for this example:
 ```
