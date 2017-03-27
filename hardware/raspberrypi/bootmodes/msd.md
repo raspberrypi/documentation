@@ -6,19 +6,22 @@ Check to make sure your SD card partitions are right for this example:
 ```
 $ lsblk
 ```
-NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT  
-mmcblk0     179:0    0  7.4G  0 disk  
-├─mmcblk0p1 179:1    0   66M  0 part /boot  
-├─mmcblk0p2 179:2    0    5G  0 part /  
-├─mmcblk0p5 179:5    0   32M  0 part /media/pi/SETTINGS  
-├─mmcblk0p6 179:6    0  2.3G  0 part  
-└─mmcblk0p7 179:7    0    1K  0 part  
+NAME        | MAJ:MIN | RM  | SIZE | RO | TYPE | MOUNTPOINT         |
+------------|---------|-----|------|----|------|--------------------|
+mmcblk0     | 179:0   |  0  | 7.4G | 0  | disk |                    |
+├─mmcblk0p1 | 179:1   |  0  |  66M | 0  | part | /boot              |
+├─mmcblk0p2 | 179:2   |  0  |   5G | 0  | part | /                  |
+├─mmcblk0p5 | 179:5   |  0  |  32M | 0  | part | /media/pi/SETTINGS | 
+├─mmcblk0p6 | 179:6   |  0  | 2.3G | 0  | part |                    | 
+└─mmcblk0p7 | 179:7   |  0  |   1K | 0  | part |                    |
 
-Mountpoint '/boot' (last column) should be assigned to the mmcblk0p6 partition and Mountpoint '/' (root) should be assigned to the mmcblk0p7 partition.  If not, for example if '/boot' and '/' are assigned to mmcblk0p1 and mmcblk0p2 respectively then the sed commands below the "Edit `/boot/cmdline.txt` etc..." and fstab lines will have to be modified to reflect that change.  For example the 3 sed commands would be:
-sudo sed -i "s,root=/dev/mmcblk0p2,root=/dev/sda2," /mnt/target/boot/cmdline.txt
-sudo sed -i "s,/dev/mmcblk0p1,/dev/sda1," /mnt/target/etc/fstab
-sudo sed -i "s,/dev/mmcblk0p2,/dev/sda2," /mnt/target/etc/fstab
-*note: also make sure no other usb devices are plugged in
+Mountpoint '/boot' (last column) should be assigned to the mmcblk0p1 partition and Mountpoint '/' (root) should be assigned to the mmcblk0p2 partition.  If not, for example if the SD card was setup using NOOBS then '/boot' and '/' might be assigned to mmcblk0p6 and mmcblk0p7 respectively.  This would change the sed commands below the "Edit `/boot/cmdline.txt` etc..." line and fstab lines will have to be modified to reflect that change.  For example the 3 sed commands would be:  
+
+sudo sed -i "s,root=/dev/mmcblk0p7,root=/dev/sda2," /mnt/target/boot/cmdline.txt  
+sudo sed -i "s,/dev/mmcblk0p6,/dev/sda1," /mnt/target/etc/fstab  
+sudo sed -i "s,/dev/mmcblk0p7,/dev/sda2," /mnt/target/etc/fstab   
+
+*note: also make sure no other usb devices are plugged in  
 
 ## Program USB Boot Mode
 Before a Raspberry Pi will boot from a mass storage device, it needs to be booted from an SD card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the SD card is no longer required. 
