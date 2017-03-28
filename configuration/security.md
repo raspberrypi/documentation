@@ -6,11 +6,11 @@ What level of security you need depends on how you wish to use your Raspberry Pi
 
 However, if you wish to expose your Raspberry Pi directly to the internet, either with a direct connection (unlikely) or by letting certain protocols through your router firewall (e.g. SSH), then you need to make some basic security changes.
 
-Even if you are hidden behind a 
+Even if you are hidden behind a firewall, it is sensible to take security seriously. This documentation will describe some ways of improving the security of your Raspberry pi, but it is not exhaustive.
 
 ## Change your default password
 
-The default username and password is used for every single Raspberry Pi running Raspbian. So, if you can get access to a Raspberry Pi, and these setting shave not been changed, you have `root` access to that Raspberry Pi.
+The default username and password is used for every single Raspberry Pi running Raspbian. So, if you can get access to a Raspberry Pi, and these settings have not been changed, you have `root` access to that Raspberry Pi.
 
 So the first thing to do is change the password. This can be done via the raspi-config application, or from the command line.
 ```
@@ -41,7 +41,8 @@ sudo visudo
 ```
 `visudo` can only be run by an account with sudo privileges, so if it works OK, then the new account is in the `sudo` group.
 
-Once the account is confirmed OK, delete the `pi` user
+Once the account is confirmed OK, delete the `pi` user. *However*, with the current Raspbian distribution, there are some aspects that require the `pi` user to be present. If you are unsure whether you will be affected by this, then leave the `pi` user in place. Work is being done to reduce the dependency on the `pi` user.
+
 ```
 sudo deluser pi
 ```
@@ -49,6 +50,10 @@ This will leave the `home/pi` folder. If necessary you can use the following to 
 ```
 sudo deluser -remove-home pi
 ```
+
+## Ensure you have the latest security fixes
+
+This can be as simple as ensuring your version of Raspbian is up to date, as an up to date distribution contains all the latest security fixes. Full instructions can be found [here](../raspbian/updating.md).
 
 
 ## Improving SSH Security
@@ -71,9 +76,19 @@ cat id_rsa.pub >> ~/.ssh/authorized_keys
 ```
 or by editing the file `sudo nano ~/.ssh/authorized_keys` and copy/pasting the key in. It is perfectly acceptable to have multiple entries in the authorized_keys file, so SSH can support multiple clients.
 
+Once the key is in the authorisized_keys file on the server, then logging in from the client no longer requires a password, but is actually more secure.
 
 
+## Install a firewall
 
+There are many firewall solutions for Linux. Most use the underlying [iptables](http://www.netfilter.org/projects/iptables/index.html) netfiltering project to provide packet filtering, but provide an easier to use interface than `iptables` presents. `iptables` can be used as-is, 
+
+One such projects is `ufw`
+
+
+## Installing fail2ban
+
+[fail2ban](www.fail2ban.org) is a scanner, written in Python, that examines the log files produced by the Raspberry Pi, and checks them for suspicious activity. This catches things like multiple, brute force, atttempts to login, and can inform any installed firewall to stop any futher attempts to log in from suspicious IP addresses.
 
 
 
