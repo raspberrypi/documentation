@@ -81,14 +81,96 @@ Once the key is in the authorisized_keys file on the server, then logging in fro
 
 ## Install a firewall
 
-There are many firewall solutions for Linux. Most use the underlying [iptables](http://www.netfilter.org/projects/iptables/index.html) netfiltering project to provide packet filtering, but provide an easier to use interface than `iptables` presents. `iptables` can be used as-is, 
+There are many firewall solutions for Linux. Most use the underlying [iptables](http://www.netfilter.org/projects/iptables/index.html)  project to provide packet filtering, which itself sits over the Linux netfiltering system. `iptables` is installed by default on Raspbian, but is not set up. Setting it up can be a complicated task, and one project that provides an easier to use interface over `iptables` is [`ufw`](https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw) or `Uncomplicated Fire Wall`. This is the default firewall tool in Ubuntu and can be easily installed on your Raspberry Pi using 
+```
+sudo apt-get install ufw
+```
+`ufw` is a fairly easy to use command line tool, although there are some GUI's available for it. This document will describe a few of the basic command line options. Note that `ufw` needs to be run with supersuer privileges, so all commands are preceded with `sudo`. It is also possible to use the option `--dry-run` any `ufw` commands, which indicates the results of the command without actually making any changes.
 
-One such projects is `ufw`
+Enable the firewall, which will also ensure it starts up on boot, using 
+```
+sudo ufw enable
+```
+Disable the firewall, and disable start up on boot, using 
+```
+sudo ufw disable
+```
+Allow a particular port, in our examples, 22, to have access.
+```
+sudo ufw allow 22
+```
+Denying access on a port is also very simple.
+```
+sudo ufw deny 22
+```
+You can also specify which service you are allowing or denying on a port, in this example we are denying tcp on port 22.
+```
+sudo ufw deny 22/tcp
+```
+You can specify the service even if you do not know which port it uses. This example allows the ssh service access through the firewall.
+```
+sudo ufw allow ssh
+```
+The status commmand lists all current settings for the firewall.
+```
+sudo ufw status
+```
+The rules can be quite complicated, allowing specific IP addresses to be blocked, specifying in which direction traffic is allowed, or limiting the number of attempts to connect, for example to help defeat a Denial of Service attack (DoS). You can also specify the device rules are to be applied to (e.g. etho0, wlan0). Please refer to the `ufw` man page (`man ufw`) for ful details, but here are some examples of more sophisticated commands.
 
+Limit login attempts on ssh port using tcp, this denies connection if an IP address has attempted to connect 6 or more times in the last 30s
+```
+sudo ufm limit ssh/tcp
+```
+Deny access to port 30 from IP adress 192.168.2.1
+```
+sudo ufw deny from 192.168.2.1 port 30
+```
 
 ## Installing fail2ban
 
-[fail2ban](www.fail2ban.org) is a scanner, written in Python, that examines the log files produced by the Raspberry Pi, and checks them for suspicious activity. This catches things like multiple, brute force, atttempts to login, and can inform any installed firewall to stop any futher attempts to log in from suspicious IP addresses.
+[fail2ban](www.fail2ban.org) is a scanner, written in Python, that examines the log files produced by the Raspberry Pi, and checks them for suspicious activity. This catches things like multiple, brute force atttempts to login, and can inform any installed firewall to stop any futher attempts to log in from suspicious IP addresses. It avoids the need to manually read log files for intrusion attempts, and update the firewall (via `iptables`) to prevent them.
+
+Install `fail2ban` using the following command.
+```
+sudo apt-get install fail2ban
+```
+On installation, fail2ban creates a folder `/etc/fail2ban` in which there is a configuration file called `jail.conf`. This needs to be copied to `jail.local` to enable it. Inside this configuration file are a set of default options, but also options for checking  specific services for abnormalities. Do the following to examine/change the rules that are used for `ssh`:
+```
+sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+sudo nano /etc/fail2ban/jail.local
+```
+and look for the section on `[ssh]`. It will look something like this.
+```
+[ssh]
+enabled  = true
+port     = ssh
+filter   = sshd
+logpath  = /var/log/auth.log
+maxretry = 6
+```
+This section is named ssh, is enabled, examines the ssh port, filters using the `\etc\fail2ban\filters.d\sshd.conf` parameters, parses the /var/log/auth.log for malicious activity, and allows 6 retries before the detection threshold is reached. Checking the default section we can see that the default banning action is:
+```
+# Default banning action (e.g. iptables, iptables-new,
+# iptables-multiport, shorewall, etc) It is used to define
+# action_* variables. Can be overridden globally or per
+# section within jail.local file
+banaction = iptables-multiport
+```
+`iptables-multiport` means that the fail2ban system will run the `/etc/fail2ban/action.d/iptables-multiport.conf` file when the detection threshold is reached. There are a number of different action configuration files that can be used, multiport bans all access on all ports.
+
+If you want to permanently ban an IP address after 3 failed attempts, you can change the maxretry value in the `[ssh]` section, and set the bantime to a negative number
+```
+[ssh]
+enabled  = true
+port     = ssh
+filter   = sshd
+logpath  = /var/log/auth.log
+maxretry = 3 
+bantime = -1
+```
+
+There is a good tutorial on some of the internals of fail2ban [here](https://www.digitalocean.com/community/tutorials/how-fail2ban-works-to-protect-services-on-a-linux-server) 
+
 
 
 
