@@ -46,7 +46,7 @@ sudo make modules_install
 sudo cp arch/arm/boot/dts/*.dtb /boot/
 sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
 sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
-sudo scripts/mkknlimg arch/arm/boot/zImage /boot/$KERNEL.img
+sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 ```
 
 **Note**: On a Raspberry Pi 2/3, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
@@ -152,7 +152,7 @@ Finally, copy the kernel and Device Tree blobs onto the SD card, making sure to 
 
 ```bash
 sudo cp mnt/fat32/$KERNEL.img mnt/fat32/$KERNEL-backup.img
-sudo scripts/mkknlimg arch/arm/boot/zImage mnt/fat32/$KERNEL.img
+sudo cp arch/arm/boot/zImage mnt/fat32/$KERNEL.img
 sudo cp arch/arm/boot/dts/*.dtb mnt/fat32/
 sudo cp arch/arm/boot/dts/overlays/*.dtb* mnt/fat32/overlays/
 sudo cp arch/arm/boot/dts/overlays/README mnt/fat32/overlays/
