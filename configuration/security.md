@@ -76,8 +76,21 @@ cat id_rsa.pub >> ~/.ssh/authorized_keys
 ```
 or by editing the file `sudo nano ~/.ssh/authorized_keys` and copy/pasting the key in. It is perfectly acceptable to have multiple entries in the authorized_keys file, so SSH can support multiple clients.
 
-Once the key is in the authorisized_keys file on the server, then logging in from the client no longer requires a password, but is actually more secure.
-
+Note that the authorized_key file needs the correct permissions to be read correct by the `ssh` system.
+```
+sudo chmod 644 ~/.ssh/authorized_keys
+```
+Finally we need to disable password logins, so all authentication is done by the key pairs.
+```
+sudo nano /etc/ssh/sshd_config
+```
+There are three lines that need to be changed to `no`, if they are not set that way already
+```
+ChallengeResponseAuthentification no
+PasswordAuthentification no
+UsePAM no
+```
+Save the file and either restart the ssh system `sudo service ssh reload` or reboot.
 
 ## Install a firewall
 
