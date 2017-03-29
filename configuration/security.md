@@ -151,6 +151,8 @@ Install `fail2ban` using the following command.
 ```
 sudo apt-get install fail2ban
 ```
+Note that the version (v0.8.13) of fail2ban in the repository does not support IPv6 networks. If you use IPv6 then you will need to install a version v0.10 or higher from source. Please see the [fail2ban](www.fail2ban.org) website for more information on how to do this.
+
 On installation, fail2ban creates a folder `/etc/fail2ban` in which there is a configuration file called `jail.conf`. This needs to be copied to `jail.local` to enable it. Inside this configuration file are a set of default options, but also options for checking  specific services for abnormalities. Do the following to examine/change the rules that are used for `ssh`:
 ```
 sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
