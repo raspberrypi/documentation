@@ -27,3 +27,9 @@ or you can force output over the headphone jack with:
 ```bash
 omxplayer -o local example.mp3
 ```
+
+you can even force output over both the headphone jack and hdmi with:
+
+```bash
+omxplayer -o both example.mp3
+```
