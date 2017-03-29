@@ -55,6 +55,10 @@ sudo deluser -remove-home pi
 
 This can be as simple as ensuring your version of Raspbian is up to date, as an up to date distribution contains all the latest security fixes. Full instructions can be found [here](../raspbian/updating.md).
 
+If you are using `ssh` go connect to your Raspberry Pi, it can be worthwhile to add a cron job that specifically updates the ssh-server. The following command, perhaps as a daily cron job, will ensure you have the latest security fixes prompty, independent of your normal update process.
+```
+apt-get install openssh-server
+```
 
 ## Improving SSH Security
 
