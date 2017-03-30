@@ -48,7 +48,7 @@ network={
 }
 ```
 
-If you are using `wpa_passphrase` you can redirect its output to your configuration file by calling `wpa_passphrase "testing" "testingPassword" >> /etc/wpa_supplicant/wpa_supplicant.conf`. Note that this requires you to change to `root` (by executing `sudo su`) or find another way to redirect the output since the file we write to can be altered only by a user with administrative privileges. Last but not least make sure you use `>>` (which is used to append text to an existing file) since `>` will erase all contents and **then** append the output to the specified file.
+If you are using `wpa_passphrase` you can redirect its output to your configuration file by calling `wpa_passphrase "testing" "testingPassword" >> /etc/wpa_supplicant/wpa_supplicant.conf`. Note that this requires you to change to `root` (by executing `sudo su`) or you can use `wpa_passphrase "testing" "testingPassword" | sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf > /dev/null` which will append the passphrase without having to change to `root`. Either method provides the necessary administrative privileges to change the file. Last but not least make sure you use `>>`, or use `-a` with `tee`, (either are used to append text to an existing file) since `>`, or omitting `-a` when using `tee`, will erase all contents and **then** append the output to the specified file. Note that the redirection to `/dev/null` at the end of the second form simply prevents `tee` from _also_ outputting to the screen (standard output).
 
 Now save the file by pressing **Ctrl+X** then **Y**, then finally press **Enter**.  
 
