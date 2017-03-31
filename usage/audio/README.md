@@ -22,13 +22,13 @@ If omxplayer's auto-detection of the correct audio output device fails, you can 
 omxplayer -o hdmi example.mp3
 ```
 
-or you can force output over the headphone jack with:
+Alternatively, you can force output over the headphone jack with:
 
 ```bash
 omxplayer -o local example.mp3
 ```
 
-you can even force output over both the headphone jack and hdmi with:
+You can even force output over both the headphone jack and HDMI with:
 
 ```bash
 omxplayer -o both example.mp3
