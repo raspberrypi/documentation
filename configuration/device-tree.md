@@ -77,12 +77,12 @@ The following is a simple tree in the `.dts` format:
 
 This tree contains:
 
- - a required header -- `/dts-v1/`.
+ - a required header: `/dts-v1/`.
  - The inclusion of another DTS file, conventionally named `*.dtsi` and analogous to a `.h` header file in C - see _An aside about /include/_ below.
  - a single root node: `/`
  - a couple of child nodes: `node1` and `node2`
  - some children for node1: `child-node1` and `child-node2`
- - a label (`cousin`) and a reference to that label (`&cousin`) - see _Labels and References_ below.
+ - a label (`cousin`) and a reference to that label (`&cousin`): see _Labels and References_ below.
  - several properties scattered through the tree
  - a repeated node (`/node2`) - see _An aside about /include/_ below.
 
