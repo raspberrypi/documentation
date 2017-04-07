@@ -8,7 +8,7 @@ This guide is designed to help developers using the Compute Module (and Compute 
 
 The Compute Module (CM) and Compute Module 3 (CM3) contain the Raspberry Pi BCM2835 (or BCM2837 for CM3) system on a chip (SoC) or 'processor', memory, and eMMC. The eMMC is similar to an SD card but is soldered onto the board. Unlike SD cards, the eMMC is specifically designed to be used as a disk and has extra features that make it more reliable in this use case. Most of the pins of the SoC (GPIO, two CSI camera interfaces, two DSI display interfaces, HDMI etc) are freely available and can be wired up as the user sees fit (or, if unused, can usually be left unconnected). The Compute Module is a DDR2 SODIMM form-factor-compatible module, so any DDR2 SODIMM socket should be able to be used (note the pinout is NOT the same as an actual SODIMM memory module).
 
-To use the Compute Module, a user needs to design a (relatively simple) 'motherboard' which can provide power to the Compute Module (3.3V and 1.8V at minimum,) and which connects the pins to the required peripherals for the user's application.
+To use the Compute Module, a user needs to design a (relatively simple) 'motherboard' which can provide power to the Compute Module (3.3V and 1.8V at minimum), and which connects the pins to the required peripherals for the user's application.
 
 Raspberry Pi provides a minimal motherboard for the Compute Module (called the Compute Module IO Board, or CMIO Board) which powers the module, brings out the GPIO to pin headers, and brings the camera and display interfaces out to FFC connectors. It also provides HDMI, USB, and an 'ACT' LED, as well as the ability to program the eMMC of a module via USB from a PC or Raspberry Pi.
 
@@ -148,7 +148,7 @@ You can include more diagnostics in the output by adding `dtdebug=1` to `config.
 
 ##Getting Help
 
-Please use the [Device Tree subforum](https://www.raspberrypi.org/forums/viewforum.php?f=107) on the Raspberry Pi forums to ask Device Tree-related questions.
+Please use the [Device Tree subforum](https://www.raspberrypi.org/forums/viewforum.php?f=107) on the Raspberry Pi forums to ask Device Tree related questions.
 
 ##Examples
 
