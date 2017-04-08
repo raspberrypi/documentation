@@ -34,7 +34,7 @@ Alternatively, [raspi-config](../../configuration/raspi-config.md) can be used:
 
 ## 3. Enable SSH on a headless Raspberry Pi
 
-For headless setup, SSH can be enabled by placing a file named 'ssh', without any extension, onto the boot partition of the SD card. When the Pi boots, it looks for the 'ssh' file. If it is found, SSH is enabled, and the file is deleted. The content of the file does not matter: it could contain text, or nothing at all.
+For headless setup, SSH can be enabled by placing a file named `ssh`, without any extension, onto the boot partition of the SD card. When the Pi boots, it looks for the 'ssh' file. If it is found, SSH is enabled, and the file is deleted. The content of the file does not matter: it could contain text, or nothing at all.
 
 ## 4. Set up your client
 
