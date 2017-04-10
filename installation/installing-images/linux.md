@@ -56,8 +56,8 @@ unzip -p 2017-02-16-raspbian-jessie.zip | sudo dd of=/dev/sdX bs=4096
 
     ```bash
     dd bs=4M if=/dev/sdX of=from-sd-card.img
-    truncate --reference 2017-02-16-raspbian-jessie.img from-sd-card.img
-    diff -s from-sd-card.img 2017-02-16-raspbian-jessie.img
+    truncate --reference 2017-03-02-raspbian-jessie.img from-sd-card.img
+    diff -s from-sd-card.img 2017-03-02-raspbian-jessie.img
     ```
 
 - Run `sync`. This will ensure the write cache is flushed and that it is safe to unmount your SD card.
