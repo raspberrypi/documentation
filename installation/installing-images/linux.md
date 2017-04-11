@@ -1,5 +1,7 @@
 # Installing operating system images on Linux
 
+[Etcher](README.md) is typically the easiest option for most users to write images to SD cards, and you should start with that if you're not sure. If you want more advanced options on Linux though you can use the standard command line tools below.
+
 Please note that the use of the `dd` tool can overwrite any partition of your machine. If you specify the wrong device in the instructions below, you could delete your primary Linux partition. Please be careful.
 
 ### Discovering the SD card mountpoint and unmounting it

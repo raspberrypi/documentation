@@ -1,6 +1,8 @@
 # Installing operating system images on Mac OS
 
-On Mac OS you can use the command line `dd` tool to write the image to your SD card.
+[Etcher](README.md) is typically the easiest option for most users to write images to SD cards, and you should start with that if you're not sure. If you want more advanced options on Mac OS though you can use the built-in graphical and command-line tools below.
+
+Please note that the use of the `dd` tool can overwrite any partition of your machine. If you specify the wrong device in the instructions below, you could delete your primary Mac OS partition. Please be careful.
 
 ## (Mostly) graphical interface
 
