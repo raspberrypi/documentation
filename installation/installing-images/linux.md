@@ -44,7 +44,7 @@ unzip -p 2017-04-10-raspbian-jessie.zip | sudo dd of=/dev/sdX bs=4096
 
 - To see the progress of the copy operation, you can run the dd command with the status option.
    ```
-    dd bs=4M if=2017-04-10-raspbian-jessie.img of=/dev/sdd status=progress
+    dd bs=4M if=2017-04-10-raspbian-jessie.img of=/dev/sdX status=progress
    ```
 - If you are using an older version of `dd`, the status option may not be available. You may be able to use the `dcfldd` command instead, which will give a progress report about how much has been written.
 
