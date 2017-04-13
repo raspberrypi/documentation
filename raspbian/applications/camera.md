@@ -273,7 +273,9 @@ Sets blue and red gains (as floating point numbers) to be applied when `-awb -of
 --mode,	-md
 ```
 
-Sets a specified sensor mode, disabling the automatic selection. Possible values are :
+Sets a specified sensor mode, disabling the automatic selection. Possible values depend on which version of the camera module being used: 
+
+Version 1.x (OV5647)
 
 |Mode| Size | Aspect Ratio |Frame rates | FOV | Binning |
 |----|------|--------------|------------|-----|---------|
@@ -285,6 +287,19 @@ Sets a specified sensor mode, disabling the automatic selection. Possible values
 |5|1296x730|16:9|1-49fps|Full|2x2|
 |6|640x480|4:3|42.1-60fps|Full|2x2 plus skip|
 |7|640x480|4:3|60.1-90fps|Full|2x2 plus skip|
+
+Version 2.x (IMX219)
+
+|Mode| Size | Aspect Ratio |Frame rates | FOV | Binning |
+|----|------|--------------|------------|-----|---------|
+|0| automatic selection |||||
+|1|1920x1080|16:9| 0.1-30fps|Partial|None|
+|2|3280x2464|4:3|0.1-15fps|Full|None|
+|3|3280x2464|4:3|0.1-15fps|Full|None|
+|4|1640x1232|4:3|0.1-40fps|Full|2x2|
+|5|1640x922|16:9|0.1-40fps|Full|2x2|
+|6|1280x720|16:9|40-90fps|Partial|2x2|
+|7|640x480|4:3|40-90fps|Partial|2x2|
 
 ```
 	--camselect,	-cs
