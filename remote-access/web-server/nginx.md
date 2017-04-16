@@ -117,3 +117,10 @@ Add some dynamic PHP content by replacing the current content:
 ```
 
 Save and refresh your browser. You should see a page with the PHP version, logo and current configuration settings.
+
+Restart the server if it does not understand the PHP code:
+and start the server with:
+
+```bash
+sudo /etc/init.d/nginx restart
+```
