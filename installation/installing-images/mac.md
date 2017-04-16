@@ -10,6 +10,23 @@ On Mac OS you can use the command line `dd` tool, or the graphical tool Etcher t
 - After selecting the `.img` file in Step 1, you will now select the SD card you wish to write the `.img` file to.
 - Review your selections and click "Flash!" to begin writing data to the SD card. Once complete, you can eject the mounted SD card from your Mac using `Finder.app`.
 
+## Formaating your SD card first (Optional)
+
+If you have used your SD card for other purposes in the past (like using it in a camera) it may be appropritate to format your SD card first.
+
+- Connect the SD card reader with the SD card inside.
+
+- Open 'Disk Utillity', you can find this by searching for it (command, space).
+
+- Click the left were it has your SD card.
+
+- Click the erase option.
+
+- Select MS-DOS if you have a SD card 32GB or smaller. Select ExFat if you have a 64GB SD card.
+
+- Change the name to something you can remember and then click Erase.
+
+
 ## (Mostly) graphical interface
 
 - Connect the SD card reader with the SD card inside. Note that it must be formatted as FAT32.
