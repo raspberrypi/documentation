@@ -71,6 +71,14 @@ This will take a few minutes, depending on the image file size. To check the pro
        sudo dd bs=1M if=2017-04-10-raspbian-jessie.img of=/dev/disk4
        ```
 
+- After the `dd` command finishes, eject the card:
+
+    ```
+    sudo diskutil eject /dev/rdisk4
+    ```
+
+    (or: open Disk Utility and eject the SD card)
+
 ## Alternative method
 
 **Note: Some users have reported issues with using this method to create SD cards.**
