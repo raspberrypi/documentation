@@ -273,7 +273,7 @@ Sets blue and red gains (as floating point numbers) to be applied when `-awb -of
 --mode,	-md
 ```
 
-Sets a specified sensor mode, disabling the automatic selection. Possible values depend on which version of the camera module being used: 
+Sets a specified sensor mode, disabling the automatic selection. Possible values depend on the version of the Camera Module being used: 
 
 Version 1.x (OV5647)
 
