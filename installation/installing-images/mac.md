@@ -35,6 +35,8 @@ On Mac OS you can use the command line `dd` tool, or the graphical tool Etcher t
 This will take a few minutes, depending on the image file size. To check the progress open Activity Monitor, click the Disk tab and find the process with the name `dd`. If `dd` is not in the list, you may need to select All Processes from the View menu. The Bytes Read column will display the amount of data that has been read from the image. Compare that to the file size of the image to determine progress.
 
 
+ This will take a few minutes, depending on the image file size. To check the progress open Activity Monitor, click the Disk tab and find the process with the name of `dd`. The Bytes Read column will display the amount of data that has been read from the image. Compare that to the file size of the image.
+
 ## Command line
 
 - If you are comfortable with the command line, you can write the image to an SD card without any additional software. Open a terminal, then run:
