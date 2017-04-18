@@ -57,3 +57,8 @@ You can delete a user on your system with the command `userdel`. Apply the `-r` 
 ```bash
 sudo userdel -r bob
 ```
+
+## Useful examples and references
+
+ - [How to create a "guest" user who cannot access any of the "/home/pi" directories or files](http://raspberrypi.stackexchange.com/a/58778/49091) (although the "pi" user still gets full privileges over all of the "/home/guest" directories and files).
+ - [Linux Users and Groups](https://www.linode.com/docs/tools-reference/linux-users-and-groups) - description, examples, and reference
