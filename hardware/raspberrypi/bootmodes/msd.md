@@ -1,16 +1,38 @@
 # How to boot from a USB Mass Storage Device on a Raspberry Pi 3
 This tutorial explains how to boot your Raspberry Pi 3 from a USB mass storage device such as a flash drive or USB hard disk. Be warned that this feature is experimental and may not work with all USB mass storage devices.
 
+## Before Starting
+If this is a blank SD card (not setup with NOOBS or the following 'normal way'), then install Raspbian Lite (or Raspbian with PIXEL) on the SD card in the normal way [See here](../../../installation/installing-images/README.md).  
+
+Check to make sure your SD card partitions are right for this example:
+```
+$ lsblk
+```
+NAME        | MAJ:MIN | RM  | SIZE | RO | TYPE | MOUNTPOINT         |
+------------|---------|-----|------|----|------|--------------------|
+mmcblk0     | 179:0   |  0  | 7.4G | 0  | disk |                    |
+├─mmcblk0p1 | 179:1   |  0  |  66M | 0  | part | /boot              |
+├─mmcblk0p2 | 179:2   |  0  |   5G | 0  | part | /                  |
+├─mmcblk0p5 | 179:5   |  0  |  32M | 0  | part | /media/pi/SETTINGS | 
+├─mmcblk0p6 | 179:6   |  0  | 2.3G | 0  | part |                    | 
+└─mmcblk0p7 | 179:7   |  0  |   1K | 0  | part |                    |
+
+Mountpoint '/boot' (last column) should be assigned to the mmcblk0p1 partition and Mountpoint '/' (root) should be assigned to the mmcblk0p2 partition.  If not, for example if the SD card was setup using NOOBS then '/boot' and '/' might be assigned to mmcblk0p6 and mmcblk0p7 respectively.  This would change the sed commands below the "Edit `/boot/cmdline.txt` etc..." line. The sed command just below this line and the two fstab sed commands will have to be modified to reflect that change.  For example the 3 sed commands would be:  
+
+sudo sed -i "s,root=/dev/mmcblk0p7,root=/dev/sda2," /mnt/target/boot/cmdline.txt  
+sudo sed -i "s,/dev/mmcblk0p6,/dev/sda1," /mnt/target/etc/fstab  
+sudo sed -i "s,/dev/mmcblk0p7,/dev/sda2," /mnt/target/etc/fstab   
+
+*note: also make sure no other usb devices are plugged in  
+
 ## Program USB Boot Mode
 Before a Raspberry Pi will boot from a mass storage device, it needs to be booted from an SD card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the SD card is no longer required. 
-
-Install Raspbian Lite (or Raspbian with PIXEL) on the SD card in the normal way [See here](../../../installation/installing-images/README.md).
 
 First, prepare the `/boot` directory with up to date boot files:
 ```
 $ sudo apt-get update
 ```
-Then enable USB boot mode with this code:
+Then enable USB boot mode with this code: 
 ```
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
 ```
@@ -35,20 +57,31 @@ We will start by using Parted to create a 100MB FAT32 partition, followed by a L
 sudo parted /dev/sda
 
 (parted) mktable msdos
-Warning: The existing disk label on /dev/sda will be destroyed and all data on this disk will be lost. Do you want to continue?
+Warning: Partition(s) on /dev/sda are being used.
+Ignore/Cancel? ignore
+Warning: The existing disk label on /dev/sda will be destroyed and all data on this disk will be lost.  
+Do you want to continue?
 Yes/No? Yes
+Error: Partition(s) 1 on /dev/sda have been written, but we have been unable to
+inform the kernel of the change, probably because it/they are in use. As a
+result, the old partition(s) will remain in use. You should reboot now before
+making further changes.
+Ignore/Cancel? cancel
+(parted) quit
+reboot
+sudo parted /dev/sda
 (parted) mkpart primary fat32 0% 100M
 (parted) mkpart primary ext4 100M 100%
 (parted) print
-Model: SanDisk Ultra (scsi)
-Disk /dev/sda: 30.8GB
-Sector size (logical/physical): 512B/512B
-Partition Table: msdos
-Disk Flags:
+Model: SanDisk Cruzer (scsi)  
+Disk /dev/sda: 7761MB  
+Sector size (logical/physical): 512B/512B  
+Partition Table: msdos  
+Disk Flags:  
 
-Number  Start   End     Size    Type     File system  Flags
- 1      1049kB  99.6MB  98.6MB  primary  fat32        lba
- 2      99.6MB  30.8GB  30.7GB  primary  ext4         lba
+Number  Start   End     Size    Type     File system  Flags  
+ 1      1049kB  99.6MB  98.6MB  primary  fat32        lba  
+ 2      99.6MB  7761MB  7661MB  primary  ext4  
 ```
 Your `parted print` output should look similar to the one above.
 
@@ -80,9 +113,9 @@ sudo chroot /mnt/target
 rm /etc/ssh/ssh_host*
 dpkg-reconfigure openssh-server
 exit
-sudo umount dev
-sudo umount sys
-sudo umount proc
+reboot
+sudo mount /dev/sda2 /mnt/target/
+sudo mount /dev/sda1 /mnt/target/boot/
 ```
 
 Edit `/boot/cmdline.txt` so that it uses the USB storage device as the root file system, instead of the SD card.
@@ -93,7 +126,8 @@ sudo sed -i "s,root=/dev/mmcblk0p2,root=/dev/sda2," /mnt/target/boot/cmdline.txt
 
 The same needs to be done for `fstab`:
 ```
-sudo sed -i "s,/dev/mmcblk0p,/dev/sda," /mnt/target/etc/fstab
+sudo sed -i "s,/dev/mmcblk0p1,/dev/sda1," /mnt/target/etc/fstab
+sudo sed -i "s,/dev/mmcblk0p2,/dev/sda2," /mnt/target/etc/fstab
 ```
 
 Finally, unmount the target file systems, and power the Raspberry Pi off.
@@ -101,7 +135,9 @@ Finally, unmount the target file systems, and power the Raspberry Pi off.
 cd ~
 sudo umount /mnt/target/boot 
 sudo umount /mnt/target
+```
+(after doing the power off below disconnect the power supply from the Raspberry Pi, remove the SD card,  
+and reconnect the power supply. If all has gone well, the Raspberry Pi should begin to boot after a few seconds.)
+```
 sudo poweroff 
 ```
-
-Disconnect the power supply from the Raspberry Pi, remove the SD card, and reconnect the power supply. If all has gone well, the Raspberry Pi should begin to boot after a few seconds.
