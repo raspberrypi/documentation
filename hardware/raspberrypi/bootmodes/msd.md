@@ -8,7 +8,7 @@ Install Raspbian Lite (or Raspbian with PIXEL) on the SD card in the normal way 
 
 First, prepare the `/boot` directory with up to date boot files:
 ```
-$ sudo apt-get update
+$ sudo apt-get update && sudo apt-get upgrade
 ```
 Then enable USB boot mode with this code:
 ```
