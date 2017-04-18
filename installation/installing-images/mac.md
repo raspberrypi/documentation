@@ -57,7 +57,7 @@ This will take a few minutes, depending on the image file size. To check the pro
     - This may result in a ``dd: invalid number '1m'`` error if you have GNU
     coreutils installed. In that case, you need to use a block size of `1M` in the `bs=` section, as follows:
 
-       `sudo dd bs=1M if=image.img of=/dev/rdisk<disk# from diskutil>`
+       `sudo dd bs=1M if=image.img of=/dev/disk<disk# from diskutil>`
 
     This will take a few minutes, depending on the image file size. You can check the progress by sending a `SIGINFO` signal (press `Ctrl+T`).
     
