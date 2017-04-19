@@ -38,6 +38,6 @@ Starting with the 2017-04-10 release of Raspbian you can install a working Rasbi
 
 Once you have finished imaging your USB mass storage device, remove it from your computer and insert it into your Raspberry Pi 3.
 
-## Boot your Pi 3 from the USB mass storage device
+## Boot your Raspberry Pi 3 from the USB mass storage device
 
-Attach the USB mass storage device to your Pi 3 and power it up. After between 5 and 10 seconds the Pi 3 should begin booting and display the rainbow splash screen on an attached screen.
+Attach the USB mass storage device to your Raspberry Pi 3 and power it up. After between five and ten seconds the Raspberry Pi 3 should begin booting, and display the rainbow splash screen on an attached screen.
