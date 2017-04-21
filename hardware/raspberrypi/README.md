@@ -24,7 +24,7 @@ The hardware in the Raspberry Pi
     - SPI on the Raspberry Pi
 - [DPI (Parallel/RGB Display)](dpi/README.md)
     - DPI on the Raspberry Pi
-- [Peripheral Addresses)](peripheral_addresses.md)
+- [Peripheral Addresses](peripheral_addresses.md)
     - How to access the peripheral addresses using the bcm_host helpers
 
 
