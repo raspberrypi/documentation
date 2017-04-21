@@ -9,3 +9,4 @@ Technical information about Raspberry Pi hardware, including official add-ons an
 - [Compute Module](computemodule/README.md)
 - [Sense HAT](sense-hat/README.md)
 - [Display](display/README.md)
+- [Industrial use](industrial/README.md)
