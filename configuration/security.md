@@ -62,7 +62,25 @@ apt-get install openssh-server
 
 ## Improving SSH Security
 
-SSH is a common way of accessing a Raspberry Pi remotely. By default, logging in with SSH requires a username/password pair, but a more secure method is to use key based authorisation.
+SSH is a common way of accessing a Raspberry Pi remotely. By default, logging in with SSH requires a username/password pair, and there are ways to make this more secure. An even more secure method is to use key based authorisation.
+
+### Improving username/password security
+
+You can Allow or Deny specific users by altering the `sshd` configuration.
+```
+sudo nano /etc/ssh/sshd_config
+```
+Add, edit, or append to the end of the file the following line, which contains the usernames you wish to allow to log in, in this example, some members of the UK royal family!
+```
+AllowUsers edward andrew charles anne
+```
+You can also use DenyUsers to specifically stop some usernames from logging in.
+```
+DenyUsers harry william
+```
+After the change you will need to restart the `sshd` service using `sudo systemctl restart ssh` or reboot so the changes take effect.
+
+### Using Key Based Authentication.
 
 Key pairs are two, cryptographically secure, keys. On is private, one is public, and they can be used to authenticate a client to an SSH server (in this case the Raspberry Pi). 
 
