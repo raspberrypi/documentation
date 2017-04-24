@@ -66,7 +66,9 @@ SSH is a common way of accessing a Raspberry Pi remotely. By default, logging in
 
 ### Improving username/password security
 
-You can Allow or Deny specific users by altering the `sshd` configuration.
+The most important thing to do is ensure you have a very robust password. If your Raspberry Pi is exposed to the internet, the password needs to be very secure, to avoid dictionary attacks or similar.
+
+You can also Allow or Deny specific users by altering the `sshd` configuration.
 ```
 sudo nano /etc/ssh/sshd_config
 ```
