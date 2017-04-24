@@ -83,7 +83,7 @@ Configure a static network adddress on your server Raspberry Pi by with `sudo na
 ```
 auto eth0
 iface eth0 inet static 
-        address 10.42.0.2
+        address 10.42.0.211
         netmask 255.255.255.0
         gateway 10.42.0.1
 ```
@@ -202,7 +202,7 @@ sudo systemctl restart nfs-kernel-server
 Edit /tftpboot/cmdline.txt and from `root=` onwards, and replace it with:
 
 ```
-root=/dev/nfs nfsroot=10.42.0.2:/nfs/client1 rw ip=dhcp rootwait elevator=deadline
+root=/dev/nfs nfsroot=10.42.0.211:/nfs/client1 rw ip=dhcp rootwait elevator=deadline
 ```
 
 You should substitute the IP address here with the IP address you have noted down.
