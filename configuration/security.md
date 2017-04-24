@@ -46,7 +46,7 @@ Once the account is confirmed OK, delete the `pi` user. *However*, with the curr
 ```
 sudo deluser pi
 ```
-This will leave the `home/pi` folder. If necessary you can use the following to remove the home folder for the `pi` user at the same time - note the data in this folder will be permanently deleted so make sure any require data is moved elsewhere.
+This will leave the `home/pi` folder. If necessary you can use the following to remove the home folder for the `pi` user at the same time - note the data in this folder will be permanently deleted so make sure any required data is stored elsewhere.
 ```
 sudo deluser -remove-home pi
 ```
@@ -62,7 +62,7 @@ apt-get install openssh-server
 
 ## Improving SSH Security
 
-SSH is a common way of accessing a Raspberry Pi remotely. By default, logging in with SSH requires a username/password pair, and there are ways to make this more secure. An even more secure method is to use key based authorisation.
+SSH is a common way of accessing a Raspberry Pi remotely. By default, logging in with SSH requires a username/password pair, and there are ways to make this more secure. An even more secure method is to use key based authentication.
 
 ### Improving username/password security
 
