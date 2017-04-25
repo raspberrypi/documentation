@@ -30,3 +30,5 @@ Some basic guides to configuring your Raspberry Pi.
     - How to set up the on-board UARTS.
 - [Firmware Warning Icons](warning-icons.md)
     - Description of warning icons displayed if the firmware detects issues.
+- [Screensaver](screensaver.md)
+    - How to configure screen blanking/screen saver
