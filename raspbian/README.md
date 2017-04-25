@@ -14,5 +14,6 @@ Raspbian is a community project under active development, with an emphasis on im
 - Configuring Raspbian
     - [raspi-config](../configuration/raspi-config.md)
     - [config.txt](../configuration/config-txt/README.md)
+    - [screensaver](../configuration/screensaver.md)
 - [Applications](applications/README.md)
     - [Camera](applications/camera.md)
