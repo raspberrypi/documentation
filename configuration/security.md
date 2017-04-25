@@ -51,6 +51,20 @@ This will leave the `home/pi` folder. If necessary you can use the following to 
 sudo deluser -remove-home pi
 ```
 
+## Make `sudo` require a password
+
+`sudo` in front of a command runs it as a superuser, and by default, that does not need a password. In general that is OK, but if your Pi is exposed to the internet and somehow becomes exploited (a webpage exploit for example), if `sudo` has a password, then the attacker won't be able to change things that require superuser credentials.
+
+To force `sudo` to require a password, 
+```
+sudo nano /etc/sudoers.d/010_pi-nopasswd
+```
+and change the pi (or whichever usernames have superuser rights) entry to
+```
+pi ALL=(ALL) PASSWD: ALL
+```
+Now save the file. 
+
 ## Ensure you have the latest security fixes
 
 This can be as simple as ensuring your version of Raspbian is up to date, as an up to date distribution contains all the latest security fixes. Full instructions can be found [here](../raspbian/updating.md).
