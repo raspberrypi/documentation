@@ -54,3 +54,13 @@ pi@raspberrypi:~ $ /opt/vc/bin/mailbox 0x00030021 20 20 4 3 0 0 0
 ```
 
 If you'd like to integrate this functionality into your own code then you should be able to achieve this by using the vcmailbox.c code as an example.
+
+## Locking the OTP changes
+
+It is possible to lock the OTP changes to avoid them being edited again, this can be done using a special argument with the OTP write mailbox:
+
+```
+pi@raspberrypi:~ $ /opt/vc/bin/mailbox 0x00038021 8 8 0xffffffff 0xaffe0000
+```
+
+Once locked none of the customer OTP values can be accessed
