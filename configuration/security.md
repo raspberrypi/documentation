@@ -132,11 +132,11 @@ Save the file and either restart the ssh system `sudo service ssh reload` or reb
 
 ## Install a firewall
 
-There are many firewall solutions for Linux. Most use the underlying [iptables](http://www.netfilter.org/projects/iptables/index.html)  project to provide packet filtering, which itself sits over the Linux netfiltering system. `iptables` is installed by default on Raspbian, but is not set up. Setting it up can be a complicated task, and one project that provides an easier to use interface over `iptables` is [`ufw`](https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw) or `Uncomplicated Fire Wall`. This is the default firewall tool in Ubuntu and can be easily installed on your Raspberry Pi using 
+There are many firewall solutions for Linux available with most using the underlying [iptables](http://www.netfilter.org/projects/iptables/index.html) project to provide packet filtering, which itself sits over the Linux netfiltering system. `iptables` is installed by default on Raspbian, but is not set up. Setting it up can be a complicated task, and one project that provides an easier to use interface over `iptables` is [`ufw`](https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw) or `Uncomplicated Fire Wall`. This is the default firewall tool in Ubuntu and can be easily installed on your Raspberry Pi using 
 ```
 sudo apt-get install ufw
 ```
-`ufw` is a fairly easy to use command line tool, although there are some GUI's available for it. This document will describe a few of the basic command line options. Note that `ufw` needs to be run with supersuer privileges, so all commands are preceded with `sudo`. It is also possible to use the option `--dry-run` any `ufw` commands, which indicates the results of the command without actually making any changes.
+`ufw` is a fairly easy to use command line tool, although there are some GUI's available for it. This document will describe a few of the basic command line options. Note that `ufw` needs to be run with superuser privileges, so all commands are preceded with `sudo`. It is also possible to use the option `--dry-run` any `ufw` commands, which indicates the results of the command without actually making any changes.
 
 Enable the firewall, which will also ensure it starts up on boot, using 
 ```
@@ -179,7 +179,7 @@ sudo ufw deny from 192.168.2.1 port 30
 
 ## Installing fail2ban
 
-[fail2ban](www.fail2ban.org) is a scanner, written in Python, that examines the log files produced by the Raspberry Pi, and checks them for suspicious activity. This catches things like multiple, brute force atttempts to login, and can inform any installed firewall to stop any futher attempts to log in from suspicious IP addresses. It avoids the need to manually read log files for intrusion attempts, and update the firewall (via `iptables`) to prevent them.
+If you are using your Raspberry Pi as some sort of server, for example ```ssh``` or a webserver, your firewall will have deliberate 'holes' in it to let the server traffic through. In these cases, [fail2ban](www.fail2ban.org) can be useful. Fail2ban is a scanner, written in Python, that examines the log files produced by the Raspberry Pi, and checks them for suspicious activity. This catches things like multiple, brute force atttempts to login, and can inform any installed firewall to stop any futher attempts to log in from suspicious IP addresses. It avoids the need to manually read log files for intrusion attempts, and update the firewall (via `iptables`) to prevent them.
 
 Install `fail2ban` using the following command.
 ```
