@@ -14,7 +14,7 @@ Custom [configurations](configuring.md) can usually be copied over between minor
 
 ### Reverting back to current
 
-The Raspberry Pi Foundation kernel is part of the `raspberrypi-bootloader` package. This package also contains the necessary bootloader files for the Broadcom chip. To revert to the current stock Raspbian kernel after trying `rpi-update` or a custom kernel, you need to reinstall the raspberrypi-bootloader package, by running:
+The Raspberry Pi Foundation kernel is part of the `raspberrypi-kernel` package, and the bootloader files are part of the `raspberrypi-bootloader` package. To revert to the current stock Raspbian kernel after trying `rpi-update` or a custom kernel, you need to reinstall both these packages, by running:
 ```
-sudo apt-get install --reinstall raspberrypi-bootloader
+sudo apt-get install --reinstall raspberrypi-bootloader raspberypi-kernel
 ```
