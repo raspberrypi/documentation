@@ -1,10 +1,10 @@
 # Updating the kernel
 
-It is highly recommended that you update your kernel as part of your regular system updates, instead of manually updating it. Instructions for updating to the latest Raspbian (and release kernel) can be found [here](../../raspbian/updating.md).
+If you use the standard Raspbian update/upgrade process (found [here](../../raspbian/updating.md)) this will automatically update the kernel to the latest stable version. This is the recommended procedure. However, in certain circumstances you may wish to update to the latest 'bleeding edge' or test kernel.
 
 ### Manual updates using rpi-update
 
-You can also manually update the Rasperry Pi stock kernel, but this is not recommended unless you have a specific need for the latest 'bleeding edge' kernel. The `rpi-update` utility will download the latest version and copy all files into your system. Note that the latest kernel from `rpi-update` is not guaranteed to work correctly! Make sure it doesn't conflict with your distribution packages. It doesn't provide a way of automatically uninstalling the files.
+The `rpi-update` utility will download the latest (unstable, testing) kernel version and copy all required files onto your system. Note that the latest kernel from `rpi-update` is not guaranteed to work correctly! Make sure it doesn't conflict with your distribution packages. It doesn't provide a way of automatically uninstalling the files.
 
 After upgrading the kernel, you'll have to reboot your Pi to switch to the updated version.
 
