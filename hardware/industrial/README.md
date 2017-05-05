@@ -1,6 +1,6 @@
 # Industrial use of the Raspberry Pi
 
-The Raspberry Pi is often used as part of another product, this documentation describes some extra facilities available to use other capabilities of the Pi.
+The Raspberry Pi is often used as part of another product. This documentation describes some extra facilities available to use other capabilities of the Pi.
 
 ## Customer OTP settings
 
