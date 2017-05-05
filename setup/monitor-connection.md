@@ -4,7 +4,7 @@ For regular use, you'll want to plug the Raspberry Pi in to a visual display: a 
 
 ## HDMI Port
 
-The Raspberry Pi has a HDMI port which you can plug directly into a monitor or TV with an HDMI cable. This is the easiest solution; some modern monitors and TVs have HDMI ports, and some do not, but there are other options.
+The Raspberry Pi has an HDMI port which you can plug directly into a monitor or TV with an HDMI cable. This is the easiest solution; some modern monitors and TVs have HDMI ports, and some do not, but there are other options.
 
 ### DVI
 
