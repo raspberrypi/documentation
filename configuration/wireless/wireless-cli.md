@@ -11,7 +11,7 @@ To scan for WiFi networks, use the command `sudo iwlist wlan0 scan`. This will l
 
 1. 'IE: IEEE 802.11i/WPA2 Version 1' is the authentication used. In this case it's WPA2, the newer and more secure wireless standard which replaces WPA. This guide should work for WPA or WPA2, but may not work for WPA2 enterprise. For WEP hex keys, see the last example [here](http://www.freebsd.org/cgi/man.cgi?query=wpa_supplicant.conf&sektion=5&apropos=0&manpath=NetBSD+6.1.5). You'll also need the password for the wireless network. For most home routers, this is found on a sticker on the back of the router. The ESSID (ssid) for the network in this case is `testing` and the password (psk) is `testingPassword`.
 
-1. You can use `wpa_passphrase` to generate the PSK and enter it instead. With the example from above, calling the command will be `wpa_passphrase "testing"`, which will ask you to enter the passphrase and output a ready-to-use wpa-compliant network profile:
+1. You can use `wpa_passphrase` to generate the PSK and enter it. With the example from above, calling the command will be `wpa_passphrase "testing"`, which will ask you to enter the passphrase and output a ready-to-use wpa-compliant network profile:
 
   ```
   network={
