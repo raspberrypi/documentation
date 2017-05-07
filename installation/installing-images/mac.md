@@ -4,6 +4,15 @@
 
 **Note**: use of the `dd` tool can overwrite any partition of your machine. If you specify the wrong device in the instructions below, you could delete your primary Mac OS partition. Please be careful.
 
+## Completely graphical interface
+- Connect the SD card reader with the SD card inside.
+- Install ApplePi-Baker from http://www.tweaking4all.com/hardware/raspberry-pi/macosx-apple-pi-baker/
+- Select device from list (Pi-Crust)
+- Prep the card for NOOBS (Prepare)
+- Select the IMG file you downloaded earlier
+- Click Resotre Backup
+- Wait for Baking IMG Recipe to complete
+
 ## (Mostly) graphical interface
 
 - Connect the SD card reader with the SD card inside. Note that it must be formatted as FAT32.
