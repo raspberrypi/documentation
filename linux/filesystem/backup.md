@@ -49,25 +49,25 @@ It may be sensible for you to keep a copy of the entire SD card image, so you ca
 In Linux or on a Mac, for example:
 
 ```bash
-sudo dd bs=4M if=/dev/sdb of=raspbian.img
+sudo dd bs=4m if=/dev/sdb of=raspbian.img
 ```
 
 This will create an image file on your computer which you can use to write to another SD card, and keep exactly the same contents and settings. To restore or clone to another card, use `dd` in reverse:
 
 ```bash
-sudo dd bs=4M if=raspbian.img of=/dev/sdb
+sudo dd bs=4m if=raspbian.img of=/dev/sdb
 ```
 
 These files can be very large, and compress well. To compress, you can pipe the output of `dd` to `gzip` to get a compressed file that is significantly smaller than the original size:
 
 ```bash
-sudo dd bs=4M if=/dev/sdb | gzip > rasbian.img.gz
+sudo dd bs=4m if=/dev/sdb | gzip > rasbian.img.gz
 ```
 
 To restore, pipe the output of `gunzip` to `dd`:
 
 ```bash
-gunzip --stdout rasbian.img.gz | sudo dd bs=4M of=/dev/sdb
+gunzip --stdout rasbian.img.gz | sudo dd bs=4m of=/dev/sdb
 ```
 
 See more about [installing SD card images](../../installation/installing-images/README.md).
