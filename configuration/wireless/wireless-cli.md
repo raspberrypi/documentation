@@ -38,6 +38,7 @@ network={
     psk="Your_wifi_password"
 }
 ```
+Note that, although `wpa_passphrase` returns the `psk` value unquoted, the `wpa_supplicant.conf` file **requires** this value to be quoted, otherwise your Pi will not connect to your network.
 
 In the case of the example network, we would enter:  
 
