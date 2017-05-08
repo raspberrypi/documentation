@@ -70,7 +70,7 @@ To restore, pipe the output of `gunzip` to `dd`:
 gunzip --stdout rasbian.img.gz | sudo dd bs=4M of=/dev/sdb
 ```
 
-For Apple Mac, the commands used are almost exactly the same, but `4M` in the above examples should be `4m`.
+If you are using a Mac, the commands used are almost exactly the same, but `4M` in the above examples should be replaced with `4m`, with a lower case letter.
 
 See more about [installing SD card images](../../installation/installing-images/README.md).
 
