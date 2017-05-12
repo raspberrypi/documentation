@@ -12,13 +12,15 @@ The `[all]` filter is the most basic filter: it resets all previously set filter
 
 It's usually a good idea to add an `[all]` filter at the end of groups of filtered settings to avoid unintentionally combining filters (see below).
 
-### The `[pi1]` and `[pi2]` filters
+### The `[pi1]` and `[pi2]` (etc.) filters
 
-Any settings below a `[pi1]` filter will only be applied to Pi 1 (A, A+, B, B+) hardware.
-Any settings below a `[pi2]` filter will only be applied to Pi 2 hardware.
+Any settings below a `[pi1]` filter will only be applied to Pi 1 (A, A+, B, B+) hardware, including the original Compute Module.
+Any settings below a `[pi2]` filter will only be applied to Pi 2 hardware. The `[pi3]` filter is applicable to Pi 3 and Compute Module 3 hardware, while `[pi0]` covers Pi Zero and Pi Zero W.
 
     [pi1]
     [pi2]
+    [pi3]
+    [pi0]
 
 These are particularly useful for defining different `kernel`, `initramfs`, and `cmdline` settings, as the Pi 1 and Pi 2 require different kernels. They can also be useful to define different overclocking settings for each, since they have different default speeds. For example, to define separate `initramfs` images for each:
 
@@ -29,6 +31,12 @@ These are particularly useful for defining different `kernel`, `initramfs`, and 
     [all]
 
 Remember to use the `[all]` filter at the end, so that any subsequent settings aren't limited to Pi 2 hardware only.
+
+### The `[none]` filter
+
+The `[none]` filter prevents any settings that follow from being applied to any hardware. Although there is nothing that you can't do without `[none]`, it can be a useful way to keep groups of unused settings in config.txt without having to comment out every line.
+
+    [none]
 
 ### The `[EDID=*]` filter
 
