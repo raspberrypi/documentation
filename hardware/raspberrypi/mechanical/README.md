@@ -7,7 +7,7 @@
 
 ## Raspberry Pi Model B+
 
-- [PDF](Raspberry-Pi-B-Plus-V1.2-Mechanical-Drawing.pdf)
+- [PDF](Raspberry-Pi-B-Plus-V1.2-Mechanical.pdf)
 - [DXF](Raspberry-Pi-B-Plus-V1.2-Mechanical.dxf)
 
 ## Raspberry Pi Zero (v1.2)
