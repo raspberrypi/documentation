@@ -30,7 +30,7 @@ More variations of `ls` are also provided:
 
 Ubuntu users may be familar with these as they are provided by default on that distribution. Uncomment these lines to have access to these aliases in future.
 
-`.bashrc` also contains areference to a `.bash_aliases` file, which does not exist by default. you can add it to provide a handy way of keeping all your aliases in a separate file.
+`.bashrc` also contains areference to a `.bash_aliases` file, which does not exist by default. You can add it to provide a handy way of keeping all your aliases in a separate file.
 
 ```
 if [ -f ~/.bash_aliases ]; then
