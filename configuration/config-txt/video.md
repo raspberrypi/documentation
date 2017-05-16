@@ -336,6 +336,38 @@ Note that this simply **creates** the mode (group 2 mode 87). In order to make t
 
 This may not work if your monitor does not support standard CVT timings.
 
+### LCD display/touchscreen options
+
+#### ignore_lcd
+
+By default no DSI LCD detection is run (`ignore_lcd=1`). To enable detection (and accordingly the LCD display), use `ignore_lcd=0`
+
+#### display_default_lcd
+
+Specify which display is to be used as the default. To set the LCD as the default, use `display_default_lcd=1`; to use HDMI as the default, use `display_default_lcd=0`
+
+#### lcd_framerate
+
+Specify the framerate of the Raspberry Pi LCD display, in Hertz/fps. Defaults to 60Hz.
+
+#### lcd_rotate
+
+Rotates the LCD output to match an inverted display. This will also rotate the touchscreen coordinates to match. Valid values are 0,1,2,3.
+
+`lcd_rotate=2` will rotate by 180'.
+
+#### enable_dpi_lcd
+
+Enable LCD displays attached to the DPI GPIO's. This is to enable the use of third party LCD displays using the parallel display interface.
+
+#### dpi_group, dpi_mode, dpi_output_format
+
+The `dpi_group` and `dpi_mode` config.txt parameters are used to set either predetermined modes (DMT or CEA modes as used by HDMI above) or a user can generate custom modes in much the same way as with HDMI.
+
+`dpi_output_format` is a bitmask specifying various parameters used to set up the display format. 
+
+More details on using the DPI modes and the output format can be found [here](/hardware/raspberrypi/dpi/README.md).
+
 ### Generic display options
 
 #### hdmi_force_hotplug
