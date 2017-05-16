@@ -1,6 +1,6 @@
 ## Miscellaneous config.txt options
 
-### avoid-warnings
+### avoid_warnings
 
 The [warning symbols](../warning-icons.md) can be disabled using this option, although this is not advised.
 
