@@ -53,6 +53,10 @@ By default (`force_turbo=0`) the "On Demand" CPU frequency driver will raise clo
 
 Sets a bit in the OTP memory (one time programable) that prevents the device from being overvoltaged. This is intended to lock the device down so the the warranty bit cannot be set either inadvertently or maliciously by using an invalid overvoltage.
 
+#### disable_auto_turbo
+
+On Pi2/Pi3, setting this flag will disable the GPU from moving in to turbo mode, which it can do in under particular load cases.
+
 ### Clocks relationship
 
 The GPU core, CPU, SDRAM and GPU each have their own PLLs and can have unrelated frequencies. The h264, v3d and ISP blocks share a PLL. For more information [see here](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=6201&start=275#p168042).
