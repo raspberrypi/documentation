@@ -356,6 +356,12 @@ Rotates the LCD output to match an inverted display. This will also rotate the t
 
 `lcd_rotate=2` will rotate by 180'.
 
+#### disable_touchscreen
+
+Enable/disable the touchscreen.
+
+`disable_touchscreen=1` will disable the touchscreen.
+
 #### enable_dpi_lcd
 
 Enable LCD displays attached to the DPI GPIO's. This is to enable the use of third party LCD displays using the parallel display interface.
