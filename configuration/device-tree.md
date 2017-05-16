@@ -805,3 +805,21 @@ dtparam=i2c,i2s
 (`i2c` is an alias of `i2c_arm`, and the `=on` is assumed). It also still accepts the long-form versions: `device_tree_overlay` and `device_tree_param`.
 
 The loader used to accept the use of whitespace and colons as separators, but support for these has been discontinued for simplicity and so they can be used within parameter values without quotes.
+
+### 4.6: Other DT commands available in config.txt
+
+`device_tree_address`
+This is used to override the address where the firmware loads the device tree (not dt-blob). By default the firmware will choose a suitable place.
+
+`device_tree_end`
+This sets an (exclusive) limit to the loaded device tree. By default the device tree can grow to the end of usable memory, which is almost certainly what is required.
+
+`dtdebug`
+If non-zero, turn on some extra logging for the firmware's device tree processing.
+
+`enable_uart`
+Enable the primary/console UART (ttyS0 on a Pi3, ttyAMA0 otherwise - unless swapped with an overlay such as pi3-miniuart-bt). If the primary UART is ttyAMA0 then enable_uart defaults to 1 (enabled), otherwise it defaults to 0 (disabled). This is because it is necessary to stop the core frequency from changing which can make ttyS0 unusable, so enable_uart=1 implies core_freq=250 (unless force_turbo=1). In some cases this is a performance hit, so it is off by default. More details on UART's can be found [here](./uart.md)
+
+`overlay_prefix`
+Specifies a subdirectory/prefix from which to load overlays - defaults to "overlays/". Note the trailing "/". If desired you can add something after the final "/" to add a prefix to each file, although this is not likely to be needed.
+
