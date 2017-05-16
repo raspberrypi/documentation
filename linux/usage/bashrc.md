@@ -1,6 +1,6 @@
 # .bashrc and .bash_aliases
 
-In your home folder, you will find a hidden file called `.bashrc` which contains some user configuration options. You can edit this file to suit your needs. Changes made in this file will be actioned the next time a terminal is opened, since that is when the `.bashrc` file is read.
+In your home folder you will find a hidden file called `.bashrc` which contains some user configuration options. You can edit this file to suit your needs. Changes made in this file will be actioned the next time a terminal is opened, since that is when the `.bashrc` file is read.
 
 If you want your changes to take place in your current terminal, you can use either `source ~/.bashrc` or `exec bash`. These actually do slightly different things: the former simply re-executes the `.bashrc` file, which may result in undesirable changes to things like the path, the latter replaces the current shell with a new bash shell, which resets the shell back to the state at login, throwing away any shell variables you may have set. Choose whichever is most appropriate.
 
