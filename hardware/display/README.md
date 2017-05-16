@@ -24,6 +24,16 @@ Power the setup via the `PWR IN` micro-USB connector on the display board. Do no
 
 NB: With the display connected to the GPIO I2C pins, the GPU will assume control of the respective I2C bus. The host operating system should not access this I2C bus as simultaneous use of the bus by both the GPU and Linux will result in sporadic crashes.
 
+## Screen Orientation
+
+LCD displays have an optimum viewing angle, and depending on how the screen is mounted it may be necessary to change the orientation of the display to give the best results. By default, the Raspbery Pi display and Raspberry Pi are set up to work best when viewed from slightly above, for example, on a desktop. If viewing from below, you can physically rotate the display, and then tell the system software to compensate by running the screen upside down.
+
+To rotate the display, add, anywhere in the file `\boot\config.txt`, the following line:
+
+`lcd_rotate=2`
+
+This will rotate the LCD and the touch screen coordinates by 180', compensating for the physical orientation of the display.
+
 ## Troubleshooting
 
 Read our troubleshooting steps, tips, and tricks here: [Raspberry Pi Display Troubleshooting](troubleshooting.md).
