@@ -45,6 +45,8 @@ A range of options can be specified using the config.txt file. These are split i
 - [Device Tree](../device-tree.md)
 - [Overclocking](overclocking.md)
 - [Conditional Filters](conditional.md)
+- [Miscellaneous](misc.md)
+
 
 
 
