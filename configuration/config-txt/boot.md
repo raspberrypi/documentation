@@ -1,5 +1,26 @@
 ## Boot options in config.txt 
 
+### start_file, fixup_file
+
+These options specify the firmware files transfered to the Videocore GPU prior to boot.
+
+`start_file` specifies the Videocore (VC4) firmware file to use.
+`fixup_file` specifies the file used to fixup memory locations used in the `start_file` to match the GPU memory split. Note the the `start_file` and the `fixup_file` are linked - you cannot mix them.
+
+### start_x, start_debug
+
+These provide a shortcut to some alternative `start_file` and `fixup_file` settings.
+
+`start_x=1` implies
+   `start_file=start_x.elf`
+   `fixup_file=fixup_x.dat`
+   
+`start_debug=1` implies
+   `start_file=start_db.elf`
+   `fixup_file=fixup_db.dat`
+
+`start_x=1` should be specified when using the camera module. Enabling the camera via `raspi-config` will set this automatically.
+
 ### disable_commandline_tags
 
 Set the `disable_commandline_tags` command to `1` to stop `start.elf` from filling in ATAGS (memory from `0x100`) before launching the kernel.
@@ -39,10 +60,6 @@ The `initramfs` command specifies both the ramfs filename **and** the memory add
 ### init_uart_clock
 
 `init_uart_clock` is the initial UART clock frequency. The default value is `3000000` (3MHz).
-
-### init_emmc_clock
-
-`init_emmc_clock` is the initial eMMC clock frequency. The default value is `100000000` (100MHz).
 
 ### bootcode_delay
 
