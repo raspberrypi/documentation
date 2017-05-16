@@ -8,6 +8,17 @@ The Raspberry Pi's bootloader, built into the GPU and non-updateable, only has s
 
 The standard formatting tools built into these operating systems are able to create FAT32 partitions; they might also be labelled as FAT or MS-DOS. Simply delete the existing exFAT partition and create and format a new FAT32 primary partition, before proceeding with the rest of the [NOOBS instructions](noobs.md).
 
+### Mac OS CLI
+
+Create one 30GB FAT32 partition. NOOBS will resize to the full size of the SD card during installation.
+
+1. Plug SD card into computer
+1. Open terminal application
+1. ```sudo diskutil list```
+   1. Find your card, i.e. /dev/disk2
+1. ```sudo diskutil eraseDisk FAT32 NOOBS MBR <device>```
+1. ```sudo diskutil splitPartition <device>s1 2 FAT32 NOOBS1 30G FAT32 TMP 1G```
+
 ## Windows
 
 The standard formatting tools built into Windows are limited, as they only allow partitions up to 32GB to be formatted as FAT32, so to format a 64GB partition as FAT32 you need to use a third-party formatting tool. A simple tool to do this is [FAT32 Format](http://www.ridgecrop.demon.co.uk/guiformat.htm) which downloads as a single file named `guiformat.exe` - no installation is necessary.
