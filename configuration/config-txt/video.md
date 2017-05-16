@@ -297,6 +297,21 @@ These values are valid if `hdmi_group=2` (DMT):
 
 Note that there is a [pixel clock limit](https://www.raspberrypi.org/forums/viewtopic.php?f=26&t=20155&p=195443#p195443).The highest supported mode is 1920x1200 at 60Hz with reduced blanking.
 
+#### hdmi_force_mode
+
+Setting to 1 will remove all other modes except the ones specified by `hdmi_mode` and `hdmi_group` from the internal list, meaning they will not appear in any enumerated lists of modes. This option may help if a display seems to be ignoring the `hdmi_mode` and `hdmi_group` settings.
+
+#### edid_content_type
+
+Force the edit content type to a specific value.
+
+The options are:
+ - 0 = EDID_ContentType_NODATA, content type none.
+ - 1 = EDID_ContentType_Graphics, content type graphics, ITC must be set to 1
+ - 2 = EDID_ContentType_Photo, content type photo
+ - 3 = EDID_ContentType_Cinema,  content type cinema
+ - 4 = EDID_ContentType_Game,  content type game
+ 
 ### Which values are valid for my monitor?
 
 Your HDMI monitor may only support a limited set of formats. To find out which formats are supported, use the following method:
@@ -416,6 +431,10 @@ The `framebuffer_width` command specifies the console framebuffer width in pixel
 
 The `framebuffer_height` command specifies the console framebuffer height in pixels. The default is the display height minus the total vertical overscan.
 
+#### max_framebuffer_height, max_framebuffer_width
+
+Specify the maximum dimensions that the internal frame buffer is allowed to be. 
+
 #### framebuffer_depth
 
 Use `framebuffer_depth` to specify the console framebuffer depth in bits per pixel. The default value is `16`.
@@ -450,5 +469,10 @@ Use `display_rotate` to rotate or flip the screen orientation. The default value
 
 Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16MB GPU split.
 
+### Other options
+
+#### dispmanx_offline
+
+Forces dispmanx composition to be done off line in two offscreen framebuffers. This can allow more dispmanx elements to be composited, but is slower and may limit screen framerate to typically 30fps.
 
 *This article uses content from the eLinux wiki page [RPiconfig](http://elinux.org/RPiconfig), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](http://creativecommons.org/licenses/by-sa/3.0/)*
