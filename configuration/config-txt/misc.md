@@ -1,4 +1,4 @@
-## Miscelaneous config.txt options
+## Miscellaneous config.txt options
 
 ### avoid-warnings
 
