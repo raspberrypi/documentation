@@ -24,8 +24,4 @@ The `gpu_mem_1024` command sets the GPU memory in megabytes for the 1024MB Raspb
 
 Setting `disable_12cache` to `1` disables the CPU's access to the GPU's L2 cache. It requires a corresponding L2 disabled kernel. The default value is `0`.
 
-### disable_pvt
-
-Setting `disable_pvt` to `1` disables adjusting the refresh rate of RAM every 500ms. This action measures the RAM's temperature. The default value is `0`.
-
 *This article uses content from the eLinux wiki page [RPiconfig](http://elinux.org/RPiconfig), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](http://creativecommons.org/licenses/by-sa/3.0/)*
