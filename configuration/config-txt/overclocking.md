@@ -26,6 +26,7 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | initial_turbo | Enables turbo mode from boot for the given value in seconds, or until cpufreq sets a frequency. For more information [see here](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=6201&start=425#p180099). The default value is `0`, maximum value is `60`. |
 | arm_freq_min | Minimum value of arm_freq used for dynamic frequency clocking. The default value is `700` for Pi0/Pi1, `600` for the Pi2/Pi3. |
 | core_freq_min | Minimum value of `core_freq` used for dynamic frequency clocking. The default value is `250`. |
+| gpu_freq_min | Minimum value of `gpu_freq` used for dynamic frequency clocking. The default value is `250`. |
 | h264_freq_min | Minimum value of `h264_freq` used for dynamic frequency clocking. The default value is `250`. |
 | isp_freq_min | Minimum value of `isp_freq` used for dynamic frequency clocking. The default value is `250`. |
 | v3d_freq_min | Minimum value of `v3d_freq` used for dynamic frequency clocking. The default value is `250`. |
@@ -47,6 +48,10 @@ This table describes the overvoltage settings for the various Pi versions. The f
 By default (`force_turbo=0`) the "On Demand" CPU frequency driver will raise clocks to their maximum frequencies when the ARM cores are busy and will lower them to the minimum frequencies when the ARM cores are idle.
 
 `force_turbo=1` overrides this behaviour and forces maximum frequencies even when the ARM cores are not busy.
+
+#### never_over_voltage
+
+Sets a bit in the OTP memory (one time programable) that prevents the device from being overvoltaged. This is intended to lock the device down so the the warranty bit cannot be set either inadvertently or maliciously by using an invalid overvoltage.
 
 ### Clocks relationship
 
