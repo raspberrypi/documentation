@@ -806,6 +806,7 @@ dtparam=i2c,i2s
 
 The loader used to accept the use of whitespace and colons as separators, but support for these has been discontinued for simplicity and so they can be used within parameter values without quotes.
 
+<a name="part4.6"></a>
 ### 4.6: Other DT commands available in config.txt
 
 `device_tree_address`
@@ -822,4 +823,6 @@ Enable the primary/console UART (ttyS0 on a Pi3, ttyAMA0 otherwise - unless swap
 
 `overlay_prefix`
 Specifies a subdirectory/prefix from which to load overlays - defaults to "overlays/". Note the trailing "/". If desired you can add something after the final "/" to add a prefix to each file, although this is not likely to be needed.
+
+Further ports can be controlled by the DT, for more details see [section 3](#part3).
 
