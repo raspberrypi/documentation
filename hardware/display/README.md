@@ -2,17 +2,17 @@
 
 ## Introduction
 
-The Raspberry Pi display is an LCD display which connects to the Raspberry Pi through the DSI connector. It allows for the use of both the HDMI and LCD displays at the same time in some situations (this requires software support).
+The Raspberry Pi display is an LCD display which connects to the Raspberry Pi through the DSI connector. In some situations, it allows for the use of both the HDMI and LCD displays at the same time (this requires software support).
 
 ## Board Support
 
-The DSI display is designed to work with Raspberry Pi models that have mounting holes in a HAT footprint. Model A/B boards are supported, but require additional mounting hardware to fit the HAT-dimensioned stand offs on the display PCB.
+The DSI display is designed to work with Raspberry Pi models that have mounting holes in a HAT footprint. Model A/B boards are supported, but require additional mounting hardware to fit the HAT-dimensioned stand-offs on the display PCB.
 
 ### Attaching to Model A/B boards
 
-The DSI connector on the Model A/B boards does not have the I2C connections required to talk to the touchscreen controller and DSI controller. This can be worked around by using the additional set of jumper cables provided with the display kit to wire the I2C bus on the GPIO pins up to the display controller board.
+The DSI connector on the Model A/B boards does not have the I2C connections required to talk to the touchscreen controller and DSI controller. You can work around this by using the additional set of jumper cables provided with the display kit to wire up the I2C bus on the GPIO pins to the display controller board.
 
-Using the jumper cables, connect SCL/SDA on the GPIO header to the horizontal pins marked SCL/SDA on the display board. It is also recommended to power the Model A/B via the GPIO pins using the jumper cables.
+Using the jumper cables, connect SCL/SDA on the GPIO header to the horizontal pins marked SCL/SDA on the display board. We also recommend that you power the Model A/B via the GPIO pins using the jumper cables.
 
 For the GPIO header pinout, see [this diagram](http://pinout.xyz/).
 
@@ -22,7 +22,17 @@ DSI display autodetection is disabled by default on these boards. To enable dete
 
 Power the setup via the `PWR IN` micro-USB connector on the display board. Do not power the setup via the Pi's micro-USB port: the input polyfuse's maximum current rating will be exceeded as the display consumes approximately 400mA.
 
-NB: With the display connected to the GPIO I2C pins, the GPU will assume control of the respective I2C bus. The host operating system should not access this I2C bus as simultaneous use of the bus by both the GPU and Linux will result in sporadic crashes.
+NB: With the display connected to the GPIO I2C pins, the GPU will assume control of the respective I2C bus. The host operating system should not access this I2C bus, as simultaneous use of the bus by both the GPU and Linux will result in sporadic crashes.
+
+## Screen Orientation
+
+LCD displays have an optimum viewing angle, and depending on how the screen is mounted it may be necessary to change the orientation of the display to give the best results. By default, the Raspbery Pi display and Raspberry Pi are set up to work best when viewed from slightly above, for example on a desktop. If viewing from below, you can physically rotate the display, and then tell the system software to compensate by running the screen upside down.
+
+To flip the display, add, anywhere in the file `\boot\config.txt`, the following line:
+
+`lcd_rotate=2`
+
+This will vertically flip the LCD and the touch screen, compensating for the physical orientation of the display.
 
 ## Troubleshooting
 
