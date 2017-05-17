@@ -1,11 +1,15 @@
 # Installing operating system images using Windows
 
-- Insert the SD card into your SD card reader and check which drive letter was assigned. You can easily see the drive letter, such as `G:`, by looking in the left column of Windows Explorer. You can use the SD card slot if you have one, or a cheap SD adapter in a USB port.
-- Download the Win32DiskImager utility from the [Sourceforge Project page](http://sourceforge.net/projects/win32diskimager/) as a zip file; you can run this from a USB drive.
-- Extract the executable from the zip file and run the `Win32DiskImager` utility; you may need to run this as administrator. Right-click on the file, and select **Run as administrator**.
+[Etcher](README.md) is typically the easiest option for most users to write images to SD cards, so it is a good place to start. If you're looking for an alternative on Windows, you can use `Win32DiskImager`:
+
+## Win32DiskImager
+
+- Insert the SD card into your SD card reader. You can use the SD card slot if you have one, or an SD adapter in a USB port. Note the drive letter assigned to the SD card. You can see the drive letter in the left hand column of Windows Explorer, for example **G:**
+- Download the Win32DiskImager utility from the [Sourceforge Project page](http://sourceforge.net/projects/win32diskimager/) as an installer file, and run it to install the software.
+- Run the `Win32DiskImager` utility from your desktop or menu.
 - Select the image file you extracted earlier.
-- Select the drive letter of the SD card in the device box. Be careful to select the correct drive; if you get the wrong one you can destroy the data on your computer's hard disk! If you are using an SD card slot in your computer and can't see the drive in the Win32DiskImager window, try using an external SD adapter.
-- Click `Write` and wait for the write to complete.
+- In the device box, select the drive letter of the SD card. Be careful to select the correct drive: if you choose the wrong drive you could destroy the data on your computer's hard disk! If you are using an SD card slot in your computer, and can't see the drive in the Win32DiskImager window, try using an external SD adapter.
+- Click 'Write' and wait for the write to complete.
 - Exit the imager and eject the SD card.
 
 ---

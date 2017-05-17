@@ -39,7 +39,7 @@ Setup Options
 <a name="moving-around-the-menu"></a>
 ### Moving around the menu
 
-Use the `up` and `down` arrow keys to move the highlighted selection between the options available. Pressing the `right` arrow key will jump out of the options menu and take you to the `<Select>` and `<Finish>` buttons. Pressing `left` will take you back to the options. Alternatively, use the `Tab` key to switch between these.
+Use the `up` and `down` arrow keys to move the highlighted selection between the options available. Pressing the `right` arrow key will jump out of the Options menu and take you to the `<Select>` and `<Finish>` buttons. Pressing `left` will take you back to the options. Alternatively, you can use the `Tab` key to switch between these.
 
 Note that in long lists of option values (like the list of timezone cities), you can also type a letter to skip to that section of the list. For example, entering `L` will skip you to Lisbon, just two options away from London, to save you scrolling all the way through the alphabet.
 
@@ -54,7 +54,7 @@ Generally speaking, `raspi-config` aims to provide the functionality to make the
 <a name="expand-filesystem"></a>
 ### Expand filesystem
 
-If you installed Raspbian using NOOBS, you can ignore this section as the file system was expanded automatically during installation. However, if you wrote the image to an SD card yourself, then a portion of the card will be unused; this can be any amount over 3GB. Choosing this option will expand your installation to fill the rest of the SD card, giving you more space to use for files. You will need to reboot the Raspberry Pi to make this available. Note there is no confirmation; selecting the option begins the partition expansion immediately.
+If you have installed Raspbian using NOOBS, the filesystem will have been expanded automatically. There may be a rare occasion where this is not the case, e.g. if you have copied a smaller SD card onto a larger one. In this case, you should use this option to expand your installation to fill the whole SD card, giving you more space to use for files. You will need to reboot the Raspberry Pi to make this available. Note that there is no confirmation: selecting the option begins the partition expansion immediately.
 
 <a name="change-user-password"></a>
 ### Change user password

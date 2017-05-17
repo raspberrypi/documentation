@@ -1,4 +1,4 @@
-## config.txt - Memory Options
+## Memory options in config.txt
 
 ### gpu_mem
 
@@ -10,15 +10,15 @@ Using `gpu_mem_256`, `gpu_mem_512`, and `gpu_mem_1024` allows you to swap the sa
 
 ### gpu_mem_256
 
-GPU memory in megabytes for the 256MB Raspberry Pi (ignored if memory size is not 256MB). This overrides `gpu_mem`. The maximum value is `192` and the default is not set.
+The `gpu_mem_256` command sets the GPU memory in megabytes for the 256MB Raspberry Pi (it is ignored if memory size is not 256MB). This overrides `gpu_mem`. The maximum value is `192` and the default is not set.
 
 ### gpu_mem_512
 
-GPU memory in megabytes for the 512MB Raspberry Pi (ignored if memory size is not 512MB). This overrides `gpu_mem`. The maximum value is `448` and the default is not set.
+The `gpu_mem_512` command sets the GPU memory in megabytes for the 512MB Raspberry Pi (it is ignored if memory size is not 512MB). This overrides `gpu_mem`. The maximum value is `448` and the default is not set.
 
 ### gpu_mem_1024
 
-GPU memory in megabytes for the 1024MB Raspberry Pi 2 (ignored if memory size is not 1024MB). This overrides `gpu_mem`. The maximum value is `944` and the default is not set.
+The `gpu_mem_1024` command sets the GPU memory in megabytes for the 1024MB Raspberry Pi 2 (it is ignored if memory size is not 1024MB). This overrides `gpu_mem`. The maximum value is `944` and the default is not set.
 
 ### disable_l2cache
 
@@ -30,9 +30,9 @@ Setting this to `1` disables adjusting the refresh rate of RAM every 500ms. This
 
 ### CMA - Dynamic memory split
 
-As of 19th November 2012, the firmware and kernel support CMA (Contiguous Memory Allocator), which means the memory split between CPU and GPU is managed dynamically at runtime. However, this is not [officially supported](https://github.com/raspberrypi/linux/issues/503).
+As of 19th November 2012, the firmware and kernel support Contiguous Memory Allocator (CMA), which means that the memory split between the CPU and GPU is managed dynamically at runtime. However, this is not [officially supported](https://github.com/raspberrypi/linux/issues/503).
 
-You can find an [example config.txt here](http://www.raspberrypi.org/phpBB3/viewtopic.php?p=223549#p223549).
+You can find an [example config.txt here](https://www.raspberrypi.org/forums/viewtopic.php?p=223549#p223549).
 
 #### cma_lwm
 

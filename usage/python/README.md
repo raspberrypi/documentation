@@ -164,7 +164,7 @@ O
 
 ### Range
 
-The integer data type is not iterable and tryng to iterate over it will produce an error. For example:
+The integer data type is not iterable and trying to iterate over it will produce an error. For example:
 
 ```python
 for i in 3:

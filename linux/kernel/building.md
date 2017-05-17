@@ -6,16 +6,16 @@ There are two main methods for building the kernel. You can build locally on a R
 
 On a Raspberry Pi, first install the latest version of [Raspbian](https://www.raspberrypi.org/downloads/). Then boot your Pi, plug in Ethernet to give you access to the sources, and log in.
 
-First get the sources, which will take some time:
+First install Git and the build dependencies:
+
+```bash
+sudo apt-get install git bc
+```
+
+Next get the sources, which will take some time:
 
 ```bash
 git clone --depth=1 https://github.com/raspberrypi/linux
-```
-
-Add missing dependencies:
-
-```bash
-sudo apt-get install bc
 ```
 
 Configure the kernel; as well as the default configuration, you may wish to [configure your kernel in more detail](configuring.md) or [apply patches from another source](patching.md), to add or remove required functionality:
@@ -46,7 +46,7 @@ sudo make modules_install
 sudo cp arch/arm/boot/dts/*.dtb /boot/
 sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
 sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
-sudo scripts/mkknlimg arch/arm/boot/zImage /boot/$KERNEL.img
+sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 ```
 
 **Note**: On a Raspberry Pi 2/3, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
@@ -152,7 +152,7 @@ Finally, copy the kernel and Device Tree blobs onto the SD card, making sure to 
 
 ```bash
 sudo cp mnt/fat32/$KERNEL.img mnt/fat32/$KERNEL-backup.img
-sudo scripts/mkknlimg arch/arm/boot/zImage mnt/fat32/$KERNEL.img
+sudo cp arch/arm/boot/zImage mnt/fat32/$KERNEL.img
 sudo cp arch/arm/boot/dts/*.dtb mnt/fat32/
 sudo cp arch/arm/boot/dts/overlays/*.dtb* mnt/fat32/overlays/
 sudo cp arch/arm/boot/dts/overlays/README mnt/fat32/overlays/

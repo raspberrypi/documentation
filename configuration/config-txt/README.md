@@ -1,14 +1,14 @@
 # config.txt
 
-The Raspberry Pi uses an embedded platform instead of the [BIOS](https://en.wikipedia.org/wiki/BIOS) you would expect to find on a conventional PC. The system configuration parameters, which would traditionally be edited and stored using a BIOS, are stored instead in an optional text file named `config.txt`. This is read by the GPU before the ARM CPU and Linux are initialised. It must therefore be located on the first (boot) partition of your SD card, alongside `bootcode.bin` and `start.elf`. This file is normally accessible as `/boot/config.txt` from Linux, and must be edited as [root](../linux/usage/root.md). From Windows or OS X it is visible as a file in the only accessible part of the card. If you need to apply some of the config settings below, but you don't have a `config.txt` on your boot partition yet, simply create it as a new text file.
+The Raspberry Pi uses a configuration file instead of the [BIOS](https://en.wikipedia.org/wiki/BIOS) you would expect to find on a conventional PC. The system configuration parameters, which would traditionally be edited and stored using a BIOS, are stored instead in an optional text file named `config.txt`. This is read by the GPU before the ARM CPU and Linux are initialised. It must therefore be located on the first (boot) partition of your SD card, alongside `bootcode.bin` and `start.elf`. This file is normally accessible as `/boot/config.txt` from Linux, and must be edited as [root](../../linux/usage/root.md). From Windows or OS X it is visible as a file in the only accessible part of the card. If you need to apply some of the config settings below, but you don't have a `config.txt` on your boot partition yet, simply create it as a new text file.
 
-Any changes will only take effect after you've rebooted your Raspberry Pi. After Linux has booted, you can view the current active settings using the following commands:
+Any changes will only take effect after you have rebooted your Raspberry Pi. After Linux has booted, you can view the current active settings using the following commands:
 
-`vcgencmd get_config <config>` - displays a specific config value, e.g. `vcgencmd get_config arm_freq`.
+- `vcgencmd get_config <config>`: this displays a specific config value, e.g. `vcgencmd get_config arm_freq`.
 
-`vcgencmd get_config int` - lists all the integer config options that are set (non-zero).
+- `vcgencmd get_config int`: this lists all the integer config options that are set (non-zero).
 
-`vcgencmd get_config str` - lists all the string config options that are set (non-null).
+- `vcgencmd get_config str`: this lists all the string config options that are set (non-null).
 
 Note that there are a few config settings that cannot be retrieved using `vcgencmd`.
 
@@ -34,7 +34,7 @@ overscan_bottom=10
 
 # config.txt Options
 
-A range of options can be specified using the config.txt file. These are split into different sections, indexed below.
+A range of options can be specified using the config.txt file. These are split into different sections, indexed below:
 
 - [Memory](memory.md)
 - [Licence Keys/Codecs](codeclicence.md)
@@ -45,8 +45,6 @@ A range of options can be specified using the config.txt file. These are split i
 - [Device Tree](../device-tree.md)
 - [Overclocking](overclocking.md)
 - [Conditional Filters](conditional.md)
-
-
 
 
 

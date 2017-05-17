@@ -1,8 +1,10 @@
 # .bashrc and .bash_aliases
 
-In your home folder, you will find a hidden file called `.bashrc` which contains some user configuration. You can edit this file to suit your needs.
+In your home folder you will find a hidden file called `.bashrc` which contains some user configuration options. You can edit this file to suit your needs. Changes made in this file will be actioned the next time a terminal is opened, since that is when the `.bashrc` file is read.
 
-Some useful adaptions are provided for you; some of these are commented out by default.
+If you want your changes to take place in your current terminal, you can use either `source ~/.bashrc` or `exec bash`. These actually do slightly different things: the former simply re-executes the `.bashrc` file, which may result in undesirable changes to things like the path, the latter replaces the current shell with a new bash shell, which resets the shell back to the state at login, throwing away any shell variables you may have set. Choose whichever is most appropriate.
+
+Some useful adaptions are provided for you; some of these are commented out with a `#` by default. To enable them, remove the `#` and they will be active next time you boot your Pi or start a new terminal.
 
 For example, some `ls` aliases:
 
@@ -28,9 +30,7 @@ More variations of `ls` are also provided:
 
 Ubuntu users may be familar with these as they are provided by default on that distribution. Uncomment these lines to have access to these aliases in future.
 
-The lines starting with a `#` are commented out. To enable them, remove the `#` and they will be active next time you boot your Pi.
-
-There is also reference to a `.bash_aliases` file which does not exist by default:
+`.bashrc` also contains a reference to a `.bash_aliases` file, which does not exist by default. You can add it to provide a handy way of keeping all your aliases in a separate file.
 
 ```
 if [ -f ~/.bash_aliases ]; then
@@ -46,4 +46,4 @@ Then you just create the file `.bash_aliases` and add more aliases like so:
 alias gs='git status'
 ```
 
-You can add other things directly to this file or to another, and include the file like the `.bash_aliases` example above.
+You can add other things directly to this file, or to another and include that file like the `.bash_aliases` example above.
