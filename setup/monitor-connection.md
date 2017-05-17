@@ -4,16 +4,26 @@ For regular use, you'll want to plug the Raspberry Pi in to a visual display: a 
 
 ## HDMI Port
 
-The Raspberry Pi has a HDMI port which you can plug directly into a monitor or TV with an HDMI cable. This is the easiest solution; some modern monitors and TVs have HDMI ports, and some do not, but there are other options:
+The Raspberry Pi has an HDMI port which you can connect directly to a monitor or TV with an HDMI cable. This is the easiest solution; some modern monitors and TVs have HDMI ports, some do not, but there are other options.
+
+![HDMI cable](images/hdmi_connector.png)
 
 ### DVI
 
-For monitors with a DVI port, you can use an HDMI-to-DVI cable.
+For monitors with a DVI port, you can use an HDMI-to-DVI cable, or an HDMI cable with a DVI adapter. Note that the DVI standard does not support audio.
+
+![DVI-HDMI cable](images/dvi_hdmi_cable.png)   
 
 ### VGA
 
-For monitors with VGA only, you can use an HDMI-to-VGA adapter. We suggest using only powered HDMI-to-VGA adapters (with an external power source). Using an unpowered adapter may damage your Pi and therefore is not advised.
+For monitors with VGA only, you can use an HDMI-to-VGA adapter. Note that VGA does not support audio.
+
+![VGA-HDMI adapter](images/hdmi-vga.jpeg)   
 
 ## Composite Port
 
-For analogue TVs you can use a standard RCA composite video lead. The B+ and Pi 2 Model B do not have the large composite port, but can still be used with an analogue TV by plugging in to the 3.5mm socket that is also used for audio: you'll need a 3.5mm composite video/audio lead. 
+All models of Raspberry Pi have a composite out port for connecting to analog devices, but the type of connector varies depending on the model. The original Raspberry Pi used an RCA connector, and a standard RCA composite video lead will work. Others models (Raspberry Pi B+ and later) combine the audio out and composite out on to the same 3.5mm jackplug. This requires a particular type of lead, with audio left on the tip, audio right on ring 1, ground on ring 2, and video on the sleeve. This is the same as leads used on the Zune, and on Apple devices.
+
+![RCA cable](images/rca_connector.png)   
+
+More information on connecting to a monitor can be found in our [learning resources section](https://www.raspberrypi.org/learning/hardware-guide/equipment/).

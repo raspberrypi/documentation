@@ -1,13 +1,13 @@
 # Device Trees, overlays, and parameters
 
-Raspberry Pi's latest kernels and firmware, including Raspbian and NOOBS releases, now by default use Device Tree (DT) to manage some resource allocation and module loading. This change is to alleviate the problem of multiple drivers contending for system resources, and to allow HAT modules to be auto-configured.
+Raspberry Pi's latest kernels and firmware, including Raspbian and NOOBS releases, now by default use a Device Tree (DT) to manage some resource allocation and module loading. This change is to alleviate the problem of multiple drivers contending for system resources, and to allow HAT modules to be auto-configured.
 
-The current implementation is not a pure Device Tree system - there is still board support code that creates some platform devices - but the external interfaces (I2C, I2S, SPI), and the audio devices that use them, must now be instantiated using a Device Tree Blob (DTB) passed to the kernel by the loader (`start.elf`).
+The current implementation is not a pure Device Tree system – there is still board support code that creates some platform devices – but the external interfaces (I2C, I2S, SPI), and the audio devices that use them, must now be instantiated using a Device Tree Blob (DTB) passed to the kernel by the loader (`start.elf`).
 
 The main impact of using Device Tree is to change from **everything on**, relying on module blacklisting to manage contention, to **everything off unless requested by the DTB**. In order to continue to use external interfaces and the peripherals that attach to them, you will need to add some new settings to your `config.txt`. Full details are given in [Part 3](#part3), but these are a few examples:
 
 ```
-# Uncomment some or all of these to enable the optional hardware interfaces
+# Uncomment some or all of these lines to enable the optional hardware interfaces
 #dtparam=i2c_arm=on
 #dtparam=i2s=on
 #dtparam=spi=on
@@ -31,7 +31,7 @@ The main impact of using Device Tree is to change from **everything on**, relyin
 ```
 
 <a name="part1"></a>
-## Part 1: Device Trees
+## Device Trees
 
 A Device Tree (DT) is a description of the hardware in a system. It should include the name of the base CPU, its memory configuration, and any peripherals (internal and external). A DT should not be used to describe the software, although by listing the hardware modules it does usually cause driver modules to be loaded. It helps to remember that DTs are supposed to be OS-neutral, so anything which is Linux-specific probably shouldn't be there.
 
@@ -40,7 +40,7 @@ A Device Tree represents the hardware configuration as a hierarchy of nodes. Eac
 <a name="part1.1"></a>
 ### 1.1: Basic DTS syntax
 
-Device Trees are usually written in a textual form known as Device Tree Source (DTS) and stored in files with a `.dts` suffix. DTS syntax is C-like, with braces for grouping and semicolons at the end of each line. Note that DTS requires semicolons after closing braces - think of C `struct`s rather than functions. The compiled binary format is referred to as Flattened Device Tree (FDT) or Device Tree Blob (DTB), and is stored in `.dtb` files.
+Device Trees are usually written in a textual form known as Device Tree Source (DTS) and stored in files with a `.dts` suffix. DTS syntax is C-like, with braces for grouping and semicolons at the end of each line. Note that DTS requires semicolons after closing braces: think of C `struct`s rather than functions. The compiled binary format is referred to as Flattened Device Tree (FDT) or Device Tree Blob (DTB), and is stored in `.dtb` files.
 
 The following is a simple tree in the `.dts` format:
 
@@ -77,12 +77,12 @@ The following is a simple tree in the `.dts` format:
 
 This tree contains:
 
- - a required header -- `/dts-v1/`.
+ - a required header: `/dts-v1/`.
  - The inclusion of another DTS file, conventionally named `*.dtsi` and analogous to a `.h` header file in C - see _An aside about /include/_ below.
  - a single root node: `/`
  - a couple of child nodes: `node1` and `node2`
  - some children for node1: `child-node1` and `child-node2`
- - a label (`cousin`) and a reference to that label (`&cousin`) - see _Labels and References_ below.
+ - a label (`cousin`) and a reference to that label (`&cousin`): see _Labels and References_ below.
  - several properties scattered through the tree
  - a repeated node (`/node2`) - see _An aside about /include/_ below.
 
@@ -94,7 +94,7 @@ Text strings (NUL-terminated) are indicated with double quotes:
 string-property = "a string";
 ```
 
-'Cells' are 32-bit unsigned integers delimited by angle brackets:
+Cells are 32-bit unsigned integers delimited by angle brackets:
 
 ```
 cell-property = <0xbeef 123 0xabcd1234>;
@@ -121,7 +121,7 @@ string-list = "red fish", "blue fish";
 <a name="part1.2"></a>
 ### 1.2: An aside about /include/
 
-The `/include/` directive results in simple textual inclusion, much like C's `#include` directive, but a feature of the Device Tree compiler leads to different usage patterns. Given that nodes are named, potentially with absolute paths, it is possible for the same node to appear twice in a DTS file (and its inclusions). When this happens, the nodes and properties are combined, interleaving and overwriting properties as required - later values override earlier ones.
+The `/include/` directive results in simple textual inclusion, much like C's `#include` directive, but a feature of the Device Tree compiler leads to different usage patterns. Given that nodes are named, potentially with absolute paths, it is possible for the same node to appear twice in a DTS file (and its inclusions). When this happens, the nodes and properties are combined, interleaving and overwriting properties as required (later values override earlier ones).
 
 In the example above, the second appearanace of `/node2` causes a new property to be added to the original:
 
@@ -147,15 +147,15 @@ It is often necessary for one part of the tree to refer to another, and there ar
 
     Paths should be self-explanatory, by analogy with a filesystem - `/soc/i2s@7e203000` is the full path to the I2S device in BCM2835 and BCM2836. Note that although it is easy to construct a path to a property (for example, `/soc/i2s@7e203000/status`), the standard APIs don't do that; you first find a node, then choose properties of that node.
 
-2. phandles
+1. phandles
 
    A phandle is a unique 32-bit integer assigned to a node in its `phandle` property. For historical reasons, you may also see a redundant, matching `linux,phandle`. phandles are numbered sequentially, starting from 1; 0 is not a valid phandle. They are usually allocated by the DT compiler when it encounters a reference to a node in an integer context, usually in the form of a label (see below). References to nodes using phandles are simply encoded as the corresponding integer (cell) values; there is no markup to indicate that they should be interpreted as phandles, as that is application defined.
 
-3. Labels
+1. Labels
 
    Just as a label in C gives a name to a place in the code, a DT label assigns a name to a node in the hierarchy. The compiler takes references to labels and converts them into paths when used in string context (`&node`) and phandles in integer context (`<&node>`); the original labels do not appear in the compiled output. Note that labels contain no structure; they are just tokens in a flat, global namespace.
 
-4. Aliases
+1. Aliases
 
    Aliases are similar to labels, except that they do appear in the FDT output as a form of index. They are stored as properties of the `/aliases` node, with each property mapping an alias name to a path string. Although the aliases node appears in the source, the path strings usually appear as references to labels (`&node`), rather then being written out in full. DT APIs that resolve a path string to a node typically look at the first character of the path, treating paths that do not start with a slash as aliases that must first be converted to a path using the `/aliases` table.
 

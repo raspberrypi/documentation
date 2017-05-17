@@ -38,7 +38,6 @@ http://wiringpi.com/
 This is a C library for Raspberry Pi (RPi). It provides access to GPIO and other IO functions on the Broadcom BCM 2835 chip. Accesses the hardware registers directly.
 
 http://www.airspayce.com/mikem/bcm2835/
-
 ### Use spidev from C
 
 There's a loopback test program in the Linux documentation that can be used as a starting point. See the [Troubleshooting](#troubleshooting) section. Uses the Linux `spidev` driver to access the bus.
@@ -66,7 +65,6 @@ CE   - Chip Enable (often called Chip Select)
 MOSI - Master Out Slave In
 MISO - Master In Slave Out
 MOMI - Master Out Master In
-MIMO - Master In Master Out
 ```
 
 #### Standard mode
@@ -75,10 +73,9 @@ In Standard SPI master mode the peripheral implements the standard 3 wire serial
 
 #### Bidirectional mode
 
-In bidirectional SPI master mode the same SPI standard is implemented except that a single wire is used for data (MIMO) instead of two as in standard mode (MISO and MOSI).
+In bidirectional SPI master mode the same SPI standard is implemented, except that a single wire is used for data (MOMI) instead of the two used in standard mode (MISO and MOSI). In this mode, the MOSI pin serves as MOMI pin.
 
 #### LoSSI mode (Low Speed Serial Interface)
-
 The LoSSI standard allows issuing of commands to peripherals (LCD) and to transfer data to and from them. LoSSI commands and parameters are 8 bits long, but an extra bit is used to indicate whether the byte is a command or parameter/data. This extra bit is set high for a data and low for a command. The resulting 9-bit value is serialized to the output. LoSSI is commonly used with [MIPI DBI](http://mipi.org/specifications/display-interface) type C compatible LCD controllers.
 
 **Note:**
@@ -143,7 +140,7 @@ The driver supports the following speeds:
 
 When asking for say 24 MHz, the actual speed will be 15.6 MHz.
 
-Forum post: [SPI has more speeds](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=44&t=43442&p=347073)
+Forum post: [SPI has more speeds](https://www.raspberrypi.org/forums/viewtopic.php?f=44&t=43442&p=347073)
 
 ### Supported Mode bits
 
@@ -152,9 +149,10 @@ SPI_CPOL    - Clock polarity
 SPI_CPHA    - Clock phase
 SPI_CS_HIGH - Chip Select active high
 SPI_NO_CS   - 1 device per bus, no Chip Select
+SPI_3WIRE   - Bidirectional mode, data in and out pin shared
 ```
 
-Bidirectional mode is currently not supported.
+Bidirectional or "3-wire" mode is supported by the spi-bcm2835 kernel module. Please note that in this mode, either the tx or rx field of the spi_transfer struct must be a NULL pointer, since only half-duplex communication is possible. Otherwise, the transfer will fail. The spidev_test.c source code does not consider this correctly, and therefore does not work at all in 3-wire mode.
 
 ### Supported bits per word
 
@@ -175,7 +173,7 @@ bcm2708_spi bcm2708_spi.0: master is unqueued, this is deprecated
 
 ### SPI driver latency
 
-This [thread](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=44&t=19489) discusses latency problems.
+This [thread](https://www.raspberrypi.org/forums/viewtopic.php?f=44&t=19489) discusses latency problems.
 
 ### DMA capable driver
 

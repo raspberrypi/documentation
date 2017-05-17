@@ -127,36 +127,38 @@ Sets the EV compensation of the image. Default is 0.
 ```
 
 Possible options are:
-
-- auto		Use automatic exposure mode
-- night		Select setting for night shooting
-- nightpreview
-- backlight	Select setting for backlit subject
-- spotlight
-- sports	Select setting for sports (fast shutter etc.)
-- snow		Select setting optimised for snowy scenery
-- beach		Select setting optimised for beach
-- verylong	Select setting for long exposures
-- fixedfps	Constrain fps to a fixed value
-- antishake	Antishake mode
-- fireworks	Select setting optimised for fireworks
+                                                               
+- auto: use automatic exposure mode
+- night: select setting for night shooting
+- nightpreview: 
+- backlight: select setting for backlit subject
+- spotlight:  
+- sports: select setting for sports (fast shutter etc.)
+- snow: select setting optimised for snowy scenery
+- beach: select setting optimised for beach
+- verylong: select setting for long exposures
+- fixedfps: constrain fps to a fixed value
+- antishake: antishake mode
+- fireworks: select setting optimised for fireworks
 
 Note that not all of these settings may be implemented, depending on camera tuning.
 
 ```
 	--awb,	-awb		Set Automatic White Balance (AWB) mode
 ```
+Modes for which colour temperature ranges (K) are available have these settings in brackets.
 
-- off		Turn off white balance calculation
-- auto		Automatic mode (default)
-- sun		Sunny mode
-- cloud		Cloudy mode
-- shade		Shade mode
-- tungsten	Tungsten lighting mode
-- fluorescent	Fluorescent lighting mode
-- incandescent	Incandescent lighting mode
-- flash		Flash mode
-- horizon	Horizon mode
+- off: turn off white balance calculation
+- auto: automatic mode (default)
+- sun: sunny mode (between 5000K and 6500K) 
+- cloud: cloudy mode (between 6500K and 12000K)
+- shade: shade mode 
+- tungsten: tungsten lighting mode (between 2500K and 3500K)
+- fluorescent: fluorescent lighting mode (between 2500K and 4500K)
+- incandescent: incandescent lighting mode
+- flash: flash mode
+- horizon: horizon mode
+
 
 Note that not all of these settings may be implemented, depending on camera type.
 
@@ -166,28 +168,28 @@ Note that not all of these settings may be implemented, depending on camera type
 
 Set an effect to be applied to the image:
 
-- none		No effect (default)
-- negative	Invert the image colours
-- solarise	Solarise the image
-- posterise	Posterise the image
-- whiteboard	Whiteboard effect
-- blackboard	Blackboard effect
-- sketch	Sketch effect
-- denoise	Denoise the image
-- emboss	Emboss the image
-- oilpaint	Oil paint effect
-- hatch		Hatch sketch effect
-- gpen		Graphite sketch effect
-- pastel	Pastel effect
-- watercolour	Watercolour effect
-- film		Film grain effect
-- blur		Blur the image
-- saturation	Colour saturate the image
-- colourswap	Not fully implemented
-- washedout	Not fully implemented
-- colourpoint	Not fully implemented
-- colourbalance	Not fully implemented
-- cartoon	Not fully implemented
+- none: no effect (default)
+- negative: invert the image colours
+- solarise: solarise the image
+- posterise: posterise the image
+- whiteboard: whiteboard effect
+- blackboard: blackboard effect
+- sketch: sketch effect
+- denoise: denoise the image
+- emboss: emboss the image
+- oilpaint: oil paint effect
+- hatch: hatch sketch effect
+- gpen: graphite sketch effect
+- pastel: pastel effect
+- watercolour: watercolour effect
+- film: film grain effect
+- blur: blur the image
+- saturation: colour saturate the image
+- colourswap: not fully implemented
+- washedout: not fully implemented
+- colourpoint: not fully implemented
+- colourbalance: not fully implemented
+- cartoon: not fully implemented
 
 Note that not all of these settings may be available in all circumstances.
 
@@ -203,10 +205,10 @@ The supplied U and V parameters (range 0 - 255) are applied to the U and Y chann
 
 Specify the metering mode used for the preview and capture:
 
-- average	Average the whole frame for metering
-- spot		Spot metering
-- backlit	Assume a backlit image
-- matrix	Matrix metering
+- average: average the whole frame for metering
+- spot: spot metering
+- backlit: assume a backlit image
+- matrix: matrix metering
 
 ```
 	--rotation,	-rot		Set image rotation (0 - 359)
@@ -271,7 +273,9 @@ Sets blue and red gains (as floating point numbers) to be applied when `-awb -of
 --mode,	-md
 ```
 
-Sets a specified sensor mode, disabling the automatic selection. Possible values are :
+Sets a specified sensor mode, disabling the automatic selection. Possible values depend on the version of the Camera Module being used: 
+
+Version 1.x (OV5647)
 
 |Mode| Size | Aspect Ratio |Frame rates | FOV | Binning |
 |----|------|--------------|------------|-----|---------|
@@ -283,6 +287,19 @@ Sets a specified sensor mode, disabling the automatic selection. Possible values
 |5|1296x730|16:9|1-49fps|Full|2x2|
 |6|640x480|4:3|42.1-60fps|Full|2x2 plus skip|
 |7|640x480|4:3|60.1-90fps|Full|2x2 plus skip|
+
+Version 2.x (IMX219)
+
+|Mode| Size | Aspect Ratio |Frame rates | FOV | Binning |
+|----|------|--------------|------------|-----|---------|
+|0| automatic selection |||||
+|1|1920x1080|16:9| 0.1-30fps|Partial|None|
+|2|3280x2464|4:3|0.1-15fps|Full|None|
+|3|3280x2464|4:3|0.1-15fps|Full|None|
+|4|1640x1232|4:3|0.1-40fps|Full|2x2|
+|5|1640x922|16:9|0.1-40fps|Full|2x2|
+|6|1280x720|16:9|40-90fps|Partial|2x2|
+|7|640x480|4:3|40-90fps|Partial|2x2|
 
 ```
 	--camselect,	-cs

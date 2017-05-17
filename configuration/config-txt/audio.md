@@ -1,16 +1,14 @@
-## config.txt - Onboard analogue audio (3.5mm jack)
+## Onboard analogue audio options in config.txt (3.5mm jack)
 
-The onboard audio output has a few config options which alter the way the analogue audio is driven and whether some firmware features are enabled or not.
+The onboard audio output uses config options to change the way the analogue audio is driven, and whether some firmware features are enabled or not.
 
 ### disable_audio_dither
 
-By default, a 1.0LSB dither is applied to the audio stream if it is routed to the analogue audio output. This can create audible background "hiss" in some situations, such as if the ALSA volume is set to a low level. Set this to `1` to disable dither application.
+By default, a 1.0LSB dither is applied to the audio stream if it is routed to the analogue audio output. This can create audible background "hiss" in some situations, for example when the ALSA volume is set to a low level. Set `disable_audio_dither` to `1` to disable dither application.
 
 ### pwm_sample_bits
 
-Adjust the bit depth of the analogue audio output. The default bit depth is `11`. Selecting bit depths below `8` will result in nonfunctional audio, as settings below `8` result in a PLL frequency too low to support. This is generally only useful as a demonstration of how bit depth affects quantisation noise.
-
-
+The `pwm_sample_bits` command adjusts the bit depth of the analogue audio output. The default bit depth is `11`. Selecting bit depths below `8` will result in nonfunctional audio, as settings below `8` result in a PLL frequency too low to support. This is generally only useful as a demonstration of how bit depth affects quantisation noise.
 
 
 

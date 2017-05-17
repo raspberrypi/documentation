@@ -1,66 +1,66 @@
-## config.txt - Boot options
+## Boot options in config.txt 
 
 ### disable_commandline_tags
 
-Set to `1` to stop `start.elf` from filling in ATAGS (memory from `0x100`) before launching the kernel.
+Set the `disable_commandline_tags` command to `1` to stop `start.elf` from filling in ATAGS (memory from `0x100`) before launching the kernel.
 
 ### cmdline
 
-The alternative filename on the boot partition to read the kernel command line string from; the default value is `cmdline.txt`.
+`cmdline` is the alternative filename on the boot partition from which to read the kernel command line string; the default value is `cmdline.txt`.
 
 ### kernel
 
-The alternative filename on the boot partition to use when loading the kernel; the default value is `kernel.img`.
+`kernel` is the alternative filename on the boot partition to use when loading the kernel. The default value is `kernel.img`.
 
 ### kernel_address
 
-The memory address into which the kernel image should be loaded. 32-bit kernels are loaded to address `0x8000` by default, and 64-bit kernels to address `0x80000`. If `kernel_old` is set, kernels are loaded to the address `0x0`.
+`kernel_address` is the memory address into which the kernel image should be loaded. 32-bit kernels are loaded to address `0x8000` by default, and 64-bit kernels to address `0x80000`. If `kernel_old` is set, kernels are loaded to the address `0x0`.
 
 ### kernel_old
 
-Set to `1` to load the kernel at the memory address `0x0`.
+Set `kernel_old` to `1` to load the kernel at the memory address `0x0`.
 
 ### ramfsfile
 
-Optional filename on the boot partition of a ramfs to load. More information is available [here](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=63&t=10532).
+`ramfsfile` is the optional filename on the boot partition of a ramfs to load. More information is available [here](https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=10532).
 
 ### ramfsaddr
 
-The memory address into which the `ramfsfile` should be loaded.
+`ramfsaddr` is the memory address into which the `ramfsfile` should be loaded.
 
 ### initramfs
 
-This specifies both the ramfs filename **and** the memory address to load it at; it performs the actions of both `ramfsfile` and `ramfsaddr` in one parameter. Example values are: `initramfs initramf.gz 0x00800000`. **NOTE:** This option uses different syntax to all the other options; you should not use a `=` character here.
+The `initramfs` command specifies both the ramfs filename **and** the memory address at which to load it. It performs the actions of both `ramfsfile` and `ramfsaddr` in one parameter. Example values are: `initramfs initramf.gz 0x00800000`. **NOTE:** This option uses different syntax from all the other options, and you should not use a `=` character here.
 
 ### init_uart_baud
 
-The initial UART baud rate; the default value is `115200`.
+`init_uart_baud` is the initial UART baud rate. The default value is `115200`.
 
 ### init_uart_clock
 
-The initial UART clock frequency; the default value is `3000000` (3MHz).
+`init_uart_clock` is the initial UART clock frequency. The default value is `3000000` (3MHz).
 
 ### init_emmc_clock
 
-The initial eMMC clock frequency; the default value is `100000000` (100MHz).
+`init_emmc_clock` is the initial eMMC clock frequency. The default value is `100000000` (100MHz).
 
 ### bootcode_delay
 
-Wait for a given number of seconds in `bootcode.bin` before loading `start.elf`; the default value is `0`.
+The `bootcode_delay` command means wait for a given number of seconds in `bootcode.bin` before loading `start.elf`: the default value is `0`.
 
-This is particularly useful to insert a delay before reading the EDID of the monitor, which can help if the Pi and monitor are powered from the same source but the monitor takes longer to start up than the Pi.  Try setting this value if the display detection is wrong on initial boot, but is correct if you soft-reboot the Pi without removing power from the monitor.
+This is particularly useful to insert a delay before reading the EDID of the monitor. This is useful if the Pi and monitor are powered from the same source, but the monitor takes longer to start up than the Pi. Try setting this value if the display detection is wrong on initial boot, but is correct if you soft-reboot the Pi without removing power from the monitor.
 
 ### boot_delay
 
-Wait for a given number of seconds in `start.elf` before loading the kernel; the default value is `1`. The total delay in milliseconds is calculated as `(1000 x boot_delay) + boot_delay_ms`. This can be useful if your SD card needs a while to 'get ready' before Linux is able to boot from it.
+The `boot_delay` command means wait for a given number of seconds in `start.elf` before loading the kernel: the default value is `1`. The total delay in milliseconds is calculated as `(1000 x boot_delay) + boot_delay_ms`. This can be useful if your SD card needs a while to get ready before Linux is able to boot from it.
 
 ### boot_delay_ms
 
-Wait for a given number of milliseconds in `start.elf`, together with `boot_delay`, before loading the kernel. The default value is `0`.
+The `boot_delay_ms` command means wait for a given number of milliseconds in `start.elf`, together with `boot_delay`, before loading the kernel. The default value is `0`.
 
 ### disable_splash
 
-If set to `1`, don't show the rainbow splash screen on boot. The default value is `0`.
+If `disable_splash` is set to `1`, the rainbow splash screen will not be shown on boot. The default value is `0`.
 
 
 
