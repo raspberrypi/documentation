@@ -355,11 +355,11 @@ This may not work if your monitor does not support standard CVT timings.
 
 #### ignore_lcd
 
-By default no DSI LCD detection is run (`ignore_lcd=1`). To enable detection (and accordingly the LCD display), use `ignore_lcd=0`
+By default the Raspberry Pi LCD display is used when it is detected on the I2C bus. `ignore_lcd=1` will skip this detection phase, and therefor the LCD display will not be used.
 
 #### display_default_lcd
 
-Specify which display is to be used as the default. To set the LCD as the default, use `display_default_lcd=1`; to use HDMI as the default, use `display_default_lcd=0`
+If a Raspberry Pi DSI LCD is detected it will be used as the default display and will show the framebuffer. Setting `display_default_lcd=0` will ensure the LCD is not the default display, which usually implies the HDMI output will be the default. IThe LCD can still be used by choosing its display number from supported applications, for example, omxplayer.
 
 #### lcd_framerate
 
@@ -367,15 +367,15 @@ Specify the framerate of the Raspberry Pi LCD display, in Hertz/fps. Defaults to
 
 #### lcd_rotate
 
-Rotates the LCD output to match an inverted display. This will also rotate the touchscreen coordinates to match. Valid values are 0,1,2,3.
+This flips the display using the LCD's inbuilt flip functionality, which is a cheaper ioperation that using the GPU based rotate operation.
 
-`lcd_rotate=2` will rotate by 180'.
+For example, `lcd_rotate=2` will compensate for an upside down display.
 
 #### disable_touchscreen
 
 Enable/disable the touchscreen.
 
-`disable_touchscreen=1` will disable the touchscreen.
+`disable_touchscreen=1` will disable the touchscreen on the official Raspberry Pi LCD display.
 
 #### enable_dpi_lcd
 
