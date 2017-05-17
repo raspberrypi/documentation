@@ -2,13 +2,13 @@
 
 The onboard audio output uses config options to change the way the analogue audio is driven, and whether some firmware features are enabled or not.
 
+### enable_audio_dither
+
+Enables a 1.0LSB audio dither. If the bits per sample is greater than 16 then dithering will be turned off by default, this can enable dithering for BPS greater than 16.
+
 ### disable_audio_dither
 
 By default, a 1.0LSB dither is applied to the audio stream if it is routed to the analogue audio output. This can create audible background "hiss" in some situations, for example when the ALSA volume is set to a low level. Set `disable_audio_dither` to `1` to disable dither application.
-
-### enable_audio_dither
-
-Enables the audio dither. If the bits per sample is greater than 16 then dithering will be turned off by default, this can enable dithering for BPS greater than 16.
 
 ### pwm_sample_bits
 
