@@ -9,8 +9,8 @@ The [warning symbols](../warning-icons.md) can be disabled using this option, al
 
 ### logging_level
 
-Sets the Videocore logging level. The value is a Videocore specific bitmask.
+Sets the Videocore logging level. The value is a Videocore-specific bitmask.
 
 ### arm_64bit
 
-If set, forces the kernel loading system to assume a 64 bit kernel.
+If set, this forces the kernel loading system to assume a 64-bit kernel.
