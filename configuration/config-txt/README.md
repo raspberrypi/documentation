@@ -42,9 +42,11 @@ A range of options can be specified using the config.txt file. These are split i
 - [Audio](audio.md)
 - [Camera](camera.md)
 - [Boot](boot.md)
-- [Device Tree](../device-tree.md)
+- [Ports and Device Tree](../device-tree.md#part4.6)
 - [Overclocking](overclocking.md)
 - [Conditional Filters](conditional.md)
+- [Miscellaneous](misc.md)
+
 
 
 
