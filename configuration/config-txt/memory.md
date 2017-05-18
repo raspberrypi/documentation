@@ -2,7 +2,7 @@
 
 ### gpu_mem
 
-GPU memory in megabytes. This sets the memory split between the CPU and GPU: the CPU gets the remaining memory. Minimum value is `16`; maximum value is `192`, `448`, or `944`, depending on whether you are using a 256M, 512MB, or 1024MB Pi. The default value is `64`.
+GPU memory in megabytes. This sets the memory split between the CPU and GPU; the CPU gets the remaining memory. Minimum value is `16`; maximum value is `192`, `448`, or `944`, depending on whether you are using a 256M, 512MB, or 1024MB Pi. The default value is `64`.
 
 Setting `gpu_mem` to low values may automatically disable certain firmware features, as there are some things the GPU cannot do if it has access to too little memory. So if a feature you are trying to use isn't working, try setting a larger GPU memory split.
 
