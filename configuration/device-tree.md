@@ -613,7 +613,7 @@ This area is poorly documented, but here are some accumulated tips:
 
 * Don't create a node within a fragment that will overwrite an existing node in the base DTB - the kernel will rename the new node to make it unique. If you want to change the properties of an existing node, create a fragment that targets it.
 
-* ALSA doesn't prevent its codecs and other components from being unloaded while they are in use. This can lead to kernel exceptions when an overlay is unloaded if a codec is deleted before the card using it. Experimentation found that devices are deleted in the reverse of fragment order in the overlay, so placing the node for the card after the nodes for the components allows an orderly shutdown.
+* ALSA doesn't prevent its codecs and other components from being unloaded while they are in use. Removing an overlay can cause a kernel exception if it deletes a codec that is still being used by a sound card. Experimentation found that devices are deleted in the reverse of fragment order in the overlay, so placing the node for the card after the nodes for the components allows an orderly shutdown.
 
 <a name="part3.5.4"></a>
 #### 3.5.4 Caveats
