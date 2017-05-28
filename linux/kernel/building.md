@@ -66,7 +66,12 @@ Use the following command to install the toolchain:
 git clone https://github.com/raspberrypi/tools
 ```
 
-You can then copy the `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian` directory to a common location, and add `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin` to your $PATH in the `.bashrc` in your home directory. For 64-bit host systems, use `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin`. While this step isn't strictly necessary, it does make it easier for later command lines!
+Linking the toolchain to the root directory makes later command lines easier:
+```
+sudo ln -rs ./tools/ /
+```
+
+Updating the $PATH environment variable makes the host system aware of file locations needed for cross-compilation. For 32-bit systems add `PATH=$PATH:/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin` to the bottom of the `.bashrc` file in your home directory or `PATH=$PATH:/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin` if you are on a 64-bit system. To reload $PATH you can do `source ~/.bashrc`.
 
 ### Get sources
 
