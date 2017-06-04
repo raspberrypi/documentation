@@ -137,7 +137,7 @@ IP 0.0.0.0.bootpc > 255.255.255.255.bootps: BOOTP/DHCP, Request from b8:27:eb...
 Now we need to modify the dnsmasq configuration to enable DHCP to reply to the device. Press `CTRL+C` on the keyboard to exit the tcpdump program, then type the following:
 
 ```
-sudo echo | sudo tee /etc/dnsmasq.conf
+echo | sudo tee /etc/dnsmasq.conf
 sudo nano /etc/dnsmasq.conf
 ```
 
@@ -166,7 +166,7 @@ sudo systemctl restart dnsmasq.service
 Now monitor the dnsmasq log:
 
 ```
-tail -f /var/log/daemon.log
+tail -F /var/log/daemon.log
 ```
 
 You should see something like this:
@@ -176,7 +176,7 @@ raspberrypi dnsmasq-tftp[1903]: file /tftpboot/bootcode.bin not found
 
 Next, you will need to copy `bootcode.bin` and `start.elf` into the /tftpboot directory. You should be able to do this by copying the files from /boot, since these are the right ones. We need a kernel, so we might as well copy the entire boot directory.
 
-First, use Ctrl+Z to exit the monitoring state. Then type the following: 
+First, use Ctrl+C to exit the monitoring state. Then type the following: 
 
 ```
 cp -r /boot/* /tftpboot
