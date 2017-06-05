@@ -16,4 +16,4 @@ All Raspberry Pi Compute Module 3 devices and the IO board have undergone extens
   - FCC 47 CFR Part 15, Subpart B, Class B Digital Device.
 
  [FCC Conformance Document](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_FCC.pdf)   
- [EU conformance Document](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_FCC.pdf)
+ [EU Conformance Document](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_EU.pdf)
