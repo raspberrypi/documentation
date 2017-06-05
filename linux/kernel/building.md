@@ -22,7 +22,7 @@ Configure the kernel; as well as the default configuration, you may wish to [con
 
 Run the following commands, depending on your Raspberry Pi version.
 
-### Raspberry Pi 1, Pi 0, Pi 0W and Compute Module default build configuration
+### Raspberry Pi 1, Pi 0, Pi 0W, and Compute Module default build configuration
 
 ```bash
 cd linux
@@ -30,7 +30,7 @@ KERNEL=kernel
 make bcmrpi_defconfig
 ```
 
-### Raspberry Pi 2, Pi 3 and Compute Module 3 default build configuration
+### Raspberry Pi 2, Pi 3, and Compute Module 3 default build configuration
 
 ```bash
 cd linux
