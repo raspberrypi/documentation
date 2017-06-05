@@ -22,7 +22,7 @@ Configure the kernel; as well as the default configuration, you may wish to [con
 
 Run the following commands, depending on your Raspberry Pi version.
 
-### Raspberry Pi 1 (or Compute Module) default build configuration
+### Raspberry Pi 1, Pi 0, Pi 0W, and Compute Module default build configuration
 
 ```bash
 cd linux
@@ -30,7 +30,7 @@ KERNEL=kernel
 make bcmrpi_defconfig
 ```
 
-### Raspberry Pi 2/3 default build configuration
+### Raspberry Pi 2, Pi 3, and Compute Module 3 default build configuration
 
 ```bash
 cd linux
@@ -82,7 +82,7 @@ To build the sources for cross-compilation, there may be extra dependencies beyo
 
 Enter the following commands to build the sources and Device Tree files:
 
-For Pi 1 or Compute Module:
+For Pi 1, Pi 0, Pi 0 W, or Compute Module:
 
 ```bash
 cd linux
@@ -90,7 +90,7 @@ KERNEL=kernel
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
 ```
 
-For Pi 2/3:
+For Pi 2, Pi 3, or Compute Module 3:
 
 ```bash
 cd linux
