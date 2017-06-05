@@ -71,7 +71,7 @@ which should give an output like:
 inet 10.42.0.211/24 brd 10.42.0.255 scope global eth0
 ```
 
-The first address is the IP address of your server Raspberry Pi on the network, and the part after the slash is the network size. It is highly likely that yours will be a `/24`. Also note the `brd` (broadcast) address of the network. Note down the output of the previous command, which will contain the IP address of the Raspberry Pi and the Broadcast address of the network.
+The first address is the IP address of your server Raspberry Pi on the network, and the part after the slash is the network size. It is highly likely that yours will be a `/24`. Also note the `brd` (broadcast) address of the network. Note down the output of the previous command, which will contain the IP address of the Raspberry Pi and the broadcast address of the network.
 
 Finally, note down the address of your DNS server, which is the same address as your gateway. You can find this with:
 ```bash
