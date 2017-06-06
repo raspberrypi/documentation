@@ -1,6 +1,12 @@
 # Compliance
 
-Raspberry Pi models conform to various standards. Those documents published are linked below.
+Raspberry Pi models conform to various standards. The available Documents of Conformance are linked below.
+
+## Raspberry Pi Model 3, Raspberry Pi Zero W
+
+All Raspberry Pi devices with Wireless and Bluetooth connectivity have undergone extensive compliance testing and meet the following standards.
+
+
 
 ## Compute Module 3 and Compute Module 3 Lite
 
@@ -17,3 +23,13 @@ All Raspberry Pi Compute Module 3 devices and the IO board have undergone extens
 
  [FCC Declaration of Conformity](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_FCC.pdf)   
  [EU Declaration of Conformity](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_EU.pdf)
+
+## Raspberry Pi Camera
+
+The Raspberry Pi camera has undergone compliance testing for.........
+
+
+
+## Raspberry Pi Display
+
+The Raspberry Pi Touchscreen Display has undergone compliance testing for.........
