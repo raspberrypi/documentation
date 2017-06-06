@@ -28,3 +28,5 @@ Some basic guides to configuring your Raspberry Pi.
     - How to set options in the kernel command line.
 - [Firmware Warning Icons](warning-icons.md)
     - Description of warning icons displayed if the firmware detects issues.
+- [Securing your Raspberry Pi](security.md)
+    - Some basic help of making you Raspberry Pi more secure.
