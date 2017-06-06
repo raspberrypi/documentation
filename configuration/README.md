@@ -31,7 +31,7 @@ Some basic guides to configuring your Raspberry Pi.
 - [Firmware Warning Icons](warning-icons.md)
     - Description of warning icons displayed if the firmware detects issues.
 - [Securing your Raspberry Pi](security.md)
-    - Some basic help of making you Raspberry Pi more secure.
+    - Some basic help with making your Raspberry Pi more secure.
 - [Screensaver](screensaver.md)
     - How to configure screen blanking/screen saver
 
