@@ -1,4 +1,4 @@
-# Standards Conformance
+# Compliance
 
 Raspberry Pi models conform to various standards. Those documents published are linked below.
 
@@ -15,5 +15,5 @@ All Raspberry Pi Compute Module 3 devices and the IO board have undergone extens
   - ANSI C63.4 
   - FCC 47 CFR Part 15, Subpart B, Class B Digital Device.
 
- [FCC Conformance Document](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_FCC.pdf)   
- [EU Conformance Document](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_EU.pdf)
+ [FCC Declaration of Conformity](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_FCC.pdf)   
+ [EU Declaration of Conformity](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_EU.pdf)
