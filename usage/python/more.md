@@ -142,7 +142,7 @@ or
 sudo apt-get install python3-rpi.gpio
 ```
 
-To control the GPIO pins you'll need root access, so run `sudo python`, `sudo ipython` or `sudo idle &`.
+In older versions of Raspian, you'll need root access to access the GPIO pins, so run `sudo python`, `sudo ipython` or `sudo idle &`, but in newer versions, if the user is in the `gpio` group, you can run it normally.
 
 In your Python script (or in the REPL), import the GPIO module, set the board mode to that of your preference, set up the pins you want to use and turn them on:
 
