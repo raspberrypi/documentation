@@ -46,7 +46,7 @@ pv recipes.sql | mysql recipes
 
 It may be sensible for you to keep a copy of the entire SD card image, so you can restore the card if you lose it or it becomes corrupt. You can do this using the same method you'd use to write an image to a new card, but in reverse.
 
-In Linux or on a Mac, for example:
+In Linux:
 
 ```bash
 sudo dd bs=4M if=/dev/sdb of=raspbian.img
@@ -69,6 +69,8 @@ To restore, pipe the output of `gunzip` to `dd`:
 ```bash
 gunzip --stdout rasbian.img.gz | sudo dd bs=4M of=/dev/sdb
 ```
+
+If you are using a Mac, the commands used are almost exactly the same, but `4M` in the above examples should be replaced with `4m`, with a lower case letter.
 
 See more about [installing SD card images](../../installation/installing-images/README.md).
 

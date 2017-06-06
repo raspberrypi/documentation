@@ -31,7 +31,7 @@ Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite vide
 
 #### hdmi_safe
 
-Setting `hdmi_safe` to `1` uses "safe mode" settings to try to boot with maximum HDMI compatibility. This is the same as setting the following parameters:
+Setting `hdmi_safe` to `1` will lead to "safe mode" settings being used to try to boot with maximum HDMI compatibility. This is the same as setting the following parameters:
 
 ```
 hdmi_force_hotplug=1
@@ -72,7 +72,7 @@ Setting `avoid_edid_fuzzy_match` to `1` avoids [fuzzy matching](https://en.wikip
 
 #### hdmi_ignore_cec_init
 
-Setting `hdmi_ignore_cec_init` to `1` will stop the initial active source message being sent during bootup. This prevents a CEC-enabled TV from coming out of standby and channel switching when you are rebooting your Raspberry Pi.
+Setting `hdmi_ignore_cec_init` to `1` will stop the initial active source message being sent during bootup. This prevents a CEC-enabled TV from coming out of standby and channel-switching when you are rebooting your Raspberry Pi.
 
 #### hdmi_ignore_cec
 
@@ -96,7 +96,7 @@ The `hdmi_pixel_encoding` command forces the pixel encoding mode. By default, it
 
 #### hdmi_blanking
 
-The `hdmi_blanking` command allows you to choose whether the HDMI output should be switched off when DPMS is triggered. This is to mimic the behaviour of other computers. After a specific amount of time, the display will blank and go into low-power/standby mode due to receiving no signal.
+The `hdmi_blanking` command allows you to choose whether the HDMI output should be switched off when DPMS is triggered. This is to mimic the behaviour of other computers. After a specific amount of time, the display will become blank and go into low-power/standby mode due to receiving no signal.
 
 **NOTE:** This feature may cause issues when using applications which don't use the framebuffer, such as omxplayer.
 
@@ -297,6 +297,21 @@ These values are valid if `hdmi_group=2` (DMT):
 
 Note that there is a [pixel clock limit](https://www.raspberrypi.org/forums/viewtopic.php?f=26&t=20155&p=195443#p195443).The highest supported mode is 1920x1200 at 60Hz with reduced blanking.
 
+#### hdmi_force_mode
+
+Setting to `1` will remove all other modes except the ones specified by `hdmi_mode` and `hdmi_group` from the internal list, meaning they will not appear in any enumerated lists of modes. This option may help if a display seems to be ignoring the `hdmi_mode` and `hdmi_group` settings.
+
+#### edid_content_type
+
+Forces the edit content type to a specific value.
+
+The options are:
+ - 0 = EDID_ContentType_NODATA, content type none.
+ - 1 = EDID_ContentType_Graphics, content type graphics, ITC must be set to 1
+ - 2 = EDID_ContentType_Photo, content type photo
+ - 3 = EDID_ContentType_Cinema,  content type cinema
+ - 4 = EDID_ContentType_Game,  content type game
+ 
 ### Which values are valid for my monitor?
 
 Your HDMI monitor may only support a limited set of formats. To find out which formats are supported, use the following method:
@@ -335,6 +350,44 @@ Note that this simply **creates** the mode (group 2 mode 87). In order to make t
     hdmi_drive=2
 
 This may not work if your monitor does not support standard CVT timings.
+
+### LCD display/touchscreen options
+
+#### ignore_lcd
+
+By default the Raspberry Pi LCD display is used when it is detected on the I2C bus. `ignore_lcd=1` will skip this detection phase, and therefore the LCD display will not be used.
+
+#### display_default_lcd
+
+If a Raspberry Pi DSI LCD is detected it will be used as the default display and will show the framebuffer. Setting `display_default_lcd=0` will ensure the LCD is not the default display, which usually implies the HDMI output will be the default. The LCD can still be used by choosing its display number from supported applications, for example, omxplayer.
+
+#### lcd_framerate
+
+Specify the framerate of the Raspberry Pi LCD display, in Hertz/fps. Defaults to 60Hz.
+
+#### lcd_rotate
+
+This flips the display using the LCD's inbuilt flip functionality, which is a cheaper operation that using the GPU-based rotate operation.
+
+For example, `lcd_rotate=2` will compensate for an upside down display.
+
+#### disable_touchscreen
+
+Enable/disable the touchscreen.
+
+`disable_touchscreen=1` will disable the touchscreen on the official Raspberry Pi LCD display.
+
+#### enable_dpi_lcd
+
+Enable LCD displays attached to the DPI GPIOs. This is to allow the use of third-party LCD displays using the parallel display interface.
+
+#### dpi_group, dpi_mode, dpi_output_format
+
+The `dpi_group` and `dpi_mode` config.txt parameters are used to set either predetermined modes (DMT or CEA modes as used by HDMI above). A user can generate custom modes in much the same way as for HDMI.
+
+`dpi_output_format` is a bitmask specifying various parameters used to set up the display format. 
+
+More details on using the DPI modes and the output format can be found [here](/hardware/raspberrypi/dpi/README.md).
 
 ### Generic display options
 
@@ -378,6 +431,10 @@ The `framebuffer_width` command specifies the console framebuffer width in pixel
 
 The `framebuffer_height` command specifies the console framebuffer height in pixels. The default is the display height minus the total vertical overscan.
 
+#### max_framebuffer_height, max_framebuffer_width
+
+Specifies the maximum dimensions that the internal frame buffer is allowed to be. 
+
 #### framebuffer_depth
 
 Use `framebuffer_depth` to specify the console framebuffer depth in bits per pixel. The default value is `16`.
@@ -395,7 +452,7 @@ Set `framebuffer_ignore_alpha` to `1` to disable the alpha channel. Can help wit
 
 #### test_mode
 
-The `test_mode` command displays a test image and sound during boot (over the composite video and analogue audio outputs only) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test: the default value is `0`.
+The `test_mode` command displays a test image and sound during boot (over the composite video and analogue audio outputs only) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test; the default value is `0`.
 
 #### display_rotate
 
@@ -412,5 +469,10 @@ Use `display_rotate` to rotate or flip the screen orientation. The default value
 
 Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16MB GPU split.
 
+### Other options
+
+#### dispmanx_offline
+
+Forces dispmanx composition to be done offline in two offscreen framebuffers. This can allow more dispmanx elements to be composited, but is slower and may limit screen framerate to typically 30fps.
 
 *This article uses content from the eLinux wiki page [RPiconfig](http://elinux.org/RPiconfig), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](http://creativecommons.org/licenses/by-sa/3.0/)*
