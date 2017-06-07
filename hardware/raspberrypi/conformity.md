@@ -14,6 +14,8 @@ The Raspberry Pi Model A+ device has undergone extensive compliance testing and 
 
 ## Raspberry Pi Model B+
 
+The Raspberry Pi Model B+ device has undergone extensive compliance testing and meet the following standards.
+
 - EU
   - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
   - Restriction of Hazardous Substances (RoHS) Directive 2011/65/EU
