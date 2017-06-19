@@ -2,7 +2,7 @@
 
 ** Note that unless explicitly stated otherwise, these instructions will work identically on Compute Module and Compute Module 3 Module+IO board(s). **
 
-##Introduction
+## Introduction
 
 This guide is designed to help developers using the Compute Module (and Compute Module 3) get to grips with how to wire up peripherals to the Compute Module pins, and how to make changes to the software to enable these peripherals to work correctly.
 
@@ -14,7 +14,7 @@ Raspberry Pi provides a minimal motherboard for the Compute Module (called the C
 
 This guide first explains the boot process and how Device Tree is used to describe attached hardware; these are essential things to understand when designing with the Compute Module. It then provides a worked example of attaching an I2C and an SPI peripheral to a CMIO (or CMIO V3 for CM3) Board and creating the Device Tree files necessary to make both peripherals work under Linux, starting from a vanilla Raspbian OS image.
 
-##BCM283x GPIOs
+## BCM283x GPIOs
 
 BCM283x has three banks of General-Purpose Input/Output (GPIO) pins: 28 pins on Bank 0, 18 pins on Bank 1, and 8 pins on Bank 2, making 54 pins in total. These pins can be used as true GPIO  pins, i.e. software can set them as inputs or outputs, read and/or set state, and use them as interrupts. They also can be set to 'alternate functions' such as I2C, SPI, I2S, UART, SD card, and others.
 
@@ -48,7 +48,7 @@ Note that `raspi-gpio` can be used with the `funcs` argument to get a list of al
 sudo raspi-gpio funcs > gpio-funcs.csv
 ```
 
-##BCM283x Boot Process
+## BCM283x Boot Process
 
 BCM283x devices consist of a VideoCore GPU and ARM CPU cores. The GPU is in fact a system consisting of a DSP processor and hardware accelerators for imaging, video encode and decode, 3D graphics, and image compositing.
 
@@ -62,7 +62,7 @@ The BCM283x devices as used on Raspberry Pi and Compute Module boards have a thr
 
 3. `start.elf` takes over and is responsible for further system setup and booting up the ARM processor subsystem, and contains the firmware that runs on the various parts of the GPU. It first reads `dt-blob.bin` to determine initial GPIO pin states and GPU-specific interfaces and clocks, then parses `config.txt`. It then loads an ARM device tree file (e.g. `bcm2708-rpi-cm.dtb` for a Compute Module) and any device tree overlays specified in `config.txt` before starting the ARM subsystem and passing the device tree data to the booting Linux kernel.
 
-##Device Tree
+## Device Tree
 
 [Device Tree](http://www.devicetree.org/) is a special way of encoding all the information about the hardware attached to a system (and consequently required drivers).
 
@@ -91,7 +91,7 @@ In addition to loading an ARM dtb, `start.elf` supports loading additional Devic
 
 Overlays are used to add data to the base dtb that (nominally) describes non board-specific hardware. This includes GPIO pins used and their function, as well as the device(s) attached, so that the correct drivers can be loaded. The convention is that on a Raspberry Pi, all hardware attached to the Bank0 GPIOs (the GPIO header) should be described using an overlay. On a Compute Module all hardware attached to the Bank0 and Bank1 GPIOs should be described in an overlay file. You don't have to follow these conventions: you can roll all the information into one single dtb file, as previously described, replacing `bcm2708-rpi-cm.dtb`. However, following the conventions means that you can use a 'standard' Raspbian release, with its standard base dtb and all the product-specific information contained in a separate overlay. Occasionally the base dtb might change - usually in a way that will not break overlays - which is why using an overlay is suggested.
 
-##dt-blob.bin
+## dt-blob.bin
 
 When `start.elf` runs, it first reads something called `dt-blob.bin`. This is a special form of Device Tree blob which tells the GPU how to (initially) set up the GPIO pin states, and also any information about GPIOs/peripherals that are controlled (owned) by the GPU, rather than being used via Linux on the ARM. For example, the Raspberry Pi Camera peripheral is managed by the GPU, and the GPU needs exclusive access to an I2C interface to talk to it, as well as a couple of control pins. I2C0 on most Pi Boards and Compute Modules is nominally reserved for exclusive GPU use. The information on which GPIO pins the GPU should use for I2C0, and to control the camera functions, comes from `dt-blob.bin`. 
 
@@ -104,7 +104,7 @@ To compile the `minimal-cm-dt-blob.dts` to `dt-blob.bin` use the Device Tree Com
 dtc -I dts -O dtb -o dt-blob.bin minimal-cm-dt-blob.dts
 ```
 
-##ARM Linux Device Tree
+## ARM Linux Device Tree
 
 After `start.elf` has read `dt-blob.bin` and set up the initial pin states and clocks, it reads `config.txt` which contains many other options for system setup (see [here](../../configuration/config-txt/README.md) for a comprehensive guide).
 
@@ -112,7 +112,7 @@ After reading `config.txt` another device tree file specific to the board the ha
 
 Although the `bcm2708-rpi-cm.dtb` file can be used to load all attached devices, the recommendation for Compute Module users is to leave this file alone. Instead, use the one supplied in the standard Raspbian software image, and add devices using a custom 'overlay' file as previously described. The `bcm2708-rpi-cm.dtb` file contains (disabled) entries for the various peripherals (I2C, SPI, I2S etc.) and no GPIO pin definitions, apart from the eMMC/SD Card peripheral which has GPIO defs and is enabled, because it is always on the same pins. The idea is that the separate overlay file will enable the required interfaces, describe the pins used, and also describe the required drivers. The `start.elf` firmware will read and merge the `bcm2708-rpi-cm.dtb` with the overlay data before giving the merged device tree to the Linux kernel as it boots up.
 
-##Device Tree Source and Compilation
+## Device Tree Source and Compilation
 
 The Raspbian image provides compiled dtb files, but where are the source dts files? They live in the Raspberry Pi Linux kernel branch, on [GitHub](https://github.com/raspberrypi/linux). Look in the `arch/arm/boot/dts` folder.
 
@@ -125,7 +125,7 @@ sudo apt-get install device-tree-compiler
 
 If you are building your own kernel then the build host also gets a version in `scripts/dtc`. You can arrange for your overlays to be built automatically by adding them to `Makefile` in `arch/arm/boot/dts/overlays`, and using the 'dtbs' make target.
 
-##Device Tree Debugging
+## Device Tree Debugging
 
 When the Linux kernel is booted on the ARM core(s), the GPU provides it with a fully assembled device tree, assembled from the base dts and any overlays. This full tree is available via the Linux proc interface in `/proc/device-tree`, where nodes become directories and properties become files.
 
@@ -146,11 +146,11 @@ sudo vcdbg log msg
 
 You can include more diagnostics in the output by adding `dtdebug=1` to `config.txt`.
 
-##Getting Help
+## Getting Help
 
 Please use the [Device Tree subforum](https://www.raspberrypi.org/forums/viewforum.php?f=107) on the Raspberry Pi forums to ask Device Tree related questions.
 
-##Examples
+## Examples
 
 For these simple examples I used a CMIO board with peripherals attached via jumper wires.
 
@@ -164,7 +164,7 @@ WARNING: if you have edited any of the default .dtb files in `/boot` or `/boot/o
 
 Please post any issues, bugs or questions on the Raspberry Pi [Device Tree subforum](https://www.raspberrypi.org/forums/viewforum.php?f=107).
 
-##Example 1 - attaching an I2C RTC to BANK1 pins
+## Example 1 - attaching an I2C RTC to BANK1 pins
 
 In this simple example we wire an NXP PCF8523 real time clock (RTC) to the CMIO board BANK1 GPIO pins: 3V3, GND, I2C1_SDA on GPIO44 and I2C1_SCL on GPIO45.
 
@@ -214,7 +214,7 @@ sudo hwclock
 
 will return with the hardware clock time, and not an error.
 
-##Example 2 - Attaching an ENC28J60 SPI Ethernet Controller on BANK0
+## Example 2 - Attaching an ENC28J60 SPI Ethernet Controller on BANK0
 
 In this example we use one of the already available overlays in /boot/overlays to add an ENC28J60 SPI Ethernet controller to BANK0. The Ethernet controller is connected to SPI pins CE0, MISO, MOSI and SCLK (GPIO8-11 respectively), as well as GPIO12 for a falling edge interrupt, and of course GND and 3V3.
 
@@ -248,5 +248,5 @@ sudo raspi-gpio get
 
 should show that GPIO8-11 have changed to ALT0 (SPI) functions.
 
-##Attaching a camera or cameras
+## Attaching a camera or cameras
 To attach a camera or cameras see the documentation [here](cmio-camera.md)
