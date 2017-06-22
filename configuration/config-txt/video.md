@@ -387,7 +387,7 @@ The `dpi_group` and `dpi_mode` config.txt parameters are used to set either pred
 
 `dpi_output_format` is a bitmask specifying various parameters used to set up the display format. 
 
-More details on using the DPI modes and the output format can be found [here](/hardware/raspberrypi/dpi/README.md).
+More details on using the DPI modes and the output format can be found [here](../../hardware/raspberrypi/dpi/README.md).
 
 ### Generic display options
 
