@@ -164,7 +164,7 @@ Save the file and either restart the ssh system with `sudo service ssh reload` o
 
 ## Install a firewall
 
-There are many firewall solutions for Linux available, with most using the underlying [iptables](http://www.netfilter.org/projects/iptables/index.html) project to provide packet filtering. This itself sits over the Linux netfiltering system. `iptables` is installed by default on Raspbian, but is not set up. Setting it up can be a complicated task, and one project that provides a simpler interface than `iptables` is [ufw](https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw), which stands for 'Uncomplicated Fire Wall'. This is the default firewall tool in Ubuntu, and can be easily installed on your Raspberry Pi: 
+There are many firewall solutions available for Linux. Most use the underlying [iptables](http://www.netfilter.org/projects/iptables/index.html) project to provide packet filtering. This project sits over the Linux netfiltering system. `iptables` is installed by default on Raspbian, but is not set up. Setting it up can be a complicated task, and one project that provides a simpler interface than `iptables` is [ufw](https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw), which stands for 'Uncomplicated Fire Wall'. This is the default firewall tool in Ubuntu, and can be easily installed on your Raspberry Pi: 
 
 ```
 sudo apt-get install ufw
@@ -230,7 +230,7 @@ sudo ufw deny from 192.168.2.1 port 30
 
 ## Installing fail2ban
 
-If you are using your Raspberry Pi as some sort of server, for example ```ssh``` or a webserver, your firewall will have deliberate 'holes' in it to let the server traffic through. In these cases, [Fail2ban](http://www.fail2ban.org) can be useful. Fail2ban is a scanner, written in Python, that examines the log files produced by the Raspberry Pi, and checks them for suspicious activity. This catches things like multiple brute-force atttempts to log in, and can inform any installed firewall to stop any futher attempts to log in from suspicious IP addresses. It avoids the need to manually read log files for intrusion attempts, and update the firewall (via `iptables`) to prevent them.
+If you are using your Raspberry Pi as some sort of server, for example an ```ssh``` or webserver, your firewall will have deliberate 'holes' in it to let the server traffic through. In these cases, [Fail2ban](http://www.fail2ban.org) can be useful. Fail2ban, written in Python, is a scanner that examines the log files produced by the Raspberry Pi, and checks them for suspicious activity. It catches things like multiple brute-force atttempts to log in, and can inform any installed firewall to stop further login attempts from suspicious IP addresses. It saves you having to manually check log files for intrusion attempts and then update the firewall (via `iptables`) to prevent them.
 
 Install Fail2ban using the following command:
 
@@ -238,7 +238,7 @@ Install Fail2ban using the following command:
 sudo apt-get install fail2ban
 ```
 
-Note that the version (v0.8.13) of Fail2ban in the repository does not support IPv6 networks. If you use IPv6 then you will need to install a version v0.10 or higher from source. Please see the [Fail2ban](http://www.fail2ban.org) website for more information on how to do this.
+Note that the version of Fail2ban in the repository (v0.8.13) does not support IPv6 networks. If you use IPv6, you will need to install version v0.10 or higher from source. Please see the [Fail2ban](http://www.fail2ban.org) website for more information on how to do this.
 
 On installation, Fail2ban creates a folder `/etc/fail2ban` in which there is a configuration file called `jail.conf`. This needs to be copied to `jail.local` to enable it. Inside this configuration file are a set of default options, together with options for checking specific services for abnormalities. Do the following to examine/change the rules that are used for `ssh`:
 
