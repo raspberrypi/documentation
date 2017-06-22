@@ -4,7 +4,7 @@ The Raspberry Pi can be used as a wireless access point, running a standalone ne
 
 Note that this documentation was tested on a Raspberry Pi 3, and it is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the forums.
 
-To add a Raspberry Pi-based access point to an existing network, see [this section](#using-the-raspberry-pi-as-an-access-point-to-share-an-internet-connection).
+To add a Raspberry Pi-based access point to an existing network, see [this section](#internet-sharing).
 
 In order to work as an access point, the Raspberry Pi will need to have access point software installed, along with DHCP server software to provide connecting devices with a network address. Ensure that your Raspberry Pi is using an up-to-date version of Raspbian (dated 2017 or later).
 
@@ -135,6 +135,7 @@ ssh pi@192.168.0.1
 
 By this point, the Raspberry Pi is acting as an access point, and other devices can associate with it. Associated devices can access the Raspberry Pi access point via its IP address for operations such as `rsync`, `scp`, or `ssh`.
 
+<a name="internet-sharing"></a>
 ## Using the Raspberry Pi as an access point to share an internet connection
 
 One common use of the Raspberry Pi as an access point is to provide wireless conections to a wired Ethernet connection, so that anyone logged into the access point can access the internet, providing of course that the wired Ethernet on the Pi can connect to the internet via some sort of router.
