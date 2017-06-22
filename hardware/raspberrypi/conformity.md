@@ -4,7 +4,7 @@ Raspberry Pi models conform to various standards. The available Documents of Con
 
 ## Raspberry Pi Model A+
 
-The Raspberry Pi Model A+ device has undergone extensive compliance testing and meet the following standards.
+The Raspberry Pi Model A+ device has undergone extensive compliance testing and meets the following standards:
 
 - EU
   - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
@@ -14,7 +14,7 @@ The Raspberry Pi Model A+ device has undergone extensive compliance testing and 
 
 ## Raspberry Pi Model B+
 
-The Raspberry Pi Model B+ device has undergone extensive compliance testing and meet the following standards.
+The Raspberry Pi Model B+ device has undergone extensive compliance testing and meets the following standards:
 
 - EU
   - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
@@ -24,7 +24,7 @@ The Raspberry Pi Model B+ device has undergone extensive compliance testing and 
 
 ## Raspberry Pi 2 Model B
 
-All Raspberry Pi 2 Model B devices have undergone extensive compliance testing and meet the following standards.
+All Raspberry Pi 2 Model B devices have undergone extensive compliance testing and meet the following standards:
 
 - EU
   - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
@@ -39,7 +39,7 @@ All Raspberry Pi 2 Model B devices have undergone extensive compliance testing a
 
 ## Raspberry Pi Model 3
 
-The Raspberry Pi Model 3 devices has undergone extensive compliance testing and meet the following standards.
+All Raspberry Pi Model 3 devices have undergone extensive compliance testing and meet the following standards:
 
 - EU
   - Restriction of Hazardous Substances (RoHS) Directive 2011/65/EU
@@ -55,7 +55,7 @@ The Raspberry Pi Model 3 devices has undergone extensive compliance testing and 
 
 ## Raspberry Pi Zero
 
-The Raspberry Pi Model 0 devices has undergone extensive compliance testing and meet the following standards.
+All Raspberry Pi Model Zero devices have undergone extensive compliance testing and meet the following standards:
 
 - EU
   - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
@@ -65,7 +65,7 @@ The Raspberry Pi Model 0 devices has undergone extensive compliance testing and 
 
 ## Raspberry Pi Zero W
 
-The Raspberry Pi Model 0 W devices has undergone extensive compliance testing and meet the following standards.
+All Raspberry Pi Model Zero W devices have undergone extensive compliance testing and meet the following standards:
 
 - EU
   - Restriction of Hazardous Substances (RoHS) Directive 2011/65/EU
@@ -81,7 +81,7 @@ The Raspberry Pi Model 0 W devices has undergone extensive compliance testing an
 
 ## Compute Module 3 and Compute Module 3 Lite
 
-All Raspberry Pi Compute Module 3 devices and the IO board have undergone extensive compliance testing and meet the following standards.
+All Raspberry Pi Compute Module 3 devices and the IO board have undergone extensive compliance testing and meet the following standards:
 
 - EU
   - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
@@ -97,7 +97,7 @@ All Raspberry Pi Compute Module 3 devices and the IO board have undergone extens
 
 ## Raspberry Pi Camera, PiNoIR camera, Pi Camera 2, PiNoIR Camera 2
 
-The Raspberry Pi cameras have undergone compliance testing and meets the following standards.
+The Raspberry Pi Camera Modules have undergone compliance testing and meet the following standards:
 
 - EU
   - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
@@ -108,7 +108,7 @@ The Raspberry Pi cameras have undergone compliance testing and meets the followi
 
 ## Raspberry Pi Display
 
-The Raspberry Pi Touchscreen Display has undergone compliance testing and meet the following standards.
+The Raspberry Pi Touchscreen Display has undergone compliance testing and meets the following standards:
 
 - EU
   - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
@@ -122,7 +122,7 @@ The Raspberry Pi Touchscreen Display has undergone compliance testing and meet t
 
 ## Raspberry Pi Sense HAT
 
-The Raspberry Pi Sense HAT has undergone compliance testing and meets the following standards.
+The Raspberry Pi Sense HAT has undergone compliance testing and meets the following standards:
 
 - EU
   - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
