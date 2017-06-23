@@ -216,7 +216,7 @@ will return with the hardware clock time, and not an error.
 
 ## Example 2 - Attaching an ENC28J60 SPI Ethernet Controller on BANK0
 
-In this example we use one of the already available overlays in /boot/overlays to add an ENC28J60 SPI Ethernet controller to BANK0. The Ethernet controller is connected to SPI pins CE0, MISO, MOSI and SCLK (GPIO8-11 respectively), as well as GPIO12 for a falling edge interrupt, and of course GND and 3V3.
+In this example we use one of the already available overlays in /boot/overlays to add an ENC28J60 SPI Ethernet controller to BANK0. The Ethernet controller is connected to SPI pins CE0, MISO, MOSI and SCLK (GPIO8-11 respectively), as well as GPIO25 for a falling edge interrupt, and of course GND and 3V3.
 
 In this example we won't change `dt-blob.bin`, although of course you can if you wish. We should see that Linux Device Tree correctly sets up the pins.
 
