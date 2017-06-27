@@ -24,7 +24,7 @@ network={
     psk="testingPassword"
 }
 ```
-The password can be configured either as the ASCII representation, in quotes as per the example above, or as a pre-encrypted 32 byte hexadecimal number. You can use the `wpa_passphrase` utility to generate an encrypted PSK. This takes the SSID and the password, and generates the encrypted PSK. With the example from above, you can generate the PSK with `wpa_passphrase "testing" "testingPassword`. The output is as follows.
+The password can be configured either as the ASCII representation, in quotes as per the example above, or as a pre-encrypted 32 byte hexadecimal number. You can use the `wpa_passphrase` utility to generate an encrypted PSK. This takes the SSID and the password, and generates the encrypted PSK. With the example from above, you can generate the PSK with `wpa_passphrase "testing" "testingPassword"`. The output is as follows.
 
   ```
   network={
@@ -33,7 +33,7 @@ The password can be configured either as the ASCII representation, in quotes as 
 	  psk=131e1e221f6e06e3911a2d11ff2fac9182665c004de85300f9cac208a6a80531
   }
   ```
-Note that the plain text version of the code is present, but commented out. You should delete this line from the final `wpa_suplicant` file for extra security.
+Note that the plain text version of the code is present, but commented out. You should delete this line from the final `wpa_supplicant` file for extra security.
 
 The `wpa_password` tool requires a password with between 8 and 63 characters. For more complex passphrases you can extract the content of a text file and use it as input for `wpa_passphrase`, if the password is stored as plain text inside a file somewhere, by calling `wpa_passphrase "testing" < file_where_password_is_stored`. For extra security, you should delete the `file_where_password_is_stored` afterwards, so there is no plain text copy of the original password on the system.
 
