@@ -1,13 +1,13 @@
 # Boot flow
 
-The flow of boot begins with reading the OTP to decide on the valid boot modes enabled. By default this is SD card boot followed by USB device boot. Subsequently, the boot ROM checks to see if `program_gpio_bootmode` OTP bit is set, if it is then it reads either GPIOs 22-26 or 39-43 (depending on the value of `program_gpio_bootpos`) and uses those bits to disable boot modes.  This means it is possible to use a hardware switch to switch between different boot modes if there are more than one available.
+The flow of boot begins with reading the OTP to decide on the valid boot modes enabled. By default this is SD card boot followed by USB device boot. Subsequently, the boot ROM checks to see if `program_gpio_bootmode` OTP bit is 1 or 2, if it is then it reads either GPIOs 22-26 (program_gpio_bootmode=1) or 39-43 (program_gpio_bootmode=2) and uses those bits to disable boot modes.  This means it is possible to use a hardware switch to switch between different boot modes if there are more than one available.
 
 Next the boot ROM checks each of the boot sources for a file called bootcode.bin; if it is successful it will load the code into the local 128K cache and jump to it. The overall boot mode process is as follows:
 
 * 2837 boots
 * Reads boot ROM enabled boot modes from OTP
-* Uses gpio_bootmode to disable some modes by reading GPIOs 22-26 or 39-43 to see if the default values do not equal the default pull to '0'.  If it is low it will disable that boot mode for each of SD1, SD2, NAND, SPI, USB. If the value read is a '1' then that boot mode is enabled (note this cannot enable boot modes that have not already been enabled in the OTP). The default pull resistance is around 50k ohms, so a smaller pull up of 5K should suffice to enable the boot mode but still allow the GPIO to be operational without consuming too much power.
-* If enabled: check primary SD for bootcode.bin
+* Uses program_gpio_bootmode to disable some modes by reading GPIOs 22-26 or 39-43 to see if the default values do not equal the default pull to '0'.  If it is low it will disable that boot mode for each of SD1, SD2, NAND, SPI, USB. If the value read is a '1' then that boot mode is enabled (note this cannot enable boot modes that have not already been enabled in the OTP). The default pull resistance is around 50k ohms, so a smaller pull up of 5K should suffice to enable the boot mode but still allow the GPIO to be operational without consuming too much power.
+* If enabled: check primary SD for bootcode.bin on GPIO 48-53
   * Success - Boot
   * Fail - timeout (five seconds)
 * If enabled: check secondary SD
@@ -46,5 +46,5 @@ NAND boot and SPI boot modes do work, although they do not yet have full GPU sup
 
 The USB device boot mode is enabled by default at the time of manufacture, but the USB host boot mode is only enabled with `program_usb_boot_mode=1`. Once enabled, the processor will use the value of the OTGID pin on the processor to decide between the two modes. On a Raspberry Pi Model B, the OTGID pin is driven to '0' and therefore will only boot via host mode once enabled (it is not possible to boot through device mode because the LAN9515 device is in the way).
 
-The USB will boot as a USB device on Pi Zero or Compute Module if the OTGID pin is left floating (when plugged into a PC for example) so you can 'squirt' the bootcode.bin into the device. The code for doing this is [usbboot](https://github.com/raspberrypi/tools/tree/master/usbboot).
+The USB will boot as a USB device on Pi Zero or Compute Module if the OTGID pin is left floating (when plugged into a PC for example) so you can 'squirt' the bootcode.bin into the device. The code for doing this is [usbboot](https://github.com/raspberrypi/usbboot).
 
