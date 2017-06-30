@@ -7,7 +7,7 @@ If you are using the Raspberry Pi solely on the console (no desktop GUI), you ne
 cat /sys/module/kernel/parameters/consoleblank
 ```
 
-Here, `consoleblank` is a kernel parameter. In in order to be permanently set, it needs to be defined on the kernel command line.
+Here, `consoleblank` is a kernel parameter. In order to be permanently set, it needs to be defined on the kernel command line.
 
 ```
 sudo nano /boot/cmdline.txt
