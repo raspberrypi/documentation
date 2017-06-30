@@ -31,7 +31,7 @@ Set the `disable_commandline_tags` command to `1` to stop `start.elf` from filli
 
 ### kernel
 
-`kernel` is the alternative filename on the boot partition to use when loading the kernel. The default value is `kernel.img`.
+`kernel` is the alternative filename on the boot partition to use when loading the kernel. The default value on the Pi 1, Pi Zero, and Compute Module is is `kernel.img`, and on the Pi 2, Pi 3, and Compute Module 3 it is `kernel7.img`. If `kernel8.img` is present on the Pi 3 or Compute Module 3, it will be loaded in preference and entered in 64-bit mode.
 
 ### kernel_address
 
@@ -59,7 +59,7 @@ The `initramfs` command specifies both the ramfs filename **and** the memory add
 
 ### init_uart_clock
 
-`init_uart_clock` is the initial UART clock frequency. The default value is `3000000` (3MHz).
+`init_uart_clock` is the initial UART clock frequency. The default value is `48000000` (48MHz). Note that this clock only applies to UART0 (ttyAMA0 in Linux), and that the maximum baudrate for the UART is limited to 1/16th of the clock. The default UART on the Pi 3 and Pi Zero is UART1 (ttyS0 in Linux), and its clock is the core VPU clock - at least 250MHz.
 
 ### bootcode_delay
 
