@@ -35,7 +35,7 @@ For Windows users we recommend formatting your SD card using the SD Association'
 
 ##### Mac OS
 
-The [SD Association's Formatting Tool](https://www.sdcard.org/downloads/formatter_4/) is also available for Mac users, although the default OS X Disk Utility is also capable of formatting the entire disk. To do this, select the SD card volume and choose `Erase` with `MS-DOS` format.
+The [SD Association's Formatting Tool](https://www.sdcard.org/downloads/formatter_4/) is also available for Mac users, although the default OS X Disk Utility is also capable of formatting the entire disk. To do this, select the SD card volume and choose `Erase` with `MS-DOS` format. Name the partition `BOOT` (all caps).
 
 ##### Linux
 
