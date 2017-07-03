@@ -27,7 +27,7 @@ sudo systemctl stop hostapd
 
 We are configuring a standalone network to act as a server, so the Raspberry Pi needs to have a static IP address assigned to the wireless port. This documentation assumes that we are using the standard 192.168.x.x IP addresses for our wireless network, so we will assign the server the IP address 192.168.0.1. It is also assumed that the wireless device being used is `wlan0`.
 
-First, the standard interface handling for `wlan0` needs to be disabled. Normally the dhcpd daemon will search the network for another DHCP server to assign a IP address to `wlan0`. This is disabled by editing the configuration file:
+First, the standard interface handling for `wlan0` needs to be disabled. Normally the dhcpcd daemon (DHCP client) will search the network for a DHCP server to assign a IP address to `wlan0`. This is disabled by editing the configuration file:
 
 ```
 sudo nano /etc/dhcpcd.conf
