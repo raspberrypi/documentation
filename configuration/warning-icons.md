@@ -1,6 +1,6 @@
 # Firmware warning icons
 
-Under certain circcumstances, the Raspberry Pi firmware will display a warning icon on the display, to indicate an issue.
+Under certain circumstances, the Raspberry Pi firmware will display a warning icon on the display, to indicate an issue.
 
 There are currently three icons that can be displayed.
 
