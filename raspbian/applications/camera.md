@@ -252,7 +252,7 @@ DRC changes the images by increasing the range of dark areas, and decreasing the
 
 - off
 - low
-- medium
+- med
 - high
 
 By default, DRC is off.
