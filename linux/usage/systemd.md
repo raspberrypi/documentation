@@ -24,8 +24,7 @@ User=pi
 [Install]
 WantedBy=multi-user.target
 ```
-So in this instance the service would run python3 from our working directory /home/pi/myscript which contains our python program to run myscript.py
-In this case we are running a python3 script but you could run anything you like here. 
+So in this instance the service would run python3 from our working directory /home/pi/myscript which contains our python program to run myscript.py. But you are not limited to python programs, simply change the ExecStart line to be the command to start any program/script that you want running from startup.
 
 Copy this file into /lib/systemd/system as root e.g.
 ```
