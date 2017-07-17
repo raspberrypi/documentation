@@ -13,7 +13,7 @@
 - From the terminal, run the following command:
 
     ```
-    sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskn
+    sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskn conv=sync
     ```
 
     Remember to replace `n` with the number that you noted before!
@@ -24,7 +24,7 @@
     - If this command fails, try using `disk` instead of `rdisk`:
     
        ```
-       sudo dd bs=1m if=path_of_your_image.img of=/dev/diskn
+       sudo dd bs=1m if=path_of_your_image.img of=/dev/diskn conv=sync
        ```
 This will take a few minutes, depending on the size of the image file. To check the progress, open Activity Monitor, click the Disk tab and find the process with the name `dd`. If `dd` is not in the list, you may need to select 'All Processes' from the View menu. The Bytes Read column will display the amount of data that has been read from the image. Compare that to the file size of the image to determine progress.
 
@@ -44,25 +44,25 @@ This will take a few minutes, depending on the size of the image file. To check 
     
 - Copy the data to your SD card:
 
-    `sudo dd bs=1m if=image.img of=/dev/rdisk<disk# from diskutil>`
+    `sudo dd bs=1m if=image.img of=/dev/rdisk<disk# from diskutil> conv=sync`
 
-    where `disk` is your BSD name e.g. `sudo dd bs=1m if=2017-07-05-raspbian-jessie.img of=/dev/rdisk4`
+    where `disk` is your BSD name e.g. `sudo dd bs=1m if=2017-07-05-raspbian-jessie.img of=/dev/rdisk4 conv=sync`
 
     - This may result in a ``dd: invalid number '1m'`` error if you have GNU
     coreutils installed. In that case, you need to use a block size of `1M` in the `bs=` section, as follows:
 
-       `sudo dd bs=1M if=image.img of=/dev/rdisk<disk# from diskutil>`
+       `sudo dd bs=1M if=image.img of=/dev/rdisk<disk# from diskutil> conv=sync`
 
     This will take a few minutes, depending on the image file size. You can check the progress by sending a `SIGINFO` signal (press Ctrl+T).
     
     - If this command still fails, try using `disk` instead of `rdisk`, for example:
     
        ```
-       sudo dd bs=1m if=2017-07-05-raspbian-jessie.img of=/dev/disk4
+       sudo dd bs=1m if=2017-07-05-raspbian-jessie.img of=/dev/disk4 conv=sync
        ```
        or
        ```
-       sudo dd bs=1M if=2017-07-05-raspbian-jessie.img of=/dev/disk4
+       sudo dd bs=1M if=2017-07-05-raspbian-jessie.img of=/dev/disk4 conv=sync
        ```
 
 ## Alternative method
@@ -85,7 +85,7 @@ These commands and actions must be performed from an account that has administra
 - In the terminal, write the image to the card with this command, using the raw device name from above. Read the above step carefully to make sure that you use the correct `rdisk` number here:
     
     ```
-    sudo dd bs=1m if=2017-07-05-raspbian-jessie.img of=/dev/rdisk3
+    sudo dd bs=1m if=2017-07-05-raspbian-jessie.img of=/dev/rdisk3 conv=sync
     ```
 
     If the above command reports the error `dd: bs: illegal numeric value`, change the block size `bs=1m` to `bs=1M`.
