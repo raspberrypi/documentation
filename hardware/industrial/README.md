@@ -41,7 +41,7 @@ pi@raspberrypi:~ $ /opt/vc/bin/vcmailbox 0x00038021 [8 + number * 4] [8 + number
 So, to program OTP customer rows 4, 5, and 6 to 0x11111111, 0x22222222, 0x33333333 respectively, you would use:
 
 ```
-pi@raspberrypi:~ $ /opt/vc/bin/mailbox 0x00038021 20 20 4 3 0x11111111 0x22222222 0x33333333
+pi@raspberrypi:~ $ /opt/vc/bin/vcmailbox 0x00038021 20 20 4 3 0x11111111 0x22222222 0x33333333
 ```
 
 This will then program rows 40, 41, and 42.
@@ -49,7 +49,7 @@ This will then program rows 40, 41, and 42.
 To read the values back, you can use:
 
 ```
-pi@raspberrypi:~ $ /opt/vc/bin/mailbox 0x00030021 20 20 4 3 0 0 0
+pi@raspberrypi:~ $ /opt/vc/bin/vcmailbox 0x00030021 20 20 4 3 0 0 0
 0x0000002c 0x80000000 0x00030021 0x00000014 0x80000014 0x00000000 0x00000003 0x11111111 0x22222222 0x33333333
 ```
 
@@ -60,7 +60,7 @@ If you'd like to integrate this functionality into your own code, you should be 
 It is possible to lock the OTP changes to avoid them being edited again. This can be done using a special argument with the OTP write mailbox:
 
 ```
-pi@raspberrypi:~ $ /opt/vc/bin/mailbox 0x00038021 8 8 0xffffffff 0xaffe0000
+pi@raspberrypi:~ $ /opt/vc/bin/vcmailbox 0x00038021 8 8 0xffffffff 0xaffe0000
 ```
 
 Once locked, none of the customer OTP values can be accessed.
