@@ -9,8 +9,8 @@ Raspberry Pi models conform to various standards. The available Documents of Con
 | 2B    | [Declaration](https://www.raspberrypi.org/files/compliance/Raspberry_Pi_2B_V1-2_DOC_CE.pdf) | [Declaration](https://www.raspberrypi.org/files/compliance/Raspberry_Pi_2B_V1-2_DOC_FCC.pdf)||
 | 3B    | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPi3B-DOC-CE_RED.pdf)| [DSS](https://www.raspberrypi.org/files/compliance/Pi3_FCC_DSS.pdf),[DTS](https://www.raspberrypi.org/files/compliance/Pi3_FCC_DTS.pdf)| See below for more regions.|
 | Zero     |[Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiZeroDOC_CE.pdf)|||
-| ZeroW    |[Declaration](https://www.raspberrypi.org/files/compliance/Raspberry_Zero_W_DOC_CE_RED.pdf)||| 
-| CM3/CM3Lite | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_EU.pdf) |  [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_FCC.pdf)||
+| Zero W    |[Declaration](https://www.raspberrypi.org/files/compliance/Raspberry_Zero_W_DOC_CE_RED.pdf)||| 
+| CM3/CM3 Lite | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_EU.pdf) |  [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_FCC.pdf)||
 | Display    | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiDisplay_DOC_CE.pdf)| [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiDisplay_DOC_FCC.pdf) ||
 | Camera v1 | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCameraDOC_CE.pdf) |||
 | Camera v2 | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_CE.pdf) |||
