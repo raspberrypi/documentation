@@ -1,6 +1,21 @@
 # Compliance
 
-Raspberry Pi models conform to various standards. The available Documents of Conformance are linked below. Note that not all standards that apply are listed here.
+Raspberry Pi models conform to various standards. The available Documents of Conformance are linked in the shortcut table below, and in more detail further down the page. Note that not all standards that apply are listed here. 
+
+| Model | EU Declaration | FCC Declaration | Others |
+| ----- |--------------- | --------------- |--------|
+| A+    | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiAPlusDOC_CE.pdf) |||
+| B+    | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiBplus_DOC_CE.pdf)|||
+| 2B    | [Declaration](https://www.raspberrypi.org/files/compliance/Raspberry_Pi_2B_V1-2_DOC_CE.pdf) | [Declaration](https://www.raspberrypi.org/files/compliance/Raspberry_Pi_2B_V1-2_DOC_FCC.pdf)||
+| 3B    | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPi3B-DOC-CE_RED.pdf)| [DSS](https://www.raspberrypi.org/files/compliance/Pi3_FCC_DSS.pdf),[DTS](https://www.raspberrypi.org/files/compliance/Pi3_FCC_DTS.pdf)| See below for more regions.|
+| Zero     |[Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiZeroDOC_CE.pdf)|||
+| Zero W    |[Declaration](https://www.raspberrypi.org/files/compliance/Raspberry_Zero_W_DOC_CE_RED.pdf)||| 
+| CM3/CM3 Lite | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_EU.pdf) |  [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_FCC.pdf)||
+| Display    | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiDisplay_DOC_CE.pdf)| [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiDisplay_DOC_FCC.pdf) ||
+| Camera v1 | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCameraDOC_CE.pdf) |||
+| Camera v2 | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_CE.pdf) |||
+| Sense HAT | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_CE.pdf) |||
+
 
 ## Raspberry Pi Model A+
 
@@ -50,8 +65,26 @@ All Raspberry Pi Model 3 devices have undergone extensive compliance testing and
     - EN55032:21012; EN55024:2010 (with reference to EN301489-1v1.9.2  & EN301489-17v2.2.1)
   - SPECTRUM (Art 3(2))
     - EN300 328 v2.1.1 covering wide band transmission systems and data transmission equipment operating in the 2.4GHz ISM band.
-  
+ 
+[FCC Declaration of Conformity (DSS)](https://www.raspberrypi.org/files/compliance/Pi3_FCC_DSS.pdf)    
+[FCC Declaration of Conformity (DTS)](https://www.raspberrypi.org/files/compliance/Pi3_FCC_DTS.pdf)    
 [EU Declaration of Conformity](https://www.raspberrypi.org/files/compliance/RaspberryPi3B-DOC-CE_RED.pdf)
+
+### Model 3, other regions
+
+[Australia/New Zealand](https://www.raspberrypi.org/files/compliance/Pi3_AU&NZ.pdf)  
+[Australia/New Zealand (LOA)](https://www.raspberrypi.org/files/compliance/Pi3_AU&NZ_LoA.pdf)  
+[Canada](https://www.raspberrypi.org/files/compliance/Pi3_Canada.pdf)  
+[China 1](https://www.raspberrypi.org/files/compliance/Pi3_China_1.jpg)  
+[China 2](https://www.raspberrypi.org/files/compliance/Pi3_China_2.jpg)  
+[Hong Kong](https://www.raspberrypi.org/files/compliance/Pi3_Hong-Kong.pdf)  
+[India](https://www.raspberrypi.org/files/compliance/Pi3_India.pdf)  
+[Japan](https://www.raspberrypi.org/files/compliance/Pi3_Japan.pdf)  
+[Russia](https://www.raspberrypi.org/files/compliance/Pi3_Russia.pdf)  
+[Serbia](https://www.raspberrypi.org/files/compliance/Pi3_Serbia.pdf)  
+[South Africa](https://www.raspberrypi.org/files/compliance/Pi3_South-Africa.pdf)  
+[South Korea](https://www.raspberrypi.org/files/compliance/Pi3_South-Korea.pdf)  
+[Taiwan](https://www.raspberrypi.org/files/compliance/Pi3_Taiwan.pdf)  
 
 ## Raspberry Pi Zero
 
