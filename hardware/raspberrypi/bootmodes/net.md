@@ -1,6 +1,6 @@
 # Network booting
 
-This section describes how network booting works. There is also a [tutorial](net_tutorial.md) available on setting up a working bootable system.
+This section describes how network booting works. There is also a [tutorial](net_tutorial.md) available on setting up a working bootable system. Network booting works only for the wired adapter. Booting over wireless LAN is not supported.
 
 To network boot, the boot ROM does the following:
 
