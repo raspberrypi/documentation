@@ -195,7 +195,7 @@ There are also eight input sensor variables, named `Input1` to `Input8`, which h
 
 This provides a nice big red button, three large LEDs, four digital inputs, four digital outputs, and a loud buzzer. To use this board, set `AddOn` to `Pibrella`.
 
-#####Commands suported
+#####Commands supported
 
 - `[ red | yellow | green ] + [ on | high | off | low ]` e.g. `yellowhigh`
 - `Buzzer + (0 .. 4000)` e.g. `buzzer2100`

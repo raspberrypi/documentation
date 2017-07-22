@@ -28,7 +28,7 @@ More variations of `ls` are also provided:
 #alias l='ls -CF'
 ```
 
-Ubuntu users may be familar with these as they are provided by default on that distribution. Uncomment these lines to have access to these aliases in future.
+Ubuntu users may be familiar with these as they are provided by default on that distribution. Uncomment these lines to have access to these aliases in future.
 
 `.bashrc` also contains a reference to a `.bash_aliases` file, which does not exist by default. You can add it to provide a handy way of keeping all your aliases in a separate file.
 

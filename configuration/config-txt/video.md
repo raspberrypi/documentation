@@ -80,7 +80,7 @@ Setting `hdmi_ignore_cec` to `1` pretends that [CEC](https://en.wikipedia.org/wi
 
 #### cec_osd_name
 
-The `cec_osd_name` command sets the intial CEC name of the device. The default is Raspberry Pi.
+The `cec_osd_name` command sets the initial CEC name of the device. The default is Raspberry Pi.
 
 #### hdmi_pixel_encoding
 

@@ -123,7 +123,7 @@ string-list = "red fish", "blue fish";
 
 The `/include/` directive results in simple textual inclusion, much like C's `#include` directive, but a feature of the Device Tree compiler leads to different usage patterns. Given that nodes are named, potentially with absolute paths, it is possible for the same node to appear twice in a DTS file (and its inclusions). When this happens, the nodes and properties are combined, interleaving and overwriting properties as required (later values override earlier ones).
 
-In the example above, the second appearanace of `/node2` causes a new property to be added to the original:
+In the example above, the second appearance of `/node2` causes a new property to be added to the original:
 
 ```
 /node2 {
@@ -686,7 +686,7 @@ dtc -I fs -O dtb -o base.dtb /proc/device-tree
 ```
 This will include any overlays and parameters you have applied so far, either in `config.txt` or by loading them at runtime, which may or may not be what you want. Alternatively...
 
-b) copy it from the source DTBs in /boot. This won't include overlays and parameters, but it also won't include any other modifications by the firmware. To allow testing of all overlays, the `dtmerge` utility will create some of the the board-specific aliases ("i2c_arm", etc.), but this means that the result of a merge will include more differences from the original DTB than you might expect. The solution to this is to use dtmerge to make the copy:
+b) copy it from the source DTBs in /boot. This won't include overlays and parameters, but it also won't include any other modifications by the firmware. To allow testing of all overlays, the `dtmerge` utility will create some of the board-specific aliases ("i2c_arm", etc.), but this means that the result of a merge will include more differences from the original DTB than you might expect. The solution to this is to use dtmerge to make the copy:
 
 ```
 dtmerge /boot/bcm2710-rpi-3-b.dtb base.dtb -
