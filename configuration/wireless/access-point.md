@@ -140,7 +140,7 @@ By this point, the Raspberry Pi is acting as an access point, and other devices 
 
 One common use of the Raspberry Pi as an access point is to provide wireless conections to a wired Ethernet connection, so that anyone logged into the access point can access the internet, providing of course that the wired Ethernet on the Pi can connect to the internet via some sort of router.
 
-To do this, a 'bridge' needs to put in place between the wireless device and the Ethernet device on the access point Raspberry Pi. This bridge will pass all traffic between the two interfaces. Install the following packages to enable the access point setup and bridging.
+To do this, a 'bridge' needs to put in place between the wireless device and the Ethernet device on the access point Raspberry Pi. This bridge will pass all traffic between the two interfaces. Install the following packages to enable the access point setup and bridging. Do not forget the space between `hostapd` and `bridge-utils`!
 
 ```
 sudo apt-get install hostapd bridge-utils
