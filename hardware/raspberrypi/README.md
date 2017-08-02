@@ -28,5 +28,7 @@ The hardware in the Raspberry Pi
     - How to access peripheral addresses using the bcm_host helpers
 - [Standard Conformity Documentation](conformity.md)
     - Conformance documentation for the various standards bodies
+- [Revision codes](revision-codes/README.md)
+    - Raspberry Pi revision code reference
 
 
