@@ -59,4 +59,4 @@ The particular deficiencies of the mini UART compared to the PL011 are :
 - No receive timeout interrupt
 - No DCD, DSR, DTR or RI signals 
 
-Furthur documentation on the mini UART can be found in the SoC peripherals document [here](https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf).
+Further documentation on the mini UART can be found in the SoC peripherals document [here](https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf).
