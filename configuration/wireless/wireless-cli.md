@@ -17,6 +17,16 @@ Open the `wpa-supplicant` configuration file in nano:
 
 `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`  
 
+Update the second line from
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+```
+to
+```
+ctrl_interface=/var/run/wpa_supplicant
+ctrl_interface_group=netdev
+```
+
 Go to the bottom of the file and add the following:   
 ```
 network={
