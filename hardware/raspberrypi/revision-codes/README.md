@@ -6,7 +6,7 @@ Each distinct Raspberry Pi model revision has a unique revision code. You can lo
 cat /proc/cpuinfo
 ```
 
-The last three lines show the hardware type, the revision code and the Pi's unique serial number, for example:
+The last three lines show the hardware type, the revision code, and the Pi's unique serial number. For example:
 
 ```
 Hardware    : BCM2835
