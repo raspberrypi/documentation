@@ -42,7 +42,7 @@ The first set of Raspberry Pi revisions were given sequential hex revision codes
 
 ## New-style revision codes
 
-Since the Raspberry Pi 2 launch, new-style revision codes were introduced. Rather than being sequential, each bit of the hex code represents a piece of information about the revision:
+With the launch of the Raspberry Pi 2, new-style revision codes were introduced. Rather than being sequential, each bit of the hex code represents a piece of information about the revision:
 
 ```
 uuuuuuuuFMMMCCCCPPPPTTTTTTTTRRRR
