@@ -111,7 +111,7 @@ Once you have written an OS image, make sure J4 (USB SLAVE BOOT ENABLE) is set t
 
 ### Writing to the eMMC - Linux
 
-After `rpiboot` completes, you will see a new device appear; this is commonly `/dev/sda` on a Pi but it could be another location such as `/dev/sdb`, so check in `/dev/` before running `rpiboot` so you can see what changes.
+After `rpiboot` settles (no further messages appear on standout out, but the command has not completed), you will see a new device appear (tip use `dmesg`); The device may or may not be auto mounted depending on whether the eMMC has been flashed with an image with partitions already). The device is commonly `/dev/sda` on a Pi but it could be another location such as `/dev/sdb`, so check in `/dev/` before running `rpiboot` so you can see what changes.
 
 You now need to write a raw OS image (such as [Raspbian](https://www.raspberrypi.org/downloads/raspbian/)) to the device. Note the following command may take some time to complete, depending on the size of the image:
 
