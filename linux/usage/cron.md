@@ -31,7 +31,7 @@ The first time you run `crontab` you'll be prompted to select an editor; if you 
 The layout for a cron entry is made up of six components: minute, hour, day of month, month of year, day of week, and the command to be executed.
 
 ```
-# m h  dom moy dow   command
+# m h  dom mon dow   command
 ```
 
 ```
