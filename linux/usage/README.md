@@ -17,6 +17,6 @@ Some general help with Linux usage.
 - [.bashrc and .bash_aliases](bashrc.md)
     - Your shell configuration and aliases
 - [systemd](systemd.md)
-    - Configuration of systemd services to start scripts at bootup.
+    - Configuration of systemd services to start scripts at booting
 - [rc.local](rc-local.md)
     - Configuration of initialisation
