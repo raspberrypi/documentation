@@ -71,7 +71,7 @@ Updating the $PATH environment variable makes the system aware of file locations
 echo PATH=\$PATH:~/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin >> ~/.bashrc
 source ~/.bashrc
 ```
-If you are on a 64-bit host system you should use:
+If you are on a 64-bit host system, you should use:
 ```bash
 echo PATH=\$PATH:~/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin >> ~/.bashrc
 source ~/.bashrc
