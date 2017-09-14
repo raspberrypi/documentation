@@ -67,7 +67,7 @@ This will take a few minutes, depending on the size of the image file. To check 
 
 ## Alternative method
 
-**Note**: Some users have reported issues with using this method to create SD cards, possibly since earlier versions of these instructions didn't note that it may be necessary to unmount multiple partitions on the SD card.
+**Note**: Some users have reported issues with using this method to create SD cards, possibly because earlier versions of these instructions didn't note that it may be necessary to unmount multiple partitions on the SD card.
 
 These commands and actions must be performed from an account that has administrator privileges.
 
