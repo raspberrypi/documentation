@@ -81,7 +81,7 @@ map -hosts       0Bi    0Bi    0Bi   100%       0          0  100%   /net
 map auto_home    0Bi    0Bi    0Bi   100%       0          0  100%   /home
 ```
 - Connect the SD card reader with the SD card inside.
-- Run `df -h` again and look for the new device that was not previously listed. Record the device name(s) of the filesystem's partition(s), for example `/dev/disk3s5` and `/dev/disk3s1`.  Notice the last two lines:
+- Run `df -h` again and look for the new device which was not previously listed. Record the device name(s) of the filesystem's partition(s), for example `/dev/disk3s5` and `/dev/disk3s1`.  Notice the last two lines:
 ```
 $ df -h
 Filesystem      Size   Used  Avail Capacity iused      ifree %iused  Mounted on
