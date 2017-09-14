@@ -92,7 +92,7 @@ If you're connecting from a non-RealVNC Viewer app, you'll first need to downgra
 * **Or** if you're configuring your Raspberry Pi remotely from the command line, then to make the changes for Service Mode (the default configuration for the Raspberry Pi):
   * Open the `/root/.vnc/config.d/vncserver-x11` config file.
   * Replace `Authentication=SystemAuth` with `Authentication=VncAuth` and save the file.
-  * At the command line, run `sudo vncpasswd -service`. This  will prompt you to set a password and insert it for you in the right config file for VNC Server running in Service Mode.
+  * In the command line, run `sudo vncpasswd -service`. This  will prompt you to set a password, and will insert it for you in the right config file for VNC Server running in Service Mode.
   * Restart VNC Server.
 
 ## Playing Minecraft and other directly rendered apps remotely
