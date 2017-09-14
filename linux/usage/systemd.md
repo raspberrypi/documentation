@@ -1,11 +1,10 @@
 # systemd
 
-In order to have a command or program run when the Pi boots, you can add it as a service.
-Once this is done you can start/stop enable/disable from the linux prompt
+In order to have a command or program run when the Pi boots, you can add it as a service. Once this is done, you can start/stop enable/disable from the linux prompt.
 
 ## Creating a service
 
-On your Pi, create a .service file for your service e.g.
+On your Pi, create a .service file for your service, for example:
 
 myscript.service
 
