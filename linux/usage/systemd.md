@@ -23,36 +23,36 @@ User=pi
 [Install]
 WantedBy=multi-user.target
 ```
-So in this instance the service would run python3 from our working directory /home/pi/myscript which contains our python program to run myscript.py. But you are not limited to python programs, simply change the ExecStart line to be the command to start any program/script that you want running from startup.
+So in this instance, the service would run Python 3 from our working directory `/home/pi/myscript` which contains our python program to run `myscript.py`. But you are not limited to Python programs: simply change the ExecStart line to be the command to start any program/script that you want running from booting.
 
-Copy this file into /lib/systemd/system as root e.g.
+Copy this file into `/lib/systemd/system` as root, for example:
 ```
 sudo cp myscript.service /lib/systemd/system/myscript.service
 ```
 
-Once this has been copied you can attempt to start the service using
+Once this has been copied, you can attempt to start the service using the following command:
 ```
 sudo systemctl start myscript.service
 ```
 
-and stop it using
+Stop it using following command:
 ```
 sudo systemctl stop myscript.service
 ```
-When you are happy that this starts and stops your app, then you can have it start automatically on reboot by using
+When you are happy that this starts and stops your app, you can have it start automatically on reboot by using this command:
 ```
 sudo systemctl enable myscript.service
 ```
 
-The systemctl command can also be used to restart the service or disable it from boot up as well!
+The `systemctl` command can also be used to restart the service or disable it from boot up!
 
 Some things to be aware of:
-The order of when things are started is based on their dependancies, this particular script should start fairly late in the boot process, after a network is available (see the After section).
-You can configure different dependancies and orders based on your requirements.
++ The order in which things are started is based on their dependencies — this particular script should start fairly late in the boot process, after a network is available (see the After section).
++ You can configure different dependencies and orders based on your requirements.
 
 
-You can get more information from
+You can get more information from:
 ``` man systemctl```
-or from https://fedoramagazine.org/what-is-an-init-system/
+or here: https://fedoramagazine.org/what-is-an-init-system/
 
-Also, be sure to reference absolute filenames rather than relative to your home folder; for example, `/home/pi/myscript.py` rather than `myscript.py`.
+Also be sure to reference absolute file names rather than doing so relative to your home folder, for example use `/home/pi/myscript.py` rather than `myscript.py`.
