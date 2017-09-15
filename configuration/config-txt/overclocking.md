@@ -51,7 +51,7 @@ By default (`force_turbo=0`) the "On Demand" CPU frequency driver will raise clo
 
 #### never_over_voltage
 
-Sets a bit in the OTP memory (one time programmable) that prevents the device from being overvoltaged. This is intended to lock the device down so the the warranty bit cannot be set either inadvertently or maliciously by using an invalid overvoltage.
+Sets a bit in the OTP memory (one time programmable) that prevents the device from being overvoltaged. This is intended to lock the device down so the warranty bit cannot be set either inadvertently or maliciously by using an invalid overvoltage.
 
 #### disable_auto_turbo
 

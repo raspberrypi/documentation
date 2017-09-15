@@ -61,13 +61,13 @@ sudo dd bs=4M if=raspbian.img of=/dev/sdb
 These files can be very large, and compress well. To compress, you can pipe the output of `dd` to `gzip` to get a compressed file that is significantly smaller than the original size:
 
 ```bash
-sudo dd bs=4M if=/dev/sdb | gzip > rasbian.img.gz
+sudo dd bs=4M if=/dev/sdb | gzip > raspbian.img.gz
 ```
 
 To restore, pipe the output of `gunzip` to `dd`:
 
 ```bash
-gunzip --stdout rasbian.img.gz | sudo dd bs=4M of=/dev/sdb
+gunzip --stdout raspbian.img.gz | sudo dd bs=4M of=/dev/sdb
 ```
 
 If you are using a Mac, the commands used are almost exactly the same, but `4M` in the above examples should be replaced with `4m`, with a lower case letter.

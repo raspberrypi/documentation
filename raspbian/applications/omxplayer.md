@@ -8,19 +8,19 @@ OMXPlayer uses the OpenMAX (omx) hardware acceleration interface (API) which is 
 
 ## Basic usage
 
-The simplest command line is `omxplayer <name of media file>`. The media file can be audio or video or both. For the examples below, we used an H264 video file that is included with the standard Rasbian installation.
+The simplest command line is `omxplayer <name of media file>`. The media file can be audio or video or both. For the examples below, we used an H264 video file that is included with the standard Raspbian installation.
 
 ```
 omxplayer /opt/vc/src/hello_pi/hello_video/test.h264
 ```
 
-By default the audio is sent to the analog port. If you are using a HDMI-equiped display device with speakers, you need to tell omxplayer to send the audio signal over the HDMI link.
+By default the audio is sent to the analog port. If you are using a HDMI-equipped display device with speakers, you need to tell omxplayer to send the audio signal over the HDMI link.
 
 ```
 omxplayer -adev hdmi /opt/vc/src/hello_pi/hello_video/test.h264
 ```
 
-When displaying video, the whole display will be used as output. You can specifiy which part of the display you want the video to be on using the window option.
+When displaying video, the whole display will be used as output. You can specify which part of the display you want the video to be on using the window option.
 
 ```
 omxplayer --win 0,0,640,480 /opt/vc/src/hello_pi/hello_video/test.h264

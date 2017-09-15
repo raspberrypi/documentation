@@ -208,7 +208,7 @@ You can specify the service even if you do not know which port it uses. This exa
 sudo ufw allow ssh
 ```
 
-The status commmand lists all current settings for the firewall:
+The status command lists all current settings for the firewall:
 
 ```
 sudo ufw status
@@ -222,7 +222,7 @@ Limit login attempts on ssh port using tcp: this denies connection if an IP addr
 sudo ufw limit ssh/tcp
 ```
 
-Deny access to port 30 from IP adress 192.168.2.1
+Deny access to port 30 from IP address 192.168.2.1
 
 ```
 sudo ufw deny from 192.168.2.1 port 30

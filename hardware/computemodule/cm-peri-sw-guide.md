@@ -85,7 +85,7 @@ Note that `dt-blob.bin` is in compiled device tree format, but is only read by t
 A guide to creating dt-blob.bin is [here](../../configuration/pin-configuration.md).
 A comprehensive guide to the Linux Device Tree for Raspberry Pi is [here](../../configuration/device-tree.md).
 
-During boot, the user can specify a specific ARM device tree to use via the `device_tree` parameter in `config.txt`, for example adding the line `device_tree=mydt.dtb` to `config.txt` where `mydt.dtb` is the dtb file to load instead of one of the standard ARM dtb files. While a user can create a full device tree for his or her Compute Module product, the recommended way to add hardware is to use overlays (see next section).
+During boot, the user can specify a specific ARM device tree to use via the `device_tree` parameter in `config.txt`, for example adding the line `device_tree=mydt.dtb` to `config.txt` where `mydt.dtb` is the dtb file to load instead of one of the standard ARM dtb files. While a user can create a full device tree for their Compute Module product, the recommended way to add hardware is to use overlays (see next section).
 
 In addition to loading an ARM dtb, `start.elf` supports loading additional Device Tree 'overlays' via the `dtoverlay` parameter in `config.txt`, for example adding as many `dtoverlay=myoverlay` lines as required as overlays to `config.txt`, noting that overlays live in `/overlays` and are suffixed `-overlay.dtb` e.g. `/overlays/myoverlay-overlay.dtb`. Overlays are merged with the base dtb file before the data is passed to the Linux kernel when it starts.
 

@@ -4,7 +4,7 @@ The sources for all the Raspberry Pi documentation is stored online on a site ca
 
 https://github.com/raspberrypi/documentation
 
-Although you won't be able to directly change documentation on the official repository, you can take a look at all the source files and see how everything is arranged. The sources files and folders follow the hierachical documentation as found on the Raspberry Pi website.
+Although you won't be able to directly change documentation on the official repository, you can take a look at all the source files and see how everything is arranged. The sources files and folders follow the hierarchical documentation as found on the Raspberry Pi website.
 
 Before making any changes, it is wise to find out whether your contribution is likely to be accepted by checking [here](https://www.raspberrypi.org/documentation/CONTRIBUTING.md).
 

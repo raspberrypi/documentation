@@ -34,7 +34,7 @@ Ensure the output `0x3020000a` is shown. If it is not, then the OTP bit has not 
 If you wish, you can remove the `program_usb_boot_mode` line from config.txt, so that if you put the SD card in another Raspberry Pi, it won't program USB boot mode. Make sure there is no blank line at the end of config.txt. You can edit config.txt using the nano editor using the command `sudo nano /boot/config.txt`, for example.
 
 ## Prepare the USB mass storage device
-Starting with the 2017-04-10 release of Raspbian you can install a working Rasbian system to a USB mass storage device by copying the operating system image directly onto your USB device, in the same way that you would for an SD card. To perform this step, follow the instructions [here](../../../installation/installing-images/README.md), remembering to select the drive that corresponds to your USB mass storage device.
+Starting with the 2017-04-10 release of Raspbian you can install a working Raspbian system to a USB mass storage device by copying the operating system image directly onto your USB device, in the same way that you would for an SD card. To perform this step, follow the instructions [here](../../../installation/installing-images/README.md), remembering to select the drive that corresponds to your USB mass storage device.
 
 Once you have finished imaging your USB mass storage device, remove it from your computer and insert it into your Raspberry Pi 3.
 
