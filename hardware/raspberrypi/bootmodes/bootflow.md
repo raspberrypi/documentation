@@ -2,6 +2,8 @@
 
 The flow of boot begins with reading the OTP to decide on the valid boot modes enabled. By default, this is SD card boot followed by USB device boot. Subsequently, the boot ROM checks to see if `program_gpio_bootmode` OTP bit is 1 or 2. If it is, then it reads either GPIOs 22-26 (program_gpio_bootmode=1) or 39-43 (program_gpio_bootmode=2) and uses those bits to disable boot modes. This means it is possible to use a hardware switch to switch between different boot modes if there are more than one available.
 
+To set the boot mode option, just add 'program_gpio_bootmode=n' where n is 1 or 2 as above, into config.txt. Boot the device, then power cycle the device (reboot will not work). You should expect it to no longer boot (all boot modes will be disabled by default). Apply a pull-up to the required pin to enable the required boot mode.
+
 Next the boot ROM checks each of the boot sources for a file called bootcode.bin; if it is successful it will load the code into the local 128K cache and jump to it. The overall boot mode process is as follows:
 
 * 2837 boots
