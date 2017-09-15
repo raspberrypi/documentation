@@ -67,21 +67,40 @@ This will take a few minutes, depending on the size of the image file. To check 
 
 ## Alternative method
 
-**Note**: some users have reported issues with using this method to create SD cards.
+**Note**: Some users have reported issues with using this method to create SD cards, possibly because earlier versions of these instructions didn't note that it may be necessary to unmount multiple partitions on the SD card.
 
 These commands and actions must be performed from an account that has administrator privileges.
 
-- From the terminal run `df -h`.
+- From the terminal run `df -h`.  For example:
+```
+$ df -h
+Filesystem      Size   Used  Avail Capacity iused      ifree %iused  Mounted on
+/dev/disk1     233Gi   73Gi  159Gi    32% 1552273 4293415006    0%   /
+devfs          189Ki  189Ki    0Bi   100%     654          0  100%   /dev
+map -hosts       0Bi    0Bi    0Bi   100%       0          0  100%   /net
+map auto_home    0Bi    0Bi    0Bi   100%       0          0  100%   /home
+```
 - Connect the SD card reader with the SD card inside.
-- Run `df -h` again and look for the new device that was not previously listed. Record the device name of the filesystem's partition, for example `/dev/disk3s1`.
-- Unmount the partition so that you will be allowed to overwrite the disk:
+- Run `df -h` again and look for the new device which was not previously listed. Record the device name(s) of the filesystem's partition(s), for example `/dev/disk3s5` and `/dev/disk3s1`.  Notice the last two lines:
+```
+$ df -h
+Filesystem      Size   Used  Avail Capacity iused      ifree %iused  Mounted on
+/dev/disk1     233Gi   73Gi  159Gi    32% 1552273 4293415006    0%   /
+devfs          189Ki  189Ki    0Bi   100%     654          0  100%   /dev
+map -hosts       0Bi    0Bi    0Bi   100%       0          0  100%   /net
+map auto_home    0Bi    0Bi    0Bi   100%       0          0  100%   /home
+/dev/disk3s5    60Mi   20Mi   40Mi    33%     512          0  100%   /Volumes/boot
+/dev/disk3s1   812Mi  740Mi   71Mi    92%       0          0  100%   /Volumes/RECOVERY
+```
+- Unmount the partition(s) so that you will be allowed to overwrite the disk:
 
     ```
+    sudo diskutil unmount /dev/disk3s5
     sudo diskutil unmount /dev/disk3s1
     ```
 
     Alternatively, open Disk Utility and unmount the partition of the SD card. Do not eject it. If you eject it, you will have to reconnect it.
-- Using the device name of the partition, work out the **raw device name** for the entire disk by omitting the final `s1` and replacing `disk` with `rdisk`. This is very important, as you will lose all data on the hard drive if you provide the wrong device name. Make sure the device name is the name of the whole SD card as described above, not just a partition of it, for example, `rdisk3`, not `rdisk3s1`. Similarly, you might have another SD drive name/number like `rdisk2` or `rdisk4`. You can check again by using the `df -h` command, both before and after you insert your SD card reader into your Mac. For example: `/dev/disk3s1` becomes `/dev/rdisk3`.
+- Using the device name of the partition, work out the **raw device name** for the entire disk by omitting the final `s#` and replacing `disk` with `rdisk`. This is very important, as you will lose all data on the hard drive if you provide the wrong device name. Make sure the device name is the name of the whole SD card as described above, not just a partition of it, for example, `rdisk3`, not `rdisk3s1`. Similarly, you might have another SD drive name/number like `rdisk2` or `rdisk4`. You can check again by using the `df -h` command, both before and after you insert your SD card reader into your Mac. For example: `/dev/disk3s1` becomes `/dev/rdisk3`.
 - In the terminal, write the image to the card with this command, using the raw device name from above. Read the above step carefully to make sure that you use the correct `rdisk` number here:
     
     ```
