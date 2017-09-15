@@ -20,7 +20,7 @@ For those who just want to enable the Compute Module eMMC as a mass storage devi
 
 Please ensure you are not writing to any USB devices whilst the installer is running.
 
-1. Download and run the [Windows installer](CM-Boot-Installer.exe) to install the drivers and boot tool.
+1. Download and run the [Windows installer](rpiboot_setup.exe) to install the drivers and boot tool.
 1. Plug your host PC USB into the CMIO USB SLAVE port, making sure J4 is set to the EN position.
 1. Apply power to the CMIO board; Windows should now find the hardware and install the driver.
 1. Once the driver installation is complete, run the `RPiBoot.exe` tool that was previously installed.

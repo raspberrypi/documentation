@@ -16,5 +16,7 @@ Some general help with Linux usage.
     - Setting up scheduled tasks
 - [.bashrc and .bash_aliases](bashrc.md)
     - Your shell configuration and aliases
+- [systemd](systemd.md)
+    - Configuration of systemd services to start scripts at booting
 - [rc.local](rc-local.md)
     - Configuration of initialisation

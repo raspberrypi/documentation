@@ -37,5 +37,5 @@ if you are happy for the PR to be created, click on **Create pull request**.
 And that's it! The Raspberry Pi documentation PR list will now have your entry in it. It will be read, assessed for technical correctness, passed to copy editors for final checking, and finally merged to the main documentation tree.
 
 
-This is a very quick guide to contributing via GitHub, but it get you started and enable you to make a difference!
+This is a very quick guide to contributing via GitHub, but it will get you started and enable you to make a difference!
 

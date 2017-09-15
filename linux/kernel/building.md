@@ -60,13 +60,22 @@ You can either do this using VirtualBox (or VMWare) on Windows, or install it di
 
 ### Install toolchain
 
-Use the following command to install the toolchain:
+Use the following command to download the toolchain to the home folder:
 
 ```bash
-git clone https://github.com/raspberrypi/tools
+git clone https://github.com/raspberrypi/tools ~/
 ```
 
-You can then copy the `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian` directory to a common location, and add `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin` to your $PATH in the `.bashrc` in your home directory. For 64-bit host systems, use `/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin`. While this step isn't strictly necessary, it does make it easier for later command lines!
+Updating the $PATH environment variable makes the system aware of file locations needed for cross-compilation. On a 32-bit host system you can update and reload it using:
+```bash
+echo PATH=\$PATH:~/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin >> ~/.bashrc
+source ~/.bashrc
+```
+If you are on a 64-bit host system, you should use:
+```bash
+echo PATH=\$PATH:~/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin >> ~/.bashrc
+source ~/.bashrc
+```
 
 ### Get sources
 
