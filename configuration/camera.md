@@ -33,6 +33,6 @@ raspistill -v -o test.jpg
 
 The display should show a five-second preview from the camera and then take a picture, saved to the file `test.jpg`, whilst displaying various informational messages.
 
-## Troubleshooting
+## More Information
 
-See [Camera Troubleshooting](../raspbian/applications/camera.md).
+See [Camera Software](../raspbian/applications/camera.md).
