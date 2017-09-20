@@ -63,7 +63,7 @@ You can either do this using VirtualBox (or VMWare) on Windows, or install it di
 Use the following command to download the toolchain to the home folder:
 
 ```bash
-git clone https://github.com/raspberrypi/tools ~/
+git clone https://github.com/raspberrypi/tools ~/tools
 ```
 
 Updating the $PATH environment variable makes the system aware of file locations needed for cross-compilation. On a 32-bit host system you can update and reload it using:
