@@ -3,6 +3,7 @@
 Design data for the Compute Module IO board (CMIO)
 
 * [CMIO Rev 1.2](RPI-CMIO-V1_2-PUBLIC.zip)
+* [CMIO Rev 3.0](RPI-CMIO-V3_0-PUBLIC.zip)
 
 Design data for the Compute Module camera/display adapter board (CMCDA)
 
