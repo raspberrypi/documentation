@@ -136,7 +136,7 @@ Using a wireless device, search for networks. The network SSID you specified in 
 If SSH is enabled on the Raspberry Pi access point, it should be possible to connect to it from another Linux box (or a system with SSH connectivity present) as follows, assuming the `pi` account is present:
 
 ```
-ssh pi@192.168.0.1
+ssh pi@192.168.4.1
 ```
 
 By this point, the Raspberry Pi is acting as an access point, and other devices can associate with it. Associated devices can access the Raspberry Pi access point via its IP address for operations such as `rsync`, `scp`, or `ssh`.
@@ -184,7 +184,7 @@ Add the bridging information at the end of the file.
 ```
 # Bridge setup
 auto br0
-iface br0 inet dhcp
+iface br0 inet manual
 bridge_ports eth0 wlan0
 ```    
 
