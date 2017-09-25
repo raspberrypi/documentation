@@ -13,7 +13,7 @@ Raspberry Pi models conform to various standards. The available Documents of Con
 | CM3/CM3 Lite | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_EU.pdf) |  [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_FCC.pdf)| |
 | Display    | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiDisplay_DOC_CE.pdf)| [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiDisplay_DOC_FCC.pdf) | |
 | Camera v1 | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCameraDOC_CE.pdf) | | |
-| Camera v2 | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_CE.pdf) | | |
+| Camera v2 | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_CE.pdf) | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_FCC.PDF) | |
 | Sense HAT | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_CE.pdf) | | |
 
 
@@ -136,9 +136,14 @@ The Raspberry Pi Camera Modules have undergone compliance testing and meet the f
   - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
   - Restriction of Hazardous Substances (RoHS) Directive 2011/65/EU
 
+- USA
+  - ANSI C63.4 
+  - FCC 47 CFR Part 15, Subpart B, Class A Digital Device.
+
  [EU Declaration of Conformity Camera](https://www.raspberrypi.org/files/compliance/RaspberryPiCameraDOC_CE.pdf)  
  [EU Declaration of Conformity Camera 2](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_CE.pdf)  
-
+ [FCC Declaration of Conformity Camera 2](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_FCC.PDF)
+ 
 ## Raspberry Pi Display
 
 The Raspberry Pi Touchscreen Display has undergone compliance testing and meets the following standards:
