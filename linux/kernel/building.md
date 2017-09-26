@@ -145,6 +145,7 @@ with `sdb6` being the FAT (boot) partition, and `sdb7` being the ext4 filesystem
 Mount these first, adjusting the partition numbers for NOOBS cards:
 
 ```bash
+mkdir mnt
 mkdir mnt/fat32
 mkdir mnt/ext4
 sudo mount /dev/sdb1 mnt/fat32
