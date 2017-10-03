@@ -1,6 +1,6 @@
 # Contributing
 
-Please reard our contribution guidelines before creating an issue or pull request.
+Please read our contribution guidelines before creating an issue or pull request.
 
 **Please note that the issue tracker on this repository is for issues with *the contents of the documentation*, not support queries. Please post support queries in the [forums](https://www.raspberrypi.org/forums/).**
 
