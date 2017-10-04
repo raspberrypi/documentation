@@ -16,7 +16,7 @@ The Raspberry Pi has a number of different stages of booting. This document is m
 
 For the original Raspberry Pi and the Raspberry Pi 2 (based on the BCM2835 and BCM2836 devices), and in situations where the Pi 3 fails to boot, there is a new method of booting from one of the new boot modes (MSD or ethernet).
 
-Just format an SD card as FAT32 and copy on the latest [bootcode.bin](https://github.com/raspberrypi/firmware/raw/next/boot/bootcode.bin) file (currently from the next branch of the firmware tree). 
+Just format an SD card as FAT32 and copy on the latest [bootcode.bin](https://github.com/raspberrypi/firmware/raw/master/boot/bootcode.bin). 
 
 This will then enable the new bootmodes with some bug fixes for the failing Pi 3 cases.
 
