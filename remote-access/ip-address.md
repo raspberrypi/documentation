@@ -20,7 +20,7 @@ In a web browser navigate to your router's IP address e.g. `http://192.168.1.1`,
 
 ### Fing App
 
-The Fing app is a free network scanner for smartphones. It is available for [Android] (https://play.google.com/store/apps/details?id=com.overlook.android.fing) and [iOS] (https://itunes.apple.com/gb/app/fing-network-scanner/id430921107?mt=8).
+The Fing app is a free network scanner for smartphones. It is available for [Android](https://play.google.com/store/apps/details?id=com.overlook.android.fing) and [iOS](https://itunes.apple.com/gb/app/fing-network-scanner/id430921107?mt=8).
 
 Your phone and your Raspberry Pi have to be in the same Network. 
 When you open this app, touch the refresh button in the right upper corner of the screen. Then wait a few seconds and you will get a list with all the devices connected to your network. Scroll down to the entry with the manufacturer "Raspberry Pi". You will see the IP adress in the buttom left corner and the MAC adress in the buttom right corner of the entry.
