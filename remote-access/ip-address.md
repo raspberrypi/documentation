@@ -18,6 +18,13 @@ It is possible to find the IP address of your Pi without connecting to a screen 
 
 In a web browser navigate to your router's IP address e.g. `http://192.168.1.1`, which is usually printed on a label on your router; this will take you to a control panel. Then log in using your credentials, which is usually also printed on the router or sent to you in the accompanying paperwork. Browse to the list of connected devices or similar (all routers are different), and you should see some devices you recognise. Some devices are detected as PCs, tablets, phones, printers, etc. so you should recognise some and rule them out to figure out which is your Raspberry Pi. Also note the connection type; if your Pi is connected with a wire there should be fewer devices to choose from.
 
+### Fing App
+
+The Fing app is a free network scanner for smartphones. It is available for [Android] (https://play.google.com/store/apps/details?id=com.overlook.android.fing) and [iOS] (https://itunes.apple.com/gb/app/fing-network-scanner/id430921107?mt=8).
+
+Your phone and your Raspberry Pi have to be in the same Network. 
+When you open this app, touch the refresh button in the right upper corner of the screen. Then wait a few seconds and you will get a list with all the devices connected to your network. Scroll down to the entry with the manufacturer "Raspberry Pi". You will see the IP adress in the buttom left corner and the MAC adress in the buttom right corner of the entry.
+
 ### nmap command
 
 The `nmap` command (Network Mapper) is a free and open-source tool for network discovery, available for Linux, Mac OS, and Windows.
