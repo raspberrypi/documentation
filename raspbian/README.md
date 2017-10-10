@@ -17,3 +17,4 @@ Raspbian is a community project under active development, with an emphasis on im
     - [screensaver](../configuration/screensaver.md)
 - [Applications](applications/README.md)
     - [Camera](applications/camera.md)
+    - [OMXPlayer](applications/omxplayer.md)
