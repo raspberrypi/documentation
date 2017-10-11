@@ -57,7 +57,7 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 2.41 seconds
 
 Here you can see a device with hostname `raspberrypi` has IP address `192.168.1.8`.
 
-### Fing App
+### Get the IP adress on your smartphone via the Fing app
 
 The Fing app is a free network scanner for smartphones. It is available for [Android](https://play.google.com/store/apps/details?id=com.overlook.android.fing) and [iOS](https://itunes.apple.com/gb/app/fing-network-scanner/id430921107?mt=8).
 
