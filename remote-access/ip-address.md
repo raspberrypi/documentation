@@ -57,12 +57,13 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 2.41 seconds
 
 Here you can see a device with hostname `raspberrypi` has IP address `192.168.1.8`.
 
-### Get the IP adress on your smartphone via the Fing app
+### Getting the IP address of a Pi using your smartphone
 
 The Fing app is a free network scanner for smartphones. It is available for [Android](https://play.google.com/store/apps/details?id=com.overlook.android.fing) and [iOS](https://itunes.apple.com/gb/app/fing-network-scanner/id430921107?mt=8).
 
-Your phone and your Raspberry Pi have to be in the same Network. 
-When you open this app, touch the refresh button in the right upper corner of the screen. Then wait a few seconds and you will get a list with all the devices connected to your network. Scroll down to the entry with the manufacturer "Raspberry Pi". You will see the IP adress in the buttom left corner and the MAC adress in the buttom right corner of the entry.
+Your phone and your Raspberry Pi have to be in the same network, so log your phone in to the correct wireless network.
+
+When you open the Fing app, touch the refresh button in the right upper corner of the screen. Then wait a few seconds and you will get a list with all the devices connected to your network. Scroll down to the entry with the manufacturer "Raspberry Pi". You will see the IP address in the bottom left corner and the MAC adress in the bottom right corner of the entry.
 
 ### More tools
 
