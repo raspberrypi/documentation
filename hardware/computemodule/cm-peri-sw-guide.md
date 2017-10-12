@@ -56,7 +56,7 @@ In BCM283x devices, it is the DSP core in the GPU that boots first. It is respon
 
 The BCM283x devices as used on Raspberry Pi and Compute Module boards have a three-stage boot process:
 
-1. The GPU DSP comes out of reset and executes code from a small internal ROM (the boot ROM). The sole purpose of this code is to load a second stage boot loader via one of the external interfaces. On a Raspberry Pi or Compute Module, this code first looks for a second stage boot loader on the SD card (eMMC); it expects this to be called `bootcode.bin` and to be on the first partition (which must be FAT32). If no SD card is found or `bootcode.bin` is found, the Boot ROM sits and waits in 'USB boot' mode, waiting for a host to give it a second stage boot loader via the USB interface.
+1. The GPU DSP comes out of reset and executes code from a small internal ROM (the boot ROM). The sole purpose of this code is to load a second stage boot loader via one of the external interfaces. On a Raspberry Pi or Compute Module, this code first looks for a second stage boot loader on the SD card (eMMC); it expects this to be called `bootcode.bin` and to be on the first partition (which must be FAT32). If no SD card is found or `bootcode.bin` is not found, the Boot ROM sits and waits in 'USB boot' mode, waiting for a host to give it a second stage boot loader via the USB interface.
 
 2. The second stage boot loader (`bootcode.bin` on the sdcard or `usbbootcode.bin` for usb boot) is responsible for setting up the LPDDR2 SDRAM interface and various other critical system functions and then loading and executing the main GPU firmware (called `start.elf`, again on the primary SD card partition).
 
