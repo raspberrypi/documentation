@@ -4,7 +4,7 @@ The Raspberry Pi should work with any compatible SD card, although there are som
 
 ##SD card size (capacity). 
 
-For installation of NOOBS, the minimum recommended card size is 8GB. For image installations we recommend a minimum of 4GB. some distributions, specifically LibreELEC and Arch, can run on much smaller cards.
+For installation of NOOBS, the minimum recommended card size is 8GB. For image installations we recommend a minimum of 4GB. some distributions, specifically LibreELEC and Arch, can run on much smaller cards. If using a card 64GB or larger with NOOBS, see [this page](sdxc_formatting.md) first.
 
 ##SD card class. 
 
