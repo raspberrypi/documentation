@@ -33,7 +33,7 @@
 
 ### Copying a zipped image to the SD card
 
-In Linux it is possible to combine the unzip and SD copying process into one command, which avoids any issues that might occur when the unzipped image is larger than 4GB. This can happen on certain filesystems that do not support files larger than 4GB (e.g. FAT), although it should be noted that most Linux installsations do not use FAT and therefore do not have this limitation.
+In Linux it is possible to combine the unzip and SD copying process into one command, which avoids any issues that might occur when the unzipped image is larger than 4GB. This can happen on certain filesystems that do not support files larger than 4GB (e.g. FAT), although it should be noted that most Linux installations do not use FAT and therefore do not have this limitation.
 
 The following command unzips the zip file (replace 2017-09-07-raspbian-stretch.zip with the appropriate zip filename), and pipes the output directly to the dd command. This in turn copies it to the SD card, as described in the previous section.
 ```
@@ -48,7 +48,7 @@ unzip -p 2017-09-07-raspbian-stretch.zip | sudo dd of=/dev/sdX bs=4M conv=fsync
    ```
     dd bs=4M if=2017-09-07-raspbian-stretch.img of=/dev/sdX status=progress conv=fsync
    ```
-- If you are using an older version of `dd`, the status option may not be available. You may be able to use the `dcfldd` command instead, which will give a progress report showing how much has been written.
+- If you are using an older version of `dd`, the status option may not be available. You may be able to use the `dcfldd` command instead, which will give a progress report showing how much has been written. Another method is to send a USR1 signal to `dd`, which will let it print status information. Find out the PID of `dd` by using `pgrep -l dd` or `ps a | grep dd`. Then use `kill -USR1 PID` to send the USR1 signal to `dd`.
 
 ### Checking whether the image was correctly written to the SD card
 
