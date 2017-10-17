@@ -56,7 +56,7 @@ scp m*.txt pi@192.168.1.3:
 
 ## Filenames with spaces
 
-Note that some of the examples above will not work for filenames containing spaces, which require encasing in quotes:
+Note that some of the examples above will not work for file names containing spaces. Names like this need to be encased in quotes:
 
 ```bash
 scp "my file.txt" pi@192.168.1.3:
