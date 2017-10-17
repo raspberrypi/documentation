@@ -53,3 +53,11 @@ scp m*.txt pi@192.168.1.3:
 ```
 
 (all files starting with `m` and ending in `.txt`)
+
+## Filenames with spaces
+
+Note that some of the examples above will not work for file names containing spaces. Names like this need to be encased in quotes:
+
+```bash
+scp "my file.txt" pi@192.168.1.3:
+```
