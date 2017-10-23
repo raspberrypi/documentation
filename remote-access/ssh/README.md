@@ -34,7 +34,8 @@ Alternatively, [raspi-config](../../configuration/raspi-config.md) can be used f
 
 Alternatively, use systemctl to start the service
 ```
-systemctl enable ssh
+sudo systemctl enable ssh
+sudo systemctl start ssh
 ```
 
 ## 3. Enable SSH on a headless Raspberry Pi (add file to SD card on another machine)
