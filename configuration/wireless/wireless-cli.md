@@ -41,7 +41,7 @@ If you are using the `wpa_passphrase` encrypted PSK you can either copy and past
 
 Now save the file by pressing `Ctrl+X`, then `Y`, then finally press `Enter`.  
 
-At this point, `wpa-supplicant` will normally notice within a few seconds that a change has occurred, and it will try and connect to the network. If it does not, restart the interface with `sudo wpa_cli reconfigure`.   
+Reconfigure the interface with `wpa_cli -i wlan0 reconfigure`.
 
 You can verify whether it has successfully connected using `ifconfig wlan0`. If the `inet addr` field has an address beside it, the Raspberry Pi has connected to the network. If not, check that your password and ESSID are correct.  
 
