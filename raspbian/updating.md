@@ -13,7 +13,7 @@ sudo apt-get update
 Next, **upgrade** all your installed packages to their latest versions with the command:
 
 ```bash
-sudo apt-get dist-upgrade
+sudo apt-get upgrade
 ```
 
 Generally speaking, doing this regularly will keep your installation up to date, in that it will be equivalent to the latest released image available from [raspberrypi.org/downloads](https://www.raspberrypi.org/downloads/).
