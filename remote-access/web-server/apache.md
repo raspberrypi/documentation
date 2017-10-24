@@ -53,10 +53,10 @@ If you know HTML you can put your own HTML files and other assets in this direct
 
 ## Additional - install PHP
 
-To allow your Apache server to process PHP files, you'll need to install PHP5 and the PHP5 module for Apache. Type the following command to install these:
+To allow your Apache server to process PHP files, you'll need to install the latest version of PHP and the PHP module for Apache. Type the following command to install these:
 
 ```bash
-sudo apt-get install php5 libapache2-mod-php5 -y
+sudo apt-get install php libapache2-mod-php -y
 ```
 
 Now remove the `index.html` file:
