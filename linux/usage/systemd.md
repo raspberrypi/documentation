@@ -8,7 +8,8 @@ On your Pi, create a .service file for your service, for example:
 
 myscript.service
 
-```[Unit]
+```
+[Unit]
 Description=My service
 After=network.target
 
