@@ -78,7 +78,7 @@ Finally, note down the address of your DNS server, which is the same address as 
 cat /etc/resolv.conf
 ```
 
-Configure a static network adddress on your server Raspberry Pi by with `sudo nano /etc/network/interfaces` (where you replace nano with an editor of your choice). Change the line, `iface eth0 inet manual` so that the address is the first address from the command before last, the netmask address as `255.255.255.0` and the gateway address as the number received from the last command. 
+Configure a static network address on your server Raspberry Pi by with `sudo nano /etc/network/interfaces` (where you replace nano with an editor of your choice). Change the line, `iface eth0 inet manual` so that the address is the first address from the command before last, the netmask address as `255.255.255.0` and the gateway address as the number received from the last command. 
 
 ```
 auto eth0
