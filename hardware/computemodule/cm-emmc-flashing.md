@@ -8,7 +8,7 @@ Please also read the section on the [Compute Module Datasheet](https://www.raspb
 
 To flash the Compute Module eMMC, you either need a Linux system (a Raspberry Pi is recommended, or Ubuntu on a PC) or a Windows system (Windows 7 is recommended). For BCM2837 (CM3), a bug which affected the Mac has been fixed, so this will also work.
 
-**Note** There is a bug in the BCM2835 bootloader which returns a slightly incorrect USB packet to the host. Most USB hosts seem to ignore this benign bug and work fine; we do, however, see some USB ports that don't work due to this bug. We don't quite understand why some ports fail, as it doesn't seem to be correlated with whether they are USB2 or USB3 (we have seen both types working), but it's likely to be specific to the host controller and driver. This bug has been fixed in BCM2837.
+**Note** There is a bug in the BCM2835 (CM1) bootloader which returns a slightly incorrect USB packet to the host. Most USB hosts seem to ignore this benign bug and work fine; we do, however, see some USB ports that don't work due to this bug. We don't quite understand why some ports fail, as it doesn't seem to be correlated with whether they are USB2 or USB3 (we have seen both types working), but it's likely to be specific to the host controller and driver. This bug has been fixed in BCM2837.
 
 **For Windows users**
 
@@ -25,30 +25,6 @@ Please ensure you are not writing to any USB devices whilst the installer is run
 1. Apply power to the CMIO board; Windows should now find the hardware and install the driver.
 1. Once the driver installation is complete, run the `RPiBoot.exe` tool that was previously installed.
 1. After a few seconds, the Compute Module eMMC will pop up under Windows as a disk (USB mass storage device).
-
-### Manual Cygwin install
-
-To use the tool under Cygwin on Windows you'll first need to install [Cygwin](https://www.cygwin.com/). You'll also need to make sure to install the `libusb-1.0` and `libusb-1.0-devel` packages (this was tested using version 1.0.19-1), as well as `gcc` and `make`.
-
-You then need to install the Windows driver which can be downloaded here: [bcm270x-boot-driver.zip](bcm270x-boot-driver.zip). To install the driver, firstly make sure that J4 (USB SLAVE BOOT ENABLE) is set to the 'EN' position, then plug the host machine into the Compute Module IO board USB slave port (J15), and finally apply power to the CMIO board. Windows will see a new USB hardware device called "BCM2708 Boot".
-
-![Windows Driver Install 1](images/cm-driver-winupdate.jpg)
-
-Select "Skip obtaining driver software from Windows Update" (or wait) and the driver will not be found. Close the dialogue box.
-
-![Windows Driver Install 2](images/cm-driver-notfound.jpg)
-
-Go to Windows Device Manager and you'll see an unknown device with a yellow exclamation mark under Other Devices->BCM2708 Boot:
-
-![Windows Driver Install 3](images/cm-driver-devmanager-install.jpg)
-
-Right-click on this unknown device and select "Update Driver Software", then select "Browse my computer for driver software". In the next dialogue box, select "Browse", navigate to the directory containing the unzipped `bcm270x-boot-driver.zip` (the directory containing `bcm270x.inf`), and select "Next". Finally, click "Install this driver software anyway" when Windows displays a message saying it cannot verify the publisher.
-
-After a short while, the driver will finish being installed and you should be able to see it in Device Manager:
-
-![Windows Driver Install 3](images/libusb-bcm270x-boot.jpg)
-
-Finally, follow the remainder of the instructions below in a Cygwin terminal. **Note** When performing the commands below in a Cygwin terminal, **don't** prefix them with `sudo`.
 
 ### Setting up the Compute Module IO board
 
@@ -103,7 +79,7 @@ sudo ./rpiboot
 
 Now plug the host machine into the Compute Module IO board USB slave port (J15) and power the CMIO board on. The `rpiboot` tool will discover the Compute Module and send boot code to allow access to the eMMC. 
 
-### Writing to the eMMC - Cygwin
+### Writing to the eMMC - Windows
 
 After `rpiboot` completes, a new USB mass storage drive will appear in Windows. We recommend following this [guide](../../installation/installing-images/windows.md) and using Win32DiskImager to write images to the drive, rather than trying to use `/dev/sda` etc. from Cygwin.
 
