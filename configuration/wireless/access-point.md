@@ -146,11 +146,12 @@ To do this, a 'bridge' needs to put in place between the wireless device and the
 sudo apt-get install hostapd bridge-utils
 ```
 
-Since the configuration files are not ready yet, turn the new software off as follows: 
+You need reboot to load moudle in kernel.
 
 ```
-sudo systemctl stop hostapd
+sudo reboot
 ```
+
 Bridging creates a higher-level construct over the two ports being bridged. It is the bridge that is the network device, so we need to stop the `eth0` and `wlan0` ports being allocated IP addresses by the DHCP client on the Raspberry Pi.
 
 ```
@@ -187,14 +188,20 @@ Add the bridging information at the end of the file.
 auto br0
 iface br0 inet dhcp
 bridge_ports eth0 wlan0
-```    
+```   
 
-The access point setup is almost the same as that shown in the previous section. Follow the instructions above to set up the `hostapd.conf` file, but add `bridge=br0` below the `interface=wlan0` line, and remove or comment out the driver line.
+Now install the access point package (hostapd).
+
+```
+sudo apt-get install hostapd
+```
+
+The access point setup is almost the same as that shown in the previous section. Follow the instructions above to set up the `hostapd.conf` file, but add `bridge=br0` below the `interface=wlan0` line.
 
 ```
 interface=wlan0
 bridge=br0
-#driver=nl80211
+driver=nl80211
 ...
 ```
 
