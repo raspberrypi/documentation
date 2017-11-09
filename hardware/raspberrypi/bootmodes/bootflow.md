@@ -23,11 +23,11 @@ Next the boot ROM checks each of the boot sources for a file called bootcode.bin
       * Device found:
         * If device type == hub
           * Recurse for each port
-        * If device type == (mass storage or LAN9500)
+        * If device type == (mass storage or LAN951x)
           * Store in list of devices
     * Recurse through each MSD
       * If bootcode.bin found boot
-    * Recurse through each LAN9500
+    * Recurse through each LAN951x
       * DHCP / TFTP boot
   * else (Device mode boot)
     * Enable device mode and wait for host PC to enumerate
@@ -41,6 +41,7 @@ NOTES:
 * MSD takes precedence over Ethernet boot.
 * It is no longer necessary for the first partition to be the FAT partition, as the MSD boot will continue to search for a FAT partition beyond the first one.
 * The boot ROM also now supports GUID partitioning and has been tested with hard drives partitioned using Mac, Windows, and Linux.
+* The LAN951x is detected using the Vendor ID 0x0424 and Product ID 0xec00, this is different to the standalone LAN9500 device which has a product ID of 0x9500 or 0x9e00.  To use the standalone LAN9500 an I2C EEPROM would need to be added to change these ID's to match the LAN9514
 
 The primary SD card boot mode is, as standard, set to be GPIOs 49-53. It is possible to boot from the secondary SD card on a second set of pins, i.e. to add a secondary SD card to the GPIO pins. However, we have not yet enabled this ability.
 
