@@ -23,7 +23,7 @@ As of the November 2016 release, Raspbian has the SSH server disabled by default
 1. Select `Enabled` next to `SSH`
 1. Click `OK`
 
-Alternatively, [raspi-config](../../configuration/raspi-config.md) can be used:
+Alternatively, [raspi-config](../../configuration/raspi-config.md) can be used in the terminal:
 
 1. Enter `sudo raspi-config` in a terminal window
 1. Select `Interfacing Options`
@@ -32,9 +32,17 @@ Alternatively, [raspi-config](../../configuration/raspi-config.md) can be used:
 1. Select `Ok`
 1. Choose `Finish`
 
-## 3. Enable SSH on a headless Raspberry Pi
+Alternatively, use `systemctl` to start the service
+```
+sudo systemctl enable ssh
+sudo systemctl start ssh
+```
 
-For headless setup, SSH can be enabled by placing a file named `ssh`, without any extension, onto the boot partition of the SD card. When the Pi boots, it looks for the `ssh` file. If it is found, SSH is enabled, and the file is deleted. The content of the file does not matter: it could contain text, or nothing at all.
+## 3. Enable SSH on a headless Raspberry Pi (add file to SD card on another machine)
+
+For headless setup, SSH can be enabled by placing a file named `ssh`, without any extension, onto the boot partition of the SD card from another computer. When the Pi boots, it looks for the `ssh` file. If it is found, SSH is enabled and the file is deleted. The content of the file does not matter; it could contain text, or nothing at all.
+
+If you have loaded Raspbian onto a blank SD card, you will have two partitions. The first one, which is the smaller one, is the boot partition. Place the file into this one.
 
 ## 4. Set up your client
 
