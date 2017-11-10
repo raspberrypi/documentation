@@ -34,7 +34,7 @@ NGINX defaults its web page location to `/var/www/html` on Raspbian. Navigate to
 ## Additional - Install PHP
 
 ```bash
-sudo apt-get install php5-fpm
+sudo apt-get install php-fpm
 ```
 
 ### Enable PHP in NGINX
