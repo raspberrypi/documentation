@@ -17,7 +17,7 @@ Now, enable USB boot mode with the following command:
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
 ```
 
-This adds `program_usb_boot_mode=1` to the end of `/boot/config.txt`. Reboot the Raspberry Pi with `sudo reboot`. Once the client Raspberry Pi has rebooted, check that the OTP is has been programmed with:
+This adds `program_usb_boot_mode=1` to the end of `/boot/config.txt`. Reboot the Raspberry Pi with `sudo reboot`. Once the client Raspberry Pi has rebooted, check that the OTP has been programmed with:
 
 ```
 $ vcgencmd otp_dump | grep 17:
