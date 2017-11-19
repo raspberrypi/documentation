@@ -1,14 +1,24 @@
-# GPIO: Raspberry Pi Models A and B
+# GPIO on Raspberry Pi
 
 ### An introduction to GPIO and physical computing on the Raspberry Pi
 
-One powerful feature of the Raspberry Pi is the row of GPIO (general purpose input/output) pins along the edge of the board, next to the yellow video out socket.
+One powerful feature of the Raspberry Pi is the row of GPIO (general purpose input/output) pins along the top edge of the board.
 
-![GPIO pins](images/gpio-pins.jpg)
+![GPIO pins](images/pi2-gpio-pins.jpg)
 
-These pins are a physical interface between the Pi and the outside world. At the simplest level, you can think of them as switches that you can turn on or off (input) or that the Pi can turn on or off (output). Seventeen of the 26 pins are GPIO pins; the others are power or ground pins.
+Models A and B:
+
+![GPIO pins](images/a-and-b-gpio-pins.jpg)
+
+These pins are a physical interface between the Pi and the outside world. At the simplest level, you can think of them as switches that you can turn on or off (input) or that the Pi can turn on or off (output). Of the 40 pins, 26 are GPIO pins and the others are power or ground pins (plus two ID EEPROM pins which you should not play with unless you know your stuff!)
+
+![GPIO layout](images/pi2-gpio-numbers.png)
+
+On models A and B, seventeen of the 26 pins are GPIO pins; the others are power or ground pins.
 
 ![GPIO layout](images/a-and-b-gpio-numbers.png)
+
+Note that the numbering of the GPIO pins is rather weird. *Appendix 1: A note on pin numbering*  below explains why.
 
 ## What are they for? What can I do with them?
 
@@ -30,7 +40,11 @@ When we use a GPIO pin as an output, the Raspberry Pi replaces **both the switch
 
 Here's the same circuit using the Raspberry Pi. The LED is connected to a GPIO pin (which can output +3v3) and a ground pin (which is 0v and acts like the negative terminal of the battery):
 
-![GPIO wth LED](images/gpio-led.png)
+![GPIO wth LED](images/pi2-gpio-led.png)
+
+LED connection on Models A and B:
+
+![GPIO wth LED](images/a-and-b-gpio-led.png)
 
 The next step is to write a program to tell the pin to go HIGH or LOW. Here's an example using [Python](https://www.raspberrypi.org/learning/quick-reaction-game/) (see Step 2), and here's how to do it in [Scratch](https://www.raspberrypi.org/learning/robot-antenna/).
 
@@ -75,6 +89,8 @@ These are the GPIO pins as the computer sees them. The numbers don't make any se
 #### Physical numbering
 
 The other way to refer to the pins is by simply counting across and down from pin 1 at the top left (nearest to the SD card). This is 'physical numbering' and it looks like this:
+
+![GPIO layout](images/pi2-physical-pin-numbers.png)
 
 ![GPIO layout](images/a-and-b-physical-pin-numbers.png)
 
