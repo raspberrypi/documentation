@@ -67,7 +67,7 @@ To copy your public key to your Raspberry Pi, use the following command to appen
 cat ~/.ssh/id_rsa.pub | ssh <USERNAME>@<IP-ADDRESS> 'cat >> .ssh/authorized_keys'
 ```
 
-Now you'll have to edit /etc/ssh/sshd_config for it to accept connections via this method. Open the file and find the following parameter:
+Now you'll have to edit /etc/ssh/sshd_config on your Pi for it to accept connections via this method. Open the file and find the following parameter:
 ```
 #PasswordAuthentication yes
 ```
@@ -77,7 +77,7 @@ Replace it with
 PasswordAuthentication no
 ```
 
-Now restart the SSH service
+Then restart the SSH service
 ```
 sudo /etc/init.d/ssh restart
 ```
