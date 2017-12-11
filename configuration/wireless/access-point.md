@@ -1,4 +1,4 @@
-## Setting up a Raspberry Pi as an access point in a standalone network
+# Setting up a Raspberry Pi as an access point in a standalone network
 
 The Raspberry Pi can be used as a wireless access point, running a standalone network. This can be done using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access points. 
 
@@ -23,7 +23,7 @@ sudo systemctl stop dnsmasq
 sudo systemctl stop hostapd
 ```
 
-### Configuring a static IP
+## Configuring a static IP
 
 We are configuring a standalone network to act as a server, so the Raspberry Pi needs to have a static IP address assigned to the wireless port. This documentation assumes that we are using the standard 192.168.x.x IP addresses for our wireless network, so we will assign the server the IP address 192.168.0.1. It is also assumed that the wireless device being used is `wlan0`.
 
@@ -57,7 +57,7 @@ sudo ifdown wlan0
 sudo ifup wlan0
 ```
 
-### Configuring the DHCP server (dnsmasq)
+## Configuring the DHCP server (dnsmasq)
 
 The DHCP service is provided by dnsmasq. By default, the configuration file contains a lot of information that is not needed, and it is easier to start from scratch. Rename this configuration file, and edit a new one:
 
@@ -77,7 +77,7 @@ So for `wlan0`, we are going to provide IP addresses between 192.168.0.2 and 192
 
 There are many more options for dnsmasq; see the [dnsmasq documentation](http://www.thekelleys.org.uk/dnsmasq/doc.html) for more details.
 
-### Configuring the access point host software (hostapd)
+## Configuring the access point host software (hostapd)
 
 You need to edit the hostapd configuration file, located at /etc/hostapd/hostapd.conf, to add the various parameters for your wireless network. After initial install, this will be a new/empty file.
 
@@ -116,7 +116,7 @@ Find the line with #DAEMON_CONF, and replace it with this:
 DAEMON_CONF="/etc/hostapd/hostapd.conf"
 ```
 
-### Start it up
+## Start it up
 
 Now start up the remaining services:
 
