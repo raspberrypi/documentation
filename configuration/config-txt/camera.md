@@ -1,4 +1,4 @@
-# Camera Settings
+# Camera Settings in config.txt
 
 ## disable_camera_led
 
