@@ -1,6 +1,6 @@
 # Text editors
 
-On Linux, you have a choice of text editors. Some are easyto-use but have limited functionality; others require training to use and take a long time to master, but offer incredible functionality.
+On Linux, you have a choice of text editors. Some are easy-to-use but have limited functionality; others require training to use and take a long time to master, but offer incredible functionality.
 
 ## Desktop graphical editors
 

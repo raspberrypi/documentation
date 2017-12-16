@@ -615,7 +615,7 @@ Define whether the camera will start paused or will immediately start recording.
 --segment,	-sg		Segment the stream into multiple files
 ```
 
-Rather than creating a single file, the file is split into segments of approximately the numer of milliseconds specified. In order to provide different filenames, you should add  `%04d` or similar at the point in the filename where you want a segment count number to appear e.g:
+Rather than creating a single file, the file is split into segments of approximately the number of milliseconds specified. In order to provide different filenames, you should add  `%04d` or similar at the point in the filename where you want a segment count number to appear e.g:
 
 ```
 --segment 3000 -o video%04d.h264

@@ -230,7 +230,7 @@ sudo ufw deny from 192.168.2.1 port 30
 
 ## Installing fail2ban
 
-If you are using your Raspberry Pi as some sort of server, for example an ```ssh``` or webserver, your firewall will have deliberate 'holes' in it to let the server traffic through. In these cases, [Fail2ban](http://www.fail2ban.org) can be useful. Fail2ban, written in Python, is a scanner that examines the log files produced by the Raspberry Pi, and checks them for suspicious activity. It catches things like multiple brute-force atttempts to log in, and can inform any installed firewall to stop further login attempts from suspicious IP addresses. It saves you having to manually check log files for intrusion attempts and then update the firewall (via `iptables`) to prevent them.
+If you are using your Raspberry Pi as some sort of server, for example an ```ssh``` or webserver, your firewall will have deliberate 'holes' in it to let the server traffic through. In these cases, [Fail2ban](http://www.fail2ban.org) can be useful. Fail2ban, written in Python, is a scanner that examines the log files produced by the Raspberry Pi, and checks them for suspicious activity. It catches things like multiple brute-force attempts to log in, and can inform any installed firewall to stop further login attempts from suspicious IP addresses. It saves you having to manually check log files for intrusion attempts and then update the firewall (via `iptables`) to prevent them.
 
 Install Fail2ban using the following command:
 

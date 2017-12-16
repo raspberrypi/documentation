@@ -47,7 +47,7 @@ The steps above should allow the Pi to at least boot but won't have the rest of 
 We now need add the Services for NFS role to our server.  Once they are installed we can create NFS shares that the Pi can use.
 
 I created a folder to contain the Pi's file system and then right-click the folder and choose properties and go to the 
-'NFS Sharing' tab and click on the button 'Manage NFS Sharing'.  I called the share 'PiRoot' and chose the 'No server authentication [Auth_Sys]', 'Enable unmapped user access', 'Allow unampped User Unix access' options.
+'NFS Sharing' tab and click on the button 'Manage NFS Sharing'.  I called the share 'PiRoot' and chose the 'No server authentication [Auth_Sys]', 'Enable unmapped user access', 'Allow unmapped User Unix access' options.
 I believe these allow user permissions and ownerships to work in the best way.
 
 I then booted up a normal Pi and copied the whole file system across to the newly created PiRoot share on the Windows server.
