@@ -63,7 +63,7 @@ The Fing app is a free network scanner for smartphones. It is available for [And
 
 Your phone and your Raspberry Pi have to be on the same network, so connect your phone to the correct wireless network.
 
-When you open the Fing app, touch the refresh button in the upper right-hand corner of the screen. After a few seconds you will get a list with all the devices connected to your network. Scroll down to the entry with the manufacturer "Raspberry Pi". You will see the IP address in the bottom left-hand corner, and the MAC adress in the bottom right-hand corner of the entry.
+When you open the Fing app, touch the refresh button in the upper right-hand corner of the screen. After a few seconds you will get a list with all the devices connected to your network. Scroll down to the entry with the manufacturer "Raspberry Pi". You will see the IP address in the bottom left-hand corner, and the MAC address in the bottom right-hand corner of the entry.
 
 ### More tools
 

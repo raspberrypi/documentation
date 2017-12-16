@@ -167,7 +167,7 @@ Save and exit and you should see the message:
 crontab: installing new crontab
 ```
 
-Ensure your scipt does not save each picture taken with the same filename. This will overwrite the picture each time.
+Ensure your script does not save each picture taken with the same filename. This will overwrite the picture each time.
 
 ## Other Useful tools
 

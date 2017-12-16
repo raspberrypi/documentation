@@ -95,7 +95,7 @@ You now need to write a raw OS image (such as [Raspbian](https://www.raspberrypi
 sudo dd if=raw_os_image_of_your_choice.img of=/dev/sda bs=4MiB
 ```
 
-Once the image has been written, unplug and re-plug the USB; you should see two partitions appear (for Raspian) in `/dev`. In total, you should see something similar to this:
+Once the image has been written, unplug and re-plug the USB; you should see two partitions appear (for Raspbian) in `/dev`. In total, you should see something similar to this:
 
 ```bash
 /dev/sda    <- Device
