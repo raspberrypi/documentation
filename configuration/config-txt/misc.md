@@ -14,3 +14,11 @@ Sets the Videocore logging level. The value is a Videocore-specific bitmask.
 ## arm_64bit
 
 If set, this forces the kernel loading system to assume a 64-bit kernel.
+
+## include
+
+Causes the content of the specified file to be inserted in to the current file.
+
+For example, adding the line `include extraconfig.txt` to `config.txt` will include the `extraconfig.txt` file in to the `config.txt` file.
+
+
