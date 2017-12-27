@@ -18,6 +18,25 @@ It is possible to find the IP address of your Pi without connecting to a screen 
 
 In a web browser navigate to your router's IP address e.g. `http://192.168.1.1`, which is usually printed on a label on your router; this will take you to a control panel. Then log in using your credentials, which is usually also printed on the router or sent to you in the accompanying paperwork. Browse to the list of connected devices or similar (all routers are different), and you should see some devices you recognise. Some devices are detected as PCs, tablets, phones, printers, etc. so you should recognise some and rule them out to figure out which is your Raspberry Pi. Also note the connection type; if your Pi is connected with a wire there should be fewer devices to choose from.
 
+### Resolving `raspberrypi.local` with mDNS
+
+On Raspbian, [multicast DNS](https://en.wikipedia.org/wiki/Multicast_DNS) is supported out-of-the-box by the [Avahi](https://en.wikipedia.org/wiki/Avahi_(software)) service.
+
+If your device supports mDNS, you can reach your Raspberry Pi by using its hostname and the `.local` suffix (the default hostname is `raspberrypi`):
+
+```bash
+ping raspberrypi.local
+```
+
+If the Raspberry Pi is reachable, `ping` will show its IP address:
+
+```
+PING raspberrypi.local (192.168.1.131): 56 data bytes
+64 bytes from 192.168.1.131: icmp_seq=0 ttl=255 time=2.618 ms
+```
+
+If you don't remember the hostname of the Raspberry Pi, but have a system with Avahi installed, you can browse all the hosts and services on the LAN with the [`avahi-browse`](https://linux.die.net/man/1/avahi-browse) command.
+
 ### nmap command
 
 The `nmap` command (Network Mapper) is a free and open-source tool for network discovery, available for Linux, Mac OS, and Windows.
