@@ -17,7 +17,16 @@ Open the `wpa-supplicant` configuration file in nano:
 
 `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`  
 
-Go to the bottom of the file and add the following:   
+For RASPBIAN STRETCH only Go to the top of the file and add the following:   
+```
+country=US
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+```
+
+Where country is the code the RPi is being used in.
+
+Then below add the following:
 ```
 network={
     ssid="testing"
