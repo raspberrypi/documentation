@@ -155,8 +155,8 @@ sudo nano /etc/ssh/sshd_config
 There are three lines that need to be changed to `no`, if they are not set that way already:
 
 ```
-ChallengeResponseAuthentification no
-PasswordAuthentification no
+ChallengeResponseAuthentication no
+PasswordAuthentication no
 UsePAM no
 ```
 
