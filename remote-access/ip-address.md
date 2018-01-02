@@ -22,7 +22,8 @@ In a web browser navigate to your router's IP address e.g. `http://192.168.1.1`,
 
 On Raspbian, [multicast DNS](https://en.wikipedia.org/wiki/Multicast_DNS) is supported out-of-the-box by the [Avahi](https://en.wikipedia.org/wiki/Avahi_(software)) service.
 
-If your device supports mDNS, you can reach your Raspberry Pi by using its hostname and the `.local` suffix (the default hostname is `raspberrypi`):
+If your device supports mDNS, you can reach your Raspberry Pi by using its hostname and the `.local` suffix.
+The default hostname on a fresh Raspbian install is `raspberrypi`, so by default any Raspberry Pi running Raspbian responds to:
 
 ```bash
 ping raspberrypi.local
@@ -34,6 +35,8 @@ If the Raspberry Pi is reachable, `ping` will show its IP address:
 PING raspberrypi.local (192.168.1.131): 56 data bytes
 64 bytes from 192.168.1.131: icmp_seq=0 ttl=255 time=2.618 ms
 ```
+
+If you change the system hostname fo the Raspberry Pi (e.g., by editing `/etc/hostname`), Avahi will also change the `.local` mDNS address.
 
 If you don't remember the hostname of the Raspberry Pi, but have a system with Avahi installed, you can browse all the hosts and services on the LAN with the [`avahi-browse`](https://linux.die.net/man/1/avahi-browse) command.
 
