@@ -87,22 +87,22 @@ Once you have written an OS image, make sure J4 (USB SLAVE BOOT ENABLE) is set t
 
 ### Writing to the eMMC - Linux
 
-After `rpiboot` completes, you will see a new device appear; this is commonly `/dev/sda` on a Pi but it could be another location such as `/dev/sdb`, so check in `/dev/` before running `rpiboot` so you can see what changes.
+After `rpiboot` completes, you will see a new device appear; this is commonly `/dev/sda` on a Pi but it could be another location such as `/dev/sdb`, so check in `/dev/` or run `lsblk` before running `rpiboot` so you can see what changes.
 
-You now need to write a raw OS image (such as [Raspbian](https://www.raspberrypi.org/downloads/raspbian/)) to the device. Note the following command may take some time to complete, depending on the size of the image:
-
-```bash
-sudo dd if=raw_os_image_of_your_choice.img of=/dev/sda bs=4MiB
-```
-
-Once the image has been written, unplug and re-plug the USB; you should see two partitions appear (for Raspian) in `/dev`. In total, you should see something similar to this:
+You now need to write a raw OS image (such as [Raspbian](https://www.raspberrypi.org/downloads/raspbian/)) to the device. Note the following command may take some time to complete, depending on the size of the image: (Change `/dev/sdX` to the appropriate device.)
 
 ```bash
-/dev/sda    <- Device
-/dev/sda1   <- First partition (FAT)
-/dev/sda2   <- Second partition (Linux filesystem)
+sudo dd if=raw_os_image_of_your_choice.img of=/dev/sdX bs=4MiB
 ```
 
-The `/dev/sda1` and `/dev/sda2` partitions can now be mounted normally.
+Once the image has been written, unplug and re-plug the USB; you should see two partitions appear (for Raspbian) in `/dev`. In total, you should see something similar to this:
+
+```bash
+/dev/sdX    <- Device
+/dev/sdX1   <- First partition (FAT)
+/dev/sdX2   <- Second partition (Linux filesystem)
+```
+
+The `/dev/sdX1` and `/dev/sdX2` partitions can now be mounted normally.
 
 Make sure J4 (USB SLAVE BOOT ENABLE) is set to the disabled position and/or nothing is plugged into the USB slave port. Power cycling the IO board should now result in the Compute Module booting from eMMC.

@@ -1,12 +1,12 @@
-## Licence key and codec options in config.txt
+# Licence key and codec options in config.txt
 
 Hardware decoding of additional codecs can be enabled by [purchasing a licence](http://swag.raspberrypi.org/collections/software) that is locked to the CPU serial number of your Raspberry Pi.
 
-### decode_MPG2
+## decode_MPG2
 
 `decode_MPG2` is a licence key to allow hardware MPEG-2 decoding, e.g. `decode_MPG2=0x12345678`.
 
-### decode_WVC1
+## decode_WVC1
 
 `decode_WVC1` is a licence key to allow hardware VC-1 decoding, e.g. `decode_WVC1=0x12345678`.
 

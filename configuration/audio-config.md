@@ -6,7 +6,11 @@ If your HDMI monitor or TV has built-in speakers, the audio can be played over t
 
 ## Changing the audio output
 
-There are two ways of setting the audio output.
+There are three ways of setting the audio output.
+
+### Desktop volume control
+
+Right-clicking the volume icon on the desktop taskbar brings up the audio output selector; this allows you to select between the internal audio outputs. It also allows you to select any external audio devices, such as USB sound cards and Bluetooth audio devices. A green tick is shown against the currently selected audio output device — simply left-click the desired output in the pop-up menu to change this. The volume control and mute operate on the currently selected device.
 
 ### Command line
 

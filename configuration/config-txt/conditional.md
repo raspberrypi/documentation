@@ -1,11 +1,11 @@
-## Conditional filters in config.txt
+# Conditional filters in config.txt
 
 When a single SD card (or card image) is being used with one Pi and one monitor, it is easy to set `config.txt` as required for that specific combination and keep it that way, amending it only when something changes.
 
 
 However, if one Pi is swapped between different monitors, or if the SD card (or card image) is being swapped between multiple Pis, a single set of settings may no longer be sufficient. Conditional filters allow you to define certain sections of the config file to be used only in specific cases, allowing a single `config.txt` to create different configurations when read by different hardware.
 
-### The `[all]` filter
+## The `[all]` filter
 
 This is the most basic filter. It resets all previously set filters and allows any settings listed below it to be applied to all hardware.
 
@@ -14,7 +14,7 @@ This is the most basic filter. It resets all previously set filters and allows a
 
 It is usually a good idea to add an `[all]` filter at the end of groups of filtered settings to avoid unintentionally combining filters (see below).
 
-### The `[pi1]` and `[pi2]` (etc.) filters
+## The `[pi1]` and `[pi2]` (etc.) filters
 
 Any settings below a `[pi1]` filter will only be applied to Pi 1 (A, A+, B, B+) hardware, including the original Compute Module.
 Any settings below a `[pi2]` filter will only be applied to Pi 2 hardware. The `[pi3]` filter is applicable to Pi 3 and Compute Module 3 hardware, while `[pi0]` covers Pi Zero and Pi Zero W.
@@ -34,13 +34,13 @@ These are particularly useful for defining different `kernel`, `initramfs`, and 
 
 Remember to use the `[all]` filter at the end, so that any subsequent settings aren't limited to Pi 2 hardware only.
 
-### The `[none]` filter
+## The `[none]` filter
 
 The `[none]` filter prevents any settings that follow from being applied to any hardware. Although there is nothing that you can't do without `[none]`, it can be a useful way to keep groups of unused settings in config.txt without having to comment out every line.
 
     [none]
 
-### The `[EDID=*]` filter
+## The `[EDID=*]` filter
 
 When switching between multiple monitors while using a single SD card in your Pi, and where a blank config isn't sufficient to automatically select the desired resolution for each one, this allows specific settings to be chosen based on the monitors' EDID names.
 
@@ -63,7 +63,7 @@ This forces 1920x1080 DVT mode for the specified monitor, without affecting any 
 
 Note that these settings apply only at boot, so the monitor must be connected at boot time and the Pi must be able to read its EDID information to find the correct name. Hotplugging a different monitor into the Pi after boot will not select different settings.
 
-### The serial number filter
+## The serial number filter
 
 Sometimes settings should only be applied to a single specific Pi, even if you swap the SD card to a different one. Examples include licence keys and overclocking settings (although the licence keys already support SD card swapping in a different way). You can also use this to select different display settings, even if the EDID identification above is not possible, provided that you don't swap monitors between your Pis. For example, if your monitor doesn't supply a usable EDID name, or if you are using composite output (for which EDID cannot be read).
 
@@ -82,7 +82,7 @@ then you can define settings that will only be applied to this specific Pi:
     [all]
     # settings here are applied to all hardware
 
-### Combining conditional filters
+## Combining conditional filters
 
 Filters of the same type replace each other, so `[pi2]` overrides `[pi1]`, because it is not possible for both to be true at once.
 

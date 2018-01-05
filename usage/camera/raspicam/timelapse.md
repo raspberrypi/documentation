@@ -40,7 +40,7 @@ Save and exit and you should see the message:
 crontab: installing new crontab
 ```
 
-Ensure your scipt does not save each picture taken with the same filename. This will overwrite the picture each time.
+Ensure your script does not save each picture taken with the same filename. This will overwrite the picture each time.
 
 ## Stitching images together
 
@@ -55,7 +55,7 @@ ls *.jpg > stills.txt
 ```
 ### On the Raspberry Pi
 
-Although it wil be slow (due to encoding in software rather than using the Raspberry Pi hardware acceleration), you can stitch your JPEG images together using various available tools. This documentation will use `avconv`, which needs to be installed.
+Although it will be slow (due to encoding in software rather than using the Raspberry Pi hardware acceleration), you can stitch your JPEG images together using various available tools. This documentation will use `avconv`, which needs to be installed.
 ```
 sudo apt-get install libav-tools
 ```

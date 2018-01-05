@@ -26,11 +26,11 @@ Ignoring the Pi for a moment, one of the simplest electrical circuits that you c
 
 ![Simple circuit](images/simple-circuit.png)
 
-When we use a GPIO pin as an output, the Raspberry Pi replaces **both the switch and the battery** in the above diagram. Each pin can turn on or off,or go HIGH or LOW in computing terms. When the pin is HIGH it outputs 3.3 volts (3v3); when the pin is LOW it is off.
+When we use a GPIO pin as an output, the Raspberry Pi replaces **both the switch and the battery** in the above diagram. Each pin can turn on or off, or go HIGH or LOW in computing terms. When the pin is HIGH it outputs 3.3 volts (3v3); when the pin is LOW it is off.
 
 Here's the same circuit using the Raspberry Pi. The LED is connected to a GPIO pin (which can output +3v3) and a ground pin (which is 0v and acts like the negative terminal of the battery):
 
-![GPIO wth LED](images/gpio-led.png)
+![GPIO with LED](images/gpio-led.png)
 
 The next step is to write a program to tell the pin to go HIGH or LOW. Here's an example using [Python](https://www.raspberrypi.org/learning/quick-reaction-game/) (see Step 2), and here's how to do it in [Scratch](https://www.raspberrypi.org/learning/robot-antenna/).
 

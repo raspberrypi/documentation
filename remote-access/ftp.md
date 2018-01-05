@@ -12,7 +12,7 @@ sudo apt-get install pure-ftpd
 
 ## Basic Configurations
 
-We need to create a new user group named `ftpgroup` and a new user named `ftpuser` for FTP users, and make sure this "user" has **no** login privilge and **no** home directory:
+We need to create a new user group named `ftpgroup` and a new user named `ftpuser` for FTP users, and make sure this "user" has **no** login privilege and **no** home directory:
 
 ```bash
 sudo groupadd ftpgroup
@@ -77,7 +77,7 @@ Make a file named `AnonymousCantUpload` and type `yes`;
 
 Make a file named `AnonymousCanCreateDirs` and type `no`;
 
-Make a file named `DisplayDotFiles` and type`no`;
+Make a file named `DisplayDotFiles` and type `no`;
 
 Make a file named `DontResolve` and type `yes`;
 
