@@ -471,13 +471,13 @@ Note that the 90 and 270 degree rotation options require additional memory on th
 
 #### display_lcd_rotate
 
-Use `display_lcd_rotate` to rotate or flip the LCD orientation. Parameters are the same as `display_hdmi_rotate`
+Use `display_lcd_rotate` to rotate or flip the LCD orientation. Parameters are the same as `display_hdmi_rotate`.
 
 #### display_rotate
 
-`display_rotate` is deprecated in the latest firmware although has been retained for backwards compatibility. Please use `display_lcd_rotate` and `display_hdmi_rotate` instead.
+`display_rotate` is deprecated in the latest firmware but has been retained for backwards compatibility. Please use `display_lcd_rotate` and `display_hdmi_rotate` instead.
 
-Use `display_rotate` to rotate or flip the screen orientation. Parameters are the same as `display_hdmi_rotate`
+Use `display_rotate` to rotate or flip the screen orientation. Parameters are the same as `display_hdmi_rotate`.
 
 ### Other options
 
