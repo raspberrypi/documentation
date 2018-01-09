@@ -14,7 +14,7 @@ If you see files named `id_rsa.pub` or `id_dsa.pub` you have keys set up already
 
 ## Generate new SSH keys
 
-To generate new SSH keys enter the following command (Choose a sensible hostname such as `<YOURNANME>@<YOURDEVICE>` where we have used `eben@pi`):
+To generate new SSH keys enter the following command (Choose a sensible hostname such as `<YOURNAME>@<YOURDEVICE>` where we have used `eben@pi`):
 
 ```
 ssh-keygen -t rsa -C eben@pi
