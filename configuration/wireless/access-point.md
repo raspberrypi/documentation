@@ -39,7 +39,7 @@ interface wlan0
 Now restart the dhcpcd daemon and set up the new `wlan0` configuration:
 
 ```
-sudo service dhcpcd restart
+sudo systemctl restart dhcpcd
 ``
 
 ## Configuring the DHCP server (dnsmasq)
@@ -106,8 +106,8 @@ DAEMON_CONF="/etc/hostapd/hostapd.conf"
 Now start up the remaining services:
 
 ```
-sudo service hostapd start  
-sudo service dnsmasq start  
+sudo systemctl start hostapd
+sudo systemctl start dnsmasq
 ```
 ### Add routing and masquerade
 
