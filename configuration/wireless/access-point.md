@@ -37,7 +37,6 @@ interface wlan0
     static ip_address=192.168.4.1/24
 ```
 Now restart the dhcpcd daemon and set up the new `wlan0` configuration:
-
 ```
 sudo service dhcpcd restart
 ```
