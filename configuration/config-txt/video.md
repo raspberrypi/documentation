@@ -454,11 +454,12 @@ Set `framebuffer_ignore_alpha` to `1` to disable the alpha channel. Can help wit
 
 The `test_mode` command displays a test image and sound during boot (over the composite video and analogue audio outputs only) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test; the default value is `0`.
 
-### display_rotate
 
-Use `display_rotate` to rotate or flip the screen orientation. The default value is `0`.
+### display_hdmi_rotate
 
-| display_rotate | result |
+Use `display_hdmi_rotate` to rotate or flip the HDMI display orientation. The default value is `0`.
+
+| display_hdmi_rotate | result |
 | --- | --- |
 | 0 | no rotation |
 | 1 | rotate 90 degrees clockwise |
@@ -468,6 +469,16 @@ Use `display_rotate` to rotate or flip the screen orientation. The default value
 | 0x20000 | vertical flip |
 
 Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16MB GPU split.
+
+### display_lcd_rotate
+
+Use `display_lcd_rotate` to rotate or flip the LCD orientation. Parameters are the same as `display_hdmi_rotate`.
+
+### display_rotate
+
+`display_rotate` is deprecated in the latest firmware but has been retained for backwards compatibility. Please use `display_lcd_rotate` and `display_hdmi_rotate` instead.
+
+Use `display_rotate` to rotate or flip the screen orientation. Parameters are the same as `display_hdmi_rotate`.
 
 ## Other options
 
