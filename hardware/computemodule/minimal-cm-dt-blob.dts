@@ -156,8 +156,8 @@
         pin@p45 { function = "input";   termination = "pull_down";  }; // DEFAULT STATE WAS INPUT NO PULL
 
         // BANK 2 - DON'T TOUCH UNLESS YOU KNOW WHAT YOU'RE DOING //
-        pin@p46 { function = "input";   termination = "no_pulling"; drive_strength_mA = <8>; polarity = "active_high"; }; // HPD_N
-        pin@p47 { function = "output";  termination = "no_pulling"; drive_strength_mA = <8>; polarity = "active_low"; startup_state = "active"; }; // STATUS LED / EMMC_DISABLE_N CONTROL
+        pin@p46 { function = "input";   termination = "pull_up";    }; // SMPS_SCL
+        pin@p47 { function = "input";   termination = "pull_up";    }; // SMPS_SDA
         pin@p48 { function = "sdcard";  termination = "pull_up";    drive_strength_mA = <8>; }; // SD CLK
         pin@p49 { function = "sdcard";  termination = "pull_up";    drive_strength_mA = <8>; }; // SD CMD
         pin@p50 { function = "sdcard";  termination = "pull_up";    drive_strength_mA = <8>; }; // SD D0
@@ -165,13 +165,19 @@
         pin@p52 { function = "sdcard";  termination = "pull_up";    drive_strength_mA = <8>; }; // SD D2
         pin@p53 { function = "sdcard";  termination = "pull_up";    drive_strength_mA = <8>; }; // SD D3
 
+        pin@p128 { function = "input";  termination = "no_pulling"; polarity = "active_low"; }; // Hotplug
+        pin@p129 { function = "output"; termination = "no_pulling"; polarity = "active_low"; }; // EMMC_ENABLE_N
       }; // pin_config
 
       pin_defines {
-        pin_define@HDMI_CONTROL_ATTACHED { type = "internal"; number = <46>; }; // HPD_N on GPIO46
+        pin_define@HDMI_CONTROL_ATTACHED { type = "external"; number = <0>; };
+        pin_define@EMMC_ENABLE { type = "external"; number = <1>; };
+        pin_define@SMPS_SDA { type = "internal"; number = <46>; };
+        pin_define@SMPS_SCL { type = "internal"; number = <47>; };
       }; // pin_defines
 
     }; // pins_cm3
 
   }; // videocore
+
 };
