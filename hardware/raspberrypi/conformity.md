@@ -1,39 +1,21 @@
 # Product Compliance
 
-Raspberry Pi models conform to various standards. The available Documents of Conformance are linked in the shortcut table below, and in more detail further down the page. Note that not all standards that apply are listed here. 
+All Raspberry Pi product has undergone extensive compliance testing and copies of the relevent certificates and conformance documents are available to download from the table below. 											
+											
 
-| Model | Declaration of Conformity | Local and regional Approval Certificates |
-| ----- |--------------- | --------------- |
-| A+    | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiAPlusDOC_CE.pdf) | |
-| B+    | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiBplus_DOC_CE.pdf)| |
-| 2B    | [EU](https://www.raspberrypi.org/files/compliance/Raspberry_Pi_2B_V1-2_DOC_CE.pdf) [FCC](https://www.raspberrypi.org/files/compliance/Raspberry_Pi_2B_V1-2_DOC_FCC.pdf)| |
-| 3B    | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPi3B-DOC-CE_RED.pdf) | [FCC-DSS](https://www.raspberrypi.org/files/compliance/Pi3_FCC_DSS.pdf),[FCC-DTS](https://www.raspberrypi.org/files/compliance/Pi3_FCC_DTS.pdf)| See below for more regions.|
-| Zero     |[EU](https://www.raspberrypi.org/files/compliance/RaspberryPiZeroDOC_CE.pdf)| |
-| Zero W    |[EU](https://www.raspberrypi.org/files/compliance/Raspberry_Zero_W_DOC_CE_RED.pdf)| |
+| Model           | Declaration of Conformity | Local and Regional Approval Certificates |
+|:---------------:|:-------------------------:|:----------------------------------------:|
+| A+       | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiAPlusDOC_CE.pdf) | |
+| B+       | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiBplus_DOC_CE.pdf)| |
+| 2B       | [EU](https://www.raspberrypi.org/files/compliance/Raspberry_Pi_2B_V1-2_DOC_CE.pdf) [FCC](https://www.raspberrypi.org/files/compliance/Raspberry_Pi_2B_V1-2_DOC_FCC.pdf)| |
+| 3B       | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPi3B-DOC-CE_RED.pdf) | [FCC-DSS](https://www.raspberrypi.org/files/compliance/Pi3_FCC_DSS.pdf)   [FCC-DTS](https://www.raspberrypi.org/files/compliance/Pi3_FCC_DTS.pdf) [ANZ](https://www.raspberrypi.org/files/compliance/Pi3_AU&NZ.pdf) [ANZ LoA](https://www.raspberrypi.org/files/compliance/Pi3_AU&NZ_LoA.pdf) [Canada](https://www.raspberrypi.org/files/compliance/Pi3_Canada.pdf) [China 1](https://www.raspberrypi.org/files/compliance/Pi3_China_1.jpg) [China 2](https://www.raspberrypi.org/files/compliance/Pi3_China_2.jpg) [Hong Kong](https://www.raspberrypi.org/files/compliance/Pi3_Hong-Kong.pdf) [India](https://www.raspberrypi.org/files/compliance/Pi3_India.pdf) [Japan](https://www.raspberrypi.org/files/compliance/Pi3_Japan.pdf) [Russia](https://www.raspberrypi.org/files/compliance/Pi3_Russia.pdf) [Serbia](https://www.raspberrypi.org/files/compliance/Pi3_Serbia.pdf) [South Africa](https://www.raspberrypi.org/files/compliance/Pi3_South-Africa.pdf) [South Korea](https://www.raspberrypi.org/files/compliance/Pi3_South-Korea.pdf) [Taiwan](https://www.raspberrypi.org/files/compliance/Pi3_Taiwan.pdf)  |
+| Zero      |[EU](https://www.raspberrypi.org/files/compliance/RaspberryPiZeroDOC_CE.pdf)| |
+| Zero W / Zero WH    |[EU](https://www.raspberrypi.org/files/compliance/Raspberry_Zero_W_DOC_CE_RED.pdf)| |
 | CM3/CM3 Lite | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_EU.pdf) [FCC](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_FCC.pdf)| |
-| Display    | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiDisplay_DOC_CE.pdf) [FCC](https://www.raspberrypi.org/files/compliance/RaspberryPiDisplay_DOC_FCC.pdf) | |
+| Display   | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiDisplay_DOC_CE.pdf) [FCC](https://www.raspberrypi.org/files/compliance/RaspberryPiDisplay_DOC_FCC.pdf) | |
 | Camera v1 | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiCameraDOC_CE.pdf) | |
 | Camera v2 | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_CE.pdf) [FCC](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_FCC.PDF) | |
 | Sense HAT | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_CE.pdf) | |
-
-
-
-### Model 3, other regions
-
-[Australia/New Zealand](https://www.raspberrypi.org/files/compliance/Pi3_AU&NZ.pdf)  
-[Australia/New Zealand (LOA)](https://www.raspberrypi.org/files/compliance/Pi3_AU&NZ_LoA.pdf)  
-[Canada](https://www.raspberrypi.org/files/compliance/Pi3_Canada.pdf)  
-[China 1](https://www.raspberrypi.org/files/compliance/Pi3_China_1.jpg)  
-[China 2](https://www.raspberrypi.org/files/compliance/Pi3_China_2.jpg)  
-[Hong Kong](https://www.raspberrypi.org/files/compliance/Pi3_Hong-Kong.pdf)  
-[India](https://www.raspberrypi.org/files/compliance/Pi3_India.pdf)  
-[Japan](https://www.raspberrypi.org/files/compliance/Pi3_Japan.pdf)  
-[Russia](https://www.raspberrypi.org/files/compliance/Pi3_Russia.pdf)  
-[Serbia](https://www.raspberrypi.org/files/compliance/Pi3_Serbia.pdf)  
-[South Africa](https://www.raspberrypi.org/files/compliance/Pi3_South-Africa.pdf)  
-[South Korea](https://www.raspberrypi.org/files/compliance/Pi3_South-Korea.pdf)  
-[Taiwan](https://www.raspberrypi.org/files/compliance/Pi3_Taiwan.pdf)  
-
 
 ## The Raspberry Pi Integrator Programme
 
