@@ -12,7 +12,7 @@ A guide to setting up your Raspberry Pi
     - Any HDMI/DVI monitor and any TV should work as a display for the Pi. For best results, use one with HDMI input, but other connections are available for older devices.
 - Keyboard and mouse
     - Any standard USB keyboard and mouse will work with your Raspberry Pi.
-    - Wireless keyboards and mice will work if already paired.
+    - Wireless keyboards and mouse will work if already paired.
     - For keyboard layout configuration options see [raspi-config](../configuration/raspi-config.md).
 - [Power supply](../hardware/raspberrypi/power/README.md)
     - The Pi is powered by a USB Micro power supply (like most standard mobile phone chargers).
