@@ -1,4 +1,4 @@
-# Setting up a Raspberry Pi as an access point in a standalone network
+# Setting up a Raspberry Pi as an access point in a standalone network (NAT)
 
 The Raspberry Pi can be used as a wireless access point, running a standalone network. This can be done using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access points. 
 
@@ -25,7 +25,7 @@ sudo systemctl stop hostapd
 
 ## Configuring a static IP
 
-We are configuring a standalone network to act as a server, so the Raspberry Pi needs to have a static IP address assigned to the wireless port. This documentation assumes that we are using the standard 192.168.x.x IP addresses for our wireless network, so we will assign the server the IP address 192.168.0.1. It is also assumed that the wireless device being used is `wlan0`.
+We are configuring a standalone network to act as a server, so the Raspberry Pi needs to have a static IP address assigned to the wireless port. This documentation assumes that we are using the standard 192.168.x.x IP addresses for our wireless network, so we will assign the server the IP address 192.168.4.1. It is also assumed that the wireless device being used is `wlan0`.
 
 To configure the static IP address, edit the dhcpcd configuration file with: 
 ```
@@ -40,6 +40,7 @@ interface wlan0
 Now restart the dhcpcd daemon and set up the new `wlan0` configuration:
 ```
 sudo service dhcpcd restart
+
 ```
 
 ## Configuring the DHCP server (dnsmasq)
@@ -70,7 +71,7 @@ You need to edit the hostapd configuration file, located at /etc/hostapd/hostapd
 sudo nano /etc/hostapd/hostapd.conf
 ```
 
-Add the information below to the configuration file. This configuration assumes we are using channel 7, with a network name of NameOfNetwork, and a password AardvarkBadgerHedgehog. Note that the name and password should **not** have quotes around them. 
+Add the information below to the configuration file. This configuration assumes we are using channel 7, with a network name of NameOfNetwork, and a password AardvarkBadgerHedgehog. Note that the name and password should **not** have quotes around them. The passphrase should be between 8 and 64 characters in length.
 
 ```
 interface=wlan0
@@ -106,8 +107,8 @@ DAEMON_CONF="/etc/hostapd/hostapd.conf"
 Now start up the remaining services:
 
 ```
-sudo service hostapd start  
-sudo service dnsmasq start  
+sudo systemctl start hostapd
+sudo systemctl start dnsmasq
 ```
 ### Add routing and masquerade
 
@@ -141,8 +142,9 @@ ssh pi@192.168.4.1
 
 By this point, the Raspberry Pi is acting as an access point, and other devices can associate with it. Associated devices can access the Raspberry Pi access point via its IP address for operations such as `rsync`, `scp`, or `ssh`.
 
+## ----------------------------------------------------------------------------------
 <a name="internet-sharing"></a>
-## Using the Raspberry Pi as an access point to share an internet connection
+## Using the Raspberry Pi as an access point to share an internet connection (bridge)
 
 One common use of the Raspberry Pi as an access point is to provide wireless connections to a wired Ethernet connection, so that anyone logged into the access point can access the internet, providing of course that the wired Ethernet on the Pi can connect to the internet via some sort of router.
 
@@ -186,15 +188,27 @@ Add the bridging information at the end of the file.
 auto br0
 iface br0 inet manual
 bridge_ports eth0 wlan0
+
 ```    
 
-The access point setup is almost the same as that shown in the previous section. Follow the instructions above to set up the `hostapd.conf` file, but add `bridge=br0` below the `interface=wlan0` line, and remove or comment out the driver line.
+The access point setup is almost the same as that shown in the previous section. Follow the instructions above to set up the `hostapd.conf` file, but add `bridge=br0` below the `interface=wlan0` line, and remove or comment out the driver line. The passphrase must be between 8 and 64 characters long. 
 
 ```
 interface=wlan0
 bridge=br0
 #driver=nl80211
-...
+ssid=NameOfNetwork
+hw_mode=g
+channel=7
+wmm_enabled=0
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+wpa=2
+wpa_passphrase=AardvarkBadgerHedgehog
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
 ```
 
 Now reboot the Raspberry Pi.

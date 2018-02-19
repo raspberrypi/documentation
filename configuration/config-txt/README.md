@@ -32,7 +32,7 @@ overscan_top=10
 overscan_bottom=10
 ```
 
-# config.txt Options
+## config.txt Options
 
 A range of options can be specified using the config.txt file. These are split into different sections, indexed below:
 
