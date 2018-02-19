@@ -4,6 +4,8 @@
 
 **For the camera to work with the Compute Module 3 (CM3), the firmware needs to be September 21st 2016 or newer (use `vcgencmd version` to check).**
 
+**Note for designers attaching camera modules directly to CM carrier boards. It is NOT necessary to incorporate the crypto chip used on the Raspberry Pi designed camera boards when attaching the OM5647 or IMX219 camera modules directly to the CM carrier board. The Raspberry Pi firmware will automatically detect the CM and allow communications with the camera module to proceed without the crypto chip being present.**
+
 ** Note that unless explicitly stated otherwise, these instructions will work identically on Compute Module and Compute Module 3 Module+IO board(s). **
 
 ## Quickstart
