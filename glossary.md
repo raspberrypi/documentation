@@ -1,0 +1,23 @@
+# Raspberry Pi Glossary of Terms
+
+- **A/mA (amper/mili amper)** - ???
+- **DHCP** - Dynamic Host Configuration Protocol, a network management protocol which dynamically assigns an IP address and other network configuration parameters to each device on a network
+- **DPI** - Parallel Display Interface, an up-to-24-bit parallel RGB interface via the Raspberry Pi's GPIO pins
+- **Device Tree (DT)** - ???
+- **Device Tree Source (DTS)** - ???
+- **Device Tree Blob (DTB)** - ???
+- **GPIO** - General Purpose Input/Output, the programmable pins on the Raspberry Pi
+- **I<sup>2</sup>C** - Inter-Integrated Circuit (pronounced I-squared-C) a high speed protocol used for attaching lower-speed peripheral ICs to processors and microcontrollers in short-distance, intra-board communication
+- **LED** - Light-Emitting Diode, a semiconductor device that produces light from electricity
+- **MSD** - ???
+- **NAND** - ???
+- **OTP** - ???
+- **SPI** - Serial Peripheral Interface bus, a synchronous serial communication interface specification used for short distance communication
+- **SoC** - System-on-chip, an integrated circuit that integrates all components of a computer
+- **TP1/TP2** - ???
+- **UART** - Universal Asynchronous Receiver-Transmitter, a protocol for asynchronous serial communication in which the data format and transmission speeds are configurable
+- **Volts (V)** - ???
+- **config.txt** - a file located on the boot partition of a Raspberry Pi's SD card, which is parsed at boot time in order to enable, disable and manage operating system features which cannot be changed after booting
+- **raspi-config** - A command line tool for configuring Raspbian's operating system features
+- **Raspberry Pi Configuration Tool (rcgui)** - A graphical equivalent of `raspi-config`
+- **vcgencmd** - ???
