@@ -9,15 +9,15 @@
 
 - If your computer has a slot for SD cards, insert the card. If not, insert the card into an SD card reader, then connect the reader to your computer.
 
-- Run `lsblk` again. The new device that has appeared is your SD card (you can also usually tell from the device size listed). The naming of the device will follow the format described in the next paragraph.
+- Run `lsblk` again. The new device that has appeared is your SD card (you can also usually tell from the listed device size). The naming of the device will follow the format described in the next paragraph.
 
-- The left column of the results from the `lsblk` command gives the device name of your SD card and the names of any paritions on it (usually only 1, but there may be several if the card was previously used). It will be listed as something like `/dev/mmcblk0` or `/dev/sdX` (with partition names `/dev/mmcblk0p1` or `/dev/sdX1` respectively), where X is a lower case letter indicating the device (eg. `/dev/sdb1`). The right column shows where the partitions have been mounted (if they haven't it will be blank).
+- The left column of the results from the `lsblk` command gives the device name of your SD card and the names of any paritions on it (usually only one, but there may be several if the card was previously used). It will be listed as something like `/dev/mmcblk0` or `/dev/sdX` (with partition names `/dev/mmcblk0p1` or `/dev/sdX1` respectively), where `X` is a lower-case letter indicating the device (eg. `/dev/sdb1`). The right column shows where the partitions have been mounted (if they haven't been, it will be blank).
 
-- If any partitions on the SD card have been mounted, unmount them all with `umount`, for example: `umount /dev/sdX1` (replace `sdX1` with your SD card's device name and change the number for any other partitions).
+- If any partitions on the SD card have been mounted, unmount them all with `umount`, for example `umount /dev/sdX1` (replace `sdX1` with your SD card's device name, and change the number for any other partitions).
 
 ### Copying the image to the SD card
 
-- In a terminal window, write the image to the card with the command below, making sure you replace the input file `if=` argument with the path to your `.img` file, and the `/dev/sdX` in the output file `of=` argument with the correct device name. **This is very important, as you will lose all the data on the hard drive if you provide the wrong device name.** Make sure the device name is the name of the whole SD card as described above, not just a partition. For example: `sdd`, not `sdds1` or `sddp1`, and `mmcblk0`, not `mmcblk0p1`.
+- In a terminal window, write the image to the card with the command below, making sure you replace the input file `if=` argument with the path to your `.img` file, and the `/dev/sdX` in the output file `of=` argument with the correct device name. **This is very important, as you will lose all the data on the hard drive if you provide the wrong device name.** Make sure the device name is the name of the whole SD card as described above, not just a partition. For example: `sdd`, not `sdds1` or `sddp1`; `mmcblk0`, not `mmcblk0p1`.
 
     ```bash
     dd bs=4M if=2017-11-29-raspbian-stretch.img of=/dev/sdX conv=fsync
