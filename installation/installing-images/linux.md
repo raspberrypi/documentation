@@ -5,23 +5,19 @@
 **Note**: use of the `dd` tool can overwrite any partition of your machine. If you specify the wrong device in the instructions below, you could delete your primary Linux partition. Please be careful.
 
 ### Discovering the SD card mountpoint and unmounting it
-- Run `df -h` to see which devices are currently mounted.
+- Run `lsblk` to see which devices are currently connected to your machine.
 
 - If your computer has a slot for SD cards, insert the card. If not, insert the card into an SD card reader, then connect the reader to your computer.
 
-- Run `df -h` again. The new device that has appeared is your SD card. If no device appears, then your system is not automounting devices. In this case, you will need to search for the device name using another method. The `dmesg | tail` command will display the most recent system messages, which should contain information on the naming of the SD card device. The naming of the device will follow the format described in the next paragraph. Note that if the SD card was not automounted, you do not need to unmount later.
+- Run `lsblk` again. The new device that has appeared is your SD card (you can also usually tell from the listed device size). The naming of the device will follow the format described in the next paragraph.
 
-- The left column of the results from `df -h` command gives the device name of your SD card. It will be listed as something like `/dev/mmcblk0p1` or `/dev/sdX1`, where X is a lower case letter indicating the device.  The last part (`p1` or `1` respectively) is the partition number. You want to write to the whole SD card, not just one partition. You therefore need to remove that section from the name. You should see something like `/dev/mmcblk0` or `/dev/sdX` as the device name for the whole SD card. Note that the SD card can show up more than once in the output of `df`. It will do this if you have previously written a Raspberry Pi image to this SD card, because the Raspberry Pi SD images have more than one partition.
+- The left column of the results from the `lsblk` command gives the device name of your SD card and the names of any paritions on it (usually only one, but there may be several if the card was previously used). It will be listed as something like `/dev/mmcblk0` or `/dev/sdX` (with partition names `/dev/mmcblk0p1` or `/dev/sdX1` respectively), where `X` is a lower-case letter indicating the device (eg. `/dev/sdb1`). The right column shows where the partitions have been mounted (if they haven't been, it will be blank).
 
-- Now you have noted the device name, you need to unmount it so that files can't be read or written to the SD card while you are copying over the SD image.
-
-- Run `umount /dev/sdX1`, replacing `sdX1` with whatever your SD card's device name is, including the partition number.
-
-- If your SD card shows up more than once in the output of `df`, this shows that the card has multiple partitions. You should unmount all of these partitions.
+- If any partitions on the SD card have been mounted, unmount them all with `umount`, for example `umount /dev/sdX1` (replace `sdX1` with your SD card's device name, and change the number for any other partitions).
 
 ### Copying the image to the SD card
 
-- In a terminal window, write the image to the card with the command below, making sure you replace the input file `if=` argument with the path to your `.img` file, and the `/dev/sdX` in the output file `of=` argument with the correct device name. This is very important, as you will lose all the data on the hard drive if you provide the wrong device name. Make sure the device name is the name of the whole SD card as described above, not just a partition. For example: `sdd`, not `sdds1` or `sddp1`, and `mmcblk0`, not `mmcblk0p1`.
+- In a terminal window, write the image to the card with the command below, making sure you replace the input file `if=` argument with the path to your `.img` file, and the `/dev/sdX` in the output file `of=` argument with the correct device name. **This is very important, as you will lose all the data on the hard drive if you provide the wrong device name.** Make sure the device name is the name of the whole SD card as described above, not just a partition. For example: `sdd`, not `sdds1` or `sddp1`; `mmcblk0`, not `mmcblk0p1`.
 
     ```bash
     dd bs=4M if=2017-11-29-raspbian-stretch.img of=/dev/sdX conv=fsync
