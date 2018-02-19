@@ -1,6 +1,6 @@
 # Raspberry Pi Camera Module
 
-This document describes the use of the three Raspberry Pi camera applications, as of February 19th 2018.
+This document describes the use of the four Raspberry Pi camera applications, as of February 19th 2018.
 
 There are four applications provided: `raspistill`, `raspivid`, `raspiyuv` and `raspividyuv`. `raspistill` and `raspiyuv` are very similar and are intended for capturing images; `raspivid` and `raspvidyuv` are for capturing video.
 
