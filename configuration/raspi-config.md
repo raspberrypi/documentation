@@ -62,7 +62,7 @@ The default user on Raspbian is ```pi``` with the password ```raspberry```. You 
 <a name="network-options"></a>
 ### Network Options
 
-From this sub-menu you can set the hostname, your WiFi SSID and pre-shared key or enable/disable predictable network interface names.
+From this submenu you can set the host name, your WiFi SSID, and pre-shared key, or enable/disable predictable network interface names.
 
 <a name="hostname"></a>
 #### Hostname
@@ -72,75 +72,74 @@ Set the visible name for this Pi on a network.
 <a name="boot-options"></a>
 ### Boot Options
 
-From here you can change what happens when your Pi boots. Use this option to change your boot preference to command line, desktop. You can choose whether boot-up waits for the network to be available. You can choose whether the plymouth splash screen is displayed at boot-up
+From here you can change what happens when your Pi boots. Use this option to change your boot preference to command line or desktop. You can choose whether boot-up waits for the network to be available, and whether the Plymouth splash screen is displayed at boot-up.
 
 <a name="localisation-options"></a>
 ### Localisation Options
 
-The localisation sub-menu gives you options to choose: keyboard layout, timezone, locale and WiFi country code. All options on these menus default to British or GB until you change them.
+The localisation submenu gives you these options to choose from: keyboard layout, time zone, locale, and WiFi country code. All options on these menus default to British or GB until you change them.
 
 #### Change locale
-Select a locale, for example en_GB.UTF-8 UTF-8.
+Select a locale, for example `en_GB.UTF-8 UTF-8`.
 
-#### Change timezone
-Select your local timezone, starting with the region such as Europe, then selecting a city, for example London. Type a letter to skip down the list to that point in the alphabet.
+#### Change time zone
+Select your local time zone, starting with the region, e.g. Europe, then selecting a city, e.g. London. Type a letter to skip down the list to that point in the alphabet.
 
 #### Change keyboard layout
 This option opens another menu which allows you to select your keyboard layout. It will take a long time to display while it reads all the keyboard types. Changes usually take effect immediately, but may require a reboot.
 
-#### Change Wi-Fi Country
+#### Change WiFi Country
 This option sets the country code for your WiFi network.
 
 <a name="interfacing-options"></a>
 ### Interfacing Options
 
-From this sub-menu there are options to enable/disable: Camera, SSH, VNC, SPI, I2C, Serial, 1-wire and Remote GPIO.
+In this submenu there are the following options to enable/disable: Camera, SSH, VNC, SPI, I2C, Serial, 1-wire, and Remote GPIO.
 
 <a name="camera"></a>
 #### Camera
 
-Enable/Disable the CSI camera interface
+Enable/disable the CSI camera interface.
 
 <a name="ssh"></a>
 #### SSH
 
-Enable/Disable remote command line access to your Pi using SSH.
+Enable/disable remote command line access to your Pi using SSH.
 
 SSH allows you to remotely access the command line of the Raspberry Pi from another computer. SSH is disabled by default. Read more about using SSH on the [SSH documentation page](../remote-access/ssh/README.md). If connecting your Pi directly to a public network, you should not enable SSH unless you have set up secure passwords for all users.
 
 <a name="VNC"></a>
 #### VNC
 
-Enable/Disable the RealVNC virtual network computing server.
+Enable/disable the RealVNC virtual network computing server.
 
 <a name="spi"></a>
 #### SPI
 
-Enable/Disable SPI interfaces and automatic loading of the SPI kernel module, needed for products such as PiFace.
+Enable/disable SPI interfaces and automatic loading of the SPI kernel module, needed for products such as PiFace.
 
 <a name="i2c"></a>
 #### I2C
 
-Enable/Disable I2C interfaces and automatic loading of the I2C kernel module.
+Enable/disable I2C interfaces and automatic loading of the I2C kernel module.
 
 <a name="serial"></a>
 #### Serial
 
-Enable/Disable shell and kernel messages on the serial connection.
+Enable/disable shell and kernel messages on the serial connection.
 
 <a name="1-wire"></a>
 #### 1-wire
 
-Enable/Disable the Dallas 1-wire interface. This is usually used for DS18B20 temperature sensors.
+Enable/disable the Dallas 1-wire interface. This is usually used for DS18B20 temperature sensors.
 
 <a name="overclock"></a> 
 ### Overclock
 
 It is possible to overclock your Raspberry Pi's CPU. The default is 700MHz but it can be set up to 1000MHz. The overclocking you can achieve will vary; overclocking too high may result in instability. Selecting this option shows the following warning:
 
-```
-Be aware that overclocking may reduce the lifetime of your Raspberry Pi. If overclocking at a certain level causes system instability, try a more modest overclock. Hold down shift during boot to temporarily disable overclock.
-```
+**Be aware that overclocking may reduce the lifetime of your Raspberry Pi.** If overclocking at a certain level causes system instability, try a more modest overclock. Hold down the Shift key during boot to temporarily disable overclocking.
+
 See http://elinux.org/RPi_Overclocking for more information.
 
 <a name="advanced-options"></a>
@@ -178,27 +177,27 @@ Define the default HDMI/DVI video resolution to use when the system boots withou
 <a name="pixel-doubling"></a>
 #### Pixel Doubling
 
-Enable/Disable 2x2 pixel mapping.
+Enable/disable 2x2 pixel mapping.
 
 <a name="GL-driver"></a>
 #### GL Driver
 
-Enable/Disable the experimental GL desktop graphics drivers.
+Enable/disable the experimental GL desktop graphics drivers.
 
 <a name="GL-full-KMS"></a>
 ##### GL (Full KMS) 
 
-Enable/Disable the experimental OpenGL Full KMS (kernel mode setting) desktop graphics driver.
+Enable/disable the experimental OpenGL Full KMS (kernel mode setting) desktop graphics driver.
 
 <a name="GL-fake-KMS"></a>
 ##### GL (Fake KMS)
 
-Enable/Disable the experimental OpenGL Fake KMS desktop graphics driver.
+Enable/disable the experimental OpenGL Fake KMS desktop graphics driver.
 
 <a name="legacy"></a>
 ##### Legacy
 
-Enable/Disable the original legacy non-GL videocore desktop graphics driver.
+Enable/disable the original legacy non-GL videocore desktop graphics driver.
 
 <a name="update"></a>
 #### Update
