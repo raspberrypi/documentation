@@ -35,10 +35,12 @@ Go to the end of the file and edit it so that it looks like the following:
 ```
 interface wlan0
     static ip_address=192.168.4.1/24
+
 ```
 Now restart the dhcpcd daemon and set up the new `wlan0` configuration:
 ```
-sudo systemctl restart dhcpcd
+sudo service dhcpcd restart
+
 ```
 
 ## Configuring the DHCP server (dnsmasq)
