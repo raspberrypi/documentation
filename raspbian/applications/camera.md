@@ -1,12 +1,12 @@
 # Raspberry Pi Camera Module
 
-This document describes the use of the three Raspberry Pi camera applications, as of January 8th 2015.
+This document describes the use of the three Raspberry Pi camera applications, as of February 19th 2018.
 
-There are three applications provided: `raspistill`, `raspivid`, and `raspistillyuv`. `raspistill` and `raspistillyuv` are very similar and are intended for capturing images; `raspivid` is for capturing video.
+There are four applications provided: `raspistill`, `raspivid`, `raspiyuv` and `raspividyuv`. `raspistill` and `raspistillyuv` are very similar and are intended for capturing images; `raspivid` and `raspvidyuv` are for capturing video.
 
 All the applications are driven from the command line, and written to take advantage of the MMAL API which runs over OpenMAX. The MMAL API provides an easier to use system than that presented by OpenMAX. Note that MMAL is a Broadcom-specific API used only on Videocore 4 systems.
 
-The applications use up to four OpenMAX (MMAL) components: camera, preview, encoder, and null_sink. All applications use the camera component; `raspistill` uses the Image Encode component; `raspivid` uses the Video Encode component; and `raspistillyuv` doesn't use an encoder, and sends its YUV or RGB output directly from the camera component to file.
+The applications use up to four OpenMAX (MMAL) components: camera, preview, encoder, and null_sink. All applications use the camera component; `raspistill` uses the Image Encode component; `raspivid` uses the Video Encode component; and `raspistillyuv` and `raspividyuv` don't use an encoder, and sends there YUV or RGB output directly from the camera component to file.
 
 The preview display is optional, but can be used full-screen or directed to a specific rectangular area on the display. If preview is disabled, the null_sink component is used to 'absorb' the preview frames. The camera must produce preview frames even if these aren't required for display, as they're used for calculating exposure and white balance settings.
 
