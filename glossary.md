@@ -1,23 +1,25 @@
 # Raspberry Pi Glossary of Terms
 
 - **A/mA (amper/mili amper)** - ???
+- **CSI** - Camera Serial Interface. A hardware interface for connecting cameras to SoC's 
 - **DHCP** - Dynamic Host Configuration Protocol, a network management protocol which dynamically assigns an IP address and other network configuration parameters to each device on a network
 - **DPI** - Parallel Display Interface, an up-to-24-bit parallel RGB interface via the Raspberry Pi's GPIO pins
-- **Device Tree (DT)** - ???
-- **Device Tree Source (DTS)** - ???
-- **Device Tree Blob (DTB)** - ???
+- **DSI** - Display Serial Interface. A Hardware interface for connecting LCD panels.
+- **Device Tree (DT)** - A data structure for defining hardware. https://en.wikipedia.org/wiki/Device_tree
+- **Device Tree Source (DTS)** - A human readable source file to be compiled into a DTB
+- **Device Tree Blob (DTB)** - A binary file containing a device tree, the result of compiling DTS files.
 - **GPIO** - General Purpose Input/Output, the programmable pins on the Raspberry Pi
-- **I<sup>2</sup>C** - Inter-Integrated Circuit (pronounced I-squared-C) a high speed protocol used for attaching lower-speed peripheral ICs to processors and microcontrollers in short-distance, intra-board communication
+- **I<sup>2</sup>C** - Inter-Integrated Circuit (pronounced I-squared-C) a high speed protocol used for attaching lower-speed peripheral ICs to processors and microcontrollers in short-distance, intra-board communication. https://en.wikipedia.org/wiki/I%C2%B2C
 - **LED** - Light-Emitting Diode, a semiconductor device that produces light from electricity
-- **MSD** - ???
-- **NAND** - ???
-- **OTP** - ???
+- **MSD** - Amoungst other things, a Mass Storage Device such as an SD card or hard disk drive.
+- **NAND** - A NAND gate is a logic gate, specifically an inverted AND gate. https://en.wikipedia.org/wiki/NAND_gate. Can also refer to a type of flash memory that uses NAND logic.
+- **OTP** - One Time Programmable. A type of memory that can only be programmed one, and retains the programmed data after power off. Can be used for serial numbers etc.
 - **SPI** - Serial Peripheral Interface bus, a synchronous serial communication interface specification used for short distance communication
 - **SoC** - System-on-chip, an integrated circuit that integrates all components of a computer
-- **TP1/TP2** - ???
+- **TP1/TP2** - Test points.
 - **UART** - Universal Asynchronous Receiver-Transmitter, a protocol for asynchronous serial communication in which the data format and transmission speeds are configurable
 - **Volts (V)** - ???
 - **config.txt** - a file located on the boot partition of a Raspberry Pi's SD card, which is parsed at boot time in order to enable, disable and manage operating system features which cannot be changed after booting
 - **raspi-config** - A command line tool for configuring Raspbian's operating system features
 - **Raspberry Pi Configuration Tool (rcgui)** - A graphical equivalent of `raspi-config`
-- **vcgencmd** - ???
+- **vcgencmd** - A Raspberry Pi specific tool for communicating with the Videocore4 GPU on the Raspberry Pi.
