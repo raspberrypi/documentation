@@ -11,6 +11,10 @@ The [warning symbols](../warning-icons.md) can be disabled using this option, al
 
 Sets the Videocore logging level. The value is a Videocore-specific bitmask.
 
+## arm_control
+
+Sets board-specific control bits. **NOTE:** Instead of this option, use the `arm_64bit` option to set the 64-bit boot control bit (`0x200` here).
+
 ## arm_64bit
 
 If set, this forces the kernel loading system to assume a 64-bit kernel.
