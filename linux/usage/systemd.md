@@ -26,9 +26,9 @@ WantedBy=multi-user.target
 ```
 So in this instance, the service would run Python 3 from our working directory `/home/pi/myscript` which contains our python program to run `myscript.py`. But you are not limited to Python programs: simply change the ExecStart line to be the command to start any program/script that you want running from booting.
 
-Copy this file into `/lib/systemd/system` as root, for example:
+Copy this file into `/etc/systemd/system` as root, for example:
 ```
-sudo cp myscript.service /lib/systemd/system/myscript.service
+sudo cp myscript.service /etc/systemd/system/myscript.service
 ```
 
 Once this has been copied, you can attempt to start the service using the following command:
