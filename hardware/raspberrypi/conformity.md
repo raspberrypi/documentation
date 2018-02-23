@@ -1,172 +1,26 @@
-# Compliance
+# Product compliance
 
-Raspberry Pi models conform to various standards. The available Documents of Conformance are linked in the shortcut table below, and in more detail further down the page. Note that not all standards that apply are listed here. 
+All Raspberry Pi product has undergone extensive compliance testing, and copies of the relevent certificates and conformity documents are available to download from the table below. 											
+											
 
-| Model | EU Declaration | FCC Declaration | Others |
-| ----- |--------------- | --------------- |--------|
-| A+    | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiAPlusDOC_CE.pdf) | | |
-| B+    | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiBplus_DOC_CE.pdf)| | |
-| 2B    | [Declaration](https://www.raspberrypi.org/files/compliance/Raspberry_Pi_2B_V1-2_DOC_CE.pdf) | [Declaration](https://www.raspberrypi.org/files/compliance/Raspberry_Pi_2B_V1-2_DOC_FCC.pdf)| |
-| 3B    | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPi3B-DOC-CE_RED.pdf)| [DSS](https://www.raspberrypi.org/files/compliance/Pi3_FCC_DSS.pdf),[DTS](https://www.raspberrypi.org/files/compliance/Pi3_FCC_DTS.pdf)| See below for more regions.|
-| Zero     |[Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiZeroDOC_CE.pdf)| | |
-| Zero W    |[Declaration](https://www.raspberrypi.org/files/compliance/Raspberry_Zero_W_DOC_CE_RED.pdf)| | | 
-| CM3/CM3 Lite | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_EU.pdf) |  [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_FCC.pdf)| |
-| Display    | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiDisplay_DOC_CE.pdf)| [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiDisplay_DOC_FCC.pdf) | |
-| Camera v1 | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCameraDOC_CE.pdf) | | |
-| Camera v2 | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_CE.pdf) | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_FCC.PDF) | |
-| Sense HAT | [Declaration](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_CE.pdf) | | |
+| Model           | Declaration of Conformity | Local and regional approval certificates |
+|:---------------:|-------------------------:|:----------------------------------------:|
+| A+       | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiAPlusDOC_CE.pdf) | |
+| B+       | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiBplus_DOC_CE.pdf)| |
+| 2B       | [EU](https://www.raspberrypi.org/files/compliance/Raspberry_Pi_2B_V1-2_DOC_CE.pdf)  &nbsp; &nbsp;[FCC](https://www.raspberrypi.org/files/compliance/Raspberry_Pi_2B_V1-2_DOC_FCC.pdf)| |
+| 3B       | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPi3B-DOC-CE_RED.pdf) |  &nbsp; &nbsp;[FCC-DSS](https://www.raspberrypi.org/files/compliance/Pi3_FCC_DSS.pdf) &nbsp; &nbsp; [FCC-DTS](https://www.raspberrypi.org/files/compliance/Pi3_FCC_DTS.pdf)  &nbsp; &nbsp;[ANZ](https://www.raspberrypi.org/files/compliance/Pi3_AU&NZ.pdf)  &nbsp; &nbsp;[ANZ LoA](https://www.raspberrypi.org/files/compliance/Pi3_AU&NZ_LoA.pdf)  &nbsp; &nbsp;[Canada](https://www.raspberrypi.org/files/compliance/Pi3_Canada.pdf)  &nbsp; &nbsp;[China 1](https://www.raspberrypi.org/files/compliance/Pi3_China_1.jpg)  &nbsp; &nbsp;[China 2](https://www.raspberrypi.org/files/compliance/Pi3_China_2.jpg)  &nbsp; &nbsp;[Hong Kong](https://www.raspberrypi.org/files/compliance/Pi3_Hong-Kong.pdf)  &nbsp; &nbsp;[India](https://www.raspberrypi.org/files/compliance/Pi3_India.pdf)  &nbsp; &nbsp;[Japan](https://www.raspberrypi.org/files/compliance/Pi3_Japan.pdf)  &nbsp; &nbsp;[Russia](https://www.raspberrypi.org/files/compliance/Pi3_Russia.pdf)  &nbsp; &nbsp;[Serbia](https://www.raspberrypi.org/files/compliance/Pi3_Serbia.pdf)  &nbsp; &nbsp;[South Africa](https://www.raspberrypi.org/files/compliance/Pi3_South-Africa.pdf)  &nbsp; &nbsp;[South Korea](https://www.raspberrypi.org/files/compliance/Pi3_South-Korea.pdf)  &nbsp; &nbsp;[Taiwan](https://www.raspberrypi.org/files/compliance/Pi3_Taiwan.pdf)  |
+| Zero      |[EU](https://www.raspberrypi.org/files/compliance/RaspberryPiZeroDOC_CE.pdf)| |
+| Zero W / Zero WH    |[EU](https://www.raspberrypi.org/files/compliance/Raspberry_Zero_W_DOC_CE_RED.pdf)| |
+| CM3/CM3 Lite | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_EU.pdf)  &nbsp; &nbsp;[FCC](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_FCC.pdf)| |
+| Display   | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiDisplay_DOC_CE.pdf)  &nbsp; &nbsp;[FCC](https://www.raspberrypi.org/files/compliance/RaspberryPiDisplay_DOC_FCC.pdf) | |
+| Camera Module v1 | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiCameraDOC_CE.pdf) | |
+| Camera Module v2 | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_CE.pdf)  &nbsp; &nbsp;[FCC](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_FCC.PDF) | |
+| Sense HAT | [EU](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_CE.pdf) | |
 
+## The Raspberry Pi Integrator Programme
 
-## Raspberry Pi Model A+
+The programme provides access to the same test engineers who worked on our Raspberry Pis during their compliance testing. It connects the user to a dedicated team at UL that assesses and tests the user’s product, facilitated by their in-depth knowledge of Raspberry Pi. The team at UL work closely with the Raspberry Pi engineering team, so any unexpected issues that may arise during testing can be resolved quickly. Through the programme, UL will streamline the testing and certification process, which will in turn decrease the amount of time necessary to launch the product. Our Integrator Programme is openly available, it comes with no added cost beyond the usual testing fees at UL, and there are companies already taking advantage of it.
 
-The Raspberry Pi Model A+ device has undergone extensive compliance testing and meets the following standards:
+## Get your product on the market more quickly										
 
-- EU
-  - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
-  - Restriction of Hazardous Substances (RoHS) Directive 2011/65/EU
-
- [EU Declaration of Conformity](https://www.raspberrypi.org/files/compliance/RaspberryPiAPlusDOC_CE.pdf)
-
-## Raspberry Pi Model B+
-
-The Raspberry Pi Model B+ device has undergone extensive compliance testing and meets the following standards:
-
-- EU
-  - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
-  - Restriction of Hazardous Substances (RoHS) Directive 2011/65/EU
-
- [EU Declaration of Conformity](https://www.raspberrypi.org/files/compliance/RaspberryPiBplus_DOC_CE.pdf)
-
-## Raspberry Pi 2 Model B
-
-All Raspberry Pi 2 Model B devices have undergone extensive compliance testing and meet the following standards:
-
-- EU
-  - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
-  - Restriction of Hazardous Substances (RoHS) Directive 2011/65/EU
-
-- USA
-  - ANSI C63.4 
-  - FCC 47 CFR Part 15, Subpart B, Class B Digital Device.
-
- [FCC Declaration of Conformity](https://www.raspberrypi.org/files/compliance/Raspberry_Pi_2B_V1-2_DOC_FCC.pdf)   
- [EU Declaration of Conformity](https://www.raspberrypi.org/files/compliance/Raspberry_Pi_2B_V1-2_DOC_CE.pdf)
-
-## Raspberry Pi Model 3
-
-All Raspberry Pi Model 3 devices have undergone extensive compliance testing and meet the following standards:
-
-- EU
-  - Restriction of Hazardous Substances (RoHS) Directive 2011/65/EU
-  - Health and Safety (Art.3(1)(a))
-    - EN60950-1:2006 /A11:2009 /A1:2010 /A12:2011 /A2:2013
-    - EN62311:2008 Electronic and electrical equipment related to human exposure restrictions for electromagnetic fields (0Hz-300Ghz)
-  - EMC (Art 3(1)(b))
-    - EN55032:21012; EN55024:2010 (with reference to EN301489-1v1.9.2  & EN301489-17v2.2.1)
-  - SPECTRUM (Art 3(2))
-    - EN300 328 v2.1.1 covering wide band transmission systems and data transmission equipment operating in the 2.4GHz ISM band.
- 
-[FCC Declaration of Conformity (DSS)](https://www.raspberrypi.org/files/compliance/Pi3_FCC_DSS.pdf)    
-[FCC Declaration of Conformity (DTS)](https://www.raspberrypi.org/files/compliance/Pi3_FCC_DTS.pdf)    
-[EU Declaration of Conformity](https://www.raspberrypi.org/files/compliance/RaspberryPi3B-DOC-CE_RED.pdf)
-
-### Model 3, other regions
-
-[Australia/New Zealand](https://www.raspberrypi.org/files/compliance/Pi3_AU&NZ.pdf)  
-[Australia/New Zealand (LOA)](https://www.raspberrypi.org/files/compliance/Pi3_AU&NZ_LoA.pdf)  
-[Canada](https://www.raspberrypi.org/files/compliance/Pi3_Canada.pdf)  
-[China 1](https://www.raspberrypi.org/files/compliance/Pi3_China_1.jpg)  
-[China 2](https://www.raspberrypi.org/files/compliance/Pi3_China_2.jpg)  
-[Hong Kong](https://www.raspberrypi.org/files/compliance/Pi3_Hong-Kong.pdf)  
-[India](https://www.raspberrypi.org/files/compliance/Pi3_India.pdf)  
-[Japan](https://www.raspberrypi.org/files/compliance/Pi3_Japan.pdf)  
-[Russia](https://www.raspberrypi.org/files/compliance/Pi3_Russia.pdf)  
-[Serbia](https://www.raspberrypi.org/files/compliance/Pi3_Serbia.pdf)  
-[South Africa](https://www.raspberrypi.org/files/compliance/Pi3_South-Africa.pdf)  
-[South Korea](https://www.raspberrypi.org/files/compliance/Pi3_South-Korea.pdf)  
-[Taiwan](https://www.raspberrypi.org/files/compliance/Pi3_Taiwan.pdf)  
-
-## Raspberry Pi Zero
-
-All Raspberry Pi Model Zero devices have undergone extensive compliance testing and meet the following standards:
-
-- EU
-  - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
-  - Restriction of Hazardous Substances (RoHS) Directive 2011/65/EU
-
-[EU Declaration of Conformity](https://www.raspberrypi.org/files/compliance/RaspberryPiZeroDOC_CE.pdf)
-
-## Raspberry Pi Zero W
-
-All Raspberry Pi Model Zero W devices have undergone extensive compliance testing and meet the following standards:
-
-- EU
-  - Restriction of Hazardous Substances (RoHS) Directive 2011/65/EU
-  - Health and Safety (Art.3(1)(a))
-    - EN60950-1:2006 /A11:2009 /A1:2010 /A12:2011 /A2:2013
-    - EN62311:2008 Electronic and electrical equipment related to human exposure restrictions for electromagnetic fields (0Hz-300Ghz)
-  - EMC (Art 3(1)(b))
-    - EN55032:21012; EN55024:2010 (with reference to EN301489-1v1.9.2  & EN301489-17v2.2.1)
-  - SPECTRUM (Art 3(2))
-    - EN300 328 v2.1.1 covering wide band transmission systems and data transmission equipment operating in the 2.4GHz ISM band.
-  
-[EU Declaration of Conformity](https://www.raspberrypi.org/files/compliance/Raspberry_Zero_W_DOC_CE_RED.pdf)
-
-## Compute Module 3 and Compute Module 3 Lite
-
-All Raspberry Pi Compute Module 3 devices and the IO board have undergone extensive compliance testing and meet the following standards:
-
-- EU
-  - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
-  - Restriction of Hazardous Substances (RoHS) Directive 2011/65/EU
-  - EN55032:2012 Class B
-
-- USA
-  - ANSI C63.4 
-  - FCC 47 CFR Part 15, Subpart B, Class B Digital Device.
-
- [FCC Declaration of Conformity](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_FCC.pdf)   
- [EU Declaration of Conformity](https://www.raspberrypi.org/files/compliance/RaspberryPiCM3_DOC_EU.pdf)
-
-## Raspberry Pi Camera, PiNoIR camera, Pi Camera 2, PiNoIR Camera 2
-
-The Raspberry Pi Camera Modules have undergone compliance testing and meet the following standards:
-
-- EU
-  - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
-  - Restriction of Hazardous Substances (RoHS) Directive 2011/65/EU
-
-- USA
-  - ANSI C63.4 
-  - FCC 47 CFR Part 15, Subpart B, Class A Digital Device.
-
- [EU Declaration of Conformity Camera](https://www.raspberrypi.org/files/compliance/RaspberryPiCameraDOC_CE.pdf)  
- [EU Declaration of Conformity Camera 2](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_CE.pdf)  
- [FCC Declaration of Conformity Camera 2](https://www.raspberrypi.org/files/compliance/RaspberryPiCamera2DOC_FCC.PDF)
- 
-## Raspberry Pi Display
-
-The Raspberry Pi Touchscreen Display has undergone compliance testing and meets the following standards:
-
-- EU
-  - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
-  - Restriction of Hazardous Substances (RoHS) Directive 2011/65/EU
-- USA
-  - ANSI C63.4 
-  - FCC 47 CFR Part 15, Subpart B, Class B Digital Device.
- 
-[FCC Declaration of Conformity](https://www.raspberrypi.org/files/compliance/RaspberryPiDisplay_DOC_FCC.pdf)   
-[EU Declaration of Conformity](https://www.raspberrypi.org/files/compliance/RaspberryPiDisplay_DOC_CE.pdf)
-
-## Raspberry Pi Sense HAT
-
-The Raspberry Pi Sense HAT has undergone compliance testing and meets the following standards:
-
-- EU
-  - Electromagnetic Compatibility Directive (EMC) 2014/30/EU,
-  - Restriction of Hazardous Substances (RoHS) Directive 2011/65/EU
-
-[EU Declaration of Conformity](https://www.raspberrypi.org/files/compliance/SenseHAT_DOC.pdf)
-
-
-  
+We have put the Integrator Programme in place in the hope of eliminating the burden of navigating complicated compliance issues and making it easier for companies to bring new, exciting products to consumers. With simplified testing, companies and individuals can get products to market in less time and with lower overhead costs.
