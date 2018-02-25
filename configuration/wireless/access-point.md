@@ -173,7 +173,7 @@ Add a new bridge, which in this case is called `br0`.
 sudo brctl addbr br0
 ```
 
-Connect the network ports. In this case, connect `eth0` to the bridge `br0`.
+Connect the network ports. In this case, connect `eth0` to the bridge `br0`. **NB. This command will close the eth0 interface. If you are running these commands over an ssh connection, now would be a good time to grab a USB keyboard.**
 
 ```
 sudo brctl addif br0 eth0
