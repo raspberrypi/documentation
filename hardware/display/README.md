@@ -59,7 +59,7 @@ Read our troubleshooting steps, tips, and tricks here: [Raspberry Pi Display Tro
 
 ## Module mechanical specification
 
-* Outer dimensions: 192.96 x 112.76mm
+* Outer dimensions: 192.96 x 110.76mm
 * Viewable area: 154.08 x 85.92mm
 * [Download mechanical drawing (PDF, 592kb)](7InchDisplayDrawing-14092015.pdf)
 * [Additional drawing including radius and thickness of glass](radius.png)
