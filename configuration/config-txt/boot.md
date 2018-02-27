@@ -51,7 +51,7 @@ Set `kernel_old` to `1` to load the kernel to the memory address `0x0`.
 
 ## initramfs
 
-The `initramfs` command specifies both the ramfs filename **and** the memory address to which to load it. It performs the actions of both `ramfsfile` and `ramfsaddr` in one parameter. Example values are: `initramfs initramf.gz 0x00800000`. **NOTE:** This option uses different syntax from all the other options, and you should not use a `=` character here.
+The `initramfs` command specifies both the ramfs filename **and** the memory address to which to load it. It performs the actions of both `ramfsfile` and `ramfsaddr` in one parameter. The address can also be `followkernel` (or `0`) to place it in memory after the kernel image. Example values are: `initramfs initramf.gz 0x00800000` or `initramfs init.gz followkernel`. **NOTE:** This option uses different syntax from all the other options, and you should not use a `=` character here.
 
 ## init_uart_baud
 
