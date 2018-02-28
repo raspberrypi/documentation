@@ -8,7 +8,7 @@ Although you won't be able to directly change documentation on the official repo
 
 Before making any changes, it is wise to find out whether your contribution is likely to be accepted by checking [here](https://www.raspberrypi.org/documentation/CONTRIBUTING.md).
 
-In order to submit new or corrected documentation, you to create a GitHub account (if you don't already have one) and **fork** the original repository to your account. You make changes as you see fit, save them in your repository, then make something called a **pull request** to the original Raspberry Pi repository. This pull request (**PR**) then appears in the Raspberry Pi repository where it can be assessed by the maintainers, copy edited, and, if appropriate, merged with the official repository.
+In order to submit new or corrected documentation, you have to create a GitHub account (if you don't already have one) and **fork** the original repository to your account. You make changes as you see fit, save them in your repository, then make something called a **pull request** to the original Raspberry Pi repository. This pull request (**PR**) then appears in the Raspberry Pi repository where it can be assessed by the maintainers, copy edited, and, if appropriate, merged with the official repository.
 
 The documentation which appears on the Raspberry Pi website is generated from the GitHub repository, and is updated approximately hourly.
 
