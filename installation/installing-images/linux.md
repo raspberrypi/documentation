@@ -50,14 +50,18 @@ unzip -p 2017-11-29-raspbian-stretch.zip | sudo dd of=/dev/sdX bs=4M conv=fsync
 
 - After `dd` has finished copying, you can check what has been written to the SD card by `dd`-ing from the card back to another image on your hard disk; truncating the new image to the same size as the original; and then running `diff` (or `md5sum`) on those two images.
 
-- If the SD card is bigger than the original image size, `dd` will make a copy of the whole card. We must therefore truncate the new image to the size of the original image. Make sure you replace the input file `if=` argument with the correct device name. `diff` should report that the files are identical.
-
+- Copy the SD card content to an image on your hard ddive (called from-sd-card.img in our example)
     ```bash
     dd bs=4M if=/dev/sdX of=from-sd-card.img
+    ```
+- Truncate the new image to the size of the original image, in case the SD card was larger than the original image. Make sure you replace the input file `if=` argument with the original image name.
+    ```bash
     truncate --reference 2017-11-29-raspbian-stretch.img from-sd-card.img
+    ```
+- Compare the two images, `diff` should report that the files are identical.
+    ```bash
     diff -s from-sd-card.img 2017-11-29-raspbian-stretch.img
     ```
-
 - Run `sync`. This will ensure the write cache is flushed and that it is safe to unmount your SD card.
 
 - Remove the SD card from the card reader.
