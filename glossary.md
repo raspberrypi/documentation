@@ -4,10 +4,10 @@
 - **ARM** -A chip architecture developed by ARM in Cambridge, UK. See https://en.wikipedia.org/wiki/ARM_architecture
 - **ARMv6/ARM11** - The particular version of chip architecture used on the first Raspberry Pi (Pi1), and the Pi Zero range.
 - **ARMv7** - The particular version of chip architecture used on the Raspberry Pi 2 and 3 models.
-- **bcm2835** - The SoC used on the Pi1 and Pi0 range. https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/README.md
-- **bcm2836** - The SoC used on the original Pi2. https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/README.md
-- **bcm2837** - The SoC used on the Pi3 (and newer versions of the Pi2). https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2837/README.md
-- **config.txt** - a file located on the boot partition of a Raspberry Pi's SD card, which is parsed at boot time in order to enable, disable and manage operating system features which cannot be changed after booting
+- **bcm2835** - The SoC used on the Pi1 and Pi0 range. See [bcm2835](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/README.md)
+- **bcm2836** - The SoC used on the original Pi2. See [bcm2836](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/README.md)
+- **bcm2837** - The SoC used on the Pi3 (and newer versions of the Pi2).See [bcm2837](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2837/README.md)
+- **config.txt** - a file located on the boot partition of a Raspberry Pi's SD card, which is parsed at boot time in order to enable, disable and manage operating system features which cannot be changed after booting. See the [offical documentation](https://www.raspberrypi.org/documentation/configuration/config-txt/README.md)
 - **CSI** - Camera Serial Interface. A hardware interface for connecting cameras to SoC's 
 - **DHCP** - Dynamic Host Configuration Protocol, a network management protocol which dynamically assigns an IP address and other network configuration parameters to each device on a network
 - **DPI** - Parallel Display Interface, an up-to-24-bit parallel RGB interface via the Raspberry Pi's GPIO pins
@@ -21,13 +21,15 @@
 - **MSD** - Amoungst other things, a Mass Storage Device such as an SD card or hard disk drive.
 - **NAND** - A NAND gate is a logic gate, specifically an inverted AND gate. https://en.wikipedia.org/wiki/NAND_gate. Can also refer to a type of flash memory that uses NAND logic.
 - **OTP** - One Time Programmable. A type of memory that can only be programmed one, and retains the programmed data after power off. Can be used for serial numbers etc.
-- **raspi-config** - A command line tool for configuring Raspbian's operating system features
-- **raspivid, raspistill, raspiyuv, raspividyuv** - A set of applications to run the Raspberry Pi camera in various modes. See https://www.raspberrypi.org/documentation/raspbian/applications/camera.md
+- **raspi-config** - A command line tool for configuring Raspbian's operating system features. See the [Official Documentation](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)
+- **raspivid, raspistill, raspiyuv, raspividyuv** - A set of applications to run the Raspberry Pi camera in various modes. See the [Official Documentation](https://www.raspberrypi.org/documentation/raspbian/applications/camera.md)
 - **Raspberry Pi Configuration Tool (rcgui)** - A graphical equivalent of `raspi-config`
 - **Raspberry Pi Desktop** - A version of the LXDE desktop environment, specifically trailored to the Raspberry Pi (Used to be called Pixel)
-- **SPI** - Serial Peripheral Interface bus, a synchronous serial communication interface specification used for short distance communication
 - **SoC** - System-on-chip, an integrated circuit that integrates all components of a computer
+- **SPI** - Serial Peripheral Interface bus, a synchronous serial communication interface specification used for short distance communication
+- **SSH** - Stands for Secure Shell, a cryptographic network protocol for operating network services securely over an unsecured network. See https://en.wikipedia.org/wiki/Secure_Shell and the [Official Documentation](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md)
 - **TP1/TP2** - Test points.
 - **UART** - Universal Asynchronous Receiver-Transmitter, a protocol for asynchronous serial communication in which the data format and transmission speeds are configurable
+- **VNC** - A graphical desktop sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer. See the [Official Documentation](https://www.raspberrypi.org/documentation/remote-access/vnc/README.md)
 - **Volts (V)** - SI derived unit for Electrical Potential Difference. See https://en.wikipedia.org/wiki/Volt
 - **vcgencmd** - A Raspberry Pi specific tool for communicating with the Videocore4 GPU on the Raspberry Pi.
