@@ -19,6 +19,7 @@
 - **dt-blob.bin** - A binary file containing initial GPIO configuration read by the firmware at boot time. Despite the confusing name, this is _not_ Device Tree (although it is compiled by the Device Tree tools).
 - **DVI** - Digital Visual Interface. A video interface for connecting a source device to a monitor or display. Electrically compatible with HDMI so a simple adapter can convert from one to the other (excluding audio which DVI does not support). https://en.wikipedia.org/wiki/Digital_Visual_Interface
 - **GPIO** - General Purpose Input/Output, the programmable pins on the Raspberry Pi
+- **GPU** - Graphical Processing Unit. A hardware device for handling graphical (and related) tasks at high speed. The GPU on the Raspberry Pi's is called the Videocore4 (VC4) and is built in to the SoC.
 - **HDMI** - High definition Multimedia Interface, a standard for transmitting uncompressed video and compressed or uncompressed audio data from a source device to a display device. https://en.wikipedia.org/wiki/HDMI
 - **HDCP** - An optional encryption mechanism used for HDMI or DVI transmission. https://en.wikipedia.org/wiki/High-bandwidth_Digital_Content_Protection
 - **HVS** - Hardware Video Scaler. A hardware block in the VC4 GPU on all Raspberry Pi models used for manipulatinga and displaying bitmaps.
