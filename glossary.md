@@ -16,6 +16,7 @@
 - **Device Tree (DT)** - A data structure for defining hardware. https://en.wikipedia.org/wiki/Device_tree
 - **Device Tree Source (DTS)** - A human readable source file to be compiled into a DTB
 - **Device Tree Blob (DTB)** - A binary file containing a device tree, the result of compiling DTS files.
+- **dt-blob.bin** - A binary file containing initial GPIO configuration read by the firmware at boot time. Despite the confusing name, this is _not_ Device Tree (although it is compiled by the Device Tree tools).
 - **DVI** - Digital Visual Interface. A video interface for connecting a source device to a monitor or display. Electrically compatible with HDMI so a simple adapter can convert from one to the other (excluding audio which DVI does not support). https://en.wikipedia.org/wiki/Digital_Visual_Interface
 - **GPIO** - General Purpose Input/Output, the programmable pins on the Raspberry Pi
 - **HDMI** - High definition Multimedia Interface, a standard for transmitting uncompressed video and compressed or uncompressed audio data from a source device to a display device. https://en.wikipedia.org/wiki/HDMI
@@ -28,6 +29,7 @@
 - **MSD** - Amoungst other things, a Mass Storage Device such as an SD card or hard disk drive.
 - **NAND** - A NAND gate is a logic gate, specifically an inverted AND gate. https://en.wikipedia.org/wiki/NAND_gate. Can also refer to a type of flash memory that uses NAND logic.
 - **OTP** - One Time Programmable. A type of memory that can only be programmed one, and retains the programmed data after power off. Can be used for serial numbers etc.
+- **Overlay** - A boot-time or run-time patch to a Device Tree allowing a degree of configuration by the user. See https://www.raspberrypi.org/documentation/configuration/device-tree.md for more details, or run `dtoverlay -a` for a list of available overlays.
 - **raspi-config** - A command line tool for configuring Raspbian's operating system features. See the [Official Documentation](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)
 - **raspivid, raspistill, raspiyuv, raspividyuv** - A set of applications to run the Raspberry Pi camera in various modes. See the [Official Documentation](https://www.raspberrypi.org/documentation/raspbian/applications/camera.md)
 - **Raspberry Pi Configuration Tool (rcgui)** - A graphical equivalent of `raspi-config`
