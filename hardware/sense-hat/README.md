@@ -36,8 +36,6 @@ The C/C++ examples can be compiled by running `make` in the appropriate director
 
 The RTIMULibDrive11 example comes pre-compiled to help ensure everything works as intended. It can be launched by running `RTIMULibDrive11` and closed by pressing `Ctrl+c`.
 
-![Sense HAT software overview diagram](images/sense-overview.png)
-
 ### Python sense-hat
 
 `sense-hat` is the officially supported library for the Sense HAT; it provides access to all of the on-board sensors and the LED matrix.
