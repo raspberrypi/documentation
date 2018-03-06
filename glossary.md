@@ -7,6 +7,7 @@
 - **bcm2835** - The SoC used on the Pi1 and Pi0 range. See [bcm2835](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/README.md)
 - **bcm2836** - The SoC used on the original Pi2. See [bcm2836](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/README.md)
 - **bcm2837** - The SoC used on the Pi3 (and newer versions of the Pi2).See [bcm2837](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2837/README.md)
+- **CODEC** - Short for Coder/Decoder. Hardware or software blocks that encode and/or decode video or audio data.
 - **config.txt** - a file located on the boot partition of a Raspberry Pi's SD card, which is parsed at boot time in order to enable, disable and manage operating system features which cannot be changed after booting. See the [offical documentation](https://www.raspberrypi.org/documentation/configuration/config-txt/README.md)
 - **CSI** - Camera Serial Interface. A hardware interface for connecting cameras to SoC's 
 - **DHCP** - Dynamic Host Configuration Protocol, a network management protocol which dynamically assigns an IP address and other network configuration parameters to each device on a network
@@ -16,8 +17,14 @@
 - **Device Tree Source (DTS)** - A human readable source file to be compiled into a DTB
 - **Device Tree Blob (DTB)** - A binary file containing a device tree, the result of compiling DTS files.
 - **dt-blob.bin** - A binary file containing initial GPIO configuration read by the firmware at boot time. Despite the confusing name, this is _not_ Device Tree (although it is compiled by the Device Tree tools).
+- **DVI** - Digital Visual Interface. A video interface for connecting a source device to a monitor or display. Electrically compatible with HDMI so a simple adapter can convert from one to the other (excluding audio which DVI does not support). https://en.wikipedia.org/wiki/Digital_Visual_Interface
 - **GPIO** - General Purpose Input/Output, the programmable pins on the Raspberry Pi
+- **HDMI** - High definition Multimedia Interface, a standard for transmitting uncompressed video and compressed or uncompressed audio data from a source device to a display device. https://en.wikipedia.org/wiki/HDMI
+- **HDCP** - An optional encryption mechanism used for HDMI or DVI transmission. https://en.wikipedia.org/wiki/High-bandwidth_Digital_Content_Protection
+- **HVS** - Hardware Video Scaler. A hardware block in the VC4 GPU on all Raspberry Pi models used for manipulatinga and displaying bitmaps.
 - **I<sup>2</sup>C** - Inter-Integrated Circuit (pronounced I-squared-C) an electrical protocol used for attaching lower-speed peripheral ICs to processors and microcontrollers in short-distance, intra-board communication. https://en.wikipedia.org/wiki/I%C2%B2C
+- **I<sup>2</sup>S** - An electrical serial bus interface standard used for connecting digital audio devices together. https://en.wikipedia.org/wiki/I%C2%B2S
+- **ISP** - Imaging System Pipeline. A set of hardware (and sometimes software) stages that process images from a camera in to a high quality result. The Raspberry Pi has an inbuilt hardware ISP that processes images captured from the camera attached to the CSI port.
 - **LED** - Light-Emitting Diode, a semiconductor device that produces light from electricity
 - **MSD** - Amoungst other things, a Mass Storage Device such as an SD card or hard disk drive.
 - **NAND** - A NAND gate is a logic gate, specifically an inverted AND gate. https://en.wikipedia.org/wiki/NAND_gate. Can also refer to a type of flash memory that uses NAND logic.
@@ -30,8 +37,10 @@
 - **SoC** - System-on-chip, an integrated circuit that integrates all components of a computer
 - **SPI** - Serial Peripheral Interface bus, a synchronous serial communication interface specification used for short distance communication
 - **SSH** - Stands for Secure Shell, a cryptographic network protocol for operating network services securely over an unsecured network. See https://en.wikipedia.org/wiki/Secure_Shell and the [Official Documentation](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md)
+- **TLA** - Three Letter Abrieviation. Almost the entire reason for this glossary.
 - **TP1/TP2** - Test points.
 - **UART** - Universal Asynchronous Receiver-Transmitter, a protocol for asynchronous serial communication in which the data format and transmission speeds are configurable
+- **VC4** - The VideoCore4 GPU used on the Raspberry Pi. Contains a large number of hardware blocks that handle graphics, cameras, display, codecs etc.
 - **VNC** - A graphical desktop sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer. See the [Official Documentation](https://www.raspberrypi.org/documentation/remote-access/vnc/README.md)
 - **Volts (V)** - SI derived unit for Electrical Potential Difference. See https://en.wikipedia.org/wiki/Volt
 - **vcgencmd** - A Raspberry Pi specific tool for communicating with the Videocore4 GPU on the Raspberry Pi.
