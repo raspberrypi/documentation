@@ -18,18 +18,20 @@
 - **Device Tree Blob (DTB)** - A binary file containing a device tree, the result of compiling DTS files.
 - **dt-blob.bin** - A binary file containing initial GPIO configuration read by the firmware at boot time. Despite the confusing name, this is _not_ Device Tree (although it is compiled by the Device Tree tools).
 - **DVI** - Digital Visual Interface. A video interface for connecting a source device to a monitor or display. Electrically compatible with HDMI so a simple adapter can convert from one to the other (excluding audio which DVI does not support). https://en.wikipedia.org/wiki/Digital_Visual_Interface
+- **Firmware** - Software that runs on a particular hardware device, for example a wireless chip or dongle. Distinct from the usual software running on the Raspberry Pi in that it is usually a fixed binary blob of data that is loaded on to the device at startup. On the Raspberry Pi, the VC4 GPU requires firmware to be loaded to it at startup in order boot up and run the entire system.
 - **GPIO** - General Purpose Input/Output, the programmable pins on the Raspberry Pi
 - **GPU** - Graphical Processing Unit. A hardware device for handling graphical (and related) tasks at high speed. The GPU on the Raspberry Pi's is called the Videocore4 (VC4) and is built in to the SoC.
 - **HDMI** - High definition Multimedia Interface, a standard for transmitting uncompressed video and compressed or uncompressed audio data from a source device to a display device. https://en.wikipedia.org/wiki/HDMI
 - **HDCP** - An optional encryption mechanism used for HDMI or DVI transmission. https://en.wikipedia.org/wiki/High-bandwidth_Digital_Content_Protection
-- **HVS** - Hardware Video Scaler. A hardware block in the VC4 GPU on all Raspberry Pi models used for manipulatinga and displaying bitmaps.
+- **HVS** - Hardware Video Scaler. A hardware block in the VC4 GPU on all Raspberry Pi models used for manipulating and displaying bitmaps.
 - **I<sup>2</sup>C** - Inter-Integrated Circuit (pronounced I-squared-C) an electrical protocol used for attaching lower-speed peripheral ICs to processors and microcontrollers in short-distance, intra-board communication. https://en.wikipedia.org/wiki/I%C2%B2C
 - **I<sup>2</sup>S** - An electrical serial bus interface standard used for connecting digital audio devices together. https://en.wikipedia.org/wiki/I%C2%B2S
 - **ISP** - Imaging System Pipeline. A set of hardware (and sometimes software) stages that process images from a camera in to a high quality result. The Raspberry Pi has an inbuilt hardware ISP that processes images captured from the camera attached to the CSI port.
 - **LED** - Light-Emitting Diode, a semiconductor device that produces light from electricity
+- **Linux** - The main operating system used on the Raspberry Pi. The particular distribution used is customised for the Raspberry Pi range and is called Raspbian. Third parties have also produced their own distributions.
 - **MSD** - Amoungst other things, a Mass Storage Device such as an SD card or hard disk drive.
 - **NAND** - A NAND gate is a logic gate, specifically an inverted AND gate. https://en.wikipedia.org/wiki/NAND_gate. Can also refer to a type of flash memory that uses NAND logic.
-- **OTP** - One Time Programmable. A type of memory that can only be programmed one, and retains the programmed data after power off. Can be used for serial numbers etc.
+- **OTP** - One Time Programmable. A type of memory that can only be programmed one, and retains the programmed data after power off. Used for serial numbers etc.
 - **Overlay** - A boot-time or run-time patch to a Device Tree allowing a degree of configuration by the user. See https://www.raspberrypi.org/documentation/configuration/device-tree.md for more details, or run `dtoverlay -a` for a list of available overlays.
 - **raspi-config** - A command line tool for configuring Raspbian's operating system features. See the [Official Documentation](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)
 - **raspivid, raspistill, raspiyuv, raspividyuv** - A set of applications to run the Raspberry Pi camera in various modes. See the [Official Documentation](https://www.raspberrypi.org/documentation/raspbian/applications/camera.md)
@@ -41,6 +43,7 @@
 - **TLA** - Three Letter Abrieviation. Almost the entire reason for this glossary.
 - **TP1/TP2** - Test points.
 - **UART** - Universal Asynchronous Receiver-Transmitter, a protocol for asynchronous serial communication in which the data format and transmission speeds are configurable
+- **USB** - Universial Serial Bus. The main Raspberry Pi models have 4 USB sockets for connecting USB devices, for example, mice or keyboards. See https://en.wikipedia.org/wiki/USB.
 - **VC4** - The VideoCore4 GPU used on the Raspberry Pi. Contains a large number of hardware blocks that handle graphics, cameras, display, codecs etc.
 - **VNC** - A graphical desktop sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer. See the [Official Documentation](https://www.raspberrypi.org/documentation/remote-access/vnc/README.md)
 - **Volts (V)** - SI derived unit for Electrical Potential Difference. See https://en.wikipedia.org/wiki/Volt
