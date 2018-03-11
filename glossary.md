@@ -1,12 +1,13 @@
 # Raspberry Pi Glossary of Terms
 
-- **A/mA (amper/mili amper)** - Abreviation of Ampere, the base unit of electrical current. See https://en.wikipedia.org/wiki/Ampere
-- **ARM** -A chip architecture developed by ARM in Cambridge, UK. See https://en.wikipedia.org/wiki/ARM_architecture
-- **ARMv6/ARM11** - The particular version of chip architecture used on the first Raspberry Pi (Pi1), and the Pi Zero range.
-- **ARMv7** - The particular version of chip architecture used on the Raspberry Pi 2 and 3 models.
-- **bcm2835** - The SoC used on the Pi1 and Pi0 range. See [bcm2835](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/README.md)
-- **bcm2836** - The SoC used on the original Pi2. See [bcm2836](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/README.md)
-- **bcm2837** - The SoC used on the Pi3 (and newer versions of the Pi2).See [bcm2837](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2837/README.md)
+- **A/mA (ampere/milliampere)** - Abreviation of ampere, the base unit of electrical current. See https://en.wikipedia.org/wiki/Ampere
+- **ARM** -A series of instruction set architectures and processor microarchitectures, mostly developed by Arm Holdings, based in Cambridge, UK. See https://en.wikipedia.org/wiki/ARM_architecture
+- **ARMv6** - The instruction set architecture used on the first Raspberry Pi (Pi1), and the Pi Zero range.
+- **ARMv7** - The instruction set architecture used on the Raspberry Pi 2.
+- **ARMv8** - The instruction set architecture used on the Raspberry Pi 3. Very similar to ARMv7 in 32-bit mode.
+- **bcm2835** - The SoC used on the Raspberry Pi 1, Compute Module 1, and Raspberry Pi Zero range. See [bcm2835](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/README.md)
+- **bcm2836** - The SoC used on the original Raspberry Pi 2. See [bcm2836](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/README.md)
+- **bcm2837** - The SoC used on the Raspberry Pi 3, Compute Module 3, and Raspberry Pi 2 version 1.2. See [bcm2837](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2837/README.md)
 - **CODEC** - Short for Coder/Decoder. Hardware or software blocks that encode and/or decode video or audio data.
 - **config.txt** - a file located on the boot partition of a Raspberry Pi's SD card, which is parsed at boot time in order to enable, disable and manage operating system features which cannot be changed after booting. See the [offical documentation](https://www.raspberrypi.org/documentation/configuration/config-txt/README.md)
 - **CSI** - Camera Serial Interface. A hardware interface for connecting cameras to SoC's 
