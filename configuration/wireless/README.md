@@ -8,3 +8,5 @@ The following documentation is available:
     - A guide to setting up wireless networking from the command line.
 - [Access point](access-point.md)
     - A guide to setting the Raspberry Pi up as an access point, and as a internet sharing device.
+- [Headless Setup](headless.md)
+    - A guide to setting the Raspberry Pi headless.
