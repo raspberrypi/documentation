@@ -57,7 +57,7 @@ Generally speaking, `raspi-config` aims to provide the functionality to make the
 <a name="change-user-password"></a>
 ### Change User Password
 
-The default user on Raspbian is ```pi``` with the password ```raspberry```. You can change that here. Read about other [users](/linux/usage/users.md).
+The default user on Raspbian is ```pi``` with the password ```raspberry```. You can change that here. Read about other [users](../linux/usage/users.md).
  
 <a name="network-options"></a>
 ### Network Options
