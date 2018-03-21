@@ -30,21 +30,29 @@ passwd
 
 You can, of course, make your Raspberry Pi even more secure by also changing your username. All Raspberry Pis come with the default username `pi`, so changing this will immediately make your Raspberry Pi more secure.
 
-To add a new user with the same permissions as the `pi` user:
+To add a new user, enter:
 
 ```bash
-sudo adduser fred && sudo adduser fred sudo
+sudo adduser alice
 ```
 
-This adds a new user called `fred`, creates a home folder, and adds the user to the `sudo` group.
+You will be prompted to create a password for the new user.
 
-Log out and log back with the new account details. Check your permissions are in place (i.e. you can sudo) by trying the following.
+The new user will have a home directory at `/home/alice/`.
+
+To add them to the `sudo` group to give them `sudo` permissions:
 
 ```bash
-sudo visudo
+sudo adduser alice sudo
 ```
 
-The `visudo` command can only be run by an account with sudo privileges. If it runs successfully, then you can be sure that the new account is in the `sudo` group.
+You can check your permissions are in place (i.e. you can use `sudo`) by trying the following:
+
+```bash
+sudo su
+```
+
+If it runs successfully, then you can be sure that the new account is in the `sudo` group.
 
 Once you have confirmed that the new account is working, you can delete the `pi` user. Please note, though, that with the current Raspbian distribution, there are some aspects that require the `pi` user to be present. If you are unsure whether you will be affected by this, then leave the `pi` user in place. Work is being done to reduce the dependency on the `pi` user.
 
@@ -54,7 +62,7 @@ To delete the `pi` user, type the following:
 sudo deluser pi
 ```
 
-This command will delete the `pi` user but will leave the `home/pi` folder. If necessary, you can use the command below to remove the home folder for the `pi` user at the same time. Note the data in this folder will be permanently deleted, so make sure any required data is stored elsewhere.
+This command will delete the `pi` user but will leave the `/home/pi` folder. If necessary, you can use the command below to remove the home folder for the `pi` user at the same time. Note the data in this folder will be permanently deleted, so make sure any required data is stored elsewhere.
 
 ```bash
 sudo deluser -remove-home pi
@@ -64,13 +72,13 @@ sudo deluser -remove-home pi
 
 Placing `sudo` in front of a command runs it as a superuser, and by default, that does not need a password. In general, this is not a problem. However, if your Pi is exposed to the internet and somehow becomes exploited (perhaps via a webpage exploit for example), the attacker will be able to change things that require superuser credential, unless you have set `sudo` to require a password.
 
-To force `sudo` to require a password, enter
+To force `sudo` to require a password, enter:
 
 ```bash
 sudo nano /etc/sudoers.d/010_pi-nopasswd
 ```
 
-and change the `pi` entry (or whichever usernames have superuser rights) to
+and change the `pi` entry (or whichever usernames have superuser rights) to:
 
 ```bash
 pi ALL=(ALL) PASSWD: ALL
@@ -226,12 +234,12 @@ sudo ufw deny from 192.168.2.1 port 30
 
 ## Installing fail2ban
 
-If you are using your Raspberry Pi as some sort of server, for example an ```ssh``` or webserver, your firewall will have deliberate 'holes' in it to let the server traffic through. In these cases, [Fail2ban](http://www.fail2ban.org) can be useful. Fail2ban, written in Python, is a scanner that examines the log files produced by the Raspberry Pi, and checks them for suspicious activity. It catches things like multiple brute-force attempts to log in, and can inform any installed firewall to stop further login attempts from suspicious IP addresses. It saves you having to manually check log files for intrusion attempts and then update the firewall (via `iptables`) to prevent them.
+If you are using your Raspberry Pi as some sort of server, for example an `ssh` or a webserver, your firewall will have deliberate 'holes' in it to let the server traffic through. In these cases, [Fail2ban](http://www.fail2ban.org) can be useful. Fail2ban, written in Python, is a scanner that examines the log files produced by the Raspberry Pi, and checks them for suspicious activity. It catches things like multiple brute-force attempts to log in, and can inform any installed firewall to stop further login attempts from suspicious IP addresses. It saves you having to manually check log files for intrusion attempts and then update the firewall (via `iptables`) to prevent them.
 
-Install Fail2ban using the following command:
+Install fail2ban using the following command:
 
 ```bash
-sudo apt-get install fail2ban
+sudo apt install fail2ban
 ```
 
 Note that the version of Fail2ban in the repository (v0.8.13) does not support IPv6 networks. If you use IPv6, you will need to install version v0.10 or higher from source. Please see the [Fail2ban](http://www.fail2ban.org) website for more information on how to do this.
