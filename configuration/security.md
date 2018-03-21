@@ -33,14 +33,10 @@ You can, of course, make your Raspberry Pi even more secure by also changing you
 To add a new user with the same permissions as the `pi` user:
 
 ```
-sudo useradd -m fred -G sudo
+sudo adduser fred && sudo adduser fred sudo
 ```
 
-This adds a new user called `fred`, creates a home folder, and adds the user to the `sudo` group. You now need to set a password for the new user:
-
-```
-sudo passwd fred
-```
+This adds a new user called `fred`, creates a home folder, and adds the user to the `sudo` group.
 
 Log out and log back with the new account details. Check your permissions are in place (i.e. you can sudo) by trying the following.
 
