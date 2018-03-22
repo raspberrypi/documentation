@@ -5,18 +5,18 @@ All Raspberry Pi product has undergone extensive compliance testing, and copies 
 
 | Model           | Declaration of Conformity | Local and regional approval certificates |
 |:---------------:|-------------------------:|:----------------------------------------:|
-| A+       | [EU](./docs/RaspberryPiAPlusDOC_CE.pdf) | |
-| B+       | [EU](./docs/RaspberryPiBplus_DOC_CE.pdf)| |
-| 2B       | [EU](./docs/Raspberry_Pi_2B_V1-2_DOC_CE.pdf)  &nbsp; &nbsp;[FCC](./docs/Raspberry_Pi_2B_V1-2_DOC_FCC.pdf)| |
-| 3B       | [EU](./docs/RaspberryPi3B-DOC-CE_RED.pdf) |  &nbsp; &nbsp;[FCC](./docs/FCC_2ABCB-RPI32.pdf)  &nbsp; &nbsp;[ANZ](./docs/ACMA_Raspberry_Pi_3_Model_B.pdf)  &nbsp; &nbsp;[Canada](./docs/Pi3_Canada.pdf)  &nbsp; &nbsp;[China](./docs/China_Raspberry_Pi_3_Model_B.pdf)  &nbsp; &nbsp;[Hong Kong](./docs/Pi3_Hong-Kong.pdf)  &nbsp; &nbsp;[India](./docs/Pi3_India.pdf)  &nbsp; &nbsp;[Japan](./docs/Pi3_Japan.pdf)  &nbsp; &nbsp;[Russia](./docs/Pi3_Russia.pdf)  &nbsp; &nbsp;[Serbia](./docs/Pi3_Serbia.pdf)  &nbsp; &nbsp;[South Africa](./docs/Pi3_South-Africa.pdf)  &nbsp; &nbsp;[South Korea](./docs/Pi3_South-Korea.pdf)  &nbsp; &nbsp;[Taiwan](./docs/Pi3_Taiwan.pdf)  |
-| 3B+       | [EU](./docs/Raspberry_Pi3_RED_DoC.pdf) | &nbsp; &nbsp;[FCC](./docs/Pi3plus_FCC.pdf)  &nbsp; &nbsp;[Canada](./docs/Pi3plus_CANADA.pdf)  &nbsp; &nbsp;|
-| Zero      |[EU](./docs/RaspberryPiZeroDOC_CE.pdf) &nbsp; &nbsp;[FCC](./docs/RaspberryPiZeroDOC_FCC_signed.pdf)||
-| Zero W |[EU](./docs/Pi-Zero-W-H_DoC_CE.pdf) &nbsp; &nbsp;[FCC](./docs/Pi-Zero-W-H_DoC_FCC.pdf)|[FCC](./docs/FCC_2ABCB-RPI0W.pdf)  &nbsp; &nbsp;[ANZ](./docs/ACMA_Zero_W.pdf)  &nbsp; &nbsp;[Canada](./docs/Pi-Zero-W_Canada.pdf)  &nbsp; &nbsp;[China](./docs/Pi-Zero-W_China.pdf)  &nbsp; &nbsp;[Hong Kong](./docs/Pi-Zero-W_Hong-Kong.PDF)  &nbsp; &nbsp;[Israel](./docs/Israel_MOC_Certificate_Raspberry_Pi_model_Zero_W.pdf) &nbsp; &nbsp;[India](./docs/Pi-Zero-W_India.JPG)  &nbsp; &nbsp;[Japan](./docs/Japan_Zero_W_D170026007.pdf)  &nbsp; &nbsp;[Malaysia](./docs/Malaysia_Certificate_PI_ZERO_W_Expires_30_May_2022.pdf)  &nbsp; &nbsp;[Philippines](./docs/Pi-Zero-W_Philippines.pdf)  &nbsp; &nbsp;[Singapore](./docs/Pi-Zero-W_Singapore.pdf)  &nbsp; &nbsp;[South Africa](./docs/Pi-Zero-W_South-Africa.PDF)  &nbsp; &nbsp;[South Korea](./docs/Pi-Zero-W_Korea.pdf)  &nbsp; &nbsp;[Thailand](./docs/Pi-Zero-W_Thailand.pdf) |
-| CM3/CM3 Lite | [EU](./docs/RaspberryPiCM3_DOC_EU.pdf)  &nbsp; &nbsp;[FCC](./docs/RaspberryPiCM3_DOC_FCC.pdf)||
-| Display   | [EU](./docs/RaspberryPiDisplay_DOC_CE.pdf)  &nbsp; &nbsp;[FCC](./docs/RaspberryPiDisplay_DOC_FCC.pdf) | |
-| Camera Module v1 | [EU](./docs/RaspberryPiCameraDOC_CE.pdf) | |
-| Camera Module v2 | [EU](./docs/RaspberryPiCamera2DOC_CE.pdf)  &nbsp; &nbsp;[FCC](./docs/RaspberryPiCamera2DOC_FCC.PDF) | |
-| Sense HAT | [EU](./docs/RaspberryPiCamera2DOC_CE.pdf) | |
+| A+       | [EU](./compliance/RaspberryPiAPlusDOC_CE.pdf) | |
+| B+       | [EU](./compliance/RaspberryPiBplus_DOC_CE.pdf)| |
+| 2B       | [EU](./compliance/Raspberry_Pi_2B_V1-2_DOC_CE.pdf)  &nbsp; &nbsp;[FCC](./compliance/Raspberry_Pi_2B_V1-2_DOC_FCC.pdf)| |
+| 3B       | [EU](./compliance/RaspberryPi3B-DOC-CE_RED.pdf) |  &nbsp; &nbsp;[FCC](./compliance/FCC_2ABCB-RPI32.pdf)  &nbsp; &nbsp;[ANZ](./compliance/ACMA_Raspberry_Pi_3_Model_B.pdf)  &nbsp; &nbsp;[Canada](./compliance/Pi3_Canada.pdf)  &nbsp; &nbsp;[China](./compliance/China_Raspberry_Pi_3_Model_B.pdf)  &nbsp; &nbsp;[Hong Kong](./compliance/Pi3_Hong-Kong.pdf)  &nbsp; &nbsp;[India](./compliance/Pi3_India.pdf)  &nbsp; &nbsp;[Japan](./compliance/Pi3_Japan.pdf)  &nbsp; &nbsp;[Russia](./compliance/Pi3_Russia.pdf)  &nbsp; &nbsp;[Serbia](./compliance/Pi3_Serbia.pdf)  &nbsp; &nbsp;[South Africa](./compliance/Pi3_South-Africa.pdf)  &nbsp; &nbsp;[South Korea](./compliance/Pi3_South-Korea.pdf)  &nbsp; &nbsp;[Taiwan](./compliance/Pi3_Taiwan.pdf)  |
+| 3B+       | [EU](./compliance/Raspberry_Pi3_RED_DoC.pdf) | &nbsp; &nbsp;[FCC](./compliance/Pi3plus_FCC.pdf)  &nbsp; &nbsp;[Canada](./compliance/Pi3plus_CANADA.pdf)  &nbsp; &nbsp;|
+| Zero      |[EU](./compliance/RaspberryPiZeroDOC_CE.pdf) &nbsp; &nbsp;[FCC](./compliance/RaspberryPiZeroDOC_FCC_signed.pdf)||
+| Zero W |[EU](./compliance/Pi-Zero-W-H_DoC_CE.pdf) &nbsp; &nbsp;[FCC](./compliance/Pi-Zero-W-H_DoC_FCC.pdf)|[FCC](./compliance/FCC_2ABCB-RPI0W.pdf)  &nbsp; &nbsp;[ANZ](./compliance/ACMA_Zero_W.pdf)  &nbsp; &nbsp;[Canada](./compliance/Pi-Zero-W_Canada.pdf)  &nbsp; &nbsp;[China](./compliance/Pi-Zero-W_China.pdf)  &nbsp; &nbsp;[Hong Kong](./compliance/Pi-Zero-W_Hong-Kong.PDF)  &nbsp; &nbsp;[Israel](./compliance/Israel_MOC_Certificate_Raspberry_Pi_model_Zero_W.pdf) &nbsp; &nbsp;[India](./compliance/Pi-Zero-W_India.JPG)  &nbsp; &nbsp;[Japan](./compliance/Japan_Zero_W_D170026007.pdf)  &nbsp; &nbsp;[Malaysia](./compliance/Malaysia_Certificate_PI_ZERO_W_Expires_30_May_2022.pdf)  &nbsp; &nbsp;[Philippines](./compliance/Pi-Zero-W_Philippines.pdf)  &nbsp; &nbsp;[Singapore](./compliance/Pi-Zero-W_Singapore.pdf)  &nbsp; &nbsp;[South Africa](./compliance/Pi-Zero-W_South-Africa.PDF)  &nbsp; &nbsp;[South Korea](./compliance/Pi-Zero-W_Korea.pdf)  &nbsp; &nbsp;[Thailand](./compliance/Pi-Zero-W_Thailand.pdf) |
+| CM3/CM3 Lite | [EU](./compliance/RaspberryPiCM3_DOC_EU.pdf)  &nbsp; &nbsp;[FCC](./compliance/RaspberryPiCM3_DOC_FCC.pdf)||
+| Display   | [EU](./compliance/RaspberryPiDisplay_DOC_CE.pdf)  &nbsp; &nbsp;[FCC](./compliance/RaspberryPiDisplay_DOC_FCC.pdf) | |
+| Camera Module v1 | [EU](./compliance/RaspberryPiCameraDOC_CE.pdf) | |
+| Camera Module v2 | [EU](./compliance/RaspberryPiCamera2DOC_CE.pdf)  &nbsp; &nbsp;[FCC](./compliance/RaspberryPiCamera2DOC_FCC.PDF) | |
+| Sense HAT | [EU](./compliance/RaspberryPiCamera2DOC_CE.pdf) | |
 
 ## The Raspberry Pi Integrator Programme
 
