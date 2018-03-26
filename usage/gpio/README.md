@@ -1,24 +1,26 @@
 # GPIO
 
-A powerful feature of the Raspberry Pi is the row of GPIO (general purpose input/output) pins along the top edge of the board. A 40-pin GPIO header is found on all Raspberry Pi boards (unpopulated on Pi Zero and Pi Zero W), and prior to the Pi 1 Model B+ (2014), boards comprised a shorter 26-pin header.
+A powerful feature of the Raspberry Pi is the row of GPIO (general purpose input/output) pins along the top edge of the board. A 40-pin GPIO header is found on all current Raspberry Pi boards (unpopulated on Pi Zero and Pi Zero W). Prior to the Pi 1 Model B+ (2014), boards comprised a shorter 26-pin header.
 
 ![GPIO pins](images/gpio-pins-pi2.jpg)
 
-Any pin can be designated as an input or output pin and used for a wide range of purposes.
+Any of the GPIO pins can be designated (in software) as an input or output pin and used for a wide range of purposes.
 
 ![GPIO layout](images/gpio-numbers-pi2.png)
 
 *Note that the numbering of the GPIO pins is not in numerical order.*
 
+*Note that GPIO pins 0 and 1 are present on the board (physical pins 27 and 28) but are reserved for advanced use (see below).*
+
 ## Voltages
 
-Two 5V pins are present on the board, as well as a number of ground pins (0V). The remaning pins are all general purpose 3V3 pins, meaning outputs are set to 3V3 and inputs are 3V3 tolerant.
+Two 5V pins and two 3V3 pins are present on the board, as well as a number of ground pins (0V), which are unconfigurable. The remaning pins are all general purpose 3V3 pins, meaning outputs are set to 3V3 and inputs are 3V3 tolerant.
 
 ## Outputs
 
 A GPIO pin designated as an output pin can be set to high (3V3) or low (0V).
 
-### Inputs
+## Inputs
 
 A GPIO pin designated as an input pin can be read as high (3V3) or low (0V). This is made easier with the use of internal pull-up or pull-down resistors. Pins GPIO2 and GPIO3 have fixed pull-up resistors, but other pins can configure this in software.
 
@@ -28,9 +30,9 @@ As well as simple input and output devices, the GPIO pins can be used with a var
 
 - PWM (pulse-width modulation)
     - Software PWM available on all pins
-    - Hardware PWM available on GPIO12, GPIO13 and GPIO18
+    - Hardware PWM available on GPIO12, GPIO13, GPIO18 and GPIO19
 - SPI
-    - SPI0: MOSI (GPIO10); MISO (GPIO9); SCLK (GPIO10); CE0 (GPIO8), CE1 (GPIO7)
+    - SPI0: MOSI (GPIO10); MISO (GPIO9); SCLK (GPIO11); CE0 (GPIO8), CE1 (GPIO7)
     - SPI1: MOSI (GPIO20); MISO (GPIO19); SCLK (GPIO21); CE0 (GPIO18); CE1 (GPIO17); CE2 (GPIO16)
 - I2C
     - Data: (GPIO2); Clock (GPIO3)
@@ -57,3 +59,5 @@ It is possible to control GPIO pins using a number of programming languages and 
 - [GPIO with Scratch 1.4](scratch1/README.md)
 - [GPIO with Scratch 2](scratch2/README.md)
 - [GPIO with Python](python/README.md)
+
+**Warning: while connecting up simple components to the GPIO pins is perfectly safe, it's important to be careful how you wire things up. LEDs should have resistors to limit the current passing through them. Do not use 5V for 3V3 components. Do not connect motors directly to the GPIO pins, instead use an [H-bridge circuit or a motor controller board](https://projects.raspberrypi.org/en/projects/physical-computing/16).**

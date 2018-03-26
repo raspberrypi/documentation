@@ -1,3 +1,3 @@
 # Scratch 1 GPIO
 
-[Page moved](../../gpio/scratch/README.md)
+[Page moved](../../gpio/scratch1/README.md)

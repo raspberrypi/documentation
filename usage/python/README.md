@@ -339,6 +339,6 @@ piwheels is a service providing pre-compiled packages (called *Python wheels*) r
 
 ## More
 
-- [GPIO with Python](gpio/README.md)
+- [GPIO with Python](../gpio/python/README.md)
 - [Official Python website](https://www.python.org/)
 - [Official Python documentation](https://www.python.org/doc/)
