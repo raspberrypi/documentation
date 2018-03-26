@@ -1,6 +1,6 @@
 # Installing operating system images using Windows
 
-[Etcher](README.md) is typically the easiest option for most users to write images to SD cards, so it is a good place to start. If you're looking for an alternative on Windows, you can use `Win32DiskImager`:
+[Etcher](https://etcher.io/) is typically the easiest option for most users to write images to SD cards, so it is a good place to start. If you're looking for an alternative on Windows, you can use `Win32DiskImager`:
 
 ## Win32DiskImager
 
