@@ -34,4 +34,6 @@ Some basic guides to configuring your Raspberry Pi.
     - Some basic help with making your Raspberry Pi more secure.
 - [Screensaver](screensaver.md)
     - How to configure screen blanking/screen saver
+- [The Boot folder](boot_folder.md)
+    - The Boot folder - what it's for and what's in it.
 
