@@ -8,12 +8,12 @@ When the Raspberry Pi is powered on, it loads various files from the boot partit
 
 ### bootcode.bin
 
-The bootloader. Loads by the SoC on boot, and subsequently loads one of the start*.elf files
+The bootloader. Loaded by the SoC on boot, does some very basic setup, and subsequently loads one of the start*.elf files.
 
 ### start.elf, start_x.elf, start_db.elf, start_cd.elf
 
-These are binary blobs (firmware)that are loaded on  to the VideoCore in the SoC which then takes over the boot process.
-start.elf is the basic firmware, start_x.elf includes camera drivers and codec, start_db.elf is a debug version of the firmware, and start_cd.elf is a cutdown version, with no for firmware hardware blocks like codecs and 3d, and for use when gpu_mem=16 is specified in config.txt. More information on how to use these can be found in [config.txt](./config-txt/boot.md)
+These are binary blobs (firmware) that are loaded on to the VideoCore in the SoC, which then take over the boot process.
+start.elf is the basic firmware, start_x.elf includes camera drivers and codec, start_db.elf is a debug version of the firmware, and start_cd.elf is a cutdown version, with no support hardware blocks like codecs and 3d, and for use when gpu_mem=16 is specified in config.txt. More information on how to use these can be found in [config.txt](./config-txt/boot.md).
 
 ### fixup.dat, fixup_x.dat, fixup_db.dat, fixup_cd.dat
 
