@@ -25,11 +25,11 @@ The kernel command line passed in to the kernel when it boots.
 
 ### config.txt
 
-Contains many configuration parameters for setting up the Pi. See [config.txt](./config-txt/README.md)
+Contains many configuration parameters for setting up the Pi. See [config.txt](./config-txt/README.md).
 
 ### issue.txt
 
-The version of the kernel.
+Some text based housekeeping information containing the date and git commit ID of the distribution.
 
 ### Device tree files
 
