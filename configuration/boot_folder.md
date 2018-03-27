@@ -33,4 +33,4 @@ The version of the kernel.
 
 ### Device tree files
 
-There are various Device Tree Blob files, (*.dtb). These contain the hardware definitions of the various Pi models, and are used on boot to set up the kernel according to which Pi model is detected. More [details]{device-tree.md).
+There are various Device Tree Blob files, (*.dtb). These contain the hardware definitions of the various Pi models, and are used on boot to set up the kernel according to which Pi model is detected. More [details](device-tree.md).
