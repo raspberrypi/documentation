@@ -10,13 +10,13 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 
 | Option | Description |
 | --- | --- |
-| arm_freq | Frequency of the ARM CPU in MHz. The default value is `1000` for the Pi Zero and Pi Zero W, `700` for Pi 1, `900` for Pi 2, `1200` for the Pi 3. |
+| arm_freq | Frequency of the ARM CPU in MHz. The default value is `1000` for the Pi Zero and Pi Zero W, `700` for Pi 1, `900` for Pi 2, `1200` for the Pi 3, `1400` for the Pi 3B+. |
 | gpu_freq | Sets `core_freq`, `h264_freq`, `isp_freq`, and `v3d_freq` together. On Pi 1/Pi 2 the default value is `250` for all items, on Pi 3/Pi Zero /Pi Zero W `core_freq` defaults to `400` and `h264_freq`, `isp_freq` and `v3d_freq`default to `300`. |
 | core_freq | Frequency of the GPU processor core in MHz. It has an impact on CPU performance because it drives the L2 cache and memory bus. The default value is `250` for the Pi 1/Pi 2 and `400` for the Pi 3 and Pi Zero  and Pi Zero W. Note that the L2 cache benefits only the Pi Zero/Pi Zero W and Pi 1, but there is a small benefit for SDRAM on the Pi 2/Pi 3. |
 | h264_freq | Frequency of the hardware video block in MHz. Individual override of the `gpu_freq` setting. |
 | isp_freq | Frequency of the image sensor pipeline block in MHz. Individual override of the `gpu_freq` setting. |
 | v3d_freq | Frequency of the 3D block in MHz. Individual override of the `gpu_freq` setting. |
-| sdram_freq | Frequency of the SDRAM in MHz. The default value is `400` for the Pi 1 and Pi 2, `450` on the Pi 3, Pi Zero and Pi Zero W. |
+| sdram_freq | Frequency of the SDRAM in MHz. The default value is `400` for the Pi 1 and Pi 2, `450` on the Pi 3, Pi Zero and Pi Zero W, `500` on the Pi3B+. |
 | over_voltage | CPU/GPU core voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. In other words, specifying -16 will give 0.8V as the GPU/core voltage, and specifying 8 will give 1.4V. For defaults see table below. Values above 6 are only allowed when `force_turbo` is specified: this sets the warranty bit if `over_voltage_*` is also set. |
 | over_voltage_sdram | Sets `over_voltage_sdram_c`, `over_voltage_sdram_i`, and `over_voltage_sdram_p` together. |
 | over_voltage_sdram_c | SDRAM controller voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
