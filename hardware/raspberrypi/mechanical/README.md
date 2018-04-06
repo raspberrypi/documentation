@@ -11,8 +11,8 @@
 
 ## Raspberry Pi Model B+
 
-- [PDF](rpi_MECH_3plus_1p2.pdf)
-- [DXF](rpi_MECH_3plus_1p2.dxf)
+- [PDF](rpi_MECH_bplus_1p2.pdf)
+- [DXF](rpi_MECH_bplus_1p2.dxf)
 
 ## Raspberry Pi Zero (v1.2)
 
