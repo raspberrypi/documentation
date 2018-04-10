@@ -5,9 +5,9 @@
 - **ARMv6** – the instruction set architecture used on the first Raspberry Pi (Pi 1) and the Pi Zero range
 - **ARMv7** – the instruction set architecture used on the Raspberry Pi 2 range
 - **ARMv8** – the instruction set architecture used on the Raspberry Pi 3 range; very similar to ARMv7 in 32-bit mode
-- **bcm2835** – the SoC used on the Raspberry Pi 1, Compute Module 1, and Raspberry Pi Zero range; see our [offical documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/README.md) of the documentation
-- **bcm2836** – the SoC used on the original Raspberry Pi 2; see our [offical documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/README.md) of the documentation
-- **bcm2837** – the SoC used on the Raspberry Pi 3, Compute Module 3, and Raspberry Pi 2 version 1.2; see our [offical documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2837/README.md) of the documentation
+- **bcm2835** – the SoC used on the Raspberry Pi 1, Compute Module 1, and Raspberry Pi Zero range; see our [offical documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/README.md)
+- **bcm2836** – the SoC used on the original Raspberry Pi 2; see our [offical documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/README.md)
+- **bcm2837** – the SoC used on the Raspberry Pi 3, Compute Module 3, and Raspberry Pi 2 version 1.2; see our [offical documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2837/README.md)
 - **CODEC** – Coder/Decoder, hardware or software blocks that encode and/or decode video or audio data
 - **`config.txt`** – a file located on the boot partition of a Raspberry Pi's SD card that is parsed at boot time in order to enable, disable, and manage operating system features which cannot be changed after booting; see our [offical documentation](https://www.raspberrypi.org/documentation/configuration/config-txt/README.md)
 - **CSI** – Camera Serial Interface, a hardware interface for connecting cameras to SoCs 
