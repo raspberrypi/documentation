@@ -1,6 +1,6 @@
 # Raspberry Pi documentation glossary
 
-- **A/mA (ampere/milliampere)** – abbreviation of ampere, the base unit of electrical current; see [Wikipedia](https://en.wikipedia.org/wiki/Ampere)
+- **A/mA** – ampere/milliampere, the base unit of electrical current; see [Wikipedia](https://en.wikipedia.org/wiki/Ampere)
 - **ARM** – a series of instruction-set architectures and processor microarchitectures, mostly developed by Arm Holdings based in Cambridge, UK; see [Wikipedia](https://en.wikipedia.org/wiki/ARM_architecture)
 - **ARMv6** – the instruction set architecture used on the first Raspberry Pi (Pi 1) and the Pi Zero range
 - **ARMv7** – the instruction set architecture used on the Raspberry Pi 2 range
@@ -17,7 +17,7 @@
 - **Device Tree (DT)** – a data structure for defining hardware; see [Wikipedia](https://en.wikipedia.org/wiki/Device_tree)
 - **Device Tree source (DTS)** – a human-readable source file to be compiled into a DTB
 - **Device Tree blob (DTB)** – a binary file containing a Device Tree, the result of compiling DTS files.
-- **dt-blob.bin** – a binary file containing initial GPIO configuration that is read by the firmware at boot time; despite the name, this is _not_ Device Tree blob (although it is compiled by the Device Tree tools)
+- **`dt-blob.bin`** – a binary file containing initial GPIO configuration that is read by the firmware at boot time; despite the name, this is _not_ Device Tree blob (although it is compiled by the Device Tree tools)
 - **DVI** – Digital Visual Interface, a video interface for connecting a source device to a monitor or display; electrically compatible with HDMI, so a simple adapter can convert from one to the other (excluding audio, which DVI does not support); see [Wikipedia](https://en.wikipedia.org/wiki/Digital_Visual_Interface)
 - **Firmware** – software that runs on a particular hardware device, for example a wireless chip or dongle; distinct from the usual software running on the Raspberry Pi in that it is usually a fixed binary blob of data that is loaded on to the device at startup; on the Raspberry Pi, the VC4 GPU requires firmware to be loaded to it at startup in order boot up and run the entire system.
 - **GPIO** – General Purpose Input/Output, the programmable pins on the Raspberry Pi
@@ -34,9 +34,9 @@
 - **NAND** - a NAND gate is a logic gate, specifically an inverted AND gate; can also refer to a type of flash memory that uses NAND logic; see [Wikipedia](https://en.wikipedia.org/wiki/NAND_gate)
 - **OTP** – One-Time Programmable, a type of memory that can only be programmed once, and retains the programmed data after power off; used for serial numbers etc.
 - **Overlay** – a boot-time or run-time patch to a Device Tree allowing a degree of configuration by the user; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/device-tree.md) for more details, or run `dtoverlay -a` in a terminal window for a list of available overlays
-- **raspi-config** – a command line tool for configuring Raspbian's operating system features; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)
+- **`raspi-config`** – a command line tool for configuring Raspbian's operating system features; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)
 - **raspivid, raspistill, raspiyuv, raspividyuv** – a set of applications to run the Raspberry Pi Camera Module in various modes; see our [official documentation](https://www.raspberrypi.org/documentation/raspbian/applications/camera.md)
-- **Raspberry Pi Configuration Tool (rcgui)** – a graphical equivalent of `raspi-config`
+- **Raspberry Pi Configuration Tool (`rcgui`)** – a graphical equivalent of `raspi-config`
 - **Raspberry Pi Desktop** – a version of the LXDE desktop environment, specifically tailored to the Raspberry Pi (used to be called Pixel)
 - **SoC** – system on a chip, an integrated circuit that integrates all components of a computer
 - **SPI** – Serial Peripheral Interface bus, a synchronous serial communication interface specification used for short distance communication
@@ -48,4 +48,4 @@
 - **VC4** – the VideoCore4 GPU used on the Raspberry Pi; contains a large number of hardware blocks that handle graphics, cameras, display, CODECs, etc.
 - **VNC** – a graphical desktop sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer; see our [official documentation](https://www.raspberrypi.org/documentation/remote-access/vnc/README.md)
 - **Volt (V)** – SI-derived unit for electrical potential difference.; see [Wikipedia](https://en.wikipedia.org/wiki/Volt)
-- **vcgencmd** – a Raspberry Pi–specific tool for communicating with the VideoCore4 GPU
+- **`vcgencmd`** – a Raspberry Pi–specific tool for communicating with the VideoCore4 GPU
