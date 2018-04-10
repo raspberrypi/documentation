@@ -2,7 +2,9 @@
 
 A GUI is provided for setting up wireless connections in Raspbian with the PIXEL desktop. If you are not using the PIXEL desktop, you can set up wireless networking from the [command line](wireless-cli.md).
 
-Wireless connections can be made via the network icon at the right hand end of the menu bar. If a wireless dongle is plugged in, left-clicking this icon will bring up a list of available wireless networks, as shown below. If no networks are found, it will show the message "No APs found - scanning...". Wait a few seconds without closing the menu, and it should find your network.
+Wireless connections can be made via the network icon at the right hand end of the menu bar. If you are using a Pi with built in Wireless, or a wireless dongle is plugged in, left-clicking this icon will bring up a list of available wireless networks, as shown below. If no networks are found, it will show the message "No APs found - scanning...". Wait a few seconds without closing the menu, and it should find your network.
+
+Note that on the Pi3B+, which supports the 5G protocol, wireless networking is disabled for regulatory reasons, until the country code has been set. To set the country code, use the `Raspberry Pi Configuration` application from the Preferences Menu, select Localisation and set the Wifi Country.
 
 ![wifi2](images/wifi2.png)
 
