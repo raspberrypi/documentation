@@ -4,7 +4,7 @@ This tutorial is written to explain how to set up a simple DHCP/TFTP server whic
 ## Client configuration
 Before a Raspberry Pi will network boot, it needs to be booted from an SD card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the SD card is no longer required. 
 
-Install Raspbian Lite (or Raspbian with PIXEL) on the SD card in the normal way [See here](../../../installation/installing-images/README.md). 
+Install Raspbian Lite (or Raspbian with Raspberry Pi Desktop) on the SD card in the normal way [See here](../../../installation/installing-images/README.md). 
 
 ### Program USB Boot Mode
 First, prepare the `/boot` directory with the latest boot files:
