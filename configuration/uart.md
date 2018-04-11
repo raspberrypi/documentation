@@ -42,7 +42,7 @@ Various UART Device Tree Overlay definitions can be found in the kernel github t
 
 There are other UART-specific overlays in the folder. Refer to `/boot/overlays/README` for details on Device Tree Overlays, or run `dtoverlay -h overlay-name` for descriptions and usage information.
 
-For full instructions on how to use Device Tree Overlays see [this page](./device-tree.md). In brief, add a line to the `config.txt` file to enable Device Tree Overlays. Note that the `-overlay.dts` part of the filename is removed.
+For full instructions on how to use Device Tree Overlays see [this page](device-tree.md). In brief, add a line to the `config.txt` file to enable Device Tree Overlays. Note that the `-overlay.dts` part of the filename is removed.
 ```
 ...
 dtoverlay=pi3-disable-bt
@@ -59,4 +59,4 @@ The particular deficiencies of the mini UART compared to the PL011 are :
 - No receive timeout interrupt
 - No DCD, DSR, DTR or RI signals 
 
-Further documentation on the mini UART can be found in the SoC peripherals document [here](https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf).
+Further documentation on the mini UART can be found in the SoC peripherals document [here](../hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf).

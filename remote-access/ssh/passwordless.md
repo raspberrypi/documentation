@@ -6,7 +6,7 @@ It is possible to configure your Pi to allow your computer to access it without 
 
 First, check whether there are already keys on the computer you are using to connect to the Raspberry Pi:
 
-```
+```bash
 ls ~/.ssh
 ```
 
@@ -14,23 +14,23 @@ If you see files named `id_rsa.pub` or `id_dsa.pub` you have keys set up already
 
 ## Generate new SSH keys
 
-To generate new SSH keys enter the following command (Choose a sensible hostname such as `<YOURNAME>@<YOURDEVICE>` where we have used `eben@pi`):
+To generate new SSH keys enter the following command:
 
+```bash
+ssh-keygen
 ```
-ssh-keygen -t rsa -C eben@pi
-```
-
-You can also use a more descriptive comment using quotes if you have spaces, e.g. `ssh-keygen -t rsa -C "Raspberry Pi #123"`
 
 Upon entering this command, you'll be asked where to save the key. We suggest you save it in the default location (`/home/pi/.ssh/id_rsa`) by just hitting `Enter`.
 
 You'll also be asked to enter a passphrase. This is extra security which will make the key unusable without your passphrase, so if someone else copied your key, they could not impersonate you to gain access. If you choose to use a passphrase, type it here and press `Enter`, then type it again when prompted. Leave the field empty for no passphrase.
 
-Now you should see the files `id_rsa` and `id_rsa.pub` in your `.ssh` directory in your home folder:
+Now look inside your `.ssh` directory:
 
-```
+```bash
 ls ~/.ssh
 ```
+
+and you should see the files `id_rsa` and `id_rsa.pub`:
 
 ```
 authorized_keys  id_rsa  id_rsa.pub  known_hosts
@@ -38,41 +38,48 @@ authorized_keys  id_rsa  id_rsa.pub  known_hosts
 
 The `id_rsa` file is your private key. Keep this on your computer.
 
-The `id_rsa.pub` file is your public key. This is what you put on machines you want to connect to. When the machine you try to connect to matches up your public and private key, it will allow you to connect.
+The `id_rsa.pub` file is your public key. This is what you share with machines you want to connect to. When the machine you try to connect to matches up your public and private key, it will allow you to connect.
 
 Take a look at your public key to see what it looks like:
 
-```
+```bash
 cat ~/.ssh/id_rsa.pub
 ```
 
 It should be in the form:
 
-```
-ssh-rsa <REALLY LONG STRING OF RANDOM CHARACTERS> eben@pi
+```bash
+ssh-rsa <REALLY LONG STRING OF RANDOM CHARACTERS> user@host
 ```
 
 ## Copy your public key to your Raspberry Pi
 
 If your Pi does not have an .ssh directory you will need to set one up so that you can copy the key from your computer.
 
-```
+```bash
 cd ~
 install -d -m 700 ~/.ssh
 ```
 
 To copy your public key to your Raspberry Pi, use the following command to append the public key to your `authorized_keys` file on the Pi, sending it over SSH:
 
+```bash
+ssh-copy-id <USERNAME>@<IP-ADDRESS>
 ```
+
+*Note that this time you will have to authenticate with your password.*
+
+Alternatively, if the `ssh-copy-id` is not available on your system, you can copy the file manually over SSH:
+
+```bash
 cat ~/.ssh/id_rsa.pub | ssh <USERNAME>@<IP-ADDRESS> 'cat >> .ssh/authorized_keys'
 ```
 
-Note that this time you will have to authenticate with your password.
-
 Now try `ssh <USER>@<IP-ADDRESS>` and you should connect without a password prompt.
 
-If you see a message "Agent admitted failure to sign using the key" then add your RSA or DSA identities to the authentication agent `ssh-agent` then execute the following command:  
-```
+If you see a message "Agent admitted failure to sign using the key" then add your RSA or DSA identities to the authentication agent `ssh-agent` then execute the following command:
+
+```bash
 ssh-add
 ```
 

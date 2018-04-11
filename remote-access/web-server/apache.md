@@ -24,9 +24,7 @@ This means you have Apache working!
 
 ### Changing the default web page
 
-This default web page is just a HTML file on the filesystem. It is located at `/var/www/html/index.html`.
-
-**Note: The directory was `/var/www` in Raspbian Wheezy but is now `/var/www/html` in Raspbian Jessie**
+This default web page is just an HTML file on the filesystem. It is located at `/var/www/html/index.html`.
 
 Navigate to this directory in a terminal window and have a look at what's inside:
 
@@ -43,6 +41,7 @@ drwxr-xr-x  2 root root 4096 Jan  8 01:29 .
 drwxr-xr-x 12 root root 4096 Jan  8 01:28 ..
 -rw-r--r--  1 root root  177 Jan  8 01:29 index.html
 ```
+
 This shows that by default there is one file in `/var/www/html/` called `index.html`and it is owned by the `root` user (as is the enclosing folder). In order to edit the file, you need to change its ownership to your own username. Change the owner of the file (the default `pi` user is assumed here) using `sudo chown pi: index.html`.
 
 You can now try editing this file and then refreshing the browser to see the web page change.

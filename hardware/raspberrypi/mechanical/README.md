@@ -1,15 +1,25 @@
 # Mechanical Drawings
 
-## Raspberry Pi 3
+## Raspberry Pi 3B+
 
-- [PDF](Raspberry-Pi-3B-V1.2-Mechanical.pdf)
-- [DXF](Raspberry-Pi-3B-V1.2-Mechanical.dxf)
+- [PDF](rpi_MECH_3bplus.pdf)
+
+## Raspberry Pi 3B
+
+- [PDF](rpi_MECH_3b_1p2.pdf)
+- [DXF](rpi_MECH_3b_1p2.dxf)
 
 ## Raspberry Pi Model B+
 
-- [PDF](Raspberry-Pi-B-Plus-V1.2-Mechanical.pdf)
-- [DXF](Raspberry-Pi-B-Plus-V1.2-Mechanical.dxf)
+- [PDF](rpi_MECH_bplus_1p2.pdf)
+- [DXF](rpi_MECH_bplus_1p2.dxf)
 
 ## Raspberry Pi Zero (v1.2)
 
-- [PDF](Raspberry-Pi-Zero-V1.2-Mechanical.pdf)
+- [PDF](rpi_MECH_Zero_1p2.pdf)
+
+## Raspberry Pi PoE HAT
+
+- [PDF](rpi_MECH_PoEHAT.pdf)
+
+
