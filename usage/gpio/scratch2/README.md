@@ -14,22 +14,22 @@ You can use these two purple blocks to control output pins or read input pins by
 
 ## LED
 
-To control an LED connected to GPIO10:
+To control an LED connected to GPIO10, you can use these blocks:
 
 ![](images/led-blink.png)
 
-Click the green flag and the LED will blink on and off repeatedly.
+Click the green flag, and the LED will blink on and off repeatedly.
 
 ## Button
 
-To read the state of a button connected to GPIO10:
+To read the state of a button connected to GPIO10, you can use these blocks:
 
 ![](images/button.png)
 
-Note that the button is pulled up so the GPIO pin will read "high" when it is not pressed, and "low" when it is pressed.
+Note that the button is pulled up so the GPIO pin will read `high` when it is not pressed, and `low` when it is pressed.
 
 ## Button + LED
 
-To connect the LED and button together:
+To connect the LED and button together, you can use these blocks:
 
 ![](images/led-button.png)
