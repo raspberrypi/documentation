@@ -1,14 +1,14 @@
-# Setting up a Raspberry Pi Headless
+# Setting up a Raspberry Pi headless
 
-If you do not have a monitor or keyboard (known as headless) but still need to do some wireless setup, there is facility to enable wireless networking and SSH when creating a image.
+If you do not use a monitor or keyboard to run your Pi (known as headless), but you still need to do some wireless setup, there is a facility to enable wireless networking and SSH when creating a image.
 
-Once an image is created on an SD card (or similar), when inserted in to a reader on a Linux or Windows machines, the boot folder can be accessed. By adding certain files to this folder, on the first boot on the Pi itself, certain setup features can be activated. 
+Once an image is created on an SD card by inserting it into a card reader on a Linux or Windows machines, the boot folder can be accessed. Adding certain files to this folder will activate certain setup features on the first boot of the Pi itself. 
 
-## Setting up Wireless Networking
+## Setting up wireless networking
 
-You will need to define a wpa_supplicant.conf file for you particular wireless network. Put this file in the boot folder, and when the Pi first boots it will copy that file in to the correct location in the Linux root filesystem and use those settings to start up wireless networking.
+You will need to define a `wpa_supplicant.conf` file for you particular wireless network. Put this file in the boot folder, and when the Pi first boots, it will copy that file into the correct location in the Linux root file system and use those settings to start up wireless networking.
 
-More information on the wpa_supplicant.conf file can be found [here](wireless-cli.md)
+More information on the `wpa_supplicant.conf` file can be found [here](wireless-cli.md).
 
 ## Enabling SSH
 
