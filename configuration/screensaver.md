@@ -15,9 +15,9 @@ sudo nano /boot/cmdline.txt
 
 Add `consoleblank=0` to turn screen blanking off completely, or edit it to set the number of seconds of inactivity before the console will blank. Note the kernel command line must be a single line of text.
 
-## On the Desktop (PIXEL)
+## On the Raspberry Pi Desktop
 
-By default, PIXEL does not have any easy-to-use screensaver software installed, although the screensaver is enabled. Firstly, you should install the X Windows screensaver application.
+By default, the Raspberry Pi Desktop does not have any easy-to-use screensaver software installed, although the screensaver is enabled. Firstly, you should install the X Windows screensaver application.
 
 ```
 sudo apt-get install xscreensaver
