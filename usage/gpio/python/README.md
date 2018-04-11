@@ -4,7 +4,7 @@ Using the [GPIO Zero](https://gpiozero.readthedocs.io/) library makes it easy to
 
 ## LED
 
-To control an LED connected to GPIO17:
+To control an LED connected to GPIO17, you can use this code:
 
 ```python
 from gpiozero import LED
@@ -19,13 +19,13 @@ while True:
     sleep(1)
 ```
 
-Run this in an IDE like IDLE or Thonny and the LED will blink on and off repeatedly.
+Run this in an IDE like IDLE or Thonny, and the LED will blink on and off repeatedly.
 
-LED methods include `on()`, `off()`, `toggle()` and `blink()`.
+LED methods include `on()`, `off()`, `toggle()`, and `blink()`.
 
 ## Button
 
-To read the state of a button connected to GPIO2:
+To read the state of a button connected to GPIO2, you can use this code:
 
 ```python
 from gpiozero import Button
@@ -41,11 +41,11 @@ while True:
     sleep(1)
 ```
 
-Button functionality includes the properties `is_pressed` and `is_held`, callbacks `when_pressed`, `when_released` and `when_held`, and methods `wait_for_press()` and `wait_for_release`.
+Button functionality includes the properties `is_pressed` and `is_held`; callbacks `when_pressed`, `when_released`, and `when_held`; and methods `wait_for_press()` and `wait_for_release`.
 
 ## Button + LED
 
-To connect the LED and button together:
+To connect the LED and button together, you can use this code:
 
 ```python
 from gpiozero import LED, Button
@@ -89,4 +89,4 @@ button.when_released = led.off
 
 ## GPIO Zero documentation
 
-Many more GPIO devices are supported by GPIO Zero. See the library's comprehensive documentation at [gpiozero.readthedocs.io](https://gpiozero.readthedocs.io/)
+Many more GPIO devices are supported by GPIO Zero. See the library's comprehensive documentation at [gpiozero.readthedocs.io](https://gpiozero.readthedocs.io/).
