@@ -16,7 +16,7 @@ A selection of pins from Bank 0 is available on the P1 header on Raspberry Pi.
 
 ## GPIO pads
 
-The GPIO connections on the BCM2835 package are sometimes referred to in the peripherals datas heet as "pads" — a semiconductor design term meaning 'chip connection to outside world'.
+The GPIO connections on the BCM2835 package are sometimes referred to in the peripherals data sheet as "pads" — a semiconductor design term meaning 'chip connection to outside world'.
 
 The pads are configurable CMOS push-pull output drivers/input buffers. Register-based control settings are available for:
 
