@@ -75,28 +75,18 @@
 - [Will it run Android or Android Things?]()
 - [Will it run &lt;insert name of program here&gt;?]()
 #### SD CARDS AND STORAGE
-- [What size of SD card do I need?]()
-- [What size of SD card can it support?]()
-- [What happens if I brick the device?]()
+- [What size of SD card do I need?](#what-size-of-sd-card-do-i-need)
+- [What size of SD card can it support?](#what-size-of-sd-card-can-it-support)
+- [What happens if I brick the device?](#what-happnes-if-i-brick-the-device)
 #### NETWORKING, USB, AND WIRELESS
-- [Does the device support networking?]()
-- [Is there built-in WiFi?]()
-- [Is there built-in Bluetooth?]()
-- [ is there no Gigabit Ethernet?]()
-- [Does the device have support for any form of netbooting or PXE?]()
-- [How do you connect more USB devices?]()
+- [Does the device support networking?](#does-the-device-support-networking)
+- [Is there built-in WiFi?](#is-there-built-in-wifi)
+- [Is there built-in Bluetooth?](#is-there-built-in-bluetooth)
+- [Is there no Gigabit Ethernet?](#is-there-no-gigabit-ethernet)
+- [Does the device have support for any form of netbooting or PXE?](does-the-device-have-support-for-any-form-of-netbooting-or-pxe)
+- [How do you connect more USB devices?](#how-do-you-connect-more-usb-devices)
 #### EDUCATIONAL USES
- 	<li><a href="#educationMaterial"> What educational resources are available?</a></li>
-#### ADDITIONAL QUESTIONS
-#### GLOSSARY
-  [BGA]()
- 	[Brick]()
- 	[Distro]()
- 	[GPIO]()
- 	[GPU]()
- 	[PoE]()
- 	[PXE]()
- 	[SoC]()
+- [What educational resources are available?](#what-educational-resources-are-available)
 
 ### INTRODUCTION
 
@@ -403,25 +393,7 @@ Use a USB hub to increase the number of ports. Some keyboards have USB hubs buil
 #### WHAT EDUCATIONAL MATERIAL IS AVAILABLE?
 There are many books about the Raspberry Pi available. For children, we particularly recommend <a href="https://swag.raspberrypi.org/collections/books/products/adventures-in-raspberry-pi-foundation-edition">Adventures in Raspberry Pi</a> by Carrie Anne Philbin, who works with us at the Raspberry Pi Foundation. Check out our resources pages for <a href="https://www.raspberrypi.org/resources/">free educational materials</a>: we are always adding to these. You’ll find complete schemes of work linked to the England, Wales, and NI curriculum, as well as resources for independent and informal learning. We also offer <a href="https://www.futurelearn.com/partners/raspberry-pi">free online training materials</a> for educators and other interested users. 
 
-### ADDITIONAL QUESTIONS
-
 ### I STILL HAVE MORE QUESTIONS!
 Read the sticky subjects in the <a href="https://www.raspberrypi.org/phpBB3/viewforum.php?f=91">Beginners subforum</a> and check the <a href="https://www.raspberrypi.org/help/">help pages</a> for more information. If the answer is not there, ask in <a href="https://www.raspberrypi.org/phpBB3/index.php">the forums</a>, where there are lots of helpful Raspberry Pi owners, users, and fans who will be more than happy to help you out.
 
-### GLOSSARY
-<a name="glossarybga"></a>BGA: Ball grid array. A type of surface mount packaging for electronics.
 
-<a name="glossarybrick"></a>Brick: To accidentally render a device inert by making changes to software or firmware.
-
-<a name="glossarydistro"></a>Distro: A specific package (“flavour”) of Linux and associated software.
-
-<a name="glossarygpio"></a>GPIO: General Purpose Input/Output. A pin that can be programmed to perform a wide range of tasks.
-
-<a name="glossarygpu"></a>GPU: Graphics processing unit. The hardware that handles the graphics.
-
-<a name="glossarypoe"></a>PoE: Power over Ethernet. Powering a device via an Ethernet cable.
-
-<a name="glossarypxe"></a>PXE: Preboot execution environment. A way to get a device to boot via the network.
-
-<a name="glossarysoc"></a>SoC: System on a Chip. A computer on a single chip. See <a href="#generalSoCdefined">this question</a>.
-<a href="#topGlossary">-Glossary</a> <a href="#topToc">-Top</a>
