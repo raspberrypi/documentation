@@ -102,11 +102,13 @@
 #### WHAT IS A RASPBERRY PI?
 The Raspberry Pi is a credit-card-sized computer that plugs into your TV and a keyboard. It is a capable little computer which can be used in electronics projects, and for many of the things that your desktop PC does, like spreadsheets, word processing, browsing the internet, and playing games. It also plays high-definition video. We want to see it being used by adults and children all over the world to learn programming and digital making. You can read more about the Raspberry Pi [here]("https://www.raspberrypi.org/help/what-is-a-raspberry-pi/").
 
-#### 2. CAN I BUY SHARES IN THE RASPBERRY PI FOUNDATION?
+#### CAN I BUY SHARES IN THE RASPBERRY PI FOUNDATION?
 The Raspberry Pi Foundation is a charity, so you can’t buy shares in the company. If you want to support us, we would love you to buy a Raspberry Pi.
+
 ### BUYING AND SHIPPING
+
 #### WHERE CAN I BUY A RASPBERRY PI?
-Go to our <a href="https://www.raspberrypi.org/products/">products page</a> and choose the product(s) you want to buy. Then select your country from the drop-down menu. You will be presented with our approved resellers for your country. <a href="#topBuying">-Buying and Shipping</a> <a href="#topToc">-Top</a>
+Go to our <a href="https://www.raspberrypi.org/products/">products page</a> and choose the product(s) you want to buy. Then select your country from the drop-down menu. You will be presented with our approved resellers for your country.
 #### HOW MUCH DOES IT COST?
 |Product|Price|
 |-------|-----|
