@@ -1,98 +1,71 @@
 # FAQs
 
-<a class="anchor" name="topToc"></a> <strong>Table of Contents:</strong>
-<ul>
- 	<li><a href="#topIntro"> INTRODUCTION</a>
-<ol>
- 	<li><a href="#introWhatIs"> What is a Raspberry Pi?</a></li>
- 	<li><a href="#introShares"> Can I buy shares in the Raspberry Pi Foundation?</a></li>
-</ol>
-</li>
- 	<li><a href="#topBuying"> BUYING AND SHIPPING</a>
-<ol>
- 	<li><a href="#buyingWhere"> Where can I buy a Raspberry Pi?</a></li>
- 	<li><a href="#buyingCost"> How much does it cost?</a></li>
- 	<li><a href="#buyingGet"> What do I get when I buy one?</a></li>
- 	<li><a href="#buyingUS"> Why is the price in US Dollars? You are a UK company!</a></li>
- 	<li><a href="#buyingKit">Can I buy a Raspberry Pi kit?</a></li>
- 	<li><a href="#buyingBOGO"> Is there a buy-one-give-one programme?</a></li>
- 	<li><a href="#buyingInternational"> Is the device available internationally?</a></li>
- 	<li><a href="#buyingReseller"> I want to be a Raspberry Pi reseller.</a></li>
-</ol>
-</li>
- 	<li><a href="#topGeneral"> GENERAL</a>
-<ol>
- 	<li><a href="#generalLogin"> What is the username and password for the Raspberry Pi?</a></li>
- 	<li><a href="#generalPassword"> Why does nothing happen when I type in my password? Did my Raspberry Pi freeze?</a></li>
- 	<li><a href="#generalDifference"> What are the differences between Raspberry Pi models?</a></li>
- 	<li><a href="#generalMouseKeyboard"> How do I connect a mouse and keyboard?</a></li>
- 	<li><a href="#generalOnOff"> Where is the on/off switch?</a></li>
- 	<li><a href="#generalNoobs"> What is NOOBS?</a></li>
- 	<li><a href="#generalFuture"> When will the next model of the Raspberry Pi be released?</a></li>
- 	<li><a href="#generalDimensions"> What are the dimensions of the Raspberry Pi?</a></li>
- 	<li><a href="#generalDocs"> What hardware documentation is available?</a></li>
- 	<li><a href="#generalSoCUsed"> What SoC are you using?</a></li>
- 	<li><a href="#generalSoCdefined"> What is an SoC?</a></li>
- 	<li><a href="#generalArm11"> Why did you select the SoC?</a></li>
- 	<li><a href="#generalBoot"> How does it boot?</a></li>
- 	<li><a href="#generalDIY"> Do you sell a self-assembly kit?</a></li>
-</ol>
-</li>
- 	<li><a href="#topCost"> PERFORMANCE AND COST CONSIDERATIONS</a>
-<ol>
- 	<li><a href="#performanceSpeed"> How powerful is it?</a></li>
- 	<li><a href="#performanceOverclock"> Does it overclock?</a></li>
- 	<li><a href="#performanceHeatsink"> Does it need a heatsink?</a></li>
- 	<li><a href="#performanceInterfaces"> What hardware interfaces does it have?</a></li>
- 	<li><a href="#performanceRTC"> Why is there no real-time clock (RTC)?</a></li>
- 	<li><a href="#performanceMemory"> Can I add extra memory?</a></li>
- 	<li><a href="#performanceHardware"> Why doesn’t the Raspberry Pi include &lt;insert name&gt; piece of hardware or &lt;insert name&gt; sort of port?</a></li>
- 	<li><a href="#performanceOperatingTemperature"> What is its operating temperature?</a></li>
-</ol>
-</li>
- 	<li><a href="#topCamera"> CAMERA</a>
-<ol>
- 	<li><a href="#cameraWhatIs"> What is the Camera Module?</a></li>
- 	<li><a href="#cameraModel"> What model of camera does the Camera Module use?</a></li>
- 	<li><a href="#cameraResolution"> What resolutions are supported?</a></li>
- 	<li><a href="#cameraFormats"> Which picture formats are supported?</a></li>
- 	<li><a href="#cameraUse"> How do I use the camera?</a></li>
- 	<li><a href="#cameraCable"> Can I extend the ribbon cable?</a></li>
- 	<li><a href="#cameraMP"> Can I have a camera with more megapixels?</a></li>
- 	<li><a href="#cameraPower"> How much power does the Camera Module use?</a></li>
-</ol>
-</li>
- 	<li><a href="#topCases"> CASES</a>
-<ol>
+## Table of Contents
+### INTRODUCTION
+ 	[What is a Raspberry Pi?](introduction)
+ 	[Can I buy shares in the Raspberry Pi Foundation?]()
+
+### BUYING AND SHIPPING
+ 	[Where can I buy a Raspberry Pi?]()
+ 	[How much does it cost?]()
+ 	[What do I get when I buy one?]()
+ 	[Why is the price in US Dollars? You are a UK company!]()
+ 	[Can I buy a Raspberry Pi kit?]()
+ 	[Is there a buy-one-give-one programme?]()
+ 	[Is the device available internationally?]()
+ 	[I want to be a Raspberry Pi reseller.]()
+
+### GENERAL
+ 	[What is the username and password for the Raspberry Pi?]()
+ 	[Why does nothing happen when I type in my password? Did my Raspberry Pi freeze?]()
+ 	[What are the differences between Raspberry Pi models?]()
+ 	[How do I connect a mouse and keyboard?]()
+  [Where is the on/off switch?]()
+  [What is NOOBS?]()
+ 	[When will the next model of the Raspberry Pi be released?]()
+ 	[What are the dimensions of the Raspberry Pi?]()
+  [What hardware documentation is available?]()
+ 	[What SoC are you using?]()
+ 	[What is an SoC?]()
+ 	[Why did you select the SoC?]()
+ 	[How does it boot?]()
+ 	[Do you sell a self-assembly kit?]()
+### PERFORMANCE AND COST CONSIDERATIONS
+ 	[How powerful is it?]()
+ 	[Does it overclock?]()
+ 	[Does it need a heatsink?]()
+ 	[What hardware interfaces does it have?]()
+ 	[Why is there no real-time clock (RTC)?]()
+ 	[Can I add extra memory?]()
+ 	[Why doesn’t the Raspberry Pi include &lt;insert name&gt; piece of hardware or &lt;insert name&gt; sort of port?]()
+  [What is its operating temperature?]()
+### CAMERA
+ 	[What is the Camera Module?]()
+ 	[What model of camera does the Camera Module use?]()
+ 	[What resolutions are supported?]()
+ 	[Which picture formats are supported?]()
+ 	[How do I use the camera?]()
+  [Can I extend the ribbon cable?]()
+ 	[Can I have a camera with more megapixels?]()
+ 	[How much power does the Camera Module use?]()
+### CASES
  	<li><a href="#casesAnyCase"> Does it come with a case?</a></li>
  	<li><a href="#casesAltoids"> Does it fit in an Altoids tin?</a></li>
-</ol>
-</li>
- 	<li><a href="#topVideo"> VIDEO</a>
-<ol>
+### VIDEO
  	<li><a href="#videoDisplays"> What displays can I use?</a></li>
  	<li><a href="#videoCEC"> Does the HDMI port support CEC?</a></li>
  	<li><a href="#videoVGA"> Why is there no VGA support?</a></li>
  	<li><a href="#videoTouch"> Can I add a touchscreen?</a></li>
  	<li><a href="#videoCodecs"> What codecs can it play?</a></li>
-</ol>
-</li>
- 	<li><a href="#topAudio"> AUDIO</a>
-<ol>
+### AUDIO
  	<li><a href="#audioHDMI"> Is sound over HDMI supported?</a></li>
  	<li><a href="#audioStandard"> What about standard audio in and out?</a></li>
-</ol>
-</li>
- 	<li><a href="#topPower"> POWER</a>
-<ol>
+### POWER
  	<li><a href="#powerReqs"> What are the power requirements?</a></li>
  	<li><a href="#powerHub"> Can I power the Raspberry Pi from a USB hub? </a></li>
  	<li><a href="#powerBatteries"> Can I power the Raspberry Pi from batteries as well as from a wall socket?</a></li>
  	<li><a href="#powerPOE"> Is Power over Ethernet (PoE) possible?</a></li>
-</ol>
-</li>
- 	<li><a href="#topSoftware"> SOFTWARE</a>
-<ol>
+### SOFTWARE
  	<li><a href="#softwareOS"> What operating system (OS) does it use?</a></li>
  	<li><a href="#softwareLanguages"> Does it have an official programming language?</a></li>
  	<li><a href="#softwareX86"> Will it run WINE (or Windows, or other x86 software)?</a></li>
@@ -100,33 +73,21 @@
  	<li><a href="#softwareDistros"> Which Linux distros run on the Pi?</a></li>
  	<li><a href="#softwareAndroid"> Will it run Android or Android Things?</a></li>
  	<li><a href="#softwareRun"> Will it run &lt;insert name of program here&gt;?</a></li>
-</ol>
-</li>
- 	<li><a href="#topSdCards"> SD CARDS AND STORAGE</a>
-<ol>
+### SD CARDS AND STORAGE
  	<li><a href="#sdSize"> What size of SD card do I need?</a></li>
  	<li><a href="#sdMax"> What size of SD card can it support?</a></li>
  	<li><a href="#sdBrick"> What happens if I brick the device?</a></li>
-</ol>
-</li>
- 	<li><a href="#topNetworking"> NETWORKING, USB, AND WIRELESS</a>
-<ol>
+### NETWORKING, USB, AND WIRELESS
  	<li><a href="#networkingSupport"> Does the device support networking? </a></li>
  	<li><a href="#networkingWifi">Is there built-in WiFi?</a></li>
  	<li><a href="#networkingFutureWifi">Is there built-in Bluetooth?</a></li>
  	<li><a href="#networkingNoGig"> Why is there no Gigabit Ethernet?</a></li>
  	<li><a href="#networkingNetboot"> Does the device have support for any form of netbooting or PXE?</a></li>
  	<li><a href="#networkingConnect4"> How do you connect more USB devices?</a></li>
-</ol>
-</li>
- 	<li><a href="#topEducation"> EDUCATIONAL USES</a>
-<ol>
+### EDUCATIONAL USES
  	<li><a href="#educationMaterial"> What educational resources are available?</a></li>
-</ol>
-</li>
- 	<li><a href="#topAdditional"> ADDITIONAL QUESTIONS</a></li>
- 	<li><a href="#topGlossary"> GLOSSARY</a>
-<ol>
+### ADDITIONAL QUESTIONS
+###  GLOSSARY
  	<li><a href="#glossarybga">BGA</a></li>
  	<li><a href="#glossarybrick">Brick</a></li>
  	<li><a href="#glossarydistro">Distro</a></li>
@@ -135,61 +96,39 @@
  	<li><a href="#glossarypoe">PoE</a></li>
  	<li><a href="#glossarypxe">PXE</a></li>
  	<li><a href="#glossarysoc">SoC</a></li>
-</ol>
-</li>
-</ul>
-____________________________________________ <a class="anchor" name="topIntro"></a>
-<h3 id="intro"><b>INTRODUCTION</b></h3>
-<h4 id="introWhatIs"><b>1. WHAT IS A RASPBERRY PI?</b></h4>
-The Raspberry Pi is a credit-card-sized computer that plugs into your TV and a keyboard. It is a capable little computer which can be used in electronics projects, and for many of the things that your desktop PC does, like spreadsheets, word processing, browsing the internet, and playing games. It also plays high-definition video. We want to see it being used by adults and children all over the world to learn programming and digital making. You can <a href="https://www.raspberrypi.org/help/what-is-a-raspberry-pi/">read more about the Raspberry Pi here</a>. <a href="#topIntro">-Introduction</a> <a href="#topToc">-Top</a>
-<h4 id="introShares"><b>2. CAN I BUY SHARES IN THE RASPBERRY PI FOUNDATION?</b></h4>
-The Raspberry Pi Foundation is a charity, so you can’t buy shares in the company. If you want to support us, we would love you to buy a Raspberry Pi. <a href="#topIntro">-Introduction</a> <a href="#topToc">-Top</a> <a class="anchor" name="topBuying"></a>
-<h3 id="buying"><b>BUYING AND SHIPPING</b></h3>
-<h4 id="buyingWhere"><b>1. WHERE CAN I BUY A RASPBERRY PI?</b></h4>
+
+### INTRODUCTION
+#### WHAT IS A RASPBERRY PI?
+The Raspberry Pi is a credit-card-sized computer that plugs into your TV and a keyboard. It is a capable little computer which can be used in electronics projects, and for many of the things that your desktop PC does, like spreadsheets, word processing, browsing the internet, and playing games. It also plays high-definition video. We want to see it being used by adults and children all over the world to learn programming and digital making. You can <a href="https://www.raspberrypi.org/help/what-is-a-raspberry-pi/">read more about the Raspberry Pi here</a>.
+#### 2. CAN I BUY SHARES IN THE RASPBERRY PI FOUNDATION?
+The Raspberry Pi Foundation is a charity, so you can’t buy shares in the company. If you want to support us, we would love you to buy a Raspberry Pi.
+### BUYING AND SHIPPING
+#### 1. WHERE CAN I BUY A RASPBERRY PI?
 Go to our <a href="https://www.raspberrypi.org/products/">products page</a> and choose the product(s) you want to buy. Then select your country from the drop-down menu. You will be presented with our approved resellers for your country. <a href="#topBuying">-Buying and Shipping</a> <a href="#topToc">-Top</a>
-<h4 id="buyingCost"><b>2. HOW MUCH DOES IT COST?</b></h4>
-<table style="table-layout: fixed; width: 349px; height: 304px;"><colgroup> <col style="width: 161px;" /> <col style="width: 70px;" /> </colgroup>
-<tbody>
-<tr>
-<th>Product</th>
-<th>Price</th>
-</tr>
-<tr>
-<td style="text-align: left;">Raspberry Pi Model A+</td>
-<td style="text-align: center;">$20</td>
-</tr>
-<tr>
-<td style="text-align: left;">Raspberry Pi Model B+</td>
-<td style="text-align: center;">$25</td>
-</tr>
-<tr>
-<td>Raspberry Pi 2 Model B</td>
-<td style="text-align: center;">$35</td>
-</tr>
-<tr>
-<td>Raspberry Pi 3 Model B</td>
-<td style="text-align: center;">$35</td>
-</tr>
-<tr>
-<td>Raspberry Pi Zero</td>
-<td style="text-align: center;">$5</td>
-</tr>
-<tr>
-<td style="text-align: left;">Raspberry Pi Zero W</td>
-<td style="text-align: center;">$10</td>
-</tr>
-</tbody>
-</table>
-All these prices are exclusive of any local taxes and shipping/handling fees. <a href="#topBuying">-Buying and Shipping</a> <a href="#topToc">-Top</a>
-<h4 id="buyingGet"><b>3. WHAT DO I GET WHEN I BUY ONE?</b></h4>
-You get the Raspberry Pi board itself. A power supply and SD card are not included, but can be purchased at the same time from most places that sell the Raspberry Pi. You can also <a href="https://shop.pimoroni.com/products/noobs-8gb-sd-card" target="_blank" rel="noopener noreferrer">purchase pre-loaded SD cards</a>; we recommend buying these from us or our licensed distributors rather than from third parties on eBay, as our software is updated regularly and cards sold by third parties can quickly become outdated. <a href="#topBuying">-Buying and Shipping</a> <a href="#topToc">-Top</a>
-<h4 id="buyingUS"><b>4. WHY IS THE PRICE IN US DOLLARS? YOU ARE A UK COMPANY!</b></h4>
-The components we buy are priced in dollars, and we negotiate manufacturing in dollars. Because currency markets are so volatile, we price the final board in dollars as well so we don’t have to keep changing the price. <a href="#topBuying">-Buying and Shipping</a> <a href="#topToc">-Top</a>
-<h4 id="buyingKit"><b>5. CAN I BUY A RASPBERRY PI KIT?</b></h4>
-Raspberry Pi resellers produce <a href="https://www.canakit.com/raspberry-pi-3-ultimate-kit.html">some</a> <a href="https://www.adafruit.com/product/3058">fantastic</a> <a href="https://shop.pimoroni.com/products/raspberry-pi-3-starter-kit">bundles</a> for people who would rather get everything they need from a single source. In 2016, we put together our own Raspberry Pi Official Starter Kit. The kit is available to order online in the UK from our partners <a href="https://www.element14.com/community/docs/DOC-83184">element14</a> and <a href="http://uk.rs-online.com/web/p/processor-microcontroller-development-kits/8968119/">RS Components</a>, priced at £99+VAT, and from distributors and resellers around the world. <a href="#topBuying">-Buying and Shipping</a> <a href="#topToc">-Top</a>
-<h4 id="buyingBOGO"><b>6. IS THERE A BUY-ONE-GIVE-ONE PROGRAMME?</b></h4>
-Not at the current time. We may implement a programme of this sort one day, but the scale of an undertaking like this is something our small team isn’t equipped to handle. You can, of course, simply buy an extra Raspberry Pi to donate to the person or organisation of your choice. <a href="#topBuying">-Buying and Shipping</a> <a href="#topToc">-Top</a>
-<h4 id="buyingInternational"><b>7. IS THE DEVICE AVAILABLE INTERNATIONALLY?</b></h4>
+#### HOW MUCH DOES IT COST?
+|Product|Price|
+|-------|-----|
+| Raspberry Pi Model A+| $20 |
+| Raspberry Pi Model B+ |$25 |
+| Raspberry Pi 2 Model B| $35 |
+| Raspberry Pi 3 Model B | $35 |
+| Raspberry Pi 3 Model B+ | $35 |
+| Raspberry Pi Zero | $5 |
+| Raspberry Pi Zero W |$10 |
+| Raspberry Pi Zero WH |$15 |
+
+All these prices are exclusive of any local taxes and shipping/handling fees.
+
+#### 3. WHAT DO I GET WHEN I BUY ONE?
+You get the Raspberry Pi board itself. A power supply and SD card are not included, but can be purchased at the same time from most places that sell the Raspberry Pi. You can also purchase pre-loaded SD cards; we recommend buying these from us or our licensed distributors rather than from third parties on eBay, as our software is updated regularly and cards sold by third parties can quickly become outdated.
+#### 4. WHY IS THE PRICE IN US DOLLARS? YOU ARE A UK COMPANY!
+The components we buy are priced in dollars, and we negotiate manufacturing in dollars. Because currency markets are so volatile, we price the final board in dollars as well so we don’t have to keep changing the price. 
+#### 5. CAN I BUY A RASPBERRY PI KIT?
+Many Raspberry Pi resellers produce bundles for people who would rather get everything they need from a single source. In 2016, we put together our own Raspberry Pi Official Starter Kit. The kit is available to order online in the UK from our partners <a href="https://www.element14.com/community/docs/DOC-83184">element14</a> and <a href="http://uk.rs-online.com/web/p/processor-microcontroller-development-kits/8968119/">RS Components</a>, priced at £99+VAT, and from distributors and resellers around the world. 
+
+#### 6. IS THERE A BUY-ONE-GIVE-ONE PROGRAMME?
+Not at the current time. We may implement a programme of this sort one day, but the scale of an undertaking like this is something our small team isn’t equipped to handle. You can, of course, simply buy an extra Raspberry Pi to donate to the person or organisation of your choice.
+#### 7. IS THE DEVICE AVAILABLE INTERNATIONALLY?
 Yes. <a href="#topBuying">-Buying and Shipping</a> <a href="#topToc">-Top</a>
 <h4 id="buyingReseller"><b>8. I WANT TO BE A RASPBERRY PI RESELLER.</b></h4>
 We have an exclusive manufacturing and distribution arrangement with <a href="http://uk.rs-online.com/web/generalDisplay.html?id=raspberrypi">RS</a> and <a href="https://www.element14.com/community/community/raspberry-pi">Farnell</a>. Resellers buy the Raspberry Pi in bulk from them (which reduces shipping costs to nearly nothing) and sell on. You do not need any special licence to resell, and the distributors are very happy to sell on to resellers. If you are interested in joining our <a href="https://www.raspberrypi.org/blog/approved-reseller/">Approved Reseller</a> programme, contact us by email to info@raspberrypi.org. <a href="#topBuying">-Buying and Shipping</a> <a href="#topToc">-Top</a> <a class="anchor" name="topGeneral"></a>
@@ -432,49 +371,13 @@ The device is powered by 5V micro-USB. Exactly how much current (mA) the Raspber
 The specific current requirements of each model are dependent on the use case: the PSU recommendations are based on “typical maximum” current consumption, the typical current consumption is for each board in a “desktop computer” configuration. The Raspberry Pi Model A, A+, and B can supply a maximum of 500mA to downstream USB peripherals. If you wish to connect a high-power USB device, it is recommended that you connect a powered USB hub to the Pi and connect your peripherals to the USB hub. The Raspberry Pi  B+ and 2 Model B can supply 600mA/1.2A to downstream USB peripherals, switchable by a firmware setting. This allows the vast majority of USB devices to be connected directly to these models, assuming the upstream power supply has sufficient available current. Very high-current devices or devices which can draw a surge current such as certain modems and USB hard disks will still require an external powered USB hub. The power requirements of the Raspberry Pi increase as you make use of the various interfaces on the Raspberry Pi. The GPIO pins can draw 50mA safely (note that that means 50mA distributed across all the pins: an individual GPIO pin can only safely draw 16mA), the HDMI port uses 50mA, the Camera Module requires 250mA, and keyboards and mice can take as little as 100mA or as much as 1000mA! Check the power rating of the devices you plan to connect to the Pi and purchase a power supply accordingly. If you’re not sure, we would advise you to buy a powered hub.
 
 Here is a table comparing the amount of power drawn in A (amps) under different situations:
-<table>
-<tbody>
-<tr>
-<td width="326"></td>
-<td width="99"></td>
-<td width="127"><strong>Pi1 (B+)</strong></td>
-<td width="127"><strong>Pi2 B</strong></td>
-<td width="156"><strong>Pi3 B (amps)</strong></td>
-<td width="156"><strong>Zero (amps)</strong></td>
-</tr>
-<tr>
-<td width="326">Boot</td>
-<td width="99">Max</td>
-<td width="127">0.26</td>
-<td width="127">0.40</td>
-<td width="156">0.75</td>
-<td width="156">0.20</td>
-</tr>
-<tr>
-<td width="326"></td>
-<td width="99">Avg</td>
-<td width="127">0.22</td>
-<td width="127">0.22</td>
-<td width="156">0.35</td>
-<td width="156">0.15</td>
-</tr>
-<tr>
-<td width="326">Idle</td>
-<td width="99">Avg</td>
-<td width="127">0.20</td>
-<td width="127">0.22</td>
-<td width="156">0.30</td>
-<td width="156">0.10</td>
-</tr>
-<tr>
-<td width="326">Video playback (H.264)</td>
-<td width="99">Max</td>
-<td width="127">0.30</td>
-<td width="127">0.36</td>
-<td width="156">0.55</td>
-<td width="156">0.23</td>
-</tr>
-<tr>
+
+| | | Pi1 (B+) | Pi2 B | Pi3 B (amps)| Zero (amps)|
+|-|-|----------|-------|-------------|------------|
+| Boot | Max |0.26 | 0.40| 0.75| 0.20 |
+| | Avg | 0.22 | 0.22 | 0.35 | 0.15 | 
+|Idle |Avg | 0.20 | 0.22 | 0.30 | 0.10 |
+| Video playback (H.264) | Max | 0.30 | 0.36 |0.55 |0.23 |
 <td width="326"></td>
 <td width="99">Avg</td>
 <td width="127">0.22</td>
