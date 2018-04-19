@@ -37,7 +37,7 @@
 - [What hardware interfaces does it have?](#what-hardware-interfaces-does-it-have)
 - [Why is there no real-time clock (RTC)?](#why-is-there-no-real-time-clock)
 - [Can I add extra memory?](#can-i-add-extra-memory)
-- [Why doesn’t the Raspberry Pi include &lt;insert name&gt; piece of hardware or &lt;insert name&gt; sort of port?](why-doesnt-the-raspberry-pi-include-&lt;insert name&gt;-piece-of-hardware-or &lt;insert-name&gt;-sort-of-port)
+- [Why doesn’t the Raspberry Pi include a particular type of hardware?](why-doesnt-the-raspberry-pi-include-a-particular-type-of-hardware)
 - [What is its operating temperature?](#what-is-its-operating-temperature)
   
 #### CAMERA
@@ -73,7 +73,7 @@
 - [Will it run the Windows 8 ARM edition?](#will-it-run-the-windows-8-arm-edition)
 - [Which Linux distros run on the Pi?](#which-linux-distros-run-on-the-pi)
 - [Will it run Android or Android Things?](#will-it-run-android-or-android-things)
-- [Will it run &lt;insert name of program here&gt;?]()
+- [Will it run any old software?]()
 #### SD CARDS AND STORAGE
 - [What size of SD card do I need?](#what-size-of-sd-card-do-i-need)
 - [What size of SD card can it support?](#what-size-of-sd-card-can-it-support)
@@ -227,7 +227,7 @@ The expectation is that non-network-connected units will have their clocks updat
 #### CAN I ADD EXTRA MEMORY?
 No. The RAM on the model A, A+, B, B+, and Zero is a Package on Package (POP) on top of the SoC, so it is not removable or swappable. The RAM on the Pi 2 and 3 Model B versions is on a separate chip on the bottom of the PCB, but 1GB is the maximum RAM that the SoC used by the Pi 2 and 3 Model B versions can support.
 
-#### WHY DOESN’T THE RASPBERRY PI INCLUDE &lt;INSERT NAME&gt; PIECE OF HARDWARE OR &lt;INSERT NAME&gt; SORT OF PORT?
+#### WHY DOESN’T THE RASPBERRY PI INCLUDE A PARTICULAR TYPE OF HARDWARE?
 Our main aim is a charitable one: we are trying to build the cheapest possible computer that provides a certain basic level of functionality, and keeping the price low means we’ve had to make hard decisions about what hardware and interfaces to include.
 
 #### WHAT IS ITS OPERATING TEMPERATURE?
@@ -355,7 +355,7 @@ Raspberry Pi themselves do not support the consumer version of Android that you 
 
 Google supports Android Things on the Raspberry Pi 3 as a development platform. Android Things is a variant of the Android platform enabling developers to build software for embedded and Internet of Things (IoT) devices with the Android SDK. To learn more about the platform and how to get started, visit [developer.android.com/things](https://developer.android.com/things/index.html).
 
-#### WILL IT RUN &lt;INSERT NAME OF PROGRAM HERE&gt;?
+#### WILL IT RUN ANY OLD SOFTWARE?
 In general, you need to look to see whether the program you want can be compiled for the ARMv6 (Pi 1/Zero/Zero W/CM), ARMv7 (Pi 2) or ARMv8 (Pi 3) architecture on Linux. In most cases, the answer will be yes. Specific programs are discussed on [our forums](https://www.raspberrypi.org/forums/), so you might want to look there for an answer. Ultimately, nothing beats grabbing a Raspberry Pi and finding out the answer through direct testing!
 
 ### SD CARDS AND STORAGE
