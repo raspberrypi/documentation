@@ -120,7 +120,7 @@ You get the Raspberry Pi board itself. A power supply and SD card are not includ
 #### WHY IS THE PRICE IN US DOLLARS?
 Although we are a UK company, the components we buy are priced in dollars, and we negotiate manufacturing in dollars. Because currency markets are so volatile, we price the final board in dollars as well so we don’t have to keep changing the price. 
 #### CAN I BUY A RASPBERRY PI KIT?
-Many Raspberry Pi resellers produce bundles for people who would rather get everything they need from a single source. In 2016, we put together our own Raspberry Pi Official Starter Kit. The kit is available to order online in the UK from our partners [Element14](https://www.element14.com/community/docs/DOC-83184) and [RS components](http://uk.rs-online.com/web/p/processor-microcontroller-development-kits/8968119/"), priced at £99+VAT, and from distributors and resellers around the world. 
+Many Raspberry Pi resellers produce bundles for people who would rather get everything they need from a single source. In 2016, we put together our own Raspberry Pi Official Starter Kit. The kit is available to order online in the UK from our partners [Element14](https://www.element14.com/community/docs/DOC-83184) and [RS components](http://uk.rs-online.com/web/p/processor-microcontroller-development-kits/8968119/), priced at £99+VAT, and from distributors and resellers around the world. 
 
 #### IS THERE A BUY-ONE-GIVE-ONE PROGRAMME?
 Not at the current time. We may implement a programme of this sort one day, but the scale of an undertaking like this is something our small team isn’t equipped to handle. You can, of course, simply buy an extra Raspberry Pi to donate to the person or organisation of your choice.
