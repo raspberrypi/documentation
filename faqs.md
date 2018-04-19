@@ -17,7 +17,7 @@
 
 #### GENERAL
 - [What is the username and password for the Raspberry Pi?](#what-is-the-username-and-password-for-the-raspberry-pi)
-- [Why does nothing happen when I type in my password? Did my Raspberry Pi freeze?](#why-does-nothing-happen-when-i-type-my-password)
+- [Why does nothing happen when I type in my password? Did my Raspberry Pi freeze?](#why-does-nothing-happen-when-i-type-in-my-password)
 - [What are the differences between Raspberry Pi models?](#what-are-the-differences-between-raspberry-pi-models)
 - [How do I connect a mouse and keyboard?](#how-do-i-connect-a-mouse-and-keyboard)
 - [Where is the on off switch?](#where-is-the-on-off-switch)
@@ -45,7 +45,7 @@
 - [What model of camera does the Camera Module use?](#what-model-of-camera-does-the-camera-module-use)
 - [What resolutions are supported?](#what-resolutions-are-supported)
 - [Which picture formats are supported?](#what-picture-formats-are-supported)
-- [How do I use the camera?]#(how-do-i-use-the-camera)
+- [How do I use the camera?](#how-do-i-use-the-camera)
 - [Can I extend the ribbon cable?](#can-i-extend-the-ribbon-cable)
 - [Can I have a camera with more megapixels?](#can-i-have-a-camera-with-more-megapixels)
 - [How much power does the Camera Module use?](#how-much-power-does-the-camera-module-use)
@@ -53,7 +53,7 @@
 - [Does it come with a case?](#does-it-come-with-a-case)
 - [Does it fit in an Altoids tin?](#does-it-fit-in-an-altoids-tin)
 #### VIDEO
-- [What displays can I use?](#what-displays-ca-i-use)
+- [What displays can I use?](#what-displays-can-i-use)
 - [Does the HDMI port support CEC?](#does-the-hdmi-port-support-cec)
 - [Why is there no VGA support?](#why-is-there-no-vga-support)
 - [Can I add a touchscreen?](#can-i-add-a-touchscreen)
@@ -62,14 +62,14 @@
 - [Is sound over HDMI supported?](#is-sound-over-hdmi-supported)
 - [What about standard audio in and out?](#what-about-standard-audio-in-and-out)
 #### POWER
-- [What are the power requirements?](#what-are-thepower-requirements)
+- [What are the power requirements?](#what-are-the-power-requirements)
 - [Can I power the Raspberry Pi from a USB hub?](#can-i-power-the-raspberry-pi-from-a-usb-hub)
 - [Can I power the Raspberry Pi from batteries as well as from a wall socket?](#can-i-power-the-raspberry-pi-from-batteries-as-well-as-from-a-wall-socket)
 - [Is Power over Ethernet (PoE) possible?](#is-power-over-ethernet-possible)
 #### SOFTWARE
 - [What operating system (OS) does it use?](#what-operating-system-does-it-use)
 - [Does it have an official programming language?](#does-it-have-an-official-programming-language)
-- [Will it run WINE (or Windows, or other x86 software)?](#will-it-run-wine-or-windows-por-other-x86-software)
+- [Will it run WINE (or Windows, or other x86 software)?](#will-it-run-wine-or-windows-or-other-x86-software)
 - [Will it run the Windows 8 ARM edition?](#will-it-run-the-windows-8-arm-edition)
 - [Which Linux distros run on the Pi?](#which-linux-distros-run-on-the-pi)
 - [Will it run Android or Android Things?](#will-it-run-android-or-android-things)
@@ -77,12 +77,12 @@
 #### SD CARDS AND STORAGE
 - [What size of SD card do I need?](#what-size-of-sd-card-do-i-need)
 - [What size of SD card can it support?](#what-size-of-sd-card-can-it-support)
-- [What happens if I brick the device?](#what-happnes-if-i-brick-the-device)
+- [What happens if I brick the device?](#what-happens-if-i-brick-the-device)
 #### NETWORKING, USB, AND WIRELESS
 - [Does the device support networking?](#does-the-device-support-networking)
 - [Is there built-in WiFi?](#is-there-built-in-wifi)
 - [Is there built-in Bluetooth?](#is-there-built-in-bluetooth)
-- [Is there no Gigabit Ethernet?](#is-there-no-gigabit-ethernet)
+- [Why is there no Gigabit Ethernet?](#why-is-there-no-gigabit-ethernet)
 - [Does the device have support for any form of netbooting or PXE?](does-the-device-have-support-for-any-form-of-netbooting-or-pxe)
 - [How do you connect more USB devices?](#how-do-you-connect-more-usb-devices)
 #### EDUCATIONAL USES
@@ -341,13 +341,13 @@ There are several official distributions (distros) available on our [downloads](
 #### DOES IT HAVE AN OFFICIAL PROGRAMMING LANGUAGE?
 The Raspberry Pi Foundation recommends Python as a language for learners. We also recommend Scratch for younger children. Any language which will compile for ARMv6 (Pi 1) or ARMv7 (Pi 2) can be used with the Raspberry Pi, though, so you are not limited to using Python. C, C++, Java, Scratch, and Ruby all come installed by default on the Raspberry Pi.
 
-#### WILL IT RUN WINE (OR WINDOWS, OR OTHER X86 SOFTWARE)?
+#### WILL IT RUN WINE OR WINDOWS, OR OTHER X86 SOFTWARE?
 In general, this is not possible with most versions of the Raspberry Pi. Some people have put Windows 3.1 on the Raspberry Pi inside an x86 CPU emulator in order to use specific applications, but trying to use a version of Windows even as recent as Windows 98 can take hours to boot into, and may take several more hours to update your cursor every time you try to move it. We don’t recommend it! As of summer 2015, a version of Windows 10 is available for use on the Raspberry Pi 2 and 3. This is an entirely new version of the operating system designed exclusively for embedded use, dubbed the Windows 10 Internet of Things (IoT) Core. It does not include the user interface (“shell”) or the desktop operating system.
 
 #### WILL IT RUN THE WINDOWS 8 ARM EDITION?
 No. Most models of Raspberry Pi lack the minimum memory and CPU requirements to support Winodws 8 ARM edition. The Raspberry Pi also lacks the appropriate axis sensors, and there are many other limiting factors which mean that running Windows 8 ARM edition is not possible.
 
-#### WHAT LINUX DISTROS RUN ON THE PI?
+#### WHICH LINUX DISTROS RUN ON THE PI?
 Raspbian (based on Debian), Arch Linux run on the Raspberry Pi 1, 2, and 3. Ubuntu MATE and Ubuntu Snappy Core run on Pi 2 and 3 only. There are also other community-developed distributions available. See our [downloads page](https://www.raspberrypi.org/downloads/) for more information.
 
 #### WILL IT RUN ANDROID OR ANDROID THINGS?
@@ -360,10 +360,10 @@ In general, you need to look to see whether the program you want can be compiled
 
 ### SD CARDS AND STORAGE
 
-#### WHAT SIZE SD CARD DO I NEED?
+#### WHAT SIZE OF SD CARD DO I NEED?
 Whether you want to use the NOOBS installer or a standalone image, the minimum size SD card we recommend using is 8GB. This will give you the free space you need to install additional packages or make programs of your own. The original Raspberry Pi Model A and Model B require full-size SD cards. The newer Raspberry Pi Model A+, Model B+, 2B, 3B, 3B+, Zero, ZeroW and ZeroWH require micro SD cards.
 
-#### WHAT SIZE SD CARD CAN IT SUPPORT?
+#### WHAT SIZE OF SD CARD CAN IT SUPPORT?
 We have tried cards up to 128GB, and most cards seem to work OK. You can also attach a USB stick or USB hard drive to provide extra storage. 
 
  #### WHAT HAPPENS IF I BRICK THE DEVICE?
@@ -377,11 +377,13 @@ The Model B, Model B+, and Pi 2 and 3 Model B versions of the device have built 
 #### IS THERE BUILT-IN WIFI?
 Only the Pi 3 and Pi Zero W have built in WiFi, but all other models can support a USB WiFi dongle. The Foundation offers its own branded WiFi dongle which has been fully tested for use with the Raspberry Pi. It is [available through our distributors](https://www.raspberrypi.org/products/usb-wifi-dongle). You can, of course, use a dongle from another provider if you wish.
 
+The Raspberry Pi Model 3B+ supports 802.11ac, all previous models support up to 802.11n. 
+
 #### IS THERE BUILT-IN BLUETOOTH?
 Only on the Pi 3 and Pi Zero W.
 
 #### WHY IS THERE NO GIGABIT ETHERNET?>
-The Ethernet is attached via the USB 2.0 bus, so the upstream bandwidth would not support Gigabit. You can use a USB2.0 Gigabit adapter if required, but you will not get gigabit speeds due to the USB limitation.
+Gigabit ethernet was introduced on the Raspberry Pi 3B+. However, due to the limitation of the host USB2.0 controller to which the Ethernet chip is is attached, bandwidth is limited to about 200-300MBits/s. Still considerably better than the maximum of 100MBits/s of previous models.
 
 #### DOES THE DEVICE HAVE SUPPORT FOR ANY FORM OF NETBOOTING OR PXE
 Yes. The Raspberry Pi 3 can be set up to network boot without an SD card present; earlier models can PXE/Netboot with an appropriately set up SD card.
