@@ -2,7 +2,7 @@
 
 ## Table of Contents
 ### INTRODUCTION
-- [What is a Raspberry Pi?](what-is-a-raspberry-pi)
+- [What is a Raspberry Pi?](#what-is-a-raspberry-pi)
 - [Can I buy shares in the Raspberry Pi Foundation?](can-i-buy-shares-in-the-raspberry-pi-foundation)
 
 ### BUYING AND SHIPPING
