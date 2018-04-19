@@ -177,7 +177,7 @@ NOOBS stands for New Out of Box Software. It is our recommended installation met
 As of February 2016, the third generation of the Model B Raspberry Pi has been released. Beyond this revision, which upgraded the main processor on the board to a 64-bit version, there are no immediate plans to release any more new models. We concentrate our engineering effort on making the software that runs on the Raspberry Pi faster and better all the time, which is why you should always ensure that you are running the most recent firmware.
 
 #### WHAT ARE THE DIMENSIONS OF THE RASPBERRY PI?
-The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37″ x 2.21″ x 0.83″), with a little overlap for the SD card and connectors which project over the edges. They weighs 45g. The Pi Zero and Pi Zero W measure 65mm x 30mm x 5.4mm (or roughly 2.56″ x 1.18″ x 0.20″) and weighs 9g. For the mechanical outline, please see the documentation [here](./hardware/raspberrypi/mechanical/README.md") 
+The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37″ x 2.21″ x 0.83″), with a little overlap for the SD card and connectors which project over the edges. They weighs 45g. The Pi Zero and Pi Zero W measure 65mm x 30mm x 5.4mm (or roughly 2.56″ x 1.18″ x 0.20″) and weighs 9g. For the mechanical outline, please see the documentation [here](./hardware/raspberrypi/mechanical/README.md) 
 
 #### WHAT HARDWARE DOCUMENTATION IS AVAILABLE?
 All available documentation is in our [documentation repository](./README.md). 
@@ -248,7 +248,7 @@ The Camera Module V2 is capable of taking photos up to 8 megapixels (8MP). It su
 The Raspberry Pi Camera Modules supports raw capturing (Bayer data direct from the sensor) or encoding as JPEG, PNG, GIF and BMP, uncompressed YUV, and uncompressed RGB photos. They can record video as H.264, baseline, main, and high-profile formats.
 
 #### HOW DO I USE THE CAMERA?
-There a number of command line applications provided for stills and video output. These applications provide the typical features you might find on a compact camera, such as set image size, compression quality, exposure mode, and ISO. See the [documentation](https://www.raspberrypi.org/documentation/hardware/camera/README.md for more details.
+There a number of command line applications provided for stills and video output. These applications provide the typical features you might find on a compact camera, such as set image size, compression quality, exposure mode, and ISO. See the [documentation](https://www.raspberrypi.org/documentation/hardware/camera/README.md) for more details.
 
 #### CAN I EXTEND THE RIBBON CABLE?
 Yes. We have reports of people using cables up to four metres in length and still receiving acceptable images, though your experience may differ. 
@@ -262,7 +262,7 @@ The Raspberry Pi Camera Modules requires 250mA to operate. Ensure that your powe
 ### CASES
 
 #### DOES IT COME WITH A CASE?
-An official case for the Raspberry Pi is [available from our distributors](https://www.raspberrypi.org/products/raspberry-pi-case). There are also lots of homebrew case discussions on the forum, as well as several third-party cases available. We suggest stopping by the [cases subforum](https://www.raspberrypi.org/phpBB3/viewforum.php?f=40) and reading some of the threads about cases you can purchase or build yourself.
+An official case for the Raspberry Pi is [available from our distributors](https://www.raspberrypi.org/products/raspberry-pi-3-case). There are also lots of homebrew case discussions on the forum, as well as several third-party cases available. We suggest stopping by the [cases subforum](https://www.raspberrypi.org/phpBB3/viewforum.php?f=40) and reading some of the threads about cases you can purchase or build yourself.
 
 #### DOES IT FIT IN AN ALTOIDS TIN?
 It is possible to make a case for the Raspberry Pi out of an Altoids tin: there are instructions given in a [forum post here](https://www.raspberrypi.org/forums/viewtopic.php?f=40&amp;t=28814) (the directions are also available as an [Instructables guide](http://www.instructables.com/id/How-to-Make-a-Raspberry-Pi-Case-From-an-Altoids-Ti/). However, you may find that this is not possible with older boards, as their form factors are not as neat. You can, of course, fit a Pi Zero into an Altoids tin with room to spare.
@@ -283,7 +283,7 @@ The chip we use supports HDMI and composite outputs but does not support VGA. VG
 The Raspberry Pi Foundation provides a 7" capacitive [touchscreen](https://www.raspberrypi.org/products/raspberry-pi-touch-display) that utilises the Raspberry Pi's DSI port. This is available through the usual distributors. Alternatively, several third-party retailers offer a range of touchscreens for the Raspberry Pi.
 
 #### WHAT CODECS CAN IT PLAY?
-The Raspberry Pi can encode (record) and decode (play) H.264 (MP4/MKV) out of the box. There are also two additional codecs you can [>purchase through our Swag Store](http://swag.raspberrypi.org/collections/software) that enable you to decode [MPEG-2](http://swag.raspberrypi.org/collections/software/products/mpeg-2-license-key"), a very popular and widely used format to encode DVDs, video camera recordings, TV and many others, and [VC-1](http://swag.raspberrypi.org/collections/software/products/vc-1-license-key), a Microsoft format found in Blu-ray discs, Windows Media, Slingbox, and HD-DVDs.
+The Raspberry Pi can encode (record) and decode (play) H.264 (MP4/MKV) out of the box. There are also two additional codecs you can [purchase through our Swag Store](http://swag.raspberrypi.org/collections/software) that enable you to decode [MPEG-2](http://swag.raspberrypi.org/collections/software/products/mpeg-2-license-key), a very popular and widely used format to encode DVDs, video camera recordings, TV and many others, and [VC-1](http://swag.raspberrypi.org/collections/software/products/vc-1-license-key), a Microsoft format found in Blu-ray discs, Windows Media, Slingbox, and HD-DVDs.
 
 ### AUDIO
 #### IS SOUND OVER HDMI SUPPORTED?
@@ -375,7 +375,7 @@ If you brick the device, you can restore it by reflashing the SD card.
 The Model B, Model B+, and Pi 2 and 3 Model B versions of the device have built in 10/100 wired Ethernet. There is no Ethernet on the Model A, Model A+, and Zero versions. 
 
 #### IS THERE BUILT-IN WIFI?
-Only the Pi 3 and Pi Zero W have built in WiFi, but all other models can support a USB WiFi dongle. The Foundation offers its own branded WiFi dongle which has been fully tested for use with the Raspberry Pi. It is [available through our distributors](https://www.raspberrypi.org/products/usb-wifi-dongle). You can, of course, use a dongle from another provider if you wish.
+Only the Pi 3 and Pi Zero W have built in WiFi, but all other models can support a USB WiFi dongle. The Foundation offers its own branded WiFi dongle which has been fully tested for use with the Raspberry Pi. It is [available through our distributors](https://www.raspberrypi.org/products/raspberry-pi-usb-wifi-dongle). You can, of course, use a dongle from another provider if you wish.
 
 The Raspberry Pi Model 3B+ supports 802.11ac, all previous models support up to 802.11n. 
 
@@ -398,6 +398,6 @@ Use a USB hub to increase the number of ports. Some keyboards have USB hubs buil
 There are many books about the Raspberry Pi available. For children, we particularly recommend [Adventures in Raspberry Pi](https://swag.raspberrypi.org/collections/books/products/adventures-in-raspberry-pi-foundation-edition) by Carrie Anne Philbin, who works with us at the Raspberry Pi Foundation. Check out our resources pages for [free educational materials](https://www.raspberrypi.org/resources/): we are always adding to these. You’ll find complete schemes of work linked to the England, Wales, and NI curriculum, as well as resources for independent and informal learning. We also offer [free online training materials](https://www.futurelearn.com/partners/raspberry-pi) for educators and other interested users. 
 
 ### I STILL HAVE MORE QUESTIONS!
-Read the sticky subjects in the [Beginners subforum](https://www.raspberrypi.org/phpBB3/viewforum.php?f=91) and check the [Help Pages](https://www.raspberrypi.org/help/) for more information. If the answer is not there, ask in [the forums]https://www.raspberrypi.org/phpBB3/index.php), where there are lots of helpful Raspberry Pi owners, users, and fans who will be more than happy to help you out.
+Read the sticky subjects in the [Beginners subforum](https://www.raspberrypi.org/phpBB3/viewforum.php?f=91) and check the [Help Pages](https://www.raspberrypi.org/help/) for more information. If the answer is not there, ask in [the forums](https://www.raspberrypi.org/phpBB3/index.php), where there are lots of helpful Raspberry Pi owners, users, and fans who will be more than happy to help you out.
 
 
