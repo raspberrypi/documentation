@@ -2,89 +2,89 @@
 
 ## Table of Contents
 ### INTRODUCTION
-  - [What is a Raspberry Pi?](what-is-a-raspberry-pi)
-  - [Can I buy shares in the Raspberry Pi Foundation?](can-i-buy-shares-in-the-raspberry-pi-foundation)
+- [What is a Raspberry Pi?](what-is-a-raspberry-pi)
+- [Can I buy shares in the Raspberry Pi Foundation?](can-i-buy-shares-in-the-raspberry-pi-foundation)
 
 ### BUYING AND SHIPPING
- 	- [Where can I buy a Raspberry Pi?]()
- 	- [How much does it cost?]()
- 	- [What do I get when I buy one?]()
- 	- [Why is the price in US Dollars? You are a UK company!]()
- 	- [Can I buy a Raspberry Pi kit?]()
- 	- [Is there a buy-one-give-one programme?]()
- 	- [Is the device available internationally?]()
- 	- [I want to be a Raspberry Pi reseller.]()
+- [Where can I buy a Raspberry Pi?](where-can-i-buy-a-raspberry-pi)
+- [How much does it cost?](how-much-does-it-cost)
+- [What do I get when I buy one?](what-do-i-get-when-i-buy-one)
+- [Why is the price in US Dollars? You are a UK company!](why-is-the-price-in-us-dollars)
+- [Can I buy a Raspberry Pi kit?](can-i-buy-a-raspberry-pi-kit)
+- [Is there a buy-one-give-one programme?](is-there-a-buy-one-give-one-programme)
+- [Is the device available internationally?](is-the-device-available-internationally)
+- [I want to be a Raspberry Pi reseller.](i-want-to-be-a-raspberry-pi-reseller)
 
 ### GENERAL
- 	- [What is the username and password for the Raspberry Pi?](what-is-the-username-and-password-for-the-raspberry-pi)
- 	- [Why does nothing happen when I type in my password? Did my Raspberry Pi freeze?]()
- 	- [What are the differences between Raspberry Pi models?](what-are-the-differences-between-raspberry-pi-models)
- 	- [How do I connect a mouse and keyboard?](how-do-i-connect-a-mouse-and-keyboard
-  - [Where is the on off switch?](where-is-the-on-off-switch)
-  - [What is NOOBS?](what-is-noobs)
- 	- [When will the next model of the Raspberry Pi be released?](when-will-the-next-model-of-the-raspberry-pi-be-released)
- 	- [What are the dimensions of the Raspberry Pi?]()
-  - [What hardware documentation is available?]()
- 	- [What SoC are you using?]()
- 	- [What is an SoC?]()
- 	- [Why did you select the SoC?]()
- 	- [How does it boot?]()
- 	- [Do you sell a self-assembly kit?]()
+- [What is the username and password for the Raspberry Pi?](what-is-the-username-and-password-for-the-raspberry-pi)
+- [Why does nothing happen when I type in my password? Did my Raspberry Pi freeze?]()
+- [What are the differences between Raspberry Pi models?](what-are-the-differences-between-raspberry-pi-models)
+- [How do I connect a mouse and keyboard?](how-do-i-connect-a-mouse-and-keyboard
+- [Where is the on off switch?](where-is-the-on-off-switch)
+- [What is NOOBS?](what-is-noobs)
+- [When will the next model of the Raspberry Pi be released?](when-will-the-next-model-of-the-raspberry-pi-be-released)
+- [What are the dimensions of the Raspberry Pi?]()
+- [What hardware documentation is available?]()
+- [What SoC are you using?]()
+- [What is an SoC?]()
+- [Why did you select the SoC?]()
+- [How does it boot?]()
+- [Do you sell a self-assembly kit?]()
 ### PERFORMANCE AND COST CONSIDERATIONS
- 	- [How powerful is it?]()
- 	- [Does it overclock?]()
- 	- [Does it need a heatsink?]()
- 	- [What hardware interfaces does it have?]()
- 	- [Why is there no real-time clock (RTC)?]()
- 	- [Can I add extra memory?]()
- 	- [Why doesn’t the Raspberry Pi include &lt;insert name&gt; piece of hardware or &lt;insert name&gt; sort of port?]()
-  - [What is its operating temperature?](what-is-its-operating-temperature)
+- [How powerful is it?]()
+- [Does it overclock?]()
+- [Does it need a heatsink?]()
+- [What hardware interfaces does it have?]()
+- [Why is there no real-time clock (RTC)?]()
+- [Can I add extra memory?]()
+- [Why doesn’t the Raspberry Pi include &lt;insert name&gt; piece of hardware or &lt;insert name&gt; sort of port?]()
+- [What is its operating temperature?](what-is-its-operating-temperature)
   
 ### CAMERA
- 	- [What is the Camera Module?](what-is-the-camera-module)
- 	- [What model of camera does the Camera Module use?](what-model-of-camera-does-the-camera-module-use)
- 	- [What resolutions are supported?](what-resolutions-are-supported)
- 	- [Which picture formats are supported?](what-picture-formats-are-supported)
- 	- [How do I use the camera?](how-do-i-use-the-camera)
-  - [Can I extend the ribbon cable?](can-i-extend-the-ribbon-cable)
- 	- [Can I have a camera with more megapixels?](can-i-have-a-camera-with-more-megapixels)
- 	- [How much power does the Camera Module use?](how-much-power-does-the-camera-module-use)
+- [What is the Camera Module?](what-is-the-camera-module)
+- [What model of camera does the Camera Module use?](what-model-of-camera-does-the-camera-module-use)
+- [What resolutions are supported?](what-resolutions-are-supported)
+- [Which picture formats are supported?](what-picture-formats-are-supported)
+- [How do I use the camera?](how-do-i-use-the-camera)
+- [Can I extend the ribbon cable?](can-i-extend-the-ribbon-cable)
+- [Can I have a camera with more megapixels?](can-i-have-a-camera-with-more-megapixels)
+- [How much power does the Camera Module use?](how-much-power-does-the-camera-module-use)
 ### CASES
- 	- [Does it come with a case?](does-it-come-with-a-case)
- 	- [Does it fit in an Altoids tin?]()
+- [Does it come with a case?](does-it-come-with-a-case)
+- [Does it fit in an Altoids tin?]()
 ### VIDEO
- 	- [What displays can I use?]()
- 	- [Does the HDMI port support CEC?]()
- 	- [Why is there no VGA support?]()
- 	- [Can I add a touchscreen?]()
- 	- [What codecs can it play?]()
+- [What displays can I use?]()
+- [Does the HDMI port support CEC?]()
+- [Why is there no VGA support?]()
+- [Can I add a touchscreen?]()
+- [What codecs can it play?]()
 ### AUDIO
- 	- [Is sound over HDMI supported?]()
- 	- [What about standard audio in and out?]()
+- [Is sound over HDMI supported?]()
+- [What about standard audio in and out?]()
 ### POWER
- 	- [What are the power requirements?]()
- 	- [Can I power the Raspberry Pi from a USB hub?]()
- 	- [Can I power the Raspberry Pi from batteries as well as from a wall socket?]()
- 	- [Is Power over Ethernet (PoE) possible?]()
+- [What are the power requirements?]()
+- [Can I power the Raspberry Pi from a USB hub?]()
+- [Can I power the Raspberry Pi from batteries as well as from a wall socket?]()
+- [Is Power over Ethernet (PoE) possible?]()
 ### SOFTWARE
- 	- [What operating system (OS) does it use?]()
- 	- [Does it have an official programming language?]()
- 	- [Will it run WINE (or Windows, or other x86 software)?]()
- 	- [Will it run the Windows 8 ARM edition?]()
- 	- [Which Linux distros run on the Pi?]()
- 	- [Will it run Android or Android Things?]()
- 	- [Will it run &lt;insert name of program here&gt;?]()
+- [What operating system (OS) does it use?]()
+- [Does it have an official programming language?]()
+- [Will it run WINE (or Windows, or other x86 software)?]()
+- [Will it run the Windows 8 ARM edition?]()
+- [Which Linux distros run on the Pi?]()
+- [Will it run Android or Android Things?]()
+- [Will it run &lt;insert name of program here&gt;?]()
 ### SD CARDS AND STORAGE
- 	- [What size of SD card do I need?]()
- 	- [What size of SD card can it support?]()
- 	- [What happens if I brick the device?]()
+- [What size of SD card do I need?]()
+- [What size of SD card can it support?]()
+- [What happens if I brick the device?]()
 ### NETWORKING, USB, AND WIRELESS
- 	- [Does the device support networking?]()
- 	- [Is there built-in WiFi?]()
- 	- [Is there built-in Bluetooth?]()
- 	- [ is there no Gigabit Ethernet?]()
- 	- [Does the device have support for any form of netbooting or PXE?]()
- 	- [How do you connect more USB devices?]()
+- [Does the device support networking?]()
+- [Is there built-in WiFi?]()
+- [Is there built-in Bluetooth?]()
+- [ is there no Gigabit Ethernet?]()
+- [Does the device have support for any form of netbooting or PXE?]()
+- [How do you connect more USB devices?]()
 ### EDUCATIONAL USES
  	<li><a href="#educationMaterial"> What educational resources are available?</a></li>
 ### ADDITIONAL QUESTIONS
@@ -105,7 +105,7 @@ The Raspberry Pi is a credit-card-sized computer that plugs into your TV and a k
 #### 2. CAN I BUY SHARES IN THE RASPBERRY PI FOUNDATION?
 The Raspberry Pi Foundation is a charity, so you can’t buy shares in the company. If you want to support us, we would love you to buy a Raspberry Pi.
 ### BUYING AND SHIPPING
-#### 1. WHERE CAN I BUY A RASPBERRY PI?
+#### WHERE CAN I BUY A RASPBERRY PI?
 Go to our <a href="https://www.raspberrypi.org/products/">products page</a> and choose the product(s) you want to buy. Then select your country from the drop-down menu. You will be presented with our approved resellers for your country. <a href="#topBuying">-Buying and Shipping</a> <a href="#topToc">-Top</a>
 #### HOW MUCH DOES IT COST?
 |Product|Price|
@@ -123,8 +123,8 @@ All these prices are exclusive of any local taxes and shipping/handling fees.
 
 #### 3. WHAT DO I GET WHEN I BUY ONE?
 You get the Raspberry Pi board itself. A power supply and SD card are not included, but can be purchased at the same time from most places that sell the Raspberry Pi. You can also purchase pre-loaded SD cards; we recommend buying these from us or our licensed distributors rather than from third parties on eBay, as our software is updated regularly and cards sold by third parties can quickly become outdated.
-#### 4. WHY IS THE PRICE IN US DOLLARS? YOU ARE A UK COMPANY!
-The components we buy are priced in dollars, and we negotiate manufacturing in dollars. Because currency markets are so volatile, we price the final board in dollars as well so we don’t have to keep changing the price. 
+#### 4. WHY IS THE PRICE IN US DOLLARS?
+Although we are a UK company, the components we buy are priced in dollars, and we negotiate manufacturing in dollars. Because currency markets are so volatile, we price the final board in dollars as well so we don’t have to keep changing the price. 
 #### 5. CAN I BUY A RASPBERRY PI KIT?
 Many Raspberry Pi resellers produce bundles for people who would rather get everything they need from a single source. In 2016, we put together our own Raspberry Pi Official Starter Kit. The kit is available to order online in the UK from our partners <a href="https://www.element14.com/community/docs/DOC-83184">element14</a> and <a href="http://uk.rs-online.com/web/p/processor-microcontroller-development-kits/8968119/">RS Components</a>, priced at £99+VAT, and from distributors and resellers around the world. 
 
