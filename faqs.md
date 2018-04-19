@@ -37,7 +37,7 @@
 - [What hardware interfaces does it have?](#what-hardware-interfaces-does-it-have)
 - [Why is there no real-time clock (RTC)?](#why-is-there-no-real-time-clock)
 - [Can I add extra memory?](#can-i-add-extra-memory)
-- [Why doesn’t the Raspberry Pi include &lt;insert name&gt; piece of hardware or &lt;insert name&gt; sort of port?]([why-doesnt-the-raspberry-pi-include-&lt;insert name&gt;-piece-of-hardware-or &lt;insert-name&gt;-sort-of-port)
+- [Why doesn’t the Raspberry Pi include &lt;insert name&gt; piece of hardware or &lt;insert name&gt; sort of port?](why-doesnt-the-raspberry-pi-include-&lt;insert name&gt;-piece-of-hardware-or &lt;insert-name&gt;-sort-of-port)
 - [What is its operating temperature?](#what-is-its-operating-temperature)
   
 #### CAMERA
