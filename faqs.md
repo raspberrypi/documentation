@@ -37,7 +37,7 @@
 - [What hardware interfaces does it have?](#what-hardware-interfaces-does-it-have)
 - [Why is there no real-time clock (RTC)?](#why-is-there-no-real-time-clock)
 - [Can I add extra memory?](#can-i-add-extra-memory)
-- [Why doesn’t the Raspberry Pi include a particular type of hardware?](why-doesnt-the-raspberry-pi-include-a-particular-type-of-hardware)
+- [Why doesn’t the Raspberry Pi include a particular type of hardware?](#why-doesnt-the-raspberry-pi-include-a-particular-type-of-hardware)
 - [What is its operating temperature?](#what-is-its-operating-temperature)
   
 #### CAMERA
@@ -73,7 +73,7 @@
 - [Will it run the Windows 8 ARM edition?](#will-it-run-the-windows-8-arm-edition)
 - [Which Linux distros run on the Pi?](#which-linux-distros-run-on-the-pi)
 - [Will it run Android or Android Things?](#will-it-run-android-or-android-things)
-- [Will it run any old software?]()
+- [Will it run any old software?](#will-it-run-any-old-software)
 #### SD CARDS AND STORAGE
 - [What size of SD card do I need?](#what-size-of-sd-card-do-i-need)
 - [What size of SD card can it support?](#what-size-of-sd-card-can-it-support)
