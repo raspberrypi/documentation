@@ -37,14 +37,14 @@
 - [What hardware interfaces does it have?](#what-hardware-interfaces-does-it-have)
 - [Why is there no real-time clock (RTC)?](#why-is-there-no-real-time-clock)
 - [Can I add extra memory?](#can-i-add-extra-memory)
-- [Why doesn’t the Raspberry Pi include &lt;insert name&gt; piece of hardware or &lt;insert name&gt; sort of port?]()
+- [Why doesn’t the Raspberry Pi include &lt;insert name&gt; piece of hardware or &lt;insert name&gt; sort of port?]([why-doesnt-the-raspberry-pi-include-&lt;insert name&gt;-piece-of-hardware-or &lt;insert-name&gt;-sort-of-port)
 - [What is its operating temperature?](#what-is-its-operating-temperature)
   
 #### CAMERA
 - [What is the Camera Module?](#what-is-the-camera-module)
 - [What model of camera does the Camera Module use?](#what-model-of-camera-does-the-camera-module-use)
 - [What resolutions are supported?](#what-resolutions-are-supported)
-- [Which picture formats are supported?](#what-picture-formats-are-supported)
+- [What picture formats are supported?](#what-picture-formats-are-supported)
 - [How do I use the camera?](#how-do-i-use-the-camera)
 - [Can I extend the ribbon cable?](#can-i-extend-the-ribbon-cable)
 - [Can I have a camera with more megapixels?](#can-i-have-a-camera-with-more-megapixels)
@@ -83,7 +83,7 @@
 - [Is there built-in WiFi?](#is-there-built-in-wifi)
 - [Is there built-in Bluetooth?](#is-there-built-in-bluetooth)
 - [Why is there no Gigabit Ethernet?](#why-is-there-no-gigabit-ethernet)
-- [Does the device have support for any form of netbooting or PXE?](does-the-device-have-support-for-any-form-of-netbooting-or-pxe)
+- [Does the device have support for any form of netbooting or PXE?](#does-the-device-have-support-for-any-form-of-netbooting-or-pxe)
 - [How do you connect more USB devices?](#how-do-you-connect-more-usb-devices)
 #### EDUCATIONAL USES
 - [What educational resources are available?](#what-educational-resources-are-available)
@@ -244,7 +244,7 @@ The Camera Module V2 is a Sony IMX219, while the original Camera Module is an Om
 #### WHAT RESOLUTIONS ARE SUPPORTED?
 The Camera Module V2 is capable of taking photos up to 8 megapixels (8MP). It supports 1080p30, 720p60 and VGA90 video modes, as well as still capture. The original Camera Module is capable of taking photos up to 5 megapixels and can record video at resolutions up to 1080p30.
 
-#### WHICH PICTURE FORMATS ARE SUPPORTED?
+#### WHAT PICTURE FORMATS ARE SUPPORTED?
 The Raspberry Pi Camera Modules supports raw capturing (Bayer data direct from the sensor) or encoding as JPEG, PNG, GIF and BMP, uncompressed YUV, and uncompressed RGB photos. They can record video as H.264, baseline, main, and high-profile formats.
 
 #### HOW DO I USE THE CAMERA?
