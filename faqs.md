@@ -1,11 +1,11 @@
 # FAQs
 
 ## Table of Contents
-### INTRODUCTION
+#### INTRODUCTION
 - [What is a Raspberry Pi?](#what-is-a-raspberry-pi)
 - [Can I buy shares in the Raspberry Pi Foundation?](#can-i-buy-shares-in-the-raspberry-pi-foundation)
 
-### BUYING AND SHIPPING
+#### BUYING AND SHIPPING
 - [Where can I buy a Raspberry Pi?](#where-can-i-buy-a-raspberry-pi)
 - [How much does it cost?](#how-much-does-it-cost)
 - [What do I get when I buy one?](#what-do-i-get-when-i-buy-one)
@@ -15,11 +15,11 @@
 - [Is the device available internationally?](#is-the-device-available-internationally)
 - [I want to be a Raspberry Pi reseller.](#i-want-to-be-a-raspberry-pi-reseller)
 
-### GENERAL
+#### GENERAL
 - [What is the username and password for the Raspberry Pi?](#what-is-the-username-and-password-for-the-raspberry-pi)
 - [Why does nothing happen when I type in my password? Did my Raspberry Pi freeze?](#why-does-nothing-happen-when-i-type-my-password)
 - [What are the differences between Raspberry Pi models?](#what-are-the-differences-between-raspberry-pi-models)
-- [How do I connect a mouse and keyboard?](#how-do-i-connect-a-mouse-and-keyboard
+- [How do I connect a mouse and keyboard?](#how-do-i-connect-a-mouse-and-keyboard)
 - [Where is the on off switch?](#where-is-the-on-off-switch)
 - [What is NOOBS?](#what-is-noobs)
 - [When will the next model of the Raspberry Pi be released?](#when-will-the-next-model-of-the-raspberry-pi-be-released)
@@ -30,17 +30,17 @@
 - [Why did you select the SoC?](#why-did-you-select-the-soc)
 - [How does it boot?](#how-does-it-boot)
 - [Do you sell a self-assembly kit?](#do-you-sell-a-self-assembly-kit)
-### PERFORMANCE AND COST CONSIDERATIONS
+#### PERFORMANCE AND COST CONSIDERATIONS
 - [How powerful is it?](#how-powerful-is-it)
 - [Does it overclock?](#does-it-overclock)
 - [Does it need a heatsink?](#does-it-need-a-heatsink)
 - [What hardware interfaces does it have?](#what-hardware-interfaces-does-it-have)
-- [Why is there no real-time clock (RTC)?](#why-is-there-no-real-time-clock-(rtc))
+- [Why is there no real-time clock (RTC)?](#why-is-there-no-real-time-clock)
 - [Can I add extra memory?](#can-i-add-extra-memory)
 - [Why doesn’t the Raspberry Pi include &lt;insert name&gt; piece of hardware or &lt;insert name&gt; sort of port?]()
 - [What is its operating temperature?](#what-is-its-operating-temperature)
   
-### CAMERA
+#### CAMERA
 - [What is the Camera Module?](#what-is-the-camera-module)
 - [What model of camera does the Camera Module use?](#what-model-of-camera-does-the-camera-module-use)
 - [What resolutions are supported?](#what-resolutions-are-supported)
@@ -49,24 +49,24 @@
 - [Can I extend the ribbon cable?](#can-i-extend-the-ribbon-cable)
 - [Can I have a camera with more megapixels?](#can-i-have-a-camera-with-more-megapixels)
 - [How much power does the Camera Module use?](#how-much-power-does-the-camera-module-use)
-### CASES
+#### CASES
 - [Does it come with a case?](#does-it-come-with-a-case)
 - [Does it fit in an Altoids tin?]()
-### VIDEO
+#### VIDEO
 - [What displays can I use?]()
 - [Does the HDMI port support CEC?]()
 - [Why is there no VGA support?]()
 - [Can I add a touchscreen?]()
 - [What codecs can it play?]()
-### AUDIO
+#### AUDIO
 - [Is sound over HDMI supported?]()
 - [What about standard audio in and out?]()
-### POWER
+#### POWER
 - [What are the power requirements?]()
 - [Can I power the Raspberry Pi from a USB hub?]()
 - [Can I power the Raspberry Pi from batteries as well as from a wall socket?]()
 - [Is Power over Ethernet (PoE) possible?]()
-### SOFTWARE
+#### SOFTWARE
 - [What operating system (OS) does it use?]()
 - [Does it have an official programming language?]()
 - [Will it run WINE (or Windows, or other x86 software)?]()
@@ -74,21 +74,21 @@
 - [Which Linux distros run on the Pi?]()
 - [Will it run Android or Android Things?]()
 - [Will it run &lt;insert name of program here&gt;?]()
-### SD CARDS AND STORAGE
+#### SD CARDS AND STORAGE
 - [What size of SD card do I need?]()
 - [What size of SD card can it support?]()
 - [What happens if I brick the device?]()
-### NETWORKING, USB, AND WIRELESS
+#### NETWORKING, USB, AND WIRELESS
 - [Does the device support networking?]()
 - [Is there built-in WiFi?]()
 - [Is there built-in Bluetooth?]()
 - [ is there no Gigabit Ethernet?]()
 - [Does the device have support for any form of netbooting or PXE?]()
 - [How do you connect more USB devices?]()
-### EDUCATIONAL USES
+#### EDUCATIONAL USES
  	<li><a href="#educationMaterial"> What educational resources are available?</a></li>
-### ADDITIONAL QUESTIONS
-### GLOSSARY
+#### ADDITIONAL QUESTIONS
+#### GLOSSARY
   [BGA]()
  	[Brick]()
  	[Distro]()
@@ -99,6 +99,7 @@
  	[SoC]()
 
 ### INTRODUCTION
+
 #### WHAT IS A RASPBERRY PI?
 The Raspberry Pi is a credit-card-sized computer that plugs into your TV and a keyboard. It is a capable little computer which can be used in electronics projects, and for many of the things that your desktop PC does, like spreadsheets, word processing, browsing the internet, and playing games. It also plays high-definition video. We want to see it being used by adults and children all over the world to learn programming and digital making. You can read more about the Raspberry Pi [here]("https://www.raspberrypi.org/help/what-is-a-raspberry-pi/").
 
@@ -141,10 +142,10 @@ We have an exclusive manufacturing and distribution arrangement with [RS](http:/
 #### WHAT IS THE USERNAME AND PASSWORD FOR THE RASPBERRY PI?
 The default username for Raspbian is “pi” (without any quotation marks) and the default password is “raspberry” (again, do not include the quotation marks). If this does not work, check the information about your specific distro on the <a href="https://www.raspberrypi.org/downloads">downloads page</a>.
 
-#### WHY DOES NOTHING HAPPEN WHEN I TYPE IN MY PASSWORD? DID MY RASPBERRY PI FREEZE?
+#### WHY DOES NOTHING HAPPEN WHEN I TYPE IN MY PASSWORD?
 To protect your information, Linux does not display anything when you are entering passwords in the Bash prompt or the terminal. As long as you were able to see the username being typed in, your keyboard is working correctly.
 
-#### WHAT ARE THE DIFFERENCES BETWEEN MODELS?
+#### WHAT ARE THE DIFFERENCES BETWEEN RASPBERRY PI MODELS?
 These are the <a href="https://www.raspberrypi.org/products/">models of the Raspberry Pi</a> which are currently available: the Pi 3 Model B, the Pi 2 Model B, the Pi Zero, the Pi Zero W and the Pi 1 Model B+ and A+.
 
 | Product | SoC | Speed | RAM | USB Ports | Ethernet | Wireless/Bluetooth |
@@ -175,7 +176,7 @@ You can check our <a href="https://www.raspberrypi.org/products/">products</a> p
 #### HOW DO I CONNECT A MOUSE AND KEYBOARD?
 The Model A/A+ has one USB port, the Model B has two ports, and the Model B+, Pi 2 Model B, and Pi 3 Model B have four ports. These can be used to connect most USB 2.0 devices. Additional USB devices such as mice, keyboards, network adapters, and external storage can be connected via a USB hub. The Pi Zero and Pi Zero W have a single micro USB port, this requires a USB OTG cable to connect devices such as keyboards or hubs.
 
-#### WHERE IS THE ON/OFF SWITCH?
+#### WHERE IS THE ON OFF SWITCH?
 There is no on/off switch! To switch on, just plug it in. To switch off, if you are in the graphical environment, you can either log out from the main menu, exit to the Bash prompt, or open the terminal. From the Bash prompt or terminal you can shut down the Raspberry Pi by entering “sudo halt -h” (without the quotation marks). Wait until all the LEDs except the power LED are off, then wait an additional second to make sure the SD card can finish its wear-levelling tasks and write actions. You can now safely unplug the Raspberry Pi. Failure to shut the Raspberry Pi down properly may corrupt your SD card, which would mean you would have to re-image it.
 
 #### WHAT IS NOOBS?
@@ -229,7 +230,7 @@ Depending on the model, the Raspberry Pi has either 40 or 26 dedicated <a href="
 
 There is also a dedicated CSI-2 camera port for the <a href="https://www.raspberrypi.org/products/">Raspberry Pi camera</a>, and a DSI display port for the <a href="https://www.raspberrypi.org/products/raspberry-pi-touch-display/">Raspberry Pi LCD touchscreen display</a>.
 
-#### WHY IS THERE NO REAL-TIME CLOCK (RTC)?
+#### WHY IS THERE NO REAL-TIME CLOCK?
 The expectation is that non-network-connected units will have their clocks updated manually at startup. Adding an RTC is surprisingly expensive once you have factored in batteries, area, and components, and would have pushed us above our target price. You can add one yourself using the <a href="#glossarygpio">GPIO</a> pins if you’d like an interesting electronics project.
 
 #### CAN I ADD EXTRA MEMORY?
