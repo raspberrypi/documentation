@@ -11,6 +11,13 @@ To scan for WiFi networks, use the command `sudo iwlist wlan0 scan`. This will l
 
 1. 'IE: IEEE 802.11i/WPA2 Version 1' is the authentication used. In this case it's WPA2, the newer and more secure wireless standard which replaces WPA. This guide should work for WPA or WPA2, but may not work for WPA2 enterprise. For WEP hex keys, see the last example [here](http://www.freebsd.org/cgi/man.cgi?query=wpa_supplicant.conf&sektion=5&apropos=0&manpath=NetBSD+6.1.5). You'll also need the password for the wireless network. For most home routers, this is found on a sticker on the back of the router. The ESSID (ssid) for the examples below is `testing` and the password (psk) is `testingPassword`.
 
+If you receive an error saying that the interface doesn't support scanning, run the following commands and try again:
+
+```
+sudo rfkill unblock wifi
+sudo ifconfig wlan0 up
+```
+
 ## Adding the network details to the Raspberry Pi
 
 Open the `wpa-supplicant` configuration file in nano:
