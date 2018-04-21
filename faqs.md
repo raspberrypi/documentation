@@ -74,6 +74,7 @@
 - [Which Linux distros run on the Pi?](#which-linux-distros-run-on-the-pi)
 - [Will it run Android or Android Things?](#will-it-run-android-or-android-things)
 - [Will it run any old software?](#will-it-run-any-old-software)
+- [Why does cpuinfo report I have a bcm2835?](#why-does-cpuinfo-report-i-have-a-bcm2835)
 #### SD CARDS AND STORAGE
 - [What size of SD card do I need?](#what-size-of-sd-card-do-i-need)
 - [What size of SD card can it support?](#what-size-of-sd-card-can-it-support)
@@ -357,6 +358,9 @@ Google supports Android Things on the Raspberry Pi 3 as a development platform. 
 
 #### WILL IT RUN ANY OLD SOFTWARE?
 In general, you need to look to see whether the program you want can be compiled for the ARMv6 (Pi 1/Zero/Zero W/CM), ARMv7 (Pi 2) or ARMv8 (Pi 3) architecture on Linux. In most cases, the answer will be yes. Specific programs are discussed on [our forums](https://www.raspberrypi.org/forums/), so you might want to look there for an answer. Ultimately, nothing beats grabbing a Raspberry Pi and finding out the answer through direct testing!
+
+#### Why does cpuinfo report I have a bcm2835
+The upstream Linux kernel developers had decided that all models of Raspbery Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that `cat /proc/cpuinfo` is inaccurate for the Raspbery Pi 2 and Raspbery Pi 3, which use the bcm2836 and bcn283 respectively. You can use `cat /proc/device-tree/model` to get an accurate description of the SoC on your Pi model.
 
 ### SD CARDS AND STORAGE
 
