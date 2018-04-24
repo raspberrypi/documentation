@@ -46,11 +46,14 @@ For Linux users we recommend `gparted` (or the command line version `parted`). N
 The following operating systems are currently included in NOOBS:
 
 - [Raspbian](http://raspbian.org/)
-- [Pidora](http://pidora.ca/)
 - [LibreELEC](https://libreelec.tv/)
 - [OSMC](https://osmc.tv/)
+- [Recalbox](https://www.recalbox.com/)
+- [Lakka](http://www.lakka.tv/)
 - [RISC OS](https://www.riscosopen.org/wiki/documentation/show/Welcome%20to%20RISC%20OS%20Pi)
-- [Arch Linux](http://archlinuxarm.org/platforms/armv6/raspberry-pi)
+- [Screenly OSE](https://www.screenly.io/ose/)
+- [Windows 10 IoT Core](https://developer.microsoft.com/en-us/windows/iot)
+- [TLXOS](https://thinlinx.com/)
 
 As of NOOBS v1.3.10 (September 2014), only Raspbian is installed by default in NOOBS. The others can be installed with a network connection.
 
