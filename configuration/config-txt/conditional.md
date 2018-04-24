@@ -36,6 +36,10 @@ These are particularly useful for defining different `kernel`, `initramfs`, and 
 
 Remember to use the `[all]` filter at the end, so that any subsequent settings aren't limited to Pi 2 hardware only.
 
+It is important to note that the Raspberry Pi Zero W will see the contents of [pi0w] AND [pi0]. Likewise, a Raspberry Pi 3B Plus sees [pi3+] AND [pi3]. If you want a setting to apply only to Pi Zero or Pi 3B you need to follow it (order is important) with a setting in the [pi0w] or [pi3+] section that reverts it.
+
+
+
 ## The `[none]` filter
 
 The `[none]` filter prevents any settings that follow from being applied to any hardware. Although there is nothing that you can't do without `[none]`, it can be a useful way to keep groups of unused settings in config.txt without having to comment out every line.
