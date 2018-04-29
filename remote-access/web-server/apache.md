@@ -6,7 +6,13 @@ On its own, Apache can serve HTML files over HTTP, and with additional modules c
 
 ## Install Apache
 
-First install the `apache2` package by typing the following command in to the Terminal:
+First, update the available packages by typing the following command into the Terminal:
+
+```bash
+sudo apt-get update
+```
+
+Then, install the `apache2` package with this command:
 
 ```bash
 sudo apt-get install apache2 -y
