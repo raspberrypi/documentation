@@ -128,7 +128,7 @@ sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
 
 Edit /etc/rc.local and add this just above "exit 0" to install these rules on boot.
 ```
-iptables-restore < /etc/iptables.ipv4.nat
+sudo iptables-restore < /etc/iptables.ipv4.nat
 ```
 Reboot
 
