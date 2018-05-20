@@ -299,7 +299,7 @@ Version 2.x (IMX219)
 |4|1640x1232|4:3|0.1-40fps|Full|2x2|
 |5|1640x922|16:9|0.1-40fps|Full|2x2|
 |6|1280x720|16:9|40-90fps|Partial|2x2|
-|7|640x480|4:3|40-90fps|Partial|2x2|
+|7|640x480|4:3|40-200fps|Partial|2x2|
 
 ```
 	--camselect,	-cs
