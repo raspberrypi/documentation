@@ -40,7 +40,7 @@ Then open a terminal window and execute:
 sudo apt-get update
 sudo apt-get -y dist-upgrade
 ```
-Answer 'yes' to any prompts. There may also be a point at which the install pauses while a page of information is shown on the screen – hold the <kbd>space</kbd> key to scroll through all of this and then press <kbd>q/kbd> to continue.
+Answer 'yes' to any prompts. There may also be a point at which the install pauses while a page of information is shown on the screen – hold the <kbd>space</kbd> key to scroll through all of this and then press <kbd>q<kbd> to continue.
 
 Finally, if you are not using PulseAudio for anything other than Bluetooth audio, remove it from the image by entering:
 
