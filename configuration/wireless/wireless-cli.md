@@ -3,6 +3,16 @@
 
 This method is suitable if you don't have access to the graphical user interface normally used to set up WiFi on the Raspberry Pi. It is particularly suitable for use with a serial console cable if you don't have access to a screen or wired Ethernet network. Note also that no additional software is required; everything you need is already included on the Raspberry Pi.   
 
+## Using raspi-config
+
+The quickest way to enable wireless networking is to use the command line raspi-config tool.
+
+`sudo raspi-config`
+
+Selection the `Network Options` item from the menu, then the `Wif-fi` option. On a fresh install, for regulatory purposes, you will need to specify the country in which the device is being used. Then set the SSID of the network, and the passphrase for the network. If you do not know the SSID of the network you want to connect to, see the next section on how to list available networks prior to running raspi-config. 
+
+Note that raspi-config does not provide a complete set of options for setting up wireless networking, so you may need to refer to the extra sections below for more details if raspi-config fails to connect to your requested network.
+
 ## Getting WiFi network details  
 
 To scan for WiFi networks, use the command `sudo iwlist wlan0 scan`. This will list all available WiFi networks, along with other useful information. Look out for:
