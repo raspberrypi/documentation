@@ -45,7 +45,12 @@ Reconfigure the interface with `wpa_cli -i wlan0 reconfigure`.
 
 You can verify whether it has successfully connected using `ifconfig wlan0`. If the `inet addr` field has an address beside it, the Raspberry Pi has connected to the network. If not, check that your password and ESSID are correct.  
 
-## Unsecured Networks
+On the Raspberry Pi 3 Model B+, you will also need to set the country code, so that the 5G networking can choose the correct frequency bands. You can either use the raspi-config application and select the localisation option, or edit the `wpa_supplicant.conf` file and add the following. (Note you need to replace 'GB' with the ISO code of your country. See [Wikipedia](https://en.wikipedia.org/wiki/ISO_3166-1) for a list of country codes.)
+```
+country=GB
+```
+
+## Unsecured networks
 
 If the network you are connecting to does not use a password, the `wpa_supplicant` entry for the network will need to include the correct `key_mgmt` entry.
 e.g.
@@ -56,7 +61,7 @@ network={
 }
 ```
 
-## Hidden Networks
+## Hidden networks
 
 If you are using a hidden network, an extra option in the `wpa_supplicant file`, `scan_ssid`, may help connection.
 

@@ -1,87 +1,61 @@
-# GPIO: Raspberry Pi Models A and B
+# GPIO
 
-### An introduction to GPIO and physical computing on the Raspberry Pi
+A powerful feature of the Raspberry Pi is the row of GPIO (general-purpose input/output) pins along the top edge of the board. A 40-pin GPIO header is found on all current Raspberry Pi boards (unpopulated on Pi Zero and Pi Zero W). Prior to the Pi 1 Model B+ (2014), boards comprised a shorter 26-pin header.
 
-One powerful feature of the Raspberry Pi is the row of GPIO (general purpose input/output) pins along the edge of the board, next to the yellow video out socket.
+![GPIO pins](images/gpio-pins-pi2.jpg)
 
-![GPIO pins](images/gpio-pins.jpg)
+Any of the GPIO pins can be designated (in software) as an input or output pin and used for a wide range of purposes.
 
-These pins are a physical interface between the Pi and the outside world. At the simplest level, you can think of them as switches that you can turn on or off (input) or that the Pi can turn on or off (output). Seventeen of the 26 pins are GPIO pins; the others are power or ground pins.
+![GPIO layout](images/gpio-numbers-pi2.png)
 
-![GPIO layout](images/a-and-b-gpio-numbers.png)
+**Note: the numbering of the GPIO pins is not in numerical order; GPIO pins 0 and 1 are present on the board (physical pins 27 and 28) but are reserved for advanced use (see below).**
 
-## What are they for? What can I do with them?
+## Voltages
 
-You can program the pins to interact in amazing ways with the real world. Inputs don't have to come from a physical switch; it could be input from a sensor or a signal from another computer or device, for example. The output can also do anything, from turning on an LED to sending a signal or data to another device. If the Raspberry Pi is on a network, you can control devices that are attached to it from anywhere\*\* and those devices can send data back. Connectivity and control of physical devices over the internet is a powerful and exciting thing, and the Raspberry Pi is ideal for this. There are lots of brilliant examples of physical computing on [our blog](https://www.raspberrypi.org/blog/).
+Two 5V pins and two 3V3 pins are present on the board, as well as a number of ground pins (0V), which are unconfigurable. The remaining pins are all general purpose 3V3 pins, meaning outputs are set to 3V3 and inputs are 3V3-tolerant.
 
-**Note**: Not **literally** anywhere, of course. You need things like access to the network, a network capable computing device, and electricity. Please do not write to us to point this out. :)
+## Outputs
 
-## How the GPIO pins work
+A GPIO pin designated as an output pin can be set to high (3V3) or low (0V).
 
-### Output
+## Inputs
 
-**WARNING**: If you follow the instructions, then messing about with the GPIO is safe and fun. Randomly plugging wires and power sources into your Pi, however, may kill it. Bad things can also happen if you try to connect things to your Pi that use a lot of power; LEDs are fine, motors are not. If you are worried about this, then you might want to consider using a breakout board such as the [Pibrella](http://pibrella.com/) until you are confident enough to use the GPIO directly.
+A GPIO pin designated as an input pin can be read as high (3V3) or low (0V). This is made easier with the use of internal pull-up or pull-down resistors. Pins GPIO2 and GPIO3 have fixed pull-up resistors, but for other pins this can be configured in software.
 
-Ignoring the Pi for a moment, one of the simplest electrical circuits that you can build is a battery connected to a light source and a switch (the resistor is there to protect the LED):
+## More
 
-![Simple circuit](images/simple-circuit.png)
+As well as simple input and output devices, the GPIO pins can be used with a variety of alternative functions, some are available on all pins, others on specific pins.
 
-When we use a GPIO pin as an output, the Raspberry Pi replaces **both the switch and the battery** in the above diagram. Each pin can turn on or off, or go HIGH or LOW in computing terms. When the pin is HIGH it outputs 3.3 volts (3v3); when the pin is LOW it is off.
+- PWM (pulse-width modulation)
+    - Software PWM available on all pins
+    - Hardware PWM available on GPIO12, GPIO13, GPIO18, GPIO19
+- SPI
+    - SPI0: MOSI (GPIO10); MISO (GPIO9); SCLK (GPIO11); CE0 (GPIO8), CE1 (GPIO7)
+    - SPI1: MOSI (GPIO20); MISO (GPIO19); SCLK (GPIO21); CE0 (GPIO18); CE1 (GPIO17); CE2 (GPIO16)
+- I2C
+    - Data: (GPIO2); Clock (GPIO3)
+    - EEPROM Data: (GPIO0); EEPROM Clock (GPIO1)
+- Serial
+    - TX (GPIO14); RX (GPIO15)
 
-Here's the same circuit using the Raspberry Pi. The LED is connected to a GPIO pin (which can output +3v3) and a ground pin (which is 0v and acts like the negative terminal of the battery):
+## GPIO pinout
 
-![GPIO with LED](images/gpio-led.png)
+It's important to be aware of which pin is which. Some people use pin labels (like the [RasPiO Portsplus](http://rasp.io/portsplus/) PCB, or the printable [Raspberry Leaf](https://github.com/splitbrain/rpibplusleaf)).
 
-The next step is to write a program to tell the pin to go HIGH or LOW. Here's an example using [Python](https://www.raspberrypi.org/learning/quick-reaction-game/) (see Step 2), and here's how to do it in [Scratch](https://www.raspberrypi.org/learning/robot-antenna/).
+![](images/raspio-portsplus.jpg)
 
-### Input
+A handy reference can be accessed on the Raspberry Pi by opening a terminal window and running the command `pinout`. This tool is provided by the [GPIO Zero](https://gpiozero.readthedocs.io/) Python library, which it is installed by default on the Raspbian desktop image, but not on Raspbian Lite.
 
-GPIO **outputs** are easy; they are on or off, HIGH or LOW, 3v3 or 0v. **Inputs** are a bit trickier because of the way that digital devices work. Although it might seem reasonable just to connect a button across an input pin and a ground pin, the Pi can get confused as to whether the button is on or off. It might work properly, it might not. It's a bit like floating about in deep space; without a reference it would be hard to tell if you were going up or down, or even what up or down meant!
-
-This is why you will see phrases like "pull up" and "pull down" in Raspberry Pi GPIO tutorials. It's a way of giving the input pin a reference so it knows for certain when an input is received.
-
-If you'd like to have a go at using the GPIO as an input then have a look at our [burping jelly baby](https://www.raspberrypi.org/learning/burping-jelly-baby/) and [quick reaction game](https://www.raspberrypi.org/learning/quick-reaction-game/) tutorials for Python, or a [reaction game](https://www.raspberrypi.org/learning/reaction-game/) for Scratch.
-
-## The end of the guide. The start of something amazing
-
-We hope that this has encouraged you to have a go at physical computing using the Pi's GPIO; it's really not as daunting as it looks. It all starts with a simple LED, but it can take you to incredible places. Do not underestimate the fun, creativity and sense of achievement you can get from a little computer and a bunch of pins. Have fun! And if you do make something cool please let us know. :)
-
----
-
-## Glossary
-
-### GPIO
-
-General purpose input/output; in this specific case the pins on the Raspberry Pi and what you can do with them. So called because you can use them for all sorts of purposes; most can be used as either inputs or outputs, depending on your program.
-
-### LED
-
-Light-emitting diode- a small, low-power light source used widely in electronics. Ideal as an introduction to physical computing on the Pi.
-
-### Physical computing
-
-Computing that involves tangible things connected to a computer, beyond standard input and output devices like keyboards and monitors. Think buttons, lights, robots, alarms, sensors, home automation, teddy bears called Babbage in near space and so on. We love physical computing because as well as being lots of fun, it's such a powerful teaching and learning tool and encourages creativity, problem solving, and collaboration. Computing **beyond the screen** engages children of all ages, and you can make very cool stuff!
-
----
-
-## Appendix 1. A note on pin numbering
-
-When programming the GPIO pins there are two different ways to refer to them: GPIO numbering and physical numbering. 
-
-#### GPIO numbering
-
-These are the GPIO pins as the computer sees them. The numbers don't make any sense to humans, they jump about all over the place, so there is no easy way to remember them. You will need a printed reference or a reference board that fits over the pins. 
-
-#### Physical numbering
-
-The other way to refer to the pins is by simply counting across and down from pin 1 at the top left (nearest to the SD card). This is 'physical numbering' and it looks like this:
-
-![GPIO layout](images/a-and-b-physical-pin-numbers.png)
-
-#### Which system should I use?
-
-Beginners and young children may find the physical numbering system simpler -- you simply count the pins. You'll still need a diagram like the one above to know which are GPIO pins, which are ground and which are power though. 
-
-Generally we recommend using the GPIO numbering. It's good practice and most resources use this system. Take your pick though -- as long as you use the same system within a program then all will be well. Note that pin numbering can also depend on what programming language you are using: Scratch GPIO, for example, uses physical pin numbers whereas in Python you can choose which to use.
+![](images/gpiozero-pinout.png)
 
 For more details on the advanced capabilities of the GPIO pins see gadgetoid's [interactive pinout diagram](http://pinout.xyz/).
+
+## Programming with GPIO
+
+It is possible to control GPIO pins using a number of programming languages and tools. See the following guides to get started:
+
+- [GPIO with Scratch 1.4](scratch1/README.md)
+- [GPIO with Scratch 2](scratch2/README.md)
+- [GPIO with Python](python/README.md)
+
+**Warning: while connecting up simple components to the GPIO pins is perfectly safe, it's important to be careful how you wire things up. LEDs should have resistors to limit the current passing through them. Do not use 5V for 3V3 components. Do not connect motors directly to the GPIO pins, instead use an [H-bridge circuit or a motor controller board](https://projects.raspberrypi.org/en/projects/physical-computing/16).**

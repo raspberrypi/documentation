@@ -24,7 +24,7 @@ User=pi
 [Install]
 WantedBy=multi-user.target
 ```
-So in this instance, the service would run Python 3 from our working directory `/home/pi/myscript` which contains our python program to run `myscript.py`. But you are not limited to Python programs: simply change the ExecStart line to be the command to start any program/script that you want running from booting.
+So in this instance, the service would run Python 3 from our working directory `/home/pi/myscript` which contains our python program to run `main.py`. But you are not limited to Python programs: simply change the ExecStart line to be the command to start any program/script that you want running from booting.
 
 Copy this file into `/etc/systemd/system` as root, for example:
 ```
@@ -55,5 +55,3 @@ Some things to be aware of:
 You can get more information from:
 ``` man systemctl```
 or here: https://fedoramagazine.org/what-is-an-init-system/
-
-Also be sure to reference absolute file names rather than doing so relative to your home folder, for example use `/home/pi/myscript.py` rather than `myscript.py`.

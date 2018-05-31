@@ -75,4 +75,8 @@ Full camera software documentation can be found at [raspbian/applications/camera
 
 ## Mechanical drawing
 
-- Camera Module v2 [PDF](rpi-cam-v2_1-dimensions.pdf)
+- Camera Module v2 [PDF](mechanical/rpi_MECH_Camera2_2p1.pdf)
+
+## Schematics
+
+- Camera Module v2 [PDF](schematics/rpi_SCH_Camera2_2p1.pdf)

@@ -22,7 +22,9 @@ Any settings below a `[pi2]` filter will only be applied to Pi 2 hardware. The `
     [pi1]
     [pi2]
     [pi3]
+    [pi3+]
     [pi0]
+    [pi0w]
 
 These are particularly useful for defining different `kernel`, `initramfs`, and `cmdline` settings, as the Pi 1 and Pi 2 require different kernels. They can also be useful to define different overclocking settings, as the Pi 1 and Pi 2 have different default speeds. For example, to define separate `initramfs` images for each:
 
@@ -33,6 +35,10 @@ These are particularly useful for defining different `kernel`, `initramfs`, and 
     [all]
 
 Remember to use the `[all]` filter at the end, so that any subsequent settings aren't limited to Pi 2 hardware only.
+
+It is important to note that the Raspberry Pi Zero W will see the contents of [pi0w] AND [pi0]. Likewise, a Raspberry Pi 3B Plus sees [pi3+] AND [pi3]. If you want a setting to apply only to Pi Zero or Pi 3B you need to follow it (order is important) with a setting in the [pi0w] or [pi3+] section that reverts it.
+
+
 
 ## The `[none]` filter
 
@@ -82,6 +88,19 @@ then you can define settings that will only be applied to this specific Pi:
     [all]
     # settings here are applied to all hardware
 
+## The GPIO filter
+
+You can also filter depending on the state of a GPIO. For example
+
+    [gpio4=1]
+    # Settings here are applied if GPIO 4 is high
+    
+    [gpio2=0]
+    # Settings here are applied if GPIO 2 is low
+    
+    [all]
+    # settings here are applied to all hardware
+    
 ## Combining conditional filters
 
 Filters of the same type replace each other, so `[pi2]` overrides `[pi1]`, because it is not possible for both to be true at once.

@@ -12,9 +12,9 @@ The easiest introduction to Python is through IDLE, a Python development environ
 
 ![Python in the applications menu](images/app-menu-python3.png)
 
-IDLE gives you a REPL (Read-Evaluate-Print-Loop) which is a prompt you can enter Python commands in to. As it's a REPL you even get the output of commands printed to the screen without using `print`.
+IDLE gives you a REPL (Read-Evaluate-Print-Loop), which is a prompt you can enter Python commands into. Because it's a REPL, you even get the output of commands printed to the screen without using `print`.
 
-*Note two versions of Python are available: Python 2 and Python 3. Python 3 is the newest version and is recommended, however Python 2 is available for legacy applications which do not support Python 3 yet. For the examples on this page you can use Python 2 or 3 (see [Python 2 vs. Python 3](more.md)).*
+**Note**: two versions of Python are available — Python 2 and Python 3. Python 3 has was first released in 2008 and Python 2 development ended with 2.7, which was released in 2010. Python 3 is recommended, but Python 2 is available for legacy applications which do not support Python 3 yet.
 
 You can use variables if you need to but you can even use it like a calculator. For example:
 
@@ -89,7 +89,7 @@ name = "Bob"
 age = 15
 ```
 
-Note here I did not assign types to these variables, as types are inferred, and can be changed (it's dynamic).
+Note that data types were not specified with these variables, as types are inferred, and can be changed later.
 
 ```python
 age = 15
@@ -186,7 +186,7 @@ for i in range(3):
     print(i)
 ```
 
-`range(5)` contains the numbers `0`, `1`, `2`, `3` and `4` (five numbers in total). To get the numbers `1` to `5` use `range(1, 6)`.
+`range(5)` contains the numbers `0`, `1`, `2`, `3` and `4` (five numbers in total). To get the numbers `1` to `5` (inclusive) use `range(1, 6)`.
 
 ### Length
 
@@ -235,22 +235,110 @@ Then save this file (`File > Save` or `Ctrl + S`) and run (`Run > Run Module` or
 
 ## Executing Python files from the command line
 
-You can write a Python file in a standard [editor](../../linux/usage/text-editors.md) like Vim, Nano or LeafPad, and run it as a Python script from the command line. Just navigate to the directory the file is saved (use `cd` and `ls` for guidance) and run with `python`, e.g. `python hello.py`.
+You can write a Python file in a standard [editor](../../linux/usage/text-editors.md) like Vim, Nano, or LeafPad, and run it as a Python script from the command line. Just navigate to the directory the file is saved in (use `cd` and `ls` for guidance) and run with `python3`, e.g. `python3 hello.py`.
 
 ![Python command line](images/run-python.png)
 
+## Other ways of using Python
+
+### Command Line
+
+The standard built-in Python shell is accessed by typing `python3` in the terminal.
+
+This shell is a prompt ready for Python commands to be entered. You can use this in the same way as IDLE, but it does not have syntax highlighting or autocompletion. You can look back on the history of the commands you've entered in the REPL by using the <kbd>Up/Down</kbd> keys. Use `Ctrl + D` to exit.
+
+### IPython
+
+IPython is an interactive Python shell with syntax highlighting, autocompletion, pretty printing, built-in documentation, and more. IPython is not installed by default. Install with:
+
+```bash
+sudo pip3 install ipython
+```
+
+Then run with `ipython` from the command line. It works like the standard `python3`, but has more features. Try typing `len?` and hitting `Enter`. You're shown information including the docstring for the `len` function:
+
+```python
+Type:       builtin_function_or_method
+String Form:<built-in function len>
+Namespace:  Python builtin
+Docstring:
+len(object) -> integer
+
+Return the number of items of a sequence or mapping.
+```
+
+Try the following dictionary comprehension:
+
+```python
+{i: i ** 3 for i in range(12)}
+```
+
+This will pretty print the following:
+
+```python
+{0: 0,
+ 1: 1,
+ 2: 8,
+ 3: 27,
+ 4: 64,
+ 5: 125,
+ 6: 216,
+ 7: 343,
+ 8: 512,
+ 9: 729,
+ 10: 1000,
+ 11: 1331}
+```
+
+In the standard Python shell, this would have printed on one line:
+
+```python
+{0: 0, 1: 1, 2: 8, 3: 27, 4: 64, 5: 125, 6: 216, 7: 343, 8: 512, 9: 729, 10: 1000, 11: 1331}
+```
+
+![Python vs ipython](images/python-vs-ipython.png)
+
+You can look back on the history of the commands you've entered in the REPL by using the <kbd>Up/Down</kbd> keys like in `python`. The history also persists to the next session, so you can exit `ipython` and return (or switch between v2/3) and the history remains. Use `Ctrl + D` to exit.
+
+## Installing Python libraries
+
+### apt
+
+Some Python packages can be found in the Raspbian archives, and can be installed using apt, for example:
+
+```bash
+sudo apt update
+sudo apt install python-picamera
+```
+
+This is a preferable method of installing, as it means that the modules you install can be kept up to date easily with the usual `sudo apt update` and `sudo apt upgrade` commands.
+
+### pip
+
+Not all Python packages are available in the Raspbian archives, and those that are can sometimes be out of date. If you can't find a suitable version in the Raspbian archives, you can install packages from the [Python Package Index](http://pypi.python.org/) (known as PyPI).
+
+To do so, install pip:
+
+```bash
+sudo apt install python3-pip
+```
+
+Then install Python packages (e.g. `simplejson`) with `pip3`:
+
+```bash
+sudo pip3 install simplejson
+```
+
+Read more on installing software in Python [here](../../linux/software/python.md).
+
+#### piwheels
+
+The official Python Package Index (PyPI) hosts files uploaded by package maintainers. Some packages require compilation (compiling C/C++ or similar code) in order to install them, which can be a time-consuming task, particlarly on the single-core Raspberry Pi 1 or Pi Zero.
+
+piwheels is a service providing pre-compiled packages (called *Python wheels*) ready for use on the Raspberry Pi. Raspbian Stretch is pre-configired to use piwheels for pip. Read more about the piwheels project at [www.piwheels.org](https://www.piwheels.org/).
+
 ## More
 
-See [more advanced](more.md) information covering:
-
-- Python 2 vs. Python 3
-- Convention
-- Other ways of using Python
-- Installing Python libraries
-- GPIO
-
-Also see the page on running the preinstalled [Python Games](../python-games/README.md)
-
-## Python Documentation
-
-Full documentation for Python is available at [python.org/doc](https://www.python.org/doc/)
+- [GPIO with Python](../gpio/python/README.md)
+- [Official Python website](https://www.python.org/)
+- [Official Python documentation](https://www.python.org/doc/)

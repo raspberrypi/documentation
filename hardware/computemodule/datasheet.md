@@ -1,3 +1,3 @@
 # Compute Module Datasheet (covers all Compute Module variants)
 
-* [Datasheet](RPI-CM-DATASHEET-V1_0.pdf)
+* [Datasheet](datasheets/rpi_DATA_CM_1p0.pdf)

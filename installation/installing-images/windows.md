@@ -1,6 +1,14 @@
 # Installing operating system images using Windows
 
-[Etcher](README.md) is typically the easiest option for most users to write images to SD cards, so it is a good place to start. If you're looking for an alternative on Windows, you can use `Win32DiskImager`:
+[Etcher](https://etcher.io/) is typically the easiest option for most users to write images to SD cards, so it is a good place to start. If you're looking for an alternative on Windows, you can use Win32DiskImager.
+
+## Etcher
+
+- Download the Windows installer from [etcher.io](https://etcher.io/)
+- Run Etcher and select the unzipped Raspbian image file
+- Select the SD card drive
+- Finally, click **Burn** to write the Raspbian image to the SD card
+- You'll see a progress bar. Once complete, the utility will automatically unmount the SD card so it's safe to remove it from your computer.
 
 ## Win32DiskImager
 
