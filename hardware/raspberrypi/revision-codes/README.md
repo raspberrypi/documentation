@@ -60,6 +60,8 @@ uuuuuuuuFMMMCCCCPPPPTTTTTTTTRRRR
 |          |              | 1: Egoman                  |
 |          |              | 2: Embest                  |
 |          |              | 3: Sony Japan              |
+|          |              | 4: Embest                  |
+|          |              | 5: Stadium                 |
 | PPPP     | Processor    | 0: BCM2835                 |
 |          |              | 1: BCM2836                 |
 |          |              | 2: BCM2837                 |
@@ -95,4 +97,5 @@ New-style revision codes in use:
 | a22042 | 2B (with BCM2837) | 1.2      | 1 GB   | Embest       |
 | a22082 | 3B                | 1.2      | 1 GB   | Embest       |
 | a32082 | 3B                | 1.2      | 1 GB   | Sony Japan   |
+| a52082 | 3B                | 1.2      | 1 GB   | Stadium      |
 | a020d3 | 3B+               | 1.3      | 1 GB   | Sony UK      |
