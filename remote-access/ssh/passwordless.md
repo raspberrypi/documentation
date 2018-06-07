@@ -72,7 +72,7 @@ ssh-copy-id <USERNAME>@<IP-ADDRESS>
 Alternatively, if the `ssh-copy-id` is not available on your system, you can copy the file manually over SSH:
 
 ```bash
-cat ~/.ssh/id_rsa.pub | ssh <USERNAME>@<IP-ADDRESS> 'cat >> .ssh/authorized_keys'
+cat ~/.ssh/id_rsa.pub | ssh <USERNAME>@<IP-ADDRESS> 'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys'
 ```
 
 Now try `ssh <USER>@<IP-ADDRESS>` and you should connect without a password prompt.
