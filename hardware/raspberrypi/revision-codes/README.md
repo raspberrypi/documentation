@@ -86,6 +86,7 @@ New-style revision codes in use:
 | 900021 | A+                | 1.1      | 512 MB | Sony UK      |
 | 900032 | B+                | 1.2      | 512 MB | Sony UK      |
 | 900092 | Zero              | 1.2      | 512 MB | Sony UK      |
+| 920092 | Zero              | 1.2      | 512 MB | Embest       |
 | 900093 | Zero              | 1.3      | 512 MB | Sony UK      |
 | 9000c1 | Zero W            | 1.1      | 512 MB | Sony UK      |
 | 920093 | Zero              | 1.3      | 512 MB | Embest       |
