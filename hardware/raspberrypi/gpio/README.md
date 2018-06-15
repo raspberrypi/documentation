@@ -48,9 +48,9 @@ Almost all of the GPIO pins have alternative functions. Peripheral blocks intern
 
 The following table gives the various voltage specifications for the GPIO pins, it was extracted from the Compute Module datasheet [here](../../computemodule/datasheet.md).
 
-| Symbol | Parameter | Conditions | Minimum | Typical | Maximum | Unit |
+| Symbol | Parameter | Conditions &emsp;| Minimum | Typical | Maximum | Unit |
 |--------|-----------|------------|---------|---------|---------|------|
-|V<sub>IL</sub>|Input Low Voltage    | VDD IO = 1.8V | - | - |0.6  | V |
+|V<sub>IL</sub>|Input Low Voltage | VDD IO = 1.8V | - | - |0.6  | V |
 | | | VDD IO = 2.7V | - | - | 0.8 | V |
 | | | VDD IO = 3.3V | - | - | 0.9 | V |
 |V<sub>IH</sub>| Input high voltage<sup>a</sup> | VDD IO = 1.8V | 1.0 | - | - | V |
@@ -73,8 +73,6 @@ The following table gives the various voltage specifications for the GPIO pins, 
 | R<sub>PU</sub> | Pullup resistor | - | 50 | - | 65 | kΩ |
 | R<sub>PD</sub> | Pulldown resistor | - | 50 | - |65 | kΩ | 
 
-<sup>a</sup> Hysteresis enabled
-
-<sup>b</sup> Default drive strength (8mA)
-
+<sup>a</sup> Hysteresis enabled  
+<sup>b</sup> Default drive strength (8mA)  
 <sup>c</sup> Maximum drive strength (16mA)
