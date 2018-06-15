@@ -48,8 +48,8 @@ Almost all of the GPIO pins have alternative functions. Peripheral blocks intern
 
 The following table gives the various voltage specifications for the GPIO pins, it was extracted from the Compute Module datasheet [here](../../computemodule/datasheet.md).
 
-| Symbol | Parameter | Conditions &emsp;| Minimum | Typical | Maximum | Unit |
-|--------|-----------|------------|---------|---------|---------|------|
+| Symbol | Parameter | Conditions &emsp;| Min | Typical | Max | Unit |
+|--------|-----------|------------|------|---------|------|------|
 |V<sub>IL</sub>|Input Low Voltage | VDD IO = 1.8V | - | - |0.6  | V |
 | | | VDD IO = 2.7V | - | - | 0.8 | V |
 | | | VDD IO = 3.3V | - | - | 0.9 | V |
