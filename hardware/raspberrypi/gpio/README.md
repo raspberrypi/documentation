@@ -51,25 +51,25 @@ The following table gives the various voltage specifications for the GPIO pins, 
 | Symbol | Parameter | Conditions | Minimum | Typical | Maximum | Unit |
 |--------|-----------|------------|---------|---------|---------|------|
 |V<sub>IL</sub>|Input Low Voltage    | VDD IO = 1.8V | - | - |0.6  | V |
-|||                         VDD IO = 2.7V | - | - | 0.8 | V |
-|||                         VDD IO = 3.3V | - | - | 0.9 | V |
+| | | VDD IO = 2.7V | - | - | 0.8 | V |
+| | | VDD IO = 3.3V | - | - | 0.9 | V |
 |V<sub>IH</sub>| Input high voltage<sup>a</sup> | VDD IO = 1.8V | 1.0 | - | - | V |
-||| VDD IO = 2.7V | 1.3 | - | - | V |
-|||VDD IO = 3.3V | 1.6 | - | - | V |
-|I<sub>IL</sub> | Input leakage current | TA = +85◦C | - | - | 5 | µA |
+| | | VDD IO = 2.7V | 1.3 | - | - | V |
+| | |VDD IO = 3.3V | 1.6 | - | - | V |
+|I<sub>IL</sub>| Input leakage current | TA = +85◦C | - | - | 5 | µA |
 |C<sub>IN</sub>| Input capacitance | - | - | 5 | - | pF |
 |V<sub>OL</sub>| Output low voltage<sup>b</sup> | VDD IO = 1.8V, IOL = -2mA | - | - | 0.2 | V |
-||| VDD IO = 2.7V, IOL = -2mA | - | - | 0.15 | V |
-||| VDD IO = 3.3V, IOL = -2mA | - | - | 0.14 | V |
+| | | VDD IO = 2.7V, IOL = -2mA | - | - | 0.15 | V |
+| | | VDD IO = 3.3V, IOL = -2mA | - | - | 0.14 | V |
 |V<sub>OH</sub>| Output high voltage<sup>b</sup> | VDD IO = 1.8V, IOH = 2mA | 1.6 | - | - | V |
-||| VDD IO = 2.7V, IOH = 2mA | 2.5 | - | - | V |
-||| VDD IO = 3.3V, IOH = 2mA | 3.0 | - | - | V |
+| | | VDD IO = 2.7V, IOH = 2mA | 2.5 | - | - | V |
+| | | VDD IO = 3.3V, IOH = 2mA | 3.0 | - | - | V |
 |I<sub>OL</sub>| Output low current<sup>c</sup> | VDD IO = 1.8V, VO = 0.4V | 12 | - | - | mA |
-||| VDD IO = 2.7V, VO = 0.4V | 17 | - | - | mA |
-||| VDD IO = 3.3V, VO = 0.4V | 18 | - | - | mA | 
+| | | VDD IO = 2.7V, VO = 0.4V | 17 | - | - | mA |
+| | | VDD IO = 3.3V, VO = 0.4V | 18 | - | - | mA | 
 |I<sub>OH</sub>| Output high current<sup>c</sup> | VDD IO = 1.8V, VO = 1.4V | 10 | - | - | mA | 
-||| VDD IO = 2.7V, VO = 2.3V | 16 | - | - | mA | 
-||| VDD IO = 2.7V, VO = 2.3V | 17 | - | - | mA | 
+| | | VDD IO = 2.7V, VO = 2.3V | 16 | - | - | mA | 
+| | | VDD IO = 2.7V, VO = 2.3V | 17 | - | - | mA | 
 | R<sub>PU</sub> | Pullup resistor | - | 50 | - | 65 | kΩ |
 | R<sub>PD</sub> | Pulldown resistor | - | 50 | - |65 | kΩ | 
 
