@@ -12,6 +12,8 @@ Some general help with Linux usage.
     - Setting up multiple Linux users on your Pi system
 - [Root](root.md)
     - The `root` user and the `sudo` prefix
+- [Scripting](scripting.md)
+    - Combining commands to produce more complex actions
 - [Cron / Crontab](cron.md)
     - Setting up scheduled tasks
 - [.bashrc and .bash_aliases](bashrc.md)
