@@ -4,7 +4,7 @@ User management in Raspbian is done on the command line. The default user is `pi
 
 ## Change your password
 
-Once logged in as the `pi` user, for security reasons it is advised to use the `passwd` command to change the default password.
+Once you're logged in as the `pi` user, it is highly advisable to use the `passwd` command to change the default password to improve your Pi's security.
 
 Enter `passwd` on the command line and press `Enter`. You'll be prompted to enter your current password to authenticate, and then asked for a new password. Press `Enter` on completion and you'll be asked to confirm it. Note that no characters will be displayed while entering your password. Once you've correctly confirmed your password, you'll be shown a success message (`passwd: password updated successfully`), and the new password will apply immediately.
 
