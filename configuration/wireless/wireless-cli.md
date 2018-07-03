@@ -34,7 +34,7 @@ network={
     psk="testingPassword"
 }
 ```
-The password can be configured either as the ASCII representation, in quotes as per the example above, or as a pre-encrypted 32 byte hexadecimal number. You can use the `wpa_passphrase` utility to generate an encrypted PSK. This takes the SSID and the password, and generates the encrypted PSK. With the example from above, you can generate the PSK with `wpa_passphrase "testing" "testingPassword"`. The output is as follows.
+The password can be configured either as the ASCII representation, in quotes as per the example above, or as a pre-encrypted 32 byte hexadecimal number. You can use the `wpa_passphrase` utility to generate an encrypted PSK. This takes the SSID and the password, and generates the encrypted PSK. With the example from above, you can generate the PSK with `wpa_passphrase "testing"`. Then you will be asked for the password of the WiFi network (in this case `testingPassword`). The output is as follows:
 
   ```
   network={
@@ -47,7 +47,11 @@ Note that the plain text version of the code is present, but commented out. You 
 
 The `wpa_passphrase` tool requires a password with between 8 and 63 characters. For more complex passphrases you can extract the content of a text file and use it as input for `wpa_passphrase`, if the password is stored as plain text inside a file somewhere, by calling `wpa_passphrase "testing" < file_where_password_is_stored`. For extra security, you should delete the `file_where_password_is_stored` afterwards, so there is no plain text copy of the original password on the system.
 
-If you are using the `wpa_passphrase` encrypted PSK you can either copy and paste the encrypted PSK into the `wpa_supplicant.conf` file,  or redirect the tools output to your configuration file by calling `wpa_passphrase "testing" "testingPassword" >> /etc/wpa_supplicant/wpa_supplicant.conf`. Note that this requires you to change to `root` (by executing `sudo su`), or you can use `wpa_passphrase "testing" "testingPassword" | sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf > /dev/null`, which will append the passphrase without having to change to `root`. Both methods provide the necessary administrative privileges to change the file. Lastly, make sure you use `>>`, or use `-a` with `tee`, (both can be used to append text to an existing file) since `>`, or omitting `-a` when using `tee`, will erase all contents and **then** append the output to the specified file. Note that the redirection to `/dev/null` at the end of the second form simply prevents `tee` from **also** outputting to the screen (standard output).
+To use the `wpa_passphrase`–encrypted PSK, you can either copy and paste the encrypted PSK into the `wpa_supplicant.conf` file, or redirect the tools output to the configuration file in one of two ways:
+- Either change to `root` by executing `sudo su`, then call `wpa_passphrase "testing" >> /etc/wpa_supplicant/wpa_supplicant.conf` and enter the testing password when asked
+- Or use `wpa_passphrase "testing" | sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf > /dev/null` and enter the testing password when asked; the redirection to `/dev/null` prevents `tee` from **also** outputting to the screen (standard output)
+
+If you want to use one of these two options, **make sure you use `>>`, or use `-a` with `tee`** — either will **append** text to an existing file. Using a single chevron `>`, or omitting `-a` when using `tee`, will erase all contents and **then** append the output to the specified file.
 
 Now save the file by pressing `Ctrl+X`, then `Y`, then finally press `Enter`.  
 
