@@ -69,7 +69,7 @@ The following table gives the various voltage specifications for the GPIO pins, 
 | | | VDD IO = 3.3V, VO = 0.4V | 18 | - | - | mA | 
 |I<sub>OH</sub>| Output high current<sup>c</sup> | VDD IO = 1.8V, VO = 1.4V | 10 | - | - | mA | 
 | | | VDD IO = 2.7V, VO = 2.3V | 16 | - | - | mA | 
-| | | VDD IO = 2.7V, VO = 2.3V | 17 | - | - | mA | 
+| | | VDD IO = 3.3V, VO = 2.3V | 17 | - | - | mA | 
 | R<sub>PU</sub> | Pullup resistor | - | 50 | - | 65 | kΩ |
 | R<sub>PD</sub> | Pulldown resistor | - | 50 | - |65 | kΩ | 
 
