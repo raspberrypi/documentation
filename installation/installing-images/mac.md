@@ -64,6 +64,11 @@ This will take a few minutes, depending on the size of the image file. To check 
        ```
        sudo dd bs=1M if=2018-04-18-raspbian-stretch.img of=/dev/disk4 conv=sync
        ```
+       After the `dd` command finishes, eject the card:
+       ```
+       sudo diskutil eject /dev/rdisk<disk# from diskutil>
+       ```
+       
 
 ## Alternative method
 
