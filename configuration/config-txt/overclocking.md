@@ -33,6 +33,7 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | sdram_freq_min | Minimum value of `sdram_freq` used for dynamic frequency clocking. The default value is `400`. |
 | over_voltage_min | Minimum value of `over_voltage` used for dynamic frequency clocking. The default value is `0`. |
 | temp_limit | Overheat protection. This sets the clocks and voltages to default when the SoC reaches this value in Celsius.  The default value is `85`. Values over 85 are clamped to 85.|
+| temp_soft_limit | **3B+ only**. CPU speed throttle control. This sets the temperature at which the CPU clock speed throttling system activates. At this temperature, the clock speed is reduced from 1400Mhz to 1200Mhz.  Defaults to `60`, can be raised to a maximum of `70`, but this may cause instability.
 
 This table describes the overvoltage settings for the various Pi models. The firmware uses Adaptive Voltage Scaling (AVS) to determine the optimum voltage to set. Note that for each integer rise in over_voltage, the voltage will be 25mV higher.
 
