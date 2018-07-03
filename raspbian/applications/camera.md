@@ -299,7 +299,9 @@ Version 2.x (IMX219)
 |4|1640x1232|4:3|0.1-40fps|Full|2x2|
 |5|1640x922|16:9|0.1-40fps|Full|2x2|
 |6|1280x720|16:9|40-90fps|Partial|2x2|
-|7|640x480|4:3|40-200fps|Partial|2x2|
+|7|640x480|4:3|40-200fps<sup>1</sup>|Partial|2x2|
+
+<sup>1</sup>For frame rates over 120fps, it is necessary to turn off AEC using `-ex off` and AWB using `-awb off`. This will help maintain higher frame rates but result in lower quality images. We do not guarantee framerates over 120fps.
 
 ```
 	--camselect,	-cs
