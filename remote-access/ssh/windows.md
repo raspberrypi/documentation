@@ -1,6 +1,6 @@
 # SSH using Windows
 
-Depending on the version of Windows you are using, and what software you may already have installed, you may need to download an SSH client. The most commonly used client is called PuTTY, and can be downloaded from [greenend.org.uk](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+Depending on the version of Windows you are using and what software you have already installed, you may need to download an SSH client. The most commonly used client is called PuTTY and can be downloaded from [greenend.org.uk](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 Look for `putty.exe` under the heading `For Windows on Intel x86`. 
 
