@@ -38,6 +38,8 @@ sudo systemctl enable ssh
 sudo systemctl start ssh
 ```
 
+When enabling SSH on a Pi that may be connected to the internet, you should change its default password to ensure that it remains secure. See the [Security page](../../configuration/security.md) for more details.
+
 ## 3. Enable SSH on a headless Raspberry Pi (add file to SD card on another machine)
 
 For headless setup, SSH can be enabled by placing a file named `ssh`, without any extension, onto the boot partition of the SD card from another computer. When the Pi boots, it looks for the `ssh` file. If it is found, SSH is enabled and the file is deleted. The content of the file does not matter; it could contain text, or nothing at all.
