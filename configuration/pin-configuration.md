@@ -20,6 +20,9 @@ Similarly, a `.dtb` file can be converted back to a `.dts` file, if required.
 dtc -I dtb -O dts -o dt-blob.dts /boot/dt-blob.bin
 ```
 
+**NOTE:** The dt-blob.bin file generated does not reconfigure peripheral defaults before they are initialised, but afterwards. For example, take the scenario where GPIO 35 is configured to terminate low in the dt-blob.bin file, from its default high. In this case GPIO 35 will still default high on bootup for a few seconds, before it is terminated low as configured in the dt-blob.bin file.
+
+
 ## Sections of the dt-blob
 
 The `dt-blob.bin` is used to configure the binary blob (VideoCore) at boot time. It is not currently used by the Linux kernel, but a kernel section will be added at a later stage, when we reconfigure the Raspberry Pi kernel to use a dt-blob for configuration.  The dt-blob can configure all versions of the Raspberry Pi, including the Compute Module, to use the alternative settings. The following sections are valid in the dt-blob:
