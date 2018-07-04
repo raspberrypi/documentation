@@ -11,14 +11,14 @@ Each mailbox has a list of defined virtual 'channels', which subdivides the type
 Mailbox 0 defines the following channels:
 
 0. Power management
-1. Framebuffer
+1. [Framebuffer](framebuffer.md)
 2. Virtual UART
 3. VCHIQ
 4. LEDs
 5. Buttons
 6. Touch screen
 7.
-8. Property tags (ARM -> VC)
+8. [Property tags (ARM -> VC)](propertiesARM-VC.md)
 9. Property tags (VC -> ARM)
 
 ## Using the Mailboxes
