@@ -36,4 +36,6 @@ Some basic guides to configuring your Raspberry Pi.
     - How to configure screen blanking/screen saver
 - [The boot folder](boot_folder.md)
     - What it's for and what's in it
+- [The Mailbox communications system](mailbox/README.md)
+    - descriptions of the interprocessor mailbox communications system and how to use it/
 
