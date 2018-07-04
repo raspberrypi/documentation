@@ -18,7 +18,7 @@ During the bootup sequence, the pins go through various actions.
 
 On a soft reset the same procedure applies, except for default pulls, which are only applied on a Power On Reset.
 
-Note that it may take a few seconds to get from stage 1 to stage 4. During that time the GPIO may not be in the state expected by attached periperals (as defined in dtblob.bin or config.txt). Since different GPIO's have different default pulls, chose a GPIO that defaults to pulls as required by the peripheral on reset, or delay the peripherals startup until stage 4/5 will have been reached.
+Note that it may take a few seconds to get from stage 1 to stage 4. During that time the GPIO may not be in the state expected by attached peripherals (as defined in dtblob.bin or config.txt). Since different GPIO's have different default pulls, chose a GPIO that defaults to pulls as required by the peripheral on reset, delay the peripherals startup until stage 4/5 will have been reached, or add an appropriate pullup/down resistor.
 
 
 ## Providing a custom Device Tree blob
