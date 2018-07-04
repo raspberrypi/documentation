@@ -27,7 +27,7 @@ If using mailboxes from the ARM, there are API functions already defined which c
 
 ## Mailbox registers
 
-The following table shows the register offsets for the different mailboxes. For a description of the procedure for using these registers to access a mailbox, see here.
+The following table shows the register offsets for the different mailboxes. For a description of the procedure for using these registers to access a mailbox from code running on the ARM, see [here](accessing.md).
 
 | Mailbox | Read/Write | Peek | Sender | Status | Config |
 | ------- | ---------- | ---- | ------ | ------ | ------ |
