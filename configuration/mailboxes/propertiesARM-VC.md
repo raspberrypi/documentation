@@ -80,6 +80,10 @@ AAAABBBBCCCCxxxxxxxxyyyyyyyy
 
 None currently defined. 
 
+## Tags (VC to ARM)
+
+None currently defined. 
+
 ### VideoCore
 
 This section describes the available tags that can be used to recover Videocore specific information
