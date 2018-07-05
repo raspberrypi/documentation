@@ -1,8 +1,10 @@
 ## Mailbox - Properties Interface
 
+The properties interface allows setting, getting and testing of various properties. It is the main method for accessing user data on the Videocore from ARM space. 
+
 ### General rules
 
-- The response overwrites the request.
+- The response overwrites the request. So the same buffer is used to return the results as was used to send the request.
 - The callee is not allowed to return a different buffer address, this allows the caller to make independent asynchronous requests.
 - The buffer itself is 16-byte aligned as only the upper 28 bits of the address can be passed via the mailbox.
 - All u64/u32/u16 values are in host CPU endian order.
@@ -21,7 +23,7 @@
   - Request message: 28 bits (MSB) buffer address
   - Response message: 28 bits (MSB) buffer address
 - Channels 8 and 9 are used.
-  - Channel 8: Request from ARM for response by VC
+  - Channel 8: Request from ARM for response by VC.
   - Channel 9: Request from VC for response by ARM (none currently defined)
 
 ### Buffer contents
@@ -55,7 +57,12 @@
 
 ## Tags (ARM to VC)
 
+None currently defined. 
+
 ### VideoCore
+
+This section describes the available tags that can be used to recover Videocore specific information
+
 #### Get firmware revision
  * Tag: 0x00000001
  * Request:
@@ -66,6 +73,9 @@
      * u32: firmware revision
 
 ### Hardware
+
+This section describes the available tags that can be used to recover hardware specific information
+
 #### Get board model
  * Tag: 0x00010001
  * Request:
@@ -140,6 +150,7 @@ Future formats may specify multiple base+size combinations.
 Returns all clocks that exist **in top down breadth first order**. Clocks that depend on another clock should be defined as children of that clock. Clocks that depend on no other clocks should have no parent. Clock IDs are as in the clock section below.
 
 ### Config
+
 #### Get command line
  * Tag: 0x00050001
  * Request:
@@ -167,7 +178,8 @@ Caller should not assume the string is null terminated.
 Caller assumes that the VC has enabled all the usable DMA channels.
 
 ### Power
-Unique device IDs:
+
+This section describes the tags related to power management. There are a number of ID's requried to identify various parts of the system.
  * 0x00000000: SD Card
  * 0x00000001: UART0
  * 0x00000002: UART1
@@ -234,7 +246,8 @@ Response indicates wait time required after turning a device on before power is 
 Response indicates new state, with/without waiting for the power to become stable.
 
 ### Clocks
-Unique clock IDs:
+
+This section describes the tags related to clock management. There are a number of ID's requried to identify the various clocks in the system.
  * 0x000000000: reserved
  * 0x000000001: EMMC
  * 0x000000002: UART
@@ -377,7 +390,8 @@ Set the turbo state for index id. id should be zero. level will be zero for non-
 This will cause GPU clocks to be set to maximum when enabled and minimum when disabled.
 
 ### Voltage
-Unique voltage IDs:
+
+This section describes the tags related to voltage management. There are a number of ID's required to identify the different voltages.
  * 0x000000000: reserved
  * 0x000000001: Core
  * 0x000000002: SDRAM_C
@@ -471,6 +485,10 @@ Return the temperature of the SoC in thousandths of a degree C. id should be zer
 
 Return the maximum safe temperature of the SoC in thousandths of a degree C. id should be zero.
 Overclock may be disabled above this temperature.
+
+### Memory
+
+This section describes the tags related to memory management. 
 
 #### Allocate Memory
  * Tag: 0x0003000c
@@ -573,6 +591,8 @@ Setting the lsb of function pointer address will suppress the instruction cache 
 Gets the mem_handle associated with a created dispmanx resource.
 This can be locked and the memory directly written from the arm to avoid having to copy the image data to GPU.
 
+### HDMI/DVI EDID
+
 #### Get EDID block
  * Tag: 0x00030020
  * Request:
@@ -590,6 +610,7 @@ This reads the specified EDID block from attached HDMI/DVI device.
 There will always be at least one block of 128 bytes, but there may be additional blocks. You should keep requesting blocks (starting from 0) until the status returned is non-zero.
 
 ### Frame Buffer
+
  * All tags in the request are processed in one operation.
  * It is not valid to mix Test tags with Get/Set tags in the same operation and no tags will be returned.
  * Get tags will be processed after all Set tags.
