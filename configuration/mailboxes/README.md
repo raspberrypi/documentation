@@ -71,6 +71,16 @@ int rpi_firmware_property_list(struct rpi_firmware *fw,
 			       void *data, size_t tag_size)
 ````
 
+## Using Mailboxes on the command line
+
+There is an app available called `vcmailbox` which allows use of the mailboxes from the command line. In addition it is a good source of information on using the mailbox system in a Linux application.
+
+By default the `vcmailbox` application can be found in `/opt/vc/bin`
+
+The `vcmailboc` application simply sends a user supplied set of 32bit words (in decimal or hexadecimal if using 0x) to the mailbox property system, then displays the resulting returned values. 
+
+The source for `vcmailbox` can  be found [here](https://github.com/raspberrypi/userland/blob/master/host_applications/linux/apps/vcmailbox/vcmailbox.c)
+
 ## Mailbox registers
 
 The following table shows the register offsets for the different mailboxes. For a description of the procedure for using these registers to access a mailbox from code running on the ARM, see [here](accessing.md).
