@@ -21,6 +21,21 @@ Mailbox 0 defines the following channels:
 8. [Property tags (ARM -> VC)](propertiesARM-VC.md)
 9. Property tags (VC -> ARM)
 
+
+## Using Mailboxes on the command line
+
+There is an app available called `vcmailbox` which allows use of the mailboxes from the command line. In addition it is a good source of information on using the mailbox system in a Linux application.
+
+By default the `vcmailbox` application can be found in `/opt/vc/bin`
+
+The `vcmailbox` application simply sends a user supplied set of 32bit words (in decimal or hexadecimal if using 0x) to the mailbox property system, then displays the resulting returned values. 
+
+## Using mailboxes is userland code
+
+Please see the `vcmailbox` source code for some example functions to access mailboxes from user applications.
+
+The source for `vcmailbox` can  be found [here](https://github.com/raspberrypi/userland/blob/master/host_applications/linux/apps/vcmailbox/vcmailbox.c)
+
 ## Using the Mailboxes from Kernel modules
 
 If using mailboxes from kernel code, there are functions already defined which can be used for setting and getting property tags. You will need access to the device tree node to get the required firmware pointers, which are usually available during probe functions. 
@@ -70,16 +85,6 @@ int rpi_firmware_property(struct rpi_firmware *fw,
 int rpi_firmware_property_list(struct rpi_firmware *fw,
 			       void *data, size_t tag_size)
 ````
-
-## Using Mailboxes on the command line
-
-There is an app available called `vcmailbox` which allows use of the mailboxes from the command line. In addition it is a good source of information on using the mailbox system in a Linux application.
-
-By default the `vcmailbox` application can be found in `/opt/vc/bin`
-
-The `vcmailboc` application simply sends a user supplied set of 32bit words (in decimal or hexadecimal if using 0x) to the mailbox property system, then displays the resulting returned values. 
-
-The source for `vcmailbox` can  be found [here](https://github.com/raspberrypi/userland/blob/master/host_applications/linux/apps/vcmailbox/vcmailbox.c)
 
 ## Mailbox registers
 
