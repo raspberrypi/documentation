@@ -26,7 +26,19 @@ The properties interface allows setting, getting and testing of various properti
   - Channel 8: Request from ARM for response by VC.
   - Channel 9: Request from VC for response by ARM (none currently defined)
 
-### Buffer contents
+
+### Message Content
+```
+AAAABBBBxxxxxxxxCCCCyyyyyyyy
+└┬─┘└┬─┘└───┬──┘└┬─┘└───┬──┘
+ │   │      │    │      └  Padding to specified length
+ │   │      │    └ End Tag (0x00)
+ │   │      └ Sequence of Tags
+ │   └ Buffer request/response code
+ └ Buffer Size
+ ```
+ 
+#### Buffer contents
 
 - u32: buffer size in bytes (including the header values, the end tag and padding)
 - u32: buffer request/response code
@@ -41,7 +53,16 @@ The properties interface allows setting, getting and testing of various properti
 - u32: 0x0 (end tag)
 - u8...: padding
 
-### Tag format
+#### Tag format
+```
+AAAABBBBCCCCxxxxxxxxyyyyyyyy
+└┬─┘└┬─┘└┬─┘└──┬───┘└───┬──┘
+ │   │   │     │        └  Padding to align to 32bits
+ │   │   │     └ Value buffer
+ │   │   └ Request/Response code
+ │   └ Value buffer size in bytes
+ └ Tag identifier
+ ```
 
 - u32: tag identifier
 - u32: value buffer size in bytes
