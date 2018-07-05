@@ -1,5 +1,7 @@
 ## Framebuffer Mailbox
 
+## Note: This particular mailbox call is deprecated, and is not guaranteed to work as expected. Please use the property framebuffer commands for accessing and defining framebuffer information. See [here](propertiesARM-VC.md)
+
 Channel 1 of mailbox 0 is used.
 
 Mailbox messages:
