@@ -30,7 +30,7 @@ KERNEL=kernel
 make bcmrpi_defconfig
 ```
 
-### Raspberry Pi 2, Pi 3, and Compute Module 3 default build configuration
+### Raspberry Pi 2, Pi 3, Pi 3+, and Compute Module 3 default build configuration
 
 ```bash
 cd linux
@@ -99,7 +99,7 @@ KERNEL=kernel
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
 ```
 
-For Pi 2, Pi 3, or Compute Module 3:
+For Pi 2, Pi 3, Pi 3+, or Compute Module 3:
 
 ```bash
 cd linux
