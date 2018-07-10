@@ -20,7 +20,9 @@ This is the official documentation for the Raspberry Pi, written by the [Raspber
     - Information about the recommended operating system for Raspberry Pi
 - [Hardware](hardware/README.md)
     - Technical specifications about the Raspberry Pi hardware and the camera module
-
+- [Technical FAQ](technical-faq.md)
+    - Answers to frequently asked technical questions
+    
 ## Contributions
 
 If you have anything to fix or details to add, first [file an issue](http://github.com/raspberrypi/documentation/issues) on GitHub to see if it is likely to be accepted, then file a pull request with your change (one PR per issue).
