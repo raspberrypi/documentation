@@ -5,6 +5,7 @@ All Raspberry Pi product has undergone extensive compliance testing, and copies 
 
 | Model           | Declaration of Conformity | Local and regional approval certificates |
 |:---------------:|-------------------------:|:----------------------------------------:|
+| ALL      | [RoHS/REACH](./compliance/rpi_DOC_ALL_RoHS_REACH.pdf) | |
 | A+       | [EU](./compliance/rpi_DOC_aplus_CE.pdf) | |
 | B+       | [EU](./compliance/rpi_DOC_bplus_CE.pdf)| |
 | 2B       | [EU](./compliance/rpi_DOC_2b_CE.pdf)  &nbsp; &nbsp;[FCC](./compliance/rpi_DOC_2b_FCC.pdf)| |
