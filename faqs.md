@@ -20,7 +20,7 @@
 - [Why does nothing happen when I type in my password? Did my Raspberry Pi freeze?](#why-does-nothing-happen-when-i-type-in-my-password)
 - [What are the differences between Raspberry Pi models?](#what-are-the-differences-between-raspberry-pi-models)
 - [How do I connect a mouse and keyboard?](#how-do-i-connect-a-mouse-and-keyboard)
-- [Where is the on/off switch?](#where-is-the-on/off-switch)
+- [Where is the on-off switch?](#where-is-the-on-off-switch)
 - [What is NOOBS?](#what-is-noobs)
 - [When will the next model of the Raspberry Pi be released?](#when-will-the-next-model-of-the-raspberry-pi-be-released)
 - [What are the dimensions of the Raspberry Pi?](#what-are-the-dimensions-of-the-raspberry-pi)
@@ -167,7 +167,7 @@ You can check our [products](https://www.raspberrypi.org/products/) pages for mo
 #### How do I connect a mouse and keyboard?
 The Model A/A+ has one USB port, the Model B has two ports, and the Model B+, Pi 2 Model B, and Pi 3 Model B have four ports. These can be used to connect most USB 2.0 devices. Additional USB devices such as mice, keyboards, network adapters, and external storage can be connected via a USB hub. The Pi Zero and Pi Zero W have a single micro USB port, this requires a USB OTG cable to connect devices such as keyboards or hubs.
 
-#### Where is the on/off switch?
+#### Where is the on-off switch?
 There is no on/off switch! To switch on, just plug it in. To switch off, if you are in the graphical environment, you can either log out from the main menu, exit to the Bash prompt, or open the terminal. From the Bash prompt or terminal you can shut down the Raspberry Pi by entering “sudo halt -h” (without the quotation marks). Wait until all the LEDs except the power LED are off, then wait an additional second to make sure the SD card can finish its wear-levelling tasks and write actions. You can now safely unplug the Raspberry Pi. Failure to shut the Raspberry Pi down properly may corrupt your SD card, which would mean you would have to re-image it.
 
 #### What is NOOBS?
