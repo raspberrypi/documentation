@@ -9,7 +9,7 @@
 - [Where can I buy a Raspberry Pi?](#where-can-i-buy-a-raspberry-pi)
 - [How much does it cost?](#how-much-does-it-cost)
 - [What do I get when I buy one?](#what-do-i-get-when-i-buy-one)
-- [Why is the price in US Dollars? You are a UK company!](#why-is-the-price-in-us-dollars)
+- [Why is the price in US Dollars?](#why-is-the-price-in-us-dollars)
 - [Can I buy a Raspberry Pi kit?](#can-i-buy-a-raspberry-pi-kit)
 - [Is there a buy-one-give-one programme?](#is-there-a-buy-one-give-one-programme)
 - [Is the device available internationally?](#is-the-device-available-internationally)
@@ -20,7 +20,7 @@
 - [Why does nothing happen when I type in my password? Did my Raspberry Pi freeze?](#why-does-nothing-happen-when-i-type-in-my-password)
 - [What are the differences between Raspberry Pi models?](#what-are-the-differences-between-raspberry-pi-models)
 - [How do I connect a mouse and keyboard?](#how-do-i-connect-a-mouse-and-keyboard)
-- [Where is the on off switch?](#where-is-the-on-off-switch)
+- [Where is the on/off switch?](#where-is-the-on/off-switch)
 - [What is NOOBS?](#what-is-noobs)
 - [When will the next model of the Raspberry Pi be released?](#when-will-the-next-model-of-the-raspberry-pi-be-released)
 - [What are the dimensions of the Raspberry Pi?](#what-are-the-dimensions-of-the-raspberry-pi)
@@ -46,9 +46,8 @@
 - [What resolutions are supported?](#what-resolutions-are-supported)
 - [What picture formats are supported?](#what-picture-formats-are-supported)
 - [How do I use the camera?](#how-do-i-use-the-camera)
-- [Can I extend the ribbon cable?](#can-i-extend-the-ribbon-cable)
-- [Can I have a camera with more megapixels?](#can-i-have-a-camera-with-more-megapixels)
-- [How much power does the Camera Module use?](#how-much-power-does-the-camera-module-use)
+- [Can I have the camera with more megapixels?](#can-i-have-the-camera-with-more-megapixels)
+- [How much power does the Camera use?](#how-much-power-does-the-camera-use)
 #### Cases
 - [Does it come with a case?](#does-it-come-with-a-case)
 - [Does it fit in an Altoids tin?](#does-it-fit-in-an-altoids-tin)
@@ -87,14 +86,14 @@
 - [Does the device have support for any form of netbooting or PXE?](#does-the-device-have-support-for-any-form-of-netbooting-or-pxe)
 - [How do you connect more USB devices?](#how-do-you-connect-more-usb-devices)
 #### Educational uses
-- [What educational resources are available?](#what-educational-resources-are-available)
+- [What educational material is available?](#what-educational-material-is-available)
 
 ### Introduction
 
 #### What is a Raspberry Pi
 The Raspberry Pi is a credit-card-sized computer that plugs into your TV and a keyboard. It is a capable little computer which can be used in electronics projects, and for many of the things that your desktop PC does, like spreadsheets, word processing, browsing the internet, and playing games. It also plays high-definition video. We want to see it being used by adults and children all over the world to learn programming and digital making. You can read more about the Raspberry Pi [here]("https://www.raspberrypi.org/help/what-is-a-raspberry-pi/").
 
-#### Can I buy shared in the Raspberry Pi Foundation?
+#### Can I buy shares in the Raspberry Pi Foundation?
 The Raspberry Pi Foundation is a charity, so you can’t buy shares in the company. If you want to support us, we would love you to buy a Raspberry Pi.
 
 ### Buying and shipping
@@ -118,7 +117,7 @@ All these prices are exclusive of any local taxes and shipping/handling fees.
 
 #### What do I get when I buy one?
 You get the Raspberry Pi board itself. A power supply and SD card are not included, but can be purchased at the same time from most places that sell the Raspberry Pi. You can also purchase pre-loaded SD cards; we recommend buying these from us or our licensed distributors rather than from third parties on eBay, as our software is updated regularly and cards sold by third parties can quickly become outdated.
-#### Why us the price in US dollars?
+#### Why is the price in US dollars?
 Although we are a UK company, the components we buy are priced in dollars, and we negotiate manufacturing in dollars. Because currency markets are so volatile, we price the final board in dollars as well so we don’t have to keep changing the price. 
 #### Can I buy a Raspberry Pi kit?
 Many Raspberry Pi resellers produce bundles for people who would rather get everything they need from a single source. In 2016, we put together our own Raspberry Pi Official Starter Kit. The kit is available to order online in the UK from our partners [Element14](https://www.element14.com/community/docs/DOC-83184) and [RS components](http://uk.rs-online.com/web/p/processor-microcontroller-development-kits/8968119/), priced at £99+VAT, and from distributors and resellers around the world. 
@@ -137,7 +136,7 @@ The default username for Raspbian is “pi” (without any quotation marks) and 
 #### Why does nothing happen when I type in my password?
 To protect your information, Linux does not display anything when you are entering passwords in the Bash prompt or the terminal. As long as you were able to see the username being typed in, your keyboard is working correctly.
 
-#### What are the difference between Raspberry Pi models?
+#### What are the differences between Raspberry Pi models?
 These are the [models of the Raspberry Pi](https://www.raspberrypi.org/products/) which are currently available: the Pi 3 Model B, the Pi 2 Model B, the Pi Zero, the Pi Zero W and the Pi 1 Model B+ and A+.
 
 | Product | SoC | Speed | RAM | USB Ports | Ethernet | Wireless/Bluetooth |
@@ -255,7 +254,7 @@ There a number of command line applications provided for stills and video output
 Yes. We have reports of people using cables up to four metres in length and still receiving acceptable images, though your experience may differ. 
 
 #### Can I have the camera with more megapixels?
-No; the Raspberry Pi Camera Modules are the only cameras that are compatible with the Raspberry Pi. There are currently no plans to release a higher-resolution sensor.
+No; the Raspberry Pi Camera Modules are the only cameras that are compatible with the Raspberry Pi. 
 
 #### How much power does the camera use?
 The Raspberry Pi Camera Modules requires 250mA to operate. Ensure that your power supply can provide enough power for the connected Camera Module, as well as for the Raspberry Pi itself and any peripherals directly attached to it.
@@ -272,7 +271,8 @@ It is possible to make a case for the Raspberry Pi out of an Altoids tin: there 
 #### What displays can I use?
 There is composite and HDMI out on the board, so you can hook it up to an old analogue TV through the composite or through a composite to scart connector, to a digital TV or to a DVI monitor (using a cheap, passive HDMI to DVI cable for the DVI). For the Model B+, Pi 2, and Pi 3, the RCA composite jack has been replaced with a 3.5mm jack that combines audio and video in one. You’ll need a 3.5mm to 3RCA adapter cable to connect it to an older TV. There are many different types of this cable out there, but you want to purchase one that is compatible with the iPod Video (the iPod will have the left and right audio channels reversed, but the version of Raspbian included with NOOBS can swap this for you). The Pi Zero uses a mini-HDMI port.
 
-There is no VGA support, but active adapters are available. Passive HDMI to VGA cables will not work with the Raspberry Pi. When purchasing an active VGA adapter, make sure it comes with an external power supply. HDMI to VGA adapters without an external power supply often fail to work. 
+#### Why is there no VGA support
+Whilst there is no native VGA support, active adapters are available. Passive HDMI to VGA cables will not work with the Raspberry Pi. When purchasing an active VGA adapter, make sure it comes with an external power supply. HDMI to VGA adapters without an external power supply often fail to work. 
 
 #### Does the HDMI port support CEC?
 Yes, the HDMI port on the Raspberry Pi supports the CEC Standard. CEC may be called something else by your TV’s manufacturer; check [the Wikipedia entry on CEC](http://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC) for more information.
@@ -290,7 +290,7 @@ The Raspberry Pi can encode (record) and decode (play) H.264 (MP4/MKV) out of th
 #### Is sound over HDMI supported?
 Yes. 
 
-#### What about standard audio in an out?
+#### What about standard audio in and out?
 There is a standard 3.5mm jack for audio out to an amplifier. You can add any supported USB microphone for audio in or, using the I2S interface, you can add a codec for additional audio I/O.
 
 ### Power
@@ -330,16 +330,16 @@ It depends on the hub. Some hubs comply with the USB 2.0 Standard and only provi
 #### Can I power the Raspberry Pi from batteries as well as from a wall socket?
 Running the Raspberry Pi directly from batteries requires special care and can result in damaging or destroying your Raspberry Pi. If you consider yourself an advanced user, though, you could have a go. For example, four AA rechargeable batteries would provide 4.8V on a full charge. 4.8V would technically be just within the range of tolerance for the Raspberry Pi, but the system would quickly become unstable as the batteries lost their full charge. Conversely, using four AA Alkaline (non-rechargeable) batteries will result in 6V. 6V is outside the acceptable tolerance range and would potentially damage or, in the worst-case scenario, destroy your Raspberry Pi. It is possible to provide a steady 5V from batteries by using a buck and/or boost circuit, or by using a charger pack which is specifically designed to output a steady 5V from a couple of batteries; these devices are typically marketed as mobile phone emergency battery chargers.
 
-#### Is Power over Ethernet (PoE) possible?
+#### Is Power over Ethernet possible?
 
-Not in the base device. There are adapters that would split the voltage off the Ethernet line before connecting to the Pi, but they are relatively expensive. 
+Not in the base device. There are adapters that would split the voltage off the Ethernet line before connecting to the Pi, but they are relatively expensive. On the 3B+ there is a new connector for a Raspberry Pi designed PoE adapter.
 
 ### Software
 
 #### What operating system does it use?
 There are several official distributions (distros) available on our [downloads](https://www.raspberrypi.org/downloads) page. New users will probably find the NOOBS installer the easiest to work with, as it walks you through the download and installation of a specific distro. The recommended distro is Raspbian, which is specifically designed for the Raspberry Pi and which our engineers are constantly optimising. It is, however, a straightforward process to replace the root partition on the SD card with another ARM Linux distro, so we encourage you to try out several distros to see which one you like the most. The OS is stored on the SD card.
 
-#### Does it have an official programmin language?
+#### Does it have an official programming language?
 The Raspberry Pi Foundation recommends Python as a language for learners. We also recommend Scratch for younger children. Any language which will compile for ARMv6 (Pi 1) or ARMv7 (Pi 2) can be used with the Raspberry Pi, though, so you are not limited to using Python. C, C++, Java, Scratch, and Ruby all come installed by default on the Raspberry Pi.
 
 #### Will it run Wine or Windows, or other x86 software?
@@ -389,7 +389,7 @@ Only on the Pi 3 models and on the Pi Zero W.
 #### Why is there no gigabit ethernet?
 Gigabit ethernet was introduced on the Raspberry Pi 3B+. However, due to the limitation of the host USB2.0 controller to which the Ethernet chip is is attached, bandwidth is limited to about 200-300MBits/s. Still considerably better than the maximum of 100MBits/s of previous models.
 
-#### Does the device have dupport for any form of netbooting or PXE?
+#### Does the device have support for any form of netbooting or PXE?
 Yes. The Raspberry Pi 3 can be set up to network boot without an SD card present; earlier models can PXE/Netboot with an appropriately set up SD card.
 
 There is also [PiNet](http://pinet.org.uk), which is a free and open-source community-based project initially designed for schools. Each Raspberry Pi boots off a small set of startup files on an SD card and fetches the rest of the data it needs from the PiNet server, thereby allowing you to maintain a single operating system image for all the Raspberry Pis. PiNet also adds network user accounts, shared folders and automated backups.
