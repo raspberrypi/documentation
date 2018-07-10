@@ -21,12 +21,12 @@ or install it:
 - Graphical install
     - Install the OS fully using a graphical installer
 - Advanced options
-      - Expert install
-      - Rescue mode
-      - Automated install
-      - Graphical expert install
-      - Graphical rescue mode
-      - Graphical automated install
+    - Expert install
+    - Rescue mode
+    - Automated install
+    - Graphical expert install
+    - Graphical rescue mode
+    - Graphical automated install
 - Help
     - View the help index
 - Install with speech synthesis
