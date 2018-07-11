@@ -2,12 +2,12 @@
 
 ## Table of contents
 
-### Introduction
+### [Introduction](#introduction)
 
 - [What is a Raspberry Pi?](#what-is-a-raspberry-pi)
 - [Can I buy shares in the Raspberry Pi Foundation?](#can-i-buy-shares-in-the-raspberry-pi-foundation)
 
-### Buying and shipping
+### [Buying and shipping](#buying-and-shipping)
 
 - [Where can I buy a Raspberry Pi?](#where-can-i-buy-a-raspberry-pi)
 - [How much does it cost?](#how-much-does-it-cost)
@@ -18,7 +18,7 @@
 - [Is the device available internationally?](#is-the-device-available-internationally)
 - [I want to be a Raspberry Pi reseller.](#i-want-to-be-a-raspberry-pi-reseller)
 
-### General
+### [General](#general)
 
 - [What is the username and password for the Raspberry Pi?](#what-is-the-username-and-password-for-the-raspberry-pi)
 - [Why does nothing happen when I type in my password? Did my Raspberry Pi freeze?](#why-does-nothing-happen-when-i-type-in-my-password)
@@ -35,7 +35,7 @@
 - [How does it boot?](#how-does-it-boot)
 - [Do you sell a self-assembly kit?](#do-you-sell-a-self-assembly-kit)
 
-### Performance and cost considerations
+### [Performance and cost considerations](#performance-and-cost)
 
 - [How powerful is it?](#how-powerful-is-it)
 - [Does it overclock?](#does-it-overclock)
@@ -46,7 +46,7 @@
 - [Why doesn't the Raspberry Pi include a particular type of hardware?](#why-doesnt-the-raspberry-pi-include-a-particular-type-of-hardware)
 - [What is its operating temperature?](#what-is-its-operating-temperature)
 
-### Camera
+### [Camera](#camera)
 
 - [What is the Camera Module?](#what-is-the-camera-module)
 - [What model of camera does the Camera Module use?](#what-model-of-camera-does-the-camera-module-use)
@@ -56,12 +56,12 @@
 - [Can I have the camera with more megapixels?](#can-i-have-the-camera-with-more-megapixels)
 - [How much power does the Camera use?](#how-much-power-does-the-camera-use)
 
-### Cases
+### [Cases](#cases)
 
 - [Does it come with a case?](#does-it-come-with-a-case)
 - [Does it fit in an Altoids tin?](#does-it-fit-in-an-altoids-tin)
 
-### Video
+### [Video](#video)
 
 - [What displays can I use?](#what-displays-can-i-use)
 - [Does the HDMI port support CEC?](#does-the-hdmi-port-support-cec)
@@ -69,19 +69,19 @@
 - [Can I add a touchscreen?](#can-i-add-a-touchscreen)
 - [What codecs can it play?](#what-codecs-can-it-play)
 
-### Audio
+### [Audio](#audio)
 
 - [Is sound over HDMI supported?](#is-sound-over-hdmi-supported)
 - [What about standard audio in and out?](#what-about-standard-audio-in-and-out)
 
-### Power
+### [Power](#power)
 
 - [What are the power requirements?](#what-are-the-power-requirements)
 - [Can I power the Raspberry Pi from a USB hub?](#can-i-power-the-raspberry-pi-from-a-usb-hub)
 - [Can I power the Raspberry Pi from batteries as well as from a wall socket?](#can-i-power-the-raspberry-pi-from-batteries-as-well-as-from-a-wall-socket)
 - [Is Power over Ethernet (PoE) possible?](#is-power-over-ethernet-possible)
 
-### Software
+### [Software](#software)
 
 - [What operating system (OS) does it use?](#what-operating-system-does-it-use)
 - [Does it have an official programming language?](#does-it-have-an-official-programming-language)
@@ -92,13 +92,13 @@
 - [Will it run any old software?](#will-it-run-any-old-software)
 - [Why does cpuinfo report I have a bcm2835?](#why-does-cpuinfo-report-i-have-a-bcm2835)
 
-### SD cards and storage
+### [SD cards and storage](#sd-cards-and-storage)
 
 - [What size of SD card do I need?](#what-size-of-sd-card-do-i-need)
 - [What size of SD card can it support?](#what-size-of-sd-card-can-it-support)
 - [What happens if I brick the device?](#what-happens-if-i-brick-the-device)
 
-### Networking, USB, wireless connectivity
+### [Networking, USB, wireless connectivity](#networking)
 
 - [Does the device support networking?](#does-the-device-support-networking)
 - [Is there built-in WiFi?](#is-there-built-in-wifi)
@@ -107,15 +107,15 @@
 - [Does the device have support for any form of netbooting or PXE?](#does-the-device-have-support-for-any-form-of-netbooting-or-pxe)
 - [How do you connect more USB devices?](#how-do-you-connect-more-usb-devices)
 
-### Educational uses
+### [Educational uses](#educational-uses)
 
 - [What educational material is available?](#what-educational-material-is-available)
 
 ---
 
+<a name="introduction"></a>
 ## Introduction
 
-<a name="what-is-a-raspberry-pi"></a>
 ### What is a Raspberry Pi
 
 The Raspberry Pi is a credit-card-sized computer that plugs into your TV and a keyboard. It is a capable little computer which can be used in electronics projects, and for many of the things that your desktop PC does, like spreadsheets, word processing, browsing the internet, and playing games. It also plays high-definition video. We want to see it being used by adults and children all over the world to learn programming and digital making. You can read more about the Raspberry Pi [here](https://www.raspberrypi.org/help/what-is-a-raspberry-pi/).
@@ -124,6 +124,7 @@ The Raspberry Pi is a credit-card-sized computer that plugs into your TV and a k
 
 The Raspberry Pi Foundation is a charity, so you can't buy shares in the company. If you want to support us, we would love you to buy a Raspberry Pi.
 
+<a name="buying-and-shipping"></a>
 ## Buying and shipping
 
 ### Where can I buy a Raspberry Pi?
@@ -169,6 +170,7 @@ Yes.
 
 We have an exclusive manufacturing and distribution arrangement with [RS](http://uk.rs-online.com/web/generalDisplay.html?id=raspberrypi) and [Farnell](https://www.element14.com/community/community/raspberry-pi). Resellers buy the Raspberry Pi in bulk from them (which reduces shipping costs to nearly nothing) and sell on. You do not need any special licence to resell, and the distributors are very happy to sell on to resellers. If you are interested in joining our [Approved Reseller](https://www.raspberrypi.org/blog/approved-reseller/) programme, contact us by email to info@raspberrypi.org.
 
+<a name="general"></a>
 ## General
 
 ### What is the username and password for the Raspberry Pi?
@@ -260,6 +262,7 @@ As standard, all the files necessary for booting are installed in a FAT32 partit
 
 No. It would be too expensive for us to provide kits alongside finished boards, which would mean introducing another step in manufacturing. A kit would also be impossible to hand-solder. We use special equipment (robots!) to solder on the BGA package and other tiny components.
 
+<a name="performance-and-cost"></a>
 ## Performance and cost considerations
 
 ### How powerful is it?
@@ -296,6 +299,7 @@ Our main aim is a charitable one: we are trying to build the cheapest possible c
 
 The Raspberry Pi is built from commercial chips which are qualified to different temperature ranges; the LAN9514 (LAN9512 on older models with 2 USB ports) is specified by the manufacturers as being qualified from 0°C to 70°C, while the SoC is qualified from -40°C to 85°C. You may well find that the board will work outside those temperatures, but we're not qualifying the board itself to these extremes.
 
+<a name="camera"></a>
 ## Camera
 
 ### What is the Camera Module?
@@ -330,6 +334,7 @@ No; the Raspberry Pi Camera Modules are the only cameras that are compatible wit
 
 The Raspberry Pi Camera Modules requires 250mA to operate. Ensure that your power supply can provide enough power for the connected Camera Module, as well as for the Raspberry Pi itself and any peripherals directly attached to it.
 
+<a name="cases"></a>
 ## Cases
 
 ### Does it come with a case?
@@ -340,6 +345,7 @@ An official case for the Raspberry Pi is [available from our distributors](https
 
 It is possible to make a case for the Raspberry Pi out of an Altoids tin: there are instructions given in a [forum post here](https://www.raspberrypi.org/forums/viewtopic.php?f=40&amp;t=28814) (the directions are also available as an [Instructables guide](http://www.instructables.com/id/How-to-Make-a-Raspberry-Pi-Case-From-an-Altoids-Ti/). However, you may find that this is not possible with older boards, as their form factors are not as neat. You can, of course, fit a Pi Zero into an Altoids tin with room to spare.
 
+<a name="video"></a>
 ## Video
 
 ### What displays can I use?
@@ -366,6 +372,7 @@ The Raspberry Pi Foundation provides a 7" capacitive [touchscreen](https://www.r
 
 The Raspberry Pi can encode (record) and decode (play) H.264 (MP4/MKV) out of the box. There are also two additional codecs you can [purchase through our Swag Store](http://swag.raspberrypi.org/collections/software) that enable you to decode [MPEG-2](http://swag.raspberrypi.org/collections/software/products/mpeg-2-license-key), a very popular and widely used format to encode DVDs, video camera recordings, TV and many others, and [VC-1](http://swag.raspberrypi.org/collections/software/products/vc-1-license-key), a Microsoft format found in Blu-ray discs, Windows Media, Slingbox, and HD-DVDs.
 
+<a name="audio"></a>
 ## Audio
 
 ### Is sound over HDMI supported?
@@ -376,6 +383,7 @@ Yes.
 
 There is a standard 3.5mm jack for audio out to an amplifier. You can add any supported USB microphone for audio in or, using the I2S interface, you can add a codec for additional audio I/O.
 
+<a name="power"></a>
 ## Power
 
 ### What are the power requirements?
@@ -421,6 +429,7 @@ Running the Raspberry Pi directly from batteries requires special care and can r
 
 Not in the base device. There are adapters that would split the voltage off the Ethernet line before connecting to the Pi, but they are relatively expensive. On the 3B+ there is a new connector for a Raspberry Pi designed PoE adapter.
 
+<a name="software"></a>
 ## Software
 
 ### What operating system does it use?
@@ -457,6 +466,7 @@ In general, you need to look to see whether the program you want can be compiled
 
 The upstream Linux kernel developers had decided that all models of Raspbery Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that `cat /proc/cpuinfo` is inaccurate for the Raspbery Pi 2 and Raspbery Pi 3, which use the bcm2836 and bcm283 respectively. You can use `cat /proc/device-tree/model` to get an accurate description of the SoC on your Pi model.
 
+<a name="sd-cards-and-storage"></a>
 ## SD cards and storage
 
 ### What size of SD card do I need?
@@ -471,6 +481,7 @@ We have tried cards up to 128GB, and most cards seem to work OK. You can also at
 
 If you brick the device, you can restore it by reflashing the SD card.
 
+<a name="networking"></a>
 ## Networking, USB and wireless connectivity
 
 ### Does the device support networking?
@@ -501,6 +512,7 @@ There is also [PiNet](http://pinet.org.uk), which is a free and open-source comm
 
 Use a USB hub to increase the number of ports. Some keyboards have USB hubs built in which would work well. It is highly recommended that you use a powered USB hub.
 
+<a name="educational-uses"></a>
 ## Educational uses
 
 ### What educational material is available?
