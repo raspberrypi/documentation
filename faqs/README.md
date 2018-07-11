@@ -115,6 +115,7 @@
 
 ## Introduction
 
+<a name="what-is-a-raspberry-pi"></a>
 ### What is a Raspberry Pi
 
 The Raspberry Pi is a credit-card-sized computer that plugs into your TV and a keyboard. It is a capable little computer which can be used in electronics projects, and for many of the things that your desktop PC does, like spreadsheets, word processing, browsing the internet, and playing games. It also plays high-definition video. We want to see it being used by adults and children all over the world to learn programming and digital making. You can read more about the Raspberry Pi [here](https://www.raspberrypi.org/help/what-is-a-raspberry-pi/).
