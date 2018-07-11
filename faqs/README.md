@@ -509,4 +509,4 @@ There are many books about the Raspberry Pi available. For children, we particul
 
 ## I still have more questions!
 
-Read the sticky subjects in the [Beginners subforum](https://www.raspberrypi.org/phpBB3/viewforum.php?f=91) and check the [Help pages](https://www.raspberrypi.org/help/) for more information. If the answer is not there, ask in [the forums](https://www.raspberrypi.org/phpBB3/index.php), where there are lots of helpful Raspberry Pi owners, users, and fans who will be more than happy to help you out.
+Read the sticky subjects in the [Beginners subforum](https://www.raspberrypi.org/forums/viewforum.php?f=91) and check the [Help pages](https://www.raspberrypi.org/help/) for more information. If the answer is not there, ask in [the forums](https://www.raspberrypi.org/forums), where there are lots of helpful Raspberry Pi owners, users, and fans who will be more than happy to help you out.
