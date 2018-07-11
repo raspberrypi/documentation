@@ -505,7 +505,7 @@ Use a USB hub to increase the number of ports. Some keyboards have USB hubs buil
 
 ### What educational material is available?
 
-There are many books about the Raspberry Pi available. For children, we particularly recommend [Adventures in Raspberry Pi](https://swag.raspberrypi.org/collections/books/products/adventures-in-raspberry-pi-foundation-edition) by Carrie Anne Philbin, who works with us at the Raspberry Pi Foundation. Check out our resources pages for [free educational materials](https://projects.raspberrypi.org/en/): we are always adding to these. You'll find complete schemes of work linked to the England, Wales, and NI curriculum, as well as resources for independent and informal learning. We also offer [free online training materials](https://www.futurelearn.com/partners/raspberry-pi) for educators and other interested users.
+There are many books about the Raspberry Pi available. For children, we particularly recommend [Adventures in Raspberry Pi](https://www.amazon.co.uk/Adventures-Raspberry-Carrie-Anne-Philbin/dp/1119269067) by Carrie Anne Philbin, who works with us at the Raspberry Pi Foundation. Check out our resources pages for [free educational materials](https://projects.raspberrypi.org/en/): we are always adding to these. You'll find complete schemes of work linked to the England, Wales, and NI curriculum, as well as resources for independent and informal learning. We also offer [free online training materials](https://www.futurelearn.com/partners/raspberry-pi) for educators and other interested users.
 
 ## I still have more questions!
 
