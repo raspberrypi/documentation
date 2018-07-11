@@ -1,16 +1,16 @@
 # Raspberry Pi documentation glossary
 
 - **A/mA** – ampere/milliampere, the base unit of electrical current; see [Wikipedia](https://en.wikipedia.org/wiki/Ampere)
-- **ARM** – a series of instruction-set architectures and processor microarchitectures, mostly developed by Arm Holdings based in Cambridge, UK; see [Wikipedia](https://en.wikipedia.org/wiki/ARM_architecture)
-- **ARMv6** – the instruction set architecture used on the first Raspberry Pi (Pi 1) and the Pi Zero range
-- **ARMv7** – the instruction set architecture used on the Raspberry Pi 2 range
-- **ARMv8** – the instruction set architecture used on the Raspberry Pi 3 range; very similar to ARMv7 in 32-bit mode
-- **bcm2835** – the SoC used on the Raspberry Pi 1, Compute Module 1, and Raspberry Pi Zero range; see our [offical documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/README.md)
-- **bcm2836** – the SoC used on the original Raspberry Pi 2; see our [offical documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/README.md)
-- **bcm2837** – the SoC used on the Raspberry Pi 3, Compute Module 3, and Raspberry Pi 2 version 1.2; see our [offical documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2837/README.md)
+- **Arm** – a series of instruction-set architectures and processor microarchitectures, mostly developed by Arm Holdings based in Cambridge, UK; see [Wikipedia](https://en.wikipedia.org/wiki/Arm_architecture)
+- **Armv6** – the instruction set architecture used on the first Raspberry Pi (Pi 1) and the Pi Zero range
+- **Armv7** – the instruction set architecture used on the Raspberry Pi 2 range
+- **Armv8** – the instruction set architecture used on the Raspberry Pi 3 range; very similar to Armv7 in 32-bit mode
+- **BCM2835** – the SoC used on the Raspberry Pi 1, Compute Module 1, and Raspberry Pi Zero range; see our [offical documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/BCM2835/README.md)
+- **BCM2836** – the SoC used on the original Raspberry Pi 2; see our [offical documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/BCM2836/README.md)
+- **BCM2837** – the SoC used on the Raspberry Pi 3, Compute Module 3, and Raspberry Pi 2 version 1.2; see our [offical documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/BCM2837/README.md)
 - **CODEC** – Coder/Decoder, hardware or software blocks that encode and/or decode video or audio data
 - **`config.txt`** – a file located on the boot partition of a Raspberry Pi's SD card that is parsed at boot time in order to enable, disable, and manage operating system features which cannot be changed after booting; see our [offical documentation](https://www.raspberrypi.org/documentation/configuration/config-txt/README.md)
-- **CSI** – Camera Serial Interface, a hardware interface for connecting cameras to SoCs 
+- **CSI** – Camera Serial Interface, a hardware interface for connecting cameras to SoCs
 - **DHCP** – Dynamic Host Configuration Protocol, a network management protocol which dynamically assigns an IP address and other network configuration parameters to each device on a network
 - **DPI** – Parallel Display Interface, an up to 24-bit parallel RGB interface via the Raspberry Pi's GPIO pins
 - **DSI** – Display Serial Interface, a hardware interface for connecting LCD panels
