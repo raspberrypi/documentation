@@ -4,112 +4,112 @@
 
 ### [Introduction](#introduction)
 
-- [What is a Raspberry Pi?](#what-is-a-raspberry-pi)
-- [Can I buy shares in the Raspberry Pi Foundation?](#can-i-buy-shares-in-the-raspberry-pi-foundation)
+- What is a Raspberry Pi?
+- Can I buy shares in the Raspberry Pi Foundation?
 
 ### [Buying and shipping](#buying-and-shipping)
 
-- [Where can I buy a Raspberry Pi?](#where-can-i-buy-a-raspberry-pi)
-- [How much does it cost?](#how-much-does-it-cost)
-- [What do I get when I buy one?](#what-do-i-get-when-i-buy-one)
-- [Why is the price in US Dollars?](#why-is-the-price-in-us-dollars)
-- [Can I buy a Raspberry Pi kit?](#can-i-buy-a-raspberry-pi-kit)
-- [Is there a buy-one-give-one programme?](#is-there-a-buy-one-give-one-programme)
-- [Is the device available internationally?](#is-the-device-available-internationally)
-- [I want to be a Raspberry Pi reseller.](#i-want-to-be-a-raspberry-pi-reseller)
+- Where can I buy a Raspberry Pi?
+- How much does it cost?
+- What do I get when I buy one?
+- Why is the price in US Dollars?
+- Can I buy a Raspberry Pi kit?
+- Is there a buy-one-give-one programme?
+- Is the device available internationally?
+- I want to be a Raspberry Pi reseller.
 
 ### [General](#general)
 
-- [What is the username and password for the Raspberry Pi?](#what-is-the-username-and-password-for-the-raspberry-pi)
-- [Why does nothing happen when I type in my password? Did my Raspberry Pi freeze?](#why-does-nothing-happen-when-i-type-in-my-password)
-- [What are the differences between Raspberry Pi models?](#what-are-the-differences-between-raspberry-pi-models)
-- [How do I connect a mouse and keyboard?](#how-do-i-connect-a-mouse-and-keyboard)
-- [Where is the on-off switch?](#where-is-the-on-off-switch)
-- [What is NOOBS?](#what-is-noobs)
-- [When will the next model of the Raspberry Pi be released?](#when-will-the-next-model-of-the-raspberry-pi-be-released)
-- [What are the dimensions of the Raspberry Pi?](#what-are-the-dimensions-of-the-raspberry-pi)
-- [What hardware documentation is available?](#what-hardware-documentation-is-available)
-- [What SoC are you using?](#what-soc-are-you-using)
-- [What is an SoC?](#what-is-an-soc)
-- [Why did you select the SoC?](#why-did-you-select-the-soc)
-- [How does it boot?](#how-does-it-boot)
-- [Do you sell a self-assembly kit?](#do-you-sell-a-self-assembly-kit)
+- What is the username and password for the Raspberry Pi?
+- Why does nothing happen when I type in my password? Did my Raspberry Pi freeze?
+- What are the differences between Raspberry Pi models?
+- How do I connect a mouse and keyboard?
+- Where is the on-off switch?
+- What is NOOBS?
+- When will the next model of the Raspberry Pi be released?
+- What are the dimensions of the Raspberry Pi?
+- What hardware documentation is available?
+- What SoC are you using?
+- What is an SoC?
+- Why did you select the SoC?
+- How does it boot?
+- Do you sell a self-assembly kit?
 
 ### [Performance and cost considerations](#performance-and-cost)
 
-- [How powerful is it?](#how-powerful-is-it)
-- [Does it overclock?](#does-it-overclock)
-- [Does it need a heatsink?](#does-it-need-a-heatsink)
-- [What hardware interfaces does it have?](#what-hardware-interfaces-does-it-have)
-- [Why is there no real-time clock (RTC)?](#why-is-there-no-real-time-clock)
-- [Can I add extra memory?](#can-i-add-extra-memory)
-- [Why doesn't the Raspberry Pi include a particular type of hardware?](#why-doesnt-the-raspberry-pi-include-a-particular-type-of-hardware)
-- [What is its operating temperature?](#what-is-its-operating-temperature)
+- How powerful is it?
+- Does it overclock?
+- Does it need a heatsink?
+- What hardware interfaces does it have?
+- Why is there no real-time clock (RTC)?
+- Can I add extra memory?
+- Why doesn't the Raspberry Pi include a particular type of hardware?
+- What is its operating temperature?
 
 ### [Camera](#camera)
 
-- [What is the Camera Module?](#what-is-the-camera-module)
-- [What model of camera does the Camera Module use?](#what-model-of-camera-does-the-camera-module-use)
-- [What resolutions are supported?](#what-resolutions-are-supported)
-- [What picture formats are supported?](#what-picture-formats-are-supported)
-- [How do I use the camera?](#how-do-i-use-the-camera)
-- [Can I have the camera with more megapixels?](#can-i-have-the-camera-with-more-megapixels)
-- [How much power does the Camera use?](#how-much-power-does-the-camera-use)
+- What is the Camera Module?
+- What model of camera does the Camera Module use?
+- What resolutions are supported?
+- What picture formats are supported?
+- How do I use the camera?
+- Can I have the camera with more megapixels?
+- How much power does the Camera use?
 
 ### [Cases](#cases)
 
-- [Does it come with a case?](#does-it-come-with-a-case)
-- [Does it fit in an Altoids tin?](#does-it-fit-in-an-altoids-tin)
+- Does it come with a case?
+- Does it fit in an Altoids tin?
 
 ### [Video](#video)
 
-- [What displays can I use?](#what-displays-can-i-use)
-- [Does the HDMI port support CEC?](#does-the-hdmi-port-support-cec)
-- [Why is there no VGA support?](#why-is-there-no-vga-support)
-- [Can I add a touchscreen?](#can-i-add-a-touchscreen)
-- [What codecs can it play?](#what-codecs-can-it-play)
+- What displays can I use?
+- Does the HDMI port support CEC?]
+- Why is there no VGA support?
+- Can I add a touchscreen?
+- What codecs can it play?
 
 ### [Audio](#audio)
 
-- [Is sound over HDMI supported?](#is-sound-over-hdmi-supported)
-- [What about standard audio in and out?](#what-about-standard-audio-in-and-out)
+- Is sound over HDMI supported?
+- What about standard audio in and out?
 
 ### [Power](#power)
 
-- [What are the power requirements?](#what-are-the-power-requirements)
-- [Can I power the Raspberry Pi from a USB hub?](#can-i-power-the-raspberry-pi-from-a-usb-hub)
-- [Can I power the Raspberry Pi from batteries as well as from a wall socket?](#can-i-power-the-raspberry-pi-from-batteries-as-well-as-from-a-wall-socket)
-- [Is Power over Ethernet (PoE) possible?](#is-power-over-ethernet-possible)
+- What are the power requirements?
+- Can I power the Raspberry Pi from a USB hub?
+- Can I power the Raspberry Pi from batteries as well as from a wall socket?
+- Is Power over Ethernet (PoE) possible?
 
 ### [Software](#software)
 
-- [What operating system (OS) does it use?](#what-operating-system-does-it-use)
-- [Does it have an official programming language?](#does-it-have-an-official-programming-language)
-- [Will it run WINE (or Windows, or other x86 software)?](#will-it-run-wine-or-windows-or-other-x86-software)
-- [Will it run the Windows 8 Arm edition?](#will-it-run-the-windows-8-arm-edition)
-- [Which Linux distros run on the Pi?](#which-linux-distros-run-on-the-pi)
-- [Will it run Android or Android Things?](#will-it-run-android-or-android-things)
-- [Will it run any old software?](#will-it-run-any-old-software)
-- [Why does cpuinfo report I have a bcm2835?](#why-does-cpuinfo-report-i-have-a-bcm2835)
+- What operating system (OS) does it use?
+- Does it have an official programming language?
+- Will it run WINE (or Windows, or other x86 software)?
+- Will it run the Windows 8 Arm edition?
+- Which Linux distros run on the Pi?
+- Will it run Android or Android Things?
+- Will it run any old software?
+- Why does cpuinfo report I have a bcm2835?
 
 ### [SD cards and storage](#sd-cards-and-storage)
 
-- [What size of SD card do I need?](#what-size-of-sd-card-do-i-need)
-- [What size of SD card can it support?](#what-size-of-sd-card-can-it-support)
-- [What happens if I brick the device?](#what-happens-if-i-brick-the-device)
+- What size of SD card do I need?
+- What size of SD card can it support?
+- What happens if I brick the device?
 
 ### [Networking, USB, wireless connectivity](#networking)
 
-- [Does the device support networking?](#does-the-device-support-networking)
-- [Is there built-in WiFi?](#is-there-built-in-wifi)
-- [Is there built-in Bluetooth?](#is-there-built-in-bluetooth)
-- [Why is there no Gigabit Ethernet?](#why-is-there-no-gigabit-ethernet)
-- [Does the device have support for any form of netbooting or PXE?](#does-the-device-have-support-for-any-form-of-netbooting-or-pxe)
-- [How do you connect more USB devices?](#how-do-you-connect-more-usb-devices)
+- Does the device support networking?
+- Is there built-in WiFi?
+- Is there built-in Bluetooth?
+- Why is there no Gigabit Ethernet?
+- Does the device have support for any form of netbooting or PXE?
+- How do you connect more USB devices?
 
 ### [Educational uses](#educational-uses)
 
-- [What educational material is available?](#what-educational-material-is-available)
+- What educational material is available?
 
 ---
 
