@@ -1,69 +1,68 @@
 # Raspberry Pi Documentation index
 
-- [Configuration](configuration)
-    - [config.txt](configuration/config-txt/)
-    - [Wireless](configuration/wireless/)
-- [FAQs](faqs/)
-- [Hardware](hardware/)
-    - camera
-        - mechanical
-        - schematics
-    - computemodule
-        - datasheets
-        - designdata
-        - schematics
-    - display
-    - industrial
-    - raspberrypi
-        - bcm2835
-        - bcm2836
-        - bcm2837
-        - bootmodes
-            - pxetools
-        - compliance
-        - dpi
-        - gpio
-        - mechanical
-        - power
-        - revision-codes
-        - schematics
-        - spi
-        - usb
-    - sense-hat
-- [Installation](installation/)
-    - installing-images
-- [Linux](linux/)
-    - filesystem
-    - kernel
-    - software
-    - usage
-- [Raspbian](raspbian/)
-    - applications
-- [Remote Access](remote-access/)
-    - access-over-Internet
-    - ssh
-    - vnc
-    - web-server
-- [Setup](setup/)
-- [Usage](usage/)
-    - audio
-    - camera
-        - python
-        - raspicam
-    - demos
-    - gpio
-        - python
-        - scratch1
-        - scratch2
-    - kodi
-    - mathematica
-    - minecraft
-    - python
-    - python-games
-    - scratch
-    - sonic-pi
-    - terminal
-    - video
-    - webcams
-    - wordpress
-    - xbmc
+- [Configuration](configuration/README.md)
+    - [config.txt](configuration/config-txt/README.md)
+    - [Wireless](configuration/wireless/README.md)
+- [FAQs](faqs/README.md)
+- [Hardware](hardware/README.md)
+    - [Camera](hardware/camera/README.md)
+        - [Mechanical](hardware/camera/mechanical)
+        - [Schematics](hardware/camera/schematics/README.md)
+    - [Compute Module](hardware/computemodule/README.md)
+        - [Datasheets](hardware/computemodule/datasheets/README.md)
+        - [Design data](hardware/computemodule/designdata/README.md)
+        - [Schematics](hardware/computemodule/schematics/README.md)
+    - [Display](hardware/display/README.md)
+    - [Industrial](hardware/industrial/README.md)
+    - [Raspberry Pi](hardware/raspberrypi/README.md)
+        - [BCM2835](hardware/raspberrypi/bcm2835/README.md)
+        - [BCM2836](hardware/raspberrypi/bcm2836/README.md)
+        - [BCM2837](hardware/raspberrypi/bcm2837/README.md)
+        - [Bootmodes](hardware/raspberrypi/bootmodes/README.md)
+            - [PXE tools](hardware/raspberrypi/bootmodes/pxetools)
+        - [Compliance](hardware/raspberrypi/compliance/README.md)
+        - [DPI](hardware/raspberrypi/dpi/README.md)
+        - [GPIO](hardware/raspberrypi/gpio/README.md)
+        - [Mechanical](hardware/raspberrypi/mechanical/README.md)
+        - [Power](hardware/raspberrypi/power/README.md)
+        - [Revision codes](hardware/raspberrypi/revision-codes/README.md)
+        - [Schematics](hardware/raspberrypi/schematics/README.md)
+        - [SPI](hardware/raspberrypi/spi/README.md)
+        - [USB](hardware/raspberrypi/usb/README.md)
+    - [Sense HAT](hardware/sense-hat/README.md)
+- [Installation](installation/README.md)
+    - [Installation](installation/installing-images/README.md)
+- [Linux](linux/README.md)
+    - [Filesystem](linux/filesystem)
+    - [Kernel](linux/kernel)
+    - [Software](linux/software)
+    - [Usage](linux/usage)
+- [Raspbian](raspbian/README.md)
+    - [Applications](raspbian/applications/README.md)
+- [Remote Access](remote-access/README.md)
+    - [Access over Internet](remote-access/access-over-Internet/README.md)
+    - [SSH](remote-access/ssh/README.md)
+    - [VNC](remote-access/vnc/README.md)
+    - [Web server](remote-access/web-server/README.md)
+- [Setup](setup/README.md)
+- [Usage](usage/README.md)
+    - [Audio](usage/audio/README.md)
+    - [Camera](usage/camera/README.md)
+        - [Python](usage/camera/python/README.md)
+        - [Command line](usage/camera/raspicam/README.md)
+    - [Demo programs](usage/demos/README.md)
+    - [GPIO](usage/gpio/README.md)
+        - [Python](usage/gpio/python/README.md)
+        - [Scratch 1](usage/gpio/scratch1/README.md)
+        - [Scratch 2](usage/gpio/scratch2/README.md)
+    - [Kodi](usage/kodi/README.md)
+    - [Mathematica](usage/mathematica/README.md)
+    - [Minecraft](usage/minecraft/README.md)
+    - [Python](usage/python/README.md)
+    - [Python games](usage/python-games/README.md)
+    - [Scratch](usage/scratch/README.md)
+    - [Sonic Pi](usage/sonic-pi/README.md)
+    - [Terminal](usage/terminal/README.md)
+    - [Video](usage/video/README.md)
+    - [Webcams](usage/webcams/README.md)
+    - [WordPress](usage/wordpress/README.md)
