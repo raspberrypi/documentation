@@ -62,6 +62,25 @@ No. There is no audio or video (HDMI/composite) in capability on the Pi. You can
 
 Depends. We recommend issueing the "sudo halt" or "sudo shutdown" command prior to pulling the power. This ensures that any outstanding file transaction are written to the SD card, and that the SD card is no longer 'active' Pulling the power during a SD card transaction can occasionally corrupt the card.
 
+## Can I use my Pi as a desktop replacement?
+
+Yes, and no! For many tasks the Pi is quite suitable, however, because internet browsers nowadays require a lot of memory, browsing can be a bit slow if you open too many browser tabs. Although 1GB of RAM seems a lot, modern browsers are real memory hogs!
+
+## Can I boot a Pi from a USB attached harddrive instead of the SD card?
+
+Yes, booting from a USB attached rive (either a SSD or actual harddrive) can make the Pi boot and work faster. We have extensive instruction on how to do it [here](./hardware/raspberrypi/bootmodes/msd.md). 
+
+## Can I boot a Pi over a network?
+
+Yes, this is also possible. See the documenation [here](./hardware/raspberrypi/bootmodes/net.md).
+
+## Can I share files with my Windows machines
+
+Yes, there are a number of ways of doing this, but the most common is to use what are called Samba shares. We don't have any specific documentation on Samba shares just yet, but any instructions for Linux should work.
+
+It's also easy to copy files to and from Windows devices, rather than sharing folders. There is plenty of documentation [here](./remote-access/README.md)
+
+
 
 
 
