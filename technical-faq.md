@@ -96,6 +96,13 @@ The upstream Linux kernel developers had decided that all models of Raspberry Pi
 
 This is to do with the capabilities of Windows to read Linux formatted partitions. When you image the SD card, it is automatically split in to multiple partitions. The first partition uses a format that Windows can read, but the other partitions use a Linux specific file system, and Windows simply does not recognise them. This means when you put an SD card in a Windows machine, it only displays the first partition, and may well say the other partitions are corrupted, and need formatting - Don't do this! Here's some information on what goes in that first [partition](./configuration/boot_folder.md). If you insert the SD card on a machine running Linux, it will display all the partitions correctly. 
 
+### How do I run a program at startup?
+
+There are a number of ways of doing this, [here's one](./linux/usage/rc-local.md)
+
+### How do I run a program at a specific time?
+
+Cron! [Here's how](./linux/usage/cron.md).
 
 
 
