@@ -1,6 +1,6 @@
 # Installing Raspberry Pi Desktop on your computer
 
-To install Raspberry Pi Desktop on your computer, first [install the disk image](../installing-cd-dvd)
+To install Raspberry Pi Desktop on your computer, first [install the disk image](../installing-iso/README.md)
 onto a DVD or USB stick.
 
 1. Insert the disk or USB stick in your computer before or after it starts
