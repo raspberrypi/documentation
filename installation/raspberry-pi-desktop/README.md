@@ -14,7 +14,7 @@ https://www.raspberrypi.org/downloads/raspberry-pi-desktop/
 
 ## Contents
 
-- [Installing on a DVD or USB stick](installing-cd-dvd-usb/README.md)
+- [Installing on a DVD or USB stick](installing-iso/README.md)
 - [Booting as a live disc](live-disc/README.md)
 - [Installing on your computer](installing/README.md)
 - [Running in a virtual machine](virtual-machine/README.md)
