@@ -80,6 +80,10 @@ Yes, there are a number of ways of doing this, but the most common is to use wha
 
 It's also easy to copy files to and from Windows devices, rather than sharing folders. There is plenty of documentation [here](./remote-access/README.md)
 
+## Can I attached multiple Pi's together to make a faster computer?
+
+Well, sort of. But not in the way you might want to do it. You cannot simply make a better computer, to play games faster for example,  by bolting together smaller ones. However, you can network computers together to create a clustered computer, but you do need to modify your software to work in this distributed fashion. It's a bit too complicated to go in to here, but try this page on Wikipedia, and the ones referenced from it, for more information. [Computer clusters](https://en.wikipedia.org/wiki/Computer_cluster). There are also some Raspberry Pi clusters, [here's one example](https://www.pidramble.com/).
+
 
 
 
