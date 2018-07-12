@@ -40,7 +40,7 @@ The GPIO are natively 3.3v, so 5v devices MUST NOT be attached directly, without
 
 ### Can I use a Pi in a commercial product
 
-A very common question is "Can I use a Raspberry Pi in a commercial product", and the answer is yes. Once you have bought it it's yours to do with as you wish. Note however, that a lot of the software in the Raspbian distribution is GPL licenced, which does have certain requirement, mainly that you must provide access to the source code if requested. This is usually pretty easy to do.
+A very common question is "Can I use a Raspberry Pi in a commercial product", and the answer is yes! Once you have bought it's yours to do with as you wish. Note however, that a lot of the software in the Raspbian distribution is GPL licenced, which does have certain requirements, mainly that you must provide access to the source code if requested. This is usually pretty easy to do.
 
 ### Is a Pi suitable for industrial applications?
 
@@ -48,13 +48,13 @@ Yes and no, as it depends on the use case. They have been used succesfully in in
 
 ### I'm worried I have a fake Pi
 
-Don't worry, as far as we know, there are no fake Pi's. The SoC's used on the Pi range are only available from one supplier, and only in large quantities, which when added to the low cost of the Pi itself, means it's not cost effective for clones to be made. There are a number of competitor products that use similar names, but not actual clones or fakes. 
+Don't worry, as far as we know, there are no fake Pi's. The SoC's used on the Pi range are only available from one supplier, and only in large quantities, which when added to the low cost of the Pi itself, means it's not cost effective for clones to be made. There are a number of competitor products that use similar names however, but not actual clones or fakes. 
 
 ### My SD card seems to have stopped working
 
-SD cards have a limtited lifespan due to the way they work. Under most circumstances that can give some years of use, but heavy file accessing or using the SD card as a swap drive may reduce lifespan considerable. Note that there are also fake capacity SD cards that are likely to be unreliable.
+SD cards have a limtited lifespan due to the way they work. Under most circumstances that can give some years of use, but heavy file accessing or using the SD card as a swap drive may reduce lifespan considerable. Note that there are also fake capacity SD cards being sold that are likely to be unreliable.
 
-## My .exe file won't run!
+### My .exe file won't run!
 
 Most .exe files come from Windows, and are compiled for the x86 processor architecture. These will not run on the Raspberry Pi, which uses an ARM processor architecture. A minority of .exe's, compiled from C# code or similar, actually use a Byte Code rather than a processor specific instruction set, and might work with the correct Mono interpreter software installed.
 
@@ -90,7 +90,7 @@ Well, sort of. But not in the way you might want to do it. You cannot simply mak
 
 ### Why does cpuinfo report I have a BCM2835?
 
-The upstream Linux kernel developers had decided that all models of Raspbery Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that cat /proc/cpuinfo is inaccurate later Raspberry Pi models which use different SoC's. You can use cat /proc/device-tree/model to get an accurate description of the SoC on your Pi model.
+The upstream Linux kernel developers had decided that all models of Raspberry Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that cat /proc/cpuinfo is inaccurate later Raspberry Pi models which use different SoC's. You can use cat /proc/device-tree/model to get an accurate description of the SoC on your Pi model.
 
 ### I've imaged an SD card with Raspbian/NOOBS, but when I look at it with my Windows PC it not all there!
 
