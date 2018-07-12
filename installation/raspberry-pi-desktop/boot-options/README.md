@@ -8,26 +8,32 @@ or install it:
 
 ## Options
 
-- Run with persistence
+1. **Run with persistence**
     - Live boot the OS with persistence of files and programs - any changes made
     will remain after reboot
-- Run and reset persistence
+1. **Run and reset persistence**
     - Reset any changes made, and live boot the OS with persistence of files
     thereafter
-- Run without persistence
+1. **Run without persistence**
     - Run the OS with no persistence of changes
-- Install
+1. **Install**
     - Install the OS fully using a command-line installer
-- Graphical install
+1. **Graphical install**
     - Install the OS fully using a graphical installer
-- Advanced options
-    - Expert install
-    - Rescue mode
-    - Automated install
-    - Graphical expert install
-    - Graphical rescue mode
-    - Graphical automated install
-- Help
+1. **Advanced options**
+    1. **Expert install**
+        - ???
+    1. **Rescue mode**
+        - ???
+    1. **Automated install**
+        - ???
+    1. **Graphical expert install**
+        - ???
+    1. **Graphical rescue mode**
+        - ???
+    1. **Graphical automated install**
+        - ???
+1. **Help**
     - View the help index
-- Install with speech synthesis
+1. **Install with speech synthesis**
     - Install the OS fully, with speech synthesis enabled
