@@ -88,6 +88,11 @@ Well, sort of. But not in the way you might want to do it. You cannot simply mak
 
 The upstream Linux kernel developers had decided that all models of Raspbery Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that cat /proc/cpuinfo is inaccurate later Raspberry Pi models which use different SoC's. You can use cat /proc/device-tree/model to get an accurate description of the SoC on your Pi model.
 
+## I've imaged an SD card with Raspbian/NOOBS, but when I look at it with my Windows PC it not all there!
+
+This is to do with the capabilities of Windows to read Linux formatted partitions. When you image the SD card, it is automatically split in to multiple partitions. The first partition uses a format that Windows can read, but the other partitions use a Linux specific file system, and Windows simply does not recognise them. This means when you put an SD card in a Windows machine, it only displays the first partition, and may well say the other partitions are corrupted, and need reformatting - Don't do this! Here's some information on what goes in that first [partition](./configuration/boot_folder.md). If you insert the SD card on a machine running Linux, it will display all the partitions correctly. 
+
+
 
 
 
