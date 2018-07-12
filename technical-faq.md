@@ -76,7 +76,7 @@ Yes, this is also possible. See the documenation [here](./hardware/raspberrypi/b
 
 ## Can I share files with my Windows machines
 
-Yes, there are a number of ways of doing this, but the most common is to use what are called Samba shares. We don't have any specific documentation on Samba shares just yet, but any instructions for Linux should work.
+Yes, there are a number of ways of doing this, but the most common is to use what are called Samba shares. We don't have any specific documentation on Samba shares in our official docs just yet, but [here](https://www.raspberrypi.org/magpi/samba-file-server/) is one from our magazine, [The Magpi](https://www.raspberrypi.org/magpi)
 
 It's also easy to copy files to and from Windows devices, rather than sharing folders. There is plenty of documentation [here](./remote-access/README.md)
 
