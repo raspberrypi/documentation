@@ -40,7 +40,7 @@ export http_proxy="http://username:password@proxyipaddress:proxyport"
 ```
 export https_proxy="http://username:password@proxyipaddress:proxyport"
 ```
-+ Create the `no_proxy` environment variable which is a a comma separated list of addresses your Pi should not use the proxy for:
++ Create the `no_proxy` environment variable which is a comma separated list of addresses your Pi should not use the proxy for:
 
 ```
 export no_proxy="localhost, 127.0.0.1"
@@ -68,7 +68,7 @@ In order for operations which run as `sudo` (e.g. downloading and installing sof
 sudo visudo
 ```
 
-+ Add the following line to the file so `sudo` use the environment variables you just created:
++ Add the following line to the file so `sudo` will use the environment variables you just created:
 
 ```
 Defaults	env_keep+="http_proxy https_proxy no_proxy"
