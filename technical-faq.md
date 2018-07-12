@@ -2,6 +2,10 @@
 
 This page gives short answers to some of the more commonly asked technical questions about the Raspberry Pi range of SBC's. More detail on these topics can be found in the rest of the documentation.
 
+### My Pi will not start up/boot!
+
+Probably the most asked question! We have full instructions for setting up your Raspberry Pi [here](./setup/), but if it still will not boot, you can try our troubleshooting sticky post in our [forum](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=58151)
+
 ### What differences are there in the GPU between different models
 
 All of the Raspberry Pi range use the same GPU, the Videocore4. Since the GPU provides the camera and display interfaces, codecs, 2/3D graphics etc, this means all Raspberry Pi's have the same capabilities. The real difference in models is the type of ARM cores used, and the additional peripherals, e.g. networking, USB ports etc that are attached.
@@ -16,7 +20,7 @@ All electronics give out heat, and the Pi is no exception. The latest model (3B+
 
 ### I keep getting a lightning bolt symbol and messages about power
 
-The recent Pi models have circuity to detect if the incoming power supply voltage drops below about 4.65v, and if this happens the lightning bolt will appear and a message will be set to the system log. Below this voltage, there is no guarantee the Pi will work correctly; this may exhibit as the device locking up, or bad SD card writes, USB device failure, ethernet dropping out etc. We recommend a good quality 5v power supply, 2.5A for the Pi3B+, with a thick copper supply cable. The cable itself can be very important, often the cheaper cables use very thin copper wire, which can cause a significant voltage drop. See [here](./configuration/warning-icons.md)
+Most Pi models have circuity to detect if the incoming power supply voltage drops below about 4.65v, and if this happens the lightning bolt will appear and a message will be set to the system log. Below this voltage, there is no guarantee the Pi will work correctly; this may exhibit as the device locking up, or bad SD card writes, USB device failure, ethernet dropping out etc. We recommend a good quality 5v power supply, 2.5A for the Pi3B+, with a thick copper supply cable. The cable itself can be very important, often the cheaper cables use very thin copper wire, which can cause a significant voltage drop. See [here](./configuration/warning-icons.md)
 
 ### What manufacturing standards etc does the Pi comply with?
 
@@ -24,7 +28,7 @@ We have put the Pi models through extensive compliance testing, both for Europe,
 
 ### I don't seem to get full speed gigabit networking on my Pi3B+
 
-ALthough the ethernet chip on the Raspberry Pi 3B+ is gigabit capable, the connection from the chip to the SoC is still via USB2.0, which limits the total bandwidth available to approximately 220-250Mbits/s in the real world. Although not gigabit, this is a healthy bump over the 100Mbits/s top speed of the 3B model. 
+ALthough the ethernet chip on the Raspberry Pi 3B+ is gigabit capable, the connection from the chip to the SoC is still via USB2.0, which limits the total bandwidth available to approximately 220-250Mbits/s in the real world. Although not gigabit, this is a healthy bump over the 100Mbits/s top speed of the 3B model. To get the best performance you should ensure that ethernet flow control is turned ON on your router.
 
 ### The processors on the latest Pi models are 64bit, but I cannot find a official 64bit OS
 
@@ -36,7 +40,7 @@ The GPIO are natively 3.3v, so 5v devices MUST NOT be attached directly, without
 
 ### Can I use a Pi in a commercial product
 
-A very common question is "Can I use a Raspberry Pi in a commercial product", and the answer is yes. Once you have bought it its yours to do with as you wish. Note however, that a lot of the software in the Raspbian distribution is GPL licenced, which does have certain requirement, mainly that you must provide access to the source code if requested. This is usually pretty easy to do.
+A very common question is "Can I use a Raspberry Pi in a commercial product", and the answer is yes. Once you have bought it it's yours to do with as you wish. Note however, that a lot of the software in the Raspbian distribution is GPL licenced, which does have certain requirement, mainly that you must provide access to the source code if requested. This is usually pretty easy to do.
 
 ### Is a Pi suitable for industrial applications?
 
@@ -56,41 +60,41 @@ Most .exe files come from Windows, and are compiled for the x86 processor archit
 
 ### Can I use a Pi for Audio or Video input?
 
-No. There is no audio or video (HDMI/composite) in capability on the Pi. You can add third party boards which can provide this sort of functionality. There is a camra interface which can record video from the Raspberry Pi camera module.
+No. There is no audio or video (HDMI/composite) IN capability on the Pi. You can add third party boards which can provide this sort of functionality. There is a camra interface which can record video from the Raspberry Pi camera module.
 
-## Is it safe to just pull the power?
+### Is it safe to just pull the power?
 
 Depends. We recommend issueing the "sudo halt" or "sudo shutdown" command prior to pulling the power. This ensures that any outstanding file transaction are written to the SD card, and that the SD card is no longer 'active' Pulling the power during a SD card transaction can occasionally corrupt the card.
 
-## Can I use my Pi as a desktop replacement?
+### Can I use my Pi as a desktop replacement?
 
 Yes, and no! For many tasks the Pi is quite suitable, however, because internet browsers nowadays require a lot of memory, browsing can be a bit slow if you open too many browser tabs. Although 1GB of RAM seems a lot, modern browsers are real memory hogs!
 
-## Can I boot a Pi from a USB attached harddrive instead of the SD card?
+### Can I boot a Pi from a USB attached harddrive instead of the SD card?
 
-Yes, booting from a USB attached rive (either a SSD or actual harddrive) can make the Pi boot and work faster. We have extensive instruction on how to do it [here](./hardware/raspberrypi/bootmodes/msd.md). 
+Yes, booting from a USB attached drive (either a SSD or actual harddrive) can make the Pi boot and work faster. We have extensive instruction on how to do it [here](./hardware/raspberrypi/bootmodes/msd.md). 
 
-## Can I boot a Pi over a network?
+### Can I boot a Pi over a network?
 
 Yes, this is also possible. See the documenation [here](./hardware/raspberrypi/bootmodes/net.md).
 
-## Can I share files with my Windows machines
+### Can I share files with my Windows machines
 
-Yes, there are a number of ways of doing this, but the most common is to use what are called Samba shares. We don't have any specific documentation on Samba shares in our official docs just yet, but [here](https://www.raspberrypi.org/magpi/samba-file-server/) is one from our magazine, [The Magpi](https://www.raspberrypi.org/magpi)
+Yes, there are a number of ways of doing this, but the most common is to use what are called Samba shares. We don't have any specific documentation on Samba shares in our official docs just yet, but [here](https://www.raspberrypi.org/magpi/samba-file-server/) is some from our magazine, [The Magpi](https://www.raspberrypi.org/magpi)
 
 It's also easy to copy files to and from Windows devices, rather than sharing folders. There is plenty of documentation [here](./remote-access/README.md)
 
-## Can I attached multiple Pi's together to make a faster computer?
+### Can I attached multiple Pi's together to make a faster computer?
 
 Well, sort of. But not in the way you might want to do it. You cannot simply make a better computer, to play games faster for example,  by bolting together smaller ones. However, you can network computers together to create a clustered computer, but you do need to modify your software to work in this distributed fashion. It's a bit too complicated to go in to here, but try this page on Wikipedia, and the ones referenced from it, for more information. [Computer clusters](https://en.wikipedia.org/wiki/Computer_cluster). There are also some Raspberry Pi clusters, [here's one example](https://www.pidramble.com/).
 
-## Why does cpuinfo report I have a BCM2835?
+### Why does cpuinfo report I have a BCM2835?
 
 The upstream Linux kernel developers had decided that all models of Raspbery Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that cat /proc/cpuinfo is inaccurate later Raspberry Pi models which use different SoC's. You can use cat /proc/device-tree/model to get an accurate description of the SoC on your Pi model.
 
-## I've imaged an SD card with Raspbian/NOOBS, but when I look at it with my Windows PC it not all there!
+### I've imaged an SD card with Raspbian/NOOBS, but when I look at it with my Windows PC it not all there!
 
-This is to do with the capabilities of Windows to read Linux formatted partitions. When you image the SD card, it is automatically split in to multiple partitions. The first partition uses a format that Windows can read, but the other partitions use a Linux specific file system, and Windows simply does not recognise them. This means when you put an SD card in a Windows machine, it only displays the first partition, and may well say the other partitions are corrupted, and need reformatting - Don't do this! Here's some information on what goes in that first [partition](./configuration/boot_folder.md). If you insert the SD card on a machine running Linux, it will display all the partitions correctly. 
+This is to do with the capabilities of Windows to read Linux formatted partitions. When you image the SD card, it is automatically split in to multiple partitions. The first partition uses a format that Windows can read, but the other partitions use a Linux specific file system, and Windows simply does not recognise them. This means when you put an SD card in a Windows machine, it only displays the first partition, and may well say the other partitions are corrupted, and need formatting - Don't do this! Here's some information on what goes in that first [partition](./configuration/boot_folder.md). If you insert the SD card on a machine running Linux, it will display all the partitions correctly. 
 
 
 
