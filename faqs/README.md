@@ -464,7 +464,7 @@ In general, you need to look to see whether the program you want can be compiled
 
 ### Why does cpuinfo report I have a BCM2835?
 
-The upstream Linux kernel developers had decided that all models of Raspbery Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that `cat /proc/cpuinfo` is inaccurate for the Raspbery Pi 2 and Raspbery Pi 3, which use the bcm2836 and bcm283 respectively. You can use `cat /proc/device-tree/model` to get an accurate description of the SoC on your Pi model.
+The upstream Linux kernel developers had decided that all models of Raspberry Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that `cat /proc/cpuinfo` is inaccurate for the Raspberry Pi 2 and Raspberry Pi 3, which use the bcm2836 and bcm283 respectively. You can use `cat /proc/device-tree/model` to get an accurate description of the SoC on your Pi model.
 
 <a name="sd-cards-and-storage"></a>
 ## SD cards and storage
