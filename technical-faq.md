@@ -104,6 +104,16 @@ There are a number of ways of doing this, [here's one](./linux/usage/rc-local.md
 
 Cron! [Here's how](./linux/usage/cron.md).
 
+### Updates? Upgrades? What do I do?
 
+It's important to keep your system up to date with the latest security updates, as well as bug fixes for any applications you might be using. This is easily done on the command line.
 
+`sudo apt update` will update the internal software database, so the system knows what the latest updates are.
 
+`sudo apt dist-upgrade` will then download all the updates, and install them.
+
+We recommend going through this process once or week or so. 
+
+### I heard about something called rpi-update. When should I use that?
+
+Unless using it is recommended by a Raspberry Pi engineer, then you shouldn't use `rpi-update`. It updates to the very very latest test  firmware and kernel software, which may not work correctly under all circusmtances. 
