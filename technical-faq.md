@@ -64,7 +64,7 @@ No. There is no audio or video (HDMI/composite) IN capability on the Pi. You can
 
 ### Is it safe to just pull the power?
 
-Depends. We recommend issueing the "sudo halt" or "sudo shutdown" command prior to pulling the power. This ensures that any outstanding file transaction are written to the SD card, and that the SD card is no longer 'active' Pulling the power during a SD card transaction can occasionally corrupt the card.
+No, not really. We recommend issueing the "sudo halt" or "sudo shutdown" command prior to pulling the power. This ensures that any outstanding file transactions are written to the SD card, and that the SD card is no longer 'active' Pulling the power during a SD card transaction can occasionally corrupt the card.
 
 ### Can I use my Pi as a desktop replacement?
 
