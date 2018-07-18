@@ -30,11 +30,13 @@ By default the `vcmailbox` application can be found in `/opt/vc/bin`
 
 The `vcmailbox` application simply sends a user supplied set of 32bit words (in decimal or hexadecimal if using 0x) to the mailbox property system, then displays the resulting returned values. 
 
-## Using mailboxes is userland code
+## Using mailboxes in userland code
 
 Please see the `vcmailbox` source code for some example functions to access mailboxes from user applications.
 
 The source for `vcmailbox` can  be found [here](https://github.com/raspberrypi/userland/blob/master/host_applications/linux/apps/vcmailbox/vcmailbox.c)
+
+There is also a very simple example for getting the Pi serial number via a mailbox here [here](https://github.com/AndrewFromMelbourne/raspi_serialnumber/blob/master/serialnumber_mailbox.c)
 
 ## Using the Mailboxes from Kernel modules
 
