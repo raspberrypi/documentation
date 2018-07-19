@@ -1,8 +1,8 @@
 ## Samba/CIFS
 
-Samba is a re-implementation of the SMB/CIFS networking protocol, which is used by Wi ndows devices to providing shared access to files, printers, and serial ports etc. There is a comprehensive [Wikipedia page](https://en.wikipedia.org/wiki/Samba_(software)) for Samba.
+Samba is a implementation of the SMB/CIFS networking protocol which is used by Windows devices to providing shared access to files, printers, and serial ports etc. There is a comprehensive [Wikipedia page](https://en.wikipedia.org/wiki/Samba_(software)) which describes Samba and its capabilities.
 
-This page will explain how to 'mount' a shared folder on a Windows device so it appears on your Raspberry Pi, or to share a folder on your Raspberry Pi so it can be accessed by a Windows Client.
+This page will explain how to use a subset of the Samba system to 'mount' a shared folder on a Windows device so it appears on your Raspberry Pi, or to share a folder on your Raspberry Pi so it can be accessed by a Windows Client.
 
 ### Installing CIFS/Samba support
 
@@ -37,6 +37,8 @@ You can share any folder you want, but for this example simply create a folder c
 7. Click on the security tab, as we now need to configure the same permissions.
 8. Select the same settings as the Permissions tab, adding the user used if necessary.
 9. Click OK. The folder should now be shared.
+
+#### Windows 10 Share Wizard
 
 On Windows 10 there is a Sharing Wizard which helps with some of these steps.
 
