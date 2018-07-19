@@ -46,15 +46,23 @@ unzip -p 2018-04-18-raspbian-stretch.zip | sudo dd of=/dev/sdX bs=4M conv=fsync
    ```
 - If you are using an older version of `dd`, the status option may not be available. You may be able to use the `dcfldd` command instead, which will give a progress report showing how much has been written. Another method is to send a USR1 signal to `dd`, which will let it print status information. Find out the PID of `dd` by using `pgrep -l dd` or `ps a | grep dd`. Then use `kill -USR1 PID` to send the USR1 signal to `dd`.
 
-### Checking whether the image was correctly written to the SD card
+### Optionally checking whether the image was correctly written to the SD card
 
 - After `dd` has finished copying, you can check what has been written to the SD card by `dd`-ing from the card back to another image on your hard disk; truncating the new image to the same size as the original; and then running `diff` (or `md5sum`) on those two images.
 
-- Copy the SD card content to an image on your hard drive. `if` is the input file (i.e. the SD card device), `of` is the output file to which the SD card content is to be copied, called `from-sd-card.img` in this example.
+- In the case where the SD card is much larger than the image, you don't want to read back the whole SD card, since it will be mostly empty, so you need to check the number of blocks that were written to the card by the dd command. At the end of the write, the command will have displayed the number of blocks written as follow:
+```
+xxx+0 records in
+yyy+0 records out
+yyyyyyyyyy bytes (yyy kB, yyy KiB) copied, 0.00144744 s, 283 MB/s
+```
+We need the number xxx, which is the block count. We can ignore the yyy numbers.
+
+- Copy the SD card content to an image on your hard drive. `if` is the input file (i.e. the SD card device), `of` is the output file to which the SD card content is to be copied, called `from-sd-card.img` in this example, and xxx is the number of blocks written by the original `dd` operation.
     ```bash
-    dd bs=4M if=/dev/sdX of=from-sd-card.img
+    dd bs=4M if=/dev/sdX of=from-sd-card.img count=xxx
     ```
-- Truncate the new image to the size of the original image, in case the SD card was larger than the original image. Make sure you replace the input file `reference` argument with the original image name.
+- Truncate the new image to the size of the original image, in case the SD card image is still larger than the original image. Make sure you replace the input file `reference` argument with the original image name.
     ```bash
     truncate --reference 2018-04-18-raspbian-stretch.img from-sd-card.img
     ```
