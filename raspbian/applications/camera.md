@@ -625,6 +625,14 @@ Rather than creating a single file, the file is split into segments of approxima
 
 will produce video clips of approximately 3000ms (3s) long, named `video0001.h264`, `video0002.h264` etc. The clips should be seamless (no frame drops between clips), but the accuracy of each clip length will depend on the intraframe period, as the segments will always start on an I-frame. They will therefore always be equal or longer to the specified period.
 
+The most recent version of Raspivid will also allow the filename to be time based, rather than using a segment number. For example:
+```
+--segment 3000 -o video_%c.h264
+```
+will produce filenames formatted like so : `video_Fri Jul 20 16:23:48 2018.h264`
+
+There are many different formatting options available, see [here](http://man7.org/linux/man-pages/man3/strftime.3.html) for a full list. Note than the %d and %u options are not available as they are used for the segment number formatting, and that some combinations may produce invalid filenames.
+
 ```
 --wrap,	-wr		Set the maximum value for segment number
 ```
