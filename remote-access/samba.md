@@ -58,7 +58,7 @@ Now, we need to mount the remote folder to that location. The remote folder is t
 
 ```sudo mount.cifs //<hostname or IP address>/share /home/pi/windowshare -o user=<name>```
 
-You should now be able to view the content of the Windows shre on your Raspberry Pi.
+You should now be able to view the content of the Windows share on your Raspberry Pi.
 
 ```
 cd windowshare
@@ -67,7 +67,7 @@ ls
 
 ### Sharing a folder for use by Windows
 
-Firstly, create a folder to share, this example creates a folder called shared in the home folder of the current user, this page assumes the current user is the `pi`.
+Firstly, create a folder to share, this example creates a folder called shared in the home folder of the current user, this page assumes the current user is `pi`.
 ```
 cd ~
 mkdir shared
