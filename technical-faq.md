@@ -4,7 +4,7 @@ This page gives short answers to some of the more commonly asked technical quest
 
 ### Why does my Pi not start up/boot?
 
-Probably the most frequently asked question! We have full instructions for setting up your Raspberry Pi [here](./setup/), but if it still will not boot, you will find advice on what to do in the [troubleshooting post on our forum](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=58151.
+Probably the most frequently asked question! We have full instructions for setting up your Raspberry Pi [here](./setup/), but if it still will not boot, you will find advice on what to do in the [troubleshooting post on our forum](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=58151).
 
 ### What differences are there in the GPU between different models?
 
@@ -44,7 +44,7 @@ This is a very common question, and the answer is yes! Once you have bought a Pi
 
 ### Is a Pi suitable for industrial applications?
 
-Yes and no — it depends on the use case. Pis have been used successfully in industrial environments, but the final decision must be in the hands of the end user as to whether the device is suitable for the task at hand. See our Compute Module documentation for more details on our Pi model specifically designed for use in commercial and industrial products.
+Yes and no — it depends on the use case. Pis have been used successfully in industrial environments, but the final decision must be in the hands of the end user as to whether the device is suitable for the task at hand. See our [Compute Module documentation](./hardware/computemodule/README.md) for more details on our Pi model specifically designed for use in commercial and industrial products.
 
 ### I'm worried I have a fake Pi!
 
@@ -64,7 +64,7 @@ Not by itself: there is no audio or video (HDMI/composite) IN capability on the 
 
 ### Is it safe to just pull the power?
 
-No, not really — you my corrupt your SD card if you do that. We recommend issueing the `sudo halt` or `sudo shutdown` command prior to pulling the power. This ensures that any outstanding file transactions are written to the SD card, and that the SD card is no longer 'active'. Pulling the power during a SD card transaction can occasionally corrupt the card.
+No, not really — you may corrupt your SD card if you do that. We recommend issueing the `sudo halt` or `sudo shutdown` command prior to pulling the power. This ensures that any outstanding file transactions are written to the SD card, and that the SD card is no longer 'active'. Pulling the power during a SD card transaction can occasionally corrupt the card.
 
 ### Can I use my Pi as a desktop replacement?
 
@@ -76,7 +76,7 @@ Yes, booting from a USB-attached drive (either a SSD or actual hard drive) can m
 
 ### Can I boot a Pi over a network?
 
-Yes, this is possible — see the documenation [here](./hardware/raspberrypi/bootmodes/net.md).
+Yes, this is possible — see the documentation [here](./hardware/raspberrypi/bootmodes/net.md).
 
 ### Can I share files with my Windows machines?
 
