@@ -1,7 +1,7 @@
 # Raspberry Pi Desktop boot options
 
 When booting the Raspberry Pi Desktop image, you will be presented with a
-selection screen offering a number of options for how you would like to run
+selection screen offering a number of options for how to run
 or install it:
 
 ![Raspberry Pi Desktop boot options](images/rpd-boot-options.png)
@@ -9,7 +9,7 @@ or install it:
 ## Options
 
 1. **Run with persistence**
-    - Live boot the OS with persistence of files and programs - any changes made
+    - Live boot the OS with persistence of files and programs — any changes made
     will remain after reboot
 1. **Run and reset persistence**
     - Reset any changes made, and live boot the OS with persistence of files
