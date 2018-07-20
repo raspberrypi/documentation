@@ -3,14 +3,14 @@
 The Raspberry Pi Foundation provides a Debian-based operating system image
 for x86 computers with the Raspberry Pi Desktop skin found in Raspbian.
 This image contains most of the programming tools and software found in Raspbian
-and is intended to make these tools available to people without a Raspberry Pi.
+and is intended to make them available to people without a Raspberry Pi.
 
 Users can install the image on a DVD or USB stick, and either use it as a
-live disc (boot the OS without installing it), install it on their computer or
+live disc (booting the OS without installing it), install it on their computer, or
 run it in a virtual machine.
 
-The latest release of the desktop image can be downloaded from
-https://www.raspberrypi.org/downloads/raspberry-pi-desktop/
+You can download the latest release of the desktop image from
+[www.raspberrypi.org/downloads/raspberry-pi-desktop](https://www.raspberrypi.org/downloads/raspberry-pi-desktop/).
 
 ## Contents
 
