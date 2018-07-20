@@ -4,21 +4,24 @@
 
 As of 15 July 2014, the Raspberry Pi firmware supports custom default pin configurations through a user-provided Device Tree blob file. To find out whether your firmware is recent enough, please run `vcgencmd version`.
 
-## Actions on Device Pins during Boot sequence
+## Actions on device pins during boot sequence
 
-During the bootup sequence, the pins go through various actions.
+During the bootup sequence, the GPIO pins go through various actions.
 
-1. Power on. Pins default to inputs with default pulls. The default pulls for each pins are described in the [datasheet](../hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf)
-2. Setting by the bootrom
-3. Setting by bootcode.bin
-4. Setting by dt-blob.bin (this page)
-5. Setting by the GPIO command in config.txt (see [here](config-txt/gpio.md))
-6. Additional firmware pins (e.g. UARTS)
-7. Kernel/Device tree.
+1. Power on — pins default to inputs with default pulls; the default pulls for each pin are described in the [datasheet](../hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf)
+1. Setting by the bootrom
+1. Setting by `bootcode.bin`
+1. Setting by `dt-blob.bin` (this page)
+1. Setting by the GPIO command in `config.txt` (see [here](config-txt/gpio.md))
+1. Additional firmware pins (e.g. UARTS)
+1. Kernel/Device Tree
 
 On a soft reset the same procedure applies, except for default pulls, which are only applied on a Power On Reset.
 
-Note that it may take a few seconds to get from stage 1 to stage 4. During that time the GPIO may not be in the state expected by attached peripherals (as defined in dtblob.bin or config.txt). Since different GPIO's have different default pulls, chose a GPIO that defaults to pulls as required by the peripheral on reset, delay the peripherals startup until stage 4/5 will have been reached, or add an appropriate pullup/down resistor.
+Note that it may take a few seconds to get from stage 1 to stage 4. During that time, the GPIO pins may not be in the state expected by attached peripherals (as defined in `dtblob.bin` or `config.txt`). Since different GPIO pins have different default pulls, you should do **one of the following** for your peripheral:
+* Choose a GPIO pins that defaults to pulls as required by the peripheral on reset
+* Delay the peripheral's startup until stage 4/5 has been reached
+* Add an appropriate pull-up/-down resistor
 
 
 ## Providing a custom Device Tree blob
