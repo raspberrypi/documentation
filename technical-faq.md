@@ -16,15 +16,15 @@ The Raspberry Pi (all models) idles at a lower speed than advertised. If the wor
 
 ### Why is my Pi hot?
 
-All electronics give off heat, and the Pi is no exception. The latest model (3B+) has heat-spreading technology to use the entire PCB and connectors as a heatsink to dissipate excess energy. This means that except in exceptional conditions, you are unlikely to need a heatsink on the SoC or the ethernet hub chip. You can still add a heatsink if you wish, and this may prevent thermal throttling by keeping the chips below the throttling temperature.
+All electronics give off heat, and the Pi is no exception. The latest model (3B+) has heat-spreading technology to use the entire PCB and connectors as a heatsink to dissipate excess energy. This means that except in exceptional conditions, you are unlikely to need a heatsink on the SoC or the Ethernet hub chip. You can still add a heatsink if you wish, and this may prevent thermal throttling by keeping the chips below the throttling temperature (see the paragraph on clock speed).
 
 ### I keep getting a lightning bolt symbol and messages about power...
 
-Most Pi models have circuity to detect when the incoming power supply voltage drops below about 4.65V. If this drop happens, the lightning bolt warning icon will appear (see [here](./configuration/warning-icons.md)), and a message will be sent to the system log. Below this voltage, there is no guarantee the Pi will work correctly; it may result in the device locking up, or bad SD card writes, USB device failure, ethernet dropping out, etc. We recommend a good-quality 5V power supply, 2.5A for the Pi 3B+, with a thick copper supply cable, such as [our official power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/). The cable itself can be very important: often the cheaper cables use very thin copper wire, which can cause a significant voltage drop.
+Most Pi models have circuity to detect drops of the incoming power supply voltage below around 4.65V. If such a drop happens, the lightning bolt warning icon (see [here](./configuration/warning-icons.md)) will appear, and a message will be sent to the system log. Below this voltage, there is no guarantee the Pi will work correctly; it may result in the device locking up, or bad SD card writes, USB device failure, Ethernet dropping out, etc. We recommend a good-quality 5V power supply, 2.5A for the Pi 3B+, with a thick copper supply cable, such as [our official power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/). The cable itself can be very important: often the cheaper cables use very thin copper wire, which can cause a significant voltage drop.
 
 ### What manufacturing standards etc. does the Pi comply with?
 
-We have put the Pi models through extensive compliance testing, for Europe, USA, and other countries around the world. You can find many of the reports [here](./hardware/raspberrypi/conformity.md).
+We have put the Pi models through extensive compliance testing, for Europe, the USA, and other countries around the world. You can find many of the reports [here](./hardware/raspberrypi/conformity.md).
 
 ### I don't seem to get full speed gigabit networking on my Pi 3B+.
 
@@ -32,7 +32,7 @@ ALthough the Ethernet chip on the Raspberry Pi 3B+ is gigabit-capable, the conne
 
 ### The processors on the latest Pi models are 64-bit, but I cannot find a official 64-bit OS
 
-Raspberry Pi do not current provide an official 64-bit OS, for a number of reasons. Firstly, since we still sell devices that are 32-bit, we would need to support two separate distributions, and at the moment we do not have the support capacity. Secondly, building a full 64-bit OS would require a considerable amount of work to, for example, fix the interfacing to the 32-bit VideoCore GPU. There are third-party 64-bit operating systems available, but they do not have the full support for the GPU that would be a requirement for an official release. 
+Raspberry Pi do not current provide an official 64-bit OS, for a number of reasons. Firstly, since we still sell devices that are 32-bit, we would need to support two separate distributions, and at the moment we do not have the support capacity. Secondly, building a full 64-bit OS would require a considerable amount of work to, for example, fix the interfacing to the 32-bit Videocore GPU. There are third-party 64-bit operating systems available, but they do not have the full support for the GPU that would be a requirement for an official release. 
 
 ### What voltage devices can I attach to the GPIO pins, and how much current can I pull?
 
@@ -48,11 +48,11 @@ Yes and no — it depends on the use case. Pis have been used successfully in in
 
 ### I'm worried I have a fake Pi!
 
-Don't worry, as far as we know, there are no fake Pis. The SoCs used on the Pi range are only available from one supplier, and only in large quantities, which together with the low price of the Pi means it's not cost-effective for clones to be made. There are a number of competitor products that use similar names however, but not actual clones or fakes. 
+Don't worry, as far as we know, there are no fake Pis. The SoCs used on the Pi range are only available from one supplier, and only in large quantities, which together with the low price of the Pi means it's not cost-effective for clones to be made. There are a number of competitor products that use similar names, but not actual clones or fakes. 
 
 ### My SD card seems to have stopped working.
 
-SD cards have a limited lifespan due to the way they work. Under most circumstances, they offer some years of use, but heavy file accessing, or using the SD card as a swap drive, may reduce its lifespan considerably. Note that there are also fake capacity SD cards being sold that are likely to be unreliable.
+SD cards have a limited lifespan due to the way they work. Under most circumstances, they offer some years of use, but heavy file accessing, or using it as a swap drive, may reduce the SD card's lifespan considerably. Note that there are also fake capacity SD cards being sold that are likely to be unreliable.
 
 ### My `.exe` file won't run!
 
@@ -60,7 +60,7 @@ Most `.exe` files come from Windows and are compiled for the x86 processor archi
 
 ### Can I use a Pi for audio or video input?
 
-Not by itself: there is no audio or video (HDMI/composite) IN capability on the Pi. You can add third-party boards to add this sort of functionality. There is a camra interface that can record video from the [Raspberry Pi Camera Module](https://www.raspberrypi.org/products/camera-module-v2/).
+Not by itself: there is no audio or video (HDMI/composite) IN capability on the Pi. You can add third-party boards to add this sort of functionality. Ther Pi has a camera interface that can record video from the [Raspberry Pi Camera Module](https://www.raspberrypi.org/products/camera-module-v2/).
 
 ### Is it safe to just pull the power?
 
@@ -68,11 +68,11 @@ No, not really — you may corrupt your SD card if you do that. We recommend iss
 
 ### Can I use my Pi as a desktop replacement?
 
-Yes and no! For many tasks the Pi is quite suitable, however, because internet browsers nowadays require a lot of memory, browsing can be a bit slow if you open too many browser tabs. Although 1GB of RAM seems like a lot, modern browsers are real memory hogs!
+Yes and no, it depends! For many daily tasks the Pi is quite suitable, however, because internet browsers nowadays require a lot of memory, browsing can be a bit slow if you open too many browser tabs. Although 1GB of RAM seems like a lot, modern browsers are real memory hogs!
 
 ### Can I boot a Pi from a USB-attached hard drive instead of the SD card?
 
-Yes, booting from a USB-attached drive (either a SSD or actual hard drive) can make the Pi boot and work faster. We have extensive instruction on how to do this [here](./hardware/raspberrypi/bootmodes/msd.md). 
+Yes, booting from a USB-attached drive (either a SSD or actual hard drive) can make the Pi boot and work faster. We have extensive instructions on how to do this [here](./hardware/raspberrypi/bootmodes/msd.md). 
 
 ### Can I boot a Pi over a network?
 
@@ -90,11 +90,11 @@ Sort of, but not in the way you might want to do it. You cannot simply make a mo
 
 ### Why does cpuinfo report I have a BCM2835?
 
-The upstream Linux kernel developers had decided that all models of Raspberry Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that `cat /proc/cpuinfo` is inaccurate on later Raspberry Pi models that use different SoCs. You can use `cat /proc/device-tree/model` to get an accurate description of the SoC on your Pi model.
+The upstream Linux kernel developers had decided that all models of Raspberry Pi return `bcm2835` as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately, it means that `cat /proc/cpuinfo` is inaccurate on later Raspberry Pi models that use different SoCs. You can use `cat /proc/device-tree/model` to get an accurate description of the SoC on your Pi model.
 
 ### I've imaged an SD card with Raspbian/NOOBS, but when I look at it with my Windows PC, it's not all there!
 
-This is to do with the capabilities of Windows to read Linux-formatted partitions. When you image the SD card, it is automatically split into multiple partitions. The first partition uses a format that Windows can read, but the other partitions use a Linux-specific file system, which Windows simply does not recognise. This means when you put an SD card in a Windows machine, it only displays the first partition, and may well say the other partitions are corrupted and need formatting - **don't do this**! Here's some information on what goes in that first [partition](./configuration/boot_folder.md). If you insert the SD card on a machine running Linux, it will display all the partitions correctly. 
+This is to do with the capabilities of Windows to read Linux-formatted partitions. When you image the SD card, it is automatically split into multiple partitions. The first partition uses a format that Windows can read, but the other partitions use a Linux-specific file system, which Windows simply does not recognise. This means when you put an SD card in a Windows machine, it only displays the first partition, and may well say the other partitions are corrupted and need formatting - **do not format them**! Here's some information on what goes in that first [partition](./configuration/boot_folder.md). If you insert the SD card on a machine running Linux, it will display all the partitions correctly. 
 
 ### How do I run a program at startup?
 
@@ -110,7 +110,7 @@ It's important to keep your system up to date with the latest security updates, 
 
 + `sudo apt update` will update the internal software database, so the system knows what the latest updates are
 
-+ `sudo apt dist-upgrade` will then download all the updates, and install them
++ `sudo apt dist-upgrade` will then download all the updates and install them
 
 We recommend going through this process once a week or so. 
 
