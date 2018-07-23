@@ -19,6 +19,10 @@ All Raspberry Pi product has undergone extensive compliance testing, and copies 
 | Camera Module v2 | [EU](./compliance/rpi_DOC_Camera2_CE.pdf)  &nbsp; &nbsp;[FCC](./compliance/rpi_DOC_Camera2_FCC.PDF) | |
 | Sense HAT | [EU](./compliance/rpi_DOC_SenseHAT_CE.pdf) | |
 
+## Flamability Rating
+
+The PCB's used in Raspberry Pi devices adhere to UL94-V0, but note that is the PCB ONLY. 
+
 ## The Raspberry Pi Integrator Programme
 
 The programme provides access to the same test engineers who worked on our Raspberry Pis during their compliance testing. It connects the user to a dedicated team at UL that assesses and tests the user’s product, facilitated by their in-depth knowledge of Raspberry Pi. The team at UL work closely with the Raspberry Pi engineering team, so any unexpected issues that may arise during testing can be resolved quickly. Through the programme, UL will streamline the testing and certification process, which will in turn decrease the amount of time necessary to launch the product. Our Integrator Programme is openly available, it comes with no added cost beyond the usual testing fees at UL, and there are companies already taking advantage of it.
