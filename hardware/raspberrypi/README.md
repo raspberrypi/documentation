@@ -30,3 +30,5 @@ The hardware in the Raspberry Pi
     - Conformance documentation for the various standards bodies
 - [Revision codes](revision-codes/README.md)
     - Raspberry Pi revision code reference
+- [Processor Frequency and thermal management](frequency-management.md)
+    - Information on how the Raspberry Pi manages CPU frequencies and heat disipation.
