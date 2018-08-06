@@ -19,9 +19,9 @@ All Raspberry Pi product has undergone extensive compliance testing, and copies 
 | Camera Module v2 | [EU](./compliance/rpi_DOC_Camera2_CE.pdf)  &nbsp; &nbsp;[FCC](./compliance/rpi_DOC_Camera2_FCC.PDF) | |
 | Sense HAT | [EU](./compliance/rpi_DOC_SenseHAT_CE.pdf) | |
 
-## Flamability Rating
+## Flammability rating
 
-The PCB's used in Raspberry Pi devices adhere to UL94-V0, but note that is the PCB ONLY. 
+The PCBs used in Raspberry Pi devices adhere to UL94-V0. Note that this applies to the PCBs **only**. 
 
 ## The Raspberry Pi Integrator Programme
 
