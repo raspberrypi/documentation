@@ -82,24 +82,24 @@ NB the single bit fields all act as an "invert default behaviour".
 
 ## Controlling Timings / Resolutions
 
+In firmware dated August 2018 or later, the `hdmi_timings` config.txt entry previously used to set up the DPI timings has be superceded by a new `dpi_timings` parameter. If the `dpi_timings` parameter is not present, the system will fall back to using the `hdmi_timings` parameter to ensure backwards compatibility. If neither are present and a custom mode is requested, then a default set of parameters for VGAp60 are used.
+
 The `dpi_group` and `dpi_mode` config.txt parameters are used to set either predetermined modes (DMT or CEA modes as used by HDMI) or a user can generate custom modes.
 
-To generate a custom HDMI mode start [here](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=24679).
+To generate a custom DPI mode start [here](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=24679).
 
-If you set up a custom HDMI mode, then in config.txt use:
+If you set up a custom DPI mode, then in config.txt use:
 ```
 dpi_group=2
 dpi_mode=87
 ```
 
-This will use the custom HDMI timings for DPI.
+This will tell the driver to use the custom `dpi_timings` (older firmware uses `hdmi_timings`) timings for the DPI panel.
 
-The other option is to use the hdmi_timings config.txt parameter to set the HDMI (DPI) timings directly. You still need the `dpi_group=2` and `dpi_mode=87` parameters in config.txt 
-
-The hdmi_timings parameters are specified as a space-delimited set of parameters:
+The dpi_timings parameters are specified as a space-delimited set of parameters:
 
 ```
-hdmi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> <h_back_porch> <v_active_lines> <v_sync_polarity> <v_front_porch> <v_sync_pulse> <v_back_porch> <v_sync_offset_a> <v_sync_offset_b> <pixel_rep> <frame_rate> <interlaced> <pixel_freq> <aspect_ratio>
+dpi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> <h_back_porch> <v_active_lines> <v_sync_polarity> <v_front_porch> <v_sync_pulse> <v_back_porch> <v_sync_offset_a> <v_sync_offset_b> <pixel_rep> <frame_rate> <interlaced> <pixel_freq> <aspect_ratio>
 
 <h_active_pixels> = horizontal pixels (width)
 <h_sync_polarity> = invert hsync polarity
@@ -174,6 +174,6 @@ display_default_lcd=1
 dpi_group=2
 dpi_mode=87
 dpi_output_format=0x6f005
-hdmi_timings=800 0 40 48 88 480 0 13 3 32 0 0 0 60 0 32000000 6
+dpi_timings=800 0 40 48 88 480 0 13 3 32 0 0 0 60 0 32000000 6
 ```
 
