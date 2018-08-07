@@ -20,7 +20,7 @@ The include file and library are installed by default on a Raspbian system.
 
 Add the following line to your C program. 
 ```
-#include "/opt/vc/include/bcm_host."
+#include <bcm_host.h>
 ```
 Link with 
 ```
