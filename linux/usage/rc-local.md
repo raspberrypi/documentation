@@ -19,7 +19,7 @@ Add commands below the comment, but leave the line `exit 0` at the end, then sav
 If your command runs continuously (perhaps runs an infinite loop) or is likely not to exit, you must be sure to fork the process by adding an ampersand to the end of the command, like so:
 
 ```
-python /home/pi/myscript.py &
+python3 /home/pi/myscript.py &
 ```
 
 Otherwise, the script will not end and the Pi will not boot. The ampersand allows the command to run in a separate process and continue booting with the process running.

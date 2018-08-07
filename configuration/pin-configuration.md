@@ -4,6 +4,26 @@
 
 As of 15 July 2014, the Raspberry Pi firmware supports custom default pin configurations through a user-provided Device Tree blob file. To find out whether your firmware is recent enough, please run `vcgencmd version`.
 
+## Actions on device pins during boot sequence
+
+During the bootup sequence, the GPIO pins go through various actions.
+
+1. Power-on — pins default to inputs with default pulls; the default pulls for each pin are described in the [datasheet](../hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf)
+1. Setting by the bootrom
+1. Setting by `bootcode.bin`
+1. Setting by `dt-blob.bin` (this page)
+1. Setting by the GPIO command in `config.txt` (see [here](config-txt/gpio.md))
+1. Additional firmware pins (e.g. UARTS)
+1. Kernel/Device Tree
+
+On a soft reset, the same procedure applies, except for default pulls, which are only applied on a power-on reset.
+
+Note that it may take a few seconds to get from stage 1 to stage 4. During that time, the GPIO pins may not be in the state expected by attached peripherals (as defined in `dtblob.bin` or `config.txt`). Since different GPIO pins have different default pulls, you should do **one of the following** for your peripheral:
+* Choose a GPIO pins that defaults to pulls as required by the peripheral on reset
+* Delay the peripheral's startup until stage 4/5 has been reached
+* Add an appropriate pull-up/-down resistor
+
+
 ## Providing a custom Device Tree blob
 
 In order to compile a Device Tree source (`.dts`) file into a Device Tree blob (`.dtb`) file, the Device Tree compiler must be installed by running `sudo apt-get install device-tree-compiler`. The `dtc` command can then be used as follows:

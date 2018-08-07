@@ -1,4 +1,4 @@
-# Raspberry Pi Hardware
+# Raspberry Pi hardware
 
 The hardware in the Raspberry Pi
 
@@ -12,7 +12,7 @@ The hardware in the Raspberry Pi
     - The Broadcom processor used in Raspberry Pi 3 (and later Raspberry Pi 2)
 - [Bootmodes](bootmodes/README.md)
     - A description of the BCM2835/6/7 bootmodes available 
-- [Mechanical Drawings](mechanical/README.md)
+- [Mechanical drawings](mechanical/README.md)
     - Mechanical drawings of the Raspberry Pi
 - [Power](power/README.md)
     - Powering the Raspberry Pi
@@ -24,12 +24,13 @@ The hardware in the Raspberry Pi
     - SPI on the Raspberry Pi
 - [DPI (Parallel/RGB Display)](dpi/README.md)
     - DPI on the Raspberry Pi
-- [Peripheral Addresses](peripheral_addresses.md)
+- [Peripheral addresses](peripheral_addresses.md)
     - How to access peripheral addresses using the bcm_host helpers
-- [Standard Conformity Documentation](conformity.md)
+- [Standard conformity documentation](conformity.md)
     - Conformance documentation for the various standards bodies
 - [Revision codes](revision-codes/README.md)
     - Raspberry Pi revision code reference
 - [OTP Bit definitions](otpbits.md)
     - Register and bit definitons for the One Time Programmable (OTP) memory on the Raspberry Pi.
-    
+- [Processor frequency and thermal management](frequency-management.md)
+    - Information on how the Raspberry Pi manages CPU frequencies and heat dissipation
