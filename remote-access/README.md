@@ -23,4 +23,6 @@ Sometimes you need to access a Raspberry Pi without connecting it to a monitor. 
 - [FTP](ftp.md)
     - Copy files between your Pi and another computer using FTP (File Transfer Protocol)
 - [Web Server](web-server/README.md)
-    - Set up a website or a web page to display some information about the Pi, using a web browser on another machine, on the network or on the internet.
+    - Set up a website or a web page to display some information about the Pi, using a web browser on another machine, on the network or on the internet
+- [Samba/CIFS](samba.md)
+    - Sharing folders from or to Windows-based devices
