@@ -297,6 +297,41 @@ These values are valid if `hdmi_group=2` (DMT):
 
 Note that there is a [pixel clock limit](https://www.raspberrypi.org/forums/viewtopic.php?f=26&t=20155&p=195443#p195443).The highest supported mode is 1920x1200 at 60Hz with reduced blanking.
 
+### hdmi_timings
+
+This allows setting of raw HDMI timing values for a custom mode, selected using `hdmi_group=2` and `hdmi_mode=87`.
+
+`hdmi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> <h_back_porch> <v_active_lines> <v_sync_polarity> <v_front_porch> <v_sync_pulse> <v_back_porch> <v_sync_offset_a> <v_sync_offset_b> <pixel_rep> <frame_rate> &lt;interlaced> <pixel_freq> <aspect_ratio>`
+
+<h_active_pixels> = horizontal pixels (width)  
+<h_sync_polarity> = invert hsync polarity  
+<h_front_porch>   = horizontal forward padding from DE acitve edge  
+<h_sync_pulse>    = hsync pulse width in pixel clocks  
+<h_back_porch>    = vertical back padding from DE active edge  
+<v_active_lines>  = vertical pixels height (lines)  
+<v_sync_polarity> = invert vsync polarity  
+<v_front_porch>   = vertical forward padding from DE active edge  
+<v_sync_pulse>    = vsync pulse width in pixel clocks  
+<v_back_porch>    = vertical back padding from DE active edge  
+<v_sync_offset_a> = leave at zero  
+<v_sync_offset_b> = leave at zero  
+<pixel_rep>       = leave at zero  
+<frame_rate>      = screen refresh rate in Hz  
+&lt;interlaced>      = leave at zero  
+<pixel_freq>      = clock frequency (width*height*framerate)  
+<aspect_ratio>    = *  
+
+* The aspect ratio can be set to one of eight values (choose the closest for your screen):
+
+HDMI_ASPECT_4_3 = 1  
+HDMI_ASPECT_14_9 = 2  
+HDMI_ASPECT_16_9 = 3  
+HDMI_ASPECT_5_4 = 4  
+HDMI_ASPECT_16_10 = 5  
+HDMI_ASPECT_15_9 = 6  
+HDMI_ASPECT_21_9 = 7  
+HDMI_ASPECT_64_27 = 8  
+
 ### hdmi_force_mode
 
 Setting to `1` will remove all other modes except the ones specified by `hdmi_mode` and `hdmi_group` from the internal list, meaning they will not appear in any enumerated lists of modes. This option may help if a display seems to be ignoring the `hdmi_mode` and `hdmi_group` settings.
@@ -383,11 +418,46 @@ Enable LCD displays attached to the DPI GPIOs. This is to allow the use of third
 
 ### dpi_group, dpi_mode, dpi_output_format
 
-The `dpi_group` and `dpi_mode` config.txt parameters are used to set either predetermined modes (DMT or CEA modes as used by HDMI above). A user can generate custom modes in much the same way as for HDMI.
+The `dpi_group` and `dpi_mode` config.txt parameters are used to set either predetermined modes (DMT or CEA modes as used by HDMI above). A user can generate custom modes in much the same way as for HDMI (see `dpi_timings` section).
 
 `dpi_output_format` is a bitmask specifying various parameters used to set up the display format. 
 
 More details on using the DPI modes and the output format can be found [here](../../hardware/raspberrypi/dpi/README.md).
+
+### dpi_timings
+
+This allows setting of raw DPI timing values for a custom mode, selected using `dpi_group=2` and `dpi_mode=87`.
+
+`dpi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> <h_back_porch> <v_active_lines> <v_sync_polarity> <v_front_porch> <v_sync_pulse> <v_back_porch> <v_sync_offset_a> <v_sync_offset_b> <pixel_rep> <frame_rate> &lt;interlaced> <pixel_freq> <aspect_ratio>`
+
+<h_active_pixels> = horizontal pixels (width)  
+<h_sync_polarity> = invert hsync polarity  
+<h_front_porch>   = horizontal forward padding from DE acitve edge  
+<h_sync_pulse>    = hsync pulse width in pixel clocks  
+<h_back_porch>    = vertical back padding from DE active edge  
+<v_active_lines>  = vertical pixels height (lines)  
+<v_sync_polarity> = invert vsync polarity  
+<v_front_porch>   = vertical forward padding from DE active edge  
+<v_sync_pulse>    = vsync pulse width in pixel clocks  
+<v_back_porch>    = vertical back padding from DE active edge  
+<v_sync_offset_a> = leave at zero  
+<v_sync_offset_b> = leave at zero  
+<pixel_rep>       = leave at zero  
+<frame_rate>      = screen refresh rate in Hz  
+&lt;interlaced>      = leave at zero  
+<pixel_freq>      = clock frequency (width*height*framerate)  
+<aspect_ratio>    = *  
+
+* The aspect ratio can be set to one of eight values (choose the closest for your screen):
+
+HDMI_ASPECT_4_3 = 1  
+HDMI_ASPECT_14_9 = 2  
+HDMI_ASPECT_16_9 = 3  
+HDMI_ASPECT_5_4 = 4  
+HDMI_ASPECT_16_10 = 5  
+HDMI_ASPECT_15_9 = 6  
+HDMI_ASPECT_21_9 = 7  
+HDMI_ASPECT_64_27 = 8  
 
 ## Generic display options
 
