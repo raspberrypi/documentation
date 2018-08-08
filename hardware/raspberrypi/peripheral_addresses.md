@@ -24,7 +24,7 @@ Add the following line to your C program:
 ```
 Link with:
 ```
--lbcm_host.c
+-lbcm_host
 ```
 So a simple command line compile might be:
 ```
