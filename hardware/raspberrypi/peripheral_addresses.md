@@ -16,18 +16,17 @@ This returns the bus address of the SDRAM. This is 0x40000000 on the Pi Zero, Pi
 
 ## Building a C program using these functions
 
-The include file and library are installed by default on a Raspbian system.
+The `include` file and library are installed by default on a Raspbian system.
 
-Add the following line to your C program. 
+Add the following line to your C program:
 ```
 #include <bcm_host.h>
 ```
-Link with 
+Link with:
 ```
 -lbcm_host.c
 ```
-So a simple command line compile might be as follows:
+So a simple command line compile might be:
 ```
 cc myfile.c -I/opt/vc/include -L/opt/vc/lib -lbcm_host -o myfile
 ```
-
