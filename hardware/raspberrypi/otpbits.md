@@ -1,6 +1,6 @@
 ## OTP register and bit definitions
 
-All SoCs used by the Raspberry Pi range have a inbuilt One Time Programmable (OTP) memory block. 
+All SoCs used by the Raspberry Pi range have a inbuilt One-Time Programmable (OTP) memory block. 
 
 It is 66 32-bit values long, although only a few locations have factory-programmed data.
 
