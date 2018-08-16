@@ -8,8 +8,7 @@
 
 ### [Buying](#buying-and-shipping)
 
-- Where can I buy a Raspberry Pi?
-- How much does it cost?
+- Where can I buy a Raspberry Pi, and how much does it cost?
 - What do I get when I buy one? Does it come with a case?
 - Can I buy a Raspberry Pi kit?
 - I want to be a Raspberry Pi reseller.
@@ -126,11 +125,9 @@ The Raspberry Pi is a credit-card-sized computer that plugs into your TV and a k
 <a name="buying-and-shipping"></a>
 ## Buying
 
-### Where can I buy a Raspberry Pi?
+### Where can I buy a Raspberry Pi, and how much does it cost?
 
 Go to our [products page](https://www.raspberrypi.org/products/) and choose the product(s) you want to buy. Then select your country from the drop-down menu. You will be presented with our approved resellers for your country.
-
-### How much does it cost?
 
 The following prices are exclusive of any local taxes and shipping/handling fees.
 
@@ -145,11 +142,11 @@ The following prices are exclusive of any local taxes and shipping/handling fees
 | Raspberry Pi Zero W |$10 |
 | Raspberry Pi Zero WH |$15 |
 
-### What do I get when I buy one? Does it come with a case?
+### What do I get when I buy one?
 
-You get the Raspberry Pi board itself. A power supply and SD card are not included, but can be purchased at the same time from most places that sell the Raspberry Pi. You can also purchase pre-loaded SD cards; we recommend buying these from us or our licensed distributors rather than from third parties, as our software is updated regularly and cards sold by third parties can quickly become outdated.
+You get the Raspberry Pi board itself. The [official power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/) and an SD card are not included, but they can be purchased at the same time from most places that sell the Raspberry Pi. You can also purchase pre-loaded SD cards; we recommend buying these from us or our licensed distributors rather than from third parties, as our software is updated regularly and cards sold by third parties can quickly become outdated.
 
-An official case for the Raspberry Pi is [available from our distributors](https://www.raspberrypi.org/products/). There are also lots of home-brew case discussions on the forum, as well as several third-party cases available. We suggest stopping by the [cases subforum](https://www.raspberrypi.org/phpBB3/viewforum.php?f=40) and reading some of the threads about cases you can purchase or build yourself.
+An official case for the Raspberry Pi is available separately [from our distributors](https://www.raspberrypi.org/products/). There are also lots of home-brew case discussions on the forum, as well as several third-party cases available. We suggest stopping by the [cases subforum](https://www.raspberrypi.org/phpBB3/viewforum.php?f=40) and reading some of the threads about cases you can purchase or build yourself. There are also loads of awesome [3D-printable cases](https://www.raspberrypi.org/blog/3d-printed-raspberry-pi-cases/) that community members have designed.
 
 ### Can I buy a Raspberry Pi kit?
 
