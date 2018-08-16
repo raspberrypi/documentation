@@ -26,11 +26,11 @@ Most Pi models have circuity to detect drops of the incoming power supply voltag
 
 We have put the Pi models through extensive compliance testing, for Europe, the USA, and other countries around the world. You can find many of the reports [here](./hardware/raspberrypi/conformity.md).
 
-### I don't seem to get full speed gigabit networking on my Pi 3B+.
+### I don't seem to get full-speed gigabit networking on my Pi 3B+.
 
 Although the Ethernet chip on the Raspberry Pi 3B+ is gigabit-capable, the connection from the chip to the SoC is still via USB 2.0, which limits the total bandwidth available to approximately 220–250Mbits/s in the real world. Although not gigabit, this is a healthy bump over the 100Mbits/s top speed of the 3B model. To get the best performance, you should ensure that Ethernet flow control is turned ON on your router.
 
-### The processors on the latest Pi models are 64-bit, but I cannot find a official 64-bit OS
+### The processors on the latest Pi models are 64-bit, but I cannot find an official 64-bit OS.
 
 Raspberry Pi do not current provide an official 64-bit OS, for a number of reasons. Firstly, since we still sell devices that are 32-bit, we would need to support two separate distributions, and at the moment we do not have the support capacity. Secondly, building a full 64-bit OS would require a considerable amount of work to, for example, fix the interfacing to the 32-bit Videocore GPU. There are third-party 64-bit operating systems available, but they do not have the full support for the GPU that would be a requirement for an official release. 
 
@@ -78,7 +78,7 @@ Yes, booting from a USB-attached drive (either a SSD or actual hard drive) can m
 
 Yes, this is possible — see the documentation [here](./hardware/raspberrypi/bootmodes/net.md).
 
-### Can I share files with my Windows machines?
+### Can I share files from my Pi with my Windows machines?
 
 Yes, there are a number of ways of doing this, and the most common is to use what are called Samba shares. We don't have any specific documentation on Samba shares in our official docs just yet, but [here](https://www.raspberrypi.org/magpi/samba-file-server/) is some from our magazine, [The MagPi](https://www.raspberrypi.org/magpi).
 
