@@ -6,12 +6,14 @@
 
 - What is a Raspberry Pi?
 
-### [Buying](#buying)
+### [Buying it](#buying)
 
 - Where can I buy a Raspberry Pi, and how much does it cost?
-- What do I get when I buy one? Does it come with a case?
+- What do I get when I buy one?
 - Can I buy a Raspberry Pi kit?
 - I'm worried I have a fake Pi!
+
+### [Commercial and industry applications, resale](#commercial)
 - I want to be a Raspberry Pi reseller.
 - What manufacturing standards etc. does the Pi comply with?
 - Can I use a Pi in a commercial product?
@@ -24,7 +26,7 @@
 - What hardware interfaces does it have?
 - Can I use a Pi for audio or video input?
 - Why is there no real-time clock (RTC)?
-- Where is the on-off switch?
+- Where is the on/off switch?
 - Why doesn't the Raspberry Pi include a particular type of hardware?
 - What are the dimensions of the Raspberry Pi?
 
@@ -122,7 +124,7 @@
 
 The Raspberry Pi is a credit-card-sized computer that plugs into your TV and a keyboard and mouse. It is a capable little computer which can be used to learn coding and to build electronics projects, and for many of the things that your desktop PC does, like spreadsheets, word processing, browsing the internet, and playing games. It also plays high-definition video. We want to see it being used by adults and children all over the world to learn programming and digital making. You can learn how to set up and use your Raspberry Pi [here](https://www.raspberrypi.org/help/).
 
-<a name="buying-and-shipping"></a>
+<a name="buying"></a>
 ## Buying
 
 ### Where can I buy a Raspberry Pi, and how much does it cost?
@@ -155,6 +157,9 @@ Many Raspberry Pi resellers produce bundles for people who would rather get ever
 ### I'm worried I have a fake Pi!
 
 Don't worry, as far as we know, there are no fake Pis. The SoCs used on the Pi range are only available from one supplier, and only in large quantities, which together with the low price of the Pi means it's not cost-effective for clones to be made. There are a number of competitor products that use similar names, but not actual clones or fakes.
+
+<a name="commercial"></a>
+## Commercial and industry applications, resale
 
 ### I want to be a Raspberry Pi reseller.
 
@@ -214,13 +219,13 @@ All available documentation is in our [documentation repository](./README.md).
 
 Depending on the model, the Raspberry Pi has either 40 or 26 dedicated GPIO pins. In all cases, these include a UART, an I2C bus, a SPI bus with two chip selects, I2S audio, 3V3, 5V, and ground. The maximum number of GPIOs can theoretically be indefinitely expanded by making use of the I2C or SPI bus.
 
-There is also a dedicated CSI-2 camera port for the [Raspberry Pi camera](https://www.raspberrypi.org/products/), and a DSI display port for the [Raspberry Pi LCD touchscreen display](https://www.raspberrypi.org/products/raspberry-pi-touch-display/).
+There is also a dedicated CSI-2 camera port for the [Raspberry Pi Camera Module](https://www.raspberrypi.org/products/), and a DSI display port for the [Raspberry Pi LCD touchscreen display](https://www.raspberrypi.org/products/raspberry-pi-touch-display/).
 
 ### Can I use a Pi for audio or video input?
 
-Not by itself: there is no audio or video (HDMI/composite) IN capability on the Pi. You can add third-party boards to add this sort of functionality. Ther Pi has a camera interface that can record video from the [Raspberry Pi Camera Module](https://www.raspberrypi.org/products/camera-module-v2/).
+Not by itself: there is no audio or video (HDMI/composite) IN capability on the Pi. You can add third-party boards to add this sort of functionality. The Pi has a camera interface that can record video from the [Raspberry Pi Camera Module](https://www.raspberrypi.org/products/) — you can find the the [Camera Module FAQ section here](#cameramodule).
 
-### Where is the on-off switch?
+### Where is the on/off switch?
 
 There is no on/off switch! To switch on, just plug it in. To switch off, if you are in the graphical environment, you can either log out from the main menu, exit to the Bash prompt, or open the terminal. From the Bash prompt or terminal you can shut down the Raspberry Pi by entering `sudo halt -h` (without the quotation marks). Wait until all the LEDs except the power LED are off, then wait an additional second to make sure the SD card can finish its wear-levelling tasks and write actions. You can now safely unplug the Raspberry Pi. Failure to shut the Raspberry Pi down properly may corrupt your SD card, which would mean you would have to re-image it.
 
