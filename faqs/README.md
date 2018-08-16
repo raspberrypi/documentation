@@ -6,38 +6,38 @@
 
 - What is a Raspberry Pi?
 
-### [Buying](#buying-and-shipping)
+### [Buying](#buying)
 
 - Where can I buy a Raspberry Pi, and how much does it cost?
 - What do I get when I buy one? Does it come with a case?
 - Can I buy a Raspberry Pi kit?
+- I'm worried I have a fake Pi!
 - I want to be a Raspberry Pi reseller.
 - What manufacturing standards etc. does the Pi comply with?
 - Can I use a Pi in a commercial product?
 - Is a Pi suitable for industrial applications?
 
-### [General](#general)
+### [The computer hardware](#hardware)
 
 - What are the differences between Raspberry Pi models?
-- What differences are there in the GPU between different models?
+- What hardware documentation is available?
+- What hardware interfaces does it have?
+- Can I use a Pi for audio or video input?
+- Why is there no real-time clock (RTC)?
 - Where is the on-off switch?
 - Why doesn't the Raspberry Pi include a particular type of hardware?
 - What are the dimensions of the Raspberry Pi?
-- What hardware documentation is available?
-- I'm worried I have a fake Pi!
 
-### [Performance and features](#performance)
+### [Performance](#performance)
 
 - How powerful is it?
+- What differences are there in the GPU between different models?
 - Can I use my Pi as a desktop replacement?
-- Can I connect multiple Pis together to make a faster computer?
 - Can I add extra RAM?
+- Can I connect multiple Pis together to make a faster computer?
 - Why does my Pi run at a slower clock speed that advertised?
 - Does it overclock?
 - What is its operating temperature? Does it need a heatsink?
-- What hardware interfaces does it have?
-- Why is there no real-time clock (RTC)?
-- Can I use a Pi for audio or video input?
 
 ### [Software](#software)
 
@@ -152,6 +152,10 @@ An official case for the Raspberry Pi is available separately [from our distribu
 
 Many Raspberry Pi resellers produce bundles for people who would rather get everything they need from a single source. In 2016, we put together our own Raspberry Pi Official Starter Kit. The kit is available to order online in the UK from our partners [Element14](https://www.element14.com/community/docs/DOC-83184) and [RS components](http://uk.rs-online.com/web/p/processor-microcontroller-development-kits/8968119/), priced at £99 +VAT, and from distributors and resellers around the world.
 
+### I'm worried I have a fake Pi!
+
+Don't worry, as far as we know, there are no fake Pis. The SoCs used on the Pi range are only available from one supplier, and only in large quantities, which together with the low price of the Pi means it's not cost-effective for clones to be made. There are a number of competitor products that use similar names, but not actual clones or fakes.
+
 ### I want to be a Raspberry Pi reseller.
 
 We have an exclusive manufacturing and distribution arrangement with [RS](http://uk.rs-online.com/web/generalDisplay.html?id=raspberrypi) and [Farnell](https://www.element14.com/community/community/raspberry-pi). Resellers buy the Raspberry Pi in bulk from them (which reduces shipping costs to nearly nothing) and sell on. You do not need any special licence to resell, and the distributors are very happy to sell on to resellers. If you are interested in joining our [Approved Reseller](https://www.raspberrypi.org/blog/approved-reseller/) programme, contact us by email to info@raspberrypi.org.
@@ -168,8 +172,8 @@ This is a very common question, and the answer is yes! Once you have bought a Pi
 
 Yes and no — it depends on the use case. Pis have been used successfully in industrial environments, but the final decision must be in the hands of the end user as to whether the device is suitable for the task at hand. See our [Compute Module documentation](./hardware/computemodule/README.md) for more details on our Pi model specifically designed for use in commercial and industrial products.
 
-<a name="general"></a>
-## General
+<a name="hardware"></a>
+## The computer hardware
 
 ### What are the differences between Raspberry Pi models?
 
@@ -202,17 +206,27 @@ The final model (not described in the table above) is the compute module (CM), w
 
 You can check our [products](https://www.raspberrypi.org/products/) pages for more details on current boards. There are also some models of Raspberry Pi which are no longer in production, but which may be available second-hand or from resellers. The Model A was the initial low-cost variant of the Pi. It was replaced by the smaller, neater Model A+ in November 2014; it shares the same specs as the A+, but has only 26 GPIO pins and 128MB of RAM. The Model B was the previous incarnation of the B+; again, it shares most of the same specs, but has only two USB ports and 26 GPIO pins. The original version of the Pi Zero did not come with a camera connector, but all current versions have the connector as standard.
 
-### What differences are there in the GPU between different models?
-
-All of the Raspberry Pi models use the same GPU, the Videocore4. Since the GPU provides the camera and display interfaces, codecs, 2D/3D graphics, etc., this means all Raspberry Pis have the same capabilities. The real difference between models is the type of ARM core used, and the additional peripherals that are attached, e.g. connectivity, USB ports, etcetera (see above).
-
 ### What hardware documentation is available?
 
 All available documentation is in our [documentation repository](./README.md).
 
+### What hardware interfaces does it have?
+
+Depending on the model, the Raspberry Pi has either 40 or 26 dedicated GPIO pins. In all cases, these include a UART, an I2C bus, a SPI bus with two chip selects, I2S audio, 3V3, 5V, and ground. The maximum number of GPIOs can theoretically be indefinitely expanded by making use of the I2C or SPI bus.
+
+There is also a dedicated CSI-2 camera port for the [Raspberry Pi camera](https://www.raspberrypi.org/products/), and a DSI display port for the [Raspberry Pi LCD touchscreen display](https://www.raspberrypi.org/products/raspberry-pi-touch-display/).
+
+### Can I use a Pi for audio or video input?
+
+Not by itself: there is no audio or video (HDMI/composite) IN capability on the Pi. You can add third-party boards to add this sort of functionality. Ther Pi has a camera interface that can record video from the [Raspberry Pi Camera Module](https://www.raspberrypi.org/products/camera-module-v2/).
+
 ### Where is the on-off switch?
 
 There is no on/off switch! To switch on, just plug it in. To switch off, if you are in the graphical environment, you can either log out from the main menu, exit to the Bash prompt, or open the terminal. From the Bash prompt or terminal you can shut down the Raspberry Pi by entering `sudo halt -h` (without the quotation marks). Wait until all the LEDs except the power LED are off, then wait an additional second to make sure the SD card can finish its wear-levelling tasks and write actions. You can now safely unplug the Raspberry Pi. Failure to shut the Raspberry Pi down properly may corrupt your SD card, which would mean you would have to re-image it.
+
+### Why is there no real-time clock?
+
+The expectation is that non-network-connected units will have their clocks updated manually at startup. Adding an RTC is surprisingly expensive once you have factored in batteries, area, and components, and would have pushed us above our target price. You can add one yourself using the GPIO pins if you'd like an interesting electronics project.
 
 ### Why doesn't the Raspberry Pi include a particular type of hardware?
 
@@ -222,28 +236,28 @@ Our main aim is a charitable one: we are trying to build the cheapest possible c
 
 The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37″ x 2.21″ x 0.83″), with a little overlap for the SD card and connectors which project over the edges. They weighs 45g. The Pi Zero and Pi Zero W measure 65mm x 30mm x 5.4mm (or roughly 2.56″ x 1.18″ x 0.20″) and weighs 9g. For the mechanical outline, please see the documentation [here](./hardware/raspberrypi/mechanical/README.md)
 
-### I'm worried I have a fake Pi!
-
-Don't worry, as far as we know, there are no fake Pis. The SoCs used on the Pi range are only available from one supplier, and only in large quantities, which together with the low price of the Pi means it's not cost-effective for clones to be made. There are a number of competitor products that use similar names, but not actual clones or fakes.
-
 <a name="performance"></a>
-## Performance
+## Performance and interfaces
 
 ### How powerful is it?
 
 The GPU provides OpenGL ES 2.0, hardware-accelerated OpenVG, and 1080p30 H.264 high-profile encode and decode. The GPU is capable of 1Gpixel/s, 1.5Gtexel/s or 24 GFLOPs of general purpose compute and features a bunch of texture filtering and DMA infrastructure. This means that graphics capabilities are roughly equivalent to the original Xbox's level of performance. Overall real-world performance for models A, A+, B, B+, CM, Zero and Zero W is something like a 300MHz Pentium 2, only with much better graphics. The Pi 2 Model B is approximately equivalent to an Athlon Thunderbird running at 1.1GHz: again, it has the much higher-quality graphics that come from using the same GPU as in previous models. The Pi 3 Model B is around twice as fast as the Pi 2 Model B, depending on the benchmarks chosen.
 
+### What differences are there in the GPU between different models?
+
+All of the Raspberry Pi models use the same GPU, the Videocore4. Since the GPU provides the camera and display interfaces, codecs, 2D/3D graphics, etc., this means all Raspberry Pis have the same capabilities. The real difference between models is the type of ARM core used, and the additional peripherals that are attached, e.g. connectivity, USB ports, etcetera (see the [hardware](#hardware) section of these FAQs).
+
 ### Can I use my Pi as a desktop replacement?
 
 Yes and no, it depends! For many daily tasks the Pi is quite suitable, however, because internet browsers nowadays require a lot of memory, browsing can be a bit slow if you open too many browser tabs. Although 1GB of RAM seems like a lot, modern browsers are real memory hogs!
 
-### Can I connect multiple Pis together to make a faster computer?
-
-Sort of, but not in the way you might want to do it. You cannot simply make a more powerful computer, to play games faster for example, by bolting together smaller ones. You can network computers to create a cluster computer, but you do need to modify your software to work in this distributed fashion. We've put together a tutorial for [how to build a Raspberry Pi cluster](https://projects.raspberrypi.org/en/projects/build-an-octapi), in collaboration with GCHQ.
-
 ### Can I add extra RAM?
 
 No. The RAM on the model A, A+, B, B+, and Zero is a Package on Package (POP) on top of the SoC, so it is not removable or swappable. The RAM on the Pi 2 and 3 Model B versions is on a separate chip on the bottom of the PCB, but 1GB is the maximum RAM that the SoC used by the Pi 2 and 3 Model B versions can support.
+
+### Can I connect multiple Pis together to make a faster computer?
+
+Sort of, but not in the way you might want to do it. You cannot simply make a more powerful computer, to play games faster for example, by bolting together smaller ones. You can network computers to create a cluster computer, but you do need to modify your software to work in this distributed fashion. We've put together a tutorial for [how to build a Raspberry Pi cluster](https://projects.raspberrypi.org/en/projects/build-an-octapi), in collaboration with GCHQ.
 
 ### Why does my Pi run at a slower clock speed that advertised?
 
@@ -260,20 +274,6 @@ In the latest Raspbian distro, there is an option to change the overclocking opt
 The Raspberry Pi is built from commercial chips which are qualified to different temperature ranges; the LAN9514 (LAN9512 on older models with 2 USB ports) is specified by the manufacturers as being qualified from 0°C to 70°C, while the SoC is qualified from -40°C to 85°C. You may well find that the board will work outside those temperatures, but we're not qualifying the board itself to these extremes.
 
 You should not need to use a heatsink, as the chip used in the Raspberry Pi is equivalent to one used in a mobile phone, and should not become hot enough to require any special cooling. However, depending on the case you are using and the overclocking settings, you might find a heatsink to be advantageous. We do recommend the use of a heatsink if you are overclocking the Pi 3 Model B. Of course, if you just like the look of one, you will not hurt the Raspberry Pi by placing an appropriately-sized heatsink on it.
-
-### What hardware interfaces does it have?
-
-Depending on the model, the Raspberry Pi has either 40 or 26 dedicated GPIO pins. In all cases, these include a UART, an I2C bus, a SPI bus with two chip selects, I2S audio, 3V3, 5V, and ground. The maximum number of GPIOs can theoretically be indefinitely expanded by making use of the I2C or SPI bus.
-
-There is also a dedicated CSI-2 camera port for the [Raspberry Pi camera](https://www.raspberrypi.org/products/), and a DSI display port for the [Raspberry Pi LCD touchscreen display](https://www.raspberrypi.org/products/raspberry-pi-touch-display/).
-
-### Why is there no real-time clock?
-
-The expectation is that non-network-connected units will have their clocks updated manually at startup. Adding an RTC is surprisingly expensive once you have factored in batteries, area, and components, and would have pushed us above our target price. You can add one yourself using the GPIO pins if you'd like an interesting electronics project.
-
-### Can I use a Pi for audio or video input?
-
-Not by itself: there is no audio or video (HDMI/composite) IN capability on the Pi. You can add third-party boards to add this sort of functionality. Ther Pi has a camera interface that can record video from the [Raspberry Pi Camera Module](https://www.raspberrypi.org/products/camera-module-v2/).
 
 <a name="software"></a>
 ## Software
