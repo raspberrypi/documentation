@@ -27,7 +27,7 @@
 - What hardware documentation is available?
 - I'm worried I have a fake Pi!
 
-### [Performance and features](#performance-and-cost)
+### [Performance and features](#performance)
 
 - How powerful is it?
 - Can I use my Pi as a desktop replacement?
@@ -51,6 +51,7 @@
 - Will it run the Windows 8 Arm edition?
 - Will it run Android or Android Things?
 - Will it run any old software?
+- My `.exe` file won't run!
 - Can I share files from my Pi with my Windows machines?
 - Why does cpuinfo report I have a bcm2835?
 - Does it have an official programming language?
@@ -111,7 +112,6 @@
 - Why is my Pi hot?
 - I keep getting a lightning bolt symbol and messages about power...
 - My SD card seems to have stopped working.
-- My `.exe` file won't run!
 - I've imaged an SD card with Raspbian/NOOBS, but when I look at it with my Windows PC, it's not all there!
 
 ---
@@ -229,7 +229,7 @@ The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37
 
 Don't worry, as far as we know, there are no fake Pis. The SoCs used on the Pi range are only available from one supplier, and only in large quantities, which together with the low price of the Pi means it's not cost-effective for clones to be made. There are a number of competitor products that use similar names, but not actual clones or fakes.
 
-<a name="performance-and-cost"></a>
+<a name="performance"></a>
 ## Performance
 
 ### How powerful is it?
@@ -324,6 +324,10 @@ Google supports Android Things on the Raspberry Pi 3 as a development platform. 
 ### Will it run any old software?
 
 In general, you need to look to see whether the program you want can be compiled for the Armv6 (Pi 1/Zero/Zero W/CM), Armv7 (Pi 2) or Armv8 (Pi 3) architecture on Linux. In most cases, the answer will be yes. Specific programs are discussed on [our forums](https://www.raspberrypi.org/forums/), so you might want to look there for an answer. Ultimately, nothing beats grabbing a Raspberry Pi and finding out the answer through direct testing!
+
+### My `.exe` file won't run!
+
+Most `.exe` files come from Windows and are compiled for the x86 processor architecture. These will not run on the Raspberry Pi, which uses an ARM processor architecture. A minority of `.exe` files, compiled from C# code or similar, actually use a Byte Code rather than a processor-specific instruction set, and therefore might work on the Pi if the correct Mono interpreter software is installed.
 
 ### Can I share files from my Pi with my Windows machines?
 
@@ -547,10 +551,6 @@ Most Pi models have circuity to detect drops of the incoming power supply voltag
 ### My SD card seems to have stopped working.
 
 SD cards have a limited lifespan due to the way they work. Under most circumstances, they offer some years of use, but heavy file accessing, or using it as a swap drive, may reduce the SD card's lifespan considerably. Note that there are also fake capacity SD cards being sold that are likely to be unreliable.
-
-### My `.exe` file won't run!
-
-Most `.exe` files come from Windows and are compiled for the x86 processor architecture. These will not run on the Raspberry Pi, which uses an ARM processor architecture. A minority of `.exe` files, compiled from C# code or similar, actually use a Byte Code rather than a processor-specific instruction set, and therefore might work on the Pi if the correct Mono interpreter software is installed.
 
 ### I've imaged an SD card with Raspbian/NOOBS, but when I look at it with my Windows PC, it's not all there!
 
