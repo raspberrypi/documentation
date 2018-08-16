@@ -242,7 +242,7 @@ Our main aim is a charitable one: we are trying to build the cheapest possible c
 The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37″ x 2.21″ x 0.83″), with a little overlap for the SD card and connectors which project over the edges. They weighs 45g. The Pi Zero and Pi Zero W measure 65mm x 30mm x 5.4mm (or roughly 2.56″ x 1.18″ x 0.20″) and weighs 9g. For the mechanical outline, please see the documentation [here](./hardware/raspberrypi/mechanical/README.md)
 
 <a name="performance"></a>
-## Performance and interfaces
+## Performance
 
 ### How powerful is it?
 
