@@ -219,7 +219,7 @@ There is also a dedicated CSI-2 camera port for the [Raspberry Pi Camera Module]
 
 ### Can I use a Pi for audio or video input?
 
-Not by itself: there is no audio or video (HDMI/composite) IN capability on the Pi. You can add third-party boards to add this sort of functionality. The Pi has a camera interface that can record video from the [Raspberry Pi Camera Module](https://www.raspberrypi.org/products/) — you can find the the [Camera Module FAQ section here](#cameramodule).
+Not by itself: there is no audio or video (HDMI/composite) IN capability on the Pi. You can add third-party boards to add this sort of functionality. The Pi has a camera interface that can record video from the [Raspberry Pi Camera Module](https://www.raspberrypi.org/products/) — you can find the the <a name="cameramodule">Camera Module FAQ section here</a>.
 
 ### Where is the on/off switch?
 
