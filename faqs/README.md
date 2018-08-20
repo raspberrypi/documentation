@@ -174,7 +174,7 @@ This is a very common question, and the answer is yes! Once you have bought a Pi
 Yes and no — it depends on the use case. Pis have been used successfully in industrial environments, but the final decision must be in the hands of the end user as to whether the device is suitable for the task at hand. See our [Compute Module documentation](./hardware/computemodule/README.md) for more details on our Pi model specifically designed for use in commercial and industrial products.
 
 <a name="hardware"></a>
-## The computer hardware
+## The Raspberry Pi hardware
 
 ### What are the differences between Raspberry Pi models?
 
