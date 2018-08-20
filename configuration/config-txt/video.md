@@ -301,8 +301,11 @@ Note that there is a [pixel clock limit](https://www.raspberrypi.org/forums/view
 
 This allows setting of raw HDMI timing values for a custom mode, selected using `hdmi_group=2` and `hdmi_mode=87`.
 
-`hdmi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> <h_back_porch> <v_active_lines> <v_sync_polarity> <v_front_porch> <v_sync_pulse> <v_back_porch> <v_sync_offset_a> <v_sync_offset_b> <pixel_rep> <frame_rate> &lt;interlaced> <pixel_freq> <aspect_ratio>`
+```
+hdmi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> <h_back_porch> <v_active_lines> <v_sync_polarity> <v_front_porch> <v_sync_pulse> <v_back_porch> <v_sync_offset_a> <v_sync_offset_b> <pixel_rep> <frame_rate> <interlaced> <pixel_freq> <aspect_ratio>
+```
 
+```
 <h_active_pixels> = horizontal pixels (width)  
 <h_sync_polarity> = invert hsync polarity  
 <h_front_porch>   = horizontal forward padding from DE acitve edge  
@@ -320,9 +323,11 @@ This allows setting of raw HDMI timing values for a custom mode, selected using 
 &lt;interlaced>      = leave at zero  
 <pixel_freq>      = clock frequency (width*height*framerate)  
 <aspect_ratio>    = *  
+```
 
-* The aspect ratio can be set to one of eight values (choose the closest for your screen):
+`*` The aspect ratio can be set to one of eight values (choose the closest for your screen):
 
+```
 HDMI_ASPECT_4_3 = 1  
 HDMI_ASPECT_14_9 = 2  
 HDMI_ASPECT_16_9 = 3  
@@ -331,6 +336,7 @@ HDMI_ASPECT_16_10 = 5
 HDMI_ASPECT_15_9 = 6  
 HDMI_ASPECT_21_9 = 7  
 HDMI_ASPECT_64_27 = 8  
+```
 
 ### hdmi_force_mode
 
@@ -341,11 +347,11 @@ Setting to `1` will remove all other modes except the ones specified by `hdmi_mo
 Forces the edit content type to a specific value.
 
 The options are:
- - 0 = EDID_ContentType_NODATA, content type none.
- - 1 = EDID_ContentType_Graphics, content type graphics, ITC must be set to 1
- - 2 = EDID_ContentType_Photo, content type photo
- - 3 = EDID_ContentType_Cinema,  content type cinema
- - 4 = EDID_ContentType_Game,  content type game
+ - `0` = `EDID_ContentType_NODATA`, content type none.
+ - `1` = `EDID_ContentType_Graphics`, content type graphics, ITC must be set to 1
+ - `2` = `EDID_ContentType_Photo`, content type photo
+ - `3` = `EDID_ContentType_Cinema`,  content type cinema
+ - `4` = `EDID_ContentType_Game`,  content type game
  
 ## Which values are valid for my monitor?
 
@@ -363,7 +369,9 @@ The `edid.dat` should also be provided when troubleshooting problems with the de
 
 If your monitor requires a mode that is not in one of the tables above, then it's possible to define a custom [CVT](https://en.wikipedia.org/wiki/Coordinated_Video_Timings) mode for it instead:
 
-    hdmi_cvt=<width> <height> <framerate> <aspect> <margins> <interlace> <rb>
+```
+hdmi_cvt=<width> <height> <framerate> <aspect> <margins> <interlace> <rb>
+```
 
 | Value | Default | Description |
 | --- | --- | --- |
@@ -379,10 +387,12 @@ Fields at the end can be omitted to use the default values.
 
 Note that this simply **creates** the mode (group 2 mode 87). In order to make the Pi use this by default, you must add some additional settings. For example, the following selects an 800 × 480 resolution and enables audio drive:
 
-    hdmi_cvt=800 480 60 6
-    hdmi_group=2
-    hdmi_mode=87
-    hdmi_drive=2
+```
+hdmi_cvt=800 480 60 6
+hdmi_group=2
+hdmi_mode=87
+hdmi_drive=2
+```
 
 This may not work if your monitor does not support standard CVT timings.
 
@@ -428,8 +438,11 @@ More details on using the DPI modes and the output format can be found [here](..
 
 This allows setting of raw DPI timing values for a custom mode, selected using `dpi_group=2` and `dpi_mode=87`.
 
-`dpi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> <h_back_porch> <v_active_lines> <v_sync_polarity> <v_front_porch> <v_sync_pulse> <v_back_porch> <v_sync_offset_a> <v_sync_offset_b> <pixel_rep> <frame_rate> &lt;interlaced> <pixel_freq> <aspect_ratio>`
+```
+dpi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> <h_back_porch> <v_active_lines> <v_sync_polarity> <v_front_porch> <v_sync_pulse> <v_back_porch> <v_sync_offset_a> <v_sync_offset_b> <pixel_rep> <frame_rate> <interlaced> <pixel_freq> <aspect_ratio>
+```
 
+```
 <h_active_pixels> = horizontal pixels (width)  
 <h_sync_polarity> = invert hsync polarity  
 <h_front_porch>   = horizontal forward padding from DE acitve edge  
@@ -444,12 +457,14 @@ This allows setting of raw DPI timing values for a custom mode, selected using `
 <v_sync_offset_b> = leave at zero  
 <pixel_rep>       = leave at zero  
 <frame_rate>      = screen refresh rate in Hz  
-&lt;interlaced>      = leave at zero  
+<interlaced>      = leave at zero  
 <pixel_freq>      = clock frequency (width*height*framerate)  
-<aspect_ratio>    = *  
+<aspect_ratio>    = *
+```
 
-* The aspect ratio can be set to one of eight values (choose the closest for your screen):
+`*` The aspect ratio can be set to one of eight values (choose the closest for your screen):
 
+```
 HDMI_ASPECT_4_3 = 1  
 HDMI_ASPECT_14_9 = 2  
 HDMI_ASPECT_16_9 = 3  
@@ -458,6 +473,7 @@ HDMI_ASPECT_16_10 = 5
 HDMI_ASPECT_15_9 = 6  
 HDMI_ASPECT_21_9 = 7  
 HDMI_ASPECT_64_27 = 8  
+```
 
 ## Generic display options
 
@@ -523,7 +539,6 @@ Set `framebuffer_ignore_alpha` to `1` to disable the alpha channel. Can help wit
 ### test_mode
 
 The `test_mode` command displays a test image and sound during boot (over the composite video and analogue audio outputs only) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test; the default value is `0`.
-
 
 ### display_hdmi_rotate
 
