@@ -4,7 +4,7 @@
 
 ### [What is a Raspberry Pi?](#introduction)
 
-### [Buying it](#buying)
+### [Buying your first Pi](#buying)
 
 - Where can I buy a Raspberry Pi, and how much does it cost?
 - What do I get when I buy one?
@@ -121,7 +121,7 @@
 Raspberry Pi is the third best-selling computer brand in the world. The Raspberry Pi is a credit card–sized computer that plugs into your TV or display, and a keyboard and mouse. You can use it to learn coding and to build electronics projects, and for many of the things that your desktop PC does, like spreadsheets, word processing, browsing the internet, and playing games. It also plays high-definition video. The Raspberry Pi is being used by adults and children all over the world to learn programming and digital making. You can learn how to set up and use your Raspberry Pi [here](https://www.raspberrypi.org/help/).
 
 <a name="buying"></a>
-## Buying
+## Buying your first Pi
 
 ### Where can I buy a Raspberry Pi, and how much does it cost?
 
@@ -238,6 +238,7 @@ Our main aim is a charitable one: we are trying to build the cheapest possible c
 The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37″ x 2.21″ x 0.83″), with a little overlap for the SD card and connectors which project over the edges. They weighs 45g. The Pi Zero and Pi Zero W measure 65mm x 30mm x 5.4mm (or roughly 2.56″ x 1.18″ x 0.20″) and weighs 9g. For the mechanical outline, please see the documentation [here](./hardware/raspberrypi/mechanical/README.md)
 
 <a name="performance"></a>
+
 ## Performance
 
 ### How powerful is it?
@@ -277,6 +278,7 @@ The Raspberry Pi is built from commercial chips which are qualified to different
 You should not need to use a heatsink, as the chip used in the Raspberry Pi is equivalent to one used in a mobile phone, and should not become hot enough to require any special cooling. However, depending on the case you are using and the overclocking settings, you might find a heatsink to be advantageous. We do recommend the use of a heatsink if you are overclocking the Pi 3 Model B. Of course, if you just like the look of one, you will not hurt the Raspberry Pi by placing an appropriately-sized heatsink on it.
 
 <a name="software"></a>
+
 ## Software
 
 ### What operating system does it use?
@@ -350,6 +352,7 @@ There are a number of ways of doing this — [here's one](./linux/usage/rc-local
 With Cron! [Here's how](./linux/usage/cron.md).
 
 <a name="video"></a>
+
 ## Video
 
 ### What displays can I use?
@@ -377,6 +380,7 @@ The Raspberry Pi Foundation provides a 7" capacitive [touchscreen](https://www.r
 The Raspberry Pi can encode (record) and decode (play) H.264 (MP4/MKV) out of the box. There are also two additional codecs you can [purchase through our Swag Store](http://swag.raspberrypi.org/collections/software) that enable you to decode [MPEG-2](http://swag.raspberrypi.org/collections/software/products/mpeg-2-license-key), a very popular and widely used format to encode DVDs, video camera recordings, TV and many others, and [VC-1](http://swag.raspberrypi.org/collections/software/products/vc-1-license-key), a Microsoft format found in Blu-ray discs, Windows Media, Slingbox, and HD-DVDs.
 
 <a name="audio"></a>
+
 ## Audio
 
 ### Is sound over HDMI supported?
@@ -388,6 +392,7 @@ Yes.
 There is a standard 3.5mm jack for audio out to an amplifier. You can add any supported USB microphone for audio in or, using the I2S interface, you can add a codec for additional audio I/O.
 
 <a name="power"></a>
+
 ## Power
 
 ### Is it safe to just pull the power?
@@ -441,8 +446,8 @@ Not in the base device. There are adapters that would split the voltage off the 
 
 The GPIO pins are natively 3.3V, so 5V devices **MUST NOT** be attached directly without some sort of voltage conversion. The pins can provide up to 16mA current. See the [GPIO docs page](hardware/raspberrypi/gpio/README.md) for more information.
 
-
 <a name="sd-cards-and-storage"></a>
+
 ## SD cards and storage
 
 ### What size of SD card do I need?
@@ -462,6 +467,7 @@ Yes, booting from a USB-attached drive (either a SSD or actual hard drive) can m
 If you brick the device, you can restore it by reflashing the SD card.
 
 <a name="networking"></a>
+
 ## Networking and wireless connectivity
 
 ### Does the device support networking?
@@ -491,6 +497,7 @@ We have also developed [PiServer](https://www.raspberrypi.org/blog/piserver/), a
 Another option is [PiNet](http://pinet.org.uk), which is a free and open-source community-based project initially designed for schools. Each Raspberry Pi boots off a small set of startup files on an SD card and fetches the rest of the data it needs from the PiNet server, thereby allowing you to maintain a single operating system image for all the Raspberry Pis. PiNet also adds network user accounts, shared folders and automated backups.
 
 <a name="cameramodule"></a>
+
 ## Camera Module
 
 ### What is the Camera Module?
@@ -524,6 +531,7 @@ Yes. We have reports of people using cables up to four metres in length and stil
 The Raspberry Pi Camera Modules requires 250mA to operate. Ensure that your power supply can provide enough power for the connected Camera Module, as well as for the Raspberry Pi itself and any peripherals directly attached to it.
 
 <a name="troubleshooting"></a>
+
 ## Troubleshooting
 
 ### What is the username and password for the Raspberry Pi?
