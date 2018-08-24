@@ -8,7 +8,6 @@
 
 - Where can I buy a Raspberry Pi, and how much does it cost?
 - What do I get when I buy one?
-- Can I buy a Raspberry Pi kit?
 - I'm worried I have a fake Pi!
 
 ### [Commercial and industry applications, resale](#commercial)
@@ -23,15 +22,12 @@
 - What hardware documentation is available?
 - What hardware interfaces does it have?
 - Can I use a Pi for audio or video input?
-- Why is there no real-time clock (RTC)?
 - Where is the on/off switch?
-- Why doesn't the Raspberry Pi include a particular type of hardware?
 - What are the dimensions of the Raspberry Pi?
 
 ### [Performance](#performance)
 
 - How powerful is it?
-- What differences are there in the GPU between different models?
 - Can I use my Pi as a desktop replacement?
 - Can I add extra RAM?
 - Can I connect multiple Pis together to make a faster computer?
@@ -45,15 +41,13 @@
 - Updates? Upgrades? What do I do?
 - I heard about something called `rpi-update`. When should I use that?
 - The processors on the latest Pi models are 64-bit, but I cannot find an official 64-bit OS.
-- Which Linux distros run on the Pi?
 - Will it run WINE (or Windows, or other x86 software)?
 - Will it run the Windows 8 Arm edition?
 - Will it run Android or Android Things?
-- Will it run any old software?
+- Will it run old software?
 - My `.exe` file won't run!
 - Can I share files from my Pi with my Windows machines?
 - Why does cpuinfo report I have a bcm2835?
-- Does it have an official programming language?
 - How do I run a program at startup?
 - How do I run a program at a specific time?
 
@@ -146,13 +140,9 @@ You get the Raspberry Pi board itself. The [official power supply](https://www.r
 
 An official case for the Raspberry Pi is available separately [from our distributors](https://www.raspberrypi.org/products/). There are also lots of home-brew case discussions on the forum, as well as several third-party cases available. We suggest stopping by the [cases subforum](https://www.raspberrypi.org/phpBB3/viewforum.php?f=40) and reading some of the threads about cases you can purchase or build yourself. There are also loads of awesome [3D-printable cases](https://www.raspberrypi.org/blog/3d-printed-raspberry-pi-cases/) that community members have designed.
 
-### Can I buy a Raspberry Pi kit?
-
-Many Raspberry Pi resellers produce bundles for people who would rather get everything they need from a single source. In 2016, we put together our own Raspberry Pi Official Starter Kit. The kit is available to order online in the UK from our partners [Element14](https://www.element14.com/community/docs/DOC-83184) and [RS components](http://uk.rs-online.com/web/p/processor-microcontroller-development-kits/8968119/), priced at £99 +VAT, and from distributors and resellers around the world.
-
 ### I'm worried I have a fake Pi!
 
-Don't worry, as far as we know, there are no fake Pis. The SoCs used on the Pi range are only available from one supplier, and only in large quantities, which together with the low price of the Pi means it's not cost-effective for clones to be made. There are a number of competitor products that use similar names, but not actual clones or fakes.
+Don't worry, as far as we know, there are no fake Pis. The processors used on the Pi range are only available from one supplier, and only in quantities of several million at a time, which, together with the low price of the Pi means it's not cost-effective for clones to be made. There are a number of competitor products that use similar names, but no actual clones or fakes.
 
 <a name="commercial"></a>
 ## Commercial and industry applications, resale
@@ -171,7 +161,7 @@ This is a very common question, and the answer is yes! Once you have bought a Pi
 
 ### Is a Pi suitable for industrial applications?
 
-Yes and no — it depends on the use case. Pis have been used successfully in industrial environments, but the final decision must be in the hands of the end user as to whether the device is suitable for the task at hand. See our [Compute Module documentation](./hardware/computemodule/README.md) for more details on our Pi model specifically designed for use in commercial and industrial products.
+Yes — it depends on your use case. Pis have been used successfully in industrial environments, but the final decision must be in the hands of the end user as to whether the device is suitable for the task at hand. See our [Compute Module documentation](./hardware/computemodule/README.md) for more details on our Pi model specifically designed for use in commercial and industrial products.
 
 <a name="hardware"></a>
 ## The Raspberry Pi hardware
@@ -225,14 +215,6 @@ Not by itself: there is no audio or video (HDMI/composite) IN capability on the 
 
 There is no on/off switch! To switch on, just plug it in. To switch off, if you are in the graphical environment, you can either log out from the main menu, exit to the Bash prompt, or open the terminal. From the Bash prompt or terminal you can shut down the Raspberry Pi by entering `sudo halt -h` (without the quotation marks). Wait until all the LEDs except the power LED are off, then wait an additional second to make sure the SD card can finish its wear-levelling tasks and write actions. You can now safely unplug the Raspberry Pi. Failure to shut the Raspberry Pi down properly may corrupt your SD card, which would mean you would have to re-image it.
 
-### Why is there no real-time clock?
-
-The expectation is that non-network-connected units will have their clocks updated manually at startup. Adding an RTC is surprisingly expensive once you have factored in batteries, area, and components, and would have pushed us above our target price. You can add one yourself using the GPIO pins if you'd like an interesting electronics project.
-
-### Why doesn't the Raspberry Pi include a particular type of hardware?
-
-Our main aim is a charitable one: we are trying to build the cheapest possible computer that provides a certain basic level of functionality, and keeping the price low means we've had to make hard decisions about what hardware and interfaces to include.
-
 ### What are the dimensions of the Raspberry Pi?
 
 The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37″ x 2.21″ x 0.83″), with a little overlap for the SD card and connectors which project over the edges. They weighs 45g. The Pi Zero and Pi Zero W measure 65mm x 30mm x 5.4mm (or roughly 2.56″ x 1.18″ x 0.20″) and weighs 9g. For the mechanical outline, please see the documentation [here](./hardware/raspberrypi/mechanical/README.md)
@@ -244,10 +226,6 @@ The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37
 ### How powerful is it?
 
 The GPU provides OpenGL ES 2.0, hardware-accelerated OpenVG, and 1080p30 H.264 high-profile encode and decode. The GPU is capable of 1Gpixel/s, 1.5Gtexel/s or 24 GFLOPs of general purpose compute and features a bunch of texture filtering and DMA infrastructure. This means that graphics capabilities are roughly equivalent to the original Xbox's level of performance. Overall real-world performance for models A, A+, B, B+, CM, Zero and Zero W is something like a 300MHz Pentium 2, only with much better graphics. The Pi 2 Model B is approximately equivalent to an Athlon Thunderbird running at 1.1GHz: again, it has the much higher-quality graphics that come from using the same GPU as in previous models. The Pi 3 Model B is around twice as fast as the Pi 2 Model B, depending on the benchmarks chosen.
-
-### What differences are there in the GPU between different models?
-
-All of the Raspberry Pi models use the same GPU, the Videocore4. Since the GPU provides the camera and display interfaces, codecs, 2D/3D graphics, etc., this means all Raspberry Pis have the same capabilities. The real difference between models is the type of ARM core used, and the additional peripherals that are attached, e.g. connectivity, USB ports, etcetera (see the [hardware](#hardware) section of these FAQs).
 
 ### Can I use my Pi as a desktop replacement?
 
@@ -282,8 +260,7 @@ You should not need to use a heatsink, as the chip used in the Raspberry Pi is e
 ## Software
 
 ### What operating system does it use?
-
-There are several official distributions (distros) available on our [downloads](https://www.raspberrypi.org/downloads) page. New users will probably find the NOOBS installer the easiest to work with, as it walks you through the download and installation of a specific distro. The recommended distro is Raspbian, which is specifically designed for the Raspberry Pi and which our engineers are constantly optimising. It is, however, a straightforward process to replace the root partition on the SD card with another Arm Linux distro, so we encourage you to try out several distros to see which one you like the most. The OS is stored on the SD card.
+The recommended distribution (distro) is Raspbian, which is specifically designed for the Raspberry Pi and which our engineers are constantly optimising. It is, however, a straightforward process to replace the root partition on the SD card with another Arm Linux distro, so we encourage you to try out several distros to see which one you like the most. There are several other distros available on our [downloads](https://www.raspberrypi.org/downloads) page. The OS is stored on the SD card.
 
 ### Updates? Upgrades? What do I do?
 
@@ -303,10 +280,6 @@ Unless using it is recommended by a Raspberry Pi engineer, you should not use `r
 
 Raspberry Pi do not current provide an official 64-bit OS, for a number of reasons. Firstly, since we still sell devices that are 32-bit, we would need to support two separate distributions, and at the moment we do not have the support capacity. Secondly, building a full 64-bit OS would require a considerable amount of work to, for example, fix the interfacing to the 32-bit Videocore GPU. There are third-party 64-bit operating systems available, but they do not have the full support for the GPU that would be a requirement for an official release.
 
-### Which Linux distros run on the Pi?
-
-Raspbian (based on Debian), Arch Linux run on the Raspberry Pi 1, 2, and 3. Ubuntu MATE and Ubuntu Snappy Core run on Pi 2 and 3 only. There are also other community-developed distributions available. See our [downloads page](https://www.raspberrypi.org/downloads/) for more information.
-
 ### Will it run Wine or Windows, or other x86 software?
 
 In general, this is not possible with most versions of the Raspberry Pi. Some people have put Windows 3.1 on the Raspberry Pi inside an x86 CPU emulator in order to use specific applications, but trying to use a version of Windows even as recent as Windows 98 can take hours to boot into, and may take several more hours to update your cursor every time you try to move it. We don't recommend it! As of summer 2015, a version of Windows 10 is available for use on the Raspberry Pi 2 and 3. This is an entirely new version of the operating system designed exclusively for embedded use, dubbed the Windows 10 Internet of Things (IoT) Core. It does not include the user interface (shell) or the desktop operating system.
@@ -321,7 +294,7 @@ Raspberry Pi themselves do not support the consumer version of Android that you 
 
 Google supports Android Things on the Raspberry Pi 3 as a development platform. Android Things is a variant of the Android platform enabling developers to build software for embedded and Internet of Things (IoT) devices with the Android SDK. To learn more about the platform and how to get started, visit [developer.android.com/things](https://developer.android.com/things/index.html).
 
-### Will it run any old software?
+### Will it run old software?
 
 In general, you need to look to see whether the program you want can be compiled for the Armv6 (Pi 1/Zero/Zero W/CM), Armv7 (Pi 2) or Armv8 (Pi 3) architecture on Linux. In most cases, the answer will be yes. Specific programs are discussed on [our forums](https://www.raspberrypi.org/forums/), so you might want to look there for an answer. Ultimately, nothing beats grabbing a Raspberry Pi and finding out the answer through direct testing!
 
@@ -338,10 +311,6 @@ It's also easy to copy files to and from Windows devices, rather than sharing fo
 ### Why does cpuinfo report I have a BCM2835?
 
 The upstream Linux kernel developers had decided that all models of Raspberry Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that `cat /proc/cpuinfo` is inaccurate for the Raspberry Pi 2 and Raspberry Pi 3, which use the bcm2836 and bcm283 respectively. You can use `cat /proc/device-tree/model` to get an accurate description of the SoC on your Pi model.
-
-### Does it have an official programming language?
-
-The Raspberry Pi Foundation recommends Python as a language for learners. We also recommend Scratch for younger children. And ny language which will compile for Armv6 (Pi 1) or Armv7 (Pi 2) can be used with the Raspberry Pi, so you are not limited to using Python. C, C++, Java, Scratch, and Ruby all come installed by default on the Raspberry Pi.
 
 ### How do I run a program at startup?
 
@@ -366,10 +335,6 @@ Whilst there is no native VGA support, active adapters are available. Passive HD
 ### Does the HDMI port support CEC?
 
 Yes, the HDMI port on the Raspberry Pi supports the CEC Standard. CEC may be called something else by your TV's manufacturer; check [the Wikipedia entry on CEC](http://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC) for more information.
-
-### Why is there no WGA support?
-
-The chip we use supports HDMI and composite outputs but does not support VGA. VGA is considered to be an end-of-life technology, so supporting it doesn't fit with our plans at the moment. However, if you really want to use a VGA monitor with a Raspberry Pi then it is possible using an HDMI to VGA adapter.
 
 ### Can I add a touchscreen?
 
@@ -440,7 +405,7 @@ Running the Raspberry Pi directly from batteries requires special care and can r
 
 ### Is Power over Ethernet possible?
 
-Not in the base device. There are adapters that would split the voltage off the Ethernet line before connecting to the Pi, but they are relatively expensive. On the 3B+ there is a new connector for a Raspberry Pi designed PoE adapter.
+If you own a 3B+, you can add the official Raspberry Pi PoE HAT. There are adapters that would split the voltage off the Ethernet line before connecting to the Pi, but they are relatively expensive and we do not recommend third-party PoE solutions; we've had many, many reports of unregulated voltage damaging users' hardware. 
 
 ### What voltage devices can I attach to the GPIO pins, and how much current can I pull?
 
@@ -476,7 +441,7 @@ The Model B, Model B+, and Pi 2 and 3 Model B versions of the device have built 
 
 ### Is there built-in WiFi?
 
-Only the Pi 3 and Pi Zero W have built-in wireless connectivity, but all other models can support a USB WiFi dongle. The Foundation offers its own branded WiFi dongle which has been fully tested for use with the Raspberry Pi. It is [available through our distributors](https://www.raspberrypi.org/products/raspberry-pi-usb-wifi-dongle). You can, of course, use a dongle from another provider if you wish.
+Only the Pi 3, 3+ and Pi Zero W have built-in wireless connectivity, but all other models can support a USB WiFi dongle. The Foundation offers its own branded WiFi dongle which has been fully tested for use with the Raspberry Pi. It is [available through our distributors](https://www.raspberrypi.org/products/raspberry-pi-usb-wifi-dongle). You can, of course, use a dongle from another provider if you wish.
 
 The Raspberry Pi Model 3B+ supports 802.11ac, all previous models support up to 802.11n.
 
@@ -550,7 +515,7 @@ Probably the most frequently asked question! We have full instructions for setti
 
 All electronics give off heat, and the Pi is no exception. The latest model (3B+) has heat-spreading technology to use the entire PCB and connectors as a heatsink to dissipate excess energy. This means that except in exceptional conditions, you are unlikely to need a heatsink on the SoC or the Ethernet hub chip. You can still add a heatsink if you wish, and this may prevent thermal throttling by keeping the chips below the throttling temperature (see the paragraph on clock speed).
 
-### I keep getting a lightning bolt symbol and messages about power...
+### I keep getting a lightning bolt symbol and messages about power.
 
 Most Pi models have circuity to detect drops of the incoming power supply voltage below around 4.65V. If such a drop happens, the lightning bolt warning icon (see [here](./configuration/warning-icons.md)) will appear, and a message will be sent to the system log. Below this voltage, there is no guarantee the Pi will work correctly; it may result in the device locking up, or bad SD card writes, USB device failure, Ethernet dropping out, etc. We recommend a good-quality 5V power supply, 2.5A for the Pi 3B+, with a thick copper supply cable, such as [our official power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/). The cable itself can be very important: often the cheaper cables use very thin copper wire, which can cause a significant voltage drop.
 
