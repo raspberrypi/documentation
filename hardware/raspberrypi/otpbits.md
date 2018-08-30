@@ -26,7 +26,7 @@ This list contains the publicly available information on the registers. If a reg
 28 – serial number   
 29 – ~(serial number)   
 30 – revision number   
-64/65 – MAC address; if set, system will use this in preference to the automatically generated address based on the serial number
+64/65 – MAC address; if set, system will use this in preference to the automatically generated address based on the serial number    
 66 – advanced boot register
    - Bits 0-6: GPIO for ETH_CLK output pin
    - Bit 7: enables ETH_CLK output
