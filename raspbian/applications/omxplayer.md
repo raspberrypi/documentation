@@ -17,7 +17,7 @@ omxplayer /opt/vc/src/hello_pi/hello_video/test.h264
 By default the audio is sent to the analog port. If you are using a HDMI-equipped display device with speakers, you need to tell omxplayer to send the audio signal over the HDMI link.
 
 ```
-omxplayer -adev hdmi /opt/vc/src/hello_pi/hello_video/test.h264
+omxplayer --adev hdmi /opt/vc/src/hello_pi/hello_video/test.h264
 ```
 
 When displaying video, the whole display will be used as output. You can specify which part of the display you want the video to be on using the window option.
