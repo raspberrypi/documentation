@@ -73,7 +73,12 @@ sudo nano /etc/hostapd/hostapd.conf
 ```
 
 Add the information below to the configuration file. This configuration assumes we are using channel 7, with a network name of NameOfNetwork, and a password AardvarkBadgerHedgehog. Note that the name and password should **not** have quotes around them. The passphrase should be between 8 and 64 characters in length.
-Change 'hw_mode=g' to 'hw_mode=a' to use the 5 GHz band.
+
+You can change the operations mode, 'hw_mode=g', to 'hw_mode=a' to use the 5 GHz band. Possible values for hw_mode are :
+ - a = IEEE 802.11a (5 GHz)
+ - b = IEEE 802.11b (2.4 GHz)
+ - g = IEEE 802.11g (2.4 GHz)
+ - ad = IEEE 802.11ad (60 GHz). 
 
 ```
 interface=wlan0
@@ -194,7 +199,12 @@ bridge_ports eth0 wlan0
 ```    
 
 The access point setup is almost the same as that shown in the previous section. Follow the instructions above to set up the `hostapd.conf` file, but add `bridge=br0` below the `interface=wlan0` line, and remove or comment out the driver line. The passphrase must be between 8 and 64 characters long. 
-Change 'hw_mode=g' to 'hw_mode=a' to use the 5 GHz band.
+
+You can change the operations mode, 'hw_mode=g', to 'hw_mode=a' to use the 5 GHz band. Possible values for hw_mode are :
+ - a = IEEE 802.11a (5 GHz)
+ - b = IEEE 802.11b (2.4 GHz)
+ - g = IEEE 802.11g (2.4 GHz)
+ - ad = IEEE 802.11ad (60 GHz). 
 
 ```
 interface=wlan0
