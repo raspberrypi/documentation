@@ -320,7 +320,7 @@ hdmi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> 
 <v_sync_offset_b> = leave at zero  
 <pixel_rep>       = leave at zero  
 <frame_rate>      = screen refresh rate in Hz  
-&lt;interlaced>      = leave at zero  
+<interlaced>      = leave at zero  
 <pixel_freq>      = clock frequency (width*height*framerate)  
 <aspect_ratio>    = *  
 ```
