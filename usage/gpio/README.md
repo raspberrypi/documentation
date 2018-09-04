@@ -57,5 +57,7 @@ It is possible to control GPIO pins using a number of programming languages and 
 - [GPIO with Scratch 1.4](scratch1/README.md)
 - [GPIO with Scratch 2](scratch2/README.md)
 - [GPIO with Python](python/README.md)
+- [GPIO with Node.js](https://www.npmjs.com/package/onoff)
+- [Another Node.js package for GPIO](https://www.npmjs.com/package/rpi-gpio)
 
 **Warning: while connecting up simple components to the GPIO pins is perfectly safe, it's important to be careful how you wire things up. LEDs should have resistors to limit the current passing through them. Do not use 5V for 3V3 components. Do not connect motors directly to the GPIO pins, instead use an [H-bridge circuit or a motor controller board](https://projects.raspberrypi.org/en/projects/physical-computing/16).**
