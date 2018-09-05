@@ -47,7 +47,7 @@
 - Will it run old software?
 - My `.exe` file won't run!
 - Can I share files from my Pi with my Windows machines?
-- Why does cpuinfo report I have a bcm2835?
+- Why does `cpuinfo` report I have a bcm2835?
 - How do I run a program at startup?
 - How do I run a program at a specific time?
 
@@ -308,7 +308,7 @@ Yes, there are a number of ways of doing this, and the most common is to use wha
 
 It's also easy to copy files to and from Windows devices, rather than sharing folders. There is plenty of documentation [here](./remote-access/README.md).
 
-### Why does cpuinfo report I have a BCM2835?
+### Why does `cpuinfo` report I have a BCM2835?
 
 The upstream Linux kernel developers had decided that all models of Raspberry Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that `cat /proc/cpuinfo` is inaccurate for the Raspberry Pi 2 and Raspberry Pi 3, which use the bcm2836 and bcm283 respectively. You can use `cat /proc/device-tree/model` to get an accurate description of the SoC on your Pi model.
 
