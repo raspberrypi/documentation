@@ -35,7 +35,7 @@ $ vcgencmd otp_dump | grep 17:
 17:3020000a
 ```
 
-Ensure the output `0x3020000a` is shown. If it is not, then the OTP bit has not been successfully programmed.
+Ensure the output `0x3020000a` is shown. If it is not, then the OTP bit has not been successfully programmed. In this case, go through the programming procedure again. If the bit is still not set this would indicate a HW fault with the Pi itself.
 
 If you wish, you can remove the `program_usb_boot_mode` line from config.txt, so that if you put the SD card in another Raspberry Pi, it won't program USB boot mode. Make sure there is no blank line at the end of config.txt. You can edit config.txt using the nano editor using the command `sudo nano /boot/config.txt`, for example.
 
