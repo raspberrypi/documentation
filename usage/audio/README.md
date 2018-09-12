@@ -35,15 +35,13 @@ omxplayer -o both example.mp3
 ```
 ## Using omxplayer as a background job
 
-omxplayer will close if run in the background without tty (user input).
-
-To circumvent this (and disable keyboard input), run with:
+`omxplayer` will close immediately if run in the background without tty (user input), so to run successfully, you need to tell `omxplayer` not to require any user input using the `--no-keys` option.
 
 ```bash
 omxplayer --no-keys example.mp3 &
 ```
 
-You can then check the status of the job you just spawned using `jobs`, and kill it using `kill`:
+Adding the `&` at the end of the command runs the job in the background. You can then check the status of this background job using the `jobs` command. Usually the job will complete when `omxplayer` finishes playing , but you can, if necessary, kill it before it normally terminates by using the `kill` command.
 
 ```bash
 $ jobs
