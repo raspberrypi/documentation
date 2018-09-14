@@ -25,7 +25,7 @@
 - Where is the on/off switch?
 - What are the dimensions of the Raspberry Pi?
 
-### [Performance](#performance)
+### [Performance](#pi-performance)
 
 - How powerful is it?
 - Can I use my Pi as a desktop replacement?
@@ -35,7 +35,7 @@
 - Does it overclock?
 - What is its operating temperature? Does it need a heatsink?
 
-### [Software](#software)
+### [Software](#pi-software)
 
 - What operating system (OS) does it use?
 - Updates? Upgrades? What do I do?
@@ -51,7 +51,7 @@
 - How do I run a program at startup?
 - How do I run a program at a specific time?
 
-### [Video](#video)
+### [Video](#pi-video)
 
 - What displays can I use?
 - Does the HDMI port support CEC?
@@ -59,12 +59,12 @@
 - Can I add a touchscreen?
 - What codecs can it play?
 
-### [Audio](#audio)
+### [Audio](#pi-audio)
 
 - Is sound over HDMI supported?
 - What about standard audio in and out?
 
-### [Power](#power)
+### [Power](#pi-power)
 
 - Is it safe to just pull the power?
 - What are the power requirements?
@@ -73,7 +73,7 @@
 - Is Power over Ethernet (PoE) possible?
 - What voltage devices can I attach to the GPIO pins, and how much current can I pull?
 
-### [SD cards and storage](#sd-cards-and-storage)
+### [SD cards and storage](#sd-cards)
 
 - What size of SD card do I need?
 - What size of SD card can it support?
@@ -219,7 +219,7 @@ There is no on/off switch! To switch on, just plug it in. To switch off, if you 
 
 The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37″ x 2.21″ x 0.83″), with a little overlap for the SD card and connectors which project over the edges. They weigh 45g. The Pi Zero and Pi Zero W measure 65mm x 30mm x 5.4mm (or roughly 2.56″ x 1.18″ x 0.20″) and weigh 9g. For the mechanical outlines, please see the documentation [here](./hardware/raspberrypi/mechanical/README.md)
 
-<a name="performance"></a>
+<a name="pi-performance"></a>
 
 ## Performance
 
@@ -255,7 +255,7 @@ The Raspberry Pi is built from commercial chips which are qualified to different
 
 You should not need to use a heatsink, as the chip used in the Raspberry Pi is equivalent to one used in a mobile phone, and should not become hot enough to require any special cooling. However, depending on the case you are using and the overclocking settings, you might find a heatsink to be advantageous. We do recommend the use of a heatsink if you are overclocking the Pi 3 Model B. Of course, if you just like the look of one, you will not hurt the Raspberry Pi by placing an appropriately-sized heatsink on it.
 
-<a name="software"></a>
+<a name="pi-software"></a>
 
 ## Software
 
@@ -320,7 +320,7 @@ There are a number of ways of doing this — [here's one](./linux/usage/rc-local
 
 With Cron! [Here's how](./linux/usage/cron.md).
 
-<a name="video"></a>
+<a name="pi-video"></a>
 
 ## Video
 
@@ -344,7 +344,7 @@ The Raspberry Pi Foundation provides a 7" capacitive [touchscreen](https://www.r
 
 The Raspberry Pi can encode (record) and decode (play) H.264 (MP4/MKV) out of the box. There are also two additional codecs you can [purchase through our Swag Store](http://swag.raspberrypi.org/collections/software) that enable you to decode [MPEG-2](http://swag.raspberrypi.org/collections/software/products/mpeg-2-license-key), a very popular and widely used format to encode DVDs, video camera recordings, TV and many others, and [VC-1](http://swag.raspberrypi.org/collections/software/products/vc-1-license-key), a Microsoft format found in Blu-ray discs, Windows Media, Slingbox, and HD-DVDs.
 
-<a name="audio"></a>
+<a name="pi-audio"></a>
 
 ## Audio
 
@@ -356,7 +356,7 @@ Yes.
 
 There is a standard 3.5mm jack for audio out to an amplifier. You can add any supported USB microphone for audio in or, using the I2S interface, you can add a codec for additional audio I/O.
 
-<a name="power"></a>
+<a name="pi-power"></a>
 
 ## Power
 
@@ -411,7 +411,7 @@ If you own a 3B+, you can add the official Raspberry Pi PoE HAT. There are adapt
 
 The GPIO pins are natively 3.3V, so 5V devices **MUST NOT** be attached directly without some sort of voltage conversion. The pins can provide up to 16mA current. See the [GPIO docs page](hardware/raspberrypi/gpio/README.md) for more information.
 
-<a name="sd-cards-and-storage"></a>
+<a name="sd-cards"></a>
 
 ## SD cards and storage
 
