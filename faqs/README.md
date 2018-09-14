@@ -97,7 +97,7 @@
 - How do I use the Camera Module?
 - How much power does the Camera Module use?
 
-### [Troubleshooting](#troubleshooting)
+### [Troubleshooting](#troubleshoot)
 
 - What is the username and password for the Raspberry Pi?
 - Why does nothing happen when I type in my password?
@@ -495,7 +495,7 @@ Yes. We have reports of people using cables up to four metres in length and stil
 
 The Raspberry Pi Camera Modules requires 250mA to operate. Ensure that your power supply can provide enough power for the connected Camera Module, as well as for the Raspberry Pi itself and any peripherals directly attached to it.
 
-<a name="troubleshooting"></a>
+<a name="troubleshoot"></a>
 
 ## Troubleshooting
 
