@@ -66,13 +66,13 @@ To view the Pi's current frequency, type: `cat /sys/devices/system/cpu/cpu0/cpuf
 
 ## Monitoring core temperature
 
-To view the Pi's temperature, type: `cat /sys/class/thermal/thermal_zone0/temp`. Divide the result by 1000 to find the value in Celsius. Alternatively, there is a vcgencmd, `vcgencmd measure_temp` that interrogates the GPU directly for its temperature.
+To view the Pi's temperature, type `cat /sys/class/thermal/thermal_zone0/temp`. Divide the result by 1000 to find the value in degrees Celsius. Alternatively, there is a vcgencmd, `vcgencmd measure_temp` that interrogates the GPU directly for its temperature.
 
 Whilst hitting the temperature limit is not harmful to the SoC, it will cause CPU throttling. A heatsink can help to control the core temperature and therefore performance. This is especially useful if the Pi is running inside a case. Airflow over the heatsink will make cooling more efficient. A suitable heatsink is the self-adhesive BGA (ball-grid-array) 14x14x10 mm heatsink available from [RS Components](http://uk.rs-online.com/web/p/heatsinks/6744756/).
 
 With firmware from 12th September 2016 or later, when the core temperature is between 80'C and 85'C, a warning icon showing a red half-filled thermometer will be displayed, and the ARM cores will be throttled back. If the temperature exceeds 85'C, an icon showing a fully-filled thermometer will be displayed, and both the ARM cores and the GPU will be throttled back.
 
-For Raspberry Pi 3 Model B+, the PCB technology has been changed to provide better heat dissipation and increased thermal mass. In addition, a soft temperature limit has been introduced, with the goal of maximising the time for which a device can "sprint" before reaching the hard limit at 85'C. When the soft limit is reached, the clock speed is reduced from 1.4GHz to 1.2GHz, and the operating voltage is reduced slightly. This reduces the rate of temperature increase: we trade a short period at 1.4GHz for a longer period at 1.2GHz. By default, the soft limit is 60°C, and this can be changed via the temp_soft_limit setting in config.txt.
+For the Raspberry Pi 3 Model B+, the PCB technology has been changed to provide better heat dissipation and increased thermal mass. In addition, a soft temperature limit has been introduced, with the goal of maximising the time for which a device can "sprint" before reaching the hard limit at 85°C. When the soft limit is reached, the clock speed is reduced from 1.4GHz to 1.2GHz, and the operating voltage is reduced slightly. This reduces the rate of temperature increase: we trade a short period at 1.4GHz for a longer period at 1.2GHz. By default, the soft limit is 60°C, and this can be changed via the temp_soft_limit setting in config.txt.
 
 See the page on [warning icons](../warning-icons.md) for more details.
 
