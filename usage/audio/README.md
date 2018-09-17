@@ -33,7 +33,7 @@ You can even force output over both the headphone jack and HDMI with:
 ```bash
 omxplayer -o both example.mp3
 ```
-## Using omxplayer as a background job
+## Runnin omxplayer as a background job
 
 `omxplayer` will close immediately if run in the background without tty (user input), so to run successfully, you need to tell `omxplayer` not to require any user input using the `--no-keys` option.
 
@@ -41,7 +41,7 @@ omxplayer -o both example.mp3
 omxplayer --no-keys example.mp3 &
 ```
 
-Adding the `&` at the end of the command runs the job in the background. You can then check the status of this background job using the `jobs` command. Usually the job will complete when `omxplayer` finishes playing , but you can, if necessary, kill it before it normally terminates by using the `kill` command.
+Adding the `&` at the end of the command runs the job in the background. You can then check the status of this background job using the `jobs` command. By default, the job will complete when `omxplayer` finishes playing, but if necessary, you can stop it at any point using the `kill` command.
 
 ```bash
 $ jobs
