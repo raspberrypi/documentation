@@ -20,13 +20,15 @@ You can use the `tvservice` command to determine which modes are supported by yo
 
 ### Setting a specific HDMI mode
 
-Setting a specific mode is done using the `hdmi_group` and `hdmi_mode` config.txt entries. The group entry selects between CEA or DMT  and the mode selects the resolution and framerate. There are tables of modes on the config.txt [Video](config-txt/video.md) page, but use the `tvservice` command described above to find out exactly which modes your device supports.
+Setting a specific mode is done using the `hdmi_group` and `hdmi_mode` config.txt entries. The group entry selects between CEA or DMT  and the mode selects the resolution and framerate. There are tables of modes on the config.txt [Video Configuration](config-txt/video.md) page, but use the `tvservice` command described above to find out exactly which modes your device supports.
 
 ### Setting a custom HDMI mode.
 
-There are two optiosn for setting a custom mode,  `hdmi_cvt` and `hdmi_timings`. 
+There are two options for setting a custom mode,  `hdmi_cvt` and `hdmi_timings`. 
 
-In certain rare cases it may be necessary to define the exact clock requirements of the HDMI signal. This is called a custom mode, and is activated by setting `hdmi_group=2` and `hdmi_mode=87`. You can then use the `hdmi_timings` config.txt command to set the specific parameters for your display. 
+`hdmi_cvt` sets a custom Coordinated Video Timing entry, which is described fully here [Video Configuration](config-txt/video.md#Custom%20Mode).
+
+In certain rare cases it may be necessary to define the exact clock requirements of the HDMI signal. This is a fully custom mode, and is activated by setting `hdmi_group=2` and `hdmi_mode=87`. You can then use the `hdmi_timings` config.txt command to set the specific parameters for your display. 
 `hdmi_timings` specifies all the timings that an HDMI signal needs to use. These timings are usually found is datasheets related to the display being used.
 
 `hdmi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> <h_back_porch> <v_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> <h_back_porch> <v_active_lines> <v_sync_polarity> v_front_porch> <v_sync_pulse> <v_back_porch> <v_sync_offset_a> <v_sync_offset_b> <pixel_rep> <frame_rate> <interlaced> <pixel_freq> <aspect_ratio>`
@@ -49,7 +51,7 @@ In certain rare cases it may be necessary to define the exact clock requirements
 - `pixel_freq` The mode pixel frequency
 - `aspect_ratio` ?
 
-### HDMI not working properly.
+### HDMI not working properly?
 
 In some rare cases you may need to increase the HDMI drive strength, for example, speckling on the display, or when using very long cables. There is a config.txt item to do this, `config_hdmi_boost`, which is documented on the config.txt [Video](config-txt/video.md) page.
 
