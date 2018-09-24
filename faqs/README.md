@@ -189,7 +189,7 @@ The Pi 3 Model B was launched in February 2016. It uses a 1.2GHz 64-bit quad-cor
 
 The Pi 3 Model B+ was launched in March 2018. It uses a 1.4GHz 64-bit quad-core Arm Cortex-A53 CPU, has 1GB RAM, gigabit Ethernet, integrated 802.11ac/n wireless LAN, and Bluetooth 4.2. and is the model we recommend for use in schools, due to its flexibility for the learner.
 
-The Pi Zero and Pi Zero W/WH are half the size of a Model A+, with a 1Ghz single-core CPU and 512MB RAM, and mini-HDMI and USB On-The-Go ports and a camera connector. The Pi Zero W also has integrated 802.11n wireless LAN and Bluetooth 4.1. The Pi Zero WH is identical to the Zero W, but comes with a pre-soldered header.
+The Pi Zero and Pi Zero W/WH are half the size of a Model A+, with a 1GHz single-core CPU and 512MB RAM, and mini-HDMI and USB On-The-Go ports and a camera connector. The Pi Zero W also has integrated 802.11n wireless LAN and Bluetooth 4.1. The Pi Zero WH is identical to the Zero W, but comes with a pre-soldered header.
 
 The Model A/A+ has one USB port, the Model B has two ports, and the Model B+, Pi 2 Model B, and Pi 3 Model B have four ports. These can be used to connect most USB 2.0 devices. Additional USB devices such as mice, keyboards, network adapters, and external storage can be connected via a USB hub. The Pi Zero and Pi Zero W have a single micro USB port, this requires a USB OTG cable to connect devices such as keyboards or hubs.
 
