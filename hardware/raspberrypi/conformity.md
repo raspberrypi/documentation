@@ -17,7 +17,7 @@ All Raspberry Pi product has undergone extensive compliance testing, and copies 
 | Display   | [EU](./compliance/rpi_DOC_Display_CE.pdf)  &nbsp; &nbsp;[FCC](./compliance/rpi_DOC_Display_FCC.pdf) | |
 | Camera Module v1 | [EU](./compliance/rpi_DOC_Camera_CE.pdf) | |
 | Camera Module v2 | [EU](./compliance/rpi_DOC_Camera2_CE.pdf)  &nbsp; &nbsp;[FCC](./compliance/rpi_DOC_Camera2_FCC.PDF) | |
-| Sense HAT | [EU](./compliance/rpi_DOC_SenseHAT_CE.pdf) | |
+| Sense HAT | [EU](./compliance/rpi_DOC_SenseHAT_CE.pdf) &nbsp; &nbsp; [FCC](./compliance/rpi_DOC_SenseHAT_FCC.pdf)| |
 | PoE HAT | [EU](./compliance/rpi_DOC_PoeHAT_EU.pdf)  &nbsp; &nbsp;[FCC](./compliance/rpi_DOC_PoeHAT_FCC.pdf)| |
 
 ## Flammability rating
