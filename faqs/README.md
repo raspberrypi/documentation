@@ -138,7 +138,7 @@ The following prices are exclusive of any local taxes and shipping/handling fees
 
 You get the Raspberry Pi board itself. The [official power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/) and an SD card are not included, but they can be purchased at the same time from most places that sell the Raspberry Pi. You can also purchase pre-loaded SD cards; we recommend buying these from us or our licensed distributors rather than from third parties, as our software is updated regularly and cards sold by third parties can quickly become outdated.
 
-An official case for the Raspberry Pi is available separately [from our distributors](https://www.raspberrypi.org/products/). There are also lots of home-brew case discussions on the forum, as well as several third-party cases available. We suggest stopping by the [cases subforum](https://www.raspberrypi.org/phpBB3/viewforum.php?f=40) and reading some of the threads about cases you can purchase or build yourself. There are also loads of awesome [3D-printable cases](https://www.raspberrypi.org/blog/3d-printed-raspberry-pi-cases/) that community members have designed.
+An official case for the Raspberry Pi is available separately [from our distributors](https://www.raspberrypi.org/products/). There are also lots of home-brew case discussions on the forum, as well as several third-party cases available. There are also loads of awesome [3D-printable cases](https://www.raspberrypi.org/blog/3d-printed-raspberry-pi-cases/) that community members have designed.
 
 ### I'm worried I have a fake Pi!
 
@@ -217,11 +217,11 @@ There is no on/off switch! To switch on, just plug it in. To switch off, if you 
 
 ### What are the dimensions of the Raspberry Pi?
 
-The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37″ x 2.21″ x 0.83″), with a little overlap for the SD card and connectors which project over the edges. They weigh 45g. The Pi Zero and Pi Zero W measure 65mm x 30mm x 5.4mm (or roughly 2.56″ x 1.18″ x 0.20″) and weigh 9g. For the mechanical outlines, please see the documentation [here](./hardware/raspberrypi/mechanical/README.md)
+The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37″ x 2.21″ x 0.83″), with a little overlap for the SD card and connectors which project over the edges. They weigh 45g. The Pi Zero and Pi Zero W measure 65mm x 30mm x 5.4mm (or roughly 2.56″ x 1.18″ x 0.20″) and weigh 9g. For the mechanical outlines, please see the documentation [here](../hardware/raspberrypi/mechanical/README.md)
 
 <a name="pi-performance"></a>
 
-## Performance
+## Performancef
 
 ### How powerful is it?
 
@@ -306,7 +306,7 @@ Most `.exe` files come from Windows and are compiled for the x86 processor archi
 
 Yes, there are a number of ways of doing this, and the most common is to use what are called Samba shares. We don't have any specific documentation on Samba shares in our official docs just yet, but [here](https://www.raspberrypi.org/magpi/samba-file-server/) is some from our magazine, [The MagPi](https://www.raspberrypi.org/magpi).
 
-It's also easy to copy files to and from Windows devices, rather than sharing folders. There is plenty of documentation [here](./remote-access/README.md).
+It's also easy to copy files to and from Windows devices, rather than sharing folders. There is plenty of documentation [here](../remote-access/README.md).
 
 ### Why does `cpuinfo` report I have a BCM2835?
 
@@ -516,7 +516,7 @@ All electronics give off heat, and the Pi is no exception. The latest model (3B+
 
 ### I keep getting a lightning bolt symbol and messages about power.
 
-Most Pi models have circuity to detect drops of the incoming power supply voltage below around 4.65V. If such a drop happens, the lightning bolt warning icon (see [here](./configuration/warning-icons.md)) will appear, and a message will be sent to the system log. Below this voltage, there is no guarantee the Pi will work correctly; it may result in the device locking up, or bad SD card writes, USB device failure, Ethernet dropping out, etc. We recommend a good-quality 5V power supply, 2.5A for the Pi 3B+, with a thick copper supply cable, such as [our official power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/). The cable itself can be very important: often the cheaper cables use very thin copper wire, which can cause a significant voltage drop.
+Most Pi models have circuity to detect drops of the incoming power supply voltage below around 4.65V. If such a drop happens, the lightning bolt warning icon (see [here](../configuration/warning-icons.md)) will appear, and a message will be sent to the system log. Below this voltage, there is no guarantee the Pi will work correctly; it may result in the device locking up, or bad SD card writes, USB device failure, Ethernet dropping out, etc. We recommend a good-quality 5V power supply, 2.5A for the Pi 3B+, with a thick copper supply cable, such as [our official power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/). The cable itself can be very important: often the cheaper cables use very thin copper wire, which can cause a significant voltage drop.
 
 ### My SD card seems to have stopped working.
 
