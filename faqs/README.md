@@ -153,7 +153,7 @@ We have an exclusive manufacturing and distribution arrangement with [RS](http:/
 
 ### What manufacturing standards etc. does the Pi comply with?
 
-We have put the Pi models through extensive compliance testing, for Europe, the USA, and other countries around the world. You can find many of the reports [here](./hardware/raspberrypi/conformity.md).
+We have put the Pi models through extensive compliance testing, for Europe, the USA, and other countries around the world. You can find many of the reports [here](../hardware/raspberrypi/conformity.md).
 
 ### Can I use a Pi in a commercial product?
 
@@ -161,7 +161,7 @@ This is a very common question, and the answer is yes! Once you have bought a Pi
 
 ### Is a Pi suitable for industrial applications?
 
-Yes — it depends on your use case. Pis have been used successfully in industrial environments, but the final decision must be in the hands of the end user as to whether the device is suitable for the task at hand. See our [Compute Module documentation](./hardware/computemodule/README.md) for more details on our Pi model specifically designed for use in commercial and industrial products.
+Yes — it depends on your use case. Pis have been used successfully in industrial environments, but the final decision must be in the hands of the end user as to whether the device is suitable for the task at hand. See our [Compute Module documentation](../hardware/computemodule/README.md) for more details on our Pi model specifically designed for use in commercial and industrial products.
 
 <a name="hardware"></a>
 ## The computer hardware
@@ -172,18 +172,18 @@ These are the [models of the Raspberry Pi](https://www.raspberrypi.org/products/
 
 | Product | SoC | Speed | RAM | USB Ports | Ethernet | Wireless/Bluetooth |
 |---------|-----|-------|-----|-----------|----------|--------------------|
-| Raspberry Pi Model A+ | BCM2835 | 700Mhz | 512MB | 1 | No | No |
-| Raspberry Pi Model B+ | BCM2835 | 700Mhz | 512MB | 4 |Yes | No |
-| Raspberry Pi 2 Model B | BCM2836/7 | 900Mhz | 1GB | 4 |Yes | No |
-| Raspberry Pi 3 Model B | BCM2837 | 1200Mhz | 1GB | 4 |Yes | Yes |
-| Raspberry Pi 3 Model B+ | BCM2837 | 1400Mhz | 1GB | 4 |Yes | Yes |
-| Raspberry Pi Zero | BCM2835 | 1000Mhz | 512MB | 1 | No | No |
-| Raspberry Pi Zero W | BCM2835 | 1000Mhz | 512MB | 1 | No | Yes |
-| Raspberry Pi Zero WH | BCM2835 | 1000Mhz | 512MB | 1 | No | Yes |
+| Raspberry Pi Model A+ | BCM2835 | 700MHz | 512MB | 1 | No | No |
+| Raspberry Pi Model B+ | BCM2835 | 700MHz | 512MB | 4 |Yes | No |
+| Raspberry Pi 2 Model B | BCM2836/7 | 900MHz | 1GB | 4 |Yes | No |
+| Raspberry Pi 3 Model B | BCM2837 | 1200MHz | 1GB | 4 |Yes | Yes |
+| Raspberry Pi 3 Model B+ | BCM2837 | 1400MHz | 1GB | 4 |Yes | Yes |
+| Raspberry Pi Zero | BCM2835 | 1000MHz | 512MB | 1 | No | No |
+| Raspberry Pi Zero W | BCM2835 | 1000MHz | 512MB | 1 | No | Yes |
+| Raspberry Pi Zero WH | BCM2835 | 1000MHz | 512MB | 1 | No | Yes |
 
 The Model A+ is the low-cost variant of the Raspberry Pi. It has 512MB RAM (as of August 2016: earlier models have 256MB), one USB port, 40 GPIO pins, and no Ethernet port. The Model B+ is the final revision of the original Raspberry Pi. It has 512MB RAM, four USB ports, 40 GPIO pins, and an Ethernet port.
 
-In February 2015, it was superseded by the Pi 2 Model B, the second generation of the Raspberry Pi. The Pi 2 shares many specs with the Pi 1 B+, and originally used a 900MHz quad-core Arm Cortex-A7 CPU and has 1GB RAM. Some recent version of the Pi 2 (v1.2) now use a 900Mhz Arm Cortex-A53 CPU.
+In February 2015, it was superseded by the Pi 2 Model B, the second generation of the Raspberry Pi. The Pi 2 shares many specs with the Pi 1 B+, and originally used a 900MHz quad-core Arm Cortex-A7 CPU and has 1GB RAM. Some recent version of the Pi 2 (v1.2) now use a 900MHz Arm Cortex-A53 CPU.
 
 The Pi 3 Model B was launched in February 2016. It uses a 1.2GHz 64-bit quad-core Arm Cortex-A53 CPU, has 1GB RAM, integrated 802.11n wireless LAN, and Bluetooth 4.1.
 
@@ -203,7 +203,7 @@ All available documentation is in our [documentation repository](./README.md).
 
 ### What hardware interfaces does it have?
 
-Depending on the model, the Raspberry Pi has either 40 or 26 dedicated GPIO pins. In all cases, these include a UART, an I2C bus, a SPI bus with two chip selects, I2S audio, 3V3, 5V, and ground. The maximum number of GPIOs can theoretically be indefinitely expanded by making use of the I2C or SPI bus.
+Depending on the model, the Raspberry Pi has either 40 or 26 dedicated interface pins. In all cases, these include a UART, an I2C bus, a SPI bus with two chip selects, I2S audio, 3V3, 5V, and ground. The maximum number of GPIOs can theoretically be indefinitely expanded by making use of the I2C or SPI bus.
 
 There is also a dedicated CSI-2 camera port for the [Raspberry Pi Camera Module](https://www.raspberrypi.org/products/), and a DSI display port for the [Raspberry Pi LCD touchscreen display](https://www.raspberrypi.org/products/raspberry-pi-touch-display/).
 
@@ -213,7 +213,7 @@ Not by itself: there is no audio or video (HDMI/composite) IN capability on the 
 
 ### Where is the on/off switch?
 
-There is no on/off switch! To switch on, just plug it in. To switch off, if you are in the graphical environment, you can either log out from the main menu, exit to the Bash prompt, or open the terminal. From the Bash prompt or terminal you can shut down the Raspberry Pi by entering `sudo halt -h` (without the quotation marks). Wait until all the LEDs except the power LED are off, then wait an additional second to make sure the SD card can finish its wear-levelling tasks and write actions. You can now safely unplug the Raspberry Pi. Failure to shut the Raspberry Pi down properly may corrupt your SD card, which would mean you would have to re-image it.
+There is no on/off switch! To switch on, just plug it in. To switch off, if you are in the graphical environment, you can either log out from the main menu, exit to the Bash prompt, or open the terminal. From the Bash prompt or terminal you can shut down the Raspberry Pi by entering `sudo halt -h`. Wait until all the LEDs except the power LED are off, then wait an additional second to make sure the SD card can finish its wear-levelling tasks and write actions. You can now safely unplug the Raspberry Pi. Failure to shut the Raspberry Pi down properly may corrupt your SD card, which would mean you would have to re-image it.
 
 ### What are the dimensions of the Raspberry Pi?
 
@@ -241,7 +241,7 @@ Sort of, but not in the way you might want to do it. You cannot simply make a mo
 
 ### Why does my Pi run at a slower clock speed that advertised?
 
-The Raspberry Pi (all models) idles at a lower speed than advertised. If the workload of the CPU increases, then the clock speed increases until it reaches its maximum value, which varies between models. If the CPU starts to overheat, there are added complexitites: depending on the model, when the device reaches a particular temperature, the clock is throttled back to prevent overheating. This is called thermal throttling. If the Pi does thermal-throttle, you will see a warning icon in the top right-hand corner of the desktop (see [here](./configuration/warning-icons.md)).
+The Raspberry Pi (all models) idles at a lower speed than advertised. If the workload of the CPU increases, then the clock speed increases until it reaches its maximum value, which varies between models. If the CPU starts to overheat, there are added complexitites: depending on the model, when the device reaches a particular temperature, the clock is throttled back to prevent overheating. This is called thermal throttling. If the Pi does thermal-throttle, you will see a warning icon in the top right-hand corner of the desktop (see [here](../configuration/warning-icons.md)).
 
 ### Does it overclock?
 
@@ -310,18 +310,17 @@ It's also easy to copy files to and from Windows devices, rather than sharing fo
 
 ### Why does `cpuinfo` report I have a BCM2835?
 
-The upstream Linux kernel developers had decided that all models of Raspberry Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that `cat /proc/cpuinfo` is inaccurate for the Raspberry Pi 2 and Raspberry Pi 3, which use the bcm2836 and bcm283 respectively. You can use `cat /proc/device-tree/model` to get an accurate description of the SoC on your Pi model.
+The upstream Linux kernel developers had decided that all models of Raspberry Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that `cat /proc/cpuinfo` is inaccurate for the Raspberry Pi 2 and Raspberry Pi 3, which use the bcm2836 and bcm2837 respectively. You can use `cat /proc/device-tree/model` to get an accurate description of the SoC on your Pi model.
 
 ### How do I run a program at startup?
 
-There are a number of ways of doing this — [here's one](./linux/usage/rc-local.md).
+There are a number of ways of doing this — [here's one](../linux/usage/rc-local.md).
 
 ### How do I run a program at a specific time?
 
-With Cron! [Here's how](./linux/usage/cron.md).
+With Cron! [Here's how](../linux/usage/cron.md).
 
 <a name="pi-video"></a>
-
 ## Video
 
 ### What displays can I use?
@@ -354,7 +353,7 @@ Yes.
 
 ### What about standard audio in and out?
 
-There is a standard 3.5mm jack for audio out to an amplifier. You can add any supported USB microphone for audio in or, using the I2S interface, you can add a codec for additional audio I/O.
+There is a standard 3.5mm jack for audio out to an amplifier (not on Zero models). You can add any supported USB microphone for audio in or, using the I2S interface, you can add a codec for additional audio I/O.
 
 <a name="pi-power"></a>
 
@@ -391,7 +390,7 @@ Here is a table comparing the amount of power drawn in A (amps) under different 
 | Video playback (H.264) | Max | 0.30 | 0.36 |0.55 |0.23 |
 | | Avg | 0.22 | 0.28 | 0.33 | 0.16 |
 | Stress | Max | 0.35 | 0.82 | 1.34 | 0.35 |
-| | Avg || 0.32 | 0.75 | 0.85 | 0.23 |
+| | Avg | 0.32 | 0.75 | 0.85 | 0.23 |
 
 Test conditions used a standard Raspbian image (current as of 26 Feb 2016), at room temperature, connected to a HDMI monitor, USB keyboard and mouse. The Pi 3 Model B was connected to a WiFi access point. All these power measurements do not take into account power consumption from additional USB devices; they can easily be exceeded with multiple additional USB devices connected or when using a HAT.
 
@@ -401,15 +400,15 @@ It depends on the hub. Some hubs comply with the USB 2.0 Standard and only provi
 
 ### Can I power the Raspberry Pi from batteries as well as from a wall socket?
 
-Running the Raspberry Pi directly from batteries requires special care and can result in damaging or destroying your Raspberry Pi. If you consider yourself an advanced user, though, you could have a go. For example, four AA rechargeable batteries would provide 4.8V on a full charge. 4.8V would technically be just within the range of tolerance for the Raspberry Pi, but the system would quickly become unstable as the batteries lost their full charge. Conversely, using four AA Alkaline (non-rechargeable) batteries will result in 6V. 6V is outside the acceptable tolerance range and would potentially damage or, in the worst-case scenario, destroy your Raspberry Pi. It is possible to provide a steady 5V from batteries by using a buck and/or boost circuit, or by using a charger pack which is specifically designed to output a steady 5V from a couple of batteries; these devices are typically marketed as mobile phone emergency battery chargers.
+Running the Raspberry Pi directly from batteries requires special care and can result in damaging or destroying your Raspberry Pi. If you consider yourself an advanced user, though, you could have a go. For example, four of the most common AA rechargeable batteries would provide 4.8V on a full charge. 4.8V would technically be just within the range of tolerance for the Raspberry Pi, but the system would quickly become unstable as the batteries lost their full charge. Conversely, using four AA Alkaline (non-rechargeable) batteries will result in 6V. 6V is outside the acceptable tolerance range and would potentially damage or, in the worst-case scenario, destroy your Raspberry Pi. It is possible to provide a steady 5V from batteries by using a buck and/or boost circuit, or by using a charger pack which is specifically designed to output a steady 5V from a couple of batteries; these devices are typically marketed as mobile phone emergency battery chargers.
 
 ### Is Power over Ethernet possible?
 
-If you own a 3B+, you can add the official Raspberry Pi PoE HAT. There are adapters that would split the voltage off the Ethernet line before connecting to the Pi, but they are relatively expensive and we do not recommend third-party PoE solutions; we've had many, many reports of unregulated voltage damaging users' hardware. 
+Yes, if you own a 3B+, you can use the the official Raspberry Pi PoE HAT. For other models, there are adapters that would split the voltage off the Ethernet line before connecting to the Pi. However, we have not tested any of these, so cannot recommend any of these third-party PoE solutions. 
 
 ### What voltage devices can I attach to the GPIO pins, and how much current can I pull?
 
-The GPIO pins are natively 3.3V, so 5V devices **MUST NOT** be attached directly without some sort of voltage conversion. The pins can provide up to 16mA current. See the [GPIO docs page](hardware/raspberrypi/gpio/README.md) for more information.
+The GPIO pins are natively 3.3V, so 5V devices **MUST NOT** be attached directly without some sort of voltage conversion. The pins can provide up to 16mA current. See the [GPIO docs page](../hardware/raspberrypi/gpio/README.md) for more information.
 
 <a name="sd-cards"></a>
 
@@ -425,7 +424,7 @@ We have tried cards up to 128GB, and most cards seem to work OK. You can also at
 
 ### Can I boot a Pi from a USB-attached hard drive instead of the SD card?
 
-Yes, booting from a USB-attached drive (either a SSD or actual hard drive) can make the Pi boot and work faster. We have extensive instructions on how to do this [here](./hardware/raspberrypi/bootmodes/msd.md).
+Yes, booting from a USB-attached drive (either a SSD or actual hard drive) can make the Pi boot and work faster. We have extensive instructions on how to do this [here](../hardware/raspberrypi/bootmodes/msd.md).
 
 ### What happens if I brick the device?
 
@@ -455,7 +454,7 @@ Although the Ethernet chip on the Raspberry Pi 3B+ is gigabit-capable, the conne
 
 ### Does the device have support for any form of netbooting or PXE?
 
-Yes. The Raspberry Pi 3 can be set up to network boot without an SD card present; earlier models can PXE/Netboot with an appropriately set up SD card. You can find our netbooting documentation [here](./hardware/raspberrypi/bootmodes/net.md).
+Yes. The Raspberry Pi 3 can be set up to network boot without an SD card present; earlier models can PXE/Netboot with an appropriately set up SD card. You can find our netbooting documentation [here](../hardware/raspberrypi/bootmodes/net.md).
 
 We have also developed [PiServer](https://www.raspberrypi.org/blog/piserver/), a piece of software that lets you easily set up a network of client Raspberry Pis connected to a single x86-based server via Ethernet. With PiServer, you don’t need SD cards, you can control all clients via the server, and you can add and configure user accounts — ideal for the classroom, your home, or an industrial setting.
 
@@ -509,11 +508,11 @@ To protect your information, Linux does not display anything when you are enteri
 
 ### Why does my Pi not start up/boot?
 
-Probably the most frequently asked question! We have full instructions for setting up your Raspberry Pi [here](./setup/), but if it still will not boot, you will find advice on what to do in the [troubleshooting post on our forum](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=58151).
+Probably the most frequently asked question! We have full instructions for setting up your Raspberry Pi [here](../setup/), but if it still will not boot, you will find advice on what to do in the [troubleshooting post on our forum](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=58151).
 
 ### Why is my Pi hot?
 
-All electronics give off heat, and the Pi is no exception. The latest model (3B+) has heat-spreading technology to use the entire PCB and connectors as a heatsink to dissipate excess energy. This means that except in exceptional conditions, you are unlikely to need a heatsink on the SoC or the Ethernet hub chip. You can still add a heatsink if you wish, and this may prevent thermal throttling by keeping the chips below the throttling temperature (see the paragraph on clock speed).
+All electronics give off heat, and the Pi is no exception. The latest model (3B+) has heat-spreading technology to use the entire PCB and connectors as a heatsink to dissipate excess energy. This means that except in exceptional conditions, you are unlikely to need a heatsink on the SoC or the Ethernet hub chip. You can still add a heatsink if you wish, and this may prevent thermal throttling by keeping the chips below the throttling temperature (see the clock speed paragraph in the [Performance](#pi-performance) section).
 
 ### I keep getting a lightning bolt symbol and messages about power.
 
@@ -525,7 +524,7 @@ SD cards have a limited lifespan due to the way they work. Under most circumstan
 
 ### I've imaged an SD card with Raspbian/NOOBS, but when I look at it with my Windows PC, it's not all there!
 
-This is to do with the capabilities of Windows to read Linux-formatted partitions. When you image the SD card, it is automatically split into multiple partitions. The first partition uses a format that Windows can read, but the other partitions use a Linux-specific file system, which Windows simply does not recognise. This means when you put an SD card in a Windows machine, it only displays the first partition, and may well say the other partitions are corrupted and need formatting - **do not format them**! Here's some information on what goes in that first [partition](./configuration/boot_folder.md). If you insert the SD card on a machine running Linux, it will display all the partitions correctly.
+This is to do with the capabilities of Windows to read Linux-formatted partitions. When you image the SD card, it is automatically split into multiple partitions. The first partition uses a format that Windows can read, but the other partitions use a Linux-specific file system, which Windows simply does not recognise. This means when you put an SD card in a Windows machine, it only displays the first partition, and may well say the other partitions are corrupted and need formatting - **do not format them**! Here's some information on what goes in that first [partition](../configuration/boot_folder.md). If you insert the SD card on a machine running Linux, it will display all the partitions correctly.
 
 ## I still have more questions!
 
