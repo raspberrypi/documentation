@@ -1,4 +1,5 @@
 # Network boot your Raspberry Pi
+
 This tutorial is written to explain how to set up a simple DHCP/TFTP server which will allow you to boot a Raspberry Pi 3 from the network. The tutorial assumes that you have an existing home network, and that you want to use a Raspberry Pi for the **server**. You will need a second Raspberry Pi 3 as a **client** to be booted. Only one SD card is needed because the client will be booted from the server after the initial client configuration.
 
 Due to the huge range of networking devices available, we can't guarantee that network booting will work with any device. We have had reports that, if you cannot get network booting to work, disabling STP frames on your network may help.
@@ -8,16 +9,18 @@ Due to the huge range of networking devices available, we can't guarantee that n
 ## Client configuration
 Before a Raspberry Pi will network boot, it needs to be booted from an SD card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the SD card is no longer required. 
 
-Install Raspbian Lite (or Raspbian with Raspberry Pi Desktop) on the SD card in the normal way [See here](../../../installation/installing-images/README.md). 
+Install Raspbian Lite (or Raspbian with Raspberry Pi Desktop) on the SD card in the [usual way](../../../installation/installing-images/README.md). 
 
 ### Program USB boot mode
 
 First, prepare the `/boot` directory with the latest boot files:
+
 ```bash
 sudo apt-get update && sudo apt-get upgrade
 ```
 
 Now, enable USB boot mode with the following command:
+
 ```bash
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
 ```
@@ -45,6 +48,7 @@ sudo rsync -xa --progress --exclude /nfs / /nfs/client1
 ```
 
 Regenerate SSH host keys on the client filesystem by chrooting into it:
+
 ```bash
 cd /nfs/client1
 sudo mount --bind /dev dev
@@ -60,6 +64,7 @@ sudo umount proc
 ```
 
 Find the settings of your local network. You need to find the address of your router (or gateway), which can be done with:
+
 ```bash
 ip route | grep default | awk '{print $3}'
 ```
@@ -79,6 +84,7 @@ inet 10.42.0.211/24 brd 10.42.0.255 scope global eth0
 The first address is the IP address of your server Raspberry Pi on the network, and the part after the slash is the network size. It is highly likely that yours will be a `/24`. Also note the `brd` (broadcast) address of the network. Note down the output of the previous command, which will contain the IP address of the Raspberry Pi and the broadcast address of the network.
 
 Finally, note down the address of your DNS server, which is the same address as your gateway. You can find this with:
+
 ```bash
 cat /etc/resolv.conf
 ```
@@ -94,6 +100,7 @@ iface eth0 inet static
 ```
 
 Disable the DHCP client daemon and switch to standard Debian networking:
+
 ```bash
 sudo systemctl disable dhcpcd
 sudo systemctl enable networking
@@ -111,17 +118,20 @@ echo "nameserver 10.42.0.1" | sudo tee -a /etc/resolv.conf
 ```
 
 Make the file immutable (because otherwise dnsmasq will interfere) with the following command:
+
 ```bash
 sudo chattr +i /etc/resolv.conf
 ```
 
 Install software we need:
+
 ```bash
 sudo apt-get update
 sudo apt-get install dnsmasq tcpdump
 ```
 
 Stop dnsmasq breaking DNS resolving:
+
 ```bash
 sudo rm /etc/resolvconf/update.d/dnsmasq
 sudo reboot
@@ -175,24 +185,27 @@ tail -F /var/log/daemon.log
 ```
 
 You should see something like this:
+
 ```
 raspberrypi dnsmasq-tftp[1903]: file /tftpboot/bootcode.bin not found
 ```
 
 Next, you will need to copy `bootcode.bin` and `start.elf` into the /tftpboot directory. You should be able to do this by copying the files from /boot, since these are the right ones. We need a kernel, so we might as well copy the entire boot directory.
 
-First, use `Ctrl+C` to exit the monitoring state. Then type the following: 
+First, use `Ctrl + C` to exit the monitoring state. Then type the following: 
 
 ```bash
 cp -r /boot/* /tftpboot
 ```
 
 Restart dnsmasq for good measure:
+
 ```bash
 sudo systemctl restart dnsmasq
 ```
 
 ### Set up NFS root
+
 This should now allow your Raspberry Pi to boot through until it tries to load a root filesystem (which it doesn't have). All we have to do to get this working is to export the `/nfs/client1` filesystem we created earlier.
 
 ```bash
@@ -212,6 +225,6 @@ root=/dev/nfs nfsroot=10.42.0.211:/nfs/client1,vers=3 rw ip=dhcp rootwait elevat
 
 You should substitute the IP address here with the IP address you have noted down.
 
-Finally, edit /nfs/client1/etc/fstab and remove the /dev/mmcblkp1 and p2 lines (only proc should be left).
+Finally, edit `/nfs/client1/etc/fstab` and remove the `/dev/mmcblkp1` and `p2` lines (only `proc` should be left).
 
 Good luck! If it doesn't boot on the first attempt, keep trying. It can take a minute or so for the Raspberry Pi to boot, so be patient.
