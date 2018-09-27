@@ -34,12 +34,12 @@ $ vcgencmd otp_dump | grep 17:
 
 Ensure the output `0x3020000a` is correct.
 
-The client configuration is almost done. The final thing to do is to remove the `program_usb_boot_mode` line from config.txt (make sure there is no blank line at the end). You can do this with `sudo nano /boot/config.txt`, for example. Finally, shut the client Raspberry Pi down with `sudo poweroff`.
+The client configuration is almost done. The final thing to do is to remove the `program_usb_boot_mode` line from `config.txt` (make sure there is no blank line at the end). You can do this with `sudo nano /boot/config.txt`, for example. Finally, shut the client Raspberry Pi down with `sudo poweroff`.
 
 ## Server configuration
 Plug the SD card into the server Raspberry Pi. Boot the server. Before you do anything else, make sure you have run `sudo raspi-config` and expanded the root filesystem to take up the entire SD card.
 
-The client Raspberry Pi will need a root filesystem to boot off, so before we do anything else on the server, we're going to make a full copy of its filesystem and put it in a directory called /nfs/client1.
+The client Raspberry Pi will need a root filesystem to boot off, so before we do anything else on the server, we're going to make a full copy of its filesystem and put it in a directory called `/nfs/client1`.
 
 ```bash
 sudo mkdir -p /nfs/client1
