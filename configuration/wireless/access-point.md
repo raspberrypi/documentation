@@ -23,6 +23,11 @@ sudo systemctl stop dnsmasq
 sudo systemctl stop hostapd
 ```
 
+To ensure that after install that an updated kernel is configured correctly, reboot:
+```
+sudo reboot
+```
+
 ## Configuring a static IP
 
 We are configuring a standalone network to act as a server, so the Raspberry Pi needs to have a static IP address assigned to the wireless port. This documentation assumes that we are using the standard 192.168.x.x IP addresses for our wireless network, so we will assign the server the IP address 192.168.4.1. It is also assumed that the wireless device being used is `wlan0`.
@@ -225,6 +230,9 @@ rsn_pairwise=CCMP
 ```
 
 Now reboot the Raspberry Pi.
+```
+sudo reboot
+```
 
 There should now be a functioning bridge between the wireless LAN and the Ethernet connection on the Raspberry Pi, and any device associated with the Raspberry Pi access point will act as if it is connected to the access point's wired Ethernet.
 
