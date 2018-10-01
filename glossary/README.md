@@ -9,6 +9,8 @@
 - **BCM2835** – the SoC used on the Raspberry Pi 1, Compute Module 1, and Raspberry Pi Zero range; see our [official documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/README.md)
 - **BCM2836** – the SoC used on the original Raspberry Pi 2; see our [official documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/README.md)
 - **BCM2837** – the SoC used on the Raspberry Pi 3, Compute Module 3, and Raspberry Pi 2 version 1.2; see our [official documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2837/README.md)
+- **BLE** - Bluetooth Low Energy, a low power version of the Bluetooth wireless communications protocol.
+- **BT** - Bluetooth, a short range, low bandwidth, wireless commmunication protocol often used for mobile devices.
 - **CODEC** – Coder/Decoder, hardware or software blocks that encode and/or decode video or audio data
 - **`config.txt`** – a file located on the boot partition of a Raspberry Pi's SD card that is parsed at boot time in order to enable, disable, and manage operating system features which cannot be changed after booting; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/config-txt/README.md)
 - **CSI** – Camera Serial Interface, a hardware interface for connecting cameras to SoCs
@@ -24,12 +26,14 @@
 - **GNU** - The [GNU Project](https://en.wikipedia.org/wiki/GNU_Project) is a free software mass collaboration project, which has produced huge amounts of software that is used on the Raspberry Pi, including Linux itself.
 - **GPIO** – General Purpose Input/Output, the programmable pins on the Raspberry Pi
 - **GPU** – Graphical Processing Unit, a hardware device for handling graphical (and related) tasks at high speed; on the Raspberry Pi, this is called the VideoCore4 (VC4), and is built into the SoC.
+- **HAT** - Hardware Attached on Top. A specification for designing devices to attach to the Raspberry Pi, see the launch announcement [here](https://www.raspberrypi.org/blog/introducing-raspberry-pi-hats/).
 - **HDMI**  High-Definition Multimedia Interface, a standard interface for transmitting uncompressed video and compressed or uncompressed audio data from a source device to a display device; see [Wikipedia](https://en.wikipedia.org/wiki/HDMI)
 - **HDCP** – High-bandwidth Digital Content Protection, an optional encryption mechanism used for HDMI or DVI transmission; see [Wikipedia](https://en.wikipedia.org/wiki/High-bandwidth_Digital_Content_Protection)
 - **HVS** – Hardware Video Scaler, a hardware block in the VC4 GPU on all Raspberry Pi models used for manipulating and displaying bitmaps
 - **I<sup>2</sup>C** – Inter-Integrated Circuit (pronounced _I-squared-C_), an electrical protocol used for attaching lower-speed peripheral ICs to processors and microcontrollers in short-distance, intra-board communication; see [Wikipedia](https://en.wikipedia.org/wiki/I%C2%B2C)
 - **I<sup>2</sup>S** – Inter-Integrated Circuit Sound, an electrical serial bus interface standard used for connecting digital audio devices together; see [Wikipedia](https://en.wikipedia.org/wiki/I%C2%B2S)
 - **ISP** – Imaging System Pipeline, a set of hardware (and sometimes software) stages that processes images from a camera into a high-quality result; the Raspberry Pi has a built-in hardware ISP that processes images captured from a camera attached to the CSI port.
+- **LAN** - Local Area Network, an ethernet or wireless based communication network in a localised area, for example a house or office. 
 - **LED** – Light-Emitting Diode, a semiconductor device that produces light from electricity
 - **Linux** – the main operating system used on the Raspberry Pi; the particular customised distribution for the Raspberry Pi range is called Raspbian; third parties have also produced their own distributions.
 - **MSD** – Mass Storage Device (amongst other things), such as an SD card or hard disk drive
@@ -37,6 +41,7 @@
 - **NAND** - a NAND gate is a logic gate, specifically an inverted AND gate; can also refer to a type of flash memory that uses NAND logic; see [Wikipedia](https://en.wikipedia.org/wiki/NAND_gate)
 - **OTP** – One-Time Programmable, a type of memory that can only be programmed once, and retains the programmed data after power off; used for serial numbers etc.
 - **Overlay** – a boot-time or run-time patch to a Device Tree allowing a degree of configuration by the user; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/device-tree.md) for more details, or run `dtoverlay -a` in a terminal window for a list of available overlays
+- **PoE** - Power over Ethernet, a mechanism to power a device through its Ethernet connection. Raspberry Pi produce a [PoE HAT](https://www.raspberrypi.org/products/poe-hat) for the Raspberry Pi Model 3B plus.
 - **`raspi-config`** – a command line tool for configuring Raspbian's operating system features; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)
 - **raspivid, raspistill, raspiyuv, raspividyuv** – a set of applications to run the Raspberry Pi Camera Module in various modes; see our [official documentation](https://www.raspberrypi.org/documentation/raspbian/applications/camera.md)
 - **Raspberry Pi Configuration Tool (`rcgui`)** – a graphical equivalent of `raspi-config`
