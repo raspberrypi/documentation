@@ -44,6 +44,7 @@
 - **PoE** - Power over Ethernet, a mechanism to power a device through its Ethernet connection. Raspberry Pi produce a [PoE HAT](https://www.raspberrypi.org/products/poe-hat) for the Raspberry Pi Model 3B plus.
 - **`raspi-config`** – a command line tool for configuring Raspbian's operating system features; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)
 - **raspivid, raspistill, raspiyuv, raspividyuv** – a set of applications to run the Raspberry Pi Camera Module in various modes; see our [official documentation](https://www.raspberrypi.org/documentation/raspbian/applications/camera.md)
+- **Raspbian** - A Debian based Linux distribution targeted at the entire Raspberry Pi range, regarded as the official O/S. The current version is based on Debian Stretch with the first release being in August 2017. See this [Wikipedia](https://en.wikipedia.org/wiki/Raspbian) entry for further release details. 
 - **Raspberry Pi Configuration Tool (`rcgui`)** – a graphical equivalent of `raspi-config`
 - **Raspberry Pi Desktop** – a version of the LXDE desktop environment, specifically tailored to the Raspberry Pi (used to be called Pixel)
 - **SoC** – system on a chip, an integrated circuit that integrates all components of a computer
