@@ -64,6 +64,12 @@ On the Raspberry Pi 3 Model B+, you will also need to set the country code, so t
 country=GB
 ```
 
+If your Raspberry Pi is having issues connecting to the network at boot, try adding these 2 lines at the top of your `wpa_supplicant.conf` file:
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+```
+
 ## Unsecured networks
 
 If the network you are connecting to does not use a password, the `wpa_supplicant` entry for the network will need to include the correct `key_mgmt` entry.
