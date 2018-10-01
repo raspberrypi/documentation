@@ -66,10 +66,6 @@ Setting `hdmi_ignore_edid_audio` to `1` pretends that all audio formats are unsu
 
 Setting `hdmi_force_edid_3d` to `1` pretends that all CEA modes support 3D, even when the EDID does not indicate support for this.
 
-### avoid_edid_fuzzy_match
-
-Setting `avoid_edid_fuzzy_match` to `1` avoids [fuzzy matching](https://en.wikipedia.org/wiki/Fuzzy_matching_(computer-assisted_translation)) of modes described in the EDID. Instead, it will pick the standard mode with the matching resolution and closest framerate, even if the blanking settings are wrong.
-
 ### hdmi_ignore_cec_init
 
 Setting `hdmi_ignore_cec_init` to `1` will stop the initial active source message being sent during bootup. This prevents a CEC-enabled TV from coming out of standby and channel-switching when you are rebooting your Raspberry Pi.
