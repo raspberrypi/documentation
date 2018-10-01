@@ -1,6 +1,7 @@
 # Raspberry Pi documentation glossary
 
 - **A/mA** – ampere/milliampere, the base unit of electrical current; see [Wikipedia](https://en.wikipedia.org/wiki/Ampere)
+- **API** - [Application Programming Interface](https://en.wikipedia.org/wiki/Application_programming_interface), a set of subroutine definitions, communication protocols and tools used for building software.
 - **Arm** – a series of instruction-set architectures and processor microarchitectures, mostly developed by Arm Holdings based in Cambridge, UK; see [Wikipedia](https://en.wikipedia.org/wiki/Arm_architecture)
 - **Armv6** – the instruction set architecture used on the first Raspberry Pi (Pi 1) and the Pi Zero range
 - **Armv7** – the instruction set architecture used on the Raspberry Pi 2 range
@@ -20,6 +21,7 @@
 - **`dt-blob.bin`** – a binary file containing initial GPIO configuration that is read by the firmware at boot time; despite the name, this is _not_ Device Tree blob (although it is compiled by the Device Tree tools)
 - **DVI** – Digital Visual Interface, a video interface for connecting a source device to a monitor or display; electrically compatible with HDMI, so a simple adapter can convert from one to the other (excluding audio, which DVI does not support); see [Wikipedia](https://en.wikipedia.org/wiki/Digital_Visual_Interface)
 - **Firmware** – software that runs on a particular hardware device, for example a wireless chip or dongle; distinct from the usual software running on the Raspberry Pi in that it is usually a fixed binary blob of data that is loaded on to the device at startup; on the Raspberry Pi, the VC4 GPU requires firmware to be loaded to it at startup in order boot up and run the entire system.
+- **GNU** - The [GNU Project](https://en.wikipedia.org/wiki/GNU_Project) is a free software mass collaboration project, which has produced huge amounts of software that is used on the Raspberry Pi, including Linux itself.
 - **GPIO** – General Purpose Input/Output, the programmable pins on the Raspberry Pi
 - **GPU** – Graphical Processing Unit, a hardware device for handling graphical (and related) tasks at high speed; on the Raspberry Pi, this is called the VideoCore4 (VC4), and is built into the SoC.
 - **HDMI**  High-Definition Multimedia Interface, a standard interface for transmitting uncompressed video and compressed or uncompressed audio data from a source device to a display device; see [Wikipedia](https://en.wikipedia.org/wiki/HDMI)
@@ -31,6 +33,7 @@
 - **LED** – Light-Emitting Diode, a semiconductor device that produces light from electricity
 - **Linux** – the main operating system used on the Raspberry Pi; the particular customised distribution for the Raspberry Pi range is called Raspbian; third parties have also produced their own distributions.
 - **MSD** – Mass Storage Device (amongst other things), such as an SD card or hard disk drive
+- **MQTT** - MQTT stands for MQ Telemetry Transport, a lightweight and simple machine to machine protocol often used for IoT devices. See their site [here](http://mqtt.org/)
 - **NAND** - a NAND gate is a logic gate, specifically an inverted AND gate; can also refer to a type of flash memory that uses NAND logic; see [Wikipedia](https://en.wikipedia.org/wiki/NAND_gate)
 - **OTP** – One-Time Programmable, a type of memory that can only be programmed once, and retains the programmed data after power off; used for serial numbers etc.
 - **Overlay** – a boot-time or run-time patch to a Device Tree allowing a degree of configuration by the user; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/device-tree.md) for more details, or run `dtoverlay -a` in a terminal window for a list of available overlays
@@ -42,6 +45,7 @@
 - **SPI** – Serial Peripheral Interface bus, a synchronous serial communication interface specification used for short distance communication
 - **SSH** – Secure Shell, a cryptographic network protocol for operating network services securely over an unsecured network; see our [official documentation](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) or [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell)
 - **TLA** – three-letter abbreviation; almost the entire reason for this glossary
+- **TLS** – [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) A cryptographic protocol used to supply security over a computer network, often used to secure other protocols such as MQTT.
 - **TP1/TP2** – test points
 - **UART** – Universal Asynchronous Receiver-Transmitter, a protocol for asynchronous serial communication in which the data format and transmission speeds are configurable
 - **USB** – Universial Serial Bus; the main Raspberry Pi models have four USB sockets for connecting USB devices, for example, mice or keyboards; see [Wikipedia](https://en.wikipedia.org/wiki/USB)
