@@ -18,6 +18,21 @@ Next get the sources, which will take some time:
 git clone --depth=1 https://github.com/raspberrypi/linux
 ```
 
+<a name="choosing_sources"></a>
+### Choosing sources
+
+The `git clone` command above will download the current active branch (the one we are building Raspbian images from) without any history. Omitting the `--depth=1` will download the entire repository, including the full history of all branches, but takes much longer and occupies much more storage.
+
+To download a different branch (again with no history) use the `--branch` option:
+
+```bash
+git clone --depth=1 --branch rpi-4.18.y https://github.com/raspberrypi/linux
+```
+
+Refer to the original [GitHub](https://github.com/raspberrypi/linux) repository for information about the available branches.
+
+### Kernel configuration
+
 Configure the kernel; as well as the default configuration, you may wish to [configure your kernel in more detail](configuring.md) or [apply patches from another source](patching.md), to add or remove required functionality:
 
 Run the following commands, depending on your Raspberry Pi version.
@@ -76,16 +91,19 @@ If you are on a 64-bit host system, you should use:
 echo PATH=\$PATH:~/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin >> ~/.bashrc
 source ~/.bashrc
 ```
-
 ### Get sources
 
-To get the sources, refer to the original [GitHub](https://github.com/raspberrypi/linux) repository for the various branches.
+To download the minimal source tree for the current branch:
 
+```bash
+git clone --depth=1 https://github.com/raspberrypi/linux
 ```
-$ git clone --depth=1 https://github.com/raspberrypi/linux
-```
+
+See [**Choosing sources**](#choosing_sources) above for instructions of how to choose a different branch.
 
 ### Build sources
+
+To download the kernel source code, see "Get sources" above.
 
 To build the sources for cross-compilation, there may be extra dependencies beyond those you've installed by default with Ubuntu. If you find you need other things, please submit a pull request to change the documentation.
 
