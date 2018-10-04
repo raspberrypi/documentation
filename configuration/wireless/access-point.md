@@ -23,7 +23,7 @@ sudo systemctl stop dnsmasq
 sudo systemctl stop hostapd
 ```
 
-To ensure that after install that an updated kernel is configured correctly, reboot:
+To ensure that an updated kernel is configured correctly after install, reboot:
 ```
 sudo reboot
 ```
