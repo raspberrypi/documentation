@@ -104,8 +104,6 @@ See [**Choosing sources**](#choosing_sources) above for instructions on how to c
 
 ### Build sources
 
-To download the kernel source code, see [**Get sources**](#get_sources) above.
-
 To build the sources for cross-compilation, there may be extra dependencies beyond those you've installed by default with Ubuntu. If you find you need other things, please submit a pull request to change the documentation.
 
 Enter the following commands to build the sources and Device Tree files:
