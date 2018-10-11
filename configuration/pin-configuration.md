@@ -104,7 +104,7 @@ The `dt-blob.bin` is used to configure the binary blob (VideoCore) at boot time.
       * `gp_clk`
       * `emmc`
       * `arm_jtag`
-   5. `drive_strength_ma`
+   5. `drive_strength_mA`
       The drive strength is used to set a strength for the pins. Please note that you can only specify a single drive strength for the bank. <8> and <16> are valid values.
 
 5. `pin_defines`
