@@ -53,7 +53,7 @@ To make the Raspberry Pi Camera Module work with a standard Raspbian OS, the GPI
 
 1. Attach the 0.5mm 22W FFC flexi (included with the RPI_CAMERA board) to the CAM1 connector (flex contacts face down). As an alternative, the Pi Zero camera cable can be used.
 1. Attach the RPI_CAMERA adaptor board to the other end of the 0.5mm flex (flex contacts face down).
-1. Attach a Raspberry Pi Camera to the other, larger 15W 1mm FFC on the RPI_CAMEA adaptor board (**contacts on the Raspberry Pi Camera flex must face up**).
+1. Attach a Raspberry Pi Camera to the other, larger 15W 1mm FFC on the RPI_CAMERA adaptor board (**contacts on the Raspberry Pi Camera flex must face up**).
 1. Attach CD1_SDA (J6 pin 37) to GPIO0 (J5 pin 1).
 1. Attach CD1_SCL (J6 pin 39) to GPIO1 (J5 pin 3).
 1. Attach CAM1_IO1 (J6 pin 41) to GPIO2 (J5 pin 5).
