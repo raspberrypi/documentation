@@ -4,7 +4,7 @@
 
 For the display to work with the Compute Module, the firmware needs to be from October 23rd 2015 or later (use `vcgencmd version` to check). For the display to work with the Compute Module 3, the firmware needs to be from October 2016 or later.
 
-*Important Note:* The Raspberry Pi Zero camera cable cannot be used as an alternative to the display adapter as it's wiring is different.   
+*Important Note:* The Raspberry Pi Zero camera cable cannot be used as an alternative to the RPI_DISPLAY as it's wiring is different.   
 
 ## Quickstart - Display Only
 
@@ -25,9 +25,9 @@ For the display to work with the Compute Module, the firmware needs to be from O
 ## Quickstart - Display and Camera(s)
 This will enable `disp1` and `cam1`, with the option of enabling `cam0`.
 
-1. Connect the display to the DISP1 port on the Compute Module IO board through the 22W to 15W display adaptor.
-1. Connect the Camera Module to the CAM1 port on the Compute Module IO board through the 22W to 15W camera adaptor.
-1. (Optional) Connect the Camera Module to the CAM0 port on the Compute Module IO board through the 22W to 15W camera adaptor.
+1. Connect the display to the DISP1 port on the Compute Module IO board through the 22W to 15W display adaptor, RPI_DISPLAY.
+1. Connect the Camera Module to the CAM1 port on the Compute Module IO board through the 22W to 15W RPI_CAMERA adaptor. Alternatively, the Raspberry Pi Zero camera cable can be used.
+1. (Optional) Connect the Camera Module to the CAM0 port on the Compute Module IO board through the 22W to 15W RPI_CAMERA adaptor. Alternatively, the Raspberry Pi Zero camera cable can be used.
 1. Connect these pins together with jumper wires:
 
 	```
