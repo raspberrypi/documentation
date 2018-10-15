@@ -12,7 +12,7 @@
 
 1. On the compute module, run `sudo raspi-config` and enable the camera.
 1. Next, run `sudo wget http://goo.gl/U4t12b -O /boot/dt-blob.bin`
-1. Connect adapter board and camera to CAM1 port.
+1. Connect adapter board and camera to CAM1 port. As an alternative, the Pi Zero camera cable can be used.
 
     ![Connecting the adapter board](images/CMAIO-Cam-Adapter.jpg)
 
