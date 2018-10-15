@@ -4,6 +4,8 @@
 
 For the display to work with the Compute Module, the firmware needs to be from October 23rd 2015 or later (use `vcgencmd version` to check). For the display to work with the Compute Module 3, the firmware needs to be from October 2016 or later.
 
+*Important Note:* The Raspberry Pi Zero camera cable cannot be used as an alternative to the display adapter as it's wiring is different.   
+
 ## Quickstart - Display Only
 
 1. Connect the display to the DISP1 port on the Compute Module IO board through the 22W to 15W display adaptor.
