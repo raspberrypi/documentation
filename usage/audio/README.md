@@ -1,5 +1,7 @@
 # Playing audio on the Raspberry Pi
 
+The simplest way of playing audio is to use the OMXPlayer application, which is described in more detail [here](../../raspbian/applications/omxplayer.md).
+
 To play an MP3 file, navigate to the location of the `.mp3` file in the terminal using `cd` and then type the following command: 
 
 ```bash
