@@ -1,5 +1,7 @@
 # Playing video on the Raspberry Pi
 
+The simplest way of playing video is to use the OMXPlayer application, which is described in more detail [here](../../raspbian/applications/omxplayer.md).
+
 To play a video, navigate to the location of your video file in the terminal using `cd`, then type the following command:
 
 ```bash
