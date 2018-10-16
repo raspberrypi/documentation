@@ -53,14 +53,16 @@ In certain rare cases it may be necessary to define the exact clock requirements
 
 Aspect ratio will be one of the following:
 
-- `4:3`  1  
-- `14:9`  2  
-- `16:9`  3  
-- `5:4`  4  
-- `16:10`  5  
-- `15:9`  6  
-- `21:9`  7  
-- `64:27`  8  
+| Ratio | ID |
+|-------|----|
+| `4:3` | 1  |  
+|`14:9` | 2  |
+|`16:9` | 3  |
+|`5:4`  | 4  |
+|`16:10`| 5  | 
+|`15:9` | 6  |
+|`21:9` | 7  |
+|`64:27`| 8  |
 
 ### HDMI not working properly?
 
