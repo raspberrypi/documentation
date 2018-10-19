@@ -325,7 +325,7 @@ With Cron! [Here's how](../linux/usage/cron.md).
 
 ### What displays can I use?
 
-There is composite and HDMI out on the board, so you can hook it up to an old analogue TV through the composite or through a composite to scart connector, to a digital TV or to a DVI monitor (using a cheap, passive HDMI to DVI cable for the DVI). For the Model B+, Pi 2, and Pi 3, the RCA composite jack has been replaced with a 3.5mm jack that combines audio and video in one. You'll need a 3.5mm to 3RCA adapter cable to connect it to an older TV. There are many different types of this cable out there, but you want to purchase one that is compatible with the iPod Video (the iPod will have the left and right audio channels reversed, but the version of Raspbian included with NOOBS can swap this for you). The Pi Zero uses a mini-HDMI port.
+There is composite and HDMI out on the board, so you can hook it up to an old analogue TV through the composite or through a composite to SCART connector, to a digital TV or to a DVI monitor (using a cheap, passive HDMI to DVI cable for the DVI). For the Model B+, Pi 2, and Pi 3, the RCA composite jack has been replaced with a 3.5mm jack that combines audio and video in one. You'll need a 3.5mm to 3RCA adapter cable to connect it to an older TV. There are many different types of this cable out there, but you want to purchase one that is compatible with the iPod Video (the iPod will have the left and right audio channels reversed, but the version of Raspbian included with NOOBS can swap this for you). The Pi Zero uses a mini-HDMI port.
 
 ### Why is there no VGA support?
 
