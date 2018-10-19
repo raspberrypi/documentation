@@ -221,7 +221,7 @@ The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37
 
 <a name="pi-performance"></a>
 
-## Performancef
+## Performance
 
 ### How powerful is it?
 
