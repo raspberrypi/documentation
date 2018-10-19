@@ -42,7 +42,7 @@
 - I heard about something called `rpi-update`. When should I use that?
 - The processors on the latest Pi models are 64-bit, but I cannot find an official 64-bit OS.
 - Will it run WINE (or Windows, or other x86 software)?
-- Will it run the Windows 8 Arm edition?
+- Will it run the Windows 8 ARM edition?
 - Will it run Android or Android Things?
 - Will it run old software?
 - My `.exe` file won't run!
@@ -183,11 +183,11 @@ These are the [models of the Raspberry Pi](https://www.raspberrypi.org/products/
 
 The Model A+ is the low-cost variant of the Raspberry Pi. It has 512MB RAM (as of August 2016: earlier models have 256MB), one USB port, 40 GPIO pins, and no Ethernet port. The Model B+ is the final revision of the original Raspberry Pi. It has 512MB RAM, four USB ports, 40 GPIO pins, and an Ethernet port.
 
-In February 2015, it was superseded by the Pi 2 Model B, the second generation of the Raspberry Pi. The Pi 2 shares many specs with the Pi 1 B+, and originally used a 900MHz quad-core Arm Cortex-A7 CPU and has 1GB RAM. Some recent version of the Pi 2 (v1.2) now use a 900MHz Arm Cortex-A53 CPU.
+In February 2015, it was superseded by the Pi 2 Model B, the second generation of the Raspberry Pi. The Pi 2 shares many specs with the Pi 1 B+, and originally used a 900MHz quad-core ARM Cortex-A7 CPU and has 1GB RAM. Some recent version of the Pi 2 (v1.2) now use a 900MHz ARM Cortex-A53 CPU.
 
-The Pi 3 Model B was launched in February 2016. It uses a 1.2GHz 64-bit quad-core Arm Cortex-A53 CPU, has 1GB RAM, integrated 802.11n wireless LAN, and Bluetooth 4.1.
+The Pi 3 Model B was launched in February 2016. It uses a 1.2GHz 64-bit quad-core ARM Cortex-A53 CPU, has 1GB RAM, integrated 802.11n wireless LAN, and Bluetooth 4.1.
 
-The Pi 3 Model B+ was launched in March 2018. It uses a 1.4GHz 64-bit quad-core Arm Cortex-A53 CPU, has 1GB RAM, gigabit Ethernet, integrated 802.11ac/n wireless LAN, and Bluetooth 4.2. and is the model we recommend for use in schools, due to its flexibility for the learner.
+The Pi 3 Model B+ was launched in March 2018. It uses a 1.4GHz 64-bit quad-core ARM Cortex-A53 CPU, has 1GB RAM, gigabit Ethernet, integrated 802.11ac/n wireless LAN, and Bluetooth 4.2. and is the model we recommend for use in schools, due to its flexibility for the learner.
 
 The Pi Zero and Pi Zero W/WH are half the size of a Model A+, with a 1GHz single-core CPU and 512MB RAM, and mini-HDMI and USB On-The-Go ports and a camera connector. The Pi Zero W also has integrated 802.11n wireless LAN and Bluetooth 4.1. The Pi Zero WH is identical to the Zero W, but comes with a pre-soldered header.
 
@@ -260,7 +260,7 @@ You should not need to use a heatsink, as the chip used in the Raspberry Pi is e
 ## Software
 
 ### What operating system does it use?
-The recommended distribution (distro) is Raspbian, which is specifically designed for the Raspberry Pi and which our engineers are constantly optimising. It is, however, a straightforward process to replace the root partition on the SD card with another Arm Linux distro, so we encourage you to try out several distros to see which one you like the most. There are several other distros available on our [downloads](https://www.raspberrypi.org/downloads) page. The OS is stored on the SD card.
+The recommended distribution (distro) is Raspbian, which is specifically designed for the Raspberry Pi and which our engineers are constantly optimising. It is, however, a straightforward process to replace the root partition on the SD card with another ARM Linux distro, so we encourage you to try out several distros to see which one you like the most. There are several other distros available on our [downloads](https://www.raspberrypi.org/downloads) page. The OS is stored on the SD card.
 
 ### Updates? Upgrades? What do I do?
 
@@ -284,9 +284,9 @@ Raspberry Pi do not current provide an official 64-bit OS, for a number of reaso
 
 In general, this is not possible with most versions of the Raspberry Pi. Some people have put Windows 3.1 on the Raspberry Pi inside an x86 CPU emulator in order to use specific applications, but trying to use a version of Windows even as recent as Windows 98 can take hours to boot into, and may take several more hours to update your cursor every time you try to move it. We don't recommend it! As of summer 2015, a version of Windows 10 is available for use on the Raspberry Pi 2 and 3. This is an entirely new version of the operating system designed exclusively for embedded use, dubbed the Windows 10 Internet of Things (IoT) Core. It does not include the user interface (shell) or the desktop operating system.
 
-### Will it run the Windows 8 Arm edition?
+### Will it run the Windows 8 ARM edition?
 
-No. Most models of Raspberry Pi lack the minimum memory and CPU requirements to support Winodws 8 Arm edition. The Raspberry Pi also lacks the appropriate axis sensors, and there are many other limiting factors which mean that running Windows 8 Arm edition is not possible.
+No. Most models of Raspberry Pi lack the minimum memory and CPU requirements to support Winodws 8 ARM edition. The Raspberry Pi also lacks the appropriate axis sensors, and there are many other limiting factors which mean that running Windows 8 ARM edition is not possible.
 
 ### Will it run Android or Android Things?
 
@@ -296,7 +296,7 @@ Google supports Android Things on the Raspberry Pi 3 as a development platform. 
 
 ### Will it run old software?
 
-In general, you need to look to see whether the program you want can be compiled for the Armv6 (Pi 1/Zero/Zero W/CM), Armv7 (Pi 2) or Armv8 (Pi 3) architecture on Linux. In most cases, the answer will be yes. Specific programs are discussed on [our forums](https://www.raspberrypi.org/forums/), so you might want to look there for an answer. Ultimately, nothing beats grabbing a Raspberry Pi and finding out the answer through direct testing!
+In general, you need to look to see whether the program you want can be compiled for the ARMv6 (Pi 1/Zero/Zero W/CM), ARMv7 (Pi 2) or ARMv8 (Pi 3) architecture on Linux. In most cases, the answer will be yes. Specific programs are discussed on [our forums](https://www.raspberrypi.org/forums/), so you might want to look there for an answer. Ultimately, nothing beats grabbing a Raspberry Pi and finding out the answer through direct testing!
 
 ### My `.exe` file won't run!
 
@@ -325,7 +325,7 @@ With Cron! [Here's how](../linux/usage/cron.md).
 
 ### What displays can I use?
 
-There is composite and HDMI out on the board, so you can hook it up to an old analogue TV through the composite or through a composite to scart connector, to a digital TV or to a DVI monitor (using a cheap, passive HDMI to DVI cable for the DVI). For the Model B+, Pi 2, and Pi 3, the RCA composite jack has been replaced with a 3.5mm jack that combines audio and video in one. You'll need a 3.5mm to 3RCA adapter cable to connect it to an older TV. There are many different types of this cable out there, but you want to purchase one that is compatible with the iPod Video (the iPod will have the left and right audio channels reversed, but the version of Raspbian included with NOOBS can swap this for you). The Pi Zero uses a mini-HDMI port.
+There is composite and HDMI out on the board, so you can hook it up to an old analogue TV through the composite or through a composite to SCART connector, to a digital TV or to a DVI monitor (using a cheap, passive HDMI to DVI cable for the DVI). For the Model B+, Pi 2, and Pi 3, the RCA composite jack has been replaced with a 3.5mm jack that combines audio and video in one. You'll need a 3.5mm to 3RCA adapter cable to connect it to an older TV. There are many different types of this cable out there, but you want to purchase one that is compatible with the iPod Video (the iPod will have the left and right audio channels reversed, but the version of Raspbian included with NOOBS can swap this for you). The Pi Zero uses a mini-HDMI port.
 
 ### Why is there no VGA support?
 
