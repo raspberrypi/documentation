@@ -241,7 +241,7 @@ Sort of, but not in the way you might want to do it. You cannot simply make a mo
 
 ### Why does my Pi run at a slower clock speed that advertised?
 
-The Raspberry Pi (all models) idles at a lower speed than advertised. If the workload of the CPU increases, then the clock speed increases until it reaches its maximum value, which varies between models. If the CPU starts to overheat, there are added complexitites: depending on the model, when the device reaches a particular temperature, the clock is throttled back to prevent overheating. This is called thermal throttling. If the Pi does thermal-throttle, you will see a warning icon in the top right-hand corner of the desktop (see [here](../configuration/warning-icons.md)).
+The Raspberry Pi (all models) idles at a lower speed than advertised. If the workload of the CPU increases, then the clock speed increases until it reaches its maximum value, which varies between models. If the CPU starts to overheat, there are added complexities: depending on the model, when the device reaches a particular temperature, the clock is throttled back to prevent overheating. This is called thermal throttling. If the Pi does thermal-throttle, you will see a warning icon in the top right-hand corner of the desktop (see [here](../configuration/warning-icons.md)).
 
 ### Does it overclock?
 
@@ -286,7 +286,7 @@ In general, this is not possible with most versions of the Raspberry Pi. Some pe
 
 ### Will it run the Windows 8 Arm edition?
 
-No. Most models of Raspberry Pi lack the minimum memory and CPU requirements to support Winodws 8 Arm edition. The Raspberry Pi also lacks the appropriate axis sensors, and there are many other limiting factors which mean that running Windows 8 Arm edition is not possible.
+No. Most models of Raspberry Pi lack the minimum memory and CPU requirements to support Windows 8 Arm edition. The Raspberry Pi also lacks the appropriate axis sensors, and there are many other limiting factors which mean that running Windows 8 Arm edition is not possible.
 
 ### Will it run Android or Android Things?
 
@@ -361,7 +361,7 @@ There is a standard 3.5mm jack for audio out to an amplifier (not on Zero models
 
 ### Is it safe to just pull the power?
 
-No, not really — you may corrupt your SD card if you do that. We recommend issueing the `sudo halt` or `sudo shutdown` command prior to pulling the power. This ensures that any outstanding file transactions are written to the SD card, and that the SD card is no longer 'active'. Pulling the power during a SD card transaction can occasionally corrupt the card.
+No, not really — you may corrupt your SD card if you do that. We recommend issuing the `sudo halt` or `sudo shutdown` command prior to pulling the power. This ensures that any outstanding file transactions are written to the SD card, and that the SD card is no longer 'active'. Pulling the power during a SD card transaction can occasionally corrupt the card.
 
 ### What are the power requirements?
 
