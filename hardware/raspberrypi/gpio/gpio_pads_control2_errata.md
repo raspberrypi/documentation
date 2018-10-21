@@ -1,6 +1,10 @@
 # GPIO pads control
 
-Extracted from BCM2835 full data sheet, from Gert van Loo 2-August-2012.
+Extracted from BCM2835 full data sheet, from Gert van Loo 2-August-2012. Rewritten into this markdown document by Robert Bisewski in 21-October-2018.
+
+### Errata
+
+In the previous version on scribd, I accidentally dropped the password bits (bits 31..24) which need to be 5A in order to write a different value to the register!
 
 ### Address
 
