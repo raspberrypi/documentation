@@ -213,16 +213,49 @@ Connect the network ports. In this case, connect `eth0` to the bridge `br0`.
 sudo brctl addif br0 eth0
 ```
 
-Now the interfaces file needs to be edited to adjust the various devices to work with bridging. `sudo nano /etc/network/interfaces` make the following edits.
+Now the interfaces file needs to be edited to adjust the various devices to work with bridging. To make this work with the newer systemd configuration options, you'll need to create a set of network configuration files.
 
-Add the bridging information at the end of the file.
+If you want to create a Linux bridge (br0) and add a physical interface (eth0) to the bridge, create the following configuration.
 
 ```
-# Bridge setup
-auto br0
-iface br0 inet manual
-bridge_ports eth0 wlan0
+sudo nano /etc/systemd/network/bridge-br0.netdev
+
+[NetDev]
+Name=br0
+Kind=bridge
 ```
+
+Then configure the bridge interface br0 and the slave interface eth0 using .network files as follows.
+
+```
+sudo nano /etc/systemd/network/bridge-br0-slave.network
+
+[Match]
+Name=eth0
+
+[Network]
+Bridge=br0
+```
+
+```
+sudo nano /etc/systemd/network/bridge-br0.network
+
+[Match]
+Name=br0
+
+[Network]
+Address=192.168.10.100/24
+Gateway=192.168.10.1
+DNS=8.8.8.8
+```
+
+Finally, restart systemd-networkd:
+
+```
+sudo systemctl restart systemd-networkd
+```
+
+You can also use the brctl tool to verify that a bridge br0 has been created.
 
 The access point setup is almost the same as that shown in the previous section. Follow the instructions above to set up the `hostapd.conf` file, but add `bridge=br0` below the `interface=wlan0` line, and remove or comment out the driver line. The passphrase must be between 8 and 64 characters long.
 
