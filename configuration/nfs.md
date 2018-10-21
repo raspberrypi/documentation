@@ -1,19 +1,19 @@
 # NFS - Network File System
 
-NFS (Network File System) allows you to 'share' a directory located on one networked computer with other computers/devices on that network. The computer where directory located is called the server and computers or devices connecting to that server are called clients. Clients usually 'mount' the shared directory to make it a part of their own directory structure.
+The "Network File System" allows you to share a directory located on one networked computer with other computers/devices on that network. The computer where directory located is called the server and computers or devices connecting to that server are called clients. Clients usually 'mount' the shared directory to make it a part of their own directory structure.
 
-NFS is perfect for creating NAS (Networked Attached Storage) in Linux/Unix environment. It is a native Linux/Unix protocol as opposed to Samba which uses the SMB protocol developed by Microsoft. Note that both Windows and Apple OS have good support for NFS.
+For smaller networks it is perfect for creating a simple NAS (Networked Attached Storage) in a Linux/Unix environment.
 
-NFS is perhaps best for more permanent network mounted directories such as /home directories or regularly accessed shared resources. If you want a network share that guest users can easily connect to, Samba is more suited. This is because tools exist more readily across old and proprietary operating systems to temporarily mount and detach from Samba shares.
+It is perhaps suited for more permanent network mounted directories such as `/home` directories or regularly accessed shared resources. If you want a network share that guest users can easily connect to, Samba is more suited. This is because tools exist more readily across old and proprietary operating systems to temporarily mount and detach from Samba shares.
 
 Ubuntu Before deploying NFS you should be familiar with:
 
 1. Linux file and directory permissions
-1. Mounting and detaching (unmounting) filesystems 
+1. Mounting and unmounting filesystems
 
 ### Setup a basic NFS server
 
-Install the required packages...
+Install the below packages:
 
 ```
 sudo apt install nfs-kernel-server
@@ -24,7 +24,7 @@ For easier maintenance we will isolate all NFS exports in single directory, wher
 Suppose we want to export our users' home directories in /home/users. First we create the export filesystem:
 
 ```
-sudo mkdir -p /export/users 
+sudo mkdir -p /export/users
 ```
 
 Note that /export and /export/users will need 777 permissions as we will be accessing the NFS share from the client without LDAP/NIS authentication. This will not apply if using authentication (see below). Now mount the real users directory with:
@@ -41,9 +41,9 @@ To save us from retyping this after every reboot we add the following line to `/
 
 There are three configuration files that relate to an NFS server:
 
-1. /etc/default/nfs-kernel-server
-1. /etc/default/nfs-common
-1. /etc/exports
+1. `/etc/default/nfs-kernel-server`
+1. `/etc/default/nfs-common`
+1. `/etc/exports`
 
 The only important option in `/etc/default/nfs-kernel-server` for now is `NEED_SVCGSSD`. It is set to "no" by default, which is fine, because we are not activating NFSv4 security this time.
 
@@ -80,7 +80,7 @@ To export our directories to a local network 192.168.1.0/24 we add the following
 /export/users 192.168.1.0/24(rw,nohide,insecure,no_subtree_check,async)
 ```
 
-### Portmap Lockdown - optional
+#### Portmap lockdown - optional
 
 Add the following line to `/etc/hosts.deny`:
 
@@ -98,9 +98,9 @@ rpcbind mountd nfsd statd lockd rquotad : <list of IPv4s>
 
 Where "list of IPv4" is a list of IP addresses that consists of the server and all clients. These have to be IP addresses because of a limitation in rpcbind, which it doesn't like hostnames. Note that if you have NIS set up, just add these to the same line.
 
-Note: Ensure that the list of authorised IP addresses includes the localhost address (127.0.0.1) as the startup scripts in recent versions of Ubuntu use the rpcinfo command to discover NFSv3 support, and this will be disabled if localhost is unable to connect.
+Please ensure that the list of authorised IP addresses includes the localhost address (127.0.0.1) as the startup scripts in recent versions of Ubuntu use the rpcinfo command to discover NFSv3 support, and this will be disabled if localhost is unable to connect.
 
-Go ahead and restart the service:
+Afterwards, go ahead and restart the service:
 
 ```
 sudo systemctl restart nfs-kernel-server
@@ -111,7 +111,7 @@ sudo systemctl restart nfs-kernel-server
 Install the required packages:
 
 ```
-sudo apt install nfs-common 
+sudo apt install nfs-common
 ```
 
 On the client we can mount the complete export tree with one command:
@@ -138,7 +138,7 @@ To ensure this is mounted on every reboot, add the following line to `/etc/fstab
 
 If after mounting, the entry in `/proc/mounts appears` as `<nfs-server-IP>://` (with two slashes), then you might need to specify two slashes in `/etc/fstab`, or else umount might complain that it cannot find the mount.
 
-### Portmap Lockdown - optional
+#### Portmap lockdown - optional
 
 Add the following line to `/etc/hosts.deny`:
 
@@ -166,7 +166,7 @@ NFS user permissions are based on user ID (UID). UIDs of any users on the client
 
 1. Use of DNS
 
-1. Use of NIS 
+1. Use of NIS
 
 Note that you have to be careful on systems where the main user has root access - that user can change UID's on the system to allow themselves access to anyone's files. This page assumes that the administrative team is the only group with root access and that they are all trusted. Anything else represents a more advanced configuration, and will not be addressed here.
 
@@ -253,9 +253,9 @@ You'll want to do this command whenever `/etc/exports` is modified.
 
 #### Restart Services
 
-By default, rpcbind only binds to the loopback interface. To enable access to rpcbind from remote machines, you need to change `/etc/default/rpcbind` to get rid of either `-l` or `-i 127.0.0.1`.
+By default, rpcbind only binds to the loopback interface. To enable access to rpcbind from remote machines, you need to change `/etc/conf.d/rpcbind` to get rid of either `-l` or `-i 127.0.0.1`.
 
-If `/etc/default/rpcbind` was changed, rpcbind and NFS will need to be restarted:
+If any changes were made, rpcbind and NFS will need to be restarted:
 
 ```
 sudo systemctl restart rpcbind
@@ -274,20 +274,20 @@ An alternative to IPSec is physically separate networks. This requires a separat
 
 Mounting an NFS share inside an encrypted home directory will only work after you are successfully logged in and your home is decrypted. This means that using /etc/fstab to mount NFS shares on boot will not work - because your home has not been decrypted at the time of mounting. There is a simple way around this using Symbolic links:
 
-1. Create an alternative directory to mount the NFS shares in: 
+1. Create an alternative directory to mount the NFS shares in:
 
 ```
-$ sudo mkdir /nfs
-$ sudo mkdir /nfs/music
+sudo mkdir /nfs
+sudo mkdir /nfs/music
 ```
 
-1. Edit /etc/fstab to mount the NFS share into that directory instead: 
+1. Edit /etc/fstab to mount the NFS share into that directory instead:
 
 ```
 nfsServer:music    /nfs/music    nfs    auto    0 0
 ```
 
-Create a symbolic link inside your home, pointing to the actual mount location. For example, in our case delete the 'Music' directory already existing there first: 
+Create a symbolic link inside your home, pointing to the actual mount location. For example, in our case delete the 'Music' directory already existing there first:
 
 ```
 rmdir /home/user/Music
@@ -296,6 +296,7 @@ ln -s /nfs/music/ /home/user/Music
 
 ### Author Information
 
-This guide is based on a write-up located on the official Ubuntu wiki:
+This guide is based on a documents located on the official Ubuntu wiki:
 
-https://help.ubuntu.com/community/SettingUpNFSHowTo
+1. https://help.ubuntu.com/community/SettingUpNFSHowTo
+1. https://help.ubuntu.com/stable/serverguide/network-file-system.html
