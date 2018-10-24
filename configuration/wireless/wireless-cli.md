@@ -34,15 +34,15 @@ network={
     psk="testingPassword"
 }
 ```
-**NOTE: Some cards requires your ISO 3166 country code**  
-this can be done by specifying the country parameter before the network section in wpa_supplicant.conf: 
+**NOTE: Some cards requires your ISO 3166 country code.**  
+You can add this by specifying the `country` parameter before the `network` section in `wpa_supplicant.conf`: 
 ```
 country=XX
 network={
     ***example***
 }
 ```
-Where XX is any of [these officially assigned code elements](https://en.wikipedia.org/wiki/ISO_3166-1#Officially_assigned_code_elements).
+Where `XX` is any of [these officially assigned code elements](https://en.wikipedia.org/wiki/ISO_3166-1#Officially_assigned_code_elements).
 
 The password can be configured either as the ASCII representation, in quotes as per the example above, or as a pre-encrypted 32 byte hexadecimal number. You can use the `wpa_passphrase` utility to generate an encrypted PSK. This takes the SSID and the password, and generates the encrypted PSK. With the example from above, you can generate the PSK with `wpa_passphrase "testing"`. Then you will be asked for the password of the WiFi network (in this case `testingPassword`). The output is as follows:
 
