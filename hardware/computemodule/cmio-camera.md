@@ -12,7 +12,7 @@
 
 1. On the compute module, run `sudo raspi-config` and enable the camera.
 1. Next, run `sudo wget http://goo.gl/U4t12b -O /boot/dt-blob.bin`
-1. Connect RPI-CAMERA board and camera to CAM1 port. As an alternative, the Pi Zero camera cable can be used.
+1. Connect the RPI-CAMERA board and Camera Module to the CAM1 port. As an alternative, the Pi Zero camera cable can be used.
 
     ![Connecting the adapter board](images/CMAIO-Cam-Adapter.jpg)
 
@@ -43,7 +43,7 @@ The 15-way 1mm FFC camera connector on the Raspberry Pi model A and B is attache
 
 The Compute Module IO board has a 22-way 0.5mm FFC for each camera port, with CAM0 being a two-lane interface and CAM1 being the full four-lane interface.
 
-To attach a standard Raspberry Pi Camera to the Compute Module IO board, a small adaptor board, RPI-CAMERA, is available. It adapts the 22W FFC to the Pi 15W FFC. As an alternative, the Pi Zero camera cable can be used.
+To attach a standard Raspberry Pi Camera Module to the Compute Module IO board, a small adaptor board, called RPI-CAMERA, is available. It adapts the 22W FFC to the Pi 15W FFC. As an alternative, the Pi Zero camera cable can be used.
 
 To make the Raspberry Pi Camera Module work with a standard Raspbian OS, the GPIOs and I2C interface must be wired to the CAM1 connector. This is done by bridging the correct GPIOs from the J6 GPIO connector to the CD1_SDA/SCL and CAM1_IO0/1 pins on the J5 connector using jumper wires. Additionally, a **dt-blob.bin** file needs to be provided to override default pin states (the dt-blob.bin file is a file that tells the GPU what pins to use when controlling the camera. For more information on this, see the relevant section in the guide to attaching peripherals to a Compute Module [here](cm-peri-sw-guide.md)).
 
