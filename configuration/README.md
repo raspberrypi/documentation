@@ -14,6 +14,8 @@ Some basic guides to configuring your Raspberry Pi.
     - Configuring your Pi as a wireless access point using the Raspberry Pi 3 and Pi Zero W's inbuilt wireless connectivity, or a USB wireless dongle
 - [Using a proxy](use-a-proxy.md)
     - Setting up your Pi to access the internet via a proxy server
+- [HDMI Config](hdmi-config.md)
+    - Guide to setting up your HDMI device, including custom settings
 - [Audio config](audio-config.md)
     - Switch your audio output between HDMI and the 3.5mm jack
 - [Camera config](camera.md)
