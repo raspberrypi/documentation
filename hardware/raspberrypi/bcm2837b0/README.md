@@ -1,11 +1,10 @@
 # BCM2837B0
 
-This is the Broadcom chip used in the Raspberry Pi 3B+. The underlying architecture of the BCM2837B0 is identical to the BCM2836 and BCM2837. The only significant difference is the replacement of the ARMv7 quad core cluster with a quad-core ARM Cortex A53 (ARMv8) cluster.
+This is the Broadcom chip used in the Raspberry Pi 3B+. The underlying architecture of the BCM2837B0 is identical to the BCM2837A0 chip used in other versions of the Pi. The ARM core hardware is the same, only the frequency is rated higher.
 
-The ARM cores run at 1.4GHz, making the device about 17% faster than the original Raspberry Pi 3. The VideoCore IV runs at 400MHz.
+The ARM cores run at 1.4GHz, making the device about 17% faster than the original Raspberry Pi 3. The VideoCore IV runs at 400MHz. The ARM core is 64-bit while the VideoCore IV is 32-bit.
 
-Regarding the BCM2837B0 chip itself, it is an updated version of the 64-bit Broadcom application processor used in Raspberry Pi 3B, which incorporates power integrity optimisations, and a heat spreader. These allow higher clock frequencies (or to run at lower voltages to reduce power consumption), and to more accurately monitor and control the temperature of
-the chip.
+Regarding the BCM2837B0 chip itself, it is packaged slightly differently than the BCM2837A0 and most notably includes a heat spreader for better thermals. These allow higher clock frequencies (or to run at lower voltages to reduce power consumption), and to more accurately monitor and control the temperature of the chip.
 
 This [blog post](https://www.raspberrypi.org/blog/raspberry-pi-3-model-bplus-sale-now-35/) on the official Raspberry Pi foundation website goes into further detail about the BCM2837B0 chip.
 
