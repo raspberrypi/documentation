@@ -229,6 +229,18 @@ wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 ```
 
+We now need to tell the system where to find this configuration file.
+
+```
+sudo nano /etc/default/hostapd
+```
+
+Find the line with #DAEMON_CONF, and replace it with this:
+
+```
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+```
+
 Now reboot the Raspberry Pi.
 ```
 sudo reboot
