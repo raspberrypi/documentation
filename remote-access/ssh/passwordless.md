@@ -68,6 +68,8 @@ Alternatively, if the `ssh-copy-id` is not available on your system, you can cop
 cat ~/.ssh/id_rsa.pub | ssh <USERNAME>@<IP-ADDRESS> 'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys'
 ```
 
+If you see a message `ssh: connect to host <IP-ADDRESS> port 22: Connection refused` and you know the IPAddress is correct, then you probably need to enable SSH. You can do this by running `sudo raspi-config` on your Pi. Enable SSH and try to copy the files again.
+
 Now try `ssh <USER>@<IP-ADDRESS>` and you should connect without a password prompt.
 
 If you see a message "Agent admitted failure to sign using the key" then add your RSA or DSA identities to the authentication agent `ssh-agent` then execute the following command:
