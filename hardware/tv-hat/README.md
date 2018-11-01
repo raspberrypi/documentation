@@ -55,4 +55,4 @@ listing, just to the right of the `i` icon. This brings up an in-browser media p
 
 TVHeadend is supported by numerous apps, such as TvhClient for iOS, which will play TV from the Pi. OMXPlayer, supplied with Raspbian,  also supports viewing TV streams from TVHeadend, and Kodi, available in the Raspbian repos, provides excellent facilities for playing live TV, along with previously recorded channels and timed series recording.
 
-To discuss other features or uses, please visit rpf.io/forums.
+To discuss other features or uses, please visit [rpf.io/forums](rpf.io/forums).
