@@ -12,7 +12,9 @@ To connect to your Pi from a different computer, copy and paste the following co
 ssh pi@<IP>
 ```
 
-If you receive a `connection timed out` error it is likely that you have entered the wrong IP address for the Raspberry Pi.
+If you are running your Pi in headless-mode, you will need to make sure that ssh is enabled during boot. You can do this, by mounting the sdcard on your computer, and creating a file named, `ssh` on the `/boot` partition. 
+
+If you receive a `connection timed out` error it is likely that you have entered the wrong IP address for the Raspberry Pi. 
 
 When the connection works you will see a security/authenticity warning. Type `yes` to continue. You will only see this warning the first time you connect.
 
