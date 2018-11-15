@@ -77,6 +77,7 @@ uuuuuuuuFMMMCCCCPPPPTTTTTTTTRRRR
 |          |              | a: CM3                     |
 |          |              | c: Zero W                  |
 |          |              | d: 3B+                     |
+|          |              | e: 3A+                     |
 | RRRR     | Revision     | 0, 1, 2, etc.              |
 
 New-style revision codes in use:
@@ -100,3 +101,4 @@ New-style revision codes in use:
 | a32082 | 3B                | 1.2      | 1 GB   | Sony Japan   |
 | a52082 | 3B                | 1.2      | 1 GB   | Stadium      |
 | a020d3 | 3B+               | 1.3      | 1 GB   | Sony UK      |
+| 9020e0 | 3A+               | 1.0      | 512 MB | Sony UK      |
