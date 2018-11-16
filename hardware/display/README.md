@@ -34,6 +34,37 @@ To flip the display, add, anywhere in the file `\boot\config.txt`, the following
 
 This will vertically flip the LCD and the touch screen, compensating for the physical orientation of the display.
 
+There is also the ability to rotate the display, by adding the following to the `config.txt` files. 
+
+`display_lcd_rotate=x` where x can be one of the folllowing.
+
+| display_hdmi_rotate | result |
+| --- | --- |
+| 0 | no rotation |
+| 1 | rotate 90 degrees clockwise |
+| 2 | rotate 180 degrees clockwise |
+| 3 | rotate 270 degrees clockwise |
+| 0x10000 | horizontal flip |
+| 0x20000 | vertical flip |
+
+Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16MB GPU split.
+
+It is also possible to change the rotation of the touchscreen independently of the display itself. This is done using a dtoverlay in `config.txt`
+
+The options for the touchscreen are : 
+
+| DT parameter          | Action                          |
+|-----------------------|---------------------------------|                          
+|touchscreen-size-x     | Sets X resolution (default 800) |
+|touchscreen-size-y     | Sets Y resolution (default 600) |
+|touchscreen-inverted-x | Invert X coordinates            |
+|touchscreen-inverted-y | Invert Y coordinates            |
+|touchscreen-swapped-x-y| Swap X and Y cordinates         |
+
+They can be applied by adding a `dtoverlay` command in `config.txt`, for example:
+
+`dtoverlay=rpi-ft5406,touchscreen-swapped-x-y=1,touchscreen-inverted-x=1`
+
 ## Troubleshooting
 
 Read our troubleshooting steps, tips, and tricks here: [Raspberry Pi Display Troubleshooting](troubleshooting.md).
