@@ -41,4 +41,4 @@ Next, connect a suitable USB serial cable to your host computer (a Raspberry Pi 
 
 Then use `screen` on linux or a Mac or `putty` on windows to connect to the serial.
 
-Setup your serial to receive at 119200-8-N-1, and then boot your Pi / Compute module.  You should get an immediate serial output from the device as bootcode.bin runs.
+Setup your serial to receive at 115200-8-N-1, and then boot your Pi / Compute module.  You should get an immediate serial output from the device as bootcode.bin runs.
