@@ -60,7 +60,7 @@ To copy your public key to your Raspberry Pi, use the following command to appen
 ssh-copy-id <USERNAME>@<IP-ADDRESS>
 ```
 
-*Note that this time you will have to authenticate with your password.*
+**Note that this time you will have to authenticate with your password.**
 
 Alternatively, if the `ssh-copy-id` is not available on your system, you can copy the file manually over SSH:
 
@@ -68,7 +68,7 @@ Alternatively, if the `ssh-copy-id` is not available on your system, you can cop
 cat ~/.ssh/id_rsa.pub | ssh <USERNAME>@<IP-ADDRESS> 'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys'
 ```
 
-If you see a message `ssh: connect to host <IP-ADDRESS> port 22: Connection refused` and you know the IPAddress is correct, then you probably need to enable SSH. You can do this by running `sudo raspi-config` on your Pi. Enable SSH and try to copy the files again.
+If you see the message `ssh: connect to host <IP-ADDRESS> port 22: Connection refused` and you know the `IP-ADDRESS` is correct, then you probably haven't enabled SSH on you Pi. Run `sudo raspi-config` in the Pi's terminal window, enable SSH, and then try to copy the files again.
 
 Now try `ssh <USER>@<IP-ADDRESS>` and you should connect without a password prompt.
 
