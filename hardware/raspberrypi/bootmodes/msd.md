@@ -1,8 +1,12 @@
 # How to boot from a USB mass storage device on a Raspberry Pi
 
-This tutorial explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or USB hard disk. Be warned that this feature is experimental and does not work with all USB mass storage devices. See [this blog post](https://www.raspberrypi.org/blog/pi-3-booting-part-i-usb-mass-storage-boot/) from Gordon Hollingworth for an explanation of why some USB mass storage devices don't work, as well as for some background information.
+**Only some Raspberry Pi models support booting from a USB mass storage device:**
 
-**USB boot is available on the Raspberry Pi 3 models only.**
+| can be booted from USB mass storage device                            | cannot be booted from USB mass storage device                  |
+|-----------------------------------------------------------------------|----------------------------------------------------------------|
+| Raspberry Pi 2 Model 1.2 and later Raspberry Pi 3 B Raspberry Pi 3 B+ | All other Raspberry Pi models, including the Raspberry Pi 3 A+ |
+
+This tutorial explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or USB hard disk. Be warned that this feature is experimental and does not work with all USB mass storage devices. See [this blog post](https://www.raspberrypi.org/blog/pi-3-booting-part-i-usb-mass-storage-boot/) from Gordon Hollingworth for an explanation of why some USB mass storage devices don't work, as well as for some background information.
 
 ## Program USB boot mode
 
