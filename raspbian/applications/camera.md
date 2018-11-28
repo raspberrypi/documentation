@@ -1,6 +1,6 @@
 # Raspberry Pi Camera Module
 
-This document describes the use of the four Raspberry Pi camera applications, as of February 19th 2018.
+This document describes the use of the four Raspberry Pi camera applications, as of November 28th 2018.
 
 There are four applications provided: `raspistill`, `raspivid`, `raspiyuv` and `raspividyuv`. `raspistill` and `raspiyuv` are very similar and are intended for capturing images; `raspivid` and `raspvidyuv` are for capturing video.
 
@@ -652,9 +652,28 @@ Sets the H264 profile to be used for the encoding. Options are:
 - high
 
 ```
+--level,    -lev
+```
+
+Specifies the H264 encoder level to use for encoding. Options are `4`, `4.1`, and `4.2`.
+
+```
+--irefresh,    -if
+```
+
+Sets the H264 intra-refresh type. Possible options are `cyclic`, `adaptive`, `both` and `cyclicrows`.
+
+
+```
 --inline,	-ih		Insert PPS, SPS headers
 ```
 Forces the stream to include PPS and SPS headers on every I-frame. Needed for certain streaming cases e.g. Apple HLS. These headers are small, so don't greatly increase the file size.
+
+```
+--spstiming,    -stm
+```
+
+Insert timing information in to the SPS block.
 
 ```
 --timed,	-td		Do timed switches between capture and pause
@@ -683,6 +702,41 @@ On each press of the Enter key, the recording will be paused or restarted. Press
 ```
 
 Sending a `USR1` signal to the `raspivid` process will toggle between recording and paused. This can be done using the `kill` command, as below. You can find the `raspivid` process ID using `pgrep raspivid`.
+
+```
+--split,    -sp
+```
+When in a signal or keypress mode, each time record is restarted, create a new file.
+
+```
+--circular,    -c
+```
+
+Select circular buffer mode. All encoded data is stored in a circular buffer until a trigger is activated, then the buffer is saved. 
+
+```
+--vectors,    -x
+```
+
+Turns on output of motion vectors from the H264 encoder, to the specified filename.
+
+```
+--flush,    -fl
+```
+
+Forces a flush of output data buffers as soon as video data is written. This bypasses any OS caching of written, and can decrease latency.
+
+```
+--save-pts,    -pts
+```
+
+Saves timestamp information to the specified file. Useful as an imput file to mkvmerge
+
+```
+--codec,    -cd
+```
+
+Specifies the encoder codec to use. Options are `H264` and `MJPEG`. H264 can encode up to 1080p, whereas MJPEG can encode upto the sensor size, but at decreased framerates due to the higher processing and storage requirements. 
 
 ```
 kill -USR1 <process id of raspivid>
@@ -725,6 +779,17 @@ When outputting segments, this is the maximum the segment number can reach befor
 --start,	-sn		Set the initial segment number
 ```
 When outputting segments, this is the initial segment number, giving the ability to resume a previous recording from a given segment. The default value is 1.
+
+```
+--raw,   -r
+```
+Specify the output file name for any raw data files requested.
+
+```
+--raw-format,   -rf
+```
+Specify the raw format to be used if raw output requested. Options as `yuv`, `rgb` and `grey`. `grey` simply saves the Y channel of the YUV image.
+
 
 ## Examples
 
