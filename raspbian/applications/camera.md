@@ -603,6 +603,15 @@ Use bits per second, so 10Mbits/s would be `-b 10000000`. For H264, 1080p30 a hi
 ```
 Specify the output filename. If not specified, no file is saved. If the filename is '-', then all output is sent to stdout.
 
+To connect to a remote IPv4 host, use `tcp` or `udp` followed by the required IP Address. e.g. `tcp://192.168.1.2:1234` or `udp://192.168.1.2:1234`. 
+To listen on a TCP port (IPv4) and wait for an incoming connection use --listen (-l) option. e.g. `raspivid -l -o tcp://0.0.0.0:3333` will bind to all network interfaces, `raspivid -l -o tcp://192.168.1.1:3333` will bind to a local IPv4.
+
+```
+--listen, 	-l
+```
+
+When using a network connection as the data sink, this option will make the sytem wait for a connection from the remote system before sending data.
+
 ```
 --verbose,	-v		Output verbose information during run
 ```
