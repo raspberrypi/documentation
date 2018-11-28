@@ -270,6 +270,18 @@ Displays the exposure, analogue and digital gains, and AWB settings used.
 Sets blue and red gains (as floating point numbers) to be applied when `-awb -off` is set e.g. -awbg 1.5,1.2
 
 ```
+--analoggain,	-ag
+```
+
+Sets the analog gain value directly on the sensor (floating point value from 1.0 to 8.0 for the OV5647 sensor on the version 1 camera board, and 1.0 to 12.0 for the IMX219 sensor on the version 2 board).
+
+```
+--digitalgain,	-ag
+```
+
+Sets the digital gain value applied by the ISP (floating point value from 1.0 to 255.0, however values over about 4.0 will produce over exposed images)
+
+```
 --mode,	-md
 ```
 
@@ -347,6 +359,27 @@ Size ranges from 6 - 160; default is 32. Asking for an invalid size should give 
 |-ae 32,0xff,0x808000 -a "Annotation text"|gives size 32 white text on black background|
 |-ae 10,0x00,0x8080FF -a "Annotation text"|gives size 10 black text on white background|
 
+```
+--stereo,	-3d
+```
+
+Select the specified stereo imaging mode. `sbs` selects side by side mode, `tb` selects top/bottom mode. `off` turns off stereo mode (the default)
+
+```
+--decimate,	-dec
+```
+Halfs the width and height pof the stereo image.
+
+```
+--3dswap,	-3dswap
+```
+Swaps the camera order used in stereoscopic imaging. NOTE: Currently not working.
+
+```
+--settings,	-set
+```
+Retrieves the current camera settings and write them to stdout.
+
 
 ## Application-specific settings
 
@@ -399,6 +432,25 @@ The program will run for this length of time, then take the capture (if output i
 The specific value is the time between shots in milliseconds. Note that you should specify `%04d` at the point in the filename where you want a frame count number to appear. So, for example, the code below will produce a capture every 2 seconds, over a total period of 30s, named `image0001.jpg`, `image0002.jpg` and so on, through to `image0015.jpg`. 
 
 ```
+--framestart, -fs
+```
+
+Specifies the first frame number in the timelapse. Useful if you have already saved a number of frames, and want to start again at the next frame.
+
+```
+--datestamp,   -dt
+```
+
+Instead of a simple frame number, the timelapse filenames will use a date/time value, of the format `aabbccddee`, where `aa` is the month, `bb` is the day of the month, `cc` is the hour, `dd` is the minute and  `ee` is the second.
+
+```
+--timestamp,   -ts
+```
+
+Instead of a simple frame number, the timelapse filenames will use a single number which is the Unix timestamp, i.e. the seconds since 1970.
+
+
+```
 -t 30000 -tl 2000 -o image%04d.jpg
 ```
 
@@ -425,6 +477,12 @@ This options cycles through the range of camera options. No capture is taken, an
 ```
 
 Valid options are `jpg`, `bmp`, `gif`, and `png`. Note that unaccelerated image types (GIF, PNG, BMP) will take much longer to save than jpg, which is hardware accelerated. Also note that the filename suffix is completely ignored when deciding the encoding of a file.
+
+```
+--restart,    -rs
+```
+
+Sets the JPEG restart marker interval to the specific value. Can be useful for lossy transport streams as its allows a broken JPEG to still partially display. 
 
 ```
 --exif,	-x		EXIF tag to apply to captures (format as 'key=value')
@@ -458,6 +516,12 @@ Note that a small subset of these tags will be set automatically by the camera s
 Setting `--exif none` will prevent any EXIF information being stored in the file. This reduces the file size slightly.
 
 ```
+--gpsdexif,    -gps
+```
+
+Applies real time EXIF information from any attached GPS dongle (using GSPD) to the image. This requries `libgps.so` to be installed.
+
+```
 --fullpreview,	-fp		Full preview mode
 ```
 This runs the preview window using the full resolution capture mode. Maximum frames per second in this mode is 15fps, and the preview will have the same field of view as the capture. Captures should happen more quickly, as no mode change should be required. This feature is currently under development.
@@ -478,6 +542,13 @@ The camera is run for the requested time (`-t`), and a capture can be initiated 
 kill -USR1 <process id of raspistill>
 ```
 
+```
+--burst,    -bm
+```
+
+Sets burst capture mode. This prevents the camera from returning to preview mode inbetween captures, meaning that captures can be taken closer together.
+
+
 ### raspiyuv
 
 Many of the options for `raspiyuv` are the same as those for `raspistill`. This section shows the differences.
@@ -496,6 +567,18 @@ Extra options :
 This option forces the image to be saved as RGB data with 8 bits per channel, rather than YUV420.
 
 Note that the image buffers saved in `raspiyuv` are padded to a horizontal size divisible by 32, so there may be unused bytes at the end of each line. Buffers are also padded vertically to be divisible by 16, and in the YUV mode, each plane of Y,U,V is padded in this way.
+
+```
+--luma,    -y
+```
+
+Only outputs the luma (Y) channel of the YUV image. This is effectively the black and white, or intensity, part of the image. 
+
+```
+--bgr,    -bgr
+```
+
+Saves the image data as BGR data rather than YUV.
 
 
 ### raspivid
