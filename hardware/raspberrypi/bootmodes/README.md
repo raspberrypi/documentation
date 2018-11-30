@@ -4,7 +4,7 @@
 
 The Raspberry Pi has a number of different stages of booting. This document is meant to help explain how the boot modes work, and which ones are supported for Linux booting.
 
-[Description of Boot Sequence](bootflow.md)
+[Boot Sequence](bootflow.md)
 
 [SD card boot](sdcard.md)
 
