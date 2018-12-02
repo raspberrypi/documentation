@@ -8,11 +8,9 @@ In Linux device terms, by default, /dev/ttyS0 refers to the mini UART, and /dev/
 
 ## Mini UART and CPU core frequency
 
-The baud rate of the mini UART is linked to the core frequency of the VPU on the VC4 GPU. This means that as the VPU frequency governor varies the core frequency, the baud rate of the UART also changes. This makes the UART of limited use in the default state. Also, when the Linux console uses the mini UART (Raspberry Pi 3, Raspberry Pi Zero W), as a consequence of the UART being disabled, the console is also disabled.
+The baud rate of the mini UART is linked to the core frequency of the VPU on the VC4 GPU. This means that as the VPU frequency governor varies the core frequency, the baud rate of the UART also changes. This makes the UART of limited use in the default state. By default, if the mini UART is selected for use as the serial console it will be disabled. To enable it, add enable_uart=1 to config.txt. This will also fix the core frequency to 250MHz (unless force_turbo is set, when it will be fixed to 400MHz). When using the mini UART for functions other than the serial console, you must add core_freq=250 to config.txt otherwise the mini UART will not work.
 
-The Linux console can be re-enabled by adding `enable_uart=1` to config.txt. This also fixes the core_freq to 250Mhz (unless force_turbo is set, when it will fixed to 400Mhz), which means that the UART baud rate stays consistent. 
-
-The default value of the `enable_uart` flag depends on the actual roles of the UARTs, so that if ttyAMA0 is assigned to the BT module, `enable_uart` defaults to 0. If the mini UART is assigned to the BT module, then `enable_uart` defaults to 1. Note that if the UARTs are reassigned using a Device Tree Overlay (see below), `enable_uart` defaults will still obey this rule.
+The default value of the `enable_uart` flag depends on the actual roles of the UARTs, so that if ttyAMA0 is assigned to the Bluetooth module, `enable_uart` defaults to 0. If the mini UART is assigned to the Bluetooth module, then `enable_uart` defaults to 1. Note that if the UARTs are reassigned using a Device Tree Overlay (see below), `enable_uart` defaults will still obey this rule.
 
 ## Disabling Linux's use of console UART
 
