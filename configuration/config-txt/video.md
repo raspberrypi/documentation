@@ -483,27 +483,39 @@ Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is no
 
 ### disable_overscan
 
-Set `disable_overscan` to `1` to disable [overscan](../raspi-config.md#overscan).
+Set `disable_overscan` to `1` to disable the default values of [overscan](../raspi-config.md#overscan) the firmware sets. The default value of overscan for the left, right, top and bottom edges is `48` for HD CEA modes, `32` for SD CEA modes and `0` for DMT modes. The default value for `disable_overscan` is `0`.
+
+**NOTE:** Any further additional overscan options such as `overscan_scale` or overscan edges can still be applied after this option.
 
 ### overscan_left
 
-The `overscan_left` command specifies the number of pixels to skip on the left edge of the screen. Increase this value if the text flows off the left edge of the screen; decrease it if there is a black border between the left edge of the screen and the text.
+The `overscan_left` command specifies the number of pixels to add to the firmware default value of overscan on the left edge of the screen. The default value is `0`.
+
+Increase this value if the text flows off the left edge of the screen; decrease it if there is a black border between the left edge of the screen and the text.
 
 ### overscan_right
 
-The `overscan_right` command specifies the number of pixels to skip on the right edge of the screen.
+The `overscan_right` command specifies the number of pixels to add to the firmware default value of overscan on the right edge of the screen. The default value is `0`.
+
+Increase this value if the text flows off the right edge of the screen; decrease it if there is a black border between the right edge of the screen and the text.
 
 ### overscan_top
 
-The `overscan_top` command specifies the number of pixels to skip on the top edge of the screen.
+The `overscan_top` command specifies the number of pixels to add to the firmware default value of overscan on the top edge of the screen. The default value is `0`.
+
+Increase this value if the text flows off the top edge of the screen; decrease it if there is a black border between the top edge of the screen and the text.
 
 ### overscan_bottom
 
-The `overscan_bottom` command specifies the number of pixels to skip on the bottom edge of the screen.
+The `overscan_bottom` command specifies the number of pixels to add to the firmware default value of overscan on the bottom edge of the screen. The default value is `0`.
+
+Increase this value if the text flows off the bottom edge of the screen; decrease it if there is a black border between the bottom edge of the screen and the text.
 
 ### overscan_scale
 
-Set `overscan_scale` to `1` to force any non-framebuffer layers to conform to the overscan settings.
+Set `overscan_scale` to `1` to force any non-framebuffer layers to conform to the overscan settings. The default value is `0`.
+
+**NOTE:** This feature is generally not recommended because it can reduce image quality as all layers on the display will be scaled by the GPU. Disabling overscan on the display itself is the recommended option to avoid images being scaled twice (by the GPU and the display).
 
 ### framebuffer_width
 
