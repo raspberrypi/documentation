@@ -1,6 +1,6 @@
 # Raspberry Pi Camera Module
 
-This document describes the use of the four Raspberry Pi camera applications, as of November 28th 2018.
+This document describes the use of the four Raspberry Pi camera applications, as of 28 November 2018.
 
 There are four applications provided: `raspistill`, `raspivid`, `raspiyuv` and `raspividyuv`. `raspistill` and `raspiyuv` are very similar and are intended for capturing images; `raspivid` and `raspvidyuv` are for capturing video.
 
@@ -235,8 +235,8 @@ Flips the preview and saved image vertically.
 Allows the specification of the area of the sensor to be used as the source for the preview and capture. This is defined as x,y for the top-left corner, and a width and height, with all values in normalised coordinates (0.0 - 1.0). So, to set a ROI at halfway across and down the sensor, and a width and height of a quarter of the sensor, use:
 
 ```
--roi 0.5,0.5,0.25,0.25
-```		
+-roi 0.5,0.5,0.25,0.25		
+```
 
 ```
 --shutter,	-ss		Set shutter speed
@@ -273,13 +273,13 @@ Sets blue and red gains (as floating point numbers) to be applied when `-awb -of
 --analoggain,	-ag
 ```
 
-Sets the analog gain value directly on the sensor (floating point value from 1.0 to 8.0 for the OV5647 sensor on the version 1 camera board, and 1.0 to 12.0 for the IMX219 sensor on the version 2 board).
+Sets the analog gain value directly on the sensor (floating point value from 1.0 to 8.0 for the OV5647 sensor on Camera Module V1, and 1.0 to 12.0 for the IMX219 sensor on on Camera Module V2).
 
 ```
 --digitalgain,	-ag
 ```
 
-Sets the digital gain value applied by the ISP (floating point value from 1.0 to 255.0, however values over about 4.0 will produce over exposed images)
+Sets the digital gain value applied by the ISP (floating point value from 1.0 to 255.0, but values over about 4.0 will produce overexposed images)
 
 ```
 --mode,	-md
@@ -363,22 +363,22 @@ Size ranges from 6 - 160; default is 32. Asking for an invalid size should give 
 --stereo,	-3d
 ```
 
-Select the specified stereo imaging mode. `sbs` selects side by side mode, `tb` selects top/bottom mode. `off` turns off stereo mode (the default)
+Select the specified stereo imaging mode; `sbs` selects side-by-side mode, `tb` selects top/bottom mode; `off` turns off stereo mode (the default).
 
 ```
 --decimate,	-dec
 ```
-Halfs the width and height pof the stereo image.
+Halves the width and height of the stereo image.
 
 ```
 --3dswap,	-3dswap
 ```
-Swaps the camera order used in stereoscopic imaging. NOTE: Currently not working.
+Swaps the camera order used in stereoscopic imaging; NOTE: currently not working.
 
 ```
 --settings,	-set
 ```
-Retrieves the current camera settings and write them to stdout.
+Retrieves the current camera settings and writes them to stdout.
 
 
 ## Application-specific settings
@@ -441,13 +441,13 @@ Specifies the first frame number in the timelapse. Useful if you have already sa
 --datestamp,   -dt
 ```
 
-Instead of a simple frame number, the timelapse filenames will use a date/time value, of the format `aabbccddee`, where `aa` is the month, `bb` is the day of the month, `cc` is the hour, `dd` is the minute and  `ee` is the second.
+Instead of a simple frame number, the timelapse file names will use a date/time value of the format `aabbccddee`, where `aa` is the month, `bb` is the day of the month, `cc` is the hour, `dd` is the minute, and  `ee` is the second.
 
 ```
 --timestamp,   -ts
 ```
 
-Instead of a simple frame number, the timelapse filenames will use a single number which is the Unix timestamp, i.e. the seconds since 1970.
+Instead of a simple frame number, the timelapse file names will use a single number which is the Unix timestamp, i.e. the seconds since 1970.
 
 
 ```
@@ -482,7 +482,7 @@ Valid options are `jpg`, `bmp`, `gif`, and `png`. Note that unaccelerated image 
 --restart,    -rs
 ```
 
-Sets the JPEG restart marker interval to the specific value. Can be useful for lossy transport streams as its allows a broken JPEG to still partially display. 
+Sets the JPEG restart marker interval to a specific value. Can be useful for lossy transport streams because it allows a broken JPEG file to still be partially displayed.
 
 ```
 --exif,	-x		EXIF tag to apply to captures (format as 'key=value')
@@ -519,7 +519,7 @@ Setting `--exif none` will prevent any EXIF information being stored in the file
 --gpsdexif,    -gps
 ```
 
-Applies real time EXIF information from any attached GPS dongle (using GSPD) to the image. This requries `libgps.so` to be installed.
+Applies real-time EXIF information from any attached GPS dongle (using GSPD) to the image; requires `libgps.so` to be installed.
 
 ```
 --fullpreview,	-fp		Full preview mode
@@ -546,8 +546,7 @@ kill -USR1 <process id of raspistill>
 --burst,    -bm
 ```
 
-Sets burst capture mode. This prevents the camera from returning to preview mode inbetween captures, meaning that captures can be taken closer together.
-
+Sets burst capture mode. This prevents the camera from returning to preview mode in between captures, meaning that captures can be taken closer together.
 
 ### raspiyuv
 
@@ -604,7 +603,8 @@ Use bits per second, so 10Mbits/s would be `-b 10000000`. For H264, 1080p30 a hi
 Specify the output filename. If not specified, no file is saved. If the filename is '-', then all output is sent to stdout.
 
 To connect to a remote IPv4 host, use `tcp` or `udp` followed by the required IP Address. e.g. `tcp://192.168.1.2:1234` or `udp://192.168.1.2:1234`. 
-To listen on a TCP port (IPv4) and wait for an incoming connection use --listen (-l) option. e.g. `raspivid -l -o tcp://0.0.0.0:3333` will bind to all network interfaces, `raspivid -l -o tcp://192.168.1.1:3333` will bind to a local IPv4.
+
+To listen on a TCP port (IPv4) and wait for an incoming connection use `--listen (-l)` option, e.g. `raspivid -l -o tcp://0.0.0.0:3333` will bind to all network interfaces, `raspivid -l -o tcp://192.168.1.1:3333` will bind to a local IPv4.
 
 ```
 --listen, 	-l
@@ -670,8 +670,7 @@ Specifies the H264 encoder level to use for encoding. Options are `4`, `4.1`, an
 --irefresh,    -if
 ```
 
-Sets the H264 intra-refresh type. Possible options are `cyclic`, `adaptive`, `both` and `cyclicrows`.
-
+Sets the H264 intra-refresh type. Possible options are `cyclic`, `adaptive`, `both`, and `cyclicrows`.
 
 ```
 --inline,	-ih		Insert PPS, SPS headers
@@ -682,7 +681,7 @@ Forces the stream to include PPS and SPS headers on every I-frame. Needed for ce
 --spstiming,    -stm
 ```
 
-Insert timing information in to the SPS block.
+Insert timing information into the SPS block.
 
 ```
 --timed,	-td		Do timed switches between capture and pause
@@ -715,7 +714,7 @@ Sending a `USR1` signal to the `raspivid` process will toggle between recording 
 ```
 --split,    -sp
 ```
-When in a signal or keypress mode, each time record is restarted, create a new file.
+When in a signal or keypress mode, each time recording is restarted, a new file is created.
 
 ```
 --circular,    -c
@@ -727,7 +726,7 @@ Select circular buffer mode. All encoded data is stored in a circular buffer unt
 --vectors,    -x
 ```
 
-Turns on output of motion vectors from the H264 encoder, to the specified filename.
+Turns on output of motion vectors from the H264 encoder to the specified file name.
 
 ```
 --flush,    -fl
@@ -739,7 +738,7 @@ Forces a flush of output data buffers as soon as video data is written. This byp
 --save-pts,    -pts
 ```
 
-Saves timestamp information to the specified file. Useful as an imput file to mkvmerge
+Saves timestamp information to the specified file. Useful as an imput file to `mkvmerge`.
 
 ```
 --codec,    -cd
@@ -797,7 +796,7 @@ Specify the output file name for any raw data files requested.
 ```
 --raw-format,   -rf
 ```
-Specify the raw format to be used if raw output requested. Options as `yuv`, `rgb` and `grey`. `grey` simply saves the Y channel of the YUV image.
+Specify the raw format to be used if raw output requested. Options as `yuv`, `rgb`, and `grey`. `grey` simply saves the Y channel of the YUV image.
 
 
 ## Examples
