@@ -1,10 +1,10 @@
 # Network booting
 
-This section describes how network booting works. There is also a [tutorial](net_tutorial.md) available on setting up a working bootable system. Network booting works only for the wired adapter. Booting over wireless LAN is not supported.
+This section describes how network booting works. We also have a [tutorial about setting up a working bootable system] (net_tutorial.md). Network booting works only for the wired adapter built into certain models of Raspberry Pi. Booting over wireless LAN is not supported, nor is booting from any other wired network device.
 
 To network boot, the boot ROM does the following:
 
-* Initialise LAN9500
+* Initialise on-board Ethernet device (Microchip LAN9500 or LAN7500)
 * Send DHCP request
 * Receive DHCP reply
 * (optional) Receive DHCP proxy reply
