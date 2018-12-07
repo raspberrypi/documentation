@@ -276,7 +276,7 @@ Sets blue and red gains (as floating point numbers) to be applied when `-awb -of
 Sets the analog gain value directly on the sensor (floating point value from 1.0 to 8.0 for the OV5647 sensor on Camera Module V1, and 1.0 to 12.0 for the IMX219 sensor on on Camera Module V2).
 
 ```
---digitalgain,	-ag
+--digitalgain,	-dg
 ```
 
 Sets the digital gain value applied by the ISP (floating point value from 1.0 to 255.0, but values over about 4.0 will produce overexposed images)
@@ -538,9 +538,7 @@ The camera is run for the requested time (`-t`), and a capture can be initiated 
 
 The camera is run for the requested time (`-t`), and a capture can be initiated throughout that time by sending a `USR1` signal to the camera process. This can be done using the `kill` command. You can find the camera process ID using the `pgrep raspistill` command.
 
-```
-kill -USR1 <process id of raspistill>
-```
+`kill -USR1 <process id of raspistill>`
 
 ```
 --burst,    -bm
@@ -711,6 +709,10 @@ On each press of the Enter key, the recording will be paused or restarted. Press
 
 Sending a `USR1` signal to the `raspivid` process will toggle between recording and paused. This can be done using the `kill` command, as below. You can find the `raspivid` process ID using `pgrep raspivid`.
 
+`kill -USR1 <process id of raspivid>`
+
+Note that the timeout value will be used to indicate the end of recording, but is only checked after each receipt of the `SIGUSR1` signal; so if the system is waiting for a signal, even if the timeout has expired, it will still wait for the signal before exiting.
+
 ```
 --split,    -sp
 ```
@@ -732,7 +734,7 @@ Turns on output of motion vectors from the H264 encoder to the specified file na
 --flush,    -fl
 ```
 
-Forces a flush of output data buffers as soon as video data is written. This bypasses any OS caching of written, and can decrease latency.
+Forces a flush of output data buffers as soon as video data is written. This bypasses any OS caching of written data, and can decrease latency.
 
 ```
 --save-pts,    -pts
@@ -745,12 +747,6 @@ Saves timestamp information to the specified file. Useful as an imput file to `m
 ```
 
 Specifies the encoder codec to use. Options are `H264` and `MJPEG`. H264 can encode up to 1080p, whereas MJPEG can encode upto the sensor size, but at decreased framerates due to the higher processing and storage requirements. 
-
-```
-kill -USR1 <process id of raspivid>
-```
-
-Note that the timeout value will be used to indicate the end of recording, but is only checked after each receipt of the `SIGUSR1` signal; so if the system is waiting for a signal, even if the timeout has expired, it will still wait for the signal before exiting.
 
 ```
 --initial,	-i		Define initial state on startup
