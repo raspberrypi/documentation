@@ -426,7 +426,7 @@ We have tried cards up to 128GB, and most cards seem to work OK. You can also at
 
 ### Can I boot a Pi from a USB-attached hard drive instead of the SD card?
 
-Yes, booting from a USB-attached drive (either a SSD or actual hard drive) can make the Pi boot and work faster. We have extensive instructions on how to do this [here](../hardware/raspberrypi/bootmodes/msd.md).
+USB boot is only possible on the Raspberry Pi 2B v1.2, 3B, 3B+, and 3A+. Booting from a USB-attached drive (either a SSD or actual hard drive) can make the Pi boot and work faster. We have extensive instructions on how to do this [here](../hardware/raspberrypi/bootmodes/msd.md).
 
 ### What happens if I brick the device?
 
