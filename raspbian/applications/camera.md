@@ -1,6 +1,6 @@
 # Raspberry Pi Camera Module
 
-This document describes the use of the four Raspberry Pi camera applications, as of February 19th 2018.
+This document describes the use of the four Raspberry Pi camera applications, as of 28 November 2018.
 
 There are four applications provided: `raspistill`, `raspivid`, `raspiyuv` and `raspividyuv`. `raspistill` and `raspiyuv` are very similar and are intended for capturing images; `raspivid` and `raspvidyuv` are for capturing video.
 
@@ -235,8 +235,8 @@ Flips the preview and saved image vertically.
 Allows the specification of the area of the sensor to be used as the source for the preview and capture. This is defined as x,y for the top-left corner, and a width and height, with all values in normalised coordinates (0.0 - 1.0). So, to set a ROI at halfway across and down the sensor, and a width and height of a quarter of the sensor, use:
 
 ```
--roi 0.5,0.5,0.25,0.25
-```		
+-roi 0.5,0.5,0.25,0.25		
+```
 
 ```
 --shutter,	-ss		Set shutter speed
@@ -268,6 +268,18 @@ Displays the exposure, analogue and digital gains, and AWB settings used.
 ```
 
 Sets blue and red gains (as floating point numbers) to be applied when `-awb -off` is set e.g. -awbg 1.5,1.2
+
+```
+--analoggain,	-ag
+```
+
+Sets the analog gain value directly on the sensor (floating point value from 1.0 to 8.0 for the OV5647 sensor on Camera Module V1, and 1.0 to 12.0 for the IMX219 sensor on on Camera Module V2).
+
+```
+--digitalgain,	-dg
+```
+
+Sets the digital gain value applied by the ISP (floating point value from 1.0 to 255.0, but values over about 4.0 will produce overexposed images)
 
 ```
 --mode,	-md
@@ -347,6 +359,27 @@ Size ranges from 6 - 160; default is 32. Asking for an invalid size should give 
 |-ae 32,0xff,0x808000 -a "Annotation text"|gives size 32 white text on black background|
 |-ae 10,0x00,0x8080FF -a "Annotation text"|gives size 10 black text on white background|
 
+```
+--stereo,	-3d
+```
+
+Select the specified stereo imaging mode; `sbs` selects side-by-side mode, `tb` selects top/bottom mode; `off` turns off stereo mode (the default).
+
+```
+--decimate,	-dec
+```
+Halves the width and height of the stereo image.
+
+```
+--3dswap,	-3dswap
+```
+Swaps the camera order used in stereoscopic imaging; NOTE: currently not working.
+
+```
+--settings,	-set
+```
+Retrieves the current camera settings and writes them to stdout.
+
 
 ## Application-specific settings
 
@@ -399,6 +432,25 @@ The program will run for this length of time, then take the capture (if output i
 The specific value is the time between shots in milliseconds. Note that you should specify `%04d` at the point in the filename where you want a frame count number to appear. So, for example, the code below will produce a capture every 2 seconds, over a total period of 30s, named `image0001.jpg`, `image0002.jpg` and so on, through to `image0015.jpg`. 
 
 ```
+--framestart, -fs
+```
+
+Specifies the first frame number in the timelapse. Useful if you have already saved a number of frames, and want to start again at the next frame.
+
+```
+--datestamp,   -dt
+```
+
+Instead of a simple frame number, the timelapse file names will use a date/time value of the format `aabbccddee`, where `aa` is the month, `bb` is the day of the month, `cc` is the hour, `dd` is the minute, and  `ee` is the second.
+
+```
+--timestamp,   -ts
+```
+
+Instead of a simple frame number, the timelapse file names will use a single number which is the Unix timestamp, i.e. the seconds since 1970.
+
+
+```
 -t 30000 -tl 2000 -o image%04d.jpg
 ```
 
@@ -425,6 +477,12 @@ This options cycles through the range of camera options. No capture is taken, an
 ```
 
 Valid options are `jpg`, `bmp`, `gif`, and `png`. Note that unaccelerated image types (GIF, PNG, BMP) will take much longer to save than jpg, which is hardware accelerated. Also note that the filename suffix is completely ignored when deciding the encoding of a file.
+
+```
+--restart,    -rs
+```
+
+Sets the JPEG restart marker interval to a specific value. Can be useful for lossy transport streams because it allows a broken JPEG file to still be partially displayed.
 
 ```
 --exif,	-x		EXIF tag to apply to captures (format as 'key=value')
@@ -458,6 +516,12 @@ Note that a small subset of these tags will be set automatically by the camera s
 Setting `--exif none` will prevent any EXIF information being stored in the file. This reduces the file size slightly.
 
 ```
+--gpsdexif,    -gps
+```
+
+Applies real-time EXIF information from any attached GPS dongle (using GSPD) to the image; requires `libgps.so` to be installed.
+
+```
 --fullpreview,	-fp		Full preview mode
 ```
 This runs the preview window using the full resolution capture mode. Maximum frames per second in this mode is 15fps, and the preview will have the same field of view as the capture. Captures should happen more quickly, as no mode change should be required. This feature is currently under development.
@@ -474,9 +538,13 @@ The camera is run for the requested time (`-t`), and a capture can be initiated 
 
 The camera is run for the requested time (`-t`), and a capture can be initiated throughout that time by sending a `USR1` signal to the camera process. This can be done using the `kill` command. You can find the camera process ID using the `pgrep raspistill` command.
 
+`kill -USR1 <process id of raspistill>`
+
 ```
-kill -USR1 <process id of raspistill>
+--burst,    -bm
 ```
+
+Sets burst capture mode. This prevents the camera from returning to preview mode in between captures, meaning that captures can be taken closer together.
 
 ### raspiyuv
 
@@ -496,6 +564,18 @@ Extra options :
 This option forces the image to be saved as RGB data with 8 bits per channel, rather than YUV420.
 
 Note that the image buffers saved in `raspiyuv` are padded to a horizontal size divisible by 32, so there may be unused bytes at the end of each line. Buffers are also padded vertically to be divisible by 16, and in the YUV mode, each plane of Y,U,V is padded in this way.
+
+```
+--luma,    -y
+```
+
+Only outputs the luma (Y) channel of the YUV image. This is effectively the black and white, or intensity, part of the image. 
+
+```
+--bgr,    -bgr
+```
+
+Saves the image data as BGR data rather than YUV.
 
 
 ### raspivid
@@ -519,6 +599,16 @@ Use bits per second, so 10Mbits/s would be `-b 10000000`. For H264, 1080p30 a hi
 --output,	-o		Output filename <filename>
 ```
 Specify the output filename. If not specified, no file is saved. If the filename is '-', then all output is sent to stdout.
+
+To connect to a remote IPv4 host, use `tcp` or `udp` followed by the required IP Address. e.g. `tcp://192.168.1.2:1234` or `udp://192.168.1.2:1234`. 
+
+To listen on a TCP port (IPv4) and wait for an incoming connection use `--listen (-l)` option, e.g. `raspivid -l -o tcp://0.0.0.0:3333` will bind to all network interfaces, `raspivid -l -o tcp://192.168.1.1:3333` will bind to a local IPv4.
+
+```
+--listen, 	-l
+```
+
+When using a network connection as the data sink, this option will make the sytem wait for a connection from the remote system before sending data.
 
 ```
 --verbose,	-v		Output verbose information during run
@@ -569,9 +659,27 @@ Sets the H264 profile to be used for the encoding. Options are:
 - high
 
 ```
+--level,    -lev
+```
+
+Specifies the H264 encoder level to use for encoding. Options are `4`, `4.1`, and `4.2`.
+
+```
+--irefresh,    -if
+```
+
+Sets the H264 intra-refresh type. Possible options are `cyclic`, `adaptive`, `both`, and `cyclicrows`.
+
+```
 --inline,	-ih		Insert PPS, SPS headers
 ```
 Forces the stream to include PPS and SPS headers on every I-frame. Needed for certain streaming cases e.g. Apple HLS. These headers are small, so don't greatly increase the file size.
+
+```
+--spstiming,    -stm
+```
+
+Insert timing information into the SPS block.
 
 ```
 --timed,	-td		Do timed switches between capture and pause
@@ -601,11 +709,44 @@ On each press of the Enter key, the recording will be paused or restarted. Press
 
 Sending a `USR1` signal to the `raspivid` process will toggle between recording and paused. This can be done using the `kill` command, as below. You can find the `raspivid` process ID using `pgrep raspivid`.
 
-```
-kill -USR1 <process id of raspivid>
-```
+`kill -USR1 <process id of raspivid>`
 
 Note that the timeout value will be used to indicate the end of recording, but is only checked after each receipt of the `SIGUSR1` signal; so if the system is waiting for a signal, even if the timeout has expired, it will still wait for the signal before exiting.
+
+```
+--split,    -sp
+```
+When in a signal or keypress mode, each time recording is restarted, a new file is created.
+
+```
+--circular,    -c
+```
+
+Select circular buffer mode. All encoded data is stored in a circular buffer until a trigger is activated, then the buffer is saved. 
+
+```
+--vectors,    -x
+```
+
+Turns on output of motion vectors from the H264 encoder to the specified file name.
+
+```
+--flush,    -fl
+```
+
+Forces a flush of output data buffers as soon as video data is written. This bypasses any OS caching of written data, and can decrease latency.
+
+```
+--save-pts,    -pts
+```
+
+Saves timestamp information to the specified file. Useful as an imput file to `mkvmerge`.
+
+```
+--codec,    -cd
+```
+
+Specifies the encoder codec to use. Options are `H264` and `MJPEG`. H264 can encode up to 1080p, whereas MJPEG can encode upto the sensor size, but at decreased framerates due to the higher processing and storage requirements. 
 
 ```
 --initial,	-i		Define initial state on startup
@@ -642,6 +783,17 @@ When outputting segments, this is the maximum the segment number can reach befor
 --start,	-sn		Set the initial segment number
 ```
 When outputting segments, this is the initial segment number, giving the ability to resume a previous recording from a given segment. The default value is 1.
+
+```
+--raw,   -r
+```
+Specify the output file name for any raw data files requested.
+
+```
+--raw-format,   -rf
+```
+Specify the raw format to be used if raw output requested. Options as `yuv`, `rgb`, and `grey`. `grey` simply saves the Y channel of the YUV image.
+
 
 ## Examples
 
