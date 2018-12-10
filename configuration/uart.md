@@ -4,7 +4,7 @@ The SoCs used on the Raspberry Pis have two built-in UARTs, a [PL011](http://inf
  
 By default, on Raspberry Pis equipped with the wireless/Bluetooth module (Raspberry Pi 3 and Raspberry Pi Zero W), the PL011 UART is connected to the BT module, while the mini UART is used as the primary UART and will have a Linux console on it. On all other models the PL011 is used as the primary UART. 
 
-In Linux device terms, by default, /dev/ttyS0 refers to the mini UART, and /dev/ttyAMA0 refers to the PL011. The primary UART is that assigned to the Linux console, which depends on the Raspberry Pi model as described above. There are also symlinks /dev/serial0 which always refers to the primary UART (if enabled), and dev/serial1 which similarly always refers to the secondary UART (if enabled).
+In Linux device terms, by default, /dev/ttyS0 refers to the mini UART, and /dev/ttyAMA0 refers to the PL011. The primary UART is that assigned to the Linux console, which depends on the Raspberry Pi model as described above. There are also symlinks /dev/serial0 which always refers to the primary UART (if enabled), and /dev/serial1 which similarly always refers to the secondary UART (if enabled).
 
 ## Mini UART and CPU core frequency
 
