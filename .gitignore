@@ -1,2 +1,4 @@
 _build/
 Gemfile.lock
+_site/
+node_modules/

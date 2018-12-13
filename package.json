@@ -1,0 +1,36 @@
+{
+  "name": "raspberry-pi-documentation-site",
+  "version": "0.0.1",
+  "description": "Site for the official documentation for the Raspberry Pi.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp build & gulp watch & gulp serve",
+    "build": "gulp build"
+  },
+  "author": "",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.5.4",
+    "babel-eslint": "9.0.0",
+    "dotenv": "^6.1.0",
+    "eslint": "5.6.1",
+    "eslint-config-prettier": "3.1.0",
+    "eslint-loader": "2.1.1",
+    "eslint-plugin-prettier": "2.7.0",
+    "gulp": "^4",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.0.1",
+    "gulp-serve": "^1.4.0",
+    "gulp-shell": "^0.6.5",
+    "gulp-uglify-es": "^1.0.4",
+    "lint-staged": "7.3.0",
+    "prettier": "1.14.3",
+    "prettier-package-json": "2.0.1",
+    "prettier-stylelint": "0.4.2",
+    "require-dir": "^1.0.0",
+    "stylelint": "9.6.0",
+    "stylelint-config-recommended-scss": "3.2.0",
+    "stylelint-order": "1.0.0",
+    "stylelint-scss": "3.3.1"
+  }
+}

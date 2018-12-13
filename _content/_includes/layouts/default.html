@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-GB">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-GB">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-GB">
+<!--<![endif]-->
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no" />
+	<title>{{title}} - Raspberry Pi Documentation</title>
+	<meta name="description" content="{{description}}" />
+	<link rel="icon" type="image/png" href="https://www.raspberrypi.org/wp-content/themes/mind-control/images/favicon.png" />
+	<!--[if lt IE 9]>
+	<script src="https://www.raspberrypi.org/wp-content/themes/mind-control/js/html5.js"></script>
+	<![endif]-->
+	<link rel="preconnect stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:300,500,700|Space+Mono|Roboto:300,400,500" media="all" type="text/css">
+	<link rel="stylesheet" href="https://www.raspberrypi.org/wp-content/themes/mind-control/css/prism.css" />
+	<link rel="stylesheet" href="https://www.raspberrypi.org/app/themes/mind-control/style.min.css?ver=1531911812" />
+	<link rel="stylesheet" href="https://static.raspberrypi.org/styles/hack-font/hack.css">
+	<style>
+  .entry-content {
+    width: auto;
+  }
+  .entry-content ul.help li {
+    list-style: none;
+  }
+	.entry-content code {
+		font-family: Hack, monospace;
+	}
+	</style>
+	<script type="text/javascript">//<![CDATA[
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-46270871-1']);
+		_gaq.push(['_trackPageview']);
+		(function () {
+	    var ga = document.createElement('script');
+	    ga.type = 'text/javascript';
+	    ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+	    var s = document.getElementsByTagName('script')[0];
+	    s.parentNode.insertBefore(ga, s);
+		})();
+		//]]>
+	</script>
+
+	<link rel='canonical' href='https://documentation.raspberrypi.org/{{ page.url }}' />
+</head>
+
+<body class="documentation">
+  <header class="o-header">
+    <nav class="o-container o-header__container">
+      <a class="o-header__link o-header__link--home c-big-link c-big-link--home" href="https://www.raspberrypi.org">
+      	<span class="u-visually-hidden">Home</span>
+      </a>
+
+      <ul class="o-header__nav c-nav">
+        <li class="c-nav__item">
+        	<a class="c-nav__link c-nav__link--blog" href="https://www.raspberrypi.org/blog">Blog</a>
+        </li>
+        <li class="c-nav__item">
+        	<a class="c-nav__link c-nav__link--downloads" href="https://www.raspberrypi.org/downloads">Downloads</a>
+        </li>
+        <li class="c-nav__item">
+        	<a class="c-nav__link c-nav__link--community" href="https://www.raspberrypi.org/community">Community</a>
+        </li>
+        <li class="c-nav__item">
+        	<a class="c-nav__link c-nav__link--help" href="https://www.raspberrypi.org/help">Help</a>
+        </li>
+        <li class="c-nav__item">
+        	<a class="c-nav__link c-nav__link--forums" href="https://www.raspberrypi.org/forums">Forums</a>
+        </li>
+        <li class="c-nav__item">
+        	<a class="c-nav__link c-nav__link--education" href="https://www.raspberrypi.org/education">Education</a>
+        </li>
+      </ul>
+
+      <a class="o-header__link o-header__link--products c-big-link c-big-link--products" href="https://www.raspberrypi.org/products">
+      	<span class="u-visually-hidden">Buy a Pi</span>
+      </a>
+
+      <span aria-hidden="true" class="o-header__search-toggle c-search-toggle">
+      	<span class="u-visually-hidden">Open Search Input</span>
+      </span>
+
+      <span aria-hidden="true" class="o-header__toggle c-nav-toggle">
+	      <span class="c-nav-toggle__inner">
+	      	<span class="u-visually-hidden">Open Navigation</span>
+	      </span>
+      </span>
+    </nav>
+  </header>
+
+  <div class="o-header__search">
+    <form class="o-container c-search" role="search" method="GET" action="https://www.raspberrypi.org">
+    	<input class="c-search__input" name="s" placeholder="Search Raspberry Pi" type="search">
+    	<button class="c-search__submit">Search</button>
+    </form>
+  </div>
+
+  <script>
+    var header = document.querySelector('.o-header')
+    var navToggle = document.querySelector('.c-nav-toggle')
+    var searchToggle = document.querySelector('.c-search-toggle')
+
+    navToggle.addEventListener('click', function (event) {
+      event.preventDefault()
+
+      var navToggleInner = document.querySelector('.c-nav-toggle__inner')
+
+      header.classList.toggle('o-header--nav-open')
+      navToggle.classList.toggle('c-nav-toggle--open')
+      navToggleInner.classList.toggle('c-nav-toggle__inner--open')
+    })
+
+    searchToggle.addEventListener('click', function (event) {
+      event.preventDefault()
+
+      var productsLink = document.querySelector('.c-big-link--products')
+      var searchContainer = document.querySelector('.o-header__search')
+      var searchInput = document.querySelector('.c-search__input')
+
+      searchInput.blur()
+      productsLink.classList.toggle('c-big-link--search-open')
+      searchToggle.classList.toggle('c-search-toggle--open')
+      searchContainer.classList.toggle('o-header__search--open')
+
+      if (searchContainer.classList.contains('o-header__search--open')) {
+      	searchInput.focus()
+      }
+    })
+  </script>
+
+  <div class="container">
+  	<div class="main">
+      {% include _breadcrumbs.html %}
+
+			<article class="entry-content">
+				{{ content }}
+			</article>
+
+      {% include _github.html %}
+
+  	<div style="clear: both;"></div>
+  </div>
+
+  <footer class="o-footer">
+		<div class="o-container">
+			<div class="o-footer__grid">
+				<div class="o-footer__social">
+					<ul class="c-footer-social">
+						<li class="c-footer-social__item">
+							<a class="c-footer-social__link c-footer-social__link--facebook" href="https://www.facebook.com/raspberrypi">
+								<span class="u-visually-hidden">Like Raspberry Pi on Facebook</span>
+							</a>
+						</li>
+						<li class="c-footer-social__item">
+							<a class="c-footer-social__link c-footer-social__link--twitter" href="https://twitter.com/Raspberry_Pi">
+								<span class="u-visually-hidden">Follow Raspberry Pi on Twitter</span>
+							</a>
+						</li>
+						<li class="c-footer-social__item">
+							<a class="c-footer-social__link c-footer-social__link--instagram" href="https://www.instagram.com/raspberrypifoundation/">
+								<span class="u-visually-hidden">Check out what we’re having for lunch on Instagram</span>
+							</a>
+						</li>
+						<li class="c-footer-social__item">
+							<a class="c-footer-social__link c-footer-social__link--google-plus" href="https://plus.google.com/+RaspberryPi">
+								<span class="u-visually-hidden">Connect with us on Google Plus or whatever happens over there</span>
+							</a>
+						</li>
+						<li class="c-footer-social__item">
+							<a class="c-footer-social__link c-footer-social__link--youtube" href="https://youtube.com/raspberrypi">
+								<span class="u-visually-hidden">Subscribe to the Raspberry Pi YouTube channel</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="o-footer__nav">
+					<div class="o-footer__nav-about">
+						<div class="c-footer-nav">
+							<span class="c-footer-nav__title">About Us</span>
+
+							<ul class="c-footer-nav__list">
+								<li class="c-footer-nav__item">
+									<a class="c-footer-nav__link" href="https://www.raspberrypi.org/about">About us</a>
+								</li>
+								<li class="c-footer-nav__item">
+									<a class="c-footer-nav__link" href="https://www.raspberrypi.org/about/meet-the-team">Our team</a>
+								</li>
+								<li class="c-footer-nav__item">
+									<a class="c-footer-nav__link" href="https://www.raspberrypi.org/about/governance">Governance</a>
+								</li>
+								<li class="c-footer-nav__item">
+									<a class="c-footer-nav__link" href="https://www.raspberrypi.org/safeguarding">Safeguarding</a>
+								</li>
+								<li class="c-footer-nav__item">
+									<a class="c-footer-nav__link" href="https://www.raspberrypi.org/about/supporters">Our supporters</a>
+								</li>
+								<li class="c-footer-nav__item">
+									<a class="c-footer-nav__link" href="https://raspberrypi.workable.com/">Jobs</a>
+								</li>
+								<li class="c-footer-nav__item">
+									<a class="c-footer-nav__link" href="https://www.raspberrypi.org/contact">Contact us</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="o-footer__nav-support">
+						<div class="c-footer-nav">
+							<span class="c-footer-nav__title">Support</span>
+
+							<ul class="c-footer-nav__list">
+								<li class="c-footer-nav__item">
+									<a class="c-footer-nav__link" href="https://www.raspberrypi.org/help">Help</a>
+								</li>
+								<li class="c-footer-nav__item">
+									<a class="c-footer-nav__link" href="https://www.raspberrypi.org/documentation">Documentation</a>
+								</li>
+								<li class="c-footer-nav__item">
+									<a class="c-footer-nav__link" href="https://projects.raspberrypi.org/">Projects</a>
+								</li>
+								<li class="c-footer-nav__item">
+									<a class="c-footer-nav__link" href="https://www.raspberrypi.org/training">Training</a>
+								</li>
+								<li class="c-footer-nav__item">
+									<a class="c-footer-nav__link" href="https://www.raspberrypi.org/downloads">Downloads</a>
+								</li>
+								<li class="c-footer-nav__item">
+									<a class="c-footer-nav__link" href="https://www.raspberrypi.org/research-and-insights">Research</a>
+								</li>
+								<li class="c-footer-nav__item">
+									<a class="c-footer-nav__link" href="https://www.raspberrypi.org/help/faqs">FAQ</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="o-footer__newsletter">
+					<form action="https://raspberrypi.hosted.phplist.com/lists/?p=subscribe&amp;id=1" class="c-footer-newsletter" method="POST">
+						<span class="c-footer-newsletter__legend">Sign up to our newsletter</span>
+						<input class="c-footer-newsletter__input" name="email" placeholder="Your email here" required="" type="email">
+						<button class="c-footer-newsletter__button">Subscribe</button>
+					</form>
+				</div>
+
+				<div class="o-footer__charity">
+					<p class="c-footer-charity">
+						Raspberry Pi Foundation<br>
+						UK Registered Charity 1129409
+					</p>
+				</div>
+
+				<div class="o-footer__additional">
+					<p class="c-footer-additional">
+						<a class="c-footer-additional__link" href="https://www.raspberrypi.org/privacy">Privacy</a>
+						<a class="c-footer-additional__link" href="https://www.raspberrypi.org/cookies">Cookies</a>
+						<a class="c-footer-additional__link" href="https://www.raspberrypi.org/trademark-rules">Trademark rules and brand guidelines</a>
+					</p>
+				</div>
+			</div>
+		</div>
+  </footer>
+</body>
+</html>

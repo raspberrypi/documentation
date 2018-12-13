@@ -1,0 +1,13 @@
+<nav class="breadcrumbs">
+  <a href='/'>documentation</a>
+  {% assign crumbURL = "" %}
+  {% assign breadcrumbs = page.url | split: "/" %}
+  {% for crumb in breadcrumbs %}
+    {% if crumb == page.fileSlug and crumb != "" %}
+      &gt; {{ crumb }}
+    {% elsif crumb != "" %}
+      {% assign crumbURL = crumbURL | append: '/' | append: crumb %}
+      &gt; <a href="{{ crumbURL }}">{{ crumb }}</a>
+    {% endif %}
+  {% endfor %}
+</nav>
