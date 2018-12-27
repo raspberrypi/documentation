@@ -1,6 +1,16 @@
 # Updating and Upgrading Raspbian
 
-To update software in Raspbian, you'll need to use the [apt](../linux/software/apt.md) tool in a terminal window. Open the terminal from the taskbar or application menu:
+This section covers how to deploy software updates to devices running Raspbian.
+
+Before we go any further lets investigate why keeping our devices updated is important.
+
+The first and probably the most important reason is security. A device running Raspbian contains millions lines of code which you rely on. Over time these millions lines of code will expose well known vulnerabilities known as [Common Vulnerabilities and Exposures (CVE)](https://cve.mitre.org/index.html), which are documented in publicly available database meaning that they are easy to exploit. Here is a example [link](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8831) to a recent CVE found in KODI, which provides a bit more insight on what information is available in the database and how they are tracked. The only way to mitigate these exploits as a user of Raspbian is to keep your software up to date as the upstream repositories track CVE's closely and try to mitigate them quickly.
+
+The second reason, which relates to the first is that the software you are running on your device most certainly contains bugs, some bugs are CVE's but could also be something effecting the desired functionality which might not relate to security. By keeping your software up to date, you are lowering the chances of hitting these bugs.
+
+## APT (Advanced Packaging Tool)
+
+To update software in Raspbian, you can use the [apt](../linux/software/apt.md) tool in a terminal window. Open the terminal from the taskbar or application menu:
 
 ![Terminal](../usage/terminal/images/terminal.png)
 
@@ -20,15 +30,15 @@ Generally speaking, doing this regularly will keep your installation up to date,
 
 However, there are occasional changes made in the Foundation's Raspbian image that require manual intervention, for example a newly introduced package. These are not installed with an upgrade, as this command only updates the packages you already have installed.
 
-## Updating the kernel and firmware
+### Updating the kernel and firmware
 
 The kernel and firmware are installed as a Debian package, and so will also get updates when using the procedure above. These packages are updated infrequently and after extensive testing.
 
-## Running out of space
+### Running out of space
 
 When running `sudo apt-get dist-upgrade`, it will show how much data will be downloaded and how much space it will take up on the SD card. It's worth checking with `df -h` that you have enough free disk space, as unfortunately `apt` will not do this for you. Also be aware that downloaded package files (`.deb` files) are kept in `/var/cache/apt/archives`. You can remove these in order to free up space with `sudo apt-get clean`.
 
-## Upgrading from Jessie to Stretch
+### Upgrading from Jessie to Stretch
 
 Upgrading an existing Jessie image is possible, but is not guaranteed to work in every circumstance. If you wish to try upgrading a Jessie image to Stretch, we strongly recommend making a backup first — we can accept no responsibility for loss of data from a failed update.
 
