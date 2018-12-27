@@ -59,3 +59,24 @@ sudo apt-get -y purge "pulseaudio*"
 ```
 
 If moving to a new Pi model (for example the Pi 3B+), you may also need to update the kernel and the firmware using the instructions above.
+
+## Third-party solutions
+
+This section tries to cover why third-party solutions are of interest and why [apt](../linux/software/apt.md) is not optimal for all situations. It also covers existing third-party solutions that support Raspbian.
+
+[Apt](../linux/software/apt.md) is a convenient way of updating the software of your device running Raspbian, but the limitation of this method becomes apparent if you have a larger pool devices to update and especially if you do not have physical access to your device and if they are distributed geographically.
+
+When you lack physical access to your devices and want to deploy unattended updates Over-The-Air(OTA) here are some general requirements:
+
+- It must not under any circumstances break (“brick”) our devices, e.g if the update is interrupted (power-loss, network-loss etc) it should fall-back to a working state
+- It must be [atomic](https://en.wikipedia.org/wiki/Atomicity_(database_systems)), update succeeded or update failed. Nothing in-between that could result in that the device still “functions” but with undefined behavior.
+- It must be able to install images/packages that are cryptographically signed, preventing third parties from installing software on your device.
+- It must be able to install updates using an secure communication channel.
+
+Unfortunately [apt](../linux/software/apt.md) lacks the robustness features, that is atomicity and fall-back. This is why third-party solutions have started to appear trying to solve these problems that are required when deploying unattended updates Over-The-Air.
+
+### Mender
+
+Mender is an end-to-end open source update manager, a robust update process is implemented with atomic dual system update, there is always one working system partition, and Mender updates the one that is not running. You can read more in the [Mender: How it works page](https://mender.io/product/how-it-works).
+
+Mender supports Raspbian. To enable support for Mender in your Raspbian image, follow the tutorial for [Raspbian with Mender](https://hub.mender.io/t/raspberry-pi-3-model-b-b-raspbian/140).
