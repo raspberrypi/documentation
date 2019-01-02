@@ -15,7 +15,7 @@ The `sudo` is required because you will be changing files that you do not own as
 
 You should see a blue screen with options in a grey box in the centre, like so:
 
-![raspi-config main screen](../images/raspi-config.png)
+![raspi-config main screen](/configuration/images/raspi-config.png)
 
 It has the following options available:
 
