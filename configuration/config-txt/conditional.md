@@ -22,9 +22,9 @@ The conditional model filters are applied according to the following table.
 |--------|------------------|
 | [pi1] | Model A, Model B, Compute Module |
 | [pi2] | Model 2B (2836 or 2837 based) |
-| [pi3] | Model 3B, Compute Module 3 |
+| [pi3] | Model 3B, Compute Module 3, Model 3A+, Model 3B+ |
 | [pi3+]| Model 3A+, Model 3B+ |
-| [pi0] | Zero |
+| [pi0] | Zero, Zero W, Zero WH |
 | [pi0w]| Zero W, Zero WH |
 
 These are particularly useful for defining different `kernel`, `initramfs`, and `cmdline` settings, as the Pi 1 and Pi 2 require different kernels. They can also be useful to define different overclocking settings, as the Pi 1 and Pi 2 have different default speeds. For example, to define separate `initramfs` images for each:
