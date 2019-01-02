@@ -1,4 +1,4 @@
 _build/
-Gemfile.lock
 _site/
+Gemfile.lock
 node_modules/

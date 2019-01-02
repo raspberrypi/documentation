@@ -1,0 +1,9 @@
+.*
+CONTRIBUTING.md
+gulpfile.js
+LICENCE.md
+node_modules
+package-lock.json
+package.json
+paths.js
+README.md
