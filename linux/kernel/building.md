@@ -104,7 +104,11 @@ See [**Choosing sources**](#choosing_sources) above for instructions on how to c
 
 ### Build sources
 
-To build the sources for cross-compilation, there may be extra dependencies beyond those you've installed by default with Ubuntu. If you find you need other things, please submit a pull request to change the documentation.
+To build the sources for cross-compilation, make sure you have the dependencies needed on your machine by executing:
+```bash
+sudo apt-get install git bison flex libssl-dev
+```
+If you find you need other things, please submit a pull request to change the documentation.
 
 Enter the following commands to build the sources and Device Tree files:
 
