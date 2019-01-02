@@ -1,4 +1,4 @@
-# Video options in config.txt 
+# Video options in config.txt
 
 ## Composite video mode options
 
@@ -302,36 +302,36 @@ hdmi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> 
 ```
 
 ```
-<h_active_pixels> = horizontal pixels (width)  
-<h_sync_polarity> = invert hsync polarity  
-<h_front_porch>   = horizontal forward padding from DE acitve edge  
-<h_sync_pulse>    = hsync pulse width in pixel clocks  
-<h_back_porch>    = vertical back padding from DE active edge  
-<v_active_lines>  = vertical pixels height (lines)  
-<v_sync_polarity> = invert vsync polarity  
-<v_front_porch>   = vertical forward padding from DE active edge  
-<v_sync_pulse>    = vsync pulse width in pixel clocks  
-<v_back_porch>    = vertical back padding from DE active edge  
-<v_sync_offset_a> = leave at zero  
-<v_sync_offset_b> = leave at zero  
-<pixel_rep>       = leave at zero  
-<frame_rate>      = screen refresh rate in Hz  
-<interlaced>      = leave at zero  
-<pixel_freq>      = clock frequency (width*height*framerate)  
-<aspect_ratio>    = *  
+<h_active_pixels> = horizontal pixels (width)
+<h_sync_polarity> = invert hsync polarity
+<h_front_porch>   = horizontal forward padding from DE acitve edge
+<h_sync_pulse>    = hsync pulse width in pixel clocks
+<h_back_porch>    = vertical back padding from DE active edge
+<v_active_lines>  = vertical pixels height (lines)
+<v_sync_polarity> = invert vsync polarity
+<v_front_porch>   = vertical forward padding from DE active edge
+<v_sync_pulse>    = vsync pulse width in pixel clocks
+<v_back_porch>    = vertical back padding from DE active edge
+<v_sync_offset_a> = leave at zero
+<v_sync_offset_b> = leave at zero
+<pixel_rep>       = leave at zero
+<frame_rate>      = screen refresh rate in Hz
+<interlaced>      = leave at zero
+<pixel_freq>      = clock frequency (width*height*framerate)
+<aspect_ratio>    = *
 ```
 
 `*` The aspect ratio can be set to one of eight values (choose the closest for your screen):
 
 ```
-HDMI_ASPECT_4_3 = 1  
-HDMI_ASPECT_14_9 = 2  
-HDMI_ASPECT_16_9 = 3  
-HDMI_ASPECT_5_4 = 4  
-HDMI_ASPECT_16_10 = 5  
-HDMI_ASPECT_15_9 = 6  
-HDMI_ASPECT_21_9 = 7  
-HDMI_ASPECT_64_27 = 8  
+HDMI_ASPECT_4_3 = 1
+HDMI_ASPECT_14_9 = 2
+HDMI_ASPECT_16_9 = 3
+HDMI_ASPECT_5_4 = 4
+HDMI_ASPECT_16_10 = 5
+HDMI_ASPECT_15_9 = 6
+HDMI_ASPECT_21_9 = 7
+HDMI_ASPECT_64_27 = 8
 ```
 
 ### hdmi_force_mode
@@ -348,7 +348,7 @@ The options are:
  - `2` = `EDID_ContentType_Photo`, content type photo
  - `3` = `EDID_ContentType_Cinema`,  content type cinema
  - `4` = `EDID_ContentType_Game`,  content type game
- 
+
 ## Which values are valid for my monitor?
 
 Your HDMI monitor may only support a limited set of formats. To find out which formats are supported, use the following method:
@@ -426,9 +426,9 @@ Enable LCD displays attached to the DPI GPIOs. This is to allow the use of third
 
 The `dpi_group` and `dpi_mode` config.txt parameters are used to set either predetermined modes (DMT or CEA modes as used by HDMI above). A user can generate custom modes in much the same way as for HDMI (see `dpi_timings` section).
 
-`dpi_output_format` is a bitmask specifying various parameters used to set up the display format. 
+`dpi_output_format` is a bitmask specifying various parameters used to set up the display format.
 
-More details on using the DPI modes and the output format can be found [here](../../../hardware/raspberrypi/dpi).
+More details on using the DPI modes and the output format can be found [here](/hardware/raspberrypi/dpi).
 
 ### dpi_timings
 
@@ -439,36 +439,36 @@ dpi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> <
 ```
 
 ```
-<h_active_pixels> = horizontal pixels (width)  
-<h_sync_polarity> = invert hsync polarity  
-<h_front_porch>   = horizontal forward padding from DE acitve edge  
-<h_sync_pulse>    = hsync pulse width in pixel clocks  
-<h_back_porch>    = vertical back padding from DE active edge  
-<v_active_lines>  = vertical pixels height (lines)  
-<v_sync_polarity> = invert vsync polarity  
-<v_front_porch>   = vertical forward padding from DE active edge  
-<v_sync_pulse>    = vsync pulse width in pixel clocks  
-<v_back_porch>    = vertical back padding from DE active edge  
-<v_sync_offset_a> = leave at zero  
-<v_sync_offset_b> = leave at zero  
-<pixel_rep>       = leave at zero  
-<frame_rate>      = screen refresh rate in Hz  
-<interlaced>      = leave at zero  
-<pixel_freq>      = clock frequency (width*height*framerate)  
+<h_active_pixels> = horizontal pixels (width)
+<h_sync_polarity> = invert hsync polarity
+<h_front_porch>   = horizontal forward padding from DE acitve edge
+<h_sync_pulse>    = hsync pulse width in pixel clocks
+<h_back_porch>    = vertical back padding from DE active edge
+<v_active_lines>  = vertical pixels height (lines)
+<v_sync_polarity> = invert vsync polarity
+<v_front_porch>   = vertical forward padding from DE active edge
+<v_sync_pulse>    = vsync pulse width in pixel clocks
+<v_back_porch>    = vertical back padding from DE active edge
+<v_sync_offset_a> = leave at zero
+<v_sync_offset_b> = leave at zero
+<pixel_rep>       = leave at zero
+<frame_rate>      = screen refresh rate in Hz
+<interlaced>      = leave at zero
+<pixel_freq>      = clock frequency (width*height*framerate)
 <aspect_ratio>    = *
 ```
 
 `*` The aspect ratio can be set to one of eight values (choose the closest for your screen):
 
 ```
-HDMI_ASPECT_4_3 = 1  
-HDMI_ASPECT_14_9 = 2  
-HDMI_ASPECT_16_9 = 3  
-HDMI_ASPECT_5_4 = 4  
-HDMI_ASPECT_16_10 = 5  
-HDMI_ASPECT_15_9 = 6  
-HDMI_ASPECT_21_9 = 7  
-HDMI_ASPECT_64_27 = 8  
+HDMI_ASPECT_4_3 = 1
+HDMI_ASPECT_14_9 = 2
+HDMI_ASPECT_16_9 = 3
+HDMI_ASPECT_5_4 = 4
+HDMI_ASPECT_16_10 = 5
+HDMI_ASPECT_15_9 = 6
+HDMI_ASPECT_21_9 = 7
+HDMI_ASPECT_64_27 = 8
 ```
 
 ## Generic display options
@@ -483,7 +483,7 @@ Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is no
 
 ### disable_overscan
 
-Set `disable_overscan` to `1` to disable [overscan](../../raspi-config.md#overscan).
+Set `disable_overscan` to `1` to disable [overscan](/configuration/raspi-config.md#overscan).
 
 ### overscan_left
 
@@ -515,7 +515,7 @@ The `framebuffer_height` command specifies the console framebuffer height in pix
 
 ### max_framebuffer_height, max_framebuffer_width
 
-Specifies the maximum dimensions that the internal frame buffer is allowed to be. 
+Specifies the maximum dimensions that the internal frame buffer is allowed to be.
 
 ### framebuffer_depth
 

@@ -1,6 +1,6 @@
 # Overclocking options in config.txt
 
-**NOTE:** Setting any overclocking parameters to values other than those used by [raspi-config](../../raspi-config.md#overclock) may set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. The specific circumstances where the overclock bit is set are if `force_turbo` is set to `1` and any of the `over_voltage_*` options are set to a value > `0`. See the [blog post on Turbo Mode](https://www.raspberrypi.org/blog/introducing-turbo-mode-up-to-50-more-performance-for-free/) for more information.
+**NOTE:** Setting any overclocking parameters to values other than those used by [raspi-config](/configuration/raspi-config.md#overclock) may set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. The specific circumstances where the overclock bit is set are if `force_turbo` is set to `1` and any of the `over_voltage_*` options are set to a value > `0`. See the [blog post on Turbo Mode](https://www.raspberrypi.org/blog/introducing-turbo-mode-up-to-50-more-performance-for-free/) for more information.
 
 The latest kernel has a [cpufreq](http://www.pantz.org/software/cpufreq/usingcpufreqonlinux.html) kernel driver with the "ondemand" governor enabled by default. It has no effect if you have no overclock settings, but if you overclock, the CPU frequency will vary with processor load. Non-default values are only used when required, according to the governor. You can adjust the minimum values with the `*_min` config options, or disable dynamic clocking (and force overclocking) with `force_turbo=1`. For more information [see here](https://www.raspberrypi.org/forums/viewtopic.php?p=169726#p169726).
 
@@ -74,17 +74,17 @@ With firmware from 12th September 2016 or later, when the core temperature is be
 
 For the Raspberry Pi 3 Model B+, the PCB technology has been changed to provide better heat dissipation and increased thermal mass. In addition, a soft temperature limit has been introduced, with the goal of maximising the time for which a device can "sprint" before reaching the hard limit at 85°C. When the soft limit is reached, the clock speed is reduced from 1.4GHz to 1.2GHz, and the operating voltage is reduced slightly. This reduces the rate of temperature increase: we trade a short period at 1.4GHz for a longer period at 1.2GHz. By default, the soft limit is 60°C, and this can be changed via the temp_soft_limit setting in config.txt.
 
-See the page on [warning icons](../../warning-icons) for more details.
+See the page on [warning icons](/configuration/warning-icons.md) for more details.
 
 ## Monitoring voltage
 
-It is essential to keep the supply voltage above 4.8V for reliable performance. Note that the voltage from some USB chargers/power supplies can fall as low as 4.2V. This is because they are usually designed to charge a 3.7V LiPo battery, not to supply 5V to a computer. 
+It is essential to keep the supply voltage above 4.8V for reliable performance. Note that the voltage from some USB chargers/power supplies can fall as low as 4.2V. This is because they are usually designed to charge a 3.7V LiPo battery, not to supply 5V to a computer.
 
-To monitor the Pi's PSU voltage, you will need to use a multimeter to measure between the VCC and GND pins on the GPIO. More information is available in [power](../../../hardware/raspberrypi/power).
+To monitor the Pi's PSU voltage, you will need to use a multimeter to measure between the VCC and GND pins on the GPIO. More information is available in [power](/hardware/raspberrypi/power).
 
 If the voltage drops below 4.63v (+-5%), recent versions of the firmware will show a yellow lightning bolt symbol on the display to indicate a lack of power, and a message indicating the low voltage state will be added to the kernel log.
 
-See the page on [warning icons](../../warning-icons) for more details.
+See the page on [warning icons](/configuration/warning-icons.md) for more details.
 
 ## Overclocking problems
 
