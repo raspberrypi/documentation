@@ -13,7 +13,7 @@ Alternatively, you can pre-select the language before booting NOOBS for the firs
 
 ### Raspbian
 
-If you've installed Raspbian using NOOBS, it should automatically pick up the same language you were using within NOOBS. But if you want to select a different language, or if you've installed Raspbian from a standalone image, use [raspi-config](../raspi-config.md#change-locale).
+If you've installed Raspbian using NOOBS, it should automatically pick up the same language you were using within NOOBS. But if you want to select a different language, or if you've installed Raspbian from a standalone image, use [raspi-config](/configuration/raspi-config.md#change-locale).
 
 
 ## Keyboard
@@ -26,7 +26,7 @@ Alternatively, you can pre-select the keyboard before booting NOOBS for the firs
 
 ### Raspbian
 
-If you've installed Raspbian using NOOBS, it should automatically pick up the same keyboard you were using in NOOBS. But if you want to select a different keyboard, or if you've installed Raspbian from a standalone image, use [raspi-config](../raspi-config.md#change-keyboard-layout).
+If you've installed Raspbian using NOOBS, it should automatically pick up the same keyboard you were using in NOOBS. But if you want to select a different keyboard, or if you've installed Raspbian from a standalone image, use [raspi-config](/configuration/raspi-config.md#change-keyboard-layout).
 
 
 ## Timezone
@@ -37,4 +37,4 @@ No part of NOOBS uses the time; consequently there is no option for changing the
 
 ### Raspbian
 
-Once again, this is something you can change using the [raspi-config](../raspi-config.md#change-timezone) tool.
+Once again, this is something you can change using the [raspi-config](/configuration/raspi-config.md#change-timezone) tool.

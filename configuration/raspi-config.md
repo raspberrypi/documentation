@@ -57,8 +57,8 @@ Generally speaking, `raspi-config` aims to provide the functionality to make the
 <a name="change-user-password"></a>
 ### Change User Password
 
-The default user on Raspbian is ```pi``` with the password ```raspberry```. You can change that here. Read about other [users](../../linux/usage/users).
- 
+The default user on Raspbian is ```pi``` with the password ```raspberry```. You can change that here. Read about other [users](/linux/usage/users.md).
+
 <a name="network-options"></a>
 ### Network Options
 
@@ -106,7 +106,7 @@ Enable/disable the CSI camera interface.
 
 Enable/disable remote command line access to your Pi using SSH.
 
-SSH allows you to remotely access the command line of the Raspberry Pi from another computer. SSH is disabled by default. Read more about using SSH on the [SSH documentation page](../../remote-access/ssh). If connecting your Pi directly to a public network, you should not enable SSH unless you have set up secure passwords for all users.
+SSH allows you to remotely access the command line of the Raspberry Pi from another computer. SSH is disabled by default. Read more about using SSH on the [SSH documentation page](/remote-access/ssh). If connecting your Pi directly to a public network, you should not enable SSH unless you have set up secure passwords for all users.
 
 <a name="VNC"></a>
 #### VNC
@@ -133,7 +133,7 @@ Enable/disable shell and kernel messages on the serial connection.
 
 Enable/disable the Dallas 1-wire interface. This is usually used for DS18B20 temperature sensors.
 
-<a name="overclock"></a> 
+<a name="overclock"></a>
 ### Overclock
 
 It is possible to overclock your Raspberry Pi's CPU. The default is 700MHz but it can be set up to 1000MHz. The overclocking you can achieve will vary; overclocking too high may result in instability. Selecting this option shows the following warning:
@@ -155,7 +155,7 @@ If you have installed Raspbian using NOOBS, the filesystem will have been expand
 
 Old TV sets had a significant variation in the size of the picture they produced; some had cabinets that overlapped the screen. TV pictures were therefore given a black border so that none of the picture was lost; this is called overscan. Modern TVs and monitors don't need the border, and the signal doesn't allow for it. If the initial text shown on the screen disappears off the edge, you need to enable overscan to bring the border back.
 
-Any changes will take effect after a reboot. You can have greater control over the settings by editing [config.txt](../config-txt).
+Any changes will take effect after a reboot. You can have greater control over the settings by editing [config.txt](/configuration/config-txt).
 
 On some displays, particularly monitors, disabling overscan will make the picture fill the whole screen and correct the resolution. For other displays, it may be necessary to leave overscan enabled and adjust its values.
 
@@ -167,7 +167,7 @@ Change the amount of memory made available to the GPU.
 <a name="audio"></a>
 #### Audio
 
-Force audio out through HDMI or a 3.5mm jack. Read more on the [audio configuration documentation page](../audio-config).
+Force audio out through HDMI or a 3.5mm jack. Read more on the [audio configuration documentation page](/configuration/audio-config.md).
 
 <a name="resolution"></a>
 #### Resolution
@@ -185,7 +185,7 @@ Enable/disable 2x2 pixel mapping.
 Enable/disable the experimental GL desktop graphics drivers.
 
 <a name="GL-full-KMS"></a>
-##### GL (Full KMS) 
+##### GL (Full KMS)
 
 Enable/disable the experimental OpenGL Full KMS (kernel mode setting) desktop graphics driver.
 

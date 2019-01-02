@@ -35,4 +35,4 @@ The display should show a five-second preview from the camera and then take a pi
 
 ## More Information
 
-See [Camera Software](../../raspbian/applications/camera).
+See [Camera Software](/raspbian/applications/camera.md).

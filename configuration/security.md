@@ -88,9 +88,9 @@ Now save the file.
 
 ## Ensure you have the latest security fixes
 
-This can be as simple as ensuring your version of Raspbian is up-to-date, as an up-to-date distribution contains all the latest security fixes. Full instructions can be found [here](../../raspbian/updating).
+This can be as simple as ensuring your version of Raspbian is up-to-date, as an up-to-date distribution contains all the latest security fixes. Full instructions can be found [here](/raspbian/updating.md).
 
-If you are using SSH to connect to your Raspberry Pi, it can be worthwhile to add a cron job that specifically updates the ssh-server. The following command, perhaps as a daily cron job, will ensure you have the latest SSH security fixes promptly, independent of your normal update process. More information on setting up cron can be found [here](../../linux/usage/cron)
+If you are using SSH to connect to your Raspberry Pi, it can be worthwhile to add a cron job that specifically updates the ssh-server. The following command, perhaps as a daily cron job, will ensure you have the latest SSH security fixes promptly, independent of your normal update process. More information on setting up cron can be found [here](/linux/usage/cron.md)
 
 ```bash
 apt install openssh-server

@@ -8,11 +8,11 @@ As of 15 July 2014, the Raspberry Pi firmware supports custom default pin config
 
 During the bootup sequence, the GPIO pins go through various actions.
 
-1. Power-on — pins default to inputs with default pulls; the default pulls for each pin are described in the [datasheet](../../hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf)
+1. Power-on — pins default to inputs with default pulls; the default pulls for each pin are described in the [datasheet](/hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf)
 1. Setting by the bootrom
 1. Setting by `bootcode.bin`
 1. Setting by `dt-blob.bin` (this page)
-1. Setting by the GPIO command in `config.txt` (see [here](../config-txt/gpio))
+1. Setting by the GPIO command in `config.txt` (see [here](/configuration/config-txt/gpio.md))
 1. Additional firmware pins (e.g. UARTS)
 1. Kernel/Device Tree
 
@@ -51,7 +51,7 @@ The `dt-blob.bin` is used to configure the binary blob (VideoCore) at boot time.
 2. `pins_*`
 
    There are a number of separate `pins_*` sections, based on particular Raspberry Pi models, namely:
-   
+
  - **pins_rev1** Rev1 pin setup. There are some differences because of the moved I2C pins.
  - **pins_rev2** Rev2 pin setup. This includes the additional codec pins on P5.
  - **pins_bplus1** Model B+ rev 1.1, including the full 40pin connector.
@@ -65,17 +65,17 @@ The `dt-blob.bin` is used to configure the binary blob (VideoCore) at boot time.
  - **pins_pi0w** The Pi Zero W
  - **pins_cm** The Compute Module. The default for this is the default for the chip, so it is a useful source of information about default pull ups/downs on the chip.
  - **pins_cm3** The Compute Module version 3
-  
+
    Each `pins_*` section can contain `pin_config` and `pin_defines` sections.
 
 3. `pin_config`
 
    The `pin_config` section is used to configure the individual pins. Each item in this section must be a named pin section, such as `pin@p32`, meaning GPIO32. There is a special section `pin@default`, which contains the default settings for anything not specifically named in the pin_config section.
-   
+
 4. `pin@pinname`
 
    This section can contain any combination of the following items:
-   
+
    1. `polarity`
       * `active_high`
       * `active_low`

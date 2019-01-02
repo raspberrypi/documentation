@@ -153,7 +153,7 @@ We have an exclusive manufacturing and distribution arrangement with [RS](http:/
 
 ### What manufacturing standards etc. does the Pi comply with?
 
-We have put the Pi models through extensive compliance testing, for Europe, the USA, and other countries around the world. You can find many of the reports [here](../../hardware/raspberrypi/conformity).
+We have put the Pi models through extensive compliance testing, for Europe, the USA, and other countries around the world. You can find many of the reports [here](/hardware/raspberrypi/conformity.md).
 
 ### Can I use a Pi in a commercial product?
 
@@ -161,7 +161,7 @@ This is a very common question, and the answer is yes! Once you have bought a Pi
 
 ### Is a Pi suitable for industrial applications?
 
-Yes — it depends on your use case. Pis have been used successfully in industrial environments, but the final decision must be in the hands of the end user as to whether the device is suitable for the task at hand. See our [Compute Module documentation](../../hardware/computemodule) for more details on our Pi model specifically designed for use in commercial and industrial products.
+Yes — it depends on your use case. Pis have been used successfully in industrial environments, but the final decision must be in the hands of the end user as to whether the device is suitable for the task at hand. See our [Compute Module documentation](/hardware/computemodule) for more details on our Pi model specifically designed for use in commercial and industrial products.
 
 <a name="hardware"></a>
 ## The computer hardware
@@ -217,7 +217,7 @@ There is no on/off switch! To switch on, just plug it in. To switch off, if you 
 
 ### What are the dimensions of the Raspberry Pi?
 
-The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37″ x 2.21″ x 0.83″), with a little overlap for the SD card and connectors which project over the edges. They weigh 45g. The Pi Zero and Pi Zero W measure 65mm x 30mm x 5.4mm (or roughly 2.56″ x 1.18″ x 0.20″) and weigh 9g. For the mechanical outlines, please see the documentation [here](../../hardware/raspberrypi/mechanical)
+The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37″ x 2.21″ x 0.83″), with a little overlap for the SD card and connectors which project over the edges. They weigh 45g. The Pi Zero and Pi Zero W measure 65mm x 30mm x 5.4mm (or roughly 2.56″ x 1.18″ x 0.20″) and weigh 9g. For the mechanical outlines, please see the documentation [here](/hardware/raspberrypi/mechanical)
 
 <a name="pi-performance"></a>
 
@@ -241,7 +241,7 @@ Sort of, but not in the way you might want to do it. You cannot simply make a mo
 
 ### Why does my Pi run at a slower clock speed that advertised?
 
-The Raspberry Pi (all models) idles at a lower speed than advertised. If the workload of the CPU increases, then the clock speed increases until it reaches its maximum value, which varies between models. If the CPU starts to overheat, there are added complexities: depending on the model, when the device reaches a particular temperature, the clock is throttled back to prevent overheating. This is called thermal throttling. If the Pi does thermal-throttle, you will see a warning icon in the top right-hand corner of the desktop (see [here](../../configuration/warning-icons)).
+The Raspberry Pi (all models) idles at a lower speed than advertised. If the workload of the CPU increases, then the clock speed increases until it reaches its maximum value, which varies between models. If the CPU starts to overheat, there are added complexities: depending on the model, when the device reaches a particular temperature, the clock is throttled back to prevent overheating. This is called thermal throttling. If the Pi does thermal-throttle, you will see a warning icon in the top right-hand corner of the desktop (see [here](/configuration/warning-icons.md)).
 
 ### Does it overclock?
 
@@ -270,7 +270,7 @@ It's important to keep your system up to date with the latest security updates, 
 
 + `sudo apt dist-upgrade` will then download all the updates and install them
 
-We recommend going through this process once a week or so. 
+We recommend going through this process once a week or so.
 
 ### I heard about something called `rpi-update`. When should I use that?
 
@@ -306,7 +306,7 @@ Most `.exe` files come from Windows and are compiled for the x86 processor archi
 
 Yes, there are a number of ways of doing this, and the most common is to use what are called Samba shares. We don't have any specific documentation on Samba shares in our official docs just yet, but [here](https://www.raspberrypi.org/magpi/samba-file-server/) is some from our magazine, [The MagPi](https://www.raspberrypi.org/magpi).
 
-It's also easy to copy files to and from Windows devices, rather than sharing folders. There is plenty of documentation [here](../../remote-access).
+It's also easy to copy files to and from Windows devices, rather than sharing folders. There is plenty of documentation [here](/remote-access).
 
 ### Why does `cpuinfo` report I have a BCM2835?
 
@@ -314,11 +314,11 @@ The upstream Linux kernel developers had decided that all models of Raspberry Pi
 
 ### How do I run a program at startup?
 
-There are a number of ways of doing this — [here's one](../../linux/usage/rc-local).
+There are a number of ways of doing this — [here's one](/linux/usage/rc-local.md).
 
 ### How do I run a program at a specific time?
 
-With Cron! [Here's how](../../linux/usage/cron).
+With Cron! [Here's how](/linux/usage/cron.md).
 
 <a name="pi-video"></a>
 ## Video
@@ -406,11 +406,11 @@ Running the Raspberry Pi directly from batteries requires special care and can r
 
 ### Is Power over Ethernet possible?
 
-Yes, if you own a 3B+, you can use the the official Raspberry Pi PoE HAT. For other models, there are adapters that would split the voltage off the Ethernet line before connecting to the Pi. However, we have not tested any of these, so cannot recommend any of these third-party PoE solutions. 
+Yes, if you own a 3B+, you can use the the official Raspberry Pi PoE HAT. For other models, there are adapters that would split the voltage off the Ethernet line before connecting to the Pi. However, we have not tested any of these, so cannot recommend any of these third-party PoE solutions.
 
 ### What voltage devices can I attach to the GPIO pins, and how much current can I pull?
 
-The GPIO pins are natively 3.3V, so 5V devices **MUST NOT** be attached directly without some sort of voltage conversion. The pins can provide up to 16mA current. See the [GPIO docs page](../../hardware/raspberrypi/gpio) for more information.
+The GPIO pins are natively 3.3V, so 5V devices **MUST NOT** be attached directly without some sort of voltage conversion. The pins can provide up to 16mA current. See the [GPIO docs page](/hardware/raspberrypi/gpio) for more information.
 
 <a name="sd-cards"></a>
 
@@ -426,7 +426,7 @@ We have tried cards up to 128GB, and most cards seem to work OK. You can also at
 
 ### Can I boot a Pi from a USB-attached hard drive instead of the SD card?
 
-USB boot is only possible on the Raspberry Pi 2B v1.2, 3B, 3B+, and 3A+. Booting from a USB-attached drive (either a SSD or actual hard drive) can make the Pi boot and work faster. We have extensive instructions on how to do this [here](../../hardware/raspberrypi/bootmodes/msd).
+USB boot is only possible on the Raspberry Pi 2B v1.2, 3B, 3B+, and 3A+. Booting from a USB-attached drive (either a SSD or actual hard drive) can make the Pi boot and work faster. We have extensive instructions on how to do this [here](/hardware/raspberrypi/bootmodes/msd.md).
 
 ### What happens if I brick the device?
 
@@ -456,7 +456,7 @@ Although the Ethernet chip on the Raspberry Pi 3B+ is gigabit-capable, the conne
 
 ### Does the device have support for any form of netbooting or PXE?
 
-Yes. The Raspberry Pi 3 can be set up to network boot without an SD card present; earlier models can PXE/Netboot with an appropriately set up SD card. You can find our netbooting documentation [here](../../hardware/raspberrypi/bootmodes/net).
+Yes. The Raspberry Pi 3 can be set up to network boot without an SD card present; earlier models can PXE/Netboot with an appropriately set up SD card. You can find our netbooting documentation [here](/hardware/raspberrypi/bootmodes/net.md).
 
 We have also developed [PiServer](https://www.raspberrypi.org/blog/piserver/), a piece of software that lets you easily set up a network of client Raspberry Pis connected to a single x86-based server via Ethernet. With PiServer, you don’t need SD cards, you can control all clients via the server, and you can add and configure user accounts — ideal for the classroom, your home, or an industrial setting.
 
@@ -510,7 +510,7 @@ To protect your information, Linux does not display anything when you are enteri
 
 ### Why does my Pi not start up/boot?
 
-Probably the most frequently asked question! We have full instructions for setting up your Raspberry Pi [here](../../setup/), but if it still will not boot, you will find advice on what to do in the [troubleshooting post on our forum](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=58151).
+Probably the most frequently asked question! We have full instructions for setting up your Raspberry Pi [here](/setup/), but if it still will not boot, you will find advice on what to do in the [troubleshooting post on our forum](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=58151).
 
 ### Why is my Pi hot?
 
@@ -518,7 +518,7 @@ All electronics give off heat, and the Pi is no exception. The latest model (3B+
 
 ### I keep getting a lightning bolt symbol and messages about power.
 
-Most Pi models have circuity to detect drops of the incoming power supply voltage below around 4.65V. If such a drop happens, the lightning bolt warning icon (see [here](../../configuration/warning-icons)) will appear, and a message will be sent to the system log. Below this voltage, there is no guarantee the Pi will work correctly; it may result in the device locking up, or bad SD card writes, USB device failure, Ethernet dropping out, etc. We recommend a good-quality 5V power supply, 2.5A for the Pi 3B+, with a thick copper supply cable, such as [our official power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/). The cable itself can be very important: often the cheaper cables use very thin copper wire, which can cause a significant voltage drop.
+Most Pi models have circuity to detect drops of the incoming power supply voltage below around 4.65V. If such a drop happens, the lightning bolt warning icon (see [here](/configuration/warning-icons.md)) will appear, and a message will be sent to the system log. Below this voltage, there is no guarantee the Pi will work correctly; it may result in the device locking up, or bad SD card writes, USB device failure, Ethernet dropping out, etc. We recommend a good-quality 5V power supply, 2.5A for the Pi 3B+, with a thick copper supply cable, such as [our official power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/). The cable itself can be very important: often the cheaper cables use very thin copper wire, which can cause a significant voltage drop.
 
 ### My SD card seems to have stopped working.
 
@@ -526,7 +526,7 @@ SD cards have a limited lifespan due to the way they work. Under most circumstan
 
 ### I've imaged an SD card with Raspbian/NOOBS, but when I look at it with my Windows PC, it's not all there!
 
-This is to do with the capabilities of Windows to read Linux-formatted partitions. When you image the SD card, it is automatically split into multiple partitions. The first partition uses a format that Windows can read, but the other partitions use a Linux-specific file system, which Windows simply does not recognise. This means when you put an SD card in a Windows machine, it only displays the first partition, and may well say the other partitions are corrupted and need formatting - **do not format them**! Here's some information on what goes in that first [partition](../../configuration/boot_folder). If you insert the SD card on a machine running Linux, it will display all the partitions correctly.
+This is to do with the capabilities of Windows to read Linux-formatted partitions. When you image the SD card, it is automatically split into multiple partitions. The first partition uses a format that Windows can read, but the other partitions use a Linux-specific file system, which Windows simply does not recognise. This means when you put an SD card in a Windows machine, it only displays the first partition, and may well say the other partitions are corrupted and need formatting - **do not format them**! Here's some information on what goes in that first [partition](/configuration/boot_folder.md). If you insert the SD card on a machine running Linux, it will display all the partitions correctly.
 
 ## I still have more questions!
 

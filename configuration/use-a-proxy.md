@@ -19,7 +19,7 @@ You will need to set up three environment variables (`http_proxy`, `https_proxy`
 sudo nano /etc/environment
 ```
 
-![open etc environment](../images/proxy-open-environment.png)
+![open etc environment](/configuration/images/proxy-open-environment.png)
 
 + Add the following to the `/etc/environment` file to create the `http_proxy` variable:
 
@@ -54,11 +54,11 @@ export https_proxy="http://username:password@proxyipaddress:proxyport"
 export no_proxy="localhost, 127.0.0.1"
 ```
 
-![environment variables](../images/proxy-environment-variables.png)
+![environment variables](/configuration/images/proxy-environment-variables.png)
 
 + Press <kbd>Ctrl + X</kbd> to save and exit.
 
-## Update sudoers 
+## Update sudoers
 
 In order for operations that run as `sudo` (e.g. downloading and installing software) to use the new environment variables, you'll need to update `sudoers`.
 
@@ -74,7 +74,7 @@ sudo visudo
 Defaults	env_keep+="http_proxy https_proxy no_proxy"
 ```
 
-![edit sudoers](../images/proxy-edit-sudoers.png)
+![edit sudoers](/configuration/images/proxy-edit-sudoers.png)
 
 + Press <kbd>Ctrl + X</kbd> to save and exit.
 
