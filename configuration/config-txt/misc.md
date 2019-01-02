@@ -2,7 +2,7 @@
 
 ## avoid_warnings
 
-The [warning symbols](../../warning-icons) can be disabled using this option, although this is not advised.
+The [warning symbols](/configuration/warning-icons.md) can be disabled using this option, although this is not advised.
 
 `avoid_warnings=1` disables the warning overlays.
 `avoid_warnings=2` disables the warning overlays, but additionally allows turbo mode even when low-voltage is present.

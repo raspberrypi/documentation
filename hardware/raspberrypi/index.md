@@ -28,7 +28,7 @@ The hardware in the Raspberry Pi
     - DPI on the Raspberry Pi
 - [Peripheral addresses](./peripheral_addresses)
     - How to access peripheral addresses using the bcm_host helpers
-- [Standard conformity documentation](./conformity)
+- [Standard conformity documentation](./conformity.md)
     - Conformance documentation for the various standards bodies
 - [Revision codes](./revision-codes)
     - Raspberry Pi revision code reference
