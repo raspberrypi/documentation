@@ -35,7 +35,10 @@ gulp.task(
 gulp.task('generate', shell.task('eleventy --passthroughall'))
 
 gulp.task('watch', function() {
-  gulp.watch(buildSrc + '/**/*', gulp.parallel('build'))
+  gulp.watch([
+    buildSrc + '/**/*',
+    '!' + buildSrc + '/_site/**/*'
+  ], gulp.parallel('build'))
 })
 
 gulp.task(

@@ -1,4 +1,4 @@
 module.exports = {
-  buildSrc: "_content",
+  buildSrc: ".",
   buildDest: "_site"
 };
