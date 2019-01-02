@@ -4,11 +4,6 @@ Rather than using the Raspberry Pi [camera module](../camera/README.md), you can
 
 Note that the quality and configurability of the camera module is highly superior to a standard USB webcam.
 
-## add your user to video group
-
-```bash
-sudo usermod -a -G video youruser
-```
 ## Install fswebcam
 
 First, install the `fswebcam` package:
@@ -16,6 +11,16 @@ First, install the `fswebcam` package:
 ```bash
 sudo apt-get install fswebcam
 ```
+
+## Add your user to video group
+
+If you are not using the default `pi` user account then you will need to add your username to the `video` group, otherwise you will see permission denied errors.
+
+```bash
+sudo usermod -a -G video <username>
+```
+
+You can use the `groups` command to check that the user has been added to the group correctly. 
 
 ## Basic usage
 
