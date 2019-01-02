@@ -24,7 +24,7 @@ Here the output is being set to `2`, which is HDMI. Setting the output to `1` sw
 
 ### raspi-config
 
-Open up [raspi-config](../raspi-config) by entering the following into the command line:
+Open up [raspi-config](/configuration/raspi-config.md) by entering the following into the command line:
 
 ```
 sudo raspi-config
@@ -32,11 +32,11 @@ sudo raspi-config
 
 This will open the configuration screen:
 
-![raspi-config screen](../images/raspi-config.png)
+![raspi-config screen](/configuration/images/raspi-config.png)
 
 Select Option 8 `Advanced Options` and press `Enter`, then select Option A6: `Audio` and press `Enter`:
 
-![Audio configuration screen](../images/raspi-config-audio.png)
+![Audio configuration screen](/configuration/images/raspi-config-audio.png)
 
 Now you are presented with the two modes explained above as an alternative to the default `Auto` option. Select a mode, press `Enter` and press the right arrow key to exit the options list, then select `Finish` to exit the configuration tool.
 

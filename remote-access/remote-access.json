@@ -1,4 +1,5 @@
 {
+  "layout": "default",
   "title": "Remote Access",
   "description": "Need to access a Raspberry Pi, but don’t have a monitor spare? This section provides basic instructions for setting up remote access."
 }
