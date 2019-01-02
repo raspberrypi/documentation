@@ -60,7 +60,7 @@ The Raspberry Pi Camera Module is an official product from the Raspberry Pi Foun
 
 ## Software features
 
-Full camera software documentation can be found at [raspbian/applications/camera](./../../raspbian/applications/camera).
+Full camera software documentation can be found at [raspbian/applications/camera](/raspbian/applications/camera.md).
 
 | | |
 | --- | --- |

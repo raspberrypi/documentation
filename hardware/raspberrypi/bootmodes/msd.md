@@ -8,11 +8,11 @@ This tutorial explains how to boot your Raspberry Pi from a USB mass storage dev
 
 The Raspberry Pi 3+ is able to boot from USB without any changes, but the Raspberry Pi 3 requires the USB boot bit to be set in the OTP (one-time programmmble) memory. If you are using a Raspberry Pi 3+, please go to the next section.
 
-To enable the USB boot bit, the Raspberry Pi 3 needs to be booted from an SD card with a `config` option to enable USB boot mode. 
+To enable the USB boot bit, the Raspberry Pi 3 needs to be booted from an SD card with a `config` option to enable USB boot mode.
 
 Once this bit has been set, the SD card is no longer required. **Note that any change you make to the OTP is permanent and cannot be undone.**
 
-You can use any SD card running Raspbian or Raspbian Lite to program the OTP bit. If you don't have such an SD card then you can install Raspbian or Raspbian Lite in the normal way - see [installing images](../../../../installation/installing-images).
+You can use any SD card running Raspbian or Raspbian Lite to program the OTP bit. If you don't have such an SD card then you can install Raspbian or Raspbian Lite in the normal way - see [installing images](/installation/installing-images).
 
 First, prepare the `/boot` directory with up to date boot files (this step is not required if you're using the 2017-04-10 release of Raspbian/Raspbian Lite or a later one):
 
@@ -39,7 +39,7 @@ If you wish, you can remove the `program_usb_boot_mode` line from config.txt, so
 
 ## Prepare the USB mass storage device
 
-Starting with the 2017-04-10 release of Raspbian you can install a working Raspbian system to a USB mass storage device by copying the operating system image directly onto your USB device, in the same way that you would for an SD card. To perform this step, follow the instructions [here](../../../../installation/installing-images), remembering to select the drive that corresponds to your USB mass storage device.
+Starting with the 2017-04-10 release of Raspbian you can install a working Raspbian system to a USB mass storage device by copying the operating system image directly onto your USB device, in the same way that you would for an SD card. To perform this step, follow the instructions [here](/installation/installing-images), remembering to select the drive that corresponds to your USB mass storage device.
 
 Once you have finished imaging your USB mass storage device, remove it from your computer and insert it into your Raspberry Pi.
 

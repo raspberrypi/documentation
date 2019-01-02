@@ -26,13 +26,13 @@ The hardware in the Raspberry Pi
     - SPI on the Raspberry Pi
 - [DPI (Parallel/RGB Display)](./dpi)
     - DPI on the Raspberry Pi
-- [Peripheral addresses](./peripheral_addresses)
+- [Peripheral addresses](./peripheral_addresses.md)
     - How to access peripheral addresses using the bcm_host helpers
 - [Standard conformity documentation](./conformity.md)
     - Conformance documentation for the various standards bodies
 - [Revision codes](./revision-codes)
     - Raspberry Pi revision code reference
-- [OTP Bit definitions](./otpbits)
+- [OTP Bit definitions](./otpbits.md)
     - Register and bit definitons for the One-Time Programmable (OTP) memory on the Raspberry Pi
-- [Processor frequency and thermal management](./frequency-management)
+- [Processor frequency and thermal management](./frequency-management.md)
     - Information on how the Raspberry Pi manages CPU frequencies and heat dissipation

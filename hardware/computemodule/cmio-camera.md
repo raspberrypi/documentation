@@ -14,15 +14,15 @@
 1. Next, run `sudo wget http://goo.gl/U4t12b -O /boot/dt-blob.bin`
 1. Connect the RPI-CAMERA board and Camera Module to the CAM1 port. As an alternative, the Pi Zero camera cable can be used.
 
-    ![Connecting the adapter board](../images/CMAIO-Cam-Adapter.jpg)
+    ![Connecting the adapter board](/hardware/computemodule/images/CMAIO-Cam-Adapter.jpg)
 
 1. Connect GPIO pins together as shown below.
 
-    ![GPIO connection for a single camera](../images/CMIO-Cam-GPIO.jpg)
+    ![GPIO connection for a single camera](/hardware/computemodule/images/CMIO-Cam-GPIO.jpg)
 
 1. (Optional) To add an additional camera, repeat step 3 with CAM0 and connect the GPIO pins for the second camera.
 
-    ![GPIO connection with additional camera](../images/CMIO-Cam-GPIO2.jpg)
+    ![GPIO connection with additional camera](/hardware/computemodule/images/CMIO-Cam-GPIO2.jpg)
 
 1. Finally, reboot for the dt-blob.bin file to be read.
 
@@ -45,7 +45,7 @@ The Compute Module IO board has a 22-way 0.5mm FFC for each camera port, with CA
 
 To attach a standard Raspberry Pi Camera Module to the Compute Module IO board, a small adaptor board, called RPI-CAMERA, is available. It adapts the 22W FFC to the Pi 15W FFC. As an alternative, the Pi Zero camera cable can be used.
 
-To make the Raspberry Pi Camera Module work with a standard Raspbian OS, the GPIOs and I2C interface must be wired to the CAM1 connector. This is done by bridging the correct GPIOs from the J6 GPIO connector to the CD1_SDA/SCL and CAM1_IO0/1 pins on the J5 connector using jumper wires. Additionally, a **dt-blob.bin** file needs to be provided to override default pin states (the dt-blob.bin file is a file that tells the GPU what pins to use when controlling the camera. For more information on this, see the relevant section in the guide to attaching peripherals to a Compute Module [here](../cm-peri-sw-guide)).
+To make the Raspberry Pi Camera Module work with a standard Raspbian OS, the GPIOs and I2C interface must be wired to the CAM1 connector. This is done by bridging the correct GPIOs from the J6 GPIO connector to the CD1_SDA/SCL and CAM1_IO0/1 pins on the J5 connector using jumper wires. Additionally, a **dt-blob.bin** file needs to be provided to override default pin states (the dt-blob.bin file is a file that tells the GPU what pins to use when controlling the camera. For more information on this, see the relevant section in the guide to attaching peripherals to a Compute Module [here](/hardware/computemodule/cm-peri-sw-guide.md)).
 
 **The pin numbers below are provided only as an example. LED and SHUTDOWN pins can be shared by both cameras, if required.** The SDA and SCL pins must be either GPIO0 and GPIO1 or GPIO28 and 29 and must be individual to each camera.
 
@@ -63,7 +63,7 @@ To make the Raspberry Pi Camera Module work with a standard Raspbian OS, the GPI
 
 ### Configuring default pin states
 
-The GPIOs used by the camera default to input mode on the Compute Module. In order to [override the default pin states](../../../configuration/pin-configuration) and define the pins used by the camera, we need to create a **dt-blob.bin** file from a source dts file with the relevant information for the GPU, and place this on the root of the first FAT partition.
+The GPIOs used by the camera default to input mode on the Compute Module. In order to [override the default pin states](/configuration/pin-configuration.md) and define the pins used by the camera, we need to create a **dt-blob.bin** file from a source dts file with the relevant information for the GPU, and place this on the root of the first FAT partition.
 
 [Sample device tree source files](#sample-device-tree-source-files) are provided at the bottom of this document.
 
@@ -117,6 +117,6 @@ pin_define@CAMERA_1_SCL_PIN { type = "internal"; number = <29>; };
 <a name="sample-device-tree-source-files"></a>
 ### Sample device tree source files
 
-[Enable CAM1 only](../dt-blob-cam1.dts)
+[Enable CAM1 only](/hardware/computemodule/dt-blob-cam1.dts)
 
-[Enable both cameras](../dt-blob-dualcam.dts)
+[Enable both cameras](/hardware/computemodule/dt-blob-dualcam.dts)

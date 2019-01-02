@@ -16,7 +16,7 @@ The USB host boot mode follows this sequence:
 * Else
   * Enumerate single device
 * Go through MSD device list
-  * [Boot from MSD](../msd)
+  * [Boot from MSD](/hardware/raspberrypi/bootmodes/msd.md)
 * Go through Ethernet device list
-  * [Boot from Ethernet](../net)
+  * [Boot from Ethernet](/hardware/raspberrypi/bootmodes/net.md)
 

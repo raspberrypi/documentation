@@ -65,7 +65,7 @@ The options for the touchscreen are:
 
 ## Troubleshooting
 
-Read our troubleshooting steps, tips, and tricks here: [Raspberry Pi Touch Display troubleshooting](./troubleshooting).
+Read our troubleshooting steps, tips, and tricks here: [Raspberry Pi Touch Display troubleshooting](/hardware/display/troubleshooting.md).
 
 ## Specifications
 
@@ -90,5 +90,5 @@ Read our troubleshooting steps, tips, and tricks here: [Raspberry Pi Touch Displ
 
 * Outer dimensions: 192.96 × 110.76mm
 * Viewable area: 154.08 × 85.92mm
-* [Download mechanical drawing (PDF, 592kb)](./7InchDisplayDrawing-14092015.pdf)
-* [Additional drawing including radius and thickness of glass](./radius.png)
+* [Download mechanical drawing (PDF, 592kb)](/hardware/display/7InchDisplayDrawing-14092015.pdf)
+* [Additional drawing including radius and thickness of glass](/hardware/display/radius.png)

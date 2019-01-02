@@ -7,9 +7,9 @@ Due to the huge range of networking devices available, we can't guarantee that n
 **Note:** if you are using a Raspberry Pi 3B+, then USB boot mode is set by default, so you can ignore the instructions in the **Client configuration** and **Program USB boot mode** sections and go directly to **Server configuration**.
 
 ## Client configuration
-Before a Raspberry Pi will network boot, it needs to be booted from an SD card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the SD card is no longer required. 
+Before a Raspberry Pi will network boot, it needs to be booted from an SD card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the SD card is no longer required.
 
-Install Raspbian Lite (or Raspbian with Raspberry Pi Desktop) on the SD card in the [usual way](../../../../installation/installing-images). 
+Install Raspbian Lite (or Raspbian with Raspberry Pi Desktop) on the SD card in the [usual way](/installation/installing-images).
 
 ### Program USB boot mode
 
@@ -89,11 +89,11 @@ Finally, note down the address of your DNS server, which is the same address as 
 cat /etc/resolv.conf
 ```
 
-Configure a static network address on your server Raspberry Pi by with `sudo nano /etc/network/interfaces` (where you replace nano with an editor of your choice). Change the line, `iface eth0 inet manual` so that the address is the first address from the command before last, the netmask address as `255.255.255.0` and the gateway address as the number received from the last command. 
+Configure a static network address on your server Raspberry Pi by with `sudo nano /etc/network/interfaces` (where you replace nano with an editor of your choice). Change the line, `iface eth0 inet manual` so that the address is the first address from the command before last, the netmask address as `255.255.255.0` and the gateway address as the number received from the last command.
 
 ```
 auto eth0
-iface eth0 inet static 
+iface eth0 inet static
         address 10.42.0.211
         netmask 255.255.255.0
         gateway 10.42.0.1
@@ -192,7 +192,7 @@ raspberrypi dnsmasq-tftp[1903]: file /tftpboot/bootcode.bin not found
 
 Next, you will need to copy the contents of the boot folder into the /tftpboot directory.
 
-First, use `Ctrl + C` to exit the monitoring state. Then type the following: 
+First, use `Ctrl + C` to exit the monitoring state. Then type the following:
 
 ```bash
 cp -r /boot/* /tftpboot

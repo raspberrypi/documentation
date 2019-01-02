@@ -4,7 +4,7 @@ General Purpose Input/Output pins on the Raspberry Pi
 
 ## Overview
 
-This page expands on the technical features of the GPIO pins available on BCM2835 in general. For usage examples, see [GPIO usage ](../../../../usage/gpio). When reading this page, reference should be made to the BCM2835 ARM peripherals [data sheet](./../bcm2835), section 6.
+This page expands on the technical features of the GPIO pins available on BCM2835 in general. For usage examples, see [GPIO usage ](/usage/gpio). When reading this page, reference should be made to the BCM2835 ARM peripherals [data sheet](./../bcm2835), section 6.
 
 GPIO pins can be configured as either general-purpose input, general-purpose output, or as one of up to six special alternate settings, the functions of which are pin-dependent.
 
@@ -46,7 +46,7 @@ Almost all of the GPIO pins have alternative functions. Peripheral blocks intern
 
 ## Voltage specifications
 
-The following table gives the various voltage specifications for the GPIO pins, it was extracted from the Compute Module datasheet [here](./../../computemodule/datasheet).
+The following table gives the various voltage specifications for the GPIO pins, it was extracted from the Compute Module datasheet [here](./../../computemodule/datasheet.md).
 
 | Symbol | Parameter | Conditions &emsp;| Min | Typical | Max | Unit |
 |--------|-----------|------------|------|---------|------|------|

@@ -4,7 +4,7 @@
 
 For the display to work with the Compute Module, the firmware needs to be from October 23rd 2015 or later (use `vcgencmd version` to check). For the display to work with the Compute Module 3, the firmware needs to be from October 2016 or later.
 
-**Note:** The Raspberry Pi Zero camera cable cannot be used as an alternative to the RPI-DISPLAY adaptor, because its wiring is different.   
+**Note:** The Raspberry Pi Zero camera cable cannot be used as an alternative to the RPI-DISPLAY adaptor, because its wiring is different.
 
 ## Quickstart — display only
 
@@ -47,12 +47,12 @@ Please note that the wiring is slightly different from that on the Camera page, 
 	GPIO31 - CAM0_IO0
 	```
 
-	![GPIO connection for a single display and two Camera Modules](../images/CMIO-Cam-Disp-GPIO.jpg)
+	![GPIO connection for a single display and two Camera Modules](/hardware/computemodule/images/CMIO-Cam-Disp-GPIO.jpg)
 	(Please note this image needs to be updated to show two Camera Modules, or have the extra jumper leads removed)
 
 1. On the Compute Module, for the display and one Camera Module, run:
 
-	```sudo wget https://goo.gl/gaqNrO -O /boot/dt-blob.bin```  
+	```sudo wget https://goo.gl/gaqNrO -O /boot/dt-blob.bin```
 
   For the display and two Camera Modules, run:
 
@@ -60,7 +60,7 @@ Please note that the wiring is slightly different from that on the Camera page, 
 
 1. Reboot for the `dt-blob.bin` file to be read.
 
-	![Camera Preview on the 7 inch display](../images/CMIO-Cam-Disp-Example.jpg)
+	![Camera Preview on the 7 inch display](/hardware/computemodule/images/CMIO-Cam-Disp-Example.jpg)
 	(Please note this image needs to be updated to show two Camera Modules, or have the extra jumper leads removed)
 
 ### Software support
@@ -69,6 +69,6 @@ There is no additional configuration required to enable the touchscreen. The tou
 
 
 ### Sources
-- [dt-blob-disp1-only.dts](../dt-blob-disp1-only.dts)
-- [dt-blob-disp1-cam1.dts](../dt-blob-disp1-cam1.dts)
-- [dt-blob-disp1-cam2.dts](../dt-blob-disp1-cam2.dts)
+- [dt-blob-disp1-only.dts](/hardware/computemodule/dt-blob-disp1-only.dts)
+- [dt-blob-disp1-cam1.dts](/hardware/computemodule/dt-blob-disp1-cam1.dts)
+- [dt-blob-disp1-cam2.dts](/hardware/computemodule/dt-blob-disp1-cam2.dts)

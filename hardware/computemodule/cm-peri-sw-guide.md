@@ -82,8 +82,8 @@ NOTE `dt-blob.bin` by default does not exist as there is a 'default' version com
 
 Note that `dt-blob.bin` is in compiled device tree format, but is only read by the GPU firmware to set up functions exclusive to the GPU - see below.
 
-A guide to creating dt-blob.bin is [here](../../../configuration/pin-configuration).
-A comprehensive guide to the Linux Device Tree for Raspberry Pi is [here](../../../configuration/device-tree).
+A guide to creating dt-blob.bin is [here](/configuration/pin-configuration.md).
+A comprehensive guide to the Linux Device Tree for Raspberry Pi is [here](/configuration/device-tree.md).
 
 During boot, the user can specify a specific ARM device tree to use via the `device_tree` parameter in `config.txt`, for example adding the line `device_tree=mydt.dtb` to `config.txt` where `mydt.dtb` is the dtb file to load instead of one of the standard ARM dtb files. While a user can create a full device tree for their Compute Module product, the recommended way to add hardware is to use overlays (see next section).
 
@@ -93,11 +93,11 @@ Overlays are used to add data to the base dtb that (nominally) describes non boa
 
 ## dt-blob.bin
 
-When `start.elf` runs, it first reads something called `dt-blob.bin`. This is a special form of Device Tree blob which tells the GPU how to (initially) set up the GPIO pin states, and also any information about GPIOs/peripherals that are controlled (owned) by the GPU, rather than being used via Linux on the ARM. For example, the Raspberry Pi Camera peripheral is managed by the GPU, and the GPU needs exclusive access to an I2C interface to talk to it, as well as a couple of control pins. I2C0 on most Pi Boards and Compute Modules is nominally reserved for exclusive GPU use. The information on which GPIO pins the GPU should use for I2C0, and to control the camera functions, comes from `dt-blob.bin`. 
+When `start.elf` runs, it first reads something called `dt-blob.bin`. This is a special form of Device Tree blob which tells the GPU how to (initially) set up the GPIO pin states, and also any information about GPIOs/peripherals that are controlled (owned) by the GPU, rather than being used via Linux on the ARM. For example, the Raspberry Pi Camera peripheral is managed by the GPU, and the GPU needs exclusive access to an I2C interface to talk to it, as well as a couple of control pins. I2C0 on most Pi Boards and Compute Modules is nominally reserved for exclusive GPU use. The information on which GPIO pins the GPU should use for I2C0, and to control the camera functions, comes from `dt-blob.bin`.
 
-NOTE: the `start.elf` firmware has a 'built-in' default `dt-blob.bin` which is used if no `dt-blob.bin` is found on the root of the first FAT partition. Most Compute Module projects will want to provide their own custom `dt-blob.bin`. Note that `dt-blob.bin` specifies which pin is for HDMI hot plug detect, although this should never change on Compute Module. It can also be used to set up a GPIO as a GPCLK output, and specify an ACT LED that the GPU can use while booting. Other functions may be added in future. For information on `dt-blob.bin` see [here](../../../configuration/pin-configuration).
+NOTE: the `start.elf` firmware has a 'built-in' default `dt-blob.bin` which is used if no `dt-blob.bin` is found on the root of the first FAT partition. Most Compute Module projects will want to provide their own custom `dt-blob.bin`. Note that `dt-blob.bin` specifies which pin is for HDMI hot plug detect, although this should never change on Compute Module. It can also be used to set up a GPIO as a GPCLK output, and specify an ACT LED that the GPU can use while booting. Other functions may be added in future. For information on `dt-blob.bin` see [here](/configuration/pin-configuration.md).
 
-[minimal-cm-dt-blob.dts](../minimal-cm-dt-blob.dts) is an example `.dts` device tree file that sets up the HDMI hot plug detect and ACT LED and sets all other GPIOs to be inputs with default pulls.
+[minimal-cm-dt-blob.dts](/hardware/computemodule/minimal-cm-dt-blob.dts) is an example `.dts` device tree file that sets up the HDMI hot plug detect and ACT LED and sets all other GPIOs to be inputs with default pulls.
 
 To compile the `minimal-cm-dt-blob.dts` to `dt-blob.bin` use the Device Tree Compiler `dtc`:
 ```
@@ -106,7 +106,7 @@ dtc -I dts -O dtb -o dt-blob.bin minimal-cm-dt-blob.dts
 
 ## ARM Linux Device Tree
 
-After `start.elf` has read `dt-blob.bin` and set up the initial pin states and clocks, it reads `config.txt` which contains many other options for system setup (see [here](../../../configuration/config-txt) for a comprehensive guide).
+After `start.elf` has read `dt-blob.bin` and set up the initial pin states and clocks, it reads `config.txt` which contains many other options for system setup (see [here](/configuration/config-txt) for a comprehensive guide).
 
 After reading `config.txt` another device tree file specific to the board the hardware is running on is read: this is `bcm2708-rpi-cm.dtb` for a Compute Module, or `bcm2710-rpi-cm.dtb` for CM3. This file is a standard ARM Linux device tree file, which details how hardware is attached to the processor: what peripheral devices exist in the SoC and where, which GPIOs are used, what functions those GPIOs have, and what physical devices are connected. This file will set up the GPIOs appropriately, overwriting the pin state set up in `dt-blob.bin` if it is different. It will also try to load driver(s) for the specific device(s).
 
@@ -118,7 +118,7 @@ The Raspbian image provides compiled dtb files, but where are the source dts fil
 
 Some default overlay dts files live in `arch/arm/boot/dts/overlays`. Corresponding overlays for standard hardware that can be attached to a **Raspberry Pi** in the Raspbian image are on the FAT partition in the `/overlays` directory. Note that these assume certain pins on BANK0, as they are for use on a Raspberry Pi. In general, use the source of these standard overlays as a guide to creating your own, unless you are using the same GPIO pins as you would be using if the hardware was plugged into the GPIO header of a Raspberry Pi.
 
-Compiling these dts files to dtb files requires an up-to-date version of the Device Tree compiler `dtc`. More information can be found [here](../../../configuration/device-tree), but the easy way to install an appropriate version on a Pi is to run:
+Compiling these dts files to dtb files requires an up-to-date version of the Device Tree compiler `dtc`. More information can be found [here](/configuration/device-tree.md), but the easy way to install an appropriate version on a Pi is to run:
 ```
 sudo apt-get install device-tree-compiler
 ```
@@ -154,11 +154,11 @@ Please use the [Device Tree subforum](https://www.raspberrypi.org/forums/viewfor
 
 For these simple examples I used a CMIO board with peripherals attached via jumper wires.
 
-For each of the examples we assume a CM+CMIO or CM3+CMIO3 board with a clean install of the latest Raspbian Lite version on the CM. See instructions [here](../cm-emmc-flashing).
+For each of the examples we assume a CM+CMIO or CM3+CMIO3 board with a clean install of the latest Raspbian Lite version on the CM. See instructions [here](/hardware/computemodule/cm-emmc-flashing.md).
 
 The examples here require internet connectivity, so a USB hub plus keyboard plus WiFi or Ethernet dongle plugged into the CMIO USB port is recommended.
 
-If you suspect any issues or bugs with Device Tree it is always best to try a `sudo rpi-update` to make sure you are using the latest firmware. 
+If you suspect any issues or bugs with Device Tree it is always best to try a `sudo rpi-update` to make sure you are using the latest firmware.
 
 WARNING: if you have edited any of the default .dtb files in `/boot` or `/boot/overlays` these may be overwritten by rpi-update.
 
@@ -168,7 +168,7 @@ Please post any issues, bugs or questions on the Raspberry Pi [Device Tree subfo
 
 In this simple example we wire an NXP PCF8523 real time clock (RTC) to the CMIO board BANK1 GPIO pins: 3V3, GND, I2C1_SDA on GPIO44 and I2C1_SCL on GPIO45.
 
-Download [minimal-cm-dt-blob.dts](../minimal-cm-dt-blob.dts) and copy it to the SD card FAT partition, located in `/boot` when the CM has booted.
+Download [minimal-cm-dt-blob.dts](/hardware/computemodule/minimal-cm-dt-blob.dts) and copy it to the SD card FAT partition, located in `/boot` when the CM has booted.
 
 Edit `minimal-cm-dt-blob.dts` and change the pin states of GPIO44 and 45 to be I2C1 with pull-ups:
 ```
@@ -194,7 +194,7 @@ Compile `dt-blob.bin`:
 sudo dtc -I dts -O dtb -o /boot/dt-blob.bin /boot/minimal-cm-dt-blob.dts
 ```
 
-Grab [example1-overlay.dts](../example1-overlay.dts) and put it in `/boot` then compile it:
+Grab [example1-overlay.dts](/hardware/computemodule/example1-overlay.dts) and put it in `/boot` then compile it:
 ```
 sudo dtc -@ -I dts -O dtb -o /boot/overlays/example1.dtbo /boot/example1-overlay.dts
 ```
@@ -249,4 +249,4 @@ sudo raspi-gpio get
 should show that GPIO8-11 have changed to ALT0 (SPI) functions.
 
 ## Attaching a camera or cameras
-To attach a camera or cameras see the documentation [here](../cmio-camera)
+To attach a camera or cameras see the documentation [here](/hardware/computemodule/cmio-camera.md)

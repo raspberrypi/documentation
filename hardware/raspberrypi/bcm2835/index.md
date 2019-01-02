@@ -10,4 +10,4 @@ Please refer to:
 - [ARM1176 processor](https://www.arm.com/products/processors/classic/arm11/arm1176.php)
 - [ARM1176JZF-S](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0301h/index.html)
 
-Also see the Raspberry Pi 2 Model B's chip, [BCM2836](./../bcm2836).
+Also see the Raspberry Pi 2 Model B's chip, [BCM2836](/hardware/raspberrypi/bcm2836).

@@ -1,6 +1,6 @@
 # Network booting
 
-This section describes how network booting works. We also have a [tutorial about setting up a working bootable system] (net_tutorial). Network booting works only for the wired adapter built into certain models of Raspberry Pi. Booting over wireless LAN is not supported, nor is booting from any other wired network device.
+This section describes how network booting works. We also have a [tutorial about setting up a working bootable system](/hardware/raspberrypi/bootmodes/net_tutorial.md). Network booting works only for the wired adapter built into certain models of Raspberry Pi. Booting over wireless LAN is not supported, nor is booting from any other wired network device.
 
 To network boot, the boot ROM does the following:
 
@@ -36,7 +36,7 @@ and then the Ethernet LEDs should light up around 5 seconds after the Pi powers 
 
 To capture the ethernet packets on the server, use tcpdump on the tftpboot server (or DHCP server if they are different). You will need to capture the packets there otherwise you will not be able to see packets that get sent directly because network switches are not hubs!
 
-``` 
+```
 sudo tcpdump -i eth0 -w dump.pcap
 ```
 
@@ -53,7 +53,7 @@ As a minimum you should see a DHCP request and reply which looks like the follow
 	  Vendor-rfc1048 Extensions
 	    Magic Cookie 0x63825363
 	    DHCP-Message Option 53, length 1: Discover
-	    Parameter-Request Option 55, length 12: 
+	    Parameter-Request Option 55, length 12:
 	      Vendor-Option, Vendor-Class, BF, Option 128
 	      Option 129, Option 130, Option 131, Option 132
 	      Option 133, Option 134, Option 135, TFTP
@@ -91,7 +91,7 @@ You will know whether the Vendor Option is correctly specified: if it is, you'll
 
 ```
 16:44:41.224964 IP (tos 0x0, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 49)
-    192.168.1.139.49152 > 192.168.1.1.69: [no cksum]  21 RRQ "bootcode.bin" octet 
+    192.168.1.139.49152 > 192.168.1.1.69: [no cksum]  21 RRQ "bootcode.bin" octet
 16:44:41.227223 IP (tos 0x0, ttl 64, id 57714, offset 0, flags [none], proto UDP (17), length 544)
     192.168.1.1.55985 > 192.168.1.139.49152: [udp sum ok] UDP, length 516
 16:44:41.227418 IP (tos 0x0, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 32)
@@ -99,4 +99,4 @@ You will know whether the Vendor Option is correctly specified: if it is, you'll
 ```
 
 See Also:
-* [Network boot tutorial](../net_tutorial)
+* [Network boot tutorial](/hardware/raspberrypi/bootmodes/net_tutorial.md)

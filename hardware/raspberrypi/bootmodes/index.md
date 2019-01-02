@@ -4,13 +4,13 @@
 
 The Raspberry Pi has a number of different stages of booting. This document is meant to help explain how the boot modes work, and which ones are supported for Linux booting.
 
-* [Bootflow](./bootflow): Boot sequence description
-* [SD card](./sdcard): SD card boot description
-* [USB](./usb): USB boot description
-  * [Device boot](./device): Booting as a mass storage device
-  * [Host boot](./host): Booting as a USB host
-    * [Mass storage boot](./msd): Boot from Mass Storage Device (MSD)
-    * [Network boot](./net): Boot from ethernet
+* [Bootflow](./bootflow.md): Boot sequence description
+* [SD card](./sdcard.md): SD card boot description
+* [USB](./usb.md): USB boot description
+  * [Device boot](./device.md): Booting as a mass storage device
+  * [Host boot](./host.md): Booting as a USB host
+    * [Mass storage boot](./msd.md): Boot from Mass Storage Device (MSD)
+    * [Network boot](./net.md): Boot from ethernet
 
 ## Special bootcode.bin-only boot mode
 

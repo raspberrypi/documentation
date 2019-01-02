@@ -10,6 +10,6 @@ The BCM2837B0 chip is packaged slightly differently to the BCM2837A0, and most n
 
 Also see the following documents for information about the previous Raspberry Pi chips:
 
-* Raspberry Pi 3 chip [BCM2837](./../bcm2837)
-* Raspberry Pi 2 chip [BCM2836](./../bcm2836)
-* Raspberry Pi 1 chip [BCM2835](./../bcm2835)
+* Raspberry Pi 3 chip [BCM2837](/hardware/raspberrypi/bcm2837)
+* Raspberry Pi 2 chip [BCM2836](/hardware/raspberrypi/bcm2836)
+* Raspberry Pi 1 chip [BCM2835](/hardware/raspberrypi/bcm2835)

@@ -2,7 +2,7 @@
 
 The Compute Module has an on-board eMMC device connected to the primary SD card interface. This guide explains how to write data to the eMMC storage using a Compute Module IO board.
 
-Please also read the section on the [Compute Module Datasheet](../datasheets/rpi_DATA_CM_1p0.pdf).
+Please also read the section on the [Compute Module Datasheet](/hardware/computemodule/datasheets/rpi_DATA_CM_1p0.pdf).
 
 ## Steps to flash the eMMC on a Compute Module
 
@@ -77,11 +77,11 @@ Run the `usbboot` tool and it will wait for a connection:
 sudo ./rpiboot
 ```
 
-Now plug the host machine into the Compute Module IO board USB slave port (J15) and power the CMIO board on. The `rpiboot` tool will discover the Compute Module and send boot code to allow access to the eMMC. 
+Now plug the host machine into the Compute Module IO board USB slave port (J15) and power the CMIO board on. The `rpiboot` tool will discover the Compute Module and send boot code to allow access to the eMMC.
 
 ### Writing to the eMMC - Windows
 
-After `rpiboot` completes, a new USB mass storage drive will appear in Windows. We recommend following this [guide](../../../installation/installing-images/windows) and using Win32DiskImager to write images to the drive, rather than trying to use `/dev/sda` etc. from Cygwin.
+After `rpiboot` completes, a new USB mass storage drive will appear in Windows. We recommend following this [guide](/installation/installing-images/windows.md) and using Win32DiskImager to write images to the drive, rather than trying to use `/dev/sda` etc. from Cygwin.
 
 Once you have written an OS image, make sure J4 (USB SLAVE BOOT ENABLE) is set to the disabled position and/or nothing is plugged into the USB slave port. Power cycling the IO board should result in the Compute Module booting the OS image from eMMC.
 
