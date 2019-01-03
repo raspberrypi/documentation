@@ -26,4 +26,4 @@ Otherwise, the script will not end and the Pi will not boot. The ampersand allow
 
 Also, be sure to reference absolute filenames rather than relative to your home folder; for example, `/home/pi/myscript.py` rather than `myscript.py`.
 
-One more point to note is that all commands will be executed by the root user. A certain case that may cause unexpected behaviour is the folder that created by the mkdir command inside this file, would not be accessed by other than the root user.
+One more point to note is that all commands will be executed by the root user. This can lead to unexpected behaviour, for example, if a folder is created by a mkdir command in the script, this would have root ownership and would not be accessable by other than the root user.
