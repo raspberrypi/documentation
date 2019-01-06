@@ -17,6 +17,7 @@ module.exports = function(eleventyConfig) {
 
   return {
     dir: {
+      // since we're using the root dir as an input, files/directories that shouldn't be in the output are ignored in .eleventyignore
       input: ".",
       output: "./_site",
     }
