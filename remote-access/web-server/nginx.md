@@ -20,11 +20,11 @@ sudo /etc/init.d/nginx start
 
 ## Test the web server
 
-By default, NGINX puts a test HTML file in the web folder. This default web page is served when you browse to `http://localhost/` on the Pi itself, or `http://192.168.1.10` (whatever the Pi's IP address is) from another computer on the network. To find the Pi's IP address, type `hostname -I` at the command line (or read more about finding your [IP address](../../ip-address)).
+By default, NGINX puts a test HTML file in the web folder. This default web page is served when you browse to `http://localhost/` on the Pi itself, or `http://192.168.1.10` (whatever the Pi's IP address is) from another computer on the network. To find the Pi's IP address, type `hostname -I` at the command line (or read more about finding your [IP address](/remote-access/ip-address.md)).
 
 Browse to the default web page either on the Pi or from another computer on the network and you should see the following:
 
-![NGINX welcome page](../images/nginx-welcome.png)
+![NGINX welcome page](/remote-access/web-server/images/nginx-welcome.png)
 
 ### Changing the default web page
 
@@ -82,7 +82,7 @@ It should look like this:
         #
         location ~ \.php$ {
                 include snippets/fastcgi-php.conf;
-        
+
                 # With php5-cgi alone:
         #       fastcgi_pass 127.0.0.1:9000;
                 # With php5-fpm:

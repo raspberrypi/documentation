@@ -4,7 +4,7 @@ You can use SSH to connect to your Raspberry Pi from a Linux computer, a Mac, or
 
 You will need to know your Raspberry Pi's IP address to connect to it. To find this, type `hostname -I` from your Raspberry Pi terminal.
 
-If you are running the Pi without a screen (headless), you can also look at the device list on your router or use a tool like `nmap`, which is described in detail in our [IP Address](../../ip-address) document.
+If you are running the Pi without a screen (headless), you can also look at the device list on your router or use a tool like `nmap`, which is described in detail in our [IP Address](/remote-access/ip-address.md) document.
 
 To connect to your Pi from a different computer, copy and paste the following command into the terminal window but replace `<IP>` with the IP address of the Raspberry Pi. Use `Ctrl + Shift + V` to paste in the terminal.
 
@@ -55,4 +55,4 @@ will open up Scratch.
 
 For further documentation on the `ssh` command just enter `man ssh` into the Terminal.
 
-To configure your Pi to allow passwordless SSH access with a public/private key pair, see the [passwordless SSH](../passwordless) guide.
+To configure your Pi to allow passwordless SSH access with a public/private key pair, see the [passwordless SSH](/remote-access/ssh/passwordless.md) guide.

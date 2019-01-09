@@ -2,13 +2,13 @@
 
 You can access the command line of a Raspberry Pi remotely from another computer or device on the same network using SSH.
 
-The Raspberry Pi will act as a remote device: you can connect to it using a client on another machine. 
+The Raspberry Pi will act as a remote device: you can connect to it using a client on another machine.
 
-You only have access to the command line, not the full desktop environment. For a full remote desktop, see [VNC](./../vnc).
+You only have access to the command line, not the full desktop environment. For a full remote desktop, see [VNC](/remote-access/vnc).
 
 ## 1. Set up your local network and wireless connectivity
 
-Make sure your Raspberry Pi is properly set up and connected. If you are using wireless networking, this can be enabled via the desktop's [user interface](./../../configuration/wireless), or using the [command line](./../../configuration/wireless/wireless-cli). 
+Make sure your Raspberry Pi is properly set up and connected. If you are using wireless networking, this can be enabled via the desktop's [user interface](/configuration/wireless.md), or using the [command line](/configuration/wireless/wireless-cli.md).
 
 If you are not using wireless connectivity, plug your Raspberry Pi directly into the router.
 
@@ -23,12 +23,12 @@ As of the November 2016 release, Raspbian has the SSH server disabled by default
 1. Select `Enabled` next to `SSH`
 1. Click `OK`
 
-Alternatively, [raspi-config](./../../configuration/raspi-config) can be used in the terminal:
+Alternatively, [raspi-config](/configuration/raspi-config.md) can be used in the terminal:
 
 1. Enter `sudo raspi-config` in a terminal window
 1. Select `Interfacing Options`
 1. Navigate to and select `SSH`
-1. Choose `Yes` 
+1. Choose `Yes`
 1. Select `Ok`
 1. Choose `Finish`
 
@@ -39,7 +39,7 @@ sudo systemctl enable ssh
 sudo systemctl start ssh
 ```
 
-When enabling SSH on a Pi that may be connected to the internet, you should change its default password to ensure that it remains secure. See the [Security page](./../../configuration/security) for more details.
+When enabling SSH on a Pi that may be connected to the internet, you should change its default password to ensure that it remains secure. See the [Security page](/configuration/security.md) for more details.
 
 ## 3. Enable SSH on a headless Raspberry Pi (add file to SD card on another machine)
 
@@ -51,7 +51,7 @@ If you have loaded Raspbian onto a blank SD card, you will have two partitions. 
 
 SSH is built into Linux distributions and Mac OS. For Windows and mobile devices, third-party SSH clients are available. See the following guides for using SSH with the OS on your computer or device:
 
-- [Linux & Mac OS](./unix)
-- [Windows](./windows)
-- [iOS](./ios)
-- [Android](./android)
+- [Linux & Mac OS](./unix.md)
+- [Windows](./windows.md)
+- [iOS](./ios.md)
+- [Android](./android.md)

@@ -4,5 +4,5 @@ You can use a web server on a Raspberry Pi to host a full website (locally on yo
 
 Various web servers are available, with different advantages for usage:
 
-- [Apache](./apache)
-- [NGINX](./nginx)
+- [Apache](./apache.md)
+- [NGINX](./nginx.md)

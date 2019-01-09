@@ -4,7 +4,7 @@ Sometimes you need to access a Raspberry Pi without connecting it to a monitor. 
 
 ## Contents
 
-- [IP address](./ip-address)
+- [IP address](./ip-address.md)
     - How to find your Raspberry Pi's IP address in order to connect to it
 - [Access over Internet](./access-over-Internet)
     - Remote access to the Pi over the internet by configuring port forwarding or using a third-party service
@@ -12,17 +12,17 @@ Sometimes you need to access a Raspberry Pi without connecting it to a monitor. 
     - Remote access to the Pi's graphical interface, viewed in a window on another computer
 - [SSH](./ssh)
     - Access the command line of the Pi from another computer
-- [SFTP](./ssh/sftp)
+- [SFTP](./ssh/sftp.md)
     - Copy files between your Pi and another computer using SFTP (Secure File Transfer Protocol)
-- [SCP](./ssh/scp)
+- [SCP](./ssh/scp.md)
     - Copy files between your Pi and another computer using SCP (Secure Copy Protocol)
-- [SSHFS](./ssh/sshfs)
+- [SSHFS](./ssh/sshfs.md)
     - Copy files between your Pi and another computer using SSHFS (Secure Shell Filesystem)
-- [rsync](./ssh/rsync)
+- [rsync](./ssh/rsync.md)
     - Synchronise folders between the Pi and another computer using `rsync` over SSH
-- [FTP](./ftp)
+- [FTP](./ftp.md)
     - Copy files between your Pi and another computer using FTP (File Transfer Protocol)
 - [Web Server](./web-server)
     - Set up a website or a web page to display some information about the Pi, using a web browser on another machine, on the network or on the internet
-- [Samba/CIFS](./samba)
+- [Samba/CIFS](./samba.md)
     - Sharing folders from or to Windows-based devices

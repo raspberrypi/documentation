@@ -80,4 +80,4 @@ ssh-add
 
 If this did not work, delete your keys with `rm ~/.ssh/id*` and follow the instructions again.
 
-You can also send files over SSH using the `scp` command (secure copy). See the [SCP guide](../scp) for more information.
+You can also send files over SSH using the `scp` command (secure copy). See the [SCP guide](/remote-access/ssh/scp.md) for more information.

@@ -20,11 +20,11 @@ sudo apt-get install apache2 -y
 
 ## Test the web server
 
-By default, Apache puts a test HTML file in the web folder. This default web page is served when you browse to `http://localhost/` on the Pi itself, or `http://192.168.1.10` (whatever the Pi's IP address is) from another computer on the network. To find the Pi's IP address, type `hostname -I` at the command line (or read more about finding your [IP address](../../ip-address)).
+By default, Apache puts a test HTML file in the web folder. This default web page is served when you browse to `http://localhost/` on the Pi itself, or `http://192.168.1.10` (whatever the Pi's IP address is) from another computer on the network. To find the Pi's IP address, type `hostname -I` at the command line (or read more about finding your [IP address](/remote-access/ip-address.md)).
 
 Browse to the default web page either on the Pi or from another computer on the network and you should see the following:
 
-![Apache success message](../images/apache-it-works.png)
+![Apache success message](/remote-access/web-server/images/apache-it-works.png)
 
 This means you have Apache working!
 
@@ -98,4 +98,4 @@ or show your PHP info:
 
 ### Further - WordPress
 
-Now you have Apache and PHP installed you can progress to setting up a WordPress site on your Pi. Continue to [WordPress usage](../../../usage/wordpress).
+Now you have Apache and PHP installed you can progress to setting up a WordPress site on your Pi. Continue to [WordPress usage](/usage/wordpress).
