@@ -8,7 +8,7 @@ The Raspberry Pi has a number of different stages of booting. This document expl
 
 [SD card boot](sdcard.md)
 
-[USB boot ](usb.md) comprising the following 2 modes:
+[USB boot](usb.md) comprising the following 2 modes:
 * [Device boot](device.md): Booting as a mass storage device
 * [Host boot](host.md): Booting as a USB host using the following:
   * [Mass storage boot](msd.md): Boot from mass Storage Device
