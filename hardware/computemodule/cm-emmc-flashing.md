@@ -2,7 +2,7 @@
 
 The Compute Module has an on-board eMMC device connected to the primary SD card interface. This guide explains how to write data to the eMMC storage using a Compute Module IO board.
 
-Please also read the section on the [Compute Module Datasheet](datasheets/rpi_DATA_CM_1p0.pdf).
+Please also read the section on the [Compute Module Datasheet](datasheets/rpi_DATA_CM_2p0.pdf).
 
 ## Steps to flash the eMMC on a Compute Module
 
