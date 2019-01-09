@@ -2,7 +2,7 @@
 
 Python is a wonderful and powerful programming language that's easy to use (easy to read **and** write) and with Raspberry Pi lets you connect your project to the real world.
 
-![Python logo](./images/python-logo.png)
+![Python logo](/usage/python/images/python-logo.png)
 
 Python syntax is very clean, with an emphasis on readability and uses standard English keywords. Start by opening IDLE from the desktop.
 
@@ -10,7 +10,7 @@ Python syntax is very clean, with an emphasis on readability and uses standard E
 
 The easiest introduction to Python is through IDLE, a Python development environment. Open IDLE from the Desktop or applications menu:
 
-![Python in the applications menu](./images/app-menu-python3.png)
+![Python in the applications menu](/usage/python/images/app-menu-python3.png)
 
 IDLE gives you a REPL (Read-Evaluate-Print-Loop), which is a prompt you can enter Python commands into. Because it's a REPL, you even get the output of commands printed to the screen without using `print`.
 
@@ -177,7 +177,7 @@ will produce:
 TypeError: 'int' object is not iterable
 ```
 
-![Python error](./images/python-error.png)
+![Python error](/usage/python/images/python-error.png)
 
 However you can make an iterable object using the `range` function:
 
@@ -235,9 +235,9 @@ Then save this file (`File > Save` or `Ctrl + S`) and run (`Run > Run Module` or
 
 ## Executing Python files from the command line
 
-You can write a Python file in a standard [editor](./../../linux/usage/text-editors) like Vim, Nano, or LeafPad, and run it as a Python script from the command line. Just navigate to the directory the file is saved in (use `cd` and `ls` for guidance) and run with `python3`, e.g. `python3 hello.py`.
+You can write a Python file in a standard [editor](/linux/usage/text-editors.md) like Vim, Nano, or LeafPad, and run it as a Python script from the command line. Just navigate to the directory the file is saved in (use `cd` and `ls` for guidance) and run with `python3`, e.g. `python3 hello.py`.
 
-![Python command line](./images/run-python.png)
+![Python command line](/images/run-python.png)
 
 ## Other ways of using Python
 
@@ -296,7 +296,7 @@ In the standard Python shell, this would have printed on one line:
 {0: 0, 1: 1, 2: 8, 3: 27, 4: 64, 5: 125, 6: 216, 7: 343, 8: 512, 9: 729, 10: 1000, 11: 1331}
 ```
 
-![Python vs ipython](./images/python-vs-ipython.png)
+![Python vs ipython](/usage/python/images/python-vs-ipython.png)
 
 You can look back on the history of the commands you've entered in the REPL by using the <kbd>Up/Down</kbd> keys like in `python`. The history also persists to the next session, so you can exit `ipython` and return (or switch between v2/3) and the history remains. Use `Ctrl + D` to exit.
 
@@ -329,7 +329,7 @@ Then install Python packages (e.g. `simplejson`) with `pip3`:
 sudo pip3 install simplejson
 ```
 
-Read more on installing software in Python [here](./../../linux/software/python).
+Read more on installing software in Python [here](/linux/software/python.md).
 
 #### piwheels
 
@@ -339,6 +339,6 @@ piwheels is a service providing pre-compiled packages (called *Python wheels*) r
 
 ## More
 
-- [GPIO with Python](./../gpio/python)
+- [GPIO with Python](/usage/gpio/python)
 - [Official Python website](https://www.python.org/)
 - [Official Python documentation](https://www.python.org/doc/)

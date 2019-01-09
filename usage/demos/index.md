@@ -2,7 +2,7 @@
 
 Here are some example programs to demonstrate the Pi's capabilities.
 
-![Mandelbrot fractal](./images/mandelbrot.jpg)
+![Mandelbrot fractal](/usage/demos/images/mandelbrot.jpg)
 
 In order to run these programs you need to be at the command line. Your Pi may boot to the command line (requiring you to enter `startx` to get to the desktop); if so, go straight ahead. Otherwise, use the start button to log out of the desktop.
 
@@ -38,11 +38,11 @@ Now we’re finally ready to run some demos!
 
 Demo programs:
 
-- [Hello world](./hello-world)
-- [Hello video](./hello-video)
-- [Hello triangle](./hello-triangle)
-- [Hello fractal](./hello-fractal)
-- [Hello teapot](./hello-teapot)
-- [Hello audio](./hello-audio)
+- [Hello world](./hello-world.md)
+- [Hello video](./hello-video.md)
+- [Hello triangle](./hello-triangle.md)
+- [Hello fractal](./hello-fractal.md)
+- [Hello teapot](./hello-teapot.md)
+- [Hello audio](./hello-audio.md)
 
 Try more demos in the `hello_pi` folder!

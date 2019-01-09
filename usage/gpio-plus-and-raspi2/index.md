@@ -1,3 +1,3 @@
 # GPIO
 
-[Page moved](./../gpio)
+[Page moved](/usage/gpio)

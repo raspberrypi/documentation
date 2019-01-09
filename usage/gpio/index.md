@@ -2,11 +2,11 @@
 
 A powerful feature of the Raspberry Pi is the row of GPIO (general-purpose input/output) pins along the top edge of the board. A 40-pin GPIO header is found on all current Raspberry Pi boards (unpopulated on Pi Zero and Pi Zero W). Prior to the Pi 1 Model B+ (2014), boards comprised a shorter 26-pin header.
 
-![GPIO pins](./images/gpio-pins-pi2.jpg)
+![GPIO pins](/usage/gpio/images/gpio-pins-pi2.jpg)
 
 Any of the GPIO pins can be designated (in software) as an input or output pin and used for a wide range of purposes.
 
-![GPIO layout](./images/gpio-numbers-pi2.png)
+![GPIO layout](/usage/gpio/images/gpio-numbers-pi2.png)
 
 **Note: the numbering of the GPIO pins is not in numerical order; GPIO pins 0 and 1 are present on the board (physical pins 27 and 28) but are reserved for advanced use (see below).**
 
@@ -42,11 +42,11 @@ As well as simple input and output devices, the GPIO pins can be used with a var
 
 It's important to be aware of which pin is which. Some people use pin labels (like the [RasPiO Portsplus](http://rasp.io/portsplus/) PCB, or the printable [Raspberry Leaf](https://github.com/splitbrain/rpibplusleaf)).
 
-![](./images/raspio-portsplus.jpg)
+![](/usage/gpio/images/raspio-portsplus.jpg)
 
 A handy reference can be accessed on the Raspberry Pi by opening a terminal window and running the command `pinout`. This tool is provided by the [GPIO Zero](https://gpiozero.readthedocs.io/) Python library, which it is installed by default on the Raspbian desktop image, but not on Raspbian Lite.
 
-![](./images/gpiozero-pinout.png)
+![](/usage/gpio/images/gpiozero-pinout.png)
 
 For more details on the advanced capabilities of the GPIO pins see gadgetoid's [interactive pinout diagram](http://pinout.xyz/).
 

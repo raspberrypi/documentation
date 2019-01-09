@@ -29,4 +29,4 @@ Applications and libraries for using the camera are available in:
 - [Linux command line](./raspicam) - Using the supplied command line applications (e.g. raspistill)
 - [Python](./python)
 
-See detailed [technical specs](./../../hardware/camera) of the camera hardware and software.
+See detailed [technical specs](/hardware/camera) of the camera hardware and software.

@@ -28,7 +28,7 @@ Open the cron table for editing:
 crontab -e
 ```
 
-This will either ask which editor you would like to use, or open in your default editor. Once you have the file open in an editor, add the following line to schedule taking a picture every minute (referring to the Bash script from the [previous page](../raspistill)):
+This will either ask which editor you would like to use, or open in your default editor. Once you have the file open in an editor, add the following line to schedule taking a picture every minute (referring to the Bash script from the [previous page](/usage/camera/raspicam/raspistill.md)):
 
 ```
 * * * * * /home/pi/camera.sh 2>&1

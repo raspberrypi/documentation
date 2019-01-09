@@ -2,17 +2,17 @@
 
 Kodi is media centre software which runs on Raspberry Pi.
 
-![LibreELEC](./images/openelec.png)
+![LibreELEC](/usage/kodi/images/openelec.png)
 
-Two Kodi distributions are included in our easy operating system installer [NOOBS](./../../installation/noobs): **LibreELEC** and **OSMC**.
+Two Kodi distributions are included in our easy operating system installer [NOOBS](/installation/noobs.md): **LibreELEC** and **OSMC**.
 
 ## NOOBS
 
-First, install NOOBS on an SD card. Follow instructions on the [NOOBS](./../../installation/noobs) page.
+First, install NOOBS on an SD card. Follow instructions on the [NOOBS](/installation/noobs.md) page.
 
 With NOOBS on your SD card, you should be able to boot the Raspberry Pi to the NOOBS operating system selection screen:
 
-![NOOBS OS selection screen](./../../installation/images/noobs.png)
+![NOOBS OS selection screen](/installation/images/noobs.png)
 
 Select **LibreELEC** or **OSMC** and press the `Install` button.
 
@@ -30,7 +30,7 @@ Now you've got your Kodi distribution installed, you can play media files, confi
 
 You may be shown a Welcome screen, which will help you configure your setup and get started.
 
-![LibreELEC welcome screen](./images/openelec-main.png)
+![LibreELEC welcome screen](/usage/kodi/images/openelec-main.png)
 
 ## Power
 
@@ -62,6 +62,6 @@ Add-ons provide extra functionality or enable connection to web services like Yo
 
 The YouTube add-on showing search results:
 
-![YouTube add-on](./images/xbmc-youtube.jpg)
+![YouTube add-on](/usage/kodi/images/xbmc-youtube.jpg)
 
 You can configure add-ons from the settings menu; a selection is available for you to browse. Select one and you'll be prompted to install it. Each add-on has its own configurations.

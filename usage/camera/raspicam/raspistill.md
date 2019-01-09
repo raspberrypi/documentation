@@ -4,13 +4,13 @@
 
 ## Basic usage of raspistill
 
-With the camera module [connected and enabled](../..), enter the following command in the Terminal to take a picture:
+With the camera module [connected and enabled](/usage/camera), enter the following command in the Terminal to take a picture:
 
 ```bash
 raspistill -o cam.jpg
 ```
 
-![Upside-down photo](../images/cam.jpg)
+![Upside-down photo](/usage/camera/raspicam/images/cam.jpg)
 
 In this example the camera has been positioned upside-down. If the camera is placed in this position, the image must be flipped to appear the right way up.
 
@@ -22,7 +22,7 @@ With the camera placed upside-down, the image must be rotated 180° to be displa
 raspistill -vf -hf -o cam2.jpg
 ```
 
-![Vertical and horizontal flipped photo](../images/cam2.jpg)
+![Vertical and horizontal flipped photo](/usage/camera/raspicam/images/cam2.jpg)
 
 Now the photo has been captured correctly.
 
@@ -80,4 +80,4 @@ Use the arrow keys to scroll and type `q` to exit.
 
 ## Full documentation
 
-Full documentation of the camera can be found at [hardware/camera](../../../../hardware/camera).
+Full documentation of the camera can be found at [hardware/camera](/hardware/camera).

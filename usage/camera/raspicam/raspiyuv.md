@@ -4,4 +4,4 @@
 
 ## Full documentation
 
-Full documentation of the camera can be found at [hardware/camera](../../../../hardware/camera).
+Full documentation of the camera can be found at [hardware/camera](/hardware/camera).

@@ -6,15 +6,15 @@
 
 See guides for basic usage of each of the commands:
 
-- [raspistill](./raspistill)
+- [raspistill](./raspistill.md)
     - Capturing still photographs with the camera module
-- [raspivid](./raspivid)
+- [raspivid](./raspivid.md)
     - Capturing video with the camera module
-- [Time-lapse](./timelapse)
+- [Time-lapse](./timelapse.md)
     - Taking pictures at regular intervals and stitching them together in to a video
-- [raspiyuv](./raspiyuv)
+- [raspiyuv](./raspiyuv.md)
     - Capturing still photographs and generating raw unprocessed image files
 
 ## Full documentation
 
-Full documentation of the camera can be found at [raspbian/applications/camera](./../../../raspbian/applications/camera) and [hardware/camera](./../../../hardware/camera).
+Full documentation of the camera can be found at [raspbian/applications/camera](/raspbian/applications/camera.md) and [hardware/camera](/hardware/camera).

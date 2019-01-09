@@ -4,13 +4,13 @@
 
 ## Basic usage of raspivid
 
-With the camera module [connected and enabled](../..), record a video using the following command:
+With the camera module [connected and enabled](/usage/camera), record a video using the following command:
 
 ```bash
 raspivid -o vid.h264
 ```
 
-Remember to use `-hf` and `-vf` to flip the image if required, like with [raspistill](../raspistill)
+Remember to use `-hf` and `-vf` to flip the image if required, like with [raspistill](/usage/camera/raspicam/raspistill.md)
 
 This will save a 5 second video file to the path given here as `vid.h264` (default length of time).
 
@@ -48,8 +48,8 @@ Capture your raw video with raspivid and wrap it in an MP4 container like this:
 
 ```bash
 # Capture 30 seconds of raw video at 640x480 and 150kB/s bit rate into a pivideo.h264 file:
-raspivid -t 30000 -w 640 -h 480 -fps 25 -b 1200000 -p 0,0,640,480 -o pivideo.h264 
-# Wrap the raw video with an MP4 container: 
+raspivid -t 30000 -w 640 -h 480 -fps 25 -b 1200000 -p 0,0,640,480 -o pivideo.h264
+# Wrap the raw video with an MP4 container:
 MP4Box -add pivideo.h264 pivideo.mp4
 # Remove the source raw file, leaving the remaining pivideo.mp4 file to play
 rm pivideo.h264
@@ -63,4 +63,4 @@ MP4Box -add video.h264 video.mp4
 
 ## Full documentation
 
-Full documentation of the camera can be found at [hardware/camera](../../../../hardware/camera).
+Full documentation of the camera can be found at [hardware/camera](/hardware/camera).
