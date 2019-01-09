@@ -6,9 +6,9 @@ The most common is through the command line tool APT (Advanced Packaging Tool). 
 
 ## Contents
 
-- [APT](./apt)
+- [APT](./apt.md)
     - Use `apt-get install` to install software from the Raspbian archives
-- [Python](./python)
+- [Python](./python.md)
     - Some Python software can be installed using Python's package manager `pip`
-- [Ruby](./ruby)
+- [Ruby](./ruby.md)
     - Some Ruby software can be installed with Ruby's package manager `ruby gems`

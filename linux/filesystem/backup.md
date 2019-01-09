@@ -72,8 +72,8 @@ gunzip --stdout raspbian.img.gz | sudo dd bs=4M of=/dev/sdb
 
 If you are using a Mac, the commands used are almost exactly the same, but `4M` in the above examples should be replaced with `4m`, with a lower case letter.
 
-See more about [installing SD card images](../../../installation/installing-images).
+See more about [installing SD card images](/installation/installing-images).
 
 ## Automation
 
-You could write a Bash script to perform each of these processes automatically, and even have it performed periodically using [cron](../../usage/cron).
+You could write a Bash script to perform each of these processes automatically, and even have it performed periodically using [cron](/linux/usage/cron.md).

@@ -16,7 +16,7 @@ Command line help is available by typing just the application name in the comman
 
 ## Setting up
 
-See [Camera Setup](../../../configuration/camera).
+See [Camera Setup](/configuration/camera.md).
 
 ## Troubleshooting
 
@@ -127,12 +127,12 @@ Sets the EV compensation of the image. Default is 0.
 ```
 
 Possible options are:
-                                                               
+
 - auto: use automatic exposure mode
 - night: select setting for night shooting
-- nightpreview: 
+- nightpreview:
 - backlight: select setting for backlit subject
-- spotlight:  
+- spotlight:
 - sports: select setting for sports (fast shutter etc.)
 - snow: select setting optimised for snowy scenery
 - beach: select setting optimised for beach
@@ -150,9 +150,9 @@ Modes for which colour temperature ranges (K) are available have these settings 
 
 - off: turn off white balance calculation
 - auto: automatic mode (default)
-- sun: sunny mode (between 5000K and 6500K) 
+- sun: sunny mode (between 5000K and 6500K)
 - cloud: cloudy mode (between 6500K and 12000K)
-- shade: shade mode 
+- shade: shade mode
 - tungsten: tungsten lighting mode (between 2500K and 3500K)
 - fluorescent: fluorescent lighting mode (between 2500K and 4500K)
 - incandescent: incandescent lighting mode
@@ -235,7 +235,7 @@ Flips the preview and saved image vertically.
 Allows the specification of the area of the sensor to be used as the source for the preview and capture. This is defined as x,y for the top-left corner, and a width and height, with all values in normalised coordinates (0.0 - 1.0). So, to set a ROI at halfway across and down the sensor, and a width and height of a quarter of the sensor, use:
 
 ```
--roi 0.5,0.5,0.25,0.25		
+-roi 0.5,0.5,0.25,0.25
 ```
 
 ```
@@ -285,7 +285,7 @@ Sets the digital gain value applied by the ISP (floating point value from 1.0 to
 --mode,	-md
 ```
 
-Sets a specified sensor mode, disabling the automatic selection. Possible values depend on the version of the Camera Module being used: 
+Sets a specified sensor mode, disabling the automatic selection. Possible values depend on the version of the Camera Module being used:
 
 Version 1.x (OV5647)
 
@@ -429,7 +429,7 @@ The program will run for this length of time, then take the capture (if output i
 --timelapse,	-tl		time-lapse mode
 ```
 
-The specific value is the time between shots in milliseconds. Note that you should specify `%04d` at the point in the filename where you want a frame count number to appear. So, for example, the code below will produce a capture every 2 seconds, over a total period of 30s, named `image0001.jpg`, `image0002.jpg` and so on, through to `image0015.jpg`. 
+The specific value is the time between shots in milliseconds. Note that you should specify `%04d` at the point in the filename where you want a frame count number to appear. So, for example, the code below will produce a capture every 2 seconds, over a total period of 30s, named `image0001.jpg`, `image0002.jpg` and so on, through to `image0015.jpg`.
 
 ```
 --framestart, -fs
@@ -569,7 +569,7 @@ Note that the image buffers saved in `raspiyuv` are padded to a horizontal size 
 --luma,    -y
 ```
 
-Only outputs the luma (Y) channel of the YUV image. This is effectively the black and white, or intensity, part of the image. 
+Only outputs the luma (Y) channel of the YUV image. This is effectively the black and white, or intensity, part of the image.
 
 ```
 --bgr,    -bgr
@@ -600,7 +600,7 @@ Use bits per second, so 10Mbits/s would be `-b 10000000`. For H264, 1080p30 a hi
 ```
 Specify the output filename. If not specified, no file is saved. If the filename is '-', then all output is sent to stdout.
 
-To connect to a remote IPv4 host, use `tcp` or `udp` followed by the required IP Address. e.g. `tcp://192.168.1.2:1234` or `udp://192.168.1.2:1234`. 
+To connect to a remote IPv4 host, use `tcp` or `udp` followed by the required IP Address. e.g. `tcp://192.168.1.2:1234` or `udp://192.168.1.2:1234`.
 
 To listen on a TCP port (IPv4) and wait for an incoming connection use `--listen (-l)` option, e.g. `raspivid -l -o tcp://0.0.0.0:3333` will bind to all network interfaces, `raspivid -l -o tcp://192.168.1.1:3333` will bind to a local IPv4.
 
@@ -722,7 +722,7 @@ When in a signal or keypress mode, each time recording is restarted, a new file 
 --circular,    -c
 ```
 
-Select circular buffer mode. All encoded data is stored in a circular buffer until a trigger is activated, then the buffer is saved. 
+Select circular buffer mode. All encoded data is stored in a circular buffer until a trigger is activated, then the buffer is saved.
 
 ```
 --vectors,    -x
@@ -746,7 +746,7 @@ Saves timestamp information to the specified file. Useful as an imput file to `m
 --codec,    -cd
 ```
 
-Specifies the encoder codec to use. Options are `H264` and `MJPEG`. H264 can encode up to 1080p, whereas MJPEG can encode upto the sensor size, but at decreased framerates due to the higher processing and storage requirements. 
+Specifies the encoder codec to use. Options are `H264` and `MJPEG`. H264 can encode up to 1080p, whereas MJPEG can encode upto the sensor size, but at decreased framerates due to the higher processing and storage requirements.
 
 ```
 --initial,	-i		Define initial state on startup

@@ -12,7 +12,7 @@ The `menuconfig` tool requires the `ncurses` development headers to compile prop
 $ sudo apt-get install libncurses5-dev
 ```
 
-You'll also need to download and prepare your kernel sources, as described in the [build guide](../building). In particular, ensure you have installed the default configuration.
+You'll also need to download and prepare your kernel sources, as described in the [build guide](/linux/kernel/building.md). In particular, ensure you have installed the default configuration.
 
 For all models of Raspberry Pi 1 (includes Compute Module and Pi Zero):
 

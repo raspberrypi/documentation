@@ -5,46 +5,46 @@ Explanation of some fundamental Linux usage, and commands for getting around the
 ## Contents
 
 - [Filesystem](./filesystem)
-    - [Home](./filesystem/home)
+    - [Home](./filesystem/home.md)
         - Your user's home folder on the Pi, where you keep your files
-    - [Whole File system](./filesystem/whole-filesystem)
+    - [Whole File system](./filesystem/whole-filesystem.md)
         - The rest of the Linux file system
-    - [Backup](./filesystem/backup)
+    - [Backup](./filesystem/backup.md)
         - Backing up your files and your operating system image
 - [Usage](./usage)
-    - [Commands](./usage/commands)
+    - [Commands](./usage/commands.md)
         - Some basic and more advanced Linux commands
-    - [Text editors](./usage/text-editors)
+    - [Text editors](./usage/text-editors.md)
         - A selection of text editors available on the Pi
-    - [Users](./usage/users)
+    - [Users](./usage/users.md)
         - Setting up multiple Linux users on your Pi system
-    - [Root](./usage/root)
+    - [Root](./usage/root.md)
         - The `root` user and the `sudo` prefix
-    - [Scripting](./usage/scripting)
+    - [Scripting](./usage/scripting.md)
         - Combining commands to produce more complex actions
-    - [Cron / Crontab](./usage/cron)
+    - [Cron / Crontab](./usage/cron.md)
         - Setting up scheduled tasks
-    - [.bashrc and .bash_aliases](./usage/bashrc)
+    - [.bashrc and .bash_aliases](./usage/bashrc.md)
         - Your shell configuration and aliases
-    - [systemd](./usage/systemd)
+    - [systemd](./usage/systemd.md)
         - Configuration of systemd services to start scripts at booting
-    - [rc.local](./usage/rc-local)
+    - [rc.local](./usage/rc-local.md)
         - Configuration of initialisation
 - [Software](./software)
-    - [APT](./software/apt)
+    - [APT](./software/apt.md)
         - Installing software with APT
-    - [Python](./software/python)
+    - [Python](./software/python.md)
         - Installing software using a Python package manager such as `pip`
-    - [Ruby](./software/ruby)
+    - [Ruby](./software/ruby.md)
         - Installing software with Ruby's package manager `ruby gems`
 - [Kernel](./kernel)
-    - [Updating](./kernel/updating)
+    - [Updating](./kernel/updating.md)
         - Updating your Linux kernel on Raspberry Pi
-    - [Building](./kernel/building)
+    - [Building](./kernel/building.md)
         - Building the Linux kernel on Raspberry Pi
-    - [Configuring](./kernel/configuring)
+    - [Configuring](./kernel/configuring.md)
         - Configuring the Linux kernel on Raspberry Pi
-    - [Patching](./kernel/patching)
+    - [Patching](./kernel/patching.md)
         - Applying patches to the Linux kernel on Raspberry Pi
-    - [Headers](./kernel/headers)
+    - [Headers](./kernel/headers.md)
         - Getting the kernel headers

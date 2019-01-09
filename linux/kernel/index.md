@@ -4,11 +4,11 @@ The Raspberry Pi kernel is stored in GitHub and can be viewed at [github.com/ras
 
 The main Linux kernel is continuously updating; we take long-term releases of the kernel, which are mentioned on the front page, and integrate the changes into the Raspberry Pi kernel. We then create a 'next' branch which contains an unstable port of the kernel; after extensive testing and discussion, we push this to the main branch.
 
-- [Updating your kernel](./updating)
-- [Building a new kernel](./building)
-- [Configuring the kernel](./configuring)
-- [Applying patches to the kernel](./patching)
-- [Getting the kernel headers](./headers)
+- [Updating your kernel](/linux/kernel/updating.md)
+- [Building a new kernel](/linux/kernel/building.md)
+- [Configuring the kernel](/linux/kernel/configuring.md)
+- [Applying patches to the kernel](/linux/kernel/patching.md)
+- [Getting the kernel headers](/linux/kernel/headers.md)
 
 ## Getting your code into the kernel
 

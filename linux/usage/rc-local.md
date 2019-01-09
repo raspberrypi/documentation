@@ -2,7 +2,7 @@
 
 In order to have a command or program run when the Pi boots, you can add commands to the `rc.local` file. This is especially useful if you want to be able to plug your Pi in to power headless, and have it run a program without configuration or a manual start.
 
-An alternative for scheduled task management is [cron](../cron).
+An alternative for scheduled task management is [cron](/linux/usage/cron.md).
 
 ## Editing rc.local
 

@@ -6,12 +6,12 @@ The Raspberry Pi's bootloader, built into the GPU and non-updateable, only has s
 
 ## Linux and Mac OS
 
-The standard formatting tools built into these operating systems are able to create FAT32 partitions; they might also be labelled as FAT or MS-DOS. Simply delete the existing exFAT partition and create and format a new FAT32 primary partition, before proceeding with the rest of the [NOOBS instructions](../noobs). On a Mac, this means using the built-in Disk Utility application.
+The standard formatting tools built into these operating systems are able to create FAT32 partitions; they might also be labelled as FAT or MS-DOS. Simply delete the existing exFAT partition and create and format a new FAT32 primary partition, before proceeding with the rest of the [NOOBS instructions](../noobs.md). On a Mac, this means using the built-in Disk Utility application.
 
 ## Windows
 
 The standard formatting tools built into Windows are limited, as they only allow partitions up to 32GB to be formatted as FAT32, so to format a 64GB partition as FAT32 you need to use a third-party formatting tool. A simple tool to do this is [FAT32 Format](http://www.ridgecrop.demon.co.uk/guiformat.htm) which downloads as a single file named `guiformat.exe` - no installation is necessary.
 
-Run the [SD Formatter](https://www.sdcard.org/downloads/formatter_4/) tool first to ensure that any other partitions on the SD card are deleted. Then run the FAT32 Format (guiformat.exe) tool, ensure you choose the correct drive letter, leave the other options at their default settings, and click "Start". After it has finished, you can proceed with the rest of the [NOOBS instructions](../noobs).
+Run the [SD Formatter](https://www.sdcard.org/downloads/formatter_4/) tool first to ensure that any other partitions on the SD card are deleted. Then run the FAT32 Format (guiformat.exe) tool, ensure you choose the correct drive letter, leave the other options at their default settings, and click "Start". After it has finished, you can proceed with the rest of the [NOOBS instructions](../noobs.md).
 
 If the FAT32 Format tool doesn't work for you, alternative options are [MiniTool Partition Wizard Free Edition](http://www.minitool.com/partition-manager/partition-wizard-home.html) and [EaseUS Partition Master Free](http://www.easeus.com/partition-manager/epm-free.html) which are "home user" versions of fully featured partition editor tools, and so not as straightforward to use.

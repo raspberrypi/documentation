@@ -4,6 +4,6 @@ It is important to have a basic understanding of the fundamentals of the Linux f
 
 ## Contents
 
-- [Home](./home)
-- [Backups](./backup)
-- [Whole file system](./whole-filesystem)
+- [Home](./home.md)
+- [Backups](./backup.md)
+- [Whole file system](./whole-filesystem.md)

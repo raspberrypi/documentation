@@ -2,7 +2,7 @@
 
 **New Out Of Box Software (NOOBS)** is an easy operating system installation manager for the Raspberry Pi.
 
-![NOOBS OS selection](../images/noobs.png)
+![NOOBS OS selection](/installation/images/noobs.png)
 
 ## How to get NOOBS
 
@@ -27,7 +27,7 @@ To set up a blank SD card with NOOBS:
 
 #### How to format an SD card as FAT
 
-**Note:** If you're formatting an SD (or micro SD) card that has a capacity over 32GB (i.e. 64GB and above), then see the separate [SDXC formatting](../sdxc_formatting) instructions.
+**Note:** If you're formatting an SD (or micro SD) card that has a capacity over 32GB (i.e. 64GB and above), then see the separate [SDXC formatting](../sdxc_formatting.md) instructions.
 
 ##### Windows
 

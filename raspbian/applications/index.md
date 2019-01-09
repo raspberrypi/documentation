@@ -1,6 +1,6 @@
 # Raspbian Applications
 
-- [Camera](./camera)
+- [Camera](./camera.md)
     - Information on the demonstration camera software
-- [OMXPlayer](./omxplayer)
+- [OMXPlayer](./omxplayer.md)
     - Information on the OMXPlayer command line media player

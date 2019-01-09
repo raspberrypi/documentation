@@ -58,22 +58,22 @@ You would normally use `chmod` to change the permissions for a file. The `chmod`
 
 ### chown
 
-The `chown` command changes the user and/or group that owns a file. It normally needs to be run as root using sudo e.g. `sudo chown pi:root *filename*` will change the owner to pi and the group to root. 
+The `chown` command changes the user and/or group that owns a file. It normally needs to be run as root using sudo e.g. `sudo chown pi:root *filename*` will change the owner to pi and the group to root.
 
 ### ssh
 
 `ssh` denotes the secure shell. Connect to another computer using an encrypted network connection.
-For more details see [SSH (secure shell)](../../../remote-access/ssh/)
+For more details see [SSH (secure shell)](/remote-access/ssh.md)
 
 ### scp
 
 The `scp` command copies a file from one computer to another using `ssh`.
-For more details see [SCP (secure copy)](../../../remote-access/ssh/scp)
+For more details see [SCP (secure copy)](/remote-access/ssh/scp.md)
 
 ### sudo
 
 The `sudo` command enables you to run a command as a superuser, or another user. Use `sudo -s` for a superuser shell.
-For more details see [Root user / sudo](../root)
+For more details see [Root user / sudo](/linux/usage/root.md)
 
 ### dd
 
@@ -81,15 +81,15 @@ The `dd` command copies a file converting the file as specified. It is often use
 
 ### df
 
-Use `df` to display the disk space available and used on the mounted filesystems. Use `df -h` to see the output in a human-readable format using M for MBs rather than showing number of bytes. 
+Use `df` to display the disk space available and used on the mounted filesystems. Use `df -h` to see the output in a human-readable format using M for MBs rather than showing number of bytes.
 
 ### unzip
 
-The `unzip` command extracts the files from a compressed zip file. 
+The `unzip` command extracts the files from a compressed zip file.
 
 ### tar
 
-Use `tar` to store or extract files from a tape archive file. It can also reduce the space required by compressing the file similar to a zip file. 
+Use `tar` to store or extract files from a tape archive file. It can also reduce the space required by compressing the file similar to a zip file.
 
 To create a compressed file, use `tar -cvzf *filename.tar.gz* *directory/*`
 To extract the contents of a file, use `tar -xvzf *filename.tar.gz*`
@@ -105,7 +105,7 @@ Use the `tree` command to show a directory and all subdirectories and files inde
 
 ### &
 
-Run a command in the background with `&`, freeing up the shell for future commands. 
+Run a command in the background with `&`, freeing up the shell for future commands.
 
 ### wget
 
@@ -118,7 +118,7 @@ Use `curl` to download or upload a file to/from a server. By default, it will ou
 
 ### man
 
-Show the manual page for a file with `man`. To find out more, run `man man` to view the manual page of the man command. 
+Show the manual page for a file with `man`. To find out more, run `man man` to view the manual page of the man command.
 
 
 ## Search
@@ -135,7 +135,7 @@ The `grep` command supports regular expressions which allows special letter comb
 
 ### find
 
-The `find` command searches a directory and subdirectories for files matching certain patterns. 
+The `find` command searches a directory and subdirectories for files matching certain patterns.
 
 
 ### whereis

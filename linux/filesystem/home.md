@@ -8,6 +8,6 @@ To navigate to your home folder on the command line, simply type `cd` and press 
 
 Navigate to `/home/` and run `ls`, and you'll see the home folders of each of the users on the system.
 
-Note that if logged in as the root user, typing `cd` or `cd ~` will take you to the root user's home directory; unlike normal users, this is located at `/root/` not `/home/root/`. Read more about the [root user](../../usage/root).
+Note that if logged in as the root user, typing `cd` or `cd ~` will take you to the root user's home directory; unlike normal users, this is located at `/root/` not `/home/root/`. Read more about the [root user](/linux/usage/root.md).
 
-If you have files you would not like to lose, you may want to back up your home folder. Read more about [backing up](../backup).
+If you have files you would not like to lose, you may want to back up your home folder. Read more about [backing up](/linux/filesystem/backup.md).

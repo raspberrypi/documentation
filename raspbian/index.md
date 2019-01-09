@@ -8,13 +8,13 @@ Raspbian is a community project under active development, with an emphasis on im
 
 ## Contents
 
-- [Installing Raspbian](./../installation/installing-images)
-- [Installing software in Raspbian](./../linux/software/apt)
-- [Updating/Upgrading Raspbian](./updating)
+- [Installing Raspbian](/installation/installing-images)
+- [Installing software in Raspbian](/linux/software/apt.md)
+- [Updating/Upgrading Raspbian](./updating.md)
 - Configuring Raspbian
-    - [raspi-config](./../configuration/raspi-config)
-    - [config.txt](./../configuration/config-txt)
-    - [screensaver](./../configuration/screensaver)
+    - [raspi-config](/configuration/raspi-config.md)
+    - [config.txt](/configuration/config-txt)
+    - [screensaver](/configuration/screensaver.md)
 - [Applications](./applications)
-    - [Camera](./applications/camera)
-    - [OMXPlayer](./applications/omxplayer)
+    - [Camera](./applications/camera.md)
+    - [OMXPlayer](./applications/omxplayer.md)

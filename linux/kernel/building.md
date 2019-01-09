@@ -34,7 +34,7 @@ Refer to the [original GitHub repository](https://github.com/raspberrypi/linux) 
 
 ### Kernel configuration
 
-Configure the kernel; as well as the default configuration, you may wish to [configure your kernel in more detail](../configuring) or [apply patches from another source](../patching), to add or remove required functionality:
+Configure the kernel; as well as the default configuration, you may wish to [configure your kernel in more detail](/linux/kernel/configuring.md) or [apply patches from another source](/linux/kernel/patching.md), to add or remove required functionality:
 
 Run the following commands, depending on your Raspberry Pi version.
 
@@ -69,7 +69,7 @@ sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 
 ## Cross-compiling
 
-First, you will need a suitable Linux cross-compilation host. We tend to use Ubuntu; since Raspbian is 
+First, you will need a suitable Linux cross-compilation host. We tend to use Ubuntu; since Raspbian is
 also a Debian distribution, it means many aspects are similar, such as the command lines.
 
 You can either do this using VirtualBox (or VMWare) on Windows, or install it directly onto your computer. For reference, you can follow instructions online [at Wikihow](http://www.wikihow.com/Install-Ubuntu-on-VirtualBox).
