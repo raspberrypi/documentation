@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Raspberry Pi has a number of different stages of booting. This document is explains how the boot modes work, and which ones are supported for Linux booting.
+The Raspberry Pi has a number of different stages of booting. This document explains how the boot modes work, and which ones are supported for Linux booting.
 
 [Boot Sequence](bootflow.md)
 
