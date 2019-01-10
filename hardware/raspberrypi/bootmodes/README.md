@@ -12,7 +12,7 @@ The Raspberry Pi has a number of different stages of booting. This document expl
 * [Device boot](device.md): booting as a mass storage device
 * [Host boot](host.md): booting as a USB host using one of the following:
   * [Mass storage boot](msd.md): boot from mass storage device
-  * [Network boot](net.md): Boot via Ethernet
+  * [Network boot](net.md): boot via Ethernet
   
 ## Special bootcode.bin-only boot mode
 USB host and Ethernet boot can be performed by BCM2837-based Raspberry Pis (these are all Pi 3 models, and some Pi 2Bs). In addition, all Raspberry Pi models can use a new bootcode.bin-only method to enable USB host and Ethernet booting.
