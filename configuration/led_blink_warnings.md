@@ -15,5 +15,5 @@ If a Pi fails to boot for some reason, or has to shut down, in many cases an LED
 |      2       |        3      | Extended partition not FAT |
 |      4       |        4      | Unsupported board type |
 |      4       |        5      | Fatal firmware error   |
-|      4       |        6      | Fake Hardware          |
-|      4       |        7      | Power failure          |
+|      4       |        6      | Power failure type A   |
+|      4       |        7      | Power failure type B   |
