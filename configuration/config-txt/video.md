@@ -483,9 +483,9 @@ Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is no
 
 ### disable_overscan
 
-Set `disable_overscan` to `1` to disable the default values of [overscan](../raspi-config.md#overscan) the firmware sets. The default value of overscan for the left, right, top and bottom edges is `48` for HD CEA modes, `32` for SD CEA modes and `0` for DMT modes. The default value for `disable_overscan` is `0`.
+Set `disable_overscan` to `1` to disable the default values of [overscan](../raspi-config.md#overscan) that is set by the firmware. The default value of overscan for the left, right, top, and bottom edges is `48` for HD CEA modes, `32` for SD CEA modes, and `0` for DMT modes. The default value for `disable_overscan` is `0`.
 
-**NOTE:** Any further additional overscan options such as `overscan_scale` or overscan edges can still be applied after this option.
+**NOTE:** any further additional overscan options such as `overscan_scale` or overscan edges can still be applied after this option.
 
 ### overscan_left
 
@@ -515,7 +515,7 @@ Increase this value if the text flows off the bottom edge of the screen; decreas
 
 Set `overscan_scale` to `1` to force any non-framebuffer layers to conform to the overscan settings. The default value is `0`.
 
-**NOTE:** This feature is generally not recommended because it can reduce image quality as all layers on the display will be scaled by the GPU. Disabling overscan on the display itself is the recommended option to avoid images being scaled twice (by the GPU and the display).
+**NOTE:** this feature is generally not recommended: it can reduce image quality because all layers on the display will be scaled by the GPU. Disabling overscan on the display itself is the recommended option to avoid images being scaled twice (by the GPU and the display).
 
 ### framebuffer_width
 
