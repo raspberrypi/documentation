@@ -2,23 +2,24 @@
 
 ## Introduction
 
-The Raspberry Pi has a number of different stages of booting. This document is meant to help explain how the boot modes work, and which ones are supported for Linux booting.
+The Raspberry Pi has a number of different stages of booting. This document explains how the boot modes work, and which ones are supported for Linux booting.
 
-* [Bootflow](bootflow.md): Boot sequence description
-* [SD card](sdcard.md): SD card boot description
-* [USB](usb.md): USB boot description
-  * [Device boot](device.md): Booting as a mass storage device
-  * [Host boot](host.md): Booting as a USB host
-    * [Mass storage boot](msd.md): Boot from Mass Storage Device (MSD)
-    * [Network boot](net.md): Boot from ethernet
+[Boot Sequence](bootflow.md)
 
+[SD card boot](sdcard.md)
+
+[USB boot](usb.md) comprises the following two modes:
+* [Device boot](device.md): booting as a mass storage device
+* [Host boot](host.md): booting as a USB host using one of the following:
+  * [Mass storage boot](msd.md): boot from mass storage device
+  * [Network boot](net.md): boot via Ethernet
+  
 ## Special bootcode.bin-only boot mode
-
-For the original Raspberry Pi and the Raspberry Pi 2 (based on the BCM2835 and BCM2836 devices), and in situations where the Pi 3 fails to boot, there is a new method of booting from one of the new boot modes (MSD or ethernet).
+USB host and Ethernet boot can be performed by BCM2837-based Raspberry Pis (these are all Pi 3 models, and some Pi 2Bs). In addition, all Raspberry Pi models can use a new bootcode.bin-only method to enable USB host and Ethernet booting.
 
 Just format an SD card as FAT32 and copy on the latest [bootcode.bin](https://github.com/raspberrypi/firmware/raw/master/boot/bootcode.bin). 
 
-This will then enable the new bootmodes with some bug fixes for the failing Pi 3 cases.
+This is useful for the Raspberry Pi 1, 2, and Zero models, which are based on the BCM2835 and BCM2836 devices, and in situations where a Pi 3 fails to boot (the latest bootcode.bin includes additional bugfixes for the Pi 3, compared to the boot code burned into the BCM2837).
 
 If you have a problem with a mass storage device still not working even with this bootcode.bin, then please add a new file 'timeout' to the SD card. This should extend the time it waits for the mass storage device to initialise to six seconds.
 
