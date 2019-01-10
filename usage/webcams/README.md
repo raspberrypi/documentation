@@ -12,15 +12,15 @@ First, install the `fswebcam` package:
 sudo apt-get install fswebcam
 ```
 
-## Add your user to video group
+## Add your user to `video` group
 
-If you are not using the default `pi` user account then you will need to add your username to the `video` group, otherwise you will see permission denied errors.
+If you are not using the default `pi` user account, you need to add your username to the `video` group, otherwise you will see 'permission denied' errors.
 
 ```bash
 sudo usermod -a -G video <username>
 ```
 
-You can use the `groups` command to check that the user has been added to the group correctly. 
+To check that the user has been added to the group correctly, use the `groups` command. 
 
 ## Basic usage
 
