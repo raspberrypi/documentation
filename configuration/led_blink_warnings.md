@@ -1,10 +1,10 @@
-## LED Warning Flashes
+## LED warning flash codes
 
-If a Pi fails to boot for some reason, or has to shut down, in many cases an LED will be flashed a specific number of times to indicate what happened. The LED will blink for a number of long flashes (0 or more), then short flashes, to indicate the exact status. In most cases the pattern will repeat after a 2 second gap.
+If a Pi fails to boot for some reason, or has to shut down, in many cases an LED will be flashed a specific number of times to indicate what happened. The LED will blink for a number of long flashes (0 or more), then short flashes, to indicate the exact status. In most cases, the pattern will repeat after a 2 second gap.
 
-| Long Flashes | Short Flashes | Status |
+| Long flashes | Short flashes | Status |
 |:------------:|:-------------:|--------|
-|      0       |        3      | Generic Failure to boot |
+|      0       |        3      | Generic failure to boot |
 |      0       |        4      | start*.elf not found   |
 |      0       |        7      | Kernel image not found |
 |      0       |        8      | SDRAM failure          |
