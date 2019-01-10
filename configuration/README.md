@@ -34,6 +34,8 @@ Some basic guides to configuring your Raspberry Pi.
     - How to set up the on-board UARTS.
 - [Firmware warning icons](warning-icons.md)
     - Description of warning icons displayed if the firmware detects issues
+- [LED Blinking warnings](led_blink_warnings.md)
+    - Description of LED blink warnings when system encounters an error condition
 - [Securing your Raspberry Pi](security.md)
     - Some basic advice for making your Raspberry Pi more secure
 - [Screensaver](screensaver.md)
