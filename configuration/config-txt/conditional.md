@@ -14,17 +14,18 @@ This is the most basic filter. It resets all previously set filters and allows a
 
 It is usually a good idea to add an `[all]` filter at the end of groups of filtered settings to avoid unintentionally combining filters (see below).
 
-## The `[pi1]` and `[pi2]` (etc.) filters
+## The `[pi1]` and `[pi2]` (etc.) model filters
 
-Any settings below a `[pi1]` filter will only be applied to Pi 1 (A, A+, B, B+) hardware, including the original Compute Module.
-Any settings below a `[pi2]` filter will only be applied to Pi 2 hardware. The `[pi3]` filter is applicable to Pi 3 and Compute Module 3 hardware, while `[pi0]` covers Pi Zero and Pi Zero W.
+The conditional model filters are applied according to the following table.
 
-    [pi1]
-    [pi2]
-    [pi3]
-    [pi3+]
-    [pi0]
-    [pi0w]
+| Filter | Applicable model(s) |
+|--------|------------------|
+| [pi1] | Model A, Model B, Compute Module |
+| [pi2] | Model 2B (BCM2836- or BCM2837-based) |
+| [pi3] | Model 3B, Model 3B+, Model 3A+, Compute Module 3 |
+| [pi3+]| Model 3A+, Model 3B+ |
+| [pi0] | Zero, Zero W, Zero WH |
+| [pi0w]| Zero W, Zero WH |
 
 These are particularly useful for defining different `kernel`, `initramfs`, and `cmdline` settings, as the Pi 1 and Pi 2 require different kernels. They can also be useful to define different overclocking settings, as the Pi 1 and Pi 2 have different default speeds. For example, to define separate `initramfs` images for each:
 
@@ -37,7 +38,6 @@ These are particularly useful for defining different `kernel`, `initramfs`, and 
 Remember to use the `[all]` filter at the end, so that any subsequent settings aren't limited to Pi 2 hardware only.
 
 It is important to note that the Raspberry Pi Zero W will see the contents of [pi0w] AND [pi0]. Likewise, a Raspberry Pi 3B Plus sees [pi3+] AND [pi3]. If you want a setting to apply only to Pi Zero or Pi 3B you need to follow it (order is important) with a setting in the [pi0w] or [pi3+] section that reverts it.
-
 
 
 ## The `[none]` filter
