@@ -18,11 +18,11 @@ It is usually a good idea to add an `[all]` filter at the end of groups of filte
 
 The conditional model filters are applied according to the following table.
 
-| Filter | Applicable Model(s) |
+| Filter | Applicable model(s) |
 |--------|------------------|
 | [pi1] | Model A, Model B, Compute Module |
-| [pi2] | Model 2B (2836 or 2837 based) |
-| [pi3] | Model 3B, Compute Module 3, Model 3A+, Model 3B+ |
+| [pi2] | Model 2B (BCM2836- or BCM2837-based) |
+| [pi3] | Model 3B, Model 3B+, Model 3A+, Compute Module 3 |
 | [pi3+]| Model 3A+, Model 3B+ |
 | [pi0] | Zero, Zero W, Zero WH |
 | [pi0w]| Zero W, Zero WH |
