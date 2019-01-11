@@ -243,13 +243,30 @@
 					</div>
 				</div>
 
-				<div class="o-footer__newsletter">
-					<form action="https://raspberrypi.hosted.phplist.com/lists/?p=subscribe&amp;id=1" class="c-footer-newsletter" method="POST">
-						<span class="c-footer-newsletter__legend">Sign up to our newsletter</span>
-						<input class="c-footer-newsletter__input" name="email" placeholder="Your email here" required="" type="email">
-						<button class="c-footer-newsletter__button">Subscribe</button>
-					</form>
-				</div>
+        <div class="o-footer__newsletter">
+          <form
+              action="https://raspberrypi.hosted.phplist.com/lists/?p=subscribe&amp;id=1"
+              class="c-footer-newsletter"
+              method="POST"
+          >
+            <span class="c-footer-newsletter__legend">
+              Sign up to our newsletter
+            </span>
+            <input
+              class="c-footer-newsletter__input"
+              name="email"
+              placeholder="Your email here"
+              required
+              type="email"
+            />
+            <input type="hidden" name="htmlemail" value="1" />
+            <input type="hidden" name="list[3]" value="signup" />
+            <input type="hidden" name="listname[3]" value="Raspberry Pi Weekly" />
+            <button class="c-footer-newsletter__button" name="subscribe">
+              Subscribe
+            </button>
+          </form>
+        </div>
 
 				<div class="o-footer__charity">
 					<p class="c-footer-charity">
