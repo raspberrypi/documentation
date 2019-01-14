@@ -510,13 +510,15 @@ Return the maximum safe temperature of the SoC in thousandths of a degree C. id 
 Overclock may be disabled above this temperature.
 
 #### Get STC
+
+Get the current time since Videocore bootup, in microseconds
+
  * Tag: 0x0003000b
  * Request:
-   * Length: TBD
-   * Value: TBD
+   * Length: 0
  * Response:
-   * Length: TBD
-   * Value: TBD
+   * Length: 8
+   * Value: First 4 bytes are a 32 bit value representing the time. Last 4 bytes currently unused.
 
 ### Memory
 
@@ -610,21 +612,29 @@ Setting the lsb of function pointer address will suppress the instruction cache 
 
 #### Execute QPU Code
  * Tag: 0x00030011
- * Request: TBD
-   * Length:
+ * Request: 
+   * Length: 
    * Value:
+     * u32 Jobs
+     * u32 Pointer to buffer, 24 words of 32 bits.
+     * u32 No flush
+     * u32 Timeout
  * Response:
-   * Length:
-   * Value:
+   * Length: 4
+   * Value: 0 if successful.
 
 #### Set enable QPU
+
+Enable and acquire a lock to the QPU's, or unlock and disable.
+
  * Tag: 0x00030012
- * Request: TBD
-   * Length:
-   * Value:
+ * Request:
+   * Length: 4
+   * Value: 0 to disable, !0 to enable
  * Response:
-   * Length:
-   * Value:
+   * Length: 4
+   * Value: 
+      * u32 0 if successful
 
 #### Get Dispmanx Resource mem handle
  * Tag: 0x00030014
@@ -662,26 +672,100 @@ There will always be at least one block of 128 bytes, but there may be additiona
 ### OTP
 
 #### Get customer OTP
+
+Get the specifed row(s) of OTP bits.
+
  * Tag: 0x00030021
- * Request: TBD
-   * Length:
+ * Request: 
+   * Length: 8
+   * Value: 
+     * u32: Index of first OTP word to get
+     * u32: Length in words to retrieve.
+ * Response:
+   * Length: 8 + length*4
    * Value:
+     * u32: status. 0x80000000 if failed. 
+     * u32: length
+     * u32[length]: OTP words
 
 #### Set customer OTP
  * Tag: 0x00038021
- * Request: TBD
-   * Length:
+ * Request: 
+   * Length: 8
    * Value:
+     * u32: Index
+     * u32: Length
+     * u32[length]: OTP bit set values
+* Response:
+   * Length: 4
+   * Value: 
+     * u32 Status. 
+       - 0x00000000: OK
+       - 0x80000000: Out of OTP memory range 
+       - 0x80000001: Tried to set non-programmable bit1
+       - 0x80000002: Tried to set non-programmable bit2
+       - 0x80000003: Tried to set non-programmable bit3
+                      
+#### Get serial OTP
+
+Get the serial number directly from OTP
+
+ * Tag: 0x00030022
+ * Request: 
+   * Length: 8
+   * Value: 
+     * u32: Index, must be 0
+     * u32: Length. Must be 1
+ * Response:
+   * Length: 8 + length*4
+   * Value:
+     * u32: status. 0x80000000 if failed. 
+     * u32: Raw serial number
 
 ### Domain
 
 #### Get domain state
+
+Get the enabled state of the specified system block
+
  * Tag: 0x00030030
  * Request: TBD
-   * Length:
-   * Value:
-
+   * Length: 8
+   * Value: 
+     * u32 Block ID
+         - I2C0 = 1
+         - I2C1 = 2
+         - I2C2 = 3
+         - VIDEO_SCALER = 4
+         - VPU1 = 5
+         - HDMI = 6
+         - USB = 7
+         - VEC = 8
+         - JPEG = 9
+         - H264= 10
+         - V3D = 11
+         - ISP = 12
+         - UNICAM0 = 13
+         - UNICAM1 = 14
+         - CCP2RX = 15
+         - CSI2 = 16
+         - CPI = 17
+         - DSI0 = 18
+         - DSI1 = 19
+         - TRANSPOSER = 20
+         - CCP2TX = 21
+         - CDP = 22
+         - ARM = 23
+* Response:
+  * length: 8   
+  * Value :
+     * u32: Block ID
+     * u32: Result 0 if disabled, !0 if enabled.
+  
 #### Set domain state
+
+Set the state of the specified power domain
+
  * Tag: 0x00038030
  * Request: TBD
    * Length:
@@ -698,7 +782,7 @@ There will always be at least one block of 128 bytes, but there may be additiona
 ### Miscellaneous
 
 #### Set Peripheral Register
- * Tag: 0x0003045
+ * Tag: 0x00030045
  * Request: TBD
    * Length:
    * Value:
