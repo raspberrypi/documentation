@@ -764,13 +764,15 @@ Get the enabled state of the specified system block
   
 #### Set domain state
 
-Set the state of the specified power domain
+Set the state of the specified system block domain.
 
  * Tag: 0x00038030
- * Request: TBD
-   * Length:
-   * Value:
-
+ * Request: 
+   * Length: 8
+   * Value: 
+     * u32: Block ID (see Get Domain State)
+     * u32: Enable state, 1 to enable, 0 to disable.
+     
 ### SD Host
 
 #### Set SD host clock
@@ -780,6 +782,14 @@ Set the state of the specified power domain
    * Value:
 
 ### Miscellaneous
+
+#### Set disk activity LED state
+ * Tag: 0x00038040
+ * Request:
+   * Length: 8
+   * Value: 
+     * u32: Currently unused.
+     * u32: If bit 0 set, enabled LED, if unset disable.
 
 #### Set Peripheral Register
  * Tag: 0x00030045
@@ -1240,6 +1250,69 @@ The response may not be the same as the request so it must be checked. Palette c
 
 ### GPIO
 
+#### Get GPIO state
+
+Read the state of the specified GPIO pin.
+ * Tag: 0x00030041
+ * Request:
+   * Length: 4
+   * Value:
+     * u32: Pin number
+ * Response:
+   * Length: 8
+   * Value:
+     * u32: 0 if successfull
+     * u32: State
+
+#### Set GPIO state
+
+Set the state of the specified GPIO pin.
+
+ * Tag: 0x00038041
+ * Request:
+   * Length: 8
+   * Value:
+     * u32: Pin number
+     * u32: State
+* Response:
+   * Length: 4
+   * Value:
+     * u32: 0 if successfull
+   
+#### Get GPIO Configuration
+
+Read the state of the specified GPIO pin.
+ * Tag: 0x00030043
+ * Request:
+   * Length: 4
+   * Value:
+     * u32: Pin number
+ * Response:
+   * Length: 20
+   * Value:
+     * u32: 0 if successful.
+     * u32: Direction
+     * u32: Active Low
+     * u32: Termination enable
+     * u32: Termination pullup
+
+#### Set GPIO Configuration
+
+Read the state of the specified GPIO pin.
+ * Tag: 0x00038043
+ * Request:
+   * Length: 20
+   * Value:
+     * u32: Pin number
+     * u32: Direction
+     * u32: Active Low
+     * u32: Termination enable
+     * u32: Termination pullup
+ * Response:
+   * Length: 4
+   * Value:
+     * u32: 0 if successfull
+
 #### Get GPIO virtual Buffer
  * Tag: 0x00040010
  * Request: TBD
@@ -1251,8 +1324,6 @@ The response may not be the same as the request so it must be checked. Palette c
  * Request: TBD
    * Length:
    * Value:
-
-
 
 ### HW Cursor
 
