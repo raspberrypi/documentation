@@ -431,7 +431,7 @@ This section describes the tags related to voltage management. There are a numbe
    * Length: 8
    * Value:
      * u32: voltage id
-     * u32: value (offset from 1.2V in units of 0.025V)
+     * u32: value in millivolts
 
 The voltage value may be clamped to the supported range.
 A value of 0x80000000 means the id was not valid.
@@ -442,12 +442,12 @@ A value of 0x80000000 means the id was not valid.
    * Length: 8
    * Value:
      * u32: voltage id
-     * u32: value (offset from 1.2V in units of 0.025V)
+     * u32: value 
  * Response:
    * Length: 8
    * Value:
      * u32: voltage id
-     * u32: value (offset from 1.2V in units of 0.025V)
+     * u32: value 
 
 The voltage value may be clamped to the supported range.
 A value of 0x80000000 means the id was not valid.
@@ -729,7 +729,7 @@ Get the serial number directly from OTP
 Get the enabled state of the specified system block
 
  * Tag: 0x00030030
- * Request: TBD
+ * Request:
    * Length: 8
    * Value: 
      * u32 Block ID
@@ -776,10 +776,19 @@ Set the state of the specified system block domain.
 ### SD Host
 
 #### Set SD host clock
+
+Set the SD host clock.
  * Tag: 0x00038032
- * Request: TBD
-   * Length:
+ * Request:
+   * Length: 5
    * Value:
+     * u32: Required frequency
+* Response:
+  * length: 12
+  * Value :
+     * u32: Requested frequency
+     * u32: Actual frequency set in normal mode
+     * u32: Actual frequency set in turbo mode
 
 ### Miscellaneous
 
@@ -793,39 +802,94 @@ Set the state of the specified system block domain.
 
 #### Set Peripheral Register
  * Tag: 0x00030045
- * Request: TBD
-   * Length:
+ * Request:
+   * Length: variable
    * Value:
+     * u32: Address of peripheral. Note, only the AXI bus monitor system/VPU peripherals are currently accessible. All other addresses will be rejected
+     * u32: length to write in words
+     * u32[length]: data to write
    
 #### Get Peripheral Registers
 * Tag: 0x00038045
- * Request: TBD
-   * Length:
-   * Value:
+ * Request:
+   * Length: variable
+   * Value: 8
+     * u32: Address of peripheral. Note, only the AXI bus monitor system/VPU peripherals are currently accessible. All other addresses will be rejected
+     * u32: length to read in words
+* Response:
+   * Length: variable
+   * Value: 8 + length*4
+     * u32: Address of peripheral.
+     * u32: length to read in words
+     * u32[length]: data read, or all zero's if an error occurred.
 
 #### Get throttled
+
+Returns the throttled status of the ARM.
+
  * Tag: 0x00030046
- * Request: TBD
-   * Length:
+ * Request:
+   * Length: 4
    * Value:
+     * u32: Reset value, 0 or 1
+* Response:
+   * Length: 4
+     * u32:
+        - If Reset Value == 0, Bit 0 set if currently throttled, bit 16 set if ever throttled.
+        - If Reset Value != 0, Bit 0 set if currently throttled, bit 16 set if recently throttled. Recent flag reset.
 
 #### Get clocked measured
+
+Measure frequency of specified clock
+
  * Tag: 0x00030047
- * Request: TBD
-   * Length:
+ * Request:
+   * Length: 8
    * Value:
+     * u32: Clock ID
+       - CLOCK_OUTPUT_MIN = 0
+       - CLOCK_OUTPUT_EMMC = 1
+       - CLOCK_OUTPUT_UART = 2
+       - CLOCK_OUTPUT_ARM = 3
+       - CLOCK_OUTPUT_CORE = 4
+       - CLOCK_OUTPUT_V3D = 5
+       - CLOCK_OUTPUT_H264 = 6
+       - CLOCK_OUTPUT_ISP = 7
+       - CLOCK_OUTPUT_MIN = 8
+       - CLOCK_OUTPUT_PIXEL = 9
+       - CLOCK_OUTPUT_PWM = 10
+* Response:
+   * Length: 4
+     * u32: Clock ID
+     * u32: Clock frequency
 
 #### Get POE HAT value
+
+Get the PoE HAT PWM registers
+
  * Tag: 0x00030049
- * Request: TBD
-   * Length:
+ * Request: 
+   * Length: 4
    * Value:
+     * u32: 0 Current PWM, 1 Default PWM
+* Response:
+   * Length: 12
+     * u32: 0 Current PWM, 1 Default PWM
+     * u32: Value 0-255
+     * u32: 0 if successful.
 
-#### Get POE HAT value
+#### Set POE HAT value
  * Tag: 0x00030050
- * Request: TBD
-   * Length:
+ * Request: 
+   * Length: 4
    * Value:
+     * u32: 0 Current PWM, 1 Default PWM
+     * u32: Value 0-255
+* Response:
+   * Length: 12
+     * u32: 0 Current PWM, 1 Default PWM
+     * u32: Value 0-255
+     * u32: 0 if successful.
 
 ### Frame Buffer
 
