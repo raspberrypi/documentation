@@ -509,6 +509,15 @@ Return the temperature of the SoC in thousandths of a degree C. id should be zer
 Return the maximum safe temperature of the SoC in thousandths of a degree C. id should be zero.
 Overclock may be disabled above this temperature.
 
+#### Get STC
+ * Tag: 0x0003000b
+ * Request:
+   * Length: TBD
+   * Value: TBD
+ * Response:
+   * Length: TBD
+   * Value: TBD
+
 ### Memory
 
 This section describes the tags related to memory management. 
@@ -599,6 +608,24 @@ r0 = fn(r0, r1, r2, r3, r4, r5);
 It blocks until call completes. The (GPU) instruction cache is implicitly flushed.
 Setting the lsb of function pointer address will suppress the instruction cache flush if you know the buffer hasn't changed since last execution.
 
+#### Execute QPU Code
+ * Tag: 0x00030011
+ * Request: TBD
+   * Length:
+   * Value:
+ * Response:
+   * Length:
+   * Value:
+
+#### Set enable QPU
+ * Tag: 0x00030012
+ * Request: TBD
+   * Length:
+   * Value:
+ * Response:
+   * Length:
+   * Value:
+
 #### Get Dispmanx Resource mem handle
  * Tag: 0x00030014
  * Request:
@@ -631,6 +658,44 @@ This can be locked and the memory directly written from the arm to avoid having 
 
 This reads the specified EDID block from attached HDMI/DVI device.
 There will always be at least one block of 128 bytes, but there may be additional blocks. You should keep requesting blocks (starting from 0) until the status returned is non-zero.
+
+### OTP
+
+#### Get customer OTP
+ * Tag: 0x00030021
+ * Request: TBD
+   * Length:
+   * Value:
+
+#### Set customer OTP
+ * Tag: 0x00038021
+ * Request: TBD
+   * Length:
+   * Value:
+
+### Domain
+
+#### Get domain state
+ * Tag: 0x00030030
+ * Request: TBD
+   * Length:
+   * Value:
+
+#### Set domain state
+ * Tag: 0x00038030
+ * Request: TBD
+   * Length:
+   * Value:
+
+### SD Host
+
+#### Set SD host clock
+ * Tag: 0x00038032
+ * Request: TBD
+   * Length:
+   * Value:
+
+
 
 ### Frame Buffer
 
@@ -1020,6 +1085,25 @@ Response is the same as the request (or modified), to indicate if this configura
      * u32: 0=valid, 1=invalid
 
 The response may not be the same as the request so it must be checked. Palette changes should not be partially applied.
+
+#### Set VSYNC
+ * Tag: 0x0004800e
+ * Request: TBD
+   * Length:
+   * Value:
+
+#### Set Backlight
+ * Tag: 0x0004800f
+ * Request: TBD
+   * Length:
+   * Value:
+
+#### VCHIQ Init
+ * Tag: 0x00048010
+ * Request: TBD
+   * Length:
+   * Value:
+
 
 #### Set Cursor Info
  * Tag: 0x00008010
