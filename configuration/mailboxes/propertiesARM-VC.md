@@ -1280,37 +1280,31 @@ Response is the same as the request (or modified), to indicate if this configura
 
 The response may not be the same as the request so it must be checked. Palette changes should not be partially applied.
 
-#### Set VSYNC
- * Tag: 0x0004800e
- * Request: TBD
-   * Length:
-   * Value:
-
 #### Set Backlight
- * Tag: 0x0004800f
- * Request: TBD
-   * Length:
-   * Value:
 
-#### VCHIQ Init
- * Tag: 0x00048010
- * Request: TBD
-   * Length:
+Set the backlight intensity
+
+ * Tag: 0x0004800f
+ * Request:
+   * Length: 4
    * Value:
+     * u32: 0-255 value
 
 ### Touchscreen
 
 #### Get Touchscreen Buffer
  * Tag: 0x0004000f
- * Request: TBD
-   * Length:
+ * Request:
+   * Length: 4
    * Value:
+     * u32: VC address of the touch screen coordinate buffer. Will be created if not yet defined.
 
 #### Set Touchscreen Buffer
  * Tag: 0x0004801f
- * Request: TBD
-   * Length:
-   * Value:
+ * Request:
+   * Length: 4
+   * Value: 
+     * u32: VC address of a touch screen buffer to assign.
 
 ### GPIO
 
