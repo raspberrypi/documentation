@@ -695,7 +695,43 @@ There will always be at least one block of 128 bytes, but there may be additiona
    * Length:
    * Value:
 
+### Miscellaneous
 
+#### Set Peripheral Register
+ * Tag: 0x0003045
+ * Request: TBD
+   * Length:
+   * Value:
+   
+#### Get Peripheral Registers
+* Tag: 0x00038045
+ * Request: TBD
+   * Length:
+   * Value:
+
+#### Get throttled
+ * Tag: 0x00030046
+ * Request: TBD
+   * Length:
+   * Value:
+
+#### Get clocked measured
+ * Tag: 0x00030047
+ * Request: TBD
+   * Length:
+   * Value:
+
+#### Get POE HAT value
+ * Tag: 0x00030049
+ * Request: TBD
+   * Length:
+   * Value:
+
+#### Get POE HAT value
+ * Tag: 0x00030050
+ * Request: TBD
+   * Length:
+   * Value:
 
 ### Frame Buffer
 
@@ -1104,6 +1140,37 @@ The response may not be the same as the request so it must be checked. Palette c
    * Length:
    * Value:
 
+### Touchscreen
+
+#### Get Touchscreen Buffer
+ * Tag: 0x0004000f
+ * Request: TBD
+   * Length:
+   * Value:
+
+#### Set Touchscreen Buffer
+ * Tag: 0x0004801f
+ * Request: TBD
+   * Length:
+   * Value:
+
+### GPIO
+
+#### Get GPIO virtual Buffer
+ * Tag: 0x00040010
+ * Request: TBD
+   * Length:
+   * Value:
+
+#### Set GPIO virtual Buffer
+ * Tag: 0x00048020
+ * Request: TBD
+   * Length:
+   * Value:
+
+
+
+### HW Cursor
 
 #### Set Cursor Info
  * Tag: 0x00008010
