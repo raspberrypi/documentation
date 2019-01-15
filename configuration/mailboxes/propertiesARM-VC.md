@@ -871,7 +871,7 @@ Get the PoE HAT PWM registers
  * Request: 
    * Length: 4
    * Value:
-     * u32: 0 Current PWM, 1 Default PWM
+     * u32: 0 Current PWM setting, 1 Default PWM setting. The default setting is stored in non-volatile memory on the PoE HAT and is used to set the PWM on power up.
 * Response:
    * Length: 12
      * u32: 0 Current PWM, 1 Default PWM
@@ -1381,18 +1381,6 @@ Read the state of the specified GPIO pin.
    * Length: 4
    * Value:
      * u32: 0 if successfull
-
-#### Get GPIO virtual Buffer
- * Tag: 0x00040010
- * Request: TBD
-   * Length:
-   * Value:
-
-#### Set GPIO virtual Buffer
- * Tag: 0x00048020
- * Request: TBD
-   * Length:
-   * Value:
 
 ### HW Cursor
 
