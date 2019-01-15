@@ -1290,6 +1290,17 @@ Set the backlight intensity
    * Value:
      * u32: 0-255 value
 
+#### Set Display Palette
+
+Sets an colour mapping table for the specified HVS channel. This can be used for gamma correction. 
+
+ * Tag: 0x00008012
+ * Request:
+   * Length: 8
+   * Value:
+     * u32: HVS channel. Usually 0 for DSI/DPI, 1 for HDMI, 2 for transposer.
+     * u32: Pointer to VC addressed buffer of 768 bytes. Consists of three tables, R,G, and B of 256 bytes each.
+
 ### Touchscreen
 
 #### Get Touchscreen Buffer
