@@ -87,3 +87,8 @@ int rpi_firmware_property(struct rpi_firmware *fw,
 int rpi_firmware_property_list(struct rpi_firmware *fw,
 			       void *data, size_t tag_size)
 ```
+
+## Baremetal Access to Mailboxes
+
+For more details on the lower level operations of the mailboxes, and information on using in a baremetal environment, see [here](./accessing.md)
+
