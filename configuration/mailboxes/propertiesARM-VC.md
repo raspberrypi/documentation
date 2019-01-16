@@ -76,11 +76,13 @@ AAAABBBBCCCCxxxxxxxxyyyyyyyy
 - u8...: value buffer
 - u8...: padding to align the tag to 32 bits.
 
-## Tags (ARM to VC)
+## Tags (VC to ARM)
 
 None currently defined. 
 
-## Tags (VC to ARM)
+## Tags (ARM to VC)
+
+For ARM->VC properties, mailbox 1 is used to send the address of the message, which the VideoCore updates before sending the same address back on mailbox 0.
 
 ### VideoCore
 
