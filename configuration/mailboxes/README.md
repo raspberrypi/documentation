@@ -19,7 +19,7 @@ Mailbox 0 defines the following channels:
 6. Touch screen
 7.
 8. [Property tags (ARM -> VC)](propertiesARM-VC.md)
-9. Property tags (VC -> ARM)
+9. Property tags (VC -> ARM) - Not used.
 
 
 ## Using Mailboxes on the command line
@@ -42,16 +42,16 @@ There is also a very simple example for getting the Pi serial number via a mailb
 
 If using mailboxes from kernel code, there are functions already defined which can be used for setting and getting property tags. You will need access to the device tree node to get the required firmware pointers, which are usually available during probe functions. 
 
-````C
+```C
 /**
  * rpi_firmware_get - Get pointer to rpi_firmware structure.
- * @firmware_node:    Pointer to the firmware Device Tree node.
+ * @firmware_node:    Pointer to the firmware Device Tree node. Not used, set to NULL.
  *
- * Returns NULL is the firmware device is not ready.
+ * Returns NULL if the firmware device is not ready.
  */
 struct rpi_firmware *rpi_firmware_get(struct device_node *firmware_node)
-````
-````C
+```
+```C
 /**
  * rpi_firmware_property - Submit single firmware property
  * @fw:		Pointer to firmware structure from rpi_firmware_get().
@@ -68,8 +68,8 @@ struct rpi_firmware *rpi_firmware_get(struct device_node *firmware_node)
  */
 int rpi_firmware_property(struct rpi_firmware *fw,
 			  u32 tag, void *tag_data, size_t buf_size)
-````
-````C
+```
+```C
 /**
  * rpi_firmware_property_list - Submit firmware property list
  * @fw:		Pointer to firmware structure from rpi_firmware_get().
@@ -86,13 +86,4 @@ int rpi_firmware_property(struct rpi_firmware *fw,
  */
 int rpi_firmware_property_list(struct rpi_firmware *fw,
 			       void *data, size_t tag_size)
-````
-
-## Mailbox registers
-
-The following table shows the register offsets for the different mailboxes. For a description of the procedure for using these registers to access a mailbox from code running on the ARM, see [here](accessing.md).
-
-| Mailbox | Read/Write | Peek | Sender | Status | Config |
-| ------- | ---------- | ---- | ------ | ------ | ------ |
-| 0 | 0x00 | 0x10 | 0x14 | 0x18 | 0x1c |
-| 1 | 0x20 | 0x30 | 0x34 | 0x38 | 0x3c |
+```
