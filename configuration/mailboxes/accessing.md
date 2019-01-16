@@ -1,5 +1,5 @@
 ## Overview
-This page describes the procedure for accessing a mailbox from code running on the ARM side of the mailbox interface.
+This page describes the procedure for accessing a mailbox from code running on the ARM side of the mailbox interface in bare metal or driver code. Care will be requried if you are accessing the mailboxes from multiple threads.
 
 ## General procedure
 To read from a mailbox:
@@ -46,10 +46,19 @@ MemoryBarrier:
 	mov pc, lr					# Return
 ````
 
+## Mailbox registers
+
+The following table shows the register offsets for the different mailboxes.
+
+| Mailbox | Read/Write | Peek | Sender | Status | Config |
+| ------- | ---------- | ---- | ------ | ------ | ------ |
+| 0 | 0x00 | 0x10 | 0x14 | 0x18 | 0x1c |
+| 1 | 0x20 | 0x30 | 0x34 | 0x38 | 0x3c |
+
 ## Sample code
 This code is untested and is written for clarity rather than brevity or efficiency, but is provided for convenience.
 
-````c++
+```c++
 #define MAIL_BASE 0xB880	// Base address for the mailbox registers
 
 // This bit is set in the status register if there is no space to write into the mailbox
@@ -99,4 +108,4 @@ static void WriteMemMappedReg(size_t BaseAddress, size_t Offset, T Data)
 {
 	*reinterpret_cast<T *>(MAPPED_REGISTERS_BASE + BaseAddress + Offset) = Data;
 }
-````
+```
