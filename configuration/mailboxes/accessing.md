@@ -1,5 +1,5 @@
 ## Overview
-This page describes the procedure for accessing a mailbox from code running on the ARM side of the mailbox interface in bare metal or driver code. Care will be requried if you are accessing the mailboxes from multiple threads.
+This page describes the procedure for accessing a mailbox from code running on the ARM side of the mailbox interface in bare metal or driver code. Care will be required if you are accessing the mailboxes from multiple threads.
 
 ## General procedure
 To read from a mailbox:
