@@ -1,4 +1,4 @@
-# The Boot Folder
+# The Boot folder
 
 In a basic Raspbian install, the boot files are stored on the first partition of the SD card, which is formatted with the FAT filesystem. This means that it can be read on Windows, Mac and Linux devices.
 
@@ -6,7 +6,7 @@ When the Raspberry Pi is powered on, it loads various files from the boot partit
 
 Once Linux has booted, the boot partition is mounted as /boot.
 
-## Boot Folder Contents
+## Boot folder contents
 
 ### bootcode.bin
 
@@ -33,10 +33,10 @@ Contains many configuration parameters for setting up the Pi. See [the `config.t
 
 Some text-based housekeeping information containing the date and git commit ID of the distribution.
 
-### Device Tree Files
+### Device tree files
 
 There are various device tree blob files, which have the extension `.dtb`. These contain the hardware definitions of the various models of Raspberry Pi, and are used on boot to set up the kernel according to which Pi model is detected. More [details here](device-tree.md).
 
-## Device Tree Overlays
+## Device tree overlays
 
 The `overlays` sub-folder contains device tree overlays which are used to configure various hardware devices which may be attached to the system, for example the official touchscreen display, and third party sound boards. These overlays are selected using entries in config.txt - see [Device Trees, overlays and parameters, part 2](device-tree.md#part2)
