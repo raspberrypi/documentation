@@ -2,9 +2,9 @@
 
 In a basic Raspbian install, the boot files are stored on the first partition of the SD card, which is formatted with the FAT filesystem. This means that it can be read on Windows, Mac and Linux devices.
 
-Once Linux has booted, the boot partition is mounted as /boot.
-
 When the Raspberry Pi is powered on, it loads various files from the boot partition/folder in order to start up the various processors, then it boots the Linux kernel.
+
+Once Linux has booted, the boot partition is mounted as /boot.
 
 ## Boot Folder Contents
 
