@@ -4,7 +4,7 @@ In a basic Raspbian install, the boot files are stored on the first partition of
 
 When the Raspberry Pi is powered on, it loads various files from the boot partition/folder in order to start up the various processors, then it boots the Linux kernel.
 
-Once Linux has booted, the boot partition is mounted as /boot.
+Once Linux has booted, the boot partition is mounted as `/boot`.
 
 ## Boot folder contents
 
@@ -39,4 +39,4 @@ There are various device tree blob files, which have the extension `.dtb`. These
 
 ## Device tree overlays
 
-The `overlays` sub-folder contains device tree overlays which are used to configure various hardware devices which may be attached to the system, for example the official touchscreen display, and third party sound boards. These overlays are selected using entries in config.txt - see [Device Trees, overlays and parameters, part 2](device-tree.md#part2)
+The `overlays` sub-folder contains device tree overlays which are used to configure various hardware devices which may be attached to the system, for example the official touchscreen display, and third party sound boards. These overlays are selected using entries in `config.txt` - see [Device Trees, overlays and parameters, part 2](device-tree.md#part2)
