@@ -1,4 +1,4 @@
-# The Boot folder
+# The boot folder
 
 In a basic Raspbian install, the boot files are stored on the first partition of the SD card, which is formatted with the FAT filesystem. This means that it can be read on Windows, Mac and Linux devices.
 
