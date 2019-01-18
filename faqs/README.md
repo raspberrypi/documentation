@@ -171,7 +171,7 @@ Yes — it depends on your use case. Pis have been used successfully in industri
 These are the [models of the Raspberry Pi](https://www.raspberrypi.org/products/) which are currently available: the Pi 3 Model B, the Pi 2 Model B, the Pi Zero, the Pi Zero W and the Pi 1 Model B+ and A+.
 
 | Product | SoC | Speed | RAM | USB Ports | Ethernet | Wireless | Bluetooth |
-|---------|-----|-------|-----|-----------|----------|----------|-----------|
+|---------|-----|-------|-----|:--------:|:--------:|:--------:|:---------:|
 | Raspberry Pi Model A+ | BCM2835 | 700MHz | 512MB | 1 | No | No | No |
 | Raspberry Pi Model B+ | BCM2835 | 700MHz | 512MB | 4 |100Base-T | No | No |
 | Raspberry Pi 2 Model B | BCM2836/7 | 900MHz | 1GB | 4 |100Base-T| No | No |
