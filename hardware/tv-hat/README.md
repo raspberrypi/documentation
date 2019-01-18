@@ -34,7 +34,7 @@ sudo apt-get install tvheadend
 * This should connect to `tvheadend` running on the Raspberry Pi.
   * If the address above doesn't work, you’ll need to find out the IP address of the Pi. Open a terminal window on your Pi, and run the command `hostname -I`
   * You’ll see the IP address in one or two formats: a string of four numbers separated by dots, then, if you are on a IPv6 network, a space, then a long string of numbers and letters separated by colons.
-  * Copy everything before the space (the four numbers and dots), and paste this into the address bar instead of the raspberrypi.local part of the address.
+  * Note down everything before the space (the four numbers and dots), and type this into the address bar instead of the raspberrypi.local part of the address.
 * Once you have connected to `tvheadend` via the browser, you will be prompted to sign in. Use the account name and password you chose when you installed `tvheadend` on the Pi. A setup wizard should appear.
 * First, set the language you want `tvheadend` to use (**English (GB)** worked for us; we have
 not yet tested other languages).
