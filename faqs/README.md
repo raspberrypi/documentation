@@ -170,16 +170,16 @@ Yes — it depends on your use case. Pis have been used successfully in industri
 
 These are the [models of the Raspberry Pi](https://www.raspberrypi.org/products/) which are currently available: the Pi 3 Model B, the Pi 2 Model B, the Pi Zero, the Pi Zero W and the Pi 1 Model B+ and A+.
 
-| Product | SoC | Speed | RAM | USB Ports | Ethernet | Wireless/Bluetooth |
-|---------|-----|-------|-----|-----------|----------|--------------------|
-| Raspberry Pi Model A+ | BCM2835 | 700MHz | 512MB | 1 | No | No |
-| Raspberry Pi Model B+ | BCM2835 | 700MHz | 512MB | 4 |Yes | No |
-| Raspberry Pi 2 Model B | BCM2836/7 | 900MHz | 1GB | 4 |Yes | No |
-| Raspberry Pi 3 Model B | BCM2837 | 1200MHz | 1GB | 4 |Yes | Yes |
-| Raspberry Pi 3 Model B+ | BCM2837 | 1400MHz | 1GB | 4 |Yes | Yes |
-| Raspberry Pi Zero | BCM2835 | 1000MHz | 512MB | 1 | No | No |
-| Raspberry Pi Zero W | BCM2835 | 1000MHz | 512MB | 1 | No | Yes |
-| Raspberry Pi Zero WH | BCM2835 | 1000MHz | 512MB | 1 | No | Yes |
+| Product | SoC | Speed | RAM | USB Ports | Ethernet | Wireless | Bluetooth |
+|---------|-----|-------|-----|-----------|----------|----------|-----------|
+| Raspberry Pi Model A+ | BCM2835 | 700MHz | 512MB | 1 | No | No | No |
+| Raspberry Pi Model B+ | BCM2835 | 700MHz | 512MB | 4 |100Base-T | No | No |
+| Raspberry Pi 2 Model B | BCM2836/7 | 900MHz | 1GB | 4 |100Base-T| No | No |
+| Raspberry Pi 3 Model B | BCM2837A0/B0 | 1200MHz | 1GB | 4 |100Base-T| 802.11n| 4.1 |
+| Raspberry Pi 3 Model B+ | BCM2837B0 | 1400MHz | 1GB | 4 |1000Base-T | 802.11ac/n | 4.2 |
+| Raspberry Pi Zero | BCM2835 | 1000MHz | 512MB | 1 | No | No | No |
+| Raspberry Pi Zero W | BCM2835 | 1000MHz | 512MB | 1 | No | 802.11n | 4.1 |
+| Raspberry Pi Zero WH | BCM2835 | 1000MHz | 512MB | 1 | No | 802.11n | 4.1 |
 
 The Model A+ is the low-cost variant of the Raspberry Pi. It has 512MB RAM (as of August 2016: earlier models have 256MB), one USB port, 40 GPIO pins, and no Ethernet port. The Model B+ is the final revision of the original Raspberry Pi. It has 512MB RAM, four USB ports, 40 GPIO pins, and an Ethernet port.
 
