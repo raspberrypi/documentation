@@ -1,6 +1,6 @@
 # GPIO pads control
 
-This document explains the current capabilities of the Raspberry Pi GPIO pins. It is applicable to all models up to an including the Mode 3B+. The main thing to note is that the GPIO drive strengths do not indicate a maximum current, but a maximum current under which the pad will still meet the specification. You should set the GPIO drive strengths to match the device being attached in order for the device to work correctly. 
+This document explains the current capabilities of the Raspberry Pi GPIO pins. It is applicable to all models upto and including the Mode 3B+. The main thing to note is that the GPIO drive strengths do not indicate a maximum current, but a maximum current under which the pad will still meet the specification. You should set the GPIO drive strengths to match the device being attached in order for the device to work correctly. 
 
 #### How drive strength is controlled
 
