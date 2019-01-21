@@ -1,6 +1,6 @@
 # GPIO pads control
 
-This document explains the current capabilities of the Raspberry Pi GPIO pins. It is applicable to all models upto and including the Mode 3B+. The main thing to note is that the GPIO drive strengths do not indicate a maximum current, but a maximum current under which the pad will still meet the specification. You should set the GPIO drive strengths to match the device being attached in order for the device to work correctly. 
+This document explains the current capabilities of the Raspberry Pi GPIO pins. It is applicable to all models upto and including the Model 3B+. The main thing to note is that the GPIO drive strengths do not indicate a maximum current, but a maximum current under which the pad will still meet the specification. You should set the GPIO drive strengths to match the device being attached in order for the device to work correctly. 
 
 #### How drive strength is controlled
 
@@ -30,10 +30,9 @@ This has to do with the guaranteed voltage levels. As this is a digital pad ther
 
 To answer that question I/O ports have two parameters which deal with the output level:
 *  V<sub>IL</sub>: The maximum low level voltage. (0.8V on the BCM2835/6/7)
-*  V<sub>IH</sub> : The minimum high level voltage. (1.3V on the BCM28356/7)
+*  V<sub>IH</sub> : The minimum high level voltage. (1.3V on the BCM2835/6/7)
 
 V<sub>IL</sub>=0.8V means that if the output is Low it will be <= 0.8V.
-
 V<sub>IL</sub>=1.3V means that if the output is High it will be >= 1.3V.
    
 Thus a drive strength of 16mA means:
