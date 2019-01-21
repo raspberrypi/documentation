@@ -1,6 +1,6 @@
 # GPIO pads control
 
-This document expains the current capabilities of the Raspberry Pi GPIO pins. It is applicable to all models up to an including the Mode 3B+. The main thing to note is that the GPIO drive strengths do not indicate a maximum current, but a maximum current under which the pad will still meet the specification. You should set the GPIO drive strengths to match the device being attached in order for the device to work correctly. 
+This document explains the current capabilities of the Raspberry Pi GPIO pins. It is applicable to all models up to an including the Mode 3B+. The main thing to note is that the GPIO drive strengths do not indicate a maximum current, but a maximum current under which the pad will still meet the specification. You should set the GPIO drive strengths to match the device being attached in order for the device to work correctly. 
 
 #### How drive strength is controlled
 
@@ -21,7 +21,7 @@ The pad output is a voltage source,
 * if set high the pad will try to drive the output to the rail voltage which on the Raspberry-Pi is 3V3 (3.3 Volts)
 * if set low the pad will try to drive the output to ground (0 Volts)
 
-The pad will try to drive the output high or low. Success will depend on what is connected. If the pad is shorted to ground it will not be able to drive high. It will actually try to deliver as much current as it can and the current is only limited by the internal resistance.
+The pad will try to drive the output high or low. Success will depend on the requriements of what is connected. If the pad is shorted to ground it will not be able to drive high. It will actually try to deliver as much current as it can and the current is only limited by the internal resistance.
 
 If the pad is driven high and it is shorted to ground in due time it will fail! The same holds true if you connect it to 3V3 and drive it low.
 
