@@ -34,13 +34,14 @@ Returns the throttled state of the system. This is a bit pattern.
 
 | Bit | Meaning |
 |:---:|---------|
-| 0   | under-voltage detected |
-| 1   | arm frequency capped |
-| 2   | currently throttled |
-| 16  | under-voltage has occurred |
-| 17  | arm frequency capped has occurred |
-| 18  | throttling has occurred |
-| 19  | Soft Temp limit has occurred |
+| 0   | Under-voltage detected |
+| 1   | Arm frequency capped |
+| 2   | Currently throttled |
+| 3   | Soft temperature limit active |
+| 16  | Under-voltage has occurred |
+| 17  | Arm frequency capped has occurred |
+| 18  | Throttling has occurred |
+| 19  | Soft temperature limit has occurred |
 
 #### measure_temp
 
