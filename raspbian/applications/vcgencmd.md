@@ -26,7 +26,7 @@ Displays the build date and version of the firmware on the VideoCore.
 
 #### get_camera
 
-Displays the supported and deected state of the official camera. 1 means yes, 0 means no.
+Displays the enabled  and detected state of the official camera. 1 means yes, 0 means no. Whilst all firmware will support the camera, this support needs to be enabled by using [raspi-config](../../configuration/raspi-config.md).
 
 #### get_throttled
 
@@ -34,7 +34,7 @@ Returns the throttled state of the system. This is a bit pattern.
 
 | Bit | Meaning |
 |:---:|---------|
-| 0   | under-voltage |
+| 0   | under-voltage detected |
 | 1   | arm frequency capped |
 | 2   | currently throttled |
 | 16  | under-voltage has occurred |
@@ -88,7 +88,7 @@ Reports on the amount of memory allocated to the ARM cores `vcgencmd get_mem arm
 
 #### codec_enabled [type]
 
-Reports whether the specified CODEC type is enabled. Possible options for type are **H264, MPG2, WVC1, MPG4, MJPG, WMV9**.
+Reports whether the specified CODEC type is enabled. Possible options for type are AGIF, FLAC, H263, H264, MJPA, MJPB, MJPG, **MPG2**, MPG4, MVC0, PCM, THRA, VORB, VP6, VP8, **WMV9**, **WVC1**. Those highlighted currently require a paid for licence. 
 
 #### get_config [type]
 
@@ -96,7 +96,7 @@ This returns all the configuration items of the specified type that have been se
 
 #### get_lcd_info
 
-Displays the resolution and colour depth of any attached LCD display.
+Displays the resolution and colour depth of any attached display.
 
 #### mem_oom
 
