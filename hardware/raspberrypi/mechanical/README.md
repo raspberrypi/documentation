@@ -4,6 +4,12 @@
 
 - [PDF](rpi_MECH_3bplus.pdf)
 
+## Raspberry Pi 3A+
+
+Also applicable to the A+.
+
+- [PDF](rpi_MECH_3aplus.pdf)
+
 ## Raspberry Pi 3B
 
 - [PDF](rpi_MECH_3b_1p2.pdf)
