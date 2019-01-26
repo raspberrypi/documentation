@@ -33,6 +33,18 @@ raspistill -v -o test.jpg
 
 The display should show a five-second preview from the camera and then take a picture, saved to the file `test.jpg`, whilst displaying various informational messages.
 
+If the camera is not working, you may need to enable I2C using 
+
+```
+sudo raspi-config
+```
+
+Otherwise, you may need to upgrade the firmware on the Raspberry Pi. Use the following command to get the very latest (but experimental) firmware:
+
+```
+sudo rpi-update
+```
+
 ## More Information
 
 See [Camera Software](../raspbian/applications/camera.md).
