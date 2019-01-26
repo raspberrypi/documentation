@@ -35,13 +35,13 @@ The display should show a five-second preview from the camera and then take a pi
 
 If the camera is not working, you may need to enable I2C using 
 
-```
+```bash
 sudo raspi-config
 ```
 
 Otherwise, you may need to upgrade the firmware on the Raspberry Pi. Use the following command to get the very latest (but experimental) firmware:
 
-```
+```bash
 sudo rpi-update
 ```
 
