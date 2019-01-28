@@ -6,5 +6,6 @@
 
 We no longer recommend using the CM or CM3 in new products, please use the CM3+ for all future designs. 
 
+* [Release 3](datasheets/rpi_DATA_CM_3p0.pdf)
 * [Release 2](datasheets/rpi_DATA_CM_2p0.pdf)
 * [Release 1](datasheets/rpi_DATA_CM_1p0.pdf)
