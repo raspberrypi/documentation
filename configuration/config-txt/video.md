@@ -340,7 +340,7 @@ Setting to `1` will remove all other modes except the ones specified by `hdmi_mo
 
 ### edid_content_type
 
-Forces the edit content type to a specific value.
+Forces the EDID content type to a specific value.
 
 The options are:
  - `0` = `EDID_ContentType_NODATA`, content type none.
