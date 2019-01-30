@@ -78,6 +78,8 @@ uuuuuuuuFMMMCCCCPPPPTTTTTTTTRRRR
 |          |              | c: Zero W                  |
 |          |              | d: 3B+                     |
 |          |              | e: 3A+                     |
+|          |              | f: Internal use only       |
+|          |              | 10: CM3+                   |
 | RRRR     | Revision     | 0, 1, 2, etc.              |
 
 New-style revision codes in use:
@@ -103,3 +105,5 @@ New-style revision codes in use:
 | a220a0 | CM3               | 1.0      | 1 GB   | Embest       |
 | a32082 | 3B                | 1.2      | 1 GB   | Sony Japan   |
 | a52082 | 3B                | 1.2      | 1 GB   | Stadium      |
+| a02100 | CM3+              | 1.0      | 1 GB   | Sony UK      |
+
