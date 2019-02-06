@@ -33,7 +33,7 @@ The first set of Raspberry Pi revisions were given sequential hex revision codes
 | 000d | B     | 2.0      | 512 MB          | Egoman       |
 | 000e | B     | 2.0      | 512 MB          | Sony UK      |
 | 000f | B     | 2.0      | 512 MB          | Egoman       |
-| 0010 | B+    | 1.0      | 512 MB          | Sony UK      |
+| 0010 | B+    | 1.2      | 512 MB          | Sony UK      |
 | 0011 | CM1   | 1.0      | 512 MB          | Sony UK      |
 | 0012 | A+    | 1.1      | 256 MB          | Sony UK      |
 | 0013 | B+    | 1.2      | 512 MB          | Embest       |
