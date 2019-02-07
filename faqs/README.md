@@ -422,7 +422,7 @@ Whether you want to use the NOOBS installer or a standalone image, the minimum s
 
 ### What size of SD card can it support?
 
-Although the minimum size of card depends on which OS you are installing (can be as low as 4GB for a minimal system, but we recommend 8GB for Raspbian), we have tried cards up to 128GB, and most cards seem to work OK. You can also attach a USB stick or USB hard drive to provide extra storage.
+While the recommended minimum of 8GB should be enough for most people, we have tried cards up to 128GB, and most cards seem to work OK. You can also attach a USB stick or USB hard drive to provide extra storage.
 
 ### Can I boot a Pi from a USB-attached hard drive instead of the SD card?
 
