@@ -1,6 +1,6 @@
 # GPIO pads control
 
-This document explains the current capabilities of the Raspberry Pi GPIO pins. It is applicable to all models upto and including the Model 3B+. The main thing to note is that the GPIO drive strengths do not indicate a maximum current, but a maximum current under which the pad will still meet the specification. You should set the GPIO drive strengths to match the device being attached in order for the device to work correctly. 
+This page explains the current capabilities of the Raspberry Pi GPIO pins. It is applicable to all models upto and including the Model 3B+. The main thing to note is that the GPIO drive strengths do not indicate a maximum current, but a maximum current under which the pad will still meet the specification. You should set the GPIO drive strengths to match the device being attached in order for the device to work correctly. 
 
 #### How drive strength is controlled
 
@@ -10,27 +10,24 @@ Inside the pad there are a number of drivers, all in parallel. If the drive stre
 
 #### What does the current value mean?
 
-*The current value specifies the maximum current under which the pad will
-still meet the specification*.
+*The current value specifies the maximum current under which the pad will still meet the specification*.
 
-1. It is **not**: the current that the pad will deliver.
-1. It is **not**: a current limit so the pad will not blow up.
+1. It is **not** the current that the pad will deliver.
+1. It is **not** a current limit so the pad will not blow up.
 
 The pad output is a voltage source,
 
-* if set high the pad will try to drive the output to the rail voltage which on the Raspberry-Pi is 3V3 (3.3 Volts)
+* if set high the pad will try to drive the output to the rail voltage which on the Raspberry Pi is 3V3 (3.3 Volts)
 * if set low the pad will try to drive the output to ground (0 Volts)
 
-The pad will try to drive the output high or low. Success will depend on the requriements of what is connected. If the pad is shorted to ground it will not be able to drive high. It will actually try to deliver as much current as it can and the current is only limited by the internal resistance.
+The pad will try to drive the output high or low. Success will depend on the requirements of what is connected. If the pad is shorted to ground it will not be able to drive high. It will actually try to deliver as much current as it can and the current is only limited by the internal resistance.
 
-If the pad is driven high and it is shorted to ground in due time it will fail! The same holds true if you connect it to 3V3 and drive it low.
+If the pad is driven high and it is shorted to ground in due time it will fail. The same holds true if you connect it to 3V3 and drive it low.
 
-Coming back to the statement that the current value specifies the maximum current under which the pad will still meet the specification.
-This has to do with the guaranteed voltage levels. As this is a digital pad there are two voltage levels, high and low. Yet how high and how low? Is high 0.9V or 1.5V or 2.7V or some other voltage?
+Meeting the specification is determined by the guaranteed voltage levels. Because the pads are digital, there are two voltage levels, high and low. The I/O ports have two parameters which deal with the output level:
 
-To answer that question I/O ports have two parameters which deal with the output level:
-*  V<sub>IL</sub>: The maximum low level voltage. (0.8V on the BCM2835/6/7)
-*  V<sub>IH</sub> : The minimum high level voltage. (1.3V on the BCM2835/6/7)
+*  V<sub>IL</sub>: The maximum low level voltage. (0.8V)
+*  V<sub>IH</sub> : The minimum high level voltage. (1.3V)
 
 V<sub>IL</sub>=0.8V means that if the output is Low it will be <= 0.8V.
 V<sub>IL</sub>=1.3V means that if the output is High it will be >= 1.3V.
@@ -38,6 +35,8 @@ V<sub>IL</sub>=1.3V means that if the output is High it will be >= 1.3V.
 Thus a drive strength of 16mA means:
 
 If you set the pad high you can draw up to 16mA and it is guaranteed that the output voltage will be >=1.3V. This also means that if you set a drive strength of 2mA and you draw 16mA the voltage will **not** be 1.3 Volt but lower. In fact it may not be high enough to be seen as high by an external device.
+
+There is more information on the physical characteristics of the GPIO pins [here](./README.md).
 
 #### Why don't I set all my pads to the maximum current?
 
