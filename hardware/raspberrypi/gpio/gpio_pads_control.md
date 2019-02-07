@@ -30,7 +30,7 @@ Meeting the specification is determined by the guaranteed voltage levels. Becaus
 *  V<sub>IH</sub> : The minimum high level voltage. (1.3V)
 
 V<sub>IL</sub>=0.8V means that if the output is Low it will be <= 0.8V.
-V<sub>IL</sub>=1.3V means that if the output is High it will be >= 1.3V.
+V<sub>IH</sub>=1.3V means that if the output is High it will be >= 1.3V.
    
 Thus a drive strength of 16mA means:
 
