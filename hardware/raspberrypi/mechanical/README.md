@@ -20,6 +20,10 @@ Also applicable to the A+.
 - [PDF](rpi_MECH_bplus_1p2.pdf)
 - [DXF](rpi_MECH_bplus_1p2.dxf)
 
+## Raspberry Pi Zero, Pi Zero W, Pi Zero WH (v1.3)
+
+- [PDF](rpi_MECH_Zero_1p3.pdf)
+
 ## Raspberry Pi Zero (v1.2)
 
 - [PDF](rpi_MECH_Zero_1p2.pdf)
