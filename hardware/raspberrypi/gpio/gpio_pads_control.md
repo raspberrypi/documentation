@@ -26,17 +26,17 @@ If the pad is driven high and it is shorted to ground in due time it will fail. 
 
 Meeting the specification is determined by the guaranteed voltage levels. Because the pads are digital, there are two voltage levels, high and low. The I/O ports have two parameters which deal with the output level:
 
-*  V<sub>IL</sub>: The maximum low level voltage. (0.8V)
-*  V<sub>IH</sub> : The minimum high level voltage. (1.3V)
+*  V<sub>IL</sub>: The maximum low level voltage. (0.9V at 3V3 VDD IO)
+*  V<sub>IH</sub> : The minimum high level voltage. (1.6V at 3V3 VDD IO)
 
-V<sub>IL</sub>=0.8V means that if the output is Low it will be <= 0.8V.
-V<sub>IH</sub>=1.3V means that if the output is High it will be >= 1.3V.
+V<sub>IL</sub>=0.9V means that if the output is Low it will be <= 0.9V.
+V<sub>IH</sub>=1.6V means that if the output is High it will be >= 1.6V.
    
 Thus a drive strength of 16mA means:
 
-If you set the pad high you can draw up to 16mA and it is guaranteed that the output voltage will be >=1.3V. This also means that if you set a drive strength of 2mA and you draw 16mA the voltage will **not** be 1.3 Volt but lower. In fact it may not be high enough to be seen as high by an external device.
+If you set the pad high you can draw up to 16mA and it is guaranteed that the output voltage will be >=V<sub>IL</sub>. This also means that if you set a drive strength of 2mA and you draw 16mA the voltage will **not** be V<sub>IL</sub> but lower. In fact it may not be high enough to be seen as high by an external device.
 
-There is more information on the physical characteristics of the GPIO pins [here](./README.md).
+There is more information on the physical characteristics of the GPIO pins [here](./README.md). Note that on the Compute module devices it is possible to change the VDD IO from the standard 3V3, in this case V<sub>IL</sub> and V<sub>IH</sub> will change according to the table on the linked page. 
 
 #### Why don't I set all my pads to the maximum current?
 
