@@ -34,7 +34,7 @@ V<sub>IH</sub>=1.6V means that if the output is High it will be >= 1.6V.
    
 Thus a drive strength of 16mA means:
 
-If you set the pad high you can draw up to 16mA and it is guaranteed that the output voltage will be >=V<sub>IL</sub>. This also means that if you set a drive strength of 2mA and you draw 16mA the voltage will **not** be V<sub>IL</sub> but lower. In fact it may not be high enough to be seen as high by an external device.
+If you set the pad high you can draw up to 16mA and it is guaranteed that the output voltage will be >=V<sub>IH</sub>. This also means that if you set a drive strength of 2mA and you draw 16mA the voltage will **not** be V<sub>IH</sub> but lower. In fact it may not be high enough to be seen as high by an external device.
 
 There is more information on the physical characteristics of the GPIO pins [here](./README.md). Note that on the Compute module devices it is possible to change the VDD IO from the standard 3V3, in this case V<sub>IL</sub> and V<sub>IH</sub> will change according to the table on the linked page. 
 
