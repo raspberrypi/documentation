@@ -1,6 +1,6 @@
 # Installing operating system images on Linux
 
-[Etcher](README.md) is typically the easiest option for most users to write images to SD cards, so it is a good place to start. If you're looking for more advanced options on Linux, you can use the standard command line tools below.
+[balenaEtcher](README.md) is typically the easiest option for most users to write images to SD cards, so it is a good place to start. If you're looking for more advanced options on Linux, you can use the standard command line tools below.
 
 **Note**: use of the `dd` tool can overwrite any partition of your machine. If you specify the wrong device in the instructions below, you could delete your primary Linux partition. Please be careful.
 
@@ -38,7 +38,7 @@ unzip -p 2018-11-13-raspbian-stretch.zip | sudo dd of=/dev/sdX bs=4M conv=fsync
 
 ### Checking the image copy progress
 
-- By default, the `dd` command does not give any information about its progress, so it may appear to have frozen. It can take more than five minutes to finish writing to the card. If your card reader has an LED, it may blink during the write process. 
+- By default, the `dd` command does not give any information about its progress, so it may appear to have frozen. It can take more than five minutes to finish writing to the card. If your card reader has an LED, it may blink during the write process.
 
 - To see the progress of the copy operation, you can run the dd command with the status option.
    ```

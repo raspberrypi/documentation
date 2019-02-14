@@ -6,7 +6,7 @@
 - **Armv6** – the instruction set architecture used on the first Raspberry Pi (Pi 1) and the Pi Zero range
 - **Armv7** – the instruction set architecture used on the Raspberry Pi 2 range
 - **Armv8** – the instruction set architecture used on the Raspberry Pi 3 range; very similar to Armv7 in 32-bit mode
-- **Bare metal** - Programming the Raspberry Pi without using an operating system. 
+- **Bare metal** - Programming the Raspberry Pi without using an operating system.
 - **BCM2835** – the SoC used on the Raspberry Pi 1, Compute Module 1, and Raspberry Pi Zero range; see our [official documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/README.md)
 - **BCM2836** – the SoC used on the original Raspberry Pi 2; see our [official documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/README.md)
 - **BCM2837** – the SoC used on the Raspberry Pi 3, Compute Module 3, and Raspberry Pi 2 version 1.2; see our [official documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2837/README.md)
@@ -24,7 +24,7 @@
 - **Device Tree blob (DTB)** – a binary file containing a Device Tree, the result of compiling DTS files.
 - **`dt-blob.bin`** – a binary file containing initial GPIO configuration that is read by the firmware at boot time; despite the name, this is _not_ Device Tree blob (although it is compiled by the Device Tree tools)
 - **DVI** – Digital Visual Interface, a video interface for connecting a source device to a monitor or display; electrically compatible with HDMI, so a simple adapter can convert from one to the other (excluding audio, which DVI does not support); see [Wikipedia](https://en.wikipedia.org/wiki/Digital_Visual_Interface)
-- **Etcher** - The Raspberry Pi recommended tool, available on Linux, Windows and Mac, for [programming SD cards](https://www.raspberrypi.org/documentation/installation/installing-images/README.md) ready for use on our devices.
+- **balenaEtcher** - The Raspberry Pi recommended tool, available on Linux, Windows and Mac, for [programming SD cards](https://www.raspberrypi.org/documentation/installation/installing-images/README.md) ready for use on our devices.
 - **FAQ** - Frequently Asked Questions! See our [FAQ](https://www.raspberrypi.org/documentation/faqs/)
 - **Firmware** – software that runs on a particular hardware device, for example a wireless chip or dongle; distinct from the usual software running on the Raspberry Pi in that it is usually a fixed binary blob of data that is loaded on to the device at startup; on the Raspberry Pi, the VC4 GPU requires firmware to be loaded to it at startup in order boot up and run the entire system.
 - **GNU** - The [GNU Project](https://en.wikipedia.org/wiki/GNU_Project) is a free software mass collaboration project, which has produced huge amounts of software that is used on the Raspberry Pi, including Linux itself.
@@ -38,7 +38,7 @@
 - **I<sup>2</sup>S** – Inter-Integrated Circuit Sound, an electrical serial bus interface standard used for connecting digital audio devices together; see [Wikipedia](https://en.wikipedia.org/wiki/I%C2%B2S)
 - **ISP** – Imaging System Pipeline, a set of hardware (and sometimes software) stages that processes images from a camera into a high-quality result; the Raspberry Pi has a built-in hardware ISP that processes images captured from a camera attached to the CSI port.
 - **ISP** - Internet service provider.
-- **LAN** - Local Area Network, an ethernet or wireless based communication network in a localised area, for example a house or office. 
+- **LAN** - Local Area Network, an ethernet or wireless based communication network in a localised area, for example a house or office.
 - **LED** – Light-Emitting Diode, a semiconductor device that produces light from electricity
 - **Linux** – the main operating system used on the Raspberry Pi; the particular customised distribution for the Raspberry Pi range is called Raspbian; third parties have also produced their own distributions.
 - **MSD** – Mass Storage Device (amongst other things), such as an SD card or hard disk drive
@@ -53,7 +53,7 @@
 - **Polyfuse** - An self-resetting electrical fuse used on some Pi models to protect against over current situations. Can take hours or even days to reset.
 - **`raspi-config`** – a command line tool for configuring Raspbian's operating system features; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)
 - **raspivid, raspistill, raspiyuv, raspividyuv** – a set of applications to run the Raspberry Pi Camera Module in various modes; see our [official documentation](https://www.raspberrypi.org/documentation/raspbian/applications/camera.md)
-- **Raspbian** - A Debian based Linux distribution targeted at the entire Raspberry Pi range, regarded as the official O/S. The current version is based on Debian Stretch with the first release being in August 2017. See this [Wikipedia](https://en.wikipedia.org/wiki/Raspbian) entry for further release details. 
+- **Raspbian** - A Debian based Linux distribution targeted at the entire Raspberry Pi range, regarded as the official O/S. The current version is based on Debian Stretch with the first release being in August 2017. See this [Wikipedia](https://en.wikipedia.org/wiki/Raspbian) entry for further release details.
 - **Raspberry Pi Configuration Tool (`rcgui`)** – a graphical equivalent of `raspi-config`
 - **Raspberry Pi Desktop** – a version of the LXDE desktop environment, specifically tailored to the Raspberry Pi (used to be called Pixel)
 - **RPF** - Raspberry Pi Foundation. The original registered educational charity (1129409) which launched the Raspberry Pi.
@@ -71,4 +71,4 @@
 - **VNC** – a graphical desktop sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer; see our [official documentation](https://www.raspberrypi.org/documentation/remote-access/vnc/README.md)
 - **Volt (V)** – SI-derived unit for electrical potential difference.; see [Wikipedia](https://en.wikipedia.org/wiki/Volt)
 - **`vcgencmd`** – a Raspberry Pi–specific tool for communicating with the VideoCore4 GPU
-- **Watt** - A measure of [power](https://en.wikipedia.org/wiki/Watt) often used when specifying power supplies. 
+- **Watt** - A measure of [power](https://en.wikipedia.org/wiki/Watt) often used when specifying power supplies.
