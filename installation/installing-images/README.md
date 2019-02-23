@@ -35,3 +35,4 @@ For more advanced control of this process, see our system-specific guides:
 - [Linux](linux.md)
 - [Mac OS](mac.md)
 - [Windows](windows.md)
+- [ChromeOS](chromeos.md)
