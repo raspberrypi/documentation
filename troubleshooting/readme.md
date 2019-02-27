@@ -4,14 +4,12 @@ This page will attempt to help with possible problems that you may encounter whi
 
 Please click on the area where you are having problems.
 
-- Which Pi should I choose?
-- I cannot figure out how to make my SD card
-- My Pi doesn't boot!
-- My Pi is working, but networking isn't
-- The display isn't right!
-- Bluetooth isn't working!
-- My graphical desktop isn't right
-- I'm trying to use the x86 distribution with Raspbian Desktop
-
-
+- [Which Pi should I choose?](./chooser.md)
+- [I cannot figure out how to make my SD card](./sdcard.md)
+- [My Pi doesn't boot!](./noboot.md)
+- [My Pi is working, but networking isn't](./networking.md)
+- [The display isn't right!](./display.md)
+- [Bluetooth isn't working!](./bluetooth.md)
+- [My graphical desktop isn't right](./desktop.md)
+- [I'm trying to use the x86 distribution with Raspbian Desktop](./x86desktop.md)
 
