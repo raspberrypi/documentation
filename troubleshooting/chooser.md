@@ -1,4 +1,4 @@
-# Which Raspberry pi should I choose?
+# Which Raspberry Pi should I choose?
 
 This depends on a number of factors, but for the majority of people the latest model will be the best choice.
 
