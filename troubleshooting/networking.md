@@ -34,7 +34,7 @@ This would be unusual, it implies that the Ethernet HW on the Raspberry Pi isn't
 
 #### eth0 is present, but I don't have the inet or inet6 lines
 
-OK, so the ethernet port appears to be working, but your router has not allocated your Raspberry pi an ethernet address. You need to check out your router isntructions to find out why that might be. It might be doing something called MAC address filtering, or similar which means it only allocates addresses to devices it knows about. You can use the `ifconfig` command to find the MAC address of your Raspberry Pi, it's the hexadecimal number in the form `qq:qq:qq:qq:qq:qq` on the line starting with `ether`.
+OK, so the ethernet port appears to be working, but your router has not allocated your Raspberry Pi an ethernet address. You need to check out your router instructions to find out why that might be. It might be doing something called MAC address filtering which means it only allocates addresses to devices it knows about. You can use the `ifconfig` command to find the MAC address of your Raspberry Pi, it's the hexadecimal number in the form `qq:qq:qq:qq:qq:qq` on the line starting with `ether`. Add that to your filter rules so the router recognises the Raspberry Pi and allocates an IP address.
 
 ### I have an IP address but no internet connection
 
@@ -44,11 +44,11 @@ TODO
 
 ### Slow connection
 
-If you are using a Pi3B+ this has a gigbit ethernet adapter, and you might be expecting to get gigabit speeds. However, the Pi cannot communicate with the ethernet chip at that sort of speed due to inrerface limitation, so you will et less than that. It would normally be expected to get up to 250-300MBits/s. 
+If you are using a Pi3B+ this has a gigbit ethernet adapter, and you might be expecting to get gigabit speeds. However, the Pi cannot communicate with the ethernet chip at that sort of speed due to the USB interface limitations, so you will et less than that. It would normally be expected to get up to 250-300MBits/s. 
 
 #### But I only get about 85MBits/s!
 
-This almost certainly a flow control problem. You need to turn on flow control on your router to help with the slower speed of the Pi ethernet. It might be called pause frames or similar. Most redidential routers have flow control turned on automatically. Commercial routers will probably need it to be turned on.
+This almost certainly a flow control problem. You need to turn on flow control on your router to help with the slower speed of the Pi ethernet. It might be called pause frames or similar. Most residential routers have flow control turned on automatically. Commercial routers will probably need it to be turned on.
 
 ## Wireless problems
 
