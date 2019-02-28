@@ -16,14 +16,16 @@ Try running the example camera application, by typing `raspistill -o test.jpg` o
 
 Which error message? Check out the last line of the error report and read the relevent section below.
 
-### mmal: Camera is not enabled in this build ....
+#### mmal: Camera is not enabled in this build ....
 
 The camera has not been enabled in the software. You need to run `sudo raspi-config` on from the command line, or select the Preferences/Raspberry Pi Configuration option from the desktop menu.
 
-For raspi-config, now selcect Interfacing Options, then select the Enable Camera option.
-For the graphical interface, select the interfaces tab and enable the camera.
+For raspi-config, now select Interfacing Options, then select the Enable Camera option.  
+For the graphical interface, select the Interfaces tab and enable the camera.
 
-### mmal: Camera is not detected...
+You will need to reboot for the changes to take effect. 
+
+#### mmal: Camera is not detected...
 
 Although the camera has been enabled, the software has not been able to find one connected to the Raspberry Pi. This can be cause by a number of things, but the usual reason is the camera has not been connected correctly.
 
