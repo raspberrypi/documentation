@@ -29,7 +29,7 @@ You will need to reboot for the changes to take effect.
 
 Although the camera has been enabled, the software has not been able to find one connected to the Raspberry Pi. This can be cause by a number of things, but the usual reason is the camera has not been connected correctly.
 
-Check both ends of the camera cable to ensure they are the right way rounbd and correct installed. Also, check the small connected on the PCB that connects to the camera module itself. Sometimes these can come loose. You can lever it up, then re-seat it, with a slight click.
+Turn the power off, then check both ends of the camera cable to ensure they are the right way round and correct installed. Also, check the small connector on the PCB that connects to the camera module itself. Sometimes these can come loose. You can lever it up with your fingernail, then re-seat it, it should click in to place.
 
 ## Images are blurred!
 
