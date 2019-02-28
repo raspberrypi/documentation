@@ -12,4 +12,5 @@ Please click on the area where you are having problems.
 - [Bluetooth isn't working!](./bluetooth.md)
 - [My graphical desktop isn't right](./desktop.md)
 - [I'm trying to use the x86 distribution with Raspberry Pi Desktop](./x86desktop.md)
+- [My Raspberry Pi camera doesn't work](./camera.md) :(
 
