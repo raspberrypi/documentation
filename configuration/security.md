@@ -43,7 +43,7 @@ The new user will have a home directory at `/home/alice/`.
 To add them to the `sudo` group to give them `sudo` permissions as well as all of the other necessary permissions:
 
 ```bash
-sudo usermod -a -G alice adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi
+sudo usermod -a -G adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi alice
 ```
 
 You can check your permissions are in place (i.e. you can use `sudo`) by trying the following:
