@@ -62,7 +62,7 @@ sudo pkill -u pi
 
 Please note that with the current Raspbian distribution, there are some aspects that require the `pi` user to be present. If you are unsure whether you will be affected by this, then leave the `pi` user in place. Work is being done to reduce the dependency on the `pi` user.
 
-To close the process of and delete the `pi` user, type the following:
+To delete the `pi` user, type the following:
 
 ```bash
 sudo deluser pi
