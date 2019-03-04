@@ -18,7 +18,7 @@ Which error message? Check out the last line of the error report and read the re
 
 #### mmal: Camera is not enabled in this build ....
 
-The camera has not been enabled in the software. You need to run `sudo raspi-config` on from the command line, or select the Preferences/Raspberry Pi Configuration option from the desktop menu.
+The camera has not been enabled in the software. You need to run `sudo raspi-config` from the command line, or select the ```Preferences/Raspberry Pi Configuration``` option from the desktop menu.
 
 For raspi-config, now select Interfacing Options, then select the Enable Camera option.  
 For the graphical interface, select the Interfaces tab and enable the camera.
@@ -40,6 +40,8 @@ Alternatively, occasionally the cameras leave the factory slightly out of focus,
 ## Colours are a bit off
 
 Are you using a Pi NoIR camera in daylight? This can produce oddly coloured images. 
+
+Lighting conditions can affect how well balanced the colours are. The Raspberry Pi camera software uses a system called Automatic White Balance, AWB. This system uses a Baysian algorithm to try and determine what the scene being viewed is, and tries to make things that are white, actually look white in the final image. However, this is not an exact science, and sometimes the colours can be balanced incorrectly. Scenes with large amounts of gray for example can cause the system to get confused. Improving the lighting conditions can help, or bypassing the AWB by setting a specific colour balance.
 
 
 
