@@ -33,4 +33,4 @@ Easy. The Pi Zero is available for $5, but only in quantities of one. So if you 
 
 ## I'm going to use Raspberry Pi in another product
 
-You can of course use any of the Pi range in commercial products, but we do sell a specific model for incorporation in to your own designs. This is the Compute module. Availble in two versions the CM1 and the CM3, we recommend the CM3 for all new projects. You will need to design and build your own PCB to attach the Compute Module to. See [here](https://www.raspberrypi.org/products/compute-module-3-plus-32gb/) for more details. 
+You can of course use any of the Pi range in commercial products, but we do sell a specific model for incorporation in to your own designs. This is the Compute module. Available in two versions, the CM1 and the CM3, we recommend the CM3 for all new projects. You will need to design and build your own PCB to attach the Compute Module to. See [here](https://www.raspberrypi.org/products/compute-module-3-plus-32gb/) for more details. 
