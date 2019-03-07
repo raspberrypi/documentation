@@ -46,7 +46,7 @@ Based on a work at https://github.com/raspberrypi/documentation
 Dependencies:
 
 - Preferably, a Node.js version manager (eg. [nvm](https://github.com/creationix/nvm))
-- A Node.js version installed matching that in `.node-version`
+- A Node.js version installed matching that in `.nvmrc`
 
 Install dependencies:
 ```
