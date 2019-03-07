@@ -12,6 +12,8 @@ The `sdtv_mode` command defines the TV standard used for composite video output 
 | 1 | Japanese version of NTSC – no pedestal |
 | 2 | Normal PAL |
 | 3 | Brazilian version of PAL – 525/60 rather than 625/50, different subcarrier |
+| 16 | Progressive scan NTSC |
+| 18 | Progressive scan PAL |
 
 ### sdtv_aspect
 
