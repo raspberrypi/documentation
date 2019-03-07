@@ -1,10 +1,12 @@
+const { buildSrc, buildDest } = require('./paths')
+
 module.exports = function(eleventyConfig) {
   // Located in ./_content/_includes/layouts/default.html
   eleventyConfig.addLayoutAlias('default', 'layouts/default.html');
 
   // some Markdown contains links to [foo](bar.md) in order for hrefs in GitHub's UI to work correctly
   // however `.md` extensions need stripping from the output HTML...
-  eleventyConfig.addTransform('stripMDExtension', function(content, outputPath) {
+  eleventyConfig.addTransform('stripMDExtensions', function(content, outputPath) {
     if (outputPath.endsWith('.html')) {
       // handles links with a hash eg. "foo.md#bar"
       let stripMDExtensionsRetainHash = content.replace(/(.md)?(#.*)">/g, '$2">');
@@ -18,8 +20,8 @@ module.exports = function(eleventyConfig) {
   return {
     dir: {
       // since we're using the root dir as an input, files/directories that shouldn't be in the output are ignored in .eleventyignore
-      input: ".",
-      output: "./_site",
+      input: buildSrc,
+      output: buildDest,
     }
   };
 };
