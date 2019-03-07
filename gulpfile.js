@@ -1,12 +1,13 @@
 const gulp = require('gulp')
 const clean = require('gulp-clean')
 const concat = require('gulp-concat')
+var merge = require('merge-stream');
 const sass = require('gulp-sass')
 const serve = require('gulp-serve')
 const shell = require('gulp-shell')
 const uglify = require('gulp-uglify-es').default
 
-const { buildSrc, buildDest } = require('./paths')
+const { buildSrc, buildTmp, buildDest } = require('./paths')
 
 gulp.task('setup', function() {
   return gulp
@@ -14,14 +15,17 @@ gulp.task('setup', function() {
       read: false,
     })
     .pipe(gulp.dest(`./${buildDest}`))
+    .pipe(gulp.dest(`./${buildTmp}`))
 })
 
 gulp.task('clean', function() {
-  return gulp
-    .src(buildDest, {
-      read: false,
-    })
-    .pipe(clean())
+  let tmpDir = gulp.src(buildDest, {read: false })
+    .pipe(clean());
+
+  let buildDir = gulp.src(buildTmp, {read: false })
+    .pipe(clean());
+
+  return merge(tmpDir, buildDir);
 })
 
 gulp.task(
@@ -43,5 +47,5 @@ gulp.task('watch', function() {
 
 gulp.task(
   'build',
-  gulp.series('setup', 'clean', 'generate')
+  gulp.series('setup', 'clean')
 )

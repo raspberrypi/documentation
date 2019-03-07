@@ -1,4 +1,4 @@
-const { buildSrc, buildDest } = require('./paths')
+const { buildSrc, buildTmp, buildDest } = require('./paths')
 
 module.exports = function(eleventyConfig) {
   // Located in ./_content/_includes/layouts/default.html
@@ -19,8 +19,8 @@ module.exports = function(eleventyConfig) {
 
   return {
     dir: {
-      // since we're using the root dir as an input, files/directories that shouldn't be in the output are ignored in .eleventyignore
-      input: buildSrc,
+      // files/directories that shouldn't be in the output are ignored in .eleventyignore
+      input: buildTmp,
       output: buildDest,
     }
   };

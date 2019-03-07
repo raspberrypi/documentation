@@ -1,4 +1,5 @@
 _build/
 _site/
+_tmp/
 Gemfile.lock
 node_modules/
