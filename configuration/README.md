@@ -34,10 +34,11 @@ Some basic guides to configuring your Raspberry Pi.
     - How to set up the on-board UARTS.
 - [Firmware warning icons](/configuration/warning-icons.md)
     - Description of warning icons displayed if the firmware detects issues
+- [LED warning flash codes](/configuration/led_blink_warnings.md)
+    - Description of the meaning of LED warning flashes that are shown if a Pi fails to boot or has to shut down
 - [Securing your Raspberry Pi](/configuration/security.md)
     - Some basic advice for making your Raspberry Pi more secure
 - [Screensaver](/configuration/screensaver.md)
     - How to configure screen blanking/screen saver
 - [The boot folder](/configuration/boot_folder.md)
     - What it's for and what's in it
-

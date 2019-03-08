@@ -98,5 +98,42 @@ You will know whether the Vendor Option is correctly specified: if it is, you'll
     192.168.1.139.49152 > 192.168.1.1.55985: [no cksum] UDP, length 4
 ```
 
-See Also:
+## Known problems
+
+There are a number of known problems with the Ethernet boot mode. Since the implementation of the boot modes is in the chip itself, there are no workarounds other than to use an SD card with just the bootcode.bin file.
+
+### DHCP requests time out after five tries
+
+The Raspberry Pi will attempt a DHCP request five times with five seconds in between, for a total period of 25 seconds.  If the server is not available to respond in this time, then the Pi will drop into a low-power state. There is no workaround for this other than bootcode.bin on an SD card.
+
+### TFTP server on separate subnet not supported
+
+Fixed in Raspberry Pi 3 Model B+ (BCM2837B0).
+
+### DHCP relay broken
+
+The DHCP check also checked if the hops value was `1`, which it wouldn't be with DHCP relay.
+
+Fixed in Raspberry Pi 3 Model B+.
+
+### Raspberry Pi Boot string
+
+The "Raspberry Pi Boot   " string in the DHCP reply requires the extra three spaces due to an error calculating the string length.
+
+Fixed in Raspberry Pi 3 Model B+
+
+### DHCP UUID constant
+
+The DHCP UUID is set to be a constant value.
+
+Fixed in Raspberry Pi 3 Model B+; the value is set to the 32-bit serial number.
+
+### ARP check can fail to respond in the middle of TFTP transaction
+
+The Raspberry Pi will only respond to ARP requests when it is in the initialisation phase; once it has begun transferring data, it'll fail to continue responding.
+
+Fixed in Raspberry Pi 3 Model B+.
+
+
+See also:
 * [Network boot tutorial](/hardware/raspberrypi/bootmodes/net_tutorial.md)

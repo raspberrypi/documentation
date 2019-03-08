@@ -33,7 +33,7 @@ The first set of Raspberry Pi revisions were given sequential hex revision codes
 | 000d | B     | 2.0      | 512 MB          | Egoman       |
 | 000e | B     | 2.0      | 512 MB          | Sony UK      |
 | 000f | B     | 2.0      | 512 MB          | Egoman       |
-| 0010 | B+    | 1.0      | 512 MB          | Sony UK      |
+| 0010 | B+    | 1.2      | 512 MB          | Sony UK      |
 | 0011 | CM1   | 1.0      | 512 MB          | Sony UK      |
 | 0012 | A+    | 1.1      | 256 MB          | Sony UK      |
 | 0013 | B+    | 1.2      | 512 MB          | Embest       |
@@ -78,6 +78,8 @@ uuuuuuuuFMMMCCCCPPPPTTTTTTTTRRRR
 |          |              | c: Zero W                  |
 |          |              | d: 3B+                     |
 |          |              | e: 3A+                     |
+|          |              | f: Internal use only       |
+|          |              | 10: CM3+                   |
 | RRRR     | Revision     | 0, 1, 2, etc.              |
 
 New-style revision codes in use:
@@ -87,18 +89,21 @@ New-style revision codes in use:
 | 900021 | A+                | 1.1      | 512 MB | Sony UK      |
 | 900032 | B+                | 1.2      | 512 MB | Sony UK      |
 | 900092 | Zero              | 1.2      | 512 MB | Sony UK      |
-| 920092 | Zero              | 1.2      | 512 MB | Embest       |
 | 900093 | Zero              | 1.3      | 512 MB | Sony UK      |
 | 9000c1 | Zero W            | 1.1      | 512 MB | Sony UK      |
+| 9020e0 | 3A+               | 1.0      | 512 MB | Sony UK      |
+| 920092 | Zero              | 1.2      | 512 MB | Embest       |
 | 920093 | Zero              | 1.3      | 512 MB | Embest       |
 | a01040 | 2B                | 1.0      | 1 GB   | Sony UK      |
 | a01041 | 2B                | 1.1      | 1 GB   | Sony UK      |
 | a02082 | 3B                | 1.2      | 1 GB   | Sony UK      |
 | a020a0 | CM3               | 1.0      | 1 GB   | Sony UK      |
+| a020d3 | 3B+               | 1.3      | 1 GB   | Sony UK      |
 | a21041 | 2B                | 1.1      | 1 GB   | Embest       |
 | a22042 | 2B (with BCM2837) | 1.2      | 1 GB   | Embest       |
 | a22082 | 3B                | 1.2      | 1 GB   | Embest       |
+| a220a0 | CM3               | 1.0      | 1 GB   | Embest       |
 | a32082 | 3B                | 1.2      | 1 GB   | Sony Japan   |
 | a52082 | 3B                | 1.2      | 1 GB   | Stadium      |
-| a020d3 | 3B+               | 1.3      | 1 GB   | Sony UK      |
-| 9020e0 | 3A+               | 1.0      | 512 MB | Sony UK      |
+| a02100 | CM3+              | 1.0      | 1 GB   | Sony UK      |
+

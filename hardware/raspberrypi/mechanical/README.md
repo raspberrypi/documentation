@@ -4,6 +4,12 @@
 
 - [PDF](./rpi_MECH_3bplus.pdf)
 
+## Raspberry Pi 3A+
+
+Also applicable to the A+.
+
+- [PDF](rpi_MECH_3aplus.pdf)
+
 ## Raspberry Pi 3B
 
 - [PDF](./rpi_MECH_3b_1p2.pdf)
@@ -13,6 +19,10 @@
 
 - [PDF](./rpi_MECH_bplus_1p2.pdf)
 - [DXF](./rpi_MECH_bplus_1p2.dxf)
+
+## Raspberry Pi Zero, Pi Zero W, Pi Zero WH (v1.3)
+
+- [PDF](rpi_MECH_Zero_1p3.pdf)
 
 ## Raspberry Pi Zero (v1.2)
 
