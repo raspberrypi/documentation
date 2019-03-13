@@ -7,7 +7,7 @@ A guide to setting up your Raspberry Pi
 ### Essential (for general use)
 
 - [SD Card](../installation/sd-cards.md)
-    - We recommend an 8GB class 4 SD card, ideally preinstalled with [NOOBS](../installation/noobs.md).
+    - We recommend a minimum of 8GB class 4, or class 10 SD card. This can be preinstalled with [NOOBS](../installation/noobs.md) or [Raspbian](../installation/installing-images/README.md) to save time, although setting up your own card is easy.
 - [Display and connectivity cable](monitor-connection.md)
     - Any HDMI/DVI monitor and any TV should work as a display for the Pi. For best results, use one with HDMI input, but other connections are available for older devices.
 - Keyboard and mouse
@@ -16,7 +16,7 @@ A guide to setting up your Raspberry Pi
     - For keyboard layout configuration options see [raspi-config](../configuration/raspi-config.md).
 - [Power supply](../hardware/raspberrypi/power/README.md)
     - The Pi is powered by a USB Micro power supply (like most standard mobile phone chargers).
-    - You'll need a good-quality power supply that can supply at least 2A at 5V for the Model 3B, or 700mA at 5V for the earlier, lower powered models.
+    - You'll need a good-quality power supply that can supply at least 2A at 5V for the Model 3B and 3B+, or 700mA at 5V for the earlier, lower powered models. We recommend the official [Raspberry Pi power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/), which is designed specifically for all Raspberry Pi models.
     - Low current (~700mA) power supplies will work for basic usage, but are likely to cause the Pi to reboot if it draws too much power.
 
 ### Optional
@@ -24,7 +24,7 @@ A guide to setting up your Raspberry Pi
 - Ethernet (network) cable [Model B/B+/2/3 only]
     - An Ethernet cable is used to connect your Pi to a local network and the internet.
 - [USB wireless dongle](../configuration/wireless/README.md)
-    - Alternatively, you can connect to a wireless network using a USB wireless dongle, which will require configuration.
+    - Only required if you need wireless connectivity and are using an older model without built in wireless functionality.
 - Audio lead
     - Audio can be played through speakers or headphones using a standard 3.5mm jack.
     - Without an HDMI cable, an audio lead is necessary to produce sound.
