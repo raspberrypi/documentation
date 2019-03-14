@@ -9,7 +9,7 @@ On a Raspberry Pi, first install the latest version of [Raspbian](https://www.ra
 First install Git and the build dependencies:
 
 ```bash
-sudo apt-get install git bc
+sudo apt-get install git bc bison flex libssl-dev
 ```
 
 Next get the sources, which will take some time:
