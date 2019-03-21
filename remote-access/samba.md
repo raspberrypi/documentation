@@ -93,10 +93,7 @@ At the end of the file, add the following to share the folder, giving the remote
 ```
 [share]
     path = /home/pi/shared
-    available = yes
-    valid users = pi
     read only = no
-    browsable = yes
     public = yes
     writable = yes
 ```
