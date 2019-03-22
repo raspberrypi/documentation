@@ -28,7 +28,7 @@ sudo apt-get update
 sudo apt-get install tvheadend
 ```
   * If you don’t know how to do this, follow our guide at [rpf.io/usingterminal](rpf.io/usingterminal)
-* During the `tvhHeadend` installation, you will be asked to choose an administrator account name and password. You’ll need these later, so make sure to pick something you can remember.
+* During the `tvheadend` installation, you will be asked to choose an administrator account name and password. You’ll need these later, so make sure to pick something you can remember.
 
 **In a web browser on a different computer:**
 
