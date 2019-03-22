@@ -9,5 +9,6 @@ Technical information about Raspberry Pi hardware, including official add-ons an
 - [Compute Module](computemodule/README.md)
 - [General HAT information](https://github.com/raspberrypi/hats/blob/master/README.md) (Links to our HAT github repository)
 - [Sense HAT](sense-hat/README.md)
+- [TV HAT](tv-hat/README.md)
 - [Display](display/README.md)
 - [Industrial use](industrial/README.md)
