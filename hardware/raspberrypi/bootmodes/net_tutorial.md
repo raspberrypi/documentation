@@ -6,13 +6,13 @@ Due to the huge range of networking devices available, we can't guarantee that n
 
 ## Client configuration
 
-This section only applies to the *original* Raspberry Pi 3; if you are using the new 3+ then this can be ignored. Skip to the server section below then.
+This section only applies to the **original** Raspberry Pi 3B; if you are using the 3B+, then ignore this section and skip to the server section below then.
 
 Before a Raspberry Pi will network boot, it needs to be booted from an SD card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the SD card is no longer required. 
 
 Install Raspbian Lite (or Raspbian with Raspberry Pi Desktop) on the SD card in the [usual way](../../../installation/installing-images/README.md). 
 
-Afterwards, setup program USB boot mode by preparing the `/boot` directory with the latest boot files:
+Afterwards, set up USB boot mode by preparing the `/boot` directory with the latest boot files:
 
 ```bash
 sudo apt update && sudo apt upgrade
@@ -37,9 +37,9 @@ The client configuration is almost done. The final thing to do is to remove the 
 
 ## Server configuration
 
-Plug the SD card into the server Raspberry Pi and then boot the server. Before you do anything else, make sure you have run `sudo raspi-config` and expanded the root filesystem to take up the entire SD card.
+Plug the SD card into the server Raspberry Pi, and then boot the server. Before you do anything else, make sure you have run `sudo raspi-config` and expanded the root file system to take up the entire SD card.
 
-The client Raspberry Pi will need a root filesystem to boot off, so before we do anything else on the server, make a full copy of its filesystem and put it in a directory called `/nfs/client1`:
+The client Raspberry Pi will need a root file system to boot off, so before you do anything else on the server, make a full copy of its file system and put it in a directory called `/nfs/client1`:
 
 ```bash
 sudo mkdir -p /nfs/client1
@@ -87,7 +87,7 @@ Finally, note down the address of your DNS server, which is the same address as 
 cat /etc/resolv.conf
 ```
 
-Configure a static network address on your server Raspberry Pi via the systemd-networking, which works as the network handler and DHCP server.
+Configure a static network address on your server Raspberry Pi via the `systemd` networking, which works as the network handler and DHCP server.
 
 To do that, you'll need to to create a `10-eth0.netdev` and a `11-eth0.network` like so:
 
@@ -125,7 +125,7 @@ DNS=10.42.0.1
 Gateway=10.42.0.1
 ```
 
-At this point, you won't have working DNS, so you'll need to add the server you noted down before to systemd resolv. In this example the gateway address is 10.42.0.1
+At this point, you won't have working DNS, so you'll need to add the server you noted down before to `systemd/resolved.conf`. In this example, the gateway address is 10.42.0.1.
 
 ```bash
 sudo nano /etc/systemd/resolved.conf
@@ -139,14 +139,14 @@ DNS=10.42.0.1
 #FallbackDNS=
 ```
 
-Enable systemd-networkd and then reboot for the changes to take effect:
+Enable `systemd-networkd` and then reboot for the changes to take effect:
 
 ```bash
 sudo systemctl enable systemd-networkd
 sudo reboot
 ```
 
-Now start tcpdump so you can search for DHCP packets from the client Raspberry Pi:
+Now start `tcpdump` so you can search for DHCP packets from the client Raspberry Pi:
 
 ```bash
 sudo apt install tcpdump dnsmasq
@@ -160,14 +160,14 @@ Connect the client Raspberry Pi to your network and power it on. Check that the 
 IP 0.0.0.0.bootpc > 255.255.255.255.bootps: BOOTP/DHCP, Request from b8:27:eb...
 ```
 
-Now we need to modify the dnsmasq configuration to enable DHCP to reply to the device. Press `CTRL+C` on the keyboard to exit the tcpdump program, then type the following:
+Now you need to modify the `dnsmasq` configuration to enable DHCP to reply to the device. Press <kbd>CTRL + C</kbd> to exit the `tcpdump` program, then type the following:
 
 ```bash
 echo | sudo tee /etc/dnsmasq.conf
 sudo nano /etc/dnsmasq.conf
 ```
 
-Then replace the contents of dnsmasq.conf with:
+Then replace the contents of `dnsmasq.conf` with:
 
 ```
 port=0
@@ -180,7 +180,7 @@ pxe-service=0,"Raspberry Pi Boot"
 
 Where the first address of the `dhcp-range` line is, use the broadcast address you noted down earlier.
 
-Now create a /tftpboot directory:
+Now create a `/tftpboot` directory:
 
 ```bash
 sudo mkdir /tftpboot
@@ -189,7 +189,7 @@ sudo systemctl enable dnsmasq.service
 sudo systemctl restart dnsmasq.service
 ```
 
-Now monitor the dnsmasq log:
+Now monitor the `dnsmasq` log:
 
 ```bash
 tail -F /var/log/daemon.log
@@ -201,15 +201,15 @@ You should see something like this:
 raspberrypi dnsmasq-tftp[1903]: file /tftpboot/bootcode.bin not found
 ```
 
-Next, you will need to copy the contents of the boot folder into the /tftpboot directory.
+Next, you will need to copy the contents of the boot folder into the `/tftpboot` directory.
 
-First, use `Ctrl + C` to exit the monitoring state. Then type the following: 
+First, press <kbd>CTRL + C</kbd> to exit the monitoring state. Then type the following: 
 
 ```bash
 cp -r /boot/* /tftpboot
 ```
 
-Since the tftp location has changed, restart dnsmasq:
+Since the tftp location has changed, restart `dnsmasq`:
 
 ```bash
 sudo systemctl restart dnsmasq
@@ -217,9 +217,9 @@ sudo systemctl restart dnsmasq
 
 ### Set up NFS root
 
-This should now allow your Raspberry Pi client to attempt to boot through until it tries to load a root filesystem (which it doesn't have).
+This should now allow your Raspberry Pi client to attempt to boot through until it tries to load a root file system (which it doesn't have).
 
-At this point export the `/nfs/client1` filesystem created earlier.
+At this point, export the `/nfs/client1` file system created earlier.
 
 ```bash
 sudo apt-get install nfs-kernel-server
@@ -235,7 +235,7 @@ sudo systemctl enable nfs-kernel-server
 sudo systemctl restart nfs-kernel-server
 ```
 
-Edit /tftpboot/cmdline.txt and from `root=` onwards, and replace it with:
+Edit `/tftpboot/cmdline.txt` and from `root=` onwards, and replace it with:
 
 ```
 root=/dev/nfs nfsroot=10.42.0.211:/nfs/client1,vers=3 rw ip=dhcp rootwait elevator=deadline
