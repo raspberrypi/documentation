@@ -1,6 +1,6 @@
 # The boot folder
 
-In a basic Raspbian install, the boot files are stored on the first partition of the SD card, which is formatted with the FAT filesystem. This means that it can be read on Windows, Mac and Linux devices.
+In a basic Raspbian install, the boot files are stored on the first partition of the SD card, which is formatted with the FAT file system. This means that it can be read on Windows, macOS, and Linux devices.
 
 When the Raspberry Pi is powered on, it loads various files from the boot partition/folder in order to start up the various processors, then it boots the Linux kernel.
 
@@ -35,8 +35,8 @@ Some text-based housekeeping information containing the date and git commit ID o
 
 ### Device Tree files
 
-There are various device tree blob files, which have the extension `.dtb`. These contain the hardware definitions of the various models of Raspberry Pi, and are used on boot to set up the kernel according to which Pi model is detected. More [details here](device-tree.md).
+There are various Device Tree blob files, which have the extension `.dtb`. These contain the hardware definitions of the various models of Raspberry Pi, and are used on boot to set up the kernel according to which Pi model is detected. More [details here](device-tree.md).
 
 ## Device Tree overlays
 
-The `overlays` sub-folder contains device tree overlays which are used to configure various hardware devices which may be attached to the system, for example the official touchscreen display, and third party sound boards. These overlays are selected using entries in `config.txt` - see [Device Trees, overlays and parameters, part 2](device-tree.md#part2)
+The `overlays` sub-folder contains Device Tree overlays. These are used to configure various hardware devices that may be attached to the system, for example the Raspberry Pi Touch Display or third-party sound boards. These overlays are selected using entries in `config.txt` — see ['Device Trees, overlays and parameters, part 2' for more info](device-tree.md#part2).
