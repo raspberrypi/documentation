@@ -134,9 +134,11 @@ The Raspberry Pi will only respond to ARP requests when it is in the initialsati
 
 Fixed in Raspberry Pi 3 Model B+.
 
-### DHCP request / reply / ack sequence not correctly implemented
+### DHCP request/reply/ack sequence not correctly implemented
 
-At boot time, Raspberry Pi broadcasts a DHCPDISCOVER packet.  The DHCP server then replies with a DHCPOFFER packet, the Pi then continues booting without doing a DHCPREQUEST or waiting for DHCPACK.  The can mean two separate devices can be offered the same IP address and will use it without it being properly assigned to the client.  Different DHCP servers have different behaviours in this situation, dnsmasq (depending upon settings) will hash the MAC address to determine the IP address and ping it to make sure it isn't already in use.  So the chance this happens is reduced because it requires a collision in the hash.
+At boot time, Raspberry Pi broadcasts a DHCPDISCOVER packet. The DHCP server replies with a DHCPOFFER packet. The Pi then continues booting without doing a DHCPREQUEST or waiting for DHCPACK. This may result in two separate devices being offered the same IP address and using it without it being properly assigned to the client.
+
+Different DHCP servers have different behaviours in this situation. dnsmasq (depending upon settings) will hash the MAC address to determine the IP address, and ping the IP address to make sure it isn't already in use. This reduces the chances of this happening because it requires a collision in the hash.
 
 
 See also:
