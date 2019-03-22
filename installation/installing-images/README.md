@@ -20,7 +20,7 @@ If you're not using Etcher (see below), you'll need to unzip `.zip` downloads to
 
 ## Writing an image to the SD card
 
-Before you start, don't forget to check [SD card requirements](../sd-cards.md).
+Before you start, don't forget to check [the SD card requirements](../sd-cards.md).
 
 You will need to use an image writing tool to install the image you have downloaded on your SD card.
 
