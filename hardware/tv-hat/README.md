@@ -1,6 +1,6 @@
 ## Getting started with the Raspberry Pi TV HAT
 
-The TV HAT has an on-board DVB-T2 tuner that allows you to receive and decode digital television streams on your Raspberry Pi. Then you can watch these streams on any computer connected to the same network as the Pi.
+The TV HAT has an on-board DVB-T2 tuner that allows you to receive and decode digital television streams on your Raspberry Pi. Then you can watch these streams on the Pi or on any computer connected to the same network as the Pi.
 
 The software we recommend to decode the streams (known as multiplexes, or muxes for short) and view content is called TVHeadend, and instructions for setting it up are below. The TV HAT can decode one mux at a time, and each mux can contain several channels to choose from. Content can either be viewed on the Raspberry Pi to which the TV-HAT is connected, or sent to another device on the same network.
 
