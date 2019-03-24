@@ -5,7 +5,7 @@ Depending on the version of Windows you are using and what software you have alr
 Look for `putty.exe` under the heading `For Windows on Intel x86`. 
 
 ##1. Add your Raspberry Pi as a host
-PuTTY does not include an installer package: it is a stand-alone `.exe` file. When you run it, you will see the configuration screen below:
+Start PuTTY.  You will see the configuration screen below:
 
 ![PuTTY configuration](images/ssh-win-config.png)
 
