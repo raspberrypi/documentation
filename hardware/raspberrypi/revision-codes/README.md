@@ -94,6 +94,7 @@ New-style revision codes in use:
 | 9020e0 | 3A+               | 1.0      | 512 MB | Sony UK      |
 | 920092 | Zero              | 1.2      | 512 MB | Embest       |
 | 920093 | Zero              | 1.3      | 512 MB | Embest       |
+| 900061 | CM                | 1.1      | 512 MB | Sony UK      |
 | a01040 | 2B                | 1.0      | 1 GB   | Sony UK      |
 | a01041 | 2B                | 1.1      | 1 GB   | Sony UK      |
 | a02082 | 3B                | 1.2      | 1 GB   | Sony UK      |
