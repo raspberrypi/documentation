@@ -105,5 +105,5 @@ New-style revision codes in use:
 | a220a0 | CM3               | 1.0      | 1 GB   | Embest       |
 | a32082 | 3B                | 1.2      | 1 GB   | Sony Japan   |
 | a52082 | 3B                | 1.2      | 1 GB   | Stadium      |
+| a22083 | 3B                | 1.3      | 1 GB   | Embest       |
 | a02100 | CM3+              | 1.0      | 1 GB   | Sony UK      |
-
