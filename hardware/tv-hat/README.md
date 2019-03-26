@@ -20,14 +20,14 @@ you are not accessing the Pi remotely)
   * Place the spacers at two or three of the corners of the HAT, and tighten the screws through the mounting
 holes to hold them in place.
 * Connect the TV HAT’s aerial adaptor to the cable from your TV aerial.
-* Set up the Raspberry Pi with the newest version of the Raspbian operating system, which you can download from [rpf.io/raspbian](rpf.io/raspbian).
- * If you don’t know how to do this, follow our guide at [rpf.io/startwithpi](rpf.io/startwithpi)
+* Set up the Raspberry Pi with the newest version of the Raspbian operating system, which you can download from our [downloads page](https://www.raspberrypi.org/downloads/raspbian/).
+ * If you don’t know how to do this, follow our guide [here](https://projects.raspberrypi.org/en/pathways/getting-started-with-raspberry-pi)
 * Start up your Pi, open a terminal window, and run the following two commands to install the `tvheadend` software:
 ```
 sudo apt-get update
 sudo apt-get install tvheadend
 ```
-  * If you don’t know how to do this, follow our guide at [rpf.io/usingterminal](rpf.io/usingterminal)
+  * If you don’t know how to do this, follow our guide [here](https://projects.raspberrypi.org/en/projects/raspberry-pi-using/9)
 * During the `tvheadend` installation, you will be asked to choose an administrator account name and password. You’ll need these later, so make sure to pick something you can remember.
 
 **In a web browser on a different computer:**
