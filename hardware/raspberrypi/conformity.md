@@ -22,6 +22,9 @@ All Raspberry Pi product has undergone extensive compliance testing, and copies 
 | Sense HAT | [EU](./compliance/rpi_DOC_SenseHAT_CE.pdf) &nbsp; &nbsp; [USA/FCC](./compliance/rpi_DOC_SenseHAT_FCC.pdf)| |
 | PoE HAT | [EU](./compliance/rpi_DOC_PoeHAT_EU.pdf)  &nbsp; &nbsp;[USA/FCC](./compliance/rpi_DOC_PoeHAT_FCC.pdf)| |
 | TV uHAT | [EU](./compliance/rpi_DOC_tvuhat_EU.pdf)  &nbsp; &nbsp;| [Australia/New Zealand](./compliance/rpi_DOC_tvuhat_AUSTRALIA+NEW_ZEALAND.pdf) |
+| Mouse | [EU](./compliance/rpi_DOC_Mouse_EU.pdf)  &nbsp; &nbsp;[USA/FCC](./compliance/rpi_DOC_Mouse_FCC.pdf)| |
+| Keyboard | [EU](./compliance/rpi_DOC_KeyboardHub_EU.pdf)  &nbsp; &nbsp;[USA/FCC](./compliance/rpi_DOC_KeyboardHub_FCC.pdf)| |
+
 
 ## Flammability rating
 
