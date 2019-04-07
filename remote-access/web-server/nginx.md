@@ -4,6 +4,19 @@ NGINX (pronounced *engine x*) is a popular lightweight web server application yo
 
 Like Apache, NGINX can serve HTML files over HTTP, and with additional modules can serve dynamic web pages using scripting languages such as PHP.
 
+## Refresh database of available packages
+
+Ensure that the package manager has up-to-date information about which packages are available:  
+
+```bash
+sudo apt-get update
+```
+
+You only need to do this occasionally, but it's the most likely solution if subsequent steps fail with messages like:
+```
+  404  Not Found [IP: 93.93.128.193 80]
+```
+
 ## Install NGINX
 
 First install the `nginx` package by typing the following command in to the Terminal:
