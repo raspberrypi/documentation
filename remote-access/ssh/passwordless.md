@@ -68,7 +68,7 @@ Alternatively, if the `ssh-copy-id` is not available on your system, you can cop
 cat ~/.ssh/id_rsa.pub | ssh <USERNAME>@<IP-ADDRESS> 'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys'
 ```
 
-If you see the message `ssh: connect to host <IP-ADDRESS> port 22: Connection refused` and you know the `IP-ADDRESS` is correct, then you probably haven't enabled SSH on you Pi. Run `sudo raspi-config` in the Pi's terminal window, enable SSH, and then try to copy the files again.
+If you see the message `ssh: connect to host <IP-ADDRESS> port 22: Connection refused` and you know the `IP-ADDRESS` is correct, then you probably haven't enabled SSH on your Pi. Run `sudo raspi-config` in the Pi's terminal window, enable SSH, and then try to copy the files again.
 
 Now try `ssh <USER>@<IP-ADDRESS>` and you should connect without a password prompt.
 
