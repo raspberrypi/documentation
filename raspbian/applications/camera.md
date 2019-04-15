@@ -438,7 +438,7 @@ The specific value is the time between shots in milliseconds. Note that you shou
 Specifies the first frame number in the timelapse. Useful if you have already saved a number of frames, and want to start again at the next frame.
 
 ```
---datestamp,   -dt
+--datetime,   -dt
 ```
 
 Instead of a simple frame number, the timelapse file names will use a date/time value of the format `aabbccddee`, where `aa` is the month, `bb` is the day of the month, `cc` is the hour, `dd` is the minute, and  `ee` is the second.
