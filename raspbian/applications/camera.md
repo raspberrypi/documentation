@@ -127,12 +127,12 @@ Sets the EV compensation of the image. Default is 0.
 ```
 
 Possible options are:
-                                                               
+
 - auto: use automatic exposure mode
 - night: select setting for night shooting
 - nightpreview: 
 - backlight: select setting for backlit subject
-- spotlight:  
+- spotlight: 
 - sports: select setting for sports (fast shutter etc.)
 - snow: select setting optimised for snowy scenery
 - beach: select setting optimised for beach
@@ -239,13 +239,13 @@ Allows the specification of the area of the sensor to be used as the source for 
 ```
 
 ```
---shutter,	-ss		Set shutter speed
+	--shutter,	-ss		Set shutter speed
 ```
 
 Sets the shutter speed to the specified value (in microseconds). There's currently an upper limit of approximately 6000000us (6000ms, 6s), past which operation is undefined.
 
 ```
---drc,	-drc		Enable/disable dynamic range compression
+	--drc,	-drc		Enable/disable dynamic range compression
 ```
 
 DRC changes the images by increasing the range of dark areas, and decreasing the brighter areas. This can improve the image in low light areas.
@@ -258,31 +258,31 @@ DRC changes the images by increasing the range of dark areas, and decreasing the
 By default, DRC is off.
 
 ```
---stats,	-st		Display image statistics
+	--stats,	-st		Display image statistics
 ```
 
 Displays the exposure, analogue and digital gains, and AWB settings used.
 
 ```
---awbgains,	-awbg
+	--awbgains,	-awbg
 ```
 
 Sets blue and red gains (as floating point numbers) to be applied when `-awb -off` is set e.g. -awbg 1.5,1.2
 
 ```
---analoggain,	-ag
+	--analoggain,	-ag
 ```
 
 Sets the analog gain value directly on the sensor (floating point value from 1.0 to 8.0 for the OV5647 sensor on Camera Module V1, and 1.0 to 12.0 for the IMX219 sensor on on Camera Module V2).
 
 ```
---digitalgain,	-dg
+	--digitalgain,	-dg
 ```
 
 Sets the digital gain value applied by the ISP (floating point value from 1.0 to 255.0, but values over about 4.0 will produce overexposed images)
 
 ```
---mode,	-md
+	--mode,	-md
 ```
 
 Sets a specified sensor mode, disabling the automatic selection. Possible values depend on the version of the Camera Module being used: 
@@ -347,7 +347,7 @@ Text may include date/time placeholders by using the '%' character, as used by <
 |-a 8 -a "ABC %Y-%m-%d %X"|Show custom <a title="strftime man page" href="http://man7.org/linux/man-pages/man3/strftime.3.html">formatted</a> date/time|ABC 2015-10-28 20:09:33|
 
 ```
---annotateex,	-ae		Set extra annotation parameters
+	--annotateex,	-ae		Set extra annotation parameters
 ```
 
 Specifies annotation size, text colour, and background colour. Colours are in hex YUV format.
@@ -360,23 +360,23 @@ Size ranges from 6 - 160; default is 32. Asking for an invalid size should give 
 |-ae 10,0x00,0x8080FF -a "Annotation text"|gives size 10 black text on white background|
 
 ```
---stereo,	-3d
+	--stereo,	-3d
 ```
 
 Select the specified stereo imaging mode; `sbs` selects side-by-side mode, `tb` selects top/bottom mode; `off` turns off stereo mode (the default).
 
 ```
---decimate,	-dec
+	--decimate,	-dec
 ```
 Halves the width and height of the stereo image.
 
 ```
---3dswap,	-3dswap
+	--3dswap,	-3dswap
 ```
 Swaps the camera order used in stereoscopic imaging; NOTE: currently not working.
 
 ```
---settings,	-set
+	--settings,	-set
 ```
 Retrieves the current camera settings and writes them to stdout.
 
@@ -386,65 +386,65 @@ Retrieves the current camera settings and writes them to stdout.
 ### raspistill
 
 ```
---width,	-w		Set image width <size>
+	--width,	-w		Set image width <size>
 
---height,	-h		Set image height <size>
+	--height,	-h		Set image height <size>
 
---quality,	-q		Set JPEG quality <0 to 100>
+	--quality,	-q		Set JPEG quality <0 to 100>
 ```
 
 Quality 100 is almost completely uncompressed. 75 is a good all-round value.
 
 ```
---raw,	-r		Add raw Bayer data to JPEG metadata
+	--raw,	-r		Add raw Bayer data to JPEG metadata
 ```
 
 This option inserts the raw Bayer data from the camera into the JPEG metadata.
 
 ```
---output,	-o		Output filename <filename>
+	--output,	-o		Output filename <filename>
 ```
 
 Specifies the output filename. If not specified, no file is saved. If the filename is '-', then all output is sent to stdout.
 
 ```
---latest,	-l		Link latest frame to filename <filename>
+	--latest,	-l		Link latest frame to filename <filename>
 ```
 
 Makes a file system link under this name to the latest frame.
 
 ```
---verbose,	-v		Output verbose information during run
+	--verbose,	-v		Output verbose information during run
 ```
 
 Outputs debugging/information messages during the program run.
 
 ```
---timeout,	-t		Time before the camera takes picture and shuts down
+	--timeout,	-t		Time before the camera takes picture and shuts down
 ```
 
 The program will run for this length of time, then take the capture (if output is specified). If not specified, this is set to 5 seconds.
 
 ```
---timelapse,	-tl		time-lapse mode
+	--timelapse,	-tl		time-lapse mode
 ```
 
 The specific value is the time between shots in milliseconds. Note that you should specify `%04d` at the point in the filename where you want a frame count number to appear. So, for example, the code below will produce a capture every 2 seconds, over a total period of 30s, named `image0001.jpg`, `image0002.jpg` and so on, through to `image0015.jpg`. 
 
 ```
---framestart, -fs
+	--framestart,	-fs
 ```
 
 Specifies the first frame number in the timelapse. Useful if you have already saved a number of frames, and want to start again at the next frame.
 
 ```
---datetime,   -dt
+	--datetime,	-dt
 ```
 
-Instead of a simple frame number, the timelapse file names will use a date/time value of the format `aabbccddee`, where `aa` is the month, `bb` is the day of the month, `cc` is the hour, `dd` is the minute, and  `ee` is the second.
+Instead of a simple frame number, the timelapse file names will use a date/time value of the format `aabbccddee`, where `aa` is the month, `bb` is the day of the month, `cc` is the hour, `dd` is the minute, and `ee` is the second.
 
 ```
---timestamp,   -ts
+	--timestamp,	-ts
 ```
 
 Instead of a simple frame number, the timelapse file names will use a single number which is the Unix timestamp, i.e. the seconds since 1970.
@@ -454,12 +454,12 @@ Instead of a simple frame number, the timelapse file names will use a single num
 -t 30000 -tl 2000 -o image%04d.jpg
 ```
 
-Note that the `%04d` indicates a 4-digit number, with leading zeroes added to make the required number of digits. So, for example,  `%08d` would result in an 8-digit number.
+Note that the `%04d` indicates a 4-digit number, with leading zeroes added to make the required number of digits. So, for example, `%08d` would result in an 8-digit number.
 
 If a time-lapse value of 0 is entered, the application will take pictures as fast as possible. Note that there's an minimum enforced pause of 30ms between captures to ensure that exposure calculations can be made.
 
 ```
---thumb,	-th		Set thumbnail parameters (x:y:quality)
+	--thumb,	-th		Set thumbnail parameters (x:y:quality)
 ```
 
 Allows specification of the thumbnail image inserted into the JPEG file. If not specified, defaults are a size of 64x48 at quality 35.
@@ -467,25 +467,25 @@ Allows specification of the thumbnail image inserted into the JPEG file. If not 
 if `--thumb none` is specified, no thumbnail information will be placed in the file. This reduces the file size slightly.
 
 ```
---demo,	-d		Run a demo mode <milliseconds>
+	--demo,	-d		Run a demo mode <milliseconds>
 ```
 
 This options cycles through the range of camera options. No capture is taken, and the demo will end at the end of the timeout period, irrespective of whether all the options have been cycled. The time between cycles should be specified as a millisecond value.
 
 ```
---encoding,	-e		Encoding to use for output file
+	--encoding,	-e		Encoding to use for output file
 ```
 
 Valid options are `jpg`, `bmp`, `gif`, and `png`. Note that unaccelerated image types (GIF, PNG, BMP) will take much longer to save than jpg, which is hardware accelerated. Also note that the filename suffix is completely ignored when deciding the encoding of a file.
 
 ```
---restart,    -rs
+	--restart,	-rs
 ```
 
 Sets the JPEG restart marker interval to a specific value. Can be useful for lossy transport streams because it allows a broken JPEG file to still be partially displayed.
 
 ```
---exif,	-x		EXIF tag to apply to captures (format as 'key=value')
+	--exif,	-x		EXIF tag to apply to captures (format as 'key=value')
 ```
 
 Allows the insertion of specific EXIF tags into the JPEG image. You can have up to 32 EXIF tag entries. This is useful for tasks like adding GPS metadata. For example, to set the longitude:
@@ -516,24 +516,24 @@ Note that a small subset of these tags will be set automatically by the camera s
 Setting `--exif none` will prevent any EXIF information being stored in the file. This reduces the file size slightly.
 
 ```
---gpsdexif,    -gps
+	--gpsdexif,	-gps
 ```
 
 Applies real-time EXIF information from any attached GPS dongle (using GSPD) to the image; requires `libgps.so` to be installed.
 
 ```
---fullpreview,	-fp		Full preview mode
+	--fullpreview,	-fp		Full preview mode
 ```
 This runs the preview window using the full resolution capture mode. Maximum frames per second in this mode is 15fps, and the preview will have the same field of view as the capture. Captures should happen more quickly, as no mode change should be required. This feature is currently under development.
 
 ```
---keypress,	-k		Keypress mode
+	--keypress,	-k		Keypress mode
 ```
 
 The camera is run for the requested time (`-t`), and a capture can be initiated throughout that time by pressing the Enter key. Pressing X then Enter will exit the application before the timeout is reached. If the timeout is set to 0, the camera will run indefinitely until the user presses X then Enter. Using the verbose option (`-v`) will display a prompt asking for user input, otherwise no prompt is displayed.
 
 ```
---signal,	-s		Signal mode
+	--signal,	-s		Signal mode
 ```
 
 The camera is run for the requested time (`-t`), and a capture can be initiated throughout that time by sending a `USR1` signal to the camera process. This can be done using the `kill` command. You can find the camera process ID using the `pgrep raspistill` command.
@@ -541,7 +541,7 @@ The camera is run for the requested time (`-t`), and a capture can be initiated 
 `kill -USR1 <process id of raspistill>`
 
 ```
---burst,    -bm
+	--burst,	-bm
 ```
 
 Sets burst capture mode. This prevents the camera from returning to preview mode in between captures, meaning that captures can be taken closer together.
@@ -559,20 +559,20 @@ Unsupported options:
 Extra options :
 
 ```
---rgb,	-rgb		Save uncompressed data as RGB888
+	--rgb,	-rgb		Save uncompressed data as RGB888
 ```
 This option forces the image to be saved as RGB data with 8 bits per channel, rather than YUV420.
 
 Note that the image buffers saved in `raspiyuv` are padded to a horizontal size divisible by 32, so there may be unused bytes at the end of each line. Buffers are also padded vertically to be divisible by 16, and in the YUV mode, each plane of Y,U,V is padded in this way.
 
 ```
---luma,    -y
+	--luma,	-y
 ```
 
 Only outputs the luma (Y) channel of the YUV image. This is effectively the black and white, or intensity, part of the image. 
 
 ```
---bgr,    -bgr
+	--bgr,	-bgr
 ```
 
 Saves the image data as BGR data rather than YUV.
@@ -581,22 +581,22 @@ Saves the image data as BGR data rather than YUV.
 ### raspivid
 
 ```
---width,	-w		Set image width <size>
+	--width,	-w		Set image width <size>
 ```
 Width of resulting video. This should be between 64 and 1920.
 
 ```
---height,	-h		Set image height <size>
+	--height,	-h		Set image height <size>
 ```
 Height of resulting video. This should be between 64 and 1080.
 
 ```
---bitrate,	-b		Set bitrate
+	--bitrate,	-b		Set bitrate
 ```
 Use bits per second, so 10Mbits/s would be `-b 10000000`. For H264, 1080p30 a high quality bitrate would be 15Mbits/s or more. Maximum bitrate is 25Mbits/s (`-b 25000000`), but much over 17Mbits/s won't show noticeable improvement at 1080p30.
 
 ```
---output,	-o		Output filename <filename>
+	--output,	-o		Output filename <filename>
 ```
 Specify the output filename. If not specified, no file is saved. If the filename is '-', then all output is sent to stdout.
 
@@ -605,51 +605,51 @@ To connect to a remote IPv4 host, use `tcp` or `udp` followed by the required IP
 To listen on a TCP port (IPv4) and wait for an incoming connection use `--listen (-l)` option, e.g. `raspivid -l -o tcp://0.0.0.0:3333` will bind to all network interfaces, `raspivid -l -o tcp://192.168.1.1:3333` will bind to a local IPv4.
 
 ```
---listen, 	-l
+	--listen,	-l
 ```
 
 When using a network connection as the data sink, this option will make the sytem wait for a connection from the remote system before sending data.
 
 ```
---verbose,	-v		Output verbose information during run
+	--verbose,	-v		Output verbose information during run
 ```
 Outputs debugging/information messages during the program run.
 
 ```
---timeout,	-t		Time before the camera takes picture and shuts down
+	--timeout,	-t		Time before the camera takes picture and shuts down
 ```
 
 The program will run for this length of time, then take the capture (if output is specified). If not specified, this is set to 5 seconds. Setting 0 will mean the application will run continuously until stopped with Ctrl-C.
 
 ```
---demo,	-d		Run a demo mode <milliseconds>
+	--demo,	-d		Run a demo mode <milliseconds>
 ```
 
 This options cycles through the range of camera options. No capture is done, and the demo will end at the end of the timeout period, irrespective of whether all the options have been cycled. The time between cycles should be specified as a millisecond value.
 
 ```
---framerate,	-fps		Specify the frames per second to record
+	--framerate,	-fps		Specify the frames per second to record
 ```
 At present, the minimum frame rate allowed is 2fps, and the maximum is 30fps. This is likely to change in the future.
 
 ```
---penc,	-e		Display preview image after encoding
+	--penc,	-e		Display preview image after encoding
 ```
 Switch on an option to display the preview after compression. This will show any compression artefacts in the preview window. In normal operation, the preview will show the camera output prior to being compressed. This option is not guaranteed to work in future releases.
 
 ```
---intra,	-g		Specify the intra refresh period (key frame rate/GoP)
+	--intra,	-g		Specify the intra refresh period (key frame rate/GoP)
 ```
 Sets the intra refresh period (GoP) rate for the recorded video. H264 video uses a complete frame (I-frame) every intra refresh period, from which subsequent frames are based. This option specifies the number of frames between each I-frame. Larger numbers here will reduce the size of the resulting video, and smaller numbers make the stream less error-prone.
 
 ```
---qp,	-qp		Set quantisation parameter
+	--qp,	-qp		Set quantisation parameter
 ```
 
 Sets the initial quantisation parameter for the stream. Varies from approximately 10 to 40, and will greatly affect the quality of the recording. Higher values reduce quality and decrease file size. Combine this setting with a bitrate of 0 to set a completely variable bitrate.
 
 ```
---profile,	-pf		Specify H264 profile to use for encoding
+	--profile,	-pf		Specify H264 profile to use for encoding
 ```
 
 Sets the H264 profile to be used for the encoding. Options are:
@@ -659,30 +659,30 @@ Sets the H264 profile to be used for the encoding. Options are:
 - high
 
 ```
---level,    -lev
+	--level,	-lev
 ```
 
 Specifies the H264 encoder level to use for encoding. Options are `4`, `4.1`, and `4.2`.
 
 ```
---irefresh,    -if
+	--irefresh,	-if
 ```
 
 Sets the H264 intra-refresh type. Possible options are `cyclic`, `adaptive`, `both`, and `cyclicrows`.
 
 ```
---inline,	-ih		Insert PPS, SPS headers
+	--inline,	-ih		Insert PPS, SPS headers
 ```
 Forces the stream to include PPS and SPS headers on every I-frame. Needed for certain streaming cases e.g. Apple HLS. These headers are small, so don't greatly increase the file size.
 
 ```
---spstiming,    -stm
+	--spstiming,	-stm
 ```
 
 Insert timing information into the SPS block.
 
 ```
---timed,	-td		Do timed switches between capture and pause
+	--timed,	-td		Do timed switches between capture and pause
 ```
 This options allows the video capture to be paused and restarted at particular time intervals. Two values are required: the on time and the off time. On time is the amount of time the video is captured, and off time is the amount it is paused. The total time of the recording is defined by the `timeout` option. Note that the recording may take slightly over the timeout setting depending on the on and off times.
 
@@ -699,12 +699,12 @@ will record for a period of 25 seconds. The recording will be over a timeframe c
 gives a total recording period of 25s, but only 10s of actual recorded footage.
 
 ```
---keypress,	-k		Toggle between record and pause on Enter keypress
+	--keypress,	-k		Toggle between record and pause on Enter keypress
 ```
 On each press of the Enter key, the recording will be paused or restarted. Pressing X then Enter will stop recording and close the application. Note that the timeout value will be used to signal the end of recording, but is only checked after each Enter keypress; so if the system is waiting for a keypress, even if the timeout has expired, it will still wait for the keypress before exiting.
 
 ```
---signal,	-s		Toggle between record and pause according to SIGUSR1
+	--signal,	-s		Toggle between record and pause according to SIGUSR1
 ```
 
 Sending a `USR1` signal to the `raspivid` process will toggle between recording and paused. This can be done using the `kill` command, as below. You can find the `raspivid` process ID using `pgrep raspivid`.
@@ -714,51 +714,51 @@ Sending a `USR1` signal to the `raspivid` process will toggle between recording 
 Note that the timeout value will be used to indicate the end of recording, but is only checked after each receipt of the `SIGUSR1` signal; so if the system is waiting for a signal, even if the timeout has expired, it will still wait for the signal before exiting.
 
 ```
---split,    -sp
+	--split,	-sp
 ```
 When in a signal or keypress mode, each time recording is restarted, a new file is created.
 
 ```
---circular,    -c
+	--circular,	-c
 ```
 
 Select circular buffer mode. All encoded data is stored in a circular buffer until a trigger is activated, then the buffer is saved. 
 
 ```
---vectors,    -x
+	--vectors,	-x
 ```
 
 Turns on output of motion vectors from the H264 encoder to the specified file name.
 
 ```
---flush,    -fl
+	--flush,	-fl
 ```
 
 Forces a flush of output data buffers as soon as video data is written. This bypasses any OS caching of written data, and can decrease latency.
 
 ```
---save-pts,    -pts
+	--save-pts,	-pts
 ```
 
 Saves timestamp information to the specified file. Useful as an imput file to `mkvmerge`.
 
 ```
---codec,    -cd
+	--codec,	-cd
 ```
 
 Specifies the encoder codec to use. Options are `H264` and `MJPEG`. H264 can encode up to 1080p, whereas MJPEG can encode upto the sensor size, but at decreased framerates due to the higher processing and storage requirements. 
 
 ```
---initial,	-i		Define initial state on startup
+	--initial,	-i		Define initial state on startup
 ```
 
 Define whether the camera will start paused or will immediately start recording. Options are `record` or `pause`. Note that if you are using a simple timeout, and `initial` is set to `pause`, no output will be recorded.
 
 ```
---segment,	-sg		Segment the stream into multiple files
+	--segment,	-sg		Segment the stream into multiple files
 ```
 
-Rather than creating a single file, the file is split into segments of approximately the number of milliseconds specified. In order to provide different filenames, you should add  `%04d` or similar at the point in the filename where you want a segment count number to appear e.g:
+Rather than creating a single file, the file is split into segments of approximately the number of milliseconds specified. In order to provide different filenames, you should add `%04d` or similar at the point in the filename where you want a segment count number to appear e.g:
 
 ```
 --segment 3000 -o video%04d.h264
@@ -775,22 +775,22 @@ will produce file names formatted like so: `video_Fri Jul 20 16:23:48 2018.h264`
 There are many different formatting options available — see [here](http://man7.org/linux/man-pages/man3/strftime.3.html) for a full list. Note than the `%d` and `%u` options are not available, as they are used for the segment number formatting, and that some combinations may produce invalid file names.
 
 ```
---wrap,	-wr		Set the maximum value for segment number
+	--wrap,	-wr		Set the maximum value for segment number
 ```
-When outputting segments, this is the maximum the segment number can reach before it's reset to 1,  giving the ability to keep recording segments, but overwriting the oldest one. So if set to 4, in the segment example above, the files produced will be `video0001.h264`, `video0002.h264`, `video0003.h264`, and `video0004.h264`. Once `video0004.h264` is recorded, the count will reset to 1, and `video0001.h264` will be overwritten.
+When outputting segments, this is the maximum the segment number can reach before it's reset to 1, giving the ability to keep recording segments, but overwriting the oldest one. So if set to 4, in the segment example above, the files produced will be `video0001.h264`, `video0002.h264`, `video0003.h264`, and `video0004.h264`. Once `video0004.h264` is recorded, the count will reset to 1, and `video0001.h264` will be overwritten.
 
 ```
---start,	-sn		Set the initial segment number
+	--start,	-sn		Set the initial segment number
 ```
 When outputting segments, this is the initial segment number, giving the ability to resume a previous recording from a given segment. The default value is 1.
 
 ```
---raw,   -r
+	--raw,	-r
 ```
 Specify the output file name for any raw data files requested.
 
 ```
---raw-format,   -rf
+	--raw-format,	-rf
 ```
 Specify the raw format to be used if raw output requested. Options as `yuv`, `rgb`, and `grey`. `grey` simply saves the Y channel of the YUV image.
 
