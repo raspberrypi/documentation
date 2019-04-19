@@ -69,6 +69,6 @@
 - **USB** – Universial Serial Bus; the main Raspberry Pi models have four USB sockets for connecting USB devices, for example, mice or keyboards; see [Wikipedia](https://en.wikipedia.org/wiki/USB).
 - **VC4** – The VideoCore4 GPU used on the Raspberry Pi; contains a large number of hardware blocks that handle graphics, cameras, display, CODECs, etc.
 - **VNC** – A graphical desktop sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer; see our [official documentation](https://www.raspberrypi.org/documentation/remote-access/vnc/README.md).
-- **Volt (V)** – SI-derived unit for electrical potential difference.; see [Wikipedia](https://en.wikipedia.org/wiki/Volt).
+- **Volt (V)** – SI-derived unit for electrical potential difference; see [Wikipedia](https://en.wikipedia.org/wiki/Volt).
 - **`vcgencmd`** – A Raspberry Pi–specific tool for communicating with the VideoCore4 GPU.
 - **Watt** - A measure of [power](https://en.wikipedia.org/wiki/Watt) often used when specifying power supplies. 
