@@ -81,3 +81,13 @@ ssh-add
 If this did not work, delete your keys with `rm ~/.ssh/id*` and follow the instructions again.
 
 You can also send files over SSH using the `scp` command (secure copy). See the [SCP guide](scp.md) for more information.
+
+## Let macOS store your passphrase so you don't have to enter it each time
+
+If you're using macOS and after verifying that your new key allows you to connect, you can optionally choose to store the passphrase for your key in the macOS Keychain. This will make it so that you don't have to enter the passphrase each time you connect to your Pi.
+
+Run the following command to store it in your keychain:
+
+```bash
+ssh-add -K ~/.ssh/id_rsa
+```
