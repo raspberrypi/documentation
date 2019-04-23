@@ -91,3 +91,6 @@ Run the following command to store it in your keychain:
 ```bash
 ssh-add -K ~/.ssh/id_rsa
 ```
+## Troubleshooting
+
+See https://raspberrypi.stackexchange.com/a/4621
