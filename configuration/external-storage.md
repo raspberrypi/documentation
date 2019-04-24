@@ -29,8 +29,7 @@ You can mount your HDD at a folder location of your choice. It is conventional t
     ```
     For example, `/dev/sda1`.
 5. Create a target folder to be the mount point of the HDD. 
-   The mount point name used in this case is `PIHDD`. You can specify a name of your choice.
-   Run the following command:
+   The mount point name used in this case is `PIHDD`. You can specify a name of your choice:
 
     ```
     sudo mkdir /mnt/PIHDD
