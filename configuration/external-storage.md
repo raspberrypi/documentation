@@ -81,9 +81,9 @@ For more information on the Linux commands, refer to the specific manual pages u
 ## Unmounting an HDD
 When the Raspberry Pi shuts down, the system takes care of unmounting the HDD so that it is safe to remove it. If you want to manually unmount an HDD, you can use the following command:
 
-    ```
-    sudo umount /mnt/PIHDD
-    ```
+```
+sudo umount /mnt/PIHDD
+```
 If you receive an error that the 'target is busy', this means that the HDD was not unmounted. If no error was displayed, you can now safely unplug the HDD.
 
 ### Dealing with 'target is busy'
