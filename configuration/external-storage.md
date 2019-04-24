@@ -22,6 +22,12 @@ You can mount your HDD at a specific folder location. It is conventional to do t
     sudo apt-get update
     sudo apt-get install exfat-fuse
     ```
+5. If your HDD uses an NTFS file system, you will have read-only access to the HDD. If you want to write to the HDD, you can install the ntfs-3g driver:
+
+    ```
+    sudo apt-get update
+    sudo apt-get install ntfs-3g
+    ```
 4. Run the following command to get the location of the disk partition:
 
     ```
