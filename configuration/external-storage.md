@@ -16,7 +16,7 @@ You can mount your HDD at a specific folder location. It is conventional to do t
     ```
    The Raspberry Pi uses mount points `/` and `/boot`. Your HDD will show up in this list, along with any other connected storage.
 3. Use the SIZE, LABEL, and MODEL columns to identify the name of the disk partition that points to your HDD. For example, `sda1`. 
-4. If your HDD has an exFAT partition, install the exFAT driver:
+4. If your HDD uses an exFAT filesystem, install the exFAT driver:
 
     ```
     sudo apt-get update
