@@ -60,12 +60,16 @@ You can modify the `fstab` file to define the location where the HDD will be aut
     ```
     sudo nano /etc/fstab
     ```
-4. Add the following line in the `fstab` file. 
+4. Add the following line in the `fstab` file:
 
     ```
     UUID=5C24-1453 /mnt/PIHDD FSTYPE defaults,auto,umask=000,users,rw,nofail 0 0
     ```
    Replace FSTYPE with the type of your file system, which you found in step 2 of 'Mounting an HDD' above.
+
+Now that you have set an entry in `fstab`, you can start up your Raspberry Pi with or without the HDD attached. Before you disconnect the HDD you must either shut down the Pi, or manually unmount the HDD using the steps in 'Unmounting an HDD' below.
+
+Note: if you do not have the HDD attached when the Pi starts, the Pi will take an extra 90 seconds to start up. You can shorten this by adding `,x-systemd.device-timeout=30` immediately after `nofail` in step 4. This will change the timeout to 30 seconds - so the system will only wait 30 seconds before giving up trying to mount the disk.
 
 For more information on the Linux commands, refer to the specific manual pages using the `man` command. For example, `man fstab`.
 
