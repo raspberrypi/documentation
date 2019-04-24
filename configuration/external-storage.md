@@ -1,4 +1,4 @@
-# External Storage configuration
+# External storage configuration
 You can connect your external hard disk drive (HDD) to any of the USB ports on the Raspberry Pi, and mount the file system to access the data stored on your HDD. 
 
 By default, Raspberry Pi automatically mounts some of the popular file systems such as FAT, NTFS, and HFS+ at `/media/pi/<HARD-DRIVE-LABEL>` location.
@@ -92,7 +92,7 @@ The 'target is busy' message means there are files on the HDD that are in use by
 
 1. Close any program which has open files on the HDD.
 
-2. If you have a terminal open, make sure that the current working directory is not in the folder where the HDD is mounted, or a sub-folder of it. The current working directory is usually displayed next to the command prompt in the terminal window. The following is an example of the prompt displayed when the current working directory is /mnt/PIHDD:
+2. If you have a terminal open, make sure that the current working directory is not the folder where the HDD is mounted, or a sub-folder of it. The current working directory is usually displayed next to the command prompt in the terminal window. The following is an example of the prompt displayed when the current working directory is /mnt/PIHDD:
 
     ```
     pi@raspberry:/mnt/PIHDD $
