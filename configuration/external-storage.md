@@ -55,7 +55,7 @@ You can modify the `fstab` file to define the location where the HDD will be aut
     sudo blkid
     ```
 2. Find the disk partition from the list and note the UUID. For example, `5C24-1453`.
-3. Edit the fstab file using a command line editor such as nano. Run the following command:
+3. Edit the fstab file using a command line editor such as nano:
 
     ```
     sudo nano /etc/fstab
