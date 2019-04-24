@@ -6,7 +6,7 @@ By default, Raspberry Pi automatically mounts some of the popular file systems s
 To set up your HDD so that it always mounts to a specific location of your choice, you must manually mount your HDD.
 
 ## Mounting an HDD 
-You can mount your HDD at a folder location of your choice. It is conventional to do this within the /mnt folder, for example /mnt/PIHDD. Note that the folder must be empty. If the folder is not empty, the system will not mount the HDD.
+You can mount your HDD at a specific folder location. It is conventional to do this within the /mnt folder, for example /mnt/PIHDD. Note that the folder must be empty. If the folder is not empty, the system will not mount the HDD.
 
 1. Plug in the external HDD to a USB port on the Raspberry Pi. 
 2. List all the disk partitions on the Pi using the following command:
