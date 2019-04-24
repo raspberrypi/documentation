@@ -86,7 +86,7 @@ Before you unmount your HDD, ensure that there are no programs accessing the HDD
     ```
    where `PIHDD` is the mount point name.
 3. Manually close all the programs that are using the mount point.  
-4. Unmount the HDD. Run the following command:
+4. Unmount the HDD:
 
     ```
     sudo umount /mnt/PIHDD
