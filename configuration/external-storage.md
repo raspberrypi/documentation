@@ -84,7 +84,6 @@ When the Raspberry Pi shuts down, the system takes care of unmounting the HDD so
     ```
     sudo umount /mnt/PIHDD
     ```
-    
 If you receive an error that the 'target is busy', this means that the HDD was not unmounted. If no error was displayed, you can now safely unplug the HDD.
 
 ### Dealing with 'target is busy'
