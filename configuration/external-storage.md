@@ -28,24 +28,24 @@ You can mount your HDD at a specific folder location. It is conventional to do t
     sudo apt-get update
     sudo apt-get install ntfs-3g
     ```
-4. Run the following command to get the location of the disk partition:
+6. Run the following command to get the location of the disk partition:
 
     ```
     sudo blkid
     ```
     For example, `/dev/sda1`.
-5. Create a target folder to be the mount point of the HDD. 
+7. Create a target folder to be the mount point of the HDD. 
    The mount point name used in this case is `PIHDD`. You can specify a name of your choice:
 
     ```
     sudo mkdir /mnt/PIHDD
     ```
-6. Mount the HDD at the mount point you created:
+8. Mount the HDD at the mount point you created:
 
     ```
     sudo mount /dev/sda1 /mnt/PIHDD
     ```
-7. Verify that the HDD is mounted successfully by listing the contents:
+9. Verify that the HDD is mounted successfully by listing the contents:
 
     ```
     ls /mnt/PIHDD
@@ -79,25 +79,33 @@ Now that you have set an entry in `fstab`, you can start up your Raspberry Pi wi
 For more information on the Linux commands, refer to the specific manual pages using the `man` command. For example, `man fstab`.
 
 ## Unmounting an HDD
-When the Raspberry Pi shuts down, the system takes care of unmounting the HDD so that it is safe to remove it. If you want to manually unmount an HDD, you can do this using the following procedure.
-Before you unmount your HDD, ensure that there are no programs accessing the HDD. You can do this using the `lsof` command. 
-
-1. Run the following commands to install `lsof`.
-
-    ```
-    sudo apt-get update
-    sudo apt-get install -y lsof
-    ```
-2. Get the list of programs using the mount point:
-
-    ```
-    lsof /mnt/PIHDD
-    ```
-   where `PIHDD` is the mount point name.
-3. Manually close all the programs that are using the mount point.  
-4. Unmount the HDD:
+When the Raspberry Pi shuts down, the system takes care of unmounting the HDD so that it is safe to remove it. If you want to manually unmount an HDD, you can use the following command:
 
     ```
     sudo umount /mnt/PIHDD
     ```
-   It is now safe to unplug the HDD.
+    
+If you receive an error that the 'target is busy', this means that the HDD was not unmounted. If no error was displayed, you can now safely unplug the HDD.
+
+### Dealing with 'target is busy'
+    
+The 'target is busy' message means there are files on the HDD that are in use by a program. To close the files, use the following procedure.
+
+1. Close any program which has open files on the HDD.
+
+2. If you have a terminal open, make sure that the current working directory is not in the folder where the HDD is mounted, or a sub-folder of it. The current working directory is usually displayed next to the command prompt in the terminal window. The following is an example of the prompt displayed when the current working directory is /mnt/PIHDD:
+
+    ```
+    pi@raspberry:/mnt/PIHDD $
+    ```
+3. If you are still unable to unmount the HDD, you can use the `lsof` tool to check which program has files open on the HDD. You need to first install `lsof` using `apt-get`:
+
+    ```
+    sudo apt-get update
+    sudo apt-get install lsof
+    ```
+   To use lsof:
+   
+    ```
+    lsof /mnt/PIHDD
+    ```
