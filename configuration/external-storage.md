@@ -79,7 +79,7 @@ Now that you have set an entry in `fstab`, you can start up your Raspberry Pi wi
 For more information on the Linux commands, refer to the specific manual pages using the `man` command. For example, `man fstab`.
 
 ## Unmounting an HDD
-When the Raspberry Pi shuts down, the system takes care of unmounting the HDD so that it is safe to remove it. If you want to manually unmount an HDD, you can use the following command:
+When the Raspberry Pi shuts down, the system takes care of unmounting the HDD so that it is safe to unplug it. If you want to manually unmount an HDD, you can use the following command:
 
 ```
 sudo umount /mnt/PIHDD
