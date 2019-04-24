@@ -54,7 +54,7 @@ You can mount your HDD at a specific folder location. It is conventional to do t
 ## Setting up automatic mounting
 You can modify the `fstab` file to define the location where the HDD will be automatically mounted when the Raspberry Pi starts up. In the `fstab` file, the disk partition is identified by the universally unique identifier (UUID).
 
-1. Get the UUID of the disk partition. Run the following command:
+1. Get the UUID of the disk partition:
 
     ```
     sudo blkid
@@ -74,7 +74,7 @@ You can modify the `fstab` file to define the location where the HDD will be aut
 
 Now that you have set an entry in `fstab`, you can start up your Raspberry Pi with or without the HDD attached. Before you disconnect the HDD you must either shut down the Pi, or manually unmount the HDD using the steps in 'Unmounting an HDD' below.
 
-Note: if you do not have the HDD attached when the Pi starts, the Pi will take an extra 90 seconds to start up. You can shorten this by adding `,x-systemd.device-timeout=30` immediately after `nofail` in step 4. This will change the timeout to 30 seconds - so the system will only wait 30 seconds before giving up trying to mount the disk.
+**Note:** if you do not have the HDD attached when the Pi starts, the Pi will take an extra 90 seconds to start up. You can shorten this by adding `,x-systemd.device-timeout=30` immediately after `nofail` in step 4. This will change the timeout to 30 seconds - so the system will only wait 30 seconds before giving up trying to mount the disk.
 
 For more information on the Linux commands, refer to the specific manual pages using the `man` command. For example, `man fstab`.
 
