@@ -73,7 +73,7 @@ Note: if you do not have the HDD attached when the Pi starts, the Pi will take a
 For more information on the Linux commands, refer to the specific manual pages using the `man` command. For example, `man fstab`.
 
 ## Unmounting an HDD
-When the Raspberry Pi shuts down, all file systems are automatically closed down and any cached data is written to disk. If you want to manually unmount an HDD, you can do this using the following procedure.
+When the Raspberry Pi shuts down, the system takes care of unmounting the disk so that it is safe to remove it. If you want to manually unmount an HDD, you can do this using the following procedure.
 Before you unmount your HDD, ensure that there are no programs accessing the HDD. You can do this using the `lsof` command. 
 
 1. Run the following commands to install `lsof`.
