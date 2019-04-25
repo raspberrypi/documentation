@@ -7,7 +7,7 @@ There are two separate boot modes for USB:
   * [USB mass storage boot](msd.md)
   * [Network boot](net.md)
 
-Note that network boot is only possible on Raspberry Pi models that have a built-in wired Ethernet interface.
+**USB host boot is available on the Raspberry Pi 3B, 3B+, 3A+ and Raspberry Pi 2B v1.2 models only.**
 
 The choice between the two boot modes is made by the firmware at boot time when it reads the OTP bits. There are two bits to control USB boot: the first enables device boot and is enabled by default on all Raspberry Pi computers. The second bit enables USB host boot; if this bit is also set, then the processor reads the OTGID pin to decide whether to boot as a host (driven to zero as on the Raspberry Pi Model B) or as a device (left floating). The Pi Zero has access to this pin through the OTGID pin on the USB connector, and the Compute Module has access to this pin on the edge connector.
 
