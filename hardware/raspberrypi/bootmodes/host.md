@@ -1,5 +1,7 @@
 # USB Host boot mode
 
+**USB host boot is available on the Raspberry Pi 3B, 3B+, 3A+ and Raspberry Pi 2B v1.2 models only.**
+
 The USB host boot mode follows this sequence:
 
 * Enable the USB port and wait for D+ line to be pulled high indicating a USB 2.0 device (we only support USB2.0)
