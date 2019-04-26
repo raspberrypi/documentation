@@ -8,6 +8,8 @@ Some basic guides to configuring your Raspberry Pi.
     - The Raspberry Pi configuration tool in Raspbian, allowing you to easily enable features such as the camera, and to change your specific settings such as keyboard layout
 - [config.txt](config-txt/README.md)
     - The Raspberry Pi configuration file
+- [Ethernet networking](ethernet/README.md)
+    - How to configure the wired network interface on the Pi
 - [Wireless networking](wireless/README.md)
     - Configuring your Pi to connect to a wireless network using the Raspberry Pi 3's or Pi Zero W's inbuilt wireless connectivity, or a USB wireless dongle
 - [Wireless access point](wireless/access-point.md)
