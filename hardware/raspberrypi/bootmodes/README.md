@@ -1,4 +1,4 @@
-# Boot sequence
+# Raspberry Pi boot modes
 
 ## Introduction
 
