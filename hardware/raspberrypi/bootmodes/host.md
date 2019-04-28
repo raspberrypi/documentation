@@ -1,6 +1,6 @@
 # USB host boot mode
 
-**USB host boot is available on the Raspberry Pi 3B, 3B+ and Raspberry Pi 2B v1.2 models only.**
+**USB host boot is available on the Raspberry Pi 3B, 3B+, and Raspberry Pi 2B v1.2 models only. The 3A+ supports USB host boot as well, but only for mass storage device boot, not network boot.*
 
 The USB host boot mode follows this sequence:
 
