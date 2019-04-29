@@ -9,9 +9,9 @@ This is the Broadcom chip used in the Raspberry Pi 3 and Raspberry Pi 2B version
 
 ## New version - B0
 
-The B0 variant runs the ARMs at 1.4GHz, making it around 17% faster than the A0.
+The new BCM2837B0 is used on the Raspberry Pi 3B+ and 3A+ and runs the ARMs at 1.4GHz, making it around 17% faster than the A0.
 
-The BCM2837B0 chip is packaged slightly differently to the BCM2837A0, and most notably includes a heat spreader for better thermals. These allow higher clock frequencies (or running at lower voltages to reduce power consumption), and more accurate monitoring and control of the chip's temperature.
+The BCM2837B0 chip is packaged slightly differently to the A0, and most notably includes a heat spreader for better thermals. These allow higher clock frequencies (or running at lower voltages to reduce power consumption), and more accurate monitoring and control of the chip's temperature.
 
 [This post on the Raspberry Pi blog](https://www.raspberrypi.org/blog/raspberry-pi-3-model-bplus-sale-now-35/) goes into further detail about the BCM2837B0 chip.
 
