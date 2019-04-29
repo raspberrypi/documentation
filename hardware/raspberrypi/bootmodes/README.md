@@ -17,7 +17,7 @@ The Raspberry Pi has a number of different stages of booting. This document expl
 ## Special bootcode.bin-only boot mode
 USB host and Ethernet boot can be performed by BCM2837-based Raspberry Pis - all Pi 3 models, and Pi 2B version 1.2. (The exception being the 3A+ which cannot net boot since it does not have the required built-in Ethernet interface). In addition, all Raspberry Pi models can use a new bootcode.bin-only method to enable USB host boot.
 
-Just format an SD card as FAT32 and copy on the latest [bootcode.bin](https://github.com/raspberrypi/firmware/raw/master/boot/bootcode.bin). The SD card must be present in the Pi for it to boot. Once bootcode.bin is loaded from the SD card, the Pi can then boot using USB host mode.
+Just format an SD card as FAT32 and copy on the latest [bootcode.bin](https://github.com/raspberrypi/firmware/raw/master/boot/bootcode.bin). The SD card must be present in the Pi for it to boot. Once bootcode.bin is loaded from the SD card, the Pi continues booting using USB host mode.
 
 This is useful for the Raspberry Pi 1, 2, and Zero models, which are based on the BCM2835 and BCM2836 chips, and in situations where a Pi 3 fails to boot (the latest bootcode.bin includes additional bugfixes for the Pi 3, compared to the boot code burned into the BCM2837).
 
