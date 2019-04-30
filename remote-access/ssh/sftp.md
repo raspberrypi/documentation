@@ -6,11 +6,11 @@ By using SFTP, you can easily change, browse, and edit files on your Raspberry P
 
 ## WinSCP on Windows
 
-We recommend using the [WinSCP](https://winscp.net/eng/index.php) FTP client. Follow the instructions on their website to install the client, then follow their [Quick Start](https://winscp.net/eng/docs/getting_started) instructions.
+We recommend using the [WinSCP FTP client](https://winscp.net/eng/index.php). Follow the instructions on the WinSCP website to install the client, then follow the [WinSCP Quick Start instructions](https://winscp.net/eng/docs/getting_started).
 
 ## FileZilla on Linux
 
-Install FileZilla on your Linux system using the standard package manager for your distribution (e.g. `sudo apt install filezilla`)
+Install FileZilla on your Linux system using the standard package manager for your distribution (e.g. `sudo apt install filezilla`).
 
 Launch FileZilla and go to **File > Site manager**.
 
