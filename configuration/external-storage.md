@@ -1,7 +1,7 @@
 # External storage configuration
-You can connect your external hard disk, SSD or USB stick to any of the USB ports on the Raspberry Pi, and mount the file system to access the data stored on it.
+You can connect your external hard disk, SSD, or USB stick to any of the USB ports on the Raspberry Pi, and mount the file system to access the data stored on it.
 
-By default, Raspberry Pi automatically mounts some of the popular file systems such as FAT, NTFS, and HFS+ at `/media/pi/<HARD-DRIVE-LABEL>` location.
+By default, your Raspberry Pi automatically mounts some of the popular file systems such as FAT, NTFS, and HFS+ at the `/media/pi/<HARD-DRIVE-LABEL>` location.
 
 To set up your storage device so that it always mounts to a specific location of your choice, you must mount it manually.
 
@@ -60,7 +60,7 @@ You can modify the `fstab` file to define the location where the storage device 
     sudo blkid
     ```
 2. Find the disk partition from the list and note the UUID. For example, `5C24-1453`.
-3. Edit the fstab file using a command line editor such as nano:
+3. Open the fstab file using a command line editor such as nano:
 
     ```
     sudo nano /etc/fstab
@@ -74,11 +74,12 @@ You can modify the `fstab` file to define the location where the storage device 
 
 Now that you have set an entry in `fstab`, you can start up your Raspberry Pi with or without the storage device attached. Before you unplug the device you must either shut down the Pi, or manually unmount it using the steps in 'Unmounting a storage device' below.
 
-**Note:** if you do not have the storage device attached when the Pi starts, the Pi will take an extra 90 seconds to start up. You can shorten this by adding `,x-systemd.device-timeout=30` immediately after `nofail` in step 4. This will change the timeout to 30 seconds - so the system will only wait 30 seconds before giving up trying to mount the disk.
+**Note:** if you do not have the storage device attached when the Pi starts, the Pi will take an extra 90 seconds to start up. You can shorten this by adding `,x-systemd.device-timeout=30` immediately after `nofail` in step 4. This will change the timeout to 30 seconds, meaning the system will only wait 30 seconds before giving up trying to mount the disk.
 
 For more information on each Linux command, refer to the specific manual page using the `man` command. For example, `man fstab`.
 
 ## Unmounting a storage device
+
 When the Raspberry Pi shuts down, the system takes care of unmounting the storage device so that it is safe to unplug it. If you want to manually unmount a device, you can use the following command:
 
 ```
@@ -92,7 +93,7 @@ The 'target is busy' message means there are files on the storage device that ar
 
 1. Close any program which has open files on the storage device.
 
-2. If you have a terminal open, make sure that you are not in the folder where the storage device is mounted, or a sub-folder of it.
+2. If you have a terminal open, make sure that you are not in the folder where the storage device is mounted, or in a sub-folder of it.
 
 3. If you are still unable to unmount the storage device, you can use the `lsof` tool to check which program has files open on the device. You need to first install `lsof` using `apt-get`:
 
