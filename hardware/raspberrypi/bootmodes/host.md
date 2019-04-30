@@ -18,7 +18,7 @@ The USB host boot mode follows this sequence:
 * Else
   * Enumerate single device
 * Go through mass storage device list
-  * [Boot from USB mass storage device](msd.md)
+  * [Boot from mass storage device](msd.md)
 * Go through Ethernet device list
   * [Boot from Ethernet](net.md)
 
