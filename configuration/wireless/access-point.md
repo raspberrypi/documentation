@@ -2,7 +2,7 @@ Before proceeding, please ensure your Raspberry Pi is [up to date](../../raspbia
 
 # Setting up a Raspberry Pi as an access point in a standalone network (NAT)
 
-The Raspberry Pi can be used as a wireless access point, running a standalone network. This can be done using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access points.
+The Raspberry Pi can be used as a wireless access point running a standalone network. To do this, you need either a Raspberry Pi 3 or Raspberry Pi Zero W (which have inbuilt wireless LAN functionality), or another Pi model with a suitable USB wireless dongle that supports access points.
 
 Note that this documentation was tested on a Raspberry Pi 3, and it is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the forums.
 
@@ -10,7 +10,8 @@ To add a Raspberry Pi-based access point to an existing network, see [this secti
 
 In order to work as an access point, the Raspberry Pi will need to have access point software installed, along with DHCP server software to provide connecting devices with a network address. Ensure that your Raspberry Pi is using an up-to-date version of Raspbian (dated 2017 or later).
 
-Install all the required software in one go with this command:
+Install the required software (dnsmasq and hostapd) with this command:
+
 ```
 sudo apt install dnsmasq hostapd
 ```
@@ -19,7 +20,7 @@ sudo apt install dnsmasq hostapd
 
 We are configuring a standalone network to act as a server, so the Raspberry Pi needs to have a static IP address assigned to the wireless port. This documentation assumes that we are using the standard 192.168.x.x IP addresses for our wireless network, so we will assign the server the IP address 192.168.4.1. It is also assumed that the wireless device being used is `wlan0`.
 
-To configure the static IP address, edit the dhcpcd configuration file with:
+To configure the static IP address, open the dhcpcd configuration file with the following command:
 ```
 sudo nano /etc/dhcpcd.conf
 ```
@@ -108,7 +109,7 @@ DAEMON_CONF="/etc/hostapd/hostapd.conf"
 
 ## Start it up
 
-Now enable and start hostapd:
+Now enable and start `hostapd`:
 
 ```
 sudo systemctl unmask hostapd
@@ -182,8 +183,7 @@ sudo ifup br0
 sudo systemctl restart dhcpcd
 ```
 
-The access point setup is almost the same as that shown in the previous section. Follow *all* the instructions in the
-[Configuring the access point host software (hostapd)](#hostapd-config) section above to set up the `hostapd.conf` file and the system location, but add `bridge=br0` below the `interface=wlan0` line, and remove or comment out the driver line. The passphrase must be between 8 and 64 characters long.
+The access point setup is almost the same as that shown in the previous section. Follow **all** the instructions in the [Configuring the access point host software (hostapd)](#hostapd-config) section above to set up the `hostapd.conf` file and the system location, **but** add `bridge=br0` below the `interface=wlan0` line, and remove or comment out the driver line. The passphrase must be between 8 and 64 characters long.
 
 To use the 5 GHz band, you can change the operations mode from 'hw_mode=g' to 'hw_mode=a'. The possible values for hw_mode are:
  - a = IEEE 802.11a (5 GHz)
@@ -211,7 +211,7 @@ rsn_pairwise=CCMP
 
 ## Start it up
 
-Now enable and start hostapd:
+Now enable and start `hostapd`:
 ```
 sudo systemctl unmask hostapd
 sudo systemctl enable hostapd
