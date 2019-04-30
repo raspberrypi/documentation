@@ -1,74 +1,74 @@
 # Raspberry Pi documentation glossary
 
-- **A/mA** – ampere/milliampere, the base unit of electrical current; see [Wikipedia](https://en.wikipedia.org/wiki/Ampere)
-- **API** - [Application Programming Interface](https://en.wikipedia.org/wiki/Application_programming_interface), a set of subroutine definitions, communication protocols and tools used for building software.
-- **Arm** – a series of instruction-set architectures and processor microarchitectures, mostly developed by Arm Holdings based in Cambridge, UK; see [Wikipedia](https://en.wikipedia.org/wiki/Arm_architecture)
-- **Armv6** – the instruction set architecture used on the first Raspberry Pi (Pi 1) and the Pi Zero range
-- **Armv7** – the instruction set architecture used on the Raspberry Pi 2 range
-- **Armv8** – the instruction set architecture used on the Raspberry Pi 3 range; very similar to Armv7 in 32-bit mode
+- **A/mA** – Ampere/milliampere, the [base unit of electrical current](https://en.wikipedia.org/wiki/Ampere).
+- **API** - [Application Programming Interface](https://en.wikipedia.org/wiki/Application_programming_interface), a set of subroutine definitions, communication protocols, and tools used for building software.
+- **Arm** – A [series of instruction-set architectures and processor microarchitectures](https://en.wikipedia.org/wiki/Arm_architecture), mostly developed by Arm Holdings based in Cambridge, UK.
+- **Armv6** – The instruction set architecture used on the first Raspberry Pi (Pi 1) and the Pi Zero range.
+- **Armv7** – The instruction set architecture used on the Raspberry Pi 2 range.
+- **Armv8** – The instruction set architecture used on the Raspberry Pi 3 range; very similar to Armv7 in 32-bit mode.
 - **Bare metal** - Programming the Raspberry Pi without using an operating system. 
-- **BCM2835** – the SoC used on the Raspberry Pi 1, Compute Module 1, and Raspberry Pi Zero range; see our [official documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/README.md)
-- **BCM2836** – the SoC used on the original Raspberry Pi 2; see our [official documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/README.md)
-- **BCM2837** – the SoC used on the Raspberry Pi 3, Compute Module 3, and Raspberry Pi 2 version 1.2; see our [official documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2837/README.md)
-- **BLE/BTLE** - Bluetooth Low Energy, a low power version of the Bluetooth wireless communications protocol.
-- **BT** - Bluetooth, a short range, low bandwidth, wireless commmunication protocol often used for mobile devices.
-- **CODEC** – Coder/Decoder, hardware or software blocks that encode and/or decode video or audio data
-- **Compute Module** - A Pi variant, aimed at commercial customers. Uses a different form factor, more targetted towards use inside other products. More details [here](https://www.raspberrypi.org/documentation/hardware/computemodule/README.md)
-- **`config.txt`** – a file located on the boot partition of a Raspberry Pi's SD card that is parsed at boot time in order to enable, disable, and manage operating system features which cannot be changed after booting; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/config-txt/README.md)
-- **CSI** – Camera Serial Interface, a hardware interface for connecting cameras to SoCs
-- **DHCP** – Dynamic Host Configuration Protocol, a network management protocol which dynamically assigns an IP address and other network configuration parameters to each device on a network
-- **DPI** – Parallel Display Interface, an up to 24-bit parallel RGB interface via the Raspberry Pi's GPIO pins
-- **DSI** – Display Serial Interface, a hardware interface for connecting LCD panels
-- **Device Tree (DT)** – a data structure for defining hardware; see [Wikipedia](https://en.wikipedia.org/wiki/Device_tree)
-- **Device Tree source (DTS)** – a human-readable source file to be compiled into a DTB
-- **Device Tree blob (DTB)** – a binary file containing a Device Tree, the result of compiling DTS files.
-- **`dt-blob.bin`** – a binary file containing initial GPIO configuration that is read by the firmware at boot time; despite the name, this is _not_ Device Tree blob (although it is compiled by the Device Tree tools)
-- **DVI** – Digital Visual Interface, a video interface for connecting a source device to a monitor or display; electrically compatible with HDMI, so a simple adapter can convert from one to the other (excluding audio, which DVI does not support); see [Wikipedia](https://en.wikipedia.org/wiki/Digital_Visual_Interface)
-- **Etcher** - The Raspberry Pi recommended tool, available on Linux, Windows and Mac, for [programming SD cards](https://www.raspberrypi.org/documentation/installation/installing-images/README.md) ready for use on our devices.
-- **FAQ** - Frequently Asked Questions! See our [FAQ](https://www.raspberrypi.org/documentation/faqs/)
-- **Firmware** – software that runs on a particular hardware device, for example a wireless chip or dongle; distinct from the usual software running on the Raspberry Pi in that it is usually a fixed binary blob of data that is loaded on to the device at startup; on the Raspberry Pi, the VC4 GPU requires firmware to be loaded to it at startup in order boot up and run the entire system.
+- **BCM2835** – The SoC used on the Raspberry Pi 1, Compute Module 1, and Raspberry Pi Zero range; see our [official documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/README.md).
+- **BCM2836** – The SoC used on the original Raspberry Pi 2; see our [official documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/README.md).
+- **BCM2837** – The SoC used on the Raspberry Pi 3, Compute Module 3, and Raspberry Pi 2 version 1.2; see our [official documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2837/README.md).
+- **BLE/BTLE** - Bluetooth Low Energy, a low-power version of the Bluetooth wireless communications protocol.
+- **BT** - Bluetooth, a short-range, low-bandwidth, wireless commmunication protocol often used for mobile devices.
+- **CODEC** – Coder/Decoder, hardware or software blocks that encode and/or decode video or audio data.
+- **Compute Module** - A [Pi variant aimed at commercial customers](https://www.raspberrypi.org/documentation/hardware/computemodule/README.md); uses a different form factor, facilitating use inside other products.
+- **`config.txt`** – A file located on the boot partition of a Raspberry Pi's SD card that is parsed at boot time in order to enable, disable, and manage operating system features which cannot be changed after booting; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/config-txt/README.md).
+- **CSI** – Camera Serial Interface, a hardware interface for connecting cameras to SoCs.
+- **DHCP** – Dynamic Host Configuration Protocol, a network management protocol which dynamically assigns an IP address and other network configuration parameters to each device on a network.
+- **DPI** – Parallel Display Interface, an up to 24-bit parallel RGB interface via the Raspberry Pi's GPIO pins.
+- **DSI** – Display Serial Interface, a hardware interface for connecting LCD panels.
+- **Device Tree (DT)** – A [data structure for defining hardware](https://en.wikipedia.org/wiki/Device_tree).
+- **Device Tree source (DTS)** – a human-readable source file to be compiled into a DTB.
+- **Device Tree blob (DTB)** – A binary file containing a Device Tree; the result of compiling DTS files.
+- **`dt-blob.bin`** – a binary file containing initial GPIO configuration that is read by the firmware at boot time; despite the name, this is __not__ Device Tree blob (although it is compiled by the Device Tree tools).
+- **DVI** – [Digital Visual Interface](https://en.wikipedia.org/wiki/Digital_Visual_Interface), a video interface for connecting a source device to a monitor or display; electrically compatible with HDMI, so a simple adapter can convert from one to the other (excluding audio, which DVI does not support).
+- **Etcher** - The tool we recommend for [programming SD cards](https://www.raspberrypi.org/documentation/installation/installing-images/README.md) ready for use on our devices; available for Linux, Windows, and Mac.
+- **FAQ** - Frequently Asked Questions! See our [FAQ](https://www.raspberrypi.org/documentation/faqs/).
+- **Firmware** – Software that runs on a particular hardware device, for example a wireless chip or dongle; distinct from the usual software running on the Raspberry Pi in that it is usually a fixed binary blob of data that is loaded on to the device at startup; on the Raspberry Pi, the VC4 GPU requires firmware to be loaded to it at startup in order boot up and run the entire system.
 - **GNU** - The [GNU Project](https://en.wikipedia.org/wiki/GNU_Project) is a free software mass collaboration project, which has produced huge amounts of software that is used on the Raspberry Pi, including Linux itself.
-- **GPIO** – General Purpose Input/Output, the programmable pins on the Raspberry Pi
+- **GPIO** – General Purpose Input/Output, the programmable pins on the Raspberry Pi.
 - **GPU** – Graphical Processing Unit, a hardware device for handling graphical (and related) tasks at high speed; on the Raspberry Pi, this is called the VideoCore4 (VC4), and is built into the SoC.
-- **HAT** - Hardware Attached on Top. A specification for designing devices to attach to the Raspberry Pi, see the launch announcement [here](https://www.raspberrypi.org/blog/introducing-raspberry-pi-hats/).
-- **HDMI**  High-Definition Multimedia Interface, a standard interface for transmitting uncompressed video and compressed or uncompressed audio data from a source device to a display device; see [Wikipedia](https://en.wikipedia.org/wiki/HDMI)
-- **HDCP** – High-bandwidth Digital Content Protection, an optional encryption mechanism used for HDMI or DVI transmission; see [Wikipedia](https://en.wikipedia.org/wiki/High-bandwidth_Digital_Content_Protection)
-- **HVS** – Hardware Video Scaler, a hardware block in the VC4 GPU on all Raspberry Pi models used for manipulating and displaying bitmaps
-- **I<sup>2</sup>C/I2C/IIC** – Inter-Integrated Circuit (pronounced _I-squared-C_), an electrical protocol used for attaching lower-speed peripheral ICs to processors and microcontrollers in short-distance, intra-board communication; see [Wikipedia](https://en.wikipedia.org/wiki/I%C2%B2C)
-- **I<sup>2</sup>S** – Inter-Integrated Circuit Sound, an electrical serial bus interface standard used for connecting digital audio devices together; see [Wikipedia](https://en.wikipedia.org/wiki/I%C2%B2S)
+- **HAT** - Hardware Attached on Top, a specification for designing devices to attach to the Raspberry Pi; see the [launch announcement](https://www.raspberrypi.org/blog/introducing-raspberry-pi-hats/).
+- **HDMI** – [High-Definition Multimedia Interface](https://en.wikipedia.org/wiki/HDMI), a standard interface for transmitting uncompressed video and compressed or uncompressed audio data from a source device to a display device.
+- **HDCP** – [High-bandwidth Digital Content Protection](https://en.wikipedia.org/wiki/High-bandwidth_Digital_Content_Protection), an optional encryption mechanism used for HDMI or DVI transmission.
+- **HVS** – Hardware Video Scaler, a hardware block in the VC4 GPU on all Raspberry Pi models that is used for manipulating and displaying bitmaps.
+- **I<sup>2</sup>C/I2C/IIC** – [Inter-Integrated Circuit](https://en.wikipedia.org/wiki/I%C2%B2C) (pronounced _I-squared-C_), an electrical protocol used for attaching lower-speed peripheral ICs to processors and microcontrollers in short-distance, intra-board communication.
+- **I<sup>2</sup>S** – [Inter-Integrated Circuit Sound](https://en.wikipedia.org/wiki/I%C2%B2S), an electrical serial bus interface standard used for connecting digital audio devices together.
 - **ISP** – Imaging System Pipeline, a set of hardware (and sometimes software) stages that processes images from a camera into a high-quality result; the Raspberry Pi has a built-in hardware ISP that processes images captured from a camera attached to the CSI port.
 - **ISP** - Internet service provider.
-- **LAN** - Local Area Network, an ethernet or wireless based communication network in a localised area, for example a house or office. 
-- **LED** – Light-Emitting Diode, a semiconductor device that produces light from electricity
-- **Linux** – the main operating system used on the Raspberry Pi; the particular customised distribution for the Raspberry Pi range is called Raspbian; third parties have also produced their own distributions.
-- **MSD** – Mass Storage Device (amongst other things), such as an SD card or hard disk drive
-- **MQTT** - MQTT stands for MQ Telemetry Transport, a lightweight and simple machine to machine protocol often used for IoT devices. See their site [here](http://mqtt.org/)
-- **NAND** - a NAND gate is a logic gate, specifically an inverted AND gate; can also refer to a type of flash memory that uses NAND logic; see [Wikipedia](https://en.wikipedia.org/wiki/NAND_gate)
-- **NOOBS** - New Out of Box software. Easy [OS system image installation](https://www.raspberrypi.org/documentation/installation/noobs.md) for the Raspberry Pi range. Note, NOOBS is no longer developed by the Raspberry Pi team, see PINN instead.
+- **LAN** - Local Area Network, an Ethernet- or wireless-based communication network in a localised area, for example a house or office. 
+- **LED** – Light-Emitting Diode, a semiconductor device that produces light using electricity.
+- **Linux** – The main operating system used on the Raspberry Pi; the particular customised distribution for the Raspberry Pi range is called Raspbian; third parties have also produced their own distributions.
+- **MSD** – Mass Storage Device (amongst other things), such as an SD card or hard disk drive.
+- **MQTT** - MQTT stands for MQ Telemetry Transport, a lightweight and simple machine-to-machine protocol often used for IoT devices; see [the MQTT website](http://mqtt.org/).
+- **NAND** - a [NAND gate](https://en.wikipedia.org/wiki/NAND_gate) is a logic gate, specifically an inverted AND gate; can also refer to a type of flash memory that uses NAND logic.
+- **NOOBS** - New Out of Box software, easy [OS system image installation](https://www.raspberrypi.org/documentation/installation/noobs.md) for the Raspberry Pi range; **note:** NOOBS is no longer developed by the Raspberry Pi team, see PINN instead.
 - **OTP** – One-Time Programmable, a type of memory that can only be programmed once, and retains the programmed data after power off; used for serial numbers etc.
-- **Overlay** – a boot-time or run-time patch to a Device Tree allowing a degree of configuration by the user; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/device-tree.md) for more details, or run `dtoverlay -a` in a terminal window for a list of available overlays
+- **Overlay** – A boot-time or run-time patch to a Device Tree allowing a degree of configuration by the user; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/device-tree.md) for more details, or run `dtoverlay -a` in a terminal window for a list of available overlays.
 - **Pink Pony/Unicorn** - A feature request for a future Raspberry Pi model that is unlikely to happen.
-- **PINN** - A [third party development](https://github.com/procount/pinn) of the NOOBS system, often a better option than the official NOOBS.
-- **PoE** - Power over Ethernet, a mechanism to power a device through its Ethernet connection. Raspberry Pi produce a [PoE HAT](https://www.raspberrypi.org/products/poe-hat) for the Raspberry Pi Model 3B plus.
-- **Polyfuse** - An self-resetting electrical fuse used on some Pi models to protect against over current situations. Can take hours or even days to reset.
-- **`raspi-config`** – a command line tool for configuring Raspbian's operating system features; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)
-- **raspivid, raspistill, raspiyuv, raspividyuv** – a set of applications to run the Raspberry Pi Camera Module in various modes; see our [official documentation](https://www.raspberrypi.org/documentation/raspbian/applications/camera.md)
-- **Raspbian** - A Debian based Linux distribution targeted at the entire Raspberry Pi range, regarded as the official O/S. The current version is based on Debian Stretch with the first release being in August 2017. See this [Wikipedia](https://en.wikipedia.org/wiki/Raspbian) entry for further release details. 
-- **Raspberry Pi Configuration Tool (`rcgui`)** – a graphical equivalent of `raspi-config`
-- **Raspberry Pi Desktop** – a version of the LXDE desktop environment, specifically tailored to the Raspberry Pi (used to be called Pixel)
-- **RPF** - Raspberry Pi Foundation. The original registered educational charity (1129409) which launched the Raspberry Pi.
-- **RPT/RPF(T)** - Raspberry Pi Trading. A wholely owned commercial subsidiary of the RPF which designs and develops all Raspberry Pi products, including magazines. All profits from the RPT go to the RPF for use in their educational aims.
-- **rpi-update** - A program you can run on a Raspberry Pi to download the very latest test firmware and Linux kernel. There is no guarantee that the latest version will work correctly, so you should only run rpi-update if recommended by a Raspberry Pi engineer.
-- **SoC** – system on a chip, an integrated circuit that integrates all components of a computer
-- **SPI** – Serial Peripheral Interface bus, a synchronous serial communication interface specification used for short distance communication
-- **SSH** – Secure Shell, a cryptographic network protocol for operating network services securely over an unsecured network; see our [official documentation](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) or [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell)
-- **TLA** – three-letter abbreviation; almost the entire reason for this glossary
-- **TLS** – [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) A cryptographic protocol used to supply security over a computer network, often used to secure other protocols such as MQTT.
-- **TP1/TP2** – test points
-- **UART** – Universal Asynchronous Receiver-Transmitter, a protocol for asynchronous serial communication in which the data format and transmission speeds are configurable
-- **USB** – Universial Serial Bus; the main Raspberry Pi models have four USB sockets for connecting USB devices, for example, mice or keyboards; see [Wikipedia](https://en.wikipedia.org/wiki/USB)
-- **VC4** – the VideoCore4 GPU used on the Raspberry Pi; contains a large number of hardware blocks that handle graphics, cameras, display, CODECs, etc.
-- **VNC** – a graphical desktop sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer; see our [official documentation](https://www.raspberrypi.org/documentation/remote-access/vnc/README.md)
-- **Volt (V)** – SI-derived unit for electrical potential difference.; see [Wikipedia](https://en.wikipedia.org/wiki/Volt)
-- **`vcgencmd`** – a Raspberry Pi–specific tool for communicating with the VideoCore4 GPU
+- **PINN** - A [third-party development](https://github.com/procount/pinn) of the NOOBS system, often a better option than the official NOOBS.
+- **PoE** - Power over Ethernet, a mechanism to power a device through its Ethernet connection; we produce a [PoE HAT](https://www.raspberrypi.org/products/poe-hat) for the Raspberry Pi 3 Model B+.
+- **Polyfuse** - A self-resetting electrical fuse used on some Pi models to protect against over-current; can take hours or even days to reset.
+- **`raspi-config`** – A command line tool for configuring Raspbian's operating system features; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/raspi-config.md).
+- **raspivid, raspistill, raspiyuv, raspividyuv** – a set of applications to run the Raspberry Pi Camera Module in various modes; see our [official documentation](https://www.raspberrypi.org/documentation/raspbian/applications/camera.md).
+- **Raspbian** - A Debian-based Linux distribution targeted at the entire Raspberry Pi range, regarded as the official operating; the current version is based on Debian Stretch, with the first release in August 2017; see the [Wikipedia entry for further release details](https://en.wikipedia.org/wiki/Raspbian). 
+- **Raspberry Pi Configuration Tool (`rcgui`)** – A graphical equivalent of `raspi-config`.
+- **Raspberry Pi Desktop** – A version of the LXDE desktop environment, specifically tailored to the Raspberry Pi (used to be called PIXEL).
+- **RPF** - Raspberry Pi Foundation, the original, Uk-registered educational charity (1129409) that launched the Raspberry Pi.
+- **RPT/RPF(T)** - Raspberry Pi Trading, a wholely owned commercial subsidiary of the RPF which designs and develops all Raspberry Pi products, including magazines; all profits from the RPT go to the RPF for use in their educational programmes.
+- **rpi-update** - A program you can run on a Raspberry Pi to download the very latest test firmware and Linux kernel; there is no guarantee that the latest version will work correctly, so you should only run rpi-update if recommended by a Raspberry Pi engineer.
+- **SoC** – System on a Chip, an integrated circuit that comprises all components of a computer.
+- **SPI** – Serial Peripheral Interface bus, a synchronous serial communication interface specification used for short distance communication.
+- **SSH** – Secure Shell, a cryptographic network protocol for operating network services securely over an unsecured network; see our [official documentation](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) or [the Wikipedia article on SSH](https://en.wikipedia.org/wiki/Secure_Shell).
+- **TLA** – Three-letter abbreviation, almost the entire reason for this glossary.
+- **TLS** – [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security), a cryptographic protocol used to supply security over a computer network, often used to secure other protocols such as MQTT.
+- **TP1/TP2** – Test points.
+- **UART** – Universal Asynchronous Receiver-Transmitter, a protocol for asynchronous serial communication in which the data format and transmission speeds are configurable.
+- **USB** – [Universial Serial Bus](https://en.wikipedia.org/wiki/USB), the main Raspberry Pi models have four USB sockets for connecting USB devices, for example mice or keyboards.
+- **VC4** – The VideoCore4 GPU used on the Raspberry Pi; contains a large number of hardware blocks that handle graphics, cameras, display, CODECs, etc.
+- **VNC** – A graphical desktop sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer; see our [official documentation](https://www.raspberrypi.org/documentation/remote-access/vnc/README.md).
+- **Volt (V)** – SI-derived unit for [electrical potential difference](https://en.wikipedia.org/wiki/Volt).
+- **`vcgencmd`** – A Raspberry Pi–specific tool for communicating with the VideoCore4 GPU.
 - **Watt** - A measure of [power](https://en.wikipedia.org/wiki/Watt) often used when specifying power supplies. 
