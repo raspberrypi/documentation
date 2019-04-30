@@ -1,0 +1,1 @@
+# GPIO boot mode
