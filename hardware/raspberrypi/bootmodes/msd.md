@@ -1,4 +1,4 @@
-# How to boot from a USB mass storage device on a Raspberry Pi
+# USB mass storage deviceboot
 
 **USB mass storage boot is available on the Raspberry Pi 3B, 3B+, 3A+ and Raspberry Pi 2B v1.2 models only.**
 
