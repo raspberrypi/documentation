@@ -14,7 +14,7 @@ The USB host boot mode follows this sequence:
         * If VID == SMSC && PID == 9500
           * Add device to Ethernet device list
         * If class interface == mass storage class
-          * Add device to MSD device list
+          * Add device to mass storage device list
 * Else
   * Enumerate single device
 * Go through mass storage device list
