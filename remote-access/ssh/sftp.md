@@ -6,7 +6,7 @@ By using SFTP, you can easily change, browse, and edit files on your Raspberry P
 
 ## WinSCP on Windows
 
-We recommend using the [WinSCP FTP client](https://winscp.net/eng/index.php). Follow the instructions on the WinSCP website to install the client, then follow the [WinSCP Quick Start instructions](https://winscp.net/eng/docs/getting_started).
+We recommend using the [WinSCP SFTP client](https://winscp.net/eng/index.php). Follow the instructions on the WinSCP website to install the client, then follow the [WinSCP Quick Start instructions](https://winscp.net/eng/docs/getting_started).
 
 ## FileZilla on Linux
 
