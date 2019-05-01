@@ -24,4 +24,4 @@ Once enabled, the GPIOs are mapped as follows:
 
 SD1 is the <xxx> SD card interface. SD2 is the <yyy> SD card interface. USB enables both USB device mode and USB host mode boot.
 
-The default pull resistance on the GPIO lines is 50K ohm, so a pull resistance of 5K ohm should suffice but still enable the GPIO to be operational but not consume a lot of power.
+The default pull resistance on the GPIO lines is 50K ohm, as documented on page 102 of the [BCM2835 ARM peripherals datasheet](hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf). A pull resistance of 5K ohm is recommended to pull a GPIO line up or down: this will allow the GPIO to function but not consume too much power.
