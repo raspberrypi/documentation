@@ -1,6 +1,6 @@
 # GPIO boot mode
 
-The Raspberry Pi can be configured to allow the boot mode to be selected at run time using hardware attached to the GPIO connector: this is GPIO boot mode. This is done by setting a bit in the OTP memory of the SoC. Once the bit is set, it permanently allocates 5 GPIOs to allow this selected to be made. Once the OTP bit is set it cannot be undone, so you should think carefully about enabling this, since those 5 GPIO lines will then be permanently unavailable for any other use.
+The Raspberry Pi can be configured to allow the boot mode to be selected at power on using hardware attached to the GPIO connector: this is GPIO boot mode. This is done by setting bits in the OTP memory of the SoC. Once the bits are set, they permanently allocates 5 GPIOs to allow this selection to be made. Once the OTP bits are set they cannot be unset so you should think carefully about enabling this, since those 5 GPIO lines will then be permanently unavailable for any other use.
 
 To enable GPIO boot mode, add the following line to the config.txt file:
 
@@ -8,11 +8,11 @@ To enable GPIO boot mode, add the following line to the config.txt file:
 program_gpio_bootmode=n
 ```
 
-And reboot the Pi once to program the OTP with this setting. Where n is the bank of GPIOs which you wish to use. Bank 1 is GPIOs 22-26, bank 2 is GPIOs 39-43. Unless you have a compute module, you must use bank 1: the GPIOs in bank 2 are only available on the compute module.
+Where n is the bank of GPIOs which you wish to use. Then reboot the Pi once to program the OTP with this setting. Bank 1 is GPIOs 22-26, bank 2 is GPIOs 39-43. Unless you have a Compute Module, you must use bank 1: the GPIOs in bank 2 are only available on the Compute Module. Because of the way the OTP bits are arranged, if you first program GPIO boot mode for bank 1, you then have the option of selecting bank 2 later. The reverse is not true: once bank 2 has been selected for GPIO boot mode, you cannot select bank 1.
 
 Once GPIO boot mode is enabled, the Raspberry Pi will no longer boot. You must pull up at least one boot mode GPIO pin in order for the Pi to boot.
 
-Once enabled, the GPIOs are mapped as follows:
+Once enabled, the GPIOs are polled in numerical order as follows:
 
 |Bank 1|Bank2|boot type|
 |:----:|:---:|:-------:|
