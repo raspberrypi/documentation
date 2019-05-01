@@ -10,6 +10,8 @@ program_gpio_bootmode=n
 
 And reboot the Pi once to program the OTP with this setting. Where n is the bank of GPIOs which you wish to use. Bank 1 is GPIOs 22-26, bank 2 is GPIOs 39-43. Unless you have a compute module, you must use bank 1: the GPIOs in bank 2 are only available on the compute module.
 
+Once GPIO boot mode is enabled, the Raspberry Pi will no longer boot. You must pull up at least one boot mode GPIO pin in order for the Pi to boot.
+
 Once enabled, the GPIOs are mapped as follows:
 
 |Bank 1|Bank2|boot type|
@@ -21,3 +23,5 @@ Once enabled, the GPIOs are mapped as follows:
 |26    |43   |USB      |
 
 SD1 is the <xxx> SD card interface. SD2 is the <yyy> SD card interface. USB enables both USB device mode and USB host mode boot.
+
+The default pull resistance on the GPIO lines is 50K ohm, so a pull resistance of 5K ohm should suffice but still enable the GPIO to be operational but not consume a lot of power.
