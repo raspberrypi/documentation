@@ -26,6 +26,6 @@ The various boot modes are attempted in the numerical order of the GPIO pins, i.
 
 SD1 is the Broadcom SD card / MMC interface, which is used by default for the built-in SD card slot, and on the Compute Module for the eMMC. SD1 is the Arasan SD card / MMC interface which is also capable of SDIO. All Raspberry Pi models with built-in wifi use SD1 to connect to the wifi chip via SDIO, although it can be reassigned to other uses.
 
-USB in the table is USB device boot mode and USB host boot mode, which are only available on certain models of Raspberry Pi.
+USB in the table selects USB device boot mode and USB host boot mode, which are only available on certain models of Raspberry Pi.
 
 The default pull resistance on the GPIO lines is 50K ohm, as documented on page 102 of the [BCM2835 ARM peripherals datasheet](hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf). A pull resistance of 5K ohm is recommended to pull a GPIO line up: this will allow the GPIO to function but not consume too much power.
