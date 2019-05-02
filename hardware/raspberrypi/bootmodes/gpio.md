@@ -1,6 +1,6 @@
 # GPIO boot mode
 
-The Raspberry Pi can be configured to allow the boot mode to be selected at power on using hardware attached to the GPIO connector: this is GPIO boot mode. This is done by setting bits in the OTP memory of the SoC. Once the bits are set, they permanently allocate 5 GPIOs to allow this selection to be made. Once the OTP bits are set they cannot be unset so you should think carefully about enabling this, since those 5 GPIO lines will then be permanently unavailable for any other use.
+The Raspberry Pi can be configured to allow the boot mode to be selected at power on using hardware attached to the GPIO connector: this is GPIO boot mode. This is done by setting bits in the OTP memory of the SoC. Once the bits are set, they permanently allocate 5 GPIOs to allow this selection to be made. Once the OTP bits are set they cannot be unset so you should think carefully about enabling this, since those 5 GPIO lines will then be unavailable for any other use.
 
 To enable GPIO boot mode, add the following line to the config.txt file:
 
@@ -22,7 +22,7 @@ Once enabled, the GPIOs are polled in numerical order as follows:
 |25    |42   |SPI      |
 |26    |43   |USB      |
 
-SD1 is the Broadcom SD card interface, which is used by default for the built-in SD card slot, and on the Compute Module for the eMMC. SD1 is the Arasan SD card interface which is also capable on SDIO.
+SD1 is the Broadcom SD card / MMC interface, which is used by default for the built-in SD card slot, and on the Compute Module for the eMMC. SD1 is the Arasan SD card interface which is also capable on SDIO. All Raspberry Pi models with built-in wifi use SD1 to connect to the wifi chip via SDIO.
 
 USB in the table is USB device boot mode and USB host boot mode, which are only available on certain models of Raspberry Pi.
 
