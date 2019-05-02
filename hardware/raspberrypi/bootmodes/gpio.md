@@ -14,7 +14,7 @@ Once GPIO boot mode is enabled, the Raspberry Pi will no longer boot. You must p
 
 Once enabled, the GPIOs are allocated to boot modes as follows:
 
-|Bank 1|Bank2|boot type|
+|Bank 1|Bank 2|boot type|
 |:----:|:---:|:-------:|
 |22    |39   |SD0      |
 |23    |40   |SD1      |
