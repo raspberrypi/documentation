@@ -16,12 +16,14 @@ Once enabled, the GPIOs are polled in numerical order as follows:
 
 |Bank 1|Bank2|boot type|
 |:----:|:---:|:-------:|
-|22    |39   |SD1      |
-|23    |40   |SD2      |
+|22    |39   |SD0      |
+|23    |40   |SD1      |
 |24    |41   |NAND     |
 |25    |42   |SPI      |
 |26    |43   |USB      |
 
-SD1 is the <xxx> SD card interface. SD2 is the <yyy> SD card interface. USB enables both USB device mode and USB host mode boot.
+SD1 is the Broadcom SD card interface, which is used by default for the built-in SD card slot, and on the Compute Module for the eMMC. SD1 is the Arasan SD card interface which is also capable on SDIO.
 
-The default pull resistance on the GPIO lines is 50K ohm, as documented on page 102 of the [BCM2835 ARM peripherals datasheet](hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf). A pull resistance of 5K ohm is recommended to pull a GPIO line up or down: this will allow the GPIO to function but not consume too much power.
+USB in the able table is USB device boot mode and USB host boot mode, which are only available on certain models of Raspberry Pi.
+
+The default pull resistance on the GPIO lines is 50K ohm, as documented on page 102 of the [BCM2835 ARM peripherals datasheet](hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf). A pull resistance of 5K ohm is recommended to pull a GPIO line up: this will allow the GPIO to function but not consume too much power.
