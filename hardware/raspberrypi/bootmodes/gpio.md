@@ -12,7 +12,7 @@ Where n is the bank of GPIOs which you wish to use. Then reboot the Pi once to p
 
 Once GPIO boot mode is enabled, the Raspberry Pi will no longer boot. You must pull up at least one boot mode GPIO pin in order for the Pi to boot.
 
-Once enabled, the GPIOs are polled in numerical order as follows:
+Once enabled, the GPIOs are allocated to boot modes as follows:
 
 |Bank 1|Bank2|boot type|
 |:----:|:---:|:-------:|
@@ -21,6 +21,8 @@ Once enabled, the GPIOs are polled in numerical order as follows:
 |24    |41   |NAND     |
 |25    |42   |SPI      |
 |26    |43   |USB      |
+
+The various boot modes are attempted in the numerical order of the GPIO pins, i.e. SD0, then SD1, then NAND and so on.
 
 SD1 is the Broadcom SD card / MMC interface, which is used by default for the built-in SD card slot, and on the Compute Module for the eMMC. SD1 is the Arasan SD card / MMC interface which is also capable of SDIO. All Raspberry Pi models with built-in wifi use SD1 to connect to the wifi chip via SDIO.
 
