@@ -22,7 +22,7 @@ Once enabled, the GPIOs are polled in numerical order as follows:
 |25    |42   |SPI      |
 |26    |43   |USB      |
 
-SD1 is the Broadcom SD card / MMC interface, which is used by default for the built-in SD card slot, and on the Compute Module for the eMMC. SD1 is the Arasan SD card interface which is also capable on SDIO. All Raspberry Pi models with built-in wifi use SD1 to connect to the wifi chip via SDIO.
+SD1 is the Broadcom SD card / MMC interface, which is used by default for the built-in SD card slot, and on the Compute Module for the eMMC. SD1 is the Arasan SD card / MMC interface which is also capable of SDIO. All Raspberry Pi models with built-in wifi use SD1 to connect to the wifi chip via SDIO.
 
 USB in the table is USB device boot mode and USB host boot mode, which are only available on certain models of Raspberry Pi.
 
