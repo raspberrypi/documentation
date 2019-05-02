@@ -2,7 +2,7 @@
 
 The Raspberry Pi can be configured to allow the boot mode to be selected at power on using hardware attached to the GPIO connector: this is GPIO boot mode. This is done by setting bits in the OTP memory of the SoC. Once the bits are set, they permanently allocate 5 GPIOs to allow this selection to be made. Once the OTP bits are set they cannot be unset so you should think carefully about enabling this, since those 5 GPIO lines will then be unavailable for any other use.
 
-To enable GPIO boot mode, add the following line to the [config.txt](configuration/config-txt/README.md) file:
+To enable GPIO boot mode, add the following line to the [config.txt](../../../configurationconfig-txt/README.md) file:
 
 ```
 program_gpio_bootmode=n
@@ -28,4 +28,4 @@ SD1 is the Broadcom SD card / MMC interface, which is used by default for the bu
 
 USB in the table selects USB device boot mode and USB host boot mode, which are only available on certain models of Raspberry Pi.
 
-The default pull resistance on the GPIO lines is 50K ohm, as documented on page 102 of the [BCM2835 ARM peripherals datasheet](hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf). A pull resistance of 5K ohm is recommended to pull a GPIO line up: this will allow the GPIO to function but not consume too much power.
+The default pull resistance on the GPIO lines is 50K ohm, as documented on page 102 of the [BCM2835 ARM peripherals datasheet](../../hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf). A pull resistance of 5K ohm is recommended to pull a GPIO line up: this will allow the GPIO to function but not consume too much power.
