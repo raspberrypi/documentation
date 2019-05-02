@@ -24,7 +24,7 @@ Once enabled, the GPIOs are allocated to boot modes as follows:
 
 The various boot modes are attempted in the numerical order of the GPIO pins, i.e. SD0, then SD1, then NAND and so on.
 
-SD1 is the Broadcom SD card / MMC interface, which is used by default for the built-in SD card slot, and on the Compute Module for the eMMC. SD1 is the Arasan SD card / MMC interface which is also capable of SDIO. All Raspberry Pi models with built-in wifi use SD1 to connect to the wifi chip via SDIO.
+SD1 is the Broadcom SD card / MMC interface, which is used by default for the built-in SD card slot, and on the Compute Module for the eMMC. SD1 is the Arasan SD card / MMC interface which is also capable of SDIO. All Raspberry Pi models with built-in wifi use SD1 to connect to the wifi chip via SDIO, although it can be reassigned to other uses.
 
 USB in the table is USB device boot mode and USB host boot mode, which are only available on certain models of Raspberry Pi.
 
