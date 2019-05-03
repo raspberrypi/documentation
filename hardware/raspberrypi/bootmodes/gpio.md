@@ -15,11 +15,11 @@ Once GPIO boot mode is enabled, the Raspberry Pi will no longer boot. You must p
 Once enabled, the GPIOs are allocated to boot modes as follows:
 
 |Bank 1|Bank 2|boot type|
-|:----:|:---:|:---- ---:|
+|:----:|:---:|:--------:|
 |22    |39   |SD0       |
 |23    |40   |SD1       |
-|24    |41   |NAND      |
-|25    |42   |SPI       |
+|24    |41   |NAND (no Linux support at present)    |
+|25    |42   |SPI (no Linux support at present)    |
 |26    |43   |USB       |
 
 The various boot modes are attempted in the numerical order of the GPIO pins, i.e. SD0, then SD1, then NAND and so on.
