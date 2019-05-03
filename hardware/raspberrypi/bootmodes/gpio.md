@@ -28,6 +28,6 @@ SD0 is the Broadcom SD card / MMC interface. When the boot ROM within the SoC ru
 
 It is possible to reassign both SD0 and SD1 to different uses after the Pi has booted, but the boot ROM will always use the assignments noted above at boot time .
 
-USB in the table selects USB device boot mode and USB host boot mode, which are only available on certain models of Raspberry Pi. In order to use a USB boot mode, it must by enabled in the OTP memory. For more information, see [USB device boot](device.md) and [USB host boot](host.md)
+USB in the table selects USB device boot mode and USB host boot mode, which are only available on certain models of Raspberry Pi. In order to use a USB boot mode, it must by enabled in the OTP memory. For more information, see [USB device boot](device.md) and [USB host boot](host.md).
 
 The default pull resistance on the GPIO lines is 50K ohm, as documented on page 102 of the [BCM2835 ARM peripherals datasheet](../../hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf). A pull resistance of 5K ohm is recommended to pull a GPIO line up: this will allow the GPIO to function but not consume too much power.
