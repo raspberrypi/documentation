@@ -24,7 +24,7 @@ Once enabled, the GPIOs are allocated to boot modes as follows:
 
 The various boot modes are attempted in the numerical order of the GPIO pins, i.e. SD0, then SD1, then NAND and so on.
 
-SD0 is the Broadcom SD card / MMC interface. When the boot ROM within the SoC runs, it always connects SD0 to the built-in SD card slot. On Compute Modules with an eMMC device, SD0 is connected to that; on the Compute Module Lite SD0 is available on the edge connector and connects to the SD card slot in the CMIO carrier board. SD1 is the Arasan SD card / MMC interface which is also capable of SDIO. All Raspberry Pi models with built-in wifi use SD1 to connect to the wifi chip via SDIO.
+SD0 is the Broadcom SD card / MMC interface. When the boot ROM within the SoC runs, it always connects SD0 to the built-in microSD card slot. On Compute Modules with an eMMC device, SD0 is connected to that; on the Compute Module Lite SD0 is available on the edge connector and connects to the microSD card slot in the CMIO carrier board. SD1 is the Arasan SD card / MMC interface which is also capable of SDIO. All Raspberry Pi models with built-in wifi use SD1 to connect to the wifi chip via SDIO.
 
 It is possible to reassign both SD0 and SD1 to different uses after the Pi has booted, but the boot ROM will always use the assignments noted above at boot time.
 
