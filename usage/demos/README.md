@@ -1,3 +1,5 @@
+# THIS PAGE IS NOW DEPRECATED
+
 # Demo Programs
 
 Here are some example programs to demonstrate the Pi's capabilities.
