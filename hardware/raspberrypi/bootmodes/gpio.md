@@ -1,6 +1,6 @@
 # GPIO boot mode
 
-**GPIO boot mode is only available on the Raspberry Pi 3B and 3B+.**
+**GPIO boot mode is only available on the Raspberry Pi 3A+, 3B, 3B+, Computer Module 3 and 3+**
 
 The Raspberry Pi can be configured to allow the boot mode to be selected at power on using hardware attached to the GPIO connector: this is GPIO boot mode. This is done by setting bits in the OTP memory of the SoC. Once the bits are set, they permanently allocate 5 GPIOs to allow this selection to be made. Once the OTP bits are set they cannot be unset so you should think carefully about enabling this, since those 5 GPIO lines will always control booting. Although you can use the GPIOs for some other function once the Pi has booted, you must set them up so that they enable the desired boot modes when the Pi boots.
 
