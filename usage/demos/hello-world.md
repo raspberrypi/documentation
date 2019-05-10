@@ -1,3 +1,5 @@
+# THIS PAGE IS NOW DEPRECATED
+
 # Hello World Demo
 
 First, let's do a quick test that will ensure the previous compilation step worked correctly. This rather boring program will only display the text `Hello world!` but if it works correctly then we know all the other demos should work too, and we can make more interesting programs run.
