@@ -22,7 +22,7 @@ See Vim below.
 
 ### Geany
 
-A fast and lightweight IDE, supporting many different file types, include C/C++ and Python. Installed by default on Raspbian.
+A fast and lightweight IDE, supporting many different file types, including C/C++ and Python. Installed by default on Raspbian.
 
 ## Command-line editors
 
