@@ -1,3 +1,5 @@
+# THIS PAGE IS NOW DEPRECATED
+
 # Hello Triangle
 
 This displays a spinning cube with different images on each side. This is intended to demonstrate OpenGL ES rendering. OpenGL is an open-source programming library for working with 3D graphics.
