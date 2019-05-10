@@ -7,6 +7,7 @@ The following devices can boot using USB device boot mode:
 * Pi Zero
 * Pi Zero W
 * Pi A
+* Pi A+
 * Pi 3A+
 
 When this boot mode is activated (usually after a failure to boot from the SD card), the Raspberry Pi puts its USB port into device mode and awaits a USB reset from the host. Example code showing how the host needs to talk to the Pi can be found [here](https://github.com/raspberrypi/usbboot).
