@@ -676,7 +676,7 @@ Sets the H264 intra-refresh type. Possible options are `cyclic`, `adaptive`, `bo
 Forces the stream to include PPS and SPS headers on every I-frame. Needed for certain streaming cases e.g. Apple HLS. These headers are small, so don't greatly increase the file size.
 
 ```
-	--spstiming,	-stm
+	--spstimings,	-stm
 ```
 
 Insert timing information into the SPS block.
