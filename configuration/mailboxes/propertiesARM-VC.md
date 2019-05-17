@@ -1424,3 +1424,16 @@ bit0: clean=display coords, set=framebuffer coords
 
 if Set Cursor Info hasn't been called a default cursor will be used (64x64 with hotspot at 0,0).
 
+### VCHI
+
+#### VCHIQ Init
+
+ * Tag: 0x00048008
+ * Request:
+   * Length: 4
+   * Value:
+     * u32: Channel base address
+* Response:
+   * Length: 4
+   * Value:
+     * u32: status
