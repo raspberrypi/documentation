@@ -1,8 +1,10 @@
 ## HDMI configuration
 
-In the vast majority of cases, simply plugging your HDMI-equipped monitor into the Raspberry Pi using a standard HDMI cable will automatically lead to the Pi using best resolution the monitor supports.
+For the Pi3 and earlier, in the vast majority of cases, simply plugging your HDMI-equipped monitor into the Raspberry Pi using a standard HDMI cable will automatically lead to the Pi using best resolution the monitor supports.
 
-However, there are some circumstances in which the Raspberry Pi may not be able to determine the best mode, or you specifically wish may to set a non-default resolution. This page describes what you need to do to achieve this.
+For the Pi4, which has two micro HDMI ports, you have to ability to attach two 1080p displays, or one 4k display (to either HDMI port). You will need a micro to full size HDMI lead, or a micro to HDMI adapter. If your display supports 4K resolutions you will need to enable 4K output by setting the `hdmi_enable_4k=1` flag in config.txt or using the Raspberry Pi Configuration tool. The Pi4 should automatically detect the best resolution to display.
+
+However, there are some circumstances in which the Raspberry Pi may not be able to determine the best mode, or you specifically wish may to set a non-default resolution. This rest of this page describes what you need to do to achieve this.
 
 Note that all the commands on this page are documented fully in the config.txt [Video](config-txt/video.md) documentation.
 
@@ -18,9 +20,20 @@ You can use the `tvservice` application on the command line to determine which m
 + `tvservice -m CVT` lists all supported CVT modes  
 + `tvservice -m DMT` lists all supported DMT modes  
 
+If you are using a Pi4 with more than one display attached, then `tvservice` needs to be told which device to ask for information. You can get display ID's for all attached devices by using: 
+
+`tvservice -l`
+
+You can specify which display `tvservice` uses by adding `-v <display id>` to the `tvservice` command. e.g.
+
++ `tvservice -v 7 -m CVT` lists all supported CVT modes for display ID 7.
+
 ### Setting a specific HDMI mode
 
 Setting a specific mode is done using the `hdmi_group` and `hdmi_mode` config.txt entries. The group entry selects between CEA or DMT, and the mode selects the resolution and frame rate. You can find tables of modes on the config.txt [Video Configuration](config-txt/video.md) page, but you should use the `tvservice` command described above to find out exactly which modes your device supports.
+
+Fot the Pi4, to specifiy the HDMI port, you can add an index indentifier to the `hdmi_group` or `hdmi_mode` entry in config.txt. e.g. `hdmi_mode:0` or `hdmi_group:1`.
+
 
 ### Setting a custom HDMI mode.
 
@@ -66,7 +79,11 @@ In certain rare cases it may be necessary to define the exact clock requirements
 |`21:9` | 7  |
 |`64:27`| 8  |
 
+Fot the Pi4, to specifiy the HDMI port, you can add an index indentifier to the config.txt. e.g. `hdmi_cvt:0=...` or `hdmi_timings:1=...`.
+
 ### HDMI not working properly?
 
 In some rare cases you may need to increase the HDMI drive strength, for exampl when there is speckling on the display, or when you are using very long cables. There is a config.txt item to do this, `config_hdmi_boost`, which is documented on the config.txt [Video](config-txt/video.md) page.
+
+The Pi4 does not support 'config_hdmi_boost'.
 
