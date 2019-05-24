@@ -112,6 +112,6 @@ New-style revision codes in use:
 | a52082 | 3B                | 1.2      | 1 GB   | Stadium      |
 | a22083 | 3B                | 1.3      | 1 GB   | Embest       |
 | a02100 | CM3+              | 1.0      | 1 GB   | Sony UK      |
-| a02111 | 4B                | 1.1      | 1 GB   | Sony UK      |
+| a03111 | 4B                | 1.1      | 1 GB   | Sony UK      |
 | b03111 | 4B                | 1.1      | 2 GB   | Sony UK      |
 | c03111 | 4B                | 1.1      | 4 GB   | Sony UK      |
