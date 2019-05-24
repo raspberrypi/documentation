@@ -1,6 +1,6 @@
 # Product compliance
 
-All Raspberry Pi product has undergone extensive compliance testing, and copies of the relevent certificates and conformity documents are available to download from the table below. 											
+All Raspberry Pi products have undergone extensive compliance testing, and copies of the relevent certificates and conformity documents are available to download from the table below. 											
 											
 
 | Model           | Declaration of Conformity | Local and regional approval certificates |
