@@ -56,6 +56,8 @@ uuuuuuuuFMMMCCCCPPPPTTTTTTTTRRRR
 | MMM      | Memory size  | 0: 256 MB                  |
 |          |              | 1: 512 MB                  |
 |          |              | 2: 1 GB                    |
+|          |              | 3: 2 GB                    |
+|          |              | 4: 4 GB                    |
 | CCCC     | Manufacturer | 0: Sony UK                 |
 |          |              | 1: Egoman                  |
 |          |              | 2: Embest                  |
@@ -65,6 +67,7 @@ uuuuuuuuFMMMCCCCPPPPTTTTTTTTRRRR
 | PPPP     | Processor    | 0: BCM2835                 |
 |          |              | 1: BCM2836                 |
 |          |              | 2: BCM2837                 |
+|          |              | 3: BCM2711                 |
 | TTTTTTTT | Type         | 0: A                       |
 |          |              | 1: B                       |
 |          |              | 2: A+                      |
@@ -80,6 +83,7 @@ uuuuuuuuFMMMCCCCPPPPTTTTTTTTRRRR
 |          |              | e: 3A+                     |
 |          |              | f: Internal use only       |
 |          |              | 10: CM3+                   |
+|          |              | 11: 4B                     |
 | RRRR     | Revision     | 0, 1, 2, etc.              |
 
 New-style revision codes in use:
@@ -108,3 +112,6 @@ New-style revision codes in use:
 | a52082 | 3B                | 1.2      | 1 GB   | Stadium      |
 | a22083 | 3B                | 1.3      | 1 GB   | Embest       |
 | a02100 | CM3+              | 1.0      | 1 GB   | Sony UK      |
+| a02111 | 4B                | 1.1      | 1 GB   | Sony UK      |
+| b03111 | 4B                | 1.1      | 2 GB   | Sony UK      |
+| c03111 | 4B                | 1.1      | 4 GB   | Sony UK      |
