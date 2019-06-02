@@ -219,11 +219,12 @@ sudo systemctl restart dnsmasq
 
 This should now allow your Raspberry Pi client to attempt to boot through until it tries to load a root file system (which it doesn't have).
 
-At this point, export the `/nfs/client1` file system created earlier.
+At this point, export the `/nfs/client1` file system created earlier, and the TFTP boot folder.
 
 ```bash
 sudo apt-get install nfs-kernel-server
 echo "/nfs/client1 *(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
+echo "/tftpboot *(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
 ```
 
 Restart RPC-Bind and the NFS server in order to have them detect the new files.
@@ -243,6 +244,9 @@ root=/dev/nfs nfsroot=10.42.0.211:/nfs/client1,vers=3 rw ip=dhcp rootwait elevat
 
 You should substitute the IP address here with the IP address you have noted down. Also remove any part of the command line starting with init=.
 
-Finally, edit `/nfs/client1/etc/fstab` and remove the `/dev/mmcblkp1` and `p2` lines (only `proc` should be left).
+Finally, edit `/nfs/client1/etc/fstab` and remove the `/dev/mmcblkp1` and `p2` lines (only `proc` should be left). Then, add the boot partition back in:
+```
+echo "10.42.0.211:/tftpboot /boot nfs defaults,vers=3 0 0" | sudo tee -a /etc/fstab
+```
 
 Good luck! If it doesn't boot on the first attempt, keep trying. It can take a minute or so for the Raspberry Pi to boot, so be patient.
