@@ -1,4 +1,4 @@
-# Boot flow
+# Boot flow for models prior to the Raspberry Pi 4
 
 The flow of boot begins with reading the OTP to decide on the valid boot modes enabled. By default, this is SD card boot followed by USB device boot. Subsequently, the boot ROM checks to see if the GPIO boot mode OTP bits have been programmed — one to enable GPIO boot mode and one to select the bank of GPIOs it uses to disable boot modes (low = GPIOs 22-26, high = GPIOs 39-43). This makes it possible to use a hardware switch to choose between different boot modes if there is more than one available.
 
