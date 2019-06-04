@@ -104,9 +104,9 @@ You can also filter depending on the state of a GPIO. For example
     [all]
     # settings here are applied to all hardware
 
-## The `[HDMI:*]` filter. Pi4.
+## The `[HDMI:*]` filter. Pi4 only.
 
-On the Pi4 there are two HDMI ports, and for many `config.txt` commands related to HDMI it is necessary to specify which HDMI port is being referred to. The HDMI conditional filters subsequent HDMI configurations to the specific port.
+On the Raspberry Pi 4 there are two HDMI ports, and for many `config.txt` commands related to HDMI it is necessary to specify which HDMI port is being referred to. The HDMI conditional filters subsequent HDMI configurations to the specific port.
 
     [HDMI:1]
       hdmi_group=2
@@ -115,7 +115,7 @@ On the Pi4 there are two HDMI ports, and for many `config.txt` commands related 
       hdmi_group=2
       hdmi_mode=45
 
-There is an alternative variable:index syntax, available on all port specific HDMI commands. You could use the following which is the same as the previous example:
+There is an alternative `variable:index` syntax, available on all port specific HDMI commands. You could use the following which is the same as the previous example:
 
     hdmi_group:1=2
     hdmi_mode:1=67
