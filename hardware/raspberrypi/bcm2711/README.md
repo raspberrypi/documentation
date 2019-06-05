@@ -15,7 +15,7 @@ The BCM2711 chip continues to use the heat spreading model started with the BCM2
 
 **Multimedia:** H.265 (4Kp60 decode); H.264 (1080p60 decode, 1080p30 encode); OpenGL ES, 3.0 graphics
 
-**I/O** PCIe bus, on board ethernet, 2xDSI ports (only one exposed on Raspberry Pi 4B), 2xCSI ports (only one exposed on Raspberry Pi 4B), up to 4xI2C, up to 4xUART (muxed with I2C).
+**I/O:** PCIe bus, on board ethernet, 2xDSI ports (only one exposed on Raspberry Pi 4B), 2xCSI ports (only one exposed on Raspberry Pi 4B), up to 4xI2C, up to 4xUART (muxed with I2C).
 
 Also see the following documents for information about the previous Raspberry Pi chips:
 
