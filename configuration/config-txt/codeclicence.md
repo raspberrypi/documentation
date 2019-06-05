@@ -2,7 +2,7 @@
 
 Hardware decoding of additional codecs on the Pi3 and earlier can be enabled by [purchasing a licence](http://swag.raspberrypi.org/collections/software) that is locked to the CPU serial number of your Raspberry Pi.
 
-On the Pi4 the HW codecs for MPEG2 or VC1 are permanently disabled, and cannot be enabled even with a licence key. Because of the extra processing capabilities of the Pi4, MPEG2 and VC1 can be decoded in software via applications such as VLC and therefor do not need a HW licence key. 
+On the Pi4 the hardware codecs for MPEG2 or VC1 are permanently disabled, and cannot be enabled even with a licence key. Because of the extra processing power of the Raspberry Pi 4, MPEG2 and VC1 can be decoded in software via applications such as VLC and therefore do not need a HW licence key. 
 
 ## decode_MPG2
 
