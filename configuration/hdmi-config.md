@@ -4,7 +4,9 @@ For the Pi3 and earlier, in the vast majority of cases, simply plugging your HDM
 
 For the Pi4, which has two micro HDMI ports, you have to ability to attach two 1080p displays, or one 4k display (to HDMI port 0), or one 4k display (HDMI port 0) and one 1080p display (HDMI port 1). You will need a micro to full size HDMI lead, or a micro to HDMI adapter. If your display supports 4K resolutions you will need to enable 4K output by setting the `hdmi_enable_4k=1` flag in config.txt or using the Raspberry Pi Configuration tool. The Pi4 should automatically detect the best resolution to display.
 
-However, there are some circumstances in which the Raspberry Pi may not be able to determine the best mode, or you may specifically wish  to set a non-default resolution. This rest of this page describes what you need to do to achieve this.
+If you are running the 3D graphics driver (also known as the FKMS driver) then there is a graphical application to set up standard displays, including multi-display setups. This can be found on the Preferences menu and instructions on how to use it can be found [here](arandr.md).
+
+If you are using legacy graphics drivers, or find yourself in circumstances where the Raspberry Pi may not be able to determine the best mode, or you may specifically wish to set a non-default resolution, the rest of this page may be useful.
 
 Note that all the commands on this page are documented fully in the config.txt [Video](config-txt/video.md) documentation.
 
