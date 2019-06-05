@@ -20,9 +20,20 @@ There is a video sample of the animated film *Big Buck Bunny* available on the P
 omxplayer /opt/vc/src/hello_pi/hello_video/test.h264
 ```
 
-For Pi4, use
+For Pi4, you can use the following for H264 files,
 
+```bash
+omxplayer --no-osd /opt/vc/src/hello_pi/hello_video/test.h264
+```
+or for H264, VC1, or MPEG2
 ```bash
 vlc /opt/vc/src/hello_pi/hello_video/test.h264
 ```
+
+When using VLC, you can improve playback performance by encapsulating raw H264 stream from, for example, the Raspberry Pi camera. This is easily done with `ffmpeg`.
+
+This example converts `video.h64` to a containerised `video.mp4`, at 30 fps.
+
+`ffmpeg -r 30 -i video.h265 -c:v copy video.mp4`
+
 
