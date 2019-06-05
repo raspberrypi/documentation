@@ -39,7 +39,7 @@ On previous Pi models, the composite behaviour remains the same.
 
 ## HDMI mode options
 
-**Note for Raspberry Pi4B users.** Because the Raspberry Pi4B has two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax <command>:<port> where port is 0 or 1, to specify which port the setting is to apply to. If no port is specified it defaults to 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found on the [Conditionals page](./conditionals.md) in the HDMI section. 
+**Note for Raspberry Pi4B users.** Because the Raspberry Pi4B has two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>` where port is 0 or 1, to specify which port the setting is to apply to. If no port is specified it defaults to 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found on the [Conditionals page](./conditionals.md) in the HDMI section. 
 
 ### hdmi_safe
 
