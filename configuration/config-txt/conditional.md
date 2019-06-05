@@ -108,19 +108,19 @@ You can also filter depending on the state of a GPIO. For example
 
 On the Raspberry Pi 4 there are two HDMI ports, and for many `config.txt` commands related to HDMI it is necessary to specify which HDMI port is being referred to. The HDMI conditional filters subsequent HDMI configurations to the specific port.
 
-    [HDMI:1]
-      hdmi_group=2
-      hdmi_mode=67
     [HDMI:0]
       hdmi_group=2
       hdmi_mode=45
-
+    [HDMI:1]
+      hdmi_group=2
+      hdmi_mode=67
+    
 There is an alternative `variable:index` syntax, available on all port specific HDMI commands. You could use the following which is the same as the previous example:
 
+    hdmi_group:0=2
+    hdmi_mode:0=45
     hdmi_group:1=2
     hdmi_mode:1=67
-    hdmi_group:0=2
-    hdmi_group:0=45
 
 ## Combining conditional filters
 
