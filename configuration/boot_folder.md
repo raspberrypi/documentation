@@ -10,7 +10,7 @@ Once Linux has booted, the boot partition is mounted as `/boot`.
 
 ### bootcode.bin
 
-The bootloader. Loaded by the SoC on boot, does some very basic setup, and subsequently loads one of the `start*.elf` files.
+The bootloader. Loaded by the SoC on boot, does some very basic setup, and subsequently loads one of the `start*.elf` files. `bootcode.bin` is not used on the Raspberry Pi 4, as its has been replaced by boot code in the [onboard EEPROM](../hardware/raspberrypi/booteeprom.md).
 
 ### start.elf, start_x.elf, start_db.elf, start_cd.elf, start4.elf, start4x.elf
 
