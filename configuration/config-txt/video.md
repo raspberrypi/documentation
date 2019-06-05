@@ -39,6 +39,8 @@ On previous Pi models, the composite behaviour remains the same.
 
 ## HDMI mode options
 
+**Note for Raspberry Pi4B users.** Because the Raspberry Pi4B has two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax <command>:<port> where port is 0 or 1, to specify which port the setting is to apply to. If no port is specified it defaults to 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found on the [Conditionals page](./conditionals.md) in the HDMI section. 
+
 ### hdmi_safe
 
 Setting `hdmi_safe` to `1` will lead to "safe mode" settings being used to try to boot with maximum HDMI compatibility. This is the same as setting the following parameters:
@@ -63,6 +65,18 @@ Setting `hdmi_ignore_edid` to `0xa5000080` enables the ignoring of EDID/display 
 ### hdmi_edid_file
 
 Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. More information is available [here](https://www.raspberrypi.org/forums/viewtopic.php?p=173430#p173430).
+
+### hdmi_edid_filename
+
+On the Raspberry Pi4B, you can use the `hdmi_edid_filename` command to specify the filename of the EDID file to use, and also specify which port the file is to be applied to. This also requries `hdmi_edid_file=1` to enable EDID files.
+
+For example:
+
+```
+hdmi_edid_file=1
+hdmi_edid_filename:0=FileForPortZero.edid
+hdmi_edid_filename:1=FileForPortOne.edid
+```
 
 ### hdmi_force_edid_audio
 
