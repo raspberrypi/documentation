@@ -399,7 +399,7 @@ The specific current requirements of each model are dependent on the use case: t
 
 Here is a table comparing the amount of power drawn in A (amps) under different situations:
 
-| | | Pi1 (B+) | Pi2 B | Pi3 B (amps)| Zero (amps)| Pi4B |
+| | | Pi1 (B+) | Pi2 B | Pi3 B | Zero | Pi4B |
 |-|-|----------|-------|-------------|------------|------|
 | Boot | Max |0.26 | 0.40| 0.75| 0.20 | 0.85 |
 | | Avg | 0.22 | 0.22 | 0.35 | 0.15 | 0.7 |
@@ -408,6 +408,7 @@ Here is a table comparing the amount of power drawn in A (amps) under different 
 | | Avg | 0.22 | 0.28 | 0.33 | 0.16 | 0.78 |
 | Stress | Max | 0.35 | 0.82 | 1.34 | 0.35 | 1.25 |
 | | Avg | 0.32 | 0.75 | 0.85 | 0.23 | 1.2 |
+| Halt current | | | | 0.10 | 0.055 | 0.023 | 
 
 Test conditions used a standard Raspbian image (current as of 26 Feb 2016, or June 2019 for the Pi4), at room temperature, connected to a HDMI monitor, USB keyboard and mouse. The Pi 3 Model B was connected to a WiFi access point, the Pi4 was connected to ethernet. All these power measurements are approximate and do not take into account power consumption from additional USB devices; they can easily be exceeded with multiple additional USB devices connected or when using a HAT.
 
