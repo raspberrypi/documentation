@@ -15,9 +15,13 @@ These provide a shortcut to some alternative `start_file` and `fixup_file` setti
    `start_file=start_x.elf`
    `fixup_file=fixup_x.dat`
    
+ On the Pi4, if `start4x.elf` and `fixup4x.dat` are present, they will be used instead.
+   
 `start_debug=1` implies
    `start_file=start_db.elf`
    `fixup_file=fixup_db.dat`
+
+There is no specific handling for the Pi4, so if you wish to use the Pi4 debug firmware files you will need to manually specify `start_file` and `fixup_file`.
 
 `start_x=1` should be specified when using the camera module. Enabling the camera via `raspi-config` will set this automatically.
 
