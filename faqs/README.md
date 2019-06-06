@@ -409,7 +409,7 @@ Here is a table comparing the amount of power drawn in A (amps) under different 
 | Stress | Max | 0.35 | 0.82 | 1.34 | 0.35 | 1.25 |
 | | Avg | 0.32 | 0.75 | 0.85 | 0.23 | 1.2 |
 
-Test conditions used a standard Raspbian image (current as of 26 Feb 2016), at room temperature, connected to a HDMI monitor, USB keyboard and mouse. The Pi 3 Model B was connected to a WiFi access point. All these power measurements do not take into account power consumption from additional USB devices; they can easily be exceeded with multiple additional USB devices connected or when using a HAT.
+Test conditions used a standard Raspbian image (current as of 26 Feb 2016, or June 2019 for the Pi4), at room temperature, connected to a HDMI monitor, USB keyboard and mouse. The Pi 3 Model B was connected to a WiFi access point, the Pi4 was connected to ethernet. All these power measurements are approximate and do not take into account power consumption from additional USB devices; they can easily be exceeded with multiple additional USB devices connected or when using a HAT.
 
 ### Can I power the Raspberry Pi from a USB hub?
 
