@@ -71,5 +71,5 @@
 - **VC4, VC6** – The VideoCore4 or Videocore6 GPU used on the Raspberry Pi; contains a large number of hardware blocks that handle graphics, cameras, display, CODECs, etc.
 - **VNC** – A graphical desktop sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer; see our [official documentation](https://www.raspberrypi.org/documentation/remote-access/vnc/README.md).
 - **Volt (V)** – SI-derived unit for [electrical potential difference](https://en.wikipedia.org/wiki/Volt).
-- **`vcgencmd`** – A Raspberry Pi–specific tool for communicating with the VideoCore4 GPU.
+- **`vcgencmd`** – A Raspberry Pi–specific tool for communicating with the VideoCore GPU.
 - **Watt** - A measure of [power](https://en.wikipedia.org/wiki/Watt) often used when specifying power supplies. 
