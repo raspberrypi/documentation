@@ -2,27 +2,35 @@
 
 ## Page Contents
 
-- [Overview](#overview)  
-   - [Supported Devices](#support)
-   - [General Limitations](#genlimits)
-   - [Port Power Limits](#powerlimits)
-- [Known Issues](#knownissues)
+- [Overview for devices prior to the Pi 4](#overview)  
+- [Overview for the Pi 4](#overview_pi4)   
+- [Supported Devices](#support)
+- [General Limitations (Not Pi4)](#genlimits)
+- [Port Power Limits](#powerlimits)
+- [Known Issues (not Pi4)](#knownissues)
 - [Troubleshooting](#troubleshooting)
 
 <a name="overview"></a>
-## Overview
+## Overview for devices prior to Pi4
 
-The Raspberry Pi Model B is equipped with two USB2.0 ports. These are connected to the LAN9512 combo hub/Ethernet chip IC3, which is itself a USB device connected to the single upstream USB port on BCM2835.
+The number and type of USB ports on Raspberry Pi depends on the model. The Raspberry Pi Model B is equipped with two USB2.0 ports, the B+, 2B, 3B and 3B+ have 4. The Pi 4 has two USB2.0 ports and 2 USB3.0 ports. In all models prior to the Pi 4 the USB ports connected to a combo hub/Ethernet chip, which is itself a USB device connected to the single upstream USB port on BCM2835. On the Pi 4 the USB hub chip is connected to the SoC using a PCIe bus.
 
-On the Model A, the single USB2.0 port is directly wired to BCM2835.
+On the Model A and Zero range, the single USB2.0 port is directly wired to SoC.
 
 The USB ports enable the attachment of peripherals such as keyboards, mice, webcams that provide the Pi with additional functionality.
 
-There are some differences between the USB hardware on the Raspberry Pi and the USB hardware on desktop computers or laptop/tablet devices.
+There are some differences between the USB hardware on the Raspberry Pi and the USB hardware on desktop computers or laptop/tablet devices. 
 
 The USB host port inside the Pi is an On-The-Go (OTG) host as the application processor powering the Pi, BCM2835, was originally intended to be used in the mobile market: i.e. as the single USB port on a phone for connection to a PC, or to a single device. In essence, the OTG hardware is simpler than the equivalent hardware on a PC.
 
 OTG in general supports communication to all types of USB device, but to provide an adequate level of functionality for most of the USB devices that one might plug into a Pi, the system software has to do more work.
+
+<a name="overview_pi4"></a>
+### Overview for the Pi 4
+
+For the Pi4, the USB has completely changed. There is a new USB hub (VL805) that supports 2 USB2.0 ports and 2 USB3.0 ports. This is connected to the BCM2711 SOC using a PCIe bus, which is extremely fast. This means that the speed constraints seen on previous models are no longer present, which means very fast datarates, especially when using the USB 3.0 ports.
+
+It also means that many of the known issues from previous models are also no longer present.
 
 <a name="support"></a>
 ### Supported devices
@@ -34,7 +42,7 @@ If you have a device and wish to use it with a Pi, then plug it in. Chances are 
 If the device doesn't appear to work, then refer to the Troubleshooting section below.
 
 <a name="genlimits"></a>
-### General limitations
+### General limitations (Not PI4)
 
 The OTG hardware on Raspberry Pi has a simpler level of support for certain devices, which may present a higher software processing overhead. The Raspberry Pi also has only one root USB port: all traffic from all connected devices is funnelled down this bus, which operates at a maximum speed of 480mbps.
 
@@ -56,7 +64,7 @@ In addition, hotplugging high-power devices into the Pi's USB ports may cause a 
 See [Power](../power/README.md) for more information.
 
 <a name="knownissues"></a>
-## Devices with known issues  
+## Devices with known issues (Not Pi4)
 
 **1. Interoperability between the Raspberry Pi and USB3.0 hubs**  
    There is an issue with USB3.0 hubs in conjunction with the use of Full- or Low-speed devices (most mice, most keyboards) and the Raspberry Pi. A bug in most USB3.0 hub hardware means that the Raspberry Pi cannot talk to Full- or Low-speed devices connected to a USB3.0 hub.
