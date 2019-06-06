@@ -245,7 +245,7 @@ The Raspberry Pi 4, with its faster cores, extra memory and much improved I/O is
 
 ### Can I add extra RAM?
 
-No. The RAM on the model A, A+, B, B+, and Zero is a Package on Package (POP) on top of the SoC, so it is not removable or swappable. The RAM on the Pi 2 and 3 Model B versions is on a separate chip on the bottom of the PCB, but 1GB is the maximum RAM that the SoC used by the Pi 2 and 3 Model B versions can support. The Raspberry Pi 4 supports up to 4GB of RAM, but like previous models, it it not upgradeable.
+No. The RAM on the model A, A+, B, B+, and Zero is a Package on Package (POP) on top of the SoC, so it is not removable or swappable. The RAM on the Pi 2 and 3 Model B versions is on a separate chip on the bottom of the PCB, but 1GB is the maximum RAM that the SoC used by the Pi 2 and 3 Model B versions can support. The Raspberry Pi 4 supports up to 4GB of RAM, but like previous models, it is not upgradeable after purchase.
 
 ### Can I connect multiple Pis together to make a faster computer?
 
@@ -355,7 +355,7 @@ The Raspberry Pi Foundation provides a 7" capacitive [touchscreen](https://www.r
 
 The Raspberry Pi can encode (record) and decode (play) H.264 (MP4/MKV) out of the box. There are also two additional codecs you can [purchase through our Swag Store](http://swag.raspberrypi.org/collections/software) that enable you to decode [MPEG-2](http://swag.raspberrypi.org/collections/software/products/mpeg-2-license-key), a very popular and widely used format to encode DVDs, video camera recordings, TV and many others, and [VC-1](http://swag.raspberrypi.org/collections/software/products/vc-1-license-key), a Microsoft format found in Blu-ray discs, Windows Media, Slingbox, and HD-DVDs.
 
-The extra HW CODEC support for MPEG-2 and VC01 are not available on the Raspberry Pi 4. The processors on the Pi 4 are powerful enough to decode these in software where no CODEC licence is necessary. In addition, the Pi 4 also has hardware support for decoding H265/HEVC.
+The extra HW CODEC support for MPEG-2 and VC-1 are not available on the Raspberry Pi 4. The processors on the Pi 4 are powerful enough to decode these in software where no CODEC licence is necessary. In addition, the Pi 4 also has hardware support for decoding H265/HEVC.
 
 <a name="pi-audio"></a>
 
@@ -391,7 +391,7 @@ The device is powered by 5V micro USB. Exactly how much current (mA) the Raspber
 | Raspberry Pi 3 Model B | 2.5A | 1.2A | 400mA |
 | Raspberry Pi 3 Model A+ | 2.5A | Limited by PSU, board, and connector ratings only. | 350mA |
 | Raspberry Pi 3 Model B+ | 2.5A | 1.2A | 500mA |
-| Raspberry Pi 4 Model B | 3.0A | 1.2A | 500mA |
+| Raspberry Pi 4 Model B | 3.0A | 1.2A | 600mA |
 | Raspberry Pi Zero W/WH | 1.2A | Limited by PSU, board, and connector ratings only.| 150mA |
 | Raspberry Pi Zero | 1.2A | Limited by PSU, board, and connector ratings only | 100mA |
 
@@ -399,15 +399,15 @@ The specific current requirements of each model are dependent on the use case: t
 
 Here is a table comparing the amount of power drawn in A (amps) under different situations:
 
-| | | Pi1 (B+) | Pi2 B | Pi3 B (amps)| Zero (amps)|
-|-|-|----------|-------|-------------|------------|
-| Boot | Max |0.26 | 0.40| 0.75| 0.20 |
-| | Avg | 0.22 | 0.22 | 0.35 | 0.15 |
-| Idle |Avg | 0.20 | 0.22 | 0.30 | 0.10 |
-| Video playback (H.264) | Max | 0.30 | 0.36 |0.55 |0.23 |
-| | Avg | 0.22 | 0.28 | 0.33 | 0.16 |
-| Stress | Max | 0.35 | 0.82 | 1.34 | 0.35 |
-| | Avg | 0.32 | 0.75 | 0.85 | 0.23 |
+| | | Pi1 (B+) | Pi2 B | Pi3 B (amps)| Zero (amps)| Pi4B |
+|-|-|----------|-------|-------------|------------|------|
+| Boot | Max |0.26 | 0.40| 0.75| 0.20 | 0.85 |
+| | Avg | 0.22 | 0.22 | 0.35 | 0.15 | 0.7 |
+| Idle |Avg | 0.20 | 0.22 | 0.30 | 0.10 | 0.6 |
+| Video playback (H.264) | Max | 0.30 | 0.36 |0.55 |0.23 | 0.85 | 
+| | Avg | 0.22 | 0.28 | 0.33 | 0.16 | 0.78 |
+| Stress | Max | 0.35 | 0.82 | 1.34 | 0.35 | 1.25 |
+| | Avg | 0.32 | 0.75 | 0.85 | 0.23 | 1.2 |
 
 Test conditions used a standard Raspbian image (current as of 26 Feb 2016), at room temperature, connected to a HDMI monitor, USB keyboard and mouse. The Pi 3 Model B was connected to a WiFi access point. All these power measurements do not take into account power consumption from additional USB devices; they can easily be exceeded with multiple additional USB devices connected or when using a HAT.
 
