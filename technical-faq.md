@@ -116,4 +116,4 @@ We recommend going through this process once a week or so.
 
 ### I heard about something called `rpi-update`. When should I use that?
 
-Unless using it is recommended by a Raspberry Pi engineer, you should not use `rpi-update`. It updates to the very, very latest test firmware and kernel software, which may not work correctly under all circumstances. 
+Do not use `rpi-update` unless you have been recommended to do so by a Raspberry Pi engineer. This is because it updates the Linux kernel and Raspberry Pi firmware to the very latest version which is currently under test. It may therefore make your Pi unstable, or cause random breakage.
