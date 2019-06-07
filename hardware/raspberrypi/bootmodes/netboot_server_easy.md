@@ -8,8 +8,6 @@ sudo raspi-config
 # Reboot
 
 sudo apt-get update; sudo apt-get -y upgrade
-sudo apt-get install -y rpi-update
-sudo BRANCH=next rpi-update
 sudo reboot
 
 wget https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/raspberrypi/bootmodes/pxetools/prepare_pxetools
