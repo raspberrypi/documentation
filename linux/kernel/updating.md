@@ -23,7 +23,8 @@ Custom [configurations](configuring.md) can usually be copied over between minor
 The Raspberry Pi Foundation kernel is supplied by the `raspberrypi-kernel` package, and the bootloader and firmware are supplied by the `raspberrypi-bootloader` package. To revert to the current stock Raspbian kernel after trying `rpi-update` or a custom kernel, you need to reinstall both these packages as follows:
 
 ```
-sudo apt-get install --reinstall raspberrypi-bootloader raspberrypi-kernel
+sudo apt update
+sudo apt install --reinstall raspberrypi-bootloader raspberrypi-kernel
 ```
 
 Note that this will install the latest version of the kernel, bootloader and firmware which is available from the package repository, which may not be the same version which you were running before you ran `rpi-update`.
