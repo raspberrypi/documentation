@@ -42,13 +42,7 @@ If things are still not working, try the following:
 
 - `Error : ENOSPC`. The Camera Module is probably running out of GPU memory. Check `config.txt` in the /boot/ folder. The `gpu_mem` option should be at least 128. Alternatively, use the Memory Split option in the Advanced section of `raspi-config` to set this.
 
-- If you've checked all the above issues and the Camera Module is still not working, you may need to upgrade the firmware on the Raspberry Pi. Use the following command to get the very latest (but experimental) firmware:
-
-    ```bash
-    sudo rpi-update
-    ```
-
-- If even a firmware update doesn't fix the problem, your Camera Module may be defective, and may need to be replaced.
+- If you've checked all the above issues and the Camera Module is still not working, try posting on our forums for more help.
 
 ## Common command line options
 
