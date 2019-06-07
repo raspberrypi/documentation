@@ -4,9 +4,15 @@ If you use the standard Raspbian update/upgrade process (found [here](../../rasp
 
 ### Manual updates using rpi-update
 
-The `rpi-update` utility will download the latest (unstable, testing) kernel version and copy all required files onto your system. Note that the latest kernel from `rpi-update` is not guaranteed to work correctly! Make sure that it doesn't conflict with your distribution packages. It doesn't provide a way of automatically uninstalling the files.
+**Do not use `rpi-update` unless you have been recommended to do so by a Raspberry Pi engineer. This is because it updates the Linux kernel and Raspberry Pi firmware to the very latest version which is currently under test. It may therefore make your Pi unstable, or cause random breakage.**
 
-After upgrading the kernel, you'll have to reboot your Pi to switch to the updated version.
+To use rpi-update, execute it using sudo as follows:
+
+```sudo rpi-update
+
+The `rpi-update` utility will download and install the latest Linux kernel and Raspberry Pi firmware onto your Pi. Note that `rpi-update` does not provide a way to revert the changes which it makes to your system.
+
+After upgrading the kernel, you must reboot your Pi to switch to the updated version.
 
 If you're using a compiled kernel, rpi-update will have overwritten it, and you will need to [rebuild](building.md) and reinstall your kernel.
 
@@ -14,8 +20,10 @@ Custom [configurations](configuring.md) can usually be copied over between minor
 
 ### Reverting back to current stock Raspbian kernel
 
-The Raspberry Pi Foundation kernel is part of the `raspberrypi-kernel` package, and the bootloader files are part of the `raspberrypi-bootloader` package. To revert to the current stock Raspbian kernel after trying `rpi-update` or a custom kernel, you need to reinstall both these packages, by running:
+The Raspberry Pi Foundation kernel is supplied by the `raspberrypi-kernel` package, and the bootloader and firmware are supplied by the `raspberrypi-bootloader` package. To revert to the current stock Raspbian kernel after trying `rpi-update` or a custom kernel, you need to reinstall both these packages as follows:
 
 ```
 sudo apt-get install --reinstall raspberrypi-bootloader raspberrypi-kernel
 ```
+
+Note that this will install the latest version of the kernel, bootloader and firmware which is available from the package repository, which may not be the same version which you were running before you ran `rpi-update`.
