@@ -58,7 +58,7 @@
 - **Raspberry Pi Desktop** – A version of the LXDE desktop environment, specifically tailored to the Raspberry Pi (used to be called PIXEL).
 - **RPF** - Raspberry Pi Foundation, the original, Uk-registered educational charity (1129409) that launched the Raspberry Pi.
 - **RPT/RPF(T)** - Raspberry Pi Trading, a wholely owned commercial subsidiary of the RPF which designs and develops all Raspberry Pi products, including magazines; all profits from the RPT go to the RPF for use in their educational programmes.
-- **rpi-update** - A program you can run on a Raspberry Pi to download the very latest test firmware and Linux kernel; there is no guarantee that the latest version will work correctly, so you should only run rpi-update if recommended by a Raspberry Pi engineer.
+- **rpi-update** - A program you can run on a Raspberry Pi to download the very latest test firmware and Linux kernel. **N.B.** Do not use `rpi-update` unless you have been recommended to do so by a Raspberry Pi engineer. This is because it updates the Linux kernel and Raspberry Pi firmware to the very latest version which is currently under test. It may therefore make your Pi unstable, or cause random breakage.**
 - **SoC** – System on a Chip, an integrated circuit that comprises all components of a computer.
 - **SPI** – Serial Peripheral Interface bus, a synchronous serial communication interface specification used for short distance communication.
 - **SSH** – Secure Shell, a cryptographic network protocol for operating network services securely over an unsecured network; see our [official documentation](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) or [the Wikipedia article on SSH](https://en.wikipedia.org/wiki/Secure_Shell).
