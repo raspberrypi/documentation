@@ -129,6 +129,7 @@ The following prices are exclusive of any local taxes and shipping/handling fees
 | Raspberry Pi Model B+ |$25 |
 | Raspberry Pi 2 Model B| $35 |
 | Raspberry Pi 3 Model B | $35 |
+| Raspberry Pi 3 Model A+ | $25 |
 | Raspberry Pi 3 Model B+ | $35 |
 | Raspberry Pi Zero | $5 |
 | Raspberry Pi Zero W |$10 |
@@ -176,12 +177,15 @@ These are the [models of the Raspberry Pi](https://www.raspberrypi.org/products/
 | Raspberry Pi Model B+ | BCM2835 | 700MHz | 512MB | 4 |100Base-T | No | No |
 | Raspberry Pi 2 Model B | BCM2836/7 | 900MHz | 1GB | 4 |100Base-T| No | No |
 | Raspberry Pi 3 Model B | BCM2837A0/B0 | 1200MHz | 1GB | 4 |100Base-T| 802.11n| 4.1 |
+| Raspberry Pi 3 Model A+ | BCM2837B0 | 1400MHz | 512MB | 1 | No | 802.11ac/n | 4.2 |
 | Raspberry Pi 3 Model B+ | BCM2837B0 | 1400MHz | 1GB | 4 |1000Base-T | 802.11ac/n | 4.2 |
 | Raspberry Pi Zero | BCM2835 | 1000MHz | 512MB | 1 | No | No | No |
 | Raspberry Pi Zero W | BCM2835 | 1000MHz | 512MB | 1 | No | 802.11n | 4.1 |
 | Raspberry Pi Zero WH | BCM2835 | 1000MHz | 512MB | 1 | No | 802.11n | 4.1 |
 
-The Model A+ is the low-cost variant of the Raspberry Pi. It has 512MB RAM (as of August 2016: earlier models have 256MB), one USB port, 40 GPIO pins, and no Ethernet port. The Model B+ is the final revision of the original Raspberry Pi. It has 512MB RAM, four USB ports, 40 GPIO pins, and an Ethernet port.
+The Model A+ is the low-cost variant of the Raspberry Pi. It has 512MB RAM (as of August 2016: earlier models have 256MB), one USB port, 40 GPIO pins, and no Ethernet port.
+
+The Model B+ is the final revision of the original Raspberry Pi. It has 512MB RAM, four USB ports, 40 GPIO pins, and an Ethernet port.
 
 In February 2015, it was superseded by the Pi 2 Model B, the second generation of the Raspberry Pi. The Pi 2 shares many specs with the Pi 1 B+, and originally used a 900MHz quad-core Arm Cortex-A7 CPU and has 1GB RAM. Some recent version of the Pi 2 (v1.2) now use a 900MHz Arm Cortex-A53 CPU.
 
@@ -278,7 +282,7 @@ Unless using it is recommended by a Raspberry Pi engineer, you should not use `r
 
 ### The processors on the latest Pi models are 64-bit, but I cannot find an official 64-bit OS.
 
-Raspberry Pi do not current provide an official 64-bit OS, for a number of reasons. Firstly, since we still sell devices that are 32-bit, we would need to support two separate distributions, and at the moment we do not have the support capacity. Secondly, building a full 64-bit OS would require a considerable amount of work to, for example, fix the interfacing to the 32-bit Videocore GPU. There are third-party 64-bit operating systems available, but they do not have the full support for the GPU that would be a requirement for an official release.
+Raspberry Pi do not currently provide an official 64-bit OS, for a number of reasons. Firstly, since we still sell devices that are 32-bit, we would need to support two separate distributions, and at the moment we do not have the support capacity. Secondly, building a full 64-bit OS would require a considerable amount of work to, for example, fix the interfacing to the 32-bit Videocore GPU. There are third-party 64-bit operating systems available, but they do not have the full support for the GPU that would be a requirement for an official release.
 
 ### Will it run Wine or Windows, or other x86 software?
 
