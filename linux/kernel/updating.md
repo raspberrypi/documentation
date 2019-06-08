@@ -10,11 +10,11 @@ To use rpi-update, execute it using sudo as follows:
 
 ```sudo rpi-update
 
-The `rpi-update` utility will download and install the latest Linux kernel and Raspberry Pi firmware onto your Pi. Note that `rpi-update` does not provide a way to revert the changes which it makes to your system.
+The `rpi-update` utility will download the Linux kernel and Raspberry Pi firmware that are currently being tested and install it onto your Pi. Note that `rpi-update` does not provide a way to revert the changes which it makes to your system.
 
 After upgrading the kernel, you must reboot your Pi to switch to the updated version.
 
-If you're using a compiled kernel, rpi-update will have overwritten it, and you will need to [rebuild](building.md) and reinstall your kernel.
+If you're using a compiled kernel, rpi-update will overwrite it, and you will need to [rebuild](building.md) and reinstall your kernel.
 
 Custom [configurations](configuring.md) can usually be copied over between minor kernel updates, but it's safer to use the `diff` utility to see what's changed and repeat your changes on the new configuration.
 
@@ -27,4 +27,4 @@ sudo apt update
 sudo apt install --reinstall raspberrypi-bootloader raspberrypi-kernel
 ```
 
-Note that this will install the latest version of the kernel, bootloader and firmware which is available from the package repository, which may not be the same version which you were running before you ran `rpi-update`.
+Note that this will install the latest stable version of the kernel, bootloader and firmware which is available from the package repository, which may not be the same version which you were running before you ran `rpi-update`.
