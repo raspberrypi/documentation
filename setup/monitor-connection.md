@@ -1,14 +1,14 @@
-# Monitor Connection
+# Monitor connection
 
 For regular use, you'll want to plug the Raspberry Pi in to a visual display: a monitor or a TV.
 
-## HDMI Port
+## HDMI port
 
 The Raspberry Pi has an HDMI port which you can connect directly to a monitor or TV with an HDMI cable. This is the easiest solution; some modern monitors and TVs have HDMI ports, some do not, but there are other options.
 
 ![HDMI cable](images/hdmi_connector.png)
 
-Note that the Raspberry Pi 4 has two micro HDMI connectors, which will require a good quality micro lead, especially when using 4k montiors or TV's.
+Note that the Raspberry Pi 4 has two micro HDMI connectors, which require a good-quality micro HDMI cable, especially when using 4K montiors/TVs.
 
 ### DVI
 
