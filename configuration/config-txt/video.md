@@ -31,15 +31,15 @@ Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite vide
 
 ### enable_tvout (Pi 4B only)
 
-On the Raspberry Pi 4, composite output is disabled by default. The reasons for this are due to the way that internal clocks are interrelated and allocated. Because composite video requires a very specific clock, on the Pi 4 setting that clock to the required speed means that other clocks connected to it are detrimentally affected, slowing down the entire system slightly. Since composite video is a lesser used function, it was decided to disable it by default to prevent this system slowdown. 
+On the Raspberry Pi 4, composite output is disabled by default, due to the the way the internal clocks are interrelated and allocated. Because composite video requires a very specific clock, setting that clock to the required speed on the Pi 4 means that other clocks connected to it are detrimentally affected, which slightly slows down the entire system. Since composite video is a less commonly used function, we decided to disable it by default to prevent this system slowdown. 
 
 To enable composite output, use the `enable_tvout=1` option. As described above, this will detrimentally affect performance to a small degree.
 
-On previous Pi models, the composite behaviour remains the same.
+On older Pi models, the composite behaviour remains the same.
 
 ## HDMI mode options
 
-**Note for Raspberry Pi4B users.** Because the Raspberry Pi4B has two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>` where port is 0 or 1, to specify which port the setting is to apply to. If no port is specified it defaults to 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found on the [Conditionals page](./conditionals.md) in the HDMI section. 
+**Note for Raspberry Pi4B users:** Because the Raspberry Pi 4B has two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found on the [conditionals page](./conditionals.md) in the HDMI section of the documentation. 
 
 ### hdmi_safe
 
@@ -68,7 +68,7 @@ Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `e
 
 ### hdmi_edid_filename
 
-On the Raspberry Pi4B, you can use the `hdmi_edid_filename` command to specify the filename of the EDID file to use, and also specify which port the file is to be applied to. This also requries `hdmi_edid_file=1` to enable EDID files.
+On the Raspberry Pi 4B, you can use the `hdmi_edid_filename` command to specify the filename of the EDID file to use, and also to specify which port the file is to be applied to. This also requires `hdmi_edid_file=1` to enable EDID files.
 
 For example:
 
