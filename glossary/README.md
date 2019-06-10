@@ -30,7 +30,7 @@
 - **Firmware** – Software that runs on a particular hardware device, for example a wireless chip or dongle; distinct from the usual software running on the Raspberry Pi in that it is usually a fixed binary blob of data that is loaded on to the device at startup; on the Raspberry Pi, the VC4 GPU requires firmware to be loaded to it at startup in order boot up and run the entire system.
 - **GNU** - The [GNU Project](https://en.wikipedia.org/wiki/GNU_Project) is a free software mass collaboration project, which has produced huge amounts of software that is used on the Raspberry Pi, including Linux itself.
 - **GPIO** – General Purpose Input/Output, the programmable pins on the Raspberry Pi.
-- **GPU** – Graphical Processing Unit, a hardware device for handling graphical (and related) tasks at high speed; on the Raspberry Pi range up to the Pi3B+, this is called the VideoCore4 (VC4), and is built into the SoC. On the Pi4 a newer and faster version, Videocore6 (VC6) is used.
+- **GPU** – Graphical Processing Unit, a hardware device for handling graphical (and related) tasks at high speed; on the Raspberry Pi range up to the Pi 3B+, this is called the VideoCore4 (VC4), and is built into the SoC. On the Pi 4, a newer and faster version called VideoCore6 (VC6) is used.
 - **HAT** - Hardware Attached on Top, a specification for designing devices to attach to the Raspberry Pi; see the [launch announcement](https://www.raspberrypi.org/blog/introducing-raspberry-pi-hats/).
 - **HDMI** – [High-Definition Multimedia Interface](https://en.wikipedia.org/wiki/HDMI), a standard interface for transmitting uncompressed video and compressed or uncompressed audio data from a source device to a display device.
 - **HDCP** – [High-bandwidth Digital Content Protection](https://en.wikipedia.org/wiki/High-bandwidth_Digital_Content_Protection), an optional encryption mechanism used for HDMI or DVI transmission.
@@ -50,7 +50,7 @@
 - **Overlay** – A boot-time or run-time patch to a Device Tree allowing a degree of configuration by the user; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/device-tree.md) for more details, or run `dtoverlay -a` in a terminal window for a list of available overlays.
 - **Pink Pony/Unicorn** - A feature request for a future Raspberry Pi model that is unlikely to happen.
 - **PINN** - A [third-party development](https://github.com/procount/pinn) of the NOOBS system, often a better option than the official NOOBS.
-- **PoE** - Power over Ethernet, a mechanism to power a device through its Ethernet connection; we produce a [PoE HAT](https://www.raspberrypi.org/products/poe-hat) for the Raspberry Pi 3 Model B+ and Raspberry Pi Model 4B.
+- **PoE** - Power over Ethernet, a mechanism to power a device through its Ethernet connection; we produce a [PoE HAT](https://www.raspberrypi.org/products/poe-hat) for the Raspberry Pi 3 Model B+ and Raspberry Pi 4 Model B.
 - **Polyfuse** - A self-resetting electrical fuse used on some Pi models to protect against over-current; can take hours or even days to reset.
 - **`raspi-config`** – A command line tool for configuring Raspbian's operating system features; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/raspi-config.md).
 - **raspivid, raspistill, raspiyuv, raspividyuv** – a set of applications to run the Raspberry Pi Camera Module in various modes; see our [official documentation](https://www.raspberrypi.org/documentation/raspbian/applications/camera.md).
@@ -68,7 +68,7 @@
 - **TP1/TP2** – Test points.
 - **UART** – Universal Asynchronous Receiver-Transmitter, a protocol for asynchronous serial communication in which the data format and transmission speeds are configurable.
 - **USB** – [Universial Serial Bus](https://en.wikipedia.org/wiki/USB), the main Raspberry Pi models have four USB sockets for connecting USB devices, for example mice or keyboards.
-- **VC4, VC6** – The VideoCore4 or Videocore6 GPU used on the Raspberry Pi; contains a large number of hardware blocks that handle graphics, cameras, display, CODECs, etc.
+- **VC4, VC6** – The VideoCore4 or VideoCore6 GPU used on the Raspberry Pi; contains a large number of hardware blocks that handle graphics, cameras, display, CODECs, etc.
 - **VNC** – A graphical desktop sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer; see our [official documentation](https://www.raspberrypi.org/documentation/remote-access/vnc/README.md).
 - **Volt (V)** – SI-derived unit for [electrical potential difference](https://en.wikipedia.org/wiki/Volt).
 - **`vcgencmd`** – A Raspberry Pi–specific tool for communicating with the VideoCore GPU.
