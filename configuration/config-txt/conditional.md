@@ -70,7 +70,7 @@ This forces 1920x1080 DVT mode for the specified monitor, without affecting any 
 
 Note that these settings apply only at boot, so the monitor must be connected at boot time and the Pi must be able to read its EDID information to find the correct name. Hotplugging a different monitor into the Pi after boot will not select different settings.
 
-On the Pi4, if both HDMI ports are in use, then the EDID will be checked against both of then, and subsequent configuration applied only to the first matching device. You can determine the EDID names for both ports by first using `tvservice -l` to list all attached devices, then use the returned numerical ID's in `tvservice -v <id> -n` to find the EDID name for a specific display ID.
+On the Pi 4, if both HDMI ports are in use, then the EDID will be checked against both of then, and subsequent configuration applied only to the first matching device. You can determine the EDID names for both ports by first running `tvservice -l` in a terminal window to list all attached devices and then using the returned numerical IDs in `tvservice -v <id> -n` to find the EDID name for a specific display ID.
 
 ## The serial number filter
 
@@ -104,9 +104,9 @@ You can also filter depending on the state of a GPIO. For example
     [all]
     # settings here are applied to all hardware
 
-## The `[HDMI:*]` filter. Pi4 only.
+## The `[HDMI:*]` filter — Pi 4 only
 
-On the Raspberry Pi 4 there are two HDMI ports, and for many `config.txt` commands related to HDMI it is necessary to specify which HDMI port is being referred to. The HDMI conditional filters subsequent HDMI configurations to the specific port.
+The Raspberry Pi 4 has two HDMI ports, and for many `config.txt` commands related to HDMI, it is necessary to specify which HDMI port is being referred to. The HDMI conditional filters subsequent HDMI configurations to the specific port.
 
     [HDMI:0]
       hdmi_group=2
@@ -115,7 +115,7 @@ On the Raspberry Pi 4 there are two HDMI ports, and for many `config.txt` comman
       hdmi_group=2
       hdmi_mode=67
     
-There is an alternative `variable:index` syntax, available on all port-specific HDMI commands. You could use the following which is the same as the previous example:
+An alternative `variable:index` syntax is available on all port-specific HDMI commands. You could use the following, which is the same as the previous example:
 
     hdmi_group:0=2
     hdmi_mode:0=45
