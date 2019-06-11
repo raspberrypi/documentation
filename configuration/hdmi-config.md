@@ -84,6 +84,6 @@ Fot the Pi4, to specifiy the HDMI port, you can add an index indentifier to the 
 
 ### HDMI not working properly?
 
-In some rare cases you may need to increase the HDMI drive strength, for example when there is speckling on the display or when you are using very long cables. There is a config.txt item to do this, `config_hdmi_boost`, which is documented on the config.txt [config.txt video page](config-txt/video.md).
+In some rare cases you may need to increase the HDMI drive strength, for example when there is speckling on the display or when you are using very long cables. There is a config.txt item to do this, `config_hdmi_boost`, which is documented on the [config.txt video page](config-txt/video.md).
 
 The Pi 4 does not support `config_hdmi_boost`.
