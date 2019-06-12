@@ -472,7 +472,9 @@ Although the Ethernet chip on the Raspberry Pi 3B+ is gigabit-capable, the conne
 
 ### Does the device have support for any form of netbooting or PXE?
 
-Yes. The Raspberry Pi 3 can be set up to network boot without an SD card present; earlier models can PXE/Netboot with an appropriately set up SD card. You can find our netbooting documentation [here](../hardware/raspberrypi/bootmodes/net.md).
+The Raspberry Pi 3 can be set up to network boot without an SD card present; earlier models can PXE/Netboot with an appropriately set up SD card. You can find our netbooting documentation [here](../hardware/raspberrypi/bootmodes/net.md).
+
+The Raspberry Pi 4 does not currently support network booting without an SD card present. A bootloader update to support network boot is planned but not yet available.
 
 We have also developed [PiServer](https://www.raspberrypi.org/blog/piserver/), a piece of software that lets you easily set up a network of client Raspberry Pis connected to a single x86-based server via Ethernet. With PiServer, you don’t need SD cards, you can control all clients via the server, and you can add and configure user accounts — ideal for the classroom, your home, or an industrial setting.
 
@@ -530,7 +532,11 @@ Probably the most frequently asked question! We have full instructions for setti
 
 ### Why is my Pi hot?
 
-All electronics give off heat, and the Pi is no exception. The latest model (3B+) has heat-spreading technology to use the entire PCB and connectors as a heatsink to dissipate excess energy. This means that except in exceptional conditions, you are unlikely to need a heatsink on the SoC or the Ethernet hub chip. You can still add a heatsink if you wish, and this may prevent thermal throttling by keeping the chips below the throttling temperature (see the clock speed paragraph in the [Performance](#pi-performance) section).
+All electronics give off heat, and the Pi is no exception. The Raspberry Pi 3 Model B+ has heat-spreading technology to use the entire PCB and connectors as a heatsink to dissipate excess energy. This means that except in exceptional conditions, you are unlikely to need a heatsink on the SoC or the Ethernet hub chip.
+
+The Raspberry Pi 4 Model B uses the same heat-spreading technology but due to the much more powerful CPU cores is capable of higher peak power consumption than a Model 3B+. Under a continuously heavy processor workload, the Model 4B is more likely to throttle than a Model 3B+.
+
+You can add a heatsink if you wish, and this may prevent thermal throttling by keeping the chips below the throttling temperature (see the clock speed paragraph in the [Performance](#pi-performance) section).
 
 ### I keep getting a lightning bolt symbol and messages about power.
 
