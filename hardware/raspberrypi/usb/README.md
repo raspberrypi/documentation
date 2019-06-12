@@ -26,14 +26,16 @@ The USB host port inside the Pi is an On-The-Go (OTG) host as the application pr
 OTG in general supports communication to all types of USB device, but to provide an adequate level of functionality for most of the USB devices that one might plug into a Pi, the system software has to do more work.
 
 <a name="overview_pi4"></a>
-### Overview for the Pi 4
+## Overview for the Pi 4
 
-For the Pi 4, the USB has completely changed. There is a new USB hub (VL805) that supports two USB 2.0 ports and two USB 3.0 ports. This is connected to the BCM2711 SoC using a PCIe bus, which is extremely fast. Therefore, the Pi 4 does not have the  speed constraints of previous models, which means very fast datarates, especially when using the USB 3.0 ports.
+For the Pi 4, a fully-featured host controller drives the downstream USB ports. Downstream USB is provided by a Via Labs VL805 chip - that supports two USB 2.0 ports and two USB 3.0 ports. This is connected to the BCM2711 SoC using a PCIe link, which is extremely fast. Therefore, the Pi 4 does not have the speed constraints of previous models, which means very fast datarates, especially when using the USB 3.0 ports.
 
-It also means that many of the known issues of previous models are also no longer present.
+It also means that almost all of the known issues with USB on previous models are no longer present.
+
+The OTG hardware present on previous models of Pi is still available and it has moved to a single connection on the USB-C port. The OTG hardware is intended to be used in device-only mode on Pi 4.
 
 <a name="support"></a>
-### Supported devices
+## Supported devices
 
 In general, every device supported by Linux is possible to use with the Pi, subject to a few caveats detailed further down. Linux has probably the most comprehensive driver database for legacy hardware of any operating system (it can lag behind for modern device support as it requires open-source drivers for Linux to recognise the device by default).
 
