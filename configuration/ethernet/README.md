@@ -1,4 +1,4 @@
-#TCP/IP networking
+# TCP/IP networking
 
 The Raspberry Pi uses dhcpcd to configure TCP/IP across all of its network interfaces. The dhcpcd daemon was written by Roy Marples and is intended to be an all-in-one ZeroConf client for UNIX-like systems. This includes assigning each interface an IP address, setting netmasks and configuring DNS resolution via the Name Service Switch (NSS) facility. The configuration of the dhcpcd daemon is specified in the file `/etc/dhcpcd.conf`. To configure the dhcpcd daemon, refer to [ArchWiki's dhcpcd page](https://wiki.archlinux.org/index.php/Dhcpcd).
 
