@@ -23,15 +23,15 @@ omxplayer /opt/vc/src/hello_pi/hello_video/test.h264
 On a Pi 4, use the following command for H264 files:
 
 ```bash
-omxplayer --no-osd /opt/vc/src/hello_pi/hello_video/test.h264
+omxplayer /opt/vc/src/hello_pi/hello_video/test.h264
 ```
 or for H264, VC1, or MPEG2
 ```bash
 vlc /opt/vc/src/hello_pi/hello_video/test.h264
 ```
 
-When using VLC, you can improve playback performance by encapsulating the raw H264 stream, for example from the Raspberry Pi Camera Module. This is easily done using `ffmpeg`.
+When using VLC, you can improve playback performance by encapsulating the raw H264 stream, for example from the Raspberry Pi Camera Module. This is easily done using `ffmpeg`. Playback is also improved if VLC is run full screen.
 
 This example command converts `video.h64` to a containerised `video.mp4` at 30 fps:
 
-`ffmpeg -r 30 -i video.h265 -c:v copy video.mp4`
+`ffmpeg -r 30 -i video.h264 -c:v copy video.mp4`
