@@ -41,7 +41,7 @@ USB in the table above selects both USB device boot mode and USB host boot mode.
 
 ## Boot order
 
-The various boot modes are attempted in the numerical order of the GPIO pins, i.e. SD0, then SD1, then NAND and so on.
+The various boot modes are attempted in the numerical order of the GPIO lines, i.e. SD0, then SD1, then NAND and so on.
 
 ## Boot flow
 
