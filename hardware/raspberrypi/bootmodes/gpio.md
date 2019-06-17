@@ -15,7 +15,7 @@ Where n is the bank of GPIOs which you wish to use. Then reboot the Pi once to p
 Once GPIO boot mode is enabled, the Raspberry Pi will no longer boot. You must pull up at least one boot mode GPIO pin in order for the Pi to boot.
 
 ## GPIO boot mode pin assignments
-### Raspberry Pi 3B
+### Raspberry Pi 3B and Compute Module 3
 
 |Bank 1|Bank 2|boot type|
 |:----:|:---:|:--------:|
@@ -27,7 +27,7 @@ Once GPIO boot mode is enabled, the Raspberry Pi will no longer boot. You must p
 
 USB in the table above selects both USB device boot mode and USB host boot mode. In order to use a USB boot mode, it must by enabled in the OTP memory. For more information, see [USB device boot](device.md) and [USB host boot](host.md).
 
-### Raspberry Pi 3B+
+### Raspberry Pi 3A+, 3B+ and Compute Module 3+
 
 |Bank 1|Bank 2|boot type|
 |:----:|:---:|:--------:|
