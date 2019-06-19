@@ -10,16 +10,18 @@ Once Linux has booted, the boot partition is mounted as `/boot`.
 
 ### bootcode.bin
 
-The bootloader. Loaded by the SoC on boot, does some very basic setup, and subsequently loads one of the `start*.elf` files.
+This is the bootloader, which is loaded by the SoC on boot, does some very basic setup, and then loads one of the `start*.elf` files. `bootcode.bin` is not used on the Raspberry Pi 4, because it has been replaced by boot code in the [onboard EEPROM](../hardware/raspberrypi/booteeprom.md).
 
-### start.elf, start_x.elf, start_db.elf, start_cd.elf
+### start.elf, start_x.elf, start_db.elf, start_cd.elf, start4.elf, start4x.elf, start4cd.elf, start4db.elf
 
 These are binary blobs (firmware) that are loaded on to the VideoCore in the SoC, which then take over the boot process.
 `start.elf` is the basic firmware, `start_x.elf` includes camera drivers and codec, `start_db.elf` is a debug version of the firmware, and `start_cd.elf` is a cut-down version with no support hardware blocks like codecs and 3D, and for use when `gpu_mem=16` is specified in `config.txt`. More information on how to use these can be found in [the `config.txt` section](./config-txt/boot.md).
 
-### fixup.dat, fixup_x.dat, fixup_db.dat, fixup_cd.dat
+`start4.elf`, `start4x.elf`, `start4cd.elf`, and `start4db.elf` are firmware files specific to the Pi 4.
 
-These are linker files and are matched pairs with the `start*.elf` files.
+### fixup*.dat
+
+These are linker files and are matched pairs with the `start*.elf` files listed in the previous section.
 
 ### cmdline.txt
 
