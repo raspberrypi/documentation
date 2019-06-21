@@ -6,6 +6,8 @@ The ARM cores are capable of running at up to 1.5 GHz, making the Pi 4 about 50%
 
 The BCM2711 chip continues to use the heat spreading technology started with the BCM2837B0, which provides better thermal management. 
 
+A preliminary datasheet for the BCM2711 can be found [here](./rpi_DATA_2711_1p0_preliminary.pdf).
+
 ## Some technical details
 
 **Processor:**  Quad-core Cortex-A72 (ARM v8) 64-bit SoC @ 1.5 GHz
