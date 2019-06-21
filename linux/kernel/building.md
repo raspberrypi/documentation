@@ -51,7 +51,7 @@ make bcmrpi_defconfig
 ```bash
 cd linux
 KERNEL=kernel7
-make bcm2709_defconfig
+make bcmrpi3_defconfig
 ```
 
 Build and install the kernel, modules, and Device Tree blobs; this step takes a **long** time:
