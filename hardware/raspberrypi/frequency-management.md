@@ -6,6 +6,8 @@ With firmware from 12 September 2016 or later, when the core temperature is betw
 
 For Raspberry Pi 3 Model B+, the PCB technology has been changed to provide better heat dissipation and increased thermal mass. In addition, a soft temperature limit has been introduced, with the goal of maximising the time for which a device can "sprint" before reaching the hard limit at 85'C. When the soft limit is reached, the clock speed is reduced from 1.4GHz to 1.2GHz, and the operating voltage is reduced slightly. This reduces the rate of temperature increase: we trade a short period at 1.4GHz for a longer period at 1.2GHz. By default, the soft limit is 60°C, and this can be changed via the `temp_soft_limit` setting in [config.txt](../../configuration/config-txt/overclocking.md).
 
+The Raspberry Pi 4 Model B continues with the same PCB technology as the Raspberry Pi 3B+ to help dissipate excess heat. There is currently no soft limit defined.
+
 ### Heatsinks
 
 Whilst heatsinks are not necessary to prevent overheating damage to the SoC (the thermal throttling mechanism handles that), a heatsink or small fan will help if you wish to reduce the amount of thermal throttling that takes place. Depending on the exact circumstances, mounting the Pi vertically can also help with heat dissipation, as doing so can improve air flow.

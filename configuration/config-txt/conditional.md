@@ -24,6 +24,7 @@ The conditional model filters are applied according to the following table.
 | [pi2] | Model 2B (BCM2836- or BCM2837-based) |
 | [pi3] | Model 3B, Model 3B+, Model 3A+, Compute Module 3 |
 | [pi3+]| Model 3A+, Model 3B+ |
+| [pi4]| Model 4B |
 | [pi0] | Zero, Zero W, Zero WH |
 | [pi0w]| Zero W, Zero WH |
 
@@ -50,7 +51,7 @@ The `[none]` filter prevents any settings that follow from being applied to any 
 
 When switching between multiple monitors while using a single SD card in your Pi, and where a blank config isn't sufficient to automatically select the desired resolution for each one, this allows specific settings to be chosen based on the monitors' EDID names.
 
-To view the EDID name of a specific monitor, run the following command:
+To view the EDID name of an attached monitor, run the following command:
 
     tvservice -n
 
@@ -68,6 +69,8 @@ You can then specify settings that apply only to this monitor:
 This forces 1920x1080 DVT mode for the specified monitor, without affecting any other monitors.
 
 Note that these settings apply only at boot, so the monitor must be connected at boot time and the Pi must be able to read its EDID information to find the correct name. Hotplugging a different monitor into the Pi after boot will not select different settings.
+
+On the Pi 4, if both HDMI ports are in use, then the EDID will be checked against both of then, and subsequent configuration applied only to the first matching device. You can determine the EDID names for both ports by first running `tvservice -l` in a terminal window to list all attached devices and then using the returned numerical IDs in `tvservice -v <id> -n` to find the EDID name for a specific display ID.
 
 ## The serial number filter
 
@@ -100,7 +103,25 @@ You can also filter depending on the state of a GPIO. For example
     
     [all]
     # settings here are applied to all hardware
+
+## The `[HDMI:*]` filter — Pi 4 only
+
+The Raspberry Pi 4 has two HDMI ports, and for many `config.txt` commands related to HDMI, it is necessary to specify which HDMI port is being referred to. The HDMI conditional filters subsequent HDMI configurations to the specific port.
+
+    [HDMI:0]
+      hdmi_group=2
+      hdmi_mode=45
+    [HDMI:1]
+      hdmi_group=2
+      hdmi_mode=67
     
+An alternative `variable:index` syntax is available on all port-specific HDMI commands. You could use the following, which is the same as the previous example:
+
+    hdmi_group:0=2
+    hdmi_mode:0=45
+    hdmi_group:1=2
+    hdmi_mode:1=67
+
 ## Combining conditional filters
 
 Filters of the same type replace each other, so `[pi2]` overrides `[pi1]`, because it is not possible for both to be true at once.
