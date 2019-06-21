@@ -9,7 +9,7 @@ The Raspberry Pi 4 has an SPI-attached EEPROM (4MBits/512KB), which contains cod
  - A small SPI EEPROM allows bugs to be fixed and features to be added after launch, in the field
  - The local modifible state means that OTP bootmode settings will not be required for PXE or USB mass storage boot on the Raspberry Pi 4. There are no user modifiable OTP bootmode bits on Pi4.
 
-### PXE and USB Boot
+## PXE and USB Boot
 
 Support for these additional bootmodes will be added in the future via optional bootloader updates. The current schedule is to release PXE boot first, then USB boot.
 
