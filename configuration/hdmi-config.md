@@ -36,7 +36,7 @@ Setting a specific mode is done using the `hdmi_group` and `hdmi_mode` config.tx
 
 On the Pi 4, to specify the HDMI port, add an index identifier to the `hdmi_group` or `hdmi_mode` entry in config.txt, e.g. `hdmi_mode:0` or `hdmi_group:1`.
 
-### Setting a custom HDMI mode.
+### Setting a custom HDMI mode
 
 There are two options for setting a custom mode: `hdmi_cvt` and `hdmi_timings`. 
 
@@ -80,7 +80,7 @@ In certain rare cases it may be necessary to define the exact clock requirements
 |`21:9` | 7  |
 |`64:27`| 8  |
 
-Fot the Pi4, to specifiy the HDMI port, you can add an index indentifier to the config.txt. e.g. `hdmi_cvt:0=...` or `hdmi_timings:1=...`. If no port indentifier is specified, the settings are applied to port 0.
+For the Pi4, to specifiy the HDMI port, you can add an index indentifier to the config.txt. e.g. `hdmi_cvt:0=...` or `hdmi_timings:1=...`. If no port indentifier is specified, the settings are applied to port 0.
 
 ### HDMI not working properly?
 
