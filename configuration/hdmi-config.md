@@ -34,7 +34,7 @@ You can specify which display `tvservice` uses by adding `-v <display id>` to th
 
 Setting a specific mode is done using the `hdmi_group` and `hdmi_mode` config.txt entries. The group entry selects between CEA or DMT, and the mode selects the resolution and frame rate. You can find tables of modes on the config.txt [Video Configuration](config-txt/video.md) page, but you should use the `tvservice` command described above to find out exactly which modes your device supports.
 
-On the Pi 4, to specify the HDMI port, add an index indentifier to the `hdmi_group` or `hdmi_mode` entry in config.txt, e.g. `hdmi_mode:0` or `hdmi_group:1`.
+On the Pi 4, to specify the HDMI port, add an index identifier to the `hdmi_group` or `hdmi_mode` entry in config.txt, e.g. `hdmi_mode:0` or `hdmi_group:1`.
 
 ### Setting a custom HDMI mode.
 
