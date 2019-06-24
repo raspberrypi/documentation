@@ -12,7 +12,7 @@
 - **BCM2837** – The SoC used on the Raspberry Pi 3, Compute Module 3, and Raspberry Pi 2 version 1.2; see our [official documentation](../hardware/raspberrypi/bcm2837/README.md).
 - **BCM2711** – The SoC used on the Raspberry Pi 4B; see our [official documentation](../hardware/raspberrypi/bcm2711/README.md).
 - **BLE/BTLE** - Bluetooth Low Energy, a low-power version of the Bluetooth wireless communications protocol.
-- **BT** - Bluetooth, a short-range, low-bandwidth, wireless commmunication protocol often used for mobile devices.
+- **BT** - Bluetooth, a short-range, low-bandwidth, wireless communication protocol often used for mobile devices.
 - **CODEC** – Coder/Decoder, hardware or software blocks that encode and/or decode video or audio data.
 - **Compute Module** - A [Pi variant aimed at commercial customers](../hardware/computemodule/README.md); uses a different form factor, facilitating use inside other products.
 - **`config.txt`** – A file located on the boot partition of a Raspberry Pi's SD card that is parsed at boot time in order to enable, disable, and manage operating system features which cannot be changed after booting; see our [official documentation](../configuration/config-txt/README.md).
