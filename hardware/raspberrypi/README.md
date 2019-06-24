@@ -12,6 +12,10 @@ The hardware in the Raspberry Pi
     - The Broadcom processor used in Raspberry Pi 3 (and later Raspberry Pi 2)
 - [BCM2837B0](bcm2837b0/README.md)
     - The Broadcom processor used in Raspberry Pi 3B+ and 3A+
+- [BCM2711](bcm2711/README.md)
+    - The Broadcom processor used in Raspberry Pi 4B
+- [SPI Boot EEPROM (Pi4)](booteeprom.md)
+    - The boot EEPROM used in Raspberry Pi 4B
 - [Boot modes](bootmodes/README.md)
     - A description of the available BCM2835/6/7 boot modes
 - [Mechanical drawings](mechanical/README.md)

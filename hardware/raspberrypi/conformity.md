@@ -24,6 +24,7 @@ All Raspberry Pi products have undergone extensive compliance testing, and copie
 | TV uHAT | [EU](./compliance/rpi_DOC_tvuhat_EU.pdf)  &nbsp; &nbsp;| [Australia/New Zealand](./compliance/rpi_DOC_tvuhat_AUSTRALIA+NEW_ZEALAND.pdf) |
 | Mouse | [EU](./compliance/rpi_DOC_Mouse_EU.pdf)  &nbsp; &nbsp;[USA/FCC](./compliance/rpi_DOC_Mouse_FCC.pdf)| |
 | Keyboard | [EU](./compliance/rpi_DOC_KeyboardHub_EU.pdf)  &nbsp; &nbsp;[USA/FCC](./compliance/rpi_DOC_KeyboardHub_FCC.pdf)| |
+| Pi4 Power Supply | | [FCC Part 15 SDOC](./compliance/rpi_DOC_psutypeC_FCC_1.pdf) &nbsp; &nbsp;[ICES-003](./compliance/rpi_DOC_psutypeC_ICES_1.pdf) &nbsp; &nbsp;[CB Test Certificate](./compliance/rpi_DOC_psutypeC_IEC_CB_1.PDF) &nbsp; &nbsp;[GS Certificate](./compliance/rpi_DOC_psutypeC_GS_1.PDF) &nbsp; &nbsp;[LVD 2014/35/EU certificate](./compliance/rpi_DOC_psutypeC_LVD_N8A_1.PDF)  &nbsp; &nbsp;[UL Energy Efficiency Certificate](./compliance/rpi_DOC_psutypeC_EEC.pdf)  &nbsp; &nbsp;[NOA UL Leaf Mark](./compliance/rpi_DOC_psutypeC_UL_LEAF_1.pdf) |
 
 
 ## Flammability rating

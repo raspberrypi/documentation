@@ -1,6 +1,6 @@
-# Demo Programs
+# Demo programs
 
-Here are some example programs to demonstrate the Pi's capabilities.
+Here are some example programs to demonstrate the Pi's capabilities. Note that not all the demo applications will run on a Pi 4 due to the way the new 3D libraries work; the non-working ones will report an error message if run on a Pi 4. 
 
 ![Mandelbrot fractal](images/mandelbrot.jpg)
 
@@ -40,9 +40,9 @@ Demo programs:
 
 - [Hello world](hello-world.md)
 - [Hello video](hello-video.md)
-- [Hello triangle](hello-triangle.md)
+- [Hello triangle](hello-triangle.md) (not Pi 4)
 - [Hello fractal](hello-fractal.md)
-- [Hello teapot](hello-teapot.md)
+- [Hello teapot](hello-teapot.md) (not Pi 4)
 - [Hello audio](hello-audio.md)
 
 Try more demos in the `hello_pi` folder!
