@@ -80,7 +80,7 @@ In certain rare cases it may be necessary to define the exact clock requirements
 |`21:9` | 7  |
 |`64:27`| 8  |
 
-For the Pi4, to specifiy the HDMI port, you can add an index indentifier to the config.txt. e.g. `hdmi_cvt:0=...` or `hdmi_timings:1=...`. If no port indentifier is specified, the settings are applied to port 0.
+For the Pi4, to specify the HDMI port, you can add an index identifier to the config.txt. e.g. `hdmi_cvt:0=...` or `hdmi_timings:1=...`. If no port indentifier is specified, the settings are applied to port 0.
 
 ### HDMI not working properly?
 
