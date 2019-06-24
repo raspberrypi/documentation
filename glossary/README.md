@@ -67,7 +67,7 @@
 - **TLS** – [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security), a cryptographic protocol used to supply security over a computer network, often used to secure other protocols such as MQTT.
 - **TP1/TP2** – Test points.
 - **UART** – Universal Asynchronous Receiver-Transmitter, a protocol for asynchronous serial communication in which the data format and transmission speeds are configurable.
-- **USB** – [Universial Serial Bus](https://en.wikipedia.org/wiki/USB), the main Raspberry Pi models have four USB sockets for connecting USB devices, for example mice or keyboards.
+- **USB** – [Universal Serial Bus](https://en.wikipedia.org/wiki/USB), the main Raspberry Pi models have four USB sockets for connecting USB devices, for example mice or keyboards.
 - **VC4, VC6** – The VideoCore4 or VideoCore6 GPU used on the Raspberry Pi; contains a large number of hardware blocks that handle graphics, cameras, display, CODECs, etc.
 - **VNC** – A graphical desktop sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer; see our [official documentation](../remote-access/vnc/README.md).
 - **Volt (V)** – SI-derived unit for [electrical potential difference](https://en.wikipedia.org/wiki/Volt).
