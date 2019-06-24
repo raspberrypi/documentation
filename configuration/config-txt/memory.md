@@ -2,7 +2,7 @@
 
 ## gpu_mem
 
-GPU memory in megabytes, sets the memory split between the CPU and GPU; the CPU gets the remaining memory. The minimum value is `16`; the maximum value is `192`, `448`, or `944`, depending on whether you are using a 256M, 512MB, or 1024MB Pi. The default value is `64`. For the Raspberry Pi 4 you should use the options for 1GB RAM, whether the device has 1, 2 or 4GB installed.
+GPU memory in megabytes, sets the memory split between the CPU and GPU; the CPU gets the remaining memory. The minimum value is `16`; the maximum value is `192`, `448`, or `944`, depending on whether you are using a 256M, 512MB, or 1024MB Pi. The default value is `64`. For the Raspberry Pi 4 the minimum and maximum value are the same as for a 1GB device, whether it has 1, 2 or 4GB installed.
 
 Setting `gpu_mem` to low values may automatically disable certain firmware features, as there are some things the GPU cannot do if it has access to too little memory. So if a feature you are trying to use isn't working, try setting a larger GPU memory split.
 
