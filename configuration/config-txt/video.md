@@ -31,7 +31,7 @@ Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite vide
 
 ### enable_tvout (Pi 4B only)
 
-On the Raspberry Pi 4, composite output is disabled by default, due to the the way the internal clocks are interrelated and allocated. Because composite video requires a very specific clock, setting that clock to the required speed on the Pi 4 means that other clocks connected to it are detrimentally affected, which slightly slows down the entire system. Since composite video is a less commonly used function, we decided to disable it by default to prevent this system slowdown. 
+On the Raspberry Pi 4, composite output is disabled by default, due to the way the internal clocks are interrelated and allocated. Because composite video requires a very specific clock, setting that clock to the required speed on the Pi 4 means that other clocks connected to it are detrimentally affected, which slightly slows down the entire system. Since composite video is a less commonly used function, we decided to disable it by default to prevent this system slowdown. 
 
 To enable composite output, use the `enable_tvout=1` option. As described above, this will detrimentally affect performance to a small degree.
 
