@@ -12,7 +12,7 @@
 - **BCM2837** – The SoC used on the Raspberry Pi 3, Compute Module 3, and Raspberry Pi 2 version 1.2; see our [official documentation](../hardware/raspberrypi/bcm2837/README.md).
 - **BCM2711** – The SoC used on the Raspberry Pi 4B; see our [official documentation](../hardware/raspberrypi/bcm2711/README.md).
 - **BLE/BTLE** - Bluetooth Low Energy, a low-power version of the Bluetooth wireless communications protocol.
-- **BT** - Bluetooth, a short-range, low-bandwidth, wireless commmunication protocol often used for mobile devices.
+- **BT** - Bluetooth, a short-range, low-bandwidth, wireless communication protocol often used for mobile devices.
 - **CODEC** – Coder/Decoder, hardware or software blocks that encode and/or decode video or audio data.
 - **Compute Module** - A [Pi variant aimed at commercial customers](../hardware/computemodule/README.md); uses a different form factor, facilitating use inside other products.
 - **`config.txt`** – A file located on the boot partition of a Raspberry Pi's SD card that is parsed at boot time in order to enable, disable, and manage operating system features which cannot be changed after booting; see our [official documentation](../configuration/config-txt/README.md).
@@ -67,7 +67,7 @@
 - **TLS** – [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security), a cryptographic protocol used to supply security over a computer network, often used to secure other protocols such as MQTT.
 - **TP1/TP2** – Test points.
 - **UART** – Universal Asynchronous Receiver-Transmitter, a protocol for asynchronous serial communication in which the data format and transmission speeds are configurable.
-- **USB** – [Universial Serial Bus](https://en.wikipedia.org/wiki/USB), the main Raspberry Pi models have four USB sockets for connecting USB devices, for example mice or keyboards.
+- **USB** – [Universal Serial Bus](https://en.wikipedia.org/wiki/USB), the main Raspberry Pi models have four USB sockets for connecting USB devices, for example mice or keyboards.
 - **VC4, VC6** – The VideoCore4 or VideoCore6 GPU used on the Raspberry Pi; contains a large number of hardware blocks that handle graphics, cameras, display, CODECs, etc.
 - **VNC** – A graphical desktop sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer; see our [official documentation](../remote-access/vnc/README.md).
 - **Volt (V)** – SI-derived unit for [electrical potential difference](https://en.wikipedia.org/wiki/Volt).
