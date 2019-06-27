@@ -2,7 +2,7 @@
 
 For the Pi 3 and earlier models, in the vast majority of cases, simply plugging your HDMI-equipped monitor into the Raspberry Pi using a standard HDMI cable will automatically lead to the Pi using the best resolution the monitor supports.
 
-When using the Pi 4, which has two micro HDMI ports, you can attach two 1080p60 displays, or two 4Kp30 display (to HDMI port 0), or one 4Kp60 display (HDMI port 0). You will need a micro-HDMI-to-full-size-HDMI lead or adapter. If your display supports 4Kp60 resolutions, you will need to enable 4Kp60 output by setting the `hdmi_enable_4k=1` flag in config.txt or by using the Raspberry Pi Configuration tool. The Pi 4 should automatically detect the best resolution to display.
+When using the Pi 4, which has two micro HDMI ports, you can attach one or two 1080p60 displays, or one or two 4Kp30 displays, or one 4Kp60 display (HDMI port 0). You will need a micro-HDMI-to-full-size-HDMI lead or adapter. If your display supports 4Kp60 resolutions, you will need to enable 4Kp60 output by setting the `hdmi_enable_4k=1` flag in config.txt or by using the Raspberry Pi Configuration tool. The Pi 4 should automatically detect the best resolution to display.
 
 If you are running the 3D graphics driver (also known as the FKMS driver), then in the Preferences menu you will find a graphical application for setting up standard displays, including multi-display setups. See [instructions for using the tool here](arandr.md).
 
