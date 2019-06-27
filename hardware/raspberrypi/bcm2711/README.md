@@ -20,7 +20,7 @@ A preliminary datasheet for the BCM2711 can be found [here](./rpi_DATA_2711_1p0_
 
 See the following documentation sections for information about the previous Raspberry Pi chips:
 
-* Raspberry Pi 3+ chip [BCM2837B0](../bcm2837bO/README.md)
+* Raspberry Pi 3+ chip [BCM2837B0](../bcm2837b0/README.md)
 * Raspberry Pi 3 chip [BCM2837](../bcm2837/README.md)
 * Raspberry Pi 2 chip [BCM2836](../bcm2836/README.md)
 * Raspberry Pi 1 chip [BCM2835](../bcm2835/README.md)
