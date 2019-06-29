@@ -17,7 +17,7 @@ Ubuntu Before deploying NFS you should be familiar with:
 
 Install the below packages:
 
-```
+```bash
 sudo apt install nfs-kernel-server
 ```
 
@@ -25,13 +25,13 @@ For easier maintenance we will isolate all NFS exports in single directory, wher
 
 Suppose we want to export our users' home directories in /home/users. First we create the export filesystem:
 
-```
+```bash
 sudo mkdir -p /export/users
 ```
 
 Note that /export and /export/users will need 777 permissions as we will be accessing the NFS share from the client without LDAP/NIS authentication. This will not apply if using authentication (see below). Now mount the real users directory with:
 
-```
+```bash
 sudo mount --bind /home/users /export/users
 ```
 
@@ -60,7 +60,7 @@ Nobody-Group = nogroup
 
 Please note that the client may have different requirements for the Nobody-User and Nobody-Group. On RedHat variants, it is nfsnobody for both. So to ensure that these are actually present, check via the following commands to see if `nobody` is there:
 
-```
+```bash
 cat /etc/passwd
 cat /etc/group
 ```
@@ -104,7 +104,7 @@ Please ensure that the list of authorised IP addresses includes the localhost ad
 
 Afterwards, go ahead and restart the service:
 
-```
+```bash
 sudo systemctl restart nfs-kernel-server
 ```
 
@@ -112,13 +112,13 @@ sudo systemctl restart nfs-kernel-server
 
 Install the required packages:
 
-```
+```bash
 sudo apt install nfs-common
 ```
 
 On the client we can mount the complete export tree with one command:
 
-```
+```bash
 mount -t nfs -o proto=tcp,port=2049 <nfs-server-IP>:/ /mnt
 ```
 
@@ -128,7 +128,7 @@ Note that `<nfs-server-IP>:/export` is not necessary in NFSv4, as it was in NFSv
 
 We can also mount an exported subtree with:
 
-```
+```bash
 mount -t nfs -o proto=tcp,port=2049 <nfs-server-IP>:/users /home/users
 ```
 
@@ -194,7 +194,7 @@ Where `myclients` is the netgroup name
 
 Run this command to rebuild the YP database:
 
-```
+```bash
 sudo make -C /var/yp
 ```
 
@@ -218,7 +218,7 @@ Where the "list of IPs" is a list of IP addresses that consists of the server an
 
 Install the necessary packages:
 
-```
+```bash
 sudo apt install rpcbind nfs-kernel-server
 ```
 
@@ -247,7 +247,7 @@ Where `rw` makes the share read/write, and `sync` requires the server to only re
 
 After setting up `/etc/exports`, export the shares:
 
-```
+```bash
 sudo exportfs -ra
 ```
 
@@ -259,7 +259,7 @@ By default, rpcbind only binds to the loopback interface. To enable access to rp
 
 If any changes were made, rpcbind and NFS will need to be restarted:
 
-```
+```bash
 sudo systemctl restart rpcbind
 sudo systemctl restart nfs-kernel-server
 ```
@@ -278,7 +278,7 @@ Mounting an NFS share inside an encrypted home directory will only work after yo
 
 1. Create an alternative directory to mount the NFS shares in:
 
-```
+```bash
 sudo mkdir /nfs
 sudo mkdir /nfs/music
 ```
@@ -291,7 +291,7 @@ nfsServer:music    /nfs/music    nfs    auto    0 0
 
 Create a symbolic link inside your home, pointing to the actual mount location. For example, in our case delete the 'Music' directory already existing there first:
 
-```
+```bash
 rmdir /home/user/Music
 ln -s /nfs/music/ /home/user/Music
 ```
