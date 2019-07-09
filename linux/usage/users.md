@@ -32,23 +32,8 @@ Upon creating a new user, the contents of `/etc/skel/` will be copied to the new
 
 The default `pi` user on Raspbian is a sudoer. This gives the ability to run commands as root when preceded by `sudo`, and to switch to the root user with `sudo su`.
 
-To add a new user to sudoers, type `sudo visudo` (from a sudoer user) and find the line `root    ALL=(ALL:ALL) ALL`, under the commented header `# User privilege specification`. Copy this line and switch from `root` to the username. To allow passwordless root access, change to `NOPASSWD: ALL`. The example below gives the user `bob` passwordless sudo access:
-
-```bash
-# User privilege specification
-root  ALL=(ALL:ALL) ALL
-bob   ALL = NOPASSWD: ALL
-```
-
-Save and exit to apply the changes. Be careful, as it's possible to remove your own sudo rights by accident.
-
-You can change the editor the `visudo` command uses (the default is Nano) by entering:
-
-```bash
-update-alternatives --set editor /usr/bin/vim.tiny
-```
-
-This sets the editor to Vim.
+To add a new user to sudoers add the user to group sudo
+`sudo adduser bob sudo`
 
 ## Delete a user
 
