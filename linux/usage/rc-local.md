@@ -2,8 +2,8 @@
 
 In order to have a command or program run when the Pi boots, you can add commands to the `rc.local` file. This is especially useful if you want to be able to plug your Pi in to power headless, and have it run a program without configuration or a manual start.
 
-NOTE on Jessie or Stretch (which use systemd) rc.local has drawbacks, not all programs will run reliably as not all services may be available when rc.local runs.  
-See [systemd](https://www.raspberrypi.org/documentation/linux/usage/systemd.md) to have a command or program run when the Pi boots.
+NOTE: on Jessie and Stretch (which use systemd), `rc.local` has drawbacks: not all programs will run reliably, because not all services may be available when `rc.local` runs.  
+See [systemd](https://www.raspberrypi.org/documentation/linux/usage/systemd.md) for another way to have a command or program run when Raspberry Pi boots.
 
 An alternative for scheduled task management is [cron](cron.md).
 
