@@ -1,15 +1,15 @@
 # NFS - Network File System
 
-The "Network File System" allows you to share a directory located on one networked computer with other computers/devices on that network. The computer where directory located is called the server and computers or devices connecting to that server are called clients. Clients usually 'mount' the shared directory to make it a part of their own directory structure.
+A "Network File System" allows you to share a directory located on one networked computer with other computers or devices on that network. The computer where the directory is located is called the server, and computers or devices connecting to that server are called clients. Clients usually mount the shared directory to make it a part of their own directory structure.
 
-For smaller networks it is perfect for creating a simple NAS (Networked Attached Storage) in a Linux/Unix environment.
+For smaller networks, a NFS is perfect for creating a simple NAS (Network-attached Storage) in a Linux/Unix environment.
 
-It is perhaps suited for more permanent network mounted directories such as `/home` directories or regularly accessed shared resources. If you want a network share that guest users can easily connect to, Samba is more suited. This is because tools exist more readily across old and proprietary operating systems to temporarily mount and detach from Samba shares.
+It is perhaps best suited to more permanent network-mounted directories, such as `/home` directories or regularly accessed shared resources. If you want a network share that guest users can easily connect to, Samba is better suited. This is because tools to temporarily mount and detach from Samba shares are more readily across old and proprietary operating systems.
 
-Ubuntu Before deploying NFS you should be familiar with:
+Ubuntu Before deploying a NFS you should be familiar with:
 
 1. Linux file and directory permissions
-1. Mounting and unmounting filesystems
+2. Mounting and unmounting filesystems
 
 ### Setup a basic NFS server
 
