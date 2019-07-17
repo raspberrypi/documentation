@@ -16,7 +16,7 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | h264_freq | Frequency of the hardware video block in MHz; individual override of the `gpu_freq` setting |
 | isp_freq | Frequency of the image sensor pipeline block in MHz; individual override of the `gpu_freq` setting |
 | v3d_freq | Frequency of the 3D block in MHz; individual override of the `gpu_freq` setting |
-| sdram_freq | Frequency of the SDRAM in MHz; default value is `400` for the Pi 1/Pi 2, `450` on the Pi 3/Pi Zero/Pi Zero W, `500` on the Pi 3B+, `3200` on the Pi 4B|
+| sdram_freq | Frequency of the SDRAM in MHz; default value is `400` for the Pi 1/Pi 2, `450` on the Pi 3/Pi Zero/Pi Zero W, `500` on the Pi 3B+, `3200` on the Pi 4B, SDRAM Overclocking on the 4B is currently not supported|
 | over_voltage | CPU/GPU core voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. In other words, specifying -16 will give 0.8V as the GPU/core voltage, and specifying 8 will give 1.4V. For defaults see table below. Values above 6 are only allowed when `force_turbo` is specified: this sets the warranty bit if `over_voltage_*` is also set. |
 | over_voltage_sdram | Sets `over_voltage_sdram_c`, `over_voltage_sdram_i`, and `over_voltage_sdram_p` together. |
 | over_voltage_sdram_c | SDRAM controller voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
