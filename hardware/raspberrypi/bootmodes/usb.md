@@ -1,6 +1,6 @@
 # USB boot modes
 
-There are two separate boot modes for USB (only available on certain models): 
+There are two separate boot modes for USB (available only on certain models): 
 
 * [USB device boot](device.md)
 * [USB host boot](host.md) with boot options:
