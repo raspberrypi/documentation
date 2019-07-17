@@ -25,7 +25,7 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | force_turbo | Forces turbo mode frequencies even when the ARM cores are not busy. Enabling this may set the warranty bit if `over_voltage_*` is also set. |
 | initial_turbo | Enables turbo mode from boot for the given value in seconds, or until cpufreq sets a frequency. For more information [see here](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=6201&start=425#p180099). The default value is `0`, maximum value is `60`. |
 | arm_freq_min | Minimum value of arm_freq used for dynamic frequency clocking. The default value is `700` for the Pi Zero/Pi 1, `600` for the Pi 2/Pi 3. |
-| core_freq_min | Minimum value of `core_freq` used for dynamic frequency clocking. The default value is `250`. |
+| core_freq_min | Minimum value of `core_freq` used for dynamic frequency clocking. The default value is `250`. On the 4B the default is`275` when `hdmi_enable_4kp60` is set|
 | gpu_freq_min | Minimum value of `gpu_freq` used for dynamic frequency clocking. The default value is `250`, `500` on the Pi 4B. |
 | h264_freq_min | Minimum value of `h264_freq` used for dynamic frequency clocking. The default value is `250`, `500` on the Pi 4B. |
 | isp_freq_min | Minimum value of `isp_freq` used for dynamic frequency clocking. The default value is `250`, `500` on the Pi 4B. |
@@ -44,13 +44,13 @@ This table describes the overvoltage settings for the various Pi models. The fir
 | Pi 3 | 1.2-1.3125V | 0 |
 | Pi Zero | 1.35V | 6 |
 
-**Specific to Pi 4B**: The `core_freq` of the Raspberry Pi 4 can change from the default if either `hdmi_enable_4k` or `enable_tvout` are used, due to relationship between internal clocks and the particular requirements of the requested display modes.
+**Specific to Pi 4B**: The `core_freq` of the Raspberry Pi 4 can change from the default if either `hdmi_enable_4kp60=1` or `enable_tvout` are used, due to relationship between internal clocks and the particular requirements of the requested display modes.
 
 |Display option | Frequency |
 |---------------|-----------|
 | Default        | 500 |     
 | enable_tvout | 432 |
-| hdmi_enable_4k | 600 |
+| hdmi_enable_4kp60 | 600 |
 
 ### force_turbo
 
