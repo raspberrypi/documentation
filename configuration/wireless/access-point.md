@@ -225,7 +225,7 @@ Name=br0
 Kind=bridge
 ```
 
-Then configure the bridge interface br0 and the slave interface eth0 using .network files as follows.
+Then configure the bridge interface br0 and the slave interface eth0 using .network files as follows:
 
 ```
 sudo nano /etc/systemd/network/bridge-br0-slave.network
@@ -297,4 +297,4 @@ The bridge will have been allocated an IP address via the wired Ethernet's DHCP 
 ip addr
 ```
 
-The `wlan0` and `eth0` no longer have IP addresses, as they are now controlled by the bridge. It is possible to use a static IP address for the bridge if required, but generally, if the Raspberry Pi access point is connected to a ADSL router, the DHCP address will be fine.
+The `wlan0` and `eth0` no longer have IP addresses, as they are now controlled by the bridge. It is possible to use a static IP address for the bridge if required, but generally, if the Raspberry Pi access point is connected to an ADSL router, the DHCP address will be fine.
