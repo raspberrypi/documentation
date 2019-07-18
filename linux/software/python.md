@@ -1,8 +1,8 @@
 # Installing Python packages
 
-## APT
+## apt
 
-Some Python packages can be found in the Raspbian archives and can be installed using APT. For example:
+Some Python packages can be found in the Raspbian archives and can be installed using apt. For example:
 
 ```bash
 sudo apt-get update
@@ -33,7 +33,7 @@ sudo apt-get purge python3-picamera
 
 Not all Python packages are available in the Raspbian archives, and those that are can sometimes be out-of-date. If you can't find a suitable version in the Raspbian archives, you can install packages from the [Python Package Index](http://pypi.python.org/) (PyPI). To do so, use the `pip` tool.
 
-`pip` is installed by default in Raspbian Jessie (but not Raspbian Wheezy or Jessie Lite). You can install it with `apt`:
+`pip` is installed by default in Raspbian Desktop images (but not Raspbian Lite). You can install it with `apt`:
 
 ```bash
 sudo apt-get install python3-pip
@@ -50,17 +50,21 @@ sudo apt-get install python-pip
 For example, the following command installs the Unicorn HAT library for Python 3:
 
 ```bash
-pip3 install unicornhat
+sudo pip3 install unicornhat
 ```
 
 The following command installs the Unicorn HAT library for Python 2:
 
 ```bash
-pip install unicornhat
+sudo pip install unicornhat
 ```
 
-**Note**: In Raspbian Wheezy, the command for managing Python 3 packages was `pip-3.2`, not `pip3`.
-
-Uninstall Python modules with `pip3 uninstall` or `pip uninstall`.
+Uninstall Python modules with `sudo pip3 uninstall` or `sudo pip uninstall`.
 
 Upload your own Python modules to `pip` with the [guide at PyPI](https://wiki.python.org/moin/CheeseShopTutorial#Submitting_Packages_to_the_Package_Index).
+
+## piwheels
+
+The official Python Package Index (PyPI) hosts files uploaded by package maintainers. Some packages require compilation (compiling C/C++ or similar code) in order to install them, which can be a time-consuming task, particlarly on the single-core Raspberry Pi 1 or Pi Zero.
+
+piwheels is a service providing pre-compiled packages (called Python wheels) ready for use on the Raspberry Pi. Raspbian is pre-configired to use piwheels for pip. Read more about the piwheels project at [www.piwheels.org](https://www.piwheels.org/).

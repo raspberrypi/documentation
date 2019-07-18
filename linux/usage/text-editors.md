@@ -10,19 +10,19 @@ On Raspbian, you'll find an editor called Leafpad. This is a simple editor which
 
 You can use keyboard shortcuts, such as `Ctrl + S` to save a file and `Ctrl + X` to exit.
 
-### IDLE
+### Thonny
 
-IDLE is a Python REPL and IDE, so you can write and edit Python code in a window and run it from there.
+Thonny is a Python REPL and IDE, so you can write and edit Python code in a window and run it from there.
 
-IDLE has independent windows and syntax highlighting. It's somewhat buggy, but it's generally fine for basic use.
-
-You can use keyboard shortcuts like `Ctrl + S` to save a file, or `Alt + P` (previous command) and `Alt + N` (next command) in the REPL.
-
-Note that IDLE uses Python 2 and IDLE 3 uses Python 3.
+Thonny has independent windows and syntax highlighting, and uses Python 3
 
 ### GVim
 
 See Vim below.
+
+### Geany
+
+A fast and lightweight IDE, supporting many different file types, including C/C++ and Python. Installed by default on Raspbian.
 
 ## Command-line editors
 

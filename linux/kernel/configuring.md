@@ -27,7 +27,7 @@ If you're cross-compiling, the second line should be:
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
 ```
 
-For all models of Raspberry Pi 2/3 (includes Pi 3+ and Compute Module 3):
+For all models of Raspberry Pi 2/3 (includes 3B+, 3A+ and Compute Module 3):
 
 ```
 $ KERNEL=kernel7

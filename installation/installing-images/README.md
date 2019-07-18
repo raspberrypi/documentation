@@ -26,7 +26,7 @@ You will need to use an image writing tool to install the image you have downloa
 
 **Etcher** is a graphical SD card writing tool that works on Mac OS, Linux and Windows, and is the easiest option for most users. Etcher also supports writing images directly from the zip file, without any unzipping required. To write your image with Etcher:
 
-- Download [Etcher](https://etcher.io/) and install it.
+- Download [Etcher](https://www.balena.io/etcher/) and install it.
 - Connect an SD card reader with the SD card inside.
 - Open Etcher and select from your hard drive the Raspberry Pi `.img` or `.zip` file you wish to write to the SD card.
 - Select the SD card you wish to write your image to.
@@ -37,3 +37,4 @@ For more advanced control of this process, see our system-specific guides:
 - [Linux](linux.md)
 - [Mac OS](mac.md)
 - [Windows](windows.md)
+- [Chrome OS](chromeos.md)
