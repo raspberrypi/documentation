@@ -44,13 +44,13 @@ This table describes the overvoltage settings for the various Pi models. The fir
 | Pi 3 | 1.2-1.3125V | 0 |
 | Pi Zero | 1.35V | 6 |
 
-**Specific to Pi 4B**: The `core_freq` of the Raspberry Pi 4 can change from the default if either `hdmi_enable_4k` or `enable_tvout` are used, due to relationship between internal clocks and the particular requirements of the requested display modes.
+**Specific to Pi 4B**: The `core_freq` of the Raspberry Pi 4 can change from the default if either `hdmi_enable_4kp60` or `enable_tvout` are used, due to relationship between internal clocks and the particular requirements of the requested display modes.
 
 |Display option | Frequency |
 |---------------|-----------|
 | Default        | 500 |     
 | enable_tvout | 432 |
-| hdmi_enable_4k | 600 |
+| hdmi_enable_4kp60 | 600 |
 
 ### force_turbo
 
