@@ -1,5 +1,6 @@
 # Raspberry Pi documentation glossary
 
+
 - **A/mA** – ampere/milliampere, the base unit of electrical current; see [Wikipedia](https://en.wikipedia.org/wiki/Ampere)
 - **API** - [Application Programming Interface](https://en.wikipedia.org/wiki/Application_programming_interface), a set of subroutine definitions, communication protocols and tools used for building software.
 - **Arm** – a series of instruction-set architectures and processor microarchitectures, mostly developed by Arm Holdings based in Cambridge, UK; see [Wikipedia](https://en.wikipedia.org/wiki/Arm_architecture)
@@ -28,14 +29,14 @@
 - **FAQ** - Frequently Asked Questions! See our [FAQ](https://www.raspberrypi.org/documentation/faqs/)
 - **Firmware** – software that runs on a particular hardware device, for example a wireless chip or dongle; distinct from the usual software running on the Raspberry Pi in that it is usually a fixed binary blob of data that is loaded on to the device at startup; on the Raspberry Pi, the VC4 GPU requires firmware to be loaded to it at startup in order boot up and run the entire system.
 - **GNU** - The [GNU Project](https://en.wikipedia.org/wiki/GNU_Project) is a free software mass collaboration project, which has produced huge amounts of software that is used on the Raspberry Pi, including Linux itself.
-- **GPIO** – General Purpose Input/Output, the programmable pins on the Raspberry Pi
-- **GPU** – Graphical Processing Unit, a hardware device for handling graphical (and related) tasks at high speed; on the Raspberry Pi, this is called the VideoCore4 (VC4), and is built into the SoC.
-- **HAT** - Hardware Attached on Top. A specification for designing devices to attach to the Raspberry Pi, see the launch announcement [here](https://www.raspberrypi.org/blog/introducing-raspberry-pi-hats/).
-- **HDMI**  High-Definition Multimedia Interface, a standard interface for transmitting uncompressed video and compressed or uncompressed audio data from a source device to a display device; see [Wikipedia](https://en.wikipedia.org/wiki/HDMI)
-- **HDCP** – High-bandwidth Digital Content Protection, an optional encryption mechanism used for HDMI or DVI transmission; see [Wikipedia](https://en.wikipedia.org/wiki/High-bandwidth_Digital_Content_Protection)
-- **HVS** – Hardware Video Scaler, a hardware block in the VC4 GPU on all Raspberry Pi models used for manipulating and displaying bitmaps
-- **I<sup>2</sup>C/I2C/IIC** – Inter-Integrated Circuit (pronounced _I-squared-C_), an electrical protocol used for attaching lower-speed peripheral ICs to processors and microcontrollers in short-distance, intra-board communication; see [Wikipedia](https://en.wikipedia.org/wiki/I%C2%B2C)
-- **I<sup>2</sup>S** – Inter-Integrated Circuit Sound, an electrical serial bus interface standard used for connecting digital audio devices together; see [Wikipedia](https://en.wikipedia.org/wiki/I%C2%B2S)
+- **GPIO** – General Purpose Input/Output, the programmable pins on the Raspberry Pi.
+- **GPU** – Graphical Processing Unit, a hardware device for handling graphical (and related) tasks at high speed; on the Raspberry Pi range up to the Pi 3B+, this is called the VideoCore4 (VC4), and is built into the SoC. On the Pi 4, a newer and faster version called VideoCore6 (VC6) is used.
+- **HAT** - Hardware Attached on Top, a specification for designing devices to attach to the Raspberry Pi; see the [launch announcement](https://www.raspberrypi.org/blog/introducing-raspberry-pi-hats/).
+- **HDMI** – [High-Definition Multimedia Interface](https://en.wikipedia.org/wiki/HDMI), a standard interface for transmitting uncompressed video and compressed or uncompressed audio data from a source device to a display device.
+- **HDCP** – [High-bandwidth Digital Content Protection](https://en.wikipedia.org/wiki/High-bandwidth_Digital_Content_Protection), an optional encryption mechanism used for HDMI or DVI transmission.
+- **HVS** – Hardware Video Scaler, a hardware block in the VC4 or VC6 GPU on all Raspberry Pi models that is used for manipulating and displaying bitmaps.
+- **I<sup>2</sup>C/I2C/IIC** – [Inter-Integrated Circuit](https://en.wikipedia.org/wiki/I%C2%B2C) (pronounced _I-squared-C_), an electrical protocol used for attaching lower-speed peripheral ICs to processors and microcontrollers in short-distance, intra-board communication.
+- **I<sup>2</sup>S** – [Inter-Integrated Circuit Sound](https://en.wikipedia.org/wiki/I%C2%B2S), an electrical serial bus interface standard used for connecting digital audio devices together.
 - **ISP** – Imaging System Pipeline, a set of hardware (and sometimes software) stages that processes images from a camera into a high-quality result; the Raspberry Pi has a built-in hardware ISP that processes images captured from a camera attached to the CSI port.
 - **ISP** - Internet service provider.
 - **LAN** - Local Area Network, an ethernet or wireless based communication network in a localised area, for example a house or office.
@@ -46,7 +47,7 @@
 - **NAND** - a NAND gate is a logic gate, specifically an inverted AND gate; can also refer to a type of flash memory that uses NAND logic; see [Wikipedia](https://en.wikipedia.org/wiki/NAND_gate)
 - **NOOBS** - New Out of Box software. Easy [OS system image installation](https://www.raspberrypi.org/documentation/installation/noobs.md) for the Raspberry Pi range. Note, NOOBS is no longer developed by the Raspberry Pi team, see PINN instead.
 - **OTP** – One-Time Programmable, a type of memory that can only be programmed once, and retains the programmed data after power off; used for serial numbers etc.
-- **Overlay** – a boot-time or run-time patch to a Device Tree allowing a degree of configuration by the user; see our [official documentation](https://www.raspberrypi.org/documentation/configuration/device-tree.md) for more details, or run `dtoverlay -a` in a terminal window for a list of available overlays
+- **Overlay** – A boot-time or run-time patch to a Device Tree allowing a degree of configuration by the user; see our [official documentation](../configuration/device-tree.md) for more details, or run `dtoverlay -a` in a terminal window for a list of available overlays.
 - **Pink Pony/Unicorn** - A feature request for a future Raspberry Pi model that is unlikely to happen.
 - **PINN** - A [third party development](https://github.com/procount/pinn) of the NOOBS system, often a better option than the official NOOBS.
 - **PoE** - Power over Ethernet, a mechanism to power a device through its Ethernet connection. Raspberry Pi produce a [PoE HAT](https://www.raspberrypi.org/products/poe-hat) for the Raspberry Pi Model 3B plus.

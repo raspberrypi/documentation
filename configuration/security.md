@@ -262,7 +262,7 @@ logpath  = /var/log/auth.log
 maxretry = 6
 ```
 
-As you can see, this section is named ssh, is enabled, examines the ssh port, filters using the `/etc/fail2ban/filters.d/sshd.conf` parameters, parses the /var/log/auth.log for malicious activity, and allows six retries before the detection threshold is reached. Checking the default section, we can see that the default banning action is:
+As you can see, this section is named ssh, is enabled, examines the ssh port, filters using the `/etc/fail2ban/filter.d/sshd.conf` parameters, parses the `/var/log/auth.log` for malicious activity, and allows six retries before the detection threshold is reached. Checking the default section, we can see that the default banning action is:
 
 ```bash
 # Default banning action (e.g. iptables, iptables-new,

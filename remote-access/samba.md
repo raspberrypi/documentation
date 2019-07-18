@@ -54,7 +54,7 @@ On Windows 10 there is a Sharing Wizard that helps with some of these steps.
 
 #### Mount the folder on the Raspberry Pi
 
-**Mounting*** in Linux is the process of attaching a folder to a location, so firstly we need that location.
+**Mounting** in Linux is the process of attaching a folder to a location, so firstly we need that location.
 
 ```bash
 mkdir windowshare
@@ -93,10 +93,7 @@ At the end of the file, add the following to share the folder, giving the remote
 ```
 [share]
     path = /home/pi/shared
-    available = yes
-    valid users = pi
     read only = no
-    browsable = yes
     public = yes
     writable = yes
 ```

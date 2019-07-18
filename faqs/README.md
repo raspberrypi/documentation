@@ -129,7 +129,11 @@ The following prices are exclusive of any local taxes and shipping/handling fees
 | Raspberry Pi Model B+ |$25 |
 | Raspberry Pi 2 Model B| $35 |
 | Raspberry Pi 3 Model B | $35 |
+| Raspberry Pi 3 Model A+ | $25 |
 | Raspberry Pi 3 Model B+ | $35 |
+| Raspberry Pi 4 Model B 1GB | $35 |
+| Raspberry Pi 4 Model B 2GB | $45 |
+| Raspberry Pi 4 Model B 4GB | $55 |
 | Raspberry Pi Zero | $5 |
 | Raspberry Pi Zero W |$10 |
 | Raspberry Pi Zero WH |$15 |
@@ -176,18 +180,26 @@ These are the [models of the Raspberry Pi](https://www.raspberrypi.org/products/
 | Raspberry Pi Model B+ | BCM2835 | 700MHz | 512MB | 4 |100Base-T | No | No |
 | Raspberry Pi 2 Model B | BCM2836/7 | 900MHz | 1GB | 4 |100Base-T| No | No |
 | Raspberry Pi 3 Model B | BCM2837A0/B0 | 1200MHz | 1GB | 4 |100Base-T| 802.11n| 4.1 |
+| Raspberry Pi 3 Model A+ | BCM2837B0 | 1400MHz | 512MB | 1 | No | 802.11ac/n | 4.2 |
 | Raspberry Pi 3 Model B+ | BCM2837B0 | 1400MHz | 1GB | 4 |1000Base-T | 802.11ac/n | 4.2 |
+| Raspberry Pi 4 Model B | BCM2711 | 1500MHz | 1GB | 2xUSB2, 2xUSB3 |1000Base-T | 802.11ac/n | 5.0 |
+| Raspberry Pi 4 Model B | BCM2711 | 1500MHz | 2GB | 2xUSB2, 2xUSB3 |1000Base-T | 802.11ac/n | 5.0 |
+| Raspberry Pi 4 Model B | BCM2711 | 1500MHz | 4GB | 2xUSB2, 2xUSB3 |1000Base-T | 802.11ac/n | 5.0 |
 | Raspberry Pi Zero | BCM2835 | 1000MHz | 512MB | 1 | No | No | No |
 | Raspberry Pi Zero W | BCM2835 | 1000MHz | 512MB | 1 | No | 802.11n | 4.1 |
 | Raspberry Pi Zero WH | BCM2835 | 1000MHz | 512MB | 1 | No | 802.11n | 4.1 |
 
-The Model A+ is the low-cost variant of the Raspberry Pi. It has 512MB RAM (as of August 2016: earlier models have 256MB), one USB port, 40 GPIO pins, and no Ethernet port. The Model B+ is the final revision of the original Raspberry Pi. It has 512MB RAM, four USB ports, 40 GPIO pins, and an Ethernet port.
+The Model A+ is the low-cost variant of the Raspberry Pi. It has 512MB RAM (as of August 2016: earlier models have 256MB), one USB port, 40 GPIO pins, and no Ethernet port.
+
+The Model B+ is the final revision of the original Raspberry Pi. It has 512MB RAM, four USB ports, 40 GPIO pins, and an Ethernet port.
 
 In February 2015, it was superseded by the Pi 2 Model B, the second generation of the Raspberry Pi. The Pi 2 shares many specs with the Pi 1 B+, and originally used a 900MHz quad-core Arm Cortex-A7 CPU and has 1GB RAM. Some recent version of the Pi 2 (v1.2) now use a 900MHz Arm Cortex-A53 CPU.
 
 The Pi 3 Model B was launched in February 2016. It uses a 1.2GHz 64-bit quad-core Arm Cortex-A53 CPU, has 1GB RAM, integrated 802.11n wireless LAN, and Bluetooth 4.1.
 
-The Pi 3 Model B+ was launched in March 2018. It uses a 1.4GHz 64-bit quad-core Arm Cortex-A53 CPU, has 1GB RAM, gigabit Ethernet, integrated 802.11ac/n wireless LAN, and Bluetooth 4.2. and is the model we recommend for use in schools, due to its flexibility for the learner.
+The Pi 3 Model B+ was launched in March 2018. It uses a 1.4GHz 64-bit quad-core Arm Cortex-A53 CPU, has 1GB RAM, gigabit Ethernet, integrated 802.11ac/n wireless LAN, and Bluetooth 4.2.
+
+The Pi 4 Model B was launched in June 2019. It uses a 1.5GHz 64-bit quad-core Arm Cortex-A72 CPU, has three RAM options (1GB, 2GB, 4GB), gigabit Ethernet, integrated 802.11ac/n wireless LAN, and Bluetooth 5.0. 
 
 The Pi Zero and Pi Zero W/WH are half the size of a Model A+, with a 1GHz single-core CPU and 512MB RAM, and mini-HDMI and USB On-The-Go ports and a camera connector. The Pi Zero W also has integrated 802.11n wireless LAN and Bluetooth 4.1. The Pi Zero WH is identical to the Zero W, but comes with a pre-soldered header.
 
@@ -225,15 +237,19 @@ The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37
 
 ### How powerful is it?
 
-The GPU provides OpenGL ES 2.0, hardware-accelerated OpenVG, and 1080p30 H.264 high-profile encode and decode. The GPU is capable of 1Gpixel/s, 1.5Gtexel/s or 24 GFLOPs of general purpose compute and features a bunch of texture filtering and DMA infrastructure. This means that graphics capabilities are roughly equivalent to the original Xbox's level of performance. Overall real-world performance for models A, A+, B, B+, CM, Zero and Zero W is something like a 300MHz Pentium 2, only with much better graphics. The Pi 2 Model B is approximately equivalent to an Athlon Thunderbird running at 1.1GHz: again, it has the much higher-quality graphics that come from using the same GPU as in previous models. The Pi 3 Model B is around twice as fast as the Pi 2 Model B, depending on the benchmarks chosen.
+All Pi models up to the Raspberry Pi 3 have a GPU that provides OpenGL ES 2.0, hardware-accelerated OpenVG, and 1080p30 H.264 high-profile encode and decode. The GPU is capable of 1Gpixel/s, 1.5Gtexel/s, or 24 GFLOPs of general-purpose compute, and it features a range of texture filtering and DMA infrastructure. This means that graphics capabilities are roughly equivalent to the original Xbox's level of performance. Overall real-world performance for Pi 1 Model A, A+, B, B+, Pi Zero/Zero W, and CM1 is similar to that of a 300MHz Pentium 2, but with much better graphics. The Pi 2 Model B is approximately equivalent to an Athlon Thunderbird running at 1.1GHz; again, it has the much higher-quality graphics, which come from using the same GPU as previous models. The Pi 3 Model B is around twice as fast as the Pi 2 Model B, depending on the benchmarks chosen.
+
+The Raspberry Pi 4 uses an improved GPU — the VideoCore VI. This is around four times faster than the VideoCore IV used for previous models. The new ARM A72 cores on the BCM2711 chip give much better performance than the previous models, and a new PCIe bus gives faster USB 2.0 and new USB 3.0 functionality. Pi 4's native Ethernet capability allows full 1Gbit I/O. These features, combined with the optional extra RAM (the Pi 4 can be purchased with 1GB, 2GB, or 4GB RAM), mean that the Raspberry Pi 4 can now provide a great desktop computing experience!
 
 ### Can I use my Pi as a desktop replacement?
 
-Yes and no, it depends! For many daily tasks the Pi is quite suitable, however, because internet browsers nowadays require a lot of memory, browsing can be a bit slow if you open too many browser tabs. Although 1GB of RAM seems like a lot, modern browsers are real memory hogs!
+It depends on the model you have! For many daily tasks the Pi 3 is quite suitable, but because modern internet browsers require a lot of memory, browsing can be a bit slow if you open too many browser tabs. Although 1GB of RAM seems like a lot, modern browsers are real memory hogs!
+
+The Raspberry Pi 4 — with its faster cores, extra memory, and much improved I/O — is a very good desktop replacement. 
 
 ### Can I add extra RAM?
 
-No. The RAM on the model A, A+, B, B+, and Zero is a Package on Package (POP) on top of the SoC, so it is not removable or swappable. The RAM on the Pi 2 and 3 Model B versions is on a separate chip on the bottom of the PCB, but 1GB is the maximum RAM that the SoC used by the Pi 2 and 3 Model B versions can support.
+No. The RAM on the Pi 1 Model A, A+, B, B+, and Pi Zero/Zero W is a Package on Package (POP) on top of the SoC, which means you cannot remove or swap it. The RAM on the Pi 2 and 3 Model B versions is on a separate chip on the bottom of the PCB, but 1GB is the maximum RAM that the SoC used by the Pi 2 and 3 Model B can support. The Raspberry Pi 4 supports up to 4GB of RAM, but like previous models, it is not upgradeable after purchase.
 
 ### Can I connect multiple Pis together to make a faster computer?
 
@@ -245,9 +261,7 @@ The Raspberry Pi (all models) idles at a lower speed than advertised. If the wor
 
 ### Does it overclock?
 
-The Raspberry Pi models A, A+, B, and B+ operate at 700 MHz by default. Most devices will run happily at 800MHz. The Pi 2 Model B operates at 900MHz by default and should run quite happily at 1000MHz. The Pi 3 Model B runs at 1.2GHz but there are no standard overclocking settings for this model.
-
-In the latest Raspbian distro, there is an option to change the overclocking options on first boot and at any time afterwards, without voiding your warranty, by running `sudo raspi-config`. You can download the Raspbian image directly or install it via the NOOBS installer, both available on our [downloads page](https://www.raspberrypi.org/downloads/). It should be noted, however, that these are experimental settings and that not every board will be able to run stably at the highest setting. If you experience problems, try reducing the overclocking settings until stability is restored.
+The Raspberry Pi 1 Model A, A+, B, and B+ operate at 700MHz by default. Most devices will run happily at 800MHz. The Pi 2 Model B operates at 900MHz by default and should run quite happily at 1000MHz. The Pi 3 Model B runs at 1.2GHz, but this model has no standard overclocking settings. The Raspberry Pi 4 runs at 1.5GHz, and has no overclocking options.
 
 ### What is its operating temperature? Does it need a heatsink?
 
@@ -274,11 +288,11 @@ We recommend going through this process once a week or so.
 
 ### I heard about something called `rpi-update`. When should I use that?
 
-Unless using it is recommended by a Raspberry Pi engineer, you should not use `rpi-update`. It updates to the very, very latest test firmware and kernel software, which may not work correctly under all circumstances.
+Do not use `rpi-update` unless you have been recommended to do so by a Raspberry Pi engineer. This is because it updates the Linux kernel and Raspberry Pi firmware to the very latest version which is currently under test. It may therefore make your Pi unstable, or cause random breakage.
 
 ### The processors on the latest Pi models are 64-bit, but I cannot find an official 64-bit OS.
 
-Raspberry Pi do not current provide an official 64-bit OS, for a number of reasons. Firstly, since we still sell devices that are 32-bit, we would need to support two separate distributions, and at the moment we do not have the support capacity. Secondly, building a full 64-bit OS would require a considerable amount of work to, for example, fix the interfacing to the 32-bit Videocore GPU. There are third-party 64-bit operating systems available, but they do not have the full support for the GPU that would be a requirement for an official release.
+Raspberry Pi do not currently provide an official 64-bit OS, for a number of reasons. Firstly, since we still sell devices that are 32-bit, we would need to support two separate distributions, and at the moment we do not have the support capacity. Secondly, building a full 64-bit OS would require a considerable amount of work to, for example, fix the interfacing to the 32-bit Videocore GPU. There are third-party 64-bit operating systems available, but they do not have the full support for the GPU that would be a requirement for an official release.
 
 ### Will it run Wine or Windows, or other x86 software?
 
@@ -310,7 +324,7 @@ It's also easy to copy files to and from Windows devices, rather than sharing fo
 
 ### Why does `cpuinfo` report I have a BCM2835?
 
-The upstream Linux kernel developers had decided that all models of Raspberry Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that `cat /proc/cpuinfo` is inaccurate for the Raspberry Pi 2 and Raspberry Pi 3, which use the bcm2836 and bcm2837 respectively. You can use `cat /proc/device-tree/model` to get an accurate description of the SoC on your Pi model.
+The upstream Linux kernel developers had decided that all models of Raspberry Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that `cat /proc/cpuinfo` is inaccurate for the Raspberry Pi 2, Raspberry Pi 3 and Raspberry Pi 4, which use the bcm2836/bcm2837, bcm2837 and bcm2711 respectively. You can use `cat /proc/device-tree/model` to get an accurate description of the SoC on your Pi model.
 
 ### How do I run a program at startup?
 
@@ -327,6 +341,8 @@ With Cron! [Here's how](../linux/usage/cron.md).
 
 There is composite and HDMI out on the board, so you can hook it up to an old analogue TV through the composite or through a composite to SCART connector, to a digital TV or to a DVI monitor (using a cheap, passive HDMI to DVI cable for the DVI). For the Model B+, Pi 2, and Pi 3, the RCA composite jack has been replaced with a 3.5mm jack that combines audio and video in one. You'll need a 3.5mm to 3RCA adapter cable to connect it to an older TV. There are many different types of this cable out there, but you want to purchase one that is compatible with the iPod Video (the iPod will have the left and right audio channels reversed, but the version of Raspbian included with NOOBS can swap this for you). The Pi Zero uses a mini-HDMI port.
 
+The Raspberry Pi 4 has support for two HDMI monitors, which attach via micro HDMI ports. It is also capable of displaying at full resolution on a 4K monitor or TV. Note that for best HDMI performance at 4K, a good-quality HDMI cable is required. We sell a full set of ancilliary components, including HDMI cables.
+
 ### Why is there no VGA support?
 
 Whilst there is no native VGA support, active adapters are available. Passive HDMI to VGA cables will not work with the Raspberry Pi. When purchasing an active VGA adapter, make sure it comes with an external power supply. HDMI to VGA adapters without an external power supply often fail to work.
@@ -342,6 +358,8 @@ The Raspberry Pi Foundation provides a 7" capacitive [touchscreen](https://www.r
 ### What codecs can it play?
 
 The Raspberry Pi can encode (record) and decode (play) H.264 (MP4/MKV) out of the box. There are also two additional codecs you can [purchase through our Swag Store](http://swag.raspberrypi.org/collections/software) that enable you to decode [MPEG-2](http://swag.raspberrypi.org/collections/software/products/mpeg-2-license-key), a very popular and widely used format to encode DVDs, video camera recordings, TV and many others, and [VC-1](http://swag.raspberrypi.org/collections/software/products/vc-1-license-key), a Microsoft format found in Blu-ray discs, Windows Media, Slingbox, and HD-DVDs.
+
+On the Raspberry Pi 4, the extra hardware CODEC support for MPEG-2 and VC-1 is not available: because the Pi 4's processors are powerful enough to decode these in software, no CODEC licence is necessary. In addition, the Pi 4 also has hardware support for decoding H265/HEVC.
 
 <a name="pi-audio"></a>
 
@@ -377,24 +395,26 @@ The device is powered by 5V micro USB. Exactly how much current (mA) the Raspber
 | Raspberry Pi 3 Model B | 2.5A | 1.2A | 400mA |
 | Raspberry Pi 3 Model A+ | 2.5A | Limited by PSU, board, and connector ratings only. | 350mA |
 | Raspberry Pi 3 Model B+ | 2.5A | 1.2A | 500mA |
+| Raspberry Pi 4 Model B | 3.0A | 1.2A | 600mA |
 | Raspberry Pi Zero W/WH | 1.2A | Limited by PSU, board, and connector ratings only.| 150mA |
 | Raspberry Pi Zero | 1.2A | Limited by PSU, board, and connector ratings only | 100mA |
 
-The specific current requirements of each model are dependent on the use case: the PSU recommendations are based on *typical maximum* current consumption, the typical current consumption is for each board in a *desktop computer* configuration. The Raspberry Pi Model A, A+, and B can supply a maximum of 500mA to downstream USB peripherals. If you wish to connect a high-power USB device, it is recommended that you connect a powered USB hub to the Pi and connect your peripherals to the USB hub. The Raspberry Pi  B+ and 2 Model B can supply 600mA/1.2A to downstream USB peripherals, switchable by a firmware setting. This allows the vast majority of USB devices to be connected directly to these models, assuming the upstream power supply has sufficient available current. Very high-current devices or devices which can draw a surge current such as certain modems and USB hard disks will still require an external powered USB hub. The power requirements of the Raspberry Pi increase as you make use of the various interfaces on the Raspberry Pi. The GPIO pins can draw 50mA safely (note that that means 50mA distributed across all the pins: an individual GPIO pin can only safely draw 16mA), the HDMI port uses 50mA, the Camera Module requires 250mA, and keyboards and mice can take as little as 100mA or as much as 1000mA! Check the power rating of the devices you plan to connect to the Pi and purchase a power supply accordingly. If you're not sure, we would advise you to buy a powered hub.
+The specific current requirements of each model are dependent on the use case: the PSU recommendations are based on **typical maximum** current consumption, the typical current consumption is for each board in a *desktop computer* configuration. The Raspberry Pi Model A, A+, and B can supply a maximum of 500mA to downstream USB peripherals. If you wish to connect a high-power USB device, it is recommended that you connect a powered USB hub to the Pi and connect your peripherals to the USB hub. The Raspberry Pi  B+ and 2 Model B can supply 600mA/1.2A to downstream USB peripherals, switchable by a firmware setting. This allows the vast majority of USB devices to be connected directly to these models, assuming the upstream power supply has sufficient available current. Very high-current devices or devices which can draw a surge current such as certain modems and USB hard disks will still require an external powered USB hub. The power requirements of the Raspberry Pi increase as you make use of the various interfaces on the Raspberry Pi. The GPIO pins can draw 50mA safely (note that that means 50mA distributed across all the pins: an individual GPIO pin can only safely draw 16mA), the HDMI port uses 50mA, the Camera Module requires 250mA, and keyboards and mice can take as little as 100mA or as much as 1000mA! Check the power rating of the devices you plan to connect to the Pi and purchase a power supply accordingly. If you're not sure, we would advise you to buy a powered hub.
 
-Here is a table comparing the amount of power drawn in A (amps) under different situations:
+This is the typical amount of power (in ampere) drawn by different Pi models during standard processes:
 
-| | | Pi1 (B+) | Pi2 B | Pi3 B (amps)| Zero (amps)|
-|-|-|----------|-------|-------------|------------|
-| Boot | Max |0.26 | 0.40| 0.75| 0.20 |
-| | Avg | 0.22 | 0.22 | 0.35 | 0.15 |
-| Idle |Avg | 0.20 | 0.22 | 0.30 | 0.10 |
-| Video playback (H.264) | Max | 0.30 | 0.36 |0.55 |0.23 |
-| | Avg | 0.22 | 0.28 | 0.33 | 0.16 |
-| Stress | Max | 0.35 | 0.82 | 1.34 | 0.35 |
-| | Avg | 0.32 | 0.75 | 0.85 | 0.23 |
+| | | Pi 1B+ | Pi 2B | Pi 3B | Pi Zero | Pi 4B |
+|-|-|----------|-------|-------------|------------|------|
+| Boot | Max |0.26 | 0.40| 0.75| 0.20 | 0.85 |
+| | Avg | 0.22 | 0.22 | 0.35 | 0.15 | 0.7 |
+| Idle |Avg | 0.20 | 0.22 | 0.30 | 0.10 | 0.6 |
+| Video playback (H.264) | Max | 0.30 | 0.36 |0.55 |0.23 | 0.85 | 
+| | Avg | 0.22 | 0.28 | 0.33 | 0.16 | 0.78 |
+| Stress | Max | 0.35 | 0.82 | 1.34 | 0.35 | 1.25 |
+| | Avg | 0.32 | 0.75 | 0.85 | 0.23 | 1.2 |
+| Halt current | | | | 0.10 | 0.055 | 0.023 | 
 
-Test conditions used a standard Raspbian image (current as of 26 Feb 2016), at room temperature, connected to a HDMI monitor, USB keyboard and mouse. The Pi 3 Model B was connected to a WiFi access point. All these power measurements do not take into account power consumption from additional USB devices; they can easily be exceeded with multiple additional USB devices connected or when using a HAT.
+**Test conditions:** We used a standard Raspbian image (current as of 26 Feb 2016, or June 2019 for the Pi 4), at room temperature, with the Pi connected to a HDMI monitor, USB keyboard, and USB mouse. The Pi 3 Model B was connected to a wireless LAN access point, the Pi 4 was connected to Ethernet. All these power measurements are approximate and do not take into account power consumption from additional USB devices; power consumption can easily exceed these measurements if multiple additional USB devices or a HAT are connected to the Pi.
 
 ### Can I power the Raspberry Pi from a USB hub?
 
@@ -406,7 +426,7 @@ Running the Raspberry Pi directly from batteries requires special care and can r
 
 ### Is Power over Ethernet possible?
 
-Yes, if you own a 3B+, you can use the the official Raspberry Pi PoE HAT. For other models, there are adapters that would split the voltage off the Ethernet line before connecting to the Pi. However, we have not tested any of these, so cannot recommend any of these third-party PoE solutions. 
+Yes: if you own a 3B+ or 4B, you can use our [official Raspberry Pi PoE HAT](https://www.raspberrypi.org/products/poe-hat/) to power that Pi over Ethernet. For other models, there are adapters that split the voltage off the Ethernet line before connecting to the Pi. However, we have not tested any third-party PoE solutions, so we cannot recommend any of these. 
 
 ### What voltage devices can I attach to the GPIO pins, and how much current can I pull?
 
@@ -418,11 +438,11 @@ The GPIO pins are natively 3.3V, so 5V devices **MUST NOT** be attached directly
 
 ### What size of SD card do I need?
 
-Whether you want to use the NOOBS installer or a standalone image, the minimum size SD card we recommend using is 8GB. This will give you the free space you need to install additional packages or make programs of your own. The original Raspberry Pi Model A and Model B require full-size SD cards. The newer Raspberry Pi Model A+, Model B+, 2B, 3B, 3B+, Zero, ZeroW and ZeroWH require micro SD cards.
+Whether you want to use the [official Raspbian operating system](https://www.raspberrypi.org/downloads/raspbian/) (or the [NOOBS installer for Raspbian](https://www.raspberrypi.org/downloads/noobs/) or a different standalone operating system image (see [recommended third-party OS](https://www.raspberrypi.org/downloads/)), **the minimum-size SD card we recommend using is 8GB**. This will give you the free space you need to install additional packages or make programs of your own. The original Raspberry Pi Model A and Model B require full-size SD cards. The newer Raspberry Pi 1 Model A+, Model 1 B+, 2B, 3B, 3B+, 3A+, 4B, Zero, Zero W, and Zero WH require microSD cards.
 
 ### What size of SD card can it support?
 
-We have tried cards up to 128GB, and most cards seem to work OK. You can also attach a USB stick or USB hard drive to provide extra storage.
+While the recommended minimum of 8GB should be enough for most people, we have tried cards up to 128GB, and most cards seem to work OK. You can also attach a USB stick or USB hard drive to provide extra storage.
 
 ### Can I boot a Pi from a USB-attached hard drive instead of the SD card?
 
@@ -438,17 +458,17 @@ If you brick the device, you can restore it by reflashing the SD card.
 
 ### Does the device support networking?
 
-The Model B, Model B+, and Pi 2 and 3 Model B versions of the device have built in 10/100 wired Ethernet. There is no Ethernet on the Model A, Model A+, and Zero versions.
+The Pi 1 Model B and B+, Pi 2, and Pi 3 Model B versions of the device have built in 10/100 wired Ethernet. The Pi 3B+ and Pi 4 have 1000BaseT wired Ethernet, but on the 3B+, throughput is limited by its USB 2.0 connection to the SoC. There is no Ethernet on the Pi 1 Model A and A+, and the Pi Zero/Zero W.
 
 ### Is there built-in WiFi?
 
-Only the Pi 3, 3+ and Pi Zero W have built-in wireless connectivity, but all other models can support a USB WiFi dongle. The Foundation offers its own branded WiFi dongle which has been fully tested for use with the Raspberry Pi. It is [available through our distributors](https://www.raspberrypi.org/products/raspberry-pi-usb-wifi-dongle). You can, of course, use a dongle from another provider if you wish.
+Only the Pi 3, 3+, 4, and Pi Zero W have built-in wireless connectivity, but all other Pi models can support a USB WiFi dongle. We offer our own branded WiFi dongle, which has been fully tested for use with the Raspberry Pi. It is [available through our distributors](https://www.raspberrypi.org/products/raspberry-pi-usb-wifi-dongle). You can, of course, use a dongle from another provider if you wish.
 
-The Raspberry Pi Model 3B+ supports 802.11ac, all previous models support up to 802.11n.
+The Raspberry Pi Model 3B+ and 4B support 802.11ac, and all earlier models support up to 802.11n.
 
 ### Is there built-in Bluetooth?
 
-Only on the Pi 3 models and on the Pi Zero W.
+Yes, the Pi 3, Pi 4, and Pi Zero W have built-in Bluetooth.
 
 ### I don't seem to get full-speed gigabit networking on my Pi 3B+.
 
@@ -456,7 +476,9 @@ Although the Ethernet chip on the Raspberry Pi 3B+ is gigabit-capable, the conne
 
 ### Does the device have support for any form of netbooting or PXE?
 
-Yes. The Raspberry Pi 3 can be set up to network boot without an SD card present; earlier models can PXE/Netboot with an appropriately set up SD card. You can find our netbooting documentation [here](../hardware/raspberrypi/bootmodes/net.md).
+The Raspberry Pi 3 can be set up to network boot without an SD card present; earlier models can PXE/Netboot with an appropriately set up SD card. You can find our netbooting documentation [here](../hardware/raspberrypi/bootmodes/net.md).
+
+The Raspberry Pi 4 does not currently support network booting without an SD card present. A bootloader update to support network boot is planned but not yet available.
 
 We have also developed [PiServer](https://www.raspberrypi.org/blog/piserver/), a piece of software that lets you easily set up a network of client Raspberry Pis connected to a single x86-based server via Ethernet. With PiServer, you don’t need SD cards, you can control all clients via the server, and you can add and configure user accounts — ideal for the classroom, your home, or an industrial setting.
 
@@ -514,7 +536,11 @@ Probably the most frequently asked question! We have full instructions for setti
 
 ### Why is my Pi hot?
 
-All electronics give off heat, and the Pi is no exception. The latest model (3B+) has heat-spreading technology to use the entire PCB and connectors as a heatsink to dissipate excess energy. This means that except in exceptional conditions, you are unlikely to need a heatsink on the SoC or the Ethernet hub chip. You can still add a heatsink if you wish, and this may prevent thermal throttling by keeping the chips below the throttling temperature (see the clock speed paragraph in the [Performance](#pi-performance) section).
+All electronics give off heat, and the Pi is no exception. The Raspberry Pi 3 Model B+ has heat-spreading technology to use the entire PCB and connectors as a heatsink to dissipate excess energy. This means that except in exceptional conditions, you are unlikely to need a heatsink on the SoC or the Ethernet hub chip.
+
+The Raspberry Pi 4 Model B uses the same heat-spreading technology but due to the much more powerful CPU cores is capable of higher peak power consumption than a Model 3B+. Under a continuously heavy processor workload, the Model 4B is more likely to throttle than a Model 3B+.
+
+You can add a heatsink if you wish, and this may prevent thermal throttling by keeping the chips below the throttling temperature (see the clock speed paragraph in the [Performance](#pi-performance) section).
 
 ### I keep getting a lightning bolt symbol and messages about power.
 

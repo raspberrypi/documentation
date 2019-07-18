@@ -20,6 +20,8 @@ If you're not using balenaEtcher (see below), you'll need to unzip `.zip` downlo
 
 ## Writing an image to the SD card
 
+Before you start, don't forget to check [the SD card requirements](../sd-cards.md).
+
 You will need to use an image writing tool to install the image you have downloaded on your SD card.
 
 **balenaEtcher** is a graphical SD card writing tool that works on Mac OS, Linux and Windows, and is the easiest option for most users. balenaEtcher also supports writing images directly from the zip file, without any unzipping required. To write your image with balenaEtcher:
@@ -35,3 +37,4 @@ For more advanced control of this process, see our system-specific guides:
 - [Linux](linux.md)
 - [Mac OS](mac.md)
 - [Windows](windows.md)
+- [Chrome OS](chromeos.md)

@@ -1,6 +1,8 @@
-# Boot flow
+# Boot sequence
 
-The flow of boot begins with reading the OTP to decide on the valid boot modes enabled. By default, this is SD card boot followed by USB device boot. Subsequently, the boot ROM checks to see if the GPIO boot mode OTP bits have been programmed — one to enable GPIO boot mode and one to select the bank of GPIOs it uses to disable boot modes (low = GPIOs 22-26, high = GPIOs 39-43). This makes it possible to use a hardware switch to choose between different boot modes if there is more than one available.
+**The following boot sequence applies to the BCM2837-based models of Raspberry Pi only. On all other models, the Pi will try [SD card boot](sdcard.md), followed by [USB device mode boot](device.md).**
+
+The boot sequence begins with reading the OTP to determine which boot modes are enabled. By default, this is SD card boot followed by USB device boot. Subsequently, the boot ROM checks to see whether the GPIO boot mode OTP bits have been programmed — one to enable GPIO boot mode, and one to select the bank of GPIOs it uses to disable boot modes (low = GPIOs 22-26, high = GPIOs 39-43). This makes it possible to use hardware attached to the GPIO connector to choose between different boot modes.
 
 The GPIO boot mode OTP bits can be programmed by adding `program_gpio_bootmode=n` to `config.txt`, where n is `1` to select the low bank (22-26) or `2` to select the high bank (39-43). Once added, boot the device, then power-cycle it (rebooting is not sufficient). You should expect it to no longer boot (all boot modes will be disabled by default). Apply a pull-up to the required pin to enable the required boot mode. After programming, the `config.txt` setting can be removed.
 

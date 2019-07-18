@@ -6,7 +6,7 @@ The Raspberry Pi's bootloader, built into the GPU and non-updateable, only has s
 
 ## Linux and Mac OS
 
-The standard formatting tools built into these operating systems are able to create FAT32 partitions; they might also be labelled as FAT or MS-DOS. Simply delete the existing exFAT partition and create and format a new FAT32 primary partition, before proceeding with the rest of the [NOOBS instructions](noobs.md). On a Mac, this means using the built-in Disk Utility application.
+The standard formatting tools built into these operating systems are able to create FAT32 partitions; they might also be labelled as FAT or MS-DOS. Simply delete the existing exFAT partition and create and format a new FAT32 primary partition, before proceeding with the rest of the [NOOBS instructions](noobs.md). On a Mac, this means using the command-line `diskutil` program.
 
 ## Windows
 

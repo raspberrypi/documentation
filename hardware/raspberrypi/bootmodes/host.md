@@ -1,4 +1,6 @@
-# USB Host boot mode
+# USB host boot mode
+
+**USB host boot is available on Raspberry Pi 3B, 3B+, 3A+, and 2B v1.2 only. Raspberry Pi 3A+ only supports mass storage boot, not network boot.**
 
 The USB host boot mode follows this sequence:
 
@@ -12,11 +14,11 @@ The USB host boot mode follows this sequence:
         * If VID == SMSC && PID == 9500
           * Add device to Ethernet device list
         * If class interface == mass storage class
-          * Add device to MSD device list
+          * Add device to mass storage device list
 * Else
   * Enumerate single device
-* Go through MSD device list
-  * [Boot from MSD](msd.md)
+* Go through mass storage device list
+  * [Boot from mass storage device](msd.md)
 * Go through Ethernet device list
   * [Boot from Ethernet](net.md)
 
