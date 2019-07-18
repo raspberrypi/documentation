@@ -8,6 +8,20 @@ Once an image is created on an SD card, by inserting it into a card reader on a 
 
 You will need to define a `wpa_supplicant.conf` file for your particular wireless network. Put this file in the boot folder, and when the Pi first boots, it will copy that file into the correct location in the Linux root file system and use those settings to start up wireless networking.
 
+`wpa_supplicant.conf` file example:
+```
+country=us
+update_config=1
+ctrl_interface=/var/run/wpa_supplicant
+
+network={
+ ssid="<Name of your WiFi>"
+ psk="<Password for your WiFi>"
+}
+```
+
+Note that some older WiFi dongles don't support 5GHz networks.
+
 More information on the `wpa_supplicant.conf` file can be found [here](wireless-cli.md).
 
 ## Enabling SSH
