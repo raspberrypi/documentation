@@ -54,7 +54,7 @@ On Windows 10 there is a Sharing Wizard that helps with some of these steps.
 
 #### Mount the folder on the Raspberry Pi
 
-**Mounting*** in Linux is the process of attaching a folder to a location, so firstly we need that location.
+**Mounting** in Linux is the process of attaching a folder to a location, so firstly we need that location.
 
 ```bash
 mkdir windowshare
