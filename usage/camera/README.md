@@ -24,9 +24,9 @@ Select `Enable camera` and hit `Enter`, then go to `Finish` and you'll be prompt
 
 ## Using the camera
 
-Libraries for using the camera are available in:
+Applications and libraries for using the camera are available in:
 
-- [Shell](raspicam/README.md) (Linux command line)
+- [Linux command line](raspicam/README.md) - Using the supplied command line applications (e.g. raspistill)
 - [Python](python/README.md)
 
 See detailed [technical specs](../../hardware/camera/README.md) of the camera hardware and software.

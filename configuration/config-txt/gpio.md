@@ -1,4 +1,4 @@
-# GPIO control in `config.txt`
+# GPIO control in config.txt
 
 ## `gpio`
 The `gpio` directive allows GPIO pins to be set to specific modes and values at boot time in a way that would

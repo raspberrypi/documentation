@@ -25,3 +25,5 @@ python3 /home/pi/myscript.py &
 Otherwise, the script will not end and the Pi will not boot. The ampersand allows the command to run in a separate process and continue booting with the process running.
 
 Also, be sure to reference absolute filenames rather than relative to your home folder; for example, `/home/pi/myscript.py` rather than `myscript.py`.
+
+One more point to note is that all commands will be executed by the root user. This can lead to unexpected behaviour: for example, if a folder is created by a `mkdir` command in the script, the folder would have root ownership and would not be accessible by anyone other than the root user.

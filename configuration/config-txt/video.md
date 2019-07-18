@@ -12,6 +12,8 @@ The `sdtv_mode` command defines the TV standard used for composite video output 
 | 1 | Japanese version of NTSC – no pedestal |
 | 2 | Normal PAL |
 | 3 | Brazilian version of PAL – 525/60 rather than 625/50, different subcarrier |
+| 16 | Progressive scan NTSC |
+| 18 | Progressive scan PAL |
 
 ### sdtv_aspect
 
@@ -27,7 +29,17 @@ The `sdtv_aspect` command defines the aspect ratio for composite video output. T
 
 Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
 
+### enable_tvout (Pi 4B only)
+
+On the Raspberry Pi 4, composite output is disabled by default, due to the way the internal clocks are interrelated and allocated. Because composite video requires a very specific clock, setting that clock to the required speed on the Pi 4 means that other clocks connected to it are detrimentally affected, which slightly slows down the entire system. Since composite video is a less commonly used function, we decided to disable it by default to prevent this system slowdown. 
+
+To enable composite output, use the `enable_tvout=1` option. As described above, this will detrimentally affect performance to a small degree.
+
+On older Pi models, the composite behaviour remains the same.
+
 ## HDMI mode options
+
+**Note for Raspberry Pi4B users:** Because the Raspberry Pi 4B has two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found on the [conditionals page](./conditional.md) in the HDMI section of the documentation. 
 
 ### hdmi_safe
 
@@ -53,6 +65,18 @@ Setting `hdmi_ignore_edid` to `0xa5000080` enables the ignoring of EDID/display 
 ### hdmi_edid_file
 
 Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. More information is available [here](https://www.raspberrypi.org/forums/viewtopic.php?p=173430#p173430).
+
+### hdmi_edid_filename
+
+On the Raspberry Pi 4B, you can use the `hdmi_edid_filename` command to specify the filename of the EDID file to use, and also to specify which port the file is to be applied to. This also requires `hdmi_edid_file=1` to enable EDID files.
+
+For example:
+
+```
+hdmi_edid_file=1
+hdmi_edid_filename:0=FileForPortZero.edid
+hdmi_edid_filename:1=FileForPortOne.edid
+```
 
 ### hdmi_force_edid_audio
 
@@ -340,7 +364,7 @@ Setting to `1` will remove all other modes except the ones specified by `hdmi_mo
 
 ### edid_content_type
 
-Forces the edit content type to a specific value.
+Forces the EDID content type to a specific value.
 
 The options are:
  - `0` = `EDID_ContentType_NODATA`, content type none.
@@ -348,6 +372,10 @@ The options are:
  - `2` = `EDID_ContentType_Photo`, content type photo
  - `3` = `EDID_ContentType_Cinema`,  content type cinema
  - `4` = `EDID_ContentType_Game`,  content type game
+ 
+### hdmi_enable_4k (Pi 4B only)
+
+By default, when connected to a 4K monitor, the Raspberry Pi 4B will select a 30hz refresh rate. Use this option to allow selection of 60Hz refresh rates. Note, this will increase power consumption and increase the temperature of the Raspberry Pi. It is not possible to output 4Kp60 on both micro HDMI ports simultaneously.
  
 ## Which values are valid for my monitor?
 
@@ -483,27 +511,39 @@ Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is no
 
 ### disable_overscan
 
-Set `disable_overscan` to `1` to disable [overscan](../raspi-config.md#overscan).
+Set `disable_overscan` to `1` to disable the default values of [overscan](../raspi-config.md#overscan) that is set by the firmware. The default value of overscan for the left, right, top, and bottom edges is `48` for HD CEA modes, `32` for SD CEA modes, and `0` for DMT modes. The default value for `disable_overscan` is `0`.
+
+**NOTE:** any further additional overscan options such as `overscan_scale` or overscan edges can still be applied after this option.
 
 ### overscan_left
 
-The `overscan_left` command specifies the number of pixels to skip on the left edge of the screen. Increase this value if the text flows off the left edge of the screen; decrease it if there is a black border between the left edge of the screen and the text.
+The `overscan_left` command specifies the number of pixels to add to the firmware default value of overscan on the left edge of the screen. The default value is `0`.
+
+Increase this value if the text flows off the left edge of the screen; decrease it if there is a black border between the left edge of the screen and the text.
 
 ### overscan_right
 
-The `overscan_right` command specifies the number of pixels to skip on the right edge of the screen.
+The `overscan_right` command specifies the number of pixels to add to the firmware default value of overscan on the right edge of the screen. The default value is `0`.
+
+Increase this value if the text flows off the right edge of the screen; decrease it if there is a black border between the right edge of the screen and the text.
 
 ### overscan_top
 
-The `overscan_top` command specifies the number of pixels to skip on the top edge of the screen.
+The `overscan_top` command specifies the number of pixels to add to the firmware default value of overscan on the top edge of the screen. The default value is `0`.
+
+Increase this value if the text flows off the top edge of the screen; decrease it if there is a black border between the top edge of the screen and the text.
 
 ### overscan_bottom
 
-The `overscan_bottom` command specifies the number of pixels to skip on the bottom edge of the screen.
+The `overscan_bottom` command specifies the number of pixels to add to the firmware default value of overscan on the bottom edge of the screen. The default value is `0`.
+
+Increase this value if the text flows off the bottom edge of the screen; decrease it if there is a black border between the bottom edge of the screen and the text.
 
 ### overscan_scale
 
-Set `overscan_scale` to `1` to force any non-framebuffer layers to conform to the overscan settings.
+Set `overscan_scale` to `1` to force any non-framebuffer layers to conform to the overscan settings. The default value is `0`.
+
+**NOTE:** this feature is generally not recommended: it can reduce image quality because all layers on the display will be scaled by the GPU. Disabling overscan on the display itself is the recommended option to avoid images being scaled twice (by the GPU and the display).
 
 ### framebuffer_width
 
@@ -550,6 +590,8 @@ Use `display_hdmi_rotate` to rotate or flip the HDMI display orientation. The de
 | 0x20000 | vertical flip |
 
 Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16MB GPU split.
+
+If using the VC4 FKMS V3D driver (this is the default on the Raspberry Pi 4), then 90 and 270 degree rotations are not supported. The Screen Configuration utility provides display rotations for this driver.
 
 ### display_lcd_rotate
 

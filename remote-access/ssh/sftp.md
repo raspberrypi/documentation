@@ -4,9 +4,13 @@ The SSH File Transfer Protocol is a network protocol that provides file access, 
 
 By using SFTP, you can easily change, browse, and edit files on your Raspberry Pi. SFTP is easier to set up than [FTP](../ftp.md) once Raspbian has SSH enabled. For security reasons, since the November 2016 release of Raspbian, the SSH server has been disabled by default. To enable it, please follow [these instructions](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md).)
 
-## FileZilla
+## WinSCP on Windows
 
-Download the latest FileZilla Client version for your operating system from [filezilla-project.org](https://filezilla-project.org/).
+We recommend using the [WinSCP SFTP client](https://winscp.net/eng/index.php). Follow the instructions on the WinSCP website to install the client, then follow the [WinSCP Quick Start instructions](https://winscp.net/eng/docs/getting_started).
+
+## FileZilla on Linux
+
+Install FileZilla on your Linux system using the standard package manager for your distribution (e.g. `sudo apt install filezilla`).
 
 Launch FileZilla and go to **File > Site manager**.
 

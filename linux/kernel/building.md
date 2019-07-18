@@ -9,7 +9,7 @@ On a Raspberry Pi, first install the latest version of [Raspbian](https://www.ra
 First install Git and the build dependencies:
 
 ```bash
-sudo apt-get install git bc
+sudo apt-get install git bc bison flex libssl-dev
 ```
 
 Next get the sources, which will take some time:
@@ -54,7 +54,17 @@ KERNEL=kernel7
 make bcm2709_defconfig
 ```
 
-Build and install the kernel, modules, and Device Tree blobs; this step takes a **long** time:
+### Raspberry Pi 4
+
+```bash
+cd linux
+KERNEL=kernel7l
+make bcm2711_defconfig
+```
+
+### Building
+
+Build and install the kernel, modules, and Device Tree blobs; this step can take a **long** time depending on the Pi model in use:
 
 ```bash
 make -j4 zImage modules dtbs
@@ -65,7 +75,7 @@ sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
 sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 ```
 
-**Note**: On a Raspberry Pi 2/3, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
+**Note**: On a Raspberry Pi 2/3/4, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
 
 ## Cross-compiling
 
@@ -104,7 +114,11 @@ See [**Choosing sources**](#choosing_sources) above for instructions on how to c
 
 ### Build sources
 
-To build the sources for cross-compilation, there may be extra dependencies beyond those you've installed by default with Ubuntu. If you find you need other things, please submit a pull request to change the documentation.
+To build the sources for cross-compilation, make sure you have the dependencies needed on your machine by executing:
+```bash
+sudo apt-get install git bison flex libssl-dev
+```
+If you find you need other things, please submit a pull request to change the documentation.
 
 Enter the following commands to build the sources and Device Tree files:
 
@@ -124,7 +138,15 @@ KERNEL=kernel7
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
 ```
 
-Then, for both:
+For Raspberry Pi 4:
+
+```bash
+cd linux
+KERNEL=kernel7l
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
+```
+
+Then, for all:
 
 ```bash
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs

@@ -1,10 +1,10 @@
 # Network booting
 
-This section describes how network booting works. There is also a [tutorial](net_tutorial.md) available on setting up a working bootable system. Network booting works only for the wired adapter. Booting over wireless LAN is not supported.
+This section describes how network booting works. We also have a [tutorial about setting up a working bootable system](net_tutorial.md). Network booting works only for the wired adapter built into certain models of Raspberry Pi. Booting over wireless LAN is not supported, nor is booting from any other wired network device.
 
 To network boot, the boot ROM does the following:
 
-* Initialise LAN9500
+* Initialise on-board Ethernet device (Microchip LAN9500 or LAN7500)
 * Send DHCP request
 * Receive DHCP reply
 * (optional) Receive DHCP proxy reply
@@ -98,5 +98,48 @@ You will know whether the Vendor Option is correctly specified: if it is, you'll
     192.168.1.139.49152 > 192.168.1.1.55985: [no cksum] UDP, length 4
 ```
 
-See Also:
+## Known problems
+
+There are a number of known problems with the Ethernet boot mode. Since the implementation of the boot modes is in the chip itself, there are no workarounds other than to use an SD card with just the bootcode.bin file.
+
+### DHCP requests time out after five tries
+
+The Raspberry Pi will attempt a DHCP request five times with five seconds in between, for a total period of 25 seconds.  If the server is not available to respond in this time, then the Pi will drop into a low-power state. There is no workaround for this other than bootcode.bin on an SD card.
+
+### TFTP server on separate subnet not supported
+
+Fixed in Raspberry Pi 3 Model B+ (BCM2837B0).
+
+### DHCP relay broken
+
+The DHCP check also checked if the hops value was `1`, which it wouldn't be with DHCP relay.
+
+Fixed in Raspberry Pi 3 Model B+.
+
+### Raspberry Pi Boot string
+
+The "Raspberry Pi Boot   " string in the DHCP reply requires the extra three spaces due to an error calculating the string length.
+
+Fixed in Raspberry Pi 3 Model B+
+
+### DHCP UUID constant
+
+The DHCP UUID is set to be a constant value.
+
+Fixed in Raspberry Pi 3 Model B+; the value is set to the 32-bit serial number.
+
+### ARP check can fail to respond in the middle of TFTP transaction
+
+The Raspberry Pi will only respond to ARP requests when it is in the initialsation phase; once it has begun transferring data, it'll fail to continue reponding.
+
+Fixed in Raspberry Pi 3 Model B+.
+
+### DHCP request/reply/ack sequence not correctly implemented
+
+At boot time, Raspberry Pi broadcasts a DHCPDISCOVER packet. The DHCP server replies with a DHCPOFFER packet. The Pi then continues booting without doing a DHCPREQUEST or waiting for DHCPACK. This may result in two separate devices being offered the same IP address and using it without it being properly assigned to the client.
+
+Different DHCP servers have different behaviours in this situation. dnsmasq (depending upon settings) will hash the MAC address to determine the IP address, and ping the IP address to make sure it isn't already in use. This reduces the chances of this happening because it requires a collision in the hash.
+
+
+See also:
 * [Network boot tutorial](net_tutorial.md)

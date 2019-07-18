@@ -335,7 +335,7 @@ Read more on installing software in Python [here](../../linux/software/python.md
 
 The official Python Package Index (PyPI) hosts files uploaded by package maintainers. Some packages require compilation (compiling C/C++ or similar code) in order to install them, which can be a time-consuming task, particlarly on the single-core Raspberry Pi 1 or Pi Zero.
 
-piwheels is a service providing pre-compiled packages (called *Python wheels*) ready for use on the Raspberry Pi. Raspbian Stretch is pre-configired to use piwheels for pip. Read more about the piwheels project at [www.piwheels.org](https://www.piwheels.org/).
+piwheels is a service providing pre-compiled packages (called *Python wheels*) ready for use on the Raspberry Pi. Raspbian is pre-configired to use piwheels for pip. Read more about the piwheels project at [www.piwheels.org](https://www.piwheels.org/).
 
 ## More
 

@@ -130,7 +130,7 @@ Key pairs are two cryptographically secure keys. One is private, and one is publ
 
 The client generates two keys, which are cryptographically linked to each other. The private key should never be released, but the public key can be freely shared. The SSH server takes a copy of the public key, and, when a link is requested, uses this key to send the client a challenge message, which the client will encrypt using the private key. If the server can use the public key to decrypt this message back to the original challenge message, then the identity of the client can be confirmed.
 
-Generating a key pair in Linux is done using the `ssh-keygen` command on the **client**; the keys are stored by default in the `.ssh` folder in the user's home directly. The private key will be called `id_rsa` and the associated public key will be called `id_rsa.pub`. The key will be 2048 bits long: breaking the encryption on a key of that length would take an extremely long time, so is very secure. You can make longer keys if the situation demands it. Note that you should only do the generation process once: if repeated, it will overwrite any previous generated keys. Anything relying on those old keys will need to be updated to the new keys.
+Generating a key pair in Linux is done using the `ssh-keygen` command on the **client**; the keys are stored by default in the `.ssh` folder in the user's home directory. The private key will be called `id_rsa` and the associated public key will be called `id_rsa.pub`. The key will be 2048 bits long: breaking the encryption on a key of that length would take an extremely long time, so it is very secure. You can make longer keys if the situation demands it. Note that you should only do the generation process once: if repeated, it will overwrite any previous generated keys. Anything relying on those old keys will need to be updated to the new keys.
 
 You will be prompted for a passphrase during key generation: this is an extra level of security. For the moment, leave this blank.
 
@@ -262,7 +262,7 @@ logpath  = /var/log/auth.log
 maxretry = 6
 ```
 
-As you can see, this section is named ssh, is enabled, examines the ssh port, filters using the `/etc/fail2ban/filters.d/sshd.conf` parameters, parses the /var/log/auth.log for malicious activity, and allows six retries before the detection threshold is reached. Checking the default section, we can see that the default banning action is:
+As you can see, this section is named ssh, is enabled, examines the ssh port, filters using the `/etc/fail2ban/filter.d/sshd.conf` parameters, parses the `/var/log/auth.log` for malicious activity, and allows six retries before the detection threshold is reached. Checking the default section, we can see that the default banning action is:
 
 ```bash
 # Default banning action (e.g. iptables, iptables-new,

@@ -14,6 +14,10 @@ Some basic guides to configuring your Raspberry Pi.
     - Configuring your Pi as a wireless access point using the Raspberry Pi 3 and Pi Zero W's inbuilt wireless connectivity, or a USB wireless dongle
 - [Using a proxy](use-a-proxy.md)
     - Setting up your Pi to access the internet via a proxy server
+- [HDMI Config](hdmi-config.md)
+    - Guide to setting up your HDMI device, including custom settings
+- [Screen Layout Editor](arandr.md)
+    - Guide to setting up your display devices using the provided graphical editor
 - [Audio config](audio-config.md)
     - Switch your audio output between HDMI and the 3.5mm jack
 - [Camera config](camera.md)
@@ -32,6 +36,8 @@ Some basic guides to configuring your Raspberry Pi.
     - How to set up the on-board UARTS.
 - [Firmware warning icons](warning-icons.md)
     - Description of warning icons displayed if the firmware detects issues
+- [LED warning flash codes](led_blink_warnings.md)
+    - Description of the meaning of LED warning flashes that are shown if a Pi fails to boot or has to shut down
 - [Securing your Raspberry Pi](security.md)
     - Some basic advice for making your Raspberry Pi more secure
 - [Screensaver](screensaver.md)

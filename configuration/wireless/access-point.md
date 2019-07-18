@@ -1,4 +1,7 @@
+Before proceeding, please ensure your Raspberry Pi is [up to date](../../raspbian/updating.md) and rebooted.
+
 # Setting up a Raspberry Pi as an access point in a standalone network (NAT)
+
 
 The Raspberry Pi can be used as a wireless access point, running a standalone network. This can be done using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access points.
 
@@ -39,6 +42,7 @@ sudo systemctl stop hostapd
 
 We are configuring a standalone network to act as a server, so the Raspberry Pi needs to have a static IP address assigned to the wireless port. This documentation assumes that we are using the standard 192.168.x.x IP addresses for our wireless network, so we will assign the server the IP address 192.168.4.1. It is also assumed that the wireless device being used is `wlan0`.
 
+
 To configure the static IP address, edit the dhcpcd configuration file with:
 
 ```
@@ -72,13 +76,19 @@ Type or copy the following information into the dnsmasq configuration file and s
 
 ```
 interface=wlan0      # Use the require wireless interface - usually wlan0
-  dhcp-range=192.168.4.2,192.168.4.20,255.255.255.0,24h
+dhcp-range=192.168.4.2,192.168.4.20,255.255.255.0,24h
 ```
 
 So for `wlan0`, we are going to provide IP addresses between 192.168.4.2 and 192.168.4.20, with a lease time of 24 hours. If you are providing DHCP services for other network devices (e.g. eth0), you could add more sections with the appropriate interface header, with the range of addresses you intend to provide to that interface.
 
 There are many more options for dnsmasq; see the [dnsmasq documentation](http://www.thekelleys.org.uk/dnsmasq/doc.html) for more details.
 
+Reload `dnsmasq` to use the updated configuration:
+```
+sudo systemctl reload dnsmasq
+```
+
+<a name="hostapd-config"></a>
 ## Configuring the access point host software (hostapd)
 
 You need to edit the hostapd configuration file, located at /etc/hostapd/hostapd.conf, to add the various parameters for your wireless network. After initial install, this will be a new/empty file.
@@ -126,11 +136,12 @@ DAEMON_CONF="/etc/hostapd/hostapd.conf"
 
 ## Start it up
 
-Now start up the remaining services:
+Now enable and start `hostapd`:
 
 ```
+sudo systemctl unmask hostapd
+sudo systemctl enable hostapd
 sudo systemctl start hostapd
-sudo systemctl start dnsmasq
 ```
 
 Do a quick check of their status to ensure they are active and running:
@@ -165,7 +176,6 @@ Edit /etc/rc.local and add this just above "exit 0" to install these rules on bo
 ```
 iptables-restore < /etc/iptables.ipv4.nat
 ```
-
 Reboot and ensure it still functions.
 
 Using a wireless device, search for networks. The network SSID you specified in the hostapd configuration should now be present, and it should be accessible with the specified password.
@@ -259,7 +269,7 @@ You can also use the brctl tool to verify that a bridge br0 has been created.
 
 The access point setup is almost the same as that shown in the previous section. Follow the instructions above to set up the `hostapd.conf` file, but add `bridge=br0` below the `interface=wlan0` line, and remove or comment out the driver line. The passphrase must be between 8 and 64 characters long.
 
-To use the 5 GHz band, you can change the operations mode from 'hw_mode=g' to 'hw_mode=a'. Possible values for hw_mode are:
+To use the 5 GHz band, you can change the operations mode from 'hw_mode=g' to 'hw_mode=a'. The possible values for hw_mode are:
  - a = IEEE 802.11a (5 GHz)
  - b = IEEE 802.11b (2.4 GHz)
  - g = IEEE 802.11g (2.4 GHz)
@@ -286,7 +296,9 @@ rsn_pairwise=CCMP
 Now reboot the Raspberry Pi.
 
 ```
-sudo reboot
+sudo systemctl unmask hostapd
+sudo systemctl enable hostapd
+sudo systemctl start hostapd
 ```
 
 There should now be a functioning bridge between the wireless LAN and the Ethernet connection on the Raspberry Pi, and any device associated with the Raspberry Pi access point will act as if it is connected to the access point's wired Ethernet.

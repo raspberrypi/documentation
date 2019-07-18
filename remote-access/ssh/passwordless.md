@@ -60,13 +60,15 @@ To copy your public key to your Raspberry Pi, use the following command to appen
 ssh-copy-id <USERNAME>@<IP-ADDRESS>
 ```
 
-*Note that this time you will have to authenticate with your password.*
+**Note that this time you will have to authenticate with your password.**
 
 Alternatively, if the `ssh-copy-id` is not available on your system, you can copy the file manually over SSH:
 
 ```bash
 cat ~/.ssh/id_rsa.pub | ssh <USERNAME>@<IP-ADDRESS> 'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys'
 ```
+
+If you see the message `ssh: connect to host <IP-ADDRESS> port 22: Connection refused` and you know the `IP-ADDRESS` is correct, then you probably haven't enabled SSH on your Pi. Run `sudo raspi-config` in the Pi's terminal window, enable SSH, and then try to copy the files again.
 
 Now try `ssh <USER>@<IP-ADDRESS>` and you should connect without a password prompt.
 
@@ -79,3 +81,13 @@ ssh-add
 If this did not work, delete your keys with `rm ~/.ssh/id*` and follow the instructions again.
 
 You can also send files over SSH using the `scp` command (secure copy). See the [SCP guide](scp.md) for more information.
+
+## Let macOS store your passphrase so you don't have to enter it each time
+
+If you're using macOS and after verifying that your new key allows you to connect, you can optionally choose to store the passphrase for your key in the macOS Keychain. This will make it so that you don't have to enter the passphrase each time you connect to your Pi.
+
+Run the following command to store it in your keychain:
+
+```bash
+ssh-add -K ~/.ssh/id_rsa
+```

@@ -158,10 +158,6 @@ For each of the examples we assume a CM+CMIO or CM3+CMIO3 board with a clean ins
 
 The examples here require internet connectivity, so a USB hub plus keyboard plus WiFi or Ethernet dongle plugged into the CMIO USB port is recommended.
 
-If you suspect any issues or bugs with Device Tree it is always best to try a `sudo rpi-update` to make sure you are using the latest firmware. 
-
-WARNING: if you have edited any of the default .dtb files in `/boot` or `/boot/overlays` these may be overwritten by rpi-update.
-
 Please post any issues, bugs or questions on the Raspberry Pi [Device Tree subforum](https://www.raspberrypi.org/forums/viewforum.php?f=107).
 
 ## Example 1 - attaching an I2C RTC to BANK1 pins
