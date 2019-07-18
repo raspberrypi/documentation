@@ -11,7 +11,7 @@ This depends on a number of factors, but for the majority of people the latest m
 
 ## I want the latest model
 
-Good choice. The latest model is always the fastest, with the most features. The current top of the range device is the Raspberry Pi 3B+. Check it out [here](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/)
+Good choice. The latest model is always the fastest, with the most features. The current top of the range device is the Raspberry Pi 4B. Check it out [here](https://www.raspberrypi.org/products/raspberry-pi-4-model-b)
 
 ## I just want to try one out
 
