@@ -1,10 +1,10 @@
 # Installing operating system images using Windows
 
-[balenaEtcher](https://www.balena.com/etcher/) is typically the easiest option for most users to write images to SD cards, so it is a good place to start. If you're looking for an alternative on Windows, you can use Win32DiskImager.
+[balenaEtcher](https://www.balena.io/etcher/) is typically the easiest option for most users to write images to SD cards, so it is a good place to start. If you're looking for an alternative on Windows, you can use Win32DiskImager.
 
 ## balenaEtcher
 
-- Download the Windows installer from [balena.com](https://www.balena.com/etcher/)
+- Download the Windows installer from [balena.io](https://www.balena.io/etcher/)
 - Run balenaEtcher and select the unzipped Raspbian image file
 - Select the SD card drive
 - Finally, click **Burn** to write the Raspbian image to the SD card
