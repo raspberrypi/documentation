@@ -16,7 +16,7 @@ If you're not using balenaEtcher (see below), you'll need to unzip `.zip` downlo
 
 - [7-Zip](http://www.7-zip.org/) (Windows)
 - [The Unarchiver](http://unarchiver.c3.cx/unarchiver) (Mac)
-- [Unzip](http://www.info-zip.org/mans/unzip.html) (Linux)
+- [Unzip](https://linux.die.net/man/1/unzip) (Linux)
 
 ## Writing an image to the SD card
 
