@@ -122,7 +122,7 @@ The `hdmi_blanking` command controls what happens when the operating system asks
 
 | hdmi_blanking | result |
 | --- | --- |
-| 0 | HDMI output will blanked |
+| 0 | HDMI output will be blanked |
 | 1 | HDMI output will be switched off and blanked |
 
 ### hdmi_drive
