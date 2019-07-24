@@ -152,6 +152,7 @@ Modes for which colour temperature ranges (K) are available have these settings 
 - incandescent: incandescent lighting mode
 - flash: flash mode
 - horizon: horizon mode
+- greyworld: Use this on the NoIR camera to fix incorrect AWB results due to the lack of the IR filter.
 
 
 Note that not all of these settings may be implemented, depending on camera type.
