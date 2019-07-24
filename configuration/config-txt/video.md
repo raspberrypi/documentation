@@ -552,7 +552,7 @@ The `framebuffer_width` command specifies the console framebuffer width in pixel
 ### framebuffer_height
 
 The `framebuffer_height` command specifies the console framebuffer height in pixels. The default is the display height minus the total vertical overscan.
-
+C4 
 ### max_framebuffer_height, max_framebuffer_width
 
 Specifies the maximum dimensions that the internal frame buffer is allowed to be. 
@@ -571,6 +571,20 @@ Use `framebuffer_depth` to specify the console framebuffer depth in bits per pix
 ### framebuffer_ignore_alpha
 
 Set `framebuffer_ignore_alpha` to `1` to disable the alpha channel. Can help with the display of a 32bit `framebuffer_depth`.
+
+### framebuffer_priority
+
+In a system with multiple displays, using the legacy (pre-KMS) graphics driver, this forces a specific internal display device to be the first Linux framebuffer (i.e./dev/fb0). 
+
+The options that can be set are:
+
+| Display | ID |
+| --- | --- | 
+|Main LCD       | 0 |
+|Secondary LCD  | 1 | 
+|HDMI 0         | 2 |
+|Composite      | 3 | 
+|HDMI 1         | 7 |
 
 ### test_mode
 
