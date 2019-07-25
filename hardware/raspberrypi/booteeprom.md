@@ -7,7 +7,7 @@ The Raspberry Pi 4 has an SPI-attached EEPROM (4MBits/512KB), which contains cod
  - Raspberry Pi 4 bootup procedure and SDRAM setup is considerably more complicated than on the previous Raspberry Pi models, so there is more risk inherent in code that's permanently incorporated in the ROM of the SoC.
  - USB has moved to a PCIe bus, and the Gigabit Ethernet driver is completely different to previous models, so again, having it permanently fixed into the ROM of the SoC was not feasible.
  - A small SPI EEPROM allows bugs to be fixed and features to be added after launch, in the field.
- - The local modifiable state means that OTP bootmode settings will not be required for PXE or USB mass storage boot on the Raspberry Pi 4. There are no user modifiable OTP bootmode bits on Pi4.
+ - The local modifiable state means that OTP bootmode settings will not be required for PXE or USB mass storage boot on the Raspberry Pi 4. There are no user modifiable OTP bootmode bits on Pi 4.
 
 ## PXE and USB Boot
 
@@ -31,18 +31,18 @@ There is no software write protection for the boot EEPROM but there will be a me
 
 ## EEPROM configuration options
 
-The EEPROM image contains small user modifiable config file.  To change a setting:
+The EEPROM image contains a small user-modifiable config file. To change a setting:
 
 * Download and unzip the rescue bootloader image from https://www.raspberrypi.org/downloads/
-* Used sed to change setting, be careful to avoid changing anything else otherwise it will fail to boot.
+* Used sed to change setting. Be careful to avoid changing anything else otherwise it will fail to boot.
   * `sed -i -e "s/BOOT_UART=0/BOOT_UART=1/" pieeprom.bin`
 * Flash the image - see embedded README.txt in rescue image zip.
 
-We will soon be releasing a tool which allows the EEPROM config to be extracted and modified without having to use sed-hacks.
+We will soon be releasing a tool which allows the EEPROM config to be extracted and modified without having to use sed hacks.
 
 #### BOOT_UART
 
-If 1 then enable UART debug output on (GPIO 14, 15) at 115200-8-N-1  
+If 1 then enable UART debug output on GPIO 14 and 15. Configure the debug terminal at 115200bps, 8 bits, no parity bits, 1 stop bit. 
 Default: 0  
 Version: All
 
@@ -50,7 +50,7 @@ Version: All
 
 If 1 then 'sudo halt' will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.  
 
-Default: 0 in launch bootloader (2019-05-10) but changes to 1 in future bootloaders  
+Default: 0 in original version of bootloader (2019-05-10). Newer bootloaders have this set to 1.
 Version: All  
 
 #### POWER_OFF_ON_HALT  
