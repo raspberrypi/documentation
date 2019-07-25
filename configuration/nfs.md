@@ -2,7 +2,7 @@
 
 A **Network File System** (NFS) allows you to share a directory located on one networked computer with other computers or devices on the same network. The computer where the directory is located is called the **server**, and computers or devices connecting to that server are called **clients**. Clients usually `mount` the shared directory to make it a part of their own directory structure. The shared directory is an example of a shared resource or network share.
 
-For smaller networks, an NFS is perfect for creating a simple NAS (Network-attached Storage) in a Linux/Unix environment.
+For smaller networks, an NFS is perfect for creating a simple NAS (Network-attached storage) in a Linux/Unix environment.
 
 An NFS is perhaps best suited to more permanent network-mounted directories, such as `/home` directories or regularly-accessed shared resources. If you want a network share that guest users can easily connect to, Samba is better suited to the task. This is because tools to temporarily mount and detach from Samba shares are more readily available across old and proprietary operating systems.
 
@@ -47,7 +47,7 @@ There are three configuration files that relate to an NFS server:
 
 The only important option in `/etc/default/nfs-kernel-server` for now is `NEED_SVCGSSD`. It is set to `"no"` by default, which is fine, because we are not activating NFSv4 security this time.
 
-In order for the ID names to be automatically mapped, the file `/etc/idmapd.conf` must exist on both the client and the server with the same contents and with the correct domain names. Furthermore, this file should have the following lines in the Mapping section:
+In order for the ID names to be automatically mapped, the file `/etc/idmapd.conf` must exist on both the client and the server with the same contents and with the correct domain names. Furthermore, this file should have the following lines in the `Mapping` section:
 
 ```
 [Mapping]
@@ -97,7 +97,7 @@ Now add the following line to `/etc/hosts.allow`:
 rpcbind mountd nfsd statd lockd rquotad : <list of IPv4s>
 ```
 
-Where `<list of IPv4s>` is a list of IP addresses that consists of the server and all clients. (These have to be IP addresses because of a limitation in `rpcbind`, which it doesn't like hostnames.) Note that if you have NIS set up, you can just add these to the same line.
+where `<list of IPv4s>` is a list of the IP addresses of the server and all clients. (These have to be IP addresses because of a limitation in `rpcbind`, which doesn't like hostnames.) Note that if you have NIS set up, you can just add these to the same line.
 
 Please ensure that the list of authorised IP addresses includes the `localhost` address (`127.0.0.1`), as the startup scripts in recent versions of Ubuntu use the `rpcinfo` command to discover NFSv3 support, and this will be disabled if `localhost` is unable to connect.
 
@@ -107,7 +107,7 @@ Finally, to make your changes take effect, restart the service:
 sudo systemctl restart nfs-kernel-server
 ```
 
-## Setup a NFSv4 client
+## Set up an NFSv4 client
 
 Now that your server is running, you need to set up any clients to be able to access it. To start, install the required packages:
 
@@ -137,7 +137,7 @@ To ensure this is mounted on every reboot, add the following line to `/etc/fstab
 <nfs-server-IP>:/   /mnt   nfs    auto  0  0
 ```
 
-If after mounting, the entry in `/proc/mounts appears` as `<nfs-server-IP>://` (with two slashes), then you might need to specify two slashes in `/etc/fstab`, or else `umount` might complain that it cannot find the mount.
+If, after mounting, the entry in `/proc/mounts appears` as `<nfs-server-IP>://` (with two slashes), then you might need to specify two slashes in `/etc/fstab`, or else `umount` might complain that it cannot find the mount.
 
 ### Portmap lockdown (optional)
 
@@ -155,9 +155,9 @@ Now add the following line to `/etc/hosts.allow`:
 rpcbind : <NFS server IP address>
 ```
 
-Where `<NFS server IP address>` is the IP address of the server.
+where `<NFS server IP address>` is the IP address of the server.
 
-## NFS Server with complex user permissions
+## NFS server with complex user permissions
 
 NFS user permissions are based on user ID (UID). UIDs of any users on the client must match those on the server in order for the users to have access. The typical ways of doing this are:
 
@@ -174,7 +174,7 @@ A user's file access is determined by their membership of groups on the client, 
 
 ### DNS (optional, only if using DNS)
 
-Add any client name and IP addresses to `/etc/hosts`. (The IP address of the server should already be there.) This ensures that NFS will still work even if DNS goes down. You can rely on DNS if you want; it's up to you.
+Add any client name and IP addresses to `/etc/hosts`. (The IP address of the server should already be there.) This ensures that NFS will still work even if DNS goes down. Alternatively you can rely on DNS if you want - it's up to you.
 
 ### NIS (optional, only if using NIS)
 
@@ -194,7 +194,7 @@ Next run this command to rebuild the NIS database:
 sudo make -C /var/yp
 ```
 
-The name YP refers to Yellow Pages, the former name of NIS.
+The filename `yp` refers to Yellow Pages, the former name of NIS.
 
 ### Portmap lockdown (optional)
 
@@ -257,10 +257,10 @@ You'll want to run this command whenever `/etc/exports` is modified.
 
 By default, `rpcbind` only binds to the loopback interface. To enable access to `rpcbind` from remote machines, you need to change `/etc/conf.d/rpcbind` to get rid of either `-l` or `-i 127.0.0.1`.
 
-If any changes were made, rpcbind and NFS will need to be restarted:
+If any changes are made, rpcbind and NFS will need to be restarted:
 
 ```bash
-sudo systemctl restart `rpcbind`
+sudo systemctl restart rpcbind
 sudo systemctl restart nfs-kernel-server
 ```
 
@@ -283,20 +283,20 @@ sudo mkdir /nfs
 sudo mkdir /nfs/music
 ```
 
-1. Edit /etc/fstab to mount the NFS share into that directory instead:
+2. Edit `/etc/fstab` to mount the NFS share into that directory instead:
 
 ```
 nfsServer:music    /nfs/music    nfs    auto    0 0
 ```
 
-1. Create a symbolic link inside your home, pointing to the actual mount location. For example, and in this case deleting the `Music` directory already existing there first:
+3. Create a symbolic link inside your home, pointing to the actual mount location. For example, and in this case deleting the `Music` directory already existing there first:
 
 ```bash
 rmdir /home/user/Music
 ln -s /nfs/music/ /home/user/Music
 ```
 
-## Author Information
+## Author information
 
 This guide is based on documents on the official Ubuntu wiki:
 
