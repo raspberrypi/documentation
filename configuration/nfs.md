@@ -147,7 +147,7 @@ Add the following line to `/etc/hosts.deny`:
 rpcbind : ALL
 ```
 
-By blocking all clients first, only clients in `/etc/hosts.allow` below will be allowed to access the server.
+By blocking all clients first, only clients in `/etc/hosts.allow` (added below) will be allowed to access the server.
 
 Now add the following line to `/etc/hosts.allow`:
 
@@ -161,43 +161,42 @@ Where `<NFS server IP address>` is the IP address of the server.
 
 NFS user permissions are based on user ID (UID). UIDs of any users on the client must match those on the server in order for the users to have access. The typical ways of doing this are:
 
-1. Manual password file synchronization
+* Manual password file synchronisation
+* Use of LDAP
+* Use of DNS
+* Use of NIS
 
-1. Use of LDAP
-
-1. Use of DNS
-
-1. Use of NIS
-
-Note that you have to be careful on systems where the main user has root access - that user can change UID's on the system to allow themselves access to anyone's files. This page assumes that the administrative team is the only group with root access and that they are all trusted. Anything else represents a more advanced configuration, and will not be addressed here.
+Note that you have to be careful on systems where the main user has root access: that user can change UIDs on the system to allow themselves access to anyone's files. This page assumes that the administrative team is the only group with root access and that they are all trusted. Anything else represents a more advanced configuration, and will not be addressed here.
 
 ### Group permissions
 
-File access is determined by his/her membership of groups on the client, not on the server. However, there is an important limitation: a maximum of 16 groups are passed from the client to the server, and, if a user is member of more than 16 groups on the client, some files or directories might be unexpectedly inaccessible.
+A user's file access is determined by their membership of groups on the client, not on the server. However, there is an important limitation: a maximum of 16 groups are passed from the client to the server, and if a user is member of more than 16 groups on the client, some files or directories might be unexpectedly inaccessible.
 
-### DNS - optional, only if using DNS
+### DNS (optional, only if using DNS)
 
-Add any client name and IP addresses to `/etc/hosts`. The IP address of the server should already be here. This ensures that NFS will still work even if DNS goes down. You could rely on DNS if you wanted, it's up to you.
+Add any client name and IP addresses to `/etc/hosts`. (The IP address of the server should already be there.) This ensures that NFS will still work even if DNS goes down. You can rely on DNS if you want; it's up to you.
 
-### NIS - optional, only if using NIS
+### NIS (optional, only if using NIS)
 
-This applies to clients utilizing NIS. Otherwise you can't use netgroups and should specify individual IPs or hostnames in `/etc/exports`. Read the BUGS section in man netgroup.
+This applies to clients using NIS. Otherwise you can't use netgroups, and should specify individual IPs or hostnames in `/etc/exports`. Read the BUGS section in `man netgroup` for more information.
 
-Edit `/etc/netgroup` and add a line to classify your clients. (This step is not necessary, but is for convenience).
+First, edit `/etc/netgroup` and add a line to classify your clients (this step is not necessary, but is for convenience):
 
 ```
-myclients (client1,,) (client2,,)
+myclients (client1,,) (client2,,) ...
 ```
 
-Where `myclients` is the netgroup name
+where `myclients` is the netgroup name.
 
-Run this command to rebuild the YP database:
+Next run this command to rebuild the NIS database:
 
 ```bash
 sudo make -C /var/yp
 ```
 
-### Portmap Lockdown - optional
+The name YP refers to Yellow Pages, the former name of NIS.
+
+### Portmap lockdown (optional)
 
 Add the following line to `/etc/hosts.deny`:
 
@@ -205,13 +204,15 @@ Add the following line to `/etc/hosts.deny`:
 rpcbind mountd nfsd statd lockd rquotad : ALL
 ```
 
-By blocking all clients first, only clients in `/etc/hosts.allow` below will be allowed to access the server. Consider adding the following line:
+By blocking all clients first, only clients in `/etc/hosts.allow` (added below) will be allowed to access the server.
+
+Consider adding the following line to `/etc/hosts.allow`:
 
 ```
 rpcbind mountd nfsd statd lockd rquotad : <list of IPs>
 ```
 
-Where the "list of IPs" is a list of IP addresses that consists of the server and all clients. These have to be IP addresses because of a limitation in rpcbind. Note that if you have NIS set up, just add these to the same line.
+where `<list of IPs>` is a list of the IP addresses of the server and all clients. These have to be IP addresses because of a limitation in `rpcbind`. Note that if you have NIS set up, you can just add these to the same line.
 
 ### Package installation and configuration
 
@@ -228,21 +229,21 @@ Edit `/etc/exports` and add the shares:
 /usr/local @myclients(rw,sync,no_subtree_check)
 ```
 
-The above shares `/home` and `/usr/local` to all clients in the `myclients` netgroup.
+The example above shares `/home` and `/usr/local` to all clients in the `myclients` netgroup.
 
 ```
 /home 192.168.0.10(rw,sync,no_subtree_check) 192.168.0.11(rw,sync,no_subtree_check)
 /usr/local 192.168.0.10(rw,sync,no_subtree_check) 192.168.0.11(rw,sync,no_subtree_check)
 ```
 
-Where the above shares `/home` and `/usr/local` are on two clients with static IP addresses. If you wanted instead allow to all clients in the private network falling within the designated ip address range, consider the following:
+The example above shares `/home` and `/usr/local` to two clients with static IP addresses. If you want instead to allow access to all clients in the private network falling within a designated IP address range, consider the following:
 
 ```
 /home 192.168.0.0/255.255.255.0(rw,sync,no_subtree_check)
 /usr/local 192.168.0.0/255.255.255.0(rw,sync,no_subtree_check)
 ```
 
-Where `rw` makes the share read/write, and `sync` requires the server to only reply to requests once any changes have been flushed to disk. This is the safest option; async is faster, but dangerous. It is strongly recommended that you read man exports if you are considering other options.
+Here, `rw` makes the share read/write, and `sync` requires the server to only reply to requests once any changes have been flushed to disk. This is the safest option; `async` is faster, but dangerous. It is strongly recommended that you read `man exports` if you are considering other options.
 
 After setting up `/etc/exports`, export the shares:
 
@@ -250,30 +251,30 @@ After setting up `/etc/exports`, export the shares:
 sudo exportfs -ra
 ```
 
-You'll want to do this command whenever `/etc/exports` is modified.
+You'll want to run this command whenever `/etc/exports` is modified.
 
-### Restart Services
+### Restart services
 
-By default, rpcbind only binds to the loopback interface. To enable access to rpcbind from remote machines, you need to change `/etc/conf.d/rpcbind` to get rid of either `-l` or `-i 127.0.0.1`.
+By default, `rpcbind` only binds to the loopback interface. To enable access to `rpcbind` from remote machines, you need to change `/etc/conf.d/rpcbind` to get rid of either `-l` or `-i 127.0.0.1`.
 
 If any changes were made, rpcbind and NFS will need to be restarted:
 
 ```bash
-sudo systemctl restart rpcbind
+sudo systemctl restart `rpcbind`
 sudo systemctl restart nfs-kernel-server
 ```
 
 ### Security items to consider
 
-Aside from the UID issues discussed above, it should be noted that an attacker could potentially masquerade as a machine that is allowed to map the share, which allows them to create arbitrary UIDs to access your files. One potential solution to this is IPSec, see also the NFS and IPSec section below. You can set up all your domain members to talk only to each other over IPSec, which will effectively authenticate that your client is who it says it is.
+Aside from the UID issues discussed above, it should be noted that an attacker could potentially masquerade as a machine that is allowed to map the share, which allows them to create arbitrary UIDs to access your files. One potential solution to this is IPSec; see also the NFS and IPSec section below. You can set up all your domain members to talk to each other only over IPSec, which will effectively authenticate that your client is who it says it is.
 
-IPSec works by encrypting traffic to the server with the server's key, and the server sends back all replies encrypted with the client's key. The traffic is decrypted with the respective keys. If the client doesn't have the keys that the client is supposed to have, it can't send or receive data.
+IPSec works by encrypting traffic to the server with the server's public key, and the server sends back all replies encrypted with the client's public key. The traffic is decrypted with the respective private keys. If the client doesn't have the keys that it is supposed to have, it can't send or receive data.
 
-An alternative to IPSec is physically separate networks. This requires a separate network switch and separate ethernet cards, and physical security of that network.
+An alternative to IPSec is physically separate networks. This requires a separate network switch and separate Ethernet cards, and physical security of that network.
 
 ## Troubleshooting
 
-Mounting an NFS share inside an encrypted home directory will only work after you are successfully logged in and your home is decrypted. This means that using /etc/fstab to mount NFS shares on boot will not work - because your home has not been decrypted at the time of mounting. There is a simple way around this using Symbolic links:
+Mounting an NFS share inside an encrypted home directory will only work after you are successfully logged in and your home is decrypted. This means that using /etc/fstab to mount NFS shares on boot will not work, because your home has not been decrypted at the time of mounting. There is a simple way around this using symbolic links:
 
 1. Create an alternative directory to mount the NFS shares in:
 
@@ -288,7 +289,7 @@ sudo mkdir /nfs/music
 nfsServer:music    /nfs/music    nfs    auto    0 0
 ```
 
-Create a symbolic link inside your home, pointing to the actual mount location. For example, in our case delete the 'Music' directory already existing there first:
+1. Create a symbolic link inside your home, pointing to the actual mount location. For example, and in this case deleting the `Music` directory already existing there first:
 
 ```bash
 rmdir /home/user/Music
@@ -297,7 +298,7 @@ ln -s /nfs/music/ /home/user/Music
 
 ## Author Information
 
-This guide is based on a document located on the official Ubuntu wiki:
+This guide is based on documents on the official Ubuntu wiki:
 
 1. https://help.ubuntu.com/community/SettingUpNFSHowTo
 1. https://help.ubuntu.com/stable/serverguide/network-file-system.html
