@@ -116,14 +116,16 @@ The `hdmi_pixel_encoding` command forces the pixel encoding mode. By default, it
 
 ### hdmi_blanking
 
-The `hdmi_blanking` command allows you to choose whether the HDMI output should be switched off when DPMS is triggered. This is to mimic the behaviour of other computers. After a specific amount of time, the display will become blank and go into low-power/standby mode due to receiving no signal.
+The `hdmi_blanking` command controls what happens when the operating system asks for the display to be put into standby mode, using DPMS, to save power. If this option is not set or set to 0, the HDMI output is blanked but not switched off. In order to mimic the behaviour of other computers, you can set the HDMI output to switch off as well by setting this option to 1: the attached display will go into a low power standby mode.
+
+**On the Raspberry Pi 4, setting hdmi_blanking=1 will not cause the HDMI output to be switched off, since this feature has not yet been implemented.**
 
 **NOTE:** This feature may cause issues when using applications which don't use the framebuffer, such as omxplayer.
 
 | hdmi_blanking | result |
 | --- | --- |
-| 0 | HDMI Output will blank instead of being disabled |
-| 1 | HDMI Output will be disabled rather than just blanking |
+| 0 | HDMI output will be blanked |
+| 1 | HDMI output will be switched off and blanked |
 
 ### hdmi_drive
 
