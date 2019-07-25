@@ -19,7 +19,7 @@ To check that the bootloader is working correctly, turn off the power, unplug ev
 
 ## recovery.bin
 
-If the EEPROM needs updating or has somehow become corrupted, it can be reflashed using a fresh SD card with a copy of `recovery.bin` in the first partition of an SD card, formatted to FAT.
+If the EEPROM needs updating or has somehow become corrupted, it can be reflashed using a fresh SD card with a copy of `recovery.bin` in the first partition of an SD card, formatted to FAT32.
 
 `recovery.bin` is a special utility which runs directly from the SD card and updates the EEPROM — it is not in itself a bootloader. It flashes the green LED rapidly (forever) upon success. Because it's not a bootloader, it won't load `start*.elf`, so once you see the green LED flashing rapidly, just re-insert a regular Raspbian SD card and reboot the Pi.
 
@@ -27,5 +27,35 @@ It can be downloaded from the [raspberrypi.org downloads page](https://www.raspb
 
 ## Write protection of EEPROM
 
-Raspbian will not update either the boot EEPROM or the VLI EEPROM (USB controller) without asking for the user's permission. However, it is possible to physically write-protect both EEPROMs via a simple resistor change on the board. Details will be published in the [schematics](./schematics/README.md).
+There is no software write protection for the boot EEPROM but there will be a mechanism in Raspbian to skip any future updates to the EEPROM. However, it is possible to physically write-protect both EEPROMs via a simple resistor change on the board. Details will be published in the [schematics](./schematics/README.md).
 
+## EEPROM configuration options
+
+The EEPROM image contains small user modifiable config file.  To change a setting:
+
+* Download and unzip the rescue bootloader image from https://www.raspberrypi.org/downloads/
+* Used sed to change setting, be careful to avoid changing anything else otherwise it will fail to boot.
+  * `sed -i -e "s/BOOT_UART=0/BOOT_UART=1/" pieeprom.bin`
+* Flash the image - see embedded README.txt in rescue image zip.
+
+We will soon be releasing a tool which allows the EEPROM config to be extracted and modified without having to use sed-hacks.
+
+#### BOOT_UART
+
+If 1 then enable UART debug output on (GPIO 14, 15) at 115200-8-N-1  
+Default: 0  
+Version: All
+
+#### WAKE_ON_GPIO 
+
+If 1 then 'sudo halt' will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.  
+
+Default: 0 in launch bootloader (2019-05-10) but changes to 1 in future bootloaders  
+Version: All  
+
+#### POWER_OFF_ON_HALT  
+
+If 1 and WAKE_ON_GPIO=0 then switch off all PMIC outputs in halt. This is lowest possible power state for halt but may cause problems with some HATS because 5V will still be on. GLOBAL_EN must be shorted to ground to boot.  
+
+Default: 0  
+Version: 2019-07-15  
