@@ -4,7 +4,7 @@
 
 ### sdtv_mode
 
-The `sdtv_mode` command defines the TV standard used for composite video output over the yellow RCA jack. The default value is `0`.
+The `sdtv_mode` command defines the TV standard used for composite video output. On the original Raspberry Pi, composite video is output on the RCA socket. On other Raspberry Pi's, except for Pi Zero and Compute Module, composite video is output along with sound on the 4 pole TRRS ("headphone") socket. On the Pi Zero, there is an unpopulated header labelled "TV" which outputs composite video. On the Compute Module, composite video is available via the TVDAC pin. The default value of `sdtv_mode` is `0`.
 
 | sdtv_mode | result |
 | --- | --- |
