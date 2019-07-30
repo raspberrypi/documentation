@@ -37,7 +37,7 @@ Some basic guides to configuring your Raspberry Pi.
 - [Firmware warning icons](warning-icons.md)
     - Description of warning icons displayed if the firmware detects issues
 - [LED warning flash codes](led_blink_warnings.md)
-    - Description of the meaning of LED warning flashes that are shown if a Pi fails to boot or has to shut down
+    - Description of LED warning flashes that are shown if a Pi fails to boot or has to shut down
 - [Securing your Raspberry Pi](security.md)
     - Some basic advice for making your Raspberry Pi more secure
 - [Screensaver](screensaver.md)
