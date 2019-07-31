@@ -1,3 +1,5 @@
+# THIS PAGE IS NOW DEPRECATED
+
 # Demo programs
 
 Here are some example programs to demonstrate the Pi's capabilities. Note that not all the demo applications will run on a Pi 4 due to the way the new 3D libraries work; the non-working ones will report an error message if run on a Pi 4. 
