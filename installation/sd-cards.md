@@ -2,17 +2,19 @@
 
 The Raspberry Pi should work with any compatible SD card, although there are some guidelines that should be followed:
 
-## SD card size (capacity). 
+## SD card size (capacity) 
 
 For installation of NOOBS or the image installation of Raspbian, the minimum recommended card size is 8GB. For Raspbian Lite image installations we recommend a minimum of 4GB. Some distributions, specifically LibreELEC and Arch, can run on much smaller cards. If you're planning to use a card of 64GB or more with NOOBS, see [this page](sdxc_formatting.md) first.
 
-## SD card class. 
+**Note:** Only the Raspberry Pi 3A+, 3B+ and Compute Module 3+ can boot from an SD card larger than 256 GB. This is because there was a bug in the SoC used on previous models of Pi. 
+
+## SD card class
 
 The card class determines the sustained write speed for the card; a class 4 card will be able to write at 4MB/s, whereas a class 10 should be able to attain 10 MB/s. However, it should be noted that this does not mean a class 10 card will outperform a class 4 card for general usage, because often this write speed is achieved at the cost of read speed and increased seek times.
 
-## SD card physical size. 
+## SD card physical size
 
-The original Raspberry Pi Model A and Raspberry Pi Model B require full-size SD cards. The newer [Raspberry Pi Model A+](https://www.raspberrypi.org/products/raspberry-pi-1-model/), [Raspberry Pi Model B+](https://www.raspberrypi.org/products/raspberry-pi-1-model-b/), [Raspberry Pi 2 Model B](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/), [Raspberry Pi Zero](https://www.raspberrypi.org/products/raspberry-pi-zero/), and [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/) require micro SD cards.
+The original Raspberry Pi Model A and Raspberry Pi Model B require full-size SD cards. All newer models of Raspberry Pi require micro SD cards.
 
 ## Troubleshooting
 
