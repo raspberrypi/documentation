@@ -54,7 +54,7 @@
 - **Polyfuse** - A self-resetting electrical fuse used on some Pi models to protect against over-current; can take hours or even days to reset.
 - **`raspi-config`** – A command line tool for configuring Raspbian's operating system features; see our [official documentation](../configuration/raspi-config.md).
 - **raspivid, raspistill, raspiyuv, raspividyuv** – a set of applications to run the Raspberry Pi Camera Module in various modes; see our [official documentation](../raspbian/applications/camera.md).
-- **Raspbian** - A Debian-based Linux distribution targeted at the entire Raspberry Pi range, regarded as the official operating; the current version is based on Debian Stretch, with the first release in August 2017; see the [Wikipedia entry for further release details](https://en.wikipedia.org/wiki/Raspbian).
+- **Raspbian** - A Debian-based Linux distribution targeted at the entire Raspberry Pi range, regarded as the official operating system; the current version is based on Debian Buster, with the first release in June 2019; see the [Wikipedia entry for further release details](https://en.wikipedia.org/wiki/Raspbian).
 - **Raspberry Pi Configuration Tool (`rcgui`)** – A graphical equivalent of `raspi-config`.
 - **Raspberry Pi Desktop** – A version of the LXDE desktop environment, specifically tailored to the Raspberry Pi (used to be called PIXEL).
 - **RPF** - Raspberry Pi Foundation, the original, Uk-registered educational charity (1129409) that launched the Raspberry Pi.
