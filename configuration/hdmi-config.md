@@ -86,4 +86,4 @@ For the Pi4, to specify the HDMI port, you can add an index identifier to the co
 
 In some rare cases you may need to increase the HDMI drive strength, for example when there is speckling on the display or when you are using very long cables. There is a config.txt item to do this, `config_hdmi_boost`, which is documented on the [config.txt video page](config-txt/video.md).
 
-The Pi 4 does not support `config_hdmi_boost`.
+The Raspberry Pi 4B does not yet support `config_hdmi_boost`, support for this option will be added in a future software update.
