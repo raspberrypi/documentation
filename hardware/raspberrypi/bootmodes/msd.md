@@ -6,7 +6,7 @@ This tutorial explains how to boot your Raspberry Pi from a USB mass storage dev
 
 ## Program USB boot mode
 
-The Raspberry Pi 3+ is able to boot from USB without any changes, but the Raspberry Pi 3 requires the USB boot bit to be set in the OTP (one-time programmable) memory. If you are using a Raspberry Pi 3+, please go to the next section.
+The Raspberry Pi 3A+ and 3B+ are able to boot from USB without any changes, but the Raspberry Pi 3A and 3B require the USB boot bit to be set in the OTP (one-time programmable) memory. If you are using a Raspberry Pi 3A+ or 3B+, please go to the next section.
 
 To enable the USB boot bit, the Raspberry Pi 3 needs to be booted from an SD card with a `config` option to enable USB boot mode. 
 
