@@ -36,9 +36,7 @@ The `python_games` folder contents in a the file manager window:
 
 ![Python Games in File Manager](images/python-games-folder.png)
 
-The Python source code for the *Four in a Row* game, open for editing in `IDLE`.
-
-![Four in a Row source code](images/four-in-a-row-code.png)
+You can open up the Python source code for any of the games in Thonny, or any other editor, and see how they work.
 
 ### Hack the game
 

@@ -40,10 +40,10 @@ Note that [X11 is no longer present on Macs with OSX](https://support.apple.com/
 Now you are on the command line as before, but you have the ability to open up graphical windows. For example, typing:
 
 ```bash
-idle3 &
+geany &
 ```
 
-will open up the Python editor IDLE in a graphical window.
+will open up the Geany editor in a graphical window.
 
 Typing:
 
