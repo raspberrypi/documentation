@@ -83,10 +83,10 @@ It should look like this:
         location ~ \.php$ {
                 include snippets/fastcgi-php.conf;
         
-                # With php5-cgi alone:
-        #       fastcgi_pass 127.0.0.1:9000;
-                # With php5-fpm:
-                fastcgi_pass unix:/var/run/php5-fpm.sock;
+		# With php-fpm (or other unix sockets):
+		fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+		# With php-cgi (or other tcp sockets):
+	#	fastcgi_pass 127.0.0.1:9000;
         }
 ```
 

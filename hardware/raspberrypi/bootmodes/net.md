@@ -1,6 +1,8 @@
 # Network booting
 
-This section describes how network booting works. We also have a [tutorial about setting up a working bootable system](net_tutorial.md). Network booting works only for the wired adapter built into certain models of Raspberry Pi. Booting over wireless LAN is not supported, nor is booting from any other wired network device.
+**Network booting is available on Raspberry Pi 3B, 3B+, and 2B v1.2 only.**
+
+This section describes how network booting works. We also have a [tutorial about setting up a working bootable system](net_tutorial.md). Network booting works only for the wired adapter built into the above models of Raspberry Pi. Booting over wireless LAN is not supported, nor is booting from any other wired network device.
 
 To network boot, the boot ROM does the following:
 
@@ -22,7 +24,7 @@ To get the serial number for the device you can either try this boot mode and se
 
 If you put all your files into the root of your tftp directory then all following files will be accessed from there.
 
-## Debugging the NFS boot mode
+## Debugging the network boot mode
 
 The first thing to check is that the OTP bit is correctly programmed. To do this, you need to add `program_usb_boot_mode=1` to config.txt and reboot (with a standard SD card that boots correctly into Raspbian). Once you've done this, you should be able to do:
 

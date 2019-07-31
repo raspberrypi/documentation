@@ -23,7 +23,9 @@ Now you need to enable camera support using the `raspi-config` program you will 
 sudo raspi-config
 ```
 
-Use the cursor keys to move to the camera option, and select 'enable'. On exiting `raspi-config`, it will ask to reboot. The enable option will ensure that on reboot the correct GPU firmware will be running with the camera driver and tuning, and the GPU memory split is sufficient to allow the camera to acquire enough memory to run correctly.
+Use the cursor keys to select and open *Interfacing Options*, and then select *Camera* and follow the prompt to enable the camera. 
+
+Upon exiting `raspi-config`, it will ask to reboot. The enable option will ensure that on reboot the correct GPU firmware will be running with the camera driver and tuning, and the GPU memory split is sufficient to allow the camera to acquire enough memory to run correctly.
 
 To test that the system is installed and working, try the following command:
 

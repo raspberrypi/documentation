@@ -54,7 +54,17 @@ KERNEL=kernel7
 make bcm2709_defconfig
 ```
 
-Build and install the kernel, modules, and Device Tree blobs; this step takes a **long** time:
+### Raspberry Pi 4
+
+```bash
+cd linux
+KERNEL=kernel7l
+make bcm2711_defconfig
+```
+
+### Building
+
+Build and install the kernel, modules, and Device Tree blobs; this step can take a **long** time depending on the Pi model in use:
 
 ```bash
 make -j4 zImage modules dtbs
@@ -65,7 +75,7 @@ sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
 sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 ```
 
-**Note**: On a Raspberry Pi 2/3, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
+**Note**: On a Raspberry Pi 2/3/4, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
 
 ## Cross-compiling
 
@@ -128,7 +138,15 @@ KERNEL=kernel7
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
 ```
 
-Then, for both:
+For Raspberry Pi 4:
+
+```bash
+cd linux
+KERNEL=kernel7l
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
+```
+
+Then, for all:
 
 ```bash
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
@@ -163,14 +181,14 @@ sdb
 
 with `sdb6` being the FAT (boot) partition, and `sdb7` being the ext4 filesystem (root) partition.
 
-Mount these first, adjusting the partition numbers for NOOBS cards:
+Mount these first, adjusting the partition numbers for NOOBS cards (as necessary):
 
 ```bash
 mkdir mnt
 mkdir mnt/fat32
 mkdir mnt/ext4
-sudo mount /dev/sdb1 mnt/fat32
-sudo mount /dev/sdb2 mnt/ext4
+sudo mount /dev/sdb6 mnt/fat32
+sudo mount /dev/sdb7 mnt/ext4
 ```
 
 Next, install the modules:

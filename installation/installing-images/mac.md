@@ -1,6 +1,6 @@
 # Installing operating system images on Mac OS
 
-[Etcher](README.md) is typically the easiest option for most users to write images to SD cards, so it is a good place to start. If you're looking for more advanced options on Mac OS, you can use the built-in graphical and command line tools below.
+[balenaEtcher](README.md) is typically the easiest option for most users to write images to SD cards, so it is a good place to start. If you're looking for more advanced options on Mac OS, you can use the built-in graphical and command line tools below.
 
 **Note**: use of the `dd` tool can overwrite any partition of your machine. If you specify the wrong device in the instructions below, you could delete your primary Mac OS partition. Please be careful.
 
@@ -17,12 +17,12 @@
     ```
 
     Remember to replace `n` with the number that you noted before!
-    
+
     This will take a few minutes, depending on the image file size. You can check the progress by sending a SIGINFO signal                  (press Ctrl+T).
 
 
     - If this command fails, try using `disk` instead of `rdisk`:
-    
+
        ```
        sudo dd bs=1m if=path_of_your_image.img of=/dev/diskn conv=sync
        ```
@@ -41,12 +41,12 @@ This will take a few minutes, depending on the size of the image file. To check 
     `diskutil unmountDisk /dev/disk<disk# from diskutil>`
 
     where `disk` is your BSD name e.g. `diskutil unmountDisk /dev/disk4`
-    
+
 - Copy the data to your SD card:
 
     `sudo dd bs=1m if=image.img of=/dev/rdisk<disk# from diskutil> conv=sync`
 
-    where `disk` is your BSD name e.g. `sudo dd bs=1m if=2018-11-13-raspbian-stretch.img of=/dev/rdisk4 conv=sync`
+    where `disk` is your BSD name e.g. `sudo dd bs=1m if=2019-07-10-raspbian-buster.img of=/dev/rdisk4 conv=sync`
 
     - This may result in a ``dd: invalid number '1m'`` error if you have GNU
     coreutils installed. In that case, you need to use a block size of `1M` in the `bs=` section, as follows:
@@ -54,21 +54,21 @@ This will take a few minutes, depending on the size of the image file. To check 
        `sudo dd bs=1M if=image.img of=/dev/rdisk<disk# from diskutil> conv=sync`
 
     This will take a few minutes, depending on the image file size. You can check the progress by sending a `SIGINFO` signal (press Ctrl+T).
-    
+
     - If this command still fails, try using `disk` instead of `rdisk`, for example:
-    
+
        ```
-       sudo dd bs=1m if=2018-11-13-raspbian-stretch.img of=/dev/disk4 conv=sync
+       sudo dd bs=1m if=2019-07-10-raspbian-buster.img of=/dev/disk4 conv=sync
        ```
        or
        ```
-       sudo dd bs=1M if=2018-11-13-raspbian-stretch.img of=/dev/disk4 conv=sync
+       sudo dd bs=1M if=2019-07-10-raspbian-buster.img of=/dev/disk4 conv=sync
        ```
        After the `dd` command finishes, eject the card:
        ```
        sudo diskutil eject /dev/rdisk<disk# from diskutil>
        ```
-       
+
 
 ## Alternative method
 
@@ -107,19 +107,19 @@ map auto_home    0Bi    0Bi    0Bi   100%       0          0  100%   /home
     Alternatively, open Disk Utility and unmount the partition of the SD card. Do not eject it. If you eject it, you will have to reconnect it.
 - Using the device name of the partition, work out the **raw device name** for the entire disk by omitting the final `s#` and replacing `disk` with `rdisk`. This is very important, as you will lose all data on the hard drive if you provide the wrong device name. Make sure the device name is the name of the whole SD card as described above, not just a partition of it, for example, `rdisk3`, not `rdisk3s1`. Similarly, you might have another SD drive name/number like `rdisk2` or `rdisk4`. You can check again by using the `df -h` command, both before and after you insert your SD card reader into your Mac. For example: `/dev/disk3s1` becomes `/dev/rdisk3`.
 - In the terminal, write the image to the card with this command, using the raw device name from above. Read the above step carefully to make sure that you use the correct `rdisk` number here:
-    
+
     ```
-    sudo dd bs=1m if=2018-11-13-raspbian-stretch.img of=/dev/rdisk3 conv=sync
+    sudo dd bs=1m if=2019-07-10-raspbian-buster.img of=/dev/rdisk3 conv=sync
     ```
 
     If the above command reports the error `dd: bs: illegal numeric value`, change the block size `bs=1m` to `bs=1M`.
 
     If the above command reports the error `dd: /dev/rdisk3: Permission denied`, the partition table of the SD card is being protected against being overwritten by Mac OS. Erase the SD card's partition table using this command:
-    
+
     ```
     sudo diskutil partitionDisk /dev/disk3 1 MBR "Free Space" "%noformat%" 100%
     ```
-    
+
     That command will also set the permissions on the device to allow writing. Now try the `dd` command again.
 
     Note that `dd` will not provide any on-screen information until there is an error, or it is finished. When the process is complete, information will be shown and the disk will re-mount. If you wish to view the progress, you can use Ctrl-T. This generates SIGINFO, the status argument of your terminal, and will display information on the process.

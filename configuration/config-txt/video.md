@@ -4,7 +4,7 @@
 
 ### sdtv_mode
 
-The `sdtv_mode` command defines the TV standard used for composite video output over the yellow RCA jack. The default value is `0`.
+The `sdtv_mode` command defines the TV standard used for composite video output. On the original Raspberry Pi, composite video is output on the RCA socket. On other Raspberry Pi's, except for Pi Zero and Compute Module, composite video is output along with sound on the 4 pole TRRS ("headphone") socket. On the Pi Zero, there is an unpopulated header labelled "TV" which outputs composite video. On the Compute Module, composite video is available via the TVDAC pin. The default value of `sdtv_mode` is `0`.
 
 | sdtv_mode | result |
 | --- | --- |
@@ -29,7 +29,17 @@ The `sdtv_aspect` command defines the aspect ratio for composite video output. T
 
 Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
 
+### enable_tvout (Pi 4B only)
+
+On the Raspberry Pi 4, composite output is disabled by default, due to the way the internal clocks are interrelated and allocated. Because composite video requires a very specific clock, setting that clock to the required speed on the Pi 4 means that other clocks connected to it are detrimentally affected, which slightly slows down the entire system. Since composite video is a less commonly used function, we decided to disable it by default to prevent this system slowdown. 
+
+To enable composite output, use the `enable_tvout=1` option. As described above, this will detrimentally affect performance to a small degree.
+
+On older Pi models, the composite behaviour remains the same.
+
 ## HDMI mode options
+
+**Note for Raspberry Pi4B users:** Because the Raspberry Pi 4B has two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found on the [conditionals page](./conditional.md) in the HDMI section of the documentation. 
 
 ### hdmi_safe
 
@@ -55,6 +65,18 @@ Setting `hdmi_ignore_edid` to `0xa5000080` enables the ignoring of EDID/display 
 ### hdmi_edid_file
 
 Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. More information is available [here](https://www.raspberrypi.org/forums/viewtopic.php?p=173430#p173430).
+
+### hdmi_edid_filename
+
+On the Raspberry Pi 4B, you can use the `hdmi_edid_filename` command to specify the filename of the EDID file to use, and also to specify which port the file is to be applied to. This also requires `hdmi_edid_file=1` to enable EDID files.
+
+For example:
+
+```
+hdmi_edid_file=1
+hdmi_edid_filename:0=FileForPortZero.edid
+hdmi_edid_filename:1=FileForPortOne.edid
+```
 
 ### hdmi_force_edid_audio
 
@@ -94,14 +116,16 @@ The `hdmi_pixel_encoding` command forces the pixel encoding mode. By default, it
 
 ### hdmi_blanking
 
-The `hdmi_blanking` command allows you to choose whether the HDMI output should be switched off when DPMS is triggered. This is to mimic the behaviour of other computers. After a specific amount of time, the display will become blank and go into low-power/standby mode due to receiving no signal.
+The `hdmi_blanking` command controls what happens when the operating system asks for the display to be put into standby mode, using DPMS, to save power. If this option is not set or set to 0, the HDMI output is blanked but not switched off. In order to mimic the behaviour of other computers, you can set the HDMI output to switch off as well by setting this option to 1: the attached display will go into a low power standby mode.
+
+**On the Raspberry Pi 4, setting hdmi_blanking=1 will not cause the HDMI output to be switched off, since this feature has not yet been implemented.**
 
 **NOTE:** This feature may cause issues when using applications which don't use the framebuffer, such as omxplayer.
 
 | hdmi_blanking | result |
 | --- | --- |
-| 0 | HDMI Output will blank instead of being disabled |
-| 1 | HDMI Output will be disabled rather than just blanking |
+| 0 | HDMI output will be blanked |
+| 1 | HDMI output will be switched off and blanked |
 
 ### hdmi_drive
 
@@ -351,6 +375,10 @@ The options are:
  - `3` = `EDID_ContentType_Cinema`,  content type cinema
  - `4` = `EDID_ContentType_Game`,  content type game
  
+### hdmi_enable_4kp60 (Pi 4B only)
+
+By default, when connected to a 4K monitor, the Raspberry Pi 4B will select a 30hz refresh rate. Use this option to allow selection of 60Hz refresh rates. Note, this will increase power consumption and increase the temperature of the Raspberry Pi. It is not possible to output 4Kp60 on both micro HDMI ports simultaneously.
+ 
 ## Which values are valid for my monitor?
 
 Your HDMI monitor may only support a limited set of formats. To find out which formats are supported, use the following method:
@@ -526,7 +554,7 @@ The `framebuffer_width` command specifies the console framebuffer width in pixel
 ### framebuffer_height
 
 The `framebuffer_height` command specifies the console framebuffer height in pixels. The default is the display height minus the total vertical overscan.
-
+C4 
 ### max_framebuffer_height, max_framebuffer_width
 
 Specifies the maximum dimensions that the internal frame buffer is allowed to be. 
@@ -546,6 +574,20 @@ Use `framebuffer_depth` to specify the console framebuffer depth in bits per pix
 
 Set `framebuffer_ignore_alpha` to `1` to disable the alpha channel. Can help with the display of a 32bit `framebuffer_depth`.
 
+### framebuffer_priority
+
+In a system with multiple displays, using the legacy (pre-KMS) graphics driver, this forces a specific internal display device to be the first Linux framebuffer (i.e./dev/fb0). 
+
+The options that can be set are:
+
+| Display | ID |
+| --- | --- | 
+|Main LCD       | 0 |
+|Secondary LCD  | 1 | 
+|HDMI 0         | 2 |
+|Composite      | 3 | 
+|HDMI 1         | 7 |
+
 ### test_mode
 
 The `test_mode` command displays a test image and sound during boot (over the composite video and analogue audio outputs only) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test; the default value is `0`.
@@ -564,6 +606,8 @@ Use `display_hdmi_rotate` to rotate or flip the HDMI display orientation. The de
 | 0x20000 | vertical flip |
 
 Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16MB GPU split.
+
+If using the VC4 FKMS V3D driver (this is the default on the Raspberry Pi 4), then 90 and 270 degree rotations are not supported. The Screen Configuration utility provides display rotations for this driver.
 
 ### display_lcd_rotate
 

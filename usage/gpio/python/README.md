@@ -19,7 +19,7 @@ while True:
     sleep(1)
 ```
 
-Run this in an IDE like IDLE or Thonny, and the LED will blink on and off repeatedly.
+Run this in an IDE like Thonny, and the LED will blink on and off repeatedly.
 
 LED methods include `on()`, `off()`, `toggle()`, and `blink()`.
 

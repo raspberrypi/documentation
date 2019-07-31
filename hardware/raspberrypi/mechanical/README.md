@@ -1,5 +1,10 @@
 # Mechanical Drawings
 
+## Raspberry Pi 4B
+
+- [Board - PDF](rpi_MECH_4b_4p0.pdf)
+- [Board - DXF](rpi_MECH_4b_4p0.dxf)
+
 ## Raspberry Pi 3B+
 
 - [Board](rpi_MECH_3bplus.pdf)
