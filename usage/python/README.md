@@ -4,7 +4,7 @@ Python is a wonderful and powerful programming language that's easy to use (easy
 
 ![Python logo](images/python-logo.png)
 
-Python syntax is very clean, with an emphasis on readability and uses standard English keywords. 
+Python syntax is very clean, with an emphasis on readability, and uses standard English keywords. 
 
 ## Thonny
 
