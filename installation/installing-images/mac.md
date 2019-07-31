@@ -46,7 +46,7 @@ This will take a few minutes, depending on the size of the image file. To check 
 
     `sudo dd bs=1m if=image.img of=/dev/rdisk<disk# from diskutil> conv=sync`
 
-    where `disk` is your BSD name e.g. `sudo dd bs=1m if=2019-07-10-raspbian-stretch.img of=/dev/rdisk4 conv=sync`
+    where `disk` is your BSD name e.g. `sudo dd bs=1m if=2019-07-10-raspbian-buster.img of=/dev/rdisk4 conv=sync`
 
     - This may result in a ``dd: invalid number '1m'`` error if you have GNU
     coreutils installed. In that case, you need to use a block size of `1M` in the `bs=` section, as follows:
@@ -58,11 +58,11 @@ This will take a few minutes, depending on the size of the image file. To check 
     - If this command still fails, try using `disk` instead of `rdisk`, for example:
 
        ```
-       sudo dd bs=1m if=2019-07-10-raspbian-stretch.img of=/dev/disk4 conv=sync
+       sudo dd bs=1m if=2019-07-10-raspbian-buster.img of=/dev/disk4 conv=sync
        ```
        or
        ```
-       sudo dd bs=1M if=2019-07-10-raspbian-stretch.img of=/dev/disk4 conv=sync
+       sudo dd bs=1M if=2019-07-10-raspbian-buster.img of=/dev/disk4 conv=sync
        ```
        After the `dd` command finishes, eject the card:
        ```
@@ -109,7 +109,7 @@ map auto_home    0Bi    0Bi    0Bi   100%       0          0  100%   /home
 - In the terminal, write the image to the card with this command, using the raw device name from above. Read the above step carefully to make sure that you use the correct `rdisk` number here:
 
     ```
-    sudo dd bs=1m if=2019-07-10-raspbian-stretch.img of=/dev/rdisk3 conv=sync
+    sudo dd bs=1m if=2019-07-10-raspbian-buster.img of=/dev/rdisk3 conv=sync
     ```
 
     If the above command reports the error `dd: bs: illegal numeric value`, change the block size `bs=1m` to `bs=1M`.
