@@ -134,7 +134,7 @@ Generating a key pair in Linux is done using the `ssh-keygen` command on the **c
 
 You will be prompted for a passphrase during key generation: this is an extra level of security. For the moment, leave this blank.
 
-The public key now needs to be moved on to the server, see [Copy your public key to your Raspberry Pi](../remote-access/ssh/passwordless.md#copy-your-public-key-to-your-raspberry-pi)
+The public key now needs to be moved on to the server: see [Copy your public key to your Raspberry Pi](../remote-access/ssh/passwordless.md#copy-your-public-key-to-your-raspberry-pi).
 
 Finally, we need to disable password logins, so that all authentication is done by the key pairs.
 
