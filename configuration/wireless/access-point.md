@@ -188,6 +188,7 @@ ssh pi@192.168.4.1
 
 By this point, the Raspberry Pi is acting as an access point, and other devices can associate with it. Associated devices can access the Raspberry Pi access point via its IP address for operations such as `rsync`, `scp`, or `ssh`.
 
+<a name="internet-sharing"></a>
 ## Using the Raspberry Pi as an access point to share an internet connection (bridge)
 
 One common use of the Raspberry Pi as an access point is to provide wireless connections to a wired Ethernet connection, so that anyone logged into the access point can access the internet, providing of course that the wired Ethernet on the Pi can connect to the internet via some sort of router.
