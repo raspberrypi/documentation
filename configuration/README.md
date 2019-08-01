@@ -5,13 +5,13 @@ Some basic guides to configuring your Raspberry Pi.
 ## Contents
 
 - [raspi-config](raspi-config.md)
-    - The Raspberry Pi configuration tool in Raspbian that allows you to easily enable features such as the camera, and to change your specific settings such as keyboard layout
+    - The Raspberry Pi configuration tool in Raspbian, which allows you to easily enable features such as the camera, and to change your specific settings such as keyboard layout
 - [config.txt](config-txt/README.md)
     - The Raspberry Pi configuration file
 - [Wireless networking](wireless/README.md)
     - Configuring your Pi to connect to a wireless network using the Raspberry Pi 3's or Pi Zero W's inbuilt wireless connectivity, or a USB wireless dongle
 - [Wireless access point](wireless/access-point.md)
-    - Configuring your Pi as a wireless access point using the Raspberry Pi 3 or Pi Zero W's inbuilt wireless connectivity, or a USB wireless dongle
+    - Configuring your Pi as a wireless access point using Raspberry Pi 3 or Raspberry Pi Zero W's inbuilt wireless connectivity, or a USB wireless dongle
 - [Using a proxy](use-a-proxy.md)
     - Setting up your Pi to access the internet via a proxy server
 - [HDMI Config](hdmi-config.md)
@@ -25,7 +25,7 @@ Some basic guides to configuring your Raspberry Pi.
 - [External storage config](external-storage.md)
     - Mounting and setting up external storage on a Raspberry Pi
 - [Localisation](localisation.md)
-    - Setting up your Pi to work in your local language & time zone
+    - Setting up your Pi to work in your local language and time zone
 - [Default pin configuration](pin-configuration.md)
     - Changing the default pin states.
 - [Device Trees config](device-tree.md)
