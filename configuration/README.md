@@ -39,4 +39,4 @@ Some basic guides to configuring your Raspberry Pi.
 - [The boot folder](boot_folder.md)
     - What it's for and what's in it
 - [Network File System](nfs.md)
-    - How to setup a NFS and connect clients to it
+    - How to set up a NFS and connect clients to it
