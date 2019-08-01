@@ -9,9 +9,9 @@ By default, Raspbian attempts to automatically configure all network interfaces 
 If you wish to disable automatic configuration for an interface and instead configure it statically, add the details to `/etc/dhcpcd.conf`, for example:
 
 ```interface eth0
-static ip_address=192.168.0.10/24	
-static routers=192.168.0.1
-static domain_name_servers=192.168.0.1 8.8.8.8
+static ip_address=192.168.0.4/24	
+static routers=192.168.0.254
+static domain_name_servers=192.168.0.254 8.8.8.8
 ```
 
 You can find the name of the interfaces present on your system using the `ip link` command.
