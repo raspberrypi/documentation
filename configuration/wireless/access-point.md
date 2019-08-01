@@ -16,7 +16,7 @@ Use the following to update your Raspbian installation:
 ```
 sudo apt update
 sudo apt upgrade
-sudo dist-upgrade
+sudo apt dist-upgrade
 ```
 
 If an updated kernel was installed, consider rebooting:
