@@ -38,5 +38,5 @@ Some basic guides to configuring your Raspberry Pi.
     - How to configure screen blanking/screen saver
 - [The boot folder](boot_folder.md)
     - What it's for and what's in it
-- [Network File System](nfs.md)
+- [Network File System (NFS)](nfs.md)
     - How to set up a NFS and connect clients to it
