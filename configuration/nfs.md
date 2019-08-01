@@ -1,4 +1,4 @@
-# NFS - Network File System
+# Network File System (NFS)
 
 A **Network File System** (NFS) allows you to share a directory located on one networked computer with other computers or devices on the same network. The computer where the directory is located is called the **server**, and computers or devices connecting to that server are called **clients**. Clients usually `mount` the shared directory to make it a part of their own directory structure. The shared directory is an example of a shared resource or network share.
 
