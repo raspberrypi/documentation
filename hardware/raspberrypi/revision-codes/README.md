@@ -14,7 +14,7 @@ Revision    : a02082
 Serial      : 00000000765fc593
 ```
 
-*Note: As of the 4.9 kernel, all Pis report `BCM2835`, even those with BCM2836 and BCM2837 processors. You should not use this string to detect the processor.*
+*Note: As of the 4.9 kernel, all Pis report `BCM2835`, even those with BCM2836, BCM2837 and BCM2711 processors. You should not use this string to detect the processor. Decode the revision code using the information below, or `cat /sys/firmware/devicetree/base/model`*
 
 ## Old-style revision codes
 
