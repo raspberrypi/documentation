@@ -11,21 +11,7 @@ Note that this documentation was tested on a Raspberry Pi 3, and it is possible 
 
 To add a Raspberry Pi-based access point to an existing network, see [this section](#internet-sharing).
 
-In order to work as an access point, the Raspberry Pi will need to have access point software installed, along with DHCP server software to provide connecting devices with a network address. Ensure that your Raspberry Pi is using an up-to-date version of Raspbian dated 2017 or later.
-
-Use the following to update your Raspbian installation:
-
-```
-sudo apt update
-sudo apt upgrade
-sudo dist-upgrade
-```
-
-If an updated kernel was installed, consider rebooting:
-
-```
-sudo reboot
-```
+In order to work as an access point, the Raspberry Pi will need to have access point software installed, along with DHCP server software to provide connecting devices with a network address.
 
 To create an access point, we'll need DNSMasq and HostAPD. Install all the required software in one go with this command:
 
@@ -190,6 +176,7 @@ ssh pi@192.168.4.1
 
 By this point, the Raspberry Pi is acting as an access point, and other devices can associate with it. Associated devices can access the Raspberry Pi access point via its IP address for operations such as `rsync`, `scp`, or `ssh`.
 
+<a name="internet-sharing"></a>
 ## Using the Raspberry Pi as an access point to share an internet connection (bridge)
 
 One common use of the Raspberry Pi as an access point is to provide wireless connections to a wired Ethernet connection, so that anyone logged into the access point can access the internet, providing of course that the wired Ethernet on the Pi can connect to the internet via some sort of router.
