@@ -23,9 +23,9 @@ This is the official documentation for the Raspberry Pi, written by the [Raspber
 - [Technical FAQ](technical-faq.md)
     - Answers to frequently asked technical questions
 
-## General Help
+## General Documentation Help
 
-In addition to the topics above, we have a set of [Frequently Asked Questions](faqs/README.md), and a [Glossary](glossary/README.md) to help with some technical terms you may ecounter in our documentation.
+In addition to the topics above, we have a set of [Frequently Asked Questions](faqs/README.md), and a [Glossary](glossary/README.md) to help with any technical terms you may encounter in our documentation.
 
 ## Contributions
 
