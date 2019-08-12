@@ -14,7 +14,7 @@ Note that there are a few config settings that cannot be retrieved using `vcgenc
 
 ## File format
 
-The `config.txt` file is read by the early-stage boot firmware, so it has a very simple file format. The format is a single `property=value` statement on each line, where `value` is either an integer or a string. Comments may be added, or existing config values may be commented out and disabled, by starting a line with the `#` character.
+The `config.txt` file is read by the early-stage boot firmware (please be more specific! does this refer to bootcode.bin or any of the start*.elf files? Thanks!), so it has a very simple file format. The format is a single `property=value` statement on each line, where `value` is either an integer or a string. Comments may be added, or existing config values may be commented out and disabled, by starting a line with the `#` character.
 
 Here is an example file:
 
