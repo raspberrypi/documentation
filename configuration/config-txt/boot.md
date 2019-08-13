@@ -85,7 +85,7 @@ If `disable_splash` is set to `1`, the rainbow splash screen will not be shown o
 
 ## enable_gic (Pi 4B only)
 
-On the Raspberry Pi 4B, if this value is set to `0` then the interrupts will be routed to the ARM cores using legacy mode, rather than via the GIC-400. The default value is `1`.
+On the Raspberry Pi 4B, if this value is set to `0` then the interrupts will be routed to the ARM cores using the legacy interrupt controller, rather than via the GIC-400. The default value is `1`.
 
 
 
