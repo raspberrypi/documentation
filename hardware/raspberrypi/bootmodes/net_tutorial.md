@@ -64,7 +64,7 @@ sudo umount dev sys proc
 Find the settings of your local network. You need to find the address of your router (or gateway), which can be done with:
 
 ```bash
-ip route | grep default | awk '{print $3}'
+ip route | awk '/default/ {print $3}'
 ```
 
 Then run:
