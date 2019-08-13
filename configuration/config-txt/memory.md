@@ -8,6 +8,8 @@ GPU memory in megabytes, sets the memory split between the CPU and GPU; the CPU 
 
 For performance reasons, you should set `gpu_mem` as low as possible to give the Linux system as much memory as possible. However, setting `gpu_mem` to too low values may automatically disable certain firmware features, as there are some things the GPU cannot do if it has access to too little memory. So if a feature you are trying to use isn't working, try setting a larger GPU memory split.
 
+Values of `gpu_mem` over 512 are not recommended, will provide no performance improvements, and are untested.
+
 Using `gpu_mem_256`, `gpu_mem_512`, and `gpu_mem_1024` allows you to swap the same SD card between 256MB, 512MB, and 1024MB Pis without having to edit `config.txt` each time:
 
 ## gpu_mem_256
