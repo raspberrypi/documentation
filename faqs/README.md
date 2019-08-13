@@ -31,7 +31,7 @@
 - Can I use my Raspberry Pi as a desktop replacement?
 - Can I add extra RAM?
 - Can I connect multiple Raspberry Pis together to make a faster computer?
-- Why does my Raspberry Pi run at a slower clock speed that advertised?
+- Why does my Raspberry Pi run at a slower clock speed than advertised?
 - Does it overclock?
 - What is its operating temperature? Does it need a heatsink?
 
@@ -255,7 +255,7 @@ No. The RAM on the Raspberry Pi 1 Model A, A+, B, B+, and Raspberry Pi Zero/Zero
 
 Sort of, but not in the way you might want to do it. You cannot simply make a more powerful computer, to play games faster for example, by bolting together smaller ones. You can network computers to create a cluster computer, but you do need to modify your software to work in this distributed fashion. We've put together a tutorial for [how to build a Raspberry Pi cluster](https://projects.raspberrypi.org/en/projects/build-an-octapi), in collaboration with GCHQ.
 
-### Why does my Raspberry Pi run at a slower clock speed that advertised?
+### Why does my Raspberry Pi run at a slower clock speed than advertised?
 
 The Raspberry Pi (all models) idles at a lower speed than advertised. If the workload of the CPU increases, then the clock speed increases until it reaches its maximum value, which varies between models. If the CPU starts to overheat, there are added complexities: depending on the model, when the device reaches a particular temperature, the clock is throttled back to prevent overheating. This is called thermal throttling. If the Raspberry Pi does thermal-throttle, you will see a warning icon in the top right-hand corner of the desktop (see [here](../configuration/warning-icons.md)).
 
