@@ -6,7 +6,7 @@ This tutorial explains how to boot your Raspberry Pi from a USB mass storage dev
 
 ## Program USB host boot mode
 
-This step is only required on the Raspberry Pi 3A, 3A+ and 3B. (The Raspberry Pi 3B+ already has the required OTP bit set).
+This step is only required on the Raspberry Pi 3A, 3A+ and 3B.
 
 To enable the USB host boot mode bit, the Pi needs to be booted from an SD card with a special option to enable USB host boot mode. 
 
