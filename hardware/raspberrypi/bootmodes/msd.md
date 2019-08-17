@@ -4,29 +4,35 @@
 
 This tutorial explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or USB hard disk. Be warned that this feature is experimental and does not work with all USB mass storage devices. See [this blog post](https://www.raspberrypi.org/blog/pi-3-booting-part-i-usb-mass-storage-boot/) from Gordon Hollingworth for an explanation of why some USB mass storage devices don't work, as well as for some background information.
 
-## Program USB boot mode
+## Program USB host boot mode
 
-The Raspberry Pi 3A+ and 3B+ are able to boot from USB without any changes, but the Raspberry Pi 3A and 3B require the USB boot bit to be set in the OTP (one-time programmable) memory. If you are using a Raspberry Pi 3A+ or 3B+, please go to the next section.
+This step is only required on the Raspberry Pi 3A, 3A+ and 3B. (The Raspberry Pi 3B+ already has the required OTP bit set).
 
-To enable the USB boot bit, the Raspberry Pi 3 needs to be booted from an SD card with a `config` option to enable USB boot mode. 
+To enable the USB host boot mode bit, the Pi needs to be booted from an SD card with a `config` option to enable USB host boot mode. 
 
 Once this bit has been set, the SD card is no longer required. **Note that any change you make to the OTP is permanent and cannot be undone.**
 
+**On the Raspberry Pi 3A+, setting the OTP bit to enable USB host boot mode will permanently prevent that Pi from booting in USB device mode.
+
 You can use any SD card running Raspbian or Raspbian Lite to program the OTP bit. If you don't have such an SD card then you can install Raspbian or Raspbian Lite in the normal way - see [installing images](../../../installation/installing-images/README.md).
 
-First, prepare the `/boot` directory with up to date boot files (this step is not required if you're using the 2017-04-10 release of Raspbian/Raspbian Lite or a later one):
+First, prepare the `/boot` directory with up-to-date boot files (this step is not required if you're using the 2017-04-10 release of Raspbian/Raspbian Lite, or a later release):
 
 ```bash
 $ sudo apt-get update && sudo apt-get upgrade
 ```
 
-Then enable USB boot mode with this code:
+Then enable USB host boot mode with this code:
 
 ```bash
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
 ```
 
-This adds `program_usb_boot_mode=1` to the end of `/boot/config.txt`. Reboot the Raspberry Pi with `sudo reboot`, then check that the OTP has been programmed with:
+This adds `program_usb_boot_mode=1` to the end of `/boot/config.txt`.
+
+Note that despite the option being named `program_usb_boot_mode`, it only enables USB *host* boot mode. USB *device* boot mode is only available on certain models of Pi - see [USB device boot mode](device.md).
+
+The next step is to reboot the Raspberry Pi with `sudo reboot` and check that the OTP has been programmed with:
 
 ```bash
 $ vcgencmd otp_dump | grep 17:
