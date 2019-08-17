@@ -8,7 +8,7 @@ This tutorial explains how to boot your Raspberry Pi from a USB mass storage dev
 
 This step is only required on the Raspberry Pi 3A, 3A+ and 3B. (The Raspberry Pi 3B+ already has the required OTP bit set).
 
-To enable the USB host boot mode bit, the Pi needs to be booted from an SD card with a `config` option to enable USB host boot mode. 
+To enable the USB host boot mode bit, the Pi needs to be booted from an SD card with a special option to enable USB host boot mode. 
 
 Once this bit has been set, the SD card is no longer required. **Note that any change you make to the OTP is permanent and cannot be undone.**
 
@@ -41,7 +41,7 @@ $ vcgencmd otp_dump | grep 17:
 
 Check that the output `0x3020000a` is shown. If it is not, then the OTP bit has not been successfully programmed. In this case, go through the programming procedure again. If the bit is still not set, this may indicate a fault in the Pi hardware itself.
 
-If you wish, you can remove the `program_usb_boot_mode` line from config.txt, so that if you put the SD card in another Raspberry Pi, it won't program USB boot mode. Make sure there is no blank line at the end of config.txt. You can edit config.txt using the nano editor using the command `sudo nano /boot/config.txt`, for example.
+If you wish, you can remove the `program_usb_boot_mode` line from config.txt, so that if you put the SD card in another Raspberry Pi, it won't program USB boot mode. Make sure there is no blank line at the end of config.txt.
 
 ## Prepare the USB mass storage device
 
@@ -53,4 +53,4 @@ Once you have finished imaging your USB mass storage device, remove it from your
 
 Attach the USB mass storage device to your Raspberry Pi, and power the Pi up. After five to ten seconds, the Raspberry Pi should begin booting and show the rainbow splash screen on an attached display.
 
-Note that if the USB boot bit is set, you do not need to insert an SD card into the Raspberry Pi for USB boot to work.
+Note that if the USB host boot bit is set, you do not need to insert an SD card into the Raspberry Pi for USB host boot to work.
