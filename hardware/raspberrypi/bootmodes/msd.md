@@ -1,4 +1,4 @@
-# USB mass storage device boot
+# USB mass storage boot
 
 **USB mass storage boot is available on Raspberry Pi 3B, 3B+, 3A+, and 2B v1.2 only.**
 
