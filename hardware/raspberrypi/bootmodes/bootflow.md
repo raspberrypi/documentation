@@ -2,13 +2,7 @@
 
 **The following boot sequence applies to the BCM2837-based models of Raspberry Pi only. On all other models, the Pi will try [SD card boot](sdcard.md), followed by [USB device mode boot](device.md).**
 
-The boot sequence begins with reading the OTP to determine which boot modes are enabled. By default, this is SD card boot followed by USB device boot. Subsequently, the boot ROM checks to see whether the GPIO boot mode OTP bits have been programmed — one to enable GPIO boot mode, and one to select the bank of GPIOs it uses to disable boot modes (low = GPIOs 22-26, high = GPIOs 39-43). This makes it possible to use hardware attached to the GPIO connector to choose between different boot modes.
-
-The GPIO boot mode OTP bits can be programmed by adding `program_gpio_bootmode=n` to `config.txt`, where n is `1` to select the low bank (22-26) or `2` to select the high bank (39-43). Once added, boot the device, then power-cycle it (rebooting is not sufficient). You should expect it to no longer boot (all boot modes will be disabled by default). Apply a pull-up to the required pin to enable the required boot mode. After programming, the `config.txt` setting can be removed.
-
-N.B.:
-1. It is important to remember that, **once set, OTP bits can never be unset**, so think carefully before enabling this facility because it effectively makes 5 GPIOs unusable for other purposes. Also note that the bit assignments make it possible to switch from the low bank (22-26) to the high bank (39-43), **but not back again**, and that selecting the high bank is likely to produce a non-bootable Pi, unless you're using a Compute Module (any version).
-2. **Do not use `program_gpio_bootmode` unless your firmware is dated 20 Oct 2017 or later (`vcgencmd version`). Doing so will make it impossible to select the low bank of boot mode GPIOs.**
+The boot sequence begins with reading the OTP to determine which boot modes are enabled. By default, this is SD card boot followed by USB device boot. Subsequently, the boot ROM checks to see whether the GPIO boot mode OTP bits have been programmed. GPIO boot mode makes it possible to use hardware attached to the GPIO connector to choose between different boot modes - see [GPIO boot mode](gpio.md) for details.
 
 Next the boot ROM checks each of the boot sources for a file called bootcode.bin; if it is successful it will load the code into the local 128K cache and jump to it. The overall boot mode process is as follows:
 
