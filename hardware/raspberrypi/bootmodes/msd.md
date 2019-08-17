@@ -4,9 +4,7 @@
 
 This tutorial explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or USB hard disk. Note that this feature does not work with all USB mass storage devices.
 
-## Program USB host boot mode
-
-This step is only required on the Raspberry Pi 3A, 3A+ and 3B.
+## Program USB host boot mode (Pi 3A, 3A+ and 3B only)
 
 To enable the USB host boot mode bit, the Pi needs to be booted from an SD card with a special option to enable USB host boot mode. 
 
