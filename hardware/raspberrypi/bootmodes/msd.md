@@ -14,15 +14,9 @@ Once this bit has been set, the SD card is no longer required. **Note that any c
 
 **On the Raspberry Pi 3A+, setting the OTP bit to enable USB host boot mode will permanently prevent that Pi from booting in USB device mode.**
 
-You can use any SD card running Raspbian or Raspbian Lite to program the OTP bit. If you don't have such an SD card then you can install Raspbian or Raspbian Lite in the normal way - see [installing images](../../../installation/installing-images/README.md).
+You can use any SD card running a recent version of Raspbian or Raspbian Lite to program the OTP bit.
 
-First, prepare the `/boot` directory with up-to-date boot files (this step is not required if you're using the 2017-04-10 release of Raspbian/Raspbian Lite, or a later release):
-
-```bash
-$ sudo apt-get update && sudo apt-get upgrade
-```
-
-Then enable USB host boot mode with this code:
+Enable USB host boot mode with this code:
 
 ```bash
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
@@ -45,7 +39,7 @@ If you wish, you can remove the `program_usb_boot_mode` line from config.txt, so
 
 ## Prepare the USB mass storage device
 
-Starting with the 2017-04-10 release of Raspbian you can install a working Raspbian system to a USB mass storage device by copying the operating system image directly onto your USB device, in the same way that you would for an SD card. To perform this step, follow the instructions [here](../../../installation/installing-images/README.md), remembering to select the drive that corresponds to your USB mass storage device.
+Copy a Raspbian or Raspbian Lite installation image directly onto your USB device, in the same way that you would for an SD card. To perform this step, follow the instructions [here](../../../installation/installing-images/README.md), remembering to select the drive that corresponds to your USB mass storage device. Make sure that you use the 2017-04-10 or later release of Raspbian/Raspbian Lite.
 
 Once you have finished imaging your USB mass storage device, remove it from your computer and insert it into your Raspberry Pi.
 
