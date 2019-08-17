@@ -45,6 +45,4 @@ Once you have finished imaging your USB mass storage device, remove it from your
 
 ## Boot your Raspberry Pi from the USB mass storage device
 
-Attach the USB mass storage device to your Raspberry Pi, and power the Pi up. After five to ten seconds, the Raspberry Pi should begin booting and show the rainbow splash screen on an attached display.
-
-Note that if the USB host boot bit is set, you do not need to insert an SD card into the Raspberry Pi for USB host boot to work.
+Attach the USB mass storage device to your Raspberry Pi, and power the Pi up. After five to ten seconds, the Raspberry Pi should begin booting and show the rainbow splash screen on an attached display. Make sure that you do not have an SD card inserted in the Pi, since it will boot from that first.
