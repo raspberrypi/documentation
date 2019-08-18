@@ -30,6 +30,4 @@ pi@raspberrypi ~ $
 
 You are now connected to the Pi remotely, and can execute commands.
 
-For further documentation on the `ssh` command just enter `man ssh` into the Terminal.
-
 To configure your Pi to allow passwordless SSH access with a public/private key pair, see the [passwordless SSH](passwordless.md) guide.
