@@ -37,7 +37,7 @@ If you wish, you can remove the `program_usb_boot_mode` line from config.txt, so
 
 ## Prepare the USB mass storage device
 
-Copy a Raspbian or Raspbian Lite installation image directly onto your USB device, in the same way that you would for an SD card. To perform this step, follow the instructions [here](../../../installation/installing-images/README.md), remembering to select the drive that corresponds to your USB mass storage device. Make sure that you use the 2017-04-10 or later release of Raspbian/Raspbian Lite.
+Copy a Raspbian or Raspbian Lite installation image directly onto your USB device, in the same way that you would for an SD card. To perform this step, follow the instructions [here](../../../installation/installing-images/README.md), remembering to select the drive that corresponds to your USB mass storage device. Make sure that you use a recent version of Raspbian/Raspbian Lite.
 
 Once you have finished imaging your USB mass storage device, remove it from your computer and insert it into your Raspberry Pi.
 
