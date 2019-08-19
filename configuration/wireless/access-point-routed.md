@@ -1,17 +1,18 @@
 # Setting up a Raspberry Pi as a Wireless Access Point
 
 ## What you will do, what you will need
-This guide shows how to create a secondary wireless network managed by your rpi. Your rpi needs to be connected via its ethernet port to a main, pre-existing, network. 
-Wireless clients will be able to contact computers on the main network, but not the other way around. If the main network provides Internet access, wireless clients will be able to use the Internet.
-At your option, the wireless network can be completely isolated instead.
-Your rpi will provide DHCP and services to clients, allowing for automatic network configuration and name resolution. 
+ - This guide shows how to create a secondary wireless network managed by your rpi. Your rpi needs to be connected via its ethernet port to a main, pre-existing, network. 
+ - Wireless clients will be able to contact computers on the main network, but not the other way around. If the main network provides Internet access, wireless clients will be able to use the Internet.
+ - At your option, the wireless network can be completely isolated instead.
+
+ - Your rpi will provide DHCP and services to clients, allowing for automatic network configuration and name resolution. 
 If you wish to allow full communication between any wired or wireless computer on the network, consider instead **link to the br ap page**
 
 **insert picture here**
 
-Before proceeding, ensure your Raspberry Pi is [up to date](../../raspbian/updating.md). Reboot your rpi after updating.
-If you wish to allow wireless clients access to the main network and the Internet, make sure your rpi has access through its ethernet connection
-Take note of the configuration of the main network. In this document the secondary wireless network uses IPv4 subnet 192.168.4.0/24. In case your main network uses the same addresses, please choose another subnet for the secondary wireless network, e.g. 192.168.5.0/24
+ - Before proceeding, ensure your Raspberry Pi is [up to date](../../raspbian/updating.md). Reboot your rpi after updating.
+ - If you wish to allow wireless clients access to the main network and the Internet, make sure your rpi has access through its ethernet connection
+ - Take note of the configuration of the main network. In this document the secondary wireless network uses IPv4 subnet 192.168.4.0/24. In case your main network uses the same addresses, please choose another subnet for the secondary wireless network, e.g. 192.168.5.0/24
 
 ## Setting up a Raspberry Pi as an access point in a standalone network (NAT)
 
