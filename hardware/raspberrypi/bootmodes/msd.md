@@ -1,10 +1,10 @@
 # USB mass storage boot
 
-**USB mass storage boot is available on Raspberry Pi 2B v1.2, 3A, 3A+, 3B, 3B+ only. Support for USB mass storage boot will be added to the Pi 4B in a future software update.**
+**USB mass storage boot is available on Raspberry Pi 2B v1.2, 3A+, 3B, 3B+ only. Support for USB mass storage boot will be added to the Pi 4B in a future software update.**
 
 This tutorial explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or USB hard disk. Note that this feature does not work with all USB mass storage devices.
 
-## Program USB host boot mode (Pi 3A, 3A+ and 3B only)
+## Program USB host boot mode (Pi 3A+ and 3B only)
 
 To enable the USB host boot mode bit, the Pi needs to be booted from an SD card with a special option to enable USB host boot mode. 
 
