@@ -1,14 +1,15 @@
 # Setting up a Raspberry Pi as a Wireless Access Point
 
 ## What you will do, what you will need
- - This guide shows how to create a secondary wireless network managed by your rpi. Your rpi needs to be connected via its ethernet port to a main, pre-existing, network. 
+ - This guide shows how to create a secondary wireless network managed by your rpi. Your rpi needs to be connected via its ethernet port to a main, pre-existing, network.
+
+**ainsert picture here**
+
  - Wireless clients will be able to contact computers on the main network, but not the other way around. If the main network provides Internet access, wireless clients will be able to use the Internet.
  - At your option, the wireless network can be completely isolated instead.
 
  - Your rpi will provide DHCP and services to clients, allowing for automatic network configuration and name resolution. 
 If you wish to allow full communication between any wired or wireless computer on the network, consider instead **link to the br ap page**
-
-**insert picture here**
 
  - Before proceeding, ensure your Raspberry Pi is [up to date](../../raspbian/updating.md). Reboot your rpi after updating.
  - If you wish to allow wireless clients access to the main network and the Internet, make sure your rpi has access through its ethernet connection
