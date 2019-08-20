@@ -4,7 +4,7 @@ Depending on the version of Windows you are using and what software you have alr
 
 Look for `putty.exe` under the heading `For Windows on Intel x86`. 
 
-##1. Add your Raspberry Pi as a host
+## 1. Add your Raspberry Pi as a host
 Start PuTTY.  You will see the configuration screen below:
 
 ![PuTTY configuration](images/ssh-win-config.png)
@@ -13,7 +13,7 @@ Type the IP address of the Pi into the `Host Name` field and click the `Open` bu
 
 If you do not know the IP address, type `hostname -I` in the Raspberry Pi command line. There are more ways to find your IP address [here](../ip-address.md).
 
-##2. Connect
+## 2. Connect
 When the connection works you will see the security warning shown below. You can safely ignore it, and click the 'Yes' button. You will only see this warning the first time PuTTY connects to a Raspberry Pi that it has not seen before.
 
 ![PuTTY warning](images/ssh-win-warning.png)
