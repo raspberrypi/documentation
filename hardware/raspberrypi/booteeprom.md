@@ -62,7 +62,7 @@ Version: 2019-07-15
 
 #### FREEZE_VERSION
 
-If 1 then the EEPROM update service (rpi-eeprom package) will skip automatic updates on this board. The parameter is not processed by the bootloader since there is no way in software of fully write protecting the EEPROM. Custom EEPROM update scripts must also check for this flag.
+If 1 then the Raspbian EEPROM update service (rpi-eeprom package) will skip automatic updates on this board. The parameter is not processed by the EEPROM bootloader or recovery.bin since there is no way in software of fully write protecting the EEPROM. Custom EEPROM update scripts must also check for this flag.
 
 Default: 0  
 Version: All  
