@@ -23,6 +23,10 @@ This is the official documentation for the Raspberry Pi, written by the [Raspber
 - [Technical FAQ](./_content/technical-faq)
     - Answers to frequently asked technical questions
 
+## General Documentation Help
+
+In addition to the topics above, we have a set of [Frequently Asked Questions](faqs/README.md), and a [Glossary](glossary/README.md) to help with any technical terms you may encounter in our documentation.
+
 ## Contributions
 
 If you have anything to fix or details to add, first [file an issue](http://github.com/raspberrypi/documentation/issues) on GitHub to see if it is likely to be accepted, then file a pull request with your change (one PR per issue).

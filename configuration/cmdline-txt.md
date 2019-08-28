@@ -24,9 +24,9 @@ There are many kernel command line parameters, some of which are defined by the 
 #### Other Entries (not exhaustive)
 
  - splash: tells the boot to use a splash screen via the Plymouth module.
- - plymouth.ignore_serial_console
- - dwc_otg.lpm_enable: turns off LPM in the dwc_otg (On The Go) driver.
- - dwc_otg.speed: sets the speed of the USB property. `dwc_otg.speed=1` will set it to USBv1.0 speed.
+ - plymouth.ignore-serial-consoles: normally if the Plymouth module is enabled it will prevent boot messages from appearing on any serial console which may be present. This flag tells Plymouth to ignore all serial consoles, making boot messages visible again, as they would be if Plymouth was not running.
+ - dwc_otg.lpm_enable: turns off Link Power Management (LPM) in the dwc_otg driver; the dwc_otg driver is the driver for the USB controller built into the Raspberry Pi.
+ - dwc_otg.speed: sets the speed of the USB controller. `dwc_otg.speed=1` will set it to full speed (USB 1.0), which is slower than high speed (USB 2.0). This option should not be set except during troubleshooting of problems with USB devices.
  - smsc95xx.turbo_mode: enables/disables the wired networking driver turbo mode. `smsc95xx.turbo_mode=N` turns turbo mode off.
  - usbhid.mousepoll: specifies the mouse polling interval. If you have problems with a slow or erratic wireless mouse, setting this to 0 might help: `usbhid.mousepoll=0`.
 

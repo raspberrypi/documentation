@@ -1,6 +1,8 @@
 # Network booting
 
-This section describes how network booting works. We also have a [tutorial about setting up a working bootable system](/hardware/raspberrypi/bootmodes/net_tutorial.md). Network booting works only for the wired adapter built into certain models of Raspberry Pi. Booting over wireless LAN is not supported, nor is booting from any other wired network device.
+**Network booting is available on Raspberry Pi 3B, 3B+, and 2B v1.2 only.**
+
+This section describes how network booting works. We also have a [tutorial about setting up a working bootable system](/hardware/raspberrypi/bootmodes/net_tutorial.md). Network booting works only for the wired adapter built into the above models of Raspberry Pi. Booting over wireless LAN is not supported, nor is booting from any other wired network device.
 
 To network boot, the boot ROM does the following:
 
@@ -22,7 +24,7 @@ To get the serial number for the device you can either try this boot mode and se
 
 If you put all your files into the root of your tftp directory then all following files will be accessed from there.
 
-## Debugging the NFS boot mode
+## Debugging the network boot mode
 
 The first thing to check is that the OTP bit is correctly programmed. To do this, you need to add `program_usb_boot_mode=1` to config.txt and reboot (with a standard SD card that boots correctly into Raspbian). Once you've done this, you should be able to do:
 
@@ -133,6 +135,12 @@ Fixed in Raspberry Pi 3 Model B+; the value is set to the 32-bit serial number.
 The Raspberry Pi will only respond to ARP requests when it is in the initialisation phase; once it has begun transferring data, it'll fail to continue responding.
 
 Fixed in Raspberry Pi 3 Model B+.
+
+### DHCP request/reply/ack sequence not correctly implemented
+
+At boot time, Raspberry Pi broadcasts a DHCPDISCOVER packet. The DHCP server replies with a DHCPOFFER packet. The Pi then continues booting without doing a DHCPREQUEST or waiting for DHCPACK. This may result in two separate devices being offered the same IP address and using it without it being properly assigned to the client.
+
+Different DHCP servers have different behaviours in this situation. dnsmasq (depending upon settings) will hash the MAC address to determine the IP address, and ping the IP address to make sure it isn't already in use. This reduces the chances of this happening because it requires a collision in the hash.
 
 
 See also:

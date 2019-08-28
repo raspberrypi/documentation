@@ -21,7 +21,7 @@ The GPIO connections on the BCM2835 package are sometimes referred to in the per
 The pads are configurable CMOS push-pull output drivers/input buffers. Register-based control settings are available for:
 
 - Internal pull-up / pull-down enable/disable
-- Output [drive strength](http://www.scribd.com/doc/101830961/GPIO-Pads-Control2)
+- Output [drive strength](gpio_pads_control.md)
 - Input Schmitt-trigger filtering
 
 ### Power-on states

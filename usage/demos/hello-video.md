@@ -1,3 +1,5 @@
+# THIS PAGE IS NOW DEPRECATED
+
 # Hello video
 
 This will play a 15 second long full HD 1080p video clip with no sound. The intention here is to demonstrate video decode and playback capability. You’ll see that the video is very smooth!

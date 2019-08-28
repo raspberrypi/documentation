@@ -61,6 +61,8 @@ The `dt-blob.bin` is used to configure the binary blob (VideoCore) at boot time.
  - **pins_2b2** Pi 2 Model B rev 1.1; controls the SMPS via software I2C on 42 and 43.
  - **pins_3b1** Pi 3 Model B rev 1.0
  - **pins_3b2** Pi 3 Model B rev 1.2
+ - **pins_3bplus** Pi 3 Model B+
+ - **pins_3aplus** Pi 3 Model A+
  - **pins_pi0** The Pi Zero
  - **pins_pi0w** The Pi Zero W
  - **pins_cm** The Compute Module. The default for this is the default for the chip, so it is a useful source of information about default pull ups/downs on the chip.

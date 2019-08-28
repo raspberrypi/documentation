@@ -134,21 +134,7 @@ Generating a key pair in Linux is done using the `ssh-keygen` command on the **c
 
 You will be prompted for a passphrase during key generation: this is an extra level of security. For the moment, leave this blank.
 
-The public key now needs to be moved on to the server. This can be done by email, or cut and paste, or file copying. Once on the server it needs to be added to the SSH systems authorised keys. It should be emphasised that the `id_rsa` file is the private key and SHOULD NOT LEAVE THE CLIENT, whilst the public key file is `id_rsa.pub`.
-
-Add the new public key to the authorisation file as follows:
-
-```vash
-cat id_rsa.pub >> ~/.ssh/authorized_keys
-```
-
-Alternatively, you can edit the file `sudo nano ~/.ssh/authorized_keys` and copy/paste the key in. It is perfectly acceptable to have multiple entries in the authorized_keys file, so SSH can support multiple clients.
-
-Note that the authorized_keys file needs the correct permissions to be read correctly by the `ssh` system.
-
-```bash
-sudo chmod 644 ~/.ssh/authorized_keys
-```
+The public key now needs to be moved on to the server: see [Copy your public key to your Raspberry Pi](../remote-access/ssh/passwordless.md#copy-your-public-key-to-your-raspberry-pi).
 
 Finally, we need to disable password logins, so that all authentication is done by the key pairs.
 
