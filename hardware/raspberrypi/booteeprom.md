@@ -44,18 +44,38 @@ We will soon be releasing a tool which allows the EEPROM config to be extracted 
 
 If 1 then enable UART debug output on GPIO 14 and 15. Configure the debug terminal at 115200bps, 8 bits, no parity bits, 1 stop bit. 
 Default: 0  
-Version: All
+Version: All  
 
 #### WAKE_ON_GPIO 
 
 If 1 then 'sudo halt' will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.  
 
-Default: 0 in original version of bootloader (2019-05-10). Newer bootloaders have this set to 1.
+Default: 0 in original version of bootloader (2019-05-10). Newer bootloaders have this set to 1.  
 Version: All  
 
 #### POWER_OFF_ON_HALT  
 
-If 1 and WAKE_ON_GPIO=0 then switch off all PMIC outputs in halt. This is lowest possible power state for halt but may cause problems with some HATS because 5V will still be on. GLOBAL_EN must be shorted to ground to boot.  
+If 1 and WAKE_ON_GPIO=0 then switch off all PMIC outputs in halt. This is lowest possible power state for halt but may cause problems with some HATs because 5V will still be on. GLOBAL_EN must be shorted to ground to boot.  
 
 Default: 0  
 Version: 2019-07-15  
+
+#### FREEZE_VERSION
+
+If 1 then the Raspbian EEPROM update service (rpi-eeprom package) will skip automatic updates on this board. The parameter is not processed by the EEPROM bootloader or recovery.bin since there is no way in software of fully write protecting the EEPROM. Custom EEPROM update scripts must also check for this flag.
+
+Default: 0  
+Version: All  
+
+# Release Notes for production versions
+## 2019-07-15 - RC3.3 - Git 514670a2
+   * Turn green LED activity off on halt.
+   * Pad embedded config file with spaces for easier editing by end users.
+   * Halt now behaves the same as earlier Pi models to improve power behavior at halt for HATs. 
+      * WAKE_ON_GPIO now defaults to 1 in the EEPROM config file.
+      * POWER_OFF_ON_HALT setting added defaulting to zero. Set this to 1 to restore the behavior where 'sudo halt' powers off all PMIC output.
+      * If WAKE_ON_GPIO=1 then POWER_OFF_ON_HALT is ignored.
+   * Load start4db.elf / fixup4db.dat in preference to start_db.elf / fixup_db.dat on Pi4.
+   * Embed BUILD_TIMESTAMP in the EEPROM image to assist version checking.
+## 2019-05-10 RC2.1 - Git d2402c53
+   * First production version 
