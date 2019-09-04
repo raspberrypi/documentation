@@ -3,6 +3,22 @@
 
 The Raspberry Pi can be used as a bridged wireless access point within an existing ethernet network. This will allow to extend the network to wireless computers and devices.
 
+```
+                                        +- Pi ----+
+                                    +---+ Bridge  |
+                                    |   | WiFi AP +-)))
+                                    |   +---------+        +- Laptop -+
+                +- Router ----+     |                  (((-+ WiFi STA |
+(Internet) +----+ Firewall    |     |   +- PC#2 --+        +----------+
+            WAN | DHCP server +---------+         |
+                +-------------+ LAN |   +---------+
+                                    |
+                                    |   +- PC#1 --+
+                                    +---+         |
+                                        +---------+
+
+```
+
 This can be done using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access point mode.
 Note that this documentation was tested on a Raspberry Pi 3, and it is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the forums.
 
@@ -53,7 +69,7 @@ Bridge=br0
 
 Network interfaces that are members of a bridge device are never assigned an IP address, as they communicate directly through the bridge. The bridge device itself needs an IP address in order to belong to the network.
 
-Dhcpcd, the DHCP client on the Raspberry Pi, automatically requests an IP address for every active interface. So we need to stop the `eth0` and `wlan0` interfaces being processed, and let it only configure `br0`.
+Dhcpcd, the DHCP client on the Raspberry Pi, automatically requests an IP address for every active interface. So we need to block the `eth0` and `wlan0` interfaces from being processed, and let dhcpcd only configure `br0`.
 
 ```
 sudo nano /etc/dhcpcd.conf
