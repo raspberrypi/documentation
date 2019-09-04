@@ -1,4 +1,4 @@
-# Setting up a Raspberry Pi as a Wireless Access Point
+# Setting up a Raspberry Pi as a Routed Wireless Access Point
 
 ## What you will do, what you will need
  - This guide shows how to create a secondary wireless network managed by your rpi. Your rpi needs to be connected via its ethernet port to a main, pre-existing, network.
