@@ -4,27 +4,29 @@
 The Raspberry Pi can be used as a bridged wireless access point within an existing ethernet network. This will allow to extend the network to wireless computers and devices.
 
 ```
-                                        +- Pi ----+
-                                    +---+ Bridge  |
-                                    |   | WiFi AP +-)))
-                                    |   +---------+        +- Laptop -+
-                +- Router ----+     |                  (((-+ WiFi STA |
-(Internet) +----+ Firewall    |     |   +- PC#2 --+        +----------+
-            WAN | DHCP server +---------+         |
-                +-------------+ LAN |   +---------+
-                                    |
-                                    |   +- PC#1 --+
-                                    +---+         |
-                                        +---------+
+                                         +- RPi -------+
+                                     +---+ Bridge      |
+                                     |   | WiFi AP     +-)))
+                                     |   | 192.168.1.2 |         +- Laptop ----+
+                                     |   +-------------+     (((-+ WiFi STA    |
+                 +- Router ----+     |                           | 192.168.1.5 |
+                 | Firewall    |     |   +- PC#2 ------+         +-------------+
+(Internet)---WAN-+ DHCP server +-LAN-+---+ 192.168.1.3 |
+                 | 192.168.1.1 |     |   +-------------+
+                 +-------------+     |
+                                     |   +- PC#1 ------+
+                                     +---+ 192.168.1.4 |
+                                         +-------------+
 
 ```
 
 This can be done using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access point mode.
+
 Note that this documentation was tested on a Raspberry Pi 3, and it is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the forums.
 
 ## Before you start
 
- * Ensure you have console (local) administrative access to your Raspberry Pi, with screen and keyboard connected. During installation the network configuration will completely change; Remote installation via SSH is risky and not covered in this document. 
+ * Ensure you have console (local) administrative access to your Raspberry Pi, with screen and keyboard connected. During installation the network configuration will completely reset; Remote installation via SSH is not covered in this document. 
  * Connect your Raspberry Pi to the ethernet network and boot the Raspbian OS. Ensure the Raspberry Pi has received its network configuration from a DHCP server and has Internet access.
  * Ensure the Raspbian OS on your Raspberry Pi is [up to date](../../raspbian/updating.md) and reboot if the system was updated.
  * Have a wireless client ready to test your new access point.
