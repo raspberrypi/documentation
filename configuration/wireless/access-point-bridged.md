@@ -91,11 +91,11 @@ Now enable the `systemd-networkd` service to create and populate the bridge when
 sudo systemctl enable systemd-networkd
 ```
 
-### Configure DHCP networking
+### Define the bridge device IP configuration
 
-Network interfaces that are members of a bridge device are never assigned an IP address, since they communicate via the bridge. The bridge device itself now needs an IP address, so that you can reach your Raspberry Pi on the network.
+Network interfaces that are members of a bridge device are never assigned an IP address, since they communicate via the bridge. The bridge device itself needs an IP address, so that you can reach your Raspberry Pi on the network.
 
-`dhcpcd`, the DHCP client on the Raspberry Pi, automatically requests an IP address for every active interface. So we need to block the `eth0` and `wlan0` interfaces from being processed, and let `dhcpcd` only configure `br0`.
+`dhcpcd`, the DHCP client on the Raspberry Pi, automatically requests an IP address for every active interface. So we need to block the `eth0` and `wlan0` interfaces from being processed, and let `dhcpcd` only configure `br0` via DHCP.
 
 ```
 sudo nano /etc/dhcpcd.conf
