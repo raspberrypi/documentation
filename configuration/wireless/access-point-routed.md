@@ -58,7 +58,7 @@ sudo apt install dnsmasq
 Finally, install `netfilter-persistent` and its plugin `iptables-persistent`. This utilty helps saving firewall rules and restores them when the Raspberry Pi boots:
 
 ```
-sudo DEBIAN_FRONTEND=noninteractive apt install -n netfilter-persistent iptables-persistent
+sudo DEBIAN_FRONTEND=noninteractive apt install -y netfilter-persistent iptables-persistent
 ```
 Software installation is complete. We will configure the software packages later on.
 
