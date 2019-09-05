@@ -29,10 +29,9 @@ This documentation was tested on a Raspberry Pi 3B running a factory installatio
 * Ensure you have administrative access to your Raspberry Pi. The network setup will be modified as part of the installation: local access, with screen and keyboard connected to your Raspberry Pi, is recommended.
 * Connect your Raspberry Pi to the ethernet network and boot the Raspbian OS.
 * Ensure the Raspbian OS on your Raspberry Pi is [up to date](../../raspbian/updating.md) and reboot if packages were installed in the process.
-* Take note of the IP configuration of the ethernet network the Raspberry Pi is connected to. 
-
-In this document, we assume IP network `10.10.0.0/24` is configured on the ethernet LAN, and the Raspberry Pi is to manage IP network `192.168.4.0/24` for wireless clients.
-    * *Note:* Please select another IP network for wireless, e.g. `192.168.10.0/24`, in case IP network `192.168.4.0/24` is already in use by your ethernet LAN.
+* Take note of the IP configuration of the ethernet network the Raspberry Pi is connected to: 
+    * In this document, we assume IP network `10.10.0.0/24` is configured on the ethernet LAN, and the Raspberry Pi is to manage IP network `192.168.4.0/24` for wireless clients.
+    * Please select another IP network for wireless, e.g. `192.168.10.0/24`, in case IP network `192.168.4.0/24` is already in use by your ethernet LAN.
 * Have a wireless client (laptop, smartphone, ...) ready to test your new access point.
 
 <a name="software-install"></a>
