@@ -98,6 +98,8 @@ To enable routing, i.e. allow traffic to flow from one network to an other in th
 ```
 sudo nano /etc/sysctl.d/routed-ap.conf
 
+# https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md
+# Enable IPv4 routing
 net.ipv4.ip_forward=1
 ```
 Enabling routing will allow hosts from network `192.168.4.0/24` to reach the LAN and the main router towards the Internet. In order to allow traffic between clients on this foreign wireless network and the Internet without changing the configuration of the main router, the Raspberry Pi can substitute the IP address of wireless clients with its own IP address on the LAN using a "masquerade" firewall rule.
