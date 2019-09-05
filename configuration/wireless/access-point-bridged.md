@@ -21,7 +21,7 @@ If you wish to create a wireless network that could function stand-alone, consid
                                          +-------------+
 ```
 
-This can be done using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access point mode.
+This can be done using the inbuilt wireless features of the Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access point mode.
 It is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the forums.
 
 This documentation was tested on a Raspberry Pi 3B running a factory installation of Raspbian Buster Lite (Jul. 2019). 
