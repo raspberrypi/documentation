@@ -73,7 +73,8 @@ There are many more options for dnsmasq; see the [dnsmasq documentation](http://
 
 Reload `dnsmasq` to use the updated configuration:
 ```
-sudo systemctl reload dnsmasq
+sudo systemctl enable dnsmasq
+sudo systemctl start dnsmasq
 ```
 
 <a name="hostapd-config"></a>
