@@ -37,7 +37,7 @@ This documentation was tested on a Raspberry Pi 3B running a factory installatio
 * Have a wireless client (laptop, smartphone, ...) ready to test your new access point.
 
 <a name="hostapd-install"></a>
-## Install the access point software (hostapd)
+## Install the access point software
 
 In order to work as a bridged access point, the Raspberry Pi needs to have the `hostapd` access point software package installed:
 
@@ -88,7 +88,7 @@ Now enable the `systemd-networkd` service to create and populate the bridge when
 sudo systemctl enable systemd-networkd
 ```
 
-### Configure DHCP networking (dhcpcd)
+### Configure DHCP networking
 
 Network interfaces that are members of a bridge device are never assigned an IP address, since they communicate via the bridge. The bridge device itself now needs an IP address, so that you can reach your Raspberry Pi on the network.
 
@@ -105,7 +105,7 @@ denyinterfaces wlan0 eth0
 Interface `br0` will be configured as per defaults via DHCP, no specific entry is necessary. Save the file to complete the IP configuration of the machine.
 
 <a name="hostapd-config"></a>
-## Configure the access point software (hostapd)
+## Configure the access point software
 
 Create the `hostapd` configuration file, located at `/etc/hostapd/hostapd.conf`, to add the various parameters for your wireless network. 
 
