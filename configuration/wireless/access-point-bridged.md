@@ -128,7 +128,7 @@ wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 ```
 
-We now need to tell the system where to find this configuration file.
+REMOVE FIXME We now need to tell the system where to find this configuration file.
 
 ```
 sudo nano /etc/default/hostapd
