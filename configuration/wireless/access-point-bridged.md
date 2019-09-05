@@ -23,7 +23,7 @@ The Raspberry Pi can be used as a bridged wireless access point within an existi
 This can be done using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access point mode.
 It is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the forums.
 
-This documentation was tested on a Raspberry Pi 3B running Raspbian Buster Lite (Jul. 2019). 
+This documentation was tested on a Raspberry Pi 3B running a factory installation of Raspbian Buster Lite (Jul. 2019). 
 
 ## Before you start
 
