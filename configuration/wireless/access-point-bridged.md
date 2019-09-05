@@ -21,8 +21,9 @@ The Raspberry Pi can be used as a bridged wireless access point within an existi
 ```
 
 This can be done using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access point mode.
+It is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the forums.
 
-Note that this documentation was tested on a Raspberry Pi 3, and it is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the forums.
+This documentation was tested on a Raspberry Pi 3B running Raspbian Buster Lite (Jul. 2019). 
 
 ## Before you start
 
@@ -142,17 +143,17 @@ It is now time restart your Raspberry Pi and verify the wireless access point be
 ```
 sudo systemctl reboot
 ```
-Once your Raspberry Pi has restarted, search for WiFi networks with a wireless device. The network SSID you specified in file `/etc/hostapd/hostapd.conf` should now be present, and it should be accessible with the specified password.
+Once your Raspberry Pi has restarted, search for WiFi networks with your wireless client. The network SSID you specified in file `/etc/hostapd/hostapd.conf` should now be present, and it should be accessible with the specified password.
 
-If you have access to the local network and the Internet from your wireless device, congratulations on your new access point!
+If you have access to the local network and the Internet from your wireless client, congratulations on your new access point!
 
 ### Troubleshooting tips
 If you encounter difficulties, follow these steps and verify your configuration:
 * *Step 1:* From a computer on the network, does `ping raspberrypi.local` work, and shows an IP address that belongs to the same network as the computer, for example `192.168.1.2`?
     * If ping fails or the address looks different, like `169.254.x.x`, verify [bridge setup](#bridging) (`systemd-networkd` and `dhcpcd`)
     * If ping succeeds, on to Step 2
-* *Step 2:* From your test wireless device, do you see the WiFi network name and can successfuly authenticate using the password defined in file `/etc/hostapd/hostapd.conf`?
-    * If the wireless device cannot find the network or authentication fails, verify access point software [installation](#hostapd-install) and [configuration.](#hostapd-config)
-    * If connecting to the wireless network succeeds, but the device cannot reach machines on the network or the Internet, verify that the DHCP server on the network (often located in the router) answers to the IP address request coming from the wireless device.
+* *Step 2:* From your test wireless client, do you see the WiFi network name and can successfuly authenticate using the password defined in file `/etc/hostapd/hostapd.conf`?
+    * If the wireless client cannot find the network or authentication fails, verify access point software [installation](#hostapd-install) and [configuration.](#hostapd-config)
+    * If connecting to the wireless network succeeds, but the wireless client cannot reach machines on the network or the Internet, verify that the DHCP server on the network (often located in the router) answers to the IP address request coming from the wireless client.
     * If the wireless access point and the DHCP server seem ok, on to Step 3
 * *Step 3:* Contact the forums for further assistance. Please refer to this page in your message.
