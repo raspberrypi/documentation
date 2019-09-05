@@ -19,10 +19,10 @@ If you wish to extend an existing ethernet network to wireless clients, consider
                                      +---+ 10.10.0.4   |
                                          +-------------+
 ```
-This can be done using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access point mode.
+This can be done using the inbuilt wireless features of the Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access point mode.
 It is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the forums.
 
-This documentation was tested on a Raspberry Pi 3B running a factory installation of Raspbian Buster Lite (Jul. 2019). 
+This documentation was tested on a Raspberry Pi 3B running a factory installation of Raspbian Buster Lite (July 2019). 
 
 <a name="intro"></a>
 ## Before you start
@@ -65,7 +65,7 @@ Software installation is complete. We will configure the software packages later
 <a name="routing"></a>
 ## Setup the network router
 
-The Raspberry Pi will run and manage a stand-alone wireless network. At your option, the Raspberry Pi will route between the wireless and the ethernet networks, providing Internet access to wireless clients. 
+The Raspberry Pi will run and manage a stand-alone wireless network. The Raspberry Pi will also route between wireless and ethernet networks, providing Internet access to wireless clients. At your option, you can skip routing and run the wireless network in complete isolation. 
 
 ### Define the wireless interface IP configuration
 
@@ -137,7 +137,7 @@ address=/gw.wlan/192.168.4.1
 
 The Raspberry Pi will deliver IP addresses between `192.168.4.2` and `192.168.4.20`, with a lease time of 24 hours, to wireless DHCP clients. You should be able to reach the Raspberry Pi under the name `gw.wlan` from wireless clients.
 
-There are many more options for `dnsmasq`; see the default configuration file or the [online documentation](http://www.thekelleys.org.uk/dnsmasq/doc.html) for more details.
+There are many more options for `dnsmasq`; see the default configuration file or the [online documentation](http://www.thekelleys.org.uk/dnsmasq/doc.html) for details.
 
 <a name="ap-config"></a>
 ## Configure the access point software
