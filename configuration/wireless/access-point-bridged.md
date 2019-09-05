@@ -49,13 +49,13 @@ sudo systemctl unmask hostapd
 sudo systemctl enable hostapd
 ```
 
-This completes software installation. We will configure the access point software later on.
+Software installation is complete. We will configure the access point software later on.
 
 ## Configure bridge networking
 
 ### Create a bridge device and populate the bridge (systemd-networkd)
 
-Add a bridge network device called br0 in the system by creating the following file:
+Add a bridge network device named `br0` by creating the following file:
 
 ```
 sudo nano /etc/systemd/network/bridge-br0.netdev
@@ -65,7 +65,7 @@ Name=br0
 Kind=bridge
 ```
 
-In order to bridge the ethernet network with the wireless network, add the built-in ethernet interface (eth0) as bridge member with the following file:
+In order to bridge the ethernet network with the wireless network, first add the built-in ethernet interface (`eth0`) as bridge member with the following file:
 
 ```
 sudo nano /etc/systemd/network/br0-member-eth0.network
@@ -77,7 +77,7 @@ Name=eth0
 Bridge=br0
 ```
 
-*Note* The access point software will add the wireless interface wlan0 to the bridge when the service starts. There is no need to create a file for the wireless interface.
+**Note:** The access point software will add the wireless interface `wlan0` to the bridge when the service starts. There is no need to create a file for it. This situation is particular to WiFi network interfaces.
 
 ### Configure DHCP networking (dhcpcd)
 
