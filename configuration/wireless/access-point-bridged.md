@@ -157,5 +157,5 @@ Please follow these steps and verify your configuration:
 * *Step 2:* From your test wireless client, do you see the WiFi network name and can successfuly authenticate using the password defined in file `/etc/hostapd/hostapd.conf`?
     * If the wireless client cannot find the network or authentication fails, verify access point software [installation](#hostapd-install) and [configuration.](#hostapd-config)
     * If connecting to the wireless network succeeds, but the wireless client cannot reach machines on the network or the Internet, verify that the DHCP server on the network (often located in the router) answers to the IP address request coming from the wireless client.
-    * If the wireless access point and the DHCP server seem ok, on to Step 3
+    * If the wireless access point and the DHCP server seem to be working, on to Step 3
 * *Step 3:* Contact the forums for further assistance. Please refer to this page in your message.
