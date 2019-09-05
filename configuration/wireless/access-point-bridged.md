@@ -146,22 +146,13 @@ Once your Raspberry Pi has restarted, search for WiFi networks with a wireless d
 
 If you have access to the local network and the Internet from your wireless device, congratulations on your new access point!
 
-If you encounter difficulties, read these troubleshooting tips and verify your configuration:
+### Troubleshooting tips
+If you encounter difficulties, follow these steps and verify your configuration:
 * *Step 1:* From a computer on the network, does `ping raspberrypi.local` work, and shows an IP address that belongs to the same network as the computer, for example `192.168.1.2`?
-    * If ping fails or the address looks different, like `169.254.x.x`, verify [bridge networking setup](#bridging) (`systemd-networkd` and `dhcpcd`)
+    * If ping fails or the address looks different, like `169.254.x.x`, verify [bridge setup](#bridging) (`systemd-networkd` and `dhcpcd`)
     * If ping succeeds, on to Step 2
 * *Step 2:* From your test wireless device, do you see the WiFi network name and can successfuly authenticate using the password defined in file `/etc/hostapd/hostapd.conf`?
     * If the wireless device cannot find the network or authentication fails, verify access point software [installation](#hostapd-install) and [configuration.](#hostapd-config)
     * If connecting to the wireless network succeeds, but the device cannot reach machines on the network or the Internet, verify that the DHCP server on the network (often located in the router) answers to the IP address request coming from the wireless device.
     * If the wireless access point and the DHCP server seem ok, on to Step 3
-* *Step 3:* Contact the forums for further assistance. Please add a link to this page in your message. 
-If possible and reasonably convenient, copy-paste the following block of commands on your Raspberry Pi and include their output to your message on the forum:
-```
-# System identification
-lsb_release -a
-uname -a
-# Services status
-systemctl status hostapd
-systemctl status dhcpcd
-systemctl status systemd-networkd
-```
+* *Step 3:* Contact the forums for further assistance. Please refer to this page in your message.
