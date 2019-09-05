@@ -30,7 +30,7 @@ This documentation was tested on a Raspberry Pi 3B running a factory installatio
 * Ensure you have administrative access to your Raspberry Pi. The network setup will be entirely reset as part of the installation: local access, with screen and keyboard connected to your Raspberry Pi, is recommended.
 
   **Note:** If installing remotely through SSH,
-    * Connect to your Raspberry Pi by name, e.g. `ssh pi@raspberrypi.local`. The IP address of your Raspberry Pi on the network might change after installation.
+    * Connect to your Raspberry Pi *by name*, e.g. `ssh pi@raspberrypi.local`. The IP address of your Raspberry Pi on the network *will probably change* after installation.
     * Be ready to add screen and keyboard in case you lose contact with your Raspberry Pi after installation. 
 * Connect your Raspberry Pi to the ethernet network and boot the Raspbian OS.
 * Ensure the Raspbian OS on your Raspberry Pi is [up to date](../../raspbian/updating.md) and reboot if packages were installed in the process.
