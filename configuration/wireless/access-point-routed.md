@@ -90,7 +90,7 @@ interface wlan0
 ### Enable routing and IP masquerading
 
 This section configures the Raspberry Pi to let wireless clients access computers on the main network, and from there the Internet.
-**NOTE:** If you wish to block wireless clients from accessing the main network and the Internet, skip this section. 
+*NOTE:* If you wish to block wireless clients from accessing the main network and the Internet, skip this section. 
 
 To enable routing, i.e. allow traffic to flow from one network to an other in the Raspberry Pi, edit /etc/sysctl.conf and uncomment this line:
 
@@ -187,18 +187,4 @@ If SSH is enabled on the Raspberry Pi, it should be possible to connect to from 
 
 If your wireless client has access to your Raspberry Pi (and the Internet), congratulations on your new access point!
 
-If you encounter difficulties, read the section below.
-
-### Troubleshooting tips TODO
-Please follow these steps and verify your configuration:
-* *Step 1:* From a computer on the network, does `ping raspberrypi.local` work, and shows an IP address that belongs to the same network as the computer, for example `192.168.1.2`?
-    * If ping fails or the address looks different, like `169.254.x.x`, verify [bridge setup](#bridging) (`systemd-networkd` and `dhcpcd`)
-    * If ping succeeds, on to Step 2
-* *Step 2:* From your test wireless client, do you see the WiFi network name and can successfuly authenticate using the password defined in file `/etc/hostapd/hostapd.conf`?
-    * If the wireless client cannot find the network or authentication fails, verify access point software [installation](#hostapd-install) and [configuration.](#hostapd-config)
-    * If connecting to the wireless network succeeds, but the wireless client cannot reach machines on the network or the Internet, verify that the DHCP server on the network (often located in the router) answers to the IP address request coming from the wireless client.
-    * If the wireless access point and the DHCP server seem to be working, on to Step 3
-* *Step 3:* Contact the forums for further assistance. Please refer to this page in your message.
-
-By this point, the Raspberry Pi is acting as a router and access point, and other devices can associate with it. Associated devices can access the Raspberry Pi access point via its IP address for operations such as `rsync`, `scp`, or `ssh`.
-
+If you encounter difficulties, contact the forums for assistance. Please refer to this page in your message.
