@@ -94,14 +94,15 @@ interface wlan0
 This section configures the Raspberry Pi to let wireless clients access computers on the main network, and from there the Internet.
 *NOTE:* If you wish to block wireless clients from accessing the main network and the Internet, skip this section. 
 
-To enable routing, i.e. allow traffic to flow from one network to an other in the Raspberry Pi, edit /etc/sysctl.conf and uncomment this line:
-
+To enable routing, i.e. allow traffic to flow from one network to an other in the Raspberry Pi, create the following file:
 ```
+sudo nano /etc/sysctl.d/routed-ap.conf
+
 net.ipv4.ip_forward=1
 ```
-Enabling routing will allow hosts from network `192.168.4.0/24` to reach the LAN and the main router for Internet access. In order to allow traffic between clients on the foreign wireless network and the Internet without any change to the configuration of the main router, the Raspberry Pi can substitute the IP address of wireless clients with its own IP address on the LAN using a "masquerade" firewall rule.
+Enabling routing will allow hosts from network `192.168.4.0/24` to reach the LAN and the main router towards the Internet. In order to allow traffic between clients on this foreign wireless network and the Internet without changing the configuration of the main router, the Raspberry Pi can substitute the IP address of wireless clients with its own IP address on the LAN using a "masquerade" firewall rule.
 * The main router will see all outgoing traffic from wireless clients as coming from the Raspberry Pi, allowing communication with the Internet.
-* The Raspberry Pi will receive all incoming traffic sollicited by the wireless clients, substitute the IP addresses back and forward the data to the origin wireless client.
+* The Raspberry Pi will receive all incoming traffic, substitute the IP addresses back and forward traffic to the origin wireless client.
 
 This process is configured by adding a single firewall rule in the Raspberry Pi:
 
