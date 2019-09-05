@@ -27,7 +27,7 @@ This documentation was tested on a Raspberry Pi 3B running a factory installatio
 
 ## Before you start
 
-* Ensure you have administrative access to your Raspberry Pi. The network setup will be entirely reset as part of the installation, so local access, with screen and keyboard connected to your Raspberry Pi is recommended.
+* Ensure you have administrative access to your Raspberry Pi. The network setup will be entirely reset as part of the installation: local access, with screen and keyboard connected to your Raspberry Pi, is recommended.
 
   **Note:** If installing remotely through SSH,
     * Connect to your Raspberry Pi by name, e.g. `ssh pi@raspberrypi.local`. The IP address of your Raspberry Pi on the network might change after installation.
@@ -117,8 +117,6 @@ To use the 5 GHz band, you can change the operations mode from `hw_mode=g` to `h
  - g = IEEE 802.11g (2.4 GHz)
  - ad = IEEE 802.11ad (60 GHz)
 
-Note the lines `interface=wlan0` and `bridge=br0`: this directs `hostapd` to add the `wlan0` interface as bridge member to `br0` when the access point starts, completing the bridge.
-
 ```
 interface=wlan0
 bridge=br0
@@ -136,6 +134,8 @@ wpa_key_mgmt=WPA-PSK
 wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 ```
+Note the lines `interface=wlan0` and `bridge=br0`: these direct `hostapd` to add the `wlan0` interface as bridge member to `br0` when the access point starts, completing the bridge.
+
 ## Run your new wireless access point
 
 It is now time restart your Raspberry Pi and verify the wireless access point becomes automatically available.
