@@ -6,21 +6,19 @@ If you wish to extend an existing ethernet network to wireless clients, consider
 
 ```
                                          +- RPi -------+
-                                     +---+ 10.10.0.2   |
-                                     |   |     WiFi AP +-)))
-                                     |   | 192.168.4.1 |         +- Laptop ----+
-                                     |   +-------------+     (((-+ WiFi STA    |
-                 +- Router ----+     |                           | 192.168.4.2 |
-                 | Firewall    |     |   +- PC#2 ------+         +-------------+
+                                     +---+ 10.10.0.2   |          +- Laptop ----+
+                                     |   |     WiFi AP +-)))  (((-+ WiFi STA    |
+                                     |   | 192.168.4.1 |          | 192.168.4.2 |
+                                     |   +-------------+          +-------------+
+                 +- Router ----+     |
+                 | Firewall    |     |   +- PC#2 ------+
 (Internet)---WAN-+ DHCP server +-LAN-+---+ 10.10.0.3   |
                  |   10.10.0.1 |     |   +-------------+
                  +-------------+     |
                                      |   +- PC#1 ------+
                                      +---+ 10.10.0.4   |
                                          +-------------+
-
 ```
-
 This can be done using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access point mode.
 It is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the forums.
 
