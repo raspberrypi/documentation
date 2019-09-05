@@ -115,8 +115,7 @@ sudo netfilter-persistent save
 ```
 Filtering rules are saved to directory `/etc/iptables/`. If in the future you change the configuration of your firewall, make sure to save the configuration to files before rebooting.
 
-<a name="dnsmasq-config"></a>
-## Configure the DHCP and DNS services for the wireless network
+### Configure the DHCP and DNS services for the wireless network
 
 The DHCP and DNS services are provided by `dnsmasq`. The default configuration file serves as template for all possible configuration options, when we only need a few. It is easier to start from an empty file. 
 
@@ -141,7 +140,7 @@ The Raspberry Pi will deliver IP addresses between `192.168.4.2` and `192.168.4.
 
 There are many more options for `dnsmasq`; see the default configuration file or the [online documentation](http://www.thekelleys.org.uk/dnsmasq/doc.html) for more details.
 
-<a name="hostapd-config"></a>
+<a name="ap-config"></a>
 ## Configure the access point software
 
 Create the `hostapd` configuration file, located at `/etc/hostapd/hostapd.conf`, to add the various parameters for your wireless network. 
@@ -172,7 +171,7 @@ wpa_key_mgmt=WPA-PSK
 wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 ```
-
+<a name="test-run"></a>
 ## Run your new wireless access point
 
 It is now time restart your Raspberry Pi and verify the wireless access point becomes automatically available.
