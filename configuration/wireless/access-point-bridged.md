@@ -33,11 +33,19 @@ Note that this documentation was tested on a Raspberry Pi 3, and it is possible 
 
 ## Install the access point software (hostapd)
 
-In order to work as a bridged access point, the Raspberry Pi needs to have the hostapd access point software package installed:
+In order to work as a bridged access point, the Raspberry Pi needs to have the `hostapd` access point software package installed:
 
 ```
 sudo apt install hostapd
 ```
+Enable the wireless access point service to start when your Raspberry Pi boots:
+
+```
+sudo systemctl unmask hostapd
+sudo systemctl enable hostapd
+```
+
+This completes software installation. We will configure the access point software later on.
 
 ## Configure bridge networking
 
