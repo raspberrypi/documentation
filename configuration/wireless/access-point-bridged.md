@@ -98,7 +98,8 @@ Network interfaces that are members of a bridge device are never assigned an IP 
 sudo nano /etc/dhcpcd.conf
 ```
 
-Add `denyinterfaces wlan0 eth0` near the beginning of the file (above the first `interface` line, if any). Interface `br0` will be configured as per defaults, no specific entry is necessary. Save the file to complete the IP configuration of the machine.
+Add `denyinterfaces wlan0 eth0` near the beginning of the file (above the first `interface` line, if any). 
+Interface `br0` will be configured as per defaults, no specific entry is necessary. Save the file to complete the IP configuration of the machine.
 
 <a name="hostapd-config"></a>
 ## Configure the access point software (hostapd)
