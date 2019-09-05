@@ -99,10 +99,8 @@ To enable routing, i.e. allow traffic to flow from one network to an other in th
 ```
 net.ipv4.ip_forward=1
 ```
-Enabling routing will allow hosts from network `192.168.4.0/24` to reach the LAN and the main router for Internet access. This is an unknown IP network to that router. 
-
-In order to allow traffic between wireless clients and the Internet without any change to the configuration of the main router, the Raspberry Pi can substitute the IP address of wireless clients with its own IP address on the LAN using a "masquerade" firewall rule.
-* The main router will see all outgoing traffic from wireless clients are coming from the Raspberry Pi, allowing communication with the Internet.
+Enabling routing will allow hosts from network `192.168.4.0/24` to reach the LAN and the main router for Internet access. In order to allow traffic between clients on the foreign wireless network and the Internet without any change to the configuration of the main router, the Raspberry Pi can substitute the IP address of wireless clients with its own IP address on the LAN using a "masquerade" firewall rule.
+* The main router will see all outgoing traffic from wireless clients as coming from the Raspberry Pi, allowing communication with the Internet.
 * The Raspberry Pi will receive all incoming traffic sollicited by the wireless clients, substitute the IP addresses back and forward the data to the origin wireless client.
 
 This process is configured by adding a single firewall rule in the Raspberry Pi:
