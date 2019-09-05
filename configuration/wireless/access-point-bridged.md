@@ -57,7 +57,7 @@ Software installation is complete. We will configure the access point software l
 <a name="bridging"></a>
 ## Setup the network bridge
 
-### Create a bridge device and populate the bridge (systemd-networkd)
+### Create a bridge device and populate the bridge
 
 Add a bridge network device named `br0` by creating the following file:
 
