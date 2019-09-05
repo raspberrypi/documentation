@@ -24,6 +24,7 @@ It is possible that some USB dongles may need slight changes to their settings. 
 
 This documentation was tested on a Raspberry Pi 3B running a factory installation of Raspbian Buster Lite (Jul. 2019). 
 
+<a name="intro"></a>
 ## Before you start
 
 * Ensure you have administrative access to your Raspberry Pi. The network setup will be modified as part of the installation: local access, with screen and keyboard connected to your Raspberry Pi, is recommended.
@@ -171,7 +172,7 @@ wpa_key_mgmt=WPA-PSK
 wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 ```
-<a name="test-run"></a>
+<a name="conclusion"></a>
 ## Run your new wireless access point
 
 It is now time restart your Raspberry Pi and verify the wireless access point becomes automatically available.
