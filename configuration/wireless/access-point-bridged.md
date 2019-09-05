@@ -1,7 +1,7 @@
 
 # Setting up a Raspberry Pi as a Bridged Wireless Access Point
 
-The Raspberry Pi can be used as a bridged wireless access point within an existing ethernet network. This will allow to extend the network to wireless computers and devices.
+The Raspberry Pi can be used as a bridged wireless access point within an existing ethernet network. This will extend the network to wireless computers and devices.
 
 ```
                                          +- RPi -------+
@@ -26,8 +26,8 @@ Note that this documentation was tested on a Raspberry Pi 3, and it is possible 
 
 ## Before you start
 
- * Ensure you have console (local) administrative access to your Raspberry Pi, with screen and keyboard connected. During installation the network configuration will completely reset; Remote installation via SSH is not covered in this document. 
- * Connect your Raspberry Pi to the ethernet network and boot the Raspbian OS. Ensure the Raspberry Pi has received its network configuration from a DHCP server and has Internet access.
+ * Ensure you have local administrative access to your Raspberry Pi, with screen and keyboard connected. During installation the network configuration will reset; Remote installation via SSH is not covered in this document. FIXME REMOVE. ACTIVATE BY REBOOT. 
+ * Connect your Raspberry Pi to the ethernet network and boot the Raspbian OS. Ensure the Raspberry Pi has received its network configuration from a DHCP server on the network and so has Internet access.
  * Ensure the Raspbian OS on your Raspberry Pi is [up to date](../../raspbian/updating.md) and reboot if the system was updated.
  * Have a wireless client ready to test your new access point.
 
