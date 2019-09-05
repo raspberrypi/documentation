@@ -57,6 +57,8 @@ Software installation is complete. We will configure the access point software l
 <a name="bridging"></a>
 ## Setup the network bridge
 
+A bridge network device in the Raspberry Pi will join the ethernet and wireless networks using its built-in interfaces.
+
 ### Create a bridge device and populate the bridge
 
 Add a bridge network device named `br0` by creating the following file:
