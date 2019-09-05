@@ -19,7 +19,6 @@ If you wish to create a wireless network that could function stand-alone, consid
                                      |   +- PC#1 ------+
                                      +---+ 192.168.1.4 |
                                          +-------------+
-
 ```
 
 This can be done using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access point mode.
