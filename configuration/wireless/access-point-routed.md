@@ -34,7 +34,7 @@ This documentation was tested on a Raspberry Pi 3B running a factory installatio
 * Have a wireless client (laptop, smartphone, ...) ready to test your new access point.
 
 <a name="software-install"></a>
-## Install the access point and network management software (hostapd, dnsmasq)
+## Install the access point and network management software
 
 In order to work as an access point, the Raspberry Pi needs to have the `hostapd` access point software package installed:
 
@@ -61,7 +61,7 @@ Software installation is complete. We will configure the software packages later
 
 The Raspberry Pi will run and manage a stand-alone wireless network. At your option, the Raspberry Pi will route between the wireless and the ethernet networks, providing Internet access to wireless clients. 
 
-### Define the wireless interface IP configuration (dhcpcd)
+### Define the wireless interface IP configuration
 
 In this document, we assume IP network `10.10.0.0/24` is configured on the ethernet LAN, and the Raspberry Pi will manage IP network `192.168.4.0/24` for wireless clients.
 *Note:* Please select another IP network for wireless, e.g. `192.168.10.0/24`, in case IP network `192.168.4.0/24` is already in use by your ethernet LAN.
@@ -117,7 +117,7 @@ To reinstate the firewall rule when your Raspberry Pi boots, edit file `/etc/rc.
 iptables-restore < /etc/iptables.ipv4.nat
 ```
 <a name="dnsmasq-config"></a>
-## Configure the DHCP and DNS services for the wireless network (dnsmasq) FIXME DNS?
+## Configure the DHCP and DNS services for the wireless network FIXME DNS?
 
 The DHCP and DNS services are provided by `dnsmasq`. The default configuration file serves as template for all possible configuration options, when we only need a few. It is easier to start from an empty file. 
 
@@ -131,7 +131,11 @@ Add the following to the file and save it:
 
 ```
 interface=wlan0      # Listening interface
-dhcp-range=192.168.4.2,192.168.4.20,255.255.255.0,24h # Pool of IP addresses served via DHCP
+dhcp-range=192.168.4.2,192.168.4.20,255.255.255.0,24h
+                     # Pool of IP addresses served via DHCP
+domain=wlan          # Local wireless DNS domain
+address=/gw.wlan/192.168.4.1
+                     # Alias for this router
 ```
 
 The Raspberry Pi will deliver IP addresses between `192.168.4.2` and `192.168.4.20`, with a lease time of 24 hours, to wireless DHCP clients.
@@ -141,7 +145,7 @@ There are many more options for `dnsmasq`; see the default configuration file or
 
 
 <a name="hostapd-config"></a>
-## Configure the access point software (hostapd)
+## Configure the access point software
 
 Create the `hostapd` configuration file, located at `/etc/hostapd/hostapd.conf`, to add the various parameters for your wireless network. 
 
@@ -183,7 +187,7 @@ sudo systemctl reboot
 ```
 Once your Raspberry Pi has restarted, search for WiFi networks with your wireless client. The network SSID you specified in file `/etc/hostapd/hostapd.conf` should now be present, and it should be accessible with the specified password.
 
-If SSH is enabled on the Raspberry Pi, it should be possible to connect to from your wireless client as follows, assuming the `pi` account is present: `ssh pi@192.168.4.1` FIXME or `ssh pi@gw.wlan`
+If SSH is enabled on the Raspberry Pi, it should be possible to connect to from your wireless client as follows, assuming the `pi` account is present: `ssh pi@192.168.4.1` or `ssh pi@gw.wlan`
 
 If your wireless client has access to your Raspberry Pi (and the Internet), congratulations on your new access point!
 
