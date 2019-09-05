@@ -117,7 +117,7 @@ To reinstate the firewall rule when your Raspberry Pi boots, edit file `/etc/rc.
 iptables-restore < /etc/iptables.ipv4.nat
 ```
 <a name="dnsmasq-config"></a>
-## Configure the DHCP and DNS services for the wireless network FIXME DNS?
+## Configure the DHCP and DNS services for the wireless network
 
 The DHCP and DNS services are provided by `dnsmasq`. The default configuration file serves as template for all possible configuration options, when we only need a few. It is easier to start from an empty file. 
 
