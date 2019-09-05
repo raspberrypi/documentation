@@ -31,9 +31,9 @@ Note that this documentation was tested on a Raspberry Pi 3, and it is possible 
   **Note:** If installing remotely through SSH,
     * Connect to your Raspberry Pi by name, e.g. `ssh pi@raspberrypi.local`. The IP address of your Raspberry Pi on the network might change after installation.
     * Be ready to add screen and keyboard in case you lose contact with your Raspberry Pi after the installation. 
-* Connect your Raspberry Pi to the ethernet network and boot the Raspbian OS. Ensure the Raspberry Pi has received its network configuration from a DHCP server on the network and so has Internet access.
+* Connect your Raspberry Pi to the ethernet network and boot the Raspbian OS.
 * Ensure the Raspbian OS on your Raspberry Pi is [up to date](../../raspbian/updating.md) and reboot if packages were installed in the process.
-* Have a wireless client ready to test your new access point.
+* Have a wireless client (laptop, smartphone, ...) ready to test your new access point.
 
 ## Install the access point software (hostapd)
 
