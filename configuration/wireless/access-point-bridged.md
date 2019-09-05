@@ -26,6 +26,7 @@ It is possible that some USB dongles may need slight changes to their settings. 
 
 This documentation was tested on a Raspberry Pi 3B running a factory installation of Raspbian Buster Lite (Jul. 2019). 
 
+<a name="intro"></a>
 ## Before you start
 
 * Ensure you have administrative access to your Raspberry Pi. The network setup will be entirely reset as part of the installation: local access, with screen and keyboard connected to your Raspberry Pi, is recommended.
@@ -37,7 +38,7 @@ This documentation was tested on a Raspberry Pi 3B running a factory installatio
 * Ensure the Raspbian OS on your Raspberry Pi is [up to date](../../raspbian/updating.md) and reboot if packages were installed in the process.
 * Have a wireless client (laptop, smartphone, ...) ready to test your new access point.
 
-<a name="hostapd-install"></a>
+<a name="software-install"></a>
 ## Install the access point software
 
 In order to work as a bridged access point, the Raspberry Pi needs to have the `hostapd` access point software package installed:
@@ -107,7 +108,7 @@ denyinterfaces wlan0 eth0
 ```
 Interface `br0` will be configured as per defaults via DHCP, no specific entry is necessary. Save the file to complete the IP configuration of the machine.
 
-<a name="hostapd-config"></a>
+<a name="ap-config"></a>
 ## Configure the access point software
 
 Create the `hostapd` configuration file, located at `/etc/hostapd/hostapd.conf`, to add the various parameters for your wireless network. 
@@ -141,6 +142,7 @@ rsn_pairwise=CCMP
 ```
 Note the lines `interface=wlan0` and `bridge=br0`: these direct `hostapd` to add the `wlan0` interface as bridge member to `br0` when the access point starts, completing the bridge between ethernet and wireless.
 
+<a name="conclusion"></a>
 ## Run your new wireless access point
 
 It is now time restart your Raspberry Pi and verify the wireless access point becomes automatically available.
