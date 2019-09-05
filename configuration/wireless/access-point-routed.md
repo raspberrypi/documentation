@@ -53,7 +53,11 @@ In order to provide network management services (DNS, DHCP) to wireless clients,
 ```
 sudo apt install dnsmasq
 ```
+Finally, install `netfilter-persistent` and plugin `iptables-persistent`. This service helps save firewall rules and restores them when the Raspberry Pi boots:
 
+```
+sudo DEBIAN_FRONTEND=noninteractive apt install -n netfilter-persistent iptables-persistent
+```
 Software installation is complete. We will configure the software packages later on.
 
 <a name="routing"></a>
@@ -104,18 +108,12 @@ This process is configured by adding a single firewall rule in the Raspberry Pi:
 ```
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 ```
-
-Next, save the firewall configuration to file:
-
+Now save the current firewall rules for IPv4 (including the rule above) and IPv6 to be loaded at boot by the `netfilter-persistent` service:
 ```
-sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+sudo netfilter-persistent save
 ```
+Filtering rules are saved to directory `/etc/iptables/`. If in the future you change the configuration of your firewall, make sure to save the configuration to files before rebooting.
 
-To reinstate the firewall rule when your Raspberry Pi boots, edit file `/etc/rc.local` and add the following line just above "exit 0":
-
-```
-iptables-restore < /etc/iptables.ipv4.nat
-```
 <a name="dnsmasq-config"></a>
 ## Configure the DHCP and DNS services for the wireless network
 
@@ -138,11 +136,9 @@ address=/gw.wlan/192.168.4.1
                 # Alias for this router
 ```
 
-The Raspberry Pi will deliver IP addresses between `192.168.4.2` and `192.168.4.20`, with a lease time of 24 hours, to wireless DHCP clients.
+The Raspberry Pi will deliver IP addresses between `192.168.4.2` and `192.168.4.20`, with a lease time of 24 hours, to wireless DHCP clients. You should be able to reach the Raspberry Pi under the name `gw.wlan` from wireless clients.
 
 There are many more options for `dnsmasq`; see the default configuration file or the [online documentation](http://www.thekelleys.org.uk/dnsmasq/doc.html) for more details.
-
-
 
 <a name="hostapd-config"></a>
 ## Configure the access point software
