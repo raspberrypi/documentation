@@ -147,8 +147,10 @@ Once your Raspberry Pi has restarted, search for WiFi networks with your wireles
 
 If you have access to the local network and the Internet from your wireless client, congratulations on your new access point!
 
+If you encounter difficulties, read the section below.
+
 ### Troubleshooting tips
-If you encounter difficulties, follow these steps and verify your configuration:
+Please follow these steps and verify your configuration:
 * *Step 1:* From a computer on the network, does `ping raspberrypi.local` work, and shows an IP address that belongs to the same network as the computer, for example `192.168.1.2`?
     * If ping fails or the address looks different, like `169.254.x.x`, verify [bridge setup](#bridging) (`systemd-networkd` and `dhcpcd`)
     * If ping succeeds, on to Step 2
