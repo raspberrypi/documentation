@@ -2,7 +2,7 @@
 
 The Raspberry Pi can be used as a wireless access point routing to an existing ethernet network. This will create a new wireless network entirely managed by the Raspberry Pi.
 
-If you wish to extend an existing ethernet network to wireless clients, consider instead a [bridged access point](./access-point-bridged.md)
+If you wish to extend an existing ethernet network to wireless clients, consider instead setting up a [bridged access point.](./access-point-bridged.md)
 
 ```
                                          +- RPi -------+
