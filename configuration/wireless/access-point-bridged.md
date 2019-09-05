@@ -28,7 +28,7 @@ Note that this documentation was tested on a Raspberry Pi 3, and it is possible 
 
  * Ensure you have local administrative access to your Raspberry Pi, with screen and keyboard connected. During installation the network configuration will reset; Remote installation via SSH is not covered in this document. FIXME REMOVE. ACTIVATE BY REBOOT. 
  * Connect your Raspberry Pi to the ethernet network and boot the Raspbian OS. Ensure the Raspberry Pi has received its network configuration from a DHCP server on the network and so has Internet access.
- * Ensure the Raspbian OS on your Raspberry Pi is [up to date](../../raspbian/updating.md) and reboot if the system was updated.
+ * Ensure the Raspbian OS on your Raspberry Pi is [up to date](../../raspbian/updating.md) and reboot if packages were installed in the process.
  * Have a wireless client ready to test your new access point.
 
 ## Install the access point software (hostapd)
