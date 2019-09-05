@@ -80,9 +80,9 @@ Name=eth0
 Bridge=br0
 ```
 
-**Note:** The access point software will add the wireless interface `wlan0` to the bridge when the service starts. There is no need to create a file for that interface. This situation is particular to WiFi network interfaces.
+*Note:* The access point software will add the wireless interface `wlan0` to the bridge when the service starts. There is no need to create a file for that interface. This situation is particular to WiFi network interfaces.
 
-Enable the `systemd-networkd` service to create and populate the bridge when your Raspberry Pi boots:
+Now enable the `systemd-networkd` service to create and populate the bridge when your Raspberry Pi boots:
 
 ```
 sudo systemctl enable systemd-networkd
@@ -99,6 +99,7 @@ sudo nano /etc/dhcpcd.conf
 ```
 
 Add `denyinterfaces wlan0 eth0` near the beginning of the file (above the first `interface` line, if any). 
+
 Interface `br0` will be configured as per defaults, no specific entry is necessary. Save the file to complete the IP configuration of the machine.
 
 <a name="hostapd-config"></a>
