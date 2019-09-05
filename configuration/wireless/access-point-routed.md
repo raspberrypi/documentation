@@ -1,16 +1,38 @@
 # Setting up a Raspberry Pi as a Routed Wireless Access Point
 
-## What you will do, what you will need
- - This guide shows how to create a secondary wireless network managed by your rpi. Your rpi needs to be connected via its ethernet port to a main, pre-existing, network.
+The Raspberry Pi can be used as a wireless access point routing to an existing ethernet network. This will create a new wireless network entirely managed by the Raspberry Pi.
+
+If you wish to extend an existing ethernet network to wireless clients, consider instead a [bridged access point](../access-point-bridged.md)
+
+```
+                                         +- RPi -------+
+                                     +---+ 192.168.1.2 |
+                                     |   | WiFi AP     +-)))
+                                     |   | 192.168.4.1 |         +- Laptop ----+
+                                     |   +-------------+     (((-+ WiFi STA    |
+                 +- Router ----+     |                           | 192.168.4.2 |
+                 | Firewall    |     |   +- PC#2 ------+         +-------------+
+(Internet)---WAN-+ DHCP server +-LAN-+---+ 192.168.1.3 |
+                 | 192.168.1.1 |     |   +-------------+
+                 +-------------+     |
+                                     |   +- PC#1 ------+
+                                     +---+ 192.168.1.4 |
+                                         +-------------+
+
+```
+
+This can be done using the inbuilt wireless features of the Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access point mode.
+It is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the forums.
+
+This documentation was tested on a Raspberry Pi 3B running a factory installation of Raspbian Buster Lite (Jul. 2019). 
+ - This guide shows how toby your rpi. Your rpi needs to be connected via its ethernet port to a main, pre-existing, network.
 
 **ainsert picture here**
 
  - Wireless clients will be able to contact computers on the main network, but not the other way around. If the main network provides Internet access, wireless clients will be able to use the Internet.
  - At your option, the wireless network can be completely isolated instead.
 
- - Your rpi will provide DHCP and services to clients, allowing for automatic network configuration and name resolution. 
-If you wish to allow full communication between any wired or wireless computer on the network, consider instead **link to the br ap page**
-
+ - 
  - Before proceeding, ensure your Raspberry Pi is [up to date](../../raspbian/updating.md). Reboot your rpi after updating.
  - If you wish to allow wireless clients access to the main network and the Internet, make sure your rpi has access through its ethernet connection
  - Take note of the configuration of the main network. In this document the secondary wireless network uses IPv4 subnet 192.168.4.0/24. In case your main network uses the same addresses, please choose another subnet for the secondary wireless network, e.g. 192.168.5.0/24
