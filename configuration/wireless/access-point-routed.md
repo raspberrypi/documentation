@@ -130,12 +130,12 @@ sudo nano /etc/dnsmasq.conf
 Add the following to the file and save it:
 
 ```
-interface=wlan0      # Listening interface
+interface=wlan0 # Listening interface
 dhcp-range=192.168.4.2,192.168.4.20,255.255.255.0,24h
-                     # Pool of IP addresses served via DHCP
-domain=wlan          # Local wireless DNS domain
+                # Pool of IP addresses served via DHCP
+domain=wlan     # Local wireless DNS domain
 address=/gw.wlan/192.168.4.1
-                     # Alias for this router
+                # Alias for this router
 ```
 
 The Raspberry Pi will deliver IP addresses between `192.168.4.2` and `192.168.4.20`, with a lease time of 24 hours, to wireless DHCP clients.
