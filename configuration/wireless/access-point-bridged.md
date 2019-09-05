@@ -35,6 +35,7 @@ Note that this documentation was tested on a Raspberry Pi 3, and it is possible 
 * Ensure the Raspbian OS on your Raspberry Pi is [up to date](../../raspbian/updating.md) and reboot if packages were installed in the process.
 * Have a wireless client (laptop, smartphone, ...) ready to test your new access point.
 
+<a name="hostapd-install"></a>
 ## Install the access point software (hostapd)
 
 In order to work as a bridged access point, the Raspberry Pi needs to have the `hostapd` access point software package installed:
@@ -51,7 +52,8 @@ sudo systemctl enable hostapd
 
 Software installation is complete. We will configure the access point software later on.
 
-## Configure bridge networking
+<a name="bridging"></a>
+## Setup the network bridge
 
 ### Create a bridge device and populate the bridge (systemd-networkd)
 
@@ -97,6 +99,7 @@ sudo nano /etc/dhcpcd.conf
 
 Add `denyinterfaces wlan0 eth0` near the beginning of the file (above the first `interface` line, if any). Interface `br0` will be configured as per defaults, no specific entry is necessary. Save the file to complete the IP configuration of the machine.
 
+<a name="hostapd-config"></a>
 ## Configure the access point software (hostapd)
 
 Create the `hostapd` configuration file, located at `/etc/hostapd/hostapd.conf`, to add the various parameters for your wireless network. 
@@ -105,15 +108,15 @@ Create the `hostapd` configuration file, located at `/etc/hostapd/hostapd.conf`,
 sudo nano /etc/hostapd/hostapd.conf
 ```
 
-Add the information below to the configuration file. This configuration assumes we are using channel 7, with a network name of NameOfNetwork, and a password AardvarkBadgerHedgehog. Note that the name and password should **not** have quotes around them. The passphrase should be between 8 and 64 characters in length.
+Add the information below to the configuration file. This configuration assumes we are using channel 7, with a network name of `NameOfNetwork`, and a password `AardvarkBadgerHedgehog`. Note that the name and password should **not** have quotes around them. The passphrase should be between 8 and 64 characters in length.
 
-To use the 5 GHz band, you can change the operations mode from hw_mode=g to hw_mode=a. Possible values for hw_mode are:
+To use the 5 GHz band, you can change the operations mode from `hw_mode=g` to `hw_mode=a`. Possible values for `hw_mode` are:
  - a = IEEE 802.11a (5 GHz)
  - b = IEEE 802.11b (2.4 GHz)
  - g = IEEE 802.11g (2.4 GHz)
  - ad = IEEE 802.11ad (60 GHz)
 
-Note the lines `interface=wlan0` and `bridge=br0`: this directs hostapd to add the `wlan0` interface as bridge member to `br0` when the access point starts, completing the bridge.
+Note the lines `interface=wlan0` and `bridge=br0`: this directs `hostapd` to add the `wlan0` interface as bridge member to `br0` when the access point starts, completing the bridge.
 
 ```
 interface=wlan0
@@ -132,7 +135,6 @@ wpa_key_mgmt=WPA-PSK
 wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 ```
-
 ## Run your new wireless access point
 
 It is now time restart your Raspberry Pi and verify the wireless access point becomes automatically available.
@@ -140,16 +142,16 @@ It is now time restart your Raspberry Pi and verify the wireless access point be
 ```
 sudo systemctl reboot
 ```
-Once your Raspberry Pi has restarted, search for WiFi networks with a wireless device. The network SSID you specified in the `hostapd` configuration should now be present, and it should be accessible with the specified password.
+Once your Raspberry Pi has restarted, search for WiFi networks with a wireless device. The network SSID you specified in file `/etc/hostapd/hostapd.conf` should now be present, and it should be accessible with the specified password.
 
 If you have access to the local network and the Internet from your wireless device, congratulations on your new access point!
 
 If you encounter difficulties, read these troubleshooting tips and verify your configuration:
-* *Step 1:* From a computer on the network, does `ping raspberrypi.local` work, and shows an IP address that belongs to the same network as the computer, for example `192.168.0.56`?
-    * If ping fails or the address looks different, like `169.254.x.x`, verify bridge networking configuration (`systemd-networkd` and `dhcpcd`)
+* *Step 1:* From a computer on the network, does `ping raspberrypi.local` work, and shows an IP address that belongs to the same network as the computer, for example `192.168.1.2`?
+    * If ping fails or the address looks different, like `169.254.x.x`, verify [bridge networking setup](#bridging) (`systemd-networkd` and `dhcpcd`)
     * If ping succeeds, on to Step 2
 * *Step 2:* From your test wireless device, do you see the WiFi network name and can successfuly authenticate using the password defined in file `/etc/hostapd/hostapd.conf`?
-    * If the wireless device cannot find the network or authentication fails, verify access point software installation and configuration.
+    * If the wireless device cannot find the network or authentication fails, verify access point software [installation](#hostapd-install) and [configuration.](#hostapd-config)
     * If connecting to the wireless network succeeds, but the device cannot reach machines on the network or the Internet, verify that the DHCP server on the network (often located in the router) answers to the IP address request coming from the wireless device.
     * If the wireless access point and the DHCP server seem ok, on to Step 3
 * *Step 3:* Contact the forums for further assistance. Please add a link to this page in your message. 
@@ -158,13 +160,8 @@ If possible and reasonably convenient, copy-paste the following block of command
 # System identification
 lsb_release -a
 uname -a
-uptime
 # Services status
 systemctl status hostapd
 systemctl status dhcpcd
 systemctl status systemd-networkd
-# Network status
-ip -d link show
-ip address show
-ip route show
 ```
