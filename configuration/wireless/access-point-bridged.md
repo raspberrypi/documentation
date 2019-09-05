@@ -77,7 +77,7 @@ Name=eth0
 Bridge=br0
 ```
 
-**Note:** The access point software will add the wireless interface `wlan0` to the bridge when the service starts. There is no need to create a file for it. This situation is particular to WiFi network interfaces.
+**Note:** The access point software will add the wireless interface `wlan0` to the bridge when the service starts. There is no need to create a file for that interface. This situation is particular to WiFi network interfaces.
 
 ### Configure DHCP networking (dhcpcd)
 
