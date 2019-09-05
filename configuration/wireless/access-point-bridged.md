@@ -140,7 +140,7 @@ wpa_key_mgmt=WPA-PSK
 wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 ```
-Note the lines `interface=wlan0` and `bridge=br0`: these direct `hostapd` to add the `wlan0` interface as bridge member to `br0` when the access point starts, completing the bridge.
+Note the lines `interface=wlan0` and `bridge=br0`: these direct `hostapd` to add the `wlan0` interface as bridge member to `br0` when the access point starts, completing the bridge between ethernet and wireless.
 
 ## Run your new wireless access point
 
