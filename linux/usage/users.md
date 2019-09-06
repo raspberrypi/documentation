@@ -41,7 +41,7 @@ sudo adduser bob sudo
 Note that the user `bob` will be prompted to enter their password when they run `sudo`. This differs from the behaviour of the `pi` user, since `pi` is not prompted for their password. If you wish to remove the password prompt from the new user, create a custom sudoers file and place it in the `/etc/sudoers.d` directory:
 
 ```bash
-echo 'bob ALL=(ALL) NO PASSWD: ALL' | sudo tee -a /etc/sudoers.d/010_bob-nopasswd
+echo 'bob ALL=(ALL) NO PASSWD: ALL' | sudo tee /etc/sudoers.d/010_bob-nopasswd
 ```
 
 Note that it is standard practice on Linux to have the user prompted for their password when they run `sudo`, since it makes the system slightly more secure.
