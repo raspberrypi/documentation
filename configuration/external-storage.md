@@ -72,7 +72,7 @@ You can modify the `fstab` file to define the location where the storage device 
     ```
    Replace FSTYPE with the type of your file system, which you found in step 2 of 'Mounting a storage device' above.
    
-5. If the filesystem type is FAT or NTFS, add the option `umask=000` immediately after `nofail` - this will allow all users full read/write access to every file on the storage device.
+5. If the filesystem type is FAT or NTFS, add `,umask=000` immediately after `nofail` - this will allow all users full read/write access to every file on the storage device.
 
 Now that you have set an entry in `fstab`, you can start up your Raspberry Pi with or without the storage device attached. Before you unplug the device you must either shut down the Pi, or manually unmount it using the steps in 'Unmounting a storage device' below.
 
