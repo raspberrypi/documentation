@@ -74,6 +74,8 @@ sudo rpi-eeprom-update -d -f ./pieeprom-new.bin
 ### Checking if an update is available
 Running the rpi-eeprom-update command with no parameters indicates whether an update is required. An update is required if the timestamp of the most recent file in the firmware directory (normally /lib/firmware/raspberrypi/bootloader/critical) is newer than that reported
 by the current bootloader.
+The images under /lib/firmware/raspberrypi/bootloader are part of the rpi-eeprom package and are only updated via 'apt update'.
+
 ```
 rpi-eeprom-update
 ```
