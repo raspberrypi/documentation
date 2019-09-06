@@ -32,7 +32,7 @@ Upon creating a new user, the contents of `/etc/skel/` will be copied to the new
 
 The default `pi` user on Raspbian is a member of the `sudo` group. This gives the ability to run commands as root when preceded by `sudo`, and to switch to the root user with `sudo su`.
 
-To add a new user to the `sudo` group, use the adduser command:
+To add a new user to the `sudo` group, use the `adduser` command:
 
 ```bash
 sudo adduser bob sudo
