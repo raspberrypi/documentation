@@ -49,7 +49,7 @@ There is no software write protection for the boot EEPROM but there will be a me
 
 ## EEPROM configuration options
 
-The EEPROM image contains a small user-modifiable config file, the `rpi-eeprom` package contains a tool called `rpi-eeprom-config` to read and modify the bootloader config file in an EEPROM image (`pieeprom.bin`) file.
+EPROM image files contain a small user-modifiable config file which may be modified using the `rpi-eeprom-config` script included in the `rpi-eeprom` package.
 
 ### Update the EEPROM config
 ```
