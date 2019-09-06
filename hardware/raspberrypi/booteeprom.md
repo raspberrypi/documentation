@@ -7,11 +7,11 @@ The Raspberry Pi 4 has an SPI-attached EEPROM (4MBits/512KB), which contains cod
  - Raspberry Pi 4 bootup procedure and SDRAM setup is considerably more complicated than on the previous Raspberry Pi models, so there is more risk inherent in code that's permanently incorporated in the ROM of the SoC.
  - USB has moved to a PCIe bus, and the Gigabit Ethernet driver is completely different to previous models, so again, having it permanently fixed into the ROM of the SoC was not feasible.
  - A small SPI EEPROM allows bugs to be fixed and features to be added after launch, in the field.
- - The local modifiable state means that OTP bootmode settings will not be required for PXE or USB mass storage boot on the Raspberry Pi 4. There are no user-modifiable OTP bootmode bits on Pi 4.
+ - The local modifiable state means that OTP bootmode settings will not be required for network or USB mass storage boot on the Raspberry Pi 4. There are no user-modifiable OTP bootmode bits on Pi 4.
 
 ## Network and USB boot
 
-Support for these additional bootmodes will be added in the future via optional bootloader updates. The current schedule is to release PXE boot first, then USB boot.
+Support for these additional bootmodes will be added in the future via optional bootloader updates. The current schedule is to release network boot first, then USB boot.
 
 ## Is the bootloader working correctly?
 
@@ -30,15 +30,19 @@ It can be downloaded from the [raspberrypi.org downloads page](https://www.raspb
 To update the bootloader for new features or bug fixes we recommend installing the rpi-eeprom Raspbian package. This installs a background service which runs at boot and checks if a critical update is available. If so, it schedules the update to be applied at the next reboot.
 
 ```
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install rpi-eeprom
+sudo apt update
+sudo apt upgrade
+sudo apt install rpi-eeprom
 ```
 
-If you wish to control when the updates are applied you can disable the service from running automatically and run 'rpi-eeprom-update' manually (requires sudo)
+If you wish to control when the updates are applied you can disable the systemd service from running automatically and run 'rpi-eeprom-update' manually (requires sudo)
 
 ```
-sudo systemctl disable rpi-eeprom-update
+# Prevent the service from running, this can be run before the package is installed to prevent it ever running automatically.
+sudo systemctl mask rpi-eeprom-update
+
+# Enable it again
+sudo systemctl unmask rpi-eeprom-update
 ```
 
 The *FREEZE_VERSION* configuration option the EEPROM configuration may be used to indicate that the EEPROM should not be updated on this board. 
@@ -56,7 +60,7 @@ The EEPROM image contains a small user-modifiable config file, the rpi-eeprom pa
 # Copy the EEPROM of interest from /lib/firmware/raspberrypi/bootloader/critical/
 
 # To extract the configuration file from an EEPROM image.
-# rpi-eeprom-config pieeprom.bin --out bootconf.txt
+rpi-eeprom-config pieeprom.bin --out bootconf.txt
 
 # To update the configuration file in an EEPROM image.
 rpi-eeprom-config pieeprom.bin --config bootconf.txt --out pieeprom-new.bin
