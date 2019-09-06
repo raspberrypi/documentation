@@ -45,7 +45,7 @@ sudo systemctl mask rpi-eeprom-update
 sudo systemctl unmask rpi-eeprom-update
 ```
 
-The *FREEZE_VERSION* option the EEPROM config file may be used to indicate that the EEPROM should not be updated on this board. 
+The *FREEZE_VERSION* option in the EEPROM config file may be used to indicate that the EEPROM should not be updated on this board. 
 
 ## Write protection of EEPROM
 
@@ -93,7 +93,7 @@ vcgencmd bootloader_version
 ```
 
 ### Beta firmware
-Beta firmware files will be stored in /lib/firmware/raspberrypi/bootloader/critical/. Developers or beta-testers who are comfortable with using the rescue image to fix boot problems can track the beta firmware by editing /etc/default/rpi-eeprom-update 
+Beta firmware files will be stored in /lib/firmware/raspberrypi/bootloader/beta/. Developers or beta-testers who are comfortable with using the rescue image to fix boot problems can track the beta firmware by editing /etc/default/rpi-eeprom-update 
 ```
 Change FIRMWARE_RELEASE_STATUS="critical"
 to FIRMWARE_RELEASE_STATUS="beta"
