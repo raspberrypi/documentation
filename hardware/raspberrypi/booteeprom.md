@@ -27,7 +27,7 @@ It can be downloaded from the [raspberrypi.org downloads page](https://www.raspb
 
 ## Updating the bootloader
 
-To update the bootloader for new features or bug fixes we recommend installing the rpi-eeprom Raspbian package. This installs a background service which runs at boot and checks if a critical update is available. If so, it schedules the update to be applied at the next reboot.
+We recommend setting up your Pi so that it automatically updates the bootloader: this means you will get new features and bug fixes as they are released. Bootloader updates are performed by the rpi-eeprom package, which installs a service that runs at boot-time to check for critical updates.
 
 ```
 sudo apt update
@@ -45,7 +45,7 @@ sudo systemctl mask rpi-eeprom-update
 sudo systemctl unmask rpi-eeprom-update
 ```
 
-The *FREEZE_VERSION* configuration option the EEPROM configuration may be used to indicate that the EEPROM should not be updated on this board. 
+The *FREEZE_VERSION* option the EEPROM config file may be used to indicate that the EEPROM should not be updated on this board. 
 
 ## Write protection of EEPROM
 
