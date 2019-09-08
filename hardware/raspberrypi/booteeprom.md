@@ -134,5 +134,6 @@ Version: All
       * If WAKE_ON_GPIO=1 then POWER_OFF_ON_HALT is ignored.
    * Load start4db.elf / fixup4db.dat in preference to start_db.elf / fixup_db.dat on Pi4.
    * Embed BUILD_TIMESTAMP in the EEPROM image to assist version checking.
+   
 ## 2019-05-10 RC2.1 - Git d2402c53
    * First production version 
