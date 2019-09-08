@@ -8,7 +8,9 @@ If you use the standard Raspbian update/upgrade process (found [here](../../rasp
 
 To use rpi-update, execute it using sudo as follows:
 
-```sudo rpi-update
+```
+sudo rpi-update
+```
 
 The `rpi-update` utility will download the Linux kernel and Raspberry Pi firmware that are currently being tested and install them onto your Pi. Note that `rpi-update` does not provide a way to revert the changes that it makes to your system.
 
