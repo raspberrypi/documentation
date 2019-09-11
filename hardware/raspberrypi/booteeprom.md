@@ -124,16 +124,5 @@ If 1 then the `rpi-eeprom-update` will skip automatic updates on this board. The
 Default: 0  
 Version: All  
 
-# Release Notes for production versions
-## 2019-07-15 - RC3.3 - Git 514670a2
-   * Turn green LED activity off on halt.
-   * Pad embedded config file with spaces for easier editing by end users.
-   * Halt now behaves the same as earlier Pi models to improve power behavior at halt for HATs. 
-      * WAKE_ON_GPIO now defaults to 1 in the EEPROM config file.
-      * POWER_OFF_ON_HALT setting added defaulting to zero. Set this to 1 to restore the behavior where 'sudo halt' powers off all PMIC output.
-      * If WAKE_ON_GPIO=1 then POWER_OFF_ON_HALT is ignored.
-   * Load start4db.elf / fixup4db.dat in preference to start_db.elf / fixup_db.dat on Pi4.
-   * Embed BUILD_TIMESTAMP in the EEPROM image to assist version checking.
-   
-## 2019-05-10 RC2.1 - Git d2402c53
-   * First production version 
+# Release Notes
+* [Release notes](https://github.com/raspberrypi/rpi-eeprom/blob/master/firmware/release-notes.md) for bootloader EEPROMs.
