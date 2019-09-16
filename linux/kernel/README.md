@@ -26,3 +26,9 @@ Next, depending upon whether the code is Raspberry Pi-specific or not:
 - For Pi-specific changes or bug fixes, submit a pull request to the kernel.
 
 - For general Linux kernel changes (i.e. a new driver), these need to be submitted upstream first. Once they've been submitted upstream and accepted, submit the pull request and we'll receive it.
+
+## Linux Kernel Resources
+Here are some handy resources for learning how Linux Kernel works. 
+- [How Linux Kernel manages hardware memory](https://blockchain.dcwebmakers.com/blog/how-linux-operating-system-memory-management-works.html)
+- [How  Linux Kernel creates and manages OS processes](https://blockchain.dcwebmakers.com/blog/how-linux-kernel-create-and-manage-os-processes.html)
+- [How Linux kernel performs task management](https://blockchain.dcwebmakers.com/blog/mechanisms-behind-linux-kernel-task-management.html)
