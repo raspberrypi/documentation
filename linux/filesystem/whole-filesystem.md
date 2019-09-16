@@ -2,9 +2,9 @@
 
 A list of directories is shown below. For more information, please refer to the Linux [Filesystem Hierarchy Standard](https://wiki.debian.org/FilesystemHierarchyStandard).
 
-- bin
+- [bin](https://coding-bootcamps.com/linux/filesystem/bin.html)
 
-- boot
+- [boot](https://coding-bootcamps.com/linux/filesystem/boot.html)
 
 - dev
 
@@ -24,7 +24,7 @@ A list of directories is shown below. For more information, please refer to the 
 
 - proc
 
-- root
+- [root](https://coding-bootcamps.com/linux/filesystem/the-root-directory.html)
 
 - run
 
@@ -40,4 +40,4 @@ A list of directories is shown below. For more information, please refer to the 
 
 - usr
 
-- var
+- [var](https://coding-bootcamps.com/linux/filesystem/var.html)
