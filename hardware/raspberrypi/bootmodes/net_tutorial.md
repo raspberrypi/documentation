@@ -244,7 +244,7 @@ root=/dev/nfs nfsroot=10.42.0.211:/nfs/client1,vers=3 rw ip=dhcp rootwait elevat
 
 You should substitute the IP address here with the IP address you have noted down. Also remove any part of the command line starting with init=.
 
-Finally, edit `/nfs/client1/etc/fstab` and remove the `/dev/mmcblkp1` and `p2` lines (only `proc` should be left). Then, add the boot partition back in:
+Finally, edit `/nfs/client1/etc/fstab` and remove the `/dev/mmcblk0p1` and `p2` lines (only `proc` should be left). Then, add the boot partition back in:
 ```
 echo "10.42.0.211:/tftpboot /boot nfs defaults,vers=3 0 0" | sudo tee -a /etc/fstab
 ```
