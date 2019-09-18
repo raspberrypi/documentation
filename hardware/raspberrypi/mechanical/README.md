@@ -4,6 +4,7 @@
 
 - [Board - PDF](rpi_MECH_4b_4p0.pdf)
 - [Board - DXF](rpi_MECH_4b_4p0.dxf)
+- [Board (with mount holes) - DXF](rpi_MECH_4b_4p0-with_mounting.dxf)
 
 ## Raspberry Pi 3B+
 
