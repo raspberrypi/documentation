@@ -37,3 +37,7 @@ Schematics for the various Raspberry Pi board versions:
 ## Raspberry Pi Zero W
 
 - [Revision 1.1](rpi_SCH_ZeroW_1p1_reduced.pdf)
+
+## Compute Module
+
+- See the [Compute Module section](../../computemodule/schematics.md)
