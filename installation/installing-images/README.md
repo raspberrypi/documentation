@@ -12,7 +12,7 @@ Alternative distributions are available from third-party vendors.
 
 If you're not using balenaEtcher (see below), you'll need to unzip `.zip` downloads to get the image file (`.img`) to write to your SD card.
 
-**Note**: the Raspbian with Raspberry Pi Desktop image contained in the ZIP archive is over 4GB in size and uses the [ZIP64](https://en.wikipedia.org/wiki/Zip_\(file_format\)#ZIP64) format. To uncompress the archive, a unzip tool that supports ZIP64 is required. The following zip tools support ZIP64:
+**Note**: the Raspbian with Raspberry Pi Desktop image contained in the ZIP archive is over 4GB in size and uses the [ZIP64](https://en.wikipedia.org/wiki/Zip_%28file_format%29#ZIP64) format. To uncompress the archive, a unzip tool that supports ZIP64 is required. The following zip tools support ZIP64:
 
 - [7-Zip](http://www.7-zip.org/) (Windows)
 - [The Unarchiver](http://unarchiver.c3.cx/unarchiver) (Mac)
