@@ -104,6 +104,7 @@ New-style revision codes in use:
 | a02082 | 3B                | 1.2      | 1GB   | Sony UK      |
 | a020a0 | CM3               | 1.0      | 1GB   | Sony UK      |
 | a020d3 | 3B+               | 1.3      | 1GB   | Sony UK      |
+| a02042 | 2B (with BCM2837) | 1.2      | 1GB   | Sony UK      |
 | a21041 | 2B                | 1.1      | 1GB   | Embest       |
 | a22042 | 2B (with BCM2837) | 1.2      | 1GB   | Embest       |
 | a22082 | 3B                | 1.2      | 1GB   | Embest       |
