@@ -138,6 +138,17 @@ Possible options are:
 Note that not all of these settings may be implemented, depending on camera tuning.
 
 ```
+	--flicker, -fli		Set flicker avoidance mode
+```
+Set a mode to compensate for lights flickering at the mains frequency, which can be seen as a dark horizontal band across an image. Flicker avoidance locks the exposure time to a multiple of the mains flicker frequency (8.33ms for 60Hz, or 10ms for 50Hz). This means that images can be noisier as the control algorithm has to increase the gain instead of exposure time should it wish for an intermediate exposure value. `auto` can be confused by external factors, therefore it is preferable to leave this setting off unless actually required.
+
+Possible options are:
+
+- off: turn off flicker avoidance
+- auto: automatically detect mains frequency
+- 50hz: set avoidance at 50Hz
+- 60hz: set avoidance at 60Hz
+
 	--awb,	-awb		Set Automatic White Balance (AWB) mode
 ```
 Modes for which colour temperature ranges (K) are available have these settings in brackets.
