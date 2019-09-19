@@ -69,7 +69,7 @@ This section addresses why third-party solutions are of interest and why [apt](.
 If you lack physical access to your devices and want to deploy unattended updates Over-The-Air (OTA), here are some general requirements:
 
 - Updating must not under any circumstances break (“brick”) the devices, e.g if the update is interrupted (power loss, network loss, etc.), the system should fall back to a working state
-- Updating must be [atomic](https://en.wikipedia.org/wiki/Atomicity_(database_systems)): update succeeded or update failed; nothing in between that could result in a device still “functioning” but with undefined behavior
+- Updating must be [atomic](https://en.wikipedia.org/wiki/Atomicity_%28database_systems%29): update succeeded or update failed; nothing in between that could result in a device still “functioning” but with undefined behavior
 - Updating must be able to install images/packages that are cryptographically signed, preventing third parties from installing software on your device
 - Updating must be able to install updates using an secure communication channel
 
