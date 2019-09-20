@@ -46,6 +46,7 @@ Note that the 64bit kernel will only work on the Pi4, Pi3, and Pi2B rev1.2 board
 ## arm_control
 
 **DEPRECATED - use arm_64bit to enable 64bit kernels**.
+
 Sets board-specific control bits.
 
 ## kernel_address
