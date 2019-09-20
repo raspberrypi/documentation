@@ -39,13 +39,13 @@ Set the `disable_commandline_tags` command to `1` to stop `start.elf` from filli
 
 ## arm_64bit
 
-If set to non-zero, forces the kernel loading system to assume a 64-bit kernel, starts the processors up in 64bit mode, and sets `kernel8.img` to be the kernel image loaded, unless there is an explicit `kernel` option defined in which case that is used instead. Defaults to 0 on all platforms. **NOTE**: 64bit kernels must be uncompressed image files.
+If set to non-zero, forces the kernel loading system to assume a 64-bit kernel, starts the processors up in 64-bit mode, and sets `kernel8.img` to be the kernel image loaded, unless there is an explicit `kernel` option defined in which case that is used instead. Defaults to 0 on all platforms. **NOTE**: 64-bit kernels must be uncompressed image files.
 
-Note that the 64bit kernel will only work on the Pi4, Pi3, and Pi2B rev1.2 boards with latest firmware.
+Note that the 64-bit kernel will only work on the Pi4, Pi3, and Pi2B rev1.2 boards with latest firmware.
 
 ## arm_control
 
-**DEPRECATED - use arm_64bit to enable 64bit kernels**.
+**DEPRECATED - use arm_64bit to enable 64-bit kernels**.
 
 Sets board-specific control bits.
 
