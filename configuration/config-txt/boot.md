@@ -35,11 +35,11 @@ Set the `disable_commandline_tags` command to `1` to stop `start.elf` from filli
 
 ## kernel
 
-`kernel` is the alternative filename on the boot partition to use when loading the kernel. The default value on the Pi 1, Pi Zero, and Compute Module is `kernel.img`, and on the Pi 2, Pi 3, and Compute Module 3 it is `kernel7.img`. On the Pi4, it is `kernel7l.img`. **NOTE**: This must be an uncompressed kernel image file.
+`kernel` is the alternative filename on the boot partition to use when loading the kernel. The default value on the Pi 1, Pi Zero, and Compute Module is `kernel.img`, and on the Pi 2, Pi 3, and Compute Module 3 it is `kernel7.img`. On the Pi4, it is `kernel7l.img`. 
 
 ## arm_64bit
 
-If set to non-zero, forces the kernel loading system to assume a 64-bit kernel, starts the processors up in 64bit mode, and sets `kernel8.img` to be the kernel image loaded, unless there is an explicit `kernel` option defined in which case that is used instead. Defaults to 0 on all platforms. **NOTE**: Kernel images, both 32 and 64bit, must be uncompressed image files.
+If set to non-zero, forces the kernel loading system to assume a 64-bit kernel, starts the processors up in 64bit mode, and sets `kernel8.img` to be the kernel image loaded, unless there is an explicit `kernel` option defined in which case that is used instead. Defaults to 0 on all platforms. **NOTE**: 64bit kernels must be uncompressed image files.
 
 Note that the 64bit kernel will only work on the Pi4, Pi3, and Pi2B rev1.2 boards with latest firmware.
 
