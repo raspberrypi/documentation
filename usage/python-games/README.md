@@ -26,7 +26,7 @@ Pick a game, click it and hit `OK` to play.
 
 ## Game source code
 
-The source of each of these games is available on the Pi. Simply navigate to the directory `/home/pi/python_games` in a terminal or the file manager and you'll see the assets and source code.
+The source of each of these games is available on the Pi. Simply navigate to the directory `/usr/share/python_games` in a terminal or the file manager and you'll see the assets and source code.
 
 The `python_games` directory listing in a terminal window:
 
