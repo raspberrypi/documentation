@@ -8,7 +8,8 @@
 
 ## Raspberry Pi 3B+
 
-- [Board](rpi_MECH_3bplus.pdf)
+- [Board - PDF](rpi_MECH_3bplus.pdf)
+- [Board - DXF](rpi_MECH_3bplus.dxf)
 - [Case](rpi_MECH_3bplus_case.pdf)
 
 ## Raspberry Pi 3A+
