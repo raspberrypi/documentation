@@ -1,13 +1,16 @@
 # Pi4 Bootflow
 
-The Pi4 with the BCM2711 SoC has a new, more sophisticated boot process. The addition of an EEPROM means that the bootload.bin file found in `config.txt` is no longer required. Details of the EEPROM can be found [here](./booteeprom.md).
+The Pi4 with the BCM2711 SoC has a new, more sophisticated boot process. The addition of an EEPROM means that the bootload.bin file found in `\boot\` is no longer required. Details of the EEPROM can be found [here](./booteeprom.md).
 
 The boot flow for the Pi4 is as follows:
 
 * BCM2711 SoC powers up
 * On board bootrom checks for bootloader recovery file (recovery.bin) on the sd-card. If found, it executes it to flash the EEPROM and recovery.bin triggers a reset.
 * Otherwise, the bootrom loads the main bootloader from the EEPROM.
-* Bootloader
+* Bootloader checks it's inbuilt BOOT_ORDER configuration item to determine what type of boot to do.
+  * SD Card
+  * Network
+  * USB mass storage
 
 
 ## SD Card Boot
@@ -20,4 +23,9 @@ Details of the network booting can be found [here](https://github.com/raspberryp
 ## USB mass storage boot
 
 USB booting is still under development
+
+
+## BOOT_ORDER
+
+The `BOOT_ORDER` configuration item is embedded inside the bootloader code in the EEPROM. See the [Pi4 Bootloader Configuration](./pi4_bootloader_config.md) page for details on how to change bootload configurations.
 
