@@ -9,7 +9,7 @@ rpi-eeprom-config pieeprom.bin > bootconf.txt
 
 # Edit the configuration using a text editor e.g. nano bootconf.txt
 
-# E.G. change boot_order from 0x1 (sd-boot) to new network, then SD
+# E.G. change boot_order from 0x1 (sd-boot) to network 0x20, then SD (0x01)
 BOOT_ORDER=0x21
 
 # If you have a UART cable then setting BOOT_UART=1 will help debug boot issues
