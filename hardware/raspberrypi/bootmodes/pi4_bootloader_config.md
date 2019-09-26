@@ -14,7 +14,16 @@ BOOT_ORDER=0x21
 BOOT_UART=1
 
 # Apply the configuration change to the EEPROM image file
-rpi-eeprom-config --out pieeprom-netboot.bin --config bootconf.txt pieeprom.bin
+rpi-eeprom-config --out pieeprom-new.bin --config bootconf.txt pieeprom.bin
+```
+
+To update the bootloader EEPROM with the edited bootloader:
+
+```
+# Flash the bootloader EEPROM
+# Run 'rpi-eeprom-update -h' for more information
+sudo rpi-eeprom-update -d -f ./pieeprom-new.bin
+sudo reboot
 ```
 
 ## Configuration Items
