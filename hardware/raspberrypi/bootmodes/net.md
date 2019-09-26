@@ -13,11 +13,11 @@ To network boot, the boot ROM does the following:
 * ARP to tftpboot server
 * ARP reply includes tftpboot server ethernet address
 * TFTP RRQ 'bootcode.bin'
-  * File not found: Server replies with TFTP error response with textual error message
-  * File exists: Server will reply with the first block (512 bytes) of data for the file with a block number in the header
-    * Pi replies with TFTP ACK packet containing the block number, and repeats until the last block which is not 512 bytes
+    * File not found: Server replies with TFTP error response with textual error message
+    * File exists: Server will reply with the first block (512 bytes) of data for the file with a block number in the header
+        * Pi replies with TFTP ACK packet containing the block number, and repeats until the last block which is not 512 bytes
 * TFTP RRQ 'bootsig.bin'
-  * This will normally result in an error `file not found`. This is to be expected, and TFTP boot servers should be able to handle it.
+    * This will normally result in an error `file not found`. This is to be expected, and TFTP boot servers should be able to handle it.
 
 From this point the `bootcode.bin` code continues to load the system. The first file it will try to access is [`serial_number`]/start.elf. If this does not result in a error then any other files to be read will be pre-pended with the `serial_number`. This is useful because it enables you to create separate directories with separate start.elf / kernels for your Pis
 To get the serial number for the device you can either try this boot mode and see what file is accessed using tcpdump / wireshark, or you can run a standard Raspbian SD card and `cat /proc/cpuinfo`.

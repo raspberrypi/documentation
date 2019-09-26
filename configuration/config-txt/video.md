@@ -4,7 +4,7 @@
 
 ### sdtv_mode
 
-The `sdtv_mode` command defines the TV standard used for composite video output over the yellow RCA jack. The default value is `0`.
+The `sdtv_mode` command defines the TV standard used for composite video output. On the original Raspberry Pi, composite video is output on the RCA socket. On other Raspberry Pi's, except for Pi Zero and Compute Module, composite video is output along with sound on the 4 pole TRRS ("headphone") socket. On the Pi Zero, there is an unpopulated header labelled "TV" which outputs composite video. On the Compute Module, composite video is available via the TVDAC pin. The default value of `sdtv_mode` is `0`.
 
 | sdtv_mode | result |
 | --- | --- |
@@ -116,14 +116,16 @@ The `hdmi_pixel_encoding` command forces the pixel encoding mode. By default, it
 
 ### hdmi_blanking
 
-The `hdmi_blanking` command allows you to choose whether the HDMI output should be switched off when DPMS is triggered. This is to mimic the behaviour of other computers. After a specific amount of time, the display will become blank and go into low-power/standby mode due to receiving no signal.
+The `hdmi_blanking` command controls what happens when the operating system asks for the display to be put into standby mode, using DPMS, to save power. If this option is not set or set to 0, the HDMI output is blanked but not switched off. In order to mimic the behaviour of other computers, you can set the HDMI output to switch off as well by setting this option to 1: the attached display will go into a low power standby mode.
+
+**On the Raspberry Pi 4, setting hdmi_blanking=1 will not cause the HDMI output to be switched off, since this feature has not yet been implemented.**
 
 **NOTE:** This feature may cause issues when using applications which don't use the framebuffer, such as omxplayer.
 
 | hdmi_blanking | result |
 | --- | --- |
-| 0 | HDMI Output will blank instead of being disabled |
-| 1 | HDMI Output will be disabled rather than just blanking |
+| 0 | HDMI output will be blanked |
+| 1 | HDMI output will be switched off and blanked |
 
 ### hdmi_drive
 
@@ -552,7 +554,7 @@ The `framebuffer_width` command specifies the console framebuffer width in pixel
 ### framebuffer_height
 
 The `framebuffer_height` command specifies the console framebuffer height in pixels. The default is the display height minus the total vertical overscan.
-
+C4 
 ### max_framebuffer_height, max_framebuffer_width
 
 Specifies the maximum dimensions that the internal frame buffer is allowed to be. 
@@ -571,6 +573,20 @@ Use `framebuffer_depth` to specify the console framebuffer depth in bits per pix
 ### framebuffer_ignore_alpha
 
 Set `framebuffer_ignore_alpha` to `1` to disable the alpha channel. Can help with the display of a 32bit `framebuffer_depth`.
+
+### framebuffer_priority
+
+In a system with multiple displays, using the legacy (pre-KMS) graphics driver, this forces a specific internal display device to be the first Linux framebuffer (i.e./dev/fb0). 
+
+The options that can be set are:
+
+| Display | ID |
+| --- | --- | 
+|Main LCD       | 0 |
+|Secondary LCD  | 1 | 
+|HDMI 0         | 2 |
+|Composite      | 3 | 
+|HDMI 1         | 7 |
 
 ### test_mode
 

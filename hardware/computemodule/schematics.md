@@ -8,7 +8,7 @@ Schematics for the Compute Module
 Schematics for the Compute Module IO board (CMIO). 
 
 * [CMIO Rev 1.2 (Supports CM1 only)](schematics/rpi_SCH_CMIO_1p2.pdf)
-* [CMIO Rev 3.0 (Supports CM1, CM3 and CM3L)](schematics/rpi_SCH_CMIO_3p0.pdf)
+* [CMIO Rev 3.0 (Supports CM1, CM3, CM3L, CM3+ and CM3+L)](schematics/rpi_SCH_CMIO_3p0.pdf)
 
 Schematics for the Compute Module camera/display adapter board (CMCDA)
 

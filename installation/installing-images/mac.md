@@ -1,6 +1,6 @@
 # Copying an operating system image to an SD card using Mac OS
 
-[Etcher](README.md) is best option for most users to write images to SD cards. 
+[balenaEtcher](README.md) is best option for most users to write images to SD cards. 
 
 **Note**: The use of the `dd` tool can overwrite any partition of your machine. If you specify the wrong device in the instructions, you could overwrite your primary Mac OS partition!
 

@@ -32,6 +32,6 @@ vlc /opt/vc/src/hello_pi/hello_video/test.h264
 
 When using VLC, you can improve playback performance by encapsulating the raw H264 stream, for example from the Raspberry Pi Camera Module. This is easily done using `ffmpeg`. Playback is also improved if VLC is run full screen; either select fullscreen from the user interface, or you can add the `--fullscreen` options to the `vlc` command line.
 
-This example command converts `video.h64` to a containerised `video.mp4` at 30 fps:
+This example command converts `video.h264` to a containerised `video.mp4` at 30 fps:
 
 `ffmpeg -r 30 -i video.h264 -c:v copy video.mp4`

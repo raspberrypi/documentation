@@ -35,5 +35,3 @@ Basic examples to help you get started with some of the software available in Ra
     - Playing audio on your Raspberry Pi
 - [Playing video](video/README.md)
     - Playing video on your Raspberry Pi
-- [Demo programs](demos/README.md)
-    - A selection of examples to demonstrate the Pi's capabilities

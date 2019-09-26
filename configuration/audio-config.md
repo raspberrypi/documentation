@@ -34,11 +34,17 @@ This will open the configuration screen:
 
 ![raspi-config screen](images/raspi-config.png)
 
-Select Option 8 `Advanced Options` and press `Enter`, then select Option A6: `Audio` and press `Enter`:
+Select `Advanced Options` (here shown as Option 7, but yours may be different) and press `Enter`.
+
+Now select the Option named, `Audio` (here shown as A6, but yours may be different) and press `Enter`:
 
 ![Audio configuration screen](images/raspi-config-audio.png)
 
 Now you are presented with the two modes explained above as an alternative to the default `Auto` option. Select a mode, press `Enter` and press the right arrow key to exit the options list, then select `Finish` to exit the configuration tool.
+
+After you have finished modifying your audio settings, you need to restart your Raspberry Pi in order for your changes to take effect.
+
+
 
 ## If you're still not getting sound via HDMI
 

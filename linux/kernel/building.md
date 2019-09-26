@@ -181,20 +181,20 @@ sdb
 
 with `sdb6` being the FAT (boot) partition, and `sdb7` being the ext4 filesystem (root) partition.
 
-Mount these first, adjusting the partition numbers for NOOBS cards:
+Mount these first, adjusting the partition numbers for NOOBS cards (as necessary):
 
 ```bash
 mkdir mnt
 mkdir mnt/fat32
 mkdir mnt/ext4
-sudo mount /dev/sdb1 mnt/fat32
-sudo mount /dev/sdb2 mnt/ext4
+sudo mount /dev/sdb6 mnt/fat32
+sudo mount /dev/sdb7 mnt/ext4
 ```
 
 Next, install the modules:
 
 ```bash
-sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/ext4 modules_install
+sudo env PATH=$PATH make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/ext4 modules_install
 ```
 
 Finally, copy the kernel and Device Tree blobs onto the SD card, making sure to back up your old kernel:

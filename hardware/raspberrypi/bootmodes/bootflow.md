@@ -16,28 +16,28 @@ Next the boot ROM checks each of the boot sources for a file called bootcode.bin
 * Reads boot ROM enabled boot modes from OTP
 * Uses program_gpio_bootmode to disable some modes by reading GPIOs 22-26 or 39-43 to see if the default values do not equal the default pull to '0'. If it is low, it will disable that boot mode for each of SD1, SD2, NAND, SPI, USB. If the value read is a '1', then that boot mode is enabled (note this cannot enable boot modes that have not already been enabled in the OTP). The default pull resistance is around 50K ohm, so a smaller pull up of 5K should suffice to enable the boot mode but still allow the GPIO to be operational without consuming too much power.
 * If enabled: check primary SD for bootcode.bin on GPIO 48-53
-  * Success - Boot
-  * Fail - timeout (five seconds)
+    * Success - Boot
+    * Fail - timeout (five seconds)
 * If enabled: check secondary SD
-  * Success - Boot
-  * Fail - timeout (five seconds)
+    * Success - Boot
+    * Fail - timeout (five seconds)
 * If enabled: check NAND
 * If enabled: check SPI
 * If enabled: check USB
-  * If OTG pin == 0 
-    * Enable USB, wait for valid USB 2.0 devices (two seconds)
-      * Device found:
-        * If device type == hub
-          * Recurse for each port
-        * If device type == (mass storage or LAN951x)
-          * Store in list of devices
-    * Recurse through each MSD
-      * If bootcode.bin found boot
-    * Recurse through each LAN951x
-      * DHCP / TFTP boot
-  * else (Device mode boot)
-    * Enable device mode and wait for host PC to enumerate
-    * We reply to PC with VID: 0a5c PID: 0x2763 (Pi 1 or Pi 2) or 0x2764 (Pi 3)
+    * If OTG pin == 0 
+        * Enable USB, wait for valid USB 2.0 devices (two seconds)
+            * Device found:
+                * If device type == hub
+                    * Recurse for each port
+                * If device type == (mass storage or LAN951x)
+                    * Store in list of devices
+        * Recurse through each MSD
+            * If bootcode.bin found boot
+        * Recurse through each LAN951x
+            * DHCP / TFTP boot
+    * else (Device mode boot)
+        * Enable device mode and wait for host PC to enumerate
+        * We reply to PC with VID: 0a5c PID: 0x2763 (Pi 1 or Pi 2) or 0x2764 (Pi 3)
 
 NOTES: 
 

@@ -14,7 +14,7 @@ Revision    : a02082
 Serial      : 00000000765fc593
 ```
 
-*Note: As of the 4.9 kernel, all Pis report `BCM2835`, even those with BCM2836 and BCM2837 processors. You should not use this string to detect the processor.*
+*Note: As of the 4.9 kernel, all Pis report `BCM2835`, even those with BCM2836, BCM2837 and BCM2711 processors. You should not use this string to detect the processor. Decode the revision code using the information below, or `cat /sys/firmware/devicetree/base/model`*
 
 ## Old-style revision codes
 
@@ -104,6 +104,7 @@ New-style revision codes in use:
 | a02082 | 3B                | 1.2      | 1GB   | Sony UK      |
 | a020a0 | CM3               | 1.0      | 1GB   | Sony UK      |
 | a020d3 | 3B+               | 1.3      | 1GB   | Sony UK      |
+| a02042 | 2B (with BCM2837) | 1.2      | 1GB   | Sony UK      |
 | a21041 | 2B                | 1.1      | 1GB   | Embest       |
 | a22042 | 2B (with BCM2837) | 1.2      | 1GB   | Embest       |
 | a22082 | 3B                | 1.2      | 1GB   | Embest       |
