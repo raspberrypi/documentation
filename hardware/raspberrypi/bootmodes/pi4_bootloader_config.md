@@ -7,11 +7,15 @@ To change bootloader configuration items, you need to extract the configuration 
 cp /lib/firmware/raspberrypi/bootloader/beta/pieeprom-2019-09-23.bin pieeprom.bin
 rpi-eeprom-config pieeprom.bin > bootconf.txt
 
+# Edit the configuration using a text editor e.g. nano bootconf.txt
+
 # E.G. change boot_order from 0x1 (sd-boot) to new network, then SD
 BOOT_ORDER=0x21
 
 # If you have a UART cable then setting BOOT_UART=1 will help debug boot issues
 BOOT_UART=1
+
+# Save the new configuration and exit editor
 
 # Apply the configuration change to the EEPROM image file
 rpi-eeprom-config --out pieeprom-new.bin --config bootconf.txt pieeprom.bin
