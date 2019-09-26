@@ -2,9 +2,13 @@
 
 ## gpu_mem
 
-GPU memory in megabytes, sets the memory split between the CPU and GPU; the CPU gets the remaining memory. The minimum value is `16`; the maximum value is `192`, `448`, or `944`, depending on whether you are using a 256MB, 512MB, or 1024MB Pi. The default value is `64`. For the Raspberry Pi 4, which is available in 1GB, 2GB and 4GB versions, the minimum and maximum value are the same as for a 1GB device.
+GPU memory in megabytes, sets the memory split between the CPU and GPU; the CPU gets the remaining memory. The minimum value is `16`; the technical maximum value is `192`, `448`, or `944`, depending on whether you are using a 256MB, 512MB, or 1024MB Pi. The default value is `64`, values above `512` will not provide increased performance and should not be used. For the Raspberry Pi 4, which is available in 1GB, 2GB and 4GB versions, the minimum and maximum values are the same as for a 1GB device.
 
-Setting `gpu_mem` to low values may automatically disable certain firmware features, as there are some things the GPU cannot do if it has access to too little memory. So if a feature you are trying to use isn't working, try setting a larger GPU memory split.
+`gpu_mem` refers to memory that is addressable from the GPU, which includes the VPU, HVS, legacy codecs (e.g. H264), and camera, and on devices before the Raspberry Pi 4, the 3D system. The Raspberry Pi 4 3D system has it's own Memory Mangement Unit (MMU) so textures and other GL resources are not allocated from the `gpu_mem` but Linux system memory instead. This means that `gpu_mem` can be set to a lower value, so even if you are using the H264 and camera then 128MB will probably be enough. On earlier models without the 3D MMU, you may need up to 256 or 512 in some more unusual cases. 
+
+For performance reasons, you should set `gpu_mem` as low as possible to give the Linux system as much memory as possible. However, setting `gpu_mem` to too low values may automatically disable certain firmware features, as there are some things the GPU cannot do if it has access to too little memory. So if a feature you are trying to use isn't working, try setting a larger GPU memory split.
+
+Values of `gpu_mem` over 512 are not recommended, will provide no performance improvements, and are untested.
 
 Using `gpu_mem_256`, `gpu_mem_512`, and `gpu_mem_1024` allows you to swap the same SD card between 256MB, 512MB, and 1024MB Pis without having to edit `config.txt` each time:
 
