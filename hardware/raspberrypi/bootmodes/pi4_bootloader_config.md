@@ -86,3 +86,30 @@ Minimum: 5000
 Optional dotted decimal ip address (e.g. 192.169.1.99) for the TFTP server which overrides the server-ip from the DHCP request.  
 This maybe useful on home networks because tftpd-hpa can be used instead of dnsmasq where broadband router is the DHCP server.
 Default: ""  
+
+### BOOT_UART
+
+If 1 then enable UART debug output on GPIO 14 and 15. Configure the debug terminal at 115200bps, 8 bits, no parity bits, 1 stop bit. 
+Default: 0  
+Version: All  
+
+### WAKE_ON_GPIO 
+
+If 1 then 'sudo halt' will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.  
+
+Default: 0 in original version of bootloader (2019-05-10). Newer bootloaders have this set to 1.  
+Version: All  
+
+### POWER_OFF_ON_HALT  
+
+If 1 and WAKE_ON_GPIO=0 then switch off all PMIC outputs in halt. This is lowest possible power state for halt but may cause problems with some HATs because 5V will still be on. GLOBAL_EN must be shorted to ground to boot.  
+
+Default: 0  
+Version: 2019-07-15  
+
+### FREEZE_VERSION
+
+If 1 then the `rpi-eeprom-update` will skip automatic updates on this board. The parameter is not processed by the EEPROM bootloader or recovery.bin since there is no way in software of fully write protecting the EEPROM. Custom EEPROM update scripts must also check for this flag.
+
+Default: 0  
+Version: All  
