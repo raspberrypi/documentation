@@ -47,8 +47,7 @@ The `FREEZE_VERSION` option in the EEPROM config file may be used to indicate th
 
 There is no software write protection for the boot EEPROM but there will be a mechanism in Raspbian to skip any future updates to the EEPROM. However, it is possible to physically write-protect both EEPROMs via a simple resistor change on the board. Details will be published in the [schematics](./schematics/README.md).
 
-
-EPROM image files contain a small user-modifiable config file, which may be modified using the `rpi-eeprom-config` script included in the `rpi-eeprom` package.
+EPROM image files contain a small user-modifiable config file, which may be modified using the `rpi-eeprom-config` script included in the `rpi-eeprom` package. See the [Bootloader Configuration Page](./bcm2711_bootloader_config.md) for configuration details.
 
 
 ## Checking if an update is available
