@@ -14,7 +14,7 @@ rpi-eeprom-config pieeprom.bin > bootconf.txt
 
 # Edit the configuration using a text editor e.g. nano bootconf.txt
 
-# If you have a UART cable then setting BOOT_UART=1 will help debug boot issues
+# Example change. If you have a UART cable then setting BOOT_UART=1 will help debug boot issues
 BOOT_UART=1
 
 # Save the new configuration and exit editor
