@@ -14,7 +14,7 @@ The boot flow for the Pi4 is as follows:
 
 
 ## SD Card Boot
-The bootloader loads the files in the [boot folder](https://www.raspberrypi.org/documentation/configuration/boot_folder.md) according to the [boot options](https://www.raspberrypi.org/documentation/configuration/config-txt/boot.md) in config.txt
+The bootloader loads the files in the [boot folder](../../../configuration/boot_folder.md) according to the [boot options](../../..configuration/config-txt/boot.md) in config.txt
 
 ## Network boot (BETA)
 
