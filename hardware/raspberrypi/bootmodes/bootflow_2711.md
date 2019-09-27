@@ -22,10 +22,10 @@ Details of the network booting can be found [here](https://github.com/raspberryp
 
 ## USB mass storage boot
 
-USB booting is still under development
+USB booting is still under development.
 
 
-## BOOT_ORDER
+## BOOT_ORDER (BETA)
 
-The `BOOT_ORDER` configuration item is embedded inside the bootloader code in the EEPROM. See the [Pi4 Bootloader Configuration](./pi4_bootloader_config.md) page for details on how to change bootload configurations.
+The `BOOT_ORDER` configuration item is embedded inside the bootloader code in the EEPROM. See the [Pi4 Bootloader Configuration](./pi4_bootloader_config.md) page for details on how to change the bootloader configuration.
 
