@@ -27,5 +27,5 @@ USB booting is still under development.
 
 ## BOOT_ORDER (BETA)
 
-The `BOOT_ORDER` configuration item is embedded inside the bootloader code in the EEPROM. See the [Pi4 Bootloader Configuration](./bcm2711_bootloader_config.md) page for details on how to change the bootloader configuration.
+The `BOOT_ORDER` configuration item is embedded inside the bootloader code in the EEPROM. See the [Pi4 Bootloader Configuration](../bcm2711_bootloader_config.md) page for details on how to change the bootloader configuration.
 
