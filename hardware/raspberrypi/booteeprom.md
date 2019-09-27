@@ -82,7 +82,7 @@ to FIRMWARE_RELEASE_STATUS="beta"
 
 ## EEPROM Bootloader configuration options
 
-See the [Bootloader Configuration Page](./bootmodes/bcm2711_bootloader_config.md) for configuration details.
+See the [Bootloader Configuration Page](./bcm2711_bootloader_config.md) for configuration details.
 
 # Release Notes
 * [Release notes](https://github.com/raspberrypi/rpi-eeprom/blob/master/firmware/release-notes.md) for bootloader EEPROMs.
