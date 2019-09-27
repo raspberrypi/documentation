@@ -1,11 +1,11 @@
 # Pi4 Bootloader Configuration
 
-You can display the current configuration using 
+You can display the currently-active configuration using 
 ```
 vcgencmd bootloader_config
 ```
 
-To change these bootloader configuration items, you need to extract the configuration segment, make changes, re-insert it, then reprogram the EEPROM with the new bootloader. 
+To change these bootloader configuration items, you need to extract the configuration segment, make changes, re-insert it, then reprogram the EEPROM with the new bootloader. The Raspberry Pi will need to be rebooted for changes to take effect. 
 
 ```
 # Extract the configuration file
@@ -64,6 +64,8 @@ If 1 then the `rpi-eeprom-update` will skip automatic updates on this board. The
 Default: 0  
 Version: All  
 
+## Configuration items (Network boot beta test bootloader only)
+
 ### BOOT_ORDER
 The BOOT_ORDER setting allows flexible configuration for the priority of different
 bootmodes. It is represented as 32bit unsigned integer where each nibble represents
@@ -81,8 +83,6 @@ BOOT_ORDER fields
 * 0x2 - NETWORK  
 
 Default: 0x00000001 (with 3 SD boot retries to match the current bootloader behaviour)  
-
-## Configuration items (Network boot beta test bootloader only)
 
 ### SD_BOOT_MAX_RETRIES
 Specify the maximum number of times that the bootloader will retry booting from the sd-card.  
