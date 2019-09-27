@@ -1,6 +1,11 @@
 # Pi4 Bootloader Configuration (BETA)
 
-To change bootloader configuration items, you need to extract the configuration segment, make changes, re-insert it, then reprogram the EEPROM with the new bootloader. 
+You can display the current configuration using 
+```
+vcgencmd bootloader_config
+```
+
+To change these bootloader configuration items, you need to extract the configuration segment, make changes, re-insert it, then reprogram the EEPROM with the new bootloader. 
 
 ```
 # Extract the configuration file
