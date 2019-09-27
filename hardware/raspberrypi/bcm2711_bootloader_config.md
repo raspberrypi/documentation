@@ -39,7 +39,7 @@ This section describes all the configuration items available in the bootloader.
 
 ### BOOT_UART
 
-If 1 then enable UART debug output on GPIO 14 and 15. Configure the debug terminal at 115200bps, 8 bits, no parity bits, 1 stop bit. 
+If 1 then enable UART debug output on GPIO 14 and 15. Configure the receiving debug terminal at 115200bps, 8 bits, no parity bits, 1 stop bit. 
 Default: 0  
 Version: All  
 
@@ -67,13 +67,9 @@ Version: All
 ## Configuration items (Network boot beta test bootloader only)
 
 ### BOOT_ORDER
-The BOOT_ORDER setting allows flexible configuration for the priority of different
-bootmodes. It is represented as 32bit unsigned integer where each nibble represents
-a bootmode. The bootmodes are attempted in LSB to MSB order.  
+The BOOT_ORDER setting allows flexible configuration for the priority of different bootmodes. It is represented as 32bit unsigned integer where each nibble represents a bootmode. The bootmodes are attempted in lowest significant nibble to highest significant nibble order.
 
-E.g. 0x21 means try SD first followed by network boot then stop. Where as
-0x2 would mean try network boot and then stop without trying to boot from
-the sd-card.
+E.g. 0x21 means try SD first followed by network boot then stop. Where as 0x2 would mean try network boot and then stop without trying to boot from the sd-card.
 
 The retry counters are reset when switching to the next boot mode.
 
