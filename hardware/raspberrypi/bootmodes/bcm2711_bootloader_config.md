@@ -1,4 +1,4 @@
-# Pi4 Bootloader Configuration (BETA)
+# Pi4 Bootloader Configuration
 
 You can display the current configuration using 
 ```
@@ -9,13 +9,10 @@ To change these bootloader configuration items, you need to extract the configur
 
 ```
 # Extract the configuration file
-cp /lib/firmware/raspberrypi/bootloader/beta/pieeprom-2019-09-23.bin pieeprom.bin
+cp /lib/firmware/raspberrypi/bootloader/beta/pieeprom-2019-09-10.bin pieeprom.bin
 rpi-eeprom-config pieeprom.bin > bootconf.txt
 
 # Edit the configuration using a text editor e.g. nano bootconf.txt
-
-# E.G. change boot_order from 0x1 (sd-boot) to network 0x20, then SD (0x01)
-BOOT_ORDER=0x21
 
 # If you have a UART cable then setting BOOT_UART=1 will help debug boot issues
 BOOT_UART=1
@@ -39,6 +36,34 @@ sudo reboot
 
 This section describes all the configuration items available in the bootloader.
 
+
+### BOOT_UART
+
+If 1 then enable UART debug output on GPIO 14 and 15. Configure the debug terminal at 115200bps, 8 bits, no parity bits, 1 stop bit. 
+Default: 0  
+Version: All  
+
+### WAKE_ON_GPIO 
+
+If 1 then 'sudo halt' will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.  
+
+Default: 0 in original version of bootloader (2019-05-10). Newer bootloaders have this set to 1.  
+Version: All  
+
+### POWER_OFF_ON_HALT  
+
+If 1 and WAKE_ON_GPIO=0 then switch off all PMIC outputs in halt. This is lowest possible power state for halt but may cause problems with some HATs because 5V will still be on. GLOBAL_EN must be shorted to ground to boot.  
+
+Default: 0  
+Version: 2019-07-15  
+
+### FREEZE_VERSION
+
+If 1 then the `rpi-eeprom-update` will skip automatic updates on this board. The parameter is not processed by the EEPROM bootloader or recovery.bin since there is no way in software of fully write protecting the EEPROM. Custom EEPROM update scripts must also check for this flag.
+
+Default: 0  
+Version: All  
+
 ### BOOT_ORDER
 The BOOT_ORDER setting allows flexible configuration for the priority of different
 bootmodes. It is represented as 32bit unsigned integer where each nibble represents
@@ -56,6 +81,8 @@ BOOT_ORDER fields
 * 0x2 - NETWORK  
 
 Default: 0x00000001 (with 3 SD boot retries to match the current bootloader behaviour)  
+
+## Configuration items (Network boot beta test bootloader only)
 
 ### SD_BOOT_MAX_RETRIES
 Specify the maximum number of times that the bootloader will retry booting from the sd-card.  
@@ -86,30 +113,3 @@ Minimum: 5000
 Optional dotted decimal ip address (e.g. 192.169.1.99) for the TFTP server which overrides the server-ip from the DHCP request.  
 This maybe useful on home networks because tftpd-hpa can be used instead of dnsmasq where broadband router is the DHCP server.
 Default: ""  
-
-### BOOT_UART
-
-If 1 then enable UART debug output on GPIO 14 and 15. Configure the debug terminal at 115200bps, 8 bits, no parity bits, 1 stop bit. 
-Default: 0  
-Version: All  
-
-### WAKE_ON_GPIO 
-
-If 1 then 'sudo halt' will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.  
-
-Default: 0 in original version of bootloader (2019-05-10). Newer bootloaders have this set to 1.  
-Version: All  
-
-### POWER_OFF_ON_HALT  
-
-If 1 and WAKE_ON_GPIO=0 then switch off all PMIC outputs in halt. This is lowest possible power state for halt but may cause problems with some HATs because 5V will still be on. GLOBAL_EN must be shorted to ground to boot.  
-
-Default: 0  
-Version: 2019-07-15  
-
-### FREEZE_VERSION
-
-If 1 then the `rpi-eeprom-update` will skip automatic updates on this board. The parameter is not processed by the EEPROM bootloader or recovery.bin since there is no way in software of fully write protecting the EEPROM. Custom EEPROM update scripts must also check for this flag.
-
-Default: 0  
-Version: All  
