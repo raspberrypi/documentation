@@ -5,7 +5,7 @@ The Pi4 with the BCM2711 SoC has a new, more sophisticated boot process. The add
 The boot flow for the Pi4 is as follows:
 
 * BCM2711 SoC powers up
-* On board bootrom checks for bootloader recovery file (recovery.bin) on the sd-card. If found, it executes it to flash the EEPROM and recovery.bin triggers a reset.
+* On board bootrom checks for bootloader recovery file (recovery.bin) on the SD card. If found, it executes it to flash the EEPROM and recovery.bin triggers a reset.
 * Otherwise, the bootrom loads the main bootloader from the EEPROM.
 * Bootloader checks it's inbuilt BOOT_ORDER configuration item to determine what type of boot to do.
   * SD Card
