@@ -623,7 +623,7 @@ Use `display_rotate` to rotate or flip the screen orientation. Parameters are th
 
 ### disable_fw_kms_setup 
 
-By default, the firmware parses the EDID of any HDMI attached display, picks an appropriate video mode, then passes the resolution and frame rate of the mode, along with overscan parameters, to the Linux kernel via settings on the kernel command line. You can use `disable_fw_kms_setup=1` to disable the passing of these parameters. The Linux video system (DRM) will then parse the EDID itself and pick an appropriate mode.
+By default, the firmware parses the EDID of any HDMI attached display, picks an appropriate video mode, then passes the resolution and frame rate of the mode, along with overscan parameters, to the Linux kernel via settings on the kernel command line. You can use `disable_fw_kms_setup=1` to disable the passing of these parameters. The Linux video mode system (KMS) will then parse the EDID itself and pick an appropriate mode.
 
 ## Other options
 
