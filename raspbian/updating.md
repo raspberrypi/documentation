@@ -23,7 +23,7 @@ sudo apt-get update
 Next, **upgrade** all your installed packages to their latest versions with the following command:
 
 ```bash
-sudo apt-get dist-upgrade
+sudo apt-get upgrade
 ```
 
 Generally speaking, doing this regularly will keep your installation up to date for the particular major Raspbian release you are using (e.g. Stretch). It will not update from one major release to another, for example, Stretch to Buster.
