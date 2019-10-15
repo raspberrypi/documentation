@@ -1,6 +1,6 @@
 # SD cards
 
-The Raspberry Pi should work with any compatible SD card, although there are some guidelines that should be followed:
+Raspberry Pi should work with any compatible SD card, although there are some guidelines that should be followed:
 
 ## SD card size (capacity) 
 
