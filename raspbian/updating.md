@@ -26,6 +26,8 @@ Next, **upgrade** all your installed packages to their latest versions with the 
 sudo apt-get dist-upgrade
 ```
 
+Note that `dist-upgrade` is used in preference to a simple `upgrade`, as it also picks up any dependency changes that may have been made. 
+
 Generally speaking, doing this regularly will keep your installation up to date for the particular major Raspbian release you are using (e.g. Stretch). It will not update from one major release to another, for example, Stretch to Buster.
 
 However, there are occasional changes made in the Foundation's Raspbian image that require manual intervention, for example a newly introduced package. These are not installed with an upgrade, as this command only updates the packages you already have installed.
