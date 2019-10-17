@@ -27,7 +27,7 @@ We recommend setting up your Pi so that it automatically updates the bootloader:
 
 ```
 sudo apt update
-sudo apt upgrade
+sudo apt full-upgrade
 sudo apt install rpi-eeprom
 ```
 

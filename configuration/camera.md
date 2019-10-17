@@ -13,8 +13,8 @@ Although the connectors on the PCB and the Pi are different, they work in a simi
 Execute the following instructions on the command line to download and install the latest kernel, GPU firmware, and applications. You'll need an internet connection for this to work correctly.
 
 ```bash
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt update
+sudo apt full-upgrade
 ```
 
 Now you need to enable camera support using the `raspi-config` program you will have used when you first set up your Raspberry Pi.

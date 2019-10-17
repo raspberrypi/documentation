@@ -2,7 +2,7 @@
 
 set -e
 
-sudo apt-get install -y python3 python3-pip ipcalc
+sudo apt install -y python3 python3-pip ipcalc
 sudo pip3 install tabulate
 
 # Get network info
@@ -46,7 +46,7 @@ EOF
 # Prevent DNSMasq from changing
 sudo chattr +i /etc/resolv.conf
 
-sudo apt-get install -y nfs-kernel-server dnsmasq iptables-persistent unzip nmap kpartx rsync
+sudo apt install -y nfs-kernel-server dnsmasq iptables-persistent unzip nmap kpartx rsync
 
 sudo mkdir -p /nfs
 sudo mkdir -p /tftpboot

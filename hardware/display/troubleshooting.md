@@ -16,8 +16,8 @@ You can undo any previous use of `rpi-update` and get your Pi back to the latest
 to a network and running:
 
 ```bash
-sudo apt-get update
-sudo apt-get install --reinstall libraspberrypi0 libraspberrypi-{bin,dev,doc} raspberrypi-bootloader
+sudo apt update
+sudo apt install --reinstall libraspberrypi0 libraspberrypi-{bin,dev,doc} raspberrypi-bootloader
 sudo reboot
 ```
 
@@ -178,7 +178,7 @@ Once enabled, right click works by pressing and holding the touchscreen and will
 Install with:
 
 ```bash
-sudo apt-get install florence
+sudo apt install florence
 ```
 
 #### Matchbox Virtual Keyboard
@@ -186,7 +186,7 @@ sudo apt-get install florence
 Install like so:
 
 ```bash
-sudo apt-get install matchbox-keyboard
+sudo apt install matchbox-keyboard
 ```
 
 And then find in **Accessories** > **Keyboard**.

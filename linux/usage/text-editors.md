@@ -47,13 +47,13 @@ Depending on your keyboard configuration, you may find your cursor keys don't wo
 Vim is an extension of Vi and works in much the same way, with a number of improvements. Only Vi is installed by default so to get the full features of Vim, install it with APT:
 
 ```
-sudo apt-get install vim
+sudo apt install vim
 ```
 
 You can edit a file in Vim with `vim somefile.txt`. Vim also has a graphical version which opens in a window and allows interaction with the mouse. This version is installable separately:
 
 ```
-sudo apt-get install vim-gnome
+sudo apt install vim-gnome
 ```
 
 To use the graphical version of Vim, use `gvim somefile.txt`. You can save configuration in a `.vimrc` file in your user's home directory. To learn more about editing in Vi and Vim, you can run `vimtutor` and follow the tutorial.
@@ -63,7 +63,7 @@ To use the graphical version of Vim, use `gvim somefile.txt`. You can save confi
 Emacs is a GNU command-line text editor; it's powerful, extensible, and customisable. You can install it with APT:
 
 ```
-sudo apt-get install emacs
+sudo apt install emacs
 ```
 
 You can use keyboard combination commands, such as `Ctrl + X Ctrl + S` to save and `Ctrl + X Ctrl + C` to close.

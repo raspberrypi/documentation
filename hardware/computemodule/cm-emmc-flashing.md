@@ -41,7 +41,7 @@ Do not power up yet.
 We will be using Git to get the rpiboot source code, so ensure Git is installed. In Cygwin, use the Cygwin installer. On a Pi or other Debian-based Linux machine, use the following command:
 
 ```bash
-sudo apt-get install git
+sudo apt install git
 ```
 
 Git may produce an error if the date is not set correctly. On a Raspberry Pi, enter the following to correct this:
@@ -62,7 +62,7 @@ cd usbboot
 `libusb` must be installed. If you are using Cygwin, please make sure `libusb` is installed as previously described. On the Raspberry Pi or other Debian-based Linux, enter the following command:
 
 ```bash
-sudo apt-get install libusb-1.0-0-dev
+sudo apt install libusb-1.0-0-dev
 ```
 
 Now build and install the `usbboot` tool:
