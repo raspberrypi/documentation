@@ -9,7 +9,7 @@ Configuration is most commonly done through the `make menuconfig` interface. Alt
 The `menuconfig` tool requires the `ncurses` development headers to compile properly. These can be installed with the following command:
 
 ```
-$ sudo apt-get install libncurses5-dev
+$ sudo apt install libncurses5-dev
 ```
 
 You'll also need to download and prepare your kernel sources, as described in the [build guide](building.md). In particular, ensure you have installed the default configuration.

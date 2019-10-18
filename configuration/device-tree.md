@@ -235,7 +235,7 @@ Trying again, this time using the original example and adding the `-@` option to
 dtc -@ -I dts -O dtb -o 1st.dtbo 1st-overlay.dts
 ```
 
-If `dtc` returns an error about the third line, it doesn't have the extensions required for overlay work. Run `sudo apt-get install device-tree-compiler` and try again - this time, compilation should complete successfully. Note that a suitable compiler is also available in the kernel tree as `scripts/dtc/dtc`, built when the `dtbs` make target is used:
+If `dtc` returns an error about the third line, it doesn't have the extensions required for overlay work. Run `sudo apt install device-tree-compiler` and try again - this time, compilation should complete successfully. Note that a suitable compiler is also available in the kernel tree as `scripts/dtc/dtc`, built when the `dtbs` make target is used:
 ```
 make ARCH=arm dtbs
 ```

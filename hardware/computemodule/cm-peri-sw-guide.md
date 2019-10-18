@@ -25,12 +25,12 @@ It is useful on a running system to look at the state of each of the GPIO pins (
 Raspberry Pi provides the `raspi-gpio` package which is a tool for hacking and debugging GPIO (NOTE: you need to run it as root).
 To install `raspi-gpio`:
 ```
-sudo apt-get install raspi-gpio
+sudo apt install raspi-gpio
 ```
 
-If `apt-get` can't find the `raspi-gpio` package, you will need to do an update first:
+If `apt` can't find the `raspi-gpio` package, you will need to do an update first:
 ```
-sudo apt-get update
+sudo apt update
 ```
 
 To get help on `raspi-gpio`, run it with the `help` argument:
@@ -120,7 +120,7 @@ Some default overlay dts files live in `arch/arm/boot/dts/overlays`. Correspondi
 
 Compiling these dts files to dtb files requires an up-to-date version of the Device Tree compiler `dtc`. More information can be found [here](../../configuration/device-tree.md), but the easy way to install an appropriate version on a Pi is to run:
 ```
-sudo apt-get install device-tree-compiler
+sudo apt install device-tree-compiler
 ```
 
 If you are building your own kernel then the build host also gets a version in `scripts/dtc`. You can arrange for your overlays to be built automatically by adding them to `Makefile` in `arch/arm/boot/dts/overlays`, and using the 'dtbs' make target.

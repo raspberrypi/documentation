@@ -19,14 +19,14 @@ You can mount your storage device at a specific folder location. It is conventio
 4. The FSTYPE column contains the filesystem type. If your storage device uses an exFAT file system, install the exFAT driver:
 
     ```
-    sudo apt-get update
-    sudo apt-get install exfat-fuse
+    sudo apt update
+    sudo apt install exfat-fuse
     ```
 5. If your storage device uses an NTFS file system, you will have read-only access to it. If you want to write to the device, you can install the ntfs-3g driver:
 
     ```
-    sudo apt-get update
-    sudo apt-get install ntfs-3g
+    sudo apt update
+    sudo apt install ntfs-3g
     ```
 6. Run the following command to get the location of the disk partition:
 
@@ -97,11 +97,11 @@ The 'target is busy' message means there are files on the storage device that ar
 
 2. If you have a terminal open, make sure that you are not in the folder where the storage device is mounted, or in a sub-folder of it.
 
-3. If you are still unable to unmount the storage device, you can use the `lsof` tool to check which program has files open on the device. You need to first install `lsof` using `apt-get`:
+3. If you are still unable to unmount the storage device, you can use the `lsof` tool to check which program has files open on the device. You need to first install `lsof` using `apt`:
 
     ```
-    sudo apt-get update
-    sudo apt-get install lsof
+    sudo apt update
+    sudo apt install lsof
     ```
    To use lsof:
    
