@@ -9,7 +9,7 @@ Note that the quality and configurability of the camera module is highly superio
 First, install the `fswebcam` package:
 
 ```bash
-sudo apt-get install fswebcam
+sudo apt install fswebcam
 ```
 
 ## Add your user to `video` group

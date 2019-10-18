@@ -307,7 +307,7 @@ sudo apt update
 sudo apt install python-picamera
 ```
 
-This is a preferable method of installing, as it means that the modules you install can be kept up to date easily with the usual `sudo apt update` and `sudo apt upgrade` commands.
+This is a preferable method of installing, as it means that the modules you install can be kept up to date easily with the usual `sudo apt update` and `sudo apt full-upgrade` commands.
 
 ### pip
 

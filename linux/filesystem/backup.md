@@ -36,7 +36,7 @@ mysql -Bse "create database recipes"
 cat recipes.sql | mysql recipes
 ```
 
-Alternatively, you can use the `pv` command to see a progress meter as the dumpfile is processed by MySQL. This is not installed by default, so install with `sudo apt-get install pv`. This command is useful for large files:
+Alternatively, you can use the `pv` command to see a progress meter as the dumpfile is processed by MySQL. This is not installed by default, so install with `sudo apt install pv`. This command is useful for large files:
 
 ```bash
 pv recipes.sql | mysql recipes

@@ -7,13 +7,13 @@ In order to work correctly, the Sense HAT requires an up-to-date kernel, I2C to 
 1. Ensure your APT package list is up-to-date:
 
     ```bash
-    sudo apt-get update
+    sudo apt update
     ```
 
 1. Next, install the sense-hat package which will ensure the kernel is up-to-date, enable I2C, and install the necessary libraries and programs:
 
     ```bash
-    sudo apt-get install sense-hat
+    sudo apt install sense-hat
     ```
 
 1. Finally, a reboot may be required if I2C was disabled or the kernel was not up-to-date prior to the install:
@@ -63,8 +63,8 @@ Taken from this [forum post](https://www.raspberrypi.org/forums/viewtopic.php?f=
 Install the necessary software and run the calibration program as follows:
 
 ````
-sudo apt-get update
-sudo apt-get install octave -y
+sudo apt update
+sudo apt install octave -y
 cd
 cp /usr/share/librtimulib-utils/RTEllipsoidFit ./ -a
 cd RTEllipsoidFit

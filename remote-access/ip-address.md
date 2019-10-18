@@ -44,7 +44,7 @@ If you don't remember the hostname of the Raspberry Pi, but have a system with A
 
 The `nmap` command (Network Mapper) is a free and open-source tool for network discovery, available for Linux, macOS, and Windows.
 
-- To install on **Linux**, install the `nmap` package e.g. `apt-get install nmap`.
+- To install on **Linux**, install the `nmap` package e.g. `apt install nmap`.
 
 - To install on **macOS** or **Windows**, see the [nmap.org download page](http://nmap.org/download.html).
 

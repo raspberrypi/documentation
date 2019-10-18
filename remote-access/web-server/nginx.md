@@ -9,7 +9,7 @@ Like Apache, NGINX can serve HTML files over HTTP, and with additional modules c
 Ensure that the package manager has up-to-date information about which packages are available:  
 
 ```bash
-sudo apt-get update
+sudo apt update
 ```
 
 You only need to do this occasionally, but it's the most likely solution if subsequent steps fail with messages like:
@@ -22,7 +22,7 @@ You only need to do this occasionally, but it's the most likely solution if subs
 First install the `nginx` package by typing the following command in to the Terminal:
 
 ```bash
-sudo apt-get install nginx
+sudo apt install nginx
 ```
 
 and start the server with:
@@ -47,7 +47,7 @@ NGINX defaults its web page location to `/var/www/html` on Raspbian. Navigate to
 ## Additional - Install PHP
 
 ```bash
-sudo apt-get install php-fpm
+sudo apt install php-fpm
 ```
 
 ### Enable PHP in NGINX

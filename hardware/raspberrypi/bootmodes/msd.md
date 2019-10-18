@@ -17,7 +17,7 @@ You can use any SD card running Raspbian or Raspbian Lite to program the OTP bit
 First, prepare the `/boot` directory with up to date boot files (this step is not required if you're using the 2017-04-10 release of Raspbian/Raspbian Lite or a later one):
 
 ```bash
-$ sudo apt-get update && sudo apt-get upgrade
+$ sudo apt update && sudo apt full-upgrade
 ```
 
 Then enable USB boot mode with this code:
