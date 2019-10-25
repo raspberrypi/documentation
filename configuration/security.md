@@ -278,7 +278,7 @@ sudo ufw limit ssh/tcp
 Deny access to port 22 from IP address 192.168.2.1
 
 ```bash
-sudo ufw deny from 192.168.2.1 port 22
+sudo ufw deny from 192.168.2.1 to any port 22
 ```
 
 ## Installing fail2ban
