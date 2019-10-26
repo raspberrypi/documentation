@@ -92,6 +92,28 @@ alice ALL=(ALL) PASSWD: ALL
 
 Now save the file.
 
+
+## Disable or enable root login
+
+To disable root login, use:
+
+```bash
+sudo passwd -l root
+```
+
+To enable root login, use:
+
+```bash
+sudo passwd -u root
+```
+
+To enable root login again, use:
+
+```bash
+sudo passwd root
+```
+
+
 ## Ensure you have the latest security fixes
 
 This can be as simple as ensuring your version of Raspbian is up-to-date, as an up-to-date distribution contains all the latest security fixes. Full instructions can be found [here](../raspbian/updating.md).
@@ -158,17 +180,53 @@ UsePAM no
 
 Save the file and either restart the ssh system with `sudo service ssh reload` or reboot.
 
-## Install a firewall
+After transfering over your SSH keys from your client, make your ~/.ssh directory and your ~/.ssh/authorized_keys file immutable.
+
+```bash
+sudo chattr +i ~/.ssh
+sudo chattr +i ~/.ssh/authorized_keys
+```
+
+
+## Install and configure a firewall
 
 There are many firewall solutions available for Linux. Most use the underlying [iptables](http://www.netfilter.org/projects/iptables/index.html) project to provide packet filtering. This project sits over the Linux netfiltering system. `iptables` is installed by default on Raspbian, but is not set up. Setting it up can be a complicated task, and one project that provides a simpler interface than `iptables` is [ufw](https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw), which stands for 'Uncomplicated Fire Wall'. This is the default firewall tool in Ubuntu, and can be easily installed on your Raspberry Pi:
 
 ```bash
-sudo apt install ufw
+sudo apt install ufw -y
 ```
 
 `ufw` is a fairly straightforward command line tool, although there are some GUIs available for it. This document will describe a few of the basic command line options. Note that `ufw` needs to be run with superuser privileges, so all commands are preceded with `sudo`. It is also possible to use the option `--dry-run` any `ufw` commands, which indicates the results of the command without actually making any changes.
 
-To enable the firewall, which will also ensure it starts up on boot, use:
+Disable remote ping for IPv4 and IPv6.
+
+```bash
+sudo nano /etc/ufw/before.rules
+
+# ok icmp codes for INPUT
+-A ufw-before-input -p icmp --icmp-type destination-unreachable -j DROP
+-A ufw-before-input -p icmp --icmp-type source-quench -j DROP
+-A ufw-before-input -p icmp --icmp-type time-exceeded -j DROP
+-A ufw-before-input -p icmp --icmp-type parameter-problem -j DROP
+-A ufw-before-input -p icmp --icmp-type echo-request -j DROP
+
+sudo nano /etc/ufw/before6.rules
+
+# ok icmp codes for INPUT
+-A ufw6-before-input -p icmpv6 --icmpv6-type destination-unreachable -j DROP
+-A ufw6-before-input -p icmpv6 --icmpv6-type source-quench -j DROP
+-A ufw6-before-input -p icmpv6 --icmpv6-type time-exceeded -j DROP
+-A ufw6-before-input -p icmpv6 --icmpv6-type parameter-problem -j DROP
+-A ufw6-before-input -p icmpv6 --icmpv6-type echo-request -j DROP
+```
+
+To reset the firewall, use:
+
+```bash
+sudo ufw reset
+```
+
+To enable the firewall, and enable start up on boot, use:
 
 ```bash
 sudo ufw enable
@@ -178,6 +236,24 @@ To disable the firewall, and disable start up on boot, use:
 
 ```bash
 sudo ufw disable
+```
+
+To disable logging, use:
+
+```bash
+sudo ufw logging off
+```
+
+To block all incoming requests by default, use:
+
+```bash
+sudo ufw default deny incoming
+```
+
+To block all outgoing requests by default, use:
+
+```bash
+sudo ufw default allow outgoing
 ```
 
 Allow a particular port to have access (we have used port 22 in our example):
@@ -208,6 +284,8 @@ The status command lists all current settings for the firewall:
 
 ```bash
 sudo ufw status
+sudo ufw status verbose
+sudo ufw status numbered
 ```
 
 The rules can be quite complicated, allowing specific IP addresses to be blocked, specifying in which direction traffic is allowed, or limiting the number of attempts to connect, for example to help defeat a Denial of Service (DoS) attack. You can also specify the device rules are to be applied to (e.g. eth0, wlan0). Please refer to the `ufw` man page (`man ufw`) for full details, but here are some examples of more sophisticated commands.
@@ -218,10 +296,10 @@ Limit login attempts on ssh port using tcp: this denies connection if an IP addr
 sudo ufw limit ssh/tcp
 ```
 
-Deny access to port 30 from IP address 192.168.2.1
+Deny access to port 22 from IP address 192.168.2.1
 
 ```bash
-sudo ufw deny from 192.168.2.1 port 30
+sudo ufw deny from 192.168.2.1 to any port 22
 ```
 
 ## Installing fail2ban
@@ -231,7 +309,7 @@ If you are using your Raspberry Pi as some sort of server, for example an `ssh` 
 Install fail2ban using the following command:
 
 ```bash
-sudo apt install fail2ban
+sudo apt install fail2ban -y
 ```
 
 Note that the version of Fail2ban in the repository (v0.8.13) does not support IPv6 networks. If you use IPv6, you will need to install version v0.10 or higher from source. Please see the [Fail2ban](http://www.fail2ban.org) website for more information on how to do this.
