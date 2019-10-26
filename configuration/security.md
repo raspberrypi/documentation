@@ -189,7 +189,7 @@ sudo chattr +i ~/.ssh/authorized_keys
 ```
 
 
-## Install a firewall
+## Install and configure a firewall
 
 There are many firewall solutions available for Linux. Most use the underlying [iptables](http://www.netfilter.org/projects/iptables/index.html) project to provide packet filtering. This project sits over the Linux netfiltering system. `iptables` is installed by default on Raspbian, but is not set up. Setting it up can be a complicated task, and one project that provides a simpler interface than `iptables` is [ufw](https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw), which stands for 'Uncomplicated Fire Wall'. This is the default firewall tool in Ubuntu, and can be easily installed on your Raspberry Pi:
 
@@ -198,6 +198,28 @@ sudo apt install ufw -y
 ```
 
 `ufw` is a fairly straightforward command line tool, although there are some GUIs available for it. This document will describe a few of the basic command line options. Note that `ufw` needs to be run with superuser privileges, so all commands are preceded with `sudo`. It is also possible to use the option `--dry-run` any `ufw` commands, which indicates the results of the command without actually making any changes.
+
+Disable remote ping for IPv4 and IPv6.
+
+```bash
+sudo nano /etc/ufw/before.rules
+
+# ok icmp codes for INPUT
+-A ufw-before-input -p icmp --icmp-type destination-unreachable -j DROP
+-A ufw-before-input -p icmp --icmp-type source-quench -j DROP
+-A ufw-before-input -p icmp --icmp-type time-exceeded -j DROP
+-A ufw-before-input -p icmp --icmp-type parameter-problem -j DROP
+-A ufw-before-input -p icmp --icmp-type echo-request -j DROP
+
+sudo nano /etc/ufw/before6.rules
+
+# ok icmp codes for INPUT
+-A ufw6-before-input -p icmpv6 --icmpv6-type destination-unreachable -j DROP
+-A ufw6-before-input -p icmpv6 --icmpv6-type source-quench -j DROP
+-A ufw6-before-input -p icmpv6 --icmpv6-type time-exceeded -j DROP
+-A ufw6-before-input -p icmpv6 --icmpv6-type parameter-problem -j DROP
+-A ufw6-before-input -p icmpv6 --icmpv6-type echo-request -j DROP
+```
 
 To reset the firewall, use:
 
