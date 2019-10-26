@@ -302,6 +302,19 @@ Deny access to port 22 from IP address 192.168.2.1
 sudo ufw deny from 192.168.2.1 to any port 22
 ```
 
+Allow access to port 22 from IP address 192.168.2.1
+
+```bash
+sudo ufw allow from 192.168.2.1 to any port 22
+```
+
+Limit access to port 22 from IP address 192.168.2.1
+
+```bash
+sudo ufw limit from 192.168.2.1 to any port 22
+```
+
+
 ## Installing fail2ban
 
 If you are using your Raspberry Pi as some sort of server, for example an `ssh` or a webserver, your firewall will have deliberate 'holes' in it to let the server traffic through. In these cases, [Fail2ban](http://www.fail2ban.org) can be useful. Fail2ban, written in Python, is a scanner that examines the log files produced by the Raspberry Pi, and checks them for suspicious activity. It catches things like multiple brute-force attempts to log in, and can inform any installed firewall to stop further login attempts from suspicious IP addresses. It saves you having to manually check log files for intrusion attempts and then update the firewall (via `iptables`) to prevent them.
