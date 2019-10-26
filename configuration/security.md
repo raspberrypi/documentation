@@ -97,21 +97,21 @@ Now save the file.
 
 To disable root login, use:
 
-'''bash
+```bash
 sudo passwd -l root
-'''
+```
 
 To enable root login, use:
 
-'''bash
+```bash
 sudo passwd -u root
-'''
+```
 
 To enable root login again, use:
 
-'''bash
+```bash
 sudo passwd root
-'''
+```
 
 
 ## Ensure you have the latest security fixes
