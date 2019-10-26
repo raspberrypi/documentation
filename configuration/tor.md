@@ -17,6 +17,13 @@ deb-src http://deb.debian.org/debian buster-updates main contrib non-free
 deb http://deb.debian.org/debian buster-backports main contrib non-free
 deb-src http://deb.debian.org/debian buster-backports main contrib non-free
 
+sudo nano /etc/apt/sources.list.d/raspi.list
+
+deb http://archive.raspberrypi.org/debian buster main ui
+deb-src http://archive.raspberrypi.org/debian buster main ui
+
+wget https://archive.raspberrypi.org/debian/raspberrypi.gpg.key -O - | sudo apt-key add -
+
 sudo apt update -y
 sudo apt install apt-transport-https curl debian-keyring -y
 
@@ -33,6 +40,11 @@ deb-src https://deb.debian.org/debian buster-updates main contrib non-free
 
 deb https://deb.debian.org/debian buster-backports main contrib non-free
 deb-src https://deb.debian.org/debian buster-backports main contrib non-free
+
+sudo nano /etc/apt/sources.list.d/raspi.list
+
+deb https://archive.raspberrypi.org/debian buster main ui
+deb-src https://archive.raspberrypi.org/debian buster main ui
 
 sudo nano /etc/apt/sources.list.d/torproject.list
 
@@ -58,6 +70,11 @@ deb-src tor+http://vwakviie2ienjx6t.onion/debian buster-updates main contrib non
 
 deb tor+http://vwakviie2ienjx6t.onion/debian buster-backports main contrib non-free
 deb-src tor+http://vwakviie2ienjx6t.onion/debian buster-backports main contrib non-free
+
+sudo nano /etc/apt/sources.list.d/raspi.list
+
+deb tor+https://archive.raspberrypi.org/debian buster main ui
+deb-src tor+https://archive.raspberrypi.org/debian buster main ui
 
 sudo nano /etc/apt/sources.list.d/torproject.list
 
