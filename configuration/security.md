@@ -250,7 +250,7 @@ To block all incoming requests by default, use:
 sudo ufw default deny incoming
 ```
 
-To block all outgoing requests by default, use:
+To allow all outgoing requests by default, use:
 
 ```bash
 sudo ufw default allow outgoing
