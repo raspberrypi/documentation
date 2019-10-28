@@ -299,19 +299,19 @@ sudo ufw limit ssh/tcp
 Deny incoming requests to port 22 from IP address 192.168.2.1
 
 ```bash
-sudo ufw deny in proto tcp from 192.168.2.1 port 22 to any port 22
+sudo ufw deny in proto tcp from 192.168.2.1 to any port 22
 ```
 
 Allow incoming requests to port 22 from IP address 192.168.2.1
 
 ```bash
-sudo ufw allow in proto tcp from 192.168.2.1 port 22 to any port 22
+sudo ufw allow in proto tcp from 192.168.2.1 to any port 22
 ```
 
 Limit incoming requests to port 22 from IP address 192.168.2.1
 
 ```bash
-sudo ufw limit in proto tcp from 192.168.2.1 port 22 to any port 22
+sudo ufw limit in proto tcp from 192.168.2.1 to any port 22
 ```
 
 
