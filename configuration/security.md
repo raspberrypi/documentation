@@ -271,7 +271,7 @@ The rules can be quite complicated, allowing specific IP addresses to be blocked
 
 Limit login attempts on ssh port using tcp: this denies connection if an IP address has attempted to connect six or more times in the last 30 seconds:
 
-If you're allowing all incoming requests by default, you can create a blacklist by denying requests from a specific IP address to a specific port, although it's better if you create a whitelist by denying all incoming requests by default and allowing requests from a specific IP address to a specific port. Otherwise you're kind of defeating the purpose of a firewall, which is to keep everyone out.
+If you're allowing all incoming requests by default, you can create a blacklist by denying requests from a specific IP address to a specific port, although it's recommended you create a whitelist by denying all incoming requests by default and allowing requests from a specific IP address to a specific port. Otherwise you're defeating the purpose of a firewall, which is to keep everyone out.
 
 Deny incoming requests from IP address 192.168.2.1 to port 22 only (If you're allowing all incoming requests by default)
 
