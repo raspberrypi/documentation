@@ -107,7 +107,7 @@ To enable root login, use:
 sudo passwd -u root
 ```
 
-To enable root login again, use:
+To reset the password for root, use:
 
 ```bash
 sudo passwd root
@@ -198,28 +198,6 @@ sudo apt install ufw -y
 
 `ufw` is a fairly straightforward command line tool, although there are some GUIs available for it. This document will describe a few of the basic command line options. Note that `ufw` needs to be run with superuser privileges, so all commands are preceded with `sudo`. It is also possible to use the option `--dry-run` any `ufw` commands, which indicates the results of the command without actually making any changes.
 
-Disable remote ping for IPv4 and IPv6. **WARNING** This may break your system.
-
-```bash
-sudo nano /etc/ufw/before.rules
-
-# ok icmp codes for INPUT
--A ufw-before-input -p icmp --icmp-type destination-unreachable -j DROP
--A ufw-before-input -p icmp --icmp-type source-quench -j DROP
--A ufw-before-input -p icmp --icmp-type time-exceeded -j DROP
--A ufw-before-input -p icmp --icmp-type parameter-problem -j DROP
--A ufw-before-input -p icmp --icmp-type echo-request -j DROP
-
-sudo nano /etc/ufw/before6.rules
-
-# ok icmp codes for INPUT
--A ufw6-before-input -p icmpv6 --icmpv6-type destination-unreachable -j DROP
--A ufw6-before-input -p icmpv6 --icmpv6-type source-quench -j DROP
--A ufw6-before-input -p icmpv6 --icmpv6-type time-exceeded -j DROP
--A ufw6-before-input -p icmpv6 --icmpv6-type parameter-problem -j DROP
--A ufw6-before-input -p icmpv6 --icmpv6-type echo-request -j DROP
-```
-
 To reset the firewall, use:
 
 ```bash
@@ -292,23 +270,21 @@ The rules can be quite complicated, allowing specific IP addresses to be blocked
 
 Limit login attempts on ssh port using tcp: this denies connection if an IP address has attempted to connect six or more times in the last 30 seconds:
 
-```bash
-sudo ufw limit ssh/tcp
-```
+If you're allowing all incoming requests by default, you can create a blacklist by denying requests from a specific IP address to a specific port, although it's better if you create a whitelist by denying all incoming requests by default and allowing requests from a specific IP address to a specific port.
 
-Deny incoming requests from IP address 192.168.2.1 to port 22 only
+Deny incoming requests from IP address 192.168.2.1 to port 22 only (If you're allowing all incoming requests by default)
 
 ```bash
 sudo ufw deny in proto tcp from 192.168.2.1 to any port 22
 ```
 
-Allow incoming requests from IP address 192.168.2.1 to port 22 only
+Allow incoming requests from IP address 192.168.2.1 to port 22 only (If you're denying all incoming requests by default)
 
 ```bash
 sudo ufw allow in proto tcp from 192.168.2.1 to any port 22
 ```
 
-Limit incoming requests from IP address 192.168.2.1 to port 22 only
+Limit incoming requests from IP address 192.168.2.1 to port 22 only (If you're denying all incoming requests by default, and you require DDoS protection)
 
 ```bash
 sudo ufw limit in proto tcp from 192.168.2.1 to any port 22
