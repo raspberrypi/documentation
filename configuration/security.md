@@ -296,22 +296,22 @@ Limit login attempts on ssh port using tcp: this denies connection if an IP addr
 sudo ufw limit ssh/tcp
 ```
 
-Deny access to port 22 from IP address 192.168.2.1
+Deny incoming requests to port 22 from IP address 192.168.2.1
 
 ```bash
-sudo ufw deny from 192.168.2.1 to any port 22
+sudo ufw deny in proto tcp from 192.168.2.1 port 22 to any port 22
 ```
 
-Allow access to port 22 from IP address 192.168.2.1
+Allow incoming requests to port 22 from IP address 192.168.2.1
 
 ```bash
-sudo ufw allow from 192.168.2.1 to any port 22
+sudo ufw allow in proto tcp from 192.168.2.1 port 22 to any port 22
 ```
 
-Limit access to port 22 from IP address 192.168.2.1
+Limit incoming requests to port 22 from IP address 192.168.2.1
 
 ```bash
-sudo ufw limit from 192.168.2.1 to any port 22
+sudo ufw limit in proto tcp from 192.168.2.1 port 22 to any port 22
 ```
 
 
