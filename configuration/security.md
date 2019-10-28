@@ -219,6 +219,8 @@ To disable the firewall, and disable start up on boot, use:
 sudo ufw disable
 ```
 
+**If you're denying all incoming requests by default which is recommended, you may wish to disable logging.**
+
 To disable logging, use:
 
 ```bash
