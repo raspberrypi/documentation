@@ -107,6 +107,8 @@ To enable root login, use:
 sudo passwd -u root
 ```
 
+**After re-enabling root login, you must reset the password.**
+
 To reset the password for root, use:
 
 ```bash
