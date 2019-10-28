@@ -198,7 +198,7 @@ sudo apt install ufw -y
 
 `ufw` is a fairly straightforward command line tool, although there are some GUIs available for it. This document will describe a few of the basic command line options. Note that `ufw` needs to be run with superuser privileges, so all commands are preceded with `sudo`. It is also possible to use the option `--dry-run` any `ufw` commands, which indicates the results of the command without actually making any changes.
 
-Disable remote ping for IPv4 and IPv6. ** WARNING ** This may break your system.
+Disable remote ping for IPv4 and IPv6. **WARNING** This may break your system.
 
 ```bash
 sudo nano /etc/ufw/before.rules
