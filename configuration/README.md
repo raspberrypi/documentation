@@ -40,8 +40,6 @@ Some basic guides to configuring your Raspberry Pi.
     - Description of LED warning flashes that are shown if a Pi fails to boot or has to shut down
 - [Securing your Raspberry Pi](security.md)
     - Some basic advice for making your Raspberry Pi more secure
-- [Onionizing Repositories](tor.md)
-    - Installing and configuring Tor with Apt for onionizing repositories
 - [Screensaver](screensaver.md)
     - Configuring the screen saver and screen blanking
 - [The boot folder](boot_folder.md)
