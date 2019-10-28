@@ -180,7 +180,7 @@ UsePAM no
 
 Save the file and either restart the ssh system with `sudo service ssh reload` or reboot.
 
-After transfering over your SSH keys from your client, make your ~/.ssh directory and your ~/.ssh/authorized_keys file immutable.
+After transfering over your SSH keys from your client, make sure your ~/.ssh directory and your ~/.ssh/authorized_keys file are made immutable to prevent any further configuration from being made by an attacker. Be careful, if you lose access to your SSH keys, you'll no longer be able to access your server remotely.
 
 ```bash
 sudo chattr +i ~/.ssh
@@ -198,7 +198,8 @@ sudo apt install ufw -y
 
 `ufw` is a fairly straightforward command line tool, although there are some GUIs available for it. This document will describe a few of the basic command line options. Note that `ufw` needs to be run with superuser privileges, so all commands are preceded with `sudo`. It is also possible to use the option `--dry-run` any `ufw` commands, which indicates the results of the command without actually making any changes.
 
-To reset the firewall, use:
+
+To reset the firewall to factory defaults and disable it, use:
 
 ```bash
 sudo ufw reset
