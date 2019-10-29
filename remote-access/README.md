@@ -11,7 +11,7 @@ Sometimes you need to access a Raspberry Pi without connecting it to a monitor. 
 - [VNC](vnc/README.md)
     - Remote access to the Pi's graphical interface, viewed in a window on another computer
 - [xrdp](xrdp/README.md)
-    -Remote access to the Pi's graphical interface, viewed in a window on another computer
+    - Remote access to the Pi's graphical interface, viewed in a window on another computer
 - [SSH](ssh/README.md)
     - Access the command line of the Pi from another computer
 - [SFTP](ssh/sftp.md)
