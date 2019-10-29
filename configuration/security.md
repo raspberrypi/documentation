@@ -219,14 +219,6 @@ To disable the firewall, and disable start up on boot, use:
 sudo ufw disable
 ```
 
-**If you're denying all incoming requests by default which is recommended, you may wish to disable logging as you'll be denying quite a lot of requests.**
-
-To disable logging, use:
-
-```bash
-sudo ufw logging off
-```
-
 To block all incoming requests by default, use:
 
 ```bash
@@ -237,6 +229,14 @@ To allow all outgoing requests by default, use:
 
 ```bash
 sudo ufw default allow outgoing
+```
+
+**If you're denying all incoming requests by default, you may wish to disable logging as you'll be logging a growing number of incoming requests.**
+
+To disable logging, use:
+
+```bash
+sudo ufw logging off
 ```
 
 Allow a particular port to have access (we have used port 22 in our example):
