@@ -219,7 +219,7 @@ To disable the firewall, and disable start up on boot, use:
 sudo ufw disable
 ```
 
-**If you're denying all incoming requests by default which is recommended, you may wish to disable logging.**
+**If you're denying all incoming requests by default which is recommended, you may wish to disable logging as you'll be denying quite a lot of requests.**
 
 To disable logging, use:
 
@@ -260,7 +260,7 @@ sudo ufw deny 22/tcp
 You can specify the service even if you do not know which port it uses. This example allows the ssh service access through the firewall:
 
 ```bash
-sudo ufw allow ssh
+sudo ufw allow ssh/tcp
 ```
 
 The status command lists all current settings for the firewall:
