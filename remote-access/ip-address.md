@@ -79,6 +79,50 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 2.41 seconds
 
 Here you can see a device with hostname `raspberrypi` has IP address `192.168.1.8`.
 
+### Getting IPv6 addresses by pinging from a second device (linux device or raspberry pi)
+
+find your own IP by `hostname -I`
+
+`fd00::ba27:ebff:feb6:f293 2001:db8:494:9d01:ba27:ebff:feb6:f293`
+
+use that IP for ping all local nodes
+`ping -c 3 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293  ff02::1`
+```
+PING ff02::1(ff02::1) from 2001:a61:494:9d01:ba27:ebff:feb6:f293 : 56 data bytes
+64 bytes from 2001:db8:494:9d01:ba27:ebff:feb6:f293: icmp_seq=1 ttl=64 time=0.773 ms
+64 bytes from 2001:db8:494:9d01:dea6:32ff:fe23:6be1: icmp_seq=1 ttl=64 time=1.28 ms (DUP!)
+64 bytes from 2001:db8:494:9d01:da37:beff:fefd:f09d: icmp_seq=1 ttl=255 time=1.28 ms (DUP!)
+64 bytes from 2001:db8:494:9d01:464e:6dff:fe72:8a08: icmp_seq=1 ttl=64 time=2.51 ms (DUP!)
+64 bytes from 2001:db8:494:9d01:ba27:ebff:feb6:f293: icmp_seq=2 ttl=64 time=0.454 ms
+64 bytes from 2001:db8:494:9d01:dea6:32ff:fe23:6be1: icmp_seq=2 ttl=64 time=0.994 ms (DUP!)
+64 bytes from 2001:db8:494:9d01:da37:beff:fefd:f09d: icmp_seq=2 ttl=255 time=0.997 ms (DUP!)
+64 bytes from 2001:db8:494:9d01:464e:6dff:fe72:8a08: icmp_seq=2 ttl=64 time=1.69 ms (DUP!)
+64 bytes from 2001:db8:494:9d01:ba27:ebff:feb6:f293: icmp_seq=3 ttl=64 time=0.564 ms
+
+--- ff02::1 ping statistics ---
+3 packets transmitted, 3 received, +6 duplicates, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 0.454/1.173/2.518/0.599 ms
+```
+exclude your your own IP, check the others
+```
+ssh pi@2001:db8:494:9d01:dea6:32ff:fe23:6be1
+pi@2001:db8:494:9d01:dea6:32ff:fe23:6be1's password: 
+Linux raspberrypi4 4.19.75-v7l+ #1270 SMP Tue Sep 24 18:51:41 BST 2019 armv7l
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sat Oct 26 18:49:56 2019 from fd00::728b:cdff:fe7d:a2e
+
+Wi-Fi is currently blocked by rfkill.
+Use raspi-config to set the country before use.
+
+pi@raspberrypi4
+```
+
 ### Getting the IP address of a Pi using your smartphone
 
 The Fing app is a free network scanner for smartphones. It is available for [Android](https://play.google.com/store/apps/details?id=com.overlook.android.fing) and [iOS](https://itunes.apple.com/gb/app/fing-network-scanner/id430921107?mt=8).
