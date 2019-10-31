@@ -97,7 +97,7 @@ Now use one of IPs from the first step for ping all local nodes:
 
 `-I` with the IP address, it sets the interface and the source address of the echo request,
      it is necessary to choose the interface and the IP address, 
-     eth0 isn't sufficient - the answer would be the local link address(`fe80::/10`), we need the global or local unicast address
+     `eth0` isn't sufficient - the answer would be the local link address(`fe80::/10`), we need the global or local unicast address
      
 `ff02::1` is a well known multicast address for all nodes (on the link), so it behaves like a local broadcast    
 
