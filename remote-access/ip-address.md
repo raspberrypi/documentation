@@ -90,6 +90,7 @@ The example shows two IP addresses. The first one is a so called unique local un
 
 
 Now use one of IPs from the first step for ping all local nodes:
+
 `ping -c 3 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293  ff02::1`
 
 `-c 3` stands for sending three echo requests
