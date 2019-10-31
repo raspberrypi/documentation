@@ -121,14 +121,20 @@ Now, you got the answers from all your nodes on the link (your (W)LAN).
 
 Exclude your own IP( here `2001:db8:494:9d01:ba27:ebff:feb6:f293` ), 
 check the others by trying to connect them via ssh
+
 ```
 ssh pi@2001:db8:494:9d01:dea6:32ff:fe23:6be1
+The authenticity of host '2001:db8:494:9d01:dea6:32ff:fe23:6be1 (2001:db8:494:9d01:dea6:32ff:fe23:6be1)' can't be established.
+ECDSA key fingerprint is SHA256:DAW68oen42TdWDyrOycDZ1+y5ZV5D81kaVoi5FnpvoM.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '2001:db8:494:9d01:dea6:32ff:fe23:6be1' (ECDSA) to the list of known hosts.
 pi@2001:db8:494:9d01:dea6:32ff:fe23:6be1's password: 
 Linux raspberrypi4 4.19.75-v7l+ #1270 SMP Tue Sep 24 18:51:41 BST 2019 armv7l
 
 ...
 
-pi@raspberrypi4
+pi@raspberrypi4:~ $
+
 ```
 
 ### Getting the IP address of a Pi using your smartphone
