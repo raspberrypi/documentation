@@ -10,7 +10,7 @@ Some basic guides to configuring your Raspberry Pi.
     - The Raspberry Pi configuration file
 - [TCP/IP networking](tcpip/README.md)
     - Configuring the TCP/IP network stack on the Raspberry Pi
-- [Connect to a Wifi network](wireless/README.md)
+- [Connect to a wireless network](wireless/README.md)
     - Configuring your Pi to connect to a wireless network using the Raspberry Pi 3's or Pi Zero W's inbuilt wireless connectivity, or a USB wireless dongle
 - [Wireless access point](wireless/access-point.md)
     - Configuring your Pi as a wireless access point using Raspberry Pi 3 or Raspberry Pi Zero W's inbuilt wireless connectivity, or a USB wireless dongle
