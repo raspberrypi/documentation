@@ -81,12 +81,15 @@ Here you can see a device with hostname `raspberrypi` has IP address `192.168.1.
 
 ### Getting IPv6 addresses by pinging from a second device (linux device or raspberry pi)
 
-First find your own IP address, in other words the one of the computer you're using to find your Pi's IP address
+First find your own IP address(es), in other words the one of the computer you're using to find your Pi's IP address
 by `hostname -I`
 
 `fd00::ba27:ebff:feb6:f293 2001:db8:494:9d01:ba27:ebff:feb6:f293`
 
-use that IP for ping all local nodes
+The example displays two IP addresses. The first one is a so called unique local unicast address(`fc00::/7`). The second one is the global unicast address(`2000::/3`). It is also possible to see only one them depending on your network (router) configuration. Both addresses are valid for reaching the Raspberry Pi within your LAN. The address out of 2000::/3 is accessible world wide, provided your routers firewall is openened.
+
+
+Now use one of IPs from the first step for ping all local nodes:
 `ping -c 3 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293  ff02::1`
 
 `-c 3` stands for sending three echo requests
