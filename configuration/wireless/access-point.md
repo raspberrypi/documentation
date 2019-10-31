@@ -91,7 +91,7 @@ To use the 5 GHz band, you can change the operations mode from hw_mode=g to hw_m
  - a = IEEE 802.11a (5 GHz)
  - b = IEEE 802.11b (2.4 GHz)
  - g = IEEE 802.11g (2.4 GHz)
- - ad = IEEE 802.11ad (60 GHz)
+ - ad = IEEE 802.11ad (60 GHz) (Not available on the Raspberry Pi)
 
 ```
 interface=wlan0
@@ -262,7 +262,7 @@ To use the 5 GHz band, you can change the operations mode from 'hw_mode=g' to 'h
  - a = IEEE 802.11a (5 GHz)
  - b = IEEE 802.11b (2.4 GHz)
  - g = IEEE 802.11g (2.4 GHz)
- - ad = IEEE 802.11ad (60 GHz)
+ - ad = IEEE 802.11ad (60 GHz) (Not available on the Raspberry Pi)
 
 ```
 interface=wlan0
