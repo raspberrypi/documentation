@@ -87,6 +87,15 @@ find your own IP by `hostname -I`
 
 use that IP for ping all local nodes
 `ping -c 3 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293  ff02::1`
+
+`-c 3` stands for sending three echo requests
+
+`-I` with the IP address sets the interface and the source address of the echo request,
+     it is necessary to choose the interface and the IP address, 
+     eth0 isn't sufficient - the answer would be the local link address, we need the global unicast address
+     
+`ff02::1` is a well known multi cast address for all nodes (on the link)    
+
 ```
 PING ff02::1(ff02::1) from 2001:a61:494:9d01:ba27:ebff:feb6:f293 : 56 data bytes
 64 bytes from 2001:db8:494:9d01:ba27:ebff:feb6:f293: icmp_seq=1 ttl=64 time=0.773 ms
