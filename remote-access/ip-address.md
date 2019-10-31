@@ -79,7 +79,7 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 2.41 seconds
 
 Here you can see a device with hostname `raspberrypi` has IP address `192.168.1.8`.
 
-### Getting IPv6 addresses by pinging from a second device (linux device or raspberry pi)
+### Getting IPv6 addresses by pinging from a second device (linux device or Pi)
 
 First find your own IP address(es), in other words the one of the computer you're using to find your Pi's IP address
 by `hostname -I`
@@ -98,7 +98,7 @@ Now use one of IPs from the first step for ping all local nodes:
      it is necessary to choose the interface and the IP address, 
      eth0 isn't sufficient - the answer would be the local link address(`fe80::/10`), we need the global or local unicast address
      
-`ff02::1` is a well known multi cast address for all nodes (on the link)    
+`ff02::1` is a well known multicast address for all nodes (on the link), so it behaves like a local broadcast    
 
 ```
 PING ff02::1(ff02::1) from 2001:a61:494:9d01:ba27:ebff:feb6:f293 : 56 data bytes
