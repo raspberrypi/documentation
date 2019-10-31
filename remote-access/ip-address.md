@@ -113,9 +113,10 @@ PING ff02::1(ff02::1) from 2001:a61:494:9d01:ba27:ebff:feb6:f293 : 56 data bytes
 3 packets transmitted, 3 received, +6 duplicates, 0% packet loss, time 2003ms
 rtt min/avg/max/mdev = 0.454/1.173/2.518/0.599 ms
 ```
-Now, you got the answers from all your nodes on the link.
+Now, you got the answers from all your nodes on the link(your (W)LAN).
 
-Exclude your your own IP( here `2001:a61:494:9d01:ba27:ebff:feb6:f293` ), check the others
+Exclude your your own IP( here `2001:a61:494:9d01:ba27:ebff:feb6:f293` ), 
+check the others by trying to connect them via ssh
 ```
 ssh pi@2001:db8:494:9d01:dea6:32ff:fe23:6be1
 pi@2001:db8:494:9d01:dea6:32ff:fe23:6be1's password: 
