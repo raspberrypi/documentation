@@ -81,7 +81,8 @@ Here you can see a device with hostname `raspberrypi` has IP address `192.168.1.
 
 ### Getting IPv6 addresses by pinging from a second device (linux device or raspberry pi)
 
-find your own IP by `hostname -I`
+First find your own IP address, in other words the one of the computer you're using to find your Pi's IP address
+by `hostname -I`
 
 `fd00::ba27:ebff:feb6:f293 2001:db8:494:9d01:ba27:ebff:feb6:f293`
 
