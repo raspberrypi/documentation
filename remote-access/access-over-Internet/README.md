@@ -8,7 +8,7 @@ One method is to set up port forwarding on your router. To do this, you must cha
 
 ## Port releasing (IPv6, e.g. DS-lite)
 
-Another method is to release the IP address (also called "exposed host") or ports of that IP address on your router. To do this, you must change the firewall configuration to allow inbound traffic to a specific port/IP. Sometimes it is called "interface id" or just "host part" of the IPv6 address. To get a stable interface id you should change `slaac private` to `slaac hwaddr` in `/etc/dhcpcd.conf` . Afterwards you can use DNS-services like dynv6.com or myfritz.net. Security considerations are the same as for IPv4 mentioned above. Addtionally you may lose a little bit privacy while using the `hwaddr`.
+Another method is to release the IP address (also called "exposed host") or ports of that IP address on your router. To do this, you must change the firewall configuration to allow inbound traffic to a specific port/IP. Sometimes it is called "interface id" or just "host part" of the IPv6 address. To get a stable interface id you should change `slaac private` to `slaac hwaddr` in `/etc/dhcpcd.conf` . Afterwards you can use DNS-services like dynv6.com or myfritz.net. Security considerations are the same as for IPv4 mentioned above. Additionally you may lose a little bit privacy while using the `hwaddr`.
 
 
 ## Alternatives
