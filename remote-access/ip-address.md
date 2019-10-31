@@ -102,7 +102,7 @@ Now use one of IPs from the first step for ping all local nodes:
 `ff02::1` is a well known multicast address for all nodes (on the link), so it behaves like a local broadcast    
 
 ```
-PING ff02::1(ff02::1) from 2001:a61:494:9d01:ba27:ebff:feb6:f293 : 56 data bytes
+PING ff02::1(ff02::1) from 2001:db8:494:9d01:ba27:ebff:feb6:f293 : 56 data bytes
 64 bytes from 2001:db8:494:9d01:ba27:ebff:feb6:f293: icmp_seq=1 ttl=64 time=0.773 ms
 64 bytes from 2001:db8:494:9d01:dea6:32ff:fe23:6be1: icmp_seq=1 ttl=64 time=1.28 ms (DUP!)
 64 bytes from 2001:db8:494:9d01:da37:beff:fefd:f09d: icmp_seq=1 ttl=255 time=1.28 ms (DUP!)
