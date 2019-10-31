@@ -91,7 +91,7 @@ use that IP for ping all local nodes
 
 `-c 3` stands for sending three echo requests
 
-`-I` with the IP address sets the interface and the source address of the echo request,
+`-I` with the IP address, it sets the interface and the source address of the echo request,
      it is necessary to choose the interface and the IP address, 
      eth0 isn't sufficient - the answer would be the local link address, we need the global unicast address
      
