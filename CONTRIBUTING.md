@@ -23,7 +23,7 @@ Find a short tutorial on making changes using GitHub [here](using-github.md).
 
 The licence must remain in all derivatives of this work.
 
-## Licence
+## [Licence](https://github.com/raspberrypi/documentation/blob/master/LICENCE.md)
 
 [![Creative Commons Licence](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)
 
