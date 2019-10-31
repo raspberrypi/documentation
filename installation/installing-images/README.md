@@ -32,7 +32,7 @@ You will need to use an image writing tool to install the image you have downloa
 - Select the SD card you wish to write your image to.
 - Review your selections and click 'Flash!' to begin writing data to the SD card.
 
-**Note**: for Linux users, _zenity_ might need to be installed on your machine for _balenaEtcher_ to be able to write the image on your SD card.
+**Note**: for Linux users, `zenity` might need to be installed on your machine for `balenaEtcher` to be able to write the image on your SD card.
 
 For more advanced control of this process, see our system-specific guides:
 
