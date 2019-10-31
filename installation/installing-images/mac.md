@@ -14,11 +14,11 @@
 
 - From the Apple menu, choose 'System Report', then click on 'More info...'. 
 - Click on 'USB' (or 'Card Reader' if you are using a built-in SD card reader), then search for your SD card in the upper right section of the window. Click on it, then search for the BSD name in the lower right section. It is in the form `diskN` (for example, `disk4`). Record this name.
-- using Disk Utility unmount the partition. Do not eject it. 
+- using Disk Utility, unmount the partition. Do not eject it. 
 
 ## Copy the image
 
-- From Terminal enter:
+- From Terminal, enter:
   ```
   sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskN conv=sync
   ```
@@ -26,7 +26,7 @@
    Replace `N` with the number that you noted before.
    
    This can take more than 15 minutes, depending on the image file size. 
-   Check the progress by pressing Ctrl+t.
+   Check the progress by pressing Ctrl+T.
     
    After the `dd` command finishes, eject the card:
    ```
