@@ -27,12 +27,7 @@
    
    This can take more than 15 minutes, depending on the image file size. 
    Check the progress by pressing Ctrl+T.
-    
-   After the `dd` command finishes, eject the card:
-   ```
-   sudo diskutil eject /dev/rdiskN from diskutil>
-   ```
-  
+   
     If the command reports `dd: bs: illegal numeric value`, change the block size `bs=1m` to `bs=1M`.
     
     If the command reports `dd: /dev/rdisk2: Operation not permitted` you need to disable SIP before continuing.
