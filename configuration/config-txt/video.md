@@ -138,11 +138,13 @@ The `hdmi_drive` command allows you to choose between HDMI and DVI output modes.
 
 ### config_hdmi_boost
 
-Configures the signal strength of the HDMI interface. The default value is `0` and the maximum is `11`.
+Configures the signal strength of the HDMI interface. The minimum value is `0` and the maximum is `11`.
 
 The default value for the original Model B and A is `2`. The default value for the Model B+ and all later models is `5`.
 
 If you are seeing HDMI issues (speckling, interference) then try `7`. Very long HDMI cables may need up to `11`, but values this high should not be used unless absolutely necessary.
+
+This option is ignored on the Raspberry Pi 4.
 
 ### hdmi_group
 
@@ -618,6 +620,10 @@ Use `display_lcd_rotate` to rotate or flip the LCD orientation. Parameters are t
 `display_rotate` is deprecated in the latest firmware but has been retained for backwards compatibility. Please use `display_lcd_rotate` and `display_hdmi_rotate` instead.
 
 Use `display_rotate` to rotate or flip the screen orientation. Parameters are the same as `display_hdmi_rotate`.
+
+### disable_fw_kms_setup 
+
+By default, the firmware parses the EDID of any HDMI attached display, picks an appropriate video mode, then passes the resolution and frame rate of the mode, along with overscan parameters, to the Linux kernel via settings on the kernel command line. In rare circumstances, this can have the effect of choosing a mode that is not in the EDID, and may be incompatible with the device. You can use `disable_fw_kms_setup=1` to disable the passing of these parameters and avoid this problem. The Linux video mode system (KMS) will then parse the EDID itself and pick an appropriate mode.
 
 ## Other options
 

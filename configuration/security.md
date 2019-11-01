@@ -40,21 +40,27 @@ You will be prompted to create a password for the new user.
 
 The new user will have a home directory at `/home/alice/`.
 
-To add them to the `sudo` group to give them `sudo` permissions:
+To add them to the `sudo` group to give them `sudo` permissions as well as all of the other necessary permissions:
 
 ```bash
-sudo adduser alice sudo
+sudo usermod -a -G adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi alice
 ```
 
 You can check your permissions are in place (i.e. you can use `sudo`) by trying the following:
 
 ```bash
-sudo su
+sudo su - alice
 ```
 
 If it runs successfully, then you can be sure that the new account is in the `sudo` group.
 
-Once you have confirmed that the new account is working, you can delete the `pi` user. Please note, though, that with the current Raspbian distribution, there are some aspects that require the `pi` user to be present. If you are unsure whether you will be affected by this, then leave the `pi` user in place. Work is being done to reduce the dependency on the `pi` user.
+Once you have confirmed that the new account is working, you can delete the `pi` user. In order to do this, you'll need to first close its process with the following:
+
+```bash
+sudo pkill -u pi
+```
+
+Please note that with the current Raspbian distribution, there are some aspects that require the `pi` user to be present. If you are unsure whether you will be affected by this, then leave the `pi` user in place. Work is being done to reduce the dependency on the `pi` user.
 
 To delete the `pi` user, type the following:
 
@@ -81,7 +87,7 @@ sudo nano /etc/sudoers.d/010_pi-nopasswd
 and change the `pi` entry (or whichever usernames have superuser rights) to:
 
 ```bash
-pi ALL=(ALL) PASSWD: ALL
+alice ALL=(ALL) PASSWD: ALL
 ```
 
 Now save the file.
@@ -113,13 +119,13 @@ sudo nano /etc/ssh/sshd_config
 Add, edit, or append to the end of the file the following line, which contains the usernames you wish to allow to log in:
 
 ```
-AllowUsers edward andrew charles anne
+AllowUsers alice bob
 ```
 
 You can also use `DenyUsers` to specifically stop some usernames from logging in:
 
 ```
-DenyUsers harry william
+DenyUsers jane john
 ```
 
 After the change you will need to restart the `sshd` service using `sudo systemctl restart ssh` or reboot so the changes take effect.

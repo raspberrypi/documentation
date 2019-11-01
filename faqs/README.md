@@ -67,6 +67,7 @@
 ### [Power](#pi-power)
 
 - Is it safe to just pull the power?
+- What about unplanned power interruptions?
 - What are the power requirements?
 - Can I power the Raspberry Pi from a USB hub?
 - Can I power the Raspberry Pi from batteries as well as from a wall socket?
@@ -282,7 +283,7 @@ It's important to keep your system up to date with the latest security updates, 
 
 + `sudo apt update` will update the internal software database, so the system knows what the latest updates are
 
-+ `sudo apt dist-upgrade` will then download all the updates and install them
++ `sudo apt full-upgrade` will then download all the updates and install them
 
 We recommend going through this process once a week or so. 
 
@@ -380,6 +381,10 @@ There is a standard 3.5mm jack for audio out to an amplifier (not on Zero models
 ### Is it safe to just pull the power?
 
 No, not really — you may corrupt your SD card if you do that. We recommend issuing the `sudo halt` or `sudo shutdown` command prior to pulling the power. This ensures that any outstanding file transactions are written to the SD card, and that the SD card is no longer 'active'. Pulling the power during a SD card transaction can occasionally corrupt the card.
+
+### What about unplanned power interruptions?
+
+Power interruptions can cause problems on all sorts of electronic devices, and the Pi is no different. SD card corruption can be caused if the power is simply turned off without going through a normal shutdown. This is because the system may be writing to the SD card at the point of power failure, leaving the SD card filesystem in an invalid state. So, if you cannot prevent power interruptions, one way of making the system more robust is to limit the amount of writing that is done to the SD card, or even to stop it altogether. You can disable swap, enable logging to RAM, and disable systemd-timesyncd, all of which greatly reduce the number of accesses to the SD card. You can also make the entire Raspbian installation read-only, preventing any writing to the card at all. An internet search will provide instructions on how to implement these measures. 
 
 ### What are the power requirements?
 

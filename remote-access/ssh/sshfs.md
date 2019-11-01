@@ -9,7 +9,7 @@ SSHFS allows you to mount a Raspberry Pi's files over an SSH session.
 Install SSHFS on your computer with:
 
 ```bash
-sudo apt-get install sshfs
+sudo apt install sshfs
 ```
 
 (This assumes you are using a Debian-based system)

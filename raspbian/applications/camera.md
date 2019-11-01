@@ -28,7 +28,7 @@ If the Camera Module isn't working correctly, there are number of things to try:
 
 - Is the Camera Module connector, between the smaller black Camera Module itself and the PCB, firmly attached? Sometimes this connection can come loose during transit or when putting the Camera Module in a case. Using a fingernail, flip up the connector on the PCB, then reconnect it with gentle pressure. It engages with a very slight click. Don't force it; if it doesn't engage, it's probably slightly misaligned.
 
-- Have `sudo apt-get update` and `sudo apt-get upgrade` been run?
+- Have `sudo apt update` and `sudo apt full-upgrade` been run?
 
 - Has `raspi-config` been run and the Camera Module enabled?
 

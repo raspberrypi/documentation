@@ -8,6 +8,7 @@
 
 - Insert the SD card in the slot or connect the SD card reader with the SD card inside.
 
+
 - `diskutil list`
 
     or

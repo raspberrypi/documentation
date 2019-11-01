@@ -3,7 +3,7 @@ We have created a Python script that is used internally to quickly set up Pi's t
 
 ```
 sudo apt update
-sudo apt upgrade -y
+sudo apt full-upgrade -y
 sudo reboot
 
 wget https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/raspberrypi/bootmodes/pxetools/prepare_pxetools

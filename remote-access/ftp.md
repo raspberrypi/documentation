@@ -7,7 +7,7 @@ FTP (File Transfer Protocol) can be used to transfer files between a Raspberry P
 First, install `Pure-FTPd` using the following command line in Terminal:
 
 ```bash
-sudo apt-get install pure-ftpd
+sudo apt install pure-ftpd
 ```
 
 ## Basic Configurations

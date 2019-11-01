@@ -27,7 +27,7 @@ We recommend setting up your Pi so that it automatically updates the bootloader:
 
 ```
 sudo apt update
-sudo apt upgrade
+sudo apt full-upgrade
 sudo apt install rpi-eeprom
 ```
 
@@ -47,27 +47,11 @@ The `FREEZE_VERSION` option in the EEPROM config file may be used to indicate th
 
 There is no software write protection for the boot EEPROM but there will be a mechanism in Raspbian to skip any future updates to the EEPROM. However, it is possible to physically write-protect both EEPROMs via a simple resistor change on the board. Details will be published in the [schematics](./schematics/README.md).
 
-## EEPROM configuration options
+EEPROM image files contain a small user-modifiable config file, which may be modified using the `rpi-eeprom-config` script included in the `rpi-eeprom` package. See the [Bootloader Configuration Page](./bcm2711_bootloader_config.md) for configuration details.
 
-EPROM image files contain a small user-modifiable config file, which may be modified using the `rpi-eeprom-config` script included in the `rpi-eeprom` package.
 
-### Update the EEPROM config
-```
-# Copy the EEPROM of interest from /lib/firmware/raspberrypi/bootloader/critical/
+## Checking if an update is available
 
-# To extract the configuration file from an EEPROM image.
-rpi-eeprom-config pieeprom.bin --out bootconf.txt
-
-# To update the configuration file in an EEPROM image.
-rpi-eeprom-config pieeprom.bin --config bootconf.txt --out pieeprom-new.bin
-
-# To flash the new image
-# -d means that the configuration in the file should be used, otherwise, rpi-eeprom-update 
-# will automatically migrate the current bootloader's configuration to the new image.
-sudo rpi-eeprom-update -d -f ./pieeprom-new.bin
-```
-
-### Checking if an update is available
 Running the rpi-eeprom-update command with no parameters indicates whether an update is required. An update is required if the timestamp of the most recent file in the firmware directory (normally `/lib/firmware/raspberrypi/bootloader/critical`) is newer than that reported
 by the current bootloader.
 The images under `/lib/firmware/raspberrypi/bootloader` are part of the `rpi-eeprom` package and are only updated via `apt update`.
@@ -95,34 +79,11 @@ Change FIRMWARE_RELEASE_STATUS="critical"
 to FIRMWARE_RELEASE_STATUS="beta"
 ```
 
-### Configuration options
+## EEPROM Bootloader configuration options
 
-#### BOOT_UART
+See the [Bootloader Configuration Page](./bcm2711_bootloader_config.md) for configuration details.
 
-If 1 then enable UART debug output on GPIO 14 and 15. Configure the debug terminal at 115200bps, 8 bits, no parity bits, 1 stop bit. 
-Default: 0  
-Version: All  
-
-#### WAKE_ON_GPIO 
-
-If 1 then 'sudo halt' will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.  
-
-Default: 0 in original version of bootloader (2019-05-10). Newer bootloaders have this set to 1.  
-Version: All  
-
-#### POWER_OFF_ON_HALT  
-
-If 1 and WAKE_ON_GPIO=0 then switch off all PMIC outputs in halt. This is lowest possible power state for halt but may cause problems with some HATs because 5V will still be on. GLOBAL_EN must be shorted to ground to boot.  
-
-Default: 0  
-Version: 2019-07-15  
-
-#### FREEZE_VERSION
-
-If 1 then the `rpi-eeprom-update` will skip automatic updates on this board. The parameter is not processed by the EEPROM bootloader or recovery.bin since there is no way in software of fully write protecting the EEPROM. Custom EEPROM update scripts must also check for this flag.
-
-Default: 0  
-Version: All  
-
-# Release Notes
+## Release Notes
 * [Release notes](https://github.com/raspberrypi/rpi-eeprom/blob/master/firmware/release-notes.md) for bootloader EEPROMs.
+
+

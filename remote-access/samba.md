@@ -9,8 +9,8 @@ This page will explain how to use a subset of the Samba system to 'mount' a shar
 By default, Raspbian does not include CIFS/Samba support, but this can easily be added. The following commmands will install all the required components for using Samba as a server or a client.
 
 ```bash
-sudo apt-get update
-sudo apt-get install samba samba-common-bin smbclient cifs-utils
+sudo apt update
+sudo apt install samba samba-common-bin smbclient cifs-utils
 ```
 
 ### Using a shared Windows folder

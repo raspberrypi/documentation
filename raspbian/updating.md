@@ -17,14 +17,16 @@ To update software in Raspbian, you can use the [apt](../linux/software/apt.md) 
 First, **update** your system's package list by entering the following command:
 
 ```bash
-sudo apt-get update
+sudo apt update
 ```
 
 Next, **upgrade** all your installed packages to their latest versions with the following command:
 
 ```bash
-sudo apt-get dist-upgrade
+sudo apt full-upgrade
 ```
+
+Note that `full-upgrade` is used in preference to a simple `upgrade`, as it also picks up any dependency changes that may have been made. 
 
 Generally speaking, doing this regularly will keep your installation up to date for the particular major Raspbian release you are using (e.g. Stretch). It will not update from one major release to another, for example, Stretch to Buster.
 
@@ -36,7 +38,7 @@ The kernel and firmware are installed as a Debian package, and so will also get 
 
 ### Running out of space
 
-When running `sudo apt-get dist-upgrade`, it will show how much data will be downloaded and how much space it will take up on the SD card. It's worth checking with `df -h` that you have enough free disk space, as unfortunately `apt` will not do this for you. Also be aware that downloaded package files (`.deb` files) are kept in `/var/cache/apt/archives`. You can remove these in order to free up space with `sudo apt-get clean`.
+When running `sudo apt full-upgrade`, it will show how much data will be downloaded and how much space it will take up on the SD card. It's worth checking with `df -h` that you have enough free disk space, as unfortunately `apt` will not do this for you. Also be aware that downloaded package files (`.deb` files) are kept in `/var/cache/apt/archives`. You can remove these in order to free up space with `sudo apt clean`.
 
 ### Upgrading from Jessie to Stretch
 
@@ -47,15 +49,15 @@ To upgrade, first modify the files `/etc/apt/sources.list` and `/etc/apt/sources
 Then open a terminal window and execute:
 
 ```bash
-sudo apt-get update
-sudo apt-get -y dist-upgrade
+sudo apt update
+sudo apt -y dist-upgrade
 ```
 Answer 'yes' to any prompts. There may also be a point at which the install pauses while a page of information is shown on the screen – hold the <kbd>space</kbd> key to scroll through all of this and then press <kbd>q</kbd> to continue.
 
 Finally, if you are not using PulseAudio for anything other than Bluetooth audio, remove it from the image by entering:
 
 ```
-sudo apt-get -y purge "pulseaudio*"
+sudo apt -y purge "pulseaudio*"
 ```
 
 If moving to a new Pi model (for example the Pi 3B+), you may also need to update the kernel and the firmware using the instructions above.

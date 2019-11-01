@@ -24,8 +24,8 @@ holes to hold them in place.
  * If you don’t know how to do this, follow our guide [here](https://projects.raspberrypi.org/en/pathways/getting-started-with-raspberry-pi)
 * Start up your Pi, open a terminal window, and run the following two commands to install the `tvheadend` software:
 ```
-sudo apt-get update
-sudo apt-get install tvheadend
+sudo apt update
+sudo apt install tvheadend
 ```
   * If you don’t know how to do this, follow our guide [here](https://projects.raspberrypi.org/en/projects/raspberry-pi-using/9)
 * During the `tvheadend` installation, you will be asked to choose an administrator account name and password. You’ll need these later, so make sure to pick something you can remember.
