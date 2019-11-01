@@ -91,33 +91,33 @@ The example shows two IP addresses. The first one is a so called unique local un
 
 Now use one of IPs from the first step for ping all local nodes:
 
-`ping -c 3 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293  ff02::1`
+`ping -c 2 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293  ff02::1`
 
-`-c 3` stands for sending three echo requests
+`-c 2` stands for sending two echo requests
 
 `-I` with the IP address, it sets the interface and the source address of the echo request,
      it is necessary to choose the interface's IP address, 
      `eth0` isn't sufficient - the answer would be the local link address(`fe80::/10`), we need the global or local unicast address
      
-`ff02::1` is a well known multicast address for all nodes (on the link), so it behaves like a local broadcast    
+`ff02::1` is a well known multicast address for all nodes on the link, so it behaves like a local broadcast, usually it is defined in `/etc/hosts` so you can also use the name (`ip6-allnodes` or `ipv6-allnodes`) instead of the literal address    
 
 ```
-PING ff02::1(ff02::1) from 2001:db8:494:9d01:ba27:ebff:feb6:f293 : 56 data bytes
-64 bytes from 2001:db8:494:9d01:ba27:ebff:feb6:f293: icmp_seq=1 ttl=64 time=0.773 ms
-64 bytes from 2001:db8:494:9d01:dea6:32ff:fe23:6be1: icmp_seq=1 ttl=64 time=1.28 ms (DUP!)
-64 bytes from 2001:db8:494:9d01:da37:beff:fefd:f09d: icmp_seq=1 ttl=255 time=1.28 ms (DUP!)
-64 bytes from 2001:db8:494:9d01:464e:6dff:fe72:8a08: icmp_seq=1 ttl=64 time=2.51 ms (DUP!)
-64 bytes from 2001:db8:494:9d01:ba27:ebff:feb6:f293: icmp_seq=2 ttl=64 time=0.454 ms
-64 bytes from 2001:db8:494:9d01:dea6:32ff:fe23:6be1: icmp_seq=2 ttl=64 time=0.994 ms (DUP!)
-64 bytes from 2001:db8:494:9d01:da37:beff:fefd:f09d: icmp_seq=2 ttl=255 time=0.997 ms (DUP!)
-64 bytes from 2001:db8:494:9d01:464e:6dff:fe72:8a08: icmp_seq=2 ttl=64 time=1.69 ms (DUP!)
-64 bytes from 2001:db8:494:9d01:ba27:ebff:feb6:f293: icmp_seq=3 ttl=64 time=0.564 ms
+ping -c 2 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293 ip6-allnodes
+PING ip6-allnodes(ip6-allnodes (ff02::1)) from 2001:db8:494:9d01:ba27:ebff:feb6:f293 : 56 data bytes
+64 bytes from 2001:db8:494:9d01:ba27:ebff:feb6:f293: icmp_seq=1 ttl=64 time=0.597 ms
+64 bytes from witz.fritz.box (2001:db8:494:9d01:728b:cdff:fe7d:a2e): icmp_seq=1 ttl=255 time=1.05 ms (DUP!)
+64 bytes from raspberrypi4.fritz.box (2001:db8:494:9d01:dea6:32ff:fe23:6be1): icmp_seq=1 ttl=64 time=1.05 ms (DUP!)
+64 bytes from 2001:db8:494:9d01:da37:beff:fefd:f09d (2001:db8:494:9d01:da37:beff:fefd:f09d): icmp_seq=1 ttl=255 time=1.05 ms (DUP!)
+64 bytes from fusion.fritz.box (2001:db8:494:9d01:1e6f:65ff:fec9:8746): icmp_seq=1 ttl=255 time=2.12 ms (DUP!)
+64 bytes from fritz.box (2001:db8:494:9d01:464e:6dff:fe72:8a08): icmp_seq=1 ttl=64 time=2.62 ms (DUP!)
+64 bytes from raspberrypi.fritz.box (2001:db8:494:9d01:ba27:ebff:feb6:f293): icmp_seq=2 ttl=64 time=0.480 ms
 
---- ff02::1 ping statistics ---
-3 packets transmitted, 3 received, +6 duplicates, 0% packet loss, time 2003ms
-rtt min/avg/max/mdev = 0.454/1.173/2.518/0.599 ms
+--- ip6-allnodes ping statistics ---
+2 packets transmitted, 2 received, +5 duplicates, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 0.480/1.283/2.623/0.735 ms
+
 ```
-Now, you got the answers from all your nodes on the link (your (W)LAN).
+Now, you got the answers from all your nodes on the link (your (W)LAN), with a little bit luck - also with dns names
 
 Exclude your own IP( here `2001:db8:494:9d01:ba27:ebff:feb6:f293` ), 
 check the others by trying to connect them via ssh
