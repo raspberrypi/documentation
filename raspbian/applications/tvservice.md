@@ -34,7 +34,7 @@ Use 59.94Hz (NTSC frequency) rather than 60Hz for HDMI mode.
 
 Power on the SDTV (composite output) with the specified mode, `PAL` or `NSTC`, and the specified aspect, `4:3`, `14:9`, `16:9`. The optional P parameter can be used to specify progressive mode. 
 
-#### --modes=Group
+#### -m, --modes=Group
 
 where Group is `CVT` or `DMT`.
 
