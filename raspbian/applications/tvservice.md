@@ -23,8 +23,8 @@ A better option is to use the [vcgencmd display_power](vcgencmd.md) option, as t
 Power on the HDMI with the specified settings
 
 Group can be one of `CEA`, `DMT`, `CEA_3D_SBS`, `CEA_3D_TB`, `CEA_3D_FP`, `CEA_3D_FS`.  
-Mode is one of the modes returned from the -m, --mode option.  
-Drive can be one of `HMI`, `DVI`.  
+Mode is one of the modes returned from the `-m, --modes` option.  
+Drive can be one of `HDMI`, `DVI`.  
 
 #### -t, --ntsc
 
@@ -32,7 +32,7 @@ Use 59.94Hz (NTSC frequency) rather than 60Hz for HDMI mode.
 
 #### -c, --sdtvon="Mode Aspect [P]"
 
-Power on the SDT with the specified mode, `PAL` or `NSTC`, and the specified aspect, `4:3`, `14:9`, `16:9`. The optional P parameter can be used to specify progressive mode. 
+Power on the SDTV (composite output) with the specified mode, `PAL` or `NSTC`, and the specified aspect, `4:3`, `14:9`, `16:9`. The optional P parameter can be used to specify progressive mode. 
 
 #### --modes=Group
 
