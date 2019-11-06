@@ -10,6 +10,14 @@ Typing `tvservice` by itself will display a list of available command line optio
 
 Power on the HDMI output with preferred settings.
 
+#### -o, --off
+
+Powers off the display output. 
+
+**Important Note:** Powering off the output using this command will also destroy any framebuffers/dispmanx layers associated with the display. These are NOT re-established with a subsequent power on, so will result in a blank screen. 
+
+A better option is to use the [vcgencmd display_power](vcgencmd.md) option, as this will retain any framebuffers, so when the power is turned back on the display will be the returned to the previous power on state.
+
 #### -e, --explicit="Group Mode Drive"
 
 Power on the HDMI with the specified settings
@@ -25,10 +33,6 @@ Use 59.94Hz (NTSC frequency) rather than 60Hz for HDMI mode.
 #### -c, --sdtvon="Mode Aspect [P]"
 
 Power on the SDT with the specified mode, `PAL` or `NSTC`, and the specified aspect, `4:3`, `14:9`, `16:9`. The optional P parameter can be used to specify progressive mode. 
-
-#### -o, --off
-
-Powers off the display output. 
 
 #### --modes=Group
 
