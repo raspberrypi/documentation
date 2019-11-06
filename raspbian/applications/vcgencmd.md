@@ -1,6 +1,6 @@
-## VCGENCMD
+## vcgencmd
 
-`vcgencmd` is a command line utility that can get various pieces of information from the Videocore4 GPU on the Raspberry Pi. Much of the information available is only of use to internal Raspberry Pi developers, but there are number of very useful options available to end users that will be described here.
+`vcgencmd` is a command line utility that can get various pieces of information from the Videocore4 GPU on the Raspberry Pi. Much of the information available is only of use to internal Raspberry Pi engineers, but there are a number of very useful options available to end users that will be described here.
 
 The source for the application can be found on our github page [here](https://github.com/raspberrypi/userland/tree/master/host_applications/linux/apps/gencmd).
 
@@ -26,7 +26,7 @@ Displays the build date and version of the firmware on the VideoCore.
 
 #### get_camera
 
-Displays the enabled  and detected state of the official camera. 1 means yes, 0 means no. Whilst all firmware will support the camera, this support needs to be enabled by using [raspi-config](../../configuration/raspi-config.md).
+Displays the enabled and detected state of the official camera. 1 means yes, 0 means no. Whilst all firmware (except cutdown versions) will support the camera, this support needs to be enabled by using [raspi-config](../../configuration/raspi-config.md).
 
 #### get_throttled
 
@@ -121,7 +121,7 @@ Dump a list of all dispmanx items currently being displayed.
 
 #### display_power
 
-Show or set the power the display. `vcgencmd display_power 0` will turn off power to the current display. `vcgencmd display_power 1` will turn on power to the display. If no parameter is set, this will display the current power state. The final parameter is an optional display ID, as returned by `tvservice -l`, which allows a specific display to be turned on or off.
+Show current display power state, or set the display power state. `vcgencmd display_power 0` will turn off power to the current display. `vcgencmd display_power 1` will turn on power to the display. If no parameter is set, this will display the current power state. The final parameter is an optional display ID, as returned by `tvservice -l`, which allows a specific display to be turned on or off.
 
 `vcgencmd display_power 0 7` will turn off power to display ID 7, which is HDMI 1 on a Raspberry Pi 4.
 
