@@ -1,4 +1,4 @@
-## VCDBG
+## vcdbg
 
 `vcdbg` is an application to help with debugging the VideoCore GPU from Linux running on the the ARM. It needs to be run as root. This application is mostly of use to Raspberry Pi engineers although there are some commands that general users may find useful.
 
@@ -39,7 +39,7 @@ List the current status of the pool allocator
 
 #### reloc
 
-Without any further parameters, lists the current status of the relocatable allocator. use `sudo vcdbg reloc small` to list small allocations as well.
+Without any further parameters, lists the current status of the relocatable allocator. Use `sudo vcdbg reloc small` to list small allocations as well.
 
 Use the subcommand `sudo vcdbg reloc stats` to list statistics for the relocatable allocator. 
 
