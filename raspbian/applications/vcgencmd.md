@@ -121,6 +121,11 @@ Dump a list of all dispmanx items currently being displayed.
 
 #### display_power
 
-Show or set the power the display. `vcgencmd display_power 0` will turn off power to the display. `vcgencmd display_power 1` will turn on power to the display. If no parameter is set, this will display the current power state.
+Show or set the power the display. `vcgencmd display_power 0` will turn off power to the current display. `vcgencmd display_power 1` will turn on power to the display. If no parameter is set, this will display the current power state. The final parameter is an optional display ID, as returned by `tvservice -l`, which allows a specific display to be turned on or off.
+
+`vcgencmd display_power 0 7` will turn off power to display ID 7, which is HDMI 1 on a Raspberry Pi 4.
+
+
+
 
 
