@@ -1,4 +1,4 @@
-## TVSERVICE
+## tvservice
 
 `tvservice` is a command line application used to get and set information about the display, targeted mainly at HDMI video and audio.
 
