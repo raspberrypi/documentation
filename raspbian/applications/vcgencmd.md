@@ -97,7 +97,7 @@ Reports whether the specified CODEC type is enabled. Possible options for type a
 
 #### get_config type | name
 
-This returns all the configuration items of the specified type that have been set in config.txt or by default, or a single configuration item. Possible values for type parameter are **int, str**, or simply use the name of the configuration item.
+This returns all the configuration items of the specified type that have been set in config.txt, or a single configuration item. Possible values for type parameter are **int, str**, or simply use the name of the configuration item.
 
 #### get_lcd_info
 
