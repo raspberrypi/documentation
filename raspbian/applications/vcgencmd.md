@@ -1,6 +1,6 @@
 ## vcgencmd
 
-`vcgencmd` is a command line utility that can get various pieces of information from the Videocore4 GPU on the Raspberry Pi. Much of the information available is only of use to internal Raspberry Pi engineers, but there are a number of very useful options available to end users that will be described here.
+`vcgencmd` is a command line utility that can get various pieces of information from the VideoCore GPU on the Raspberry Pi. Much of the information available is only of use to Raspberry Pi engineers, but there are a number of very useful options available to end users that will be described here.
 
 The source for the application can be found on our github page [here](https://github.com/raspberrypi/userland/tree/master/host_applications/linux/apps/gencmd).
 
@@ -43,9 +43,11 @@ Returns the throttled state of the system. This is a bit pattern.
 | 18  | Throttling has occurred |
 | 19  | Soft temperature limit has occurred |
 
+For example, 0x50000 has bits 16 and 18 set, indicating that the Pi has previously been throttled due to under-voltage, but is not currently throttled for any reason.
+
 #### measure_temp
 
-Returns the temperature of the SoC as measured by the on board temperature sensor
+Returns the temperature of the SoC as measured by the on-board temperature sensor
 
 #### measure_clock [clock]
 
@@ -56,7 +58,7 @@ This returns the current frequency of the specified clock. The options are:
 | arm   | ARM cores |
 | core  | VC4 scaler cores |
 | H264  | H264 block |
-| isp   | Image system Pipeline |
+| isp   | Image System Pipeline |
 | v3d   | 3D block |
 | uart  | UART |
 | pwm   | PWM block (analogue audio output) | 
@@ -87,15 +89,15 @@ Displays the content of the One Time Programmable (OTP) memory, which is part of
 
 Reports on the amount of memory allocated to the ARM cores `vcgencmd get_mem arm` and the VC4 `vcgencmd get_mem gpu`.
 
-**Note:** On a Raspberry Pi 4 with greater than 1GB of RAM, the `arm` option is inaccurate. This is because the GPU firmware which implements this command is only aware of the first GB of RAM on the system, so the `arm` setting will always return 1GB minus the `gpu` memory value. To get an accurate report of the amount of ARM memory, use one of the standard Linux commands, such as `free` or `cat /proc/meminfo`
+**Note:** On a Raspberry Pi 4 with greater than 1GB of RAM, the `arm` option is inaccurate. This is because the GPU firmware which implements this command is only aware of the first gigabyte of RAM on the system, so the `arm` setting will always return 1GB minus the `gpu` memory value. To get an accurate report of the amount of ARM memory, use one of the standard Linux commands, such as `free` or `cat /proc/meminfo`
 
 #### codec_enabled [type]
 
-Reports whether the specified CODEC type is enabled. Possible options for type are AGIF, FLAC, H263, H264, MJPA, MJPB, MJPG, **MPG2**, MPG4, MVC0, PCM, THRA, VORB, VP6, VP8, **WMV9**, **WVC1**. Those highlighted currently require a paid for licence. 
+Reports whether the specified CODEC type is enabled. Possible options for type are AGIF, FLAC, H263, H264, MJPA, MJPB, MJPG, **MPG2**, MPG4, MVC0, PCM, THRA, VORB, VP6, VP8, **WMV9**, **WVC1**. Those highlighted currently require a paid for licence, except on the Pi4, where these hardware codecs are disabled in preference to software decoding, which requires no licence.
 
-#### get_config [type]
+#### get_config type | name
 
-This returns all the configuration items of the specified type that have been set in config.txt or by default. Possible values for type are **int, str**
+This returns all the configuration items of the specified type that have been set in config.txt or by default, or a single configuration item. Possible values for type parameter are **int, str**, or simply use the name of the configuration item.
 
 #### get_lcd_info
 
