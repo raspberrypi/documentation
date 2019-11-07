@@ -32,25 +32,25 @@ Use 59.94Hz (NTSC frequency) rather than 60Hz for HDMI mode.
 
 #### -c, --sdtvon="Mode Aspect [P]"
 
-Power on the SDTV (composite output) with the specified mode, `PAL` or `NSTC`, and the specified aspect, `4:3`, `14:9`, `16:9`. The optional P parameter can be used to specify progressive mode. 
+Power on the SDTV (composite output) with the specified mode, `PAL` or `NSTC`, and the specified aspect, `4:3`, `14:9`, `16:9`. The optional `P` parameter can be used to specify progressive mode. 
 
 #### -m, --modes=Group
 
 where Group is `CVT` or `DMT`.
 
-Displays a list of display modes available in the specified group.
+Shows a list of display modes available in the specified group.
 
 #### -M, --monitor
 
-Montitors for any HDMI events, for example unplugging or attaching.
+Monitors for any HDMI events, for example unplugging or attaching.
 
 #### -s, --status
 
-Dispays the current settings for the display mode, including mode, resolution, and frequency.
+Shows the current settings for the display mode, including mode, resolution, and frequency.
 
 #### -a, --audio
 
-Dispays the current settings for the audio mode, including channels, sample rate and sample size.
+Shows the current settings for the audio mode, including channels, sample rate and sample size.
 
 #### -d, --dumpid=filename
 
@@ -62,6 +62,6 @@ When used in combination with the `--modes` options, displays the mode informati
 
 #### -n, --name
 
-Extracts the display name from the EDID data and displays it.
+Extracts the display name from the EDID data and shows it.
 
 
