@@ -58,7 +58,7 @@ This returns the current frequency of the specified clock. The options are:
 | arm   | ARM cores |
 | core  | VC4 scaler cores |
 | H264  | H264 block |
-| isp   | Image System Pipeline |
+| isp   | Image Signal Processor |
 | v3d   | 3D block |
 | uart  | UART |
 | pwm   | PWM block (analogue audio output) | 
