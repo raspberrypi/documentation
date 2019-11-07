@@ -1,6 +1,6 @@
 ## vcdbg
 
-`vcdbg` is an application to help with debugging the VideoCore GPU from Linux running on the the ARM. It needs to be run as root. This application is mostly of use to Raspberry Pi engineers although there are some commands that general users may find useful.
+`vcdbg` is an application to help with debugging the VideoCore GPU from Linux running on the the ARM. It needs to be run as root. This application is mostly of use to Raspberry Pi engineers, although there are some commands that general users may find useful.
 
 `sudo vcdbg help` will give a list of available commands.
 
@@ -10,7 +10,7 @@ Only options of use to end users have been described here.
 
 #### version
 
-Dumps various items of version information from the VideoCore.
+Shows various items of version information from the VideoCore.
 
 #### log
 
