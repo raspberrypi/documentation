@@ -117,7 +117,7 @@ Returns the curent speed voltage and temperature of the ring oscillator.
 
 #### hdmi_timings
 
-Displays the current HDMI settings timings. See [Video Config](https://www.raspberrypi.org/documentation/configuration/config-txt/video.md) for details of the values returned. 
+Displays the current HDMI settings timings. See [Video Config](../../configuration/config-txt/video.md) for details of the values returned. 
 
 #### dispmanx_list
 
