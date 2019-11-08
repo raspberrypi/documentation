@@ -1,20 +1,16 @@
 # Python
 
-Python is a wonderful and powerful programming language that's easy to use (easy to read **and** write) and with Raspberry Pi lets you connect your project to the real world.
+Python is a wonderful and powerful programming language that's easy to use (easy to read **and** write) and, with Raspberry Pi, lets you connect your project to the real world.
 
 ![Python logo](images/python-logo.png)
 
-Python syntax is very clean, with an emphasis on readability and uses standard English keywords. Start by opening IDLE from the desktop.
+Python syntax is very clean, with an emphasis on readability, and uses standard English keywords. 
 
-## IDLE
+## Thonny
 
-The easiest introduction to Python is through IDLE, a Python development environment. Open IDLE from the Desktop or applications menu:
+The easiest introduction to Python is through Thonny, a Python3 development environment. Open Thonny from the Desktop or applications menu:
 
-![Python in the applications menu](images/app-menu-python3.png)
-
-IDLE gives you a REPL (Read-Evaluate-Print-Loop), which is a prompt you can enter Python commands into. Because it's a REPL, you even get the output of commands printed to the screen without using `print`.
-
-**Note**: two versions of Python are available — Python 2 and Python 3. Python 3 has was first released in 2008 and Python 2 development ended with 2.7, which was released in 2010. Python 3 is recommended, but Python 2 is available for legacy applications which do not support Python 3 yet.
+Thonny gives you a REPL (Read-Evaluate-Print-Loop), which is a prompt you can enter Python commands into. Because it's a REPL, you even get the output of commands printed to the screen without using `print`. In the Thonny application, this is called the Shell window.
 
 You can use variables if you need to but you can even use it like a calculator. For example:
 
@@ -26,7 +22,7 @@ You can use variables if you need to but you can even use it like a calculator. 
 'Hello Sarah'
 ```
 
-IDLE also has syntax highlighting built in and some support for autocompletion. You can look back on the history of the commands you've entered in the REPL with `Alt + P` (previous) and `Alt + N` (next).
+Thonny also has syntax highlighting built in and some support for autocompletion. You can look back on the history of the commands you've entered in the REPL with `Alt + P` (previous) and `Alt + N` (next).
 
 ## Basic Python usage
 
@@ -215,9 +211,9 @@ else:
     print(name)
 ```
 
-## Python files in IDLE
+## Python files in Thonny
 
-To create a Python file in IDLE, click `File > New File` and you'll be given a blank window. This is an empty file, not a Python prompt. You write a Python file in this window, save it, then run it and you'll see the output in the other window.
+To create a Python file in Thonny, click `File > New` and you'll be given a <untitled> window. This is an empty file, not a Python prompt. You write a Python file in this window, save it, then run it and you'll see the output in the other window.
 
 For example, in the new window, type:
 
@@ -245,7 +241,7 @@ You can write a Python file in a standard [editor](../../linux/usage/text-editor
 
 The standard built-in Python shell is accessed by typing `python3` in the terminal.
 
-This shell is a prompt ready for Python commands to be entered. You can use this in the same way as IDLE, but it does not have syntax highlighting or autocompletion. You can look back on the history of the commands you've entered in the REPL by using the <kbd>Up/Down</kbd> keys. Use `Ctrl + D` to exit.
+This shell is a prompt ready for Python commands to be entered. You can use this in the same way as Thonny, but it does not have syntax highlighting or autocompletion. You can look back on the history of the commands you've entered in the REPL by using the <kbd>Up/Down</kbd> keys. Use `Ctrl + D` to exit.
 
 ### IPython
 
@@ -311,7 +307,7 @@ sudo apt update
 sudo apt install python-picamera
 ```
 
-This is a preferable method of installing, as it means that the modules you install can be kept up to date easily with the usual `sudo apt update` and `sudo apt upgrade` commands.
+This is a preferable method of installing, as it means that the modules you install can be kept up to date easily with the usual `sudo apt update` and `sudo apt full-upgrade` commands.
 
 ### pip
 
@@ -335,7 +331,7 @@ Read more on installing software in Python [here](../../linux/software/python.md
 
 The official Python Package Index (PyPI) hosts files uploaded by package maintainers. Some packages require compilation (compiling C/C++ or similar code) in order to install them, which can be a time-consuming task, particlarly on the single-core Raspberry Pi 1 or Pi Zero.
 
-piwheels is a service providing pre-compiled packages (called *Python wheels*) ready for use on the Raspberry Pi. Raspbian Stretch is pre-configired to use piwheels for pip. Read more about the piwheels project at [www.piwheels.org](https://www.piwheels.org/).
+piwheels is a service providing pre-compiled packages (called *Python wheels*) ready for use on the Raspberry Pi. Raspbian is pre-configured to use piwheels for pip. Read more about the piwheels project at [www.piwheels.org](https://www.piwheels.org/).
 
 ## More
 

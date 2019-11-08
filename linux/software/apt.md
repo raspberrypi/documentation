@@ -12,22 +12,22 @@ Also note that a lock is performed while software is installing, so you can't in
 
 ## Software sources
 
-APT keeps a list of software sources on your Pi in a file at `/etc/apt/sources.list`. Before installing software, you should update your package list with `apt-get update`:
+APT keeps a list of software sources on your Pi in a file at `/etc/apt/sources.list`. Before installing software, you should update your package list with `apt update`:
 
 ```bash
-sudo apt-get update
+sudo apt update
 ```
 
 ## Installing a package with APT
 
 ```bash
-sudo apt-get install tree
+sudo apt install tree
 ```
 
 Typing this command should inform the user how much disk space the package will take up and asks for confirmation of the package installation. Entering `Y` (or just pressing `Enter`, as yes is the default action) will allow the installation to occur. This can be bypassed by adding the `-y` flag to the command:
 
 ```bash
-sudo apt-get install tree -y
+sudo apt install tree -y
 ```
 
 Installing this package makes `tree` available for the user.
@@ -61,25 +61,25 @@ tree: /usr/bin/tree
 
 ### Remove
 
-You can uninstall a package with `apt-get remove`:
+You can uninstall a package with `apt remove`:
 
 ```bash
-sudo apt-get remove tree
+sudo apt remove tree
 ```
 
 The user is prompted to confirm the removal. Again, the `-y` flag will auto-confirm.
 
 ### Purge
 
-You can also choose to completely remove the package and its associated configuration files with `apt-get purge`:
+You can also choose to completely remove the package and its associated configuration files with `apt purge`:
 
 ```bash
-sudo apt-get purge tree
+sudo apt purge tree
 ```
 
 ## Upgrading existing software
 
-If software updates are available, you can get the updates with `sudo apt-get update` and install the updates with `sudo apt-get upgrade`, which will upgrade all of your packages. To upgrade a specific package, without upgrading all the other out-of-date packages at the same time, you can use `sudo apt-get install somepackage` (which may be useful if you're low on disk space or you have limited download bandwidth).
+If software updates are available, you can get the updates with `sudo apt update` and install the updates with `sudo apt full-upgrade`, which will upgrade all of your packages. To upgrade a specific package, without upgrading all the other out-of-date packages at the same time, you can use `sudo apt install somepackage` (which may be useful if you're low on disk space or you have limited download bandwidth).
 
 ## Searching for software
 

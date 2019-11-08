@@ -13,3 +13,20 @@ This returns the size of the peripheral's space, which is 0x01000000 for all mod
 `unsigned bcm_host_get_sdram_address()`
 
 This returns the bus address of the SDRAM. This is 0x40000000 on the Pi Zero, Pi Zero W, and the first generation of the Raspberry Pi and Compute Module (GPU L2 cached), and 0xC0000000 on the Pi 2, Pi 3 and Compute Module 3 (uncached).
+
+## Building a C program using these functions
+
+The `include` file and library are installed by default on a Raspbian system.
+
+Add the following line to your C program:
+```
+#include <bcm_host.h>
+```
+Link with:
+```
+-lbcm_host
+```
+So a simple command line compile might be:
+```
+cc myfile.c -I/opt/vc/include -L/opt/vc/lib -lbcm_host -o myfile
+```

@@ -15,9 +15,13 @@ These provide a shortcut to some alternative `start_file` and `fixup_file` setti
    `start_file=start_x.elf`
    `fixup_file=fixup_x.dat`
    
+ On the Pi 4, if the files `start4x.elf` and `fixup4x.dat` are present, these files will be used instead.
+   
 `start_debug=1` implies
    `start_file=start_db.elf`
    `fixup_file=fixup_db.dat`
+
+There is no specific handling for the Pi 4, so if you wish to use the Pi 4 debug firmware files, you need to manually specify `start_file` and `fixup_file`.
 
 `start_x=1` should be specified when using the camera module. Enabling the camera via `raspi-config` will set this automatically.
 
@@ -31,7 +35,19 @@ Set the `disable_commandline_tags` command to `1` to stop `start.elf` from filli
 
 ## kernel
 
-`kernel` is the alternative filename on the boot partition to use when loading the kernel. The default value on the Pi 1, Pi Zero, and Compute Module is `kernel.img`, and on the Pi 2, Pi 3, and Compute Module 3 it is `kernel7.img`. If `kernel8.img` is present on the Pi 3 or Compute Module 3, it will be loaded in preference and entered in 64-bit mode. **NOTE**: This must be an uncompressed kernel image file.
+`kernel` is the alternative filename on the boot partition to use when loading the kernel. The default value on the Pi 1, Pi Zero, and Compute Module is `kernel.img`, and on the Pi 2, Pi 3, and Compute Module 3 it is `kernel7.img`. On the Pi4, it is `kernel7l.img`. 
+
+## arm_64bit
+
+If set to non-zero, forces the kernel loading system to assume a 64-bit kernel, starts the processors up in 64-bit mode, and sets `kernel8.img` to be the kernel image loaded, unless there is an explicit `kernel` option defined in which case that is used instead. Defaults to 0 on all platforms. **NOTE**: 64-bit kernels must be uncompressed image files.
+
+Note that the 64-bit kernel will only work on the Pi4, Pi3, and Pi2B rev1.2 boards with latest firmware.
+
+## arm_control
+
+**DEPRECATED - use arm_64bit to enable 64-bit kernels**.
+
+Sets board-specific control bits.
 
 ## kernel_address
 
@@ -79,7 +95,9 @@ The `boot_delay_ms` command means wait for a given number of milliseconds in `st
 
 If `disable_splash` is set to `1`, the rainbow splash screen will not be shown on boot. The default value is `0`.
 
+## enable_gic (Pi 4B only)
 
+On the Raspberry Pi 4B, if this value is set to `0` then the interrupts will be routed to the ARM cores using the legacy interrupt controller, rather than via the GIC-400. The default value is `1`.
 
 
 

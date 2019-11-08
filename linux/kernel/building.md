@@ -9,7 +9,7 @@ On a Raspberry Pi, first install the latest version of [Raspbian](https://www.ra
 First install Git and the build dependencies:
 
 ```bash
-sudo apt-get install git bc
+sudo apt install git bc bison flex libssl-dev
 ```
 
 Next get the sources, which will take some time:
@@ -18,11 +18,27 @@ Next get the sources, which will take some time:
 git clone --depth=1 https://github.com/raspberrypi/linux
 ```
 
+<a name="choosing_sources"></a>
+
+### Choosing sources
+
+The `git clone` command above will download the current active branch (the one we are building Raspbian images from) without any history. Omitting the `--depth=1` will download the entire repository, including the full history of all branches, but this takes much longer and occupies much more storage.
+
+To download a different branch (again with no history), use the `--branch` option:
+
+```bash
+git clone --depth=1 --branch rpi-4.18.y https://github.com/raspberrypi/linux
+```
+
+Refer to the [original GitHub repository](https://github.com/raspberrypi/linux) for information about the available branches.
+
+### Kernel configuration
+
 Configure the kernel; as well as the default configuration, you may wish to [configure your kernel in more detail](configuring.md) or [apply patches from another source](patching.md), to add or remove required functionality:
 
 Run the following commands, depending on your Raspberry Pi version.
 
-### Raspberry Pi 1, Pi 0, Pi 0W, and Compute Module default build configuration
+### Raspberry Pi 1, Pi Zero, Pi Zero W, and Compute Module default build configuration
 
 ```bash
 cd linux
@@ -30,7 +46,7 @@ KERNEL=kernel
 make bcmrpi_defconfig
 ```
 
-### Raspberry Pi 2, Pi 3, and Compute Module 3 default build configuration
+### Raspberry Pi 2, Pi 3, Pi 3+, and Compute Module 3 default build configuration
 
 ```bash
 cd linux
@@ -38,7 +54,17 @@ KERNEL=kernel7
 make bcm2709_defconfig
 ```
 
-Build and install the kernel, modules, and Device Tree blobs; this step takes a **long** time:
+### Raspberry Pi 4
+
+```bash
+cd linux
+KERNEL=kernel7l
+make bcm2711_defconfig
+```
+
+### Building
+
+Build and install the kernel, modules, and Device Tree blobs; this step can take a **long** time depending on the Pi model in use:
 
 ```bash
 make -j4 zImage modules dtbs
@@ -49,7 +75,7 @@ sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
 sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 ```
 
-**Note**: On a Raspberry Pi 2/3, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
+**Note**: On a Raspberry Pi 2/3/4, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
 
 ## Cross-compiling
 
@@ -76,22 +102,27 @@ If you are on a 64-bit host system, you should use:
 echo PATH=\$PATH:~/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin >> ~/.bashrc
 source ~/.bashrc
 ```
-
 ### Get sources
 
-To get the sources, refer to the original [GitHub](https://github.com/raspberrypi/linux) repository for the various branches.
+To download the minimal source tree for the current branch, run:
 
+```bash
+git clone --depth=1 https://github.com/raspberrypi/linux
 ```
-$ git clone --depth=1 https://github.com/raspberrypi/linux
-```
+
+See [**Choosing sources**](#choosing_sources) above for instructions on how to choose a different branch.
 
 ### Build sources
 
-To build the sources for cross-compilation, there may be extra dependencies beyond those you've installed by default with Ubuntu. If you find you need other things, please submit a pull request to change the documentation.
+To build the sources for cross-compilation, make sure you have the dependencies needed on your machine by executing:
+```bash
+sudo apt install git bison flex libssl-dev
+```
+If you find you need other things, please submit a pull request to change the documentation.
 
 Enter the following commands to build the sources and Device Tree files:
 
-For Pi 1, Pi 0, Pi 0 W, or Compute Module:
+For Pi 1, Pi Zero, Pi Zero W, or Compute Module:
 
 ```bash
 cd linux
@@ -99,7 +130,7 @@ KERNEL=kernel
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
 ```
 
-For Pi 2, Pi 3, or Compute Module 3:
+For Pi 2, Pi 3, Pi 3+, or Compute Module 3:
 
 ```bash
 cd linux
@@ -107,7 +138,15 @@ KERNEL=kernel7
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
 ```
 
-Then, for both:
+For Raspberry Pi 4:
+
+```bash
+cd linux
+KERNEL=kernel7l
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
+```
+
+Then, for all:
 
 ```bash
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
@@ -142,20 +181,20 @@ sdb
 
 with `sdb6` being the FAT (boot) partition, and `sdb7` being the ext4 filesystem (root) partition.
 
-Mount these first, adjusting the partition numbers for NOOBS cards:
+Mount these first, adjusting the partition numbers for NOOBS cards (as necessary):
 
 ```bash
 mkdir mnt
 mkdir mnt/fat32
 mkdir mnt/ext4
-sudo mount /dev/sdb1 mnt/fat32
-sudo mount /dev/sdb2 mnt/ext4
+sudo mount /dev/sdb6 mnt/fat32
+sudo mount /dev/sdb7 mnt/ext4
 ```
 
 Next, install the modules:
 
 ```bash
-sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/ext4 modules_install
+sudo env PATH=$PATH make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/ext4 modules_install
 ```
 
 Finally, copy the kernel and Device Tree blobs onto the SD card, making sure to back up your old kernel:

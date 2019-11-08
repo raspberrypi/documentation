@@ -40,21 +40,27 @@ You will be prompted to create a password for the new user.
 
 The new user will have a home directory at `/home/alice/`.
 
-To add them to the `sudo` group to give them `sudo` permissions:
+To add them to the `sudo` group to give them `sudo` permissions as well as all of the other necessary permissions:
 
 ```bash
-sudo adduser alice sudo
+sudo usermod -a -G adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi alice
 ```
 
 You can check your permissions are in place (i.e. you can use `sudo`) by trying the following:
 
 ```bash
-sudo su
+sudo su - alice
 ```
 
 If it runs successfully, then you can be sure that the new account is in the `sudo` group.
 
-Once you have confirmed that the new account is working, you can delete the `pi` user. Please note, though, that with the current Raspbian distribution, there are some aspects that require the `pi` user to be present. If you are unsure whether you will be affected by this, then leave the `pi` user in place. Work is being done to reduce the dependency on the `pi` user.
+Once you have confirmed that the new account is working, you can delete the `pi` user. In order to do this, you'll need to first close its process with the following:
+
+```bash
+sudo pkill -u pi
+```
+
+Please note that with the current Raspbian distribution, there are some aspects that require the `pi` user to be present. If you are unsure whether you will be affected by this, then leave the `pi` user in place. Work is being done to reduce the dependency on the `pi` user.
 
 To delete the `pi` user, type the following:
 
@@ -81,7 +87,7 @@ sudo nano /etc/sudoers.d/010_pi-nopasswd
 and change the `pi` entry (or whichever usernames have superuser rights) to:
 
 ```bash
-pi ALL=(ALL) PASSWD: ALL
+alice ALL=(ALL) PASSWD: ALL
 ```
 
 Now save the file.
@@ -113,13 +119,13 @@ sudo nano /etc/ssh/sshd_config
 Add, edit, or append to the end of the file the following line, which contains the usernames you wish to allow to log in:
 
 ```
-AllowUsers edward andrew charles anne
+AllowUsers alice bob
 ```
 
 You can also use `DenyUsers` to specifically stop some usernames from logging in:
 
 ```
-DenyUsers harry william
+DenyUsers jane john
 ```
 
 After the change you will need to restart the `sshd` service using `sudo systemctl restart ssh` or reboot so the changes take effect.
@@ -130,25 +136,11 @@ Key pairs are two cryptographically secure keys. One is private, and one is publ
 
 The client generates two keys, which are cryptographically linked to each other. The private key should never be released, but the public key can be freely shared. The SSH server takes a copy of the public key, and, when a link is requested, uses this key to send the client a challenge message, which the client will encrypt using the private key. If the server can use the public key to decrypt this message back to the original challenge message, then the identity of the client can be confirmed.
 
-Generating a key pair in Linux is done using the `ssh-keygen` command on the **client**; the keys are stored by default in the `.ssh` folder in the user's home directly. The private key will be called `id_rsa` and the associated public key will be called `id_rsa.pub`. The key will be 2048 bits long: breaking the encryption on a key of that length would take an extremely long time, so is very secure. You can make longer keys if the situation demands it. Note that you should only do the generation process once: if repeated, it will overwrite any previous generated keys. Anything relying on those old keys will need to be updated to the new keys.
+Generating a key pair in Linux is done using the `ssh-keygen` command on the **client**; the keys are stored by default in the `.ssh` folder in the user's home directory. The private key will be called `id_rsa` and the associated public key will be called `id_rsa.pub`. The key will be 2048 bits long: breaking the encryption on a key of that length would take an extremely long time, so it is very secure. You can make longer keys if the situation demands it. Note that you should only do the generation process once: if repeated, it will overwrite any previous generated keys. Anything relying on those old keys will need to be updated to the new keys.
 
 You will be prompted for a passphrase during key generation: this is an extra level of security. For the moment, leave this blank.
 
-The public key now needs to be moved on to the server. This can be done by email, or cut and paste, or file copying. Once on the server it needs to be added to the SSH systems authorised keys. It should be emphasised that the `id_rsa` file is the private key and SHOULD NOT LEAVE THE CLIENT, whilst the public key file is `id_rsa.pub`.
-
-Add the new public key to the authorisation file as follows:
-
-```vash
-cat id_rsa.pub >> ~/.ssh/authorized_keys
-```
-
-Alternatively, you can edit the file `sudo nano ~/.ssh/authorized_keys` and copy/paste the key in. It is perfectly acceptable to have multiple entries in the authorized_keys file, so SSH can support multiple clients.
-
-Note that the authorized_keys file needs the correct permissions to be read correctly by the `ssh` system.
-
-```bash
-sudo chmod 644 ~/.ssh/authorized_keys
-```
+The public key now needs to be moved on to the server: see [Copy your public key to your Raspberry Pi](../remote-access/ssh/passwordless.md#copy-your-public-key-to-your-raspberry-pi).
 
 Finally, we need to disable password logins, so that all authentication is done by the key pairs.
 
@@ -262,7 +254,7 @@ logpath  = /var/log/auth.log
 maxretry = 6
 ```
 
-As you can see, this section is named ssh, is enabled, examines the ssh port, filters using the `\etc\fail2ban\filters.d\sshd.conf` parameters, parses the /var/log/auth.log for malicious activity, and allows six retries before the detection threshold is reached. Checking the default section, we can see that the default banning action is:
+As you can see, this section is named ssh, is enabled, examines the ssh port, filters using the `/etc/fail2ban/filter.d/sshd.conf` parameters, parses the `/var/log/auth.log` for malicious activity, and allows six retries before the detection threshold is reached. Checking the default section, we can see that the default banning action is:
 
 ```bash
 # Default banning action (e.g. iptables, iptables-new,

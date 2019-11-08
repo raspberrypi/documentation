@@ -1,3 +1,5 @@
+# THIS PAGE IS NOW DEPRECATED
+
 # Hello Audio
 
 This demo just demonstrates audio output. It plays a sine wave, which makes a kind of 'WOO WOO WOO' sound.

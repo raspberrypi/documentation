@@ -20,7 +20,7 @@ In a web browser navigate to your router's IP address e.g. `http://192.168.1.1`,
 
 ### Resolving `raspberrypi.local` with mDNS
 
-On Raspbian, [multicast DNS](https://en.wikipedia.org/wiki/Multicast_DNS) is supported out-of-the-box by the [Avahi](https://en.wikipedia.org/wiki/Avahi_(software)) service.
+On Raspbian, [multicast DNS](https://en.wikipedia.org/wiki/Multicast_DNS) is supported out-of-the-box by the [Avahi](https://en.wikipedia.org/wiki/Avahi_%28software%29) service.
 
 If your device supports mDNS, you can reach your Raspberry Pi by using its hostname and the `.local` suffix.
 The default hostname on a fresh Raspbian install is `raspberrypi`, so by default any Raspberry Pi running Raspbian responds to:
@@ -44,7 +44,7 @@ If you don't remember the hostname of the Raspberry Pi, but have a system with A
 
 The `nmap` command (Network Mapper) is a free and open-source tool for network discovery, available for Linux, macOS, and Windows.
 
-- To install on **Linux**, install the `nmap` package e.g. `apt-get install nmap`.
+- To install on **Linux**, install the `nmap` package e.g. `apt install nmap`.
 
 - To install on **macOS** or **Windows**, see the [nmap.org download page](http://nmap.org/download.html).
 

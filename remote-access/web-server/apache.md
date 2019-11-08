@@ -9,13 +9,13 @@ On its own, Apache can serve HTML files over HTTP, and with additional modules c
 First, update the available packages by typing the following command into the Terminal:
 
 ```bash
-sudo apt-get update
+sudo apt update
 ```
 
 Then, install the `apache2` package with this command:
 
 ```bash
-sudo apt-get install apache2 -y
+sudo apt install apache2 -y
 ```
 
 ## Test the web server
@@ -61,7 +61,7 @@ If you know HTML you can put your own HTML files and other assets in this direct
 To allow your Apache server to process PHP files, you'll need to install the latest version of PHP and the PHP module for Apache. Type the following command to install these:
 
 ```bash
-sudo apt-get install php libapache2-mod-php -y
+sudo apt install php libapache2-mod-php -y
 ```
 
 Now remove the `index.html` file:

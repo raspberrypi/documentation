@@ -26,6 +26,8 @@ Explanation of some fundamental Linux usage, and commands for getting around the
         - Setting up scheduled tasks
     - [.bashrc and .bash_aliases](usage/bashrc.md)
         - Your shell configuration and aliases
+    - [systemd](usage/systemd.md)
+        - Configuration of systemd services to start scripts at booting
     - [rc.local](usage/rc-local.md)
         - Configuration of initialisation
 - [Software](software/README.md)

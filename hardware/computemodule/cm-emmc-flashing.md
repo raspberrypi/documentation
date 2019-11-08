@@ -2,7 +2,7 @@
 
 The Compute Module has an on-board eMMC device connected to the primary SD card interface. This guide explains how to write data to the eMMC storage using a Compute Module IO board.
 
-Please also read the section on the [Compute Module Datasheet](datasheets/rpi_DATA_CM_1p0.pdf).
+Please also read the section on the [Compute Module Datasheet](datasheets/rpi_DATA_CM_2p0.pdf).
 
 ## Steps to flash the eMMC on a Compute Module
 
@@ -41,7 +41,7 @@ Do not power up yet.
 We will be using Git to get the rpiboot source code, so ensure Git is installed. In Cygwin, use the Cygwin installer. On a Pi or other Debian-based Linux machine, use the following command:
 
 ```bash
-sudo apt-get install git
+sudo apt install git
 ```
 
 Git may produce an error if the date is not set correctly. On a Raspberry Pi, enter the following to correct this:
@@ -62,7 +62,7 @@ cd usbboot
 `libusb` must be installed. If you are using Cygwin, please make sure `libusb` is installed as previously described. On the Raspberry Pi or other Debian-based Linux, enter the following command:
 
 ```bash
-sudo apt-get install libusb-1.0-0-dev
+sudo apt install libusb-1.0-0-dev
 ```
 
 Now build and install the `usbboot` tool:
@@ -106,3 +106,15 @@ Once the image has been written, unplug and re-plug the USB; you should see two 
 The `/dev/sdX1` and `/dev/sdX2` partitions can now be mounted normally.
 
 Make sure J4 (USB SLAVE BOOT ENABLE) is set to the disabled position and/or nothing is plugged into the USB slave port. Power cycling the IO board should now result in the Compute Module booting from eMMC.
+
+## Troubleshooting
+
+For a small percentage of Raspberry Pi Compute Module 3s, booting problems have been reported. We have traced these back to the method used to create the FAT32 partition; we believe the problem is due to a difference in timing between the BCM2835/6/7 and the newer eMMC devices. The following method of creating the partition is a reliable solution in our hands.
+
+```bash
+$ sudo parted /dev/<device>
+(parted) mkpart primary fat32 4MiB 64MiB
+(parted) q
+$ sudo mkfs.vfat -F32 /dev/<device>
+$ sudo cp -r <files>/* <mountpoint>
+```

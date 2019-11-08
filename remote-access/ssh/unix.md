@@ -18,7 +18,7 @@ When the connection works you will see a security/authenticity warning. Type `ye
 
 In the event your Pi has taken the IP address of a device to which your computer has connected before (even if this was on another network), you may be given a warning and asked to clear the record from your list of known devices. Following this instruction and trying the `ssh` command again should be successful.
 
-Next you will be prompted for the password for the `pi` login: on Raspbian the default password is `raspberry`. You should now be able to see the Raspberry Pi prompt, which will be identical to the one found on the Raspberry Pi itself.
+Next you will be prompted for the password for the `pi` login: the default password on Raspbian is `raspberry`. For security reasons it is highly recommended to change the default password on the Raspberry Pi. You should now be able to see the Raspberry Pi prompt, which will be identical to the one found on the Raspberry Pi itself.
 
 If you have set up another user on the Raspberry Pi, you can connect to it in the same way, replacing the username with your own, e.g. `eben@192.168.1.5`
 
@@ -40,10 +40,10 @@ Note that [X11 is no longer present on Macs with OSX](https://support.apple.com/
 Now you are on the command line as before, but you have the ability to open up graphical windows. For example, typing:
 
 ```bash
-idle3 &
+geany &
 ```
 
-will open up the Python editor IDLE in a graphical window.
+will open up the Geany editor in a graphical window.
 
 Typing:
 

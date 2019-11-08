@@ -9,8 +9,18 @@ Note that the quality and configurability of the camera module is highly superio
 First, install the `fswebcam` package:
 
 ```bash
-sudo apt-get install fswebcam
+sudo apt install fswebcam
 ```
+
+## Add your user to `video` group
+
+If you are not using the default `pi` user account, you need to add your username to the `video` group, otherwise you will see 'permission denied' errors.
+
+```bash
+sudo usermod -a -G video <username>
+```
+
+To check that the user has been added to the group correctly, use the `groups` command. 
 
 ## Basic usage
 

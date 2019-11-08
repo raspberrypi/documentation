@@ -4,9 +4,29 @@
 
 As of 15 July 2014, the Raspberry Pi firmware supports custom default pin configurations through a user-provided Device Tree blob file. To find out whether your firmware is recent enough, please run `vcgencmd version`.
 
+## Actions on device pins during boot sequence
+
+During the bootup sequence, the GPIO pins go through various actions.
+
+1. Power-on — pins default to inputs with default pulls; the default pulls for each pin are described in the [datasheet](../hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf)
+1. Setting by the bootrom
+1. Setting by `bootcode.bin`
+1. Setting by `dt-blob.bin` (this page)
+1. Setting by the GPIO command in `config.txt` (see [here](config-txt/gpio.md))
+1. Additional firmware pins (e.g. UARTS)
+1. Kernel/Device Tree
+
+On a soft reset, the same procedure applies, except for default pulls, which are only applied on a power-on reset.
+
+Note that it may take a few seconds to get from stage 1 to stage 4. During that time, the GPIO pins may not be in the state expected by attached peripherals (as defined in `dtblob.bin` or `config.txt`). Since different GPIO pins have different default pulls, you should do **one of the following** for your peripheral:
+* Choose a GPIO pins that defaults to pulls as required by the peripheral on reset
+* Delay the peripheral's startup until stage 4/5 has been reached
+* Add an appropriate pull-up/-down resistor
+
+
 ## Providing a custom Device Tree blob
 
-In order to compile a Device Tree source (`.dts`) file into a Device Tree blob (`.dtb`) file, the Device Tree compiler must be installed by running `sudo apt-get install device-tree-compiler`. The `dtc` command can then be used as follows:
+In order to compile a Device Tree source (`.dts`) file into a Device Tree blob (`.dtb`) file, the Device Tree compiler must be installed by running `sudo apt install device-tree-compiler`. The `dtc` command can then be used as follows:
 
 ```
 sudo dtc -I dts -O dtb -o /boot/dt-blob.bin dt-blob.dts
@@ -41,6 +61,8 @@ The `dt-blob.bin` is used to configure the binary blob (VideoCore) at boot time.
  - **pins_2b2** Pi 2 Model B rev 1.1; controls the SMPS via software I2C on 42 and 43.
  - **pins_3b1** Pi 3 Model B rev 1.0
  - **pins_3b2** Pi 3 Model B rev 1.2
+ - **pins_3bplus** Pi 3 Model B+
+ - **pins_3aplus** Pi 3 Model A+
  - **pins_pi0** The Pi Zero
  - **pins_pi0w** The Pi Zero W
  - **pins_cm** The Compute Module. The default for this is the default for the chip, so it is a useful source of information about default pull ups/downs on the chip.
@@ -84,7 +106,7 @@ The `dt-blob.bin` is used to configure the binary blob (VideoCore) at boot time.
       * `gp_clk`
       * `emmc`
       * `arm_jtag`
-   5. `drive_strength_ma`
+   5. `drive_strength_mA`
       The drive strength is used to set a strength for the pins. Please note that you can only specify a single drive strength for the bank. <8> and <16> are valid values.
 
 5. `pin_defines`

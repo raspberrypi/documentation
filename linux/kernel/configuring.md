@@ -9,7 +9,7 @@ Configuration is most commonly done through the `make menuconfig` interface. Alt
 The `menuconfig` tool requires the `ncurses` development headers to compile properly. These can be installed with the following command:
 
 ```
-$ sudo apt-get install libncurses5-dev
+$ sudo apt install libncurses5-dev
 ```
 
 You'll also need to download and prepare your kernel sources, as described in the [build guide](building.md). In particular, ensure you have installed the default configuration.
@@ -27,7 +27,7 @@ If you're cross-compiling, the second line should be:
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
 ```
 
-For all models of Raspberry Pi 2/3:
+For all models of Raspberry Pi 2/3 (includes 3B+, 3A+ and Compute Module 3):
 
 ```
 $ KERNEL=kernel7

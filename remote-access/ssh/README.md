@@ -8,7 +8,7 @@ You only have access to the command line, not the full desktop environment. For 
 
 ## 1. Set up your local network and wireless connectivity
 
-Make sure your Raspberry Pi is properly set up and connected. If you are using wireless networking, this can be enabled via Pixel's [user interface](../../configuration/wireless/README.md), or using the [command line](../../configuration/wireless/wireless-cli.md). 
+Make sure your Raspberry Pi is properly set up and connected. If you are using wireless networking, this can be enabled via the desktop's [user interface](../../configuration/wireless/README.md), or using the [command line](../../configuration/wireless/wireless-cli.md). 
 
 If you are not using wireless connectivity, plug your Raspberry Pi directly into the router.
 
@@ -33,10 +33,13 @@ Alternatively, [raspi-config](../../configuration/raspi-config.md) can be used i
 1. Choose `Finish`
 
 Alternatively, use `systemctl` to start the service
-```
+
+```bash
 sudo systemctl enable ssh
 sudo systemctl start ssh
 ```
+
+When enabling SSH on a Pi that may be connected to the internet, you should change its default password to ensure that it remains secure. See the [Security page](../../configuration/security.md) for more details.
 
 ## 3. Enable SSH on a headless Raspberry Pi (add file to SD card on another machine)
 

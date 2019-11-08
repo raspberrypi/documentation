@@ -24,8 +24,8 @@ Basic examples to help you get started with some of the software available in Ra
     - Mathematica is an industry leading computational platform - available for free on Raspberry Pi
 - [Camera Module](camera/README.md)
     - The Raspberry Pi camera module is capable of taking full HD 1080p photo and video and can be controlled programmatically
-    - Libraries are available for:
-        - [Bash](camera/raspicam/README.md) (Linux command line)
+    - Applications and libraries are available for:
+        - [Linux command line](camera/raspicam/README.md)
         - [Python](camera/python/README.md)
 - [Webcams](webcams/README.md)
     - Using a standard USB webcam instead of the Raspberry Pi camera module
@@ -35,5 +35,3 @@ Basic examples to help you get started with some of the software available in Ra
     - Playing audio on your Raspberry Pi
 - [Playing video](video/README.md)
     - Playing video on your Raspberry Pi
-- [Demo programs](demos/README.md)
-    - A selection of examples to demonstrate the Pi's capabilities

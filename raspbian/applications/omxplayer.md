@@ -17,7 +17,7 @@ omxplayer /opt/vc/src/hello_pi/hello_video/test.h264
 By default the audio is sent to the analog port. If you are using a HDMI-equipped display device with speakers, you need to tell omxplayer to send the audio signal over the HDMI link.
 
 ```
-omxplayer -adev hdmi /opt/vc/src/hello_pi/hello_video/test.h264
+omxplayer --adev hdmi /opt/vc/src/hello_pi/hello_video/test.h264
 ```
 
 When displaying video, the whole display will be used as output. You can specify which part of the display you want the video to be on using the window option.
@@ -31,7 +31,7 @@ You can also specify which part of the video you want to be displayed: this is c
 ```
 omxplayer --crop 100,100,300,300 /opt/vc/src/hello_pi/hello_video/test.h264
 ```
-If you are using the Raspberry Pi Foundation's touchscreen display, and you want to use it for video output, use the display option to specify which display to use. `n` is 5 for HDMI, 4 for the touchscreen.
+If you are using the Raspberry Pi Foundation's touchscreen display, and you want to use it for video output, use the display option to specify which display to use. `n` is 5 for HDMI, 4 for the touchscreen. With the Raspberry Pi 4 you have two options for HDMI output. `n` is 2 for HDMI0 and 7 for HDMI1.
 
 ```
 omxplayer --display n /opt/vc/src/hello_pi/hello_video/test.h264

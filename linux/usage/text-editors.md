@@ -10,19 +10,19 @@ On Raspbian, you'll find an editor called Leafpad. This is a simple editor which
 
 You can use keyboard shortcuts, such as `Ctrl + S` to save a file and `Ctrl + X` to exit.
 
-### IDLE
+### Thonny
 
-IDLE is a Python REPL and IDE, so you can write and edit Python code in a window and run it from there.
+Thonny is a Python REPL and IDE, so you can write and edit Python code in a window and run it from there.
 
-IDLE has independent windows and syntax highlighting. It's somewhat buggy, but it's generally fine for basic use.
-
-You can use keyboard shortcuts like `Ctrl + S` to save a file, or `Alt + P` (previous command) and `Alt + N` (next command) in the REPL.
-
-Note that IDLE uses Python 2 and IDLE 3 uses Python 3.
+Thonny has independent windows and syntax highlighting, and uses Python 3
 
 ### GVim
 
 See Vim below.
+
+### Geany
+
+A fast and lightweight IDE, supporting many different file types, including C/C++ and Python. Installed by default on Raspbian.
 
 ## Command-line editors
 
@@ -47,13 +47,13 @@ Depending on your keyboard configuration, you may find your cursor keys don't wo
 Vim is an extension of Vi and works in much the same way, with a number of improvements. Only Vi is installed by default so to get the full features of Vim, install it with APT:
 
 ```
-sudo apt-get install vim
+sudo apt install vim
 ```
 
 You can edit a file in Vim with `vim somefile.txt`. Vim also has a graphical version which opens in a window and allows interaction with the mouse. This version is installable separately:
 
 ```
-sudo apt-get install vim-gnome
+sudo apt install vim-gnome
 ```
 
 To use the graphical version of Vim, use `gvim somefile.txt`. You can save configuration in a `.vimrc` file in your user's home directory. To learn more about editing in Vi and Vim, you can run `vimtutor` and follow the tutorial.
@@ -63,7 +63,7 @@ To use the graphical version of Vim, use `gvim somefile.txt`. You can save confi
 Emacs is a GNU command-line text editor; it's powerful, extensible, and customisable. You can install it with APT:
 
 ```
-sudo apt-get install emacs
+sudo apt install emacs
 ```
 
 You can use keyboard combination commands, such as `Ctrl + X Ctrl + S` to save and `Ctrl + X Ctrl + C` to close.

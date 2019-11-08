@@ -41,7 +41,7 @@ The Pi captures video as a raw H264 video stream. Many media players will refuse
 Install MP4Box with this command:
 
 ```bash
-sudo apt-get install -y gpac
+sudo apt install -y gpac
 ```
 
 Capture your raw video with raspivid and wrap it in an MP4 container like this:

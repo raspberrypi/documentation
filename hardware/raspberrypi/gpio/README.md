@@ -21,7 +21,7 @@ The GPIO connections on the BCM2835 package are sometimes referred to in the per
 The pads are configurable CMOS push-pull output drivers/input buffers. Register-based control settings are available for:
 
 - Internal pull-up / pull-down enable/disable
-- Output [drive strength](http://www.scribd.com/doc/101830961/GPIO-Pads-Control2)
+- Output [drive strength](gpio_pads_control.md)
 - Input Schmitt-trigger filtering
 
 ### Power-on states
@@ -43,3 +43,36 @@ The normal rising/falling edge detection has a small amount of synchronisation b
 ## Alternative functions
 
 Almost all of the GPIO pins have alternative functions. Peripheral blocks internal to BCM2835 can be selected to appear on one or more of a set of GPIO pins, for example the I2C busses can be configured to at least 3 separate locations. Pad control, such as drive strength or Schmitt filtering, still applies when the pin is configured as an alternate function.
+
+## Voltage specifications
+
+The following table gives the various voltage specifications for the GPIO pins, it was extracted from the Compute Module datasheet [here](../../computemodule/datasheet.md).
+
+| Symbol | Parameter | Conditions &emsp;| Min | Typical | Max | Unit |
+|--------|-----------|------------|------|---------|------|------|
+|V<sub>IL</sub>|Input Low Voltage | VDD IO = 1.8V | - | - |0.6  | V |
+| | | VDD IO = 2.7V | - | - | 0.8 | V |
+| | | VDD IO = 3.3V | - | - | 0.9 | V |
+|V<sub>IH</sub>| Input high voltage<sup>a</sup> | VDD IO = 1.8V | 1.0 | - | - | V |
+| | | VDD IO = 2.7V | 1.3 | - | - | V |
+| | |VDD IO = 3.3V | 1.6 | - | - | V |
+|I<sub>IL</sub>| Input leakage current | TA = +85◦C | - | - | 5 | µA |
+|C<sub>IN</sub>| Input capacitance | - | - | 5 | - | pF |
+|V<sub>OL</sub>| Output low voltage<sup>b</sup> | VDD IO = 1.8V, IOL = -2mA | - | - | 0.2 | V |
+| | | VDD IO = 2.7V, IOL = -2mA | - | - | 0.15 | V |
+| | | VDD IO = 3.3V, IOL = -2mA | - | - | 0.14 | V |
+|V<sub>OH</sub>| Output high voltage<sup>b</sup> | VDD IO = 1.8V, IOH = 2mA | 1.6 | - | - | V |
+| | | VDD IO = 2.7V, IOH = 2mA | 2.5 | - | - | V |
+| | | VDD IO = 3.3V, IOH = 2mA | 3.0 | - | - | V |
+|I<sub>OL</sub>| Output low current<sup>c</sup> | VDD IO = 1.8V, VO = 0.4V | 12 | - | - | mA |
+| | | VDD IO = 2.7V, VO = 0.4V | 17 | - | - | mA |
+| | | VDD IO = 3.3V, VO = 0.4V | 18 | - | - | mA | 
+|I<sub>OH</sub>| Output high current<sup>c</sup> | VDD IO = 1.8V, VO = 1.4V | 10 | - | - | mA | 
+| | | VDD IO = 2.7V, VO = 2.3V | 16 | - | - | mA | 
+| | | VDD IO = 3.3V, VO = 2.3V | 17 | - | - | mA | 
+| R<sub>PU</sub> | Pullup resistor | - | 50 | - | 65 | kΩ |
+| R<sub>PD</sub> | Pulldown resistor | - | 50 | - |65 | kΩ | 
+
+<sup>a</sup> Hysteresis enabled  
+<sup>b</sup> Default drive strength (8mA)  
+<sup>c</sup> Maximum drive strength (16mA)

@@ -1,6 +1,8 @@
 # raspi-config
 
-`raspi-config` is the Raspberry Pi configuration tool written and maintained by [Alex Bradbury](https://github.com/asb). It targets Raspbian.
+This page describes the console based raspi-config application. If you are using the Raspberry Pi desktop then you can use the graphical Raspberry Pi Configuration application from the Preferences menu to configure your Raspberry Pi.
+
+`raspi-config` is the Raspberry Pi configuration tool originally written by [Alex Bradbury](https://github.com/asb). It targets Raspbian.
 
 <a name="usage"></a>
 ## Usage

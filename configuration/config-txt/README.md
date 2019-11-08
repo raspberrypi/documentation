@@ -43,6 +43,7 @@ A range of options can be specified using the config.txt file. These are split i
 - [Camera](camera.md)
 - [Boot](boot.md)
 - [Ports and Device Tree](../device-tree.md#part4.6)
+- [GPIOs](gpio.md)
 - [Overclocking](overclocking.md)
 - [Conditional Filters](conditional.md)
 - [Miscellaneous](misc.md)
