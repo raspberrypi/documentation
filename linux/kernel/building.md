@@ -9,7 +9,7 @@ On a Raspberry Pi, first install the latest version of [Raspbian](https://www.ra
 First install Git and the build dependencies:
 
 ```bash
-sudo apt-get install git bc bison flex libssl-dev
+sudo apt install git bc bison flex libssl-dev
 ```
 
 Next get the sources, which will take some time:
@@ -116,7 +116,7 @@ See [**Choosing sources**](#choosing_sources) above for instructions on how to c
 
 To build the sources for cross-compilation, make sure you have the dependencies needed on your machine by executing:
 ```bash
-sudo apt-get install git bison flex libssl-dev
+sudo apt install git bison flex libssl-dev
 ```
 If you find you need other things, please submit a pull request to change the documentation.
 

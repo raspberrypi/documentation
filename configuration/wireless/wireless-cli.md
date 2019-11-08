@@ -59,9 +59,17 @@ Reconfigure the interface with `wpa_cli -i wlan0 reconfigure`.
 
 You can verify whether it has successfully connected using `ifconfig wlan0`. If the `inet addr` field has an address beside it, the Raspberry Pi has connected to the network. If not, check that your password and ESSID are correct.  
 
-On the Raspberry Pi 3 Model B+, you will also need to set the country code, so that the 5G networking can choose the correct frequency bands. You can either use the raspi-config application and select the localisation option, or edit the `wpa_supplicant.conf` file and add the following. (Note you need to replace 'GB' with the ISO code of your country. See [Wikipedia](https://en.wikipedia.org/wiki/ISO_3166-1) for a list of country codes.)
+On the Raspberry Pi 3 Model B+ and above, you will also need to set the country code, so that the 5G networking can choose the correct frequency bands. You can either use the raspi-config application and select the localisation option, or edit the `wpa_supplicant.conf` file and add the following. (Note you need to replace 'GB' with the ISO code of your country. See [Wikipedia](https://en.wikipedia.org/wiki/ISO_3166-1) for a list of country codes.)
 ```
 country=GB
+```
+
+Note that with the latest Buster Raspbian release, you must ensure that the `wpa_supplicant.conf` file contains the following information at the top.
+
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=<Insert country code here>
 ```
 
 ## Unsecured networks

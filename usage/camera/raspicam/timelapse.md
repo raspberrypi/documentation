@@ -57,7 +57,7 @@ ls *.jpg > stills.txt
 
 Although it will be slow (due to encoding in software rather than using the Raspberry Pi hardware acceleration), you can stitch your JPEG images together using various available tools. This documentation will use `avconv`, which needs to be installed.
 ```
-sudo apt-get install libav-tools
+sudo apt install libav-tools
 ```
 Now you can use the tools to convert your JPEG files in to an H264 video file.
 ```
@@ -78,7 +78,7 @@ On a Raspberry Pi 3, this can encode a little more than one frame per second. Th
 You can use the same instructions as for the Raspberry Pi, or an alternative package such as `mencoder`:
 
 ```
-sudo apt-get install mencoder
+sudo apt install mencoder
 ```
 
 Now run the following command:

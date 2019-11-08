@@ -5,28 +5,28 @@
 Some Python packages can be found in the Raspbian archives and can be installed using apt. For example:
 
 ```bash
-sudo apt-get update
-sudo apt-get install python3-picamera
+sudo apt update
+sudo apt install python3-picamera
 ```
 
-This is the preferred method of installing software, as it means that the modules you install can be kept up to date easily with the usual `sudo apt-get update` and `sudo apt-get upgrade` commands.
+This is the preferred method of installing software, as it means that the modules you install can be kept up to date easily with the usual `sudo apt update` and `sudo apt full-upgrade` commands.
 
 Python packages in Raspbian which are compatible with Python 2.x will always have a `python-` prefix. So, the `picamera` package for Python 2.x is named `python-picamera` (as shown in the example above). Python 3 packages always have a `python3-` prefix. So, to install `picamera` for Python 3 you would use:
 
 ```bash
-sudo apt-get install python3-picamera
+sudo apt install python3-picamera
 ```
 
 Uninstalling packages installed via APT can be accomplished as follows:
 
 ```bash
-sudo apt-get remove python3-picamera
+sudo apt remove python3-picamera
 ```
 
 They can be completely removed with `purge`:
 
 ```bash
-sudo apt-get purge python3-picamera
+sudo apt purge python3-picamera
 ```
 
 ## pip
@@ -36,13 +36,13 @@ Not all Python packages are available in the Raspbian archives, and those that a
 `pip` is installed by default in Raspbian Desktop images (but not Raspbian Lite). You can install it with `apt`:
 
 ```bash
-sudo apt-get install python3-pip
+sudo apt install python3-pip
 ```
 
 To get the Python 2 version:
 
 ```bash
-sudo apt-get install python-pip
+sudo apt install python-pip
 ```
 
 `pip3` installs modules for Python 3, and `pip` installs modules for Python 2.

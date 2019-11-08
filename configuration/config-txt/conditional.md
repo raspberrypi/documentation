@@ -70,7 +70,7 @@ This forces 1920x1080 DVT mode for the specified monitor, without affecting any 
 
 Note that these settings apply only at boot, so the monitor must be connected at boot time and the Pi must be able to read its EDID information to find the correct name. Hotplugging a different monitor into the Pi after boot will not select different settings.
 
-On the Pi 4, if both HDMI ports are in use, then the EDID will be checked against both of then, and subsequent configuration applied only to the first matching device. You can determine the EDID names for both ports by first running `tvservice -l` in a terminal window to list all attached devices and then using the returned numerical IDs in `tvservice -v <id> -n` to find the EDID name for a specific display ID.
+On the Pi 4, if both HDMI ports are in use, then the EDID will be checked against both of them, and subsequent configuration applied only to the first matching device. You can determine the EDID names for both ports by first running `tvservice -l` in a terminal window to list all attached devices and then using the returned numerical IDs in `tvservice -v <id> -n` to find the EDID name for a specific display ID.
 
 ## The serial number filter
 

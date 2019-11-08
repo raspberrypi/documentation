@@ -8,7 +8,9 @@ Some basic guides to configuring your Raspberry Pi.
     - The Raspberry Pi configuration tool in Raspbian, which allows you to easily enable features such as the camera, and to change your specific settings such as keyboard layout
 - [config.txt](config-txt/README.md)
     - The Raspberry Pi configuration file
-- [Wireless networking](wireless/README.md)
+- [TCP/IP networking](tcpip/README.md)
+    - Configuring the TCP/IP network stack on the Raspberry Pi
+- [Connect to a wireless network](wireless/README.md)
     - Configuring your Pi to connect to a wireless network using the Raspberry Pi 3's or Pi Zero W's inbuilt wireless connectivity, or a USB wireless dongle
 - [Wireless access point](wireless/access-point.md)
     - Configuring your Pi as a wireless access point using Raspberry Pi 3 or Raspberry Pi Zero W's inbuilt wireless connectivity, or a USB wireless dongle
@@ -44,4 +46,5 @@ Some basic guides to configuring your Raspberry Pi.
     - Configuring the screen saver and screen blanking
 - [The boot folder](boot_folder.md)
     - What it's for and what's in it
-
+- [Network File System (NFS)](nfs.md)
+    - How to set up a NFS and connect clients to it

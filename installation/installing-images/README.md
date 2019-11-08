@@ -26,11 +26,13 @@ You will need to use an image writing tool to install the image you have downloa
 
 **balenaEtcher** is a graphical SD card writing tool that works on Mac OS, Linux and Windows, and is the easiest option for most users. balenaEtcher also supports writing images directly from the zip file, without any unzipping required. To write your image with balenaEtcher:
 
-- Download [balenaEtcher](https://www.balena.io/etcher/) and install it.
+- Download the latest version of [balenaEtcher](https://www.balena.io/etcher/) and install it.
 - Connect an SD card reader with the SD card inside.
 - Open balenaEtcher and select from your hard drive the Raspberry Pi `.img` or `.zip` file you wish to write to the SD card.
 - Select the SD card you wish to write your image to.
 - Review your selections and click 'Flash!' to begin writing data to the SD card.
+
+**Note**: for Linux users, `zenity` might need to be installed on your machine for `balenaEtcher` to be able to write the image on your SD card.
 
 For more advanced control of this process, see our system-specific guides:
 

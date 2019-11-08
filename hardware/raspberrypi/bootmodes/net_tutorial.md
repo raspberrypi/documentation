@@ -15,7 +15,7 @@ Install Raspbian Lite (or Raspbian with Raspberry Pi Desktop) on the SD card in 
 Afterwards, set up USB boot mode by preparing the `/boot` directory with the latest boot files:
 
 ```bash
-sudo apt update && sudo apt upgrade
+sudo apt update && sudo apt full-upgrade
 ```
 
 Now, enable USB boot mode with the following command:
@@ -222,7 +222,7 @@ This should now allow your Raspberry Pi client to attempt to boot through until 
 At this point, export the `/nfs/client1` file system created earlier, and the TFTP boot folder.
 
 ```bash
-sudo apt-get install nfs-kernel-server
+sudo apt install nfs-kernel-server
 echo "/nfs/client1 *(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
 echo "/tftpboot *(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
 ```

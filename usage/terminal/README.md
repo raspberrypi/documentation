@@ -40,7 +40,7 @@ Further information on `sudo` and the root user can be found on the [linux root 
 
 ## Installing software using apt
 
-You can use the `apt` command to install software in Raspbian. This is the 'package manager' that is included with any Debian-based Linux distributions (including Raspbian). It allows you to install and manage new software packages on your Pi. In order to install a new package, you would type `sudo apt install <package-name>` (where `<package-name>` is the package that you want to install). Running `sudo apt update` will update a list of software packages that are available on your system. If a new version of a package is available, then `sudo apt upgrade` will update any old packages to the new version. Finally, `sudo apt remove <package-name>` removes or uninstalls a package from your system.
+You can use the `apt` command to install software in Raspbian. This is the 'package manager' that is included with any Debian-based Linux distributions (including Raspbian). It allows you to install and manage new software packages on your Pi. In order to install a new package, you would type `sudo apt install <package-name>` (where `<package-name>` is the package that you want to install). Running `sudo apt update` will update a list of software packages that are available on your system. If a new version of a package is available, then `sudo apt full-upgrade` will update any old packages to the new version. Finally, `sudo apt remove <package-name>` removes or uninstalls a package from your system.
 
 More information about this can be found in the [Linux usage section on apt](../../linux/software/apt.md).
 

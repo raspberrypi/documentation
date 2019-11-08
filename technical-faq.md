@@ -110,7 +110,7 @@ It's important to keep your system up to date with the latest security updates, 
 
 + `sudo apt update` will update the internal software database, so the system knows what the latest updates are
 
-+ `sudo apt dist-upgrade` will then download all the updates and install them
++ `sudo apt full-upgrade` will then download all the updates and install them
 
 We recommend going through this process once a week or so. 
 

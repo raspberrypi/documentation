@@ -20,7 +20,7 @@ Add `consoleblank=0` to turn screen blanking off completely, or edit it to set t
 By default, the Raspberry Pi Desktop does not have any easy-to-use screensaver software installed, although the screensaver is enabled. Firstly, you should install the X Windows screensaver application.
 
 ```
-sudo apt-get install xscreensaver
+sudo apt install xscreensaver
 ```
 
 This may take a few minutes.

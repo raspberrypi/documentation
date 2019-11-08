@@ -59,9 +59,11 @@ The software overhead incurred when talking to Low- and Full-speed devices means
 
 USB devices have defined power requirements, in units of 100mA from 100mA to 500mA. The device advertises its own power requirements to the USB host when it is first connected. In theory, the actual power consumed by the device should not exceed its stated requirement.
 
-The USB ports on a Raspberry Pi have a design loading of 100mA each - sufficient to drive "low-power" devices such as mice and keyboards. Devices such as WiFi adapters, USB hard drives, USB pen drives all consume much more current and should be powered from an external hub with its own power supply. While it is possible to plug a 500mA device into a Pi and have it work with a sufficiently powerful supply, reliable operation is not guaranteed.
+The USB ports on a Raspberry Pi 1 have a design loading of 100mA each - sufficient to drive "low-power" devices such as mice and keyboards. Devices such as WiFi adapters, USB hard drives, USB pen drives all consume much more current and should be powered from an external hub with its own power supply. While it is possible to plug a 500mA device into a Raspberry Pi 1 and have it work with a sufficiently powerful supply, reliable operation is not guaranteed. In addition, hotplugging high-power devices into the Raspberry Pi 1's USB ports may cause a brownout which can cause the Pi to reset.
 
-In addition, hotplugging high-power devices into the Pi's USB ports may cause a brownout which can cause the Pi to reset.
+For Raspberry Pi 2, the total power supplied to all USB ports in aggregate is 600mA by default, but can be increased to 1200mA using the `max_usb_current` config.txt entry.
+
+From the Raspberry Pi 3 onwards, the total power supplied to all USB ports in aggregate is 1200mA.
 
 See [Power](../power/README.md) for more information.
 
