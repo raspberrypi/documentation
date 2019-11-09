@@ -156,7 +156,7 @@ sudo iptables -t nat -A  POSTROUTING -o eth0 -j MASQUERADE
 Save the iptables rule.
 
 ```
-sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+sudo iptables-save > /etc/iptables.ipv4.nat"
 ```
 
 Edit /etc/rc.local and add this just above "exit 0" to install these rules on boot.
