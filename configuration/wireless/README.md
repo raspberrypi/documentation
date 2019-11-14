@@ -6,7 +6,9 @@ The following documentation is available:
     - A guide to setting up wireless networking using the Raspberry Pi Desktop
 - [Command line](wireless-cli.md)
     - A guide to setting up wireless networking from the command line
-- [Access point](access-point.md)
-    - A guide to setting the Raspberry Pi up as an access point, and as a internet sharing device
+- [Routed Access point](access-point-routed.md)
+    - A guide to setting up the Raspberry Pi as a wireless access point and router for WiFi clients.
+- [Bridged Access point](access-point-bridged.md)
+    - A guide to setting up the Raspberry Pi as a wireless access point, extending an ethernet LAN to WiFi clients. 
 - [Headless setup](headless.md)
     - A guide to setting up the Raspberry Pi headless
