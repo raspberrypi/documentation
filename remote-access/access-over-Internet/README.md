@@ -9,7 +9,7 @@ One method is to set up port forwarding on your router. To do this, you must cha
 ## Introduction for IPv6 newcomers
 
 There are big differences in handling IPv4 and IPv6 for remote access in residential environments(dsl,cable,fibre, maybe mobile too).
-With IPv4 it was and is still very common to use the public address of the router in combination with port forwarding. The router is the only device with a public address. So the router gets a packet and translates it (address and port) to a private ip on the lan. Also the router is (mostly) responsible for getting a (nice) DNS name.
+With IPv4 it was and is still very common to use the public address of the router in combination with port forwarding. The router is the only device with a public address. So the router gets a packet and translates it (address and port) to a private IP address on the lan. Also the router is (mostly) responsible for getting a (nice) DNS name.
 With IPv6 some things have changed. Depending on your isp (different types of ds-lite and dualstack) you don't get a public IPv4 address anymore.
 Instead of one public IPv4 address you get a whole network with IPv6 addresses (prefix).
 Your computers get one or more addresses from that network. They all are public, but usually protected by the routers firewall against unwanted inbound traffic.
@@ -17,11 +17,11 @@ To use these addresses for remote access we need to do at least two things.
 
 * Open the routers firewall or a particularly service/port for the device on the lan (there is no nat anymore).
 
-* Create one DNS name for that device (not for the routers ip address anymore).
+* Create one DNS name for that device (not for the routers IP address anymore).
 
 Opening/configuring the firewall has to be done on the router. Maybe on your Pi too if you are using iptables/nft.
 DNS updates can be managed by the device itself(similar to IPv4 updaters) or by the router. 
-Since privacy extensions (randomizing ip addresses) are in conflict with server use, it is recommend to disable privacy extensions for that use case.
+Since privacy extensions (randomizing IP addresses) are in conflict with server use, it is recommend to disable privacy extensions for that use case.
 It is possible to use IPv4 port forwarding and IPv6 Port opening at the same time. It depends on your ISP.
 In case of ds-lite you have only the choice to use IPv6 directly or to use some cloud relays/mappers.
 
