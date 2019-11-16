@@ -22,7 +22,7 @@ To use these addresses for remote access we need to do at least two things.
 Opening/configuring the firewall has to be done on the router. Maybe on your Pi too if you are using iptables/nft.
 DNS updates can be managed by the device itself(similar to IPv4 updaters) or by the router. 
 Since privacy extensions (randomizing IP addresses) are in conflict with server use, it is recommend to disable privacy extensions for that use case.
-It is possible to use IPv4 port forwarding and IPv6 Port opening at the same time. It depends on your ISP.
+It is possible to use IPv4 port forwarding and IPv6 port opening at the same time. It depends on your ISP.
 In case of ds-lite you have only the choice to use IPv6 directly or to use some cloud relays/mappers.
 
 
