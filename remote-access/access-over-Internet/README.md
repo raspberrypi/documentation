@@ -15,9 +15,9 @@ Instead of one public IPv4 address you get a whole network with IPv6 addresses (
 Your computers get one or more addresses from that network. They all are public, but usually protected by the routers firewall against unwanted inbound traffic.
 To use these addresses for remote access we need to do at least two things. 
 
-Open the routers firewall or a particularly service/port for the device on the lan (there is no nat anymore).
+* Open the routers firewall or a particularly service/port for the device on the lan (there is no nat anymore).
 
-Create one DNS name for that device (not for the routers ip address anymore).
+* Create one DNS name for that device (not for the routers ip address anymore).
 
 Opening/configuring the firewall has to be done on the router. Maybe on your Pi too if you are using iptables/nft.
 DNS updates can be managed by the device itself(similar to IPv4 updaters) or by the router. 
