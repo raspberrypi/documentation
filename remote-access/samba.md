@@ -80,8 +80,13 @@ Firstly, create a folder to share. This example creates a folder called `shared`
 ```bash
 cd ~
 mkdir shared
+chmod 0740 share
 ```
+Now we need to tell Samba there is a 'pi'user when accessing that folder. When asked enter the passwd of pi - ether default or hopefully your own security password
 
+```bash
+sudo smbpasswd -a pi
+```
 Now we need to tell Samba to share this folder, using the Samba configuration file.
 
 ```bash
