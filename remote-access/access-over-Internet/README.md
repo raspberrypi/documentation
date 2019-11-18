@@ -10,9 +10,9 @@ One method is to set up port forwarding on your router. To do this, you must cha
 
 There are big differences in handling IPv4 and IPv6 for remote access in residential environments(dsl,cable,fibre, maybe mobile too).
 With IPv4 it was and is still very common to use the public address of the router in combination with port forwarding. The router is the only device with a public address. So the router gets a packet and translates it (address and port) to a private IP address on the lan. Also the router is (mostly) responsible for getting a (nice) DNS name.
-With IPv6 some things have changed. Depending on your isp (different types of ds-lite and dualstack) you don't get a public IPv4 address anymore.
-Instead of one public IPv4 address you get a whole network with IPv6 addresses (prefix).
-Your computers get one or more addresses from that network. They all are public, but usually protected by the routers firewall against unwanted inbound traffic.
+With IPv6 some things have changed. Depending on your isp (different types of dualstack-lite and dualstack) you don't get a public IPv4 address anymore.
+Instead of one public IPv4 address you get a whole network with IPv6 addresses. Your devices share a common public prefix, usually with a length of 64bit or less.
+Your computers assign themself one or more addresses from that network(SLAAC) or they get it assigned(DHCPv6). They all are public, but usually protected by the routers firewall against unwanted inbound traffic.
 To use these addresses for remote access we need to do at least two things. 
 
 * Open the routers firewall or a particularly service/port for the device on the lan. There is no NAT anymore. (NAT = network address/port translation, where the IPv4 port forwarding is based on).
