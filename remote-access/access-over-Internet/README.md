@@ -15,7 +15,7 @@ Instead of one public IPv4 address you get a whole network with IPv6 addresses (
 Your computers get one or more addresses from that network. They all are public, but usually protected by the routers firewall against unwanted inbound traffic.
 To use these addresses for remote access we need to do at least two things. 
 
-* Open the routers firewall or a particularly service/port for the device on the lan (there is no nat anymore).
+* Open the routers firewall or a particularly service/port for the device on the lan. There is no NAT anymore. (NAT = network address/port translation, where the IPv4 port forwarding is based on).
 
 * Create one DNS name for that device (not for the routers IP address anymore).
 
