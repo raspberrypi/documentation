@@ -45,7 +45,7 @@ Returns the throttled state of the system. This is a bit pattern - a bit being s
 
 A value of zero indicates that none of the above conditions is true.
 
-To find the if one of these bits has been set, convert the value returned to binary, then number each bit along the top. You can then see which bits are set. For example:
+To find if one of these bits has been set, convert the value returned to binary, then number each bit along the top. You can then see which bits are set. For example:
 
 ``0x50000 = 0101 0000 0000 0000 0000``
 
