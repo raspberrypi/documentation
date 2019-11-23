@@ -60,7 +60,7 @@ From this we can see that bits 18 and 16 are set, indicating that the Pi has pre
 
 #### measure_temp
 
-Returns the temperature of the SoC as measured by the on-board temperature sensor
+Returns the temperature of the SoC as measured by the on-board temperature sensor.
 
 #### measure_clock [clock]
 
