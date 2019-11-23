@@ -51,8 +51,10 @@ To find if one of these bits has been set, convert the value returned to binary,
 
 Adding the bit numbers along the top we get:
 
-``19 18 17 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1
- 0  1  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0``
+```text
+19 18 17 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1
+ 0  1  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+```
 
 From this we can see that bits 18 and 16 are set, indicating that the Pi has previously been throttled due to under-voltage, but is not currently throttled for any reason.
 
