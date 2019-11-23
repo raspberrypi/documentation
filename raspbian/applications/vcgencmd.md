@@ -39,7 +39,7 @@ Returns the throttled state of the system. This is a bit pattern - a bit being s
 | 2   | Currently throttled |
 | 3   | Soft temperature limit active |
 | 16  | Under-voltage has occurred |
-| 17  | Arm frequency capped has occurred |
+| 17  | Arm frequency capping has occurred |
 | 18  | Throttling has occurred |
 | 19  | Soft temperature limit has occurred |
 
