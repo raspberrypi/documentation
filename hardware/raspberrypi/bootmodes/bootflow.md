@@ -4,9 +4,9 @@
 
 USB boot defaults on the Raspberry Pi 3 will depend on which version is being used. See this [page](./msd.md) for information on enabling USB boot modes when not enabled by default.
 
-When the BCM2837 boots, it uses two different sources to determine which boot modes to enable - firstly, the OTP is checked to see which boot modes are enabled. It then checks to see if GPIO boot mode is enabled. If GPIO boot mode is enabled, then the relevant GPIO lines are tested to select which of the OTP-enabled boot modes should be attempted. If GPIO boot mode is disabled, then the boot modes selected in the OTP are final, and no probing of the GPIO lines is necessary. Note that GPIO boot mode can only be used to select boot modes which are already enabled in the OTP. See [GPIO boot mode](gpio.md) for details on configuring GPIO boot mode. GPIO boot mode is disabled by default.
+When the BCM2837 boots, it uses two different sources to determine which boot modes to enable. Firstly, the OTP (one-time programmable) memory block is checked to see which boot modes are enabled. If the GPIO boot mode setting is enabled, then the relevant GPIO lines are tested to select which of the OTP-enabled boot modes should be attempted. Note that GPIO boot mode can only be used to select boot modes that are already enabled in the OTP. See [GPIO boot mode](gpio.md) for details on configuring GPIO boot mode. GPIO boot mode is disabled by default.
 
-Next the boot ROM checks each of the boot sources for a file called bootcode.bin; if it is successful it will load the code into the local 128K cache and jump to it. The overall boot mode process is as follows:
+Next, the boot ROM checks each of the boot sources for a file called bootcode.bin; if it is successful it will load the code into the local 128K cache and jump to it. The overall boot mode process is as follows:
 
 * BCM2837 boots
 * Read OTP to determine which boot modes to enable
@@ -43,7 +43,7 @@ NOTES:
 * MSD boot takes precedence over Ethernet boot.
 * It is no longer necessary for the first partition to be the FAT partition, as the MSD boot will continue to search for a FAT partition beyond the first one.
 * The boot ROM also now supports GUID partitioning and has been tested with hard drives partitioned using Mac, Windows, and Linux.
-* The LAN951x is detected using the Vendor ID 0x0424 and Product ID 0xec00: this is different to the standalone LAN9500 device which has a product ID of 0x9500 or 0x9e00.  To use the standalone LAN9500 an I2C EEPROM would need to be added to change these ID's to match the LAN9514. (Similarly for the LAN7500).
+* The LAN951x is detected using the Vendor ID 0x0424 and Product ID 0xec00: this is different to the standalone LAN9500 device, which has a product ID of 0x9500 or 0x9e00.  To use the standalone LAN9500, an I2C EEPROM would need to be added to change these IDs to match the LAN951x.
 
 The primary SD card boot mode is, as standard, set to be GPIOs 49-53. It is possible to boot from the secondary SD card on a second set of pins, i.e. to add a secondary SD card to the GPIO pins. However, we have not yet enabled this ability.
 
