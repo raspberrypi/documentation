@@ -92,7 +92,7 @@ and change the `pi` entry (or whichever usernames have superuser rights) to:
 autologin-user=alice
 ```
 
-This can also be done by using raspi-config, but you'll have to install it.
+This can also be done by using raspi-config which is recommended as it will disable autologin for the console as well.
 
 ## Make `sudo` require a password
 
