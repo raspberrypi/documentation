@@ -60,7 +60,7 @@ Once you have confirmed that the new account is working, you can delete the `pi`
 sudo pkill -u pi
 ```
 
-Please note that with the current Raspbian distribution, there are some aspects that require the `pi` user to be present. If you are unsure whether you will be affected by this, then leave the `pi` user in place. Work is being done to reduce the dependency on the `pi` user.
+Please note that with the current Raspbian distribution, there are some aspects that require the `pi` user to be present. If you are unsure whether you will be affected by this, then either leave the `pi` user in place or disable it. Work is being done to reduce the dependency on the `pi` user.
 
 To delete the `pi` user, type the following:
 
@@ -72,6 +72,24 @@ This command will delete the `pi` user but will leave the `/home/pi` folder. If 
 
 ```bash
 sudo deluser -remove-home pi
+```
+
+To disable the `pi` user, type the following:
+
+```bash
+sudo passwd -l pi
+```
+
+To disable autologin of the `pi` user, enter:
+
+```bash
+sudo nano /etc/lightdm/lightdm.conf
+```
+
+and change the `pi` entry (or whichever usernames have superuser rights) to:
+
+```bash
+autologin-user=alice
 ```
 
 ## Make `sudo` require a password
