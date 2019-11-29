@@ -34,7 +34,8 @@ sudo apt install rpi-eeprom
 If you wish to control when the updates are applied you can disable the systemd service from running automatically and run `rpi-eeprom-update` manually.
 
 ```
-# Prevent the service from running, this can be run before the package is installed to prevent it ever running automatically.
+# Prevent the service from running, this can be run before the
+# package is installed to prevent it ever running automatically.
 sudo systemctl mask rpi-eeprom-update
 
 # Enable it again
@@ -57,7 +58,7 @@ by the current bootloader.
 The images under `/lib/firmware/raspberrypi/bootloader` are part of the `rpi-eeprom` package and are only updated via `apt update`.
 
 ```
-rpi-eeprom-update
+sudo rpi-eeprom-update
 ```
 
 ### Reading the current EEPROM configuration
