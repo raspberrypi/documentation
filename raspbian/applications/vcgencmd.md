@@ -81,7 +81,7 @@ This returns the current frequency of the specified clock. The options are:
 | hdmi | HDMI |
 | dpi | Display Peripheral Interface |
 
-e.g. `vcgencmd measure_clock arm`.
+e.g. `vcgencmd measure_clock arm`
 
 #### measure_volts [block]
 
