@@ -12,9 +12,9 @@ The Raspberry Pi 4 Model B continues with the same PCB technology as the Raspber
 
 On the Raspberry Pi 4, firmware from late November 2019 onwards implements Dynamic Voltage and Frequency Scaling. This technique (outlined on Wikipedia [here](https://en.wikipedia.org/wiki/Dynamic_voltage_scaling)) allows the Pi4 to run at lower temperatures whilst still providing the same performance.
 
-Various clocks (e.g. ARM, Core, v3d, ISP, H264, HEVC) inside the SoC are monitored by the firmware, and whenever they are not running at full speed, the voltage supplied to the particular part of the chip driven by the clock is reduced relative to the reduction from full speed. In effect, only enough voltage is supplied to keep the block running correctly at the specific speed it is running at. This can result in significant reductions in power used by the SoC, and therefor the overall heat being produced.
+Various clocks (e.g. ARM, Core, v3d, ISP, H264, HEVC) inside the SoC are monitored by the firmware, and whenever they are not running at full speed, the voltage supplied to the particular part of the chip driven by the clock is reduced relative to the reduction from full speed. In effect, only enough voltage is supplied to keep the block running correctly at the specific speed it is running at. This can result in significant reductions in power used by the SoC, and therefore the overall heat being produced.
 
-in addition, a more stepped CPU governor is also used to produced more fine grained control of ARM core frequencies which means the DVFS is more effective. The steps are now 1500, 1000, 750, and 600. These steps can also help under throttling conditions, and mean that throttling all the way back to 600 is much less likely, giving an overalll increase in fully loaded performance.
+In addition, a more stepped CPU governor is also used to produce more fine grained control of ARM core frequencies which means the DVFS is more effective. The steps are now 1500, 1000, 750, and 600. These steps can also help under throttling conditions, and mean that throttling all the way back to 600 is much less likely, giving an overalll increase in fully loaded performance.
 
 ### Heatsinks
 
