@@ -15,7 +15,7 @@ Some of the more useful  commands are described below.
 
 #### vcos
 
-The `vcos` cammand has a number of sub commands.
+The `vcos` command has a number of sub commands.
 
 `version` Displays the build date and version of the firmware on the VideoCore.
 `log status` Displays the error log status of the various VideoCore software areas.
