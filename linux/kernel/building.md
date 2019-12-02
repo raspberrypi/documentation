@@ -84,6 +84,14 @@ also a Debian distribution, it means many aspects are similar, such as the comma
 
 You can either do this using VirtualBox (or VMWare) on Windows, or install it directly onto your computer. For reference, you can follow instructions online [at Wikihow](http://www.wikihow.com/Install-Ubuntu-on-VirtualBox).
 
+### Build dependencies
+
+First install the required build dependencies.
+
+```bash
+sudo apt install git bc bison flex libssl-dev
+```
+
 ### Install toolchain
 
 Use the following command to download the toolchain to the home folder:
