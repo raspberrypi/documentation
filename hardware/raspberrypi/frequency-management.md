@@ -14,7 +14,7 @@ On the Raspberry Pi 4B, firmware from late November 2019 onwards implements Dyna
 
 Various clocks (e.g. ARM, Core, V3D, ISP, H264, HEVC) inside the SoC are monitored by the firmware, and whenever they are not running at full speed, the voltage supplied to the particular part of the chip driven by the clock is reduced relative to the reduction from full speed. In effect, only enough voltage is supplied to keep the block running correctly at the specific speed it is running at. This can result in significant reductions in power used by the SoC, and therefore the overall heat being produced.
 
-In addition, a more stepped CPU governor is also used to produce more fine-grained control of ARM core frequencies, which means the DVFS is more effective. The steps are now 1500, 1000, 750, and 600. These steps can also help when the SoC is being throttled, and mean that throttling all the way back to 600 is much less likely, giving an overall increase in fully loaded performance.
+In addition, a more stepped CPU governor is also used to produce finer-grained control of ARM core frequencies, which means the DVFS is more effective. The steps are now 1500MHz, 1000MHz, 750MHz, and 600MHz. These steps can also help when the SoC is being throttled, and mean that throttling all the way back to 600MHz is much less likely, giving an overall increase in fully loaded performance.
 
 ### Heatsinks
 
