@@ -14,6 +14,26 @@ The DSI display is designed to work with Raspberry Pi models 2, 3 and 4 that hav
 
 LCD displays have an optimum viewing angle, and depending on how the screen is mounted it may be necessary to change the orientation of the display to give the best results. By default, the Raspberry Pi Touch Display and Raspberry Pi are set up to work best when viewed from slightly above, for example on a desktop. If viewing from below, you can physically rotate the display, and then tell the system software to compensate by running the screen upside down.
 
+### FKMS Mode
+
+FKMS mode is used by default on the Raspberry Pi 4B. FKMS uses the DRM/MESA libraries to provide graphics and 3D acceleration. 
+
+To set screen orientation when running the graphics desktop, select the `Screen Configuration` option from the `Preferences` menu. Right Click on the DSI display rectangle in the layout editor, select Orientation then the required option.
+
+To set screen orientation when in console mode, you will need to edit the kernel command line to pass the required orientation to the system. 
+```bash
+sudo nano /boot/cmdline
+```
+To rotate by 90, add the following to the cmdline, making sure everything is on the same line, do not add any carriage returns. Possible rotation values are 0,90,180 and 270.
+```
+video=DSI-1:800x480@60,rotate=90
+```
+NOTE:  In console mode is not possible to rotate the DSI display separately to the HDMI display, so if you have both attached they must both be set to the same value.
+
+### Legacy Graphics Mode
+
+Legacy graphics mode is used by default on all Raspberry Pi Models prior to the Raspberry Pi 4B, and can also be used on the Raspberry Pi 4B if required, by disabling FKMS mode by commenting out the FKMS line in `config.txt`.
+
 To flip the display, add, anywhere in the file `\boot\config.txt`, the following line:
 
 `lcd_rotate=2`
@@ -34,6 +54,9 @@ You can also rotate the display by adding the following to the `config.txt` file
 | 0x20000 | vertical flip |
 
 Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16MB GPU split.
+
+
+## Touchscreen orientation
 
 Additionally, you have the option to change the rotation of the touchscreen independently of the display itself by adding a `dtoverlay` instruction in `config.txt`, for example:
 
