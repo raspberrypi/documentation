@@ -18,7 +18,7 @@ LCD displays have an optimum viewing angle, and depending on how the screen is m
 
 FKMS mode is used by default on the Raspberry Pi 4B. FKMS uses the DRM/MESA libraries to provide graphics and 3D acceleration. 
 
-To set screen orientation when running the graphics desktop, select the `Screen Configuration` option from the `Preferences` menu. Right Click on the DSI display rectangle in the layout editor, select Orientation then the required option.
+To set screen orientation when running the graphical desktop, select the `Screen Configuration` option from the `Preferences` menu. Right click on the DSI display rectangle in the layout editor, select Orientation then the required option.
 
 To set screen orientation when in console mode, you will need to edit the kernel command line to pass the required orientation to the system. 
 ```bash
