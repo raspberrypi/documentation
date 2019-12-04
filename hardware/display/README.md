@@ -22,7 +22,7 @@ To set screen orientation when running the graphical desktop, select the `Screen
 
 To set screen orientation when in console mode, you will need to edit the kernel command line to pass the required orientation to the system. 
 ```bash
-sudo nano /boot/cmdline
+sudo nano /boot/cmdline.txt
 ```
 To rotate by 90, add the following to the cmdline, making sure everything is on the same line, do not add any carriage returns. Possible rotation values are 0,90,180 and 270.
 ```
