@@ -24,17 +24,17 @@ To set screen orientation when in console mode, you will need to edit the kernel
 ```bash
 sudo nano /boot/cmdline.txt
 ```
-To rotate by 90, add the following to the cmdline, making sure everything is on the same line, do not add any carriage returns. Possible rotation values are 0,90,180 and 270.
+To rotate by 90, add the following to the cmdline, making sure everything is on the same line, do not add any carriage returns. Possible rotation values are 0, 90, 180 and 270.
 ```
 video=DSI-1:800x480@60,rotate=90
 ```
-NOTE:  In console mode is not possible to rotate the DSI display separately to the HDMI display, so if you have both attached they must both be set to the same value.
+NOTE:  In console mode is not possible to rotate the DSI display separately to the HDMI display, so if you have both attached they must both be set to the same value. If different the results are unspecified. 
 
 ### Legacy Graphics Mode
 
 Legacy graphics mode is used by default on all Raspberry Pi Models prior to the Raspberry Pi 4B, and can also be used on the Raspberry Pi 4B if required, by disabling FKMS mode by commenting out the FKMS line in `config.txt`.
 
-To flip the display, add, anywhere in the file `\boot\config.txt`, the following line:
+To flip the display, add, anywhere in the file `/boot/config.txt`, the following line:
 
 `lcd_rotate=2`
 
@@ -44,7 +44,7 @@ You can also rotate the display by adding the following to the `config.txt` file
 
 - `display_lcd_rotate=x`, where `x` can be one of the folllowing:
 
-| display_hdmi_rotate | result |
+| display_lcd_rotate | result |
 | --- | --- |
 | 0 | no rotation |
 | 1 | rotate 90 degrees clockwise |
@@ -54,7 +54,6 @@ You can also rotate the display by adding the following to the `config.txt` file
 | 0x20000 | vertical flip |
 
 Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16MB GPU split.
-
 
 ## Touchscreen orientation
 
