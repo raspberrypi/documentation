@@ -2,7 +2,7 @@
 
 A powerful feature of the Raspberry Pi is the row of GPIO (general-purpose input/output) pins along the top edge of the board. A 40-pin GPIO header is found on all current Raspberry Pi boards (unpopulated on Pi Zero and Pi Zero W). Prior to the Pi 1 Model B+ (2014), boards comprised a shorter 26-pin header.
 
-![GPIO pins](images/gpio-pins-pi2.jpg)
+![GPIO pins](images/GPIO-Pinout-Diagram-2.png)
 
 Any of the GPIO pins can be designated (in software) as an input or output pin and used for a wide range of purposes.
 
