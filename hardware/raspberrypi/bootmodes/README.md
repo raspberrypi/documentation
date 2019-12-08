@@ -29,7 +29,7 @@ If you have a problem with a mass storage device still not working, even with th
 
 ## bootcode.bin UART enable (Pre Raspberry Pi 4B)
 
-For information on enabling the UART on the Pi4 bootloader, please see [this page](../booteeprom.md).
+For information on enabling the UART on the Pi4 bootloader, please see [this page](../bcm2711_bootloader_config.md).
 
 It is possible to enable an early stage UART to debug booting issues (useful with the above bootcode.bin only boot mode).  To do this, make sure you've got a recent version of the firmware (including bootcode.bin).  To check if UART is supported in your current firmware:
 
