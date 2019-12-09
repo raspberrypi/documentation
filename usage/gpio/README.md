@@ -6,7 +6,7 @@ A powerful feature of the Raspberry Pi is the row of GPIO (general-purpose input
 
 Any of the GPIO pins can be designated (in software) as an input or output pin and used for a wide range of purposes.
 
-![GPIO layout](images/gpio-numbers-pi2.png)
+![GPIO layout](images/GPIO.png)
 
 **Note: the numbering of the GPIO pins is not in numerical order; GPIO pins 0 and 1 are present on the board (physical pins 27 and 28) but are reserved for advanced use (see below).**
 
