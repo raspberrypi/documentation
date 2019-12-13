@@ -6,7 +6,7 @@ The Raspberry Pi Touch Display is an LCD display which connects to the Raspberry
 
 ## Board support
 
-The DSI display is designed to work with Raspberry Pi models 2, 3 and 4 that have mounting holes in a HAT footprint. Model 1 A/B boards are supported, but require additional mounting hardware to fit the HAT-dimensioned stand-offs on the display PCB.
+The DSI display is designed to work on all models of Raspberry Pi, however early models that do not have mounting holes (The Raspberry Pi 1 model A and B) will require additional mounting hardware to fit the HAT-dimensioned stand-offs on the display PCB.
 
 [Legacy support](legacy.md)
 
