@@ -45,23 +45,14 @@ You can now boot from an USB Mass Storage device in the same way as booting from
 
 ## Raspberry Pi 3B+, CM3+
 
-The Raspberry Pi 3B+ supports USB Mass Storage boot out of the box. The settings specific to the previous versions of Raspberry Pi do not have to be executed.
+The Raspberry Pi 3B+ and CM3+ support USB Mass Storage boot out of the box. The settings specific to the previous versions of Raspberry Pi do not have to be executed.
 
-This is verified using the following steps, this is the same (procedure)[../../../installation/installing-images/] as for SD cards though many alternative ways are functional:
+This is verified using the following steps, this is the same (procedure)[../../../installation/installing-images/] as for SD cards.
 
-1. Download Raspbian Buster Lite
+On Windows you may have to initialise a (clean) harddrive before it's visible and has a drive letter (which may be required to write the image).
 
-2. Unzip the .zip file (tested with 7zip, but any other should be fine) to an .img file.
-
-3. Initialise the drive (tested with MBR scheme, no partition/clean disk).
-
-4. Flash the .img file to the external drive (tested using Win32DiskImager on Windows 10)
-
-5. Unmount and disconnect the drive.
-
-6. Connect the drive to the Raspberry Pi and power up the Pi (mind extra USB power usage from external drive).
-
-7. After five to ten seconds, the Raspberry Pi should begin booting and show the rainbow splash screen on an attached display. Make sure that you do not have an SD card inserted in the Pi, since if you do, it will boot from that first.
+After preparing the storage device, connect the drive to the Raspberry Pi and power up the Pi (mind extra USB power usage from external drive).
+After five to ten seconds, the Raspberry Pi should begin booting and show the rainbow splash screen on an attached display. Make sure that you do not have an SD card inserted in the Pi, since if you do, it will boot from that first.
 
 ## Raspberry Pi 4B
 
