@@ -8,6 +8,12 @@ See the [documentation](./) for the boot sequence and alternative boot modes (Ne
 
 Note that "USB Mass Storage Boot" is different from "USB Device Boot Mode", the device boot mode allows a Raspberry Pi connected to a computer to boot using files on that computer.
 
+[Pi 2B v1.2 up to 3](./#raspberry-pi-2b-v12-3a-3b-cm3)
+
+[Pi 3B+ CM3+](#raspberry-pi-3b-cm3)
+
+[Unsupported devices](#unsupported-devices)
+
 ## Raspberry Pi 2B v1.2, 3A+, 3B, CM3
 
 On the Raspberry Pi 2B v1.2, 3A+, 3B, CM3, first USB [host boot mode](host.md) should be enabled. This is to allow Mass Storage Boot / Network boot (Network boot not supported on 3A+).
@@ -41,7 +47,7 @@ Check that the output `0x3020000a` is shown. If it is not, then the OTP bit has 
 
 If you wish, you can remove the `program_usb_boot_mode` line from config.txt, so that if you put the SD card into another Raspberry Pi, it won't program USB host boot mode. Make sure there is no blank line at the end of config.txt.
 
-You can now boot from an USB Mass Storage device in the same way as booting from SD, see the following paragraph for Raspberry Pi 3B+.
+You can now boot from an USB Mass Storage device in the same way as booting from SD, see the following paragraph for Raspberry Pi 3B+, CM3+.
 
 ## Raspberry Pi 3B+, CM3+
 
@@ -54,26 +60,15 @@ On Windows you may have to initialise a (clean) harddrive before it's visible an
 After preparing the storage device, connect the drive to the Raspberry Pi and power up the Pi (mind extra USB power usage from external drive).
 After five to ten seconds, the Raspberry Pi should begin booting and show the rainbow splash screen on an attached display. Make sure that you do not have an SD card inserted in the Pi, since if you do, it will boot from that first.
 
-## Raspberry Pi 4B
-
-Support for USB mass storage boot will be added to the Raspberry Pi 4B in a future software update.
-
-According to rpdom in a [forum post](https://www.raspberrypi.org/forums/viewtopic.php?t=243995#p1488036):
-
-The Pi4 uses a different boot loader to the earlier models. It is stored in eeprom on the board instead of part in the chip and part on the SD card. An update and instructions on how to apply it will be issued when the USB and network boot is ready.
-
 ## Unsupported devices
 
 Including Raspberry Pi 1, 2 (V1.1), Compute Module, Zero
 
 The boot code for USB is stored in the BCM2837 device only, so the Pi 1 A/B, Pi 2 B (v1.1), and Pi Zero will all require SD cards as they are based on the BCM2835 and BCM2836. This boot code is stored in ROM (except Pi 4B) which by definition cannot be changed.
 
+Regarding the Raspberry Pi 4, the bootcode is stored in [EEPROM](../booteeprom.md) and can be updated. Support for mass storage boot will be added in a future update. In the meanwhile you can use the alternative below. 
+
 An alternative is to use the 'special bootcode.bin-only boot mode' as described [here](./). This still requires/boots from an SD-card, but `bootcode.bin` is the only file read from the SD-Card.
-
-
-## Extra info
-
-https://www.raspberrypi.org/blog/pi-3-booting-part-i-usb-mass-storage-boot/
 
 ## Known issues
 
