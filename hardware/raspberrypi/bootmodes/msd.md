@@ -84,16 +84,6 @@ https://www.raspberrypi.org/blog/pi-3-booting-part-i-usb-mass-storage-boot/
 
 ## Known issues
 
-- The default timeout for checking bootable USB devices is 2 seconds. Some flash drives and rotational harddrives power up too slowly. It’s possible to extend this timeout to five seconds (add a new file 'timeout'to the SD card), but there are devices that fail to respond within this period as well, such as the Verbatim PinStripe 64GB. 
-- Some flash drives have a very specific protocol requirement that we don’t handle; as a result of this, we can’t talk to these drives correctly. An example of such a drive would be the Kingston Data Traveller 100 G3 32G.
-- 3.5" HDD's commonly require 12V as well as 5V and commonly draw too much current for the Pi's USB connections.
-
-## Known working devices
-
-| Device Name                                       | Reported by |
-|---|---|
-| Sandisk Cruzer Fit 16GB                           | [Henry Budden](http://www.raspberrypitutorials.yolasite.com/) |
-| Sandisk Cruzer Blade 16Gb                         | [Henry Budden](http://www.raspberrypitutorials.yolasite.com/) |
-| Samsung 32GB USB 3.0 drive                        | [Henry Budden](http://www.raspberrypitutorials.yolasite.com/) |
-| MeCo 16GB USB 3.0                                 | [Henry Budden](http://www.raspberrypitutorials.yolasite.com/) |
-| Kingston A400 240GB (external 2.0 USB case MA6116) Raspbian Buster Lite | Paul-Ver | 
+- The default timeout for checking bootable USB devices is 2 seconds. Some flash drives and rotational harddrives power up too slowly. It’s possible to extend this timeout to five seconds (add a new file 'timeout'to the SD card), but there are devices that fail to respond within this period as well.
+- Some flash drives have a very specific protocol requirement that we don’t handle; as a result of this, we can’t talk to these drives correctly.
+- 3.5" HDD's commonly require 12V as well as 5V and may draw too much current for the Pi's USB connections.
