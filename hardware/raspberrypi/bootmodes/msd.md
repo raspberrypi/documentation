@@ -47,7 +47,7 @@ You can now boot from an USB Mass Storage device in the same way as booting from
 
 The Raspberry Pi 3B+ and CM3+ support USB Mass Storage boot out of the box. The settings specific to the previous versions of Raspberry Pi do not have to be executed.
 
-This is verified using the following steps, this is the same (procedure)[../../../installation/installing-images/] as for SD cards.
+This is verified using the following steps, this is the same [procedure](../../../installation/installing-images/) as for SD cards.
 
 On Windows you may have to initialise a (clean) harddrive before it's visible and has a drive letter (which may be required to write the image).
 
