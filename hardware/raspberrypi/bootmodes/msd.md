@@ -4,7 +4,7 @@
 
 This tutorial explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or a USB hard disk. Note that this feature does not work with all USB mass storage devices.
 
-See the [documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/) for the boot sequence and alternative boot modes (Network, USB device, GPIO or SD boot).
+See the [documentation](./) for the boot sequence and alternative boot modes (Network, USB device, GPIO or SD boot).
 
 Note that "USB Mass Storage Boot" is different from "USB Device Boot Mode", the device boot mode allows a Raspberry Pi connected to a computer to boot using files on that computer.
 
@@ -13,11 +13,11 @@ Note that "USB Mass Storage Boot" is different from "USB Device Boot Mode", the 
 **These models are not supported for USB Mass Storage Boot.**
 The boot code for USB is stored in the BCM2837 device only, so the Pi 1 A/B, Pi 2 B (v1.1), and Pi Zero will all require SD cards as they are based on the BCM2835 and BCM2836. This boot code is stored in ROM (except Pi 4B) which by definition cannot be changed.
 
-An alternative is to use the 'special bootcode.bin-only boot mode' as described [here](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/). This still requires/boots from an SD-card but allows to run on an USB Device.
+An alternative is to use the 'special bootcode.bin-only boot mode' as described [here](./). This still requires/boots from an SD-card but allows to run on an USB Device.
 
 ## Raspberry Pi 2B v1.2, 3A+, 3B
 
-On the Raspberry Pi 2B v1.2, 3A+, 3B, first USB [host boot mode](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/host.md) should be enabled. This is to allow Mass Storage Boot / Network boot (Network boot not supported on 3A+).
+On the Raspberry Pi 2B v1.2, 3A+, 3B, first USB [host boot mode](host.md) should be enabled. This is to allow Mass Storage Boot / Network boot (Network boot not supported on 3A+).
 
 To enable USB host boot mode, the Raspberry Pi needs to be booted from an SD card with a special option to set the USB host boot mode bit in the OTP (one-time programmable) memory. 
 
@@ -54,7 +54,7 @@ You can now boot from an USB Mass Storage device in the same way as booting from
 
 The Raspberry Pi 3B+ supports USB Mass Storage boot out of the box. The settings specific to the previous versions of Raspberry Pi do not have to be executed.
 
-This is verified using the following steps, this is the same (procedure)[https://www.raspberrypi.org/documentation/installation/installing-images/] as for SD cards though many alternative ways are functional:
+This is verified using the following steps, this is the same (procedure)[../../../installation/installing-images/] as for SD cards though many alternative ways are functional:
 
 1. Download Raspbian Buster Lite
 
