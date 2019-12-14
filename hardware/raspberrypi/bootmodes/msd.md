@@ -66,7 +66,7 @@ Including Raspberry Pi 1, 2 (V1.1), Compute Module, Zero
 
 The boot code for USB is stored in the BCM2837 device only, so the Pi 1 A/B, Pi 2 B (v1.1), and Pi Zero will all require SD cards as they are based on the BCM2835 and BCM2836. This boot code is stored in ROM (except Pi 4B) which by definition cannot be changed.
 
-Regarding the Raspberry Pi 4, the bootcode is stored in [EEPROM](../booteeprom.md) and can be updated. Support for mass storage boot will be added in a future update. In the meanwhile you can use the alternative below. 
+Regarding the Raspberry Pi 4, the bootcode is stored in [EEPROM](../booteeprom.md) and can be updated. Support for mass storage boot will be added in a future update. In the meantime you can use the alternative below. 
 
 An alternative is to use the 'special bootcode.bin-only boot mode' as described [here](./). This still requires/boots from an SD-card, but `bootcode.bin` is the only file read from the SD-Card.
 
