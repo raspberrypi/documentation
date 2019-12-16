@@ -14,7 +14,7 @@ The card class determines the sustained write speed for the card; a class 4 card
 
 ## SD card physical size
 
-The original Raspberry Pi Model A and Raspberry Pi Model B require full-size SD cards. All newer models of Raspberry Pi require micro SD cards.
+The original Raspberry Pi Model A and Raspberry Pi Model B require full-size SD cards. From the Model B+ (2014) onwards, a micro SD card is required.
 
 ## Troubleshooting
 
