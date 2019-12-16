@@ -32,9 +32,9 @@ NOTE:  In console mode it is not possible to rotate the DSI display separately t
 
 ### Legacy Graphics Mode
 
-Legacy graphics mode is used by default on all Raspberry Pi Models prior to the Raspberry Pi 4B, and can also be used on the Raspberry Pi 4B if required, by disabling FKMS mode by commenting out the FKMS line in `config.txt`. Note, legacy mode on the Raspberry Pi 4B has no 3D acceleration so it should only be used if you have a specific reason for needing it.
+Legacy graphics mode is used by default on all Raspberry Pi models prior to the Raspberry Pi 4B, and can also be used on the Raspberry Pi 4B if required, by disabling FKMS mode by commenting out the FKMS line in `config.txt`. Note, legacy mode on the Raspberry Pi 4B has no 3D acceleration so it should only be used if you have a specific reason for needing it.
 
-To flip the display, add the following line to the file `/boot/config.txt`,:
+To flip the display, add the following line to the file `/boot/config.txt`:
 
 `lcd_rotate=2`
 
