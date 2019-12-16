@@ -28,7 +28,7 @@ To rotate by 90 degrees clockwise, add the following to the cmdline, making sure
 ```
 video=DSI-1:800x480@60,rotate=90
 ```
-NOTE:  In console mode is not possible to rotate the DSI display separately to the HDMI display, so if you have both attached they must both be set to the same value. If different the results are unspecified. 
+NOTE:  In console mode it is not possible to rotate the DSI display separately to the HDMI display, so if you have both attached they must both be set to the same value. If different the results are unspecified. 
 
 ### Legacy Graphics Mode
 
