@@ -15,7 +15,7 @@ Some of the more useful  commands are described below.
 
 #### vcos
 
-The `vcos` cammand has a number of sub commands
+The `vcos` command has a number of sub commands.
 
 `version` Displays the build date and version of the firmware on the VideoCore.
 `log status` Displays the error log status of the various VideoCore software areas.
@@ -30,7 +30,7 @@ Displays the enabled and detected state of the official camera. 1 means yes, 0 m
 
 #### get_throttled
 
-Returns the throttled state of the system. This is a bit pattern.
+Returns the throttled state of the system. This is a bit pattern - a bit being set indicates the following meanings:
 
 | Bit | Meaning |
 |:---:|---------|
@@ -39,15 +39,28 @@ Returns the throttled state of the system. This is a bit pattern.
 | 2   | Currently throttled |
 | 3   | Soft temperature limit active |
 | 16  | Under-voltage has occurred |
-| 17  | Arm frequency capped has occurred |
+| 17  | Arm frequency capping has occurred |
 | 18  | Throttling has occurred |
 | 19  | Soft temperature limit has occurred |
 
-For example, 0x50000 has bits 16 and 18 set, indicating that the Pi has previously been throttled due to under-voltage, but is not currently throttled for any reason.
+A value of zero indicates that none of the above conditions is true.
+
+To find if one of these bits has been set, convert the value returned to binary, then number each bit along the top. You can then see which bits are set. For example:
+
+``0x50000 = 0101 0000 0000 0000 0000``
+
+Adding the bit numbers along the top we get:
+
+```text
+19 18 17 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
+ 0  1  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+```
+
+From this we can see that bits 18 and 16 are set, indicating that the Pi has previously been throttled due to under-voltage, but is not currently throttled for any reason.
 
 #### measure_temp
 
-Returns the temperature of the SoC as measured by the on-board temperature sensor
+Returns the temperature of the SoC as measured by the on-board temperature sensor.
 
 #### measure_clock [clock]
 
