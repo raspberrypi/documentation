@@ -98,7 +98,7 @@ Displays the current voltages used by the specific block.
 
 Displays the content of the One Time Programmable (OTP) memory, which is part of the SoC. These are 32 bit values, indexed from 8 to 64. See the [OTP bits page](../../../hardware/raspberrypi/otpbits.md) for more details.
 
-#### get_mem
+#### get_mem type
 
 Reports on the amount of memory allocated to the ARM cores `vcgencmd get_mem arm` and the VC4 `vcgencmd get_mem gpu`.
 
@@ -136,13 +136,20 @@ Displays the current HDMI settings timings. See [Video Config](../../configurati
 
 Dump a list of all dispmanx items currently being displayed.
 
-#### display_power
+#### display_power [0 | 1 | -1] [display]
 
-Show current display power state, or set the display power state. `vcgencmd display_power 0` will turn off power to the current display. `vcgencmd display_power 1` will turn on power to the display. If no parameter is set, this will display the current power state. The final parameter is an optional display ID, as returned by `tvservice -l`, which allows a specific display to be turned on or off.
+Show current display power state, or set the display power state. `vcgencmd display_power 0` will turn off power to the current display. `vcgencmd display_power 1` will turn on power to the display. If no parameter is set, this will display the current power state. The final parameter is an optional display ID, as returned by `tvservice -l` or from the table below, which allows a specific display to be turned on or off.
 
 `vcgencmd display_power 0 7` will turn off power to display ID 7, which is HDMI 1 on a Raspberry Pi 4.
 
+| Display | ID |
+| --- | --- | 
+|Main LCD       | 0 |
+|Secondary LCD  | 1 | 
+|HDMI 0         | 2 |
+|Composite      | 3 | 
+|HDMI 1         | 7 |
 
+To determine if a specific display ID is on or off, use -1 as the first parameter.
 
-
-
+`vcgencmd display_power -1 7` will return 0 if display ID 7 is off, 1 if display ID 7 is on, or -1 if display ID 7 is in an unknown state, for example undetected. 
