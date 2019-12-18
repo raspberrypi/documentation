@@ -9,7 +9,7 @@ The Raspberry Pi can be used as a wireless access point, running a standalone ne
 
 Note that this documentation was tested on a Raspberry Pi 3, and it is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the forums.
 
-To add a Raspberry Pi-based access point to an existing network, see [this section](#internet-sharing).
+To add a Raspberry Pi-based access point to an existing network, see [this section](#internet-sharing) to use the Raspberry Pi as a bridge to the network router, or [this section](#internet-sharing-nm) to use the Raspberry Pi as a router.
 
 In order to work as an access point, the Raspberry Pi will need to have access point software installed, along with DHCP server software to provide connecting devices with a network address.
 
@@ -248,11 +248,33 @@ Gateway=192.168.10.1
 DNS=8.8.8.8
 ```
 
+This will assign a static IP address to the bridge. If you want to use DHCP:
+
+```
+sudo nano /etc/systemd/network/bridge-br0.network
+
+[Match]
+Name=br0
+
+[Network]
+DHCP=ipv4
+```
+
 Finally, restart systemd-networkd:
 
 ```
 sudo systemctl restart systemd-networkd
+sudo systemctl enable systemd-networkd
 ```
+In the DHCP case, also setup the systemd-resolved service:
+
+```
+sudo mv /etc/resolv.conf /etc/resolv.conf.bak
+sudo ln -s /lib/systemd/resolv.conf /etc/resolv.conf
+sudo systemctl restart systemd-resolved
+sudo systemctl enable systemd-resolved
+```
+
 
 You can also use the brctl tool to verify that a bridge br0 has been created.
 
@@ -299,3 +321,28 @@ ip addr
 ```
 
 The `wlan0` and `eth0` no longer have IP addresses, as they are now controlled by the bridge. It is possible to use a static IP address for the bridge if required, but generally, if the Raspberry Pi access point is connected to an ADSL router, the DHCP address will be fine.
+
+
+
+<a name="internet-sharing-nm"></a>
+## Using the Raspberry Pi as an access point to share an internet connection (Network Manager)
+
+The Network Manager package provides a quick method to setup an access point through the wlan0 device, sharing the wired internet connection on eth0:
+```
+sudo apt-get install network-manager
+sudo nmcli dev wifi hotspot ifname wlan0 ssid MyNetworkName password "MyPassword"
+sudo nmcli connection modify Hotspot connection.autoconnect yes
+sudo nmcli connection up Hotspot
+```
+The difference wrt the previous "bridge" method is that this setups a NAT with a local dhcp server. You should see a private IP address assigned to wlan0:
+```
+# ifconfig 
+wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.42.0.1  netmask 255.255.255.0  broadcast 10.42.0.255
+        inet6 fe80::dea6:32ff:fe35:b936  prefixlen 64  scopeid 0x20<link>
+```
+and the devices connected to the ap will also have IP addresses on the 10.42.0 network.
+This has the disadvantage that the connected hosts are not directly visible to the underlying network.
+On the other hand, the ap will work also on a network which filters the MAC addresses without the need to register each wireless device (only the MAC address of the eth0 device of the ap needs to be registered).
+So you can choose your prefreed method depending on your use case.
+
