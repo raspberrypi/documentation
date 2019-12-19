@@ -151,7 +151,7 @@ To use the 5 GHz band, you can change the operations mode from `hw_mode=g` to `h
 <a name="conclusion"></a>
 ## Run your new wireless access point
 
-It is now time restart your Raspberry Pi and verify that the wireless access point becomes automatically available.
+Now restart your Raspberry Pi and verify that the wireless access point becomes automatically available.
 
 ```
 sudo systemctl reboot
