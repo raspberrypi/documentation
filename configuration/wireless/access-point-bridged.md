@@ -58,7 +58,7 @@ Software installation is complete. We will configure the access point software l
 <a name="bridging"></a>
 ## Setup the network bridge
 
-A bridge network device in the Raspberry Pi will join the Ethernet and wireless networks using its built-in interfaces.
+A bridge network device running on the Raspberry Pi will connect the Ethernet and wireless networks using its built-in interfaces.
 
 ### Create a bridge device and populate the bridge
 
@@ -75,7 +75,7 @@ Name=br0
 Kind=bridge
 ```
 
-In order to bridge the Ethernet network with the wireless network, first add the built-in Ethernet interface (`eth0`) as bridge member by creating the following file:
+In order to bridge the Ethernet network with the wireless network, first add the built-in Ethernet interface (`eth0`) as a bridge member by creating the following file:
 
 ```
 sudo nano /etc/systemd/network/br0-member-eth0.network
@@ -102,7 +102,7 @@ sudo systemctl enable systemd-networkd
 
 Network interfaces that are members of a bridge device are never assigned an IP address, since they communicate via the bridge. The bridge device itself needs an IP address, so that you can reach your Raspberry Pi on the network.
 
-`dhcpcd`, the DHCP client on the Raspberry Pi, automatically requests an IP address for every active interface. So we need to block the `eth0` and `wlan0` interfaces from being processed, and let `dhcpcd` configure `br0` only via DHCP.
+`dhcpcd`, the DHCP client on the Raspberry Pi, automatically requests an IP address for every active interface. So we need to block the `eth0` and `wlan0` interfaces from being processed, and let `dhcpcd` configure only `br0` via DHCP.
 
 ```
 sudo nano /etc/dhcpcd.conf
