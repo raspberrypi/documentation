@@ -30,7 +30,7 @@ This documentation was tested on a Raspberry Pi 3B running a fresh installation 
 * Ensure you have administrative access to your Raspberry Pi. The network setup will be modified as part of the installation: local access, with screen and keyboard connected to your Raspberry Pi, is recommended.
 * Connect your Raspberry Pi to the Ethernet network and boot the Raspbian OS.
 * Ensure the Raspbian OS on your Raspberry Pi is [up to date](../../raspbian/updating.md) and reboot if packages were installed in the process.
-* Take note of the IP configuration of the ethernet network the Raspberry Pi is connected to: 
+* Take note of the IP configuration of the Ethernet network the Raspberry Pi is connected to: 
     * In this document, we assume IP network `10.10.0.0/24` is configured on the Ethernet LAN, and the Raspberry Pi is to manage IP network `192.168.4.0/24` for wireless clients.
     * Please select another IP network for wireless, e.g. `192.168.10.0/24`, in case IP network `192.168.4.0/24` is already in use by your Ethernet LAN.
 * Have a wireless client (laptop, smartphone, ...) ready to test your new access point.
@@ -63,14 +63,14 @@ sudo DEBIAN_FRONTEND=noninteractive apt install -y netfilter-persistent iptables
 Software installation is complete. We will configure the software packages later on.
 
 <a name="routing"></a>
-## Setup the network router
+## Set up the network router
 
 The Raspberry Pi will run and manage a standalone wireless network. It will also route between the wireless and Ethernet networks, providing internet access to wireless clients. If you prefer, you can choose to skip the routing, and run the wireless network in complete isolation. 
 
 ### Define the wireless interface IP configuration
 
 In this document, we assume IP network `10.10.0.0/24` is configured on an Ethernet LAN, and the Raspberry Pi will manage IP network `192.168.4.0/24` for wireless clients.
-**Note:** Please select another IP network for wireless, e.g. `192.168.10.0/24`, in case IP network `192.168.4.0/24` is already in use by your ethernet LAN.
+**Note:** Please select another IP network for wireless, e.g. `192.168.10.0/24`, if IP network `192.168.4.0/24` is already in use by your Ethernet LAN.
 
 The Raspberry Pi runs a DHCP server for the wireless network; this requires static IP configuration for the wireless interface (`wlan0`) in the Raspberry Pi. 
 The Raspberry Pi also acts as the router on the wireless network, and as is customary, we will give it the first IP address in the network: `192.168.4.1`.
@@ -94,7 +94,7 @@ interface wlan0
 This section configures the Raspberry Pi to let wireless clients access computers on the main (Ethernet) network, and from there the internet.
 **NOTE:** If you wish to block wireless clients from accessing the Ethernet network and the internet, skip this section. 
 
-To enable routing, i.e. allow traffic to flow from one network to the other in the Raspberry Pi, create a file using the following command, with the contents below:
+To enable routing, i.e. to allow traffic to flow from one network to the other in the Raspberry Pi, create a file using the following command, with the contents below:
 ```
 sudo nano /etc/sysctl.d/routed-ap.conf
 ```
