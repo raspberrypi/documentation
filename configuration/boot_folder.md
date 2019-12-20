@@ -41,19 +41,7 @@ When this file is present, SSH will be enabled on boot. The contents don't matte
 
 ### wpa_supplicant.conf
 
-This is the file to configure wireless network settings (if the hardware is capable of it). Edit the country code and the network part to fit your case.
-
-```
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-country=US
-
-network={
-     ssid="Your network name/SSID"
-     psk="Your WPA/WPA2 security key"
-     key_mgmt=WPA-PSK
-}
-```
+This is the file to configure wireless network settings (if the hardware is capable of it). Edit the country code and the network part to fit your case. More information on how to use this file can be found in [the `wireless/headless` section](./wireless/headless.md).
 
 ### Device Tree files
 
