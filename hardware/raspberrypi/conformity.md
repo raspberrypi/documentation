@@ -33,12 +33,12 @@ All Raspberry Pi products have undergone extensive compliance testing, and copie
 
 The PCBs used in Raspberry Pi devices adhere to UL94-V0. Note that this applies to the PCBs **only**. 
 
-## User Guides and Safety Leaflets 
+## Safety/User Guide Leaflets 
 
-| Model           | Safety Leaflet | User guide |
-|:---------------:|---------------:|:----------:|
-| A+/B+ | doc_SAFE_3plus.pdf | | 
-| 4B    | doc_SAFE_4b.pdf | |
+| Model           | Safety Leaflet |
+|:---------------:|---------------:|
+| A+/B+ | [Leaflet](doc_SAFE_3plus.pdf) |
+| 4B    | [Leaflet](doc_SAFE_4b.pdf) |
 
 
 
