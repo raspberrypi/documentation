@@ -37,8 +37,8 @@ The PCBs used in Raspberry Pi devices adhere to UL94-V0. Note that this applies 
 
 | Model           | Safety Leaflet |
 |:---------------:|:--------------:|
-| A+/B+ | [Leaflet](doc_SAFE_3plus.pdf) |
-| 4B    | [Leaflet](doc_SAFE_4b.pdf) |
+| A+/B+ | [Leaflet](./compliance/doc_SAFE_3plus_1p1.pdf) |
+| 4B    | [Leaflet](./compliance/doc_SAFE_4b_1p0.pdf) |
 
 
 
