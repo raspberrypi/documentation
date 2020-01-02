@@ -1,4 +1,4 @@
-# Product compliance
+# Product compliance and safety
 
 All Raspberry Pi products have undergone extensive compliance testing, and copies of the relevant certificates and conformity documents are available to download from the table below. 											
 											
@@ -32,6 +32,15 @@ All Raspberry Pi products have undergone extensive compliance testing, and copie
 ## Flammability rating
 
 The PCBs used in Raspberry Pi devices adhere to UL94-V0. Note that this applies to the PCBs **only**. 
+
+## User Guides and Safety Leaflets 
+
+| Model           | Safety Leaflet | User guide |
+|:---------------:|---------------:|:----------:|
+| A+/B+ | doc_SAFE_3plus.pdf | | 
+| 4B    | doc_SAFE_4b.pdf | |
+
+
 
 ## The Raspberry Pi Integrator Programme
 
