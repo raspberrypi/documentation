@@ -45,12 +45,18 @@ The first set of Raspberry Pi revisions were given sequential hex revision codes
 With the launch of the Raspberry Pi 2, new-style revision codes were introduced. Rather than being sequential, each bit of the hex code represents a piece of information about the revision:
 
 ```
-uuuuuuuuFMMMCCCCPPPPTTTTTTTTRRRR
+NOQuuuuuFMMMCCCCPPPPTTTTTTTTRRRR
 ```
 
 | Part     | Represents   | Options                    |
 | -------- | ------------ | -------------------------- |
-| uuuuuuuu | Unused       | Unused                     |
+| N        | Overvoltage  | 0: Overvoltage enabled     |
+|          |              | 1: Overvoltage disabled    |
+| O        | OTP Program  | 0: OTP programming enabled |
+|          |              | 1: OTP programming disabled |
+| Q        | OTP Read     | 0: OTP reading enabled     |
+|          |              | 1: OTP reading disabled    |
+| uuuuu    | Unused       | Unused                     |
 | F        | New flag     | 1: new-style revision      |
 |          |              | 0: old-style revision      |
 | MMM      | Memory size  | 0: 256MB                  |
