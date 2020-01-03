@@ -52,9 +52,9 @@ NOQuuuuuFMMMCCCCPPPPTTTTTTTTRRRR
 | -------- | ------------ | -------------------------- |
 | N        | Overvoltage  | 0: Overvoltage enabled     |
 |          |              | 1: Overvoltage disabled    |
-| O        | OTP Program  | 0: OTP programming enabled |
+| O        | OTP Program<sup>1</sup>| 0: OTP programming enabled |
 |          |              | 1: OTP programming disabled |
-| Q        | OTP Read     | 0: OTP reading enabled     |
+| Q        | OTP Read<sup>1</sup>| 0: OTP reading enabled     |
 |          |              | 1: OTP reading disabled    |
 | uuuuu    | Unused       | Unused                     |
 | F        | New flag     | 1: new-style revision      |
@@ -91,6 +91,9 @@ NOQuuuuuFMMMCCCCPPPPTTTTTTTTRRRR
 |          |              | 10: CM3+                   |
 |          |              | 11: 4B                     |
 | RRRR     | Revision     | 0, 1, 2, etc.              |
+
+<sup>1</sup> Information on programming the OTP bits can be found [here](../../industrial/README.md) and [here](../otpbits.md)
+
 
 New-style revision codes in use:
 
