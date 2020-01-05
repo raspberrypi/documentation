@@ -38,6 +38,7 @@
 ### [Software](#pi-software)
 
 - What operating system (OS) does it use?
+- Can I run Windows 10 on the Raspberry Pi?
 - Updates? Upgrades? What do I do?
 - I heard about something called `rpi-update`. When should I use that?
 - The processors on the latest Raspberry Pi models are 64-bit, but I cannot find an official 64-bit OS.
