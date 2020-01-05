@@ -278,6 +278,11 @@ You should not need to use a heatsink, as the chip used in the Raspberry Pi is e
 ### What operating system does it use?
 The recommended distribution (distro) is Raspbian, which is specifically designed for the Raspberry Pi and which our engineers are constantly optimising. It is, however, a straightforward process to replace the root partition on the SD card with another Arm Linux distro, so we encourage you to try out several distros to see which one you like the most. There are several other distros available on our [downloads](https://www.raspberrypi.org/downloads) page. The OS is stored on the SD card.
 
+### Can I run Windows 10 on the Raspberry Pi?
+You cannot run Windows 10 on the Raspberry Pi. There is however a special "Internet of Things" version of Windows 10 that runs on the Raspberry Pi 3B and 3B+, called Windows 10 IoT. Windows 10 IoT does not have a graphical desktop, and is intended for use in embedded devices.
+
+You may see reference to Windows 10 running on the Raspberry Pi online. This is because the community have devised a way to run regular Windows 10 on the Raspberry Pi. Although it will run, it runs extremely slowly so is not of any real use. Rather, it is a proof-of-concept. Microsoft do not sanction running Windows 10 on the Raspberry Pi.
+
 ### Updates? Upgrades? What do I do?
 
 It's important to keep your system up to date with the latest security updates, as well as bug fixes for any applications you might be using. You can easily do this by opening a terminal window and running the following two commands:
