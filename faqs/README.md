@@ -42,7 +42,7 @@
 - Updates? Upgrades? What do I do?
 - I heard about something called `rpi-update`. When should I use that?
 - The processors on the latest Raspberry Pi models are 64-bit, but I cannot find an official 64-bit OS.
-- Will it run WINE (or Windows, or other x86 software)?
+- Can I run PC software on the Raspberry Pi?
 - Will it run the Windows 8 Arm edition?
 - Will it run Android or Android Things?
 - Will it run old software?
@@ -301,9 +301,11 @@ Do not use `rpi-update` unless you have been recommended to do so by a Raspberry
 
 Raspberry Pi do not currently provide an official 64-bit OS, for a number of reasons. Firstly, since we still sell devices that are 32-bit, we would need to support two separate distributions, and at the moment we do not have the support capacity. Secondly, building a full 64-bit OS would require a considerable amount of work to, for example, fix the interfacing to the 32-bit Videocore GPU. There are third-party 64-bit operating systems available, but they do not have the full support for the GPU that would be a requirement for an official release.
 
-### Will it run Wine or Windows, or other x86 software?
+### Can I run PC software on the Raspberry Pi?
 
-In general, this is not possible with most versions of the Raspberry Pi. Some people have put Windows 3.1 on the Raspberry Pi inside an x86 CPU emulator in order to use specific applications, but trying to use a version of Windows even as recent as Windows 98 can take hours to boot into, and may take several more hours to update your cursor every time you try to move it. We don't recommend it! As of summer 2015, a version of Windows 10 is available for use on the Raspberry Pi 2 and 3. This is an entirely new version of the operating system designed exclusively for embedded use, dubbed the Windows 10 Internet of Things (IoT) Core. It does not include the user interface (shell) or the desktop operating system.
+It depends. Most software is designed to run on the x86 or x64 family of processors. The Raspberry Pi uses a different processor architecture called ARM. You usually need to use some kind of emulation to run PC software on the Raspberry Pi, unless you have access to the source code and can recompile it work ARM. Linux software is often open-source so can usually be recompiled quite easily.
+
+Running software through emulation makes it run much slower than it would on a PC. You can certainly run Windows 98, for example, on the Raspberry Pi , but more recent applications and operating systems tend not to work at a usable speed. If you cannot get a particular application to work on the Raspberry Pi, try finding a Linux-based alternative that can run on ARM.
 
 ### Will it run the Windows 8 Arm edition?
 
