@@ -42,7 +42,6 @@
 - I heard about something called `rpi-update`. When should I use that?
 - The processors on the latest Raspberry Pi models are 64-bit, but I cannot find an official 64-bit OS.
 - Will it run WINE (or Windows, or other x86 software)?
-- Will it run the Windows 8 Arm edition?
 - Will it run Android or Android Things?
 - Will it run old software?
 - My `.exe` file won't run!
@@ -298,10 +297,6 @@ Raspberry Pi do not currently provide an official 64-bit OS, for a number of rea
 ### Will it run Wine or Windows, or other x86 software?
 
 In general, this is not possible with most versions of the Raspberry Pi. Some people have put Windows 3.1 on the Raspberry Pi inside an x86 CPU emulator in order to use specific applications, but trying to use a version of Windows even as recent as Windows 98 can take hours to boot into, and may take several more hours to update your cursor every time you try to move it. We don't recommend it! As of summer 2015, a version of Windows 10 is available for use on the Raspberry Pi 2 and 3. This is an entirely new version of the operating system designed exclusively for embedded use, dubbed the Windows 10 Internet of Things (IoT) Core. It does not include the user interface (shell) or the desktop operating system.
-
-### Will it run the Windows 8 Arm edition?
-
-No. Most models of Raspberry Pi lack the minimum memory and CPU requirements to support Windows 8 Arm edition. The Raspberry Pi also lacks the appropriate axis sensors, and there are many other limiting factors which mean that running Windows 8 Arm edition is not possible.
 
 ### Will it run Android or Android Things?
 
