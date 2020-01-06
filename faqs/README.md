@@ -301,15 +301,17 @@ Do not use `rpi-update` unless you have been recommended to do so by a Raspberry
 
 Raspberry Pi do not currently provide an official 64-bit OS, for a number of reasons. Firstly, since we still sell devices that are 32-bit, we would need to support two separate distributions, and at the moment we do not have the support capacity. Secondly, building a full 64-bit OS would require a considerable amount of work to, for example, fix the interfacing to the 32-bit Videocore GPU. There are third-party 64-bit operating systems available, but they do not have the full support for the GPU that would be a requirement for an official release.
 
-### Can I run PC software on the Raspberry Pi?
+### Can I run PC or Mac software on the Raspberry Pi?
 
-It depends. Most software is designed to run on the x86 or x64 family of processors. The Raspberry Pi uses a different processor architecture called ARM. You usually need to use some kind of emulation to run PC software on the Raspberry Pi, unless you have access to the source code and can recompile it work ARM. Linux software is often open-source so can usually be recompiled quite easily.
+It is not possible to run Mac software on the Raspberry Pi.
 
-Running software through emulation makes it run much slower than it would on a PC. You can certainly run Windows 98, for example, on the Raspberry Pi , but more recent applications and operating systems tend not to work at a usable speed. If you cannot get a particular application to work on the Raspberry Pi, try finding a Linux-based alternative that can run on ARM.
+You cannot run Windows software *directly* on the Raspberry Pi. It is sometimes possible to use emulation software to run Windows applications on the Raspberry Pi, but the use of emulation makes it run much slower. For example, Windows 98 runs reasonably well on the Raspberry Pi using an emulator called QEMU, however more recent Windows software runs too slowly to be useful on the Raspberry Pi.
 
-### Will it run the Windows 8 Arm edition?
+Most Linux software will run on the Raspberry Pi, although note that since almost all Linux software is compiled for PCs, you need to find either an ARM-specific version of the software, or have access to the source code so that you can compile it yourself.
 
-No. Most models of Raspberry Pi lack the minimum memory and CPU requirements to support Windows 8 Arm edition. The Raspberry Pi also lacks the appropriate axis sensors, and there are many other limiting factors which mean that running Windows 8 Arm edition is not possible.
+### Will it run the Windows 8 ARM edition?
+
+No. Most models of Raspberry Pi lack the minimum memory and CPU requirements to support Windows 8 ARM edition. The Raspberry Pi also lacks the appropriate axis sensors, and there are many other limiting factors which mean that running Windows 8 Arm edition is not possible.
 
 ### Will it run Android or Android Things?
 
