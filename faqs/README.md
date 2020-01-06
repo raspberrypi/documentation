@@ -305,9 +305,9 @@ Raspberry Pi do not currently provide an official 64-bit OS, for a number of rea
 
 It is not possible to run Mac software on the Raspberry Pi.
 
-You cannot run Windows software *directly* on the Raspberry Pi. It is sometimes possible to use emulation software to run Windows applications on the Raspberry Pi, but the use of emulation makes it run much slower. For example, Windows 98 runs reasonably well on the Raspberry Pi using an emulator called QEMU, however more recent Windows software runs too slowly to be useful on the Raspberry Pi.
+You cannot run Windows software *directly* on the Raspberry Pi. It is sometimes possible to use emulation software to run Windows applications on the Raspberry Pi, but the use of emulation makes it run much more slowly. For example, Windows 98 runs reasonably well on the Raspberry Pi using an emulator called QEMU, however more recent Windows software runs too slowly to be useful on the Raspberry Pi.
 
-Most Linux software will run on the Raspberry Pi, although note that since almost all Linux software is compiled for PCs, you need to find either an ARM-specific version of the software, or have access to the source code so that you can compile it yourself.
+There is a wealth of Linux software available directly on the Raspberry Pi itself. By default, Raspbian comes installed with the most commonly used applications. If you need to install something else, use the "Add / Remove Software" application. You can also use the `apt` command (see the man page using `man apt` for more information). Linux software binaries available elsewhere is usually compiled for the x86 and x64 architectures, so cannot be used on the Raspberry Pi since it uses the ARM architecture. However, if the source code is available, you can compile an ARM-specific version yourself.
 
 ### Will it run the Windows 8 ARM edition?
 
