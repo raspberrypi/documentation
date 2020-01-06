@@ -99,7 +99,7 @@ This is probably also a side-effect of overscan being enabled, try the solution 
 
 ### My screen isn't working with my old Model B or Model A Pi
 
-The Model A or B Pi need a couple of extra connections, and an extra line of config. Please see section "Attaching to Model A/B boards" of [the main display page](README.md).
+The Model A or B Pi need a couple of extra connections, and an extra line of config. Please see [the legacy display support page](legacy.md).
 
 ### Some windows are cut off at the bottom of the screen so I can't use them
 
