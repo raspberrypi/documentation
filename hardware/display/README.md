@@ -12,7 +12,7 @@ The DSI display is designed to work with all models of Raspberry Pi, however ear
 
 ## Physical Installation 
 
-The following image shows how to attach the Raspbery Pi to the back of the Touch Display (if required), and how to connect both the data (Ribbon cable) and power (Red/Black wires) from the Raspberry Pi to the display. If you are not attaching the Raspberry Pi to the back of the display, take extra care when attaching the ribbon cable to ensure it is the correct way round. The black and red power lines should be attached to the GND and 5v pins respectively.
+The following image shows how to attach the Raspberry Pi to the back of the Touch Display (if required), and how to connect both the data (Ribbon cable) and power (Red/Black wires) from the Raspberry Pi to the display. If you are not attaching the Raspberry Pi to the back of the display, take extra care when attaching the ribbon cable to ensure it is the correct way round. The black and red power lines should be attached to the GND and 5v pins respectively.
 
 ![DSI Display Connections](GPIO_power-500x333.jpg "DSI Display Connections")
 
