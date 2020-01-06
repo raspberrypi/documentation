@@ -10,6 +10,12 @@ The DSI display is designed to work with all models of Raspberry Pi, however ear
 
 [Legacy support for Raspberry Pi 1 Model A/B](legacy.md)
 
+## Physical Installation 
+
+The following image shows how to attach the Raspbery Pi to the back of the Touch Display (if required), and how to connect both the data (Ribbon cable) and power (Red/Black wires) from the Raspberry Pi to the display. If you are not attaching the Raspberry Pi to the back of the display, take extra care when attaching the ribbon cable to ensure it is the correct way round. The black and red power lines should be attached to the GND and 5v pins respectively.
+
+![DSI Display Connections](GPIO_power-500x333.jpg "DSI Display Connections")
+
 ## Screen orientation
 
 LCD displays have an optimum viewing angle, and depending on how the screen is mounted it may be necessary to change the orientation of the display to give the best results. By default, the Raspberry Pi Touch Display and Raspberry Pi are set up to work best when viewed from slightly above, for example on a desktop. If viewing from below, you can physically rotate the display, and then tell the system software to compensate by running the screen upside down.
