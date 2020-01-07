@@ -184,7 +184,7 @@ Now restart your Raspberry Pi and verify that the wireless access point becomes 
 ```
 sudo systemctl reboot
 ```
-Once your Raspberry Pi has restarted, search for WiFi networks with your wireless client. The network SSID you specified in file `/etc/hostapd/hostapd.conf` should now be present, and it should be accessible with the specified password.
+Once your Raspberry Pi has restarted, search for wireless networks with your wireless client. The network SSID you specified in file `/etc/hostapd/hostapd.conf` should now be present, and it should be accessible with the specified password.
 
 If SSH is enabled on the Raspberry Pi, it should be possible to connect to it from your wireless client as follows, assuming the `pi` account is present: `ssh pi@192.168.4.1` or `ssh pi@gw.wlan`
 
