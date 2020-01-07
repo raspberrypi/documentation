@@ -43,7 +43,6 @@
 - I heard about something called `rpi-update`. When should I use that?
 - The processors on the latest Raspberry Pi models are 64-bit, but I cannot find an official 64-bit OS.
 - Can I run PC software on the Raspberry Pi?
-- Will it run the Windows 8 Arm edition?
 - Will it run Android or Android Things?
 - Will it run old software?
 - My `.exe` file won't run!
@@ -308,10 +307,6 @@ It is not possible to run Mac software on the Raspberry Pi.
 You cannot run Windows software *directly* on the Raspberry Pi. It is sometimes possible to use emulation software to run Windows applications on the Raspberry Pi, but the use of emulation makes it run much more slowly. For example, Windows 98 runs reasonably well on the Raspberry Pi using an emulator called QEMU, however more recent Windows software runs too slowly to be useful on the Raspberry Pi.
 
 There is a wealth of Linux software available directly on the Raspberry Pi itself. By default, Raspbian comes installed with the most commonly used applications. If you need to install something else, use the "Add / Remove Software" application. You can also use the `apt` command - see [APT](../linux/software/apt.md). Linux software binaries available elsewhere are usually compiled for the x86 and x64 architectures, so cannot be used on the Raspberry Pi since it uses the ARM architecture. However, if the source code is available, you can compile an ARM-specific version yourself.
-
-### Will it run the Windows 8 ARM edition?
-
-No. Most models of Raspberry Pi lack the minimum memory and CPU requirements to support Windows 8 ARM edition. The Raspberry Pi also lacks the appropriate axis sensors, and there are many other limiting factors which mean that running Windows 8 Arm edition is not possible.
 
 ### Will it run Android or Android Things?
 
