@@ -32,7 +32,7 @@ This documentation was tested on a Raspberry Pi 3B running a fresh installation 
 * Ensure the Raspbian OS on your Raspberry Pi is [up to date](../../raspbian/updating.md) and reboot if packages were installed in the process.
 * Take note of the IP configuration of the Ethernet network the Raspberry Pi is connected to: 
     * In this document, we assume IP network `10.10.0.0/24` is configured on the Ethernet LAN, and the Raspberry Pi is to manage IP network `192.168.4.0/24` for wireless clients.
-    * Please select another IP network for wireless, e.g. `192.168.10.0/24`, in case IP network `192.168.4.0/24` is already in use by your Ethernet LAN.
+    * Please select another IP network for wireless, e.g. `192.168.10.0/24`, if IP network `192.168.4.0/24` is already in use by your Ethernet LAN.
 * Have a wireless client (laptop, smartphone, ...) ready to test your new access point.
 
 <a name="software-install"></a>
