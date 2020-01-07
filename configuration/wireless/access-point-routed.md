@@ -65,7 +65,7 @@ Software installation is complete. We will configure the software packages later
 <a name="routing"></a>
 ## Set up the network router
 
-The Raspberry Pi will run and manage a standalone wireless network. It will also route between the wireless and Ethernet networks, providing internet access to wireless clients. If you prefer, you can choose to skip the routing, and run the wireless network in complete isolation. 
+The Raspberry Pi will run and manage a standalone wireless network. It will also route between the wireless and Ethernet networks, providing internet access to wireless clients. If you prefer, you can choose to skip the routing by skipping the section "Enable routing and IP masquerading" below, and run the wireless network in complete isolation. 
 
 ### Define the wireless interface IP configuration
 
