@@ -90,7 +90,7 @@ Name=eth0
 Bridge=br0
 ```
 
-**Note:** The access point software will add the wireless interface `wlan0` to the bridge when the service starts. There is no need to create a file for that interface. This situation is particular to WiFi network interfaces.
+**Note:** The access point software will add the wireless interface `wlan0` to the bridge when the service starts. There is no need to create a file for that interface. This situation is particular to wireless LAN interfaces.
 
 Now enable the `systemd-networkd` service to create and populate the bridge when your Raspberry Pi boots:
 
@@ -156,7 +156,7 @@ Now restart your Raspberry Pi and verify that the wireless access point becomes 
 ```
 sudo systemctl reboot
 ```
-Once your Raspberry Pi has restarted, search for WiFi networks with your wireless client. The network SSID you specified in file `/etc/hostapd/hostapd.conf` should now be present, and it should be accessible with the specified password.
+Once your Raspberry Pi has restarted, search for wireless networks with your wireless client. The network SSID you specified in file `/etc/hostapd/hostapd.conf` should now be present, and it should be accessible with the specified password.
 
 If your wireless client has access to the local network and the internet, congratulations on your new access point!
 
