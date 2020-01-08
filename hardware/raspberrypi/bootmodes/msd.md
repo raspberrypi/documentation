@@ -63,4 +63,4 @@ The Raspberry Pi 4's bootcode is stored in [EEPROM](../booteeprom.md) and can be
 
 - The default timeout for checking bootable USB devices is 2 seconds. Some flash drives and rotational harddrives power up too slowly. It’s possible to extend this timeout to five seconds (add a new file `timeout` to the SD card), but there are devices that fail to respond within this period as well.
 - Some flash drives have a very specific protocol requirement that is not handled by the bootcode and may thus be incompatible.
-- Lack of power can be an issue, so it is recommended to use a powered USB hub, particuarly if you are attaching more than one storage device to the Raspberry Pi. If your device has its own power supply, then use that.
+- Lack of power can be an issue, so it is recommended to use a powered USB hub, particularly if you are attaching more than one storage device to the Raspberry Pi. If your device has its own power supply, then use that.
