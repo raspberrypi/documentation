@@ -27,7 +27,7 @@ The `git clone` command above will download the current active branch (the one w
 To download a different branch (again with no history), use the `--branch` option:
 
 ```bash
-git clone --depth=1 --branch rpi-4.18.y https://github.com/raspberrypi/linux
+git clone --depth=1 --branch rpi-4.19.y https://github.com/raspberrypi/linux
 ```
 
 Refer to the [original GitHub repository](https://github.com/raspberrypi/linux) for information about the available branches.
