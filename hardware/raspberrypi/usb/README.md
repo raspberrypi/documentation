@@ -28,9 +28,9 @@ OTG in general supports communication to all types of USB device, but to provide
 <a name="overview_pi4"></a>
 ## Overview for the Pi 4
 
-For the Pi 4, a fully-featured host controller drives the downstream USB ports. Downstream USB is provided by a Via Labs VL805 chip - that supports two USB 2.0 ports and two USB 3.0 ports. This is connected to the BCM2711 SoC using a PCIe link, which is extremely fast. Therefore, the Pi 4 does not have the speed constraints of previous models, which means very fast datarates, especially when using the USB 3.0 ports.
+For the Pi 4, a fully-featured host controller drives the downstream USB ports. Downstream USB is provided by a Via Labs VL805 chip - that supports two USB 2.0 ports and two USB 3.0 ports. This is connected to the BCM2711 SoC using a PCIe link, which is extremely fast. Therefore, the Pi 4 does not have the same speed constraints of previous models, which means very fast datarates, especially when using the USB 3.0 ports. There is one caveat when using the USB 2.0 ports. These two ports are connected via an internal hub which connects to the upstream PCIe via a single USB 2.0 bus. Therefor the two USB 2.0 ports share this one bus's bandwidth, giving a maximum combined bandwith for the USB 2.0 ports of 480MBits/s. Use `lsusb -t` to display how the USB devices and hubs are arranged. 
 
-It also means that almost all of the known issues with USB on previous models are no longer present.
+Most of the technical limitations of the USB on previous models are no longer present.
 
 The OTG hardware present on previous models of Pi is still available and it has moved to a single connection on the USB-C port. The OTG hardware is intended to be used in device-only mode on Pi 4.
 
