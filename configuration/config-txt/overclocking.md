@@ -50,7 +50,7 @@ This table describes the overvoltage settings for the various Pi models. The fir
 |---------------|-----------|
 | Default        | 500 |     
 | enable_tvout | 432 |
-| hdmi_enable_4kp60 | 600 |
+| hdmi_enable_4kp60 | 550 |
 
 ### force_turbo
 
