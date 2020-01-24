@@ -71,7 +71,7 @@ So for `wlan0`, we are going to provide IP addresses between 192.168.4.2 and 192
 
 There are many more options for dnsmasq; see the [dnsmasq documentation](http://www.thekelleys.org.uk/dnsmasq/doc.html) for more details.
 
-Start `dnsmasq` (it was stopped), it will use the updated configuration:
+Start `dnsmasq` (it was stopped), it will now use the updated configuration:
 ```
 sudo systemctl start dnsmasq
 ```
