@@ -8,9 +8,9 @@ If you wish to create a standalone wireless network, consider instead setting up
 ```
                                          +- RPi -------+
                                      +---+ Bridge      |
-                                     |   | WiFi AP     +-)))
+                                     |   | WLAN AP     +-)))
                                      |   | 192.168.1.2 |         +- Laptop ----+
-                                     |   +-------------+     (((-+ WiFi STA    |
+                                     |   +-------------+     (((-+ WLAN Client |
                  +- Router ----+     |                           | 192.168.1.5 |
                  | Firewall    |     |   +- PC#2 ------+         +-------------+
 (Internet)---WAN-+ DHCP server +-LAN-+---+ 192.168.1.3 |
@@ -21,7 +21,7 @@ If you wish to create a standalone wireless network, consider instead setting up
                                          +-------------+
 ```
 
-A bridged wireless access point can be created using the inbuilt wireless features of the Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access point mode.
+A bridged wireless access point can be created using the inbuilt wireless features of the Raspberry Pi 4, Raspberry Pi 3B, Raspberry Pi 3A+/3B+ or Raspberry Pi Zero W/WH, or by using a suitable USB wireless dongle that supports access point mode.
 It is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the [forums](https://www.raspberrypi.org/forums/).
 
 This documentation was tested on a Raspberry Pi 3B running a fresh installation of Raspbian Buster. 
@@ -117,7 +117,7 @@ Interface `br0` will be configured in accordance with the defaults via DHCP; no 
 <a name="ap-config"></a>
 ## Configure the access point software
 
-Create the `hostapd` configuration file, located at `/etc/hostapd/hostapd.conf`, to add the various parameters for your wireless network. 
+Create the `hostapd` configuration file, located at `/etc/hostapd/hostapd.conf`, to add the various parameters for your new wireless network. 
 
 ```
 sudo nano /etc/hostapd/hostapd.conf
@@ -143,11 +143,10 @@ rsn_pairwise=CCMP
 Note the lines `interface=wlan0` and `bridge=br0`: these direct `hostapd` to add the `wlan0` interface as a bridge member to `br0` when the access point starts, completing the bridge between Ethernet and wireless.
 
 To use the 5 GHz band, you can change the operations mode from `hw_mode=g` to `hw_mode=a`. Possible values for `hw_mode` are:
- - a = IEEE 802.11a (5 GHz)
+ - a = IEEE 802.11a (5 GHz) (Raspberry Pi 3B+ onwards)
  - b = IEEE 802.11b (2.4 GHz)
  - g = IEEE 802.11g (2.4 GHz)
- - ad = IEEE 802.11ad (60 GHz)
-
+ 
 <a name="conclusion"></a>
 ## Run your new wireless access point
 
@@ -158,6 +157,6 @@ sudo systemctl reboot
 ```
 Once your Raspberry Pi has restarted, search for wireless networks with your wireless client. The network SSID you specified in file `/etc/hostapd/hostapd.conf` should now be present, and it should be accessible with the specified password.
 
-If your wireless client has access to the local network and the internet, congratulations on your new access point!
+If your wireless client has access to the local network and the internet, congratulations on setting up your new access point!
 
 If you encounter difficulties, contact the [forums](https://www.raspberrypi.org/forums/) for assistance. Please refer to this page in your message.
