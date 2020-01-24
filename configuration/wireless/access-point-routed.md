@@ -7,7 +7,7 @@ If you wish to extend an existing Ethernet network to wireless clients, consider
 ```
                                          +- RPi -------+
                                      +---+ 10.10.0.2   |          +- Laptop ----+
-                                     |   |     WiFi AP +-)))  (((-+ WiFi STA    |
+                                     |   |     WLAN AP +-)))  (((-+ WLAN Client |
                                      |   | 192.168.4.1 |          | 192.168.4.2 |
                                      |   +-------------+          +-------------+
                  +- Router ----+     |
@@ -31,7 +31,7 @@ This documentation was tested on a Raspberry Pi 3B running a fresh installation 
 * Connect your Raspberry Pi to the Ethernet network and boot the Raspbian OS.
 * Ensure the Raspbian OS on your Raspberry Pi is [up to date](../../raspbian/updating.md) and reboot if packages were installed in the process.
 * Take note of the IP configuration of the Ethernet network the Raspberry Pi is connected to: 
-    * In this document, we assume IP network `10.10.0.0/24` is configured on the Ethernet LAN, and the Raspberry Pi is to manage IP network `192.168.4.0/24` for wireless clients.
+    * In this document, we assume IP network `10.10.0.0/24` is configured on the Ethernet LAN, and the Raspberry Pi is going to manage IP network `192.168.4.0/24` for wireless clients.
     * Please select another IP network for wireless, e.g. `192.168.10.0/24`, if IP network `192.168.4.0/24` is already in use by your Ethernet LAN.
 * Have a wireless client (laptop, smartphone, ...) ready to test your new access point.
 
@@ -68,9 +68,6 @@ Software installation is complete. We will configure the software packages later
 The Raspberry Pi will run and manage a standalone wireless network. It will also route between the wireless and Ethernet networks, providing internet access to wireless clients. If you prefer, you can choose to skip the routing by skipping the section "Enable routing and IP masquerading" below, and run the wireless network in complete isolation. 
 
 ### Define the wireless interface IP configuration
-
-In this document, we assume IP network `10.10.0.0/24` is configured on an Ethernet LAN, and the Raspberry Pi will manage IP network `192.168.4.0/24` for wireless clients.
-**Note:** Please select another IP network for wireless, e.g. `192.168.10.0/24`, if IP network `192.168.4.0/24` is already in use by your Ethernet LAN.
 
 The Raspberry Pi runs a DHCP server for the wireless network; this requires static IP configuration for the wireless interface (`wlan0`) in the Raspberry Pi. 
 The Raspberry Pi also acts as the router on the wireless network, and as is customary, we will give it the first IP address in the network: `192.168.4.1`.
@@ -121,7 +118,7 @@ Filtering rules are saved to the directory `/etc/iptables/`. If in the future yo
 
 ### Configure the DHCP and DNS services for the wireless network
 
-The DHCP and DNS services are provided by `dnsmasq`. The default configuration file serves as a template for all possible configuration options, when we only need a few. It is easier to start from an empty file. 
+The DHCP and DNS services are provided by `dnsmasq`. The default configuration file serves as a template for all possible configuration options, whereas we only need a few. It is easier to start from an empty file. 
 
 Rename the default configuration file and edit a new one:
 
@@ -142,7 +139,7 @@ address=/gw.wlan/192.168.4.1
 
 The Raspberry Pi will deliver IP addresses between `192.168.4.2` and `192.168.4.20`, with a lease time of 24 hours, to wireless DHCP clients. You should be able to reach the Raspberry Pi under the name `gw.wlan` from wireless clients.
 
-There are many more options for `dnsmasq`; see the default configuration file or the [online documentation](http://www.thekelleys.org.uk/dnsmasq/doc.html) for details.
+There are many more options for `dnsmasq`; see the default configuration file (`/etc/dnsmasq.conf`) or the [online documentation](http://www.thekelleys.org.uk/dnsmasq/doc.html) for details.
 
 <a name="ap-config"></a>
 ## Configure the access point software
