@@ -106,7 +106,7 @@ Reports on the amount of memory allocated to the ARM cores `vcgencmd get_mem arm
 
 #### codec_enabled [type]
 
-Reports whether the specified CODEC type is enabled. Possible options for type are AGIF, FLAC, H263, H264, MJPA, MJPB, MJPG, **MPG2**, MPG4, MVC0, PCM, THRA, VORB, VP6, VP8, **WMV9**, **WVC1**. Those highlighted currently require a paid for licence, except on the Pi4, where these hardware codecs are disabled in preference to software decoding, which requires no licence.
+Reports whether the specified CODEC type is enabled. Possible options for type are AGIF, FLAC, H263, H264, MJPA, MJPB, MJPG, **MPG2**, MPG4, MVC0, PCM, THRA, VORB, VP6, VP8, **WMV9**, **WVC1**. Those highlighted currently require a paid for licence, except on the Pi4, where these hardware codecs are disabled in preference to software decoding, which requires no licence. Note that because the H265 HW block on the Raspberry Pi4 is not part of the Videocore GPU, its status is not accessed via this command.
 
 #### get_config type | name
 
