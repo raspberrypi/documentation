@@ -10,7 +10,7 @@
 
 - `diskutil list`
 
-    Example (The SD card is /dev/disk2 - your disk and partition list may vary):
+    Example (the SD card is /dev/disk2 - your disk and partition list may vary):
 
     ```bash
     ❯ diskutil list
@@ -71,7 +71,7 @@ If you specify the wrong device in the instructions, you could overwrite your pr
 
     If the command reports `dd: bs: illegal numeric value`, change the block size `bs=1m` to `bs=1M`.
 
-    If the command reports `dd: /dev/rdiskN: Operation not permitted` you need to disable SIP before continuing.
+    If the command reports `dd: /dev/rdiskN: Operation not permitted`, you need to disable SIP before continuing.
 
     If the command reports the error `dd: /dev/rdiskN: Permission denied`, the partition table of the SD card is being protected against being overwritten by Mac OS.
     Erase the SD card's partition table using this command:
