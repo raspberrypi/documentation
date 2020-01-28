@@ -116,3 +116,4 @@ New-style revision codes in use:
 | a03111 | 4B                | 1.1      | 1GB   | Sony UK      |
 | b03111 | 4B                | 1.1      | 2GB   | Sony UK      |
 | c03111 | 4B                | 1.1      | 4GB   | Sony UK      |
+| c03112 | 4B                | 1.2      | 4GB   | Sony UK      |

@@ -6,29 +6,42 @@ The Raspberry Pi Touch Display is an LCD display which connects to the Raspberry
 
 ## Board support
 
-The DSI display is designed to work with Raspberry Pi models that have mounting holes in a HAT footprint. Model A/B boards are supported, but require additional mounting hardware to fit the HAT-dimensioned stand-offs on the display PCB.
+The DSI display is designed to work with all models of Raspberry Pi, however early models that do not have mounting holes (the Raspberry Pi 1 model A and B) will require additional mounting hardware to fit the HAT-dimensioned stand-offs on the display PCB.
 
-### Attaching to Model A/B boards
+## Physical Installation 
 
-The DSI connector on the Model A/B boards does not have the I2C connections required to talk to the touchscreen controller and DSI controller. You can work around this by using the additional set of jumper cables provided with the display kit to wire up the I2C bus on the GPIO pins to the display controller board.
+The following image shows how to attach the Raspberry Pi to the back of the Touch Display (if required), and how to connect both the data (ribbon cable) and power (red/black wires) from the Raspberry Pi to the display. If you are not attaching the Raspberry Pi to the back of the display, take extra care when attaching the ribbon cable to ensure it is the correct way round. The black and red power wires should be attached to the GND and 5v pins respectively.
 
-Using the jumper cables, connect SCL/SDA on the GPIO header to the horizontal pins marked SCL/SDA on the display board. We also recommend that you power the Model A/B via the GPIO pins using the jumper cables.
+![DSI Display Connections](GPIO_power-500x333.jpg "DSI Display Connections")
 
-For the GPIO header pinout, see [this diagram](http://pinout.xyz/).
+[Legacy support for Raspberry Pi 1 Model A/B](legacy.md)
 
-DSI display autodetection is disabled by default on these boards. To enable detection, add the following line to `/boot/config.txt`:
-
-`ignore_lcd=0`
-
-Power the setup via the `PWR IN` micro-USB connector on the display board. Do not power the setup via the Pi's micro-USB port: the input polyfuse's maximum current rating will be exceeded as the display consumes approximately 400mA.
-
-NB: With the display connected to the GPIO I2C pins, the GPU will assume control of the respective I2C bus. The host operating system should not access this I2C bus, as simultaneous use of the bus by both the GPU and Linux will result in sporadic crashes.
 
 ## Screen orientation
 
 LCD displays have an optimum viewing angle, and depending on how the screen is mounted it may be necessary to change the orientation of the display to give the best results. By default, the Raspberry Pi Touch Display and Raspberry Pi are set up to work best when viewed from slightly above, for example on a desktop. If viewing from below, you can physically rotate the display, and then tell the system software to compensate by running the screen upside down.
 
-To flip the display, add, anywhere in the file `\boot\config.txt`, the following line:
+### FKMS Mode
+
+FKMS mode is used by default on the Raspberry Pi 4B. FKMS uses the DRM/MESA libraries to provide graphics and 3D acceleration. 
+
+To set screen orientation when running the graphical desktop, select the `Screen Configuration` option from the `Preferences` menu. Right click on the DSI display rectangle in the layout editor, select Orientation then the required option.
+
+To set screen orientation when in console mode, you will need to edit the kernel command line to pass the required orientation to the system. 
+```bash
+sudo nano /boot/cmdline.txt
+```
+To rotate by 90 degrees clockwise, add the following to the cmdline, making sure everything is on the same line, do not add any carriage returns. Possible rotation values are 0, 90, 180 and 270.
+```
+video=DSI-1:800x480@60,rotate=90
+```
+NOTE:  In console mode it is not possible to rotate the DSI display separately to the HDMI display, so if you have both attached they must both be set to the same value.
+
+### Legacy Graphics Mode
+
+Legacy graphics mode is used by default on all Raspberry Pi models prior to the Raspberry Pi 4B, and can also be used on the Raspberry Pi 4B if required, by disabling FKMS mode by commenting out the FKMS line in `config.txt`. Note: legacy mode on the Raspberry Pi 4B has no 3D acceleration so it should only be used if you have a specific reason for needing it.
+
+To flip the display, add the following line to the file `/boot/config.txt`:
 
 `lcd_rotate=2`
 
@@ -38,7 +51,7 @@ You can also rotate the display by adding the following to the `config.txt` file
 
 - `display_lcd_rotate=x`, where `x` can be one of the folllowing:
 
-| display_hdmi_rotate | result |
+| display_lcd_rotate | result |
 | --- | --- |
 | 0 | no rotation |
 | 1 | rotate 90 degrees clockwise |
@@ -48,6 +61,8 @@ You can also rotate the display by adding the following to the `config.txt` file
 | 0x20000 | vertical flip |
 
 Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16MB GPU split.
+
+## Touchscreen orientation
 
 Additionally, you have the option to change the rotation of the touchscreen independently of the display itself by adding a `dtoverlay` instruction in `config.txt`, for example:
 
