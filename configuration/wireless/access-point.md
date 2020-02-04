@@ -135,8 +135,8 @@ sudo systemctl start hostapd
 Do a quick check of their status to ensure they are active and running:
 
 ```
-systemctl status hostapd
-systemctl status dnsmasq
+sudo systemctl status hostapd
+sudo systemctl status dnsmasq
 ```
 
 ### Add routing and masquerade
