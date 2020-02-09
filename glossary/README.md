@@ -21,9 +21,9 @@
 - **DPI** - Parallel Display Interface, an up to 24-bit parallel RGB interface via the Raspberry Pi's GPIO pins.
 - **DSI** - Display Serial Interface, a hardware interface for connecting LCD panels.
 - **Device Tree (DT)** - A [data structure for defining hardware](https://en.wikipedia.org/wiki/Device_tree).
-- **Device Tree source (DTS)** - a human-readable source file to be compiled into a DTB.
+- **Device Tree source (DTS)** - A human-readable source file to be compiled into a DTB.
 - **Device Tree blob (DTB)** - A binary file containing a Device Tree; the result of compiling DTS files.
-- **`dt-blob.bin`** - a binary file containing initial GPIO configuration that is read by the firmware at boot time; despite the name, this is __not__ Device Tree blob (although it is compiled by the Device Tree tools).
+- **`dt-blob.bin`** - A binary file containing initial GPIO configuration that is read by the firmware at boot time; despite the name, this is __not__ Device Tree blob (although it is compiled by the Device Tree tools).
 - **DVI** - [Digital Visual Interface](https://en.wikipedia.org/wiki/Digital_Visual_Interface), a video interface for connecting a source device to a monitor or display; electrically compatible with HDMI, so a simple adapter can convert from one to the other (excluding audio, which DVI does not support).
 - **balenaEtcher** - The tool we recommend for [programming SD cards](../installation/installing-images/README.md) ready for use on our devices; available for Linux, Windows, and Mac.
 - **FAQ** - Frequently Asked Questions! See our [FAQ]../faqs/).
@@ -44,7 +44,7 @@
 - **Linux** - The main operating system used on the Raspberry Pi; the particular customised distribution for the Raspberry Pi range is called Raspbian; third parties have also produced their own distributions.
 - **MSD** - Mass Storage Device (amongst other things), such as an SD card or hard disk drive.
 - **MQTT** - MQTT stands for MQ Telemetry Transport, a lightweight and simple machine-to-machine protocol often used for IoT devices; see [the MQTT website](http://mqtt.org/).
-- **NAND** - a [NAND gate](https://en.wikipedia.org/wiki/NAND_gate) is a logic gate, specifically an inverted AND gate; can also refer to a type of flash memory that uses NAND logic.
+- **NAND** - A [NAND gate](https://en.wikipedia.org/wiki/NAND_gate) is a logic gate, specifically an inverted AND gate; can also refer to a type of flash memory that uses NAND logic.
 - **NOOBS** - New Out of Box software, easy [OS system image installation](../installation/noobs.md) for the Raspberry Pi range; **note:** NOOBS is no longer developed by the Raspberry Pi team, see PINN instead.
 - **OTP** - One-Time Programmable, a type of memory that can only be programmed once, and retains the programmed data after power off; used for serial numbers etc.
 - **Overlay** - A boot-time or run-time patch to a Device Tree allowing a degree of configuration by the user; see our [official documentation](../configuration/device-tree.md) for more details, or run `dtoverlay -a` in a terminal window for a list of available overlays.
@@ -53,7 +53,7 @@
 - **PoE** - Power over Ethernet, a mechanism to power a device through its Ethernet connection; we produce a [PoE HAT](https://www.raspberrypi.org/products/poe-hat) for the Raspberry Pi 3 Model B+ and Raspberry Pi 4 Model B.
 - **Polyfuse** - A self-resetting electrical fuse used on some Pi models to protect against over-current; can take hours or even days to reset.
 - **`raspi-config`** - A command line tool for configuring Raspbian's operating system features; see our [official documentation](../configuration/raspi-config.md).
-- **raspivid, raspistill, raspiyuv, raspividyuv** - a set of applications to run the Raspberry Pi Camera Module in various modes; see our [official documentation](../raspbian/applications/camera.md).
+- **raspivid, raspistill, raspiyuv, raspividyuv** - A set of applications to run the Raspberry Pi Camera Module in various modes; see our [official documentation](../raspbian/applications/camera.md).
 - **Raspbian** - A Debian-based Linux distribution targeted at the entire Raspberry Pi range, regarded as the official operating system; the current version is based on Debian Buster, with the first release in June 2019; see the [Wikipedia entry for further release details](https://en.wikipedia.org/wiki/Raspbian).
 - **Raspberry Pi Configuration Tool (`rcgui`)** - A graphical equivalent of `raspi-config`.
 - **Raspberry Pi Desktop** - A version of the LXDE desktop environment, specifically tailored to the Raspberry Pi (used to be called PIXEL).
