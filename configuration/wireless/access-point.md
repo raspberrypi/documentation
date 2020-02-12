@@ -184,7 +184,7 @@ One common use of the Raspberry Pi as an access point is to provide wireless con
 To do this, a 'bridge' needs to put in place between the wireless device and the Ethernet device on the access point Raspberry Pi. This bridge will pass all traffic between the two interfaces. Install the following packages to enable the access point setup and bridging.
 
 ```
-sudo apt install hostapd bridge-utils
+sudo apt install hostapd
 ```
 
 Since the configuration files are not ready yet, turn the new software off as follows:
@@ -199,18 +199,6 @@ sudo nano /etc/dhcpcd.conf
 ```
 
 Add `denyinterfaces wlan0` and `denyinterfaces eth0` to the end of the file (but above any other added `interface` lines) and save the file.
-
-Add a new bridge, which in this case is called `br0`.
-
-```
-sudo brctl addbr br0
-```
-
-Connect the network ports. In this case, connect `eth0` to the bridge `br0`.
-
-```
-sudo brctl addif br0 eth0
-```
 
 Now the interfaces file needs to be edited to adjust the various devices to work with bridging. To make this work with the newer systemd configuration options, you'll need to create a set of network configuration files.
 
@@ -248,13 +236,19 @@ Gateway=192.168.10.1
 DNS=8.8.8.8
 ```
 
-Finally, restart systemd-networkd:
+Finally, disable networking.service if enabled and enable/(re)start systemd-networkd:
 
 ```
+sudo systemctl disable networking.service
+sudo systemctl enable systemd-networkd
 sudo systemctl restart systemd-networkd
 ```
 
-You can also use the brctl tool to verify that a bridge br0 has been created.
+You can also use the bridge tool to verify that a bridge br0 has been created.
+
+```
+bridge -d link
+```
 
 The access point setup is almost the same as that shown in the previous section. Follow the instructions above to set up the `hostapd.conf` file, but add `bridge=br0` below the `interface=wlan0` line, and remove or comment out the driver line. The passphrase must be between 8 and 64 characters long.
 
