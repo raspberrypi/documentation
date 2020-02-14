@@ -95,7 +95,7 @@ To use the 5 GHz band, you can change the operations mode from hw_mode=g to hw_m
 
 ```
 interface=wlan0
-driver=nl80211
+#driver=nl80211  this is not needed anymore
 ssid=NameOfNetwork
 hw_mode=g
 channel=7
