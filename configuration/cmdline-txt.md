@@ -4,7 +4,7 @@ The Linux kernel accepts a command line of parameters during boot. On the Raspbe
 ```
 sudo nano /boot/cmdline.txt
 ```
-Note that we have to use `sudo` to edit anything in the boot partition, and that all parameters must be on the same line (no carriage returns)
+Note that we have to use `sudo` to edit anything in the boot partition, and that all parameters in `cmdline.txt` must be on the same line (no carriage returns)
 
 ## Command Line Options
 
