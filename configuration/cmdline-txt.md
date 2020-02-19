@@ -28,11 +28,20 @@ The firmware automatically adds a preferred resolution and overscan settings via
 
 ```video=HDMI-A-1:1920x1080M@60,margin_left=0,margin_right=0,margin_top=0,margin_bottom=0```
 
-This default entry can be modified by duplicating the entry above manually in /boot/cmdline.txt and making required changes to the margin parameters. In addition, it is possible to add rotation and reflect parameters as documented in the standard [Linux framebuffer documentation](https://github.com/raspberrypi/linux/blob/rpi-4.19.y/Documentation/fb/modedb.txt)
+This default entry can be modified by duplicating the entry above manually in /boot/cmdline.txt and making required changes to the margin parameters. In addition, it is possible to add rotation and reflect parameters as documented in the standard [Linux framebuffer documentation](https://github.com/raspberrypi/linux/blob/rpi-4.19.y/Documentation/fb/modedb.txt). By default the `margin_*` options are set from the `overscan` entries in config.txt, if present. The firmware can be prevented from making any KMS specific changes to the command line by adding `disable_fw_kms_setup=1` to `config.txt`
 
-e.g. 
+An example entry may be as follows:
 
 ```video=HDMI-A-1:1920x1080M@60,margin_left=0,margin_right=0,margin_top=0,margin_bottom=0,rotate=90,reflect_x```
+
+Possible options for the display type, the first part of the `video=` entry,  are as follows:
+
+| video option  | Display |
+|:---:|:---|
+| HDMI-A-1      | HDMI 1 (0 on silkscreen of Pi4B) |
+| HDMI-A-2      | HDMI 2 (1 on silkscreen of Pi4B) |
+| DSI-1         | DSI or DPI |
+| Composite-1   | Composite  |
 
 #### Other Entries (not exhaustive)
 
