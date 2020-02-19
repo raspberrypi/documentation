@@ -38,8 +38,8 @@ Possible options for the display type, the first part of the `video=` entry,  ar
 
 | video option  | Display |
 |:---:|:---|
-| HDMI-A-1      | HDMI 1 (0 on silkscreen of Pi4B) |
-| HDMI-A-2      | HDMI 2 (1 on silkscreen of Pi4B) |
+| HDMI-A-1      | HDMI 1 (HDMI 0 on silkscreen of Pi4B, HDMI on single HDMI boards) |
+| HDMI-A-2      | HDMI 2 (HDMI 1 on silkscreen of Pi4B) |
 | DSI-1         | DSI or DPI |
 | Composite-1   | Composite  |
 
