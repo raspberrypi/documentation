@@ -4,7 +4,7 @@ The Linux kernel accepts a command line of parameters during boot. On the Raspbe
 ```
 sudo nano /boot/cmdline.txt
 ```
-Note that we have to use `sudo` to edit anything in the boot partition.
+Note that we have to use `sudo` to edit anything in the boot partition, and that all parameters must be on the same line (no carriage returns)
 
 ## Command Line Options
 
@@ -20,6 +20,17 @@ There are many kernel command line parameters, some of which are defined by the 
  - elevator: specifies the I/O scheduler to use. `elevator=deadline` means the kernel imposes a deadline on all I/O operations to prevent request starvation.
  - quiet: sets the default kernel log level to `KERN_WARNING`, which suppresses all but very serious log messages during boot.
 
+#### Display Entries in FKMS and KMS modes
+
+The firmware already adds a preferred resolution and overscan settings via an entry such as:
+
+```video=HDMI-A-1:1920x1080M@60,margin_left=0,margin_right=0,margin_top=0,margin_bottom=0```
+
+This default entry can be modified by duplicating the line above manually in /boot/cmdline.txt and making required changes to the margin parameters. In addition, it is possible to add rotation and reflect parameters as documented in the standard [Linux framebuffer documentation](https://github.com/raspberrypi/linux/blob/rpi-4.19.y/Documentation/fb/modedb.txt)
+
+e.g. 
+
+```video=HDMI-A-1:1920x1080M@60,margin_left=0,margin_right=0,margin_top=0,margin_bottom=0,rotate=90,reflect_x```
 
 #### Other Entries (not exhaustive)
 
