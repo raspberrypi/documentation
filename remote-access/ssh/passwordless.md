@@ -55,7 +55,7 @@ ssh-rsa <REALLY LONG STRING OF RANDOM CHARACTERS> user@host
 <a name="copy-your-public-key-to-your-raspberry-pi"></a>
 ## Copy your public key to your Raspberry Pi
 
-To copy your public key to your Raspberry Pi, use the following command to append the public key to your `authorized_keys` file on the Pi, sending it over SSH:
+To copy your public key to your Raspberry Pi, use the following command, on the computer you will be connecting from, to append the public key to your `authorized_keys` file on the Pi, sending it over SSH:
 
 ```bash
 ssh-copy-id <USERNAME>@<IP-ADDRESS>
