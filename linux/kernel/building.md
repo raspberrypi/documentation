@@ -64,7 +64,9 @@ KERNEL=kernel7l
 make bcm2711_defconfig
 ```
 
-After this is done, you will likely want to adjust the `LOCALVERSION` to ensure your new kernel does not get the same version string as the upstream kernel. This both clarifies you are running your own kernel in the output of `uname` and ensures existing modules in `/lib/modules` are not overwritten.
+#### Customising the Kernel version using LOCALVERSION
+
+In addition to your kernel configuration changes, you may wish to adjust the `LOCALVERSION` to ensure your new kernel does not receive the same version string as the upstream kernel. This both clarifies you are running your own kernel in the output of `uname` and ensures existing modules in `/lib/modules` are not overwritten.
 
 To do so, change the following line in `.config`:
 ```
