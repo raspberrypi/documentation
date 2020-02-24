@@ -38,9 +38,9 @@ Refer to the [original GitHub repository](https://github.com/raspberrypi/linux) 
 
 Configure the kernel; as well as the default configuration, you may wish to [configure your kernel in more detail](configuring.md) or [apply patches from another source](patching.md), to add or remove required functionality:
 
-Run the following commands, depending on your Raspberry Pi version.
+First, prepare the default configuration by running the following commands, depending on your Raspberry Pi version:
 
-### Raspberry Pi 1, Pi Zero, Pi Zero W, and Compute Module default build configuration
+#### Raspberry Pi 1, Pi Zero, Pi Zero W, and Compute Module default build configuration
 
 ```bash
 cd linux
@@ -48,7 +48,7 @@ KERNEL=kernel
 make bcmrpi_defconfig
 ```
 
-### Raspberry Pi 2, Pi 3, Pi 3+, and Compute Module 3 default build configuration
+#### Raspberry Pi 2, Pi 3, Pi 3+, and Compute Module 3 default build configuration
 
 ```bash
 cd linux
@@ -56,13 +56,21 @@ KERNEL=kernel7
 make bcm2709_defconfig
 ```
 
-### Raspberry Pi 4
+#### Raspberry Pi 4
 
 ```bash
 cd linux
 KERNEL=kernel7l
 make bcm2711_defconfig
 ```
+
+After this is done, you will likely want to adjust the `LOCALVERSION` to ensure your new kernel does not get the same version string as the upstream kernel. This both clarifies you are running your own kernel in the output of `uname` and ensures existing modules in `/lib/modules` are not overwritten.
+
+To do so, change the following line in `.config`:
+```
+CONFIG_LOCALVERSION="-v7l-MY_CUSTOM_KERNEL"
+```
+You can also change that setting graphically as shown in [the kernel configuration instructions](configuring.md). It is located in "General setup" => "Local version - append to kernel release".
 
 ### Building
 
