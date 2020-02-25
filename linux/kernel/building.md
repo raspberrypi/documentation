@@ -36,11 +36,14 @@ Refer to the [original GitHub repository](https://github.com/raspberrypi/linux) 
 
 ### Kernel configuration
 
-Configure the kernel; as well as the default configuration, you may wish to [configure your kernel in more detail](configuring.md) or [apply patches from another source](patching.md), to add or remove required functionality:
+Configure the kernel; as well as the default configuration, you may wish to [configure your kernel in more detail](configuring.md) or [apply patches from another source](patching.md), to add or remove required functionality.
+
+<a name="default_configuration"></a>
+#### Apply the default configuration
 
 First, prepare the default configuration by running the following commands, depending on your Raspberry Pi version:
 
-#### Raspberry Pi 1, Pi Zero, Pi Zero W, and Compute Module default build configuration
+##### Raspberry Pi 1, Pi Zero, Pi Zero W, and Compute Module default build configuration
 
 ```bash
 cd linux
@@ -48,7 +51,7 @@ KERNEL=kernel
 make bcmrpi_defconfig
 ```
 
-#### Raspberry Pi 2, Pi 3, Pi 3+, and Compute Module 3 default build configuration
+##### Raspberry Pi 2, Pi 3, Pi 3+, and Compute Module 3 default build configuration
 
 ```bash
 cd linux
@@ -56,7 +59,7 @@ KERNEL=kernel7
 make bcm2709_defconfig
 ```
 
-#### Raspberry Pi 4
+##### Raspberry Pi 4 default build configuration
 
 ```bash
 cd linux
