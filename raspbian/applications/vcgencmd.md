@@ -96,7 +96,7 @@ Displays the current voltages used by the specific block.
 
 #### otp_dump
 
-Displays the content of the One Time Programmable (OTP) memory, which is part of the SoC. These are 32 bit values, indexed from 8 to 64. See the [OTP bits page](../../../hardware/raspberrypi/otpbits.md) for more details.
+Displays the content of the One Time Programmable (OTP) memory, which is part of the SoC. These are 32 bit values, indexed from 8 to 64. See the [OTP bits page](../../hardware/raspberrypi/otpbits.md) for more details.
 
 #### get_mem type
 
