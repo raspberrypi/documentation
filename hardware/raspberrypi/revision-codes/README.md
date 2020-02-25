@@ -18,10 +18,10 @@ Serial      : 00000000765fc593
 
 ## Old-style revision codes
 
-The first set of Raspberry Pi revisions were given sequential hex revision codes from `0002` to `0015`:
+The first set of Raspberry Pi models were given sequential hex revision codes from `0002` to `0015`:
 
-| Code | Model | Revision | RAM             | Manufacturer |
-| ---- | ----- | -------- | --------------- | ------------ |
+| Code | Model | Revision | RAM            | Manufacturer |
+| ---- | ----- | -------- | -------------- | ------------ |
 | 0002 | B     | 1.0      | 256MB          | Egoman       |
 | 0003 | B     | 1.0      | 256MB          | Egoman       |
 | 0004 | B     | 2.0      | 256MB          | Sony UK      |
@@ -38,32 +38,35 @@ The first set of Raspberry Pi revisions were given sequential hex revision codes
 | 0012 | A+    | 1.1      | 256MB          | Sony UK      |
 | 0013 | B+    | 1.2      | 512MB          | Embest       |
 | 0014 | CM1   | 1.0      | 512MB          | Embest       |
-| 0015 | A+    | 1.1      | 256MB/512MB | Embest       |
+| 0015 | A+    | 1.1      | 256MB/512MB    | Embest       |
 
 ## New-style revision codes
 
 With the launch of the Raspberry Pi 2, new-style revision codes were introduced. Rather than being sequential, each bit of the hex code represents a piece of information about the revision:
 
 ```
-NOQuuuuuFMMMCCCCPPPPTTTTTTTTRRRR
+NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 ```
 
 | Part     | Represents   | Options                    |
 | -------- | ------------ | -------------------------- |
 | N        | Overvoltage  | 0: Overvoltage enabled     |
 |          |              | 1: Overvoltage disabled    |
-| O        | OTP Program<sup>1</sup>| 0: OTP programming enabled |
+| O        | OTP Program<sup>1</sup> | 0: OTP programming enabled |
 |          |              | 1: OTP programming disabled |
-| Q        | OTP Read<sup>1</sup>| 0: OTP reading enabled     |
+| Q        | OTP Read<sup>1</sup> | 0: OTP reading enabled |
 |          |              | 1: OTP reading disabled    |
-| uuuuu    | Unused       | Unused                     |
+| uuu      | Unused       | Unused                     |
+| W        | Warranty bit | 0: Warranty is intact      |
+|          |              | 1: Warranty has been voided by [overclocking](../../../configuration/config-txt/overclocking.md) |
+| u        | Unused       | Unused                     |
 | F        | New flag     | 1: new-style revision      |
 |          |              | 0: old-style revision      |
-| MMM      | Memory size  | 0: 256MB                  |
-|          |              | 1: 512MB                  |
-|          |              | 2: 1GB                    |
-|          |              | 3: 2GB                    |
-|          |              | 4: 4GB                    |
+| MMM      | Memory size  | 0: 256MB                   |
+|          |              | 1: 512MB                   |
+|          |              | 2: 1GB                     |
+|          |              | 3: 2GB                     |
+|          |              | 4: 4GB                     |
 | CCCC     | Manufacturer | 0: Sony UK                 |
 |          |              | 1: Egoman                  |
 |          |              | 2: Embest                  |
@@ -99,30 +102,30 @@ New-style revision codes in use:
 
 | Code   | Model             | Revision | RAM    | Manufacturer |
 | ------ | ----------------- | -------- | -------| ------------ |
-| 900021 | A+                | 1.1      | 512MB | Sony UK      |
-| 900032 | B+                | 1.2      | 512MB | Sony UK      |
-| 900092 | Zero              | 1.2      | 512MB | Sony UK      |
-| 900093 | Zero              | 1.3      | 512MB | Sony UK      |
-| 9000c1 | Zero W            | 1.1      | 512MB | Sony UK      |
-| 9020e0 | 3A+               | 1.0      | 512MB | Sony UK      |
-| 920092 | Zero              | 1.2      | 512MB | Embest       |
-| 920093 | Zero              | 1.3      | 512MB | Embest       |
-| 900061 | CM                | 1.1      | 512MB | Sony UK      |
-| a01040 | 2B                | 1.0      | 1GB   | Sony UK      |
-| a01041 | 2B                | 1.1      | 1GB   | Sony UK      |
-| a02082 | 3B                | 1.2      | 1GB   | Sony UK      |
-| a020a0 | CM3               | 1.0      | 1GB   | Sony UK      |
-| a020d3 | 3B+               | 1.3      | 1GB   | Sony UK      |
-| a02042 | 2B (with BCM2837) | 1.2      | 1GB   | Sony UK      |
-| a21041 | 2B                | 1.1      | 1GB   | Embest       |
-| a22042 | 2B (with BCM2837) | 1.2      | 1GB   | Embest       |
-| a22082 | 3B                | 1.2      | 1GB   | Embest       |
-| a220a0 | CM3               | 1.0      | 1GB   | Embest       |
-| a32082 | 3B                | 1.2      | 1GB   | Sony Japan   |
-| a52082 | 3B                | 1.2      | 1GB   | Stadium      |
-| a22083 | 3B                | 1.3      | 1GB   | Embest       |
-| a02100 | CM3+              | 1.0      | 1GB   | Sony UK      |
-| a03111 | 4B                | 1.1      | 1GB   | Sony UK      |
-| b03111 | 4B                | 1.1      | 2GB   | Sony UK      |
-| c03111 | 4B                | 1.1      | 4GB   | Sony UK      |
-| c03112 | 4B                | 1.2      | 4GB   | Sony UK      |
+| 900021 | A+                | 1.1      | 512MB  | Sony UK      |
+| 900032 | B+                | 1.2      | 512MB  | Sony UK      |
+| 900092 | Zero              | 1.2      | 512MB  | Sony UK      |
+| 900093 | Zero              | 1.3      | 512MB  | Sony UK      |
+| 9000c1 | Zero W            | 1.1      | 512MB  | Sony UK      |
+| 9020e0 | 3A+               | 1.0      | 512MB  | Sony UK      |
+| 920092 | Zero              | 1.2      | 512MB  | Embest       |
+| 920093 | Zero              | 1.3      | 512MB  | Embest       |
+| 900061 | CM                | 1.1      | 512MB  | Sony UK      |
+| a01040 | 2B                | 1.0      | 1GB    | Sony UK      |
+| a01041 | 2B                | 1.1      | 1GB    | Sony UK      |
+| a02082 | 3B                | 1.2      | 1GB    | Sony UK      |
+| a020a0 | CM3               | 1.0      | 1GB    | Sony UK      |
+| a020d3 | 3B+               | 1.3      | 1GB    | Sony UK      |
+| a02042 | 2B (with BCM2837) | 1.2      | 1GB    | Sony UK      |
+| a21041 | 2B                | 1.1      | 1GB    | Embest       |
+| a22042 | 2B (with BCM2837) | 1.2      | 1GB    | Embest       |
+| a22082 | 3B                | 1.2      | 1GB    | Embest       |
+| a220a0 | CM3               | 1.0      | 1GB    | Embest       |
+| a32082 | 3B                | 1.2      | 1GB    | Sony Japan   |
+| a52082 | 3B                | 1.2      | 1GB    | Stadium      |
+| a22083 | 3B                | 1.3      | 1GB    | Embest       |
+| a02100 | CM3+              | 1.0      | 1GB    | Sony UK      |
+| a03111 | 4B                | 1.1      | 1GB    | Sony UK      |
+| b03111 | 4B                | 1.1      | 2GB    | Sony UK      |
+| c03111 | 4B                | 1.1      | 4GB    | Sony UK      |
+| c03112 | 4B                | 1.2      | 4GB    | Sony UK      |
