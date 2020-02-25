@@ -4,7 +4,7 @@ The Raspberry Pi is often used as part of another product. This documentation de
 
 ## Customer OTP settings
 
-There are a number of OTP values that can be used. To see a list of all the OTP values, you can use:
+There are a number of OTP values that can be used. To see a list of all the [OTP values](../raspberrypi/otpbits.md), you can use:
 
 ```
 pi@raspberrypi:~ $ vcgencmd otp_dump
