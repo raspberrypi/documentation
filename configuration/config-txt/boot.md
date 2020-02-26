@@ -99,6 +99,12 @@ If `disable_splash` is set to `1`, the rainbow splash screen will not be shown o
 
 On the Raspberry Pi 4B, if this value is set to `0` then the interrupts will be routed to the ARM cores using the legacy interrupt controller, rather than via the GIC-400. The default value is `1`.
 
+## uart_2ndstage
+
+Setting `uart_2ndstage=1` causes the second-stage loader (`bootcode.bin` on devices prior to the Raspberry Pi 4, or the boot code in the  EEPROM for Raspberry Pi 4 devices) and the main firmware (`start*.elf`) to output diagnostic information to UART0. 
+
+Be aware that output is likely to interfere with Bluetooth operation unless it is disabled (`dtoverlay=disable-bt`) or switched to the other UART (`dtoverlay=miniuart-bt`), and if the UART is accessed simultaneously to output from Linux then data loss can occur leading to corrupted output. This feature should only be required when trying to diagnose an early boot loading problem.
+
 
 
 *This article uses content from the eLinux wiki page [RPiconfig](http://elinux.org/RPiconfig), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](http://creativecommons.org/licenses/by-sa/3.0/)*
