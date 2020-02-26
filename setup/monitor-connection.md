@@ -10,7 +10,7 @@ The Raspberry Pi has an HDMI port which you can connect directly to a monitor or
 
 Note that the Raspberry Pi 4 has two micro HDMI connectors, which require a good-quality micro HDMI cable, especially when using 4K monitors/TVs. Raspberry Pi sell a suitable cable, for more details see [here](https://www.raspberrypi.org/products/micro-hdmi-to-standard-hdmi-a-cable/).
 
-<img src="images/hdmi_micro_trans.png" alt="HDMI Cable" width="250" height="200">
+![HDMI_micro](images/hdmi_micro.png)
 
 ### DVI
 
