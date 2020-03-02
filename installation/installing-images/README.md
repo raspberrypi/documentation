@@ -40,3 +40,10 @@ For more advanced control of this process, see our system-specific guides:
 - [Mac OS](mac.md)
 - [Windows](windows.md)
 - [Chrome OS](chromeos.md)
+
+
+## Boot your new Raspbian
+
+You can now insert the SD card into the Pi. The default user name is `pi`, with password `raspberry`.
+
+You should change this password right now by running `passwd`, [as explained here](../../linux/usage/users.md)
