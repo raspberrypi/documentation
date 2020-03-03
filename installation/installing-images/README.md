@@ -46,4 +46,6 @@ For more advanced control of this process, see our system-specific guides:
 
 You can now insert the SD card into the Pi. The default user name is `pi`, with password `raspberry`.
 
+**Note**: Remember the default keyboard layout is qwerty
+
 You should change this password right now by running `passwd`, [as explained here](../../linux/usage/users.md)
