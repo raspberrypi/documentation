@@ -9,7 +9,7 @@ To change these bootloader configuration items, you need to extract the configur
 
 ```
 # Extract the configuration file
-cp /lib/firmware/raspberrypi/bootloader/beta/pieeprom-2019-09-10.bin pieeprom.bin
+cp /lib/firmware/raspberrypi/bootloader/stable/pieeprom-2020-01-17.bin pieeprom.bin
 rpi-eeprom-config pieeprom.bin > bootconf.txt
 
 # Edit the configuration using a text editor e.g. nano bootconf.txt
@@ -84,28 +84,88 @@ Default: 0x00000001 (with 3 SD boot retries to match the current bootloader beha
 Specify the maximum number of times that the bootloader will retry booting from the SD card.  
 -1 means infinite retries  
 Default: 0  
+Version: stable/pieeprom-2020-01-17.bin  
 
 ### NET_BOOT_MAX_RETRIES
 Specify the maximum number of times that the bootloader will retry network boot.  
 -1 means infinite retries  
 Default: 0  
+Version: stable/pieeprom-2020-01-17.bin  
 
 ### DHCP_TIMEOUT
 The timeout in milliseconds for the entire DHCP sequence before failing the current iteration.  
 Default: 45000  
 Minimum: 5000  
+Version: stable/pieeprom-2020-01-17.bin  
 
 ### DHCP_REQ_TIMEOUT
 The timeout in milliseconds before retrying DHCP DISCOVER or DHCP REQ.  
 Default: 4000  
 Minimum: 500  
+Version: stable/pieeprom-2020-01-17.bin  
 
 ### TFTP_TIMEOUT
 The timeout in milliseconds for an individual file download via TFTP.  
 Default: 15000  
 Minimum: 5000  
+Version: stable/pieeprom-2020-01-17.bin  
 
 ### TFTP_IP
 Optional dotted decimal ip address (e.g. 192.169.1.99) for the TFTP server which overrides the server-ip from the DHCP request.  
 This maybe useful on home networks because tftpd-hpa can be used instead of dnsmasq where broadband router is the DHCP server.
 Default: ""  
+Version: stable/pieeprom-2020-01-17.bin  
+
+### TFTP_PREFIX
+In order to support unique TFTP boot directories for each Pi the bootloader prefixes the filenames with a device specific directory. If neither start4.elf nor start.elf are found in the prefixed directory then the prefix is cleared.
+On earlier models the serial number is used as the prefix, however, on Pi4 the MAC address is no longer generated from the serial number making it difficult for to automatically create tftpboot directories on the server by inspecting DHCPDISCOVER packets. To support this the TFTP_PREFIX can be customized to be the MAC address or for test a fixed string.
+
+* 0 - Use the serial number e.g. "9ffefdef/"
+* 1 - Use the string specified by TFTP_PREFIX_STR
+* 2 - Use the MAC address e.g. "DC-A6-32-01-36-C2/"
+Default: 0
+Version: stable/pieeprom-2020-01-17.bin  
+
+### TFTP_PREFIX_STR
+Specify the custom directory prefix string used when TFTP_PREFIX is set to 1. For example:- TFTP_PREFIX_STR=tftp_test/
+Default: ""
+Version: stable/pieeprom-2020-01-17.bin  
+
+## Network Boot
+## Server configuration                                                    
+Network boot requires a TFTP and NFS server to be configured.  See [Network boot server tutorial](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/net_tutorial.md)
+
+Additional notes:-
+* The MAC address on the Pi4 is programmed at manufacture and is not derived from the serial number.
+```                                                                          
+# mac adddress (ip addr) - it should start with DC:A6:32
+ip addr | grep ether | head -n1 | awk '{print $2}' | tr [a-z] [A-Z]                                                                                                                                                
+# serial number                                                                                                                         
+vcgencmd otp_dump | grep 28: | sed s/.*://g
+```
+
+## Installation - firmware update
+Network boot functionality is included in the 2020-02-13 Raspbian Buster release. However, for advanced boot modes it's normally best to use the latest stable software.
+```
+# Install the rpi-eeprom update package                                                                                                 
+sudo apt update
+sudo apt upgrade
+                                                                          
+# Select the stable bootloader release series. Network boot is not enabled in the default bootloader.
+# As root:-
+echo FIRMWARE_RELEASE_STATUS="stable" > /etc/default/rpi-eeprom-update
+```
+
+## Enable network boot
+Network boot is not enabled by default in the bootloader. To enable it the bootloader configuration file must be edited.
+```                                                                        
+# Extract the configuration file                                                                                                         
+cp /lib/firmware/raspberrypi/bootloader/beta/pieeprom-YYYY-MM-DD.bin pieeprom.bin                                                       
+rpi-eeprom-config pieeprom.bin > bootconf.txt                                                                          
+```
+Change BOOT_ORDER to be 0x21 instead of 0x1. This tells the bootloader to try sd-card boot first and network boot second. You should normally include sd-card (0x1) in the boot sequence in-case of network failure.
+
+## Apply the configuration change to the EEPROM image file                                                                               ```
+rpi-eeprom-config --out pieeprom-netboot.bin --config bootconf.txt pieeprom.bin
+sudo reboot
+```
