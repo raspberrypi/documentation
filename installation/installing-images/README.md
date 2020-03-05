@@ -28,9 +28,9 @@ Raspberry Pi have developed a graphical SD card writing tool that works on Mac O
 
 - Download the latest version of [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) and install it.
 - Connect an SD card reader with the SD card inside.
-- Open Raspberry Pi Imager and select from your hard drive the Raspberry Pi `.img` or `.zip` file you wish to write to the SD card.
-- Select the SD card you wish to write your image to.
-- Review your selections and click 'Flash!' to begin writing data to the SD card.
+- Open Raspberry Pi Imager and choose the required OS from the list presented.
+- Choose  the SD card you wish to write your image to.
+- Review your selections and click 'WRITE' to begin writing data to the SD card.
 
 For more advanced control of this process, see our system-specific guides:
 
