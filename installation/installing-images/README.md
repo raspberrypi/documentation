@@ -10,7 +10,7 @@ Official images for recommended operating systems are available to download from
 
 Alternative distributions are available from third-party vendors.
 
-If you're not using balenaEtcher (see below), you'll need to unzip `.zip` downloads to get the image file (`.img`) to write to your SD card.
+If you're not using our Imaging tool (see below), you may need to unzip `.zip` downloads to get the image file (`.img`) to write to your SD card.
 
 **Note**: the Raspbian with Raspberry Pi Desktop image contained in the ZIP archive is over 4GB in size and uses the [ZIP64](https://en.wikipedia.org/wiki/Zip_%28file_format%29#ZIP64) format. To uncompress the archive, a unzip tool that supports ZIP64 is required. The following zip tools support ZIP64:
 
@@ -24,15 +24,13 @@ Before you start, don't forget to check [the SD card requirements](../sd-cards.m
 
 You will need to use an image writing tool to install the image you have downloaded on your SD card.
 
-**balenaEtcher** is a graphical SD card writing tool that works on Mac OS, Linux and Windows, and is the easiest option for most users. balenaEtcher also supports writing images directly from the zip file, without any unzipping required. To write your image with balenaEtcher:
+Raspberry Pi have developed a graphical SD card writing tool that works on Mac OS, Ubuntu and Windows, and is the easiest option for most users. Raspberry Pi Imager also supports writing images directly from the zip file, without any unzipping required. To write your image with the Raspberry Pi Imager:
 
-- Download the latest version of [balenaEtcher](https://www.balena.io/etcher/) and install it.
+- Download the latest version of [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) and install it.
 - Connect an SD card reader with the SD card inside.
-- Open balenaEtcher and select from your hard drive the Raspberry Pi `.img` or `.zip` file you wish to write to the SD card.
+- Open Raspberry Pi Imager and select from your hard drive the Raspberry Pi `.img` or `.zip` file you wish to write to the SD card.
 - Select the SD card you wish to write your image to.
 - Review your selections and click 'Flash!' to begin writing data to the SD card.
-
-**Note**: for Linux users, `zenity` might need to be installed on your machine for `balenaEtcher` to be able to write the image on your SD card.
 
 For more advanced control of this process, see our system-specific guides:
 
