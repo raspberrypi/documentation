@@ -53,6 +53,7 @@
 - **PoE** - Power over Ethernet, a mechanism to power a device through its Ethernet connection; we produce a [PoE HAT](https://www.raspberrypi.org/products/poe-hat) for the Raspberry Pi 3 Model B+ and Raspberry Pi 4 Model B.
 - **Polyfuse** - A self-resetting electrical fuse used on some Pi models to protect against over-current; can take hours or even days to reset.
 - **`raspi-config`** – A command line tool for configuring Raspbian's operating system features; see our [official documentation](../configuration/raspi-config.md).
+- **Raspberry Pi Imaging Tool** - The recommended graphical tool for downloading and installing operating system images to the SD card. Download it [here](https://www.raspberrypi.org/downloads/)
 - **raspivid, raspistill, raspiyuv, raspividyuv** – a set of applications to run the Raspberry Pi Camera Module in various modes; see our [official documentation](../raspbian/applications/camera.md).
 - **Raspbian** - A Debian-based Linux distribution targeted at the entire Raspberry Pi range, regarded as the official operating system; the current version is based on Debian Buster, with the first release in June 2019; see the [Wikipedia entry for further release details](https://en.wikipedia.org/wiki/Raspbian).
 - **Raspberry Pi Configuration Tool (`rcgui`)** – A graphical equivalent of `raspi-config`.
