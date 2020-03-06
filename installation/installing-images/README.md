@@ -16,11 +16,11 @@ Raspberry Pi have developed a graphical SD card writing tool that works on Mac O
 
 ## Using other tools
 
-Most other tool require you to download the image first, then use the tool to write it to your SD card.
+Most other tools require you to download the image first, then use the tool to write it to your SD card.
 
 ### Download the image
 
-Official images for recommended operating systems are available to download from the Raspberry Pi website [Downloads page](https://www.raspberrypi.org/downloads/).
+Official images for recommended operating systems are available to download from the Raspberry Pi website [downloads page](https://www.raspberrypi.org/downloads/).
 
 Alternative distributions are available from third-party vendors.
 
