@@ -1,6 +1,6 @@
 # Installing operating system images using Windows
 
-[balenaEtcher](https://www.balena.io/etcher/) is typically the easiest option for most users to write images to SD cards, so it is a good place to start. If you're looking for an alternative on Windows, you can use Win32DiskImager or imgFlasher.
+[Raspberry Pi Imager](README.md) is our recommended option for most users to write images to SD cards, so it is a good place to start. If you're looking for an alternative on Windows, you can use balenaEtcher, Win32DiskImager or imgFlasher.
 
 ## balenaEtcher
 

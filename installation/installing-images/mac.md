@@ -1,6 +1,6 @@
 # Copying an operating system image to an SD card using Mac OS
 
-[balenaEtcher](README.md) is the recommended option for most users to write images to SD cards.
+[Raspberry Pi Imager](README.md) is the recommended option for most users to write images to SD cards.
 
 ## Determine SD device
 
