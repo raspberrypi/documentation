@@ -25,7 +25,7 @@
 - **Device Tree blob (DTB)** – A binary file containing a Device Tree; the result of compiling DTS files.
 - **`dt-blob.bin`** – a binary file containing initial GPIO configuration that is read by the firmware at boot time; despite the name, this is __not__ Device Tree blob (although it is compiled by the Device Tree tools).
 - **DVI** – [Digital Visual Interface](https://en.wikipedia.org/wiki/Digital_Visual_Interface), a video interface for connecting a source device to a monitor or display; electrically compatible with HDMI, so a simple adapter can convert from one to the other (excluding audio, which DVI does not support).
-- **balenaEtcher** - The tool we recommend for [programming SD cards](../installation/installing-images/README.md) ready for use on our devices; available for Linux, Windows, and Mac.
+- **balenaEtcher** - A graphical tool for [programming SD cards](../installation/installing-images/README.md) ready for use on our devices; available for Linux, Windows, and Mac. Now superceded by Raspberry Pi's own imaging tool, which can be downloaded [here](https://www.raspberrypi.org/downloads/)
 - **FAQ** - Frequently Asked Questions! See our [FAQ]../faqs/).
 - **Firmware** – Software that runs on a particular hardware device, for example a wireless chip or dongle; distinct from the usual software running on the Raspberry Pi in that it is usually a fixed binary blob of data that is loaded on to the device at startup; on the Raspberry Pi, the VC4 GPU requires firmware to be loaded to it at startup in order boot up and run the entire system.
 - **GNU** - The [GNU Project](https://en.wikipedia.org/wiki/GNU_Project) is a free software mass collaboration project, which has produced huge amounts of software that is used on the Raspberry Pi, including Linux itself.
@@ -53,6 +53,7 @@
 - **PoE** - Power over Ethernet, a mechanism to power a device through its Ethernet connection; we produce a [PoE HAT](https://www.raspberrypi.org/products/poe-hat) for the Raspberry Pi 3 Model B+ and Raspberry Pi 4 Model B.
 - **Polyfuse** - A self-resetting electrical fuse used on some Pi models to protect against over-current; can take hours or even days to reset.
 - **`raspi-config`** – A command line tool for configuring Raspbian's operating system features; see our [official documentation](../configuration/raspi-config.md).
+- **Raspberry Pi Imaging Tool** - The official graphical tool for downloading and installing operating system images to an SD card. Download it [here](https://www.raspberrypi.org/downloads/)
 - **raspivid, raspistill, raspiyuv, raspividyuv** – a set of applications to run the Raspberry Pi Camera Module in various modes; see our [official documentation](../raspbian/applications/camera.md).
 - **Raspbian** - A Debian-based Linux distribution targeted at the entire Raspberry Pi range, regarded as the official operating system; the current version is based on Debian Buster, with the first release in June 2019; see the [Wikipedia entry for further release details](https://en.wikipedia.org/wiki/Raspbian).
 - **Raspberry Pi Configuration Tool (`rcgui`)** – A graphical equivalent of `raspi-config`.

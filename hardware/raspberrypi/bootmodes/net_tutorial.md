@@ -239,14 +239,14 @@ sudo systemctl restart nfs-kernel-server
 Edit `/tftpboot/cmdline.txt` and from `root=` onwards, and replace it with:
 
 ```
-root=/dev/nfs nfsroot=10.42.0.211:/nfs/client1,vers=3 rw ip=dhcp rootwait elevator=deadline
+root=/dev/nfs nfsroot=10.42.0.211:/nfs/client1,vers=4.1,proto=tcp rw ip=dhcp rootwait elevator=deadline
 ```
 
 You should substitute the IP address here with the IP address you have noted down. Also remove any part of the command line starting with init=.
 
 Finally, edit `/nfs/client1/etc/fstab` and remove the `/dev/mmcblk0p1` and `p2` lines (only `proc` should be left). Then, add the boot partition back in:
 ```
-echo "10.42.0.211:/tftpboot /boot nfs defaults,vers=3 0 0" | sudo tee -a /etc/fstab
+echo "10.42.0.211:/tftpboot /boot nfs defaults,vers=4.1,proto=tcp 0 0" | sudo tee -a /nfs/client1/etc/fstab
 ```
 
 Good luck! If it doesn't boot on the first attempt, keep trying. It can take a minute or so for the Raspberry Pi to boot, so be patient.

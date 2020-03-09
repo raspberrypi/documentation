@@ -27,8 +27,10 @@ The `git clone` command above will download the current active branch (the one w
 To download a different branch (again with no history), use the `--branch` option:
 
 ```bash
-git clone --depth=1 --branch rpi-4.18.y https://github.com/raspberrypi/linux
+git clone --depth=1 --branch <branch> https://github.com/raspberrypi/linux
 ```
+
+where `<branch>` is the name of the branch that you wish to downlaod.
 
 Refer to the [original GitHub repository](https://github.com/raspberrypi/linux) for information about the available branches.
 
@@ -116,7 +118,7 @@ See [**Choosing sources**](#choosing_sources) above for instructions on how to c
 
 To build the sources for cross-compilation, make sure you have the dependencies needed on your machine by executing:
 ```bash
-sudo apt install git bc bison flex libssl-dev make
+sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
 ```
 If you find you need other things, please submit a pull request to change the documentation.
 

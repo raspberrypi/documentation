@@ -35,6 +35,14 @@ Contains many configuration parameters for setting up the Pi. See [the `config.t
 
 Some text-based housekeeping information containing the date and git commit ID of the distribution.
 
+### ssh or ssh.txt
+
+When this file is present, SSH will be enabled on boot. The contents don't matter, it can be empty. SSH is otherwise disabled by default.
+
+### wpa_supplicant.conf
+
+This is the file to configure wireless network settings (if the hardware is capable of it). Edit the country code and the network part to fit your case. More information on how to use this file can be found in [the `wireless/headless` section](./wireless/headless.md).
+
 ### Device Tree files
 
 There are various Device Tree blob files, which have the extension `.dtb`. These contain the hardware definitions of the various models of Raspberry Pi, and are used on boot to set up the kernel according to which Pi model is detected. More [details here](device-tree.md).

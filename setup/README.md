@@ -15,8 +15,8 @@ A guide to setting up your Raspberry Pi
     - Wireless keyboards and mice will work if already paired.
     - For keyboard layout configuration options see [raspi-config](../configuration/raspi-config.md).
 - [Power supply](../hardware/raspberrypi/power/README.md)
-    - The Pi is powered by a USB Micro power supply (like most standard mobile phone chargers).
-    - You need a good-quality power supply that can supply at least 2A at 5V for the Model 3B and 3B+, or 700mA at 5V for the earlier, lower-powered Pi models. We recommend using the [official Raspberry Pi power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/), which is designed specifically for Raspberry Pi.
+    - The Pi is powered by a USB Micro [models pre 4B] or USB Type-C [model 4B] power supply (like most standard mobile phone chargers).
+    - You need a good-quality power supply that can supply at least 3A at 5V for the Model 4B, 2A at 5V for the Model 3B and 3B+, or 700mA at 5V for the earlier, lower-powered Pi models. We recommend using the [official Raspberry Pi power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/), which is designed specifically for Raspberry Pi.
     - Low-current (~700mA) power supplies will work for basic usage, but are likely to cause the Pi to reboot if it draws too much power. They are not suitable for use with the Pi 3 or 4.
 
 ### Optional

@@ -59,7 +59,7 @@ Set `kernel_old` to `1` to load the kernel to the memory address `0x0`.
 
 ## ramfsfile
 
-`ramfsfile` is the optional filename on the boot partition of a ramfs to load. More information is available [here](https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=10532).
+`ramfsfile` is the optional filename on the boot partition of a ramfs to load. N.B. Sufficiently new firmware supports the loading of multiple ramfs files - separate the multiple file names with commas, taking care not to exceed the 80-character line length limit. All the loaded files are concatenated in memory and treated as a single ramfs blob. More information is available [here](https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=10532).
 
 ## ramfsaddr
 
@@ -67,7 +67,7 @@ Set `kernel_old` to `1` to load the kernel to the memory address `0x0`.
 
 ## initramfs
 
-The `initramfs` command specifies both the ramfs filename **and** the memory address to which to load it. It performs the actions of both `ramfsfile` and `ramfsaddr` in one parameter. The address can also be `followkernel` (or `0`) to place it in memory after the kernel image. Example values are: `initramfs initramf.gz 0x00800000` or `initramfs init.gz followkernel`. **NOTE:** This option uses different syntax from all the other options, and you should not use a `=` character here.
+The `initramfs` command specifies both the ramfs filename **and** the memory address to which to load it. It performs the actions of both `ramfsfile` and `ramfsaddr` in one parameter. The address can also be `followkernel` (or `0`) to place it in memory after the kernel image. Example values are: `initramfs initramf.gz 0x00800000` or `initramfs init.gz followkernel`. As with `ramfsfile`, newer firmwares allow the loading of multiple files by comma-separating their names. **NOTE:** This option uses different syntax from all the other options, and you should not use a `=` character here.
 
 ## init_uart_baud
 
@@ -98,6 +98,12 @@ If `disable_splash` is set to `1`, the rainbow splash screen will not be shown o
 ## enable_gic (Pi 4B only)
 
 On the Raspberry Pi 4B, if this value is set to `0` then the interrupts will be routed to the ARM cores using the legacy interrupt controller, rather than via the GIC-400. The default value is `1`.
+
+## uart_2ndstage
+
+Setting `uart_2ndstage=1` causes the second-stage loader (`bootcode.bin` on devices prior to the Raspberry Pi 4, or the boot code in the  EEPROM for Raspberry Pi 4 devices) and the main firmware (`start*.elf`) to output diagnostic information to UART0. 
+
+Be aware that output is likely to interfere with Bluetooth operation unless it is disabled (`dtoverlay=disable-bt`) or switched to the other UART (`dtoverlay=miniuart-bt`), and if the UART is accessed simultaneously to output from Linux then data loss can occur leading to corrupted output. This feature should only be required when trying to diagnose an early boot loading problem.
 
 
 
