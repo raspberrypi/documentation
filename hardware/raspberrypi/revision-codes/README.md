@@ -95,7 +95,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |          |              | 11: 4B                     |
 | RRRR     | Revision     | 0, 1, 2, etc.              |
 
-<sup>1</sup> Information on programming the OTP bits can be found [here](../../industrial/README.md) and [here](../otpbits.md)
+<sup>1</sup> Information on programming the OTP bits can be found [here](../../industrial/README.md) and [here](../otpbits.md).
 
 
 New-style revision codes in use:
