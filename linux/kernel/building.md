@@ -94,16 +94,16 @@ Use the following command to download the toolchain to the home folder:
 git clone https://github.com/raspberrypi/tools ~/tools
 ```
 
-Updating the $PATH environment variable makes the system aware of file locations needed for cross-compilation. On a 32-bit host system you can update and reload it using:
+Updating the $PATH environment variable makes the system aware of file locations needed for cross-compilation. 
+
 ```bash
-echo PATH=\$PATH:~/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin >> ~/.bashrc
+echo PATH=\$PATH:~/tools/arm-bcm2708/arm-linux-gnueabihf/bin >> ~/.bashrc
 source ~/.bashrc
 ```
-If you are on a 64-bit host system, you should use:
-```bash
-echo PATH=\$PATH:~/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin >> ~/.bashrc
-source ~/.bashrc
-```
+If you are using a 32-bit operating system (for example, our Raspberry Pi Desktop for PC), then you may need to install an additional set of libraries:
+
+`sudo apt install zlib1g-dev:amd64`
+
 ### Get sources
 
 To download the minimal source tree for the current branch, run:
