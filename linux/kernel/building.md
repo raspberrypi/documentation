@@ -100,7 +100,7 @@ Updating the $PATH environment variable makes the system aware of file locations
 echo PATH=\$PATH:~/tools/arm-bcm2708/arm-linux-gnueabihf/bin >> ~/.bashrc
 source ~/.bashrc
 ```
-If you are using a 32 bit Operating system (for example, our Raspberry Pi Desktop for PC), then you may need to install an addition set of libraries.
+If you are using a 32-bit operating system (for example, our Raspberry Pi Desktop for PC), then you may need to install an additional set of libraries:
 
 `sudo apt install zlib1g-dev:amd64`
 
