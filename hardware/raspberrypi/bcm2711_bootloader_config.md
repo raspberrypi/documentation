@@ -132,7 +132,7 @@ Default: ""
 Version: stable/pieeprom-2020-01-17.bin  
 
 ## Network Boot
-## Server configuration                                                    
+### Server configuration                                                    
 Network boot requires a TFTP and NFS server to be configured.  See [Network boot server tutorial](bootmodes/net_tutorial.md)
 
 Additional notes:-
@@ -144,7 +144,7 @@ ip addr | grep ether | head -n1 | awk '{print $2}' | tr [a-z] [A-Z]
 vcgencmd otp_dump | grep 28: | sed s/.*://g
 ```
 
-## Installation - firmware update
+### Installation - firmware update
 Network boot functionality is included in the 2020-02-13 Raspbian Buster release. However, for advanced boot modes it's normally best to use the latest stable software.
 ```
 # Install the rpi-eeprom update package                                                                                                 
@@ -156,16 +156,16 @@ sudo apt upgrade
 echo FIRMWARE_RELEASE_STATUS="stable" > /etc/default/rpi-eeprom-update
 ```
 
-## Enable network boot
+### Enable network boot
 Network boot is not enabled by default in the bootloader. To enable it the bootloader configuration file must be edited.
 ```                                                                        
 # Extract the configuration file                                                                                                         
-cp /lib/firmware/raspberrypi/bootloader/beta/pieeprom-YYYY-MM-DD.bin pieeprom.bin                                                       
+cp /lib/firmware/raspberrypi/bootloader/stable/pieeprom-2020-01-17.bin pieeprom.bin                                                       
 rpi-eeprom-config pieeprom.bin > bootconf.txt                                                                          
 ```
 Change BOOT_ORDER to be 0x21 instead of 0x1. This tells the bootloader to try sd-card boot first and network boot second. You should normally include sd-card (0x1) in the boot sequence in-case of network failure.
 
-## Apply the configuration change to the EEPROM image file                                                                               ```
+### Apply the configuration change to the EEPROM image file                                                                               ```
 rpi-eeprom-config --out pieeprom-netboot.bin --config bootconf.txt pieeprom.bin
 sudo reboot
 ```
