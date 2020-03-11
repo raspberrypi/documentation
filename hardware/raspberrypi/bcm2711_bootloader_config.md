@@ -33,9 +33,7 @@ sudo reboot
 ```
 
 ## Configuration Items
-
 This section describes all the configuration items available in the bootloader.
-
 
 ### BOOT_UART
 
@@ -63,8 +61,6 @@ If 1 then the `rpi-eeprom-update` will skip automatic updates on this board. The
 
 Default: 0  
 Version: All  
-
-## Configuration items
 
 ### BOOT_ORDER
 The BOOT_ORDER setting allows flexible configuration for the priority of different bootmodes. It is represented as 32bit unsigned integer where each nibble represents a bootmode. The bootmodes are attempted in lowest significant nibble to highest significant nibble order.
