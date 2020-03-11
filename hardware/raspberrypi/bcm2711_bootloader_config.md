@@ -118,7 +118,7 @@ Version: stable/pieeprom-2020-01-17.bin
 
 ### TFTP_PREFIX
 In order to support unique TFTP boot directories for each Pi the bootloader prefixes the filenames with a device specific directory. If neither start4.elf nor start.elf are found in the prefixed directory then the prefix is cleared.
-On earlier models the serial number is used as the prefix, however, on Pi4 the MAC address is no longer generated from the serial number making it difficult for to automatically create tftpboot directories on the server by inspecting DHCPDISCOVER packets. To support this the TFTP_PREFIX can be customized to be the MAC address or for test a fixed string.
+On earlier models the serial number is used as the prefix, however, on Pi4 the MAC address is no longer generated from the serial number making it difficult to automatically create tftpboot directories on the server by inspecting DHCPDISCOVER packets. To support this the TFTP_PREFIX may be customized to either be the MAC address or a fixed value.
 
 * 0 - Use the serial number e.g. "9ffefdef/"
 * 1 - Use the string specified by TFTP_PREFIX_STR
@@ -133,7 +133,7 @@ Version: stable/pieeprom-2020-01-17.bin
 
 ## Network Boot
 ## Server configuration                                                    
-Network boot requires a TFTP and NFS server to be configured.  See [Network boot server tutorial](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/net_tutorial.md)
+Network boot requires a TFTP and NFS server to be configured.  See [Network boot server tutorial](bootmodes/net_tutorial.md)
 
 Additional notes:-
 * The MAC address on the Pi4 is programmed at manufacture and is not derived from the serial number.
