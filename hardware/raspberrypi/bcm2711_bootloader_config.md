@@ -147,11 +147,13 @@ vcgencmd otp_dump | grep 28: | sed s/.*://g
 ### Installation - firmware update
 Network boot functionality is included in the 2020-02-13 Raspbian Buster release. However, for advanced boot modes it's normally best to use the latest stable software.
 ```
-# Install the rpi-eeprom update package                                                                                                 
+# Update the rpi-eeprom update package                                                                                                 
 sudo apt update
 sudo apt upgrade
                                                                           
-# Select the stable bootloader release series. Network boot is not enabled in the default bootloader.
+# Select the stable bootloader release series. The default is 'critical' which is only updated 
+# for major bugs, security fixes or hardware compatibility changes.
+# Network boot is not enabled in the default bootloader.
 # As root:-
 echo FIRMWARE_RELEASE_STATUS="stable" > /etc/default/rpi-eeprom-update
 ```
