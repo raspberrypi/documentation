@@ -167,10 +167,10 @@ rpi-eeprom-config pieeprom.bin > bootconf.txt
 ```
 Change BOOT_ORDER to be 0x21 instead of 0x1. This tells the bootloader to try sd-card boot first and network boot second. You should normally include sd-card (0x1) in the boot sequence in-case of network failure.
 
-### Apply the configuration change to the EEPROM image file                                                                             ```
+### Apply the configuration change to the EEPROM image file
+```
 rpi-eeprom-config --out pieeprom-netboot.bin --config bootconf.txt pieeprom.bin
 ```
-
 ### Install the new EEPROM image
 ```
 sudo rpi-eeprom-update -d -f ./pieeprom-netboot.bin
