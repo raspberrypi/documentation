@@ -73,10 +73,8 @@ sudo rm index.html
 and create the file `index.php`:
 
 ```bash
-sudo leafpad index.php
+sudo nano index.php
 ```
-
-*Note: Leafpad is a graphical editor. Alternatively, use `nano` if you're restricted to the command line*
 
 Put some PHP content in it:
 
