@@ -4,9 +4,9 @@ On Linux, you have a choice of text editors. Some are easy-to-use but have limit
 
 ## Desktop graphical editors
 
-### Leafpad
+### Text Editor
 
-On Raspbian, you'll find an editor called Leafpad. This is a simple editor which opens in a window like a normal application. It allows use of the mouse and keyboard, and has tabs and syntax highlighting.
+When using Raspbian Desktop, in the accessories menu there is an option to run a Text Editor. This is a simple editor which opens in a window like a normal application. It allows use of the mouse and keyboard, and has tabs and syntax highlighting.
 
 You can use keyboard shortcuts, such as `Ctrl + S` to save a file and `Ctrl + X` to exit.
 
