@@ -134,14 +134,14 @@ Network boot requires a TFTP and NFS server to be configured.  See [Network boot
 Additional notes:-
 * The MAC address on the Pi4 is programmed at manufacture and is not derived from the serial number.
 ```                                                                          
-# mac adddress (ip addr) - it should start with DC:A6:32
+# mac address (ip addr) - it should start with DC:A6:32
 ip addr | grep ether | head -n1 | awk '{print $2}' | tr [a-z] [A-Z]                                                                                                                                                
 # serial number                                                                                                                         
 vcgencmd otp_dump | grep 28: | sed s/.*://g
 ```
 
 ### Installation - firmware update
-Network boot functionality is included in the 2020-02-13 Raspbian Buster release. However, for advanced boot modes it's normally best to use the latest stable software.
+Network boot functionality is included in the 2020-02-13 Raspbian Buster release. However, for advanced boot modes (USB, network) it is normally best to use the latest stable software.
 ```
 # Update the rpi-eeprom package                                                                                                 
 sudo apt update
