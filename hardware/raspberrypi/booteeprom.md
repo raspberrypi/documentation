@@ -19,7 +19,7 @@ To check that the bootloader is working correctly, turn off the power, unplug ev
 
 ## Recovery image
 
-If the Raspberry Pi is not booting it's possible that the bootloader EEPROM is corrupted. This can easily be reprogrammed using the Recovery image available on the [raspberrypi.org downloads page](https://www.raspberrypi.org/downloads/).
+If the Raspberry Pi is not booting it's possible that the bootloader EEPROM is corrupted. This can easily be reprogrammed using the Raspberry Pi Imager tool which is available via the [raspberrypi.org downloads page](https://www.raspberrypi.org/downloads/).
 
 ## Updating the bootloader
 
