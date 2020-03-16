@@ -4,7 +4,7 @@ This resource explains how to install a Raspberry Pi operating system image on a
 
 Before you start, don't forget to check [the SD card requirements](../sd-cards.md).
 
-## Using the Raspberry Pi Imaging Tool
+## Using Raspberry Pi Imager
 
 Raspberry Pi have developed a graphical SD card writing tool that works on Mac OS, Ubuntu 18.04 and Windows, and is the easiest option for most users as it will download the image and install it automatically to the SD card.
 
