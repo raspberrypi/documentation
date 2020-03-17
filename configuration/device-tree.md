@@ -709,7 +709,7 @@ The loading of overlays at runtime is a recent addition to the kernel, and so fa
 <a name="part3.6"></a>
 ### 3.6: Supported overlays and parameters
 
-As it is too time-consuming to document the individual overlays here, please refer to the [README](https://github.com/raspberrypi/firmware/blob/rpi-5.4.y/boot/overlays/README) file found alongside the overlay `.dtbo` files in `/boot/overlays`. It is kept up-to-date with additions and changes.
+As it is too time-consuming to document the individual overlays here, please refer to the [README](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README) file found alongside the overlay `.dtbo` files in `/boot/overlays`. It is kept up-to-date with additions and changes.
 
 <a name="part4"></a>
 ## Part 4: Troubleshooting and pro tips
