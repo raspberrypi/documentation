@@ -50,12 +50,12 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 
 | Part     | Represents   | Options                    |
 | -------- | ------------ | -------------------------- |
-| N        | Overvoltage  | 0: Overvoltage enabled     |
-|          |              | 1: Overvoltage disabled    |
-| O        | OTP Program<sup>1</sup> | 0: OTP programming enabled |
-|          |              | 1: OTP programming disabled |
-| Q        | OTP Read<sup>1</sup> | 0: OTP reading enabled |
-|          |              | 1: OTP reading disabled    |
+| N        | Overvoltage  | 0: Overvoltage allowed     |
+|          |              | 1: Overvoltage disallowed    |
+| O        | OTP Program<sup>1</sup> | 0: OTP programming allowed |
+|          |              | 1: OTP programming disallowed |
+| Q        | OTP Read<sup>1</sup> | 0: OTP reading allowed |
+|          |              | 1: OTP reading disallowed    |
 | uuu      | Unused       | Unused                     |
 | W        | Warranty bit | 0: Warranty is intact      |
 |          |              | 1: Warranty has been voided by [overclocking](../../../configuration/config-txt/overclocking.md) |
