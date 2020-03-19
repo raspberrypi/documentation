@@ -153,7 +153,7 @@ When a system like Raspberry Pi also supports optional plug-in accessories such 
 
 What is needed is a way to describe these optional components using a partial Device Tree, and then to be able to build a complete tree by taking a base DT and adding a number of optional elements. You can do this, and these optional elements are called "overlays".
 
-Unless you want to learn how to write overlays for Raspberry Pis, you might prefer to skip on to [Part 3: Using Device Trees on Raspberry Pi)(#part3).
+Unless you want to learn how to write overlays for Raspberry Pis, you might prefer to skip on to [Part 3: Using Device Trees on Raspberry Pi](#part3).
 
 <a name="part2.1"></a>
 ### 2.1: Fragments
