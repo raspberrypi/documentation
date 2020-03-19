@@ -45,18 +45,20 @@ This is the file to configure wireless network settings (if the hardware is capa
 
 ### Device Tree files
 
-There are various Device Tree blob files, which have the extension `.dtb`. These contain the hardware definitions of the various models of Raspberry Pi, and are used on boot to set up the kernel according to which Pi model is detected. More [details here](device-tree.md).
+There are various Device Tree blob files, which have the extension `.dtb`. These contain the hardware definitions of the various models of Raspberry Pi, and are used on boot to set up the kernel according to which Pi model is detected. More [details here](device-tree.md#part3.1).
 
 ### Kernel Files
 
-The boot folder will contain various kernel image files, used for the different Raspberry Pi models:
+The boot folder will contain various [kernel](../linux/kernel/README.md) image files, used for the different Raspberry Pi models:
 
 | Filename | Processor | Raspberry Model | Notes |
 | ---------| ----------|-----------------|-------|
 | kernel.img | BCM2835 | Pi 0, Pi 1 | |
 | kernel7.img| BCM2836, BCM2837 | Pi2's, Pi3 | Later Pi2's used the BCM2837 |
 | kernel7l.img | BCM2711 | Pi 4 | Large Physical Address Extension |
-| kernel8.img  | BCM2836, BCM2837, BCM2711 | Pi2/3/4 | Beta 64 bit kernel|
+| kernel8.img  | BCM2836, BCM2837, BCM2711 | Pi2/3/4 | Beta 64 bit kernel<sup>1</sup> |
+
+<sup>1</sup> Information on booting a 64-bit kernel can be found [here](config-txt/boot.md).
 
 ## Device Tree overlays
 
