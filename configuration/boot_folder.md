@@ -55,7 +55,7 @@ The boot folder will contain various kernel image files, used for the different 
 | ---------| ----------|-----------------|-------|
 | kernel.img | BCM2835 | Pi 0, Pi 1, Pi2 | |
 | kernel7.img| BCM2836, BCM2837 | Pi2's, Pi3 | Later Pi2's used the BCM2837 |
-| kernel7l.img | BCM2711 | Pi 4 | Large Physical Address Extensions |
+| kernel7l.img | BCM2711 | Pi 4 | Large Physical Address Extension |
 | kernel8.img  | BCM2836, BCM2836, BCM2711 | Pi2/3/4 | Beta 64 bit kernel|
 
 ## Device Tree overlays
