@@ -128,8 +128,8 @@ Be aware that output is likely to interfere with Bluetooth operation unless it i
 ## upstream_kernel
 <a name="upstream_kernel">
 
-If `upstream_kernel=1` is used, the firmware will choose the upstream Linux names for DTBs (`bcm2835-rpi-b.dtb` instead of `bcm2708-rpi-b.dtb`, for example). It will also set [`os_prefix`](#os_prefix) to "upstream/", unless it has been explicitly set to something else, but like other `os_prefix` values it will be ignored if the required kernel and .dtb file can't be found when using the prefix.
+If `upstream_kernel=1` is used, the firmware sets [`os_prefix`](#os_prefix) to "upstream/", unless it has been explicitly set to something else, but like other `os_prefix` values it will be ignored if the required kernel and .dtb file can't be found when using the prefix.
 
-To allow a common DTB to be used, if the upstream file isn't found the firmware will load the downstream variant instead and automatically apply the "upstream" overlay.
+The firmware will also prefer upstream Linux names for DTBs (`bcm2837-rpi-3-b.dtb` instead of `bcm2710-rpi-3-b.dtb`, for example). If the upstream file isn't found the firmware will load the downstream variant instead  and automatically apply the "upstream" overlay to make some adjustments. Note that this process happens _after_ the `os_prefix` has been finalised.
 
 *This article uses content from the eLinux wiki page [RPiconfig](http://elinux.org/RPiconfig), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](http://creativecommons.org/licenses/by-sa/3.0/)*
