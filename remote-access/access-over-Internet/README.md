@@ -8,12 +8,5 @@ One method is to set up port forwarding on your router. To do this, you must cha
 
 ## Alternatives
 
-Rather than using port forwarding, there are a number of alternative third-party services available. These provide varying levels of functionality - see their websites for more details.
+Rather than using port forwarding on your local router, there are a number of third-party online port forwarding services available. These provide varying levels of functionality - see their websites for more details. 
 
-- [remote.it](https://remote.it/developers#raspberry-pi)
-- [Dataplicity](https://dataplicity.com)
-- [Yaler.net](https://yaler.net/)
-- [Losant](https://losant.com)
-- [Remote IoT](https://remote-iot.com)
-- [inlets (OSS)](https://inlets.dev)
-- [Upswift.io](https://upswift.io)
