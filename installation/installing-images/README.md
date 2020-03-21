@@ -14,6 +14,8 @@ Raspberry Pi have developed a graphical SD card writing tool that works on Mac O
 - Choose  the SD card you wish to write your image to.
 - Review your selections and click 'WRITE' to begin writing data to the SD card.
 
+**Note**: if using the Imager on Windows 10 with Controlled Folder Access enabled, you will need to explicitly allow the Imager permission to write the SD card. If this is not done, the Imager will fail with a "failed to write" error.
+
 ## Using other tools
 
 Most other tools require you to download the image first, then use the tool to write it to your SD card.
