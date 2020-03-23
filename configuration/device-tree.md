@@ -172,10 +172,10 @@ A DT overlay comprises a number of fragments, each of which targets one node and
         target = <&i2s>;
         __overlay__ {
             status = "okay";
-			test_ref = <&test_label>;
-			test_label: test_subnode {
-				dummy;
-			};
+            test_ref = <&test_label>;
+            test_label: test_subnode {
+                dummy;
+            };
         };
     };
 };
@@ -195,10 +195,10 @@ Each fragment consists of two parts: a `target` property, identifying the node t
 
 &i2s {
     status = "okay";
-	test_ref = <&test_label>;
-	test_label: test_subnode {
-		dummy;
-	};
+    test_ref = <&test_label>;
+    test_label: test_subnode {
+        dummy;
+};
 };
 ```
 (In fact, with a sufficiently new version of `dtc` you can write it exactly like that and get identical output, but some homegrown tools don't understand this format yet so any overlay that you might want to be included in the standard Raspbian kernel should be written in the old format for now).
@@ -439,10 +439,10 @@ Assigning to the `bootargs` property appends to it rather than overwriting it - 
 
 The `reg` property is used to specify device addresses - the location of a memory-mapped hardware block, the address on an I2C bus, etc. The names of child nodes should be qualified with their addresses in hexadecimal, using `@` as a separator:
 ```
-		bmp280@76 {
-			reg = <0x77>;
-			...
-		};
+        bmp280@76 {
+            reg = <0x77>;
+            ...
+        };
 ```
 When assigning to the `reg` property, the address portion of the parent node name will be replaced with the assigned value. This can be used to prevent a node name clash when using the same overlay multiple times - a technique used by the `i2c-gpio` overlay.
 
@@ -456,62 +456,62 @@ Here are some examples of different types of properties, with parameters to modi
 
 ```
 / {
-	fragment@0 {
-		target-path = "/";
-		__overlay__ {
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
 
-			test: test_node {
-				string = "hello";
-				status = "disabled";
-				bytes = /bits/ 8 <0x67 0x89>;
-				u16s = /bits/ 16 <0xabcd 0xef01>;
-				u32s = /bits/ 32 <0xfedcba98 0x76543210>;
-				u64s = /bits/ 64 < 0xaaaaa5a55a5a5555 0x0000111122223333>;
-				bool1; // Defaults to true
-				       // bool2 defaults to false
-				mac = [01 23 45 67 89 ab];
-				spi = <&spi0>;
-			};
-		};
-	};
+            test: test_node {
+                string = "hello";
+                status = "disabled";
+                bytes = /bits/ 8 <0x67 0x89>;
+                u16s = /bits/ 16 <0xabcd 0xef01>;
+                u32s = /bits/ 32 <0xfedcba98 0x76543210>;
+                u64s = /bits/ 64 < 0xaaaaa5a55a5a5555 0x0000111122223333>;
+                bool1; // Defaults to true
+                       // bool2 defaults to false
+                mac = [01 23 45 67 89 ab];
+                spi = <&spi0>;
+            };
+        };
+    };
 
-	fragment@1 {
-		target-path = "/";
-		__overlay__ {
-			frag1;
-		};
-	};
+    fragment@1 {
+        target-path = "/";
+        __overlay__ {
+            frag1;
+        };
+    };
 
-	fragment@2 {
-		target-path = "/";
-		__dormant__ {
-			frag2;
-		};
-	};
+    fragment@2 {
+        target-path = "/";
+        __dormant__ {
+            frag2;
+        };
+    };
 
     __overrides__ {
-		string =      <&test>,"string";
-		enable =      <&test>,"status";
-		byte_0 =      <&test>,"bytes.0";
-		byte_1 =      <&test>,"bytes.1";
-		u16_0 =       <&test>,"u16s;0";
-		u16_1 =       <&test>,"u16s;2";
-		u32_0 =       <&test>,"u32s:0";
-		u32_1 =       <&test>,"u32s:4";
-		u64_0 =       <&test>,"u64s#0";
-		u64_1 =       <&test>,"u64s#8";
-		bool1 =       <&test>,"bool1!";
-		bool2 =       <&test>,"bool2?";
-		entofr =      <&test>,"english",
-		              <&test>,"french{hello=bonjour,goodbye='au revoir',weekend}";
-		pi_mac =      <&test>,"mac[{1=b8273bfedcba,2=b8273b987654}";
-		spibus =      <&test>,"spi:0[0=",<&spi0>,"1=",<&spi1>,"2=",<&spi2>;
+        string =      <&test>,"string";
+        enable =      <&test>,"status";
+        byte_0 =      <&test>,"bytes.0";
+        byte_1 =      <&test>,"bytes.1";
+        u16_0 =       <&test>,"u16s;0";
+        u16_1 =       <&test>,"u16s;2";
+        u32_0 =       <&test>,"u32s:0";
+        u32_1 =       <&test>,"u32s:4";
+        u64_0 =       <&test>,"u64s#0";
+        u64_1 =       <&test>,"u64s#8";
+        bool1 =       <&test>,"bool1!";
+        bool2 =       <&test>,"bool2?";
+        entofr =      <&test>,"english",
+                      <&test>,"french{hello=bonjour,goodbye='au revoir',weekend}";
+        pi_mac =      <&test>,"mac[{1=b8273bfedcba,2=b8273b987654}";
+        spibus =      <&test>,"spi:0[0=",<&spi0>,"1=",<&spi1>,"2=",<&spi2>;
 
-		only1 =       <0>,"+1-2";
-		only2 =       <0>,"-1+2";
-		enable1 =     <0>,"=1";
-		disable2 =    <0>,"!2";
-	};
+        only1 =       <0>,"+1-2";
+        only2 =       <0>,"-1+2";
+        enable1 =     <0>,"=1";
+        disable2 =    <0>,"!2";
+    };
 };
 ```
 
@@ -524,12 +524,12 @@ The overlay handling in the firmware and the run-time overlay application using 
 
 Sometimes, however, it is very useful to be able to create a label with one overlay and use it from another. Firmware released since 14th February 2020 has the ability to declare some labels as being global - the `__export__` node:
 ```
-	...
-	public: ...
+    ...
+    public: ...
 
-	__exports__ {
-		public; // Export the label 'public' to the base DT
-	};
+    __exports__ {
+        public; // Export the label 'public' to the base DT
+    };
 };
 ```
 When this overlay is applied, the loader strips out all symbols except those that have been exported, in this case `public`, and rewrites the path to make it relative to the target of the fragment containing the label. Overlays loaded after this one can then refer to `&public`.
@@ -630,10 +630,10 @@ For people writing overlays, the same aliasing has been applied to the labels on
 
 ```
 fragment@0 {
-	target = <&i2c_arm>;
-	__overlay__ {
-		status = "okay";
-	};
+    target = <&i2c_arm>;
+    __overlay__ {
+        status = "okay";
+    };
 };
 ```
 
