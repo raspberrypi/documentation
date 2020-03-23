@@ -172,6 +172,10 @@ A DT overlay comprises a number of fragments, each of which targets one node and
         target = <&i2s>;
         __overlay__ {
             status = "okay";
+			test_ref = <&test_label>;
+			test_label: test_subnode {
+				dummy;
+			};
         };
     };
 };
@@ -183,15 +187,21 @@ Each fragment consists of two parts: a `target` property, identifying the node t
 
 ```
 /dts-v1/;
+/plugin/;
 
 / {
-    compatible = "brcm,bcm2708";
+    compatible = "brcm,bcm2835";
 };
 
 &i2s {
     status = "okay";
+	test_ref = <&test_label>;
+	test_label: test_subnode {
+		dummy;
+	};
 };
 ```
+(In fact, with a sufficiently new version of `dtc` you can write it exactly like that and get identical output, but some homegrown tools don't understand this format yet so any overlay that you might want to be included in the standard Raspbian kernel should be written in the old format for now).
 
 The effect of merging that overlay with a standard Raspberry Pi base Device Tree (e.g. `bcm2708-rpi-b-plus.dtb`), provided the overlay is loaded afterwards, would be to enable the I2S interface by changing its status to `okay`. But if you try to compile this overlay using:
 
@@ -207,10 +217,10 @@ Label or path i2s not found
 
 This shouldn't be too unexpected, since there is no reference to the base `.dtb` or `.dts` file to allow the compiler to find the `i2s` label.
 
-Trying again, this time using the original example and adding the `-@` option to allow unresolved references:
+Trying again, this time using the original example and adding the `-@` option to allow unresolved references (and `-Hepapr` to remove some clutter):
 
 ```
-dtc -@ -I dts -O dtb -o 1st.dtbo 1st-overlay.dts
+dtc -@ -Hepapr -I dts -O dtb -o 1st.dtbo 1st-overlay.dts
 ```
 
 If `dtc` returns an error about the third line, it doesn't have the extensions required for overlay work. Run `sudo apt install device-tree-compiler` and try again - this time, compilation should complete successfully. Note that a suitable compiler is also available in the kernel tree as `scripts/dtc/dtc`, built when the `dtbs` make target is used:
@@ -222,44 +232,55 @@ It is interesting to dump the contents of the DTB file to see what the compiler 
 
 ```
 $ fdtdump 1st.dtbo
-
 /dts-v1/;
-// magic:           0xd00dfeed
-// totalsize:       0x106 (262)
-// off_dt_struct:   0x38
-// off_dt_strings:  0xe8
-// off_mem_rsvmap:  0x28
-// version:         17
-// last_comp_version:    16
-// boot_cpuid_phys: 0x0
-// size_dt_strings: 0x1e
-// size_dt_struct:  0xb0
+// magic:		0xd00dfeed
+// totalsize:		0x207 (519)
+// off_dt_struct:	0x38
+// off_dt_strings:	0x1c8
+// off_mem_rsvmap:	0x28
+// version:		17
+// last_comp_version:	16
+// boot_cpuid_phys:	0x0
+// size_dt_strings:	0x3f
+// size_dt_struct:	0x190
 
 / {
-    compatible = "brcm,bcm2708";
+    compatible = "brcm,bcm2835";
     fragment@0 {
-        target = <0xdeadbeef>;
+        target = <0xffffffff>;
         __overlay__ {
             status = "okay";
+            test_ref = <0x00000001>;
+            test_subnode {
+                dummy;
+                phandle = <0x00000001>;
+            };
         };
+    };
+    __symbols__ {
+        test_label = "/fragment@0/__overlay__/test_subnode";
     };
     __fixups__ {
         i2s = "/fragment@0:target:0";
     };
+    __local_fixups__ {
+        fragment@0 {
+            __overlay__ {
+                test_ref = <0x00000000>;
+            };
+        };
+    };
 };
 ```
 
-After the verbose description of the file structure there is our fragment. But look carefully - where we wrote `&i2s` it now says `0xdeadbeef`, a clue that something strange has happened. After the fragment there is a new node, `__fixups__`. This contains a list of properties mapping the names of unresolved symbols to lists of paths to cells within the fragments that need patching with the phandle of the target node, once that target has been located. In this case, the path is to the `0xdeadbeef` value of `target`, but fragments can contain other unresolved references which would require additional fixes.
+After the verbose description of the file structure there is our fragment. But look carefully - where we wrote `&i2s` it now says `0xffffffff`, a clue that something strange has happened (older versions of dtc might say `0xdeadbeef` instead). The compiler has also added a `phandle` property containing a unique (to this overlay) small integer to indicate that the node has a label, and replaced all references to the label with the same small integer.
 
-If you write more complicated fragments, the compiler may generate two more nodes: `__local_fixups__` and `__symbols__`. The former is required if any node in the fragments has a phandle, because the program performing the merge will have to ensure that phandle numbers are sequential and unique. However, the latter is the key to how unresolved symbols are dealt with.
+After the fragment there are three new nodes:
+* `__symbols__` lists the labels used in the overlay (`test_label` here), and the path to the labelled node. This node is the key to how unresolved symbols are dealt with.
+* `__fixups__` contains a list of properties mapping the names of unresolved symbols to lists of paths to cells within the fragments that need patching with the phandle of the target node, once that target has been located. In this case, the path is to the `0xffffffff` value of `target`, but fragments can contain other unresolved references which would require additional fixes.
+* `__local_fixups__` holds the locations of any references to labels that exist within the overlay - the `test_ref` property. This is required because the program performing the merge will have to ensure that phandle numbers are sequential and unique.
 
-Back in section 1.3 it says that "the original labels do not appear in the compiled output", but this isn't true when using the `-@` switch. Instead, every label results in a property in the `__symbols__` node, mapping a label to a path, exactly like the `aliases` node. In fact, the mechanism is so similar that when resolving symbols, the Raspberry Pi loader will search the "aliases" node in the absence of a `__symbols__` node. This is useful because by providing sufficient aliases, we can allow an older `dtc` to be used to build the base DTB files.
-
-UPDATE: The [Dynamic Device Tree](#part3.5) support in the kernel requires a different format of "local fixups" in the overlay. To avoid problems with old and new styles of overlay coexisting, and to match other users of overlays, the old "name-overlay.dtb" naming scheme has been replaced with "name.dtbo" from 4.4 onwards. Overlays should be referred to by name alone, and the firmware or utility that loads them will append the appropriate suffix. For example:
-```
-dtoverlay=awesome-overlay      # This is wrong
-dtoverlay=awesome              # This is correct
-```
+Back in [section 1.3](#part1_3) it says that "the original labels do not appear in the compiled output", but this isn't true when using the `-@` switch. Instead, every label results in a property in the `__symbols__` node, mapping a label to a path, exactly like the `aliases` node. In fact, the mechanism is so similar that when resolving symbols, the Raspberry Pi loader will search the "aliases" node in the absence of a `__symbols__` node. This was useful at one time because providing sufficient aliases allowed very old versions of `dtc` to be used to build the base DTB files, but fortunately that is ancient history now.
 
 <a name="part2.2"></a>
 ### 2.2: Device Tree parameters
