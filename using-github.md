@@ -1,6 +1,6 @@
 # Contributing to Raspberry Pi Documentation
 
-The sources for all the Raspberry Pi documentation is stored online on a site called GitHub, located here:
+The sources for all the Raspberry Pi documentation are stored online on a site called GitHub, located here:
 
 https://github.com/raspberrypi/documentation
 
