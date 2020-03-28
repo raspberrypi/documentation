@@ -47,6 +47,17 @@ This is the file to configure wireless network settings (if the hardware is capa
 
 There are various Device Tree blob files, which have the extension `.dtb`. These contain the hardware definitions of the various models of Raspberry Pi, and are used on boot to set up the kernel according to which Pi model is detected. More [details here](device-tree.md).
 
+### Kernel Files
+
+The boot folder will contain various kernel image files, used for the different Raspberry Pi models:
+
+| Filename | Processor | Raspberry Model | Notes |
+| ---------| ----------|-----------------|-------|
+| kernel.img | BCM2835 | Pi 0, Pi 1 | |
+| kernel7.img| BCM2836, BCM2837 | Pi2's, Pi3 | Later Pi2's used the BCM2837 |
+| kernel7l.img | BCM2711 | Pi 4 | Large Physical Address Extension |
+| kernel8.img  | BCM2836, BCM2837, BCM2711 | Pi2/3/4 | Beta 64 bit kernel|
+
 ## Device Tree overlays
 
 The `overlays` sub-folder contains Device Tree overlays. These are used to configure various hardware devices that may be attached to the system, for example the Raspberry Pi Touch Display or third-party sound boards. These overlays are selected using entries in `config.txt` — see ['Device Trees, overlays and parameters, part 2' for more info](device-tree.md#part2).

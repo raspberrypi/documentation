@@ -25,7 +25,7 @@ This list contains the publicly available information on the registers. If a reg
 18 – copy of bootmode register   
 28 – serial number   
 29 – ~(serial number)   
-30 – revision number   
+30 – [revision number](./revision-codes/README.md)   
 36-43 - [customer OTP values](../industrial/README.md)   
 45 - MPG2 decode key   
 46 - WVC1 decode key   

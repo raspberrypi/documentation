@@ -4,7 +4,9 @@ The Linux kernel accepts a command line of parameters during boot. On the Raspbe
 ```
 sudo nano /boot/cmdline.txt
 ```
-Note that we have to use `sudo` to edit anything in the boot partition.
+Note that we have to use `sudo` to edit anything in the boot partition, and that all parameters in `cmdline.txt` must be on the same line (no carriage returns).
+
+The command line that was passed to the kernel at boot time can be displayed using `cat /proc/cmdline`. It will not be exactly the same as that in `cmdline.txt` as the firmware can make changes to it prior to launching the kernel.
 
 ## Command Line Options
 
@@ -20,6 +22,26 @@ There are many kernel command line parameters, some of which are defined by the 
  - elevator: specifies the I/O scheduler to use. `elevator=deadline` means the kernel imposes a deadline on all I/O operations to prevent request starvation.
  - quiet: sets the default kernel log level to `KERN_WARNING`, which suppresses all but very serious log messages during boot.
 
+#### Display Entries in FKMS and KMS modes
+
+The firmware automatically adds a preferred resolution and overscan settings via an entry such as:
+
+```video=HDMI-A-1:1920x1080M@60,margin_left=0,margin_right=0,margin_top=0,margin_bottom=0```
+
+This default entry can be modified by duplicating the entry above manually in /boot/cmdline.txt and making required changes to the margin parameters. In addition, it is possible to add rotation and reflect parameters as documented in the standard [Linux framebuffer documentation](https://github.com/raspberrypi/linux/blob/rpi-4.19.y/Documentation/fb/modedb.txt). By default the `margin_*` options are set from the `overscan` entries in config.txt, if present. The firmware can be prevented from making any KMS specific changes to the command line by adding `disable_fw_kms_setup=1` to `config.txt`
+
+An example entry may be as follows:
+
+```video=HDMI-A-1:1920x1080M@60,margin_left=0,margin_right=0,margin_top=0,margin_bottom=0,rotate=90,reflect_x```
+
+Possible options for the display type, the first part of the `video=` entry,  are as follows:
+
+| video option  | Display |
+|:---:|:---|
+| HDMI-A-1      | HDMI 1 (HDMI 0 on silkscreen of Pi4B, HDMI on single HDMI boards) |
+| HDMI-A-2      | HDMI 2 (HDMI 1 on silkscreen of Pi4B) |
+| DSI-1         | DSI or DPI |
+| Composite-1   | Composite  |
 
 #### Other Entries (not exhaustive)
 

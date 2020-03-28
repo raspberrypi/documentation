@@ -30,7 +30,7 @@ pi@raspberrypi ~ $
 
 You can type `exit` to close the PuTTY window.
 
-##3. Modification, troubleshooting, and more
+## 3. Modification, troubleshooting, and more
 Next time you use PuTTY, look for the `Saved Sessions` section in the bottom half of the configuration screen. If you use this, we recommend switching to the `Connection` page in the left hand tree, and setting the `Seconds between keepalives` value to `30`. Then switch back to the `Session` page in the tree before you click `Save`. Using this setting allows you to leave a PuTTY window open for long periods of time with no activity, without the Pi timing out and disconnecting you.
 
 A connection might be unsuccessful for various reasons. It is most likely that your device or Raspberry Pi are [not connected properly](../../configuration/wireless/wireless-cli.md); [SSH is disabled](../../configuration/raspi-config.md); there is a typo in your code; or the IP address or credentials have changed. In the latter cases, you will need to update the host. For instructions on how to update a host, and for further PuTTY documentation, please see the [PuTTY docs](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html).

@@ -96,7 +96,7 @@ Displays the current voltages used by the specific block.
 
 #### otp_dump
 
-Displays the content of the One Time Programmable (OTP) memory, which is part of the SoC. These are 32 bit values, indexed from 8 to 64. See the [OTP bits page](../../../hardware/raspberrypi/otpbits.md) for more details.
+Displays the content of the One Time Programmable (OTP) memory, which is part of the SoC. These are 32 bit values, indexed from 8 to 64. See the [OTP bits page](../../hardware/raspberrypi/otpbits.md) for more details.
 
 #### get_mem type
 
@@ -106,7 +106,7 @@ Reports on the amount of memory allocated to the ARM cores `vcgencmd get_mem arm
 
 #### codec_enabled [type]
 
-Reports whether the specified CODEC type is enabled. Possible options for type are AGIF, FLAC, H263, H264, MJPA, MJPB, MJPG, **MPG2**, MPG4, MVC0, PCM, THRA, VORB, VP6, VP8, **WMV9**, **WVC1**. Those highlighted currently require a paid for licence, except on the Pi4, where these hardware codecs are disabled in preference to software decoding, which requires no licence. Note that because the H265 HW block on the Raspberry Pi4 is not part of the Videocore GPU, its status is not accessed via this command.
+Reports whether the specified CODEC type is enabled. Possible options for type are AGIF, FLAC, H263, H264, MJPA, MJPB, MJPG, **MPG2**, MPG4, MVC0, PCM, THRA, VORB, VP6, VP8, **WMV9**, **WVC1**. Those highlighted currently require a paid for licence (see the [FAQ](../../faqs/README.md#pi-video) for more info), except on the Pi4, where these hardware codecs are disabled in preference to software decoding, which requires no licence. Note that because the H265 HW block on the Raspberry Pi4 is not part of the Videocore GPU, its status is not accessed via this command.
 
 #### get_config type | name
 

@@ -1,6 +1,6 @@
 # Installing operating system images using Windows
 
-[balenaEtcher](https://www.balena.io/etcher/) is typically the easiest option for most users to write images to SD cards, so it is a good place to start. If you're looking for an alternative on Windows, you can use Win32DiskImager.
+[Raspberry Pi Imager](README.md) is our recommended option for most users to write images to SD cards, so it is a good place to start. If you're looking for an alternative on Windows, you can use balenaEtcher, Win32DiskImager or imgFlasher.
 
 ## balenaEtcher
 
@@ -19,6 +19,14 @@
 - In the device box, select the drive letter of the SD card. Be careful to select the correct drive: if you choose the wrong drive you could destroy the data on your computer's hard disk! If you are using an SD card slot in your computer, and can't see the drive in the Win32DiskImager window, try using an external SD adapter.
 - Click 'Write' and wait for the write to complete.
 - Exit the imager and eject the SD card.
+
+## Upswift imgFlasher
+
+- Download portable Windows version from [upswift.io](https://www.upswift.io/imgflasher/)
+- Run imgFlasher and choose an image or zip file
+- Choose SD card or USB drive
+- Click on 'Flash'
+- Wait until the flash is completed.
 
 ---
 

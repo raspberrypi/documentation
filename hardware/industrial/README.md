@@ -4,7 +4,7 @@ The Raspberry Pi is often used as part of another product. This documentation de
 
 ## Customer OTP settings
 
-There are a number of OTP values that can be used. To see a list of all the OTP values, you can use:
+There are a number of OTP values that can be used. To see a list of all the [OTP values](../raspberrypi/otpbits.md), you can use:
 
 ```
 pi@raspberrypi:~ $ vcgencmd otp_dump
@@ -63,4 +63,14 @@ It is possible to lock the OTP changes to avoid them being edited again. This ca
 pi@raspberrypi:~ $ /opt/vc/bin/vcmailbox 0x00038021 8 8 0xffffffff 0xaffe0000
 ```
 
-Once locked, none of the customer OTP values can be accessed.
+Once locked, the customer OTP values can no longer be altered. Note that this locking operation is irreversible.
+
+## Making Customer OTP bits unreadable
+
+It is possible to prevent the customer OTP bits from being read at all. This can be done using a special argument with the OTP write mailbox:
+
+```
+pi@raspberrypi:~ $ /opt/vc/bin/vcmailbox 0x00038021 8 8 0xffffffff 0xaffebabe
+```
+
+ This operation is unlikely to be useful for the vast majority of users, and is irreversible.
