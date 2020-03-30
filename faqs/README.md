@@ -133,7 +133,7 @@ The following prices are exclusive of any local taxes and shipping/handling fees
 | Raspberry Pi 3 Model A+ | $25 |
 | Raspberry Pi 3 Model B+ | $35 |
 | Raspberry Pi 4 Model B 1GB | $35 |
-| Raspberry Pi 4 Model B 2GB | $45 |
+| Raspberry Pi 4 Model B 2GB | $35 |
 | Raspberry Pi 4 Model B 4GB | $55 |
 | Raspberry Pi Zero | $5 |
 | Raspberry Pi Zero W |$10 |
