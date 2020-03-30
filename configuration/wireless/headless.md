@@ -12,7 +12,7 @@ You will need to define a `wpa_supplicant.conf` file for your particular wireles
 ```
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
-country=<Insert country code here>
+country=<Insert 2 letter ISO 3166-1 country code here>
 
 network={
  ssid="<Name of your WiFi>"
