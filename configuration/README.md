@@ -18,8 +18,8 @@ Some basic guides to configuring your Raspberry Pi.
     - Setting up your Pi to access the internet via a proxy server
 - [HDMI Config](hdmi-config.md)
     - Setting up your HDMI device, including custom settings
-- [Screen Layout Editor](arandr.md)
-    - Setting up your display devices using the provided graphical editor
+- [Screen Configuration Editor](arandr.md)
+    - Setting up your display device's resolution, frequency and orientation using the provided graphical editor
 - [Audio config](audio-config.md)
     - Switching your audio output between HDMI and the 3.5mm jack
 - [Camera config](camera.md)
