@@ -1,6 +1,6 @@
 # Power Supply
 
-The power supply requirements differ with Raspberry Pi model. All models require a 5.1v supply, but the current supplied generally increases according to model. All models up to the Raspberry Pi 3 require a microUSB power connector, whilst the Raspberry Pi 4 uses a USB-C connector.
+The power supply requirements differ by Raspberry Pi model. All models require a 5.1v supply, but the current supplied generally increases according to model. All models up to the Raspberry Pi 3 require a microUSB power connector, whilst the Raspberry Pi 4 uses a USB-C connector.
 
 Exactly how much current (mA) the Raspberry Pi requires is dependent on what you connect to it. The following table gives minimum and typical current requirements. 
 
@@ -15,8 +15,8 @@ Exactly how much current (mA) the Raspberry Pi requires is dependent on what you
 | Raspberry Pi 3 Model A+ | 2.5A | Limited by PSU, board, and connector ratings only. | 350mA |
 | Raspberry Pi 3 Model B+ | 2.5A | 1.2A | 500mA |
 | Raspberry Pi 4 Model B | 3.0A | 1.2A | 600mA |
-| Raspberry Pi Zero W/WH | 1.2A | Limited by PSU, board, and connector ratings only.| 150mA |
 | Raspberry Pi Zero | 1.2A | Limited by PSU, board, and connector ratings only | 100mA |
+| Raspberry Pi Zero W/WH | 1.2A | Limited by PSU, board, and connector ratings only.| 150mA |
 
 Raspberry Pi have developed their own power supplies for use with all models. These are reliable, use heavy gauge wires and are reasonably priced. 
 
