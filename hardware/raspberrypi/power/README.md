@@ -1,6 +1,6 @@
 # Power Supply
 
-The power supply requirements differ by Raspberry Pi model. All models require a 5.1v supply, but the current supplied generally increases according to model. All models up to the Raspberry Pi 3 require a microUSB power connector, whilst the Raspberry Pi 4 uses a USB-C connector.
+The power supply requirements differ by Raspberry Pi model. All models require a 5.1V supply, but the current supplied generally increases according to model. All models up to the Raspberry Pi 3 require a microUSB power connector, whilst the Raspberry Pi 4 uses a USB-C connector.
 
 Exactly how much current (mA) the Raspberry Pi requires is dependent on what you connect to it. The following table gives minimum and typical current requirements. 
 
@@ -28,9 +28,9 @@ If you need to connect a USB device that will take the power requirements above 
 
 ## Power Supply Warnings
 
-On all models of Raspberry Pi since the Raspberry Pi B+ (2014) except the Zero range, there is low-voltage detection circuitry that will detect if the supply voltage drops below 4.63v (+/- 5%). This will result in a [warning icon](../../../configuration/warning-icons.md) being displayed on all attached displays and an entry being being added to the kernel log.
+On all models of Raspberry Pi since the Raspberry Pi B+ (2014) except the Zero range, there is low-voltage detection circuitry that will detect if the supply voltage drops below 4.63V (+/- 5%). This will result in a [warning icon](../../../configuration/warning-icons.md) being displayed on all attached displays and an entry being being added to the kernel log.
 
-If you are seeing warnings, you should improve the power supply chain, as low power can cause problems with corruption of SD cards, or erratic behaviour of the Pi itself; for example, unexplained crashes. 
+If you are seeing warnings, you should improve the power supply and/or cable, as low power can cause problems with corruption of SD cards, or erratic behaviour of the Pi itself; for example, unexplained crashes. 
 
 Voltages can drop for a variety of reasons, for example if the power supply itself is inadequate, the power supply cable is made of too thin wires, or you have plugged in high demand USB devices. 
 
