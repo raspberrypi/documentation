@@ -2,7 +2,7 @@
 
 The power supply requirements differ by Raspberry Pi model. All models require a 5.1V supply, but the current supplied generally increases according to model. All models up to the Raspberry Pi 3 require a microUSB power connector, whilst the Raspberry Pi 4 uses a USB-C connector.
 
-Exactly how much current (mA) the Raspberry Pi requires is dependent on what you connect to it. The following table gives minimum and typical current requirements. 
+Exactly how much current (mA) the Raspberry Pi requires is dependent on what you connect to it. The following table gives various current requirements. 
 
 | Product | Recommended PSU current capacity | Maximum total USB peripheral current draw | Typical bare-board active current consumption |
 |-|-|-|-|
@@ -20,7 +20,7 @@ Exactly how much current (mA) the Raspberry Pi requires is dependent on what you
 
 Raspberry Pi have developed their own power supplies for use with all models. These are reliable, use heavy gauge wires and are reasonably priced. 
 
-For Raspberry Pi 0-3, we recommend our [micro USB Supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/). For Raspberry Pi 4, we recommend our [USB-C Supply](https://www.raspberrypi.org/products/type-c-power-supply/)
+For Raspberry Pi 0-3, we recommend our [2.5A micro USB Supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/). For Raspberry Pi 4, we recommend our [3A USB-C Supply](https://www.raspberrypi.org/products/type-c-power-supply/)
 
 The power requirements of the Raspberry Pi increase as you make use of the various interfaces on the Raspberry Pi. The GPIO pins can draw 50mA safely, distributed across all the pins; an individual GPIO pin can only safely draw 16mA. The HDMI port uses 50mA, the camera module requires 250mA, and keyboards and mice can take as little as 100mA or over 1000mA! Check the power rating of the devices you plan to connect to the Pi and purchase a power supply accordingly.
 
