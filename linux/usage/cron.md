@@ -4,16 +4,6 @@ Cron is a tool for configuring scheduled tasks on Unix systems. It is used to sc
 
 The command `crontab` (cron table) is used to edit the list of scheduled tasks in operation, and is done on a per-user basis; each user (including `root`) has their own `crontab`.
 
-## Cron GUI
-
-A graphical application for Cron is available by installing the `gnome-schedule` package:
-
-```bash
-sudo apt install gnome-schedule
-```
-
-You can then launch the program **Scheduled Tasks** from the main menu.
-
 ## Editing crontab
 
 Run `crontab` with the `-e` flag to edit the cron table:
