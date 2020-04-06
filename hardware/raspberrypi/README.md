@@ -4,6 +4,8 @@ The hardware in the Raspberry Pi
 
 - [Schematics](schematics/README.md)
     - Schematics for the Raspberry Pi
+- [Datasheets](datasheets.md)
+    - Datasheets for the Raspberry Pi
 - [BCM2835](bcm2835/README.md)
     - The Broadcom processor used in Raspberry Pi 1 and Zero
 - [BCM2836](bcm2836/README.md)
