@@ -119,13 +119,58 @@ On earlier models the serial number is used as the prefix, however, on Pi4 the M
 * 0 - Use the serial number e.g. "9ffefdef/"
 * 1 - Use the string specified by TFTP_PREFIX_STR
 * 2 - Use the MAC address e.g. "DC-A6-32-01-36-C2/"
-Default: 0
+Default: 0  
 Version: stable/pieeprom-2020-01-17.bin  
 
 ### TFTP_PREFIX_STR
 Specify the custom directory prefix string used when TFTP_PREFIX is set to 1. For example:- TFTP_PREFIX_STR=tftp_test/
-Default: ""
+Default: ""  
 Version: stable/pieeprom-2020-01-17.bin  
+
+### PXE_OPTION43
+Overrides the PXE Option43 match string with a different string. It's normally better to apply customizations to the DHCP server than change the client behaviour but this option is provided in-case that's not possible.
+Default: "Raspberry Pi Boot"  
+Version: stable/pieeprom-2020-03-19.bin  
+
+### DHCP_OPTION97
+In earlier releases the client GUID (Option97) was just the serial number repeated 4 times. By default, the new GUID format is
+3he concatenation of the fourcc for RPi4 (0x80017590), the board-revision (e.g. 0x00c03111) (4-bytes), the least significant 4 bytes of the mac address and the 4-byte serial number.
+This is inteded to be unique but also provide structured information to the DHCP server allowing Raspberry Pi4 computers to be identified without relying upon the Ethernet MAC OUID.
+
+Specify DHCP_OPTION97=0 to revert the the old behaviour.
+
+Default: 0x80017590
+Version: stable/pieeprom-2020-03-19.bin  
+
+### Static IP address configuration
+If TFTP_IP and the following options are set then DHCP is skipped and the static IP configuration is applied.
+
+#### CLIENT_IP
+The IP address of the client e.g. 192.168.0.1
+Default: ""  
+Version: stable/pieeprom-2020-03-19.bin  
+
+#### SUBNET
+The subnet address mask of the e.g. 255.255.255.0
+Default: ""  
+Version: stable/pieeprom-2020-03-19.bin  
+
+#### GATEWAY
+The gateway address to use if the TFTP server is on a differenet subnet e.g. 192.168.0.1
+Default: ""  
+Version: stable/pieeprom-2020-03-19.bin  
+
+### DISABLE_HDMI
+Disables the HDMI boot diagnostics display if a fatal error is encountered. This may also be disabled by setting display_splash=1 in config.txt.
+N.B By default, the HDMI diagnostics screen is automatically blanked after 2 minutes.
+Default: 0  
+Version: stable/pieeprom-2020-03-19.bin  
+
+### SELF_UPDATE
+Allows the bootloader to update itself instead of requiring recovery.bin. This is intended to make it easier to update the bootloader firmware via network boot. To enable set SELF_UPDATE=1 and add set bootloader_update=1 in config.txt.
+N.B. There is no automatic rollback in the event of a power failure during the firmware update. In the unlikely event of this happening you will have to use Pi Imager to apply the rescue image.
+Default: 0  
+Version: stable/pieeprom-2020-03-19.bin  
 
 ## Network Boot
 ### Server configuration                                                    
@@ -147,12 +192,19 @@ Network boot functionality is included in the 2020-02-13 Raspbian Buster release
 sudo apt update
 sudo apt upgrade
                                                                           
-# Select the stable bootloader release series. The default is 'critical' which is only updated 
-# for major bugs, security fixes or hardware compatibility changes.
-# Network boot is not enabled in the default bootloader.
+# Network boot is not yet enabled in the production bootloader image.
 # As root:-
 echo FIRMWARE_RELEASE_STATUS="stable" > /etc/default/rpi-eeprom-update
 ```
+
+#### Firmware release status
+The firmware release status maps to sub-directory of bootloader firmware images and is used to select different release streams according to stability. By default, Raspbian only selects critical updates (security fixes or major hardware compatiblity changes) since most users do not use alternate boot modes (TFTP, USB etc)
+
+* critical - Default - rarely updated
+* stable - Updated when when new/advanced features have been successfully beta tested. 
+* beta - New or experimental features are tested here first.
+
+Since the release status string is just a sub-directory name then it's possible to create your own release streams e.g. a pinned release or custom network boot configuration.
 
 ### Enable network boot
 Network boot is not enabled by default in the bootloader. To enable it the bootloader configuration file must be edited.
