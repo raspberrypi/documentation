@@ -139,7 +139,7 @@ This is inteded to be unique but also provide structured information to the DHCP
 
 Specify DHCP_OPTION97=0 to revert the the old behaviour or a non-zero hex-value to specify a custom 4-byte prefix.
 
-Default: 0x80017590
+Default: 0x34695052
 Version: stable/pieeprom-2020-03-19.bin  
 
 ### Static IP address configuration
@@ -167,7 +167,7 @@ Default: 0
 Version: stable/pieeprom-2020-03-19.bin  
 
 ### SELF_UPDATE
-Allows the bootloader to update itself instead of requiring recovery.bin. This is intended to make it easier to update the bootloader firmware via network boot. To enable set SELF_UPDATE=1 and add set bootloader_update=1 in config.txt.
+Allows the bootloader to update itself instead of requiring recovery.bin. This is intended to make it easier to update the bootloader firmware via network boot. To enable set SELF_UPDATE=1 and add bootloader_update=1 in config.txt.
 N.B. There is no automatic rollback in the event of a power failure during the firmware update. In the unlikely event of this happening you will have to use Pi Imager to apply the rescue image.
 
 If self update is enabled then the bootloader will look for (pieeprom.upd + pieeprom.sig) and/or (vl805.bin + vl805.sig) on the boot partition (or TFTP root). If the update files are different to the current image then the update is applied and system is reset. Otherwise, if the images are identical then boot continues as normal.
@@ -191,19 +191,21 @@ vcgencmd otp_dump | grep 28: | sed s/.*://g
 ```
 
 ### Installation - firmware update
-Network boot functionality is included in the 2020-02-13 Raspbian Buster release. However, for advanced boot modes (USB, network) it is normally best to use the latest stable software.
+Network boot functionality requires the 2020-02-13 Raspbian Buster release (or newer) and an updated bootloader. For advanced boot modes (USB, network) it is normally best to use the latest 'stable' bootloader.
+
 ```
 # Update the rpi-eeprom package                                                                                                 
 sudo apt update
 sudo apt upgrade
                                                                           
-# Network boot is not yet enabled in the production bootloader image.
+# Network boot is only available in the stable and beta releases.
+# Switch from critical updates to the stable release series.
 # As root:-
 echo FIRMWARE_RELEASE_STATUS="stable" > /etc/default/rpi-eeprom-update
 ```
 
 #### Firmware release status
-The firmware release status maps to subdirectory of bootloader firmware images and is used to select different release streams according to stability. By default, Raspbian only selects critical updates (security fixes or major hardware compatiblity changes) since most users do not use alternate boot modes (TFTP, USB etc)
+The firmware release status corresponds to a particular subdirectory of bootloader firmware images, and can be changed to select a different release stream. By default, Raspbian only selects critical updates (security fixes or major hardware compatiblity changes) since most users do not use alternate boot modes (TFTP, USB etc)
 
 * critical - Default - rarely updated
 * stable - Updated when new/advanced features have been successfully beta tested. 
