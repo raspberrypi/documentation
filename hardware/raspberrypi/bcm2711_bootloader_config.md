@@ -128,7 +128,7 @@ Default: ""
 Version: stable/pieeprom-2020-01-17.bin  
 
 ### PXE_OPTION43
-Overrides the PXE Option43 match string with a different string. It's normally better to apply customizations to the DHCP server than change the client behaviour but this option is provided in case that's not possible.
+Overrides the PXE Option43 match string with a different string. It's normally better to apply customisations to the DHCP server than change the client behaviour but this option is provided in case that's not possible.
 Default: "Raspberry Pi Boot"  
 Version: stable/pieeprom-2020-03-19.bin  
 
