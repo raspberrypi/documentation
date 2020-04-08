@@ -135,7 +135,7 @@ Version: stable/pieeprom-2020-03-19.bin
 ### DHCP_OPTION97
 In earlier releases the client GUID (Option97) was just the serial number repeated 4 times. By default, the new GUID format is
 the concatenation of the fourcc for RPi4 (0x34695052 - little endian), the board revision (e.g. 0x00c03111) (4-bytes), the least significant 4 bytes of the mac address and the 4-byte serial number.
-This is inteded to be unique but also provide structured information to the DHCP server, allowing Raspberry Pi4 computers to be identified without relying upon the Ethernet MAC OUID.
+This is intended to be unique but also provide structured information to the DHCP server, allowing Raspberry Pi4 computers to be identified without relying upon the Ethernet MAC OUID.
 
 Specify DHCP_OPTION97=0 to revert the the old behaviour or a non-zero hex-value to specify a custom 4-byte prefix.
 
