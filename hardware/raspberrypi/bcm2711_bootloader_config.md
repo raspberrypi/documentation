@@ -128,14 +128,14 @@ Default: ""
 Version: stable/pieeprom-2020-01-17.bin  
 
 ### PXE_OPTION43
-Overrides the PXE Option43 match string with a different string. It's normally better to apply customizations to the DHCP server than change the client behaviour but this option is provided in-case that's not possible.
+Overrides the PXE Option43 match string with a different string. It's normally better to apply customizations to the DHCP server than change the client behaviour but this option is provided in case that's not possible.
 Default: "Raspberry Pi Boot"  
 Version: stable/pieeprom-2020-03-19.bin  
 
 ### DHCP_OPTION97
 In earlier releases the client GUID (Option97) was just the serial number repeated 4 times. By default, the new GUID format is
-3he concatenation of the fourcc for RPi4 (0x80017590), the board-revision (e.g. 0x00c03111) (4-bytes), the least significant 4 bytes of the mac address and the 4-byte serial number.
-This is inteded to be unique but also provide structured information to the DHCP server allowing Raspberry Pi4 computers to be identified without relying upon the Ethernet MAC OUID.
+the concatenation of the fourcc for RPi4 (0x80017590), the board revision (e.g. 0x00c03111) (4-bytes), the least significant 4 bytes of the mac address and the 4-byte serial number.
+This is inteded to be unique but also provide structured information to the DHCP server, allowing Raspberry Pi4 computers to be identified without relying upon the Ethernet MAC OUID.
 
 Specify DHCP_OPTION97=0 to revert the the old behaviour.
 
@@ -198,13 +198,13 @@ echo FIRMWARE_RELEASE_STATUS="stable" > /etc/default/rpi-eeprom-update
 ```
 
 #### Firmware release status
-The firmware release status maps to sub-directory of bootloader firmware images and is used to select different release streams according to stability. By default, Raspbian only selects critical updates (security fixes or major hardware compatiblity changes) since most users do not use alternate boot modes (TFTP, USB etc)
+The firmware release status maps to subdirectory of bootloader firmware images and is used to select different release streams according to stability. By default, Raspbian only selects critical updates (security fixes or major hardware compatiblity changes) since most users do not use alternate boot modes (TFTP, USB etc)
 
 * critical - Default - rarely updated
-* stable - Updated when when new/advanced features have been successfully beta tested. 
+* stable - Updated when new/advanced features have been successfully beta tested. 
 * beta - New or experimental features are tested here first.
 
-Since the release status string is just a sub-directory name then it's possible to create your own release streams e.g. a pinned release or custom network boot configuration.
+Since the release status string is just a subdirectory name then it's possible to create your own release streams e.g. a pinned release or custom network boot configuration.
 
 ### Enable network boot
 Network boot is not enabled by default in the bootloader. To enable it the bootloader configuration file must be edited.
