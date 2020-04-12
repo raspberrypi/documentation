@@ -61,7 +61,7 @@ If you specify the wrong device in the instructions, you could overwrite your pr
 - Copy the image
 
   ```bash
-  sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskN conv=sync
+  sudo dd bs=1m if=path_of_your_image.img of=/dev/diskN conv=sync
   ```
 
    Replace `N` with the number that you noted before.
@@ -69,13 +69,13 @@ If you specify the wrong device in the instructions, you could overwrite your pr
    This can take more than 15 minutes, depending on the image file size.
    Check the progress by pressing Ctrl+T.
    
-    If the command reports `dd: /dev/rdisk2: Resource busy`, you need to unmount the volume first `sudo diskutil unmountDisk /dev/disk2`.
+    If the command reports `dd: /dev/disk2: Resource busy`, you need to unmount the volume first `sudo diskutil unmountDisk /dev/disk2`.
 
     If the command reports `dd: bs: illegal numeric value`, change the block size `bs=1m` to `bs=1M`.
 
-    If the command reports `dd: /dev/rdisk2: Operation not permitted` you need to disable SIP before continuing.
+    If the command reports `dd: /dev/disk2: Operation not permitted` you need to disable SIP before continuing.
 
-    If the command reports `dd: /dev/rdisk3: Permission denied`, the partition table of the SD card is being protected against being overwritten by Mac OS. Erase the SD card's partition table using this command:
+    If the command reports `dd: /dev/disk3: Permission denied`, the partition table of the SD card is being protected against being overwritten by Mac OS. Erase the SD card's partition table using this command:
     
     ```
     sudo diskutil partitionDisk /dev/diskN 1 MBR "Free Space" "%noformat%" 100%
@@ -89,5 +89,5 @@ If you specify the wrong device in the instructions, you could overwrite your pr
 After the `dd` command finishes, eject the card:
 
 ```bash
-sudo diskutil eject /dev/rdiskN
+sudo diskutil eject /dev/diskN
 ```
