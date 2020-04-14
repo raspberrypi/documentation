@@ -38,7 +38,7 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 This table gives the default values for the options on various Raspberry Pi Models, all frequencies are stated in MHz.
 
 | Option       | Pi 0/W | Pi1 | Pi2 | Pi3   | Pi3A+/Pi3B+ | Pi4  |
-| ---          | ---    | --- | --- | ----  | ----- | ---- | 
+| ---          | :---:    | :---: | :---: | :----:  | :-----: | :----: | 
 | arm_freq     | 1000   | 700 | 900 | 1200  | 1400  | 1500 |
 | core_freq    | 400    | 250 | 250 | 400   | 400   | 500/550/432 |
 | h264_freq    | 300    | 250 | 250 | 400   | 400   | 500/550/432 |
@@ -53,12 +53,10 @@ This table gives the default values for the options on various Raspberry Pi Mode
 | v3d_freq_min |  250   | 250 | 250 | 250   | 250   | 500  |
 | sdram_freq_min |400   | 400 | 400 | 400   | 400   | 400  |
 
-| gpu_freq | Sets `core_freq`, `h264_freq`, `isp_freq`, and `v3d_freq` together; on Pi 3/Pi Zero /Pi Zero W `core_freq` defaults to `400`, while `h264_freq`, `isp_freq`, and `v3d_freq`default to `300`; on Pi 4B this can be set to 500 or 600 only|
-
 This table gives defaults for options that are the same across all models.
 
 | Option               | Default |
-| ---                  | ---     |
+| ---                  | :---:   |
 | initial_turbo        | 0       |
 | overvoltage_min      | 0       |
 | temp_limit           | 85      |
