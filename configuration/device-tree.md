@@ -455,7 +455,7 @@ The introduction of the Pi 4, built around the BCM2711 SoC, brought with it many
 
 There is therefore a need for a method of tailoring an overlay to multiple platforms with differing hardware. Supporting them all in a single .dtbo file would require heavy use of hidden ("dormant") fragments and a switch to an on-demand symbol resolution mechanism so that a missing symbol that isn't needed doesn't cause a failure. A simpler solution is to add a facility to map an overlay name to one of several implementation files depending on the current platform.
 
-The overlay map, which is rolling out with the switch to Linux 5.4, is a file that gets loaded by the firmware at start of day. It is written in DTS source format - `overlay_map.dts`, compiled to `overlay_map.dtb` and stored in the overlays directory.
+The overlay map, which is rolling out with the switch to Linux 5.4, is a file that gets loaded by the firmware at bootup. It is written in DTS source format - `overlay_map.dts`, compiled to `overlay_map.dtb` and stored in the overlays directory.
 
 This is an edited version of the current map file (the full version is available [here](https://github.com/raspberrypi/linux/blob/rpi-5.4.y/arch/arm/boot/dts/overlays/overlay_map.dts)):
 
@@ -484,7 +484,9 @@ This is an edited version of the current map file (the full version is available
 };
 ```
 
-Each node has the name of an overlay that requires special handling. The properties of each node are either platform names or one of a small number of special directives. A platform name with no value (an empty property) indicates that the current overlay is compatible with the platform; for example, `vc4-kms-v3d` is compatible with the `bcm2835` platform. A non-empty value for a platform is the name of an alternative overlay to use in place of the requested one; asking for `vc4-kms-v3d` on BCM2711 results in `vc4-kms-v3d-pi4` being loaded instead. Any platform not included in an overlay's node is not compatible with that overlay.
+Each node has the name of an overlay that requires special handling. The properties of each node are either platform names or one of a small number of special directives. The current supported platforms are `bcm2835`, which includes all Pis built around the BCM2835, BCM2836 and BCM2837 SoCs, and `bcm2711` for Pi 4B.
+
+A platform name with no value (an empty property) indicates that the current overlay is compatible with the platform; for example, `vc4-kms-v3d` is compatible with the `bcm2835` platform. A non-empty value for a platform is the name of an alternative overlay to use in place of the requested one; asking for `vc4-kms-v3d` on BCM2711 results in `vc4-kms-v3d-pi4` being loaded instead. Any platform not included in an overlay's node is not compatible with that overlay.
 
 The second example node - `vc4-kms-v3d-pi4` - could be inferred from the content of `vc4-kms-v3d`, but that intelligence goes into the construction of the file, not its interpretation.
 
@@ -496,9 +498,13 @@ In the event that a platform is not listed for an overlay, one of the special di
 
 Remember: only exceptions need to be listed - the absence of a node for an overlay means that the default file should be used for all platforms.
 
+Accessing diagnostic messages from the firmware is covered in [Debugging](#part4.1).
+
 The `dtoverlay` and `dtmerge` utilities have been extended to support the map file:
 * `dtmerge` extracts the platform name from the compatible string in the base DTB.
 * `dtoverlay` reads the compatible string from the live Device Tree at `/proc/device-tree`, but you can use the `-p` option to supply an alternate platform name (useful for dry runs on a different platform).
+
+They both send errors, warnings and any debug output to STDERR.
 
 <a name="part2.2.11"></a>
 #### 2.2.11 Examples
