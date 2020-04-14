@@ -16,6 +16,8 @@ Note that there are a few config settings that cannot be retrieved using `vcgenc
 
 The `config.txt` file is read by the early-stage boot firmware, so it has a very simple file format. The format is a single `property=value` statement on each line, where `value` is either an integer or a string. Comments may be added, or existing config values may be commented out and disabled, by starting a line with the `#` character.
 
+There is an 80 character line length limit to entries, any characters past this limit will be ignored.
+
 Here is an example file:
 
 ```
