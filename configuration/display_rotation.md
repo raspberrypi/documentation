@@ -6,12 +6,13 @@ The options to rotate the display of your Raspberry Pi depend on which display d
 
 If you are running the Raspberry Pi desktop then rotation is achieved by using the `Screen Configuration Utility` from the desktop `Preferences` menu. This will bring up a graphical representation of the display or displays connected to the Raspberry Pi. Right click on the display you wish to rotate and select the required option.
 
-It is also possible to change these settings using the command line `xrandr` option. The following commands give -90°, +90° and 180° rotations respectively. 
+It is also possible to change these settings using the command line `xrandr` option. The following commands give 0°, -90°, +90° and 180° rotations respectively. 
 
 ```bash
+DISPLAY=:0 xrandr --output HDMI1 --rotate normal
 DISPLAY=:0 xrandr --output HDMI1 --rotate left 
 DISPLAY=:0 xrandr --output HDMI1 --rotate inverted
-DISPLAY=:0 xrandr --output HDMI1 --rotate normal
+DISPLAY=:0 xrandr --output HDMI1 --rotate right
 ```
 
 If you are using the console only (no graphical desktop) then you will need to set the appropriate kernel command line flags. Change the console settings as described on the [this page](./cmdline-txt.md).
