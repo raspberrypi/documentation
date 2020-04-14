@@ -10,20 +10,20 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 
 | Option | Description |
 | --- | --- |
-| arm_freq | Frequency of the ARM CPU in MHz.
-| gpu_freq | Sets `core_freq`, `h264_freq`, `isp_freq`, and `v3d_freq` together; on Pi 3/Pi Zero /Pi Zero W `core_freq` defaults to `400`, while `h264_freq`, `isp_freq`, and `v3d_freq`default to `300`; on Pi 4B this can be set to 500 or 600 only|
+| arm_freq | Frequency of the ARM CPU in MHz. |
+| gpu_freq | Sets `core_freq`, `h264_freq`, `isp_freq`, and `v3d_freq` together |
 | core_freq | Frequency of the GPU processor core in MHz, influences CPU performance because it drives the L2 cache and memory bus; the L2 cache benefits only Pi Zero/Pi Zero W/ Pi 1, there is a small benefit for SDRAM on Pi 2/Pi 3 and Pi 4B|
 | h264_freq | Frequency of the hardware video block in MHz; individual override of the `gpu_freq` setting |
 | isp_freq | Frequency of the image sensor pipeline block in MHz; individual override of the `gpu_freq` setting |
 | v3d_freq | Frequency of the 3D block in MHz; individual override of the `gpu_freq` setting |
 | sdram_freq | Frequency of the SDRAM in MHz. SDRAM overclocking on Pi 4B is not currently supported|
-| over_voltage | CPU/GPU core voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. In other words, specifying -16 will give 0.8V as the GPU/core voltage, and specifying 8 will give 1.4V. For defaults see table below. Values above 6 are only allowed when `force_turbo` is specified: this sets the warranty bit if `over_voltage_*` is also set. |
+| over_voltage | CPU/GPU core voltage adjustment. The value should be in the range [-16, 8] which equates to the range [0.8V, 1.4V] with 0.025V steps. In other words, specifying -16 will give 0.8V as the GPU/core voltage, and specifying 8 will give 1.4V. For defaults see table below. Values above 6 are only allowed when `force_turbo` is specified: this sets the warranty bit if `over_voltage_*` is also set. |
 | over_voltage_sdram | Sets `over_voltage_sdram_c`, `over_voltage_sdram_i`, and `over_voltage_sdram_p` together. |
-| over_voltage_sdram_c | SDRAM controller voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
-| over_voltage_sdram_i | SDRAM I/O voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
-| over_voltage_sdram_p | SDRAM phy voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. The default value is `0` (1.2V). |
+| over_voltage_sdram_c | SDRAM controller voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. |
+| over_voltage_sdram_i | SDRAM I/O voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. |
+| over_voltage_sdram_p | SDRAM phy voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. |
 | force_turbo | Forces turbo mode frequencies even when the ARM cores are not busy. Enabling this may set the warranty bit if `over_voltage_*` is also set. |
-| initial_turbo | Enables turbo mode from boot for the given value in seconds, or until cpufreq sets a frequency. For more information [see here](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=6201&start=425#p180099). The default value is `0`, maximum value is `60`. |
+| initial_turbo | Enables turbo mode from boot for the given value in seconds, or until cpufreq sets a frequency. For more information [see here](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=6201&start=425#p180099). The maximum value is `60`. |
 | arm_freq_min | Minimum value of arm_freq used for dynamic frequency clocking. |
 | core_freq_min | Minimum value of `core_freq` used for dynamic frequency clocking. On Pi 4B the default is`275` when `hdmi_enable_4kp60` is set|
 | gpu_freq_min | Minimum value of `gpu_freq` used for dynamic frequency clocking.|
@@ -37,12 +37,14 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 
 This table gives the default values for the options on various Raspberry Pi Models, all frequencies are stated in MHz.
 
-| Option       | Pi 0/W | Pi1| Pi2 | Pi3   | Pi3B+ | Pi4  |
+| Option       | Pi 0/W | Pi1 | Pi2 | Pi3   | Pi3A+/Pi3B+ | Pi4  |
 | ---          | ---    | --- | --- | ----  | ----- | ---- | 
 | arm_freq     | 1000   | 700 | 900 | 1200  | 1400  | 1500 |
-| gpu_freq     |400/300 | 250 | 250 |400/300|400/300| 500  |  
-| core_freq    | 400    | 250 | 250 | 400   | 400   | 500  |
-| sdram_fre    | 450    | 400 | 400 | 450   | 500   | 3200 |
+| core_freq    | 400    | 250 | 250 | 400   | 400   | 500/550/432 |
+| h264_freq    | 300    | 250 | 250 | 400   | 400   | 500/550/432 |
+| isp_freq     | 300    | 250 | 250 | 400   | 400   | 500/550/432 |
+| v3d_freq     | 300    | 250 | 250 | 400   | 400   | 500/550/432 |
+| sdram_freq   | 450    | 400 | 400 | 450   | 500   | 3200 |
 | arm_freq_min | 700    | 700 | 600 | 600   | 600   | 600  |
 | core_freq_min| 250    | 250 | 250 | 250   | 250   | 250/275 |
 | gpu_freq_min | 250    | 250 | 250 | 250   | 250   | 500  |
@@ -50,8 +52,20 @@ This table gives the default values for the options on various Raspberry Pi Mode
 | isp_freq_min |  250   | 250 | 250 | 250   | 250   | 500  |
 | v3d_freq_min |  250   | 250 | 250 | 250   | 250   | 500  |
 | sdram_freq_min |400   | 400 | 400 | 400   | 400   | 400  |
-|overvoltage_min | 0    | 0   |  0  | 0     | 0     | 0    |
-| temp_limit   | 85     | 85  | 85  | 85    | 85    | 85   |
+
+| gpu_freq | Sets `core_freq`, `h264_freq`, `isp_freq`, and `v3d_freq` together; on Pi 3/Pi Zero /Pi Zero W `core_freq` defaults to `400`, while `h264_freq`, `isp_freq`, and `v3d_freq`default to `300`; on Pi 4B this can be set to 500 or 600 only|
+
+This table gives defaults for options that are the same across all models.
+
+| Option               | Default |
+| ---                  | ---     |
+| initial_turbo        | 0       |
+| overvoltage_min      | 0       |
+| temp_limit           | 85      |
+| over_voltage_sdram_c | 0 (1.2v) |
+| over_voltage_sdram_i | 0 (1.2v) |
+| over_voltage_sdram_p | 0 (1.2v) |
+
 
 This table describes the overvoltage settings for the various Pi models. The firmware uses Adaptive Voltage Scaling (AVS) to determine the optimum voltage to set. Note that for each integer rise in over_voltage, the voltage will be 25mV higher.
 
