@@ -4,7 +4,7 @@ The options to rotate the display of your Raspberry Pi depend on which display d
 
 ### Fake or Full KMS graphics driver (Default on Pi4)
 
-If you are running the Raspberry Pi desktop then rotation is achieved by using the `Screen Configuration Utility` from the desktop `Preferences` menu. This will bring up a graphical display of the display or displays attached. Right click on the display you wish to rotate and select the required option.
+If you are running the Raspberry Pi desktop then rotation is achieved by using the `Screen Configuration Utility` from the desktop `Preferences` menu. This will bring up a graphical representation of the display or displays connected tothe Raspberry Pi. Right click on the display you wish to rotate and select the required option.
 
 It is also possible to change these settings using the command line `xrandr` option.
 
@@ -20,7 +20,7 @@ If you are using the console only (no graphical desktop) then you will need to s
 
 There are `config.txt` options for rotating when using the legacy display drivers. 
 
-`display_hdmi_rotate` is used to rotate the HDMI display, `display_lcd_rotate` is used to rotate any attached LCD panel (Using the DSI or DPI interface). Each option takes one of the following parameters :
+`display_hdmi_rotate` is used to rotate the HDMI display, `display_lcd_rotate` is used to rotate any attached LCD panel (using the DSI or DPI interface). Each option takes one of the following parameters :
 
 | display_*_rotate | result |
 | --- | --- |
