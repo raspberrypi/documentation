@@ -52,7 +52,7 @@ make bcmrpi_defconfig
 
 ```bash
 cd linux
-KERNEL=kernel7
+KERNEL=kernel7l
 make bcm2709_defconfig
 ```
 
