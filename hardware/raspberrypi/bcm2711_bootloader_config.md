@@ -204,15 +204,6 @@ sudo apt upgrade
 echo FIRMWARE_RELEASE_STATUS="stable" > /etc/default/rpi-eeprom-update
 ```
 
-#### Firmware release status
-The firmware release status corresponds to a particular subdirectory of bootloader firmware images, and can be changed to select a different release stream. By default, Raspbian only selects critical updates (security fixes or major hardware compatiblity changes) since most users do not use alternate boot modes (TFTP, USB etc)
-
-* critical - Default - rarely updated
-* stable - Updated when new/advanced features have been successfully beta tested. 
-* beta - New or experimental features are tested here first.
-
-Since the release status string is just a subdirectory name then it's possible to create your own release streams e.g. a pinned release or custom network boot configuration.
-
 ### Enable network boot
 Network boot is not enabled by default in the bootloader. To enable it the bootloader configuration file must be edited.
 ```                                                                        
