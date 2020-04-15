@@ -16,7 +16,7 @@ However, you can also use VNC Server to gain graphical remote access to your Ras
 
 ## Installing VNC
 
-VNC is already installed on the full Raspbian image, and can be installed via `Recomemnded Software` from the `Preferences` menu on other versions.
+VNC is already installed on the full Raspbian image, and can be installed via `Recommended Software` from the `Preferences` menu on other versions.
 
 If you are not using a desktop you can install it from the command line as follows:
 
