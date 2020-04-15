@@ -73,12 +73,18 @@ vcgencmd bootloader_config
 vcgencmd bootloader_version
 ```
 
-### Beta firmware
-Beta firmware files will be stored in `/lib/firmware/raspberrypi/bootloader/beta/`. Developers or beta-testers who are comfortable with using the rescue image to fix boot problems can track the beta firmware by editing `/etc/default/rpi-eeprom-update` 
-```
-Change FIRMWARE_RELEASE_STATUS="critical"
-to FIRMWARE_RELEASE_STATUS="beta"
-```
+### Firmware release status
+The firmware release status corresponds to a particular subdirectory of bootloader firmware images (`/lib/firmware/raspberrypi/bootloader/...`), and can be changed to select a different release stream. By default, Raspbian only selects critical updates (security fixes or major hardware compatiblity changes) since most users do not use alternate boot modes (TFTP, USB etc)
+
+* critical - Default - rarely updated
+* stable - Updated when new/advanced features have been successfully beta tested. 
+* beta - New or experimental features are tested here first.
+
+Since the release status string is just a subdirectory name then it's possible to create your own release streams e.g. a pinned release or custom network boot configuration.
+
+### Changing the firmware release
+
+You can change which release stream is to be used during an update by editing the `/etc/default/rpi-eeprom-update` file and changing the `FIRMWARE_RELEASE_STATUS` entry to the appropriate stream.
 
 ## EEPROM Bootloader configuration options
 
