@@ -14,16 +14,20 @@ You must enable VNC Server before you can use it: instructions for this are give
 
 However, you can also use VNC Server to gain graphical remote access to your Raspberry Pi if it is headless or not running a graphical desktop. For more information on this, see **Creating a virtual desktop**, further below. 
 
-## Enabling VNC Server
+## Installing VNC
 
-On your Raspberry Pi, run the following commands to make sure you have the latest version of VNC Connect:
+VNC is already installed on the full Raspbian image, and can be installed via `Recommended Software` from the `Preferences` menu on other versions.
+
+If you are not using a desktop you can install it from the command line as follows:
 
 ```bash
 sudo apt update
 sudo apt install realvnc-vnc-server realvnc-vnc-viewer
 ```
 
-Now enable VNC Server. You can do this graphically or at the command line.
+## Enabling VNC Server
+
+You can do this graphically or at the command line.
 
 ### Enabling VNC Server graphically
 
@@ -53,7 +57,7 @@ There are two ways to connect to your Raspberry Pi. You can use either or both, 
 
 ### Establishing a direct connection
 
-Direct connections are quick and simple providing you're joined to the same private local network as your Raspberry Pi. For example, this might be a wired or wireless network at home, at school, or in the office).
+Direct connections are quick and simple providing you're joined to the same private local network as your Raspberry Pi. For example, this might be a wired or wireless network at home, at school, or in the office.
 
 - On your Raspberry Pi (using a terminal window or via SSH) use [these instructions](../ip-address.md) or run `ifconfig` to discover your private IP address. 
 
