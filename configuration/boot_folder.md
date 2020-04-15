@@ -58,6 +58,8 @@ The boot folder will contain various kernel image files, used for the different 
 | kernel7l.img | BCM2711 | Pi 4 | Large Physical Address Extension |
 | kernel8.img  | BCM2836, BCM2837, BCM2711 | Pi2/3/4 | Beta 64 bit kernel|
 
+Note: The architecture reported by `lscpu` is `armv7l` for 32-bit systems (i.e. everything except kernel8.img), and `aarch64` for 64-bit systems. The `l` in the `armv7l` case refers to the architecture being little-endian, not `LPAE` as is indicated by the `l` in the `kernel7l.img` filename.
+
 ## Device Tree overlays
 
 The `overlays` sub-folder contains Device Tree overlays. These are used to configure various hardware devices that may be attached to the system, for example the Raspberry Pi Touch Display or third-party sound boards. These overlays are selected using entries in `config.txt` — see ['Device Trees, overlays and parameters, part 2' for more info](device-tree.md#part2).
