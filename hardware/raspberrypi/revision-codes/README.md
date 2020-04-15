@@ -18,10 +18,10 @@ Serial      : 00000000765fc593
 
 ## Old-style revision codes
 
-The first set of Raspberry Pi revisions were given sequential hex revision codes from `0002` to `0015`:
+The first set of Raspberry Pi models were given sequential hex revision codes from `0002` to `0015`:
 
-| Code | Model | Revision | RAM             | Manufacturer |
-| ---- | ----- | -------- | --------------- | ------------ |
+| Code | Model | Revision | RAM            | Manufacturer |
+| ---- | ----- | -------- | -------------- | ------------ |
 | 0002 | B     | 1.0      | 256MB          | Egoman       |
 | 0003 | B     | 1.0      | 256MB          | Egoman       |
 | 0004 | B     | 2.0      | 256MB          | Sony UK      |
@@ -38,26 +38,35 @@ The first set of Raspberry Pi revisions were given sequential hex revision codes
 | 0012 | A+    | 1.1      | 256MB          | Sony UK      |
 | 0013 | B+    | 1.2      | 512MB          | Embest       |
 | 0014 | CM1   | 1.0      | 512MB          | Embest       |
-| 0015 | A+    | 1.1      | 256MB/512MB | Embest       |
+| 0015 | A+    | 1.1      | 256MB/512MB    | Embest       |
 
 ## New-style revision codes
 
 With the launch of the Raspberry Pi 2, new-style revision codes were introduced. Rather than being sequential, each bit of the hex code represents a piece of information about the revision:
 
 ```
-uuuuuuuuFMMMCCCCPPPPTTTTTTTTRRRR
+NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 ```
 
 | Part     | Represents   | Options                    |
 | -------- | ------------ | -------------------------- |
-| uuuuuuuu | Unused       | Unused                     |
+| N        | Overvoltage  | 0: Overvoltage allowed     |
+|          |              | 1: Overvoltage disallowed    |
+| O        | OTP Program<sup>1</sup> | 0: OTP programming allowed |
+|          |              | 1: OTP programming disallowed |
+| Q        | OTP Read<sup>1</sup> | 0: OTP reading allowed |
+|          |              | 1: OTP reading disallowed    |
+| uuu      | Unused       | Unused                     |
+| W        | Warranty bit | 0: Warranty is intact      |
+|          |              | 1: Warranty has been voided by [overclocking](../../../configuration/config-txt/overclocking.md) |
+| u        | Unused       | Unused                     |
 | F        | New flag     | 1: new-style revision      |
 |          |              | 0: old-style revision      |
-| MMM      | Memory size  | 0: 256MB                  |
-|          |              | 1: 512MB                  |
-|          |              | 2: 1GB                    |
-|          |              | 3: 2GB                    |
-|          |              | 4: 4GB                    |
+| MMM      | Memory size  | 0: 256MB                   |
+|          |              | 1: 512MB                   |
+|          |              | 2: 1GB                     |
+|          |              | 3: 2GB                     |
+|          |              | 4: 4GB                     |
 | CCCC     | Manufacturer | 0: Sony UK                 |
 |          |              | 1: Egoman                  |
 |          |              | 2: Embest                  |
@@ -85,6 +94,9 @@ uuuuuuuuFMMMCCCCPPPPTTTTTTTTRRRR
 |          |              | 10: CM3+                   |
 |          |              | 11: 4B                     |
 | RRRR     | Revision     | 0, 1, 2, etc.              |
+
+<sup>1</sup> Information on programming the OTP bits can be found [here](../../industrial/README.md) and [here](../otpbits.md).
+
 
 New-style revision codes in use:
 
