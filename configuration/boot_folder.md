@@ -58,7 +58,7 @@ The boot folder will contain various kernel image files, used for the different 
 | kernel7l.img | BCM2711 | Pi 4 | Large Physical Address Extension |
 | kernel8.img  | BCM2836, BCM2837, BCM2711 | Pi2/3/4 | Beta 64 bit kernel|
 
-Note: The architecture reported by `lscpu` is `armv7l` for 32 bit systems and `aarch64` for 64 bit systems. The `l` in `armv7l` case refers to the architecture being little-endian, not `LPAE` as with the `kernel7l.img` file.
+Note: The architecture reported by `lscpu` is `armv7l` for 32 bit systems and `aarch64` for 64 bit systems. The `l` in the `armv7l` case refers to the architecture being little-endian, not `LPAE` as is indicated by the `l` in the `kernel7l.img` filename.
 
 ## Device Tree overlays
 
