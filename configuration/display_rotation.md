@@ -9,10 +9,18 @@ If you are running the Raspberry Pi desktop then rotation is achieved by using t
 It is also possible to change these settings using the command line `xrandr` option. The following commands give 0°, -90°, +90° and 180° rotations respectively. 
 
 ```bash
-DISPLAY=:0 xrandr --output HDMI1 --rotate normal
-DISPLAY=:0 xrandr --output HDMI1 --rotate left 
-DISPLAY=:0 xrandr --output HDMI1 --rotate inverted
-DISPLAY=:0 xrandr --output HDMI1 --rotate right
+xrandr --output HDMI-1 --rotate normal
+xrandr --output HDMI-1 --rotate left 
+xrandr --output HDMI-1 --rotate right
+xrandr --output HDMI-1 --rotate inverted
+```
+
+Note that the `--output` entry specifies to which device the rotation applies. You can determine the device name by simply typing `xrandr` on the command line which will display information, including the name, for all attached devices.
+
+You can also use the command line to mirror the display using the `--reflect` option. Reflection can be one of 'normal' 'x', 'y' or 'xy'. This causes the output contents to be reflected across the specified axes. E.g.
+
+```bash
+xrandr --output HDMI-1 --reflect x
 ```
 
 If you are using the console only (no graphical desktop) then you will need to set the appropriate kernel command line flags. Change the console settings as described on the [this page](./cmdline-txt.md).
