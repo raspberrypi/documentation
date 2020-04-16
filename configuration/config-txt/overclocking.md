@@ -85,9 +85,9 @@ The `core_freq` of the Raspberry Pi 4 can change from the default if either `hdm
 | enable_tvout | 360 |
 | hdmi_enable_4kp60 | 550 |
 
-Changing `core_freq` is not supported on the Pi 4, any change from the default will almost certainly cause a failure to boot.
+Changing `core_freq` in `config.txt` is not supported on the Pi 4, any change from the default will almost certainly cause a failure to boot.
 
-It is recommended when overclocking to use the individual frequency settings rather than `gpu_freq` on the Pi 4, as since it sets `core_freq` it is likely to not have the desired effect. 
+It is recommended when overclocking to use the individual frequency settings rather than `gpu_freq`, as since it sets `core_freq` it is not likely to have the desired effect. 
 
 ### force_turbo
 
