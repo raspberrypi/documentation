@@ -11,11 +11,12 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | Option | Description |
 | --- | --- |
 | arm_freq | Frequency of the ARM CPU in MHz. |
-| gpu_freq | Sets `core_freq`, `h264_freq`, `isp_freq`, and `v3d_freq` together |
+| gpu_freq | Sets `core_freq` (Not on Pi4), `h264_freq`, `isp_freq`, `v3d_freq` and `hevc_freq` (Pi4 only) together |
 | core_freq | Frequency of the GPU processor core in MHz, influences CPU performance because it drives the L2 cache and memory bus; the L2 cache benefits only Pi Zero/Pi Zero W/ Pi 1, there is a small benefit for SDRAM on Pi 2/Pi 3. See section below for use on the Pi 4.|
 | h264_freq | Frequency of the hardware video block in MHz; individual override of the `gpu_freq` setting |
 | isp_freq | Frequency of the image sensor pipeline block in MHz; individual override of the `gpu_freq` setting |
 | v3d_freq | Frequency of the 3D block in MHz; individual override of the `gpu_freq` setting |
+| hevc_freq | Frequency of the High Efficiency Video Codec block in MHz; individual override of the `gpu_freq` setting. Pi 4 only. |
 | sdram_freq | Frequency of the SDRAM in MHz. SDRAM overclocking on Pi 4B is not currently supported|
 | over_voltage | CPU/GPU core voltage adjustment. The value should be in the range [-16, 8] which equates to the range [0.8V, 1.4V] with 0.025V steps. In other words, specifying -16 will give 0.8V as the GPU/core voltage, and specifying 8 will give 1.4V. For defaults see table below. Values above 6 are only allowed when `force_turbo` is specified: this sets the warranty bit if `over_voltage_*` is also set. |
 | over_voltage_sdram | Sets `over_voltage_sdram_c`, `over_voltage_sdram_i`, and `over_voltage_sdram_p` together. |
@@ -33,7 +34,7 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | sdram_freq_min | Minimum value of `sdram_freq` used for dynamic frequency clocking.|
 | over_voltage_min | Minimum value of `over_voltage` used for dynamic frequency clocking.|
 | temp_limit | Overheat protection. This sets the clocks and voltages to default when the SoC reaches this value in Celsius. Values over 85 are clamped to 85.|
-| temp_soft_limit | **3A+/3B+ only**. CPU speed throttle control. This sets the temperature at which the CPU clock speed throttling system activates. At this temperature, the clock speed is reduced from 1400Mhz to 1200Mhz.  Defaults to `60`, can be raised to a maximum of `70`, but this may cause instability.
+| temp_soft_limit | **3A+/3B+ only**. CPU speed throttle control. This sets the temperature at which the CPU clock speed throttling system activates. At this temperature, the clock speed is reduced from 1400Mhz to 1200Mhz.  Defaults to `60`, can be raised to a maximum of `70`, but this may cause instability. |
 
 This table gives the default values for the options on various Raspberry Pi Models, all frequencies are stated in MHz.
 
@@ -44,6 +45,7 @@ This table gives the default values for the options on various Raspberry Pi Mode
 | h264_freq    | 300    | 250 | 250 | 400   | 400   | 500/550/360 |
 | isp_freq     | 300    | 250 | 250 | 400   | 400   | 500/550/360 |
 | v3d_freq     | 300    | 250 | 250 | 400   | 400   | 500/550/360 |
+| hevc_freq    | N/A    | N/A | N/A | N/A   | N/A   | 500/550/360 |
 | sdram_freq   | 450    | 400 | 400 | 450   | 500   | 3200 |
 | arm_freq_min | 700    | 700 | 600 | 600   | 600   | 600  |
 | core_freq_min| 250    | 250 | 250 | 250   | 250   | 250/275 |
@@ -73,13 +75,19 @@ This table describes the overvoltage settings for the various Pi models. The fir
 | Pi 3 | 1.2-1.3125V | 0 |
 | Pi Zero | 1.35V | 6 |
 
-**Specific to Pi 4B**: The `core_freq` of the Raspberry Pi 4 can change from the default if either `hdmi_enable_4kp60` or `enable_tvout` are used, due to relationship between internal clocks and the particular requirements of the requested display modes. Changing `core_freq` is not supported on the Pi 4, any change from the default will almost certainly cause a failure to boot.
+#### Specific to Pi 4B
+
+The `core_freq` of the Raspberry Pi 4 can change from the default if either `hdmi_enable_4kp60` or `enable_tvout` are used, due to relationship between internal clocks and the particular requirements of the requested display modes.
 
 |Display option | Frequency |
 |---------------|-----------|
 | Default        | 500 |     
 | enable_tvout | 360 |
 | hdmi_enable_4kp60 | 550 |
+
+Changing `core_freq` is not supported on the Pi 4, any change from the default will almost certainly cause a failure to boot.
+
+It is recommended to use `gpu_freq` rather than the individual frequency settings as this will result in best performance. 
 
 ### force_turbo
 
