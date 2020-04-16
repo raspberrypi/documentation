@@ -12,7 +12,7 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | --- | --- |
 | arm_freq | Frequency of the ARM CPU in MHz. |
 | gpu_freq | Sets `core_freq`, `h264_freq`, `isp_freq`, and `v3d_freq` together |
-| core_freq | Frequency of the GPU processor core in MHz, influences CPU performance because it drives the L2 cache and memory bus; the L2 cache benefits only Pi Zero/Pi Zero W/ Pi 1, there is a small benefit for SDRAM on Pi 2/Pi 3 and Pi 4B|
+| core_freq | Frequency of the GPU processor core in MHz, influences CPU performance because it drives the L2 cache and memory bus; the L2 cache benefits only Pi Zero/Pi Zero W/ Pi 1, there is a small benefit for SDRAM on Pi 2/Pi 3. See section below for use on the Pi 4.
 | h264_freq | Frequency of the hardware video block in MHz; individual override of the `gpu_freq` setting |
 | isp_freq | Frequency of the image sensor pipeline block in MHz; individual override of the `gpu_freq` setting |
 | v3d_freq | Frequency of the 3D block in MHz; individual override of the `gpu_freq` setting |
@@ -40,10 +40,10 @@ This table gives the default values for the options on various Raspberry Pi Mode
 | Option       | Pi 0/W | Pi1 | Pi2 | Pi3   | Pi3A+/Pi3B+ | Pi4  |
 | ---          | :---:    | :---: | :---: | :----:  | :-----: | :----: | 
 | arm_freq     | 1000   | 700 | 900 | 1200  | 1400  | 1500 |
-| core_freq    | 400    | 250 | 250 | 400   | 400   | 500/550/432 |
-| h264_freq    | 300    | 250 | 250 | 400   | 400   | 500/550/432 |
-| isp_freq     | 300    | 250 | 250 | 400   | 400   | 500/550/432 |
-| v3d_freq     | 300    | 250 | 250 | 400   | 400   | 500/550/432 |
+| core_freq    | 400    | 250 | 250 | 400   | 400   | 500/550/360 |
+| h264_freq    | 300    | 250 | 250 | 400   | 400   | 500/550/360 |
+| isp_freq     | 300    | 250 | 250 | 400   | 400   | 500/550/360 |
+| v3d_freq     | 300    | 250 | 250 | 400   | 400   | 500/550/360 |
 | sdram_freq   | 450    | 400 | 400 | 450   | 500   | 3200 |
 | arm_freq_min | 700    | 700 | 600 | 600   | 600   | 600  |
 | core_freq_min| 250    | 250 | 250 | 250   | 250   | 250/275 |
@@ -64,7 +64,6 @@ This table gives defaults for options that are the same across all models.
 | over_voltage_sdram_i | 0 (1.2v) |
 | over_voltage_sdram_p | 0 (1.2v) |
 
-
 This table describes the overvoltage settings for the various Pi models. The firmware uses Adaptive Voltage Scaling (AVS) to determine the optimum voltage to set. Note that for each integer rise in over_voltage, the voltage will be 25mV higher.
 
 | Version | Default overvoltage | Setting |
@@ -74,12 +73,12 @@ This table describes the overvoltage settings for the various Pi models. The fir
 | Pi 3 | 1.2-1.3125V | 0 |
 | Pi Zero | 1.35V | 6 |
 
-**Specific to Pi 4B**: The `core_freq` of the Raspberry Pi 4 can change from the default if either `hdmi_enable_4kp60` or `enable_tvout` are used, due to relationship between internal clocks and the particular requirements of the requested display modes.
+**Specific to Pi 4B**: The `core_freq` of the Raspberry Pi 4 can change from the default if either `hdmi_enable_4kp60` or `enable_tvout` are used, due to relationship between internal clocks and the particular requirements of the requested display modes. Changing `core_freq` is not supported on the Pi 4, any change from the default will almost certainly cause a failure to boot.
 
 |Display option | Frequency |
 |---------------|-----------|
 | Default        | 500 |     
-| enable_tvout | 432 |
+| enable_tvout | 360 |
 | hdmi_enable_4kp60 | 550 |
 
 ### force_turbo
