@@ -11,7 +11,7 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | Option | Description |
 | --- | --- |
 | arm_freq | Frequency of the ARM CPU in MHz. |
-| gpu_freq | Sets `core_freq` (Not on Pi4), `h264_freq`, `isp_freq`, `v3d_freq` and `hevc_freq` (Pi4 only) together |
+| gpu_freq | Sets `core_freq`, `h264_freq`, `isp_freq`, `v3d_freq` and `hevc_freq` together |
 | core_freq | Frequency of the GPU processor core in MHz, influences CPU performance because it drives the L2 cache and memory bus; the L2 cache benefits only Pi Zero/Pi Zero W/ Pi 1, there is a small benefit for SDRAM on Pi 2/Pi 3. See section below for use on the Pi 4.|
 | h264_freq | Frequency of the hardware video block in MHz; individual override of the `gpu_freq` setting |
 | isp_freq | Frequency of the image sensor pipeline block in MHz; individual override of the `gpu_freq` setting |
@@ -87,7 +87,7 @@ The `core_freq` of the Raspberry Pi 4 can change from the default if either `hdm
 
 Changing `core_freq` is not supported on the Pi 4, any change from the default will almost certainly cause a failure to boot.
 
-It is recommended to use `gpu_freq` rather than the individual frequency settings as this will result in best performance. 
+It is recommended when overclocking to use the individual frequency settings rather than `gpu_freq` on the Pi 4, as since it sets `core_freq` it is likely to not have the desired effect. 
 
 ### force_turbo
 
