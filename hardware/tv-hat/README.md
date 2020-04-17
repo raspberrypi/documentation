@@ -42,7 +42,7 @@ sudo apt install tvheadend
 * Next, set up network, user, and administrator access. If you don’t have specific preferences, leave **Allowed network** blank, and enter an asterisk (*) in the **username** and **password** fields. This will let anyone connected to your local network access `tvheadend`.
 * You should see a window titled **Network settings**. Under **Network 2**, you should see `Tuner: Sony CDX2880 #0 : DVB-T #0`. For **Network type**, choose `DVB-T Network`.
 * The next window is **Assign predefined muxes to networks**; here, you select the TV stream to receive and decode. Under Network 1, for predefined muxes, select your local TV transmitter.
-  * A list of UK transmitters can be found at [www.digitaluk.co.uk/coveragechecker](www.digitaluk.co.uk/coveragechecker). Enter your postcode to see which transmitter should give you a good signal.
+  * Your local transmitter can be found using the [Freeview website](https://www.freeview.co.uk/help). Enter your postcode to see which transmitter should give you a good signal.
 * When you click **Save & Next**, the software will start scanning for the selected mux, and will show a progress bar. After about two minutes, you should see something like:
 ```
 Found muxes: 8
