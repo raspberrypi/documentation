@@ -42,7 +42,7 @@ sudo apt install tvheadend
 * Next, set up network, user, and administrator access. If you don’t have specific preferences, leave **Allowed network** blank, and enter an asterisk (*) in the **username** and **password** fields. This will let anyone connected to your local network access `tvheadend`.
 * You should see a window titled **Network settings**. Under **Network 2**, you should see `Tuner: Sony CDX2880 #0 : DVB-T #0`. For **Network type**, choose `DVB-T Network`.
 * The next window is **Assign predefined muxes to networks**; here, you select the TV stream to receive and decode. Under Network 1, for predefined muxes, select your local TV transmitter.
-  * A list of UK transmitters can be found at [www.digitaluk.co.uk/coveragechecker](www.digitaluk.co.uk/coveragechecker). Enter your postcode to see which transmitter should give you a good signal.
+  * Your local transmitter can be found using the [Freeview website](https://www.freeview.co.uk/help). Enter your postcode to see which transmitter should give you a good signal.
 * When you click **Save & Next**, the software will start scanning for the selected mux, and will show a progress bar. After about two minutes, you should see something like:
 ```
 Found muxes: 8
@@ -52,7 +52,7 @@ Found services: 172
 * Next you should see a list of TV channels you can watch, along with the programmes they’re currently showing.
 * To watch a TV channel in the browser, click the little TV icon to the left of the channel
 listing, just to the right of the **i** icon. This brings up an in-browser media player. Depending on the decoding facilities  built into your browser and the type of stream being played, you may find that playback can be jerky. In these cases, we recommend using a local media player as the playback application.
-* To watch a TV channel in a local media player, e.g. VLC [www.videolan.org/vlc](www.videolan.org/vlc), you’ll need to download it as a stream. Click the `i` icon to the left of a channel listing to bring up the information panel for that channel. Here you can see a stream file that you can download.
+* To watch a TV channel in a local media player, e.g. VLC [www.videolan.org/vlc](https://www.videolan.org/vlc), you’ll need to download it as a stream. Click the `i` icon to the left of a channel listing to bring up the information panel for that channel. Here you can see a stream file that you can download.
 
 `tvheadend` is supported by numerous apps, such as TvhClient for iOS, which will play TV from the Pi. OMXPlayer, supplied with Raspbian, also supports viewing TV streams from `tvheadend`. Kodi, available in the Raspbian repos, provides excellent facilities for playing live TV, along with previously recorded channels and timed series recording.
 
