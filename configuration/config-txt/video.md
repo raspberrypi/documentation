@@ -162,6 +162,8 @@ Together with `hdmi_group`, `hdmi_mode` defines the HDMI output format.
 
 To set a custom display mode not listed here, see [this thread](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=24679).
 
+Note that not all modes are available on all models. 
+
 These values are valid if `hdmi_group=1` (CEA):
 
 | hdmi_mode | resolution | frequency | notes |
@@ -225,6 +227,54 @@ These values are valid if `hdmi_group=1` (CEA):
 | 57 | 480p | 240Hz | 16:9 aspect ratio |
 | 58 | 480i | 240Hz |  |
 | 59 | 480i | 240Hz | 16:9 aspect ratio |
+| 60 | 720p | 24Hz | 16:9 aspect ratio |
+| 61 | 720p | 25Hz | 16:9 aspect ratio |
+| 62 | 720p | 30Hz | 16:9 aspect ratio |
+| 63 | 1080p | 120Hz | 16:9 aspect ratio |
+| 64 | 1080p | 100Hz | 16:9 aspect ratio |
+| 65 | Custom |  | |
+| 66 | 720p | 25Hz | 64:27 aspect ratio |
+| 67 | 720p | 30Hz | 64:27 aspect ratio |
+| 68 | 720p | 50Hz | 64:27 aspect ratio |
+| 69 | 720p | 60Hz | 64:27 aspect ratio |
+| 70 | 720p | 100Hz | 64:27 aspect ratio |
+| 71 | 720p | 120Hz | 64:27 aspect ratio |
+| 72 | 1080p | 24Hz | 64:27 aspect ratio |
+| 73 | 1080p | 25Hz | 64:27 aspect ratio |
+| 74 | 1080p | 30Hz | 64:27 aspect ratio |
+| 75 | 1080p | 50Hz | 64:27 aspect ratio |
+| 76 | 1080p | 60Hz | 64:27 aspect ratio |
+| 77 | 1080p | 100Hz | 64:27 aspect ratio |
+| 78 | 1080p | 120Hz | 64:27 aspect ratio |
+| 79 | 1680x720 | 24Hz | 64:27 aspect ratio |
+| 80 | 1680x720 | 25z | 64:27 aspect ratio |
+| 81 | 1680x720 | 30Hz | 64:27 aspect ratio |
+| 82 | 1680x720 | 50Hz | 64:27 aspect ratio |
+| 83 | 1680x720 | 60Hz | 64:27 aspect ratio |
+| 84 | 1680x720 | 100Hz | 64:27 aspect ratio |
+| 85 | 1680x720 | 120Hz | 64:27 aspect ratio |
+| 86 | 2560x720 | 24Hz | 64:27 aspect ratio |
+| 87 | 2560x720 | 25Hz | 64:27 aspect ratio |
+| 88 | 2560x720 | 30Hz | 64:27 aspect ratio |
+| 89 | 2560x720 | 50Hz | 64:27 aspect ratio |
+| 90 | 2560x720 | 60Hz | 64:27 aspect ratio |
+| 91 | 2560x720| 100Hz | 64:27 aspect ratio |
+| 92 | 2560x720 | 120Hz | 64:27 aspect ratio |
+| 93 | 2160p | 24Hz |  |
+| 94 | 2160p | 25Hz |  |
+| 95 | 2160p | 30Hz |  |
+| 96 | 2160p | 50Hz |  |
+| 97 | 2160p | 60Hz |  |
+| 98 | 4096x2160 | 24Hz | 256:135 aspect ratio |
+| 99 | 4096x2160 | 25Hz | 256:135 aspect ratio |
+| 100 | 4096x2160 | 30Hz | 256:135 aspect ratio |
+| 101 | 4096x2160 | 50Hz | 256:135 aspect ratio |
+| 102 | 4096x2160 | 60Hz | 256:135 aspect ratio |
+| 103 | 2160p | 24Hz | 64:27 aspect ratio |
+| 104 | 2160p | 25Hz | 64:27 aspect ratio |
+| 105 | 2160p | 30Hz | 64:27 aspect ratio |
+| 106 | 2160p | 50Hz | 64:27 aspect ratio |
+| 107 | 2160p | 60Hz | 64:27 aspect ratio |
 
 In the table above, the modes with a 16:9 aspect ratio are a widescreen variant of a mode which usually has 4:3 aspect ratio. Pixel doubling and quadrupling indicates a higher clock rate, with each pixel repeated two or four times respectively.
 
