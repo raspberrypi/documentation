@@ -18,6 +18,8 @@ The hardware in the Raspberry Pi
     - The Broadcom processor used in Raspberry Pi 4B
 - [SPI Boot EEPROM (Pi4)](booteeprom.md)
     - The boot EEPROM used in Raspberry Pi 4B
+- [Boot Diagnostics Display (Pi4)](boot_diagnostics.md)
+    - The boot diagnostics display on Raspberry Pi 4B
 - [Boot modes](bootmodes/README.md)
     - A description of the available BCM2835/6/7 boot modes
 - [Mechanical drawings](mechanical/README.md)
