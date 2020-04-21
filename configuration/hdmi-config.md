@@ -82,6 +82,10 @@ In certain rare cases it may be necessary to define the exact clock requirements
 
 For the Pi4, to specify the HDMI port, you can add an index identifier to the config.txt. e.g. `hdmi_cvt:0=...` or `hdmi_timings:1=...`. If no port identifier is specified, the settings are applied to port 0.
 
+### Display Rotation
+
+Please see the [Display Rotation Page](./display_rotation.md) for details.
+
 ### HDMI not working properly?
 
 In some rare cases you may need to increase the HDMI drive strength, for example when there is speckling on the display or when you are using very long cables. There is a config.txt item to do this, `config_hdmi_boost`, which is documented on the [config.txt video page](config-txt/video.md).
