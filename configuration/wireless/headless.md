@@ -12,7 +12,7 @@ You will need to define a `wpa_supplicant.conf` file for your particular wireles
 ```
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
-country=<Insert country code here>
+country=<Insert 2 letter ISO 3166-1 country code here>
 
 network={
  ssid="<Name of your WiFi>"
@@ -22,7 +22,7 @@ network={
 
 Note that some older WiFi dongles don't support 5GHz networks.
 
-More information on the `wpa_supplicant.conf` file can be found [here](wireless-cli.md). See [Wikipedia](https://en.wikipedia.org/wiki/ISO_3166-1) for a list of country codes.
+More information on the `wpa_supplicant.conf` file can be found [here](wireless-cli.md). See [Wikipedia](https://en.wikipedia.org/wiki/ISO_3166-1) for a list of 2 letter ISO 3166-1 country codes.
 
 ## Enabling SSH
 
