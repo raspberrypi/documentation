@@ -39,6 +39,7 @@ There are `config.txt` options for rotating when using the legacy display driver
 | 3 | rotate 270 degrees clockwise |
 | 0x10000 | horizontal flip |
 | 0x20000 | vertical flip |
+
 Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16MB GPU split.
 
 You can combine the rotation settings with the flips by adding them together. You can also have both horizontal and vertical flips in the same way. E.g. A 180 degree rotation with a vertical and horizontal flip will be 0x20000 + 0x10000 + 2 = 0x30002.
