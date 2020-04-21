@@ -26,11 +26,12 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | force_turbo | Forces turbo mode frequencies even when the ARM cores are not busy. Enabling this may set the warranty bit if `over_voltage_*` is also set. |
 | initial_turbo | Enables turbo mode from boot for the given value in seconds, or until cpufreq sets a frequency. For more information [see here](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=6201&start=425#p180099). The maximum value is `60`. |
 | arm_freq_min | Minimum value of arm_freq used for dynamic frequency clocking. |
-| core_freq_min | Minimum value of `core_freq` used for dynamic frequency clocking. On Pi 4B the default is`275` when `hdmi_enable_4kp60` is set|
+| core_freq_min | Minimum value of `core_freq` used for dynamic frequency clocking. |
 | gpu_freq_min | Minimum value of `gpu_freq` used for dynamic frequency clocking.|
 | h264_freq_min | Minimum value of `h264_freq` used for dynamic frequency clocking.|
 | isp_freq_min | Minimum value of `isp_freq` used for dynamic frequency clocking.|
 | v3d_freq_min | Minimum value of `v3d_freq` used for dynamic frequency clocking.|
+| hevc_freq_min | Minimum value of `hevc_freq` used for dynamic frequency clocking.|
 | sdram_freq_min | Minimum value of `sdram_freq` used for dynamic frequency clocking.|
 | over_voltage_min | Minimum value of `over_voltage` used for dynamic frequency clocking.|
 | temp_limit | Overheat protection. This sets the clocks and voltages to default when the SoC reaches this value in Celsius. Values over 85 are clamped to 85.|
@@ -87,7 +88,7 @@ The `core_freq` of the Raspberry Pi 4 can change from the default if either `hdm
 
 Changing `core_freq` in `config.txt` is not supported on the Pi 4, any change from the default will almost certainly cause a failure to boot.
 
-It is recommended when overclocking to use the individual frequency settings rather than `gpu_freq`, as since it sets `core_freq` it is not likely to have the desired effect. 
+It is recommended when overclocking to use the individual frequency settings (`isp_freq`, `v3d_freq` etc) rather than `gpu_freq`, as since it attempts to set `core_freq` (which cannot be changed on the Pi 4), it is not likely to have the desired effect. 
 
 ### force_turbo
 
