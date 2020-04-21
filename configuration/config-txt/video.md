@@ -39,7 +39,7 @@ On older Pi models, the composite behaviour remains the same.
 
 ## HDMI mode options
 
-**Note for Raspberry Pi4B users:** Because the Raspberry Pi 4B has two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found on the [conditionals page](./conditional.md) in the HDMI section of the documentation. 
+**Note for Raspberry Pi4B users:** Because the Raspberry Pi 4B has two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found in the HDMI section on the [conditionals page](./conditional.md) page of the documentation.ion. 
 
 ### hdmi_safe
 
@@ -369,7 +369,7 @@ These values are valid if `hdmi_group=2` (DMT):
 | 85 | 1280x720 | 60Hz | 16:9 | 720p |
 | 86 | 1366x768 | 60Hz | 16:9 | reduced blanking |
 
-Note that there is a [pixel clock limit](https://www.raspberrypi.org/forums/viewtopic.php?f=26&t=20155&p=195443#p195443).The highest supported mode on models prior to the Raspberry Pi 4 is 1920x1200 at 60Hz with reduced blanking, whilst the Raspberry Pi 4 can support up to 4096x2160 at 60Hz.
+Note that there is a [pixel clock limit](https://www.raspberrypi.org/forums/viewtopic.php?f=26&t=20155&p=195443#p195443).The highest supported mode on models prior to the Raspberry Pi 4 is 1920x1200 at 60Hz with reduced blanking, whilst the Raspberry Pi 4 can support up to 4096x2160 (known as 4k) at 60Hz. Also note that if you are using both HDMI ports of the Raspberry Pi 4 for 4k output, then you are limited to 30Hz on both.
 
 ### hdmi_timings
 
