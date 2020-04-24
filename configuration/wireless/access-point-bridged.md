@@ -112,7 +112,13 @@ Add the following line near the beginning of the file (above the first `interfac
 ```
 denyinterfaces wlan0 eth0
 ```
-Interface `br0` will be configured in accordance with the defaults via DHCP; no specific entry is necessary. Save the file to complete the IP configuration of the machine.
+Go to the end of the file and add the following:
+
+```
+
+interface br0
+```
+With this line, interface `br0` will be configured in accordance with the defaults via DHCP. Save the file to complete the IP configuration of the machine.
 
 <a name="ap-config"></a>
 ## Configure the access point software
