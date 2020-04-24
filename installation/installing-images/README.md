@@ -42,10 +42,10 @@ For more advanced control of this process, see our system-specific guides:
 - [Chrome OS](chromeos.md)
 
 
-## Boot your new Raspbian
+## Boot your new OS
 
-You can now insert the SD card into the Pi. The default user name is `pi`, with password `raspberry`.
+You can now insert the SD card into the Raspberry Pi and power it up. 
 
-**Note**: Remember the default keyboard layout is qwerty
+For the official Raspbian OS, if you need to enter it, the default user name is `pi`, with password `raspberry`. Remember the default keyboard layout is set to UK.
 
-You should change this password right now by running `passwd`, [as explained here](../../linux/usage/users.md)
+You should change the default password straight away by running `passwd`, [as explained here](../../linux/usage/users.md)
