@@ -7,13 +7,13 @@ This diagnostics page will also appear if the bootloader is unable to boot from 
 
 
 
-The top line describes the Model of Pi and its memory capacity. The QR code is a link to the [Downloads Page](https://raspberrypi.org/downloads).
+The top line describes the model of Pi and its memory capacity. The QR code is a link to the [Downloads Page](https://raspberrypi.org/downloads).
 
 The diagnostic information is as follows:
 
 | Line: | Information |
 | ---- | ----------- |
-| bootloader | Describes the the bootloader version the date it was built |
+| bootloader | Bootloader version - build date |
 | board      | Board revision - Serial Number - Ethernet MAC address | 
 | boot       | |
 | SD CID	   | |
