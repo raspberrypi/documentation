@@ -38,7 +38,7 @@ The hardware in the Raspberry Pi
     - Conformance documentation for the various standards bodies
 - [Revision codes](revision-codes/README.md)
     - Raspberry Pi revision code reference
-- [OTP Bit definitions](otpbits.md)
+- [OTP bit definitions](otpbits.md)
     - Register and bit definitions for the One-Time Programmable (OTP) memory on the Raspberry Pi
 - [Processor frequency and thermal management](frequency-management.md)
     - Information on how the Raspberry Pi manages CPU frequencies and heat dissipation
