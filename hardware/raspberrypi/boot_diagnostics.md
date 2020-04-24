@@ -23,4 +23,5 @@ The diagnostic information is as follows:
 | tftp       | |
 
 
+This display can be disabled using the DISABLE_HDMI option, see [Pi4 Bootloader Configuration](./bcm2711_bootloader_config.md).
 
