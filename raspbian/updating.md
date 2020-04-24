@@ -82,3 +82,8 @@ Unfortunately [apt](../linux/software/apt.md) lacks the robustness features, i.e
 Mender is an end-to-end, open-source update manager. A robust update process is implemented with atomic dual system update, there is always one working system partition, and Mender updates the one that is not running. You can read more On the [Mender: how it works](https://mender.io/product/how-it-works) web page.
 
 Mender supports Raspbian. To enable support for Mender in your Raspbian image, follow the tutorial for [Raspbian with Mender](https://hub.mender.io/t/raspberry-pi-3-model-b-b-raspbian/140).
+
+### [Upswift.io](https://upswift.io)
+Upswift.io is an IoT and embedded Linux management platform with a free plan for makers and personal use, provides easy to use tools for deploying OTA updates as well as running bash commands remotely, like 'apt-get upgrade'.
+
+Upswift.io supports Raspberry Pi and Raspbian. It takes 60 seconds to connect any Raspberry Pi and deploy OTA software updates remotely.
