@@ -80,7 +80,7 @@ If you see a message "Agent admitted failure to sign using the key" then add you
 ssh-add
 ```
 
-If this did not work, delete your keys with `rm ~/.ssh/id*` and follow the instructions again.
+If this does not work, you can get assistance on the [Raspberry Pi forums](/forums/viewforum.php?f=63).
 
 You can also send files over SSH using the `scp` command (secure copy). See the [SCP guide](scp.md) for more information.
 
