@@ -6,7 +6,7 @@ The bootloader on the Raspberry Pi 4 is stored in EEPROM, and as well as providi
 
 This diagnostics page will also appear if the bootloader is unable to boot from an inserted SD card, or is unable to network boot; for example, if there is no bootable image on the card, or it is defective, or the network boot parameters are incorrect.
 
-This information screen is displayed only after a reboot caused by a power cycle, not a software instigated reboot.
+Once the diagnostics page is displayed, a reboot is only possible by power cycling the device (i.e. unplug then re-plug the power supply).
 
 The top line describes the model of Pi and its memory capacity. The QR code is a link to the [Downloads Page](https://raspberrypi.org/downloads).
 
