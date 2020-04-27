@@ -10,7 +10,7 @@ First, check whether there are already keys on the computer you are using to con
 ls ~/.ssh
 ```
 
-If you see files named `id_rsa.pub` or `id_dsa.pub` then you have keys set up already, so you can skip the 'Generate new SSH keys' step (or delete these files with `rm id*` and make new keys).
+If you see files named `id_rsa.pub` or `id_dsa.pub` then you have keys set up already, so you can skip the 'Generate new SSH keys' step below.
 
 ## Generate new SSH keys
 
