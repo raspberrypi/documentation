@@ -20,7 +20,7 @@ To generate new SSH keys enter the following command:
 ssh-keygen
 ```
 
-Upon entering this command, you'll be asked where to save the key. We suggest you save it in the default location (`/home/pi/.ssh/id_rsa`) by just hitting `Enter`.
+Upon entering this command, you'll be asked where to save the key. We suggest you save it in the default location (`~/.ssh/id_rsa`) by just hitting `Enter`.
 
 You'll also be asked to enter a passphrase. This is extra security which will make the key unusable without your passphrase, so if someone else copied your key, they could not impersonate you to gain access. If you choose to use a passphrase, type it here and press `Enter`, then type it again when prompted. Leave the field empty for no passphrase.
 
