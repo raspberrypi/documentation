@@ -64,7 +64,7 @@ If moving to a new Pi model (for example the Pi 3B+), you may also need to updat
 
 ## Third-party solutions
 
-This section addresses why third-party solutions are of interest and why [apt](../linux/software/apt.md) is not optimal for all situations. Raspberry Pi do not recommend any specific third party tools, prospective users should determine the most suitable tool for their particular requirements.
+This section addresses why third-party solutions may be of interest and why [apt](../linux/software/apt.md) is not optimal for all situations. Raspberry Pi do not recommend any specific third party tools. Prospective users should determine the most suitable tool for their particular requirements.
 
 [Apt](../linux/software/apt.md) is a convenient way of updating the software of your device running Raspbian, but the limitation of this method becomes apparent when you have a larger pool of devices to update, and especially when you do not have physical access to your devices and when they are distributed geographically.
 
