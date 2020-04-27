@@ -64,7 +64,7 @@ If moving to a new Pi model (for example the Pi 3B+), you may also need to updat
 
 ## Third-party solutions
 
-This section addresses why third-party solutions are of interest and why [apt](../linux/software/apt.md) is not optimal for all situations. It also covers existing third-party solutions that support Raspbian.
+This section addresses why third-party solutions are of interest and why [apt](../linux/software/apt.md) is not optimal for all situations. Raspberry Pi do not recommend any specific third party tools, prospective users should determine the most suitable tool for their particular requirements.
 
 [Apt](../linux/software/apt.md) is a convenient way of updating the software of your device running Raspbian, but the limitation of this method becomes apparent when you have a larger pool of devices to update, and especially when you do not have physical access to your devices and when they are distributed geographically.
 
@@ -77,8 +77,3 @@ If you lack physical access to your devices and want to deploy unattended update
 
 Unfortunately [apt](../linux/software/apt.md) lacks the robustness features, i.e. atomicity and fall-back. This is why third-party solutions have started to appear that try to solve the problems that need to be addressed for deploying unattended updates OTA.
 
-### Mender
-
-Mender is an end-to-end, open-source update manager. A robust update process is implemented with atomic dual system update, there is always one working system partition, and Mender updates the one that is not running. You can read more On the [Mender: how it works](https://mender.io/product/how-it-works) web page.
-
-Mender supports Raspbian. To enable support for Mender in your Raspbian image, follow the tutorial for [Raspbian with Mender](https://hub.mender.io/t/raspberry-pi-3-model-b-b-raspbian/140).
