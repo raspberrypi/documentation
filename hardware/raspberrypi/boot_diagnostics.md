@@ -1,6 +1,6 @@
 ## Boot Diagnostics on the Raspberry Pi 4
 
-The bootloader on the Raspberry Pi 4 is stored in EEPROM, and as well as providing boot services, is also capable of providing diagnostic information on an attached HDMI display. To display this information, power down the Raspberry Pi 4, remove the SD card and power back up. A diagnostic display similar to below should appear on the attached display.
+The bootloader on the Raspberry Pi 4 is stored in EEPROM, and as well as providing boot services, versions newer than those dated 2020-04-16 are also capable of providing diagnostic information on an attached HDMI display. To display this information, power down the Raspberry Pi 4, remove the SD card and power back up. A diagnostic display similar to below should appear on the attached display.
 
 ![Boot Diagnostics Screen](bootloader-diagnostics.png)
 
