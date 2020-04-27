@@ -84,9 +84,9 @@ If this does not work, you can get assistance on the [Raspberry Pi forums](/foru
 
 **Note:** you can also send files over SSH using the `scp` command (secure copy). See the [SCP guide](scp.md) for more information.
 
-## Store the passphrase in the macOS Keychain
+## Store the passphrase in the macOS keychain
 
-If you are using macOS, and after verifying that your new key allows you to connect, you have the option of storing the passphrase for your key in the macOS Keychain. This allows you to connect to your Raspberry Pi without entering the passphrase.
+If you are using macOS, and after verifying that your new key allows you to connect, you have the option of storing the passphrase for your key in the macOS keychain. This allows you to connect to your Raspberry Pi without entering the passphrase.
 
 Run the following command to store it in your keychain:
 
