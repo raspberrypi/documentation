@@ -82,7 +82,7 @@ ssh-add
 
 If this does not work, you can get assistance on the [Raspberry Pi forums](/forums/viewforum.php?f=63).
 
-You can also send files over SSH using the `scp` command (secure copy). See the [SCP guide](scp.md) for more information.
+**Note:** you can also send files over SSH using the `scp` command (secure copy). See the [SCP guide](scp.md) for more information.
 
 ## Store the passphrase in the macOS Keychain
 
