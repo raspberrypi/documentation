@@ -86,7 +86,7 @@ If this does not work, you can get assistance on the [Raspberry Pi forums](/foru
 
 ## Store the passphrase in the macOS Keychain
 
-If you are using macOS, and after verifying that your new key allows you to connect, you can optionally choose to store the passphrase for your key in the macOS Keychain. This allows you to connect to your Raspberry Pi without entering the passphrase.
+If you are using macOS, and after verifying that your new key allows you to connect, you have the option of storing the passphrase for your key in the macOS Keychain. This allows you to connect to your Raspberry Pi without entering the passphrase.
 
 Run the following command to store it in your keychain:
 
