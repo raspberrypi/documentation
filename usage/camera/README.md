@@ -20,7 +20,7 @@ Open the `raspi-config` tool from the Terminal:
 sudo raspi-config
 ```
 
-Select `Enable camera` and hit `Enter`, then go to `Finish` and you'll be prompted to reboot.
+Select `Interfacing Options` then `Camera` and hit `Enter`. Choose `Yes` then `Ok`. Go to `Finish` and you'll be prompted to reboot.
 
 ## Using the camera
 
