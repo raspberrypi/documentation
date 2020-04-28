@@ -16,16 +16,16 @@ The boot flow for the Pi4 is as follows:
 ## SD Card Boot
 The bootloader loads the files in the [boot folder](../../../configuration/boot_folder.md) according to the [boot options](../../../configuration/config-txt/boot.md) in config.txt
 
-## Network boot (BETA)
+## Network boot
 
-Details of the network booting can be found [here](https://github.com/raspberrypi/rpi-eeprom/blob/master/firmware/raspberry_pi4_network_boot_beta.md)
+Details of the network booting can be found [here](../bcm2711_bootloader_config.md)
 
 ## USB mass storage boot
 
 USB booting is still under development.
 
 
-## BOOT_ORDER (BETA)
+## BOOT_ORDER
 
 The `BOOT_ORDER` configuration item is embedded inside the bootloader code in the EEPROM. See the [Pi4 Bootloader Configuration](../bcm2711_bootloader_config.md) page for details on how to change the bootloader configuration.
 
