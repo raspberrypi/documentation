@@ -1,6 +1,6 @@
 # Passwordless SSH access
 
-It is possible to configure your Pi to allow your computer to access it without providing a password each time you try to connect. To do this you need to generate an SSH key:
+It is possible to configure your Raspberry Pi to allow access from another computer without needing to provide a password each time you connect. To do this, you need to use an SSH key instead of a password. To generate an SSH key:
 
 ## Check for existing SSH keys
 
@@ -10,7 +10,7 @@ First, check whether there are already keys on the computer you are using to con
 ls ~/.ssh
 ```
 
-If you see files named `id_rsa.pub` or `id_dsa.pub` you have keys set up already, so you can skip the generating keys step (or delete these files with `rm id*` and make new keys).
+If you see files named `id_rsa.pub` or `id_dsa.pub` then you have keys set up already, so you can skip the 'Generate new SSH keys' step below.
 
 ## Generate new SSH keys
 
@@ -20,9 +20,9 @@ To generate new SSH keys enter the following command:
 ssh-keygen
 ```
 
-Upon entering this command, you'll be asked where to save the key. We suggest you save it in the default location (`~/.ssh/id_rsa`) by just hitting `Enter`.
+Upon entering this command, you will be asked where to save the key. We suggest saving it in the default location (`~/.ssh/id_rsa`) by pressing `Enter`.
 
-You'll also be asked to enter a passphrase. This is extra security which will make the key unusable without your passphrase, so if someone else copied your key, they could not impersonate you to gain access. If you choose to use a passphrase, type it here and press `Enter`, then type it again when prompted. Leave the field empty for no passphrase.
+You will also be asked to enter a passphrase, which is optional. The passphrase is used to encrypt the private SSH key, so that if someone else copied the key, they could not impersonate you to gain access. If you choose to use a passphrase, type it here and press `Enter`, then type it again when prompted. Leave the field empty for no passphrase.
 
 Now look inside your `.ssh` directory:
 
@@ -38,7 +38,7 @@ authorized_keys  id_rsa  id_rsa.pub  known_hosts
 
 The `id_rsa` file is your private key. Keep this on your computer.
 
-The `id_rsa.pub` file is your public key. This is what you share with machines you want to connect to. When the machine you try to connect to matches up your public and private key, it will allow you to connect.
+The `id_rsa.pub` file is your public key. This is what you share with machines that you connect to: in this case your Raspberry Pi. When the machine you try to connect to matches up your public and private key, it will allow you to connect.
 
 Take a look at your public key to see what it looks like:
 
@@ -55,21 +55,22 @@ ssh-rsa <REALLY LONG STRING OF RANDOM CHARACTERS> user@host
 <a name="copy-your-public-key-to-your-raspberry-pi"></a>
 ## Copy your public key to your Raspberry Pi
 
-To copy your public key to your Raspberry Pi, use the following command, on the computer you will be connecting from, to append the public key to your `authorized_keys` file on the Pi, sending it over SSH:
+
+Using the computer which you will be connecting from, append the public key to your `authorized_keys` file on the Raspberry Pi by sending it over SSH:
 
 ```bash
 ssh-copy-id <USERNAME>@<IP-ADDRESS>
 ```
 
-**Note that this time you will have to authenticate with your password.**
+**Note that for this step you will need to authenticate with your password.**
 
-Alternatively, if the `ssh-copy-id` is not available on your system, you can copy the file manually over SSH:
+Alternatively, if `ssh-copy-id` is not available on your system, you can copy the file manually over SSH:
 
 ```bash
 cat ~/.ssh/id_rsa.pub | ssh <USERNAME>@<IP-ADDRESS> 'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys'
 ```
 
-If you see the message `ssh: connect to host <IP-ADDRESS> port 22: Connection refused` and you know the `IP-ADDRESS` is correct, then you probably haven't enabled SSH on your Pi. Run `sudo raspi-config` in the Pi's terminal window, enable SSH, and then try to copy the files again.
+If you see the message `ssh: connect to host <IP-ADDRESS> port 22: Connection refused` and you know the `IP-ADDRESS` is correct, then you may not have enabled SSH on your Raspberry Pi. Run `sudo raspi-config` in the Pi's terminal window, enable SSH, then try to copy the files again.
 
 Now try `ssh <USER>@<IP-ADDRESS>` and you should connect without a password prompt.
 
@@ -79,13 +80,13 @@ If you see a message "Agent admitted failure to sign using the key" then add you
 ssh-add
 ```
 
-If this did not work, delete your keys with `rm ~/.ssh/id*` and follow the instructions again.
+If this does not work, you can get assistance on the [Raspberry Pi forums](/forums/viewforum.php?f=63).
 
-You can also send files over SSH using the `scp` command (secure copy). See the [SCP guide](scp.md) for more information.
+**Note:** you can also send files over SSH using the `scp` command (secure copy). See the [SCP guide](scp.md) for more information.
 
-## Let macOS store your passphrase so you don't have to enter it each time
+## Store the passphrase in the macOS keychain
 
-If you're using macOS and after verifying that your new key allows you to connect, you can optionally choose to store the passphrase for your key in the macOS Keychain. This will make it so that you don't have to enter the passphrase each time you connect to your Pi.
+If you are using macOS, and after verifying that your new key allows you to connect, you have the option of storing the passphrase for your key in the macOS keychain. This allows you to connect to your Raspberry Pi without entering the passphrase.
 
 Run the following command to store it in your keychain:
 
