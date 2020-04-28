@@ -42,3 +42,12 @@ How you write the image to the SD card will depend on the operating system you a
 - [Mac OS](mac.md)
 - [Windows](windows.md)
 - [Chrome OS](chromeos.md)
+
+
+## Boot your new OS
+
+You can now insert the SD card into the Raspberry Pi and power it up. 
+
+For the official Raspbian OS, if you need to manually log in, the default user name is `pi`, with password `raspberry`. Remember the default keyboard layout is set to UK.
+
+You should change the default password straight away to ensure your Raspberry Pi is [secure](../../configuration/security.md).
