@@ -24,9 +24,7 @@ Note that some older WiFi dongles don't support 5GHz networks.
 
 More information on the `wpa_supplicant.conf` file can be found [here](wireless-cli.md). See [Wikipedia](https://en.wikipedia.org/wiki/ISO_3166-1) for a list of 2 letter ISO 3166-1 country codes.
 
-## Enabling SSH
+## Remote Access
 
-SSH can be enabled by placing a file called `ssh` in to the boot folder. This flags the Pi to enable the SSH system on the next boot.
-
-See [here](../../remote-access/ssh/README.md#3-enable-ssh-on-a-headless-raspberry-pi-add-file-to-sd-card-on-another-machine) for more details.
+With no keyboard or monitor, you will need some way of accessing the headless Raspberry Pi. There are a number of ways of doing this, and details can be found [here](../../remote-access/README.md).
 
