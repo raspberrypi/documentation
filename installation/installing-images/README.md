@@ -46,6 +46,6 @@ For more advanced control of this process, see our system-specific guides:
 
 You can now insert the SD card into the Raspberry Pi and power it up. 
 
-For the official Raspbian OS, if you need to enter it, the default user name is `pi`, with password `raspberry`. Remember the default keyboard layout is set to UK.
+For the official Raspbian OS, if you need to manually log in, the default user name is `pi`, with password `raspberry`. Remember the default keyboard layout is set to UK.
 
-You should change the default password straight away by running `passwd`, [as explained here](../../linux/usage/users.md)
+You should change the default password straight away to ensure your Raspberry Pi is secure.
