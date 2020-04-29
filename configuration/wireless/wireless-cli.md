@@ -1,23 +1,23 @@
 # Setting WiFi up via the command line
 
 
-This method is suitable if you don't have access to the graphical user interface normally used to set up WiFi on the Raspberry Pi. It is particularly suitable for use with a serial console cable if you don't have access to a screen or wired Ethernet network. Note also that no additional software is required; everything you need is already included on the Raspberry Pi.   
+This method is suitable if you don't have access to the graphical user interface normally used to set up Wi-Fi on the Raspberry Pi. It is particularly suitable for use with a serial console cable if you don't have access to a screen or wired Ethernet network. Note also that no additional software is required; everything you need is already included on the Raspberry Pi.   
 
 ## Using raspi-config
 
-The quickest way to enable wireless networking is to use the command line raspi-config tool.
+The quickest way to enable wireless networking is to use the command line `raspi-config` tool.
 
 `sudo raspi-config`
 
-Select the **Network Options** item from the menu, then the **Wi-fi** option. On a fresh install, for regulatory purposes, you will need to specify the country in which the device is being used. Then set the SSID of the network, and the passphrase for the network. If you do not know the SSID of the network you want to connect to, see the next section on how to list available networks prior to running raspi-config. 
+Select the **Network Options** item from the menu, then the **Wi-Fi** option. On a fresh install, for regulatory purposes, you will need to specify the country in which the device is being used. Then set the SSID of the network, and the passphrase for the network. If you do not know the SSID of the network you want to connect to, see the next section on how to list available networks prior to running `raspi-config`. 
 
-Note that raspi-config does not provide a complete set of options for setting up wireless networking; you may need to refer to the extra sections below for more details if raspi-config fails to connect the Pi to your requested network.
+Note that `raspi-config` does not provide a complete set of options for setting up wireless networking; you may need to refer to the extra sections below for more details if `raspi-config` fails to connect the Pi to your requested network.
 
-## Getting WiFi network details  
+## Getting Wi-Fi network details  
 
-To scan for WiFi networks, use the command `sudo iwlist wlan0 scan`. This will list all available WiFi networks, along with other useful information. Look out for:
+To scan for Wi-Fi networks, use the command `sudo iwlist wlan0 scan`. This will list all available Wi-Fi networks, along with other useful information. Look out for:
 
-1. 'ESSID:"testing"' is the name of the WiFi network.   
+1. 'ESSID:"testing"' is the name of the Wi-Fi network.   
 
 1. 'IE: IEEE 802.11i/WPA2 Version 1' is the authentication used. In this case it's WPA2, the newer and more secure wireless standard which replaces WPA. This guide should work for WPA or WPA2, but may not work for WPA2 enterprise. For WEP hex keys, see the last example [here](http://www.freebsd.org/cgi/man.cgi?query=wpa_supplicant.conf&sektion=5&apropos=0&manpath=NetBSD+6.1.5). You'll also need the password for the wireless network. For most home routers, this is found on a sticker on the back of the router. The ESSID (ssid) for the examples below is `testing` and the password (psk) is `testingPassword`.
 
@@ -34,7 +34,7 @@ network={
     psk="testingPassword"
 }
 ```
-The password can be configured either as the ASCII representation, in quotes as per the example above, or as a pre-encrypted 32 byte hexadecimal number. You can use the `wpa_passphrase` utility to generate an encrypted PSK. This takes the SSID and the password, and generates the encrypted PSK. With the example from above, you can generate the PSK with `wpa_passphrase "testing"`. Then you will be asked for the password of the WiFi network (in this case `testingPassword`). The output is as follows:
+The password can be configured either as the ASCII representation, in quotes as per the example above, or as a pre-encrypted 32 byte hexadecimal number. You can use the `wpa_passphrase` utility to generate an encrypted PSK. This takes the SSID and the password, and generates the encrypted PSK. With the example from above, you can generate the PSK with `wpa_passphrase "testing"`. Then you will be asked for the password of the Wi-Fi network (in this case `testingPassword`). The output is as follows:
 
   ```
   network={
@@ -45,11 +45,11 @@ The password can be configured either as the ASCII representation, in quotes as 
   ```
 Note that the plain text version of the code is present, but commented out. You should delete this line from the final `wpa_supplicant` file for extra security.
 
-The `wpa_passphrase` tool requires a password with between 8 and 63 characters. For more complex passphrases you can extract the content of a text file and use it as input for `wpa_passphrase`, if the password is stored as plain text inside a file somewhere, by calling `wpa_passphrase "testing" < file_where_password_is_stored`. For extra security, you should delete the `file_where_password_is_stored` afterwards, so there is no plain text copy of the original password on the system.
+The `wpa_passphrase` tool requires a password with between 8 and 63 characters. For more complex passphrases you can extract the content of a text file and use it as input for `wpa_passphrase`. Store the password in a text file and input it to `wpa_passphrase` by calling `wpa_passphrase "testing" < file_where_password_is_stored`. For extra security, you should delete the `file_where_password_is_stored` afterwards, so there is no plain text copy of the original password on the system.
 
-To use the `wpa_passphrase`–encrypted PSK, you can either copy and paste the encrypted PSK into the `wpa_supplicant.conf` file, or redirect the tools output to the configuration file in one of two ways:
+To use the `wpa_passphrase`–encrypted PSK, you can either copy and paste the encrypted PSK into the `wpa_supplicant.conf` file, or redirect the tool's output to the configuration file in one of two ways:
 - Either change to `root` by executing `sudo su`, then call `wpa_passphrase "testing" >> /etc/wpa_supplicant/wpa_supplicant.conf` and enter the testing password when asked
-- Or use `wpa_passphrase "testing" | sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf > /dev/null` and enter the testing password when asked; the redirection to `/dev/null` prevents `tee` from **also** outputting to the screen (standard output)
+- Or use `wpa_passphrase "testing" | sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf > /dev/null` and enter the testing password when asked; the redirection to `/dev/null` prevents `tee` from **also** outputting to the screen (standard output).
 
 If you want to use one of these two options, **make sure you use `>>`, or use `-a` with `tee`** — either will **append** text to an existing file. Using a single chevron `>`, or omitting `-a` when using `tee`, will erase all contents and **then** append the output to the specified file.
 
@@ -59,12 +59,12 @@ Reconfigure the interface with `wpa_cli -i wlan0 reconfigure`.
 
 You can verify whether it has successfully connected using `ifconfig wlan0`. If the `inet addr` field has an address beside it, the Raspberry Pi has connected to the network. If not, check that your password and ESSID are correct.  
 
-On the Raspberry Pi 3 Model B+ and above, you will also need to set the country code, so that the 5G networking can choose the correct frequency bands. You can either use the raspi-config application and select the localisation option, or edit the `wpa_supplicant.conf` file and add the following. (Note you need to replace 'GB' with the 2 letter ISO code of your country. See [Wikipedia](https://en.wikipedia.org/wiki/ISO_3166-1) for a list of 2 letter ISO 3166-1 country codes.)
+On the Raspberry Pi 3B+ and Raspberry Pi 4B, you will also need to set the country code, so that the 5GHz networking can choose the correct frequency bands. You can do this using the `raspi-config` application: select the 'Localisation Options' menu, then 'Change Wi-Fi Country'. Alternatively, you can edit the `wpa_supplicant.conf` file and add the following. (Note: you need to replace 'GB' with the 2 letter ISO code of your country. See [Wikipedia](https://en.wikipedia.org/wiki/ISO_3166-1) for a list of 2 letter ISO 3166-1 country codes.)
 ```
 country=GB
 ```
 
-Note that with the latest Buster Raspbian release, you must ensure that the `wpa_supplicant.conf` file contains the following information at the top.
+Note that with the latest Buster Raspbian release, you must ensure that the `wpa_supplicant.conf` file contains the following information at the top:
 
 ```
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
