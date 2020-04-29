@@ -20,6 +20,7 @@ All Raspberry Pi products have undergone extensive compliance testing, and copie
 | Display   | [EU](./compliance/rpi_DOC_Display_CE.pdf)  &nbsp; &nbsp;[USA/FCC](./compliance/rpi_DOC_Display_FCC.pdf) | [Korea](./compliance/rpi_DOC_display_KOREA.pdf) &nbsp; &nbsp; |
 | Camera Module v1 | [EU](./compliance/rpi_DOC_Camera_CE.pdf) | |
 | Camera Module v2 | [EU](./compliance/rpi_DOC_Camera2_CE.pdf)  &nbsp; &nbsp;[USA/FCC](./compliance/rpi_DOC_Camera2_FCC.PDF) | |
+| HQ Camera Module | [EU](./compliance/rpi_DOC_HQcamera_CE.pdf)  &nbsp; &nbsp;[USA/FCC](./compliance/rpi_DOC_HQcamera_FCC.pdf) | |
 | Sense HAT | [EU](./compliance/rpi_DOC_SenseHAT_CE.pdf) &nbsp; &nbsp; [USA/FCC](./compliance/rpi_DOC_SenseHAT_FCC.pdf)| |
 | PoE HAT | [EU](./compliance/rpi_DOC_PoeHAT_EU.pdf)  &nbsp; &nbsp;[USA/FCC](./compliance/rpi_DOC_PoeHAT_FCC.pdf)| |
 | TV uHAT | [EU](./compliance/rpi_DOC_tvuhat_EU.pdf)  &nbsp; &nbsp;| [Australia/New Zealand](./compliance/rpi_DOC_tvuhat_AUSTRALIA+NEW_ZEALAND.pdf) |
