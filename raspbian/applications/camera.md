@@ -1,6 +1,6 @@
 # Raspberry Pi Camera Module
 
-This document describes the use of the four Raspberry Pi camera applications, as of 28 November 2018.
+This document describes the use of the four Raspberry Pi camera applications, as of 30 April 2020.
 
 There are four applications provided: `raspistill`, `raspivid`, `raspiyuv` and `raspividyuv`. `raspistill` and `raspiyuv` are very similar and are intended for capturing images; `raspivid` and `raspvidyuv` are for capturing video.
 
@@ -248,7 +248,7 @@ Allows the specification of the area of the sensor to be used as the source for 
 	--shutter,	-ss		Set shutter speed
 ```
 
-Sets the shutter speed to the specified value (in microseconds). There's currently an upper limit of approximately 6000000us (6000ms, 6s), past which operation is undefined.
+Sets the shutter speed to the specified value (in microseconds). On Camera Module v1 and v2 there is an upper limit of approximately 6000000us (6000ms, 6s), past which operation is undefined. On the HQ Camera exposure times can be up to 200000000us (200000ms, 200s)
 
 ```
 	--drc,	-drc		Enable/disable dynamic range compression
@@ -279,7 +279,7 @@ Sets blue and red gains (as floating point numbers) to be applied when `-awb -of
 	--analoggain,	-ag
 ```
 
-Sets the analog gain value directly on the sensor (floating point value from 1.0 to 8.0 for the OV5647 sensor on Camera Module V1, and 1.0 to 12.0 for the IMX219 sensor on on Camera Module V2).
+Sets the analog gain value directly on the sensor (floating point value from 1.0 to 8.0 for the OV5647 sensor on Camera Module V1, and 1.0 to 12.0 for the IMX219 sensor on Camera Module V2 and the IMX447 on the HQ Camera).
 
 ```
 	--digitalgain,	-dg
@@ -320,6 +320,16 @@ Version 2.x (IMX219)
 |7|640x480|4:3|40-200fps<sup>1</sup>|Partial|2x2|
 
 <sup>1</sup>For frame rates over 120fps, it is necessary to turn off automatic exposure and gain control using `-ex off`. Doing so should achieve the higher frame rates, but exposure time and gains will need to be set to fixed values supplied by the user.
+
+HQ Camera
+
+|Mode| Size | Aspect Ratio |Frame rates | FOV | Binning |
+|----|------|--------------|------------|-----|---------|
+|0| automatic selection |||||
+|1|1920x1080|16:9| 0.1-30fps|Partial|2x2|
+|2|2028x1520|4:3|0.1-50fps|Full|2x2|
+|3|4056x3040|4:3|0.005-10fps|Full|None|
+|4|1012x760|4:3|50.1-120fps|Partial|4x4|
 
 ```
 	--camselect,	-cs

@@ -1,34 +1,34 @@
 # Camera Module
 
-The Raspberry Pi Camera Module is an official product from the Raspberry Pi Foundation. The original 5-megapixel model was [released](https://www.raspberrypi.org/blog/camera-board-available-for-sale/) in 2013, and an 8-megapixel Camera Module v2 was [released](https://www.raspberrypi.org/blog/new-8-megapixel-camera-board-sale-25/) in 2016. For both iterations, there are visible light and infrared versions.
+The Raspberry Pi Camera Modules are official products from the Raspberry Pi Foundation. The original 5-megapixel model was [released](https://www.raspberrypi.org/blog/camera-board-available-for-sale/) in 2013, and an 8-megapixel Camera Module v2 was [released](https://www.raspberrypi.org/blog/new-8-megapixel-camera-board-sale-25/) in 2016. For both iterations, there are visible light and infrared versions. A High Quality 12MP camera was released in 2020. There is no infrared version of the HQ Camera, however the [IR Filter can be removed](hqcam_filter_removal.md) if required.
 
 ## Hardware specification
 
-| | Camera Module v1 | Camera Module v2 |
-| --- | --- | --- |
-| Net price | $25 | $25 |
-| Size | Around 25 × 24 × 9 mm | |
+| | Camera Module v1 | Camera Module v2 | HQ Camera |
+| --- | --- | --- | --- |
+| Net price | $25 | $25 | $50 | 
+| Size | Around 25 × 24 × 9 mm | | 38 x 38 x 18.4mm (excluding lens) |
 | Weight | 3g | 3g |
-| Still resolution | 5 Megapixels | 8 Megapixels |
-| Video modes | 1080p30, 720p60 and 640 × 480p60/90 | 1080p30, 720p60 and 640 × 480p60/90 |
-| Linux integration | V4L2 driver available | V4L2 driver available |
+| Still resolution | 5 Megapixels | 8 Megapixels | 12.3MP |
+| Video modes | 1080p30, 720p60 and 640 × 480p60/90 | 1080p30, 720p60 and 640 × 480p60/90 | 1080p30, 720p60 and 640 × 480p60/90 |
+| Linux integration | V4L2 driver available | V4L2 driver available | V4L2 driver available |
 | C programming API | OpenMAX IL and others available | OpenMAX IL and others available |
-| Sensor | OmniVision OV5647 | [Sony IMX219](http://www.sony-semicon.co.jp/products_en/new_pro/april_2014/imx219_e.html) |
-| Sensor resolution | 2592 × 1944 pixels | 3280 × 2464 pixels |
-| Sensor image area | 3.76 × 2.74 mm | 3.68 x 2.76 mm (4.6 mm diagonal) |
-| Pixel size | 1.4 µm × 1.4 µm | 1.12 µm x 1.12 µm  |
-| Optical size	| 1/4" | 1/4" |
-| Full-frame SLR lens equivalent | 35 mm | |
+| Sensor | OmniVision OV5647 | [Sony IMX219](http://www.sony-semicon.co.jp/products_en/new_pro/april_2014/imx219_e.html) | [Sony IMX477](https://www.sony-semicon.co.jp/products/common/pdf/IMX477-AACK_Flyer.pdf) |
+| Sensor resolution | 2592 × 1944 pixels | 3280 × 2464 pixels | 4056 x 3040 pixels|
+| Sensor image area | 3.76 × 2.74 mm | 3.68 x 2.76 mm (4.6 mm diagonal) | 7.56mm x 5.476 mm (7.9mm diagonal) |
+| Pixel size | 1.4 µm × 1.4 µm | 1.12 µm x 1.12 µm  | 1.55 µm x 1.55 µm |
+| Optical size	| 1/4" | 1/4" | |
+| Full-frame SLR lens equivalent | 35 mm | | |
 | S/N ratio | 36 dB | |
-| Dynamic range | 67 dB @ 8x gain | |
-| Sensitivity | 680 mV/lux-sec | |
-| Dark current | 16 mV/sec @ 60 C | |
-| Well capacity | 4.3 Ke- | |
-| Fixed focus | 1 m to infinity | |
-| Focal length | 3.60 mm +/- 0.01 | 3.04 mm |
-| Horizontal field of view | 53.50  +/- 0.13 degrees | 62.2 degrees |
-| Vertical field of view | 41.41 +/- 0.11 degrees | 48.8 degrees |
-| Focal ratio (F-Stop) | 2.9 | 2.0 |
+| Dynamic range | 67 dB @ 8x gain | | |
+| Sensitivity | 680 mV/lux-sec | | |
+| Dark current | 16 mV/sec @ 60 C | | |
+| Well capacity | 4.3 Ke- | | | 
+| Fixed focus | 1 m to infinity | | variable lens| 
+| Focal length | 3.60 mm +/- 0.01 | 3.04 mm | variable |
+| Horizontal field of view | 53.50  +/- 0.13 degrees | 62.2 degrees | Depends on lens|
+| Vertical field of view | 41.41 +/- 0.11 degrees | 48.8 degrees | Depends on lens |
+| Focal ratio (F-Stop) | 2.9 | 2.0 | Depends on lens |
 
 ## Hardware features
 
@@ -76,7 +76,9 @@ Full camera software documentation can be found at [raspbian/applications/camera
 ## Mechanical drawing
 
 - Camera Module v2 [PDF](mechanical/rpi_MECH_Camera2_2p1.pdf)
-
+- HQ Camera Module [PDF](mechanical/rpi_MECH_HQcamera_1p0.pdf)
+- HQ Camera Module lens mount[PDF](mechanical/rpi_MECH_HQcamera_lensmount_1p0.pdf)
+  
 ## Schematics
 
 - Camera Module v2 [PDF](schematics/rpi_SCH_Camera2_2p1.pdf)
