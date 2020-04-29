@@ -141,6 +141,21 @@ The Raspberry Pi will deliver IP addresses between `192.168.4.2` and `192.168.4.
 
 There are many more options for `dnsmasq`; see the default configuration file (`/etc/dnsmasq.conf`) or the [online documentation](http://www.thekelleys.org.uk/dnsmasq/doc.html) for details.
 
+<a name="wifi-cc-rfkill"></a>
+## Ensure wireless operation
+
+Countries around the world regulate the use of telecommunication radio frequency bands to ensure interference-free operation. The Linux OS [helps](https://wireless.wiki.kernel.org/en/developers/regulatory/statement) users comply with these rules by simply configuring applications with a 2-letter "WiFi country code", e.g. `US` for a computer used in the United States.
+
+In the Raspbian OS, 5 GHz wireless networking is disabled until a WiFi country code has been configured by the user, usually as part of the initial installation process (see wireless configuration pages in this [section](../readme.md) for details.)
+
+To ensure WiFi radio is not blocked on your Raspberry Pi, execute the following command:
+
+```
+sudo rfkill unblock 0
+```
+
+This setting will be automatically restored at boot time. We will define appropriate country code in the access point software configuration, next.
+
 <a name="ap-config"></a>
 ## Configure the access point software
 
@@ -153,6 +168,7 @@ sudo nano /etc/hostapd/hostapd.conf
 Add the information below to the configuration file. This configuration assumes we are using channel 7, with a network name of `NameOfNetwork`, and a password `AardvarkBadgerHedgehog`. Note that the name and password should **not** have quotes around them. The passphrase should be between 8 and 64 characters in length.
 
 ```
+country_code=GB
 interface=wlan0
 ssid=NameOfNetwork
 hw_mode=g
@@ -166,6 +182,8 @@ wpa_key_mgmt=WPA-PSK
 wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 ```
+
+Note the line `country_code=GB`: it configures the computer to use the correct wireless frequencies in the United Kingdom. **Adapt this line** and specify the 2 letter ISO code of your country. See [Wikipedia](https://en.wikipedia.org/wiki/ISO_3166-1) for a list of 2 letter ISO 3166-1 country codes.
 
 To use the 5 GHz band, you can change the operations mode from `hw_mode=g` to `hw_mode=a`. Possible values for `hw_mode` are:
  - a = IEEE 802.11a (5 GHz)
