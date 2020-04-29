@@ -154,7 +154,7 @@ To ensure WiFi radio is not blocked on your Raspberry Pi, execute the following 
 sudo rfkill unblock 0
 ```
 
-This setting will be automatically restored at boot time. We will define appropriate country code in the access point software configuration, next.
+This setting will be automatically restored at boot time. We will define an appropriate country code in the access point software configuration, next.
 
 <a name="ap-config"></a>
 ## Configure the access point software
