@@ -297,7 +297,7 @@ Version 1.x (OV5647)
 
 |Mode| Size | Aspect Ratio |Frame rates | FOV | Binning |
 |----|------|--------------|------------|-----|---------|
-|0| automatic selection |||||
+|0| automatic selection | | | | |
 |1|1920x1080|16:9| 1-30fps|Partial|None|
 |2|2592x1944|4:3|1-15fps|Full|None|
 |3|2592x1944|4:3|0.1666-1fps|Full|None|
@@ -310,7 +310,7 @@ Version 2.x (IMX219)
 
 |Mode| Size | Aspect Ratio |Frame rates | FOV | Binning |
 |----|------|--------------|------------|-----|---------|
-|0| automatic selection |||||
+|0| automatic selection | | | | |
 |1|1920x1080|16:9| 0.1-30fps|Partial|None|
 |2|3280x2464|4:3|0.1-15fps|Full|None|
 |3|3280x2464|4:3|0.1-15fps|Full|None|
@@ -325,7 +325,7 @@ HQ Camera
 
 |Mode| Size | Aspect Ratio |Frame rates | FOV | Binning |
 |----|------|--------------|------------|-----|---------|
-|0| automatic selection |||||
+|0| automatic selection | | | | |
 |1|1920x1080|16:9| 0.1-30fps|Partial|2x2|
 |2|2028x1520|4:3|0.1-50fps|Full|2x2|
 |3|4056x3040|4:3|0.005-10fps|Full|None|
