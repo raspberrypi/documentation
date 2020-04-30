@@ -24,8 +24,8 @@ The Raspberry Pi Camera Modules are official products from the Raspberry Pi Foun
 | Sensitivity | 680 mV/lux-sec | | |
 | Dark current | 16 mV/sec @ 60 C | | |
 | Well capacity | 4.3 Ke- | | | 
-| Fixed focus | 1 m to infinity | | variable lens| 
-| Focal length | 3.60 mm +/- 0.01 | 3.04 mm | variable |
+| Fixed focus | 1 m to infinity | | N/A | 
+| Focal length | 3.60 mm +/- 0.01 | 3.04 mm | Depdns on lens |
 | Horizontal field of view | 53.50  +/- 0.13 degrees | 62.2 degrees | Depends on lens|
 | Vertical field of view | 41.41 +/- 0.11 degrees | 48.8 degrees | Depends on lens |
 | Focal ratio (F-Stop) | 2.9 | 2.0 | Depends on lens |
