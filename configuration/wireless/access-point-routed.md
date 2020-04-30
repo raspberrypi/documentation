@@ -146,7 +146,7 @@ There are many more options for `dnsmasq`; see the default configuration file (`
 
 Countries around the world regulate the use of telecommunication radio frequency bands to ensure interference-free operation. The Linux OS [helps](https://wireless.wiki.kernel.org/en/developers/regulatory/statement) users comply with these rules by simply configuring applications with a 2-letter "WiFi country code", e.g. `US` for a computer used in the United States.
 
-In the Raspbian OS, 5 GHz wireless networking is disabled until a WiFi country code has been configured by the user, usually as part of the initial installation process (see wireless configuration pages in this [section](./readme.md) for details.)
+In the Raspbian OS, 5 GHz wireless networking is disabled until a WiFi country code has been configured by the user, usually as part of the initial installation process (see wireless configuration pages in this [section](./) for details.)
 
 To ensure WiFi radio is not blocked on your Raspberry Pi, execute the following command:
 
