@@ -351,13 +351,13 @@ Text may include date/time placeholders by using the '%' character, as used by <
 |-a 4|Time|20:09:33|
 |-a 8|Date|10/28/15|
 |-a 12|4+8=12 Show the date(4) and time(8)|20:09:33 10/28/15|
-|-a 16|Shutter Settings||
-|-a 32|CAF Settings||
-|-a 64|Gain Settings||
-|-a 128|Lens Settings||
-|-a 256|Motion Settings||
-|-a 512|Frame Number||
-|-a 1024|Black Background||
+|-a 16|Shutter Settings| |
+|-a 32|CAF Settings| |
+|-a 64|Gain Settings| |
+|-a 128|Lens Settings| |
+|-a 256|Motion Settings| |
+|-a 512|Frame Number| |
+|-a 1024|Black Background| |
 |-a "ABC %Y-%m-%d %X"|Show some text|ABC %Y-%m-%d %X|
 |-a 4 -a "ABC %Y-%m-%d %X"|Show custom <a title="strftime man page" href="http://man7.org/linux/man-pages/man3/strftime.3.html">formatted</a> date/time|ABC 2015-10-28 20:09:33|
 |-a 8 -a "ABC %Y-%m-%d %X"|Show custom <a title="strftime man page" href="http://man7.org/linux/man-pages/man3/strftime.3.html">formatted</a> date/time|ABC 2015-10-28 20:09:33|
