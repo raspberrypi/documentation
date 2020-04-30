@@ -504,15 +504,15 @@ Another option is [PiNet](http://pinet.org.uk), which is a free and open-source 
 
 ### What is the Camera Module?
 
-The Camera Module is a small PCB that connects to the CSI-2 camera port on the Raspberry Pi using a short ribbon cable. It provides connectivity for a camera capable of capturing still images or video recordings. The Camera Module connects to the Image System Pipeline (ISP) in the Raspberry Pi's SoC, where the incoming camera data is processed and eventually converted to an image or video on the SD card (or other storage). You can [read more about the Camera Module here](https://www.raspberrypi.org/products/). It's the only camera that is compatible with the Raspberry Pi.
+The Raspberry Pi Camera Modules are small PCB's that connects to the CSI-2 camera port on the Raspberry Pi using a short ribbon cable. They provide connectivity for a camera capable of capturing still images or video recordings. The Camera Modules connect to the Image System Pipeline (ISP) in the Raspberry Pi's SoC, where the incoming camera data is processed and eventually converted to an image or video on the SD card (or other storage). You can [read more about the Camera Modules here](https://www.raspberrypi.org/products/). 
 
 ### What model of camera does the Camera Module use?
 
-The Camera Module V2 is a Sony IMX219, while the original Camera Module is an Omnivision OV5647. They are comparable to cameras used in mobile phones.
+The original Camera Module is an Omnivision OV5647, the V2 which replaced it is a Sony IMX219. There is now a High quality camera module available, with an interchangeable lens mount, using the Sony IMX447 sensor.  
 
 ### What resolutions are supported?
 
-The Camera Module V2 is capable of taking photos up to 8 megapixels (8MP). It supports 1080p30, 720p60 and VGA90 video modes, as well as still capture. The original Camera Module is capable of taking photos up to 5 megapixels and can record video at resolutions up to 1080p30.
+The original Camera Module is capable of taking photos up to 5 megapixels and can record video at resolutions up to 1080p30. The Camera Module V2 is capable of taking photos up to 8 megapixels (8MP). It supports 1080p30, 720p60 and VGA90 video modes, as well as still capture. The High Quality camera module is 12.3MP, with the same video performance as the other models.
 
 ### What picture formats are supported?
 
