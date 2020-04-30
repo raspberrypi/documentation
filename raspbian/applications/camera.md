@@ -149,8 +149,9 @@ Possible options are:
 - 50hz: set avoidance at 50Hz
 - 60hz: set avoidance at 60Hz
 
+```
 	--awb,	-awb		Set Automatic White Balance (AWB) mode
-
+```
 Modes for which colour temperature ranges (K) are available have these settings in brackets.
 
 - off: turn off white balance calculation
