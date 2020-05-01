@@ -82,3 +82,4 @@ Full camera software documentation can be found at [raspbian/applications/camera
 ## Schematics
 
 - Camera Module v2 [PDF](schematics/rpi_SCH_Camera2_2p1.pdf)
+- HQ Camera Module [PDF](schematics/rpi_SCH_HQcamera_1p0.pdf)
