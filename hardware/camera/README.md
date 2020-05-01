@@ -1,6 +1,6 @@
 # Camera Module
 
-The Raspberry Pi Camera Modules are official products from the Raspberry Pi Foundation. The original 5-megapixel model was [released](https://www.raspberrypi.org/blog/camera-board-available-for-sale/) in 2013, and an 8-megapixel Camera Module v2 was [released](https://www.raspberrypi.org/blog/new-8-megapixel-camera-board-sale-25/) in 2016. For both iterations, there are visible light and infrared versions. A High Quality 12MP camera was released in 2020. There is no infrared version of the HQ Camera, however the [IR Filter can be removed](hqcam_filter_removal.md) if required.
+The Raspberry Pi Camera Modules are official products from the Raspberry Pi Foundation. The original 5-megapixel model was [released](https://www.raspberrypi.org/blog/camera-board-available-for-sale/) in 2013, and an 8-megapixel [Camera Module v2](https://www.raspberrypi.org/products/camera-module-v2/) was [released](https://www.raspberrypi.org/blog/new-8-megapixel-camera-board-sale-25/) in 2016. For both iterations, there are visible light and infrared versions. A 12-megapixel [High Quality Camera](https://www.raspberrypi.org/products/raspberry-pi-high-quality-camera/) was [released](https://www.raspberrypi.org/blog/new-product-raspberry-pi-high-quality-camera-on-sale-now-at-50/) in 2020. There is no infrared version of the HQ Camera, however the [IR Filter can be removed](hqcam_filter_removal.md) if required.
 
 ## Hardware specification
 
@@ -9,7 +9,7 @@ The Raspberry Pi Camera Modules are official products from the Raspberry Pi Foun
 | Net price | $25 | $25 | $50 | 
 | Size | Around 25 × 24 × 9 mm | | 38 x 38 x 18.4mm (excluding lens) |
 | Weight | 3g | 3g | |
-| Still resolution | 5 Megapixels | 8 Megapixels | 12.3MP |
+| Still resolution | 5 Megapixels | 8 Megapixels | 12.3 Megapixels |
 | Video modes | 1080p30, 720p60 and 640 × 480p60/90 | 1080p30, 720p60 and 640 × 480p60/90 | 1080p30, 720p60 and 640 × 480p60/90 |
 | Linux integration | V4L2 driver available | V4L2 driver available | V4L2 driver available |
 | C programming API | OpenMAX IL and others available | OpenMAX IL and others available | |
