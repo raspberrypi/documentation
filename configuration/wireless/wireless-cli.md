@@ -1,4 +1,4 @@
-# Setting WiFi up via the command line
+# Setting Wi-Fi up via the command line
 
 
 This method is suitable if you don't have access to the graphical user interface normally used to set up Wi-Fi on the Raspberry Pi. It is particularly suitable for use with a serial console cable if you don't have access to a screen or wired Ethernet network. Note also that no additional software is required; everything you need is already included on the Raspberry Pi.   
