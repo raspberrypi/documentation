@@ -144,7 +144,7 @@ There are many more options for `dnsmasq`; see the default configuration file (`
 <a name="wifi-cc-rfkill"></a>
 ## Ensure wireless operation
 
-Countries around the world regulate the use of telecommunication radio frequency bands to ensure interference-free operation. The Linux OS helps users [comply](https://wireless.wiki.kernel.org/en/developers/regulatory/statement) with these rules by allowing applications to be configured with a 2-letter "WiFi country code", e.g. `US` for a computer used in the United States.
+Countries around the world regulate the use of telecommunication radio frequency bands to ensure interference-free operation. The Linux OS helps users [comply](https://wireless.wiki.kernel.org/en/developers/regulatory/statement) with these rules by allowing applications to be configured with a two-letter "WiFi country code", e.g. `US` for a computer used in the United States.
 
 In the Raspbian OS, 5 GHz wireless networking is disabled until a WiFi country code has been configured by the user, usually as part of the initial installation process (see wireless configuration pages in this [section](README.md) for details.)
 
@@ -183,7 +183,7 @@ wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 ```
 
-Note the line `country_code=GB`: it configures the computer to use the correct wireless frequencies in the United Kingdom. **Adapt this line** and specify the 2 letter ISO code of your country. See [Wikipedia](https://en.wikipedia.org/wiki/ISO_3166-1) for a list of 2 letter ISO 3166-1 country codes.
+Note the line `country_code=GB`: it configures the computer to use the correct wireless frequencies in the United Kingdom. **Adapt this line** and specify the two-letter ISO code of your country. See [Wikipedia](https://en.wikipedia.org/wiki/ISO_3166-1) for a list of two-letter ISO 3166-1 country codes.
 
 To use the 5 GHz band, you can change the operations mode from `hw_mode=g` to `hw_mode=a`. Possible values for `hw_mode` are:
  - a = IEEE 802.11a (5 GHz)
