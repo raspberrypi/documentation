@@ -28,6 +28,8 @@ The firmware automatically adds a preferred resolution and overscan settings via
 
 ```video=HDMI-A-1:1920x1080M@60,margin_left=0,margin_right=0,margin_top=0,margin_bottom=0```
 
+Note that these automatic entries are not present in the `cmdline.txt` file. Instead, the firmware inserts these into the kernel command line at run time. The complete kernel command line used to boot Linux, including parameters inserted by the firmware, is available by typing `cat /proc/cmdline`.
+
 This default entry can be modified by duplicating the entry above manually in /boot/cmdline.txt and making required changes to the margin parameters. In addition, it is possible to add rotation and reflect parameters as documented in the standard [Linux framebuffer documentation](https://github.com/raspberrypi/linux/blob/rpi-4.19.y/Documentation/fb/modedb.txt). By default the `margin_*` options are set from the `overscan` entries in config.txt, if present. The firmware can be prevented from making any KMS specific changes to the command line by adding `disable_fw_kms_setup=1` to `config.txt`
 
 An example entry may be as follows:
