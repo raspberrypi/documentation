@@ -41,3 +41,16 @@ utilities like `raspi-gpio`.
 
 Note also that there is a delay of a few seconds between power being applied and the changes taking effect — longer
 if booting over the network or from a USB mass storage device.
+
+## `enable_jtag_gpio`
+
+Setting `enable_jtag_gpio=1` selects Alt4 mode for GPIO pins 22-27, and sets up some internal SoC connections, thus enabling the JTAG interface for the ARM CPU. It works on all models of Raspberry Pi.
+
+| Pin #  | Function |
+| ------ | -------- |
+| GPIO22 | ARM_TRST |
+| GPIO23 | ARM_RTCK |
+| GPIO24 | ARM_TDO  |
+| GPIO25 | ARM_TCK  |
+| GPIO26 | ARM_TDI  |
+| GPIO27 | ARM_TMS  |
