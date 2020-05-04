@@ -3,7 +3,7 @@
 ## Raspberry Pi software libraries for Linux
 
  - [libcamera](libcamera/README.md)
-    - An Open Source camera library for the Raspberry Pi cameras
+    - An Open Source camera library, with added drivers and components to support all the Raspberry Pi cameras.
     
 
 ## Installing standard software
