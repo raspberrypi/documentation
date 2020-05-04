@@ -12,7 +12,7 @@ When creating an issue, please:
 
 Creating a pull request:
 
-- If your contribution regards typos and spelling mistakes, feel free to fix these, and they'll be merged if they accord with our in-house style guide. Otherwise, always open an issue first. This will allow us to determine whether or not the change should take place. Explain your issue, and we will discuss it with you. If we agree the change is necessary, we will mark it as 'TODO'. Then we will either fix it when we get a chance, or allow a member of the community to supply the change with a pull request.
+- If your contribution regards typos and spelling mistakes, feel free to fix these, and they'll be merged if they accord with our [in-house style guide](https://github.com/raspberrypilearning/style-guide/blob/master/style-guide.md). Otherwise, always open an issue first. This will allow us to determine whether or not the change should take place. Explain your issue, and we will discuss it with you. If we agree the change is necessary, we will mark it as 'TODO'. Then we will either fix it when we get a chance, or allow a member of the community to supply the change with a pull request.
 - Note that this documentation is intended to be a short and concise set of helpful resources aimed at the majority of users. We will only feature our recommended distribution, Raspbian, in detail; in order to keep the documentation manageable, we will not accept additions covering alternative distributions.
 
 Find a short tutorial on making changes using GitHub [here](using-github.md).
