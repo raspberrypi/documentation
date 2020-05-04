@@ -2,17 +2,15 @@
 
 ## Page Contents
 
-- [USB](#usb)
-  - [Page Contents](#page-contents)
-  - [Overview for devices prior to Pi 4](#overview-for-devices-prior-to-pi-4)
-  - [Overview for the Pi 4](#overview-for-the-pi-4)
-  - [Supported devices](#supported-devices)
-    - [General limitations (not Pi 4)](#general-limitations-not-pi-4)
-    - [Port power limits](#port-power-limits)
-  - [Devices with known issues (not Pi 4)](#devices-with-known-issues-not-pi-4)
-  - [Troubleshooting](#troubleshooting)
-    - [If your device doesn't work at all](#if-your-device-doesnt-work-at-all)
-      - [If your device has intermittent behaviour](#if-your-device-has-intermittent-behaviour)
+- [Overview for devices prior to Pi 4](#overview-for-devices-prior-to-pi-4)
+- [Overview for the Pi 4](#overview-for-the-pi-4)
+- [Supported devices](#supported-devices)
+  - [General limitations (not Pi 4)](#general-limitations-not-pi-4)
+  - [Port power limits](#port-power-limits)
+- [Devices with known issues (not Pi 4)](#devices-with-known-issues-not-pi-4)
+- [Troubleshooting](#troubleshooting)
+  - [If your device doesn't work at all](#if-your-device-doesnt-work-at-all)
+- [If your device has intermittent behaviour](#if-your-device-has-intermittent-behaviour)
 
 <a name="overview"></a>
 ## Overview for devices prior to Pi 4
