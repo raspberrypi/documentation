@@ -1,16 +1,13 @@
 # USB
 
 ## Page Contents
-
-- [Overview for devices prior to Pi 4](#overview-for-devices-prior-to-pi-4)
-- [Overview for the Pi 4](#overview-for-the-pi-4)
-- [Supported devices](#supported-devices)
-  - [General limitations (not Pi 4)](#general-limitations-not-pi-4)
-  - [Port power limits](#port-power-limits)
-- [Devices with known issues (not Pi 4)](#devices-with-known-issues-not-pi-4)
+- [Overview for devices prior to the Pi 4](#overview)
+- [Overview for the Pi 4](#overview_pi4)
+- [Supported devices](#support)
+- [General limitations (not Pi 4)](#genlimits)
+- [Port power limits](#powerlimits)
+- [Known issues (not Pi 4)](#knownissues)
 - [Troubleshooting](#troubleshooting)
-  - [If your device doesn't work at all](#if-your-device-doesnt-work-at-all)
-- [If your device has intermittent behaviour](#if-your-device-has-intermittent-behaviour)
 
 <a name="overview"></a>
 ## Overview for devices prior to Pi 4
