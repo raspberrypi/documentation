@@ -26,6 +26,8 @@ core_freq_min=250
 
 If you are using a sensor other than the `imx219` you will need to supply the alternative name here (for example, `ov5647` for the V1 camera, or `imx477` for the HQ Cam for which support will be available shortly).
 
+**NOTE**: after rebooting, control of the camera system will be passed to the ARM cores, and firmware-based camera functions (such as raspistill and so forth) will no longer work. Setting `/boot/config.txt` back and rebooting will restore the previous behaviour.
+
 ## Software Dependencies
 
 The build system and runtime environment of _libcamera_ have a number of dependencies. They can be installed with the following commands.
