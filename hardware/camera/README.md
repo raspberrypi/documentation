@@ -15,7 +15,7 @@ The Raspberry Pi Camera Modules are official products from the Raspberry Pi Foun
 | C programming API | OpenMAX IL and others available | OpenMAX IL and others available | |
 | Sensor | OmniVision OV5647 | [Sony IMX219](http://www.sony-semicon.co.jp/products_en/new_pro/april_2014/imx219_e.html) | [Sony IMX477](https://www.sony-semicon.co.jp/products/common/pdf/IMX477-AACK_Flyer.pdf) |
 | Sensor resolution | 2592 × 1944 pixels | 3280 × 2464 pixels | 4056 x 3040 pixels|
-| Sensor image area | 3.76 × 2.74 mm | 3.68 x 2.76 mm (4.6 mm diagonal) | 7.56mm x 5.476 mm (7.9mm diagonal) |
+| Sensor image area | 3.76 × 2.74 mm | 3.68 x 2.76 mm (4.6 mm diagonal) | 6.287mm x 4.712 mm (7.9mm diagonal) |
 | Pixel size | 1.4 µm × 1.4 µm | 1.12 µm x 1.12 µm  | 1.55 µm x 1.55 µm |
 | Optical size	| 1/4" | 1/4" | |
 | Full-frame SLR lens equivalent | 35 mm | | |
