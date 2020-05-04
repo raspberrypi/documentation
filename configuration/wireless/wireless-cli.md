@@ -9,7 +9,7 @@ The quickest way to enable wireless networking is to use the command line raspi-
 
 `sudo raspi-config`
 
-Select the **Network Options** item from the menu, then the **Wi-fi** option. On a fresh install, for regulatory purposes, you will need to specify the country in which the device is being used. Then set the SSID of the network, and the passphrase for the network. If you do not know the SSID of the network you want to connect to, see the next section on how to list available networks prior to running raspi-config. 
+Select the **Localisation Options** item from the menu, then the **Change wireless Country** option. On a fresh install, for regulatory purposes, you will need to specify the country in which the device is being used. Then set the SSID of the network, and the passphrase for the network. If you do not know the SSID of the network you want to connect to, see the next section on how to list available networks prior to running raspi-config. 
 
 Note that raspi-config does not provide a complete set of options for setting up wireless networking; you may need to refer to the extra sections below for more details if raspi-config fails to connect the Pi to your requested network.
 
