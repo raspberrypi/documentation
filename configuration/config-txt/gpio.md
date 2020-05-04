@@ -44,7 +44,7 @@ if booting over the network or from a USB mass storage device.
 
 ## `enable_jtag_gpio`
 
-Setting `enable_jtag_gpio=1` selects Alt4 mode for GPIO pins 22-27, thus enabling JTAG interface for the ARM CPU.
+Setting `enable_jtag_gpio=1` selects Alt4 mode for GPIO pins 22-27, and flips some internal SoC connections, thus enabling the JTAG interface for the ARM CPU. It works on all models of Raspberry Pi.
 
 | Pin #  | Function |
 | ------ | -------- |
