@@ -61,7 +61,7 @@ If you specify the wrong device in the instructions, you could overwrite your pr
 - Copy the image
 
   ```bash
-  sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskN conv=sync
+  sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskN; sync
   ```
 
    Replace `N` with the number that you noted before. Note the ```rdisk``` ('raw disk')
