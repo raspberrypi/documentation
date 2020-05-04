@@ -1,4 +1,4 @@
-# Setting up a wireless LAN up via the command line
+# Setting up a wireless LAN via the command line
 
 
 This method is suitable if you don't have access to the graphical user interface normally used to set up a wireless LAN on the Raspberry Pi. It is particularly suitable for use with a serial console cable if you don't have access to a screen or wired Ethernet network. Note also that no additional software is required; everything you need is already included on the Raspberry Pi.
