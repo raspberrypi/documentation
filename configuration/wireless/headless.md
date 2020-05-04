@@ -16,7 +16,7 @@ country=<Insert 2 letter ISO 3166-1 country code here>
 
 network={
  ssid="<Name of your wireless LAN>"
- psk="<Password for your wireless lAN>"
+ psk="<Password for your wireless LAN>"
 }
 ```
 
