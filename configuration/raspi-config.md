@@ -64,7 +64,7 @@ The default user on Raspbian is ```pi``` with the password ```raspberry```. You 
 <a name="network-options"></a>
 ### Network Options
 
-From this submenu you can set the host name, your Wireless LAN SSID, and pre-shared key, or enable/disable predictable network interface names.
+From this submenu you can set the host name, your wireless LAN SSID, and pre-shared key, or enable/disable predictable network interface names.
 
 <a name="hostname"></a>
 #### Hostname
@@ -79,7 +79,7 @@ From here you can change what happens when your Pi boots. Use this option to cha
 <a name="localisation-options"></a>
 ### Localisation Options
 
-The localisation submenu gives you these options to choose from: keyboard layout, time zone, locale, and wireless LAN country code. All options on these menus default to British or GB until you change them.
+The localisation submenu gives you these options to choose from: keyboard layout, time zone, locale, and wireless LAN country code.
 
 #### Change locale
 Select a locale, for example `en_GB.UTF-8 UTF-8`.
