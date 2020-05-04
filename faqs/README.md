@@ -476,7 +476,7 @@ The Raspberry Pi 1 Model B and B+, Raspberry Pi 2, and Raspberry Pi 3 Model B ve
 
 ### Is there built-in wireless networking?
 
-Only the Raspberry Pi 3, 3+, 4, and Raspberry Pi Zero W have built-in wireless connectivity, but all other Raspberry Pi models can support a USB wireless LAN dongle.
+The Raspberry Pi 3, 3+, 4, and Raspberry Pi Zero W have built-in wireless LAN connectivity. You can also add a USB wireless LAN dongle to any model of Raspberry Pi.
 
 The Raspberry Pi Model 3B+ and 4B support 802.11ac, and all earlier models support up to 802.11n.
 
