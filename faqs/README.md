@@ -84,7 +84,7 @@
 ### [Networking and wireless connectivity](#networking)
 
 - Does the device support networking?
-- Is there built-in WiFi?
+- Is there built-in wireless networking?
 - Is there built-in Bluetooth?
 - I don't seem to get full-speed gigabit networking on my Raspberry Pi 3B+.
 - Does the device have support for any form of netbooting or PXE?
@@ -474,9 +474,9 @@ If you brick the device, you can restore it by reflashing the SD card.
 
 The Raspberry Pi 1 Model B and B+, Raspberry Pi 2, and Raspberry Pi 3 Model B versions of the device have built in 10/100 wired Ethernet. The Raspberry Pi 3B+ and Raspberry Pi 4 have 1000BaseT wired Ethernet, but on the 3B+, throughput is limited by its USB 2.0 connection to the SoC. There is no Ethernet on the Raspberry Pi 1 Model A and A+, and the Raspberry Pi Zero/Zero W.
 
-### Is there built-in WiFi?
+### Is there built-in wireless networking?
 
-Only the Raspberry Pi 3, 3+, 4, and Raspberry Pi Zero W have built-in wireless connectivity, but all other Raspberry Pi models can support a USB WiFi dongle. We offer our own branded WiFi dongle, which has been fully tested for use with the Raspberry Pi. It is [available through our distributors](https://www.raspberrypi.org/products/raspberry-pi-usb-wifi-dongle). You can, of course, use a dongle from another provider if you wish.
+Only the Raspberry Pi 3, 3+, 4, and Raspberry Pi Zero W have built-in wireless connectivity, but all other Raspberry Pi models can support a USB wireless LAN dongle.
 
 The Raspberry Pi Model 3B+ and 4B support 802.11ac, and all earlier models support up to 802.11n.
 

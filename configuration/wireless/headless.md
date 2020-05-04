@@ -15,12 +15,12 @@ update_config=1
 country=<Insert 2 letter ISO 3166-1 country code here>
 
 network={
- ssid="<Name of your WiFi>"
- psk="<Password for your WiFi>"
+ ssid="<Name of your wireless LAN>"
+ psk="<Password for your wireless lAN>"
 }
 ```
 
-Note that some older WiFi dongles don't support 5GHz networks.
+Note that some older wireless dongles don't support 5GHz networks.
 
 More information on the `wpa_supplicant.conf` file can be found [here](wireless-cli.md). See [Wikipedia](https://en.wikipedia.org/wiki/ISO_3166-1) for a list of 2 letter ISO 3166-1 country codes.
 

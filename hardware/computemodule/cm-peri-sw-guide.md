@@ -156,7 +156,7 @@ For these simple examples I used a CMIO board with peripherals attached via jump
 
 For each of the examples we assume a CM+CMIO or CM3+CMIO3 board with a clean install of the latest Raspbian Lite version on the CM. See instructions [here](cm-emmc-flashing.md).
 
-The examples here require internet connectivity, so a USB hub plus keyboard plus WiFi or Ethernet dongle plugged into the CMIO USB port is recommended.
+The examples here require internet connectivity, so a USB hub plus keyboard plus wireless LAN or Ethernet dongle plugged into the CMIO USB port is recommended.
 
 Please post any issues, bugs or questions on the Raspberry Pi [Device Tree subforum](https://www.raspberrypi.org/forums/viewforum.php?f=107).
 
