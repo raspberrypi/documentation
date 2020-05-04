@@ -151,7 +151,7 @@ In the Raspbian OS, 5 GHz wireless networking is disabled until a WiFi country c
 To ensure WiFi radio is not blocked on your Raspberry Pi, execute the following command:
 
 ```
-sudo rfkill unblock 0
+sudo rfkill unblock wlan
 ```
 
 This setting will be automatically restored at boot time. We will define an appropriate country code in the access point software configuration, next.
