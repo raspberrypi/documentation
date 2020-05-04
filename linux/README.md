@@ -31,6 +31,8 @@ Explanation of some fundamental Linux usage, and commands for getting around the
     - [rc.local](usage/rc-local.md)
         - Configuration of initialisation
 - [Software](software/README.md)
+    - [libcamera](software/libcamera/README.md)
+        - Installing and using the libcamera software
     - [APT](software/apt.md)
         - Installing software with APT
     - [Python](software/python.md)
