@@ -111,6 +111,10 @@ If `disable_splash` is set to `1`, the rainbow splash screen will not be shown o
 
 On the Raspberry Pi 4B, if this value is set to `0` then the interrupts will be routed to the ARM cores using the legacy interrupt controller, rather than via the GIC-400. The default value is `1`.
 
+## force_eeprom_read
+
+Set this option to `0` to prevent the firmware from trying to read an I2C HAT EEPROM (connected to pins ID_SD & ID_SC) at powerup.
+
 ## os_prefix
 <a name="os_prefix"></a>
 
