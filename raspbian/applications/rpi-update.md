@@ -14,7 +14,7 @@ All the source data used by `rpi-update` comes from the Github repo https://gith
 
 ## Running `rpi-update`
 
-If you are sure that you need to use `rpi-update`, it is advisable to take a backup of your current system first as running `rpi-update` could result in a non-booting system.
+If you are sure that you need to use `rpi-update`, it is advisable to take a [backup](../../linux/filesystem/backup.md) of your current system first as running `rpi-update` could result in a non-booting system.
 
 `rpi-update` needs to be run as root. Once the update is complete you will need to reboot.
 
