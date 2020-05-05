@@ -195,7 +195,7 @@ vcgencmd otp_dump | grep 28: | sed s/.*://g
 ```
 
 ### Installation - firmware update
-Network boot is availble in the latest production bootloader (pieeprom-2020-04-16.bin). Previous beta/stable releases which supported network boot are still available but are deprecated.
+Network boot is available in the latest production bootloader (pieeprom-2020-04-16.bin). Previous beta/stable releases which supported network boot are still available but are deprecated.
 
 ```
 # Update the rpi-eeprom package                                                                                                 
