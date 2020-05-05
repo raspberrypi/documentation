@@ -17,6 +17,8 @@ Causes the content of the specified file to be inserted into the current file.
 
 For example, adding the line `include extraconfig.txt` to `config.txt` will include the content of `extraconfig.txt` file in the `config.txt` file.
 
+**Include directives are not supported by bootcode.bin or the EEPROM bootloader**
+
 ## max_usb_current
 
 **This command is now deprecated.** Originally certain models of Raspberry Pi limited the USB ports to a maximum of 600mA. Setting `max_usb_current=1` changed this default to 1200mA. However, all firmware now has this flag set by default, so it is no longer necessary to use this option.
