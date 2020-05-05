@@ -4,7 +4,7 @@
 
 **WARNING: Pre-release versions of software are not guaranteed to work. You should not use `rpi-update` on any system unless recommended to do so by a Raspberry Pi engineer. It may leave your system unreliable or even completely broken. It should not be used as part of any regular update process**
 
-The `rpi-update` script is supplied by a third party, `Hexxeh`, and the source can be found on Github at https://github.com/Hexxeh/rpi-update
+The `rpi-update` script is supplied by a third party, `Hexxeh`, and also supported by Raspberry Pi engineers. The script source can be found on Github at https://github.com/Hexxeh/rpi-update
 
 ## What it does
 
