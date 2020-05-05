@@ -27,7 +27,7 @@ The program does not restrict you to only copying to a card the same size as the
 
 The only restriction is that you cannot write to the internal SD card reader, as that would overwrite the OS you are actually running, which could break the installation completely.
 
-Note, everything on the destination card will be overwritten by the copy, so ensure you do not have any critical data on it before starting the copy.
+Note, everything on the destination card will be overwritten, so ensure you do not have any critical data on it before starting the copy.
 
 ## SD card image
 
