@@ -21,3 +21,4 @@ Raspbian is a community project under active development, with an emphasis on im
     - [vcgencmd](applications/vcgencmd.md)
     - [vcdbg](applications/vcdbg.md)
     - [tvservice](applications/tvservice.md)
+    - [rpi-update](applications/rpi-update.md)
