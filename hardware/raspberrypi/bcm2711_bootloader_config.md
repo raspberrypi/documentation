@@ -32,8 +32,8 @@ sudo rpi-eeprom-update -d -f ./pieeprom-new.bin
 sudo reboot
 ```
 
-## Configuration Items
-This section describes all the configuration items available in the bootloader.
+## Configuration Properties
+This section describes all the configuration items available in the bootloader. The syntax is the same as [config.txt](../../configuration/config-txt/) but the properties are specific to the bootloader. [Conditional filters](../../configuration/config-txt/conditional.md) are also supported except for EDID.
 
 ### BOOT_UART
 
@@ -75,42 +75,43 @@ BOOT_ORDER fields
 * 0x2 - NETWORK  
 
 Default: 0x00000001 (with 3 SD boot retries to match the current bootloader behaviour)  
+Version: pieeprom-2020-04-16.bin  
 
 ### SD_BOOT_MAX_RETRIES
 Specify the maximum number of times that the bootloader will retry booting from the SD card.  
 -1 means infinite retries  
 Default: 0  
-Version: stable/pieeprom-2020-01-17.bin  
+Version: pieeprom-2020-04-16.bin  
 
 ### NET_BOOT_MAX_RETRIES
 Specify the maximum number of times that the bootloader will retry network boot.  
 -1 means infinite retries  
 Default: 0  
-Version: stable/pieeprom-2020-01-17.bin  
+Version: pieeprom-2020-04-16.bin  
 
 ### DHCP_TIMEOUT
 The timeout in milliseconds for the entire DHCP sequence before failing the current iteration.  
 Default: 45000  
 Minimum: 5000  
-Version: stable/pieeprom-2020-01-17.bin  
+Version: pieeprom-2020-04-16.bin  
 
 ### DHCP_REQ_TIMEOUT
 The timeout in milliseconds before retrying DHCP DISCOVER or DHCP REQ.  
 Default: 4000  
 Minimum: 500  
-Version: stable/pieeprom-2020-01-17.bin  
+Version: pieeprom-2020-04-16.bin  
 
 ### TFTP_TIMEOUT
 The timeout in milliseconds for an individual file download via TFTP.  
 Default: 15000  
 Minimum: 5000  
-Version: stable/pieeprom-2020-01-17.bin  
+Version: pieeprom-2020-04-16.bin  
 
 ### TFTP_IP
 Optional dotted decimal ip address (e.g. "192.168.1.99") for the TFTP server which overrides the server-ip from the DHCP request.  
 This maybe useful on home networks because tftpd-hpa can be used instead of dnsmasq where broadband router is the DHCP server.
 Default: ""  
-Version: stable/pieeprom-2020-01-17.bin  
+Version: pieeprom-2020-04-16.bin  
 
 ### TFTP_PREFIX
 In order to support unique TFTP boot directories for each Pi the bootloader prefixes the filenames with a device specific directory. If neither start4.elf nor start.elf are found in the prefixed directory then the prefix is cleared.
@@ -120,17 +121,17 @@ On earlier models the serial number is used as the prefix, however, on Pi4 the M
 * 1 - Use the string specified by TFTP_PREFIX_STR
 * 2 - Use the MAC address e.g. "DC-A6-32-01-36-C2/"
 Default: 0  
-Version: stable/pieeprom-2020-01-17.bin  
+Version: pieeprom-2020-04-16.bin  
 
 ### TFTP_PREFIX_STR
 Specify the custom directory prefix string used when TFTP_PREFIX is set to 1. For example:- TFTP_PREFIX_STR=tftp_test/
 Default: ""  
-Version: stable/pieeprom-2020-01-17.bin  
+Version: pieeprom-2020-04-16.bin  
 
 ### PXE_OPTION43
 Overrides the PXE Option43 match string with a different string. It's normally better to apply customisations to the DHCP server than change the client behaviour but this option is provided in case that's not possible.
 Default: "Raspberry Pi Boot"  
-Version: stable/pieeprom-2020-03-19.bin  
+Version: pieeprom-2020-04-16.bin  
 
 ### DHCP_OPTION97
 In earlier releases the client GUID (Option97) was just the serial number repeated 4 times. By default, the new GUID format is
@@ -140,7 +141,7 @@ This is intended to be unique but also provide structured information to the DHC
 Specify DHCP_OPTION97=0 to revert the the old behaviour or a non-zero hex-value to specify a custom 4-byte prefix.
 
 Default: 0x34695052
-Version: stable/pieeprom-2020-03-19.bin  
+Version: pieeprom-2020-04-16.bin  
 
 ### Static IP address configuration
 If TFTP_IP and the following options are set then DHCP is skipped and the static IP configuration is applied. If the TFTP server is on the same subnet as the client then GATEWAY may be omitted.
@@ -148,24 +149,24 @@ If TFTP_IP and the following options are set then DHCP is skipped and the static
 #### CLIENT_IP
 The IP address of the client e.g. "192.168.0.32"
 Default: ""  
-Version: stable/pieeprom-2020-03-19.bin  
+Version: pieeprom-2020-04-16.bin  
 
 #### SUBNET
 The subnet address mask e.g. "255.255.255.0"
 Default: ""  
-Version: stable/pieeprom-2020-03-19.bin  
+Version: pieeprom-2020-04-16.bin  
 
 #### GATEWAY
 The gateway address to use if the TFTP server is on a differenet subnet e.g. "192.168.0.1"
 Default: ""  
-Version: stable/pieeprom-2020-03-19.bin  
+Version: pieeprom-2020-04-16.bin  
 
 ### DISABLE_HDMI
 Disables the [HDMI boot diagnostics](./boot_diagnostics.md) display if a fatal error is encountered. This may also be disabled by setting `disable_splash=1` in config.txt.
 
 N.B. By default, the HDMI diagnostics screen is automatically blanked after 2 minutes.
 Default: 0  
-Version: stable/pieeprom-2020-03-19.bin  
+Version: pieeprom-2020-04-16.bin  
 
 ### SELF_UPDATE
 Allows the bootloader to update itself instead of requiring recovery.bin. This is intended to make it easier to update the bootloader firmware via network boot. To enable set SELF_UPDATE=1 and add bootloader_update=1 in config.txt.
@@ -178,7 +179,7 @@ Since the updates files are in the same format as generated by rpi-eeprom-update
 **The bootloader only reads the configuration from the bootconf.txt in the EEPROM and not the one in the update files. Therefore, in order to enable SELF_UPDATE you have to first update the bootloader via the SD-CARD or FLASHROM.**
 
 Default: 0  
-Version: stable/pieeprom-2020-03-19.bin  
+Version: pieeprom-2020-04-16.bin  
 
 ## Network Boot
 ### Server configuration                                                    
@@ -194,24 +195,23 @@ vcgencmd otp_dump | grep 28: | sed s/.*://g
 ```
 
 ### Installation - firmware update
-Network boot functionality requires the 2020-02-13 Raspbian Buster release (or newer) and an updated bootloader. For advanced boot modes (USB, network) it is normally best to use the latest 'stable' bootloader.
+Network boot is available in the latest production bootloader (pieeprom-2020-04-16.bin). Previous beta/stable releases which supported network boot are still available but are deprecated.
 
 ```
 # Update the rpi-eeprom package                                                                                                 
 sudo apt update
 sudo apt upgrade
-                                                                          
-# Network boot is only available in the stable and beta releases.
-# Switch from critical updates to the stable release series.
-# As root:-
-echo FIRMWARE_RELEASE_STATUS="stable" > /etc/default/rpi-eeprom-update
+# Check the current version
+sudo rpi-eeprom-update     
+# Update to latest
+sudo rpi-eeprom-update     
 ```
 
 ### Enable network boot
 Network boot is not enabled by default in the bootloader. To enable it the bootloader configuration file must be edited.
 ```                                                                        
 # Extract the configuration file                                                                                                         
-cp /lib/firmware/raspberrypi/bootloader/stable/pieeprom-2020-01-17.bin pieeprom.bin                                                       
+cp /lib/firmware/raspberrypi/bootloader/critical/pieeprom-2020-04-16.bin pieeprom.bin                                                       
 rpi-eeprom-config pieeprom.bin > bootconf.txt                                                                          
 ```
 Change BOOT_ORDER to be 0x21 instead of 0x1. This tells the bootloader to try sd-card boot first and network boot second. You should normally include sd-card (0x1) in the boot sequence in-case of network failure.
