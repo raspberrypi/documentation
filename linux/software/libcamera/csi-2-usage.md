@@ -138,7 +138,7 @@ dtoverlay=adv728x=adv7280m=1
 
 *Toshiba TC358743 HDMI to CSI2 bridge*
 
-This is a HDM I to CSI-2 bridge chip, capable of converting video data at up to 1080p60. Although capable of 4 lane transfers, on the Raspberry only 2 lanes are used. 
+This is a HDMI to CSI-2 bridge chip, capable of converting video data at up to 1080p60. Although capable of 4 lane transfers, on the Raspberry only 2 lanes are used. 
 
 Information on this bridge chip can be found on the [Toshiba Website](https://toshiba.semicon-storage.com/ap-en/semiconductor/product/interface-bridge-ics-for-mobile-peripheral-devices/hdmir-interface-bridge-ics/detail.TC358743XBG.html)
 
