@@ -91,11 +91,11 @@ operation, and link frequency (often only one is supported). The IMX219 device t
 
 These are devices that convert an incoming video stream, for example HDMI or composite, into a CSI-2 stream that can be accepted by the Raspberry Pi CSI-2 receiver.
 
-Handling bridge chips is more complicated as unlike camera sensors they have to respond to the incoming signal and report that to the application. For example, with a camera sensor the application tells it what resolution to output. With a incoming video stream it is the stream itself that provides the resolution that must be passed on to the application. 
+Handling bridge chips is more complicated as unlike camera sensors they have to respond to the incoming signal and report that to the application.  
 
 The mechanisms for handling bridge chips can be broadly split into either analogue or digital. 
 
-When using `ioctls` in the sections below, an `_S_` in the `ioctl` name means it is a set function, whilst `_G_` is a get function.
+When using `ioctls` in the sections below, an `_S_` in the `ioctl` name means it is a set function, whilst `_G_` is a get function and `_ENUM` enumerates a set of permitted values. 
 
 #### Analogue video sources
 
@@ -105,7 +105,7 @@ Analogue video sources use the standard `ioctls` for detecting and setting video
 
 #### Digital video sources
 
-For digital video sources, such as HDMI, there is an alternate set of calls that allow specifying of all the digital timing parameters ([`VIDIOC_G_DV_TIMINGS`](https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-g-dv-timings.html), [`VIDIOC_S_DV_TIMINGS`](https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-g-dv-timings.html), [`VIDIOC_ENUM_DV_TIMINGS`](https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-enum-dv-timings.html), and [`VIDIOC_QUERY_DV_TIMINGS`](https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-query-dv-timings.html) - links again). 
+For digital video sources, such as HDMI, there is an alternate set of calls that allow specifying of all the digital timing parameters ([`VIDIOC_G_DV_TIMINGS`](https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-g-dv-timings.html), [`VIDIOC_S_DV_TIMINGS`](https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-g-dv-timings.html), [`VIDIOC_ENUM_DV_TIMINGS`](https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-enum-dv-timings.html), and [`VIDIOC_QUERY_DV_TIMINGS`](https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-query-dv-timings.html)). 
 
 As with analogue bridges, the timings typically fix the V4L2 CAPTURE queue resolution, and calling `VIDIOC_S_DV_TIMINGS` with the result of `VIDIOC_QUERY_DV_TIMINGS` before streaming should ensure the format is correct.
 
@@ -124,16 +124,16 @@ Product details for the various versions of this chip can be found on the Analog
 
 [ADV7280A](https://www.analog.com/en/products/adv7280a.html), [ADV7281A](https://www.analog.com/en/products/adv7281a.html), [ADV7282A](https://www.analog.com/en/products/adv7282a.html)
 
-Because of some missing code in the current core V4L2 implementation, selecting the source fails, so the Raspberry Pi kerrnel version adds a kernel module parameter called `dbg_input` to the ADV7180 kernel driver which sets the input source every time VIDIOC_S_STD is called. At some point mainstream will fix the underlying issue (a disjoin between the kernel API call s_routing, and the userspace call `VIDIOC_S_INPUT`) and this modification will be removed.
+Because of some missing code in the current core V4L2 implementation, selecting the source fails, so the Raspberry Pi kernel version adds a kernel module parameter called `dbg_input` to the ADV7180 kernel driver which sets the input source every time VIDIOC_S_STD is called. At some point mainstream will fix the underlying issue (a disjoin between the kernel API call s_routing, and the userspace call `VIDIOC_S_INPUT`) and this modification will be removed.
 
 Please note that receiving interlaced video is not supported, therefore the ADV7281(A)-M version of the chip is of limited use as it doesn't have the necessary I2P deinterlacing block. Also ensure when selecting a device to specify the -M option. Without that you will get a parallel output bus which can not be interfaced to the Raspberry Pi.
 
 There are no known commercially available boards using these chips, but this driver has been tested via the Analog Devices [EVAL-ADV7282-M evaluation board](https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/EVAL-ADV7282A-M.html)
 
-This driver can be loaded using the `config.txt` dtoverlay entry `adv7282m`, or `adv728x` with a parameter of either `adv7280m=1`,`adv7281m=1`, or `adv7281ma=1` if you are not using the ADV7282-M chip variant. e.g.
+This driver can be loaded using the `config.txt` dtoverlay `adv7282m`, or `adv728x-m` with a parameter of either `adv7280m=1`,`adv7281m=1`, or `adv7281ma=1` if you are not using the ADV7282-M chip variant. e.g.
 
 ```
-dtoverlay=adv728x=adv7280m=1
+dtoverlay=adv728x-m,adv7280m=1
 ```
 
 *Toshiba TC358743 HDMI to CSI2 bridge*
