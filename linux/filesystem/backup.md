@@ -15,7 +15,7 @@ sudo tar czf pi_home.tar.gz pi
 
 This creates a tar archive called `pi_home.tar.gz` in `/home/`. You should copy this file to a USB stick or transfer it to another machine on your network.
 
-## SD card copier (Recommended)
+## SD card copier (recommended)
 
 The SD Card Copier application, which can be found on the `Accessories` menu of the Raspberry Pi Desktop, will copy Raspbian from one card to another. To use it, you will need a USB SD card writer.
 
