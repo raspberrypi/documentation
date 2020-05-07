@@ -131,7 +131,7 @@ See [**Choosing sources**](#choosing_sources) above for instructions on how to c
 
 To build the sources for cross-compilation, make sure you have the dependencies needed on your machine by executing:
 ```bash
-sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
+sudo apt install bc bison flex libssl-dev make libc6-dev libncurses5-dev
 ```
 If you find you need other things, please submit a pull request to change the documentation.
 
