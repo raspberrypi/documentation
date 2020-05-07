@@ -30,7 +30,7 @@ To download a different branch (again with no history), use the `--branch` optio
 git clone --depth=1 --branch <branch> https://github.com/raspberrypi/linux
 ```
 
-where `<branch>` is the name of the branch that you wish to downlaod.
+where `<branch>` is the name of the branch that you wish to download.
 
 Refer to the [original GitHub repository](https://github.com/raspberrypi/linux) for information about the available branches.
 
