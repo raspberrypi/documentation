@@ -22,7 +22,7 @@ This was an interim option before the V4L2 driver was available. The MMAL compon
 
 ### V4L2
 
-There is a fully open source kernel driver available for the Unicam block, this is a kernel module called bcm2835-unicam. This interfaces to V4L2 subdevice drivers for the source to deliver the raw frames. This bcm2835-unicam driver controls the sensor, and configures the CSI-2 receiver so that the peripheral will write the raw frames (after Debayer) to SDRAM for V4L2 to deliver to applications. Except for this ability to unpack the CSI-2 Bayer formats to 16bits/pixel, there is no image processing between the image source (e.g. camera sensor) and brcm2835-unicam placing the image data in SDRAM.
+There is a fully open source kernel driver available for the Unicam block; this is a kernel module called bcm2835-unicam. This interfaces to V4L2 subdevice drivers for the source to deliver the raw frames. This bcm2835-unicam driver controls the sensor, and configures the CSI-2 receiver so that the peripheral will write the raw frames (after Debayer) to SDRAM for V4L2 to deliver to applications. Except for this ability to unpack the CSI-2 Bayer formats to 16bits/pixel, there is no image processing between the image source (e.g. camera sensor) and brcm2835-unicam placing the image data in SDRAM.
 
 ```
 |------------------------|
@@ -56,13 +56,13 @@ Mainline Linux has a range of existing drivers. The Raspberry Pi kernel tree has
 
 As the subdevice driver is also a kernel driver, with a standardised API, 3rd parties are free to write their own for any source of their choosing. 
 
-## Developing a Third-Party driver for bcm2835-unicam
+## Developing a third-Party driver for bcm2835-unicam
 
 This is the recommended approach to interfacing via Unicam.
 
-When developing a driver for a new device intended to be used with the bcm2835-unicam module, you need the driver and corresponding device tree overlays. Ideally the driver should be submitted to the linux-media mailing list for code review and merging into mainline, then moved to the Raspberry Pi kernel tree, but exceptions may be made for the driver to be reviewed and merged directly to the Raspberry Pi kernel.
+When developing a driver for a new device intended to be used with the bcm2835-unicam module, you need the driver and corresponding device tree overlays. Ideally the driver should be submitted to the [linux-media](http://vger.kernel.org/vger-lists.html#linux-media) mailing list for code review and merging into mainline, then moved to the Raspberry Pi kernel tree, but exceptions may be made for the driver to be reviewed and merged directly to the Raspberry Pi kernel.
 
-Please note that the all kernel drivers are licenced under the GPLv2 licence, therefore source code **MUST** be available. Shipping of binary modules only is a violation of the GPLv2 licence under which the Linux kernel is licenced. 
+Please note that all kernel drivers are licenced under the GPLv2 licence, therefore source code **MUST** be available. Shipping of binary modules only is a violation of the GPLv2 licence under which the Linux kernel is licenced. 
 
 The bcm2835-unicam has been written to try and accommodate all types of CSI-2 source driver as are currently found in the mainline Linux kernel. Broadly these can be split into camera sensors and bridge chips. Bridge chips allow for conversion between some other format and CSI-2.
 
@@ -81,7 +81,7 @@ Sensors generally support V4L2 user controls which are documented [here](https:/
 - `V4L2_CID_HFLIP / V4L2_CID_VFLIP`: flips the image either horizontally or vertically. Note that this operation may change the Bayer order of the data in the frame, as is the case on the imx219.
 - `V4L2_CID_TEST_PATTERN` / `V4L2_CID_TEST_PATTERN_*`: Enables output of various test patterns from the sensor. Useful for debugging.
 
-In the case of the IMX219, many of these controls map directly on to register writes to the sensor itself.
+In the case of the IMX219, many of these controls map directly onto register writes to the sensor itself.
 
 Device tree is used to select the sensor driver and configure
 parameters such as number of CSI-2 lanes, continuous clock lane
