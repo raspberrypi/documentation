@@ -15,32 +15,19 @@ sudo tar czf pi_home.tar.gz pi
 
 This creates a tar archive called `pi_home.tar.gz` in `/home/`. You should copy this file to a USB stick or transfer it to another machine on your network.
 
-## MySQL
+## SD card copier (recommended)
 
-If you have MySQL databases running on your Raspberry Pi, it would be wise to keep them backed up too. To back up a single database, use the `mysqldump` command:
+The SD Card Copier application, which can be found on the `Accessories` menu of the Raspberry Pi Desktop, will copy Raspbian from one card to another. To use it, you will need a USB SD card writer.
 
-```bash
-mysqldump recipes > recipes.sql
-```
+To back up your existing Raspbian installation, put a blank SD card in your USB card writer and plug it into your Pi, and then launch SD Card Copier. In the ‘Copy From Device’ box, select the internal SD Card. This could have a number of different names, and may have something like `(/dev/mmcblk0)` in its entry, but will usually be the first item in the list. Then select the USB card writer in the ‘Copy To Device’ box (where it will probably be the only device listed). Press ‘Start’. The copy, depending on the size of the SD card, can take ten or fifteen minutes, and when complete you should have a clone of your current installation on the new SD card. You can test it by putting the newly-copied card into the Pi’s SD card slot and booting it; it should boot and look exactly the same as your original installation, with all your data and applications intact.
 
-This command will back up the `recipes` database to the file `recipes.sql`. Note that, in this case, no username and password have been supplied to the `mysqldump` command. If you don't have your MySQL credentials in a `.my.cnf` configuration file in your home folder, then supply the username and password with flags:
+You can run directly from the backup, but if you want to recover your original card from your backup, simply reverse the process – boot your Pi from the backup card, put the card to which you want to restore into the SD card writer, and repeat the process above.
 
-```bash
-mysqldump -uroot -ppass recipes > recipes.sql
-```
+The program does not restrict you to only copying to a card the same size as the source; you can copy to a larger card if you are running out of space on your existing one, or even to a smaller card (as long as it has enough space to store all your files – the program will warn you if there isn’t enough space). It has been designed to work with Raspbian and NOOBS images; it may work with other OSes or custom card formats, but this is not guaranteed.
 
-To restore a MySQL database from a dumpfile, pipe the dumpfile into the `mysql` command. Provide credentials, if necessary, and the database name. Note that the database must exist, so create it first:
+The only restriction is that you cannot write to the internal SD card reader, as that would overwrite the OS you are actually running, which could break the installation completely.
 
-```bash
-mysql -Bse "create database recipes"
-cat recipes.sql | mysql recipes
-```
-
-Alternatively, you can use the `pv` command to see a progress meter as the dumpfile is processed by MySQL. This is not installed by default, so install with `sudo apt install pv`. This command is useful for large files:
-
-```bash
-pv recipes.sql | mysql recipes
-```
+Note, everything on the destination card will be overwritten, so ensure you do not have any critical data on it before starting the copy.
 
 ## SD card image
 
@@ -73,6 +60,34 @@ gunzip --stdout raspbian.img.gz | sudo dd bs=4M of=/dev/sdb
 If you are using a Mac, the commands used are almost exactly the same, but `4M` in the above examples should be replaced with `4m`, with a lower case letter.
 
 See more about [installing SD card images](../../installation/installing-images/README.md).
+
+## MySQL
+
+If you have MySQL databases running on your Raspberry Pi, it would be wise to keep them backed up too. To back up a single database, use the `mysqldump` command:
+
+```bash
+mysqldump recipes > recipes.sql
+```
+
+This command will back up the `recipes` database to the file `recipes.sql`. Note that, in this case, no username and password have been supplied to the `mysqldump` command. If you don't have your MySQL credentials in a `.my.cnf` configuration file in your home folder, then supply the username and password with flags:
+
+```bash
+mysqldump -uroot -ppass recipes > recipes.sql
+```
+
+To restore a MySQL database from a dumpfile, pipe the dumpfile into the `mysql` command. Provide credentials, if necessary, and the database name. Note that the database must exist, so create it first:
+
+```bash
+mysql -Bse "create database recipes"
+cat recipes.sql | mysql recipes
+```
+
+Alternatively, you can use the `pv` command to see a progress meter as the dumpfile is processed by MySQL. This is not installed by default, so install with `sudo apt install pv`. This command is useful for large files:
+
+```bash
+pv recipes.sql | mysql recipes
+```
+
 
 ## Automation
 
