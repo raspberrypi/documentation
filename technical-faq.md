@@ -8,7 +8,7 @@ Probably the most frequently asked question! We have full instructions for setti
 
 ### What differences are there in the GPU between different models?
 
-All of the Raspberry Pi models use the same GPU, the VideoCore IV. Since the GPU provides the camera and display interfaces, codecs, 2D/3D graphics, etc., this means all Raspberry Pis have the same capabilities. The real difference between models is the type of ARM core used, and the additional peripherals that are attached, e.g. connectivity, USB ports, etc.
+All of the Raspberry Pi models use the same GPU, the VideoCore 4. Since the GPU provides the camera and display interfaces, codecs, 2D/3D graphics, etc., this means all Raspberry Pis have the same capabilities. The real difference between models is the type of ARM core used, and the additional peripherals that are attached, e.g. connectivity, USB ports, etc.
 
 ### Why does my Pi run at a slower clock speed that advertised?
 
