@@ -2,8 +2,7 @@
 
 The SoC's used on the Raspberry Pi range all have two camera interfaces that support either CSI-2 D-PHY 1.1 or CCP2 (Compact Camera Port 2) sources. This interface is known by the codename "Unicam". The first instance of Unicam supports 2 CSI-2 data lanes, whilst the second supports 4. Each lane can run at up to 1Gbit/s (DDR, so the max link frequency is 500MHz).
 
-However, the normal variants of the Raspberry Pi only expose the second instance, and route out *only* 2 of the data lanes to the camera connector. The
-Compute Module range route out all lanes from both peripherals.
+However, the normal variants of the Raspberry Pi only expose the second instance, and route out *only* 2 of the data lanes to the camera connector. The Compute Module range route out all lanes from both peripherals.
 
 ## Software Interfaces 
 
@@ -22,11 +21,11 @@ This was an interim option before the V4L2 driver was available. The MMAL compon
 
 ### V4L2
 
-There is a fully open source kernel driver available for the Unicam block; this is a kernel module called bcm2835-unicam. This interfaces to V4L2 subdevice drivers for the source to deliver the raw frames. This bcm2835-unicam driver controls the sensor, and configures the CSI-2 receiver so that the peripheral will write the raw frames (after Debayer) to SDRAM for V4L2 to deliver to applications. Except for this ability to unpack the CSI-2 Bayer formats to 16bits/pixel, there is no image processing between the image source (e.g. camera sensor) and brcm2835-unicam placing the image data in SDRAM.
+There is a fully open source kernel driver available for the Unicam block; this is a kernel module called bcm2835-unicam. This interfaces to V4L2 subdevice drivers for the source to deliver the raw frames. This bcm2835-unicam driver controls the sensor, and configures the CSI-2 receiver so that the peripheral will write the raw frames (after Debayer) to SDRAM for V4L2 to deliver to applications. Except for this ability to unpack the CSI-2 Bayer formats to 16bits/pixel, there is no image processing between the image source (e.g. camera sensor) and bcm2835-unicam placing the image data in SDRAM.
 
 ```
 |------------------------|
-|  brcm2835-unicam       |
+|     bcm2835-unicam     |
 |------------------------|
      ^             |
      |      |-------------|
@@ -56,13 +55,13 @@ Mainline Linux has a range of existing drivers. The Raspberry Pi kernel tree has
 
 As the subdevice driver is also a kernel driver, with a standardised API, 3rd parties are free to write their own for any source of their choosing. 
 
-## Developing a third-Party driver for bcm2835-unicam
+## Developing a third-party driver for bcm2835-unicam
 
 This is the recommended approach to interfacing via Unicam.
 
-When developing a driver for a new device intended to be used with the bcm2835-unicam module, you need the driver and corresponding device tree overlays. Ideally the driver should be submitted to the [linux-media](http://vger.kernel.org/vger-lists.html#linux-media) mailing list for code review and merging into mainline, then moved to the Raspberry Pi kernel tree, but exceptions may be made for the driver to be reviewed and merged directly to the Raspberry Pi kernel.
+When developing a driver for a new device intended to be used with the bcm2835-unicam module, you need the driver and corresponding device tree overlays. Ideally the driver should be submitted to the [linux-media](http://vger.kernel.org/vger-lists.html#linux-media) mailing list for code review and merging into mainline, then moved to the [Raspberry Pi kernel tree](https://github.com/raspberrypi/linux), but exceptions may be made for the driver to be reviewed and merged directly to the Raspberry Pi kernel.
 
-Please note that all kernel drivers are licenced under the GPLv2 licence, therefore source code **MUST** be available. Shipping of binary modules only is a violation of the GPLv2 licence under which the Linux kernel is licenced. 
+Please note that all kernel drivers are licensed under the GPLv2 license, therefore source code **MUST** be available. Shipping of binary modules only is a violation of the GPLv2 license under which the Linux kernel is licensed. 
 
 The bcm2835-unicam has been written to try and accommodate all types of CSI-2 source driver as are currently found in the mainline Linux kernel. Broadly these can be split into camera sensors and bridge chips. Bridge chips allow for conversion between some other format and CSI-2.
 
@@ -91,7 +90,7 @@ operation, and link frequency (often only one is supported). The IMX219 device t
 
 These are devices that convert an incoming video stream, for example HDMI or composite, into a CSI-2 stream that can be accepted by the Raspberry Pi CSI-2 receiver.
 
-Handling bridge chips is more complicated as unlike camera sensors they have to respond to the incoming signal and report that to the application.  
+Handling bridge chips is more complicated, as unlike camera sensors they have to respond to the incoming signal and report that to the application.  
 
 The mechanisms for handling bridge chips can be broadly split into either analogue or digital. 
 
@@ -130,8 +129,7 @@ Please note that receiving interlaced video is not supported, therefore the ADV7
 
 There are no known commercially available boards using these chips, but this driver has been tested via the Analog Devices [EVAL-ADV7282-M evaluation board](https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/EVAL-ADV7282A-M.html)
 
-This driver can be loaded using the `config.txt` dtoverlay `adv7282m`, or `adv728x-m` with a parameter of either `adv7280m=1`,`adv7281m=1`, or `adv7281ma=1` if you are not using the ADV7282-M chip variant. e.g.
-
+This driver can be loaded using the `config.txt` dtoverlay `adv7282m` if you are using the `ADV7282-M` chip variant; or `adv728x-m` with a parameter of either `adv7280m=1`, `adv7281m=1`, or `adv7281ma=1` if you are using a different variant. e.g.
 ```
 dtoverlay=adv728x-m,adv7280m=1
 ```
