@@ -8,7 +8,7 @@ Probably the most frequently asked question! We have full instructions for setti
 
 ### What differences are there in the GPU between different models?
 
-All of the Raspberry Pi models use the same GPU, the VideoCore 4. Since the GPU provides the camera and display interfaces, codecs, 2D/3D graphics, etc., this means all Raspberry Pis have the same capabilities. The real difference between models is the type of ARM core used, and the additional peripherals that are attached, e.g. connectivity, USB ports, etc.
+All of the Raspberry Pi models use the same GPU, the Videocore4. Since the GPU provides the camera and display interfaces, codecs, 2D/3D graphics, etc., this means all Raspberry Pis have the same capabilities. The real difference between models is the type of ARM core used, and the additional peripherals that are attached, e.g. connectivity, USB ports, etc.
 
 ### Why does my Pi run at a slower clock speed that advertised?
 
@@ -32,7 +32,7 @@ Although the Ethernet chip on the Raspberry Pi 3B+ is gigabit-capable, the conne
 
 ### The processors on the latest Pi models are 64-bit, but I cannot find an official 64-bit OS.
 
-Raspberry Pi do not current provide an official 64-bit OS, for a number of reasons. Firstly, since we still sell devices that are 32-bit, we would need to support two separate distributions, and at the moment we do not have the support capacity. Secondly, building a full 64-bit OS would require a considerable amount of work to, for example, fix the interfacing to the 32-bit VideoCore GPU. There are third-party 64-bit operating systems available, but they do not have the full support for the GPU that would be a requirement for an official release. 
+Raspberry Pi do not current provide an official 64-bit OS, for a number of reasons. Firstly, since we still sell devices that are 32-bit, we would need to support two separate distributions, and at the moment we do not have the support capacity. Secondly, building a full 64-bit OS would require a considerable amount of work to, for example, fix the interfacing to the 32-bit Videocore GPU. There are third-party 64-bit operating systems available, but they do not have the full support for the GPU that would be a requirement for an official release. 
 
 ### What voltage devices can I attach to the GPIO pins, and how much current can I pull?
 
