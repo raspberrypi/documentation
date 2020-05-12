@@ -99,6 +99,14 @@ also a Debian distribution, it means many aspects are similar, such as the comma
 
 You can either do this using VirtualBox (or VMWare) on Windows, or install it directly onto your computer. For reference, you can follow instructions online [at Wikihow](http://www.wikihow.com/Install-Ubuntu-on-VirtualBox).
 
+### Install required dependencies
+
+To build the sources for cross-compilation, make sure you have the dependencies needed on your machine by executing:
+```bash
+sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
+```
+If you find you need other things, please submit a pull request to change the documentation.
+
 ### Install toolchain
 
 Use the following command to download the toolchain to the home folder:
@@ -128,12 +136,6 @@ git clone --depth=1 https://github.com/raspberrypi/linux
 See [**Choosing sources**](#choosing_sources) above for instructions on how to choose a different branch.
 
 ### Build sources
-
-To build the sources for cross-compilation, make sure you have the dependencies needed on your machine by executing:
-```bash
-sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
-```
-If you find you need other things, please submit a pull request to change the documentation.
 
 Enter the following commands to build the sources and Device Tree files:
 
