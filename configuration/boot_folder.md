@@ -51,12 +51,12 @@ There are various Device Tree blob files, which have the extension `.dtb`. These
 
 The boot folder will contain various [kernel](../linux/kernel/README.md) image files, used for the different Raspberry Pi models:
 
-| Filename | Processor | Raspberry Model | Notes |
+| Filename | Processor | Raspberry Pi model | Notes |
 | ---------| ----------|-----------------|-------|
-| kernel.img | BCM2835 | Pi 0, Pi 1 | |
-| kernel7.img| BCM2836, BCM2837 | Pi2's, Pi3 | Later Pi2's used the BCM2837 |
-| kernel7l.img | BCM2711 | Pi 4 | Large Physical Address Extension |
-| kernel8.img  | BCM2836, BCM2837, BCM2711 | Pi2/3/4 | Beta 64 bit kernel<sup>1</sup> |
+| kernel.img | BCM2835 | Pi Zero, Pi 1 | |
+| kernel7.img| BCM2836, BCM2837 | Pi 2, Pi 3 | Later Pi 2 uses the BCM2837 |
+| kernel7l.img | BCM2711 | Pi 4 | Large Physical Address Extension (LPAE)|
+| kernel8.img  | BCM2837, BCM2711 | Pi 2, Pi 3, Pi 4 | Beta 64 bit kernel<sup>1</sup>. Earlier Pi 2 with BCM2836 do not support 64-bit. |
 
 <sup>1</sup> Information on booting a 64-bit kernel can be found [here](config-txt/boot.md).
 
