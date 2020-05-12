@@ -199,7 +199,7 @@ Enable/disable the experimental OpenGL Fake KMS desktop graphics driver.
 <a name="legacy"></a>
 ##### Legacy
 
-Enable/disable the original legacy non-GL videocore desktop graphics driver.
+Enable/disable the original legacy non-GL VideoCore desktop graphics driver.
 
 <a name="update"></a>
 #### Update
