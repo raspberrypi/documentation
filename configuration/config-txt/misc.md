@@ -9,7 +9,7 @@ The [warning symbols](../warning-icons.md) can be disabled using this option, al
 
 ## logging_level
 
-Sets the Videocore logging level. The value is a Videocore-specific bitmask.
+Sets the VideoCore logging level. The value is a VideoCore-specific bitmask.
 
 ## include
 
