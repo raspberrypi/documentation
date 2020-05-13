@@ -2,9 +2,9 @@
 
 ## start_file, fixup_file
 
-These options specify the firmware files transferred to the Videocore GPU prior to booting.
+These options specify the firmware files transferred to the VideoCore GPU prior to booting.
 
-`start_file` specifies the Videocore (VC4) firmware file to use.
+`start_file` specifies the VideoCore firmware file to use.
 `fixup_file` specifies the file used to fix up memory locations used in the `start_file` to match the GPU memory split. Note that the `start_file` and the `fixup_file` are a matched pair - using unmatched files will stop the board from booting. This is an advanced option, so we advise that you use `start_x` and `start_debug` rather than this option.
 
 ## start_x, start_debug
