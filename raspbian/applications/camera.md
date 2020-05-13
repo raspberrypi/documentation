@@ -246,10 +246,18 @@ Allows the specification of the area of the sensor to be used as the source for 
 ```
 
 ```
-	--shutter,	-ss		Set shutter speed
+	--shutter,	-ss		Set shutter speed/time
 ```
 
-Sets the shutter speed to the specified value (in microseconds). On Camera Module v1 there is an upper limit of approximately 6000000us (6000ms, 6s), and 10000000us (10000ms, 10s) on Camera Module v2, past which operation is undefined. On the HQ Camera exposure times can be up to 200000000us (200000ms, 200s)
+Sets the shutter open time to the specified value (in microseconds). Shutter speed limits are as follows:
+
+| Camera Version | Max (s) |  Max (microseconds) |
+|----------------|:-------:| :-----------:  | 
+| V1 (OV5647)    | 6       | 6000000        |
+| V2 (IMX219)    | 10      | 10000000       |
+| HQ (IMX477)    | 200     | 200000000      |
+
+Using values outside these ranges will result in undefined behaviour.
 
 ```
 	--drc,	-drc		Enable/disable dynamic range compression
