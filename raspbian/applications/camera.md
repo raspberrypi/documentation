@@ -251,13 +251,13 @@ Allows the specification of the area of the sensor to be used as the source for 
 
 Sets the shutter open time to the specified value (in microseconds). Shutter speed limits are as follows:
 
-| Camera Version | Max (s) |  Max (microseconds) |
-|----------------|:-------:| :-----------:  | 
-| V1 (OV5647)    | 6       | 6000000        |
-| V2 (IMX219)    | 10      | 10000000       |
-| HQ (IMX477)    | 200     | 200000000      |
+| Camera Version | Max (microseconds)   |
+|----------------|:--------------------:| 
+| V1 (OV5647)    | 6000000 (i.e. 6s)    |
+| V2 (IMX219)    | 10000000 (i.e. 10s)  |
+| HQ (IMX477)    | 200000000 (i.e. 200s)|
 
-Using values outside these ranges will result in undefined behaviour.
+Using values above these maximums will result in undefined behaviour.
 
 ```
 	--drc,	-drc		Enable/disable dynamic range compression
