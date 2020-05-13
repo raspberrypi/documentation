@@ -249,7 +249,7 @@ Allows the specification of the area of the sensor to be used as the source for 
 	--shutter,	-ss		Set shutter speed
 ```
 
-Sets the shutter speed to the specified value (in microseconds). On Camera Module v1 and v2 there is an upper limit of approximately 6000000us (6000ms, 6s), past which operation is undefined. On the HQ Camera exposure times can be up to 200000000us (200000ms, 200s)
+Sets the shutter speed to the specified value (in microseconds). On Camera Module v1 there is an upper limit of approximately 6000000us (6000ms, 6s), and 10000000us (10000ms, 10s) on Camera Module v2, past which operation is undefined. On the HQ Camera exposure times can be up to 200000000us (200000ms, 200s)
 
 ```
 	--drc,	-drc		Enable/disable dynamic range compression
@@ -286,7 +286,7 @@ Sets the analog gain value directly on the sensor (floating point value from 1.0
 	--digitalgain,	-dg
 ```
 
-Sets the digital gain value applied by the ISP (floating point value from 1.0 to 255.0, but values over about 4.0 will produce overexposed images)
+Sets the digital gain value applied by the ISP (floating point value from 1.0 to 64.0, but values over about 4.0 will produce overexposed images)
 
 ```
 	--mode,	-md
