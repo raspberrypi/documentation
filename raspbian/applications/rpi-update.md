@@ -33,3 +33,4 @@ If you have done an `rpi-update` and things are not working as you wish, if your
 sudo apt-get update
 sudo apt install --reinstall libraspberrypi0 libraspberrypi-{bin,dev,doc} raspberrypi-bootloader raspberrypi-kernel
 ```
+You will need to reboot your Raspberry Pi for these changes to take effect. 
