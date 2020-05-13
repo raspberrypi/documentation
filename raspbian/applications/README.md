@@ -13,3 +13,5 @@
     - Information on the vcdbg application, used to recover debugging information from the VideoCore GPU.
 - [tvservice](tvservice.md)
     - Command line application for getting and setting information about the attached display/audio devices. 
+- [rpi-update](rpi-update.md)
+    - Command line application for updating to pre-release and beta software.
