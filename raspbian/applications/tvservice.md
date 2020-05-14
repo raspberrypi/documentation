@@ -36,7 +36,7 @@ Power on the SDTV (composite output) with the specified mode, `PAL` or `NSTC`, a
 
 #### -m, --modes=Group
 
-where Group is `CVT` or `DMT`.
+where Group is `CEA` or `DMT`.
 
 Shows a list of display modes available in the specified group.
 
