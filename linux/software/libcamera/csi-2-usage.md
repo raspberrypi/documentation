@@ -61,7 +61,7 @@ This is the recommended approach to interfacing via Unicam.
 
 When developing a driver for a new device intended to be used with the bcm2835-unicam module, you need the driver and corresponding device tree overlays. Ideally the driver should be submitted to the [linux-media](http://vger.kernel.org/vger-lists.html#linux-media) mailing list for code review and merging into mainline, then moved to the [Raspberry Pi kernel tree](https://github.com/raspberrypi/linux), but exceptions may be made for the driver to be reviewed and merged directly to the Raspberry Pi kernel.
 
-Please note that all kernel drivers are licensed under the GPLv2 license, therefore source code **MUST** be available. Shipping of binary modules only is a violation of the GPLv2 license under which the Linux kernel is licensed. 
+Please note that all kernel drivers are licensed under the GPLv2 licence, therefore source code **MUST** be available. Shipping of binary modules only is a violation of the GPLv2 licence under which the Linux kernel is licensed. 
 
 The bcm2835-unicam has been written to try and accommodate all types of CSI-2 source driver as are currently found in the mainline Linux kernel. Broadly these can be split into camera sensors and bridge chips. Bridge chips allow for conversion between some other format and CSI-2.
 
