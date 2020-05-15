@@ -45,7 +45,7 @@ sudo pip3 install pyyaml
 We can now check out the code and configure the build for the Raspberry Pi as follows.
 
 ```bash
-git clone -b raspberrypi git://linuxtv.org/libcamera.git
+git clone git://linuxtv.org/libcamera.git
 cd libcamera
 ```
 
