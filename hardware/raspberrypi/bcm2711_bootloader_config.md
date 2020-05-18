@@ -65,7 +65,7 @@ Version: All
 ### BOOT_ORDER
 The BOOT_ORDER setting allows flexible configuration for the priority of different bootmodes. It is represented as 32bit unsigned integer where each nibble represents a bootmode. The bootmodes are attempted in lowest significant nibble to highest significant nibble order.
 
-E.g. 0x21 means try SD first followed by network boot then stop. Where as 0x2 would mean try network boot and then stop without trying to boot from the SD card.
+E.g. 0x21 means try SD first followed by network boot then stop. Whereas 0x2 would mean try network boot and then stop without trying to boot from the SD card.
 
 The retry counters are reset when switching to the next boot mode.
 
