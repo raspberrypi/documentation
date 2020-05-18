@@ -70,12 +70,12 @@ E.g. 0x21 means try SD first followed by network boot then stop. Where as 0x2 wo
 The retry counters are reset when switching to the next boot mode.
 
 BOOT_ORDER fields  
-The BOOT_ORDER field defines sequence for the different boot modes. It is read right to left and up to 8 digits may be defined.
+The BOOT_ORDER field defines the sequence for the different boot modes. It is read right to left and up to 8 digits may be defined.
 
 * 0x0 - NONE (stop with error pattern)  
 * 0x1 - SD CARD  
 * 0x2 - NETWORK  
-* 0x3 - USB device boot (usbboot)[https://github.com/raspberrypi/usbboot] - compute module only.
+* 0x3 - USB device boot (usbboot)[https://github.com/raspberrypi/usbboot] - Compute Module only.
 * 0x4 - USB mass storage boot
 * 0xf - RESTART (loop) - start again with the first boot order field.
 
@@ -208,7 +208,7 @@ Previously this property was only checked by the rpi-eeprom-update script. Howev
 Default: 0  
 Version: pieeprom-2020-05-15.bin - BETA  
 
-## BOOT_LOAD_FLAGS
+### BOOT_LOAD_FLAGS
 Experimental field for custom firmware (bare metal)
 
 Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any compatiblity checks (e.g. is USB MSD boot supported) and resets PCIe before starting the executable. 
@@ -311,13 +311,13 @@ vcgencmd bootloader_config
 ```
 
 ### Create a bootable USB drive
-* Use the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to flash Raspbian to a USB mass storage device. Other operating have not been tested and may require updates to u-boot. One reason for having a public beta is to help get USB MSD boot support into other distros.
+* Use the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to flash Raspbian to a USB mass storage device. Other distros have not been tested and may require updates (e.g. u-boot). One reason for having a public beta is to help get USB MSD boot support into other distros.
 * Download the updated firmware files `*.elf *.dat` from the `msd-boot` branch of the [Raspberry Pi Firmware](https://github.com/raspberrypi/firmware) Github repo. 
 * Alternatively use `rpi-update branch=msd-boot` to update the firmware on a Raspbian SD card install and copy the files from there.
 * Copy these updates to the boot partition on the USB device. From now on `rpi-update branch=msd-boot` can be used from within Raspbian on the USB boot device.
 
 ### USB device compatiblity
-This no explicit set of supported or not supported devices. Initially we recommend using a USB pen drive os SSD. Hard drives will probably require a powered HUB and in all cases you should verify that the devices work correctly from within Raspbian from an SD card boot first.
+This no explicit set of supported devices. Initially we recommend using a USB pen drive or SSD. Hard drives will probably require a powered HUB and in all cases you should verify that the devices work correctly from within Raspbian using an SD card boot.
 
 Please post interoperability reports (positive or negative) on the Raspberry Pi forums. 
 
