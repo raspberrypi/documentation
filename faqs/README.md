@@ -141,7 +141,7 @@ The following prices are exclusive of any local taxes and shipping/handling fees
 
 ### What do I get when I buy one?
 
-You get the Raspberry Pi board itself. The [official power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/) and an SD card are not included, but they can be purchased at the same time from most places that sell the Raspberry Pi. You can also purchase pre-loaded SD cards; we recommend buying these from us or our licensed distributors rather than from third parties, as our software is updated regularly and cards sold by third parties can quickly become outdated.
+You get the Raspberry Pi board itself. The [official power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/) and an SD card are not included, but they can be purchased at the same time from most places that sell the Raspberry Pi. You can also purchase pre-loaded SD cards; we recommend buying these from us or our licenced distributors rather than from third parties, as our software is updated regularly and cards sold by third parties can quickly become outdated.
 
 An official case for the Raspberry Pi is available separately [from our distributors](https://www.raspberrypi.org/products/). There are also lots of home-brew case discussions on the forum, as well as several third-party cases available. There are also loads of awesome [3D-printable cases](https://www.raspberrypi.org/blog/3d-printed-raspberry-pi-cases/) that community members have designed.
 
