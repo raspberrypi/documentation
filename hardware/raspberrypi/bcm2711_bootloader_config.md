@@ -70,7 +70,7 @@ E.g. 0x21 means try SD first followed by network boot then stop. Where as 0x2 wo
 The retry counters are reset when switching to the next boot mode.
 
 BOOT_ORDER fields  
-The BOOT_ORDER field defines the sequence for the different boot modes. It is read right to left and up to 8 digits may be defined.
+The BOOT_ORDER property defines the sequence for the different boot modes. It is read right to left and up to 8 digits may be defined.
 
 * 0x0 - NONE (stop with error pattern)  
 * 0x1 - SD CARD  
@@ -125,6 +125,7 @@ Version: pieeprom-2020-04-16.bin
 ### TFTP_IP
 Optional dotted decimal ip address (e.g. "192.168.1.99") for the TFTP server which overrides the server-ip from the DHCP request.  
 This maybe useful on home networks because tftpd-hpa can be used instead of dnsmasq where broadband router is the DHCP server.
+
 Default: ""  
 Version: pieeprom-2020-04-16.bin  
 
@@ -135,6 +136,7 @@ On earlier models the serial number is used as the prefix, however, on Pi 4 the 
 * 0 - Use the serial number e.g. "9ffefdef/"
 * 1 - Use the string specified by TFTP_PREFIX_STR
 * 2 - Use the MAC address e.g. "DC-A6-32-01-36-C2/"
+
 Default: 0  
 Version: pieeprom-2020-04-16.bin  
 
@@ -155,7 +157,7 @@ This is intended to be unique but also provide structured information to the DHC
 
 Specify DHCP_OPTION97=0 to revert the the old behaviour or a non-zero hex-value to specify a custom 4-byte prefix.
 
-Default: 0x34695052
+Default: 0x34695052  
 Version: pieeprom-2020-04-16.bin  
 
 ### Static IP address configuration
@@ -203,13 +205,13 @@ Version: pieeprom-2020-04-16.bin
 The `SELF_UPDATE` EEPROM property and `bootloader_update` config.txt property are now enabled by default so that `rpi-eeprom-update` may be used without requiring extra customization. Setting either of these parameters to zero prevents self-updates.
 
 ### FREEZE_VERSION
-Previously this property was only checked by the rpi-eeprom-update script. However, now that self-update is enabled the bootloader will also check this field. If set, this overrides `SELF_UPDATE` to stop automatic updates. To disable `FREEZE_VERSION` you will have to use an SD card boot with recovery.bin.
+Previously this property was only checked by the rpi-eeprom-update script. However, now that self-update is enabled the bootloader will also check this property. If set, this overrides `SELF_UPDATE` to stop automatic updates. To disable `FREEZE_VERSION` you will have to use an SD card boot with recovery.bin.
 
 Default: 0  
 Version: pieeprom-2020-05-15.bin - BETA  
 
 ### BOOT_LOAD_FLAGS
-Experimental field for custom firmware (bare metal)
+Experimental property for custom firmware (bare metal).
 
 Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any compatiblity checks (e.g. is USB MSD boot supported) and resets PCIe before starting the executable. 
 
@@ -345,7 +347,7 @@ Default:  2000 (2 seconds)
 Version: pieeprom-2020-05-15.bin - BETA  
 
 ### XHCI_DEBUG
-This bit field controls the verbosity of USB trace messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use NET_CONSOLE
+This property is a bit field which controls the verbosity of USB trace messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use NET_CONSOLE
 
 * Bit 0 - USB descriptors
 * Bit 1 - Mass storage mode state machine 
