@@ -326,8 +326,8 @@ Please post interoperability reports (positive or negative) on the Raspberry Pi 
 A list of up to 4 VID/PID pairs specifying devices which the bootloader should ignore. If this matches a HUB then the HUB won’t be enumerated causing all downstream devices to be excluded.
 This is intended to allow problematic (e.g. very slow to enumerate) devices to be ignored during boot enumeration. This is specific to the bootloader and is not passed to the OS.
 
-The format is a comma separated list of hexadecimal values with the VID as most significant nibble. Spaces are not allowed.
-E.g. `0347000a0,0a4231234`
+The format is a comma-separated list of hexadecimal values with the VID as most significant nibble. Spaces are not allowed.
+E.g. `034700a0,a4231234`
 
 Default: “”  
 Version: pieeprom-2020-05-15.bin - BETA    
