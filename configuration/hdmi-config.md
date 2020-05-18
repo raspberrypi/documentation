@@ -19,7 +19,7 @@ HDMI has two common groups: CEA (Consumer Electronics Association, the standard 
 You can use the `tvservice` application on the command line to determine which modes are supported by your device, along with other useful data:
 
 + `tvservice -s` displays the current HDMI status, including mode and resolution
-+ `tvservice -m CVT` lists all supported CVT modes  
++ `tvservice -m CEA` lists all supported CEA modes  
 + `tvservice -m DMT` lists all supported DMT modes  
 
 If you are using a Pi 4 with more than one display attached, then `tvservice` needs to be told which device to ask for information. You can get display IDs for all attached devices by using: 
@@ -28,7 +28,7 @@ If you are using a Pi 4 with more than one display attached, then `tvservice` ne
 
 You can specify which display `tvservice` uses by adding `-v <display id>` to the `tvservice` command, e.g:
 
-+ `tvservice -v 7 -m CVT`, lists all supported CVT modes for display ID 7
++ `tvservice -v 7 -m CEA`, lists all supported CEA modes for display ID 7
 
 ### Setting a specific HDMI mode
 
