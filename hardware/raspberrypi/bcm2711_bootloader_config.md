@@ -339,7 +339,7 @@ Default: 20000 (20 seconds)
 Version: pieeprom-2020-05-15.bin - BETA  
 
 ### USB_MSD_LUN_TIMEOUT
-How long to wait in milliseconds before advancing to the next LUN e.g. a multi-slot SD-CARD reader. This is still being tweaked but may help speed up boot if old/slow devices are connected as well as fast USB-MSD device containing the OS.
+How long to wait in milliseconds before advancing to the next LUN e.g. a multi-slot SD-CARD reader. This is still being tweaked but may help speed up boot if old/slow devices are connected as well as a fast USB-MSD device containing the OS.
 
 Default:  2000 (2 seconds)  
 Version: pieeprom-2020-05-15.bin - BETA  
