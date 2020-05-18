@@ -315,7 +315,7 @@ vcgencmd bootloader_config
 * Download the updated firmware files `*.elf *.dat` from the `msd-boot` branch of the [Raspberry Pi Firmware](https://github.com/raspberrypi/firmware) Github repo. 
 * Alternatively use `rpi-update branch=msd-boot` to update the firmware on a Raspbian SD card install and copy the files from there.
 * Copy these updates to the boot partition on the USB device. From now on `rpi-update branch=msd-boot` can be used from within Raspbian on the USB boot device.
-* A Linux kernel updates is not required. Raspbian has been tested using the 4.19 and 5.4 (32 and 64 bit) kernel.
+* A Linux kernel update is not required. Raspbian has been tested using the 4.19 and 5.4 (32 and 64 bit) kernel.
 
 ### USB device compatiblity
 This no explicit set of supported devices. Initially we recommend using a USB pen drive or SSD. Hard drives will probably require a powered HUB and in all cases you should verify that the devices work correctly from within Raspbian using an SD card boot.
