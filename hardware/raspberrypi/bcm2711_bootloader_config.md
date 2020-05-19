@@ -314,9 +314,9 @@ vcgencmd bootloader_config
 
 ### Create a bootable USB drive
 * Use the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to flash Raspbian to a USB mass storage device. Other distros have not been tested and may require updates (e.g. u-boot). One reason for having a public beta is to help get USB MSD boot support into other distros.
-* Download the updated firmware files `*.elf *.dat` from the `msd-boot` branch of the [Raspberry Pi Firmware](https://github.com/raspberrypi/firmware) Github repo. 
-* Alternatively use `rpi-update branch=msd-boot` to update the firmware on a Raspbian SD card install and copy the files from there.
-* Copy these updates to the boot partition on the USB device. From now on `rpi-update branch=msd-boot` can be used from within Raspbian on the USB boot device.
+* Download the updated firmware files `*.elf *.dat` from the `master` branch of the [Raspberry Pi Firmware](https://github.com/raspberrypi/firmware) Github repo. 
+* Alternatively use `sudo rpi-update` to update the firmware on a Raspbian SD card install and copy the files from there.
+* Copy these updates to the boot partition on the USB device. From now on `sudo rpi-update` can be used from within Raspbian on the USB boot device.
 * A Linux kernel update is not required. Raspbian has been tested using the 4.19 and 5.4 (32 and 64 bit) kernel.
 
 ### USB device compatiblity
