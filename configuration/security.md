@@ -90,7 +90,7 @@ and change the `pi` entry (or whichever usernames have superuser rights) to:
 pi ALL=(ALL) PASSWD: ALL
 ```
 
-Now save the file.
+Then save the file: it will be checked for any syntax errors. If not errors were detected, the file will be saved and you will be returned to the shell prompt (`username@host:directory $`). If errors were detected, you will be asked 'what now?' - press enter/return and it will show a list of options. You will probably want to use '(e)dit sudoers file again,' so you can go in and see what the problem is.
 
 ## Ensure you have the latest security fixes
 
