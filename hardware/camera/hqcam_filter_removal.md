@@ -6,10 +6,16 @@ The High Quality Camera contains an IR filter, which is used to reduce the camer
 
 To remove the filter:
 1. Work in a clean and dust-free environment, as the sensor will be exposed to the air.
-1. Unscrew the two 1.5 mm hex lock keys on the underside of the main circuit board. Be careful not to let the washers roll away.
+![camera gasket](rpi_hq_cam_sensor.jpg)
+1. Unscrew the two 1.5 mm hex lock keys on the underside of the main circuit board. Be careful not to let the washers roll away. There is a gasket of slightly sticky material between the housing and PCB which will require some force to separate.
+![camera gasket](rpi_hq_cam_gasket.jpg)
 1. Lift up the board and place it down on a very clean surface. Make sure the sensor does not touch the surface.
 1. Before completing the next step, read through all of the steps and decide whether you are willing to void your warranty. **Do not proceed** unless you are sure that you are willing to void your warranty.
 1. Turn the lens around so that it is "looking" upwards and place it on a table. Using a pen top or similar soft plastic item, push down on the filter. The glue will break and the filter will detach from the lens mount.
+The filter is about 1.1mm thick, glued around the perimeter - if you apply a little isopropyl alcohol and a little heat (~20-30 C), then only apply force to the very edges where the glass attaches to the aluminium - this can be done without breaking the filter.
+![camera ir filter](rpi_hq_cam_ir_filter.jpg)
+1. Given that changing lenses will expose the sensor, at this point you can glue in a clear filter (OHP plastic) to minimize the chance of dust entering the sensor cavity.
+![camera gasket](rpi_hq_cam_clear_filter.jpg)
 1. Replace the main housing over the circuit board. Be sure to realign the housing with the gasket, which remains on the circuit board.
 1. The nylon washer prevents damage to the circuit board; apply this washer first. Next, fit the steel washer, which prevents damage to the nylon washer.
 1. Screw down the two hex lock keys. As long as the washers have been fitted in the correct order, they do not need to be screwed very tightly.
