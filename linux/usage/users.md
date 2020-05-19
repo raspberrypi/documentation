@@ -44,7 +44,7 @@ Note that the user `bob` will be prompted to enter their password when they run 
 1. Insert the following contents on a single line: `bob ALL=(ALL) NOPASSWD: ALL`
 1. Save the file and exit.
 
-Once you have exited the editor, the file will be checked for any syntax errors. If no errors were detected, the file will be saved and you will be returned to the shell prompt (e.g. `pi@raspberry:~ $`). If errors were detected, you will be asked 'what now?' Press the 'enter' key on your keyboard: this will bring up a list of options. You will probably want to use 'e' for '(e)dit sudoers file again,' so you can edit the file and fix the problem. **Note that choosing option 'Q' will save the file with any syntax errors still in place, which makes it impossible for _any_ user to use the sudo command.**
+Once you have exited the editor, the file will be checked for any syntax errors. If no errors were detected, the file will be saved and you will be returned to the shell prompt. If errors were detected, you will be asked 'what now?' Press the 'enter' key on your keyboard: this will bring up a list of options. You will probably want to use 'e' for '(e)dit sudoers file again,' so you can edit the file and fix the problem. **Note that choosing option 'Q' will save the file with any syntax errors still in place, which makes it impossible for _any_ user to use the sudo command.**
 
 Note that it is standard practice on Linux to have the user prompted for their password when they run `sudo`, since it makes the system slightly more secure.
 
