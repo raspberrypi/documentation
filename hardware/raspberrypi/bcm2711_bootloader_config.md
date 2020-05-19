@@ -286,7 +286,7 @@ sudo reboot
 ```
 
 ## USB mass storage boot
-This is only available in the BETA release and requires updated (not yet released) firmware via rpi-update. If you aren't already familiar with how to use a USB drive for the root filesystem then you probably want to wait until this feature is in the default Raspbian image.
+This is only available in the BETA release and requires updated (not yet released) firmware via [rpi-update](../../raspbian/applications/rpi-update.md). If you aren't already familiar with how to use a USB drive for the root filesystem then you probably want to wait until this feature is in the default Raspbian image.
 
 There's no support for migrating a SD card image to a USB drive. It's possible but the process can potentially be quite involved and varies according to your original setup. Please see [STICKY: HOWTO: Move the filesystem to a USB stick/Drive](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=44177&start=350)
 
