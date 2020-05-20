@@ -76,21 +76,21 @@ sudo deluser -remove-home pi
 
 ## Make `sudo` require a password
 
-Placing `sudo` in front of a command runs it as a superuser, and by default, that does not need a password. In general, this is not a problem. However, if your Pi is exposed to the internet and somehow becomes exploited (perhaps via a webpage exploit for example), the attacker will be able to change things that require superuser credential, unless you have set `sudo` to require a password.
+Placing `sudo` in front of a command runs it as a superuser, and by default, that does not need a password. In general, this is not a problem. However, if your Pi is exposed to the internet and somehow becomes exploited (perhaps via a webpage exploit for example), the attacker will be able to change things that require superuser credentials, unless you have set `sudo` to require a password.
 
 To force `sudo` to require a password, enter:
 
 ```bash
-sudo nano /etc/sudoers.d/010_pi-nopasswd
+sudo visudo /etc/sudoers.d/010_pi-nopasswd
 ```
 
 and change the `pi` entry (or whichever usernames have superuser rights) to:
 
 ```bash
-alice ALL=(ALL) PASSWD: ALL
+pi ALL=(ALL) PASSWD: ALL
 ```
 
-Now save the file.
+Then save the file: it will be checked for any syntax errors. If no errors were detected, the file will be saved and you will be returned to the shell prompt. If errors were detected, you will be asked 'what now?' Press the 'enter' key on your keyboard: this will bring up a list of options. You will probably want to use 'e' for '(e)dit sudoers file again,' so you can edit the file and fix the problem. **Note that choosing option 'Q' will save the file with any syntax errors still in place, which makes it impossible for _any_ user to use the sudo command.**
 
 ## Ensure you have the latest security fixes
 
