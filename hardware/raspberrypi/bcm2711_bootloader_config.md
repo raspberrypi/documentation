@@ -286,7 +286,7 @@ sudo reboot
 ```
 
 ## USB mass storage boot
-This is only available in the BETA release and requires updated (not yet released) firmware via rpi-update. If you aren't already familiar with how to use a USB drive for the root filesystem then you probably want to wait until this feature is in the default Raspbian image.
+This is only available in the BETA release and requires updated (not yet released) firmware via [rpi-update](../../raspbian/applications/rpi-update.md). If you aren't already familiar with how to use a USB drive for the root filesystem then you probably want to wait until this feature is in the default Raspbian image.
 
 There's no support for migrating a SD card image to a USB drive. It's possible but the process can potentially be quite involved and varies according to your original setup. Please see [STICKY: HOWTO: Move the filesystem to a USB stick/Drive](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=44177&start=350)
 
@@ -314,9 +314,9 @@ vcgencmd bootloader_config
 
 ### Create a bootable USB drive
 * Use the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to flash Raspbian to a USB mass storage device. Other distros have not been tested and may require updates (e.g. u-boot). One reason for having a public beta is to help get USB MSD boot support into other distros.
-* Download the updated firmware files `*.elf *.dat` from the `msd-boot` branch of the [Raspberry Pi Firmware](https://github.com/raspberrypi/firmware) Github repo. 
-* Alternatively use `rpi-update branch=msd-boot` to update the firmware on a Raspbian SD card install and copy the files from there.
-* Copy these updates to the boot partition on the USB device. From now on `rpi-update branch=msd-boot` can be used from within Raspbian on the USB boot device.
+* Download the updated firmware files `*.elf *.dat` from the `master` branch of the [Raspberry Pi Firmware](https://github.com/raspberrypi/firmware) Github repo. 
+* Alternatively use `sudo rpi-update` to update the firmware on a Raspbian SD card install and copy the files from there.
+* Copy these updates to the boot partition on the USB device. From now on `sudo rpi-update` can be used from within Raspbian on the USB boot device.
 * A Linux kernel update is not required. Raspbian has been tested using the 4.19 and 5.4 (32 and 64 bit) kernel.
 
 ### USB device compatiblity
