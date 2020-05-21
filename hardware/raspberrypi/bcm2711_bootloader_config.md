@@ -303,7 +303,9 @@ sudo apt full-upgrade
 
 * Install the BETA version of the bootloader and replace the current configuration settings to enable USB boot.
 See BOOT_ORDER property if you wish to migrate the configuration by hand.
-`sudo rpi-eeprom-update -d -f /lib/firmware/raspberrypi/bootloader/beta/pieeprom-2020-05-15.bin`
+```
+sudo rpi-eeprom-update -d -f /lib/firmware/raspberrypi/bootloader/beta/pieeprom-2020-05-15.bin
+```
 
 * Reboot and check the bootloader version and config:
 ```
