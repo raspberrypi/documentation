@@ -8,8 +8,7 @@ vcgencmd bootloader_config
 To change these bootloader configuration items, you need to extract the configuration segment, make changes, re-insert it, then reprogram the EEPROM with the new bootloader. The Raspberry Pi will need to be rebooted for changes to take effect. 
 
 ```
-# Extract the configuration file
-cp /lib/firmware/raspberrypi/bootloader/stable/pieeprom-2020-01-17.bin pieeprom.bin
+# Copy the EEPROM image of interest from /lib/firmware/raspberrypi/bootloader/ to pieeprom.bin
 rpi-eeprom-config pieeprom.bin > bootconf.txt
 
 # Edit the configuration using a text editor e.g. nano bootconf.txt
