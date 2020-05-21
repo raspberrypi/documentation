@@ -227,9 +227,9 @@ E.g. 6665@169.254.1.1/eth0,6666@/
 ```
 In order to simplify parsing, the bootloader requires every field separator to be present. In the example the target IP address (255.255.255.255) and target mac address (00:00:00:00:00) are assigned default values.
 
-One way to view the data is to connect the test Pi 4 to another Pi running WireShark and select “udp.srcport == 6665” as a filter.
-This should not be enabled by default because it may cause network problems. It can be enabled on demand via a GPIO filter e.g.
+One way to view the data is to connect the test Pi 4 to another Pi running WireShark and select “udp.srcport == 6665” as a filter and select `Analyze -> Follow -> UDP stream` to view as an ASCII log.
 
+`NET_CONSOLE` should not be enabled by default because it may cause network problems. It can be enabled on demand via a GPIO filter e.g.
 ```
 # Enable debug if GPIO 7 is pulled low
 [gpio7=0]
