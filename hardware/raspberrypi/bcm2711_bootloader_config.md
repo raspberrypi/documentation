@@ -299,7 +299,7 @@ sudo apt update
 sudo apt full-upgrade
 ```
 
-* As root, edit `/etc/default/rpi-eeprom-update` and select BETA releases
+* As root, edit `/etc/default/rpi-eeprom-update` and select BETA releases.
 
 * Install the BETA version of the bootloader and replace the current configuration settings to enable USB boot.
 See `BOOT_ORDER` property if you wish to migrate the configuration by hand.
