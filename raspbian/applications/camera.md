@@ -273,10 +273,10 @@ DRC changes the images by increasing the range of dark areas, and decreasing the
 By default, DRC is off.
 
 ```
-	--stats,	-st		Display image statistics
+	--stats,	-st		Use stills capture frame for image statistics
 ```
 
-Displays the exposure, analogue and digital gains, and AWB settings used.
+Force recomputation of statistics on stills capture pass. Digital gain and AWB are recomputed based on the actual capture frame statistics, rather than the preceding preview frame.
 
 ```
 	--awbgains,	-awbg
@@ -448,7 +448,9 @@ Outputs debugging/information messages during the program run.
 	--timeout,	-t		Time before the camera takes picture and shuts down
 ```
 
-The program will run for this length of time, then take the capture (if output is specified). If not specified, this is set to 5 seconds.
+The program will run for the specified length of time, entered in milliseconds. It then takes the capture and saves it if an output is specified. If a timeout value is not specified, then it is set to 5 seconds (-t 5000). Note that low values (less than 500ms, although it can depend on other settings) may not give enough time for the camera to start up and provide enough frames for the automatic algorithms like AWB and AGC to provide accurate results.
+
+If set to 0, the preview will run indefinitely, until stopped with CTRL-C. In this case no capture is made. 
 
 ```
 	--timelapse,	-tl		time-lapse mode
