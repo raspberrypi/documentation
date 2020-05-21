@@ -214,10 +214,10 @@ Experimental property for custom firmware (bare metal).
 
 Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any compatiblity checks (e.g. is USB MSD boot supported) and resets PCIe before starting the executable. 
 
-### NET_CONSOLE - advanced logging
-`NET_CONSOLE` duplicates debug messages to the network interface. The IP addresses and ports are defined by the `NET_CONSOLE` string.
+### NETCONSOLE - advanced logging
+`NETCONSOLE` duplicates debug messages to the network interface. The IP addresses and ports are defined by the `NETCONSOLE` string.
 
-N.B. NET_CONSOLE blocks until the ethernet link is established or a timeout occurs. The timeout value is `DHCP_TIMEOUT` although DHCP is not attempted unless network boot is requested.
+N.B. NETCONSOLE blocks until the ethernet link is established or a timeout occurs. The timeout value is `DHCP_TIMEOUT` although DHCP is not attempted unless network boot is requested.
 
 #### Format
 See https://wiki.archlinux.org/index.php/Netconsole
@@ -227,9 +227,9 @@ E.g. 6665@169.254.1.1/eth0,6666@/
 ```
 In order to simplify parsing, the bootloader requires every field separator to be present. In the example the target IP address (255.255.255.255) and target mac address (00:00:00:00:00) are assigned default values.
 
-One way to view the data is to connect the test Pi 4 to another Pi running WireShark and select “udp.srcport == 6665” as a filter.
-This should not be enabled by default because it may cause network problems. It can be enabled on demand via a GPIO filter e.g.
+One way to view the data is to connect the test Pi 4 to another Pi running WireShark and select “udp.srcport == 6665” as a filter and select `Analyze -> Follow -> UDP stream` to view as an ASCII log.
 
+`NETCONSOLE` should not be enabled by default because it may cause network problems. It can be enabled on demand via a GPIO filter e.g.
 ```
 # Enable debug if GPIO 7 is pulled low
 [gpio7=0]
@@ -346,7 +346,7 @@ Default:  2000 (2 seconds)
 Version: pieeprom-2020-05-15.bin - BETA  
 
 ### XHCI_DEBUG
-This property is a bit field which controls the verbosity of USB trace messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use NET_CONSOLE
+This property is a bit field which controls the verbosity of USB trace messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`
 
 * Bit 0 - USB descriptors
 * Bit 1 - Mass storage mode state machine 
