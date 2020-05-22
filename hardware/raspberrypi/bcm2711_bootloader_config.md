@@ -287,7 +287,7 @@ sudo reboot
 ## USB mass storage boot
 This is only available in the BETA release and requires updated firmware via [rpi-update](../../raspbian/applications/rpi-update.md). If you aren't already familiar with how to use a USB drive for the root filesystem then you probably want to wait until this feature is in the default Raspbian image.
 
-There's no support for migrating a SD card image to a USB drive. It's possible but the process can potentially be quite involved and varies according to your original setup. Please see [STICKY: HOWTO: Move the filesystem to a USB stick/Drive](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=44177&start=350).
+There is no support for migrating a SD card image to a USB drive. It is possible, but the process can potentially be quite involved and varies according to your original setup. Please see [this forum thread](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=44177&start=350) for more information.
 
 ## BETA setup instructions
 These instructions assume that you are familiar with manual firmware and bootloader updates and understand how to revert to a previous version if you want to revert the changes. If not, please wait until the features are available in a full Raspbian release image.
@@ -323,7 +323,7 @@ vcgencmd bootloader_config
 ### USB device compatiblity
 There's no explicit set of supported devices. Initially we recommend using a USB pen drive or SSD. Hard drives will probably require a powered HUB and in all cases you should verify that the devices work correctly from within Raspbian using an SD card boot.
 
-Please post interoperability reports (positive or negative) on [this thread](https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=274595) on the Raspberry Pi General Discussion forum. 
+Please post interoperability reports (positive or negative) on [this thread](https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=274595) on the Raspberry Pi forums. 
 
 ### USB_MSD_EXCLUDE_VID_PID
 A list of up to 4 VID/PID pairs specifying devices which the bootloader should ignore. If this matches a HUB then the HUB won’t be enumerated, causing all downstream devices to be excluded.
