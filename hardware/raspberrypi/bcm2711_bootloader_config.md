@@ -285,28 +285,30 @@ sudo reboot
 ```
 
 ## USB mass storage boot
-This is only available in the BETA release and requires updated (not yet released) firmware via [rpi-update](../../raspbian/applications/rpi-update.md). If you aren't already familiar with how to use a USB drive for the root filesystem then you probably want to wait until this feature is in the default Raspbian image.
+This is only available in the BETA release and requires updated firmware via [rpi-update](../../raspbian/applications/rpi-update.md). If you aren't already familiar with how to use a USB drive for the root filesystem then you probably want to wait until this feature is in the default Raspbian image.
 
-There's no support for migrating a SD card image to a USB drive. It's possible but the process can potentially be quite involved and varies according to your original setup. Please see [STICKY: HOWTO: Move the filesystem to a USB stick/Drive](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=44177&start=350)
+There is no support for migrating a SD card image to a USB drive. It is possible, but the process can potentially be quite involved and varies according to your original setup. Please see [this forum thread](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=44177&start=350) for more information.
 
 ## BETA setup instructions
 These instructions assume that you are familiar with manual firmware and bootloader updates and understand how to revert to a previous version if you want to revert the changes. If not, please wait until the features are available in a full Raspbian release image.
 
-There will be a post on the Raspberry Pi [General Discussion forum](https://www.raspberrypi.org/forums/viewforum.php?f=63) when the binaries are available.
-
 ### Update the bootloader
+* From a standard Raspbian SD card boot:
 ```
-# From a standard Raspbian SD card boot
 sudo apt update
 sudo apt full-upgrade
+```
 
-# As root edit /etc/default/rpi-eeprom-update and select BETA releases
+* As root, edit `/etc/default/rpi-eeprom-update` and select BETA releases.
 
-# Install the BETA version of the bootloader and replace the current configuration settings to enable USB boot.
-# See BOOT_ORDER property if you wish to migrate the configuration by hand.
+* Install the BETA version of the bootloader and replace the current configuration settings to enable USB boot.
+See `BOOT_ORDER` property if you wish to migrate the configuration by hand.
+```
 sudo rpi-eeprom-update -d -f /lib/firmware/raspberrypi/bootloader/beta/pieeprom-2020-05-15.bin
+```
 
-# Reboot and check the bootloader version 
+* Reboot and check the bootloader version and config:
+```
 vcgencmd bootloader_version 
 vcgencmd bootloader_config
 ```
@@ -314,17 +316,17 @@ vcgencmd bootloader_config
 ### Create a bootable USB drive
 * Use the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to flash Raspbian to a USB mass storage device. Other distros have not been tested and may require updates (e.g. u-boot). One reason for having a public beta is to help get USB MSD boot support into other distros.
 * Download the updated firmware files `*.elf *.dat` from the `master` branch of the [Raspberry Pi Firmware](https://github.com/raspberrypi/firmware) Github repo. 
-* Alternatively use `sudo rpi-update` to update the firmware on a Raspbian SD card install and copy the files from there.
+* Alternatively use `sudo rpi-update` to update the firmware on a Raspbian SD card install, then copy the files from there.
 * Copy these updates to the boot partition on the USB device. From now on `sudo rpi-update` can be used from within Raspbian on the USB boot device.
 * A Linux kernel update is not required. Raspbian has been tested using the 4.19 and 5.4 (32 and 64 bit) kernel.
 
 ### USB device compatiblity
-There's no explicit set of supported devices. Initially we recommend using a USB pen drive or SSD. Hard drives will probably require a powered HUB and in all cases you should verify that the devices work correctly from within Raspbian using an SD card boot.
+There is no explicit set of supported devices. Initially we recommend using a USB pen drive or SSD. Hard drives will probably require a powered HUB and in all cases you should verify that the devices work correctly from within Raspbian using an SD card boot.
 
-Please post interoperability reports (positive or negative) on the Raspberry Pi forums. 
+Please post interoperability reports (positive or negative) on [this thread](https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=274595) on the Raspberry Pi forums. 
 
 ### USB_MSD_EXCLUDE_VID_PID
-A list of up to 4 VID/PID pairs specifying devices which the bootloader should ignore. If this matches a HUB then the HUB won’t be enumerated causing all downstream devices to be excluded.
+A list of up to 4 VID/PID pairs specifying devices which the bootloader should ignore. If this matches a HUB then the HUB won’t be enumerated, causing all downstream devices to be excluded.
 This is intended to allow problematic (e.g. very slow to enumerate) devices to be ignored during boot enumeration. This is specific to the bootloader and is not passed to the OS.
 
 The format is a comma-separated list of hexadecimal values with the VID as most significant nibble. Spaces are not allowed.
