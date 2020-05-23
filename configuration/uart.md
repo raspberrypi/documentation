@@ -56,6 +56,8 @@ Linux devices on Raspbian:
 |`/dev/serial0` |primary UART |
 |`/dev/serial1` |secondary UART |
 
+Note: `/dev/serial0` and `/dev/serial1` are symbolic links which point to either `/dev/ttyS0` or `/dev/ttyAMA0`.
+
 ## Mini UART and CPU core frequency
 
 The baud rate of the mini UART is linked to the core frequency of the VPU on the GPU. This means that, as the VPU frequency governor varies the core frequency, the baud rate of the mini UART also changes. This makes the mini UART of limited use in the default state. By default, if the mini UART is selected for use as the primary UART, it will be disabled. To enable it, add `enable_uart=1` to config.txt. This will also fix the core frequency to 250MHz (unless `force_turbo` is set, when it will be fixed to the VPU turbo frequency). When the mini UART is not the primary UART, for example you are using it to connect to the Bluetooth controller, you must add `core_freq=250` to config.txt, otherwise the mini UART will not work.
