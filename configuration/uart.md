@@ -1,8 +1,40 @@
-# The Raspberry Pi UARTs
+# UARTs on the Raspberry Pi
 
-The SoCs used on the Raspberry Pi have two built-in UARTs, a [PL011](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0183g/index.html) and a mini UART. They are implemented using different hardware blocks, so they have slightly different characteristics. However, both are 3.3V devices, which means extra care must be taken when connecting up to an RS232 or other system that utilises different voltage levels. An adapter must be used to convert the voltage levels between the two protocols. Alternatively, 3.3V USB UART adapters can be purchased for very low prices. 
- 
-By default, on Raspberry Pis equipped with the combined wireless LAN/Bluetooth module, the PL011 is connected to the Bluetooth module, while the mini UART is used as the primary UART and will have a Linux console on it. On all other models, the PL011 is used as the primary UART. 
+There are two types of UART available on the Raspberry Pi -  [PL011](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0183g/index.html) and mini UART. The PL011 is a capable, broadly 16550-compatible UART, while the mini UART has a reduced feature set.
+
+All UARTs on the Raspberry Pi are 3.3V only - damage will occur if they are connected to 5V systems. An adaptor can be used to connect to 5V systems. alternatively, low-cost USB to 3.3V serial adaptors are available from various third parties.
+
+## Pi Zero, 1, 2 and 3 - two UARTs
+
+The Raspberry Pi Zero, 1, 2 and 3 each contain two UARTs as follows:
+
+| Name | Type |
+|------|------|
+|UART0 |PL011 |
+|UART1 |mini UART |
+
+## Pi 4 - six UARTS
+
+The Raspberry Pi 4 has four additional PL011s:
+
+| Name | Type |
+|------|------|
+|UART0 |PL011 |
+|UART1 |mini UART |
+|UART2 |PL011 |
+|UART3 |PL011 |
+|UART4 |PL011 |
+|UART5 |PL011 |
+
+## Primary UART
+
+On the Raspberry Pi, one UART is selected to be present on GPIO 14 (transmit) and 15 (receive) - this is the primary UART. By default, this will also be the UART on which a Linux console may be present. Note that GPIO 14 is pin 8 on the GPIO header, while GPIO 15 is pin 10.
+
+## Secondary UART
+
+The secondary UART is not normally present on the GPIO connecto. By default, the secondary UART is used to connect to the Bluetooth side of the combined wireless LAN/Bluetooth controller, on models to which this is fitted.
+
+## Configuration
 
 The following table summarises the default configuration of the UARTs:
 
@@ -21,14 +53,14 @@ Linux devices on Raspbian:
 |--------------|-------------|
 |`/dev/ttyS0`  |mini UART    |
 |`/dev/ttyAMA0`|PL011        |
-|`/dev/serial0` |primary UART (Linux console) |
+|`/dev/serial0` |primary UART |
 |`/dev/serial1` |secondary UART |
 
 ## Mini UART and CPU core frequency
 
 The baud rate of the mini UART is linked to the core frequency of the VPU on the GPU. This means that, as the VPU frequency governor varies the core frequency, the baud rate of the mini UART also changes. This makes the mini UART of limited use in the default state. By default, if the mini UART is selected for use as the primary UART, it will be disabled. To enable it, add `enable_uart=1` to config.txt. This will also fix the core frequency to 250MHz (unless `force_turbo` is set, when it will be fixed to the VPU turbo frequency). When the mini UART is not the primary UART, for example you are using it to connect to the Bluetooth controller, you must add `core_freq=250` to config.txt, otherwise the mini UART will not work.
 
-The default value of the `enable_uart` flag depends on the actual roles of the UARTs, so that if the PL011 is assigned to the Bluetooth module, `enable_uart` defaults to 0. If the mini UART is assigned to the Bluetooth module, then `enable_uart` defaults to 1. Note that if the UARTs are reassigned using a Device Tree Overlay (see below), `enable_uart` defaults will still obey this rule.
+The default value of the `enable_uart` flag depends on the actual roles of the UARTs, so that if UART0 (the first PL011) is configured as the secondary UART, `enable_uart` defaults to 0. If the mini UART is configured as the secondary UART, then `enable_uart` defaults to 1. Note that if the UARTs are reassigned using a Device Tree overlay (see 'UARTS and Device Tree' below), `enable_uart` defaults will still obey this rule.
 
 ## Disable Linux serial console
 
@@ -40,10 +72,6 @@ By default, the primary UART is assigned to the Linux console. If you wish to us
 1. At the prompt `Would you like a login shell to be accessible over serial?` answer 'No'
 1. At the prompt `Would you like the serial port hardware to be enabled?` answer 'Yes'
 1. Exit raspi-config and reboot the Pi for changes to take effect.
-
-## UART output on GPIO pins
-
-By default, the UART transmit and receive pins are on GPIO 14 and GPIO 15 respectively, which are pins 8 and 10 on the GPIO header.
 
 ## UARTs and Device Tree
 
@@ -61,6 +89,7 @@ For full instructions on how to use Device Tree overlays see [this page](device-
 dtoverlay=disable-bt
 ...
 ```
+
 ## Relevant differences between PL011 and mini UART
 
 The mini UART has smaller FIFOs. Combined with the lack of flow control, this makes it more prone to losing characters at higher baudrates. It is also generally less capable than the PL011, mainly due to its baud rate link to the VPU clock speed.
