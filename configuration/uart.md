@@ -89,7 +89,7 @@ By default, the primary UART is assigned to the Linux console. If you wish to us
 
 ## UARTs and Device Tree
 
-Various UART Device Tree overlay definitions can be found in the kernel GitHub tree. The two most useful overlays are [`disable-bt`](https://github.com/raspberrypi/linux/blob/rpi-4.11.y/arch/arm/boot/dts/overlays/disable-bt-overlay.dts) and [`miniuart-bt`](https://github.com/raspberrypi/linux/blob/rpi-4.11.y/arch/arm/boot/dts/overlays/miniuart-bt-overlay.dts).
+Various UART Device Tree overlay definitions can be found in the [kernel GitHub tree](https://github.com/raspberrypi/linux). The two most useful overlays are [`disable-bt`](https://github.com/raspberrypi/linux/blob/rpi-4.19.y/arch/arm/boot/dts/overlays/disable-bt-overlay.dts) and [`miniuart-bt`](https://github.com/raspberrypi/linux/blob/rpi-4.19.y/arch/arm/boot/dts/overlays/miniuart-bt-overlay.dts).
 
 `disable-bt` disables the Bluetooth device and makes the first PL011 (UART0) the primary UART. It is also necessary to disable the system service that initialises the modem, so it doesn't connect to the UART using `sudo systemctl disable hciuart`.
 
