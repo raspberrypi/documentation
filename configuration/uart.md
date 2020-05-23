@@ -60,9 +60,21 @@ Note: `/dev/serial0` and `/dev/serial1` are symbolic links which point to either
 
 ## Mini UART and CPU core frequency
 
-The baud rate of the mini UART is linked to the core frequency of the VPU on the GPU. This means that, as the VPU frequency governor varies the core frequency, the baud rate of the mini UART also changes. This makes the mini UART of limited use in the default state. By default, if the mini UART is selected for use as the primary UART, it will be disabled. To enable it, add `enable_uart=1` to config.txt. This will also fix the core frequency to 250MHz (unless `force_turbo` is set, when it will be fixed to the VPU turbo frequency). When the mini UART is not the primary UART, for example you are using it to connect to the Bluetooth controller, you must add `core_freq=250` to config.txt, otherwise the mini UART will not work.
+In order to use the mini UART, you need to configure the Raspberry Pi to use a fixed VPU core clock frequency. This is because the mini UART clock is linked to the VPU core clock, so that when the core clock frequency changes, the UART baud rate will also change. The `enable_uart` and `core_freq` settings can be added to `config.txt` to change the behaviour of the mini UART. The following table summarises the possible combinations:
 
-The default value of the `enable_uart` flag depends on the actual roles of the UARTs, so that if UART0 (the first PL011) is configured as the secondary UART, `enable_uart` defaults to 0. If the mini UART is configured as the secondary UART, then `enable_uart` defaults to 1. Note that if the UARTs are reassigned using a Device Tree overlay (see 'UARTS and Device Tree' below), `enable_uart` defaults will still obey this rule.
+| Mini UART set to | core clock | Result |
+|------------------|------------|--------|
+| primary UART     | variable   | mini UART disabled |
+| primary UART     | fixed by setting `enable_uart=1` | mini UART enabled, core clock fixed to 250MHz, or if `force_turbo` is set, the VPU turbo frequency |
+| secondary UART   | variable   | mini UART disabled |
+| secondary UART   | fixed by setting `core_freq=250` | mini UART enabled |
+
+The default state of the `enable_uart` flag depends on which UART is the primary UART:
+
+| Primary UART | Default state of enable_uart flag |
+|--------------|-----------------------------------|
+| mini UART    | 0 |
+| PL011        | 1 |
 
 ## Disable Linux serial console
 
