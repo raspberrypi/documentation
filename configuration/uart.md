@@ -1,4 +1,4 @@
-# UARTs on the Raspberry Pi
+# UART configuration
 
 There are two types of UART available on the Raspberry Pi -  [PL011](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0183g/index.html) and mini UART. The PL011 is a capable, broadly 16550-compatible UART, while the mini UART has a reduced feature set.
 
