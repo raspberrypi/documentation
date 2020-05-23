@@ -4,8 +4,6 @@ The SoCs used on the Raspberry Pi have two built-in UARTs, a [PL011](http://info
  
 By default, on Raspberry Pis equipped with the combined wireless LAN/Bluetooth module, the PL011 is connected to the Bluetooth module, while the mini UART is used as the primary UART and will have a Linux console on it. On all other models, the PL011 is used as the primary UART. 
 
-The primary UART is assigned to the Linux console.
-
 The following table summarises the default configuration of the UARTs:
 
 | Model | mini UART | PL011 |
