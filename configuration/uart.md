@@ -38,7 +38,7 @@ The secondary UART is not normally present on the GPIO connector. By default, th
 
 The following table summarises the default configuration of the UARTs:
 
-| Model | mini UART | PL011 |
+| Model | mini UART | first PL011 (UART0)|
 |-------|-----------|-------|
 | Raspberry Pi Zero | secondary | primary |
 | Raspberry Pi Zero W | primary (disabled) | secondary (Bluetooth) |
@@ -52,7 +52,7 @@ Linux devices on Raspbian:
 | Linux device | Description |
 |--------------|-------------|
 |`/dev/ttyS0`  |mini UART    |
-|`/dev/ttyAMA0`|PL011        |
+|`/dev/ttyAMA0`|first PL011 (UART0)       |
 |`/dev/serial0` |primary UART |
 |`/dev/serial1` |secondary UART |
 
@@ -74,7 +74,7 @@ The default state of the `enable_uart` flag depends on which UART is the primary
 | Primary UART | Default state of enable_uart flag |
 |--------------|-----------------------------------|
 | mini UART    | 0 |
-| PL011        | 1 |
+| first PL011 (UART0)       | 1 |
 
 ## Disable Linux serial console
 
@@ -91,17 +91,15 @@ By default, the primary UART is assigned to the Linux console. If you wish to us
 
 Various UART Device Tree overlay definitions can be found in the kernel GitHub tree. The two most useful overlays are [`disable-bt`](https://github.com/raspberrypi/linux/blob/rpi-4.11.y/arch/arm/boot/dts/overlays/disable-bt-overlay.dts) and [`miniuart-bt`](https://github.com/raspberrypi/linux/blob/rpi-4.11.y/arch/arm/boot/dts/overlays/miniuart-bt-overlay.dts).
 
-`disable-bt` disables the Bluetooth device and restores the PL011 to GPIOs 14 and 15. It is also necessary to disable the system service that initialises the modem, so it doesn't connect to the UART using `sudo systemctl disable hciuart`.
+`disable-bt` disables the Bluetooth device and makes the first PL011 (UART0) the primary UART. It is also necessary to disable the system service that initialises the modem, so it doesn't connect to the UART using `sudo systemctl disable hciuart`.
 
-`miniuart-bt` switches the Bluetooth function to use the mini UART (`/dev/ttyS0`), and restores `/dev/ttyAMA0` to GPIOs 14 and 15. Note that this may reduce the maximum usable baudrate (see mini UART limitations below). It is also necessary to edit `/lib/systemd/system/hciuart.service` and replace ttyAMA0 with ttyS0, unless you have a system with udev rules that create /dev/serial0 and /dev/serial1. In this case, use /dev/serial1 instead because it will always be correct. If cmdline.txt uses the alias serial0 to refer to the user-accessible port, the firmware will replace it with the appropriate port whether or not this overlay is used.
+`miniuart-bt` switches the Bluetooth function to use the mini UART, and makes the first PL011 (UART0) the primary UART. Note that this may reduce the maximum usable baudrate (see mini UART limitations below).
 
 There are other UART-specific overlays in the folder. Refer to `/boot/overlays/README` for details on Device Tree overlays, or run `dtoverlay -h overlay-name` for descriptions and usage information.
 
-For full instructions on how to use Device Tree overlays see [this page](device-tree.md). In brief, add a line to the `config.txt` file to enable Device Tree overlays. Note that the `-overlay.dts` part of the filename is removed.
+For full instructions on how to use Device Tree overlays see [this page](device-tree.md). In brief, add a line to the `config.txt` file to enable Device Tree overlays. Note that the `-overlay.dts` part of the filename is removed. For example:
 ```
-...
 dtoverlay=disable-bt
-...
 ```
 
 ## Relevant differences between PL011 and mini UART
