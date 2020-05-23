@@ -32,7 +32,7 @@ On the Raspberry Pi, one UART is selected to be present on GPIO 14 (transmit) an
 
 ## Secondary UART
 
-The secondary UART is not normally present on the GPIO connector. By default, the secondary UART is connected to the Bluetooth side of the combined wireless LAN/Bluetooth controller, on models to which this controller is fitted.
+The secondary UART is not normally present on the GPIO connector. By default, the secondary UART is connected to the Bluetooth side of the combined wireless LAN/Bluetooth controller, on models which contain this controller.
 
 ## Configuration
 
