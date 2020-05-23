@@ -2,7 +2,7 @@
 
 The SoCs used on the Raspberry Pis have two built-in UARTs, a [PL011](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0183g/index.html) and a mini UART. They are implemented using different hardware blocks, so they have slightly different characteristics. However, both are 3.3V devices, which means extra care must be taken when connecting up to an RS232 or other system that utilises different voltage levels. An adapter must be used to convert the voltage levels between the two protocols. Alternatively, 3.3V USB UART adapters can be purchased for very low prices. 
  
-By default, on Raspberry Pis equipped with the combined wireless LAN/Bluetooth module, the PL011 UART is connected to the Bluetooth module, while the mini UART is used as the primary UART and will have a Linux console on it. On all other models, the PL011 is used as the primary UART. 
+By default, on Raspberry Pis equipped with the combined wireless LAN/Bluetooth module, the PL011 is connected to the Bluetooth module, while the mini UART is used as the primary UART and will have a Linux console on it. On all other models, the PL011 is used as the primary UART. 
 
 The primary UART is assigned to the Linux console.
 
