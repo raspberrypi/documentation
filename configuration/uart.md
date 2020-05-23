@@ -6,7 +6,7 @@ All UARTs on the Raspberry Pi are 3.3V only - damage will occur if they are conn
 
 ## Pi Zero, 1, 2 and 3 - two UARTs
 
-The Raspberry Pi Zero, 1, 2 and 3 each contain two UARTs as follows:
+The Raspberry Pi Zero, 1, 2, and 3 each contain two UARTs as follows:
 
 | Name | Type |
 |------|------|
