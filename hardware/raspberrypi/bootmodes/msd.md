@@ -57,7 +57,8 @@ After five to ten seconds, the Raspberry Pi should begin booting and show the ra
 <a name="pi4"></a>
 ## Raspberry Pi 4
 
-USB mass storage support is currently undergoing beta testing, once beta test is compelte the release version will enable USB mass storage boot by default and there is no need to set `program_usb_boot_mode`.
+USB mass storage support is currently undergoing beta testing, once beta test is compelte the release version will enable USB mass storage boot by default. The `program_usb_boot_mode` is not required on Pi 4.
+
 If you would like to try the beta test then please read the instructions on the [Pi 4 Bootloader Configuration](../bcm2711_bootloader_config.md)
 
 ## Known issues
