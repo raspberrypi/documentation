@@ -134,7 +134,7 @@ On earlier models the serial number is used as the prefix, however, on Pi 4 the 
 
 * 0 - Use the serial number e.g. "9ffefdef/"
 * 1 - Use the string specified by TFTP_PREFIX_STR
-* 2 - Use the MAC address e.g. "DC-A6-32-01-36-C2/"
+* 2 - Use the MAC address e.g. "dc-a6-32-01-36-c2/"
 
 Default: 0  
 Version: pieeprom-2020-04-16.bin  
