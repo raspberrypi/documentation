@@ -1,6 +1,6 @@
 # USB mass storage boot
 
-**USB mass storage boot is available on Raspberry Pi 2B v1.2, 3A+, 3B, and 3B+ only. Support for USB mass storage boot will be added to the Raspberry Pi 4B in a future software update.**
+**USB mass storage boot is available on Raspberry Pi 2B v1.2, 3A+, 3B, and 3B+ only. Support for USB mass storage boot will be added to the Raspberry Pi 4B in a future software update which is currently undergoing beta testing.**
 
 This page explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or a USB hard disk. Note that this feature does not work with all USB mass storage devices.
 
@@ -57,7 +57,8 @@ After five to ten seconds, the Raspberry Pi should begin booting and show the ra
 <a name="pi4"></a>
 ## Raspberry Pi 4
 
-The Raspberry Pi 4's bootcode is stored in [EEPROM](../booteeprom.md) and can be updated. Support for mass storage boot will be added in a future update.
+USB mass storage support is currently undergoing beta testing, once beta test is compelte the release version will enable USB mass storage boot by default and there is no need to set `program_usb_boot_mode`.
+If you would like to try the beta test then please read the instructions on the [Pi 4 Bootloader Configuration](../bcm2711_bootloader_config.md)
 
 ## Known issues
 
