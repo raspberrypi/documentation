@@ -356,7 +356,7 @@ This property is a bit field which controls the verbosity of USB trace messages 
 * Bit 3 - All USB requests
 * Bit 4 - Log device and hub state machines
 * Bit 5 - Log all xHCI TRBs (VERY VERBOSE)
-* Bit 6 - Logg all xHCI events (VERY VERBOSE)
+* Bit 6 - Log all xHCI events (VERY VERBOSE)
 
 By default, no extra debug messages are enabled. 
 
