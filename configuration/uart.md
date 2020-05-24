@@ -15,7 +15,7 @@ The Raspberry Pi Zero, 1, 2, and 3 each contain two UARTs as follows:
 
 ## Pi 4 - six UARTS
 
-The Raspberry Pi 4 has four additional PL011s:
+The Raspberry Pi 4 has four additional PL011s, which are disabled by default. The full list of UARTs on the Pi 4 is:
 
 | Name | Type |
 |------|------|
@@ -36,7 +36,7 @@ The secondary UART is not normally present on the GPIO connector. By default, th
 
 ## Configuration
 
-The following table summarises the default configuration of the UARTs:
+The following table summarises the default configuration of the first two UARTs:
 
 | Model | mini UART | first PL011 (UART0)|
 |-------|-----------|-------|
@@ -46,6 +46,8 @@ The following table summarises the default configuration of the UARTs:
 | Raspberry Pi 2 | secondary | primary |
 | Raspberry Pi 3 | primary (disabled) | secondary (Bluetooth) |
 | Raspberry Pi 4 | primary (disabled) | secondary (Bluetooth) |
+
+Note: by default, the additional UARTs on the Pi 4 are disabled.
 
 Linux devices on Raspbian:
 
@@ -93,7 +95,9 @@ Various UART Device Tree overlay definitions can be found in the [kernel GitHub 
 
 `disable-bt` disables the Bluetooth device and makes the first PL011 (UART0) the primary UART. It is also necessary to disable the system service that initialises the modem, so it doesn't connect to the UART using `sudo systemctl disable hciuart`.
 
-`miniuart-bt` switches the Bluetooth function to use the mini UART, and makes the first PL011 (UART0) the primary UART. Note that this may reduce the maximum usable baudrate (see mini UART limitations below).
+`miniuart-bt` switches the Bluetooth function to use the mini UART, and makes the first PL011 (UART0) the primary UART. Note that this may reduce the maximum usable baud rate (see mini UART limitations below).
+
+The overlays `uart2`, `uart3`, `uart4`, and `uart5` are used to enable the four additional UARTs on the Pi 4. For details on which GPIO pins these connect to, refer to section 5.3 of the [BCM2711 ARM Peripherals](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711/rpi_DATA_2711_1p0.pdf) document.
 
 There are other UART-specific overlays in the folder. Refer to `/boot/overlays/README` for details on Device Tree overlays, or run `dtoverlay -h overlay-name` for descriptions and usage information.
 
