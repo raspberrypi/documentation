@@ -292,6 +292,13 @@ There is no support for migrating a SD card image to a USB drive. It is possible
 ## BETA setup instructions
 These instructions assume that you are familiar with manual firmware and bootloader updates and understand how to revert to a previous version if you want to revert the changes. If not, please wait until the features are available in a full Raspbian release image.
 
+### Check that the USB mass storage device works under Linux
+Before attempting to boot from a USB mass storage device it is advisible to verify that the device works correctly under Linux. Boot using an SD card and plug in the USB mass storage device. This should appears as a removable drive.
+
+This is especially important with USB SATA adapters which may be supported by the bootloader in mass storage mode but fail if Linux selects [USB Attached SCSI - UAS](https://en.wikipedia.org/wiki/USB_Attached_SCSI) mode. 
+
+See this [forum thread](https://www.raspberrypi.org/forums/viewtopic.php?t=245931) about UAS and how to add [usb-storage.quirks](https://www.kernel.org/doc/html/v5.0/admin-guide/kernel-parameters.html) to workaround this issue.
+
 ### Update the bootloader
 * From a standard Raspbian SD card boot:
 ```
