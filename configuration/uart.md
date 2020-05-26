@@ -67,7 +67,7 @@ In order to use the mini UART, you need to configure the Raspberry Pi to use a f
 | Mini UART set to | core clock | Result |
 |------------------|------------|--------|
 | primary UART     | variable   | mini UART disabled |
-| primary UART     | fixed by setting `enable_uart=1` | mini UART enabled, core clock fixed to 250MHz, or if `force_turbo` is set, the VPU turbo frequency |
+| primary UART     | fixed by setting `enable_uart=1` | mini UART enabled, core clock fixed to 250MHz, or if `force_turbo=1` is set, the VPU turbo frequency |
 | secondary UART   | variable   | mini UART disabled |
 | secondary UART   | fixed by setting `core_freq=250` | mini UART enabled |
 
@@ -95,7 +95,7 @@ Various UART Device Tree overlay definitions can be found in the [kernel GitHub 
 
 `disable-bt` disables the Bluetooth device and makes the first PL011 (UART0) the primary UART. You must also disable the system service that initialises the modem, so it does not connect to the UART, using `sudo systemctl disable hciuart`.
 
-`miniuart-bt` switches the Bluetooth function to use the mini UART, and makes the first PL011 (UART0) the primary UART. Note that this may reduce the maximum usable baud rate (see mini UART limitations below).
+`miniuart-bt` switches the Bluetooth function to use the mini UART, and makes the first PL011 (UART0) the primary UART. Note that this may reduce the maximum usable baud rate (see mini UART limitations below). You must also set the VPU core clock to a fixed frequency using either `force_turbo=1` or `core_freq=250`.
 
 The overlays `uart2`, `uart3`, `uart4`, and `uart5` are used to enable the four additional UARTs on the Pi 4. There are other UART-specific overlays in the folder. Refer to `/boot/overlays/README` for details on Device Tree overlays, or run `dtoverlay -h overlay-name` for descriptions and usage information.
 
