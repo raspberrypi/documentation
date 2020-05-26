@@ -38,14 +38,14 @@ The secondary UART is not normally present on the GPIO connector. By default, th
 
 The following table summarises the default configuration of the first two UARTs:
 
-| Model | mini UART | first PL011 (UART0)|
+| Model | first PL011 (UART0)| mini UART |
 |-------|-----------|-------|
-| Raspberry Pi Zero | secondary | primary |
-| Raspberry Pi Zero W | primary (disabled) | secondary (Bluetooth) |
-| Raspberry Pi 1 | secondary | primary |
-| Raspberry Pi 2 | secondary | primary |
-| Raspberry Pi 3 | primary (disabled) | secondary (Bluetooth) |
-| Raspberry Pi 4 | primary (disabled) | secondary (Bluetooth) |
+| Raspberry Pi Zero |  primary | secondary |
+| Raspberry Pi Zero W | secondary (Bluetooth) | primary (disabled) |
+| Raspberry Pi 1 | primary | secondary |
+| Raspberry Pi 2 | primary | secondary |
+| Raspberry Pi 3 | secondary (Bluetooth) | primary (disabled) |
+| Raspberry Pi 4 | secondary (Bluetooth) | primary (disabled) |
 
 Note: by default, the additional UARTs on the Pi 4 are disabled.
 
