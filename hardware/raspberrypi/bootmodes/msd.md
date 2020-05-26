@@ -12,7 +12,7 @@ For devices that are not supported, an alternative is to use the 'special bootco
 
 ## Raspberry Pi 2B v1.2, 3A+, 3B, Compute Module 3
 
-On the Raspberry Pi 2B v1.2, 3A+, 3B, and Compute Module 3, you must first enable [USB host boot mode](host.md). This is to allow USB mass storage boot, and [network boot](net.md). Note that network boot not supported on Raspberry Pi 3A+.
+On the Raspberry Pi 2B v1.2, 3A+, 3B, and Compute Module 3 you must first enable [USB host boot mode](host.md). This is to allow USB mass storage boot, and [network boot](net.md). Note that network boot is not supported on the Raspberry Pi 3A+.
 
 To enable USB host boot mode, the Raspberry Pi needs to be booted from an SD card with a special option to set the USB host boot mode bit in the one-time programmable (OTP) memory. Once this bit has been set, the SD card is no longer required. **Note that any change you make to the OTP is permanent and cannot be undone.**
 
@@ -45,11 +45,11 @@ You can now boot from a USB mass storage device in the same way as booting from 
 
 ## Raspberry Pi 3B+, Compute Module 3+
 
-The Raspberry Pi 3B+ and Compute Module 3+ support USB mass storage boot out of the box. The settings specific to the previous versions of Raspberry Pi do not have to be executed.
+The Raspberry Pi 3B+ and Compute Module 3+ support USB mass storage boot out of the box. The steps specific to previous versions of Raspberry Pi do not have to be executed.
 
 The [procedure](../../../installation/installing-images) is the same as for SD cards - simply image the USB storage device with the operating system image.
 
-After preparing the storage device, connect the drive to the Raspberry Pi and power up the Pi, being aware of the extra USB power usage from the external drive.
+After preparing the storage device, connect the drive to the Raspberry Pi and power up the Pi, being aware of the extra USB power requirements of the external drive.
 After five to ten seconds, the Raspberry Pi should begin booting and show the rainbow splash screen on an attached display. Make sure that you do not have an SD card inserted in the Pi, since if you do, it will boot from that first.
 
 ## Known issues (not Pi 4)
@@ -61,6 +61,6 @@ After five to ten seconds, the Raspberry Pi should begin booting and show the ra
 <a name="pi4"></a>
 ## Raspberry Pi 4
 
-USB mass storage boot for the Pi 4 is currently undergoing beta testing.  Once beta test is complete, USB mass storage boot will be enabled by default. The `program_usb_boot_mode` option is not required on Pi 4.
+USB mass storage boot for the Pi 4 is currently undergoing beta testing.  Once beta testing is complete, USB mass storage boot will be enabled by default. The `program_usb_boot_mode` option is not required on Pi 4.
 
-If you would like to try the beta test, see the instructions on the [Pi 4 Bootloader Configuration](../bcm2711_bootloader_config.md).
+If you would like to try the beta test, see the instructions on the [Pi 4 Bootloader Configuration page](../bcm2711_bootloader_config.md).
