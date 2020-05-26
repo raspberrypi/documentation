@@ -1,6 +1,6 @@
 # Kernel building
 
-There are two main methods for building the kernel. You can build locally on a Raspberry Pi, which will take a long time; or you can cross-compile, which is much quicker, but requires more setup.
+There are two main methods for building the kernel. You can build locally on a Raspberry Pi, which will take a some time; or you can cross-compile, which is much quicker, but requires more setup.
 
 ## Local building
 
