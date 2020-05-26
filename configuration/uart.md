@@ -99,7 +99,7 @@ Various UART Device Tree overlay definitions can be found in the [kernel GitHub 
 
 The overlays `uart2`, `uart3`, `uart4`, and `uart5` are used to enable the four additional UARTs on the Pi 4. There are other UART-specific overlays in the folder. Refer to `/boot/overlays/README` for details on Device Tree overlays, or run `dtoverlay -h overlay-name` for descriptions and usage information.
 
-For full instructions on how to use Device Tree overlays see [this page](device-tree.md). In brief, add a line to the `config.txt` file to enable Device Tree overlays. Note that the `-overlay.dts` part of the filename is removed. For example:
+For full instructions on how to use Device Tree overlays see [this page](device-tree.md). In brief, add a line to the `config.txt` file to apply a Device Tree overlay. Note that the `-overlay.dts` part of the filename is removed. For example:
 ```
 dtoverlay=disable-bt
 ```
