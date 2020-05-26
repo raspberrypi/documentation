@@ -36,7 +36,7 @@ The secondary UART is not normally present on the GPIO connector. By default, th
 
 ## Configuration
 
-The mini UART is disabled by default, as are the additional UARTS on the Pi 4. The following table summarises the assignment of the first two UARTs:
+By default, only UART0 is enabled. The following table summarises the assignment of the first two UARTs:
 
 | Model | first PL011 (UART0)| mini UART |
 |-------|-----------|-------|
@@ -46,6 +46,8 @@ The mini UART is disabled by default, as are the additional UARTS on the Pi 4. T
 | Raspberry Pi 2 | primary | secondary |
 | Raspberry Pi 3 | secondary (Bluetooth) | primary |
 | Raspberry Pi 4 | secondary (Bluetooth) | primary |
+
+Note: the mini UART is disabled by default, whether it is designated primary or secondary UART.
 
 Linux devices on Raspbian:
 
@@ -104,9 +106,9 @@ dtoverlay=disable-bt
 
 ## Relevant differences between PL011 and mini UART
 
-The mini UART has smaller FIFOs. Combined with the lack of flow control, this makes it more prone to losing characters at higher baudrates. It is also generally less capable than the PL011, mainly due to its baud rate link to the VPU clock speed.
+The mini UART has smaller FIFOs. Combined with the lack of flow control, this makes it more prone to losing characters at higher baudrates. It is also generally less capable than a PL011, mainly due to its baud rate link to the VPU clock speed.
 
-The particular deficiencies of the mini UART compared to the PL011 are :
+The particular deficiencies of the mini UART compared to a PL011 are :
 - No break detection
 - No framing errors detection
 - No parity bit
