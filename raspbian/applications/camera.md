@@ -645,14 +645,13 @@ Outputs debugging/information messages during the program run.
 ```
 	--timeout,	-t		Time before the camera takes picture and shuts down
 ```
-
-The program will run for this length of time, then take the capture (if output is specified). If not specified, this is set to 5 seconds. Setting 0 will mean the application will run continuously until stopped with Ctrl-C.
+The total length of time that the program will run for. If not specified, the default is 5000ms (5 seconds). If set to 0, the application will run indefinitely until stopped with Ctrl-C.
 
 ```
 	--demo,	-d		Run a demo mode <milliseconds>
 ```
 
-This options cycles through the range of camera options. No capture is done, and the demo will end at the end of the timeout period, irrespective of whether all the options have been cycled. The time between cycles should be specified as a millisecond value.
+This options cycles through the range of camera options. No recording is done, and the demo will end at the end of the timeout period, irrespective of whether all the options have been cycled. The time between cycles should be specified as a millisecond value.
 
 ```
 	--framerate,	-fps		Specify the frames per second to record
