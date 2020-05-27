@@ -14,7 +14,7 @@ To remove the filter:
 1. Turn the lens around so that it is "looking" upwards and place it on a table. 
 You may try some ways to weaken the adhesive, such as a little isopropyl alcohol and/or heat (~20-30 C). Using a pen top or similar soft plastic item, push down on the filter only at the very edges where the glass attaches to the aluminium - to minimise the risk of breaking the filter. The glue will break and the filter will detach from the lens mount.
 ![camera ir filter](rpi_hq_cam_ir_filter.jpg)
-1. Given that changing lenses will expose the sensor, at this point you could affix a clear filter (OHP plastic) to minimize the chance of dust entering the sensor cavity.
+1. Given that changing lenses will expose the sensor, at this point you could affix a clear filter (for example, OHP plastic) to minimize the chance of dust entering the sensor cavity.
 ![camera protective filter](rpi_hq_cam_clear_filter.jpg)
 1. Replace the main housing over the circuit board. Be sure to realign the housing with the gasket, which remains on the circuit board.
 1. The nylon washer prevents damage to the circuit board; apply this washer first. Next, fit the steel washer, which prevents damage to the nylon washer.
