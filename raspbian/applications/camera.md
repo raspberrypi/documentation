@@ -459,6 +459,14 @@ If set to 0, the preview will run indefinitely, until stopped with CTRL-C. In th
 The specific value is the time between shots in milliseconds. Note that you should specify `%04d` at the point in the filename where you want a frame count number to appear. So, for example, the code below will produce a capture every 2 seconds, over a total period of 30s, named `image0001.jpg`, `image0002.jpg` and so on, through to `image0015.jpg`. 
 
 ```
+-t 30000 -tl 2000 -o image%04d.jpg
+```
+
+Note that the `%04d` indicates a 4-digit number, with leading zeroes added to make the required number of digits. So, for example, `%08d` would result in an 8-digit number.
+
+If a time-lapse value of 0 is entered, the application will take pictures as fast as possible. Note that there's an minimum enforced pause of 30ms between captures to ensure that exposure calculations can be made.
+
+```
 	--framestart,	-fs
 ```
 
@@ -475,15 +483,6 @@ Instead of a simple frame number, the timelapse file names will use a date/time 
 ```
 
 Instead of a simple frame number, the timelapse file names will use a single number which is the Unix timestamp, i.e. the seconds since 1970.
-
-
-```
--t 30000 -tl 2000 -o image%04d.jpg
-```
-
-Note that the `%04d` indicates a 4-digit number, with leading zeroes added to make the required number of digits. So, for example, `%08d` would result in an 8-digit number.
-
-If a time-lapse value of 0 is entered, the application will take pictures as fast as possible. Note that there's an minimum enforced pause of 30ms between captures to ensure that exposure calculations can be made.
 
 ```
 	--thumb,	-th		Set thumbnail parameters (x:y:quality)
