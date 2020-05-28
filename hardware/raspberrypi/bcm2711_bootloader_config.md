@@ -285,18 +285,18 @@ sudo reboot
 ```
 
 ## USB mass storage boot
-This is only available in the BETA release and requires updated (not yet released) firmware via [rpi-update](../../raspbian/applications/rpi-update.md). If you aren't already familiar with how to use a USB drive for the root filesystem then you probably want to wait until this feature is in the default Raspbian image.
+This is only available in the BETA release and requires updated (not yet released) firmware via [rpi-update](../../raspbian/applications/rpi-update.md). If you aren't already familiar with how to use a USB drive for the root filesystem then you probably want to wait until this feature is in the default Raspberry Pi OS image.
 
 There's no support for migrating a SD card image to a USB drive. It's possible but the process can potentially be quite involved and varies according to your original setup. Please see [STICKY: HOWTO: Move the filesystem to a USB stick/Drive](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=44177&start=350)
 
 ## BETA setup instructions
-These instructions assume that you are familiar with manual firmware and bootloader updates and understand how to revert to a previous version if you want to revert the changes. If not, please wait until the features are available in a full Raspbian release image.
+These instructions assume that you are familiar with manual firmware and bootloader updates and understand how to revert to a previous version if you want to revert the changes. If not, please wait until the features are available in a full Raspberry Pi OS release image.
 
 There will be a post on the Raspberry Pi [General Discussion forum](https://www.raspberrypi.org/forums/viewforum.php?f=63) when the binaries are available.
 
 ### Update the bootloader
 ```
-# From a standard Raspbian SD card boot
+# From a standard Raspberry Pi OS SD card boot
 sudo apt update
 sudo apt full-upgrade
 
@@ -312,14 +312,14 @@ vcgencmd bootloader_config
 ```
 
 ### Create a bootable USB drive
-* Use the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to flash Raspbian to a USB mass storage device. Other distros have not been tested and may require updates (e.g. u-boot). One reason for having a public beta is to help get USB MSD boot support into other distros.
+* Use the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to flash Raspberry Pi OS to a USB mass storage device. Other distros have not been tested and may require updates (e.g. u-boot). One reason for having a public beta is to help get USB MSD boot support into other distros.
 * Download the updated firmware files `*.elf *.dat` from the `master` branch of the [Raspberry Pi Firmware](https://github.com/raspberrypi/firmware) Github repo. 
-* Alternatively use `sudo rpi-update` to update the firmware on a Raspbian SD card install and copy the files from there.
-* Copy these updates to the boot partition on the USB device. From now on `sudo rpi-update` can be used from within Raspbian on the USB boot device.
-* A Linux kernel update is not required. Raspbian has been tested using the 4.19 and 5.4 (32 and 64 bit) kernel.
+* Alternatively use `sudo rpi-update` to update the firmware on a Raspberry Pi OS SD card install and copy the files from there.
+* Copy these updates to the boot partition on the USB device. From now on `sudo rpi-update` can be used from within Raspberry Pi OS on the USB boot device.
+* A Linux kernel update is not required. Raspberry Pi OS has been tested using the 4.19 and 5.4 (32 and 64 bit) kernel.
 
 ### USB device compatiblity
-There's no explicit set of supported devices. Initially we recommend using a USB pen drive or SSD. Hard drives will probably require a powered HUB and in all cases you should verify that the devices work correctly from within Raspbian using an SD card boot.
+There's no explicit set of supported devices. Initially we recommend using a USB pen drive or SSD. Hard drives will probably require a powered HUB and in all cases you should verify that the devices work correctly from within Raspberry Pi OS using an SD card boot.
 
 Please post interoperability reports (positive or negative) on the Raspberry Pi forums. 
 

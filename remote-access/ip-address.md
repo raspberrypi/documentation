@@ -20,10 +20,10 @@ In a web browser navigate to your router's IP address e.g. `http://192.168.1.1`,
 
 ### Resolving `raspberrypi.local` with mDNS
 
-On Raspbian, [multicast DNS](https://en.wikipedia.org/wiki/Multicast_DNS) is supported out-of-the-box by the [Avahi](https://en.wikipedia.org/wiki/Avahi_%28software%29) service.
+On Raspberry Pi OS, [multicast DNS](https://en.wikipedia.org/wiki/Multicast_DNS) is supported out-of-the-box by the [Avahi](https://en.wikipedia.org/wiki/Avahi_%28software%29) service.
 
 If your device supports mDNS, you can reach your Raspberry Pi by using its hostname and the `.local` suffix.
-The default hostname on a fresh Raspbian install is `raspberrypi`, so by default any Raspberry Pi running Raspbian responds to:
+The default hostname on a fresh Raspberry Pi OS install is `raspberrypi`, so by default any Raspberry Pi running Raspberry Pi OS responds to:
 
 ```bash
 ping raspberrypi.local

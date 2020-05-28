@@ -6,7 +6,7 @@ On Linux, you have a choice of text editors. Some are easy-to-use but have limit
 
 ### Text Editor
 
-When using Raspbian Desktop, in the accessories menu there is an option to run a Text Editor. This is a simple editor which opens in a window like a normal application. It allows use of the mouse and keyboard, and has tabs and syntax highlighting.
+When using Raspberry Pi OS Desktop, in the accessories menu there is an option to run a Text Editor. This is a simple editor which opens in a window like a normal application. It allows use of the mouse and keyboard, and has tabs and syntax highlighting.
 
 You can use keyboard shortcuts, such as `Ctrl + S` to save a file and `Ctrl + X` to exit.
 
@@ -22,7 +22,7 @@ See Vim below.
 
 ### Geany
 
-A fast and lightweight IDE, supporting many different file types, including C/C++ and Python. Installed by default on Raspbian.
+A fast and lightweight IDE, supporting many different file types, including C/C++ and Python. Installed by default on Raspberry Pi OS.
 
 ## Command-line editors
 
@@ -32,7 +32,7 @@ GNU Nano is at the easy-to-use end of command-line editors. It's installed by de
 
 ### Vi
 
-Vi is a very old (c. 1976) command-line editor, which is available on most UNIX systems and is pre-installed on Raspbian. It's succeeded by Vim (Vi Improved), which requires installation.
+Vi is a very old (c. 1976) command-line editor, which is available on most UNIX systems and is pre-installed on Raspberry Pi OS. It's succeeded by Vim (Vi Improved), which requires installation.
 
 Unlike most editors, Vi and Vim have a number of different modes. When you open Vi with `vi somefile.txt`, you start in command mode which doesn't directly permit text entry. Press `i` to switch to insert mode in order to edit the file, and type away. To save the file you must return to command mode, so press the `Escape` key and enter `:w` (followed by `Enter`), which is the command to write the file to disk.
 

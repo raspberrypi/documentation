@@ -14,7 +14,7 @@ The default value of the `enable_uart` flag depends on the actual roles of the U
 
 ## Disabling Linux's use of console UART
 
-In a default install of Raspbian, the primary UART (serial0) is assigned to the Linux console. Using the serial port for other purposes requires this default behaviour to be changed. On startup, `systemd` checks the Linux kernel command line for any console entries, and will use the console defined therein. To stop this behaviour, the serial console setting needs to be removed from command line.
+In a default install of Raspberry Pi OS, the primary UART (serial0) is assigned to the Linux console. Using the serial port for other purposes requires this default behaviour to be changed. On startup, `systemd` checks the Linux kernel command line for any console entries, and will use the console defined therein. To stop this behaviour, the serial console setting needs to be removed from command line.
 
 This can be done by using the [raspi-config](raspi-config.md) utility, or manually.
 ```

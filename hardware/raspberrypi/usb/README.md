@@ -40,7 +40,7 @@ The OTG hardware present on previous models of Pi is still available and it has 
 
 In general, every device supported by Linux is possible to use with the Pi, subject to a few caveats detailed further down. Linux has probably the most comprehensive driver database for legacy hardware of any operating system (it can lag behind for modern device support as it requires open-source drivers for Linux to recognise the device by default).
 
-If you have a device and wish to use it with a Pi, then plug it in. Chances are that it'll "just work". If you are running in a graphical interface (such as the LXDE desktop environment in Raspbian), then it's likely that an icon or similar will pop up announcing the new device.
+If you have a device and wish to use it with a Pi, then plug it in. Chances are that it'll "just work". If you are running in a graphical interface (such as the LXDE desktop environment in Raspberry Pi OS), then it's likely that an icon or similar will pop up announcing the new device.
 
 If the device doesn't appear to work, then refer to the Troubleshooting section below.
 

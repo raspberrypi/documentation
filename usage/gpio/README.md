@@ -44,7 +44,7 @@ It's important to be aware of which pin is which. Some people use pin labels (li
 
 ![](images/raspio-portsplus.jpg)
 
-A handy reference can be accessed on the Raspberry Pi by opening a terminal window and running the command `pinout`. This tool is provided by the [GPIO Zero](https://gpiozero.readthedocs.io/) Python library, which it is installed by default on the Raspbian desktop image, but not on Raspbian Lite.
+A handy reference can be accessed on the Raspberry Pi by opening a terminal window and running the command `pinout`. This tool is provided by the [GPIO Zero](https://gpiozero.readthedocs.io/) Python library, which it is installed by default on the Raspberry Pi OS desktop image, but not on Raspberry Pi OS Lite.
 
 ![](images/gpiozero-pinout.png)
 

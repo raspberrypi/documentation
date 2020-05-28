@@ -5,7 +5,7 @@ Some basic guides to configuring your Raspberry Pi.
 ## Contents
 
 - [raspi-config](raspi-config.md)
-    - The Raspberry Pi configuration tool in Raspbian, which allows you to easily enable features such as the camera, and to change your specific settings such as keyboard layout
+    - The Raspberry Pi configuration tool in Raspberry Pi OS, which allows you to easily enable features such as the camera, and to change your specific settings such as keyboard layout
 - [config.txt](config-txt/README.md)
     - The Raspberry Pi configuration file
 - [TCP/IP networking](tcpip/README.md)

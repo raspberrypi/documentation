@@ -17,4 +17,4 @@ See guides for basic usage of each of the commands:
 
 ## Full documentation
 
-Full documentation of the camera can be found at [raspbian/applications/camera](../../../raspbian/applications/camera.md) and [hardware/camera](../../../hardware/camera/README.md).
+Full documentation of the camera can be found [here (software)](../../../raspbian/applications/camera.md) and [here (hardware)](../../../hardware/camera/README.md).

@@ -10,7 +10,7 @@ This section only applies to the **original** Raspberry Pi 3B; if you are using 
 
 Before a Raspberry Pi will network boot, it needs to be booted from an SD card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the SD card is no longer required. 
 
-Install Raspbian Lite (or Raspbian with Raspberry Pi Desktop) on the SD card in the [usual way](../../../installation/installing-images/README.md). 
+Install Raspberry Pi OS Lite (or Raspberry Pi OS with Raspberry Pi Desktop) on the SD card in the [usual way](../../../installation/installing-images/README.md). 
 
 Afterwards, set up USB boot mode by preparing the `/boot` directory with the latest boot files:
 

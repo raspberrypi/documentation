@@ -28,7 +28,7 @@ Alternative distributions are available from third-party vendors.
 
 You may need to unzip `.zip` downloads to get the image file (`.img`) to write to your SD card.
 
-**Note**: the Raspbian with Raspberry Pi Desktop image contained in the ZIP archive is over 4GB in size and uses the [ZIP64](https://en.wikipedia.org/wiki/Zip_%28file_format%29#ZIP64) format. To uncompress the archive, a unzip tool that supports ZIP64 is required. The following zip tools support ZIP64:
+**Note**: the Raspberry Pi OS with Raspberry Pi Desktop image contained in the ZIP archive is over 4GB in size and uses the [ZIP64](https://en.wikipedia.org/wiki/Zip_%28file_format%29#ZIP64) format. To uncompress the archive, a unzip tool that supports ZIP64 is required. The following zip tools support ZIP64:
 
 - [7-Zip](http://www.7-zip.org/) (Windows)
 - [The Unarchiver](http://unarchiver.c3.cx/unarchiver) (Mac)
@@ -48,6 +48,6 @@ How you write the image to the SD card will depend on the operating system you a
 
 You can now insert the SD card into the Raspberry Pi and power it up. 
 
-For the official Raspbian OS, if you need to manually log in, the default user name is `pi`, with password `raspberry`. Remember the default keyboard layout is set to UK.
+For the official Raspberry Pi OS, if you need to manually log in, the default user name is `pi`, with password `raspberry`. Remember the default keyboard layout is set to UK.
 
 You should change the default password straight away to ensure your Raspberry Pi is [secure](../../configuration/security.md).

@@ -22,6 +22,6 @@ Whilst heatsinks are not necessary to prevent overheating damage to the SoC (the
 
 ### Measuring temperature
 
-Due to the architecture of the SoCs used on the Raspberry Pi range, and the use of the upstream temperature monitoring code in the Raspbian distribution, Linux-based temperature measurements can be inaccurate. There is a command that can provide an accurate and instantaneous reading of the current SoC temperature, as it communicates with the GPU directly:
+Due to the architecture of the SoCs used on the Raspberry Pi range, and the use of the upstream temperature monitoring code in the Raspberry Pi OS distribution, Linux-based temperature measurements can be inaccurate. There is a command that can provide an accurate and instantaneous reading of the current SoC temperature, as it communicates with the GPU directly:
 
 ```vcgencmd measure_temp```

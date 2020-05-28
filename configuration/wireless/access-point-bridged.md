@@ -24,7 +24,7 @@ If you wish to create a standalone wireless network, consider instead setting up
 A bridged wireless access point can be created using the inbuilt wireless features of the Raspberry Pi 4, Raspberry Pi 3B, Raspberry Pi 3A+/3B+ or Raspberry Pi Zero W/WH, or by using a suitable USB wireless dongle that supports access point mode.
 It is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the [forums](https://www.raspberrypi.org/forums/).
 
-This documentation was tested on a Raspberry Pi 3B running a fresh installation of Raspbian Buster. 
+This documentation was tested on a Raspberry Pi 3B running a fresh installation of Raspberry Pi OS Buster. 
 
 <a name="intro"></a>
 ## Before you start
@@ -34,8 +34,8 @@ This documentation was tested on a Raspberry Pi 3B running a fresh installation 
   **Note:** If installing remotely via SSH,
     * Connect to your Raspberry Pi **by name**, e.g. `ssh pi@raspberrypi.local`. The IP address of your Raspberry Pi on the network **will probably change** after installation.
     * Be ready to add screen and keyboard in case you lose contact with your Raspberry Pi after installation. 
-* Connect your Raspberry Pi to the Ethernet network and boot the Raspbian OS.
-* Ensure the Raspbian OS on your Raspberry Pi is [up-to-date](../../raspbian/updating.md) and reboot if packages were installed in the process.
+* Connect your Raspberry Pi to the Ethernet network and boot the Raspberry Pi OS.
+* Ensure the Raspberry Pi OS on your Raspberry Pi is [up-to-date](../../raspbian/updating.md) and reboot if packages were installed in the process.
 * Have a wireless client (laptop, smartphone, ...) ready to test your new access point.
 
 <a name="software-install"></a>
@@ -126,7 +126,7 @@ With this line, interface `br0` will be configured in accordance with the defaul
 Countries around the world regulate the use of telecommunication radio frequency bands to ensure interference-free operation.
 The Linux OS helps users [comply](https://wireless.wiki.kernel.org/en/developers/regulatory/statement) with these rules by allowing applications to be configured with a two-letter "WiFi country code", e.g. `US` for a computer used in the United States.
 
-In the Raspbian OS, 5 GHz wireless networking is disabled until a WiFi country code has been configured by the user, usually as part of the initial installation process (see wireless configuration pages in this [section](README.md) for details.)
+In the Raspberry Pi OS, 5 GHz wireless networking is disabled until a WiFi country code has been configured by the user, usually as part of the initial installation process (see wireless configuration pages in this [section](README.md) for details.)
 
 To ensure WiFi radio is not blocked on your Raspberry Pi, execute the following command:
 

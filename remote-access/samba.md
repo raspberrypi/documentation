@@ -6,7 +6,7 @@ This page will explain how to use a subset of the Samba system to 'mount' a shar
 
 ### Installing CIFS/Samba support
 
-By default, Raspbian does not include CIFS/Samba support, but this can easily be added. The following commmands will install all the required components for using Samba as a server or a client.
+By default, Raspberry Pi OS does not include CIFS/Samba support, but this can easily be added. The following commmands will install all the required components for using Samba as a server or a client.
 
 ```bash
 sudo apt update

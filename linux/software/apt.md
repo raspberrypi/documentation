@@ -1,6 +1,6 @@
 # APT
 
-The easiest way to manage installing, upgrading, and removing software is using APT (Advanced Packaging Tool) from Debian. If a piece of software is packaged in Debian and it works on the Raspberry Pi's ARM architecture, it should also be available in Raspbian.
+The easiest way to manage installing, upgrading, and removing software is using APT (Advanced Packaging Tool) from Debian. If a piece of software is packaged in Debian and it works on the Raspberry Pi's ARM architecture, it should also be available in Raspberry Pi OS.
 
 To install or remove packages you need root user permissions, so your user needs to be in `sudoers` or you must be logged in as `root`. Read more about [users](../usage/users.md) and [root](../usage/root.md).
 
