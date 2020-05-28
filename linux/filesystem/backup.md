@@ -36,25 +36,25 @@ It may be sensible for you to keep a copy of the entire SD card image, so you ca
 In Linux:
 
 ```bash
-sudo dd bs=4M if=/dev/sdb of=Raspberry Pi OS.img
+sudo dd bs=4M if=/dev/sdb of=PiOS.img
 ```
 
 This will create an image file on your computer which you can use to write to another SD card, and keep exactly the same contents and settings. To restore or clone to another card, use `dd` in reverse:
 
 ```bash
-sudo dd bs=4M if=Raspberry Pi OS.img of=/dev/sdb
+sudo dd bs=4M if=PiOS.img of=/dev/sdb
 ```
 
 These files can be very large, and compress well. To compress, you can pipe the output of `dd` to `gzip` to get a compressed file that is significantly smaller than the original size:
 
 ```bash
-sudo dd bs=4M if=/dev/sdb | gzip > Raspberry Pi OS.img.gz
+sudo dd bs=4M if=/dev/sdb | gzip > PiOS.img.gz
 ```
 
 To restore, pipe the output of `gunzip` to `dd`:
 
 ```bash
-gunzip --stdout Raspberry Pi OS.img.gz | sudo dd bs=4M of=/dev/sdb
+gunzip --stdout PiOS.img.gz | sudo dd bs=4M of=/dev/sdb
 ```
 
 If you are using a Mac, the commands used are almost exactly the same, but `4M` in the above examples should be replaced with `4m`, with a lower case letter.
