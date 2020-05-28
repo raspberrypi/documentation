@@ -67,6 +67,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |          |              | 2: 1GB                     |
 |          |              | 3: 2GB                     |
 |          |              | 4: 4GB                     |
+|          |              | 5: 8GB                     |
 | CCCC     | Manufacturer | 0: Sony UK                 |
 |          |              | 1: Egoman                  |
 |          |              | 2: Embest                  |
@@ -130,3 +131,4 @@ New-style revision codes in use:
 | b03112 | 4B                | 1.2      | 2GB   | Sony UK      |
 | c03111 | 4B                | 1.1      | 4GB   | Sony UK      |
 | c03112 | 4B                | 1.2      | 4GB   | Sony UK      |
+| d03114 | 4B                | 1.4      | 8GB   | Sony UK      |
