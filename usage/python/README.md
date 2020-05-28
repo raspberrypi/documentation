@@ -311,7 +311,7 @@ This is a preferable method of installing, as it means that the modules you inst
 
 ### pip
 
-Not all Python packages are available in the Raspberry Pi OS archives, and those that are can sometimes be out of date. If you can't find a suitable version in the Raspberry Pi OS archives, you can install packages from the [Python Package Index](http://pypi.python.org/) (known as PyPI).
+Not all Python packages are available in the Raspberry Pi OS archives, and those that are can sometimes be out of date. If you can't find a suitable version in the Raspberry Pi OS archives, you can install packages from the [Python Package Index](https://pypi.python.org/) (known as PyPI).
 
 To do so, install pip:
 

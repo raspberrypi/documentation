@@ -46,7 +46,7 @@ The `nmap` command (Network Mapper) is a free and open-source tool for network d
 
 - To install on **Linux**, install the `nmap` package e.g. `apt install nmap`.
 
-- To install on **macOS** or **Windows**, see the [nmap.org download page](http://nmap.org/download.html).
+- To install on **macOS** or **Windows**, see the [nmap.org download page](https://nmap.org/download.html).
 
 To use `nmap` to scan the devices on your network, you need to know the subnet you are connected to. First find your own IP address, in other words the one of the computer you're using to find your Pi's IP address:
 
@@ -65,7 +65,7 @@ nmap -sn 192.168.1.0/24
 Ping scan just pings all the IP addresses to see if they respond. For each device that responds to the ping, the output shows the hostname and IP address like so:
 
 ```
-Starting Nmap 6.40 ( http://nmap.org ) at 2014-03-10 12:46 GMT
+Starting Nmap 6.40 ( https://nmap.org/ ) at 2014-03-10 12:46 GMT
 Nmap scan report for hpprinter (192.168.1.2)
 Host is up (0.00044s latency).
 Nmap scan report for Gordons-MBP (192.168.1.4)

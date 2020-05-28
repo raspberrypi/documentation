@@ -64,7 +64,7 @@ The BCM283x devices as used on Raspberry Pi and Compute Module boards have a thr
 
 ## Device Tree
 
-[Device Tree](http://www.devicetree.org/) is a special way of encoding all the information about the hardware attached to a system (and consequently required drivers).
+[Device Tree](https://www.devicetree.org/) is a special way of encoding all the information about the hardware attached to a system (and consequently required drivers).
 
 On a Pi or Compute Module there are several files in the first FAT partition of the SD/eMMC that are binary 'Device Tree' files. These binary files (usually with extension `.dtb`) are compiled from human readable text descriptions (usually files with extension `.dts`) by the Device Tree compiler.
 

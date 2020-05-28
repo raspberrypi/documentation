@@ -1,6 +1,6 @@
 # SSH using Android
 
-To use SSH on your mobile device you need to download a client. There are several different good quality clients available, such as [Termius](http://www.termius.com), [JuiceSSH](https://juicessh.com/), and [Connectbot](https://connectbot.org/). For this tutorial we will use Termius, because it is a popular cross-platform SSH client. The process will be similar for other clients. 
+To use SSH on your mobile device you need to download a client. There are several different good quality clients available, such as [Termius](https://www.termius.com/), [JuiceSSH](https://juicessh.com/), and [Connectbot](https://connectbot.org/). For this tutorial we will use Termius, because it is a popular cross-platform SSH client. The process will be similar for other clients. 
 
 
 ## 1. Add your Raspberry Pi as a host

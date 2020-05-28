@@ -29,4 +29,4 @@ The `gpu_mem_1024` command sets the GPU memory in megabytes for Raspberry Pi dev
 Setting this to `1` disables the CPU's access to the GPU's L2 cache and requires a corresponding L2 disabled kernel. Default value on BCM2835 is `0`. On BCM2836, BCM2837, and BCM2711, the ARMs have their own L2 cache and therefore the default is `1`.
 The standard Pi kernel.img and kernel7.img builds reflect this difference in cache setting.
 
-*This article uses content from the eLinux wiki page [RPiconfig](http://elinux.org/RPiconfig), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](http://creativecommons.org/licenses/by-sa/3.0/)*
+*This article uses content from the eLinux wiki page [RPiconfig](https://elinux.org/RPiconfig), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](https://creativecommons.org/licenses/by-sa/3.0/)*

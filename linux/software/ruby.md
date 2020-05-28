@@ -1,6 +1,6 @@
 # Installing Ruby packages
 
-Ruby's package manager is called Ruby Gems. You can browse the available gems at [rubygems.org](http://rubygems.org/gems).
+Ruby's package manager is called Ruby Gems. You can browse the available gems at [rubygems.org](https://rubygems.org/gems).
 
 ## Install Ruby
 

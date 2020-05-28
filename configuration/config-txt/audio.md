@@ -17,4 +17,4 @@ The `pwm_sample_bits` command adjusts the bit depth of the analogue audio output
 
 
 
-*This article uses content from the eLinux wiki page [RPiconfig](http://elinux.org/RPiconfig), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](http://creativecommons.org/licenses/by-sa/3.0/)*
+*This article uses content from the eLinux wiki page [RPiconfig](https://elinux.org/RPiconfig), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](https://creativecommons.org/licenses/by-sa/3.0/)*

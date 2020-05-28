@@ -353,7 +353,7 @@ Adds some text and/or metadata to the picture.
 
 Metadata is indicated using a bitmask notation, so add them together to show multiple parameters. For example, 12 will show time(4) and date(8), since 4+8=12.
 
-Text may include date/time placeholders by using the '%' character, as used by <a title="strftime man page" href="http://man7.org/linux/man-pages/man3/strftime.3.html">strftime</a>.
+Text may include date/time placeholders by using the '%' character, as used by <a title="strftime man page" href="https://man7.org/linux/man-pages/man3/strftime.3.html">strftime</a>.
 
 |Value| Meaning | Example Output |
 |-----|---------|----------------|
@@ -368,8 +368,8 @@ Text may include date/time placeholders by using the '%' character, as used by <
 |-a 512|Frame Number| |
 |-a 1024|Black Background| |
 |-a "ABC %Y-%m-%d %X"|Show some text|ABC %Y-%m-%d %X|
-|-a 4 -a "ABC %Y-%m-%d %X"|Show custom <a title="strftime man page" href="http://man7.org/linux/man-pages/man3/strftime.3.html">formatted</a> date/time|ABC 2015-10-28 20:09:33|
-|-a 8 -a "ABC %Y-%m-%d %X"|Show custom <a title="strftime man page" href="http://man7.org/linux/man-pages/man3/strftime.3.html">formatted</a> date/time|ABC 2015-10-28 20:09:33|
+|-a 4 -a "ABC %Y-%m-%d %X"|Show custom <a title="strftime man page" href="https://man7.org/linux/man-pages/man3/strftime.3.html">formatted</a> date/time|ABC 2015-10-28 20:09:33|
+|-a 8 -a "ABC %Y-%m-%d %X"|Show custom <a title="strftime man page" href="https://man7.org/linux/man-pages/man3/strftime.3.html">formatted</a> date/time|ABC 2015-10-28 20:09:33|
 
 ```
 	--annotateex,	-ae		Set extra annotation parameters
@@ -799,7 +799,7 @@ The most recent version of Raspivid will also allow the file name to be time-bas
 ```
 will produce file names formatted like so: `video_Fri Jul 20 16:23:48 2018.h264`
 
-There are many different formatting options available — see [here](http://man7.org/linux/man-pages/man3/strftime.3.html) for a full list. Note than the `%d` and `%u` options are not available, as they are used for the segment number formatting, and that some combinations may produce invalid file names.
+There are many different formatting options available — see [here](https://man7.org/linux/man-pages/man3/strftime.3.html) for a full list. Note than the `%d` and `%u` options are not available, as they are used for the segment number formatting, and that some combinations may produce invalid file names.
 
 ```
 	--wrap,	-wr		Set the maximum value for segment number

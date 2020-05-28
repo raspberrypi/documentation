@@ -44,7 +44,7 @@
 - **LED** - Light-Emitting Diode, a semiconductor device that produces light using electricity.
 - **Linux** - The main operating system used on the Raspberry Pi; the particular customised distribution for the Raspberry Pi range is called Raspberry Pi OS; third parties have also produced their own distributions.
 - **MSD** - Mass Storage Device (amongst other things), such as an SD card or hard disk drive.
-- **MQTT** - MQTT stands for MQ Telemetry Transport, a lightweight and simple machine-to-machine protocol often used for IoT devices; see [the MQTT website](http://mqtt.org/).
+- **MQTT** - MQTT stands for MQ Telemetry Transport, a lightweight and simple machine-to-machine protocol often used for IoT devices; see [the MQTT website](https://mqtt.org/).
 - **NAND** - A [NAND gate](https://en.wikipedia.org/wiki/NAND_gate) is a logic gate, specifically an inverted AND gate; can also refer to a type of flash memory that uses NAND logic.
 - **NOOBS** - New Out of Box software, easy [OS system image installation](../installation/noobs.md) for the Raspberry Pi range; **note:** NOOBS is no longer developed by the Raspberry Pi team, see PINN instead.
 - **OTP** - One-Time Programmable, a type of memory that can only be programmed once, and retains the programmed data after power off; used for serial numbers etc.

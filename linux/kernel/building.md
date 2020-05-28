@@ -97,7 +97,7 @@ sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 First, you will need a suitable Linux cross-compilation host. We tend to use Ubuntu; since Raspberry Pi OS is 
 also a Debian distribution, it means many aspects are similar, such as the command lines.
 
-You can either do this using VirtualBox (or VMWare) on Windows, or install it directly onto your computer. For reference, you can follow instructions online [at Wikihow](http://www.wikihow.com/Install-Ubuntu-on-VirtualBox).
+You can either do this using VirtualBox (or VMWare) on Windows, or install it directly onto your computer. For reference, you can follow instructions online [at Wikihow](https://www.wikihow.com/Install-Ubuntu-on-VirtualBox).
 
 ### Install required dependencies
 

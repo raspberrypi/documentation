@@ -30,8 +30,8 @@ You may need to unzip `.zip` downloads to get the image file (`.img`) to write t
 
 **Note**: the Raspberry Pi OS with Raspberry Pi Desktop image contained in the ZIP archive is over 4GB in size and uses the [ZIP64](https://en.wikipedia.org/wiki/Zip_%28file_format%29#ZIP64) format. To uncompress the archive, a unzip tool that supports ZIP64 is required. The following zip tools support ZIP64:
 
-- [7-Zip](http://www.7-zip.org/) (Windows)
-- [The Unarchiver](http://unarchiver.c3.cx/unarchiver) (Mac)
+- [7-Zip](https://www.7-zip.org/) (Windows)
+- [The Unarchiver](https://unarchiver.c3.cx/unarchiver) (Mac)
 - [Unzip](https://linux.die.net/man/1/unzip) (Linux)
 
 ### Writing the image

@@ -681,4 +681,4 @@ By default, the firmware parses the EDID of any HDMI attached display, picks an 
 
 Forces dispmanx composition to be done offline in two offscreen framebuffers. This can allow more dispmanx elements to be composited, but is slower and may limit screen framerate to typically 30fps.
 
-*This article uses content from the eLinux wiki page [RPiconfig](http://elinux.org/RPiconfig), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](http://creativecommons.org/licenses/by-sa/3.0/)*
+*This article uses content from the eLinux wiki page [RPiconfig](https://elinux.org/RPiconfig), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](https://creativecommons.org/licenses/by-sa/3.0/)*

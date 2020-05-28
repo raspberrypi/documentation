@@ -142,7 +142,7 @@ It is possible to overclock your Raspberry Pi's CPU. The default is 700MHz but i
 
 **Be aware that overclocking may reduce the lifetime of your Raspberry Pi.** If overclocking at a certain level causes system instability, try a more modest overclock. Hold down the Shift key during boot to temporarily disable overclocking.
 
-See http://elinux.org/RPi_Overclocking for more information.
+See https://elinux.org/RPi_Overclocking for more information.
 
 <a name="advanced-options"></a>
 ### Advanced Options
@@ -227,4 +227,4 @@ See this tool's source at [github.com/RPi-Distro/raspi-config](https://github.co
 
 ---
 
-*This article uses content from the eLinux wiki page [RPi raspi-config](http://elinux.org/RPi_raspi-config), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](http://creativecommons.org/licenses/by-sa/3.0/)*
+*This article uses content from the eLinux wiki page [RPi raspi-config](https://elinux.org/RPi_raspi-config), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](https://creativecommons.org/licenses/by-sa/3.0/)*

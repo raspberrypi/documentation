@@ -8,7 +8,7 @@
 
 ### Buy a pre-installed SD card
 
-SD cards with NOOBS preinstalled are available from many of our distributors and independent retailers, including [Pimoroni](https://shop.pimoroni.com/products/noobs-8gb-sd-card), [Adafruit](https://www.adafruit.com/products/1583), and [Pi Hut](http://thepihut.com/collections/raspberry-pi-sd-cards-and-adapters/products/noobs-preinstalled-sd-card).
+SD cards with NOOBS preinstalled are available from many of our distributors and independent retailers, including [Pimoroni](https://shop.pimoroni.com/products/noobs-8gb-sd-card), [Adafruit](https://www.adafruit.com/products/1583), and [Pi Hut](https://thepihut.com/collections/raspberry-pi-sd-cards-and-adapters/products/noobs-preinstalled-sd-card).
 
 ### Download
 
@@ -50,7 +50,7 @@ The following operating systems are currently included in NOOBS:
 - [LibreELEC](https://libreelec.tv/)
 - [OSMC](https://osmc.tv/)
 - [Recalbox](https://www.recalbox.com/)
-- [Lakka](http://www.lakka.tv/)
+- [Lakka](https://www.lakka.tv/)
 - [RISC OS](https://www.riscosopen.org/wiki/documentation/show/Welcome%20to%20RISC%20OS%20Pi)
 - [Screenly OSE](https://www.screenly.io/ose/)
 - [Windows 10 IoT Core](https://developer.microsoft.com/en-us/windows/iot)

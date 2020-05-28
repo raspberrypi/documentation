@@ -6,7 +6,7 @@ The DSI connector on the Model A/B boards does not have the I2C connections requ
 
 Using the jumper cables, connect SCL/SDA on the GPIO header to the horizontal pins marked SCL/SDA on the display board. We also recommend that you power the Model A/B via the GPIO pins using the jumper cables.
 
-For the GPIO header pinout, see [this diagram](http://pinout.xyz/).
+For the GPIO header pinout, see [this diagram](https://pinout.xyz/).
 
 DSI display autodetection is disabled by default on these boards. To enable detection, add the following line to `/boot/config.txt`:
 

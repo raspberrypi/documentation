@@ -31,7 +31,7 @@ sudo apt purge python3-picamera
 
 ## pip
 
-Not all Python packages are available in the Raspberry Pi OS archives, and those that are can sometimes be out-of-date. If you can't find a suitable version in the Raspberry Pi OS archives, you can install packages from the [Python Package Index](http://pypi.python.org/) (PyPI). To do so, use the `pip` tool.
+Not all Python packages are available in the Raspberry Pi OS archives, and those that are can sometimes be out-of-date. If you can't find a suitable version in the Raspberry Pi OS archives, you can install packages from the [Python Package Index](https://pypi.python.org/) (PyPI). To do so, use the `pip` tool.
 
 `pip` is installed by default in Raspberry Pi OS Desktop images (but not Raspberry Pi OS Lite). You can install it with `apt`:
 

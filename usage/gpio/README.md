@@ -40,7 +40,7 @@ As well as simple input and output devices, the GPIO pins can be used with a var
 
 ## GPIO pinout
 
-It's important to be aware of which pin is which. Some people use pin labels (like the [RasPiO Portsplus](http://rasp.io/portsplus/) PCB, or the printable [Raspberry Leaf](https://github.com/splitbrain/rpibplusleaf)).
+It's important to be aware of which pin is which. Some people use pin labels (like the [RasPiO Portsplus](https://rasp.io/portsplus/) PCB, or the printable [Raspberry Leaf](https://github.com/splitbrain/rpibplusleaf)).
 
 ![](images/raspio-portsplus.jpg)
 
@@ -48,7 +48,7 @@ A handy reference can be accessed on the Raspberry Pi by opening a terminal wind
 
 ![](images/gpiozero-pinout.png)
 
-For more details on the advanced capabilities of the GPIO pins see gadgetoid's [interactive pinout diagram](http://pinout.xyz/).
+For more details on the advanced capabilities of the GPIO pins see gadgetoid's [interactive pinout diagram](https://pinout.xyz/).
 
 ## Programming with GPIO
 

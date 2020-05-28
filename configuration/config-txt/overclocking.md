@@ -2,7 +2,7 @@
 
 **NOTE:** Setting any overclocking parameters to values other than those used by [raspi-config](../raspi-config.md#overclock) may set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. The specific circumstances where the overclock bit is set are if `force_turbo` is set to `1` and any of the `over_voltage_*` options are set to a value > `0`. See the [blog post on Turbo Mode](https://www.raspberrypi.org/blog/introducing-turbo-mode-up-to-50-more-performance-for-free/) for more information. **Pi 4** overclocking options may be subject to change in the future.
 
-The latest kernel has a [cpufreq](http://www.pantz.org/software/cpufreq/usingcpufreqonlinux.html) kernel driver with the "ondemand" governor enabled by default. It has no effect if you have no overclock settings, but if you overclock, the CPU frequency will vary with processor load. Non-default values are only used when required, according to the governor. You can adjust the minimum values with the `*_min` config options (only values lower than default are applied) or disable dynamic clocking (and force overclocking) with `force_turbo=1`. For more information [see this section of the documentation](../../hardware/raspberrypi/frequency-management.md).
+The latest kernel has a [cpufreq](https://www.pantz.org/software/cpufreq/usingcpufreqonlinux.html) kernel driver with the "ondemand" governor enabled by default. It has no effect if you have no overclock settings, but if you overclock, the CPU frequency will vary with processor load. Non-default values are only used when required, according to the governor. You can adjust the minimum values with the `*_min` config options (only values lower than default are applied) or disable dynamic clocking (and force overclocking) with `force_turbo=1`. For more information [see this section of the documentation](../../hardware/raspberrypi/frequency-management.md).
 
 Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85°C, in order to cool the SoC down. You should not hit this limit with Raspberry Pi Models 1 or 2, but you are more likely to with Raspberry Pi 3 and Raspberry Pi 4B. For more information [see this section of the documentation](../../hardware/raspberrypi/frequency-management.md). Overclocking and overvoltage are also disabled when an undervoltage situation is detected.
 
@@ -139,4 +139,4 @@ Most overclocking issues show up immediately with a failure to boot. If this occ
 
 
 
-*This article uses content from the eLinux wiki page [RPiconfig](http://elinux.org/RPiconfig), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](http://creativecommons.org/licenses/by-sa/3.0/)*
+*This article uses content from the eLinux wiki page [RPiconfig](https://elinux.org/RPiconfig), which is shared under the [Creative Commons Attribution-ShareAlike 3.0 Unported license](https://creativecommons.org/licenses/by-sa/3.0/)*
