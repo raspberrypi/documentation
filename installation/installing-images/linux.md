@@ -31,7 +31,7 @@
 
 In Linux it is possible to combine the unzip and SD copying process into one command, which avoids any issues that might occur when the unzipped image is larger than 4GB. This can happen on certain filesystems that do not support files larger than 4GB (e.g. FAT), although it should be noted that most Linux installations do not use FAT and therefore do not have this limitation.
 
-The following command unzips the zip file (replace 2020-02-13-Raspberry Pi OS-buster.zip with the appropriate zip filename), and pipes the output directly to the dd command. This in turn copies it to the SD card, as described in the previous section.
+The following command unzips the zip file (replace 2020-02-13-raspios-buster.zip with the appropriate zip filename), and pipes the output directly to the dd command. This in turn copies it to the SD card, as described in the previous section.
 ```
 unzip -p 2020-02-13-raspios-buster.zip | sudo dd of=/dev/sdX bs=4M conv=fsync
 ```
