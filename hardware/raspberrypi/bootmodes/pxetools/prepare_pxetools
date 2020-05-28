@@ -92,9 +92,9 @@ echo "Getting latest Raspberry Pi OS lite image to use as NFS root"
 # Get latest Raspberry Pi OS lite image
 sudo mkdir -p /nfs/bases
 cd /nfs/bases
-sudo wget -O Raspberry Pi OS_latest.zip https://downloads.raspberrypi.org/Raspberry Pi OS_lite_latest
-sudo unzip Raspberry Pi OS_latest.zip
-sudo rm Raspberry Pi OS_latest.zip
+sudo wget -O raspios_latest.zip https://downloads.raspberrypi.org/raspios_lite_armhf_latest
+sudo unzip raspios_latest.zip
+sudo rm raspios_latest.zip
 
 sudo wget  -O /usr/local/sbin/pxetools https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/raspberrypi/bootmodes/pxetools/pxetools
 sudo chmod +x /usr/local/sbin/pxetools
