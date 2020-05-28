@@ -154,7 +154,7 @@ Don't worry, as far as we know, there are no fake Raspberry Pis. The processors 
 
 ### I want to be a Raspberry Pi reseller.
 
-We have an exclusive manufacturing and distribution arrangement with [RS](https://www.okdo.com/c/pi-shop/the-raspberry-pi/) and [Farnell](https://www.element14.com/community/community/raspberry-pi). Resellers buy the Raspberry Pi in bulk from them (which reduces shipping costs to nearly nothing) and sell on. You do not need any special licence to resell, and the distributors are very happy to sell on to resellers. If you are interested in joining our [Approved Reseller](https://www.raspberrypi.org/blog/approved-reseller/) programme, contact us by emailing info@raspberrypi.org.
+We have an exclusive manufacturing and distribution arrangement with [RS](https://uk.rs-online.com/web/b/raspberry-pi/) and [Farnell](https://www.element14.com/community/community/raspberry-pi). Resellers buy the Raspberry Pi in bulk from them (which reduces shipping costs to nearly nothing) and sell on. You do not need any special licence to resell, and the distributors are very happy to sell on to resellers. If you are interested in joining our [Approved Reseller](https://www.raspberrypi.org/blog/approved-reseller/) programme, contact us by emailing info@raspberrypi.org.
 
 ### What manufacturing standards etc. does the Raspberry Pi comply with?
 
