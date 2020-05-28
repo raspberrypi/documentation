@@ -46,7 +46,7 @@ For Linux users we recommend `gparted` (or the command line version `parted`). N
 
 The following operating systems are currently included in NOOBS:
 
-- [Raspberry Pi OS](http://Raspberry Pi OS.org/)
+- [Raspberry Pi OS](https://www.raspberrypi.org)
 - [LibreELEC](https://libreelec.tv/)
 - [OSMC](https://osmc.tv/)
 - [Recalbox](https://www.recalbox.com/)
