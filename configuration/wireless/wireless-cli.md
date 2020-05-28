@@ -64,7 +64,7 @@ On the Raspberry Pi 3B+ and Raspberry Pi 4B, you will also need to set the count
 country=GB
 ```
 
-Note that with the latest Buster Raspbian release, you must ensure that the `wpa_supplicant.conf` file contains the following information at the top:
+Note that with the latest Buster Raspberry Pi OS release, you must ensure that the `wpa_supplicant.conf` file contains the following information at the top:
 
 ```
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
@@ -99,7 +99,7 @@ You can verify whether it has successfully connected using `ifconfig wlan0`. If 
 
 ## Adding multiple wireless network configurations
 
-On recent versions of Raspbian, it is possible to set up multiple configurations for wireless networking. For example, you could set up one for home and one for school.
+On recent versions of Raspberry Pi OS, it is possible to set up multiple configurations for wireless networking. For example, you could set up one for home and one for school.
 
 For example
 ```

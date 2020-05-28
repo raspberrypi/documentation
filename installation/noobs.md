@@ -21,7 +21,7 @@ Once you've downloaded the NOOBS zip file, you'll need to copy the contents to a
 To set up a blank SD card with NOOBS:
 
 - Format an SD card as FAT. See the instructions given below.
-  - Your SD card will need to be at least 16GB for Full Raspbian, or at least 8GB for all other installs. 
+  - Your SD card will need to be at least 16GB for Full Raspberry Pi OS, or at least 8GB for all other installs. 
 - Download and extract the files from the NOOBS zip file.
 - Copy the extracted files onto the SD card that you just formatted, so that these files are at the root directory of the SD card. Please note that in some cases it may extract the files into a folder; if this is the case, then please copy across the files from inside the folder rather than the folder itself.
 - On first boot, the "RECOVERY" FAT partition will be automatically resized to a minimum, and a list of OSes that are available to install will be displayed.
@@ -46,7 +46,7 @@ For Linux users we recommend `gparted` (or the command line version `parted`). N
 
 The following operating systems are currently included in NOOBS:
 
-- [Raspbian](http://raspbian.org/)
+- [Raspberry Pi OS](https://www.raspberrypi.org)
 - [LibreELEC](https://libreelec.tv/)
 - [OSMC](https://osmc.tv/)
 - [Recalbox](https://www.recalbox.com/)
@@ -56,13 +56,13 @@ The following operating systems are currently included in NOOBS:
 - [Windows 10 IoT Core](https://developer.microsoft.com/en-us/windows/iot)
 - [TLXOS](https://thinlinx.com/)
 
-As of NOOBS v1.3.10 (September 2014), only Raspbian is installed by default in NOOBS. The others can be installed with a network connection.
+As of NOOBS v1.3.10 (September 2014), only Raspberry Pi OS is installed by default in NOOBS. The others can be installed with a network connection.
 
 ## NOOBS and NOOBS Lite
 
 NOOBS is available in two forms: offline and network install, or network install only.
 
-The full version has Raspbian included, so it can be installed from the SD card while offline, whereas using NOOBS Lite or installing any other operating system requires an internet connection.
+The full version has Raspberry Pi OS included, so it can be installed from the SD card while offline, whereas using NOOBS Lite or installing any other operating system requires an internet connection.
 
 Note that the operating system image on the full version can be outdated if a new version of the OS is released, but if connected to the internet you will be shown the option of downloading the latest version if there is a newer one available.
 

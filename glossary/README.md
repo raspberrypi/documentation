@@ -42,7 +42,7 @@
 - **ISP** - Internet service provider.
 - **LAN** - Local Area Network, an Ethernet- or wireless-based communication network in a localised area, for example a house or office.
 - **LED** - Light-Emitting Diode, a semiconductor device that produces light using electricity.
-- **Linux** - The main operating system used on the Raspberry Pi; the particular customised distribution for the Raspberry Pi range is called Raspbian; third parties have also produced their own distributions.
+- **Linux** - The main operating system used on the Raspberry Pi; the particular customised distribution for the Raspberry Pi range is called Raspberry Pi OS; third parties have also produced their own distributions.
 - **MSD** - Mass Storage Device (amongst other things), such as an SD card or hard disk drive.
 - **MQTT** - MQTT stands for MQ Telemetry Transport, a lightweight and simple machine-to-machine protocol often used for IoT devices; see [the MQTT website](http://mqtt.org/).
 - **NAND** - A [NAND gate](https://en.wikipedia.org/wiki/NAND_gate) is a logic gate, specifically an inverted AND gate; can also refer to a type of flash memory that uses NAND logic.
@@ -53,12 +53,14 @@
 - **PINN** - A [third-party development](https://github.com/procount/pinn) of the NOOBS system, often a better option than the official NOOBS.
 - **PoE** - Power over Ethernet, a mechanism to power a device through its Ethernet connection; we produce a [PoE HAT](https://www.raspberrypi.org/products/poe-hat) for the Raspberry Pi 3 Model B+ and Raspberry Pi 4 Model B.
 - **Polyfuse** - A self-resetting electrical fuse used on some Pi models to protect against over-current; can take hours or even days to reset.
-- **`raspi-config`** - A command line tool for configuring Raspbian's operating system features; see our [official documentation](../configuration/raspi-config.md).
+- **`raspi-config`** - A command line tool for configuring Raspberry Pi OS's operating system features; see our [official documentation](../configuration/raspi-config.md).
 - **Raspberry Pi Imager** - The official graphical tool for downloading and installing operating system images to an SD card. Download it [here](https://www.raspberrypi.org/downloads/).
-- **raspivid, raspistill, raspiyuv, raspividyuv** - A set of applications to run the Raspberry Pi Camera Module in various modes; see our [official documentation](../raspbian/applications/camera.md).
-- **Raspbian** - A Debian-based Linux distribution targeted at the entire Raspberry Pi range, regarded as the official operating system; the current version is based on Debian Buster, with the first release in June 2019; see the [Wikipedia entry for further release details](https://en.wikipedia.org/wiki/Raspbian).
+- **Raspbian** - An armhf build of the Debian source repositories.
+- **Raspberry Pi OS (32bit)** - A distribution of the Raspbian repositories targeted at the entire Raspberry Pi range.
+- **Raspberry Pi OS (64bit)** - A distribution of the Debian repositories targeted at the Pi 3 and Pi 4 models.
 - **Raspberry Pi Configuration Tool (`rcgui`)** - A graphical equivalent of `raspi-config`.
 - **Raspberry Pi Desktop** - A version of the LXDE desktop environment, specifically tailored to the Raspberry Pi (used to be called PIXEL).
+- **raspivid, raspistill, raspiyuv, raspividyuv** - A set of applications to run the Raspberry Pi Camera Module in various modes; see our [official documentation](../raspbian/applications/camera.md).
 - **RPF** - Raspberry Pi Foundation, the original, UK-registered educational charity (1129409) that launched the Raspberry Pi.
 - **RPT/RPF(T)** - Raspberry Pi Trading, a wholely owned commercial subsidiary of the RPF which designs and develops all Raspberry Pi products, including magazines; all profits from the RPT go to the RPF for use in their educational programmes.
 - **rpi-update** - A program you can run on a Raspberry Pi to download the very latest test firmware and Linux kernel; there is no guarantee that the latest version will work correctly, so you should only run rpi-update if recommended by a Raspberry Pi engineer.

@@ -5,7 +5,7 @@ The easiest way to write images to an SD card and USB drives with Chrome OS is t
 ## Using the Recovery Utility
 
 - Download the [Chromebook Recovery Utility](https://chrome.google.com/webstore/detail/chromebook-recovery-utili/jndclpdbaamdhonoechobihbbiimdgai).
-- Download the [Raspbian .zip file](https://www.raspberrypi.org/downloads/raspbian/).
+- Download the [Raspberry Pi OS .zip file](https://www.raspberrypi.org/downloads/raspbian/).
 - Launch the **Recovery Utility**
 - Click on the **Settings Gears** icon in the upper right-hand corner, next to the window close icon.
 - Select the **Use Local Image** option.

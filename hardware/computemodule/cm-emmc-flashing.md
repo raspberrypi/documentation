@@ -89,13 +89,13 @@ Once you have written an OS image, make sure J4 (USB SLAVE BOOT ENABLE) is set t
 
 After `rpiboot` completes, you will see a new device appear; this is commonly `/dev/sda` on a Pi but it could be another location such as `/dev/sdb`, so check in `/dev/` or run `lsblk` before running `rpiboot` so you can see what changes.
 
-You now need to write a raw OS image (such as [Raspbian](https://www.raspberrypi.org/downloads/raspbian/)) to the device. Note the following command may take some time to complete, depending on the size of the image: (Change `/dev/sdX` to the appropriate device.)
+You now need to write a raw OS image (such as [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspbian/)) to the device. Note the following command may take some time to complete, depending on the size of the image: (Change `/dev/sdX` to the appropriate device.)
 
 ```bash
 sudo dd if=raw_os_image_of_your_choice.img of=/dev/sdX bs=4MiB
 ```
 
-Once the image has been written, unplug and re-plug the USB; you should see two partitions appear (for Raspbian) in `/dev`. In total, you should see something similar to this:
+Once the image has been written, unplug and re-plug the USB; you should see two partitions appear (for Raspberry Pi OS) in `/dev`. In total, you should see something similar to this:
 
 ```bash
 /dev/sdX    <- Device

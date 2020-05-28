@@ -20,7 +20,7 @@ Once this bit has been set, the SD card is no longer required. **Note that any c
 
 **On the Raspberry Pi 3A+, setting the OTP bit to enable USB host boot mode will permanently prevent that Pi from booting in USB device mode.**
 
-You can use any SD card running Raspbian or Raspbian Lite to program the OTP bit.
+You can use any SD card running Raspberry Pi OS or Raspberry Pi OS Lite to program the OTP bit.
 
 Enable USB host boot mode with this code:
 

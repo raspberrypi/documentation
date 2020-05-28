@@ -20,7 +20,7 @@ Also, from 36 to 43 (inclusive), there are eight rows of 32 bits available for t
 
 To program these bits, you will need to use the vcmailbox. This is a Linux driver interface to the firmware which will handle the programming of the rows. To do this, please refer to the documentation [here](https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface), and the vcmailbox example application [here](https://github.com/raspberrypi/userland/blob/master/host_applications/linux/apps/vcmailbox/vcmailbox.c).
 
-The vcmailbox application can be used directly from the command line on a Raspberry Pi Raspbian build. An example usage would be:
+The vcmailbox application can be used directly from the command line on a Raspberry Pi Raspberry Pi OS build. An example usage would be:
 
 ```
 pi@raspberrypi:~ $ /opt/vc/bin/vcmailbox 0x00010004 8 8 0 0

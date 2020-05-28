@@ -106,7 +106,7 @@
 - Why is my Raspberry Pi hot?
 - I keep getting a lightning bolt symbol and messages about power...
 - My SD card seems to have stopped working.
-- I've imaged an SD card with Raspbian/NOOBS, but when I look at it with my Windows PC, it's not all there!
+- I've imaged an SD card with Raspberry Pi OS/NOOBS, but when I look at it with my Windows PC, it's not all there!
 
 ---
 
@@ -162,7 +162,7 @@ We have put the Raspberry Pi models through extensive compliance testing, for Eu
 
 ### Can I use a Raspberry Pi in a commercial product?
 
-This is a very common question, and the answer is yes! Once you have bought a Raspberry Pi, it's yours to do with as you wish. Note, however, that a lot of the software in the Raspbian distribution is GPL-licenced, which comes with certain requirements, most significantly that you must provide access to the source code if requested. This is usually pretty easy to do.
+This is a very common question, and the answer is yes! Once you have bought a Raspberry Pi, it's yours to do with as you wish. Note, however, that a lot of the software in the Raspberry Pi OS distribution is GPL-licenced, which comes with certain requirements, most significantly that you must provide access to the source code if requested. This is usually pretty easy to do.
 
 ### Is a Raspberry Pi suitable for industrial applications?
 
@@ -275,7 +275,7 @@ You should not need to use a heatsink, as the chip used in the Raspberry Pi is e
 ## Software
 
 ### What operating system does it use?
-The recommended distribution (distro) is Raspbian, which is specifically designed for the Raspberry Pi and which our engineers are constantly optimising. It is, however, a straightforward process to replace the root partition on the SD card with another Arm Linux distro, so we encourage you to try out several distros to see which one you like the most. There are several other distros available on our [downloads](https://www.raspberrypi.org/downloads) page. The OS is stored on the SD card.
+The recommended distribution (distro) is Raspberry Pi OS, which is specifically designed for the Raspberry Pi and which our engineers are constantly optimising. It is, however, a straightforward process to replace the root partition on the SD card with another Arm Linux distro, so we encourage you to try out several distros to see which one you like the most. There are several other distros available on our [downloads](https://www.raspberrypi.org/downloads) page. The OS is stored on the SD card.
 
 ### Can I run Windows 10 on the Raspberry Pi?
 You cannot run Windows 10 on the Raspberry Pi. There is however a special "Internet of Things" version of Windows 10 that runs on the Raspberry Pi 3B and 3B+, called Windows 10 IoT. Windows 10 IoT does not have a graphical desktop, and is intended for use in embedded devices.
@@ -306,7 +306,7 @@ It is not possible to run Mac software on the Raspberry Pi.
 
 You cannot run Windows software *directly* on the Raspberry Pi. It is sometimes possible to use emulation software to run Windows applications on the Raspberry Pi, but the use of emulation makes it run much more slowly. For example, Windows 98 runs reasonably well on the Raspberry Pi using an emulator called QEMU, however more recent Windows software runs too slowly to be useful on the Raspberry Pi.
 
-There is a wealth of Linux software available directly on the Raspberry Pi itself. By default, Raspbian comes installed with the most commonly used applications. If you need to install something else, use the "Add / Remove Software" application. You can also use the `apt` command - see [APT](../linux/software/apt.md). Linux software binaries available elsewhere are usually compiled for the x86 and x64 architectures, so cannot be used on the Raspberry Pi since it uses the ARM architecture. However, if the source code is available, you can compile an ARM-specific version yourself.
+There is a wealth of Linux software available directly on the Raspberry Pi itself. By default, Raspberry Pi OS comes installed with the most commonly used applications. If you need to install something else, use the "Add / Remove Software" application. You can also use the `apt` command - see [APT](../linux/software/apt.md). Linux software binaries available elsewhere are usually compiled for the x86 and x64 architectures, so cannot be used on the Raspberry Pi since it uses the ARM architecture. However, if the source code is available, you can compile an ARM-specific version yourself.
 
 ### Will it run Android or Android Things?
 
@@ -345,7 +345,7 @@ With Cron! [Here's how](../linux/usage/cron.md).
 
 ### What displays can I use?
 
-There is composite and HDMI out on the board, so you can hook it up to an old analogue TV through the composite or through a composite to SCART connector, to a digital TV or to a DVI monitor (using a cheap, passive HDMI to DVI cable for the DVI). For the Model B+, Raspberry Pi 2, and Raspberry Pi 3, the RCA composite jack has been replaced with a 3.5mm jack that combines audio and video in one. You'll need a 3.5mm to 3RCA adapter cable to connect it to an older TV. There are many different types of this cable out there, but you want to purchase one that is compatible with the iPod Video (the iPod will have the left and right audio channels reversed, but the version of Raspbian included with NOOBS can swap this for you). The Raspberry Pi Zero uses a mini-HDMI port.
+There is composite and HDMI out on the board, so you can hook it up to an old analogue TV through the composite or through a composite to SCART connector, to a digital TV or to a DVI monitor (using a cheap, passive HDMI to DVI cable for the DVI). For the Model B+, Raspberry Pi 2, and Raspberry Pi 3, the RCA composite jack has been replaced with a 3.5mm jack that combines audio and video in one. You'll need a 3.5mm to 3RCA adapter cable to connect it to an older TV. There are many different types of this cable out there, but you want to purchase one that is compatible with the iPod Video (the iPod will have the left and right audio channels reversed, but the version of Raspberry Pi OS included with NOOBS can swap this for you). The Raspberry Pi Zero uses a mini-HDMI port.
 
 The Raspberry Pi 4 has support for two HDMI monitors, which attach via micro HDMI ports. It is also capable of displaying at full resolution on a 4K monitor or TV. Note that for best HDMI performance at 4K, a good-quality HDMI cable is required. We sell a full set of ancilliary components, including HDMI cables.
 
@@ -389,7 +389,7 @@ No, not really — you may corrupt your SD card if you do that. We recommend iss
 
 ### What about unplanned power interruptions?
 
-Power interruptions can cause problems on all sorts of electronic devices, and the Pi is no different. SD card corruption can be caused if the power is simply turned off without going through a normal shutdown. This is because the system may be writing to the SD card at the point of power failure, leaving the SD card filesystem in an invalid state. So, if you cannot prevent power interruptions, one way of making the system more robust is to limit the amount of writing that is done to the SD card, or even to stop it altogether. You can disable swap, enable logging to RAM, and disable systemd-timesyncd, all of which greatly reduce the number of accesses to the SD card. You can also make the entire Raspbian installation read-only, preventing any writing to the card at all. An internet search will provide instructions on how to implement these measures. 
+Power interruptions can cause problems on all sorts of electronic devices, and the Pi is no different. SD card corruption can be caused if the power is simply turned off without going through a normal shutdown. This is because the system may be writing to the SD card at the point of power failure, leaving the SD card filesystem in an invalid state. So, if you cannot prevent power interruptions, one way of making the system more robust is to limit the amount of writing that is done to the SD card, or even to stop it altogether. You can disable swap, enable logging to RAM, and disable systemd-timesyncd, all of which greatly reduce the number of accesses to the SD card. You can also make the entire Raspberry Pi OS installation read-only, preventing any writing to the card at all. An internet search will provide instructions on how to implement these measures. 
 
 ### What are the power requirements?
 
@@ -428,7 +428,7 @@ This is the typical amount of power (in ampere) drawn by different Raspberry Pi 
 | | Avg | 0.32 | 0.75 | 0.85 | 0.23 | 1.2 |
 | Halt current | | | | 0.10 | 0.055 | 0.023 | 
 
-**Test conditions:** We used a standard Raspbian image (current as of 26 Feb 2016, or June 2019 for the Raspberry Pi 4), at room temperature, with the Raspberry Pi connected to a HDMI monitor, USB keyboard, and USB mouse. The Raspberry Pi 3 Model B was connected to a wireless LAN access point, the Raspberry Pi 4 was connected to Ethernet. All these power measurements are approximate and do not take into account power consumption from additional USB devices; power consumption can easily exceed these measurements if multiple additional USB devices or a HAT are connected to the Raspberry Pi.
+**Test conditions:** We used a standard Raspberry Pi OS image (current as of 26 Feb 2016, or June 2019 for the Raspberry Pi 4), at room temperature, with the Raspberry Pi connected to a HDMI monitor, USB keyboard, and USB mouse. The Raspberry Pi 3 Model B was connected to a wireless LAN access point, the Raspberry Pi 4 was connected to Ethernet. All these power measurements are approximate and do not take into account power consumption from additional USB devices; power consumption can easily exceed these measurements if multiple additional USB devices or a HAT are connected to the Raspberry Pi.
 
 ### Can I power the Raspberry Pi from a USB hub?
 
@@ -452,7 +452,7 @@ The GPIO pins are natively 3.3V, so 5V devices **MUST NOT** be attached directly
 
 ### What size of SD card do I need?
 
-Whether you want to use the [official Raspbian operating system](https://www.raspberrypi.org/downloads/raspbian/) (or the [NOOBS installer for Raspbian](https://www.raspberrypi.org/downloads/noobs/) or a different standalone operating system image (see [recommended third-party OS](https://www.raspberrypi.org/downloads/)), **the minimum-size SD card we recommend using is 8GB**. This will give you the free space you need to install additional packages or make programs of your own. The original Raspberry Pi Model A and Model B require full-size SD cards. The newer Raspberry Pi 1 Model A+, Model 1 B+, 2B, 3B, 3B+, 3A+, 4B, Zero, Zero W, and Zero WH require microSD cards.
+Whether you want to use the [official Raspberry Pi OS operating system](https://www.raspberrypi.org/downloads/raspbian/) (or the [NOOBS installer for Raspberry Pi OS](https://www.raspberrypi.org/downloads/noobs/) or a different standalone operating system image (see [recommended third-party OS](https://www.raspberrypi.org/downloads/)), **the minimum-size SD card we recommend using is 8GB**. This will give you the free space you need to install additional packages or make programs of your own. The original Raspberry Pi Model A and Model B require full-size SD cards. The newer Raspberry Pi 1 Model A+, Model 1 B+, 2B, 3B, 3B+, 3A+, 4B, Zero, Zero W, and Zero WH require microSD cards.
 
 ### What size of SD card can it support?
 
@@ -538,7 +538,7 @@ The Raspberry Pi Camera Modules requires 250mA to operate. Ensure that your powe
 
 ### What is the username and password for the Raspberry Pi?
 
-The default username for Raspbian is `pi` (without any quotation marks) and the default password is `raspberry` (again, do not include the quotation marks). If this does not work, check the information about your specific distro on the [downloads page](https://www.raspberrypi.org/downloads).
+The default username for Raspberry Pi OS is `pi` (without any quotation marks) and the default password is `raspberry` (again, do not include the quotation marks). If this does not work, check the information about your specific distro on the [downloads page](https://www.raspberrypi.org/downloads).
 
 ### Why does nothing happen when I type in my password?
 
@@ -564,7 +564,7 @@ Most Raspberry Pi models have circuity to detect drops of the incoming power sup
 
 SD cards have a limited lifespan due to the way they work. Under most circumstances, they offer some years of use, but heavy file accessing, or using it as a swap drive, may reduce the SD card's lifespan considerably. Note that there are also fake capacity SD cards being sold that are likely to be unreliable.
 
-### I've imaged an SD card with Raspbian/NOOBS, but when I look at it with my Windows PC, it's not all there!
+### I've imaged an SD card with Raspberry Pi OS/NOOBS, but when I look at it with my Windows PC, it's not all there!
 
 This is to do with the capabilities of Windows to read Linux-formatted partitions. When you image the SD card, it is automatically split into multiple partitions. The first partition uses a format that Windows can read, but the other partitions use a Linux-specific file system, which Windows simply does not recognise. This means when you put an SD card in a Windows machine, it only displays the first partition, and may well say the other partitions are corrupted and need formatting - **do not format them**! Here's some information on what goes in that first [partition](../configuration/boot_folder.md). If you insert the SD card on a machine running Linux, it will display all the partitions correctly.
 

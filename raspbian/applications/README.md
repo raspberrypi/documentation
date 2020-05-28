@@ -1,4 +1,4 @@
-# Raspbian Applications
+# Raspberry Pi OS Applications
 
 - [Camera](camera.md)
     - Information on the demonstration camera software

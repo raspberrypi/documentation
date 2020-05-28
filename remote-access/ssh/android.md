@@ -13,7 +13,7 @@ The app should open showing ‘No Hosts’. To get started, you should tap the b
 
 Enter an `alias`, such as Raspberry Pi. Then enter the IP address under `hostname`. Fill in the `username` and `password` and hit the tick `✓` in the top right corner. 
 
-If you do not know the IP address, type `hostname -I` in the command line on the Raspberry Pi. See [here](../ip-address.md) for more ways to find your IP address. The default login for Raspbian is `pi` with the password `raspberry`.
+If you do not know the IP address, type `hostname -I` in the command line on the Raspberry Pi. See [here](../ip-address.md) for more ways to find your IP address. The default login for Raspberry Pi OS is `pi` with the password `raspberry`.
 
 
 ## 2. Connect

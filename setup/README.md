@@ -7,7 +7,7 @@ A guide to setting up your Raspberry Pi
 ### Essential (for general use)
 
 - [SD card](../installation/sd-cards.md)
-    - We recommend a minimum of 8GB class 4 or class 10 microSD card. To save time, you can get a card that is pre-installed with [NOOBS](../installation/noobs.md) or [Raspbian](../installation/installing-images/README.md), although setting up your own card is easy.
+    - We recommend a minimum of 8GB class 4 or class 10 microSD card. To save time, you can get a card that is pre-installed with [NOOBS](../installation/noobs.md) or [Raspberry Pi OS](../installation/installing-images/README.md), although setting up your own card is easy.
 - [Display and connectivity cable](monitor-connection.md)
     - Any HDMI/DVI monitor or TV should work as a display for the Pi. For best results, use a display with HDMI input; other types of connection for older devices are also available.
 - Keyboard and mouse

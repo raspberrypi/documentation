@@ -10,7 +10,7 @@ Even if you are hidden behind a firewall, it is sensible to take security seriou
 
 ## Change your default password
 
-The default username and password is used for every single Raspberry Pi running Raspbian. So, if you can get access to a Raspberry Pi, and these settings have not been changed, you have `root` access to that Raspberry Pi.
+The default username and password is used for every single Raspberry Pi running Raspberry Pi OS. So, if you can get access to a Raspberry Pi, and these settings have not been changed, you have `root` access to that Raspberry Pi.
 
 So the first thing to do is change the password. This can be done via the raspi-config application, or from the command line.
 
@@ -60,7 +60,7 @@ Once you have confirmed that the new account is working, you can delete the `pi`
 sudo pkill -u pi
 ```
 
-Please note that with the current Raspbian distribution, there are some aspects that require the `pi` user to be present. If you are unsure whether you will be affected by this, then leave the `pi` user in place. Work is being done to reduce the dependency on the `pi` user.
+Please note that with the current Raspberry Pi OS distribution, there are some aspects that require the `pi` user to be present. If you are unsure whether you will be affected by this, then leave the `pi` user in place. Work is being done to reduce the dependency on the `pi` user.
 
 To delete the `pi` user, type the following:
 
@@ -94,7 +94,7 @@ Then save the file: it will be checked for any syntax errors. If no errors were 
 
 ## Ensure you have the latest security fixes
 
-This can be as simple as ensuring your version of Raspbian is up-to-date, as an up-to-date distribution contains all the latest security fixes. Full instructions can be found [here](../raspbian/updating.md).
+This can be as simple as ensuring your version of Raspberry Pi OS is up-to-date, as an up-to-date distribution contains all the latest security fixes. Full instructions can be found [here](../raspbian/updating.md).
 
 If you are using SSH to connect to your Raspberry Pi, it can be worthwhile to add a cron job that specifically updates the ssh-server. The following command, perhaps as a daily cron job, will ensure you have the latest SSH security fixes promptly, independent of your normal update process. More information on setting up cron can be found [here](../linux/usage/cron.md)
 
@@ -160,7 +160,7 @@ Save the file and either restart the ssh system with `sudo service ssh reload` o
 
 ## Install a firewall
 
-There are many firewall solutions available for Linux. Most use the underlying [iptables](http://www.netfilter.org/projects/iptables/index.html) project to provide packet filtering. This project sits over the Linux netfiltering system. `iptables` is installed by default on Raspbian, but is not set up. Setting it up can be a complicated task, and one project that provides a simpler interface than `iptables` is [ufw](https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw), which stands for 'Uncomplicated Fire Wall'. This is the default firewall tool in Ubuntu, and can be easily installed on your Raspberry Pi:
+There are many firewall solutions available for Linux. Most use the underlying [iptables](http://www.netfilter.org/projects/iptables/index.html) project to provide packet filtering. This project sits over the Linux netfiltering system. `iptables` is installed by default on Raspberry Pi OS, but is not set up. Setting it up can be a complicated task, and one project that provides a simpler interface than `iptables` is [ufw](https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw), which stands for 'Uncomplicated Fire Wall'. This is the default firewall tool in Ubuntu, and can be easily installed on your Raspberry Pi:
 
 ```bash
 sudo apt install ufw

@@ -300,7 +300,7 @@ You can look back on the history of the commands you've entered in the REPL by u
 
 ### apt
 
-Some Python packages can be found in the Raspbian archives, and can be installed using apt, for example:
+Some Python packages can be found in the Raspberry Pi OS archives, and can be installed using apt, for example:
 
 ```bash
 sudo apt update
@@ -311,7 +311,7 @@ This is a preferable method of installing, as it means that the modules you inst
 
 ### pip
 
-Not all Python packages are available in the Raspbian archives, and those that are can sometimes be out of date. If you can't find a suitable version in the Raspbian archives, you can install packages from the [Python Package Index](http://pypi.python.org/) (known as PyPI).
+Not all Python packages are available in the Raspberry Pi OS archives, and those that are can sometimes be out of date. If you can't find a suitable version in the Raspberry Pi OS archives, you can install packages from the [Python Package Index](http://pypi.python.org/) (known as PyPI).
 
 To do so, install pip:
 
@@ -331,7 +331,7 @@ Read more on installing software in Python [here](../../linux/software/python.md
 
 The official Python Package Index (PyPI) hosts files uploaded by package maintainers. Some packages require compilation (compiling C/C++ or similar code) in order to install them, which can be a time-consuming task, particlarly on the single-core Raspberry Pi 1 or Pi Zero.
 
-piwheels is a service providing pre-compiled packages (called *Python wheels*) ready for use on the Raspberry Pi. Raspbian is pre-configured to use piwheels for pip. Read more about the piwheels project at [www.piwheels.org](https://www.piwheels.org/).
+piwheels is a service providing pre-compiled packages (called *Python wheels*) ready for use on the Raspberry Pi. Raspberry Pi OS is pre-configured to use piwheels for pip. Read more about the piwheels project at [www.piwheels.org](https://www.piwheels.org/).
 
 ## More
 

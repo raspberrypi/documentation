@@ -1,16 +1,16 @@
-# Updating and upgrading Raspbian
+# Updating and upgrading Raspberry Pi OS
 
-This section covers how to deploy software updates to devices running Raspbian.
+This section covers how to deploy software updates to devices running Raspberry Pi OS.
 
 Before we go any further, let's investigate why keeping our devices updated is important.
 
-The first and probably the most important reason is security. A device running Raspbian contains millions lines of code that you rely on. Over time, these millions lines of code will expose well-known vulnerabilities known as [Common Vulnerabilities and Exposures (CVE)](https://cve.mitre.org/index.html), which are documented in publicly available databases meaning that they are easy to exploit. [Here is a example](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8831) of a recent CVE found in KODI that provides a bit more insight on what information is available in the database and how CVEs are tracked. The only way to mitigate these exploits as a user of Raspbian is to keep your software up to date, as the upstream repositories track CVEs closely and try to mitigate them quickly.
+The first and probably the most important reason is security. A device running Raspberry Pi OS contains millions lines of code that you rely on. Over time, these millions lines of code will expose well-known vulnerabilities known as [Common Vulnerabilities and Exposures (CVE)](https://cve.mitre.org/index.html), which are documented in publicly available databases meaning that they are easy to exploit. [Here is a example](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8831) of a recent CVE found in KODI that provides a bit more insight on what information is available in the database and how CVEs are tracked. The only way to mitigate these exploits as a user of Raspberry Pi OS is to keep your software up to date, as the upstream repositories track CVEs closely and try to mitigate them quickly.
 
 The second reason, which is related to the first, is that the software you are running on your device most certainly contains bugs. Some bugs are CVEs, but bugs could also be affecting the desired functionality without being related to security. By keeping your software up to date, you are lowering the chances of hitting these bugs.
 
 ## APT (Advanced Packaging Tool)
 
-To update software in Raspbian, you can use the [apt](../linux/software/apt.md) tool in a terminal. Open a terminal window from the taskbar or application menu:
+To update software in Raspberry Pi OS, you can use the [apt](../linux/software/apt.md) tool in a terminal. Open a terminal window from the taskbar or application menu:
 
 ![Terminal](../usage/terminal/images/terminal.png)
 
@@ -28,9 +28,9 @@ sudo apt full-upgrade
 
 Note that `full-upgrade` is used in preference to a simple `upgrade`, as it also picks up any dependency changes that may have been made. 
 
-Generally speaking, doing this regularly will keep your installation up to date for the particular major Raspbian release you are using (e.g. Stretch). It will not update from one major release to another, for example, Stretch to Buster.
+Generally speaking, doing this regularly will keep your installation up to date for the particular major Raspberry Pi OS release you are using (e.g. Stretch). It will not update from one major release to another, for example, Stretch to Buster.
 
-However, there are occasional changes made in the Foundation's Raspbian image that require manual intervention, for example a newly introduced package. These are not installed with an upgrade, as this command only updates the packages you already have installed.
+However, there are occasional changes made in the Foundation's Raspberry Pi OS image that require manual intervention, for example a newly introduced package. These are not installed with an upgrade, as this command only updates the packages you already have installed.
 
 ### Updating the kernel and firmware
 
@@ -66,7 +66,7 @@ If moving to a new Pi model (for example the Pi 3B+), you may also need to updat
 
 This section addresses why third-party solutions may be of interest and why [apt](../linux/software/apt.md) is not optimal for all situations. Raspberry Pi do not recommend any specific third-party tools. Prospective users should determine the most suitable tool for their particular requirements.
 
-[Apt](../linux/software/apt.md) is a convenient way of updating the software of your device running Raspbian, but the limitation of this method becomes apparent when you have a larger pool of devices to update, and especially when you do not have physical access to your devices and when they are distributed geographically.
+[Apt](../linux/software/apt.md) is a convenient way of updating the software of your device running Raspberry Pi OS, but the limitation of this method becomes apparent when you have a larger pool of devices to update, and especially when you do not have physical access to your devices and when they are distributed geographically.
 
 If you lack physical access to your devices and want to deploy unattended updates Over-The-Air (OTA), here are some general requirements:
 

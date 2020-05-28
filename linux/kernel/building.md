@@ -4,7 +4,7 @@ There are two main methods for building the kernel. You can build locally on a R
 
 ## Local building
 
-On a Raspberry Pi, first install the latest version of [Raspbian](https://www.raspberrypi.org/downloads/). Then boot your Pi, plug in Ethernet to give you access to the sources, and log in.
+On a Raspberry Pi, first install the latest version of [Raspberry Pi OS](https://www.raspberrypi.org/downloads/). Then boot your Pi, plug in Ethernet to give you access to the sources, and log in.
 
 First install Git and the build dependencies:
 
@@ -22,7 +22,7 @@ git clone --depth=1 https://github.com/raspberrypi/linux
 
 ### Choosing sources
 
-The `git clone` command above will download the current active branch (the one we are building Raspbian images from) without any history. Omitting the `--depth=1` will download the entire repository, including the full history of all branches, but this takes much longer and occupies much more storage.
+The `git clone` command above will download the current active branch (the one we are building Raspberry Pi OS images from) without any history. Omitting the `--depth=1` will download the entire repository, including the full history of all branches, but this takes much longer and occupies much more storage.
 
 To download a different branch (again with no history), use the `--branch` option:
 
@@ -94,7 +94,7 @@ sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 
 ## Cross-compiling
 
-First, you will need a suitable Linux cross-compilation host. We tend to use Ubuntu; since Raspbian is 
+First, you will need a suitable Linux cross-compilation host. We tend to use Ubuntu; since Raspberry Pi OS is 
 also a Debian distribution, it means many aspects are similar, such as the command lines.
 
 You can either do this using VirtualBox (or VMWare) on Windows, or install it directly onto your computer. For reference, you can follow instructions online [at Wikihow](http://www.wikihow.com/Install-Ubuntu-on-VirtualBox).
