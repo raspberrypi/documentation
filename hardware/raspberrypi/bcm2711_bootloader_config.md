@@ -325,7 +325,7 @@ vcgencmd bootloader_config
 * Download the updated firmware files `*.elf *.dat` from the `master` branch of the [Raspberry Pi Firmware](https://github.com/raspberrypi/firmware) Github repo. 
 * Alternatively use `sudo rpi-update` to update the firmware on a Raspberry Pi OS SD card install, then copy the files from there.
 * Copy these updates to the boot partition on the USB device. From now on `sudo rpi-update` can be used from within Raspberry Pi OS on the USB boot device.
-* A Linux kernel update is not required. Raspbian has been tested using the 4.19 and 5.4 (32 and 64 bit) kernel.
+* A Linux kernel update is not required. Raspberry Pi OS has been tested using the 4.19 and 5.4 (32 and 64 bit) kernel.
 
 ### USB device compatiblity
 There is no explicit set of supported devices. Initially we recommend using a USB pen drive or SSD. Hard drives will probably require a powered HUB and in all cases you should verify that the devices work correctly from within Raspberry Pi OS using an SD card boot.

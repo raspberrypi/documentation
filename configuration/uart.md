@@ -49,7 +49,7 @@ By default, only UART0 is enabled. The following table summarises the assignment
 
 Note: the mini UART is disabled by default, whether it is designated primary or secondary UART.
 
-Linux devices on Raspbian:
+Linux devices on Raspberry Pi OS:
 
 | Linux device | Description |
 |--------------|-------------|
@@ -80,7 +80,7 @@ The default state of the `enable_uart` flag depends on which UART is the primary
 
 ## Disable Linux serial console
 
-By default, the primary UART is assigned to the Linux console. If you wish to use the primary UART for other purposes, you must reconfigure Raspbian. This can be done by using [raspi-config](raspi-config.md):
+By default, the primary UART is assigned to the Linux console. If you wish to use the primary UART for other purposes, you must reconfigure Raspberry Pi OS. This can be done by using [raspi-config](raspi-config.md):
 
 1. Start raspi-config: `sudo raspi-config`.
 1. Select option 5 - interfacing options.
