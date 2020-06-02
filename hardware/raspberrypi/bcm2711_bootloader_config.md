@@ -74,7 +74,7 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 * 0x0 - NONE (stop with error pattern)  
 * 0x1 - SD CARD  
 * 0x2 - NETWORK  
-* 0x3 - USB device boot (usbboot)[https://github.com/raspberrypi/usbboot] - Compute Module only.
+* 0x3 - USB device boot [usbboot](https://github.com/raspberrypi/usbboot) - Compute Module only.
 * 0x4 - USB mass storage boot
 * 0xf - RESTART (loop) - start again with the first boot order field.
 
@@ -92,13 +92,13 @@ Default: -1 (infinite)
 Version: pieeprom-2020-05-15.bin - BETA  
 
 ### SD_BOOT_MAX_RETRIES
-Specify the maximum number of times that the bootloader will retry booting from the SD card.  
+The number of times that SD boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.  
 -1 means infinite retries  
 Default: 0  
 Version: pieeprom-2020-04-16.bin  
 
 ### NET_BOOT_MAX_RETRIES
-Specify the maximum number of times that the bootloader will retry network boot.  
+The number of times that network boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.  
 -1 means infinite retries  
 Default: 0  
 Version: pieeprom-2020-04-16.bin  
@@ -178,7 +178,7 @@ Default: ""
 Version: pieeprom-2020-04-16.bin  
 
 #### MAC_ADDRESS
-Overrides the Ethernet MAC address with the given value. e.g. dc:a6:32:01:36:c2`   
+Overrides the Ethernet MAC address with the given value. e.g. dc:a6:32:01:36:c2  
 Default: ""   
 Version: pieeprom-2020-04-16.bin
 
@@ -354,8 +354,8 @@ Default: 20000 (20 seconds)
 Version: pieeprom-2020-05-15.bin - BETA  
 
 ### USB_MSD_BOOT_MAX_RETRIES
-The number of times USB MSD boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.
-
+The number of times that USB MSD boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.  
+-1 means infinite retries  
 Default: 0   
 Version: pieeprom-2020-05-15.bin - BETA  
 
