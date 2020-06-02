@@ -74,7 +74,7 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 * 0x0 - NONE (stop with error pattern)  
 * 0x1 - SD CARD  
 * 0x2 - NETWORK  
-* 0x3 - USB device boot (usbboot)[https://github.com/raspberrypi/usbboot] - Compute Module only.
+* 0x3 - USB device boot [usbboot](https://github.com/raspberrypi/usbboot) - Compute Module only.
 * 0x4 - USB mass storage boot
 * 0xf - RESTART (loop) - start again with the first boot order field.
 
@@ -92,13 +92,13 @@ Default: -1 (infinite)
 Version: pieeprom-2020-05-15.bin - BETA  
 
 ### SD_BOOT_MAX_RETRIES
-Specify the maximum number of times that the bootloader will retry booting from the SD card.  
+The number of times that SD boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.  
 -1 means infinite retries  
 Default: 0  
 Version: pieeprom-2020-04-16.bin  
 
 ### NET_BOOT_MAX_RETRIES
-Specify the maximum number of times that the bootloader will retry network boot.  
+The number of times that network boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.  
 -1 means infinite retries  
 Default: 0  
 Version: pieeprom-2020-04-16.bin  
@@ -115,9 +115,9 @@ Default: 4000
 Minimum: 500  
 Version: pieeprom-2020-04-16.bin  
 
-### TFTP_TIMEOUT
+### TFTP_FILE_TIMEOUT
 The timeout in milliseconds for an individual file download via TFTP.  
-Default: 15000  
+Default: 30000  
 Minimum: 5000  
 Version: pieeprom-2020-04-16.bin  
 
@@ -163,12 +163,12 @@ Version: pieeprom-2020-04-16.bin
 If TFTP_IP and the following options are set then DHCP is skipped and the static IP configuration is applied. If the TFTP server is on the same subnet as the client then GATEWAY may be omitted.
 
 #### CLIENT_IP
-The IP address of the client e.g. "192.168.0.32"
+The IP address of the client e.g. "192.168.0.32"   
 Default: ""  
 Version: pieeprom-2020-04-16.bin  
 
 #### SUBNET
-The subnet address mask e.g. "255.255.255.0"
+The subnet address mask e.g. "255.255.255.0"   
 Default: ""  
 Version: pieeprom-2020-04-16.bin  
 
@@ -176,6 +176,11 @@ Version: pieeprom-2020-04-16.bin
 The gateway address to use if the TFTP server is on a differenet subnet e.g. "192.168.0.1"
 Default: ""  
 Version: pieeprom-2020-04-16.bin  
+
+#### MAC_ADDRESS
+Overrides the Ethernet MAC address with the given value. e.g. dc:a6:32:01:36:c2  
+Default: ""   
+Version: pieeprom-2020-04-16.bin
 
 ### DISABLE_HDMI
 Disables the [HDMI boot diagnostics](./boot_diagnostics.md) display if a fatal error is encountered. This may also be disabled by setting `disable_splash=1` in config.txt.
@@ -346,6 +351,12 @@ Version: pieeprom-2020-05-15.bin - BETA
 If no USB mass storage devices are found within this timeout then USB-MSD is stopped and the next boot mode is selected
 
 Default: 20000 (20 seconds)  
+Version: pieeprom-2020-05-15.bin - BETA  
+
+### USB_MSD_BOOT_MAX_RETRIES
+The number of times that USB MSD boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.  
+-1 means infinite retries  
+Default: 0   
 Version: pieeprom-2020-05-15.bin - BETA  
 
 ### USB_MSD_LUN_TIMEOUT
