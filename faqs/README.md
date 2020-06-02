@@ -132,9 +132,9 @@ The following prices are exclusive of any local taxes and shipping/handling fees
 | Raspberry Pi 3 Model B | $35 |
 | Raspberry Pi 3 Model A+ | $25 |
 | Raspberry Pi 3 Model B+ | $35 |
-| Raspberry Pi 4 Model B 1GB | $35 |
 | Raspberry Pi 4 Model B 2GB | $35 |
 | Raspberry Pi 4 Model B 4GB | $55 |
+| Raspberry Pi 4 Model B 8GB | $75 |
 | Raspberry Pi Zero | $5 |
 | Raspberry Pi Zero W |$10 |
 | Raspberry Pi Zero WH |$15 |
@@ -183,9 +183,9 @@ These are the [models of the Raspberry Pi](https://www.raspberrypi.org/products/
 | Raspberry Pi 3 Model B | BCM2837A0/B0 | 1200MHz | 1GB | 4 |100Base-T| 802.11n| 4.1 |
 | Raspberry Pi 3 Model A+ | BCM2837B0 | 1400MHz | 512MB | 1 | No | 802.11ac/n | 4.2 |
 | Raspberry Pi 3 Model B+ | BCM2837B0 | 1400MHz | 1GB | 4 |1000Base-T | 802.11ac/n | 4.2 |
-| Raspberry Pi 4 Model B | BCM2711 | 1500MHz | 1GB | 2xUSB2, 2xUSB3 |1000Base-T | 802.11ac/n | 5.0 |
 | Raspberry Pi 4 Model B | BCM2711 | 1500MHz | 2GB | 2xUSB2, 2xUSB3 |1000Base-T | 802.11ac/n | 5.0 |
 | Raspberry Pi 4 Model B | BCM2711 | 1500MHz | 4GB | 2xUSB2, 2xUSB3 |1000Base-T | 802.11ac/n | 5.0 |
+| Raspberry Pi 4 Model B | BCM2711 | 1500MHz | 8GB | 2xUSB2, 2xUSB3 |1000Base-T | 802.11ac/n | 5.0 |
 | Raspberry Pi Zero | BCM2835 | 1000MHz | 512MB | 1 | No | No | No |
 | Raspberry Pi Zero W | BCM2835 | 1000MHz | 512MB | 1 | No | 802.11n | 4.1 |
 | Raspberry Pi Zero WH | BCM2835 | 1000MHz | 512MB | 1 | No | 802.11n | 4.1 |
@@ -200,7 +200,7 @@ The Raspberry Pi 3 Model B was launched in February 2016. It uses a 1.2GHz 64-bi
 
 The Raspberry Pi 3 Model B+ was launched in March 2018. It uses a 1.4GHz 64-bit quad-core Arm Cortex-A53 CPU, has 1GB RAM, gigabit Ethernet, integrated 802.11ac/n wireless LAN, and Bluetooth 4.2.
 
-The Raspberry Pi 4 Model B was launched in June 2019. It uses a 1.5GHz 64-bit quad-core Arm Cortex-A72 CPU, has three RAM options (1GB, 2GB, 4GB), gigabit Ethernet, integrated 802.11ac/n wireless LAN, and Bluetooth 5.0. 
+The Raspberry Pi 4 Model B was launched in June 2019. It uses a 1.5GHz 64-bit quad-core Arm Cortex-A72 CPU, has three RAM options (2GB, 4GB, 8GB), gigabit Ethernet, integrated 802.11ac/n wireless LAN, and Bluetooth 5.0. Originally launched with a 1GB option, this has been superceded by the 2GB at the original 1GB price. The 1GB device is still available as a special order.
 
 The Raspberry Pi Zero and Raspberry Pi Zero W/WH are half the size of a Model A+, with a 1GHz single-core CPU and 512MB RAM, and mini-HDMI and USB On-The-Go ports and a camera connector. The Raspberry Pi Zero W also has integrated 802.11n wireless LAN and Bluetooth 4.1. The Raspberry Pi Zero WH is identical to the Zero W, but comes with a pre-soldered header.
 
@@ -240,7 +240,7 @@ The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37
 
 All Raspberry Pi models up to the Raspberry Pi 3 have a GPU that provides OpenGL ES 2.0, hardware-accelerated OpenVG, and 1080p30 H.264 high-profile encode and decode. The GPU is capable of 1Gpixel/s, 1.5Gtexel/s, or 24 GFLOPs of general-purpose compute, and it features a range of texture filtering and DMA infrastructure. This means that graphics capabilities are roughly equivalent to the original Xbox's level of performance. Overall real-world performance for Raspberry Pi 1 Model A, A+, B, B+, Raspberry Pi Zero/Zero W, and CM1 is similar to that of a 300MHz Pentium 2, but with much better graphics. The Raspberry Pi 2 Model B is approximately equivalent to an Athlon Thunderbird running at 1.1GHz; again, it has the much higher-quality graphics, which come from using the same GPU as previous models. The Raspberry Pi 3 Model B is around twice as fast as the Raspberry Pi 2 Model B, depending on the benchmarks chosen.
 
-The Raspberry Pi 4 uses an improved GPU — the VideoCore VI. This is around four times faster than the VideoCore IV used for previous models. The new ARM A72 cores on the BCM2711 chip give much better performance than the previous models, and a new PCIe bus gives faster USB 2.0 and new USB 3.0 functionality. Raspberry Pi 4's native Ethernet capability allows full 1Gbit I/O. These features, combined with the optional extra RAM (the Raspberry Pi 4 can be purchased with 1GB, 2GB, or 4GB RAM), mean that the Raspberry Pi 4 can now provide a great desktop computing experience!
+The Raspberry Pi 4 uses an improved GPU — the VideoCore VI. This is around four times faster than the VideoCore IV used for previous models. The new ARM A72 cores on the BCM2711 chip give much better performance than the previous models, and a new PCIe bus gives faster USB 2.0 and new USB 3.0 functionality. Raspberry Pi 4's native Ethernet capability allows full 1Gbit I/O. These features, combined with the optional extra RAM (the Raspberry Pi 4 can be purchased with 2GB, 4GB or 8GB RAM), mean that the Raspberry Pi 4 can now provide a great desktop computing experience!
 
 ### Can I use my Raspberry Pi as a desktop replacement?
 
@@ -250,7 +250,7 @@ The Raspberry Pi 4 — with its faster cores, extra memory, and much improved I/
 
 ### Can I add extra RAM?
 
-No. The RAM on the Raspberry Pi 1 Model A, A+, B, B+, and Raspberry Pi Zero/Zero W is a Package on Package (POP) on top of the SoC, which means you cannot remove or swap it. The RAM on the Raspberry Pi 2 and 3 Model B versions is on a separate chip on the bottom of the PCB, but 1GB is the maximum RAM that the SoC used by the Raspberry Pi 2 and 3 Model B can support. The Raspberry Pi 4 supports up to 4GB of RAM, but like previous models, it is not upgradeable after purchase.
+No. The RAM on the Raspberry Pi 1 Model A, A+, B, B+, and Raspberry Pi Zero/Zero W is a Package on Package (POP) on top of the SoC, which means you cannot remove or swap it. The RAM on the Raspberry Pi 2 and 3 Model B versions is on a separate chip on the bottom of the PCB, but 1GB is the maximum RAM that the SoC used by the Raspberry Pi 2 and 3 Model B can support. The Raspberry Pi 4 supports up to 8GB of RAM, but like previous models, it is not upgradeable after purchase.
 
 ### Can I connect multiple Raspberry Pis together to make a faster computer?
 
