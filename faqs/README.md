@@ -183,7 +183,6 @@ These are the [models of the Raspberry Pi](https://www.raspberrypi.org/products/
 | Raspberry Pi 3 Model B | BCM2837A0/B0 | 1200MHz | 1GB | 4 |100Base-T| 802.11n| 4.1 |
 | Raspberry Pi 3 Model A+ | BCM2837B0 | 1400MHz | 512MB | 1 | No | 802.11ac/n | 4.2 |
 | Raspberry Pi 3 Model B+ | BCM2837B0 | 1400MHz | 1GB | 4 |1000Base-T | 802.11ac/n | 4.2 |
-| Raspberry Pi 4 Model B | BCM2711 | 1500MHz | 1GB | 2xUSB2, 2xUSB3 |1000Base-T | 802.11ac/n | 5.0 |
 | Raspberry Pi 4 Model B | BCM2711 | 1500MHz | 2GB | 2xUSB2, 2xUSB3 |1000Base-T | 802.11ac/n | 5.0 |
 | Raspberry Pi 4 Model B | BCM2711 | 1500MHz | 4GB | 2xUSB2, 2xUSB3 |1000Base-T | 802.11ac/n | 5.0 |
 | Raspberry Pi 4 Model B | BCM2711 | 1500MHz | 8GB | 2xUSB2, 2xUSB3 |1000Base-T | 802.11ac/n | 5.0 |
