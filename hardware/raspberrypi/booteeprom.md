@@ -45,7 +45,7 @@ sudo systemctl unmask rpi-eeprom-update
 
 The `FREEZE_VERSION` option in the EEPROM config file may be used to indicate that the EEPROM should not be updated on this board. 
 
-Note than updating the bootloader (automatic or manual) will retain any custom configuration options of the previous installed version.
+Note that by default, updating the bootloader (automatic or manual) will retain any custom configuration options of the previous installed version. You can override the migration by manually updating and using the '-d' option with 'rpi-eeprom'. This will force the updated bootloader to use its inbuilt defaults.
 
 ## Write protection of EEPROM
 
