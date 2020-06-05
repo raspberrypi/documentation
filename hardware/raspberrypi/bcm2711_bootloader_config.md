@@ -31,6 +31,11 @@ sudo rpi-eeprom-update -d -f ./pieeprom-new.bin
 sudo reboot
 ```
 
+### Subsequent Bootloader Updates
+
+If you update your bootloader via apt, then any configuration changes made using the process described here *WILL* be migrated to the updated bootloader.
+
+
 ## Configuration Properties
 This section describes all the configuration items available in the bootloader. The syntax is the same as [config.txt](../../configuration/config-txt/) but the properties are specific to the bootloader. [Conditional filters](../../configuration/config-txt/conditional.md) are also supported except for EDID.
 
