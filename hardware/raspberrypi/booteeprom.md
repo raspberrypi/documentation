@@ -21,6 +21,8 @@ To check that the bootloader is working correctly, turn off the power, unplug ev
 
 If the Raspberry Pi is not booting it's possible that the bootloader EEPROM is corrupted. This can easily be reprogrammed using the Raspberry Pi Imager tool which is available via the [raspberrypi.org downloads page](https://www.raspberrypi.org/downloads/).
 
+Usinmg the recovery image will erase any custom configuration options, resetting the bootloader back to factory defaults.
+
 ## Updating the bootloader
 
 We recommend setting up your Pi so that it automatically updates the bootloader: this means you will get new features and bug fixes as they are released. Bootloader updates are performed by the `rpi-eeprom` package, which installs a service that runs at boot-time to check for critical updates. `rpi-eepom` is available in the latest Raspberry Pi OS releases.
