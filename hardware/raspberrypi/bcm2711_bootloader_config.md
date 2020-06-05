@@ -272,7 +272,7 @@ sudo apt upgrade
 # Check the current version
 sudo rpi-eeprom-update     
 # Update to latest
-sudo rpi-eeprom-update     
+sudo rpi-eeprom-update -a
 ```
 
 ### Enable network boot
