@@ -33,7 +33,7 @@ sudo reboot
 
 ### Subsequent Bootloader Updates
 
-If you update your bootloader via apt, then any configuration changes made using the process described here *WILL* be migrated to the updated bootloader.
+If you update your bootloader via apt, then any configuration changes made using the process described here will be migrated to the updated bootloader.
 
 
 ## Configuration Properties
