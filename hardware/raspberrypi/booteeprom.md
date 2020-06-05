@@ -23,12 +23,11 @@ If the Raspberry Pi is not booting it's possible that the bootloader EEPROM is c
 
 ## Updating the bootloader
 
-We recommend setting up your Pi so that it automatically updates the bootloader: this means you will get new features and bug fixes as they are released. Bootloader updates are performed by the `rpi-eeprom` package, which installs a service that runs at boot-time to check for critical updates.
+We recommend setting up your Pi so that it automatically updates the bootloader: this means you will get new features and bug fixes as they are released. Bootloader updates are performed by the `rpi-eeprom` package, which installs a service that runs at boot-time to check for critical updates. `rpi-eepom` is available in the latest Raspberry Pi OS releases.
 
 ```
 sudo apt update
 sudo apt full-upgrade
-sudo apt install rpi-eeprom
 ```
 
 If you wish to control when the updates are applied you can disable the systemd service from running automatically and run `rpi-eeprom-update` manually.
@@ -43,6 +42,8 @@ sudo systemctl unmask rpi-eeprom-update
 ```
 
 The `FREEZE_VERSION` option in the EEPROM config file may be used to indicate that the EEPROM should not be updated on this board. 
+
+Note than updating the bootloader (automatic or manual) will retain any custom configuration options of the previous installed version.
 
 ## Write protection of EEPROM
 
