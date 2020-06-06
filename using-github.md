@@ -32,7 +32,7 @@ Selecting **Commit changes** will make the change to your master branch. You now
 
 This is pretty easy. Click on the **Pull Requests** tab on the toolbar. Afterwards, there should be a green button just below the toolbar that is labelled **New pull request**. Click it, and a page should appear that asks you to compare changes. This PR page is actually on the Raspberry Pi GitHub page, not the contributor's, because a PR requests the Raspberry Pi repository maintainers to 'pull' from the contributor's repository. The left-hand side should be the `raspberrypi/documentation` repository, and the branch should be the master one. The right-hand side is where the PR is coming from: your GitHub account, and your master branch. Further down the page you should see a list of the commits you want to have in the PR, and, below that, the actual changes. 
 
-if you are happy for the PR to be created, click on **Create pull request**.
+If you are happy for the PR to be created, click on **Create pull request**.
 
 And that's it! The Raspberry Pi documentation PR list will now have your entry in it. It will be read, assessed for technical correctness, passed to copy editors for final checking, and finally merged to the main documentation tree.
 
