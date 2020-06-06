@@ -35,6 +35,7 @@
 - **HAT** - Hardware Attached on Top, a specification for designing devices to attach to the Raspberry Pi; see the [launch announcement](https://www.raspberrypi.org/blog/introducing-raspberry-pi-hats/).
 - **HDMI** - [High-Definition Multimedia Interface](https://en.wikipedia.org/wiki/HDMI), a standard interface for transmitting uncompressed video and compressed or uncompressed audio data from a source device to a display device.
 - **HDCP** - [High-bandwidth Digital Content Protection](https://en.wikipedia.org/wiki/High-bandwidth_Digital_Content_Protection), an optional encryption mechanism used for HDMI or DVI transmission.
+- **Headless** - A headless Raspberry Pi is one that does not have a display device, keyboard or mouse plugged in. Access is usually via a network connection, using a remote access protocol like SSH or VNC.
 - **HVS** - Hardware Video Scaler, a hardware block in the VC4 or VC6 GPU on all Raspberry Pi models that is used for manipulating and displaying bitmaps.
 - **I<sup>2</sup>C/I2C/IIC** - [Inter-Integrated Circuit](https://en.wikipedia.org/wiki/I%C2%B2C) (pronounced _I-squared-C_), an electrical protocol used for attaching lower-speed peripheral ICs to processors and microcontrollers in short-distance, intra-board communication.
 - **I<sup>2</sup>S** - [Inter-Integrated Circuit Sound](https://en.wikipedia.org/wiki/I%C2%B2S), an electrical serial bus interface standard used for connecting digital audio devices together.
