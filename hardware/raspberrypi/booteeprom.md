@@ -37,7 +37,7 @@ sudo apt full-upgrade
 sudo reboot
 ```
 
-If you wish to control when the updates are applied you can disable the systemd service from running automatically and run `rpi-eeprom-update` manually, as shown in the 'Manually checking if an update is available' section below."
+If you wish to control when the updates are applied you can disable the systemd service from running automatically and run `rpi-eeprom-update` manually, as shown in the 'Manually checking if an update is available' section below.
 
 ```
 # Disable
@@ -49,7 +49,7 @@ sudo systemctl unmask rpi-eeprom-update
 
 The `FREEZE_VERSION` option in the EEPROM config file may be used to indicate that the EEPROM should not be updated on this board. 
 
-Note that by default, updating the bootloader (automatically or manually) will retain any custom configuration options of the previous installed version. You can override the migration by manually updating and using the `-d` option with `rpi-eeprom`. This will force the updated bootloader to use its inbuilt defaults.
+Note that by default, updating the bootloader (automatically or manually) will retain any custom configuration options of the previous installed version. You can override the migration by manually updating and using the `-d` option with `rpi-eeprom-update`. This will force the updated bootloader to use its inbuilt defaults.
 
 ## Manually checking if an update is available
 
