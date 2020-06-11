@@ -332,13 +332,13 @@ Version 2.x (IMX219)
 
 HQ Camera
 
-|Mode| Size | Aspect Ratio |Frame rates | FOV | Binning |
+|Mode| Size | Aspect Ratio |Frame rates | FOV | Binning/Scaling |
 |----|------|--------------|------------|-----|---------|
 |0| automatic selection | | | | |
-|1|2028x1080|169:90| 0.1-50fps|Partial|2x2|
-|2|2028x1520|4:3|0.1-50fps|Full|2x2|
+|1|2028x1080|169:90| 0.1-50fps|Partial|2x2 binned|
+|2|2028x1520|4:3|0.1-50fps|Full|2x2 binned|
 |3|4056x3040|4:3|0.005-10fps|Full|None|
-|4|1012x760|4:3|50.1-120fps|Full|4x4|
+|4|1012x760|4:3|50.1-120fps|Full|4x4 Scaled|
 
 ```
 	--camselect,	-cs
