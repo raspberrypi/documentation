@@ -27,7 +27,7 @@ Using the recovery image will erase any custom configuration options, resetting 
 
 Bootloader updates are instigated during a normal `apt update`, `apt full-upgrade` cycle, this means you will get new features and bug fixes during your normal updates. 
 
-Bootloader updates are performed by the `rpi-eeprom-update` package, which installs a service that runs at boot-time to check for critical updates. 
+Bootloader updates are performed by the `rpi-eeprom` package, which installs a service that runs at boot-time to check for critical updates. 
 
 To update your system, including the bootloader:
 
