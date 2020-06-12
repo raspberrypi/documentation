@@ -27,12 +27,6 @@ GND     P1-25   P1-26    CE1
 <a name="software"></a>
 ## Software
 
-### WiringPi
-
-WiringPi includes a library which can make it easier to use the Raspberry Pi's on-board SPI interface. Accesses the hardware registers directly.
-
-http://wiringpi.com/
-
 ### bcm2835 library
 
 This is a C library for Raspberry Pi (RPi). It provides access to GPIO and other IO functions on the Broadcom BCM 2835 chip. Accesses the hardware registers directly.
