@@ -21,21 +21,26 @@ To check that the bootloader is working correctly, turn off the power, unplug ev
 
 If the Raspberry Pi is not booting it's possible that the bootloader EEPROM is corrupted. This can easily be reprogrammed using the Raspberry Pi Imager tool which is available via the [raspberrypi.org downloads page](https://www.raspberrypi.org/downloads/).
 
+Using the recovery image will erase any custom configuration options, resetting the bootloader back to factory defaults.
+
 ## Updating the bootloader
 
-We recommend setting up your Pi so that it automatically updates the bootloader: this means you will get new features and bug fixes as they are released. Bootloader updates are performed by the `rpi-eeprom` package, which installs a service that runs at boot-time to check for critical updates.
+Bootloader updates are instigated during a normal `apt update`, `apt full-upgrade` cycle, this means you will get new features and bug fixes during your normal updates. 
+
+Bootloader updates are performed by the `rpi-eeprom` package, which installs a service that runs at boot-time to check for critical updates. 
+
+To update your system, including the bootloader:
 
 ```
 sudo apt update
 sudo apt full-upgrade
-sudo apt install rpi-eeprom
+sudo reboot
 ```
 
-If you wish to control when the updates are applied you can disable the systemd service from running automatically and run `rpi-eeprom-update` manually.
+If you wish to control when the updates are applied you can disable the systemd service from running automatically and run `rpi-eeprom-update` manually, as shown in the 'Manually checking if an update is available' section below.
 
 ```
-# Prevent the service from running, this can be run before the
-# package is installed to prevent it ever running automatically.
+# Disable
 sudo systemctl mask rpi-eeprom-update
 
 # Enable it again
@@ -44,21 +49,22 @@ sudo systemctl unmask rpi-eeprom-update
 
 The `FREEZE_VERSION` option in the EEPROM config file may be used to indicate that the EEPROM should not be updated on this board. 
 
-## Write protection of EEPROM
+Note that by default, updating the bootloader (automatically or manually) will retain any custom configuration options of the previous installed version. You can override the migration by manually updating and using the `-d` option with `rpi-eeprom-update`. This will force the updated bootloader to use its inbuilt defaults.
 
-There is no software write protection for the boot EEPROM but there will be a mechanism in Raspberry Pi OS to skip any future updates to the EEPROM. However, it is possible to physically write-protect both EEPROMs via a simple resistor change on the board. Details will be published in the [schematics](./schematics/README.md).
+## Manually checking if an update is available
 
-EEPROM image files contain a small user-modifiable config file, which may be modified using the `rpi-eeprom-config` script included in the `rpi-eeprom` package. See the [Bootloader Configuration Page](./bcm2711_bootloader_config.md) for configuration details.
-
-
-## Checking if an update is available
-
-Running the rpi-eeprom-update command with no parameters indicates whether an update is required. An update is required if the timestamp of the most recent file in the firmware directory (normally `/lib/firmware/raspberrypi/bootloader/critical`) is newer than that reported
-by the current bootloader.
+Running the `rpi-eeprom-update` command with no parameters indicates whether an update is required. An update is required if the timestamp of the most recent file in the firmware directory (normally `/lib/firmware/raspberrypi/bootloader/critical`) is newer than that reported by the current bootloader.
 The images under `/lib/firmware/raspberrypi/bootloader` are part of the `rpi-eeprom` package and are only updated via `apt update`.
 
 ```
 sudo rpi-eeprom-update
+```
+
+If an update is available, you can install it using :
+
+```
+sudo rpi-eeprom-update -a
+sudo reboot
 ```
 
 ### Reading the current EEPROM configuration
