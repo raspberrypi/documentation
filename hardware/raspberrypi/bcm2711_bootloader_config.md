@@ -359,12 +359,6 @@ If no USB mass storage devices are found within this timeout then USB-MSD is sto
 Default: 20000 (20 seconds)  
 Version: pieeprom-2020-05-15.bin - BETA  
 
-### USB_MSD_BOOT_MAX_RETRIES
-The number of times that USB MSD boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.  
--1 means infinite retries  
-Default: 0   
-Version: pieeprom-2020-05-15.bin - BETA  
-
 ### USB_MSD_LUN_TIMEOUT
 How long to wait in milliseconds before advancing to the next LUN e.g. a multi-slot SD-CARD reader. This is still being tweaked but may help speed up boot if old/slow devices are connected as well as a fast USB-MSD device containing the OS.
 
