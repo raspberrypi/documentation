@@ -155,12 +155,12 @@ This driver is loaded using the `config.txt` dtoverlay `tc358743`.
 
 The chip also supports capturing stereo HDMI audio via I2S. The Auvidea boards break the relevant signals out onto a header, which can be connected to the Pi's 40 pin header. The required wiring is:
 
-| Signal   | B101 header | Pi 40 pin header |
-|----------|:-----------:|:----------------:|
-| LRCK/WFS |     7       |      19          |
-| BCK/SCK  |     6       |      18          |
-| DATA/SD  |     5       |      20          |
-| GND      |     8       |      39          |
+| Signal   | B101 header | Pi 40 pin header | BCM GPIO  |
+|----------|:-----------:|:----------------:|:---------:|
+| LRCK/WFS |     7       |       35         |    19     |
+| BCK/SCK  |     6       |       12         |    18     |
+| DATA/SD  |     5       |       38         |    20     |
+| GND      |     8       |       39         |    N/A    |
 
 The `tc358743-audio` overlay is required *in addition to* the `tc358743` overlay. This should create an ALSA recording device for the HDMI audio.
 Please note that there is no resampling of the audio. The presence of audio is reflected in the V4L2 control TC358743_CID_AUDIO_PRESENT / "audio-present", and the sample rate of the incoming audio is reflected in the V4L2 control TC358743_CID_AUDIO_SAMPLING_RATE / "Audio sampling-frequency". Recording when no audio is present will generate warnings, as will recording at a sample rate different from that reported.
