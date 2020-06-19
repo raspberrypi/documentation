@@ -27,6 +27,7 @@ sudo reboot
 
 - Make sure you've updated Raspberry Pi OS (see above for steps)
 - Check the smaller ribbon cable is seated properly
+- Check the power supply
 
 If you want to make sure your Pi has detected your touchscreen, try running:
 
@@ -46,6 +47,10 @@ A detected touchscreen will also cause the `fbheight` and `fbwidth` parameters i
 ```
 cat /proc/cmdline | grep bcm2708_fb
 ```
+
+If you are drawing power from the gpio pins then try disconnecting them and powering the screen using its own USB
+power supply. For example the Hifiberry AMP2 provides power to the Raspberry Pi but does not supply quite enough
+power for the screen and the touch does not work reliably.
 
 ### My screen is upside-down!
 
