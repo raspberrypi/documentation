@@ -317,7 +317,7 @@ When searching for a bootable partition the bootloader scans all USB mass storag
 
 As with earlier Raspberry Pi models there is no method for specifying the boot device according to the USB topology because this would slow down boot and adds unecessary and hard to support configuration complexity.
 
-N.B. config.txt [conditional filters])(../configuration/config-txt/conditional.md) can be used to select alternate firmware in complex device configurations.
+N.B. config.txt [conditional filters](../configuration/config-txt/conditional.md) can be used to select alternate firmware in complex device configurations.
 
 ### Update the bootloader
 * From a standard Raspberry Pi OS SD card boot:
