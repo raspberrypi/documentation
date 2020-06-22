@@ -77,7 +77,7 @@ Host is up (0.0030s latency).
 Nmap done: 256 IP addresses (4 hosts up) scanned in 2.41 seconds
 ```
 
-Here you can see a device with hostname `raspberrypi` has IP address `192.168.1.8`.
+Here you can see a device with hostname `raspberrypi` has IP address `192.168.1.8`. Note, to see the hostnames, you must run nmap as root by prepending `sudo` to the command.
 
 ### Getting the IP address of a Pi using your smartphone
 
