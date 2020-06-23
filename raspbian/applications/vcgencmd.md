@@ -140,7 +140,7 @@ Dump a list of all dispmanx items currently being displayed.
 
 Show current display power state, or set the display power state. `vcgencmd display_power 0` will turn off power to the current display. `vcgencmd display_power 1` will turn on power to the display. If no parameter is set, this will display the current power state. The final parameter is an optional display ID, as returned by `tvservice -l` or from the table below, which allows a specific display to be turned on or off.
 
-Note that for the official 7" display this simply turns the backlight on and off. The touch functionality continues to operate as normal.
+Note that for the 7" Raspberry Pi Touch Display this simply turns the backlight on and off. The touch functionality continues to operate as normal.
 
 `vcgencmd display_power 0 7` will turn off power to display ID 7, which is HDMI 1 on a Raspberry Pi 4.
 
