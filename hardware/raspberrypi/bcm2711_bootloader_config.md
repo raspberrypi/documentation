@@ -187,10 +187,9 @@ Default: ""
 Version: pieeprom-2020-04-16.bin
 
 ### DISABLE_HDMI
-Disables the [HDMI boot diagnostics](./boot_diagnostics.md) display if a fatal error is encountered. This may also be disabled by setting `disable_splash=1` in config.txt.
+The [HDMI boot diagnostics](./boot_diagnostics.md) display is disabled if DISABLE_HDMI=1. Other non-zero values are reserved for future use.
 
-N.B. By default, the HDMI diagnostics screen is automatically blanked after 2 minutes.
-Default: 0  
+Default: 0   
 Version: pieeprom-2020-04-16.bin  
 
 `Version: pieeprom-2020-06-15.bin - STABLE`
