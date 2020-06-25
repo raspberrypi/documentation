@@ -9,6 +9,7 @@ Before you start, don't forget to check [the SD card requirements](../sd-cards.m
 Raspberry Pi have developed a graphical SD card writing tool that works on Mac OS, Ubuntu 18.04 and Windows, and is the easiest option for most users as it will download the image and install it automatically to the SD card.
 
 - Download the latest version of [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) and install it.
+  - If you want to use Raspberry Pi Imager on the Raspberry Pi itself, you can install it  from a terminal using `sudo apt install rpi-imager`.
 - Connect an SD card reader with the SD card inside.
 - Open Raspberry Pi Imager and choose the required OS from the list presented.
 - Choose  the SD card you wish to write your image to.
