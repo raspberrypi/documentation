@@ -11,7 +11,7 @@ The Raspberry Pi 4 has an SPI-attached EEPROM (4MBits/512KB), which contains cod
 
 ## USB boot
 
-USB boot is not currently supported. Once it is ready a beta release will be announced on the Raspberry Pi Forums.
+USB boot support is currently being beta-tested. See the "USB mass storage boot" section of the [Bootloader Configuration Page](./bcm2711_bootloader_config.md) for further details.
 
 ## Is the bootloader working correctly?
 
