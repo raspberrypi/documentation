@@ -75,7 +75,7 @@ Full camera software documentation can be found [here]](../../raspbian/applicati
 
 ## HQ Camera IR Filter transmission information
 
-The HQ Camera uses a Hoya CM500 Infrared filter. It's transmission characteristics are as represented in the following graph.
+The HQ Camera uses a Hoya CM500 infrared filter. Its transmission characteristics are as represented in the following graph.
 
 ![CM500 Transmission Graph](./hoyacm500.png)
 
