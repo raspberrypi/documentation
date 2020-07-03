@@ -647,8 +647,7 @@ The options that can be set are:
 
 The `test_mode` command displays a test image and sound during boot (over the composite video and analogue audio outputs only) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test; the default value is `0`.
 
-### 
-<a name="displayhdmirotate">display_hdmi_rotate</a>
+### <a name="displayhdmirotate">display_hdmi_rotate</a>
 
 Use `display_hdmi_rotate` to rotate or flip the HDMI display orientation. The default value is `0`.
 
