@@ -475,8 +475,6 @@ On the Raspberry Pi 4, composite output is disabled by default, due to the way t
 
 To enable composite output, use the `enable_tvout=1` option. As described above, this will detrimentally affect performance to a small degree.
 
-On older Pi models, the composite behaviour remains the same.
-
 ## DSI display connector options
 
 These parameters allow configuration of displays connected to the DSI connected, such as the Raspberry Pi Touch Display.
