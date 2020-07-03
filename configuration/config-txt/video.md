@@ -21,6 +21,14 @@ overscan_top=24
 overscan_bottom=24
 ```
 
+### hdmi_force_hotplug
+
+Setting `hdmi_force_hotplug` to `1` pretends that the HDMI hotplug signal is asserted, so it appears that a HDMI display is attached. In other words, HDMI output mode will be used, even if no HDMI monitor is detected.
+
+### hdmi_ignore_hotplug
+
+Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. In other words, composite output mode will be used, even if an HDMI monitor is detected.
+
 ### hdmi_ignore_edid
 
 Setting `hdmi_ignore_edid` to `0xa5000080` enables the ignoring of EDID/display data if your display does not have an accurate [EDID](https://en.wikipedia.org/wiki/Extended_display_identification_data). It requires this unusual value to ensure that it is not triggered accidentally.
@@ -473,7 +481,7 @@ On older Pi models, the composite behaviour remains the same.
 
 These parameters allow configuration of displays connected to the DSI connected, such as the Raspberry Pi Touch Display.
 
-### display_lcd_rotate
+<a name="displaylcdrotate">### display_lcd_rotate</a>
 
 Use `display_lcd_rotate` to rotate or flip the display. See [`display_hdmi_rotate`](#displayhdmirotate) for a list of parameters. 
 
@@ -489,23 +497,25 @@ If a Raspberry Pi Touch Display is detected, it will be used as the default disp
 
 ### lcd_framerate
 
-Specify the framerate of the Raspberry Pi Touch Display, in frames per second. Defaults to 60.
+Specify the framerate of the connected DSI display in frames per second. Defaults to 60.
 
 ### lcd_rotate
 
-This flips the Touch Display using the LCD's inbuilt flip functionality, which is a cheaper operation that using the GPU-based rotate operation.
+This flips the Touch Display using the Touch Display's inbuilt flip functionality.
 
 For example, `lcd_rotate=2` will compensate for an upside down display.
 
+See also [`display_lcd_rotate`](#displaylcdrotate).
+
 ### disable_touchscreen
 
-Enable/disable the touchscreen.
+Disables the touchscreen on the official Raspberry Pi Touch Display:
 
-`disable_touchscreen=1` will disable the touchscreen on the official Raspberry Pi Touch Display.
+`disable_touchscreen=1`
 
 ### enable_dpi_lcd
 
-Enable LCD displays attached to the DPI GPIOs. This parameter is intended to support the use of third-party LCD displays.
+Enable LCD displays attached to the DPI GPIOs. This parameter allows the use of compatible third-party LCD displays.
 
 ### dpi_group, dpi_mode, dpi_output_format
 
@@ -557,14 +567,6 @@ HDMI_ASPECT_64_27 = 8
 ```
 
 ## General display options
-
-### hdmi_force_hotplug
-
-Setting `hdmi_force_hotplug` to `1` pretends that the HDMI hotplug signal is asserted, so it appears that a HDMI display is attached. In other words, HDMI output mode will be used, even if no HDMI monitor is detected.
-
-### hdmi_ignore_hotplug
-
-Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. In other words, composite output mode will be used, even if an HDMI monitor is detected.
 
 ### disable_overscan
 
