@@ -31,15 +31,15 @@ Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is no
 
 ### hdmi_ignore_edid
 
-Setting `hdmi_ignore_edid` to `0xa5000080` enables the ignoring of EDID/display data if your display does not have an accurate [EDID](https://en.wikipedia.org/wiki/Extended_display_identification_data). It requires this unusual value to ensure that it is not triggered accidentally.
+Setting `hdmi_ignore_edid` to `0xa5000080` enables the ignoring of EDID/display data. This is useful if your display does not have an accurate [EDID](https://en.wikipedia.org/wiki/Extended_display_identification_data).
 
 ### hdmi_edid_file
 
 Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. More information is available [here](https://www.raspberrypi.org/forums/viewtopic.php?p=173430#p173430).
 
-### hdmi_edid_filename
+### hdmi_edid_filename (Pi 4 only)
 
-On the Raspberry Pi 4, you can use the `hdmi_edid_filename` command to specify the filename of the EDID file to use, and also to specify which port the file is to be applied to. This also requires `hdmi_edid_file=1` to enable EDID files.
+Use the `hdmi_edid_filename` command to specify the filename of the EDID file to use, and also to specify which port the file is to be applied to. This also requires `hdmi_edid_file=1` to enable EDID files.
 
 For example:
 
@@ -51,11 +51,11 @@ hdmi_edid_filename:1=FileForPortOne.edid
 
 ### hdmi_force_edid_audio
 
-Setting `hdmi_force_edid_audio` to `1` pretends that all audio formats are supported by the display, allowing passthrough of DTS/AC3 even when this is not reported as supported.
+Setting `hdmi_force_edid_audio` to `1` pretends that all audio formats are supported by the display, allowing passthrough of DTS/AC3 even when the EDID does not indicate support for this.
 
 ### hdmi_ignore_edid_audio
 
-Setting `hdmi_ignore_edid_audio` to `1` pretends that all audio formats are unsupported by the display. This means ALSA will default to the analogue audio (headphone) jack.
+Setting `hdmi_ignore_edid_audio` to `1` pretends that all audio formats are unsupported by the display. This means Linux will default to using the analogue audio output instead.
 
 ### hdmi_force_edid_3d
 
@@ -63,7 +63,7 @@ Setting `hdmi_force_edid_3d` to `1` pretends that all CEA modes support 3D, even
 
 ### hdmi_ignore_cec_init
 
-Setting `hdmi_ignore_cec_init` to `1` will stop the initial active source message being sent during bootup. This prevents a CEC-enabled TV from coming out of standby and channel-switching when you are rebooting your Raspberry Pi.
+Setting `hdmi_ignore_cec_init` to `1` will stop the initial active source message being sent when the Raspberry Pi boots up. This is useful for preventing a CEC-enabled TV from coming out of standby, and switching to the Raspberry Pi, when you rebooting your Raspberry Pi.
 
 ### hdmi_ignore_cec
 
@@ -87,7 +87,7 @@ The `hdmi_pixel_encoding` command forces the pixel encoding mode, overriding the
 
 ### hdmi_blanking
 
-The `hdmi_blanking` command controls what happens when the operating system asks for the display to be put into standby mode, using DPMS, to save power. If this option is not set or set to 0, the HDMI output is blanked but not switched off. In order to mimic the behaviour of other computers, you can set the HDMI output to switch off as well by setting this option to 1: the attached display will go into a low power standby mode.
+Allows the Raspberry Pi to use DPMS to tell the display to go into standby mode to save power. Without this setting, the display will not go into standby mode.
 
 **NOTE:** This feature may cause issues when using applications which don't use the framebuffer, such as omxplayer.
 
