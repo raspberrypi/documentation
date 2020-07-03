@@ -1,45 +1,8 @@
 # Video options in config.txt 
 
-## Composite video mode options
-
-### sdtv_mode
-
-The `sdtv_mode` command defines the TV standard used for composite video output. On the original Raspberry Pi, composite video is output on the RCA socket. On other Raspberry Pi's, except for Pi Zero and Compute Module, composite video is output along with sound on the 4 pole TRRS ("headphone") socket. On the Pi Zero, there is an unpopulated header labelled "TV" which outputs composite video. On the Compute Module, composite video is available via the TVDAC pin. The default value of `sdtv_mode` is `0`.
-
-| sdtv_mode | result |
-| --- | --- |
-| 0 | Normal NTSC |
-| 1 | Japanese version of NTSC – no pedestal |
-| 2 | Normal PAL |
-| 3 | Brazilian version of PAL – 525/60 rather than 625/50, different subcarrier |
-| 16 | Progressive scan NTSC |
-| 18 | Progressive scan PAL |
-
-### sdtv_aspect
-
-The `sdtv_aspect` command defines the aspect ratio for composite video output. The default value is `1`.
-
-| sdtv_aspect | result |
-| --- | --- |
-| 1 | 4:3 |
-| 2 | 14:9 |
-| 3 | 16:9 |
-
-### sdtv_disable_colourburst
-
-Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
-
-### enable_tvout (Pi 4B only)
-
-On the Raspberry Pi 4, composite output is disabled by default, due to the way the internal clocks are interrelated and allocated. Because composite video requires a very specific clock, setting that clock to the required speed on the Pi 4 means that other clocks connected to it are detrimentally affected, which slightly slows down the entire system. Since composite video is a less commonly used function, we decided to disable it by default to prevent this system slowdown. 
-
-To enable composite output, use the `enable_tvout=1` option. As described above, this will detrimentally affect performance to a small degree.
-
-On older Pi models, the composite behaviour remains the same.
-
 ## HDMI mode options
 
-**Note for Raspberry Pi4B users:** Because the Raspberry Pi 4B has two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found in the HDMI section on the [conditionals page](./conditional.md) of the documentation.
+**Note for Raspberry Pi 4B users:** Because the Raspberry Pi 4B has two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found in the HDMI section on the [conditionals page](./conditional.md) of the documentation.
 
 ### hdmi_safe
 
@@ -68,7 +31,7 @@ Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `e
 
 ### hdmi_edid_filename
 
-On the Raspberry Pi 4B, you can use the `hdmi_edid_filename` command to specify the filename of the EDID file to use, and also to specify which port the file is to be applied to. This also requires `hdmi_edid_file=1` to enable EDID files.
+On the Raspberry Pi 4, you can use the `hdmi_edid_filename` command to specify the filename of the EDID file to use, and also to specify which port the file is to be applied to. This also requires `hdmi_edid_file=1` to enable EDID files.
 
 For example:
 
@@ -100,11 +63,11 @@ Setting `hdmi_ignore_cec` to `1` pretends that [CEC](https://en.wikipedia.org/wi
 
 ### cec_osd_name
 
-The `cec_osd_name` command sets the initial CEC name of the device. The default is Raspberry Pi.
+The `cec_osd_name` command sets the initial CEC name of the device. The default is `Raspberry Pi`.
 
 ### hdmi_pixel_encoding
 
-The `hdmi_pixel_encoding` command forces the pixel encoding mode. By default, it will use the mode requested from the EDID, so you shouldn't need to change it.
+The `hdmi_pixel_encoding` command forces the pixel encoding mode, overriding the encoding reported by the display in the EDID.
 
 | hdmi_pixel_encoding | result |
 | --- | --- |
@@ -117,8 +80,6 @@ The `hdmi_pixel_encoding` command forces the pixel encoding mode. By default, it
 ### hdmi_blanking
 
 The `hdmi_blanking` command controls what happens when the operating system asks for the display to be put into standby mode, using DPMS, to save power. If this option is not set or set to 0, the HDMI output is blanked but not switched off. In order to mimic the behaviour of other computers, you can set the HDMI output to switch off as well by setting this option to 1: the attached display will go into a low power standby mode.
-
-**On the Raspberry Pi 4, setting hdmi_blanking=1 will not cause the HDMI output to be switched off, since this feature has not yet been implemented.**
 
 **NOTE:** This feature may cause issues when using applications which don't use the framebuffer, such as omxplayer.
 
@@ -134,17 +95,15 @@ The `hdmi_drive` command allows you to choose between HDMI and DVI output modes.
 | hdmi_drive | result |
 | --- | --- |
 | 1 | Normal DVI mode (no sound) |
-| 2 | Normal HDMI mode (sound will be sent if supported and enabled) |
+| 2 | Normal HDMI mode (sound will be sent if supported, and the audio driver is enabled) |
 
 ### config_hdmi_boost
 
 Configures the signal strength of the HDMI interface. The minimum value is `0` and the maximum is `11`.
 
-The default value for the original Model B and A is `2`. The default value for the Model B+ and all later models is `5`.
+The default value for Pi 1 models A and B is `2`; for the Pi 1 Model B+, Pi 2, and Pi 3 the default is `5`. This option has no effect on the Raspberry Pi 4.
 
 If you are seeing HDMI issues (speckling, interference) then try `7`. Very long HDMI cables may need up to `11`, but values this high should not be used unless absolutely necessary.
-
-This option is ignored on the Raspberry Pi 4.
 
 ### hdmi_group
 
@@ -427,9 +386,9 @@ The options are:
  - `3` = `EDID_ContentType_Cinema`,  content type cinema
  - `4` = `EDID_ContentType_Game`,  content type game
  
-### hdmi_enable_4kp60 (Pi 4B only)
+### hdmi_enable_4kp60 (Pi 4 only)
 
-By default, when connected to a 4K monitor, the Raspberry Pi 4B will select a 30hz refresh rate. Use this option to allow selection of 60Hz refresh rates. Note, this will increase power consumption and increase the temperature of the Raspberry Pi. It is not possible to output 4Kp60 on both micro HDMI ports simultaneously.
+By default, when connected to a 4K monitor, the Raspberry Pi 4 will select a 30hz refresh rate. Use this option to allow selection of 60Hz refresh rates. Note, this will increase power consumption and increase the temperature of the Raspberry Pi. It is not possible to output 4Kp60 on both micro HDMI ports simultaneously.
  
 ## Which values are valid for my monitor?
 
@@ -445,7 +404,7 @@ The `edid.dat` should also be provided when troubleshooting problems with the de
 
 ## Custom mode
 
-If your monitor requires a mode that is not in one of the tables above, then it's possible to define a custom [CVT](https://en.wikipedia.org/wiki/Coordinated_Video_Timings) mode for it instead:
+If your monitor requires a mode that is not in one of the tables above, then it may be possible to define a custom [CVT](https://en.wikipedia.org/wiki/Coordinated_Video_Timings) mode for it instead. Not all displays support CVT mode. The parameters must be entered as follows:
 
 ```
 hdmi_cvt=<width> <height> <framerate> <aspect> <margins> <interlace> <rb>
@@ -472,25 +431,69 @@ hdmi_mode=87
 hdmi_drive=2
 ```
 
-This may not work if your monitor does not support standard CVT timings.
 
-## LCD display/touchscreen options
+## Composite video mode options
+
+### sdtv_mode
+
+The `sdtv_mode` command defines the TV standard used for composite video output.
+
+| sdtv_mode | result |
+| --- | --- |
+| 0 | Normal NTSC |
+| 1 | Japanese version of NTSC – no pedestal |
+| 2 | Normal PAL |
+| 3 | Brazilian version of PAL – 525/60 rather than 625/50, different subcarrier |
+| 16 | Progressive scan NTSC |
+| 18 | Progressive scan PAL |
+
+### sdtv_aspect
+
+The `sdtv_aspect` command defines the aspect ratio for composite video output. The default value is `1`.
+
+| sdtv_aspect | result |
+| --- | --- |
+| 1 | 4:3 |
+| 2 | 14:9 |
+| 3 | 16:9 |
+
+### sdtv_disable_colourburst
+
+Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
+
+### enable_tvout (Pi 4 only)
+
+On the Raspberry Pi 4, composite output is disabled by default, due to the way the internal clocks are interrelated and allocated. Because composite video requires a very specific clock, setting that clock to the required speed on the Pi 4 means that other clocks connected to it are detrimentally affected, which slightly slows down the entire system. Since composite video is a less commonly used function, we decided to disable it by default to prevent this system slowdown. 
+
+To enable composite output, use the `enable_tvout=1` option. As described above, this will detrimentally affect performance to a small degree.
+
+On older Pi models, the composite behaviour remains the same.
+
+## DSI display connector options
+
+These parameters allow configuration of displays connected to the DSI connected, such as the Raspberry Pi Touch Display.
+
+### display_lcd_rotate
+
+Use `display_lcd_rotate` to rotate or flip the display. See [`display_hdmi_rotate`](#displayhdmirotate) for a list of parameters. 
+
+**Note:** This option only applies to the legacy graphics driver, which is the default on Raspberry Pi Zero, 1, 2 and 3. On the Raspberry Pi 4 the default graphics driver is instead the FKMS driver. 
 
 ### ignore_lcd
 
-By default the Raspberry Pi LCD display is used when it is detected on the I2C bus. `ignore_lcd=1` will skip this detection phase, and therefore the LCD display will not be used.
+By default the Raspberry Pi Touch Display is used when it is detected on the I2C bus. `ignore_lcd=1` will skip this detection phase, and therefore the Touch Display will not be used.
 
 ### display_default_lcd
 
-If a Raspberry Pi DSI LCD is detected it will be used as the default display and will show the framebuffer. Setting `display_default_lcd=0` will ensure the LCD is not the default display, which usually implies the HDMI output will be the default. The LCD can still be used by choosing its display number from supported applications, for example, omxplayer.
+If a Raspberry Pi Touch Display is detected, it will be used as the default display and will show the framebuffer. Setting `display_default_lcd=0` will ensure the Touch Display is not the default display, which usually implies the HDMI output will be the default. The Touch Display can still be used by choosing its display number from supported applications, for example, omxplayer.
 
 ### lcd_framerate
 
-Specify the framerate of the Raspberry Pi LCD display, in Hertz/fps. Defaults to 60Hz.
+Specify the framerate of the Raspberry Pi Touch Display, in frames per second. Defaults to 60.
 
 ### lcd_rotate
 
-This flips the display using the LCD's inbuilt flip functionality, which is a cheaper operation that using the GPU-based rotate operation.
+This flips the Touch Display using the LCD's inbuilt flip functionality, which is a cheaper operation that using the GPU-based rotate operation.
 
 For example, `lcd_rotate=2` will compensate for an upside down display.
 
@@ -498,11 +501,11 @@ For example, `lcd_rotate=2` will compensate for an upside down display.
 
 Enable/disable the touchscreen.
 
-`disable_touchscreen=1` will disable the touchscreen on the official Raspberry Pi LCD display.
+`disable_touchscreen=1` will disable the touchscreen on the official Raspberry Pi Touch Display.
 
 ### enable_dpi_lcd
 
-Enable LCD displays attached to the DPI GPIOs. This is to allow the use of third-party LCD displays using the parallel display interface.
+Enable LCD displays attached to the DPI GPIOs. This parameter is intended to support the use of third-party LCD displays.
 
 ### dpi_group, dpi_mode, dpi_output_format
 
@@ -553,7 +556,7 @@ HDMI_ASPECT_21_9 = 7
 HDMI_ASPECT_64_27 = 8  
 ```
 
-## Generic display options
+## General display options
 
 ### hdmi_force_hotplug
 
@@ -644,7 +647,7 @@ The options that can be set are:
 
 The `test_mode` command displays a test image and sound during boot (over the composite video and analogue audio outputs only) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test; the default value is `0`.
 
-### display_hdmi_rotate
+<a name="displayhdmirotate">### display_hdmi_rotate</a>
 
 Use `display_hdmi_rotate` to rotate or flip the HDMI display orientation. The default value is `0`.
 
@@ -661,19 +664,17 @@ Note that the 90 and 270 degree rotation options require additional memory on th
 
 If using the VC4 FKMS V3D driver (this is the default on the Raspberry Pi 4), then 90 and 270 degree rotations are not supported. The Screen Configuration utility provides display rotations for this driver. See this [page](../display_rotation.md) for more information.
 
-### display_lcd_rotate
-
-Use `display_lcd_rotate` to rotate or flip the LCD orientation. Parameters are the same as `display_hdmi_rotate`.
-
 ### display_rotate
 
 `display_rotate` is deprecated in the latest firmware but has been retained for backwards compatibility. Please use `display_lcd_rotate` and `display_hdmi_rotate` instead.
 
 Use `display_rotate` to rotate or flip the screen orientation. Parameters are the same as `display_hdmi_rotate`.
 
-### disable_fw_kms_setup 
+### disable_fw_kms_setup
 
 By default, the firmware parses the EDID of any HDMI attached display, picks an appropriate video mode, then passes the resolution and frame rate of the mode, along with overscan parameters, to the Linux kernel via settings on the kernel command line. In rare circumstances, this can have the effect of choosing a mode that is not in the EDID, and may be incompatible with the device. You can use `disable_fw_kms_setup=1` to disable the passing of these parameters and avoid this problem. The Linux video mode system (KMS) will then parse the EDID itself and pick an appropriate mode.
+
+**Note:** This option only applies to the FKMS and KMS graphics drivers.
 
 ## Other options
 
