@@ -73,6 +73,12 @@ Full camera software documentation can be found [here]](../../raspbian/applicati
 | Triggers | Keypress, UNIX signal, timeout |
 | Extra modes | demo, burst/timelapse, circular buffer, video with motion vectors, segmented video, live preview on 3D models |
 
+## HQ Camera IR Filter Transmission Information
+
+The HQ Camera uses a Hoya CM500 Infrared filter. It's transmission characteristics are as represented in the following graph.
+
+![GitHub Logo](./hoyacm500.png)
+
 ## Mechanical drawing
 
 - Camera Module v2 [PDF](mechanical/rpi_MECH_Camera2_2p1.pdf)
