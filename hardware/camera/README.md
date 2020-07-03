@@ -60,7 +60,7 @@ The Raspberry Pi Camera Modules are official products from the Raspberry Pi Foun
 
 ## Software features
 
-Full camera software documentation can be found [here]](../../raspbian/applications/camera.md).
+Full camera software documentation can be found [here](../../raspbian/applications/camera.md).
 
 | | |
 | --- | --- |
@@ -72,6 +72,12 @@ Full camera software documentation can be found [here]](../../raspbian/applicati
 | Automatic white balance modes | off, auto, sun, cloud, shade, tungsten, fluorescent, incandescent, flash, horizon |
 | Triggers | Keypress, UNIX signal, timeout |
 | Extra modes | demo, burst/timelapse, circular buffer, video with motion vectors, segmented video, live preview on 3D models |
+
+## HQ Camera IR Filter transmission information
+
+The HQ Camera uses a Hoya CM500 infrared filter. Its transmission characteristics are as represented in the following graph.
+
+![CM500 Transmission Graph](./hoyacm500.png)
 
 ## Mechanical drawing
 
