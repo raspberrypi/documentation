@@ -61,4 +61,4 @@ After five to ten seconds, the Raspberry Pi should begin booting and show the ra
 <a name="pi4"></a>
 ## Raspberry Pi 4
 
-The Raspberry Pi 4 currently requires non-default firmware to enable USB mass storage boot: see the [USB mass storage boot](../bcm2711_bootloader_config.md#usbmassstorageboot) section of the Bootloader Configuration page for more information.
+The Raspberry Pi 4 currently requires non-default firmware to enable USB mass storage boot: see the [USB mass storage boot](../bcm2711_bootloader_config.md#usbmassstorageboot) section of the Pi 4 Bootloader Configuration page for more information.
