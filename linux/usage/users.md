@@ -1,6 +1,6 @@
 # Linux users
 
-User management in Raspbian is done on the command line. The default user is `pi`, and the password is `raspberry`. You can add users and change each user's password.
+User management in Raspberry Pi OS is done on the command line. The default user is `pi`, and the password is `raspberry`. You can add users and change each user's password.
 
 ## Change your password
 
@@ -16,7 +16,7 @@ You can remove the password for the user `bob` with `sudo passwd bob -d`.
 
 ## Create a new user
 
-You can create additional users on your Raspbian installation with the `adduser` command.
+You can create additional users on your Raspberry Pi OS installation with the `adduser` command.
 
 Enter `sudo adduser bob` and you'll be prompted for a password for the new user `bob`. Leave this blank if you don't want a password.
 
@@ -30,7 +30,7 @@ Upon creating a new user, the contents of `/etc/skel/` will be copied to the new
 
 ## Sudoers
 
-The default `pi` user on Raspbian is a member of the `sudo` group. This gives the ability to run commands as root when preceded by `sudo`, and to switch to the root user with `sudo su`.
+The default `pi` user on Raspberry Pi OS is a member of the `sudo` group. This gives the ability to run commands as root when preceded by `sudo`, and to switch to the root user with `sudo su`.
 
 To add a new user to the `sudo` group, use the `adduser` command:
 

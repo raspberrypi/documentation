@@ -11,9 +11,9 @@ To change the language used by NOOBS, you can either press the `L` key on your k
 
 Alternatively, you can pre-select the language before booting NOOBS for the first time. See [here](https://github.com/raspberrypi/noobs/blob/master/README.md#how-to-change-the-default-language-keyboard-layout-display-mode-or-boot-partition).
 
-### Raspbian
+### Raspberry Pi OS
 
-If you've installed Raspbian using NOOBS, it should automatically pick up the same language you were using within NOOBS. But if you want to select a different language, or if you've installed Raspbian from a standalone image, use [raspi-config](raspi-config.md#change-locale).
+If you've installed Raspberry Pi OS using NOOBS, it should automatically pick up the same language you were using within NOOBS. But if you want to select a different language, or if you've installed Raspberry Pi OS from a standalone image, use [raspi-config](raspi-config.md#change-locale).
 
 
 ## Keyboard
@@ -24,9 +24,9 @@ To change the keyboard layout used by NOOBS, you can either press the `9` key on
 
 Alternatively, you can pre-select the keyboard before booting NOOBS for the first time. See [here](https://github.com/raspberrypi/noobs/blob/master/README.md#how-to-change-the-default-language-keyboard-layout-display-mode-or-boot-partition).
 
-### Raspbian
+### Raspberry Pi OS
 
-If you've installed Raspbian using NOOBS, it should automatically pick up the same keyboard you were using in NOOBS. But if you want to select a different keyboard, or if you've installed Raspbian from a standalone image, use [raspi-config](raspi-config.md#change-keyboard-layout).
+If you've installed Raspberry Pi OS using NOOBS, it should automatically pick up the same keyboard you were using in NOOBS. But if you want to select a different keyboard, or if you've installed Raspberry Pi OS from a standalone image, use [raspi-config](raspi-config.md#change-keyboard-layout).
 
 
 ## Timezone
@@ -35,6 +35,6 @@ If you've installed Raspbian using NOOBS, it should automatically pick up the sa
 
 No part of NOOBS uses the time; consequently there is no option for changing the timezone.
 
-### Raspbian
+### Raspberry Pi OS
 
 Once again, this is something you can change using the [raspi-config](raspi-config.md#change-timezone) tool.

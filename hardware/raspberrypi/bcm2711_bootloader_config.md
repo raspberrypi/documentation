@@ -31,6 +31,11 @@ sudo rpi-eeprom-update -d -f ./pieeprom-new.bin
 sudo reboot
 ```
 
+### Subsequent Bootloader Updates
+
+If you update your bootloader via apt, then any configuration changes made using the process described here will be migrated to the updated bootloader.
+
+
 ## Configuration Properties
 This section describes all the configuration items available in the bootloader. The syntax is the same as [config.txt](../../configuration/config-txt/) but the properties are specific to the bootloader. [Conditional filters](../../configuration/config-txt/conditional.md) are also supported except for EDID.
 
@@ -74,14 +79,13 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 * 0x0 - NONE (stop with error pattern)  
 * 0x1 - SD CARD  
 * 0x2 - NETWORK  
-* 0x3 - USB device boot (usbboot)[https://github.com/raspberrypi/usbboot] - Compute Module only.
+* 0x3 - USB device boot [usbboot](https://github.com/raspberrypi/usbboot) - Compute Module only.
 * 0x4 - USB mass storage boot
 * 0xf - RESTART (loop) - start again with the first boot order field.
 
 Default: 0x1  
 Version: pieeprom-2020-04-16.bin  
 
-**pieeprom-2020-05-15.bin - BETA**
 * Boot mode 0x0 will retry the SD boot if the SD card detect pin indicates that the card has been inserted or replaced.
 * The default boot mode is now 0xf41 which means continuously try SD then USB mass storage.
 
@@ -89,17 +93,17 @@ Version: pieeprom-2020-04-16.bin
 If the RESTART (0xf) boot mode is encountered more than MAX_RESTARTS times then a watchdog reset is triggered. This isn't recommended for general use but may be useful for test or remote systems where a full reset is needed to resolve issues with hardware or network interfaces.
 
 Default: -1 (infinite)  
-Version: pieeprom-2020-05-15.bin - BETA  
+Version: pieeprom-2020-06-15.bin - STABLE  
 
 ### SD_BOOT_MAX_RETRIES
-Specify the maximum number of times that the bootloader will retry booting from the SD card.  
--1 means infinite retries  
+The number of times that SD boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.  
+-1 means infinite retries.   
 Default: 0  
 Version: pieeprom-2020-04-16.bin  
 
 ### NET_BOOT_MAX_RETRIES
-Specify the maximum number of times that the bootloader will retry network boot.  
--1 means infinite retries  
+The number of times that network boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.  
+-1 means infinite retries.    
 Default: 0  
 Version: pieeprom-2020-04-16.bin  
 
@@ -115,9 +119,9 @@ Default: 4000
 Minimum: 500  
 Version: pieeprom-2020-04-16.bin  
 
-### TFTP_TIMEOUT
+### TFTP_FILE_TIMEOUT
 The timeout in milliseconds for an individual file download via TFTP.  
-Default: 15000  
+Default: 30000  
 Minimum: 5000  
 Version: pieeprom-2020-04-16.bin  
 
@@ -163,12 +167,12 @@ Version: pieeprom-2020-04-16.bin
 If TFTP_IP and the following options are set then DHCP is skipped and the static IP configuration is applied. If the TFTP server is on the same subnet as the client then GATEWAY may be omitted.
 
 #### CLIENT_IP
-The IP address of the client e.g. "192.168.0.32"
+The IP address of the client e.g. "192.168.0.32"   
 Default: ""  
 Version: pieeprom-2020-04-16.bin  
 
 #### SUBNET
-The subnet address mask e.g. "255.255.255.0"
+The subnet address mask e.g. "255.255.255.0"   
 Default: ""  
 Version: pieeprom-2020-04-16.bin  
 
@@ -177,37 +181,41 @@ The gateway address to use if the TFTP server is on a differenet subnet e.g. "19
 Default: ""  
 Version: pieeprom-2020-04-16.bin  
 
-### DISABLE_HDMI
-Disables the [HDMI boot diagnostics](./boot_diagnostics.md) display if a fatal error is encountered. This may also be disabled by setting `disable_splash=1` in config.txt.
+#### MAC_ADDRESS
+Overrides the Ethernet MAC address with the given value. e.g. dc:a6:32:01:36:c2  
+Default: ""   
+Version: pieeprom-2020-04-16.bin
 
-N.B. By default, the HDMI diagnostics screen is automatically blanked after 2 minutes.
-Default: 0  
+### DISABLE_HDMI
+The [HDMI boot diagnostics](./boot_diagnostics.md) display is disabled if DISABLE_HDMI=1. Other non-zero values are reserved for future use.
+
+Default: 0   
 Version: pieeprom-2020-04-16.bin  
 
-`pieeprom-2020-05-15.bin - BETA`
+`Version: pieeprom-2020-06-15.bin - STABLE`
 The `disable_splash` property is no longer checked because the HDMI diagnostics screen is started before config.txt is read.
 
-### SELF_UPDATE
-Allows the bootloader to update itself instead of requiring recovery.bin. This is intended to make it easier to update the bootloader firmware via network boot. To enable set `SELF_UPDATE=1` and add `bootloader_update=1` in config.txt.
+### ENABLE_SELF_UPDATE
+Allows the bootloader to update itself instead of requiring recovery.bin. This is intended to make it easier to update the bootloader firmware via network boot. To enable set `ENABLE_SELF_UPDATE=1` and add `bootloader_update=1` in config.txt.
 N.B. There is no automatic rollback in the event of a power failure during the firmware update. In the unlikely event of this happening you will have to use Pi Imager to apply the rescue image.
 
 If self update is enabled then the bootloader will look for (pieeprom.upd + pieeprom.sig) and/or (vl805.bin + vl805.sig) on the boot partition (or TFTP root). If the update files are different to the current image then the update is applied and system is reset. Otherwise, if the images are identical then boot continues as normal.
 
 Since the updates files are in the same format as generated by rpi-eeprom-update you can use rpi-eeprom-update to install the files to /boot so long as /boot mounts the approprate boot device / tftp-root (via NFS).
 
-**The bootloader only reads the configuration from the bootconf.txt in the EEPROM and not the one in the update files. Therefore, in order to enable `SELF_UPDATE` you have to first update the bootloader via the SD-CARD or FLASHROM.**
+**The bootloader only reads the configuration from the bootconf.txt in the EEPROM and not the one in the update files. Therefore, in order to enable `ENABLE_SELF_UPDATE` you have to first update the bootloader via the SD-CARD or FLASHROM.**
 
 Default: 0  
 Version: pieeprom-2020-04-16.bin  
 
-`pieeprom-2020-05-15.bin - BETA`
-The `SELF_UPDATE` EEPROM property and `bootloader_update` config.txt property are now enabled by default so that `rpi-eeprom-update` may be used without requiring extra customization. Setting either of these parameters to zero prevents self-updates.
+`Version: pieeprom-2020-06-15.bin - STABLE`
+The `ENABLE_SELF_UPDATE` EEPROM property and `bootloader_update` config.txt property are now enabled by default so that `rpi-eeprom-update` may be used without requiring extra customization. Setting either of these parameters to zero prevents self-updates.
 
 ### FREEZE_VERSION
-Previously this property was only checked by the rpi-eeprom-update script. However, now that self-update is enabled the bootloader will also check this property. If set, this overrides `SELF_UPDATE` to stop automatic updates. To disable `FREEZE_VERSION` you will have to use an SD card boot with recovery.bin.
+Previously this property was only checked by the rpi-eeprom-update script. However, now that self-update is enabled the bootloader will also check this property. If set, this overrides `ENABLE_SELF_UPDATE` to stop automatic updates. To disable `FREEZE_VERSION` you will have to use an SD card boot with recovery.bin.
 
 Default: 0  
-Version: pieeprom-2020-05-15.bin - BETA  
+Version: pieeprom-2020-06-15.bin - STABLE  
 
 ### BOOT_LOAD_FLAGS
 Experimental property for custom firmware (bare metal).
@@ -237,7 +245,7 @@ BOOT_UART=1
 NETCONSOLE=6665@169.254.1.1/eth0,6666@/
 ```
 
-Version: pieeprom-2020-05-15.bin - BETA
+Version: pieeprom-2020-06-15.bin - STABLE  
 
 ## Network Boot
 ### Server configuration                                                    
@@ -262,7 +270,7 @@ sudo apt upgrade
 # Check the current version
 sudo rpi-eeprom-update     
 # Update to latest
-sudo rpi-eeprom-update     
+sudo rpi-eeprom-update -a
 ```
 
 ### Enable network boot
@@ -285,12 +293,16 @@ sudo reboot
 ```
 <a name="usbmassstorageboot"></a>
 ## USB mass storage boot
-This is only available in the BETA release and requires updated firmware via [rpi-update](../../raspbian/applications/rpi-update.md). If you aren't already familiar with how to use a USB drive for the root filesystem then you probably want to wait until this feature is in the default Raspbian image.
+This is currently undergoing beta testing and also requires updated GPU (start.elf) firmware via APT-update OR [rpi-update](../../raspbian/applications/rpi-update.md). If you aren't already familiar with how to use a USB drive for the root filesystem then you probably want to wait until this feature is in the default Raspberry Pi OS image.
 
 There is no support for migrating a SD card image to a USB drive. It is possible, but the process can potentially be quite involved and varies according to your original setup. Please see [this forum thread](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=44177&start=350) for more information.
 
-## BETA setup instructions
-These instructions assume that you are familiar with manual firmware and bootloader updates and understand how to revert to a previous version if you want to revert the changes. If not, please wait until the features are available in a full Raspbian release image.
+N.B. There is now a `stable` release of the bootloader which supports USB MSD and will only be updated with major bug fixes. Since the GPU firmware must also be upgraded USB-MSD boot as a feature is still viewed as beta software.
+
+## USB-MSD firmware setup instructions
+These instructions assume that you are familiar with manual firmware and bootloader updates and understand how to revert to a previous version if you want to revert the changes. If not, please wait until the features are available in a full Raspberry Pi OS release image.
+
+**These instructions are specific to Raspberry Pi OS. Other distributions including NOOBS are likely to require additional steps in order to enable USB boot**
 
 ### Check that the USB mass storage device works under Linux
 Before attempting to boot from a USB mass storage device it is advisible to verify that the device works correctly under Linux. Boot using an SD card and plug in the USB mass storage device. This should appears as a removable drive.
@@ -299,20 +311,28 @@ This is especially important with USB SATA adapters which may be supported by th
 
 See this [forum thread](https://www.raspberrypi.org/forums/viewtopic.php?t=245931) about UAS and how to add [usb-storage.quirks](https://www.kernel.org/doc/html/v5.0/admin-guide/kernel-parameters.html) to workaround this issue.
 
+### Multiple bootable drives
+When searching for a bootable partition the bootloader scans all USB mass storage devices in parallel and will select the first to respond. If the boot partition does not contain a suitable start.elf file the next available device is selected.
+
+As with earlier Raspberry Pi models there is no method for specifying the boot device according to the USB topology because this would slow down boot and adds unecessary and hard to support configuration complexity.
+
+N.B. config.txt [conditional filters](../configuration/config-txt/conditional.md) can be used to select alternate firmware in complex device configurations.
+
 ### Update the bootloader
-* From a standard Raspbian SD card boot:
+* From a standard Raspberry Pi OS SD card boot:
 ```
 sudo apt update
 sudo apt full-upgrade
 ```
 
-* As root, edit `/etc/default/rpi-eeprom-update` and select BETA releases.
+* As root, edit `/etc/default/rpi-eeprom-update` and select `stable` releases.
 
-* Install the BETA version of the bootloader and replace the current configuration settings to enable USB boot.
+* Install the `stable` version of the bootloader and replace the current configuration settings to enable USB boot.
 See `BOOT_ORDER` property if you wish to migrate the configuration by hand.
 ```
-sudo rpi-eeprom-update -d -f /lib/firmware/raspberrypi/bootloader/beta/pieeprom-2020-05-15.bin
+sudo rpi-eeprom-update -d -f /lib/firmware/raspberrypi/bootloader/stable/pieeprom-2020-06-15.bin
 ```
+Alternatively, use the Raspberry Pi Imager to create a custom SD card from the lastest MSD STABLE image on the [releases](https://github.com/raspberrypi/rpi-eeprom/blob/master/releases.md) page.
 
 * Reboot and check the bootloader version and config:
 ```
@@ -321,14 +341,15 @@ vcgencmd bootloader_config
 ```
 
 ### Create a bootable USB drive
-* Use the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to flash Raspbian to a USB mass storage device. Other distros have not been tested and may require updates (e.g. u-boot). One reason for having a public beta is to help get USB MSD boot support into other distros.
+* Use the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to flash Raspberry Pi OS to a USB mass storage device. Other distros have not been tested and may require updates (e.g. u-boot). One reason for having a public beta is to help get USB MSD boot support into other distros.
+* Update the GPU firmware via APT `sudo apt update` then `sudo apt full-upgrade`
 * Download the updated firmware files `*.elf *.dat` from the `master` branch of the [Raspberry Pi Firmware](https://github.com/raspberrypi/firmware) Github repo. 
-* Alternatively use `sudo rpi-update` to update the firmware on a Raspbian SD card install, then copy the files from there.
-* Copy these updates to the boot partition on the USB device. From now on `sudo rpi-update` can be used from within Raspbian on the USB boot device.
-* A Linux kernel update is not required. Raspbian has been tested using the 4.19 and 5.4 (32 and 64 bit) kernel.
+* Alternatively use `sudo rpi-update` to update the firmware on a Raspberry Pi OS SD card install, then copy the files from there.
+* Copy these updates to the boot partition on the USB device. From now on `sudo rpi-update` can be used from within Raspberry Pi OS on the USB boot device.
+* A Linux kernel update is not required. Raspberry Pi OS has been tested using the 4.19 and 5.4 (32 and 64 bit) kernel.
 
 ### USB device compatiblity
-There is no explicit set of supported devices. Initially we recommend using a USB pen drive or SSD. Hard drives will probably require a powered HUB and in all cases you should verify that the devices work correctly from within Raspbian using an SD card boot.
+There is no explicit set of supported devices. Initially we recommend using a USB pen drive or SSD. Hard drives will probably require a powered HUB and in all cases you should verify that the devices work correctly from within Raspberry Pi OS using an SD card boot.
 
 Please post interoperability reports (positive or negative) on [this thread](https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=274595) on the Raspberry Pi forums. 
 
@@ -340,19 +361,19 @@ The format is a comma-separated list of hexadecimal values with the VID as most 
 E.g. `034700a0,a4231234`
 
 Default: “”  
-Version: pieeprom-2020-05-15.bin - BETA    
+Version: pieeprom-2020-06-15.bin - STABLE  
 
 ### USB_MSD_DISCOVER_TIMEOUT
 If no USB mass storage devices are found within this timeout then USB-MSD is stopped and the next boot mode is selected
 
 Default: 20000 (20 seconds)  
-Version: pieeprom-2020-05-15.bin - BETA  
+Version: pieeprom-2020-06-15.bin - STABLE  
 
 ### USB_MSD_LUN_TIMEOUT
 How long to wait in milliseconds before advancing to the next LUN e.g. a multi-slot SD-CARD reader. This is still being tweaked but may help speed up boot if old/slow devices are connected as well as a fast USB-MSD device containing the OS.
 
 Default:  2000 (2 seconds)  
-Version: pieeprom-2020-05-15.bin - BETA  
+Version: pieeprom-2020-06-15.bin - STABLE    
 
 ### XHCI_DEBUG
 This property is a bit field which controls the verbosity of USB trace messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`
@@ -373,5 +394,5 @@ XHCI_DEBUG=0x3
 ```
 
 Default: 0x0  
-Version: pieeprom-2020-05-15.bin - BETA  
+Version: pieeprom-2020-06-15.bin - STABLE  
 

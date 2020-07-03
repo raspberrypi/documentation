@@ -12,7 +12,7 @@ To use the Compute Module, a user needs to design a (relatively simple) 'motherb
 
 Raspberry Pi provides a minimal motherboard for the Compute Module (called the Compute Module IO Board, or CMIO Board) which powers the module, brings out the GPIO to pin headers, and brings the camera and display interfaces out to FFC connectors. It also provides HDMI, USB, and an 'ACT' LED, as well as the ability to program the eMMC of a module via USB from a PC or Raspberry Pi.
 
-This guide first explains the boot process and how Device Tree is used to describe attached hardware; these are essential things to understand when designing with the Compute Module. It then provides a worked example of attaching an I2C and an SPI peripheral to a CMIO (or CMIO V3 for CM3) Board and creating the Device Tree files necessary to make both peripherals work under Linux, starting from a vanilla Raspbian OS image.
+This guide first explains the boot process and how Device Tree is used to describe attached hardware; these are essential things to understand when designing with the Compute Module. It then provides a worked example of attaching an I2C and an SPI peripheral to a CMIO (or CMIO V3 for CM3) Board and creating the Device Tree files necessary to make both peripherals work under Linux, starting from a vanilla Raspberry Pi OS image.
 
 ## BCM283x GPIOs
 
@@ -68,7 +68,7 @@ The BCM283x devices as used on Raspberry Pi and Compute Module boards have a thr
 
 On a Pi or Compute Module there are several files in the first FAT partition of the SD/eMMC that are binary 'Device Tree' files. These binary files (usually with extension `.dtb`) are compiled from human readable text descriptions (usually files with extension `.dts`) by the Device Tree compiler.
 
-On a standard Raspbian image in the first (FAT) partition you will find two different types of device tree files, one is used by the GPU only and the rest are standard ARM device tree files for each of the BCM283x based Pi products:
+On a standard Raspberry Pi OS image in the first (FAT) partition you will find two different types of device tree files, one is used by the GPU only and the rest are standard ARM device tree files for each of the BCM283x based Pi products:
 
 * `dt-blob.bin` (used by the GPU)
 * `bcm2708-rpi-b.dtb` (Used for Pi model A and B)
@@ -89,7 +89,7 @@ During boot, the user can specify a specific ARM device tree to use via the `dev
 
 In addition to loading an ARM dtb, `start.elf` supports loading additional Device Tree 'overlays' via the `dtoverlay` parameter in `config.txt`, for example adding as many `dtoverlay=myoverlay` lines as required as overlays to `config.txt`, noting that overlays live in `/overlays` and are suffixed `-overlay.dtb` e.g. `/overlays/myoverlay-overlay.dtb`. Overlays are merged with the base dtb file before the data is passed to the Linux kernel when it starts.
 
-Overlays are used to add data to the base dtb that (nominally) describes non board-specific hardware. This includes GPIO pins used and their function, as well as the device(s) attached, so that the correct drivers can be loaded. The convention is that on a Raspberry Pi, all hardware attached to the Bank0 GPIOs (the GPIO header) should be described using an overlay. On a Compute Module all hardware attached to the Bank0 and Bank1 GPIOs should be described in an overlay file. You don't have to follow these conventions: you can roll all the information into one single dtb file, as previously described, replacing `bcm2708-rpi-cm.dtb`. However, following the conventions means that you can use a 'standard' Raspbian release, with its standard base dtb and all the product-specific information contained in a separate overlay. Occasionally the base dtb might change - usually in a way that will not break overlays - which is why using an overlay is suggested.
+Overlays are used to add data to the base dtb that (nominally) describes non board-specific hardware. This includes GPIO pins used and their function, as well as the device(s) attached, so that the correct drivers can be loaded. The convention is that on a Raspberry Pi, all hardware attached to the Bank0 GPIOs (the GPIO header) should be described using an overlay. On a Compute Module all hardware attached to the Bank0 and Bank1 GPIOs should be described in an overlay file. You don't have to follow these conventions: you can roll all the information into one single dtb file, as previously described, replacing `bcm2708-rpi-cm.dtb`. However, following the conventions means that you can use a 'standard' Raspberry Pi OS release, with its standard base dtb and all the product-specific information contained in a separate overlay. Occasionally the base dtb might change - usually in a way that will not break overlays - which is why using an overlay is suggested.
 
 ## dt-blob.bin
 
@@ -110,13 +110,13 @@ After `start.elf` has read `dt-blob.bin` and set up the initial pin states and c
 
 After reading `config.txt` another device tree file specific to the board the hardware is running on is read: this is `bcm2708-rpi-cm.dtb` for a Compute Module, or `bcm2710-rpi-cm.dtb` for CM3. This file is a standard ARM Linux device tree file, which details how hardware is attached to the processor: what peripheral devices exist in the SoC and where, which GPIOs are used, what functions those GPIOs have, and what physical devices are connected. This file will set up the GPIOs appropriately, overwriting the pin state set up in `dt-blob.bin` if it is different. It will also try to load driver(s) for the specific device(s).
 
-Although the `bcm2708-rpi-cm.dtb` file can be used to load all attached devices, the recommendation for Compute Module users is to leave this file alone. Instead, use the one supplied in the standard Raspbian software image, and add devices using a custom 'overlay' file as previously described. The `bcm2708-rpi-cm.dtb` file contains (disabled) entries for the various peripherals (I2C, SPI, I2S etc.) and no GPIO pin definitions, apart from the eMMC/SD Card peripheral which has GPIO defs and is enabled, because it is always on the same pins. The idea is that the separate overlay file will enable the required interfaces, describe the pins used, and also describe the required drivers. The `start.elf` firmware will read and merge the `bcm2708-rpi-cm.dtb` with the overlay data before giving the merged device tree to the Linux kernel as it boots up.
+Although the `bcm2708-rpi-cm.dtb` file can be used to load all attached devices, the recommendation for Compute Module users is to leave this file alone. Instead, use the one supplied in the standard Raspberry Pi OS software image, and add devices using a custom 'overlay' file as previously described. The `bcm2708-rpi-cm.dtb` file contains (disabled) entries for the various peripherals (I2C, SPI, I2S etc.) and no GPIO pin definitions, apart from the eMMC/SD Card peripheral which has GPIO defs and is enabled, because it is always on the same pins. The idea is that the separate overlay file will enable the required interfaces, describe the pins used, and also describe the required drivers. The `start.elf` firmware will read and merge the `bcm2708-rpi-cm.dtb` with the overlay data before giving the merged device tree to the Linux kernel as it boots up.
 
 ## Device Tree Source and Compilation
 
-The Raspbian image provides compiled dtb files, but where are the source dts files? They live in the Raspberry Pi Linux kernel branch, on [GitHub](https://github.com/raspberrypi/linux). Look in the `arch/arm/boot/dts` folder.
+The Raspberry Pi OS image provides compiled dtb files, but where are the source dts files? They live in the Raspberry Pi Linux kernel branch, on [GitHub](https://github.com/raspberrypi/linux). Look in the `arch/arm/boot/dts` folder.
 
-Some default overlay dts files live in `arch/arm/boot/dts/overlays`. Corresponding overlays for standard hardware that can be attached to a **Raspberry Pi** in the Raspbian image are on the FAT partition in the `/overlays` directory. Note that these assume certain pins on BANK0, as they are for use on a Raspberry Pi. In general, use the source of these standard overlays as a guide to creating your own, unless you are using the same GPIO pins as you would be using if the hardware was plugged into the GPIO header of a Raspberry Pi.
+Some default overlay dts files live in `arch/arm/boot/dts/overlays`. Corresponding overlays for standard hardware that can be attached to a **Raspberry Pi** in the Raspberry Pi OS image are on the FAT partition in the `/overlays` directory. Note that these assume certain pins on BANK0, as they are for use on a Raspberry Pi. In general, use the source of these standard overlays as a guide to creating your own, unless you are using the same GPIO pins as you would be using if the hardware was plugged into the GPIO header of a Raspberry Pi.
 
 Compiling these dts files to dtb files requires an up-to-date version of the Device Tree compiler `dtc`. More information can be found [here](../../configuration/device-tree.md), but the easy way to install an appropriate version on a Pi is to run:
 ```
@@ -154,7 +154,7 @@ Please use the [Device Tree subforum](https://www.raspberrypi.org/forums/viewfor
 
 For these simple examples I used a CMIO board with peripherals attached via jumper wires.
 
-For each of the examples we assume a CM+CMIO or CM3+CMIO3 board with a clean install of the latest Raspbian Lite version on the CM. See instructions [here](cm-emmc-flashing.md).
+For each of the examples we assume a CM+CMIO or CM3+CMIO3 board with a clean install of the latest Raspberry Pi OS Lite version on the CM. See instructions [here](cm-emmc-flashing.md).
 
 The examples here require internet connectivity, so a USB hub plus keyboard plus wireless LAN or Ethernet dongle plugged into the CMIO USB port is recommended.
 

@@ -4,7 +4,7 @@ The terminal (or 'command-line') on a computer allows a user a great deal of con
 
 ## Opening a Terminal window
 
-On the Raspberry Pi (running Raspbian), the default terminal application is `LXTerminal`. This is known as a 'terminal emulator', this means that it emulates the old style video terminals (from before graphical user interfaces were developed) in a graphical environment. The application can be found on the Raspberry Pi desktop and when started will look something like this:
+On the Raspberry Pi (running Raspberry Pi OS), the default terminal application is `LXTerminal`. This is known as a 'terminal emulator', this means that it emulates the old style video terminals (from before graphical user interfaces were developed) in a graphical environment. The application can be found on the Raspberry Pi desktop and when started will look something like this:
 
 ![Terminal screenshot](images/terminal.png)
 
@@ -40,7 +40,7 @@ Further information on `sudo` and the root user can be found on the [linux root 
 
 ## Installing software using apt
 
-You can use the `apt` command to install software in Raspbian. This is the 'package manager' that is included with any Debian-based Linux distributions (including Raspbian). It allows you to install and manage new software packages on your Pi. In order to install a new package, you would type `sudo apt install <package-name>` (where `<package-name>` is the package that you want to install). Running `sudo apt update` will update a list of software packages that are available on your system. If a new version of a package is available, then `sudo apt full-upgrade` will update any old packages to the new version. Finally, `sudo apt remove <package-name>` removes or uninstalls a package from your system.
+You can use the `apt` command to install software in Raspberry Pi OS. This is the 'package manager' that is included with any Debian-based Linux distributions (including Raspberry Pi OS). It allows you to install and manage new software packages on your Pi. In order to install a new package, you would type `sudo apt install <package-name>` (where `<package-name>` is the package that you want to install). Running `sudo apt update` will update a list of software packages that are available on your system. If a new version of a package is available, then `sudo apt full-upgrade` will update any old packages to the new version. Finally, `sudo apt remove <package-name>` removes or uninstalls a package from your system.
 
 More information about this can be found in the [Linux usage section on apt](../../linux/software/apt.md).
 

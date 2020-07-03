@@ -13,7 +13,7 @@
 
 The Raspberry Pi is equipped with one [SPI](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus) bus that has 2 chip selects.
 
-The SPI master driver is disabled by default on Raspbian. To enable it, use [raspi-config](../../../configuration/raspi-config.md), or ensure the line `dtparam=spi=on` isn't commented out in `/boot/config.txt`, and reboot. If the SPI driver was loaded, you should see the device `/dev/spidev0.0`.
+The SPI master driver is disabled by default on Raspberry Pi OS. To enable it, use [raspi-config](../../../configuration/raspi-config.md), or ensure the line `dtparam=spi=on` isn't commented out in `/boot/config.txt`, and reboot. If the SPI driver was loaded, you should see the device `/dev/spidev0.0`.
 
 The SPI bus is available on the P1 Header:
 
@@ -26,12 +26,6 @@ GND     P1-25   P1-26    CE1
 
 <a name="software"></a>
 ## Software
-
-### WiringPi
-
-WiringPi includes a library which can make it easier to use the Raspberry Pi's on-board SPI interface. Accesses the hardware registers directly.
-
-http://wiringpi.com/
 
 ### bcm2835 library
 

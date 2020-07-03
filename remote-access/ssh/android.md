@@ -13,14 +13,14 @@ The app should open showing ‘No Hosts’. To get started, you should tap the b
 
 Enter an `alias`, such as Raspberry Pi. Then enter the IP address under `hostname`. Fill in the `username` and `password` and hit the tick `✓` in the top right corner. 
 
-If you do not know the IP address, type `hostname -I` in the command line on the Raspberry Pi. See [here](../ip-address.md) for more ways to find your IP address. The default login for Raspbian is `pi` with the password `raspberry`.
+If you do not know the IP address, type `hostname -I` in the command line on the Raspberry Pi. See [here](../ip-address.md) for more ways to find your IP address. The default login for Raspberry Pi OS is `pi` with the password `raspberry`.
 
 
 ## 2. Connect
 
 When you have saved the new host, you will be sent back to the ‘Hosts’ screen. There, you will find the new entry. Make sure your mobile device has wireless connectivity turned on, and that it is connected to the same network as your Raspberry Pi.
 
-Tap the new entry once. When the connection works, you will see a [security warning](http://www.lysium.de/blog/index.php?/archives/186-How-to-get-ssh-server-fingerprint-information.html). Don’t worry: everything is fine. Click ‘Connect’. You will only see this warning the first time Termius connects to a Pi that it hasn’t seen before.
+Tap the new entry once. When the connection works, you will see a security warning. Don’t worry: everything is fine. Click ‘Connect’. You will only see this warning the first time Termius connects to a Pi that it hasn’t seen before.
 
 ![Termius ‘Security warning’](images/ssh-android-warning.png)
 

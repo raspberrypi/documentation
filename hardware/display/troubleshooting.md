@@ -8,7 +8,7 @@ Having intermittent problems, or seeing a little rainbow square in the top right
 
 We recommend our official 2.5A adapter because we know it works, but any good 2.5A supply should work.
 
-### Have you updated Raspbian?
+### Have you updated Raspberry Pi OS?
 
 If not, many problems will be solved by making sure your software is up-to date.
 
@@ -25,7 +25,7 @@ sudo reboot
 
 ### My touchscreen doesn't work, or works intermittently
 
-- Make sure you've updated Raspbian (see above for steps)
+- Make sure you've updated Raspberry Pi OS (see above for steps)
 - Check the smaller ribbon cable is seated properly
 
 If you want to make sure your Pi has detected your touchscreen, try running:
@@ -73,7 +73,7 @@ Don't panic! This is perfectly normal.
 
 ### My display is black
 
-* Make sure you've updated Raspbian (see above for steps)
+* Make sure you've updated Raspberry Pi OS (see above for steps)
 * Check the ribbon cable between your Pi and the LCD is properly seated
 * Make sure you have a SD card properly inserted into your Pi
 
@@ -81,7 +81,7 @@ Don't panic! This is perfectly normal.
 
 * Check the larger ribbon cable between the display and driver board is properly seated
 
-### Raspbian says my screen is 752x448. Surely that's wrong?
+### Raspberry Pi OS says my screen is 752x448. Surely that's wrong?
 
 Yes, the screen should be 800x480. This is a result of overscan being enabled.
 

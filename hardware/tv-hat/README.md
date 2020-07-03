@@ -20,7 +20,7 @@ you are not accessing the Pi remotely)
   * Place the spacers at two or three of the corners of the HAT, and tighten the screws through the mounting
 holes to hold them in place.
 * Connect the TV HAT’s aerial adaptor to the cable from your TV aerial.
-* Set up the Raspberry Pi with the newest version of the Raspbian operating system, which you can download from our [downloads page](https://www.raspberrypi.org/downloads/raspbian/).
+* Set up the Raspberry Pi with the newest version of the Raspberry Pi OS operating system, which you can download from our [downloads page](https://www.raspberrypi.org/downloads/raspbian/).
  * If you don’t know how to do this, follow our guide [here](https://projects.raspberrypi.org/en/pathways/getting-started-with-raspberry-pi)
 * Start up your Pi, open a terminal window, and run the following two commands to install the `tvheadend` software:
 ```
@@ -54,6 +54,6 @@ Found services: 172
 listing, just to the right of the **i** icon. This brings up an in-browser media player. Depending on the decoding facilities  built into your browser and the type of stream being played, you may find that playback can be jerky. In these cases, we recommend using a local media player as the playback application.
 * To watch a TV channel in a local media player, e.g. VLC [www.videolan.org/vlc](https://www.videolan.org/vlc), you’ll need to download it as a stream. Click the `i` icon to the left of a channel listing to bring up the information panel for that channel. Here you can see a stream file that you can download.
 
-`tvheadend` is supported by numerous apps, such as TvhClient for iOS, which will play TV from the Pi. OMXPlayer, supplied with Raspbian, also supports viewing TV streams from `tvheadend`. Kodi, available in the Raspbian repos, provides excellent facilities for playing live TV, along with previously recorded channels and timed series recording.
+`tvheadend` is supported by numerous apps, such as TvhClient for iOS, which will play TV from the Pi. OMXPlayer, supplied with Raspberry Pi OS, also supports viewing TV streams from `tvheadend`. Kodi, available in the Raspberry Pi OS repos, provides excellent facilities for playing live TV, along with previously recorded channels and timed series recording.
 
 To discuss other features or uses of the TV HAT, please visit our [forums](https://www.raspberrypi.org/forums).

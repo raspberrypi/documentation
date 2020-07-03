@@ -90,9 +90,9 @@ Displays the current voltages used by the specific block.
 | block | Description |
 |:-----:|-------------|
 | core | VC4 core voltage |
-| sdram_c | |
-| sdram_i | |
-| sdram_p | |
+| sdram_c | SDRAM Core Voltage |
+| sdram_i | SDRAM I/O voltage |
+| sdram_p | SDRAM Phy Voltage|
 
 #### otp_dump
 

@@ -16,7 +16,7 @@ This returns the bus address of the SDRAM. This is 0x40000000 on the Pi Zero, Pi
 
 ## Building a C program using these functions
 
-The `include` file and library are installed by default on a Raspbian system.
+The `include` file and library are installed by default on a Raspberry Pi OS system.
 
 Add the following line to your C program:
 ```

@@ -1,6 +1,6 @@
 # Usage
 
-Basic examples to help you get started with some of the software available in Raspbian
+Basic examples to help you get started with some of the software available in Raspberry Pi OS
 
 ## Contents
 
@@ -17,7 +17,7 @@ Basic examples to help you get started with some of the software available in Ra
 - [Minecraft](minecraft/README.md)
     - A free version of Minecraft is available for the Pi, and this is the only edition that has a programming interface, meaning you can control Minecraft with Python code - and even interact with the real world through GPIO
 - [Python Games](python-games/README.md)
-    - Raspbian ships with some ready made Python games for you to play on your Raspberry Pi - and why not browse the code, hack the games and learn to make your own?
+    - Raspberry Pi OS ships with some ready made Python games for you to play on your Raspberry Pi - and why not browse the code, hack the games and learn to make your own?
 - [WordPress](wordpress/README.md)
     - Set up a web server on your Raspberry Pi and install Wordpress, a content management and blogging system
 - [Mathematica](mathematica/README.md)

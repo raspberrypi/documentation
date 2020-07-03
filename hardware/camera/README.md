@@ -13,7 +13,7 @@ The Raspberry Pi Camera Modules are official products from the Raspberry Pi Foun
 | Video modes | 1080p30, 720p60 and 640 × 480p60/90 | 1080p30, 720p60 and 640 × 480p60/90 | 1080p30, 720p60 and 640 × 480p60/90 |
 | Linux integration | V4L2 driver available | V4L2 driver available | V4L2 driver available |
 | C programming API | OpenMAX IL and others available | OpenMAX IL and others available | |
-| Sensor | OmniVision OV5647 | [Sony IMX219](http://www.sony-semicon.co.jp/products_en/new_pro/april_2014/imx219_e.html) | [Sony IMX477](https://www.sony-semicon.co.jp/products/common/pdf/IMX477-AACK_Flyer.pdf) |
+| Sensor | OmniVision OV5647 | Sony IMX219 | [Sony IMX477](https://www.sony-semicon.co.jp/products/common/pdf/IMX477-AACK_Flyer.pdf) |
 | Sensor resolution | 2592 × 1944 pixels | 3280 × 2464 pixels | 4056 x 3040 pixels|
 | Sensor image area | 3.76 × 2.74 mm | 3.68 x 2.76 mm (4.6 mm diagonal) | 6.287mm x 4.712 mm (7.9mm diagonal) |
 | Pixel size | 1.4 µm × 1.4 µm | 1.12 µm x 1.12 µm  | 1.55 µm x 1.55 µm |
@@ -60,7 +60,7 @@ The Raspberry Pi Camera Modules are official products from the Raspberry Pi Foun
 
 ## Software features
 
-Full camera software documentation can be found at [raspbian/applications/camera](../../raspbian/applications/camera.md).
+Full camera software documentation can be found [here](../../raspbian/applications/camera.md).
 
 | | |
 | --- | --- |
@@ -72,6 +72,12 @@ Full camera software documentation can be found at [raspbian/applications/camera
 | Automatic white balance modes | off, auto, sun, cloud, shade, tungsten, fluorescent, incandescent, flash, horizon |
 | Triggers | Keypress, UNIX signal, timeout |
 | Extra modes | demo, burst/timelapse, circular buffer, video with motion vectors, segmented video, live preview on 3D models |
+
+## HQ Camera IR Filter transmission information
+
+The HQ Camera uses a Hoya CM500 infrared filter. Its transmission characteristics are as represented in the following graph.
+
+![CM500 Transmission Graph](./hoyacm500.png)
 
 ## Mechanical drawing
 

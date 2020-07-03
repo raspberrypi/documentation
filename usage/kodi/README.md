@@ -16,7 +16,7 @@ With NOOBS on your SD card, you should be able to boot the Raspberry Pi to the N
 
 Select **LibreELEC** or **OSMC** and press the `Install` button.
 
-You'll be prompted to confirm. This will delete any data on the SD card, so if you previously had Raspbian on it be sure to back up your files first. If you're sure, click `Yes` to continue and start the installation. This will take some time; when it's complete NOOBS will show a window saying:
+You'll be prompted to confirm. This will delete any data on the SD card, so if you previously had Raspberry Pi OS on it be sure to back up your files first. If you're sure, click `Yes` to continue and start the installation. This will take some time; when it's complete NOOBS will show a window saying:
 
 ```
 OS(es) Installed Successfully

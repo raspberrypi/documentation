@@ -2,14 +2,14 @@
 
 ## Preparing your Pi
 
-Your Raspberry Pi should be running the latest version of the Raspbian OS (_Buster_ at the time of writing), and the camera and I2C interfaces must both be enabled (check the _Interfaces_ tab of the _Raspberry Pi Configuration_ tool, from the _Preferences_ menu). First ensure your system, firmware and all its applications and repositories are up to date by entering the following commands into a terminal window.
+Your Raspberry Pi should be running the latest version of the Raspberry Pi OS (_Buster_ at the time of writing), and the camera and I2C interfaces must both be enabled (check the _Interfaces_ tab of the _Raspberry Pi Configuration_ tool, from the _Preferences_ menu). First ensure your system, firmware and all its applications and repositories are up to date by entering the following commands into a terminal window.
 
 ```bash
 sudo apt update
 sudo apt full-upgrade
 ```
 
-Currently (May 2020) the necessary _libcamera_ support has not yet been merged into the standard Raspbian OS release, therefore it is necessary to install the latest release candidate. To do this, first reboot your Pi, and then use
+Currently (May 2020) the necessary _libcamera_ support has not yet been merged into the standard Raspberry Pi OS release, therefore it is necessary to install the latest release candidate. To do this, first reboot your Pi, and then use
 
 ```bash
 sudo rpi-update

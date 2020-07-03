@@ -2,12 +2,12 @@
 
 This page describes the console based raspi-config application. If you are using the Raspberry Pi desktop then you can use the graphical Raspberry Pi Configuration application from the Preferences menu to configure your Raspberry Pi.
 
-`raspi-config` is the Raspberry Pi configuration tool originally written by [Alex Bradbury](https://github.com/asb). It targets Raspbian.
+`raspi-config` is the Raspberry Pi configuration tool originally written by [Alex Bradbury](https://github.com/asb). It targets Raspberry Pi OS.
 
 <a name="usage"></a>
 ## Usage
 
-You will be shown `raspi-config` on first booting into Raspbian. To open the configuration tool after this, simply run the following from the command line:
+You will be shown `raspi-config` on first booting into Raspberry Pi OS. To open the configuration tool after this, simply run the following from the command line:
 
 ```
 sudo raspi-config
@@ -59,7 +59,7 @@ Generally speaking, `raspi-config` aims to provide the functionality to make the
 <a name="change-user-password"></a>
 ### Change User Password
 
-The default user on Raspbian is ```pi``` with the password ```raspberry```. You can change that here. Read about other [users](../linux/usage/users.md).
+The default user on Raspberry Pi OS is ```pi``` with the password ```raspberry```. You can change that here. Read about other [users](../linux/usage/users.md).
  
 <a name="network-options"></a>
 ### Network Options
@@ -150,7 +150,7 @@ See http://elinux.org/RPi_Overclocking for more information.
 <a name="expand-filesystem"></a>
 #### Expand Filesystem
 
-If you have installed Raspbian using NOOBS, the filesystem will have been expanded automatically. There may be a rare occasion where this is not the case, e.g. if you have copied a smaller SD card onto a larger one. In this case, you should use this option to expand your installation to fill the whole SD card, giving you more space to use for files. You will need to reboot the Raspberry Pi to make this available. Note that there is no confirmation: selecting the option begins the partition expansion immediately.
+If you have installed Raspberry Pi OS using NOOBS, the filesystem will have been expanded automatically. There may be a rare occasion where this is not the case, e.g. if you have copied a smaller SD card onto a larger one. In this case, you should use this option to expand your installation to fill the whole SD card, giving you more space to use for files. You will need to reboot the Raspberry Pi to make this available. Note that there is no confirmation: selecting the option begins the partition expansion immediately.
 
 <a name="overscan"></a>
 #### Overscan

@@ -88,13 +88,13 @@ sudo systemctl restart rpcbind
 sudo systemctl enable nfs-kernel-server
 sudo systemctl restart nfs-kernel-server
 
-echo "Getting latest Raspbian lite image to use as NFS root"
-# Get latest Raspbian lite image
+echo "Getting latest Raspberry Pi OS lite image to use as NFS root"
+# Get latest Raspberry Pi OS lite image
 sudo mkdir -p /nfs/bases
 cd /nfs/bases
-sudo wget -O raspbian_latest.zip https://downloads.raspberrypi.org/raspbian_lite_latest
-sudo unzip raspbian_latest.zip
-sudo rm raspbian_latest.zip
+sudo wget -O raspios_latest.zip https://downloads.raspberrypi.org/raspios_lite_armhf_latest
+sudo unzip raspios_latest.zip
+sudo rm raspios_latest.zip
 
 sudo wget  -O /usr/local/sbin/pxetools https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/raspberrypi/bootmodes/pxetools/pxetools
 sudo chmod +x /usr/local/sbin/pxetools

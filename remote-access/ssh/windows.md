@@ -18,7 +18,7 @@ When the connection works you will see the security warning shown below. You can
 
 ![PuTTY warning](images/ssh-win-warning.png)
 
-You will now see the usual login prompt. Log in with the same username and password you would use on the Pi itself. The default login for Raspbian is `pi` with the password `raspberry`.
+You will now see the usual login prompt. Log in with the same username and password you would use on the Pi itself. The default login for Raspberry Pi OS is `pi` with the password `raspberry`.
 
 You should now have the Raspberry Pi prompt which will be identical to the one found on the Raspberry Pi itself.
 

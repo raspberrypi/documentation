@@ -1,6 +1,6 @@
 # SSH USING iOS
 
-To use SSH on your mobile device you need to download a client. There are several good quality clients available, such as [Termius](http://www.termius.com), [Prompt 2](https://panic.com/prompt/), and  [Cathode](http://www.secretgeometry.com/apps/cathode/). 
+To use SSH on your mobile device you need to download a client. There are several good quality clients available, such as [Termius](http://www.termius.com) and [Prompt 2](https://panic.com/prompt/). 
 
 For this tutorial we will use Termius, because it is a popular cross-platform SSH client. The process will be similar for other clients. 
 
@@ -13,14 +13,14 @@ A prompt asking you to allow notifications will pop up. You should click ‘Allo
 
 Enter an `alias`, such as ‘Raspberry Pi’. Then enter the IP address under `hostname`. Complete the `username` and `password` fields and hit ‘save’ in the top right corner. 
 
-If you do not know the IP address, type `hostname -I` in the command line on the Raspberry Pi. See [here](../ip-address.md) for more ways to find your IP address. The default login for Raspbian is `pi` with the password `raspberry`.
+If you do not know the IP address, type `hostname -I` in the command line on the Raspberry Pi. See [here](../ip-address.md) for more ways to find your IP address. The default login for Raspberry Pi OS is `pi` with the password `raspberry`.
 
 
 ## 2. Connect
 
 When you have saved the new host, you will be sent back to the ‘Hosts’ screen. There you will find the new entry. Make sure your mobile device has wireless connectivity turned on, and is connected to the same network as your Raspberry Pi.
 
-Tap the new entry once. When the connection works, you will see a [security warning](http://www.lysium.de/blog/index.php?/archives/186-How-to-get-ssh-server-fingerprint-information.html). Don’t worry, everything is fine! Click ‘Continue’. You will only see this warning the first time Termius connects to a Raspberry Pi that it hasn’t seen before.
+Tap the new entry once. When the connection works, you will see a security warning. Don’t worry, everything is fine! Click ‘Continue’. You will only see this warning the first time Termius connects to a Raspberry Pi that it hasn’t seen before.
 
 
 ![Termius ‘Security warning’](images/ssh-ios-warning.png)

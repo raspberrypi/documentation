@@ -20,7 +20,7 @@
 - In a terminal window, write the image to the card with the command below, making sure you replace the input file `if=` argument with the path to your `.img` file, and the `/dev/sdX` in the output file `of=` argument with the correct device name. **This is very important, as you will lose all the data on the hard drive if you provide the wrong device name.** Make sure the device name is the name of the whole SD card as described above, not just a partition. For example: `sdd`, not `sdds1` or `sddp1`; `mmcblk0`, not `mmcblk0p1`.
 
     ```bash
-    dd bs=4M if=2020-02-13-raspbian-buster.img of=/dev/sdX conv=fsync
+    dd bs=4M if=2020-02-13-raspios-buster.img of=/dev/sdX conv=fsync
     ```
 
 - Please note that block size set to `4M` will work most of the time. If not,  try `1M`, although this will take considerably longer.
@@ -31,9 +31,9 @@
 
 In Linux it is possible to combine the unzip and SD copying process into one command, which avoids any issues that might occur when the unzipped image is larger than 4GB. This can happen on certain filesystems that do not support files larger than 4GB (e.g. FAT), although it should be noted that most Linux installations do not use FAT and therefore do not have this limitation.
 
-The following command unzips the zip file (replace 2020-02-13-raspbian-buster.zip with the appropriate zip filename), and pipes the output directly to the dd command. This in turn copies it to the SD card, as described in the previous section.
+The following command unzips the zip file (replace 2020-02-13-raspios-buster.zip with the appropriate zip filename), and pipes the output directly to the dd command. This in turn copies it to the SD card, as described in the previous section.
 ```
-unzip -p 2020-02-13-raspbian-buster.zip | sudo dd of=/dev/sdX bs=4M conv=fsync
+unzip -p 2020-02-13-raspios-buster.zip | sudo dd of=/dev/sdX bs=4M conv=fsync
 ```
 
 ### Checking the image copy progress
@@ -42,7 +42,7 @@ unzip -p 2020-02-13-raspbian-buster.zip | sudo dd of=/dev/sdX bs=4M conv=fsync
 
 - To see the progress of the copy operation, you can run the dd command with the status option.
    ```
-    dd bs=4M if=2020-02-13-raspbian-buster.img of=/dev/sdX status=progress conv=fsync
+    dd bs=4M if=2020-02-13-raspios-buster.img of=/dev/sdX status=progress conv=fsync
    ```
 - If you are using an older version of `dd`, the status option may not be available. You may be able to use the `dcfldd` command instead, which will give a progress report showing how much has been written. Another method is to send a USR1 signal to `dd`, which will let it print status information. Find out the PID of `dd` by using `pgrep -l dd` or `ps a | grep dd`. Then use `kill -USR1 PID` to send the USR1 signal to `dd`.
 
@@ -66,11 +66,11 @@ We need the number `xxx`, which is the block count. We can ignore the `yyy` numb
 
 - In case the SD card image is still larger than the original image, truncate the new image to the size of the original image using the following command (replace the input file `reference` argument with the original image name):
     ```bash
-    truncate --reference 2020-02-13-raspbian-buster.img from-sd-card.img
+    truncate --reference 2020-02-13-raspios-buster.img from-sd-card.img
     ```
 - Compare the two images: `diff` should report that the files are identical.
     ```bash
-    diff -s from-sd-card.img 2020-02-13-raspbian-buster.img
+    diff -s from-sd-card.img 2020-02-13-raspios-buster.img
     ```
 - Run `sync`. This will ensure that the write cache is flushed and that it is safe to unmount your SD card.
 

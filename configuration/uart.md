@@ -1,56 +1,114 @@
-# The Raspberry Pi UARTs
+# UART configuration
 
-The SoCs used on the Raspberry Pis have two built-in UARTs, a [PL011](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0183g/index.html) and a mini UART. They are implemented using different hardware blocks, so they have slightly different characteristics. However, both are 3.3V devices, which means extra care must be taken when connecting up to an RS232 or other system that utilises different voltage levels. An adapter must be used to convert the voltage levels between the two protocols. Alternatively, 3.3V USB UART adapters can be purchased for very low prices. 
- 
-By default, on Raspberry Pis equipped with the wireless/Bluetooth module (Raspberry Pi 3 and Raspberry Pi Zero W), the PL011 UART is connected to the Bluetooth module, while the mini UART is used as the primary UART and will have a Linux console on it. On all other models, the PL011 is used as the primary UART. 
+There are two types of UART available on the Raspberry Pi -  [PL011](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0183g/index.html) and mini UART. The PL011 is a capable, broadly 16550-compatible UART, while the mini UART has a reduced feature set.
 
-In Linux device terms, by default, /dev/ttyS0 refers to the mini UART, and /dev/ttyAMA0 refers to the PL011. The primary UART is the one assigned to the Linux console, which depends on the Raspberry Pi model as described above. There are also symlinks: /dev/serial0, which always refers to the primary UART (if enabled), and /dev/serial1, which similarly always refers to the secondary UART (if enabled).
+All UARTs on the Raspberry Pi are 3.3V only - damage will occur if they are connected to 5V systems. An adaptor can be used to connect to 5V systems. Alternatively, low-cost USB to 3.3V serial adaptors are available from various third parties.
+
+## Pi Zero, 1, 2 and 3 - two UARTs
+
+The Raspberry Pi Zero, 1, 2, and 3 each contain two UARTs as follows:
+
+| Name | Type |
+|------|------|
+|UART0 |PL011 |
+|UART1 |mini UART |
+
+## Pi 4 - six UARTS
+
+The Raspberry Pi 4 has four additional PL011s, which are disabled by default. The full list of UARTs on the Pi 4 is:
+
+| Name | Type |
+|------|------|
+|UART0 |PL011 |
+|UART1 |mini UART |
+|UART2 |PL011 |
+|UART3 |PL011 |
+|UART4 |PL011 |
+|UART5 |PL011 |
+
+## Primary UART
+
+On the Raspberry Pi, one UART is selected to be present on GPIO 14 (transmit) and 15 (receive) - this is the primary UART. By default, this will also be the UART on which a Linux console may be present. Note that GPIO 14 is pin 8 on the GPIO header, while GPIO 15 is pin 10.
+
+## Secondary UART
+
+The secondary UART is not normally present on the GPIO connector. By default, the secondary UART is connected to the Bluetooth side of the combined wireless LAN/Bluetooth controller, on models which contain this controller.
+
+## Configuration
+
+By default, only UART0 is enabled. The following table summarises the assignment of the first two UARTs:
+
+| Model | first PL011 (UART0)| mini UART |
+|-------|-----------|-------|
+| Raspberry Pi Zero |  primary | secondary |
+| Raspberry Pi Zero W | secondary (Bluetooth) | primary |
+| Raspberry Pi 1 | primary | secondary |
+| Raspberry Pi 2 | primary | secondary |
+| Raspberry Pi 3 | secondary (Bluetooth) | primary |
+| Raspberry Pi 4 | secondary (Bluetooth) | primary |
+
+Note: the mini UART is disabled by default, whether it is designated primary or secondary UART.
+
+Linux devices on Raspberry Pi OS:
+
+| Linux device | Description |
+|--------------|-------------|
+|`/dev/ttyS0`  |mini UART    |
+|`/dev/ttyAMA0`|first PL011 (UART0) |
+|`/dev/serial0` |primary UART |
+|`/dev/serial1` |secondary UART |
+
+Note: `/dev/serial0` and `/dev/serial1` are symbolic links which point to either `/dev/ttyS0` or `/dev/ttyAMA0`.
 
 ## Mini UART and CPU core frequency
 
-The baud rate of the mini UART is linked to the core frequency of the VPU on the VC4 GPU. This means that, as the VPU frequency governor varies the core frequency, the baud rate of the mini UART also changes. This makes the mini UART of limited use in the default state. By default, if the mini UART is selected for use as the primary UART, it will be disabled. To enable it, add `enable_uart=1` to config.txt. This will also fix the core frequency to 250MHz (unless `force_turbo` is set, when it will be fixed to the VPU turbo frequency). When the mini UART is not the primary UART, for example you are using it to connect to the Bluetooth controller, you must add `core_freq=250` to config.txt, otherwise the mini UART will not work.
+In order to use the mini UART, you need to configure the Raspberry Pi to use a fixed VPU core clock frequency. This is because the mini UART clock is linked to the VPU core clock, so that when the core clock frequency changes, the UART baud rate will also change. The `enable_uart` and `core_freq` settings can be added to `config.txt` to change the behaviour of the mini UART. The following table summarises the possible combinations:
 
-The default value of the `enable_uart` flag depends on the actual roles of the UARTs, so that if ttyAMA0 is assigned to the Bluetooth module, `enable_uart` defaults to 0. If the mini UART is assigned to the Bluetooth module, then `enable_uart` defaults to 1. Note that if the UARTs are reassigned using a Device Tree Overlay (see below), `enable_uart` defaults will still obey this rule.
+| Mini UART set to | core clock | Result |
+|------------------|------------|--------|
+| primary UART     | variable   | mini UART disabled |
+| primary UART     | fixed by setting `enable_uart=1` | mini UART enabled, core clock fixed to 250MHz, or if `force_turbo=1` is set, the VPU turbo frequency |
+| secondary UART   | variable   | mini UART disabled |
+| secondary UART   | fixed by setting `core_freq=250` | mini UART enabled |
 
-## Disabling Linux's use of console UART
+The default state of the `enable_uart` flag depends on which UART is the primary UART:
 
-In a default install of Raspbian, the primary UART (serial0) is assigned to the Linux console. Using the serial port for other purposes requires this default behaviour to be changed. On startup, `systemd` checks the Linux kernel command line for any console entries, and will use the console defined therein. To stop this behaviour, the serial console setting needs to be removed from command line.
+| Primary UART | Default state of enable_uart flag |
+|--------------|-----------------------------------|
+| mini UART    | 0 |
+| first PL011 (UART0)       | 1 |
 
-This can be done by using the [raspi-config](raspi-config.md) utility, or manually.
-```
-sudo raspi-config
-```
-Select option 5, **Interfacing options**, then option P6, **Serial**, and select **No**. Exit raspi-config.
+## Disable Linux serial console
 
-To manually change the settings, edit the kernel command line with `sudo nano /boot/cmdline.txt`. Find the console entry that refers to the serial0 device, and remove it, including the baud rate setting. It will look something like `console=serial0,115200`. Make sure the rest of the line remains the same, as errors in this configuration can stop the Raspberry Pi from booting.
+By default, the primary UART is assigned to the Linux console. If you wish to use the primary UART for other purposes, you must reconfigure Raspberry Pi OS. This can be done by using [raspi-config](raspi-config.md):
 
-Reboot the Raspberry Pi for the change to take effect.
-
-## UART output on GPIO pins
-
-By default, the UART transmit and receive pins are on GPIO 14 and GPIO 15 respectively, which are pins 8 and 10 on the GPIO header.
+1. Start raspi-config: `sudo raspi-config`.
+1. Select option 5 - interfacing options.
+1. Select option P6 - serial.
+1. At the prompt `Would you like a login shell to be accessible over serial?` answer 'No'
+1. At the prompt `Would you like the serial port hardware to be enabled?` answer 'Yes'
+1. Exit raspi-config and reboot the Pi for changes to take effect.
 
 ## UARTs and Device Tree
 
-Various UART Device Tree Overlay definitions can be found in the kernel github tree. The two most useful overlays are [`disable-bt`](https://github.com/raspberrypi/linux/blob/rpi-4.11.y/arch/arm/boot/dts/overlays/disable-bt-overlay.dts) and [`miniuart-bt`](https://github.com/raspberrypi/linux/blob/rpi-4.11.y/arch/arm/boot/dts/overlays/miniuart-bt-overlay.dts).
+Various UART Device Tree overlay definitions can be found in the [kernel GitHub tree](https://github.com/raspberrypi/linux). The two most useful overlays are [`disable-bt`](https://github.com/raspberrypi/linux/blob/rpi-4.19.y/arch/arm/boot/dts/overlays/disable-bt-overlay.dts) and [`miniuart-bt`](https://github.com/raspberrypi/linux/blob/rpi-4.19.y/arch/arm/boot/dts/overlays/miniuart-bt-overlay.dts).
 
-`disable-bt` disables the Bluetooth device and restores UART0/ttyAMA0 to GPIOs 14 and 15. It is also necessary to disable the system service that initialises the modem so it doesn't use the UART: `sudo systemctl disable hciuart`.
+`disable-bt` disables the Bluetooth device and makes the first PL011 (UART0) the primary UART. You must also disable the system service that initialises the modem, so it does not connect to the UART, using `sudo systemctl disable hciuart`.
 
-`miniuart-bt` switches the Raspberry Pi 3 and Raspberry Pi Zero W Bluetooth function to use the mini UART (ttyS0), and restores UART0/ttyAMA0 to GPIOs 14 and 15. Note that this may reduce the maximum usable baudrate (see mini UART limitations below). It is also necessary to edit /lib/systemd/system/hciuart.service and replace ttyAMA0 with ttyS0, unless you have a system with udev rules that create /dev/serial0 and /dev/serial1. In this case, use /dev/serial1 instead because it will always be correct. If cmdline.txt uses the alias serial0 to refer to the user-accessible port, the firmware will replace it with the appropriate port whether or not this overlay is used.
+`miniuart-bt` switches the Bluetooth function to use the mini UART, and makes the first PL011 (UART0) the primary UART. Note that this may reduce the maximum usable baud rate (see mini UART limitations below). You must also set the VPU core clock to a fixed frequency using either `force_turbo=1` or `core_freq=250`.
 
-There are other UART-specific overlays in the folder. Refer to `/boot/overlays/README` for details on Device Tree Overlays, or run `dtoverlay -h overlay-name` for descriptions and usage information.
+The overlays `uart2`, `uart3`, `uart4`, and `uart5` are used to enable the four additional UARTs on the Pi 4. There are other UART-specific overlays in the folder. Refer to `/boot/overlays/README` for details on Device Tree overlays, or run `dtoverlay -h overlay-name` for descriptions and usage information.
 
-For full instructions on how to use Device Tree Overlays see [this page](device-tree.md). In brief, add a line to the `config.txt` file to enable Device Tree Overlays. Note that the `-overlay.dts` part of the filename is removed.
+For full instructions on how to use Device Tree overlays see [this page](device-tree.md). In brief, add a line to the `config.txt` file to apply a Device Tree overlay. Note that the `-overlay.dts` part of the filename is removed. For example:
 ```
-...
 dtoverlay=disable-bt
-...
 ```
+
 ## Relevant differences between PL011 and mini UART
 
-The mini UART has smaller FIFOs. Combined with the lack of flow control, this makes it more prone to losing characters at higher baudrates. It is also generally less capable than the PL011, mainly due to its baud rate link to the VPU clock speed.
+The mini UART has smaller FIFOs. Combined with the lack of flow control, this makes it more prone to losing characters at higher baudrates. It is also generally less capable than a PL011, mainly due to its baud rate link to the VPU clock speed.
 
-The particular deficiencies of the mini UART compared to the PL011 are :
+The particular deficiencies of the mini UART compared to a PL011 are :
 - No break detection
 - No framing errors detection
 - No parity bit

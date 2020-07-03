@@ -44,7 +44,7 @@ It's important to be aware of which pin is which. Some people use pin labels (li
 
 ![](images/raspio-portsplus.jpg)
 
-A handy reference can be accessed on the Raspberry Pi by opening a terminal window and running the command `pinout`. This tool is provided by the [GPIO Zero](https://gpiozero.readthedocs.io/) Python library, which it is installed by default on the Raspbian desktop image, but not on Raspbian Lite.
+A handy reference can be accessed on the Raspberry Pi by opening a terminal window and running the command `pinout`. This tool is provided by the [GPIO Zero](https://gpiozero.readthedocs.io/) Python library, which it is installed by default on the Raspberry Pi OS desktop image, but not on Raspberry Pi OS Lite.
 
 ![](images/gpiozero-pinout.png)
 
@@ -58,7 +58,7 @@ It is possible to control GPIO pins using a number of programming languages and 
 - [GPIO with Scratch 2](scratch2/README.md)
 - [GPIO with Python](python/README.md)
 - [GPIO with C/C++ using standard kernel interface via libgpiod](https://kernel.googlesource.com/pub/scm/libs/libgpiod/libgpiod/+/v0.2.x/README.md)
-- [GPIO with C/C++ using 3rd party library pigio](http://abyz.me.uk/rpi/pigpio/)
+- [GPIO with C/C++ using 3rd party library pigpio](http://abyz.me.uk/rpi/pigpio/)
 - [GPIO with Processing3](https://processing.org/reference/libraries/io/GPIO.html)
 
 **Warning: while connecting up simple components to the GPIO pins is perfectly safe, it's important to be careful how you wire things up. LEDs should have resistors to limit the current passing through them. Do not use 5V for 3V3 components. Do not connect motors directly to the GPIO pins, instead use an [H-bridge circuit or a motor controller board](https://projects.raspberrypi.org/en/projects/physical-computing/16).**

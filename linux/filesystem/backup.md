@@ -17,13 +17,13 @@ This creates a tar archive called `pi_home.tar.gz` in `/home/`. You should copy 
 
 ## SD card copier (recommended)
 
-The SD Card Copier application, which can be found on the `Accessories` menu of the Raspberry Pi Desktop, will copy Raspbian from one card to another. To use it, you will need a USB SD card writer.
+The SD Card Copier application, which can be found on the `Accessories` menu of the Raspberry Pi Desktop, will copy Raspberry Pi OS from one card to another. To use it, you will need a USB SD card writer.
 
-To back up your existing Raspbian installation, put a blank SD card in your USB card writer and plug it into your Pi, and then launch SD Card Copier. In the ‘Copy From Device’ box, select the internal SD Card. This could have a number of different names, and may have something like `(/dev/mmcblk0)` in its entry, but will usually be the first item in the list. Then select the USB card writer in the ‘Copy To Device’ box (where it will probably be the only device listed). Press ‘Start’. The copy, depending on the size of the SD card, can take ten or fifteen minutes, and when complete you should have a clone of your current installation on the new SD card. You can test it by putting the newly-copied card into the Pi’s SD card slot and booting it; it should boot and look exactly the same as your original installation, with all your data and applications intact.
+To back up your existing Raspberry Pi OS installation, put a blank SD card in your USB card writer and plug it into your Pi, and then launch SD Card Copier. In the ‘Copy From Device’ box, select the internal SD Card. This could have a number of different names, and may have something like `(/dev/mmcblk0)` in its entry, but will usually be the first item in the list. Then select the USB card writer in the ‘Copy To Device’ box (where it will probably be the only device listed). Press ‘Start’. The copy, depending on the size of the SD card, can take ten or fifteen minutes, and when complete you should have a clone of your current installation on the new SD card. You can test it by putting the newly-copied card into the Pi’s SD card slot and booting it; it should boot and look exactly the same as your original installation, with all your data and applications intact.
 
 You can run directly from the backup, but if you want to recover your original card from your backup, simply reverse the process – boot your Pi from the backup card, put the card to which you want to restore into the SD card writer, and repeat the process above.
 
-The program does not restrict you to only copying to a card the same size as the source; you can copy to a larger card if you are running out of space on your existing one, or even to a smaller card (as long as it has enough space to store all your files – the program will warn you if there isn’t enough space). It has been designed to work with Raspbian and NOOBS images; it may work with other OSes or custom card formats, but this is not guaranteed.
+The program does not restrict you to only copying to a card the same size as the source; you can copy to a larger card if you are running out of space on your existing one, or even to a smaller card (as long as it has enough space to store all your files – the program will warn you if there isn’t enough space). It has been designed to work with Raspberry Pi OS and NOOBS images; it may work with other OSes or custom card formats, but this is not guaranteed.
 
 The only restriction is that you cannot write to the internal SD card reader, as that would overwrite the OS you are actually running, which could break the installation completely.
 
@@ -36,25 +36,25 @@ It may be sensible for you to keep a copy of the entire SD card image, so you ca
 In Linux:
 
 ```bash
-sudo dd bs=4M if=/dev/sdb of=raspbian.img
+sudo dd bs=4M if=/dev/sdb of=PiOS.img
 ```
 
 This will create an image file on your computer which you can use to write to another SD card, and keep exactly the same contents and settings. To restore or clone to another card, use `dd` in reverse:
 
 ```bash
-sudo dd bs=4M if=raspbian.img of=/dev/sdb
+sudo dd bs=4M if=PiOS.img of=/dev/sdb
 ```
 
 These files can be very large, and compress well. To compress, you can pipe the output of `dd` to `gzip` to get a compressed file that is significantly smaller than the original size:
 
 ```bash
-sudo dd bs=4M if=/dev/sdb | gzip > raspbian.img.gz
+sudo dd bs=4M if=/dev/sdb | gzip > PiOS.img.gz
 ```
 
 To restore, pipe the output of `gunzip` to `dd`:
 
 ```bash
-gunzip --stdout raspbian.img.gz | sudo dd bs=4M of=/dev/sdb
+gunzip --stdout PiOS.img.gz | sudo dd bs=4M of=/dev/sdb
 ```
 
 If you are using a Mac, the commands used are almost exactly the same, but `4M` in the above examples should be replaced with `4m`, with a lower case letter.
