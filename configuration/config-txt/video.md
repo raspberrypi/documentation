@@ -479,7 +479,7 @@ To enable composite output, use the `enable_tvout=1` option. As described above,
 
 These parameters allow configuration of displays connected to the DSI connected, such as the Raspberry Pi Touch Display.
 
-<a name="displaylcdrotate">### display_lcd_rotate</a>
+### <a name="displaylcdrotate">display_lcd_rotate</a>
 
 Use `display_lcd_rotate` to rotate or flip the display. See [`display_hdmi_rotate`](#displayhdmirotate) for a list of parameters. 
 
@@ -647,7 +647,8 @@ The options that can be set are:
 
 The `test_mode` command displays a test image and sound during boot (over the composite video and analogue audio outputs only) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test; the default value is `0`.
 
-<a name="displayhdmirotate">### display_hdmi_rotate</a>
+### 
+<a name="displayhdmirotate">display_hdmi_rotate</a>
 
 Use `display_hdmi_rotate` to rotate or flip the HDMI display orientation. The default value is `0`.
 
