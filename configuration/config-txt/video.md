@@ -388,7 +388,7 @@ The options are:
  
 ### hdmi_enable_4kp60 (Pi 4 only)
 
-By default, when connected to a 4K monitor, the Raspberry Pi 4 will select a 30hz refresh rate. Use this option to allow selection of 60Hz refresh rates. Note, this will increase power consumption and increase the temperature of the Raspberry Pi. It is not possible to output 4Kp60 on both micro HDMI ports simultaneously.
+By default, when connected to a 4K monitor, the Raspberry Pi 4 will select a 30hz refresh rate. Use this option to allow selection of 60Hz refresh rates. Note, this will increase power consumption and increase the temperature of the Raspberry Pi. It is only possible to output 4Kp60 on HDMI 0.
  
 ## Which values are valid for my monitor?
 
