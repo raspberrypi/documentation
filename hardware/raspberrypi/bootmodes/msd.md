@@ -1,8 +1,8 @@
 # USB mass storage boot
 
-**USB mass storage boot is available on Raspberry Pi 2B v1.2, 3A+, 3B, and 3B+ only. Support for USB mass storage boot will be added to the Raspberry Pi 4B in a future software update which is currently undergoing beta testing.**
+**USB mass storage boot is available on Raspberry Pi 2B v1.2, 3A+, 3B, 3B+, and 4B only.
 
-This page explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or a USB hard disk. Note that this feature does not work with all USB mass storage devices.
+This page explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or a USB hard disk. Note that models prior to the Pi 4 have known issues which prevent booting with some USB devices.
 
 See the [bootmodes documentation](README.md) for the boot sequence and alternative boot modes (network, USB device, GPIO or SD boot).
 
@@ -18,7 +18,7 @@ To enable USB host boot mode, the Raspberry Pi needs to be booted from an SD car
 
 **On the Raspberry Pi 3A+, setting the OTP bit to enable USB host boot mode will permanently prevent that Pi from booting in USB device mode.**
 
-You can use any SD card running Raspbian or Raspbian Lite to program the OTP bit.
+You can use any SD card running Raspberry Pi OS to program the OTP bit.
 
 Enable USB host boot mode with this code:
 
@@ -61,6 +61,4 @@ After five to ten seconds, the Raspberry Pi should begin booting and show the ra
 <a name="pi4"></a>
 ## Raspberry Pi 4
 
-USB mass storage boot for the Pi 4 is currently undergoing beta testing.  Once beta testing is complete, USB mass storage boot will be enabled by default. The `program_usb_boot_mode` option is not required on Pi 4.
-
-If you would like to try the beta test, see the instructions on the [Pi 4 Bootloader Configuration page](../bcm2711_bootloader_config.md).
+The Raspberry Pi 4 currently requires non-default firmware to enable USB mass storage boot: see the [USB mass storage boot](../bcm2711_bootloader_config.md#usbmassstorageboot) section of the Bootloader Configuration page for more information.
