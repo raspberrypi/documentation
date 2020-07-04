@@ -113,6 +113,7 @@ The default value for Pi 1 models A and B is `2`; for the Pi Zero, Pi 1 Model B+
 
 If you are seeing HDMI issues (speckling, interference) then try `7`. Very long HDMI cables may need up to `11`, but values this high should not be used unless absolutely necessary.
 
+<a name="hdmigroup"></a>
 ### hdmi_group
 
 The `hdmi_group` command defines the HDMI output group to be either CEA (Consumer Electronics Association, the standard typically used by TVs) or DMT (Display Monitor Timings, the standard typically used by monitors). This setting should be used in conjunction with `hdmi_mode`.
@@ -123,6 +124,7 @@ The `hdmi_group` command defines the HDMI output group to be either CEA (Consume
 | 1 | CEA |
 | 2 | DMT |
 
+<a name="hdmimode"></a>
 ### hdmi_mode
 
 Together with `hdmi_group`, `hdmi_mode` defines the HDMI output format. Format mode numbers are derived from the CTA specification found [here](https://web.archive.org/web/20171201033424/https://standards.cta.tech/kwspub/published_docs/CTA-861-G_FINAL_revised_2017.pdf) 
@@ -338,7 +340,7 @@ These values are valid if `hdmi_group=2` (DMT):
 | 85 | 1280x720 | 60Hz | 16:9 | 720p |
 | 86 | 1366x768 | 60Hz | 16:9 | reduced blanking |
 
-Note that there is a [pixel clock limit](https://www.raspberrypi.org/forums/viewtopic.php?f=26&t=20155&p=195443#p195443).The highest supported mode on models prior to the Raspberry Pi 4 is 1920x1200 at 60Hz with reduced blanking, whilst the Raspberry Pi 4 can support up to 4096x2160 (known as 4k) at 60Hz. Also note that if you are using both HDMI ports of the Raspberry Pi 4 for 4k output, then you are limited to 30Hz on both.
+Note that there is a pixel clock limit of 162MHz. This can be raised, but is unsupported - see [this forum topic](https://www.raspberrypi.org/forums/viewtopic.php?f=26&t=20155&p=195443#p195443). The highest supported mode on models prior to the Raspberry Pi 4 is 1920x1200 at 60Hz with reduced blanking, whilst the Raspberry Pi 4 can support up to 4096x2160 (known as 4k) at 60Hz. Also note that if you are using both HDMI ports of the Raspberry Pi 4 for 4k output, then you are limited to 30Hz on both.
 
 ### hdmi_timings
 
@@ -421,7 +423,7 @@ The `edid.dat` should also be provided when troubleshooting problems with the de
 
 ## Custom mode
 
-If your monitor requires a mode that is not in one of the tables above, then it may be possible to define a custom [CVT](https://en.wikipedia.org/wiki/Coordinated_Video_Timings) mode for it instead. Not all displays support CVT mode. The parameters must be entered as follows:
+If your monitor requires a mode that is not in one of the tables above, then you can define a custom [CVT](https://en.wikipedia.org/wiki/Coordinated_Video_Timings) mode for it instead. Note that not all displays support CVT mode. The parameters must be entered as follows:
 
 ```
 hdmi_cvt=<width> <height> <framerate> <aspect> <margins> <interlace> <rb>
@@ -484,6 +486,7 @@ On the Raspberry Pi 4, composite output is disabled by default, due to the way t
 
 To enable composite output, use the `enable_tvout=1` option. As described above, this will detrimentally affect performance to a small degree.
 
+
 ## DSI display connector options
 
 These parameters allow configuration of displays connected to the DSI connected, such as the Raspberry Pi Touch Display.
@@ -527,15 +530,16 @@ Enable LCD displays attached to the DPI GPIOs. This parameter allows the use of 
 
 ### dpi_group, dpi_mode, dpi_output_format
 
-The `dpi_group` and `dpi_mode` config.txt parameters are used to set either predetermined modes (DMT or CEA modes as used by HDMI above). A user can generate custom modes in much the same way as for HDMI (see `dpi_timings` section).
+The `dpi_group` and `dpi_mode` parameters are used to set the display mode to be used on the DPI display; the values are the same as listed for [`hdmi_group`](#hdmigroup) and [`hdmi_mode`](#hdmimode). A user can generate custom modes in much the same way as for HDMI using [`dpi_timings`](#dpitimings).
 
 `dpi_output_format` is a bitmask specifying various parameters used to set up the display format. 
 
 More details on using the DPI modes and the output format can be found [here](../../hardware/raspberrypi/dpi/README.md).
 
+<a name="dpitimings"></a>
 ### dpi_timings
 
-This allows setting of raw DPI timing values for a custom mode, selected using `dpi_group=2` and `dpi_mode=87`.
+This allows setting of raw DPI timing values for a custom mode.
 
 ```
 dpi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> <h_back_porch> <v_active_lines> <v_sync_polarity> <v_front_porch> <v_sync_pulse> <v_back_porch> <v_sync_offset_a> <v_sync_offset_b> <pixel_rep> <frame_rate> <interlaced> <pixel_freq> <aspect_ratio>
@@ -574,11 +578,13 @@ HDMI_ASPECT_21_9 = 7
 HDMI_ASPECT_64_27 = 8  
 ```
 
+Once you have defined the custom video mode, select it for use by specifying `dpi_group=2` and `dpi_mode=87` commands.
+
 ## General display options
 
 ### disable_overscan
 
-Set `disable_overscan` to `1` to disable the default values of [overscan](../raspi-config.md#overscan) that is set by the firmware. The default value of overscan for the left, right, top, and bottom edges is `48` for HD CEA modes, `32` for SD CEA modes, and `0` for DMT modes. The default value for `disable_overscan` is `0`.
+Set `disable_overscan` to `1` to disable the default values of [overscan](../raspi-config.md#overscan) that are set by the firmware. The default value of overscan for the left, right, top, and bottom edges is `48` for HD CEA modes, `32` for SD CEA modes, and `0` for DMT modes. The default value for `disable_overscan` is `0`.
 
 **NOTE:** any further additional overscan options such as `overscan_scale` or overscan edges can still be applied after this option.
 
@@ -619,7 +625,7 @@ The `framebuffer_width` command specifies the console framebuffer width in pixel
 ### framebuffer_height
 
 The `framebuffer_height` command specifies the console framebuffer height in pixels. The default is the display height minus the total vertical overscan.
-C4 
+
 ### max_framebuffer_height, max_framebuffer_width
 
 Specifies the maximum dimensions that the internal frame buffer is allowed to be. 
@@ -655,7 +661,7 @@ The options that can be set are:
 
 ### test_mode
 
-The `test_mode` command displays a test image and sound during boot (over the composite video and analogue audio outputs only) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test; the default value is `0`.
+The `test_mode` command outputs a test image on the composite video output, and sound during boot from the analogue output, for the given number of seconds, before continuing to boot as normal. This is used as a manufacturing test; the default value is `0`.
 
 <a name="displayhdmirotate"></a>
 ### display_hdmi_rotate
@@ -673,7 +679,7 @@ Use `display_hdmi_rotate` to rotate or flip the HDMI display orientation. The de
 
 Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16MB GPU split.
 
-If using the VC4 FKMS V3D driver (this is the default on the Raspberry Pi 4), then 90 and 270 degree rotations are not supported. The Screen Configuration utility provides display rotations for this driver. See this [page](../display_rotation.md) for more information.
+If using the FKMS driver (this is the default on the Raspberry Pi 4), then 90 and 270 degree rotations are not supported. The Screen Configuration utility (`arandr`) can be used to configure display rotations for this driver. See [this page](../display_rotation.md) for more information.
 
 ### display_rotate
 
