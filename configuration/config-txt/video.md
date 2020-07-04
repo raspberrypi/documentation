@@ -63,7 +63,7 @@ Setting `hdmi_force_edid_3d` to `1` pretends that all CEA modes support 3D, even
 
 ### hdmi_ignore_cec_init
 
-Setting `hdmi_ignore_cec_init` to `1` will stop the initial active source message being sent when the Raspberry Pi boots up. This is useful for preventing a CEC-enabled TV from coming out of standby, and switching to the Raspberry Pi, when you rebooting your Raspberry Pi.
+Setting `hdmi_ignore_cec_init` to `1` will stop the initial active source message being sent when the Raspberry Pi boots up. This is useful for preventing a CEC-enabled TV from coming out of standby, and switching to the Raspberry Pi, when you reboot your Raspberry Pi.
 
 ### hdmi_ignore_cec
 
@@ -109,7 +109,7 @@ The `hdmi_drive` command allows you to choose between HDMI and DVI output modes.
 
 Configures the signal strength of the HDMI interface. The minimum value is `0` and the maximum is `11`.
 
-The default value for Pi 1 models A and B is `2`; for the Pi 1 Model B+, Pi 2, and Pi 3 the default is `5`. This option has no effect on the Raspberry Pi 4.
+The default value for Pi 1 models A and B is `2`; for the Pi Zero, Pi 1 Model B+, Pi 2, and Pi 3 the default is `5`. This option has no effect on the Raspberry Pi 4.
 
 If you are seeing HDMI issues (speckling, interference) then try `7`. Very long HDMI cables may need up to `11`, but values this high should not be used unless absolutely necessary.
 
