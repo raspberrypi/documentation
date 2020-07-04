@@ -340,7 +340,7 @@ These values are valid if `hdmi_group=2` (DMT):
 | 85 | 1280x720 | 60Hz | 16:9 | 720p |
 | 86 | 1366x768 | 60Hz | 16:9 | reduced blanking |
 
-Note that there is a pixel clock limit of 162MHz. This can be raised, but is unsupported - see [this forum topic](https://www.raspberrypi.org/forums/viewtopic.php?f=26&t=20155&p=195443#p195443). The highest supported mode on models prior to the Raspberry Pi 4 is 1920x1200 at 60Hz with reduced blanking, whilst the Raspberry Pi 4 can support up to 4096x2160 (known as 4k) at 60Hz. Also note that if you are using both HDMI ports of the Raspberry Pi 4 for 4k output, then you are limited to 30Hz on both.
+Note that there is a pixel clock limit of 162MHz. It is possible to increase the pixel clock limit - see  [this forum topic](https://www.raspberrypi.org/forums/viewtopic.php?f=26&t=20155&p=195443#p195443). Note that running with a pixel clock higher than 162MHz is unsupported. The highest supported mode on models prior to the Raspberry Pi 4 is 1920x1200 at 60Hz with reduced blanking, whilst the Raspberry Pi 4 can support up to 4096x2160 (known as 4k) at 60Hz. Also note that if you are using both HDMI ports of the Raspberry Pi 4 for 4k output, then you are limited to 30Hz on both.
 
 ### hdmi_timings
 
