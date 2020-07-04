@@ -240,8 +240,10 @@ These values are valid if `hdmi_group=1` (CEA):
 | 103 | 2160p | 24Hz | 64:27 | Pi 4 |
 | 104 | 2160p | 25Hz | 64:27 | Pi 4 |
 | 105 | 2160p | 30Hz | 64:27 | Pi 4 |
-| 106 | 2160p | 50Hz | 64:27 | Pi 4 |
-| 107 | 2160p | 60Hz | 64:27 | Pi 4 |
+| 106 | 2160p | 50Hz | 64:27 | Pi 4<sup>1</sup>|
+| 107 | 2160p | 60Hz | 64:27 | Pi 4<sup>1</sup>|
+
+<sup>1</sup>4K resolutions above 30Hz are only available on HDMI 0 with [`hdmi_enable_4kp60=1`](#hdmienable4kp60).
 
 Pixel doubling and quadrupling indicates a higher clock rate, with each pixel repeated two or four times respectively.
 
@@ -393,10 +395,17 @@ The options are:
  - `2` = `EDID_ContentType_Photo`, content type photo
  - `3` = `EDID_ContentType_Cinema`,  content type cinema
  - `4` = `EDID_ContentType_Game`,  content type game
- 
+
+<a name="hdmienable4kp60"></a>
 ### hdmi_enable_4kp60 (Pi 4 only)
 
-By default, when connected to a 4K monitor, the Raspberry Pi 4 will select a 30hz refresh rate. Use this option to allow selection of 60Hz refresh rates. Note, this will increase power consumption and increase the temperature of the Raspberry Pi. It is only possible to output 4Kp60 on HDMI 0.
+By default, when connected to a 4K monitor, the Raspberry Pi 4 will select a 30hz refresh rate. Use this option to allow selection of 60Hz refresh rates:
+
+```
+hdmi_enable_4kp60=1
+```
+
+Note: this will increase power consumption and increase the temperature of the Raspberry Pi. It is only possible to output 4Kp60 on HDMI 0.
  
 ## Which values are valid for my monitor?
 
