@@ -111,7 +111,7 @@ Configures the signal strength of the HDMI signals. The minimum value is `0` and
 
 The default value for Pi 1 models A and B is `2`; for the Pi Zero, Pi 1 Model B+, Pi 2, and Pi 3 the default is `5`. This option has no effect on the Raspberry Pi 4.
 
-If you are seeing HDMI issues (speckling, interference) then try `7`. Very long HDMI cables may need up to `11`, but values this high should not be used unless absolutely necessary.
+If you are seeing HDMI issues, such as speckling or interference, then try `7`. Very long HDMI cables may need up to `11`, but values this high should not be used unless absolutely necessary.
 
 <a name="hdmigroup"></a>
 ### hdmi_group
@@ -340,7 +340,7 @@ These values are valid if `hdmi_group=2` (DMT):
 | 85 | 1280x720 | 60Hz | 16:9 | 720p |
 | 86 | 1366x768 | 60Hz | 16:9 | reduced blanking |
 
-Note that there is a pixel clock limit of 162MHz. It is possible to increase the pixel clock limit - see  [this forum topic](https://www.raspberrypi.org/forums/viewtopic.php?f=26&t=20155&p=195443#p195443) - however using a pixel clock higher than 162MHz is unsupported. The highest supported mode on models prior to the Raspberry Pi 4 is 1920x1200 at 60Hz with reduced blanking, whilst the Raspberry Pi 4 can support up to 4096x2160 (known as 4K) at 60Hz. Also note that if you are using both HDMI ports of the Raspberry Pi 4 for 4k output, then you are limited to 30Hz on both.
+Note that there is a pixel clock limit of 162MHz. It is possible to increase the pixel clock limit - see  [this forum topic](https://www.raspberrypi.org/forums/viewtopic.php?f=26&t=20155&p=195443#p195443) - however using a pixel clock higher than 162MHz is unsupported. The highest supported mode on models prior to the Raspberry Pi 4 is 1920x1200 at 60Hz with reduced blanking, whilst the Raspberry Pi 4 can support up to 4096x2160 (known as 4K) at 60Hz. Also note that if you are using both HDMI ports of the Raspberry Pi 4 for 4K output, then you are limited to 30Hz on both.
 
 ### hdmi_timings
 
