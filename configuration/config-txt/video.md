@@ -127,7 +127,7 @@ The `hdmi_group` command defines the HDMI output group to be either CEA (Consume
 <a name="hdmimode"></a>
 ### hdmi_mode
 
-Together with `hdmi_group`, `hdmi_mode` defines the HDMI output format. Format mode numbers are derived from the CTA specification found [here](https://web.archive.org/web/20171201033424/https://standards.cta.tech/kwspub/published_docs/CTA-861-G_FINAL_revised_2017.pdf) 
+Together with `hdmi_group`, `hdmi_mode` defines the HDMI output format. Format mode numbers are derived from the CTA specification found [here](https://web.archive.org/web/20171201033424/https://standards.cta.tech/kwspub/published_docs/CTA-861-G_FINAL_revised_2017.pdf).
 
 To set a custom display mode not listed here, see [this thread](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=24679).
 
