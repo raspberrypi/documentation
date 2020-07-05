@@ -107,7 +107,7 @@ The `hdmi_drive` command allows you to choose between HDMI and DVI output modes.
 
 ### config_hdmi_boost
 
-Configures the signal strength of the HDMI interface. The minimum value is `0` and the maximum is `11`.
+Configures the signal strength of the HDMI signals. The minimum value is `0` and the maximum is `11`.
 
 The default value for Pi 1 models A and B is `2`; for the Pi Zero, Pi 1 Model B+, Pi 2, and Pi 3 the default is `5`. This option has no effect on the Raspberry Pi 4.
 
