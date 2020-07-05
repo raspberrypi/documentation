@@ -242,6 +242,7 @@ These values are valid if `hdmi_group=1` (CEA):
 | 107 | 2160p | 60Hz | 64:27 | Pi 4<sup>2</sup>|
 
 <sup>1</sup>Pixel doubling and quadrupling indicates a pixel clock rate, with each pixel repeated two or four times respectively.
+
 <sup>2</sup>4K resolutions above 30Hz are only available on HDMI 0 with [`hdmi_enable_4kp60=1`](#hdmienable4kp60).
 
 These values are valid if `hdmi_group=2` (DMT):
