@@ -102,8 +102,8 @@ The `hdmi_drive` command allows you to choose between HDMI and DVI output modes.
 
 | hdmi_drive | result |
 | --- | --- |
-| 1 | Normal DVI mode (no sound) |
-| 2 | Normal HDMI mode (sound will be sent if supported, and the audio driver is enabled) |
+| 1 | DVI mode (no sound) |
+| 2 | HDMI mode (sound will be sent if supported, and the audio driver is enabled) |
 
 ### config_hdmi_boost
 
