@@ -23,11 +23,11 @@ overscan_bottom=24
 
 ### hdmi_force_hotplug
 
-Setting `hdmi_force_hotplug` to `1` pretends that the HDMI hotplug signal is asserted, so it appears that a HDMI display is attached. In other words, HDMI output mode will be used, even if no HDMI monitor is detected.
+Setting `hdmi_force_hotplug` to `1` pretends that the HDMI hotplug signal is asserted, so it appears that an HDMI display is attached. In other words, HDMI output mode will be used, even if no HDMI monitor is detected.
 
 ### hdmi_ignore_hotplug
 
-Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. In other words, composite output mode will be used, even if an HDMI monitor is detected.
+Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that an HDMI display is not attached. In other words, composite output mode will be used, even if an HDMI monitor is detected.
 
 ### hdmi_ignore_edid
 
