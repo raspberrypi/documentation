@@ -6,9 +6,9 @@ This page explains how to boot your Raspberry Pi from a USB mass storage device 
 
 See the [bootmodes documentation](README.md) for the boot sequence and alternative boot modes (network, USB device, GPIO or SD boot).
 
-Note that "USB mass storage boot" is different from "USB device boot mode". The [device boot mode](device.md) allows a Raspberry Pi connected to a computer to boot using files on that computer.
+Note that 'USB mass storage boot' is different from 'USB device boot mode'. [USB device boot mode](device.md) allows a Raspberry Pi connected to a computer to boot as a USB device, using files from that computer.
 
-For devices that are not supported, an alternative is to use the 'special bootcode.bin-only boot mode' as described [here](README.md). This still requires/boots from an SD-card, but `bootcode.bin` is the only file read from the SD-Card.
+For USB mass storage devices that are not supported, an alternative is to use the special bootcode.bin-only boot mode as described [here](README.md). This Pi will still boot from the SD card, but `bootcode.bin` is the only file read from it.
 
 ## Raspberry Pi 2B v1.2, 3A+, 3B, Compute Module 3
 
@@ -39,9 +39,9 @@ $ vcgencmd otp_dump | grep 17:
 
 Check that the output `0x3020000a` is shown. If it is not, then the OTP bit has not been successfully programmed. In this case, go through the programming procedure again. If the bit is still not set, this may indicate a fault in the Pi hardware itself.
 
-If you wish, you can remove the `program_usb_boot_mode` line from config.txt, so that if you put the SD card into another Raspberry Pi, it won't program USB host boot mode. Make sure there is no blank line at the end of config.txt.
+If you wish, you can remove the `program_usb_boot_mode` line from `config.txt`, so that if you put the SD card into another Raspberry Pi, it won't program USB host boot mode. Make sure there is no blank line at the end of `config.txt`.
 
-You can now boot from a USB mass storage device in the same way as booting from an SD card - see the following section for details.
+You can now boot from a USB mass storage device in the same way as booting from an SD card - see the following section for further information.
 
 ## Raspberry Pi 3B+, Compute Module 3+
 
