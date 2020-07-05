@@ -5,7 +5,7 @@
 Specifies how much memory, in megabytes, to reserve for the exclusive use of the GPU: the remaining memory is allocated to the ARM CPU. The default value is `64`. The recommended maximum values are as follows:
 
 | total RAM | `gpu_mem` recommended maximum |
----------------------------------------------
+|-----------|-------------------------------|
 | 256MB     | `128`                         |
 | 512MB     | `384`                         |
 | 1GB or greater | `512`                    |
