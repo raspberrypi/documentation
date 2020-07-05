@@ -8,7 +8,7 @@ See the [bootmodes documentation](README.md) for the boot sequence and alternati
 
 Note that 'USB mass storage boot' is different from 'USB device boot mode'. [USB device boot mode](device.md) allows a Raspberry Pi connected to a computer to boot as a USB device, using files from that computer.
 
-For USB mass storage devices that are not supported, an alternative is to use the special bootcode.bin-only boot mode as described [here](README.md). This Pi will still boot from the SD card, but `bootcode.bin` is the only file read from it.
+If you are unable to use a particular USB device to boot your Raspberry Pi, an alternative is to use the special bootcode.bin-only boot mode as described [here](README.md). This Pi will still boot from the SD card, but `bootcode.bin` is the only file read from it.
 
 ## Raspberry Pi 2B v1.2, 3A+, 3B, Compute Module 3
 
