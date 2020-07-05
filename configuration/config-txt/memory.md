@@ -10,7 +10,7 @@ Specifies how much memory, in megabytes, to reserve for the exclusive use of the
 | 512MB     | `384`                         |
 | 1GB or greater | `512`                    |
 
-The minimum value is `16`, however this disables certain GPU features. You should set `gpu_mem` to the lowest possible value for best performance. If a particular graphics feature is not working correctly, try increasing the value of `gpu_mem`, being mindful of the recommendations in the above table. It is possible to set `gpu_mem` to larger values, however this can cause problems for the operating system so should generally be avoided.
+The minimum value is `16`, however this disables certain GPU features. You should set `gpu_mem` to the lowest possible value to ensure best performance. If a particular graphics feature is not working correctly, try increasing the value of `gpu_mem`, being mindful of the recommendations in the above table. It is possible to set `gpu_mem` to larger values, however this can cause problems for the operating system so should generally be avoided.
 
 On the Raspberry Pi 4 the 3D component of the GPU has its own memory management unit (MMU), and does not use memory from the `gpu_mem` allocation. Instead memory is allocated dynamically by the operating system.
 
