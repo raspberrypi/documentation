@@ -6,7 +6,7 @@
 
 ### hdmi_safe
 
-Setting `hdmi_safe` to `1` will lead to "safe mode" settings being used to try to boot with maximum HDMI compatibility. This is the same as setting the following parameters:
+Setting `hdmi_safe` to `1` will lead to 'safe mode' settings being used to try to boot with maximum HDMI compatibility. This is the same as setting the following parameters:
 
 ```
 hdmi_force_hotplug=1
