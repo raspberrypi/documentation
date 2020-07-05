@@ -171,7 +171,7 @@ These values are valid if `hdmi_group=1` (CEA):
 | 36 | 480p | 60Hz | 16:9 | pixel quadrupling <sup>1</sup>|
 | 37 | 576p | 50Hz | 4:3 | pixel quadrupling <sup>1</sup>|
 | 38 | 576p | 50Hz | 16:9 | pixel quadrupling <sup>1</sup>|
-| 39 | 1080i | 50Hz | 16:9 | reduced blanking <sup>1</sup>|
+| 39 | 1080i | 50Hz | 16:9 | reduced blanking|
 | 40 | 1080i | 100Hz | 16:9 |  |
 | 41 | 720p | 100Hz | 16:9 |  |
 | 42 | 576p | 100Hz | 4:3 | |
