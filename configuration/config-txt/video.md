@@ -142,12 +142,12 @@ These values are valid if `hdmi_group=1` (CEA):
 | 7 | 480i | 60Hz | 16:9  | |
 | 8 | 240p | 60Hz | 4:3 | |
 | 9 | 240p | 60Hz | 16:9 | |
-| 10 | 480i | 60Hz | 4:3 | pixel quadrupling |
-| 11 | 480i | 60Hz | 16:9 | pixel quadrupling |
-| 12 | 240p | 60Hz | 4:3 | pixel quadrupling |
-| 13 | 240p | 60Hz | 16:9 |pixel quadrupling|
-| 14 | 480p | 60Hz | 4:3 | pixel doubling |
-| 15 | 480p | 60Hz | 16:9 | pixel doubling |
+| 10 | 480i | 60Hz | 4:3 | pixel quadrupling <sup>1</sup>|
+| 11 | 480i | 60Hz | 16:9 | pixel quadrupling <sup>1</sup>|
+| 12 | 240p | 60Hz | 4:3 | pixel quadrupling <sup>1</sup>|
+| 13 | 240p | 60Hz | 16:9 |pixel quadrupling <sup>1</sup>|
+| 14 | 480p | 60Hz | 4:3 | pixel doubling <sup>1</sup>|
+| 15 | 480p | 60Hz | 16:9 | pixel doubling <sup>1</sup>|
 | 16 | 1080p | 60Hz | 16:9 | |
 | 17 | 576p | 50Hz | 4:3 | |
 | 18 | 576p | 50Hz | 16:9 | |
@@ -157,21 +157,21 @@ These values are valid if `hdmi_group=1` (CEA):
 | 22 | 576i | 50Hz | 16:9 | |
 | 23 | 288p | 50Hz | 4:3 | |
 | 24 | 288p | 50Hz | 16:9 |  |
-| 25 | 576i | 50Hz | 4:3 | pixel quadrupling |
-| 26 | 576i | 50Hz | 16:9 | pixel quadrupling |
-| 27 | 288p | 50Hz | 4:3 | pixel quadrupling |
-| 28 | 288p | 50Hz | 16:9 | pixel quadrupling |
-| 29 | 576p | 50Hz | 4:3 | pixel doubling |
-| 30 | 576p | 50Hz | 16:9 | pixel doubling |
+| 25 | 576i | 50Hz | 4:3 | pixel quadrupling <sup>1</sup>|
+| 26 | 576i | 50Hz | 16:9 | pixel quadrupling <sup>1</sup>|
+| 27 | 288p | 50Hz | 4:3 | pixel quadrupling <sup>1</sup>|
+| 28 | 288p | 50Hz | 16:9 | pixel quadrupling <sup>1</sup>|
+| 29 | 576p | 50Hz | 4:3 | pixel doubling <sup>1</sup>|
+| 30 | 576p | 50Hz | 16:9 | pixel doubling <sup>1</sup>|
 | 31 | 1080p | 50Hz | 16:9 | |
 | 32 | 1080p | 24Hz | 16:9 | |
 | 33 | 1080p | 25Hz | 16:9 | |
 | 34 | 1080p | 30Hz | 16:9 | |
-| 35 | 480p | 60Hz | 4:3 | pixel quadrupling |
-| 36 | 480p | 60Hz | 16:9 | pixel quadrupling |
-| 37 | 576p | 50Hz | 4:3 | pixel quadrupling |
-| 38 | 576p | 50Hz | 16:9 | pixel quadrupling |
-| 39 | 1080i | 50Hz | 16:9 | reduced blanking |
+| 35 | 480p | 60Hz | 4:3 | pixel quadrupling <sup>1</sup>|
+| 36 | 480p | 60Hz | 16:9 | pixel quadrupling <sup>1</sup>|
+| 37 | 576p | 50Hz | 4:3 | pixel quadrupling <sup>1</sup>|
+| 38 | 576p | 50Hz | 16:9 | pixel quadrupling <sup>1</sup>|
+| 39 | 1080i | 50Hz | 16:9 | reduced blanking <sup>1</sup>|
 | 40 | 1080i | 100Hz | 16:9 |  |
 | 41 | 720p | 100Hz | 16:9 |  |
 | 42 | 576p | 100Hz | 4:3 | |
@@ -238,12 +238,11 @@ These values are valid if `hdmi_group=1` (CEA):
 | 103 | 2160p | 24Hz | 64:27 | Pi 4 |
 | 104 | 2160p | 25Hz | 64:27 | Pi 4 |
 | 105 | 2160p | 30Hz | 64:27 | Pi 4 |
-| 106 | 2160p | 50Hz | 64:27 | Pi 4<sup>1</sup>|
-| 107 | 2160p | 60Hz | 64:27 | Pi 4<sup>1</sup>|
+| 106 | 2160p | 50Hz | 64:27 | Pi 4<sup>2</sup>|
+| 107 | 2160p | 60Hz | 64:27 | Pi 4<sup>2</sup>|
 
-<sup>1</sup>4K resolutions above 30Hz are only available on HDMI 0 with [`hdmi_enable_4kp60=1`](#hdmienable4kp60).
-
-Pixel doubling and quadrupling indicates a higher clock rate, with each pixel repeated two or four times respectively.
+<sup>1</sup>Pixel doubling and quadrupling indicates a pixel clock rate, with each pixel repeated two or four times respectively.
+<sup>2</sup>4K resolutions above 30Hz are only available on HDMI 0 with [`hdmi_enable_4kp60=1`](#hdmienable4kp60).
 
 These values are valid if `hdmi_group=2` (DMT):
 
