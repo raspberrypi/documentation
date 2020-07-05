@@ -2,15 +2,19 @@
 
 ## gpu_mem
 
-Specifies how much memory, in megabytes, to reserve for the exclusive use of the GPU. The remaining memory is allocated to the ARM CPU. The minimum value is `16`; the technical maximum value is `192`, `448`, or `944`, depending on whether you are using a 256MB, 512MB, or 1024MB Pi. The default value is `64`, values above `512` will not provide increased performance and should not be used. For the Raspberry Pi 4, which is available with different memory capacities, the minimum and maximum values are the same as for a 1GB device.
+Specifies how much memory, in megabytes, to reserve for the exclusive use of the GPU: the remaining memory is allocated to the ARM CPU. The default value is `64`. The recommended maximum values are as follows:
 
-`gpu_mem` refers to memory that is addressable from the GPU, which includes the VPU, HVS, legacy codecs (e.g. H264), and camera, and on devices before the Raspberry Pi 4, the 3D system. The Raspberry Pi 4 3D system has it's own Memory Mangement Unit (MMU) so textures and other GL resources are not allocated from the `gpu_mem` but Linux system memory instead. This means that `gpu_mem` can be set to a lower value, so even if you are using the H264 and camera then 128MB will probably be enough. On earlier models without the 3D MMU, you may need up to 256 or 512 in some more unusual cases. 
+| total RAM | `gpu_mem` recommended maximum |
+---------------------------------------------
+| 256MB     | `128`                         |
+| 512MB     | `384`                         |
+| 1GB or greater | `512`                    |
 
-For performance reasons, you should set `gpu_mem` as low as possible to give the Linux system as much memory as possible. However, setting `gpu_mem` to too low values may automatically disable certain firmware features, as there are some things the GPU cannot do if it has access to too little memory. So if a feature you are trying to use isn't working, try setting a larger GPU memory split.
+The minimum value of `gpu_mem` is `16`, however this disables certain GPU features. You should set `gpu_mem` to the lowest possible value for best performance. If a particular graphics feature is not working correctly, try increasing the value of `gpu_mem`, being mindful of the recommendations in the above table. It is possible to set `gpu_mem` to larger values, however this can cause problems for the operating system so should generally be avoided.
 
-Values of `gpu_mem` over 512 are not recommended, will provide no performance improvements, and are untested.
+On the Raspberry Pi 4 the 3D component of the GPU has its own memory management unit (MMU), and does not use memory from the `gpu_mem` allocation. Instead memory is allocated dynamically by the operating system.
 
-Using `gpu_mem_256`, `gpu_mem_512`, and `gpu_mem_1024` allows you to swap the same SD card between 256MB, 512MB, and 1024MB Pis without having to edit `config.txt` each time:
+You can also use `gpu_mem_256`, `gpu_mem_512`, and `gpu_mem_1024` to allow swapping the same SD card between Pis with different amounts of RAM without having to edit `config.txt` each time:
 
 ## gpu_mem_256
 
