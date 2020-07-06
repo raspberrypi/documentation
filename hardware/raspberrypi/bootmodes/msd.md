@@ -2,7 +2,7 @@
 
 **Available on Raspberry Pi 2B v1.2, 3A+, 3B, 3B+, and 4B only.**
 
-This page explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or a USB hard disk. Note that models prior to the Pi 4 have known issues which prevent booting with some USB devices.
+This page explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or a USB hard disk. When attaching USB devices, particularly hard disks and SSDs, be mindful of their power requirements. If you wish to attach more than one SSD or hard disk to the Pi, this normally requires external power - either a powered hard disk enclosure, or a powered USB hub. Note that models prior to the Pi 4 have known issues which prevent booting with some USB devices.
 
 See the [bootmodes documentation](README.md) for the boot sequence and alternative boot modes (network, USB device, GPIO or SD boot).
 
@@ -56,7 +56,6 @@ After five to ten seconds, the Raspberry Pi should begin booting and show the ra
 
 - The default timeout for checking bootable USB devices is 2 seconds. Some flash drives and hard disks power up too slowly. It is possible to extend this timeout to five seconds (add a new file `timeout` to the SD card), but note that some devices take even longer to respond.
 - Some flash drives have a very specific protocol requirement that is not handled by the bootcode and may thus be incompatible.
-- Lack of power can be an issue so it is recommended to use a powered USB hub, particularly if you are attaching more than one storage device to the Raspberry Pi. If your device has its own power supply, then use that.
 
 <a name="pi4"></a>
 ## Raspberry Pi 4
