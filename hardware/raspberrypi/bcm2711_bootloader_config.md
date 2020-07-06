@@ -291,7 +291,7 @@ rpi-eeprom-config --out pieeprom-netboot.bin --config bootconf.txt pieeprom.bin
 sudo rpi-eeprom-update -d -f ./pieeprom-netboot.bin
 sudo reboot
 ```
-
+<a name="usbmassstorageboot"></a>
 ## USB mass storage boot
 This is currently undergoing beta testing and also requires updated GPU (start.elf) firmware via APT-update OR [rpi-update](../../raspbian/applications/rpi-update.md). If you aren't already familiar with how to use a USB drive for the root filesystem then you probably want to wait until this feature is in the default Raspberry Pi OS image.
 
