@@ -659,7 +659,7 @@ The options that can be set are:
 
 ### test_mode
 
-The `test_mode` command outputs a test image on the composite video output, and sound during boot from the analogue output, for the given number of seconds, before continuing to boot as normal. This is used as a manufacturing test; the default value is `0`.
+The `test_mode` command outputs a test image on the composite video output, and sound from the analogue output, for the given number of seconds, before continuing to boot as normal. This is used as a manufacturing test; the default value is `0`.
 
 <a name="displayhdmirotate"></a>
 ### display_hdmi_rotate
