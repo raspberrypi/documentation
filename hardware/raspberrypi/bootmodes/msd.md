@@ -45,7 +45,7 @@ You can now boot from a USB mass storage device in the same way as booting from 
 
 ## Raspberry Pi 3B+, Compute Module 3+
 
-The Raspberry Pi 3B+ and Compute Module 3+ support USB mass storage boot out of the box. The steps specific to previous versions of Raspberry Pi do not have to be executed.
+The Raspberry Pi 3B+ and Compute Module 3+ support USB mass storage boot out of the box. The steps specific to previous versions of Raspberry Pi do not have to be executed. When attaching USB devices, particularly hard disks and SSDs, be mindful of their power requirements. If you wish to attach more than one SSD or hard disk to the Pi, this normally requires external power - either a powered hard disk enclosure, or a powered USB hub.
 
 The [procedure](../../../installation/installing-images) is the same as for SD cards - simply image the USB storage device with the operating system image.
 
@@ -56,7 +56,6 @@ After five to ten seconds, the Raspberry Pi should begin booting and show the ra
 
 - The default timeout for checking bootable USB devices is 2 seconds. Some flash drives and hard disks power up too slowly. It is possible to extend this timeout to five seconds (add a new file `timeout` to the SD card), but note that some devices take even longer to respond.
 - Some flash drives have a very specific protocol requirement that is not handled by the bootcode and may thus be incompatible.
-- Lack of power can be an issue so it is recommended to use a powered USB hub, particularly if you are attaching more than one storage device to the Raspberry Pi. If your device has its own power supply, then use that.
 
 <a name="pi4"></a>
 ## Raspberry Pi 4
