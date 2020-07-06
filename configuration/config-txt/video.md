@@ -677,7 +677,11 @@ Use `display_hdmi_rotate` to rotate or flip the HDMI display orientation. The de
 
 Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16MB GPU split.
 
-If using the FKMS driver (this is the default on the Raspberry Pi 4), then 90 and 270 degree rotations are not supported. The Screen Configuration utility (`arandr`) can be used to configure display rotations for this driver. See [this page](../display_rotation.md) for more information.
+If using the VC4 FKMS V3D driver (this is the default on the Raspberry Pi 4), then 90 and 270 degree rotations are not supported. The Screen Configuration utility provides display rotations for this driver. See this [page](../display_rotation.md) for more information.
+
+### display_lcd_rotate
+
+For the legacy graphics driver (default on models prior to the Pi4), use `display_lcd_rotate` to rotate or flip the LCD orientation. Parameters are the same as `display_hdmi_rotate`. See also `lcd_rotate`.
 
 ### display_rotate
 

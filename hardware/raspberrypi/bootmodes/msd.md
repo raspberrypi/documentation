@@ -1,26 +1,24 @@
 # USB mass storage boot
 
-**USB mass storage boot is available on Raspberry Pi 2B v1.2, 3A+, 3B, and 3B+ only. Support for USB mass storage boot will be added to the Raspberry Pi 4B in a future software update which is currently undergoing beta testing.**
+**Available on Raspberry Pi 2B v1.2, 3A+, 3B, 3B+, and 4B only.**
 
-This page explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or a USB hard disk. Note that this feature does not work with all USB mass storage devices.
+This page explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or a USB hard disk. Note that models prior to the Pi 4 have known issues which prevent booting with some USB devices.
 
-See the [bootmodes documentation](README.md) for the boot sequence and alternative boot modes (Network, USB device, GPIO or SD boot).
+See the [bootmodes documentation](README.md) for the boot sequence and alternative boot modes (network, USB device, GPIO or SD boot).
 
-Note that "USB mass storage boot" is different from "USB device boot mode". The [device boot mode](device.md) allows a Raspberry Pi connected to a computer to boot using files on that computer.
+Note that 'USB mass storage boot' is different from 'USB device boot mode'. [USB device boot mode](device.md) allows a Raspberry Pi connected to a computer to boot as a USB device, using files from that computer.
 
-For devices that are not supported, an alternative is to use the 'special bootcode.bin-only boot mode' as described [here](README.md). This still requires/boots from an SD-card, but `bootcode.bin` is the only file read from the SD-Card.
+If you are unable to use a particular USB device to boot your Raspberry Pi, an alternative is to use the special bootcode.bin-only boot mode as described [here](README.md). This Pi will still boot from the SD card, but `bootcode.bin` is the only file read from it.
 
-## Raspberry Pi 2B v1.2, 3A+, 3B, CM3
+## Raspberry Pi 2B v1.2, 3A+, 3B, Compute Module 3
 
-On the Raspberry Pi 2B v1.2, 3A+, 3B, CM3, first USB [host boot mode](host.md) should be enabled. This is to allow "mass storage boot" and ["network boot"](net.md) (Network boot not supported on 3A+).
+On the Raspberry Pi 2B v1.2, 3A+, 3B, and Compute Module 3 you must first enable [USB host boot mode](host.md). This is to allow USB mass storage boot, and [network boot](net.md). Note that network boot is not supported on the Raspberry Pi 3A+.
 
-To enable USB host boot mode, the Raspberry Pi needs to be booted from an SD card with a special option to set the USB host boot mode bit in the OTP (one-time programmable) memory. 
-
-Once this bit has been set, the SD card is no longer required. **Note that any change you make to the OTP is permanent and cannot be undone.**
+To enable USB host boot mode, the Raspberry Pi needs to be booted from an SD card with a special option to set the USB host boot mode bit in the one-time programmable (OTP) memory. Once this bit has been set, the SD card is no longer required. **Note that any change you make to the OTP is permanent and cannot be undone.**
 
 **On the Raspberry Pi 3A+, setting the OTP bit to enable USB host boot mode will permanently prevent that Pi from booting in USB device mode.**
 
-You can use any SD card running Raspberry Pi OS or Raspberry Pi OS Lite to program the OTP bit.
+You can use any SD card running Raspberry Pi OS to program the OTP bit.
 
 Enable USB host boot mode with this code:
 
@@ -41,28 +39,26 @@ $ vcgencmd otp_dump | grep 17:
 
 Check that the output `0x3020000a` is shown. If it is not, then the OTP bit has not been successfully programmed. In this case, go through the programming procedure again. If the bit is still not set, this may indicate a fault in the Pi hardware itself.
 
-If you wish, you can remove the `program_usb_boot_mode` line from config.txt, so that if you put the SD card into another Raspberry Pi, it won't program USB host boot mode. Make sure there is no blank line at the end of config.txt.
+If you wish, you can remove the `program_usb_boot_mode` line from `config.txt`, so that if you put the SD card into another Raspberry Pi, it won't program USB host boot mode. Make sure there is no blank line at the end of `config.txt`.
 
-You can now boot from an USB mass storage device in the same way as booting from SD, see the following paragraph for Raspberry Pi 3B+, CM3+.
+You can now boot from a USB mass storage device in the same way as booting from an SD card - see the following section for further information.
 
-## Raspberry Pi 3B+, CM3+
+## Raspberry Pi 3B+, Compute Module 3+
 
-The Raspberry Pi 3B+ and CM3+ support USB mass storage boot out of the box. The settings specific to the previous versions of Raspberry Pi do not have to be executed.
+The Raspberry Pi 3B+ and Compute Module 3+ support USB mass storage boot out of the box. The steps specific to previous versions of Raspberry Pi do not have to be executed.
 
-This is the same [procedure](../../../installation/installing-images) as for SD cards.
+The [procedure](../../../installation/installing-images) is the same as for SD cards - simply image the USB storage device with the operating system image.
 
-After preparing the storage device, connect the drive to the Raspberry Pi and power up the Pi (be aware of the extra USB power usage from the external drive).
+After preparing the storage device, connect the drive to the Raspberry Pi and power up the Pi, being aware of the extra USB power requirements of the external drive.
 After five to ten seconds, the Raspberry Pi should begin booting and show the rainbow splash screen on an attached display. Make sure that you do not have an SD card inserted in the Pi, since if you do, it will boot from that first.
+
+## Known issues (not Pi 4)
+
+- The default timeout for checking bootable USB devices is 2 seconds. Some flash drives and hard disks power up too slowly. It is possible to extend this timeout to five seconds (add a new file `timeout` to the SD card), but note that some devices take even longer to respond.
+- Some flash drives have a very specific protocol requirement that is not handled by the bootcode and may thus be incompatible.
+- Lack of power can be an issue so it is recommended to use a powered USB hub, particularly if you are attaching more than one storage device to the Raspberry Pi. If your device has its own power supply, then use that.
 
 <a name="pi4"></a>
 ## Raspberry Pi 4
 
-USB mass storage support is currently undergoing beta testing.  Once beta test is complete the release version will enable USB mass storage boot by default. The `program_usb_boot_mode` option is not required on Pi 4.
-
-If you would like to try the beta test then please read the instructions on the [Pi 4 Bootloader Configuration](../bcm2711_bootloader_config.md).
-
-## Known issues
-
-- The default timeout for checking bootable USB devices is 2 seconds. Some flash drives and rotational harddrives power up too slowly. It’s possible to extend this timeout to five seconds (add a new file `timeout` to the SD card), but there are devices that fail to respond within this period as well.
-- Some flash drives have a very specific protocol requirement that is not handled by the bootcode and may thus be incompatible.
-- Lack of power can be an issue, so it is recommended to use a powered USB hub, particularly if you are attaching more than one storage device to the Raspberry Pi. If your device has its own power supply, then use that.
+The Raspberry Pi 4 currently requires non-default firmware to enable USB mass storage boot: see the [USB mass storage boot](../bcm2711_bootloader_config.md#usbmassstorageboot) section of the Pi 4 Bootloader Configuration page for more information.
