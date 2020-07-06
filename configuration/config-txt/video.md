@@ -28,6 +28,7 @@ Setting `hdmi_force_hotplug` to `1` forces the HDMI output to be enabled, even i
 ### hdmi_ignore_hotplug
 
 Setting `hdmi_ignore_hotplug` to `1` prevents the HDMI output from being enabled, even if a display is attached.
+
 ### hdmi_ignore_edid
 
 Setting `hdmi_ignore_edid` to `0xa5000080` enables the ignoring of EDID/display data. This is useful if your display does not have an accurate [EDID](https://en.wikipedia.org/wiki/Extended_display_identification_data).
@@ -403,7 +404,8 @@ hdmi_enable_4kp60=1
 ```
 
 Note: this will increase power consumption and increase the temperature of the Raspberry Pi. It is only possible to output 4Kp60 on HDMI 0.
- 
+
+
 ## Which values are valid for my monitor?
 
 Your HDMI monitor may only support a limited set of formats. To find out which formats are supported, use the following method:
@@ -415,6 +417,7 @@ Your HDMI monitor may only support a limited set of formats. To find out which f
   1. Enter the following commands to dump more detailed information from your monitor: `/opt/vc/bin/tvservice -d edid.dat; /opt/vc/bin/edidparser edid.dat`
 
 The `edid.dat` should also be provided when troubleshooting problems with the default HDMI mode.
+
 
 ## Custom mode
 
