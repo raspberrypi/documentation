@@ -23,12 +23,11 @@ overscan_bottom=24
 
 ### hdmi_force_hotplug
 
-Setting `hdmi_force_hotplug` to `1` forces the HDMI output to be enabled, even if none is detected.
+Setting `hdmi_force_hotplug` to `1` forces the HDMI output to be enabled, even if there is no display detected.
 
 ### hdmi_ignore_hotplug
 
-Setting `hdmi_ignore_hotplug` to `1` prevents the HDMI output from being enabled, even if a monitor is detected.
-
+Setting `hdmi_ignore_hotplug` to `1` prevents the HDMI output from being enabled, even if a display is attached.
 ### hdmi_ignore_edid
 
 Setting `hdmi_ignore_edid` to `0xa5000080` enables the ignoring of EDID/display data. This is useful if your display does not have an accurate [EDID](https://en.wikipedia.org/wiki/Extended_display_identification_data).
