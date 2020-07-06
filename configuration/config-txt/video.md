@@ -50,15 +50,15 @@ hdmi_edid_filename:1=FileForPortOne.edid
 
 ### hdmi_force_edid_audio
 
-Setting `hdmi_force_edid_audio` to `1` pretends that all audio formats are supported by the display, allowing passthrough of DTS/AC3 even when the EDID does not indicate support for this.
+Setting `hdmi_force_edid_audio` to `1` enables all audio formats, ignoring the list of supported formats reported by the display in the EDID. This is useful for allowing passthrough of DTS/AC3 even when the EDID does not indicate support for this.
 
 ### hdmi_ignore_edid_audio
 
-Setting `hdmi_ignore_edid_audio` to `1` pretends that all audio formats are unsupported by the display. This means Linux will default to using the analogue audio output instead.
+Setting `hdmi_ignore_edid_audio` to `1` disables all audio formats, ignoring the list of supported formats reported by the display in the EDID. This means Linux will default to using the analogue audio output instead.
 
 ### hdmi_force_edid_3d
 
-Setting `hdmi_force_edid_3d` to `1` pretends that all CEA modes support 3D, even when the EDID does not indicate support for this.
+Setting `hdmi_force_edid_3d` to `1` enabled support for 3D for all CEA modes that support 3D, even when the EDID does not indicate support for this.
 
 ### hdmi_ignore_cec_init
 
@@ -66,7 +66,7 @@ Setting `hdmi_ignore_cec_init` to `1` will stop the initial active source messag
 
 ### hdmi_ignore_cec
 
-Setting `hdmi_ignore_cec` to `1` pretends that [CEC](https://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC) is not supported at all by the TV. No CEC functions will be supported.
+Setting `hdmi_ignore_cec` to `1` disables [CEC](https://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC), even if the display reports via the EDID that it is supported. No CEC functions will be available.
 
 ### cec_osd_name
 
