@@ -663,7 +663,7 @@ If using the VC4 FKMS V3D driver (this is the default on the Raspberry Pi 4), th
 
 ### display_lcd_rotate
 
-Use `display_lcd_rotate` to rotate or flip the LCD orientation. Parameters are the same as `display_hdmi_rotate`.
+For the legacy graphics driver (default on models prior to the Pi4), use `display_lcd_rotate` to rotate or flip the LCD orientation. Parameters are the same as `display_hdmi_rotate`. See also `lcd_rotate`.
 
 ### display_rotate
 
