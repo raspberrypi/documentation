@@ -28,7 +28,7 @@ The `gpu_mem_512` command sets the GPU memory in megabytes for the 512MB Raspber
 
 ## gpu_mem_1024
 
-The `gpu_mem_1024` command sets the GPU memory in megabytes for Raspberry Pi devices with 1GB or more of memory. (It is ignored if memory size is smaller than 1GB).
+The `gpu_mem_1024` command sets the GPU memory in megabytes for Raspberry Pi devices with 1GB or more of memory. (It is ignored if memory size is smaller than 1GB). This overrides `gpu_mem`.
 
 ## disable_l2cache
 
