@@ -59,7 +59,7 @@ Setting `hdmi_ignore_edid_audio` to `1` disables all audio formats, ignoring the
 
 ### hdmi_force_edid_3d
 
-Setting `hdmi_force_edid_3d` to `1` enabled support for 3D for all CEA modes that support 3D, even when the EDID does not indicate support for this.
+Setting `hdmi_force_edid_3d` to `1` enabled support for 3D on all CEA modes, even when the EDID does not indicate this support.
 
 ### hdmi_ignore_cec_init
 
