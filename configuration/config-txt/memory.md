@@ -2,7 +2,7 @@
 
 ## gpu_mem
 
-Specifies how much memory, in megabytes, to reserve for the exclusive use of the GPU: the remaining memory is allocated to the ARM CPU. For Pis with less than 1GB of memory, the default is `64`; for Pis with 1GB or more of memory the default is `76`. You should set `gpu_mem` to the lowest possible value, to ensure best performance. If a particular graphics feature is not working correctly, try increasing the value of `gpu_mem`, being mindful of the recommended maximums shown below.
+Specifies how much memory, in megabytes, to reserve for the exclusive use of the GPU: the remaining memory is allocated to the ARM CPU. For Pis with less than 1GB of memory, the default is `64`; for Pis with 1GB or more of memory the default is `76`. To ensure best performance, you should set `gpu_mem` to the lowest possible value. If a particular graphics feature is not working correctly, try increasing the value of `gpu_mem`, being mindful of the recommended maximums shown below.
 
 The recommended maximum values are as follows:
 
