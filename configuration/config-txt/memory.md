@@ -20,7 +20,7 @@ You can also use `gpu_mem_256`, `gpu_mem_512`, and `gpu_mem_1024` to allow swapp
 
 ## gpu_mem_256
 
-The `gpu_mem_256` command sets the GPU memory in megabytes for Raspberry Pis 256MB of memory. (It is ignored if memory size is not 256MB). This overrides `gpu_mem`.
+The `gpu_mem_256` command sets the GPU memory in megabytes for Raspberry Pis with 256MB of memory. (It is ignored if memory size is not 256MB). This overrides `gpu_mem`.
 
 ## gpu_mem_512
 
