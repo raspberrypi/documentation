@@ -20,15 +20,15 @@ You can also use `gpu_mem_256`, `gpu_mem_512`, and `gpu_mem_1024` to allow swapp
 
 ## gpu_mem_256
 
-The `gpu_mem_256` command sets the GPU memory in megabytes for the 256MB Raspberry Pi. (It is ignored if memory size is not 256MB). This overrides `gpu_mem`.
+The `gpu_mem_256` command sets the GPU memory in megabytes for Raspberry Pis 256MB of memory. (It is ignored if memory size is not 256MB). This overrides `gpu_mem`.
 
 ## gpu_mem_512
 
-The `gpu_mem_512` command sets the GPU memory in megabytes for the 512MB Raspberry Pi. (It is ignored if memory size is not 512MB). This overrides `gpu_mem`.
+The `gpu_mem_512` command sets the GPU memory in megabytes for Raspberry Pis with 256MB of memory. (It is ignored if memory size is not 512MB). This overrides `gpu_mem`.
 
 ## gpu_mem_1024
 
-The `gpu_mem_1024` command sets the GPU memory in megabytes for Raspberry Pi devices with 1GB or more of memory. (It is ignored if memory size is smaller than 1GB). This overrides `gpu_mem`.
+The `gpu_mem_1024` command sets the GPU memory in megabytes for Raspberry Pis with 1GB or more of memory. (It is ignored if memory size is smaller than 1GB). This overrides `gpu_mem`.
 
 ## disable_l2cache
 
