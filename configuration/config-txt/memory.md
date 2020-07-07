@@ -2,7 +2,7 @@
 
 ## gpu_mem
 
-Specifies how much memory, in megabytes, to reserve for the exclusive use of the GPU: the remaining memory is allocated to the ARM CPU. The default value is `76`, except on the Pi Zero and Pi 1 where it is `64`. You should set `gpu_mem` to the lowest possible value to ensure best performance. If a particular graphics feature is not working correctly, try increasing the value of `gpu_mem`, being mindful of the recommended maximums shown below.
+Specifies how much memory, in megabytes, to reserve for the exclusive use of the GPU: the remaining memory is allocated to the ARM CPU. For Pis with less than 1GB of memory, the default is `64`; for Pis with 1GB or more of memory the default is `76`. You should set `gpu_mem` to the lowest possible value, to ensure best performance. If a particular graphics feature is not working correctly, try increasing the value of `gpu_mem`, being mindful of the recommended maximums shown below.
 
 The recommended maximum values are as follows:
 
@@ -12,7 +12,7 @@ The recommended maximum values are as follows:
 | 512MB     | `384`                         |
 | 1GB or greater | `512`                    |
 
- It is possible to set `gpu_mem` to larger values, however this should be avoided since it can cause problems, such as preventing Linux from booting. There is no performance advantage to specifying values larger than is necessary. The minimum value is `16`, however this disables certain GPU features.
+It is possible to set `gpu_mem` to larger values, however this should be avoided since it can cause problems, such as preventing Linux from booting. There is no performance advantage from specifying values larger than is necessary. The minimum value is `16`, however this disables certain GPU features.
 
 On the Raspberry Pi 4 the 3D component of the GPU has its own memory management unit (MMU), and does not use memory from the `gpu_mem` allocation. Instead memory is allocated dynamically within Linux. This may allow a smaller value to be specified for `gpu_mem` on the Pi 4, compared to previous models.
 
