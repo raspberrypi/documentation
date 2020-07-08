@@ -94,6 +94,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |          |              | f: Internal use only       |
 |          |              | 10: CM3+                   |
 |          |              | 11: 4B                     |
+|          |              | 12: CM4                    |
 | RRRR     | Revision     | 0, 1, 2, etc.              |
 
 <sup>1</sup> Information on programming the OTP bits can be found [here](../../industrial/README.md) and [here](../otpbits.md).
