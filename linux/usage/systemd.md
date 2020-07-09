@@ -28,6 +28,7 @@ One-time services are used when you wish to run a program which does some work, 
 ```
 [Unit]
 Description=Run my program once at boot time
+Wants=network-online.target
 After=local-fs.target network-online.target
 
 [Service]
@@ -46,6 +47,7 @@ A simple service runs continuously for as long as its dependencies are met. We d
 ```
 [Unit]
 Description=Network music player
+Wants=network-online.target
 After=local-fs.target network-online.target
 Requires=mpd.target
 
