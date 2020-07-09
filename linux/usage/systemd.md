@@ -1,57 +1,101 @@
 # systemd
 
-In order to have a command or program run when the Pi boots, you can add it as a service. Once this is done, you can start/stop enable/disable from the linux prompt.
+Raspberry Pi OS uses [`systemd`](https://www.freedesktop.org/wiki/Software/systemd/) to manage the running of services, including controlling what starts when Linux boots.
 
-## Creating a service
+## `rc.local` under `systemd`
+Unlike on older versions of Linux, `systemd` starts services based on their dependencies: services are no longer started in a predefined order. This means it is no longer guaranteed that `rc.local` will run once all other services have started. You should therefore not use `rc.local` to start programs at boot.
 
-On your Pi, create a .service file for your service, for example:
-
-myscript.service
+## Service definitions
+`Systemd` defines each service in a separate file. Under `systemd` services are a type of 'unit'. Units are system resources under the control of `systemd`. The basic format of a service definition is as follows:
 
 ```
 [Unit]
-Description=My service
-After=network.target
+Description=...
+...
 
 [Service]
-ExecStart=/usr/bin/python3 -u main.py
-WorkingDirectory=/home/pi/myscript
-StandardOutput=inherit
-StandardError=inherit
-Restart=always
-User=pi
+...
 
 [Install]
-WantedBy=multi-user.target
-```
-So in this instance, the service would run Python 3 from our working directory `/home/pi/myscript` which contains our python program to run `main.py`. But you are not limited to Python programs: simply change the ExecStart line to be the command to start any program/script that you want running from booting.
-
-Copy this file into `/etc/systemd/system` as root, for example:
-```
-sudo cp myscript.service /etc/systemd/system/myscript.service
+...
 ```
 
-Once this has been copied, you can attempt to start the service using the following command:
+User services should be placed in `/etc/systemd/user`: the filename dictates the service name. For example, a file named `monitoring.service` would define the service named `monitoring`.
+
+### Example - one-time service
+One-time services are used when you wish to run a program which does some work, then exits: this is in contrast to a service which stays running all the time. Consider the following service definition:
+
 ```
-sudo systemctl start myscript.service
+[Unit]
+Description=Run my program once at boot time
+After=local-fs.target network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/pi/myprogram.sh
+
+[Install]
+WantedBy=multi-user.target graphical.target
 ```
 
-Stop it using following command:
+Let's say the above file is `/etc/systemd/user/myprogram.service`: this defines a new oneshot service named `myprogram`. The `myprogram` service will wait until `local-fs.target` and `network-online.target` have been reached, then run `/home/pi/myprogram.sh`.
+
+### Example - simple service
+A simple service runs continuously for as long as its dependencies are met. We define `/etc/systemd/user/netmusicplayer.service` as follows:
+
 ```
-sudo systemctl stop myscript.service
-```
-When you are happy that this starts and stops your app, you can have it start automatically on reboot by using this command:
-```
-sudo systemctl enable myscript.service
+[Unit]
+Description=Network music player
+After=local-fs.target network-online.target
+Requires=mpd.target
+
+[Service]
+Type=simple
+ExecStart=/home/pi/netmusicplayer.sh
+ExecStop=/home/pi/netmusicplayer.sh stop
+
+[Install]
+WantedBy=multi-user.target graphical.target
 ```
 
-The `systemctl` command can also be used to restart the service or disable it from boot up!
+Our `netmusicplayer` service is started up using the script `/home/pi/netmusicplayer.sh`. We can also pass the `stop` parameter to that same script to stop `netmusicplayer`. Because the network music player uses [`mpd`](https://www.musicpd.org/), we use the `Requires=` directive to specify that `mpd` must be running before `netmusicplayer` starts up.
 
-Some things to be aware of:
-+ The order in which things are started is based on their dependencies — this particular script should start fairly late in the boot process, after a network is available (see the After section).
-+ You can configure different dependencies and orders based on your requirements.
+## Install a service
+To install a service, use the `systemctl enable` command as follows:
 
+```
+sudo systemctl enable <service file>
+```
 
-You can get more information from:
-``` man systemctl```
-or here: https://fedoramagazine.org/what-is-an-init-system/
+For example:
+
+```
+sudo systemctl enable /etc/systemd/user/netmusicplayer.service
+```
+
+Once a service has been installed using `systemctl enable`, the system will run it the next time the system boots. To run the service immediately, start it using `systemctl start` - see the following section.
+
+## Start and stop a service
+To start a service, use the `systemctl start` command:
+
+```
+sudo systemctl start <name of service>
+```
+
+For example:
+
+```
+sudo systemctl start netmusicplayer
+```
+
+To stop a service, use the `systemctl stop` command:
+
+```
+sudo systemctl stop <name of service>
+```
+
+For example:
+
+```
+sudo systemctl stop netmusicplayer
+```
