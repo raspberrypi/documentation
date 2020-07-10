@@ -3,7 +3,7 @@
 Raspberry Pi OS uses [`systemd`](https://www.freedesktop.org/wiki/Software/systemd/) to manage the running of services, including controlling what starts when Linux boots.
 
 ## `rc.local` under `systemd`
-Unlike on older versions of Linux, `systemd` starts services based on their dependencies: services are no longer started in a predefined order. This means it is no longer guaranteed that `rc.local` will run once all other services have started. You should therefore not use `rc.local` to start programs at boot.
+Unlike on older versions of Linux, `systemd` starts services based on their dependencies: services are no longer started in a predefined order. This means it is no longer guaranteed that `rc.local` will run after all other services have started. You should therefore not use `rc.local` to start programs at boot.
 
 ## Service definitions
 `Systemd` defines each service in a separate file. Under `systemd` services are a type of 'unit': units are system resources under the control of `systemd`. The basic format of a service definition is as follows:
