@@ -62,8 +62,8 @@ WantedBy=multi-user.target graphical.target
 
 Our `netmusicplayer` service is started up using the script `/home/pi/nmp.sh`. The service also passes the `stop` parameter to that same script to stop the network music player. Because the network music player uses [`mpd`](https://www.musicpd.org/), we use the `Requires=` directive to specify that `mpd` must be running before `netmusicplayer` starts up.
 
-## Install a service
-To install a service, use the `systemctl enable` command as follows:
+## Enable and disable a service
+To enable a service, use the `systemctl enable` command as follows:
 
 ```
 sudo systemctl enable <service file>
@@ -75,7 +75,19 @@ For example:
 sudo systemctl enable /etc/systemd/user/netmusicplayer.service
 ```
 
-Once a service has been installed using `systemctl enable`, the system will run it the next time the system boots. To run the service immediately, start it using `systemctl start` - see the following section.
+Once a service has been enabled using `systemctl enable`, the system will run it the next time the system boots. To run the service immediately, start it using `systemctl start` - see the following section.
+
+To disable a service, use the `systemctl disable` command:
+
+```
+sudo systemctl disable <service name>
+```
+
+For example:
+
+```
+sudo systemctl disable netmusicplayer
+```
 
 ## Start and stop a service
 To start a service, use the `systemctl start` command:
@@ -89,6 +101,8 @@ For example:
 ```
 sudo systemctl start netmusicplayer
 ```
+
+Similarly, use the `systemctl 
 
 To stop a service, use the `systemctl stop` command:
 
