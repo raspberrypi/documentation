@@ -60,7 +60,7 @@ ExecStop=/home/pi/nmp.sh stop
 WantedBy=multi-user.target graphical.target
 ```
 
-Our `netmusicplayer` service is started up using the script `/home/pi/nmp.sh`. We also pass the `stop` parameter to that same script to stop the network music player. Because the network music player uses [`mpd`](https://www.musicpd.org/), we use the `Requires=` directive to specify that `mpd` must be running before `netmusicplayer` starts up.
+Our `netmusicplayer` service is started up using the script `/home/pi/nmp.sh`. The service also passes the `stop` parameter to that same script to stop the network music player. Because the network music player uses [`mpd`](https://www.musicpd.org/), we use the `Requires=` directive to specify that `mpd` must be running before `netmusicplayer` starts up.
 
 ## Install a service
 To install a service, use the `systemctl enable` command as follows:
