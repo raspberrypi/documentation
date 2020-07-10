@@ -73,7 +73,7 @@ This command will delete the `pi` user but will leave the `/home/pi` folder. If 
 ```bash
 sudo deluser -remove-home pi
 ```
-This command will result in a warning that the group `pi` has now more members. This group is, however, removed along with the `pi` user itself by the deluser command, so that the warning can be ignored.
+This command will result in a warning that the group `pi` has no more members. This group is, however, removed along with the `pi` user itself by the deluser command, so that the warning can be ignored.
 
 
 ## Make `sudo` require a password
