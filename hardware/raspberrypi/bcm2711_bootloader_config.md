@@ -376,9 +376,11 @@ Default:  2000 (2 seconds)
 Version: pieeprom-2020-06-15.bin - STABLE
 
 ### USB_MSD_PWR_OFF_TIME
-During USB mass storage boot, power to the USB ports is switched off for a short time to ensure the correct operation of USB mass storage devices. Most devices work correctly using the default setting: change this only if you have problems booting from a particular device.
+During USB mass storage boot, power to the USB ports is switched off for a short time to ensure the correct operation of USB mass storage devices. Most devices work correctly using the default setting: change this only if you have problems booting from a particular device. Setting `USB_MSD_PWR_OFF_TIME=0` will prevent power to the USB ports being switched off during USB mass storage boot.
 
 Default: 1000 (1 second)
+Minimum: 250
+Maximum: 5000
 Version: pieeprom-2020-06-15.bin - STABLE
 
 ### XHCI_DEBUG
