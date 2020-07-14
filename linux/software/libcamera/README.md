@@ -76,4 +76,4 @@ build/src/qcam/qcam
 
 You can find out more in the _Raspberry Pi Camera Algorithm and Tuning Guide_, [here](rpi_SOFT_libcamera_1p0.pdf).
 
-Information on writing your own modules to support new CSI-2 cameras and bridge chips can be found [here](./csi-2-usage.md).
+Information on writing your own kernel modules to support new CSI-2 cameras and bridge chips can be found [here](./csi-2-usage.md).
