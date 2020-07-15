@@ -34,6 +34,8 @@ The hardware in the Raspberry Pi
     - SPI on the Raspberry Pi
 - [DPI (Parallel/RGB Display)](dpi/README.md)
     - DPI on the Raspberry Pi
+- [CSI-2 (Camera interface)](../../linux/software/libcamera/csi-2-usage.md)
+    - Using the CSI-2 interface on the Raspberry Pi
 - [Peripheral addresses](peripheral_addresses.md)
     - How to access peripheral addresses using the bcm_host helpers
 - [Standard conformity documentation](conformity.md)
