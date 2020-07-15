@@ -16,6 +16,8 @@ Run the Raspberry Pi Imager application, then from the `Choose OS option`, selec
 
 The standard formatting tools built into these operating systems are able to create FAT32 partitions; they might also be labelled as FAT or MS-DOS. Simply delete the existing exFAT partition and create and format a new FAT32 primary partition, before proceeding with the rest of the [NOOBS instructions](noobs.md). On a Mac, this means using the command-line `diskutil` program.
 
+NOTE: For Mac, use `Master Boot Record` for the scheme.
+
 ### Windows
 
 The standard formatting tools built into Windows are limited, as they only allow partitions up to 32GB to be formatted as FAT32, so to format a 64GB partition as FAT32 you need to use a third-party formatting tool. A simple tool to do this is [FAT32 Format](http://www.ridgecrop.demon.co.uk/guiformat.htm) which downloads as a single file named `guiformat.exe` - no installation is necessary.
