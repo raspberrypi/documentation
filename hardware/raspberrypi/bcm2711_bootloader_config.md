@@ -373,7 +373,15 @@ Version: pieeprom-2020-06-15.bin - STABLE
 How long to wait in milliseconds before advancing to the next LUN e.g. a multi-slot SD-CARD reader. This is still being tweaked but may help speed up boot if old/slow devices are connected as well as a fast USB-MSD device containing the OS.
 
 Default:  2000 (2 seconds)  
-Version: pieeprom-2020-06-15.bin - STABLE    
+Version: pieeprom-2020-06-15.bin - STABLE
+
+### USB_MSD_PWR_OFF_TIME
+During USB mass storage boot, power to the USB ports is switched off for a short time to ensure the correct operation of USB mass storage devices. Most devices work correctly using the default setting: change this only if you have problems booting from a particular device. Setting `USB_MSD_PWR_OFF_TIME=0` will prevent power to the USB ports being switched off during USB mass storage boot.
+
+Default: 1000 (1 second)
+Minimum: 250
+Maximum: 5000
+Version: pieeprom-2020-06-15.bin - STABLE
 
 ### XHCI_DEBUG
 This property is a bit field which controls the verbosity of USB trace messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`
