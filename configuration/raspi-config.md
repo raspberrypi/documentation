@@ -2,7 +2,7 @@
 
 This page describes the console based raspi-config application. If you are using the Raspberry Pi desktop then you can use the graphical Raspberry Pi Configuration application from the Preferences menu to configure your Raspberry Pi.
 
-`raspi-config` is the Raspberry Pi configuration tool originally written by [Alex Bradbury](https://github.com/asb). It targets Raspberry Pi OS.
+`raspi-config` is the Raspberry Pi configuration tool originally written by [Alex Bradbury](https://github.com/asb) and lives at [github.com/RPi-Distro/raspi-config](https://github.com/RPi-Distro/raspi-config/tree/master/raspi-config). It targets Raspberry Pi OS.
 
 <a name="usage"></a>
 ## Usage
@@ -60,7 +60,9 @@ Generally speaking, `raspi-config` aims to provide the functionality to make the
 ### Change User Password
 
 The default user on Raspberry Pi OS is ```pi``` with the password ```raspberry```. You can change that here. Read about other [users](../linux/usage/users.md).
- 
+
+From the console, this can be changed with `passwd`.
+
 <a name="network-options"></a>
 ### Network Options
 
@@ -70,6 +72,13 @@ From this submenu you can set the host name, your wireless LAN SSID, and pre-sha
 #### Hostname
 
 Set the visible name for this Pi on a network.
+
+<a name="wifi"></a>
+#### Wireless LAN
+
+Enter SSID and passphrase here.
+
+From the console, after setting the [wireless country](#wireless-country), this can be set [using the wireless CLI documentation](wireless/wireless-cli.md).
 
 <a name="boot-options"></a>
 ### Boot Options
@@ -84,14 +93,23 @@ The localisation submenu gives you these options to choose from: keyboard layout
 #### Change locale
 Select a locale, for example `en_GB.UTF-8 UTF-8`.
 
+From the console, this can be set in `/etc/locale.gen` and `/etc/default/locale`, then running `dpkg-reconfigure -f noninteractive locales`.
+
 #### Change time zone
 Select your local time zone, starting with the region, e.g. Europe, then selecting a city, e.g. London. Type a letter to skip down the list to that point in the alphabet.
+
+From the console, this can be set in `/etc/timezone` referencing the entries in `/usr/share/zoneinfo/`, then running `rm /etc/localtime && dpkg-reconfigure -f noninteractive tzdata`.
 
 #### Change keyboard layout
 This option opens another menu which allows you to select your keyboard layout. It will take a long time to display while it reads all the keyboard types. Changes usually take effect immediately, but may require a reboot.
 
+From the console, this can be set in `/etc/default/keyboard`, then running `dpkg-reconfigure -f noninteractive keyboard-configuration`.
+
+<a name="wireless-country"></a>
 #### Change wireless country
 This option sets the country code for your wireless network.
+
+From the console, this can be set with `wpa_cli -i wlan0 set country "[alpha2]" && wpa_cli -i wlan0 save_config && wpa-cli -i wlan0 reconfigure && rfkill unblock wlan`, then rebooting. Country code is the [alpha-2 code from ISO3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes).
 
 <a name="interfacing-options"></a>
 ### Interfacing Options
@@ -103,12 +121,16 @@ In this submenu there are the following options to enable/disable: Camera, SSH, 
 
 Enable/disable the CSI camera interface.
 
+This can be enabled by commenting out any "startx" and "fixup_file" lines in `/boot/config.txt`, then adding entries for `gpu_mem=128` (or higher) and `startx=1` in the config, then rebooting.
+
 <a name="ssh"></a>
 #### SSH
 
 Enable/disable remote command line access to your Pi using SSH.
 
 SSH allows you to remotely access the command line of the Raspberry Pi from another computer. SSH is disabled by default. Read more about using SSH on the [SSH documentation page](../remote-access/ssh/README.md). If connecting your Pi directly to a public network, you should not enable SSH unless you have set up secure passwords for all users.
+
+This can be enabled by adding authorized keys (example: `ssh-import-id-gh [your_github_username]`, setting `PasswordAuthentication no` in `/etc/ssh/sshd_config`) and touching `/boot/ssh` to create it, then rebooting.
 
 <a name="VNC"></a>
 #### VNC
@@ -152,6 +174,8 @@ See http://elinux.org/RPi_Overclocking for more information.
 
 If you have installed Raspberry Pi OS using NOOBS, the filesystem will have been expanded automatically. There may be a rare occasion where this is not the case, e.g. if you have copied a smaller SD card onto a larger one. In this case, you should use this option to expand your installation to fill the whole SD card, giving you more space to use for files. You will need to reboot the Raspberry Pi to make this available. Note that there is no confirmation: selecting the option begins the partition expansion immediately.
 
+From the console, this can be executed with `raspi-config --expand-rootfs`.
+
 <a name="overscan"></a>
 #### Overscan
 
@@ -179,7 +203,7 @@ Define the default HDMI/DVI video resolution to use when the system boots withou
 <a name="pixel-doubling"></a>
 #### Pixel Doubling
 
-Enable/disable 2x2 pixel mapping.
+Enable/disable 2x2 pixel mapping. This is typically used on high-density displays, also known as '4k', 'UHD', 'HiDPI', 'HDPI' or 'Retina'.
 
 <a name="GL-driver"></a>
 #### GL Driver
@@ -205,6 +229,8 @@ Enable/disable the original legacy non-GL VideoCore desktop graphics driver.
 #### Update
 
 Update this tool to the latest version.
+
+From the console, the equivalent is `apt update && apt install raspi-config && sleep 5 && exec raspi-config`.
 
 <a name="about"></a>
 ### About raspi-config
