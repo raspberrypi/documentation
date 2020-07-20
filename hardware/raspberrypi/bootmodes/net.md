@@ -1,8 +1,7 @@
 # Network booting
 
-**Network booting is available on Raspberry Pi 3B, 3B+, and 2B v1.2 only.**
-
-This section describes how network booting works. We also have a [tutorial about setting up a working bootable system](net_tutorial.md). Network booting works only for the wired adapter built into the above models of Raspberry Pi. Booting over wireless LAN is not supported, nor is booting from any other wired network device.
+This section describes how network booting works on the Raspberry Pi 3B, 3B+ and 2B v1.2. On the Raspberry Pi 4, network booting is implemented in the second stage bootloader in the EEPROM. Please see the [Pi 4 Bootloader Configuration](../bcm2711_bootloader_config.md) page for more information.
+We also have a [tutorial about setting up a network boot system](net_tutorial.md). Network booting works only for the wired adapter built into the above models of Raspberry Pi. Booting over wireless LAN is not supported, nor is booting from any other wired network device.
 
 To network boot, the boot ROM does the following:
 
