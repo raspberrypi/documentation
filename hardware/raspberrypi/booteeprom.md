@@ -92,6 +92,23 @@ Since the release status string is just a subdirectory name then it's possible t
 
 You can change which release stream is to be used during an update by editing the `/etc/default/rpi-eeprom-update` file and changing the `FIRMWARE_RELEASE_STATUS` entry to the appropriate stream.
 
+### EEPROM write protect
+
+Write protecting the EEPROMs on the Raspberry Pi4 Model B requires both a software change and a small board modification. 
+
+**This is only recommended for advanced users or industrial customers.**
+
+By default, neither the bootloader nor the VL805 SPI EEPROMs are write protected. 
+
+If `eeprom_write_protect=1` is defined in `config.txt` then `recovery.bin` will define the write protect regions such that all of both EEPROMS are write protected if the write-protect PIN is pulled low. If `eeprom_write_protect=0` is set then the write-protect bits are cleared and if `eeprom_write_protect` is not defined then the write-protect bits are not modified.
+
+* The `eeprom_write_protect` propery requires the recovery.bin from the 2020-07-16 bootloader release or newer.
+* The `/WP` pin on these EEPROMS only prevents writes to the non-volatile bits of the status register. Therefore, the write regions must be defined in software in addition to /Wp   being pulled low.
+* The `/WP` pin must not be pulled low whilst attempting to change the write-protect status.
+* The `/WP` pin for the EEPROMs may be pulled low by connecting test point 5 (`TP5`) to ground.
+
+The default version of `flashrom` does not support clearing of the write-protect bits and will fail if `eeprom_write_protect=1` was set even if `/WP` is not low because software write-protect will still be active.
+
 ## EEPROM Bootloader configuration options
 
 See the [Bootloader Configuration Page](./bcm2711_bootloader_config.md) for configuration details.
