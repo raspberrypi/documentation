@@ -24,7 +24,7 @@ The `gpu_mem_256` command sets the GPU memory in megabytes for Raspberry Pis wit
 
 ## gpu_mem_512
 
-The `gpu_mem_512` command sets the GPU memory in megabytes for Raspberry Pis with 256MB of memory. (It is ignored if memory size is not 512MB). This overrides `gpu_mem`.
+The `gpu_mem_512` command sets the GPU memory in megabytes for Raspberry Pis with 512MB of memory. (It is ignored if memory size is not 512MB). This overrides `gpu_mem`.
 
 ## gpu_mem_1024
 
