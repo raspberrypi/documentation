@@ -20,7 +20,7 @@ Description=...
 ...
 ```
 
-User services should be placed in `/etc/systemd/user`: the filename dictates the service name. For example, a file named `monitoring.service` would define the service named `monitoring`.
+User services should be placed in `/etc/systemd/user`: the filename dictates the service name. For example, a file named `monitoring.service` would define a service named `monitoring`.
 
 ### Example - one-time service
 One-time services are used when you wish to run a program which does some work, then exits: this is in contrast to a service which stays running all the time. Consider the following service definition:
@@ -75,7 +75,7 @@ For example:
 sudo systemctl enable /etc/systemd/user/netmusicplayer.service
 ```
 
-Once a service has been enabled using `systemctl enable`, the system will run it the next time the system boots. To run the service immediately, start it using `systemctl start` - see the following section.
+Once a service has been enabled, it will run the next time the system boots. To run the service immediately, start it using `systemctl start` - see the following section.
 
 To disable a service, use the `systemctl disable` command:
 
@@ -101,8 +101,6 @@ For example:
 ```
 sudo systemctl start netmusicplayer
 ```
-
-Similarly, use the `systemctl 
 
 To stop a service, use the `systemctl stop` command:
 
