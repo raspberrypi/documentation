@@ -94,7 +94,7 @@ You can change which release stream is to be used during an update by editing th
 
 ### EEPROM write protect
 
-Write protecting the EEPROMs on the Raspberry Pi4 Model B requires both a software change and a small board modification. 
+Write protecting the EEPROMs on the Raspberry Pi 4 Model B requires both a software change and a small board modification. 
 
 **This is only recommended for advanced users or industrial customers.**
 
@@ -102,10 +102,11 @@ By default, neither the bootloader nor the VL805 SPI EEPROMs are write-protected
 
 If `eeprom_write_protect=1` is defined in `config.txt` then `recovery.bin` will define the write protect regions such that all of both EEPROMS are write-protected. The write-protect region configuration is then made read-only when the write-protect (`/WP`) pin is pulled low. If `eeprom_write_protect=0` is defined then the write-protect regions are cleared. If `eeprom_write_protect` is not defined then the write-protect bits are not modified.
 
-* The `eeprom_write_protect` property requires the `recovery.bin` from the 2020-07-16 bootloader release or newer.
+* The `eeprom_write_protect` property requires the `recovery.bin` from the `2020-07-16` bootloader release or newer.
 * The `/WP` pin on these EEPROMs only prevents writes to the non-volatile bits of the status register. Therefore, the write regions must be defined in addition to `/WP` being pulled low.
 * The `/WP` pin must not be pulled low whilst attempting to change the write-protect status.
 * The `/WP` pin for the EEPROMs may be pulled low by connecting test point 5 (`TP5`) to ground.
+* The bootloader self-update mechanism also supports the `eeprom_write_protect` property. However, the bootloader must have already have been upgraded to `2020-07-16` or newer before the `eeprom_write_protect` property will be recognised.
 
 N.B `flashrom` does not support clearing of the write-protect regions and will fail to update the EEPROM if write-protect regions are defined.
 
