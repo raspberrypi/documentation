@@ -94,10 +94,10 @@ If you're connecting from the [compatible VNC Viewer app](https://www.realvnc.co
 If you're connecting from a non-RealVNC Viewer app, you'll first need to downgrade VNC Server's authentication scheme, specify a password unique to VNC Server, and then enter that instead.
 * If you are in front of your Raspberry Pi and can see its screen, open the VNC Server dialog on your Raspberry Pi, select **Menu > Options > Security**, and choose **VNC password** from the **Authentication** dropdown.
 * **Or** if you're configuring your Raspberry Pi remotely from the command line, then to make the changes for Service Mode (the default configuration for the Raspberry Pi):
-  * Open the `/root/.vnc/config.d/vncserver-x11` config file.
-  * Replace `Authentication=SystemAuth` with `Authentication=VncAuth` and save the file.
+  * Open the `/root/.vnc/config.d/vncserver-x11` config file, e.g. with nano like this`sudo nano /root/.vnc/config.d/vncserver-x11`
+  * Add a line `Authentication=VncAuth` (replace `Authentication=SystemAuth` if it is there) and save the file.
   * In the command line, run `sudo vncpasswd -service`. This  will prompt you to set a password, and will insert it for you in the right config file for VNC Server running in Service Mode.
-  * Restart VNC Server.
+  * Restart VNC Server. (`sudo systemctl restart vncserver-*`)
 
 ## Playing Minecraft and other directly rendered apps remotely
 
@@ -107,7 +107,7 @@ You can remotely access apps which use a directly rendered overlay, such as Mine
 
 To turn this feature on:
 
-- On your Raspberry Pi, open the VNC Server dialog. 
+- On your Raspberry Pi, open the VNC Server dialog with the blue icon in the top right. 
 
 - Navigate to **Menu > Options > Troubleshooting** and select **Enable experimental direct capture mode**.
 
@@ -121,7 +121,9 @@ If performance seems impaired, try [these troubleshooting steps](https://www.rea
 
 ## Creating a virtual desktop
 
-If your Raspberry Pi is headless (i.e. not plugged into a monitor) or controlling a robot, it is unlikely to be running a graphical desktop.
+If your Raspberry Pi is headless (i.e. not plugged into a monitor) or controlling a robot, it may not be running a graphical desktop.
+You can change this by always booting into a desktop by changing this option in **`raspi-config` > Boot options -> Desktop / CLI** and choose a desktop option.
+The same can be done graphically on the desktop by going to **Raspberry Pi Configuration > System > Boot > To Desktop**.
 
 VNC Server can create a **virtual desktop** for you, giving you graphical remote access on demand. This virtual desktop exists only in your Raspberry Pi's memory:
 
