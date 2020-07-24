@@ -46,7 +46,6 @@ sudo raspi-config
 Within `raspi-config`, enable VNC Server as follows:
 
 - Navigate to `Interfacing Options`
-
 - Scroll down and choose `VNC`, then  `Yes`
 
 The VNC system service is named `vncserver-x11-serviced`.
@@ -85,9 +84,7 @@ There are two ways to connect to your Raspberry Pi using VNC Viewer. You can use
 Direct connections are quick and simple, provided you're joined to the same private local network as your Raspberry Pi. For example, this might be a wired or wireless network at home, at school, or in the office.
 
 - On your Raspberry Pi (using a terminal window or via SSH) use [these instructions](../ip-address.md) or run `ifconfig` to discover your private IP address
-
 - On the device you'll use to take control, download VNC Viewer. For best results, use the [compatible app](https://www.realvnc.com/download/viewer/) from RealVNC
-
 - Enter your Raspberry Pi's private IP address into VNC Viewer:
 
   ![VNC Viewer dialog showing IP address](images/vnc-viewer-direct-dialog.png)
@@ -99,13 +96,9 @@ You are entitled to use RealVNC's cloud service for free, provided that remote a
 Cloud connections are convenient and encrypted end-to-end. They are highly recommended for connecting to your Raspberry Pi over the internet. There's no firewall or router reconfiguration, and you don't need to know the IP address of your Raspberry Pi, or provide a static one.
 
 - Sign up for a RealVNC account [here](https://www.realvnc.com/raspberrypi/#sign-up): it's free and it only takes a few seconds.
-
 - On your Raspberry Pi, sign in to VNC Server using your new RealVNC account credentials:
-
   ![VNC Server dialog showing sign in](images/vnc-server-cloud-dialog.png)
-
 - On the device you'll use to take control, download VNC Viewer. You **must** use the [compatible app](https://www.realvnc.com/download/viewer/) from RealVNC.
-
 - Sign in to VNC Viewer using the same RealVNC account credentials, and then either tap or click to connect to your Raspberry Pi:
 
   ![VNC Viewer dialog showing sign in](images/vnc-viewer-cloud-dialog.png)
@@ -134,9 +127,7 @@ You can remotely access apps which use a directly rendered overlay, such as Mine
 To turn this feature on:
 
 - On your Raspberry Pi, open the VNC Server dialog. 
-
 - Navigate to `Menu` > `Options` > `Troubleshooting` and select `Enable experimental direct capture mode`.
-
 - On the device you'll use to take control, run VNC Viewer and connect.
 
   **Note:** existing connections must be restarted in order for these changes to take effect.
