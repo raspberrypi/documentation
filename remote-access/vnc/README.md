@@ -17,13 +17,14 @@ sudo apt update
 sudo apt install realvnc-vnc-server realvnc-vnc-viewer
 ```
 
-### Service mode
+
+## Service mode
 
 In this mode, VNC Server will attach to a display which is enabled on the Raspberry Pi itself: remote access to the graphical desktop will be permitted. Note that some Raspberry Pis do not have a display enabled unless a screen is attached.
 
-#### Enable VNC Server
+### Enable VNC Server
 
-##### Using the graphical desktop
+#### Using the graphical desktop
 
 On your Raspberry Pi desktop, VNC Server can be enabled as follows:
 
@@ -32,7 +33,7 @@ On your Raspberry Pi desktop, VNC Server can be enabled as follows:
 - In the `Raspberry Pi Configuration` tool, click the `Interfaces` tab
 - Find the entry for VNC and ensure that `Enabled` is selected
 
-##### At the command line
+#### At the command line
 
 You can enable VNC Server at the command line using [raspi-config](../../configuration/raspi-config.md):
 
@@ -48,7 +49,8 @@ Within `raspi-config`, enable VNC Server as follows:
 
 The VNC system service is named `vncserver-x11-serviced`.
 
-### Virtual desktop mode
+
+## Virtual desktop mode
 
 In this mode, VNC Server will create a graphical desktop in the memory of the Raspberry Pi, rather than being attached to the display. This allows you to use the graphical desktop of the Pi without having its display enabled.
 
@@ -70,7 +72,6 @@ vncserver -kill :<display-number>
 This will also stop any existing connections to the virtual desktop. Be sure to save any files you might have open before you issue this command.
 
 You can also use the `vncserver-virtuald` system service to enable access to the virtual desktop.
-
 
 
 ## Connect to your Raspberry Pi
@@ -120,6 +121,7 @@ If you're connecting from a non-RealVNC Viewer app, you'll first need to downgra
   * Replace `Authentication=SystemAuth` with `Authentication=VncAuth` and save the file.
   * On the command line, run `sudo vncpasswd -service`. This  will prompt you to set a password, and will insert it for you in the right config file for VNC Server running in Service Mode.
   * Restart VNC Server.
+
 
 ## Playing Minecraft and other directly rendered apps remotely
 
