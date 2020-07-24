@@ -6,7 +6,7 @@ VNC allows you to use a computer's graphical desktop remotely, on another comput
 
 VNC Connect from [RealVNC](realvnc.com) is included with Raspberry Pi OS. It consists of both VNC Server, which allows you to control your Raspberry Pi remotely, and VNC Viewer, which allows you to control other computers remotely from your Raspberry Pi.
 
-VNC Server can operate in two different ways on the Raspberry Pi. The standard method wallows remote access to a display which is enabled on the Raspberry Pi itself: you will be unable to connect if there is no display enabled. A second method is to instead use a *virtual desktop*: a graphical desktop is created in memory, and remote devices connect to this.
+VNC Server can operate in two different ways on the Raspberry Pi. The standard method, called *service mode*, allows remote access to a display which is enabled on the Raspberry Pi itself: you will be unable to connect if there is no display enabled. A second method is to instead use a *virtual desktop*: a graphical desktop is created in memory, and remote devices connect to this.
 
 ## Install VNC
 
