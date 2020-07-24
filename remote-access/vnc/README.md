@@ -53,7 +53,7 @@ The VNC system service is named `vncserver-x11-serviced`.
 
 ## Virtual desktop mode
 
-In this mode, VNC Server will create a graphical desktop in the memory of the Raspberry Pi, rather than being attached to the display. This allows you to use the graphical desktop of the Pi without having its display enabled.
+In this mode, VNC Server will create a graphical desktop in the memory of the Raspberry Pi: this allows you to use the graphical desktop of the Pi without having its display enabled.
 
 ![Connecting to an in-memory virtual desktop](images/raspberry-pi-virtual.png)
 
