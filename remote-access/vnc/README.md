@@ -1,43 +1,38 @@
-# VNC (Virtual Network Computing)
+# VNC
 
-Sometimes it is not convenient to work directly on the Raspberry Pi. Maybe you would like to work on it from another device by remote control.
-
-VNC is a graphical desktop sharing system that allows you to remotely control the desktop interface of one computer (running VNC Server) from another computer or mobile device (running VNC Viewer). VNC Viewer transmits the keyboard and either mouse or touch events to VNC Server, and receives updates to the screen in return.
-
-You will see the desktop of the Raspberry Pi inside a window on your computer or mobile device. You'll be able to control it as though you were working on the Raspberry Pi itself.
+VNC allows you to use a computer's graphical desktop remotely, on another computer or mobile device. This means you can access the graphical desktop of your Raspberry Pi even if you don't have a screen connected to it.
 
 ![Pi Desktop as seen from a mobile device](images/raspberry-pi-connect.png)
 
-VNC Connect from RealVNC is included with Raspberry Pi OS. It consists of both VNC Server, which allows you to control your Raspberry Pi remotely, and VNC Viewer, which allows you to control desktop computers remotely from your Raspberry Pi should you want to.
+VNC Connect from [RealVNC](realvnc.com) is included with Raspberry Pi OS. It consists of both VNC Server, which allows you to control your Raspberry Pi remotely, and VNC Viewer, which allows you to control other computers remotely from your Raspberry Pi.
 
-You must enable VNC Server before you can use it: instructions for this are given below. By default, VNC Server gives you remote access to the graphical desktop that is running on your Raspberry Pi, as though you were sitting in front of it.
+VNC Server can operate in two different ways on the Raspberry Pi. The standard method wallows remote access to a display which is enabled on the Raspberry Pi itself: you will be unable to connect if there is no display enabled. A second method is to instead use a *virtual desktop*: a graphical desktop is created in memory, and remote devices connect to this.
 
-However, you can also use VNC Server to gain graphical remote access to your Raspberry Pi if it is headless or not running a graphical desktop. For more information on this, see **Creating a virtual desktop**, further below. 
+## Install VNC
 
-## Installing VNC
-
-VNC is already installed on the full Raspberry Pi OS image, and can be installed via `Recommended Software` from the `Preferences` menu on other versions.
-
-If you are not using a desktop you can install it from the command line as follows:
+VNC Server is already installed on the standard Raspberry Pi OS image; VNC Viewer can be installed using `Recommended Software` from the `Preferences` menu. You can also install both from the command line as follows:
 
 ```bash
 sudo apt update
 sudo apt install realvnc-vnc-server realvnc-vnc-viewer
 ```
 
-## Enabling VNC Server
+### Service mode
 
-You can do this graphically or at the command line.
+In this mode, VNC Server will attach to a display which is enabled on the Raspberry Pi itself: remote access to the graphical desktop will be permitted. Note that some Raspberry Pis do not have a display enabled unless a screen is attached.
 
-### Enabling VNC Server graphically
+#### Enable VNC Server
 
-- On your Raspberry Pi, boot into the graphical desktop.
+##### Using the graphical desktop
 
-- Select **Menu > Preferences > Raspberry Pi Configuration > Interfaces**. 
+On your Raspberry Pi desktop, VNC Server can be enabled as follows:
 
-- Ensure **VNC** is **Enabled**. 
+- Boot into the graphical desktop
+- From the menu, point to `Preferences` and click on `Raspberry Pi Configuration`
+- In the `Raspberry Pi Configuration` tool, click the `Interfaces` tab
+- Find the entry for VNC and ensure that `Enabled` is selected
 
-### Enabling VNC Server at the command line
+##### At the command line
 
 You can enable VNC Server at the command line using [raspi-config](../../configuration/raspi-config.md):
 
@@ -45,23 +40,50 @@ You can enable VNC Server at the command line using [raspi-config](../../configu
 sudo raspi-config
 ```
 
-Now, enable VNC Server by doing the following:
+Within `raspi-config`, enable VNC Server as follows:
 
-- Navigate to **Interfacing Options**.
+- Navigate to `Interfacing Options`
 
-- Scroll down and select **VNC > Yes**.
+- Scroll down and choose `VNC`, then  `Yes`
 
-## Connecting to your Raspberry Pi with VNC Viewer
+The VNC system service is named `vncserver-x11-serviced`.
 
-There are two ways to connect to your Raspberry Pi. You can use either or both, depending on what works best for you.
+### Virtual desktop mode
+
+In this mode, VNC Server will create a graphical desktop in the memory of the Raspberry Pi, rather than being attached to the display. This allows you to use the graphical desktop of the Pi without having its display enabled.
+
+![Connecting to an in-memory virtual desktop](images/raspberry-pi-virtual.png)
+
+A virtual desktop can be created on the Raspberry Pi as follows:
+
+- At the command line, run `vncserver`
+- Make a note of the IP address and display number that is shown, for example `192.168.5.25:1` indicates IP address `192.168.1.215` and display number 1
+
+You can now connect to this virtual desktop using VNC Viewer from another device, using the IP address and display number.
+
+When you are finished using the virtual desktop, it can be removed from memory using the following command:
+
+```bash
+vncserver -kill :<display-number>
+```
+
+This will also stop any existing connections to the virtual desktop. Be sure to save any files you might have open before you issue this command.
+
+You can also use the `vncserver-virtuald` system service to enable access to the virtual desktop.
+
+
+
+## Connect to your Raspberry Pi
+
+There are two ways to connect to your Raspberry Pi using VNC Viewer. You can use either or both, depending on what works best for you.
 
 ### Establishing a direct connection
 
 Direct connections are quick and simple providing you're joined to the same private local network as your Raspberry Pi. For example, this might be a wired or wireless network at home, at school, or in the office.
 
-- On your Raspberry Pi (using a terminal window or via SSH) use [these instructions](../ip-address.md) or run `ifconfig` to discover your private IP address. 
+- On your Raspberry Pi (using a terminal window or via SSH) use [these instructions](../ip-address.md) or run `ifconfig` to discover your private IP address
 
-- On the device you'll use to take control, download VNC Viewer. For best results, use the [compatible app](https://www.realvnc.com/download/viewer/) from RealVNC. 
+- On the device you'll use to take control, download VNC Viewer. For best results, use the [compatible app](https://www.realvnc.com/download/viewer/) from RealVNC
 
 - Enter your Raspberry Pi's private IP address into VNC Viewer:
 
@@ -92,11 +114,11 @@ To complete either a direct or cloud connection, you must authenticate to VNC Se
 If you're connecting from the [compatible VNC Viewer app](https://www.realvnc.com/download/viewer/) from RealVNC, enter the user name and password you normally use to log in to your user account on the Raspberry Pi. By default, these credentials are `pi` and `raspberry`.
 
 If you're connecting from a non-RealVNC Viewer app, you'll first need to downgrade VNC Server's authentication scheme, specify a password unique to VNC Server, and then enter that instead.
-* If you are in front of your Raspberry Pi and can see its screen, open the VNC Server dialog on your Raspberry Pi, select **Menu > Options > Security**, and choose **VNC password** from the **Authentication** dropdown.
+* If you are in front of your Raspberry Pi and can see its screen, open the VNC Server dialog on your Raspberry Pi, select `Menu` > `Options` > `Security`, and choose `VNC password` from the `Authentication` dropdown.
 * **Or** if you're configuring your Raspberry Pi remotely from the command line, then to make the changes for Service Mode (the default configuration for the Raspberry Pi):
   * Open the `/root/.vnc/config.d/vncserver-x11` config file.
   * Replace `Authentication=SystemAuth` with `Authentication=VncAuth` and save the file.
-  * In the command line, run `sudo vncpasswd -service`. This  will prompt you to set a password, and will insert it for you in the right config file for VNC Server running in Service Mode.
+  * On the command line, run `sudo vncpasswd -service`. This  will prompt you to set a password, and will insert it for you in the right config file for VNC Server running in Service Mode.
   * Restart VNC Server.
 
 ## Playing Minecraft and other directly rendered apps remotely
@@ -109,34 +131,12 @@ To turn this feature on:
 
 - On your Raspberry Pi, open the VNC Server dialog. 
 
-- Navigate to **Menu > Options > Troubleshooting** and select **Enable experimental direct capture mode**.
+- Navigate to `Menu` > `Options` > `Troubleshooting` and select `Enable experimental direct capture mode`.
 
 - On the device you'll use to take control, run VNC Viewer and connect.
 
   **Note:** existing connections must be restarted in order for these changes to take effect.
 
-Please note that direct screen capture is an experimental feature. If you're connecting from a desktop computer and mouse movements seem erratic, try pressing **F8** to open the VNC Viewer shortcut menu and selecting **Relative Pointer Motion**.
+Please note that direct screen capture is an experimental feature. If you're connecting from a desktop computer and mouse movements seem erratic, try pressing `F8` to open the VNC Viewer shortcut menu and selecting `Relative Pointer Motion`.
 
-If performance seems impaired, try [these troubleshooting steps](https://www.realvnc.com/docs/raspberry-pi.html#raspberry-pi-minecraft-troubleshoot), or [let RealVNC know](https://support.realvnc.com/index.php?/Tickets/Submit).
-
-## Creating a virtual desktop
-
-If your Raspberry Pi is headless (i.e. not plugged into a monitor) or controlling a robot, it is unlikely to be running a graphical desktop.
-
-VNC Server can create a **virtual desktop** for you, giving you graphical remote access on demand. This virtual desktop exists only in your Raspberry Pi's memory:
-
-![Connecting to an in-memory virtual desktop](images/raspberry-pi-virtual.png)
-
-To create and connect to a virtual desktop: 
-
-- On your Raspberry Pi (using Terminal or via SSH), run `vncserver`. Make note of the IP address/display number that VNC Server will print to your Terminal (e.g. `192.167.5.149:1`).
-
-- On the device you'll use to take control, enter this information into [VNC Viewer](https://www.realvnc.com/download/viewer/).
-
-To destroy a virtual desktop, run the following command: 
-
-```bash
-vncserver -kill :<display-number>
-```
-
-This will also stop any existing connections to this virtual desktop.
+If performance seems impaired, try [these troubleshooting steps](https://www.realvnc.com/docs/raspberry-pi.html#raspberry-pi-minecraft-troubleshoot), or ask for help on the [Raspberry Pi Forums](https://www.raspberrypi.org/forums/).
