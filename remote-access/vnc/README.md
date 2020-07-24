@@ -28,7 +28,7 @@ If you need to change the resolution of the graphical desktop, from the menu cho
 
 #### Using the graphical desktop
 
-On your Raspberry Pi desktop, VNC Server can be enabled as follows:
+On your Raspberry Pi, VNC Server can be enabled as follows:
 
 - Boot into the graphical desktop
 - From the menu, point to `Preferences` and click on `Raspberry Pi Configuration`
