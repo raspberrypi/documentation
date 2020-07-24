@@ -61,7 +61,7 @@ In this mode, VNC Server will create a graphical desktop in the memory of the Ra
 A virtual desktop can be created on the Raspberry Pi as follows:
 
 - At the command line, run `vncserver`
-- Make a note of the IP address and display number that is shown, for example `192.168.5.25:1` indicates IP address `192.168.1.215` and display number 1
+- Make a note of the IP address and display number shown, for example `192.168.5.25:1` indicates IP address `192.168.1.215` and display number 1
 
 You can now connect to this virtual desktop using VNC Viewer from another device, using the IP address and display number. For a list of `vncserver` options, use the command `vncserver -help`.
 
