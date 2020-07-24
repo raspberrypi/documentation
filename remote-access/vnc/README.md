@@ -22,6 +22,8 @@ sudo apt install realvnc-vnc-server realvnc-vnc-viewer
 
 In this mode, VNC Server will attach to a display which is enabled on the Raspberry Pi itself: remote access to the graphical desktop will be permitted. Note that some Raspberry Pis do not have a display enabled unless a screen is attached.
 
+If you need to change the resolution of the graphical desktop, from the menu choose `Preferences` and click on `Screen Configuration`. You can also use the command line tool `raspi-config`.
+
 ### Enable VNC Server
 
 #### Using the graphical desktop
