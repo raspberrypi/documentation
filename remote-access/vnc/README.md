@@ -70,7 +70,7 @@ When you are finished using the virtual desktop, it can be removed from memory u
 vncserver -kill :<display-number>
 ```
 
-This will also stop any existing connections to the virtual desktop. Be sure to save any files you might have open before you issue this command.
+This will also stop any existing connections to the virtual desktop. Be sure to save any files you have open before you issue this command.
 
 You can also use the `vncserver-virtuald` system service to enable access to the virtual desktop.
 
