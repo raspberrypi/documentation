@@ -82,7 +82,7 @@ There are two ways to connect to your Raspberry Pi using VNC Viewer. You can use
 
 ### Direct connection
 
-Direct connections are quick and simple providing you're joined to the same private local network as your Raspberry Pi. For example, this might be a wired or wireless network at home, at school, or in the office.
+Direct connections are quick and simple, provided you're joined to the same private local network as your Raspberry Pi. For example, this might be a wired or wireless network at home, at school, or in the office.
 
 - On your Raspberry Pi (using a terminal window or via SSH) use [these instructions](../ip-address.md) or run `ifconfig` to discover your private IP address
 
