@@ -80,7 +80,7 @@ You can also use the `vncserver-virtuald` system service to enable access to the
 
 There are two ways to connect to your Raspberry Pi using VNC Viewer. You can use either or both, depending on what works best for you.
 
-### Establishing a direct connection
+### Direct connection
 
 Direct connections are quick and simple providing you're joined to the same private local network as your Raspberry Pi. For example, this might be a wired or wireless network at home, at school, or in the office.
 
@@ -92,7 +92,7 @@ Direct connections are quick and simple providing you're joined to the same priv
 
   ![VNC Viewer dialog showing IP address](images/vnc-viewer-direct-dialog.png)
 
-### Establishing a cloud connection
+### Cloud connection
 
 You are entitled to use RealVNC's cloud service for free, provided that remote access is for educational or non-commercial purposes only.
 
