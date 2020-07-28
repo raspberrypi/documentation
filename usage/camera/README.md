@@ -1,32 +1,41 @@
-# Camera Module
+# Camera Modules
 
-The Raspberry Pi camera module is capable of taking full HD 1080p photo and video and can be controlled programmatically.
+Raspberry Pi currently sell two types of camera board, an 8MP device and a 12MP HQ camera. The original 5MP device is no longer available from Raspberry Pi. The specifications of all the devices can be found [here](../../hardware/camera/README.md)
 
-## Connecting the camera
 
-The flex cable inserts into the connector situated between the Ethernet and HDMI ports, with the silver connectors facing the HDMI port. The flex cable connector should be opened by pulling the tabs on the top of the connector upwards then towards the Ethernet port. The flex cable should be inserted firmly into the connector, with care taken not to bend the flex at too acute an angle. The top part of the connector should then be pushed towards the HDMI connector and down, while the flex cable is held in place.
+All modules are capable of taking full HD 1080p photo and video and can be controlled programmatically. This section of documentation describes how to use the camera in various scenarios, and using the various tools available.
 
-Watch the following video to see a demonstration of the camera being connected:
+For installation information, please see [this page](./installing.md)
 
-[![Camera connection screenshot](https://img.youtube.com/vi/GImeVqHQzsE/0.jpg)](http://www.youtube.com/watch?v=GImeVqHQzsE)
 
-The camera may come with a small piece of translucent blue plastic film covering the lens. This is only present to protect the lens while it is being mailed to you, and needs to be removed by gently peeling it off.
+## Basic camera usage
 
-## Enabling the camera
+Once installed, there are various ways the cameras can be used. The simplest option is to use one of the provided camera applications. There are four Linux command line applications installed by default (e.g. raspistill), using these is described on [this page](raspicam/README.md).
 
-Open the `raspi-config` tool from the Terminal:
+You can also programatically access the camera using the [Python programming language](python/README.md).
 
-```bash
-sudo raspi-config
-```
 
-Select `Interfacing Options` then `Camera` and hit `Enter`. Choose `Yes` then `Ok`. Go to `Finish` and you'll be prompted to reboot.
+## More advanced camera usage
 
-## Using the camera
+The pages above describe some very basic ways of using the cameras, but they are very sophisticated devices that have some more advanced features.
 
-Applications and libraries for using the camera are available in:
+Some of these features, along with some hints and tips, are described in the following pages.
 
-- [Linux command line](raspicam/README.md) - Using the supplied command line applications (e.g. raspistill)
-- [Python](python/README.md)
+- [Using RAW](./raspicam/raw.md)
+- [Long exposures](./raspicam/longexp.md)
+- [Directly accessing sensors](./raspicam/direct.md)
+- [Using V4L2 to access the camera](./raspicam/v4l2.md)
+- [Removing the HQ camera IR filter](../../hardware/camera/hqcam_filter_removal.md)
 
-See detailed [technical specs](../../hardware/camera/README.md) of the camera hardware and software.
+## libcamera - The future of Raspberry Pi camera software
+
+libcamera is a new Linux API for interfacing to cameras. Raspberry Pi have been involved with the development of libcamera and are now using this sophisticated system for new camera software. This means Raspberry Pi are moving away from the firmware based camera image processing pipeline (ISP) to a more open system.
+
+ - [Libcamera's main website](http://libcamera.org/).
+ - [Raspberry Pi libcamera implementation](../../linux/software/libcamera/README.md).
+ - [Tuning guide for the Raspberry Pi cameras and libcamera](../../linux/software/libcamera/rpi_SOFT_libcamera_1p0.pdf)
+- [Writing a kernel module to support a new camera or capture chip](../../linux/software/libcamera/csi-2-usage.md)
+
+
+
+

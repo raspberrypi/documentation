@@ -13,8 +13,8 @@ See guides for basic usage of each of the commands:
 - [Time-lapse](timelapse.md)
     - Taking pictures at regular intervals and stitching them together in to a video
 - [raspiyuv](raspiyuv.md)
-    - Capturing still photographs and generating raw unprocessed image files
+    - Capturing still photographs and generating uncompressed YUV files
 
-## Full documentation
+## More documentation
 
-Full documentation of the camera can be found [here (software)](../../../raspbian/applications/camera.md) and [here (hardware)](../../../hardware/camera/README.md).
+More documentation on the camera applications can be found [here ](../../../raspbian/applications/camera.md) whilst information on the camera hardware can be found [here](../../../hardware/camera/README.md).
