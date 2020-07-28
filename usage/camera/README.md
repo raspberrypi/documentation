@@ -24,7 +24,7 @@ Some of these features, along with some hints and tips, are described in the fol
 - [Using RAW](./raspicam/raw.md)
 - [Long exposures](./raspicam/longexp.md)
 - [Directly accessing sensors](./raspicam/direct.md)
-- [Using V4L2 to access the camera](./raspicam/v4l2.md)
+- [Using V4L2 to access the camera (e.g. Using Pi cameras as webcams)](./raspicam/v4l2.md)
 - [Removing the HQ camera IR filter](../../hardware/camera/hqcam_filter_removal.md)
 
 ## libcamera - The future of Raspberry Pi camera software
