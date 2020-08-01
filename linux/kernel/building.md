@@ -125,8 +125,8 @@ If you are using a 32-bit operating system (for example, our Raspberry Pi Deskto
 
 `sudo apt install zlib1g-dev:amd64`
 
-If you are using CCache and a CI environment, instruct CCache to not use the compiler's mtime for cache ID calculations.
-This is because Git intentionally doesn't save file timestamps, so each time you clone the toolchain its file mtimes are different, invalidating CCache's cache when default settings are used.
+If you are using Ccache and a CI environment, instruct Ccache to not use the compiler's mtime for cache ID calculations.
+This is because Git intentionally doesn't save file timestamps, so each time you clone the toolchain its file mtimes are different, invalidating Ccache's cache when default settings are used.
 
 `ccache --set-config=compiler_check=content`
 
