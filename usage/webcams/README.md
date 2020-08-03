@@ -22,6 +22,14 @@ sudo usermod -a -G video <username>
 
 To check that the user has been added to the group correctly, use the `groups` command. 
 
+## Enable the camera
+
+Enable the camera in the system. Go to menu > 5) Interfacing Options > P1 Camera
+
+```bash
+sudo raspi-config
+```
+
 ## Basic usage
 
 Enter the command `fswebcam` followed by a filename and a picture will be taken using the webcam, and saved to the filename specified:
