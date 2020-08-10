@@ -32,16 +32,16 @@ Displays the enabled and detected state of the official camera. 1 means yes, 0 m
 
 Returns the throttled state of the system. This is a bit pattern - a bit being set indicates the following meanings:
 
-| Bit | Meaning |
-|:---:|---------|
-| 0   | Under-voltage detected |
-| 1   | Arm frequency capped |
-| 2   | Currently throttled |
-| 3   | Soft temperature limit active |
-| 16  | Under-voltage has occurred |
-| 17  | Arm frequency capping has occurred |
-| 18  | Throttling has occurred |
-| 19  | Soft temperature limit has occurred |
+| Bit | Hex value | Meaning |
+|:---:|-----------|---------|
+| 0   | 1 | Under-voltage detected |
+| 1   | 2 | Arm frequency capped |
+| 2   | 4 | Currently throttled |
+| 3   | 8 | Soft temperature limit active |
+| 16  | 10000 | Under-voltage has occurred |
+| 17  | 20000 | Arm frequency capping has occurred |
+| 18  | 40000 | Throttling has occurred |
+| 19  | 80000 | Soft temperature limit has occurred |
 
 A value of zero indicates that none of the above conditions is true.
 
