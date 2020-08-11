@@ -58,6 +58,10 @@ Adding the bit numbers along the top we get:
 
 From this we can see that bits 18 and 16 are set, indicating that the Pi has previously been throttled due to under-voltage, but is not currently throttled for any reason.
 
+Alternately, the values can be derived using the hex values above, by successively subtracting the largest value:
+
+``0x50000 = 40000 + 10000``
+
 #### measure_temp
 
 Returns the temperature of the SoC as measured by the on-board temperature sensor.
