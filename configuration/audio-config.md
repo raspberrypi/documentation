@@ -12,16 +12,6 @@ There are three ways of setting the audio output.
 
 Right-clicking the volume icon on the desktop taskbar brings up the audio output selector; this allows you to select between the internal audio outputs. It also allows you to select any external audio devices, such as USB sound cards and Bluetooth audio devices. A green tick is shown against the currently selected audio output device — simply left-click the desired output in the pop-up menu to change this. The volume control and mute operate on the currently selected device.
 
-### Command line
-
-The following command, entered in the command line, will switch the audio output to HDMI:
-
-```
-amixer cset numid=3 2
-```
-
-Here the output is being set to `2`, which is HDMI. Setting the output to `1` switches to analogue (headphone jack). The default setting is `0` which is automatic.
-
 ### raspi-config
 
 Open up [raspi-config](raspi-config.md) by entering the following into the command line:
@@ -40,10 +30,9 @@ Now select the Option named, `Audio` (here shown as A6, but yours may be differe
 
 ![Audio configuration screen](images/raspi-config-audio.png)
 
-Now you are presented with the two modes explained above as an alternative to the default `Auto` option. Select a mode, press `Enter` and press the right arrow key to exit the options list, then select `Finish` to exit the configuration tool.
+Select your required mode, press `Enter` and press the right arrow key to exit the options list, then select `Finish` to exit the configuration tool.
 
 After you have finished modifying your audio settings, you need to restart your Raspberry Pi in order for your changes to take effect.
-
 
 
 ## If you're still not getting sound via HDMI
