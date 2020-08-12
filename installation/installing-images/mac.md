@@ -74,7 +74,7 @@ If you specify the wrong device in the instructions, you could overwrite your pr
 
     If the command reports `dd: bs: illegal numeric value`, change the block size `bs=1m` to `bs=1M`.
 
-    If the command reports `dd: /dev/rdiskN: Operation not permitted` you need to disable SIP before continuing.
+    If the command reports `dd: /dev/rdiskN: Operation not permitted`, go to `System Preferences` -> `Security & Privacy` -> `Privacy` -> `Files and Folders` -> `Give Removable Volumes access to Terminal`.
 
     If the command reports `dd: /dev/rdiskN: Permission denied`, the partition table of the SD card is being protected against being overwritten by Mac OS. Erase the SD card's partition table using this command:
     
