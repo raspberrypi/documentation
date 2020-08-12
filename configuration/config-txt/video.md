@@ -109,7 +109,9 @@ The `hdmi_drive` command allows you to choose between HDMI and DVI output modes.
 
 Configures the strength of the HDMI signals. The minimum value is `0` and the maximum is `11`.
 
-The default value for Pi 1 models A and B is `2`; for the Pi Zero, Pi 1 Model B+, Pi 2, and Pi 3 the default is `5`. This option has no effect on the Raspberry Pi 4.
+The default value for Pi 1 models A and B is `2`; for the Pi Zero, Pi 1 Model B+, Pi 2, and Pi 3 the default is `5`.
+
+**Note:** This option has no effect on the Raspberry Pi 4.
 
 If you are seeing HDMI issues, such as speckling or interference, then try `7`. Very long HDMI cables may need up to `11`, but values this high should not be used unless absolutely necessary.
 
