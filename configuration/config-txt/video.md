@@ -39,7 +39,7 @@ Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `e
 
 ### hdmi_edid_filename (Pi 4 only)
 
-Use the `hdmi_edid_filename` command to specify the name of a file containing EDID information, and also to specify which port the file is to be applied to. This also requires `hdmi_edid_file=1` to enable EDID files.
+Use the `hdmi_edid_filename` setting to specify the name of a file containing EDID information, and also to specify which port the file is to be applied to. This also requires `hdmi_edid_file=1` to enable EDID files.
 
 For example:
 
