@@ -217,11 +217,6 @@ Previously this property was only checked by the rpi-eeprom-update script. Howev
 Default: 0  
 Version: pieeprom-2020-06-15.bin - STABLE  
 
-### BOOT_LOAD_FLAGS
-Experimental property for custom firmware (bare metal).
-
-Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any compatiblity checks (e.g. is USB MSD boot supported) and resets PCIe before starting the executable. 
-
 ### NETCONSOLE - advanced logging
 `NETCONSOLE` duplicates debug messages to the network interface. The IP addresses and ports are defined by the `NETCONSOLE` string.
 
@@ -245,6 +240,65 @@ BOOT_UART=1
 NETCONSOLE=6665@169.254.1.1/eth0,6666@/
 ```
 
+Version: pieeprom-2020-06-15.bin - STABLE  
+
+### USB_MSD_EXCLUDE_VID_PID
+A list of up to 4 VID/PID pairs specifying devices which the bootloader should ignore. If this matches a HUB then the HUB won’t be enumerated, causing all downstream devices to be excluded.
+This is intended to allow problematic (e.g. very slow to enumerate) devices to be ignored during boot enumeration. This is specific to the bootloader and is not passed to the OS.
+
+The format is a comma-separated list of hexadecimal values with the VID as most significant nibble. Spaces are not allowed.
+E.g. `034700a0,a4231234`
+
+Default: “”  
+Version: pieeprom-2020-06-15.bin - STABLE  
+
+### USB_MSD_DISCOVER_TIMEOUT
+If no USB mass storage devices are found within this timeout then USB-MSD is stopped and the next boot mode is selected
+
+Default: 20000 (20 seconds)  
+Version: pieeprom-2020-06-15.bin - STABLE  
+
+### USB_MSD_LUN_TIMEOUT
+How long to wait in milliseconds before advancing to the next LUN e.g. a multi-slot SD-CARD reader. This is still being tweaked but may help speed up boot if old/slow devices are connected as well as a fast USB-MSD device containing the OS.
+
+Default:  2000 (2 seconds)  
+Version: pieeprom-2020-06-15.bin - STABLE
+
+### USB_MSD_PWR_OFF_TIME
+During USB mass storage boot, power to the USB ports is switched off for a short time to ensure the correct operation of USB mass storage devices. Most devices work correctly using the default setting: change this only if you have problems booting from a particular device. Setting `USB_MSD_PWR_OFF_TIME=0` will prevent power to the USB ports being switched off during USB mass storage boot.
+
+Default: 1000 (1 second)
+Minimum: 250
+Maximum: 5000
+Version: pieeprom-2020-06-15.bin - STABLE
+
+### XHCI_DEBUG
+This property is a bit field which controls the verbosity of USB trace messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`
+
+* Bit 0 - USB descriptors
+* Bit 1 - Mass storage mode state machine 
+* Bit 2 - Mass storage mode state machine - verbose
+* Bit 3 - All USB requests
+* Bit 4 - Log device and hub state machines
+* Bit 5 - Log all xHCI TRBs (VERY VERBOSE)
+* Bit 6 - Log all xHCI events (VERY VERBOSE)
+
+By default, no extra debug messages are enabled. 
+
+```
+# Example: Enable mass storage and USB descriptor logging
+XHCI_DEBUG=0x3
+```
+Default: 0x0  
+Version: pieeprom-2020-06-15.bin - STABLE  
+
+## config.txt - configuration properties
+### BOOT_LOAD_FLAGS
+Experimental property for custom firmware (bare metal).
+
+Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any compatiblity checks (e.g. is USB MSD boot supported) and resets PCIe before starting the executable. 
+
+Default: 0x0  
 Version: pieeprom-2020-06-15.bin - STABLE  
 
 ## Network Boot
@@ -352,55 +406,4 @@ vcgencmd bootloader_config
 There is no explicit set of supported devices. Initially we recommend using a USB pen drive or SSD. Hard drives will probably require a powered HUB and in all cases you should verify that the devices work correctly from within Raspberry Pi OS using an SD card boot.
 
 Please post interoperability reports (positive or negative) on [this thread](https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=274595) on the Raspberry Pi forums. 
-
-### USB_MSD_EXCLUDE_VID_PID
-A list of up to 4 VID/PID pairs specifying devices which the bootloader should ignore. If this matches a HUB then the HUB won’t be enumerated, causing all downstream devices to be excluded.
-This is intended to allow problematic (e.g. very slow to enumerate) devices to be ignored during boot enumeration. This is specific to the bootloader and is not passed to the OS.
-
-The format is a comma-separated list of hexadecimal values with the VID as most significant nibble. Spaces are not allowed.
-E.g. `034700a0,a4231234`
-
-Default: “”  
-Version: pieeprom-2020-06-15.bin - STABLE  
-
-### USB_MSD_DISCOVER_TIMEOUT
-If no USB mass storage devices are found within this timeout then USB-MSD is stopped and the next boot mode is selected
-
-Default: 20000 (20 seconds)  
-Version: pieeprom-2020-06-15.bin - STABLE  
-
-### USB_MSD_LUN_TIMEOUT
-How long to wait in milliseconds before advancing to the next LUN e.g. a multi-slot SD-CARD reader. This is still being tweaked but may help speed up boot if old/slow devices are connected as well as a fast USB-MSD device containing the OS.
-
-Default:  2000 (2 seconds)  
-Version: pieeprom-2020-06-15.bin - STABLE
-
-### USB_MSD_PWR_OFF_TIME
-During USB mass storage boot, power to the USB ports is switched off for a short time to ensure the correct operation of USB mass storage devices. Most devices work correctly using the default setting: change this only if you have problems booting from a particular device. Setting `USB_MSD_PWR_OFF_TIME=0` will prevent power to the USB ports being switched off during USB mass storage boot.
-
-Default: 1000 (1 second)
-Minimum: 250
-Maximum: 5000
-Version: pieeprom-2020-06-15.bin - STABLE
-
-### XHCI_DEBUG
-This property is a bit field which controls the verbosity of USB trace messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`
-
-* Bit 0 - USB descriptors
-* Bit 1 - Mass storage mode state machine 
-* Bit 2 - Mass storage mode state machine - verbose
-* Bit 3 - All USB requests
-* Bit 4 - Log device and hub state machines
-* Bit 5 - Log all xHCI TRBs (VERY VERBOSE)
-* Bit 6 - Log all xHCI events (VERY VERBOSE)
-
-By default, no extra debug messages are enabled. 
-
-```
-# Example: Enable mass storage and USB descriptor logging
-XHCI_DEBUG=0x3
-```
-
-Default: 0x0  
-Version: pieeprom-2020-06-15.bin - STABLE  
 
