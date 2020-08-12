@@ -20,7 +20,7 @@ sudo apt install realvnc-vnc-server realvnc-vnc-viewer
 
 ## Service mode
 
-In this mode, VNC Server will attach to a display which is enabled on the Raspberry Pi itself: remote access to the graphical desktop will be permitted. Note that some Raspberry Pis do not have a display enabled unless a screen is attached.
+In this mode, VNC Server will attach to a display which is enabled on the Raspberry Pi itself: remote access to the graphical desktop will be permitted. Note that some Raspberry Pis do not have a display enabled unless a screen is attached: if this is the case you will see a message that reads "cannot currently show the desktop". If you see this message, it is recommended that you use [virtual desktop mode](#virtual) instead of service mode. (Alternatively, you can force the Raspberry Pi's display to be enabled by setting a specific display mode using `raspi-config`).
 
 If you need to change the resolution of the graphical desktop, from the menu choose `Preferences` and click on `Screen Configuration`. You can also use the command line tool `raspi-config`.
 
@@ -51,7 +51,7 @@ Within `raspi-config`, enable VNC Server as follows:
 The VNC system service is named `vncserver-x11-serviced`.
 
 
-## Virtual desktop mode
+## <a name="virtual"></a>Virtual desktop mode
 
 In this mode, VNC Server will create a graphical desktop in the memory of the Raspberry Pi: this allows you to use the graphical desktop of the Pi without having its display enabled.
 
@@ -107,7 +107,7 @@ Cloud connections are convenient and encrypted end-to-end. They are highly recom
 
 To complete either a direct or cloud connection, you must authenticate to VNC Server. 
 
-If you're connecting from the [compatible VNC Viewer app](https://www.realvnc.com/download/viewer/) from RealVNC, enter the user name and password you normally use to log in to your user account on the Raspberry Pi. By default, these credentials are `pi` and `raspberry`.
+If you're connecting from the [compatible VNC Viewer app](https://www.realvnc.com/download/viewer/) from RealVNC, enter the user name and password you normally use to log in to your user account on the Raspberry Pi. By default, these credentials are `pi` and `raspberry`. If you see an error that reads "cannot currently show the desktop", this means that there is currently no display enabled on the Raspberry Pi, and the graphical desktop is therefore not running. In this case it is recommended that you use the [virtual desktop mode](#virtual).
 
 If you're connecting from a non-RealVNC Viewer app, you'll first need to downgrade VNC Server's authentication scheme, specify a password unique to VNC Server, and then enter that instead.
 * If you are in front of your Raspberry Pi and can see its screen, open the VNC Server dialog on your Raspberry Pi, select `Menu` > `Options` > `Security`, and choose `VNC password` from the `Authentication` dropdown.
