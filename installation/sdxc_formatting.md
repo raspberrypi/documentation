@@ -14,7 +14,7 @@ Run the Raspberry Pi Imager application, then from the `Choose OS option`, selec
 
 ### Linux and Mac OS
 
-The standard formatting tools built into these operating systems are able to create FAT32 partitions; they might also be labelled as FAT or MS-DOS. Simply delete the existing exFAT partition and create and format a new FAT32 primary partition, before proceeding with the rest of the [NOOBS instructions](noobs.md). On a Mac, this means using the command-line `diskutil` program.
+The standard formatting tools built into these operating systems are able to create FAT32 partitions; they might also be labelled as FAT or MS-DOS. Simply delete the existing exFAT partition and create and format a new FAT32 primary partition, before proceeding with the rest of the [NOOBS instructions](noobs.md). On a Mac, this means using the command-line diskutil program and choosing the Master Boot Record scheme.
 
 ### Windows
 
