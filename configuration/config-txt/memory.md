@@ -38,6 +38,8 @@ This parameter can be used to force a Raspberry Pi to limit its memory capacity:
 total_mem=1024
 ```
 
+This value will be clamped between a minimum of 128MB, and a maximum of the total memory installed on the board.
+
 ## disable_l2cache
 
 Setting this to `1` disables the CPU's access to the GPU's L2 cache and requires a corresponding L2 disabled kernel. Default value on BCM2835 is `0`. On BCM2836, BCM2837, and BCM2711, the ARMs have their own L2 cache and therefore the default is `1`. The standard Pi kernel.img and kernel7.img builds reflect this difference in cache setting.
