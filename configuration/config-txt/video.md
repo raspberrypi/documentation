@@ -87,7 +87,7 @@ The `hdmi_pixel_encoding` command forces the pixel encoding mode, overriding the
 
 ### hdmi_blanking
 
-Allows the Raspberry Pi to use DPMS to tell the display to go into standby mode to save power. Without this setting, the display will not go into standby mode.
+Setting `hdmi_blanking` to `1` allows the Raspberry Pi to use DPMS to tell the screen to go into standby mode to save power. The default value is `0`. This setting has no effect on the Pi 4.
 
 **NOTE:** This feature may cause issues when using applications which don't use the framebuffer, such as omxplayer.
 
