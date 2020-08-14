@@ -1,12 +1,28 @@
 # Attaching a Raspberry Pi Camera Module to the Compute Module IO Board
 
-**This document is a work in progress and is intended for advanced users.**
+## Notes before starting
 
-**For the camera to work with the Compute Module 3 (CM3), the firmware needs to be September 21st 2016 or newer (use `vcgencmd version` to check).**
+These instructions are intended for expert users, if anything is unclear please use the [Raspberry Pi Camera forums](https://www.raspberrypi.org/forums/viewforum.php?f=43) for technical help. 
 
-**Note for designers attaching Camera Modules directly to CM carrier boards:** it is NOT necessary to incorporate the crypto chip used on the Raspberry Pi–designed camera boards when attaching the OM5647 or IMX219 Camera Modules directly to the CM carrier board. The Raspberry Pi firmware will automatically detect the CM and allow communications with the Camera Module to proceed without the crypto chip being present.
+Unless explicitly stated otherwise, these instructions will work identically on Compute Module and Compute Module 3 Module+IO board(s).
 
-** Note that unless explicitly stated otherwise, these instructions will work identically on Compute Module and Compute Module 3 Module+IO board(s). **
+### Compute Module board capabilities
+
+The Compute Module has two CSI-2 camera interfaces. CAM0 is a two lane interface, CAM1 is a four lane interface. The Compute Module IO board exposes both of these inerfaces,  note that the standard Raspberry Pi devices uses CAM1, but only exposes two lanes.
+
+### Updating your system
+
+The camera software is under constant development. Please ensure your system is up to date prior to using these instructions.
+
+```
+sudo apt update
+sudp apt full-upgrade
+```
+
+### Crypto Chip
+
+When using the Compute Module to drive cameras, it is NOT necessary to incorporate the crypto chip used on the Raspberry Pi–designed camera boards when attaching the OM5647, IMX219 or HQ Camera Modules directly to the CM carrier board. The Raspberry Pi firmware will automatically detect the CM and allow communications with the Camera Module to proceed without the crypto chip being present.
+
 
 ## Quickstart
 
@@ -28,9 +44,9 @@
 
 ### Software support
 
-Recent raspicam binaries (**raspivid** and **raspistill**) have the -cs (--camselect) option to specify which camera should be used.
+The supplied camera applications `raspivid` and `raspistill` have the -cs (--camselect) option to specify which camera should be used.
 
-From other applications, MMAL can be told which camera to use by setting MMAL_PARAMETER_CAMERA_NUM accordingly.
+If you are writing your own camera application based on the MMAL API you can use the MMAL_PARAMETER_CAMERA_NUM paramter to set the current camera. E.g.
 
 ```
 MMAL_PARAMETER_INT32_T camera_num = {{MMAL_PARAMETER_CAMERA_NUM, sizeof(camera_num)}, CAMERA_NUMBER};
@@ -39,15 +55,11 @@ status = mmal_port_parameter_set(camera->control, &camera_num.hdr);
 
 ## Advanced
 
-The 15-way 1mm FFC camera connector on the Raspberry Pi model A and B is attached to the CAM1 interface (though it only uses two of the four available lanes).
+The Compute Module IO board has a 22-way 0.5mm FFC for each camera port, with CAM0 being a two-lane interface and CAM1 being the full four-lane interface. The standard Raspberry Pi uses a 15-way 1mm FFC cable, so you will need either an adapter (part# RPI-CAMERA) or a Pi Zero camera cable.
 
-The Compute Module IO board has a 22-way 0.5mm FFC for each camera port, with CAM0 being a two-lane interface and CAM1 being the full four-lane interface.
+On the Compute Module IO board it is necessary to bridge the GPIOs and I2C interface required by the Raspberry Pi OS to the CAM1 connector. This is done by connecting the GPIOs from the J6 GPIO connector to the CD1_SDA/SCL and CAM1_IO0/1 pins on the J5 connector using jumper wires. Additionally, a `dt-blob.bin` file needs to be provided to override default pin states (the dt-blob.bin file is a file that tells the GPU what pins to use when controlling the camera. For more information on this, see the relevant section in the guide to attaching peripherals to a Compute Module [here](cm-peri-sw-guide.md)).
 
-To attach a standard Raspberry Pi Camera Module to the Compute Module IO board, a small adaptor board, called RPI-CAMERA, is available. It adapts the 22W FFC to the Pi 15W FFC. As an alternative, the Pi Zero camera cable can be used.
-
-To make the Raspberry Pi Camera Module work with a standard Raspberry Pi OS, the GPIOs and I2C interface must be wired to the CAM1 connector. This is done by bridging the correct GPIOs from the J6 GPIO connector to the CD1_SDA/SCL and CAM1_IO0/1 pins on the J5 connector using jumper wires. Additionally, a **dt-blob.bin** file needs to be provided to override default pin states (the dt-blob.bin file is a file that tells the GPU what pins to use when controlling the camera. For more information on this, see the relevant section in the guide to attaching peripherals to a Compute Module [here](cm-peri-sw-guide.md)).
-
-**The pin numbers below are provided only as an example. LED and SHUTDOWN pins can be shared by both cameras, if required.** The SDA and SCL pins must be either GPIO0 and GPIO1 or GPIO28 and 29 and must be individual to each camera.
+*The pin numbers below are provided only as an example. LED and SHUTDOWN pins can be shared by both cameras, if required.* The SDA and SCL pins must be either GPIO0 and GPIO1 or GPIO28 and 29 and must be individual to each camera.
 
 ### Steps to attach a Raspberry Pi Camera (to CAM1)
 
@@ -59,22 +71,22 @@ To make the Raspberry Pi Camera Module work with a standard Raspberry Pi OS, the
 1. Attach CAM1_IO1 (J6 pin 41) to GPIO2 (J5 pin 5).
 1. Attach CAM1_IO0 (J6 pin 43) to GPIO3 (J5 pin 7).
 
-**The numbers in brackets are conventional, physical pin numbers, numbered from left to right, top to bottom. The numbers on the silkscreen correspond to the Broadcom SoC GPIO numbers.**
+Note, the numbers in brackets are conventional, physical pin numbers, numbered from left to right, top to bottom. The numbers on the silkscreen correspond to the Broadcom SoC GPIO numbers.
 
 ### Configuring default pin states
 
-The GPIOs used by the camera default to input mode on the Compute Module. In order to [override the default pin states](../../configuration/pin-configuration.md) and define the pins used by the camera, we need to create a **dt-blob.bin** file from a source dts file with the relevant information for the GPU, and place this on the root of the first FAT partition.
+The GPIOs that we are using for the camera default to input mode on the Compute Module. To [override these default settings](../../configuration/pin-configuration.md) and also tell the system that these are the pins to be used by the camera, we need to create a `dt-blob.bin` that is loaded by the firmware when the system boots up. This file is built from a source dts file that contains the requried settings, and placed on the boot partition.
 
-[Sample device tree source files](#sample-device-tree-source-files) are provided at the bottom of this document.
+Some [Sample device tree source files](#sample-device-tree-source-files) are provided at the bottom of this document.
 
-The **pin_config** section in the `pins_cm { }` (compute module) or `pins_cm3 { }` (compute module3) section of the source dts needs the camera's LED and power enable pins set to outputs:
+The `pin_config` section in the `pins_cm { }` (compute module) or `pins_cm3 { }` (compute module3) section of the source dts needs the camera's LED and power enable pins set to outputs:
 
 ```
 pin@p2  { function = "output"; termination = "no_pulling"; };
 pin@p3  { function = "output"; termination = "no_pulling"; };
 ```
 
-To tell the firmware which pins to use and how many cameras to look for, add the following to the **pin_defines** section:
+To tell the firmware which pins to use and how many cameras to look for, add the following to the `pin_defines` section:
 
 ```
 pin_define@CAMERA_0_LED { type = "internal"; number = <2>; };
@@ -120,3 +132,9 @@ pin_define@CAMERA_1_SCL_PIN { type = "internal"; number = <29>; };
 [Enable CAM1 only](dt-blob-cam1.dts)
 
 [Enable both cameras](dt-blob-dualcam.dts)
+
+### Compiling a DTS file to a device tree blob
+
+Once all the required changes have been made to the `dts` file, it needs to be compiled and place on the boot partition of the device. 
+
+Instructions for doing this can be found on the [Pin Configuration](../../configuration/pin-configuration.md) page
