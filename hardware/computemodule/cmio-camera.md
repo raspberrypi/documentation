@@ -4,7 +4,7 @@
 
 These instructions are intended for expert users, if anything is unclear please use the [Raspberry Pi Camera forums](https://www.raspberrypi.org/forums/viewforum.php?f=43) for technical help. 
 
-Unless explicitly stated otherwise, these instructions will work identically on Compute Module and Compute Module 3 Module+IO board(s).
+Unless explicitly stated otherwise, these instructions will work identically on both the Compute Module and Compute Module 3, attached to a Compute Module IO Board.
 
 ### Compute Module board capabilities
 
@@ -21,7 +21,7 @@ sudp apt full-upgrade
 
 ### Crypto Chip
 
-When using the Compute Module to drive cameras, it is NOT necessary to incorporate the crypto chip used on the Raspberry Pi–designed camera boards when attaching the OM5647, IMX219 or HQ Camera Modules directly to the CM carrier board. The Raspberry Pi firmware will automatically detect the CM and allow communications with the Camera Module to proceed without the crypto chip being present.
+When using the Compute Module to drive cameras, it is NOT necessary to incorporate the crypto chip used on the Raspberry Pi–designed camera boards when attaching the OM5647, IMX219 or HQ Camera Modules directly to the Compute Module carrier board. The Raspberry Pi firmware will automatically detect the CM and allow communications with the Camera Module to proceed without the crypto chip being present.
 
 
 ## Quickstart
@@ -46,7 +46,7 @@ When using the Compute Module to drive cameras, it is NOT necessary to incorpora
 
 The supplied camera applications `raspivid` and `raspistill` have the -cs (--camselect) option to specify which camera should be used.
 
-If you are writing your own camera application based on the MMAL API you can use the MMAL_PARAMETER_CAMERA_NUM paramter to set the current camera. E.g.
+If you are writing your own camera application based on the MMAL API you can use the MMAL_PARAMETER_CAMERA_NUM parameter to set the current camera. E.g.
 
 ```
 MMAL_PARAMETER_INT32_T camera_num = {{MMAL_PARAMETER_CAMERA_NUM, sizeof(camera_num)}, CAMERA_NUMBER};
@@ -135,6 +135,6 @@ pin_define@CAMERA_1_SCL_PIN { type = "internal"; number = <29>; };
 
 ### Compiling a DTS file to a device tree blob
 
-Once all the required changes have been made to the `dts` file, it needs to be compiled and place on the boot partition of the device. 
+Once all the required changes have been made to the `dts` file, it needs to be compiled and placed on the boot partition of the device. 
 
-Instructions for doing this can be found on the [Pin Configuration](../../configuration/pin-configuration.md) page
+Instructions for doing this can be found on the [Pin Configuration](../../configuration/pin-configuration.md) page.
