@@ -81,7 +81,7 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 * 0x2 - NETWORK  
 * 0x3 - USB device boot [usbboot](https://github.com/raspberrypi/usbboot) - Compute Module only.
 * 0x4 - USB mass storage boot
-* 0xf - RESTART (loop) - start again with the first boot order field.
+* 0xf - RESTART (loop) - start again with the first boot order field (added in pieeprom-2020-06-15.bin).
 
 Default: 0x1  
 Version: pieeprom-2020-04-16.bin  
