@@ -204,7 +204,7 @@ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2711_defconfig
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
 ```
 
-##### For some 64-Bit builds
+##### For all 64-Bit builds
 **Note**: Note the difference between Image target between 32 and 64-Bit.
 ```bash
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- Image modules dtbs
