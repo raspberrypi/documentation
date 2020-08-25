@@ -197,20 +197,18 @@ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2711_defconfig
 
 #### Build with configs
 
-For All 32-Bit:
+**Note**: To speed up compilation on multiprocessor systems, and get some improvement on single processor ones, use `-j n`, where n is the number of processors * 1.5. Alternatively, feel free to experiment and see what works!
 
+##### For all 32-Bit builds
 ```bash
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
 ```
 
-Or for some 64-Bit:
+##### For some 64-Bit builds
 **Note**: Note the difference between Image target between 32 and 64-Bit.
-
 ```bash
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- Image modules dtbs
 ```
-
-**Note**: To speed up compilation on multiprocessor systems, and get some improvement on single processor ones, use `-j n`, where n is the number of processors * 1.5. Alternatively, feel free to experiment and see what works!
 
 ### Install directly onto the SD card
 
@@ -263,7 +261,7 @@ sudo env PATH=$PATH make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- INSTALL_MOD
 
 Finally, copy the kernel and Device Tree blobs onto the SD card, making sure to back up your old kernel:
 
-For 32-Bit:
+#### For 32-Bit
 
 ```bash
 sudo cp mnt/fat32/$KERNEL.img mnt/fat32/$KERNEL-backup.img
@@ -275,7 +273,7 @@ sudo umount mnt/fat32
 sudo umount mnt/ext4
 ```
 
-For 64-Bit:
+#### For 64-Bit
 
 ```bash
 sudo cp mnt/fat32/$KERNEL.img mnt/fat32/$KERNEL-backup.img
