@@ -28,7 +28,7 @@ If you need to connect a USB device that will take the power requirements above 
 
 ## Power Supply Warnings
 
-On all models of Raspberry Pi since the Raspberry Pi B+ (2014) except the Zero range, there is low-voltage detection circuitry that will detect if the supply voltage drops below 4.63V (+/- 5%). This will result in a [warning icon](../../../configuration/warning-icons.md) being displayed on all attached displays and an entry being being added to the kernel log.
+On all models of Raspberry Pi since the Raspberry Pi B+ (2014) except the Zero range, there is low-voltage detection circuitry that will detect if the supply voltage drops below 4.63V (+/- 5%). This will result in a [warning icon](../../../configuration/warning-icons.md) being displayed on all attached displays and an entry being added to the kernel log.
 
 If you are seeing warnings, you should improve the power supply and/or cable, as low power can cause problems with corruption of SD cards, or erratic behaviour of the Pi itself; for example, unexplained crashes. 
 
