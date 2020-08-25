@@ -92,7 +92,7 @@ sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 
 **Note**: On a Raspberry Pi 2/3/4, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
 
-## Cross-compiling
+## Cross-compiling 32-bit
 
 First, you will need a suitable Linux cross-compilation host. We tend to use Ubuntu; since Raspberry Pi OS is 
 also a Debian distribution, it means many aspects are similar, such as the command lines.
