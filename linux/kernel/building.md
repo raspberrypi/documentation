@@ -92,7 +92,7 @@ sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 
 **Note**: On a Raspberry Pi 2/3/4, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
 
-## Cross-compiling 32-bit
+## Cross-compiling 32/64-bit
 
 First, you will need a suitable Linux cross-compilation host. We tend to use Ubuntu; since Raspberry Pi OS is 
 also a Debian distribution, it means many aspects are similar, such as the command lines.
@@ -107,7 +107,7 @@ sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
 ```
 If you find you need other things, please submit a pull request to change the documentation.
 
-### Install toolchain
+#### Install 32-Bit toolchain
 
 Use the following command to download the toolchain to the home folder:
 
@@ -129,6 +129,15 @@ If you are using Ccache and a CI environment, instruct Ccache to not use the com
 This is because Git intentionally doesn't save file timestamps, so each time you clone the toolchain its file mtimes are different, invalidating Ccache's cache when default settings are used.
 
 `ccache --set-config=compiler_check=content`
+
+
+#### Install 64-Bit toolchain
+
+All the depencencies needed are up to date in all supported Ubuntu and Debian repositories so we will use the package manager to fetch our tools.
+
+```bash
+sudo apt install gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu
+```
 
 ### Get sources
 
@@ -168,10 +177,31 @@ KERNEL=kernel7l
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
 ```
 
-Then, for all:
+For Pi 3, Pi 3+ or Compute Module 3. All of which are using 64-Bit OS:
+```bash
+cd linux
+KERNEL=kernel8
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2709_defconfig
+```
+
+For Raspberry Pi 4 using 64-Bit OS:
+```bash
+cd linux
+KERNEL=kernel8
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2711_defconfig
+```
+
+Then, for all 32-Bit:
 
 ```bash
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
+```
+
+Or for some 64-Bit:
+Note the difference between Image target.
+
+```bash
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- Image modules dtbs
 ```
 
 **Note**: To speed up compilation on multiprocessor systems, and get some improvement on single processor ones, use `-j n`, where n is the number of processors * 1.5. Alternatively, feel free to experiment and see what works!
@@ -213,20 +243,40 @@ sudo mount /dev/sdb6 mnt/fat32
 sudo mount /dev/sdb7 mnt/ext4
 ```
 
-Next, install the modules:
+Next, install the modules for all 32-Bit:
 
 ```bash
 sudo env PATH=$PATH make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/ext4 modules_install
 ```
 
+Or for some 64-Bit:
+
+```bash
+sudo env PATH=$PATH make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- INSTALL_MOD_PATH=mnt/ext4 modules_install
+```
+
 Finally, copy the kernel and Device Tree blobs onto the SD card, making sure to back up your old kernel:
+
+For 32-Bit:
 
 ```bash
 sudo cp mnt/fat32/$KERNEL.img mnt/fat32/$KERNEL-backup.img
-sudo cp arch/arm/boot/zImage mnt/fat32/$KERNEL.img
+sudo cp arch/arm/boot/zImage mnt/fat32/$KERNEL.img # For 32-Bit
 sudo cp arch/arm/boot/dts/*.dtb mnt/fat32/
 sudo cp arch/arm/boot/dts/overlays/*.dtb* mnt/fat32/overlays/
 sudo cp arch/arm/boot/dts/overlays/README mnt/fat32/overlays/
+sudo umount mnt/fat32
+sudo umount mnt/ext4
+```
+
+For 64-Bit:
+
+```bash
+sudo cp mnt/fat32/$KERNEL.img mnt/fat32/$KERNEL-backup.img
+sudo cp arch/arm64/boot/zImage mnt/fat32/$KERNEL.img # For 32-Bit
+sudo cp arch/arm64/boot/dts/*.dtb mnt/fat32/
+sudo cp arch/arm64/boot/dts/overlays/*.dtb* mnt/fat32/overlays/
+sudo cp arch/arm64/boot/dts/overlays/README mnt/fat32/overlays/
 sudo umount mnt/fat32
 sudo umount mnt/ext4
 ```
