@@ -121,15 +121,6 @@ Updating the $PATH environment variable makes the system aware of file locations
 echo PATH=\$PATH:~/tools/arm-bcm2708/arm-linux-gnueabihf/bin >> ~/.bashrc
 source ~/.bashrc
 ```
-If you are using a 32-bit operating system (for example, our Raspberry Pi Desktop for PC), then you may need to install an additional set of libraries:
-
-`sudo apt install zlib1g-dev:amd64`
-
-If you are using Ccache and a CI environment, instruct Ccache to not use the compiler's mtime for cache ID calculations.
-This is because Git intentionally doesn't save file timestamps, so each time you clone the toolchain its file mtimes are different, invalidating Ccache's cache when default settings are used.
-
-`ccache --set-config=compiler_check=content`
-
 
 #### Install 64-Bit toolchain
 
@@ -138,6 +129,17 @@ All the depencencies needed are up to date in all supported Ubuntu and Debian re
 ```bash
 sudo apt install gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu
 ```
+
+#### Extras for both 32 and 64-Bit compiles
+
+If you are using a 32-bit operating system (for example, our Raspberry Pi Desktop for PC), then you may need to install an additional set of libraries:
+
+`sudo apt install zlib1g-dev:amd64`
+
+If you are using Ccache and a CI environment, instruct Ccache to not use the compiler's mtime for cache ID calculations.
+This is because Git intentionally doesn't save file timestamps, so each time you clone the toolchain its file mtimes are different, invalidating Ccache's cache when default settings are used.
+
+`ccache --set-config=compiler_check=content`
 
 ### Get sources
 
