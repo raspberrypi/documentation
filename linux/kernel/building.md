@@ -153,6 +153,7 @@ See [**Choosing sources**](#choosing_sources) above for instructions on how to c
 
 Enter the following commands to build the sources and Device Tree files:
 
+#### 32-Bit Configs
 For Pi 1, Pi Zero, Pi Zero W, or Compute Module:
 
 ```bash
@@ -177,28 +178,31 @@ KERNEL=kernel7l
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
 ```
 
-For Pi 3, Pi 3+ or Compute Module 3. All of which are using 64-Bit OS:
+#### 64-Bit Configs
+For Pi 3, Pi 3+ or Compute Module 3:
 ```bash
 cd linux
 KERNEL=kernel8
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2709_defconfig
 ```
 
-For Raspberry Pi 4 using 64-Bit OS:
+For Raspberry Pi 4:
 ```bash
 cd linux
 KERNEL=kernel8
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2711_defconfig
 ```
 
-Then, for all 32-Bit:
+#### Build with configs
+
+For All 32-Bit:
 
 ```bash
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
 ```
 
 Or for some 64-Bit:
-Note the difference between Image target.
+**Note**: Note the difference between Image target between 32 and 64-Bit.
 
 ```bash
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- Image modules dtbs
