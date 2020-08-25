@@ -185,7 +185,7 @@ For Pi 3, Pi 3+ or Compute Module 3:
 ```bash
 cd linux
 KERNEL=kernel8
-make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2709_defconfig
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcmrpi3_defconfig
 ```
 
 For Raspberry Pi 4:
