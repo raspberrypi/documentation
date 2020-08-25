@@ -180,6 +180,8 @@ KERNEL=kernel7l
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
 ```
 
+---
+
 #### 64-Bit Configs
 For Pi 3, Pi 3+ or Compute Module 3:
 ```bash
@@ -247,17 +249,20 @@ sudo mount /dev/sdb6 mnt/fat32
 sudo mount /dev/sdb7 mnt/ext4
 ```
 
-Next, install the modules for all 32-Bit:
 
+Next, install the kernel modules onto the SD card:
+
+#### For 32-Bit
 ```bash
 sudo env PATH=$PATH make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/ext4 modules_install
 ```
 
-Or for some 64-Bit:
-
+#### For 64-Bit:
 ```bash
 sudo env PATH=$PATH make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- INSTALL_MOD_PATH=mnt/ext4 modules_install
 ```
+
+---
 
 Finally, copy the kernel and Device Tree blobs onto the SD card, making sure to back up your old kernel:
 
