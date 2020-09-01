@@ -111,7 +111,7 @@ If you find you need other things, please submit a pull request to change the do
 
 Use the following command to install the cross-arch compiler onto your machine:
 ```bash
-sudo apt install binutils-arm-linux-gnueabihf crossbuild-essential-armhf
+sudo apt install crossbuild-essential-armhf
 ```
 
 If you are using a 32-bit operating system (for example, our Raspberry Pi Desktop for PC), then you may need to install an additional set of libraries:
