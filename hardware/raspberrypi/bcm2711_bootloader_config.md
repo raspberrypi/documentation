@@ -347,11 +347,11 @@ sudo reboot
 ```
 <a name="usbmassstorageboot"></a>
 ## USB mass storage boot
-USB MSD boot is now supported by the latest Raspbery Pi OS image (2020-08-20). After updating the bootloader using the following instructions a bootable USB drive maybe created by using the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to flash the latest OS image to a USB MSD device.
+USB MSD boot is now supported by the latest Raspberry Pi OS image (2020-08-20). After updating the bootloader using the following instructions a bootable USB drive may be created by using the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to flash the latest OS image to a USB MSD device.
 
 This is a new feature and we recommend you check the Raspberry Pi [general discussion forum](https://www.raspberrypi.org/forums/viewforum.php?f=63&sid=c5b91609d530566a752920ca7996eb21) for queries or interoperability questions.
 
-N.B. For other operating systems please check the maintainers website for USB boot support.
+N.B. For other operating systems please check the maintainer's website for USB boot support.
 
 ### Check that the USB mass storage device works under Linux
 Before attempting to boot from a USB mass storage device it is advisible to verify that the device works correctly under Linux. Boot using an SD card and plug in the USB mass storage device. This should appears as a removable drive.
@@ -374,7 +374,7 @@ N.B. config.txt [conditional filters](../configuration/config-txt/conditional.md
 The easiest method to update the bootloader with a factory default configuration supporting USB boot is to use the Raspberry Pi Imager.
 1. Download the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/)
 1. Download the latest [EEPROM recovery image](https://github.com/raspberrypi/rpi-eeprom/blob/master/releases.md)
-1. Select `Use Custom` to flash an SD card with the EEPROM update enabling USB MSD boot support.
+1. Select `Use Custom` to reformat and flash a **blank** SD card with the EEPROM update enabling USB MSD boot support.
 
 #### Manual bootloader update
 * From a standard Raspberry Pi OS SD card boot:
@@ -382,11 +382,10 @@ The easiest method to update the bootloader with a factory default configuration
 sudo apt update
 sudo apt full-upgrade
 ```
-
 * As root, edit `/etc/default/rpi-eeprom-update` and select `stable` releases.
-
-* Install the `stable` version of the bootloader and replace the current configuration settings to enable USB boot.
-See `BOOT_ORDER` property if you wish to migrate the configuration by hand.
+* Run `vcgencmd bootloader_config` to check your current configuration and decide whether to use the factory default config or migrate your existing boot settings.
+* Update the bootloader
 ```
-sudo rpi-eeprom-update -d -f /lib/firmware/raspberrypi/bootloader/stable/pieeprom-2020-07-31.bin
+# Install the latest stable bootloader release and use the factory default configuration (-d) to enable USB MSD boot.
+sudo rpi-eeprom-update -a -d
 ```
