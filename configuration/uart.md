@@ -95,8 +95,17 @@ Although the Linux kernel starts the UARTs relatively early in the boot process,
 
 Enable earlycon with a kernel command line parameter - add one of the following to `cmdline.txt`, depending on which UART is the primary:
 ```
+# For Pi 4 and Compute Module 4 (BCM2711)
 earlycon=uart8250,mmio32,0xfe215040
 earlycon=pl011,mmio32,0xfe201000
+
+# For Pi 2, Pi 3 and Compute Module 3 (BCM2836 & BCM2837)
+earlycon=uart8250,mmio32,0x3f215040
+earlycon=pl011,mmio32,0x3f201000
+
+# For Pi 1, Pi Zero and Compute Module (BCM2835)
+earlycon=uart8250,mmio32,0x20215040
+earlycon=pl011,mmio32,0x20201000
 ```
 The baudrate is set to 115200.
 
