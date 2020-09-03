@@ -124,20 +124,20 @@ Go to our [products page](https://www.raspberrypi.org/products/) and choose the 
 
 The following prices are exclusive of any local taxes and shipping/handling fees.
 
-| Product                    | Price |
-| -------------------------- | ----- |
-| Raspberry Pi Model A+      | $20   |
-| Raspberry Pi Model B+      | $25   |
-| Raspberry Pi 2 Model B     | $35   |
-| Raspberry Pi 3 Model B     | $35   |
-| Raspberry Pi 3 Model A+    | $25   |
-| Raspberry Pi 3 Model B+    | $35   |
-| Raspberry Pi 4 Model B 2GB | $35   |
-| Raspberry Pi 4 Model B 4GB | $55   |
-| Raspberry Pi 4 Model B 8GB | $75   |
-| Raspberry Pi Zero          | $5    |
-| Raspberry Pi Zero W        | $10   |
-| Raspberry Pi Zero WH       | $15   |
+|Product|Price|
+|-------|-----|
+| Raspberry Pi Model A+| $20 |
+| Raspberry Pi Model B+ |$25 |
+| Raspberry Pi 2 Model B| $35 |
+| Raspberry Pi 3 Model B | $35 |
+| Raspberry Pi 3 Model A+ | $25 |
+| Raspberry Pi 3 Model B+ | $35 |
+| Raspberry Pi 4 Model B 2GB | $35 |
+| Raspberry Pi 4 Model B 4GB | $55 |
+| Raspberry Pi 4 Model B 8GB | $75 |
+| Raspberry Pi Zero | $5 |
+| Raspberry Pi Zero W |$10 |
+| Raspberry Pi Zero WH |$15 |
 
 ### What do I get when I buy one?
 
@@ -175,20 +175,20 @@ Yes — it depends on your use case. Raspberry Pis have been used successfully i
 
 These are the [models of the Raspberry Pi](https://www.raspberrypi.org/products/) which are currently available: the Pi 3 Model B, the Pi 2 Model B, the Pi Zero, the Pi Zero W and the Pi 1 Model B+ and A+.
 
-| Product                 | SoC          | Speed   | RAM   |   USB Ports    |  Ethernet  |  Wireless  | Bluetooth |
-| ----------------------- | ------------ | ------- | ----- | :------------: | :--------: | :--------: | :-------: |
-| Raspberry Pi Model A+   | BCM2835      | 700MHz  | 512MB |       1        |     No     |     No     |    No     |
-| Raspberry Pi Model B+   | BCM2835      | 700MHz  | 512MB |       4        | 100Base-T  |     No     |    No     |
-| Raspberry Pi 2 Model B  | BCM2836/7    | 900MHz  | 1GB   |       4        | 100Base-T  |     No     |    No     |
-| Raspberry Pi 3 Model B  | BCM2837A0/B0 | 1200MHz | 1GB   |       4        | 100Base-T  |  802.11n   |    4.1    |
-| Raspberry Pi 3 Model A+ | BCM2837B0    | 1400MHz | 512MB |       1        |     No     | 802.11ac/n |    4.2    |
-| Raspberry Pi 3 Model B+ | BCM2837B0    | 1400MHz | 1GB   |       4        | 1000Base-T | 802.11ac/n |    4.2    |
-| Raspberry Pi 4 Model B  | BCM2711      | 1500MHz | 2GB   | 2xUSB2, 2xUSB3 | 1000Base-T | 802.11ac/n |    5.0    |
-| Raspberry Pi 4 Model B  | BCM2711      | 1500MHz | 4GB   | 2xUSB2, 2xUSB3 | 1000Base-T | 802.11ac/n |    5.0    |
-| Raspberry Pi 4 Model B  | BCM2711      | 1500MHz | 8GB   | 2xUSB2, 2xUSB3 | 1000Base-T | 802.11ac/n |    5.0    |
-| Raspberry Pi Zero       | BCM2835      | 1000MHz | 512MB |       1        |     No     |     No     |    No     |
-| Raspberry Pi Zero W     | BCM2835      | 1000MHz | 512MB |       1        |     No     |  802.11n   |    4.1    |
-| Raspberry Pi Zero WH    | BCM2835      | 1000MHz | 512MB |       1        |     No     |  802.11n   |    4.1    |
+| Product | SoC | Speed | RAM | USB Ports | Ethernet | Wireless | Bluetooth |
+|---------|-----|-------|-----|:--------:|:--------:|:--------:|:---------:|
+| Raspberry Pi Model A+ | BCM2835 | 700MHz | 512MB | 1 | No | No | No |
+| Raspberry Pi Model B+ | BCM2835 | 700MHz | 512MB | 4 |100Base-T | No | No |
+| Raspberry Pi 2 Model B | BCM2836/7 | 900MHz | 1GB | 4 |100Base-T| No | No |
+| Raspberry Pi 3 Model B | BCM2837A0/B0 | 1200MHz | 1GB | 4 |100Base-T| 802.11n| 4.1 |
+| Raspberry Pi 3 Model A+ | BCM2837B0 | 1400MHz | 512MB | 1 | No | 802.11ac/n | 4.2 |
+| Raspberry Pi 3 Model B+ | BCM2837B0 | 1400MHz | 1GB | 4 |1000Base-T | 802.11ac/n | 4.2 |
+| Raspberry Pi 4 Model B | BCM2711 | 1500MHz | 2GB | 2xUSB2, 2xUSB3 |1000Base-T | 802.11ac/n | 5.0 |
+| Raspberry Pi 4 Model B | BCM2711 | 1500MHz | 4GB | 2xUSB2, 2xUSB3 |1000Base-T | 802.11ac/n | 5.0 |
+| Raspberry Pi 4 Model B | BCM2711 | 1500MHz | 8GB | 2xUSB2, 2xUSB3 |1000Base-T | 802.11ac/n | 5.0 |
+| Raspberry Pi Zero | BCM2835 | 1000MHz | 512MB | 1 | No | No | No |
+| Raspberry Pi Zero W | BCM2835 | 1000MHz | 512MB | 1 | No | 802.11n | 4.1 |
+| Raspberry Pi Zero WH | BCM2835 | 1000MHz | 512MB | 1 | No | 802.11n | 4.1 |
 
 The Model A+ is the low-cost variant of the Raspberry Pi. It has 512MB RAM (as of August 2016: earlier models have 256MB), one USB port, 40 GPIO pins, and no Ethernet port.
 
@@ -298,7 +298,6 @@ Do not use `rpi-update` unless you have been recommended to do so by a Raspberry
 
 ### The processors on the latest Raspberry Pi models are 64-bit, but I cannot find an official 64-bit OS.
 
-Raspberry Pi does supply a official 64-bit OS for the device. Either the 32-bit or 64-bit versions can be installed on the Pi 3 and up. Older Pis do not support running the 64-bit OS as the processors onboard only support running 32-bit software. You can find installation images at the [download link](https://www.raspberrypi.org/downloads/raspberry-pi-os/) which will provide a option for choosing which to run.
 
 ### Can I run PC or Mac software on the Raspberry Pi?
 
@@ -395,19 +394,19 @@ Power interruptions can cause problems on all sorts of electronic devices, and t
 
 The device needs to be powered with a 5V power supply with a USB connector; USB-C for the Raspberry Pi 4, and micro USB for all other models. Exactly how much current (mA) the Raspberry Pi requires is dependent on which model you are using, and what you hook up to it. We recommend our own power supplies, and sell a [2.5A (2500mA)](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/) supply for models up to the Pi 3, and a [3.0A (3000mA) supply](https://www.raspberrypi.org/products/type-c-power-supply/) for the Pi 4. These will provide you with enough power to run your Raspberry Pi for most applications, including use of the 4 USB ports. Very high-demand USB devices may however require the use of a powered hub. The table below outlines the specific power requirements of each model.
 
-| Product                 | Recommended PSU current capacity | Maximum total USB peripheral current draw          | Typical bare-board active current consumption |
-| ----------------------- | -------------------------------- | -------------------------------------------------- | --------------------------------------------- |
-| Raspberry Pi Model A    | 700mA                            | 500mA                                              | 200mA                                         |
-| Raspberry Pi Model B    | 1.2A                             | 500mA                                              | 500mA                                         |
-| Raspberry Pi Model A+   | 700mA                            | 500mA                                              | 180mA                                         |
-| Raspberry Pi Model B+   | 1.8A                             | 1.2A                                               | 330mA                                         |
-| Raspberry Pi 2 Model B  | 1.8A                             | 1.2A                                               | 350mA                                         |
-| Raspberry Pi 3 Model B  | 2.5A                             | 1.2A                                               | 400mA                                         |
-| Raspberry Pi 3 Model A+ | 2.5A                             | Limited by PSU, board, and connector ratings only. | 350mA                                         |
-| Raspberry Pi 3 Model B+ | 2.5A                             | 1.2A                                               | 500mA                                         |
-| Raspberry Pi 4 Model B  | 3.0A                             | 1.2A                                               | 600mA                                         |
-| Raspberry Pi Zero W/WH  | 1.2A                             | Limited by PSU, board, and connector ratings only. | 150mA                                         |
-| Raspberry Pi Zero       | 1.2A                             | Limited by PSU, board, and connector ratings only  | 100mA                                         |
+| Product | Recommended PSU current capacity | Maximum total USB peripheral current draw | Typical bare-board active current consumption |
+|-|-|-|-|
+|Raspberry Pi Model A | 700mA | 500mA | 200mA |
+| Raspberry Pi Model B |1.2A | 500mA | 500mA |
+| Raspberry Pi Model A+ | 700mA | 500mA | 180mA
+| Raspberry Pi Model B+ | 1.8A | 1.2A | 330mA |
+| Raspberry Pi 2 Model B | 1.8A | 1.2A | 350mA |
+| Raspberry Pi 3 Model B | 2.5A | 1.2A | 400mA |
+| Raspberry Pi 3 Model A+ | 2.5A | Limited by PSU, board, and connector ratings only. | 350mA |
+| Raspberry Pi 3 Model B+ | 2.5A | 1.2A | 500mA |
+| Raspberry Pi 4 Model B | 3.0A | 1.2A | 600mA |
+| Raspberry Pi Zero W/WH | 1.2A | Limited by PSU, board, and connector ratings only.| 150mA |
+| Raspberry Pi Zero | 1.2A | Limited by PSU, board, and connector ratings only | 100mA |
 
 The specific current requirements of each model are dependent on the use case: the PSU recommendations are based on **typical maximum** current consumption, the typical current consumption is for each board in a *desktop computer* configuration. The Raspberry Pi Model A, A+, and B can supply a maximum of 500mA to downstream USB peripherals. If you wish to connect a high-power USB device, it is recommended that you connect a powered USB hub to the Raspberry Pi and connect your peripherals to the USB hub.
 
@@ -417,16 +416,16 @@ Very high-current devices, or devices which can draw a surge current such as cer
 
 This is the typical amount of power (in ampere) drawn by different Raspberry Pi models during standard processes:
 
-|                        |     | Raspberry Pi 1B+ | Raspberry Pi 2B | Raspberry Pi 3B | Raspberry Pi Zero | Raspberry Pi 4B |
-| ---------------------- | --- | ---------------- | --------------- | --------------- | ----------------- | --------------- |
-| Boot                   | Max | 0.26             | 0.40            | 0.75            | 0.20              | 0.85            |
-|                        | Avg | 0.22             | 0.22            | 0.35            | 0.15              | 0.7             |
-| Idle                   | Avg | 0.20             | 0.22            | 0.30            | 0.10              | 0.6             |
-| Video playback (H.264) | Max | 0.30             | 0.36            | 0.55            | 0.23              | 0.85            |
-|                        | Avg | 0.22             | 0.28            | 0.33            | 0.16              | 0.78            |
-| Stress                 | Max | 0.35             | 0.82            | 1.34            | 0.35              | 1.25            |
-|                        | Avg | 0.32             | 0.75            | 0.85            | 0.23              | 1.2             |
-| Halt current           |     |                  |                 | 0.10            | 0.055             | 0.023           |
+| | | Raspberry Pi 1B+ | Raspberry Pi 2B | Raspberry Pi 3B | Raspberry Pi Zero | Raspberry Pi 4B |
+|-|-|----------|-------|-------------|------------|------|
+| Boot | Max |0.26 | 0.40| 0.75| 0.20 | 0.85 |
+| | Avg | 0.22 | 0.22 | 0.35 | 0.15 | 0.7 |
+| Idle |Avg | 0.20 | 0.22 | 0.30 | 0.10 | 0.6 |
+| Video playback (H.264) | Max | 0.30 | 0.36 |0.55 |0.23 | 0.85 | 
+| | Avg | 0.22 | 0.28 | 0.33 | 0.16 | 0.78 |
+| Stress | Max | 0.35 | 0.82 | 1.34 | 0.35 | 1.25 |
+| | Avg | 0.32 | 0.75 | 0.85 | 0.23 | 1.2 |
+| Halt current | | | | 0.10 | 0.055 | 0.023 | 
 
 **Test conditions:** We used a standard Raspberry Pi OS image (current as of 26 Feb 2016, or June 2019 for the Raspberry Pi 4), at room temperature, with the Raspberry Pi connected to a HDMI monitor, USB keyboard, and USB mouse. The Raspberry Pi 3 Model B was connected to a wireless LAN access point, the Raspberry Pi 4 was connected to Ethernet. All these power measurements are approximate and do not take into account power consumption from additional USB devices; power consumption can easily exceed these measurements if multiple additional USB devices or a HAT are connected to the Raspberry Pi.
 
