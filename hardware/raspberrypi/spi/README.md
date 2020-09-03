@@ -160,11 +160,11 @@ to /boot/config.txt file. Similar overlays exist for SPI2, SPI3, SPI4, SPI5 and 
 
 The driver does not make use of the hardware chip select lines because of some limitations - instead it can use an arbitrary number of GPIOs as software/GPIO chip selects. This means you are free to choose any spare GPIO as a CS line, and all of these SPI overlays include that control - see `/boot/overlays/README` for details, or run (for example) `dtoverlay -h spi0-2cs` (`dtoverlay -a | grep spi` might be helpful to list them all).
 
-### Speed
+#### Speed
 
 The driver supports all speeds which are even integer divisors of the core clock, although as said above not all of these speeds will support data transfer due to limits in the GPIOs and in the devices attached. As a rule of thumb, anything over 50MHz is unlikely to work, but your mileage may vary.
 
-### Supported Mode bits
+#### Supported Mode bits
 
 ```
 SPI_CPOL    - Clock polarity
@@ -176,16 +176,16 @@ SPI_3WIRE   - Bidirectional mode, data in and out pin shared
 
 Bidirectional or "3-wire" mode is supported by the spi-bcm2835 kernel module. Please note that in this mode, either the tx or rx field of the spi_transfer struct must be a NULL pointer, since only half-duplex communication is possible. Otherwise, the transfer will fail. The spidev_test.c source code does not consider this correctly, and therefore does not work at all in 3-wire mode.
 
-### Supported bits per word
+#### Supported bits per word
 
 - 8 - Normal
 - 9 - This is supported using LoSSI mode.
 
-### Transfer modes
+#### Transfer modes
 
 Interrupt mode is supported on all SPI buses. SPI0, and SPI3-6 also support DMA transfers.
 
-### SPI driver latency
+#### SPI driver latency
 
 This [thread](https://www.raspberrypi.org/forums/viewtopic.php?f=44&t=19489) discusses latency problems.
 
