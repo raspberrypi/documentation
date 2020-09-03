@@ -103,7 +103,7 @@ You can either do this using VirtualBox (or VMWare) on Windows, or install it di
 
 To build the sources for cross-compilation, make sure you have the dependencies needed on your machine by executing:
 ```bash
-sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
+sudo apt install git bc libssl-dev libncurses5-dev
 ```
 If you find you need other things, please submit a pull request to change the documentation.
 
@@ -111,7 +111,7 @@ If you find you need other things, please submit a pull request to change the do
 
 Use the following command to install the cross-arch compiler onto your machine:
 ```bash
-sudo apt install crossbuild-essential-armhf
+sudo apt install --install-recommends crossbuild-essential-armhf
 ```
 
 If you are using Ccache and a CI environment, instruct Ccache to not use the compiler's mtime for cache ID calculations.
