@@ -114,11 +114,6 @@ Use the following command to install the cross-arch compiler onto your machine:
 sudo apt install crossbuild-essential-armhf
 ```
 
-If you are using Ccache and a CI environment, instruct Ccache to not use the compiler's mtime for cache ID calculations.
-This is because Git intentionally doesn't save file timestamps, so each time you clone the toolchain its file mtimes are different, invalidating Ccache's cache when default settings are used.
-
-`ccache --set-config=compiler_check=content`
-
 ### Get sources
 
 To download the minimal source tree for the current branch, run:
