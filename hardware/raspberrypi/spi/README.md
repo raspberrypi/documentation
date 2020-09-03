@@ -11,12 +11,14 @@
 <a name="overview"></a>
 ## Overview
 
-The Raspberry Pi family of devices is equipped with three [SPI](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus) buses. The main SPI interface is referred to as SPI0 in the documentation; the second is SPI1. SPI2 is only usable on a Compute Module or Compute Module 3. By default each SPI bus has 2-3 chip selects, but this number can be changed.
+The Raspberry Pi family of devices is equipped with three [SPI](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus) buses. The main SPI interface is referred to as SPI0 in the documentation; the second is SPI1. SPI2 is only usable on a Compute Module or Compute Module 3. Devices based on BCM2711, i.e. Pi 4B and the upcoming Compute Module 4, have access to an additional 4 SPI buses (SPI3 to SPI6).
 
 <a name="hardware"></a>
 ## Hardware
 
-The BCM2835 on the Raspberry Pi has 3 [http://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus SPI] Controllers. The main SPI (with two slave selects) is available on the header of all Pis with Linux kernel support. The second SPI (with the option of up to three slave selects) is available on 40-pin versions of Pis, with kernel support from Raspbian Jessie 2016-05-10 distribution and up.
+The BCM2835 on the Raspberry Pi has 3 [http://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus SPI] Controllers. The main SPI bus (with two hardware chip selects) is available on the header of all Pis with Linux kernel support. The second SPI bus (with three hardware chip selects) is available on 40-pin versions of Pis, with kernel support from Raspbian Jessie 2016-05-10 distribution and up. The third SPI bus (also with three hardware chip selects) is only usable on a Compute Module because the pins aren't brought out onto the 40-pin header.
+
+BCM2711 adds another 4 SPI buses, each with 2 hardware chip selects. All are available on the 40-pin header (provided nothing else is trying to use the same pins).
 
 Chapter 10 in the [http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf BCM2835 ARM Peripherals] datasheet describes the main controller.  Chapter 2.3 describes the auxiliary controller.
 
@@ -41,7 +43,7 @@ Chapter 10 in the [http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835
 | CE1  | 11 | GPIO17 | SPI1_CE1_N |
 | CE2  | 36 | GPIO16 | SPI1_CE2_N |
 
-#### SPI3 (available only on Compute Modules)
+#### SPI2 (available only on Compute Modules)
 | SPI Function | Broadcom Pin Name | Broadcom Pin Name |
 |---|---|---|
 | MOSI | GPIO41 | SPI2_MOSI |
@@ -50,6 +52,42 @@ Chapter 10 in the [http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835
 | CE0  | GPIO43 | SPI2_CE0_N |
 | CE1  | GPIO44 | SPI2_CE1_N |
 | CE2  | GPIO45 | SPI2_CE2_N |
+
+#### SPI3 (BCM2711 only)
+| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Name |
+|---|---|---|---|
+| MOSI | 03 | GPIO02 | SPI3_MOSI |
+| MISO | 28 | GPIO01 | SPI3_MISO |
+| SCLK | 05 | GPIO03 | SPI3_SCLK |
+| CE0  | 27 | GPIO00 | SPI3_CE0_N |
+| CE1  | 18 | GPIO24 | SPI3_CE1_N |
+
+#### SPI4 (BCM2711 only)
+| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Name |
+|---|---|---|---|
+| MOSI | 31 | GPIO06 | SPI4_MOSI |
+| MISO | 29 | GPIO05 | SPI4_MISO |
+| SCLK | 26 | GPIO07 | SPI4_SCLK |
+| CE0  | 07 | GPIO04 | SPI4_CE0_N |
+| CE1  | 22 | GPIO25 | SPI4_CE1_N |
+
+#### SPI5 (BCM2711 only)
+| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Name |
+|---|---|---|---|
+| MOSI | 08 | GPIO14 | SPI5_MOSI |
+| MISO | 33 | GPIO13 | SPI5_MISO |
+| SCLK | 10 | GPIO15 | SPI5_SCLK |
+| CE0  | 32 | GPIO12 | SPI5_CE0_N |
+| CE1  | 37 | GPIO26 | SPI5_CE1_N |
+
+#### SPI6 (BCM2711 only)
+| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Name |
+|---|---|---|---|
+| MOSI | 38 | GPIO20 | SPI6_MOSI |
+| MISO | 35 | GPIO19 | SPI6_MISO |
+| SCLK | 40 | GPIO21 | SPI6_SCLK |
+| CE0  | 12 | GPIO18 | SPI6_CE0_N |
+| CE1  | 13 | GPIO27 | SPI6_CE1_N |
 
 ### Master modes
 
@@ -65,11 +103,11 @@ MOMI - Master Out Master In
 
 #### Standard mode
 
-In Standard SPI master mode the peripheral implements the standard 3 wire serial protocol (SCLK, MOSI and MISO).
+In Standard SPI mode the peripheral implements the standard 3 wire serial protocol (SCLK, MOSI and MISO).
 
 #### Bidirectional mode
 
-In bidirectional SPI master mode the same SPI standard is implemented, except that a single wire is used for data (MOMI) instead of the two used in standard mode (MISO and MOSI). In this mode, the MOSI pin serves as MOMI pin.
+In bidirectional SPI mode the same SPI standard is implemented, except that a single wire is used for data (MOMI) instead of the two used in standard mode (MISO and MOSI). In this mode, the MOSI pin serves as MOMI pin.
 
 #### LoSSI mode (Low Speed Serial Interface)
 The LoSSI standard allows issuing of commands to peripherals (LCD) and to transfer data to and from them. LoSSI commands and parameters are 8 bits long, but an extra bit is used to indicate whether the byte is a command or parameter/data. This extra bit is set high for a data and low for a command. The resulting 9-bit value is serialized to the output. LoSSI is commonly used with [MIPI DBI](http://mipi.org/specifications/display-interface) type C compatible LCD controllers.
@@ -90,7 +128,7 @@ The CDIV (Clock Divider) field of the CLK register sets the SPI clock speed:
 
 ```
 SCLK = Core Clock / CDIV
-If CDIV is set to 0, the divisor is 65536. The divisor must be a multiple of 2. Odd numbers rounded down. The maximum SPI clock rate is of the APB clock.
+If CDIV is set to 0, the divisor is 65536. The divisor must be a multiple of 2, with odd numbers rounded down. Note that not all possible clock rates are usable because of analogue electrical issues (rise times, drive strengths, etc.)
 ```
 
 See the [Linux driver](#driver) section for more info.
@@ -105,14 +143,12 @@ Setup and Hold times related to the automatic assertion and de-assertion of the 
 <a name="software"></a>
 ## Software
 
-The SPI master driver is disabled by default on Raspberry Pi OS. To enable it, use [raspi-config](../../../configuration/raspi-config.md), or ensure the line `dtparam=spi=on` isn't commented out in `/boot/config.txt`, and reboot. If the SPI driver was loaded, you should see the device `/dev/spidev0.0`.
-
 <a name="driver"></a>
-## Linux driver
+### Linux driver
 
 The default Linux driver is now the standard spi-bcm2835.
 
-SPI0 is disabled by default. To enable manually you must add `dtparam=spi=on` to `/boot/config.txt`. By default it uses 2 chip select lines, but this can be reduced to 1 using `dtoverlay=spi0-1cs`. `dtoverlay=spi0-2cs` also exists, and without any parameters it is equivalent to `dtparam=spi=on`.
+SPI0 is disabled by default. To enable it, use [raspi-config](../../../configuration/raspi-config.md), or ensure the line `dtparam=spi=on` isn't commented out in `/boot/config.txt`. By default it uses 2 chip select lines, but this can be reduced to 1 using `dtoverlay=spi0-1cs`. `dtoverlay=spi0-2cs` also exists, and without any parameters it is equivalent to `dtparam=spi=on`.
 
 To enable SPI1, you can use 1, 2 or 3 chip select lines, adding in each case:
 <pre>
@@ -120,53 +156,13 @@ dtoverlay=spi1-1cs  #1 chip select
 dtoverlay=spi1-2cs  #2 chip select
 dtoverlay=spi1-3cs  #3 chip select
 </pre>
-to /boot/config.txt file. Similar overlays exist for SPI2.
+to /boot/config.txt file. Similar overlays exist for SPI2, SPI3, SPI4, SPI5 and SPI6.
 
-All of these SPI overlays allow the chip select GPIOs to be changed - see `/boot/overlays/README` for details, or run (for example) `dtoverlay -h spi0-2cs`.
+The driver does not make use of the hardware chip select lines because of some limitations - instead it can use an arbitrary number of GPIOs as software/GPIO chip selects. This means you are free to choose any spare GPIO as a CS line, and all of these SPI overlays include that control - see `/boot/overlays/README` for details, or run (for example) `dtoverlay -h spi0-2cs` (`dtoverlay -a | grep spi` might be helpful to list them all).
 
 ### Speed
 
-The driver supports the following speeds:
-
-```
-  cdiv    speed
-     2    125.0 MHz
-     4     62.5 MHz
-     8     31.2 MHz
-    16     15.6 MHz
-    32      7.8 MHz
-    64      3.9 MHz
-   128     1953 kHz
-   256      976 kHz
-   512      488 kHz
-  1024      244 kHz
-  2048      122 kHz
-  4096       61 kHz
-  8192     30.5 kHz
- 16384     15.2 kHz
- 32768     7629 Hz
-```
-
-When asking for say 24 MHz, the actual speed will be 15.6 MHz.
-
-Forum post: [SPI has more speeds](https://www.raspberrypi.org/forums/viewtopic.php?f=44&t=43442&p=347073)
-
-### bcm2835 library
-
-This is a C library for Raspberry Pi (RPi). It provides access to GPIO and other IO functions on the Broadcom BCM 2835 chip. Accesses the hardware registers directly.
-
-http://www.airspayce.com/mikem/bcm2835/
-
-### Use spidev from C
-
-There's a loopback test program in the Linux documentation that can be used as a starting point. See the [Troubleshooting](#troubleshooting) section. Uses the Linux `spidev` driver to access the bus.
-
-### Shell
-
-```bash
-# Write binary 1, 2 and 3
-echo -ne "\x01\x02\x03" > /dev/spidev0.0
-```
+The driver supports all speeds which are even integer divisors of the core clock, although as said above not all of these speeds will support data transfer due to limits in the GPIOs and in the devices attached. As a rule of thumb, anything over 50MHz is unlikely to work, but your mileage may vary.
 
 ### Supported Mode bits
 
@@ -187,11 +183,34 @@ Bidirectional or "3-wire" mode is supported by the spi-bcm2835 kernel module. Pl
 
 ### Transfer modes
 
-Interrupt mode is supported on all SPI buses. SPI0 also supports DMA transfers.
+Interrupt mode is supported on all SPI buses. SPI0, and SPI3-6 also support DMA transfers.
 
 ### SPI driver latency
 
 This [thread](https://www.raspberrypi.org/forums/viewtopic.php?f=44&t=19489) discusses latency problems.
+
+### spidev
+
+spidev presents an ioctl-based userspace interface to individual SPI CS lines. Device Tree is used to indicate whether a CS line is going to be driven by a kernel driver module or managed by spidev on behalf of the user; it isn't possible to do both at the same time. Note that Raspberry Pi's own kernels are more relaxed about the use of Device Tree to enable spidev - the upstream kernels print warnings about such usage, and ultimately may prevent it altogether.
+
+#### Using spidev from C
+
+There's a loopback test program in the Linux documentation that can be used as a starting point. See the [Troubleshooting](#troubleshooting) section.
+
+#### Using spidev from Python
+
+There are several Python libraries that provide access to spidev, including the imaginatively named `spidev` (`pip install spidev` - see https://pypi.org/project/spidev/) and `SPI-Py` (https://github.com/lthiery/SPI-Py).
+
+#### Using spidev from a shell such as bash
+
+```bash
+# Write binary 1, 2 and 3
+echo -ne "\x01\x02\x03" > /dev/spidev0.0
+```
+
+### Other SPI libraries
+
+There are other userspace libraries that provide SPI control by directly manipulating the hardware. This is not recommended.
 
 <a name="troubleshooting"></a>
 ## Troubleshooting
