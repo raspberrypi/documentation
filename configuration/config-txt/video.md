@@ -365,7 +365,7 @@ These values are valid if `hdmi_group=2` (DMT):
 | 78 | 2560x1600 | 75Hz | 16:10 | |
 | 79 | 2560x1600 | 85Hz | 16:10 | |
 | 80 | 2560x1600 | 120Hz | 16:10 | reduced blanking |
-| 81 | 1366x768 | 60Hz | 16:9 | NOT on Pi4 |
+| 81 | 1366x768 | 60Hz | 16:9 | [NOT on Pi4](./pi4-hdmi.md) |
 | 82 | 1920x1080 | 60Hz | 16:9 | 1080p |
 | 83 | 1600x900 | 60Hz | 16:9 | reduced blanking |
 | 84 | 2048x1152 | 60Hz | 16:9 | reduced blanking |
