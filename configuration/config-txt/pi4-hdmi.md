@@ -19,6 +19,6 @@ hdmi_cvt=1360 768 60
 ```
 to config.txt.
 
-Timings specified manually via a `hdmi_timings=` line in `config.txt` will also need to comply with the restriction of all timing parameters being divisible by 2.
+Timings specified manually via a `hdmi_timings=` line in `config.txt` will also need to comply with the restriction of all horizontal timing parameters being divisible by 2.
 
 `dpi_timings=` are not restricted in the same way as that pipeline still only runs at a single pixel per clock cycle.
