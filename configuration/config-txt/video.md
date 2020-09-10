@@ -41,6 +41,9 @@ On older Pi models, the composite behaviour remains the same.
 
 **Note for Raspberry Pi4B users:** Because the Raspberry Pi 4B has two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found in the HDMI section on the [conditionals page](./conditional.md) of the documentation.
 
+In order to support dual 4k displays, the Raspberrry Pi 4 has updated video hardware, which imposes minor restrictions on the modes supported. Please see
+[here](./pi4-hdmi.md) for more details.
+
 ### hdmi_safe
 
 Setting `hdmi_safe` to `1` will lead to "safe mode" settings being used to try to boot with maximum HDMI compatibility. This is the same as setting the following parameters:
@@ -362,7 +365,7 @@ These values are valid if `hdmi_group=2` (DMT):
 | 78 | 2560x1600 | 75Hz | 16:10 | |
 | 79 | 2560x1600 | 85Hz | 16:10 | |
 | 80 | 2560x1600 | 120Hz | 16:10 | reduced blanking |
-| 81 | 1366x768 | 60Hz | 16:9 |  |
+| 81 | 1366x768 | 60Hz | 16:9 | [NOT on Pi4](./pi4-hdmi.md) |
 | 82 | 1920x1080 | 60Hz | 16:9 | 1080p |
 | 83 | 1600x900 | 60Hz | 16:9 | reduced blanking |
 | 84 | 2048x1152 | 60Hz | 16:9 | reduced blanking |

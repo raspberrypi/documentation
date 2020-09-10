@@ -80,23 +80,23 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 * 0x1 - SD CARD  
 * 0x2 - NETWORK  
 * 0x3 - USB device boot [usbboot](https://github.com/raspberrypi/usbboot) - Compute Module only.
-* 0x4 - USB mass storage boot
-* 0xf - RESTART (loop) - start again with the first boot order field.
+* 0x4 - USB mass storage boot (since pieeprom-2020-06-15.bin)
+* 0xf - RESTART (loop) - start again with the first boot order field. (since pieeprom-2020-06-15.bin)
 
 Default: 0x1  
 Version: pieeprom-2020-04-16.bin  
 
-* Boot mode 0x0 will retry the SD boot if the SD card detect pin indicates that the card has been inserted or replaced.
-* The default boot mode is now 0xf41 which means continuously try SD then USB mass storage.
+* Boot mode `0x0` will retry the SD boot if the SD card detect pin indicates that the card has been inserted or replaced.
+* The default boot mode is now `0xf41` which means continuously try SD then USB mass storage.
 
 ### MAX_RESTARTS
-If the RESTART (0xf) boot mode is encountered more than MAX_RESTARTS times then a watchdog reset is triggered. This isn't recommended for general use but may be useful for test or remote systems where a full reset is needed to resolve issues with hardware or network interfaces.
+If the RESTART (`0xf`) boot mode is encountered more than MAX_RESTARTS times then a watchdog reset is triggered. This isn't recommended for general use but may be useful for test or remote systems where a full reset is needed to resolve issues with hardware or network interfaces.
 
 Default: -1 (infinite)  
 Version: pieeprom-2020-06-15.bin - STABLE  
 
 ### SD_BOOT_MAX_RETRIES
-The number of times that SD boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.  
+The number of times that SD boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.   
 -1 means infinite retries.   
 Default: 0  
 Version: pieeprom-2020-04-16.bin  
@@ -347,19 +347,16 @@ sudo reboot
 ```
 <a name="usbmassstorageboot"></a>
 ## USB mass storage boot
-This is currently undergoing beta testing and also requires updated GPU (start.elf) firmware via APT-update OR [rpi-update](../../raspbian/applications/rpi-update.md). If you aren't already familiar with how to use a USB drive for the root filesystem then you probably want to wait until this feature is in the default Raspberry Pi OS image.
+USB MSD boot is now supported by the latest Raspberry Pi OS image (2020-08-20). After updating the bootloader using the following instructions a bootable USB drive may be created by using the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to flash the latest OS image to a USB MSD device.
 
-There is no support for migrating a SD card image to a USB drive. It is possible, but the process can potentially be quite involved and varies according to your original setup. Please see [this forum thread](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=44177&start=350) for more information.
+This is a new feature and we recommend you check the Raspberry Pi [general discussion forum](https://www.raspberrypi.org/forums/viewforum.php?f=63&sid=c5b91609d530566a752920ca7996eb21) for queries or interoperability questions.
 
-N.B. There is now a `stable` release of the bootloader which supports USB MSD and will only be updated with major bug fixes. Since the GPU firmware must also be upgraded USB-MSD boot as a feature is still viewed as beta software.
-
-## USB-MSD firmware setup instructions
-These instructions assume that you are familiar with manual firmware and bootloader updates and understand how to revert to a previous version if you want to revert the changes. If not, please wait until the features are available in a full Raspberry Pi OS release image.
-
-**These instructions are specific to Raspberry Pi OS. Other distributions including NOOBS are likely to require additional steps in order to enable USB boot**
+N.B. For other operating systems please check the maintainer's website for USB boot support.
 
 ### Check that the USB mass storage device works under Linux
 Before attempting to boot from a USB mass storage device it is advisible to verify that the device works correctly under Linux. Boot using an SD card and plug in the USB mass storage device. This should appears as a removable drive.
+
+*Spinning hard-disk drives nearly always require a powered USB hub. Even if it appears to work you are likely to encounter intermittent failures without a powered USB HUB*
 
 This is especially important with USB SATA adapters which may be supported by the bootloader in mass storage mode but fail if Linux selects [USB Attached SCSI - UAS](https://en.wikipedia.org/wiki/USB_Attached_SCSI) mode. 
 
@@ -372,38 +369,23 @@ As with earlier Raspberry Pi models there is no method for specifying the boot d
 
 N.B. config.txt [conditional filters](../configuration/config-txt/conditional.md) can be used to select alternate firmware in complex device configurations.
 
-### Update the bootloader
+### Updating the bootloader
+#### Update using the Raspberry Pi Imager
+The easiest method to update the bootloader with a factory default configuration supporting USB boot is to use the Raspberry Pi Imager.
+1. Download the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/)
+1. Download the latest [EEPROM recovery image](https://github.com/raspberrypi/rpi-eeprom/blob/master/releases.md)
+1. Select `Use Custom` to reformat and flash a **blank** SD card with the EEPROM update enabling USB MSD boot support.
+
+#### Manual bootloader update
 * From a standard Raspberry Pi OS SD card boot:
 ```
 sudo apt update
 sudo apt full-upgrade
 ```
-
 * As root, edit `/etc/default/rpi-eeprom-update` and select `stable` releases.
-
-* Install the `stable` version of the bootloader and replace the current configuration settings to enable USB boot.
-See `BOOT_ORDER` property if you wish to migrate the configuration by hand.
+* Run `vcgencmd bootloader_config` to check your current configuration and decide whether to use the factory default config or migrate your existing boot settings.
+* Update the bootloader
 ```
-sudo rpi-eeprom-update -d -f /lib/firmware/raspberrypi/bootloader/stable/pieeprom-2020-06-15.bin
+# Install the latest stable bootloader release and use the factory default configuration (-d) to enable USB MSD boot.
+sudo rpi-eeprom-update -a -d
 ```
-Alternatively, use the Raspberry Pi Imager to create a custom SD card from the lastest MSD STABLE image on the [releases](https://github.com/raspberrypi/rpi-eeprom/blob/master/releases.md) page.
-
-* Reboot and check the bootloader version and config:
-```
-vcgencmd bootloader_version 
-vcgencmd bootloader_config
-```
-
-### Create a bootable USB drive
-* Use the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to flash Raspberry Pi OS to a USB mass storage device. Other distros have not been tested and may require updates (e.g. u-boot). One reason for having a public beta is to help get USB MSD boot support into other distros.
-* Update the GPU firmware via APT `sudo apt update` then `sudo apt full-upgrade`
-* Download the updated firmware files `*.elf *.dat` from the `master` branch of the [Raspberry Pi Firmware](https://github.com/raspberrypi/firmware) Github repo. 
-* Alternatively use `sudo rpi-update` to update the firmware on a Raspberry Pi OS SD card install, then copy the files from there.
-* Copy these updates to the boot partition on the USB device. From now on `sudo rpi-update` can be used from within Raspberry Pi OS on the USB boot device.
-* A Linux kernel update is not required. Raspberry Pi OS has been tested using the 4.19 and 5.4 (32 and 64 bit) kernel.
-
-### USB device compatiblity
-There is no explicit set of supported devices. Initially we recommend using a USB pen drive or SSD. Hard drives will probably require a powered HUB and in all cases you should verify that the devices work correctly from within Raspberry Pi OS using an SD card boot.
-
-Please post interoperability reports (positive or negative) on [this thread](https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=274595) on the Raspberry Pi forums. 
-
