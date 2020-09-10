@@ -99,36 +99,13 @@ also a Debian distribution, it means many aspects are similar, such as the comma
 
 You can either do this using VirtualBox (or VMWare) on Windows, or install it directly onto your computer. For reference, you can follow instructions online [at Wikihow](http://www.wikihow.com/Install-Ubuntu-on-VirtualBox).
 
-### Install required dependencies
+### Install required dependencies and toolchain
 
 To build the sources for cross-compilation, make sure you have the dependencies needed on your machine by executing:
 ```bash
-sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
+sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev crossbuild-essential-armhf
 ```
 If you find you need other things, please submit a pull request to change the documentation.
-
-### Install toolchain
-
-Use the following command to download the toolchain to the home folder:
-
-```bash
-git clone https://github.com/raspberrypi/tools ~/tools
-```
-
-Updating the $PATH environment variable makes the system aware of file locations needed for cross-compilation. 
-
-```bash
-echo PATH=\$PATH:~/tools/arm-bcm2708/arm-linux-gnueabihf/bin >> ~/.bashrc
-source ~/.bashrc
-```
-If you are using a 32-bit operating system (for example, our Raspberry Pi Desktop for PC), then you may need to install an additional set of libraries:
-
-`sudo apt install zlib1g-dev:amd64`
-
-If you are using Ccache and a CI environment, instruct Ccache to not use the compiler's mtime for cache ID calculations.
-This is because Git intentionally doesn't save file timestamps, so each time you clone the toolchain its file mtimes are different, invalidating Ccache's cache when default settings are used.
-
-`ccache --set-config=compiler_check=content`
 
 ### Get sources
 
