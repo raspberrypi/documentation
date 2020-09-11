@@ -232,7 +232,7 @@ Next, install the kernel modules onto the SD card:
 sudo env PATH=$PATH make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/ext4 modules_install
 ```
 
-#### For 64-Bit:
+#### For 64-Bit
 ```bash
 sudo env PATH=$PATH make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- INSTALL_MOD_PATH=mnt/ext4 modules_install
 ```
