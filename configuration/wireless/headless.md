@@ -1,4 +1,4 @@
-# Setting up a Raspberry Pi headless
+# Setting up a Raspberry Pi Headless
 
 If you do not use a monitor or keyboard to run your Pi (known as headless), but you still need to do some wireless setup, there is a facility to enable wireless networking and SSH when creating a image.
 
