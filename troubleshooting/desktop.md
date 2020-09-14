@@ -13,7 +13,7 @@ Have you installed the Raspberry Pi OS Lite? Have you booted in to console mode?
 
 ### Raspberry Pi OS Lite
 
-The lite version of our OS does not come with an installed desktop, so will always boot to a console until you install a desktop. You can install our desktop in to Lite using the following instructions.
+The lite version of our OS does not come with an installed desktop, so will always boot to a console until you install one. You can install our desktop in to Lite using the following instructions.
 
 ```
 sudo apt update
@@ -22,11 +22,13 @@ sudo apt install raspberrypi-ui-mods
 sudo reboot
 ```
 
+However, this will not result in exactly the same experience as our standard full desktop install, so unless there is no other way, we do recoemend that you reinstall the OS completely with the full desktop image. This will of course, erase anything already on your SD card, so if you need to, make backups first.
+
 ### Console mode
 
 This is Linux's command line interface. It's very powerful, but a bit more difficult to use than our desktop. It's well worth learning, but you can practice that from within the desktop by using a terminal window.
 
-If you actually have a desktop installed, then you can start it from the console, by typing:      
+If you actually have a desktop installed, then you can start it from the console (not a console window while the desktop is already running - that doesn't work!), by typing:
 
 `startx`
 
