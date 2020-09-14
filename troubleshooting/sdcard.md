@@ -4,7 +4,7 @@ For the huge majority of users, the SD card is what holds all the software makes
 
 - [Did you buy a preimaged SD card?](#did-you-buy-a-preimaged-sd-card)
 - [No idea where to start?](#no-idea-where-to-start)
-- [Don't know which image to use?](#dont-know-which-image-to-use)
+- [Don't know which OS to install?](#dont-know-which-OS-to-install)
 - [Having trouble imaging your SD card?](#having-trouble-imaging-your-sd-card)
 
 
@@ -16,7 +16,7 @@ It's perfectly OK to overwrite a preimaged card with a newer image.
 
 ## No idea where to start?
 
-To make installing an OS ready easy, we have produced a peice of software called Raspberry Pi Imager which is available on all major platforms. This makes creating your SD card very simlpe, you just need to run it, choose which OS you want, select tyhe SD card you want to write to and press Start!
+To make installing an OS really easy, we have produced a piece of software called Raspberry Pi Imager which is available on all major platforms. This makes creating your SD card very simple, you just need to run it, choose which OS you want, select the SD card you want to write to and press Write!
 
 To get the Raspberry Pi Imager software, visit our [downloads page](https://www.raspberrypi.org/downloads/).
 
