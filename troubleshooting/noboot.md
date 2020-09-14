@@ -58,12 +58,14 @@ The firmware on the SD card is too old to support the Model 3B/3B+ you are using
 
 ## I appear to have the wrong version of something
 
-You will need to upgrade the version of firmware/OS kernel .
+You will need to upgrade the version of firmware/OS kernel.
 
 You can reimage the SD card completely with the latest Raspbian release, but this will erase all user data on the SD card. 
 
 If you have an older Pi device that already works with the SD card, you can upgrade without re-imaging by booting to the command line and using 
 ```
 sudo apt update
-sudo apt upgrade
+sudo apt full-upgrade
 ```
+
+Note that this cannot upgrade major OS revisions, so if your SD card installation is quite old it might be easier to re-image it or try a new SD card with the latest OS installed.
