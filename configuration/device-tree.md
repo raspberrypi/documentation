@@ -782,7 +782,7 @@ The loading of overlays at runtime is a recent addition to the kernel, and so fa
 
 * Overlays have to be removed in reverse order. The commands will allow you to remove an earlier one, but all the intermediate ones will be removed and re-applied, which may have unintended consequences.
 
-* Adding clocks under the `/clocks` node at run-time doesn't cause a new clock provider to be registered, so `devm_clk_get` will fail for a clock created in an overlay.
+* Only Device Tree nodes at the top level of the tree and children of a bus node will be probed. For nodes added at run-time there is the further limitation that the bus must register for notifications of the addition and removal of children. However, there are exceptions that break this rule and cause confusion: the kernel explicitly scans the entire tree for some device types - clocks and interrupt controller being the two main ones - in order to (for clocks) initialise them early and/or (for interrupt controllers) in a particular order. This search mechanism only happens during booting and so doesn't work for nodes added by an overlay at run-time. It is therefore recommended for overlays to place fixed-clock nodes in the root of the tree unless it is guaranteed that the overlay will not be used at run-time.
 
 <a name="part3.6"></a>
 ### 3.6: Supported overlays and parameters
