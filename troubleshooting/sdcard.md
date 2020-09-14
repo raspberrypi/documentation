@@ -16,14 +16,16 @@ It's perfectly OK to overwrite a preimaged card with a newer image.
 
 ## No idea where to start?
 
-You need to install an OS image on your SD card (if is not preimaged). This is actually pretty easy, first, download the image you want, then install that image on the SD card. We have full instructions [here](../installation/installing-images/README.md)
+To make installing an OS ready easy, we have produced a peice of software called Raspberry Pi Imager which is available on all major platforms. This makes creating your SD card very simlpe, you just need to run it, choose which OS you want, select tyhe SD card you want to write to and press Start!
 
-## Don't know which image to use?
+To get the Raspberry Pi Imager software, visit our [downloads page](https://www.raspberrypi.org/downloads/).
 
-There are two main images on our downloads page. NOOBS, and Raspbian. 
+## Don't know which OS to install?
 
-TODO Choice here...??? What does the user actually want to do with their OS.
+The Raspberry Pi imager will give you a list of the possible OS installs. In the huge majority of cases the one you want is the first in the list, Raspberry Pi OS, 32bit version. This is the one we do development on and is constantly updated and bug fixed to ensure the best user experience.
+
+If you want to install a Media centre OS, LibreElec is a great option, but there are also OS's installs for Retro gaming, and third party OS's like Ubuntu.
 
 ## Having trouble imaging your SD card?
 
-If you have followed the imaging instructions and something has failed (this is very unusual), you can post the problem on our forums where there is loads of help available. See [here](https://www.raspberrypi.org/forums)
+If you have followed the Raspberry Pi Imager instructions and something has failed (this is very unusual), you can post the problem on our forums where there is loads of help available. See [here](https://www.raspberrypi.org/forums)
