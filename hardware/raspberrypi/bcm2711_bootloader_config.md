@@ -361,7 +361,7 @@ sudo rpi-eeprom-update -a -d
 ```
 
 #### Changing the boot mode
-The easiest method to change the the default boot mode [raspi-config](../../configuration/raspi-config.md) to modify the `Boot Options`. Alternatively, edit the EEPROM configuration file to set the `BOOT_ORDER` according to the desired boot mode.
+To change the default boot mode use the `Boot Options`/`Boot Order` option in [raspi-config](../../configuration/raspi-config.md). Alternatively, edit the EEPROM configuration file manually and set the `BOOT_ORDER` according to the desired boot mode then use `rpi-eeprom-update -d -f ` to update the bootloader.
 
 ### USB mass storage boot
 This is a new feature and we recommend you check the Raspberry Pi [general discussion forum](https://www.raspberrypi.org/forums/viewforum.php?f=63&sid=c5b91609d530566a752920ca7996eb21) for queries or interoperability questions.
