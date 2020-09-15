@@ -84,7 +84,7 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 * 0xf - RESTART (loop) - start again with the first boot order field. (since pieeprom-2020-09-03.bin)
 
 Default: 0x1  
-Version: pieeprom-2020-04-16.bin  
+Version: 2020-04-16  
 
 * Boot mode `0x0` will retry the SD boot if the SD card detect pin indicates that the card has been inserted or replaced.
 * The default boot mode is now `0xf41` which means continuously try SD then USB mass storage.
@@ -93,44 +93,44 @@ Version: pieeprom-2020-04-16.bin
 If the RESTART (`0xf`) boot mode is encountered more than MAX_RESTARTS times then a watchdog reset is triggered. This isn't recommended for general use but may be useful for test or remote systems where a full reset is needed to resolve issues with hardware or network interfaces.
 
 Default: -1 (infinite)  
-Version: pieeprom-2020-09-03.bin 
+Version: 2020-09-03  
 
 ### SD_BOOT_MAX_RETRIES
 The number of times that SD boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.   
 -1 means infinite retries.   
 Default: 0  
-Version: pieeprom-2020-04-16.bin  
+Version: 2020-04-16  
 
 ### NET_BOOT_MAX_RETRIES
 The number of times that network boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.  
 -1 means infinite retries.    
 Default: 0  
-Version: pieeprom-2020-04-16.bin  
+Version: 2020-04-16  
 
 ### DHCP_TIMEOUT
 The timeout in milliseconds for the entire DHCP sequence before failing the current iteration.  
 Default: 45000  
 Minimum: 5000  
-Version: pieeprom-2020-04-16.bin  
+Version: 2020-04-16  
 
 ### DHCP_REQ_TIMEOUT
 The timeout in milliseconds before retrying DHCP DISCOVER or DHCP REQ.  
 Default: 4000  
 Minimum: 500  
-Version: pieeprom-2020-04-16.bin  
+Version: 2020-04-16  
 
 ### TFTP_FILE_TIMEOUT
 The timeout in milliseconds for an individual file download via TFTP.  
 Default: 30000  
 Minimum: 5000  
-Version: pieeprom-2020-04-16.bin  
+Version: 2020-04-16  
 
 ### TFTP_IP
 Optional dotted decimal ip address (e.g. "192.168.1.99") for the TFTP server which overrides the server-ip from the DHCP request.  
 This maybe useful on home networks because tftpd-hpa can be used instead of dnsmasq where broadband router is the DHCP server.
 
 Default: ""  
-Version: pieeprom-2020-04-16.bin  
+Version: 2020-04-16  
 
 ### TFTP_PREFIX
 In order to support unique TFTP boot directories for each Pi the bootloader prefixes the filenames with a device specific directory. If neither start4.elf nor start.elf are found in the prefixed directory then the prefix is cleared.
@@ -141,17 +141,17 @@ On earlier models the serial number is used as the prefix, however, on Pi 4 the 
 * 2 - Use the MAC address e.g. "dc-a6-32-01-36-c2/"
 
 Default: 0  
-Version: pieeprom-2020-04-16.bin  
+Version: 2020-04-16  
 
 ### TFTP_PREFIX_STR
 Specify the custom directory prefix string used when TFTP_PREFIX is set to 1. For example:- TFTP_PREFIX_STR=tftp_test/
 Default: ""  
-Version: pieeprom-2020-04-16.bin  
+Version: 2020-04-16  
 
 ### PXE_OPTION43
 Overrides the PXE Option43 match string with a different string. It's normally better to apply customisations to the DHCP server than change the client behaviour but this option is provided in case that's not possible.
 Default: "Raspberry Pi Boot"  
-Version: pieeprom-2020-04-16.bin  
+Version: 2020-04-16  
 
 ### DHCP_OPTION97
 In earlier releases the client GUID (Option97) was just the serial number repeated 4 times. By default, the new GUID format is
@@ -161,7 +161,7 @@ This is intended to be unique but also provide structured information to the DHC
 Specify DHCP_OPTION97=0 to revert the the old behaviour or a non-zero hex-value to specify a custom 4-byte prefix.
 
 Default: 0x34695052  
-Version: pieeprom-2020-04-16.bin  
+Version: 2020-04-16  
 
 ### Static IP address configuration
 If TFTP_IP and the following options are set then DHCP is skipped and the static IP configuration is applied. If the TFTP server is on the same subnet as the client then GATEWAY may be omitted.
@@ -174,46 +174,45 @@ Version: pieeprom-2020-04-16.bin
 #### SUBNET
 The subnet address mask e.g. "255.255.255.0"   
 Default: ""  
-Version: pieeprom-2020-04-16.bin  
+Version: 2020-04-16  
 
 #### GATEWAY
 The gateway address to use if the TFTP server is on a differenet subnet e.g. "192.168.0.1"
 Default: ""  
-Version: pieeprom-2020-04-16.bin  
+Version: 2020-04-16  
 
 #### MAC_ADDRESS
 Overrides the Ethernet MAC address with the given value. e.g. dc:a6:32:01:36:c2  
 Default: ""   
-Version: pieeprom-2020-04-16.bin
+Version: 2020-04-16  
 
 ### DISABLE_HDMI
 The [HDMI boot diagnostics](./boot_diagnostics.md) display is disabled if DISABLE_HDMI=1. Other non-zero values are reserved for future use.
 
 Default: 0   
-Version: pieeprom-2020-04-16.bin  
+Version: 2020-04-16  
 
-`Version: pieeprom-2020-09-03`
-The `disable_splash` property is no longer checked because the HDMI diagnostics screen is started before config.txt is read.
+From version 2020-09-03 the `disable_splash` property in `config.txt` is no longer checked because the HDMI diagnostics screen is started before `config.txt` is read.
 
 ### ENABLE_SELF_UPDATE
 Enables the bootloader to update itself from a network or USB-MSD boot.
 
 If self update is enabled then the bootloader will look for (pieeprom.upd + pieeprom.sig) and/or (vl805.bin + vl805.sig) on the USB MSD boot partition (or TFTP root). If the update files are different to the current image then the update is applied and system is reset. Otherwise, if the images are identical then boot continues as normal.
 
-Since the updates files are in the same format as generated by rpi-eeprom-update you can use rpi-eeprom-update to install the files to /boot so long as /boot mounts the approprate boot device / tftp-root (via NFS).
+Since the updates files are in the same format as generated by rpi-eeprom-update you can use rpi-eeprom-update to install the files to `/boot` so long as `/boot` mounts the approprate boot device / tftp-root (via NFS).
 
 Notes:-
 *  Self-update is not enabled in SD boot because the ROM can already load recovery.bin from the SD card. 
 *  Before self-update can be used (e.g. from USB boot) the bootloader must have already been updated to a version which supports self update. The recommended approach would be to use the Raspberry Pi Imager and a spare SD card to update to pieeprom-2020-09-03 then use self-update for subsequent updates.
 
-Default: 1  (0 in earlier releases)
-Version: pieeprom-2020-09-03.bin  
+Default: 1  (0 in earlier prior to 2020-09-03)
+Version: 2020-04-16  
 
 ### FREEZE_VERSION
 Previously this property was only checked by the rpi-eeprom-update script. However, now that self-update is enabled the bootloader will also check this property. If set, this overrides `ENABLE_SELF_UPDATE` to stop automatic updates. To disable `FREEZE_VERSION` you will have to use an SD card boot with recovery.bin.
 
 Default: 0  
-Version: pieeprom-2020-09-03  
+Version: 2020-09-03  
 
 ### NETCONSOLE - advanced logging
 `NETCONSOLE` duplicates debug messages to the network interface. The IP addresses and ports are defined by the `NETCONSOLE` string.
@@ -238,7 +237,7 @@ BOOT_UART=1
 NETCONSOLE=6665@169.254.1.1/eth0,6666@/
 ```
 
-Version: pieeprom-2020-09-03.bin  
+Version: 2020-09-03  
 
 ### USB_MSD_EXCLUDE_VID_PID
 A list of up to 4 VID/PID pairs specifying devices which the bootloader should ignore. If this matches a HUB then the HUB won’t be enumerated, causing all downstream devices to be excluded.
@@ -248,19 +247,19 @@ The format is a comma-separated list of hexadecimal values with the VID as most 
 E.g. `034700a0,a4231234`
 
 Default: “”  
-Version: pieeprom-2020-09-03.bin  
+Version: 2020-09-03  
 
 ### USB_MSD_DISCOVER_TIMEOUT
 If no USB mass storage devices are found within this timeout then USB-MSD is stopped and the next boot mode is selected
 
 Default: 20000 (20 seconds)  
-Version: pieeprom-2020-09-03.bin  
+Version: 2020-09-03  
 
 ### USB_MSD_LUN_TIMEOUT
 How long to wait in milliseconds before advancing to the next LUN e.g. a multi-slot SD-CARD reader. This is still being tweaked but may help speed up boot if old/slow devices are connected as well as a fast USB-MSD device containing the OS.
 
 Default:  2000 (2 seconds)  
-Version: pieeprom-2020-09-03.bin  
+Version: 2020-09-03  
 
 ### USB_MSD_PWR_OFF_TIME
 During USB mass storage boot, power to the USB ports is switched off for a short time to ensure the correct operation of USB mass storage devices. Most devices work correctly using the default setting: change this only if you have problems booting from a particular device. Setting `USB_MSD_PWR_OFF_TIME=0` will prevent power to the USB ports being switched off during USB mass storage boot.
@@ -268,7 +267,7 @@ During USB mass storage boot, power to the USB ports is switched off for a short
 Default: 1000 (1 second)
 Minimum: 250
 Maximum: 5000
-Version: pieeprom-2020-09-03.bin  
+Version: 2020-09-03  
 
 ### XHCI_DEBUG
 This property is a bit field which controls the verbosity of USB trace messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`
@@ -288,7 +287,7 @@ By default, no extra debug messages are enabled.
 XHCI_DEBUG=0x3
 ```
 Default: 0x0  
-Version: pieeprom-2020-09-03.bin  
+Version: 2020-09-03  
 
 ## config.txt - configuration properties
 ### boot_load_flags
@@ -297,101 +296,36 @@ Experimental property for custom firmware (bare metal).
 Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any compatiblity checks (e.g. is USB MSD boot supported) and resets PCIe before starting the executable. 
 
 Default: 0x0  
-Version: pieeprom-2020-09-03.bin 
+Version: 2020-09-03  
 
 ### uart_2ndstage
-If set to 0x1 then enable debug logging to the UART. In newer firmware versions (Raspberry Pi OS 2020-08-20 and later) UART logging is also automatically enabled in start.elf. This is also described on the [Boot options](../..//configuration/config-txt/boot.md) page.
+If set to 0x1 then enable debug logging to the UART. In newer firmware versions (Raspberry Pi OS 2020-08-20 and later) UART logging is also automatically enabled in start.elf. This is also described on the [Boot options](../../configuration/config-txt/boot.md) page.
 
 Default: 0x0  
-Version: pieeprom-2020-09-03.bin 
+Version: 2020-09-03  
 
 ### eeprom_write_protect  
 Controls whether the bootloader and VLI EEPROMs are marked as write protected.
 
-** This has no effect unless the EEPROM /WP pin is pulled low (TP5). Similarly, /WP low only write protects the status register so if EEPROM write protect was not previously defined then the EEPROM would not actually be write protected **
+** This has no effect unless the EEPROM `/WP` pin is pulled low (TP5). Similarly, /WP low only write protects the status register so if EEPROM write protect was not previously defined then the EEPROM would not actually be write protected **
 
 See: [Winbond W25x40cl datasheet](https://www.winbond.com/resource-files/w25x40cl_f%2020140325.pdf)
 
-* 1 - Confiures the write protect regions to cover the entire EEPROM.
+* 1 - Configures the write protect regions to cover the entire EEPROM.
 * 0 - Clears write protect regions
 * -1 - Do nothing.
 
 Default: -1  
-Version: pieeprom-2020-09-03.bin 
+Version: 2020-09-03   
 
 ### bootloader_update
-This option may be used to block self-update without requiring the EEPROM configuration to be updated. This is sometimes useful when updating multiple Pis via network boot because this option can be controlled per Raspberry Pi (e.g. via a serial number filter in config.txt).
+This option may be set to 0 to block self-update without requiring the EEPROM configuration to be updated. This is sometimes useful when updating multiple Pis via network boot because this option can be controlled per Raspberry Pi (e.g. via a serial number filter in config.txt).
 
 Default: 1
-Version: pieeprom-2020-09-03.bin 
+Version: 2020-09-03  
 
-## Network Boot
-### Server configuration                                                    
-Network boot requires a TFTP and NFS server to be configured.  See [Network boot server tutorial](bootmodes/net_tutorial.md)
-
-Additional notes:-
-* The MAC address on the Pi 4 is programmed at manufacture and is not derived from the serial number.
-```                                                                          
-# mac address (ip addr) - it should start with DC:A6:32
-ip addr | grep ether | head -n1 | awk '{print $2}' | tr [a-z] [A-Z]                                                                                                                                                
-# serial number                                                                                                                         
-vcgencmd otp_dump | grep 28: | sed s/.*://g
-```
-
-### Installation - firmware update
-Network boot requires bootloader version pieeprom-2020-04-16.bin or newer.
-
-```
-# Update the rpi-eeprom package                                                                                                 
-sudo apt update
-sudo apt upgrade
-# Check the current version
-sudo rpi-eeprom-update     
-# Update to latest
-sudo rpi-eeprom-update -a
-```
-
-### Enable network boot
-Network boot is not enabled by default in the bootloader. To enable it the bootloader configuration file must be edited.
-```                                                                        
-# Extract the configuration file                                                                                                         
-cp /lib/firmware/raspberrypi/bootloader/critical/pieeprom-2020-04-16.bin pieeprom.bin                                                       
-rpi-eeprom-config pieeprom.bin > bootconf.txt                                                                          
-```
-Change `BOOT_ORDER` to be `0x21` instead of `0x1`. This tells the bootloader to try sd-card boot first and network boot second. You should normally include sd-card (`0x1`) in the boot sequence in-case of network failure.
-
-### Apply the configuration change to the EEPROM image file
-```
-rpi-eeprom-config --out pieeprom-netboot.bin --config bootconf.txt pieeprom.bin
-```
-### Install the new EEPROM image
-```
-sudo rpi-eeprom-update -d -f ./pieeprom-netboot.bin
-sudo reboot
-```
-<a name="usbmassstorageboot"></a>
-## USB mass storage boot
-USB MSD boot is now supported by the latest Raspberry Pi OS image (2020-08-20). After updating the bootloader using the following instructions a bootable USB drive may be created by using the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to flash the latest OS image to a USB MSD device.
-
-This is a new feature and we recommend you check the Raspberry Pi [general discussion forum](https://www.raspberrypi.org/forums/viewforum.php?f=63&sid=c5b91609d530566a752920ca7996eb21) for queries or interoperability questions.
-
-N.B. For other operating systems please check the maintainer's website for USB boot support.
-
-### Check that the USB mass storage device works under Linux
-Before attempting to boot from a USB mass storage device it is advisible to verify that the device works correctly under Linux. Boot using an SD card and plug in the USB mass storage device. This should appears as a removable drive.
-
-*Spinning hard-disk drives nearly always require a powered USB hub. Even if it appears to work you are likely to encounter intermittent failures without a powered USB HUB*
-
-This is especially important with USB SATA adapters which may be supported by the bootloader in mass storage mode but fail if Linux selects [USB Attached SCSI - UAS](https://en.wikipedia.org/wiki/USB_Attached_SCSI) mode. 
-
-See this [forum thread](https://www.raspberrypi.org/forums/viewtopic.php?t=245931) about UAS and how to add [usb-storage.quirks](https://www.kernel.org/doc/html/v5.0/admin-guide/kernel-parameters.html) to workaround this issue.
-
-### Multiple bootable drives
-When searching for a bootable partition the bootloader scans all USB mass storage devices in parallel and will select the first to respond. If the boot partition does not contain a suitable start.elf file the next available device is selected.
-
-As with earlier Raspberry Pi models there is no method for specifying the boot device according to the USB topology because this would slow down boot and adds unecessary and hard to support configuration complexity.
-
-N.B. config.txt [conditional filters](../configuration/config-txt/conditional.md) can be used to select alternate firmware in complex device configurations.
+## Advanced boot modes - Network / USB mass storage boot.
+For network or USB mass storage boot we recommend updating to bootloader version 2020-09-03 or newer.
 
 ### Updating the bootloader
 #### Update using the Raspberry Pi Imager
@@ -401,15 +335,52 @@ The easiest method to update the bootloader with a factory default configuration
 1. Select `Use Custom` to reformat and flash a **blank** SD card with the EEPROM update enabling USB MSD boot support.
 
 #### Manual bootloader update
-* From a standard Raspberry Pi OS SD card boot:
+* From a Raspberry Pi OS 2020-08-20 or newer SD card:
 ```
 sudo apt update
 sudo apt full-upgrade
 ```
-* As root, edit `/etc/default/rpi-eeprom-update` and select `stable` releases.
 * Run `vcgencmd bootloader_config` to check your current configuration and decide whether to use the factory default config or migrate your existing boot settings.
 * Update the bootloader
 ```
-# Install the latest stable bootloader release and use the factory default configuration (-d) to enable USB MSD boot.
+# Install with the factory default configuration (-d).
 sudo rpi-eeprom-update -a -d
+```
+
+#### Changing the boot mode
+The easiest method to change the the default boot mode [raspi-config](../../configuration/raspi-config.md) to modify the `Boot Options`. Alternatively, edit the EEPROM configuration file to select the desired `BOOT_ORDER`.
+
+### USB mass storage boot
+USB MSD boot is now supported by the latest Raspberry Pi OS image (2020-08-20). After updating the bootloader using the following instructions a bootable USB drive may be created by using the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to flash the latest OS image to a USB MSD device.
+
+This is a new feature and we recommend you check the Raspberry Pi [general discussion forum](https://www.raspberrypi.org/forums/viewforum.php?f=63&sid=c5b91609d530566a752920ca7996eb21) for queries or interoperability questions.
+
+N.B. For other operating systems please check the maintainer's website for USB boot support.
+
+#### Check that the USB mass storage device works under Linux
+Before attempting to boot from a USB mass storage device it is advisible to verify that the device works correctly under Linux. Boot using an SD card and plug in the USB mass storage device. This should appears as a removable drive.
+
+*Spinning hard-disk drives nearly always require a powered USB hub. Even if it appears to work you are likely to encounter intermittent failures without a powered USB HUB*
+
+This is especially important with USB SATA adapters which may be supported by the bootloader in mass storage mode but fail if Linux selects [USB Attached SCSI - UAS](https://en.wikipedia.org/wiki/USB_Attached_SCSI) mode. 
+
+See this [forum thread](https://www.raspberrypi.org/forums/viewtopic.php?t=245931) about UAS and how to add [usb-storage.quirks](https://www.kernel.org/doc/html/v5.0/admin-guide/kernel-parameters.html) to workaround this issue.
+
+#### Multiple bootable drives
+When searching for a bootable partition the bootloader scans all USB mass storage devices in parallel and will select the first to respond. If the boot partition does not contain a suitable start.elf file the next available device is selected.
+
+As with earlier Raspberry Pi models there is no method for specifying the boot device according to the USB topology because this would slow down boot and adds unecessary and hard to support configuration complexity.
+
+N.B. config.txt [conditional filters](../configuration/config-txt/conditional.md) can be used to select alternate firmware in complex device configurations.
+
+### Network boot server configuration                                                    
+Network boot requires a TFTP and NFS server to be configured.  See [Network boot server tutorial](bootmodes/net_tutorial.md)
+
+Additional notes:-
+* The MAC address on the Pi 4 is programmed at manufacture and is not derived from the serial number.
+```                                                                          
+# mac address (ip addr) - it should start with DC:A6:32
+ip addr | grep ether | head -n1 | awk '{print $2}' | tr [a-z] [A-Z]                                                                                                                                                
+# serial number                                                                                                                         
+vcgencmd otp_dump | grep 28: | sed s/.*://g
 ```
