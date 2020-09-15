@@ -108,12 +108,12 @@ sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
 
 If you find you need other things, please submit a pull request to change the documentation.
 
-#### Install the 32-bit toolchain for a 32-bit kernel
+#### install the 32-bit toolchain for a 32-bit kernel
 ```bash
 sudo apt install crossbuild-essential-armhf
 ```
 
-#### Or, Install the 64-bit toolchain for a 64-bit kernel
+#### Or, install the 64-bit toolchain for a 64-bit kernel
 ```bash
 sudo apt install crossbuild-essential-arm64
 ```
@@ -132,7 +132,7 @@ See [**Choosing sources**](#choosing_sources) above for instructions on how to c
 
 Enter the following commands to build the sources and Device Tree files:
 
-#### 32-bit Configs
+#### 32-bit configs
 For Pi 1, Pi Zero, Pi Zero W, or Compute Module:
 
 ```bash
@@ -157,7 +157,7 @@ KERNEL=kernel7l
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
 ```
 
-#### 64-bit Configs
+#### 64-bit configs
 For Pi 3, Pi 3+ or Compute Module 3:
 ```bash
 cd linux
