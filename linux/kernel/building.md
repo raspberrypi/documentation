@@ -108,7 +108,7 @@ sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
 
 If you find you need other things, please submit a pull request to change the documentation.
 
-#### install the 32-bit toolchain for a 32-bit kernel
+#### Install the 32-bit toolchain for a 32-bit kernel
 ```bash
 sudo apt install crossbuild-essential-armhf
 ```
