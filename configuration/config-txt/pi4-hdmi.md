@@ -4,13 +4,13 @@ In order to support dual displays, and modes up to 4k60, the Raspberry Pi 4 has 
 
 Every HDMI mode has a list of timings that control all the parameters around sync pulse durations. These are typically defined via a pixel clock, and then a number of active pixels, a front porch, sync pulse, and back porch for each of the horizontal and vertical directions. 
 
-Running everything at 2 pixels per clock means that the Pi4 can not support a timing where any of the horizontal timings are not divisible by 2. The firmware and Linux kernel will filter out any mode that does not fulfill this criteria.
+Running everything at 2 pixels per clock means that the Pi4 can not support a timing where _any_ of the horizontal timings are not divisible by 2. The firmware and Linux kernel will filter out any mode that does not fulfill this criteria.
 
-There is only one mode in the CEA and DMT standards that falls into this category - DMT mode 81, which is 1366x768 @ 60Hz. 1366x768 is already an unusual mode as normally the width of modes is divisible by 8, whereas 1366 is not.
+There is only one mode in the CEA and DMT standards that falls into this category - DMT mode 81, which is 1366x768 @ 60Hz (and has odd-numbered horizontal sync and back porch timings). 1366x768 is also an unusual mode for having a width that isn't divisible by 8.
 
-If your monitor is of this resolution, then the Pi4 will automatically drop down to the next mode that is advertised by the monitor. This is typically 1280x720.
+If your monitor is of this resolution, then the Pi4 will automatically drop down to the next mode that is advertised by the monitor; this is typically 1280x720.
 
-On some monitors it is possible to configure them to use 1360x768 @ 60Hz. They typically do not advertise this mode so the selection can't be made automatically, but it can be manually chosen by adding
+On some monitors it is possible to configure them to use 1360x768 @ 60Hz. They typically do not advertise this mode in their EDID so the selection can't be made automatically, but it can be manually chosen by adding
 
 ```
 hdmi_group=2
