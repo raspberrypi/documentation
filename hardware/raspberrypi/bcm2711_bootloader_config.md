@@ -98,31 +98,36 @@ Version: 2020-09-03
 ### SD_BOOT_MAX_RETRIES
 The number of times that SD boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.   
 -1 means infinite retries.   
+
 Default: 0  
 Version: 2020-04-16  
 
 ### NET_BOOT_MAX_RETRIES
 The number of times that network boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.  
--1 means infinite retries.    
+-1 means infinite retries.   
+
 Default: 0  
 Version: 2020-04-16  
 
 ### DHCP_TIMEOUT
 The timeout in milliseconds for the entire DHCP sequence before failing the current iteration.  
-Default: 45000  
+
 Minimum: 5000  
+Default: 45000  
 Version: 2020-04-16  
 
 ### DHCP_REQ_TIMEOUT
 The timeout in milliseconds before retrying DHCP DISCOVER or DHCP REQ.  
-Default: 4000  
+
 Minimum: 500  
+Default: 4000  
 Version: 2020-04-16  
 
 ### TFTP_FILE_TIMEOUT
 The timeout in milliseconds for an individual file download via TFTP.  
-Default: 30000  
+
 Minimum: 5000  
+Default: 30000  
 Version: 2020-04-16  
 
 ### TFTP_IP
@@ -144,12 +149,14 @@ Default: 0
 Version: 2020-04-16  
 
 ### TFTP_PREFIX_STR
-Specify the custom directory prefix string used when TFTP_PREFIX is set to 1. For example:- TFTP_PREFIX_STR=tftp_test/
+Specify the custom directory prefix string used when `TFTP_PREFIX` is set to 1. For example:- `TFTP_PREFIX_STR=tftp_test/`
+
 Default: ""  
 Version: 2020-04-16  
 
 ### PXE_OPTION43
 Overrides the PXE Option43 match string with a different string. It's normally better to apply customisations to the DHCP server than change the client behaviour but this option is provided in case that's not possible.
+
 Default: "Raspberry Pi Boot"  
 Version: 2020-04-16  
 
@@ -168,21 +175,25 @@ If TFTP_IP and the following options are set then DHCP is skipped and the static
 
 #### CLIENT_IP
 The IP address of the client e.g. "192.168.0.32"   
+
 Default: ""  
 Version: pieeprom-2020-04-16.bin  
 
 #### SUBNET
 The subnet address mask e.g. "255.255.255.0"   
+
 Default: ""  
 Version: 2020-04-16  
 
 #### GATEWAY
-The gateway address to use if the TFTP server is on a differenet subnet e.g. "192.168.0.1"
+The gateway address to use if the TFTP server is on a differenet subnet e.g. "192.168.0.1"  
+
 Default: ""  
 Version: 2020-04-16  
 
 #### MAC_ADDRESS
 Overrides the Ethernet MAC address with the given value. e.g. dc:a6:32:01:36:c2  
+
 Default: ""   
 Version: 2020-04-16  
 
@@ -205,7 +216,7 @@ Notes:-
 *  Self-update is not enabled in SD boot because the ROM can already load recovery.bin from the SD card. 
 *  Before self-update can be used (e.g. from USB boot) the bootloader must have already been updated to a version which supports self update. The recommended approach would be to use the Raspberry Pi Imager and a spare SD card to update to pieeprom-2020-09-03 then use self-update for subsequent updates.
 
-Default: 1  (0 in earlier prior to 2020-09-03)
+Default: 1  (0 in versions prior to 2020-09-03)
 Version: 2020-04-16  
 
 ### FREEZE_VERSION
@@ -236,7 +247,7 @@ One way to view the data is to connect the test Pi 4 to another Pi running WireS
 BOOT_UART=1
 NETCONSOLE=6665@169.254.1.1/eth0,6666@/
 ```
-
+Default: ""  
 Version: 2020-09-03  
 
 ### USB_MSD_EXCLUDE_VID_PID
@@ -252,7 +263,7 @@ Version: 2020-09-03
 ### USB_MSD_DISCOVER_TIMEOUT
 If no USB mass storage devices are found within this timeout then USB-MSD is stopped and the next boot mode is selected
 
-Default: 20000 (20 seconds)  
+Default: 20000 (20 seconds)   
 Version: 2020-09-03  
 
 ### USB_MSD_LUN_TIMEOUT
@@ -264,9 +275,9 @@ Version: 2020-09-03
 ### USB_MSD_PWR_OFF_TIME
 During USB mass storage boot, power to the USB ports is switched off for a short time to ensure the correct operation of USB mass storage devices. Most devices work correctly using the default setting: change this only if you have problems booting from a particular device. Setting `USB_MSD_PWR_OFF_TIME=0` will prevent power to the USB ports being switched off during USB mass storage boot.
 
-Default: 1000 (1 second)
 Minimum: 250
 Maximum: 5000
+Default: 1000 (1 second)  
 Version: 2020-09-03  
 
 ### XHCI_DEBUG
@@ -301,13 +312,15 @@ Version: 2020-09-03
 ### uart_2ndstage
 If set to 0x1 then enable debug logging to the UART. In newer firmware versions (Raspberry Pi OS 2020-08-20 and later) UART logging is also automatically enabled in start.elf. This is also described on the [Boot options](../../configuration/config-txt/boot.md) page.
 
+The `BOOT_UART` property also enables bootloader UART logging but does not enable UART logging in `start.elf` unless `uart_2ndstage=1` is also set.
+
 Default: 0x0  
 Version: 2020-09-03  
 
 ### eeprom_write_protect  
 Controls whether the bootloader and VLI EEPROMs are marked as write protected.
 
-** This has no effect unless the EEPROM `/WP` pin is pulled low (TP5). Similarly, /WP low only write protects the status register so if EEPROM write protect was not previously defined then the EEPROM would not actually be write protected **
+**This has no effect unless the EEPROM `/WP` pin is pulled low (TP5). Similarly, `/WP` low only write protects the EEPROM status register so if EEPROM write protect was not previously defined then the EEPROM would not actually be write protected**
 
 See: [Winbond W25x40cl datasheet](https://www.winbond.com/resource-files/w25x40cl_f%2020140325.pdf)
 
@@ -321,11 +334,11 @@ Version: 2020-09-03
 ### bootloader_update
 This option may be set to 0 to block self-update without requiring the EEPROM configuration to be updated. This is sometimes useful when updating multiple Pis via network boot because this option can be controlled per Raspberry Pi (e.g. via a serial number filter in config.txt).
 
-Default: 1
+Default: 1  
 Version: 2020-09-03  
 
 ## Advanced boot modes - Network / USB mass storage boot.
-For network or USB mass storage boot we recommend updating to bootloader version 2020-09-03 or newer.
+For network or USB mass storage boot we recommend updating to bootloader version 2020-09-03 and Raspberry Pi OS 2020-08-20 or newer.
 
 ### Updating the bootloader
 #### Update using the Raspberry Pi Imager
@@ -348,11 +361,9 @@ sudo rpi-eeprom-update -a -d
 ```
 
 #### Changing the boot mode
-The easiest method to change the the default boot mode [raspi-config](../../configuration/raspi-config.md) to modify the `Boot Options`. Alternatively, edit the EEPROM configuration file to select the desired `BOOT_ORDER`.
+The easiest method to change the the default boot mode [raspi-config](../../configuration/raspi-config.md) to modify the `Boot Options`. Alternatively, edit the EEPROM configuration file to set the `BOOT_ORDER` according to the desired boot mode.
 
 ### USB mass storage boot
-USB MSD boot is now supported by the latest Raspberry Pi OS image (2020-08-20). After updating the bootloader using the following instructions a bootable USB drive may be created by using the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to flash the latest OS image to a USB MSD device.
-
 This is a new feature and we recommend you check the Raspberry Pi [general discussion forum](https://www.raspberrypi.org/forums/viewforum.php?f=63&sid=c5b91609d530566a752920ca7996eb21) for queries or interoperability questions.
 
 N.B. For other operating systems please check the maintainer's website for USB boot support.
