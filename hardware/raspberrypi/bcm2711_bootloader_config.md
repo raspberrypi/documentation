@@ -59,13 +59,6 @@ If 1 and WAKE_ON_GPIO=0 then switch off all PMIC outputs in halt. This is lowest
 Default: 0  
 Version: 2019-07-15  
 
-### FREEZE_VERSION
-
-If 1 then the `rpi-eeprom-update` will skip automatic updates on this board. The parameter is not processed by the EEPROM bootloader or recovery.bin since there is no way in software of fully write protecting the EEPROM. Custom EEPROM update scripts must also check for this flag.
-
-Default: 0  
-Version: All  
-
 ### BOOT_ORDER
 The BOOT_ORDER setting allows flexible configuration for the priority of different bootmodes. It is represented as 32bit unsigned integer where each nibble represents a bootmode. The bootmodes are attempted in lowest significant nibble to highest significant nibble order.
 
@@ -80,10 +73,10 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 * 0x1 - SD CARD  
 * 0x2 - NETWORK  
 * 0x3 - USB device boot - Reserved - Compute Module only.
-* 0x4 - USB mass storage boot (since pieeprom-2020-09-03.bin)
-* 0xf - RESTART (loop) - start again with the first boot order field. (since pieeprom-2020-09-03.bin)
+* 0x4 - USB mass storage boot (since 2020-09-03)
+* 0xf - RESTART (loop) - start again with the first boot order field. (since 2020-09-03)
 
-Default: 0x1  
+Default: 0xf41 (since 2020-09-03 previously 0x1)
 Version: 2020-04-16  
 
 * Boot mode `0x0` will retry the SD boot if the SD card detect pin indicates that the card has been inserted or replaced.
@@ -177,7 +170,7 @@ If TFTP_IP and the following options are set then DHCP is skipped and the static
 The IP address of the client e.g. "192.168.0.32"   
 
 Default: ""  
-Version: pieeprom-2020-04-16.bin  
+Version: 2020-04-16  
 
 #### SUBNET
 The subnet address mask e.g. "255.255.255.0"   
@@ -219,7 +212,7 @@ Default: 1  (0 in versions prior to 2020-09-03)
 Version: 2020-04-16  
 
 ### FREEZE_VERSION
-Previously this property was only checked by the rpi-eeprom-update script. However, now that self-update is enabled the bootloader will also check this property. If set, this overrides `ENABLE_SELF_UPDATE` to stop automatic updates. To disable `FREEZE_VERSION` you will have to use an SD card boot with recovery.bin.
+Previously this property was only checked by the `rpi-eeprom-update` script. However, now that self-update is enabled the bootloader will also check this property. If set to 1, this overrides `ENABLE_SELF_UPDATE` to stop automatic updates. To disable `FREEZE_VERSION` you will have to use an SD card boot with recovery.bin.
 
 Default: 0  
 Version: 2020-09-03  
@@ -333,8 +326,8 @@ Version: 2020-09-03
 ### bootloader_update
 This option may be set to 0 to block self-update without requiring the EEPROM configuration to be updated. This is sometimes useful when updating multiple Pis via network boot because this option can be controlled per Raspberry Pi (e.g. via a serial number filter in config.txt).
 
-Default: 1  
-Version: 2020-09-03  
+Default: 1  (0 in versions prior to 2020-09-03)  
+Version: 2020-04-16   
 
 ## Advanced boot modes - Network / USB mass storage boot.
 For network or USB mass storage boot we recommend updating to bootloader version 2020-09-03 and Raspberry Pi OS 2020-08-20 or newer.
