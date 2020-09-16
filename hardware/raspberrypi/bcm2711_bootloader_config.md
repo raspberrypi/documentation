@@ -76,7 +76,7 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 * 0x4 - USB mass storage boot (since 2020-09-03)
 * 0xf - RESTART (loop) - start again with the first boot order field. (since 2020-09-03)
 
-Default: 0xf41 (since 2020-09-03 previously 0x1)
+Default: 0xf41 (0x1 in versions prior to 2020-09-03)  
 Version: 2020-04-16  
 
 * Boot mode `0x0` will retry the SD boot if the SD card detect pin indicates that the card has been inserted or replaced.
@@ -214,8 +214,10 @@ Version: 2020-04-16
 ### FREEZE_VERSION
 Previously this property was only checked by the `rpi-eeprom-update` script. However, now that self-update is enabled the bootloader will also check this property. If set to 1, this overrides `ENABLE_SELF_UPDATE` to stop automatic updates. To disable `FREEZE_VERSION` you will have to use an SD card boot with recovery.bin.
 
+**Custom EEPROM update scripts must also check this flag.**
+
 Default: 0  
-Version: 2020-09-03  
+Version: All  
 
 ### NETCONSOLE - advanced logging
 `NETCONSOLE` duplicates debug messages to the network interface. The IP addresses and ports are defined by the `NETCONSOLE` string.
