@@ -1,8 +1,8 @@
 # Kernel building
 
-There are two ways of compiling the linux kernel. One is to compile nativly or cross architecture via cross compiling. Cross compiling is used to compile the kernel for an architecture (such as arm64) on when on another architecture (such as armhf on the Raspberry Pi OS 32-bit).
+There are two main methods for building the kernel. You can build locally on a Raspberry Pi, which will take a long time; or you can cross-compile, which is much quicker, but requires more setup.
 
-## Native building
+## Local building
 
 On a Raspberry Pi, first install the latest version of [Raspberry Pi OS](https://www.raspberrypi.org/downloads/). Then boot your Pi, plug in Ethernet to give you access to the sources, and log in.
 
