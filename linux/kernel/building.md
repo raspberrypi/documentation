@@ -1,6 +1,13 @@
 # Kernel building
 
-There are two main methods for building the kernel. You can build locally on a Raspberry Pi, which will take a long time; or you can cross-compile, which is much quicker, but requires more setup.
+The default compilers and linkers that come with an OS are configured to build executables to run on that OS - they are native tools - but that doesn't have to be the case. A cross-compiler is configured to build code for a target other than the one running the build process, and using it is called cross-compilation.
+
+Cross-compilation of the Raspberry Pi kernel is useful for two reasons:
+
+ * it allows a 64-bit kernel to be built using a 32-bit OS, and vice versa, and
+ * even a modest laptop can cross-compile a Pi kernel significantly faster than the Pi itself.
+
+The instructions below are divided into native builds and cross-compilation; choose the section appropriate for your situation - although there are many common steps between the two, there are also some important differences.
 
 ## Local building
 
