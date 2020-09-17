@@ -279,15 +279,15 @@ Version: 2020-09-03
 ### XHCI_DEBUG
 This property controls the verbosity of USB debug messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`.
 
-| Value | Log
--------------------
-|  0x1  | USB descriptors
-|  0x2  | Mass storage mode state machine
-|  0x4  | Mass storage mode state machine - verbose
-|  0x8  | All USB requests
-|  0x10 | Device and hub state machines
-|  0x20 | All xHCI TRBs (VERY VERBOSE)
-|  0x40 | All xHCI events (VERY VERBOSE)
+| Value | Log                                       |
+|-------|-------------------------------------------|
+|  0x1  | USB descriptors                           |
+|  0x2  | Mass storage mode state machine           |
+|  0x4  | Mass storage mode state machine - verbose |
+|  0x8  | All USB requests                          |
+|  0x10 | Device and hub state machines             |
+|  0x20 | All xHCI TRBs (VERY VERBOSE)              |
+|  0x40 | All xHCI events (VERY VERBOSE)            |
 
 To combine values, add them together.
 
