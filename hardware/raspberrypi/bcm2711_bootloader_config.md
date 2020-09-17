@@ -1,11 +1,11 @@
 # Pi 4 Bootloader Configuration
 
-You can display the currently-active configuration using 
+You can display the currently-active configuration using
 ```
 vcgencmd bootloader_config
 ```
 
-To change these bootloader configuration items, you need to extract the configuration segment, make changes, re-insert it, then reprogram the EEPROM with the new bootloader. The Raspberry Pi will need to be rebooted for changes to take effect. 
+To change these bootloader configuration items, you need to extract the configuration segment, make changes, re-insert it, then reprogram the EEPROM with the new bootloader. The Raspberry Pi will need to be rebooted for changes to take effect.
 
 ```
 # Copy the EEPROM image of interest from /lib/firmware/raspberrypi/bootloader/ to pieeprom.bin
@@ -41,20 +41,21 @@ This section describes all the configuration items available in the bootloader. 
 
 ### BOOT_UART
 
-If 1 then enable UART debug output on GPIO 14 and 15. Configure the receiving debug terminal at 115200bps, 8 bits, no parity bits, 1 stop bit. 
+If 1 then enable UART debug output on GPIO 14 and 15. Configure the receiving debug terminal at 115200bps, 8 bits, no parity bits, 1 stop bit.
+
 Default: 0  
 Version: All  
 
-### WAKE_ON_GPIO 
+### WAKE_ON_GPIO
 
-If 1 then 'sudo halt' will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.  
+If 1 then 'sudo halt' will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.
 
-Default: 0 in original version of bootloader (2019-05-10). Newer bootloaders have this set to 1.  
+Default: 1 (0 in original version of bootloader 2019-05-10)  
 Version: All  
 
-### POWER_OFF_ON_HALT  
+### POWER_OFF_ON_HALT
 
-If 1 and WAKE_ON_GPIO=0 then switch off all PMIC outputs in halt. This is lowest possible power state for halt but may cause problems with some HATs because 5V will still be on. GLOBAL_EN must be shorted to ground to boot.  
+If 1 and WAKE_ON_GPIO=0 then switch off all PMIC outputs in halt. This is lowest possible power state for halt but may cause problems with some HATs because 5V will still be on. GLOBAL_EN must be shorted to ground to boot.
 
 Default: 0  
 Version: 2019-07-15  
@@ -69,9 +70,9 @@ The retry counters are reset when switching to the next boot mode.
 BOOT_ORDER fields  
 The BOOT_ORDER property defines the sequence for the different boot modes. It is read right to left and up to 8 digits may be defined.
 
-* 0x0 - NONE (stop with error pattern)  
-* 0x1 - SD CARD  
-* 0x2 - NETWORK  
+* 0x0 - NONE (stop with error pattern)
+* 0x1 - SD CARD
+* 0x2 - NETWORK
 * 0x3 - USB device boot - Reserved - Compute Module only.
 * 0x4 - USB mass storage boot (since 2020-09-03)
 * 0xf - RESTART (loop) - start again with the first boot order field. (since 2020-09-03)
@@ -80,7 +81,7 @@ Default: 0xf41 (0x1 in versions prior to 2020-09-03)
 Version: 2020-04-16  
 
 * Boot mode `0x0` will retry the SD boot if the SD card detect pin indicates that the card has been inserted or replaced.
-* The default boot mode is now `0xf41` which means continuously try SD then USB mass storage.
+* The default boot order is `0xf41` which means continuously try SD then USB mass storage.
 
 ### MAX_RESTARTS
 If the RESTART (`0xf`) boot mode is encountered more than MAX_RESTARTS times then a watchdog reset is triggered. This isn't recommended for general use but may be useful for test or remote systems where a full reset is needed to resolve issues with hardware or network interfaces.
@@ -89,35 +90,35 @@ Default: -1 (infinite)
 Version: 2020-09-03  
 
 ### SD_BOOT_MAX_RETRIES
-The number of times that SD boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.   
--1 means infinite retries.   
+The number of times that SD boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.  
+-1 means infinite retries.
 
 Default: 0  
 Version: 2020-04-16  
 
 ### NET_BOOT_MAX_RETRIES
 The number of times that network boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.  
--1 means infinite retries.   
+-1 means infinite retries.
 
 Default: 0  
 Version: 2020-04-16  
 
 ### DHCP_TIMEOUT
-The timeout in milliseconds for the entire DHCP sequence before failing the current iteration.  
+The timeout in milliseconds for the entire DHCP sequence before failing the current iteration.
 
 Minimum: 5000  
 Default: 45000  
 Version: 2020-04-16  
 
 ### DHCP_REQ_TIMEOUT
-The timeout in milliseconds before retrying DHCP DISCOVER or DHCP REQ.  
+The timeout in milliseconds before retrying DHCP DISCOVER or DHCP REQ.
 
 Minimum: 500  
 Default: 4000  
 Version: 2020-04-16  
 
 ### TFTP_FILE_TIMEOUT
-The timeout in milliseconds for an individual file download via TFTP.  
+The timeout in milliseconds for an individual file download via TFTP.
 
 Minimum: 5000  
 Default: 30000  
@@ -125,7 +126,7 @@ Version: 2020-04-16
 
 ### TFTP_IP
 Optional dotted decimal ip address (e.g. "192.168.1.99") for the TFTP server which overrides the server-ip from the DHCP request.  
-This maybe useful on home networks because tftpd-hpa can be used instead of dnsmasq where broadband router is the DHCP server.
+This may be useful on home networks because tftpd-hpa can be used instead of dnsmasq where broadband router is the DHCP server.
 
 Default: ""  
 Version: 2020-04-16  
@@ -167,33 +168,33 @@ Version: 2020-04-16
 If TFTP_IP and the following options are set then DHCP is skipped and the static IP configuration is applied. If the TFTP server is on the same subnet as the client then GATEWAY may be omitted.
 
 #### CLIENT_IP
-The IP address of the client e.g. "192.168.0.32"   
+The IP address of the client e.g. "192.168.0.32"
 
 Default: ""  
 Version: 2020-04-16  
 
 #### SUBNET
-The subnet address mask e.g. "255.255.255.0"   
+The subnet address mask e.g. "255.255.255.0"
 
 Default: ""  
 Version: 2020-04-16  
 
 #### GATEWAY
-The gateway address to use if the TFTP server is on a differenet subnet e.g. "192.168.0.1"  
+The gateway address to use if the TFTP server is on a differenet subnet e.g. "192.168.0.1"
 
 Default: ""  
 Version: 2020-04-16  
 
 #### MAC_ADDRESS
-Overrides the Ethernet MAC address with the given value. e.g. dc:a6:32:01:36:c2  
+Overrides the Ethernet MAC address with the given value. e.g. dc:a6:32:01:36:c2
 
-Default: ""   
+Default: ""  
 Version: 2020-04-16  
 
 ### DISABLE_HDMI
 The [HDMI boot diagnostics](./boot_diagnostics.md) display is disabled if DISABLE_HDMI=1. Other non-zero values are reserved for future use.
 
-Default: 0   
+Default: 0  
 Version: 2020-04-16  
 
 From version 2020-09-03 the `disable_splash` property in `config.txt` is no longer checked because the HDMI diagnostics screen is started before `config.txt` is read.
@@ -204,11 +205,11 @@ Enables the bootloader to update itself from a TFTP or USB mass storage device (
 If self update is enabled then the bootloader will look for the update files (.sig/.upd) in the boot file system. If the update image differs from the current image then the update is applied and system is reset. Otherwise, if the EEPROM images are byte-for-byte identical then boot continues as normal.
 
 Notes:-
-*  Self-update is not enabled in SD boot; the ROM can already load recovery.bin from the SD card. 
-*  Before self-update can be used the bootloader must have already been updated to a version which supports self update. The recommended approach would be to use the Raspberry Pi Imager and a spare SD card to update to pieeprom-2020-09-03 then use self-update for subsequent updates.
+* Self-update is not enabled in SD boot; the ROM can already load recovery.bin from the SD card.
+* Before self-update can be used the bootloader must have already been updated to a version which supports self update. The recommended approach would be to use the Raspberry Pi Imager and a spare SD card to update to pieeprom-2020-09-03 then use self-update for subsequent updates.
 * For network boot make sure that the TFTP `boot` directory can be mounted via NFS and that `rpi-eeprom-update` can write to it.
 
-Default: 1  (0 in versions prior to 2020-09-03)
+Default: 1 (0 in versions prior to 2020-09-03)  
 Version: 2020-04-16  
 
 ### FREEZE_VERSION
@@ -241,6 +242,7 @@ One way to view the data is to connect the test Pi 4 to another Pi running WireS
 BOOT_UART=1
 NETCONSOLE=6665@169.254.1.1/eth0,6666@/
 ```
+
 Default: ""  
 Version: 2020-09-03  
 
@@ -257,20 +259,20 @@ Version: 2020-09-03
 ### USB_MSD_DISCOVER_TIMEOUT
 If no USB mass storage devices are found within this timeout then USB-MSD is stopped and the next boot mode is selected
 
-Default: 20000 (20 seconds)   
+Default: 20000 (20 seconds)  
 Version: 2020-09-03  
 
 ### USB_MSD_LUN_TIMEOUT
 How long to wait in milliseconds before advancing to the next LUN e.g. a multi-slot SD-CARD reader. This is still being tweaked but may help speed up boot if old/slow devices are connected as well as a fast USB-MSD device containing the OS.
 
-Default:  2000 (2 seconds)  
+Default: 2000 (2 seconds)  
 Version: 2020-09-03  
 
 ### USB_MSD_PWR_OFF_TIME
 During USB mass storage boot, power to the USB ports is switched off for a short time to ensure the correct operation of USB mass storage devices. Most devices work correctly using the default setting: change this only if you have problems booting from a particular device. Setting `USB_MSD_PWR_OFF_TIME=0` will prevent power to the USB ports being switched off during USB mass storage boot.
 
-Minimum: 250
-Maximum: 5000
+Minimum: 250  
+Maximum: 5000  
 Default: 1000 (1 second)  
 Version: 2020-09-03  
 
@@ -278,19 +280,20 @@ Version: 2020-09-03
 This property is a bit field which controls the verbosity of USB trace messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`
 
 * Bit 0 - USB descriptors
-* Bit 1 - Mass storage mode state machine 
+* Bit 1 - Mass storage mode state machine
 * Bit 2 - Mass storage mode state machine - verbose
 * Bit 3 - All USB requests
 * Bit 4 - Log device and hub state machines
 * Bit 5 - Log all xHCI TRBs (VERY VERBOSE)
 * Bit 6 - Log all xHCI events (VERY VERBOSE)
 
-By default, no extra debug messages are enabled. 
+By default, no extra debug messages are enabled.
 
 ```
 # Example: Enable mass storage and USB descriptor logging
 XHCI_DEBUG=0x3
 ```
+
 Default: 0x0  
 Version: 2020-09-03  
 
@@ -298,7 +301,7 @@ Version: 2020-09-03
 ### boot_load_flags
 Experimental property for custom firmware (bare metal).
 
-Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any compatiblity checks (e.g. is USB MSD boot supported) and resets PCIe before starting the executable. 
+Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any compatiblity checks (e.g. is USB MSD boot supported) and resets PCIe before starting the executable.
 
 Default: 0x0  
 Version: 2020-09-03  
@@ -311,7 +314,7 @@ The `BOOT_UART` property also enables bootloader UART logging but does not enabl
 Default: 0x0  
 Version: 2020-09-03  
 
-### eeprom_write_protect  
+### eeprom_write_protect
 Controls whether the bootloader and VLI EEPROMs are marked as write protected.
 
 **This has no effect unless the EEPROM `/WP` pin is pulled low (TP5). Similarly, `/WP` low only write protects the EEPROM status register so if EEPROM write protect was not previously defined then the EEPROM would not actually be write protected**
@@ -323,13 +326,13 @@ See: [Winbond W25x40cl datasheet](https://www.winbond.com/resource-files/w25x40c
 * -1 - Do nothing.
 
 Default: -1  
-Version: 2020-09-03   
+Version: 2020-09-03  
 
 ### bootloader_update
 This option may be set to 0 to block self-update without requiring the EEPROM configuration to be updated. This is sometimes useful when updating multiple Pis via network boot because this option can be controlled per Raspberry Pi (e.g. via a serial number filter in config.txt).
 
-Default: 1  (0 in versions prior to 2020-09-03)  
-Version: 2020-04-16   
+Default: 1 (0 in versions prior to 2020-09-03)  
+Version: 2020-04-16  
 
 ## Advanced boot modes - Network / USB mass storage boot.
 For network or USB mass storage boot we recommend updating to bootloader version 2020-09-03 and Raspberry Pi OS 2020-08-20 or newer.
@@ -367,7 +370,7 @@ Before attempting to boot from a USB mass storage device it is advisible to veri
 
 *Spinning hard-disk drives nearly always require a powered USB hub. Even if it appears to work you are likely to encounter intermittent failures without a powered USB HUB*
 
-This is especially important with USB SATA adapters which may be supported by the bootloader in mass storage mode but fail if Linux selects [USB Attached SCSI - UAS](https://en.wikipedia.org/wiki/USB_Attached_SCSI) mode. 
+This is especially important with USB SATA adapters which may be supported by the bootloader in mass storage mode but fail if Linux selects [USB Attached SCSI - UAS](https://en.wikipedia.org/wiki/USB_Attached_SCSI) mode.
 
 See this [forum thread](https://www.raspberrypi.org/forums/viewtopic.php?t=245931) about UAS and how to add [usb-storage.quirks](https://www.kernel.org/doc/html/v5.0/admin-guide/kernel-parameters.html) to workaround this issue.
 
@@ -378,14 +381,14 @@ As with earlier Raspberry Pi models there is no method for specifying the boot d
 
 N.B. config.txt [conditional filters](../configuration/config-txt/conditional.md) can be used to select alternate firmware in complex device configurations.
 
-### Network boot server configuration                                                    
-Network boot requires a TFTP and NFS server to be configured.  See [Network boot server tutorial](bootmodes/net_tutorial.md)
+### Network boot server configuration
+Network boot requires a TFTP and NFS server to be configured. See [Network boot server tutorial](bootmodes/net_tutorial.md)
 
 Additional notes:-
 * The MAC address on the Pi 4 is programmed at manufacture and is not derived from the serial number.
-```                                                                          
+```
 # mac address (ip addr) - it should start with DC:A6:32
-ip addr | grep ether | head -n1 | awk '{print $2}' | tr [a-z] [A-Z]                                                                                                                                                
-# serial number                                                                                                                         
+ip addr | grep ether | head -n1 | awk '{print $2}' | tr [a-z] [A-Z]
+# serial number
 vcgencmd otp_dump | grep 28: | sed s/.*://g
 ```
