@@ -310,4 +310,11 @@ kernel=kernel-myconfig.img
 
 This has the advantage of keeping your kernel separate from the kernel image managed by the system and any automatic update tools, and allowing you to easily revert to a stock kernel in the event that your kernel cannot boot.
 
+#### Extra for using a 64-bit kernel on Raspberry Pi OS (32-bit)
+To be able to run the new kernel you will have to modify the /boot/config.txt file to tell the bootloader to start in 64-bit mode.
+
+```bash
+echo "arm_64bit=1" | sudo tee -a /boot/config.txt
+```
+
 Finally, plug the card into the Pi and boot it!
