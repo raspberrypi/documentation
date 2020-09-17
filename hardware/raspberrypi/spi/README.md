@@ -11,21 +11,24 @@
 <a name="overview"></a>
 ## Overview
 
-The Raspberry Pi family of devices is equipped with three [SPI](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus) buses. The main SPI interface is referred to as SPI0 in the documentation; the second is SPI1. SPI2 is only usable on a Compute Module or Compute Module 3. Devices based on BCM2711, i.e. Pi 4B and the upcoming Compute Module 4, have access to an additional 4 SPI buses (SPI3 to SPI6).
+The Raspberry Pi family of devices is equipped with a number of [SPI](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus) buses. SPI can be used to connect a wide variety of peripherals - displays, network controllers (Ethernet, CAN bus), UARTs, etc. These devices are best supported by kernel device drivers, but the `spidev` API allows userspace drivers to be written in a wide array of languages.
 
 <a name="hardware"></a>
 ## Hardware
 
-The BCM2835 on the Raspberry Pi has 3 [http://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus SPI] Controllers. The main SPI bus (with two hardware chip selects) is available on the header of all Pis with Linux kernel support. The second SPI bus (with three hardware chip selects) is available on 40-pin versions of Pis, with kernel support from Raspbian Jessie 2016-05-10 distribution and up. The third SPI bus (also with three hardware chip selects) is only usable on a Compute Module because the pins aren't brought out onto the 40-pin header.
+The BCM2835 core common to all Raspberry Pi devices has 3 SPI Controllers:
+* SPI0, with two hardware chip selects, is available on the header of all Pis (although there is an alternate mapping that is only usable on a Compute Module.
+* SPI1, with three hardware chip selects, is available on 40-pin versions of Pis.
+* SPI2, also with three hardware chip selects, is only usable on a Compute Module because the pins aren't brought out onto the 40-pin header.
 
-BCM2711 adds another 4 SPI buses, each with 2 hardware chip selects. All are available on the 40-pin header (provided nothing else is trying to use the same pins).
+BCM2711 adds another 4 SPI buses - SPI3 to SPI6, each with 2 hardware chip selects. All are available on the 40-pin header (provided nothing else is trying to use the same pins).
 
-Chapter 10 in the [http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf BCM2835 ARM Peripherals] datasheet describes the main controller.  Chapter 2.3 describes the auxiliary controller.
+Chapter 10 in the [BCM2835 ARM Peripherals](../bcm2835/BCM2835-ARM-Peripherals.pdf) datasheet describes the main controller.  Chapter 2.3 describes the auxiliary controller.
 
 ### Pin/GPIO mappings
 
 #### SPI0 (available on J8/P1 headers on all RPi versions)
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Name |
+| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
 |---|---|---|---|
 | MOSI | 19 | GPIO10 | SPI0_MOSI |
 | MISO | 21 | GPIO09 | SPI0_MISO |
@@ -33,8 +36,17 @@ Chapter 10 in the [http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835
 | CE0  | 24 | GPIO08 | SPI0_CE0_N |
 | CE1  | 26 | GPIO07 | SPI0_CE1_N |
 
+#### SPI0 alternate mapping (available only on Compute Modules)
+| SPI Function | Broadcom Pin Name | Broadcom Pin Function |
+|---|---|---|
+| MOSI | GPIO38 | SPI0_MOSI |
+| MISO | GPIO37 | SPI0_MISO |
+| SCLK | GPIO39 | SPI0_SCLK |
+| CE0  | GPIO36 | SPI0_CE0_N |
+| CE1  | GPIO35 | SPI0_CE1_N |
+
 #### SPI1 (available only on 40-pin J8 header)
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Name |
+| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
 |---|---|---|---|
 | MOSI | 38 | GPIO20 | SPI1_MOSI |
 | MISO | 35 | GPIO19 | SPI1_MISO |
@@ -44,7 +56,7 @@ Chapter 10 in the [http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835
 | CE2  | 36 | GPIO16 | SPI1_CE2_N |
 
 #### SPI2 (available only on Compute Modules)
-| SPI Function | Broadcom Pin Name | Broadcom Pin Name |
+| SPI Function | Broadcom Pin Name | Broadcom Pin Function |
 |---|---|---|
 | MOSI | GPIO41 | SPI2_MOSI |
 | MISO | GPIO40 | SPI2_MISO |
@@ -54,7 +66,7 @@ Chapter 10 in the [http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835
 | CE2  | GPIO45 | SPI2_CE2_N |
 
 #### SPI3 (BCM2711 only)
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Name |
+| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
 |---|---|---|---|
 | MOSI | 03 | GPIO02 | SPI3_MOSI |
 | MISO | 28 | GPIO01 | SPI3_MISO |
@@ -63,7 +75,7 @@ Chapter 10 in the [http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835
 | CE1  | 18 | GPIO24 | SPI3_CE1_N |
 
 #### SPI4 (BCM2711 only)
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Name |
+| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
 |---|---|---|---|
 | MOSI | 31 | GPIO06 | SPI4_MOSI |
 | MISO | 29 | GPIO05 | SPI4_MISO |
@@ -72,7 +84,7 @@ Chapter 10 in the [http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835
 | CE1  | 22 | GPIO25 | SPI4_CE1_N |
 
 #### SPI5 (BCM2711 only)
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Name |
+| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
 |---|---|---|---|
 | MOSI | 08 | GPIO14 | SPI5_MOSI |
 | MISO | 33 | GPIO13 | SPI5_MISO |
@@ -81,7 +93,7 @@ Chapter 10 in the [http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835
 | CE1  | 37 | GPIO26 | SPI5_CE1_N |
 
 #### SPI6 (BCM2711 only)
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Name |
+| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
 |---|---|---|---|
 | MOSI | 38 | GPIO20 | SPI6_MOSI |
 | MISO | 35 | GPIO19 | SPI6_MISO |
