@@ -48,9 +48,11 @@ Configure the kernel; as well as the default configuration, you may wish to [con
 <a name="default_configuration"></a>
 #### Apply the default configuration
 
-First, prepare the default configuration by running the following commands, depending on your Raspberry Pi version:
+First, prepare the default configuration by running the following commands, depending on your Raspberry Pi version and OS edition:
 
-##### Raspberry Pi 1, Pi Zero, Pi Zero W, and Compute Module default build configuration
+##### If on the Raspberry Pi OS (32-bit)
+
+###### Raspberry Pi 1, Pi Zero, Pi Zero W, and Compute Module default build configuration
 
 ```bash
 cd linux
@@ -58,7 +60,7 @@ KERNEL=kernel
 make bcmrpi_defconfig
 ```
 
-##### Raspberry Pi 2, Pi 3, Pi 3+, and Compute Module 3 default build configuration
+###### Raspberry Pi 2, Pi 3, Pi 3+, and Compute Module 3 default build configuration
 
 ```bash
 cd linux
@@ -66,11 +68,29 @@ KERNEL=kernel7
 make bcm2709_defconfig
 ```
 
-##### Raspberry Pi 4 default build configuration
+###### Raspberry Pi 4 default build configuration
 
 ```bash
 cd linux
 KERNEL=kernel7l
+make bcm2711_defconfig
+```
+
+##### If on the Raspberry Pi OS (64-bit)
+
+###### Raspberry Pi 3, Pi 3+, and Compute Module 3 default build configuration
+
+```bash
+cd linux
+KERNEL=kernel8
+make bcm2709_defconfig
+```
+
+###### Raspberry Pi 4 default build configuration
+
+```bash
+cd linux
+KERNEL=kernel8
 make bcm2711_defconfig
 ```
 
@@ -88,6 +108,7 @@ You can also change that setting graphically as shown in [the kernel configurati
 
 Build and install the kernel, modules, and Device Tree blobs; this step can take a **long** time depending on the Pi model in use:
 
+#### If on the Raspberry Pi OS (32-bit)
 ```bash
 make -j4 zImage modules dtbs
 sudo make modules_install
@@ -95,6 +116,17 @@ sudo cp arch/arm/boot/dts/*.dtb /boot/
 sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
 sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
 sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
+```
+
+#### If on the Raspberry Pi OS (64-bit)
+**Note**: The 64-bit kernel is in "Image" vs "zImage"
+```bash
+make -j4 Image modules dtbs
+sudo make modules_install
+sudo cp arch/arm64/boot/dts/broadcom/*.dtb /boot/
+sudo cp arch/arm64/boot/dts/overlays/*.dtb* /boot/overlays/
+sudo cp arch/arm64/boot/dts/overlays/README /boot/overlays/
+sudo cp arch/arm64/boot/Image /boot/$KERNEL.img
 ```
 
 **Note**: On a Raspberry Pi 2/3/4, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
