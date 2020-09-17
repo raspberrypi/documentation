@@ -298,7 +298,7 @@ To combine values, add them together.
 XHCI_DEBUG=0x3
 ```
 
-Default: 0x0 (no USB debug messages enabled)
+Default: 0x0 (no USB debug messages enabled)  
 Version: 2020-09-03  
 
 ## config.txt - configuration properties
