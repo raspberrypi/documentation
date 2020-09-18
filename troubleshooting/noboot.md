@@ -1,4 +1,4 @@
-# My Raspberry Pi won't boot!
+# My Raspberry Pi won't work - help!
 
 OK, you have imaged your SD card, plugged it in, plugged in a monitor or TV, plugged in the power. But nothing happens. What's going on?
 
