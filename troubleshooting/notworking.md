@@ -1,5 +1,22 @@
 # My Raspberry Pi won't work - help!
 
+Let's go through some simple steps to find out what is going on.
+
+## Blinky blinky lights
+
+The first thing to look at is the little LED lights on your Pi. Watch what happens after you plug the power into the Pi - does one of the lights flash in an irregular way, or is there a pattern?
+
+### I see irregular blinks
+
+Good stuff: this means your Pi is starting up. It just needs to get the display working on your screen.
+
+### The blinks seem to have a pattern
+
+This means the Pi is having difficulty starting up. The pattern of the blinks indicates the exact problem.
+
+
+#### jamesh65 content below.
+
 OK, you have imaged your SD card, plugged it in, plugged in a monitor or TV, plugged in the power. But nothing happens. What's going on?
 
 First thing to know is that all Pi devices are tested prior to leaving the factory, so they worked at that point. It's technically possible for it to be damaged in transit, or to fail on its first boot, but in the huge majority of cases, boot problems are caused by a defective or badly imaged SD card.
