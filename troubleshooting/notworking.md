@@ -15,6 +15,9 @@ Good stuff: this means your Pi is starting up. It just needs to get the display 
 This means the Pi is having difficulty starting up. The pattern of the blinks indicates the exact problem.
 
 
+In both cases, check that your Raspberry Pi is receiving enough power. We recommend using our official Raspberry Pi Power Supply.
+
+
 #### jamesh65 content below.
 
 OK, you have imaged your SD card, plugged it in, plugged in a monitor or TV, plugged in the power. But nothing happens. What's going on?
