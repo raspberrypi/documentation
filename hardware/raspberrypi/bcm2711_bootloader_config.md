@@ -146,6 +146,7 @@ Version: 2020-04-16
 Specify the custom directory prefix string used when `TFTP_PREFIX` is set to 1. For example:- `TFTP_PREFIX_STR=tftp_test/`
 
 Default: ""  
+Max length: 32 characters  
 Version: 2020-04-16  
 
 ### PXE_OPTION43
@@ -229,9 +230,14 @@ N.B. NETCONSOLE blocks until the ethernet link is established or a timeout occur
 See https://wiki.archlinux.org/index.php/Netconsole
 ```
 src_port@src_ip/dev_name,dst_port@tgt_ip/tgt_mac
-E.g. 6665@169.254.1.1/eth0,6666@/
+E.g. 6665@169.254.1.1/,6666@/
 ```
-In order to simplify parsing, the bootloader requires every field separator to be present. In the example the target IP address (255.255.255.255) and target mac address (00:00:00:00:00) are assigned default values.
+In order to simplify parsing, the bootloader requires every field separator to be present. The source ip address must be specified but the following fields may be left blank and assigned default values.
+
+* src port - 6665
+* dst port - 6666
+* dst ip - 255.255.255.255
+* dst mac - 00:00:00:00:00
 
 One way to view the data is to connect the test Pi 4 to another Pi running WireShark and select “udp.srcport == 6665” as a filter and select `Analyze -> Follow -> UDP stream` to view as an ASCII log.
 
@@ -239,11 +245,11 @@ One way to view the data is to connect the test Pi 4 to another Pi running WireS
 ```
 # Enable debug if GPIO 7 is pulled low
 [gpio7=0]
-BOOT_UART=1
-NETCONSOLE=6665@169.254.1.1/eth0,6666@/
+NETCONSOLE=6665@169.254.1.1/,6666@/
 ```
 
-Default: ""  
+Default: ""  (not enabled)  
+Max length: 32 characters  
 Version: 2020-09-03  
 
 ### USB_MSD_EXCLUDE_VID_PID
