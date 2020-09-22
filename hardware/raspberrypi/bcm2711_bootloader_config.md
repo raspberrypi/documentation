@@ -229,15 +229,16 @@ N.B. NETCONSOLE blocks until the ethernet link is established or a timeout occur
 #### Format
 See https://wiki.archlinux.org/index.php/Netconsole
 ```
-src_port@src_ip/dev_name,dst_port@tgt_ip/tgt_mac
+src_port@src_ip/dev_name,dst_port@dst_ip/dst_mac
 E.g. 6665@169.254.1.1/,6666@/
 ```
 In order to simplify parsing, the bootloader requires every field separator to be present. The source ip address must be specified but the following fields may be left blank and assigned default values.
 
-* src port - 6665
-* dst port - 6666
-* dst ip - 255.255.255.255
-* dst mac - 00:00:00:00:00
+* src_port - 6665
+* dev_name - "" (the device name is always ignored)
+* dst_port - 6666
+* dst_ip - 255.255.255.255
+* dst_mac - 00:00:00:00:00
 
 One way to view the data is to connect the test Pi 4 to another Pi running WireShark and select “udp.srcport == 6665” as a filter and select `Analyze -> Follow -> UDP stream` to view as an ASCII log.
 
