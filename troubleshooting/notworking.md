@@ -10,6 +10,8 @@ The first thing to look at is the little LED lights on your Pi. Watch what happe
 
 Your Pi is not getting enough power, or it's just broken. All Raspberry Pis are tested before they leave the factory, but it is possible that it got broken somehow before you plugged it in.
 
+**Raspberry Pi Zero:** there's two micro USB connectors on this board - make sure you plug the power into the one on the left labelled `PWR`.
+
 ### I see irregular blinks
 
 Good stuff: this means your Pi is starting up. It just needs to get the display working on your screen: see our [display troubleshooting section](./display.md).
