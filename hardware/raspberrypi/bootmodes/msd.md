@@ -11,7 +11,14 @@ Note that 'USB mass storage boot' is different from 'USB device boot mode'. [USB
 If you are unable to use a particular USB device to boot your Raspberry Pi, an alternative is to use the special bootcode.bin-only boot mode as described [here](README.md). This Pi will still boot from the SD card, but `bootcode.bin` is the only file read from it.
 
 ## Raspberry Pi 4
-On the Raspberry Pi 4 the boot mode is configured via a file in the [bootloader EEPROM](../bcm2711_bootloader_config.md).
+To enable USB mass storage boot on a Raspberry Pi 4.
+
+* Use the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to install the latest bootloader EEPROM image.
+* Update to Raspberry Pi OS 2020-08-20 or newer.
+* Use [raspi-config](../../../configuration/raspi-config.md) to choose between SD/USB (defaut) or SD/Network boot modes.
+
+The full set of boot mode options is documented on the [bootloader configuration](../bcm2711_bootloader_config.md) page.
+
 
 ## Raspberry Pi 2B v1.2, 3A+, 3B, Compute Module 3
 
