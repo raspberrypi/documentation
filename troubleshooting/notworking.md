@@ -38,7 +38,7 @@ All of these problems could also be caused by the Pi not receiving enough power.
 
 ## I see something in the display, but it's not what I was expecting!
 
-### I've got the rainbow screen
+### I've got a rainbow screen
 
 This is usually caused by an out-of-date SD card image. Use [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to image your SD card with the latest version.
 
