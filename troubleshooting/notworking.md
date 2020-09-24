@@ -15,7 +15,7 @@ Good stuff: this means your Pi is starting up. It just needs to get the display 
 This means the Pi is having difficulty starting up. The pattern of the blinks indicates the exact problem.
 
 
-In both cases, this could be caused by the Pi not receiving enough power. We recommend using our official Raspberry Pi Power Supply.
+In both cases, this could be caused by the Pi not receiving enough power. We recommend using our official Raspberry Pi Power Supply: for Pi 4 you need the [USB-C version](https://www.raspberrypi.org/products/type-c-power-supply/), all other models use the [micro USB version](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/).
 
 
 #### jamesh65 content below.
