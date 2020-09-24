@@ -18,7 +18,7 @@ All Raspberry Pis are tested before they leave the factory, but it is possible t
 
 ### I see irregular blinks
 
-Good stuff: this means your Pi is starting up but is having difficulty talking to your screen: see our [display troubleshooting section](./display.md).
+Good stuff: this means your Pi *is* starting up but is having difficulty talking to your screen: see our [display troubleshooting section](./display.md).
 
 ### The blinks seem to have a pattern
 
