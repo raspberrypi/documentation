@@ -10,6 +10,17 @@ Note that 'USB mass storage boot' is different from 'USB device boot mode'. [USB
 
 If you are unable to use a particular USB device to boot your Raspberry Pi, an alternative is to use the special bootcode.bin-only boot mode as described [here](README.md). This Pi will still boot from the SD card, but `bootcode.bin` is the only file read from it.
 
+<a name="pi4"></a>
+## Raspberry Pi 4
+To enable USB mass storage boot on a Raspberry Pi 4:
+
+* Use the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to install the latest bootloader EEPROM image.
+* Update to Raspberry Pi OS 2020-08-20 or newer.
+* Use [raspi-config](../../../configuration/raspi-config.md) to choose between SD/USB (default) or SD/Network boot modes.
+
+The full set of boot mode options is documented on the [bootloader configuration](../bcm2711_bootloader_config.md) page.
+
+
 ## Raspberry Pi 2B v1.2, 3A+, 3B, Compute Module 3
 
 On the Raspberry Pi 2B v1.2, 3A+, 3B, and Compute Module 3 you must first enable [USB host boot mode](host.md). This is to allow USB mass storage boot, and [network boot](net.md). Note that network boot is not supported on the Raspberry Pi 3A+.
@@ -56,8 +67,3 @@ After five to ten seconds, the Raspberry Pi should begin booting and show the ra
 
 - The default timeout for checking bootable USB devices is 2 seconds. Some flash drives and hard disks power up too slowly. It is possible to extend this timeout to five seconds (add a new file `timeout` to the SD card), but note that some devices take even longer to respond.
 - Some flash drives have a very specific protocol requirement that is not handled by the bootcode and may thus be incompatible.
-
-<a name="pi4"></a>
-## Raspberry Pi 4
-
-The Raspberry Pi 4 currently requires non-default firmware to enable USB mass storage boot: see the [USB mass storage boot](../bcm2711_bootloader_config.md#usbmassstorageboot) section of the Pi 4 Bootloader Configuration page for more information.
