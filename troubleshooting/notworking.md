@@ -12,7 +12,7 @@ Your Pi is not getting enough power, or it's just broken. All Raspberry Pis are 
 
 ### I see irregular blinks
 
-Good stuff: this means your Pi is starting up. It just needs to get the display working on your screen.
+Good stuff: this means your Pi is starting up. It just needs to get the display working on your screen: see our [display troubleshooting section](./display.md).
 
 ### The blinks seem to have a pattern
 
