@@ -4,7 +4,11 @@ Let's go through some simple steps to find out what is going on.
 
 ## Blinky blinky lights
 
-The first thing to look at is the little LED lights on your Pi. Watch what happens after you plug the power into the Pi - does one of the lights flash in an irregular way, or is there a pattern?
+The first thing to look at is the little LED lights on your Pi. Watch what happens after you plug the power into the Pi - do you see a light come on? Does one of the lights flash in an irregular way, or is there a pattern?
+
+### Nothing lights up at all on my Pi
+
+Your Pi is not getting enough power, or it's just broken. All Raspberry Pis are tested before they leave the factory, but it is possible that it got broken somehow before you plugged it in.
 
 ### I see irregular blinks
 
@@ -15,7 +19,8 @@ Good stuff: this means your Pi is starting up. It just needs to get the display 
 This means the Pi is having difficulty starting up. The pattern of the blinks indicates the exact problem.
 
 
-In both cases, this could be caused by the Pi not receiving enough power. We recommend using our official Raspberry Pi Power Supply: for Pi 4 you need the [USB-C version](https://www.raspberrypi.org/products/type-c-power-supply/), all other models use the [micro USB version](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/).
+
+All of these problems could be caused by the Pi not receiving enough power. We recommend using our official Raspberry Pi Power Supply: for Pi 4 you need the [USB-C version](https://www.raspberrypi.org/products/type-c-power-supply/), all other models use the [micro USB version](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/).
 
 
 #### jamesh65 content below.
