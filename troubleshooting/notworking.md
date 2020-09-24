@@ -18,14 +18,14 @@ Good stuff: this means your Pi is starting up. It just needs to get the display 
 
 This means the Pi is having difficulty starting up. The pattern of the blinks indicates the exact problem.
 
-*3 flashes* or
-*4 flashes*
+*3 flashes* or  
+*4 flashes*  
 There something wrong with your SD card: perhaps it has not been imaged correctly?
 
-*7 flashes*
+*7 flashes*  
 Your Pi has started to boot, but the operating system cannot be loaded. Again, this probably means a badly imaged SD card.
 
-*8 flashes*
+*8 flashes*  
 This is caused by an out-of-date SD card image. Use [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to image your SD card with the latest version.
 
 
