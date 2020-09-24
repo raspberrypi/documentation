@@ -22,7 +22,7 @@ Good stuff: this means your Pi *is* starting up but is having difficulty talking
 
 ### The blinks seem to have a pattern
 
-This means the Pi is having difficulty starting up. The pattern of the blinks indicates the exact problem.
+This means the Pi is having difficulty starting up: the pattern of the blinks indicates the exact problem.
 
 *3 flashes* or  
 *4 flashes*  
