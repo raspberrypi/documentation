@@ -6,7 +6,7 @@ Specifies how much memory, in megabytes, to reserve for the exclusive use of the
 
 The memory allocated to the GPU is used for display, 3D, Codec and camera purposes as well as some basic firmware housekeeping. The maximums specified below assume you are using all these features. If you are not, then smaller values of gpu_mem can be used. 
 
-To ensure the best performance of Linux, you should set `gpu_mem` to the lowest possible value. If a particular graphics feature is not working correctly, try increasing the value of `gpu_mem`, being mindful of the recommended maximums shown below. Unlike GPU's found on x86 machines, where increasing memory can improve 3D performance, the architecture of the Videocore means **there is no performance advantage from specifying values larger than is necessary**, and in fact it can harm performance.
+To ensure the best performance of Linux, you should set `gpu_mem` to the lowest possible value. If a particular graphics feature is not working correctly, try increasing the value of `gpu_mem`, being mindful of the recommended maximums shown below. Unlike GPU's found on x86 machines, where increasing memory can improve 3D performance, the architecture of the VideoCore means **there is no performance advantage from specifying values larger than is necessary**, and in fact it can harm performance.
 
 On the Raspberry Pi 4 the 3D component of the GPU has its own memory management unit (MMU), and does not use memory from the `gpu_mem` allocation. Instead memory is allocated dynamically within Linux. This allows a smaller value to be specified for `gpu_mem` on the Pi 4, compared to previous models.
 
