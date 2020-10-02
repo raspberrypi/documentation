@@ -2,12 +2,17 @@
 
 The Raspberry Pi 4 has an SPI-attached EEPROM (4MBits/512KB), which contains code to boot up the system and replaces `bootcode.bin` previously found in the boot partition of the SD card. Note that if a `bootcode.bin` is present in the boot partition of the SD card in a Pi 4, it is ignored.
 
+## Boot diagnostics
+If an error occurs during boot then an [error code](../../configuration/led_blink_warnings.md) will be displayed via the green LED. Newer versions of the bootloader will display a [diagnostic message](boot_diagnostics.md) will be shown on both HDMI displays.
+
 ## Updating the bootloader
 
 ### Raspberry Pi Imager
-The easiest way to to update the bootloader to the latest version with default settings is to use the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to install a boot recovery image on to a spare SD card.
+The easiest way to to update the bootloader to the latest version with default settings is to use the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to install a boot recovery image onto a spare SD card.
 
 Select "Choose OS -> Misc utility images -> Raspberry Pi 4 EEPROM boot recovery"
+
+Raspberry Pi OS also keeps the EEPROM up-to-date: new EEPROM images are applied when the Raspberry Pi 4 next boots.
 
 ### Updating from Raspberry Pi OS
 Bootloader updates are instigated during a normal `apt update`, `apt full-upgrade` cycle, this means you will get new features and bug fixes during your normal updates. 
@@ -44,19 +49,19 @@ vcgencmd bootloader_version
 The bootloader EEPROM image contains a configuration file to define the boot behaviour (e.g. selecting between SD, network and USB boot). 
 The `rpi-eeprom-config` tool may be used to modify the configuration within an EEPROM image file. 
 
-See the [Bootloader Configuration Page](./bcm2711_bootloader_config.md) for details of the of the configuration file.
+See the [Bootloader Configuration Page](./bcm2711_bootloader_config.md) for details of the configuration file.
 
 ### Reading the current EEPROM configuration
-To view the configuration file used by the bootloader at boot time run `rpi-eeprom-config` or `vcgencmd bootloader_config`
+To view the configuration file used by the bootloader at boot time run `rpi-eeprom-config` or `vcgencmd bootloader_config`.
 
 ### Editing the current bootloader configuration
-The following command loads the current EEPROM configuration into a text editor. When the editor is closed `rpi-eeprom-config` applies the updated configuration to latest available EEPROM release and uses `rpi-eeprom-update` to schedule an update when the system is rebooted
+The following command loads the current EEPROM configuration into a text editor. When the editor is closed, `rpi-eeprom-config` applies the updated configuration to latest available EEPROM release and uses `rpi-eeprom-update` to schedule an update when the system is rebooted:
 
 ```
 sudo rpi-eeprom-config --edit
 sudo reboot
 ```
-If the updated configuration file is identical or empty then the update is cancelled.
+If the updated configuration file is identical or empty then no changes are made.
 
 ### Applying a saved configuration file
 The following command applies `boot.conf` to the latest available EEPROM image and uses `rpi-eeprom-update` to schedule an update when the system is rebooted.
@@ -79,7 +84,7 @@ The following command reads `pieeprom.bin` and replaces the configuration file w
 rpi-eeprom-config --config boot.conf --out new.bin pieeprom.bin
 ```
 
-For more information about advanced options please run `rpi-eeprom-config -h` 
+For more information about advanced options please run `rpi-eeprom-config -h`.
 
 #### Updating the bootloader EEPROM
 The following will cause the bootloader EEPROM to be updated the next time the system is rebooted.
@@ -88,10 +93,25 @@ The following will cause the bootloader EEPROM to be updated the next time the s
 # of replacing it with the current configuration from vcgencmd bootloader.
 sudo rpi-eeprom-update -d -f new.bin
 ```
-For more information about advanced options please run `rpi-eeprom-update -h` 
+For more information about advanced options please run `rpi-eeprom-update -h`.
 
-### Recovery.bin
-TODO - Add something about recovery.bin here with links to SELF_UPDATE and pieeprom.bin / pieeprom.sig
+### recovery.bin
+At power on, the BCM2711 ROM looks for a file called `recovery.bin` in the root directory of the boot partition on the sd-card. If a valid `recovery.bin` is found then the ROM executes this instead of the SPI EEPROM image. This mechanism ensures that the bootloader SPI EEPROM can always be reset to valid image with factory default settings.
+
+#### EEPROM update files
+| Filename | Purpose |
+|----------|---------|
+| recovery.bin | VideoCore EEPROM recovery executable |
+| pieeprom.upd | Bootloader EEPROM image |
+| pieeprom.bin | Bootloader EEPROM image (same as pieeprom.upd) |
+| pieeprom.sig | The sha256 checksum of bootloader image (pieeprom.upd/pieeprom.bin) |
+| vl805.bin | The VLI805 USB firmware EEPROM image. Pi 4 revision 1.4 and newer do not have a dedicated SPI EEPROM for the VL805 USB controller |
+| vl805.sig | The sha256 checksum of vl805.bin |
+
+* If the bootloader update image is called `pieeprom.upd` then `recovery.bin` renames itself to `recovery.000` and resets the CPU. Since `recovery.bin` is no longer present the ROM loads the newly bootloader from SPI EEPROM and the OS is booted as normal.
+* The `.sig` files should just contain the sha256 checksum (in hex) of the corresponding image file. Other fields should may be added in the future.
+* If the bootloader update image is called `pieeprom.bin` the `recovery.bin` will stop after the update has completed. On success the HDMI output will be green and the green activity LED is flashed rapidly. Otherwise, the HDMI output will be read and an error code will be displayed via the activity LED.
+* The BCM2711 ROM does not support loading of recovery.bin from USB mass storage or TFTP. Instead, newer versions of the bootloader support a self-update mechanism where the SPI bootloader is able to reflash the SPI EEPROM itself. See `ENABLE_SELF_UPDATE` on the (bootloader configuration)[bcm2711_bootloader_config.md] page.
 
 ### Firmware release status
 The firmware release status corresponds to a particular subdirectory of bootloader firmware images (`/lib/firmware/raspberrypi/bootloader/...`), and can be changed to select a different release stream. By default, Raspberry Pi OS only selects critical updates (security fixes or major hardware compatiblity changes) since most users do not use alternate boot modes (TFTP, USB etc)
@@ -104,7 +124,9 @@ Since the release status string is just a subdirectory name then it's possible t
 
 ### Changing the firmware release
 
-You can change which release stream is to be used during an update by editing the `/etc/default/rpi-eeprom-update` file and changing the `FIRMWARE_RELEASE_STATUS` entry to the appropriate stream.
+You can change which release stream is to be used during an update by editing the `/etc/default/rpi-eeprom-update` file and changing the `FIRMWARE_RELEASE_STATUS` entry to the appropriate stream. 
+
+For more information about the `rpi-eeprom-update` configuration file please run `rpi-eeprom-update -h`.
 
 ### Disabling automatic updates
 If you wish to control when the updates are applied you can disable the `rpi-eeprom-update` systemd service.
