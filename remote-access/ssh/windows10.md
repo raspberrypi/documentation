@@ -31,3 +31,5 @@ pi@raspberrypi ~ $
 You are now connected to the Raspberry Pi remotely, and can execute commands.
 
 To configure your Raspberry Pi to allow passwordless SSH access with a public/private key pair, see the [passwordless SSH](passwordless.md) guide.
+
+If you are using Ubuntu terminal on windows 10 using Windows Subsystem for Linux, you can directly use `ssh username@ipaddress` to get SSH access. No additional settings are needed.
