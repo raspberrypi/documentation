@@ -564,6 +564,8 @@ Most Raspberry Pi models have circuity to detect drops of the incoming power sup
 
 SD cards have a limited lifespan due to the way they work. Under most circumstances, they offer some years of use, but heavy file accessing, or using it as a swap drive, may reduce the SD card's lifespan considerably. Note that there are also fake capacity SD cards being sold that are likely to be unreliable.
 
+In many applications it is necessary to safely shut down the Raspberry Pi during unexpected power cuts. To properly shutdown the system, without the risk of damaging the file system or the SD card itself, it is necessary to maintain the power supply for several seconds.
+
 ### I've imaged an SD card with Raspberry Pi OS/NOOBS, but when I look at it with my Windows PC, it's not all there!
 
 This is to do with the capabilities of Windows to read Linux-formatted partitions. When you image the SD card, it is automatically split into multiple partitions. The first partition uses a format that Windows can read, but the other partitions use a Linux-specific file system, which Windows simply does not recognise. This means when you put an SD card in a Windows machine, it only displays the first partition, and may well say the other partitions are corrupted and need formatting - **do not format them**! Here's some information on what goes in that first [partition](../configuration/boot_folder.md). If you insert the SD card on a machine running Linux, it will display all the partitions correctly.
