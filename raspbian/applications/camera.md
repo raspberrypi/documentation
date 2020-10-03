@@ -282,7 +282,7 @@ Force recomputation of statistics on stills capture pass. Digital gain and AWB a
 	--awbgains,	-awbg
 ```
 
-Sets blue and red gains (as floating point numbers) to be applied when `-awb -off` is set e.g. -awbg 1.5,1.2
+Sets blue and red gains (as floating point numbers) to be applied when `-awb off` is set e.g. -awbg 1.5,1.2
 
 ```
 	--analoggain,	-ag
