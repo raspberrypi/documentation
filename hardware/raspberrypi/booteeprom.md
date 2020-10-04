@@ -58,10 +58,12 @@ To view the configuration file used by the bootloader at boot time run `rpi-eepr
 The following command loads the current EEPROM configuration into a text editor. When the editor is closed, `rpi-eeprom-config` applies the updated configuration to latest available EEPROM release and uses `rpi-eeprom-update` to schedule an update when the system is rebooted:
 
 ```
-sudo rpi-eeprom-config --edit
+sudo -E rpi-eeprom-config --edit
 sudo reboot
 ```
 If the updated configuration file is identical or empty then no changes are made.
+
+The editor is selected by the `EDITOR` environment variable.
 
 ### Applying a saved configuration file
 The following command applies `boot.conf` to the latest available EEPROM image and uses `rpi-eeprom-update` to schedule an update when the system is rebooted.
