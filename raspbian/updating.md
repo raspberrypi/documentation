@@ -56,7 +56,7 @@ Answer 'yes' to any prompts. There may also be a point at which the install paus
 
 Finally, if you are not using PulseAudio for anything other than Bluetooth audio, remove it from the image by entering:
 
-```
+```bash
 sudo apt -y purge "pulseaudio*"
 ```
 
