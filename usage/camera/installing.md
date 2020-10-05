@@ -14,7 +14,7 @@ Depending on the model, the camera may come with a small piece of translucent bl
 
 ### Using the desktop
 
-Select `Preferences` and `Raspberry Pi Configuration` from the desktop menu. A window will appear, select the `Interfaces` tab, then clik on the enable camera option. Click `OK`. You will need to reboot for the changes to take effect.
+Select `Preferences` and `Raspberry Pi Configuration` from the desktop menu. A window will appear, select the `Interfaces` tab, then click on the `enable camera` option. Click `OK`. You will need to reboot for the changes to take effect.
 
 ### Using the command line
 
