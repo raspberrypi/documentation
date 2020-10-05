@@ -66,3 +66,7 @@ It is possible to control GPIO pins using a number of programming languages and 
 ## Permissions
 
 In order to use the GPIO ports your user must be a member of the `gpio` group. The `pi` user is a member by default, other users need to be added manually.
+
+```bash
+sudo usermod -a -G gpio <username>
+```
