@@ -17,4 +17,4 @@ See guides for basic usage of each of the commands:
 
 ## More documentation
 
-More documentation on the camera applications can be found [here ](../../../raspbian/applications/camera.md) whilst information on the camera hardware can be found [here](../../../hardware/camera/README.md).
+More documentation on the camera applications can be found [here ](../../../raspbian/applications/camera.md), whilst information on the camera hardware can be found [here](../../../hardware/camera/README.md).
