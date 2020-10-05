@@ -89,6 +89,28 @@ By default, the primary UART is assigned to the Linux console. If you wish to us
 1. At the prompt `Would you like the serial port hardware to be enabled?` answer 'Yes'
 1. Exit raspi-config and reboot the Pi for changes to take effect.
 
+## Enabling early console (earlycon) for Linux
+
+Although the Linux kernel starts the UARTs relatively early in the boot process, it is still long after some critical bits of infrastructure have been set up. A failure in those early stages can be hard to diagnose without access to the kernel log messages from that time. That's the problem that the "earlycon" mechanism was created to work around. Consoles that support earlycon usage present an additional interface to the kernel that allows for simple, synchronous output - printk won't return until the characters have been output to the UART.
+
+Enable earlycon with a kernel command line parameter - add one of the following to `cmdline.txt`, depending on which UART is the primary:
+```
+# For Pi 4 and Compute Module 4 (BCM2711)
+earlycon=uart8250,mmio32,0xfe215040
+earlycon=pl011,mmio32,0xfe201000
+
+# For Pi 2, Pi 3 and Compute Module 3 (BCM2836 & BCM2837)
+earlycon=uart8250,mmio32,0x3f215040
+earlycon=pl011,mmio32,0x3f201000
+
+# For Pi 1, Pi Zero and Compute Module (BCM2835)
+earlycon=uart8250,mmio32,0x20215040
+earlycon=pl011,mmio32,0x20201000
+```
+The baudrate is set to 115200.
+
+N.B. Selecting the wrong early console can prevent the Pi from booting.
+
 ## UARTs and Device Tree
 
 Various UART Device Tree overlay definitions can be found in the [kernel GitHub tree](https://github.com/raspberrypi/linux). The two most useful overlays are [`disable-bt`](https://github.com/raspberrypi/linux/blob/rpi-4.19.y/arch/arm/boot/dts/overlays/disable-bt-overlay.dts) and [`miniuart-bt`](https://github.com/raspberrypi/linux/blob/rpi-4.19.y/arch/arm/boot/dts/overlays/miniuart-bt-overlay.dts).
