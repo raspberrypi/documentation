@@ -81,11 +81,11 @@ Here you can see a device with hostname `raspberrypi` has IP address `192.168.1.
 
 ### Getting the IP address of a Pi using your smartphone
 
-The Fing app is a free network scanner for smartphones. It is available for [Android](https://play.google.com/store/apps/details?id=com.overlook.android.fing) and [iOS](https://itunes.apple.com/gb/app/fing-network-scanner/id430921107?mt=8), even now (Sept 2020) Fing has support for [Windows and Mac](https://www.fing.com/products/fing-desktop).
+The Fing app is a free network scanner for smartphones. It is available for [Android](https://play.google.com/store/apps/details?id=com.overlook.android.fing) and [iOS](https://itunes.apple.com/gb/app/fing-network-scanner/id430921107?mt=8), and as of Sept 2020, also has support for [Windows and Mac](https://www.fing.com/products/fing-desktop).
 
 Your phone and your Raspberry Pi have to be on the same network, so connect your phone to the correct wireless network.
 
-When you open the Fing app, touch the "scan device" button in the left-middle of the screen. After a few seconds you will get a list with all the devices connected to your network. Scroll down to the entry with the manufacturer "Raspberry Pi" or by searching it by name. You will see the IP address in the bottom left-hand corner, and the MAC address in the bottom right-hand corner of the entry. Also, you can tap to the specific device to see the detail information of that device.
+When you open the Fing app, touch the `scan device` button in the left-middle of the screen. After a few seconds you will get a list with all the devices connected to your network. Scroll down to the entry with the manufacturer "Raspberry Pi" or by searching for it by name. You will see the IP address in the bottom left-hand corner, and the MAC address in the bottom right-hand corner of the entry. Also, you can tap to the specific device to see the detail information of that device.
 
 ### More tools
 
