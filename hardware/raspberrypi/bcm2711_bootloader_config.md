@@ -284,24 +284,28 @@ Default: 1000 (1 second)
 Version: 2020-09-03  
 
 ### XHCI_DEBUG
-This property is a bit field which controls the verbosity of USB trace messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`
+This property controls the verbosity of USB debug messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`.
 
-* Bit 0 - USB descriptors
-* Bit 1 - Mass storage mode state machine
-* Bit 2 - Mass storage mode state machine - verbose
-* Bit 3 - All USB requests
-* Bit 4 - Log device and hub state machines
-* Bit 5 - Log all xHCI TRBs (VERY VERBOSE)
-* Bit 6 - Log all xHCI events (VERY VERBOSE)
+| Value | Log                                       |
+|-------|-------------------------------------------|
+|  0x1  | USB descriptors                           |
+|  0x2  | Mass storage mode state machine           |
+|  0x4  | Mass storage mode state machine - verbose |
+|  0x8  | All USB requests                          |
+|  0x10 | Device and hub state machines             |
+|  0x20 | All xHCI TRBs (VERY VERBOSE)              |
+|  0x40 | All xHCI events (VERY VERBOSE)            |
 
-By default, no extra debug messages are enabled.
+To combine values, add them together.
+
+(`0x` means these numbers are in hexadecimal. If you're not sure how to add these up, simply type the sum into Google, e.g. `=0x2+0x4`).
 
 ```
 # Example: Enable mass storage and USB descriptor logging
 XHCI_DEBUG=0x3
 ```
 
-Default: 0x0  
+Default: 0x0 (no USB debug messages enabled)  
 Version: 2020-09-03  
 
 ## config.txt - configuration properties
