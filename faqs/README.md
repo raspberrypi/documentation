@@ -226,7 +226,7 @@ Not by itself: there is no audio or video (HDMI/composite) IN capability on the 
 
 ### Where is the on/off switch?
 
-There is no on/off switch! To switch on, just plug it in. To switch off, if you are in the graphical environment, you can either log out from the main menu, exit to the Bash prompt, or open the terminal. From the Bash prompt or terminal you can shut down the Raspberry Pi by entering `sudo halt -h`. Wait until all the LEDs except the power LED are off, then wait an additional second to make sure the SD card can finish its wear-levelling tasks and write actions. You can now safely unplug the Raspberry Pi. Failure to shut the Raspberry Pi down properly may corrupt your SD card, which would mean you would have to re-image it.
+There is no on/off switch! To switch on, just plug it in. To switch off, if you are using the Raspberry Pi Desktop, simply select the `Logout` option from the main menu, then `Shutdown`. If you are not using the desktop, and are at the console, you can shut down the Raspberry Pi by entering `sudo halt -h`. Wait until all the LEDs except the power LED are off, then wait an additional second to make sure the SD card can finish its wear-levelling tasks and write actions. You can now safely unplug the Raspberry Pi. Failure to shut the Raspberry Pi down properly may corrupt your SD card, which would mean you would have to re-image it.
 
 ### What are the dimensions of the Raspberry Pi?
 
