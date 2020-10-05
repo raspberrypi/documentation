@@ -68,9 +68,9 @@ You can modify the `fstab` file to define the location where the storage device 
 4. Add the following line in the `fstab` file:
 
     ```
-    UUID=5C24-1453 /mnt/mydisk FSTYPE defaults,auto,users,rw,nofail 0 0
+    UUID=5C24-1453 /mnt/mydisk fstype defaults,auto,users,rw,nofail 0 0
     ```
-   Replace FSTYPE with the type of your file system, which you found in step 2 of 'Mounting a storage device' above.
+   Replace `fstype` with the type of your file system, which you found in step 2 of 'Mounting a storage device' above, for example: `ntfs`.
    
 5. If the filesystem type is FAT or NTFS, add `,umask=000` immediately after `nofail` - this will allow all users full read/write access to every file on the storage device.
 
