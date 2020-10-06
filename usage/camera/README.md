@@ -1,18 +1,17 @@
 # Camera Modules
 
-Raspberry Pi currently sell two types of camera board, an 8MP device and a 12MP HQ camera. The original 5MP device is no longer available from Raspberry Pi. The specifications of all the devices can be found [here](../../hardware/camera/README.md)
+Raspberry Pi currently sell two types of camera board, an [8MP device](https://www.raspberrypi.org/products/camera-module-v2/) and a [12MP High quality (HQ)](https://www.raspberrypi.org/products/raspberry-pi-high-quality-camera/) camera. The 8MP device is also available in [NoIR form](https://www.raspberrypi.org/products/pi-noir-camera-v2/) without an IR filter. The original 5MP device is no longer available from Raspberry Pi. The specifications of all the devices can be found [here](../../hardware/camera/README.md). 
 
+All cameras are capable of taking high resolution photographs, along with full HD 1080p video, and can be fully controlled programmatically. This section of documentation describes how to use the camera in various scenarios, and using the various tools available.
 
-All modules are capable of taking full HD 1080p photo and video and can be controlled programmatically. This section of documentation describes how to use the camera in various scenarios, and using the various tools available.
-
-For installation information, please see [this page](./installing.md)
+For installation information, please see [this page](./installing.md).
 
 
 ## Basic camera usage
 
-Once installed, there are various ways the cameras can be used. The simplest option is to use one of the provided camera applications. There are four Linux command line applications installed by default (e.g. raspistill), using these is described on [this page](raspicam/README.md).
+Once installed, there are various ways the cameras can be used. The simplest option is to use one of the provided camera applications. There are four Linux command line applications installed by default (e.g. `raspistill`), using these is described on [this page](raspicam/README.md).
 
-You can also programatically access the camera using the [Python programming language](python/README.md).
+You can also programatically access the camera using the [Python programming language](python/README.md), using the [`picamera` library](https://projects.raspberrypi.org/en/projects/getting-started-with-picamera).
 
 
 ## More advanced camera usage
