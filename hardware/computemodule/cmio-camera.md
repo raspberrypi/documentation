@@ -8,7 +8,7 @@ Unless explicitly stated otherwise, these instructions will work identically on 
 
 ### Compute Module board capabilities
 
-The Compute Module has two CSI-2 camera interfaces. CAM0 is a two lane interface, CAM1 is a four lane interface. The Compute Module IO board exposes both of these inerfaces,  note that the standard Raspberry Pi devices uses CAM1, but only exposes two lanes.
+The Compute Module has two CSI-2 camera interfaces. CAM0 is a two lane interface, CAM1 is a four lane interface. The Compute Module IO board exposes both of these interfaces,  note that the standard Raspberry Pi devices uses CAM1, but only exposes two lanes.
 
 ### Updating your system
 
