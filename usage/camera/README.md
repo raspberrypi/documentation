@@ -1,6 +1,6 @@
 # Camera Modules
 
-Raspberry Pi currently sell two types of camera board, an [8MP device](https://www.raspberrypi.org/products/camera-module-v2/) and a [12MP High quality (HQ)](https://www.raspberrypi.org/products/raspberry-pi-high-quality-camera/) camera. The 8MP device is also available in [NoIR form](https://www.raspberrypi.org/products/pi-noir-camera-v2/) without an IR filter. The original 5MP device is no longer available from Raspberry Pi. The specifications of all the devices can be found [here](../../hardware/camera/README.md). 
+Raspberry Pi currently sell two types of camera board, an [8MP device](https://www.raspberrypi.org/products/camera-module-v2/) and a [12MP High Quality (HQ)](https://www.raspberrypi.org/products/raspberry-pi-high-quality-camera/) camera. The 8MP device is also available in [NoIR form](https://www.raspberrypi.org/products/pi-noir-camera-v2/) without an IR filter. The original 5MP device is no longer available from Raspberry Pi. The specifications of all the devices can be found [here](../../hardware/camera/README.md). 
 
 All cameras are capable of taking high resolution photographs, along with full HD 1080p video, and can be fully controlled programmatically. This section of documentation describes how to use the camera in various scenarios, and using the various tools available.
 
