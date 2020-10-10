@@ -6,7 +6,7 @@ The Raspberry Pi should work with any compatible SD card, although there are som
 
 For installation of Raspberry Pi OS with desktop and recommended software (Full) via NOOBS the minimum card size is 16GB. For the image installation of Raspberry Pi OS with desktop and recommended software, the minimum card size is 8GB. For Raspberry Pi OS Lite image installations we recommend a minimum of 4GB. Some distributions, for example LibreELEC and Arch, can run on much smaller cards. If you're planning to use a card of 64GB or more with NOOBS, see [this page](sdxc_formatting.md) first.
 
-**Note:** Only the Raspberry Pi 3A+, 3B+ and Compute Module 3+ can boot from an SD card larger than 256 GB. This is because there was a bug in the SoC used on previous models of Pi. 
+**Note:** Because of a constraint in versions of SoC's used in the Raspberry Pi Zero, 1 and 2, the SD card partition size limit is 256GB. From the Raspberry Pi 3 onwards this limitation does not apply. 
 
 ## SD card class
 
