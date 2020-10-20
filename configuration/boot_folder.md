@@ -43,6 +43,14 @@ When this file is present, SSH will be enabled on boot. The contents don't matte
 
 This is the file to configure wireless network settings (if the hardware is capable of it). Edit the country code and the network part to fit your case. More information on how to use this file can be found in [the `wireless/headless` section](./wireless/headless.md).
 
+### run_once
+
+If a `/boot/run_once` executable exists at boot time, Raspberry Pi OS executes it on the first boot. It may contain bash, python, or any executable ARM binary. After execution, `run_once` will be renamed to `run_once.XXX`. Later reboots will know `run_once.XXX` was already executed.
+
+Use it to provision your Raspberry Pi using simple scripts or initializing configuration management like cloud-init, puppet or ansible.
+
+Once the system has booted, view status and script output with `systemctl status run_once` and `journalctl -u run_once`.
+
 ### Device Tree files
 
 There are various Device Tree blob files, which have the extension `.dtb`. These contain the hardware definitions of the various models of Raspberry Pi, and are used on boot to set up the kernel according to which Pi model is detected. More [details here](device-tree.md#part3.1).
