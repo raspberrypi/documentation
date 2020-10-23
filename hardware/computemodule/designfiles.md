@@ -1,6 +1,10 @@
 # Compute Module IO board and camera/display adapter board design data
 
-Design data for the Compute Module IO board (CMIO)
+Design data for the Compute Module 4 IO board can be found in its datasheet
+
+- [Compute Module 4 IO Board datasheet](http://datasheets.raspberrypi.org/cm4io/cm4io-datasheet.pdf)
+
+Design data for Compute Module IO board (CMIO) prior to the Compute Module 4.
 
 * [CMIO Rev 1.2](designdata/rpi_DSGN_CMIO_1p2.zip)
 * [CMIO Rev 3.0](designdata/rpi_DSGN_CMIO_3p0.zip)
