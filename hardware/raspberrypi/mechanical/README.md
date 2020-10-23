@@ -47,3 +47,10 @@ Also applicable to the A+.
 ## Raspberry Pi TV HAT
 
 - [Board](rpi_MECH_TVHAT_1p0.PNG)
+
+## Compute Module 4
+
+- [Compute Module 4 STEP files](https://datasheets.raspberrypi.org/cm4/CM4-step.zip)
+- [Compute Module Lite STEP files](https://datasheets.raspberrypi.org/cm4/CM4Lite-step.zip)
+- [KiCAD files for IO board](http://datasheets.raspberrypi.org/cm4io/CM4IO-KiCAD.zip)
+
