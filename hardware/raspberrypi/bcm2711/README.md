@@ -6,7 +6,7 @@ The ARM cores are capable of running at up to 1.5 GHz, making the Pi 4 about 50%
 
 The BCM2711 chip continues to use the heat spreading technology started with the BCM2837B0, which provides better thermal management. 
 
-A datasheet for the BCM2711 can be found [here](./rpi_DATA_2711_1p0.pdf).
+A datasheet for the BCM2711 can be found [here](https://datasheets.raspberrypi.org/bcm2711/bcm2711-peripherals.pdf).
 
 ## Some technical details
 
