@@ -1,6 +1,7 @@
 # Compute Module and related schematics
 
-* [Compute Module 4 Datasheet](http://datasheets.raspberrypi.org/cm4/cm4-datasheet.pdf)
+Note that schematics are not available for the Compute Module 4, but are available for the IO board.
+
 * [Compute Module 4 IO Board datasheet including schematics](http://datasheets.raspberrypi.org/cm4io/cm4io-datasheet.pdf)
 
 There is also a KiCAD PCB design set available:
