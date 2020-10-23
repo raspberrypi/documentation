@@ -5,6 +5,10 @@ Schematics for the latest Compute Module 4 and the IO board can be found in the 
 * [Compute Module 4 Datasheet](http://datasheets.raspberrypi.org/cm4/cm4-datasheet.pdf)
 * [Compute Module 4 IO Board datasheet](http://datasheets.raspberrypi.org/cm4io/cm4io-datasheet.pdf)
 
+There is also a KiCAD PCB design set available.
+
+ * [Compute Module 4 IO Board KiCAD files](http://datasheets.raspberrypi.org/cm4io/CM4IO-KiCAD.zip)
+
 Schematics for the Compute Module camera/display adapter board (CMCDA)
 
 * [CMCDA Rev 1.1](schematics/rpi_SCH_CMCDA_1p1.pdf)
