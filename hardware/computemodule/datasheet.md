@@ -1,6 +1,6 @@
 # Compute Module Datasheet
 
-The latest version of the Compute Module is the CM4. This is the recommended Compute Module for all current and future development. 
+The latest version of the Compute Module is the CM4: this is the recommended Compute Module for all current and future development. 
 
 [Compute Module 4 Datasheet](http://datasheets.raspberrypi.org/cm4/cm4-datasheet.pdf)  
 [Compute Module 4 IO Board Datasheet](http://datasheets.raspberrypi.org/cm4io/cm4io-datasheet.pdf)

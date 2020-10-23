@@ -50,12 +50,12 @@ Also applicable to the A+.
 
 ## Compute Module 4
 
-The following datasheets contain mechanical drawings and schematics.
+The following datasheets contain mechanical drawings and schematics:
 
 - [Compute Module 4 Datasheet](http://datasheets.raspberrypi.org/cm4/cm4-datasheet.pdf)
 - [Compute Module 4 IO Board datasheet](http://datasheets.raspberrypi.org/cm4io/cm4io-datasheet.pdf)
 
-In addition we also supply STEP files of the Compute modules for 3D modellers and KiCAD files of the IO board for those wishing to create their own PCB's.
+In addition we also supply STEP files of the Compute Modules for 3D modellers and KiCAD files of the IO board for those wishing to create their own PCBs:
 
 - [Compute Module 4 STEP files](https://datasheets.raspberrypi.org/cm4/CM4-step.zip)
 - [Compute Module Lite STEP files](https://datasheets.raspberrypi.org/cm4/CM4Lite-step.zip)
