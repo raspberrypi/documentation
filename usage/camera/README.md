@@ -24,7 +24,7 @@ Advanced features, along with some hints and tips, are described in the followin
 - [Using V4L2 to access the camera (e.g. Using Pi cameras as webcams)](./raspicam/v4l2.md)
 - [Removing the HQ camera IR filter](../../hardware/camera/hqcam_filter_removal.md)
 
-## libcamera - The future of Raspberry Pi camera software
+## Libcamera - The future of Raspberry Pi camera software
 
 Libcamera is a new Linux API for interfacing to cameras. Raspberry Pi have been involved with the development of libcamera and are now using this sophisticated system for new camera software. This means Raspberry Pi are moving away from the firmware-based camera image processing pipeline (ISP) to a more open system.
 
