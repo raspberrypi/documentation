@@ -1,10 +1,10 @@
 # Raspistill
 
-`Raspistill` is the command line tool for capturing still photographs with the camera module.
+`Raspistill` is the command line tool for capturing still photographs with a Raspberry Pi camera module.
 
 ## Basic usage of raspistill
 
-With the camera module [connected and enabled](../README.md), enter the following command in the terminal to take a picture:
+With a camera module [connected and enabled](../README.md), enter the following command in the terminal to take a picture:
 
 ```bash
 raspistill -o cam.jpg
