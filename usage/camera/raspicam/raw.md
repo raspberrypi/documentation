@@ -6,9 +6,9 @@ Both options are available from the Raspberry Pi cameras.
 
 ## Processed, non-lossy images
 
-The usual output from `raspistill` is a compressed JPEG file that has passed through all the stages of image processing to produce a high quality image. However, JPEG, being a lossy format does throw away some information that the user may want.
+The usual output from `raspistill` is a compressed JPEG file that has passed through all the stages of image processing to produce a high-quality image. However, JPEG, being a lossy format does throw away some information that the user may want.
 
-`Raspstill` has an `encoding` option that allows you to specify the output format. Options are `jpg`, `bmp`, `gif` and `png`. The latter three are non-lossy, so no data is thrown away in an effort to improve compression, but do require conversion from the original YUV, and because these formats do not have hardware support they produce images slightly more slowly than JPEG.
+`Raspstill` has an `encoding` option that allows you to specify the output format: either `jpg`, `gif`, `bmp` or `png`. The latter two are non-lossy, so no data is thrown away in an effort to improve compression, but do require conversion from the original YUV, and because these formats do not have hardware support they produce images slightly more slowly than JPEG.
 
 e.g.
 
