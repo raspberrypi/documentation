@@ -2,9 +2,9 @@
 
 ## Connecting the cameras
 
-The flex cable inserts into the connector situated between the Ethernet and HDMI ports, with the silver connectors facing the HDMI port. The flex cable connector should be opened by pulling the tabs on the top of the connector upwards then towards the Ethernet port. The flex cable should be inserted firmly into the connector, with care taken not to bend the flex at too acute an angle. The top part of the connector should then be pushed towards the HDMI connector and down, while the flex cable is held in place.
+The flex cable inserts into the connector labelled CAMERA, which is located between the Ethernet and HDMI ports. The cable must be inserted with the silver connectors facing the HDMI port. To open the connector, pull the tabs on the top of the connector upwards, then towards the Ethernet port. The flex cable should be inserted firmly into the connector, with care taken not to bend the flex at too acute an angle. To close the connector, push the top part of the connector towards the HDMI port and down, while holding the flex cable in place.
 
-Watch the following video to see a demonstration of the camera being connected. This is the original camera on the original Pi 1, but the principle is the same for all camera boards:
+We have created a video to illustrate the process of connecting the camera. Although the video shows the original camera on the original Raspberry Pi 1, the principle is the same for all camera boards:
 
 [![Camera connection screenshot](https://img.youtube.com/vi/GImeVqHQzsE/0.jpg)](http://www.youtube.com/watch?v=GImeVqHQzsE)
 
@@ -14,14 +14,14 @@ Depending on the model, the camera may come with a small piece of translucent bl
 
 ### Using the desktop
 
-Select `Preferences` and `Raspberry Pi Configuration` from the desktop menu. A window will appear, select the `Interfaces` tab, then click on the `enable camera` option. Click `OK`. You will need to reboot for the changes to take effect.
+Select `Preferences` and `Raspberry Pi Configuration` from the desktop menu: a window will appear. Select the `Interfaces` tab, then click on the `enable camera` option. Click `OK`. You will need to reboot for the changes to take effect.
 
 ### Using the command line
 
-Open the `raspi-config` tool from the Terminal:
+Open the `raspi-config` tool from the terminal:
 
 ```bash
 sudo raspi-config
 ```
 
-Select `Interfacing Options` then `Camera` and hit `Enter`. Choose `Yes` then `Ok`. Go to `Finish` and you'll be prompted to reboot.
+Select `Interfacing Options` then `Camera` and press `Enter`. Choose `Yes` then `Ok`. Go to `Finish` and you'll be prompted to reboot.
