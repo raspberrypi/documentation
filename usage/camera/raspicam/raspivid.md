@@ -1,6 +1,6 @@
-# raspivid
+# Raspivid
 
-`raspivid` is the command line tool for capturing video with the camera module.
+`Raspivid` is the command line tool for capturing video with the camera module.
 
 ## Basic usage of raspivid
 
