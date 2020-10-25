@@ -4,9 +4,9 @@ To create a time-lapse video, you simply configure the Raspberry Pi to take a pi
 
 There are a couple of ways of doing this.
 
-## Using Raspistill's inbuilt time-lapse mode
+## Using raspistill's inbuilt time-lapse mode
 
-The raspistill application has a built in time-lapse mode, using the `--timelapse` (or `-tl`) command line switch.
+The `raspistill` application has a built in time-lapse mode, using the `--timelapse` (or `-tl`) command line switch.
 
 The value that follows the switch is the time between shots in milliseconds.
 ```
@@ -40,13 +40,11 @@ Save and exit and you should see the message:
 crontab: installing new crontab
 ```
 
-Ensure your script does not save each picture taken with the same filename. This will overwrite the picture each time.
+Ensure your script does not save each picture taken with the same filename, since this will overwrite the file each time a picture is taken.
 
 ## Stitching images together
 
-Now you'll need to stitch the photos together into a video.
-
-You can do this on the Pi using `mencoder` but the processing will be slow. You may prefer to transfer the image files to your desktop computer or laptop and processing the video there.
+Now you'll need to stitch the photos together into a video. You can do this on the Pi using `mencoder` but the processing will be slow. You may prefer to transfer the image files to your desktop computer or laptop and processing the video there.
 
 Navigate to the folder containing all your images and list the file names in to a text file. For example:
 
