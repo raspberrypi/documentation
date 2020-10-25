@@ -2,7 +2,7 @@
 
 The different camera modules have different capabilities with regard to exposure times:
 
-| Module | Max exposure (s) |
+| Module | Max exposure (seconds) |
 | - | :-: |
 |V1 (OMx5647) | 6 |
 |V2 (IMX219)  | 10 |
