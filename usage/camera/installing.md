@@ -1,6 +1,6 @@
-# Installing the Raspberry Pi cameras
+# Installing a Raspberry Pi camera
 
-## Connecting the cameras
+## Connecting the camera
 
 The flex cable inserts into the connector labelled CAMERA on the Raspberry Pi, which is located between the Ethernet and HDMI ports. The cable must be inserted with the silver contacts facing the HDMI port. To open the connector, pull the tabs on the top of the connector upwards, then towards the Ethernet port. The flex cable should be inserted firmly into the connector, with care taken not to bend the flex at too acute an angle. To close the connector, push the top part of the connector towards the HDMI port and down, while holding the flex cable in place.
 
