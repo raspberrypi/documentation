@@ -1,6 +1,6 @@
-# Raspistill
+# raspistill
 
-`Raspistill` is the command line tool for capturing still photographs with a Raspberry Pi camera module.
+`raspistill` is the command line tool for capturing still photographs with a Raspberry Pi camera module.
 
 ## Basic usage of raspistill
 
