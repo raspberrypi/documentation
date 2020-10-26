@@ -1,6 +1,6 @@
 # Raspicam commands
 
-`Raspistill`, `raspivid` and `raspiyuv` are command line tools for using the camera module.
+`raspistill`, `raspivid` and `raspiyuv` are command line tools for using the camera module.
 
 ## Basic usage
 
