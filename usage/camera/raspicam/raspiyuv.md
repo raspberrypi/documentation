@@ -1,6 +1,6 @@
-# Raspiyuv
+# raspiyuv
 
-`Raspiyuv` has the same set of features as `raspistill` but instead of outputting standard image files such as `.jpg`s, it generates YUV420 or RGB888 image files from the output of the camera ISP.
+`raspiyuv` has the same set of features as `raspistill` but instead of outputting standard image files such as `.jpg`s, it generates YUV420 or RGB888 image files from the output of the camera ISP.
 
 In most cases using `raspistill` is the best option for standard image capture, but using YUV can be of benefit in certain circumstances. For example if you just need a uncompressed black and white image for computer vision applications, you can simply use the Y channel of a YUV capture.
 
