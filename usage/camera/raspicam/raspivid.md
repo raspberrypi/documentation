@@ -1,6 +1,6 @@
-# Raspivid
+# raspivid
 
-`Raspivid` is the command line tool for capturing video with a Raspberry Pi camera module.
+`raspivid` is the command line tool for capturing video with a Raspberry Pi camera module.
 
 ## Basic usage of raspivid
 
