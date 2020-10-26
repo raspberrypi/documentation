@@ -63,7 +63,7 @@ On a Raspberry Pi 3, this can encode a little more than one frame per second. Th
  - -vf scale=1280:720 Scale to 720p. You can also use 1920:1080, or lower resolutions, depending on your requirements. Note the Pi can only play back up to 1080p video, but if you are intending to play back at, for example, 4K, you could set that here.
  - timelapse.mp4 The name of the output file.
 
-`Avconv` has a comprehensive parameter set for varying encoding options and other settings. These can be listed using `avconv --help`.
+`avconv` has a comprehensive parameter set for varying encoding options and other settings. These can be listed using `avconv --help`.
 
 ### On another Linux computer
 
