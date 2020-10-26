@@ -8,11 +8,11 @@ Both options are available from the Raspberry Pi cameras.
 
 The usual output from `raspistill` is a compressed JPEG file that has passed through all the stages of image processing to produce a high-quality image. However, JPEG, being a lossy format does throw away some information that the user may want.
 
-`Raspstill` has an `encoding` option that allows you to specify the output format: either `jpg`, `gif`, `bmp` or `png`. The latter two are non-lossy, so no data is thrown away in an effort to improve compression, but do require conversion from the original YUV, and because these formats do not have hardware support they produce images slightly more slowly than JPEG.
+`raspistill` has an `encoding` option that allows you to specify the output format: either `jpg`, `gif`, `bmp` or `png`. The latter two are non-lossy, so no data is thrown away in an effort to improve compression, but do require conversion from the original YUV, and because these formats do not have hardware support they produce images slightly more slowly than JPEG.
 
 e.g.
 
-`raspstill --encoding png -o fred.png`
+`raspistill --encoding png -o fred.png`
 
 Another option is to use the [`raspiyuv`](./raspiyuv.md) application. This avoids any final formatting stage, and writes raw YUV420 or RGB888 data to the requested file. YUV420 is the format used in much of the ISP, so this can be regarded as a dump of the processed image data at the end of the ISP processing.
 
@@ -22,6 +22,6 @@ For some applications, such as astrophotography, having the raw Bayer data direc
 
 `raspistill` has a raw option that will append this raw Bayer data onto the end of the output JPEG file.
 
-`raspstill --raw -o fred.jpg`
+`raspistill --raw -o fred.jpg`
 
 The raw data will need to be extracted from the `JPEG` file. Information on doing this can be found [here](https://www.raspberrypi.org/blog/processing-raw-image-files-from-a-raspberry-pi-high-quality-camera/)
