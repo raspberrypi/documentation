@@ -1,4 +1,4 @@
-# Setting the screen saver/screen blanking
+# Setting the screensaver / screen blanking
 
 ## On the console
 
@@ -23,7 +23,7 @@ You can also use the `raspi-config` tool to disable screen blanking. Note that t
 
 Raspberry Pi OS will blank the graphical desktop after 10 minutes without user input. You can disable this by changing the 'Screen Blanking' option in the Raspberry Pi Configuration tool, which is available on the Preferences menu. Note that the 'Screen Blanking' option also controls screen blanking when the graphical desktop is not running.
 
-There is also a graphical screen saver available, which can be installed as follows:
+There is also a graphical screensaver available, which can be installed as follows:
 
 ```
 sudo apt install xscreensaver
@@ -31,4 +31,4 @@ sudo apt install xscreensaver
 
 This may take a few minutes.
 
-Once this has been installed, you can find the Screensaver application on the Preferences menu: it provides many options for setting up the screen saver, including disabling it completely.
+Once this has been installed, you can find the Screensaver application on the Preferences menu: it provides many options for setting up the screensaver, including disabling it completely.
