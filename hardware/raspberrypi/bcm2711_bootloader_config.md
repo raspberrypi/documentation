@@ -46,14 +46,14 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 
 | Value | Mode      | Description                                                                                       |
 |-------|-----------|---------------------------------------------------------------------------------------------------|
-|  0x1  |  SD CARD  |  SD card (or EMMC on Compute Module 4)                                                            |
+|  0x1  |  SD CARD  |  SD card (or eMMC on Compute Module 4)                                                            |
 |  0x2  |  NETWORK  |  Network boot                                                                                     |
 |  0x3  |  USB DEV  |  USB device boot - See [usbboot](https://github.com/raspberrypi/usbboot)  (since 2020-09-03)      |
 |  0x4  |  USB MSD  |  USB mass storage boot (since 2020-09-03)                                                         |
 |  0xe  |  STOP     |  Stop and display error pattern (since 2020-09-03). A power cycle is required to exit this state. |
 |  0xf  |  RESTART  |  Start again with the first boot order field. (since 2020-09-03)                                  |
 
-After trying each non-zero boot-mode the bootloader stops. However, from 2020-09-03 the bootloader will monitor the SD card-detect pin and try SD boot if a new SD card is inserted.
+After trying each non-zero boot mode the bootloader stops. However, from 2020-09-03 the bootloader will monitor the SD card detect pin and try SD boot if a new SD card is inserted.
 
 Default: `0xf41` (`0x1` in versions prior to 2020-09-03)  
 Version: 2020-04-16  
