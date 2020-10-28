@@ -1,58 +1,59 @@
-# Raspberry Pi 4 Bootloader Configuration
+# Raspberry Pi 4 bootloader configuration
 
 ## Editing the configuration
-Before editing the bootloader configuration [update your system](../../raspbian/updating.md) to get the latest version of the `rpi-eeprom` package.
+Before editing the bootloader configuration, [update your system](../../raspbian/updating.md) to get the latest version of the `rpi-eeprom` package.
 
-To view the current EEPROM configuration:
+To view the current EEPROM configuration:  
 `rpi-eeprom-config`
 
-To edit it and apply the updates to latest EEPROM release:
+To edit it and apply the updates to latest EEPROM release:  
 `sudo -E rpi-eeprom-config --edit`
 
 Please see the [boot EEPROM](booteeprom.md) page for more information about the EEPROM update process.
 
-## Configuration Properties
+## Configuration properties
 This section describes all the configuration items available in the bootloader. The syntax is the same as [config.txt](../../configuration/config-txt/) but the properties are specific to the bootloader. [Conditional filters](../../configuration/config-txt/conditional.md) are also supported except for EDID.
 
 ### BOOT_UART
 
-If 1 then enable UART debug output on GPIO 14 and 15. Configure the receiving debug terminal at 115200bps, 8 bits, no parity bits, 1 stop bit.
+If `1` then enable UART debug output on GPIO 14 and 15. Configure the receiving debug terminal at 115200bps, 8 bits, no parity bits, 1 stop bit.
 
 Default: `0`  
 Version: All  
 
 ### WAKE_ON_GPIO
 
-If 1 then 'sudo halt' will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.
+If `1` then `sudo halt` will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.
 
 Default: `1` (`0` in original version of bootloader 2019-05-10)  
 Version: All  
 
 ### POWER_OFF_ON_HALT
 
-If 1 and WAKE_ON_GPIO=0 then switch off all PMIC outputs in halt. This is lowest possible power state for halt but may cause problems with some HATs because 5V will still be on. GLOBAL_EN must be shorted to ground to boot.
+If `1` and `WAKE_ON_GPIO=0` then `sudo halt` will switch off all PMIC outputs. This is lowest possible power state for halt but may cause problems with some HATs because 5V will still be on. GLOBAL_EN must be shorted to ground to boot.
 
 Default: `0`  
 Version: 2019-07-15  
 
 ### BOOT_ORDER
-The BOOT_ORDER setting allows flexible configuration for the priority of different bootmodes. It is represented as 32bit unsigned integer where each nibble represents a bootmode. The bootmodes are attempted in lowest significant nibble to highest significant nibble order.
+The `BOOT_ORDER` setting allows flexible configuration for the priority of different bootmodes. It is represented as 32bit unsigned integer where each nibble represents a bootmode. The bootmodes are attempted in lowest significant nibble to highest significant nibble order.
 
-E.g. `0x21` means try SD first followed by network boot then stop. Whereas `0x2` would mean try network boot and then stop without trying to boot from the SD card.
-
+E.g.`0xf41` means continuously trying SD card followed by USB mass storage. Whereas, `0xf12` means continuously trying network boot followed by SD card boot. 
 The retry counters are reset when switching to the next boot mode.
 
 `BOOT_ORDER` fields  
 The BOOT_ORDER property defines the sequence for the different boot modes. It is read right to left and up to 8 digits may be defined.
 
-| Value | Mode      | Description                                                                                  |
-|-------|-----------|----------------------------------------------------------------------------------------------|
-|  0x0  |  NONE     |  Stop and display error pattern                                                              |
-|  0x1  |  SD CARD  |  SD card (or EMMC on Compute Module 4)                                                       |
-|  0x2  |  NETWORK  |  Network boot                                                                                |
-|  0x3  |  USB DEV  |  USB device boot - See [usbboot](https://github.com/raspberrypi/usbboot)  (since 2020-09-03) |
-|  0x4  |  USB MSD  |  USB mass storage boot (since 2020-09-03)                                                    |
-|  0xf  |  RESTART  |  Start again with the first boot order field. (since 2020-09-03)                             |
+| Value | Mode      | Description                                                                                       |
+|-------|-----------|---------------------------------------------------------------------------------------------------|
+|  0x1  |  SD CARD  |  SD card (or EMMC on Compute Module 4)                                                            |
+|  0x2  |  NETWORK  |  Network boot                                                                                     |
+|  0x3  |  USB DEV  |  USB device boot - See [usbboot](https://github.com/raspberrypi/usbboot)  (since 2020-09-03)      |
+|  0x4  |  USB MSD  |  USB mass storage boot (since 2020-09-03)                                                         |
+|  0xe  |  STOP     |  Stop and display error pattern (since 2020-09-03). A power cycle is required to exit this state. |
+|  0xf  |  RESTART  |  Start again with the first boot order field. (since 2020-09-03)                                  |
+
+After trying each non-zero boot-mode the bootloader stops. However, from 2020-09-03 the bootloader will monitor the SD card-detect pin and try SD boot if a new SD card is inserted.
 
 Default: `0xf41` (`0x1` in versions prior to 2020-09-03)  
 Version: 2020-04-16  
@@ -69,14 +70,14 @@ Version: 2020-09-03
 
 ### SD_BOOT_MAX_RETRIES
 The number of times that SD boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.  
--1 means infinite retries.
+`-1` means infinite retries.
 
 Default: `0`  
 Version: 2020-04-16  
 
 ### NET_BOOT_MAX_RETRIES
 The number of times that network boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`.  
--1 means infinite retries.
+`-1` means infinite retries.
 
 Default: `0`  
 Version: 2020-04-16  
@@ -264,7 +265,7 @@ Default: `1000` (1 second)
 Version: 2020-09-03  
 
 ### XHCI_DEBUG
-This property is a bit field controls the verbosity of USB debug messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`.
+This property is a bit field which controls the verbosity of USB debug messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`.
 
 | Value | Log                                       |
 |-------|-------------------------------------------|
@@ -309,9 +310,11 @@ Controls whether the bootloader and VLI EEPROMs are marked as write protected.
 
 See: [Winbond W25x40cl datasheet](https://www.winbond.com/resource-files/w25x40cl_f%2020140325.pdf)
 
-* 1 - Configures the write protect regions to cover the entire EEPROM.
-* 0 - Clears write protect regions
-* -1 - Do nothing.
+| Value | Description                                                      |
+|-------|------------------------------------------------------------------|
+|  1    | Configures the write protect regions to cover the entire EEPROM. |
+|  0    | Clears the write protect regions.                                |  
+| -1    | Do nothing.                                                      |
 
 Default: `-1`  
 Version: 2020-09-03  
