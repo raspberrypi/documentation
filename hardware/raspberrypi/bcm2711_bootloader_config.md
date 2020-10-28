@@ -38,28 +38,28 @@ Version: 2019-07-15
 ### BOOT_ORDER
 The BOOT_ORDER setting allows flexible configuration for the priority of different bootmodes. It is represented as 32bit unsigned integer where each nibble represents a bootmode. The bootmodes are attempted in lowest significant nibble to highest significant nibble order.
 
-E.g. `0x21` means try SD first followed by network boot then stop. Whereas 0x2 would mean try network boot and then stop without trying to boot from the SD card.
+E.g. `0x21` means try SD first followed by network boot then stop. Whereas `0x2` would mean try network boot and then stop without trying to boot from the SD card.
 
 The retry counters are reset when switching to the next boot mode.
 
 `BOOT_ORDER` fields  
 The BOOT_ORDER property defines the sequence for the different boot modes. It is read right to left and up to 8 digits may be defined.
 
-| Value | Mode      | Description                                                              |
-|-------|-----------|--------------------------------------------------------------------------|
-|  0x0  |  NONE     |  Stop and display error pattern                                          |
-|  0x1  |  SD CARD  |  SD card (or EMMC on Compute Module 4)                                   |
-|  0x2  |  NETWORK  |  Network boot                                                            |
-|  0x3  |  USB DEV  |  USB device boot - See [usbboot](https://github.com/raspberrypi/usbboot) |
-|  0x4  |  USB MSD  |  USB mass storage boot (since 2020-09-03)                                |
-|  0xf  |  RESTART  |  Start again with the first boot order field. (since 2020-09-03)         |
+| Value | Mode      | Description                                                                                  |
+|-------|-----------|----------------------------------------------------------------------------------------------|
+|  0x0  |  NONE     |  Stop and display error pattern                                                              |
+|  0x1  |  SD CARD  |  SD card (or EMMC on Compute Module 4)                                                       |
+|  0x2  |  NETWORK  |  Network boot                                                                                |
+|  0x3  |  USB DEV  |  USB device boot - See [usbboot](https://github.com/raspberrypi/usbboot)  (since 2020-09-03) |
+|  0x4  |  USB MSD  |  USB mass storage boot (since 2020-09-03)                                                    |
+|  0xf  |  RESTART  |  Start again with the first boot order field. (since 2020-09-03)                             |
 
 Default: `0xf41` (`0x1` in versions prior to 2020-09-03)  
 Version: 2020-04-16  
 
 * Boot mode `0x0` will retry the SD boot if the SD card detect pin indicates that the card has been inserted or replaced.
 * The default boot order is `0xf41` which means continuously try SD then USB mass storage.
-* USB device boot is intended for use with Compute Module 4 to load a debug image e.g. a Linux RAM disk. This should be the last boot option because it does not currently support timeouts or retries.
+* USB device boot is intended for use with Compute Module 4 to load a custom debug image (e.g. a Linux RAM-disk) instead of the normal boot. This should be the last boot option because it does not currently support timeouts or retries.
 
 ### MAX_RESTARTS
 If the RESTART (`0xf`) boot mode is encountered more than MAX_RESTARTS times then a watchdog reset is triggered. This isn't recommended for general use but may be useful for test or remote systems where a full reset is needed to resolve issues with hardware or network interfaces.
@@ -85,7 +85,7 @@ Version: 2020-04-16
 The timeout in milliseconds for the entire DHCP sequence before failing the current iteration.
 
 Minimum: `5000`  
-Default: `45000` 
+Default: `45000`  
 Version: 2020-04-16  
 
 ### DHCP_REQ_TIMEOUT
