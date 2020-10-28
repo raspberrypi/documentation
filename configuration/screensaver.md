@@ -21,7 +21,7 @@ You can also use the `raspi-config` tool to disable screen blanking. Note that t
 
 ## On the Raspberry Pi desktop
 
-By default, Raspberry Pi OS will blank the graphical desktop after 10 minutes without user input. You can disable this by changing the 'Screen Blanking' option on the Raspberry Pi Configuration tool, which is available on the Preferences menu. Note that the 'Screen Blanking' option also controls screen blanking when the graphical desktop is not running.
+Raspberry Pi OS will blank the graphical desktop after 10 minutes without user input. You can disable this by changing the 'Screen Blanking' option in the Raspberry Pi Configuration tool, which is available on the Preferences menu. Note that the 'Screen Blanking' option also controls screen blanking when the graphical desktop is not running.
 
 There is also a graphical screen saver available, which can be installed as follows:
 
