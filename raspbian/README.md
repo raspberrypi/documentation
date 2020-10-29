@@ -14,7 +14,7 @@ Raspberry Pi OS is a community project under active development, with an emphasi
 - Configuring Raspberry Pi OS
     - [raspi-config](../configuration/raspi-config.md)
     - [config.txt](../configuration/config-txt/README.md)
-    - [screensaver](../configuration/screensaver.md)
+    - [Screensaver / screen blanking](../configuration/screensaver.md)
 - [Applications](applications/README.md)
     - [Camera](applications/camera.md)
     - [OMXPlayer](applications/omxplayer.md)
