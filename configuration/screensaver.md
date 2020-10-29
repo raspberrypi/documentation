@@ -2,7 +2,7 @@
 
 ## On the console
 
-When running without a graphical desktop, Raspberry Pi OS will blank the screen after 10 minutes without user input: either mouse movement or keyboard input.
+When running without a graphical desktop, Raspberry Pi OS will blank the screen after 10 minutes without user input, e.g. mouse movement or key presses.
 
 The current setting, in seconds, can be displayed using:
 ```
