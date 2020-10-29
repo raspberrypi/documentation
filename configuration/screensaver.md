@@ -9,13 +9,13 @@ The current setting, in seconds, can be displayed using:
 cat /sys/module/kernel/parameters/consoleblank
 ```
 
-Here, `consoleblank` is a kernel parameter. In order to be permanently set, it needs to be defined on the kernel command line. To edit the kernel command line:
+To change the `consoleblank` setting, edit the kernel command line:
 
 ```
 sudo nano /boot/cmdline.txt
 ```
 
-The file `/boot/cmdline.txt` contains a single line of text. Add `consoleblank=n` to have the console blank after `n` seconds of inactivity, for example `consoleblank=300` for 300 seconds = 5 minutes. To disable screen blanking, set `consoleblank=0`. Make sure that you add your `consoleblank` option to the single line of text already in the `cmdline.txt` file.
+The file `/boot/cmdline.txt` contains a single line of text. Add `consoleblank=n` to have the console blank after `n` seconds of inactivity. For example `consoleblank=300` will cause the console to blank after 300 seconds, 5 minutes, of inactivity. Make sure that you add your `consoleblank` option to the single line of text already in the `cmdline.txt` file. To disable screen blanking, set `consoleblank=0`.
 
 You can also use the `raspi-config` tool to disable screen blanking. Note that the screen blanking setting in `raspi-config` also controls screen blanking when the graphical desktop is running.
 
