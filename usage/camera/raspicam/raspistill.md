@@ -1,10 +1,10 @@
 # raspistill
 
-`raspistill` is the command line tool for capturing still photographs with the camera module.
+`raspistill` is the command line tool for capturing still photographs with a Raspberry Pi camera module.
 
 ## Basic usage of raspistill
 
-With the camera module [connected and enabled](../README.md), enter the following command in the Terminal to take a picture:
+With a camera module [connected and enabled](../README.md), enter the following command in the terminal to take a picture:
 
 ```bash
 raspistill -o cam.jpg
@@ -14,7 +14,7 @@ raspistill -o cam.jpg
 
 In this example the camera has been positioned upside-down. If the camera is placed in this position, the image must be flipped to appear the right way up.
 
-### Vertical Flip & Horizontal Flip
+### Vertical flip and horizontal flip
 
 With the camera placed upside-down, the image must be rotated 180° to be displayed correctly. The way to correct for this is to apply both a vertical and a horizontal flip by passing in the `-vf` and `-hf` flags:
 
