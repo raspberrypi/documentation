@@ -138,7 +138,7 @@ The following prices are exclusive of any local taxes and shipping/handling fees
 | Raspberry Pi Zero | $5 |
 | Raspberry Pi Zero W |$10 |
 | Raspberry Pi Zero WH |$15 |
-| Raspberry Pi 400 |$75 |
+| Raspberry Pi 400 |$70 |
 | Raspberry Pi 400 (full kit) |$100 |
 
 
