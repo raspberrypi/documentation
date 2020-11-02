@@ -138,6 +138,9 @@ The following prices are exclusive of any local taxes and shipping/handling fees
 | Raspberry Pi Zero | $5 |
 | Raspberry Pi Zero W |$10 |
 | Raspberry Pi Zero WH |$15 |
+| Raspberry Pi 400 |$75 |
+| Raspberry Pi 400 (full kit) |$100 |
+
 
 ### What do I get when I buy one?
 
@@ -189,6 +192,7 @@ These are the [models of the Raspberry Pi](https://www.raspberrypi.org/products/
 | Raspberry Pi Zero | BCM2835 | 1000MHz | 512MB | 1 | No | No | No |
 | Raspberry Pi Zero W | BCM2835 | 1000MHz | 512MB | 1 | No | 802.11n | 4.1 |
 | Raspberry Pi Zero WH | BCM2835 | 1000MHz | 512MB | 1 | No | 802.11n | 4.1 |
+| Raspberry Pi 400 | BCM2711 | 1800MHz | 4GB | 1xUSB2, 2xUSB3 |1000Base-T | 802.11ac/n | 5.0 |
 
 The Model A+ is the low-cost variant of the Raspberry Pi. It has 512MB RAM (as of August 2016: earlier models have 256MB), one USB port, 40 GPIO pins, and no Ethernet port.
 
@@ -201,6 +205,8 @@ The Raspberry Pi 3 Model B was launched in February 2016. It uses a 1.2GHz 64-bi
 The Raspberry Pi 3 Model B+ was launched in March 2018. It uses a 1.4GHz 64-bit quad-core Arm Cortex-A53 CPU, has 1GB RAM, gigabit Ethernet, integrated 802.11ac/n wireless LAN, and Bluetooth 4.2.
 
 The Raspberry Pi 4 Model B was launched in June 2019. It uses a 1.5GHz 64-bit quad-core Arm Cortex-A72 CPU, has three RAM options (2GB, 4GB, 8GB), gigabit Ethernet, integrated 802.11ac/n wireless LAN, and Bluetooth 5.0. Originally launched with a 1GB option, this has been superceded by the 2GB at the original 1GB price. The 1GB device is still available as a special order.
+
+The Raspberry Pi 400 was launched in November 2020. It uses a 1.8GHz 64-bit quad-core Arm Cortex-A72 CPU, with 4GB of RAM, gigabit Ethernet, integrated 802.11ac/n wireless LAN, and Bluetooth 5.0. The Raspberry Pi 400 is the first Raspberry Pi built in to a compact keyboard.
 
 The Raspberry Pi Zero and Raspberry Pi Zero W/WH are half the size of a Model A+, with a 1GHz single-core CPU and 512MB RAM, and mini-HDMI and USB On-The-Go ports and a camera connector. The Raspberry Pi Zero W also has integrated 802.11n wireless LAN and Bluetooth 4.1. The Raspberry Pi Zero WH is identical to the Zero W, but comes with a pre-soldered header.
 
@@ -240,13 +246,15 @@ The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37
 
 All Raspberry Pi models up to the Raspberry Pi 3 have a GPU that provides OpenGL ES 2.0, hardware-accelerated OpenVG, and 1080p30 H.264 high-profile encode and decode. The GPU is capable of 1Gpixel/s, 1.5Gtexel/s, or 24 GFLOPs of general-purpose compute, and it features a range of texture filtering and DMA infrastructure. This means that graphics capabilities are roughly equivalent to the original Xbox's level of performance. Overall real-world performance for Raspberry Pi 1 Model A, A+, B, B+, Raspberry Pi Zero/Zero W, and CM1 is similar to that of a 300MHz Pentium 2, but with much better graphics. The Raspberry Pi 2 Model B is approximately equivalent to an Athlon Thunderbird running at 1.1GHz; again, it has the much higher-quality graphics, which come from using the same GPU as previous models. The Raspberry Pi 3 Model B is around twice as fast as the Raspberry Pi 2 Model B, depending on the benchmarks chosen.
 
-The Raspberry Pi 4 uses an improved GPU — the VideoCore VI. This is around four times faster than the VideoCore IV used for previous models. The new ARM A72 cores on the BCM2711 chip give much better performance than the previous models, and a new PCIe bus gives faster USB 2.0 and new USB 3.0 functionality. Raspberry Pi 4's native Ethernet capability allows full 1Gbit I/O. These features, combined with the optional extra RAM (the Raspberry Pi 4 can be purchased with 2GB, 4GB or 8GB RAM), mean that the Raspberry Pi 4 can now provide a great desktop computing experience!
+The Raspberry Pi 4 and Raspberry Pi 400 use an improved GPU — the VideoCore VI. This is around four times faster than the VideoCore IV used for previous models. The new ARM A72 cores on the BCM2711 chip give much better performance than the previous models, and a new PCIe bus gives faster USB 2.0 and new USB 3.0 functionality. Raspberry Pi 4's native Ethernet capability allows full 1Gbit I/O. These features, combined with the optional extra RAM (the Raspberry Pi 4 can be purchased with 2GB, 4GB or 8GB RAM), mean that the Raspberry Pi 4 can now provide a great desktop computing experience!
 
 ### Can I use my Raspberry Pi as a desktop replacement?
 
 It depends on the model you have! For many daily tasks the Raspberry Pi 3 is quite suitable, but because modern internet browsers require a lot of memory, browsing can be a bit slow if you open too many browser tabs. Although 1GB of RAM seems like a lot, modern browsers are real memory hogs!
 
 The Raspberry Pi 4 — with its faster cores, extra memory, and much improved I/O — is a very good desktop replacement. 
+
+The best option for desktop use is the Pi 400. This is the equivalent of a Raspberry Pi 4 in a compact keyboard.
 
 ### Can I add extra RAM?
 
@@ -262,13 +270,15 @@ The Raspberry Pi (all models) idles at a lower speed than advertised. If the wor
 
 ### Does it overclock?
 
-The Raspberry Pi 1 Model A, A+, B, and B+ operate at 700MHz by default. Most devices will run happily at 800MHz. The Raspberry Pi 2 Model B operates at 900MHz by default and should run quite happily at 1000MHz. The Raspberry Pi 3 Model B runs at 1.2GHz, but this model has no standard overclocking settings. The Raspberry Pi 4 runs at 1.5GHz, and has no overclocking options.
+The Raspberry Pi 1 Model A, A+, B, and B+ operate at 700MHz by default. Most devices will run happily at 800MHz. The Raspberry Pi 2 Model B operates at 900MHz by default and should run quite happily at 1000MHz. The Raspberry Pi 3 Model B runs at 1.2GHz, but this model has no standard overclocking settings. The Raspberry Pi 4 runs at 1.5GHz, and has no official overclocking options, although many people do overclock them manually.
 
 ### What is its operating temperature? Does it need a heatsink?
 
 The Raspberry Pi is built from commercial chips which are qualified to different temperature ranges; the LAN9514 (LAN9512 on older models with 2 USB ports) is specified by the manufacturers as being qualified from 0°C to 70°C, while the SoC is qualified from -40°C to 85°C. You may well find that the board will work outside those temperatures, but we're not qualifying the board itself to these extremes.
 
 You should not need to use a heatsink, as the chip used in the Raspberry Pi is equivalent to one used in a mobile phone, and should not become hot enough to require any special cooling. However, depending on the case you are using and the overclocking settings, you might find a heatsink to be advantageous. We do recommend the use of a heatsink if you are overclocking the Raspberry Pi 3 Model B. Of course, if you just like the look of one, you will not hurt the Raspberry Pi by placing an appropriately-sized heatsink on it.
+
+The Raspberry Pi 400 uses a large heat spreader inside the case, and does not need any extra cooling.
 
 <a name="pi-software"></a>
 
