@@ -122,7 +122,7 @@ Raspberry Pi is the third best-selling computer brand in the world. The Raspberr
 
 Go to our [products page](https://www.raspberrypi.org/products/) and choose the product(s) you want to buy. Then select your country from the drop-down menu. You will be presented with our approved resellers for your country.
 
-The following prices are exclusive of any local taxes and shipping/handling fees.
+The following prices are in US dollars, and exclusive of any local taxes and shipping/handling fees.
 
 |Product|Price|
 |-------|-----|
@@ -139,7 +139,6 @@ The following prices are exclusive of any local taxes and shipping/handling fees
 | Raspberry Pi Zero W |$10 |
 | Raspberry Pi Zero WH |$15 |
 | Raspberry Pi 400 |$70 |
-| Raspberry Pi 400 (full kit) |$100 |
 
 
 ### What do I get when I buy one?
@@ -206,7 +205,7 @@ The Raspberry Pi 3 Model B+ was launched in March 2018. It uses a 1.4GHz 64-bit 
 
 The Raspberry Pi 4 Model B was launched in June 2019. It uses a 1.5GHz 64-bit quad-core Arm Cortex-A72 CPU, has three RAM options (2GB, 4GB, 8GB), gigabit Ethernet, integrated 802.11ac/n wireless LAN, and Bluetooth 5.0. Originally launched with a 1GB option, this has been superceded by the 2GB at the original 1GB price. The 1GB device is still available as a special order.
 
-The Raspberry Pi 400 was launched in November 2020. It uses a 1.8GHz 64-bit quad-core Arm Cortex-A72 CPU, with 4GB of RAM, gigabit Ethernet, integrated 802.11ac/n wireless LAN, and Bluetooth 5.0. The Raspberry Pi 400 is the first Raspberry Pi built in to a compact keyboard.
+The Raspberry Pi 400 was launched in November 2020. It uses a 1.8GHz 64-bit quad-core Arm Cortex-A72 CPU, with 4GB of RAM, gigabit Ethernet, integrated 802.11ac/n wireless LAN, and Bluetooth 5.0. The Raspberry Pi 400 is the first Raspberry Pi built into a compact keyboard.
 
 The Raspberry Pi Zero and Raspberry Pi Zero W/WH are half the size of a Model A+, with a 1GHz single-core CPU and 512MB RAM, and mini-HDMI and USB On-The-Go ports and a camera connector. The Raspberry Pi Zero W also has integrated 802.11n wireless LAN and Bluetooth 4.1. The Raspberry Pi Zero WH is identical to the Zero W, but comes with a pre-soldered header.
 
@@ -270,7 +269,7 @@ The Raspberry Pi (all models) idles at a lower speed than advertised. If the wor
 
 ### Does it overclock?
 
-The Raspberry Pi 1 Model A, A+, B, and B+ operate at 700MHz by default. Most devices will run happily at 800MHz. The Raspberry Pi 2 Model B operates at 900MHz by default and should run quite happily at 1000MHz. The Raspberry Pi 3 Model B runs at 1.2GHz, but this model has no standard overclocking settings. The Raspberry Pi 4 runs at 1.5GHz, and has no official overclocking options, although many people do overclock them manually.
+Overclocking is not officially supported, and in some cases will void your warranty. Having said that, some people do overclock successfully. Due to the way silicon chips are produced, each individua device will differ in how much it can be overclocked. For a fully supported, stable system we recommend that you do not overclock your Raspberry Pi.
 
 ### What is its operating temperature? Does it need a heatsink?
 
