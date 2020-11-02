@@ -94,6 +94,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |          |              | f: Internal use only       |
 |          |              | 10: CM3+                   |
 |          |              | 11: 4B                     |
+|          |              | 13: 400                    |
 |          |              | 14: CM4                    |
 | RRRR     | Revision     | 0, 1, 2, etc.              |
 
