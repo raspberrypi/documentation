@@ -269,7 +269,7 @@ The Raspberry Pi (all models) idles at a lower speed than advertised. If the wor
 
 ### Does it overclock?
 
-Overclocking is not officially supported, and in some cases will void your warranty. Having said that, some people do overclock successfully. Due to the way silicon chips are produced, each individua device will differ in how much it can be overclocked. For a fully supported, stable system we recommend that you do not overclock your Raspberry Pi.
+Overclocking is not officially supported, and in some cases will void your warranty. Having said that, some people do overclock successfully. Due to the way silicon chips are produced, each individual device will differ in how much it can be overclocked. For a fully supported, stable system we recommend that you do not overclock your Raspberry Pi.
 
 ### What is its operating temperature? Does it need a heatsink?
 
