@@ -48,9 +48,8 @@ A simple service runs continuously for as long as its dependencies are met. We d
 [Unit]
 Description=Network music player
 Wants=network-online.target
-After=network-online.target
+After=network-online.target mpd.service
 Requires=mpd.service
-After=mpd.service
 
 [Service]
 Type=simple
