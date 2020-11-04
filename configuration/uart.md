@@ -83,8 +83,8 @@ The default state of the `enable_uart` flag depends on which UART is the primary
 By default, the primary UART is assigned to the Linux console. If you wish to use the primary UART for other purposes, you must reconfigure Raspberry Pi OS. This can be done by using [raspi-config](raspi-config.md):
 
 1. Start raspi-config: `sudo raspi-config`.
-1. Select option 5 - interfacing options.
-1. Select option P6 - serial.
+1. Select option 3 - Interface Options.
+1. Select option P6 - Serial Port.
 1. At the prompt `Would you like a login shell to be accessible over serial?` answer 'No'
 1. At the prompt `Would you like the serial port hardware to be enabled?` answer 'Yes'
 1. Exit raspi-config and reboot the Pi for changes to take effect.
