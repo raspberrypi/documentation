@@ -2,7 +2,7 @@
 
 Raspberry Pi OS uses [`systemd`](https://www.freedesktop.org/wiki/Software/systemd/) to manage the running of services, including controlling what starts when Linux boots.
 
-## `rc.local` and service dependencies
+## Compatibility
 Unlike on older versions of Linux, `systemd` starts services based on their dependencies: services are no longer started in a predefined order. This means it is no longer guaranteed that `rc.local` will run after all other services have started. You should therefore not use `rc.local` to start programs at boot: instead, create a `systemd` service, specifying which other services it depends on.
 
 ## Service definitions
@@ -36,7 +36,7 @@ Type=oneshot
 ExecStart=/home/pi/myprogram.sh
 
 [Install]
-WantedBy=multi-user.target graphical.target
+WantedBy=multi-user.target
 ```
 
 Let's say the above file is `/etc/systemd/user/myprogram.service`: this defines a new one-shot service named `myprogram`. The `myprogram` service will wait until `network-online.target` has been reached, then run `/home/pi/myprogram.sh`.
@@ -49,7 +49,8 @@ A simple service runs continuously for as long as its dependencies are met. We d
 Description=Network music player
 Wants=network-online.target
 After=network-online.target
-Requires=mpd.target
+Requires=mpd.service
+After=mpd.service
 
 [Service]
 Type=simple
@@ -57,10 +58,10 @@ ExecStart=/home/pi/nmp.sh
 ExecStop=/home/pi/nmp.sh stop
 
 [Install]
-WantedBy=multi-user.target graphical.target
+WantedBy=multi-user.target
 ```
 
-Our `netmusicplayer` service is started up using the script `/home/pi/nmp.sh`. The service also passes the `stop` parameter to that same script to stop the network music player. Because the network music player uses [`mpd`](https://www.musicpd.org/), we use the `Requires=` directive to specify that `mpd` must be running before `netmusicplayer` starts up.
+Our `netmusicplayer` service is started up using the script `/home/pi/nmp.sh`. The service also passes the `stop` parameter to that same script to stop the network music player. Because the network music player uses [`mpd`](https://www.musicpd.org/), we use the `After=` and `Requires=` directives to specify that `mpd` must be running before `netmusicplayer` starts up.
 
 ## Enable and disable a service
 To enable a service, use the `systemctl enable` command as follows:
