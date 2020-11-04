@@ -39,7 +39,7 @@ ExecStart=/home/pi/myprogram.sh
 WantedBy=multi-user.target graphical.target
 ```
 
-Let's say the above file is `/etc/systemd/user/myprogram.service`: this defines a new one-shot service named `myprogram`. The `myprogram` service will wait until `network-online.target` have been reached, then run `/home/pi/myprogram.sh`.
+Let's say the above file is `/etc/systemd/user/myprogram.service`: this defines a new one-shot service named `myprogram`. The `myprogram` service will wait until `network-online.target` has been reached, then run `/home/pi/myprogram.sh`.
 
 ### Example - simple service
 A simple service runs continuously for as long as its dependencies are met. We define `/etc/systemd/user/netmusicplayer.service` as follows:
