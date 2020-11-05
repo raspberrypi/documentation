@@ -139,6 +139,7 @@ The following prices are in US dollars, and exclusive of any local taxes and shi
 | Raspberry Pi Zero W |$10 |
 | Raspberry Pi Zero WH |$15 |
 | Raspberry Pi 400 |$70 |
+| Raspberry Pi 400 Personal Computer Kit | $100 |
 
 
 ### What do I get when I buy one?
