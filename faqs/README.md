@@ -148,7 +148,7 @@ Raspberry Pi devices are available as just the board, or as part of a kit. When 
 
 An official case for the Raspberry Pi is available separately [from our distributors](https://www.raspberrypi.org/products/). There are also lots of home-brew case discussions on the forum, as well as several third-party cases available. There are also loads of awesome [3D-printable cases](https://www.raspberrypi.org/blog/3d-printed-raspberry-pi-cases/) that community members have designed.
 
-Raspberry Pi (and other sellers) also sell our devices as part of kits, where you get everything you need to set up your Raspberry Pi and get it going. These kits usually include the [Raspberry Pi](https://www.raspberrypi.org/products/raspberry-pi-4-desktop-kit/?resellerType=home) itself, a case, keyboard, mouse, power supply and SD card. In the case of the [Raspberry Pi 400](https://www.raspberrypi.org/products/raspberry-pi-400/?resellerType=home), the device itself is the case and keyboard, but the kit includes a mouse, power supply, SD card and a book, The Official Raspberry Pi Beginners Guide.
+Raspberry Pi (and other sellers) also sell our devices as part of kits, where you get everything you need to set up your Raspberry Pi and get it going. Our official kits include the [Raspberry Pi](https://www.raspberrypi.org/products/raspberry-pi-4-desktop-kit) itself, a case, keyboard, mouse, HDMI cable, power supply, SD card and beginners guide. In the case of the [Raspberry Pi 400](https://www.raspberrypi.org/products/raspberry-pi-400), the device itself is the case and keyboard, but the kit includes a mouse, HDMI cable, power supply, SD card and a book, The Official Raspberry Pi Beginners Guide.
 
 ### I'm worried I have a fake Raspberry Pi!
 
