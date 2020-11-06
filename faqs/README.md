@@ -126,25 +126,23 @@ The following prices are exclusive of any local taxes and shipping/handling fees
 
 |Product|Price|
 |-------|-----|
-| Raspberry Pi Model A+| $20 |
-| Raspberry Pi Model B+ |$25 |
-| Raspberry Pi 2 Model B| $35 |
-| Raspberry Pi 3 Model B | $35 |
-| Raspberry Pi 3 Model A+ | $25 |
-| Raspberry Pi 3 Model B+ | $35 |
-| Raspberry Pi 4 Model B 2GB | $35 |
-| Raspberry Pi 4 Model B 4GB | $55 |
-| Raspberry Pi 4 Model B 8GB | $75 |
+| [Raspberry Pi Model A+](https://www.raspberrypi.org/products/raspberry-pi-1-model-a-plus)| $20 |
+| [Raspberry Pi Model B+](https://www.raspberrypi.org/products/raspberry-pi-1-model-b-plus) |$25 |
+| [Raspberry Pi 2 Model B](https://www.raspberrypi.org/products/raspberry-pi-2-model-b)| $35 |
+| [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b) | $35 |
+| [Raspberry Pi 3 Model A+](https://www.raspberrypi.org/products/raspberry-pi-3-model-a-plus) | $25 |
+| [Raspberry Pi 3 Model B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus) | $35 |
+| [Raspberry Pi 4 Model B 2/4/8GB](https://www.raspberrypi.org/products/raspberry-pi-4-model-b) | $35/$55/$75 |
 | [Raspberry Pi 4 Model B official kits 2/4/8GB](https://www.raspberrypi.org/products/raspberry-pi-4-desktop-kit)  | $100/$120/$140 |
-| Raspberry Pi Zero | $5 |
-| Raspberry Pi Zero W |$10 |
-| Raspberry Pi Zero WH |$15 |
-| Raspberry Pi 400 |$70 |
+| [Raspberry Pi Zero](https://www.raspberrypi.org/products/raspberry-pi-zero) | $5 |
+| [Raspberry Pi Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w) |$10 |
+| [Raspberry Pi Zero WH](https://www.raspberrypi.org/products/raspberry-pi-zero-w) |$15 |
+| [Raspberry Pi 400](https://www.raspberrypi.org/products/raspberry-pi-400-unit) |$70 |
 | [Raspberry Pi 400 offical kit](https://www.raspberrypi.org/products/raspberry-pi-400) |$100 |
 
 ### What do I get when I buy one?
 
-Raspberry Pi computers are available separately, or as part of a kit which contain everything you need to get started including a mouse, HDMI cable, SD card, power supply, as well as our official Beginners Guide book. The Raspberry Pi 400 computer contains a case and keyboard built in: other kits come with a separate case and keyboard.
+Raspberry Pi computers are available separately, or as part of a kit which contain everything you need to get started including a mouse, HDMI cable, SD card, power supply, as well as our official Beginners Guide book. The Raspberry Pi 400 is a computer enclosed in a keyboard: other kits come with a separate case and keyboard.
 
 Raspberry Pi also sell all the equipment you need to get your Raspberry Pi up and running separately. We recommend using an official Raspberry Pi Power Supply. For the Pi Zero, 1, 2 and 3 use the [Raspberry Pi 1, 2 and 3 Power Supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/), for the Pi 4B and Pi 400 use the [Raspberry Pi USB-C Power Supply](https://www.raspberrypi.org/products/type-c-power-supply/).
 
