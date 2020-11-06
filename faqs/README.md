@@ -135,20 +135,22 @@ The following prices are exclusive of any local taxes and shipping/handling fees
 | Raspberry Pi 4 Model B 2GB | $35 |
 | Raspberry Pi 4 Model B 4GB | $55 |
 | Raspberry Pi 4 Model B 8GB | $75 |
+| [Raspberry Pi 4 Model B official kits 2/4/8GB](https://www.raspberrypi.org/products/raspberry-pi-4-desktop-kit)  | $100/$120/$140 |
 | Raspberry Pi Zero | $5 |
 | Raspberry Pi Zero W |$10 |
 | Raspberry Pi Zero WH |$15 |
 | Raspberry Pi 400 |$70 |
-| Raspberry Pi 400 (full kit) |$100 |
-
+| [Raspberry Pi 400 offical kit](https://www.raspberrypi.org/products/raspberry-pi-400) |$100 |
 
 ### What do I get when I buy one?
 
-Raspberry Pi devices are available as just the board, or as part of a kit. When buying just the device, you get the Raspberry Pi board itself. The [official power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/) and an SD card are not included, but they can be purchased at the same time from most places that sell the Raspberry Pi. You can also purchase pre-loaded SD cards; we recommend buying these from us or our licensed distributors rather than from third parties, as our software is updated regularly and cards sold by third parties can quickly become outdated.
+Raspberry Pi computers are available separately, or as part of a kit which contain everything you need to get started including a mouse, HDMI cable, SD card, power supply, as well as our official Beginners Guide book. The Raspberry Pi 400 computer contains a case and keyboard built in: other kits come with a separate case and keyboard.
 
-An official case for the Raspberry Pi is available separately [from our distributors](https://www.raspberrypi.org/products/). There are also lots of home-brew case discussions on the forum, as well as several third-party cases available. There are also loads of awesome [3D-printable cases](https://www.raspberrypi.org/blog/3d-printed-raspberry-pi-cases/) that community members have designed.
+Raspberry Pi also sell all the equipment you need to get you Raspberry Pi up and running separately. We recommend using an official Raspberry Pi Power Supply. For the Pi Zero, 1, 2 and 3 use the [Raspberry Pi 1, 2 and 3 Power Supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/), for the Pi 4B and Pi 400 use the [Raspberry Pi USB-C Power Supply](https://www.raspberrypi.org/products/type-c-power-supply/).
 
-Raspberry Pi (and other sellers) also sell our devices as part of kits, where you get everything you need to set up your Raspberry Pi and get it going. Our official kits include the [Raspberry Pi](https://www.raspberrypi.org/products/raspberry-pi-4-desktop-kit) itself, a case, keyboard, mouse, HDMI cable, power supply, SD card and beginners guide. In the case of the [Raspberry Pi 400](https://www.raspberrypi.org/products/raspberry-pi-400), the device itself is the case and keyboard, but the kit includes a mouse, HDMI cable, power supply, SD card and a book, The Official Raspberry Pi Beginners Guide.
+An official case for the Raspberry Pi is also available separately [from our distributors](https://www.raspberrypi.org/products/). There are also loads of awesome [3D-printable cases](https://www.raspberrypi.org/blog/3d-printed-raspberry-pi-cases/) that community members have designed.
+
+For full details of all of our products, see our [Product page](https://www.raspberrypi.org/products/).
 
 ### I'm worried I have a fake Raspberry Pi!
 
