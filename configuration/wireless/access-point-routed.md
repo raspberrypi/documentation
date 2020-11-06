@@ -190,8 +190,10 @@ To use the 5 GHz band, you can change the operations mode from `hw_mode=g` to `h
  - b = IEEE 802.11b (2.4 GHz)
  - g = IEEE 802.11g (2.4 GHz)
  - ad = IEEE 802.11ad (60 GHz)
-<a name="conclusion"></a>
 
+Note that when changing the `hw_mode`, you may need to also change the `channel` - see [Wikipedia](https://en.wikipedia.org/wiki/List_of_WLAN_channels) for a list of allowed combinations.
+
+<a name="conclusion"></a>
 ## Run your new wireless access point
 
 Now restart your Raspberry Pi and verify that the wireless access point becomes automatically available.
