@@ -395,14 +395,14 @@ There is composite and HDMI out on the board, so you can hook it up to an old an
 The Raspberry Pi 4 has support for two HDMI monitors, which attach via micro HDMI ports. It is also capable of displaying at full resolution on a 4K monitor or TV. Note that for best HDMI performance at 4K, a good-quality HDMI cable is required. We sell a full set of ancilliary components, including HDMI cables.
 
 <a name="pi-video-hdmicec"></a>
-### Why is there no VGA support?
-
-Whilst there is no native VGA support, active adapters are available. Passive HDMI to VGA cables will not work with the Raspberry Pi. When purchasing an active VGA adapter, make sure it comes with an external power supply. HDMI to VGA adapters without an external power supply often fail to work.
-
-<a name="pi-video-vga"></a>
 ### Does the HDMI port support CEC?
 
 Yes, the HDMI port on the Raspberry Pi supports the CEC Standard. CEC may be called something else by your TV's manufacturer; check [the Wikipedia entry on CEC](http://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC) for more information.
+
+<a name="pi-video-vga"></a>
+### Why is there no VGA support?
+
+Whilst there is no native VGA support, active adapters are available. Passive HDMI to VGA cables will not work with the Raspberry Pi. When purchasing an active VGA adapter, make sure it comes with an external power supply. HDMI to VGA adapters without an external power supply often fail to work.
 
 <a name="pi-video-touch"></a>
 ### Can I add a touchscreen?
