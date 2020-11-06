@@ -96,7 +96,7 @@
 - [What resolutions are supported?](#cameramodule-res)
 - [What picture formats are supported?](#cameramodule-format)
 - [How do I use the Camera Module?](#cameramodule-how)
-- [Can I extend the ribbon cable?](#cameramodule-ribbon)
+- [Can I extend the ribbon cable?](#cameramodule-cable)
 - [How much power does the Camera Module use?](#cameramodule-power)
 
 ### [Troubleshooting](#troubleshoot)
