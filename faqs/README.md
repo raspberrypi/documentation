@@ -148,7 +148,7 @@ Raspberry Pi computers are available separately, or as part of a kit which conta
 
 Raspberry Pi also sell all the equipment you need to get you Raspberry Pi up and running separately. We recommend using an official Raspberry Pi Power Supply. For the Pi Zero, 1, 2 and 3 use the [Raspberry Pi 1, 2 and 3 Power Supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/), for the Pi 4B and Pi 400 use the [Raspberry Pi USB-C Power Supply](https://www.raspberrypi.org/products/type-c-power-supply/).
 
-An official case for the Raspberry Pi is also available separately [from our distributors](https://www.raspberrypi.org/products/). There are also loads of awesome [3D-printable cases](https://www.raspberrypi.org/blog/3d-printed-raspberry-pi-cases/) that community members have designed.
+Official cases for the Raspberry Pi range are available separately [from our distributors](https://www.raspberrypi.org/products/). There are also loads of awesome [3D-printable cases](https://www.raspberrypi.org/blog/3d-printed-raspberry-pi-cases/) that community members have designed.
 
 For full details of all of our products, see our [Product page](https://www.raspberrypi.org/products/).
 
