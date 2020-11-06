@@ -146,7 +146,7 @@ The following prices are exclusive of any local taxes and shipping/handling fees
 
 Raspberry Pi computers are available separately, or as part of a kit which contain everything you need to get started including a mouse, HDMI cable, SD card, power supply, as well as our official Beginners Guide book. The Raspberry Pi 400 computer contains a case and keyboard built in: other kits come with a separate case and keyboard.
 
-Raspberry Pi also sell all the equipment you need to get you Raspberry Pi up and running separately. We recommend using an official Raspberry Pi Power Supply. For the Pi Zero, 1, 2 and 3 use the [Raspberry Pi 1, 2 and 3 Power Supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/), for the Pi 4B and Pi 400 use the [Raspberry Pi USB-C Power Supply](https://www.raspberrypi.org/products/type-c-power-supply/).
+Raspberry Pi also sell all the equipment you need to get your Raspberry Pi up and running separately. We recommend using an official Raspberry Pi Power Supply. For the Pi Zero, 1, 2 and 3 use the [Raspberry Pi 1, 2 and 3 Power Supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/), for the Pi 4B and Pi 400 use the [Raspberry Pi USB-C Power Supply](https://www.raspberrypi.org/products/type-c-power-supply/).
 
 Official cases for the Raspberry Pi range are available separately [from our distributors](https://www.raspberrypi.org/products/). There are also loads of awesome [3D-printable cases](https://www.raspberrypi.org/blog/3d-printed-raspberry-pi-cases/) that community members have designed.
 
