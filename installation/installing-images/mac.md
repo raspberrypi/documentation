@@ -90,5 +90,5 @@ If you specify the wrong device in the instructions, you could overwrite your pr
 After the `dd` command finishes, eject the card:
 
 ```bash
-sudo diskutil eject /dev/rdiskN
+sudo diskutil eject /dev/diskN
 ```
