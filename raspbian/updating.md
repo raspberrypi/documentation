@@ -40,11 +40,11 @@ The kernel and firmware are installed as a Debian package, and so will also get 
 
 When running `sudo apt full-upgrade`, it will show how much data will be downloaded and how much space it will take up on the SD card. It's worth checking with `df -h` that you have enough free disk space, as unfortunately `apt` will not do this for you. Also be aware that downloaded package files (`.deb` files) are kept in `/var/cache/apt/archives`. You can remove these in order to free up space with `sudo apt clean` (`sudo apt-get clean` in older releases of apt).
 
-### Upgrading from Jessie to Stretch
+### Upgrading from Stretch to Buster
 
-Upgrading an existing Jessie image is possible, but is not guaranteed to work in every circumstance. If you wish to try upgrading a Jessie image to Stretch, we strongly recommend making a backup first — we can accept no responsibility for loss of data from a failed update.
+Upgrading an existing Stretch image is possible, but is not guaranteed to work in every circumstance. If you wish to try upgrading a Stretch image to Buster, we strongly recommend making a backup first — we can accept no responsibility for loss of data from a failed update.
 
-To upgrade, first modify the files `/etc/apt/sources.list` and `/etc/apt/sources.list.d/raspi.list`. In both files, change every occurrence of the word `jessie` to `stretch`. (Both files will require sudo to edit.)
+To upgrade, first modify the files `/etc/apt/sources.list` and `/etc/apt/sources.list.d/raspi.list`. In both files, change every occurrence of the word `stretch` to `buster`. (Both files will require sudo to edit.)
 
 Then open a terminal window and execute:
 
