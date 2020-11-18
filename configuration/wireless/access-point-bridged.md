@@ -7,24 +7,24 @@ If you wish to create a standalone wireless network, consider instead setting up
 
 ```
                                          +- RPi -------+
-                                     +---+ Bridge      |
-                                     |   | WLAN AP     +-)))
-                                     |   | 192.168.1.2 |         +- Laptop ----+
-                                     |   +-------------+     (((-+ WLAN Client |
-                 +- Router ----+     |                           | 192.168.1.5 |
-                 | Firewall    |     |   +- PC#2 ------+         +-------------+
-(Internet)---WAN-+ DHCP server +-LAN-+---+ 192.168.1.3 |
-                 | 192.168.1.1 |     |   +-------------+
+                                     +---+ 10.10.0.2   |          +- Laptop ----+
+                                     |   |     WLAN AP +-)))  (((-+ WLAN Client |
+                                     |   |  Bridge     |          | 10.10.0.5   |
+                                     |   +-------------+          +-------------+
+                 +- Router ----+     |
+                 | Firewall    |     |   +- PC#2 ------+
+(Internet)---WAN-+ DHCP server +-LAN-+---+ 10.10.0.3   |
+                 |   10.10.0.1 |     |   +-------------+
                  +-------------+     |
                                      |   +- PC#1 ------+
-                                     +---+ 192.168.1.4 |
+                                     +---+ 10.10.0.4   |
                                          +-------------+
 ```
 
-A bridged wireless access point can be created using the inbuilt wireless features of the Raspberry Pi 4, Raspberry Pi 3B, Raspberry Pi 3A+/3B+ or Raspberry Pi Zero W/WH, or by using a suitable USB wireless dongle that supports access point mode.
+A bridged wireless access point can be created using the inbuilt wireless features of the Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access point mode.
 It is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the [forums](https://www.raspberrypi.org/forums/).
 
-This documentation was tested on a Raspberry Pi 3B running a fresh installation of Raspberry Pi OS Buster. 
+This documentation was tested on a Raspberry Pi 3B running a fresh installation of Raspberry Pi OS Buster.
 
 <a name="intro"></a>
 ## Before you start
@@ -33,7 +33,7 @@ This documentation was tested on a Raspberry Pi 3B running a fresh installation 
 
   **Note:** If installing remotely via SSH,
     * Connect to your Raspberry Pi **by name**, e.g. `ssh pi@raspberrypi.local`. The IP address of your Raspberry Pi on the network **will probably change** after installation.
-    * Be ready to add screen and keyboard in case you lose contact with your Raspberry Pi after installation. 
+    * Be ready to add screen and keyboard in case you lose contact with your Raspberry Pi after installation.
 * Connect your Raspberry Pi to the Ethernet network and boot the Raspberry Pi OS.
 * Ensure the Raspberry Pi OS on your Raspberry Pi is [up-to-date](../../raspbian/updating.md) and reboot if packages were installed in the process.
 * Have a wireless client (laptop, smartphone, ...) ready to test your new access point.
@@ -139,7 +139,7 @@ This setting will be automatically restored at boot time. We will define an appr
 <a name="ap-config"></a>
 ## Configure the access point software
 
-Create the `hostapd` configuration file, located at `/etc/hostapd/hostapd.conf`, to add the various parameters for your new wireless network. 
+Create the `hostapd` configuration file, located at `/etc/hostapd/hostapd.conf`, to add the various parameters for your new wireless network.
 
 ```
 sudo nano /etc/hostapd/hostapd.conf
@@ -171,7 +171,9 @@ To use the 5 GHz band, you can change the operations mode from `hw_mode=g` to `h
  - a = IEEE 802.11a (5 GHz) (Raspberry Pi 3B+ onwards)
  - b = IEEE 802.11b (2.4 GHz)
  - g = IEEE 802.11g (2.4 GHz)
- 
+
+Note that when changing the `hw_mode`, you may need to also change the `channel` - see [Wikipedia](https://en.wikipedia.org/wiki/List_of_WLAN_channels) for a list of allowed combinations.
+
 <a name="conclusion"></a>
 ## Run your new wireless access point
 
