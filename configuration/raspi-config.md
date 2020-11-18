@@ -60,7 +60,7 @@ Note: Due to the continual development of the `raspi-config` tool, the list of o
 
 ### System Options
 
-The systems options submenu allows you to make configuration changes to various parts of the boot, login and networking process, along with some other system level changes.
+The system options submenu allows you to make configuration changes to various parts of the boot, login and networking process, along with some other system level changes.
 
 #### Wireless LAN
 
@@ -73,7 +73,7 @@ Specifiy the audio output destination.
 <a name="change-user-password"></a>
 #### Password
 
-The default user on Raspberry Pi OS is ```pi``` with the password ```raspberry```. You can change that here. Read about other [users](../linux/usage/users.md).
+The default user on Raspberry Pi OS is `pi` with the password `raspberry`. You can change that here. Read about other [users](../linux/usage/users.md).
  
 <a name="hostname"></a>
 #### Hostname
@@ -83,7 +83,7 @@ Set the visible name for this Pi on a network.
 <a name="boot-options"></a>
 #### Boot / Auto login
 
-From this submenu you can select whether to boot to console or desktop and whether you need to log in or not. If you select automatic login, you will be logged in as the Pi user.
+From this submenu you can select whether to boot to console or desktop and whether you need to log in or not. If you select automatic login, you will be logged in as the `pi` user.
 
 #### Network at Boot
 
@@ -254,13 +254,13 @@ Enable or disable predictable network interface names.
 
 Configure the network's proxy settings. 
 
-#### Boot order
+#### Boot Order
 
-On the Raspberry Pi4, you can specify whether to boot from USB or network if the SD card fails for some reason.
+On the Raspberry Pi4, you can specify whether to boot from USB or network if the SD card isn't inserted. See [this page](../hardware/raspberrypi/bcm2711_bootloader_config.md) for more information.
 
-#### Bootloader version
+#### Bootloader Version
 
-On the Raspberry Pi4, you can tell the system to use the very latest boot ROM softrware, or default to the factory default if the latest version causes problems.
+On the Raspberry Pi4, you can tell the system to use the very latest boot ROM software, or default to the factory default if the latest version causes problems.
 
 <a name="update"></a>
 ### Update
