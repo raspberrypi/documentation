@@ -128,28 +128,30 @@ The following prices are exclusive of any local taxes and shipping/handling fees
 
 |Product|Price|
 |-------|-----|
-| Raspberry Pi Model A+| $20 |
-| Raspberry Pi Model B+ |$25 |
-| Raspberry Pi 2 Model B| $35 |
-| Raspberry Pi 3 Model B | $35 |
-| Raspberry Pi 3 Model A+ | $25 |
-| Raspberry Pi 3 Model B+ | $35 |
-| Raspberry Pi 4 Model B 2GB | $35 |
-| Raspberry Pi 4 Model B 4GB | $55 |
-| Raspberry Pi 4 Model B 8GB | $75 |
-| Raspberry Pi Zero | $5 |
-| Raspberry Pi Zero W |$10 |
-| Raspberry Pi Zero WH |$15 |
-| Raspberry Pi 400 |$70 |
-| Raspberry Pi 400 (full kit) |$100 |
-
+| [Raspberry Pi Model A+](https://www.raspberrypi.org/products/raspberry-pi-1-model-a-plus)| $20 |
+| [Raspberry Pi Model B+](https://www.raspberrypi.org/products/raspberry-pi-1-model-b-plus) |$25 |
+| [Raspberry Pi 2 Model B](https://www.raspberrypi.org/products/raspberry-pi-2-model-b)| $35 |
+| [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b) | $35 |
+| [Raspberry Pi 3 Model A+](https://www.raspberrypi.org/products/raspberry-pi-3-model-a-plus) | $25 |
+| [Raspberry Pi 3 Model B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus) | $35 |
+| [Raspberry Pi 4 Model B 2/4/8GB](https://www.raspberrypi.org/products/raspberry-pi-4-model-b) | $35/$55/$75 |
+| [Raspberry Pi 4 Model B official kits 2/4/8GB](https://www.raspberrypi.org/products/raspberry-pi-4-desktop-kit)  | $100/$120/$140 |
+| [Raspberry Pi Zero](https://www.raspberrypi.org/products/raspberry-pi-zero) | $5 |
+| [Raspberry Pi Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w) |$10 |
+| [Raspberry Pi Zero WH](https://www.raspberrypi.org/products/raspberry-pi-zero-w) |$15 |
+| [Raspberry Pi 400](https://www.raspberrypi.org/products/raspberry-pi-400-unit) |$70 |
+| [Raspberry Pi 400 offical kit](https://www.raspberrypi.org/products/raspberry-pi-400) |$100 |
 
 <a name="buying-what"></a>
 ### What do I get when I buy one?
 
-You get the Raspberry Pi board itself. The [official power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/) and an SD card are not included, but they can be purchased at the same time from most places that sell the Raspberry Pi. You can also purchase pre-loaded SD cards; we recommend buying these from us or our licensed distributors rather than from third parties, as our software is updated regularly and cards sold by third parties can quickly become outdated.
+Raspberry Pi computers are available separately, or as complete kits which contain everything you need to get started including a mouse, HDMI cable, SD card, power supply, as well as our official Beginners Guide book. The Raspberry Pi 400 is a computer enclosed in a keyboard: other kits come with a separate case and keyboard.
 
-An official case for the Raspberry Pi is available separately [from our distributors](https://www.raspberrypi.org/products/). There are also lots of home-brew case discussions on the forum, as well as several third-party cases available. There are also loads of awesome [3D-printable cases](https://www.raspberrypi.org/blog/3d-printed-raspberry-pi-cases/) that community members have designed.
+Raspberry Pi also sell all the equipment you need to get your Raspberry Pi up and running separately. We recommend using an official Raspberry Pi Power Supply. For the Pi Zero, 1, 2 and 3 use the [Raspberry Pi 1, 2 and 3 Power Supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/), for the Pi 4B and Pi 400 use the [Raspberry Pi USB-C Power Supply](https://www.raspberrypi.org/products/type-c-power-supply/).
+
+Official cases for the Raspberry Pi range are available separately [from our distributors](https://www.raspberrypi.org/products/). Community members have designed loads of awesome [3D-printable cases](https://www.raspberrypi.org/blog/3d-printed-raspberry-pi-cases/) 
+
+For full details of all of our products, see our [Product page](https://www.raspberrypi.org/products/).
 
 <a name="buying-fake"></a>
 ### I'm worried I have a fake Raspberry Pi!
