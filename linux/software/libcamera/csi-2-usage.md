@@ -71,7 +71,7 @@ The sensor driver for a camera sensor is responsible for all configuration of th
 
 The IMX219 driver is a good starting point, the version found in the 5.4 kernel can be found [here](https://github.com/raspberrypi/linux/blob/rpi-5.4.y/drivers/media/i2c/imx219.c). This driver supports both 8bit and 10bit Bayer readout, so enumerating frame formats and frame sizes is slightly more involved. 
 
-Sensors generally support V4L2 user controls which are documented [here](https://www.kernel.org/doc/html/latest/media/uapi/v4l/control.html). Not all these controls need to be implemented in a driver. The IMX219 driver only implements a small subset, listed below, the implementation of which is handled by the `imx219_set_ctrl` function.
+Sensors generally support V4L2 user controls which are documented [here](https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/control.html). Not all these controls need to be implemented in a driver. The IMX219 driver only implements a small subset, listed below, the implementation of which is handled by the `imx219_set_ctrl` function.
 
 - `V4L2_CID_PIXEL_RATE` / `V4L2_CID_VBLANK` / `V4L2_CID_HBLANK`: allows the application to set the frame rate.
 - `V4L2_CID_EXPOSURE`: sets the exposure time in lines. The application needs to use `V4L2_CID_PIXEL_RATE`, `V4L2_CID_HBLANK`, and the frame width to compute the line time.
@@ -98,13 +98,13 @@ When using `ioctls` in the sections below, an `_S_` in the `ioctl` name means it
 
 #### Analogue video sources
 
-Analogue video sources use the standard `ioctls` for detecting and setting video standards. :[`VIDIOC_G_STD`](https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-g-std.html), [`VIDIOC_S_STD`](https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-g-std.html), [`VIDIOC_ENUMSTD`](https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-enumstd.html), and [`VIDIOC_QUERYSTD`](https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-querystd.html)
+Analogue video sources use the standard `ioctls` for detecting and setting video standards. :[`VIDIOC_G_STD`](https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-g-std.html), [`VIDIOC_S_STD`](https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-g-std.html), [`VIDIOC_ENUMSTD`](https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-enumstd.html), and [`VIDIOC_QUERYSTD`](https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-querystd.html)
 
  Selecting the wrong standard will generally result in corrupt images. Setting the standard will typically also set the resolution on the V4L2 CAPTURE queue. It can not be set via `VIDIOC_S_FMT`. Generally requesting the detected standard via `VIDIOC_QUERYSTD` and then setting it with `VIDIOC_S_STD` before streaming is a good idea. 
 
 #### Digital video sources
 
-For digital video sources, such as HDMI, there is an alternate set of calls that allow specifying of all the digital timing parameters ([`VIDIOC_G_DV_TIMINGS`](https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-g-dv-timings.html), [`VIDIOC_S_DV_TIMINGS`](https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-g-dv-timings.html), [`VIDIOC_ENUM_DV_TIMINGS`](https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-enum-dv-timings.html), and [`VIDIOC_QUERY_DV_TIMINGS`](https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-query-dv-timings.html)). 
+For digital video sources, such as HDMI, there is an alternate set of calls that allow specifying of all the digital timing parameters ([`VIDIOC_G_DV_TIMINGS`](https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-g-dv-timings.html), [`VIDIOC_S_DV_TIMINGS`](https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-g-dv-timings.html), [`VIDIOC_ENUM_DV_TIMINGS`](https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-enum-dv-timings.html), and [`VIDIOC_QUERY_DV_TIMINGS`](https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-query-dv-timings.html)). 
 
 As with analogue bridges, the timings typically fix the V4L2 CAPTURE queue resolution, and calling `VIDIOC_S_DV_TIMINGS` with the result of `VIDIOC_QUERY_DV_TIMINGS` before streaming should ensure the format is correct.
 
