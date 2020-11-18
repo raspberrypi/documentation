@@ -14,7 +14,7 @@ If you are unable to use a particular USB device to boot your Raspberry Pi, an a
 ## Raspberry Pi 4
 To enable USB mass storage boot on a Raspberry Pi 4:
 
-* Use the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to install the latest bootloader EEPROM image.
+* Use the "Misc Utility Images" option in the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to create a SD card with the latest "Raspberry Pi 4 EEPROM boot recovery" image.
 * Update to Raspberry Pi OS 2020-08-20 or newer.
 * Use [raspi-config](../../../configuration/raspi-config.md) to choose between SD/USB (default) or SD/Network boot modes.
 
