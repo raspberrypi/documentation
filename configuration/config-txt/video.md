@@ -117,6 +117,12 @@ The `hdmi_pixel_encoding` command forces the pixel encoding mode. By default, it
 | 3 | YCbCr limited (16-235) |
 | 4 | YCbCr full (0-255) |
 
+### hdmi_max_pixel_freq
+
+The pixel frequency is used by the firmware and KMS to filter HDMI modes. Note, this is not the same as the frame rate. It specifies the maximum frequency that a valid mode can have, thereby culling out higher frequency modes. The frequencies for all the HDMI modes can he found on the Wiki page [here](https://en.wikipedia.org/wiki/Extended_Display_Identification_Data#CEA_EDID_Timing_Extension_data_format_-_Version_3), section "CEA/EIA-861 standard resolutions and timings".
+
+So for example, if you wish to disable all 4K modes, you could specify a maximum frequency of 200000000, since all 4K modes have frequencies greater than this.
+
 ### hdmi_blanking
 
 The `hdmi_blanking` command controls what happens when the operating system asks for the display to be put into standby mode, using DPMS, to save power. If this option is not set or set to 0, the HDMI output is blanked but not switched off. In order to mimic the behaviour of other computers, you can set the HDMI output to switch off as well by setting this option to 1: the attached display will go into a low power standby mode.
