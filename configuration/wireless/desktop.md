@@ -4,7 +4,7 @@ A GUI is provided for setting up wireless connections in Raspberry Pi OS with th
 
 Wireless connections can be made via the network icon at the right-hand end of the menu bar. If you are using a Pi with built-in wireless connectivity, or if a wireless dongle is plugged in, left-clicking this icon will bring up a list of available wireless networks, as shown below. If no networks are found, it will show the message 'No APs found - scanning...'. Wait a few seconds without closing the menu, and it should find your network.
 
-Note that on the Pi 3B+, which supports the 5G protocol, wireless networking is disabled for regulatory reasons, until the country code has been set. To set the country code, open the `Raspberry Pi Configuration` application from the Preferences Menu, select **Localisation** and set the appropriate code.
+Note that on Raspberry Pi devices that support the 5GHz band (Pi3B+, Pi4, CM4, Pi400), wireless networking is disabled for regulatory reasons, until the country code has been set. To set the country code, open the `Raspberry Pi Configuration` application from the Preferences Menu, select **Localisation** and set the appropriate code.
 
 ![wifi2](images/wifi2.png)
 
