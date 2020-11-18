@@ -1,6 +1,6 @@
 # raspi-config
 
-This page describes the console based raspi-config application. If you are using the Raspberry Pi desktop then you can use the graphical Raspberry Pi Configuration application from the Preferences menu to configure your Raspberry Pi.
+This page describes the console based raspi-config application. If you are using the Raspberry Pi desktop then you can use the graphical `Raspberry Pi Configuration` application from the `Preferences` menu to configure your Raspberry Pi.
 
 `raspi-config` is the Raspberry Pi configuration tool originally written by [Alex Bradbury](https://github.com/asb). It targets Raspberry Pi OS.
 
@@ -192,7 +192,7 @@ Enable or disable a read-only filesystem
 
 #### Fan
 
-Set the bahaviour of a GPIO connected fan
+Set the behaviour of a GPIO connected fan
 
 <a name="localisation-options"></a>
 ### Localisation Options
