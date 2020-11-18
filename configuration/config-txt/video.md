@@ -649,6 +649,14 @@ The options that can be set are:
 |Composite      | 3 | 
 |HDMI 1         | 7 |
 
+### max_framebuffers
+
+This configuration entry sets the maximum number of firmware framebuffers that can be created. Valid options are 0,1, and 2. By default on devices before the Pi4 this is set to 1, so will need to be increased to 2 when using more than one display, for example HDMI and a DSI or DPI display. The Raspberry Pi4 configuration sets this to 2 by default as it has two HDMI ports. 
+
+Generally in most cases it is safe to set this to 2, as framebuffers will only be created when an attached device is actually detected. 
+
+Setting this value to 0 can be used to reduce memory requirements when used in headless mode as it will prevent any framebuffers from being allocated. 
+
 ### test_mode
 
 The `test_mode` command displays a test image and sound during boot (over the composite video and analogue audio outputs only) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test; the default value is `0`.
