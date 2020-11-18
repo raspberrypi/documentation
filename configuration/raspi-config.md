@@ -15,25 +15,23 @@ sudo raspi-config
 
 The `sudo` is required because you will be changing files that you do not own as the `pi` user.
 
-You should see a blue screen with options in a grey box in the centre, like so:
+You should see a blue screen with options in a grey box in the centre, something like so (this might not be exactly what you see):
 
 ![raspi-config main screen](images/raspi-config.png)
 
-It has the following options available:
+It has the following top level options available:
 
 ```
 ┌───────────────────┤ Raspberry Pi Software Configuration Tool (raspi-config) ├────────────────────┐
 │                                                                                                  │
-│        1 Change User Password Change password for the current user                               │
-│        2 Network Options      Configure network settings                                         │
-│        3 Boot Options         Configure options for start-up                                     │
-│        4 Localisation Options Set up language and regional settings to match your location       │
-│        5 Interfacing Options  Configure connections to peripherals                               │
-│        6 Overclock            Configure overclocking for your Pi                                 │
-│        7 Advanced Options     Configure advanced settings                                        │
+│        1 System Options       Configure system settings                                          │
+│        2 Display Options      Configure display settings                                         │
+│        3 Interface Options    Configure connections to peripherals                               │
+│        4 Performance Options  Configure performance settings                                     │
+│        5 Localisation Options Configure language and regional settings                           │
+│        6 Advanced Options     Configure advanced settings                                        │                                 │
 │        8 Update               Update this tool to the latest version                             │
 │        9 About raspi-config   Information about this configuration tool                          │
-│                                                                                                  │
 │                                                                                                  │
 │                                                                                                  │
 │                           <Select>                           <Finish>                            │
@@ -56,42 +54,69 @@ Generally speaking, `raspi-config` aims to provide the functionality to make the
 <a name="menu-options"></a>
 ## Menu options
 
+### System Options
+
+The systems optiosn submenu allows you to make configuration changes to various parts of the boot, login and networking process, along with some other system level changes.
+
+#### Wireless LAN
+
+Allows setting of the wireless LAN SSID and passphrase.
+
+#### Audio
+
+Specifiy the audio output destination.
+
 <a name="change-user-password"></a>
-### Change User Password
+#### Password
 
 The default user on Raspberry Pi OS is ```pi``` with the password ```raspberry```. You can change that here. Read about other [users](../linux/usage/users.md).
  
-<a name="network-options"></a>
-### Network Options
-
-From this submenu you can set the host name, your wireless LAN SSID, and pre-shared key, or enable/disable predictable network interface names.
-
 <a name="hostname"></a>
 #### Hostname
 
 Set the visible name for this Pi on a network.
 
 <a name="boot-options"></a>
-### Boot Options
+#### Boot / Auto login
 
 From here you can change what happens when your Pi boots. Use this option to change your boot preference to command line or desktop. You can choose whether boot-up waits for the network to be available, and whether the Plymouth splash screen is displayed at boot-up.
 
-<a name="localisation-options"></a>
-### Localisation Options
+#### Network at Boot
 
-The localisation submenu gives you these options to choose from: keyboard layout, time zone, locale, and wireless LAN country code.
+Use this option to wait for a network connection before letting boot proceed.
 
-#### Change locale
-Select a locale, for example `en_GB.UTF-8 UTF-8`.
+#### Splash Screen
 
-#### Change time zone
-Select your local time zone, starting with the region, e.g. Europe, then selecting a city, e.g. London. Type a letter to skip down the list to that point in the alphabet.
+Enable or disable the splash screen displayed at boot time
 
-#### Change keyboard layout
-This option opens another menu which allows you to select your keyboard layout. It will take a long time to display while it reads all the keyboard types. Changes usually take effect immediately, but may require a reboot.
+#### Power LED
 
-#### Change wireless country
-This option sets the country code for your wireless network.
+If the model of Pi permits it, you can change the behaviour of the power LED using this option.
+
+### Display Options
+
+<a name="resolution"></a>
+#### Resolution
+
+Define the default HDMI/DVI video resolution to use when the system boots without a TV or monitor being connected. This can have an effect on RealVNC if the VNC option is enabled.
+
+<a name="overscan"></a>
+#### Overscan
+
+Old TV sets had a significant variation in the size of the picture they produced; some had cabinets that overlapped the screen. TV pictures were therefore given a black border so that none of the picture was lost; this is called overscan. Modern TVs and monitors don't need the border, and the signal doesn't allow for it. If the initial text shown on the screen disappears off the edge, you need to enable overscan to bring the border back.
+
+Any changes will take effect after a reboot. You can have greater control over the settings by editing [config.txt](config-txt/README.md).
+
+On some displays, particularly monitors, disabling overscan will make the picture fill the whole screen and correct the resolution. For other displays, it may be necessary to leave overscan enabled and adjust its values.
+
+<a name="pixel-doubling"></a>
+#### Pixel Doubling
+
+Enable/disable 2x2 pixel mapping.
+
+#### Screen Blanking
+
+Enable or disable screen blanking.
 
 <a name="interfacing-options"></a>
 ### Interfacing Options
@@ -135,6 +160,12 @@ Enable/disable shell and kernel messages on the serial connection.
 
 Enable/disable the Dallas 1-wire interface. This is usually used for DS18B20 temperature sensors.
 
+#### Remote GPIO
+
+Enable or disable remote access to the GPIO pins.
+
+### Performance Options
+
 <a name="overclock"></a> 
 ### Overclock
 
@@ -142,7 +173,38 @@ It is possible to overclock your Raspberry Pi's CPU. The default is 700MHz but i
 
 **Be aware that overclocking may reduce the lifetime of your Raspberry Pi.** If overclocking at a certain level causes system instability, try a more modest overclock. Hold down the Shift key during boot to temporarily disable overclocking.
 
-See http://elinux.org/RPi_Overclocking for more information.
+<a name="memory-split"></a>
+#### GPU Memory
+
+Change the amount of memory made available to the GPU.
+
+#### Overlay File System
+
+Enable or disable a read-only filesystem
+
+#### Fan
+
+Set the bahaviour of a GPIO connected fan
+
+<a name="localisation-options"></a>
+### Localisation Options
+
+The localisation submenu gives you these options to choose from: keyboard layout, time zone, locale, and wireless LAN country code.
+
+#### Locale
+
+Select a locale, for example `en_GB.UTF-8 UTF-8`.
+
+#### Time Zone
+
+Select your local time zone, starting with the region, e.g. Europe, then selecting a city, e.g. London. Type a letter to skip down the list to that point in the alphabet.
+
+#### Keyboard
+
+This option opens another menu which allows you to select your keyboard layout. It will take a long time to display while it reads all the keyboard types. Changes usually take effect immediately, but may require a reboot.
+
+#### WLAN Country
+This option sets the country code for your wireless network.
 
 <a name="advanced-options"></a>
 ### Advanced Options
@@ -151,35 +213,6 @@ See http://elinux.org/RPi_Overclocking for more information.
 #### Expand Filesystem
 
 If you have installed Raspberry Pi OS using NOOBS, the filesystem will have been expanded automatically. There may be a rare occasion where this is not the case, e.g. if you have copied a smaller SD card onto a larger one. In this case, you should use this option to expand your installation to fill the whole SD card, giving you more space to use for files. You will need to reboot the Raspberry Pi to make this available. Note that there is no confirmation: selecting the option begins the partition expansion immediately.
-
-<a name="overscan"></a>
-#### Overscan
-
-Old TV sets had a significant variation in the size of the picture they produced; some had cabinets that overlapped the screen. TV pictures were therefore given a black border so that none of the picture was lost; this is called overscan. Modern TVs and monitors don't need the border, and the signal doesn't allow for it. If the initial text shown on the screen disappears off the edge, you need to enable overscan to bring the border back.
-
-Any changes will take effect after a reboot. You can have greater control over the settings by editing [config.txt](config-txt/README.md).
-
-On some displays, particularly monitors, disabling overscan will make the picture fill the whole screen and correct the resolution. For other displays, it may be necessary to leave overscan enabled and adjust its values.
-
-<a name="memory-split"></a>
-#### Memory split
-
-Change the amount of memory made available to the GPU.
-
-<a name="audio"></a>
-#### Audio
-
-Force audio out through HDMI or a 3.5mm jack. Read more on the [audio configuration documentation page](audio-config.md).
-
-<a name="resolution"></a>
-#### Resolution
-
-Define the default HDMI/DVI video resolution to use when the system boots without a TV or monitor being connected. This can have an effect on RealVNC if the VNC option is enabled.
-
-<a name="pixel-doubling"></a>
-#### Pixel Doubling
-
-Enable/disable 2x2 pixel mapping.
 
 <a name="GL-driver"></a>
 #### GL Driver
@@ -201,8 +234,20 @@ Enable/disable the experimental OpenGL Fake KMS desktop graphics driver.
 
 Enable/disable the original legacy non-GL VideoCore desktop graphics driver.
 
+#### Compositor
+
+Enable/Display the xcompmgr composition manager
+
+#### Network Interface Names
+
+Enable or disable predictable network interface names. 
+
+#### Network Proxy Settings
+
+Configure the networks proxy settings. 
+
 <a name="update"></a>
-#### Update
+### Update
 
 Update this tool to the latest version.
 
