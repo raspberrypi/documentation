@@ -17,8 +17,6 @@ static domain_name_servers=192.168.0.254 8.8.8.8
 
 You can find the names of the interfaces present on your system using the `ip link` command.
 
-Previous versions of Raspberry Pi OS used the file `/etc/network/interfaces` for network interface configuration: if an interface is listed in this file, any settings there will take precedence over what is in `/etc/dhcpcd.conf`.
-
 Note that if you have several Raspberry Pis connected to the same network, you may find it easier instead to set address reservations on your DHCP server. In this way, each Pi will keep the same IP address, but they will all be managed in one place, making reconfiguring your network in the future more straightforward.
 
 On Raspberry Pi systems where the graphical desktop is installed, a GUI tool called `lxplug-network` is used to allow the user to make changes to the configuration of `dhcpcd`, including setting static IP addresses. The `lxplug-network` tool is based on `dhcpcd-ui`, which was also developed by Roy Marples.
