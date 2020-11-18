@@ -15,9 +15,11 @@ sudo raspi-config
 
 The `sudo` is required because you will be changing files that you do not own as the `pi` user.
 
-You should see a blue screen with options in a grey box in the centre, something like so (this might not be exactly what you see):
+You should see a blue screen with options in a grey box:
 
 ![raspi-config main screen](images/raspi-config.png)
+
+Note that the menu shown may differ slightly.
 
 It has the following top level options available:
 
@@ -54,9 +56,11 @@ Generally speaking, `raspi-config` aims to provide the functionality to make the
 <a name="menu-options"></a>
 ## Menu options
 
+Note: Due to the continual development of the `raspi-config` tool, the list of options below may not be completely up to date. Also please be aware that different models of Raspberry Pi may have different options available.
+
 ### System Options
 
-The systems optiosn submenu allows you to make configuration changes to various parts of the boot, login and networking process, along with some other system level changes.
+The systems options submenu allows you to make configuration changes to various parts of the boot, login and networking process, along with some other system level changes.
 
 #### Wireless LAN
 
@@ -79,7 +83,7 @@ Set the visible name for this Pi on a network.
 <a name="boot-options"></a>
 #### Boot / Auto login
 
-From here you can change what happens when your Pi boots. Use this option to change your boot preference to command line or desktop. You can choose whether boot-up waits for the network to be available, and whether the Plymouth splash screen is displayed at boot-up.
+From this submenu you can select whether to boot to console or desktop and whether you need to log in or not. If you select automatic login, you will be logged in as the Pi user.
 
 #### Network at Boot
 
@@ -100,8 +104,8 @@ If the model of Pi permits it, you can change the behaviour of the power LED usi
 
 Define the default HDMI/DVI video resolution to use when the system boots without a TV or monitor being connected. This can have an effect on RealVNC if the VNC option is enabled.
 
-<a name="overscan"></a>
-#### Overscan
+<a name="underscan"></a>
+#### Underscan
 
 Old TV sets had a significant variation in the size of the picture they produced; some had cabinets that overlapped the screen. TV pictures were therefore given a black border so that none of the picture was lost; this is called overscan. Modern TVs and monitors don't need the border, and the signal doesn't allow for it. If the initial text shown on the screen disappears off the edge, you need to enable overscan to bring the border back.
 
@@ -113,6 +117,10 @@ On some displays, particularly monitors, disabling overscan will make the pictur
 #### Pixel Doubling
 
 Enable/disable 2x2 pixel mapping.
+
+#### Composite Video
+
+On the Raspberry Pi4, enable composite video. On models prior to the Raspberry Pi4, composite video is enabled by default so this option is not displayed. 
 
 #### Screen Blanking
 
@@ -169,7 +177,7 @@ Enable or disable remote access to the GPIO pins.
 <a name="overclock"></a> 
 ### Overclock
 
-It is possible to overclock your Raspberry Pi's CPU. The default is 700MHz but it can be set up to 1000MHz. The overclocking you can achieve will vary; overclocking too high may result in instability. Selecting this option shows the following warning:
+On some models it is possible to overclock your Raspberry Pi's CPU using this tool. The overclocking you can achieve will vary; overclocking too high may result in instability. Selecting this option shows the following warning:
 
 **Be aware that overclocking may reduce the lifetime of your Raspberry Pi.** If overclocking at a certain level causes system instability, try a more modest overclock. Hold down the Shift key during boot to temporarily disable overclocking.
 
@@ -244,7 +252,15 @@ Enable or disable predictable network interface names.
 
 #### Network Proxy Settings
 
-Configure the networks proxy settings. 
+Configure the network's proxy settings. 
+
+#### Boot order
+
+On the Raspberry Pi4, you can specify whether to boot from USB or network if the SD card fails for some reason.
+
+#### Bootloader version
+
+On the Raspberry Pi4, you can tell the system to use the very latest boot ROM softrware, or default to the factory default if the latest version causes problems.
 
 <a name="update"></a>
 ### Update
