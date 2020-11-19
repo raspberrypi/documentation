@@ -105,3 +105,25 @@ workgroup = <your workgroup name here>
 ```
 
 That should be enough to share the folder. On your Windows device, when you browse the network, the folder should appear and you should be able to connect to it.
+
+### "Host is down" error
+
+This error is caused by a combination of two things: A SMB protocol version mismatch, and the CIFS client on Linux returning a misleading error message. 
+
+In order to fix this a version entry needs to be added to the mount command. Note that by default the latest 'mount.cifs' on Raspberry Pi OS will attempt to negotiate the highest possible version greater or equal to 2.1 which should work with Windows 7 and above shares, but if connecting to older NAS devices for example, you may need to use an earlier version.
+
+```
+mount.cifs //IP/share /mnt/point -o user=<uname>,vers=1.0
+```
+
+You may need to try different versions to match up with the server version. Possible values are: 
+
+| Version | Description |
+|---------|-------------|
+|  1.0    | Classic CIFS/SMBv1 protocol |
+|  2.0    | The SMBv2.002 protocol. Windows Vista Service Pack 1, and Windows Server 2008 |
+|  2.1    | The SMBv2.1 protocol. Microsoft Windows 7 and Windows Server 2008R2 |
+|  3.0    | The SMBv3.0 protocol.  Microsoft Windows 8 and Windows Server 2012 |
+| 3.02/3.0.2 | The SMBv3.0.2 protocol. Microsoft Windows 8.1 and Windows Server 2012R2 |
+| 3.1.1/3.11 | The SMBv3.1.1 protocol. Microsoft Windows 10 and Windows Server 2016 |
+| 3       | The SMBv3.0 protocol version and above |
