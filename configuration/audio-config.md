@@ -22,13 +22,9 @@ sudo raspi-config
 
 This will open the configuration screen:
 
-![raspi-config screen](images/raspi-config.png)
+Select `System Options` (Currently option 1, but yours may be different) and press `Enter`.
 
-Select `Advanced Options` (here shown as Option 7, but yours may be different) and press `Enter`.
-
-Now select the Option named, `Audio` (here shown as A6, but yours may be different) and press `Enter`:
-
-![Audio configuration screen](images/raspi-config-audio.png)
+Now select the Option named, `Audio` (Currently option S2, but yours may be different) and press `Enter`:
 
 Select your required mode, press `Enter` and press the right arrow key to exit the options list, then select `Finish` to exit the configuration tool.
 
