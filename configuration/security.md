@@ -243,7 +243,7 @@ sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 sudo nano /etc/fail2ban/jail.local
 ```
 
-Look for the section on `[ssh]`. It will look something like this.
+Add the following section to the `jail.conf` file. On some versions of fail2ban this section may already exist, so update this pre-existing section it if it is there.
 
 ```
 [ssh]
@@ -254,7 +254,7 @@ logpath  = /var/log/auth.log
 maxretry = 6
 ```
 
-As you can see, this section is named ssh, is enabled, examines the ssh port, filters using the `/etc/fail2ban/filter.d/sshd.conf` parameters, parses the `/var/log/auth.log` for malicious activity, and allows six retries before the detection threshold is reached. Checking the default section, we can see that the default banning action is:
+As you can see, this section is named ssh, is enabled, examines the ssh port, filters using the `sshd` parameters, parses the `/var/log/auth.log` for malicious activity, and allows six retries before the detection threshold is reached. Checking the default section, we can see that the default banning action is:
 
 ```bash
 # Default banning action (e.g. iptables, iptables-new,
