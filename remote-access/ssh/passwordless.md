@@ -84,6 +84,25 @@ If this does not work, you can get assistance on the [Raspberry Pi forums](https
 
 **Note:** you can also send files over SSH using the `scp` command (secure copy). See the [SCP guide](scp.md) for more information.
 
+## Adjust permissions for your home and .ssh directories
+
+If you can't establish a connection after following the steps above there might be a problem with your directory permissions. First, you want to check the logs for any errors:
+
+```bash
+tail -f /var/log/secure
+# might return:
+Nov 23 12:31:26 raspberrypi sshd[9146]: Authentication refused: bad ownership or modes for directory /home/pi
+```
+
+If the logs says `Authentication refused: bad ownership or modes for directory /home/pi` there is a permission problem regarding your home directory. SSH needs your home and ~/.ssh directory forbid group write access. You can adjust the permissions using `chmod` (make sure to replace `user` with your username, e.g. `pi`):
+
+```bash
+chmod g-w /home/user
+chmod 700 /home/user/.ssh
+chmod 600 /home/user/.ssh/authorized_keys
+```
+Now only the user itself has access to `.ssh` and `.ssh/authorized_keys` in which the public keys of your remote machines are stored.
+
 ## Store the passphrase in the macOS keychain
 
 If you are using macOS, and after verifying that your new key allows you to connect, you have the option of storing the passphrase for your key in the macOS keychain. This allows you to connect to your Raspberry Pi without entering the passphrase.
