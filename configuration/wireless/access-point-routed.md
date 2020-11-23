@@ -193,6 +193,19 @@ To use the 5 GHz band, you can change the operations mode from `hw_mode=g` to `h
 
 Note that when changing the `hw_mode`, you may need to also change the `channel` - see [Wikipedia](https://en.wikipedia.org/wiki/List_of_WLAN_channels) for a list of allowed combinations.
 
+In order for `hostapd` to start on boot and use the configuration, edit `/etc/default/hostapd` and set `DAEMON_CONF` to the path `/etc/hostapd/hostapd.conf`. For example, open the file using `nano`
+```
+sudo nano /etc/hostapd/hostapd.conf
+```
+and replace this line:
+```
+#DAEMON_CONF=""
+```
+with
+```
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+```
+
 <a name="conclusion"></a>
 ## Run your new wireless access point
 
