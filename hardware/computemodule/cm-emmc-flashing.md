@@ -125,13 +125,15 @@ The `rpiboot` tool is the recommended method for updating the bootloader EEPROM 
 ./rpiboot -d recovery
 ```
 
-`rpiboot` contains a default `pieeprom.bin` bootloader EEPROM image. See the [boot EEPROM](../raspberrypi/booteeprom.md) and [bootloader configuration](../raspberrypi/bcm2711_bootloader_config.md) pages for more information about how to change the embedded configuration file.
+The `recovery` directory of the `rpiboot` tool contains a default `pieeprom.bin` bootloader EEPROM image. See the [boot EEPROM](../raspberrypi/booteeprom.md) and [bootloader configuration](../raspberrypi/bcm2711_bootloader_config.md) pages for more information about how to change the embedded configuration file.
 
-The SHA256 checksum file must match the `pieeprom.bin` image. To modify this directly run.
+The SHA256 checksum file must match the `pieeprom.bin` image. To generate the `.sig` file run
 
 ```bash
 sha256sum pieeprom.bin | awk '{print $2}' > pieeprom.sig
 ````
+
+The bootloader image in the `recovery` directory the latest manufacturing image with default settings. It is intended for use on a (https://www.raspberrypi.org/products/compute-module-4-io-board)[Compute Module 4 IO board] with Raspberry Pi OS booting from SD/EMMC as a Compute Module 4 development platform. 
 
 
 ## Troubleshooting
