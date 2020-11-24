@@ -118,6 +118,24 @@ The `/dev/sdX1` and `/dev/sdX2` partitions can now be mounted normally.
 
 Make sure J4 (USB SLAVE BOOT ENABLE) / J2 (nRPI_BOOT) is set to the disabled position and/or nothing is plugged into the USB slave port. Power cycling the IO board should now result in the Compute Module booting from eMMC.
 
+## Flashing the bootloader EEPROM - Compute Module 4
+The `rpiboot` tool is the recommended method for updating the bootloader EEPROM on Compute Module 4. After following the initial EMMC flashing setup steps run the following command to run the `recovery` image instead of the EMMC image.
+
+```bash
+./rpiboot -d recovery
+```
+
+The `recovery` directory of the `rpiboot` tool contains a default `pieeprom.bin` bootloader EEPROM image. See the [boot EEPROM](../raspberrypi/booteeprom.md) and [bootloader configuration](../raspberrypi/bcm2711_bootloader_config.md) pages for more information about how to change the embedded configuration file.
+
+The SHA256 checksum file must match the `pieeprom.bin` image. To generate the `.sig` file run
+
+```bash
+sha256sum pieeprom.bin | awk '{print $2}' > pieeprom.sig
+````
+
+The bootloader image in the `recovery` directory is the latest manufacturing image with default settings. It is intended for use on a (https://www.raspberrypi.org/products/compute-module-4-io-board)[Compute Module 4 IO board] with Raspberry Pi OS booting from SD/EMMC as a Compute Module 4 development platform. 
+
+
 ## Troubleshooting
 
 For a small percentage of Raspberry Pi Compute Module 3s, booting problems have been reported. We have traced these back to the method used to create the FAT32 partition; we believe the problem is due to a difference in timing between the BCM2835/6/7 and the newer eMMC devices. The following method of creating the partition is a reliable solution in our hands.
