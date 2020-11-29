@@ -2,7 +2,7 @@
 
 If you do not use a monitor or keyboard to run your Pi (known as headless), but you still need to do some wireless setup, there is a facility to enable wireless networking and SSH when creating a image.
 
-Once an image is created on an SD card, by inserting it into a card reader on a Linux or Windows machines the boot folder can be accessed. Adding certain files to this folder will activate certain setup features on the first boot of the Pi itself. 
+Once an image is created on an SD card, by inserting it into a card reader on a Linux or Windows machines the [boot folder](../boot_folder.md) can be accessed. Adding certain files to this folder will activate certain setup features on the first boot of the Pi itself. 
 
 ## Setting up wireless networking
 
