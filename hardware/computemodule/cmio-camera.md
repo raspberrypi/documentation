@@ -30,7 +30,7 @@ When using the Compute Module to drive cameras, it is NOT necessary to incorpora
 1. Next, run `sudo wget http://goo.gl/U4t12b -O /boot/dt-blob.bin`
 1. Connect the RPI-CAMERA board and Camera Module to the CAM1 port. As an alternative, the Pi Zero camera cable can be used.
 
-    ![Connecting the adapter board](images/CMAIO-Cam-Adapter.jpg)
+    ![Connecting the adapter board](images/CMIO-Cam-Adapter.jpg)
 
 1. Connect GPIO pins together as shown below.
 
