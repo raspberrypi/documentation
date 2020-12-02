@@ -78,7 +78,7 @@ If you specify the wrong device in the instructions, you could overwrite your pr
 
     If the command reports `dd: /dev/rdiskN: Permission denied`, the partition table of the SD card is being protected against being overwritten by Mac OS. Erase the SD card's partition table using this command:
     
-    ```
+    ```bash
     sudo diskutil partitionDisk /dev/diskN 1 MBR "Free Space" "%noformat%" 100%
     ```
 
