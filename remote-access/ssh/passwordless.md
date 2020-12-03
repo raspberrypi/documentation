@@ -94,12 +94,12 @@ tail -f /var/log/secure
 Nov 23 12:31:26 raspberrypi sshd[9146]: Authentication refused: bad ownership or modes for directory /home/pi
 ```
 
-If the log says `Authentication refused: bad ownership or modes for directory /home/pi` there is a permission problem regarding your home directory. SSH needs your home and `~/.ssh` directory to not have group write access. You can adjust the permissions using `chmod` (make sure to replace `user` with your username, e.g. `pi`):
+If the log says `Authentication refused: bad ownership or modes for directory /home/pi` there is a permission problem regarding your home directory. SSH needs your home and `~/.ssh` directory to not have group write access. You can adjust the permissions using `chmod`:
 
 ```bash
-chmod g-w /home/user
-chmod 700 /home/user/.ssh
-chmod 600 /home/user/.ssh/authorized_keys
+chmod g-w $HOME
+chmod 700 $HOME/.ssh
+chmod 600 $HOME/.ssh/authorized_keys
 ```
 Now only the user itself has access to `.ssh` and `.ssh/authorized_keys` in which the public keys of your remote machines are stored.
 
