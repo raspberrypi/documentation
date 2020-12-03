@@ -6,7 +6,7 @@ This page explains how to boot your Raspberry Pi from a USB mass storage device 
 
 <a name="pi400"></a>
 ## Raspberry Pi 400
-To boot the Pi 400 from a USB mass storage device, simply image the USB drive with Raspberry Pi OS 2020-08-20 or newer using the Raspberry Pi Imager utility, selecting the 
+To boot the Pi 400 from a USB mass storage device, simply image the USB drive with Raspberry Pi OS 2020-08-20 or newer using the Raspberry Pi Imager utility: select the USB drive from the `SD Card` list in Raspberry Pi Imager.
 
 <a name="pi4"></a>
 ## Raspberry Pi 4
