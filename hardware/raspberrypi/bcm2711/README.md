@@ -12,7 +12,7 @@ A datasheet for the BCM2711 can be found [here](https://datasheets.raspberrypi.o
 
 **Processor:**  Quad-core Cortex-A72 (ARM v8) 64-bit SoC @ 1.5 GHz. See [Wikipedia page](https://en.wikipedia.org/wiki/ARM_Cortex-A72) on the A72 for more details.
 
-**Memory:** Accesses up to 4GB LPDDR4-2400 SDRAM (depending on model)
+**Memory:** Accesses up to 8GB LPDDR4-2400 SDRAM (depending on model)
 
 **Caches:** 32 KB data + 48 KB instruction L1 cache per core. 1MB L2 cache.
 
