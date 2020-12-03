@@ -1,6 +1,6 @@
 # USB mass storage boot
 
-**Available on Raspberry Pi 2B v1.2, 3A+, 3B, 3B+, 4B and 400 only.**
+**Available on Raspberry Pi 2B v1.2, 3A+, 3B, 3B+, and 4B only.**
 
 This page explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or a USB hard disk. When attaching USB devices, particularly hard disks and SSDs, be mindful of their power requirements. If you wish to attach more than one SSD or hard disk to the Pi, this normally requires external power - either a powered hard disk enclosure, or a powered USB hub. Note that models prior to the Pi 4 have known issues which prevent booting with some USB devices.
 
@@ -8,43 +8,17 @@ See the [bootmodes documentation](README.md) for the boot sequence and alternati
 
 Note that 'USB mass storage boot' is different from 'USB device boot mode'. [USB device boot mode](device.md) allows a Raspberry Pi connected to a computer to boot as a USB device, using files from that computer.
 
-If you are unable to use a particular USB device to boot your Raspberry Pi, an alternative for the Raspberry Pi 2B v1.2, 3A+, 3B, 3B+ models is to use the special bootcode.bin-only boot mode as described [here](README.md). This Pi will still boot from the SD card, but `bootcode.bin` is the only file read from it.
+If you are unable to use a particular USB device to boot your Raspberry Pi, an alternative is to use the special bootcode.bin-only boot mode as described [here](README.md). This Pi will still boot from the SD card, but `bootcode.bin` is the only file read from it.
 
 <a name="pi4"></a>
-## Raspberry Pi 4B
+## Raspberry Pi 4
+To enable USB mass storage boot on a Raspberry Pi 4:
 
-To boot from a USB mass storage device, the Raspberry Pi 4B requires the bootloader EEPROM release from 3 September 2020 or later. Check which bootloader EEPROM version your Pi has using the `rpi-eeprom-update` tool:
+* Use the "Misc Utility Images" option in the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to create a SD card with the latest "Raspberry Pi 4 EEPROM boot recovery" image.
+* Update to Raspberry Pi OS 2020-08-20 or newer.
+* Use [raspi-config](../../../configuration/raspi-config.md) to choose between SD/USB (default) or SD/Network boot modes.
 
-```bash
-pi@raspi4b:~ $ sudo rpi-eeprom-update
-BCM2711 detected
-Dedicated VL805 EEPROM detected
-BOOTLOADER: up-to-date
-CURRENT: Thu  3 Sep 12:11:43 UTC 2020 (1599135103)
- LATEST: Thu  3 Sep 12:11:43 UTC 2020 (1599135103)
- FW DIR: /lib/firmware/raspberrypi/bootloader/critical
-VL805: up-to-date
-CURRENT: 000138a1
- LATEST: 000138a1
- ```
- 
-The `rpi-eeprom-update` tool reports information about two different EEPROMs: the bootloader EEPROM and the VL805 USB controller EEPROM. The bootloader EEPROM information is reported after the `BOOTLOADER` heading: here the `CURRENT` release is what is installed in this Pi's EEPROM and is the 3 September 2020 release, so this Pi can do USB mass storage boot since it has the required version. The `LATEST` version shown is the most recent version available from the [APT](https://www.raspberrypi.org/documentation/linux/software/apt.md) package present on this Pi.
- 
- If your Pi has an earlier release of bootloader EEPROM, there are two ways to upgrade to a version that can do USB mass storage boot:
- 
- 1. Use the `Misc Utility Images` option in the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to create an SD card with the latest `Raspberry Pi 4 EEPROM boot recovery` image. Once you have imaged the SD card, boot the Pi with this card and a display connected to one (or both) of the HDMI ports. As the Pi boots, its bootloader EEPROM will be upgraded to the latest release. The display will turn green to indicate a successful update.
- 1. Run Raspberry Pi OS 2020-08-20 or later from an SD card, and use it to upgrade the EEPROM. First, upgrade the packages on your system using the command `sudo apt update` followed by `sudo apt upgrade`. Once you have done this, run `sudo rpi-eeprom-update`: it will present a `LATEST` version of the bootloader EEPROM from 3 September 2020 or later. Once you can see this new EEPROM version in the output of `rpi-eeprom-update`, reboot the Pi to install it.
- 
-Once your Pi 4B has the 3 September 2020 or later bootloader EEPROM release, it can boot from a USB mass storage device. If an SD card is present, the Pi will attempt to boot from that first, before attempting boot from USB mass storage.
-
-You can use the `raspi-config` tool to swap between SD/USB boot, and SD/network boot modes. The full set of boot mode options is documented on the [bootloader configuration](../bcm2711_bootloader_config.md) page.
- 
-<a name="pi400"></a>
-## Raspberry Pi 400
-
-All Raspberry Pi 400s have the bootloader EEPROM release from 3 September 2020 or later: there is no need to update the bootloader EEPROM to enable booting from USB mass storage. As with the Pi 4B, the Pi 400 will attempt to boot from the SD card first, before attempting boot from USB mass storage.
-
-You can also use the `raspi-config` tool to swap between SD/USB boot, and SD/network boot modes. The full set of boot mode options is documented on the [bootloader configuration](../bcm2711_bootloader_config.md) page.
+The full set of boot mode options is documented on the [bootloader configuration](../bcm2711_bootloader_config.md) page.
 
 
 ## Raspberry Pi 2B v1.2, 3A+, 3B, Compute Module 3
