@@ -1,22 +1,36 @@
 # USB mass storage boot
 
-**Available on Raspberry Pi 2B v1.2, 3A+, 3B, 3B+, and 4B only.**
+**Available on Raspberry Pi 2B v1.2, 3A+, 3B, 3B+, 4B and 400 only.**
 
 This page explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or a USB hard disk. When attaching USB devices, particularly hard disks and SSDs, be mindful of their power requirements. If you wish to attach more than one SSD or hard disk to the Pi, this normally requires external power - either a powered hard disk enclosure, or a powered USB hub. Note that models prior to the Pi 4 have known issues which prevent booting with some USB devices.
 
-See the [bootmodes documentation](README.md) for the boot sequence and alternative boot modes (network, USB device, GPIO or SD boot).
-
-Note that 'USB mass storage boot' is different from 'USB device boot mode'. [USB device boot mode](device.md) allows a Raspberry Pi connected to a computer to boot as a USB device, using files from that computer.
-
-If you are unable to use a particular USB device to boot your Raspberry Pi, an alternative is to use the special bootcode.bin-only boot mode as described [here](README.md). This Pi will still boot from the SD card, but `bootcode.bin` is the only file read from it.
+<a name="pi400"></a>
+## Raspberry Pi 400
+To boot the Pi 400 from a USB mass storage device, simply image the USB drive with Raspberry Pi OS 2020-08-20 or newer using the Raspberry Pi Imager utility, selecting the 
 
 <a name="pi4"></a>
 ## Raspberry Pi 4
-To enable USB mass storage boot on a Raspberry Pi 4:
+Depending on when your Raspberry Pi 4 was manufactured, the bootloader EEPROM may need to be updated to enable booting from USB mass storage devices. 
 
-* Use the "Misc Utility Images" option in the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to create a SD card with the latest "Raspberry Pi 4 EEPROM boot recovery" image.
-* Update to Raspberry Pi OS 2020-08-20 or newer.
-* Use [raspi-config](../../../configuration/raspi-config.md) to choose between SD/USB (default) or SD/Network boot modes.
+### Check if your Pi 4B has the required bootloader EEPROM version
+
+To check if your Pi 4B has the required bootloader EEPROM version, boot the device with no SD card inserted and a display attached to one of the HDMI ports. The Pi 4B will display a diagnostic screen on the attached display, which includes the bootloader EEPROM version at the top of the screen. The bootloader must be dated `Sep 3 2020` or later to support USB mass storage boot. If the diagnostic screen reports a date earlier than `Sep 3 2020`, or there is no diagnostic screen shown, you will need to updated the bootloader EEPROM first to enable USB mass storage boot.
+
+USB mass storage boot on the Pi 4B required Raspberry Pi OS 2020-08-20 or later.
+
+
+### Enable USB mass storage boot on a Pi 4 by updating the bootloader EEPROM
+If your Pi 4 requires an updated bootloader EEPROM in order to support USB mass storage boot, you can perform the update as follows:
+
+1. Use the "Misc Utility Images" option in [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to create an SD card with the latest "Raspberry Pi 4 EEPROM boot recovery" image.
+1. Boot the Pi 4 using this SD card and a display attached to one of the HDMI ports.
+3. The bootloader EEPROM will be updated to the latest available version, then the display will turn green to indicate success.
+
+The Pi 4 can now be booted from a USB mass storage device.
+
+## Changing boot order on Pi 4 and Pi 400
+
+The [raspi-config](../../../configuration/raspi-config.md) utility can be used to choose between SD/USB (default) or SD/Network boot modes.
 
 The full set of boot mode options is documented on the [bootloader configuration](../bcm2711_bootloader_config.md) page.
 
@@ -56,14 +70,19 @@ You can now boot from a USB mass storage device in the same way as booting from 
 
 ## Raspberry Pi 3B+, Compute Module 3+
 
-The Raspberry Pi 3B+ and Compute Module 3+ support USB mass storage boot out of the box. The steps specific to previous versions of Raspberry Pi do not have to be executed.
+The Raspberry Pi 3B+ and Compute Module 3+ support USB mass storage boot out of the box: no changes to the OTP memory are required.
 
 The [procedure](../../../installation/installing-images) is the same as for SD cards - simply image the USB storage device with the operating system image.
 
 After preparing the storage device, connect the drive to the Raspberry Pi and power up the Pi, being aware of the extra USB power requirements of the external drive.
 After five to ten seconds, the Raspberry Pi should begin booting and show the rainbow splash screen on an attached display. Make sure that you do not have an SD card inserted in the Pi, since if you do, it will boot from that first.
 
+See the [bootmodes documentation](README.md) for the boot sequence and alternative boot modes (network, USB device, GPIO or SD boot).
+
 ## Known issues (not Pi 4)
 
 - The default timeout for checking bootable USB devices is 2 seconds. Some flash drives and hard disks power up too slowly. It is possible to extend this timeout to five seconds (add a new file `timeout` to the SD card), but note that some devices take even longer to respond.
 - Some flash drives have a very specific protocol requirement that is not handled by the bootcode and may thus be incompatible.
+
+## Special bootcode.bin-only boot mode (not Pi 4 and Pi 400)
+If you are unable to use a particular USB device to boot your Raspberry Pi, an alternative for the Pi 2B v1.2, 3A+, 3B and 3B+ is to use the special bootcode.bin-only boot mode as described [here](README.md). This Pi will still boot from the SD card, but `bootcode.bin` is the only file read from it.
