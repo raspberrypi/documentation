@@ -1,6 +1,6 @@
 # USB mass storage boot
 
-**Available on Raspberry Pi 2B v1.2, 3A+, 3B, 3B+, 4B and 400 only.**
+**Available on Raspberry Pi 2B v1.2, 3A+, 3B, 3B+, 4B, 400 and Compute Module 4 only.**
 
 This page explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or a USB hard disk. When attaching USB devices, particularly hard disks and SSDs, be mindful of their power requirements. If you wish to attach more than one SSD or hard disk to the Pi, this normally requires external power - either a powered hard disk enclosure, or a powered USB hub. Note that models prior to the Pi 4 have known issues which prevent booting with some USB devices.
 
