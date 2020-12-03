@@ -1,6 +1,6 @@
 # USB mass storage boot
 
-**Available on Raspberry Pi 2B v1.2, 3A+, 3B, 3B+, 4B, 400 and Compute Module 4 only.**
+**Available on Raspberry Pi 2B v1.2, 3A+, 3B, 3B+, 4B, 400, Compute Module 3 and Computer Module 4 only.**
 
 This page explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or a USB hard disk. When attaching USB devices, particularly hard disks and SSDs, be mindful of their power requirements. If you wish to attach more than one SSD or hard disk to the Pi, this normally requires external power - either a powered hard disk enclosure, or a powered USB hub. Note that models prior to the Pi 4 have known issues which prevent booting with some USB devices.
 
@@ -9,26 +9,26 @@ This page explains how to boot your Raspberry Pi from a USB mass storage device 
 To boot the Pi 400 from a USB mass storage device, simply image the USB drive with Raspberry Pi OS 2020-08-20 or newer using the Raspberry Pi Imager utility: select the USB drive from the `SD Card` list in Raspberry Pi Imager.
 
 <a name="pi4"></a>
-## Raspberry Pi 4
+## Raspberry Pi 4B
 Depending on when your Raspberry Pi 4 was manufactured, the bootloader EEPROM may need to be updated to enable booting from USB mass storage devices. 
 
 ### Check if your Pi 4B has the required bootloader EEPROM version
 
-To check if your Pi 4B has the required bootloader EEPROM version, boot the device with no SD card inserted and a display attached to one of the HDMI ports. The Pi 4B will display a diagnostic screen on the attached display, which includes the bootloader EEPROM version at the top of the screen. The bootloader must be dated `Sep 3 2020` or later to support USB mass storage boot. If the diagnostic screen reports a date earlier than `Sep 3 2020`, or there is no diagnostic screen shown, you will need to updated the bootloader EEPROM first to enable USB mass storage boot.
+To check if your Pi 4B has the required bootloader EEPROM version, power it up with with no SD card inserted and a display attached to one of the HDMI ports. The Pi 4B will display a diagnostic screen on the attached display, which includes the bootloader EEPROM version at the top of the screen. The bootloader must be dated `Sep 3 2020` or later to support USB mass storage boot. If the diagnostic screen reports a date earlier than `Sep 3 2020`, or there is no diagnostic screen shown, you will need to update the bootloader EEPROM first to enable USB mass storage boot.
 
 USB mass storage boot on the Pi 4B required Raspberry Pi OS 2020-08-20 or later.
 
 
-### Enable USB mass storage boot on a Pi 4 by updating the bootloader EEPROM
+### Enable USB mass storage boot on a Pi 4B by updating the bootloader EEPROM
 If your Pi 4 requires an updated bootloader EEPROM in order to support USB mass storage boot, you can perform the update as follows:
 
 1. Use the "Misc Utility Images" option in [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to create an SD card with the latest "Raspberry Pi 4 EEPROM boot recovery" image.
-1. Boot the Pi 4 using this SD card and a display attached to one of the HDMI ports.
-3. The bootloader EEPROM will be updated to the latest available version, then the display will turn green to indicate success.
+1. Boot the Pi 4 using this SD card.
+1. The bootloader EEPROM will be updated to the latest factory version, then the Pi will flash its green ACT light rapidly, and display green on the HDMI outputs to indicate success.
 
 The Pi 4 can now be booted from a USB mass storage device.
 
-## Changing boot order on Pi 4 and Pi 400
+## Changing boot order on Pi 4B and Pi 400
 
 The [raspi-config](../../../configuration/raspi-config.md) utility can be used to choose between SD/USB (default) or SD/Network boot modes.
 
