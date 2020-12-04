@@ -85,4 +85,4 @@ See the [bootmodes documentation](README.md) for the boot sequence and alternati
 - Some flash drives have a very specific protocol requirement that is not handled by the bootcode and may thus be incompatible.
 
 ## Special bootcode.bin-only boot mode (not Pi 4B, CM4 and Pi 400)
-If you are unable to use a particular USB device to boot your Raspberry Pi, an alternative for the Pi 2B v1.2, 3A+, 3B and 3B+ is to use the special bootcode.bin-only boot mode as described [here](README.md). This Pi will still boot from the SD card, but `bootcode.bin` is the only file read from it.
+If you are unable to use a particular USB device to boot your Raspberry Pi, an alternative for the Pi 2B v1.2, 3A+, 3B and 3B+ is to use the special bootcode.bin-only boot mode as described [here](README.md). The Pi will still boot from the SD card, but `bootcode.bin` is the only file read from it.
