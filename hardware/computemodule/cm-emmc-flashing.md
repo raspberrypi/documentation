@@ -133,7 +133,7 @@ The SHA256 checksum file must match the `pieeprom.bin` image. To generate the `.
 sha256sum pieeprom.bin | awk '{print $2}' > pieeprom.sig
 ````
 
-The bootloader image in the `recovery` directory is the latest manufacturing image with default settings. It is intended for use on a (https://www.raspberrypi.org/products/compute-module-4-io-board)[Compute Module 4 IO board] with Raspberry Pi OS booting from SD/EMMC as a Compute Module 4 development platform. 
+The bootloader image in the `recovery` directory is the latest manufacturing image with default settings. It is intended for use on a [Compute Module 4 IO board](https://www.raspberrypi.org/products/compute-module-4-io-board) with Raspberry Pi OS booting from SD/EMMC as a Compute Module 4 development platform. 
 
 
 ## Troubleshooting
