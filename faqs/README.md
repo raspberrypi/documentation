@@ -462,7 +462,7 @@ The device needs to be powered with a 5V power supply with a USB connector; USB-
 | Raspberry Pi 3 Model A+ | 2.5A | Limited by PSU, board, and connector ratings only. | 350mA |
 | Raspberry Pi 3 Model B+ | 2.5A | 1.2A | 500mA |
 | Raspberry Pi 4 Model B | 3.0A | 1.2A | 600mA |
-| Raspberry Pi400        | 3.0A | 1.2A | 800mA |
+| Raspberry Pi 400       | 3.0A | 1.2A | 800mA |
 | Raspberry Pi Zero W/WH | 1.2A | Limited by PSU, board, and connector ratings only.| 150mA |
 | Raspberry Pi Zero | 1.2A | Limited by PSU, board, and connector ratings only | 100mA |
 
