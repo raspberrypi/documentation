@@ -100,6 +100,7 @@ Read our troubleshooting steps, tips, and tricks here: [Raspberry Pi Touch Displ
   * Bottom - 70
   * Left - 70
   * Right - 70
+- Power requirements: 200mA at 5V typical, at maximum brightness.
 
 ## Module mechanical specification
 
