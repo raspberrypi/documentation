@@ -134,5 +134,6 @@ New-style revision codes in use:
 | b03114 | 4B                | 1.4      | 2GB   | Sony UK      |
 | c03111 | 4B                | 1.1      | 4GB   | Sony UK      |
 | c03112 | 4B                | 1.2      | 4GB   | Sony UK      |
+| c03114 | 4B                | 1.4      | 4GB   | Sony UK      |
 | d03114 | 4B                | 1.4      | 8GB   | Sony UK      |
 | c03130 | Pi 400            | 1.0      | 4GB   | Sony UK      |
