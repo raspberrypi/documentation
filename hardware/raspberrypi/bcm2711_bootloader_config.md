@@ -32,6 +32,8 @@ Version: All
 
 If `1` and `WAKE_ON_GPIO=0` then `sudo halt` will switch off all PMIC outputs. This is lowest possible power state for halt but may cause problems with some HATs because 5V will still be on. GLOBAL_EN must be shorted to ground to boot.
 
+Pi 400 has a dedicated power button which operates even if the processor is switched off. This behaviour is enabled by default, however, `WAKE_ON_GPIO=2` may be set to use an external GPIO power button instead of the dedicated power button.
+
 Default: `0`  
 Version: 2019-07-15  
 
@@ -44,14 +46,15 @@ The retry counters are reset when switching to the next boot mode.
 `BOOT_ORDER` fields  
 The BOOT_ORDER property defines the sequence for the different boot modes. It is read right to left and up to 8 digits may be defined.
 
-| Value | Mode      | Description                                                                                       |
-|-------|-----------|---------------------------------------------------------------------------------------------------|
-|  0x1  |  SD CARD  |  SD card (or eMMC on Compute Module 4)                                                            |
-|  0x2  |  NETWORK  |  Network boot                                                                                     |
-|  0x3  |  RPIBOOT  |  RPIBOOT -  See [usbboot](https://github.com/raspberrypi/usbboot)  (since 2020-09-03)             |
-|  0x4  |  USB MSD  |  USB mass storage boot (since 2020-09-03)                                                         |
-|  0xe  |  STOP     |  Stop and display error pattern (since 2020-09-03). A power cycle is required to exit this state. |
-|  0xf  |  RESTART  |  Start again with the first boot order field. (since 2020-09-03)                                  |
+| Value | Mode         | Description                                                                                       |
+|-------|--------------|---------------------------------------------------------------------------------------------------|
+|  0x1  |  SD CARD     |  SD card (or eMMC on Compute Module 4)                                                            |
+|  0x2  |  NETWORK     |  Network boot                                                                                     |
+|  0x3  |  RPIBOOT     |  RPIBOOT -  See [usbboot](https://github.com/raspberrypi/usbboot)  (since 2020-09-03)             |
+|  0x4  |  USB-MSD     |  USB mass storage boot (since 2020-09-03)                                                         |
+|  0x5  |  BCM-USB-MSD |  USB 2.0 boot from USB Type-C socket or USB Type-A socket on CM4 IO board.     (since 2020-12-14) |
+|  0xe  |  STOP        |  Stop and display error pattern (since 2020-09-03). A power cycle is required to exit this state. |
+|  0xf  |  RESTART     |  Start again with the first boot order field. (since 2020-09-03)                                  |
 
 After trying each non-zero boot mode the bootloader stops. However, from 2020-09-03 the bootloader will monitor the SD card detect pin and try SD boot if a new SD card is inserted.
 
@@ -60,7 +63,8 @@ Version: 2020-04-16
 
 * Boot mode `0x0` will retry the SD boot if the SD card detect pin indicates that the card has been inserted or replaced.
 * The default boot order is `0xf41` which means continuously try SD then USB mass storage.
-* USB device boot is intended for use with Compute Module 4 to load a custom debug image (e.g. a Linux RAM-disk) instead of the normal boot. This should be the last boot option because it does not currently support timeouts or retries.
+* `RPIBOOT` is intended for use with Compute Module 4 to load a custom debug image (e.g. a Linux RAM-disk) instead of the normal boot. This should be the last boot option because it does not currently support timeouts or retries.
+* `BCM-USB-MSD` boot allows a Compute Module 4 to boot from USB without requiring an additional PCIe XHCI card. This USB controller does not support USB 3.0 and booting will be slower than `USB-MSD` boot on a Pi 4 or Pi 400.
 
 ### MAX_RESTARTS
 If the RESTART (`0xf`) boot mode is encountered more than MAX_RESTARTS times then a watchdog reset is triggered. This isn't recommended for general use but may be useful for test or remote systems where a full reset is needed to resolve issues with hardware or network interfaces.
@@ -179,7 +183,11 @@ The [HDMI boot diagnostics](./boot_diagnostics.md) display is disabled if `DISAB
 Default: `0`  
 Version: 2020-04-16  
 
-From version 2020-09-03 the `disable_splash` property in `config.txt` is no longer checked because the HDMI diagnostics screen is started before `config.txt` is read.
+### HDMI_DELAY
+Skip rendering of the HDMI diagnostics display for up to N seconds (default 5) unless a fatal error occurs. The default behaviour is designed to avoid the bootloader diagnostics screen from briefly appearing during a normal SD / USB boot.
+
+Default: `5`  
+Version: 2020-12-14   
 
 ### ENABLE_SELF_UPDATE
 Enables the bootloader to update itself from a TFTP or USB mass storage device (MSD) boot filesystem.
