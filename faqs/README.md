@@ -140,7 +140,7 @@ The following prices are in US dollars, and exclusive of any local taxes and shi
 | [Raspberry Pi Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w) |$10 |
 | [Raspberry Pi Zero WH](https://www.raspberrypi.org/products/raspberry-pi-zero-w) |$15 |
 | [Raspberry Pi 400](https://www.raspberrypi.org/products/raspberry-pi-400-unit) |$70 |
-| [Raspberry Pi 400 offical kit](https://www.raspberrypi.org/products/raspberry-pi-400) |$100 |
+| [Raspberry Pi 400 official kit](https://www.raspberrypi.org/products/raspberry-pi-400) |$100 |
 
 <a name="buying-what"></a>
 ### What do I get when I buy one?
