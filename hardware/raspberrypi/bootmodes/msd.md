@@ -14,7 +14,7 @@ Depending on when your Raspberry Pi 4B was manufactured, the bootloader EEPROM m
 
 ### Check if your Pi 4B has the required bootloader EEPROM version
 
-To check if your Pi 4B has the required bootloader EEPROM version, power it up with with no SD card inserted and a display attached to one of the HDMI ports. The Pi 4B will display a diagnostic screen on the attached display, which includes the bootloader EEPROM version at the top of the screen. The bootloader must be dated `Sep 3 2020` or later to support USB mass storage boot. If the diagnostic screen reports a date earlier than `Sep 3 2020`, or there is no diagnostic screen shown, you will need to update the bootloader EEPROM first to enable USB mass storage boot.
+To check if your Pi 4B has the required bootloader EEPROM version, power it up with no SD card inserted and a display attached to one of the HDMI ports. The Pi 4B will display a diagnostic screen on the attached display, which includes the bootloader EEPROM version at the top of the screen. The bootloader must be dated `Sep 3 2020` or later to support USB mass storage boot. If the diagnostic screen reports a date earlier than `Sep 3 2020`, or there is no diagnostic screen shown, you will need to update the bootloader EEPROM first to enable USB mass storage boot.
 
 USB mass storage boot on the Pi 4B requires Raspberry Pi OS 2020-08-20 or later.
 
