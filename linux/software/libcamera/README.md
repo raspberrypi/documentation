@@ -24,7 +24,7 @@ dtoverlay=imx219
 core_freq_min=250
 ```
 
-If you are using a sensor other than the `imx219` you will need to supply the alternative name here (for example, `ov5647` for the V1 camera, or `imx477` for the HQ Cam for which support will be available shortly).
+If you are using a sensor other than the `imx219` you will need to supply the alternative name here (for example, `ov5647` for the V1 camera, or `imx477` for the HQ Cam for which support will be available shortly). It is impossible to load the sensor overlay dynamically with `dtoverlay` command as the firmware updates any override nodes that are named ["cam0-pwdn" or "cam0-pwdn-ctrl"](https://github.com/raspberrypi/linux/blob/rpi-5.10.y/arch/arm/boot/dts/overlays/imx219-overlay.dts#L111) (and cam1...) to point to the correct GPIO for that particular platform.
 
 **NOTE**: after rebooting, control of the camera system will be passed to the ARM cores, and firmware-based camera functions (such as raspistill and so forth) will no longer work. Setting `/boot/config.txt` back and rebooting will restore the previous behaviour.
 
@@ -37,7 +37,7 @@ sudo apt install libboost-dev
 sudo apt install libgnutls28-dev openssl libtiff5-dev
 sudo apt install meson
 sudo apt install qtbase5-dev libqt5core5a libqt5gui5 libqt5widgets5
-sudo pip3 install pyyaml
+sudo pip3 install pyyaml ninja ply
 ```
 
 ## Building _libcamera_ and _qcam_
