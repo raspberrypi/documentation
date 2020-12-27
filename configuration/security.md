@@ -243,7 +243,7 @@ sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 sudo nano /etc/fail2ban/jail.local
 ```
 
-Add the following section to the `jail.conf` file. On some versions of fail2ban this section may already exist, so update this pre-existing section it if it is there.
+Add the following section to the `jail.local` file. On some versions of fail2ban this section may already exist, so update this pre-existing section if it is there.
 
 ```
 [ssh]
