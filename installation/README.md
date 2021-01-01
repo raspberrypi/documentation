@@ -1,11 +1,9 @@
 # Installation
 
-Some simple guides to setting up the software on your Raspberry Pi.
+We recommend using [Raspberry Pi Imager](https://www.raspberrypi.org/software/) to install an operating system on your Raspberry Pi. As well as Raspberry Pi OS, you can use it to install other operating systems such as Ubuntu, and LibreELEC (Kodi media centre).
 
-Beginners should start with [NOOBS](noobs.md), which gives the user a choice of operating system from the standard distributions. The recommended distribution for normal use is Raspberry Pi OS. Alternatives are available, such as LibreELEC (Kodi media centre) or Arch Linux.
+* You can find detailed help with installing OS images [here](installing-images/). For further assistance, check out our [forums](https://www.raspberrypi.org/forums/).
 
-## Contents
+* [Further information about SD cards](sdcards.md)
 
-- [NOOBS](noobs.md)
-- [Installing images](installing-images/README.md)
-- [SD Cards](sd-cards.md)
+[NOOBS](noobs.md) is still available, but is no longer recommended for new installations.
