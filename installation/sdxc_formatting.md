@@ -18,7 +18,7 @@ The standard formatting tools built into these operating systems are able to cre
 
 ### Windows
 
-The standard formatting tools built into Windows are limited, as they only allow partitions up to 32GB to be formatted as FAT32, so to format a 64GB partition as FAT32 you need to use a third-party formatting tool. A simple tool to do this is [FAT32 Format](http://www.ridgecrop.demon.co.uk/guiformat.htm) which downloads as a single file named `guiformat.exe` - no installation is necessary.
+The standard formatting tools built into Windows are limited, as they only allow partitions up to 32GB to be formatted as FAT32, so to format a 64GB partition as FAT32 you need to use a third-party formatting tool. A simple tool to do this is [FAT32 Format](http://ridgecrop.co.uk/index.htm?guiformat.htm) which downloads as a single file named `guiformat.exe` - no installation is necessary.
 
 Run the [SD Formatter](https://www.sdcard.org/downloads/formatter_4/) tool first to ensure that any other partitions on the SD card are deleted. Then run the FAT32 Format (guiformat.exe) tool, ensure you choose the correct drive letter, leave the other options at their default settings, and click "Start". After it has finished, you can proceed with the rest of the [NOOBS instructions](noobs.md).
 
