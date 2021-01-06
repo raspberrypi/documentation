@@ -23,12 +23,13 @@ User=pi
 
 [Install]
 WantedBy=multi-user.target
+Alias=ms.service
 ```
 So in this instance, the service would run Python 3 from our working directory `/home/pi/myscript` which contains our python program to run `main.py`. But you are not limited to Python programs: simply change the ExecStart line to be the command to start any program/script that you want running from booting.
 
-Copy this file into `/etc/systemd/system` as root, for example:
+Copy this file into `/lib/systemd/system` as root, for example:
 ```
-sudo cp myscript.service /etc/systemd/system/myscript.service
+sudo cp myscript.service /lib/systemd/system/myscript.service
 ```
 
 Once this has been copied, you can attempt to start the service using the following command:
@@ -44,6 +45,17 @@ When you are happy that this starts and stops your app, you can have it start au
 ```
 sudo systemctl enable myscript.service
 ```
+
+With the alias in the service file you can alias alternative names, in this case `ms` - this works after a service is enabled, so in this case you can use
+```
+sudo systemctl start ms
+```
+and
+```
+sudo systemctl stop ms
+```
+This can then allow you to have a more descriptive long filename if you prefer.
+
 
 The `systemctl` command can also be used to restart the service or disable it from boot up!
 
