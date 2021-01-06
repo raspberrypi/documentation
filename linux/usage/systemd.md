@@ -46,7 +46,7 @@ When you are happy that this starts and stops your app, you can have it start au
 sudo systemctl enable myscript.service
 ```
 
-With the alias in the service file you can alias alternative names, in this case `ms` - this works after a service is enabled, so in this case you can use
+With the alias in the service file you can alias alternative names, in this case `ms` - this only works after a service is enabled using the full filename.  In this exaple you can use:
 ```
 sudo systemctl start ms
 ```
