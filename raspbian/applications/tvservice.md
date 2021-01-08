@@ -68,6 +68,6 @@ Extracts the display name from the EDID data and shows it.
 
 Lists all attached displays and their display ID.
 
-#### -v, --device
+#### -v, --device=display
 
 Specifies the ID of the device to use; see the output of `--list` for available IDs.
