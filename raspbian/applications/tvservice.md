@@ -64,4 +64,10 @@ When used in combination with the `--modes` options, displays the mode informati
 
 Extracts the display name from the EDID data and shows it.
 
+#### -l, --list
 
+Lists all attached displays and their display ID.
+
+#### -v, --device=display
+
+Specifies the ID of the device to use; see the output of `--list` for available IDs.
