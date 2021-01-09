@@ -39,10 +39,10 @@ The layout for a cron entry is made up of six components: minute, hour, day of m
 For example:
 
 ```
-0 0 * * *  /home/pi/backup.sh
+15 0 * * *  sh /home/pi/backup.sh
 ```
 
-This cron entry would run the `backup.sh` script every day at midnight.
+This cron entry would run the `backup.sh` script, located in /home/pi/backup, every day at 15 minutes past midnight.
 
 ### View scheduled tasks
 
