@@ -4,7 +4,6 @@ We recommend using [Raspberry Pi Imager](https://www.raspberrypi.org/software/) 
 
 * You can find detailed help with installing OS images [here](installing-images/). For further assistance, check out our [forums](https://www.raspberrypi.org/forums/).
 
-* [Further information about SD cards](sd-cards.md)
+* [Further information about SD cards](sd-cards.md).
 
-
-**Note:** [NOOBS](noobs.md) is still available, but is no longer recommended for new installations.
+* [NOOBS](noobs.md) is still available, but is no longer recommended for new installations.
