@@ -70,7 +70,7 @@ Note that the operating system image on the full version can be outdated if a ne
 
 ### Latest NOOBS release
 
-The latest NOOBS release is **v3.5.1**, released on **4th December 2020**.
+The latest NOOBS release is **v3.5.2**, released on **11th January 2021**.
 
 (From NOOBS v1.4.0 onwards, NOOBS Lite only shares the first two digits of the version number, i.e. v1.4)
 
