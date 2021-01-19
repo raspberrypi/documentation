@@ -27,7 +27,7 @@ sudo reboot
 ```
 
 ## Manually checking if an update is available
-Running the `rpi-eeprom-update` command with no parameters indicates whether an update is required. An update is required if the version of the most recent file in the firmware directory (normally `/lib/firmware/raspberrypi/bootloader/critical`) is newer than that reported by the current bootloader.
+Running the `rpi-eeprom-update` command with no parameters indicates whether an update is required. An update is required if the version of the most recent file in the firmware directory (normally `/lib/firmware/raspberrypi/bootloader/default`) is newer than that reported by the current bootloader.
 The images under `/lib/firmware/raspberrypi/bootloader` are part of the `rpi-eeprom` package and are only updated via `apt upgrade`.
 
 ```
@@ -117,13 +117,15 @@ At power on, the BCM2711 ROM looks for a file called `recovery.bin` in the root 
 * The temporary EEPROM update files are automatically deleted by the `rpi-eeprom-update` service at startup. 
 
 ### Firmware release status
-The firmware release status corresponds to a particular subdirectory of bootloader firmware images (`/lib/firmware/raspberrypi/bootloader/...`), and can be changed to select a different release stream. By default, Raspberry Pi OS only selects critical updates (security fixes or major hardware compatiblity changes) since most users do not use alternate boot modes (TFTP, USB etc)
+The firmware release status corresponds to a particular subdirectory of bootloader firmware images (`/lib/firmware/raspberrypi/bootloader/...`), and can be changed to select a different release stream. By default, Raspberry Pi OS automatically updates the bootloader if 'default' image in the 'rpi-eeprom' image is newer than the current bootloader image. The bootloader EEPROM config is migrated during the upgrade.
 
-* critical - Default - rarely updated
-* stable - Updated when new/advanced features have been successfully beta tested. 
-* beta - New or experimental features are tested here first.
+* `default` - Updated for new hardware support, critical bug fixes and periodic update for new features that have been tested via the `latest` release.
+* `latest` - Updated when new features have been successfully beta tested.
+* `beta` - New or experimental features are tested here first.
 
 Since the release status string is just a subdirectory name then it's possible to create your own release streams e.g. a pinned release or custom network boot configuration.
+
+N.B. `default` and `latest` are symbolic links to the older release names of `critical` and `stable`.
 
 ### Changing the firmware release
 
