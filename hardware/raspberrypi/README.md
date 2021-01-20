@@ -1,48 +1,49 @@
 # Raspberry Pi hardware
 
-The hardware in the Raspberry Pi
+Technical reference for Raspberry Pi computers.
 
 - [Schematics](schematics/README.md)
-    - Schematics for the Raspberry Pi
+
 - [Datasheets](datasheets.md)
-    - Datasheets for the Raspberry Pi
-- [BCM2835](bcm2835/README.md)
-    - The Broadcom processor used in Raspberry Pi 1 and Zero
-- [BCM2836](bcm2836/README.md)
-    - The Broadcom processor used in Raspberry Pi 2
-- [BCM2837](bcm2837/README.md)
-    - The Broadcom processor used in Raspberry Pi 3 (and later Raspberry Pi 2)
-- [BCM2837B0](bcm2837b0/README.md)
-    - The Broadcom processor used in Raspberry Pi 3B+ and 3A+
-- [BCM2711](bcm2711/README.md)
-    - The Broadcom processor used in Raspberry Pi 4B
-- [SPI Boot EEPROM (Pi4)](booteeprom.md)
-    - The boot EEPROM used in Raspberry Pi 4B
-- [Boot Diagnostics Display (Pi4)](boot_diagnostics.md)
-    - The boot diagnostics display on Raspberry Pi 4B
+
+- [BCM2835](bcm2835/README.md) - Raspberry Pi 1 and Zero
+
+- [BCM2836](bcm2836/README.md) - Raspberry Pi 2
+
+- [BCM2837](bcm2837/README.md) - Raspberry Pi 3 (and later Raspberry Pi 2)
+
+- [BCM2837B0](bcm2837b0/README.md) - Raspberry Pi 3B+ and 3A+
+
+- [BCM2711](bcm2711/README.md) - Raspberry Pi 4B and 400
+
+- [SPI Boot EEPROM (P i4, 400)](booteeprom.md) - Raspberry Pi 4B and 400
+
+- [Boot Diagnostics Display](boot_diagnostics.md) -  Raspberry Pi 4B and 400
+
 - [Boot modes](bootmodes/README.md)
-    - A description of the available BCM2835/6/7 boot modes
+
 - [Mechanical drawings](mechanical/README.md)
-    - Mechanical drawings of the Raspberry Pi
+
 - [Power](power/README.md)
-    - Powering the Raspberry Pi
+
 - [USB](usb/README.md)
-    - USB on the Raspberry Pi
-- [GPIO](gpio/README.md)
-    - General Purpose Input/Output pins on the Raspberry Pi
-- [SPI](spi/README.md)
-    - SPI on the Raspberry Pi
-- [DPI (Parallel/RGB Display)](dpi/README.md)
-    - DPI on the Raspberry Pi
-- [CSI-2 (Camera interface)](../../linux/software/libcamera/csi-2-usage.md)
-    - Using the CSI-2 interface on the Raspberry Pi
-- [Peripheral addresses](peripheral_addresses.md)
-    - How to access peripheral addresses using the bcm_host helpers
-- [Standard conformity documentation](conformity.md)
-    - Conformance documentation for the various standards bodies
-- [Revision codes](revision-codes/README.md)
-    - Raspberry Pi revision code reference
-- [OTP bit definitions](otpbits.md)
-    - Register and bit definitions for the One-Time Programmable (OTP) memory on the Raspberry Pi
+
+- [GPIO](gpio/README.md) - general purpose input/output pins
+
+- [SPI](spi/README.md) - serial peripheral interface
+
+- [DPI (Parallel/RGB Display)](dpi/README.md) - display parallel interface
+
+- [CSI-2 (Camera interface)](../../linux/software/libcamera/csi-2-usage.md) - camera serial interface 2
+
+- [Peripheral addresses](peripheral_addresses.md) - using `bcm_host` helpers
+
+- [Product compliance and safety](conformity.md)
+
+- [Revision codes](revision-codes/README.md) reference
+
+- [OTP regsiter and bit definitions](otpbits.md) - 
+ 
 - [Processor frequency and thermal management](frequency-management.md)
-    - Information on how the Raspberry Pi manages CPU frequencies and heat dissipation
+
+
