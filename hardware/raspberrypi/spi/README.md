@@ -1,16 +1,6 @@
 # SPI
 
-## Page Contents
-
-- [Overview](#overview)  
-- [Hardware](#hardware)
-- [Software](#software)
-- [Linux driver](#driver)
-- [Troubleshooting](#troubleshooting)
-
 <a name="overview"></a>
-## Overview
-
 The Raspberry Pi family of devices is equipped with a number of [SPI](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus) buses. SPI can be used to connect a wide variety of peripherals - displays, network controllers (Ethernet, CAN bus), UARTs, etc. These devices are best supported by kernel device drivers, but the `spidev` API allows userspace drivers to be written in a wide array of languages.
 
 <a name="hardware"></a>
