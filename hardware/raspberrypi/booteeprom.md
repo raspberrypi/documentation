@@ -7,6 +7,9 @@ If an error occurs during boot then an [error code](../../configuration/led_blin
 
 ## Updating the bootloader
 
+## Compute Module 4
+Bootloader EEPROM updates on Compute Module 4 require [rpiboot](https://github.com/raspberrypi/usbboot) which is also used for flashing the EMMC. Please see the [Compute Module flashing guide](../computemodule/cm-emmc-flashing.md) for instructions.
+
 ### Raspberry Pi Imager
 The easiest way to to update the bootloader to the latest version with default settings is to use the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) to install a boot recovery image onto a spare SD card.
 
