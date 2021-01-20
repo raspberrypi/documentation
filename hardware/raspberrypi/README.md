@@ -18,7 +18,7 @@ Technical reference for Raspberry Pi computers.
 
 - [SPI Boot EEPROM (Pi 4, 400)](booteeprom.md) - Raspberry Pi 4B and 400
 
-- [Boot Diagnostics Display](boot_diagnostics.md) -  Raspberry Pi 4B and 400
+- [Boot diagnostics display](boot_diagnostics.md) -  Raspberry Pi 4B and 400
 
 - [Boot modes](bootmodes/README.md)
 
