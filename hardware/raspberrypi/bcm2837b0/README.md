@@ -2,8 +2,6 @@
 
 Used on the Raspberry Pi 3B+ and 3A+.
 
-The underlying architecture of the BCM2837B0 is identical to the BCM2837A0 chip used in other versions of the Pi. The ARM core hardware is the same: the only significant difference is the higher clock speed which is possible due to enhanced cooling.
-
-The metal heat spreader on the top of this SoC makes it easy to distinguish from the previous revision, which used a black plastic package.
+The underlying architecture of the BCM2837B0 is identical to the previous revision of the BCM2837. The only significant difference is the improved cooling, including metal heat spreader, which permits a higher clock speed. By contrast, BCM2835, BCM2836 and revision A0 of the BCM2837 use black plastic packages.
 
 See [this blog post](https://www.raspberrypi.org/blog/raspberry-pi-3-model-bplus-sale-now-35/) for further details.
