@@ -9,15 +9,3 @@ The ARM cores are clocked at 1.5GHz on the Pi 4B and 1.8GHz on the Pi 400. The n
 The BCM2711 chip continues to use the heat spreading technology started with the BCM2837B0, which provides better thermal management. 
 
 - [BCM2711 Datasheet](https://datasheets.raspberrypi.org/bcm2711/bcm2711-peripherals.pdf)
-
-## Some technical details
-
-**Processor:**  Quad-core Cortex-A72 (ARM v8) 64-bit SoC @ 1.5 GHz. See [Wikipedia page](https://en.wikipedia.org/wiki/ARM_Cortex-A72) on the A72 for more details.
-
-**Memory:** Accesses up to 8GB LPDDR4-2400 SDRAM (depending on model)
-
-**Caches:** 32 KB data + 48 KB instruction L1 cache per core. 1MB L2 cache.
-
-**Multimedia:** H.265 (4Kp60 decode); H.264 (1080p60 decode, 1080p30 encode); OpenGL ES, 3.0 graphics
-
-**I/O:** PCIe bus, onboard Ethernet port, 2 × DSI ports (only one exposed on Raspberry Pi 4B), 2 × CSI ports (only one exposed on Raspberry Pi 4B), up to 6 × I2C, up to 6 × UART (muxed with I2C), up to 6 × SPI (only five exposed on Raspberry Pi 4B), dual HDMI video output, composite video output.
