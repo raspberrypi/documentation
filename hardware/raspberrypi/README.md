@@ -16,7 +16,7 @@ Technical reference for Raspberry Pi computers.
 
 - [BCM2711](bcm2711/README.md) - Raspberry Pi 4B and 400
 
-- [SPI Boot EEPROM (P i4, 400)](booteeprom.md) - Raspberry Pi 4B and 400
+- [SPI Boot EEPROM (Pi 4, 400)](booteeprom.md) - Raspberry Pi 4B and 400
 
 - [Boot Diagnostics Display](boot_diagnostics.md) -  Raspberry Pi 4B and 400
 
