@@ -1,6 +1,6 @@
 # Schematics
 
-Schematics for the various Raspberry Pi board versions:
+The following reduced schematics have been produced to assist third parties in developing and connecting additional hardware to Raspberry Pi computers.
 
 ## Raspberry Pi 4 Model B
 
