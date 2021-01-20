@@ -40,9 +40,9 @@ Technical reference for Raspberry Pi computers.
 
 - [Product compliance and safety](conformity.md)
 
-- [Revision codes](revision-codes/README.md) reference
+- [Revision code](revision-codes/README.md) reference
 
-- [OTP regsiter and bit definitions](otpbits.md) - 
+- [OTP register and bit definitions](otpbits.md)
  
 - [Processor frequency and thermal management](frequency-management.md)
 
