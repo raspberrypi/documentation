@@ -133,6 +133,8 @@ The SHA256 checksum file must match the `pieeprom.bin` image. To generate the `.
 sha256sum pieeprom.bin | awk '{print $2}' > pieeprom.sig
 ````
 
+The `recovery/update-pieeprom.sh` helper script can be used to automate the process of updating the EEPROM image and signature after editing the reference bootloader configuration file (`recovery/boot.conf`).
+
 The bootloader image in the `recovery` directory is the latest manufacturing image with default settings. It is intended for use on a [Compute Module 4 IO board](https://www.raspberrypi.org/products/compute-module-4-io-board) with Raspberry Pi OS booting from SD/EMMC as a Compute Module 4 development platform. 
 
 
