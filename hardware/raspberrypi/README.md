@@ -1,4 +1,4 @@
-# Raspberry Pi hardware
+# Raspberry Pi computers
 
 Technical reference for Raspberry Pi computers.
 
