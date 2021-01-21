@@ -1,16 +1,18 @@
-# DPI (Parallel Display Interface)
+# DPI - display parallel interface
 
-An up-to-24-bit parallel RGB interface is available on all Raspberry Pi boards with the 40 way header and the Compute Modules. This interface allows parallel RGB displays to be attached to the Raspberry Pi GPIO either in RGB24 (8 bits for red, green and blue) or RGB666 (6 bits per colour) or RGB565 (5 bits red, 6 green, and 5 blue).
+DPI is a simple clocked parallel RGB interface consisting of up to 8 bits of R, G and B together with clock, enable, hsync, and vsync signals. The Raspberry Pi supports DPI displays which use either RGB24 (8 bits for red, green and blue), RGB666 (6 bits per colour) or RGB565 (5 bits red, 6 green, and 5 blue).
 
-This interface is controlled by the GPU firmware and can be programmed by a user via special config.txt parameters and by enabling the correct Linux Device Tree overlay.
+Note that DPI is not available on early Raspberry Pi models with a 26-pin GPIO header.
+
+The DPI interface is controlled by the GPU firmware and can be programmed by a user via special config.txt parameters, and by enabling the correct Linux device tree overlay.
 
 ## GPIO pins
 
-One of the alternate functions selectable on bank 0 of the Raspberry Pi GPIO is DPI (Display Parallel Interface) which is a simple clocked parallel interface (up to 8 bits of R, G and B; clock, enable, hsync, and vsync). This interface is available as alternate function 2 (ALT2) on GPIO bank 0:
+DPI is selectable as alternate function 2 (ALT2) on GPIO bank 0 of the Raspberry Pi GPIO header:
 
 ![DPI Alternate GPIO function](dpi-altfn2.png)
 
-Note that there are various ways that the colour values can be presented on the DPI output pins in either 565, 666, or 24-bit modes (see the following table and the `output_format` part of the `dpi_output_format` parameter below):
+Note that there are various ways colour values can be presented on the DPI output pins - see the following table, and the `output_format` part of the `dpi_output_format` parameter:
 
 ![DPI Colour Output](dpi-packing.png)
 
