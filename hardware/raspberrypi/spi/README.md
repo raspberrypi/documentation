@@ -20,7 +20,7 @@ Chapter 10 in the [BCM2835 ARM Peripherals](../bcm2835/BCM2835-ARM-Peripherals.p
 
 ### Pin/GPIO mappings
 
-#### SPI0 (available on J8/P1 headers on all RPi versions)
+#### SPI0 (available on all Raspberry Pis)
 | SPI function | Header pin | Broadcom pin name | Broadcom pin function |
 |---|---|---|---|
 | MOSI | 19 | GPIO10 | SPI0_MOSI |
