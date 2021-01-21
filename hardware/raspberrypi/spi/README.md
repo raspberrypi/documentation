@@ -10,7 +10,7 @@ The BCM2835 core common to all Raspberry Pi devices has 3 SPI Controllers:
 
 - SPI0, with two hardware chip selects, is available on the header of all Pis (although there is an alternate mapping that is only usable on a Compute Module).
 
-- SPI1, with three hardware chip selects, is available on 40-pin versions of Pis.
+- SPI1, with three hardware chip selects, is available on Raspberry Pi computers which have a 40-pin GPIO header.
 
 - SPI2, also with three hardware chip selects, is only usable on a Compute Module because the pins aren't brought out onto the 40-pin header.
 
