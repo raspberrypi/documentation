@@ -175,7 +175,7 @@ The driver supports all speeds which are even integer divisors of the core clock
 | SPI_NO_CS | 1 device per bus, no chip select |
 | SPI_3WIRE | bidirectional mode, data in and out pin shared |
 
-Bidirectional, or 3-wire, mode is supported by the spi-bcm2835 kernel module. Please note that in this mode, either the TX or RX field of the `spi_transfer` struct must be a NULL pointer, since only half-duplex communication is possible: Otherwise, the transfer will fail. The `spidev_test.c` code does not consider this correctly, and therefore does not work at all in 3-wire mode.
+Bidirectional, or 3-wire, mode is supported by the spi-bcm2835 kernel module. Please note that in this mode, either the TX or RX field of the `spi_transfer` struct must be a NULL pointer, since only half-duplex communication is possible; otherwise, the transfer will fail. The `spidev_test.c` code does not consider this correctly, and therefore does not work at all in 3-wire mode.
 
 #### Supported bits per word
 
