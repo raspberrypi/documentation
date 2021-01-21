@@ -6,43 +6,46 @@ Each distinct Raspberry Pi model revision has a unique revision code. You can lo
 cat /proc/cpuinfo
 ```
 
-The last three lines show the hardware type, the revision code, and the Pi's unique serial number. For example:
+This shows information about each ARM processor core present, followed at the end by information specific to that individual Raspberry Pi:
 
 ```
-Hardware    : BCM2835
-Revision    : a02082
-Serial      : 00000000765fc593
+Hardware        : BCM2835
+Revision        : a020d3
+Serial          : 00000000905b7d97
+Model           : Raspberry Pi 3 Model B Plus Rev 1.3
 ```
 
-*Note: As of the 4.9 kernel, all Pis report `BCM2835`, even those with BCM2836, BCM2837 and BCM2711 processors. You should not use this string to detect the processor. Decode the revision code using the information below, or `cat /sys/firmware/devicetree/base/model`*
+**Note:** The `hardware` field is always set to BCM2835, even on devices which use a BCM2836, BCM2837 or BCM2711 chip; you should therefore not use this string to detect the processor. Instead, decode the revision code using the information in the table below.
 
 ## Old-style revision codes
 
-The first set of Raspberry Pi models were given sequential hex revision codes from `0002` to `0015`:
+These only apply to early Raspberry Pi 1 devices which were given sequential hex revision codes from `0002` to `0015`:
 
-| Code | Model | Revision | RAM            | Manufacturer |
-| ---- | ----- | -------- | -------------- | ------------ |
-| 0002 | B     | 1.0      | 256MB          | Egoman       |
-| 0003 | B     | 1.0      | 256MB          | Egoman       |
-| 0004 | B     | 2.0      | 256MB          | Sony UK      |
-| 0005 | B     | 2.0      | 256MB          | Qisda        |
-| 0006 | B     | 2.0      | 256MB          | Egoman       |
-| 0007 | A     | 2.0      | 256MB          | Egoman       |
-| 0008 | A     | 2.0      | 256MB          | Sony UK      |
-| 0009 | A     | 2.0      | 256MB          | Qisda        |
-| 000d | B     | 2.0      | 512MB          | Egoman       |
-| 000e | B     | 2.0      | 512MB          | Sony UK      |
-| 000f | B     | 2.0      | 512MB          | Egoman       |
-| 0010 | B+    | 1.2      | 512MB          | Sony UK      |
-| 0011 | CM1   | 1.0      | 512MB          | Sony UK      |
-| 0012 | A+    | 1.1      | 256MB          | Sony UK      |
-| 0013 | B+    | 1.2      | 512MB          | Embest       |
-| 0014 | CM1   | 1.0      | 512MB          | Embest       |
-| 0015 | A+    | 1.1      | 256MB/512MB    | Embest       |
+| Code | Model  | Revision | RAM            | Manufacturer |
+| ---- | ------ | -------- | -------------- | ------------ |
+| 0002 | 1B     | 1.0      | 256MB          | Egoman       |
+| 0003 | 1B     | 1.0      | 256MB          | Egoman       |
+| 0004 | 1B     | 2.0      | 256MB          | Sony UK      |
+| 0005 | 1B     | 2.0      | 256MB          | Qisda        |
+| 0006 | 1B     | 2.0      | 256MB          | Egoman       |
+| 0007 | 1A     | 2.0      | 256MB          | Egoman       |
+| 0008 | 1A     | 2.0      | 256MB          | Sony UK      |
+| 0009 | 1A     | 2.0      | 256MB          | Qisda        |
+| 000d | 1B     | 2.0      | 512MB          | Egoman       |
+| 000e | 1B     | 2.0      | 512MB          | Sony UK      |
+| 000f | 1B     | 2.0      | 512MB          | Egoman       |
+| 0010 | 1B+    | 1.2      | 512MB          | Sony UK      |
+| 0011 | CM1    | 1.0      | 512MB          | Sony UK      |
+| 0012 | 1A+    | 1.1      | 256MB          | Sony UK      |
+| 0013 | 1B+    | 1.2      | 512MB          | Embest       |
+| 0014 | CM1    | 1.0      | 512MB          | Embest       |
+| 0015 | 1A+    | 1.1      | 256MB/512MB    | Embest       |
 
 ## New-style revision codes
 
-With the launch of the Raspberry Pi 2, new-style revision codes were introduced. Rather than being sequential, each bit of the hex code represents a piece of information about the revision:
+With the launch of the Raspberry Pi 2, new-style revision codes were introduced. Rather than being sequential, each bit of the hex code represents a piece of information about the revision.
+
+Note that the top 3 bits of the revision code are used to configure certain features, and are not part of the actual revision code.
 
 ```
 NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
@@ -50,7 +53,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 
 | Part     | Represents   | Options                    |
 | -------- | ------------ | -------------------------- |
-| N        | Overvoltage  | 0: Overvoltage allowed     |
+| N        | Overvoltage<sup>1</sup>  | 0: Overvoltage allowed     |
 |          |              | 1: Overvoltage disallowed    |
 | O        | OTP Program<sup>1</sup> | 0: OTP programming allowed |
 |          |              | 1: OTP programming disallowed |
@@ -78,10 +81,10 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |          |              | 1: BCM2836                 |
 |          |              | 2: BCM2837                 |
 |          |              | 3: BCM2711                 |
-| TTTTTTTT | Type         | 0: A                       |
-|          |              | 1: B                       |
-|          |              | 2: A+                      |
-|          |              | 3: B+                      |
+| TTTTTTTT | Type         | 0: 1A                      |
+|          |              | 1: 1B                      |
+|          |              | 2: 1A+                     |
+|          |              | 3: 1B+                     |
 |          |              | 4: 2B                      |
 |          |              | 5: Alpha (early prototype) |
 |          |              | 6: CM1                     |
