@@ -1,6 +1,6 @@
 # Product compliance and safety
 
-All Raspberry Pi products have undergone extensive compliance testing, and copies of the relevant certificates and conformity documents are available to download from the table below. 											
+All Raspberry Pi products have undergone extensive compliance testing; copies of the relevant certificates and conformity documents are available to download below. 											
 											
 
 | Model           | Declaration of Conformity | Local and regional approval certificates |
@@ -36,19 +36,14 @@ All Raspberry Pi products have undergone extensive compliance testing, and copie
 
 The PCBs used in Raspberry Pi devices adhere to UL94-V0. Note that this applies to the PCBs **only**. 
 
-## Safety/User Guide Leaflets 
+## Product safety leaflets
 
-| Model           | Safety Leaflet |
-|:---------------:|:--------------:|
-| 3A+/3B+ | [Leaflet](./compliance/rpi_SAFE_3plus_1p3.pdf) |
-| 4B      | [Leaflet](./compliance/rpi_SAFE_4b_1p2.pdf) |
+'Safety and user guide' leaflets supplied with each device:
 
-## The Raspberry Pi Integrator Programme
+- [Raspberry Pi 3A+ and 3B+](./compliance/rpi_SAFE_3plus_1p3.pdf)
 
-The programme provides access to the same test engineers who worked on our Raspberry Pis during their compliance testing. It connects the user to a dedicated team at UL that assesses and tests the user’s product, facilitated by their in-depth knowledge of Raspberry Pi. The team at UL work closely with the Raspberry Pi engineering team, so any unexpected issues that may arise during testing can be resolved quickly. Through the programme, UL will streamline the testing and certification process, which will in turn decrease the amount of time necessary to launch the product. Our Integrator Programme is openly available, it comes with no added cost beyond the usual testing fees at UL, and there are companies already taking advantage of it.
+- [Raspberry Pi 4B](./compliance/rpi_SAFE_4b_1p2.pdf)
 
-Please contact compliance@raspberrypi.com for more details of the Integrator Programme.
+## Support for industrial customers
 
-## Get your product on the market more quickly										
-
-We have put the Integrator Programme in place in the hope of eliminating the burden of navigating complicated compliance issues and making it easier for companies to bring new, exciting products to consumers. With simplified testing, companies and individuals can get products to market in less time and with lower overhead costs.
+For more information about the support available to industrial customers, including the Raspberry Pi Integrator Programme, visit the [industry section of our website](https://www.raspberrypi.org/for-industry/).
