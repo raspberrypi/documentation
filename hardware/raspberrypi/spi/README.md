@@ -212,7 +212,7 @@ echo -ne "\x01\x02\x03" > /dev/spidev0.0
 
 ### Other SPI libraries
 
-There are other userspace libraries that provide SPI control by directly manipulating the hardware. This is not recommended.
+There are other userspace libraries that provide SPI control by directly manipulating the hardware: this is not recommended.
 
 <a name="troubleshooting"></a>
 ## Troubleshooting
