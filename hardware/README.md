@@ -1,9 +1,5 @@
 # Raspberry Pi hardware
 
-Technical information about Raspberry Pi hardware, including official add-ons and the Pi itself.
-
-## Contents
-
 - [Raspberry Pi computers](raspberrypi/README.md)
 - [Camera Module](camera/README.md)
 - [Compute Module](computemodule/README.md)
