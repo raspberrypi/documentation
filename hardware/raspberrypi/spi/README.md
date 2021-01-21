@@ -21,7 +21,7 @@ Chapter 10 in the [BCM2835 ARM Peripherals](../bcm2835/BCM2835-ARM-Peripherals.p
 ### Pin/GPIO mappings
 
 #### SPI0 (available on J8/P1 headers on all RPi versions)
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
+| SPI function | Header pin | Broadcom pin name | Broadcom pin function |
 |---|---|---|---|
 | MOSI | 19 | GPIO10 | SPI0_MOSI |
 | MISO | 21 | GPIO09 | SPI0_MISO |
@@ -30,7 +30,7 @@ Chapter 10 in the [BCM2835 ARM Peripherals](../bcm2835/BCM2835-ARM-Peripherals.p
 | CE1  | 26 | GPIO07 | SPI0_CE1_N |
 
 #### SPI0 alternate mapping (available only on Compute Modules)
-| SPI Function | Broadcom Pin Name | Broadcom Pin Function |
+| SPI function | Broadcom pin name | Broadcom pin function |
 |---|---|---|
 | MOSI | GPIO38 | SPI0_MOSI |
 | MISO | GPIO37 | SPI0_MISO |
@@ -39,7 +39,7 @@ Chapter 10 in the [BCM2835 ARM Peripherals](../bcm2835/BCM2835-ARM-Peripherals.p
 | CE1  | GPIO35 | SPI0_CE1_N |
 
 #### SPI1 (available only on 40-pin GPIO header)
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
+| SPI function | Header pin | Broadcom pin name | Broadcom pin function |
 |---|---|---|---|
 | MOSI | 38 | GPIO20 | SPI1_MOSI |
 | MISO | 35 | GPIO19 | SPI1_MISO |
@@ -49,7 +49,7 @@ Chapter 10 in the [BCM2835 ARM Peripherals](../bcm2835/BCM2835-ARM-Peripherals.p
 | CE2  | 36 | GPIO16 | SPI1_CE2_N |
 
 #### SPI2 (available only on Compute Modules)
-| SPI Function | Broadcom Pin Name | Broadcom Pin Function |
+| SPI function | Broadcom pin name | Broadcom pin function |
 |---|---|---|
 | MOSI | GPIO41 | SPI2_MOSI |
 | MISO | GPIO40 | SPI2_MISO |
@@ -59,7 +59,7 @@ Chapter 10 in the [BCM2835 ARM Peripherals](../bcm2835/BCM2835-ARM-Peripherals.p
 | CE2  | GPIO45 | SPI2_CE2_N |
 
 #### SPI3 (BCM2711 only)
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
+| SPI function | Header pin | Broadcom pin name | Broadcom pin function |
 |---|---|---|---|
 | MOSI | 03 | GPIO02 | SPI3_MOSI |
 | MISO | 28 | GPIO01 | SPI3_MISO |
@@ -68,7 +68,7 @@ Chapter 10 in the [BCM2835 ARM Peripherals](../bcm2835/BCM2835-ARM-Peripherals.p
 | CE1  | 18 | GPIO24 | SPI3_CE1_N |
 
 #### SPI4 (BCM2711 only)
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
+| SPI function | Header pin | Broadcom pin name | Broadcom pin function |
 |---|---|---|---|
 | MOSI | 31 | GPIO06 | SPI4_MOSI |
 | MISO | 29 | GPIO05 | SPI4_MISO |
@@ -77,7 +77,7 @@ Chapter 10 in the [BCM2835 ARM Peripherals](../bcm2835/BCM2835-ARM-Peripherals.p
 | CE1  | 22 | GPIO25 | SPI4_CE1_N |
 
 #### SPI5 (BCM2711 only)
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
+| SPI function | Header pin | Broadcom pin name | Broadcom pin function |
 |---|---|---|---|
 | MOSI | 08 | GPIO14 | SPI5_MOSI |
 | MISO | 33 | GPIO13 | SPI5_MISO |
@@ -86,7 +86,7 @@ Chapter 10 in the [BCM2835 ARM Peripherals](../bcm2835/BCM2835-ARM-Peripherals.p
 | CE1  | 37 | GPIO26 | SPI5_CE1_N |
 
 #### SPI6 (BCM2711 only)
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
+| SPI function | Header pin | Broadcom pin name | Broadcom pin function |
 |---|---|---|---|
 | MOSI | 38 | GPIO20 | SPI6_MOSI |
 | MISO | 35 | GPIO19 | SPI6_MISO |
