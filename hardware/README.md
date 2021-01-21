@@ -4,7 +4,7 @@ Technical information about Raspberry Pi hardware, including official add-ons an
 
 ## Contents
 
-- [Raspberry Pi](raspberrypi/README.md)
+- [Raspberry Pi computers](raspberrypi/README.md)
 - [Camera Module](camera/README.md)
 - [Compute Module](computemodule/README.md)
 - [General HAT information](https://github.com/raspberrypi/hats/blob/master/README.md) (Links to our HAT github repository)
