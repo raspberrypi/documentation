@@ -19,7 +19,7 @@ Model           : Raspberry Pi 3 Model B Plus Rev 1.3
 
 ## Old-style revision codes
 
-These only apply to early Raspberry Pi 1 devices which were given sequential hex revision codes from `0002` to `0015`:
+These only apply to early Raspberry Pi 1 devices, which were given sequential hex revision codes:
 
 | Code | Model  | Revision | RAM            | Manufacturer |
 | ---- | ------ | -------- | -------------- | ------------ |
