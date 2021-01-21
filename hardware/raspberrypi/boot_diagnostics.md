@@ -1,6 +1,8 @@
 ## Boot diagnostics on the Raspberry Pi 4 and 400
 
-The bootloader EEPROM on the Pi 4 and 400 contains a diagnostic display which can be used to help troubleshoot certain types of boot problems. The diagnostic display is output on both HDMI ports, but only after a delay. This means it is not normally visible, however you can force it to be shown by booting the Pi with no boot device present. Note that early versions of the bootloader did not contain the diagnostic display.
+The bootloader EEPROM on the Pi 4 and 400 contains a diagnostic display which can be used to help troubleshoot certain types of boot problems: it is not an interactive bootloader. If you require an interactive bootloader, consider using a tool such as NOOBS or U-Boot.
+
+The diagnostic display is output on both HDMI ports, but only after a delay. This means it is not normally visible, however you can force it to be shown by booting the Pi with no boot device present. Note that early versions of the bootloader did not contain the diagnostic display.
 
 ![Boot Diagnostics Screen](bootloader-diagnostics.png)
 
@@ -8,9 +10,9 @@ This diagnostics page will also appear if the bootloader is unable to boot from 
 
 The top line describes the model of Pi and its memory capacity. The QR code is a link to the [Downloads Page](https://raspberrypi.org/downloads).
 
-The diagnostic information is as follows:
+The information displayed is as follows:
 
-| Line: | Information |
+| Line | Information |
 | ---- | ----------- |
 | bootloader | Bootloader version,  build date |
 | board      | Board revision, serial number, Ethernet MAC address | 
@@ -22,6 +24,10 @@ The diagnostic information is as follows:
 | tftp       | Network boot: TFTP server IP address |
 
 
-This display can be disabled using the DISABLE_HDMI option, see [Pi4 Bootloader Configuration](./bcm2711_bootloader_config.md).
+### Configuration options
 
-**Note:** The boot diagnostic display is not an interactive bootloader. If you require an interactive bootloader, consider using a tool such as NOOBS or U-Boot.
+- `DISABLE_HDMI` - prevent the diagnostic display being shown
+
+- `HDMI_DELAY` - set how long the bootloader waits before showing the diagnostic display
+
+See [Pi 4 Bootloader Configuration](./bcm2711_bootloader_config.md) for details.
