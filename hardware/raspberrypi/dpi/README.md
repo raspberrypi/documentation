@@ -4,7 +4,7 @@ DPI is a simple clocked parallel RGB interface consisting of up to 8 bits of R, 
 
 Note that DPI is not available on early Raspberry Pi models with a 26-pin GPIO header.
 
-The DPI interface is controlled by the GPU firmware and can be programmed by a user via special config.txt parameters, and by enabling the correct Linux device tree overlay.
+The DPI interface is controlled by the GPU firmware and can be enabled using config.txt parameters, and selecting the correct Linux Device Tree overlay.
 
 ## GPIO pins
 
@@ -86,7 +86,7 @@ NB the single bit fields all act as an "invert default behaviour".
 
 In firmware dated August 2018 or later, the `hdmi_timings` config.txt entry that was previously used to set up the DPI timings has be superceded by a new `dpi_timings` parameter. If the `dpi_timings` parameter is not present, the system will fall back to using the `hdmi_timings` parameter to ensure backwards compatibility. If neither are present and a custom mode is requested, then a default set of parameters for VGAp60 is used.
 
-The `dpi_group` and `dpi_mode` config.txt parameters are used to set either predetermined modes (DMT or CEA modes as used by HDMI) or a user can generate custom modes.
+The `dpi_group` and `dpi_mode` config.txt parameters are used to set either predetermined modes (DMT or CEA modes as used by HDMI), or a user can generate custom modes.
 
 To generate a custom DPI mode, start [here](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=24679).
 
@@ -149,7 +149,7 @@ These overlays are fairly trivial and a user can edit them to create a custom ov
 
 This setup is for the [Gert VGA adaptor](https://github.com/fenlogic/vga666).
 
-Note that the instructions provided in the documentation in the above GitHub link are somewhat out of date, so please use the settings below.
+Note that the instructions provided in the documentation in the above GitHub link are somewhat out of date, so please use the settings below:
 
 ```
 dtoverlay=vga666
