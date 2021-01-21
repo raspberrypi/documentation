@@ -202,7 +202,7 @@ There's a loopback test program in the Linux documentation that can be used as a
 
 There are several Python libraries that provide access to `spidev`, including the imaginatively named `spidev` (`pip install spidev` - see https://pypi.org/project/spidev/) and `SPI-Py` (https://github.com/lthiery/SPI-Py).
 
-#### Using spidev from shell
+#### Using spidev from a shell
 
 Example: write binary 1, 2 and 3 using bash: 
 
