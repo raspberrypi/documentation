@@ -1,4 +1,4 @@
-# Raspberry Pi Hardware
+# Raspberry Pi hardware
 
 Technical information about Raspberry Pi hardware, including official add-ons and the Pi itself.
 
