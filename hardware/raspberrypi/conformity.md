@@ -19,6 +19,7 @@ All Raspberry Pi products have undergone extensive compliance testing, and copie
 | CM3/CM3 Lite | [EU](./compliance/rpi_DOC_CM3_EU.pdf)  &nbsp; &nbsp;[USA/FCC](./compliance/rpi_DOC_CM3_FCC.pdf)| |
 | CM3+ All models | [EU](./compliance/rpi_DOC_CM3plus_EU.PDF)  &nbsp; &nbsp;[USA/FCC](./compliance/rpi_DOC_CM3plus_FCC.PDF)| |
 | CM4 All models | [EU](./compliance/rpi_DOC_CM4_EU_RED.pdf)  &nbsp; &nbsp;[USA/FCC](./compliance/rpi_DOC_CM4_USA.pdf)| |
+| Raspberry Pi Pico | [EU](./compliance/RaspberryPi_Pico_DOC_EU.pdf)  &nbsp; &nbsp;[USA/FCC](./compliance/RaspberryPi_Pico_DOC_FCC.pdf)| |
 | Display   | [EU](./compliance/rpi_DOC_Display_CE.pdf)  &nbsp; &nbsp;[USA/FCC](./compliance/rpi_DOC_Display_FCC.pdf) | [Korea](./compliance/rpi_DOC_display_KOREA.pdf) &nbsp; &nbsp; |
 | Camera Module v1 | [EU](./compliance/rpi_DOC_Camera_CE.pdf) | |
 | Camera Module v2 | [EU](./compliance/rpi_DOC_Camera2_CE.pdf)  &nbsp; &nbsp;[USA/FCC](./compliance/rpi_DOC_Camera2_FCC.PDF) | |
