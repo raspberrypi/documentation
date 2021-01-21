@@ -1,16 +1,12 @@
 ## OTP register and bit definitions
 
-All SoCs used by the Raspberry Pi range have a inbuilt One-Time Programmable (OTP) memory block. 
+All SoCs used by the Raspberry Pi range have a one-time programmable (OTP) memory block built in: it contains 66 32-bit values, although not all locations have factory-programmed data.
 
-It is 66 32-bit values long, although only a few locations have factory-programmed data.
-
-The `vcgencmd` to display the contents of the OTP is:
-
-```vcgencmd otp_dump```
+To display the contents of OTP memory use `vcgencmd otp_dump`.
 
 ### OTP registers
 
-This list contains the publicly available information on the registers. If a register or bit is not defined here, then it is not public.
+Note that OTP registers and bits which are not listed below are intentially not publicly documented.
 
 17 – bootmode register
    - Bit 1: sets the oscillator frequency to 19.2MHz
