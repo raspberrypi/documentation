@@ -125,9 +125,9 @@ The LoSSI standard allows issuing commands to peripherals, and transfering data 
 
 ### Speed
 
-The CDIV (Clock Divider) field of the CLK register is used to set the SPI clock speed, SCLK using the formula:
+The clock divider (CDIV) field of the CLK register is used to set the SPI clock speed (SCLK) using the formula:
 
-SCLK = core clock / CDIV
+```SCLK = core clock / CDIV```
 
 If CDIV is set to 0, a divisor of 65536 is used in its place. CDIV must be a multiple of 2: odd numbers are rounded down. Note that not all possible clock rates are usable because of analogue electrical issues (rise times, drive strengths etc). 
 
