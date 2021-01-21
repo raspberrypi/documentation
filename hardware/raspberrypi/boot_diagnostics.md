@@ -1,4 +1,4 @@
-## Boot Diagnostics on the Raspberry Pi 4 and 400
+## Boot diagnostics on the Raspberry Pi 4 and 400
 
 The bootloader EEPROM on the Pi 4 and 400 contains a diagnostic display which can be used to help troubleshoot certain types of boot problems. The diagnostic display is output on both HDMI ports, but only after a delay. This means it is not normally visible, however you can force it to be shown by booting the Pi with no boot device present. Note that early versions of the bootloader did not contain the diagnostic display.
 
@@ -14,14 +14,14 @@ The diagnostic information is as follows:
 | ---- | ----------- |
 | bootloader | Bootloader version,  build date |
 | board      | Board revision, serial number, Ethernet MAC address | 
-| boot       | current boot mode being attempted, boot order read from EEPROM config - see [boot order documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711_bootloader_config.md), RSTS: PM_RSTS register |
+| boot       | Boot mode currently being attempted, boot order read from EEPROM config - see [boot order documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711_bootloader_config.md), RSTS: PM_RSTS register |
 | SD         | SD card detected status, contents of CID (card identification) register |
 | part	     | MBR partitions for boot mode currently being attempted |
 | fw	       | Filename for start.elf and fixup.dat firmware, if present (e.g. start4x.elf, fixup4x.dat) |
-| net	       | Network boot: - link status (up/down) client IP address (ip), subnet (sn), default gateway (gw) |
+| net	       | Network boot: link status (up/down), client IP address (ip), subnet (sn), default gateway (gw) |
 | tftp       | Network boot: TFTP server IP address |
 
 
 This display can be disabled using the DISABLE_HDMI option, see [Pi4 Bootloader Configuration](./bcm2711_bootloader_config.md).
 
-N.B. This is purely for diagnosing boot failures; it is not an interactive bootloader. If you require an interactive bootloader, consider using a tool such as NOOBS or U-Boot.
+**Note:** The boot diagnostic display is not an interactive bootloader. If you require an interactive bootloader, consider using a tool such as NOOBS or U-Boot.
