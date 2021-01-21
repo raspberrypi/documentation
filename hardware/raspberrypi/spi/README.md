@@ -1,15 +1,18 @@
 # SPI
 
 <a name="overview"></a>
-The Raspberry Pi family of devices is equipped with a number of [SPI](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus) buses. SPI can be used to connect a wide variety of peripherals - displays, network controllers (Ethernet, CAN bus), UARTs, etc. These devices are best supported by kernel device drivers, but the `spidev` API allows userspace drivers to be written in a wide array of languages.
+Raspberry Pi computers are equiped with a number of [SPI](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus) buses. SPI can be used to connect a wide variety of peripherals - displays, network controllers (Ethernet, CAN bus), UARTs, etc. These devices are best supported by kernel device drivers, but the `spidev` API allows userspace drivers to be written in a wide array of languages.
 
 <a name="hardware"></a>
 ## Hardware
 
 The BCM2835 core common to all Raspberry Pi devices has 3 SPI Controllers:
-* SPI0, with two hardware chip selects, is available on the header of all Pis (although there is an alternate mapping that is only usable on a Compute Module.
-* SPI1, with three hardware chip selects, is available on 40-pin versions of Pis.
-* SPI2, also with three hardware chip selects, is only usable on a Compute Module because the pins aren't brought out onto the 40-pin header.
+
+- SPI0, with two hardware chip selects, is available on the header of all Pis (although there is an alternate mapping that is only usable on a Compute Module).
+
+- SPI1, with three hardware chip selects, is available on 40-pin versions of Pis.
+
+- SPI2, also with three hardware chip selects, is only usable on a Compute Module because the pins aren't brought out onto the 40-pin header.
 
 BCM2711 adds another 4 SPI buses - SPI3 to SPI6, each with 2 hardware chip selects. All are available on the 40-pin header (provided nothing else is trying to use the same pins).
 
@@ -35,7 +38,7 @@ Chapter 10 in the [BCM2835 ARM Peripherals](../bcm2835/BCM2835-ARM-Peripherals.p
 | CE0  | GPIO36 | SPI0_CE0_N |
 | CE1  | GPIO35 | SPI0_CE1_N |
 
-#### SPI1 (available only on 40-pin J8 header)
+#### SPI1 (available only on 40-pin GPIO header)
 | SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
 |---|---|---|---|
 | MOSI | 38 | GPIO20 | SPI1_MOSI |
@@ -93,15 +96,13 @@ Chapter 10 in the [BCM2835 ARM Peripherals](../bcm2835/BCM2835-ARM-Peripherals.p
 
 ### Master modes
 
-Signal name abbreviations
+Signal name abbreviations:
 
-```
-SCLK - Serial CLocK
-CE   - Chip Enable (often called Chip Select)
-MOSI - Master Out Slave In
-MISO - Master In Slave Out
-MOMI - Master Out Master In
-```
+- SCLK - serial clock
+- CE   - chip enable (often called chip select)
+- MOSI - master out slave in
+- MISO - master in slave out
+- MOMI - master out master in
 
 #### Standard mode
 
@@ -111,12 +112,10 @@ In Standard SPI mode the peripheral implements the standard 3 wire serial protoc
 
 In bidirectional SPI mode the same SPI standard is implemented, except that a single wire is used for data (MOMI) instead of the two used in standard mode (MISO and MOSI). In this mode, the MOSI pin serves as MOMI pin.
 
-#### LoSSI mode (Low Speed Serial Interface)
-The LoSSI standard allows issuing of commands to peripherals (LCD) and to transfer data to and from them. LoSSI commands and parameters are 8 bits long, but an extra bit is used to indicate whether the byte is a command or parameter/data. This extra bit is set high for a data and low for a command. The resulting 9-bit value is serialized to the output. LoSSI is commonly used with [MIPI DBI](http://mipi.org/specifications/display-interface) type C compatible LCD controllers.
+#### LoSSI (low speed serial interface) mode
+The LoSSI standard allows issuing commands to peripherals, and transfering data to and from them. LoSSI commands and parameters are 8 bits long, with an extra bit used to indicate whether the byte is a command or parameter/data. The extra bit is set high for data and low for a command; the resulting 9-bit value is serialized to the output. LoSSI is commonly used with [MIPI DBI](http://mipi.org/specifications/display-interface) type C compatible LCD controllers.
 
-**Note:**
-
-Some commands trigger an automatic read by the SPI controller, so this mode can't be used as a multipurpose 9-bit SPI.
+**Note:** Some commands trigger an automatic read by the SPI controller, so this mode cannot be used as a multipurpose 9-bit SPI.
 
 ### Transfer modes
 
@@ -126,21 +125,21 @@ Some commands trigger an automatic read by the SPI controller, so this mode can'
 
 ### Speed
 
-The CDIV (Clock Divider) field of the CLK register sets the SPI clock speed:
+The CDIV (Clock Divider) field of the CLK register is used to set the SPI clock speed, SCLK using the formula:
 
-```
-SCLK = Core Clock / CDIV
-If CDIV is set to 0, the divisor is 65536. The divisor must be a multiple of 2, with odd numbers rounded down. Note that not all possible clock rates are usable because of analogue electrical issues (rise times, drive strengths, etc.)
-```
+SCLK = core clock / CDIV
+
+If CDIV is set to 0, a divisor of 65536 is used in its place. CDIV must be a multiple of 2: odd numbers are rounded down. Note that not all possible clock rates are usable because of analogue electrical issues (rise times, drive strengths etc). 
 
 See the [Linux driver](#driver) section for more info.
 
-### Chip Selects
+### Chip selects
 
-Setup and Hold times related to the automatic assertion and de-assertion of the CS lines when operating in **DMA** mode are as follows:
+Setup and hold times related to the automatic assertion and de-assertion of the CS lines when operating in **DMA** mode are as follows:
 
-- The CS line will be asserted at least 3 core clock cycles before the msb of the first byte of the transfer.
-- The CS line will be de-asserted no earlier than 1 core clock cycle after the trailing edge of the final clock pulse.
+- The CS line will be asserted at least 3 core clock cycles before the msb of the first byte of the transfer
+
+- The CS line will be de-asserted no earlier than 1 core clock cycle after the trailing edge of the final clock pulse
 
 <a name="software"></a>
 ## Software
@@ -164,24 +163,24 @@ The driver does not make use of the hardware chip select lines because of some l
 
 #### Speed
 
-The driver supports all speeds which are even integer divisors of the core clock, although as said above not all of these speeds will support data transfer due to limits in the GPIOs and in the devices attached. As a rule of thumb, anything over 50MHz is unlikely to work, but your mileage may vary.
+The driver supports all speeds which are even integer divisors of the core clock, although as noted above not all of these speeds will support data transfer due to limits in the GPIOs and in the devices attached. As a rule of thumb, anything over 50MHz is unlikely to work, but your mileage may vary.
 
-#### Supported Mode bits
+#### Supported mode bits
 
-```
-SPI_CPOL    - Clock polarity
-SPI_CPHA    - Clock phase
-SPI_CS_HIGH - Chip Select active high
-SPI_NO_CS   - 1 device per bus, no Chip Select
-SPI_3WIRE   - Bidirectional mode, data in and out pin shared
-```
+| bit | description |
+|-----|-------------|
+| SPI_CPOL | clock polarity |
+| SPI_CPHA | clock phase |
+| SPI_CS_HIGH | chip select active high |
+| SPI_NO_CS | 1 device per bus, no chip select |
+| SPI_3WIRE | bidirectional mode, data in and out pin shared |
 
-Bidirectional or "3-wire" mode is supported by the spi-bcm2835 kernel module. Please note that in this mode, either the tx or rx field of the spi_transfer struct must be a NULL pointer, since only half-duplex communication is possible. Otherwise, the transfer will fail. The spidev_test.c source code does not consider this correctly, and therefore does not work at all in 3-wire mode.
+Bidirectional, or 3-wire, mode is supported by the spi-bcm2835 kernel module. Please note that in this mode, either the TX or RX field of the `spi_transfer` struct must be a NULL pointer, since only half-duplex communication is possible: Otherwise, the transfer will fail. The `spidev_test.c` code does not consider this correctly, and therefore does not work at all in 3-wire mode.
 
 #### Supported bits per word
 
 - 8 - Normal
-- 9 - This is supported using LoSSI mode.
+- 9 - LoSSI mode only
 
 #### Transfer modes
 
@@ -193,7 +192,7 @@ This [thread](https://www.raspberrypi.org/forums/viewtopic.php?f=44&t=19489) dis
 
 ### spidev
 
-spidev presents an ioctl-based userspace interface to individual SPI CS lines. Device Tree is used to indicate whether a CS line is going to be driven by a kernel driver module or managed by spidev on behalf of the user; it isn't possible to do both at the same time. Note that Raspberry Pi's own kernels are more relaxed about the use of Device Tree to enable spidev - the upstream kernels print warnings about such usage, and ultimately may prevent it altogether.
+The `spidev` API presents an ioctl-based userspace interface to individual SPI CS lines. Device tree is used to indicate whether a CS line is going to be driven by a kernel driver module or managed by `spidev` on behalf of the user; it isn't possible to do both at the same time. Note that Raspberry Pi's own kernels are more relaxed about the use of device tree to enable `spidev` - the upstream kernels print warnings about such usage, and ultimately may prevent it altogether.
 
 #### Using spidev from C
 
@@ -201,12 +200,13 @@ There's a loopback test program in the Linux documentation that can be used as a
 
 #### Using spidev from Python
 
-There are several Python libraries that provide access to spidev, including the imaginatively named `spidev` (`pip install spidev` - see https://pypi.org/project/spidev/) and `SPI-Py` (https://github.com/lthiery/SPI-Py).
+There are several Python libraries that provide access to `spidev`, including the imaginatively named `spidev` (`pip install spidev` - see https://pypi.org/project/spidev/) and `SPI-Py` (https://github.com/lthiery/SPI-Py).
 
-#### Using spidev from a shell such as bash
+#### Using spidev from shell
+
+Example: write binary 1, 2 and 3 using bash: 
 
 ```bash
-# Write binary 1, 2 and 3
 echo -ne "\x01\x02\x03" > /dev/spidev0.0
 ```
 
@@ -219,7 +219,7 @@ There are other userspace libraries that provide SPI control by directly manipul
 
 ### Loopback test
 
-This can be used to test SPI send and receive. Put a wire between MOSI and MISO. It does not test CE0 and CE1.
+This can be used to test SPI send and receive: put a wire between MOSI and MISO. It does not test CE0 and CE1.
 
 ```bash
 wget https://raw.githubusercontent.com/raspberrypi/linux/rpi-3.10.y/Documentation/spi/spidev_test.c
