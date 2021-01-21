@@ -188,7 +188,7 @@ Interrupt mode is supported on all SPI buses. SPI0, and SPI3-6 also support DMA 
 
 #### SPI driver latency
 
-This [thread](https://www.raspberrypi.org/forums/viewtopic.php?f=44&t=19489) discusses latency problems.
+[This forum thread](https://www.raspberrypi.org/forums/viewtopic.php?f=44&t=19489) discusses latency problems.
 
 ### spidev
 
