@@ -239,7 +239,7 @@ sudo systemctl restart nfs-kernel-server
 Edit `/tftpboot/cmdline.txt` and from `root=` onwards, and replace it with:
 
 ```
-root=/dev/nfs nfsroot=10.42.0.211:/nfs/client1,vers=4.1,proto=tcp rw ip=dhcp rootwait elevator=deadline
+root=/dev/nfs nfsroot=10.42.0.211:/nfs/client1,vers=4.1,proto=tcp,rsize=1048576,wsize=1048576 rw ip=dhcp rootwait elevator=deadline
 ```
 
 You should substitute the IP address here with the IP address you have noted down. Also remove any part of the command line starting with init=.
