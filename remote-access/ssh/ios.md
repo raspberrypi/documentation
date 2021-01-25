@@ -1,6 +1,7 @@
 # SSH USING iOS
 
-To use SSH on your mobile device you need to download a client. There are several good quality clients available, such as [Termius](http://www.termius.com) and [Prompt 2](https://panic.com/prompt/). 
+To use SSH on your mobile device you need to download a client. There are several good quality clients available, such as 
+[Prompt 2](https://panic.com/prompt/), [Secure ShellFish](https://secureshellfish.app/) and [Termius](http://www.termius.com). 
 
 For this tutorial we will use Termius, because it is a popular cross-platform SSH client. The process will be similar for other clients. 
 
