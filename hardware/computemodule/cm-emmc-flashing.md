@@ -130,7 +130,7 @@ The `recovery` directory of the `rpiboot` tool contains a default `pieeprom.bin`
 The SHA256 checksum file must match the `pieeprom.bin` image. To generate the `.sig` file run
 
 ```bash
-sha256sum pieeprom.bin | awk '{print $2}' > pieeprom.sig
+sha256sum pieeprom.bin | awk '{print $1}' > pieeprom.sig
 ````
 
 The `recovery/update-pieeprom.sh` helper script can be used to automate the process of updating the EEPROM image and signature after editing the reference bootloader configuration file (`recovery/boot.conf`).
