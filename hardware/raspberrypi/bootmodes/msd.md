@@ -34,10 +34,13 @@ The [raspi-config](../../../configuration/raspi-config.md) utility can be used t
 
 The full set of boot mode options is documented on the [bootloader configuration](../bcm2711_bootloader_config.md) page.
 
+## Raspberry Pi 3B+
 
-## Raspberry Pi 2B v1.2, 3A+, 3B, Compute Module 3
+The Raspberry Pi 3B+ supports USB mass storage boot out of the box.
 
-On the Raspberry Pi 2B v1.2, 3A+, 3B, and Compute Module 3 you must first enable [USB host boot mode](host.md). This is to allow USB mass storage boot, and [network boot](net.md). Note that network boot is not supported on the Raspberry Pi 3A+.
+## Raspberry Pi 2B v1.2, 3A+, 3B, Compute Module 3, 3+
+
+On the Raspberry Pi 2B v1.2, 3A+, 3B, and Compute Module 3, 3+ you must first enable [USB host boot mode](host.md). This is to allow USB mass storage boot, and [network boot](net.md). Note that network boot is not supported on the Raspberry Pi 3A+.
 
 To enable USB host boot mode, the Raspberry Pi needs to be booted from an SD card with a special option to set the USB host boot mode bit in the one-time programmable (OTP) memory. Once this bit has been set, the SD card is no longer required. **Note that any change you make to the OTP is permanent and cannot be undone.**
 
@@ -68,9 +71,7 @@ If you wish, you can remove the `program_usb_boot_mode` line from `config.txt`, 
 
 You can now boot from a USB mass storage device in the same way as booting from an SD card - see the following section for further information.
 
-## Raspberry Pi 3B+, Compute Module 3+
-
-The Raspberry Pi 3B+ and Compute Module 3+ support USB mass storage boot out of the box: no changes to the OTP memory are required.
+## Booting from the USB mass storage device
 
 The [procedure](../../../installation/installing-images) is the same as for SD cards - simply image the USB storage device with the operating system image.
 
