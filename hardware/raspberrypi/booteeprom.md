@@ -116,7 +116,7 @@ At power on, the BCM2711 ROM looks for a file called `recovery.bin` in the root 
 * If the bootloader update image is called `pieeprom.upd` then `recovery.bin` renames itself to `recovery.000` and resets the CPU. Since `recovery.bin` is no longer present the ROM loads the newly updated bootloader from SPI EEPROM and the OS is booted as normal.
 * If the bootloader update image is called `pieeprom.bin` the `recovery.bin` will stop after the update has completed. On success the HDMI output will be green and the green activity LED is flashed rapidly. Otherwise, the HDMI output will be red and an [error code](../../configuration/led_blink_warnings.md) will be displayed via the activity LED.
 * The `.sig` files should just contain the sha256 checksum (in hex) of the corresponding image file. Other fields may be added in the future.
-* The BCM2711 ROM does not support loading `recovery.bin` from USB mass storage or TFTP. Instead, newer versions of the bootloader support a self-update mechanism where the SPI bootloader is able to reflash the SPI EEPROM itself. See `ENABLE_SELF_UPDATE` on the (bootloader configuration)[bcm2711_bootloader_config.md] page.
+* The BCM2711 ROM does not support loading `recovery.bin` from USB mass storage or TFTP. Instead, newer versions of the bootloader support a self-update mechanism where the SPI bootloader is able to reflash the SPI EEPROM itself. See `ENABLE_SELF_UPDATE` on the [bootloader configuration](bcm2711_bootloader_config.md) page.
 * The temporary EEPROM update files are automatically deleted by the `rpi-eeprom-update` service at startup. 
 
 ### Firmware release status
