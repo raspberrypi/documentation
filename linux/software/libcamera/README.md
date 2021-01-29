@@ -1,4 +1,4 @@
-# _libcamera_ installation for Raspberry Pi
+# _libcamera_ and _libcamera-apps_ installation for Raspberry Pi
 
 ## Preparing your Pi
 
@@ -9,7 +9,7 @@ sudo apt update
 sudo apt full-upgrade
 ```
 
-Currently (May 2020) the necessary _libcamera_ support has not yet been merged into the standard Raspberry Pi OS release, therefore it is necessary to install the latest release candidate. To do this, first reboot your Pi, and then use
+libcamera is under active development which sometimes means that new features need to be supported in Raspberry Pi OS, even before they are officially released. Therefore we currently recommend updating to the latest release candidate. To do this, first reboot your Pi, and then use
 
 ```bash
 sudo rpi-update
@@ -17,63 +17,90 @@ sudo rpi-update
 
 **WARNING**: Note that the release candidate is not as thoroughly tested as an official release. If your Raspberry Pi contains important or critical data we would strongly advise that it is backed up first, or that a fresh SD card is used for the purpose of trying _libcamera_.
 
-Next, the `/boot/config.txt` file must be updated to load and use the camera driver, by adding the following lines to the bottom. Currently we also need to update the GPU's `core_freq_min` though this will become unnecessary in due course after further updates.
+Next, the `/boot/config.txt` file must be updated to load and use the camera driver, by adding the following to the bottom.
 
 ```bash
 dtoverlay=imx219
-core_freq_min=250
 ```
 
-If you are using a sensor other than the `imx219` you will need to supply the alternative name here (for example, `ov5647` for the V1 camera, or `imx477` for the HQ Cam for which support will be available shortly).
+If you are using a sensor other than the `imx219` you will need to supply the alternative name here (for example, `ov5647` for the V1 camera, or `imx477` for the HQ Cam).
 
 **NOTE**: after rebooting, control of the camera system will be passed to the ARM cores, and firmware-based camera functions (such as raspistill and so forth) will no longer work. Setting `/boot/config.txt` back and rebooting will restore the previous behaviour.
 
-## Software Dependencies
+## Building _libcamera_ and _qcam_
 
 The build system and runtime environment of _libcamera_ have a number of dependencies. They can be installed with the following commands.
 
 ```bash
 sudo apt install libboost-dev
 sudo apt install libgnutls28-dev openssl libtiff5-dev
-sudo apt install meson
 sudo apt install qtbase5-dev libqt5core5a libqt5gui5 libqt5widgets5
-sudo pip3 install pyyaml
+sudo apt install meson
+sudo pip3 install pyyaml ply
 ```
 
-## Building _libcamera_ and _qcam_
+The Qt libraries are only required for _libcamera_'s _qcam_ demo app.
 
-We can now check out the code and configure the build for the Raspberry Pi as follows.
+Unfortunately, at the time of writing, the default version of meson is a little old, so please execute:
+
+```bash
+sudo pip3 install --upgrade meson
+ ```
+
+We can now check out the code and build _libcamera_ as follows.
 
 ```bash
 git clone git://linuxtv.org/libcamera.git
 cd libcamera
-```
-
-and to configure the build (still in the same _libcamera_ directory):
-
-```bash
 meson build
 cd build
 meson configure -Dpipelines=raspberrypi -Dtest=false
 cd ..
-```
-
-Finally we are ready to build the source code.
-
-```bash
+ninja -C build
 sudo ninja -C build install
 ```
 
-## Capturing an Image
+At this stage you may wish to check that _qcam_ works. Type `build/src/qcam/qcam` and check that you see a camera image.
 
-Images can be captured using the _qcam_ application, which can be started from the _libcamera_ directory by entering:
+*Note*
+
+On some lower memory platforms (e.g. 1GB) there have been cases of ninja exhausting all the system memory and aborting (as it will attempt to use all the CPU cores). If this happens, please try replacing `ninja -C build` by `ninja -C build -j 2` - this will restrict Ninja to only 2 cores.
+
+## Raspberry Pi's _libcamera-apps_
+
+Raspberry Pi's _libcamera-apps_ provide very similar functionality to the _raspistill_ and _raspivid_ applications that use the proprietary firmware-based camera stack. To build them, we must first install _libepoxy_.
 
 ```bash
-build/src/qcam/qcam
+cd
+sudo apt install libegl1-mesa-dev
+git clone https://github.com/anholt/libepoxy.git
+cd libepoxy
+mkdir _build
+cd _build
+meson
+ninja
+sudo ninja install
 ```
+
+Finally we can build the _libcamera-apps_.
+
+```bash
+cd
+sudo apt install cmake libboost-program-options-dev libdrm-dev libexif-dev
+git clone https://github.com/raspberrypi/libcamera-apps.git
+cd libcamera-apps
+mkdir build
+cd build
+cmake ..
+make -j4
+```
+
+To check everything is working correctly, type `./libcamera-hello` - you should see a preview window displayed for about 5 seconds.
 
 ## Further Documentation
 
 You can find out more in the _Raspberry Pi Camera Algorithm and Tuning Guide_, [here](rpi_SOFT_libcamera_1p1.pdf).
+
+More information on the _libcamera-apps_ is available [here](https://github.com/raspberrypi/libcamera-apps/blob/main/README.md).
 
 Information on writing your own kernel modules to support new CSI-2 cameras and bridge chips can be found [here](./csi-2-usage.md).
