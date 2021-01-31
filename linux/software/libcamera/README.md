@@ -99,7 +99,7 @@ To check everything is working correctly, type `./libcamera-hello` - you should 
 
 ## Further Documentation
 
-You can find out more in the _Raspberry Pi Camera Algorithm and Tuning Guide_, [here](rpi_SOFT_libcamera_1p1.pdf).
+You can find out more in the _Raspberry Pi Camera Algorithm and Tuning Guide_, [here](rpi_SOFT_libcamera_1p2.pdf).
 
 More information on the _libcamera-apps_ is available [here](https://github.com/raspberrypi/libcamera-apps/blob/main/README.md).
 
