@@ -2,7 +2,7 @@
 
 The Raspberry Pi is often used as part of another product. This documentation describes some extra facilities available to use other capabilities of the Pi.
 
-## Customer OTP settings
+## Customer OTP (One-Time Programmable) settings
 
 There are a number of OTP values that can be used. To see a list of all the [OTP values](../raspberrypi/otpbits.md), you can use:
 
@@ -28,6 +28,10 @@ pi@raspberrypi:~ $ /opt/vc/bin/vcmailbox 0x00010004 8 8 0 0
 ```
 
 The above uses the [mailbox property interface](https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface) `GET_BOARD_SERIAL` with a request size of 8 bytes and response size of 8 bytes (sending two integers for the request 0, 0). The response to this will be two integers (0x00000020 and 0x80000000) followed by the tag code, the request length, the response length (with the 31st bit set to indicate that it is a response) then the 64 bit serial number (where the MS 32bits are always 0).
+
+## Write and read Customer OTP values
+
+**WARNING: The OTP values are One-Time Programmable, once a bit has been changed from 0 to 1, it can't be changed back**
 
 To set the customer OTP values you will need to use the `SET_CUSTOMER_OTP` (0x38021) tag as follows:
 ```
