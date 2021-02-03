@@ -31,7 +31,7 @@ The above uses the [mailbox property interface](https://github.com/raspberrypi/f
 
 ## Write and read Customer OTP values
 
-**WARNING: The OTP values are One-Time Programmable, the `SET_CUSTOMER_OTP` tag can only be used once on each row**
+**WARNING: The OTP values are One-Time Programmable, once a bit has been changed from 0 to 1, it can't be changed back**
 
 To set the customer OTP values you will need to use the `SET_CUSTOMER_OTP` (0x38021) tag as follows:
 ```
