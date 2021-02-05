@@ -82,8 +82,21 @@ If you wish to disable the touchscreen element and only use the display side, yo
 
 To make the firmware to ignore the display even if connected, then add ```ignore_lcd=1``` to /boot/config.txt.
 
+### Firmware configuration
+
+The firmware looks at the dt-blob.bin file for the relevant configuration to use
+for the screen. It looks at the pin_number@ defines for
+```
+DISPLAY_I2C_PORT
+DISPLAY_SDA
+DISPLAY_SCL
+DISPLAY_DSI_PORT
+```
+The I2C port, SDA and SCL pin numbers are self explanatory. DISPLAY_DSI_PORT
+selects between DSI1 (the default) and DSI0.
 
 ### Sources
 - [dt-blob-disp1-only.dts](dt-blob-disp1-only.dts)
 - [dt-blob-disp1-cam1.dts](dt-blob-disp1-cam1.dts)
 - [dt-blob-disp1-cam2.dts](dt-blob-disp1-cam2.dts)
+- [dt-blob-disp0-only.dts](dt-blob-disp0-only.dts - uses wiring as for CAM0)
