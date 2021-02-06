@@ -6,4 +6,4 @@ We recommend using [Raspberry Pi Imager](https://www.raspberrypi.org/software/) 
 
 * [Further information about SD cards](sd-cards.md).
 
-* [NOOBS](noobs.md) is still available, but is no longer recommended for new installations.
+* [NOOBS](noobs.md)
