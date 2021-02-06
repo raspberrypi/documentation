@@ -7,7 +7,7 @@ A guide to setting up your Raspberry Pi
 ### Essential (for general use)
 
 - [SD card](../installation/sd-cards.md)
-    - We recommend a minimum size of 16GB.
+    - We recommend a minimum size of 8GB.
 - [Display and connectivity cable](monitor-connection.md)
     - Any HDMI/DVI monitor or TV should work as a display for the Pi. For best results, use a display with HDMI input; other types of connection for older devices are also available.
 - Keyboard and mouse
