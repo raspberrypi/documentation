@@ -1,6 +1,6 @@
 # NOOBS
 
-**Note:** We now recommend that you use [Raspberry Pi Imager](https://www.raspberrypi.org/software/) to install an operating system, instead of using NOOBS. If you are buying an SD card with software pre-installed on it, then we do still recommend buying one with NOOBS on it.
+**Note: We now recommend that you use [Raspberry Pi Imager](https://www.raspberrypi.org/software/) to install an operating system, instead of using NOOBS. If you are buying an SD card with software pre-installed on it, then we do still recommend buying one with NOOBS on it.**
 
 **New Out Of Box Software (NOOBS)** is an operating system installation manager for the Raspberry Pi.
 
