@@ -14,7 +14,7 @@ SD cards with NOOBS pre-installed are available from many of our distributors an
 
 ## What's included in NOOBS
 
-NOOBS includes Raspberry Pi OS. It can also be used to install other operating systems: this requires that the Pi has a working internet connection to download the OS.
+NOOBS includes Raspberry Pi OS, and LibreELEC which is a Kodi media player system. It can also be used to install other operating systems: this requires that the Pi has a working internet connection to download the OS.
 
 ## NOOBS development
 
