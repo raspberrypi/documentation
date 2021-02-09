@@ -15,8 +15,7 @@ A guide to setting up your Raspberry Pi.
     - Wireless keyboards and mice will work if already paired.
     - For keyboard layout configuration options see [raspi-config](../configuration/raspi-config.md).
 - [Power supply](../hardware/raspberrypi/power/README.md)
-    - The Pi is powered via a micro USB connector, except the Pi 4B and Pi 400 which use a USB type C connector.
-    - You need a good quality power supply - see [here](../hardware/raspberrypi/power/README.md) for information on the power requirements of each model of Raspberry Pi. We recommend using an official Raspberry Pi power supply - for the Pi 4B and 400 use the type C power supply; for all other models use the micro USB power supply(https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/).
+    - You need a good quality power supply - see [here](../hardware/raspberrypi/power/README.md) for information on the power requirements of each model of Raspberry Pi. We recommend using an official Raspberry Pi power supply - for the Pi 4B and 400 use the [type C power supply](https://www.raspberrypi.org/products/type-c-power-supply/); for all other models use the [micro USB power supply](https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/).
 
 ### Optional
 
