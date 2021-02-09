@@ -14,23 +14,13 @@ SD cards with NOOBS pre-installed are available from many of our distributors an
 
 ## What's included in NOOBS
 
-The following operating systems are currently included in NOOBS. Note that only Raspberry Pi OS is supplied on the SD card - all other choices require that you have an internet connection to download the operating system.
-
-- [Raspberry Pi OS](https://www.raspberrypi.org)
-- [LibreELEC](https://libreelec.tv/)
-- [OSMC](https://osmc.tv/)
-- [Recalbox](https://www.recalbox.com/)
-- [Lakka](http://www.lakka.tv/)
-- [RISC OS](https://www.riscosopen.org/wiki/documentation/show/Welcome%20to%20RISC%20OS%20Pi)
-- [Screenly OSE](https://www.screenly.io/ose/)
-- [Windows 10 IoT Core](https://developer.microsoft.com/en-us/windows/iot)
-- [TLXOS](https://thinlinx.com/)
+NOOBS includes Raspberry Pi OS. It can also be used to install other operating systems: this requires that the Pi has a working internet connection to download the OS.
 
 ## NOOBS development
 
 ### Latest NOOBS release
 
-The latest NOOBS release is **v3.5.1**, released on **4th December 2020**.
+The latest NOOBS release is **v3.5.2**, released on **12th January 2021**.
 
 ### NOOBS documentation
 
