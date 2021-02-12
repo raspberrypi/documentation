@@ -46,10 +46,6 @@ The PCBs used in Raspberry Pi devices adhere to UL94-V0. Note that this applies 
 
 ## The Raspberry Pi Integrator Programme
 
-The programme provides access to the same test engineers who worked on our Raspberry Pis during their compliance testing. It connects the user to a dedicated team at UL that assesses and tests the user’s product, facilitated by their in-depth knowledge of Raspberry Pi. The team at UL work closely with the Raspberry Pi engineering team, so any unexpected issues that may arise during testing can be resolved quickly. Through the programme, UL will streamline the testing and certification process, which will in turn decrease the amount of time necessary to launch the product. Our Integrator Programme is openly available, it comes with no added cost beyond the usual testing fees at UL, and there are companies already taking advantage of it.
+The Integrator Programme is designed to eliminate the burden of navigating compliance issues and make it easier for companies to bring new products to consumers. It provides access to the same test engineers who worked on our Raspberry Pis during their compliance testing, connecting the user to a dedicated team at [UL](https://www.ul-certification.com/) who assess and test the user’s product, facilitated by their in-depth knowledge of Raspberry Pi.
 
-Please contact compliance@raspberrypi.com for more details of the Integrator Programme.
-
-## Get your product on the market more quickly										
-
-We have put the Integrator Programme in place in the hope of eliminating the burden of navigating complicated compliance issues and making it easier for companies to bring new, exciting products to consumers. With simplified testing, companies and individuals can get products to market in less time and with lower overhead costs.
+[Find out more about the Raspberry Pi Integrator Programme](https://www.raspberrypi.org/for-industry/integrator-programme/).
