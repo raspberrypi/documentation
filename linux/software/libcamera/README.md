@@ -27,15 +27,13 @@ If you are using a sensor other than the `imx219` you will need to supply the al
 
 **NOTE**: after rebooting, control of the camera system will be passed to the ARM cores, and firmware-based camera functions (such as raspistill and so forth) will no longer work. Setting `/boot/config.txt` back and rebooting will restore the previous behaviour.
 
-*Pi 3 users*
+## Select the correct graphics driver
 
-By default Pi 3s do not use the correct GL driver for the _libcamera-apps_ (whereas Pi 4s do). If you wish to use them please ensure you have
+There are 3 different graphics drivers available on the Raspberry Pi: firmware, FKMS and KMS. The firmware graphics driver cannot be used with _libcamera-apps_. The Raspberry Pi 4 and 400 use the newer FKMS graphics driver by default: this is compatible with _libcamera-apps_. For all other models of Raspberry Pi, you must select the FKMS driver by adding the following line to the `/boot/config.txt` file:
 
 ```
 dtoverlay=vc4-fkms-v3d
 ```
-
-active in your `/boot/config.txt`.
 
 ## Building _libcamera_ and _qcam_
 
