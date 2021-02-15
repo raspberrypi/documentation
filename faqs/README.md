@@ -616,7 +616,7 @@ The Raspberry Pi Camera Modules requires 250mA to operate. Ensure that your powe
 <a name="troubleshoot-defpasswd"></a>
 ### What is the username and password for the Raspberry Pi?
 
-The default username for Raspberry Pi OS is `pi` (without any quotation marks) and the default password is `raspberry` (again, do not include the quotation marks). If this does not work, check the information about your specific distro on the [downloads page](https://www.raspberrypi.org/downloads).
+The default username for Raspberry Pi OS is `pi` and the default password is `raspberry`. If this does not work, check the information about your specific distro on the [downloads page](https://www.raspberrypi.org/downloads).
 
 <a name="troubleshoot-inputpasswd"></a>
 ### Why does nothing happen when I type in my password?
