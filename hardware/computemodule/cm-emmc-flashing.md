@@ -118,6 +118,7 @@ The `/dev/sdX1` and `/dev/sdX2` partitions can now be mounted normally.
 
 Make sure J4 (USB SLAVE BOOT ENABLE) / J2 (nRPI_BOOT) is set to the disabled position and/or nothing is plugged into the USB slave port. Power cycling the IO board should now result in the Compute Module booting from eMMC.
 
+<a name="cm4bootloader"></a>
 ## Compute Module 4 bootloader
 The default bootloader configuration on CM4 is designed to support bringup and development on a [Compute Module 4 IO board](https://www.raspberrypi.org/products/compute-module-4-io-board) and the software version flashed at manufacture may be older than the latest release. For final products please consider:-
 
