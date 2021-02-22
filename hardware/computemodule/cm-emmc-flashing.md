@@ -126,7 +126,7 @@ The default bootloader configuration on CM4 is designed to support bringup and d
 * Configuring the boot device (e.g. network boot). See `BOOT_ORDER` section in the [bootloader configuration](raspberrypi/bcm2711_bootloader_config.md) guide.
 * Enabling hardware write protection on the bootloader EEPROM to ensure that the bootloader can't be modified on remote/inaccessible products.
 
-N.B. The Compute Module 4 ROM never runs `recovery.bin` from SD/EMMC and the `rpi-eeprom-update` services is not enabled. This is necessary because the EMMC is not removable and an invalid `recovery.bin` file would prevent the system from booting.
+N.B. The Compute Module 4 ROM never runs `recovery.bin` from SD/EMMC and the `rpi-eeprom-update` service is not enabled by default. This is necessary because the EMMC is not removable and an invalid `recovery.bin` file would prevent the system from booting. This can be overriden and used with `self-update` mode where the bootloader can be updated from USB MSD or Network boot. However, `self-update` mode is not an atomic update and therefore not safe in the event of a power failure whilst the EEPROM was being updated.
 
 ### Modifying the bootloader configuration
 To modify the CM4 bootloader configuration:-
