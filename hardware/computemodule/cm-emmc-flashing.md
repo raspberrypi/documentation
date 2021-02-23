@@ -137,7 +137,7 @@ To modify the CM4 bootloader configuration:-
    * For SD/EMMC boot `BOOT_ORDER=0xf1`
    * For USB boot failing over to EMMC `BOOT_ORDER=0xf15`
 * Run `recovery/update-pieeprom.sh` to update the EEPROM image `pieeprom.bin` image file. 
-* If EEPROM write protection is requried then edit `recovery/config.txt` and add `eeprom_write_protect=1`. Hardware write-protection is must be enabled via software and then locked by pulling the `EEPROM_nWP` pin low.
+* If EEPROM write protection is requried then edit `recovery/config.txt` and add `eeprom_write_protect=1`. Hardware write-protection must be enabled via software and then locked by pulling the `EEPROM_nWP` pin low.
 
 The pieeprom.bin file is now ready to be flashed to the Compute Module 4.
 
