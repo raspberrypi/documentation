@@ -126,7 +126,7 @@ The default bootloader configuration on CM4 is designed to support bringup and d
 * Configuring the boot device (e.g. network boot). See `BOOT_ORDER` section in the [bootloader configuration](raspberrypi/bcm2711_bootloader_config.md) guide.
 * Enabling hardware write protection on the bootloader EEPROM to ensure that the bootloader can't be modified on remote/inaccessible products.
 
-N.B. The Compute Module 4 ROM never runs `recovery.bin` from SD/EMMC and the `rpi-eeprom-update` service is not enabled by default. This is necessary because the EMMC is not removable and an invalid `recovery.bin` file would prevent the system from booting. This can be overriden and used with `self-update` mode where the bootloader can be updated from USB MSD or Network boot. However, `self-update` mode is not an atomic update and therefore not safe in the event of a power failure whilst the EEPROM was being updated.
+N.B. The Compute Module 4 ROM never runs `recovery.bin` from SD/EMMC and the `rpi-eeprom-update` service is not enabled by default. This is necessary because the EMMC is not removable and an invalid `recovery.bin` file would prevent the system from booting. This can be overridden and used with `self-update` mode where the bootloader can be updated from USB MSD or Network boot. However, `self-update` mode is not an atomic update and therefore not safe in the event of a power failure whilst the EEPROM was being updated.
 
 ### Modifying the bootloader configuration
 To modify the CM4 bootloader configuration:-
@@ -137,7 +137,7 @@ To modify the CM4 bootloader configuration:-
    * For SD/EMMC boot `BOOT_ORDER=0xf1`
    * For USB boot failing over to EMMC `BOOT_ORDER=0xf15`
 * Run `recovery/update-pieeprom.sh` to update the EEPROM image `pieeprom.bin` image file. 
-* If EEPROM write protection is requried then edit `recovery/config.txt` and add `eeprom_write_protect=1`. Hardware write-protection must be enabled via software and then locked by pulling the `EEPROM_nWP` pin low.
+* If EEPROM write protection is required then edit `recovery/config.txt` and add `eeprom_write_protect=1`. Hardware write-protection must be enabled via software and then locked by pulling the `EEPROM_nWP` pin low.
 
 The pieeprom.bin file is now ready to be flashed to the Compute Module 4.
 
