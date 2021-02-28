@@ -1,28 +1,39 @@
-# Pi4 Bootflow
+# Raspberry Pi4, Pi400 and CM4 bootflow
 
-The Pi4 with the BCM2711 SoC has a new, more sophisticated boot process. The addition of an EEPROM means that the `bootcode.bin` file found in `/boot` is no longer required. Details of the EEPROM can be found [here](../booteeprom.md).
+This page describes the bootflow for BCM2711 based products. The main difference betweeen this and previous products is that the second stage bootloader (bootcode.bin) is loaded for an SPI flash [EEPROM](../booteeprom.md) instead of bootable media. Consequently, settings which previously could only be configured with a one off OTP update may now be modified later on by reflashing the EEPROM.
 
-The boot flow for the Pi4 is as follows:
+The bootflow is as follows:-
 
 * BCM2711 SoC powers up
-* On board bootrom checks for bootloader recovery file (recovery.bin) on the SD card. If found, it executes it to flash the EEPROM and recovery.bin triggers a reset.
-* Otherwise, the bootrom loads the main bootloader from the EEPROM.
-* Bootloader checks it's inbuilt BOOT_ORDER configuration item to determine what type of boot to do.
-  * SD Card
-  * Network
-  * USB mass storage
+* Read OTP to determine GPIO configuration for second stage loading.
+* If nRPIBOOT pin is not defined in OTP or nRPIBOOT GPIO is high
+   * Check primary SD/EMMC for recovery.bin
+      * Success - run recovery.bin
+      * Fail - continue
+   * Check SPI EEPROM for second stage loader
+      * Success - run second stage bootloader 
+      * Fail - continue
+* While True
+   * Attempt to load recovery.bin from [USB device boot](../computemodule/cm-emmc-flashing.md)
+      * Success - run recovery.bin
+      * Fail - continue
 
+## recovery.bin
+Recovery.bin is a cutdown version of the bootloader which has just enough functionality to reflash the full bootloader in SPI EEPROM.
 
-## SD Card Boot
-The bootloader loads the files in the [boot folder](../../../configuration/boot_folder.md) according to the [boot options](../../../configuration/config-txt/boot.md) in config.txt
+# Second stage bootloader 
 
-## Network boot
+Bootfloat after ROM has loaded the second stage bootloader into the VPU L2 cache:-
 
-Details of the network booting can be found [here](../bcm2711_bootloader_config.md)
-
-## USB mass storage boot
-
-USB booting is still under development.
+* Initialise clocks and SDRAM
+* Read EEPROM configuration file
+* While True
+   * Read the next boot-mode from the BOOT_ORDER field
+   * If boot-mode i== SD CARD
+      * Attempt to load firmware from the SD card
+         * Success - run firmware
+         * Failure - continue
+   * else if boot-mode == 
 
 
 ## BOOT_ORDER
