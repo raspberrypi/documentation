@@ -25,7 +25,7 @@ The bootflow for the ROM (first stage) is as follows:-
 
 This section describes the high-level flow of the second stage bootloader.
 
-Please see the [bootloader configuration](bcm2711_bootloader_config.md) page for more information about each boot-mode and the [boot folder](../../configuration/boot_folder.md) page for a description of the GPU firmware files loaded by this stage.
+Please see the [bootloader configuration](../bcm2711_bootloader_config.md) page for more information about each boot-mode and the [boot folder](../../../configuration/boot_folder.md) page for a description of the GPU firmware files loaded by this stage.
 
 * Initialise clocks and SDRAM
 * Check PM_RSTS register to determine if HALT is requested
@@ -40,7 +40,7 @@ Please see the [bootloader configuration](bcm2711_bootloader_config.md) page for
    * If boot-mode == RESTART
       * Jump back to the first boot-mode in the BOOT_ORDER field
    * else if boot-mode == STOP
-      * Display start.elf not found [error pattern](../../configuration/led_blink_warnings.md) and wait forever.
+      * Display start.elf not found [error pattern](../../../configuration/led_blink_warnings.md) and wait forever.
    * else if boot-mode == SD CARD
       * Attempt to load firmware from the SD card
          * Success - run firmware
