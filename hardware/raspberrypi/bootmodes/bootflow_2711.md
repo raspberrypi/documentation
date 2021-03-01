@@ -5,8 +5,8 @@ This page describes the bootflow for BCM2711 based products. The main difference
 The bootflow for the ROM (first stage) is as follows:-
 
 * BCM2711 SoC powers up
-* Read OTP to determine GPIO configuration for second stage loading.
-* If nRPIBOOT GPIO is high or OTP does not define `nRPIBOOT` GPIO (only defined for CM4)
+* Read OTP to determine if board model defined `nRPIBOOT` GPIO
+* If nRPIBOOT GPIO is high or OTP does NOT define `nRPIBOOT` GPIO 
    * Check primary SD/EMMC for `recovery.bin`
       * Success - run `recovery.bin`
       * Fail - continue
@@ -17,6 +17,8 @@ The bootflow for the ROM (first stage) is as follows:-
    * Attempt to load recovery.bin from [USB device boot](../computemodule/cm-emmc-flashing.md)
       * Success - run `recovery.bin`
       * Fail - retry USB device boot
+
+N.B. Currently only CM4 reserves a GPIO for `nRPIBOOT`
 
 ## recovery.bin
 `recovery.bin` is a minimal second stage program used to reflash the bootloader SPI EEPROM image.
@@ -44,7 +46,7 @@ Please see the [bootloader configuration](../bcm2711_bootloader_config.md) page 
       * Display start.elf not found [error pattern](../../../configuration/led_blink_warnings.md) and wait forever.
    * else if boot-mode == `SD CARD`
       * Attempt to load firmware from the SD card
-         * Success - run firmware
+         * Success - run the firmware
          * Failure - continue
    * else if boot-mode == `NETWORK`
       * If boot-mode == `NETWORK` then 
@@ -57,7 +59,7 @@ Please see the [bootloader configuration](../bcm2711_bootloader_config.md) page 
          * If a new mass storage device is found then
             * For each drive (LUN)
                * Attempt to load firmware
-                  * Success - run firmware
+                  * Success - run the firmware
                   * Failed - advance to next LUN
    * else if boot-mode == `RPIBOOT` then
       * Attempt to load firmware using USB device mode from the USB OTG port- see [usbboot](https://github.com/raspberrypi/usbboot).
