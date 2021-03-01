@@ -118,25 +118,36 @@ The `/dev/sdX1` and `/dev/sdX2` partitions can now be mounted normally.
 
 Make sure J4 (USB SLAVE BOOT ENABLE) / J2 (nRPI_BOOT) is set to the disabled position and/or nothing is plugged into the USB slave port. Power cycling the IO board should now result in the Compute Module booting from eMMC.
 
-## Flashing the bootloader EEPROM - Compute Module 4
-The `rpiboot` tool is the recommended method for updating the bootloader EEPROM on Compute Module 4. After following the initial EMMC flashing setup steps run the following command to run the `recovery` image instead of the EMMC image.
+<a name="cm4bootloader"></a>
+## Compute Module 4 bootloader
+The default bootloader configuration on CM4 is designed to support bringup and development on a [Compute Module 4 IO board](https://www.raspberrypi.org/products/compute-module-4-io-board) and the software version flashed at manufacture may be older than the latest release. For final products please consider:-
+
+* Selecting and verifying a specific bootloader release. The version in the `usbboot` repo is always a recent stable release.
+* Configuring the boot device (e.g. network boot). See `BOOT_ORDER` section in the [bootloader configuration](raspberrypi/bcm2711_bootloader_config.md) guide.
+* Enabling hardware write protection on the bootloader EEPROM to ensure that the bootloader can't be modified on remote/inaccessible products.
+
+N.B. The Compute Module 4 ROM never runs `recovery.bin` from SD/EMMC and the `rpi-eeprom-update` service is not enabled by default. This is necessary because the EMMC is not removable and an invalid `recovery.bin` file would prevent the system from booting. This can be overridden and used with `self-update` mode where the bootloader can be updated from USB MSD or Network boot. However, `self-update` mode is not an atomic update and therefore not safe in the event of a power failure whilst the EEPROM was being updated.
+
+### Modifying the bootloader configuration
+To modify the CM4 bootloader configuration:-
+
+* Replace `recovery/pieeprom.original.bin` if a specific bootloader release is required.
+* Edit the default `recovery/boot.conf` bootloader configuration file. Typically, at least the BOOT_ORDER must be updated:-
+   * For network boot `BOOT_ORDER=0xf2`
+   * For SD/EMMC boot `BOOT_ORDER=0xf1`
+   * For USB boot failing over to EMMC `BOOT_ORDER=0xf15`
+* Run `recovery/update-pieeprom.sh` to update the EEPROM image `pieeprom.bin` image file. 
+* If EEPROM write protection is required then edit `recovery/config.txt` and add `eeprom_write_protect=1`. Hardware write-protection must be enabled via software and then locked by pulling the `EEPROM_nWP` pin low.
+
+The pieeprom.bin file is now ready to be flashed to the Compute Module 4.
+
+### Flashing the bootloader EEPROM - Compute Module 4
+To flash the bootloader EEPROM follow the same hardware setup as for flashing the EMMC but also ensure EEPROM_nWP is NOT pulled low. Once complete `EEPROM_nWP` may be pulled low again.
 
 ```bash
+# Writes recovery/pieeprom.bin to the bootloader EEPROM.
 ./rpiboot -d recovery
 ```
-
-The `recovery` directory of the `rpiboot` tool contains a default `pieeprom.bin` bootloader EEPROM image. See the [boot EEPROM](../raspberrypi/booteeprom.md) and [bootloader configuration](../raspberrypi/bcm2711_bootloader_config.md) pages for more information about how to change the embedded configuration file.
-
-The SHA256 checksum file must match the `pieeprom.bin` image. To generate the `.sig` file run
-
-```bash
-sha256sum pieeprom.bin | awk '{print $1}' > pieeprom.sig
-````
-
-The `recovery/update-pieeprom.sh` helper script can be used to automate the process of updating the EEPROM image and signature after editing the reference bootloader configuration file (`recovery/boot.conf`).
-
-The bootloader image in the `recovery` directory is the latest manufacturing image with default settings. It is intended for use on a [Compute Module 4 IO board](https://www.raspberrypi.org/products/compute-module-4-io-board) with Raspberry Pi OS booting from SD/EMMC as a Compute Module 4 development platform. 
-
 
 ## Troubleshooting
 
