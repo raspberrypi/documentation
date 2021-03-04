@@ -16,6 +16,8 @@ The Raspberry Pi has a number of different stages of booting. This document expl
   
 [GPIO boot mode](gpio.md)
   
+[NVMe SSD boot](nvme.md): boot CM4 from a solid state drive (SSD) connected via the PCIe slot on a IO board
+
 ## Special bootcode.bin-only boot mode
 USB host and Ethernet boot can be performed by BCM2837-based Raspberry Pis - that is, Pi 2B version 1.2, Pi 3B, and Pi 3B+ (Raspberry Pi 3A+ cannot net boot since it does not have a built-in Ethernet interface). In addition, all Raspberry Pi models **except Pi 4B** can use a new bootcode.bin-only method to enable USB host boot.
 
