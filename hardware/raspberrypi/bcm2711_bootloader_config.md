@@ -307,20 +307,20 @@ Default: `1` (`0` in versions prior to 2020-09-03)
 
 ## USB and network boot
 ## Operating system support 
-Before using USB and network boot it's advisable to update the operating system to the latest version. 
+Before using USB and network boot, it is advisable to update the operating system to the latest version. 
 
 ## Selecting the boot mode
-Pi400 and newer Raspberry Pi 4B boards support USB boot by default. In order to enable USB boot on earlier boards or to select alternate boot modes the bootloader configuration must be updated.
+Pi 400 and newer Raspberry Pi 4B boards support USB boot by default. In order to enable USB boot on earlier boards, or to select alternate boot modes, the bootloader configuration must be updated.
 
 ### Using Raspberry Pi Imager to update the bootloader (recommended)
 The Raspberry Pi Imager provides a GUI for creating SD cards image to update the bootloader
 
-1. Download the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/)
+1. Download [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/)
 2. Select a spare SD card. The contents will get overwritten!
-3. Launch the Raspberry Pi Imager
+3. Launch `Raspberry Pi Imager`
 4. Select `Misc utility images` under `Operating System`
 5. Select `Bootloader`
-6. Select a boot mode 
+6. Select a boot-mode 
 7. Select `SD card` and then `Write`
 
 ### Using raspi-config to update the bootloader from within Raspberry Pi OS
@@ -339,15 +339,13 @@ To change the boot-mode or bootloader version from within Raspberry Pi OS run [r
 sudo apt update
 sudo apt full-upgrade
 sudo -E rpi-eeprom-config --edit
-# Make changes, then save and quit. 
-# rpi-eeprom-config will print details of the EEPROM release and how to revert changes.
-sudo reboot
 ```
+Make changes, then save and quit. `rpi-eeprom-config` will print details of the EEPROM release and how to revert changes. Reboot to apply the bootloader update.
 
-The [Boot EEPROM](booteeprom.md) page provides more information about the EEPROM flashing process 
+The [Boot EEPROM](booteeprom.md) page provides more information about the EEPROM flashing process.
 
 
-#### Hardware compatibility for USB mass-storage devices
+#### Hardware compatibility for USB mass storage devices
 Before attempting to boot from a USB mass storage device it is advisible to verify that the device works correctly under Linux. Boot using an SD card and plug in the USB mass storage device. This should appears as a removable drive.
 
 *Spinning hard-disk drives nearly always require a powered USB hub. Even if it appears to work you are likely to encounter intermittent failures without a powered USB HUB*
