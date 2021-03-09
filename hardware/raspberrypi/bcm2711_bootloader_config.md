@@ -305,38 +305,49 @@ This option may be set to 0 to block self-update without requiring the EEPROM co
 
 Default: `1` (`0` in versions prior to 2020-09-03)  
 
-## Advanced boot modes - Network / USB mass storage boot.
-For network or USB mass storage boot we recommend updating to bootloader version 2020-09-03 and Raspberry Pi OS 2020-08-20 or newer.
+## USB and network boot
+## Operating system support 
+Before using USB and network boot it's advisable to update the operating system to the latest version. 
 
-### Updating the bootloader
-#### Update using the Raspberry Pi Imager
-The easiest method to update the bootloader with a factory default configuration supporting USB boot is to use the Raspberry Pi Imager.
+## Selecting the boot mode
+Pi400 and newer Raspberry Pi 4B boards support USB boot by default. In order to enable USB boot on earlier boards or to select alternate boot modes the bootloader configuration must be updated.
+
+### Using Raspberry Pi Imager to update the bootloader (recommended)
+The Raspberry Pi Imager provides a GUI for creating SD cards image to update the bootloader
+
 1. Download the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/)
-1. Download the latest [EEPROM recovery image](https://github.com/raspberrypi/rpi-eeprom/blob/master/releases.md)
-1. Select `Use Custom` to reformat and flash a **blank** SD card with the EEPROM update enabling USB MSD boot support.
+2. Select a spare SD card. The contents will get overwritten!
+3. Launch the Raspberry Pi Imager
+4. Select `Misc utility images` under `Operating System`
+5. Select `Bootloader`
+6. Select a boot mode 
+7. Select `SD card` and then `Write`
 
-#### Manual bootloader update
-* From a Raspberry Pi OS 2020-08-20 or newer SD card:
+### Using raspi-config to update the bootloader from within Raspberry Pi OS
+To change the boot-mode or bootloader version from within Raspberry Pi OS run [rapsi-config](../../configuration/raspi-config.md)
+
+1. Run `sudo raspi-config`
+2. Select `Advanced Options`
+3. Select `Boot Order`
+4. Select SD, USB or Network boot
+5. Reboot
+
+### Custom boot-orders
+`rpi-eeprom-config` has an editor mode which can be used to make quick changes to the EEPROM config file. Use this to defined the `BOOT_ORDER` setting directly
+
 ```
 sudo apt update
 sudo apt full-upgrade
-```
-* Run `vcgencmd bootloader_config` to check your current configuration and decide whether to use the factory default config or migrate your existing boot settings.
-* Update the bootloader
-```
-# Install with the factory default configuration (-d).
-sudo rpi-eeprom-update -a -d
+sudo -E rpi-eeprom-config --edit
+# Make changes, then save and quit. 
+# rpi-eeprom-config will print details of the EEPROM release and how to revert changes.
+sudo reboot
 ```
 
-#### Changing the boot mode
-To change the default boot mode use the `Boot Options`/`Boot Order` option in [raspi-config](../../configuration/raspi-config.md). Alternatively, edit the EEPROM configuration file manually and set the `BOOT_ORDER` according to the desired boot mode then use `rpi-eeprom-update -d -f ` to update the bootloader.
+The [Boot EEPROM](booteeprom.md) page provides more information about the EEPROM flashing process 
 
-### USB mass storage boot
-This is a new feature and we recommend you check the Raspberry Pi [general discussion forum](https://www.raspberrypi.org/forums/viewforum.php?f=63&sid=c5b91609d530566a752920ca7996eb21) for queries or interoperability questions.
 
-N.B. For other operating systems please check the maintainer's website for USB boot support.
-
-#### Check that the USB mass storage device works under Linux
+#### Hardware compatibility for USB mass-storage devices
 Before attempting to boot from a USB mass storage device it is advisible to verify that the device works correctly under Linux. Boot using an SD card and plug in the USB mass storage device. This should appears as a removable drive.
 
 *Spinning hard-disk drives nearly always require a powered USB hub. Even if it appears to work you are likely to encounter intermittent failures without a powered USB HUB*
