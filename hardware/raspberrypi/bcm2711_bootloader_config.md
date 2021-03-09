@@ -359,7 +359,7 @@ Additional notes:-
 * The MAC address on the Pi 4 is programmed at manufacture and is not derived from the serial number.
 ```
 # mac address (ip addr) - it should start with DC:A6:32
-ip addr | grep ether | head -n1 | awk '{print $2}' | tr [a-z] [A-Z]
+ip addr | grep ether | head -n1 | awk '{print $2}' | tr '[a-z]' '[A-Z]'
 # serial number
-vcgencmd otp_dump | grep 28: | sed s/.*://g
+vcgencmd otp_dump | grep 28: | sed 's/.*://g'
 ```
