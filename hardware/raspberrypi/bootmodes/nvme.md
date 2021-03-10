@@ -101,7 +101,7 @@ MESS:00:00:07.098682:0: Loading 'kernel8.img' to 0x80000 size 0x1441a00
 MESS:00:00:07.146055:0:[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd083]
 ```
 
-In linux the SSD appears as /dev/nvme0 and the “namespace” as /dev/nvme0n1. There will be two partitions /dev/nvme0n1p1 (FAT) and /dev/nvme0n1p2 (EXT4). Below we can see that NVMe is used for the boot partition and roofs "/". Run `lsblk`
+In linux the SSD appears as /dev/nvme0 and the “namespace” as /dev/nvme0n1. There will be two partitions /dev/nvme0n1p1 (FAT) and /dev/nvme0n1p2 (EXT4). Below we can see that NVMe is used for the boot partition and rootfs "/". Run `lsblk`
 
 
 ```
