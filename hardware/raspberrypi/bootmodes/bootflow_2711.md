@@ -1,15 +1,16 @@
 # Raspberry Pi4, Pi400 and CM4 bootflow
 
-This page describes the bootflow for BCM2711 based products. The main difference betweeen this and previous products is that the second stage bootloader (bootcode.bin) is loaded from an SPI flash [EEPROM](../booteeprom.md). 
+This page describes the bootflow for BCM2711 based products. The main difference betweeen this and previous products is that the second stage bootloader is loaded from an SPI flash [EEPROM](../booteeprom.md) on BCM2711 instead of the bootcode.bin file on previous chips.
 
 The bootflow for the ROM (first stage) is as follows:-
 
 * BCM2711 SoC powers up
-* Read OTP to determine if board model defined `nRPIBOOT` GPIO
+* Read OTP to determine if the `nRPIBOOT` GPIO is configured
 * If nRPIBOOT GPIO is high or OTP does NOT define `nRPIBOOT` GPIO 
-   * Check primary SD/EMMC for `recovery.bin`
-      * Success - run `recovery.bin`
-      * Fail - continue
+   * Check OTP to see if recovery.bin can be loaded from SD/EMMC
+      * If SD recovery.bin is enabled then check primary SD/EMMC for `recovery.bin`
+         * Success - run `recovery.bin`
+         * Fail - continue
    * Check SPI EEPROM for second stage loader
       * Success - run second stage bootloader 
       * Fail - continue
@@ -47,12 +48,11 @@ Please see the [bootloader configuration](../bcm2711_bootloader_config.md) page 
    * else if boot-mode == `SD CARD`
       * Attempt to load firmware from the SD card
          * Success - run the firmware
-         * Failure - continue
-   * else if boot-mode == `NETWORK`
-      * If boot-mode == `NETWORK` then 
-         * Use DHCP protocol to request IP address
-         * Load firmware from the DHCP or statically defined TFTP server
-         * If the firmware is not found or a timeout or network error occurs then continue
+         * Failure - continue   
+   * If boot-mode == `NETWORK` then 
+      * Use DHCP protocol to request IP address
+      * Load firmware from the DHCP or statically defined TFTP server
+      * If the firmware is not found or a timeout or network error occurs then continue
    * else if boot-mode == `USB-MSD` or boot-mode == `USB-BCM-MSD` then
       * While USB discover has not timed out 
          * Check for USB mass storage devices
@@ -61,7 +61,14 @@ Please see the [bootloader configuration](../bcm2711_bootloader_config.md) page 
                * Attempt to load firmware
                   * Success - run the firmware
                   * Failed - advance to next LUN
+   * else if boot-mode == `NVME` then
+      * Scan PCI for an NVMe device and if found
+         * Attempt to load firmware from the NVMe device
+            * Success - run the firmware
+            * Failure - continue            
    * else if boot-mode == `RPIBOOT` then
       * Attempt to load firmware using USB device mode from the USB OTG port- see [usbboot](https://github.com/raspberrypi/usbboot).
         There is no timeout for RPIBOOT mode.
          
+## Bootloader self-update
+Since the ROM can only loader `recovery.bin` from the SD/EMMC the second stage bootloader has the ability to update the EEPROM itself. This is enabled for USB, Network and NVMe boot modes unless `ENABLE_SELF_UPDATE=0` in the [bootloader configuration](../bcm2711_bootloader_config.md).
