@@ -15,7 +15,7 @@ The bootflow for the ROM (first stage) is as follows:-
       * Success - run second stage bootloader 
       * Fail - continue
 * While True
-   * Attempt to load recovery.bin from [USB device boot](../computemodule/cm-emmc-flashing.md)
+   * Attempt to load recovery.bin from [USB device boot](../../computemodule/cm-emmc-flashing.md)
       * Success - run `recovery.bin`
       * Fail - retry USB device boot
 
@@ -49,11 +49,11 @@ Please see the [bootloader configuration](../bcm2711_bootloader_config.md) page 
       * Attempt to load firmware from the SD card
          * Success - run the firmware
          * Failure - continue   
-   * If boot-mode == `NETWORK` then 
+   * else if boot-mode == `NETWORK` then 
       * Use DHCP protocol to request IP address
       * Load firmware from the DHCP or statically defined TFTP server
       * If the firmware is not found or a timeout or network error occurs then continue
-   * else if boot-mode == `USB-MSD` or boot-mode == `USB-BCM-MSD` then
+   * else if boot-mode == `USB-MSD` or boot-mode == `BCM-USB-MSD` then
       * While USB discover has not timed out 
          * Check for USB mass storage devices
          * If a new mass storage device is found then
@@ -71,4 +71,4 @@ Please see the [bootloader configuration](../bcm2711_bootloader_config.md) page 
         There is no timeout for RPIBOOT mode.
          
 ## Bootloader self-update
-Since the ROM can only loader `recovery.bin` from the SD/EMMC the second stage bootloader has the ability to update the EEPROM itself. This is enabled for USB, Network and NVMe boot modes unless `ENABLE_SELF_UPDATE=0` in the [bootloader configuration](../bcm2711_bootloader_config.md).
+Since the ROM can only load `recovery.bin` from the SD/EMMC the second stage bootloader has the ability to update the EEPROM itself. This is enabled for USB, Network and NVMe boot modes unless `ENABLE_SELF_UPDATE=0` in the [bootloader configuration](../bcm2711_bootloader_config.md).
