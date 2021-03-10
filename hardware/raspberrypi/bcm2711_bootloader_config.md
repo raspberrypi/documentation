@@ -50,6 +50,7 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 |  0x3  |  RPIBOOT     |  RPIBOOT -  See [usbboot](https://github.com/raspberrypi/usbboot)  (since 2020-09-03)             |
 |  0x4  |  USB-MSD     |  USB mass storage boot (since 2020-09-03)                                                         |
 |  0x5  |  BCM-USB-MSD |  USB 2.0 boot from USB Type-C socket or USB Type-A socket on CM4 IO board.     (since 2020-12-14) |
+|  0x6  |  NVME        |  Boot from an NVMe SSD connected to the PCIe socket (CM4 only). See [NVMe boot](bootmodes/nvme.md) for more details
 |  0xe  |  STOP        |  Stop and display error pattern (since 2020-09-03). A power cycle is required to exit this state. |
 |  0xf  |  RESTART     |  Start again with the first boot order field. (since 2020-09-03)                                  |
 
