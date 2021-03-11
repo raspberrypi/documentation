@@ -36,9 +36,9 @@ Please see the [bootloader configuration](../bcm2711_bootloader_config.md) page 
    * Check `POWER_OFF_ON_HALT` and `WAKE_ON_GPIO` EEPROM configuration settings.
    * If `POWER_OFF_ON_HALT` is `1` and `WAKE_ON_GPIO` is `0` then
       * Use PMIC to power off system
-   * else
-      * While GPIO3 is high OR `WAKE_ON_GPIO` is `0`
-         * sleep
+   * else if `WAKE_ON_GPIO` is `1`
+      * Enable fall-edge interrupts on GPIO3 to wake-up if GPIO3 is pulled low   
+   * sleep
 * While True
    * Read the next boot-mode from the BOOT_ORDER parameter in the EEPROM config file.
    * If boot-mode == `RESTART`
