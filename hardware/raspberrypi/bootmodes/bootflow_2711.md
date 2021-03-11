@@ -24,7 +24,7 @@ N.B. Currently only CM4 reserves a GPIO for `nRPIBOOT`.
 ## recovery.bin
 `recovery.bin` is a minimal second stage program used to reflash the bootloader SPI EEPROM image.
 
-# Second stage bootloader 
+## Second stage bootloader 
 
 This section describes the high-level flow of the second stage bootloader.
 
