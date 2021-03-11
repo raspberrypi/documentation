@@ -2,7 +2,7 @@
 
 You can use SSH to connect to your Raspberry Pi from a Windows 10 computer that is using *October 2018 Update* or later without having to use third-party clients.
 
-If you haven't already done so, go to Settings > Apps > Apps & features > Manage optional features > Add a feature, and choose to install *OpenSSH Client*.
+If you haven't already done so, go to Settings > Apps > Apps & Features > Optional Features > Search for OpenSSH Client in the text field, and choose to install *OpenSSH Client*.
 
 You will need to know your Raspberry Pi's IP address to connect to it. To find this, type `hostname -I` from your Raspberry Pi terminal.
 
