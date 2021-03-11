@@ -32,24 +32,24 @@ sed -i 's/\(BOOT_ORDER=.*\)6\(.*\)/\1\26/' boot.conf
 cd ..
 ```
 
-You can then update your bootloader to support NVMe boot with the following command, `./rpiboot -d nvme/`
+You can then update your bootloader to support NVMe boot with the following command, `./rpiboot -d nvme`
 
 ```
-Loading: nvme//bootcode4.bin
+Loading: nvme/bootcode4.bin
 Waiting for BCM2835/6/7/2711...
-Loading: nvme//bootcode4.bin
+Loading: nvme/bootcode4.bin
 Sending bootcode.bin
 Successful read 4 bytes
 Waiting for BCM2835/6/7/2711...
-Loading: nvme//bootcode4.bin
+Loading: nvme/bootcode4.bin
 Second stage boot server
-Loading: nvme//config.txt
+Loading: nvme/config.txt
 File read: config.txt
-Loading: nvme//pieeprom.bin
-Loading: nvme//pieeprom.bin
-Loading: nvme//pieeprom.sig
+Loading: nvme/pieeprom.bin
+Loading: nvme/pieeprom.bin
+Loading: nvme/pieeprom.sig
 File read: pieeprom.sig
-Loading: nvme//pieeprom.bin
+Loading: nvme/pieeprom.bin
 File read: pieeprom.bin
 Second stage boot server done
 ```
@@ -122,7 +122,7 @@ cd usbboot/nvme
 sed -i 's/BOOT_UART=0/BOOT_UART=1/' boot.conf
 ./update-pieeprom.sh
 cd ..
-./rpiboot -d nvme/
+./rpiboot -d nvme
 ```
 
 Enable UART logging in `/boot/config.txt` to allow you to capture logs from the serial port.
