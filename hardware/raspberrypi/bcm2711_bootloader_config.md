@@ -310,10 +310,10 @@ Default: `1` (`0` in versions prior to 2020-09-03)
 Before using USB and network boot, it is advisable to update the operating system to the latest version. 
 
 ## Selecting the boot mode
-Pi 400 and newer Raspberry Pi 4B boards support USB boot by default. In order to enable USB boot on earlier boards, or to select alternate boot modes, the bootloader configuration must be updated.
+Pi 400 and newer Raspberry Pi 4B boards support USB boot by default. On earlier Pi4B boards, or to select alternate boot modes, the bootloader must be updated.
 
 ### Using Raspberry Pi Imager to update the bootloader (recommended)
-Raspberry Pi Imager provides a GUI for creating SD cards image to update the bootloader
+Raspberry Pi Imager provides a GUI for updating the bootloader
 
 1. Download [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/)
 2. Select a spare SD card. The contents will get overwritten!
@@ -324,7 +324,7 @@ Raspberry Pi Imager provides a GUI for creating SD cards image to update the boo
 7. Select `SD card` and then `Write`
 
 ### Using raspi-config to update the bootloader from within Raspberry Pi OS
-To change the boot-mode or bootloader version from within Raspberry Pi OS run [rapsi-config](../../configuration/raspi-config.md)
+To change the boot-mode or bootloader version from within Raspberry Pi OS run [raspi-config](../../configuration/raspi-config.md)
 
 1. Run `sudo raspi-config`
 2. Select `Advanced Options`
@@ -333,7 +333,7 @@ To change the boot-mode or bootloader version from within Raspberry Pi OS run [r
 5. Reboot
 
 ### Custom boot-order
-The `rpi-eeprom-config` utility has an editor mode which can be used to make quick changes to the EEPROM config file. Use this to defined the `BOOT_ORDER` setting directly
+The `rpi-eeprom-config` utility has an editor mode which can be used to make quick changes to the EEPROM config file. Use this to define the `BOOT_ORDER` setting directly
 
 ```
 sudo apt update
