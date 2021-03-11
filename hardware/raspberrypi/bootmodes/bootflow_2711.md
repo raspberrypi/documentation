@@ -9,14 +9,14 @@ The bootflow for the ROM (first stage) is as follows:-
 * If nRPIBOOT GPIO is high or OTP does NOT define `nRPIBOOT` GPIO 
    * Check OTP to see if recovery.bin can be loaded from SD/EMMC
       * If SD recovery.bin is enabled then check primary SD/EMMC for `recovery.bin`
-         * Success - run `recovery.bin`
+         * Success - run `recovery.bin` and update the SPI EEPROM
          * Fail - continue
    * Check SPI EEPROM for second stage loader
       * Success - run second stage bootloader 
       * Fail - continue
 * While True
    * Attempt to load recovery.bin from [USB device boot](../../computemodule/cm-emmc-flashing.md)
-      * Success - run `recovery.bin`
+      * Success - run `recovery.bin` and update the SPI EEPROM or switch to USB mass storage device mode
       * Fail - retry USB device boot
 
 N.B. Currently only CM4 reserves a GPIO for `nRPIBOOT`
@@ -62,7 +62,7 @@ Please see the [bootloader configuration](../bcm2711_bootloader_config.md) page 
                   * Success - run the firmware
                   * Failed - advance to next LUN
    * else if boot-mode == `NVME` then
-      * Scan PCI for an NVMe device and if found
+      * Scan PCIe for an NVMe device and if found
          * Attempt to load firmware from the NVMe device
             * Success - run the firmware
             * Failure - continue            
@@ -70,5 +70,5 @@ Please see the [bootloader configuration](../bcm2711_bootloader_config.md) page 
       * Attempt to load firmware using USB device mode from the USB OTG port- see [usbboot](https://github.com/raspberrypi/usbboot).
         There is no timeout for RPIBOOT mode.
          
-## Bootloader self-update
-Since the ROM can only load `recovery.bin` from the SD/EMMC the second stage bootloader has the ability to update the EEPROM itself. This is enabled for USB, Network and NVMe boot modes unless `ENABLE_SELF_UPDATE=0` in the [bootloader configuration](../bcm2711_bootloader_config.md).
+## Bootloader updates
+The bootloader may also be updated before the firmware is started if a `pieeprom.upd` file is found. Please see the [bootloader eeprom](../booteeprom.md) page for more information about bootloader updates.
