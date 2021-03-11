@@ -6,8 +6,8 @@ The bootflow for the ROM (first stage) is as follows:-
 
 * BCM2711 SoC powers up
 * Read OTP to determine if the `nRPIBOOT` GPIO is configured
-* If nRPIBOOT GPIO is high or OTP does NOT define `nRPIBOOT` GPIO 
-   * Check OTP to see if recovery.bin can be loaded from SD/EMMC
+* If `nRPIBOOT` GPIO is high or OTP does NOT define `nRPIBOOT` GPIO 
+   * Check OTP to see if `recovery.bin` can be loaded from SD/EMMC
       * If SD recovery.bin is enabled then check primary SD/EMMC for `recovery.bin`
          * Success - run `recovery.bin` and update the SPI EEPROM
          * Fail - continue
@@ -37,8 +37,8 @@ Please see the [bootloader configuration](../bcm2711_bootloader_config.md) page 
    * If `POWER_OFF_ON_HALT` is `1` and `WAKE_ON_GPIO` is `0` then
       * Use PMIC to power off system
    * else
-      * While GPIO3 is high OR `WAKE_ON_GPIO` is 1
-         Sleep
+      * While GPIO3 is high OR `WAKE_ON_GPIO` is `1`
+         * sleep
 * While True
    * Read the next boot-mode from the BOOT_ORDER parameter in the EEPROM config file.
    * If boot-mode == `RESTART`
@@ -68,7 +68,7 @@ Please see the [bootloader configuration](../bcm2711_bootloader_config.md) page 
             * Failure - continue            
    * else if boot-mode == `RPIBOOT` then
       * Attempt to load firmware using USB device mode from the USB OTG port- see [usbboot](https://github.com/raspberrypi/usbboot).
-        There is no timeout for RPIBOOT mode.
+        There is no timeout for `RPIBOOT` mode.
          
 ## Bootloader updates
 The bootloader may also be updated before the firmware is started if a `pieeprom.upd` file is found. Please see the [bootloader eeprom](../booteeprom.md) page for more information about bootloader updates.
