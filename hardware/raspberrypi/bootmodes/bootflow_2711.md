@@ -2,6 +2,8 @@
 
 This page describes the bootflow for BCM2711-based products. The main difference betweeen this and previous products is that the second stage bootloader is loaded from an SPI flash [EEPROM](../booteeprom.md) instead of the `bootcode.bin` file on previous products.
 
+## First stage bootloader
+
 The bootflow for the ROM (first stage) is as follows:-
 
 * BCM2711 SoC powers up
