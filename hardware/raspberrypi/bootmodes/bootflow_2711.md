@@ -1,4 +1,4 @@
-# Raspberry Pi 4, 400 and CM4 bootflow
+# Raspberry Pi 4B, 400 and CM4 bootflow
 
 This page describes the bootflow for BCM2711-based products. The main difference betweeen this and previous products is that the second stage bootloader is loaded from an SPI flash [EEPROM](../booteeprom.md) instead of the bootcode.bin file on previous products.
 
