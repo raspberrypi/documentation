@@ -30,7 +30,7 @@ N.B. Currently only CM4 reserves a GPIO for `nRPIBOOT`.
 
 This section describes the high-level flow of the second stage bootloader.
 
-Please see the [bootloader configuration](../bcm2711_bootloader_config.md) page for more information about each boot-mode and the [boot folder](../../../configuration/boot_folder.md) page for a description of the GPU firmware files loaded by this stage.
+Please see the [bootloader configuration](../bcm2711_bootloader_config.md) page for more information about each boot mode and the [boot folder](../../../configuration/boot_folder.md) page for a description of the GPU firmware files loaded by this stage.
 
 * Initialise clocks and SDRAM
 * Read the EEPROM configuration file
