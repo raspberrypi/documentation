@@ -1,6 +1,6 @@
-# Raspberry Pi4, Pi400 and CM4 bootflow
+# Raspberry Pi 4, 400 and CM4 bootflow
 
-This page describes the bootflow for BCM2711 based products. The main difference betweeen this and previous products is that the second stage bootloader is loaded from an SPI flash [EEPROM](../booteeprom.md) on BCM2711 instead of the bootcode.bin file on previous chips.
+This page describes the bootflow for BCM2711-based products. The main difference betweeen this and previous products is that the second stage bootloader is loaded from an SPI flash [EEPROM](../booteeprom.md) instead of the bootcode.bin file on previous products.
 
 The bootflow for the ROM (first stage) is as follows:-
 
@@ -19,12 +19,12 @@ The bootflow for the ROM (first stage) is as follows:-
       * Success - run `recovery.bin` and update the SPI EEPROM or switch to USB mass storage device mode
       * Fail - retry USB device boot
 
-N.B. Currently only CM4 reserves a GPIO for `nRPIBOOT`
+N.B. Currently only CM4 reserves a GPIO for `nRPIBOOT`.
 
 ## recovery.bin
 `recovery.bin` is a minimal second stage program used to reflash the bootloader SPI EEPROM image.
 
-# Second stage bootloader 
+## Second stage bootloader 
 
 This section describes the high-level flow of the second stage bootloader.
 
@@ -67,8 +67,7 @@ Please see the [bootloader configuration](../bcm2711_bootloader_config.md) page 
             * Success - run the firmware
             * Failure - continue            
    * else if boot-mode == `RPIBOOT` then
-      * Attempt to load firmware using USB device mode from the USB OTG port- see [usbboot](https://github.com/raspberrypi/usbboot).
-        There is no timeout for `RPIBOOT` mode.
+      * Attempt to load firmware using USB device mode from the USB OTG port- see [usbboot](https://github.com/raspberrypi/usbboot). There is no timeout for `RPIBOOT` mode.
          
 ## Bootloader updates
 The bootloader may also be updated before the firmware is started if a `pieeprom.upd` file is found. Please see the [bootloader eeprom](../booteeprom.md) page for more information about bootloader updates.
