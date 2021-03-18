@@ -1,99 +1,100 @@
 # UART configuration
 
-There are two types of UART available on the Raspberry Pi -  [PL011](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0183g/index.html) and mini UART. The PL011 is a capable, broadly 16550-compatible UART, while the mini UART has a reduced feature set.
+A [UART](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter) is a serial communication device which uses one or more signal wires and a common ground to transmit and receive data between two devices. When computer people talk about 'serial ports', they usually mean UARTs. People from DOS/Windows background may know these as 'COM ports'.
 
-All UARTs on the Raspberry Pi are 3.3V only - damage will occur if they are connected to 5V systems. An adaptor can be used to connect to 5V systems. Alternatively, low-cost USB to 3.3V serial adaptors are available from various third parties.
+## Hardware
 
-## Pi Zero, 1, 2 and 3 - two UARTs
+On all Raspberry Pi computers except microcontrollers, there are at least two UARTs built into the [SoC](https://en.wikipedia.org/wiki/System_on_a_chip). The Raspberry Pi 4 family has six UARTs.
 
-The Raspberry Pi Zero, 1, 2, and 3 each contain two UARTs as follows:
+There are also two different types of UART devices available on the Raspberry Pi:
+* [PL011](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0183g/index.html) part of the ARM spec and is patterned on the full-featured [16550 UART](https://en.wikipedia.org/wiki/16550_UART) chip.
+* mini UART is patterned on the slightly older and less full-featured [8250 UART](https://en.wikipedia.org/wiki/8250_UART) chip.
 
-| Name | Type |
-|------|------|
-|UART0 |PL011 |
-|UART1 |mini UART |
+The naming/numbering of the UARTs can be confusing because they are listed one way in the Broadcom SoC documentation, and another way in Linux. Depending on the board features and configuration, either of the first two UARTs may appear on the same pins in the GPIO header, so you they aren't uniquely described by their locations either.
 
-## Pi 4 - six UARTS
+Broadcom gives each UART a name and number in their SoC documentation, and this is a good starting point.
 
-The Raspberry Pi 4 has four additional PL011s, which are disabled by default. The full list of UARTs on the Pi 4 is:
+| SoC | UART0 | UART1 | UART2 | UART3 | UART4 | UART5 |
+| --- | --- | --- | --- | --- | --- | --- |
+| BCM2835 | PL011 | mini UART |
+| BCM2836 | PL011 | mini UART |
+| BCM2837 | PL011 | mini UART |
+| BCM2711 | PL011 | mini UART | PL011 | PL011 | PL011 | PL011 |
 
-| Name | Type |
-|------|------|
-|UART0 |PL011 |
-|UART1 |mini UART |
-|UART2 |PL011 |
-|UART3 |PL011 |
-|UART4 |PL011 |
-|UART5 |PL011 |
+ See the [Raspberry Pi 4 Model B Datasheet](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711/rpi_DATA_2711_1p0_preliminary.pdf) section _5.1.2 GPIO Alternate Functions_, for details on exactly which UART can appear on which GPIO numbers. Earlier models are similar, but have only the first two UARTs. Take care to line up the numbers: TXD0 and RXD0 always belong to UART0, TXD1 to UART1 and so on. Also, remember that the GPIO numbering is on the CPU, and is different than the GPIO pin numbers on the 40-pin J8 header.
 
-## Primary UART
+Inside the Raspberry Pi, the UARTs are able to connect in several ways. UART0 and UART1 can connect to either the GPIO lines or the onboard Bluetooth module, if there is one. UARTs two through five connect to the GPIO lines and nowhere else.
 
-On the Raspberry Pi, one UART is selected to be present on GPIO 14 (transmit) and 15 (receive) - this is the primary UART. By default, this will also be the UART on which a Linux console may be present. Note that GPIO 14 is pin 8 on the GPIO header, while GPIO 15 is pin 10.
+### Voltages
 
-## Secondary UART
+All the onboard Raspberry Pi UARTs are 3.3V [logic level](https://en.wikipedia.org/wiki/Logic_level) only, sometimes called ['CMOS'](https://en.wikipedia.org/wiki/CMOS) level. Do not connect Raspberry Pi UARTs to 5V circuits, sometimes called ['TTL'](https://en.wikipedia.org/wiki/Transistor%E2%80%93transistor_logic) level, because the Raspberry Pi will be damaged. [RS-232](https://en.wikipedia.org/wiki/RS-232) uses +/- 12V signals, which are right out.
 
-The secondary UART is not normally present on the GPIO connector. By default, the secondary UART is connected to the Bluetooth side of the combined wireless LAN/Bluetooth controller, on models which contain this controller.
+There are chips called ['level shifters'](https://en.wikipedia.org/wiki/Level_shifter) which convert voltages between levels. You can find them either as individual ICs for using in your own designs, or integrated into other devices to make them compatible. They're inexpensive and readily available from third parties.
 
-## Configuration
+## Software support
 
-By default, only UART0 is enabled. The following table summarises the assignment of the first two UARTs:
+Raspberry Pi OS has built-in drivers for the UARTs built into the SoC, and common external types as well.
 
-| Model | first PL011 (UART0)| mini UART |
-|-------|-----------|-------|
-| Raspberry Pi Zero |  primary | secondary |
-| Raspberry Pi Zero W | secondary (Bluetooth) | primary |
-| Raspberry Pi 1 | primary | secondary |
-| Raspberry Pi 2 | primary | secondary |
-| Raspberry Pi 3 | secondary (Bluetooth) | primary |
-| Raspberry Pi 4 | secondary (Bluetooth) | primary |
+The PL011 devices will appear as [character devices](https://en.wikipedia.org/wiki/Device_file#Character_devices) with names like `/dev/ttyAMA*`. If there are multiple PL011s, they're in the same _order_ as the Broadcom documentation, but not necessarily the same _number_. The mini UART always appears as character device named `/dev/ttyS0`, and there is never more than one. If you want to be specific about which hardware type you're using, use the `/dev/ttyAMA*` and `/dev/ttyS0` names.
 
-Note: the mini UART is disabled by default, whether it is designated primary or secondary UART.
+There are also be symbolic links with names like `/dev/serial*`. If a UART is enabled and configured to appear on pins 8 and 10 of the GPIO header, `/dev/serial0` will link to that UART. If a UART is enabled and configured to connect to the onboard Bluetooth module, `/dev/serial1` links to that one. If you want to be specific about where a UART is connected, use the `/dev/serial*` names.
 
-Linux devices on Raspberry Pi OS:
+The Linux device management system chooses which hardware UARTs are connected to the GPIO pins and creates the `/dev/serial*` symlinks. By default, if there is an onboard Bluetooth module, it gets UART0 and the GPIO header gets UART1. If there is no Bluetooth, the GPIO header gets UART0. This behavior is configurable and can be changed with device tree overlays.
 
-| Linux device | Description |
-|--------------|-------------|
-|`/dev/ttyS0`  |mini UART    |
-|`/dev/ttyAMA0`|first PL011 (UART0) |
-|`/dev/serial0` |primary UART |
-|`/dev/serial1` |secondary UART |
+## Using the UARTs
 
-Note: `/dev/serial0` and `/dev/serial1` are symbolic links which point to either `/dev/ttyS0` or `/dev/ttyAMA0`.
+### Configuring the hardware
 
-## Mini UART and CPU core frequency
+There are several ways to configure the UART hardware.
 
-In order to use the mini UART, you need to configure the Raspberry Pi to use a fixed VPU core clock frequency. This is because the mini UART clock is linked to the VPU core clock, so that when the core clock frequency changes, the UART baud rate will also change. The `enable_uart` and `core_freq` settings can be added to `config.txt` to change the behaviour of the mini UART. The following table summarises the possible combinations:
+#### raspi-config
 
-| Mini UART set to | core clock | Result |
-|------------------|------------|--------|
-| primary UART     | variable   | mini UART disabled |
-| primary UART     | fixed by setting `enable_uart=1` | mini UART enabled, core clock fixed to 250MHz, or if `force_turbo=1` is set, the VPU turbo frequency |
-| secondary UART   | variable   | mini UART disabled |
-| secondary UART   | fixed by setting `core_freq=250` | mini UART enabled |
-
-The default state of the `enable_uart` flag depends on which UART is the primary UART:
-
-| Primary UART | Default state of enable_uart flag |
-|--------------|-----------------------------------|
-| mini UART    | 0 |
-| first PL011 (UART0)       | 1 |
-
-## Disable Linux serial console
-
-By default, the primary UART is assigned to the Linux console. If you wish to use the primary UART for other purposes, you must reconfigure Raspberry Pi OS. This can be done by using [raspi-config](raspi-config.md):
-
-1. Start raspi-config: `sudo raspi-config`.
+1. Start [raspi-config](raspi-config.md): `sudo raspi-config`.
 1. Select option 3 - Interface Options.
 1. Select option P6 - Serial Port.
-1. At the prompt `Would you like a login shell to be accessible over serial?` answer 'No'
-1. At the prompt `Would you like the serial port hardware to be enabled?` answer 'Yes'
+1. Answer the prompts according to your needs.
 1. Exit raspi-config and reboot the Pi for changes to take effect.
 
-## Enabling early console (earlycon) for Linux
+#### config.txt
+
+Adding `enable-uart=1` to `/boot/config.txt` should be enough to enable the first two UART ports.
+
+See [config.txt](config-txt/README.md) for more information.
+
+#### Device tree overlays
+
+Device tree overlays are also typically added in `/boot/config.txt` with lines like:
+```
+dtoverlay=disable-bt
+```
+However, device overlays are defined in the open-source [Linux source code](https://github.com/raspberrypi/linux). By contrast, the options available in config.txt are defined by the closed-source bootloader from Raspberry Pi and Broadcom. For full instructions on how to use Device Tree overlays see [this page](device-tree.md). Note that the `-overlay.dts` part of the filenames are removed.
+
+You can list the available device-tree overlays by running `dtoverlay -a`. Refer to `/boot/overlays/README` for details on Device Tree overlays, or run `dtoverlay -h overlay-name` for descriptions and usage information.
+
+These device-tree overlays are of interest:
+
+| Name | Purpose |
+|---|---|
+| disable-bt | Disable onboard Bluetooth, making UART0 available. |
+| miniuart-bt | Switch the onboard Bluetooth to UART1, making UART0 available. |
+| uart0 | Change the pin usage of UART0 |
+| uart1 | Change the pin usage of UART1 |
+| uart2 | Enable UART2 |
+| uart3 | Enable UART3 |
+| uart4 | Enable UART4 |
+| uart5 | Enable UART5 |
+
+### Serial console
+
+If configured, Raspberry Pi OS can present a login prompt and some system messages on `/dev/serial0` and the related GPIO header pins, 8 and 10. This arrangement is called a ['serial console'](https://en.wikipedia.org/wiki/System_console) and is a traditional way to access a computer that may not have its own human-interface hardware such as a keyboard, monitor, etc. For example, many network servers have serial consoles.
+
+The serial console can be enabled and disabled by answering "Yes" to raspi-config's prompt: `Would you like a login shell to be accessible over serial?`
+
+#### Enabling early console (earlycon) for Linux
 
 Although the Linux kernel starts the UARTs relatively early in the boot process, it is still long after some critical bits of infrastructure have been set up. A failure in those early stages can be hard to diagnose without access to the kernel log messages from that time. That's the problem that the "earlycon" mechanism was created to work around. Consoles that support earlycon usage present an additional interface to the kernel that allows for simple, synchronous output - printk won't return until the characters have been output to the UART.
 
-Enable earlycon with a kernel command line parameter - add one of the following to `cmdline.txt`, depending on which UART is the primary:
+Enable earlycon with a kernel command line parameter - add one of the following to `cmdline.txt`, depending on which UART is being used as the console:
 ```
 # For Pi 4 and Compute Module 4 (BCM2711)
 earlycon=uart8250,mmio32,0xfe215040
@@ -111,24 +112,37 @@ The baudrate is set to 115200.
 
 N.B. Selecting the wrong early console can prevent the Pi from booting.
 
-## UARTs and Device Tree
+### Raspberry Pi as terminal
 
-Various UART Device Tree overlay definitions can be found in the [kernel GitHub tree](https://github.com/raspberrypi/linux). The two most useful overlays are [`disable-bt`](https://github.com/raspberrypi/linux/blob/rpi-5.4.y/arch/arm/boot/dts/overlays/disable-bt-overlay.dts) and [`miniuart-bt`](https://github.com/raspberrypi/linux/blob/rpi-5.4.y/arch/arm/boot/dts/overlays/miniuart-bt-overlay.dts).
+A device you use to login to a serial console is called a ['terminal'](https://en.wikipedia.org/wiki/Computer_terminal). A Raspberry Pi can also act as a terminal, so you can actually login from one Raspberry Pi to another with just a few wires and no network! You just need to connect the two devices' grounds together, and then connect one's TXD to the other's RXD, and vice versa. No resistors or other special hardware are required.
 
-`disable-bt` disables the Bluetooth device and makes the first PL011 (UART0) the primary UART. You must also disable the system service that initialises the modem, so it does not connect to the UART, using `sudo systemctl disable hciuart`.
+Regardless of whether you're connecting to another Raspberry Pi or some other device, if you're going to use your Raspberry Pi as a terminal, you'll need to disable its serial console. Otherwise, your Raspberry Pi's own serial console will conflict with the terminal program.
 
-`miniuart-bt` switches the Bluetooth function to use the mini UART, and makes the first PL011 (UART0) the primary UART. Note that this may reduce the maximum usable baud rate (see mini UART limitations below). You must also set the VPU core clock to a fixed frequency using either `force_turbo=1` or `core_freq=250`.
+`sudo raspi-config` disables the serial console but leaves the serial port enabled if you answer 'No' to the question: `Would you like a login shell to be accessible over serial?` and 'Yes' to `Would you like the serial port hardware to be enabled?`
 
-The overlays `uart2`, `uart3`, `uart4`, and `uart5` are used to enable the four additional UARTs on the Pi 4. There are other UART-specific overlays in the folder. Refer to `/boot/overlays/README` for details on Device Tree overlays, or run `dtoverlay -h overlay-name` for descriptions and usage information.
+You can also manually edit `/boot/cmdline.txt` and remove the portion like `console=serial0,115200`. Don't mess with the part that says `console=tty1`－that says to output system messages to the video output.
 
-For full instructions on how to use Device Tree overlays see [this page](device-tree.md). In brief, add a line to the `config.txt` file to apply a Device Tree overlay. Note that the `-overlay.dts` part of the filename is removed. For example:
+Regardless of which method you use, you will need to be root or use `sudo` to change the settings, and reboot to let the changes take effect.
+
+There are a few programs that can open the serial port for you. These are called  ['terminal emulators'](https://en.wikipedia.org/wiki/Computer_terminal#Emulation). A simple one is called 'screen'.
+
+To install screen, run:
+```shell
+sudo apt update
+sudo apt install screen
 ```
-dtoverlay=disable-bt
-```
+
+With screen installed, you can run `screen /dev/serial0` to open the serial port. `CTRL-C` doesn't kill the terminal program, as it does most other programs. If it did, when you tried to kill a program on the remote computer, you'd accidentally kill your connection instead. So screen passes `CTRL-C` on to the remote computer. To close the connection and quit screen, press `CTRL-A` and then `k` (for kill) and confirm with `y`. For help, press `CTRL-A ?`.
+
+N.B: screen and any other terminal emulator show only the data that comes in through the UART. Therefore, the screen will be blank if there's no one on the other end of the line, or if they haven't transmitted anything.
 
 ## Relevant differences between PL011 and mini UART
 
-The mini UART has smaller FIFOs. Combined with the lack of flow control, this makes it more prone to losing characters at higher baudrates. It is also generally less capable than a PL011, mainly due to its baud rate link to the VPU clock speed.
+UARTs work by raising and lowering voltages with very precise timing, called the 'baud rate'. The mini UART measures time based on the CPU's core clock. If the core clock frequency is allowed to change, the mini UART's baud rate will change with it, and will not be what was intended.
+
+Therefore, using the mini UART requires configuring the Raspberry Pi to use a fixed CPU core clock frequency. There are several ways to fix the VPU core frequency. Either setting `enable_uart=1` or `core_freq=250` in `config.txt` will work.
+
+The mini UART also has smaller [FIFO buffers](https://en.wikipedia.org/wiki/Data_buffer#Telecommunication_buffer) than the PL011. Combined with the lack of flow control, this makes it more prone to losing characters at higher baud rates. It is also generally less capable than a PL011, mainly due to its baud rate link to the VPU clock speed.
 
 The particular deficiencies of the mini UART compared to a PL011 are :
 - No break detection
