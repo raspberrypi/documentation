@@ -32,3 +32,19 @@ sudo apt install xscreensaver
 This may take a few minutes.
 
 Once this has been installed, you can find the Screensaver application on the Preferences menu: it provides many options for setting up the screensaver, including disabling it completely.
+
+## Switching off the HDMI
+
+If you want to switch off the video display entirely, you can use this:
+
+```shell
+vcgencmd display_power 0
+```
+
+Video will not come back on until you reboot or switch it back on:
+
+```shell
+vcgencmd display_power 1
+```
+
+For more information, see the documentation for [vcgencmd](/documentation/raspbian/applications/vcgencmd.md).
