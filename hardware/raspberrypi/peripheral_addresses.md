@@ -4,7 +4,14 @@ If there is no kernel driver available, and a program needs to access a peripher
 
 `unsigned bcm_host_get_peripheral_address()`
 
-This returns the ARM-side physical address where peripherals are mapped. This is 0x20000000 on the Pi Zero, Pi Zero W, and the first generation of the Raspberry Pi and Compute Module, and 0x3f000000 on the Pi 2, Pi 3 and Compute Module 3.
+This returns the ARM-side physical address where peripherals are mapped. Values are as follows:
+
+| SoC | Peripheral Address | Source |
+| --- | --- | --- |
+| BCM2835 | 0x20000000 | [bcm2835.dtsi](https://github.com/raspberrypi/linux/blob/7f465f823c2ecbade5877b8bbcb2093a8060cb0e/arch/arm/boot/dts/bcm2835.dtsi#L21) |
+| BCM2836 | 0x3f000000 | [bcm2836.dtsi](https://github.com/raspberrypi/linux/blob/7f465f823c2ecbade5877b8bbcb2093a8060cb0e/arch/arm/boot/dts/bcm2836.dtsi#L10) |
+| BCM2837 | 0x3f000000 | [bcm2837.dtsi](https://github.com/raspberrypi/linux/blob/7f465f823c2ecbade5877b8bbcb2093a8060cb0e/arch/arm/boot/dts/bcm2837.dtsi#L9) |
+| BCM2711 | 0xfe000000 | [bcm2711.dtsi](https://github.com/raspberrypi/linux/blob/7f465f823c2ecbade5877b8bbcb2093a8060cb0e/arch/arm/boot/dts/bcm2711.dtsi#L41) |
 
 `unsigned bcm_host_get_peripheral_size()`
 
