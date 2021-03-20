@@ -4,7 +4,7 @@ There are two types of UART available on the Raspberry Pi -  [PL011](http://info
 
 All UARTs on the Raspberry Pi are 3.3V only - damage will occur if they are connected to 5V systems. An adaptor can be used to connect to 5V systems. Alternatively, low-cost USB to 3.3V serial adaptors are available from various third parties.
 
-## Pi Zero, 1, 2 and 3 - two UARTs
+## Pi Zero, 1, Compute Module 1, 2,  3 - two UARTs
 
 The Raspberry Pi Zero, 1, 2, and 3 each contain two UARTs as follows:
 
@@ -13,9 +13,9 @@ The Raspberry Pi Zero, 1, 2, and 3 each contain two UARTs as follows:
 |UART0 |PL011 |
 |UART1 |mini UART |
 
-## Pi 4 - six UARTS
+## Pi 4 and 400 - six UARTS
 
-The Raspberry Pi 4 has four additional PL011s, which are disabled by default. The full list of UARTs on the Pi 4 is:
+The Raspberry Pi 4B and 400 have four additional PL011s, which are disabled by default:
 
 | Name | Type |
 |------|------|
@@ -34,9 +34,9 @@ On the Raspberry Pi, one UART is selected to be present on GPIO 14 (transmit) an
 
 The secondary UART is not normally present on the GPIO connector. By default, the secondary UART is connected to the Bluetooth side of the combined wireless LAN/Bluetooth controller, on models which contain this controller.
 
-## Configuration
+## Primary / secondary UART assignments
 
-By default, only UART0 is enabled. The following table summarises the assignment of the first two UARTs:
+The following table summarises the assignment of the first two UARTs:
 
 | Model | first PL011 (UART0)| mini UART |
 |-------|-----------|-------|
@@ -91,25 +91,28 @@ By default, the primary UART is assigned to the Linux console. If you wish to us
 
 ## Enabling early console (earlycon) for Linux
 
-Although the Linux kernel starts the UARTs relatively early in the boot process, it is still long after some critical bits of infrastructure have been set up. A failure in those early stages can be hard to diagnose without access to the kernel log messages from that time. That's the problem that the "earlycon" mechanism was created to work around. Consoles that support earlycon usage present an additional interface to the kernel that allows for simple, synchronous output - printk won't return until the characters have been output to the UART.
+Although the Linux kernel starts the UARTs relatively early in the boot process, it is still long after some critical bits of infrastructure have been set up. A failure in those early stages can be hard to diagnose without access to the kernel log messages from that time. To enable earlycon support for one of the UARTs, add one of the following options to `cmdline.txt`, depending on which UART is the primary:
 
-Enable earlycon with a kernel command line parameter - add one of the following to `cmdline.txt`, depending on which UART is the primary:
+
+For Pi 4, 400 and Compute Module 4:
 ```
-# For Pi 4 and Compute Module 4 (BCM2711)
 earlycon=uart8250,mmio32,0xfe215040
 earlycon=pl011,mmio32,0xfe201000
+```
 
-# For Pi 2, Pi 3 and Compute Module 3 (BCM2836 & BCM2837)
+For Pi 2, Pi 3 and Compute Module 3:
+```
 earlycon=uart8250,mmio32,0x3f215040
 earlycon=pl011,mmio32,0x3f201000
-
-# For Pi 1, Pi Zero and Compute Module (BCM2835)
+```
+For Pi 1, Pi Zero and Compute Module:
+```
 earlycon=uart8250,mmio32,0x20215040
 earlycon=pl011,mmio32,0x20201000
 ```
-The baudrate is set to 115200.
+The baudrate defaults to 115200bps.
 
-N.B. Selecting the wrong early console can prevent the Pi from booting.
+**Note:** Selecting the wrong early console can prevent the Pi from booting.
 
 ## UARTs and Device Tree
 
