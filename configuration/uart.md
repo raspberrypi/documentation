@@ -4,7 +4,7 @@ There are two types of UART available on the Raspberry Pi -  [PL011](http://info
 
 All UARTs on the Raspberry Pi are 3.3V only - damage will occur if they are connected to 5V systems. An adaptor can be used to connect to 5V systems. Alternatively, low-cost USB to 3.3V serial adaptors are available from various third parties.
 
-## Pi Zero, 1, Compute Module 1, 2,  3 - two UARTs
+## Pi Zero, 1, 2 and 3 - two UARTs
 
 The Raspberry Pi Zero, 1, 2, and 3 each contain two UARTs as follows:
 
