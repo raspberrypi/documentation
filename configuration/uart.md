@@ -26,6 +26,14 @@ The Raspberry Pi 4B and 400 have four additional PL011s, which are disabled by d
 |UART4 |PL011 |
 |UART5 |PL011 |
 
+## Compute Module, Compute Module 3, Compute Module 3+ and Compute Module 4
+
+On compute modules, the UARTs are disabled by default and must be explicitly enabled using a device tree overlay, and specifying which GPIO pins to use for the interface, for example:
+
+```
+dtoverlay=uart1,txd1_pin=32,rxd1_pin=33
+```
+
 ## Primary UART
 
 On the Raspberry Pi, one UART is selected to be present on GPIO 14 (transmit) and 15 (receive) - this is the primary UART. By default, this will also be the UART on which a Linux console may be present. Note that GPIO 14 is pin 8 on the GPIO header, while GPIO 15 is pin 10.
