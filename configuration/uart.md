@@ -28,7 +28,9 @@ The Raspberry Pi 4B and 400 have four additional PL011s, which are disabled by d
 
 ## Compute Module, Compute Module 3, Compute Module 3+ and Compute Module 4
 
-On compute modules, the UARTs are disabled by default and must be explicitly enabled using a device tree overlay.  You must also specify which GPIO pins to use, for example:
+The first generation Compute Module, together with Compute Module 3 and Compute Module 3+ each have two UARTs, while Compute Module 4 has six UARTs as described above.
+
+On all models of compute module, the UARTs are disabled by default and must be explicitly enabled using a device tree overlay. You must also specify which GPIO pins to use, for example:
 
 ```
 dtoverlay=uart1,txd1_pin=32,rxd1_pin=33
