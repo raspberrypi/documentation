@@ -20,7 +20,7 @@ Raspberry Pi Imager provides a GUI for updating the bootloader
 7. Select Storage and then Write
 
 ### Using raspi-config to update the bootloader from within Raspberry Pi OS
-To change the boot-mode from within Raspberry Pi OS run [raspi-config](../../configuration/raspi-config.md)
+To change the boot-mode from within Raspberry Pi OS run [raspi-config](../../../configuration/raspi-config.md)
 
 1. Run `sudo raspi-config`
 2. Select `Advanced Options`
