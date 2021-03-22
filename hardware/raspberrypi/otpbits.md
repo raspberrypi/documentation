@@ -43,7 +43,7 @@ This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext`
 36-43 - [customer OTP values](../industrial/README.md)   
 45 - MPG2 decode key   
 46 - WVC1 decode key   
-47-55 - Reserved for signed-boot on Compute Module 4
+47-55 - Reserved for signed-boot on Compute Module 4  
 64/65 – MAC address; if set, system will use this in preference to the automatically generated address based on the serial number    
 66 – advanced boot register (not BCM2711)
    - Bits 0-6: GPIO for ETH_CLK output pin
