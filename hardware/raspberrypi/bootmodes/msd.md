@@ -4,9 +4,9 @@
 
 This page explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or a USB hard disk. When attaching USB devices, particularly hard disks and SSDs, be mindful of their power requirements. If you wish to attach more than one SSD or hard disk to the Pi, this normally requires external power - either a powered hard disk enclosure, or a powered USB hub. Note that models prior to the Pi 4B have known issues which prevent booting with some USB devices.
 
-<a name="pi400"></a><a name="pi4"></a><a name="cm4"></a>
+<a name="pi400"></a><a name="pi4"></a>
 ## Raspberry Pi 4B and Raspberry Pi 400
-The Raspberry Pi Pi 400 and newer Raspberry Pi 4B boards support USB boot by default. On earlier Pi4B boards, or to select alternate boot modes, the bootloader must be updated.
+The Raspberry Pi Pi 400 and newer Raspberry Pi 4B boards support USB boot by default. On earlier Raspberry Pi 4B boards, or to select alternate boot modes, the bootloader must be updated.
 
 ### Using Raspberry Pi Imager to update the bootloader (recommended)
 Raspberry Pi Imager provides a GUI for updating the bootloader
@@ -17,10 +17,10 @@ Raspberry Pi Imager provides a GUI for updating the bootloader
 4. Select `Misc utility images` under `Operating System`
 5. Select `Bootloader`
 6. Select `USB`
-7. Select `SD card` and then `Write`
+7. Select Store and then Write
 
 ### Using raspi-config to update the bootloader from within Raspberry Pi OS
-To change the boot-mode or bootloader version from within Raspberry Pi OS run [raspi-config](../../configuration/raspi-config.md)
+To change the boot-mode from within Raspberry Pi OS run [raspi-config](../../configuration/raspi-config.md)
 
 1. Run `sudo raspi-config`
 2. Select `Advanced Options`
@@ -32,6 +32,7 @@ See also:-
 * The [bootloader configuration](../bcm2711_bootloader_config.md) page for other boot configuration options
 * The [bootloader EEPROM](../booteeprom.md) page for more information 
 
+<a name="cm4"></a>
 ## Compute Module 4
 Please see the [Flashing the Compute Module eMMC](../../computemodule/cm-emmc-flashing.md) for bootloader update instructions.
 
