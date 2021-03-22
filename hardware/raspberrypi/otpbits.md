@@ -22,14 +22,14 @@ This list contains the publicly available information on the registers. If a reg
    - Bit 28: enables USB device booting
    - Bit 29: enables USB host booting (ethernet and mass storage)  
 
-N.B. On BCM2711 the OS bootmode is defined by the [bootloader EEPROM configuration](bcm2711_bootloader_config.md) instead of OTP.
+N.B. On BCM2711 the bootmode is defined by the [bootloader EEPROM configuration](bcm2711_bootloader_config.md) instead of OTP.
 
 18 – copy of bootmode register   
 28 – serial number   
 29 – ~(serial number)   
 30 – [revision code](./revision-codes/README.md)<sup>1</sup>   
 33 - board revision extended - the meaning depends on the board model.   
-This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext` and for testing purpose the OTP value this can be temporarily overriden by setting `board_rev_ext` in `config.txt`.
+This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext` and for testing purposes this OTP value can be temporarily overriden by setting `board_rev_ext` in `config.txt`.
    - Compute Module 4
       - Bit 30: Whether the Compute Module has a WiFi module fitted
          - 0 - WiFi
