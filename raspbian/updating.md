@@ -30,7 +30,8 @@ Note that `full-upgrade` is used in preference to a simple `upgrade`, as it also
 
 Generally speaking, doing this regularly will keep your installation up to date for the particular major Raspberry Pi OS release you are using (e.g. Stretch). It will not update from one major release to another, for example, Stretch to Buster.
 
-Also make sure the repository link is not using plain http but actually more secure communication over https. https://archive.raspberrypi.org/debian/
+The default repository link is using basic http protocol but it could be switched to use communication over https. https://archive.raspberrypi.org/debian/
+Raspbian packages are digitally signed in any case but https is perceived more private albeit http connections allow for easier caching in school networks.
 
 However, there are occasional changes made in the Foundation's Raspberry Pi OS image that require manual intervention, for example a newly introduced package. These are not installed with an upgrade, as this command only updates the packages you already have installed.
 
