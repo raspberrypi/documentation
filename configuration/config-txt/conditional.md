@@ -18,15 +18,17 @@ It is usually a good idea to add an `[all]` filter at the end of groups of filte
 
 The conditional model filters are applied according to the following table.
 
-| Filter | Applicable model(s) |
-|--------|------------------|
-| [pi1] | Model A, Model B, Compute Module |
-| [pi2] | Model 2B (BCM2836- or BCM2837-based) |
-| [pi3] | Model 3B, Model 3B+, Model 3A+, Compute Module 3 |
-| [pi3+]| Model 3A+, Model 3B+ |
-| [pi4]| Model 4B |
-| [pi0] | Zero, Zero W, Zero WH |
-| [pi0w]| Zero W, Zero WH |
+| Filter  | Applicable model(s) |
+|---------|------------------|
+| [pi1]   | Model A, Model B, Compute Module |
+| [pi2]   | Model 2B (BCM2836- or BCM2837-based) |
+| [pi3]   | Model 3B, Model 3B+, Model 3A+, Compute Module 3 |
+| [pi3+]  | Model 3A+, Model 3B+ |
+| [pi4]   | Model 4B |
+| [pi400] | Pi 400 |
+| [cm4]   | Compute Module 4 |
+| [pi0]   | Zero, Zero W, Zero WH |
+| [pi0w]  | Zero W, Zero WH |
 
 These are particularly useful for defining different `kernel`, `initramfs`, and `cmdline` settings, as the Pi 1 and Pi 2 require different kernels. They can also be useful to define different overclocking settings, as the Pi 1 and Pi 2 have different default speeds. For example, to define separate `initramfs` images for each:
 
