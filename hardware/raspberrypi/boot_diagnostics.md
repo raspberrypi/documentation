@@ -15,7 +15,7 @@ The diagnostic information is as follows:
 | Line: | Information |
 | ---- | ----------- |
 | bootloader | Bootloader version - build date |
-| board      | Board revision - Serial Number - Ethernet MAC address | 
+| board      | Board revision - Serial Number - Ethernet MAC address |
 | boot       | mode: (ROM boot mode - 6 SPI), order: EEPROM config [BOOT_ORDER](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711_bootloader_config.md), RSTS: PM_RSTS register |
 | SD CID	   | SD Card Identifier defined by SD-CARD manufacturer |
 | part	     | Master Boot Record primary partitions type:LBA |
@@ -24,6 +24,6 @@ The diagnostic information is as follows:
 | tftp       | Network boot: TFTP server IP address|
 
 
-This display can be disabled using the DISABLE_HDMI option, see [Pi4 Bootloader Configuration](./bcm2711_bootloader_config.md).
+This display can be disabled using the `DISABLE_HDMI` option, see [Bootloader Configuration](./bcm2711_bootloader_config.md).
 
 N.B. This is purely for diagnosing boot failures; it is not an interactive bootloader. If you require an interactive bootloader, consider using a tool such as NOOBS or U-Boot.
