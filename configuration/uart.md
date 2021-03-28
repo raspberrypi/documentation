@@ -17,23 +17,23 @@ The naming and numbering of the UARTs can be confusing because they use differen
 | BCM2837 | PL011 | mini UART |
 | BCM2711 | PL011 | mini UART | PL011 | PL011 | PL011 | PL011 |
 
-Inside the Raspberry Pi, the UARTs are able to connect in several ways. UART0 and UART1 can connect to either the GPIO lines, or the onboard Bluetooth module, if there is one. UARTs two through five connect to the GPIO lines and nowhere else.
+Inside the Raspberry Pi, the UARTs are able to connect in several ways. UART0 and UART1 can connect to either the GPIO header, or the onboard Bluetooth module, if there is one. UARTs two through five can be enabled and disabled, but have no alternate connections.
 
 See the [Raspberry Pi 4 Model B Datasheet](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711/rpi_DATA_2711_1p0_preliminary.pdf) section _5.1.2 GPIO Alternate Functions_, for pinout details. Earlier models are similar but with only the first two UARTs.
 
 ### Voltages
 
-All the onboard Raspberry Pi UARTs are 3.3V ([CMOS](https://en.wikipedia.org/wiki/CMOS) [logic level](https://en.wikipedia.org/wiki/Logic_level)). Do not connect Raspberry Pi UARTs to 5V ([TTL logic level](https://en.wikipedia.org/wiki/Transistor%E2%80%93transistor_logic)) circuits, because the Raspberry Pi will be damaged. [Level shifters](https://en.wikipedia.org/wiki/Level_shifter) are inexpensive and readily available.
+All the onboard Raspberry Pi UARTs are made for 3.3V [logic levels](https://en.wikipedia.org/wiki/Logic_level)). Do not connect Raspberry Pi to any devices that output 5V signals, because they will damage the Raspberry Pi.
 
 ## Software support
 
-Raspberry Pi OS ships with drivers for the onboard UARTs.
+Raspberry Pi OS has built-in drivers for the onboard UARTs.
 
-PL011s appear as [character devices](https://en.wikipedia.org/wiki/Device_file#Character_devices) `/dev/ttyAMA*`. If there are multiple PL011s, they're in the same _order_ as the Broadcom documentation, but not necessarily the same _number_. The mini UART always appears as `/dev/ttyS0`. If you want to be specific about hardware types, use the `/dev/ttyAMA*` and `/dev/ttyS0` names.
+If either of the UARTs is enabled and internally connected to the GPIO header, that UART is called `/dev/serial0`. Similarly, the UART connected to the Bluetooth module is `/dev/serial1`.
 
-There are also be symbolic links: `/dev/serial*`. If a UART is enabled and connected to pins 8 and 10 of the GPIO header, `/dev/serial0` will link to that UART. If a UART is enabled and connected to the onboard Bluetooth module, `/dev/serial1` links to that one. If you want to be specific about a UART connection, use the `/dev/serial*` names.
+The `/dev/serial*` files are symbolic links created by the Linux device management system, [udev](https://en.wikipedia.org/wiki/Udev). udev reads configuration from the device tree and creates the appropriate files. For each enabled PL011, a file like `/dev/ttyAMA*` is created. Their numbers will be in the same order as in the Broadcom hardware documentation, but given consecutive numbers starting at zero.
 
-The Linux device management system chooses which hardware UARTs are connected to the GPIO pins and creates the `/dev/serial*` symlinks. By default, if there is an onboard Bluetooth module, it gets UART0 and the GPIO header gets UART1. If there is no Bluetooth, the GPIO header gets UART0. This behavior is configurable and can be changed with device tree overlays.
+The mini UART is always `/dev/ttyS0` if it is enabled.
 
 ## Using the UARTs
 
@@ -55,7 +55,7 @@ dtoverlay=uart1,txd1_pin=32,rxd1_pin=33
 
 #### config.txt
 
-On most devices, adding `enable-uart=1` to `/boot/config.txt` should be enough to enable the first two UART ports. On compute modules, you must also add a device-tree overlay eo enable the particular UART you want to use.
+On most devices, adding `enable-uart=1` to `/boot/config.txt` should ensure that a UART is available on the GPIO header. On compute modules, you must also add a device-tree overlay eo enable the particular UART you want to use.
 
 See [config.txt](config-txt/README.md) for more information.
 
@@ -110,11 +110,11 @@ N.B. Selecting the wrong early console can prevent the Pi from booting.
 
 ### Raspberry Pi as terminal
 
-A Raspberry Pi can also act as a serial terminal, which can be used to connect to another device's serial console. You'll need to disable the terminal's serial console so that the serial console and terminal program won't conflict with each other.
+A Raspberry Pi can also use the onboard UARTs to act as a serial terminal, which can be used to connect to another Raspberry Pi's serial console, a modem, or other device. You'll need to disable the serial console to make the UART available for use.
 
 To use a Raspberry Pi as a serial terminal, you can use `sudo raspi-config`, answering 'No' to the question: `Would you like a login shell to be accessible over serial?` and 'Yes' to `Would you like the serial port hardware to be enabled?`
 
-Alternatively, you can also manually enable the UARTs and edit `/boot/cmdline.txt` to remove the portion like `console=serial0,115200`.
+Alternatively, you can manually enable the UARTs and edit `/boot/cmdline.txt` to remove the portion like `console=serial0,115200`.
 
 
 ## Relevant differences between PL011 and mini UART
