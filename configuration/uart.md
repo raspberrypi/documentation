@@ -55,7 +55,7 @@ dtoverlay=uart1,txd1_pin=32,rxd1_pin=33
 
 #### config.txt
 
-On most devices, adding `enable-uart=1` to `/boot/config.txt` should ensure that a UART is available on the GPIO header. On compute modules, you must also add a device-tree overlay eo enable the particular UART you want to use.
+On most devices, adding `enable-uart=1` to `/boot/config.txt` should ensure that a UART is available on the GPIO header. On compute modules, you must also add a device-tree overlay to enable the particular UART you want to use.
 
 See [config.txt](config-txt/README.md) for more information.
 
@@ -119,9 +119,9 @@ Alternatively, you can manually enable the UARTs and edit `/boot/cmdline.txt` to
 
 ## Relevant differences between PL011 and mini UART
 
-The mini UART measures time based on the CPU's core clock. If the core clock frequency is allowed to change, the mini UART's baud rate will change with it, and will not be what was intended.
+The mini UART measures time based on the VPU's core clock. If the core clock frequency is allowed to change, the mini UART's baud rate will change with it, and will not be what was intended.
 
-Therefore, using the mini UART requires configuring the Raspberry Pi to use a fixed CPU core clock frequency. There are several ways to fix the VPU core frequency. Either setting `enable_uart=1` or `core_freq=250` in `config.txt` will work.
+Therefore, using the mini UART requires configuring the Raspberry Pi to use a fixed VPU core clock frequency. There are several ways to fix the VPU core frequency. Either setting `enable_uart=1` or `core_freq=250` in `config.txt` will work.
 
 The mini UART also has smaller [FIFO buffers](https://en.wikipedia.org/wiki/Data_buffer#Telecommunication_buffer) than the PL011. Combined with the lack of flow control, this makes it more prone to losing characters at higher baud rates. It is also generally less capable than a PL011, mainly due to its baud rate link to the VPU clock speed.
 
