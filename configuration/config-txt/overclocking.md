@@ -25,7 +25,7 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches 85
 | over_voltage_sdram_p | SDRAM phy voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. |
 | force_turbo | Forces turbo mode frequencies even when the ARM cores are not busy. Enabling this may set the warranty bit if `over_voltage_*` is also set. |
 | initial_turbo | Enables turbo mode from boot for the given value in seconds, or until cpufreq sets a frequency. For more information [see here](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=6201&start=425#p180099). The maximum value is `60`. |
-| arm_freq_min | Minimum value of `arm_freq` used for dynamic frequency clocking. |
+| arm_freq_min | Minimum value of `arm_freq` used for dynamic frequency clocking. Note that reducing this value below the default does not result in any significant power savings and is not currently supported. |
 | core_freq_min | Minimum value of `core_freq` used for dynamic frequency clocking. |
 | gpu_freq_min | Minimum value of `gpu_freq` used for dynamic frequency clocking. |
 | h264_freq_min | Minimum value of `h264_freq` used for dynamic frequency clocking. |
