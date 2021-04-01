@@ -186,4 +186,13 @@ Once your Raspberry Pi has restarted, search for wireless networks with your wir
 
 If your wireless client has access to the local network and the internet, congratulations on setting up your new access point!
 
+<a name="routing-config"></a>
+## Allow traffic on br0 in your firewall
+Note that some firewalls DENY all traffic by default. You must enable traffic to enter and leave the just created `br0` interface.
+
+To enable traffic over `br0` using [ufw](https://en.wikipedia.org/wiki/Uncomplicated_Firewall), execute the following command:
+```
+sudo ufw route allow in on br0 out on br0 to any from any
+```
+
 If you encounter difficulties, contact the [forums](https://www.raspberrypi.org/forums/) for assistance. Please refer to this page in your message.
