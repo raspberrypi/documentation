@@ -18,7 +18,7 @@ When the connection works you will see a security/authenticity warning. Type `ye
 
 In the event your Pi has taken the IP address of a device to which your computer has connected before (even if this was on another network), you may be given a warning and asked to clear the record from your list of known devices. Following this instruction and trying the `ssh` command again should be successful.
 
-Next you will be prompted for the password for the `pi` login: the default password on Raspberry Pi OS is `raspberry`. For security reasons it is highly recommended to change the default password on the Raspberry Pi. You should now be able to see the Raspberry Pi prompt, which will be identical to the one found on the Raspberry Pi itself.
+Next you will be prompted for the password for the `pi` login: the default password on Raspberry Pi OS is `raspberry`. For security reasons it is highly recommended to change the default password on the Raspberry Pi (also, you can not login through ssh if the password is blank). You should now be able to see the Raspberry Pi prompt, which will be identical to the one found on the Raspberry Pi itself.
 
 If you have set up another user on the Raspberry Pi, you can connect to it in the same way, replacing the username with your own, e.g. `eben@192.168.1.5`
 
