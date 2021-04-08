@@ -1,5 +1,11 @@
 # NOOBS
 
+---
+**NOOBS has now been deprecated in favour of the [Raspberry Pi Imager](https://www.raspberrypi.org/software/) tool**  
+---
+
+
+
 **New Out Of Box Software (NOOBS)** is an easy operating system installation manager for the Raspberry Pi.
 
 ![NOOBS OS selection](images/noobs.png)
