@@ -374,7 +374,7 @@ It's also easy to copy files to and from Windows devices, rather than sharing fo
 <a name="pi-software-cpuinfo"></a>
 ### Why does `cpuinfo` report I have a BCM2835?
 
-The upstream Linux kernel developers had decided that all models of Raspberry Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that `cat /proc/cpuinfo` is inaccurate for the Raspberry Pi 2, Raspberry Pi 3 and Raspberry Pi 4, which use the bcm2836/bcm2837, bcm2837 and bcm2711 respectively. You can use `cat /proc/device-tree/model` to get an accurate description of the SoC on your Raspberry Pi model.
+The upstream Linux kernel developers had decided that all models of Raspberry Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that `cat /proc/cpuinfo` is inaccurate for the Raspberry Pi 2, Raspberry Pi 3 and Raspberry Pi 4, which use the bcm2836/bcm2837, bcm2837 and bcm2711 respectively. You can use `cat /proc/device-tree/model` to get an accurate description of the SoC on your Raspberry Pi model. See the [Raspberry Pi revision codes](../hardware/raspberrypi/revision-codes/README.md) for more information.
 
 <a name="pi-software-autostart"></a>
 ### How do I run a program at startup?
