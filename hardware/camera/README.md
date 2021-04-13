@@ -60,7 +60,7 @@ The Raspberry Pi Camera Modules are official products from the Raspberry Pi Foun
 
 ## Software features
 
-Full camera software documentation can be found [here](../../raspbian/applications/camera.md).
+Full camera legacy-software documentation can be found [here](../../raspbian/applications/camera.md). The newer `libcamera` approach to camera software is documented [here](../../linux/software/libcamera/README.md).
 
 | | |
 | --- | --- |
@@ -83,7 +83,7 @@ The HQ Camera uses a Hoya CM500 infrared filter. Its transmission characteristic
 
 - Camera Module v2 [PDF](mechanical/rpi_MECH_Camera2_2p1.pdf)
 - HQ Camera Module [PDF](mechanical/rpi_MECH_HQcamera_1p0.pdf)
-- HQ Camera Module lens mount[PDF](mechanical/rpi_MECH_HQcamera_lensmount_1p0.pdf)
+- HQ Camera Module lens mount [PDF](mechanical/rpi_MECH_HQcamera_lensmount_1p0.pdf)
   
 ## Schematics
 
