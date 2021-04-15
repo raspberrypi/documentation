@@ -1,6 +1,6 @@
 # Overclocking options in config.txt
 
-**NOTE:** Setting any overclocking parameters to values other than those used by [raspi-config](../raspi-config.md#overclock) may set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. The specific circumstances where the overclock bit is set are if `force_turbo` is set to `1` and any of the `over_voltage_*` options are set to a value > `0`. See the [blog post on Turbo Mode](https://www.raspberrypi.org/blog/introducing-turbo-mode-up-to-50-more-performance-for-free/) for more information. **Pi 4** overclocking options may be subject to change in the future.
+**NOTE:** Setting any overclocking parameters to values other than those used by [raspi-config](../raspi-config.md#overclock) may set a permanent bit within the SoC, making it possible to detect that your Pi has been overclocked. The specific circumstances where the overclock bit is set are if `force_turbo` is set to `1` and any of the `over_voltage_*` options are set to a value > `0`. See the [blog post on Turbo Mode](https://www.raspberrypi.org/blog/introducing-turbo-mode-up-to-50-more-performance-for-free/) for more information. 
 
 The kernel has a [CPUFreq](https://www.kernel.org/doc/html/latest/admin-guide/pm/cpufreq.html) driver with the "powersave" governor enabled by default, switched to "ondemand" during boot, when [raspi-config](../raspi-config.md) is installed. With "ondemand" governor, CPU frequency will vary with processor load. You can adjust the minimum values with the `*_min` config options or disable dynamic clocking by applying a static scaling governor ("powersave" or "performance") or with `force_turbo=1`. For more information [see this section of the documentation](../../hardware/raspberrypi/frequency-management.md).
 
@@ -39,22 +39,22 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches `t
 
 This table gives the default values for the options on various Raspberry Pi Models, all frequencies are stated in MHz.
 
-| Option       | Pi 0/W | Pi1 | Pi2 | Pi3   | Pi3A+/Pi3B+ | Pi4  |
-| ---          | :---:  | :---: | :---: | :----:  | :-----: | :----: |
-| arm_freq     | 1000   | 700 | 900 | 1200  | 1400  | 1500 |
-| core_freq    | 400    | 250 | 250 | 400   | 400   | 500/550/360 |
-| h264_freq    | 300    | 250 | 250 | 400   | 400   | 500/550/360 |
-| isp_freq     | 300    | 250 | 250 | 400   | 400   | 500/550/360 |
-| v3d_freq     | 300    | 250 | 250 | 400   | 400   | 500/550/360 |
-| hevc_freq    | N/A    | N/A | N/A | N/A   | N/A   | 500/550/360 |
-| sdram_freq   | 450    | 400 | 450 | 450   | 500   | 3200 |
-| arm_freq_min | 700    | 700 | 600 | 600   | 600   | 600  |
-| core_freq_min| 250    | 250 | 250 | 250   | 250   | 250/275 |
-| gpu_freq_min | 250    | 250 | 250 | 250   | 250   | 500  |
-| h264_freq_min|  250   | 250 | 250 | 250   | 250   | 500  |
-| isp_freq_min |  250   | 250 | 250 | 250   | 250   | 500  |
-| v3d_freq_min |  250   | 250 | 250 | 250   | 250   | 500  |
-| sdram_freq_min |400   | 400 | 400 | 400   | 400   | 400  |
+| Option       | Pi 0/W | Pi1 | Pi2 | Pi3   | Pi3A+/Pi3B+ | Pi4/CM4  | Pi 400 |
+| ---          | :---:  | :---: | :---: | :----:  | :-----: | :----: | :----: |
+| arm_freq     | 1000   | 700 | 900 | 1200  | 1400  | 1500 | 1800 | 
+| core_freq    | 400    | 250 | 250 | 400   | 400   | 500 | 500 |
+| h264_freq    | 300    | 250 | 250 | 400   | 400   | 500 | 500|
+| isp_freq     | 300    | 250 | 250 | 400   | 400   | 500 | 500 |
+| v3d_freq     | 300    | 250 | 250 | 400   | 400   | 500 | 500 |
+| hevc_freq    | N/A    | N/A | N/A | N/A   | N/A   | 500 | 500 |
+| sdram_freq   | 450    | 400 | 450 | 450   | 500   | 3200 | 3200 |
+| arm_freq_min | 700    | 700 | 600 | 600   | 600   | 600  | 600 |
+| core_freq_min| 250    | 250 | 250 | 250   | 250   | 200 | 200 |
+| gpu_freq_min | 250    | 250 | 250 | 250   | 250   | 250  | 250 | 
+| h264_freq_min|  250   | 250 | 250 | 250   | 250   | 250  | 250 |
+| isp_freq_min |  250   | 250 | 250 | 250   | 250   | 250  | 250 |
+| v3d_freq_min |  250   | 250 | 250 | 250   | 250   | 250  | 250 |
+| sdram_freq_min |400   | 400 | 400 | 400   | 400   | 3200  | 3200 |
 
 This table gives defaults for options that are the same across all models.
 
@@ -71,19 +71,27 @@ This table gives defaults for options that are the same across all models.
 
 The firmware uses Adaptive Voltage Scaling (AVS) to determine the optimum CPU/GPU core voltage in the range defined by `over_voltage` and `over_voltage_min`.
 
-#### Specific to Pi 4B
+| Model | Default | Resulting voltage |
+| --- | --- | --- |
+| Pi 1 | 0 | 1.2V |
+| Pi 2 | 0 | 1.2-1.3125V |
+| Pi 3 | 0 | 1.2-1.3125V |
+| Pi 4, Pi400, CM4 | 0 | 0.88V |
+| Pi Zero | 6 | 1.35V |
 
-The `core_freq` of the Raspberry Pi 4 can change from the default if either `hdmi_enable_4kp60` or `enable_tvout` are used, due to relationship between internal clocks and the particular requirements of the requested display modes.
+#### Specific to Pi 4, Pi 400 and CM4
 
-| Display option | Frequency |
-| -------------- | --------: |
-| Default        | 500 |
-| enable_tvout | 360 |
-| hdmi_enable_4kp60 | 550 |
+The minimum core frequency when the system is idle must be fast enough to support the highest pixel clock (ignoring blanking) of the display(s). Consequently, `core_freq` will be boosted above 500 MHz if the display mode is 4Kp60.
 
-Changing `core_freq` in `config.txt` is not supported on the Pi 4, any change from the default will almost certainly cause a failure to boot.
+| Display option    | Max `core_freq` |
+| ----------------- | --------------- |
+| Default           | 500             |
+| hdmi_enable_4kp60 | 550             |
 
-It is recommended when overclocking to use the individual frequency settings (`isp_freq`, `v3d_freq` etc) rather than `gpu_freq`, as since it attempts to set `core_freq` (which cannot be changed on the Pi 4), it is not likely to have the desired effect.
+* Overclocking requires the latest firmware release.
+* The latest firmware automatically scales up the voltage if the system is overclocked. Manually setting `over_voltage` disables automatic voltage scaling for overclocking.
+* It is recommended when overclocking to use the individual frequency settings (`isp_freq`, `v3d_freq` etc) rather than `gpu_freq` because the maximum stable frequency will be different for ISP, V3D, HEVC etc.
+* The SDRAM frequency is not configurable on Raspberry Pi 4.
 
 ### force_turbo
 
