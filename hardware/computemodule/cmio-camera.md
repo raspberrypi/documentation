@@ -45,7 +45,7 @@ To connect a single camera:
 To connect two cameras, follow the steps as for a single camera and then also:
 1. Whilst powered down, repeat step 3 with CAM0.
 1. (CM1 and CM3 only) Connect the GPIO pins for the second camera.
-    ![GPIO connection for a single camera](images/CMIO-Cam-GPIO.jpg)
+    ![GPIO connection with additional camera](images/CMIO-Cam-GPIO2.jpg)
 1. (CM4 only) Add jumpers to J6.
 1. Power up and run `sudo wget https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/computemodule/dt-blob-dualcam.bin -O /boot/dt-blob.bin`
 1. Reboot for the dt-blob.bin file to be read.
