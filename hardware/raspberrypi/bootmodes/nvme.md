@@ -71,7 +71,7 @@ sudo mount /dev/nvme0n1p2 mnt/ext4
 sudo ROOT_PATH=mnt/ext4 BOOT_PATH=mnt/fat32 rpi-update
 ```
 
-Finally, if you are using CM4 lite, remove the SD card and the board will boot from the NVMe disk. For versions of CM4 with an eMMC, make sure you have set the NVMe first in the boot order.
+Finally, if you are using CM4 lite, remove the SD card and the board will boot from the NVMe disk. For versions of CM4 with an eMMC, make sure you have set NVMe first in the boot order.
 
 ### NVMe BOOT_ORDER
 
