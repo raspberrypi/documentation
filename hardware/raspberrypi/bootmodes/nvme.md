@@ -8,7 +8,7 @@ You need an NVMe M.2 SSD. You cannot plug an M.2 SSD directly into the PCIe slot
 
 If you wish to also connect the NVMe drive to a PC or Mac, you will need a USB adapter. Search for 'NVME PCI-E M-Key Solid State Drive External Enclosure'. The enclosure must support M key SSDs.
 
-Linux supports NVMe drives without modification so once you have connected the hardware, boot Linux from another drive to check that the NVMe drive has been detected. Run `ls -l /dev/nvme*`: example output is shown below.
+Linux supports accessing NVMe drives without modification, but booting from NVMe required a pre-release version of the Raspberry Pi Linux kernel. To check that your NVMe drive is connected correctly, boot Linux from another drive and run `ls -l /dev/nvme*`: example output is shown below.
 
 ```
 crw------- 1 root root 245, 0 Mar  9 14:58 /dev/nvme0
@@ -17,7 +17,7 @@ brw-rw---- 1 root disk 259, 0 Mar  9 14:58 /dev/nvme0n1
 
 ## Required software
 
-To boot from NVMe you need pre-release versions of the bootloader, VideoCore firmware and kernel.
+To boot from NVMe you need pre-release versions of the bootloader, VideoCore firmware and Linux kernel.
 
 ### Bootloader
 
