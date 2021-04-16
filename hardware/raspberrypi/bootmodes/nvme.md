@@ -61,7 +61,6 @@ You must load pre-release versions of the VideoCore firmware and kernel to the N
 * Boot the CM4 with a blank SSD connected to the PCIe slot
 * Use [piclone](https://github.com/raspberrypi-ui/piclone) to copy the image to the NVMe disk. When using `piclone` choose the option to use "New Partition ids".
 * Update the software on the NVMe disk with the latest pre-release version using [rpi-update](../../../raspbian/applications/rpi-update.md):
-* 
 ```
 mkdir mnt
 mkdir mnt/fat32
