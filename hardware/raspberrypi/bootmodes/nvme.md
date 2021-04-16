@@ -1,6 +1,6 @@
 # NVMe SSD Boot (BETA)
 
-NVMe (non-volatile memory express) is a standard for accessing solid state drives (SSDs) via a PCIe bus. You can connect these drives via the PCIe slot on a Compute Module (CM) IO board allowing a CM4 to boot from SSD.
+NVMe (non-volatile memory express) is a standard for accessing solid state drives (SSDs) via a PCIe bus. You can connect these drives via an adaptor inserted into the PCIe slot on a Compute Module (CM) IO board, allowing a CM4 to boot from SSD.
 
 ## Required hardware
 
