@@ -23,7 +23,7 @@ To boot from NVMe you need pre-release versions of the bootloader, VideoCore fir
 
 You need to use `rpiboot` to update the CM4 bootloader. Instructions for building `rpiboot` and configuring the IO board to switch the ROM to usbboot mode are in the [usbboot Github repository](https://github.com/raspberrypi/usbboot).
 
-If you are using a CM4 with an eMMC then you must change the BOOT_ORDER to give NVMe priority, otherwise the CM4 will continue to boot from eMMC:
+If you are using a CM4 with an eMMC then you must change the BOOT_ORDER to give NVMe priority, otherwise the CM4 will continue to boot from eMMC. For example:
 
 ```
 cd rpiboot/nvme
