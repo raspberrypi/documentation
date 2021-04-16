@@ -13,7 +13,7 @@ crw------- 1 root root 245, 0 Mar  9 14:58 /dev/nvme0
 brw-rw---- 1 root disk 259, 0 Mar  9 14:58 /dev/nvme0n1
 ```
 
-You can also connect the NVMe drive to a PC or Mac using a USB adaptor. Search for 'NVME PCI-E M-Key Solid State Drive External Enclosure'. The enclosure must support M key SSDs.
+If you need to connect the NVMe drive to a PC or Mac you can use a USB adaptor: search for 'NVME PCI-E M-Key Solid State Drive External Enclosure'. The enclosure must support M key SSDs.
 
 ## Required software
 
