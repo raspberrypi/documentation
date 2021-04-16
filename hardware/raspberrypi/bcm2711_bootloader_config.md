@@ -53,7 +53,7 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 |  0x2  |  NETWORK        |  Network boot - See [Network boot server tutorial](bootmodes/net_tutorial.md)                                            |
 |  0x3  |  RPIBOOT        |  RPIBOOT - See [usbboot](https://github.com/raspberrypi/usbboot)                                                         |
 |  0x4  |  USB-MSD        |  USB mass storage boot - See [USB mass storage boot](bootmodes/msd.md)                                                   |
-|  0x5  |  BCM-USB-MSD    |  Pi 4: USB 2.0 boot from USB Type C socket,  CM4: USB Type A socket on CM4 IO board (since 2020-12-14).                  |
+|  0x5  |  BCM-USB-MSD    |  USB 2.0 boot from USB Type C socket (CM4: USB type A socket on CM IO board, available since 2020-12-14).                |
 |  0x6  |  NVME           |  CM4 only: boot from an NVMe SSD connected to the PCIe interface. See [NVMe boot](bootmodes/nvme.md) for more details.   |
 |  0xe  |  STOP           |  Stop and display error pattern. A power cycle is required to exit this state.                                           |
 |  0xf  |  RESTART        |  Restart from the first boot-mode in the BOOT_ORDER field i.e. loop                                                      |
