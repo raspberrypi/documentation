@@ -26,7 +26,7 @@ You need to use `rpiboot` to update the CM4 bootloader. Instructions for buildin
 If you are using a CM4 with an eMMC then you must change the BOOT_ORDER to give NVMe priority, otherwise the CM4 will continue to boot from eMMC. For example:
 
 ```
-cd rpiboot/nvme
+cd usbboot/nvme
 sed -i 's/\(BOOT_ORDER=.*\)6\(.*\)/\1\26/' boot.conf
 ./update-pieeprom.sh
 cd ..
@@ -117,7 +117,7 @@ If the boot process fails, please file an issue on the [rpi-eeprom Github reposi
 You can enable logging in the bootloader, and update the bootloader again with this configuration, using rpiboot:
 
 ```
-cd rpiboot/nvme
+cd usbboot/nvme
 sed -i 's/BOOT_UART=0/BOOT_UART=1/' boot.conf
 ./update-pieeprom.sh
 cd ..
