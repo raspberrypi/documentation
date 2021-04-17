@@ -134,7 +134,7 @@ enable_uart=1
 uart_2ndstage=1
 ```
 
-Check you have the right version of the `start4.elf` VideoCore firmware by checking the version of the raspberrypi-bootloader package: it must show a date on or after 3 Mar 2021 in the version string. Run `apt show raspberrypi-bootloader`:
+Check you have the right version of the `start4.elf` VideoCore firmware by checking the version of the raspberrypi-bootloader package: it must show a date of 3 Mar 2021 or later in the version string. Run `apt show raspberrypi-bootloader`:
 
 ```
 Package: raspberrypi-bootloader
