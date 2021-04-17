@@ -114,7 +114,7 @@ nvme0n1     259:0    0 232.9G  0 disk
 
 If the boot process fails, please file an issue on the [rpi-eeprom Github repository](https://github.com/raspberrypi/rpi-eeprom), including a copy of the console and anything displayed on the screen during boot.
 
-You can enable logging in the bootloader, and update the bootloader again with this configuration, using rpiboot:
+You can enable logging in the bootloader, and update the bootloader with this configuration, using rpiboot:
 
 ```
 cd usbboot/nvme
