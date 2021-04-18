@@ -6,7 +6,7 @@ NVMe (non-volatile memory express) is a standard for accessing solid state drive
 
 You need an NVMe M.2 SSD. You cannot plug an M.2 SSD directly into the PCIe slot on the IO board - an adaptor is needed. Be careful to get the correct type: a suitable adaptor can be found online by searching for 'PCI-E 3.0 x1 Lane to M.2 NGFF M-Key SSD Nvme PCI Express Adapter Card'.
 
-Raspberry Pi OS supports accessing NVMe drives without modification, although booting from NVMe is currently only supported using pre-release software (see 'required software' below). To check that your NVMe drive is connected correctly, boot Raspberry Pi OS from another drive and run `ls -l /dev/nvme*`; example output is shown below.
+Raspberry Pi OS supports accessing NVMe drives, although booting from NVMe is currently only supported using pre-release software (see 'required software' below). To check that your NVMe drive is connected correctly, boot Raspberry Pi OS from another drive and run `ls -l /dev/nvme*`; example output is shown below.
 
 ```
 crw------- 1 root root 245, 0 Mar  9 14:58 /dev/nvme0
