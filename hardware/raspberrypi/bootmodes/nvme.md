@@ -6,7 +6,7 @@ NVMe (non-volatile memory express) is a standard for accessing solid state drive
 
 You need an NVMe M.2 SSD. You cannot plug an M.2 SSD directly into the PCIe slot on the IO board - an adaptor is needed. Be careful to get the correct type: a suitable adaptor can be found online by searching for 'PCI-E 3.0 x1 Lane to M.2 NGFF M-Key SSD Nvme PCI Express Adapter Card'.
 
-Linux supports accessing NVMe drives without modification. (Booting from NVMe requires a pre-release version of the Raspberry Pi Linux kernel - see "required software" below). To check that your NVMe drive is connected correctly, boot Linux from another drive and run `ls -l /dev/nvme*`; example output is shown below.
+Raspberry Pi OS supports accessing NVMe drives without modification, although booting from NVMe is currently only supported using pre-release software (see 'required software' below). To check that your NVMe drive is connected correctly, boot Raspberry Pi OS from another drive and run `ls -l /dev/nvme*`; example output is shown below.
 
 ```
 crw------- 1 root root 245, 0 Mar  9 14:58 /dev/nvme0
@@ -56,7 +56,7 @@ Second stage boot server done
 
 ### Firmware and kernel
 
-You must load pre-release versions of the VideoCore firmware and kernel to the NVMe disk. When this software is officially released you can simply write the software to the NVMe disk directly with the rpi-imager app: until then the easiest way to perform the update is:
+You must load pre-release versions of the VideoCore firmware and Linux kernel to the NVMe disk. When this software is officially released you can simply write the software to the NVMe disk directly with the Raspberry Pi Imager app; until then the easiest way to perform the update is:
 
 1. Boot the CM4 with a blank SSD connected to the PCIe slot
 1. Use the `SD Card Copier` application on the desktop to copy the running OS image to the NVMe disk: be sure to enable the "new partition ids" option.
