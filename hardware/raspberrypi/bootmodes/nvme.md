@@ -17,7 +17,7 @@ If you need to connect the NVMe drive to a PC or Mac you can use a USB adaptor: 
 
 ## Required software
 
-To boot from NVMe you need pre-release versions of the bootloader, VideoCore firmware and Linux kernel.
+To boot from NVMe you need pre-release versions of the bootloader, VideoCore firmware and Raspberry Pi OS Linux kernel.
 
 ### Bootloader
 
@@ -56,7 +56,7 @@ Second stage boot server done
 
 ### Firmware and kernel
 
-You must load pre-release versions of the VideoCore firmware and Linux kernel to the NVMe disk. When this software is officially released you can simply write the software to the NVMe disk directly with the Raspberry Pi Imager app; until then the easiest way to perform the update is:
+You must load pre-release versions of the VideoCore firmware and Raspberry Pi OS Linux kernel to the NVMe disk. When this software is officially released you can simply write the software to the NVMe disk directly with the Raspberry Pi Imager app; until then the easiest way to perform the update is:
 
 1. Boot the CM4 with a blank SSD connected to the PCIe slot
 1. Use the `SD Card Copier` application on the desktop to copy the running OS image to the NVMe disk, making sure to enable the "new partition ids" option.
@@ -74,7 +74,7 @@ Finally, if you are using CM4 lite, remove the SD card and the board will boot f
 
 ### NVMe BOOT_ORDER
 
-This boot behaviour is controlled via the BOOT_ORDER in the EEPROM configuration: we have added a new BOOT_ORDER `6` for NVMe. See [Pi4 Bootloader Configuration](../bcm2711_bootloader_config.md).
+This boot behaviour is controlled via the BOOT_ORDER in the EEPROM configuration: we have added a new boot mode `6` for NVMe. See [Pi4 Bootloader Configuration](../bcm2711_bootloader_config.md).
 
 Below is an example of UART output when the bootloader detects the NVMe drive:
 
@@ -100,7 +100,7 @@ MESS:00:00:07.098682:0: Loading 'kernel8.img' to 0x80000 size 0x1441a00
 MESS:00:00:07.146055:0:[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd083]
 ```
 
-In linux the SSD appears as `/dev/nvme0` and the "namespace" as /dev/nvme0n1. There will be two partitions `/dev/nvme0n1p1` (FAT) and `/dev/nvme0n1p2` (EXT4). Use `lsblk` to check the partition assignments:
+In Linux the SSD appears as `/dev/nvme0` and the "namespace" as /dev/nvme0n1. There will be two partitions `/dev/nvme0n1p1` (FAT) and `/dev/nvme0n1p2` (EXT4). Use `lsblk` to check the partition assignments:
 
 
 ```
