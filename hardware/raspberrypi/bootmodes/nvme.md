@@ -1,10 +1,10 @@
 # NVMe SSD Boot (BETA)
 
-NVMe (non-volatile memory express) is a standard for accessing solid state drives (SSDs) via a PCIe bus. You can connect these drives via the PCIe slot on a Compute Module (CM) IO board, allowing a CM4 to boot from SSD.
+NVMe (non-volatile memory express) is a standard for accessing solid state drives (SSDs) via a PCIe bus. You can connect these drives via the PCIe slot on a Compute Module 4 (CM4) IO board, allowing a CM4 to boot from SSD.
 
 ## Required hardware
 
-You need an NVMe M.2 SSD. You cannot plug an M.2 SSD directly into the PCIe slot on the IO board - an adaptor is needed. Be careful to get the right one: a suitable adaptor can be found online by searching for 'PCI-E 3.0 x1 Lane to M.2 NGFF M-Key SSD Nvme PCI Express Adapter Card'.
+You need an NVMe M.2 SSD. You cannot plug an M.2 SSD directly into the PCIe slot on the IO board - an adaptor is needed. Be careful to get the correct type: a suitable adaptor can be found online by searching for 'PCI-E 3.0 x1 Lane to M.2 NGFF M-Key SSD Nvme PCI Express Adapter Card'.
 
 Linux supports accessing NVMe drives without modification. (Booting from NVMe requires a pre-release version of the Raspberry Pi Linux kernel - see "required software" below). To check that your NVMe drive is connected correctly, boot Linux from another drive and run `ls -l /dev/nvme*`; example output is shown below.
 
