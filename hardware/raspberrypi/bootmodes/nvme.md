@@ -60,7 +60,7 @@ You must load pre-release versions of the VideoCore firmware and kernel to the N
 
 1. Boot the CM4 with a blank SSD connected to the PCIe slot
 1. Use the `SD Card Copier` application on the desktop to copy the running OS image to the NVMe disk: be sure to enable the "new partition ids" option.
-1. Update the firmware and kernel on the NVMe disk with the latest pre-release versions using [rpi-update](../../../raspbian/applications/rpi-update.md):
+1. Update the firmware and kernel on the NVMe disk to the latest pre-release versions using [rpi-update](../../../raspbian/applications/rpi-update.md):
 ```
 mkdir mnt
 mkdir mnt/fat32
@@ -74,7 +74,7 @@ Finally, if you are using CM4 lite, remove the SD card and the board will boot f
 
 ### NVMe BOOT_ORDER
 
-This boot behavior is controlled via the BOOT_ORDER in the EEPROM configuration: we have added a new BOOT_ORDER `6` for NVMe. See [Pi4 Bootloader Configuration](../bcm2711_bootloader_config.md).
+This boot behaviour is controlled via the BOOT_ORDER in the EEPROM configuration: we have added a new BOOT_ORDER `6` for NVMe. See [Pi4 Bootloader Configuration](../bcm2711_bootloader_config.md).
 
 Below is an example of UART output when the bootloader detects the NVMe drive:
 
@@ -134,22 +134,9 @@ enable_uart=1
 uart_2ndstage=1
 ```
 
-Check you have the right version of the `start4.elf` VideoCore firmware by checking the version of the raspberrypi-bootloader package: it must show a date of 3 Mar 2021 or later in the version string. Run `apt show raspberrypi-bootloader`:
+Ensure that you have used `rpi-update` to get the latest pre-release versions of the firmware and Linux kernel; boot from NVMe will not work without these.
 
-```
-Package: raspberrypi-bootloader
-Version: 1.20210303-1
-```
-
-If you see an error on boot "start4.elf: is not compatible" on the UART console, then you are using an old version of this firmware.
-
-You also need an updated version of the kernel that includes support for NVMe (previously it was built as a module). Without this the kernel will wait forever for the disk to appear. So check the kernel version by running `uname -a`:
-
-```
-Linux raspberrypi 5.10.20-v7l+ #1404 SMP Thu Mar 4 19:44:07 GMT 2021 armv7l GNU/Linux
-```
-
-If there is a compatibility issue with the SSD then you can use the following commands to interrogate the device:
+There may be compatibility issues with some SSDs. You can use the following commands to investigate:
 
 ```
 sudo apt-get install nvme-cli
