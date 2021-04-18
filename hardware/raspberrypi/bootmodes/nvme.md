@@ -74,7 +74,7 @@ Finally, if you are using CM4 lite, remove the SD card and the board will boot f
 
 ### NVMe BOOT_ORDER
 
-This boot behaviour is controlled via the BOOT_ORDER in the EEPROM configuration: we have added a new boot mode `6` for NVMe. See [Pi4 Bootloader Configuration](../bcm2711_bootloader_config.md).
+This boot behaviour is controlled via the `BOOT_ORDER` setting in the EEPROM configuration: we have added a new boot mode `6` for NVMe. See [Pi4 Bootloader Configuration](../bcm2711_bootloader_config.md).
 
 Below is an example of UART output when the bootloader detects the NVMe drive:
 
@@ -100,7 +100,7 @@ MESS:00:00:07.098682:0: Loading 'kernel8.img' to 0x80000 size 0x1441a00
 MESS:00:00:07.146055:0:[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd083]
 ```
 
-In Linux the SSD appears as `/dev/nvme0` and the "namespace" as /dev/nvme0n1. There will be two partitions `/dev/nvme0n1p1` (FAT) and `/dev/nvme0n1p2` (EXT4). Use `lsblk` to check the partition assignments:
+In Linux the SSD appears as `/dev/nvme0` and the "namespace" as `/dev/nvme0n1`. There will be two partitions `/dev/nvme0n1p1` (FAT) and `/dev/nvme0n1p2` (EXT4). Use `lsblk` to check the partition assignments:
 
 
 ```
