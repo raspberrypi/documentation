@@ -74,7 +74,7 @@ Finally, if you are using CM4 lite, remove the SD card and the board will boot f
 
 ### NVMe BOOT_ORDER
 
-This boot behaviour is controlled via the `BOOT_ORDER` setting in the EEPROM configuration: we have added a new boot mode `6` for NVMe. See [Pi4 Bootloader Configuration](../bcm2711_bootloader_config.md).
+This boot behaviour is controlled via the `BOOT_ORDER` setting in the EEPROM configuration: we have added a new boot mode `6` for NVMe. See [Raspberry Pi 4 Bootloader Configuration](../bcm2711_bootloader_config.md).
 
 Below is an example of UART output when the bootloader detects the NVMe drive:
 
