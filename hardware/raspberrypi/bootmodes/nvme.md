@@ -32,7 +32,7 @@ sed -i 's/\(BOOT_ORDER=.*\)6\(.*\)/\1\26/' boot.conf
 cd ..
 ```
 
-You can then update your bootloader to support NVMe boot with `./rpiboot -d nvme`: example output is shown below.
+You can then update your bootloader to support NVMe boot with `./rpiboot -d nvme`; example output is shown below.
 
 ```
 Loading: nvme/bootcode4.bin
