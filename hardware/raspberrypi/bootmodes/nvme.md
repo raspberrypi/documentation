@@ -59,7 +59,7 @@ Second stage boot server done
 You must load pre-release versions of the VideoCore firmware and Linux kernel to the NVMe disk. When this software is officially released you can simply write the software to the NVMe disk directly with the Raspberry Pi Imager app; until then the easiest way to perform the update is:
 
 1. Boot the CM4 with a blank SSD connected to the PCIe slot
-1. Use the `SD Card Copier` application on the desktop to copy the running OS image to the NVMe disk: be sure to enable the "new partition ids" option.
+1. Use the `SD Card Copier` application on the desktop to copy the running OS image to the NVMe disk, making sure to enable the "new partition ids" option.
 1. Update the firmware and kernel on the NVMe disk to the latest pre-release versions using [rpi-update](../../../raspbian/applications/rpi-update.md):
 ```
 mkdir mnt
