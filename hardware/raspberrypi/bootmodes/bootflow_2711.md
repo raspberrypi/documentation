@@ -72,4 +72,4 @@ Please see the [bootloader configuration](../bcm2711_bootloader_config.md) page 
       * Attempt to load firmware using USB device mode from the USB OTG port - see [usbboot](https://github.com/raspberrypi/usbboot). There is no timeout for `RPIBOOT` mode.
 
 ## Bootloader updates
-The bootloader may also be updated before the firmware is started if a `pieeprom.upd` file is found. Please see the [bootloader eeprom](../booteeprom.md) page for more information about bootloader updates.
+The bootloader may also be updated before the firmware is started if a `pieeprom.upd` file is found. Please see the [bootloader EEPROM](../booteeprom.md) page for more information about bootloader updates.
