@@ -16,6 +16,8 @@ The boot flow for the ROM (first stage) is as follows:-
    * Check SPI EEPROM for second stage loader
       * Success - run second stage bootloader
       * Fail - continue
+* If OTP defines `nRPIBOOT` GPIO and `nRPIBOOT` is low
+   * Enable the BCM2711's built-in USB controller and wait for [rpiboot](https://github.com/raspberrypi/usbboot)
 * While True
    * Attempt to load recovery.bin from [USB device boot](../../computemodule/cm-emmc-flashing.md)
       * Success - run `recovery.bin` and update the SPI EEPROM or switch to USB mass storage device mode
