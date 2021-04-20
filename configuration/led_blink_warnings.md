@@ -16,6 +16,7 @@ If a Pi fails to boot for some reason, or has to shut down, in many cases an LED
 |      2       |        4      | File signature/hash mismatch - Pi 4 |
 |      3       |        1      | SPI EEPROM error - Pi 4 |
 |      3       |        2      | SPI EEPROM is write protected - Pi 4 |
+|      3       |        3      | I2C error - Pi 4       |
 |      4       |        4      | Unsupported board type |
 |      4       |        5      | Fatal firmware error   |
 |      4       |        6      | Power failure type A   |
