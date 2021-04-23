@@ -12,48 +12,46 @@
 <a name="overview"></a>
 ## Overview for devices prior to Pi 4
 
-The number and type of USB ports on Raspberry Pi depends on the model. The Raspberry Pi Model B is equipped with two USB 2.0 ports; the B+, 2B, 3B and 3B+ have four USB 2.0 ports. The Pi 4 has two USB 2.0 ports and two USB 3.0 ports. In all models prior to the Pi 4, the USB ports connect to a combo hub/Ethernet chip, which is itself a USB device connected to the single upstream USB port on BCM2835. On the Pi 4, the USB hub chip is connected to the SoC using a PCIe bus.
+The number and type of USB ports on Raspberry Pi depends on the model. The original Raspberry Pi Model B was equipped with two USB 2.0 ports; the B+, 2B, 3B and 3B+ have four USB 2.0 ports. The Pi 4 has two USB 2.0 ports and two USB 3.0 ports. In all models prior to the Pi 4, the USB ports connect to a combo hub/Ethernet chip, which is itself a USB device connected to the single upstream USB port on the SoC. On the Pi 4, the USB hub chip is connected to the SoC using a PCIe bus.
 
 On the Model A and Zero range, the single USB 2.0 port is directly wired to the SoC.
 
-The USB ports enable the attachment of peripherals such as keyboards, mice, webcams that provide the Pi with additional functionality.
-
 There are some differences between the USB hardware on the Raspberry Pi and the USB hardware on desktop computers or laptop/tablet devices. 
 
-The USB host port inside the Pi is an On-The-Go (OTG) host as the application processor powering the Pi, BCM2835, was originally intended to be used in the mobile market: i.e. as the single USB port on a phone for connection to a PC, or to a single device. In essence, the OTG hardware is simpler than the equivalent hardware on a PC.
+The USB host port inside models prior to the Pi 4 is an on the go (OTG) host since the application processor powering the Pi was originally intended to be used in the mobile market, i.e. as the single USB port on a phone for connection to a PC, or to a single device. In essence, the OTG hardware is simpler than the equivalent hardware on a PC.
 
-OTG in general supports communication to all types of USB device, but to provide an adequate level of functionality for most of the USB devices that one might plug into a Pi, the system software has to do more work.
+OTG in general supports communication with all types of USB device, but to provide an adequate level of functionality for most of the USB devices that one might plug into a Pi, the system software has to do more work.
 
 <a name="overview_pi4"></a>
 ## Overview for the Pi 4
 
-For the Pi 4, a fully-featured host controller drives the downstream USB ports. Downstream USB is provided by a Via Labs VL805 chip - that supports two USB 2.0 ports and two USB 3.0 ports. This is connected to the BCM2711 SoC using a PCIe link, which is extremely fast. Therefore, the Pi 4 does not have the same speed constraints of previous models, which means very fast data transfer rates, especially when using the USB 3.0 ports. All connected USB 2.0 devices are connected via an internal hub which connects to the upstream PCIe link via a single USB 2.0 bus, giving a maximum combined bandwith for all USB 2.0 devices of 480Mbits/s. All four USB ports on the device are connected to the USB 2.0 hub, whilst the USB 3.0 ports (blue) are ALSO connected to the USB 3.0 bus via the USB 3.0 specific pins in the socket. USB 3.0 devices are constrained only by the total bandwidth available over the PCIe link.
+For the Pi 4, a fully-featured host controller drives the USB ports. USB ports are provided by a Via Labs VL805 chip which supports two USB 2.0 ports and two USB 3.0 ports. This is connected to the BCM2711 SoC using a PCIe link, which is extremely fast. Therefore, the Pi 4 does not have the same speed constraints of previous models, which means very fast data transfer rates, especially when using the USB 3.0 ports. All connected USB 2.0 devices are connected via an internal hub which connects to the upstream PCIe link via a single USB 2.0 bus, giving a maximum combined bandwith for all USB 2.0 devices of 480Mbits/s. All four USB ports on the device are connected to the USB 2.0 hub, whilst the USB 3.0 ports (blue) are ALSO connected to the USB 3.0 bus via the USB 3.0-specific pins in the socket. USB 3.0 devices are constrained only by the total bandwidth available over the PCIe link.
 
 You can use `lsusb -t` to display how the USB devices and hubs are arranged and their allocated speeds. 
 
 Most of the technical limitations of the USB implementation on previous models are no longer present.
 
-The OTG hardware present on previous models of Pi is still available and it has moved to a single connection on the USB-C port. The OTG hardware is intended to be used in device-only mode on Pi 4.
+The OTG USB controller present on previous models of Pi is still available, and it has moved to a single connection on the USB-C port. This controller is intended to be used in device-only mode on Pi 4, although it is possible to use it in host mode. It is disabled by default.
 
 <a name="support"></a>
 ## Supported devices
 
-In general, every device supported by Linux is possible to use with the Pi, subject to a few caveats detailed further down. Linux has probably the most comprehensive driver database for legacy hardware of any operating system (it can lag behind for modern device support as it requires open-source drivers for Linux to recognise the device by default).
+In general, every device supported by Linux can be used with a Raspberry Pi, although there are some limitations for models prior to Pi 4. Linux has probably the most comprehensive driver support for legacy hardware of any operating system, although it generally lags behind Windows and MacOS when it comes to the latest hardware.
 
-If you have a device and wish to use it with a Pi, then plug it in. Chances are that it'll "just work". If you are running in a graphical interface (such as the LXDE desktop environment in Raspberry Pi OS), then it's likely that an icon or similar will pop up announcing the new device.
+If you have a device and wish to use it with a Pi, then plug it in. Chances are that it will "just work". If you are running in a graphical desktop, then it is likely that an icon or similar will pop up announcing the new device.
 
-If the device doesn't appear to work, then refer to the Troubleshooting section below.
+If the device does not appear to work, then refer to the following sections for details of some known issues.
 
 <a name="genlimits"></a>
 ### General limitations (not Pi 4)
 
-The OTG hardware on Raspberry Pi has a simpler level of support for certain devices, which may present a higher software processing overhead. The Raspberry Pi also has only one root USB port: all traffic from all connected devices is funnelled down this bus, which operates at a maximum speed of 480mbps.
+The OTG USB controller on Raspberry Pi has a more basic level of support for certain devices, which may present a higher software processing overhead. It also supports only one root USB port: all traffic from connected devices is funnelled down this single bus, which operates at a maximum speed of 480mbps.
 
-The USB specification defines three device speeds - Low, Full and High. Most mice and keyboards are Low-speed, most USB sound devices are Full-speed and most video devices (webcams or video capture) are High-speed.
+The USB 2.0 specification defines three device speeds - low, full and high. Most mice and keyboards are low speed, most USB sound devices are full speed and most video devices (webcams or video capture) are high speed.
 
-Generally, there are no issues with connecting multiple High-speed USB devices to a Pi.
+Generally, there are no issues with connecting multiple high speed USB devices to a Pi.
 
-The software overhead incurred when talking to Low- and Full-speed devices means that there are soft limitations on the number of simultaneously active Low- and Full-speed devices. Small numbers of these types of devices connected to a Pi will cause no issues.
+The software overhead incurred when talking to low and full speed devices means that there are limitations on the number of simultaneously active low and full speed devices. Small numbers of these types of devices connected to a Pi will cause no issues.
 
 <a name="powerlimits"></a>
 ### Port power limits
