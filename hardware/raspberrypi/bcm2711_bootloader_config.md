@@ -303,7 +303,7 @@ Default: `0x0` (no USB debug messages enabled)
 ### boot_load_flags
 Experimental property for custom firmware (bare metal).
 
-Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any compatiblity checks (e.g. is USB MSD boot supported) and resets PCIe before starting the executable.
+Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any compatibility checks (e.g. is USB MSD boot supported) and resets PCIe before starting the executable.
 
 Default: `0x0`  
 
