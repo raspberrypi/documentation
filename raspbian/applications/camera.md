@@ -634,7 +634,7 @@ To listen on a TCP port (IPv4) and wait for an incoming connection use `--listen
 	--listen,	-l
 ```
 
-When using a network connection as the data sink, this option will make the sytem wait for a connection from the remote system before sending data.
+When using a network connection as the data sink, this option will make the system wait for a connection from the remote system before sending data.
 
 ```
 	--verbose,	-v		Output verbose information during run
@@ -771,7 +771,7 @@ Saves timestamp information to the specified file. Useful as an imput file to `m
 	--codec,	-cd
 ```
 
-Specifies the encoder codec to use. Options are `H264` and `MJPEG`. H264 can encode up to 1080p, whereas MJPEG can encode upto the sensor size, but at decreased framerates due to the higher processing and storage requirements. 
+Specifies the encoder codec to use. Options are `H264` and `MJPEG`. H264 can encode up to 1080p, whereas MJPEG can encode up to the sensor size, but at decreased framerates due to the higher processing and storage requirements. 
 
 ```
 	--initial,	-i		Define initial state on startup

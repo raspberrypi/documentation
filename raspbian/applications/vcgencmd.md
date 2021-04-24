@@ -122,7 +122,7 @@ Displays the resolution and colour depth of any attached display.
 
 #### mem_oom
 
-Displays statistics on any Out Of Memory events occuring in the VC4 memory space.
+Displays statistics on any Out Of Memory events occurring in the VC4 memory space.
 
 #### mem_reloc_stats
 
