@@ -16,7 +16,7 @@ As with all computers, there are limits to how much power you can draw from a US
 
 | Model | Max power output of USB ports |
 |-------|-------------------|
-| Pi 1  | 500mA per port<sup>1</sup>    |
+| Pi Zero, 1  | 500mA per port<sup>1</sup>    |
 | Pi 2, 3, 4  | 1200mA total across all ports |
 
 1. For the original Pi 1B the limit is 100mA per port.
