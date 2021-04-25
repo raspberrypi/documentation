@@ -2,7 +2,7 @@
 
 In general, every device supported by Linux can be used with a Raspberry Pi, although there are some limitations for models prior to Pi 4. Linux has probably the most comprehensive driver support for legacy hardware of any operating system, although it generally lags behind Windows and MacOS when it comes to the latest hardware.
 
-The Pi 4 uses a different USB controller to drive its ports that previous models, one that supports USB 3.0.
+The Pi 4 uses a different USB controller to drive its ports than previous models, one that supports USB 3.0.
 
 The USB controller present on previous models of Pi is still available, and it has moved to a single connection on the USB-C port. This controller is intended to be used in device-only mode on Pi 4, although it is possible to use it in host mode. It is disabled by default.
 
