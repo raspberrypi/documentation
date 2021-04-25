@@ -4,7 +4,7 @@ In general, every device supported by Linux can be used with a Raspberry Pi, alt
 
 The Pi 4 uses a different USB controller to drive its ports than previous models, one that supports USB 3.0.
 
-The USB controller present on previous models of Pi is still available, and it has moved to a single connection on the USB-C port. This controller is intended to be used in device mode on Pi 4, although it is possible to use it in host mode. It is disabled by default.
+The USB controller present on previous models of Pi is still available, and it has moved to a single connection on the type C port. This controller is intended to be used in device mode on Pi 4, although it is possible to use it in host mode. It is disabled by default.
 
 ## Device mode support
 
