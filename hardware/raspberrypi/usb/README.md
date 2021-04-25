@@ -8,7 +8,7 @@ The USB controller present on previous models of Pi is still available, and it h
 
 ## Device mode support
 
-Certain models of Raspberry Pi are capable of running in device mode: instead of being a USB host, the Pi can be connected to another computer and appear as a device.
+Certain models of Raspberry Pi are capable of running in device mode. Computers with USB ports normally run in host mode. In device mode, the Pi can instead be used as a mass storage device or network adaptor for another computer.
 
 ## Power
 
