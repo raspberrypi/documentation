@@ -19,7 +19,7 @@ The naming and numbering of the UARTs can be confusing because they use differen
 
 Inside the Raspberry Pi, the UARTs are able to connect in several ways. UART0 and UART1 can connect to either the GPIO header, or the onboard Bluetooth module, if there is one. UARTs two through five can be enabled and disabled, but have no alternate connections.
 
-See the [Raspberry Pi 4 Model B Datasheet](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711/rpi_DATA_2711_1p0_preliminary.pdf) section _5.1.2 GPIO Alternate Functions_, for pinout details. Earlier models are similar but with only the first two UARTs.
+See the [Raspberry Pi 4 Model B Datasheet](../hardware/raspberrypi/bcm2711/rpi_DATA_2711_1p0_preliminary.pdf) section _5.1.2 GPIO Alternate Functions_, for pinout details. Earlier models are similar but with only the first two UARTs.
 
 ### Voltages
 
