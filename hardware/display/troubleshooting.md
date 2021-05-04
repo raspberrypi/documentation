@@ -31,7 +31,7 @@ sudo reboot
 If you want to make sure your Pi has detected your touchscreen, try running:
 
 ```bash
-dmesg | grep -i edt-ft5x06
+dmesg | grep -i raspberrypi-ts
 ```
 
 You should see a couple of lines that look like this:
