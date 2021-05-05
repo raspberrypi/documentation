@@ -99,4 +99,4 @@ selects between DSI1 (the default) and DSI0.
 - [dt-blob-disp1-only.dts](dt-blob-disp1-only.dts)
 - [dt-blob-disp1-cam1.dts](dt-blob-disp1-cam1.dts)
 - [dt-blob-disp1-cam2.dts](dt-blob-disp1-cam2.dts)
-- [dt-blob-disp0-only.dts](dt-blob-disp0-only.dts - uses wiring as for CAM0)
+- [dt-blob-disp0-only.dts - uses wiring as for CAM0](dt-blob-disp0-only.dts)
