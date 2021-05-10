@@ -123,7 +123,7 @@ Make sure J4 (USB SLAVE BOOT ENABLE) / J2 (nRPI_BOOT) is set to the disabled pos
 The default bootloader configuration on CM4 is designed to support bringup and development on a [Compute Module 4 IO board](https://www.raspberrypi.org/products/compute-module-4-io-board) and the software version flashed at manufacture may be older than the latest release. For final products please consider:-
 
 * Selecting and verifying a specific bootloader release. The version in the `usbboot` repo is always a recent stable release.
-* Configuring the boot device (e.g. network boot). See `BOOT_ORDER` section in the [bootloader configuration](raspberrypi/bcm2711_bootloader_config.md) guide.
+* Configuring the boot device (e.g. network boot). See `BOOT_ORDER` section in the [bootloader configuration](../raspberrypi/bcm2711_bootloader_config.md) guide.
 * Enabling hardware write protection on the bootloader EEPROM to ensure that the bootloader can't be modified on remote/inaccessible products.
 
 N.B. The Compute Module 4 ROM never runs `recovery.bin` from SD/EMMC and the `rpi-eeprom-update` service is not enabled by default. This is necessary because the EMMC is not removable and an invalid `recovery.bin` file would prevent the system from booting. This can be overridden and used with `self-update` mode where the bootloader can be updated from USB MSD or Network boot. However, `self-update` mode is not an atomic update and therefore not safe in the event of a power failure whilst the EEPROM was being updated.
