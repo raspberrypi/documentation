@@ -16,7 +16,7 @@ This driver integrates the source driver, Unicam, ISP, and tuner control into a 
 
 ### MMAL rawcam component
 
-This was an interim option before the V4L2 driver was available. The MMAL component `vc.ril.rawcam` allows receiving of the raw CSI2 data in the same way as the V4L2 driver, but all source configuration has to be done by userland over whatever interface the source requires. The raspiraw application is available on [github]( https://github.com/raspberrypi/raspiraw). It uses this component and the standard I2C register sets for OV5647, IMX219, and ADV7282M to support streaming.
+This was an interim option before the V4L2 driver was available. The MMAL component `vc.ril.rawcam` allows receiving of the raw CSI2 data in the same way as the V4L2 driver, but all source configuration has to be done by userland over whatever interface the source requires. The raspiraw application is available on [github](https://github.com/raspberrypi/raspiraw). It uses this component and the standard I2C register sets for OV5647, IMX219, and ADV7282M to support streaming.
 
 
 ### V4L2
