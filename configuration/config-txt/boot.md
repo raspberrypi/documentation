@@ -113,7 +113,7 @@ On the Raspberry Pi 4B, if this value is set to `0` then the interrupts will be 
 
 ## force_eeprom_read
 
-Set this option to `0` to prevent the firmware from trying to read an I2C HAT EEPROM (connected to pins ID_SD & ID_SC) at powerup.
+Set this option to `0` to prevent the firmware from trying to read an I2C HAT EEPROM (connected to pins ID_SD & ID_SC) at powerup. See also [`disable_poe_fan`](misc.md#disable_poe_fan).
 
 ## os_prefix
 <a name="os_prefix"></a>

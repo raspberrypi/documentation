@@ -22,3 +22,8 @@ For example, adding the line `include extraconfig.txt` to `config.txt` will incl
 ## max_usb_current
 
 **This command is now deprecated and has no effect.** Originally certain models of Raspberry Pi limited the USB ports to a maximum of 600mA. Setting `max_usb_current=1` changed this default to 1200mA. However, all firmware now has this flag set by default, so it is no longer necessary to use this option.
+
+## disable_poe_fan
+<a name="disable_poe_fan"></a>
+
+Set this option to `1` to prevent control of the PoE HAT fan through I2C (on pins ID_SD & ID_SC). Without this, a probe on the I2C bus will happen at startup, even when not using the PoE HAT.
