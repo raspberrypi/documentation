@@ -165,12 +165,18 @@ Save the file and either restart the ssh system with `sudo service ssh reload` o
 There are many firewall solutions available for Linux. Most use the underlying [iptables](http://www.netfilter.org/projects/iptables/index.html) project to provide packet filtering. This project sits over the Linux netfiltering system. `iptables` is installed by default on Raspberry Pi OS, but is not set up. Setting it up can be a complicated task, and one project that provides a simpler interface than `iptables` is [ufw](https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw), which stands for 'Uncomplicated Fire Wall'. This is the default firewall tool in Ubuntu, and can be easily installed on your Raspberry Pi:
 
 ```bash
-sudo apt install ufw
+sudo apt install ufw -y
 ```
 
 `ufw` is a fairly straightforward command line tool, although there are some GUIs available for it. This document will describe a few of the basic command line options. Note that `ufw` needs to be run with superuser privileges, so all commands are preceded with `sudo`. It is also possible to use the option `--dry-run` any `ufw` commands, which indicates the results of the command without actually making any changes.
 
-To enable the firewall, which will also ensure it starts up on boot, use:
+To reset the firewall, and disable start up on boot, use:
+
+```bash
+sudo ufw reset
+```
+
+To enable the firewall, and enable start up on boot, use:
 
 ```bash
 sudo ufw enable
@@ -182,28 +188,34 @@ To disable the firewall, and disable start up on boot, use:
 sudo ufw disable
 ```
 
-Allow a particular port to have access (we have used port 22 in our example):
+To deny all incoming requests by default, use:
 
 ```bash
-sudo ufw allow 22
+sudo ufw default deny incoming
 ```
 
-Denying access on a port is also very simple (again, we have used port 22 as an example):
+To allow all outgoing requests by default, use:
 
 ```bash
-sudo ufw deny 22
+sudo ufw default allow outgoing
 ```
 
-You can also specify which service you are allowing or denying on a port. In this example, we are denying tcp on port 22:
+To disable logging, use:
 
 ```bash
-sudo ufw deny 22/tcp
+sudo ufw logging off
 ```
 
-You can specify the service even if you do not know which port it uses. This example allows the ssh service access through the firewall:
+To enable low logging, use:
 
 ```bash
-sudo ufw allow ssh
+sudo ufw logging low
+```
+
+To enable high logging, use:
+
+```bash
+sudo ufw logging high
 ```
 
 The status command lists all current settings for the firewall:
@@ -212,18 +224,36 @@ The status command lists all current settings for the firewall:
 sudo ufw status
 ```
 
-The rules can be quite complicated, allowing specific IP addresses to be blocked, specifying in which direction traffic is allowed, or limiting the number of attempts to connect, for example to help defeat a Denial of Service (DoS) attack. You can also specify the device rules are to be applied to (e.g. eth0, wlan0). Please refer to the `ufw` man page (`man ufw`) for full details, but here are some examples of more sophisticated commands.
-
-Limit login attempts on ssh port using tcp: this denies connection if an IP address has attempted to connect six or more times in the last 30 seconds:
+To display a verbose status, use:
 
 ```bash
-sudo ufw limit ssh/tcp
+sudo ufw status verbose
 ```
 
-Deny access to port 30 from IP address 192.168.2.1
+To display a numbered status, use:
 
 ```bash
-sudo ufw deny from 192.168.2.1 port 30
+sudo ufw status numbered
+```
+
+The rules can be quite complicated, allowing specific IP addresses to be blocked, specifying in which direction traffic is allowed, or limiting the number of attempts to connect, for example to help defeat a Denial of Service (DoS) attack. You can also specify the device rules are to be applied to (e.g. eth0, wlan0). Please refer to the `ufw` man page (`man ufw`) for full details, but here are some examples of more sophisticated commands.
+
+To deny all incoming [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol) requests from a specific IP address to any IP address on a specific port (If you’re allowing all incoming requests by default), use:
+
+```bash
+sudo ufw allow in proto tcp from 192.168.2.1 to any port 22
+```
+
+To allow all incoming [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol) requests from a specific IP address to any IP address on a specific port (If you’re denying all incoming requests by default), use:
+
+```bash
+sudo ufw allow in proto tcp from 192.168.2.1 to any port 22
+```
+
+To limit all incoming [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol) requests from a specific IP address to any IP address on a specific port (If you’re denying all incoming requests by default, and you require [DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack) protection), use:
+
+```bash
+sudo ufw limit in proto tcp from 192.168.2.1 to any port 22
 ```
 
 ## Installing fail2ban
