@@ -241,7 +241,7 @@ The rules can be quite complicated, allowing specific IP addresses to be blocked
 To deny all incoming [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol) requests from a specific IP address to any IP address on a specific port (If you’re allowing all incoming requests by default), use:
 
 ```bash
-sudo ufw allow in proto tcp from 192.168.2.1 to any port 22
+sudo ufw deny in proto tcp from 192.168.2.1 to any port 22
 ```
 
 To allow all incoming [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol) requests from a specific IP address to any IP address on a specific port (If you’re denying all incoming requests by default), use:
