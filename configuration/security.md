@@ -75,21 +75,20 @@ sudo deluser -remove-home pi
 ```
 This command will result in a warning that the group `pi` has no more members. The `deluser` command removes both the `pi` user and the `pi` group though, so the warning can be safely ignored.
 
+To change autologin of the 'pi' user to the 'alice' user, use:
+
+```bash
+sudo sed -i '/autologin-user=pi/autologin-user=alice/g' /etc/lightdm/lightdm.conf
+```
 
 ## Make `sudo` require a password
 
 Placing `sudo` in front of a command runs it as a superuser, and by default, that does not need a password. In general, this is not a problem. However, if your Pi is exposed to the internet and somehow becomes exploited (perhaps via a webpage exploit for example), the attacker will be able to change things that require superuser credentials, unless you have set `sudo` to require a password.
 
-To force `sudo` to require a password, enter:
+To force `sudo` to require a password, use:
 
 ```bash
-sudo visudo /etc/sudoers.d/010_pi-nopasswd
-```
-
-and change the `pi` entry (or whichever usernames have superuser rights) to:
-
-```bash
-pi ALL=(ALL) PASSWD: ALL
+sudo sed -i '/pi/alice/g' /etc/sudoers.d/010_pi-nopasswd
 ```
 
 Then save the file: it will be checked for any syntax errors. If no errors were detected, the file will be saved and you will be returned to the shell prompt. If errors were detected, you will be asked 'what now?' Press the 'enter' key on your keyboard: this will bring up a list of options. You will probably want to use 'e' for '(e)dit sudoers file again,' so you can edit the file and fix the problem. **Note that choosing option 'Q' will save the file with any syntax errors still in place, which makes it impossible for _any_ user to use the sudo command.**
@@ -188,7 +187,7 @@ To disable the firewall, and disable start up on boot, use:
 sudo ufw disable
 ```
 
-What you'll want to do is deny all incoming requests by default, and allow all outgoing requests by default. This will allow you to allow only specific IP addresses to connect in on a specific port, and allow any IP address to connect out on any port.
+What you'll want to do is deny all incoming requests by default, and allow all outgoing requests by default. This will allow you to allow only specific IP addresses to connect in on a specific port, and allow any and all IP addresses to connect out on any and all ports.
 
 To deny all incoming requests by default, use:
 
