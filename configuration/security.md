@@ -188,6 +188,8 @@ To disable the firewall, and disable start up on boot, use:
 sudo ufw disable
 ```
 
+What you'll want to do is deny all incoming requests by default, and allow all outgoing requests by default. This will allow you to allow only specific IP addresses to connect in on a specific port, and allow any IP address to connect out on any port.
+
 To deny all incoming requests by default, use:
 
 ```bash
