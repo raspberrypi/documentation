@@ -24,6 +24,6 @@ The diagnostic information is as follows:
 | tftp       | Network boot: TFTP server IP address|
 
 
-This display can be disabled using the `DISABLE_HDMI` option, see [Bootloader Configuration](./bcm2711_bootloader_config.md).
+This display can be disabled using the `DISABLE_HDMI` option, see [Bootloader Configuration](bcm2711_bootloader_config.md).
 
 N.B. This is purely for diagnosing boot failures; it is not an interactive bootloader. If you require an interactive bootloader, consider using a tool such as NOOBS or U-Boot.

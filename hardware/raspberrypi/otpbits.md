@@ -27,7 +27,7 @@ N.B. On BCM2711 the bootmode is defined by the [bootloader EEPROM configuration]
 18 – copy of bootmode register   
 28 – serial number   
 29 – ~(serial number)   
-30 – [revision code](./revision-codes/README.md)<sup>1</sup>   
+30 – [revision code](revision-codes/README.md)<sup>1</sup>   
 33 - board revision extended - the meaning depends on the board model.   
 This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext` and for testing purposes this OTP value can be temporarily overriden by setting `board_rev_ext` in `config.txt`.
    - Compute Module 4

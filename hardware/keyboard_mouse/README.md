@@ -1,5 +1,5 @@
 ## Raspberry Pi Keyboard and Mouse
 
 
-[Mechanical Drawings](./mechanical/README.md)
+[Mechanical Drawings](mechanical/README.md)
 

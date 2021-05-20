@@ -2,7 +2,7 @@
 
 The SSH File Transfer Protocol is a network protocol that provides file access, file transfer, and file management functionalities over SSH.
 
-By using SFTP, you can easily change, browse, and edit files on your Raspberry Pi. SFTP is easier to set up than [FTP](../ftp.md) once Raspberry Pi OS has SSH enabled. For security reasons, since the November 2016 release of Raspberry Pi OS, the SSH server has been disabled by default. To enable it, please follow [these instructions](./README.md).)
+By using SFTP, you can easily change, browse, and edit files on your Raspberry Pi. SFTP is easier to set up than [FTP](../ftp.md) once Raspberry Pi OS has SSH enabled. For security reasons, since the November 2016 release of Raspberry Pi OS, the SSH server has been disabled by default. To enable it, please follow [these instructions](README.md).
 
 ## WinSCP on Windows
 

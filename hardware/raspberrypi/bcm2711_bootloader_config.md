@@ -12,7 +12,7 @@ To edit it and apply the updates to latest EEPROM release:
 Please see the [boot EEPROM](booteeprom.md) page for more information about the EEPROM update process.
 
 ## Configuration properties
-This section describes all the configuration items available in the bootloader. The syntax is the same as [config.txt](../../configuration/config-txt/) but the properties are specific to the bootloader. [Conditional filters](../../configuration/config-txt/conditional.md) are also supported except for EDID.
+This section describes all the configuration items available in the bootloader. The syntax is the same as [config.txt](../../configuration/config-txt/README.md) but the properties are specific to the bootloader. [Conditional filters](../../configuration/config-txt/conditional.md) are also supported except for EDID.
 
 <a name="BOOT_UART"></a>
 ### BOOT_UART
@@ -181,7 +181,7 @@ Default: ""
 
 <a name="DISABLE_HDMI"></a>
 ### DISABLE_HDMI
-The [HDMI boot diagnostics](./boot_diagnostics.md) display is disabled if `DISABLE_HDMI=1`. Other non-zero values are reserved for future use.
+The [HDMI boot diagnostics](boot_diagnostics.md) display is disabled if `DISABLE_HDMI=1`. Other non-zero values are reserved for future use.
 
 Default: `0`  
 

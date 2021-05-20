@@ -113,4 +113,4 @@ You can find out more in the _Raspberry Pi Camera Algorithm and Tuning Guide_, [
 
 More information on the _libcamera-apps_ is available [here](https://github.com/raspberrypi/libcamera-apps/blob/main/README.md).
 
-Information on writing your own kernel modules to support new CSI-2 cameras and bridge chips can be found [here](./csi-2-usage.md).
+Information on writing your own kernel modules to support new CSI-2 cameras and bridge chips can be found [here](csi-2-usage.md).

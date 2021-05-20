@@ -56,7 +56,7 @@ You can now boot from a USB mass storage device in the same way as booting from 
 
 ## Booting from the USB mass storage device
 
-The [procedure](../../../installation/installing-images) is the same as for SD cards - simply image the USB storage device with the operating system image.
+The [procedure](../../../installation/installing-images/README.md) is the same as for SD cards - simply image the USB storage device with the operating system image.
 
 After preparing the storage device, connect the drive to the Raspberry Pi and power up the Pi, being aware of the extra USB power requirements of the external drive.
 After five to ten seconds, the Raspberry Pi should begin booting and show the rainbow splash screen on an attached display. Make sure that you do not have an SD card inserted in the Pi, since if you do, it will boot from that first.

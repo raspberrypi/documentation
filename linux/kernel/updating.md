@@ -4,6 +4,6 @@ If you use the standard Raspberry Pi OS update/upgrade process (found [here](../
 
 Instructions for upgrading to the latest pre-release and testing software can be found [here](../../raspbian/applications/rpi-update.md). This page also has instructions on how to return to the standard software.
 
-It is also possible to build your own kernel using the latest top of tree code from the Raspberry Pi kernel respository. Instructions for building and installing can be found [here](./building.md)
+It is also possible to build your own kernel using the latest top of tree code from the Raspberry Pi kernel respository. Instructions for building and installing can be found [here](building.md)
 
 

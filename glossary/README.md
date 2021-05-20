@@ -27,7 +27,7 @@
 - **`dt-blob.bin`** - A binary file containing initial GPIO configuration that is read by the firmware at boot time; despite the name, this is __not__ Device Tree blob (although it is compiled by the Device Tree tools).
 - **DVI** - [Digital Visual Interface](https://en.wikipedia.org/wiki/Digital_Visual_Interface), a video interface for connecting a source device to a monitor or display; electrically compatible with HDMI, so a simple adapter can convert from one to the other (excluding audio, which DVI does not support).
 - **Etcher** - See balenaEtcher.
-- **FAQ** - Frequently Asked Questions! See our [FAQ](../faqs/).
+- **FAQ** - Frequently Asked Questions! See our [FAQ](../faqs/README.md).
 - **Firmware** - Software that runs on a particular hardware device, for example a wireless chip or dongle; distinct from the usual software running on the Raspberry Pi in that it is usually a fixed binary blob of data that is loaded on to the device at startup; on the Raspberry Pi, the VC4 GPU requires firmware to be loaded to it at startup in order boot up and run the entire system.
 - **GNU** - The [GNU Project](https://en.wikipedia.org/wiki/GNU_Project) is a free software mass collaboration project, which has produced huge amounts of software that is used on the Raspberry Pi, including Linux itself.
 - **GPIO** - General Purpose Input/Output, the programmable pins on the Raspberry Pi.

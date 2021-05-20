@@ -6,7 +6,7 @@ This page explains the current capabilities of the Raspberry Pi GPIO pins. It is
 
 Inside the pad are a number of drivers in parallel. If the drive strength is set low (000) most of these are tri-stated so they do not add anything to the output current. If the drive strength is increased, more and more drivers are put in parallel. The following diagram shows that behaviour:
 
-![GPIO Drive Strength Diagram](./images/pi_gpio_drive_strength_diagram.png)
+![GPIO Drive Strength Diagram](images/pi_gpio_drive_strength_diagram.png)
 
 #### What does the current value mean?
 
@@ -36,7 +36,7 @@ Thus a drive strength of 16mA means:
 
 If you set the pad high, you can draw up to 16mA, and the output voltage is guaranteed to be >=V<sub>IH</sub>. This also means that if you set a drive strength of 2mA and you draw 16mA, the voltage will **not** be V<sub>IH</sub> but lower. In fact, it may not be high enough to be seen as high by an external device.
 
-There is more information on the physical characteristics of the GPIO pins [here](./README.md). Note that on the Compute Module devices, it is possible to change the VDD IO from the standard 3V3. In this case, V<sub>IL</sub> and V<sub>IH</sub> will change according to the table on the linked page. 
+There is more information on the physical characteristics of the GPIO pins [here](README.md). Note that on the Compute Module devices, it is possible to change the VDD IO from the standard 3V3. In this case, V<sub>IL</sub> and V<sub>IH</sub> will change according to the table on the linked page. 
 
 #### Why don't I set all my pads to the maximum current?
 

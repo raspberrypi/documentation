@@ -626,7 +626,7 @@ To protect your information, Linux does not display anything when you are enteri
 <a name="troubleshoot-boot"></a>
 ### Why does my Raspberry Pi not start up/boot?
 
-Probably the most frequently asked question! We have full instructions for setting up your Raspberry Pi [here](../setup/), but if it still will not boot, you will find advice on what to do in the [troubleshooting post on our forum](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=58151).
+Probably the most frequently asked question! We have full instructions for setting up your Raspberry Pi [here](../setup/README.md), but if it still will not boot, you will find advice on what to do in the [troubleshooting post on our forum](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=58151).
 
 <a name="troubleshoot-temp"></a>
 ### Why is my Raspberry Pi hot?

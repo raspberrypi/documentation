@@ -84,7 +84,7 @@ For the Pi4, to specify the HDMI port, you can add an index identifier to the co
 
 ### Display Rotation
 
-Please see the [Display Rotation Page](./display_rotation.md) for details.
+Please see the [Display Rotation Page](display_rotation.md) for details.
 
 ### HDMI not working properly?
 
