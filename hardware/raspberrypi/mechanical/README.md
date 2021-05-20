@@ -46,7 +46,7 @@ Also applicable to the A+.
 
 ## Raspberry Pi TV HAT
 
-- [Board](rpi_MECH_TVHAT_1p0.PNG)
+- [Board](rpi_MECH_TVHAT_1p0.png)
 
 ## Compute Module 4
 
