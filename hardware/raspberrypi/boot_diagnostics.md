@@ -2,7 +2,7 @@
 
 Starting with version 2020-04-16 of the Raspberry Pi 4 bootloader, diagnostic information can be displayed at boot time on an HDMI display. To see this diagnostic information, power down the Raspberry Pi 4, remove the SD card, then power back up. A diagnostic display similar to below should appear on the attached display.
 
-![Boot Diagnostics Screen](bootloader-diagnostics.png)
+![Boot Diagnostics Screen](images/bootloader-diagnostics.png)
 
 This diagnostics page will also appear if the bootloader is unable to boot from an inserted SD card, or is unable to network boot; for example, if there is no bootable image on the card, or it is defective, or the network boot parameters are incorrect.
 
