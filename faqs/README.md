@@ -230,7 +230,7 @@ You can check our [products](https://www.raspberrypi.org/products/) pages for mo
 <a name="hardware-doc"></a>
 ### What hardware documentation is available?
 
-All available documentation is in our [documentation repository](./README.md).
+All available documentation is in our [documentation repository](../README.md).
 
 <a name="hardware-interfaces"></a>
 ### What hardware interfaces does it have?
