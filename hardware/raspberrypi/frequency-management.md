@@ -8,7 +8,7 @@ For Raspberry Pi 3 Model B+, the PCB technology has been changed to provide bett
 
 The Raspberry Pi 4 Model B continues with the same PCB technology as the Raspberry Pi 3B+ to help dissipate excess heat. There is currently no soft limit defined.
 
-### DVFS on the Raspberry Pi 4, 400 and CM4
+### DVFS on the Raspberry Pi 4B, 400 and CM4
 
 On Raspberry Pi 4 Model B, firmware from late November 2019 onwards implements Dynamic Voltage and Frequency Scaling (DVFS). This technique (outlined on Wikipedia [here](https://en.wikipedia.org/wiki/Dynamic_voltage_scaling)) allows Raspberry Pi 4B to run at lower temperatures whilst still providing the same performance.
 
