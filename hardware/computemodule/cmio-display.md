@@ -95,8 +95,12 @@ DISPLAY_DSI_PORT
 The I2C port, SDA and SCL pin numbers are self explanatory. DISPLAY_DSI_PORT
 selects between DSI1 (the default) and DSI0.
 
+Once all the required changes have been made to the ```dts``` file, it needs to be compiled and placed on the boot partition of the device.
+
+Instructions for doing this can be found on the [Pin Configuration](../../configuration/pin-configuration.md) page.
+
 ### Sources
 - [dt-blob-disp1-only.dts](dt-blob-disp1-only.dts)
 - [dt-blob-disp1-cam1.dts](dt-blob-disp1-cam1.dts)
 - [dt-blob-disp1-cam2.dts](dt-blob-disp1-cam2.dts)
-- [dt-blob-disp0-only.dts](dt-blob-disp0-only.dts - uses wiring as for CAM0)
+- [dt-blob-disp0-only.dts - uses wiring as for CAM0](dt-blob-disp0-only.dts)
