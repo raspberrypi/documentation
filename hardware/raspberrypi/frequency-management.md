@@ -23,7 +23,7 @@ Due to possible system stability problems involved with running an undervoltage,
 
 In addition, a more stepped CPU governor is also used to produce finer-grained control of ARM core frequencies, which means the DVFS is more effective. The steps are now 1500MHz, 1000MHz, 750MHz, and 600MHz. These steps can also help when the SoC is being throttled, and mean that throttling all the way back to 600MHz is much less likely, giving an overall increase in fully loaded performance.
 
-The default CPU governor is `ondemand`, the governor can be manually changed with the package `cpufrequtils` to reduce idle power consumption:
+The default CPU governor is `ondemand`, the governor can be manually changed with the `cpufreq-set` command (from the `cpufrequtils` package) to reduce idle power consumption:
 ```
 sudo apt install cpufrequtils
 sudo cpufreq-set -g powersave
