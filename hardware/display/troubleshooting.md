@@ -153,6 +153,7 @@ sudo apt install xinput
 ```
 
 Then, run this command to map the touchscreen to the LCD screen. This command is specifically for the official 7 inch Raspberry Pi Foundation Touchscreen Display.
+This command must be run after the graphical user interface has been started. Otherwise you will get an error saying ```the command xinput is not recognized```.
 
 ```bash
 xinput --map-to-output 'raspberrypi-ts' DSI-1
