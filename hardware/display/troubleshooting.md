@@ -141,6 +141,27 @@ Display numbers are:
 * TV/HDMI: 5
 * Auto select non-default display: 6
 
+### I have two monitors, but when I use the touchscreen the mouse cursor goes onto the other screen.
+
+This is because your display configuration is trying to span the touchscreen across all of your monitors. To solve this you need to map the touchscreen to your LCD screen. This can be accomplished by using xinput:
+
+First, make sure xinput is installed:
+
+```
+sudo apt update
+sudo apt install xinput
+```
+
+Then, run this command to map the touchscreen to the LCD screen. This command is specifically for the official 7 inch Raspberry Pi Foundation Touchscreen Display.
+
+```bash
+xinput --map-to-output 'raspberrypi-ts' DSI-1
+```
+
+This command is only for your current session. So, to make it run everytime you log in to your Raspberry Pi you will need to put the command in your ```~/.bashrc``` file or equivalent.
+
+More information about this command can be found on the Arch wiki here: [https://wiki.archlinux.org/title/Touchscreen](https://wiki.archlinux.org/title/Touchscreen)
+
 ### How do I enable right click?
 
 You can emulate a right click with a setting change. Just:
