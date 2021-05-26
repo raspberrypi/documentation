@@ -30,6 +30,10 @@ Schematics for the various Raspberry Pi board versions:
 
 - [Revision 1.1](rpi_SCH_1aplus_1p1_reduced.pdf)
 
+## Raspberry Pi Model B/A
+
+- [Revision 1.0](Raspberry-Pi-Schematics-R1.0.pdf)
+
 ## Raspberry Pi Zero
 
 - [Revision 1.3](rpi_SCH_Zero_1p3_reduced.pdf)
