@@ -84,7 +84,7 @@ Edit by removing the `#` characters on the following lines:
 ```
 location ~ \.php$ {
 	include snippets/fastcgi-php.conf;
-	fastcgi_pass unix:/var/run/php5-fpm.sock;
+	fastcgi_pass unix:/run/php/php7.3-fpm.sock;
 }
 ```
 
@@ -97,7 +97,7 @@ It should look like this:
                 include snippets/fastcgi-php.conf;
         
 		# With php-fpm (or other unix sockets):
-		fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+		fastcgi_pass unix:/run/php/php7.3-fpm.sock;
 		# With php-cgi (or other tcp sockets):
 	#	fastcgi_pass 127.0.0.1:9000;
         }
