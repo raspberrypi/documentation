@@ -101,7 +101,9 @@ ping -c 2 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293  ff02::1%eth0`
      it is necessary to choose the interface's IP address, 
      `eth0` isn't sufficient - the answer would be the local link address(`fe80::/10`), we need the global or local unicast address
      
-`ff02::1` is a well known multicast address for all nodes on the link, so it behaves like a local broadcast, usually it is defined in `/etc/hosts` so you can also use the name (`ip6-allnodes` or `ipv6-allnodes`) instead of the literal address, some newer OS expect the interface ID here behind the multicast address    
+`ff02::1` is a well known multicast address for all nodes on the link, so it behaves like a local broadcast, usually it is defined in `/etc/hosts` so you can also use the name (`ip6-allnodes` or `ipv6-allnodes`) instead of the literal address
+
+some newer OS expect the interface ID here behind the multicast address    
 
 ```
 ping -c 2 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293 ip6-allnodes
