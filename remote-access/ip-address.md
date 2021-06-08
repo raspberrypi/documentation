@@ -121,10 +121,10 @@ PING ip6-allnodes(ip6-allnodes (ff02::1)) from 2001:db8:494:9d01:ba27:ebff:feb6:
 rtt min/avg/max/mdev = 0.480/1.283/2.623/0.735 ms
 
 ```
-Now, you got the answers from all your nodes on the link (your (W)LAN), with a little bit luck - also with dns names
+This should result in replies from all the nodes on your (W)LAN link, with associated DNS names.
 
 Exclude your own IP( here `2001:db8:494:9d01:ba27:ebff:feb6:f293` ), 
-check the others by trying to connect them via ssh
+then check the others by trying to connect them via SSH
 
 ```
 ssh pi@2001:db8:494:9d01:dea6:32ff:fe23:6be1
