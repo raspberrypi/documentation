@@ -103,7 +103,7 @@ ping -c 2 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293  ff02::1%eth0
      
 `ff02::1` is a well known multicast address for all nodes on the link, so it behaves like a local broadcast, usually it is defined in `/etc/hosts` so you can also use the name (`ip6-allnodes` or `ipv6-allnodes`) instead of the literal address
 
-some newer systems expect the interface ID behind the multicast address    
+Some newer systems expect the interface ID behind the multicast address.   
 
 ```
 ping -c 2 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293 ip6-allnodes
@@ -124,7 +124,7 @@ rtt min/avg/max/mdev = 0.480/1.283/2.623/0.735 ms
 This should result in replies from all the nodes on your (W)LAN link, with associated DNS names.
 
 Exclude your own IP( here `2001:db8:494:9d01:ba27:ebff:feb6:f293` ), 
-then check the others by trying to connect them via SSH
+then check the others by trying to connect them via SSH.
 
 ```
 ssh pi@2001:db8:494:9d01:dea6:32ff:fe23:6be1
