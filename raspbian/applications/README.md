@@ -4,9 +4,6 @@
     - Information on the demonstration camera software
 - [OMXPlayer](omxplayer.md)
     - Information on the OMXPlayer command line media player
-- [Minecraft for Raspberry Pi](../../usage/minecraft/README.md)
-    - 3D block based building platform with its own simple 
-      line and command coding.
 - [vcgencmd](vcgencmd.md)
     - Information on the vcgencmd application for getting and setting data on the VideoCore GPU.
 - [vcdbg](vcdbg.md)
