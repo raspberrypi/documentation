@@ -31,7 +31,13 @@ Copy this file into `/etc/systemd/system` as root, for example:
 sudo cp myscript.service /etc/systemd/system/myscript.service
 ```
 
-Once this has been copied, you can attempt to start the service using the following command:
+Once this has been copied, you have to inform `systemd` that a new service has been added. This is done with the following command:
+
+```
+sudo systemctl daemon-reload
+```
+
+Now you can attempt to start the service using the following command:
 ```
 sudo systemctl start myscript.service
 ```
