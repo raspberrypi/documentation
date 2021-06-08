@@ -100,8 +100,13 @@ Firstly, create a folder to share. This example creates a folder called `shared`
 ```bash
 cd ~
 mkdir shared
+chmod 0740 shared
 ```
+Now we need to tell Samba that there is a `pi` user when accessing that folder. When asked, enter the password of the `pi` user - this can be the default password, but that is well known and should be changed for better security.
 
+```bash
+sudo smbpasswd -a pi
+```
 Now we need to tell Samba to share this folder, using the Samba configuration file.
 
 ```bash
