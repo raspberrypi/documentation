@@ -1,93 +1,69 @@
-## vcgencmd
+# vcgencmd
 
-`vcgencmd` is a command line utility that can get various pieces of information from the VideoCore GPU on the Raspberry Pi. Much of the information available is only of use to Raspberry Pi engineers, but there are a number of very useful options available to end users that will be described here.
+The `vcgencmd` tool is used to output information from the VideoCore GPU on the Raspberry Pi.
 
-The source for the application can be found on our github page [here](https://github.com/raspberrypi/userland/tree/master/host_applications/linux/apps/gencmd).
+You can find source code for the `vcgencmd` utility [here](https://github.com/raspberrypi/userland/tree/master/host_applications/linux/apps/gencmd).
 
+## commands
 
-### Usage
+To get a list of all commands which `vcgencmd` supports, use `vcgencmd commands`. Some useful commands and their required parameters are listed below.
 
-To get a list of all the commands that `vcgencmd` supports, type `vcgencmd commands`.
+### vcos
 
-Some of the more useful  commands are described below.
+The `vcos` command has two useful sub-commands:
 
-### Commands 
+- `version` displays the build date and version of the firmware on the VideoCore
+- `log status` displays the error log status of the various VideoCore firmware areas
 
-#### vcos
+### version
 
-The `vcos` command has a number of sub commands.
+Displays the build date and version of the VideoCore firmware.
 
-`version` Displays the build date and version of the firmware on the VideoCore.
-`log status` Displays the error log status of the various VideoCore software areas.
+### get_camera
 
-#### version
+Displays the enabled and detected state of the Raspberry Pi camera: `1` means yes, `0` means no. Whilst all firmware except cutdown versions support the camera, this support needs to be enabled by using [raspi-config](../../configuration/raspi-config.md).
 
-Displays the build date and version of the firmware on the VideoCore.
-
-#### get_camera
-
-Displays the enabled and detected state of the official camera. 1 means yes, 0 means no. Whilst all firmware (except cutdown versions) will support the camera, this support needs to be enabled by using [raspi-config](../../configuration/raspi-config.md).
-
-#### get_throttled
+### get_throttled
 
 Returns the throttled state of the system. This is a bit pattern - a bit being set indicates the following meanings:
 
 | Bit | Hex value | Meaning |
 |:---:|-----------|---------|
-| 0   | 1 | Under-voltage detected |
-| 1   | 2 | Arm frequency capped |
-| 2   | 4 | Currently throttled |
-| 3   | 8 | Soft temperature limit active |
-| 16  | 10000 | Under-voltage has occurred |
-| 17  | 20000 | Arm frequency capping has occurred |
-| 18  | 40000 | Throttling has occurred |
-| 19  | 80000 | Soft temperature limit has occurred |
+| 0   | 0x1 | Under-voltage detected |
+| 1   | 0x2 | Arm frequency capped |
+| 2   | 0x4 | Currently throttled |
+| 3   | 0x8 | Soft temperature limit active |
+| 16  | 0x10000 | Under-voltage has occurred |
+| 17  | 0x20000 | Arm frequency capping has occurred |
+| 18  | 0x40000 | Throttling has occurred |
+| 19  | 0x80000 | Soft temperature limit has occurred |
 
-A value of zero indicates that none of the above conditions is true.
-
-To find if one of these bits has been set, convert the value returned to binary, then number each bit along the top. You can then see which bits are set. For example:
-
-``0x50000 = 0101 0000 0000 0000 0000``
-
-Adding the bit numbers along the top we get:
-
-```text
-19 18 17 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
- 0  1  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-```
-
-From this we can see that bits 18 and 16 are set, indicating that the Pi has previously been throttled due to under-voltage, but is not currently throttled for any reason.
-
-Alternately, the values can be derived using the hex values above, by successively subtracting the largest value:
-
-``0x50000 = 40000 + 10000``
-
-#### measure_temp
+### measure_temp
 
 Returns the temperature of the SoC as measured by the on-board temperature sensor.
 
-#### measure_clock [clock]
+### measure_clock [clock]
 
 This returns the current frequency of the specified clock. The options are:
 
 | clock | Description |
 |:-----:|-------------|
-| arm   | ARM cores |
-| core  | VC4 scaler cores |
-| H264  | H264 block |
-| isp   | Image Signal Processor |
+| arm   | ARM core(s) |
+| core  | GPU core |
+| H264  | H.264 block |
+| isp   | Image Sensor Pipeline |
 | v3d   | 3D block |
 | uart  | UART |
 | pwm   | PWM block (analogue audio output) | 
 | emmc  | SD card interface |
-| pixel | Pixel valve |
+| pixel | Pixel valves |
 | vec | Analogue video encoder |
 | hdmi | HDMI |
-| dpi | Display Peripheral Interface |
+| dpi | Display Parallel Interface |
 
 e.g. `vcgencmd measure_clock arm`
 
-#### measure_volts [block]
+### measure_volts [block]
 
 Displays the current voltages used by the specific block.
 
@@ -98,23 +74,27 @@ Displays the current voltages used by the specific block.
 | sdram_i | SDRAM I/O voltage |
 | sdram_p | SDRAM Phy Voltage|
 
-#### otp_dump
+### otp_dump
 
-Displays the content of the One Time Programmable (OTP) memory, which is part of the SoC. These are 32 bit values, indexed from 8 to 64. See the [OTP bits page](../../hardware/raspberrypi/otpbits.md) for more details.
+Displays the content of the OTP (one-time programmable) memory inside the SoC. These are 32 bit values, indexed from 8 to 64. See the [OTP bits page](../../hardware/raspberrypi/otpbits.md) for more details.
 
-#### get_mem type
+### <a name="getconfig"></a>get_config [configuration item|int|str]
 
-Reports on the amount of memory allocated to the ARM cores `vcgencmd get_mem arm` and the VC4 `vcgencmd get_mem gpu`.
+Display value of the configuration setting specified: alternatively, specify either `int` (integer) or `str` (string) to see all configuration items of the given type. For example:
 
-**Note:** On a Raspberry Pi 4 with greater than 1GB of RAM, the `arm` option is inaccurate. This is because the GPU firmware which implements this command is only aware of the first gigabyte of RAM on the system, so the `arm` setting will always return 1GB minus the `gpu` memory value. To get an accurate report of the amount of ARM memory, use one of the standard Linux commands, such as `free` or `cat /proc/meminfo`
+```
+vcgencmd get_config total_mem
+```
+
+returns the total memory on the device in megabytes.
+
+### get_mem type
+
+Reports on the amount of memory addressable by the ARM  and the GPU. To show the amount of ARM-addressable memory use `vcgencmd get_mem arm`; to show the amount of GPU-addressable memory use `vcgencmd get_mem gpu`. Note that on devices with more than 1GB of memory the `arm` parameter will always return 1GB minus the `gpu` memory value, since the GPU firmware is only aware of the first 1GB of memory. To get an accurate report of the total memory on the device, see the `total_mem` configuration item - see [`get_config`](#getconfig) section above.
 
 #### codec_enabled [type]
 
-Reports whether the specified CODEC type is enabled. Possible options for type are AGIF, FLAC, H263, H264, MJPA, MJPB, MJPG, **MPG2**, MPG4, MVC0, PCM, THRA, VORB, VP6, VP8, **WMV9**, **WVC1**. Those highlighted currently require a paid for licence (see the [FAQ](../../faqs/README.md#pi-video) for more info), except on the Pi4, where these hardware codecs are disabled in preference to software decoding, which requires no licence. Note that because the H265 HW block on the Raspberry Pi4 is not part of the VideoCore GPU, its status is not accessed via this command.
-
-#### get_config type | name
-
-This returns all the configuration items of the specified type that have been set in config.txt, or a single configuration item. Possible values for type parameter are **int, str**, or simply use the name of the configuration item.
+Reports whether the specified CODEC type is enabled. Possible options for type are AGIF, FLAC, H263, H264, MJPA, MJPB, MJPG, **MPG2**, MPG4, MVC0, PCM, THRA, VORB, VP6, VP8, **WMV9**, **WVC1**. Those highlighted currently require a paid for licence (see the [FAQ](../../faqs/README.md#pi-video) for more info), except on the Pi 4 and 400, where these hardware codecs are disabled in preference to software decoding, which requires no licence. Note that because the H.265 HW block on the Raspberry Pi 4 and 400 is not part of the VideoCore GPU, its status is not accessed via this command.
 
 #### get_lcd_info
 
@@ -122,11 +102,11 @@ Displays the resolution and colour depth of any attached display.
 
 #### mem_oom
 
-Displays statistics on any Out Of Memory events occurring in the VC4 memory space.
+Displays statistics on any OOM (out of memory) events occuring in the VideoCore memory space.
 
 #### mem_reloc_stats
 
-Displays statistics from the relocatable memory allocator on the VC4.
+Displays statistics from the relocatable memory allocator on the VideoCore.
 
 #### read_ring_osc
 
