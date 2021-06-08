@@ -60,7 +60,7 @@ The Raspberry Pi Camera Modules are official products from the Raspberry Pi Foun
 
 ## Software features
 
-Full camera software documentation can be found [here](../../raspbian/applications/camera.md).
+Full camera legacy-software documentation can be found [here](../../raspbian/applications/camera.md). The newer `libcamera` approach to camera software is documented [here](../../linux/software/libcamera/README.md).
 
 | | |
 | --- | --- |
