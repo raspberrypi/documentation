@@ -6,7 +6,7 @@ We also have a [tutorial about setting up a network boot system](net_tutorial.md
 To network boot, the boot ROM does the following:
 
 * Initialise on-board Ethernet device (Microchip LAN9500 or LAN7500)
-* Send DHCP request
+* Send DHCP request (with Vendor Class identifier DHCP option 60 set to 'PXEClient:Arch:00000:UNDI:002001')
 * Receive DHCP reply
 * (optional) Receive DHCP proxy reply
 * ARP to tftpboot server
