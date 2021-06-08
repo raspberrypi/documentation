@@ -140,3 +140,7 @@ This list is not exhaustive, there may be codes in use in the field that are not
 | c03114 | 4B                | 1.4      | 4GB   | Sony UK      |
 | d03114 | 4B                | 1.4      | 8GB   | Sony UK      |
 | c03130 | Pi 400            | 1.0      | 4GB   | Sony UK      |
+| a03140 | CM4               | 1.0      | 1GB   | Sony UK      |
+| b03140 | CM4               | 1.0      | 2GB   | Sony UK      |
+| c03140 | CM4               | 1.0      | 4GB   | Sony UK      |
+| d03140 | CM4               | 1.0      | 8GB   | Sony UK      |
