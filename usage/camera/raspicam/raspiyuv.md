@@ -6,4 +6,4 @@ In most cases using `raspistill` is the best option for standard image capture, 
 
 There are some specific points about the YUV420 files that are required in order to use them correctly. Line stride (or pitch) is a multiple of 32, and each plane of YUV is a multiple of 16 in height. This can mean there may be extra pixels at the end of lines, or gaps between planes, depending on the resolution of the captured image. These gaps are unused.
 
-See [this page](./raw.md) for more details.
+See [this page](raw.md) for more details.

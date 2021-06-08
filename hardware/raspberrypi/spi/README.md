@@ -248,4 +248,4 @@ DE AD BE EF BA AD
 F0 0D
 ```
 
-Some of the content above has been copied from [https://elinux.org/RPi_SPI](the elinux SPI page), which also borrows from here. Both are covered by the CC-SA license.
+Some of the content above has been copied from [the elinux SPI page](https://elinux.org/RPi_SPI), which also borrows from here. Both are covered by the CC-SA license.

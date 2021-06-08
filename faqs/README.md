@@ -230,7 +230,7 @@ You can check our [products](https://www.raspberrypi.org/products/) pages for mo
 <a name="hardware-doc"></a>
 ### What hardware documentation is available?
 
-All available documentation is in our [documentation repository](./README.md).
+All available documentation is in our [documentation repository](../README.md).
 
 <a name="hardware-interfaces"></a>
 ### What hardware interfaces does it have?
@@ -374,7 +374,7 @@ It's also easy to copy files to and from Windows devices, rather than sharing fo
 <a name="pi-software-cpuinfo"></a>
 ### Why does `cpuinfo` report I have a BCM2835?
 
-The upstream Linux kernel developers had decided that all models of Raspberry Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that `cat /proc/cpuinfo` is inaccurate for the Raspberry Pi 2, Raspberry Pi 3 and Raspberry Pi 4, which use the bcm2836/bcm2837, bcm2837 and bcm2711 respectively. You can use `cat /proc/device-tree/model` to get an accurate description of the SoC on your Raspberry Pi model.
+The upstream Linux kernel developers had decided that all models of Raspberry Pi return bcm2835 as the SoC name. At Raspberry Pi we like to use as much upstream kernel code as possible, as it makes software maintenance much easier, so we use this code. Unfortunately it means that `cat /proc/cpuinfo` is inaccurate for the Raspberry Pi 2, Raspberry Pi 3 and Raspberry Pi 4, which use the bcm2836/bcm2837, bcm2837 and bcm2711 respectively. You can use `cat /proc/device-tree/model` to get an accurate description of the SoC on your Raspberry Pi model. See the [Raspberry Pi revision codes](../hardware/raspberrypi/revision-codes/README.md) for more information.
 
 <a name="pi-software-autostart"></a>
 ### How do I run a program at startup?
@@ -394,7 +394,7 @@ With Cron! [Here's how](../linux/usage/cron.md).
 
 There is composite and HDMI out on the board, so you can hook it up to an old analogue TV through the composite or through a composite to SCART connector, to a digital TV or to a DVI monitor (using a cheap, passive HDMI to DVI cable for the DVI). For the Model B+, Raspberry Pi 2, and Raspberry Pi 3, the RCA composite jack has been replaced with a 3.5mm jack that combines audio and video in one. You'll need a 3.5mm to 3RCA adapter cable to connect it to an older TV. There are many different types of this cable out there, but you want to purchase one that is compatible with the iPod Video (the iPod will have the left and right audio channels reversed, but the version of Raspberry Pi OS included with NOOBS can swap this for you). The Raspberry Pi Zero uses a mini-HDMI port.
 
-The Raspberry Pi 4 has support for two HDMI monitors, which attach via micro HDMI ports. It is also capable of displaying at full resolution on a 4K monitor or TV. Note that for best HDMI performance at 4K, a good-quality HDMI cable is required. We sell a full set of ancilliary components, including HDMI cables.
+The Raspberry Pi 4 has support for two HDMI monitors, which attach via micro HDMI ports. It is also capable of displaying at full resolution on a 4K monitor or TV. Note that for best HDMI performance at 4K, a good-quality HDMI cable is required. We sell a full set of ancillary components, including HDMI cables.
 
 <a name="pi-video-hdmicec"></a>
 ### Does the HDMI port support CEC?
@@ -626,7 +626,7 @@ To protect your information, Linux does not display anything when you are enteri
 <a name="troubleshoot-boot"></a>
 ### Why does my Raspberry Pi not start up/boot?
 
-Probably the most frequently asked question! We have full instructions for setting up your Raspberry Pi [here](../setup/), but if it still will not boot, you will find advice on what to do in the [troubleshooting post on our forum](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=58151).
+Probably the most frequently asked question! We have full instructions for setting up your Raspberry Pi [here](../setup/README.md), but if it still will not boot, you will find advice on what to do in the [troubleshooting post on our forum](https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=58151).
 
 <a name="troubleshoot-temp"></a>
 ### Why is my Raspberry Pi hot?

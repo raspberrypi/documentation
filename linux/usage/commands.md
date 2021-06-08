@@ -63,7 +63,7 @@ The `chown` command changes the user and/or group that owns a file. It normally 
 ### ssh
 
 `ssh` denotes the secure shell. Connect to another computer using an encrypted network connection.
-For more details see [SSH (secure shell)](../../remote-access/ssh/)
+For more details see [SSH (secure shell)](../../remote-access/ssh/README.md)
 
 ### scp
 

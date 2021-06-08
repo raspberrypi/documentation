@@ -16,18 +16,18 @@ Note that the Raspberry Pi 4 has two micro HDMI connectors, which require a good
 
 For monitors with a DVI port, you can use an HDMI-to-DVI cable, or an HDMI cable with a DVI adapter. Note that the DVI standard does not support audio.
 
-![DVI-HDMI cable](images/dvi_hdmi_cable.png)   
+![DVI-HDMI cable](images/dvi_hdmi_cable.png)
 
 ### VGA
 
 For monitors with VGA only, you can use an HDMI-to-VGA adapter. Note that VGA does not support audio.
 
-![VGA-HDMI adapter](images/hdmi-vga.jpeg)   
+![VGA-HDMI adapter](images/hdmi-vga.jpg)
 
 ## Composite Port
 
 All models of Raspberry Pi have a composite out port for connecting to analog devices, but the type of connector varies depending on the model. The original Raspberry Pi used an RCA connector, and a standard RCA composite video lead will work. Others models (Raspberry Pi B+ and later) combine the audio out and composite out on to the same 3.5mm jackplug. This requires a particular type of lead, with audio left on the tip, audio right on ring 1, ground on ring 2, and video on the sleeve. This is the same as leads used on the Zune, and on Apple devices.
 
-![RCA cable](images/rca_connector.png)   
+![RCA cable](images/rca_connector.png)
 
 More information on connecting to a monitor can be found in our [learning resources section](https://www.raspberrypi.org/learning/hardware-guide/equipment/).

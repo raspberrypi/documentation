@@ -2,7 +2,7 @@
 
 **The following boot sequence applies to the BCM2837 and BCM2837B0 based models of Raspberry Pi only. On models prior to this, the Pi will try [SD card boot](sdcard.md), followed by [USB device mode boot](device.md). For the Raspberry Pi4 boot sequence please see [this](bootflow_2711.md) page**
 
-USB boot defaults on the Raspberry Pi 3 will depend on which version is being used. See this [page](./msd.md) for information on enabling USB boot modes when not enabled by default.
+USB boot defaults on the Raspberry Pi 3 will depend on which version is being used. See this [page](msd.md) for information on enabling USB boot modes when not enabled by default.
 
 When the BCM2837 boots, it uses two different sources to determine which boot modes to enable. Firstly, the OTP (one-time programmable) memory block is checked to see which boot modes are enabled. If the GPIO boot mode setting is enabled, then the relevant GPIO lines are tested to select which of the OTP-enabled boot modes should be attempted. Note that GPIO boot mode can only be used to select boot modes that are already enabled in the OTP. See [GPIO boot mode](gpio.md) for details on configuring GPIO boot mode. GPIO boot mode is disabled by default.
 

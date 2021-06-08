@@ -77,13 +77,13 @@ Full camera software documentation can be found [here](../../raspbian/applicatio
 
 The HQ Camera uses a Hoya CM500 infrared filter. Its transmission characteristics are as represented in the following graph.
 
-![CM500 Transmission Graph](./hoyacm500.png)
+![CM500 Transmission Graph](images/hoyacm500.png)
 
 ## Mechanical drawing
 
 - Camera Module v2 [PDF](mechanical/rpi_MECH_Camera2_2p1.pdf)
 - HQ Camera Module [PDF](mechanical/rpi_MECH_HQcamera_1p0.pdf)
-- HQ Camera Module lens mount[PDF](mechanical/rpi_MECH_HQcamera_lensmount_1p0.pdf)
+- HQ Camera Module lens mount [PDF](mechanical/rpi_MECH_HQcamera_lensmount_1p0.pdf)
   
 ## Schematics
 

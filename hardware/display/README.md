@@ -12,7 +12,7 @@ The DSI display is designed to work with all models of Raspberry Pi, however ear
 
 The following image shows how to attach the Raspberry Pi to the back of the Touch Display (if required), and how to connect both the data (ribbon cable) and power (red/black wires) from the Raspberry Pi to the display. If you are not attaching the Raspberry Pi to the back of the display, take extra care when attaching the ribbon cable to ensure it is the correct way round. The black and red power wires should be attached to the GND and 5v pins respectively.
 
-![DSI Display Connections](GPIO_power-500x333.jpg "DSI Display Connections")
+![DSI Display Connections](images/GPIO_power-500x333.jpg "DSI Display Connections")
 
 [Legacy support for Raspberry Pi 1 Model A/B](legacy.md)
 
@@ -106,5 +106,5 @@ Read our troubleshooting steps, tips, and tricks here: [Raspberry Pi Touch Displ
 
 * Outer dimensions: 192.96 × 110.76mm
 * Viewable area: 154.08 × 85.92mm
-* [Download mechanical drawing (PDF, 592kb)](7InchDisplayDrawing-14092015.pdf)
-* [Additional drawing including radius and thickness of glass](radius.png)
+* [Download mechanical drawing (PDF)](mechanical/7InchDisplayDrawing-14092015.pdf)
+* [Additional drawing including radius and thickness of glass](mechanical/radius.png)

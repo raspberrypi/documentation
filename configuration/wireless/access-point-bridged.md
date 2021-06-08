@@ -3,7 +3,7 @@
 
 The Raspberry Pi can be used as a bridged wireless access point within an existing Ethernet network. This will extend the network to wireless computers and devices.
 
-If you wish to create a standalone wireless network, consider instead setting up a [routed access point](./access-point-routed.md).
+If you wish to create a standalone wireless network, consider instead setting up a [routed access point](access-point-routed.md).
 
 ```
                                          +- RPi -------+

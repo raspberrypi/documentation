@@ -6,4 +6,4 @@ You can find this tool in the desktop Preferences menu, but only if the 3D graph
 
 On the whole, the editor is self-explanatory: use the Configure menu option to select the screen, resolution, and orientation. If you're using a multi-screen setup, drag around the displays to any position you want. When you have the required setup, click the Tick button to apply the settings. 
 
-There is more information on setting display orientation on this [page](./display_rotation.md)
+There is more information on setting display orientation on this [page](display_rotation.md)

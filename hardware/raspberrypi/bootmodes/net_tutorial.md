@@ -6,11 +6,11 @@ Due to the huge range of networking devices available, we can't guarantee that n
 
 ## Client configuration
 
-This section only applies to the **original** Raspberry Pi 3B; if you are using the 3B+, then ignore this section and skip to the server section below then.
+This section only applies to the **original** Raspberry Pi 3B; if you are using the 3B+ or Pi 4 then ignore this section and skip to the server section below then.
 
-Before a Raspberry Pi will network boot, it needs to be booted from an SD card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the SD card is no longer required. 
+Before a Raspberry Pi will network boot, it needs to be booted from an SD card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the SD card is no longer required.
 
-Install Raspberry Pi OS Lite (or Raspberry Pi OS with Raspberry Pi Desktop) on the SD card in the [usual way](../../../installation/installing-images/README.md). 
+Install Raspberry Pi OS Lite (or Raspberry Pi OS with Raspberry Pi Desktop) on the SD card in the [usual way](../../../installation/installing-images/README.md).
 
 Afterwards, set up USB boot mode by preparing the `/boot` directory with the latest boot files:
 
@@ -26,14 +26,29 @@ echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
 
 This adds `program_usb_boot_mode=1` to the end of `/boot/config.txt`. Reboot the Raspberry Pi with `sudo reboot`. Once the client Raspberry Pi has rebooted, check that the OTP has been programmed with:
 
-```
-$ vcgencmd otp_dump | grep 17:
+```bash
+vcgencmd otp_dump | grep 17:
 17:3020000a
 ```
 
 Ensure the output `0x3020000a` is correct.
 
 The client configuration is almost done. The final thing to do is to remove the `program_usb_boot_mode` line from `config.txt` (make sure there is no blank line at the end). You can do this with `sudo nano /boot/config.txt`, for example. Finally, shut the client Raspberry Pi down with `sudo poweroff`.
+
+## Ethernet MAC address
+Before configuring network boot make a note of the serial number and mac address so that the board can be identified by the TFTP/DHCP server.
+
+On Raspberry Pi 4 the MAC address is programmed at manufacture and there is no link between the MAC address and serial number. Both the MAC address and serial numbers are displayed on the bootloader [HDMI diagnostics](../boot_diagnostics.md) screen.
+
+To find the Ethernet MAC address:  
+```bash
+ethtool -P eth0
+```
+
+To find the serial number:  
+```bash
+grep Serial /proc/cpuinfo | cut -d ' ' -f 2 | cut -c 8-16
+```
 
 ## Server configuration
 
@@ -75,7 +90,7 @@ ip -4 addr show dev eth0 | grep inet
 
 which should give an output like:
 
-```
+```bash
 inet 10.42.0.211/24 brd 10.42.0.255 scope global eth0
 ```
 
@@ -91,7 +106,7 @@ Configure a static network address on your server Raspberry Pi via the `systemd`
 
 To do that, you'll need to to create a `10-eth0.netdev` and a `11-eth0.network` like so:
 
-```
+```bash
 sudo nano /etc/systemd/network/10-eth0.netdev
 ```
 
@@ -107,7 +122,7 @@ DHCP=no
 
 Then create a network file:
 
-```
+```bash
 sudo nano /etc/systemd/network/11-eth0.network
 ```
 
@@ -245,7 +260,7 @@ root=/dev/nfs nfsroot=10.42.0.211:/nfs/client1,vers=4.1,proto=tcp rw ip=dhcp roo
 You should substitute the IP address here with the IP address you have noted down. Also remove any part of the command line starting with init=.
 
 Finally, edit `/nfs/client1/etc/fstab` and remove the `/dev/mmcblk0p1` and `p2` lines (only `proc` should be left). Then, add the boot partition back in:
-```
+```bash
 echo "10.42.0.211:/tftpboot /boot nfs defaults,vers=4.1,proto=tcp 0 0" | sudo tee -a /nfs/client1/etc/fstab
 ```
 

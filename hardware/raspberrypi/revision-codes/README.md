@@ -57,7 +57,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 | Q        | OTP Read<sup>1</sup> | 0: OTP reading allowed |
 |          |              | 1: OTP reading disallowed    |
 | uuu      | Unused       | Unused                     |
-| W        | Warranty bit | 0: Warranty is intact      |
+| W        | Warranty bit<sup>2</sup> | 0: Warranty is intact      |
 |          |              | 1: Warranty has been voided by [overclocking](../../../configuration/config-txt/overclocking.md) |
 | u        | Unused       | Unused                     |
 | F        | New flag     | 1: new-style revision      |
@@ -100,8 +100,11 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 
 <sup>1</sup> Information on programming the OTP bits can be found [here](../../industrial/README.md) and [here](../otpbits.md).
 
+<sup>2</sup> Warranty bit is never set on Pi4.
 
-New-style revision codes in use:
+### New-style revision codes in use.
+
+This list is not exhaustive, there may be codes in use in the field that are not in this table.
 
 | Code   | Model             | Revision | RAM    | Manufacturer |
 | ------ | ----------------- | -------- | -------| ------------ |
@@ -137,3 +140,7 @@ New-style revision codes in use:
 | c03114 | 4B                | 1.4      | 4GB   | Sony UK      |
 | d03114 | 4B                | 1.4      | 8GB   | Sony UK      |
 | c03130 | Pi 400            | 1.0      | 4GB   | Sony UK      |
+| a03140 | CM4               | 1.0      | 1GB   | Sony UK      |
+| b03140 | CM4               | 1.0      | 2GB   | Sony UK      |
+| c03140 | CM4               | 1.0      | 4GB   | Sony UK      |
+| d03140 | CM4               | 1.0      | 8GB   | Sony UK      |

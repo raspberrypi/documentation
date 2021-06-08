@@ -4,7 +4,7 @@ Raspberry Pi currently sell two types of camera board: an [8MP device](https://w
 
 All Raspberry Pi cameras are capable of taking high-resolution photographs, along with full HD 1080p video, and can be fully controlled programmatically. This documentation describes how to use the camera in various scenarios, and how to use the various software tools.
 
-For installation information, please see [this page](./installing.md).
+For installation information, please see [this page](installing.md).
 
 
 ## Basic camera usage
@@ -18,10 +18,10 @@ You can also programatically access the camera using the [Python programming lan
 
 Advanced features, along with some hints and tips, are described in the following pages:
 
-- [Using RAW](./raspicam/raw.md)
-- [Long exposures](./raspicam/longexp.md)
-- [Directly accessing sensors](./raspicam/direct.md)
-- [Using V4L2 to access the camera (e.g. Using Pi cameras as webcams)](./raspicam/v4l2.md)
+- [Using RAW](raspicam/raw.md)
+- [Long exposures](raspicam/longexp.md)
+- [Directly accessing sensors](raspicam/direct.md)
+- [Using V4L2 to access the camera (e.g. Using Pi cameras as webcams)](raspicam/v4l2.md)
 - [Removing the HQ camera IR filter](../../hardware/camera/hqcam_filter_removal.md)
 
 ## libcamera - The future of Raspberry Pi camera software

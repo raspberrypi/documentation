@@ -23,7 +23,7 @@ You can also use the command line to mirror the display using the `--reflect` op
 xrandr --output HDMI-1 --reflect x
 ```
 
-If you are using the console only (no graphical desktop) then you will need to set the appropriate kernel command line flags. Change the console settings as described on the [this page](./cmdline-txt.md).
+If you are using the console only (no graphical desktop) then you will need to set the appropriate kernel command line flags. Change the console settings as described on the [this page](cmdline-txt.md).
 
 ### Legacy graphics driver (default on models prior to the Pi4)
 

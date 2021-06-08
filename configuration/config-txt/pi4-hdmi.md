@@ -17,7 +17,7 @@ hdmi_group=2
 hdmi_mode=87
 hdmi_cvt=1360 768 60
 ```
-to [config.txt](./video.md).
+to [config.txt](video.md).
 
 Timings specified manually via a `hdmi_timings=` line in `config.txt` will also need to comply with the restriction of all horizontal timing parameters being divisible by 2.
 

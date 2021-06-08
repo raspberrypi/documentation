@@ -2,7 +2,7 @@
 
 A Raspberry Pi within an Ethernet network can be used as a wireless access point, creating a secondary network. The resulting new wireless network is entirely managed by the Raspberry Pi.
 
-If you wish to extend an existing Ethernet network to wireless clients, consider instead setting up a [bridged access point.](./access-point-bridged.md)
+If you wish to extend an existing Ethernet network to wireless clients, consider instead setting up a [bridged access point](access-point-bridged.md).
 
 ```
                                          +- RPi -------+

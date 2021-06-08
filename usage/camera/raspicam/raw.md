@@ -14,7 +14,7 @@ e.g.
 
 `raspistill --encoding png -o fred.png`
 
-Another option is to use the [`raspiyuv`](./raspiyuv.md) application. This avoids any final formatting stage, and writes raw YUV420 or RGB888 data to the requested file. YUV420 is the format used in much of the ISP, so this can be regarded as a dump of the processed image data at the end of the ISP processing.
+Another option is to use the [`raspiyuv`](raspiyuv.md) application. This avoids any final formatting stage, and writes raw YUV420 or RGB888 data to the requested file. YUV420 is the format used in much of the ISP, so this can be regarded as a dump of the processed image data at the end of the ISP processing.
 
 ## Unprocessed images
 
