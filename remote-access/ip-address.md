@@ -92,8 +92,8 @@ The example shows two IP addresses. The first one is a so called unique local un
 Now use one of IPs from the first step for ping all local nodes:
 
 ```
-ping -c 2 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293  ff02::1`
-ping -c 2 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293  ff02::1%eth0`
+ping -c 2 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293  ff02::1
+ping -c 2 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293  ff02::1%eth0
 ```
 `-c 2` stands for sending two echo requests
 
