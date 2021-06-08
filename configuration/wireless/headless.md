@@ -20,7 +20,26 @@ network={
 }
 ```
 
-Note that some older wireless dongles don't support 5GHz networks.
+Here is a more elaborate example that should work for most typical wpa2 personal networks. This template below works for 2.4ghz/5ghz hidden or not networks. The utilization of quotes around the ssid - psk can help avoid any oddities if your network ssid or password has special chars (! @ # $ etc)
+
+```ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=<Insert 2 letter ISO 3166-1 country code here>
+
+
+
+network={
+        scan_ssid=1
+        ssid="<Name of your wireless LAN>"
+        psk="<Password for your wireless LAN>"
+        proto=RSN
+        key_mgmt=WPA-PSK
+        pairwise=CCMP
+        auth_alg=OPEN
+}
+```
+
+Note that some older pi's (zerow or 3b) or usb wireless dongles don't support 5GHz networks.
 
 More information on the `wpa_supplicant.conf` file can be found [here](wireless-cli.md). See [Wikipedia](https://en.wikipedia.org/wiki/ISO_3166-1) for a list of 2 letter ISO 3166-1 country codes.
 
