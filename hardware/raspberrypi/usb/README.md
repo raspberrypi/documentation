@@ -2,12 +2,6 @@
 
 In general, every device supported by Linux can be used with a Raspberry Pi, although there are some limitations for models prior to Pi 4.
 
-## Raspberry Pi 4
-
-The Pi 4 contains two USB 3.0 ports and two USB 2.0 ports which are connected to a VL805 USB controller. The USB 2.0 lines on all four ports are connected to a single USB 2.0 hub within the VL805: this limits the total available bandwidth for USB 1.1 and USB 2.0 devices to that of a single USB 2.0 port.
-
-On the Pi 4, the USB controller used on previous models is located on the USB type C port and is disabled by default.
-
 ## Power
 
 As with all computers, there are limits to how much power you can draw from a USB port on the Raspberry Pi. Power is often the cause of problems with USB devices: to rule out power as the cause of an issue, connect your device via a powered USB hub.
@@ -18,6 +12,12 @@ As with all computers, there are limits to how much power you can draw from a US
 | Pi 2, 3, 4  | 1200mA total across all ports |
 
 1. For the original Pi 1B the limit is 100mA per port.
+
+## Raspberry Pi 4
+
+The Pi 4 contains two USB 3.0 ports and two USB 2.0 ports which are connected to a VL805 USB controller. The USB 2.0 lines on all four ports are connected to a single USB 2.0 hub within the VL805: this limits the total available bandwidth for USB 1.1 and USB 2.0 devices to that of a single USB 2.0 port.
+
+On the Pi 4, the USB controller used on previous models is located on the USB type C port and is disabled by default.
 
 ## Raspberry Pi Zero, 1, 2 and 3
 
