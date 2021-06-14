@@ -4,7 +4,7 @@ In general, every device supported by Linux can be used with a Raspberry Pi, alt
 
 ## Power
 
-As with all computers, there are limits to how much power you can draw from a USB port on the Raspberry Pi. Power is often the cause of problems with USB devices: to rule out power as the cause of an issue, connect your device via a powered USB hub.
+As with all computers, the USB ports on the Raspberry Pi supply a limited amount of power. Often problems with USB devices are caused by power issues. To rule out power as the cause of an problem, connect your USB devices to the Raspberry Pi using a powered hub.
 
 | Model | Max power output of USB ports |
 |-------|-------------------|
