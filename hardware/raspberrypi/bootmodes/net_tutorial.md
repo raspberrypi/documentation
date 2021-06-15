@@ -185,6 +185,7 @@ sudo nano /etc/dnsmasq.conf
 Then replace the contents of `dnsmasq.conf` with:
 
 ```
+# Note: comment out port if you want DNS services for systems on the network. 
 port=0
 dhcp-range=10.42.0.255,proxy
 log-dhcp
