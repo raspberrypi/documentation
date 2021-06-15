@@ -189,7 +189,13 @@ Default: `0`
 ### HDMI_DELAY
 Skip rendering of the HDMI diagnostics display for up to N seconds (default 5) unless a fatal error occurs. The default behaviour is designed to avoid the bootloader diagnostics screen from briefly appearing during a normal SD / USB boot.
 
-Default: `5`  
+Default: `8`  
+
+<a name="HDMI_DISABLE"></a>
+### HDMI_DISABLE
+Disable the HDMI diagnostics display.
+
+Default: `0` (show diagnostic output)
 
 <a name="ENABLE_SELF_UPDATE"></a>
 ### ENABLE_SELF_UPDATE
