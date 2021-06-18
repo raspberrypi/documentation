@@ -30,8 +30,8 @@ As well as simple input and output devices, the GPIO pins can be used with a var
     - Software PWM available on all pins
     - Hardware PWM available on GPIO12, GPIO13, GPIO18, GPIO19
 - SPI
-    - SPI0: MOSI (GPIO10); MISO (GPIO9); SCLK (GPIO11); CE0 (GPIO8), CE1 (GPIO7)
-    - SPI1: MOSI (GPIO20); MISO (GPIO19); SCLK (GPIO21); CE0 (GPIO18); CE1 (GPIO17); CE2 (GPIO16)
+    - SPI0: SDO (previously called MOSI) (GPIO10); SDI (previously called MISO) (GPIO9); SCLK (GPIO11); CE0 (GPIO8), CE1 (GPIO7)
+    - SPI1: SDO (previously called MOSI) (GPIO20); SDI (previously called MISO) (GPIO19); SCLK (GPIO21); CE0 (GPIO18); CE1 (GPIO17); CE2 (GPIO16)
 - I2C
     - Data: (GPIO2); Clock (GPIO3)
     - EEPROM Data: (GPIO0); EEPROM Clock (GPIO1)
