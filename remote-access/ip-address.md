@@ -79,6 +79,68 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 2.41 seconds
 
 Here you can see a device with hostname `raspberrypi` has IP address `192.168.1.8`. Note, to see the hostnames, you must run nmap as root by prepending `sudo` to the command.
 
+### Getting IPv6 addresses by pinging from a second device (linux device or Pi)
+
+First find your own IP address(es), in other words the one of the computer you're using to find your Pi's IP address
+by `hostname -I`
+
+`fd00::ba27:ebff:feb6:f293 2001:db8:494:9d01:ba27:ebff:feb6:f293`
+
+The example shows two IP addresses. The first one is a so called unique local unicast address(`fc00::/7`). The second one is the global unicast address(`2000::/3`). It is also possible to see only one them depending on your network (router) configuration. Both addresses are valid for reaching the Raspberry Pi within your LAN. The address out of `2000::/3` is accessible world wide, provided your router's firewall is opened.
+
+
+Now use one of IPs from the first step to ping all local nodes:
+
+```
+ping -c 2 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293  ff02::1
+ping -c 2 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293  ff02::1%eth0
+```
+`-c 2` stands for sending two echo requests
+
+`-I` with the IP address, it sets the interface and the source address of the echo request,
+     it is necessary to choose the interface's IP address, 
+     `eth0` isn't sufficient - the answer would be the local link address(`fe80::/10`), we need the global or local unicast address
+     
+`ff02::1` is a well known multicast address for all nodes on the link, so it behaves like a local broadcast, usually it is defined in `/etc/hosts` so you can also use the name (`ip6-allnodes` or `ipv6-allnodes`) instead of the literal address
+
+Some newer systems expect the interface ID behind the multicast address.   
+
+```
+ping -c 2 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293 ip6-allnodes
+PING ip6-allnodes(ip6-allnodes (ff02::1)) from 2001:db8:494:9d01:ba27:ebff:feb6:f293 : 56 data bytes
+64 bytes from 2001:db8:494:9d01:ba27:ebff:feb6:f293: icmp_seq=1 ttl=64 time=0.597 ms
+64 bytes from witz.fritz.box (2001:db8:494:9d01:728b:cdff:fe7d:a2e): icmp_seq=1 ttl=255 time=1.05 ms (DUP!)
+64 bytes from raspberrypi4.fritz.box (2001:db8:494:9d01:dea6:32ff:fe23:6be1): icmp_seq=1 ttl=64 time=1.05 ms (DUP!)
+64 bytes from 2001:db8:494:9d01:da37:beff:fefd:f09d (2001:db8:494:9d01:da37:beff:fefd:f09d): icmp_seq=1 ttl=255 time=1.05 ms (DUP!)
+64 bytes from fusion.fritz.box (2001:db8:494:9d01:1e6f:65ff:fec9:8746): icmp_seq=1 ttl=255 time=2.12 ms (DUP!)
+64 bytes from fritz.box (2001:db8:494:9d01:464e:6dff:fe72:8a08): icmp_seq=1 ttl=64 time=2.62 ms (DUP!)
+64 bytes from raspberrypi.fritz.box (2001:db8:494:9d01:ba27:ebff:feb6:f293): icmp_seq=2 ttl=64 time=0.480 ms
+
+--- ip6-allnodes ping statistics ---
+2 packets transmitted, 2 received, +5 duplicates, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 0.480/1.283/2.623/0.735 ms
+
+```
+This should result in replies from all the nodes on your (W)LAN link, with associated DNS names.
+
+Exclude your own IP( here `2001:db8:494:9d01:ba27:ebff:feb6:f293` ), 
+then check the others by trying to connect them via SSH.
+
+```
+ssh pi@2001:db8:494:9d01:dea6:32ff:fe23:6be1
+The authenticity of host '2001:db8:494:9d01:dea6:32ff:fe23:6be1 (2001:db8:494:9d01:dea6:32ff:fe23:6be1)' can't be established.
+ECDSA key fingerprint is SHA256:DAW68oen42TdWDyrOycDZ1+y5ZV5D81kaVoi5FnpvoM.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '2001:db8:494:9d01:dea6:32ff:fe23:6be1' (ECDSA) to the list of known hosts.
+pi@2001:db8:494:9d01:dea6:32ff:fe23:6be1's password: 
+Linux raspberrypi4 4.19.75-v7l+ #1270 SMP Tue Sep 24 18:51:41 BST 2019 armv7l
+
+...
+
+pi@raspberrypi4:~ $
+
+```
+
 ### Getting the IP address of a Pi using your smartphone
 
 The Fing app is a free network scanner for smartphones. It is available for [Android](https://play.google.com/store/apps/details?id=com.overlook.android.fing) and [iOS](https://itunes.apple.com/gb/app/fing-network-scanner/id430921107?mt=8).
