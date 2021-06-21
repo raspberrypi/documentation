@@ -5,9 +5,11 @@ To create a time-lapse video, you simply configure the Raspberry Pi to take a pi
 ## Using raspistill's inbuilt time-lapse mode
 
 The `raspistill` application has a built in time-lapse mode, using the `--timelapse` (or `-tl`) command line switch. The value that follows the switch is the time between shots in milliseconds:
+
 ```
 raspistill -t 30000 -tl 2000 -o image%04d.jpg
 ```
+
 Note the `%04d` in the output filename: this indicates the point in the filename where you want a frame count number to appear. So, for example, the command above will produce a capture every two seconds (2000ms), over a total period of 30 seconds (30000ms), named image0001.jpg, image0002.jpg, and so on, through to image0015.jpg.
 
 The `%04d` indicates a four-digit number, with leading zeros added to make up the required number of digits. So, for example, `%08d` would result in an eight-digit number. You can miss out the `0` if you don't want leading zeros.
@@ -38,45 +40,28 @@ Make sure that you use e.g. `%04d` to make `raspistill` output each image to a n
 
 ## Stitching images together
 
-Now you'll need to stitch the photos together into a video. You can do this on the Pi using `mencoder` but the processing will be slow. You may prefer to transfer the image files to your desktop computer or laptop and produce the video there.
+Now you'll need to stitch the photos together into a video. You can do this on the Pi using `ffmpeg` but the processing will be slow. You may prefer to transfer the image files to your desktop computer or laptop and produce the video there.
 
-Navigate to the folder containing all your images and list the file names in to a text file. For example:
-
-```
-ls *.jpg > stills.txt
-```
-### On the Raspberry Pi
-
-Although it will be slow (due to encoding in software rather than using the Raspberry Pi hardware acceleration), you can stitch your JPEG images together using various available tools. This documentation will use `avconv`, which needs to be installed.
-```
-sudo apt install libav-tools
-```
-Now you can use the tools to convert your JPEG files in to an H264 video file:
-```
-avconv -r 10 -i image%04d.jpg -r 10 -vcodec libx264 -vf scale=1280:720 timelapse.mp4
-```
-On a Raspberry Pi 3, this can encode a little more than one frame per second. The performance of other Pi models will vary. The parameters used are:
-
- - -r 10 Assume ten frames per second in input and output files.
- - -i image%04.jpg The input file specification (to match the files produced during the capture).
- - -vcodec libx264 Use the software x264 encoder.
- - -vf scale=1280:720 Scale to 720p. You can also use 1920:1080, or lower resolutions, depending on your requirements. Note the Pi can only play back up to 1080p video, but if you are intending to play back at, for example, 4K, you could set that here.
- - timelapse.mp4 The name of the output file.
-
-`avconv` has a comprehensive parameter set for varying encoding options and other settings. These can be listed using `avconv --help`.
-
-### On another Linux computer
-
-You can use the same instructions as for the Raspberry Pi, or an alternative package such as `mencoder`:
+First you will need to install `ffmpeg` if it's not already installed.
 
 ```
-sudo apt install mencoder
+sudo apt install ffmpeg
 ```
 
-Now run the following command:
+Now you can use the `ffmpeg` tool to convert your JPEG files into an mp4 video:
 
 ```
-mencoder -nosound -ovc lavc -lavcopts vcodec=mpeg4:aspect=16/9:vbitrate=8000000 -vf scale=1920:1080 -o timelapse.avi -mf type=jpeg:fps=24 mf://@stills.txt
+ffmpeg -r 10 -f image2 -pattern_type glob -i 'image_*.jpg' -s 1280x720 -vcodec libx264 timelapse.mp4
 ```
 
-Once that's completed, you should have a video file called `timelapse.avi` containing a time-lapse from your images.
+On a Raspberry Pi 3, this can encode a little more than two frames per second. The performance of other Pi models will vary. The parameters used are:
+
+- `-r 10` Set frame rate (Hz value) to ten frames per second in the output video.
+- `-f image2` Set ffmpeg to read from a list of image files specified by a pattern.
+- `-pattern_type glob` When importing the image files, use wildcard patterns (globbing) to interpret the filename input by `-i`, in this case "image_*.jpg", where "*" would be the image number.
+- `-i 'image_*.jpg'` The input file specification (to match the files produced during the capture).
+- `-s 1280x720` Scale to 720p. You can also use 1920x1080, or lower resolutions, depending on your requirements.
+- `-vcodec libx264` Use the software x264 encoder.
+- `timelapse.mp4` The name of the output video file.
+
+`ffmpeg` has a comprehensive parameter set for varying encoding options and other settings. These can be listed using `ffmpeg --help`.
