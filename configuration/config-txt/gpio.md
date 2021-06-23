@@ -1,6 +1,6 @@
 # GPIO control in config.txt
 
-## `gpio`
+## gpio
 The `gpio` directive allows GPIO pins to be set to specific modes and values at boot time in a way that would
 previously have needed a custom `dt-blob.bin` file. Each line applies the same settings (or at least makes the same
 changes) to a set of pins, either a single pin (`3`), a range of pins (`3-4`), or a comma-separated list of either (`3-4,6,8`).
@@ -42,7 +42,7 @@ utilities like `raspi-gpio`.
 Note also that there is a delay of a few seconds between power being applied and the changes taking effect — longer
 if booting over the network or from a USB mass storage device.
 
-## `enable_jtag_gpio`
+## enable_jtag_gpio
 
 Setting `enable_jtag_gpio=1` selects Alt4 mode for GPIO pins 22-27, and sets up some internal SoC connections, thus enabling the JTAG interface for the ARM CPU. It works on all models of Raspberry Pi.
 
