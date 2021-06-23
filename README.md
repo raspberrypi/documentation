@@ -20,6 +20,8 @@ This is the official documentation for the Raspberry Pi, written by the [Raspber
     - Information about the recommended operating system for Raspberry Pi
 - [Hardware](hardware/README.md)
     - Technical specifications about the Raspberry Pi hardware and the camera module
+- [Software](software/README.md)
+    - Open source software from Raspberry Pi
 
 ## General Documentation Help
 

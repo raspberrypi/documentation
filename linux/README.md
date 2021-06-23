@@ -30,10 +30,7 @@ Explanation of some fundamental Linux usage, and commands for getting around the
         - Configuration of systemd services to start scripts at booting
     - [rc.local](usage/rc-local.md)
         - Configuration of initialisation
-- [Software](software/README.md)
-    - [libcamera](software/libcamera/README.md)
-        - Installing and using the libcamera software
-    - [APT](software/apt.md)
+    - [APT](usage/apt.md)
         - Installing software with APT
 - [Kernel](kernel/README.md)
     - [Updating](kernel/updating.md)
