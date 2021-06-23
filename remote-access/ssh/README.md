@@ -49,7 +49,7 @@ If you have loaded Raspberry Pi OS onto a blank SD card, you will have two parti
 
 ## 4. Set up your client
 
-SSH is built into Linux distributions and Mac OS, and is an optional feature in Windows 10. For older Windows versions and mobile devices, third-party SSH clients are available. See the following guides for using SSH with the OS on your computer or device:
+SSH is built into Linux distributions and Mac OS, and is an optional feature in Windows 10. For mobile devices third-party SSH clients are available. See the following guides for using SSH with the OS on your computer or device:
 
 - [Linux & Mac OS](unix.md)
 - [Windows 10](windows10.md)
