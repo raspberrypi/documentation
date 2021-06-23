@@ -1,7 +1,7 @@
 ## Raspberry Pi Keyboard and Mouse mechanical drawings
 
 
-[Keyboard/Mouse dimensions](rpi_MECH_keyboard_mouse.pdf)
+[Keyboard/Mouse dimensions](https://datasheets.raspberrypi.org/keyboard-mouse/keyboard-mouse-mechanical-drawing.pdf)
 
 [Keyboard Layout UK](rpi_MECH_keyboard_UK_layout.png)
 [Keyboard Layout US](rpi_MECH_keyboard_US_layout.png)
