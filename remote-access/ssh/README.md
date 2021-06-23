@@ -53,6 +53,5 @@ SSH is built into Linux distributions and Mac OS, and is an optional feature in 
 
 - [Linux & Mac OS](unix.md)
 - [Windows 10](windows10.md)
-- [Windows](windows.md)
 - [iOS](ios.md)
 - [Android](android.md)
