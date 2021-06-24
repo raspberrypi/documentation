@@ -81,11 +81,11 @@ The HQ Camera uses a Hoya CM500 infrared filter. Its transmission characteristic
 
 ## Mechanical drawing
 
-- Camera Module v2 [PDF](mechanical/rpi_MECH_Camera2_2p1.pdf)
-- HQ Camera Module [PDF](mechanical/rpi_MECH_HQcamera_1p0.pdf)
-- HQ Camera Module lens mount [PDF](mechanical/rpi_MECH_HQcamera_lensmount_1p0.pdf)
+- Camera Module v2 [PDF](https://datasheets.raspberrypi.org/camera/camera-v2-mechanical-drawing.pdf
+- HQ Camera Module [PDF](https://datasheets.raspberrypi.org/hq-camera/hq-camera-mechanical-drawing.pdf)
+- HQ Camera Module lens mount [PDF](https://datasheets.raspberrypi.org/hq-camera/hq-camera-lensmount-drawing.pdf)
   
 ## Schematics
 
-- Camera Module v2 [PDF](schematics/rpi_SCH_Camera2_2p1.pdf)
-- HQ Camera Module [PDF](schematics/rpi_SCH_HQcamera_1p0.pdf)
+- Camera Module v2 [PDF](https://datasheets.raspberrypi.org/camera/camera-v2-schematic.pdf)
+- HQ Camera Module [PDF](https://datasheets.raspberrypi.org/hq-camera/hq-camera-schematic.pdf)
