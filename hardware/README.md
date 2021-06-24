@@ -11,7 +11,6 @@ Technical information about Raspberry Pi hardware, including official add-ons an
 - [Sense HAT](sense-hat/README.md)
 - [TV HAT](tv-hat/README.md)
 - [Touch Display](display/README.md)
-- [Mouse and Keyboard](keyboard_mouse/README.md)
 - [Industrial use](industrial/README.md)
 
 - [Raspberry Pi Pico](https://www.raspberrypi.org/documentation/pico/getting-started/)
