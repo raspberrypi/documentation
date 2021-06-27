@@ -174,6 +174,38 @@ To use the 5 GHz band, you can change the operations mode from `hw_mode=g` to `h
 
 Note that when changing the `hw_mode`, you may need to also change the `channel` - see [Wikipedia](https://en.wikipedia.org/wiki/List_of_WLAN_channels) for a list of allowed combinations.
 
+Check iptables are not filtering bridge traffic with br_netfilter
+
+
+```
+cat /proc/sys/net/bridge/bridge-nf-call-arptables 
+1
+cat /proc/sys/net/bridge/bridge-nf-call-iptables
+1
+cat /proc/sys/net/bridge/bridge-nf-call-ip6tables
+1
+```
+if they return 1 or true as above you can temporarily disable for testing by these commands:
+```
+sudo echo 0 | tee /proc/sys/net/bridge/bridge-nf-call-arptables
+0
+sudo echo 0 | tee /proc/sys/net/bridge/bridge-nf-call-iptables
+0
+sudo echo 0 | tee /proc/sys/net/bridge/bridge-nf-call-ip6tables
+0
+```
+or edit 
+```
+nano /etc/sysctl.conf
+```
+and add these lines at the bottom
+```
+net.bridge.bridge-nf-call-arptables = 0
+net.bridge.bridge-nf-call-iptables = 0
+net.bridge.bridge-nf-call-ip6tables = 0
+```
+and continue with reboot
+
 <a name="conclusion"></a>
 ## Run your new wireless access point
 
