@@ -1,12 +1,12 @@
 # Network boot your Raspberry Pi
 
-This tutorial is written to explain how to set up a simple DHCP/TFTP server which will allow you to boot a Raspberry Pi 3 from the network. The tutorial assumes that you have an existing home network, and that you want to use a Raspberry Pi for the **server**. You will need a second Raspberry Pi 3 as a **client** to be booted. Only one SD card is needed because the client will be booted from the server after the initial client configuration.
+This tutorial is written to explain how to set up a simple DHCP/TFTP server which will allow you to boot a Raspberry Pi 3 or 4 from the network. The tutorial assumes that you have an existing home network, and that you want to use a Raspberry Pi for the **server**. You will need a second Raspberry Pi 3 as a **client** to be booted. Only one SD card is needed because the client will be booted from the server after the initial client configuration.
 
 Due to the huge range of networking devices available, we can't guarantee that network booting will work with any device. We have had reports that, if you cannot get network booting to work, disabling STP frames on your network may help.
 
-## Client configuration
+## Client configuration (Raspberry Pi 3B)
 
-This section only applies to the **original** Raspberry Pi 3B; if you are using the 3B+ or Pi 4 then ignore this section and skip to the server section below then.
+This section only applies to the **original** Raspberry Pi 3B; if you are using the 3B+ or Pi 4 then follow the 3B+ section below.
 
 Before a Raspberry Pi will network boot, it needs to be booted from an SD card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the SD card is no longer required.
 
@@ -34,6 +34,18 @@ vcgencmd otp_dump | grep 17:
 Ensure the output `0x3020000a` is correct.
 
 The client configuration is almost done. The final thing to do is to remove the `program_usb_boot_mode` line from `config.txt` (make sure there is no blank line at the end). You can do this with `sudo nano /boot/config.txt`, for example. Finally, shut the client Raspberry Pi down with `sudo poweroff`.
+
+## Client configuration (Raspberry Pi 3B+ / 4)
+
+These instructions only apply to the Raspberry Pi 3B+ and 4.
+
+Follow the instructions on the [Pi 4 Bootloader Configuration](../bcm2711_bootloader_config.md) page to alter the boot order to include network booting.  In short:
+
+```bash
+sudo -E rpi-eeprom-config --edit
+```
+
+Set `BOOT_ORDER` to `0xf21` or similar, save, and reboot.  The updated EEPROM settings will be saved onto the SD card and programmed to the EEPROM during the next boot.  After this reboot the settings will become permanent and the SD card is no longer required.
 
 ## Ethernet MAC address
 Before configuring network boot make a note of the serial number and mac address so that the board can be identified by the TFTP/DHCP server.
