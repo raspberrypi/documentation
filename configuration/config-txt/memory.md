@@ -36,7 +36,7 @@ The `gpu_mem_1024` command sets the GPU memory in megabytes for Raspberry Pis wi
 
 ## total_mem
 
-This parameter can be used to force a Raspberry Pi to limit its memory capacity: specify the total amount of RAM, im megabytes, you wish the Pi to use. For example, to make a 4GB Raspberry Pi 4B behave as though it were a 1GB model, use the following:
+This parameter can be used to force a Raspberry Pi to limit its memory capacity: specify the total amount of RAM, in megabytes, you wish the Pi to use. For example, to make a 4GB Raspberry Pi 4B behave as though it were a 1GB model, use the following:
 
 ```
 total_mem=1024
