@@ -273,7 +273,8 @@ Update this tool to the latest version.
 Selecting this option shows the following text:
 
 ```
-This tool provides a straightforward way of doing initial configuration of the Raspberry Pi. Although it can be run at any time, some of the options may have difficulties if you have heavily customised your installation.
+This tool provides a straightforward way of doing initial configuration of the Raspberry Pi. 
+Although it can be run at any time, some of the options may have difficulties if you have heavily customised your installation.
 ```
 
 <a name="finish"></a>
