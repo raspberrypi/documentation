@@ -106,5 +106,8 @@ Read our troubleshooting steps, tips, and tricks here: [Raspberry Pi Touch Displ
 
 * Outer dimensions: 192.96 × 110.76mm
 * Viewable area: 154.08 × 85.92mm
-* [Download mechanical drawing (PDF)](mechanical/7InchDisplayDrawing-14092015.pdf)
-* [Additional drawing including radius and thickness of glass](mechanical/radius.png)
+* [Download mechanical drawing (PDF)](https://datasheets.raspberrypi.org/display/7-inch-display-mechanical-drawing.pdf)
+
+A drawing showing the radius and thickness of glass.
+
+![Radius and thickness of glass](images/radius.png "Radius and thickness of glass")

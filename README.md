@@ -21,10 +21,6 @@ This is the official documentation for the Raspberry Pi, written by the [Raspber
 - [Hardware](hardware/README.md)
     - Technical specifications about the Raspberry Pi hardware and the camera module
 
-## General Documentation Help
-
-In addition to the topics above, we have a set of [Frequently Asked Questions](faqs/README.md), and a [Glossary](glossary/README.md) to help with any technical terms you may encounter in our documentation.
-
 ## Contributions
 
 If you have anything to fix or details to add, first [file an issue](https://github.com/raspberrypi/documentation/issues) on GitHub to see if it is likely to be accepted, then file a pull request with your change (one PR per issue).
