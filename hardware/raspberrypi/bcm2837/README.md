@@ -6,7 +6,7 @@ The ARM cores run at 1.2GHz, making the device about 50% faster than the Raspber
 
 Please refer to the following BCM2836 document for details on the ARM peripherals specification, which also applies to the BCM2837.
 
-- [BCM2836 ARM-local peripherals](../bcm2836/QA7_rev3.4.pdf)
+- [BCM2836 ARM-local peripherals](https://datasheets.raspberrypi.org/bcm2836/bcm2836-peripherals.pdf)
 - [Cortex-A53 MPCore Processor Technical Reference Manual](https://developer.arm.com/documentation/ddi0500/latest/)
 
 Also see the Raspberry Pi 2's chip [BCM2836](../bcm2836/README.md) and the Raspberry Pi 1's chip [BCM2835](../bcm2835/README.md).
