@@ -4,7 +4,7 @@ This is the Broadcom chip used in the Raspberry Pi Model A, B, B+, the Compute M
 
 Please refer to:
 
-- [Peripheral specification](BCM2835-ARM-Peripherals.pdf)
+- [Peripheral specification](https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals.pdf)
    - **Note:** This document contains a number of errors. A list of currently known errata and some additional information can be found [here](https://elinux.org/BCM2835_datasheet_errata).
 - [GPU documentation](https://docs.broadcom.com/docs/12358545) and [open-source driver](https://docs.broadcom.com/docs/12358546)
 - [ARM1176 processor](https://www.arm.com/products/processors/classic/arm11/arm1176.php)
