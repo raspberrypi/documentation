@@ -414,7 +414,7 @@ The Raspberry Pi Foundation provides a 7" capacitive [touchscreen](https://www.r
 <a name="pi-video-codecs"></a>
 ### What codecs can it play?
 
-The Raspberry Pi can encode (record) and decode (play) H.264 (MP4/MKV) out of the box. There are also two additional codecs you can [purchase through our Swag Store](http://swag.raspberrypi.org/collections/software) that enable you to decode [MPEG-2](http://swag.raspberrypi.org/collections/software/products/mpeg-2-license-key), a very popular and widely used format to encode DVDs, video camera recordings, TV and many others, and [VC-1](http://swag.raspberrypi.org/collections/software/products/vc-1-license-key), a Microsoft format found in Blu-ray discs, Windows Media, Slingbox, and HD-DVDs.
+The Raspberry Pi can encode (record) and decode (play) H.264 (MP4/MKV) out of the box. There are also two additional codecs you can [purchase through our Codecs Store](http://codecs.raspberrypi.org/license-keys/) that enable you to decode [MPEG-2](http://codecs.raspberrypi.org/mpeg-2-license-key/), a very popular and widely used format to encode DVDs, video camera recordings, TV and many others, and [VC-1](http://codecs.raspberrypi.org/vc-1-license-key/), a Microsoft format found in Blu-ray discs, Windows Media, Slingbox, and HD-DVDs.
 
 On the Raspberry Pi 4, the extra hardware CODEC support for MPEG-2 and VC-1 is not available: because the Raspberry Pi 4's processors are powerful enough to decode these in software, no CODEC licence is necessary. In addition, the Raspberry Pi 4 also has hardware support for decoding H265/HEVC.
 
