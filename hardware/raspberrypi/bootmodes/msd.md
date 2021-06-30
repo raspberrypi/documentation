@@ -4,7 +4,7 @@
 
 This page explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or a USB hard disk. When attaching USB devices, particularly hard disks and SSDs, be mindful of their power requirements. If you wish to attach more than one SSD or hard disk to the Pi, this normally requires external power - either a powered hard disk enclosure, or a powered USB hub. Note that models prior to the Pi 4B have known issues which prevent booting with some USB devices.
 
-<a name="pi400"></a><a name="pi4"></a>
+<a name="pi4"></a>
 ## Raspberry Pi 4B and Raspberry Pi 400
 The Raspberry Pi Pi 400 and newer Raspberry Pi 4B boards support USB boot by default. On earlier Raspberry Pi 4B boards, or to select alternate boot modes, the bootloader must be updated.
 

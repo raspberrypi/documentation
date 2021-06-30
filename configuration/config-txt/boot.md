@@ -115,8 +115,8 @@ On the Raspberry Pi 4B, if this value is set to `0` then the interrupts will be 
 
 Set this option to `0` to prevent the firmware from trying to read an I2C HAT EEPROM (connected to pins ID_SD & ID_SC) at powerup. See also [`disable_poe_fan`](misc.md#disable_poe_fan).
 
-## os_prefix
 <a name="os_prefix"></a>
+## os_prefix
 
 `os_prefix` is an optional setting that allows you to choose between multiple versions of the kernel and Device Tree files installed on the same card. Any value in `os_prefix` is prepended to (stuck in front of) the name of any operating system files loaded by the firmware, where "operating system files" is defined to mean kernels, initramfs, cmdline.txt, .dtbs and overlays. The prefix would commonly be a directory name, but it could also be part of the filename such as "test-". For this reason, directory prefixes must include the trailing `/` character.
 
@@ -128,8 +128,8 @@ N.B. Any user-specified OS file can bypass all prefixes by using an absolute pat
 
 See also [`overlay_prefix`](#overlay_prefix) and [`upstream_kernel`](#upstream_kernel).
 
-## overlay_prefix
 <a name="overlay_prefix"></a>
+## overlay_prefix
 
 Specifies a subdirectory/prefix from which to load overlays - defaults to `overlays/` (note the trailing `/`). If used in conjunction with [`os_prefix`](#os_prefix), the `os_prefix` comes before the `overlay_prefix`, i.e. `dtoverlay=disable-bt` will attempt to load `${os_prefix}${overlay_prefix}disable-bt.dtbo`.
 
@@ -141,8 +141,8 @@ Setting `uart_2ndstage=1` causes the second-stage loader (`bootcode.bin` on devi
 
 Be aware that output is likely to interfere with Bluetooth operation unless it is disabled (`dtoverlay=disable-bt`) or switched to the other UART (`dtoverlay=miniuart-bt`), and if the UART is accessed simultaneously to output from Linux then data loss can occur leading to corrupted output. This feature should only be required when trying to diagnose an early boot loading problem.
 
-## upstream_kernel
 <a name="upstream_kernel"></a>
+## upstream_kernel
 
 If `upstream_kernel=1` is used, the firmware sets [`os_prefix`](#os_prefix) to "upstream/", unless it has been explicitly set to something else, but like other `os_prefix` values it will be ignored if the required kernel and .dtb file can't be found when using the prefix.
 

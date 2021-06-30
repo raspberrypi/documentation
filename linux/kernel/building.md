@@ -26,7 +26,6 @@ git clone --depth=1 https://github.com/raspberrypi/linux
 ```
 
 <a name="choosing_sources"></a>
-
 ### Choosing sources
 
 The `git clone` command above will download the current active branch (the one we are building Raspberry Pi OS images from) without any history. Omitting the `--depth=1` will download the entire repository, including the full history of all branches, but this takes much longer and occupies much more storage.

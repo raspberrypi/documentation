@@ -40,7 +40,7 @@ On the Pi 4, to specify the HDMI port, add an index identifier to the `hdmi_grou
 
 There are two options for setting a custom mode: `hdmi_cvt` and `hdmi_timings`. 
 
-`hdmi_cvt` sets a custom Coordinated Video Timing entry, which is described fully here: [Video Configuration](config-txt/video.md#Custom%20Mode)
+`hdmi_cvt` sets a custom Coordinated Video Timing entry, which is described fully here: [Video Configuration](config-txt/video.md#custom-mode)
 
 In certain rare cases it may be necessary to define the exact clock requirements of the HDMI signal. This is a fully custom mode, and it is activated by setting `hdmi_group=2` and `hdmi_mode=87`. You can then use the `hdmi_timings` config.txt command to set the specific parameters for your display. 
 `hdmi_timings` specifies all the timings that an HDMI signal needs to use. These timings are usually found in the datasheet of the display being used.

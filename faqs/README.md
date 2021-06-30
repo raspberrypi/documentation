@@ -255,7 +255,6 @@ There is no on/off switch! To switch on, just plug it in. To switch off, if you 
 The Raspberry Pi Model B versions measure 85.60mm x 56mm x 21mm (or roughly 3.37″ x 2.21″ x 0.83″), with a little overlap for the SD card and connectors which project over the edges. They weigh 45g. The Raspberry Pi Zero and Raspberry Pi Zero W measure 65mm x 30mm x 5.4mm (or roughly 2.56″ x 1.18″ x 0.20″) and weigh 9g. For the mechanical outlines, please see the documentation [here](../hardware/raspberrypi/mechanical/README.md)
 
 <a name="pi-performance"></a>
-
 ## Performance
 
 <a name="pi-performance-perf"></a>
@@ -304,7 +303,6 @@ You should not need to use a heatsink, as the chip used in the Raspberry Pi is e
 The Raspberry Pi 400 uses a large heat spreader inside the case, and does not need any extra cooling.
 
 <a name="pi-software"></a>
-
 ## Software
 
 <a name="pi-software-os"></a>
@@ -419,7 +417,6 @@ The Raspberry Pi can encode (record) and decode (play) H.264 (MP4/MKV) out of th
 On the Raspberry Pi 4, the extra hardware CODEC support for MPEG-2 and VC-1 is not available: because the Raspberry Pi 4's processors are powerful enough to decode these in software, no CODEC licence is necessary. In addition, the Raspberry Pi 4 also has hardware support for decoding H265/HEVC.
 
 <a name="pi-audio"></a>
-
 ## Audio
 
 <a name="pi-audio-hdmi"></a>
@@ -433,7 +430,6 @@ Yes.
 There is a standard 3.5mm jack for audio out to an amplifier (not on Zero models). You can add any supported USB microphone for audio in or, using the I2S interface, you can add a codec for additional audio I/O.
 
 <a name="pi-power"></a>
-
 ## Power
 
 <a name="pi-power-kill"></a>
@@ -508,7 +504,6 @@ Yes: if you own a 3B+ or 4B, you can use our [official Raspberry Pi PoE HAT](htt
 The GPIO pins are natively 3.3V, so 5V devices **MUST NOT** be attached directly without some sort of voltage conversion. The pins can provide up to 16mA current. See the [GPIO docs page](../hardware/raspberrypi/gpio/README.md) for more information.
 
 <a name="sd-cards"></a>
-
 ## SD cards and storage
 
 <a name="sd-cards-need"></a>
@@ -532,7 +527,6 @@ USB boot is only possible on the Raspberry Pi 2B v1.2, 3B, 3B+, and 3A+. Booting
 If you brick the device, you can restore it by reflashing the SD card.
 
 <a name="networking"></a>
-
 ## Networking and wireless connectivity
 
 <a name="networking-support"></a>
@@ -569,7 +563,6 @@ We have also developed [PiServer](https://www.raspberrypi.org/blog/piserver/), a
 Another option is [PiNet](http://pinet.org.uk), which is a free and open-source community-based project initially designed for schools. Each Raspberry Pi boots off a small set of startup files on an SD card and fetches the rest of the data it needs from the PiNet server, thereby allowing you to maintain a single operating system image for all the Raspberry Pis. PiNet also adds network user accounts, shared folders and automated backups. Please do note that PiNet is now [deprecated](http://pinet.org.uk/blog/2020/10/27/PiNet-end-of-life.html) and will no longer be supported at the end of 2020/2021 academic year.
 
 <a name="cameramodule"></a>
-
 ## Camera Module
 
 <a name="cameramodule-what"></a>
@@ -610,7 +603,6 @@ Yes. We have reports of people using cables up to four metres in length and stil
 The Raspberry Pi Camera Modules requires 250mA to operate. Ensure that your power supply can provide enough power for the connected Camera Module, as well as for the Raspberry Pi itself and any peripherals directly attached to it.
 
 <a name="troubleshoot"></a>
-
 ## Troubleshooting
 
 <a name="troubleshoot-defpasswd"></a>

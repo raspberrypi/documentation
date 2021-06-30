@@ -78,7 +78,8 @@ Displays the current voltages used by the specific block.
 
 Displays the content of the OTP (one-time programmable) memory inside the SoC. These are 32 bit values, indexed from 8 to 64. See the [OTP bits page](../../hardware/raspberrypi/otpbits.md) for more details.
 
-### <a name="getconfig"></a>get_config [configuration item|int|str]
+<a name="getconfig"></a>
+### get_config [configuration item|int|str]
 
 Display value of the configuration setting specified: alternatively, specify either `int` (integer) or `str` (string) to see all configuration items of the given type. For example:
 

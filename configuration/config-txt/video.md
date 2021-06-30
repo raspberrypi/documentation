@@ -452,6 +452,7 @@ Your HDMI monitor may only support a limited set of formats. To find out which f
 
 The `edid.dat` should also be provided when troubleshooting problems with the default HDMI mode.
 
+<a name="custom-mode">
 ## Custom mode
 
 If your monitor requires a mode that is not in one of the tables above, then it's possible to define a custom [CVT](https://en.wikipedia.org/wiki/Coordinated_Video_Timings) mode for it instead:
