@@ -51,15 +51,15 @@ sudo apt install ffmpeg
 Now you can use the `ffmpeg` tool to convert your JPEG files into an mp4 video:
 
 ```
-ffmpeg -r 10 -f image2 -pattern_type glob -i 'image_*.jpg' -s 1280x720 -vcodec libx264 timelapse.mp4
+ffmpeg -r 10 -f image2 -pattern_type glob -i 'image*.jpg' -s 1280x720 -vcodec libx264 timelapse.mp4
 ```
 
 On a Raspberry Pi 3, this can encode a little more than two frames per second. The performance of other Pi models will vary. The parameters used are:
 
 - `-r 10` Set frame rate (Hz value) to ten frames per second in the output video.
 - `-f image2` Set ffmpeg to read from a list of image files specified by a pattern.
-- `-pattern_type glob` When importing the image files, use wildcard patterns (globbing) to interpret the filename input by `-i`, in this case "image_*.jpg", where "*" would be the image number.
-- `-i 'image_*.jpg'` The input file specification (to match the files produced during the capture).
+- `-pattern_type glob` When importing the image files, use wildcard patterns (globbing) to interpret the filename input by `-i`, in this case "image*.jpg", where "*" would be the image number.
+- `-i 'image*.jpg'` The input file specification (to match the files produced during the capture).
 - `-s 1280x720` Scale to 720p. You can also use 1920x1080, or lower resolutions, depending on your requirements.
 - `-vcodec libx264` Use the software x264 encoder.
 - `timelapse.mp4` The name of the output video file.
