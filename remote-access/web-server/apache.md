@@ -93,7 +93,3 @@ or show your PHP info:
 ```php
 <?php phpinfo(); ?>
 ```
-
-### Further - WordPress
-
-Now you have Apache and PHP installed you can progress to setting up a WordPress site on your Pi. Continue to [WordPress usage](../../usage/wordpress/README.md).
