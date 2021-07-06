@@ -23,7 +23,7 @@ The BCM2835 core common to all Raspberry Pi devices has 3 SPI Controllers:
 
 BCM2711 adds another 4 SPI buses - SPI3 to SPI6, each with 2 hardware chip selects. All are available on the 40-pin header (provided nothing else is trying to use the same pins).
 
-Chapter 10 in the [BCM2835 ARM Peripherals](../bcm2835/BCM2835-ARM-Peripherals.pdf) datasheet describes the main controller.  Chapter 2.3 describes the auxiliary controller.
+Chapter 10 in the [BCM2835 ARM Peripherals](https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals.pdf) datasheet describes the main controller.  Chapter 2.3 describes the auxiliary controller.
 
 ### Pin/GPIO mappings
 
