@@ -325,8 +325,6 @@ Then install Python packages (e.g. `simplejson`) with `pip3`:
 sudo pip3 install simplejson
 ```
 
-Read more on installing software in Python [here](../../linux/software/python.md).
-
 #### piwheels
 
 The official Python Package Index (PyPI) hosts files uploaded by package maintainers. Some packages require compilation (compiling C/C++ or similar code) in order to install them, which can be a time-consuming task, particlarly on the single-core Raspberry Pi 1 or Pi Zero.
