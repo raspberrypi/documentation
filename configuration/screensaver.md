@@ -47,4 +47,4 @@ Video will not come back on until you reboot or switch it back on:
 vcgencmd display_power 1
 ```
 
-For more information, see the documentation for [vcgencmd](/documentation/raspbian/applications/vcgencmd.md).
+For more information, see the documentation for [vcgencmd](../raspbian/applications/vcgencmd.md).
