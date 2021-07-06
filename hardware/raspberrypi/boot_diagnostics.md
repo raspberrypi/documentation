@@ -16,7 +16,7 @@ The diagnostic information is as follows:
 | ---- | ----------- |
 | bootloader | Bootloader version - build date |
 | board      | Board revision - Serial Number - Ethernet MAC address |
-| boot       | mode: (ROM boot mode - 6 SPI), order: EEPROM config [BOOT_ORDER](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711_bootloader_config.md), RSTS: PM_RSTS register |
+| boot       | mode: (ROM boot mode - 6 SPI), order: EEPROM config [BOOT_ORDER](bcm2711_bootloader_config.md), RSTS: PM_RSTS register |
 | SD CID	   | SD Card Identifier defined by SD-CARD manufacturer |
 | part	     | Master Boot Record primary partitions type:LBA |
 | fw	       | Filename for start.elf and fixup.dat if present (e.g. start4x.elf, fixup4x.dat) |
