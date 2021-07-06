@@ -15,4 +15,4 @@ The following datasheets are available for the SoC (System On Chip - the main pr
 
 [Compute Module 3](../computemodule/datasheets/rpi_DATA_CM3plus_1p0.pdf)
 
-[Compute Module 4](http://datasheets.raspberrypi.org/cm4/cm4-datasheet.pdf)
+[Compute Module 4](https://datasheets.raspberrypi.org/cm4/cm4-datasheet.pdf)
