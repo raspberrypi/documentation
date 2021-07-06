@@ -13,7 +13,7 @@ This will play the audio file `example.mp3` through either your monitor's built-
 If you need an example file you can download one from here using the following command:
 
 ```bash
-wget http://rpf.io/lamp3 -O example.mp3 --no-check-certificate
+wget https://raw.githubusercontent.com/raspberrypilearning/burping-jelly-baby/master/data/la.mp3 -O example.mp3 --no-check-certificate
 ```
 
 If you cannot hear anything, make sure your headphones or speakers are connected correctly. Note that omxplayer doesn't use ALSA and so ignores the [audio configuration](../../configuration/audio-config.md) set by `raspi-config` or `amixer`.

@@ -22,7 +22,7 @@ Please note that the display is **not** designed to be hot pluggable. It (and ca
 
 1. Power up the Compute Module and run:
 
-	```sudo wget https://goo.gl/iiVxuA -O /boot/dt-blob.bin```
+	```sudo wget https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/computemodule/dt-blob-disp1-only.bin -O /boot/dt-blob.bin```
 
 1. Reboot for the `dt-blob.bin` file to be read.
 
@@ -45,7 +45,7 @@ Please note that the display is **not** designed to be hot pluggable. It (and ca
 
 1. Power up the Compute Module and run:
 
-	```sudo wget https://goo.gl/gaqNrO -O /boot/dt-blob.bin```
+	```sudo wget https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/computemodule/dt-blob-disp1-cam1.bin -O /boot/dt-blob.bin```
 
 1. Reboot for the `dt-blob.bin` file to be read.
 
@@ -67,7 +67,7 @@ Please note that the display is **not** designed to be hot pluggable. It (and ca
 
 1. Power up the Compute Module and run:
 
-	```sudo wget https://goo.gl/htHv7m -O /boot/dt-blob.bin```
+	```sudo wget https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/computemodule/dt-blob-disp1-cam2.bin -O /boot/dt-blob.bin```
 
 1. Reboot for the `dt-blob.bin` file to be read.
 
