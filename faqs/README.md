@@ -590,7 +590,7 @@ The Raspberry Pi Camera Modules supports raw capturing (Bayer data direct from t
 
 We've put together [a how-to](https://projects.raspberrypi.org/en/projects/getting-started-with-picamera) for that!
 
-There are also a number of command line applications provided for stills and video output. These applications provide the typical features you might find on a compact camera, such as set image size, compression quality, exposure mode, and ISO. See the [documentation](https://www.raspberrypi.org/documentation/hardware/camera/README.md) for more details.
+There are also a number of command line applications provided for stills and video output. These applications provide the typical features you might find on a compact camera, such as set image size, compression quality, exposure mode, and ISO. See the [documentation](../hardware/camera/README.md) for more details.
 
 <a name="cameramodule-cable"></a>
 ### Can I extend the ribbon cable?
