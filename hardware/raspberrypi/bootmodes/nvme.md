@@ -21,38 +21,19 @@ To boot from NVMe you need pre-release versions of the bootloader, VideoCore fir
 
 ### Bootloader
 
-You need to use `rpiboot` to update the CM4 bootloader. Instructions for building `rpiboot` and configuring the IO board to switch the ROM to usbboot mode are in the [usbboot Github repository](https://github.com/raspberrypi/usbboot).
+Another computer running `rpiboot` must be used to update the EEPROM on a CM4 to use the beta bootloader. If you are using a CM4 with an eMMC then you must also change the BOOT_ORDER to give NVMe priority, otherwise the CM4 will continue to boot from eMMC.
 
-If you are using a CM4 with an eMMC then you must change the BOOT_ORDER to give NVMe priority, otherwise the CM4 will continue to boot from eMMC. For example:
+Instructions for building `rpiboot` and configuring the IO board to switch the ROM to usbboot mode are in the [usbboot Github repository](https://github.com/raspberrypi/usbboot).
+
+For example, change the BOOT_ORDER in boot.conf to add `6` to the end and run the following from another PC connected to the CM4 USB slave connector:
 
 ```
 cd usbboot/nvme
-sed -i 's/\(BOOT_ORDER=.*\)6\(.*\)/\1\26/' boot.conf
 ./update-pieeprom.sh
 cd ..
 ```
 
-You can then update your bootloader to support NVMe boot with `./rpiboot -d nvme`; example output is shown below.
-
-```
-Loading: nvme/bootcode4.bin
-Waiting for BCM2835/6/7/2711...
-Loading: nvme/bootcode4.bin
-Sending bootcode.bin
-Successful read 4 bytes
-Waiting for BCM2835/6/7/2711...
-Loading: nvme/bootcode4.bin
-Second stage boot server
-Loading: nvme/config.txt
-File read: config.txt
-Loading: nvme/pieeprom.bin
-Loading: nvme/pieeprom.bin
-Loading: nvme/pieeprom.sig
-File read: pieeprom.sig
-Loading: nvme/pieeprom.bin
-File read: pieeprom.bin
-Second stage boot server done
-```
+You can then update your bootloader to support NVMe boot with `./rpiboot -d nvme`. For mode details see [Raspberry Pi 4 bootloader configuration](../bcm2711_bootloader_config.md).
 
 ### Firmware and kernel
 
