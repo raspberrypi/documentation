@@ -638,7 +638,7 @@ Set `framebuffer_ignore_alpha` to `1` to disable the alpha channel. Can help wit
 
 ### framebuffer_priority
 
-In a system with multiple displays, using the legacy (pre-KMS) graphics driver, this forces a specific internal display device to be the first Linux framebuffer (i.e./dev/fb0). 
+In a system with multiple displays, using the legacy (pre-KMS) graphics driver, this forces a specific internal display device to be the first Linux framebuffer (i.e. `/dev/fb0`). 
 
 The options that can be set are:
 
