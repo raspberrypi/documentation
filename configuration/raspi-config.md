@@ -199,14 +199,17 @@ Set the behaviour of a GPIO connected fan
 
 The localisation submenu gives you these options to choose from: keyboard layout, time zone, locale, and wireless LAN country code.
 
+<a name="change-locale"></a>
 #### Locale
 
 Select a locale, for example `en_GB.UTF-8 UTF-8`.
 
+<a name="change-timezone"></a>
 #### Time Zone
 
 Select your local time zone, starting with the region, e.g. Europe, then selecting a city, e.g. London. Type a letter to skip down the list to that point in the alphabet.
 
+<a name="change-keyboard-layout"></a>
 #### Keyboard
 
 This option opens another menu which allows you to select your keyboard layout. It will take a long time to display while it reads all the keyboard types. Changes usually take effect immediately, but may require a reboot.

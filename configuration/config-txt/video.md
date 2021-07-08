@@ -452,7 +452,7 @@ Your HDMI monitor may only support a limited set of formats. To find out which f
 
 The `edid.dat` should also be provided when troubleshooting problems with the default HDMI mode.
 
-<a name="custom-mode">
+<a name="custom-mode"></a>
 ## Custom mode
 
 If your monitor requires a mode that is not in one of the tables above, then it's possible to define a custom [CVT](https://en.wikipedia.org/wiki/Coordinated_Video_Timings) mode for it instead:
@@ -575,7 +575,7 @@ Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is no
 
 ### disable_overscan
 
-Set `disable_overscan` to `1` to disable the default values of [overscan](../raspi-config.md#overscan) that is set by the firmware. The default value of overscan for the left, right, top, and bottom edges is `48` for HD CEA modes, `32` for SD CEA modes, and `0` for DMT modes. The default value for `disable_overscan` is `0`.
+Set `disable_overscan` to `1` to disable the default values of [overscan](../raspi-config.md#underscan) that is set by the firmware. The default value of overscan for the left, right, top, and bottom edges is `48` for HD CEA modes, `32` for SD CEA modes, and `0` for DMT modes. The default value for `disable_overscan` is `0`.
 
 **NOTE:** any further additional overscan options such as `overscan_scale` or overscan edges can still be applied after this option.
 
