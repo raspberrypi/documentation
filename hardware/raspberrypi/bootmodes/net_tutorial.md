@@ -64,7 +64,7 @@ grep Serial /proc/cpuinfo | cut -d ' ' -f 2 | cut -c 8-16
 
 ## Server configuration
 
-Plug the SD card into the server Raspberry Pi, and then boot the server. The client Raspberry Pi will need a root file system to boot from: we will use a copy of the server's root filesystem as place it in  `/nfs/client1`:
+Plug the SD card into the server Raspberry Pi, and then boot the server. The client Raspberry Pi will need a root file system to boot from: we will use a copy of the server's root filesystem and place it in  `/nfs/client1`:
 
 ```bash
 sudo mkdir -p /nfs/client1
