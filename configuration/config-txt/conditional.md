@@ -24,11 +24,13 @@ The conditional model filters are applied according to the following table.
 | [pi2]   | Model 2B (BCM2836- or BCM2837-based) |
 | [pi3]   | Model 3B, Model 3B+, Model 3A+, Compute Module 3 |
 | [pi3+]  | Model 3A+, Model 3B+ |
-| [pi4]   | Model 4B |
+| [pi4]   | Model 4B<sup>1</sup> |
 | [pi400] | Pi 400 |
 | [cm4]   | Compute Module 4 |
 | [pi0]   | Zero, Zero W, Zero WH |
 | [pi0w]  | Zero W, Zero WH |
+
+<sup>1</sup> Note that the [pi4] filter is also applied on the Pi 400 and CM4 platforms.
 
 These are particularly useful for defining different `kernel`, `initramfs`, and `cmdline` settings, as the Pi 1 and Pi 2 require different kernels. They can also be useful to define different overclocking settings, as the Pi 1 and Pi 2 have different default speeds. For example, to define separate `initramfs` images for each:
 
