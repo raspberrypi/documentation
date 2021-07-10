@@ -1,24 +1,20 @@
 # Network boot your Raspberry Pi
 
-This tutorial is written to explain how to set up a simple DHCP/TFTP server which will allow you to boot a Raspberry Pi 3 from the network. The tutorial assumes that you have an existing home network, and that you want to use a Raspberry Pi for the **server**. You will need a second Raspberry Pi 3 as a **client** to be booted. Only one SD card is needed because the client will be booted from the server after the initial client configuration.
+This tutorial is written to explain how to set up a simple DHCP/TFTP server which will allow you to boot a Raspberry Pi 3 or 4 from the network. The tutorial assumes that you have an existing home network, and that you want to use a Raspberry Pi for the **server**. You will also need a Raspberry Pi 3 or 4 as a **client** to be booted. Only one SD card is needed because the client will be booted from the server after the initial client configuration.
 
 Due to the huge range of networking devices available, we can't guarantee that network booting will work with any device. We have had reports that, if you cannot get network booting to work, disabling STP frames on your network may help.
 
 ## Client configuration
 
-This section only applies to the **original** Raspberry Pi 3B; if you are using the 3B+ or Pi 4 then ignore this section and skip to the server section below then.
+### Raspberry Pi 3B
 
-Before a Raspberry Pi will network boot, it needs to be booted from an SD card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the SD card is no longer required.
+Note: this section only applies to the Pi 3B: network boot is enabled on the Pi 3B+ at the factory.
+
+Before the Pi 3B will network boot, it needs to be booted from an SD card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the Pi 3B will attempt to boot from USB, and from the network, if it cannot boot from the SD card.
 
 Install Raspberry Pi OS Lite (or Raspberry Pi OS with Raspberry Pi Desktop) on the SD card in the [usual way](../../../installation/installing-images/README.md).
 
-Afterwards, set up USB boot mode by preparing the `/boot` directory with the latest boot files:
-
-```bash
-sudo apt update && sudo apt full-upgrade
-```
-
-Now, enable USB boot mode with the following command:
+Next, enable USB boot mode with the following command:
 
 ```bash
 echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
@@ -33,10 +29,26 @@ vcgencmd otp_dump | grep 17:
 
 Ensure the output `0x3020000a` is correct.
 
-The client configuration is almost done. The final thing to do is to remove the `program_usb_boot_mode` line from `config.txt` (make sure there is no blank line at the end). You can do this with `sudo nano /boot/config.txt`, for example. Finally, shut the client Raspberry Pi down with `sudo poweroff`.
+The client configuration is almost done. The final thing to do is to remove the `program_usb_boot_mode` line from `config.txt`. You can do this with `sudo nano /boot/config.txt`, for example. Finally, shut the client Raspberry Pi down with `sudo poweroff`.
+
+### Raspberry Pi 4
+
+Network boot can be enabled on the Pi 4 using the `raspi-config` tool. First, run `raspi-config` as follows:
+
+```bash
+sudo raspi-config
+```
+
+Within `raspi-config`, choose `Advanced Options`, then `Boot Order`, then `Network Boot`. You must then reboot the device for the change to the boot order to be programmed into the bootloader EEPROM. Once the Pi has rebooted, check that the boot order is now `0xf21`:
+
+```bash
+vcgencmd bootloader_config
+```
+
+For further details of configuring the Pi 4 bootloader, see [Pi 4 Bootloader Configuration](../bcm2711_bootloader_config.md).
 
 ## Ethernet MAC address
-Before configuring network boot make a note of the serial number and mac address so that the board can be identified by the TFTP/DHCP server.
+Before configuring network boot, make a note of the serial number and mac address so that the board can be identified by the TFTP/DHCP server.
 
 On Raspberry Pi 4 the MAC address is programmed at manufacture and there is no link between the MAC address and serial number. Both the MAC address and serial numbers are displayed on the bootloader [HDMI diagnostics](../boot_diagnostics.md) screen.
 
@@ -52,9 +64,7 @@ grep Serial /proc/cpuinfo | cut -d ' ' -f 2 | cut -c 8-16
 
 ## Server configuration
 
-Plug the SD card into the server Raspberry Pi, and then boot the server. Before you do anything else, make sure you have run `sudo raspi-config` and expanded the root file system to take up the entire SD card.
-
-The client Raspberry Pi will need a root file system to boot off, so before you do anything else on the server, make a full copy of its file system and put it in a directory called `/nfs/client1`:
+Plug the SD card into the server Raspberry Pi, and then boot the server. The client Raspberry Pi will need a root file system to boot from: we will use a copy of the server's root filesystem and place it in  `/nfs/client1`:
 
 ```bash
 sudo mkdir -p /nfs/client1
@@ -140,7 +150,7 @@ DNS=10.42.0.1
 Gateway=10.42.0.1
 ```
 
-At this point, you won't have working DNS, so you'll need to add the server you noted down before to `systemd/resolved.conf`. In this example, the gateway address is 10.42.0.1.
+At this point, you will not have working DNS, so you will need to add the server you noted down before to `systemd/resolved.conf`. In this example, the gateway address is 10.42.0.1.
 
 ```bash
 sudo nano /etc/systemd/resolved.conf
