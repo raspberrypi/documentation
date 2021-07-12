@@ -24,13 +24,11 @@ The conditional model filters are applied according to the following table.
 | [pi2]   | Model 2B (BCM2836- or BCM2837-based) |
 | [pi3]   | Model 3B, Model 3B+, Model 3A+, Compute Module 3 |
 | [pi3+]  | Model 3A+, Model 3B+ |
-| [pi4]   | Model 4B<sup>1</sup> |
+| [pi4]   | Model 4B, Pi 400, Compute Module 4 |
 | [pi400] | Pi 400 |
 | [cm4]   | Compute Module 4 |
 | [pi0]   | Zero, Zero W, Zero WH |
 | [pi0w]  | Zero W, Zero WH |
-
-<sup>1</sup> Note that the [pi4] filter is also applied on the Pi 400 and CM4 platforms.
 
 These are particularly useful for defining different `kernel`, `initramfs`, and `cmdline` settings, as the Pi 1 and Pi 2 require different kernels. They can also be useful to define different overclocking settings, as the Pi 1 and Pi 2 have different default speeds. For example, to define separate `initramfs` images for each:
 
@@ -42,7 +40,7 @@ These are particularly useful for defining different `kernel`, `initramfs`, and 
 
 Remember to use the `[all]` filter at the end, so that any subsequent settings aren't limited to Pi 2 hardware only.
 
-It is important to note that the Raspberry Pi Zero W will see the contents of [pi0w] AND [pi0]. Likewise, a Raspberry Pi 3B Plus sees [pi3+] AND [pi3]. If you want a setting to apply only to Pi Zero or Pi 3B you need to follow it (order is important) with a setting in the [pi0w] or [pi3+] section that reverts it.
+It is important to note that the Raspberry Pi Zero W will see the contents of [pi0w] AND [pi0]. Likewise, a Raspberry Pi 3B Plus sees [pi3+] AND [pi3], and a Raspberry Pi 400 sees [pi400] AND [pi4]. If you want a setting to apply only to Pi Zero, Pi 3B or Pi 4B, you need to follow it (order is important) with a setting in the [pi0w], [pi3+] or [pi400] section that reverts it.
 
 
 ## The `[none]` filter
