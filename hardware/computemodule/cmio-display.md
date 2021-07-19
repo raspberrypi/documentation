@@ -22,7 +22,7 @@ Please note that the display is **not** designed to be hot pluggable. It (and ca
 
 1. Power up the Compute Module and run:
 
-	```sudo wget https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/computemodule/dt-blob-disp1-only.bin -O /boot/dt-blob.bin```
+	```sudo wget https://datasheets.raspberrypi.org/cmio/dt-blob-disp1-only.bin -O /boot/dt-blob.bin```
 
 1. Reboot for the `dt-blob.bin` file to be read.
 
@@ -45,7 +45,7 @@ Please note that the display is **not** designed to be hot pluggable. It (and ca
 
 1. Power up the Compute Module and run:
 
-	```sudo wget https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/computemodule/dt-blob-disp1-cam1.bin -O /boot/dt-blob.bin```
+	```sudo wget https://datasheets.raspberrypi.org/cmio/dt-blob-disp1-cam1.bin -O /boot/dt-blob.bin```
 
 1. Reboot for the `dt-blob.bin` file to be read.
 
@@ -67,7 +67,7 @@ Please note that the display is **not** designed to be hot pluggable. It (and ca
 
 1. Power up the Compute Module and run:
 
-	```sudo wget https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/computemodule/dt-blob-disp1-cam2.bin -O /boot/dt-blob.bin```
+	```sudo wget https://datasheets.raspberrypi.org/cmio/dt-blob-disp1-cam2.bin -O /boot/dt-blob.bin```
 
 1. Reboot for the `dt-blob.bin` file to be read.
 
@@ -100,7 +100,7 @@ Once all the required changes have been made to the ```dts``` file, it needs to 
 Instructions for doing this can be found on the [Pin Configuration](../../configuration/pin-configuration.md) page.
 
 ### Sources
-- [dt-blob-disp1-only.dts](dt-blob-disp1-only.dts)
-- [dt-blob-disp1-cam1.dts](dt-blob-disp1-cam1.dts)
-- [dt-blob-disp1-cam2.dts](dt-blob-disp1-cam2.dts)
-- [dt-blob-disp0-only.dts - uses wiring as for CAM0](dt-blob-disp0-only.dts)
+- [dt-blob-disp1-only.dts](https://datasheets.raspberrypi.org/cmio/dt-blob-disp1-only.dts)
+- [dt-blob-disp1-cam1.dts](https://datasheets.raspberrypi.org/cmio/dt-blob-disp1-cam1.dts)
+- [dt-blob-disp1-cam2.dts](https://datasheets.raspberrypi.org/cmio/dt-blob-disp1-cam2.dts)
+- [dt-blob-disp0-only.dts - uses wiring as for CAM0](https://datasheets.raspberrypi.org/cmio/dt-blob-disp0-only.dts)

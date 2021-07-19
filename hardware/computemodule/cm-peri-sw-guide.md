@@ -1,3 +1,4 @@
+
 # Compute Module Attaching and Enabling Peripherals Guide
 
 ** Note that unless explicitly stated otherwise, these instructions will work identically on Compute Module and Compute Module 3 Module+IO board(s). **
@@ -97,7 +98,7 @@ When `start.elf` runs, it first reads something called `dt-blob.bin`. This is a 
 
 NOTE: the `start.elf` firmware has a 'built-in' default `dt-blob.bin` which is used if no `dt-blob.bin` is found on the root of the first FAT partition. Most Compute Module projects will want to provide their own custom `dt-blob.bin`. Note that `dt-blob.bin` specifies which pin is for HDMI hot plug detect, although this should never change on Compute Module. It can also be used to set up a GPIO as a GPCLK output, and specify an ACT LED that the GPU can use while booting. Other functions may be added in future. For information on `dt-blob.bin` see [here](../../configuration/pin-configuration.md).
 
-[minimal-cm-dt-blob.dts](minimal-cm-dt-blob.dts) is an example `.dts` device tree file that sets up the HDMI hot plug detect and ACT LED and sets all other GPIOs to be inputs with default pulls.
+[minimal-cm-dt-blob.dts](https://datasheets.raspberrypi.org/cm/minimal-cm-dt-blob.dts) is an example `.dts` device tree file that sets up the HDMI hot plug detect and ACT LED and sets all other GPIOs to be inputs with default pulls.
 
 To compile the `minimal-cm-dt-blob.dts` to `dt-blob.bin` use the Device Tree Compiler `dtc`:
 ```
@@ -164,7 +165,7 @@ Please post any issues, bugs or questions on the Raspberry Pi [Device Tree subfo
 
 In this simple example we wire an NXP PCF8523 real time clock (RTC) to the CMIO board BANK1 GPIO pins: 3V3, GND, I2C1_SDA on GPIO44 and I2C1_SCL on GPIO45.
 
-Download [minimal-cm-dt-blob.dts](minimal-cm-dt-blob.dts) and copy it to the SD card FAT partition, located in `/boot` when the CM has booted.
+Download [minimal-cm-dt-blob.dts](https://datasheets.raspberrypi.org/cm/minimal-cm-dt-blob.dts) and copy it to the SD card FAT partition, located in `/boot` when the CM has booted.
 
 Edit `minimal-cm-dt-blob.dts` and change the pin states of GPIO44 and 45 to be I2C1 with pull-ups:
 ```
@@ -190,7 +191,7 @@ Compile `dt-blob.bin`:
 sudo dtc -I dts -O dtb -o /boot/dt-blob.bin /boot/minimal-cm-dt-blob.dts
 ```
 
-Grab [example1-overlay.dts](example1-overlay.dts) and put it in `/boot` then compile it:
+Grab [example1-overlay.dts](https://datasheets.raspberrypi.org/cm/example1-overlay.dts) and put it in `/boot` then compile it:
 ```
 sudo dtc -@ -I dts -O dtb -o /boot/overlays/example1.dtbo /boot/example1-overlay.dts
 ```
