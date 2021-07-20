@@ -39,7 +39,7 @@ To connect a single camera:
 
     ![GPIO connection for a single camera](images/CMIO-Cam-GPIO.jpg)
 
-1. Power the CM up and run `sudo wget https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/computemodule/dt-blob-cam1.bin -O /boot/dt-blob.bin`
+1. Power the CM up and run `sudo wget https://datasheets.raspberrypi.org/cmio/dt-blob-cam1.bin -O /boot/dt-blob.bin`
 1. Finally, reboot for the dt-blob.bin file to be read.
 
 To connect two cameras, follow the steps as for a single camera and then also:
@@ -47,7 +47,7 @@ To connect two cameras, follow the steps as for a single camera and then also:
 1. (CM1 and CM3 only) Connect the GPIO pins for the second camera.
     ![GPIO connection with additional camera](images/CMIO-Cam-GPIO2.jpg)
 1. (CM4 only) Add jumpers to J6.
-1. Power up and run `sudo wget https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/computemodule/dt-blob-dualcam.bin -O /boot/dt-blob.bin`
+1. Power up and run `sudo wget https://datasheets.raspberrypi.org/cmio/dt-blob-dualcam.bin -O /boot/dt-blob.bin`
 1. Reboot for the dt-blob.bin file to be read.
 
 Note: The default wiring uses GPIOs 2&3 to control the primary camera. These GPIOs can also be used for I2C, but doing so will result in a conflict, and the camera is unlikely to work.
@@ -153,9 +153,9 @@ pin_define@CAMERA_1_SCL_PIN { type = "internal"; number = <29>; };
 <a name="sample-device-tree-source-files"></a>
 ### Sample device tree source files
 
-[Enable CAM1 only](dt-blob-cam1.dts)
+[Enable CAM1 only](https://datasheets.raspberrypi.org/cmio/dt-blob-cam1.dts)
 
-[Enable CAM1 and CAM0](dt-blob-dualcam.dts)
+[Enable CAM1 and CAM0](https://datasheets.raspberrypi.org/cmio/dt-blob-dualcam.dts)
 
 ### Compiling a DTS file to a device tree blob
 
