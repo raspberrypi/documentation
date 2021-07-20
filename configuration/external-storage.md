@@ -3,6 +3,8 @@ You can connect your external hard disk, SSD, or USB stick to any of the USB por
 
 By default, your Raspberry Pi automatically mounts some of the popular file systems such as FAT, NTFS, and HFS+ at the `/media/pi/<HARD-DRIVE-LABEL>` location.
 
+NOTE: Raspberry Pi OS Lite does not implement automounting.
+
 To set up your storage device so that it always mounts to a specific location of your choice, you must mount it manually.
 
 ## Mounting a storage device 
