@@ -20,7 +20,7 @@ Raspberry Pi Imager provides a GUI for updating the bootloader and selecting the
 2. Select a spare SD card. The contents will get overwritten!
 3. Launch `Raspberry Pi Imager`
 4. Select `Misc utility images` under `Operating System`
-5. Select `Bootloader`
+5. Select `Raspberry Pi 4 EEPROM boot recovery`
 6. Select a boot-mode i.e. `SD` (recommended), `USB` or `Network`.
 7. Select `SD card` and then `Write`
 8. Boot the Raspberry Pi with the new image and wait for at least 10 seconds.
