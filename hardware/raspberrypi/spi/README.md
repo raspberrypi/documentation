@@ -162,11 +162,9 @@ The default Linux driver is now the standard spi-bcm2835.
 
 SPI0 is disabled by default. To enable it, use [raspi-config](../../../configuration/raspi-config.md), or ensure the line `dtparam=spi=on` isn't commented out in `/boot/config.txt`. By default it uses 2 chip select lines, but this can be reduced to 1 using `dtoverlay=spi0-1cs`. `dtoverlay=spi0-2cs` also exists, and without any parameters it is equivalent to `dtparam=spi=on`.
 
-To enable SPI1, you can use 1, 2 or 3 chip select lines, adding in each case:
+To enable SPI1, you can use 1, 2 or 3 chip select lines, adding in each case where n is number of chip select lines:
 <pre>
-dtoverlay=spi1-1cs  #1 chip select
-dtoverlay=spi1-2cs  #2 chip select
-dtoverlay=spi1-3cs  #3 chip select
+dtoverlay=spi1-<n>cs
 </pre>
 to /boot/config.txt file. Similar overlays exist for SPI2, SPI3, SPI4, SPI5 and SPI6.
 
