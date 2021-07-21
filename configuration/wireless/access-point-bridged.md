@@ -1,4 +1,3 @@
-
 # Setting up a Raspberry Pi as a bridged wireless access point
 
 The Raspberry Pi can be used as a bridged wireless access point within an existing Ethernet network. This will extend the network to wireless computers and devices.
