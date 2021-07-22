@@ -109,7 +109,7 @@ Also, Pi 3s do not by default use the correct GL driver, so please ensure you ha
 
 ## Further Documentation
 
-You can find out more in the _Raspberry Pi Camera Algorithm and Tuning Guide_, [here](rpi_SOFT_libcamera_1p2.pdf).
+You can find out more in the [_Raspberry Pi Camera Algorithm and Tuning Guide_.](https://datasheets.raspberrypi.org/camera/raspberry-pi-camera-guide.pdf).
 
 More information on the _libcamera-apps_ is available [here](https://github.com/raspberrypi/libcamera-apps/blob/main/README.md).
 
