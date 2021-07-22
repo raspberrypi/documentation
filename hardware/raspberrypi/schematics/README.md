@@ -16,7 +16,7 @@ Schematics for the various Raspberry Pi board versions:
 
 ## Raspberry Pi 2 Model B
 
-- [Revision 1.2](https://datasheets.raspberrypi.org/rpi/raspberry-pi-2-b-reduced-schematics.pdf)
+- [Revision 1.2](https://datasheets.raspberrypi.org/rpi2/raspberry-pi-2-b-reduced-schematics.pdf)
 
 ## Raspberry Pi Model B+
 
