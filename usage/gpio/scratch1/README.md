@@ -247,7 +247,9 @@ They have matching variable forms:
 
 There are also sensor variables `Input1` to `Input4` with values (0|1), and the four ADC pins (1 .. 4) with values +-6.1V. If the signal is derived from a potentiometer connected to the Explorer HAT's 5V/GND, then the range is (0 .. ~5).
 
-The demo script in **Sensors and Motors/gpio-ExplorerHAT** requires that you wire up a motor, led, rotary potentiometer etc. as shown in [this diagram](images/gpio-ExplorerHAT.png)
+The demo script in **Sensors and Motors/gpio-ExplorerHAT** requires that you wire up a motor, led, rotary potentiometer etc. 
+
+![Explorer HAT](images/gpio-ExplorerHAT.png)
 
 Note that the capacitive input pads are not yet operational, requiring some library level support.
 
