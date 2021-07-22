@@ -4,6 +4,8 @@
 
 These instructions are intended for advanced users, if anything is unclear please use the [Raspberry Pi Camera forums](https://www.raspberrypi.org/forums/viewforum.php?f=43) for technical help.
 
+These instructions are intended to users running the official 32-bit [Raspberry Pi OS](https://www.raspberrypi.org/software/).  When tested against a 64-bit Ubuntu 20 or 21 release, they did not function, and many of the tools that debugging guides or forum posts assume you have (`raspi-gpio`, `vcdbg`) are either not installed or completely unavailable.
+
 Unless explicitly stated otherwise, these instructions will work identically on both the Compute Module and Compute Module 3, attached to a Compute Module IO Board. Compute Module 4 is slightly different, so please refer to the appropriate section.
 
 ### Compute Module board capabilities
