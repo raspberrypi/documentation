@@ -14,7 +14,7 @@ The Compliance Support programme is designed to eliminate the burden of navigati
 
 ## Powered by Raspberry Pi
 
-The Powered by Raspberry Pi progamme provides a porcess for companies wanting to use a form of the Raspberry Pi logo, and covers products with Raspberry Pi computers or silicon inside, and services provided by a Raspberry Pi. If you wish to start the process to apply you can do so [online](https://www.raspberrypi.org/trademark-rules/powered-raspberry-pi/).
+The Powered by Raspberry Pi progamme provides a process for companies wanting to use a form of the Raspberry Pi logo, and covers products with Raspberry Pi computers or silicon inside, and services provided by a Raspberry Pi. If you wish to start the process to apply you can do so [online](https://www.raspberrypi.org/trademark-rules/powered-raspberry-pi/).
 
 ## Approved Design Partners
 
