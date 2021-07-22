@@ -87,5 +87,5 @@ The HQ Camera uses a Hoya CM500 infrared filter. Its transmission characteristic
   
 ## Schematics
 
-- Camera Module v2 [PDF](https://datasheets.raspberrypi.org/camera/camera-v2-schematic.pdf)
-- HQ Camera Module [PDF](https://datasheets.raspberrypi.org/hq-camera/hq-camera-schematic.pdf)
+- Camera Module v2 [PDF](https://datasheets.raspberrypi.org/camera/camera-v2-schematics.pdf)
+- HQ Camera Module [PDF](https://datasheets.raspberrypi.org/hq-camera/hq-camera-schematics.pdf)
