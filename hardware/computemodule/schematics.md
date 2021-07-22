@@ -12,8 +12,6 @@ Schematics for the Compute Module camera/display adapter board (CMCDA):
 
 * [CMCDA Rev 1.1](https://datasheets.raspberrypi.org/cmcda-schematics.pdf)
 
-schematics/rpi_SCH_CMCDA_1p1.pdf)
-
 Schematic for an under-voltage detection circuit, as used in most models of Raspberry Pi:
 
 ![Under-voltage detect](images/under_voltage_detect.png)
