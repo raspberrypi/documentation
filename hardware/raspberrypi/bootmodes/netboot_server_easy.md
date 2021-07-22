@@ -6,7 +6,7 @@ sudo apt update
 sudo apt full-upgrade -y
 sudo reboot
 
-wget https://raw.githubusercontent.com/raspberrypi/documentation/master/hardware/raspberrypi/bootmodes/pxetools/prepare_pxetools
+wget https://datasheets.raspberrypi.org/soft/prepare_pxetools.sh
 bash prepare_pxetools
 ```
 

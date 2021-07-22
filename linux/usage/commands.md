@@ -109,7 +109,7 @@ Run a command in the background with `&`, freeing up the shell for future comman
 
 ### wget
 
-Download a file from the web directly to the computer with `wget`. So `wget https://www.raspberrypi.org/documentation/linux/usage/commands.md` will download this file to your computer as `commands.md`
+Download a file from the web directly to the computer with `wget`. So `wget https://datasheets.raspberrypi.org/rpi4/raspberry-pi-4-datasheet.pdf` will download the Raspberry Pi 4 datasheet and save it as `raspberry-pi-4-datasheet.pdf`.
 
 ### curl
 
