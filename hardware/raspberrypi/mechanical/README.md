@@ -30,8 +30,8 @@ Also applicable to the A+.
 
 ## Raspberry Pi Zero, Pi Zero W, Pi Zero WH (v1.3)
 
-- [Board - Zero W](https://datasheets.raspberrypi.org/rpi/raspberry-pi-zero-w-mechanical-drawing.pdf)
-- [Board - Zero](https://datasheets.raspberrypi.org/rpi/raspberry-pi-zero-mechanical-drawing.pdf)
+- [Board - Zero W](https://datasheets.raspberrypi.org/rpizero/raspberry-pi-zero-w-mechanical-drawing.pdf)
+- [Board - Zero](https://datasheets.raspberrypi.org/rpizero/raspberry-pi-zero-mechanical-drawing.pdf)
 - [Case - Blank lid](https://datasheets.raspberrypi.org/case/raspberry-pi-zero-case-mechanical-drawing.pdf)
 - [Case - GPIO lid](https://datasheets.raspberrypi.org/case/raspberry-pi-zero-case-with-gpio-mechanical-drawing.pdf)
 - [Case - Camera lid](https://datasheets.raspberrypi.org/case/raspberry-pi-zero-case-with-camera-mechanical-drawing.pdf)
