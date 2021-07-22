@@ -1,4 +1,3 @@
-
 # Compute Module Attaching and Enabling Peripherals Guide
 
 ** Note that unless explicitly stated otherwise, these instructions will work identically on Compute Module and Compute Module 3 Module+IO board(s). **
