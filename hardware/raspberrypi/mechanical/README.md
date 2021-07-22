@@ -32,9 +32,9 @@ Also applicable to the A+.
 
 - [Board - Zero W](https://datasheets.raspberrypi.org/rpi/raspberry-pi-zero-w-mechanical-drawing.pdf)
 - [Board - Zero](https://datasheets.raspberrypi.org/rpi/raspberry-pi-zero-mechanical-drawing.pdf)
-- [Case - Blank lid](https://datasheets.raspberrypi.org/rpi/raspberry-pi-zero-case-mechanical-drawing.pdf)
-- [Case - GPIO lid](https://datasheets.raspberrypi.org/rpi/raspberry-pi-zero-case-with-gpio-mechanical-drawing.pdf)
-- [Case - Camera lid](https://datasheets.raspberrypi.org/rpi/raspberry-pi-zero-case-with-camera-mechanical-drawing.pdf)
+- [Case - Blank lid](https://datasheets.raspberrypi.org/case/raspberry-pi-zero-case-mechanical-drawing.pdf)
+- [Case - GPIO lid](https://datasheets.raspberrypi.org/case/raspberry-pi-zero-case-with-gpio-mechanical-drawing.pdf)
+- [Case - Camera lid](https://datasheets.raspberrypi.org/case/raspberry-pi-zero-case-with-camera-mechanical-drawing.pdf)
 
 ## Raspberry Pi PoE HAT
 
