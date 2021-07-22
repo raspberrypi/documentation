@@ -2,51 +2,47 @@
 
 ## Raspberry Pi 4B
 
-- [Board - PDF](rpi_MECH_4b_4p0.pdf)
-- [Board - DXF](rpi_MECH_4b_4p0.dxf)
-- [Board (with mount holes) - DXF](rpi_MECH_4b_4p0-with_mounting.dxf)
+- [Board - PDF](https://datasheets.raspberrypi.org/rpi4/raspberry-pi-4-mechanical-drawing.pdf)
+- [Board - DXF](https://datasheets.raspberrypi.org/rpi4/raspberry-pi-4-mechanical-drawing.dxf)
 
 ## Raspberry Pi 3B+
 
-- [Board - PDF](rpi_MECH_3bplus.pdf)
-- [Board - DXF](rpi_MECH_3bplus.dxf)
-- [Case](rpi_MECH_3bplus_case.pdf)
+- [Board - PDF](https://datasheets.raspberrypi.org/rpi3/raspberry-pi-3-b-plus-mechanical-drawing.pdf)
+- [Board - DXF](https://datasheets.raspberrypi.org/rpi3/raspberry-pi-3-b-plus-mechanical-drawing.dxf)
+- [Case](https://datasheets.raspberrypi.org/case/raspberry-pi-3-b-plus-case-mechanical-drawing.pdf)
 
 ## Raspberry Pi 3A+
 
 Also applicable to the A+.
 
-- [Board](rpi_MECH_3aplus.pdf)
-- [Case](rpi_MECH_3aplus_case.pdf)
+- [Board](https://datasheets.raspberrypi.org/rpi3/raspberry-pi-3-a-plus-mechanical-drawing.pdf)
+- [Case](https://datasheets.raspberrypi.org/case/raspberry-pi-3-a-plus-case-mechanical-drawing.pdf)
 
 ## Raspberry Pi 3B
 
-- [Board - PDF](rpi_MECH_3b_1p2.pdf)
-- [Board - DXF](rpi_MECH_3b_1p2.dxf)
+- [Board - PDF](https://datasheets.raspberrypi.org/rpi3/raspberry-pi-3-b-mechanical-drawing.pdf)
+- [Board - DXF](https://datasheets.raspberrypi.org/rpi3/raspberry-pi-3-b-mechanical-drawing.dxf)
 
 ## Raspberry Pi Model B+
 
-- [Board - PDF](rpi_MECH_bplus_1p2.pdf)
-- [Board - DXF](rpi_MECH_bplus_1p2.dxf)
+- [Board - PDF](https://datasheets.raspberrypi.org/rpi/raspberry-pi-b-plus-mecahnical-drawing.pdf)
+- [Board - DXF](https://datasheets.raspberrypi.org/rpi/raspberry-pi-b-plus-mecahnical-drawing.dxf)
 
 ## Raspberry Pi Zero, Pi Zero W, Pi Zero WH (v1.3)
 
-- [Board](rpi_MECH_Zero_1p3.pdf)
-- [Case - Blank lid](rpi_MECH_Zero_case_blank.pdf)
-- [Case - GPIO lid](rpi_MECH_Zero_case_gpio.pdf)
-- [Case - Camera lid](rpi_MECH_Zero_case_camera.pdf)
-
-## Raspberry Pi Zero (v1.2)
-
-- [Board](rpi_MECH_Zero_1p2.pdf)
+- [Board - Zero W](https://datasheets.raspberrypi.org/rpi/raspberry-pi-zero-w-mechanical-drawing.pdf)
+- [Board - Zero](https://datasheets.raspberrypi.org/rpi/raspberry-pi-zero-mechanical-drawing.pdf)
+- [Case - Blank lid](https://datasheets.raspberrypi.org/rpi/raspberry-pi-zero-case-mechanical-drawing.pdf)
+- [Case - GPIO lid](https://datasheets.raspberrypi.org/rpi/raspberry-pi-zero-case-with-gpio-mechanical-drawing.pdf)
+- [Case - Camera lid](https://datasheets.raspberrypi.org/rpi/raspberry-pi-zero-case-with-camera-mechanical-drawing.pdf)
 
 ## Raspberry Pi PoE HAT
 
-- [Board](rpi_MECH_PoEHAT.pdf)
+- [Board](https://datasheets.raspberrypi.org/poe/poe-hat-mechanical-drawing.pdf)
 
 ## Raspberry Pi TV HAT
 
-- [Board](rpi_MECH_TVHAT_1p0.png)
+- [Board](https://datasheets.raspberrypi.org/tv-hat/tv-hat-mechanical-drawing.pdf)
 
 ## Compute Module 4
 
