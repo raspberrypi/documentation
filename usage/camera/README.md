@@ -30,7 +30,7 @@ libcamera is a new Linux API for interfacing to cameras. Raspberry Pi have been 
 
 - [Libcamera's main website](http://libcamera.org/).
 - [Raspberry Pi libcamera implementation](../../linux/software/libcamera/README.md).
-- [Tuning guide for the Raspberry Pi cameras and libcamera](../../linux/software/libcamera/rpi_SOFT_libcamera_1p2.pdf)
+- [Tuning guide for the Raspberry Pi cameras and libcamera](https://datasheets.raspberrypi.org/camera/raspberry-pi-camera-guide.pdf)
 - [Writing a kernel module to support a new camera or capture chip](../../linux/software/libcamera/csi-2-usage.md)
 
 
