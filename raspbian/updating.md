@@ -12,7 +12,7 @@ The second reason, which is related to the first, is that the software you are r
 
 To update software in Raspberry Pi OS, you can use the [apt](../linux/software/apt.md) tool in a terminal. Open a terminal window from the taskbar or application menu:
 
-![Terminal](../usage/terminal/images/terminal.png)
+![Terminal](images/terminal.png)
 
 First, **update** your system's package list by entering the following command:
 
