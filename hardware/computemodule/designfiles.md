@@ -11,8 +11,8 @@ There is also a KiCAD PCB design set available:
 ## Design data for Compute Module IO board (CMIO) prior to the Compute Module 4
 
 * [CMIO Rev 1.2](https://datasheets.raspberrypi.org/cmio/RPi-CMIO-R1P2.zip)
-* [CMIO Rev 3.0](https://datasheets.raspberrypi.org/cmio/RPi-CMIO-R3.0.zip)
+* [CMIO Rev 3.0](https://datasheets.raspberrypi.org/cmio/RPi-CMIO-R3P0.zip)
 
 Design data for the Compute Module camera/display adapter board (CMCDA):
 
-* [CMCDA Rev 1.1](https://datasheets.raspberrypi.org/cmio/RPi-CMCDA-1P1.zip)
+* [CMCDA Rev 1.1](https://datasheets.raspberrypi.org/cmcda/RPi-CMCDA-1P1.zip)
