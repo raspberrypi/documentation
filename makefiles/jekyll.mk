@@ -58,7 +58,13 @@ $(OUTPUT_DIR)/.htaccess: $(SCRIPTS_DIR)/create_redirects.py $(wildcard $(DOCUMEN
 $(OUTPUT_DIR)/DO_NOT_EDIT.txt: | $(OUTPUT_DIR)
 	echo "Do not edit any files in this directory. Everything will get overwritten when you run 'make'" > $@
 
-$(MARKER_FILE): $(AUTO_NINJABUILD) $(JEKYLL_DIRS) $(DOWNLOADED_INCLUDES) $(OUTPUT_DIR)/_data/index.json $(OUTPUT_DIR)/.htaccess $(OUTPUT_DIR)/DO_NOT_EDIT.txt | $(OUTPUT_DIR)
+$(OUTPUT_DIR)/images: | $(OUTPUT_DIR)
+	mkdir -p $@
+
+$(OUTPUT_DIR)/images/%: $(DOCUMENTATION_IMAGES_DIR)/% | $(OUTPUT_DIR)/images
+	cp $< $@
+
+$(MARKER_FILE): $(AUTO_NINJABUILD) $(JEKYLL_DIRS) $(DOWNLOADED_INCLUDES) $(OUTPUT_DIR)/_data/index.json $(OUTPUT_DIR)/.htaccess $(OUTPUT_DIR)/DO_NOT_EDIT.txt $(OUTPUT_DIR)/images/opensocial.png | $(OUTPUT_DIR)
 	ninja -f $<
 	touch $@
 	$(MAKE) -f $(NEXT_MAKEFILE) invalidate
