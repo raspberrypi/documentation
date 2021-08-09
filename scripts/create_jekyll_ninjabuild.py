@@ -38,7 +38,7 @@ if __name__ == "__main__":
     output_dir = sys.argv[3]
     output_ninjabuild = sys.argv[4]
 
-    category_pages = set(['index.adoc'])
+    category_pages = set([('index.adoc', 'Raspberry Pi Documentation')])
     doc_pages = set()
     page_images = set()
 
@@ -50,7 +50,7 @@ if __name__ == "__main__":
             assert ('path' in tab) == ('subitems' in tab)
             if 'path' in tab:
                 # category (boxes) page
-                category_pages.add(os.path.join(tab['path'], 'index.adoc'))
+                category_pages.add((os.path.join(tab['path'], 'index.adoc'), 'Raspberry Pi Documentation - {}'.format(tab['title'])))
                 # build_adoc
                 for subitem in tab['subitems']:
                     if 'subpath' in subitem:
@@ -70,9 +70,9 @@ if __name__ == "__main__":
         ninja.newline()
 
         targets = []
-        for page in sorted(category_pages):
+        for page, title in sorted(category_pages):
             dest = os.path.join('$out_dir', page)
-            ninja.build(dest, 'create_categories_page')
+            ninja.build(dest, 'create_categories_page', variables={'title': title})
             targets.append(dest)
 
         if targets:
