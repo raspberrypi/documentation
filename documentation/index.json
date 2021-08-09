@@ -7,7 +7,7 @@
             "subitems": [
                 {
                     "title": "Getting Started",
-                    "description": "This is the stuff about how to get started.",
+                    "description": "This is the stuff about how to get started",
                     "image": "Getting-Started-SMALL.png",
                     "subpath": "getting-started.adoc"
                 },
@@ -67,13 +67,13 @@
                 },
                 {
                     "title": "PIP",
-                    "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents.",
+                    "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents",
                     "image": "PIP-SMALL.png",
                     "url": "https://pip.raspberrypi.org/"
                 },
                 {
                     "title": "Datasheets",
-                    "description": "The Datasheets site for PDF-based documentation.",
+                    "description": "The Datasheets site for PDF-based documentation",
                     "image": "Datasheets-SMALL.png",
                     "url": "https://datasheets.raspberrypi.org"
                 }
@@ -86,19 +86,19 @@
             "subitems": [
                 {
                     "title": "Camera",
-                    "description": "We have several Raspberry Pi Cameras",
+                    "description": "We have several Raspberry Pi cameras",
                     "image": "Camera-SMALL.png",
                     "subpath": "camera.adoc"
                 },
                 {
                     "title": "Display",
-                    "description": "The Raspberry Pi Touch display",
+                    "description": "The Raspberry Pi Touch Display",
                     "image": "Display-SMALL.png",
                     "subpath": "display.adoc"
                 },
                 {
                     "title": "Keyboard & Mouse",
-                    "description": "We have our own Keyboard and Mouse",
+                    "description": "We have our own keyboard and mouse",
                     "image": "Keyboard-and-Mouse-SMALL.png",
                     "url": "https://datasheets.raspberrypi.org/keyboard-mouse/getting-started-with-keyboard-and-mouse.pdf"
                 },
@@ -122,13 +122,13 @@
                 },
                 {
                     "title": "PIP",
-                    "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents.",
+                    "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents",
                     "image": "PIP-SMALL.png",
                     "url": "https://pip.raspberrypi.org/"
                 },
                 {
                     "title": "Datasheets",
-                    "description": "The Datasheets site for PDF-based documentation.",
+                    "description": "The Datasheets site for PDF-based documentation",
                     "image": "Datasheets-SMALL.png",
                     "url": "https://datasheets.raspberrypi.org"
                 }
@@ -152,13 +152,13 @@
                 },
                 {
                     "title": "PIP",
-                    "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents.",
+                    "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents",
                     "image": "PIP-SMALL.png",
                     "url": "https://pip.raspberrypi.org/"
                 },
                 {
                     "title": "Datasheets",
-                    "description": "The Datasheets site for PDF-based documentation.",
+                    "description": "The Datasheets site for PDF-based documentation",
                     "image": "Datasheets-SMALL.png",
                     "url": "https://datasheets.raspberrypi.org"
                 }
