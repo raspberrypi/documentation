@@ -120,4 +120,4 @@ Voltages can drop for a variety of reasons, for example if the power supply itse
 
 === Back-powering
 
-The USB specification requires that USB devices must not supply current to upstream devices. If a USB device does supply current to an upstream device then this is called back-powering. Usually this happens when a badly-made powered USB hub is connected, and will result in the powered USB hub supplying power to the host Raspberry Pi. This is not recommended since the power being supplied to the Pi via the hub will bypass the protection circuitry built into the Pi, leaving it vulnerable to damage in the event of a power surge.
+The USB specification requires that USB devices must not supply current to upstream devices. If a USB device does supply current to an upstream device then this is called back-powering. Often this happens when a badly-made powered USB hub is connected, and will result in the powered USB hub supplying power to the host Raspberry Pi. This is not recommended since the power being supplied to the Pi via the hub will bypass the protection circuitry built into the Pi, leaving it vulnerable to damage in the event of a power surge.
