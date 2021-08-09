@@ -38,7 +38,7 @@ if __name__ == "__main__":
     output_dir = sys.argv[3]
     output_ninjabuild = sys.argv[4]
 
-    category_pages = set([('index.adoc', 'Raspberry Pi Documentation')])
+    category_pages = set([('index.adoc', 'Index')])
     doc_pages = set()
     page_images = set()
 
@@ -50,7 +50,7 @@ if __name__ == "__main__":
             assert ('path' in tab) == ('subitems' in tab)
             if 'path' in tab:
                 # category (boxes) page
-                category_pages.add((os.path.join(tab['path'], 'index.adoc'), 'Raspberry Pi Documentation - {}'.format(tab['title'])))
+                category_pages.add((os.path.join(tab['path'], 'index.adoc'), tab['title']))
                 # build_adoc
                 for subitem in tab['subitems']:
                     if 'subpath' in subitem:
