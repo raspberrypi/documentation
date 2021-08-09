@@ -124,54 +124,176 @@ Chapter 10 in the https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals
 
 ===== SPI2 (available only on compute modules)
 
-| SPI Function | Broadcom Pin Name | Broadcom Pin Function |
-|--|--|--|
-| MOSI | GPIO41 | SPI2_MOSI |
-| MISO | GPIO40 | SPI2_MISO |
-| SCLK | GPIO42 | SPI2_SCLK |
-| CE0  | GPIO43 | SPI2_CE0_N |
-| CE1  | GPIO44 | SPI2_CE1_N |
-| CE2  | GPIO45 | SPI2_CE2_N |
+[cols="1,1,1,1"]
+|===
+| SPI Function
+| Broadcom Pin Name
+| Broadcom Pin Function
+
+| MOSI
+| GPIO41
+| SPI2_MOSI
+
+| MISO
+| GPIO40
+| SPI2_MISO
+
+| SCLK
+| GPIO42
+| SPI2_SCLK
+
+| CE0
+| GPIO43
+| SPI2_CE0_N
+
+| CE1
+| GPIO44
+| SPI2_CE1_N
+
+| CE2
+| GPIO45
+| SPI2_CE2_N
+|===
 
 ===== SPI3 (BCM2711 only)
 
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
-|--|--|--|--|
-| MOSI | 03 | GPIO02 | SPI3_MOSI |
-| MISO | 28 | GPIO01 | SPI3_MISO |
-| SCLK | 05 | GPIO03 | SPI3_SCLK |
-| CE0  | 27 | GPIO00 | SPI3_CE0_N |
-| CE1  | 18 | GPIO24 | SPI3_CE1_N |
+[cols="1,1,1,1"]
+|===
+| SPI Function
+| Header Pin
+| Broadcom Pin Name
+| Broadcom Pin Function
+
+| MOSI
+| 03
+| GPIO02
+| SPI3_MOSI
+
+| MISO
+| 28
+| GPIO01
+| SPI3_MISO
+
+| SCLK
+| 05
+| GPIO03
+| SPI3_SCLK
+
+| CE0
+| 27
+| GPIO00
+| SPI3_CE0_N
+
+| CE1
+| 18
+| GPIO24
+| SPI3_CE1_N
+|===
 
 ===== SPI4 (BCM2711 only)
 
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
-|--|--|--|--|
-| MOSI | 31 | GPIO06 | SPI4_MOSI |
-| MISO | 29 | GPIO05 | SPI4_MISO |
-| SCLK | 26 | GPIO07 | SPI4_SCLK |
-| CE0  | 07 | GPIO04 | SPI4_CE0_N |
-| CE1  | 22 | GPIO25 | SPI4_CE1_N |
+[cols="1,1,1,1"]
+|===
+| SPI Function
+| Header Pin
+| Broadcom Pin Name
+| Broadcom Pin Function
+
+| MOSI
+| 31
+| GPIO06
+| SPI4_MOSI
+
+| MISO
+| 29
+| GPIO05
+| SPI4_MISO
+
+| SCLK
+| 26
+| GPIO07
+| SPI4_SCLK
+
+| CE0 
+| 07
+| GPIO04
+| SPI4_CE0_N
+
+| CE1
+| 22
+| GPIO25
+| SPI4_CE1_N
+|===
 
 ===== SPI5 (BCM2711 only)
 
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
-|--|--|--|--|
-| MOSI | 08 | GPIO14 | SPI5_MOSI |
-| MISO | 33 | GPIO13 | SPI5_MISO |
-| SCLK | 10 | GPIO15 | SPI5_SCLK |
-| CE0  | 32 | GPIO12 | SPI5_CE0_N |
-| CE1  | 37 | GPIO26 | SPI5_CE1_N |
+[cols="1,1,1,1"]
+|===
+| SPI Function
+|Header Pin
+| Broadcom Pin Name
+| Broadcom Pin Function
+
+| MOSI
+| 08
+| GPIO14
+| SPI5_MOSI
+
+| MISO
+| 33
+| GPIO13
+| SPI5_MISO
+
+| SCLK
+| 10
+| GPIO15
+| SPI5_SCLK
+
+| CE0
+| 32
+| GPIO12
+| SPI5_CE0_N
+
+| CE1
+| 37
+| GPIO26
+| SPI5_CE1_N
+|===
 
 ===== SPI6 (BCM2711 only)
 
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
-|--|--|--|--|
-| MOSI | 38 | GPIO20 | SPI6_MOSI |
-| MISO | 35 | GPIO19 | SPI6_MISO |
-| SCLK | 40 | GPIO21 | SPI6_SCLK |
-| CE0  | 12 | GPIO18 | SPI6_CE0_N |
-| CE1  | 13 | GPIO27 | SPI6_CE1_N |
+[cols="1,1,1,1"]
+|===
+| SPI Function
+| Header Pin
+| Broadcom Pin Name
+| Broadcom Pin Function
+
+| MOSI
+| 38
+| GPIO20
+| SPI6_MOSI
+
+| MISO
+| 35
+| GPIO19
+| SPI6_MISO
+
+| SCLK
+| 40
+| GPIO21
+| SPI6_SCLK
+
+| CE0
+| 12
+| GPIO18
+| SPI6_CE0_N
+
+| CE1
+| 13
+| GPIO27
+| SPI6_CE1_N
+|===
 
 ==== Master modes
 
