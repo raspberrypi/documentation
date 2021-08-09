@@ -1,0 +1,171 @@
+== Updating and Upgrading Raspberry Pi OS
+
+It's important to keep your Raspberry Pi up to date. The first and probably the most important reason is security. A device running Raspberry Pi OS contains millions of lines of code that you rely on. Over time, these millions of lines of code will expose well-known vulnerabilities, which are documented in https://cve.mitre.org/index.html[publicly available databases] meaning that they are easy to exploit. The only way to mitigate these exploits as a user of Raspberry Pi OS is to keep your software up to date, as the upstream repositories track CVEs closely and try to mitigate them quickly.
+
+The second reason, related to the first, is that the software you are running on your device most certainly contains bugs. Some bugs are CVEs, but bugs could also be affecting the desired functionality without being related to security. By keeping your software up to date, you are lowering the chances of hitting these bugs.
+
+=== Using APT
+
+The easiest way to manage installing, upgrading, and removing software is using APT (Advanced Packaging Tool) from Debian. To update software in Raspberry Pi OS, you can use the `apt` tool from a Terminal window. 
+
+==== Keeping your Operating System up to Date
+
+APT keeps a list of software sources on your Pi in a file at `/etc/apt/sources.list`. Before installing software, you should update your package list with `apt update`. Go ahead and open a Terminal window and type:
+
+[,bash]
+----
+sudo apt update
+----
+
+Next, *upgrade* all your installed packages to their latest versions with the following command:
+
+[,bash]
+----
+sudo apt full-upgrade
+----
+
+Note that `full-upgrade` is used in preference to a simple `upgrade`, as it also picks up any dependency changes that may have been made.
+
+Generally speaking, doing this regularly will keep your installation up to date for the particular major Raspberry Pi OS release you are using (e.g. Stretch). It will not update from one major release to another, for example, Stretch to Buster.
+
+However, there are occasional changes made in the Foundation's Raspberry Pi OS image that require manual intervention, for example a newly introduced package. These are not installed with an upgrade, as this command only updates the packages you already have installed.
+
+NOTE: The kernel and firmware are installed as a Debian package, and so will also get updates when using the procedure above. These packages are updated infrequently and after extensive testing.
+
+==== Running Out of Space
+
+When running `sudo apt full-upgrade`, it will show how much data will be downloaded and how much space it will take up on the SD card. It's worth checking with `df -h` that you have enough free disk space, as unfortunately `apt` will not do this for you. Also be aware that downloaded package files (`.deb` files) are kept in `/var/cache/apt/archives`. You can remove these in order to free up space with `sudo apt clean` (`sudo apt-get clean` in older releases of apt).
+
+==== Upgrading from Operating System Versions
+
+WARNING: Upgrading an existing image is possible, but is not guaranteed to work in every circumstance and we do not recommend it. If you do wish to try upgrading your operating system version, we strongly suggest making a backup first -- we can accept no responsibility for loss of data from a failed update.
+
+The latest version of Raspberry Pi OS is based on Debian Buster. The previous version was based on Stretch. To upgrade, first modify the files `/etc/apt/sources.list` and `/etc/apt/sources.list.d/raspi.list`. In both files, change every occurrence of the word `stretch` to `buster`. (Both files will require sudo to edit.)
+
+Then open a terminal window and execute:
+
+[,bash]
+----
+sudo apt update
+sudo apt -y dist-upgrade
+----
+
+Answer 'yes' to any prompts. There may also be a point at which the install pauses while a page of information is shown on the screen -- hold the +++<kbd>+++space+++</kbd>+++ key to scroll through all of this and then press +++<kbd>+++q+++</kbd>+++ to continue.
+
+Finally, if you are not using PulseAudio for anything other than Bluetooth audio, remove it from the image by entering:
+
+[,bash]
+----
+sudo apt -y purge "pulseaudio*"
+----
+
+If moving to a new Raspberry Pi model (for example the Pi 3B+), you may also need to update the kernel and the firmware using the instructions above.
+
+==== Searching for Software
+
+You can search the archives for a package with a given keyword with `apt-cache search`:
+
+[,bash]
+----
+apt-cache search locomotive
+sl - Correct you if you type `sl' by mistake
+----
+
+You can view more information about a package before installing it with `apt-cache show`:
+
+[,bash]
+----
+apt-cache show sl
+Package: sl
+Version: 3.03-17
+Architecture: armhf
+Maintainer: Hiroyuki Yamamoto <yama1066@gmail.com>
+Installed-Size: 114
+Depends: libc6 (>= 2.4), libncurses5 (>= 5.5-5~), libtinfo5
+Homepage: http://www.tkl.iis.u-tokyo.ac.jp/~toyoda/index_e.html
+Priority: optional
+Section: games
+Filename: pool/main/s/sl/sl_3.03-17_armhf.deb
+Size: 26246
+SHA256: 42dea9d7c618af8fe9f3c810b3d551102832bf217a5bcdba310f119f62117dfb
+SHA1: b08039acccecd721fc3e6faf264fe59e56118e74
+MD5sum: 450b21cc998dc9026313f72b4bd9807b
+Description: Correct you if you type `sl' by mistake
+ Sl is a program that can display animations aimed to correct you
+ if you type 'sl' by mistake.
+ SL stands for Steam Locomotive.
+----
+
+==== Installing a Package with APT
+
+[,bash]
+----
+sudo apt install tree
+----
+
+Typing this command should inform the user how much disk space the package will take up and asks for confirmation of the package installation. Entering `Y` (or just pressing `Enter`, as yes is the default action) will allow the installation to occur. This can be bypassed by adding the `-y` flag to the command:
+
+[,bash]
+----
+sudo apt install tree -y
+----
+
+Installing this package makes `tree` available for the user.
+
+==== Uninstalling a Package with APT
+
+You can uninstall a package with `apt remove`:
+
+[,bash]
+----
+sudo apt remove tree
+----
+
+The user is prompted to confirm the removal. Again, the `-y` flag will auto-confirm.
+
+You can also choose to completely remove the package and its associated configuration files with `apt purge`:
+
+[,bash]
+----
+sudo apt purge tree
+----
+
+[[rpi-update]]
+=== Using `rpi-update`
+
+`rpi-update` is a command line application that will update your Raspberry Pi OS kernel and VideoCore firmware to the latest pre-release versions.
+
+WARNING: Pre-release versions of software are not guaranteed to work. You should not use `rpi-update` on any system unless recommended to do so by a Raspberry Pi engineer. It may leave your system unreliable or even completely broken. It should not be used as part of any regular update process.
+
+The `rpi-update` script is supplied by a third party, "Hexxeh", and also supported by Raspberry Pi engineers. The script source can be found on GitHub at https://github.com/Hexxeh/rpi-update
+
+==== What it does
+
+`rpi-update` will download the latest pre-release version of the linux kernel, its matching modules, device tree files, along with the latest versions of the VideoCore firmware. It will then install these files to relevant locations on the SD card, overwriting any previous versions.
+
+All the source data used by `rpi-update` comes from the GitHub repo https://github.com/Hexxeh/rpi-firmware. This repository simply  contains a subset of the data from the https://github.com/raspberrypi/firmware[official firmware repository], as not all the data from that repo is required.
+
+==== Running `rpi-update`
+
+If you are sure that you need to use `rpi-update`, it is advisable to take a backup of your current system first as running `rpi-update` could result in a non-booting system.
+
+`rpi-update` needs to be run as root. Once the update is complete you will need to reboot.
+
+----
+sudo rpi-update
+sudo reboot
+----
+
+It has a number of options, which are documented at the Hexxeh GitHub repository at https://github.com/Hexxeh/rpi-update
+
+==== How to get back to safety
+
+If you have done an `rpi-update` and things are not working as you wish, if your Raspberry Pi is still bootable you can return to the stable release using:
+
+----
+sudo apt-get update
+sudo apt install --reinstall libraspberrypi0 libraspberrypi-{bin,dev,doc} raspberrypi-bootloader raspberrypi-kernel
+----
+
+You will need to reboot your Raspberry Pi for these changes to take effect.
+

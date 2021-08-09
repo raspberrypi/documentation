@@ -1,3 +1,5 @@
-_build/
-Gemfile.lock
 .DS_Store
+__pycache__
+build
+documentation/html
+.sass-cache

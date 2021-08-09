@@ -1,0 +1,32 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+      - uses: seanmiddleditch/gha-setup-ninja@v3
+        with:
+          version: 1.10.2
+      - name: Build documentation
+        run: make -j 2
+      - name: Deploy to Mythic Beasts
+        if: ${{ github.ref == 'refs/heads/master' }}
+        uses: ./.github/actions/deploy-action
+        with:
+          private_ssh_key: ${{ secrets.DEPLOY_SSH_KEY }}
+          public_bastion_host_keys: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          bastion_host: ${{ secrets.DEPLOY_BASTION_HOST }}
+          host: ${{ secrets.DEPLOY_HOST }}
+          # this needs to match destination: in _config.yml
+          source: documentation/html/
+          destination: documentation

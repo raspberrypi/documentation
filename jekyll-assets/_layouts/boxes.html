@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include head.html %} 
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/boxes.css">
+  </head>
+  <body>
+    {% include fonts.html %} 
+    {% include header.html %}      
+    {% include toptitle.html %}
+    {% include subtitle.html %}
+    {% include tabs.html %}
+
+    <div id="container">
+      <section id="box-content">
+        {% for item in site.data.index.tabs %}
+          {% if page.dir == item.path or page.dir == "/" and item.default_tab and item.default_tab == "yes" %}
+            {% for entry in item.subitems %}
+            {% if entry.path %}
+            <a class="box" href="{{ site.baseurl }}{{ entry.path }}">
+            {% else %}
+            <a class="box" href="{{ entry.url }}">
+            {% endif %}
+              <span><img src="{{ site.baseurl }}{{ entry.imagepath }}"></span>
+              <span class="title">{{ entry.title }}</span>
+              <span>{{ entry.description }}</span>
+            </a>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </section>
+    </div>
+
+    {% include contribute.html %} 
+    {% include copyright.html %} 
+    {% include footer.html %}  
+    {% include search.html %}
+
+  </body>
+</html>

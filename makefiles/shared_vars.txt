@@ -1,0 +1,18 @@
+# A bunch of common variables shared by all the makefiles / ninjabuilds
+# This is used by both make and ninja, so must only have `variable = value` lines! (with no variable interpolation)
+
+# Specific directory and file locations
+ASCIIDOC_DIR = documentation/asciidoc
+DOCUMENTATION_INDEX = documentation/index.json
+DOCUMENTATION_IMAGES_DIR = documentation/images
+DOCUMENTATION_REDIRECTS_DIR = documentation/redirects
+HTML_DIR = documentation/html
+JEKYLL_ASSETS_DIR = jekyll-assets
+
+# build-sytem directories
+SCRIPTS_DIR = scripts
+BUILD_DIR = build
+
+# commands used during build
+ASCIIDOCTOR = bundle exec asciidoctor
+JEKYLL = bundle exec jekyll

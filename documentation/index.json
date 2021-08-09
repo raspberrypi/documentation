@@ -1,0 +1,168 @@
+{
+    "tabs": [
+        {
+            "title": "Computers",
+            "path": "computers",
+            "default_tab": "yes",
+            "subitems": [
+                {
+                    "title": "Getting Started",
+                    "description": "This is the stuff about how to get started.",
+                    "image": "Getting-Started-SMALL.png",
+                    "subpath": "getting-started.adoc"
+                },
+                {
+                    "title": "Raspberry Pi OS",
+                    "description": "The official OS of Raspberry Pi",
+                    "image": "Raspberry-Pi-OS-SMALL.png",
+                    "subpath": "os.adoc"
+                },
+                {
+                    "title": "Configuration",
+                    "description": "Configuring the Raspberry Pi's settings to suit your needs",
+                    "image": "Configuration-SMALL.png",
+                    "subpath": "configuration.adoc"
+                },
+                {
+                    "title": "The config.txt file",
+                    "description": "Low-level control of your Raspberry Pi's settings",
+                    "image": "The-config-txt-file-SMALL.png",
+                    "subpath": "config_txt.adoc"
+                },
+                {
+                    "title": "The Linux kernel",
+                    "description": "How to configure and build a custom kernel for your Raspberry Pi",
+                    "image": "Linux-Kernel-SMALL.png",
+                    "subpath": "linux_kernel.adoc"
+                },
+                {
+                    "title": "Using Linux",
+                    "description": "How to use the Linux command line from Raspberry Pi OS",
+                    "image": "Using-Linux-SMALL.png",
+                    "subpath": "using_linux.adoc"
+                },
+                {
+                    "title": "Remote Access",
+                    "description": "Accessing your Raspberry Pi remotely",
+                    "image": "Remote-Access-SMALL.png",
+                    "subpath": "remote-access.adoc"
+                },
+                {
+                    "title": "Raspberry Pi Hardware",
+                    "description": "Technical information about Raspberry Pi hardware",
+                    "image": "Raspberry-Pi-Hardware-SMALL.png",
+                    "subpath": "raspberry-pi.adoc"
+                },
+                {
+                    "title": "Compute Module Hardware",
+                    "description": "Technical information about Raspberry Pi Compute Module hardware",
+                    "image": "Compute-Module-Hardware-SMALL.png",
+                    "subpath": "compute-module.adoc"
+                },
+                {
+                    "title": "Processors",
+                    "description": "Technical information about the CPUs used by Raspberry Pi",
+                    "image": "Processors-SMALL.png",
+                    "subpath": "processors.adoc"
+                },
+                {
+                    "title": "PIP",
+                    "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents.",
+                    "image": "PIP-SMALL.png",
+                    "url": "https://pip.raspberrypi.org/"
+                },
+                {
+                    "title": "Datasheets",
+                    "description": "The Datasheets site for PDF-based documentation.",
+                    "image": "Datasheets-SMALL.png",
+                    "url": "https://datasheets.raspberrypi.org"
+                }
+            ]
+        },
+        {
+            "title": "Accessories",
+            "path": "accessories",
+            "default_tab": "no",
+            "subitems": [
+                {
+                    "title": "Camera",
+                    "description": "We have several Raspberry Pi Cameras",
+                    "image": "Camera-SMALL.png",
+                    "subpath": "camera.adoc"
+                },
+                {
+                    "title": "Display",
+                    "description": "The Raspberry Pi Touch display",
+                    "image": "Display-SMALL.png",
+                    "subpath": "display.adoc"
+                },
+                {
+                    "title": "Keyboard & Mouse",
+                    "description": "We have our own Keyboard and Mouse",
+                    "image": "Keyboard-and-Mouse-SMALL.png",
+                    "url": "https://datasheets.raspberrypi.org/keyboard-mouse/getting-started-with-keyboard-and-mouse.pdf"
+                },
+                {
+                    "title": "Sense HAT",
+                    "description": "How to use the Sense HAT",
+                    "image": "Sense-HAT-SMALL.png",
+                    "subpath": "sense-hat.adoc"
+                },
+                {
+                    "title": "TV HAT",
+                    "description": "How to watch TV on your Raspberry Pi",
+                    "image": "TV-HAT-SMALL.png",
+                    "subpath": "tv-hat.adoc"
+                },
+                {
+                    "title": "Designing a HAT",
+                    "description": "Information on the HAT specification",
+                    "image": "Designing-a-HAT-SMALL.png",
+                    "url": "https://github.com/raspberrypi/hats"
+                },
+                {
+                    "title": "PIP",
+                    "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents.",
+                    "image": "PIP-SMALL.png",
+                    "url": "https://pip.raspberrypi.org/"
+                },
+                {
+                    "title": "Datasheets",
+                    "description": "The Datasheets site for PDF-based documentation.",
+                    "image": "Datasheets-SMALL.png",
+                    "url": "https://datasheets.raspberrypi.org"
+                }
+            ]
+        },
+        {
+            "title": "Microcontrollers",
+            "path": "microcontrollers",
+            "subitems": [
+                {
+                    "title": "RP2040",
+                    "description": "Our first microcontroller device",
+                    "image": "RP2040-SMALL.png",
+                    "url": "https://www.raspberrypi.org/documentation/rp2040/getting-started/#rp2040-boards"
+                },
+                {
+                    "title": "Raspberry Pi Pico",
+                    "description": "A board built around our RP2040",
+                    "image": "Pico-SMALL.png",
+                    "url": "https://www.raspberrypi.org/documentation/rp2040/getting-started/#board-specifications"
+                },
+                {
+                    "title": "PIP",
+                    "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents.",
+                    "image": "PIP-SMALL.png",
+                    "url": "https://pip.raspberrypi.org/"
+                },
+                {
+                    "title": "Datasheets",
+                    "description": "The Datasheets site for PDF-based documentation.",
+                    "image": "Datasheets-SMALL.png",
+                    "url": "https://datasheets.raspberrypi.org"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+<nav id="mobile-contents">
+{% for subdir in site.data.nav %}
+{% if page.dir == subdir.path %}
+
+  {% if subdir.toc[0] %}
+    <div class="mobile-contents-menu" onclick="expandAndCollapseMobile(this)">
+      <span class="mobile-contents-line"></span>
+      <span class="mobile-contents-line"></span>
+      <span class="mobile-contents-line"></span>
+    </div>
+    <div class="contents-inner hidden">
+    {% for item in subdir.toc %}
+      <h3 class="contentshead">{{ item.title }}</h3>
+      {% if item.sections[0] %}
+        <div class="itemcontents">
+          <ul class="sectlevel1">
+            {% for entry in item.sections %}
+              <li>
+                <a href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}">{{ entry.heading }}</a>
+                {% if entry.subsections[0] %}
+                  <ul>
+                    {% for subentry in entry.subsections %}
+                      <li>
+                        <a href="{{ site.baseurl }}{{ item.path }}#{{ subentry.anchor }}">{{ subentry.heading }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+{% endif %}
+{% endfor %}
+</nav>

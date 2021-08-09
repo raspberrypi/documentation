@@ -1,40 +1,101 @@
-# Raspberry Pi Documentation
+# README
 
-This is the official documentation for the Raspberry Pi, written by the [Raspberry Pi Foundation](https://www.raspberrypi.org/) with community contributions.
+Instructions on how to checkout the `documentation-ng` repo, and then install the toolchain needed to convert from Asciidoc to HTML and build the documentation site.
 
-## Contents
+## Checking out the repository
 
-- [Setup / Quickstart](setup/README.md)
-    - Getting started with your Raspberry Pi, including what you need and how to get it booted
-- [Installation](installation/README.md)
-    - Installing an operating system on your Raspberry Pi
-- [Usage Guide](usage/README.md)
-    - Explore the desktop and try out all the main applications
-- [Configuration](configuration/README.md)
-    - Configuring the Pi's settings to suit your needs
-- [Remote Access](remote-access/README.md)
-    - Accessing your Pi remotely via SSH, VNC or over the web
-- [Linux](linux/README.md)
-    - Fundamental Linux usage for beginners and more advanced information for power users
-- [Raspberry Pi OS](raspbian/README.md)
-    - Information about the recommended operating system for Raspberry Pi
-- [Hardware](hardware/README.md)
-    - Technical specifications about the Raspberry Pi hardware and the camera module
+Install `git` if you don't already have it, and check out the `documentation-ng` repo as follows,
+```
+$ git clone https://github.com/raspberrypi/documentation-ng.git
+$ cd documentation-ng
+```
 
-## Contributions
+## Installing the toolchain
 
-If you have anything to fix or details to add, first [file an issue](https://github.com/raspberrypi/documentation/issues) on GitHub to see if it is likely to be accepted, then file a pull request with your change (one PR per issue).
+### On Linux
 
-This is not intended to be an open wiki; we want to keep it concise and minimal but will accept fixes and suitable additions.
+You can install the necessary dependencies on Liunux as follows,
 
-See our [contributing policy](CONTRIBUTING.md).
+```
+$ sudo apt-get -qq -y install ruby ruby-bundler ruby-dev build-essential python3 git ninja-build
+```
 
-## Licence
+This works on both regular Ubuntu Linux — and has been tested in a minimal Docker container — and also under Raspberry Pi OS if you are working from a Raspberry Pi.
 
-Unless otherwise specified, everything in this repository is covered by the following licence:
+### On macOS
 
-[![Creative Commons Attribution-ShareAlike 4.0 International](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/)
+If you don't already have it installed you should go ahead and install [HomeBrew](https://brew.sh/), 
 
-***Raspberry Pi Documentation*** by the [Raspberry Pi Foundation](https://www.raspberrypi.org/) is licensed under a [Creative Commons Attribution 4.0 International Licence](https://creativecommons.org/licenses/by-sa/4.0/).
+```
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+```
 
-Based on a work at https://github.com/raspberrypi/documentation
+Then you need to install Ruby,
+
+```
+$ brew install ruby@2.7
+```
+
+**NOTE:** Homebrew defaults to Ruby 3.0 which is incompatible with Asciidoctor.
+
+#### Set up Homebrew version of Ruby
+
+If you're using `csh` or `tcsh` add the following lines to your `.cshrc` or `.tcshrc`,
+
+```
+setenv PATH /usr/local/opt/ruby/bin:${PATH}
+setenv PATH ${PATH}:/usr/local/lib/ruby/gems/2.7.0/bin
+setenv LDFLAGS -L/usr/local/opt/ruby@2.7/lib
+setenv CPPFLAGS -I/usr/local/opt/ruby@2.7/include
+setenv PKG_CONFIG_PATH /usr/local/opt/ruby@2.7/lib/pkgconfig
+```
+
+or if you're using `bash` add the following lines to your `.bash_profile`,
+
+```
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="$PATH:/usr/local/lib/ruby/gems/2.7.0/bin"
+export PATH="/usr/local/opt/ruby@2.7/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/ruby@2.7/lib"
+export CPPFLAGS="-I/usr/local/opt/ruby@2.7/include"
+export PKG_CONFIG_PATH="/usr/local/opt/ruby@2.7/lib/pkgconfig"
+```
+
+#### Install dependencies
+
+Go ahead and `brew install` the other dependencies,
+
+```
+$ brew install python@3
+$ brew install ninja
+```
+
+## Configuring the repository
+
+After you've installed the toolchain, you'll need to install the required Ruby gems. Make sure you're in the `documentation-ng` directory and then run,
+```
+$ bundle install
+```
+
+## Building the documentation
+
+After you've installed the toolchain and configured the repository you can build the documentation with,
+
+```
+$ make
+```
+
+This will automatically convert the `build/jekyll/` files to HTML and put them into `documentation/html/`.
+
+You can also start a local server to view the compiled site by running,
+```
+$ make serve_html
+```
+
+As the local server launches, the local URL will be printed in the terminal -- open this URL in a browser to see the locally-built site.
+
+To build without an active internet connection, run
+```
+$ OFFLINE_MODE=1 make
+```
+which will copy the `fonts.html` and `header.html` files from `offline_includes` (instead of downloading them from esi.raspberrypi.org).

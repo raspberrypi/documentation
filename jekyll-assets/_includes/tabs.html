@@ -1,0 +1,15 @@
+<div id="tab-menu">
+  <nav>
+    <ul id="tab-container">
+      {% for item in site.data.index.tabs %}
+        {% if page.dir == item.path or page.dir == "/" and item.default_tab and item.default_tab == "yes" %}
+        <li class="selected">
+        {% else %}
+        <li>
+        {% endif %}  
+          <a href="{{ site.baseurl }}{{ item.path }}">{{ item.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</div>
