@@ -1,13 +1,13 @@
 # README
 
-Instructions on how to checkout the `documentation-ng` repo, and then install the toolchain needed to convert from Asciidoc to HTML and build the documentation site.
+Instructions on how to checkout the `documentation` repo, and then install the toolchain needed to convert from Asciidoc to HTML and build the documentation site.
 
 ## Checking out the repository
 
-Install `git` if you don't already have it, and check out the `documentation-ng` repo as follows,
+Install `git` if you don't already have it, and check out the `documentation` repo as follows,
 ```
-$ git clone https://github.com/raspberrypi/documentation-ng.git
-$ cd documentation-ng
+$ git clone https://github.com/raspberrypi/documentation.git
+$ cd documentation
 ```
 
 ## Installing the toolchain
@@ -72,7 +72,7 @@ $ brew install ninja
 
 ## Configuring the repository
 
-After you've installed the toolchain, you'll need to install the required Ruby gems. Make sure you're in the `documentation-ng` directory and then run,
+After you've installed the toolchain, you'll need to install the required Ruby gems. Make sure you're in the `documentation` directory and then run,
 ```
 $ bundle install
 ```
