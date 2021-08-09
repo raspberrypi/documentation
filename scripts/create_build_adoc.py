@@ -31,6 +31,7 @@ if __name__ == "__main__":
 :page-layout: docs
 :includedir: {}
 :doctitle: {}
+:page-sub_title: {}
 
 include::{{includedir}}/{{parentdir}}/{}[]
-""".format(output_path, src_dir, index_title, adoc_filename))
+""".format(output_path, src_dir, 'Raspberry Pi Documentation - {}'.format(index_title), index_title, adoc_filename))
