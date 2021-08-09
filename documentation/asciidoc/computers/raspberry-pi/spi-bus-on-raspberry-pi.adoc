@@ -6,13 +6,13 @@ Raspberry Pi computers are equipped with a number of https://en.wikipedia.org/wi
 [[spi-hardware]]
 === SPI Hardware
 
-The BCM2835 core common to all Raspberry Pi computers has 3 SPI controllers:
+Rapsberry Pi Zero, 1, 2 and 3 have three SPI controllers:
 
 * SPI0, with two hardware chip selects, is available on the header of all Pis; there is also an alternate mapping that is only available on compute modules.
-* SPI1, with three hardware chip selects, is available on all Raspberry Pi models except the original Pi 1 Models A and B.
+* SPI1, with three hardware chip selects, is available on all Raspberry Pi models except the original Pi 1 models A and B.
 * SPI2, also with three hardware chip selects, is only avalable on compute modules.
 
-BCM2711 adds another 4 SPI buses - SPI3 to SPI6, each with 2 hardware chip selects; these extra SPI buses are available via alternate function assignments on certain GPIO pins - see the https://datasheets.raspberrypi.org/bcm2711/bcm2711-peripherals.pdf[BCM2711 ARM Peripherals] datasheet.
+On the Raspberry Pi 4, 400 and Compute Module 4 there are four additional SPI buses: SPI3 to SPI6, each with 2 hardware chip selects. These extra SPI buses are available via alternate function assignments on certain GPIO pins - see the https://datasheets.raspberrypi.org/bcm2711/bcm2711-peripherals.pdf[BCM2711 ARM Peripherals] datasheet.
 
 Chapter 10 in the https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals.pdf[BCM2835 ARM Peripherals] datasheet describes the main controller.  Chapter 2.3 describes the auxiliary controller.
 
