@@ -41,6 +41,10 @@ The conditional model filters are applied according to the following table.
 
 | [pi0w]
 | Zero W, Zero WH
+
+| [board-type=Type]
+| Filter by `Type` number - see xref:raspberry-pi.adoc#raspberry-pi-revision-codes[Raspberry Pi Revision Codes] E.g `[board-type=0x14]` would match CM4.
+
 |===
 
 These are particularly useful for defining different `kernel`, `initramfs`, and `cmdline` settings, as the Pi 1 and Pi 2 require different kernels. They can also be useful to define different overclocking settings, as the Pi 1 and Pi 2 have different default speeds. For example, to define separate `initramfs` images for each:
