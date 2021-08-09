@@ -69,7 +69,48 @@ For Raspberry Pi 0-3, we recommend our https://www.raspberrypi.org/products/rasp
 
 The power requirements of the Raspberry Pi increase as you make use of the various interfaces on the Raspberry Pi. The GPIO pins can draw 50mA safely, distributed across all the pins; an individual GPIO pin can only safely draw 16mA. The HDMI port uses 50mA, the camera module requires 250mA, and keyboards and mice can take as little as 100mA or over 1000mA! Check the power rating of the devices you plan to connect to the Pi and purchase a power supply accordingly.
 
-If you need to connect a USB device that will take the power requirements above the values specified in the table above, then you must connect it to an externally-powered USB hub.
+If you need to connect a USB device that will take the power requirements above the values specified in the table above, then you must connect it to an externally-powered USB hub. 
+
+=== Typical Power Requirements
+
+The specific power requirements of each model are shown below;
+
+|===
+| Product | Recommended PSU current capacity | Maximum total USB peripheral current draw | Typical bare-board active current consumption 
+
+|Raspberry Pi Model A | 700mA | 500mA | 200mA 
+| Raspberry Pi Model B |1.2A | 500mA | 500mA 
+| Raspberry Pi Model A+ | 700mA | 500mA | 180mA
+| Raspberry Pi Model B+ | 1.8A | 1.2A | 330mA 
+| Raspberry Pi 2 Model B | 1.8A | 1.2A | 350mA 
+| Raspberry Pi 3 Model B | 2.5A | 1.2A | 400mA 
+| Raspberry Pi 3 Model A+ | 2.5A | Limited by PSU, board, and connector ratings only. | 350mA 
+| Raspberry Pi 3 Model B+ | 2.5A | 1.2A | 500mA 
+| Raspberry Pi 4 Model B | 3.0A | 1.2A | 600mA 
+| Raspberry Pi 400       | 3.0A | 1.2A | 800mA 
+| Raspberry Pi Zero W/WH | 1.2A | Limited by PSU, board, and connector ratings only.| 150mA 
+| Raspberry Pi Zero | 1.2A | Limited by PSU, board, and connector ratings only | 100mA 
+|===
+
+From the Raspberry Pi B+ onwards, 1.2A is supplied to downstream USB peripherals. This allows the vast majority of USB devices to be connected directly to these models, assuming the upstream power supply has sufficient available current.
+
+Very high-current devices, or devices which can draw a surge current such as certain modems and USB hard disks, will still require an external powered USB hub. The power requirements of the Raspberry Pi increase as you make use of the various interfaces on the Raspberry Pi. The GPIO pins can draw 50mA safely (note that that means 50mA distributed across all the pins: an individual GPIO pin can only safely draw 16mA), the HDMI port uses 50mA, the Camera Module requires 250mA, and keyboards and mice can take as little as 100mA or as much as 1000mA! Check the power rating of the devices you plan to connect to the Raspberry Pi and purchase a power supply accordingly. If you're not sure, we would advise you to buy a powered USB hub.
+
+This is the typical amount of power (in Ampere) drawn by different Raspberry Pi models during standard processes:
+
+|===
+| | | Raspberry Pi 1B+ | Raspberry Pi 2B | Raspberry Pi 3B | Raspberry Pi Zero | Raspberry Pi 4B 
+| Boot | Max |0.26 | 0.40| 0.75| 0.20 | 0.85 
+| | Avg | 0.22 | 0.22 | 0.35 | 0.15 | 0.7 
+| Idle |Avg | 0.20 | 0.22 | 0.30 | 0.10 | 0.6 
+| Video playback (H.264) | Max | 0.30 | 0.36 |0.55 |0.23 | 0.85 
+| | Avg | 0.22 | 0.28 | 0.33 | 0.16 | 0.78 
+| Stress | Max | 0.35 | 0.82 | 1.34 | 0.35 | 1.25 
+| | Avg | 0.32 | 0.75 | 0.85 | 0.23 | 1.2 
+| Halt current | | | | 0.10 | 0.055 | 0.023 
+|===
+
+NOTE: For these measurements we used a standard Raspberry Pi OS image (current as of 26 Feb 2016, or June 2019 for the Raspberry Pi 4), at room temperature, with the Raspberry Pi connected to a HDMI monitor, USB keyboard, and USB mouse. The Raspberry Pi 3 Model B was connected to a wireless LAN access point, the Raspberry Pi 4 was connected to Ethernet. All these power measurements are approximate and do not take into account power consumption from additional USB devices; power consumption can easily exceed these measurements if multiple additional USB devices or a HAT are connected to the Raspberry Pi.
 
 === Power Supply Warnings
 
