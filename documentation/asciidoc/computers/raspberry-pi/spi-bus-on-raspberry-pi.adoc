@@ -20,7 +20,7 @@ Chapter 10 in the https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals
 
 ===== SPI0 (available on J8/P1 headers on all RPi versions)
 
-[cols="1,1"]
+[cols="1,1,1,1"]
 |===
 | SPI Function
 | Header Pin
