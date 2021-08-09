@@ -352,7 +352,7 @@ Setup and Hold times related to the automatic assertion and de-assertion of the 
 [[driver]]
 ==== Linux driver
 
-The default Linux driver is now the standard spi-bcm2835.
+The default Linux driver is `spi-bcm2835`.
 
 SPI0 is disabled by default. To enable it, use xref:configuration.adoc#raspi-config[raspi-config], or ensure the line `dtparam=spi=on` is not commented out in `/boot/config.txt`. By default it uses 2 chip select lines, but this can be reduced to 1 using `dtoverlay=spi0-1cs`. `dtoverlay=spi0-2cs` also exists, and without any parameters it is equivalent to `dtparam=spi=on`.
 
@@ -383,7 +383,7 @@ SPI_NO_CS   - 1 device per bus, no Chip Select
 SPI_3WIRE   - Bidirectional mode, data in and out pin shared
 ----
 
-Bidirectional or "3-wire" mode is supported by the spi-bcm2835 kernel module. Please note that in this mode, either the tx or rx field of the spi_transfer struct must be a NULL pointer, since only half-duplex communication is possible. Otherwise, the transfer will fail. The spidev_test.c source code does not consider this correctly, and therefore does not work at all in 3-wire mode.
+Bidirectional or "3-wire" mode is supported by the `spi-bcm2835` kernel module. Please note that in this mode, either the tx or rx field of the spi_transfer struct must be a NULL pointer, since only half-duplex communication is possible. Otherwise, the transfer will fail. The spidev_test.c source code does not consider this correctly, and therefore does not work at all in 3-wire mode.
 
 ===== Supported bits per word
 
@@ -400,7 +400,7 @@ This https://www.raspberrypi.org/forums/viewtopic.php?f=44&t=19489[thread] discu
 
 ==== spidev
 
-spidev presents an ioctl-based userspace interface to individual SPI CS lines. Device Tree is used to indicate whether a CS line is going to be driven by a kernel driver module or managed by spidev on behalf of the user; it is not possible to do both at the same time. Note that Raspberry Pi's own kernels are more relaxed about the use of Device Tree to enable spidev - the upstream kernels print warnings about such usage, and ultimately may prevent it altogether.
+`spidev` presents an ioctl-based userspace interface to individual SPI CS lines. Device Tree is used to indicate whether a CS line is going to be driven by a kernel driver module or managed by spidev on behalf of the user; it is not possible to do both at the same time. Note that Raspberry Pi's own kernels are more relaxed about the use of Device Tree to enable `spidev` - the upstream kernels print warnings about such usage, and ultimately may prevent it altogether.
 
 ===== Using spidev from C
 
@@ -408,7 +408,7 @@ There is a loopback test program in the Linux documentation that can be used as 
 
 ===== Using spidev from Python
 
-There are several Python libraries that provide access to spidev, including the imaginatively named `spidev` (`pip install spidev` - see https://pypi.org/project/spidev/) and `SPI-Py` (https://github.com/lthiery/SPI-Py).
+There are several Python libraries that provide access to `spidev`, including `spidev` (`pip install spidev` - see https://pypi.org/project/spidev/) and `SPI-Py` (https://github.com/lthiery/SPI-Py).
 
 ===== Using spidev from a shell such as bash
 
@@ -420,7 +420,7 @@ echo -ne "\x01\x02\x03" > /dev/spidev0.0
 
 ==== Other SPI libraries
 
-There are other userspace libraries that provide SPI control by directly manipulating the hardware. This is not recommended.
+There are other userspace libraries that provide SPI control by directly manipulating the hardware: this is not recommended.
 
 [[troubleshooting-spi-hardware]]
 === Troubleshooting
