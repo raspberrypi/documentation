@@ -1,0 +1,50 @@
+name: Deploy via Bastion Host
+description: "Deploy specified files and directories to a server via a bastion host"
+inputs:
+  private_ssh_key:
+    description: "The private SSH key used to authenticate with the remote servers"
+    required: true
+
+  public_bastion_host_keys:
+    description: "The public SSH host keys for the bastion server"
+    required: true
+
+  bastion_host:
+    description: "The [user@]hostname of the bastion server"
+    required: true
+
+  host:
+    description: "The [user@]hostname of the web server"
+    required: true
+
+  source:
+    description: "The files and directories to copy from the workspace"
+    required: true
+
+  destination:
+    description: "The destination to copy the source files and directories to"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Configure ssh-agent for subsequent steps
+      run: echo "SSH_AUTH_SOCK=/tmp/ssh_agent.sock" >> $GITHUB_ENV
+      shell: bash
+
+    - name: Start ssh-agent with SSH key
+      run: |
+        ssh-agent -a $SSH_AUTH_SOCK
+        ssh-add - <<< "${{ inputs.private_ssh_key }}"
+      shell: bash
+
+    - name: Populate known hosts
+      run: |
+        mkdir -m 700 -p ~/.ssh
+        printf "${{ inputs.public_bastion_host_keys }}" >> ~/.ssh/known_hosts
+        chmod 600 ~/.ssh/known_hosts
+      shell: bash
+
+    - name: rsync source to destination
+      run: rsync -avz --delete -e 'ssh -A ${{ inputs.bastion_host }} ssh' ${{ inputs.source }} ${{ inputs.host }}:${{ inputs.destination }}
+      shell: bash

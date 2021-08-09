@@ -1,0 +1,31 @@
+== Setting up your Raspberry Pi
+
+To get started with your Raspberry Pi computer you'll need the following accessories:
+
+A computer monitor, or television. Most should work as a display for the Raspberry Pi, but for best results, you should use a display with HDMI input. You'll also need a appropriate xref:getting-started.adoc#connecting-a-display[display] cable, to connect your monitor to your Raspberry Pi.
+
+NOTE: If your display uses an HDMI connection and has built-in speakers, you can use it to output sound.
+
+A computer keyboard and mouse
+
+ * Any standard USB keyboard and mouse will work with your Raspberry Pi.
+ * Wireless keyboards and mice will work if already paired.
+ * For keyboard layout configuration options see xref:configuration.adoc#raspi-config[raspi-config].
+
+A good quality xref:raspberry-pi.adoc#power-supply[power supply].
+
+We recommend the official Raspberry Pi Power Supply which has been specifically designed to consistently provide +5.1V despite rapid fluctuations in current draw. Those fluctuations in demand is something that happens a lot with when you’re using peripherals with the Raspberry Pi, and something that other supplies—designed to provide consistent current for charging cellphones—usually don’t cope with all that well. It also has an attached micro USB cable, which means that you don’t accidentally use a poor quality cable—something that can be an issue.
+
+For the Raspberry Pi 4, Model B and Raspberry Pi 400 you should use the https://www.raspberrypi.org/products/type-c-power-supply/[type C power supply]; for all other models you should use the https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/[micro USB power supply].
+
+Finally you'll need an xref:getting-started.adoc#sd-cards[SD card]; we recommend a minimum of 8GB micro SD card, and to use the https://www.raspberrypi.org/software/[Raspberry Pi Imager] to install an operating system onto it.
+
+=== Optional items
+
+A network (Ethernet) cable to connect your Raspberry Pi to your local network and the Internet.
+
+If you aren't using an HDMI monitor with speakers you might also need some form of sound hardware. Audio can be played through speakers or headphones by connecting them to the AV jack (not available on the Raspberry Pi 400). However speakers must have their own amplification since the output from your Raspberry Pi is not powerful enough to drive them directly.
+
+=== Troubleshooting
+
+You can get help with setting up your Raspberry Pi on our https://www.raspberrypi.org/forums/[forums].

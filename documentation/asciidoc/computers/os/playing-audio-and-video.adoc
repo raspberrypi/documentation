@@ -1,0 +1,171 @@
+== Playing Audio and Video
+
+The simplest way of playing audio and video on Raspberry Pi is to use the installed OMXPlayer application.
+
+This is hardware accelerated, and can play back many popular audio and video file formats. OMXPlayer uses the OpenMAX (`omx`) hardware acceleration interface (API) which is the officially supported media API on Raspberry Pi. OMXPlayer was developed by the Kodi Project's Edgar Hucek.
+
+=== The OMXPlayer Application
+
+The simplest command line is `omxplayer <name of media file>`. The media file can be audio or video or both. For the examples below, we used an H264 video file that is included with the standard Raspberry Pi OS installation.
+
+----
+omxplayer /opt/vc/src/hello_pi/hello_video/test.h264
+----
+
+By default the audio is sent to the analog port. If you are using a HDMI-equipped display device with speakers, you need to tell omxplayer to send the audio signal over the HDMI link.
+
+----
+omxplayer --adev hdmi /opt/vc/src/hello_pi/hello_video/test.h264
+----
+
+When displaying video, the whole display will be used as output. You can specify which part of the display you want the video to be on using the window option.
+
+----
+omxplayer --win 0,0,640,480 /opt/vc/src/hello_pi/hello_video/test.h264
+----
+
+You can also specify which part of the video you want to be displayed: this is called a crop window. This portion of the video will be scaled up to match the display, unless you also use the window option.
+
+----
+omxplayer --crop 100,100,300,300 /opt/vc/src/hello_pi/hello_video/test.h264
+----
+
+If you are using the Raspberry Pi Foundation's touchscreen display, and you want to use it for video output, use the display option to specify which display to use. `n` is 5 for HDMI, 4 for the touchscreen. With the Raspberry Pi 4 you have two options for HDMI output. `n` is 2 for HDMI0 and 7 for HDMI1.
+
+----
+omxplayer --display n /opt/vc/src/hello_pi/hello_video/test.h264
+----
+
+=== How to Play Audio
+
+To play an MP3 file, navigate to the location of the `.mp3` file in the terminal using `cd` and then type the following command:
+
+[,bash]
+----
+omxplayer example.mp3
+----
+
+This will play the audio file `example.mp3` through either your monitor's built-in speakers or your headphones, connected via the headphone jack.
+
+If you need an example file you can download one from here using the following command:
+
+[,bash]
+----
+wget https://raw.githubusercontent.com/raspberrypilearning/burping-jelly-baby/master/data/la.mp3 -O example.mp3 --no-check-certificate
+----
+
+If you cannot hear anything, make sure your headphones or speakers are connected correctly. Note that omxplayer doesn't use ALSA and so ignores the xref:configuration.adoc#audio-configuration[audio configuration] set by `raspi-config` or `amixer`.
+
+If omxplayer's auto-detection of the correct audio output device fails, you can force output over HDMI with:
+
+[,bash]
+----
+omxplayer -o hdmi example.mp3
+----
+
+Alternatively, you can force output over the headphone jack with:
+
+[,bash]
+----
+omxplayer -o local example.mp3
+----
+
+You can even force output over both the headphone jack and HDMI with:
+
+[,bash]
+----
+omxplayer -o both example.mp3
+----
+
+=== How to Play Video
+
+To play a video, navigate to the location of your video file in the terminal using `cd`, then type the following command:
+
+[,bash]
+----
+omxplayer example.mp4
+----
+
+This will play the `example.mp4` in full screen. Hit `Ctrl + C` to exit.
+
+On the Pi 4, hardware support for MPEG2 and VC-1 codecs has been removed, so we recommend the use of the VLC application, which supports these formats in software. In addition, VLC has hardware support for H264 and the new HEVC codec.
+
+==== An Example Video
+
+A video sample of the animated film _Big Buck Bunny_ is available on your Raspberry Pi. To play it enter the following command into a terminal window:
+
+[,bash]
+----
+omxplayer /opt/vc/src/hello_pi/hello_video/test.h264
+----
+
+On a Pi 4, use the following command for H264 files:
+
+[,bash]
+----
+omxplayer /opt/vc/src/hello_pi/hello_video/test.h264
+----
+
+or for H264, VC1, or MPEG2
+
+[,bash]
+----
+vlc /opt/vc/src/hello_pi/hello_video/test.h264
+----
+
+When using VLC, you can improve playback performance by encapsulating the raw H264 stream, for example from the Raspberry Pi Camera Module. This is easily done using `ffmpeg`. Playback is also improved if VLC is run full screen; either select fullscreen from the user interface, or you can add the `--fullscreen` options to the `vlc` command line.
+
+This example command converts `video.h264` to a containerised `video.mp4` at 30 fps:
+
+`ffmpeg -r 30 -i video.h264 -c:v copy video.mp4`
+
+=== Options During Playback
+
+There are a number of options available during playback, actioned by pressing the appropriate key. Not all options will be available on all files. The list of key bindings can be displayed using `omxplayer --keys`:
+
+----
+    1           decrease speed
+    2           increase speed
+    <           rewind
+    >           fast forward
+    z           show info
+    j           previous audio stream
+    k           next audio stream
+    i           previous chapter
+    o           next chapter
+    n           previous subtitle stream
+    m           next subtitle stream
+    s           toggle subtitles
+    w           show subtitles
+    x           hide subtitles
+    d           decrease subtitle delay (- 250 ms)
+    f           increase subtitle delay (+ 250 ms)
+    q           exit omxplayer
+    p / space   pause/resume
+    -           decrease volume
+    + / =       increase volume
+    left arrow  seek -30 seconds
+    right arrow seek +30 seconds
+    down arrow  seek -600 seconds
+    up arrow    seek +600 seconds
+----
+
+=== Playing in the Background
+
+`omxplayer` will close immediately if run in the background without tty (user input), so to run successfully, you need to tell `omxplayer` not to require any user input using the `--no-keys` option.
+
+[,bash]
+----
+omxplayer --no-keys example.mp3 &
+----
+
+Adding the `&` at the end of the command runs the job in the background. You can then check the status of this background job using the `jobs` command. By default, the job will complete when `omxplayer` finishes playing, but if necessary, you can stop it at any point using the `kill` command.
+
+[,bash]
+----
+$ jobs
+[1]-  Running             omxplayer --no-keys example.mp3 &
+$ kill %1
+$
+[1]-  Terminated          omxplayer --no-keys example.mp3 &
+----

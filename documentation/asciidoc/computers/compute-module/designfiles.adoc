@@ -1,0 +1,22 @@
+== Design Files for CMIO Boards
+
+[discrete]
+=== Compute Module IO board for CM4
+
+Design data for the Compute Module 4 IO board can be found in its datasheet:
+
+* https://datasheets.raspberrypi.org/cm4io/cm4io-datasheet.pdf[Compute Module 4 IO Board datasheet]
+
+There is also a KiCAD PCB design set available:
+
+* https://datasheets.raspberrypi.org/cm4io/CM4IO-KiCAD.zip[Compute Module 4 IO Board KiCAD files]
+
+[discrete]
+=== Older Products
+
+* https://datasheets.raspberrypi.org/cmio/RPi-CMIO-R1P2.zip[CMIO Rev 1.2]
+* https://datasheets.raspberrypi.org/cmio/RPi-CMIO-R3P0.zip[CMIO Rev 3.0]
+
+Design data for the Compute Module camera/display adapter board (CMCDA):
+
+* https://datasheets.raspberrypi.org/cmcda/RPi-CMCDA-1P1.zip[CMCDA Rev 1.1]

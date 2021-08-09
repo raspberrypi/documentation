@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include head.html %} 
+  </head>
+  <body>
+    {% include fonts.html %} 
+    {% include header.html %}      
+    {% include toptitle.html %}
+    {% include tabs.html %}
+
+    <div id="container">
+      {% include mobile_nav.html %}
+      {% include nav.html %}
+
+      <section id="content">
+        <h1>{{ page.title }}</h1>
+        {{ content }}
+      </section>
+    </div>
+
+    {% include copyright.html %} 
+    {% include footer.html %}  
+    {% include scripts.html %}
+    {% include search.html %}
+
+  </body>
+</html>

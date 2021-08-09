@@ -1,0 +1,46 @@
+== USB Boot Modes
+
+WARNING: The default way of using a Raspberry Pi is to boot it using an SD card. This is the recommended method for new and inexperienced users. 
+
+There are two separate boot modes for USB; USB device boot and USB host boot. 
+
+The choice between the two boot modes is made by the firmware at boot time when it reads the OTP bits. There are two bits to control USB boot: the first enables USB device boot and is enabled by default. The second enables USB host boot; if the USB host boot mode bit is set, then the processor reads the OTGID pin to decide whether to boot as a host (driven to zero as on the Raspberry Pi Model B) or as a device (left floating). The Pi Zero has access to this pin through the OTGID pin on the USB connector, and the Compute Module has access to this pin on the edge connector.
+
+There are also OTP bits that allow certain GPIO pins to be used for selecting which boot modes the Pi should attempt to use.
+
+NOTE: USB boot modes only available on certain models.
+
+=== USB Device Boot Mode
+
+NOTE: Device boot is available on Raspberry Pi Compute Module, Compute Module 3, Raspberry Pi Zero, Zero W, A, A+, and 3A+ only.
+
+When this boot mode is activated (usually after a failure to boot from the SD card), the Raspberry Pi puts its USB port into device mode and awaits a USB reset from the host. Example code showing how the host needs to talk to the Pi can be found https://github.com/raspberrypi/usbboot[on Github].
+
+The host first sends a structure to the device down control endpoint 0. This contains the size and signature for the boot (security is not enabled so no signature is required). Secondly, code is transmitted down endpoint 1 (bootcode.bin).  Finally, the device will reply with a success code of:
+
+* 0    - Success
+* 0x80 - Failed
+
+=== USB Host Boot Mode
+
+NOTE: Host boot is available on Raspberry Pi 3B, 3B+, 3A+, and 2B v1.2 only. Raspberry Pi 3A+ only supports mass storage boot, not network boot.
+
+The USB host boot mode follows this sequence:
+
+* Enable the USB port and wait for D+ line to be pulled high indicating a USB 2.0 device (we only support USB2.0)
+* If the device is a hub:
+ ** Enable power to all downstream ports of the hub
+ ** For each port, loop for a maximum of two seconds (or five seconds if `program_usb_boot_timeout=1` has been set)
+  *** Release from reset and wait for D+ to be driven high to indicate that a device is connected
+  *** If a device is detected:
+   **** Send "Get Device Descriptor"
+    ***** If VID == SMSC && PID == 9500
+     ****** Add device to Ethernet device list
+   **** If class interface == mass storage class
+    ***** Add device to mass storage device list
+* Else
+ ** Enumerate single device
+* Go through mass storage device list
+ ** Boot from xref:raspberry-pi.adoc#usb-mass-storage-boot[mass storage device]
+* Go through Ethernet device list
+ ** Boot from xref:raspberry-pi.adoc#network-booting[Ethernet]
