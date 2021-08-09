@@ -6,11 +6,11 @@ Raspberry Pi computers are equipped with a number of https://en.wikipedia.org/wi
 [[spi-hardware]]
 === SPI Hardware
 
-The BCM2835 core common to all Raspberry Pi computers has 3 SPI Controllers:
+The BCM2835 core common to all Raspberry Pi computers has 3 SPI controllers:
 
-* SPI0, with two hardware chip selects, is available on the header of all Pis (although there is an alternate mapping that is only usable on a Compute Module.
-* SPI1, with three hardware chip selects, is available on 40-pin versions of Pis.
-* SPI2, also with three hardware chip selects, is only usable on compute modules because the pins are not brought out onto the 40-pin header.
+* SPI0, with two hardware chip selects, is available on the header of all Pis; there is also an alternate mapping that is only available on compute modules.
+* SPI1, with three hardware chip selects, is available on all Raspberry Pi models except the original Pi 1 Models A and B.
+* SPI2, also with three hardware chip selects, is only avalable on compute modules.
 
 BCM2711 adds another 4 SPI buses - SPI3 to SPI6, each with 2 hardware chip selects; these extra SPI buses are available via alternate function assignments on certain GPIO pins - see the https://datasheets.raspberrypi.org/bcm2711/bcm2711-peripherals.pdf[BCM2711 ARM Peripherals] datasheet.
 
@@ -341,7 +341,7 @@ See the <<driver,Linux driver>> section for more info.
 
 ==== Chip Selects
 
-Setup and Hold times related to the automatic assertion and de-assertion of the CS lines when operating in *DMA* mode are as follows:
+Setup and hold times related to the automatic assertion and de-assertion of the CS lines when operating in *DMA* mode are as follows:
 
 * The CS line will be asserted at least 3 core clock cycles before the msb of the first byte of the transfer.
 * The CS line will be de-asserted no earlier than 1 core clock cycle after the trailing edge of the final clock pulse.
