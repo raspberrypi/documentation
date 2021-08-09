@@ -30,7 +30,7 @@ if __name__ == "__main__":
         out_fh.write(""":parentdir: {}
 :page-layout: docs
 :includedir: {}
-:doctitle: {}
+:doctitle: Raspberry Pi Documentation - {}
 
 include::{{includedir}}/{{parentdir}}/{}[]
 """.format(output_path, src_dir, index_title, adoc_filename))
