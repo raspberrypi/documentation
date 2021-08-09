@@ -10,9 +10,9 @@ The BCM2835 core common to all Raspberry Pi computers has 3 SPI Controllers:
 
 * SPI0, with two hardware chip selects, is available on the header of all Pis (although there is an alternate mapping that is only usable on a Compute Module.
 * SPI1, with three hardware chip selects, is available on 40-pin versions of Pis.
-* SPI2, also with three hardware chip selects, is only usable on a Compute Module because the pins aren't brought out onto the 40-pin header.
+* SPI2, also with three hardware chip selects, is only usable on compute modules because the pins are not brought out onto the 40-pin header.
 
-BCM2711 adds another 4 SPI buses - SPI3 to SPI6, each with 2 hardware chip selects. All are available on the 40-pin header (provided nothing else is trying to use the same pins).
+BCM2711 adds another 4 SPI buses - SPI3 to SPI6, each with 2 hardware chip selects; the new SPI buses are available via alternate function assignments on certain GPIO pins - see the https://datasheets.raspberrypi.org/bcm2711/bcm2711-peripherals.pdf[BCM2711 ARM Peripherals] datasheet.
 
 Chapter 10 in the https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals.pdf[BCM2835 ARM Peripherals] datasheet describes the main controller.  Chapter 2.3 describes the auxiliary controller.
 
@@ -319,7 +319,7 @@ In bidirectional SPI mode the same SPI standard is implemented, except that a si
 
 The LoSSI standard allows issuing of commands to peripherals (LCD) and to transfer data to and from them. LoSSI commands and parameters are 8 bits long, but an extra bit is used to indicate whether the byte is a command or parameter/data. This extra bit is set high for a data and low for a command. The resulting 9-bit value is serialized to the output. LoSSI is commonly used with http://mipi.org/specifications/display-interface[MIPI DBI] type C compatible LCD controllers.
 
-NOTE: Some commands trigger an automatic read by the SPI controller, so this mode can't be used as a multipurpose 9-bit SPI.
+NOTE: Some commands trigger an automatic read by the SPI controller, so this mode cannot be used as a multipurpose 9-bit SPI.
 
 ==== Transfer modes
 
@@ -353,7 +353,7 @@ Setup and Hold times related to the automatic assertion and de-assertion of the 
 
 The default Linux driver is now the standard spi-bcm2835.
 
-SPI0 is disabled by default. To enable it, use xref:configuration.adoc#raspi-config[raspi-config], or ensure the line `dtparam=spi=on` isn't commented out in `/boot/config.txt`. By default it uses 2 chip select lines, but this can be reduced to 1 using `dtoverlay=spi0-1cs`. `dtoverlay=spi0-2cs` also exists, and without any parameters it is equivalent to `dtparam=spi=on`.
+SPI0 is disabled by default. To enable it, use xref:configuration.adoc#raspi-config[raspi-config], or ensure the line `dtparam=spi=on` is not commented out in `/boot/config.txt`. By default it uses 2 chip select lines, but this can be reduced to 1 using `dtoverlay=spi0-1cs`. `dtoverlay=spi0-2cs` also exists, and without any parameters it is equivalent to `dtparam=spi=on`.
 
 To enable SPI1, you can use 1, 2 or 3 chip select lines, adding in each case:
 
@@ -399,11 +399,11 @@ This https://www.raspberrypi.org/forums/viewtopic.php?f=44&t=19489[thread] discu
 
 ==== spidev
 
-spidev presents an ioctl-based userspace interface to individual SPI CS lines. Device Tree is used to indicate whether a CS line is going to be driven by a kernel driver module or managed by spidev on behalf of the user; it isn't possible to do both at the same time. Note that Raspberry Pi's own kernels are more relaxed about the use of Device Tree to enable spidev - the upstream kernels print warnings about such usage, and ultimately may prevent it altogether.
+spidev presents an ioctl-based userspace interface to individual SPI CS lines. Device Tree is used to indicate whether a CS line is going to be driven by a kernel driver module or managed by spidev on behalf of the user; it is not possible to do both at the same time. Note that Raspberry Pi's own kernels are more relaxed about the use of Device Tree to enable spidev - the upstream kernels print warnings about such usage, and ultimately may prevent it altogether.
 
 ===== Using spidev from C
 
-There's a loopback test program in the Linux documentation that can be used as a starting point. See the <<troubleshooting,Troubleshooting>> section.
+There is a loopback test program in the Linux documentation that can be used as a starting point. See the <<troubleshooting,Troubleshooting>> section.
 
 ===== Using spidev from Python
 
