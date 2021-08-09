@@ -212,7 +212,7 @@ See also xref:raspberry-pi.adoc#raspberry-pi-4-boot-flow[Raspberry Pi 4 boot-flo
 | vl805.sig| The sha256 checksum of vl805.bin
 |===
 
-* If the bootloader update image is called `pieeprom.upd` then `recovery.bin` renames itself to `recovery.000` and resets the CPU. Since `recovery.bin` is no longer present the ROM loads the newly updated bootloader from EEPROM and the OS is booted as normal.
+* If the bootloader update image is called `pieeprom.upd` then `recovery.bin` is renamed to `recovery.000` once the update has completed, then the system is rebooted. Since `recovery.bin` is no longer present the ROM loads the newly updated bootloader from EEPROM and the OS is booted as normal.
 * If the bootloader update image is called `pieeprom.bin` then `recovery.bin` will stop after the update has completed. On success the HDMI output will be green and the green activity LED is flashed rapidly. If the update fails, the HDMI output will be red and an xref:configuration.adoc#led-warning-flash-codes[error code] will be displayed via the activity LED.
 * The `.sig` files contain the hexadecimal sha256 checksum of the corresponding image file; additional fields may be added in the future.
 * The BCM2711 ROM does not support loading `recovery.bin` from USB mass storage or TFTP. Instead, newer versions of the bootloader support a self-update mechanism where the bootloader is able to reflash the EEPROM itself. See `ENABLE_SELF_UPDATE` on the xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[bootloader configuration] page.
