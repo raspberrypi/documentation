@@ -12,8 +12,9 @@ DATASHEETS_BUCKET_URL = 'https://rptl-datasheets.s3.eu-west-1.amazonaws.com'
 
 
 if __name__ == "__main__":
-    redirects_dir = sys.argv[1]
-    output_filename = sys.argv[2]
+    extra = sys.argv[1]
+    redirects_dir = sys.argv[2]
+    output_filename = sys.argv[3]
 
     any_datasheets_redirects = False
     redirects = dict()
@@ -40,6 +41,10 @@ if __name__ == "__main__":
                     datasheets_filenames.add(child.find('S3:Key', ns).text)
 
     with open(output_filename, 'w') as out_fh:
+        if os.path.isfile(extra):
+            with open(extra) as extra_fh:
+                out_fh.write(extra_fh.read())
+                out_fh.write('\n')
         out_fh.write('<IfModule mod_alias.c>\n')
         for redir in sorted(redirects):
             link = redirects[redir]
