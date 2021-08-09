@@ -1,12 +1,12 @@
 [[spi-overview]]
 == Serial Peripheral Interface (SPI)
 
-The Raspberry Pi family of devices is equipped with a number of https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus[SPI] buses. SPI can be used to connect a wide variety of peripherals - displays, network controllers (Ethernet, CAN bus), UARTs, etc. These devices are best supported by kernel device drivers, but the `spidev` API allows userspace drivers to be written in a wide array of languages.
+Raspberry Pi computers are equipped with a number of https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus[SPI] buses. SPI can be used to connect a wide variety of peripherals - displays, network controllers (Ethernet, CAN bus), UARTs, etc. These devices are best supported by kernel device drivers, but the `spidev` API allows userspace drivers to be written in a wide array of languages.
 
 [[spi-hardware]]
 === SPI Hardware
 
-The BCM2835 core common to all Raspberry Pi devices has 3 SPI Controllers:
+The BCM2835 core common to all Raspberry Pi computers has 3 SPI Controllers:
 
 * SPI0, with two hardware chip selects, is available on the header of all Pis (although there is an alternate mapping that is only usable on a Compute Module.
 * SPI1, with three hardware chip selects, is available on 40-pin versions of Pis.
@@ -20,13 +20,37 @@ Chapter 10 in the https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals
 
 ===== SPI0 (available on J8/P1 headers on all RPi versions)
 
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
-|--|--|--|--|
-| MOSI | 19 | GPIO10 | SPI0_MOSI |
-| MISO | 21 | GPIO09 | SPI0_MISO |
-| SCLK | 23 | GPIO11 | SPI0_SCLK |
-| CE0  | 24 | GPIO08 | SPI0_CE0_N |
-| CE1  | 26 | GPIO07 | SPI0_CE1_N |
+[cols="1,1"]
+|===
+| SPI Function
+| Header Pin
+| Broadcom Pin Name
+| Broadcom Pin Function
+
+| MOSI
+| 19
+| GPIO10
+| SPI0_MOSI
+
+| MISO
+| 21
+| GPIO09
+| SPI0_MISO
+
+| SCLK
+| 23
+| GPIO11
+| SPI0_SCLK
+
+| CE0
+| 24
+| GPIO08
+| SPI0_CE0_N
+
+| CE1
+| 26
+| GPIO07
+| SPI0_CE1_N
 
 ===== SPI0 alternate mapping (available only on Compute Modules)
 
