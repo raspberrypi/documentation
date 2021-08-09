@@ -18,7 +18,7 @@ Chapter 10 in the https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals
 
 ==== Pin/GPIO mappings
 
-===== SPI0 (available on J8/P1 headers on all RPi versions)
+===== SPI0
 
 [cols="1,1,1,1"]
 |===
@@ -51,29 +51,78 @@ Chapter 10 in the https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals
 | 26
 | GPIO07
 | SPI0_CE1_N
+|===
 
-===== SPI0 alternate mapping (available only on Compute Modules)
+===== SPI0 alternate mapping (available only on compute modules)
 
-| SPI Function | Broadcom Pin Name | Broadcom Pin Function |
-|--|--|--|
-| MOSI | GPIO38 | SPI0_MOSI |
-| MISO | GPIO37 | SPI0_MISO |
-| SCLK | GPIO39 | SPI0_SCLK |
-| CE0  | GPIO36 | SPI0_CE0_N |
-| CE1  | GPIO35 | SPI0_CE1_N |
+[cols="1,1,1,1"]
+|===
+| SPI Function
+| Broadcom Pin Name
+| Broadcom Pin Function
 
-===== SPI1 (available only on 40-pin J8 header)
+| MOSI
+| GPIO38
+| SPI0_MOSI
 
-| SPI Function | Header Pin | Broadcom Pin Name | Broadcom Pin Function |
-|--|--|--|--|
-| MOSI | 38 | GPIO20 | SPI1_MOSI |
-| MISO | 35 | GPIO19 | SPI1_MISO |
-| SCLK | 40 | GPIO21 | SPI1_SCLK |
-| CE0  | 12 | GPIO18 | SPI1_CE0_N |
-| CE1  | 11 | GPIO17 | SPI1_CE1_N |
-| CE2  | 36 | GPIO16 | SPI1_CE2_N |
+| MISO
+| GPIO37
+| SPI0_MISO
 
-===== SPI2 (available only on Compute Modules)
+| SCLK
+| GPIO39
+| SPI0_SCLK
+
+| CE0
+| GPIO36
+| SPI0_CE0_N
+
+| CE1
+| GPIO35
+| SPI0_CE1_N
+|===
+
+===== SPI1
+
+[cols="1,1,1,1"]
+|===
+| SPI Function
+| Header Pin
+| Broadcom Pin Name
+| Broadcom Pin Function
+
+| MOSI
+| 38
+| GPIO20
+| SPI1_MOSI
+
+| MISO
+| 35
+| GPIO19
+| SPI1_MISO
+
+| SCLK
+| 40
+| GPIO21
+| SPI1_SCLK
+
+| CE0
+| 12
+| GPIO18
+| SPI1_CE0_N
+
+| CE1
+| 11
+| GPIO17
+| SPI1_CE1_N
+
+| CE2
+| 36
+| GPIO16
+| SPI1_CE2_N
+|===
+
+===== SPI2 (available only on compute modules)
 
 | SPI Function | Broadcom Pin Name | Broadcom Pin Function |
 |--|--|--|
