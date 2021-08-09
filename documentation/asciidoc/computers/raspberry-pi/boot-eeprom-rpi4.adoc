@@ -1,6 +1,6 @@
 == Raspberry Pi 4 Boot EEPROM
 
-Raspberry Pi 4 and 400 computers use an EEPROM to boot the system. All other models of Raspberry Pi computer use the `bootcode.bin` file located in the boot filesystem.
+Raspberry Pi 4, 400 and Compute Module 4 computers use an EEPROM to boot the system. All other models of Raspberry Pi computer use the `bootcode.bin` file located in the boot filesystem.
 
 NOTE: The scripts and pre-compiled binaries used to create the `rpi-eeprom` package which is used to update the Raspberry Pi 4 bootloader and VLI USB controller EEPROMs is available https://github.com/raspberrypi/rpi-eeprom/[on Github].
 
