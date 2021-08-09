@@ -333,8 +333,9 @@ The CDIV (Clock Divider) field of the CLK register sets the SPI clock speed:
 
 ----
 SCLK = Core Clock / CDIV
-If CDIV is set to 0, the divisor is 65536. The divisor must be a multiple of 2, with odd numbers rounded down. Note that not all possible clock rates are usable because of analogue electrical issues (rise times, drive strengths, etc.)
 ----
+
+If CDIV is set to 0, the divisor is 65536. The divisor must be a multiple of 2, with odd numbers rounded down. Note that not all possible clock rates are usable because of analogue electrical issues (rise times, drive strengths, etc)
 
 See the <<driver,Linux driver>> section for more info.
 
