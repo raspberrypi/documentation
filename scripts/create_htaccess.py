@@ -9,6 +9,7 @@ import xml.etree.ElementTree as ET
 
 DATASHEETS_BASE_URL = 'https://datasheets.raspberrypi.org'
 DATASHEETS_BUCKET_URL = 'https://rptl-datasheets.s3.eu-west-1.amazonaws.com'
+REDIRECT_SOURCE_PREFIX = '/documentation/'
 
 
 if __name__ == "__main__":
@@ -22,11 +23,15 @@ if __name__ == "__main__":
         if os.path.splitext(filename)[1] == '.csv':
             with open(os.path.join(redirects_dir, filename)) as csvfile:
                 for row in csv.reader(csvfile):
-                    if row[0] in redirects:
-                        raise Exception('Multiple redirects for source-URL {}'.format(row[0]))
-                    if row[1].startswith(DATASHEETS_BASE_URL):
-                        any_datasheets_redirects = True
-                    redirects[row[0]] = row[1]
+                    if row:
+                        old, new = row
+                        if not old.startswith(REDIRECT_SOURCE_PREFIX):
+                            raise Exception('Redirect {} doesn\'t start with {}'.format(REDIRECT_SOURCE_PREFIX))
+                        if old in redirects:
+                            raise Exception('Multiple redirects for source-URL {}'.format(old))
+                        if new.startswith(DATASHEETS_BASE_URL):
+                            any_datasheets_redirects = True
+                        redirects[old] = new
 
     datasheets_filenames = set()
     if any_datasheets_redirects:
