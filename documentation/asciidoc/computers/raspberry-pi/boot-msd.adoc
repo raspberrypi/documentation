@@ -7,7 +7,7 @@ This page explains how to boot your Raspberry Pi from a USB mass storage device 
 [[pi4]]
 === Raspberry Pi 4B and Raspberry Pi 400
 
-The Raspberry Pi Pi 400 and newer Raspberry Pi 4B boards support USB boot by default. On earlier Raspberry Pi 4B boards, or to select alternate boot modes, the bootloader must be updated.
+The bootloader in Raspberry Pi Pi 400 and newer Raspberry Pi 4B boards support USB boot by default, although the `BOOT_ORDER` bootloader configuration may need to be modified. On earlier Raspberry Pi 4B boards, or to select alternate boot modes, the bootloader must be updated.
 
 See:-
 
