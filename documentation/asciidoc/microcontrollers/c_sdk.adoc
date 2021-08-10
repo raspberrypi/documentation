@@ -1,8 +1,6 @@
 
 include::c_sdk/sdk_setup.adoc[]
 
-include::c_sdk/official_sdk.adoc[]
+include::c_sdk/offical_sdk.adoc[]
 
-include::c_sdk/blink_a_led.adoc[]
-
-include::c_sdk/say_hello_world.adoc[]
+include::c_sdk/your_first_binary.adoc[]
