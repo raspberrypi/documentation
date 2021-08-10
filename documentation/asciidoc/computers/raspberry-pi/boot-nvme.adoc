@@ -1,7 +1,5 @@
 == NVMe SSD Boot
 
-IMPORTANT: As if August 2021 booting from an NVMe SDD is in *BETA*.
-
 NVMe (non-volatile memory express) is a standard for accessing solid state drives (SSDs) via a PCIe bus. You can connect these drives via the PCIe slot on a Compute Module 4 (CM4) IO board, allowing a CM4 to boot from SSD.
 
 === Required Hardware
@@ -19,42 +17,13 @@ If you need to connect the NVMe drive to a PC or Mac you can use a USB adaptor: 
 
 === Required Software
 
-To boot from NVMe you need pre-release versions of the bootloader, VideoCore firmware and Raspberry Pi OS Linux kernel.
+To boot from NVMe you need a recent version of the bootloader (July 2021), and pre-release versions of the VideoCore firmware and Raspberry Pi OS Linux kernel.
 
 ==== Bootloader
 
 You need to use `rpiboot` to update the CM4 bootloader. Instructions for building `rpiboot` and configuring the IO board to switch the ROM to usbboot mode are in the https://github.com/raspberrypi/usbboot[usbboot Github repository].
 
-If you are using a CM4 with an eMMC then you must change the BOOT_ORDER to give NVMe priority, otherwise the CM4 will continue to boot from eMMC. For example:
-
-----
-cd usbboot/nvme
-sed -i 's/\(BOOT_ORDER=.*\)6\(.*\)/\1\26/' boot.conf
-./update-pieeprom.sh
-cd ..
-----
-
-You can then update your bootloader to support NVMe boot with `./rpiboot -d nvme`; example output is shown below.
-
-----
-Loading: nvme/bootcode4.bin
-Waiting for BCM2835/6/7/2711...
-Loading: nvme/bootcode4.bin
-Sending bootcode.bin
-Successful read 4 bytes
-Waiting for BCM2835/6/7/2711...
-Loading: nvme/bootcode4.bin
-Second stage boot server
-Loading: nvme/config.txt
-File read: config.txt
-Loading: nvme/pieeprom.bin
-Loading: nvme/pieeprom.bin
-Loading: nvme/pieeprom.sig
-File read: pieeprom.sig
-Loading: nvme/pieeprom.bin
-File read: pieeprom.bin
-Second stage boot server done
-----
+Remember to add the NVMe boot mode `6` to BOOT_ORDER in `recovery/boot.conf`.
 
 ==== Firmware and kernel
 
@@ -115,37 +84,3 @@ nvme0n1     259:0    0 232.9G  0 disk
 === Troubleshooting
 
 If the boot process fails, please file an issue on the https://github.com/raspberrypi/rpi-eeprom[rpi-eeprom Github repository], including a copy of the console and anything displayed on the screen during boot.
-
-You can enable logging in the bootloader, and update the bootloader with this configuration, using `rpiboot`:
-
-----
-cd usbboot/nvme
-sed -i 's/BOOT_UART=0/BOOT_UART=1/' boot.conf
-./update-pieeprom.sh
-cd ..
-./rpiboot -d nvme
-----
-
-Enable UART logging in `/boot/config.txt` to allow you to capture logs from the serial port:
-
-----
-# UART console
-enable_uart=1
-
-# UART from firmware
-uart_2ndstage=1
-----
-
-Ensure that you have used `rpi-update` to get the latest pre-release versions of the firmware and Linux kernel; boot from NVMe will not work without these.
-
-There may be compatibility issues with some SSDs. You can use the following commands to investigate:
-
-----
-sudo apt-get install nvme-cli
-sudo nvme list
-sudo nvme id-ctrl -H /dev/nvme0
-sudo nvme list-ns /dev/nvme0
-sudo nvme id-ns -H /dev/nvme0 --namespace-id=1
-----
-
-Please post the output of these commands in any error report.
