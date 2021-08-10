@@ -52,8 +52,8 @@ $(AUTO_NINJABUILD): $(SCRIPTS_DIR)/create_jekyll_ninjabuild.py $(DOCUMENTATION_I
 $(OUTPUT_DIR)/_data/index.json: $(SCRIPTS_DIR)/create_output_index_json.py $(DOCUMENTATION_INDEX) | $(OUTPUT_DIR)/_data
 	$< $(DOCUMENTATION_INDEX) $@
 
-$(OUTPUT_DIR)/.htaccess: $(SCRIPTS_DIR)/create_redirects.py $(wildcard $(DOCUMENTATION_REDIRECTS_DIR)/*.csv) | $(OUTPUT_DIR)
-	$< $(DOCUMENTATION_REDIRECTS_DIR) $@
+$(OUTPUT_DIR)/.htaccess: $(SCRIPTS_DIR)/create_htaccess.py $(HTACCESS_EXTRA) $(wildcard $(DOCUMENTATION_REDIRECTS_DIR)/*.csv) | $(OUTPUT_DIR)
+	$< $(HTACCESS_EXTRA) $(DOCUMENTATION_REDIRECTS_DIR) $@
 
 $(OUTPUT_DIR)/DO_NOT_EDIT.txt: | $(OUTPUT_DIR)
 	echo "Do not edit any files in this directory. Everything will get overwritten when you run 'make'" > $@
