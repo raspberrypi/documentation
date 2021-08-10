@@ -8,7 +8,7 @@ rule copy
   command = cp $in $out
 
 rule create_categories_page
-  command = echo "---\nlayout: boxes\n---\n:doctitle: $title" > $out
+  command = echo "---\nlayout: $layout\n---\n:doctitle: $title" > $out
 
 rule create_toc
   command = $SCRIPTS_DIR/create_nav.py $DOCUMENTATION_INDEX $src_dir $out
