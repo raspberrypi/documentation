@@ -1,4 +1,5 @@
 <IfModule mod_alias.c>
+Redirect 302 "/documentation/hardware/raspberrypi/conformity.md" "https://pip.raspberrypi.org"
 RedirectMatch 302 "^/documentation/faqs" "/documentation/"
 RedirectMatch 302 "^/documentation/hardware/raspberrypi/compliance/" "https://pip.raspberrypi.org"
 RedirectMatch 302 "^/documentation/hardware/camera/" "/documentation/accessories/camera.html"
