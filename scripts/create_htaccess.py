@@ -41,10 +41,6 @@ if __name__ == "__main__":
                     datasheets_filenames.add(child.find('S3:Key', ns).text)
 
     with open(output_filename, 'w') as out_fh:
-        if os.path.isfile(extra):
-            with open(extra) as extra_fh:
-                out_fh.write(extra_fh.read())
-                out_fh.write('\n')
         out_fh.write('<IfModule mod_alias.c>\n')
         for redir in sorted(redirects):
             link = redirects[redir]
@@ -54,3 +50,7 @@ if __name__ == "__main__":
                     raise Exception('{} seems to be an invalid URL'.format(link))
             out_fh.write('Redirect 301 {} {}\n'.format(redir, link))
         out_fh.write('</IfModule>\n')
+        if os.path.isfile(extra):
+            with open(extra) as extra_fh:
+                out_fh.write(extra_fh.read())
+                out_fh.write('\n')
