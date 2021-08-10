@@ -22,7 +22,7 @@ Due to possible system stability problems involved with running an undervoltage,
 | property=value | Description
 
 | dvfs=1
-| allow under voltage
+| allow undervoltage
 
 | dvfs=2
 | fixed voltage for default operating frequencies
