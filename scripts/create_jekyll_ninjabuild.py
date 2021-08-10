@@ -38,7 +38,7 @@ if __name__ == "__main__":
     output_dir = sys.argv[3]
     output_ninjabuild = sys.argv[4]
 
-    category_pages = set([('index.adoc', 'Raspberry Pi Documentation')])
+    category_pages = set([('index.adoc', 'Raspberry Pi Documentation'), ('404.adoc', 'Raspberry Pi Documentation')])
     doc_pages = set()
     page_images = set()
 
@@ -72,12 +72,8 @@ if __name__ == "__main__":
         targets = []
         for page, title in sorted(category_pages):
             dest = os.path.join('$out_dir', page)
-            ninja.build(dest, 'create_categories_page', variables={'title': title, 'layout': 'boxes'})
+            ninja.build(dest, 'create_categories_page', variables={'title': title})
             targets.append(dest)
-        # 404 page
-        dest = os.path.join('$out_dir', '404.adoc')
-        ninja.build(dest, 'create_categories_page', variables={'title': 'Raspberry Pi Documentation', 'layout': 'boxes404'})
-        targets.append(dest)
 
         if targets:
             ninja.default(targets)
