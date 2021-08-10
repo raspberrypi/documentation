@@ -38,3 +38,4 @@
 /documentation/hardware/computemodule/dt-blob-dualcam.dts,https://datasheets.raspberrypi.org/cmio/dt-blob-dualcam.dts
 /documentation/hardware/computemodule/example1-overlay.dts,https://datasheets.raspberrypi.org/cm/example1-overlay.dts
 /documentation/hardware/computemodule/minimal-cm-dt-blob.dts,https://datasheets.raspberrypi.org/cm/minimal-cm-dt-blob.dts
+/documentation/linux/software/libcamera/rpi_SOFT_libcamera_1p0.pdf,https://datasheets.raspberrypi.org/camera/raspberry-pi-camera-guide.pdf
