@@ -6,11 +6,11 @@ When the core temperature is between 80°C and 85°C, a warning icon showing a r
 
 For Raspberry Pi 3 Model B+, the PCB technology has been changed to provide better heat dissipation and increased thermal mass. In addition, a soft temperature limit has been introduced, with the goal of maximising the time for which a device can "sprint" before reaching the hard limit at 85°C. When the soft limit is reached, the clock speed is reduced from 1.4GHz to 1.2GHz, and the operating voltage is reduced slightly. This reduces the rate of temperature increase: we trade a short period at 1.4GHz for a longer period at 1.2GHz. By default, the soft limit is 60°C, and this can be changed via the `temp_soft_limit` setting in xref:config_txt.adoc#overclocking-options[config.txt].
 
-The Raspberry Pi 4, Model B, continues with the same PCB technology as the Raspberry Pi 3, Model B+, to help dissipate excess heat. There is currently *no soft limit defined*.
+The Raspberry Pi 4 Model B, continues with the same PCB technology as the Raspberry Pi 3 Model B+, to help dissipate excess heat. There is currently *no soft limit defined*.
 
 === Using DVFS
 
-NOTE: Discussion of DVFS applies to Raspberry Pi 4, Model B, Raspbery Pi 400, and Compute Module 4 *ONLY*.
+NOTE: Discussion of DVFS applies to Raspberry Pi 4 Model B, Raspbery Pi 400, and Compute Module 4 *only*.
 
 Raspberry Pi 4 devices implement Dynamic Voltage and Frequency Scaling (DVFS). This technique allows Raspberry Pi 4 devices to run at lower temperatures whilst still providing the same performance.
 
@@ -22,13 +22,13 @@ Due to possible system stability problems involved with running an undervoltage,
 | property=value | Description
 
 | dvfs=1
-| allow under-voltage
+| allow undervoltage
 
 | dvfs=2
-| fixed voltage for default operating frequencies.
+| fixed voltage for default operating frequencies
 
 | dvfs=3
-| scale voltage up on demand for over-clocking (default). If `over_voltage` is specified in `config.txt` then the dynamic voltage scaling is disabled causing the system to revert to `dvfs=2`.
+| scale voltage up on demand for over clocking (default). If `over_voltage` is specified in `config.txt` then dynamic voltage scaling is disabled causing the system to revert to `dvfs=2`.
 |===
 
 In addition, a more stepped CPU governor is also used to produce finer-grained control of ARM core frequencies, which means the DVFS is more effective. The steps are now 1500MHz, 1000MHz, 750MHz, and 600MHz. These steps can also help when the SoC is being throttled, and mean that throttling all the way back to 600MHz is much less likely, giving an overall increase in fully loaded performance.
@@ -42,13 +42,13 @@ $ sudo cpufreq-set -g powersave
 
 === Measuring Temperatures
 
-Due to the architecture of the SoCs used on the Raspberry Pi range, and the use of the upstream temperature monitoring code in the Raspberry Pi OS distribution, Linux-based temperature measurements can be inaccurate. However the `vcgencmd` command can provide an accurate and instantaneous reading of the current SoC temperature as it communicates with the GPU directly:
+Due to the architecture of the SoCs used on the Raspberry Pi range, and the use of the upstream temperature monitoring code in the Raspberry Pi OS distribution, Linux-based temperature measurements can be inaccurate. However, the `vcgencmd` command provides an accurate and instantaneous reading of the current SoC temperature as it communicates with the GPU directly:
 
 [source]
 ----
 $ vcgencmd measure_temp
 ----
 
-=== Adding a Heatsinks
+=== Adding Heatsinks
 
 Whilst heatsinks are not necessary to prevent overheating damage to the SoC — the thermal throttling mechanism handles that — a heatsink or small fan will help if you wish to reduce the amount of thermal throttling that takes place. Depending on the exact circumstances, mounting the Pi vertically can also help with heat dissipation, as doing so can improve air flow.
