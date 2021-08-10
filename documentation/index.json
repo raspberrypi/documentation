@@ -151,6 +151,18 @@
                     "url": "https://www.raspberrypi.org/documentation/rp2040/getting-started/#board-specifications"
                 },
                 {
+                    "title": "MicroPython",
+                    "description": "Getting started with MicroPython",
+                    "image": "placeholder/placeholder_square.png",
+                    "subpath": "micropython.adoc"
+                },
+                {
+                    "title": "C/C++ SDK",
+                    "description": "Getting started with the C/C++ SDK",
+                    "image": "placeholder/placeholder_triangle.png",
+                    "subpath": "c_sdk.adoc"
+                },
+                {
                     "title": "PIP",
                     "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents",
                     "image": "PIP-SMALL.png",
