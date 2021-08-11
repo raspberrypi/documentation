@@ -17,12 +17,6 @@ There is also a KiCAD PCB design set available:
 
 * https://datasheets.raspberrypi.org/cm4io/CM4IO-KiCAD.zip[Compute Module 4 IO Board KiCAD files]
 
-==== Under Voltage Detection
-
-Schematic for an under-voltage detection circuit, as used in most models of Raspberry Pi:
-
-image::images/under_voltage_detect.png[Under-voltage detect]
-
 === Older Products
 
 Raspberry Pi CM1, CM3 and CM3L are supported products with an End-of-Life (EOL) date no earlier than January 2026. For customers embarking on new designs, Raspberry Pi recommends using the newer Compute Module 3+, which offers improved thermal performance, and a wider range of Flash memory options.
@@ -45,3 +39,9 @@ Schematics for the Compute Module IO board (CMIO):
 Schematics for the Compute Module camera/display adapter board (CMCDA):
 
 * https://datasheets.raspberrypi.org/cmcda/cmcda-schematics.pdf[CMCDA Rev 1.1]
+
+==== Under Voltage Detection
+
+Schematic for an under-voltage detection circuit, as used in older models of Raspberry Pi:
+
+image::images/under_voltage_detect.png[Under-voltage detect]
