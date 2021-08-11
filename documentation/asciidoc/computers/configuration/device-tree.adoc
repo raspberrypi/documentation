@@ -375,7 +375,7 @@ There are some situations where it is convenient to be able to set the same valu
 
 (example taken from the `w1-gpio` overlay)
 
-Note that it is even possible to target properties of different types with a single parameter. You could reasonably connect an "enable" parameter to a `status` string, cells containing zero or one, and a proper boolean property.
+NOTE: It is even possible to target properties of different types with a single parameter. You could reasonably connect an "enable" parameter to a `status` string, cells containing zero or one, and a proper boolean property.
 
 [[part2.2.6]]
 ===== Literal assignments
@@ -415,9 +415,9 @@ bus      = <&fragment>,"target:0{0=",<&i2c0>,"1=",<&i2c1>,"}";
 
 A key with no `=value` means to use the key as the value, an `=` with no key before it is the default value in the case of no match, and starting or ending the list with a comma (or an empty key=value pair anywhere) indicates that the unmatched input value should be used unaltered; otherwise, not finding a match is an error.
 
-Note that the comma separator within the table string after a cell integer value is implicit - adding one explicitly creates an empty pair (see above).
+NOTE: The comma separator within the table string after a cell integer value is implicit - adding one explicitly creates an empty pair (see above).
 
-N.B. As lookup tables operate on input values and literal assignments ignore them, it's not possible to combine the two - characters after the closing `}` in the lookup declaration are treated as an error.
+NOTE: As lookup tables operate on input values and literal assignments ignore them, it's not possible to combine the two - characters after the closing `}` in the lookup declaration are treated as an error.
 
 [[part2.2.8]]
 ===== Overlay/fragment parameters
@@ -626,7 +626,7 @@ This split is particularly important for runtime overlays, since step (i) occurs
 
 On a Raspberry Pi it is the job of the loader (one of the `start.elf` images) to combine overlays with an appropriate base device tree, and then to pass a fully resolved Device Tree to the kernel. The base Device Trees are located alongside `start.elf` in the FAT partition (/boot from Linux), named `bcm2711-rpi-4-b.dtb`, `bcm2710-rpi-3-b-plus.dtb`, etc. Note that some models (3A+, A, A+) will use the "b" equivalents (3B+, B, B+), respectively. This selection is automatic, and allows the same SD card image to be used in a variety of devices.
 
-Note that DT and ATAGs are mutually exclusive, and passing a DT blob to a kernel that doesn't understand it will cause a boot failure. The firmware will always try to load the DT and pass it to the kernel, since all kernels since rpi-4.4.y will not function without a DTB. You can override this by adding `device_tree=` in config.txt, which forces the use of ATAGs, which can be useful for simple "bare-metal" kernels.
+NOTE: DT and ATAGs are mutually exclusive, and passing a DT blob to a kernel that doesn't understand it will cause a boot failure. The firmware will always try to load the DT and pass it to the kernel, since all kernels since rpi-4.4.y will not function without a DTB. You can override this by adding `device_tree=` in config.txt, which forces the use of ATAGs, which can be useful for simple "bare-metal" kernels.
 
 [ The firmware used to look for a trailer appended to kernels by the `mkknlimg` utility, but support for this has been withdrawn. ]
 
@@ -661,7 +661,7 @@ As described above, DT parameters are a convenient way to make small changes to 
 dtparam=audio=on,i2c_arm=on,i2c_arm_baudrate=400000,spi=on
 ----
 
-Note that multiple assignments can be placed on the same line, but ensure you don't exceed the 80-character limit.
+NOTE: Multiple assignments can be placed on the same line, but ensure you don't exceed the 80-character limit.
 
 If you have an overlay that defines some parameters, they can be specified either on subsequent lines like this:
 
