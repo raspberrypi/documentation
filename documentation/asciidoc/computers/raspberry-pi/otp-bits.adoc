@@ -32,7 +32,7 @@ NOTE: On BCM2711 the bootmode is defined by the xref:raspberry-pi.adoc#raspberry
 29 -- ~(serial number) +
 30 -- xref:raspberry-pi.adoc#raspberry-pi-revision-codes[revision code]^1^ +
 33 - board revision extended - the meaning depends on the board model. +
-This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext` and for testing purposes this OTP value can be temporarily overriden by setting `board_rev_ext` in `config.txt`.
+This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext` and for testing purposes this OTP value can be temporarily overridden by setting `board_rev_ext` in `config.txt`.
 
 * Compute Module 4
  ** Bit 30: Whether the Compute Module has a WiFi module fitted
