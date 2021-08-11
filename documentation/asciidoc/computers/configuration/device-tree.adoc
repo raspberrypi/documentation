@@ -417,7 +417,7 @@ A key with no `=value` means to use the key as the value, an `=` with no key bef
 
 Note that the comma separator within the table string after a cell integer value is implicit - adding one explicitly creates an empty pair (see above).
 
-N.B. As lookup tables operate on input values and literal assigments ignore them, it's not possible to combine the two - characters after the closing `}` in the lookup declaration are treated as an error.
+N.B. As lookup tables operate on input values and literal assignments ignore them, it's not possible to combine the two - characters after the closing `}` in the lookup declaration are treated as an error.
 
 [[part2.2.8]]
 ===== Overlay/fragment parameters
