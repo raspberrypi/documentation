@@ -1,4 +1,4 @@
-== Useful Utilties
+== Useful Utilities
 
 There are several useful command line
 
@@ -237,7 +237,7 @@ Displays the resolution and colour depth of any attached display.
 
 ===== mem_oom
 
-Displays statistics on any OOM (out of memory) events occuring in the VideoCore memory space.
+Displays statistics on any OOM (out of memory) events occurring in the VideoCore memory space.
 
 ===== mem_reloc_stats
 
@@ -245,7 +245,7 @@ Displays statistics from the relocatable memory allocator on the VideoCore.
 
 ===== read_ring_osc
 
-Returns the curent speed voltage and temperature of the ring oscillator.
+Returns the current speed voltage and temperature of the ring oscillator.
 
 ===== hdmi_timings
 
