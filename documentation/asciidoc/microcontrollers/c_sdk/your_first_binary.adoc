@@ -15,7 +15,7 @@ You can blink this on and off by,
  .Drag and drop the Blink UF2 binary onto the RPI-RP2 volume.
  .Pico will reboot, and the on-board LED should start blinking.
 
-* Download https://www.raspberrypi.org/documentation/rp2040/getting-started/static/85aac7081a166b7a3d0739970c3927c9/blink.uf2[UF2 File]
+* Download https://datasheets.raspberrypi.org/soft/blink.uf2[UF2 File]
 
 * See the code https://github.com/raspberrypi/pico-examples/blob/master/blink/blink.c[on Github]
 
@@ -39,5 +39,5 @@ minicom -b 115200 -o -D /dev/ttyACM0
 
 You should see 'Hello, world!' printed to the Terminal
 
-* Download https://www.raspberrypi.org/documentation/rp2040/getting-started/static/d211f824b207c328c7cae7b0ff733187/hello_world.uf2[UF2 File]
+* Download https://datasheets.raspberrypi.org/soft/hello_world.uf2[UF2 File]
 * See the code https://github.com/raspberrypi/pico-examples/blob/master/hello_world/usb/hello_usb.c[on Github]
