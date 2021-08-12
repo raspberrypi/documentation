@@ -157,7 +157,7 @@
                     "subpath": "micropython.adoc"
                 },
                 {
-                    "title": "C/C++ SDK",
+                    "title": "The C/C++ SDK",
                     "description": "Getting started with the C/C++ SDK",
                     "image": "full-sized/C-and-CPP.png",
                     "subpath": "c_sdk.adoc"
