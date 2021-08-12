@@ -8,73 +8,73 @@
                 {
                     "title": "Getting Started",
                     "description": "This is the stuff about how to get started",
-                    "image": "Getting-Started-SMALL.png",
+                    "image": "full-sized/Getting-Started.png",
                     "subpath": "getting-started.adoc"
                 },
                 {
                     "title": "Raspberry Pi OS",
                     "description": "The official OS of Raspberry Pi",
-                    "image": "Raspberry-Pi-OS-SMALL.png",
+                    "image": "full-sized/Raspberry-Pi-OS.png",
                     "subpath": "os.adoc"
                 },
                 {
                     "title": "Configuration",
                     "description": "Configuring the Raspberry Pi's settings to suit your needs",
-                    "image": "Configuration-SMALL.png",
+                    "image": "full-sized/Configuration.png",
                     "subpath": "configuration.adoc"
                 },
                 {
                     "title": "The config.txt file",
                     "description": "Low-level control of your Raspberry Pi's settings",
-                    "image": "The-config-txt-file-SMALL.png",
+                    "image": "full-sized/The-config-txt-file.png",
                     "subpath": "config_txt.adoc"
                 },
                 {
                     "title": "The Linux kernel",
                     "description": "How to configure and build a custom kernel for your Raspberry Pi",
-                    "image": "Linux-Kernel-SMALL.png",
+                    "image": "full-sized/Linux-Kernel.png",
                     "subpath": "linux_kernel.adoc"
                 },
                 {
                     "title": "Using Linux",
                     "description": "How to use the Linux command line from Raspberry Pi OS",
-                    "image": "Using-Linux-SMALL.png",
+                    "image": "full-sized/Using-Linux.png",
                     "subpath": "using_linux.adoc"
                 },
                 {
                     "title": "Remote Access",
                     "description": "Accessing your Raspberry Pi remotely",
-                    "image": "Remote-Access-SMALL.png",
+                    "image": "full-sized/Remote-Access.png",
                     "subpath": "remote-access.adoc"
                 },
                 {
                     "title": "Raspberry Pi Hardware",
                     "description": "Technical information about Raspberry Pi hardware",
-                    "image": "Raspberry-Pi-Hardware-SMALL.png",
+                    "image": "full-sized/Raspberry-Pi-Hardware.png",
                     "subpath": "raspberry-pi.adoc"
                 },
                 {
                     "title": "Compute Module Hardware",
                     "description": "Technical information about Raspberry Pi Compute Module hardware",
-                    "image": "Compute-Module-Hardware-SMALL.png",
+                    "image": "full-sized/Compute-Module-Hardware.png",
                     "subpath": "compute-module.adoc"
                 },
                 {
                     "title": "Processors",
                     "description": "Technical information about the CPUs used by Raspberry Pi",
-                    "image": "Processors-SMALL.png",
+                    "image": "full-sized/Processors.png",
                     "subpath": "processors.adoc"
                 },
                 {
                     "title": "PIP",
                     "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents",
-                    "image": "PIP-SMALL.png",
+                    "image": "full-sized/PIP.png",
                     "url": "https://pip.raspberrypi.org/"
                 },
                 {
                     "title": "Datasheets",
                     "description": "The Datasheets site for PDF-based documentation",
-                    "image": "Datasheets-SMALL.png",
+                    "image": "full-sized/Datasheets.png",
                     "url": "https://datasheets.raspberrypi.org"
                 }
             ]
@@ -87,49 +87,49 @@
                 {
                     "title": "Camera",
                     "description": "We have several Raspberry Pi cameras",
-                    "image": "Camera-SMALL.png",
+                    "image": "full-sized/Camera.png",
                     "subpath": "camera.adoc"
                 },
                 {
                     "title": "Display",
                     "description": "The Raspberry Pi Touch Display",
-                    "image": "Display-SMALL.png",
+                    "image": "full-sized/Display.png",
                     "subpath": "display.adoc"
                 },
                 {
                     "title": "Keyboard & Mouse",
                     "description": "We have our own keyboard and mouse",
-                    "image": "Keyboard-and-Mouse-SMALL.png",
+                    "image": "full-sized/Keyboard-and-Mouse.png",
                     "url": "https://datasheets.raspberrypi.org/keyboard-mouse/getting-started-with-keyboard-and-mouse.pdf"
                 },
                 {
                     "title": "Sense HAT",
                     "description": "How to use the Sense HAT",
-                    "image": "Sense-HAT-SMALL.png",
+                    "image": "full-sized/Sense-HAT.png",
                     "subpath": "sense-hat.adoc"
                 },
                 {
                     "title": "TV HAT",
                     "description": "How to watch TV on your Raspberry Pi",
-                    "image": "TV-HAT-SMALL.png",
+                    "image": "full-sized/TV-HAT.png",
                     "subpath": "tv-hat.adoc"
                 },
                 {
                     "title": "Designing a HAT",
                     "description": "Information on the HAT specification",
-                    "image": "Designing-a-HAT-SMALL.png",
+                    "image": "full-sized/Designing-a-HAT.png",
                     "url": "https://github.com/raspberrypi/hats"
                 },
                 {
                     "title": "PIP",
                     "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents",
-                    "image": "PIP-SMALL.png",
+                    "image": "full-sized/PIP.png",
                     "url": "https://pip.raspberrypi.org/"
                 },
                 {
                     "title": "Datasheets",
                     "description": "The Datasheets site for PDF-based documentation",
-                    "image": "Datasheets-SMALL.png",
+                    "image": "full-sized/Datasheets.png",
                     "url": "https://datasheets.raspberrypi.org"
                 }
             ]
@@ -141,25 +141,25 @@
                 {
                     "title": "RP2040",
                     "description": "Our first microcontroller device",
-                    "image": "RP2040-SMALL.png",
+                    "image": "full-sized/RP2040.png",
                     "url": "https://www.raspberrypi.org/documentation/rp2040/getting-started/#rp2040-boards"
                 },
                 {
                     "title": "Raspberry Pi Pico",
                     "description": "A board built around our RP2040",
-                    "image": "Pico-SMALL.png",
+                    "image": "full-sized/Pico.png",
                     "url": "https://www.raspberrypi.org/documentation/rp2040/getting-started/#board-specifications"
                 },
                 {
                     "title": "PIP",
                     "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents",
-                    "image": "PIP-SMALL.png",
+                    "image": "full-sized/PIP.png",
                     "url": "https://pip.raspberrypi.org/"
                 },
                 {
                     "title": "Datasheets",
                     "description": "The Datasheets site for PDF-based documentation",
-                    "image": "Datasheets-SMALL.png",
+                    "image": "full-sized/Datasheets.png",
                     "url": "https://datasheets.raspberrypi.org"
                 }
             ]
