@@ -1,8 +1,12 @@
-# README
+# Welcome to the Raspberry Pi Documentation
+
+This repository contains the Asciidoc source and the toolchain to build the [Raspberry Pi Documentation](https://www.raspberrypi.org/documentation/). 
+
+## Building the Documentation
 
 Instructions on how to checkout the `documentation` repo, and then install the toolchain needed to convert from Asciidoc to HTML and build the documentation site.
 
-## Checking out the repository
+### Checking out the Repository
 
 Install `git` if you don't already have it, and check out the `documentation` repo as follows,
 ```
@@ -10,9 +14,9 @@ $ git clone https://github.com/raspberrypi/documentation.git
 $ cd documentation
 ```
 
-## Installing the toolchain
+### Installing the Toolchain
 
-### On Linux
+#### On Linux
 
 You can install the necessary dependencies on Linux as follows,
 
@@ -22,7 +26,7 @@ $ sudo apt-get -qq -y install ruby ruby-bundler ruby-dev build-essential python3
 
 This works on both regular Ubuntu Linux — and has been tested in a minimal Docker container — and also under Raspberry Pi OS if you are working from a Raspberry Pi.
 
-### On macOS
+#### On macOS
 
 If you don't already have it installed you should go ahead and install [HomeBrew](https://brew.sh/), 
 
@@ -38,7 +42,7 @@ $ brew install ruby@2.7
 
 **NOTE:** Homebrew defaults to Ruby 3.0 which is incompatible with Asciidoctor.
 
-#### Set up Homebrew version of Ruby
+##### Set up Homebrew Version of Ruby
 
 If you're using `csh` or `tcsh` add the following lines to your `.cshrc` or `.tcshrc`,
 
@@ -61,7 +65,7 @@ export CPPFLAGS="-I/usr/local/opt/ruby@2.7/include"
 export PKG_CONFIG_PATH="/usr/local/opt/ruby@2.7/lib/pkgconfig"
 ```
 
-#### Install dependencies
+##### Install Dependencies
 
 Go ahead and `brew install` the other dependencies,
 
@@ -70,14 +74,14 @@ $ brew install python@3
 $ brew install ninja
 ```
 
-## Configuring the repository
+### Configuring the Repository
 
 After you've installed the toolchain, you'll need to install the required Ruby gems. Make sure you're in the `documentation` directory and then run,
 ```
 $ bundle install
 ```
 
-## Building the documentation
+### Building the Documentation Site
 
 After you've installed the toolchain and configured the repository you can build the documentation with,
 
