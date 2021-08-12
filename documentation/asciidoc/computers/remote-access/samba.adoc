@@ -6,7 +6,7 @@ You can use Samba to mount a folder shared from a Windows machine so it appears 
 
 === Installing Samba Support
 
-By default, Raspberry Pi OS does not include CIFS/Samba support, but this can be added. The following commmands will install all the required components for using Samba as a server or a client.
+By default, Raspberry Pi OS does not include CIFS/Samba support, but this can be added. The following commands will install all the required components for using Samba as a server or a client.
 
 [,bash]
 ----
