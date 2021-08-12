@@ -1,7 +1,7 @@
 == Your First Binaries
 :pp: {plus}{plus}
 
-== Blink an LED
+=== Blink an LED
 
 The first program anyone writes when using a new microcontroller is to blink an LED on and off. The Raspberry Pi Pico comes with a single LED on-board (connected to GPIO pin 25). 
 
@@ -19,7 +19,7 @@ You can blink this on and off by,
 
 * See the code https://github.com/raspberrypi/pico-examples/blob/master/blink/blink.c[on Github]
 
-== Say "Hello World"
+=== Say "Hello World"
 
 The next program anyone writes is to say 'Hello World' over a USB serial connection.
 
