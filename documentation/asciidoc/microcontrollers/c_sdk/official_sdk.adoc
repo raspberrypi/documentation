@@ -5,4 +5,4 @@ Our official C SDK can be used from the command line, or from popular integrated
 
 * The SDK https://github.com/raspberrypi/pico-sdk[Github repository]
 
-* The https://github.com/raspberrypi/pico-examplesExamples [Github repository]
+* The Examples https://github.com/raspberrypi/pico-examples[Github repository]
