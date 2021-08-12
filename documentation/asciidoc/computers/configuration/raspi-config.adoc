@@ -38,7 +38,7 @@ Allows setting of the wireless LAN SSID and passphrase.
 
 ===== Audio
 
-Specifiy the audio output destination.
+Specify the audio output destination.
 
 [[change-user-password]]
 ===== Password

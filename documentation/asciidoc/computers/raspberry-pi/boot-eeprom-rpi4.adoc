@@ -1,6 +1,6 @@
 == Raspberry Pi 4 Boot EEPROM
 
-The Raspberry Pi 4 has an SPI-attached EEPROM (4MBits/512KB), which contains code to boot up the system and replaces `bootcode.bin` previously found in the boot partition of the SD card. Note that if a `bootcode.bin` is present in the boot partition of the SD card in a Pi 4, it is ignored.
+Raspberry Pi 4, 400 and Compute Module 4 computers use an EEPROM to boot the system. All other models of Raspberry Pi computer use the `bootcode.bin` file located in the boot filesystem.
 
 NOTE: The scripts and pre-compiled binaries used to create the `rpi-eeprom` package which is used to update the Raspberry Pi 4 bootloader and VLI USB controller EEPROMs is available https://github.com/raspberrypi/rpi-eeprom/[on Github].
 
@@ -183,29 +183,43 @@ rpi-eeprom-config --config boot.conf --out new.bin pieeprom.bin
 
 ==== recovery.bin
 
-At power on, the BCM2711 ROM looks for a file called `recovery.bin` in the root directory of the boot partition on the SD card. If a valid `recovery.bin` is found then the ROM executes this instead of the SPI EEPROM image. This mechanism ensures that the bootloader SPI EEPROM can always be reset to a valid image with factory default settings.
+At power on, the BCM2711 ROM looks for a file called `recovery.bin` in the root directory of the boot partition on the SD card. If a valid `recovery.bin` is found then the ROM executes this instead of the contents of the EEPROM. This mechanism ensures that the bootloader EEPROM can always be reset to a valid image with factory default settings.
 
 See also xref:raspberry-pi.adoc#raspberry-pi-4-boot-flow[Raspberry Pi 4 boot-flow]
 
 ==== EEPROM update files
 
-| Filename | Purpose |
-|-------|------|
-| recovery.bin | VideoCore EEPROM recovery executable |
-| pieeprom.upd | Bootloader EEPROM image |
-| pieeprom.bin | Bootloader EEPROM image - same as pieeprom.upd but changes recovery.bin behaviour |
-| pieeprom.sig | The sha256 checksum of bootloader image (pieeprom.upd/pieeprom.bin) |
-| vl805.bin | The VLI805 USB firmware EEPROM image - ignored on 1.4 board revision which does not have a dedicated VLI EEPROM|
-| vl805.sig | The sha256 checksum of vl805.bin |
+[cols="1,1"]
+|===
+| Filename
+| Purpose
 
-* If the bootloader update image is called `pieeprom.upd` then `recovery.bin` renames itself to `recovery.000` and resets the CPU. Since `recovery.bin` is no longer present the ROM loads the newly updated bootloader from SPI EEPROM and the OS is booted as normal.
-* If the bootloader update image is called `pieeprom.bin` the `recovery.bin` will stop after the update has completed. On success the HDMI output will be green and the green activity LED is flashed rapidly. Otherwise, the HDMI output will be red and an xref:configuration.adoc#led-warning-flash-codes[error code] will be displayed via the activity LED.
-* The `.sig` files should just contain the sha256 checksum (in hex) of the corresponding image file. Other fields may be added in the future.
-* The BCM2711 ROM does not support loading `recovery.bin` from USB mass storage or TFTP. Instead, newer versions of the bootloader support a self-update mechanism where the SPI bootloader is able to reflash the SPI EEPROM itself. See `ENABLE_SELF_UPDATE` on the xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[bootloader configuration] page.
+| recovery.bin
+| bootloader EEPROM recovery executable
+
+| pieeprom.upd
+| Bootloader EEPROM image
+
+| pieeprom.bin
+| Bootloader EEPROM image - same as pieeprom.upd but changes recovery.bin behaviour
+
+| pieeprom.sig
+| The sha256 checksum of bootloader image (pieeprom.upd/pieeprom.bin)
+
+| vl805.bin
+| The VLI805 USB firmware EEPROM image - ignored on 1.4 and later board revisions which do not have a dedicated VLI EEPROM
+
+| vl805.sig| The sha256 checksum of vl805.bin
+|===
+
+* If the bootloader update image is called `pieeprom.upd` then `recovery.bin` is renamed to `recovery.000` once the update has completed, then the system is rebooted. Since `recovery.bin` is no longer present the ROM loads the newly updated bootloader from EEPROM and the OS is booted as normal.
+* If the bootloader update image is called `pieeprom.bin` then `recovery.bin` will stop after the update has completed. On success the HDMI output will be green and the green activity LED is flashed rapidly. If the update fails, the HDMI output will be red and an xref:configuration.adoc#led-warning-flash-codes[error code] will be displayed via the activity LED.
+* The `.sig` files contain the hexadecimal sha256 checksum of the corresponding image file; additional fields may be added in the future.
+* The BCM2711 ROM does not support loading `recovery.bin` from USB mass storage or TFTP. Instead, newer versions of the bootloader support a self-update mechanism where the bootloader is able to reflash the EEPROM itself. See `ENABLE_SELF_UPDATE` on the xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[bootloader configuration] page.
 * The temporary EEPROM update files are automatically deleted by the `rpi-eeprom-update` service at startup.
 
-For more information about the `rpi-eeprom-update` configuration file please run `rpi-eeprom-update -h`.
+For more information about the `rpi-eeprom-update` configuration file see `rpi-eeprom-update -h`.
 
 ==== EEPROM write protect
 
-Both the bootloader and VLI SPI EEPROMs support hardware write-protection.  See the xref:raspberry-pi.adoc#eeprom_write_protect[eeprom_write_protect] option for more information about how to enable this when flashing the EEPROMs.
+Both the bootloader and VLI EEPROMs support hardware write protection.  See the xref:raspberry-pi.adoc#eeprom_write_protect[eeprom_write_protect] option for more information about how to enable this when flashing the EEPROMs.

@@ -105,11 +105,11 @@ Connect up the I2C and GPIO lines.
 
 On the Compute Module 4 IO board the CAM1 connector is already wired to the I2C on GPIOs 44 & 45, and the shutdown line is connected to GPIO 5 on the GPIO expander. There is no LED signal wired through. No hardware changes are required to use CAM1 other than connecting the 22pin FFC to the CAM1 connector (flex contacts face down).
 
-To connect a second Raspberry Pi camera (to CAM0), two jumpers must be added to J6 in a vertical orienation. The CAM0 connector shares the shutdown line with CAM1.
+To connect a second Raspberry Pi camera (to CAM0), two jumpers must be added to J6 in a vertical orientation. The CAM0 connector shares the shutdown line with CAM1.
 
 ==== Configuring default pin states (all CM variants)
 
-The GPIOs that we are using for the camera default to input mode on the Compute Module. To xref:configuration.adoc#changing-the-default-pin-configuration[override these default settings] and also tell the system that these are the pins to be used by the camera, we need to create a `dt-blob.bin` that is loaded by the firmware when the system boots up. This file is built from a source dts file that contains the requried settings, and placed on the boot partition.
+The GPIOs that we are using for the camera default to input mode on the Compute Module. To xref:configuration.adoc#changing-the-default-pin-configuration[override these default settings] and also tell the system that these are the pins to be used by the camera, we need to create a `dt-blob.bin` that is loaded by the firmware when the system boots up. This file is built from a source dts file that contains the required settings, and placed on the boot partition.
 
 <<sample-device-tree-source-files,Sample device tree source files>> are provided at the bottom of this document. These use the default wiring as described in this page.
 
