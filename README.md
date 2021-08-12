@@ -2,6 +2,8 @@
 
 This repository contains the Asciidoc source and the toolchain to build the [Raspberry Pi Documentation](https://www.raspberrypi.org/documentation/). 
 
+**NOTE:** This repository has undergone some recent changes. See our [blog post](https://www.raspberrypi.org/blog/bring-on-the-documentation/) for more details.
+
 ## Building the Documentation
 
 Instructions on how to checkout the `documentation` repo, and then install the toolchain needed to convert from Asciidoc to HTML and build the documentation site.
