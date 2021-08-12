@@ -14,7 +14,7 @@ $ cd documentation
 
 ### On Linux
 
-You can install the necessary dependencies on Liunux as follows,
+You can install the necessary dependencies on Linux as follows,
 
 ```
 $ sudo apt-get -qq -y install ruby ruby-bundler ruby-dev build-essential python3 git ninja-build
