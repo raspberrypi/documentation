@@ -100,7 +100,7 @@
                     "title": "Keyboard & Mouse",
                     "description": "We have our own keyboard and mouse",
                     "image": "full-sized/Keyboard-and-Mouse.png",
-                    "url": "https://datasheets.raspberrypi.org/keyboard-mouse/getting-started-with-keyboard-and-mouse.pdf"
+                    "subpath": "keyboard-and-mouse.adoc"
                 },
                 {
                     "title": "Sense HAT",
