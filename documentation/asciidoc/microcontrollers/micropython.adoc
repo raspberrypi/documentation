@@ -1,0 +1,6 @@
+
+include::micropython/what-is-micropython.adoc[]
+
+include::micropython/drag-and-drop.adoc[]
+
+NOTE: If you’re new to MicroPython, our official guide, "https://hsmag.cc/picobook[Get started with MicroPython on Raspberry Pi Pico]", is a great place to start. Learn the basics of MicroPython and physical computing, connect your Pico to displays and sensors, build alarms, reaction games, and more.
