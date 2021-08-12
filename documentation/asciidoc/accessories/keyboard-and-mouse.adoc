@@ -1,0 +1,5 @@
+include::keyboard-and-mouse/getting-started-keyboard.adoc[]
+
+include::keyboard-and-mouse/getting-started-mouse.adoc[]
+
+include::keyboard-and-mouse/connecting-things.adoc[]

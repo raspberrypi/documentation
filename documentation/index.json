@@ -100,7 +100,7 @@
                     "title": "Keyboard & Mouse",
                     "description": "We have our own keyboard and mouse",
                     "image": "full-sized/Keyboard-and-Mouse.png",
-                    "url": "https://datasheets.raspberrypi.org/keyboard-mouse/getting-started-with-keyboard-and-mouse.pdf"
+                    "subpath": "keyboard-and-mouse.adoc"
                 },
                 {
                     "title": "Sense HAT",
@@ -157,7 +157,7 @@
                     "subpath": "micropython.adoc"
                 },
                 {
-                    "title": "C/C++ SDK",
+                    "title": "The C/C++ SDK",
                     "description": "Getting started with the C/C++ SDK",
                     "image": "full-sized/C-and-CPP.png",
                     "subpath": "c_sdk.adoc"
