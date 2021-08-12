@@ -4,13 +4,13 @@ Our official keyboard includes three host USB ports for connecting external devi
 
 The product’s micro USB port is for connection to the Raspberry Pi. Via the USB hub built into the keyboard, the Raspberry Pi controls, and provides power to, the three USB Type A ports.
 
-image::images/back-of-keyboard.png[]
+image::images/back-of-keyboard.png[width="80%"]
 
 === Keyboard Features
 
 The Raspberry Pi keyboard has three lock keys: `Num Lock`, `Scroll Lock`, and `Caps Lock`. There are three LEDs in the top right-hand corner that indicate which locks are enabled.
 
-image::images/num-cap-scroll.png[]
+image::images/num-cap-scroll.png[width="80%"]
 
 `Num Lock`:: Allows use of the red number keys on the letter keys, effectively creating a numeric keypad. This mode is enabled and disabled by pressing the `Num Loc`k key.
 
