@@ -45,3 +45,8 @@ image::images/rp2040_explanation.svg[width=640]
 . Loosely which type of processor (M0+)
 . floor(log2(ram / 16k))
 . floor(log2(nonvolatile / 16k)) or 0 if no onboard nonvolatile storage
+
+=== Design Files
+
+* Download https://datasheets.raspberrypi.org/rp2040/Minimal-KiCAD.zip[Minmal Viable Board] Design Files (KiCAD)
+* Download https://datasheets.raspberrypi.org/rp2040/VGA-KiCAD.zip[VGA Carrier Board] Design Files (KiCAD)
