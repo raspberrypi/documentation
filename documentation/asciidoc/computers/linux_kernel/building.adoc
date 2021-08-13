@@ -71,7 +71,7 @@ KERNEL=kernel7
 make bcm2709_defconfig
 ----
 
-For Raspberry Pi 4 default build configuration
+For Raspberry Pi 4 default build configuration (32 bit)
 
 [,bash]
 ----
@@ -79,6 +79,13 @@ cd linux
 KERNEL=kernel7l
 make bcm2711_defconfig
 ----
+
+For Raspberry Pi 4 default build configuration (64 bit)
+[,bash]
+----
+cd linux
+KERNEL=kernel8
+make bcm2711_defconfig
 
 ===== Customising the Kernel version using `LOCALVERSION`
 
@@ -94,7 +101,7 @@ You can also change that setting graphically as shown in xref:linux_kernel.adoc#
 
 ==== Building the Kernel
 
-Build and install the kernel, modules, and Device Tree blobs; this step can take a *long* time depending on the Pi model in use:
+Build and install the kernel, modules, and Device Tree blobs; this step can take a *long* time depending on the Pi model in use, for the 32 bit kernel:
 
 [,bash]
 ----
@@ -104,6 +111,18 @@ sudo cp arch/arm/boot/dts/*.dtb /boot/
 sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
 sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
 sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
+----
+
+For the 64 bit kernel:
+
+[,bash]
+----
+make -j4 Image modules dtbs
+sudo make modules_install
+sudo cp arch/arm64/boot/dts/*.dtb /boot/
+sudo cp arch/arm64/boot/dts/overlays/*.dtb* /boot/overlays/
+sudo cp arch/arm64/boot/dts/overlays/README /boot/overlays/
+sudo cp arch/arm64/boot/zImage /boot/$KERNEL.img
 ----
 
 NOTE: On a Raspberry Pi 2/3/4, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
