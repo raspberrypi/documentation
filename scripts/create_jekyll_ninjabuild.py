@@ -100,18 +100,20 @@ if __name__ == "__main__":
         for page in sorted(doc_pages):
             if page in join_files:
                 for include in join_files[page]:
-                    scan_adoc(include, page)
                     dest = os.path.join('$out_dir', include)
                     source = os.path.join('$src_dir', include)
-                    all_doc_sources.append(source)
-                    ninja.build(dest, 'create_build_adoc_include', source, ['$SCRIPTS_DIR/create_build_adoc_include.py', '$SITE_CONFIG'])
-                    targets.append(dest)
+                    if source not in all_doc_sources:
+                        scan_adoc(include, page)
+                        all_doc_sources.append(source)
+                        ninja.build(dest, 'create_build_adoc_include', source, ['$SCRIPTS_DIR/create_build_adoc_include.py', '$SITE_CONFIG'])
+                        targets.append(dest)
 
             dest = os.path.join('$out_dir', page)
             source = os.path.join('$src_dir', page)
-            all_doc_sources.append(source)
-            ninja.build(dest, 'create_build_adoc', source, ['$SCRIPTS_DIR/create_build_adoc.py', '$DOCUMENTATION_INDEX', '$SITE_CONFIG'])
-            targets.append(dest)
+            if source not in all_doc_sources:
+                all_doc_sources.append(source)
+                ninja.build(dest, 'create_build_adoc', source, ['$SCRIPTS_DIR/create_build_adoc.py', '$DOCUMENTATION_INDEX', '$SITE_CONFIG'])
+                targets.append(dest)
         if targets:
             ninja.default(targets)
             targets = []
