@@ -20,7 +20,7 @@ https://www.adafruit.com/product/4888[ItsyBitsy 2040]:: A new chip means a new I
 
 image::images/arduino_nano.png[]
 
-Nano RP2040 Connect:: Meet the only connected RP2040 board, leveraging essential key features of the other Arduino Nanos — like the versatile u-blox NINA WiFi and Bluetooth module. The new board comes packed with some high-quality MEMS sensors from STM, an efficient power section, and a bunch of other innovations.
+https://store.arduino.cc/nano-rp2040-connect-with-headers[Nano RP2040 Connect]:: Meet the only connected RP2040 board, leveraging essential key features of the other Arduino Nanos — like the versatile u-blox NINA WiFi and Bluetooth module. The new board comes packed with some high-quality MEMS sensors from STM, an efficient power section, and a bunch of other innovations.
 
 === Boards from Pimoroni
 
