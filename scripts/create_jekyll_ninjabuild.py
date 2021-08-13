@@ -4,6 +4,7 @@ import os.path
 import sys
 import json
 import re
+import yaml
 
 import ninja_syntax
 
@@ -32,13 +33,21 @@ def scan_adoc(adoc_filename, apparent_filename):
 
 if __name__ == "__main__":
     index_json = sys.argv[1]
-    input_dir = sys.argv[2]
+    config_yaml = sys.argv[2]
+    input_dir = sys.argv[3]
     if not os.path.exists(input_dir):
         raise Exception("Error: {} doesn't exist".format(input_dir))
-    output_dir = sys.argv[3]
-    output_ninjabuild = sys.argv[4]
+    output_dir = sys.argv[4]
+    output_ninjabuild = sys.argv[5]
 
-    category_pages = set([('index.adoc', 'Raspberry Pi Documentation'), ('404.adoc', 'Raspberry Pi Documentation')])
+    # Read _config.yml
+    with open(config_yaml) as config_fh:
+        site_config = yaml.safe_load(config_fh)
+
+    category_pages = set([
+        ('index.adoc', site_config['title']),
+        ('404.adoc', site_config['title'])
+    ])
     doc_pages = set()
     page_images = set()
 
@@ -50,7 +59,7 @@ if __name__ == "__main__":
             assert ('path' in tab) == ('subitems' in tab)
             if 'path' in tab:
                 # category (boxes) page
-                category_pages.add((os.path.join(tab['path'], 'index.adoc'), 'Raspberry Pi Documentation - {}'.format(tab['title'])))
+                category_pages.add((os.path.join(tab['path'], 'index.adoc'), '{} - {}'.format(site_config['title'], tab['title'])))
                 # build_adoc
                 for subitem in tab['subitems']:
                     if 'subpath' in subitem:
@@ -92,11 +101,16 @@ if __name__ == "__main__":
             if page in join_files:
                 for include in join_files[page]:
                     scan_adoc(include, page)
+                    dest = os.path.join('$out_dir', include)
+                    source = os.path.join('$src_dir', include)
+                    all_doc_sources.append(source)
+                    ninja.build(dest, 'create_build_adoc_include', source, ['$SCRIPTS_DIR/create_build_adoc_include.py', '$SITE_CONFIG'])
+                    targets.append(dest)
 
             dest = os.path.join('$out_dir', page)
             source = os.path.join('$src_dir', page)
             all_doc_sources.append(source)
-            ninja.build(dest, 'create_build_adoc', source, ['$SCRIPTS_DIR/create_build_adoc.py', '$DOCUMENTATION_INDEX'])
+            ninja.build(dest, 'create_build_adoc', source, ['$SCRIPTS_DIR/create_build_adoc.py', '$DOCUMENTATION_INDEX', '$SITE_CONFIG'])
             targets.append(dest)
         if targets:
             ninja.default(targets)

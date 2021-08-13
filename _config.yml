@@ -20,6 +20,7 @@ baseurl: "/documentation" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 githuburl: "https://github.com/raspberrypi/documentation/"
 githubbranch: master
+githubbranch_edit: develop
 
 # Build settings
 theme: minima

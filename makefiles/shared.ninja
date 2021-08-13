@@ -17,4 +17,7 @@ rule create_search
   command = $SCRIPTS_DIR/create_search.py $DOCUMENTATION_INDEX $src_dir $out
 
 rule create_build_adoc
-  command = $SCRIPTS_DIR/create_build_adoc.py $DOCUMENTATION_INDEX $src_dir $in $out
+  command = $SCRIPTS_DIR/create_build_adoc.py $DOCUMENTATION_INDEX $SITE_CONFIG $in $out_dir $out
+
+rule create_build_adoc_include
+  command = $SCRIPTS_DIR/create_build_adoc_include.py $SITE_CONFIG $in $out
