@@ -1,5 +1,7 @@
 == RP2040-based Boards
 
+An incomplete list of boards using RP2040.
+
 === Boards from Raspberry Pi
 
 image::images/pico.jpg[]
