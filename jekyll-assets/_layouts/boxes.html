@@ -7,8 +7,13 @@
   <body>
     {% include fonts.html %} 
     {% include header.html %}      
-    {% include toptitle.html %}
-    {% include subtitle.html %}
+    {% if page.name == "404.adoc" %}
+      {% include toptitle404.html %}
+      {% include subtitle404.html %}
+    {% else %}
+      {% include toptitle.html %}
+      {% include subtitle.html %}
+    {% endif %}
     {% include tabs.html %}
 
     <div id="container">
