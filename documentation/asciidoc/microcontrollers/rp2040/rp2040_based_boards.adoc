@@ -24,7 +24,7 @@ Nano RP2040 Connect:: Meet the only connected RP2040 board, leveraging essential
 
 === Boards from Pimoroni
 
-image::images/pga2040.png[]
+image::images/pga2040.jpg[]
 
 https://shop.pimoroni.com/products/pga2040[PGA2040]:: A minimal RP2040 breakout board wrangled into a Pin Grid Array, with a maximal dash of retraux style. PGA2040 has no USB port, LED or buttons but it does have an embed-friendly 21mm square footprint, 8MB of flash and lots of exposed RP2040 pins to play with.
 
