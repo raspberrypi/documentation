@@ -8,11 +8,11 @@ image::images/back-of-keyboard.png[width="80%"]
 
 === Keyboard Features
 
-The Raspberry Pi keyboard has three lock keys: `Num Lock`, `Scroll Lock`, and `Caps Lock`. There are three LEDs in the top right-hand corner that indicate which locks are enabled.
+The Raspberry Pi keyboard has three lock keys: `Num Lock`, `Caps Lock`, and `Scroll Lock`. There are three LEDs in the top right-hand corner that indicate which locks are enabled.
 
 image::images/num-cap-scroll.png[width="80%"]
 
-`Num Lock`:: Allows use of the red number keys on the letter keys, effectively creating a numeric keypad. This mode is enabled and disabled by pressing the `Num Loc`k key.
+`Num Lock`:: Allows use of the red number keys on the letter keys, effectively creating a numeric keypad. This mode is enabled and disabled by pressing the `Num Lock` key.
 
 `Caps Lock`:: Allows typing capital letters; press the `Shift` key to type lower-case letters in this mode. This mode is enabled and disabled by pressing the `Caps Lock` key.
 

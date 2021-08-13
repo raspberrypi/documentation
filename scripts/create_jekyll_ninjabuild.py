@@ -38,7 +38,7 @@ if __name__ == "__main__":
     output_dir = sys.argv[3]
     output_ninjabuild = sys.argv[4]
 
-    category_pages = set([('index.adoc', 'Raspberry Pi Documentation')])
+    category_pages = set([('index.adoc', 'Raspberry Pi Documentation'), ('404.adoc', 'Raspberry Pi Documentation')])
     doc_pages = set()
     page_images = set()
 

@@ -409,10 +409,11 @@ div.videoblock iframe {
 }
 
 div.legal {
-  margin: 80px 10% 0 10%;
-  max-width: 1300px;
+  margin: 80px auto 0 auto;
+  max-width: 1200px;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 
