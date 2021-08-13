@@ -47,6 +47,18 @@ div.toptitle {
   padding-bottom: 30px;
 }
 
+div.toptitle.error-message h1 {
+  font-size: 3.5em;
+}
+
+div.subtitle.error-message p {
+  max-width: 400px;
+}
+
+div.subtitle.error-message p a {
+  color: #fff;
+}
+
 #container {
   justify-content: center;
 }
