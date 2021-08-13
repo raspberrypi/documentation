@@ -18,7 +18,7 @@ def scan_adoc(adoc_filename, apparent_filename):
         # look for includes
         includes = set()
         joinee_dir = os.path.dirname(adoc_filename)
-        for include in re.findall(r'include::(.+?)\[\]\n', contents):
+        for include in re.findall(r'(?:^|\n)include::(.+?)\[\](?:\n|$)', contents):
             includes.add(os.path.join(joinee_dir, include))
         if includes:
             join_files[adoc_filename] = includes
