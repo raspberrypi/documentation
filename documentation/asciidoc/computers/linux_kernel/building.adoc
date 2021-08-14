@@ -86,6 +86,7 @@ For Raspberry Pi 4 default build configuration (64 bit)
 cd linux
 KERNEL=kernel8
 make bcm2711_defconfig
+----
 
 ===== Customising the Kernel version using `LOCALVERSION`
 
@@ -101,7 +102,7 @@ You can also change that setting graphically as shown in xref:linux_kernel.adoc#
 
 ==== Building the Kernel
 
-Build and install the kernel, modules, and Device Tree blobs; this step can take a *long* time depending on the Pi model in use, for the 32 bit kernel:
+Build and install the kernel, modules, and Device Tree blobs; this step can take a *long* time depending on the Pi model in use.  For the 32-bit kernel:
 
 [,bash]
 ----
@@ -113,7 +114,7 @@ sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
 sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 ----
 
-For the 64 bit kernel:
+For the 64-bit kernel:
 
 [,bash]
 ----
