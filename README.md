@@ -105,3 +105,7 @@ To build without an active internet connection, run
 $ OFFLINE_MODE=1 make
 ```
 which will copy the `fonts.html` and `header.html` files from `offline_includes` (instead of downloading them from esi.raspberrypi.org).
+
+## License
+
+The Raspberry Pi documentation is [licensed](https://github.com/raspberrypi/documentation/blob/develop/LICENSE.md) under a Creative Commons Attribution 4.0 International Licence.
