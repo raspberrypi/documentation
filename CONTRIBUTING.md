@@ -12,7 +12,7 @@ In order to contribute new or updated documentation, you must first create a Git
 
 We welcome contributions from the community, ranging from correcting small typos all the way through to adding entire new sections to the documentation. However going forward we're going to be fairly targetted about what sort of content we add to the documentation. We are looking to keep the repository, and the documentation, focussed on Raspberry Pi-specific things, rather than having generic Linux or computing content.
 
-**NOTE:** We are willing to consider toolchain-related contributions, but changes to the toolchain may have knock-on affects in other places so it is possible that apparently benign pull requests that make toolchain changes could be refused for fairly opaque reasons. 
+**NOTE:** We are willing to consider toolchain-related contributions, but changes to the toolchain may have knock-on effects in other places so it is possible that apparently benign pull requests that make toolchain changes could be refused for fairly opaque reasons. 
 
 ## Third-Party Services
 
