@@ -71,7 +71,7 @@ KERNEL=kernel7
 make bcm2709_defconfig
 ----
 
-For Raspberry Pi 4 default build configuration
+For Raspberry Pi 4 default build configuration (32 bit)
 
 [,bash]
 ----
@@ -80,7 +80,15 @@ KERNEL=kernel7l
 make bcm2711_defconfig
 ----
 
-===== Customising the Kernel version using `LOCALVERSION`
+For Raspberry Pi 4 default build configuration (64 bit)
+[,bash]
+----
+cd linux
+KERNEL=kernel8
+make bcm2711_defconfig
+----
+
+===== Customising the Kernel Version Using `LOCALVERSION`
 
 In addition to your kernel configuration changes, you may wish to adjust the `LOCALVERSION` to ensure your new kernel does not receive the same version string as the upstream kernel. This both clarifies you are running your own kernel in the output of `uname` and ensures existing modules in `/lib/modules` are not overwritten.
 
@@ -94,7 +102,7 @@ You can also change that setting graphically as shown in xref:linux_kernel.adoc#
 
 ==== Building the Kernel
 
-Build and install the kernel, modules, and Device Tree blobs; this step can take a *long* time depending on the Pi model in use:
+Build and install the kernel, modules, and Device Tree blobs; this step can take a *long* time depending on the Pi model in use.  For the 32-bit kernel:
 
 [,bash]
 ----
@@ -106,6 +114,18 @@ sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
 sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 ----
 
+For the 64-bit kernel:
+
+[,bash]
+----
+make -j4 Image modules dtbs
+sudo make modules_install
+sudo cp arch/arm64/boot/dts/*.dtb /boot/
+sudo cp arch/arm64/boot/dts/overlays/*.dtb* /boot/overlays/
+sudo cp arch/arm64/boot/dts/overlays/README /boot/overlays/
+sudo cp arch/arm64/boot/zImage /boot/$KERNEL.img
+----
+
 NOTE: On a Raspberry Pi 2/3/4, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
 
 === Cross-Compiling the Kernel
@@ -115,7 +135,7 @@ also a Debian distribution, it means many aspects are similar, such as the comma
 
 You can either do this using VirtualBox (or VMWare) on Windows, or install it directly onto your computer. For reference, you can follow instructions online http://www.wikihow.com/Install-Ubuntu-on-VirtualBox[at Wikihow].
 
-==== Install required dependencies and toolchain
+==== Install Required Dependencies and Toolchain
 
 To build the sources for cross-compilation, make sure you have the dependencies needed on your machine by executing:
 
@@ -126,21 +146,21 @@ sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
 
 If you find you need other things, please submit a pull request to change the documentation.
 
-===== Install the 32-bit toolchain for a 32-bit kernel
+===== Install the 32-bit Toolchain for a 32-bit Kernel
 
 [,bash]
 ----
 sudo apt install crossbuild-essential-armhf
 ----
 
-===== Or, install the 64-bit toolchain for a 64-bit kernel
+===== Install the 64-bit Toolchain for a 64-bit Kernel
 
 [,bash]
 ----
 sudo apt install crossbuild-essential-arm64
 ----
 
-==== Get sources
+==== Get the Kernel Sources
 
 To download the minimal source tree for the current branch, run:
 
@@ -155,7 +175,7 @@ See <<choosing_sources,*Choosing sources*>> above for instructions on how to cho
 
 Enter the following commands to build the sources and Device Tree files:
 
-===== 32-bit configs
+===== 32-bit Configs
 
 For Pi 1, Pi Zero, Pi Zero W, or Compute Module:
 
@@ -184,7 +204,7 @@ KERNEL=kernel7l
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
 ----
 
-===== 64-bit configs
+===== 64-bit Configs
 
 For Pi 3, Pi 3+ or Compute Module 3:
 
@@ -204,18 +224,18 @@ KERNEL=kernel8
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2711_defconfig
 ----
 
-===== Build with configs
+===== Build with Configs
 
 NOTE: To speed up compilation on multiprocessor systems, and get some improvement on single processor ones, use `-j n`, where n is the number of processors * 1.5. Alternatively, feel free to experiment and see what works!
 
-====== For all 32-bit builds
+====== For all 32-bit Builds
 
 [,bash]
 ----
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
 ----
 
-====== For all 64-bit builds
+====== For all 64-bit Builds
 
 NOTE: Note the difference between Image target between 32 and 64-bit.
 
@@ -224,7 +244,7 @@ NOTE: Note the difference between Image target between 32 and 64-bit.
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- Image modules dtbs
 ----
 
-==== Install directly onto the SD card
+==== Install Directly onto the SD Card
 
 Having built the kernel, you need to copy it onto your Raspberry Pi and install the modules; this is best done directly using an SD card reader.
 
