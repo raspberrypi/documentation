@@ -9,14 +9,12 @@ import yaml
 if __name__ == "__main__":
     index_json = sys.argv[1]
     config_yaml = sys.argv[2]
-    src_adoc = sys.argv[3]
-    build_dir = sys.argv[4]
-    build_adoc = sys.argv[5]
+    github_edit = sys.argv[3]
+    src_adoc = sys.argv[4]
+    build_dir = sys.argv[5]
+    build_adoc = sys.argv[6]
     output_subdir = os.path.basename(os.path.dirname(build_adoc))
     adoc_filename = os.path.basename(build_adoc)
-
-    with open(config_yaml) as config_fh:
-        site_config = yaml.safe_load(config_fh)
 
     index_title = None
     with open(index_json) as json_fh:
@@ -32,6 +30,16 @@ if __name__ == "__main__":
     if index_title is None:
         raise Exception("Couldn't find title for {} in {}".format(os.path.join(output_subdir, adoc_filename), index_json))
 
+    with open(config_yaml) as config_fh:
+        site_config = yaml.safe_load(config_fh)
+
+    with open(github_edit) as edit_fh:
+        edit_template = edit_fh.read()
+        template_vars = {
+            'github_edit_link': os.path.join(site_config['githuburl'], 'blob', site_config['githubbranch_edit'], src_adoc)
+        }
+        edit_text = re.sub('{{\s*(\w+)\s*}}', lambda m: template_vars[m.group(1)], edit_template)
+
     new_contents = ''
     seen_header = False
     with open(src_adoc) as in_fh:
@@ -39,7 +47,7 @@ if __name__ == "__main__":
             if line.startswith('== '):
                 if not seen_header:
                     seen_header = True
-                    line += "Edit this {}[on GitHub]\n\n".format(os.path.join(site_config['githuburl'], 'blob', site_config['githubbranch_edit'], src_adoc))
+                    line += edit_text + "\n\n"
             else:
                 m = re.match('^(include::)(.+)(\[\]\n?)$', line)
                 if m:

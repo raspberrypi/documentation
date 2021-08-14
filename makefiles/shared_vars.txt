@@ -5,6 +5,7 @@
 ASCIIDOC_DIR = documentation/asciidoc
 DOCUMENTATION_INDEX = documentation/index.json
 SITE_CONFIG = _config.yml
+GITHUB_EDIT_TEMPLATE = jekyll-assets/_includes/github_edit.adoc
 HTACCESS_EXTRA = documentation/htaccess_extra.txt
 DOCUMENTATION_IMAGES_DIR = documentation/images
 DOCUMENTATION_REDIRECTS_DIR = documentation/redirects
