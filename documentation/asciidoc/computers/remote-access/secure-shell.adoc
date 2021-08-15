@@ -1,4 +1,3 @@
-[[ssh]]
 == Setting up a SSH Server
 
 You can access the command line of a Raspberry Pi remotely from another computer or device on the same network using Secure Shell (SSH).
