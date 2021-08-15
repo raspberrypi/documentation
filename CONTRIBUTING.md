@@ -2,7 +2,7 @@
 
 The Raspberry Pi Documentation website is built from Asciidoc source using a Jekyll and Python toolchain. The website is automatically deployed to the raspberrypi.org site — pushed to production — using GitHub Actions when a push to the `master` branch occurs.
 
-Full instructions for building and running the documentation website locally can be found in the top-level [README.md](https://github.com/raspberrypi/documentation/blob/develop/README.md) file.
+Full instructions for building and running the documentation website locally can be found in the top-level [README.md](README.md) file.
 
 In order to contribute new or updated documentation, you must first create a GitHub account and fork the original repository to your own account. You can make changes, save them in your repository, then [make a pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) against this repository. The pull request will appear [in the repository](https://github.com/raspberrypi/documentation/pulls) where it can be assessed by the maintainers, copy edited, and if appropriate, merged with the official repository.
 
