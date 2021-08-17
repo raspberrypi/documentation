@@ -331,9 +331,9 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 
 ^2^ Warranty bit is never set on Pi4.
 
-=== New-style revision Codes In Use
+=== New-style Revision Codes in Use
 
-This list is not exhaustive, there may be codes in use in the field that are not in this table.
+This list is not exhaustive: there may be codes in use in the field that are not in this table.
 
 |===
 | Code | Model | Revision | RAM | Manufacturer
