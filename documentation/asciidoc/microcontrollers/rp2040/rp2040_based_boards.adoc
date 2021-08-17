@@ -60,3 +60,6 @@ image::images/micromod.jpg[]
 
 https://www.sparkfun.com/products/17720[MicroMod RP2040 Processor]:: The SparkFun MicroMod Pi RP2040 Processor Board is part of SparkFun’s MicroMod modular interface system. The MicroMod M.2 connector makes it a breeze to connect your MicroMod Pi RP2040 Processor with the MicroMod carrier board that gives you the inputs and outputs you need for your project.
 
+=== Other Boards
+
+Discussions around other RP2040-based boards can be found on the https://www.raspberrypi.org/forums/viewforum.php?f=147[forums].
