@@ -263,7 +263,7 @@ ul#tocify-header1 > ul.tocify-subheader {
   font-size: 30px;
   color: #343434;
   margin-top: 40px;
-  margin-bottom: 2px;
+  margin-bottom: 15px;
   position: relative;
   margin-left: -1rem;
   padding-left: 1rem;
@@ -359,7 +359,7 @@ h6 .anchor::before {
 #content div.edit-link {
   font-size: 0.8em;
   font-style: italic;
-  margin-top: 3px;
+  margin-top: -12px;
   margin-bottom: 30px;
 }
 
