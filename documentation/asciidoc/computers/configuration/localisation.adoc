@@ -4,11 +4,11 @@ You can set your Raspberry Pi up to match your regional settings.
 
 === Changing the Language
 
-If you've installed Raspberry Pi OS using NOOBS, it should automatically pick up the same language you were using within NOOBS. But if you want to select a different language, or if you've installed Raspberry Pi OS from a standalone image, use xref:configuration.adoc#change-locale[raspi-config].
+If you want to select a different language use xref:configuration.adoc#change-locale[raspi-config].
 
 === Configuring the Keyboard
 
-If you've installed Raspberry Pi OS using NOOBS, it should automatically pick up the same keyboard you were using in NOOBS. But if you want to select a different keyboard, or if you've installed Raspberry Pi OS from a standalone image, use xref:configuration.adoc#change-keyboard-layout[raspi-config].
+If you want to select a different keyboard use xref:configuration.adoc#change-keyboard-layout[raspi-config].
 
 === Changing the Timezone
 
