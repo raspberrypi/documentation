@@ -7,7 +7,7 @@ Each distinct Raspberry Pi model revision has a unique revision code. You can lo
 cat /proc/cpuinfo
 ----
 
-The last three lines show the hardware type, the revision code, and the Pi's unique serial number. For example:
+The last three lines show the hardware type, the revision code, and the Raspberry Pi's unique serial number. For example:
 
 ----
 Hardware    : BCM2835
@@ -15,7 +15,7 @@ Revision    : a02082
 Serial      : 00000000765fc593
 ----
 
-NOTE: As of the 4.9 kernel, all Pis report `BCM2835`, even those with BCM2836, BCM2837 and BCM2711 processors. You should not use this string to detect the processor. Decode the revision code using the information below, or `cat /sys/firmware/devicetree/base/model`.
+NOTE: As of the 4.9 kernel, all Raspberry Pis report `BCM2835`, even those with BCM2836, BCM2837 and BCM2711 processors. You should not use this string to detect the processor. Decode the revision code using the information below, or `cat /sys/firmware/devicetree/base/model`.
 
 === Old-style Revision Codes
 
@@ -329,11 +329,11 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 
 ^1^ Information on xref:raspberry-pi.adoc#otp-register-and-bit-definitions[programming the OTP bits].
 
-^2^ Warranty bit is never set on Pi 4.
+^2^ Warranty bit is never set on Raspberry Pi 4.
 
 === New-style Revision Codes in Use
 
-This list is not exhaustive: there may be codes in use in the field that are not in this table.
+This list is not exhaustive: there may be codes in use that are not in this table.
 
 |===
 | Code | Model | Revision | RAM | Manufacturer
