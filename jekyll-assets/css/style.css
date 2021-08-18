@@ -260,7 +260,7 @@ ul#tocify-header1 > ul.tocify-subheader {
   font-size: 30px;
   color: #343434;
   margin-top: 40px;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
 }
 
 #content h3 {
@@ -289,6 +289,13 @@ ul#tocify-header1 > ul.tocify-subheader {
   font-weight: 300;
   line-height: 1.5em;
   margin-bottom: 15px;
+}
+
+#content div.edit-link {
+  font-size: 0.8em;
+  font-style: italic;
+  margin-top: 3px;
+  margin-bottom: 30px;
 }
 
 #content div.imageblock {
