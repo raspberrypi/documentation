@@ -333,7 +333,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 
 === New-style Revision Codes in Use
 
-This list is not exhaustive: there may be codes in use that are not in this table.
+NOTE: This list is not exhaustive - there may be codes in use that are not in this table.
 
 |===
 | Code | Model | Revision | RAM | Manufacturer
