@@ -6,10 +6,7 @@ NOTE: Before you start, don't forget to check xref:getting-started.adoc#sd-cards
 
 === Using Raspberry Pi Imager
 
-[IMPORTANT]
-======
-NOOBS, or "New Out Of the Box Software" to give it its full name, was an SD Card-based installer for Raspberry Pi OS. It is now deprecated, and the recommended route to install Raspberry Pi OS is by using the https://www.raspberrypi.org/downloads/[Raspberry Pi Imager].
-======
+IMPORTANT: NOOBS, or "New Out Of the Box Software" to give it its full name, was an SD Card-based installer for Raspberry Pi OS. It is now deprecated, and the recommended route to install Raspberry Pi OS is by using the https://www.raspberrypi.org/downloads/[Raspberry Pi Imager].
 
 Raspberry Pi have developed a graphical SD card writing tool that works on Mac OS, Ubuntu 18.04, and Windows. The https://www.raspberrypi.org/downloads/[Raspberry Pi Imager] is the easiest option for most users as it will download the image and install it automatically to the SD card.
 
