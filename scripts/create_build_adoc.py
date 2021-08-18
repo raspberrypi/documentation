@@ -32,6 +32,7 @@ if __name__ == "__main__":
 :includedir: {}
 :doctitle: {}
 :page-sub_title: {}
+:sectanchors:
 
 include::{{includedir}}/{{parentdir}}/{}[]
 """.format(output_path, src_dir, 'Raspberry Pi Documentation - {}'.format(index_title), index_title, adoc_filename))
