@@ -253,6 +253,9 @@ ul#tocify-header1 > ul.tocify-subheader {
   font-size: 30px;
   color: var(--pink);
   margin-bottom: 60px;
+  position: relative;
+  margin-left: -1rem;
+  padding-left: 1rem;
 }
 
 #content h2 {
@@ -261,6 +264,9 @@ ul#tocify-header1 > ul.tocify-subheader {
   color: #343434;
   margin-top: 40px;
   margin-bottom: 0px;
+  position: relative;
+  margin-left: -1rem;
+  padding-left: 1rem;
 }
 
 #content h3 {
@@ -269,6 +275,9 @@ ul#tocify-header1 > ul.tocify-subheader {
   color: #343434;
   margin-top: 40px;
   margin-bottom: 15px;
+  position: relative;
+  margin-left: -1rem;
+  padding-left: 1rem;
 }
 
 #content h4 {
@@ -277,11 +286,67 @@ ul#tocify-header1 > ul.tocify-subheader {
   color: #343434;
   margin-top: 40px;
   margin-bottom: 15px;
+  position: relative;
+  margin-left: -1rem;
+  padding-left: 1rem;
 }
 
-#content h4 {
-  margin-top: 40px;
-  margin-bottom: 15px;
+#content h5, 
+#content h6 {
+  position: relative;
+  margin-left: -1rem;
+  padding-left: 1rem;
+}
+
+h1 .anchor, 
+h2 .anchor, 
+h3 .anchor, 
+h4 .anchor, 
+h5 .anchor, 
+h6 .anchor {
+  position: absolute;
+  top: 0px;
+  text-decoration: none;
+  width: 1.75ex;
+  margin-left: -1.5ex;
+  visibility: hidden;
+  font-size: .8em;
+  font-weight: 400;
+  padding-top: .05em;
+}
+
+h1 .anchor, 
+h2 .anchor {
+  top: -5px;
+}
+
+h3 .anchor {
+  top: -3px;
+}
+
+h4 .anchor, 
+h5 .anchor, 
+h6 .anchor {
+  top: -2px;
+}
+
+h1:hover .anchor, 
+h2:hover .anchor, 
+h3:hover .anchor, 
+h4:hover .anchor, 
+h5:hover .anchor, 
+h6:hover .anchor {
+  color: var(--pink);
+  visibility: visible;
+}
+
+h1 .anchor::before, 
+h2 .anchor::before, 
+h3 .anchor::before, 
+h4 .anchor::before, 
+h5 .anchor::before, 
+h6 .anchor::before {
+  content: "\00a7";
 }
 
 #content p {

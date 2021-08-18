@@ -60,6 +60,7 @@ if __name__ == "__main__":
 :includedir: {}
 :doctitle: {}
 :page-sub_title: {}
+:sectanchors:
 
 {}
 """.format(output_subdir, build_dir, '{} - {}'.format(site_config['title'], index_title), index_title, new_contents))
