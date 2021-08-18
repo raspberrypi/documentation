@@ -258,7 +258,7 @@ sdb
 
 with `sdb1` being the FAT (boot) partition, and `sdb2` being the `ext4` filesystem (root) partition.
 
-Mount these first, adjusting the partition numbers as necessary:
+Mount these first, adjusting the partition letter as necessary:
 
 [,bash]
 ----
@@ -268,6 +268,8 @@ mkdir mnt/ext4
 sudo mount /dev/sdb1 mnt/fat32
 sudo mount /dev/sdb2 mnt/ext4
 ----
+
+NOTE: You should adjust the drive letter appropriately for your setup, e.g. if your SD card appears as `/dev/sdc` instead of `/dev/sdb`.
 
 Next, install the kernel modules onto the SD card:
 
