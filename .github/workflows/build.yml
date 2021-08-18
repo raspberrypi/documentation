@@ -10,6 +10,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Only allow pull requests based on master from the develop branch
+        if: ${{ github.base_ref == 'master' && github.ref != 'refs/heads/develop' }}
+        run: |
+          echo "Pull requests based on master can only come from the develop branch"
+          echo "Please check your base branch as it should be develop by default"
+          exit 1
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
