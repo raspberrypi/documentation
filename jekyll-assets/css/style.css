@@ -361,6 +361,7 @@ h6 .anchor::before {
   font-style: italic;
   margin-top: -12px;
   margin-bottom: 20px;
+  margin-left: 5px;
 }
 
 #content div.imageblock {
