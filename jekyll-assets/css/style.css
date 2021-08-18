@@ -250,9 +250,9 @@ ul#tocify-header1 > ul.tocify-subheader {
 
 #content h1 {
   font-weight: 700;
-  font-size: 30px;
+  font-size: 34px;
   color: var(--pink);
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   position: relative;
   margin-left: -1rem;
   padding-left: 1rem;
@@ -263,7 +263,7 @@ ul#tocify-header1 > ul.tocify-subheader {
   font-size: 30px;
   color: #343434;
   margin-top: 40px;
-  margin-bottom: 0px;
+  margin-bottom: 2px;
   position: relative;
   margin-left: -1rem;
   padding-left: 1rem;

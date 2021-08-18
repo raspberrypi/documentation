@@ -122,8 +122,6 @@ You are now done.
 
 == EEPROM Data
 
-NOTE: These steps may not work on Raspberry Pi 2 Model B Rev 1.0 and Raspberry Pi 3 Model B boards. The firmware will take control of I2C0, causing the ID pins to be configured as inputs.
-
 . Enable I2C0 and I2C1 by adding the following line to `/boot/config.txt`:
 +
 ----
@@ -147,6 +145,8 @@ NOTE: These steps may not work on Raspberry Pi 2 Model B Rev 1.0 and Raspberry P
  make
 ----
 
+NOTE: These steps may not work on Raspberry Pi 2 Model B Rev 1.0 and Raspberry Pi 3 Model B boards. The firmware will take control of I2C0, causing the ID pins to be configured as inputs.
+
 === Reading
 
 . EEPROM data can be read with the following command:
@@ -157,8 +157,6 @@ NOTE: These steps may not work on Raspberry Pi 2 Model B Rev 1.0 and Raspberry P
 ----
 
 === Writing
-
-WARNING: Please note that this operation is potentially dangerous, and is not needed for the everyday user. The steps below are provided for debugging purposes only. If an error occurs, the HAT may no longer be automatically detected.
 
 . Download EEPROM settings and build the `.eep` binary:
 +
@@ -188,3 +186,5 @@ WARNING: Please note that this operation is potentially dangerous, and is not ne
 ----
  i2cset -y -f 1 0x46 0xf3 0
 ----
+
+WARNING: Please note that this operation is potentially dangerous, and is not needed for the everyday user. The steps above are provided for debugging purposes only. If an error occurs, the HAT may no longer be automatically detected.
