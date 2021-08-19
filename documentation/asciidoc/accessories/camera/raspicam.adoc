@@ -2,6 +2,34 @@
 
 `raspistill`, `raspivid` and `raspiyuv` are command line tools for using the camera module.
 
+=== Enabling the Camera
+
+Before using any of the _Raspicam_ applications, the camera must be enabled.
+
+==== On the desktop
+
+Select `Preferences` and `Raspberry Pi Configuration` from the desktop menu: a window will appear. Select the `Interfaces` tab, then click on the `enable camera` option. Click `OK`. You will need to reboot for the changes to take effect.
+
+==== With the command line
+
+Open the `raspi-config` tool from the terminal:
+
+[,bash]
+----
+sudo raspi-config
+----
+
+Select `Interfacing Options` then `Camera` and press `Enter`. Choose `Yes` then `Ok`. Go to `Finish` and you'll be prompted to reboot.
+
+To test that the system is installed and working, try the following command:
+
+[,bash]
+----
+raspistill -v -o test.jpg
+----
+
+The display should show a five-second preview from the camera and then take a picture, saved to the file `test.jpg`, whilst displaying various informational messages.
+
 === `raspistill`
 
 `raspistill` is the command line tool for capturing still photographs with a Raspberry Pi camera module.
@@ -1332,3 +1360,44 @@ The applications described here will return a standard error code to the shell o
 | Application terminated by Ctrl-C
 |===
 
+=== Long Exposures
+
+The maximum exposure times of the three official Raspberry Pi cameras can be found in xref:camera.adoc#maximum-exposure-times[this table].
+
+Due to the way the ISP works, by default asking for a long exposure can result in the capture process taking up to 7 times the exposure time, so a 200 second exposure on the HQ camera could take 1400 seconds to actually return an image. This is due to the way the camera system works out the correct exposures and gains to use in the image, using it's AGC (automatic gain control) and AWB (automatic white balance) algorithms. The system needs a few frames to calculate these numbers in order to produce a decent image. When combined with frame discards at the start of processing (in case they are corrupt), and the switching between preview and captures modes, this can result in up to 7 frames needed to produce a final image. With long exposures, that can take a long time.
+
+Fortunately, the camera parameters can be altered to reduce frame time dramatically; however this means turning off the automatic algorithms and manually providing values for the AGC.
+
+The AWB gains can usually be omitted as the legacy stack is able to reprocess the camera data to work them out (the `-st` option), though it is fine to specify them as well. Additionally, burst mode (`-bm`) with a short timeout should be requested to suppress the initial preview phase, and the exposure mode also needs disabling (`-ex off`).
+
+The following example will perform a 100 second exposure capture
+
+`raspistill -t 10 -bm -ex off -ag 1 -ss 100000000 -st -o long_exposure.jpg`
+
+=== Shooting RAW using the Camera Modules
+
+The definition of raw images can vary. The usual meaning is raw Bayer data directly from the sensor, although some may regard an uncompressed image that has passed through the ISP (and has therefore been processed) as raw. For the latter, we recommend using the term _unencoded_ so as to be clear about the difference.
+
+Both options are available from the Raspberry Pi cameras.
+
+==== Processed, Non-Lossy Images
+
+The usual output from `raspistill` is a compressed JPEG file that has passed through all the stages of image processing to produce a high-quality image. However, JPEG, being a lossy format does throw away some information that the user may want.
+
+`raspistill` has an `encoding` option that allows you to specify the output format: either `jpg`, `bmp`, `png` or `gif`. All but `jpg` are lossless, so no data is thrown away in an effort to improve compression, but do require conversion from the original YUV, and because these formats do not have hardware support they produce images slightly more slowly than JPEG.
+
+e.g.
+
+`raspistill --encoding png -o fred.png`
+
+Another option is to output completely formatted YUV420 or RGB data using the xref:camera.adoc#raspiyuv[`raspiyuv`] application.
+
+==== Unprocessed Images
+
+For some applications, such as astrophotography, having the raw Bayer data direct from the sensor can be useful. This data will need to be post-processed to produce a useful image.
+
+`raspistill` has a raw option that will cause the Bayer data to be output.
+
+`raspistill --raw -o fred.jpg`
+
+The raw data is appended to the end of the JPEG file and will https://www.raspberrypi.org/blog/processing-raw-image-files-from-a-raspberry-pi-high-quality-camera/[need to be extracted].

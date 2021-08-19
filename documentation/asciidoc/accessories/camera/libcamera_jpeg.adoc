@@ -1,0 +1,48 @@
+=== `libcamera-jpeg`
+
+`libcamera-jpeg` is a simple still image capture application. It deliberately avoids some of the additional features of `libcamera-still` which attempts to emulate `raspistill` more fully. As such the code is significantly easier to understand, and in practice still provides many of the same features.
+
+To capture a full resolution JPEG image use
+
+[,bash]
+----
+libcamera-jpeg -o test.jpg
+----
+which will display a preview for about 5 seconds, and then capture a full resolution JPEG image to the file `test.jpg`. 
+
+The `-t <duration>` option can be used to alter the length of time the preview shows, and the `--width` and `--height` options will change the resolution of the captured still image. For example
+
+[,bash]
+----
+libcamera-jpeg -o test.jpg -t 2000 --width 640 --height 480
+----
+will capture a VGA sized image.
+
+==== Exposure Control
+
+All the `libcamera-apps` allow the user to run the camera with fixed shutter speed and gain. For example
+
+[,bash]
+----
+libcamera-jpeg -o test.jpg -t 2000 --shutter 20000 --gain 1.5
+----
+would capture an image with an exposure of 20ms and a gain of 1.5x. Note that the gain will be applied as _analogue gain_ within the sensor up until it reaches the maximum analogue gain permitted by the kernel sensor driver, after which the remainder will be applied as digital gain.
+
+Raspberry Pi's AEC/AGC algorithm allows applications to specify _exposure compensation_, that is, the ability to make images darker or brighter by a given number of _stops_, as follows
+
+[,bash]
+----
+libcamera-jpeg --ev -0.5 -o darker.jpg
+libcamera-jpeg --ev 0 -o normal.jpg
+libcamera-jpeg --ev 0.5 -o brighter.jpg
+----
+
+===== Further remarks on Digital Gain
+
+Digital gain is applied by the ISP (the Image Signal Processor), not by the sensor. The digital gain will always be very close to 1.0 unless:
+
+* The total gain requested (either by the `--gain` option, or by the exposure profile in the camera tuning) exceeds that which can be applied as analogue gain within the sensor. Only the extra gain required will be applied as digital gain.
+
+* One of the colour gains is less than 1 (note that colour gains are applied as digital gain too). In this case the advertised digital gain will settle to 1 / min(red_gain, blue_gain). This actually means that one of the colour channels - just not the green one - is having unity digital gain applied to it.
+
+* The AEC/AGC is changing. When the AEC/AGC is moving the digital gain will typically vary to some extent to try and smooth out any fluctuations, but it will quickly settle back to its "normal" value.
