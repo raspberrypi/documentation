@@ -1,27 +1,43 @@
 == Shooting RAW using the Camera Modules
 
-The definition of raw images can vary. The usual meaning is raw Bayer data directly from the sensor, although some may regard an uncompressed image that has passed through the ISP (and has therefore been processed) as raw.
+The definition of raw images can vary. The usual meaning is raw Bayer data directly from the sensor, although some may regard an uncompressed image that has passed through the ISP (and has therefore been processed) as raw. For the latter, we recommend using the term _unencoded_ so as to be clear about the difference.
 
 Both options are available from the Raspberry Pi cameras.
 
 === Processed, Non-Lossy Images
 
-The usual output from `raspistill` is a compressed JPEG file that has passed through all the stages of image processing to produce a high-quality image. However, JPEG, being a lossy format does throw away some information that the user may want.
+The usual output from `libcamera-still` or `raspistill` is a compressed JPEG file that has passed through all the stages of image processing to produce a high-quality image. However, JPEG, being a lossy format does throw away some information that the user may want.
 
-`raspistill` has an `encoding` option that allows you to specify the output format: either `jpg`, `gif`, `bmp` or `png`. The latter two are non-lossy, so no data is thrown away in an effort to improve compression, but do require conversion from the original YUV, and because these formats do not have hardware support they produce images slightly more slowly than JPEG.
+Both `libcamera-still` and `raspistill` have an `encoding` option that allows you to specify the output format: either `jpg`, `bmp`, `png` or (`raspistill` only) `gif`. All but `jpg` are lossless, so no data is thrown away in an effort to improve compression, but do require conversion from the original YUV, and because these formats do not have hardware support they produce images slightly more slowly than JPEG.
 
 e.g.
 
+`libcamera-still --encoding png -o fred.png`
+
+or
+
 `raspistill --encoding png -o fred.png`
 
-Another option is to use the xref:camera.adoc#raspiyuv[`raspiyuv`] application. This avoids any final formatting stage, and writes raw YUV420 or RGB888 data to the requested file. YUV420 is the format used in much of the ISP, so this can be regarded as a dump of the processed image data at the end of the ISP processing.
+Another option is to output completely formatted YUV420 or RGB data, e.g.
+
+`libcamera-still --encoding yuv420 -o test.data`
+
+or
+
+`libcamera-still --encoding rgb -o test.data`
+
+With the legacy stack, you need to use the xref:camera.adoc#raspiyuv[`raspiyuv`] application.
 
 === Unprocessed Images
 
 For some applications, such as astrophotography, having the raw Bayer data direct from the sensor can be useful. This data will need to be post-processed to produce a useful image.
 
-`raspistill` has a raw option that will append this raw Bayer data onto the end of the output JPEG file.
+Both `libcamera-still` and `raspistill` have a raw option that will cause the Bayer data to be output.
+
+`libcamera-still --raw -o fred.jpg`
+
+or
 
 `raspistill --raw -o fred.jpg`
 
-The raw data will https://www.raspberrypi.org/blog/processing-raw-image-files-from-a-raspberry-pi-high-quality-camera/[need to be extracted] from the `JPEG` file. 
+In the case of `libcamera-still` the raw data will be written as an Adobe DNG file (`fred.dng` in this case) which can be processed with standard tools. For `raspistill` the raw data is appended to the end of the JPEG file and will https://www.raspberrypi.org/blog/processing-raw-image-files-from-a-raspberry-pi-high-quality-camera/[need to be extracted].

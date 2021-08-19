@@ -1,16 +1,30 @@
-== Basic Camera Usage
+== Introducing the Raspberry Pi Cameras
 
 Raspberry Pi currently sell two types of camera board: an https://www.raspberrypi.org/products/camera-module-v2/[8MP device] and a https://www.raspberrypi.org/products/raspberry-pi-high-quality-camera/[12MP High Quality (HQ)] camera. The 8MP device is also available in https://www.raspberrypi.org/products/pi-noir-camera-v2/[NoIR form] without an IR filter. The original 5MP device is no longer available from Raspberry Pi. 
 
 All Raspberry Pi cameras are capable of taking high-resolution photographs, along with full HD 1080p video, and can be fully controlled programmatically. This documentation describes how to use the camera in various scenarios, and how to use the various software tools.
 
-Once xref:camera.adoc#installing-a-raspberry-pi-camera[installed], there are various ways the cameras can be used. The simplest option is to use one of the provided camera applications. There are four Linux xref:camera.adoc#raspicam-commands[command-line applications] installed by default (e.g. `raspistill`).
+Once xref:camera.adoc#installing-a-raspberry-pi-camera[installed], there are various ways the cameras can be used. The simplest option is to use one of the provided camera applications, such as `libcamera-still` or `raspistill`.
 
-You can also programmatically access the camera using the Python programming language, using the https://projects.raspberrypi.org/en/projects/getting-started-with-picamera[`picamera` library].
+=== `libcamera` and the legacy _Raspicam_ camera stack
 
-=== About `libcamera` 
+NOTE: Raspberry Pi is transitioning from a legacy camera software stack based on proprietary Broadcom GPU code to an open-source stack based on `libcamera`. Raspberry Pi OS images from _Bullseye_ onwards will contain *only* the `libcamera`-based stack. Raspberry Pi OS images up to and including _Buster_ will contain the legacy _Raspicam_ stack, though the `libcamera` stack and applications can be built by following the xref:camera.adoc#building-libcamera-and-libcamera-apps[normal build instructions].
 
-libcamera is a new Linux API for interfacing to cameras. Raspberry Pi have been involved with the development of libcamera and are now using this sophisticated system for new camera software. This means Raspberry Pi are moving away from the firmware-based camera image processing pipeline (ISP) to a more open system.
+Users are encouraged to use the newest OS images and the `libcamera`-based stack because:
 
-* http://libcamera.org/[Libcamera's main website].
-* https://datasheets.raspberrypi.org/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera]
+* It will continue to be developed moving forward.
+* Raspberry Pi and 3rd parties can fix bugs and problems in the camera stack.
+* Raspberry Pi and 3rd parties can add new features to the camera stack.
+* It is much easier to add support for new cameras.
+* 3rd parties can add support directly for their own cameras.
+* Nearly all aspects of the camera tuning can be changed by users.
+* It integrates much more conveniently with other standard Linux APIs.
+* Raspberry Pi supply a set of `libcamera-apps` which emulate most of the features of the legacy applications.
+* It is fully supported on 64-bit operating systems.
+
+Reasons to consider staying with an older OS and using the legacy _Raspicam_ stack might include:
+
+* It may perform better on Raspberry Pi 2 and Raspberry Pi Zero devices, as it offloads more to the GPU and is less dependent on the ARM cores.
+* `libcamera` is still missing certain features, most notably Python bindings. Whilst this work is in progress, users who need a Python interface (such as _Picamera_) will have to stay with the legacy stack for the time being.
+
+Apart from some general information on setting up the camera, most of this documentation is divded into sections on xref:camera.adoc#libcamera-and-libcamera-apps[libcamera and the libcamera-apps], and the xref:camera.adoc#Raspicam-commands[legacy _Raspicam_ apps]. Once you've xref:camera.adoc#installing-a-raspberrypi-pi-camera[installed your camera module], please click on one of these two links.

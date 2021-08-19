@@ -1,0 +1,5 @@
+=== Python Bindings for `libcamera`
+
+Python bindings for `libcamera` are currently in development.
+
+Full working examples will be provided here.
