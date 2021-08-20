@@ -67,7 +67,7 @@ All the electronics of the pads are designed for 16mA. That is a safe value unde
 
 | 31:24
 | PASSWRD
-| Must be 5A when writing; accidental write protect password
+| Must be 0x5A when writing; accidental write protect password
 | W
 | 0
 
