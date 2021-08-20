@@ -55,7 +55,7 @@ Chapter 10 in the https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals
 
 ===== SPI0 alternate mapping (compute modules only)
 
-[cols="1,1,1,1"]
+[cols="1,1,1"]
 |===
 | SPI Function
 | Broadcom Pin Name
@@ -124,7 +124,7 @@ Chapter 10 in the https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals
 
 ===== SPI2 (compute modules only)
 
-[cols="1,1,1,1"]
+[cols="1,1,1"]
 |===
 | SPI Function
 | Broadcom Pin Name
@@ -230,7 +230,7 @@ Chapter 10 in the https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals
 [cols="1,1,1,1"]
 |===
 | SPI Function
-|Header Pin
+| Header Pin
 | Broadcom Pin Name
 | Broadcom Pin Function
 
