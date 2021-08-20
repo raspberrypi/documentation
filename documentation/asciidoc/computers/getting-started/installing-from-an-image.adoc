@@ -19,7 +19,7 @@ Download the latest version of https://www.raspberrypi.org/downloads/[Raspberry 
 * Choose  the SD card you wish to write your image to.
 * Review your selections and click on the `Write` button to begin writing data to the SD Card.
 
-NOTE: If using Raspberry Pi Imager on Windows 10 with controlled folder access enabled, you will need to explicitly allow the Raspberry Pi Imager permission to write the SD card. If this is not done, Imager will fail with a "failed to write" error.
+NOTE: If using Raspberry Pi Imager on Windows 10 with controlled folder access enabled, you will need to explicitly allow Raspberry Pi Imager permission to write the SD card. If this is not done, the imaging process will fail with a "failed to write" error.
 
 NOTE: You can see which operating systems are most often downloaded, on our https://rpi-imager-stats.raspberrypi.org/[statistics page].
 
