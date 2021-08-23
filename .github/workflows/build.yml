@@ -15,8 +15,10 @@ jobs:
           echo "Current ref: $GITHUB_REF"
           echo "Base ref: $GITHUB_BASE_REF"
           echo "Head ref: $GITHUB_HEAD_REF"
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Head repository ${{ github.event.pull_request.head.repo.full_name }}"
       - name: Only allow pull requests based on master from the develop branch
-        if: ${{ github.base_ref == 'master' && github.head_ref != 'develop' }}
+        if: ${{ github.base_ref == 'master' && !(github.head_ref == 'develop' && github.event.pull_request.head.repo.full_name == github.repository) }}
         run: |
           echo "Pull requests based on master can only come from the develop branch"
           echo "Please check your base branch as it should be develop by default"
