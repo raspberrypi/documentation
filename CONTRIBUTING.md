@@ -4,9 +4,13 @@ The Raspberry Pi Documentation website is built from Asciidoc source using a Jek
 
 Full instructions for building and running the documentation website locally can be found in the top-level [README.md](README.md) file.
 
+## How to Contribute
+
 In order to contribute new or updated documentation, you must first create a GitHub account and fork the original repository to your own account. You can make changes, save them in your repository, then [make a pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) against this repository. The pull request will appear [in the repository](https://github.com/raspberrypi/documentation/pulls) where it can be assessed by the maintainers, copy edited, and if appropriate, merged with the official repository.
 
 **NOTE:** Unless you are opening a pull request which will only make small corrections, for instance to correct a typo, you are more likely to get traction for your changes if you [open an issue](https://github.com/raspberrypi/documentation/issues) first to discuss the proposed changes.
+
+**NOTE:** The default [branch](https://github.com/raspberrypi/documentation/branches) of the repository is the `develop` branch, this should be the branch you get by default when you initially checkout the repository. You should target for any pull requests against the repository against the `develop` branch. Pull requests against the `master` branch will automatically fail checks.
 
 ## Type of Content
 
