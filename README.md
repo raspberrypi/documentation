@@ -108,4 +108,4 @@ which will copy the `fonts.html` and `header.html` files from `offline_includes`
 
 ## License
 
-The Raspberry Pi documentation is [licensed](https://github.com/raspberrypi/documentation/blob/develop/LICENSE.md) under a Creative Commons Attribution 4.0 International Licence.
+The Raspberry Pi documentation is [licensed](https://github.com/raspberrypi/documentation/blob/develop/LICENSE.md) under a Creative Commons Attribution 4.0 International Licence. While the toolchain source code is Copyright © 2020 Raspberry Pi (Trading) Ltd. and licensed under the [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause) licence.

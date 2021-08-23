@@ -1,8 +1,8 @@
 == Introduction to Remote Access
 
-Sometimes you need to access a Raspberry Pi without connecting it to a monitor. Perhaps the Pi is embedded in something like a robot, or you may want to view some information from it from elsewhere. Ore perhaps you simply don't have a spare monitor!
+Sometimes you need to access a Raspberry Pi without connecting it to a monitor. Perhaps the Pi is embedded in something like a robot, or you may want to view some information from it from elsewhere. Or perhaps you simply don't have a spare monitor!
 
-You can connect to your Raspberry Pi from another machine. But in order to do so you'll need to know it's IP Address. 
+You can connect to your Raspberry Pi from another machine. But in order to do so you'll need to know its IP Address. 
 
 Any device connected to a Local Area Network is assigned an IP address. In order to connect to your Raspberry Pi from another machine using xref:remote-access.adoc#ssh[SSH] or xref:remote-access.adoc#vnc[VNC], you need to know the Pi's IP address. This is easy if you have a display connected, and there are a number of methods for finding it remotely from another machine on the network.
 
