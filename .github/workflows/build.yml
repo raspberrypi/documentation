@@ -14,6 +14,7 @@ jobs:
         run: |
           echo "Current ref: $GITHUB_REF"
           echo "Base ref: $GITHUB_BASE_REF"
+          echo "Head ref: $GITHUB_HEAD_REF"
       - name: Only allow pull requests based on master from the develop branch
         if: ${{ github.base_ref == 'master' && github.ref != 'refs/heads/develop' }}
         run: |
