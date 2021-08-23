@@ -138,7 +138,7 @@ Returns the throttled state of the system. This is a bit pattern - a bit being s
 
 ==== measure_temp
 
-Returns the temperature of the SoC as measured by the its internal temperature sensor. On Raspberry Pi 4 the `pmic` subcommand can be used to instead return the temperature of the PMIC.
+Returns the temperature of the SoC as measured by its internal temperature sensor. On Raspberry Pi 4 the `pmic` subcommand can be used to instead return the temperature of the PMIC.
 
 ==== measure_clock [clock]
 
