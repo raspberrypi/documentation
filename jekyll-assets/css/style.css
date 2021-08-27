@@ -371,6 +371,21 @@ h6 .anchor::before {
 
 #content div.listingblock {
   margin-bottom: 15px;
+  position: relative;
+}
+
+#content div.listingblock button.copy-button {
+  position: absolute;
+  right: 0;
+  border: 1px solid #d8d8d8;
+}
+
+#content div.listingblock button.copy-button.hidden {
+  display: none;
+}
+
+#content div.listingblock button.copy-button strong.copy-button-label {
+  white-space: pre;
 }
 
 #content div.listingblock div.content {
