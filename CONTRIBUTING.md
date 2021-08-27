@@ -10,7 +10,9 @@ In order to contribute new or updated documentation, you must first create a Git
 
 **NOTE:** Unless you are opening a pull request which will only make small corrections, for instance to correct a typo, you are more likely to get traction for your changes if you [open an issue](https://github.com/raspberrypi/documentation/issues) first to discuss the proposed changes.
 
-**NOTE:** The default [branch](https://github.com/raspberrypi/documentation/branches) of the repository is the `develop` branch, this should be the branch you get by default when you initially checkout the repository. You should target for any pull requests against the repository against the `develop` branch. Pull requests against the `master` branch will automatically fail checks.
+**NOTE:** The default [branch](https://github.com/raspberrypi/documentation/branches) of the repository is the `develop` branch, and this should be the branch you get by default when you initially checkout the repository. You should target any pull requests against the `develop` branch, pull requests against the `master` branch will automatically fail checks and not be accepted.
+
+**NOTE:** Issues and Pull Requests older than 60 days will [automatically be marked as stale](https://github.com/actions/stale) and then closed 7 days later if there still hasn't been any further activity.
 
 ## Type of Content
 

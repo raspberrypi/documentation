@@ -5,7 +5,7 @@ GPIO drive strengths do not indicate a maximum current, but a maximum current un
 [discrete]
 === How Drive Strength is Controlled
 
-Inside the pad are a number of drivers in parallel. If the drive strength is set low (000) most of these are tri-stated so they do not add anything to the output current. If the drive strength is increased, more and more drivers are put in parallel. The following diagram shows that behaviour:
+Inside the pad are a number of drivers in parallel. If the drive strength is set low (0b000) most of these are tri-stated so they do not add anything to the output current. If the drive strength is increased, more and more drivers are put in parallel. The following diagram shows that behaviour:
 
 image::images/pi_gpio_drive_strength_diagram.png[GPIO Drive Strength Diagram]
 
@@ -67,7 +67,7 @@ All the electronics of the pads are designed for 16mA. That is a safe value unde
 
 | 31:24
 | PASSWRD
-| Must be 5A when writing; accidental write protect password
+| Must be 0x5A when writing; accidental write protect password
 | W
 | 0
 
