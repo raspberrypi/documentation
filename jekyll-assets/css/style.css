@@ -376,16 +376,31 @@ h6 .anchor::before {
 
 #content div.listingblock button.copy-button {
   position: absolute;
-  right: 0;
+  top: 1px;
+  right: 1px;
   border: 1px solid #d8d8d8;
+  min-width: 30px;
+  padding: 3px;
 }
 
 #content div.listingblock button.copy-button.hidden {
   display: none;
 }
 
+#content div.listingblock button.copy-button div.copy-button-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#content div.listingblock button.copy-button svg {
+  width: 18px;
+}
+
 #content div.listingblock button.copy-button strong.copy-button-label {
   white-space: pre;
+  line-height: 15px;
 }
 
 #content div.listingblock div.content {

@@ -2,7 +2,7 @@ var listings = document.querySelectorAll('div.listingblock');
 
 var showButton = function() {
   var button = this.querySelector("button.copy-button");
-  button.className = button.className.replace(/\bhidden\b/,'');
+  button.className = button.className.replace(/\bhidden\b/,'').trim();
 };
 
 var hideButton = function() {
