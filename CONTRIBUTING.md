@@ -12,6 +12,8 @@ In order to contribute new or updated documentation, you must first create a Git
 
 **NOTE:** The default [branch](https://github.com/raspberrypi/documentation/branches) of the repository is the `develop` branch, and this should be the branch you get by default when you initially checkout the repository. You should target any pull requests against the `develop` branch, pull requests against the `master` branch will automatically fail checks and not be accepted.
 
+**NOTE:** Issues and Pull Requests older than 60 days will [automatically be marked as stale](https://github.com/actions/stale) and then closed 7 days later if there still hasn't been any further activity.
+
 ## Type of Content
 
 We welcome contributions from the community, ranging from correcting small typos all the way through to adding entire new sections to the documentation. However going forward we're going to be fairly targetted about what sort of content we add to the documentation. We are looking to keep the repository, and the documentation, focussed on Raspberry Pi-specific things, rather than having generic Linux or computing content.
