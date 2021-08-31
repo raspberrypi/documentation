@@ -1,7 +1,7 @@
 [[raspi-config]]
 == The `raspi-config` Tool
 
-`raspi-config` is the Raspberry Pi configuration tool originally written by https://github.com/asb[Alex Bradbury]. You will be shown `raspi-config` on first booting into Raspberry Pi OS. To open the configuration tool after this, simply run the following from the command line:
+`raspi-config` is the Raspberry Pi configuration tool originally written by https://github.com/asb[Alex Bradbury]. To open the configuration tool, type the following on the command line:
 
 ----
 sudo raspi-config

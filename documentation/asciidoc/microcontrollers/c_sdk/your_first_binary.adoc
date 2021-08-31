@@ -5,7 +5,7 @@
 
 The first program anyone writes when using a new microcontroller is to blink an LED on and off. The Raspberry Pi Pico comes with a single LED on-board (connected to GPIO pin 25). 
 
-image:images/Blink-an-LED-FINAL.gif[]
+image:images/Blink-an-LED-640x360.gif[]
 
 You can blink this on and off by,
 
@@ -23,7 +23,7 @@ You can blink this on and off by,
 
 The next program anyone writes is to say 'Hello World' over a USB serial connection.
 
-image:images/Hello-World-No-Wires-FINAL.gif[]
+image:images/Hello-World-640x360.gif[]
 
 . Download the https://datasheets.raspberrypi.org/soft/hello_world.uf2['Hello World' UF2].
 . Push and hold the BOOTSEL button and plug your Pico into the USB port of your Raspberry Pi or other computer.

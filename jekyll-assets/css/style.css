@@ -464,6 +464,10 @@ div.admonitionblock td.content {
   width: 100%;
 }
 
+#content div.admonitionblock.note td.content p {
+  margin-bottom: 0px;
+}
+
 div.videoblock {
   position: relative;
   overflow: hidden;
