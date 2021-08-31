@@ -28,7 +28,7 @@ $(OUTPUT_DIR):
 $(OUTPUT_DIR)/%: | $(JEKYLL_ASSETS_DIR)/% $(OUTPUT_DIR)
 	cp -r $(firstword $|) $@
 
-JEKYLL_DIRS = $(OUTPUT_DIR)/_data $(OUTPUT_DIR)/_layouts $(OUTPUT_DIR)/_includes $(OUTPUT_DIR)/css $(OUTPUT_DIR)/scripts
+JEKYLL_DIRS = $(OUTPUT_DIR)/_data $(OUTPUT_DIR)/_layouts $(OUTPUT_DIR)/_includes $(OUTPUT_DIR)/_plugins $(OUTPUT_DIR)/css $(OUTPUT_DIR)/scripts
 
 DOWNLOADED_INCLUDES = $(OUTPUT_DIR)/_includes/header.html $(OUTPUT_DIR)/_includes/fonts.html
 
