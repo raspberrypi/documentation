@@ -18,13 +18,15 @@ https://datasheets.raspberrypi.org/pico/pico-datasheet.pdf[Raspberry Pi Pico Dat
 
 https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico]:: C/C++ development with Raspberry Pi Pico and other RP2040-based microcontroller boards
 
+NOTE: While it is not officially supported there is a https://github.com/ndabas/pico-setup-windows[Pico Setup for Windows] installation tool which automates installation of the C/C{pp} SDK on Windows 10.
+
 === Software Development
 
 https://datasheets.raspberrypi.org/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi Pico C/C{pp} SDK]:: Libraries and tools for C/C++ development on RP2040 microcontrollers
 
 https://datasheets.raspberrypi.org/pico/raspberry-pi-pico-python-sdk.pdf[Raspberry Pi Pico Python SDK]:: A MicroPython environment for RP2040 microcontrollers
 
-The API level Doxygen documentation for the Raspberry Pi Pico C/C++ SDK is also available https://rptl.io/pico-doxygen[as a micro-site].
+The API level Doxygen documentation for the Raspberry Pi Pico C/C{pp} SDK is also available https://rptl.io/pico-doxygen[as a micro-site].
 
 [NOTE]
 ======
