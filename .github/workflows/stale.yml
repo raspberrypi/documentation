@@ -21,6 +21,6 @@ jobs:
         stale-issue-label: 'stale issue'
         stale-pr-label: 'stale pull request'
         exempt-issue-labels: 'ready to merge,read for copy-edit,paused,in progress,linked pull request'
-        exempt-pr-labels: 'ready to merge,read for copy-edit,paused,in progress'
+        exempt-pr-labels: 'ready to merge,ready for copy-edit,paused,in progress'
         days-before-stale: 60
         days-before-close: 7
