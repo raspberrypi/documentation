@@ -15,6 +15,23 @@ for (var i = 0; i < listings.length; i++) {
   listings[i].addEventListener('mouseleave', hideButton, false);
 }
 
+var buttons = document.querySelectorAll('button.copy-button');
+
+var showTooltip = function() {
+  var tooltip = this.querySelector("span.tooltip");
+  tooltip.className = tooltip.className.replace(/\bhidden\b/,'').trim();
+};
+
+var hideTooltip = function() {
+  var tooltip = this.querySelector("span.tooltip");
+  tooltip.className = tooltip.className + " hidden";
+};
+
+for (var i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener('mouseenter', showTooltip, false);
+  buttons[i].addEventListener('mouseleave', hideTooltip, false);
+}
+
 window.addEventListener('load', function() {
   var clipboard = new ClipboardJS('.copy-button', {
     target: function(trigger) {

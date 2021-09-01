@@ -383,7 +383,8 @@ h6 .anchor::before {
   padding: 3px;
 }
 
-#content div.listingblock button.copy-button.hidden {
+#content div.listingblock button.copy-button.hidden,
+#content div.listingblock button.copy-button span.tooltip.hidden {
   display: none;
 }
 
