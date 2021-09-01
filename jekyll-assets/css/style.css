@@ -399,7 +399,8 @@ h6 .anchor::before {
   width: 18px;
 }
 
-#content div.listingblock button.copy-button strong.copy-button-label {
+#content div.listingblock button.copy-button strong.copy-button-label,
+#content div.listingblock button.copy-button span.tooltip {
   white-space: pre;
   line-height: 15px;
 }
