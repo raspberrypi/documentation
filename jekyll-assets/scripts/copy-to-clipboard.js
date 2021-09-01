@@ -45,7 +45,6 @@ window.addEventListener('load', function() {
     event.clearSelection();
     var textEl = event.trigger.querySelector('.copy-button-label');
     var tooltip = event.trigger.querySelector('span.tooltip');
-    console.log(tooltip);
     tooltip.className = "tooltip hidden";
     textEl.textContent = ' Copied!';
     setTimeout(function() {
