@@ -59,13 +59,14 @@ sudo su - alice
 
 If it runs successfully, then you can be sure that the new account is in the `sudo` group.
 
-Once you have confirmed that the new account is working, you can delete the `pi` user. In order to do this, you'll need to first close its process with the following:
+Once you have confirmed that the new account is working, you can delete the `pi` user. In order to do this, you'll need to first change the autologin user to your new user `alice`, with the following:
 
 [,bash]
 ----
-sudo pkill -u pi
+sudo raspi-config
 ----
 
+Select option 1, S5 `Boot / Auto login`, and say yes to reboot.
 Please note that with the current Raspberry Pi OS distribution, there are some aspects that require the `pi` user to be present. If you are unsure whether you will be affected by this, then leave the `pi` user in place. Work is being done to reduce the dependency on the `pi` user.
 
 To delete the `pi` user, type the following:
