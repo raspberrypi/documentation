@@ -228,20 +228,52 @@ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2711_defconfig
 
 NOTE: To speed up compilation on multiprocessor systems, and get some improvement on single processor ones, use `-j n`, where n is the number of processors * 1.5. Alternatively, feel free to experiment and see what works!
 
-====== For all 32-bit Builds
+====== 32-bit Builds
+
+For Pi 1, Pi Zero, Pi Zero W, or Compute Module:
+to spee
+[,bash]
+----
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- KERNEL=kernel zImage modules dtbs
+----
+
+For Pi 2, Pi 3, Pi 3+, or Compute Module 3:
 
 [,bash]
 ----
-make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- KERNEL=kernel7 zImage modules dtbs
 ----
 
-====== For all 64-bit Builds
+For Raspberry Pi 4:
+
+[,bash]
+----
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- KERNEL=kernel7l zImage modules dtbs
+----
+
+====== For 64-bit Builds
 
 NOTE: Note the difference between Image target between 32 and 64-bit.
 
+For Pi 1, Pi Zero, Pi Zero W, or Compute Module:
+to spee
 [,bash]
 ----
-make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- Image modules dtbs
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- KERNEL=kernel Image modules dtbs
+----
+
+For Pi 2, Pi 3, Pi 3+, or Compute Module 3:
+
+[,bash]
+----
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- KERNEL=kernel7 Image modules dtbs
+----
+
+For Raspberry Pi 4:
+
+[,bash]
+----
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- KERNEL=kernel7l Image modules dtbs
 ----
 
 ==== Install Directly onto the SD Card
