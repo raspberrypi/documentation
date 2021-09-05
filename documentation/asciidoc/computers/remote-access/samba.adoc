@@ -144,7 +144,7 @@ At the end of the file, add the following to share the folder, giving the remote
     path = /home/pi/shared
     read only = no
     public = yes
-    writable = yes
+    writeable = yes
 ----
 
 In the same file, find the `workgroup` line, and if necessary, change it to the name of the workgroup of your local Windows network.
