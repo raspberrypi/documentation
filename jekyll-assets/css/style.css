@@ -409,7 +409,7 @@ h6 .anchor::before {
   color: #fff;
   background-color: #343434;
   padding: 7px 15px 7px;
-  overflow-x: scroll;
+  overflow-x: auto !important;
 }
 
 #content table {
