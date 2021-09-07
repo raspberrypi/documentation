@@ -27,6 +27,14 @@ You can now insert the SD card into the Raspberry Pi and power it up. For Raspbe
 
 You should change the default password straight away to ensure your Raspberry Pi is xref:configuration.adoc#securing-your-raspberry-pi[secure].
 
+==== Advanced Options
+
+When you have the Raspberry Pi Imager open, pushing `Ctrl-Shift-X` will open an "Advanced" menu. This menu lets you carry out tasks like enabling SSH, or setting your Raspberry Pi's hostname, before first boot.
+
+image::images/rpi_imager.png[width="80%"]
+
+NOTE: The Advanced Options menu is useful for when you want to configure a xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless] Raspberry Pi.
+
 === Downloading an Image
 
 If you are using a different tool than Raspberry Pi Imager to write to your SD Card, most require you to download the image first, then use the tool to write it to the card. Official images for recommended operating systems are available to download from the Raspberry Pi website https://www.raspberrypi.org/downloads/[downloads page]. Alternative operating systems for Raspberry Pi computers are also available from some third-party vendors.
