@@ -1,6 +1,6 @@
 # Contributing to Raspberry Pi Documentation
 
-The Raspberry Pi Documentation website is built from Asciidoc source using a Jekyll and Python toolchain. The website is automatically deployed to the raspberrypi.org site — pushed to production — using GitHub Actions when a push to the `master` branch occurs.
+The Raspberry Pi Documentation website is built from Asciidoc source using a Jekyll and Python toolchain. The website is automatically deployed to the raspberrypi.com site — pushed to production — using GitHub Actions when a push to the `master` branch occurs.
 
 Full instructions for building and running the documentation website locally can be found in the top-level [README.md](README.md) file.
 

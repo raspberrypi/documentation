@@ -1,8 +1,8 @@
 # Welcome to the Raspberry Pi Documentation
 
-This repository contains the Asciidoc source and the toolchain to build the [Raspberry Pi Documentation](https://www.raspberrypi.org/documentation/). For details of how to contribute to the documentation see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+This repository contains the Asciidoc source and the toolchain to build the [Raspberry Pi Documentation](https://www.raspberrypi.com/documentation/). For details of how to contribute to the documentation see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
-**NOTE:** This repository has undergone some recent changes. See our [blog post](https://www.raspberrypi.org/blog/bring-on-the-documentation/) for more details.
+**NOTE:** This repository has undergone some recent changes. See our [blog post](https://www.raspberrypi.com/blog/bring-on-the-documentation/) for more details.
 
 ## Building the Documentation
 

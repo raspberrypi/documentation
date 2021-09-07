@@ -577,16 +577,16 @@ footer {
 }
 
 .c-footer-social__link--facebook {
-    background-image: url(https://www.raspberrypi.org/app/themes/mind-control/images/application/footer/social/facebook.svg);
+    background-image: url(https://www.raspberrypi.com/app/themes/mind-control/images/application/footer/social/facebook.svg);
 }
 .c-footer-social__link--twitter {
-    background-image: url(https://www.raspberrypi.org/app/themes/mind-control/images/application/footer/social/twitter.svg);
+    background-image: url(https://www.raspberrypi.com/app/themes/mind-control/images/application/footer/social/twitter.svg);
 }
 .c-footer-social__link--instagram {
-    background-image: url(https://www.raspberrypi.org/app/themes/mind-control/images/application/footer/social/instagram.svg);
+    background-image: url(https://www.raspberrypi.com/app/themes/mind-control/images/application/footer/social/instagram.svg);
 }
 .c-footer-social__link--youtube {
-    background-image: url(https://www.raspberrypi.org/app/themes/mind-control/images/application/footer/social/youtube.svg);
+    background-image: url(https://www.raspberrypi.com/app/themes/mind-control/images/application/footer/social/youtube.svg);
 }
 
 @media screen and (max-width: 1200px) {
