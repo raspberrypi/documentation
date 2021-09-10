@@ -2,3 +2,5 @@
 __pycache__
 build
 documentation/html
+.ninja_deps
+.ninja_log

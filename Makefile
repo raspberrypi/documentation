@@ -1,46 +1,24 @@
-# The top-level Makefile which does things by calling rules in other makefiles
+# The top-level Makefile which includes rules from other makefiles
 
-# these need to be done in a specific order, which is why they're rules rather than simply being listed as prerequisites
-all:
-	$(MAKE) jekyll
-	$(MAKE) html
+include makefiles/shared_vars.txt
+
+ASCIIDOC_BUILD_DIR = $(BUILD_DIR)/jekyll
+JEKYLL_MARKER_FILE = $(ASCIIDOC_BUILD_DIR)/.done
+HTML_MARKER_FILE = $(HTML_DIR)/.done
+
+include makefiles/download_includes.mk
+include makefiles/jekyll.mk
+include makefiles/html.mk
+
+.DEFAULT_GOAL := all
+
+.PHONY: all clean
+
+$(BUILD_DIR):
+	@mkdir -p $@
+
+all: | $(HTML_MARKER_FILE)
 
 clean:
-	$(MAKE) clean_html
-	$(MAKE) clean_jekyll
-	rm -rf build
-
-.PHONY: all clean jekyll clean_jekyll invalidate_jekyll update_offline_includes html clean_html invalidate_html serve_html
-
-# Copy all needed files to the build/jekyll folder
-jekyll:
-	$(MAKE) -f makefiles/jekyll.mk all
-
-# Delete the build/jekyll directory
-clean_jekyll:
-	$(MAKE) -f makefiles/jekyll.mk clean
-
-# Tell the build/jekyll directory that some of its source-files might have changed
-invalidate_jekyll:
-	$(MAKE) -f makefiles/jekyll.mk invalidate
-
-# Update the files in the offline_includes directory
-update_offline_includes:
-	$(MAKE) -f makefiles/jekyll.mk $@
-
-# Convert asciidoc files to html files
-html:
-	$(MAKE) -f makefiles/html.mk all
-
-# Delete the documentation/html directory
-clean_html:
-	$(MAKE) -f makefiles/html.mk clean
-
-# Tell the documentation/html directory that some of its source-files might have changed
-invalidate_html:
-	$(MAKE) -f makefiles/html.mk invalidate
-
-# Serve the html directory with Jekyll
-serve_html:
-	$(MAKE) -f makefiles/html.mk serve
-
+	rm -rf $(HTML_DIR)
+	rm -rf $(BUILD_DIR)

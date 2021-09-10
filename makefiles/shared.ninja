@@ -2,8 +2,6 @@
 
 include makefiles/shared_vars.txt
 
-builddir = $BUILD_DIR
-
 rule copy
   command = cp $in $out
 
