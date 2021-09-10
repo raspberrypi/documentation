@@ -11,7 +11,6 @@ all: | $(MARKER_FILE)
 
 clean:
 	rm -rf $(OUTPUT_DIR)
-	rm -rf .sass-cache
 
 # Some of the source-files have changed, so things might need to be rebuilt
 invalidate:
