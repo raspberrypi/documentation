@@ -9,8 +9,26 @@
       {% if item.sections[0] %}
         {% if page.url == item.path %}
         <div class="itemcontents" id="toc"></div>
+        <div class="itemcontents noJS">
+          <ul class="sectlevel1">
+            {% for entry in item.sections %}
+              <li>
+                <a href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}">{{ entry.heading }}</a>
+                {% if entry.subsections[0] %}
+                  <ul>
+                    {% for subentry in entry.subsections %}
+                      <li>
+                        <a href="{{ site.baseurl }}{{ item.path }}#{{ subentry.anchor }}">{{ subentry.heading }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
         {% else %}
-        <div class="itemcontents hidden">
+        <div class="itemcontents">
           <ul class="sectlevel1">
             {% for entry in item.sections %}
               <li>

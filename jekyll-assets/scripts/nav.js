@@ -1,6 +1,10 @@
 function addClassJS(element, myclass) {
-  var classes = element.className.split(" ");
-  console.log(classes);
+  var classes = element.className;
+  if (classes) {
+    classes = classes.split(" ");
+  } else {
+    classes = [];
+  }
   var i = classes.indexOf(myclass);
   if (i < 0) {
     classes.push(myclass);
@@ -9,8 +13,12 @@ function addClassJS(element, myclass) {
 }
 
 function removeClassJS(element, myclass) {
-  var classes = element.className.split(" ");
-  console.log(classes);
+  var classes = element.className;
+  if (classes) {
+    classes = classes.split(" ");
+  } else {
+    classes = [];
+  }
   var i = classes.indexOf(myclass);
   if (i >= 0) {
     classes.splice(i, 1);
@@ -21,7 +29,12 @@ function removeClassJS(element, myclass) {
 function expandAndCollapse(e) {
   var toExpand = e.nextElementSibling;
   if (toExpand) {
-    var classes = toExpand.className.split(" ");
+    var classes = toExpand.className;
+    if (classes) {
+      classes = classes.split(" ");
+    } else {
+      classes = [];
+    }
     var currentState = classes.indexOf("hidden");
 
     var expanded = document.querySelectorAll('div.itemcontents:not(.hidden)');
@@ -40,7 +53,12 @@ function expandAndCollapseMobile(e) {
   var toExpand = e.nextElementSibling;
   var parent = e.parentNode;
   if (toExpand) {
-    var classes = toExpand.className.split(" ");
+    var classes = toExpand.className;
+    if (classes) {
+      classes = classes.split(" ");
+    } else {
+      classes = [];
+    }
     var currentState = classes.indexOf("hidden");
 
     if (currentState > -1) {
@@ -52,3 +70,14 @@ function expandAndCollapseMobile(e) {
     }
   }
 }
+
+window.addEventListener('load', function() {
+  var tocitems = document.querySelectorAll("div.itemcontents:not(#toc)");
+  for (var i=0; i < tocitems.length; i++) {
+    addClassJS(tocitems[i], "hidden");
+  }
+  var currentItemNoJS = document.querySelectorAll("div.itemcontents.noJS");
+  addClassJS(currentItemNoJS, "hidden");
+  var contents = document.getElementById("contents");
+  contents.style.overflowY = 'hidden';
+});
