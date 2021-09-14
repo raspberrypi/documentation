@@ -10,6 +10,8 @@ WARNING: Please note that the display is *not* designed to be hot pluggable. It 
 
 === Quickstart Guide (Display Only)
 
+Connecting to DISP1
+
 . Connect the display to the DISP1 port on the Compute Module IO board through the 22W to 15W display adaptor.
 . (CM1 and 3 only) Connect these pins together with jumper wires:
 +
@@ -21,6 +23,23 @@ WARNING: Please note that the display is *not* designed to be hot pluggable. It 
 . Power up the Compute Module and run:
 +
 `+sudo wget https://datasheets.raspberrypi.org/cmio/dt-blob-disp1-only.bin -O /boot/dt-blob.bin+`
+
+. Reboot for the `dt-blob.bin` file to be read.
+
+
+Connecting to DISP0
+
+. Connect the display to the DISP0 port on the Compute Module IO board through the 22W to 15W display adaptor.
+. (CM1 and 3 only) Connect these pins together with jumper wires:
++
+----
+ GPIO28 - CD0_SDA
+ GPIO29 - CD0_SCL
+----
+
+. Power up the Compute Module and run:
++
+`+sudo wget https://datasheets.raspberrypi.org/cmio/dt-blob-disp0-only.bin -O /boot/dt-blob.bin+`
 
 . Reboot for the `dt-blob.bin` file to be read.
 
