@@ -11,7 +11,7 @@ if __name__ == "__main__":
     config_yaml = sys.argv[2]
     github_edit = sys.argv[3]
     src_adoc = sys.argv[4]
-    build_dir = sys.argv[5]
+    includes_dir = sys.argv[5]
     build_adoc = sys.argv[6]
     output_subdir = os.path.basename(os.path.dirname(build_adoc))
     adoc_filename = os.path.basename(build_adoc)
@@ -63,4 +63,4 @@ if __name__ == "__main__":
 :sectanchors:
 
 {}
-""".format(output_subdir, build_dir, '{} - {}'.format(site_config['title'], index_title), index_title, new_contents))
+""".format(output_subdir, includes_dir, '{} - {}'.format(site_config['title'], index_title), index_title, new_contents))
