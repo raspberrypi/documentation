@@ -155,7 +155,7 @@ nav#contents {
 }
 
 nav#contents {
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 nav#mobile-contents {

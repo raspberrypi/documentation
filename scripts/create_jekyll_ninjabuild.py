@@ -38,7 +38,8 @@ if __name__ == "__main__":
     if not os.path.exists(input_dir):
         raise Exception("Error: {} doesn't exist".format(input_dir))
     output_dir = sys.argv[4]
-    output_ninjabuild = sys.argv[5]
+    adoc_includes_dir = sys.argv[5]
+    output_ninjabuild = sys.argv[6]
 
     # Read _config.yml
     with open(config_yaml) as config_fh:
@@ -74,6 +75,7 @@ if __name__ == "__main__":
         ninja.newline()
         ninja.variable('src_dir', input_dir)
         ninja.variable('out_dir', output_dir)
+        ninja.variable('inc_dir', adoc_includes_dir)
         ninja.newline()
         ninja.include('makefiles/shared.ninja')
         ninja.newline()
@@ -100,7 +102,7 @@ if __name__ == "__main__":
         for page in sorted(doc_pages):
             if page in join_files:
                 for include in join_files[page]:
-                    dest = os.path.join('$out_dir', include)
+                    dest = os.path.join('$inc_dir', include)
                     source = os.path.join('$src_dir', include)
                     if source not in all_doc_sources:
                         scan_adoc(include, page)

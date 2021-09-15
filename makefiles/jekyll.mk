@@ -7,6 +7,7 @@ MARKER_FILE = $(OUTPUT_DIR)/.done
 NEXT_MAKEFILE = makefiles/html.mk
 
 AUTO_NINJABUILD = $(BUILD_DIR)/auto_jekyll.ninja
+ASCIIDOC_INCLUDES_DIR = $(BUILD_DIR)/adoc_includes
 
 # The $(MARKER_FILE) is used to ensure that all the asciidoc files are copied before we try invoking jekyll
 all: | $(MARKER_FILE)
@@ -47,7 +48,7 @@ $(OUTPUT_DIR)/_includes/%.html: $(SCRIPTS_DIR)/fetch_header_and_fonts.py | $(OUT
 	$< https://esi.raspberrypi.org/en/components/$*/ $@
 
 $(AUTO_NINJABUILD): $(SCRIPTS_DIR)/create_jekyll_ninjabuild.py $(DOCUMENTATION_INDEX) | $(BUILD_DIR)
-	$< $(DOCUMENTATION_INDEX) $(SITE_CONFIG) $(ASCIIDOC_DIR) $(OUTPUT_DIR) $@
+	$< $(DOCUMENTATION_INDEX) $(SITE_CONFIG) $(ASCIIDOC_DIR) $(OUTPUT_DIR) $(ASCIIDOC_INCLUDES_DIR) $@
 
 $(OUTPUT_DIR)/_data/index.json: $(SCRIPTS_DIR)/create_output_index_json.py $(DOCUMENTATION_INDEX) | $(OUTPUT_DIR)/_data
 	$< $(DOCUMENTATION_INDEX) $@
