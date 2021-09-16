@@ -12,23 +12,29 @@ import ninja_syntax
 def resolve_url(filename, relative_link):
     return os.path.normpath(os.path.join(os.path.dirname(filename), relative_link))
 
-def scan_adoc(adoc_filename, apparent_filename):
+def scan_adoc(adoc_filename, apparent_filename, parents):
+    parents.add(adoc_filename)
     # look for image files
     with open(os.path.join(input_dir, adoc_filename)) as fh:
         contents = fh.read()
-        # look for includes
-        includes = set()
+        join_files[adoc_filename] = set()
         joinee_dir = os.path.dirname(adoc_filename)
+        # look for includes
         for include in re.findall(r'(?:^|\n)include::(.+?)\[\](?:\n|$)', contents):
-            includes.add(os.path.join(joinee_dir, include))
-        if includes:
-            join_files[adoc_filename] = includes
+            include_adoc = os.path.join(joinee_dir, include)
+            if include_adoc in parents:
+                raise Exception("{} includes {} which creates an infinite loop".format(adoc_filename, include_adoc))
+            join_files[adoc_filename].add(include_adoc)
+            scan_adoc(include_adoc, apparent_filename, parents.copy())
         # look for image files
         for image in re.findall(r'image::?(.+?)\[.*\]', contents):
             if not (image.startswith('http:') or image.startswith('https:')):
                 image_filename = resolve_url(adoc_filename, image)
                 dest_image = resolve_url(apparent_filename, image)
+                if dest_image in destimages2srcimages and destimages2srcimages[dest_image] != image_filename:
+                    raise Exception("{} and {} would both end up as {}".format(destimages2srcimages[dest_image], image_filename, dest_image))
                 srcimages2destimages[image_filename] = dest_image
+                destimages2srcimages[dest_image] = image_filename
 
 
 if __name__ == "__main__":
@@ -36,7 +42,7 @@ if __name__ == "__main__":
     config_yaml = sys.argv[2]
     input_dir = sys.argv[3]
     if not os.path.exists(input_dir):
-        raise Exception("Error: {} doesn't exist".format(input_dir))
+        raise Exception("{} doesn't exist".format(input_dir))
     output_dir = sys.argv[4]
     adoc_includes_dir = sys.argv[5]
     output_ninjabuild = sys.argv[6]
@@ -93,22 +99,21 @@ if __name__ == "__main__":
 
         all_doc_sources = []
         srcimages2destimages = {}
+        destimages2srcimages = {} # used for detecting filename conflicts
         join_files = dict() # of sets
         # documentation pages
         for page in doc_pages:
             # find includes and images
-            scan_adoc(page, page)
+            scan_adoc(page, page, set())
         #print(join_files)
         for page in sorted(doc_pages):
-            if page in join_files:
-                for include in join_files[page]:
-                    dest = os.path.join('$inc_dir', include)
-                    source = os.path.join('$src_dir', include)
-                    if source not in all_doc_sources:
-                        scan_adoc(include, page)
-                        all_doc_sources.append(source)
-                        ninja.build(dest, 'create_build_adoc_include', source, ['$SCRIPTS_DIR/create_build_adoc_include.py', '$SITE_CONFIG', '$GITHUB_EDIT_TEMPLATE'])
-                        targets.append(dest)
+            for include in sorted(join_files[page]):
+                dest = os.path.join('$inc_dir', include)
+                source = os.path.join('$src_dir', include)
+                if source not in all_doc_sources:
+                    all_doc_sources.append(source)
+                    ninja.build(dest, 'create_build_adoc_include', source, ['$SCRIPTS_DIR/create_build_adoc_include.py', '$SITE_CONFIG', '$GITHUB_EDIT_TEMPLATE'])
+                    targets.append(dest)
 
             dest = os.path.join('$out_dir', page)
             source = os.path.join('$src_dir', page)
