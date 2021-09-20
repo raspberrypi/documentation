@@ -26,7 +26,7 @@ image::images/Pico-R3-SDK11-Pinout.svg[]
 
 === Design Files
 
-* Download https://datasheets.raspberrypi.org/pico/RPi-Pico-R3-PUBLIC-20200119.zip[Design Files] (Altium)
+* Download https://datasheets.raspberrypi.org/pico/RPi-Pico-R3-PUBLIC-20200119.zip[Design Files] (Cadence Allegro)
 * Download https://datasheets.raspberrypi.org/pico/Pico-R3-step.zip[STEP File]
 * Download https://datasheets.raspberrypi.org/pico/Pico-R3-Fritzing.fzpz[Fritzing Part]
 

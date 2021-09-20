@@ -1,4 +1,4 @@
-== Software Utilties
+== Software Utilities
 :pp: {plus}{plus}
 
 === What is on your Pico?
