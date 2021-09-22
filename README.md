@@ -109,7 +109,7 @@ $ make
 
 This will automatically use [Ninja build](https://ninja-build.org/) to convert the source files in `documentation/asciidoc/` to a suitable intermediate structure in `build/jekyll/`, and then use [Jekyll AsciiDoc](https://github.com/asciidoctor/jekyll-asciidoc) to convert the files in `build/jekyll/` to the final output HTML files in `documentation/html/`.
 
-You can also start a local server to view the compiled site by running,
+You can also start a local server to view the built site by running,
 ```
 $ make serve_html
 ```
