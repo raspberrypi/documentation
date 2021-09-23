@@ -20,13 +20,25 @@ $ cd documentation
 
 #### On Linux
 
+This works on both regular Debian or Ubuntu Linux — and has been tested in a minimal Docker container — and also under Raspberry Pi OS if you are working from a Raspberry Pi.
+
 You can install the necessary dependencies on Linux as follows,
 
 ```
-$ sudo apt-get -qq -y install ruby ruby-bundler ruby-dev build-essential python3 git ninja-build
+$ sudo apt install -y ruby ruby-dev python3 python3-pip make ninja-build
 ```
 
-This works on both regular Ubuntu Linux — and has been tested in a minimal Docker container — and also under Raspberry Pi OS if you are working from a Raspberry Pi.
+then add these lines to the bottom of your `$HOME/.bashrc`,
+```
+export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export PATH="$PATH:$GEM_HOME/bin"
+```
+
+and close and relaunch your Terminal window to have these new variables activated. Finally, run
+```
+$ gem install bundler
+```
+to install the latest version of the Ruby `bundle` command.
 
 #### On macOS
 
@@ -76,24 +88,28 @@ $ brew install python@3
 $ brew install ninja
 ```
 
-### Configuring the Repository
+### Install Scripting Dependencies
 
-After you've installed the toolchain, you'll need to install the required Ruby gems. Make sure you're in the `documentation` directory and then run,
+After you've installed the toolchain (on either Linux or macOS), you'll need to install the required Ruby gems and Python modules. Make sure you're in the `documentation/` directory and then run,
 ```
 $ bundle install
+```
+(which may take several minutes), followed by,
+```
+$ pip3 install --user -r requirements.txt
 ```
 
 ### Building the Documentation Site
 
-After you've installed the toolchain and configured the repository you can build the documentation with,
+After you've installed both the toolchain and scripting dependencies, you can build the documentation with,
 
 ```
 $ make
 ```
 
-This will automatically convert the `build/jekyll/` files to HTML and put them into `documentation/html/`.
+This will automatically use [Ninja build](https://ninja-build.org/) to convert the source files in `documentation/asciidoc/` to a suitable intermediate structure in `build/jekyll/`, and then use [Jekyll AsciiDoc](https://github.com/asciidoctor/jekyll-asciidoc) to convert the files in `build/jekyll/` to the final output HTML files in `documentation/html/`.
 
-You can also start a local server to view the compiled site by running,
+You can also start a local server to view the built site by running,
 ```
 $ make serve_html
 ```
@@ -104,8 +120,14 @@ To build without an active internet connection, run
 ```
 $ OFFLINE_MODE=1 make
 ```
-which will copy the `fonts.html` and `header.html` files from `offline_includes` (instead of downloading them from esi.raspberrypi.org).
+(or `OFFLINE_MODE=1 make serve_html`) which will copy the `fonts.html` and `header.html` files from `offline_includes/` (instead of downloading them from esi.raspberrypi.org).
 
-## License
+You can revert your repository to a pristine state by running,
+```
+$ make clean
+```
+which will delete the `build/` and `documentation/html/` directories.
 
-The Raspberry Pi documentation is [licensed](https://github.com/raspberrypi/documentation/blob/develop/LICENSE.md) under a Creative Commons Attribution 4.0 International Licence. While the toolchain source code is Copyright © 2020 Raspberry Pi (Trading) Ltd. and licensed under the [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause) licence.
+## Licence
+
+The Raspberry Pi [documentation](./documentation/) is [licensed](https://github.com/raspberrypi/documentation/blob/develop/LICENSE.md) under a Creative Commons Attribution 4.0 International Licence. While the toolchain source code (everything outside of the `documentation/` subdirectory) is Copyright © 2021 Raspberry Pi (Trading) Ltd. and licensed under the [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause) licence.

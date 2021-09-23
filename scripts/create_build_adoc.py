@@ -6,6 +6,15 @@ import json
 import re
 import yaml
 
+
+def check_no_markdown_headers(filename):
+    with open(filename) as fh:
+        asciidoc = fh.read()
+        asciidoc = re.sub('----\n.*?\n----', '', asciidoc, flags=re.DOTALL)
+        if re.search('(?:^|\n)#+', asciidoc):
+            raise Exception("{} contains a Markdown-style header (i.e. '#' rather than '=')".format(filename))
+
+
 if __name__ == "__main__":
     index_json = sys.argv[1]
     config_yaml = sys.argv[2]
@@ -15,6 +24,8 @@ if __name__ == "__main__":
     build_adoc = sys.argv[6]
     output_subdir = os.path.basename(os.path.dirname(build_adoc))
     adoc_filename = os.path.basename(build_adoc)
+
+    check_no_markdown_headers(src_adoc)
 
     index_title = None
     with open(index_json) as json_fh:
