@@ -28,10 +28,10 @@ plugins:
   - jekyll-asciidoc
   - jekyll-feed
 
-# this corresponds to ASCIIDOC_BUILD_DIR in makefiles/shared.mk
+# this corresponds to ASCIIDOC_BUILD_DIR in Makefile
 source: build/jekyll
 
-# this corresponds to HTML_DIR in makefiles/shared_vars.txt
+# this corresponds to HTML_DIR in Makefile
 destination: documentation/html
 
 sass:
