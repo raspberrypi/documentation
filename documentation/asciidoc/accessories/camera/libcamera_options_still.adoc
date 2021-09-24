@@ -83,7 +83,7 @@ then
 `kill -SIGUSR1 $!`
 
 ----
-	--thumb,			Set thumbnail parameters <w:h:q>
+	--thumb				Set thumbnail parameters <w:h:q>
 ----
 
 Sets the dimensions and quality parameter of the associated thumbnail image. The defaults are size 320x240 and quality 70.
