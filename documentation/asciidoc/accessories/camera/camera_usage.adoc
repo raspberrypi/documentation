@@ -20,6 +20,8 @@ Users are encouraged to use the newest OS images and the `libcamera`-based stack
 * Nearly all aspects of the camera tuning can be changed by users.
 * It integrates much more conveniently with other standard Linux APIs.
 * Raspberry Pi supply a set of `libcamera-apps` which emulate most of the features of the legacy applications.
+* It provdes a feature-rich post-processing framework integrating OpenCV and TensorFlow Lite.
+* Libcamera makes it easier to control the parameters of the image sensor and the camera system.
 * It is fully supported on 64-bit operating systems.
 
 Reasons to consider staying with an older OS and using the legacy _Raspicam_ stack might include:

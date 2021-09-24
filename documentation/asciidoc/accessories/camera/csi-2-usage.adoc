@@ -24,7 +24,7 @@ This was an interim option before the V4L2 driver was available. The MMAL compon
 
 ==== V4L2
 
-NOTE: This interface is available only when using `libcamera`.
+NOTE: The V4L2 interface for Unicam is available only when using `libcamera`.
 
 There is a fully open source kernel driver available for the Unicam block; this is a kernel module called bcm2835-unicam. This interfaces to V4L2 subdevice drivers for the source to deliver the raw frames. This bcm2835-unicam driver controls the sensor, and configures the CSI-2 receiver so that the peripheral will write the raw frames (after Debayer) to SDRAM for V4L2 to deliver to applications. Except for this ability to unpack the CSI-2 Bayer formats to 16bits/pixel, there is no image processing between the image source (e.g. camera sensor) and bcm2835-unicam placing the image data in SDRAM.
 
