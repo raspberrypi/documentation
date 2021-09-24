@@ -7,9 +7,11 @@ import re
 import yaml
 
 
-def check_no_markdown_headers(filename):
+def check_no_markdown(filename):
     with open(filename) as fh:
         asciidoc = fh.read()
+        if re.search('```\n.*?\n```', asciidoc):
+            raise Exception("{} uses triple-backticks for markup - please use four-hyphens instead".format(filename))
         asciidoc = re.sub('----\n.*?\n----', '', asciidoc, flags=re.DOTALL)
         if re.search('(?:^|\n)#+', asciidoc):
             raise Exception("{} contains a Markdown-style header (i.e. '#' rather than '=')".format(filename))
@@ -25,7 +27,7 @@ if __name__ == "__main__":
     output_subdir = os.path.basename(os.path.dirname(build_adoc))
     adoc_filename = os.path.basename(build_adoc)
 
-    check_no_markdown_headers(src_adoc)
+    check_no_markdown(src_adoc)
 
     index_title = None
     with open(index_json) as json_fh:
