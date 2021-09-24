@@ -74,8 +74,7 @@ Please see the xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[bo
 
 The bootloader may also be updated before the firmware is started if a `pieeprom.upd` file is found. Please see the xref:raspberry-pi.adoc#raspberry-pi-4-boot-eeprom[bootloader EEPROM] page for more information about bootloader updates.
 
-#tryboot
-=== Failsafe OS updates (TRYBOOT)
+=== Fail-safe OS updates (TRYBOOT)
 
 The bootloader/firmware provide a one-shot flag which, if set, is cleared but causes 'tryboot.txt' to be loaded instead of 'config.txt'. This alternate firmware would specify the pending OS update firmware, cmdline, kernel and OS-prefix files. Since the flag is cleared before starting the firwmare a crash or reset will cause the original 'config.txt' file to be loaded on the next reboot.
 
