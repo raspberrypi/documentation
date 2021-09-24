@@ -144,3 +144,43 @@ The stage operates on a low resolution stream image of size 300x300. The followi
 `libcamera-hello --post-process-file object_detect_tf.json --lores-width 400 --lores-height 300`
 
 image::images/detection.jpg[Image showing detected objects]
+
+==== `segmentation_tf` stage
+
+`segmentation_tf` uses a Google MobileNet v1 model. The model file can be downloaded from https://tfhub.dev/tensorflow/lite-model/deeplabv3/1/metadata/2?lite-format=tflite[], whilst the labels file can be found in the `assets` folder, named `segmentation_labels.txt`.
+
+This stage runs on an image of size 257x257. Because YUV420 images must have even dimensions, the low resolution image should be at least 258 pixels in both width and height. The stage adds a vector of 257x257 values to the image metadata where each value indicates which of the categories (listed in the labels file) that the pixel belongs to. Optionally, a representation of the segmentation can be drawn into the bottom right corner of the image.
+
+This stage has the following configurable parameters.
+
+[cols=",^"]
+|===
+| refresh_rate | The number of frames that must elapse before the model is re-run
+| model_file | Pathname to the tflite model file
+| labels_file | Pathname to the file containing the list of labels
+| threshold | When verbose is set, the stage prints to the console any labels where the number of pixels with that label (in the 257x257 image) exceeds this threshold.
+| draw | Set this value to draw the segmentation map into the bottom right hand corner of the image.
+| verbose | Output more information to the console
+|===
+
+Example `segmentation_tf.json` file:
+
+----
+{
+    "segmentation_tf":
+    {
+	"number_of_threads" : 2,
+	"refresh_rate" : 10,
+	"model_file" : "/home/pi/models/lite-model_deeplabv3_1_metadata_2.tflite",
+	"labels_file" : "/home/pi/models/segmentation_labels.txt",
+	"draw" : 1,
+	"verbose" : 1
+    }
+}
+----
+
+This example takes a square camera image and reduces it to 258x258 pixels in size. In fact the stage also works well when non-square images are squashed unequally down to 258x258 pixels without cropping. The image below shows the segmentation map in the bottom right hand corner.
+
+`libcamera-hello --post-process-file segmentation_tf.json --lores-width 258 --lores-height 258 --viewfinder-width 1024 --viewfinder-height 1024`
+
+image::images/segmentation.jpg[Image showing segmentation in the bottom right corner]
