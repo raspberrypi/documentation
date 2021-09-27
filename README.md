@@ -116,12 +116,6 @@ $ make serve_html
 
 As the local server launches, the local URL will be printed in the terminal -- open this URL in a browser to see the locally-built site.
 
-To build without an active internet connection, run
-```
-$ OFFLINE_MODE=1 make
-```
-(or `OFFLINE_MODE=1 make serve_html`) which will copy the `fonts.html` and `header.html` files from `offline_includes/` (instead of downloading them from esi.raspberrypi.org).
-
 You can revert your repository to a pristine state by running,
 ```
 $ make clean
