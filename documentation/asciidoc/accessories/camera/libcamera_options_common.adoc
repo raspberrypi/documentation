@@ -3,6 +3,23 @@
 The following options apply across all the `libcamera-apps` with similar or identical semantics, unless noted otherwise.
 
 ----
+	--help,		-h		Print help information for the application
+----
+
+The `--help` option causes every application to print its full set of command line options with a brief synopsis of each, and then quit.
+
+----
+	--version			Print out a software version number
+----
+
+All `libcamera-apps` will, when they see the `--version` option, print out a version string both for `libcamera` and `libcamera-apps` and then quit, for example:
+
+----
+libcamera-apps build: ca559f46a97a 27-09-2021 (14:10:24)
+libcamera build: v0.0.0+3058-c29143f7
+----
+
+----
 	--timeout,	-t		Delay before application stops automatically <milliseconds>
 ----
 

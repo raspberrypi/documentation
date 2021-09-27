@@ -44,6 +44,8 @@ include::camera/libcamera_3rd_party_tuning.adoc[]
 
 include::camera/libcamera_known_issues.adoc[]
 
+include::camera/libcamera_apps_getting_help.adoc[]
+
 include::camera/raspicam.adoc[]
 
 include::camera/timelapse.adoc[]

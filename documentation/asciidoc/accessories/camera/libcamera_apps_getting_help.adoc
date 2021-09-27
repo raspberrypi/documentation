@@ -1,0 +1,19 @@
+=== Getting Help
+
+For further help with `libcamera` and the `libcamera-apps`, the first port of call will usually be the https://www.raspberrypi.org/forums/viewforum.php?f=43[Rasperry Pi Camera Forum]. Before posting, it's helpful to:
+
+* Ensure your xref:../computers/os.adoc#using-apt[software is up to date].
+
+* If you are using _Buster_  or an earlier version of Raspberry Pi OS where you have had to build `libcamera` and `libcamera-apps` for yourself, or indeed if you are using a later version but have built them for yourself anyway, then you may need to update those _git_ repositories and repeat the build process.
+
+* Make a note of your operating system version (`uname -a`).
+
+* Make a note of your `libcamera` and `libcamera-apps` versions (`libcamera-hello --version`).
+
+* Please report the make and model of the camera module you are using. Note that when third party camera module vendors supply their own software then we are normally unable to offer any support and all queries should be directed back to the vendor.
+
+* Please also provide information on what kind of a Raspberry Pi you have, including memory size.
+
+* If it seems like it might be relevant, please include any excerpts from the application's console output.
+
+When it seems likely that there are specific problems in the camera software (such as crashes) then it may be more appropriate to https://github.com/raspberrypi/libcamera-apps[create an issue in the `libcamera-apps` Github repository]. Again, please include all the helpful details that you can.
