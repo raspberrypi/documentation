@@ -2,6 +2,8 @@
 
 You can configure your Raspberry Pi to use a screen saver or to blank the screen.
 
+NOTE: This option can possible affect XRDP sessions. It was observed that when disabled the XRDP does not react on mouse or keyboard input. The reason is unknown.
+
 === On Console
 
 When running without a graphical desktop, Raspberry Pi OS will blank the screen after 10 minutes without user input, e.g. mouse movement or key presses.
