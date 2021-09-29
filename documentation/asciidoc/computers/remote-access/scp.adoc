@@ -71,3 +71,21 @@ scp "my file.txt" pi@192.168.1.3:
 ----
 
 ======
+
+=== Copying Directory
+
+Copy the directory `project/` from your computer to the `pi` user's home folder of your Raspberry Pi at the IP address `192.168.1.3` with the following command:
+
+[,bash]
+----
+scp -r project/ pi@192.168.1.3:
+----
+
+=== Usage port number
+
+Copy the file to the `pi` user's home folder of your Raspberry Pi at the IP address `192.168.1.3:8001` with the following command(default `22`):
+
+[,bash]
+----
+scp -P 8001 myfile.txt pi@192.168.1.3:
+----
