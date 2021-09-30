@@ -1,0 +1,36 @@
+== Preparing your Build HAT
+
+NOTE: Before starting to work with your Raspberry Pi Build HAT you should xref:getting-started.adoc#setting-up-your-raspberry-pi[set up] your Raspberry Pi, xref:getting-started.html#installing-the-operating-system[install] the latest version of the operating system using https://www.raspberrypi.org/downloads/[Raspberry Pi Imager].
+
+Attach 9mm spacers to the bottom of the board. Seat the Raspberry Pi Build HAT onto your Raspberry Pi. Make sure you put it on the right way up. Unlike other HATs, all the components are on the bottom, leaving room for a breadboard or LEGO elements on top.  
+
+image::images/fitting-build-hat.gif[width="80%"]
+
+=== Access the GPIO Pins
+
+If you want to access the GPIO pins of the Raspberry Pi, you can add an optional tall header and use 15 mm spacers.
+
+image::images/tall-headers.png[width="80%"]
+
+The following pins are used by the Build HAT itself and you should not connect anything to them.
+
+[[table_passive_ids]]
+[cols="^1,^1,^1", width="75%", options="header"]
+|===
+| GPIO| Use | Status
+| GPIO0/1 | ID prom | 
+| GPIO4| Reset | 
+| GPIO14| Tx | 
+| GPIO15| Rx | 
+| GPIO16 | RTS | unused
+| GPIO17 | CTS | unused
+|===
+
+=== Powering the Build HAT
+
+Connect an external power supply - the official Raspberry Pi Build HAT power supply is recommended.  You don’t need to connect a USB power supply to the Raspberry Pi as well.
+
+[[powering-build-hat]]
+[pdfwidth=75%]
+.Powering the Build HAT using the Raspberry Pi Build HAT power supply.
+image::images/powering-build-hat.gif[width="80%"]

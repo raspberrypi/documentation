@@ -103,6 +103,12 @@
                     "subpath": "keyboard-and-mouse.adoc"
                 },
                 {
+                    "title": "Build HAT",
+                    "description": "How to use the Build HAT",
+                    "image": "full-sized/Build-HAT.png",
+                    "subpath": "build-hat.adoc"
+                },
+                {
                     "title": "Sense HAT",
                     "description": "How to use the Sense HAT",
                     "image": "full-sized/Sense-HAT.png",

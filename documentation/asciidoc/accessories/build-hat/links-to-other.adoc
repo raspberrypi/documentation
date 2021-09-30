@@ -1,0 +1,12 @@
+== Further Resources
+
+You can download documentation on 
+
+* Raspberry Pi Build HAT Serial Protocol
+* Raspberry Pi Build HAT Python Library
+
+and full details of the Python Library documentation can be found on ReadTheDocs.
+
+You can also follow along with…
+
+INSERT DETAILS OF FOUNDATION CONTENT HERE
