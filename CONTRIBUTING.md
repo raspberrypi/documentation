@@ -14,6 +14,8 @@ In order to contribute new or updated documentation, you must first create a Git
 
 **NOTE:** Issues and Pull Requests older than 60 days will [automatically be marked as stale](https://github.com/actions/stale) and then closed 7 days later if there still hasn't been any further activity.
 
+Before starting writing your contribution to the documentation you should take a look at the [style guide](https://github.com/raspberrypi/style-guide/blob/master/style-guide.md).
+
 ## Type of Content
 
 We welcome contributions from the community, ranging from correcting small typos all the way through to adding entire new sections to the documentation. However going forward we're going to be fairly targetted about what sort of content we add to the documentation. We are looking to keep the repository, and the documentation, focussed on Raspberry Pi-specific things, rather than having generic Linux or computing content.
