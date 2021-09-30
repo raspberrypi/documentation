@@ -10,3 +10,5 @@ include::build-hat/motors.adoc[]
 include::build-hat/sensors.adoc[]
 
 include::build-hat/links-to-other.adoc[]
+
+include::build-hat/compat.adoc[]

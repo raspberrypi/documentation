@@ -1,0 +1,18 @@
+== Device Compatibility
+
+LEGO devices supported by the Raspberry Pi Build HAT.
+
+[cols="2,2,1,1,1,1,1,3,1,1,1,1", width="100%", options="header"]
+|===
+| Description | Colour | LEGO Item Number | Supported in FW | Supported in Python | Alt Number | BrickOwl | Available In | Set Numbers | Class | Type | Device ID
+
+| Large Angular Motor | White/Cyan | 6254344 | Yes | Yes | 45602 | https://www.brickowl.com/catalog/lego-large-angular-motor-set-45602[Link] | SPIKE Prime Set, 
+SPIKE Prime Expansion Set | 45678, 45680 | Motor | Active | 30
+
+| Medium Angular Motor | White/Cyan | 6254347 | Yes | Yes | 45603 | https://www.brickowl.com/catalog/lego-medium-angular-motor-set-45603[Link] | SPIKE Prime Set | 45678 | Motor | Active | 31
+
+| Medium Motor | White/Grey | 6299646, 6359216 | Partial | Yes | 436655 | https://www.brickowl.com/catalog/lego-servo-motor-54696-79819[Link] | Mindstorms Robot Inventor | 51515 | Motor | Active | 4B
+
+| Small Motor | White/Cyan | | Yes| Yes| | | New SPIKE Prime Set| | Motor| Active| 41
+
+|===
