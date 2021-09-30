@@ -1,0 +1,118 @@
+=== Building `libcamera` and `libcamera-apps`
+
+Building `libcamera` and `libcamera-apps` for yourself can bring the following benefits.
+
+* You can pick up the latest enhancements and features.
+
+* `libcamera-apps` can be compiled with extra optimisation for Pi 3 and Pi 4 devices running a 32-bit OS.
+
+* You can include the various optional OpenCV and/or TFLite post-processing stages.
+
+NOTE: When building for Pi 3 or earlier devices there is a risk that the device may run out of swap and fail. We recommend either increasing the amount of swap, or building with fewer threads (the `-j` option to `ninja` and to `make`).
+
+==== Building `libcamera-apps` without rebuilding `libcamera`
+
+On _Bullseye_ or later images, you can rebuild `libcamera-apps` _without_ first rebuilding the whole of `libcamera` and `libepoxy`. To do this, please execute:
+
+----
+sudo apt install -y libcamera-dev libepoxy-dev libjpeg-dev libtiff5-dev
+----
+
+If you want to use the Qt preview window, please also execute
+
+----
+sudo apt install -y qtbase5-dev libqt5core5a libqt5gui5 libqt5widgets5
+----
+
+Now proceed directly to the instructions for xref:camera.adoc#building-libcamera-apps[building `libcamera-apps`].
+
+==== Building `libcamera`
+
+First install all the necessary dependencies for `libcamera`.
+
+NOTE: Raspberry Pi OS Lite users will first need to install the following additional packages if they have not done so previously:
+
+----
+sudo apt install -y python3-pip git
+sudo pip3 install jinja2
+----
+
+All users should then install the following.
+
+----
+sudo apt install -y libboost-dev
+sudo apt install -y libgnutls28-dev openssl libtiff5-dev
+sudo apt install -y qtbase5-dev libqt5core5a libqt5gui5 libqt5widgets5
+sudo apt install -y meson
+sudo pip3 install pyyaml ply
+sudo pip3 install --upgrade meson
+----
+
+Now we can check out and build `libcamera` itself.
+
+----
+cd
+git clone git://linuxtv.org/libcamera.git
+cd libcamera
+meson build --buildtype=release
+cd build
+meson configure -Dpipelines=raspberrypi -Dtest=false
+cd ..
+ninja -C build
+sudo ninja -C build install   # use -j 2 on Pi 3 or earlier devices
+----
+
+NOTE: If you wish to build the `libcamerasrc` _gstreamer_ element, please ensure that _gstreamer_ and `libgstreamer1.0-dev` and `libgstreamer-plugins-base1.0-dev` are installed before running `meson`. If you wish to build the V4L2 compatabilitiy layer, please add `-Dv4l2=true` to the `meson configure` command. More information is available on the https://www.libcamera.org/index.html[libcamera website].
+
+==== Building `libepoxy`
+
+If you wish to build and install `libepoxy`, please start by installing the necessary dependencies.
+
+----
+sudo apt install -y libegl1-mesa-dev
+----
+
+Next, check out and build `libepoxy`.
+
+----
+cd
+git clone https://github.com/anholt/libepoxy.git
+cd libepoxy
+mkdir _build
+cd _build
+meson
+ninja
+sudo ninja install
+----
+
+==== Building `libcamera-apps`
+
+First fetch the necessary dependencies for `libcamera-apps`.
+
+----
+sudo apt install -y cmake libboost-program-options-dev libdrm-dev libexif-dev
+----
+
+Finally build `libcamera-apps` as shown. You will need to decide what extra flags to pass to `cmake`. The valid flags are:
+
+* `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon` - you may supply this when building for Pi 3 or Pi 4 devices running a 32-bit OS. Some post-processing features may run more quickly.
+
+* `-DENABLE_OPENCV=0` or `-DENABLE_OPENCV=1` - you may choose one of these to force OpenCV-based post-processing stages to be linked (or not). If you enable them, then OpenCV must be installed on your system. Normally they will be built by default if OpenCV is available.
+
+* `-DENABLE_TFLITE=0` or `-DENABLE_TFLITE=1` - choose one of these to enable TensorFlow Lite post-processing stages (or not). By default they will not be enabled. If you enable them then TensorFlow Lite must be available on your system. Depending on how you have built and/or installed TFLite, you may need to tweak the `CMakeLists.txt` file in the `post_processing_stages` directory.
+
+----
+cd
+git clone https://github.com/raspberrypi/libcamera-apps.git
+cd libcamera-apps
+mkdir build
+cd build
+cmake ..  # add your extra cmake flags here
+make -j4  # use -j2 on Pi 3 or earlier devices
+sudo make install
+sudo ldconfig  # this is only necessary on the first build
+----
+
+NOTE: On _Bullseye_ and later images, if you want to run the new `libcamera-apps` executables from the same terminal window where you have just built and installed them for the first time, you may need to run `hash -r` to be sure to pick up the new ones over the system supplied ones.
+
+Finally, if you have not already done so, please be sure to follow the `dtoverlay` and display driver instructions in the  xref:camera.adoc#getting-started[Getting Started section] (and rebooting if you changed anything there).

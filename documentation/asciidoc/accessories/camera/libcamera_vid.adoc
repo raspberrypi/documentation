@@ -1,0 +1,82 @@
+=== `libcamera-vid`
+
+`libcamera-vid` is the video capture application. By default it uses the Raspberry Pi's hardware H.264 encoder. It will display a preview window and write the encoded bitstream to the specified output. For example, to write a 10 second video to file use
+
+[,bash]
+----
+libcamera-vid -t 10000 -o test.h264
+----
+The resulting file can be played with `vlc` (among other applications)
+[,bash]
+----
+vlc test.h264
+----
+Note that this is an unpackaged video bistream, it is not wrapped in any kind of container format (such as an mp4 file). The `--save-pts` option can be used to output frame timestamps so that the bitstream can subsequently be converted into an appropriate format using a tool like `mkvmerge`.
+
+`libcamera-vid -o test.h264 --save-pts timestamps.txt`
+
+and then if you want an _mkv_ file:
+
+`mkvmerge -o test.mkv --timecodes 0:timestamps.txt test.h264`
+
+==== Encoders
+
+There is support for motion JPEG, and also for uncompressed and unformatted YUV420, for example
+[,bash]
+----
+libcamera-vid -t 10000 --codec mjpeg -o test.mjpeg
+libcamera-vid -t 10000 --codec yuv420 -o test.data
+----
+In both cases the `--codec` parameter determines the output format, not the extension of the output file.
+
+The `--segment` parameter breaks output files up into chunks of the segment size (given in milliseconds). This is quite handy for breaking a motion JPEG stream up into individual JPEG files by specifying very short (1 millisecond) segments.
+[,bash]
+----
+libcamera-vid -t 10000 --codec mjpeg --segment 1 -o test%05d.jpeg
+----
+Observe that the output file name is normally only sensible if we avoid over-writing the previous file every time, such as by using a file name that includes a counter (as above). More information on output file names is available below.
+
+==== Network Streaming
+
+===== UDP
+
+To stream video using UDP, on the Raspberry Pi (server) use
+[,bash]
+----
+libcamera-vid -t 0 --inline -o udp://<ip-addr>:<port>
+----
+where `<ip-addr>` is the IP address of the client, or multicast address (if appropriately configured to reach the client). On the client use (for example)
+[,bash]
+----
+vlc udp://@:<port> :demux=h264
+----
+with the same `<port>` value.
+
+===== TCP
+
+Video can be streamed using TCP. To use the Pi as a server
+[,bash]
+----
+libcamera-vid -t 0 --inline --listen -o tcp://0.0.0.0:<port>
+----
+and on the client
+[,bash]
+----
+vlc tcp/h264://<ip-addr-of-server>:<port>
+----
+The Raspberry Pi will wait until the client connects, and then start streaming video.
+
+===== RTSP
+
+vlc is useful on the Pi for formatting an RTSP stream, though there are other RTSP servers available.
+[,bash]
+----
+libcamera-vid -t 0 --inline -o - | cvlc stream://dev/stdin --sout '#rtp{sdp=rtsp://:8554/stream1}' :demux=h264
+----
+and this can be played with
+[,bash]
+----
+vlc rtsp://<ip-addr-of-server>:8554/stream1
+----
+
+In all cases, the preview window on the server (the Raspberry Pi) can be suppressed with the `-n` (`--nopreview`) option. Note also the use of the `--inline` option which forces the stream header information to be included with every I (intra) frame. This is important so that a client can correctly understand the stream if it missed the very beginning.

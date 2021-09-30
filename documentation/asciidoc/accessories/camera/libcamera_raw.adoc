@@ -1,0 +1,23 @@
+=== `libcamera-raw`
+
+`libcamera-raw` is like a video recording application except that it records raw Bayer frames directly from the sensor. It does not show a preview window. For a 2 second raw clip use
+
+[,bash]
+----
+libcamera-raw -t 2000 -o test.raw
+----
+
+The raw frames are dumped with no formatting information at all, one directly after another. The application prints the pixel format and image dimensions to the terminal window so that the user can know how to interpret the pixel data.
+
+By default the raw frames are saved in a single (potentially very large) file. As we saw previously, the `--segement` option can be used conveniently to direct each to a separate file.
+[,bash]
+----
+libcamera-raw -t 2000 --segment 1 -o test%05d.raw
+----
+
+In good conditions (using a fast SSD) `libcamera-raw` can get close to writing 12MP HQ camera frames (18MB of data each) to disk at 10 frames per second. It writes the raw frames with no formatting in order to achieve these speeds; it has no capability to save them as DNG files (like `libcamera-still`). If you want to be sure not to drop frames you could reduce the framerate slightly using the `--framerate` option, for example
+
+[,bash]
+----
+libcamera-raw -t 5000 --width 4056 --height 3040 -o test.raw --framerate 8
+----

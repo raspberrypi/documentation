@@ -1,0 +1,74 @@
+=== Understanding and Writing your own Apps
+
+`libcamera-apps` are not supposed to be a full set of all the applications with all the features that anyone could ever need. Instead, they are supposed to be easy to understand such that users who require specific but slightly different behaviour can implement it for themselves.
+
+All the applications work by having a simple event loop which receives a message with a new set of frames from the camera system. This set of frames is called a `CompletedRequest`. It contains all the images that have been derived from that single camera image (so perhaps a low resolution image in addition to the full size output), as well as metadata from the camera system and further metadata from the post-processing system.
+
+==== `libcamera-hello`
+
+`libcamera-hello` is much the easiest application to understand. The only thing it does with the camera images is extract the `CompletedRequest` from the message:
+
+----
+	CompletedRequest &completed_request = std::get<CompletedRequest>(msg.payload);
+----
+
+and forward it to the preview window:
+
+----
+	app.ShowPreview(completed_request, app.ViewfinderStream());
+----
+
+Notice how, before the event loop starts, we configure the preview window to send the `CompletedRequest` back to `libcamera` once it is done with them:
+
+----
+	app.SetPreviewDoneCallback(std::bind(&LibcameraApp::QueueRequest, &app, _1));
+----
+
+The critical thing to note is that, whatever else happens to a `CompletedRequest`, the last thing must always be to queue it back to `libcamera`.
+
+==== `libcamera-vid`
+
+`libcamera-vid` is not unlike `libcamera-hello`, but it interposes a codec between the event loop and the preview. Before the event loop starts, we must configure that encoder with two callbacks. The first determintes what it does with the image buffer once it has finished encoding it.
+
+----
+	app.SetEncodeBufferDoneCallback(std::bind(&LibcameraEncoder::ShowPreview, &app, _1, _2));
+----
+
+We can see that once it is done with it, the image buffers get sent to the preview window, much as we saw in `libcamera-hello`.
+
+There is another buffer we need to take care of, which is the buffer containing the encoded image data. This might typically be an h.264 bitstream.
+
+----
+	app.SetEncodeOutputReadyCallback(std::bind(&Output::OutputReady, output.get(), _1, _2, _3, _4));
+----
+
+This time we send the buffer to the `Output` object which may write it to a file, or send it over the network, according to our choice when we started the application.
+
+Finally, we have to remember that the preview must return the `CompletedRequest` to `libcamera` once it no longer needs it:
+
+----
+	app.SetPreviewDoneCallback(std::bind(&LibcameraEncoder::QueueRequest, &app, _1));
+----
+
+==== `libcamera-raw`
+
+`libcamera-raw` is not so very different from `libcamera-vid`. It too uses a encoder, though this time it is a "dummy" encoder called the `NullEncoder`. This just treats the input image directly as the output buffer and is careful not to say it is finished with the input until the output callback has dealt with it first.
+
+This time, however, we do not forward anything to the preview window, though we could have displayed the (processed) video stream if we had wanted.
+
+The use of the `NullEncoder` is possibly overkill in this application as we could probably just send the image straight to the `Output` object. However, it serves to underline the general principle that it is normally a bad idea to do too much work directly in the event loop, and time-consuming processes are often better left to other threads.
+
+==== `libcamera-jpeg`
+
+We discuss `libcamera-jpeg` rather than `libcamera-still` as the basic idea (that of switching the camera from preview into capture mode) is the same, and `libcamera-jpeg` has far fewer additional options (such as timelapse capture) that serve to distract from the basic function.
+
+`libcamera-jpeg` starts the camera in preview mode in the usual way, but at the appropriate moment stops it and switches to still capture:
+
+----
+	app.StopCamera();
+	app.Teardown();
+	app.ConfigureStill();
+	app.StartCamera();
+----
+
+Then the event loop will grab the first frame that emerges once it's no longer in preview mode, and saves this as a JPEG.

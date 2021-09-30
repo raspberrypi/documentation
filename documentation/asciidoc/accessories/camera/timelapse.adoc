@@ -1,13 +1,21 @@
-== Creating Timelapse Video
+== Application Notes
+
+=== Creating Timelapse Video
 
 To create a time-lapse video, you simply configure the Raspberry Pi to take a picture at a regular interval, such as once a minute, then use an application to stitch the pictures together into a video. There are a couple of ways of doing this.
 
-=== Using `raspistill` Timelapse Mode
+==== Using `libcamera-still` or `raspistill` Timelapse Mode
 
-The `raspistill` application has a built in time-lapse mode, using the `--timelapse` (or `-tl`) command line switch. The value that follows the switch is the time between shots in milliseconds:
+Both `libcamera-still` and `raspistill` have a built in time-lapse mode, using the `--timelapse` command line switch. The value that follows the switch is the time between shots in milliseconds:
 
 ----
-raspistill -t 30000 -tl 2000 -o image%04d.jpg
+libcamera-still -t 30000 --timelapse 2000 -o image%04d.jpg
+----
+
+or
+
+----
+raspistill -t 30000 --timelapse 2000 -o image%04d.jpg
 ----
 
 [NOTE]
@@ -19,7 +27,7 @@ The `%04d` indicates a four-digit number, with leading zeros added to make up th
 If a timelapse value of 0 is entered, the application will take pictures as fast as possible. Note that there's an minimum enforced pause of approximately 30 milliseconds between captures to ensure that exposure calculations can be made.
 ======
 
-=== Automating using `cron` Jobs
+==== Automating using `cron` Jobs
 
 A good way to automate taking a picture at a regular interval is using `cron`. Open the cron table for editing:
 
@@ -27,7 +35,7 @@ A good way to automate taking a picture at a regular interval is using `cron`. O
 crontab -e
 ----
 
-This will either ask which editor you would like to use, or open in your default editor. Once you have the file open in an editor, add the following line to schedule taking a picture every minute (referring to the Bash script from the xref:camera.adoc#raspistill[raspistill page]):
+This will either ask which editor you would like to use, or open in your default editor. Once you have the file open in an editor, add the following line to schedule taking a picture every minute (referring to the Bash script from the xref:camera.adoc#raspistill[raspistill page], though you can use `libcamera-still` in exactly the same way):
 
 ----
 * * * * * /home/pi/camera.sh 2>&1
@@ -39,9 +47,9 @@ Save and exit and you should see the message:
 crontab: installing new crontab
 ----
 
-Make sure that you use e.g. `%04d` to make `raspistill` output each image to a new file: if you don't, then each time `raspistill` writes an image it will overwrite the same file.
+Make sure that you use e.g. `%04d` to ensure that each image is written to a new file: if you don't, then each new image will overwrite the previous file.
 
-=== Stitching Images Together
+==== Stitching Images Together
 
 Now you'll need to stitch the photos together into a video. You can do this on the Pi using `ffmpeg` but the processing will be slow. You may prefer to transfer the image files to your desktop computer or laptop and produce the video there.
 
