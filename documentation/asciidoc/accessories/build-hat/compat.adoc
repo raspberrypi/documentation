@@ -1,6 +1,6 @@
 == Device Compatibility
 
-LEGO® devices supported by the Raspberry Pi Build HAT.
+The Build HAT library supports all the LEGO® Technic™ devices included in the SPIKE™ Portfolio, along with those from the LEGO® Mindstorms Robot Inventor kit and other devices that use an LPF2 connector.
 
 [cols="2,2,1,1,1,1,1,3,1,1,1,1", width="100%", options="header"]
 |===
