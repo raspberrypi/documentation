@@ -1,3 +1,7 @@
 == Introducing the Build HAT
 
-Text goes here (steal from Product Page?)
+The Build HAT is part of an exciting new collaboration between the Raspberry Pi Foundation and LEGO® Education to increase the impact and reach of STEAM learning.​ 
+
+The Build HAT is an add-on board for your Raspberry Pi that connects to the 40-pin GPIO header and can be used to control up to four LEGO® Technic™ motors and sensors from the SPIKE™ Portfolio.
+
+The HAT works with all 40-pin GPIO Raspberry Pi boards, including Raspberry Pi 4 and Raspberry Pi Zero. With the addition of a ribbon cable or other extension device, it can also be used with Raspberry Pi 400.
