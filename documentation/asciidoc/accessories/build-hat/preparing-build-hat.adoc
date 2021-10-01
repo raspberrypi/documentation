@@ -26,11 +26,43 @@ The following pins are used by the Build HAT itself and you should not connect a
 | GPIO17 | CTS | unused
 |===
 
+
+=== Setting up your Raspberry Pi
+
+Once the Raspberry Pi has booted, open the Raspberry Pi Configuration tool by clicking on the Raspberry Menu button and then selecting “Preferences” and then “Raspberry Pi Configuration”.
+
+Click on the “interfaces” tab and adjust the Serial settings as shown below:
+
+image::images/setting-up.png[width="50%"]
+
+==== Using your Raspberry Pi Headless
+
+If you are running your Raspberry Pi xref:../computers/configuration.html#setting-up-a-headless-raspberry-pi[headless] and using `raspi-config`, select “interface options from the first menu”.
+
+image::images/raspi-config-1.png[width="70%"]
+
+Then “P6 Serial Port”.
+
+image::images/raspi-config-2.png[width="70%"]
+
+Disable the serial console:
+
+image::images/raspi-config-3.png[width="70%"]
+
+And enable the serial port hardware.
+
+image::images/raspi-config-4.png[width="70%"]
+
+The final settings should look like this.
+
+image::images/raspi-config-5.png[width="70%"]
+
+You will need to reboot at this point if you have made any changes.
+
 === Powering the Build HAT
 
 Connect an external power supply - the official Raspberry Pi Build HAT power supply is recommended. You don’t need to connect a USB power supply to the Raspberry Pi as well.
 
-[pdfwidth=75%]
 image::images/powering-build-hat.gif[width="80%"]
 
 [NOTE]
