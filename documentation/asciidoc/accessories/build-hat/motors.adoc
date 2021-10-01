@@ -49,5 +49,10 @@ Run the program. Grab the motor and turn the shaft. You should see the numbers p
 
 [source,python]
 ----
-MISSING CODE
+from buildhat import Motor
+
+motor_a = Motor('A')
+
+While True:
+    print("Position: ", motor_a.get_aposition())
 ----
