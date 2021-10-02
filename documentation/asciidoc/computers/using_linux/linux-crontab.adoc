@@ -52,7 +52,7 @@ View your currently saved scheduled tasks with:
 crontab -l
 ----
 
-=== Erase scheduled tasks.
+=== Erase scheduled tasks
 
 Delete all currently scheduled tasks:
 
