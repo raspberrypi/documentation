@@ -10,6 +10,24 @@ To flash the Compute Module eMMC, you either need a Linux system (a Raspberry Pi
 
 NOTE: There is a bug in the BCM2835 (CM1) bootloader which returns a slightly incorrect USB packet to the host. Most USB hosts seem to ignore this benign bug and work fine; we do, however, see some USB ports that don't work due to this bug. We don't quite understand why some ports fail, as it doesn't seem to be correlated with whether they are USB2 or USB3 (we have seen both types working), but it's likely to be specific to the host controller and driver. This bug has been fixed in BCM2837.
 
+=== Setting up the CMIO board
+
+==== Compute Module 4
+
+Ensure the Compute Module is fitted correctly installed on the IO board. It should lie flat on the IO board.
+
+* Make sure that `nRPI_BOOT` which is on J2 (`disable eMMC Boot`) on the IO board jumper is fitted
+* Use a micro USB cable to connect the micro USB slave port J11 on IO board to the host device.
+* Do not power up yet.
+
+==== Compute Module 1 and 3
+
+Ensure the Compute Module itself is correctly installed on the IO board. It should lie parallel with the board, with the engagement clips clicked into place.
+
+* Make sure that J4 (USB SLAVE BOOT ENABLE) is set to the 'EN' position.
+* Use a micro USB cable to connect the micro USB slave port J15 on IO board to the host device.
+* Do not power up yet.
+
 ==== For Windows Users
 
 Under Windows, an installer is available to install the required drivers and boot tool automatically. Alternatively, a user can compile and run it using Cygwin and/or install the drivers manually.
@@ -21,28 +39,10 @@ For those who just want to enable the Compute Module eMMC as a mass storage devi
 Please ensure you are not writing to any USB devices whilst the installer is running.
 
 . Download and run the https://github.com/raspberrypi/usbboot/raw/master/win32/rpiboot_setup.exe[Windows installer] to install the drivers and boot tool.
-. Plug your host PC USB into the CMIO USB SLAVE port, making sure J4 is set to the EN position.
-. Apply power to the CMIO board; Windows should now find the hardware and install the driver.
+. Plug your host PC USB into the USB SLAVE port, making sure you have setup the board as described above.
+. Apply power to the board; Windows should now find the hardware and install the driver.
 . Once the driver installation is complete, run the `RPiBoot.exe` tool that was previously installed.
 . After a few seconds, the Compute Module eMMC will pop up under Windows as a disk (USB mass storage device).
-
-=== Setting up the CMIO board
-
-==== Compute Module 4
-
-Ensure the Compute Module is fitted correctly installed on the IO board. It should lie flat on the IO board.
-
-* Make sure that `nRPI_BOOT` which is J2 (`disable eMMC Boot`) on the IO board is set to the 'EN' position.
-* Use a micro USB cable to connect the micro USB slave port J11 on IO board to the host device.
-* Do not power up yet.
-
-==== Compute Module 1 and 3
-
-Ensure the Compute Module itself is correctly installed on the IO board. It should lie parallel with the board, with the engagement clips clicked into place.
-
-* Make sure that J4 (USB SLAVE BOOT ENABLE) is set to the 'EN' position.
-* Use a micro USB cable to connect the micro USB slave port J15 on IO board to the host device.
-* Do not power up yet.
 
 ==== Building `rpiboot` on your host system (Cygwin/Linux)
 
