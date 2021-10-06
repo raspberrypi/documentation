@@ -545,7 +545,7 @@ div.videoblock iframe {
 }
 
 div.legal {
-  margin: 80px auto 0 auto;
+  margin: 60px auto 0 auto;
   max-width: 1200px;
   display: flex;
   align-items: center;
@@ -561,6 +561,26 @@ div.legal + div.legal {
 div.legal-inner {
   width: 100%;
 }
+
+div.contribute {
+  margin: 60px auto 0 auto;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: -60px;
+}
+
+div.contribute + div.contribute {
+  margin-top: 5px;
+}
+
+div.contribute-inner {
+  width: 100%;
+}
+
+
 
 p#copyright {
   font-family: 'Roboto', sans-serif;
