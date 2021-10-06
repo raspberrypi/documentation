@@ -551,11 +551,11 @@ div.legal {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding-bottom: 40px;
 }
 
 div.legal + div.legal {
   margin-top: 5px;
-  padding-bottom: 40px;
 }
 
 div.legal-inner {
