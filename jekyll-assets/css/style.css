@@ -554,7 +554,8 @@ div.legal {
 }
 
 div.legal + div.legal {
-  margin-top: 10px;
+  margin-top: 5px;
+  padding-bottom: 40px;
 }
 
 div.legal-inner {
