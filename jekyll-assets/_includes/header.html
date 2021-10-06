@@ -84,6 +84,7 @@
   text-decoration: none;
 }
 #__rptl-header .__rptl-header-logo {
+  display: block;
   margin: 1em 0.25em 1em 0;
 }
 #__rptl-header .__rptl-header-navbar-link {
@@ -171,11 +172,14 @@
   right: 0;
   transition: transform 0.5s ease-in-out;
   z-index: 100;
+  border-bottom: 1px solid #dedede;
+}
+#__rptl-header .__rptl-header-nav:focus-within {
+  transform: translateY(0) !important;
 }
 @media (min-width: 1200px) {
   #__rptl-header .__rptl-header-nav {
     background-color: #f7f8fa;
-    border-bottom: 1px solid #dedede;
     position: relative;
     top: 0;
     transform: translateY(0) !important;
@@ -233,7 +237,10 @@
 }
 #__rptl-header .__rptl-header-list-item {
   padding: 1em 0;
-  border-bottom: 1px solid #dedede;
+  border-top: 1px solid #dedede;
+}
+#__rptl-header .__rptl-header-list-item--border-0 {
+  border: 0;
 }
 @media (min-width: 1200px) {
   #__rptl-header .__rptl-header-list-item {
@@ -252,6 +259,14 @@
   background-color: #fff;
   height: 0;
   overflow: hidden;
+}
+#__rptl-header .__rptl-header-sublist-wrapper:focus-within {
+  height: auto;
+}
+@media (min-width: 1200px) {
+  #__rptl-header .__rptl-header-sublist-wrapper:focus-within {
+    border-bottom: 2px solid #dedede;
+  }
 }
 @media (min-width: 1200px) {
   #__rptl-header .__rptl-header-sublist-wrapper {
@@ -317,13 +332,13 @@
 #__rptl-header .__rptl-header-sublist-state:checked ~ .__rptl-header-sublist-wrapper {
   height: auto;
 }
-#__rptl-header .__rptl-header-sublist-state:checked ~ .__rptl-header-label .__rptl-header-chevron {
-  transform: none;
-}
 @media (min-width: 1200px) {
   #__rptl-header .__rptl-header-sublist-state:checked ~ .__rptl-header-sublist-wrapper {
     border-bottom: 2px solid #dedede;
   }
+}
+#__rptl-header .__rptl-header-sublist-state:checked ~ .__rptl-header-label .__rptl-header-chevron {
+  transform: none;
 }
 </style>
 <header id="__rptl-header">
@@ -346,7 +361,7 @@
   <nav class="__rptl-header-nav" style="transform: translateY(-100%)">
     <div class="__rptl-header-nav-container">
       <ul class="__rptl-header-list">
-        <li class="__rptl-header-list-item">
+        <li class="__rptl-header-list-item __rptl-header-list-item--border-0">
           <a href="/for-industry/" class="__rptl-header-navbar-link __rptl-header-navbar-link--grey-dark">For industry</a>
         </li>
       </ul>
@@ -539,7 +554,7 @@
     });
 
     document.addEventListener("click", function(e) {
-      if (!e.target.closest("#__rptl-header")) {
+      if (e.target.matches(".__rptl-header-navbar-container") || !e.target.closest("#__rptl-header")) {
         burgerInput.checked = false;
         nullInput.checked = true;
       }
