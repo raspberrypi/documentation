@@ -1,0 +1,58 @@
+=== Using Gstreamer
+
+_Gstreamer_ is a Linux framework for reading, processing and playing multimedia files. There is a lot of information and many tutorials at the https://gstreamer.freedesktop.org/[_gstreamer_ website]. Here we show how `libcamera-vid` (and similarly `raspivid`) can be used to stream video over a network.
+
+On the server we need `libcamera-vid` to output an encoded h.264 bitstream to _stdout_ and can use the _gstreamer_ `fdsrc` element to receive it. Then extra _gstreamer_ elements can send this over the network. As an example we can simply send and receive the stream on the same device over a UDP link. On the server:
+
+[,bash]
+----
+libcamera-vid -t 0 -n --inline -o - | gst-launch-1.0 fdsrc fd=0 ! udpsink host=localhost port=5000
+----
+
+For the client (type this into another console window) we can use:
+
+[,bash]
+----
+gst-launch-1.0 udpsrc address=localhost port=5000 ! h264parse ! v4l2h264dec ! autovideosink
+----
+
+==== Using RTP
+
+To stream using the RTP protocol, on the server you could use:
+
+[,bash]
+----
+libcamera-vid -t 0 -n --inline -o - | gst-launch-1.0 fdsrc fd=0 ! h264parse ! rtph264pay ! udpsink host=localhost port=5000
+----
+
+And in the client window:
+
+[,bash]
+----
+gst-launch-1.0 udpsrc address=localhost port=5000 caps=application/x-rtp ! rtph264depay ! h264parse ! v4l2h264dec ! autovideosink
+----
+
+We conclude with an example that streams from one machine to another. Let us assume that the client machine has the IP address `192.168.0.3`. On the server (a Raspberry Pi) the pipeline is identical, but for the destination address:
+
+[,bash]
+----
+libcamera-vid -t 0 -n --inline -o - | gst-launch-1.0 fdsrc fd=0 ! h264parse ! rtph264pay ! udpsink host=192.168.0.3 port=5000
+----
+
+If the client is not a Raspberry Pi it may have different _gstreamer_ elements available. For a Linux PC we might use:
+
+[,bash]
+----
+gst-launch-1.0 udpsrc address=192.168.0.3 port=5000 caps=application/x-rtp ! rtph264depay ! h264parse ! avdec_h264 ! autovideosink
+----
+
+==== The `libcamerasrc` element
+
+`libcamera` provides a `libcamerasrc` _gstreamer_ element which can be used directly instead of `libcamera-vid`. On the server you could use:
+
+[,bash]
+----
+gst-launch-1.0 libcamerasrc ! capsfilter caps=video/x-raw,width=1280,height=720,format=NV12 ! v4l2convert ! v4l2h264enc extra-controls="controls,repeat_sequence_header=1" ! h264parse ! rtph264pay ! udpsink host=localhost port=5000
+----
+
+and on the client we use the same playback pipeline as previously.

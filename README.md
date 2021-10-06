@@ -1,8 +1,8 @@
 # Welcome to the Raspberry Pi Documentation
 
-This repository contains the Asciidoc source and the toolchain to build the [Raspberry Pi Documentation](https://www.raspberrypi.org/documentation/). For details of how to contribute to the documentation see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+This repository contains the Asciidoc source and the toolchain to build the [Raspberry Pi Documentation](https://www.raspberrypi.com/documentation/). For details of how to contribute to the documentation see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
-**NOTE:** This repository has undergone some recent changes. See our [blog post](https://www.raspberrypi.org/blog/bring-on-the-documentation/) for more details.
+**NOTE:** This repository has undergone some recent changes. See our [blog post](https://www.raspberrypi.com/blog/bring-on-the-documentation/) for more details.
 
 ## Building the Documentation
 
@@ -115,12 +115,6 @@ $ make serve_html
 ```
 
 As the local server launches, the local URL will be printed in the terminal -- open this URL in a browser to see the locally-built site.
-
-To build without an active internet connection, run
-```
-$ OFFLINE_MODE=1 make
-```
-(or `OFFLINE_MODE=1 make serve_html`) which will copy the `fonts.html` and `header.html` files from `offline_includes/` (instead of downloading them from esi.raspberrypi.org).
 
 You can revert your repository to a pristine state by running,
 ```

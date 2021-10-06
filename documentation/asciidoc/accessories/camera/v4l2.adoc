@@ -1,57 +1,43 @@
-== The V4L2 Driver
+== V4L2 Drivers
 
-The V4L2 driver provides a standard Linux driver for accessing camera features: this is the driver needed to use a Raspberry Pi camera as, for example, a webcam. The V4L2 driver provides a standard API on top of the firmware-based camera system.
+V4L2 drivers provide a standard Linux interface for accessing camera and codec features. They are loaded automatically when the system is started, though in some non-standard situations you may need to xref:camera.adoc#if-you-do-need-to-alter-the-configuration[load camera drivers explicitly].
 
-=== Installing the V4L2 Driver
+=== Driver differences when using `libcamera` or the legacy stack
 
-Installation of the V4L2 driver is automatic. It is loaded as a child of the VCHIQ driver, and once loaded it will check how many cameras are attached and then create the right number of device nodes.
+On systems using `libcamera`, `/dev/video0` and `/dev/video1` are V4L2 drivers for Unicam, the Pi's CSI-2 receiver. The Pi has two CSI-2 receivers, each managed by one of these device nodes.
 
-[cols=",^,"]
+On systems using the legacy stack, `/dev/video0` is a V4L2 driver that gives access to the full camera system using the proprietary Broadcom driver on the GPU. There is no `/dev/video1`. There are no Unicam drivers, though there is a legacy _MMAL Rawcam_ component.
+
+The other device nodes are always the same, and are listed in the table below.
+
+[cols="1,^3"]
 |===
-| \dev\videoX | Default Action |
+| /dev/videoX | Default Action
 
 | video10
-| Decode
-|
+| Video decode.
 
 | video11
-| Encode
-|
+| Video encode.
 
 | video12
-| Simple ISP
-|
+| Simple ISP. Can perform conversion and resizing between RGB/YUV formats, and also Bayer to RGB/YUV conversion.
 
 | video13
-| Full ISP In
-|
+| Input to fully programmable ISP.
 
 | video14
-| Full ISP Hi-res Out
-|
+| High resolution output from fully programmable ISP.
 
 | video15
-| Full ISP Lo-res Out
-|
+| Low result output from fully programmable ISP.
 
 | video16
-| Full ISP statistics
-|
+| Image statistics from fully programmable ISP.
 
 | video19
 | HEVC Decode
-|
 |===
-
-=== Testing the Driver
-
-There are many Linux applications that use the V4L2 API. The kernel maintainers provide a test tool called `Qv4l2` which can be installed from the Raspberry Pi OS repositories as follows:
-
-----
-sudo apt install Qv4l2
-----
-
-Running this tool will test whether the driver has been successfully installed.
 
 === Using the Driver
 

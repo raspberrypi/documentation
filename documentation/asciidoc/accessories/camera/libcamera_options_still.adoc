@@ -1,0 +1,128 @@
+=== Still Command Line Options
+
+----
+	--quality,	-q		JPEG quality <number>
+----
+
+Set the JPEG quality. 100 is maximum quality and 93 is the default. Only applies when saving JPEG files.
+
+Example: `libcamera-jpeg -o test.jpg -q 80`
+
+----
+	--exif,		-x		Add extra EXIF tags <string>
+----
+
+The given extra EXIF tags are saved in the JPEG file. Only applies when saving JPEG files.
+
+EXIF is supported using the `libexif` library and so there are some associated limitations. In particular, `libexif` seems to recognise a number of tags but without knowing the correct format for them. The software will currently treat these (incorrectly, in many cases) as ASCII, but will print a warning to the terminal. As we come across these they can be added to the table of known exceptions in the software.
+
+Clearly the application needs to supply EXIF tags that contain specific camera data (like the exposure time). But for other tags that have nothing to do with the camera, a reasonable workaround would simply be to add them _post facto_, using something like `exiftool`.
+
+Example: `libcamera-still -o test.jpg --exif IDO0.Artist=Someone`
+
+----
+	--timelapse			Time interval between timelapse captures <milliseconds>
+----
+
+This puts `libcamera-still` into timelapse mode where it runs according to the timeout (`--timeout` or `-t`) that has been set, and for that period will capture repeated images at the interval specified here. (`libcamera-still` only.)
+
+Example: `libcamera-still -t 100000 -o test%d.jpg --timelapse 10000` captures an image every 10s for about 100s.
+
+----
+	--framestart			The starting value for the frame counter <number>
+----
+
+When writing counter values into the output file name, this specifies the starting value for the counter.
+
+Example: `libcamera-still -t 100000 -o test%d.jpg --timelapse 10000 --framestart 1` captures an image every 10s for about 100s, starting at 1 rather than 0. (`libcamera-still` only.)
+
+----
+	--datetime			Use date format for the output file names
+----
+
+Use the current date and time to construct the output file name, in the form MMDDhhmmss.jpg, where MM = 2-digit month number, DD = 2-digit day number, hh = 2-digit 24-hour hour number, mm = 2-digit minute number, ss = 2-digit second number. (`libcamera-still` only.)
+
+Example: `libcamera-still --datetime`
+
+----
+	--timestamp			Use system timestamps for the output file names
+----
+
+Uses the current system timestamp (the number of seconds since the start of 1970) as the the output file name. (`libcamera-still` only.)
+
+Example: `libcamera-still --timestamp`
+
+----
+	--restart			Set the JPEG restart interval <number>
+----
+
+Sets the JPEG restart interval to the given value. Default is zero.
+
+Example: `libcamera-still -o test.jpg --restart 20`
+
+----
+	--keypress,	-k		Capture image when Enter pressed
+----
+
+This switches `libcamera-still` into keypress mode. It will capture a still image either when the timeout expires or the Enter key is pressed in the terminal window. Typing `x` and Enter causes `libcamera-still` to quit without capturing.
+
+Example: `libcamera-still -t 0 -o test.jpg -k`
+
+----
+	--signal,	-s		Capture image when SIGUSR1 received
+----
+
+This switches `libcamera-still` into signal mode. It will capture a still image either when the timeout expires or a SIGUSR1 is received. SIGUSR2 will cause `libcamera-still` to quit without capturing.
+
+Example:
+
+`libcamera-still -t 0 -o test.jpg -s &`
+
+then
+
+`kill -SIGUSR1 $!`
+
+----
+	--thumb				Set thumbnail parameters <w:h:q>
+----
+
+Sets the dimensions and quality parameter of the associated thumbnail image. The defaults are size 320x240 and quality 70.
+
+Example: `libcamera-still -o test.jpg --thumb 640:480:80`
+
+----
+	--encoding,	-e		Set the still image codec <string>
+----
+
+Select the still image encoding to be used. Valid encoders are:
+
+* `jpg` - JPEG (the default)
+* `png` - PNG format
+* `bmp` - BMP format
+* `rgb` - binary dump of uncompressed RGB pixels
+* `yuv420` - binary dump of uncompressed YUV420 pixels.
+
+Note that this option determines the encoding and that the extension of the output file name is ignored for this purpose. However, for the `--datetime` and `--timestamp` options, the file extension is taken from the encoder name listed above. (`libcamera-still` only.)
+
+Example: `libcamera-still -e png -o test.png`
+
+----
+	--raw,		-r		Save raw file
+----
+
+Save a raw Bayer file in DNG format alongside the usual output image. The file name is given by replacing the output file name extension by `.dng`. These are standard DNG files, and can be processed with standard tools like _dcraw_ or _RawTherapee_, among others. (`libcamera-still` only.)
+
+The image data in the raw file is exactly what came out of the sensor, with no processing whatsoever either by the ISP or anything else. The EXIF data saved in the file, among other things, includes:
+
+* exposure time
+* analogue gain (the ISO tag is 100 times the analogue gain used)
+* white balance gains (which are the reciprocals of the "as shot neutral" values)
+* the colour matrix used by the ISP.
+
+----
+	--latest			Make symbolic link to latest file saved <string>
+----
+
+This causes `libcamera-still` to make a symbolic link to the most recently saved file, thereby making it easier to identify. (`libcamera-still` only.)
+
+Example: `libcamera-still -t 100000 --timelapse 10000 -o test%d.jpg --latest latest.jpg`

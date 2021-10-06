@@ -226,7 +226,7 @@ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2711_defconfig
 
 ===== Build with Configs
 
-NOTE: To speed up compilation on multiprocessor systems, and get some improvement on single processor ones, use `-j n`, where n is the number of processors * 1.5. Alternatively, feel free to experiment and see what works!
+NOTE: To speed up compilation on multiprocessor systems, and get some improvement on single processor ones, use `-j n`, where n is the number of processors * 1.5. You can use the `nproc` command to see how many processors you have. Alternatively, feel free to experiment and see what works!
 
 ====== For all 32-bit Builds
 

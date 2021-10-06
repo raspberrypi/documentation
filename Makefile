@@ -17,7 +17,7 @@ JEKYLL_CMD = bundle exec jekyll
 
 .DEFAULT_GOAL := html
 
-.PHONY: clean run_ninja clean_ninja update_offline_includes html serve_html clean_html
+.PHONY: clean run_ninja clean_ninja html serve_html clean_html
 
 $(BUILD_DIR):
 	@mkdir -p $@
@@ -39,18 +39,6 @@ clean_ninja:
 	rm -rf $(ASCIIDOC_BUILD_DIR)
 	rm -rf $(ASCIIDOC_INCLUDES_DIR)
 	rm -f $(AUTO_NINJABUILD)
-
-offline_includes/tmp: offline_includes
-	mkdir -p $@
-
-offline_includes/tmp/%.html: $(SCRIPTS_DIR)/fetch_header_and_fonts.py | offline_includes/tmp
-	OFFLINE_MODE=0 $< https://esi.raspberrypi.org/en/components/$*/ $@
-
-# Update the files in the offline_includes directory
-update_offline_includes: offline_includes/tmp/header.html offline_includes/tmp/fonts.html
-	mv offline_includes/tmp/header.html offline_includes
-	mv offline_includes/tmp/fonts.html offline_includes
-	rmdir offline_includes/tmp
 
 # Build the html output files
 html: run_ninja

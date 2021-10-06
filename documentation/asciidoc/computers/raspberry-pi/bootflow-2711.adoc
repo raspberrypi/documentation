@@ -73,3 +73,16 @@ Please see the xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[bo
 === Bootloader Updates
 
 The bootloader may also be updated before the firmware is started if a `pieeprom.upd` file is found. Please see the xref:raspberry-pi.adoc#raspberry-pi-4-boot-eeprom[bootloader EEPROM] page for more information about bootloader updates.
+
+=== Fail-safe OS updates (TRYBOOT)
+
+The bootloader/firmware provide a one-shot flag which, if set, is cleared but causes `tryboot.txt` to be loaded instead of `config.txt`. This alternate config would specify the pending OS update firmware, cmdline, kernel and os_prefix parameters. Since the flag is cleared before starting the firwmare a crash or reset will cause the original `config.txt` file to be loaded on the next reboot.
+
+To set the `tryboot` flag add `tryboot` after the partition number in the `reboot` command. Normally, the partition number defaults to zero but it must be specified if extra arguments are added.
+----
+# Quotes are important. Reboot only accepts a single argument.
+sudo reboot '0 tryboot'
+----
+
+`tryboot` is supported on all Raspberry Pi models, however, on Pi 4 model B revision 1.0 and 1.1 the EEPROM must not be write protected. This is because older Raspberry Pi 4B devices have to reset the power supply (losing the tryboot state) so this is stored inside the EEPROM instead.
+

@@ -1,0 +1,11 @@
+=== Known Issues
+
+We are aware of the following issues in `libcamera` and `libcamera-apps`.
+
+* Mode selection. `libcamera` attempts to guess the camera mode that you want from the output resolution specified, unfortunately this is far from foolproof. It can jump to cropped camera modes when you really wanted the full FoV, and it gives no way of requesting camera modes that frame faster (perhaps by sending raw images with a lower bitdepth). We remain in discussion with the `libcamera` team on this, and are working on finding a solution.
+
+* `libcamera` has no support for colour spaces. This means that all images, including video streams, are in the default JPEG ("full range BT601") colour space. Again, we are working with the `libcamera` team to find a solution for this.
+
+* On Pi 3s (and earlier devices) the graphics hardware can only support images up to 2048x2048 pixels which places a limit on the camera images that can be resized into the preview window. In practice this means that video encoding of images larger than 2048 pixels across (which would necessarily be using a codec other than h.264) will not support, or will produce corrupted, preview images. For Pi 4s the limit is 4096 pixels. We would recommend using the `-n` (no preview) option for the time being.
+
+* The preview window shows some display tearing when using X windows. This is not likely to be fixable.

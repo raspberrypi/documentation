@@ -1,0 +1,55 @@
+=== Writing your own Post-Processing Stages
+
+The `libcamera-apps` _post-processing framework_ is not only very flexible but is meant to make it easy for users to create their own custom post-processing stages. It is easy to include algorithms and routines that are already available both in OpenCV and TensorFlow Lite.
+
+We are keen to accept and distribute interesting post-processing stages contributed by our users.
+
+==== Basic Post-Processing Stages
+
+Post-processing stages have a simple API, and users can create their own by deriving from the `PostProcessingStage` class. The member functions that must be implemented are listed below, though note that some be be unnecessary for simple stages.
+
+[cols=",^"]
+|===
+| `char const *Name() const` | Return the name of the stage. This is used to match against stages listed in the JSON post-processing configuration file.
+| `void Read(boost::property_tree::ptree const &params)` | This method will read any of the stage's configuration parameters from the JSON file.
+| `void AdjustConfig(std::string const &use_case, StreamConfiguration *config)` | This method gives stages a chance to influence the configuration of the camera, though it is not often necessary to implement it.
+| `void Configure()` | This is called just after the camera has been configured. It is a good moment to check that the stage has access to the streams it needs, and it can also allocate any resources that it may require.
+| `void Start()` | Called when the camera starts. This method is often not required.
+| `bool Process(CompletedRequest &completed_request)` | This method presents completed camera requests for post-processing and is where the necessary pixel manipulations or image analysis will happen. The function returns `true` if the post-processing framework is _not_ to deliver this request on to the application.
+| `void Stop()` | Called when the camera is stopped. Normally a stage would need to shut down any processing that might be running (for example, if it started any asynchronous threads).
+| `void Teardown()` | Called when the camera configuration is torn down. This would typically be used to de-allocate any resources that were set up in the `Configure` method.
+|===
+
+Some helpful hints on writing your own stages:
+
+* Generally, the `Process` method should not take too long as it will block the imaging pipeline and may cause stuttering. When time-consuming algorithms need to be run, it may be helpful to delegate them to another asynchronous thread.
+
+* When delegating work to another thread, the way image buffers are handled currently means that they will need to be copied. For some applciations, such as image analysis, it may be viable to use the "low resolution" image stream rather than full resolution images.
+
+* The post-processing framework adds multi-threading parallelism on a per-frame basis. This is helpful in improving throughput if you want to run on every single frame. Some functions may supply parallelism within each frame (such as OpenCV and TFLite). In these cases it would probably be better to serialise the calls so as to suppress the per-frame parallelism.
+
+* Most streams, and in particular the low resolution stream, have YUV420 format. These formats are sometimes not ideal for OpenCV or TFLite so there may sometimes need to be a conversion step.
+
+* When images need to be altered, doing so in place is much the easiest strategy.
+
+* Implementations of any stage should always include a `RegisterStage` call. This registers your new stage with the system so that it will be correctly identified when listed in a JSON file. You will need to add it to the post-processing folder's `CMakeLists.txt` too, of course.
+
+The easiest example to start with is `negate_stage.cpp`, which "negates" an image (turning black white, and vice versa). Aside from a small amount of derived class boiler-plate, it contains barely half a dozen lines of code.
+
+Next up in complexity is `sobel_cv_stage.cpp`. This implements a Sobel filter using just a few lines of OpenCV functions.
+
+==== TFLite Stages
+
+For stages wanting to analyse images using TensorFlowLite we provide the `TfStage` base class. This provides a certain amount of boilerplate code and makes it much easier to implement new TFLite-based stages by deriving from this class. In particular, it delegates the execution of the model to another thread, so that the full camera framerate is still maintained - it is just the model that will run at a lower framerate.
+
+The `TfStage` class implements all the public `PostProcessingStage` methods that normally have to be redefined, with the exception of the `Name` method which must still be supplied. It then presents the following virtual methods which derived classes should implement instead.
+
+[cols=",^"]
+|===
+| `void readExtras()` | The base class reads the named model and certain other parameters like the `refresh_rate`. This method can be supplied to read any extra parameters for the derived stage. It is also a good place to check that the loaded model looks as expected (i.e. has right input and output dimensions).
+| `void checkConfiguration()` | The base class fetches the low resolution stream which TFLite will operate on, and the full resolution stream in case the derived stage needs it. This method is provided for the derived class to check that the streams it requires are present. In case any required stream is missing, it may elect simply to avoid processing any images, or it may signal a fatal error.
+| `void interpretOutputs()` | The TFLite model runs asynchronously so that it can run "every few frames" without holding up the overall framerate. This method gives the derived stage the chance to read and interpret the model's outputs, running right after the model itself and in that same thread.
+| `void applyResults()` | Here we are running once again in the main thread and so this method should run reasonably quickly so as not to hold up the supply of frames to the application. It is provided so that the last results of the model (which might be a few frames ago) can be applied to the current frame. Typically this would involve attaching metadata to the image, or perhaps drawing something onto the main image.
+|===
+
+For further information, readers are referred to the supplied example code implementing the `ObjectClassifyTfStage` and `PoseEstimationTfStage` classes.
