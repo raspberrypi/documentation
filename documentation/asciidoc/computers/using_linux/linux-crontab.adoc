@@ -52,6 +52,15 @@ View your currently saved scheduled tasks with:
 crontab -l
 ----
 
+=== Erase scheduled tasks
+
+Delete all currently scheduled tasks:
+
+[,bash]
+----
+crontab -r
+----
+
 === Running a Task on Reboot
 
 To run a command every time the Raspberry Pi starts up, write `@reboot` instead of the time and date. For example:
