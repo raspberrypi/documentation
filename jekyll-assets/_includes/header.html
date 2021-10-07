@@ -1,6 +1,6 @@
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-#__rptl-header .__rptl-header-sublist-state, #__rptl-header .__rptl-header-sublist-link, #__rptl-header .__rptl-header-sublist-item, #__rptl-header .__rptl-header-sublist-heading, #__rptl-header .__rptl-header-sublist, #__rptl-header .__rptl-header-sublist-container, #__rptl-header .__rptl-header-sublist-wrapper, #__rptl-header .__rptl-header-list-link, #__rptl-header .__rptl-header-list-item, #__rptl-header .__rptl-header-list, #__rptl-header .__rptl-header-label, #__rptl-header .__rptl-header-nav-container, #__rptl-header .__rptl-header-nav, #__rptl-header .__rptl-header-burger-state, #__rptl-header .__rptl-header-burger, #__rptl-header .__rptl-header-navbar-link, #__rptl-header .__rptl-header-navbar-container, #__rptl-header .__rptl-header-navbar, #__rptl-header {
+#__rptl-header .__rptl-header-nav-link, #__rptl-header .__rptl-header-nav-list-item, #__rptl-header .__rptl-header-nav-list, #__rptl-header .__rptl-header-nav-container, #__rptl-header .__rptl-header-nav, #__rptl-header .__rptl-header-burger-state, #__rptl-header .__rptl-header-burger, #__rptl-header .__rptl-header-navbar-container, #__rptl-header .__rptl-header-navbar, #__rptl-header {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -41,27 +41,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-#__rptl-header .__rptl-header-sublist-link, #__rptl-header .__rptl-header-list-link, #__rptl-header .__rptl-header-navbar-link {
-  text-decoration: none;
-  color: #707070;
-  display: block;
-}
-#__rptl-header .__rptl-header-sublist-link:hover, #__rptl-header .__rptl-header-list-link:hover, #__rptl-header .__rptl-header-navbar-link:hover {
-  color: #333;
-}
-
 #__rptl-header {
   position: relative;
   line-height: 1;
-  /*
-    Navbar
-   */
-  /*
-    Burger
-   */
-  /*
-    Nav
-   */
 }
 #__rptl-header .__rptl-header-navbar {
   position: relative;
@@ -86,27 +68,6 @@
 #__rptl-header .__rptl-header-logo {
   display: block;
   margin: 1em 0.25em 1em 0;
-}
-#__rptl-header .__rptl-header-navbar-link {
-  font-weight: 700;
-  font-size: 1.65em;
-}
-#__rptl-header .__rptl-header-navbar-link--red {
-  color: #c51d4a;
-}
-#__rptl-header .__rptl-header-navbar-link--red:hover {
-  color: #821331;
-}
-#__rptl-header .__rptl-header-navbar-link--grey-dark {
-  color: #333;
-}
-#__rptl-header .__rptl-header-navbar-link--grey-dark:hover {
-  color: #000;
-}
-@media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-navbar-link {
-    font-size: 1em;
-  }
 }
 #__rptl-header .__rptl-header-burger {
   width: 30px;
@@ -180,165 +141,51 @@
 @media (min-width: 1200px) {
   #__rptl-header .__rptl-header-nav {
     background-color: #f7f8fa;
-    position: relative;
-    top: 0;
+    position: initial;
     transform: translateY(0) !important;
     transition: none;
   }
 }
-@media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-nav-container {
-    display: flex;
-    justify-content: space-between;
-  }
-}
-#__rptl-header .__rptl-header-label {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #707070;
-  font-size: 1.65em;
-}
-#__rptl-header .__rptl-header-label:hover {
-  color: #333;
-}
-#__rptl-header .__rptl-header-label--close {
-  display: none;
-}
-@media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-label--close {
-    display: block;
-  }
-}
-@media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-label {
-    display: static;
-    font-size: 1em;
-  }
-}
-#__rptl-header .__rptl-header-list {
+#__rptl-header .__rptl-header-nav-list {
   list-style: none;
 }
 @media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-list {
+  #__rptl-header .__rptl-header-nav-list {
     display: flex;
-    gap: 2em;
+    justify-content: flex-end;
+  }
+  #__rptl-header .__rptl-header-nav-list > li {
+    margin-left: 2em;
+  }
+  #__rptl-header .__rptl-header-nav-list > li:first-child {
+    margin-left: 0;
   }
 }
-#__rptl-header .__rptl-header-chevron {
-  fill: #707070;
-  transform: scaleY(-1);
-}
-@media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-chevron {
-    display: none;
-  }
-}
-#__rptl-header .__rptl-header-list-item {
+#__rptl-header .__rptl-header-nav-list-item {
   padding: 1em 0;
   border-top: 1px solid #dedede;
 }
-#__rptl-header .__rptl-header-list-item--border-0 {
+#__rptl-header .__rptl-header-nav-list-item:first-child {
   border: 0;
 }
 @media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-list-item {
+  #__rptl-header .__rptl-header-nav-list-item {
     border: 0;
   }
 }
-#__rptl-header .__rptl-header-list-link {
+#__rptl-header .__rptl-header-nav-link {
+  color: #707070;
+  display: block;
   font-size: 1.65em;
+  text-decoration: none;
+}
+#__rptl-header .__rptl-header-nav-link:hover {
+  color: #333;
 }
 @media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-list-link {
+  #__rptl-header .__rptl-header-nav-link {
     font-size: 1em;
   }
-}
-#__rptl-header .__rptl-header-sublist-wrapper {
-  background-color: #fff;
-  height: 0;
-  overflow: hidden;
-}
-#__rptl-header .__rptl-header-sublist-wrapper:focus-within {
-  height: auto;
-}
-@media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-sublist-wrapper:focus-within {
-    border-bottom: 2px solid #dedede;
-  }
-}
-@media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-sublist-wrapper {
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 100%;
-    top: calc(100% + 1px);
-  }
-}
-@media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-sublist-container {
-    width: 100%;
-    max-width: 1300px;
-    margin: auto;
-    display: flex;
-    padding: 3em 5.25em;
-  }
-}
-#__rptl-header .__rptl-header-sublist {
-  list-style: none;
-  flex-grow: 1;
-}
-@media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-sublist {
-    margin-top: 0.875em;
-  }
-}
-#__rptl-header .__rptl-header-sublist-heading {
-  font-size: 2em;
-  color: #333;
-  width: 33%;
-  display: none;
-}
-@media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-sublist-heading {
-    display: initial;
-  }
-}
-#__rptl-header .__rptl-header-sublist-item {
-  margin-top: 0.5em;
-}
-@media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-sublist-item {
-    margin-top: 1em;
-  }
-  #__rptl-header .__rptl-header-sublist-item:first-child {
-    margin-top: 0;
-  }
-}
-#__rptl-header .__rptl-header-sublist-link {
-  padding: 0.25rem 0;
-}
-@media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-sublist-link {
-    font-size: 1.125em;
-    padding: 0;
-  }
-}
-#__rptl-header .__rptl-header-sublist-state {
-  display: none;
-}
-#__rptl-header .__rptl-header-sublist-state:checked ~ .__rptl-header-sublist-wrapper {
-  height: auto;
-}
-@media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-sublist-state:checked ~ .__rptl-header-sublist-wrapper {
-    border-bottom: 2px solid #dedede;
-  }
-}
-#__rptl-header .__rptl-header-sublist-state:checked ~ .__rptl-header-label .__rptl-header-chevron {
-  transform: none;
 }
 </style>
 <header id="__rptl-header">
@@ -360,175 +207,45 @@
 
   <nav class="__rptl-header-nav" style="transform: translateY(-100%)">
     <div class="__rptl-header-nav-container">
-      <ul class="__rptl-header-list">
-        <li class="__rptl-header-list-item __rptl-header-list-item--border-0">
-          <a href="/for-industry/" class="__rptl-header-navbar-link __rptl-header-navbar-link--grey-dark">For industry</a>
+      <ul class="__rptl-header-nav-list">
+        <li class="__rptl-header-nav-list-item">
+          <a href="/for-industry/" class="__rptl-header-nav-link">
+            For Industry
+          </a>
         </li>
-      </ul>
 
-      <input type="radio" name="__rptl-header-sublist-state" class="__rptl-header-sublist-state" id="__rptl-header-sublist-null" />
-      <ul class="__rptl-header-list">
-        <li class="__rptl-header-list-item">
-          <input type="radio" name="__rptl-header-sublist-state" class="__rptl-header-sublist-state" id="__rptl-header-sublist-hardware" />
-
-          <label class="__rptl-header-label __rptl-header-label--sublist" for="__rptl-header-sublist-hardware">
+        <li class="__rptl-header-nav-list-item">
+          <a href="/products/" class="__rptl-header-nav-link">
             Hardware
-            <svg class="__rptl-header-chevron" aria-hidden="true" width="26" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M1 13 13 1l12 12" stroke="#707070" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </label>
-
-          <div class="__rptl-header-sublist-wrapper">
-            <div class="__rptl-header-sublist-container">
-              <h3 class="__rptl-header-sublist-heading">
-                Hardware
-              </h3>
-
-              <ul class="__rptl-header-sublist">
-                <li class="__rptl-header-sublist-item">
-                  <a href="/products/#raspberry-pi-computers-and-microcontrollers" class="__rptl-header-sublist-link">Computers and microcontrollers</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="/products/#cameras-and-displays" class="__rptl-header-sublist-link">Cameras and displays</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="/products/#add-on-boards" class="__rptl-header-sublist-link">Add-on boards</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="/products/#power-supplies-and-cables" class="__rptl-header-sublist-link">Power supplies and cables</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="/products/#cases" class="__rptl-header-sublist-link">Cases</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="/products/#peripherals" class="__rptl-header-sublist-link">Peripherals</a>
-                </li>
-              </ul>
-
-              <label class="__rptl-header-label __rptl-header-label--close" for="__rptl-header-sublist-null">
-                <svg aria-label="Close" width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg"><g stroke="#707070" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="m1 1 24 24M25 1 1 25"/></g></svg>
-              </label>
-            </div>
-          </div>
+          </a>
         </li>
 
-        <li class="__rptl-header-list-item">
-          <input type="radio" name="__rptl-header-sublist-state" class="__rptl-header-sublist-state" id="__rptl-header-sublist-software" />
-
-          <label class="__rptl-header-label __rptl-header-label--sublist" for="__rptl-header-sublist-software">
+        <li class="__rptl-header-nav-list-item">
+          <a href="/software/" class="__rptl-header-nav-link">
             Software
-            <svg class="__rptl-header-chevron" aria-hidden="true" width="26" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M1 13 13 1l12 12" stroke="#707070" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </label>
-
-          <div class="__rptl-header-sublist-wrapper">
-            <div class="__rptl-header-sublist-container">
-              <h3 class="__rptl-header-sublist-heading">
-                Software
-              </h3>
-
-              <ul class="__rptl-header-sublist">
-                <li class="__rptl-header-sublist-item">
-                  <a href="/software/operating-systems/#raspberry-pi-os-32-bit" class="__rptl-header-sublist-link">Raspberry Pi OS</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="/software/" class="__rptl-header-sublist-link">Raspberry Pi Imager</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="/software/raspberry-pi-desktop/" class="__rptl-header-sublist-link">Raspberry Pi Desktop</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="/software/operating-systems/#third-party-software" class="__rptl-header-sublist-link">Other operating systems</a>
-                </li>
-              </ul>
-
-              <label class="__rptl-header-label __rptl-header-label--close" for="__rptl-header-sublist-null">
-                <svg aria-label="Close" width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg"><g stroke="#707070" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="m1 1 24 24M25 1 1 25"/></g></svg>
-              </label>
-            </div>
-          </div>
+          </a>
         </li>
 
-        <li class="__rptl-header-list-item">
-          <input type="radio" name="__rptl-header-sublist-state" class="__rptl-header-sublist-state" id="__rptl-header-sublist-documentation" />
-
-          <label class="__rptl-header-label __rptl-header-label--sublist" for="__rptl-header-sublist-documentation">
+        <li class="__rptl-header-nav-list-item">
+          <a href="/documentation/" class="__rptl-header-nav-link">
             Documentation
-            <svg class="__rptl-header-chevron" aria-hidden="true" width="26" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M1 13 13 1l12 12" stroke="#707070" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </label>
-
-          <div class="__rptl-header-sublist-wrapper">
-            <div class="__rptl-header-sublist-container">
-              <h3 class="__rptl-header-sublist-heading">
-                Documentation
-              </h3>
-
-              <ul class="__rptl-header-sublist">
-                <li class="__rptl-header-sublist-item">
-                  <a href="/documentation/computers/" class="__rptl-header-sublist-link">Computers</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="/documentation/accessories/" class="__rptl-header-sublist-link">Accessories</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="/documentation/microcontrollers/" class="__rptl-header-sublist-link">Microcontrollers</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="https://pip.raspberrypi.org" rel="noopener" class="__rptl-header-sublist-link">Product Information Portal</a>
-                </li>
-              </ul>
-
-              <label class="__rptl-header-label __rptl-header-label--close" for="__rptl-header-sublist-null">
-                <svg aria-label="Close" width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg"><g stroke="#707070" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="m1 1 24 24M25 1 1 25"/></g></svg>
-              </label>
-            </div>
-          </div>
+          </a>
         </li>
 
-        <li class="__rptl-header-list-item">
-          <input type="radio" name="__rptl-header-sublist-state" class="__rptl-header-sublist-state" id="__rptl-header-sublist-forums" />
+        <li class="__rptl-header-nav-list-item">
+          <a href="/news/" class="__rptl-header-nav-link">
+            News
+          </a>
+        </li>
 
-          <label class="__rptl-header-label __rptl-header-label--sublist" for="__rptl-header-sublist-forums">
+        <li class="__rptl-header-nav-list-item">
+          <a href="https://forums.raspberrypi.com/" class="__rptl-header-nav-link">
             Forums
-            <svg class="__rptl-header-chevron" aria-hidden="true" width="26" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M1 13 13 1l12 12" stroke="#707070" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </label>
-
-          <div class="__rptl-header-sublist-wrapper">
-            <div class="__rptl-header-sublist-container">
-              <h3 class="__rptl-header-sublist-heading">
-                Forums
-              </h3>
-
-              <ul class="__rptl-header-sublist">
-                <li class="__rptl-header-sublist-item">
-                  <a href="https://forums.raspberrypi.com/" class="__rptl-header-sublist-link">All forums</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="https://forums.raspberrypi.com/viewforum.php?f=19" class="__rptl-header-sublist-link">Community</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="https://forums.raspberrypi.com/viewforum.php?f=12" class="__rptl-header-sublist-link">Using the Raspberry Pi</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="https://forums.raspberrypi.com/viewforum.php?f=14" class="__rptl-header-sublist-link">Programming</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="https://forums.raspberrypi.com/viewforum.php?f=15" class="__rptl-header-sublist-link">Projects</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="https://forums.raspberrypi.com/viewforum.php?f=16" class="__rptl-header-sublist-link">Hardware and peripherals</a>
-                </li>
-                <li class="__rptl-header-sublist-item">
-                  <a href="https://forums.raspberrypi.com/viewforum.php?f=18" class="__rptl-header-sublist-link">Operating system distributions</a>
-                </li>
-              </ul>
-
-              <label class="__rptl-header-label __rptl-header-label--close" for="__rptl-header-sublist-null">
-                <svg aria-label="Close" width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg"><g stroke="#707070" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="m1 1 24 24M25 1 1 25"/></g></svg>
-              </label>
-            </div>
-          </div>
+          </a>
         </li>
 
-        <li class="__rptl-header-list-item">
-          <a href="https://www.raspberrypi.org" class="__rptl-header-list-link" rel="noopener">
+        <li class="__rptl-header-nav-list-item">
+          <a href="https://www.raspberrypi.org" class="__rptl-header-nav-link" rel="noopener">
             Foundation
           </a>
         </li>
@@ -538,25 +255,9 @@
 </header>
 <script>
   (function() {
-    var labels = document.querySelectorAll(".__rptl-header-label--sublist");
-    var nullInput = document.getElementById("__rptl-header-sublist-null");
-    var burgerInput = document.getElementById("__rptl-header-burger-state");
-
-    labels.forEach(function(label) {
-      label.addEventListener("click", function(e) {
-        var input = document.getElementById(label.htmlFor);
-
-        if (input.checked) {
-          e.preventDefault();
-          nullInput.checked = true;
-        }
-      });
-    });
-
     document.addEventListener("click", function(e) {
-      if (e.target.matches(".__rptl-header-navbar-container") || !e.target.closest("#__rptl-header")) {
-        burgerInput.checked = false;
-        nullInput.checked = true;
+      if (!e.target.closest("#__rptl-header")) {
+        document.getElementById("__rptl-header-burger-state").checked = false;
       }
     });
   })();
