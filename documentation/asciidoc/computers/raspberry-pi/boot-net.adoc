@@ -27,10 +27,12 @@ If you put all your files into the root of your tftp directory then all followin
 
 The first thing to check is that the OTP bit is correctly programmed. To do this, you need to add `program_usb_boot_mode=1` to config.txt and reboot (with a standard SD card that boots correctly into Raspberry Pi OS). Once you've done this, you should be able to do:
 
- $ vcgencmd otp_dump | grep 17:
- 17:3020000a
+[,bash]
+----
+ vcgencmd otp_dump | grep 17:
+----
 
-If row 17 contains that value then the OTP is correctly programmed. You should now be able to remove the SD card, plug in Ethernet,
+If row 17 contains `3020000a` then the OTP is correctly programmed. You should now be able to remove the SD card, plug in Ethernet,
 and then the Ethernet LEDs should light up around 5 seconds after the Pi powers up.
 
 To capture the ethernet packets on the server, use tcpdump on the tftpboot server (or DHCP server if they are different). You will need to capture the packets there otherwise you will not be able to see packets that get sent directly because network switches are not hubs!

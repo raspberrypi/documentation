@@ -12,14 +12,18 @@ These options specify the firmware files transferred to the VideoCore GPU prior 
 These provide a shortcut to some alternative `start_file` and `fixup_file` settings, and are the recommended methods for selecting firmware configurations.
 
 `start_x=1` implies
-   `start_file=start_x.elf`
-   `fixup_file=fixup_x.dat`
+----
+  start_file=start_x.elf
+  fixup_file=fixup_x.dat
+----
 
 On the Pi 4, if the files `start4x.elf` and `fixup4x.dat` are present, these files will be used instead.
 
 `start_debug=1` implies
-   `start_file=start_db.elf`
-   `fixup_file=fixup_db.dat`
+----
+  start_file=start_db.elf
+  fixup_file=fixup_db.dat
+----
 
 `start_x=1` should be specified when using the camera module. Enabling the camera via `raspi-config` will set this automatically.
 

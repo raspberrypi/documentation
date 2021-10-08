@@ -49,15 +49,17 @@ The conditional model filters are applied according to the following table.
 
 These are particularly useful for defining different `kernel`, `initramfs`, and `cmdline` settings, as the Pi 1 and Pi 2 require different kernels. They can also be useful to define different overclocking settings, as the Pi 1 and Pi 2 have different default speeds. For example, to define separate `initramfs` images for each:
 
+----
  [pi1]
  initramfs initrd.img-3.18.7+ followkernel
  [pi2]
  initramfs initrd.img-3.18.7-v7+ followkernel
  [all]
+----
 
 Remember to use the `[all]` filter at the end, so that any subsequent settings aren't limited to Pi 2 hardware only.
 
-It is important to note that the Raspberry Pi Zero W will see the contents of [pi0w] AND [pi0]. Likewise, a Raspberry Pi 3B Plus sees [pi3+] AND [pi3], and a Raspberry Pi 400 sees [pi400] AND [pi4]. If you want a setting to apply only to Pi Zero, Pi 3B or Pi 4B, you need to follow it (order is important) with a setting in the [pi0w], [pi3+] or [pi400] section that reverts it.
+It is important to note that the Raspberry Pi Zero W will see the contents of `[pi0w]` AND `[pi0]`. Likewise, a Raspberry Pi 3B Plus sees `[pi3+]` AND `[pi3]`, and a Raspberry Pi 400 sees `[pi400]` AND `[pi4]`. If you want a setting to apply only to Pi Zero, Pi 3B or Pi 4B, you need to follow it (order is important) with a setting in the `[pi0w]`, `[pi3+]` or `[pi400]` section that reverts it.
 
 === The `[none]` filter
 

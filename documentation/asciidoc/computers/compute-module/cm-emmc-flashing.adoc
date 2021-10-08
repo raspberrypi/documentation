@@ -170,9 +170,9 @@ For a small percentage of Raspberry Pi Compute Module 3s, booting problems have 
 
 [,bash]
 ----
-$ sudo parted /dev/<device>
+sudo parted /dev/<device>
 (parted) mkpart primary fat32 4MiB 64MiB
 (parted) q
-$ sudo mkfs.vfat -F32 /dev/<device>
-$ sudo cp -r <files>/* <mountpoint>
+sudo mkfs.vfat -F32 /dev/<device>
+sudo cp -r <files>/* <mountpoint>
 ----
