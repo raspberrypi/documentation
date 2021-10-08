@@ -1,6 +1,6 @@
 == Product compliance and safety
 
-All Raspberry Pi products have undergone extensive compliance testing, for more information see the https://pip.raspberrypi.org[Product Information Portal]
+All Raspberry Pi products have undergone extensive compliance testing, for more information see the https://pip.raspberrypi.com[Product Information Portal]
 
 === Flammability Rating
 
