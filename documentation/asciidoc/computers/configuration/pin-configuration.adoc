@@ -47,8 +47,8 @@ The `dt-blob.bin` is used to configure the binary blob (VideoCore) at boot time.
 This section contains all of the VideoCore blob information. All subsequent sections must be enclosed within this section.
 
 . `pins_*`
-
-  There are a number of separate `pins_*` sections, based on particular Raspberry Pi models, namely:
++
+There are a number of separate `pins_*` sections, based on particular Raspberry Pi models, namely:
 
 * *pins_rev1* Rev1 pin setup. There are some differences because of the moved I2C pins.
 * *pins_rev2* Rev2 pin setup. This includes the additional codec pins on P5.
