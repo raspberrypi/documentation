@@ -9,7 +9,6 @@ Insert the SD card in the slot, or connect the SD card reader with the SD card i
 
 [source,bash]
 ----
-  $ diskutil list
   /dev/disk0 (internal):
       #:                       TYPE NAME                    SIZE       IDENTIFIER
       0:                       GUID_partition_scheme        500.3 GB   disk0

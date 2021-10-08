@@ -35,18 +35,19 @@ In addition, a more stepped CPU governor is also used to produce finer-grained c
 
 The default CPU governor is `ondemand`, the governor can be manually changed with the `cpufreq-set` command (from the `cpufrequtils` package) to reduce idle power consumption:
 
+[,bash]
 ----
-$ sudo apt install cpufrequtils
-$ sudo cpufreq-set -g powersave
+ sudo apt install cpufrequtils
+ sudo cpufreq-set -g powersave
 ----
 
 === Measuring Temperatures
 
 Due to the architecture of the SoCs used on the Raspberry Pi range, and the use of the upstream temperature monitoring code in the Raspberry Pi OS distribution, Linux-based temperature measurements can be inaccurate. However, the `vcgencmd` command provides an accurate and instantaneous reading of the current SoC temperature as it communicates with the GPU directly:
 
-[source]
+[,bash]
 ----
-$ vcgencmd measure_temp
+ vcgencmd measure_temp
 ----
 
 === Adding Heatsinks

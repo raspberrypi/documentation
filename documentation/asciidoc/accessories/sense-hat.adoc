@@ -64,6 +64,7 @@ Taken from this https://www.raspberrypi.org/forums/viewtopic.php?f=104&t=109064&
 
 Install the necessary software and run the calibration program as follows:
 
+[,bash]
 ----
 sudo apt update
 sudo apt install octave -y
@@ -75,7 +76,7 @@ RTIMULibCal
 
 You will then see this menu:
 
-....
+----
 Options are:
 
   m - calibrate magnetometer with min/max
@@ -84,7 +85,7 @@ Options are:
   x - exit
 
 Enter option:
-....
+----
 
 Press lowercase `m`. The following message will then show; press any key to start.
 
@@ -101,8 +102,10 @@ Press lowercase `m`. The following message will then show; press any key to star
 
 After it starts, you will see something similar to this scrolling up the screen:
 
+----
  Min x:  51.60  min y:  69.39  min z:  65.91
  Max x:  53.15  max y:  70.97  max z:  67.97
+----
 
 Focus on the two lines at the very bottom of the screen, as these are the most recently posted measurements from the program.
 Now you have to move the Astro Pi around in every possible way you can think of. It helps if you unplug all non-essential cables to avoid clutter.
@@ -115,8 +118,11 @@ In addition to those steps, you can also do the ellipsoid fit by performing the 
 
 When you're done, copy the resulting `RTIMULib.ini` to /etc/ and remove the local copy in `~/.config/sense_hat/`:
 
+[,bash]
+----
  rm ~/.config/sense_hat/RTIMULib.ini
  sudo cp RTIMULib.ini /etc
+----
 
 You are now done.
 
