@@ -8,7 +8,10 @@ Configuration is most commonly done through the `make menuconfig` interface. Alt
 
 The `menuconfig` tool requires the `ncurses` development headers to compile properly. These can be installed with the following command:
 
- $ sudo apt install libncurses5-dev
+[,bash]
+----
+ sudo apt install libncurses5-dev
+----
 
 You'll also need to download and prepare your kernel sources, as described in the xref:linux_kernel.adoc#choosing_sources[build guide]. In particular, ensure you have installed the xref:linux_kernel.adoc#default_configuration[default configuration].
 
@@ -16,16 +19,21 @@ You'll also need to download and prepare your kernel sources, as described in th
 
 Once you've got everything set up and ready to go, you can compile and run the `menuconfig` utility as follows:
 
- $ make menuconfig
+[,bash]
+----
+ make menuconfig
+----
 
 If you're cross-compiling a 32-bit kernel:
 
+[,bash]
 ----
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
 ----
 
 Or, if you are cross-compiling a 64-bit kernel:
 
+[,bash]
 ----
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- menuconfig
 ----

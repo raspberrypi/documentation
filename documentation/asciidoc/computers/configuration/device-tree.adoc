@@ -234,7 +234,7 @@ It is interesting to dump the contents of the DTB file to see what the compiler 
 
 [,console]
 ----
-$ fdtdump 1st.dtbo
+fdtdump 1st.dtbo
 /dts-v1/;
 // magic:		0xd00dfeed
 // totalsize:		0x207 (519)
@@ -732,10 +732,10 @@ There are some new commands for managing overlays:
 [[part3.5.1]]
 ===== The `dtoverlay` command
 
-`dtoverlay` is a command line utility that loads and removes overlays while the system is running, as well as listing the available overlays and displaying their help information:
+`dtoverlay` is a command line utility that loads and removes overlays while the system is running, as well as listing the available overlays and displaying their help information.
+Use `dtoverlay -h` to get usage information:
 
 ----
-pi@raspberrypi ~ $ dtoverlay -h
 Usage:
   dtoverlay <overlay> [<param>=<val>...]
                            Add an overlay (with parameters)
