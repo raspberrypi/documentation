@@ -18,7 +18,7 @@ First install Git and the build dependencies:
 
 [,bash]
 ----
-sudo apt install git bc bison flex libssl-dev make
+sudo apt install git bc bison flex libssl-dev libelf-dev make
 ----
 
 Next get the sources, which will take some time:
