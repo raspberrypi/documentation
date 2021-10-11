@@ -2,7 +2,7 @@
 
 The Build HAT library supports all the LEGO® Technic™ devices included in the SPIKE™ Portfolio, along with those from the LEGO® Mindstorms Robot Inventor kit and other devices that use an LPF2 connector.
 
-IMPORTANT: The product code for the SPIKE™ Prime Expansion Set that included the Maker Plate is 45681. The original Expansion Set is 45680 and doesn't include the Maker Plate. 
+IMPORTANT: The product code for the SPIKE™ Prime Expansion Set that included the Maker Plate is 45681. The original Expansion Set is 45680 and does not include the Maker Plate. 
 
 [cols="2,2,1,1,1,1,1,3,1,1,1,1", width="100%", options="header"]
 |===
