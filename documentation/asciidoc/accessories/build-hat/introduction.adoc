@@ -1,7 +1,15 @@
 == Introducing the Build HAT
 
-The Build HAT is part of an exciting new collaboration between the Raspberry Pi Foundation and LEGO® Education to increase the impact and reach of STEAM learning.​ 
+The Raspberry Pi Build HAT is an add-on board that connects to the 40-pin GPIO header of your Raspberry Pi, which was designed in collaboration with LEGO® Education to make it easy to control LEGO® Technic™ motors and sensors with Raspberry Pi computers. 
 
-The Build HAT is an add-on board for your Raspberry Pi that connects to the 40-pin GPIO header and can be used to control up to four LEGO® Technic™ motors and sensors from the SPIKE™ Portfolio.
+NOTE: A full ist of supported devices can be found in the xref:build-hat.adoc#device-compatibility[Device Compatibility] section.
 
-The HAT works with all 40-pin GPIO Raspberry Pi boards, including Raspberry Pi 4 and Raspberry Pi Zero. With the addition of a ribbon cable or other extension device, it can also be used with Raspberry Pi 400.
+It provides four connectors for LEGO® Technic™ motors and sensors from the SPIKE™ Portfolio. The available sensors include a distance sensor, a colour sensor, and a versatile force sensor. The angular motors come in a range of sizes and include integrated encoders that can be queried to find their position.
+
+The Build HAT fits all Raspberry Pi computers with a 40-pin GPIO header, including — with the addition of a ribbon cable or other extension device — Raspberry Pi 400. Connected LEGO® Technic™ devices can easily be controlled in Python, alongside standard Raspberry Pi accessories such as a camera module.
+
+The Raspberry Pi Build HAT power supply, available separately, is designed to power both the Build HAT and Raspberry Pi computer along with all connected LEGO® Technic™ devices.
+
+The LEGO® Education SPIKE™ Prime Set 45678 and SPIKE™ Prime Expansion Set 45681, available separately from LEGO® Education resellers, include a collection of useful elements supported by the Build HAT.
+
+NOTE: The HAT works with all 40-pin GPIO Raspberry Pi boards, including Raspberry Pi 4 and Raspberry Pi Zero. With the addition of a ribbon cable or other extension device, it can also be used with Raspberry Pi 400.
