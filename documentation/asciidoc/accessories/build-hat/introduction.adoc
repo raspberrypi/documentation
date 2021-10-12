@@ -13,3 +13,9 @@ The Raspberry Pi Build HAT power supply, available separately, is designed to po
 The LEGO® Education SPIKE™ Prime Set 45678 and SPIKE™ Prime Expansion Set 45681, available separately from LEGO® Education resellers, include a collection of useful elements supported by the Build HAT.
 
 NOTE: The HAT works with all 40-pin GPIO Raspberry Pi boards, including Raspberry Pi 4 and Raspberry Pi Zero. With the addition of a ribbon cable or other extension device, it can also be used with Raspberry Pi 400.
+
+* Controls up to 4 LEGO® Technic™ motors and sensors included in the SPIKE™ Portfolio
+* Easy-to-use https://datasheets.raspberrypi.org/build-hat/buildhat-python-library.pdf[Python library] to control your LEGO® Technic™ devices
+* Fits onto any Raspberry Pi computer with a 40-pin GPIO header
+* Onboard xref:../microcontrollers/rp2040.adoc[RP2040] microcontroller manages low-level control of LEGO® Technic™ devices
+* External 8V PSU available separately to power both Build HAT and Raspberry Pi
