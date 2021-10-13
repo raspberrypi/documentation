@@ -39,7 +39,7 @@ Next, the boot ROM checks each of the boot sources for a file called bootcode.bi
 [NOTE]
 ======
 * If there is no SD card inserted, the SD boot mode takes five seconds to fail. To reduce this and fall back to USB more quickly, you can either insert an SD card with nothing on it or use the GPIO bootmode OTP setting described above to only enable USB.
-* The default pull for the GPIOs is defined on page 102 of the https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals.pdf[ARM Peripherals datasheet]. If the value at boot time does not equal the default pull, then that boot mode is enabled.
+* The default pull for the GPIOs is defined on page 102 of the https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf[ARM Peripherals datasheet]. If the value at boot time does not equal the default pull, then that boot mode is enabled.
 * USB enumeration is a means of enabling power to the downstream devices on a hub, then waiting for the device to pull the D+ and D- lines to indicate if it is either USB 1 or USB 2. This can take time: on some devices it can take up to three seconds for a hard disk drive to spin up and start the enumeration process. Because this is the only way of detecting that the hardware is attached, we have to wait for a minimum amount of time (two seconds). If the device fails to respond after this maximum timeout, it is possible to increase the timeout to five seconds using `program_usb_boot_timeout=1` in `config.txt`.
 * MSD boot takes precedence over Ethernet boot.
 * It is no longer necessary for the first partition to be the FAT partition, as the MSD boot will continue to search for a FAT partition beyond the first one.

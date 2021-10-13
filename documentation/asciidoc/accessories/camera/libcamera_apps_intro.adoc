@@ -31,5 +31,5 @@ Raspberry Pi's implementation of `libcamera` supports not only the three standar
 
 Moreover, Raspberry Pi supplies a _tuning file_ for each of these sensors which can be edited to change the processing performed by the Pi hardware on the raw images received from the image sensor, including aspects like the colour processing, the amount of noise suppression or the behaviour of the control algorithms.
 
-For further information on `libcamera` for the Raspberry Pi, please consult the https://datasheets.raspberrypi.org/camera/raspberry-pi-camera-guide.pdf[Tuning Guide for the Raspberry Pi cameras and libcamera].
+For further information on `libcamera` for the Raspberry Pi, please consult the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning Guide for the Raspberry Pi cameras and libcamera].
 

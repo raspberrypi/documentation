@@ -12,4 +12,4 @@ This _tuning file_ can be inspected and edited by users. Using the `--tuning-fil
 
 Raspberry Pi also supplies a _tuning tool_ which automates the generation of the tuning file from a few simple calibration images.
 
-Both these topics are rather beyond the scope of the documentation here, however, full information is available in the https://datasheets.raspberrypi.org/camera/raspberry-pi-camera-guide.pdf[Tuning Guide for the Raspberry Pi cameras and libcamera].
+Both these topics are rather beyond the scope of the documentation here, however, full information is available in the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning Guide for the Raspberry Pi cameras and libcamera].

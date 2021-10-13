@@ -7,7 +7,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 
 
-DATASHEETS_BASE_URL = 'https://datasheets.raspberrypi.org'
+DATASHEETS_BASE_URL = 'https://datasheets.raspberrypi.com'
 DATASHEETS_BUCKET_URL = 'https://rptl-datasheets.s3.eu-west-1.amazonaws.com'
 REDIRECT_SOURCE_PREFIX = '/documentation/'
 

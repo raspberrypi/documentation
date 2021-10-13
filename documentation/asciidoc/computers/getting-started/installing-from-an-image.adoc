@@ -23,7 +23,7 @@ NOTE: If using Raspberry Pi Imager on Windows 10 with controlled folder access e
 
 NOTE: You can see which operating systems are most often downloaded, on our https://rpi-imager-stats.raspberrypi.org/[statistics page].
 
-You can now insert the SD card into the Raspberry Pi and power it up. For Raspberry Pi OS, if you need to manually log in, the default user name is `pi`, with password `raspberry`, and the default keyboard layout is set to https://datasheets.raspberrypi.org/keyboard-mouse/UK-layout.png[United Kingdom (UK)].
+You can now insert the SD card into the Raspberry Pi and power it up. For Raspberry Pi OS, if you need to manually log in, the default user name is `pi`, with password `raspberry`, and the default keyboard layout is set to https://datasheets.raspberrypi.com/keyboard-mouse/UK-layout.png[United Kingdom (UK)].
 
 You should change the default password straight away to ensure your Raspberry Pi is xref:configuration.adoc#securing-your-raspberry-pi[secure].
 

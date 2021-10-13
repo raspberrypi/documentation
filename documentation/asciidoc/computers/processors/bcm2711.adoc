@@ -16,4 +16,4 @@ The BCM2711 chip continues to use the heat spreading technology started with the
 
 *I/O:* PCIe bus, onboard Ethernet port, 2 × DSI ports (only one exposed on Raspberry Pi 4B), 2 × CSI ports (only one exposed on Raspberry Pi 4B), up to 6 × I2C, up to 6 × UART (muxed with I2C), up to 6 × SPI (only five exposed on Raspberry Pi 4B), dual HDMI video output, composite video output.
 
-The https://datasheets.raspberrypi.org/bcm2711/bcm2711-peripherals.pdf[datasheet for the BCM2711] contains further details.
+The https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf[datasheet for the BCM2711] contains further details.

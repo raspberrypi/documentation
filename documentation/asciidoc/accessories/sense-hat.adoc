@@ -26,7 +26,7 @@ In order to work correctly, the Sense HAT requires an up-to-date kernel, I2C to 
 
 == Sense HAT Hardware
 
-* Raspberry Pi https://datasheets.raspberrypi.org/sense-hat/sense-hat-schematics.pdf[Sense HAT schematics].
+* Raspberry Pi https://datasheets.raspberrypi.com/sense-hat/sense-hat-schematics.pdf[Sense HAT schematics].
 
 == Sense HAT Software
 
