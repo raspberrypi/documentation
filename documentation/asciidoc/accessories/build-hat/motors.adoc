@@ -30,7 +30,7 @@ Your motor should turn clockwise for 5 seconds.
 
 image::images/turning-motor.gif[width="80%"]
 
-Change the final of your program and re-run. 
+Change the final line of your program and re-run. 
 
 [source,python,linenums, start=5]
 ----
@@ -47,7 +47,6 @@ motor_a.run_for_seconds(5, speed=-50)
 The motor should turn in the opposite (anti-clockwise) direction
 
 Create a new program by clicking on the plus button in Thonny. Add the code below:
-Run the program. Grab the motor and turn the shaft. You should see the numbers printed in the Thonny REPL changing. 
 
 [source,python]
 ----
@@ -58,3 +57,5 @@ motor_a = Motor('A')
 While True:
     print("Position: ", motor_a.get_aposition())
 ----
+
+Run the program. Grab the motor and turn the shaft. You should see the numbers printed in the Thonny REPL changing. 
