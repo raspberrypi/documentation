@@ -4,41 +4,41 @@
 
 The latest version of the Compute Module is the Compute Module 4 (CM4). It is the recommended Compute Module for all current and future development.
 
-* https://datasheets.raspberrypi.org/cm4/cm4-datasheet.pdf[Compute Module 4 Datasheet]
-* https://datasheets.raspberrypi.org/cm4io/cm4io-datasheet.pdf[Compute Module 4 IO Board Datasheet]
+* https://datasheets.raspberrypi.com/cm4/cm4-datasheet.pdf[Compute Module 4 Datasheet]
+* https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf[Compute Module 4 IO Board Datasheet]
 
 NOTE: Schematics are not available for the Compute Module 4, but are available for the IO board.
 
 Schematics for the CMIO4 board are included in the datasheet,
 
-* https://datasheets.raspberrypi.org/cm4io/cm4io-datasheet.pdf[Compute Module 4 IO Board Datasheet] (including schematics)
+* https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf[Compute Module 4 IO Board Datasheet] (including schematics)
 
 There is also a KiCAD PCB design set available:
 
-* https://datasheets.raspberrypi.org/cm4io/CM4IO-KiCAD.zip[Compute Module 4 IO Board KiCAD files]
+* https://datasheets.raspberrypi.com/cm4io/CM4IO-KiCAD.zip[Compute Module 4 IO Board KiCAD files]
 
 === Older Products
 
 Raspberry Pi CM1, CM3 and CM3L are supported products with an End-of-Life (EOL) date no earlier than January 2026. For customers embarking on new designs, Raspberry Pi recommends using the newer Compute Module 3+, which offers improved thermal performance, and a wider range of Flash memory options.
 
-* https://datasheets.raspberrypi.org/cm/cm1-and-cm3-datasheet.pdf[Compute Module and Compute Module 3]
+* https://datasheets.raspberrypi.com/cm/cm1-and-cm3-datasheet.pdf[Compute Module and Compute Module 3]
 
 Raspberry Pi CM3+ and CM3+ Lite are supported prodicts with an End-of-Life (EOL) date no earlier than January 2026.
 
-* https://datasheets.raspberrypi.org/cm/cm3-plus-datasheet.pdf[Compute Module 3+]
+* https://datasheets.raspberrypi.com/cm/cm3-plus-datasheet.pdf[Compute Module 3+]
 
 Schematics for the Compute Module 1, 3 and 3L
 
-* https://datasheets.raspberrypi.org/cm/cm1-schematics.pdf[CM Rev 1.1]
-* https://datasheets.raspberrypi.org/cm/cm3-schematics.pdf[CM3 and CM3L Rev 1.0]
+* https://datasheets.raspberrypi.com/cm/cm1-schematics.pdf[CM Rev 1.1]
+* https://datasheets.raspberrypi.com/cm/cm3-schematics.pdf[CM3 and CM3L Rev 1.0]
 
 Schematics for the Compute Module IO board (CMIO):
 
-* https://datasheets.raspberrypi.org/cmio/cmio-schematics.pdf[CMIO Rev 3.0] (Supports CM1, CM3, CM3L, CM3+ and CM3+L)
+* https://datasheets.raspberrypi.com/cmio/cmio-schematics.pdf[CMIO Rev 3.0] (Supports CM1, CM3, CM3L, CM3+ and CM3+L)
 
 Schematics for the Compute Module camera/display adapter board (CMCDA):
 
-* https://datasheets.raspberrypi.org/cmcda/cmcda-schematics.pdf[CMCDA Rev 1.1]
+* https://datasheets.raspberrypi.com/cmcda/cmcda-schematics.pdf[CMCDA Rev 1.1]
 
 ==== Under Voltage Detection
 

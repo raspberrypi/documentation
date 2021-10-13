@@ -22,7 +22,7 @@ Connecting to DISP1
 
 . Power up the Compute Module and run:
 +
-`+sudo wget https://datasheets.raspberrypi.org/cmio/dt-blob-disp1-only.bin -O /boot/dt-blob.bin+`
+`+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-only.bin -O /boot/dt-blob.bin+`
 
 . Reboot for the `dt-blob.bin` file to be read.
 
@@ -39,7 +39,7 @@ Connecting to DISP0
 
 . Power up the Compute Module and run:
 +
-`+sudo wget https://datasheets.raspberrypi.org/cmio/dt-blob-disp0-only.bin -O /boot/dt-blob.bin+`
+`+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp0-only.bin -O /boot/dt-blob.bin+`
 
 . Reboot for the `dt-blob.bin` file to be read.
 
@@ -63,7 +63,7 @@ image:images/CMIO-Cam-Disp-GPIO.jpg[GPIO connection for a single display and Cam
 
 . Power up the Compute Module and run:
 +
-`+sudo wget https://datasheets.raspberrypi.org/cmio/dt-blob-disp1-cam1.bin -O /boot/dt-blob.bin+`
+`+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-cam1.bin -O /boot/dt-blob.bin+`
 
 . Reboot for the `dt-blob.bin` file to be read.
 
@@ -83,7 +83,7 @@ image:images/CMIO-Cam-Disp-GPIO.jpg[GPIO connection for a single display and Cam
 . (CM4 only) Add jumpers to J6.
 . Power up the Compute Module and run:
 +
-`+sudo wget https://datasheets.raspberrypi.org/cmio/dt-blob-disp1-cam2.bin -O /boot/dt-blob.bin+`
+`+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-cam2.bin -O /boot/dt-blob.bin+`
 
 . Reboot for the `dt-blob.bin` file to be read.
 +
@@ -119,7 +119,7 @@ Instructions for doing this can be found on the xref:configuration.adoc#changing
 
 ==== Sources
 
-* https://datasheets.raspberrypi.org/cmio/dt-blob-disp1-only.dts[dt-blob-disp1-only.dts]
-* https://datasheets.raspberrypi.org/cmio/dt-blob-disp1-cam1.dts[dt-blob-disp1-cam1.dts]
-* https://datasheets.raspberrypi.org/cmio/dt-blob-disp1-cam2.dts[dt-blob-disp1-cam2.dts]
-* https://datasheets.raspberrypi.org/cmio/dt-blob-disp0-only.dts[dt-blob-disp0-only.dts] (Uses wiring as for CAM0)
+* https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-only.dts[dt-blob-disp1-only.dts]
+* https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-cam1.dts[dt-blob-disp1-cam1.dts]
+* https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-cam2.dts[dt-blob-disp1-cam2.dts]
+* https://datasheets.raspberrypi.com/cmio/dt-blob-disp0-only.dts[dt-blob-disp0-only.dts] (Uses wiring as for CAM0)

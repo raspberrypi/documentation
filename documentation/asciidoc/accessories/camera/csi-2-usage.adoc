@@ -106,7 +106,7 @@ Sensors generally support https://www.kernel.org/doc/html/latest/userspace-api/m
 
 In the case of the IMX219, many of these controls map directly onto register writes to the sensor itself.
 
-Further guidance can be found in libcamera's https://git.linuxtv.org/libcamera.git/tree/Documentation/sensor_driver_requirements.rst[sensor driver requirements], and also in chapter 3 of the https://datasheets.raspberrypi.org/camera/raspberry-pi-camera-guide.pdf[Raspberry Pi Camera Tuning Guide].
+Further guidance can be found in libcamera's https://git.linuxtv.org/libcamera.git/tree/Documentation/sensor_driver_requirements.rst[sensor driver requirements], and also in chapter 3 of the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Raspberry Pi Camera Tuning Guide].
 
 ===== Device Tree
 

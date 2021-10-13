@@ -3,20 +3,20 @@
 
 === What is on your Pico?
 
-If you have forgotten what has been programmed into your Raspberry Pi Pico, and the program was built using our Pico C/C{pp} SDK, it will usually have a name and other useful information embedded into the binary. You can use the https://github.com/raspberrypi/picotool[Picotool] command line utility to find out these details. Full instructions on how to use Picotool to do this are available in our 'https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf[getting started]' documentation.
+If you have forgotten what has been programmed into your Raspberry Pi Pico, and the program was built using our Pico C/C{pp} SDK, it will usually have a name and other useful information embedded into the binary. You can use the https://github.com/raspberrypi/picotool[Picotool] command line utility to find out these details. Full instructions on how to use Picotool to do this are available in our 'https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[getting started]' documentation.
 
 * Go to the https://github.com/raspberrypi/picotool[Picotool Github repository].
 
 === Debugging using another Raspberry Pi Pico
 
-It is possible to use one Raspberry Pi Pico to debug another Pico. This is possible via picoprobe, an application that allows a Pico to act as a USB → SWD and UART converter. This makes it easy to use a Pico on non-Raspberry Pi platforms such as Windows, Mac, and Linux computers where you don’t have GPIOs to connect directly to your Pico. Full instructions on how to use Picoprobe to do this are available in our 'https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf[getting started]' documentation.
+It is possible to use one Raspberry Pi Pico to debug another Pico. This is possible via picoprobe, an application that allows a Pico to act as a USB → SWD and UART converter. This makes it easy to use a Pico on non-Raspberry Pi platforms such as Windows, Mac, and Linux computers where you don’t have GPIOs to connect directly to your Pico. Full instructions on how to use Picoprobe to do this are available in our 'https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[getting started]' documentation.
 
-* Download the https://datasheets.raspberrypi.org/soft/picoprobe.uf2[UF2 file]
+* Download the https://datasheets.raspberrypi.com/soft/picoprobe.uf2[UF2 file]
 * Go to the https://github.com/raspberrypi/picoprobe[Picoprobe Github repository]
 
 === Resetting Flash memory
 
 Pico's BOOTSEL mode lives in read-only memory inside the RP2040 chip, and can't be overwritten accidentally. No matter what, if you hold down the BOOTSEL button when you plug in your Pico, it will appear as a drive onto which you can drag a new UF2 file. There is no way to brick the board through software. However, there are some circumstances where you might want to make sure your Flash memory is empty. You can do this by dragging and dropping a special UF2 binary onto your Pico when it is in mass storage mode.
 
-* Download the https://datasheets.raspberrypi.org/soft/flash_nuke.uf2[UF2 file]
+* Download the https://datasheets.raspberrypi.com/soft/flash_nuke.uf2[UF2 file]
 * See the https://github.com/raspberrypi/pico-examples/blob/master/flash/nuke/nuke.c[code on Github]

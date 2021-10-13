@@ -4,5 +4,5 @@ The Broadcom chip used in the Raspberry Pi 2 Model B. The underlying architectur
 
 You should refer to:
 
-* https://datasheets.raspberrypi.org/bcm2836/bcm2836-peripherals.pdf[BCM2836 ARM-local peripherals]
+* https://datasheets.raspberrypi.com/bcm2836/bcm2836-peripherals.pdf[BCM2836 ARM-local peripherals]
 * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0464f/index.html[Cortex-A7 MPcore Processor Reference Manual]

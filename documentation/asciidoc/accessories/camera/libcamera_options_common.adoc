@@ -261,7 +261,7 @@ Sets the metering mode of the AEC/AGC algorithm. This may one of the following v
 * `average` - average or whole frame metering
 * `custom` - custom metering mode which would have to be defined in the camera tuning file.
 
-For more information on defining a custom metering mode, and also on how to adjust the region weights in the existing metering modes,please refer to the https://datasheets.raspberrypi.org/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
+For more information on defining a custom metering mode, and also on how to adjust the region weights in the existing metering modes,please refer to the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
 
 Example: `libcamera-still -o test.jpg --metering spot`
 
@@ -271,7 +271,7 @@ Example: `libcamera-still -o test.jpg --metering spot`
 
 The exposure profile may be either `normal` or `sport`. Changing the exposure profile should not affect the overall exposure of an image, but the `sport` mode will tend to prefer shorter exposure times and larger gains to achieve the same net result.
 
-Exposure profiles can be edited in the camera tuning file. Please refer to the https://datasheets.raspberrypi.org/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera] for more information.
+Exposure profiles can be edited in the camera tuning file. Please refer to the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera] for more information.
 
 Example: `libcamera-still -o test.jpg --exposure sport`
 
@@ -313,7 +313,7 @@ There is no mode that turns the AWB off, instead fixed colour gains should be sp
 
 Note that these values are only approximate, the values could vary according to the camera tuning.
 
-For more information on AWB modes and how to define a custom one, please refer to the https://datasheets.raspberrypi.org/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
+For more information on AWB modes and how to define a custom one, please refer to the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
 
 Example: `libcamera-still -o test.jpg --awb tungsten`
 
@@ -351,7 +351,7 @@ Example: `libcamera-vid -o test.h264 --denoise cdn_off`
 
 This identifies the name of the JSON format tuning file that should be used. The tuning file covers many aspects of the image processing, including the AEC/AGC, AWB, colour shading correction, colour processing, denoising and so forth.
 
-For more information on the camera tuning file, please consult the https://datasheets.raspberrypi.org/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
+For more information on the camera tuning file, please consult the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
 
 Example: `libcamera-hello --tuning-file ~/my-camera-tuning.json`
 

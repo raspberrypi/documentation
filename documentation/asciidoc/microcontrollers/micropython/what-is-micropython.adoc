@@ -9,7 +9,7 @@ MicroPython is a full implementation of the Python 3 programming language that r
 
 You can find information on the MicroPython port to RP2040 at;
 
-https://datasheets.raspberrypi.org/pico/raspberry-pi-pico-python-sdk.pdf[Raspberry Pi Pico Python SDK]:: A MicroPython environment for RP2040 microcontrollers
+https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf[Raspberry Pi Pico Python SDK]:: A MicroPython environment for RP2040 microcontrollers
 https://docs.micropython.org/en/latest/rp2/quickref.html[RP2 Quick Reference]:: The official documentation around the RP2040 port of MicroPython
 https://docs.micropython.org/en/latest/library/rp2.html[RP2 Library]:: The official documentation about the `rp2` module in MicroPython
 
