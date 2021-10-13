@@ -8,7 +8,7 @@ As of July 2014, the Raspberry Pi firmware supports custom default pin configura
 
 During the bootup sequence, the GPIO pins go through various actions.
 
-. Power-on -- pins default to inputs with default pulls; the default pulls for each pin are described in the https://datasheets.raspberrypi.org/bcm2835/bcm2835-peripherals.pdf[datasheet]
+. Power-on -- pins default to inputs with default pulls; the default pulls for each pin are described in the https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf[datasheet]
 . Setting by the bootrom
 . Setting by `bootcode.bin`
 . Setting by `dt-blob.bin` (this page)

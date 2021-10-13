@@ -231,14 +231,14 @@ The maximum exposure times of the three official Raspberry Pi cameras are given 
 
 === Mechanical Drawings
 
-* Camera Module v2 https://datasheets.raspberrypi.org/camera/camera-v2-mechanical-drawing.pdf[PDF]
-* HQ Camera Module https://datasheets.raspberrypi.org/hq-camera/hq-camera-mechanical-drawing.pdf[PDF]
-* HQ Camera Module lens mount https://datasheets.raspberrypi.org/hq-camera/hq-camera-lensmount-drawing.pdf[PDF]
+* Camera Module v2 https://datasheets.raspberrypi.com/camera/camera-v2-mechanical-drawing.pdf[PDF]
+* HQ Camera Module https://datasheets.raspberrypi.com/hq-camera/hq-camera-mechanical-drawing.pdf[PDF]
+* HQ Camera Module lens mount https://datasheets.raspberrypi.com/hq-camera/hq-camera-lensmount-drawing.pdf[PDF]
 
 === Schematics
 
-* Camera Module v2 https://datasheets.raspberrypi.org/camera/camera-v2-schematics.pdf[PDF]
-* HQ Camera Module https://datasheets.raspberrypi.org/hq-camera/hq-camera-schematics.pdf[PDF]
+* Camera Module v2 https://datasheets.raspberrypi.com/camera/camera-v2-schematics.pdf[PDF]
+* HQ Camera Module https://datasheets.raspberrypi.com/hq-camera/hq-camera-schematics.pdf[PDF]
 
 === Raspberry Pi HQ Camera Filter Removal
 

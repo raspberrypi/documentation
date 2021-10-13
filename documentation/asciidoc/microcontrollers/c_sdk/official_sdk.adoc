@@ -1,7 +1,7 @@
 :pp: {plus}{plus}
 == Raspberry Pi Pico C/C{pp} SDK
 
-Our official C SDK can be used from the command line, or from popular integrated development environments like Visual Studio Code, Eclipse, and CLion. To get started, download our C/C++ SDK and Examples, and take a look at our 'https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf[getting started]' documentation to get going. Or for a quick setup see the next section.
+Our official C SDK can be used from the command line, or from popular integrated development environments like Visual Studio Code, Eclipse, and CLion. To get started, download our C/C++ SDK and Examples, and take a look at our 'https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[getting started]' documentation to get going. Or for a quick setup see the next section.
 
 * The SDK https://github.com/raspberrypi/pico-sdk[Github repository]
 
@@ -9,8 +9,8 @@ Our official C SDK can be used from the command line, or from popular integrated
 
 You can find documentation around the C/C{pp} SDK at;
 
-https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico]:: C/C++ development with Raspberry Pi Pico and other RP2040-based microcontroller boards
+https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico]:: C/C++ development with Raspberry Pi Pico and other RP2040-based microcontroller boards
 
-https://datasheets.raspberrypi.org/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi Pico C/C{pp} SDK]:: Libraries and tools for C/C++ development on RP2040 microcontrollers
+https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi Pico C/C{pp} SDK]:: Libraries and tools for C/C++ development on RP2040 microcontrollers
 
 The API level Doxygen documentation for the Raspberry Pi Pico C/C{pp} SDK is also available https://rptl.io/pico-doxygen[as a micro-site].

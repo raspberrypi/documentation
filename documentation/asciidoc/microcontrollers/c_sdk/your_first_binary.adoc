@@ -9,13 +9,13 @@ image:images/Blink-an-LED-640x360.gif[]
 
 You can blink this on and off by,
 
-. Download the https://datasheets.raspberrypi.org/soft/blink.uf2[Blink UF2]
+. Download the https://datasheets.raspberrypi.com/soft/blink.uf2[Blink UF2]
 . Push and hold the BOOTSEL button and plug your Pico into the USB port of your Raspberry Pi or other computer.
 . It will mount as a Mass Storage Device called RPI-RP2.
  .Drag and drop the Blink UF2 binary onto the RPI-RP2 volume.
  .Pico will reboot, and the on-board LED should start blinking.
 
-* Download https://datasheets.raspberrypi.org/soft/blink.uf2[UF2 File]
+* Download https://datasheets.raspberrypi.com/soft/blink.uf2[UF2 File]
 
 * See the code https://github.com/raspberrypi/pico-examples/blob/master/blink/blink.c[on Github]
 
@@ -25,7 +25,7 @@ The next program anyone writes is to say 'Hello World' over a USB serial connect
 
 image:images/Hello-World-640x360.gif[]
 
-. Download the https://datasheets.raspberrypi.org/soft/hello_world.uf2['Hello World' UF2].
+. Download the https://datasheets.raspberrypi.com/soft/hello_world.uf2['Hello World' UF2].
 . Push and hold the BOOTSEL button and plug your Pico into the USB port of your Raspberry Pi or other computer.
 . It will mount as a Mass Storage Device called RPI-RP2.
 . Drag and drop the 'Hello World' UF2 binary onto the RPI-RP2 volume. Pico will reboot
@@ -39,5 +39,5 @@ minicom -b 115200 -o -D /dev/ttyACM0
 
 You should see 'Hello, world!' printed to the Terminal
 
-* Download https://datasheets.raspberrypi.org/soft/hello_world.uf2[UF2 File]
+* Download https://datasheets.raspberrypi.com/soft/hello_world.uf2[UF2 File]
 * See the code https://github.com/raspberrypi/pico-examples/blob/master/hello_world/usb/hello_usb.c[on Github]
