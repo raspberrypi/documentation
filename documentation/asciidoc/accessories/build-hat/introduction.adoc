@@ -23,3 +23,7 @@ NOTE: The HAT works with all 40-pin GPIO Raspberry Pi boards, including Raspberr
 * Fits onto any Raspberry Pi computer with a 40-pin GPIO header
 * Onboard xref:../microcontrollers/rp2040.adoc[RP2040] microcontroller manages low-level control of LEGO® Technic™ devices
 * External 8V PSU available separately to power both Build HAT and Raspberry Pi
+[NOTE]
+======
+The Build HAT can not power the Rapsberry Pi 400 as it does not support being powered via the GPIO headers.
+======

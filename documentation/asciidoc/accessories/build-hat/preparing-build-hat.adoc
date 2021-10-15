@@ -1,6 +1,6 @@
 == Preparing your Build HAT
 
-NOTE: Before starting to work with your Raspberry Pi Build HAT you should xref:../computers/getting-started.adoc#setting-up-your-raspberry-pi[set up] your Raspberry Pi, xref:../computers/getting-started.html#installing-the-operating-system[install] the latest version of the operating system using https://www.raspberrypi.org/downloads/[Raspberry Pi Imager].
+NOTE: Before starting to work with your Raspberry Pi Build HAT you should xref:../computers/getting-started.adoc#setting-up-your-raspberry-pi[set up] your Raspberry Pi, xref:../computers/getting-started.html#installing-the-operating-system[install] the latest version of the operating system using https://www.raspberrypi.com/downloads/[Raspberry Pi Imager].
 
 Attach 9mm spacers to the bottom of the board. Seat the Raspberry Pi Build HAT onto your Raspberry Pi. Make sure you put it on the right way up. Unlike other HATs, all the components are on the bottom, leaving room for a breadboard or LEGO® elements on top.  
 
@@ -37,7 +37,7 @@ image::images/setting-up.png[width="50%"]
 
 ==== Using your Raspberry Pi Headless
 
-If you are running your Raspberry Pi xref:../computers/configuration.html#setting-up-a-headless-raspberry-pi[headless] and using `raspi-config`, select “interface options from the first menu”.
+If you are running your Raspberry Pi headless and using `raspi-config`, select “interface options from the first menu”.
 
 image::images/raspi-config-1.png[width="70%"]
 
@@ -63,9 +63,16 @@ You will need to reboot at this point if you have made any changes.
 
 Connect an external power supply - the https://raspberrypi.com/products/build-hat-power-supply[official Raspberry Pi Build HAT power supply] is recommended. You don’t need to connect a USB power supply to the Raspberry Pi as well.
 
+[NOTE]
+======
+The Build HAT can not power the Rapsberry Pi 400 as it does not support being powered via the GPIO headers.
+======
+
 image::images/powering-build-hat.gif[width="80%"]
 
 [NOTE]
 ======
-The LEGO® Technic™ motors are very powerful; so to drive them you’ll need an external 7.5V power supply. 
+The LEGO® Technic™ motors are very powerful; so to drive them you’ll need an external 8V power supply. 
 ======
+
+
