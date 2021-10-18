@@ -61,7 +61,7 @@ You will need to reboot at this point if you have made any changes.
 
 === Powering the Build HAT
 
-Connect an external power supply - the official Raspberry Pi Build HAT power supply is recommended.  You don’t need to connect a USB power supply to the Raspberry Pi as well, see <<powering-build-hat>> 
+Connect an external power supply - the official Raspberry Pi Build HAT power supply is recommended. You don’t need to connect a USB power supply to the Raspberry Pi as well.
 
 [NOTE]
 ======
