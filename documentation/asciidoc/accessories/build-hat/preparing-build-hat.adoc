@@ -63,7 +63,6 @@ You will need to reboot at this point if you have made any changes.
 
 The LEGO® Technic™ motors are really powerful and like most motors, to drive them you’ll need an external 8V power supply. Connect an external power supply - the official Raspberry Pi Build HAT power supply is recommended.  You don’t need to connect a USB power supply to the Raspberry Pi as well, see <<powering-build-hat>> 
 
-If you want to read from motor encoders and the SPIKE™ force sensor, you can power your Raspberry Pi and Build HAT the usual way, via your Raspberry Pi’s USB power socket. The SPIKE™ colour and distance sensors, like the motors, require an https://raspberrypi.com/products/build-hat-power-supply[external power supply].
 
 [NOTE]
 ======
@@ -74,7 +73,7 @@ image::images/powering-build-hat.gif[width="80%"]
 
 [NOTE]
 ======
-The LEGO® Technic™ motors are very powerful; so to drive them you’ll need an external 8V power supply. 
+The LEGO® Technic™ motors are very powerful; so to drive them you’ll need an external 8V power supply. If you want to read from motor encoders and the SPIKE™ force sensor, you can power your Raspberry Pi and Build HAT the usual way, via your Raspberry Pi’s USB power socket. The SPIKE™ colour and distance sensors, like the motors, require an https://raspberrypi.com/products/build-hat-power-supply[external power supply].
 ======
 
 
