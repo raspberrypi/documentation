@@ -1,0 +1,48 @@
+== Device Compatibility
+
+The Build HAT library supports all the LEGO® Technic™ devices included in the SPIKE™ Portfolio, along with those from the LEGO® Mindstorms Robot Inventor kit and other devices that use an LPF2 connector.
+
+IMPORTANT: The product code for the SPIKE™ Prime Expansion Set that included the Maker Plate is 45681. The original Expansion Set is 45680 and does not include the Maker Plate. 
+
+[cols="2,2,1,1,1,1,1,3,1,1,1,1", width="100%", options="header"]
+|===
+| Description | Colour | LEGO Item Number | Supported in FW | Supported in Python | Alt Number | BrickOwl | Available In | Set Numbers | Class | Type | Device ID
+
+| Large Angular Motor | White/Cyan | 6254344 | Yes | Yes | 45602 | https://www.brickowl.com/catalog/lego-large-angular-motor-set-45602[Link] | SPIKE Prime Set, 
+SPIKE Prime Expansion Set | 45678, 45680 | Motor | Active | 30
+
+| Medium Angular Motor | White/Cyan | 6254347 | Yes | Yes | 45603 | https://www.brickowl.com/catalog/lego-medium-angular-motor-set-45603[Link] | SPIKE Prime Set | 45678 | Motor | Active | 31
+
+| Medium Motor | White/Grey | 6299646, 6359216 | Partial | Yes | 436655 | https://www.brickowl.com/catalog/lego-servo-motor-54696-79819[Link] | Mindstorms Robot Inventor | 51515 | Motor | Active | 4B
+
+| Small Motor | White/Cyan | | Yes| Yes| | | New SPIKE Prime Set| | Motor| Active| 41
+
+| Light/Colour sensor |White/Black | 6217705 |Yes | Yes | | | SPIKE Prime Set, SPIKE Prime Expansion Set, Mindstorms Robot Inventor | 45678, 45680, 51515  | ColorSensor |Active | 3D
+
+| UDS | White/Black	| 6302968 | Yes | Yes | | | SPIKE Prime Set, Mindstorms Robot Inventor | 45678, 51515  |DistanceSensor | Active | 3E
+
+| Narrow Motor | White/Grey | | No | | | | App controlled Batmobile | 76112 | | Passive | 1
+
+| Force Sensor | White/Black | 6254354 | Yes | Yes | 45606 | https://www.brickowl.com/catalog/lego-force-sensor-set-45606[Link] | SPIKE Prime Set | 45678 | ForceSensor | Active | 3F
+
+| 3×3 LED | White/Cyan | | Yes | Yes | | | New SPIKE Prime Set | | | Active | 40 
+
+| System train motor | Black | 6261456 | Yes | ? | 28740, 88011-1 | https://www.brickowl.com/catalog/lego-train-motor-set-88011[Link] | | | | Passive | 2
+
+| Sys/Tech simple lights | Black | 6240315 | Yes | ? | | | | | | Passive | 8
+
+| Medium linear motor (LPF2 TACHO Light MOTOR 4X6X3, NO. 1) | White/Grey | 6261452 | Yes | Yes | 26913, 88008-1 | https://www.brickowl.com/catalog/lego-medium-linear-motor-set-88008[Link] | | | Motor | Active | 26
+
+| Technic large motor | Grey/Grey | 6318494 | Yes | Yes | 22169, 88013 | https://www.brickowl.com/catalog/lego-technic-large-motor-set-88013[Link] | | | | Active | 2E
+
+| Technic XL motor | Grey/Grey | 6318509 | Yes | Yes | 22172, 88014 | https://www.brickowl.com/catalog/lego-technic-xl-motor-set-88014[Link] | | | | Active | 2F
+
+| Colour + distance sensor | White/Grey | 6261451 | Partial | ? | 26912, 88007 | https://www.brickowl.com/catalog/lego-colour-distance-sensor-set-88007[Link] | | | | Active | 25
+
+| System medium motor | White/Grey | 6138854 | Yes | ? | | | | | | Passive | 1
+
+| Button | ? | | Partial | | | | | | | Passive | 5
+
+| Tilt sensor | White/Grey | | | | 45305 | https://www.brickowl.com/catalog/lego-wedo-2-0-tilt-sensor-set-45305[Link] | | | | | |
+
+|===
