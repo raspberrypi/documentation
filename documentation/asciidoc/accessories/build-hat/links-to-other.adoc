@@ -9,8 +9,8 @@ and full details of the Python Library documentation can also be found https://b
 
 You can also follow along with projects from the Raspberry Pi Foundation,
 
-* https://projects.raspberrypi.com/en/projects/lego-game-controller[LEGO® Game Controller]
-* https://projects.raspberrypi.com/en/projects/lego-robot-car[LEGO® Robot Car]
-* https://projects.raspberrypi.com/en/projects/lego-plotter[LEGO® Plotter]
-* https://projects.raspberrypi.com/en/projects/lego-robot-face[LEGO® Robot Face]
-* https://projects.raspberrypi.com/en/projects/lego-data-dash[LEGO® Data Dash]
+* https://projects.raspberrypi.org/en/projects/lego-game-controller[LEGO® Game Controller]
+* https://projects.raspberrypi.org/en/projects/lego-robot-car[LEGO® Robot Car]
+* https://projects.raspberrypi.org/en/projects/lego-plotter[LEGO® Plotter]
+* https://projects.raspberrypi.org/en/projects/lego-robot-face[LEGO® Robot Face]
+* https://projects.raspberrypi.org/en/projects/lego-data-dash[LEGO® Data Dash]
