@@ -1,0 +1,17 @@
+
+include::build-hat/introduction.adoc[]
+
+include::build-hat/preparing-build-hat.adoc[]
+
+include::build-hat/installing-software.adoc[]
+
+include::build-hat/motors.adoc[]
+
+include::build-hat/sensors.adoc[]
+
+include::build-hat/links-to-other.adoc[]
+
+include::build-hat/compat.adoc[]
+
+include::build-hat/mech.adoc[]
+

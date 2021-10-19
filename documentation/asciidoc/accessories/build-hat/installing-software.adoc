@@ -1,0 +1,10 @@
+== Installing the Software
+
+Install the Build HAT Python library. Open xref:../computers/using_linux.adoc#terminal[a Terminal window] and type,
+
+[source]
+----
+$ pip3 install buildhat 
+----
+
+For more information about the Build HAT Python Library see https://buildhat.readthedocs.io/[ReadTheDocs].
