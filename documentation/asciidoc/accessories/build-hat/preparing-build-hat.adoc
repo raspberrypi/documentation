@@ -37,7 +37,7 @@ image::images/setting-up.png[width="50%"]
 
 ==== Using your Raspberry Pi Headless
 
-If you are running your Raspberry Pi headless and using `raspi-config`, select “interface options from the first menu”.
+If you are running your Raspberry Pi headless and using `raspi-config`, select “Interface Options” from the first menu.
 
 image::images/raspi-config-1.png[width="70%"]
 
