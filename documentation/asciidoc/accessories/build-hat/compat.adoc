@@ -21,8 +21,6 @@ SPIKE Prime Expansion Set | 45678, 45680 | Motor | Active | 30
 
 | UDS | White/Black	| 6302968 | Yes | Yes | | | SPIKE Prime Set, Mindstorms Robot Inventor | 45678, 51515  |DistanceSensor | Active | 3E
 
-| Narrow Motor | White/Grey | | No | | | | App controlled Batmobile | 76112 | | Passive | 1
-
 | Force Sensor | White/Black | 6254354 | Yes | Yes | 45606 | https://www.brickowl.com/catalog/lego-force-sensor-set-45606[Link] | SPIKE Prime Set | 45678 | ForceSensor | Active | 3F
 
 | 3×3 LED | White/Cyan | | Yes | Yes | | | New SPIKE Prime Set | | | Active | 40 
