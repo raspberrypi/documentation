@@ -16,6 +16,4 @@ Please refer to the following BCM2836 document for details on the ARM peripheral
 [NOTE]
 ======
 The original xref:raspberry-pi.adoc#raspberry-pi-zero[Raspberry Pi Zero] used Package-on-Package (PoP) DRAM, where the DRAM was soldered directly on top of the xref:processors.adoc#bcm2835[BCM2835] chip. 
-
-image:images/POP-crosssection.png[width="70%"]
 ======
