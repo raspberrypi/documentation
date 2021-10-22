@@ -6,13 +6,15 @@ Building `libcamera` and `libcamera-apps` for yourself can bring the following b
 
 * `libcamera-apps` can be compiled with extra optimisation for Pi 3 and Pi 4 devices running a 32-bit OS.
 
-* You can include the various optional OpenCV and/or TFLite post-processing stages.
+* You can include the various optional OpenCV and/or TFLite post-processing stages (or add your own).
+
+* You can customise or add your own applications derived from `libcamera-apps`.
 
 NOTE: When building for Pi 3 or earlier devices there is a risk that the device may run out of swap and fail. We recommend either increasing the amount of swap, or building with fewer threads (the `-j` option to `ninja` and to `make`).
 
 ==== Building `libcamera-apps` without rebuilding `libcamera`
 
-On _Bullseye_ or later images, you can rebuild `libcamera-apps` _without_ first rebuilding the whole of `libcamera` and `libepoxy`. To do this, please execute:
+You can rebuild `libcamera-apps` _without_ first rebuilding the whole of `libcamera` and `libepoxy`. To do this, please execute:
 
 ----
 sudo apt install -y libcamera-dev libepoxy-dev libjpeg-dev libtiff5-dev
@@ -28,6 +30,8 @@ Now proceed directly to the instructions for xref:camera.adoc#building-libcamera
 
 ==== Building `libcamera`
 
+Rebuilding `libcamera` from scratch should be necessary only if you need the latest features that may not yet have reached the `apt` repositories, or if you need to customise its behaviour in some way.
+
 First install all the necessary dependencies for `libcamera`.
 
 NOTE: Raspberry Pi OS Lite users will first need to install the following additional packages if they have not done so previously:
@@ -37,7 +41,7 @@ sudo apt install -y python3-pip git
 sudo pip3 install jinja2
 ----
 
-All users should then install the following.
+All users should then install the following:
 
 ----
 sudo apt install -y libboost-dev
@@ -54,19 +58,36 @@ Now we can check out and build `libcamera` itself.
 cd
 git clone git://linuxtv.org/libcamera.git
 cd libcamera
-meson build --buildtype=release
-cd build
-meson configure -Dpipelines=raspberrypi -Dtest=false
-cd ..
+----
+
+Next we recommend that Raspberry Pi OS Lite users run
+
+----
+meson build --buildtype=release -Dpipelines=raspberrypi -Dipas=raspberrypi -Dv4l2=true -Dgstreamer=enabled -Dtest=false -Dlc-compliance=disabled -Dcam=disabled -Dqcam=disabled -Ddocumentation=disabled
+----
+
+Users of Raspberry Pi OS can instead use
+
+----
+meson build --buildtype=release -Dpipelines=raspberrypi -Dipas=raspberrypi -Dv4l2=true -Dgstreamer=enabled -Dtest=false -Dlc-compliance=disabled -Dcam=disabled -Dqcam=enabled -Ddocumentation=disabled
+----
+
+The only difference is that the latter also builds the `qcam` test application, which has dependencies on Qt and X Windows (after completing the `libcamera` build users can run `build/src/qcam/qcam` to verify that `libcamera` is functioning correctly).
+
+To complete the `libcamera` build, please run
+
+----
 ninja -C build
 sudo ninja -C build install   # use -j 2 on Pi 3 or earlier devices
 ----
 
-NOTE: If you wish to build the `libcamerasrc` _gstreamer_ element, please ensure that _gstreamer_ and `libgstreamer1.0-dev` and `libgstreamer-plugins-base1.0-dev` are installed before running `meson`. If you wish to build the V4L2 compatabilitiy layer, please add `-Dv4l2=true` to the `meson configure` command. More information is available on the https://www.libcamera.org/index.html[libcamera website].
+NOTE: If you wish to build the `libcamerasrc` _gstreamer_ element, please ensure that _gstreamer_ and `libgstreamer1.0-dev` and `libgstreamer-plugins-base1.0-dev` are installed before running `meson`. More information is available on the https://www.libcamera.org/index.html[libcamera website].
 
 ==== Building `libepoxy`
 
-If you wish to build and install `libepoxy`, please start by installing the necessary dependencies.
+Rebuilding `libepoxy` should not normally be necessary as this library changes only very rarely. If you do want to build it from scratch, however, please follow the instructions below.
+
+Start by installing the necessary dependencies.
 
 ----
 sudo apt install -y libegl1-mesa-dev
@@ -93,13 +114,7 @@ First fetch the necessary dependencies for `libcamera-apps`.
 sudo apt install -y cmake libboost-program-options-dev libdrm-dev libexif-dev
 ----
 
-Finally build `libcamera-apps` as shown. You will need to decide what extra flags to pass to `cmake`. The valid flags are:
-
-* `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon` - you may supply this when building for Pi 3 or Pi 4 devices running a 32-bit OS. Some post-processing features may run more quickly.
-
-* `-DENABLE_OPENCV=0` or `-DENABLE_OPENCV=1` - you may choose one of these to force OpenCV-based post-processing stages to be linked (or not). If you enable them, then OpenCV must be installed on your system. Normally they will be built by default if OpenCV is available.
-
-* `-DENABLE_TFLITE=0` or `-DENABLE_TFLITE=1` - choose one of these to enable TensorFlow Lite post-processing stages (or not). By default they will not be enabled. If you enable them then TensorFlow Lite must be available on your system. Depending on how you have built and/or installed TFLite, you may need to tweak the `CMakeLists.txt` file in the `post_processing_stages` directory.
+The `libcamera-apps` build process begins with the following:
 
 ----
 cd
@@ -107,12 +122,44 @@ git clone https://github.com/raspberrypi/libcamera-apps.git
 cd libcamera-apps
 mkdir build
 cd build
-cmake ..  # add your extra cmake flags here
-make -j4  # use -j2 on Pi 3 or earlier devices
-sudo make install
-sudo ldconfig  # this is only necessary on the first build
 ----
 
-NOTE: On _Bullseye_ and later images, if you want to run the new `libcamera-apps` executables from the same terminal window where you have just built and installed them for the first time, you may need to run `hash -r` to be sure to pick up the new ones over the system supplied ones.
+At this point you will need to run `cmake` after deciding what extra flags to pass it. The valid flags are:
+
+* `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon` - you may supply this when building for Pi 3 or Pi 4 devices running a 32-bit OS. Some post-processing features may run more quickly.
+
+* `-DENABLE_DRM=1` or `-DENABLE_DRM=0` - this enables or disables the DRM/KMS preview rendering. This is what implements the preview window when X Windows is not running.
+
+* `-DENABLE_X11=1` or `-DENABLE_X11=0` - this enables or disables the X Windows based preview. You should disable this if your system does not have X Windows installed.
+
+* `-DENABLE_QT=1` or `-DENABLE_QT=0` - this enables or disables support for the Qt-based implementation of the preview window. You should disable it if you do not have X Windows installed, or if you have no intention of using the Qt-based preview window. The Qt-based preview is normally not recommended because it is computationally very expensive, however it does work with X display forwarding.
+
+* `-DENABLE_OPENCV=1` or `-DENABLE_OPENCV=0` - you may choose one of these to force OpenCV-based post-processing stages to be linked (or not). If you enable them, then OpenCV must be installed on your system. Normally they will be built by default if OpenCV is available.
+
+* `-DENABLE_TFLITE=1` or `-DENABLE_TFLITE=0` - choose one of these to enable TensorFlow Lite post-processing stages (or not). By default they will not be enabled. If you enable them then TensorFlow Lite must be available on your system. Depending on how you have built and/or installed TFLite, you may need to tweak the `CMakeLists.txt` file in the `post_processing_stages` directory.
+
+For Raspberry Pi OS users we recommend the following `cmake` command:
+
+----
+cmake .. -DENABLE_DRM=1 -DENABLE_X11=1 -DENABLE_QT=1 -DENABLE_OPENCV=0 -DENABLE_TFLITE=0
+----
+
+and for Raspberry Pi OS Lite users:
+
+----
+cmake .. -DENABLE_DRM=1 -DENABLE_X11=0 -DENABLE_QT=0 -DENABLE_OPENCV=0 -DENABLE_TFLITE=0
+----
+
+In both cases, consider `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon` if you are using a 32-bit OS on a Pi 3 or Pi 4. Consider `-DENABLE_OPENCV=1` if you have installed _OpenCV_ and wish to use OpenCV-based post-processing stages. Finally also consider `-DENABLE_TFLITE=1` if you have installed _TensorFlow Lite_ and wish to use it in post-processing stages.
+
+After executing the `cmake` command of your choice, the whole process concludes with the following:
+
+----
+make -j4  # use -j2 on Pi 3 or earlier devices
+sudo make install
+sudo ldconfig /usr/bin/local # this is only necessary on the first build
+----
+
+NOTE: If you are using an image where `libcamera-apps` have been previously installed as an `apt` package, and you want to run the new `libcamera-apps` executables from the same terminal window where you have just built and installed them, you may need to run `hash -r` to be sure to pick up the new ones over the system supplied ones.
 
 Finally, if you have not already done so, please be sure to follow the `dtoverlay` and display driver instructions in the  xref:camera.adoc#getting-started[Getting Started section] (and rebooting if you changed anything there).
