@@ -28,4 +28,4 @@ In general we will not accept content that is specific to an individual third-pa
 
 ## Licensing 
 
-The documentation is under a [Creative Commons Attribution-Sharealike](https://creativecommons.org/licenses/by-sa/4.0/) (CC BY-SA 4.0) license. By contributing content to this repository you are agreeing to place your contributions under this license.
+The documentation is under a [Creative Commons Attribution-Sharealike](https://creativecommons.org/licenses/by-sa/4.0/) (CC BY-SA 4.0) licence. By contributing content to this repository you are agreeing to place your contributions under this licence.
