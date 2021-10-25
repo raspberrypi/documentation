@@ -62,4 +62,5 @@ NOTE: Mechanical drawings for the Raspberry Pi 3, Model A+ are also applicable t
 * https://datasheets.raspberrypi.com/rpizero2/raspberry-pi-zero-2-w-mechanical-drawing.pdf[Mechanical Drawings, PDF]
 
 Input power: 5V DC 2.5A 
+
 Operating temperature: -20°C to +70°C
