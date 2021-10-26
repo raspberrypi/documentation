@@ -746,7 +746,7 @@ footer {
   div#tab-menu,
   ul#tab-container li,
   ul#tab-container li a {
-    display: none;
+    display: none !important;
   }
   div#container {
     margin-left: 0;
