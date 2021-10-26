@@ -7,11 +7,7 @@ The latest version of the Compute Module is the Compute Module 4 (CM4). It is th
 * https://datasheets.raspberrypi.com/cm4/cm4-datasheet.pdf[Compute Module 4 Datasheet]
 * https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf[Compute Module 4 IO Board Datasheet]
 
-NOTE: Schematics are not available for the Compute Module 4, but are available for the IO board.
-
-Schematics for the CMIO4 board are included in the datasheet,
-
-* https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf[Compute Module 4 IO Board Datasheet] (including schematics)
+NOTE: Schematics are not available for the Compute Module 4, but are available for the IO board. Schematics for the CMIO4 board are included in the datasheet.
 
 There is also a KiCAD PCB design set available:
 
