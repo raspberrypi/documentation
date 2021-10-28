@@ -52,6 +52,12 @@ sudo pip3 install pyyaml ply
 sudo pip3 install --upgrade meson
 ----
 
+In the `meson` commands below we have enabled the _gstreamer_ plugin. If you _do not_ need this you can set `-Dgstreamer=disabled` instead and the next pair of dependencies will not be required. But if you do leave _gstreamer_ enabled, then you will need the following:
+
+----
+sudo apt install -y libglib2.0-dev libgstreamer-plugins-base1.0-dev
+----
+
 Now we can check out and build `libcamera` itself.
 
 ----
@@ -77,11 +83,11 @@ The only difference is that the latter also builds the `qcam` test application, 
 To complete the `libcamera` build, please run
 
 ----
-ninja -C build
-sudo ninja -C build install   # use -j 2 on Pi 3 or earlier devices
+ninja -C build   # use -j 2 on Pi 3 or earlier devices
+sudo ninja -C build install
 ----
 
-NOTE: If you wish to build the `libcamerasrc` _gstreamer_ element, please ensure that _gstreamer_ and `libgstreamer1.0-dev` and `libgstreamer-plugins-base1.0-dev` are installed before running `meson`. More information is available on the https://www.libcamera.org/index.html[libcamera website].
+NOTE: At the time of writing `libcamera` does not yet have a stable binary interface. Therefore, if you have rebuilt `libcamera` we recommend continuing and rebuilding `libcamera-apps` from scratch too.
 
 ==== Building `libepoxy`
 
@@ -157,7 +163,7 @@ After executing the `cmake` command of your choice, the whole process concludes 
 ----
 make -j4  # use -j2 on Pi 3 or earlier devices
 sudo make install
-sudo ldconfig /usr/bin/local # this is only necessary on the first build
+sudo ldconfig /usr/local/lib # this is only necessary on the first build
 ----
 
 NOTE: If you are using an image where `libcamera-apps` have been previously installed as an `apt` package, and you want to run the new `libcamera-apps` executables from the same terminal window where you have just built and installed them, you may need to run `hash -r` to be sure to pick up the new ones over the system supplied ones.
