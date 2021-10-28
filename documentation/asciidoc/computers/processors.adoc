@@ -8,3 +8,4 @@ include::processors/bcm2837b0.adoc[]
 
 include::processors/bcm2711.adoc[]
 
+include::processors/rp3a0.adoc[]
