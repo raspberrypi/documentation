@@ -316,6 +316,10 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 
 |
 |
+| 12: Zero 2 W
+
+|
+|
 | 13: 400
 
 |
@@ -552,5 +556,11 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | CM4
 | 1.0
 | 8GB
+| Sony UK
+
+|902120
+| Zero 2 W
+| 1.0
+| 512MB
 | Sony UK
 |===
