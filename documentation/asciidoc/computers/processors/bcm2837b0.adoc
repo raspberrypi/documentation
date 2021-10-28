@@ -6,4 +6,4 @@ The ARM cores are capable of running at up to 1.4GHz, making the 3B+/3A+ about 1
 
 The BCM2837B0 chip is packaged slightly differently to the BCM2837, and most notably includes a heat spreader for better thermals. This allows higher clock frequencies, and more accurate monitoring and control of the chip's temperature.
 
-https://www.raspberrypi.org/blog/raspberry-pi-3-model-bplus-sale-now-35/[This post on the Raspberry Pi blog] goes into further detail about the BCM2837B0 chip.
+This https://www.raspberrypi.org/blog/raspberry-pi-3-model-bplus-sale-now-35/[post on the Raspberry Pi blog] goes into further detail about the BCM2837B0 chip.
