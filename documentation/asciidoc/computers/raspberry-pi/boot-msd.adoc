@@ -1,6 +1,6 @@
 == USB Mass Storage Boot
 
-NOTE: Available on Raspberry Pi 2B v1.2, 3A+, 3B, 3B+, 4B, 400, Compute Module 3, Compute Module 3+ and Compute Module 4 only.
+NOTE: Available on Raspberry Pi 2B v1.2, 3A+, 3B, 3B+, 4B, 400, Raspberry Pi Zero 2, Compute Module 3, Compute Module 3+ and Compute Module 4 only.
 
 This page explains how to boot your Raspberry Pi from a USB mass storage device such as a flash drive or a USB hard disk. When attaching USB devices, particularly hard disks and SSDs, be mindful of their power requirements. If you wish to attach more than one SSD or hard disk to the Pi, this normally requires external power - either a powered hard disk enclosure, or a powered USB hub. Note that models prior to the Pi 4B have known issues which prevent booting with some USB devices.
 
@@ -24,9 +24,9 @@ Please see the xref:compute-module.adoc#flashing-the-compute-module-emmc[Flashin
 
 The Raspberry Pi 3B+ supports USB mass storage boot out of the box.
 
-=== Raspberry Pi 2B, 3A+, 3B, CM 3, 3+
+=== Raspberry Pi 2B, 3A+, 3B, CM 3, 3+, Zero 2
 
-On the Raspberry Pi 2B v1.2, 3A+, 3B, and Compute Module 3, 3+ you must first enable xref:raspberry-pi.adoc#usb-host-boot-mode[USB host boot mode]. This is to allow USB mass storage boot, and xref:raspberry-pi.adoc#network-booting[network boot]. Note that network boot is not supported on the Raspberry Pi 3A+.
+On the Raspberry Pi 2B v1.2, 3A+, 3B, Zero 2, and Compute Module 3, 3+ you must first enable xref:raspberry-pi.adoc#usb-host-boot-mode[USB host boot mode]. This is to allow USB mass storage boot, and xref:raspberry-pi.adoc#network-booting[network boot]. Note that network boot is not supported on the Raspberry Pi 3A+.
 
 To enable USB host boot mode, the Raspberry Pi needs to be booted from an SD card with a special option to set the USB host boot mode bit in the one-time programmable (OTP) memory. Once this bit has been set, the SD card is no longer required. 
 
