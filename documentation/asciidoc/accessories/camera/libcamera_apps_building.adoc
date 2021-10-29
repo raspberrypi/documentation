@@ -14,7 +14,13 @@ NOTE: When building for Pi 3 or earlier devices there is a risk that the device 
 
 ==== Building `libcamera-apps` without rebuilding `libcamera`
 
-You can rebuild `libcamera-apps` _without_ first rebuilding the whole of `libcamera` and `libepoxy`. To do this, please execute:
+You can rebuild `libcamera-apps` _without_ first rebuilding the whole of `libcamera` and `libepoxy`. If you do not need support for the X11/GLES preview window then `libepoxy` can be omitted entirely. Mostly this will include Raspberry Pi OS Lite users, and they must be sure to use `-DENABLE_X11=0` when running `cmake` later. These users should run:
+
+----
+sudo apt install -y libcamera-dev libjpeg-dev libtiff5-dev
+----
+
+All other users should execute:
 
 ----
 sudo apt install -y libcamera-dev libepoxy-dev libjpeg-dev libtiff5-dev
@@ -26,7 +32,7 @@ If you want to use the Qt preview window, please also execute
 sudo apt install -y qtbase5-dev libqt5core5a libqt5gui5 libqt5widgets5
 ----
 
-Now proceed directly to the instructions for xref:camera.adoc#building-libcamera-apps[building `libcamera-apps`].
+Now proceed directly to the instructions for xref:camera.adoc#building-libcamera-apps[building `libcamera-apps`]. Raspberry Pi OS Lite users should check that _git_ is installed first (`sudo apt install -y git`).
 
 ==== Building `libcamera`
 
