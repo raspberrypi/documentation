@@ -97,9 +97,9 @@ WARNING: Setting any overclocking parameters to values other than those used by 
 
 This table gives the default values for the options on various Raspberry Pi Models, all frequencies are stated in MHz.
 
-[cols=",^,^,^,^,^,^,^,^"]
+[cols=",^,^,^,^,^,^,^,^,^"]
 |===
-| Option | Pi 0/W | Pi1 | Pi2 | Pi3 | Pi3A+/Pi3B+ | CM4 & Pi4B <= R1.3 | Pi4B R1.4 | Pi 400
+| Option | Pi 0/W | Pi1 | Pi2 | Pi3 | Pi3A+/Pi3B+ | CM4 & Pi4B <= R1.3 | Pi4B R1.4 | Pi 400 | Pi Zero 2 W
 
 | arm_freq
 | 1000
@@ -110,6 +110,7 @@ This table gives the default values for the options on various Raspberry Pi Mode
 | 1500
 | 1500 or 1800 if arm_boost=1
 | 1800
+| 1000
 
 | core_freq
 | 400
@@ -120,6 +121,7 @@ This table gives the default values for the options on various Raspberry Pi Mode
 | 500
 | 500
 | 500
+| 400
 
 | h264_freq
 | 300
@@ -130,6 +132,7 @@ This table gives the default values for the options on various Raspberry Pi Mode
 | 500
 | 500
 | 500
+| 300
 
 | isp_freq
 | 300
@@ -140,6 +143,7 @@ This table gives the default values for the options on various Raspberry Pi Mode
 | 500
 | 500
 | 500
+| 300
 
 | v3d_freq
 | 300
@@ -150,6 +154,7 @@ This table gives the default values for the options on various Raspberry Pi Mode
 | 500
 | 500
 | 500
+| 300
 
 | hevc_freq
 | N/A
@@ -160,6 +165,7 @@ This table gives the default values for the options on various Raspberry Pi Mode
 | 500
 | 500
 | 500
+| N/A
 
 | sdram_freq
 | 450
@@ -170,10 +176,12 @@ This table gives the default values for the options on various Raspberry Pi Mode
 | 3200
 | 3200
 | 3200
+| 450
 
 | arm_freq_min
 | 700
 | 700
+| 600
 | 600
 | 600
 | 600
@@ -190,8 +198,10 @@ This table gives the default values for the options on various Raspberry Pi Mode
 | 200
 | 200
 | 200
+| 250
 
 | gpu_freq_min
+| 250
 | 250
 | 250
 | 250
@@ -210,8 +220,10 @@ This table gives the default values for the options on various Raspberry Pi Mode
 | 250
 | 250
 | 250
+| 250
 
 | isp_freq_min
+| 250
 | 250
 | 250
 | 250
@@ -230,6 +242,7 @@ This table gives the default values for the options on various Raspberry Pi Mode
 | 250
 | 250
 | 250
+| 250
 
 | sdram_freq_min
 | 400
@@ -240,6 +253,7 @@ This table gives the default values for the options on various Raspberry Pi Mode
 | 3200
 | 3200
 | 3200
+| 400
 |===
 
 This table gives defaults for options that are the same across all models.
