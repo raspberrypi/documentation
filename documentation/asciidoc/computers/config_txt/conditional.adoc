@@ -42,6 +42,9 @@ The conditional model filters are applied according to the following table.
 | [pi0w]
 | Zero W, Zero WH
 
+| [pi02]
+| Zero 2 W
+
 | [board-type=Type]
 | Filter by `Type` number - see xref:raspberry-pi.adoc#raspberry-pi-revision-codes[Raspberry Pi Revision Codes] E.g `[board-type=0x14]` would match CM4.
 
