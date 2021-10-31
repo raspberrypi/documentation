@@ -37,7 +37,7 @@ The conditional model filters are applied according to the following table.
 | Compute Module 4
 
 | [pi0]
-| Zero, Zero W, Zero WH
+| Zero, Zero W, Zero WH, Zero 2 W
 
 | [pi0w]
 | Zero W, Zero WH
