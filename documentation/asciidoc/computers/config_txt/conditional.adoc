@@ -22,7 +22,7 @@ The conditional model filters are applied according to the following table.
 | Model 2B (BCM2836- or BCM2837-based)
 
 | [pi3]
-| Model 3B, Model 3B+, Model 3A+, Compute Module 3
+| Model 3B, Model 3B+, Model 3A+, Compute Module 3, Compute Module 3+
 
 | [pi3+]
 | Model 3A+, Model 3B+
