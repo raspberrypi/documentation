@@ -27,9 +27,6 @@ The conditional model filters are applied according to the following table.
 | [pi3+]
 | Model 3A+, Model 3B+
 
-| [cm3]
-| Compute Module 3, Compute Module 3+
-
 | [pi4]
 | Model 4B, Pi 400, Compute Module 4
 
