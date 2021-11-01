@@ -2,14 +2,14 @@
 
 `libcamera-apps` are not supposed to be a full set of all the applications with all the features that anyone could ever need. Instead, they are supposed to be easy to understand such that users who require specific but slightly different behaviour can implement it for themselves.
 
-All the applications work by having a simple event loop which receives a message with a new set of frames from the camera system. This set of frames is called a `CompletedRequest`. It contains all the images that have been derived from that single camera image (so perhaps a low resolution image in addition to the full size output), as well as metadata from the camera system and further metadata from the post-processing system.
+All the applications work by having a simple event loop which receives a message with a new set of frames from the camera system. This set of frames is called a `CompletedRequest`. It contains all the images that have been derived from that single camera frame (so perhaps a low resolution image in addition to the full size output), as well as metadata from the camera system and further metadata from the post-processing system.
 
 ==== `libcamera-hello`
 
-`libcamera-hello` is much the easiest application to understand. The only thing it does with the camera images is extract the `CompletedRequest` from the message:
+`libcamera-hello` is much the easiest application to understand. The only thing it does with the camera images is extract the `CompletedRequestPtr` (a shared pointer to the `CompletedRequest`) from the message:
 
 ----
-	CompletedRequest &completed_request = std::get<CompletedRequest>(msg.payload);
+	CompletedRequestPtr &completed_request = std::get<CompletedRequestPtr>(msg.payload);
 ----
 
 and forward it to the preview window:
@@ -18,41 +18,29 @@ and forward it to the preview window:
 	app.ShowPreview(completed_request, app.ViewfinderStream());
 ----
 
-Notice how, before the event loop starts, we configure the preview window to send the `CompletedRequest` back to `libcamera` once it is done with them:
+One important thing to note is that every `CompletedRequest` must be recycled back to the camera system so that the buffers can be reused, otherwise it will simply run out of buffers in which to receive new camera frames. This recycling process happens automatically when all references to the `CompletedRequest` are dropped, using C++'s _shared pointer_ and _custom deleter_ mechanisms.
 
-----
-	app.SetPreviewDoneCallback(std::bind(&LibcameraApp::QueueRequest, &app, _1));
-----
+In `libcamera-hello` therefore, two things must happen for the `CompletedRequest` to be returned to the camera.
 
-The critical thing to note is that, whatever else happens to a `CompletedRequest`, the last thing must always be to queue it back to `libcamera`.
+1. The event loop must go round again so that the message (`msg` in the code), which is holding a reference to the shared pointer, is dropped.
+
+2. The preview thread, which takes another reference to the `CompletedRequest` when `ShowPreview` is called, must be called again with a new `CompletedRequest`, causing the previous one to be dropped.
 
 ==== `libcamera-vid`
 
-`libcamera-vid` is not unlike `libcamera-hello`, but it interposes a codec between the event loop and the preview. Before the event loop starts, we must configure that encoder with two callbacks. The first determintes what it does with the image buffer once it has finished encoding it.
-
-----
-	app.SetEncodeBufferDoneCallback(std::bind(&LibcameraEncoder::ShowPreview, &app, _1, _2));
-----
-
-We can see that once it is done with it, the image buffers get sent to the preview window, much as we saw in `libcamera-hello`.
-
-There is another buffer we need to take care of, which is the buffer containing the encoded image data. This might typically be an h.264 bitstream.
+`libcamera-vid` is not unlike `libcamera-hello`, but it adds a codec to the event loop and the preview. Before the event loop starts, we must configure that encoder with a callback which says what happens to the buffer containing the encoded image data.
 
 ----
 	app.SetEncodeOutputReadyCallback(std::bind(&Output::OutputReady, output.get(), _1, _2, _3, _4));
 ----
 
-This time we send the buffer to the `Output` object which may write it to a file, or send it over the network, according to our choice when we started the application.
+Here we send the buffer to the `Output` object which may write it to a file, or send it over the network, according to our choice when we started the application.
 
-Finally, we have to remember that the preview must return the `CompletedRequest` to `libcamera` once it no longer needs it:
-
-----
-	app.SetPreviewDoneCallback(std::bind(&LibcameraEncoder::QueueRequest, &app, _1));
-----
+The encoder also takes a new reference to the `CompletedRequest`, so once the event loop, the preview window and the encoder all drop their references, the `CompletedRequest` will be recycled automatically back to the camera system.
 
 ==== `libcamera-raw`
 
-`libcamera-raw` is not so very different from `libcamera-vid`. It too uses a encoder, though this time it is a "dummy" encoder called the `NullEncoder`. This just treats the input image directly as the output buffer and is careful not to say it is finished with the input until the output callback has dealt with it first.
+`libcamera-raw` is not so very different from `libcamera-vid`. It too uses a encoder, though this time it is a "dummy" encoder called the `NullEncoder`. This just treats the input image directly as the output buffer and is careful not to drop its reference to the input until the output callback has dealt with it first.
 
 This time, however, we do not forward anything to the preview window, though we could have displayed the (processed) video stream if we had wanted.
 
