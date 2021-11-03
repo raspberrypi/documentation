@@ -61,6 +61,11 @@ Exactly how much current (mA) the Raspberry Pi requires is dependent on what you
 | 1.2A
 | Limited by PSU, board, and connector ratings only.
 | 150mA
+
+| Raspberry Pi Zero 2 W
+| 2A
+| Limited by PSU, board, and connector ratings only.
+| 350mA
 |===
 
 Raspberry Pi have developed their own power supplies for use with all models. These are reliable, use heavy gauge wires and are reasonably priced.
