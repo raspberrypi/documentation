@@ -1655,9 +1655,8 @@ The `framebuffer_width` command specifies the console framebuffer width in pixel
 ==== `framebuffer_height`
 
 The `framebuffer_height` command specifies the console framebuffer height in pixels. The default is the display height minus the total vertical overscan.
-C4
 
-==== `max_framebuffer_heigh`t, `max_framebuffer_width`
+==== `max_framebuffer_height`, `max_framebuffer_width`
 
 Specifies the maximum dimensions that the internal frame buffer is allowed to be.
 
