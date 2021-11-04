@@ -60,7 +60,7 @@ The joystick comes up as an input event device named "Raspberry Pi Sense HAT Joy
 
 == Calibration
 
-Taken from this https://www.raspberrypi.org/forums/viewtopic.php?f=104&t=109064&p=750616#p810193[forum post].
+Taken from this https://forums.raspberrypi.com/viewtopic.php?f=104&t=109064&p=750616#p810193[forum post].
 
 Install the necessary software and run the calibration program as follows:
 

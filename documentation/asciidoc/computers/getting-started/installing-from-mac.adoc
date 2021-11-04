@@ -36,7 +36,7 @@ Here the SD Card is `/dev/disk2` however your disk and partition list may vary.
 [discrete]
 ==== Copying the Image
 
-WARNING: Using the `dd` command line tool can overwrite your Mac's operating system if you specify the wrong disk device. If you're not sure about what to do, we recommend you use the https://www.raspberrypi.org/software/[Raspberry Pi Imager] tool.
+WARNING: Using the `dd` command line tool can overwrite your Mac's operating system if you specify the wrong disk device. If you're not sure about what to do, we recommend you use the https://www.raspberrypi.com/software/[Raspberry Pi Imager] tool.
 
 Before copying the image you should unmount the SD Card.
 

@@ -16,9 +16,9 @@ A good quality xref:raspberry-pi.adoc#power-supply[power supply].
 
 We recommend the official Raspberry Pi Power Supply which has been specifically designed to consistently provide +5.1V despite rapid fluctuations in current draw. Those fluctuations in demand is something that happens a lot with when you’re using peripherals with the Raspberry Pi, and something that other supplies—designed to provide consistent current for charging cellphones—usually don’t cope with all that well. It also has an attached micro USB cable, which means that you don’t accidentally use a poor quality cable—something that can be an issue.
 
-For the Raspberry Pi 4, Model B and Raspberry Pi 400 you should use the https://www.raspberrypi.org/products/type-c-power-supply/[type C power supply]; for all other models you should use the https://www.raspberrypi.org/products/raspberry-pi-universal-power-supply/[micro USB power supply].
+For the Raspberry Pi 4, Model B and Raspberry Pi 400 you should use the https://www.raspberrypi.com/products/type-c-power-supply/[type C power supply]; for all other models you should use the https://www.raspberrypi.com/products/micro-usb-power-supply/[micro USB power supply].
 
-Finally you'll need an xref:getting-started.adoc#sd-cards[SD card]; we recommend a minimum of 8GB micro SD card, and to use the https://www.raspberrypi.org/software/[Raspberry Pi Imager] to install an operating system onto it.
+Finally you'll need an xref:getting-started.adoc#sd-cards[SD card]; we recommend a minimum of 8GB micro SD card, and to use the https://www.raspberrypi.com/software/[Raspberry Pi Imager] to install an operating system onto it.
 
 === Optional items
 
@@ -28,4 +28,4 @@ If you aren't using an HDMI monitor with speakers you might also need some form 
 
 === Troubleshooting
 
-You can get help with setting up your Raspberry Pi on our https://www.raspberrypi.org/forums/[forums].
+You can get help with setting up your Raspberry Pi on our https://forums.raspberrypi.com/[forums].

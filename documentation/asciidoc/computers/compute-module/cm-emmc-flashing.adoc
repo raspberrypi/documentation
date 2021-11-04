@@ -109,7 +109,7 @@ Make sure J4 (USB SLAVE BOOT ENABLE) / J2 (nRPI_BOOT) is set to the disabled pos
 
 After `rpiboot` completes, you will see a new device appear; this is commonly `/dev/sda` on a Pi but it could be another location such as `/dev/sdb`, so check in `/dev/` or run `lsblk` before running `rpiboot` so you can see what changes.
 
-You now need to write a raw OS image (such as https://www.raspberrypi.org/downloads/raspbian/[Raspberry Pi OS]) to the device. Note the following command may take some time to complete, depending on the size of the image: (Change `/dev/sdX` to the appropriate device.)
+You now need to write a raw OS image (such as https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-32-bit[Raspberry Pi OS]) to the device. Note the following command may take some time to complete, depending on the size of the image: (Change `/dev/sdX` to the appropriate device.)
 
 [,bash]
 ----
@@ -132,7 +132,7 @@ Make sure J4 (USB SLAVE BOOT ENABLE) / J2 (nRPI_BOOT) is set to the disabled pos
 [[cm4bootloader]]
 === Compute Module 4 Bootloader
 
-The default bootloader configuration on CM4 is designed to support bringup and development on a https://www.raspberrypi.org/products/compute-module-4-io-board[Compute Module 4 IO board] and the software version flashed at manufacture may be older than the latest release. For final products please consider:-
+The default bootloader configuration on CM4 is designed to support bringup and development on a https://www.raspberrypi.com/products/compute-module-4-io-board/[Compute Module 4 IO board] and the software version flashed at manufacture may be older than the latest release. For final products please consider:-
 
 * Selecting and verifying a specific bootloader release. The version in the `usbboot` repo is always a recent stable release.
 * Configuring the boot device (e.g. network boot). See `BOOT_ORDER` section in the xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[bootloader configuration] guide.

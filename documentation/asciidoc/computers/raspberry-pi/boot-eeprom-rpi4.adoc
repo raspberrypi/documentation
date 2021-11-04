@@ -12,7 +12,7 @@ If an error occurs during boot then an xref:configuration.adoc#led-warning-flash
 
 ==== Raspberry Pi 4 and Raspberry Pi 400
 
-Raspberry Pi OS automatically updates the bootloader for critical bug fixes. The recommended methods for manually updating the bootloader or changing the boot modes are https://www.raspberrypi.org/downloads[Raspberry Pi Imager] and xref:configuration.adoc#raspi-config[raspi-config]
+Raspberry Pi OS automatically updates the bootloader for critical bug fixes. The recommended methods for manually updating the bootloader or changing the boot modes are https://www.raspberrypi.com/software/[Raspberry Pi Imager] and xref:configuration.adoc#raspi-config[raspi-config]
 
 [[imager]]
 ==== Using Raspberry Pi Imager to update the bootloader
@@ -21,7 +21,7 @@ IMPORTANT: This is the recommended route to updating the bootloader.
 
 Raspberry Pi Imager provides a GUI for updating the bootloader and selecting the boot mode.
 
-. Download https://www.raspberrypi.org/downloads/[Raspberry Pi Imager]
+. Download https://www.raspberrypi.com/software/[Raspberry Pi Imager]
 . Select a spare SD card. The contents will get overwritten!
 . Launch `Raspberry Pi Imager`
 . Select `Misc utility images` under `Operating System`

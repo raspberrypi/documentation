@@ -990,4 +990,4 @@ Further ports can be controlled by the DT, for more details see <<part3,section 
 [[part4.7]]
 ==== Further help
 
-If you've read through this document and not found the answer to a Device Tree problem, there is help available. The author can usually be found on Raspberry Pi forums, particularly the https://www.raspberrypi.org/forums/viewforum.php?f=107[Device Tree] forum.
+If you've read through this document and not found the answer to a Device Tree problem, there is help available. The author can usually be found on Raspberry Pi forums, particularly the https://forums.raspberrypi.com/viewforum.php?f=107[Device Tree] forum.
