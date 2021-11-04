@@ -85,7 +85,7 @@ If you are unable to use a particular USB device to boot your Raspberry Pi, an a
 
 === Hardware Compatibility
 
-Before attempting to boot from a USB mass storage device it is advisable to verify that the device works correctly under Linux. Boot using an SD card and plug in the USB mass storage device. This should appears as a removable drive. This is especially important with USB SATA adapters which may be supported by the bootloader in mass storage mode but fail if Linux selects https://en.wikipedia.org/wiki/USB_Attached_SCSI[USB Attached SCSI - UAS] mode.  See this https://www.raspberrypi.org/forums/viewtopic.php?t=245931[forum thread] about UAS and how to add https://www.kernel.org/doc/html/v5.0/admin-guide/kernel-parameters.html[usb-storage.quirks] to workaround this issue.
+Before attempting to boot from a USB mass storage device it is advisable to verify that the device works correctly under Linux. Boot using an SD card and plug in the USB mass storage device. This should appears as a removable drive. This is especially important with USB SATA adapters which may be supported by the bootloader in mass storage mode but fail if Linux selects https://en.wikipedia.org/wiki/USB_Attached_SCSI[USB Attached SCSI - UAS] mode.  See this https://forums.raspberrypi.com/viewtopic.php?t=245931[forum thread] about UAS and how to add https://www.kernel.org/doc/html/v5.0/admin-guide/kernel-parameters.html[usb-storage.quirks] to workaround this issue.
 
 Spinning hard disk drives nearly always require a powered USB hub. Even if it appears to work you are likely to encounter intermittent failures without a powered USB HUB.
 

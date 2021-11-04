@@ -1400,4 +1400,4 @@ For some applications, such as astrophotography, having the raw Bayer data direc
 
 `raspistill --raw -o fred.jpg`
 
-The raw data is appended to the end of the JPEG file and will https://www.raspberrypi.org/blog/processing-raw-image-files-from-a-raspberry-pi-high-quality-camera/[need to be extracted].
+The raw data is appended to the end of the JPEG file and will https://www.raspberrypi.com/news/processing-raw-image-files-from-a-raspberry-pi-high-quality-camera/[need to be extracted].

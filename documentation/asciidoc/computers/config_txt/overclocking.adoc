@@ -6,7 +6,7 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches `t
 
 NOTE: For more information xref:raspberry-pi.adoc#frequency-management-and-thermal-control[see the section on frequency management and thermal control].
 
-WARNING: Setting any overclocking parameters to values other than those used by xref:configuration.adoc#overclock[raspi-config] may set a permanent bit within the SoC, making it possible to detect that your Raspberry Pi has been overclocked. The specific circumstances where the overclock bit is set are if `force_turbo` is set to `1` and any of the `over_voltage_*` options are set to a value > `0`. See the https://www.raspberrypi.org/blog/introducing-turbo-mode-up-to-50-more-performance-for-free/[blog post on Turbo Mode] for more information.
+WARNING: Setting any overclocking parameters to values other than those used by xref:configuration.adoc#overclock[raspi-config] may set a permanent bit within the SoC, making it possible to detect that your Raspberry Pi has been overclocked. The specific circumstances where the overclock bit is set are if `force_turbo` is set to `1` and any of the `over_voltage_*` options are set to a value > `0`. See the https://www.raspberrypi.com/news/introducing-turbo-mode-up-to-50-more-performance-for-free/[blog post on Turbo Mode] for more information.
 
 === Overclocking
 
@@ -56,7 +56,7 @@ WARNING: Setting any overclocking parameters to values other than those used by 
 | Forces turbo mode frequencies even when the ARM cores are not busy. Enabling this may set the warranty bit if `over_voltage_*` is also set.
 
 | initial_turbo
-| Enables https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=6201&start=425#p180099[turbo mode from boot] for the given value in seconds, or until cpufreq sets a frequency. The maximum value is `60`.
+| Enables https://forums.raspberrypi.com/viewtopic.php?f=29&t=6201&start=425#p180099[turbo mode from boot] for the given value in seconds, or until cpufreq sets a frequency. The maximum value is `60`.
 
 | arm_freq_min
 | Minimum value of `arm_freq` used for dynamic frequency clocking. Note that reducing this value below the default does not result in any significant power savings and is not currently supported.
@@ -318,7 +318,7 @@ On Pi 2/Pi 3, setting this flag will disable the GPU from moving into turbo mode
 
 === Clocks Relationship
 
-The GPU core, CPU, SDRAM and GPU each have their own PLLs and https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=6201&start=275#p168042[can have unrelated frequencies]. The h264, v3d and ISP blocks share a PLL.
+The GPU core, CPU, SDRAM and GPU each have their own PLLs and https://forums.raspberrypi.com/viewtopic.php?f=29&t=6201&start=275#p168042[can have unrelated frequencies]. The h264, v3d and ISP blocks share a PLL.
 
 To view the Pi's current frequency in KHz, type: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`. Divide the result by 1000 to find the value in MHz. Note that this frequency is the kernel _requested_ frequency, and it is possible that any throttling (for example at high temperatures) may mean the CPU is actually running more slowly than reported. An instantaneous measurement of the actual ARM CPU frequency can be retrieved using the vcgencmd `vcgencmd measure_clock arm`. This is displayed in Hertz.
 

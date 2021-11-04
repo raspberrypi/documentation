@@ -1,6 +1,6 @@
 == Attaching the Official 7-inch Display
 
-NOTE: These instructions are intended for advanced users, if anything is unclear please use the https://www.raspberrypi.org/forums/viewforum.php?f=98[Raspberry Pi Compute Module forums] for technical help.
+NOTE: These instructions are intended for advanced users, if anything is unclear please use the https://forums.raspberrypi.com/viewforum.php?f=98[Raspberry Pi Compute Module forums] for technical help.
 
 Please ensure your system software is updated before starting. Largely speaking the approach taken for Compute Modules 1, 3, and 4 is the same, but there are minor differences in physical setup required. It will be indicated where a step applies only to a specific platform.
 

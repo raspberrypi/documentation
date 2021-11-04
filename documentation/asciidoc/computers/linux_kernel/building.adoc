@@ -12,7 +12,7 @@ The instructions below are divided into native builds and cross-compilation; cho
 
 === Building the Kernel Locally
 
-On a Raspberry Pi, first install the latest version of https://www.raspberrypi.org/downloads/[Raspberry Pi OS]. Then boot your Pi, plug in Ethernet to give you access to the sources, and log in.
+On a Raspberry Pi, first install the latest version of https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-32-bit[Raspberry Pi OS]. Then boot your Pi, plug in Ethernet to give you access to the sources, and log in.
 
 First install Git and the build dependencies:
 

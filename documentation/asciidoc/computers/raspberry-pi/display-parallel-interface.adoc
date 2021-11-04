@@ -84,7 +84,7 @@ NB the single bit fields all act as an "invert default behaviour".
 
 In firmware dated August 2018 or later, the `hdmi_timings` config.txt entry that was previously used to set up the DPI timings has be superseded by a new `dpi_timings` parameter. If the `dpi_timings` parameter is not present, the system will fall back to using the `hdmi_timings` parameter to ensure backwards compatibility. If neither are present and a custom mode is requested, then a default set of parameters for VGAp60 is used.
 
-The `dpi_group` and `dpi_mode` config.txt parameters are used to set either predetermined modes (DMT or CEA modes as used by HDMI) or a user can generate https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=24679[custom modes].
+The `dpi_group` and `dpi_mode` config.txt parameters are used to set either predetermined modes (DMT or CEA modes as used by HDMI) or a user can generate https://forums.raspberrypi.com/viewtopic.php?f=29&t=24679[custom modes].
 
 If you set up a custom DPI mode, then in config.txt use:
 
