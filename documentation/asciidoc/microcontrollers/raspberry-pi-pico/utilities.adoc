@@ -1,9 +1,8 @@
 == Software Utilities
-:pp: {plus}{plus}
 
 === What is on your Pico?
 
-If you have forgotten what has been programmed into your Raspberry Pi Pico, and the program was built using our Pico C/C{pp} SDK, it will usually have a name and other useful information embedded into the binary. You can use the https://github.com/raspberrypi/picotool[Picotool] command line utility to find out these details. Full instructions on how to use Picotool to do this are available in our 'https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[getting started]' documentation.
+If you have forgotten what has been programmed into your Raspberry Pi Pico, and the program was built using our Pico C/{cpp} SDK, it will usually have a name and other useful information embedded into the binary. You can use the https://github.com/raspberrypi/picotool[Picotool] command line utility to find out these details. Full instructions on how to use Picotool to do this are available in our 'https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[getting started]' documentation.
 
 * Go to the https://github.com/raspberrypi/picotool[Picotool Github repository].
 

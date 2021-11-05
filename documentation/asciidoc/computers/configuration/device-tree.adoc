@@ -232,7 +232,7 @@ make ARCH=arm dtbs
 
 It is interesting to dump the contents of the DTB file to see what the compiler has generated:
 
-[,console]
+[,bash]
 ----
 fdtdump 1st.dtbo
 /dts-v1/;

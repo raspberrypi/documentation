@@ -1,4 +1,3 @@
-
 include::c_sdk/sdk_setup.adoc[]
 
 include::c_sdk/official_sdk.adoc[]

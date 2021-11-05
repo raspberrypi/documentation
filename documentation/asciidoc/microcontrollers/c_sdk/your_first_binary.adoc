@@ -1,5 +1,4 @@
 == Your First Binaries
-:pp: {plus}{plus}
 
 === Blink an LED
 
@@ -12,11 +11,11 @@ You can blink this on and off by,
 . Download the https://datasheets.raspberrypi.com/soft/blink.uf2[Blink UF2]
 . Push and hold the BOOTSEL button and plug your Pico into the USB port of your Raspberry Pi or other computer.
 . It will mount as a Mass Storage Device called RPI-RP2.
- .Drag and drop the Blink UF2 binary onto the RPI-RP2 volume.
- .Pico will reboot, and the on-board LED should start blinking.
+. Drag and drop the Blink UF2 binary onto the RPI-RP2 volume. Pico will reboot.
+
+You should see the on-board LED blinking.
 
 * Download https://datasheets.raspberrypi.com/soft/blink.uf2[UF2 File]
-
 * See the code https://github.com/raspberrypi/pico-examples/blob/master/blink/blink.c[on Github]
 
 === Say "Hello World"
@@ -28,7 +27,7 @@ image:images/Hello-World-640x360.gif[]
 . Download the https://datasheets.raspberrypi.com/soft/hello_world.uf2['Hello World' UF2].
 . Push and hold the BOOTSEL button and plug your Pico into the USB port of your Raspberry Pi or other computer.
 . It will mount as a Mass Storage Device called RPI-RP2.
-. Drag and drop the 'Hello World' UF2 binary onto the RPI-RP2 volume. Pico will reboot
+. Drag and drop the 'Hello World' UF2 binary onto the RPI-RP2 volume. Pico will reboot.
 . Open a Terminal window and type:
 +
 [source]

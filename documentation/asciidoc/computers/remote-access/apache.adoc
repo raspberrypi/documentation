@@ -51,7 +51,7 @@ drwxr-xr-x 12 root root 4096 Jan  8 01:28 ..
 -rw-r--r--  1 root root  177 Jan  8 01:29 index.html
 ----
 
-This shows that by default there is one file in `/var/www/html/` called ``index.html``and it is owned by the `root` user (as is the enclosing folder). In order to edit the file, you need to change its ownership to your own username. Change the owner of the file (the default `pi` user is assumed here) using `sudo chown pi: index.html`.
+This shows that by default there is one file in `/var/www/html/` called `index.html` and it is owned by the `root` user (as is the enclosing folder). In order to edit the file, you need to change its ownership to your own username. Change the owner of the file (the default `pi` user is assumed here) using `sudo chown pi: index.html`.
 
 You can now try editing this file and then refreshing the browser to see the web page change. If you know HTML you can put your own HTML files and other assets in this directory and serve them as a website on your local network.
 

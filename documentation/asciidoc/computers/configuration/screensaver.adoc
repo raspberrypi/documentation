@@ -8,12 +8,14 @@ When running without a graphical desktop, Raspberry Pi OS will blank the screen 
 
 The current setting, in seconds, can be displayed using:
 
+[,bash]
 ----
 cat /sys/module/kernel/parameters/consoleblank
 ----
 
 To change the `consoleblank` setting, edit the kernel command line:
 
+[,bash]
 ----
 sudo nano /boot/cmdline.txt
 ----
@@ -28,6 +30,7 @@ Raspberry Pi OS will blank the graphical desktop after 10 minutes without user i
 
 There is also a graphical screensaver available, which can be installed as follows:
 
+[,bash]
 ----
 sudo apt install xscreensaver
 ----
@@ -40,14 +43,14 @@ Once this has been installed, you can find the Screensaver application on the Pr
 
 If you want to switch off the video display entirely, you can use the xref:os.adoc#vcgencmd[vcgencmd] command,
 
-[,shell]
+[,bash]
 ----
 vcgencmd display_power 0
 ----
 
 Video will not come back on until you reboot or switch it back on:
 
-[,shell]
+[,bash]
 ----
 vcgencmd display_power 1
 ----
