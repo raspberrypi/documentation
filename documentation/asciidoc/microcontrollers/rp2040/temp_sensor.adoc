@@ -1,9 +1,6 @@
 == Internal Temperature Sensor
 
-The internal temperature sensor in the RP2040 package is a low-resolution sensor that needs to be user calibrated to be useful to any degree of accuracy. Microchip has application notes on functionality and calibration of this sensor;
-
-* http://ww1.microchip.com/downloads/en/Appnotes/00001333B.pdf[Use and Calibration of the Internal Temperature Indicator]
-* http://ww1.microchip.com/downloads/en/appnotes/00002092a.pdf[Using the Temperature Indicator Module]
+The internal temperature sensor in the RP2040 package is a low-resolution sensor that needs to be user calibrated to be useful to any degree of accuracy. 
 
 A crucial part of accurately determining the temperature measured is knowing what the ADC VREF voltage. Errors in the conversion formula can give quite large discrepancies in temperature calculated. The RP2040 doesn't have an internal Fixed Voltage Reference which can be used to determine VREF voltage so VREF voltage needs to be measured manually - with the caveat it could change - or an external Fixed Voltage Reference needs to be provided.
 
