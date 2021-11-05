@@ -1,5 +1,4 @@
 == Text Editors
-:pp: {plus}{plus}
 
 On Linux, you have a choice of text editors. Some are easy-to-use but have limited functionality; others require training to use and take a long time to master, but offer incredible functionality.
 
@@ -17,7 +16,7 @@ https://thonny.org/[Thonny] is a Python REPL and IDE, so you can write and edit 
 
 ==== Geany
 
-A fast and lightweight IDE, supporting many different file types, including C/C{pp} and Python. It is installed by default on Raspberry Pi OS.
+A fast and lightweight IDE, supporting many different file types, including C/{cpp} and Python. It is installed by default on Raspberry Pi OS.
 
 === Text Editors in the Terminal
 
