@@ -1,6 +1,4 @@
-
 == Technical Specification
-:pp: {plus}{plus}
 
 Raspberry Pi Pico is a low-cost, high-performance microcontroller board with flexible digital interfaces. Key features include:
 
