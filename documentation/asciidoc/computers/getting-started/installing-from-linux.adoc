@@ -20,7 +20,7 @@ NOTE: Using the `dd` tool can overwrite any partition of your machine. If you sp
 +
 [,bash]
 ----
-sudo dd if=2021-05-07-raspios-buster-armhf.img of=/dev/sdX bs=4M conv=fsync
+sudo dd if=2021-10-30-raspios-bullseye-armhf.img of=/dev/sdX bs=4M conv=fsync
 ----
 
 * Please note that block size set to `4M` will work most of the time. If not,  try `1M`, although this will take considerably longer.
@@ -30,10 +30,10 @@ sudo dd if=2021-05-07-raspios-buster-armhf.img of=/dev/sdX bs=4M conv=fsync
 
 In Linux it is possible to combine the unzip and SD copying process into one command, which avoids any issues that might occur when the unzipped image is larger than 4GB. This can happen on certain filesystems that do not support files larger than 4GB (e.g. FAT), although it should be noted that most Linux installations do not use FAT and therefore do not have this limitation.
 
-The following command unzips the zip file (replace 2021-05-07-raspios-buster-armhf.zip with the appropriate zip filename), and pipes the output directly to the dd command. This in turn copies it to the SD card, as described in the previous section.
+The following command unzips the zip file (replace 2021-10-30-raspios-bullseye-armhf.zip with the appropriate zip filename), and pipes the output directly to the dd command. This in turn copies it to the SD card, as described in the previous section.
 
 ----
-unzip -p 2021-05-07-raspios-buster-armhf.zip | sudo dd of=/dev/sdX bs=4M conv=fsync
+unzip -p 2021-10-30-raspios-bullseye-armhf.zip | sudo dd of=/dev/sdX bs=4M conv=fsync
 ----
 
 [discrete]
@@ -43,7 +43,7 @@ unzip -p 2021-05-07-raspios-buster-armhf.zip | sudo dd of=/dev/sdX bs=4M conv=fs
 * To see the progress of the copy operation, you can run the dd command with the status option.
 +
 ----
- sudo dd if=2021-05-07-raspios-buster-armhf.img of=/dev/sdX bs=4M conv=fsync status=progress
+ sudo dd if=2021-10-30-raspios-bullseye-armhf.img of=/dev/sdX bs=4M conv=fsync status=progress
 ----
 
 * If you are using an older version of `dd`, the status option may not be available. You may be able to use the `dcfldd` command instead, which will give a progress report showing how much has been written. Another method is to send a USR1 signal to `dd`, which will let it print status information. Find out the PID of `dd` by using `pgrep -l dd` or `ps a | grep dd`. Then use `kill -USR1 PID` to send the USR1 signal to `dd`.
@@ -75,14 +75,14 @@ sudo  dd if=/dev/sdX of=from-sd-card.img bs=4M count=xxx
 +
 [,bash]
 ----
-truncate --reference 2021-05-07-raspios-buster-armhf.img from-sd-card.img
+truncate --reference 2021-10-30-raspios-bullseye-armhf.img from-sd-card.img
 ----
 
 * Compare the two images: `diff` should report that the files are identical.
 +
 [,bash]
 ----
-diff -s from-sd-card.img 2021-05-07-raspios-buster-armhf.img
+diff -s from-sd-card.img 2021-10-30-raspios-bullseye-armhf.img
 ----
 
 * Run `sync`. This will ensure that the write cache is flushed and that it is safe to unmount your SD card.
