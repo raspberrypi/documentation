@@ -71,7 +71,7 @@ image::images/zero2-pad-diagram.png[width="70%"]
 |===
 | Label | Function | X (mm from origin) | Y (mm from origin)
 
-| STATUS_LED	| Power state of LED (LOW = ON)	| 5.15	8.8
+| STATUS_LED	| Power state of LED (LOW = ON)	| 5.15	| 8.8
 | CORE	| Processor power	| 6.3	| 18.98
 | RUN	| Connect to GND to reset	| 8.37	| 22.69
 | 5V	| 5V Input	| 8.75	| 11.05
