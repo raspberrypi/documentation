@@ -1,10 +1,10 @@
 == Drag-and-Drop MicroPython
 
-You can program your Pico by connecting it to a computer via USB, then dragging and dropping a file onto it, so we’ve put together a https://micropython.org/download/rp2-pico/rp2-pico-latest.uf2[downloadable UF2] file to let you install MicroPython more easily.
+You can program your Pico by connecting it to a computer via USB, then dragging and dropping a file onto it, so we’ve put together a  https://micropython.org/download/rp2-pico/rp2-pico-latest.uf2[downloadable UF2] file to let you install MicroPython more easily.
 
 image::images/MicroPython-640x360.gif[]
 
-. Download the https://micropython.org/download/rp2-pico/rp2-pico-latest.uf2[MicroPython UF2] file.
+. Download the  https://micropython.org/download/rp2-pico/rp2-pico-latest.uf2[MicroPython UF2] file.
 
 . Push and hold the BOOTSEL button and plug your Pico into the USB port of your Raspberry Pi or other computer. Release the BOOTSEL button after your Pico is connected.
 

@@ -1,4 +1,3 @@
-
 include::micropython/what-is-micropython.adoc[]
 
 include::micropython/drag-and-drop.adoc[]

@@ -25,7 +25,7 @@ Whilst the `libcamera-apps` attempt to emulate most features of the legacy _Rasp
 
 * There are some differences in the metering, exposure and AWB options. In particular the legacy apps conflate metering (by which we mean the "metering mode") and the exposure (by which we now mean the "exposure profile"). With regards to AWB, to turn it off you have to set a pair of colour gains (e.g. `--awbgains 1.0,1.0`).
 
-* `libcamera` has no mechanism to set the AWB into "grey world" mode, which is useful for "NOIR" camera modules. However, tuning files are supplied which switch the AWB into the correct mode, so for example, you could use `libcamera-hello --tuning-file /usr/local/share/libcamera/ipa/raspberrypi/imx219_noir.json`.
+* `libcamera` has no mechanism to set the AWB into "grey world" mode, which is useful for "NOIR" camera modules. However, tuning files are supplied which switch the AWB into the correct mode, so for example, you could use `libcamera-hello --tuning-file /usr/share/libcamera/ipa/raspberrypi/imx219_noir.json`.
 
 * There is support for setting the exposure time (`--shutter`) and analogue gain (`--analoggain` or just `--gain`). There is no explicit control of the digital gain; you get this if the gain requested is larger than the analogue gain can deliver by itself.
 

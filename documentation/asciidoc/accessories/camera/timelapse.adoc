@@ -19,13 +19,13 @@ raspistill -t 30000 --timelapse 2000 -o image%04d.jpg
 ----
 
 [NOTE]
-======
+====
 The `%04d` in the output filename: this indicates the point in the filename where you want a frame count number to appear. So, for example, the command above will produce a capture every two seconds (2000ms), over a total period of 30 seconds (30000ms), named image0001.jpg, image0002.jpg, and so on, through to image0015.jpg.
 
 The `%04d` indicates a four-digit number, with leading zeros added to make up the required number of digits. So, for example, `%08d` would result in an eight-digit number. You can miss out the `0` if you don't want leading zeros.
 
 If a timelapse value of 0 is entered, the application will take pictures as fast as possible. Note that there's an minimum enforced pause of approximately 30 milliseconds between captures to ensure that exposure calculations can be made.
-======
+====
 
 ==== Automating using `cron` Jobs
 
@@ -69,7 +69,7 @@ On a Raspberry Pi 3, this can encode a little more than two frames per second. T
 
 * `-r 10` Set frame rate (Hz value) to ten frames per second in the output video.
 * `-f image2` Set ffmpeg to read from a list of image files specified by a pattern.
-* `-pattern_type glob` When importing the image files, use wildcard patterns (globbing) to interpret the filename input by `-i`, in this case "image__.jpg", where "__" would be the image number.
+* `-pattern_type glob` When importing the image files, use wildcard patterns (globbing) to interpret the filename input by `-i`, in this case `image*.jpg`, where `*` would be the image number.
 * `-i 'image*.jpg'` The input file specification (to match the files produced during the capture).
 * `-s 1280x720` Scale to 720p. You can also use 1920x1080, or lower resolutions, depending on your requirements.
 * `-vcodec libx264` Use the software x264 encoder.

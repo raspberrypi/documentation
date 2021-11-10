@@ -26,40 +26,23 @@ sudo apt full-upgrade
 
 Note that `full-upgrade` is used in preference to a simple `upgrade`, as it also picks up any dependency changes that may have been made.
 
-Generally speaking, doing this regularly will keep your installation up to date for the particular major Raspberry Pi OS release you are using (e.g. Stretch). It will not update from one major release to another, for example, Stretch to Buster.
+Generally speaking, doing this regularly will keep your installation up to date for the particular major Raspberry Pi OS release you are using (e.g. Buster). It will not update from one major release to another, for example, Stretch to Buster or Buster to Bullseye.
 
-However, there are occasional changes made in the Foundation's Raspberry Pi OS image that require manual intervention, for example a newly introduced package. These are not installed with an upgrade, as this command only updates the packages you already have installed.
+However, there are occasional changes made in the Raspberry Pi OS image that require manual intervention, for example a newly introduced package. These are not installed with an upgrade, as this command only updates the packages you already have installed.
 
 NOTE: The kernel and firmware are installed as a Debian package, and so will also get updates when using the procedure above. These packages are updated infrequently and after extensive testing.
+
+If moving an existing SD card to a new Raspberry Pi model (for example the Pi Zero 2 W), you may also need to update the kernel and the firmware first using the instructions above.
 
 ==== Running Out of Space
 
 When running `sudo apt full-upgrade`, it will show how much data will be downloaded and how much space it will take up on the SD card. It's worth checking with `df -h` that you have enough free disk space, as unfortunately `apt` will not do this for you. Also be aware that downloaded package files (`.deb` files) are kept in `/var/cache/apt/archives`. You can remove these in order to free up space with `sudo apt clean` (`sudo apt-get clean` in older releases of apt).
 
-==== Upgrading from Operating System Versions
+==== Upgrading from Previous Operating System Versions
 
 WARNING: Upgrading an existing image is possible, but is not guaranteed to work in every circumstance and we do not recommend it. If you do wish to try upgrading your operating system version, we strongly suggest making a backup first -- we can accept no responsibility for loss of data from a failed update.
 
-The latest version of Raspberry Pi OS is based on Debian Buster. The previous version was based on Stretch. To upgrade, first modify the files `/etc/apt/sources.list` and `/etc/apt/sources.list.d/raspi.list`. In both files, change every occurrence of the word `stretch` to `buster`. (Both files will require sudo to edit.)
-
-Then open a terminal window and execute:
-
-[,bash]
-----
-sudo apt update
-sudo apt -y dist-upgrade
-----
-
-Answer 'yes' to any prompts. There may also be a point at which the install pauses while a page of information is shown on the screen -- hold the +++<kbd>+++space+++</kbd>+++ key to scroll through all of this and then press +++<kbd>+++q+++</kbd>+++ to continue.
-
-Finally, if you are not using PulseAudio for anything other than Bluetooth audio, remove it from the image by entering:
-
-[,bash]
-----
-sudo apt -y purge "pulseaudio*"
-----
-
-If moving to a new Raspberry Pi model (for example the Pi 3B+), you may also need to update the kernel and the firmware using the instructions above.
+The latest version of Raspberry Pi OS is based on https://www.raspberrypi.com/news/raspberry-pi-os-debian-bullseye/[Debian Bullseye]. The previous version was based on https://www.raspberrypi.com/news/buster-the-new-version-of-raspbian/[Buster]. If you want to perform an in-place upgrade from Buster to Bullseye (and you're aware of the risks) see the https://forums.raspberrypi.com/viewtopic.php?t=323279[instructions in the forums].
 
 ==== Searching for Software
 

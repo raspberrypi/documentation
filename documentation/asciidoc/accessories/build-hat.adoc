@@ -1,4 +1,3 @@
-
 include::build-hat/introduction.adoc[]
 
 include::build-hat/preparing-build-hat.adoc[]

@@ -33,14 +33,14 @@ For example, the NOIR (no IR-filter) versions of sensors require different AWB s
 
 [,bash]
 ----
-libcamera-hello --tuning-file /usr/local/share/libcamera/ipa/raspberrypi/imx219_noir.json
+libcamera-hello --tuning-file /usr/share/libcamera/ipa/raspberrypi/imx219_noir.json
 ----
 
 If you are using a Soho Enterprises SE327M12 module you should use
 
 [,bash]
 ----
-libcamera-hello --tuning-file /usr/local/share/libcamera/ipa/raspberrypi/se327m12.json
+libcamera-hello --tuning-file /usr/share/libcamera/ipa/raspberrypi/se327m12.json
 ----
 
 Notice how this also means that users can copy an existing tuning file and alter it according to their own preferences, so long as the `--tuning-file` parameter is pointed to the new version.

@@ -64,15 +64,15 @@ You will need to reboot at this point if you have made any changes.
 Connect an external power supply — the https://raspberrypi.com/products/build-hat-power-supply[official Raspberry Pi Build HAT power supply] is recommended — however any reliable +8V±10% power supply capable of supplying 48W via a DC 5521 centre positive barrel connector (5.5mm × 2.1mm × 11mm) will power the Build HAT. You don’t need to connect an additional USB power supply to the Raspberry Pi as well, unless you are using a Raspberry Pi 400.
 
 [NOTE]
-======
+====
 The Build HAT can not power the Raspberry Pi 400 as it does not support being powered via the GPIO headers.
-======
+====
 
 image::images/powering-build-hat.gif[width="80%"]
 
 [NOTE]
-======
+====
 The LEGO® Technic™ motors are very powerful; so to drive them you’ll need an external 8V power supply. If you want to read from motor encoders and the SPIKE™ force sensor, you can power your Raspberry Pi and Build HAT the usual way, via your Raspberry Pi’s USB power socket. The SPIKE™ colour and distance sensors, like the motors, require an https://raspberrypi.com/products/build-hat-power-supply[external power supply].
-======
+====
 
 

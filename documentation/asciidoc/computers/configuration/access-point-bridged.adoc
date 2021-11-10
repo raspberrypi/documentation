@@ -21,7 +21,7 @@ If you wish to create a standalone wireless network, consider instead setting up
 ----
 
 A bridged wireless access point can be created using the inbuilt wireless features of the Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access point mode.
-It is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the https://www.raspberrypi.org/forums/[forums].
+It is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the https://forums.raspberrypi.com/[forums].
 
 This documentation was tested on a Raspberry Pi 3B running a fresh installation of Raspberry Pi OS Buster.
 
@@ -31,9 +31,9 @@ This documentation was tested on a Raspberry Pi 3B running a fresh installation 
 * Ensure you have administrative access to your Raspberry Pi. The network setup will be entirely reset as part of the installation: local access, with screen and keyboard connected to your Raspberry Pi, is recommended.
 +
 [NOTE]
-====== 
+====
 If installing remotely via SSH, connect to your Raspberry Pi *by name* rather than by IP address, e.g. `ssh pi@raspberrypi.local`, as the address of your Raspberry Pi on the network will probably change after installation. You should also be ready to add screen and keyboard if needed in case you lose contact with your Raspberry Pi after installation.
-======
+====
 * Connect your Raspberry Pi to the Ethernet network and boot the Raspberry Pi OS.
 * Ensure the Raspberry Pi OS on your Raspberry Pi is xref:os.adoc#updating-and-upgrading-raspberry-pi-os[up-to-date] and reboot if packages were installed in the process.
 * Have a wireless client (laptop, smartphone, ...) ready to test your new access point.
@@ -195,4 +195,4 @@ Once your Raspberry Pi has restarted, search for wireless networks with your wir
 
 If your wireless client has access to the local network and the internet, congratulations on setting up your new access point!
 
-If you encounter difficulties, contact the https://www.raspberrypi.org/forums/[forums] for assistance. Please refer to this page in your message.
+If you encounter difficulties, contact the https://forums.raspberrypi.com/[forums] for assistance. Please refer to this page in your message.

@@ -1,6 +1,4 @@
-
 // Included from both rp2040.adoc and raspberry-pi-pico.adoc
-:pp: {plus}{plus}
 
 == Documentation
 
@@ -18,17 +16,17 @@ https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf[Raspberry Pi Pico Dat
 
 https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico]:: C/C++ development with Raspberry Pi Pico and other RP2040-based microcontroller boards
 
-NOTE: While it is not officially supported there is a https://github.com/ndabas/pico-setup-windows[Pico Setup for Windows] installation tool which automates installation of the C/C{pp} SDK on Windows 10.
+NOTE: While it is not officially supported there is a https://github.com/ndabas/pico-setup-windows[Pico Setup for Windows] installation tool which automates installation of the C/{cpp} SDK on Windows 10.
 
 === Software Development
 
-https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi Pico C/C{pp} SDK]:: Libraries and tools for C/C++ development on RP2040 microcontrollers
+https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi Pico C/{cpp} SDK]:: Libraries and tools for C/C++ development on RP2040 microcontrollers
 
 https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf[Raspberry Pi Pico Python SDK]:: A MicroPython environment for RP2040 microcontrollers
 
-The API level Doxygen documentation for the Raspberry Pi Pico C/C{pp} SDK is also available https://rptl.io/pico-doxygen[as a micro-site].
+The API level Doxygen documentation for the Raspberry Pi Pico C/{cpp} SDK is also available https://rptl.io/pico-doxygen[as a micro-site].
 
 [NOTE]
-======
-If you are building applications with the C/C++ SDK and targetting boards other than the Raspberry Pi Pico, you will need to pass `-DPICO_BOARD=boardname` to CMake. Here `boardname` is the name of your board, e.g. for the Adafruit Feather RP2040 you should pass `-DPICO_BOARD=adafruit_feather_rp2040`. See the https://github.com/raspberrypi/pico-sdk/tree/master/src/boards[`boards/` directory] in the Pico SDK, and the https://www.raspberrypi.org/forums/viewtopic.php?f=147&t=304393[forums], for more information.
-======
+====
+If you are building applications with the C/C++ SDK and targetting boards other than the Raspberry Pi Pico, you will need to pass `-DPICO_BOARD=boardname` to CMake. Here `boardname` is the name of your board, e.g. for the Adafruit Feather RP2040 you should pass `-DPICO_BOARD=adafruit_feather_rp2040`. See the https://github.com/raspberrypi/pico-sdk/tree/master/src/boards[`boards/` directory] in the Pico SDK, and the https://forums.raspberrypi.com/viewtopic.php?f=147&t=304393[forums], for more information.
+====

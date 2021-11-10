@@ -26,7 +26,7 @@ To remove empty directories, use `rmdir`. So, for example, `rmdir oldDir` will r
 
 ==== rm
 
-The command ``rm``removes the specified file (or recursively from a directory when used with `-r`). Be careful with this command: files deleted in this way are mostly gone for good!
+The command `rm` removes the specified file (or recursively from a directory when used with `-r`). Be careful with this command: files deleted in this way are mostly gone for good!
 
 ==== cp
 
@@ -142,7 +142,7 @@ Use `whereis` to find the location of a command. It looks through standard progr
 
 ==== ping
 
-The `ping` utility is usually used to check if communication can be made with another host. It can be used with default settings by just specifying a hostname (e.g. `ping raspberrypi.org`) or an IP address (e.g. `ping 8.8.8.8`). It can specify the number of packets to send with the `-c` flag.
+The `ping` utility is usually used to check if communication can be made with another host. It can be used with default settings by just specifying a hostname (e.g. `ping raspberrypi.com`) or an IP address (e.g. `ping 8.8.8.8`). It can specify the number of packets to send with the `-c` flag.
 
 ==== nmap
 

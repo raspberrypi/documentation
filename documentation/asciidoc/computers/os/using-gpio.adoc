@@ -1,5 +1,4 @@
 == GPIO and the 40-pin Header
-:pp: {plus}{plus}
 
 A powerful feature of the Raspberry Pi is the row of GPIO (general-purpose input/output) pins along the top edge of the board. A 40-pin GPIO header is found on all current Raspberry Pi boards (unpopulated on Pi Zero and Pi Zero W). Prior to the Pi 1 Model B+ (2014), boards comprised a shorter 26-pin header.
 
@@ -47,7 +46,7 @@ image::images/gpiozero-pinout.png[]
 
 For more details on the advanced capabilities of the GPIO pins see gadgetoid's http://pinout.xyz/[interactive pinout diagram].
 
-WARNING: while connecting up simple components to the GPIO pins is perfectly safe, it's important to be careful how you wire things up. LEDs should have resistors to limit the current passing through them. Do not use 5V for 3V3 components. Do not connect motors directly to the GPIO pins, instead use an https://projects.raspberrypi.org/en/projects/physical-computing/16[H-bridge circuit or a motor controller board].
+WARNING: while connecting up simple components to the GPIO pins is perfectly safe, it's important to be careful how you wire things up. LEDs should have resistors to limit the current passing through them. Do not use 5V for 3V3 components. Do not connect motors directly to the GPIO pins, instead use an https://projects.raspberrypi.org/en/projects/physical-computing/14[H-bridge circuit or a motor controller board].
 
 === Permissions
 

@@ -1,6 +1,6 @@
 == Camera Modules
 
-The Raspberry Pi Camera Modules are official products from the Raspberry Pi Foundation. The original 5-megapixel model was https://www.raspberrypi.org/blog/camera-board-available-for-sale/[released] in 2013, and an 8-megapixel https://www.raspberrypi.org/products/camera-module-v2/[Camera Module v2] was https://www.raspberrypi.org/blog/new-8-megapixel-camera-board-sale-25/[released] in 2016. For both iterations, there are visible light and infrared versions. A 12-megapixel https://www.raspberrypi.org/products/raspberry-pi-high-quality-camera/[High Quality Camera] was https://www.raspberrypi.org/blog/new-product-raspberry-pi-high-quality-camera-on-sale-now-at-50/[released] in 2020. There is no infrared version of the HQ Camera, however the xref:camera.adoc#raspberry-pi-hq-camera-filter-removal[IR Filter can be removed] if required.
+The Raspberry Pi Camera Modules are official products from Raspberry Pi. The original 5-megapixel model was https://www.raspberrypi.com/news/camera-board-available-for-sale/[released] in 2013, and an 8-megapixel https://www.raspberrypi.com/products/camera-module-v2/[Camera Module v2] was https://www.raspberrypi.com/news/new-8-megapixel-camera-board-sale-25/[released] in 2016. For both iterations, there are visible light and https://www.raspberrypi.com/products/pi-noir-camera-v2/[infrared] versions. A 12-megapixel https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[High Quality Camera] was https://www.raspberrypi.com/news/new-product-raspberry-pi-high-quality-camera-on-sale-now-at-50/[released] in 2020. There is no infrared version of the HQ Camera, however the xref:camera.adoc#raspberry-pi-hq-camera-filter-removal[IR Filter can be removed] if required.
 
 === Installing a Raspberry Pi camera
 
@@ -18,7 +18,7 @@ Depending on the model, the camera may come with a small piece of translucent bl
 
 === Preparing the Software
 
-Before proceeding, we recommend ensuring that your kernel, GPU firmware and applications are all up to date. Please follow the instructions on  https://www.raspberrypi.org/documentation/computers/os.html#using-apt[keeping your operating system up to date].
+Before proceeding, we recommend ensuring that your kernel, GPU firmware and applications are all up to date. Please follow the instructions on xref:../computers/os.adoc#using-apt[keeping your operating system up to date].
 
 Then, please follow the relevant setup instructions either for xref:camera.adoc#getting-started[`libcamera`] or for xref:camera.adoc#enabling-the-camera[_Raspicam_].
 
@@ -117,9 +117,9 @@ Then, please follow the relevant setup instructions either for xref:camera.adoc#
 |
 |
 
-| Fixed focus
-| 1 m to infinity
-|
+| Depth of field
+| approx. 1 m to infinity
+| adjustable with supplied tool
 | N/A
 
 | Focal length

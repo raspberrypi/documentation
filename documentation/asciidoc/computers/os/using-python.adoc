@@ -1,5 +1,4 @@
 == Python
-:pp: {plus}{plus}
 
 Python is a powerful programming language that's easy to use easy to read and write and, with Raspberry Pi, lets you connect your project to the real world. Python syntax is clean, with an emphasis on readability, and uses standard English keywords.
 
@@ -347,7 +346,7 @@ sudo pip3 install simplejson
 
 ===== piwheels
 
-The official Python Package Index (PyPI) hosts files uploaded by package maintainers. Some packages require compilation (compiling C/C{pp} or similar code) in order to install them, which can be a time-consuming task, particlarly on the single-core Raspberry Pi 1 or Pi Zero.
+The official Python Package Index (PyPI) hosts files uploaded by package maintainers. Some packages require compilation (compiling C/{cpp} or similar code) in order to install them, which can be a time-consuming task, particlarly on the single-core Raspberry Pi 1 or Pi Zero.
 
 piwheels is a service providing pre-compiled packages (called _Python wheels_) ready for use on the Raspberry Pi. Raspberry Pi OS is pre-configured to use piwheels for pip. Read more about the piwheels project at https://www.piwheels.org/[www.piwheels.org].
 

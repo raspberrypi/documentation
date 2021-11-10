@@ -1,5 +1,4 @@
 == Installation
-:pp: {plus}{plus}
 
 In order to work correctly, the Sense HAT requires an up-to-date kernel, I2C to be enabled, and a few libraries to get started.
 
@@ -34,7 +33,7 @@ After installation, example code can be found under `/usr/src/sense-hat/examples
 
 These can be copied to the user's home directory by running `cp /usr/src/sense-hat/examples ~/ -a`.
 
-The C/C{pp} examples can be compiled by running `make` in the appropriate directory.
+The C/{cpp} examples can be compiled by running `make` in the appropriate directory.
 
 The RTIMULibDrive11 example comes pre-compiled to help ensure everything works as intended. It can be launched by running `RTIMULibDrive11` and closed by pressing `Ctrl+c`.
 
@@ -46,7 +45,7 @@ Complete documentation can be found at https://pythonhosted.org/sense-hat/[pytho
 
 == Using the RTIMULib Library
 
-https://github.com/RPi-Distro/RTIMULib[RTIMULib] is a C{pp} and Python library that makes it easy to use 9-dof and 10-dof IMUs with embedded Linux systems. A pre-calibrated settings file is provided in `/etc/RTIMULib.ini`, which is also copied and used by `sense-hat`. The included examples look for `RTIMULib.ini` in the current working directory, so you may wish to copy the file there to get more accurate data.
+https://github.com/RPi-Distro/RTIMULib[RTIMULib] is a {cpp} and Python library that makes it easy to use 9-dof and 10-dof IMUs with embedded Linux systems. A pre-calibrated settings file is provided in `/etc/RTIMULib.ini`, which is also copied and used by `sense-hat`. The included examples look for `RTIMULib.ini` in the current working directory, so you may wish to copy the file there to get more accurate data.
 
 == Other Issues
 
@@ -60,7 +59,7 @@ The joystick comes up as an input event device named "Raspberry Pi Sense HAT Joy
 
 == Calibration
 
-Taken from this https://www.raspberrypi.org/forums/viewtopic.php?f=104&t=109064&p=750616#p810193[forum post].
+Taken from this https://forums.raspberrypi.com/viewtopic.php?f=104&t=109064&p=750616#p810193[forum post].
 
 Install the necessary software and run the calibration program as follows:
 

@@ -4,7 +4,7 @@ The https://raspberrypi.com/products/build-hat[Raspberry Pi Build HAT] is an add
 
 image::images/build-hat.jpg[width="80%"]
 
-NOTE: A full ist of supported devices can be found in the xref:build-hat.adoc#device-compatibility[Device Compatibility] section.
+NOTE: A full list of supported devices can be found in the xref:build-hat.adoc#device-compatibility[Device Compatibility] section.
 
 It provides four connectors for LEGO® Technic™ motors and sensors from the SPIKE™ Portfolio. The available sensors include a distance sensor, a colour sensor, and a versatile force sensor. The angular motors come in a range of sizes and include integrated encoders that can be queried to find their position.
 
@@ -25,6 +25,6 @@ NOTE: The HAT works with all 40-pin GPIO Raspberry Pi boards, including Raspberr
 * External 8V PSU https://raspberrypi.com/products/build-hat-power-supply[available separately] to power both Build HAT and Raspberry Pi
 
 [NOTE]
-======
+====
 The Build HAT can not power the Rapsberry Pi 400 as it does not support being powered via the GPIO headers.
-======
+====

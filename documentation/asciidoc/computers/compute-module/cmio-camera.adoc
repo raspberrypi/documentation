@@ -1,11 +1,11 @@
 == Attaching a Raspberry Pi Camera Module
 
 [NOTE]
-======
-These instructions are intended for advanced users, if anything is unclear please use the https://www.raspberrypi.org/forums/viewforum.php?f=43[Raspberry Pi Camera forums] for technical help.
+====
+These instructions are intended for advanced users, if anything is unclear please use the https://forums.raspberrypi.com/viewforum.php?f=43[Raspberry Pi Camera forums] for technical help.
 
 Unless explicitly stated otherwise, these instructions will work identically on both the Compute Module and Compute Module 3, attached to a Compute Module IO Board. Compute Module 4 is slightly different, so please refer to the appropriate section.
-======
+====
 
 The Compute Module has two CSI-2 camera interfaces. CAM0 has two CSI-2 data lanes, whilst CAM1 has four data lanes. The Compute Module IO board exposes both of these interfaces. Note that the standard Raspberry Pi devices uses CAM1, but only exposes two lanes.
 

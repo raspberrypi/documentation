@@ -22,7 +22,7 @@ The conditional model filters are applied according to the following table.
 | Model 2B (BCM2836- or BCM2837-based)
 
 | [pi3]
-| Model 3B, Model 3B+, Model 3A+, Compute Module 3
+| Model 3B, Model 3B+, Model 3A+, Compute Module 3, Compute Module 3+
 
 | [pi3+]
 | Model 3A+, Model 3B+
@@ -37,10 +37,13 @@ The conditional model filters are applied according to the following table.
 | Compute Module 4
 
 | [pi0]
-| Zero, Zero W, Zero WH
+| Zero, Zero W, Zero WH, Zero 2 W
 
 | [pi0w]
 | Zero W, Zero WH
+
+| [pi02]
+| Zero 2 W
 
 | [board-type=Type]
 | Filter by `Type` number - see xref:raspberry-pi.adoc#raspberry-pi-revision-codes[Raspberry Pi Revision Codes] E.g `[board-type=0x14]` would match CM4.

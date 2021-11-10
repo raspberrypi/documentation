@@ -86,7 +86,7 @@ Link with:
 
 So a simple command line compile might be:
 
-[,shell]
+[,bash]
 ----
 cc myfile.c -I/opt/vc/include -L/opt/vc/lib -lbcm_host -o myfile
 ----
