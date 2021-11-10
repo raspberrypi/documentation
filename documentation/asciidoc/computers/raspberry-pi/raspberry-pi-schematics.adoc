@@ -79,7 +79,7 @@ image::images/zero2-pad-diagram.png[width="70%"]
 | GND	| Ground pin	| 10.9	| 3.69
 | GND	| Ground pin	| 17.29	| 2.41
 | USB_DP	| USB port	| 22.55	| 1.92
-| USB_DM	vUSB port	| 24.68	| 1.92
+| USB_DM |	vUSB port	| 24.68	| 1.92
 | OTG	| On-the-go ID pin	| 39.9	| 7.42
 | 1V8	| 1.8V analog supply	| 42.03	| 8.42
 | TV	| Composite TV out	| 45.58	| 3.17
