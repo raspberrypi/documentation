@@ -27,6 +27,6 @@ https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf[Raspber
 The API level Doxygen documentation for the Raspberry Pi Pico C/{cpp} SDK is also available https://rptl.io/pico-doxygen[as a micro-site].
 
 [NOTE]
-======
+====
 If you are building applications with the C/C++ SDK and targetting boards other than the Raspberry Pi Pico, you will need to pass `-DPICO_BOARD=boardname` to CMake. Here `boardname` is the name of your board, e.g. for the Adafruit Feather RP2040 you should pass `-DPICO_BOARD=adafruit_feather_rp2040`. See the https://github.com/raspberrypi/pico-sdk/tree/master/src/boards[`boards/` directory] in the Pico SDK, and the https://forums.raspberrypi.com/viewtopic.php?f=147&t=304393[forums], for more information.
-======
+====

@@ -14,6 +14,6 @@ Please refer to the following BCM2836 document for details on the ARM peripheral
 * https://developer.arm.com/documentation/ddi0500/latest/[Cortex-A53 MPCore Processor Technical Reference Manual]
 
 [NOTE]
-======
+====
 The original xref:raspberry-pi.adoc#raspberry-pi-zero[Raspberry Pi Zero] uses Package-on-Package (PoP) DRAM, where the DRAM is soldered directly on top of the xref:processors.adoc#bcm2835[BCM2835] chip. 
-======
+====
