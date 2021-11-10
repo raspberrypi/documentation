@@ -183,7 +183,7 @@ A DT overlay comprises a number of fragments, each of which targets one node and
 
 The `compatible` string identifies this as being for BCM2835, which is the base architecture for the Raspberry Pi SoCs; if the overlay makes use of features of a Pi 4 then `brcm,bcm2711` is the correct value to use, otherwise `brcm,bcm2835` can be used for all Pi overlays. Then comes the first (and in this case only) fragment. Fragments should be numbered sequentially from zero. Failure to adhere to this may cause some or all of your fragments to be missed.
 
-Each fragment consists of two parts: a `target` property, identifying the node to apply the overlay to; and the `__overlay__` itself, the body of which is added to the target node. The example above can be interpreted as if it were written like this:
+Each fragment consists of two parts: a `target` property, identifying the node to apply the overlay to; and the `+__overlay__+` itself, the body of which is added to the target node. The example above can be interpreted as if it were written like this:
 
 ----
 /dts-v1/;
@@ -232,7 +232,7 @@ make ARCH=arm dtbs
 
 It is interesting to dump the contents of the DTB file to see what the compiler has generated:
 
-[,console]
+[,bash]
 ----
 fdtdump 1st.dtbo
 /dts-v1/;
@@ -280,18 +280,18 @@ After the verbose description of the file structure there is our fragment. But l
 
 After the fragment there are three new nodes:
 
-* `__symbols__` lists the labels used in the overlay (`test_label` here), and the path to the labelled node. This node is the key to how unresolved symbols are dealt with.
-* `__fixups__` contains a list of properties mapping the names of unresolved symbols to lists of paths to cells within the fragments that need patching with the phandle of the target node, once that target has been located. In this case, the path is to the `0xffffffff` value of `target`, but fragments can contain other unresolved references which would require additional fixes.
-* `__local_fixups__` holds the locations of any references to labels that exist within the overlay - the `test_ref` property. This is required because the program performing the merge will have to ensure that phandle numbers are sequential and unique.
+* `+__symbols__+` lists the labels used in the overlay (`test_label` here), and the path to the labelled node. This node is the key to how unresolved symbols are dealt with.
+* `+__fixups__+` contains a list of properties mapping the names of unresolved symbols to lists of paths to cells within the fragments that need patching with the phandle of the target node, once that target has been located. In this case, the path is to the `0xffffffff` value of `target`, but fragments can contain other unresolved references which would require additional fixes.
+* `+__local_fixups__+` holds the locations of any references to labels that exist within the overlay - the `test_ref` property. This is required because the program performing the merge will have to ensure that phandle numbers are sequential and unique.
 
-Back in <<part1.3,section 1.3>> it says that "the original labels do not appear in the compiled output", but this isn't true when using the `-@` switch. Instead, every label results in a property in the `__symbols__` node, mapping a label to a path, exactly like the `aliases` node. In fact, the mechanism is so similar that when resolving symbols, the Raspberry Pi loader will search the "aliases" node in the absence of a `__symbols__` node. This was useful at one time because providing sufficient aliases allowed very old versions of `dtc` to be used to build the base DTB files, but fortunately that is ancient history now.
+Back in <<part1.3,section 1.3>> it says that "the original labels do not appear in the compiled output", but this isn't true when using the `-@` switch. Instead, every label results in a property in the `+__symbols__+` node, mapping a label to a path, exactly like the `aliases` node. In fact, the mechanism is so similar that when resolving symbols, the Raspberry Pi loader will search the "aliases" node in the absence of a `+__symbols__+` node. This was useful at one time because providing sufficient aliases allowed very old versions of `dtc` to be used to build the base DTB files, but fortunately that is ancient history now.
 
 [[part2.2]]
 ==== Device Tree parameters
 
 To avoid the need for lots of Device Tree overlays, and to reduce the need for users of peripherals to modify DTS files, the Raspberry Pi loader supports a new feature - Device Tree parameters. This permits small changes to the DT using named parameters, similar to the way kernel modules receive parameters from `modprobe` and the kernel command line. Parameters can be exposed by the base DTBs and by overlays, including HAT overlays.
 
-Parameters are defined in the DTS by adding an `__overrides__` node to the root. It contains properties whose names are the chosen parameter names, and whose values are a sequence comprising a phandle (reference to a label) for the target node, and a string indicating the target property; string, integer (cell) and boolean properties are supported.
+Parameters are defined in the DTS by adding an `+__overrides__+` node to the root. It contains properties whose names are the chosen parameter names, and whose values are a sequence comprising a phandle (reference to a label) for the target node, and a string indicating the target property; string, integer (cell) and boolean properties are supported.
 
 [[part2.2.1]]
 ===== String parameters
@@ -422,9 +422,9 @@ NOTE: As lookup tables operate on input values and literal assignments ignore th
 [[part2.2.8]]
 ===== Overlay/fragment parameters
 
-The DT parameter mechanism as described has a number of limitations, including the inability to change the name of a node and to write arbitrary values to arbitrary properties when a parameter is used. One way to overcome some of these limitations is to conditionally include or exclude certain fragments.
+The DT parameter mechanism as described has a number of limitations, including no easy way to create arrays of integers and the inability to create new nodes. One way to overcome some of these limitations is to conditionally include or exclude certain fragments.
 
-A fragment can be excluded from the final merge process (disabled) by renaming the `__overlay__` node to `__dormant__`. The parameter declaration syntax has been extended to allow the otherwise illegal zero target phandle to indicate that the following string contains operations at fragment or overlay scope. So far, four operations have been implemented:
+A fragment can be excluded from the final merge process (disabled) by renaming the `+__overlay__+` node to `+__dormant__+`. The parameter declaration syntax has been extended to allow the otherwise illegal zero target phandle to indicate that the following string contains operations at fragment or overlay scope. So far, four operations have been implemented:
 
 ----
 +<n>    // Enable fragment <n>
@@ -594,7 +594,7 @@ For further examples, there is a large collection of overlay source files https:
 
 The overlay handling in the firmware and the run-time overlay application using the `dtoverlay` utility treat labels defined in an overlay as being private to that overlay. This avoids the need to invent globally unique names for labels (which keeps them short), and it allows the same overlay to be used multiple times without clashing (provided some tricks are used - see <<part2.2.9,Special properties>>).
 
-Sometimes, however, it is very useful to be able to create a label with one overlay and use it from another. Firmware released since 14th February 2020 has the ability to declare some labels as being global - the `__export__` node:
+Sometimes, however, it is very useful to be able to create a label with one overlay and use it from another. Firmware released since 14th February 2020 has the ability to declare some labels as being global - the `+__exports__+` node:
 
 ----
     ...
@@ -990,4 +990,4 @@ Further ports can be controlled by the DT, for more details see <<part3,section 
 [[part4.7]]
 ==== Further help
 
-If you've read through this document and not found the answer to a Device Tree problem, there is help available. The author can usually be found on Raspberry Pi forums, particularly the https://www.raspberrypi.org/forums/viewforum.php?f=107[Device Tree] forum.
+If you've read through this document and not found the answer to a Device Tree problem, there is help available. The author can usually be found on Raspberry Pi forums, particularly the https://forums.raspberrypi.com/viewforum.php?f=107[Device Tree] forum.

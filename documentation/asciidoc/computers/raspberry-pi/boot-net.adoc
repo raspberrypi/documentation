@@ -131,7 +131,7 @@ Fixed in Raspberry Pi 3 Model B+; the value is set to the 32-bit serial number.
 
 ==== ARP check can fail to respond in the middle of TFTP transaction
 
-The Raspberry Pi will only respond to ARP requests when it is in the initialsation phase; once it has begun transferring data, it'll fail to continue reponding.
+The Raspberry Pi will only respond to ARP requests when it is in the initialisation phase; once it has begun transferring data, it'll fail to continue responding.
 
 Fixed in Raspberry Pi 3 Model B+.
 

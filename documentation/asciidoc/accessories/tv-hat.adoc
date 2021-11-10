@@ -21,7 +21,7 @@ you are not accessing the Pi remotely)
  ** Place the spacers at two or three of the corners of the HAT, and tighten the screws through the mounting
 holes to hold them in place.
 * Connect the TV HAT's aerial adaptor to the cable from your TV aerial.
-* Set up the Raspberry Pi with the newest version of the Raspberry Pi OS operating system, which you can download from our https://www.raspberrypi.org/downloads/raspbian/[downloads page].
+* Set up the Raspberry Pi with the newest version of the Raspberry Pi OS operating system, which you can download from our https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-32-bit[downloads page].
 * Start up your Pi, open a terminal window, and run the following two commands to install the `tvheadend` software:
 +
 ----
@@ -59,4 +59,4 @@ listing, just to the right of the *i* icon. This brings up an in-browser media p
 
 `tvheadend` is supported by numerous apps, such as TvhClient for iOS, which will play TV from the Pi. OMXPlayer, supplied with Raspberry Pi OS, also supports viewing TV streams from `tvheadend`. Kodi, available in the Raspberry Pi OS repos, provides excellent facilities for playing live TV, along with previously recorded channels and timed series recording.
 
-To discuss other features or uses of the TV HAT, please visit our https://www.raspberrypi.org/forums[forums].
+To discuss other features or uses of the TV HAT, please visit our https://forums.raspberrypi.com/[forums].

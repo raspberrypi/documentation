@@ -86,7 +86,7 @@ Setting `hdmi_ignore_edid` to `0xa5000080` enables the ignoring of EDID/display 
 
 ==== `hdmi_edid_file`
 
-Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. More information is available https://www.raspberrypi.org/forums/viewtopic.php?p=173430#p173430[on the forums].
+Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. More information is available https://forums.raspberrypi.com/viewtopic.php?p=173430#p173430[on the forums].
 
 ==== `hdmi_edid_filename`
 
@@ -212,7 +212,7 @@ The `hdmi_group` command defines the HDMI output group to be either CEA (Consume
 
 Together with `hdmi_group`, `hdmi_mode` defines the HDMI output format. Format mode numbers are derived from the https://web.archive.org/web/20171201033424/https://standards.cta.tech/kwspub/published_docs/CTA-861-G_FINAL_revised_2017.pdf[CTA specification].
 
-To set a custom display mode not listed here, see more information on https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=24679[the forums].
+To set a custom display mode not listed here, see more information on https://forums.raspberrypi.com/viewtopic.php?f=29&t=24679[the forums].
 
 NOTE: Not all modes are available on all models.
 
@@ -1390,7 +1390,7 @@ These values are valid if `hdmi_group=2` (DMT):
 | reduced blanking
 |===
 
-NOTE: There is a https://www.raspberrypi.org/forums/viewtopic.php?f=26&t=20155&p=195443#p195443[pixel clock limit].The highest supported mode on models prior to the Raspberry Pi 4 is 1920x1200 at 60Hz with reduced blanking, whilst the Raspberry Pi 4 can support up to 4096x2160 (known as 4k) at 60Hz. Also note that if you are using both HDMI ports of the Raspberry Pi 4 for 4k output, then you are limited to 30Hz on both.
+NOTE: There is a https://forums.raspberrypi.com/viewtopic.php?f=26&t=20155&p=195443#p195443[pixel clock limit]. The highest supported mode on models prior to the Raspberry Pi 4 is 1920x1200 at 60Hz with reduced blanking, whilst the Raspberry Pi 4 can support up to 4096x2160 (known as 4k) at 60Hz. Also note that if you are using both HDMI ports of the Raspberry Pi 4 for 4k output, then you are limited to 30Hz on both.
 
 ==== `hdmi_timings`
 
@@ -1655,9 +1655,8 @@ The `framebuffer_width` command specifies the console framebuffer width in pixel
 ==== `framebuffer_height`
 
 The `framebuffer_height` command specifies the console framebuffer height in pixels. The default is the display height minus the total vertical overscan.
-C4
 
-==== `max_framebuffer_heigh`t, `max_framebuffer_width`
+==== `max_framebuffer_height`, `max_framebuffer_width`
 
 Specifies the maximum dimensions that the internal frame buffer is allowed to be.
 
@@ -1716,7 +1715,7 @@ The options that can be set are:
 
 ==== `max_framebuffers`
 
-This configuration entry sets the maximum number of firmware framebuffers that can be created. Valid options are 0,1, and 2. By default on devices before the Pi4 this is set to 1, so will need to be increased to 2 when using more than one display, for example HDMI and a DSI or DPI display. The Raspberry Pi4 configuration sets this to 2 by default as it has two HDMI ports.
+This configuration entry sets the maximum number of firmware framebuffers that can be created. Valid options are 0, 1, and 2. By default on devices before the Pi4 this is set to 1, so will need to be increased to 2 when using more than one display, for example HDMI and a DSI or DPI display. The Raspberry Pi4 configuration sets this to 2 by default as it has two HDMI ports.
 
 Generally in most cases it is safe to set this to 2, as framebuffers will only be created when an attached device is actually detected.
 

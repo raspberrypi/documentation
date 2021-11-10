@@ -1,7 +1,8 @@
-
 include::rp2040/about_rp2040.adoc[]
 
 include::rp2040/technical_specification.adoc[]
+
+include::rp2040/temp_sensor.adoc[]
 
 include::microcontroller_docs.adoc[]
 

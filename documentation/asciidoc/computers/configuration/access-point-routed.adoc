@@ -21,7 +21,7 @@ If you wish to extend an existing Ethernet network to wireless clients, consider
 ----
 
 A routed wireless access point can be created using the inbuilt wireless features of the Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero W, or by using a suitable USB wireless dongle that supports access point mode.
-It is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the https://www.raspberrypi.org/forums/[forums].
+It is possible that some USB dongles may need slight changes to their settings. If you are having trouble with a USB wireless dongle, please check the https://forums.raspberrypi.com/[forums].
 
 This documentation was tested on a Raspberry Pi 3B running a fresh installation of Raspberry Pi OS Buster.
 
@@ -222,4 +222,4 @@ If SSH is enabled on the Raspberry Pi, it should be possible to connect to it fr
 
 If your wireless client has access to your Raspberry Pi (and the internet, if you set up routing), congratulations on setting up your new access point!
 
-If you encounter difficulties, contact the https://www.raspberrypi.org/forums/[forums] for assistance. Please refer to this page in your message.
+If you encounter difficulties, contact the https://forums.raspberrypi.com/[forums] for assistance. Please refer to this page in your message.

@@ -261,7 +261,7 @@ Sets the metering mode of the AEC/AGC algorithm. This may one of the following v
 * `average` - average or whole frame metering
 * `custom` - custom metering mode which would have to be defined in the camera tuning file.
 
-For more information on defining a custom metering mode, and also on how to adjust the region weights in the existing metering modes,please refer to the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
+For more information on defining a custom metering mode, and also on how to adjust the region weights in the existing metering modes, please refer to the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
 
 Example: `libcamera-still -o test.jpg --metering spot`
 

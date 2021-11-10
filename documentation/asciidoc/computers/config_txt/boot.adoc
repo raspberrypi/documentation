@@ -75,7 +75,7 @@ Set `kernel_old` to `1` to load the kernel to the memory address `0x0`.
 
 `ramfsfile` is the optional filename on the boot partition of a `ramfs` to load. 
 
-NOTE: Newer firmware supports the loading of multiple `ramfs` files. You should separate the multiple file names with commas, taking care not to exceed the 80-character line length limit. All the loaded files are concatenated in memory and treated as a single `ramfs` blob. More information is available https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=10532[on the forums].
+NOTE: Newer firmware supports the loading of multiple `ramfs` files. You should separate the multiple file names with commas, taking care not to exceed the 80-character line length limit. All the loaded files are concatenated in memory and treated as a single `ramfs` blob. More information is available https://forums.raspberrypi.com/viewtopic.php?f=63&t=10532[on the forums].
 
 === `ramfsaddr`
 
