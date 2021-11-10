@@ -108,11 +108,11 @@ make -j4
 To check everything is working correctly, type `./libcamera-hello` - you should see a preview window displayed for about 5 seconds.
 
 [NOTE]
-======
+====
 For Pi 3 devices, as we saw previously, 1GB devices may need `make -j2` instead of `make -j4`.
 
 Also, Pi 3s do not by default use the correct GL driver, so please ensure you have `dtoverlay=vc4-fkms-v3d` in the `[all]` (not in the `[pi4]`) section of your `/boot/config.txt` file.
-======
+====
 
 === Further Documentation
 
