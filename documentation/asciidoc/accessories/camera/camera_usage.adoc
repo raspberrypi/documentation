@@ -8,7 +8,7 @@ Once xref:camera.adoc#installing-a-raspberry-pi-camera[installed], there are var
 
 === `libcamera` and the legacy _Raspicam_ camera stack
 
-NOTE: Raspberry Pi is transitioning from a legacy camera software stack based on proprietary Broadcom GPU code to an open-source stack based on `libcamera`. Raspberry Pi OS images from _Bullseye_ onwards will contain *only* the `libcamera`-based stack. Raspberry Pi OS images up to and including _Buster_ will contain the legacy _Raspicam_ stack, though the `libcamera` stack and applications can be built by following the xref:camera.adoc#building-libcamera-and-libcamera-apps[normal build instructions].
+NOTE: Raspberry Pi is transitioning from a legacy camera software stack based on proprietary Broadcom GPU code to an open-source stack based on `libcamera`. Raspberry Pi OS images from _Bullseye_ onwards will contain *only* the `libcamera`-based stack. Raspberry Pi OS images up to and including _Buster_ will contain the legacy _Raspicam_ stack, though the `libcamera` stack and applications can be installed xref:camera.adoc#libcamera-and-libcamera-apps-packages[using _apt_], or built by following the xref:camera.adoc#building-libcamera-and-libcamera-apps[normal build instructions].
 
 Users are encouraged to use the newest OS images and the `libcamera`-based stack because:
 
