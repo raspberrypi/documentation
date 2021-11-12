@@ -2,7 +2,7 @@
 
 [WARNING]
 ====
-The following documentation refers to Raspberry Pi OS Buster and earlier versions. OMXPlayer has been deprecated in the https://www.raspberrypi.com/news/raspberry-pi-os-debian-bullseye/[latest OS release]. If you are running Bullseye VLC is now the recommended alternative. 
+The following documentation refers to Raspberry Pi OS Buster and earlier versions. OMXPlayer has been deprecated in the https://www.raspberrypi.com/news/raspberry-pi-os-debian-bullseye/[latest OS release]. If you are running Bullseye, VLC is now the recommended alternative. 
 ====
 
 The simplest way of playing audio and video on Raspberry Pi is to use the installed OMXPlayer application.
