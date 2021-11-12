@@ -1,5 +1,10 @@
 == Playing Audio and Video
 
+[WARNING]
+====
+The following documentation refers to Raspberry Pi OS Buster and earlier versions. OMXPlayer has been deprecated in the https://www.raspberrypi.com/news/raspberry-pi-os-debian-bullseye/[latest OS release]. If you are running Bullseye VLC is now the recommended alternative. 
+====
+
 The simplest way of playing audio and video on Raspberry Pi is to use the installed OMXPlayer application.
 
 This is hardware accelerated, and can play back many popular audio and video file formats. OMXPlayer uses the OpenMAX (`omx`) hardware acceleration interface (API) which is the officially supported media API on Raspberry Pi. OMXPlayer was developed by the Kodi Project's Edgar Hucek.

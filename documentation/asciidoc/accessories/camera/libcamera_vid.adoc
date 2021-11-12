@@ -64,6 +64,12 @@ and on the client
 ----
 vlc tcp/h264://<ip-addr-of-server>:<port>
 ----
+or alternatively
+----
+ffplay tcp://<ip-addr-of-server>:<port> -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
+----
+for a 30 frames per second stream with low latency.
+
 The Raspberry Pi will wait until the client connects, and then start streaming video.
 
 ===== RTSP

@@ -7,9 +7,9 @@ The Raspberry Pi 4 can drive up to two displays, with a resolution up to 1080p a
 If you are running the 3D graphics driver (also known as the FKMS driver), then in the Preferences menu you will find a graphical application for setting up standard displays, including multi-display setups. 
 
 [NOTE]
-======
+====
 The Screen Configuration tool (`arandr`) is a graphical tool for selecting display modes and setting up multiple displays. You can find this tool in the desktop Preferences menu, but only if the 3D graphics driver is being used, as it is this driver that provides the required mode setting functionality. Use the Configure menu option to select the screen, resolution, and orientation. If you're using a multi-screen setup, drag around the displays to any position you want. When you have the required setup, click the Tick button to apply the settings.
-======
+====
 
 If you are using legacy graphics drivers, or find yourself in circumstances where the Raspberry Pi may not be able to determine the best mode, or you may specifically wish to set a non-default resolution, the rest of this page may be useful.
 
