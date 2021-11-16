@@ -124,4 +124,4 @@ which will delete the `build/` and `documentation/html/` directories.
 
 ## Licence
 
-The Raspberry Pi [documentation](./documentation/) is [licensed](https://github.com/raspberrypi/documentation/blob/develop/LICENSE.md) under a Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA). While the toolchain source code — which is everything outside of the top-level `documentation/` subdirectory — is Copyright © 2021 Raspberry Pi (Trading) Ltd. and licensed under the [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause) licence.
+The Raspberry Pi [documentation](./documentation/) is [licensed](https://github.com/raspberrypi/documentation/blob/develop/LICENSE.md) under a Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA). While the toolchain source code — which is everything outside of the top-level `documentation/` subdirectory — is Copyright © 2021 Raspberry Pi Ltd and licensed under the [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause) licence.
