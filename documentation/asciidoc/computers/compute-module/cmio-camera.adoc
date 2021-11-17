@@ -17,7 +17,7 @@ The camera software is under constant development. Please ensure your system is 
 
 ----
 sudo apt update
-sudp apt full-upgrade
+sudo apt full-upgrade
 ----
 
 === Crypto Chip
