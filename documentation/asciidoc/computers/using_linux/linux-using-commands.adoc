@@ -83,6 +83,10 @@ The `dd` command copies a file converting the file as specified. It is often use
 
 Use `df` to display the disk space available and used on the mounted filesystems. Use `df -h` to see the output in a human-readable format using M for MBs rather than showing number of bytes.
 
+==== zip
+
+The `zip` command compresses a specific file or folder into a zip file. So, for example, `zip -r file.zip ./*` : Use it with `-r` within a specific folder to compress all files or sub-folders into zip files.
+
 ==== unzip
 
 The `unzip` command extracts the files from a compressed zip file.
