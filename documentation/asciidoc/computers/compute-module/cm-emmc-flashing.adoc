@@ -144,13 +144,15 @@ N.B. The Compute Module 4 ROM never runs `recovery.bin` from SD/EMMC and the `rp
 
 To modify the CM4 bootloader configuration:-
 
-* Replace `recovery/pieeprom.original.bin` if a specific bootloader release is required.
-* Edit the default `recovery/boot.conf` bootloader configuration file. Typically, at least the BOOT_ORDER must be updated:-
+* cd `usbboot/recovery`
+* Replace `pieeprom.original.bin` if a specific bootloader release is required.
+* Edit the default `boot.conf` bootloader configuration file. Typically, at least the BOOT_ORDER must be updated:-
  ** For network boot `BOOT_ORDER=0xf2`
  ** For SD/EMMC boot `BOOT_ORDER=0xf1`
  ** For USB boot failing over to EMMC `BOOT_ORDER=0xf15`
-* Run `recovery/update-pieeprom.sh` to update the EEPROM image `pieeprom.bin` image file.
-* If EEPROM write protection is required then edit `recovery/config.txt` and add `eeprom_write_protect=1`. Hardware write-protection must be enabled via software and then locked by pulling the `EEPROM_nWP` pin low.
+* Run `./update-pieeprom.sh` to update the EEPROM image `pieeprom.bin` image file.
+* If EEPROM write protection is required then edit `config.txt` and add `eeprom_write_protect=1`. Hardware write-protection must be enabled via software and then locked by pulling the `EEPROM_nWP` pin low.
+* Run `../rpiboot -d` to update the bootloader using the updated EEPROM image `pieeprom.bin`
 
 The pieeprom.bin file is now ready to be flashed to the Compute Module 4.
 
