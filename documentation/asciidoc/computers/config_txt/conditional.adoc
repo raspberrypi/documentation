@@ -1,3 +1,4 @@
+[[conditional-filters]]
 == Conditional Filters
 
 When a single SD Card (or card image) is being used with one Raspberry Pi and one monitor, it is easy to set `config.txt` as required for that specific combination and keep it that way, amending it only when something changes.

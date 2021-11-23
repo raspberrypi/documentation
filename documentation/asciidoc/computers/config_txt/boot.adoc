@@ -65,7 +65,7 @@ NOTE: Enabling "High Peripheral" mode without a compatible device tree will make
 
 === `kernel_address`
 
-`kernel_address` is the memory address to which the kernel image should be loaded. 32-bit kernels are loaded to address `0x8000` by default, and 64-bit kernels to address `0x80000`. If `kernel_old` is set, kernels are loaded to the address `0x0`.
+`kernel_address` is the memory address to which the kernel image should be loaded. 32-bit kernels are loaded to address `0x8000` by default, and 64-bit kernels to address `0x200000`. If `kernel_old` is set, kernels are loaded to the address `0x0`.
 
 === `kernel_old`
 
@@ -109,6 +109,12 @@ The `boot_delay` command instructs to wait for a given number of seconds in `sta
 
 The `boot_delay_ms` command means wait for a given number of milliseconds in `start.elf`, together with `boot_delay`, before loading the kernel. The default value is `0`.
 
+
+[[disable_poe_fan]]
+=== `disable_poe_fan`
+
+By default, a probe on the I2C bus will happen at startup, even when a PoE HAT is not attached. Setting this option to 1 disables control of a PoE HAT fan through I2C (on pins ID_SD & ID_SC). If you are not intending to use a PoE HAT doing this is useful if you need to minimise boot time.
+
 === `disable_splash`
 
 If `disable_splash` is set to `1`, the rainbow splash screen will not be shown on boot. The default value is `0`.
@@ -116,6 +122,10 @@ If `disable_splash` is set to `1`, the rainbow splash screen will not be shown o
 === `enable_gic` (Raspberry Pi 4 Only)
 
 On the Raspberry Pi 4B, if this value is set to `0` then the interrupts will be routed to the ARM cores using the legacy interrupt controller, rather than via the GIC-400. The default value is `1`.
+
+=== `enable_uart`
+
+`enable_uart=1` (in conjunction with `console=serial0` in `cmdline.txt`) requests that the kernel creates a serial console, accessible using GPIOs 14 and 15 (pins 8 and 10 on the 40-pin header). Editing `cmdline.txt` to remove the line `quiet` enables boot messages from the kernel to also appear there. See also `uart_2ndstage`.
 
 === `force_eeprom_read`
 
@@ -133,6 +143,16 @@ In an attempt to reduce the chance of a non-bootable system, the firmware first 
 NOTE: Any user-specified OS file can bypass all prefixes by using an absolute path (with respect to the boot partition) - just start the file path with a `/`, e.g. `kernel=/my_common_kernel.img`.
 
 See also <<overlay_prefix,`overlay_prefix`>> and <<upstream_kernel,`upstream_kernel`>>.
+
+==== `otg_mode` (Raspberry Pi 4 Only)
+
+USB On-The-Go (often abbreviated to OTG) is a feature that allows supporting USB devices with an appropriate OTG cable to configure themselves as USB hosts. On older Raspberry Pis, a single USB 2 controller was used in both USB host and device mode.
+
+Pi 4B and Pi 400 (not CM4 or CM4IO) add a high performance USB 3 controller, attached via PCIe, to drive the main USB ports. The legacy USB 2 controller is still available on the USB-C power connector for use as a device (`otg_mode=0`, the default).
+
+`otg_mode=1` requests that a more capable XHCI USB 2 controller is used as another host controller on that USB-C connector. 
+
+NOTE: Because CM4 and CM4IO don't include the external USB 3 controller RaspberryPi OS images set `otg_mode=1` on CM4 for better performance.
 
 [[overlay_prefix]]
 === `overlay_prefix`
@@ -153,4 +173,3 @@ Be aware that output is likely to interfere with Bluetooth operation unless it i
 If `upstream_kernel=1` is used, the firmware sets <<os_prefix,`os_prefix`>> to "upstream/", unless it has been explicitly set to something else, but like other `os_prefix` values it will be ignored if the required kernel and .dtb file can't be found when using the prefix.
 
 The firmware will also prefer upstream Linux names for DTBs (`bcm2837-rpi-3-b.dtb` instead of `bcm2710-rpi-3-b.dtb`, for example). If the upstream file isn't found the firmware will load the downstream variant instead  and automatically apply the "upstream" overlay to make some adjustments. Note that this process happens _after_ the `os_prefix` has been finalised.
-

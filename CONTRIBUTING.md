@@ -18,6 +18,10 @@ Before starting writing your contribution to the documentation you should take a
 
 We welcome contributions from the community, ranging from correcting small typos all the way through to adding entire new sections to the documentation. However going forward we're going to be fairly targetted about what sort of content we add to the documentation. We are looking to keep the repository, and the documentation, focussed on Raspberry Pi-specific things, rather than having generic Linux or computing content.
 
+We are therefore deprecating the more generic documentation around using the Linux operating system, ahead of removing these sections entirely at some point in the future as part of a larger update to the documentation site. This move is happening as we feel these sort of more general topics are, ten years on from when the documentation was initially written, now much better covered elsewhere on the web.
+
+As such, we're not accepting PRs against these sections unless they're correcting errors.
+
 **NOTE:** We are willing to consider toolchain-related contributions, but changes to the toolchain may have knock-on effects in other places so it is possible that apparently benign pull requests that make toolchain changes could be refused for fairly opaque reasons. 
 
 ## Third-Party Services
