@@ -1612,12 +1612,6 @@ Setting `hdmi_force_hotplug` to `1` pretends that the HDMI hotplug signal is ass
 
 Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. In other words, composite output mode will be used, even if an HDMI monitor is detected.
 
-==== `disable_overscan`
-
-Set `disable_overscan` to `1` to disable the default values of xref:configuration.adoc#underscan[overscan] that is set by the firmware. The default value of overscan for the left, right, top, and bottom edges is `48` for HD CEA modes, `32` for SD CEA modes, and `0` for DMT modes. The default value for `disable_overscan` is `0`.
-
-NOTE: Any further additional overscan options such as `overscan_scale` or overscan edges can still be applied after this option.
-
 ==== `overscan_left`
 
 The `overscan_left` command specifies the number of pixels to add to the firmware default value of overscan on the left edge of the screen. The default value is `0`.
