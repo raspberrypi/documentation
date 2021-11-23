@@ -113,7 +113,7 @@ The `boot_delay_ms` command means wait for a given number of milliseconds in `st
 [[disable_poe_fan]]
 === `disable_poe_fan`
 
-By default, a probe on the I2C bus will happen at startup, even when a PoE HAT is not attached. Setting this option to 1 disables control of a PoE HAT fan through I2C (on pins ID_SD & ID_SC). If you are not intending to use a PoE HAT doing this is useful if you need to minimise boot time."
+By default, a probe on the I2C bus will happen at startup, even when a PoE HAT is not attached. Setting this option to 1 disables control of a PoE HAT fan through I2C (on pins ID_SD & ID_SC). If you are not intending to use a PoE HAT doing this is useful if you need to minimise boot time.
 
 === `disable_splash`
 
