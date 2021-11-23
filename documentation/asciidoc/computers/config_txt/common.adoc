@@ -8,7 +8,11 @@ Set `disable_overscan` to `1` to disable the default values of xref:configuratio
 
 ==== `hdmi_enable_4kp60` (Raspberry Pi 4 Only)
 
-By default, when connected to a 4K monitor, the Raspberry Pi 4B, 400 and CM4 will select a 30hz refresh rate. Use this option to allow selection of 60Hz refresh rates. Note, this will increase power consumption and increase the temperature of the Raspberry Pi. It is not possible to output 4Kp60 on both micro HDMI ports simultaneously.
+By default, when connected to a 4K monitor, the Raspberry Pi 4B, 400 and CM4 will select a 30hz refresh rate. Use this option to allow selection of 60Hz refresh rates. 
+
+IMPORTANT: It is not possible to output 4Kp60 on both micro HDMI ports simultaneously.
+
+WARNING: Setting `hdmi_enable_4kp60` will increase power consumption and the temperature of your Raspberry Pi. 
 
 === Common Hardware Configuration Options
 
