@@ -150,7 +150,9 @@ USB On-The-Go (often abbreviated to OTG) is a feature that allows supporting USB
 
 Pi 4B and Pi 400 (not CM4 or CM4IO) add a high performance USB 3 controller, attached via PCIe, to drive the main USB ports. The legacy USB 2 controller is still available on the USB-C power connector for use as a device (`otg_mode=0`, the default).
 
-`otg_mode=1` requests that a more capable XHCI USB 2 controller is used as another host controller on that USB-C connector. Note that because CM4 and CM4IO don't include the external USB 3 controller, RPiOS images set `otg_mode=1` on CM4s for better performance.
+`otg_mode=1` requests that a more capable XHCI USB 2 controller is used as another host controller on that USB-C connector. 
+
+NOTE: Because CM4 and CM4IO don't include the external USB 3 controller, RPiOS images set `otg_mode=1` on CM4s for better performance.
 
 [[overlay_prefix]]
 === `overlay_prefix`
