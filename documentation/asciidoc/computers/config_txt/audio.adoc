@@ -2,6 +2,14 @@
 
 The onboard audio output uses config options to change the way the analogue audio is driven, and whether some firmware features are enabled or not.
 
+=== `audio_pwm_mode`
+
+`audio_pwm_mode=1` selects legacy low-quality analogue audio from the 3.5mm AV jack.
+
+`audio_pwm_mode=2` (the default) selects high quality analogue audio using an advanced modulation scheme. 
+
+NOTE: This option uses more GPU compute resources and can interfere with some use cases.
+
 === `disable_audio_dither`
 
 By default, a 1.0LSB dither is applied to the audio stream if it is routed to the analogue audio output. This can create audible background "hiss" in some situations, for example when the ALSA volume is set to a low level. Set `disable_audio_dither` to `1` to disable dither application.

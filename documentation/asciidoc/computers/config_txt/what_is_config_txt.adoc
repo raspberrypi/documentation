@@ -14,21 +14,38 @@ NOTE: There are some config settings that cannot be retrieved using `vcgencmd`.
 
 The `config.txt` file is read by the early-stage boot firmware, so it has a very simple file format. The format is a single `property=value` statement on each line, where `value` is either an integer or a string. Comments may be added, or existing config values may be commented out and disabled, by starting a line with the `#` character.
 
-There is an 80 character line length limit to entries, any characters past this limit will be ignored.
+There is a 98-character line length limit (previously 78) for entries - any characters past this limit will be ignored.
 
 Here is an example file:
 
 ----
-# Force the monitor to HDMI mode so that sound will be sent over HDMI cable
-hdmi_drive=2
-# Set monitor mode to DMT
-hdmi_group=2
-# Set monitor resolution to 1024x768 XGA 60Hz (HDMI_DMT_XGA_60)
-hdmi_mode=16
-# Make display smaller to stop text spilling off the screen
-overscan_left=20
-overscan_right=12
-overscan_top=10
-overscan_bottom=10
+# Enable audio (loads snd_bcm2835)
+dtparam=audio=on
+
+# Automatically load overlays for detected cameras
+camera_auto_detect=1
+
+# Automatically load overlays for detected DSI displays
+display_auto_detect=1
+
+# Enable DRM VC4 V3D driver
+dtoverlay=vc4-kms-v3d
+max_framebuffers=2
+
+# Disable compensation for displays with overscan
+disable_overscan=1
 ----
 
+=== Advanced Features
+
+==== `include`
+
+Causes the content of the specified file to be inserted into the current file.
+
+For example, adding the line `include extraconfig.txt` to `config.txt` will include the content of `extraconfig.txt` file in the `config.txt` file.
+
+*Include directives are not supported by bootcode.bin or the EEPROM bootloader*
+
+==== Conditional Filters
+
+Conditional filters are covered in the xref:config_txt.adoc#conditional-filters[conditionals section].

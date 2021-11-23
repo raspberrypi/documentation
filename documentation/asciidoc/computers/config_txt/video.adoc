@@ -59,7 +59,7 @@ On older Pi models, the composite behaviour remains the same.
 
 === HDMI Mode
 
-NOTE: Because the Raspberry Pi 4B has two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found in the HDMI sub-section on the xref:config_txt.adoc#conditional-filters[conditionals section] of the documentation.
+NOTE: Because the Raspberry Pi 4B has two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found in the HDMI sub-section of the xref:config_txt.adoc#conditional-filters[conditionals section] of the documentation.
 
 In order to support dual 4k displays, the Raspberrry Pi 4 has xref:config_txt.adoc#raspberry-pi-4-hdmi-pipeline[updated video hardware], which imposes minor restrictions on the modes supported.
 
@@ -1611,12 +1611,6 @@ Setting `hdmi_force_hotplug` to `1` pretends that the HDMI hotplug signal is ass
 ==== `hdmi_ignore_hotplug`
 
 Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. In other words, composite output mode will be used, even if an HDMI monitor is detected.
-
-==== `disable_overscan`
-
-Set `disable_overscan` to `1` to disable the default values of xref:configuration.adoc#underscan[overscan] that is set by the firmware. The default value of overscan for the left, right, top, and bottom edges is `48` for HD CEA modes, `32` for SD CEA modes, and `0` for DMT modes. The default value for `disable_overscan` is `0`.
-
-NOTE: Any further additional overscan options such as `overscan_scale` or overscan edges can still be applied after this option.
 
 ==== `overscan_left`
 
