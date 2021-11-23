@@ -18,13 +18,13 @@ WARNING: Setting `hdmi_enable_4kp60` will increase power consumption and the tem
 
 === Common Hardware Configuration Options
 
-==== `auto_detect_cameras`
+==== `camera_auto_detect`
 
 With this setting enabled (set to `1`), the firmware will automatically load overlays for cameras that it recognises. 
 
 IMPORTANT: New Raspberry Pi OS images from Bullseye onwards come with this setting by default.
 
-==== `auto_detect_displays`
+==== `display_auto_detect`
 
 With this setting enabled (set to `1`), the firmware will automatically load overlays for displays that it recognises. 
 
