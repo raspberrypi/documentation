@@ -6,7 +6,9 @@ The onboard audio output uses config options to change the way the analogue audi
 
 `audio_pwm_mode=1` selects legacy low-quality analogue audio from the 3.5mm AV jack.
 
-`audio_pwm_mode=2` (the default) selects high quality analogue audio using an advanced modulation scheme. Note that this option uses more GPU compute resources and can interfere with some use cases.
+`audio_pwm_mode=2` (the default) selects high quality analogue audio using an advanced modulation scheme. 
+
+NOTE: This option uses more GPU compute resources and can interfere with some use cases.
 
 === `disable_audio_dither`
 
