@@ -14,15 +14,15 @@ By default, when connected to a 4K monitor, the Raspberry Pi 4B, 400 and CM4 wil
 
 ==== `auto_detect_cameras`
 
-With this setting enabled (set to `1`), the firmware will automatically load overlays for cameras that it recognises. New Rasperry Pi OS images from Bullseye onwards come with this setting by default.
+With this setting enabled (set to `1`), the firmware will automatically load overlays for cameras that it recognises. New Raspberry Pi OS images from Bullseye onwards come with this setting by default.
 
 ==== `auto_detect_displays`
 
-With this setting enabled (set to `1`), the firmware will automatically load overlays for displays that it recognises. New RPiOS images from Bullseye onwards come with this setting by default.
+With this setting enabled (set to `1`), the firmware will automatically load overlays for displays that it recognises. New Raspberry Pi OS images from Bullseye onwards come with this setting by default.
 
 ==== `dtoverlay`
 
-The `dtoverlay` option requests the firmware to load a named Device Tree overlay - a configuration file that can enable kernel support for built-in and externalhardware. For example, `dtoverlay=vc4-kms-v3d` loads an overlay that enables the kernel graphics driver.
+The `dtoverlay` option requests the firmware to load a named Device Tree overlay - a configuration file that can enable kernel support for built-in and external hardware. For example, `dtoverlay=vc4-kms-v3d` loads an overlay that enables the kernel graphics driver.
 
 As a special case, if called with no value - `dtoverlay=` - it marks the end of a list of overlay parameters. If used before any other `dtoverlay` or `dtparam` setting it prevents the loading of any HAT overlay.
 
@@ -36,4 +36,4 @@ For more details, see xref:configuration.html#part3.1[DTBs, overlays and config.
 
 ==== `arm_boost` (Raspberry Pi 4 Only)
 
-All Pi 400s and newer revisions of the Pi 4B are equipped with a second switch-mode power supply for the SoC voltage rail, and this allows the default turbo-mode clock to be increased from 1.5GHz to 1.8GHz. This change should be safe for all such boards, but to avoid unrequested changes for existing installations this change must be accepted by setting `arm_boost=1`. New images from Bullseye onwards come with this setting by default.
+All Pi 400s and newer revisions of the Pi 4B are equipped with a second switch-mode power supply for the SoC voltage rail, and this allows the default turbo-mode clock to be increased from 1.5GHz to 1.8GHz. This change should be safe for all such boards, but to avoid unrequested changes for existing installations this change must be accepted by setting `arm_boost=1`. New Raspberry Pi OS images from Bullseye onwards come with this setting by default.
