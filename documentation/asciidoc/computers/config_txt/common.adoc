@@ -4,7 +4,9 @@
 
 ==== `disable_overscan`
 
-Set `disable_overscan` to `1` to disable the default values of xref:configuration.adoc#underscan[overscan] that is set by the firmware. The default value of overscan for the left, right, top, and bottom edges is `48` for HD CEA modes, `32` for SD CEA modes, and `0` for DMT modes. The default value for `disable_overscan` is `0`.
+The default value for `disable_overscan` is `0` which gives default values of overscan for the left, right, top, and bottom edges of `48` for HD CEA modes, `32` for SD CEA modes, and `0` for DMT modes. 
+
+Set `disable_overscan` to `1` to disable the default values of xref:configuration.adoc#underscan[overscan] that are set by the firmware. 
 
 ==== `hdmi_enable_4kp60` (Raspberry Pi 4 Only)
 
@@ -18,11 +20,15 @@ WARNING: Setting `hdmi_enable_4kp60` will increase power consumption and the tem
 
 ==== `auto_detect_cameras`
 
-With this setting enabled (set to `1`), the firmware will automatically load overlays for cameras that it recognises. New Raspberry Pi OS images from Bullseye onwards come with this setting by default.
+With this setting enabled (set to `1`), the firmware will automatically load overlays for cameras that it recognises. 
+
+IMPORTANT: New Raspberry Pi OS images from Bullseye onwards come with this setting by default.
 
 ==== `auto_detect_displays`
 
-With this setting enabled (set to `1`), the firmware will automatically load overlays for displays that it recognises. New Raspberry Pi OS images from Bullseye onwards come with this setting by default.
+With this setting enabled (set to `1`), the firmware will automatically load overlays for displays that it recognises. 
+
+IMPORTANT: New Raspberry Pi OS images from Bullseye onwards come with this setting by default.
 
 ==== `dtoverlay`
 
@@ -40,4 +46,6 @@ For more details, see xref:configuration.html#part3.1[DTBs, overlays and config.
 
 ==== `arm_boost` (Raspberry Pi 4 Only)
 
-All Pi 400s and newer revisions of the Pi 4B are equipped with a second switch-mode power supply for the SoC voltage rail, and this allows the default turbo-mode clock to be increased from 1.5GHz to 1.8GHz. This change should be safe for all such boards, but to avoid unrequested changes for existing installations this change must be accepted by setting `arm_boost=1`. New Raspberry Pi OS images from Bullseye onwards come with this setting by default.
+All Pi 400s and newer revisions of the Pi 4B are equipped with a second switch-mode power supply for the SoC voltage rail, and this allows the default turbo-mode clock to be increased from 1.5GHz to 1.8GHz. This change should be safe for all such boards, but to avoid unrequested changes for existing installations this change must be accepted by setting `arm_boost=1`. 
+
+IMPORTANT: New Raspberry Pi OS images from Bullseye onwards come with this setting by default.
