@@ -1,7 +1,7 @@
 == Troubleshooting the Display
 
 [discrete]
-=== Are you running raspian bullseye and the display turns off during the boot sequence?
+=== Are you running Raspberry Pi OS bullseye and the display turns off during the boot sequence?
 
 There is a bug that requires a workaround to get the display working until the bug is fixed: https://github.com/raspberrypi/linux/issues/4686
 
@@ -23,7 +23,7 @@ If the problem still persists, one possible workaround is to disable the kms dri
 sudo nano /boot/config.txt
 ----
 
-Add a "#" to the line "" to disable the kde driver, so the line looks like this:
+Add a "#" to the line "" to disable the kms driver, so the line looks like this:
 
 ----
 #dtoverlay=vc4-kms-v3d
