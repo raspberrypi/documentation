@@ -57,6 +57,6 @@ To override the automatic camera detection, _Bullseye_ users will also need to d
 
 `camera_auto_detect=1`
 
-if present (or change the `1` to `0`).
+if present.
 
 If you need to edit this file then the Pi will need to be rebooted.
