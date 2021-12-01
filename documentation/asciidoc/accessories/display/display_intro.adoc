@@ -18,9 +18,9 @@ xref:display.adoc#legacy-support[Legacy support for Raspberry Pi 1 Model A/B]
 
 LCD displays have an optimum viewing angle, and depending on how the screen is mounted it may be necessary to change the orientation of the display to give the best results. By default, the Raspberry Pi Touch Display and Raspberry Pi are set up to work best when viewed from slightly above, for example on a desktop. If viewing from below, you can physically rotate the display, and then tell the system software to compensate by running the screen upside down.
 
-==== FKMS Mode
+==== KMD and FKMS Mode
 
-FKMS mode is used by default on the Raspberry Pi 4B. FKMS uses the DRM/MESA libraries to provide graphics and 3D acceleration.
+KMD and FKMS mode is used by default on the Raspberry Pi 4B. KMD and FKMS uses the DRM/MESA libraries to provide graphics and 3D acceleration.
 
 To set screen orientation when running the graphical desktop, select the `Screen Configuration` option from the `Preferences` menu. Right click on the DSI display rectangle in the layout editor, select Orientation then the required option.
 
@@ -41,7 +41,7 @@ NOTE: In console mode it is not possible to rotate the DSI display separately to
 
 ==== Legacy Graphics Mode
 
-Legacy graphics mode is used by default on all Raspberry Pi models prior to the Raspberry Pi 4B, and can also be used on the Raspberry Pi 4B if required, by disabling FKMS mode by commenting out the FKMS line in `config.txt`. 
+Legacy graphics mode is used by default on all Raspberry Pi models prior to the Raspberry Pi 4B, and can also be used on the Raspberry Pi 4B if required, by disabling KMD and FKMS mode by commenting out the KMD and FKMS line in `config.txt`. 
 
 NOTE: Legacy mode on the Raspberry Pi 4B has no 3D acceleration so it should only be used if you have a specific reason for needing it.
 
