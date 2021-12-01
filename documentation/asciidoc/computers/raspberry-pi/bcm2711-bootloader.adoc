@@ -286,7 +286,7 @@ Default: `0`
 
 `NETCONSOLE` duplicates debug messages to the network interface. The IP addresses and ports are defined by the `NETCONSOLE` string.
 
-N.B. NETCONSOLE blocks until the ethernet link is established or a timeout occurs. The timeout value is `DHCP_TIMEOUT` although DHCP is not attempted unless network boot is requested.
+NOTE: NETCONSOLE blocks until the ethernet link is established or a timeout occurs. The timeout value is `DHCP_TIMEOUT` although DHCP is not attempted unless network boot is requested.
 
 ===== Format
 
@@ -445,7 +445,7 @@ Configures the EEPROM `Write Status Register`. This can be set to either mark th
 
 This option must be used in conjunction with the EEPROM `/WP` pin which controls updates to the EEPROM `Write Status Register`.  Pulling `/WP` low (CM4 `EEPROM_nEP` or Pi4B `TP5`) does NOT write-protect the EEPROM unless the `Write Status Register` has also been configured.
 
-See: https://www.winbond.com/resource-files/w25x40cl_f%2020140325.pdf[Winbond W25x40cl datasheet]
+See the https://www.winbond.com/resource-files/w25x40cl_f%2020140325.pdf[Winbond W25x40cl datasheet] for further details.
 
 `eeprom_write_protect` settings in `config.txt` for `recovery.bin`.
 
@@ -462,7 +462,7 @@ See: https://www.winbond.com/resource-files/w25x40cl_f%2020140325.pdf[Winbond W2
 | Do nothing.
 |===
 
-N.B `flashrom` does not support clearing of the write-protect regions and will fail to update the EEPROM if write-protect regions are defined.
+NOTE: `flashrom` does not support clearing of the write-protect regions and will fail to update the EEPROM if write-protect regions are defined.
 
 Default: `-1`
 
@@ -478,4 +478,4 @@ Default: `1`
 
 After reading `config.txt` the GPU firmware `start4.elf` reads the bootloader EEPROM config and checks for a section called `[config.txt]`. If the `[config.txt]` section exists then the contents from the start of this section to the end of the file is appended in memory, to the contents of the `config.txt` file read from the boot partition.  This can be used to automatically apply settings to every operating system, for example, dtoverlays.
 
-Warning: If an invalid configuration which causes boot to fail is specified then the bootloader EEPROM will have to be re-flashed.
+WARNING: If an invalid configuration which causes boot to fail is specified then the bootloader EEPROM will have to be re-flashed.
