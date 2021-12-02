@@ -1,6 +1,6 @@
 == Installing Images on Mac OS
 
-xref:getting-started.adoc#using-raspberry-pi-imager[Raspberry Pi Imager] is the recommended option for most users to write images to SD cards. However if you do not want to use the Imager you can setill copy an operating system to the card from the command line.
+xref:getting-started.adoc#using-raspberry-pi-imager[Raspberry Pi Imager] is the recommended option for most users to write images to SD cards. However, if you do not want to use the Imager you can still copy an operating system to the card from the command line.
 
 [discrete]
 ==== Finding the SD Card
