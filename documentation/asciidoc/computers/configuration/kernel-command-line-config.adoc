@@ -22,7 +22,6 @@ There are many kernel command line parameters, some of which are defined by the 
  ** `console=tty1`
 * root: defines the location of the root filesystem, e.g. `root=/dev/mmcblk0p2` means multimedia card block 0 partition 2.
 * rootfstype: defines what type of filesystem the rootfs uses, e.g. `rootfstype=ext4`
-* elevator: specifies the I/O scheduler to use. `elevator=deadline` means the kernel imposes a deadline on all I/O operations to prevent request starvation.
 * quiet: sets the default kernel log level to `KERN_WARNING`, which suppresses all but very serious log messages during boot.
 
 [discrete]

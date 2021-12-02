@@ -286,7 +286,7 @@ Default: `0`
 
 `NETCONSOLE` duplicates debug messages to the network interface. The IP addresses and ports are defined by the `NETCONSOLE` string.
 
-N.B. NETCONSOLE blocks until the ethernet link is established or a timeout occurs. The timeout value is `DHCP_TIMEOUT` although DHCP is not attempted unless network boot is requested.
+NOTE: NETCONSOLE blocks until the ethernet link is established or a timeout occurs. The timeout value is `DHCP_TIMEOUT` although DHCP is not attempted unless network boot is requested.
 
 ===== Format
 
@@ -335,7 +335,6 @@ Default: ""
 If no USB mass storage devices are found within this timeout then USB-MSD is stopped and the next boot mode is selected
 
 Default: `20000` (20 seconds) +
-Version: 2020-09-03
 
 [[USB_MSD_LUN_TIMEOUT]]
 ==== USB_MSD_LUN_TIMEOUT
@@ -352,6 +351,18 @@ During USB mass storage boot, power to the USB ports is switched off for a short
 Minimum: `250` +
 Maximum: `5000` +
 Default: `1000` (1 second)
+
+[[VL805]]
+==== VL805
+Compute Module 4 only.
+
+If the `VL805` property is set to `1` then the bootloader will search for a VL805 PCIe XHCI controller and attempt to initialise it with VL805 firmware embedded in the bootloader EEPROM. This enables industrial designs to use VL805 XHCI controllers without providing a dedicated SPI EEPROM for the VL805 FW.
+
+* On Compute Module 4 the bootloader never writes to the dedicated VL805 SPI EEPROM. This option just configures the controller to load the firmware from SDRAM.
+* Do not use this option if the VL805 XHCI controller has a dedicated EEPROM. It will fail to initialise because the VL805 ROM will attempt to use a dedicated SPI EEPROM if fitted.
+* The embedded VL805 firmware assumes the same USB configuration as Pi4B (2 USB3 ports and 4 USB 2 ports). There is no support for loading alternate VL805 FW images, a dedicated VL805 SPI EEPROM should be used instead for such configurations.
+
+Default: `0`
 
 [[XHCI_DEBUG]]
 ==== XHCI_DEBUG
@@ -394,6 +405,21 @@ Default: `0x0` (no USB debug messages enabled)
 
 === Configuration Properties in `config.txt`
 
+[[boot_ramdisk]]
+==== boot_ramdisk
+If this property is set to `1` then the bootloader will attempt load a ramdisk file called `boot.img` containing the boot xref:configuration.adoc#boot-folder-contents[boot file-system]. Subsequent files (e.g. `start4.elf`) are read from the ramdisk instead of the original boot file-system.
+
+The primary purpose of `boot_ramdisk` is to support `secure-boot`, however, unsigned `boot.img` files can also be useful to Network Boot or `RPIBOOT` configurations.
+
+* The maximum size for a ramdisk file is 96MB.
+* `boot.img` files are raw disk `.img` files. The recommended format is a plain FAT32 partition with no MBR.
+* The memory for the ramdisk filesystem is released before the operating system is started.
+* If xref:raspberrypi.adoc#fail-safe-os-updates-tryboot[TRYBOOT] is selected then the bootloader will search for `tryboot.img` instead of `boot.img`.
+
+For more information about `secure-boot` and creating `boot.img` files please see the https://github.com/raspberrypi/usbboot/blob/master/Readme.md[USBBOOT Readme]
+
+Default: `0` 
+
 [[boot_load_flags]]
 ==== boot_load_flags
 
@@ -406,7 +432,7 @@ Default: `0x0`
 [[uart_2ndstage]]
 ==== uart_2ndstage
 
-If set to 0x1 then enable debug logging to the UART. In newer firmware versions (Raspberry Pi OS 2020-08-20 and later) UART logging is also automatically enabled in start.elf. This is also described on the xref:config_txt.adoc#boot-options[Boot options] page.
+If `uart_2ndstage` is `1` then enable debug logging to the UART. This option also automatically enables UART logging in start.elf. This is also described on the xref:config_txt.adoc#boot-options[Boot options] page.
 
 The `BOOT_UART` property also enables bootloader UART logging but does not enable UART logging in `start.elf` unless `uart_2ndstage=1` is also set.
 
@@ -415,11 +441,11 @@ Default: `0`
 [[eeprom_write_protect]]
 ==== eeprom_write_protect
 
-The `2020-09-03` `recovery.bin` EEPROM updater provides a feature to configure the EEPROM `Write Status Register`. This can be set to either mark the entire EEPROM as write-protected or clear write-protection.
+Configures the EEPROM `Write Status Register`. This can be set to either mark the entire EEPROM as write-protected or clear write-protection.
 
 This option must be used in conjunction with the EEPROM `/WP` pin which controls updates to the EEPROM `Write Status Register`.  Pulling `/WP` low (CM4 `EEPROM_nEP` or Pi4B `TP5`) does NOT write-protect the EEPROM unless the `Write Status Register` has also been configured.
 
-See: https://www.winbond.com/resource-files/w25x40cl_f%2020140325.pdf[Winbond W25x40cl datasheet]
+See the https://www.winbond.com/resource-files/w25x40cl_f%2020140325.pdf[Winbond W25x40cl datasheet] for further details.
 
 `eeprom_write_protect` settings in `config.txt` for `recovery.bin`.
 
@@ -436,7 +462,7 @@ See: https://www.winbond.com/resource-files/w25x40cl_f%2020140325.pdf[Winbond W2
 | Do nothing.
 |===
 
-N.B `flashrom` does not support clearing of the write-protect regions and will fail to update the EEPROM if write-protect regions are defined.
+NOTE: `flashrom` does not support clearing of the write-protect regions and will fail to update the EEPROM if write-protect regions are defined.
 
 Default: `-1`
 
@@ -445,11 +471,11 @@ Default: `-1`
 
 This option may be set to 0 to block self-update without requiring the EEPROM configuration to be updated. This is sometimes useful when updating multiple Pis via network boot because this option can be controlled per Raspberry Pi (e.g. via a serial number filter in `config.txt`).
 
-Default: `1` (`0` in versions prior to 2020-09-03)
+Default: `1`
 
 [[config_txt]]
 ==== config.txt section
 
-From Raspberry Pi OS 2021-01-11, the firmware now reads the bootloader configuration from the EEPROM. If a section called `[config.txt]` is found then the contents from the start of this section to the end of the file is appended in memory, to the contents of the `config.txt` file read from the boot partition.  This can be used to automatically apply settings to every operating system, for example, dtoverlays.
+After reading `config.txt` the GPU firmware `start4.elf` reads the bootloader EEPROM config and checks for a section called `[config.txt]`. If the `[config.txt]` section exists then the contents from the start of this section to the end of the file is appended in memory, to the contents of the `config.txt` file read from the boot partition.  This can be used to automatically apply settings to every operating system, for example, dtoverlays.
 
-If an invalid configuration which causes boot to fail is specified then an EEPROM recovery image or RPIBOOT will be required to restore the EEPROM to factory defaults.
+WARNING: If an invalid configuration which causes boot to fail is specified then the bootloader EEPROM will have to be re-flashed.
