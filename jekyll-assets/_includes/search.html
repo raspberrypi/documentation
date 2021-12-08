@@ -1,36 +1,9 @@
-<!-- Script pointing to search script -->
-<script src="{{ site.baseurl }}/scripts/simple-jekyll-search.min.js" type="text/javascript"></script>
-
-<!-- Configuration -->
-<script>
-SimpleJekyllSearch({
-  searchInput: document.getElementById('search-input'),
-  resultsContainer: document.getElementById('results-container'),
-  json: [
-    {% for subdir in site.data.search %}
-    {% for item in subdir.toc %}
-      {
-        "title"    : "{{ subdir.title | escape }} > {{ item.title | escape }}",
-        "url"      : "{{ site.baseurl }}{{ item.path }}",
-      },
-      {% if item.sections %}
-      {% for subitem in item.sections %}
-        {
-          "title"    : "{{ subdir.title | escape }} > {{ item.title | escape }} > {{ subitem.heading | escape }}",
-          "url"      : "{{ site.baseurl }}{{ item.path }}#{{ subitem.anchor }}",
-        },
-        {% if subitem.subsections %}
-        {% for subsubitem in subitem.subsections %}
-          {
-            "title"    : "{{ subdir.title | escape }} > {{ item.title | escape }} > {{ subsubitem.heading | escape }}",
-            "url"      : "{{ site.baseurl }}{{ item.path }}#{{ subsubitem.anchor }}",
-          },
-        {% endfor %}
-        {% endif %}
-      {% endfor %}
-      {% endif %}
-    {% endfor %}
-    {% endfor %}
-  ]
-})
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+<script type="text/javascript">
+  docsearch({
+    appId: 'IHWGNTJ1NP',
+    apiKey: '94f8e1d1619229399fe8b33bcf750dfd',
+    indexName: 'raspberrypi',
+    container: '#docsearch'
+  });
 </script>
