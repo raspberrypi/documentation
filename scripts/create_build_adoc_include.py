@@ -14,6 +14,8 @@ def check_no_markdown(filename):
         asciidoc = re.sub('----\n.*?\n----', '', asciidoc, flags=re.DOTALL)
         if re.search('(?:^|\n)#+', asciidoc):
             raise Exception("{} contains a Markdown-style header (i.e. '#' rather than '=')".format(filename))
+        if re.search(r'(\[.+?\]\(.+?\))', asciidoc):
+            raise Exception("{} contains a Markdown-style link (i.e. '[title](url)' rather than 'url[title]')".format(filename))
 
 
 if __name__ == "__main__":
