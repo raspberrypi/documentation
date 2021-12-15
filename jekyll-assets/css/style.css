@@ -40,6 +40,15 @@ body {
   background-color: #f6f6f6;
 }
 
+a {
+  color: var(--pink);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 .toptitle {
   color: #fff;
   text-align: center;
@@ -180,6 +189,7 @@ nav#contents h3,
 nav#mobile-contents h3 {
   font-weight: bold;
   font-size: 0.85em;
+  line-height: 1.5rem;
   color: #343434;
   cursor: pointer;
 }
