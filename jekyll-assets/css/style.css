@@ -1,5 +1,5 @@
 :root {
-  --pink: #c51d4a;
+  --red: #cd2355;
 }
 
 /* overrides for the old theme */
@@ -41,7 +41,7 @@ body {
 }
 
 a {
-  color: var(--pink);
+  color: var(--red);
   text-decoration: none;
 }
 
@@ -115,7 +115,7 @@ ul#results-container {
   margin-left: auto;
   margin-right: auto;
   border: 1px solid #343434;
-  color: var(--pink);
+  color: var(--red);
   font-size: 12px;
   padding: 10px 10px 10px 30px;
 }
@@ -134,7 +134,7 @@ ul#results-container li:last-of-type {
 
 ul#results-container li,
 ul#results-container li::marker {
-  color: var(--pink);
+  color: var(--red);
 }
 
 #container {
@@ -261,7 +261,7 @@ ul#tocify-header1 > ul.tocify-subheader {
 #content h1 {
   font-weight: 700;
   font-size: 34px;
-  color: var(--pink);
+  color: var(--red);
   margin-bottom: 40px;
   position: relative;
   margin-left: -1rem;
@@ -346,7 +346,7 @@ h3:hover .anchor,
 h4:hover .anchor, 
 h5:hover .anchor, 
 h6:hover .anchor {
-  color: var(--pink);
+  color: var(--red);
   visibility: visible;
 }
 
@@ -522,12 +522,12 @@ div.admonitionblock tr {
 }
 
 div.admonitionblock td div.title {
-  color: var(--pink);
+  color: var(--red);
   text-transform: uppercase;
 }
 
 div.admonitionblock td.content {
-  border: 2px solid var(--pink);
+  border: 2px solid var(--red);
   padding: 10px;
   margin-top: 10px;
   width: 100%;

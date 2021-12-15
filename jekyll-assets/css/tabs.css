@@ -26,7 +26,7 @@ ul#tab-container li {
 }
 
 ul#tab-container li.selected {
-  border-bottom-color: #c61931;
+  border-bottom-color: var(--red);
 }
 
 ul#tab-container li a {
