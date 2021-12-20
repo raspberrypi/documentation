@@ -163,7 +163,7 @@ network={
 
 === The DHCP Daemon
 
-The Raspberry Pi uses `dhcpcd` to configure TCP/IP across all of its network interfaces. The `dhcpcd` daemonis intended to be an all-in-one ZeroConf client for UNIX-like systems. This includes assigning each interface an IP address, setting netmasks, and configuring DNS resolution via the Name Service Switch (NSS) facility.
+The Raspberry Pi uses `dhcpcd` to configure TCP/IP across all of its network interfaces. The `dhcpcd` daemon is intended to be an all-in-one ZeroConf client for UNIX-like systems. This includes assigning each interface an IP address, setting netmasks, and configuring DNS resolution via the Name Service Switch (NSS) facility.
 
 By default, Raspberry Pi OS attempts to automatically configure all network interfaces by DHCP, falling back to automatic private addresses in the range 169.254.0.0/16 if DHCP fails. This is consistent with the behaviour of other Linux variants and of Microsoft Windows.
 
