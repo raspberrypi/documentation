@@ -96,6 +96,7 @@ $ bundle install
 ```
 (which may take several minutes), followed by,
 ```
+$ cd ..
 $ pip3 install --user -r requirements.txt
 ```
 
