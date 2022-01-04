@@ -25,7 +25,7 @@ This works on both regular Debian or Ubuntu Linux — and has been tested in a m
 You can install the necessary dependencies on Linux as follows,
 
 ```
-$ sudo apt install -y ruby ruby-dev python3 python3-pip make ninja-build
+$ sudo apt install -y ruby ruby-dev python3 python3-pip make ninja-build gumbo-parser
 ```
 
 then add these lines to the bottom of your `$HOME/.bashrc`,
@@ -86,6 +86,7 @@ Go ahead and `brew install` the other dependencies,
 ```
 $ brew install python@3
 $ brew install ninja
+$ brew install gumbo-parser
 ```
 
 ### Install Scripting Dependencies
