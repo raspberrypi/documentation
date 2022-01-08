@@ -86,7 +86,7 @@ by `hostname -I`
 
 `fd00::ba27:ebff:feb6:f293 2001:db8:494:9d01:ba27:ebff:feb6:f293`
 
-The example shows two IP addresses. The first one is a so called unique local unicast address(`fc00::/7`). The second one is the global unicast address(`2000::/3`). It is also possible to see only one them depending on your network (router) configuration. Both addresses are valid for reaching the Raspberry Pi within your LAN. The address out of `2000::/3` is accessible world wide, provided your router's firewall is opened.
+The example shows two IP addresses. The first one is a so called unique local unicast address(`fc00::/7`). The second one is the global unicast address(`2000::/3`). It is also possible to see only one of them depending on your network (router) configuration. Both addresses are valid for reaching the Raspberry Pi within your LAN. The address out of `2000::/3` is accessible world wide, provided your router's firewall is opened.
 
 Now use one of IPs from the first step to ping all local nodes:
 
