@@ -2,7 +2,7 @@
 
 Secure Copy (`scp`) is a command for sending files over SSH. This means you can copy files between computers, say from your Raspberry Pi to your desktop or laptop, or vice-versa.
 
-First of all, you'll need to know your Raspberry Pi's xref:remote-access.adoc#how-to-find-your-ip-address[IP address].
+First of all, you'll need to know your Raspberry Pi's xref:remote-access.adoc#ip-address[IP address].
 
 === Copying Files to your Raspberry Pi
 

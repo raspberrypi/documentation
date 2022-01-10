@@ -3,7 +3,7 @@
 
 You can access the command line of a Raspberry Pi remotely from another computer or device on the same network using the Secure Shell (SSH) protocol.
 
-You will only have access to the command line, not the full desktop environment. For a full remote desktop, see xref:remote-access.adoc#virtual-network-computing-vnc[VNC].
+You will only have access to the command line, not the full desktop environment. For a full remote desktop, see xref:remote-access.adoc#vnc[VNC].
 
 === Set up your Local Network
 
