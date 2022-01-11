@@ -17,9 +17,6 @@ rule create_categories_page
 rule create_toc
   command = $scripts_dir/create_nav.py $in $src_dir $out
 
-rule create_search
-  command = $scripts_dir/create_search.py $in $src_dir $out
-
 rule create_build_adoc
   command = $scripts_dir/create_build_adoc.py $documentation_index $site_config $GITHUB_EDIT_TEMPLATE $in $inc_dir $out
 

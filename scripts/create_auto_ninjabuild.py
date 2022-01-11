@@ -156,18 +156,6 @@ if __name__ == "__main__":
             targets = []
             ninja.newline()
 
-        # Search data
-        dest = os.path.join('$out_dir', '_data', 'search.json')
-        source = '$documentation_index'
-        extra_sources = ['$scripts_dir/create_search.py']
-        extra_sources.extend(all_doc_sources)
-        ninja.build(dest, 'create_search', source, extra_sources)
-        targets.append(dest)
-        if targets:
-            ninja.default(targets)
-            targets = []
-            ninja.newline()
-
         # Images on boxes
         for image in sorted(page_images):
             dest = os.path.join('$out_dir', 'images', image)
