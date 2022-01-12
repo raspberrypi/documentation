@@ -25,7 +25,7 @@ This works on both regular Debian or Ubuntu Linux — and has been tested in a m
 You can install the necessary dependencies on Linux as follows,
 
 ```
-$ sudo apt install -y ruby ruby-dev python3 python3-pip make ninja-build gumbo-parser
+$ sudo apt install -y ruby ruby-dev python3 python3-pip make ninja-build
 ```
 
 then add these lines to the bottom of your `$HOME/.bashrc`,
