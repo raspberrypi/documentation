@@ -36,13 +36,13 @@ The `dtoverlay` option requests the firmware to load a named Device Tree overlay
 
 As a special case, if called with no value - `dtoverlay=` - it marks the end of a list of overlay parameters. If used before any other `dtoverlay` or `dtparam` setting it prevents the loading of any HAT overlay.
 
-For more details, see xref:configuration.html#part3.1[DTBs, overlays and config.txt].
+For more details, see xref:configuration.adoc#part3.1[DTBs, overlays and config.txt].
 
 ==== `dtparam`
 
 Device Tree configuration files for Raspberry Pis support a number of parameters for such things as enabling I2C and SPI interfaces. Many DT overlays are configurable via the use of parameters. Both types of parameters can be supplied using the `dtparam` setting. In addition, overlay parameters can be appended to the `dtoverlay` option, separated by commas, but beware the line length limit - previously 78 characters, now 98 characters.
 
-For more details, see xref:configuration.html#part3.1[DTBs, overlays and config.txt].
+For more details, see xref:configuration.adoc#part3.1[DTBs, overlays and config.txt].
 
 ==== `arm_boost` (Raspberry Pi 4 Only)
 

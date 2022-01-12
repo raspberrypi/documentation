@@ -414,7 +414,7 @@ The primary purpose of `boot_ramdisk` is to support `secure-boot`, however, unsi
 * The maximum size for a ramdisk file is 96MB.
 * `boot.img` files are raw disk `.img` files. The recommended format is a plain FAT32 partition with no MBR.
 * The memory for the ramdisk filesystem is released before the operating system is started.
-* If xref:raspberrypi.adoc#fail-safe-os-updates-tryboot[TRYBOOT] is selected then the bootloader will search for `tryboot.img` instead of `boot.img`.
+* If xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT] is selected then the bootloader will search for `tryboot.img` instead of `boot.img`.
 
 For more information about `secure-boot` and creating `boot.img` files please see the https://github.com/raspberrypi/usbboot/blob/master/Readme.md[USBBOOT Readme]
 

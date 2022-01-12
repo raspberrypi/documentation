@@ -14,7 +14,7 @@ Detect objects with the given `<name>`. The name should be taken from the model'
 
 Wait at least this many frames after a capture before performing another. This is necessary because the neural network does not run on every frame, so it is best to give it a few frames to run again before considering another capture.
 
-Please refer to the xref:camera.adoc#object-detect-tf-stage[TensorFlow Lite object detector] section for more general information on how to obtain and use this model. But as an example, you might spy secretly on your cats while you are away with:
+Please refer to the xref:camera.adoc#object_detect_tf-stage[TensorFlow Lite object detector] section for more general information on how to obtain and use this model. But as an example, you might spy secretly on your cats while you are away with:
 
 [,bash]
 ----
