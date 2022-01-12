@@ -20,7 +20,7 @@ Raspberry Pi OS has the SSH server disabled by default. It can be enabled manual
 . Select `Enabled` next to `SSH`
 . Click `OK`
 
-Alternatively you can enable it from the terminal using the xref:configuration.adoc#the-raspi-config-tool[raspi-config] application,
+Alternatively you can enable it from the terminal using the xref:configuration.adoc#raspi-config[raspi-config] application,
 
 . Enter `sudo raspi-config` in a terminal window
 . Select `Interfacing Options`
