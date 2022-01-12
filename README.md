@@ -91,7 +91,7 @@ $ brew install gumbo-parser
 
 ### Install Scripting Dependencies
 
-After you've installed the toolchain (on either Linux or macOS), you'll need to install the required Ruby gems and Python modules. Make sure you're in the `documentation/` directory and then run,
+After you've installed the toolchain (on either Linux or macOS), you'll need to install the required Ruby gems and Python modules. Make sure you're in the top-level `documentation/` directory (i.e. the one containing `Gemfile.lock` and `requirements.txt`) and then run,
 ```
 $ bundle install
 ```
