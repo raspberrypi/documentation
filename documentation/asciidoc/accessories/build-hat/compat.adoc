@@ -21,7 +21,7 @@ SPIKE Prime Expansion Set | 45678, 45680 | Motor | Active | 31
 
 | Distance Sensor | White/Black	| 6302968 | Yes | Yes | | https://www.bricklink.com/v2/catalog/catalogitem.page?P=37316c01&idColor=11#T=C&C=11[Link] | SPIKE Prime Set, Mindstorms Robot Inventor | 45678, 51515  |DistanceSensor | Active | 3E
 
-| System medium motor | White/Grey | 6138854 | Yes | Yes | | | Wedo 2.0, LEGO Ideas Piano, App controlled Batmobile | 76112 | | Passive | 1
+| System medium motor | White/Grey | 45303,6138854,6290182,6127110 | Yes | Yes | | | Wedo 2.0, LEGO Ideas Piano, App controlled Batmobile | 76112 | | Passive | 1
 
 | Force Sensor | White/Black | 6254354 | Yes | Yes | 45606 | https://www.bricklink.com/v2/catalog/catalogitem.page?P=37312c01&idColor=11#T=C&C=11[Link] | SPIKE Prime Set | 45678 | ForceSensor | Active | 3F
 
