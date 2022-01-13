@@ -77,7 +77,7 @@ The Raspberry Pi will wait until the client connects, and then start streaming v
 vlc is useful on the Pi for formatting an RTSP stream, though there are other RTSP servers available.
 [,bash]
 ----
-libcamera-vid -t 0 --inline -o - | cvlc stream://dev/stdin --sout '#rtp{sdp=rtsp://:8554/stream1}' :demux=h264
+libcamera-vid -t 0 --inline -o - | cvlc stream:///dev/stdin --sout '#rtp{sdp=rtsp://:8554/stream1}' :demux=h264
 ----
 and this can be played with
 [,bash]
