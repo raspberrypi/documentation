@@ -46,6 +46,6 @@ For example, adding the line `include extraconfig.txt` to `config.txt` will incl
 
 *Include directives are not supported by bootcode.bin or the EEPROM bootloader*
 
-==== Conditional Filters
+==== Conditional Filtering
 
 Conditional filters are covered in the xref:config_txt.adoc#conditional-filters[conditionals section].
