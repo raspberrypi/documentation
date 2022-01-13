@@ -129,7 +129,7 @@ cat /etc/resolv.conf
 
 Configure a static network address on your server Raspberry Pi via the `systemd` networking, which works as the network handler and DHCP server.
 
-To do that, you'll need to to create a `10-eth0.netdev` and a `11-eth0.network` like so:
+To do that, you'll need to create a `10-eth0.netdev` and a `11-eth0.network` like so:
 
 [,bash]
 ----
