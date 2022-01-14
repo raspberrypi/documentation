@@ -34,6 +34,8 @@ include::camera/libcamera_apps_post_processing_tflite.adoc[]
 
 include::camera/libcamera_apps_post_processing_writing.adoc[]
 
+include::camera/libcamera_apps_multicam.adoc[]
+
 include::camera/libcamera_apps_packages.adoc[]
 
 include::camera/libcamera_apps_building.adoc[]
