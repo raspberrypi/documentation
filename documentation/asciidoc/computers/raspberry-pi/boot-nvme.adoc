@@ -6,7 +6,7 @@ NVMe (non-volatile memory express) is a standard for accessing solid state drive
 
 You need an NVMe M.2 SSD. You cannot plug an M.2 SSD directly into the PCIe slot on the IO board - an adaptor is needed. Be careful to get the correct type: a suitable adaptor can be found online by searching for 'PCI-E 3.0 x1 Lane to M.2 NGFF M-Key SSD Nvme PCI Express Adapter Card'.
 
-Raspberry Pi OS supports accessing NVMe drives, although booting from NVMe is currently only supported using pre-release software (see 'required software' below). To check that your NVMe drive is connected correctly, boot Raspberry Pi OS from another drive and run `ls -l /dev/nvme*`; example output is shown below.
+The latest version of Raspberry Pi OS supports booting from NVMe drives. To check that your NVMe drive is connected correctly, boot Raspberry Pi OS from another drive and run `ls -l /dev/nvme*`; example output is shown below.
 
 ----
 crw------- 1 root root 245, 0 Mar  9 14:58 /dev/nvme0
@@ -17,32 +17,19 @@ If you need to connect the NVMe drive to a PC or Mac you can use a USB adaptor: 
 
 === Required Software
 
-To boot from NVMe you need a recent version of the bootloader (July 2021), and pre-release versions of the VideoCore firmware and Raspberry Pi OS Linux kernel.
+To boot from NVMe you need a recent version of the bootloader (after July 2021), and a recent version of the VideoCore firmware and Raspberry Pi OS Linux kernel. The latest Raspberry Pi OS release has everything you need, so you can use the xref:getting-started.adoc#using-raspberry-pi-imager[Raspberry Pi Imager] to install the software to your SSD.
 
 ==== Bootloader
 
-You need to use `rpiboot` to update the CM4 bootloader. Instructions for building `rpiboot` and configuring the IO board to switch the ROM to usbboot mode are in the https://github.com/raspberrypi/usbboot[usbboot Github repository].
+You might need to use `rpiboot` to update the CM4 bootloader. Instructions for building `rpiboot` and configuring the IO board to switch the ROM to usbboot mode are in the https://github.com/raspberrypi/usbboot[usbboot Github repository].
 
 Remember to add the NVMe boot mode `6` to BOOT_ORDER in `recovery/boot.conf`.
 
 ==== Firmware and kernel
 
-You must load pre-release versions of the VideoCore firmware and Raspberry Pi OS Linux kernel to the NVMe disk. When this software is officially released you can simply write the software to the NVMe disk directly with the Raspberry Pi Imager app; until then the easiest way to perform the update is:
+You must have the latest versions of the VideoCore firmware and Raspberry Pi OS Linux kernel to boot directly from an NVMe SSD disk. The Raspberry Pi Bullseye and Buster Legacy releases have everything needed.
 
-. Boot the CM4 with a blank SSD connected to the PCIe slot
-. Use the `SD Card Copier` application on the desktop to copy the running OS image to the NVMe disk, making sure to enable the "new partition ids" option.
-. Update the firmware and kernel on the NVMe disk to the latest pre-release versions using xref:os.adoc#rpi-update[rpi-update]:
-+
-----
-mkdir mnt
-mkdir mnt/fat32
-mkdir mnt/ext4
-sudo mount /dev/nvme0n1p1 mnt/fat32
-sudo mount /dev/nvme0n1p2 mnt/ext4
-sudo ROOT_PATH=mnt/ext4 BOOT_PATH=mnt/fat32 rpi-update
-----
-
-Finally, if you are using CM4 lite, remove the SD card and the board will boot from the NVMe disk. For versions of CM4 with an eMMC, make sure you have set NVMe first in the boot order.
+If you are using CM4 lite, remove the SD card and the board will boot from the NVMe disk. For versions of CM4 with an eMMC, make sure you have set NVMe first in the boot order.
 
 ==== NVMe BOOT_ORDER
 
