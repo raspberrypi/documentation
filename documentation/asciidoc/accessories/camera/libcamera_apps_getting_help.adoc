@@ -1,6 +1,6 @@
 === Getting Help
 
-For further help with `libcamera` and the `libcamera-apps`, the first port of call will usually be the https://forums.raspberrypi.com/viewforum.php?f=43[Rasperry Pi Camera Forum]. Before posting, it's helpful to:
+For further help with `libcamera` and the `libcamera-apps`, the first port of call will usually be the https://forums.raspberrypi.com/viewforum.php?f=43[Raspberry Pi Camera Forum]. Before posting, it's helpful to:
 
 * Ensure your xref:../computers/os.adoc#using-apt[software is up to date].
 
