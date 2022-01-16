@@ -26,5 +26,5 @@ NOTE: The HAT works with all 40-pin GPIO Raspberry Pi boards, including Raspberr
 
 [NOTE]
 ====
-The Build HAT can not power the Rapsberry Pi 400 as it does not support being powered via the GPIO headers.
+The Build HAT can not power the Raspberry Pi 400 as it does not support being powered via the GPIO headers.
 ====

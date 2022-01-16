@@ -24,4 +24,4 @@ In "Get Started with MicroPython on Raspberry Pi Pico", you will learn how to us
 * Discover how to use Pico’s unique Programmable IO
 * Make a reaction game, burglar alarm, temperature gauge, and many more
 
-You can https://store.rpipress.cc/products/get-started-with-micropython-on-raspberry-pi-pico[buy the book] on the Rapsberry Pi Press site.
+You can https://store.rpipress.cc/products/get-started-with-micropython-on-raspberry-pi-pico[buy the book] on the Raspberry Pi Press site.
