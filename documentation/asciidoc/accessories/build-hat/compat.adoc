@@ -25,7 +25,7 @@ SPIKE Prime Expansion Set | 45678, 45680 | Motor | Active | 31
 
 | Force Sensor | White/Black | 6254354 | Yes | Yes | 45606 | https://www.bricklink.com/v2/catalog/catalogitem.page?P=37312c01&idColor=11#T=C&C=11[Link] | SPIKE Prime Set | 45678 | ForceSensor | Active | 3F
 
-| 3×3 LED | White/Cyan | 45608, 6297023 | Yes | Yes | | https://www.bricklink.com/v2/catalog/catalogitem.page?P=45608c01[Link] | SPIKE Essentials | | | Active | 40 
+| 3×3 LED | White/Cyan | 45608, 6297023 | Yes | Yes | | https://www.bricklink.com/v2/catalog/catalogitem.page?P=45608c01[Link] | SPIKE Essentials | | Matrix | Active | 40 
 
 | System train motor | Black | 88011 | Yes | Yes | 28740, 88011-1 | https://www.bricklink.com/v2/catalog/catalogitem.page?S=88011-1#T=S&O={%22iconly%22:0}[Link] | Cargo Train, Disney Train and Station, Passenger Train| | | Passive | 2
 
