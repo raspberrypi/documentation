@@ -1,0 +1,12 @@
+=== Multiple Cameras Usage
+
+Basic support for multiple cameras is available within `libcamera-apps`. Multiple cameras may be attached to a Raspberry Pi in the following ways:
+
+* Two cameras connected directly to a Raspberry Pi Compute Module board, see the xref:../computers/compute-module.adoc#attaching-a-raspberry-pi-camera-module[Compute Module documentation] for further details.
+* Two or more cameras attached to a non-compute Raspberry Pi board using a Video Mux board, like https://www.arducam.com/product/multi-camera-v2-1-adapter-raspberry-pi/[this 3rd party product].
+
+In the latter case, only one camera may be used at a time since both cameras are attached to a single Unicam port. For the former, both cameras can run simultaneously.
+
+To list all the cameras available on your platform, use the `--list-cameras` command line option. To choose which camera to use, use the `--camera <index>` option, and provide the index value of the requested camera.
+
+NOTE: `libcamera` does not yet provide stereoscopic camera support. When running two cameras simultaneously, they must be run in separate processes. This means there is no way to synchronise sensor framing or 3A operation between them.  As a workaround, you could synchronise the cameras through an external sync signal for the HQ (IMX477) camera, and switch the 3A to manual mode if necessary.
