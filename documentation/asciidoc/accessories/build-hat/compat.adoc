@@ -15,7 +15,7 @@ SPIKE Prime Expansion Set | 45678, 45680 | Motor | Active | 31
 
 | Medium Angular Motor | White/Grey | 6299646, 6359216 | Yes | Yes | 436655 | https://www.bricklink.com/v2/catalog/catalogitem.page?P=54696c01&idColor=86#T=C&C=86[Link] | Mindstorms Robot Inventor | 51515 | Motor | Active | 4B
 
-| Small Angular Motor | White/Cyan | | Yes| Yes| | | SPIKE Essentials Set| | Motor| Active| 41
+| Small Angular Motor | White/Cyan | 45607, 6296520 | Yes| Yes| | | SPIKE Essentials Set| | Motor| Active| 41
 
 | Light/Colour sensor |White/Black | 6217705 |Yes | Yes | | https://www.bricklink.com/v2/catalog/catalogitem.page?P=37308c01&idColor=11#T=C&C=11[Link] | SPIKE Prime Set, SPIKE Prime Expansion Set, Mindstorms Robot Inventor, SPIKE Essentials | 45678, 45680, 51515  | ColorSensor |Active | 3D
 
