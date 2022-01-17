@@ -167,9 +167,9 @@ In both cases, consider `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon` if you ar
 After executing the `cmake` command of your choice, the whole process concludes with the following:
 
 ----
-make -j4  # use -j2 on Pi 3 or earlier devices
+make -j4  # use -j1 on Pi 3 or earlier devices
 sudo make install
-sudo ldconfig /usr/local/lib # this is only necessary on the first build
+sudo ldconfig # this is only necessary on the first build
 ----
 
 NOTE: If you are using an image where `libcamera-apps` have been previously installed as an `apt` package, and you want to run the new `libcamera-apps` executables from the same terminal window where you have just built and installed them, you may need to run `hash -r` to be sure to pick up the new ones over the system supplied ones.
