@@ -1,4 +1,4 @@
-== Motors
+== Python - Motors
 
 There are xref:build-hat.adoc#device-compatibility[a number of motors] that work with the Build HAT.
 
