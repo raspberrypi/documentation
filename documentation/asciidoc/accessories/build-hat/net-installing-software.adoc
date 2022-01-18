@@ -1,0 +1,19 @@
+== .NET - Installing Software
+
+You can either install .NET on your Raspberry Pi and code from it, either you can install on an other device and copy your build code on it. 
+This installation give will guide you on how to install the needed toolchain on your Raspberry Pi. This one command line is coming from https://www.petecodes.co.uk/install-and-use-microsoft-dot-net-5-with-the-raspberry-pi/[Pete Codes].
+
+[.bash]
+----
+wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet5pi/master/install.sh | sudo bash
+----
+
+Then you need to add the nuget packages:
+
+[.bash]
+----
+dotnet add package System.Device.Gpio --source https://pkgs.dev.azure.com/dotnet/IoT/_packaging/nightly_iot_builds/nuget/v3/index.json
+dotnet add package Iot.Device.Bindings --source https://pkgs.dev.azure.com/dotnet/IoT/_packaging/nightly_iot_builds/nuget/v3/index.json
+----
+
+Once this is done, you can now create a project and edit it. The previous article will give you all the basics to work with it.

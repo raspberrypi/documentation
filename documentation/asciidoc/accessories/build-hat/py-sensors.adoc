@@ -1,4 +1,4 @@
-== Sensors
+== Python - Sensors
 
 There is a xref:build-hat.adoc#device-compatibility[large range of sensors] that work with the Build HAT.
 
