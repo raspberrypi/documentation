@@ -48,7 +48,7 @@ Example: `libcamera-still --datetime`
 	--timestamp			Use system timestamps for the output file names
 ----
 
-Uses the current system timestamp (the number of seconds since the start of 1970) as the the output file name. (`libcamera-still` only.)
+Uses the current system timestamp (the number of seconds since the start of 1970) as the output file name. (`libcamera-still` only.)
 
 Example: `libcamera-still --timestamp`
 
