@@ -215,7 +215,7 @@ This option is identical to the `--mode` option except that it applies only duri
 	--lores-height			Low resolution image height <height>
 ----
 
-`libcamera` allows the possibiliy of delivering a second lower resolution image stream from the the camera system to the application. This stream is available in both the preview and the video modes (i.e. `libcamera-hello` and the preview phase of `libcamera-still`, and `libcamera-vid`), and can be used, among other things, for image analysis. For stills captures, the low resolution image stream is not available.
+`libcamera` allows the possibility of delivering a second lower resolution image stream from the camera system to the application. This stream is available in both the preview and the video modes (i.e. `libcamera-hello` and the preview phase of `libcamera-still`, and `libcamera-vid`), and can be used, among other things, for image analysis. For stills captures, the low resolution image stream is not available.
 
 The low resolution stream has the same field of view as the other image streams. If a different aspect ratio is specified for the low resolution stream, then those images will be squashed so that the pixels are no longer square.
 
