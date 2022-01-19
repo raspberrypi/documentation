@@ -232,7 +232,7 @@ Default: ""
 [[GATEWAY]]
 ===== GATEWAY
 
-The gateway address to use if the TFTP server is on a differenet subnet e.g. `192.168.0.1`
+The gateway address to use if the TFTP server is on a different subnet e.g. `192.168.0.1`
 
 Default: ""
 
