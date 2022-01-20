@@ -211,6 +211,6 @@ Note that the field `difference_m` and `difference_c`, and the value of `region_
 
 If the amount of computation needs to be reduced (perhaps you have other stages that need a larger low resolution image), the amount of computation can be reduced using the `hskip` and `vskip` parameters.
 
-To use the `motion_detect` stage you might enter the following example commend:
+To use the `motion_detect` stage you might enter the following example command:
 
 `libcamera-hello --lores-width 128 --lores-height 96 --post-process-file motion_detect.json`
