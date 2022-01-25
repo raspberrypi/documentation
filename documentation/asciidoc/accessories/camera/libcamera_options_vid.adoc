@@ -105,10 +105,10 @@ One convenient little trick is to pass a very small duration parameter (namely, 
 Example: `libcamera-vid -t 100000 --segment 10000 -o test%04d.h264`
 
 ----
-	--circular			Write the video recording into a circular buffer.
+	--circular			Write the video recording into a circular buffer of the given <size>
 ----
 
-The video recording is written to a circular buffer which is written to disk when the application quits. The size of the circular buffer is 4MB.
+The video recording is written to a circular buffer which is written to disk when the application quits. The size of the circular buffer may be given in units of megabytes, defaulting to 4MB.
 
 Example: `libcamera-vid -t 0 --keypress --inline --circular -o test.h264`
 
@@ -127,3 +127,11 @@ Example: `libcamera-vid -t 0 --keypress --inline --split -o test%04d.h264`
 This option is provided for streaming over a network using TCP/IP. Using `--listen` will cause `libcamera-vid` to wait for an incoming client connection before starting the video encode process, which will then be forwarded to that client.
 
 Example: `libcamera-vid -t 0 --inline --listen -o tcp://0.0.0.0:8123`
+
+----
+	--frames			Record exactly this many frames <number>
+----
+
+Exactly `<number>` frames are recorded. Specifying a non-zero value will override any timeout.
+
+Example: `libcamera-vid -o test.h264 --frames 1000`

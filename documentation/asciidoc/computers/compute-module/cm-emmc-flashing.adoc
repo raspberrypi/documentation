@@ -152,7 +152,7 @@ To modify the CM4 bootloader configuration:-
  ** For USB boot failing over to EMMC `BOOT_ORDER=0xf15`
 * Run `./update-pieeprom.sh` to update the EEPROM image `pieeprom.bin` image file.
 * If EEPROM write protection is required then edit `config.txt` and add `eeprom_write_protect=1`. Hardware write-protection must be enabled via software and then locked by pulling the `EEPROM_nWP` pin low.
-* Run `../rpiboot -d` to update the bootloader using the updated EEPROM image `pieeprom.bin`
+* Run `../rpiboot -d .` to update the bootloader using the updated EEPROM image `pieeprom.bin`
 
 The pieeprom.bin file is now ready to be flashed to the Compute Module 4.
 

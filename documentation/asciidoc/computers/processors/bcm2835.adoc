@@ -1,6 +1,6 @@
 == BCM2835
 
-The BCM2835 is the Broadcom chip used in the Raspberry Pi Model A, B, B+, the Compute Module, and the Raspberry Pi Zero. Details of chip can be found in the https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf[Peripheral specification] document.
+The BCM2835 is the Broadcom chip used in the Raspberry Pi 1 Models A, A+, B, B+, the Raspberry Pi Zero, the Raspberry Pi Zero W, and the Raspberry Pi Compute Module 1. Some details of the chip can be found in the https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf[Peripheral specification] document.
 
 NOTE: This document contains a number of errors. However there is a list of currently known https://elinux.org/BCM2835_datasheet_errata[errata].
 

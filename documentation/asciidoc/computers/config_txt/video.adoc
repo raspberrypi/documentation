@@ -61,7 +61,7 @@ On older Pi models, the composite behaviour remains the same.
 
 NOTE: Because the Raspberry Pi 4B has two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found in the HDMI sub-section of the xref:config_txt.adoc#conditional-filters[conditionals section] of the documentation.
 
-In order to support dual 4k displays, the Raspberrry Pi 4 has xref:config_txt.adoc#raspberry-pi-4-hdmi-pipeline[updated video hardware], which imposes minor restrictions on the modes supported.
+In order to support dual 4k displays, the Raspberry Pi 4 has xref:config_txt.adoc#raspberry-pi-4-hdmi-pipeline[updated video hardware], which imposes minor restrictions on the modes supported.
 
 ==== `hdmi_safe`
 

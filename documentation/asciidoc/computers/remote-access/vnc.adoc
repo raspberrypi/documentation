@@ -38,7 +38,7 @@ You can do this graphically or at the command line.
 
 ==== Enabling VNC Server at the command line
 
-You can enable VNC Server at the command line using xref:configuration.adoc#the-raspi-config-tool[raspi-config]:
+You can enable VNC Server at the command line using xref:configuration.adoc#raspi-config[raspi-config]:
 
 [,bash]
 ----

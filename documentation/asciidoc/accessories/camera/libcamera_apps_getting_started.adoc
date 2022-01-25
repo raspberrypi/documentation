@@ -2,6 +2,8 @@
 
 ==== Using the camera for the first time
 
+NOTE: On Pi3 and earlier devices running _Bullseye_ you need to re-enable _Glamor_ in order to make the X-Windows hardware accelerated preview window work. To do this enter `sudo raspi-config` at a terminal window and then choose `Advanced Options`, `Glamor` and `Yes`. Finally quit `raspi-config` and let it reboot your Pi.
+
 When running a Raspberry Pi OS based on _Bullseye_, the 5 basic `libcamera-apps` are already installed. In this case, official Raspberry Pi cameras will also be detected and enabled automatically.
 
 You can check that everything is working by entering:

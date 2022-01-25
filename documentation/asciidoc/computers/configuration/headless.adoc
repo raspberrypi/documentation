@@ -53,4 +53,4 @@ network={
 
 NOTE: Some older Raspberry Pi boards and some USB wireless dongles do not support 5GHz networks.
 
-NOTE: With no keyboard or monitor, you will need some way of xref:remote-access.adoc#remote-access[remotely accessing] your headless Raspberry Pi. For headless setup, SSH can be enabled by placing a file named `ssh`, without any extension, onto the boot folder of the SD Card. For more information see the section on xref:remote-access.adoc#ssh[setting up an SSH server].
+NOTE: With no keyboard or monitor, you will need some way of xref:remote-access.adoc[remotely accessing] your headless Raspberry Pi. For headless setup, SSH can be enabled by placing a file named `ssh`, without any extension, onto the boot folder of the SD Card. For more information see the section on xref:remote-access.adoc#ssh[setting up an SSH server].

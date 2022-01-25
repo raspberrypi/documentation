@@ -20,6 +20,52 @@ libcamera build: v0.0.0+3058-c29143f7
 ----
 
 ----
+	--list-cameras			List the cameras available for use
+----
+
+The `--list-cameras` will display the available cameras attached to the board that can be used by the application. This option also lists the sensor modes supported by each camera. For example:
+
+----
+Available cameras
+-----------------
+0 : imx219 [3280x2464] (/base/soc/i2c0mux/i2c@1/pca@70/i2c@0/imx219@10)
+    Modes: 'SRGGB10_CSI2P' : 640x480 1640x1232 1920x1080 3280x2464 
+           'SRGGB8' : 640x480 1640x1232 1920x1080 3280x2464 
+1 : imx477 [4056x3040] (/base/soc/i2c0mux/i2c@1/pca@70/i2c@1/imx477@1a)
+    Modes: 'SRGGB10_CSI2P' : 1332x990 
+           'SRGGB12_CSI2P' : 2028x1080 2028x1520 4056x3040 
+----
+
+In the above example, the IMX219 sensor is available at index 0 and IMX477 at index 1. The sensor mode identifier takes the following form:
+----
+S<Bayer order><Bit-depth>_<Optional packing> : <Resolution list>
+----
+For the IMX219 in the above example, all modes have a `RGGB` Bayer ordering and provide either 8-bit or 10-bit CSI2 packed readout at the listed resolutions.
+
+----
+	--camera			Selects which camera to use <index>
+----
+
+The `--camera` option will select which camera to use from the supplied <index> value. The <index> value can be obtained from the `--list-cameras` option.
+
+----
+	--config,	-c		Read options from the given file <filename>
+----
+
+Normally options are read from the command line, but in case multiple options are required it may be more convenient to keep them in a file.
+
+Example: `libcamera-hello -c config.txt`
+
+This is a text file containing individual lines of `key=value` pairs, for example:
+
+----
+timeout=99000
+verbose=
+----
+
+Note how the `=` is required even for implicit options, and that the `--` used on the command line are omitted. Only long form options are permitted (`t=99000` would not be accepted).
+
+----
 	--timeout,	-t		Delay before application stops automatically <milliseconds>
 ----
 
@@ -146,11 +192,30 @@ Using this option often incurs a frame rate penalty, as larger resolution frames
 Example: `libcamera-raw -t 2000 --segment 1 --rawfull -o test%03d.raw` will cause multiple full resolution raw frames to be captured. On the HQ camera each frame will be about 18MB in size. Without the `--rawfull` option the default video output resolution would have caused the 2x2 binned mode to be selected, resulting in 4.5MB raw frames.
 
 ----
+	--mode				Specify sensor mode, given as <width>:<height>:<bit-depth>:<packing>
+----
+
+This option is more general than `--rawfull` and allows the precise selection of one of the camera modes. The mode should be specified by giving its width, height, bit-depth and packing, separated by colons. These numbers do not have to be exact as the system will select the closest it can find. Moreover, the bit-depth and packing are optional (defaulting to 12 and `P` for "packed" respectively). For example:
+
+* `4056:3040:12:P` - 4056x3040 resolution, 12 bits per pixel, packed. This means that raw image buffers will be packed so that 2 pixel values occupy only 3 bytes.
+* `1632:1224:10` - 1632x1224 resolution, 10 bits per pixel. It will default to "packed". A 10-bit packed mode would store 4 pixels in every 5 bytes.
+* `2592:1944:10:U` - 2592x1944 resolution, 10 bits per pixel, unpacked. An unpacked format will store every pixel in 2 bytes, in this case with the top 6 bits of each value being zero.
+* `3264:2448` - 3264x2448 resolution. It will try to select the default 12-bit mode but in the case of the v2 camera there isn't one, so a 10-bit mode would be chosen instead.
+
+The `--mode` option affects the mode choice for video recording and stills capture. To control the mode choice during the preview phase prior to stills capture, please use the `--viewfinder-mode` option.
+
+----
+	--viewfinder-mode		Specify sensor mode, given as <width>:<height>:<bit-depth>:<packing>
+----
+
+This option is identical to the `--mode` option except that it applies only during the preview phase of stills capture (also used by the `libcamera-hello` application).
+
+----
 	--lores-width			Low resolution image width <width>
 	--lores-height			Low resolution image height <height>
 ----
 
-`libcamera` allows the possibiliy of delivering a second lower resolution image stream from the the camera system to the application. This stream is available in both the preview and the video modes (i.e. `libcamera-hello` and the preview phase of `libcamera-still`, and `libcamera-vid`), and can be used, among other things, for image analysis. For still captures, the low resolution image stream is not available.
+`libcamera` allows the possibility of delivering a second lower resolution image stream from the camera system to the application. This stream is available in both the preview and the video modes (i.e. `libcamera-hello` and the preview phase of `libcamera-still`, and `libcamera-vid`), and can be used, among other things, for image analysis. For stills captures, the low resolution image stream is not available.
 
 The low resolution stream has the same field of view as the other image streams. If a different aspect ratio is specified for the low resolution stream, then those images will be squashed so that the pixels are no longer square.
 
@@ -269,7 +334,7 @@ Example: `libcamera-still -o test.jpg --metering spot`
 	--exposure			Set the exposure profile <string>
 ----
 
-The exposure profile may be either `normal` or `sport`. Changing the exposure profile should not affect the overall exposure of an image, but the `sport` mode will tend to prefer shorter exposure times and larger gains to achieve the same net result.
+The exposure profile may be either `normal`, `sport` or `long`. Changing the exposure profile should not affect the overall exposure of an image, but the `sport` mode will tend to prefer shorter exposure times and larger gains to achieve the same net result.
 
 Exposure profiles can be edited in the camera tuning file. Please refer to the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera] for more information.
 

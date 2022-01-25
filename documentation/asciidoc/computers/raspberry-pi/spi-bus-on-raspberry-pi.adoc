@@ -6,7 +6,7 @@ Raspberry Pi computers are equipped with a number of https://en.wikipedia.org/wi
 [[spi-hardware]]
 === SPI Hardware
 
-Rapsberry Pi Zero, 1, 2 and 3 have three SPI controllers:
+Raspberry Pi Zero, 1, 2 and 3 have three SPI controllers:
 
 * SPI0, with two hardware chip selects, is available on the header of all Pis; there is also an alternate mapping that is only available on compute modules.
 * SPI1, with three hardware chip selects, is available on all Raspberry Pi models except the original Pi 1 models A and B.

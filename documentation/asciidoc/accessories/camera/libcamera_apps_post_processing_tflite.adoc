@@ -79,7 +79,7 @@ Example `pose_estimation_tf.json` file:
     "pose_estimation_tf":
     {
         "refresh_rate" : 5,
-        "model_file" : ""posenet_mobilenet_v1_100_257x257_multi_kpt_stripped.tflite",
+        "model_file" : "posenet_mobilenet_v1_100_257x257_multi_kpt_stripped.tflite"
     },
     "plot_pose_cv" :
     {

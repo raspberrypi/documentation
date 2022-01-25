@@ -48,7 +48,7 @@ Example: `libcamera-still --datetime`
 	--timestamp			Use system timestamps for the output file names
 ----
 
-Uses the current system timestamp (the number of seconds since the start of 1970) as the the output file name. (`libcamera-still` only.)
+Uses the current system timestamp (the number of seconds since the start of 1970) as the output file name. (`libcamera-still` only.)
 
 Example: `libcamera-still --timestamp`
 
@@ -83,12 +83,14 @@ then
 `kill -SIGUSR1 $!`
 
 ----
-	--thumb				Set thumbnail parameters <w:h:q>
+	--thumb				Set thumbnail parameters <w:h:q> or none
 ----
 
 Sets the dimensions and quality parameter of the associated thumbnail image. The defaults are size 320x240 and quality 70.
 
 Example: `libcamera-still -o test.jpg --thumb 640:480:80`
+
+The value `none` may be given, in which case no thumbnail is saved in the image at all.
 
 ----
 	--encoding,	-e		Set the still image codec <string>

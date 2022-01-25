@@ -32,7 +32,18 @@ Reasons to consider staying with an older OS and using the legacy _Raspicam_ sta
 * It may perform better on Raspberry Pi 2 and Raspberry Pi Zero devices, as it offloads more to the GPU and is less dependent on the ARM cores.
 * `libcamera` is still missing certain features, most notably Python bindings. Whilst this work is in progress, users who need a Python interface (such as _Picamera_) will have to stay with the legacy stack for the time being.
 
-Apart from some general information on setting up the camera, most of this documentation is divided into sections on xref:camera.adoc#libcamera-and-libcamera-apps[libcamera and the libcamera-apps], and the xref:camera.adoc#raspicam-commands[legacy _Raspicam_ apps]. Once you've xref:camera.adoc#installing-a-raspberrypi-pi-camera[installed your camera module], please click on one of these two links.
+Apart from some general information on setting up the camera, most of this documentation is divided into sections on xref:camera.adoc#libcamera-and-libcamera-apps[libcamera and the libcamera-apps], and the xref:camera.adoc#raspicam-commands[legacy _Raspicam_ apps]. Once you've xref:camera.adoc#installing-a-raspberry-pi-camera[installed your camera module], please click on one of these two links.
+
+==== Re-enabling the legacy stack
+
+The legacy camera stack can be re-enabled in Bullseye using the following steps.
+
+1. Ensure your system is up-to-date and reboot it.
+2. Run `sudo raspi-config`.
+3. Navigate to `Interface Options` and select `Legacy camera` to enable it.
+4. Reboot your Pi again.
+
+These steps are shown in the following video.
 
 video::E7KPSc_Xr24[youtube]
 

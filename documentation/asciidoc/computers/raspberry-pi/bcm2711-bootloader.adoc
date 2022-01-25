@@ -207,7 +207,7 @@ In earlier releases the client GUID (Option97) was just the serial number repeat
 the concatenation of the fourcc for RPi4 (0x34695052 - little endian), the board revision (e.g. 0x00c03111) (4-bytes), the least significant 4 bytes of the mac address and the 4-byte serial number.
 This is intended to be unique but also provide structured information to the DHCP server, allowing Raspberry Pi4 computers to be identified without relying upon the Ethernet MAC OUID.
 
-Specify DHCP_OPTION97=0 to revert the the old behaviour or a non-zero hex-value to specify a custom 4-byte prefix.
+Specify DHCP_OPTION97=0 to revert the old behaviour or a non-zero hex-value to specify a custom 4-byte prefix.
 
 Default: `0x34695052`
 
@@ -232,7 +232,7 @@ Default: ""
 [[GATEWAY]]
 ===== GATEWAY
 
-The gateway address to use if the TFTP server is on a differenet subnet e.g. `192.168.0.1`
+The gateway address to use if the TFTP server is on a different subnet e.g. `192.168.0.1`
 
 Default: ""
 
@@ -414,7 +414,7 @@ The primary purpose of `boot_ramdisk` is to support `secure-boot`, however, unsi
 * The maximum size for a ramdisk file is 96MB.
 * `boot.img` files are raw disk `.img` files. The recommended format is a plain FAT32 partition with no MBR.
 * The memory for the ramdisk filesystem is released before the operating system is started.
-* If xref:raspberrypi.adoc#fail-safe-os-updates-tryboot[TRYBOOT] is selected then the bootloader will search for `tryboot.img` instead of `boot.img`.
+* If xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT] is selected then the bootloader will search for `tryboot.img` instead of `boot.img`.
 
 For more information about `secure-boot` and creating `boot.img` files please see the https://github.com/raspberrypi/usbboot/blob/master/Readme.md[USBBOOT Readme]
 

@@ -27,14 +27,30 @@ def heading_to_anchor(filepath, heading, anchor):
     file_headings[filepath].add(proposed_anchor)
     return proposed_anchor
 
-def read_file_with_includes(filepath):
+needed_internal_links = dict()
+def read_file_with_includes(filepath, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.dirname(filepath)
     content = ''
     with open(filepath) as adoc_fh:
+        if filepath not in needed_internal_links:
+            needed_internal_links[filepath] = []
         parent_dir = os.path.dirname(filepath)
         for line in adoc_fh.readlines():
+            for m in re.finditer(r'xref:(.+?)(?:#(.+?))?\[.*?\]', line):
+                link = m.group(1)
+                anchor = m.group(2)
+                if not link.endswith('.adoc'):
+                    raise Exception("{} links to non-adoc file {}".format(filepath, link))
+                link_path = os.path.normpath(os.path.join(output_dir, link))
+                link_relpath = os.path.relpath(link_path, adoc_dir)
+                linkinfo = {'url': link_relpath}
+                if anchor:
+                    linkinfo['anchor'] = anchor
+                needed_internal_links[filepath].append(linkinfo)
             m = re.match(r'^include::(.*)\[\]\s*$', line)
             if m:
-                content += read_file_with_includes(os.path.join(parent_dir, m.group(1)))
+                content += read_file_with_includes(os.path.join(parent_dir, m.group(1)), output_dir)
             else:
                 content += line
     return content
@@ -50,17 +66,22 @@ if __name__ == "__main__":
     with open(index_json) as json_fh:
         data = json.load(json_fh)
         output_data = []
+        available_anchors = dict()
         for tab in data['tabs']:
             nav = []
             for subitem in tab['subitems']:
                 if 'subpath' in subitem:
+                    fullpath = os.path.join(tab['path'], subitem['subpath'])
+                    if fullpath in available_anchors:
+                        raise Exception("{} occurs twice in {}".format(fullpath, index_json))
+                    available_anchors[fullpath] = set()
                     nav.append({
-                        'path': os.path.join('/', tab['path'], change_file_ext(subitem['subpath'], 'html')),
+                        'path': os.path.join('/', change_file_ext(fullpath, 'html')),
                         'title': subitem['title'],
                         'sections': [],
                     })
                     level = min_level
-                    top_level_file = os.path.join(adoc_dir, tab['path'], subitem['subpath'])
+                    top_level_file = os.path.join(adoc_dir, fullpath)
                     adoc_content = read_file_with_includes(top_level_file)
                     last_line_was_discrete = False
                     header_id = None
@@ -81,6 +102,9 @@ if __name__ == "__main__":
                                     # Need to compute anchors for *every* header (updates file_headings)
                                     heading = strip_adoc(m.group(2))
                                     anchor = heading_to_anchor(top_level_file, heading, header_id)
+                                    if anchor in available_anchors[fullpath]:
+                                        raise Exception("Anchor {} appears twice in {}".format(anchor, fullpath))
+                                    available_anchors[fullpath].add(anchor)
                                     if min_level <= newlevel <= max_level and not last_line_was_discrete:
                                         entry = {'heading': heading, 'anchor': anchor}
                                         if newlevel > level:
@@ -93,5 +117,13 @@ if __name__ == "__main__":
                                 last_line_was_discrete = False
                                 header_id = None
             output_data.append({'title': tab['title'], 'path': '/{}/'.format(tab['path']), 'toc': nav})
+        for filepath in sorted(needed_internal_links):
+            for linkinfo in needed_internal_links[filepath]:
+                if linkinfo['url'] not in available_anchors:
+                    raise Exception("{} has an internal-link to {} but that destination doesn't exist".format(filepath, linkinfo['url']))
+                if 'anchor' in linkinfo:
+                    if linkinfo['anchor'] not in available_anchors[linkinfo['url']]:
+                        raise Exception("{} has an internal-link to {}#{} but that anchor doesn't exist. Available anchors: {}".format(filepath, linkinfo['url'], linkinfo['anchor'], ', '.join(sorted(available_anchors[linkinfo['url']]))))
+
         with open(output_json, 'w') as out_fh:
             json.dump(output_data, out_fh, indent=4)
