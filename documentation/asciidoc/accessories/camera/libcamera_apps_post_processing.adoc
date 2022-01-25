@@ -91,7 +91,7 @@ In summary, the user-configurable parameters fall broadly into three groups: tho
 | local_colour_scale | A factor that allows the output colours to be affected more or less strongly.
 |===
 
-We note that the overall strength of the processing is best controlled by changing the `global_tonemap_strength` and `local_tonemap_strength` paramters.
+We note that the overall strength of the processing is best controlled by changing the `global_tonemap_strength` and `local_tonemap_strength` parameters.
 
 The full processing takes between 2 and 3 seconds for a 12MP image on a Pi 4. The stage runs only on the still image capture, it ignores preview and video images. In particular, when accumulating multiple frames, the stage "swallows" the output images so that the application does not receive them, and finally sends through only the combined and processed image.
 
