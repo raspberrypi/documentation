@@ -1,0 +1,64 @@
+== Installing over the Network (BETA)
+
+WARNING: Network installation is in currently in PUBLIC BETA. Please do not rely on it in production.
+
+When you get a new Raspberry Pi device you need an SD Card with an operating system installed on it. You need to use the https://www.raspberrypi.com/software/[Raspberry Pi Imager] application running on another computer xref:getting-started.adoc#installing-the-operating-system[to copy software to your SD Card].
+
+However, if you do not have another computer to run Raspberry Pi Image you can start the Raspberry Pi Imager application directly on a Raspberry Pi 4 or raspberry Pi 400 by connecting it to the Internet with an Ethernet cable. This will allow you to install the operating system onto a **blank** SD Card directly from the network without using another computer.
+
+IMPORTANT: Network installation is only supported on Raspberry Pi 4 and Raspberry Pi 400. Additionally, to avoid slowing down “normal boot,” the network instllation feature is only enabled if there’s no bootable media present, and you have xref:raspberry-pi.adoc#usb-mass-storage-boot[USB mass storage boot] in your xref:raspberry-pi.adoc#BOOT_ORDER[boot order].
+
+=== Updating to the BETA bootloader
+
+NOTE: After the BETA period new Raspberry Pi boards will ship from the factory with the new bootloader, and this step will not be necessary. However it will continue to be necessary on older boards.
+
+If you want to try out the network installer during the beta period you will have to install a beta version of the bootloader.
+
+WARNING: Installation of the beta bootloader should be fairly safe, but you should keep a spare SD Card to restore the default bootloader in case you run into an issue. See the section on xref:raspberry-pi.adoc#imager[updating the bootloader] for more details.
+
+From a working Raspberry Pi you can update the bootloader on the board by running the following commands,
+
+----
+$ sudo rpi-eeprom-update -f /lib/firmware/raspberrypi/bootloader/beta/pieeprom-2022-01-12.bin
+$ sudo reboot
+----
+
+The after rebooting, run `rpi-eeprom-update` again. It should show the “CURRENT” date as 12 Jan 2022. You can now shutdown, remove any bootable disks and the network install screen should appear when you power up.
+
+[NOTE]
+====
+You can reset your device to the default bootloader by running the following command and rebooting.
+
+----
+$ sudo rpi-eeprom-update -f $(rpi-eeprom-update -l)
+----
+====
+
+=== Using Network Installation
+
+You will need a keyboard to make use of the network installation feature. While a Raspberry Pi 400 always has a keyboard "attached" if you're using a Raspberry Pi 4 you will need to plug in a USB keyboard.
+
+You should also insert a **blank** SD Card into the Raspberry Pi's SD Card slot.
+
+NOTE: You should make sure there isn't a bootable SD Card, or USB drive, attached to your Raspberry Pi.
+
+Power on your Raspberry Pi. As always it will first look for an SD Card, and then a USB drive, to find bootable media. However if you have a keyboard attached the Raspberry Pi will now show the network installation screen.
+
+image::images/rpi_imager.png[width="80%"]
+image::images/network-install-1.png[width="80%"]
+
+In the background the Raspberry Pi is still looking for a bootable imagem, but you can now start a network installation by holding down the `SHIFT` key for 3 seconds. Confirm that you want to go ahead by pressing `SPACE`, and you will be prompted to connect your Raspberry Pi to the network with an Ethernet Cable. 
+
+image::images/network-install-2.png[width="80%"]
+
+Plug your Raspberry Pi into the network using an Ethernet cable. When it detects a cable has been inserted it should start downloading the Raspberry Pi installer. If the download fails, you can repeat the process to try again.
+
+image::images/network-install-3.png[width="80%"]
+
+Eventually it should start the https://www.raspberrypi.com/software/[Raspberry Pi Imager] application allowing you to install a full operating system to a blank SD Card or a USB Drive.
+
+image::images/network-install-4.png[width="80%"]
+
+NOTE: More information can about using the Raspberry Pi Imager can be found in the section on xref:getting-started.adoc#installing-the-operating-system[installing your operating system].
+
+After installing the operating system onto your blank SD Card you will not longer see the network installation screen on boot. If you do want to run it, you just need to remove any bootable disks. You can re-insert them later when the Raspberry PI Imager is running. But take care not to overwrite any working disks that you want to keep!
