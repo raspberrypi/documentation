@@ -10,7 +10,7 @@ The Raspberry Pi 4 Model B, continues with the same PCB technology as the Raspbe
 
 === Using DVFS
 
-NOTE: Discussion of DVFS applies to Raspberry Pi 4 Model B, Raspbery Pi 400, and Compute Module 4 *only*.
+NOTE: Discussion of DVFS applies to Raspberry Pi 4 Model B, Raspberry Pi 400, and Compute Module 4 *only*.
 
 Raspberry Pi 4 devices implement Dynamic Voltage and Frequency Scaling (DVFS). This technique allows Raspberry Pi 4 devices to run at lower temperatures whilst still providing the same performance.
 
