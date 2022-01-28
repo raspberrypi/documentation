@@ -44,7 +44,7 @@ The encoder also takes a new reference to the `CompletedRequest`, so once the ev
 
 This time, however, we do not forward anything to the preview window, though we could have displayed the (processed) video stream if we had wanted.
 
-The use of the `NullEncoder` is possibly overkill in this application as we could probably just send the image straight to the `Output` object. However, it serves to underline the general principle that it is normally a bad idea to do too much work directly in the event loop, and time-consuming processes are often better left to other threads.
+The use of the `NullEncoder` is possibly overkill in this application, as we could probably just send the image straight to the `Output` object. However, it serves to underline the general principle that it is normally a bad idea to do too much work directly in the event loop, and time-consuming processes are often better left to other threads.
 
 ==== `libcamera-jpeg`
 
