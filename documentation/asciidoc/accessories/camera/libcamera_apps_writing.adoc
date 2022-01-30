@@ -1,6 +1,6 @@
 === Understanding and Writing your own Apps
 
-`libcamera-apps` are not supposed to be a full set of all the applications with all the features that anyone could ever need. Instead, they are supposed to be easy to understand such that users who require specific, but slightly different behaviour can implement it for themselves.
+`libcamera-apps` are not supposed to be a full set of all the applications with all the features that anyone could ever need. Instead, they are supposed to be easy to understand, such that users who require slightly different behaviour can implement it for themselves.
 
 All the applications work by having a simple event loop which receives a message with a new set of frames from the camera system. This set of frames is called a `CompletedRequest`. It contains all the images that have been derived from that single camera frame (so perhaps a low resolution image in addition to the full size output), as well as metadata from the camera system and further metadata from the post-processing system.
 
