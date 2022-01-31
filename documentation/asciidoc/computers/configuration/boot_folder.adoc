@@ -66,7 +66,7 @@ The boot folder will contain various xref:linux_kernel.adoc#kernel[kernel] image
 
 | kernel7l.img
 | BCM2711
-| Pi 4
+| Pi 4, Pi 400
 | Large Physical Address Extension (LPAE)
 
 | kernel8.img
