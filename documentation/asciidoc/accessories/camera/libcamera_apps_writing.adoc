@@ -1,6 +1,6 @@
 === Understanding and Writing your own Apps
 
-`libcamera-apps` are not supposed to be a full set of all the applications with all the features that anyone could ever need. Instead, they are supposed to be easy to understand such that users who require specific but slightly different behaviour can implement it for themselves.
+`libcamera-apps` are not supposed to be a full set of all the applications with all the features that anyone could ever need. Instead, they are supposed to be easy to understand, such that users who require slightly different behaviour can implement it for themselves.
 
 All the applications work by having a simple event loop which receives a message with a new set of frames from the camera system. This set of frames is called a `CompletedRequest`. It contains all the images that have been derived from that single camera frame (so perhaps a low resolution image in addition to the full size output), as well as metadata from the camera system and further metadata from the post-processing system.
 
@@ -40,11 +40,11 @@ The encoder also takes a new reference to the `CompletedRequest`, so once the ev
 
 ==== `libcamera-raw`
 
-`libcamera-raw` is not so very different from `libcamera-vid`. It too uses a encoder, though this time it is a "dummy" encoder called the `NullEncoder`. This just treats the input image directly as the output buffer and is careful not to drop its reference to the input until the output callback has dealt with it first.
+`libcamera-raw` is not so very different from `libcamera-vid`. It too uses an encoder, although this time it is a "dummy" encoder called the `NullEncoder`. This just treats the input image directly as the output buffer and is careful not to drop its reference to the input until the output callback has dealt with it first.
 
 This time, however, we do not forward anything to the preview window, though we could have displayed the (processed) video stream if we had wanted.
 
-The use of the `NullEncoder` is possibly overkill in this application as we could probably just send the image straight to the `Output` object. However, it serves to underline the general principle that it is normally a bad idea to do too much work directly in the event loop, and time-consuming processes are often better left to other threads.
+The use of the `NullEncoder` is possibly overkill in this application, as we could probably just send the image straight to the `Output` object. However, it serves to underline the general principle that it is normally a bad idea to do too much work directly in the event loop, and time-consuming processes are often better left to other threads.
 
 ==== `libcamera-jpeg`
 

@@ -62,7 +62,7 @@ KERNEL=kernel
 make bcmrpi_defconfig
 ----
 
-For Raspberry Pi 2, Pi 3, Pi 3+, and Compute Module 3 default build configuration
+For Raspberry PI Zero 2 W, Pi 2, Pi 3, Pi 3+, and Compute Module 3 default build configuration
 
 [,bash]
 ----
@@ -80,7 +80,7 @@ KERNEL=kernel7l
 make bcm2711_defconfig
 ----
 
-For Raspberry Pi 4 default build configuration (64 bit)
+For Pi Zero 2 W, Pi 3, Pi 3+, Pi 4, Pi 400, and Compute Modules 3, 3+ and 4 default build configuration (64 bit)
 [,bash]
 ----
 cd linux
@@ -186,7 +186,7 @@ KERNEL=kernel
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
 ----
 
-For Pi 2, Pi 3, Pi 3+, or Compute Module 3:
+For Pi Zero 2 W, Pi 2, Pi 3, Pi 3+, or Compute Module 3:
 
 [,bash]
 ----
@@ -206,16 +206,7 @@ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
 
 ===== 64-bit Configs
 
-For Pi 3, Pi 3+ or Compute Module 3:
-
-[,bash]
-----
-cd linux
-KERNEL=kernel8
-make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcmrpi3_defconfig
-----
-
-For Raspberry Pi 4:
+For Pi Zero 2 W, Pi 3, Pi 3+, Pi 4, Pi 400, and Compute Modules 3, 3+ and 4:
 
 [,bash]
 ----
