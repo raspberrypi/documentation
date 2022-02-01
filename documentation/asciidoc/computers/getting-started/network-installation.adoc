@@ -44,7 +44,6 @@ NOTE: You should make sure there isn't a bootable SD Card, or USB drive, attache
 
 Power on your Raspberry Pi. As always it will first look for an SD Card, and then a USB drive, to find bootable media. However if you have a keyboard attached the Raspberry Pi will now show the network installation screen.
 
-image::images/rpi_imager.png[width="80%"]
 image::images/network-install-1.png[width="80%"]
 
 In the background the Raspberry Pi is still looking for a bootable imagem, but you can now start a network installation by holding down the `SHIFT` key for 3 seconds. Confirm that you want to go ahead by pressing `SPACE`, and you will be prompted to connect your Raspberry Pi to the network with an Ethernet Cable. 
