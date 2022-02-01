@@ -1,5 +1,8 @@
 :root {
   --red: #cd2355;
+  --red-tint: #d75a64;
+  --docsearch-primary-color: var(--red);
+  --docsearch-logo-color: var(--red-tint);
 }
 
 /* overrides for the old theme */
