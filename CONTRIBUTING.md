@@ -12,22 +12,24 @@ Unless you are opening a pull request which will only make small corrections, fo
 
 **NOTE:** The default [branch](https://github.com/raspberrypi/documentation/branches) of the repository is the `develop` branch, and this should be the branch you get by default when you initially checkout the repository. You should target any pull requests against the `develop` branch, pull requests against the `master` branch will automatically fail checks and not be accepted.
 
-Before starting writing your contribution to the documentation you should take a look at the [style guide](https://github.com/raspberrypi/style-guide/blob/master/style-guide.md).
+**NOTE:** Issues and Pull Requests older than 60 days will [automatically be marked as stale](https://github.com/actions/stale) and then closed 7 days later if there still hasn't been any further activity.
+
+Before starting writing your contribution to the documentation, you should take a look at the [style guide](https://github.com/raspberrypi/style-guide/blob/master/style-guide.md).
 
 ## Type of Content
 
-We welcome contributions from the community, ranging from correcting small typos all the way through to adding entire new sections to the documentation. However going forward we're going to be fairly targetted about what sort of content we add to the documentation. We are looking to keep the repository, and the documentation, focussed on Raspberry Pi-specific things, rather than having generic Linux or computing content.
+We welcome contributions from the community, ranging from correcting small typos all the way through to adding entire new sections to the documentation. However, going forward we're going to be fairly targetted about what sort of content we add to the documentation. We are looking to keep the repository, and the documentation, focussed on Raspberry Pi-specific things, rather than having generic Linux or computing content.
 
 We are therefore deprecating the more generic documentation around using the Linux operating system, ahead of removing these sections entirely at some point in the future as part of a larger update to the documentation site. This move is happening as we feel these sort of more general topics are, ten years on from when the documentation was initially written, now much better covered elsewhere on the web.
 
 As such, we're not accepting PRs against these sections unless they're correcting errors.
 
-**NOTE:** We are willing to consider toolchain-related contributions, but changes to the toolchain may have knock-on effects in other places so it is possible that apparently benign pull requests that make toolchain changes could be refused for fairly opaque reasons. 
+**NOTE:** We are willing to consider toolchain-related contributions, but changes to the toolchain may have knock-on effects in other places, so it is possible that apparently benign pull requests that make toolchain changes could be refused for fairly opaque reasons. 
 
 ## Third-Party Services
 
-In general we will not accept content that is specific to an individual third-party service or product. We will also not embed, or add links, to YouTube videos showing tutorials on how to configure your Raspberry Pi.
+In general, we will not accept content that is specific to an individual third-party service or product. We will also not embed, or add links, to YouTube videos showing tutorials on how to configure your Raspberry Pi.
 
 ## Licensing 
 
-The documentation is under a [Creative Commons Attribution-Sharealike](https://creativecommons.org/licenses/by-sa/4.0/) (CC BY-SA 4.0) licence. By contributing content to this repository you are agreeing to place your contributions under this licence.
+The documentation is under a [Creative Commons Attribution-Sharealike](https://creativecommons.org/licenses/by-sa/4.0/) (CC BY-SA 4.0) licence. By contributing content to this repository, you are agreeing to place your contributions under this licence.
