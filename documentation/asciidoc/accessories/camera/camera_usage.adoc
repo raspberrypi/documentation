@@ -49,4 +49,4 @@ video::E7KPSc_Xr24[youtube]
 
 NOTE: More information can be found in the https://www.raspberrypi.com/news/bullseye-camera-system/[blog post] discussing the transition.
 
-NOTE: The legacy camera stack cannot be re-enabled on a 64-bit Raspberry Pi OS release.
+WARNING: The legacy camera stack cannot be re-enabled on a 64-bit Raspberry Pi OS release.
