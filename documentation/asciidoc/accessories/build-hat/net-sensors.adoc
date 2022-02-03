@@ -191,7 +191,7 @@ while (!Console.KeyAvailable)
 }
 ----
 
-Note: for better measurement, it is not recommended to change the measurement mode in a very fast way, the color integration may not be done in a proper way. This example gives you the full spectrum of what you can do with the sensor. Also, this class do not implement a continuous measurement mode. You can setup one through the advance mode using the `SelectModeAndRead` function with the specific mode you'd like to continuously have. It is important to understand that changing the mode or setting up a new mode will stop the previous mode.
+NOTE: For better measurement, it is not recommended to change the measurement mode in a very fast way, the color integration may not be done in a proper way. This example gives you the full spectrum of what you can do with the sensor. Also, this class do not implement a continuous measurement mode. You can setup one through the advance mode using the `SelectModeAndRead` function with the specific mode you'd like to continuously have. It is important to understand that changing the mode or setting up a new mode will stop the previous mode.
 
 ==== SPIKE Prime Ultrasonic Distance Sensor
 
