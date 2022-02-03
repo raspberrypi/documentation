@@ -29,7 +29,7 @@ In this case, when reaching the end of the program, your brick will be automatic
 
 ==== Displaying the information
 
-You can gather the various versions, the signature and the input voltage:
+You can gather the various software versions, the signature, and the input voltage:
 
 [csharp]
 ----
@@ -39,7 +39,7 @@ Console.WriteLine($"{BitConverter.ToString(info.Signature)}");
 Console.WriteLine($"Vin = {brick.InputVoltage.Volts} V");
 ----
 
-Note: the input voltage is read only once at boot time and is not read after.
+NOTE: the input voltage is read only once at boot time and is not read again afterwards.
 
 ==== Getting sensors and motors details
 
@@ -104,7 +104,7 @@ void MotorPropertyEvent(object? sender, PropertyChangedEventArgs e)
 
 ==== Waiting for initialization
 
-The brick can take long before it does initialize. A wait for sensor to be connected has been implemented. You can use it like this:
+The brick can take long before it initializes. A wait for sensor to be connected has been implemented,
 
 [csharp]
 ----
