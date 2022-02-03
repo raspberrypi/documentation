@@ -11,8 +11,6 @@ WARNING: The installation script is run as `root`. You should read it first and 
 $ wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet5pi/master/install.sh | sudo bash
 ----
 
-=== Installing .NET Packages
-
 After installing the .NET framework you also need to install the nuget packages:
 
 [.bash]
