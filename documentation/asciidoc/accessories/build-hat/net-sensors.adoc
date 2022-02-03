@@ -86,8 +86,7 @@ while(!console.KeyAvailable)
 
 ==== WeDoDistance Sensor
 
-.Image from Bricklink
-[link=https://www.bricklink.com/v2/catalog/catalogitem.page?S=45304-1&name=WeDo%202.0%20Motion%20Sensor&category=%5BEducational%20&%20Dacta%5D%5BWeDo%5D#T=S&O={%22iconly%22:0}]
+.WeDo Distance sensor, https://www.bricklink.com/v2/catalog/catalogitem.page?S=45304-1&name=WeDo%202.0%20Motion%20Sensor&category=%5BEducational%20&%20Dacta%5D%5BWeDo%5D#T=S&O={%22iconly%22:0}[Image from Bricklink]
 image::images/wedo-distance.png[WeDo Distance sensor, width="60%"]
 
 WeDo Distance Sensor gives you a distance in millimeters with the Distance property.
