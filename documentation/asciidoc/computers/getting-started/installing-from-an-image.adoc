@@ -29,11 +29,15 @@ You should change the default password straight away to ensure your Raspberry Pi
 
 ==== Advanced Options
 
-When you have the Raspberry Pi Imager open, pushing `Ctrl-Shift-X` will open an "Advanced" menu. This menu lets you carry out tasks like enabling SSH, or setting your Raspberry Pi's hostname, before first boot.
+When you have the Raspberry Pi Imager open, and after you have selected the operating system to install, a cog wheel will appear allowing you to open an "Advanced Options" menu if it is supported by the operating system. This menu lets you carry out tasks like enabling SSH, or setting your Raspberry Pi's hostname, before first boot.
 
 image::images/rpi_imager.png[width="80%"]
 
-NOTE: The Advanced Options menu is useful for when you want to configure a xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless] Raspberry Pi.
+Amongst other things the Advanced Options menu is useful for when you want to configure a xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless] Raspberry Pi.
+
+image::images/rpi_imager_2.png[width="80%"]
+
+NOTE: In older versions of Imager you should push `Ctrl-Shift-X` to open the "Advanced" menu.
 
 === Downloading an Image
 
