@@ -1,39 +1,33 @@
-== .NET - Brick Usage
+=== Using the Build HAT from .NET
 
-The main element is the Brick. It's the Build HAT itself. Note that Build HAT is based out of a Serial Port. So even if it takes the shape of a Raspberry Pi hat, it can actually perfectly work with anything having a serial port.
+The Raspberry Pi Built HAT is refered to "Brick" in LEGO® parlance and you can talk directly to it from .NET using the https://datasheets.raspberrypi.com/build-hat/build-hat-serial-protocol.pdf[Build HAT Serial Protocol].
+
+You can create a `brick` object as below,
 
 [csharp]
 ----
-// On a Raspberry PI, you'll use:
 Brick brick = new("/dev/serial0");
 ----
 
-On Windows you'll need an USB to Serial adapter, connect the TX pin from the adapter to the TX (physical pin 8, GPIO 14) pin from the hat. And the RX pin to the RX (physical pin 10, GPIO 15) pin. You then only need the ground connected on both side. It is important **not to** connect RX to TX as you may usually do.
-
-[csharp]
-----
-// On Windows, connected through a serial dongle and adjust the port number:
-Brick brick = new("COM3");
-----
-
-Don't forget to dispose the brick at the end of your code. if you don't, your program won't stop.
+but you need to remember to dispose of the `brick` at the end of your code.
 
 [csharp]
 ----
 brick.Dispose();
 ----
 
-If you want to avoid calling `Dispose` at the end, then create your brick with the `using` statement:
+WARNING: If you do not call `brick.Dispose()` you program will not terminate.
+
+If you want to avoid calling `brick.Dispose` at the end, then create your brick with the `using` statement:
 
 [csharp]
 ----
-// On a Raspberry PI, you'll use:
 using Brick brick = new("/dev/serial0");
 ----
 
 In this case, when reaching the end of the program, your brick will be automatically disposed.
 
-=== Displaying the information
+==== Displaying the information
 
 You can gather the various versions, the signature and the input voltage:
 
@@ -47,7 +41,7 @@ Console.WriteLine($"Vin = {brick.InputVoltage.Volts} V");
 
 Note: the input voltage is read only once at boot time and is not read after.
 
-=== Getting sensors and motors details
+==== Getting sensors and motors details
 
 The functions `GetSensorType`, `GetSensor` will allow you to retrieve any information on connected sensor.
 
@@ -74,7 +68,7 @@ else
 
 `ActiveSensor` have a collection of advanced properties and functions allowing to understand every element of the sensor. It is also possible to call the primitive functions from the brick from them. This will allow you to select specific modes and do advance scenarios. While this is possible, motor and sensor classes have been created to make your life easier.
 
-=== Events
+==== Events
 
 Most sensors implements events on their special properties. You can simply subscribe to `PropertyChanged` and `PropertyUpdated`. The changed one will be fired when the value is changing while the updated one when there is a success update to the property. Depending on the modes used, some properties may be updated in the background all the time while some others occasionally.
 
@@ -108,7 +102,7 @@ void MotorPropertyEvent(object? sender, PropertyChangedEventArgs e)
 }
 ----
 
-=== Waiting for initialization
+==== Waiting for initialization
 
 The brick can take long before it does initialize. A wait for sensor to be connected has been implemented. You can use it like this:
 

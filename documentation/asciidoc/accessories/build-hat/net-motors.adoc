@@ -1,4 +1,4 @@
-== .NET - Motors
+=== Using Motors from .NET
 
 There are 2 types of motors, the *active* ones and the *passive* ones. Active motors will provide detailed position, absolute position and speed while passive motors can only be controlled with speed.
 
@@ -16,7 +16,7 @@ The bias value sets for the current port which is added to positive motor drive 
 
 The default values when a motor is created is 0.7 for the power limit and 0.3 for the bias.
 
-=== Passive Motors
+==== Passive Motors
 
 https://www.bricklink.com/v2/catalog/catalogitem.page?S=88011-1&name=Train%20Motor&category=%5BPower%20Functions%5D%5BPowered%20Up%5D#T=S&O={%22iconly%22:0}[Image from Bricklink]
 
@@ -52,7 +52,7 @@ train.Stop();
 
 Note: once the train is started, you can adjust the speed and the motor will adjust accordingly.
 
-=== Active Motors
+==== Active Motors
 
 https://www.bricklink.com/v2/catalog/catalogitem.page?S=88014-1&name=Technic%20XL%20Motor&category=%5BPower%20Functions%5D%5BPowered%20Up%5D#T=S&O={%22iconly%22:0}[Image from Bricklink]
 
