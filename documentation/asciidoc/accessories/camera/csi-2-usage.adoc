@@ -12,7 +12,7 @@ There are 3 independent software interfaces available for communicating with the
 
 NOTE: This interface is available only when using the legacy camera stack.
 
-The closed source GPU firmware has drivers for Unicam and three camera sensors plus a bridge chip. They are the Raspberry Pi Camera v1.3 (Omnivision OV5647), Raspberry Pi Camera v2.1 (Sony IMX219), Raspberry Pi HQ camera (Sony IMX477), and an unsupported driver for the Toshiba TC358743 HDMI\->CSI2 bridge chip.
+The closed source GPU firmware has drivers for Unicam and three camera sensors, plus a bridge chip. They are the Raspberry Pi Camera v1.3 (Omnivision OV5647), Raspberry Pi Camera v2.1 (Sony IMX219), Raspberry Pi HQ camera (Sony IMX477), and an unsupported driver for the Toshiba TC358743 HDMI\->CSI2 bridge chip.
 
 This driver integrates the source driver, Unicam, ISP, and tuner control into a full camera stack delivering processed output images. It can be used via MMAL, OpenMAX IL and V4L2 using the bcm2835-v4l2 kernel module. Only Raspberry Pi cameras are supported via this interface.
 
@@ -87,7 +87,7 @@ When developing a driver for a new device intended to be used with the bcm2835-u
 
 Please note that all kernel drivers are licensed under the GPLv2 licence, therefore source code *MUST* be available. Shipping of binary modules only is a violation of the GPLv2 licence under which the Linux kernel is licensed.
 
-The bcm2835-unicam has been written to try and accommodate all types of CSI-2 source driver as are currently found in the mainline Linux kernel. Broadly these can be split into camera sensors and bridge chips. Bridge chips allow for conversion between some other format and CSI-2.
+The bcm2835-unicam has been written to try and accommodate all types of CSI-2 source driver as are currently found in the mainline Linux kernel. Broadly, these can be split into camera sensors and bridge chips. Bridge chips allow for conversion between some other format and CSI-2.
 
 ==== Camera sensors
 
