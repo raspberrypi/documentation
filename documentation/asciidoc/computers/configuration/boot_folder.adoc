@@ -61,17 +61,17 @@ The boot folder will contain various xref:linux_kernel.adoc#kernel[kernel] image
 
 | kernel7.img
 | BCM2836, BCM2837
-| Pi 2, Pi 3
+| Pi Zero 2 W, Pi 2, Pi 3
 | Later Pi 2 uses the BCM2837
 
 | kernel7l.img
 | BCM2711
-| Pi 4
+| Pi 4, Pi 400
 | Large Physical Address Extension (LPAE)
 
 | kernel8.img
 | BCM2837, BCM2711
-| Pi 2, Pi 3, Pi 4
+| Pi Zero 2 W, Pi 2, Pi 3, Pi 4, Pi 400
 | Beta xref:config_txt.adoc#boot-options[64 bit kernel]. Raspberry Pi 2 with BCM2836 does not support 64-bit.
 |===
 

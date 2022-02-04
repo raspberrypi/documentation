@@ -50,6 +50,10 @@ where `<ip-addr>` is the IP address of the client, or multicast address (if appr
 ----
 vlc udp://@:<port> :demux=h264
 ----
+or alternatively
+----
+ffplay udp://<ip-addr-of-server>:<port> -fflags nobuffer -flags low_delay -framedrop
+----
 with the same `<port>` value.
 
 ===== TCP
@@ -84,5 +88,11 @@ and this can be played with
 ----
 vlc rtsp://<ip-addr-of-server>:8554/stream1
 ----
+or alternatively
+----
+ffplay rtsp://<ip-addr-of-server>:8554/stream1 -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
+----
 
 In all cases, the preview window on the server (the Raspberry Pi) can be suppressed with the `-n` (`--nopreview`) option. Note also the use of the `--inline` option which forces the stream header information to be included with every I (intra) frame. This is important so that a client can correctly understand the stream if it missed the very beginning.
+
+NOTE: Recent versions of VLC seem to have problems with playback of H.264 streams. We recommend using `ffplay` for playback using the above commands until these issues have been resolved.
