@@ -13,7 +13,7 @@ SPIKE Prime Expansion Set | 45678, 45680 | Motor | Active | 31
 
 | Medium Angular Motor | White/Cyan | 45603 | Yes | Yes | 45603 | https://www.bricklink.com/v2/catalog/catalogitem.page?S=45603-1#T=S&O={%22iconly%22:0}[Link] | SPIKE Prime Set | 45678 | Motor | Active | 30
 
-| Medium Angular Motor | White/Grey | 6299646, 6359216 | Yes | Yes | 436655 | https://www.bricklink.com/v2/catalog/catalogitem.page?P=54696c01&idColor=86#T=C&C=86[Link] | Mindstorms Robot Inventor | 51515 | Motor | Active | 4B
+| Medium Angular Motor | White/Grey | 6299646, 6359216, 6386708 | Yes | Yes | 436655 | https://www.bricklink.com/v2/catalog/catalogitem.page?P=54696c01&idColor=86#T=C&C=86[Link] | Mindstorms Robot Inventor | 51515 | Motor | Active | 4B
 
 | Small Angular Motor | White/Cyan | 45607, 6296520 | Yes| Yes| | https://www.bricklink.com/v2/catalog/catalogitem.page?P=45607c01[Link] | SPIKE Essentials Set| | Motor| Active| 41
 
@@ -39,8 +39,8 @@ SPIKE Prime Expansion Set | 45678, 45680 | Motor | Active | 31
 
 | Colour + distance sensor | White/Grey | 88007 | Partial | ? | 26912 | https://www.bricklink.com/v2/catalog/catalogitem.page?S=88007-1#T=S&O={%22iconly%22:0}[Link] | | | | Active | 25
 
-| WeDo 2.0 Motion sensor | White/Grey | 45304 | | | 5003423-1| https://www.bricklink.com/v2/catalog/catalogitem.page?S=9583-1#T=S&O={%22iconly%22:0}}[Link] | | | | Active | 35
+| WeDo 2.0 Motion sensor | White/Grey | 45304, 6138855 | | | 5003423-1| https://www.bricklink.com/v2/catalog/catalogitem.page?S=9583-1#T=S&O={%22iconly%22:0}}[Link] | | | | Active | 35
 
-| WeDo 2.0 Tilt sensor | White/Grey | 45305 | | | 5003423-1 | https://www.bricklink.com/v2/catalog/catalogitem.page?S=9584-1#T=S&O={%22iconly%22:0}[Link] | | | | Active | 34
+| WeDo 2.0 Tilt sensor | White/Grey | 45305, 6138856 | | | 5003423-1 | https://www.bricklink.com/v2/catalog/catalogitem.page?S=9584-1#T=S&O={%22iconly%22:0}[Link] | | | | Active | 34
 
 |===
