@@ -62,7 +62,7 @@ KERNEL=kernel
 make bcmrpi_defconfig
 ----
 
-For Raspberry PI Zero 2 W, Pi 2, Pi 3, Pi 3+, and Compute Module 3 default build configuration
+For Raspberry Pi Zero 2 W, Pi 2, Pi 3, Pi 3+, and Compute Module 3 default build configuration
 
 [,bash]
 ----
