@@ -1,8 +1,8 @@
-== Sensors
+=== Using Sensors from Python
 
 There is a xref:build-hat.adoc#device-compatibility[large range of sensors] that work with the Build HAT.
 
-=== Working with Sensors
+==== Working with Sensors
 
 Connect a Colour sensor to port B on the Build HAT, and a Force sensor to port C.
 

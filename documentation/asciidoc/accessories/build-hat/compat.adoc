@@ -13,19 +13,19 @@ SPIKE Prime Expansion Set | 45678, 45680 | Motor | Active | 31
 
 | Medium Angular Motor | White/Cyan | 45603 | Yes | Yes | 45603 | https://www.bricklink.com/v2/catalog/catalogitem.page?S=45603-1#T=S&O={%22iconly%22:0}[Link] | SPIKE Prime Set | 45678 | Motor | Active | 30
 
-| Medium Angular Motor | White/Grey | 6299646, 6359216 | Yes | Yes | 436655 | https://www.bricklink.com/v2/catalog/catalogitem.page?P=54696c01&idColor=86#T=C&C=86[Link] | Mindstorms Robot Inventor | 51515 | Motor | Active | 4B
+| Medium Angular Motor | White/Grey | 6299646, 6359216, 6386708 | Yes | Yes | 436655 | https://www.bricklink.com/v2/catalog/catalogitem.page?P=54696c01&idColor=86#T=C&C=86[Link] | Mindstorms Robot Inventor | 51515 | Motor | Active | 4B
 
-| Small Angular Motor | White/Cyan | | Yes| Yes| | | SPIKE Essentials Set| | Motor| Active| 41
+| Small Angular Motor | White/Cyan | 45607, 6296520 | Yes| Yes| | https://www.bricklink.com/v2/catalog/catalogitem.page?P=45607c01[Link] | SPIKE Essentials Set| | Motor| Active| 41
 
 | Light/Colour sensor |White/Black | 6217705 |Yes | Yes | | https://www.bricklink.com/v2/catalog/catalogitem.page?P=37308c01&idColor=11#T=C&C=11[Link] | SPIKE Prime Set, SPIKE Prime Expansion Set, Mindstorms Robot Inventor, SPIKE Essentials | 45678, 45680, 51515  | ColorSensor |Active | 3D
 
 | Distance Sensor | White/Black	| 6302968 | Yes | Yes | | https://www.bricklink.com/v2/catalog/catalogitem.page?P=37316c01&idColor=11#T=C&C=11[Link] | SPIKE Prime Set, Mindstorms Robot Inventor | 45678, 51515  |DistanceSensor | Active | 3E
 
-| System medium motor | White/Grey | 45303,6138854,6290182,6127110 | Yes | Yes | | | Wedo 2.0, LEGO Ideas Piano, App controlled Batmobile | 76112 | | Passive | 1
+| System medium motor | White/Grey | 45303, 6138854, 6290182, 6127110 | Yes | Yes | | | Wedo 2.0, LEGO Ideas Piano, App controlled Batmobile | 76112 | | Passive | 1
 
 | Force Sensor | White/Black | 6254354 | Yes | Yes | 45606 | https://www.bricklink.com/v2/catalog/catalogitem.page?P=37312c01&idColor=11#T=C&C=11[Link] | SPIKE Prime Set | 45678 | ForceSensor | Active | 3F
 
-| 3×3 LED | White/Cyan | | Yes | Yes | | | SPIKE Essentials | | | Active | 40 
+| 3×3 LED | White/Cyan | 45608, 6297023 | Yes | Yes | | https://www.bricklink.com/v2/catalog/catalogitem.page?P=45608c01[Link] | SPIKE Essentials | | Matrix | Active | 40 
 
 | System train motor | Black | 88011 | Yes | Yes | 28740, 88011-1 | https://www.bricklink.com/v2/catalog/catalogitem.page?S=88011-1#T=S&O={%22iconly%22:0}[Link] | Cargo Train, Disney Train and Station, Passenger Train| | | Passive | 2
 
@@ -39,8 +39,8 @@ SPIKE Prime Expansion Set | 45678, 45680 | Motor | Active | 31
 
 | Colour + distance sensor | White/Grey | 88007 | Partial | ? | 26912 | https://www.bricklink.com/v2/catalog/catalogitem.page?S=88007-1#T=S&O={%22iconly%22:0}[Link] | | | | Active | 25
 
-| WeDo 2.0 Motion sensor | White/Grey | 45304 | | | 5003423-1| https://www.bricklink.com/v2/catalog/catalogitem.page?S=9583-1#T=S&O={%22iconly%22:0}}[Link] | | | | Active | 35
+| WeDo 2.0 Motion sensor | White/Grey | 45304, 6138855 | | | 5003423-1| https://www.bricklink.com/v2/catalog/catalogitem.page?S=9583-1#T=S&O={%22iconly%22:0}}[Link] | | | | Active | 35
 
-| WeDo 2.0 Tilt sensor | White/Grey | 45305 | | | 5003423-1 | https://www.bricklink.com/v2/catalog/catalogitem.page?S=9584-1#T=S&O={%22iconly%22:0}[Link] | | | | Active | 34
+| WeDo 2.0 Tilt sensor | White/Grey | 45305, 6138856 | | | 5003423-1 | https://www.bricklink.com/v2/catalog/catalogitem.page?S=9584-1#T=S&O={%22iconly%22:0}[Link] | | | | Active | 34
 
 |===

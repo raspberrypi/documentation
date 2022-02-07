@@ -1,4 +1,6 @@
-== Installing the Software
+== Using the Build HAT from Python 
+
+=== Installing the Python Library
 
 Install the Build HAT Python library. Open xref:../computers/using_linux.adoc#terminal[a Terminal window] and type,
 

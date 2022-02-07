@@ -110,7 +110,7 @@ Further guidance can be found in libcamera's https://git.linuxtv.org/libcamera.g
 
 ===== Device Tree
 
-Device tree is used to select the sensor driver and configuren parameters such as number of CSI-2 lanes, continuous clock lane operation, and link frequency (often only one is supported). 
+Device tree is used to select the sensor driver and configure parameters such as number of CSI-2 lanes, continuous clock lane operation, and link frequency (often only one is supported). 
 
 * The IMX219 https://github.com/raspberrypi/linux/blob/rpi-5.4.y/arch/arm/boot/dts/overlays/imx219-overlay.dts[device tree overlay] for the 5.4 kernel
 

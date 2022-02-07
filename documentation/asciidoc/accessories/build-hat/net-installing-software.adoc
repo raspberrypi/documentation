@@ -1,0 +1,22 @@
+== Using the Build HAT from .NET 
+
+=== Installing the .NET Framework
+
+The .NET framework from Microsoft is not available via `apt` on Raspberry Pi. However, you can follow the https://docs.microsoft.com/en-us/dotnet/iot/deployment[official instructions] from Microsoft to install the .NET framework. Alternatively, there is a simplified https://www.petecodes.co.uk/install-and-use-microsoft-dot-net-5-with-the-raspberry-pi/[third party route] to get the .NET toolchain on to your Raspberry Pi. 
+
+WARNING: The installation script is run as `root`. You should read it first and make sure you understand what it is doing. If you are at all unsure you should follow the https://docs.microsoft.com/en-us/dotnet/iot/deployment[official instructions] manually.
+
+[.bash]
+----
+$ wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet5pi/master/install.sh | sudo bash
+----
+
+After installing the .NET framework you also need to install the nuget packages:
+
+[.bash]
+----
+$ dotnet add package System.Device.Gpio --source https://pkgs.dev.azure.com/dotnet/IoT/_packaging/nightly_iot_builds/nuget/v3/index.json
+$ dotnet add package Iot.Device.Bindings --source https://pkgs.dev.azure.com/dotnet/IoT/_packaging/nightly_iot_builds/nuget/v3/index.json
+----
+
+You can now create a project and edit it.

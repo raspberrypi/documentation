@@ -13,4 +13,3 @@ include::getting-started/installing-from-windows.adoc[]
 include::getting-started/sd-cards.adoc[]
 
 include::getting-started/connecting-a-monitor.adoc[]
-

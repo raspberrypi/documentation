@@ -17,7 +17,7 @@ The preview can be halted either by clicking the window's close button, or using
 
 ==== Options
 
-`libcamera-apps` uses a 3rd party library to interpret command line options. This includes _long form_ options where the option name consists of more than one character preceeded by `--`, and _short form_ options which can only be a single character preceded by a single `-`. For the most part option names are chosen to match those used by the legacy `raspicam` applications with the exception that we can no longer handle multi-character option names with a single `-`. Any such legacy options have been dropped and the long form with `--` must be used instead.
+`libcamera-apps` uses a 3rd party library to interpret command line options. This includes _long form_ options where the option name consists of more than one character preceded by `--`, and _short form_ options which can only be a single character preceded by a single `-`. For the most part option names are chosen to match those used by the legacy `raspicam` applications with the exception that we can no longer handle multi-character option names with a single `-`. Any such legacy options have been dropped and the long form with `--` must be used instead.
 
 The options are classified broadly into 3 groups, namely those that are common, those that are specific to still images, and those that are for video encoding. They are supported in an identical manner across all the applications where they apply.
 

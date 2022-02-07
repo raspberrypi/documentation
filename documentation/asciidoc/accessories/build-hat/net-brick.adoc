@@ -1,0 +1,114 @@
+=== Using the Build HAT from .NET
+
+The Raspberry Pi Built HAT is refered to "Brick" in LEGO® parlance and you can talk directly to it from .NET using the https://datasheets.raspberrypi.com/build-hat/build-hat-serial-protocol.pdf[Build HAT Serial Protocol].
+
+You can create a `brick` object as below,
+
+[csharp]
+----
+Brick brick = new("/dev/serial0");
+----
+
+but you need to remember to dispose of the `brick` at the end of your code.
+
+[csharp]
+----
+brick.Dispose();
+----
+
+WARNING: If you do not call `brick.Dispose()` you program will not terminate.
+
+If you want to avoid calling `brick.Dispose` at the end, then create your brick with the `using` statement:
+
+[csharp]
+----
+using Brick brick = new("/dev/serial0");
+----
+
+In this case, when reaching the end of the program, your brick will be automatically disposed.
+
+==== Displaying the information
+
+You can gather the various software versions, the signature, and the input voltage:
+
+[csharp]
+----
+var info = brick.BuildHatInformation;
+Console.WriteLine($"version: {info.Version}, firmware date: {info.FirmwareDate}, signature:");
+Console.WriteLine($"{BitConverter.ToString(info.Signature)}");
+Console.WriteLine($"Vin = {brick.InputVoltage.Volts} V");
+----
+
+NOTE: the input voltage is read only once at boot time and is not read again afterwards.
+
+==== Getting sensors and motors details
+
+The functions `GetSensorType`, `GetSensor` will allow you to retrieve any information on connected sensor.
+
+[csharp]
+----
+SensorType sensor = brick.GetSensorType((SensorPort)i);
+Console.Write($"Port: {i} {(Brick.IsMotor(sensor) ? "Sensor" : "Motor")} type: {sensor} Connected: ");
+----
+
+In this example, you can as well use the `IsMotor` static function to check if the connected element is a sensor or a motor.
+
+[csharp]
+----
+if (Brick.IsActiveSensor(sensor))
+{
+    ActiveSensor activeSensor = brick.GetActiveSensor((SensorPort)i);
+}
+else
+{
+    var passive = (Sensor)brick.GetSensor((SensorPort)i);
+    Console.WriteLine(passive.IsConnected);
+}
+----
+
+`ActiveSensor` have a collection of advanced properties and functions allowing to understand every element of the sensor. It is also possible to call the primitive functions from the brick from them. This will allow you to select specific modes and do advance scenarios. While this is possible, motor and sensor classes have been created to make your life easier.
+
+==== Events
+
+Most sensors implements events on their special properties. You can simply subscribe to `PropertyChanged` and `PropertyUpdated`. The changed one will be fired when the value is changing while the updated one when there is a success update to the property. Depending on the modes used, some properties may be updated in the background all the time while some others occasionally.
+
+You may be interested only when a color is changing or the position of the motor is changing, using it as a tachometer. In this case, the `PropertyChanged` is what you need!
+
+[csharp]
+----
+Console.WriteLine("Move motor on Port A to more than position 100 to stop this test.");
+brick.WaitForSensorToConnect(SensorPort.PortA);
+var active = (ActiveMotor)brick.GetMotor(SensorPort.PortA);
+bool continueToRun = true;
+active.PropertyChanged += MotorPropertyEvent;
+while (continueToRun)
+{
+    Thread.Sleep(50);
+}
+
+active.PropertyChanged -= MotorPropertyEvent;
+Console.WriteLine($"Current position: {active.Position}, eventing stopped.");
+
+void MotorPropertyEvent(object? sender, PropertyChangedEventArgs e)
+{
+    Console.WriteLine($"Property changed: {e.PropertyName}");
+    if (e.PropertyName == nameof(ActiveMotor.Position))
+    {
+        if (((ActiveMotor)brick.GetMotor(SensorPort.PortA)).Position > 100)
+        {
+            continueToRun = false;
+        }
+    }
+}
+----
+
+==== Waiting for initialization
+
+The brick can take long before it initializes. A wait for sensor to be connected has been implemented,
+
+[csharp]
+----
+brick.WaitForSensorToConnect(SensorPort.PortB);
+----
+
+It does as well take a `CancellationToken` if you want to implement advance features like warning the user after some time and retrying.

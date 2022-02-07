@@ -1,12 +1,28 @@
+// Intro
+
 include::build-hat/introduction.adoc[]
 
 include::build-hat/preparing-build-hat.adoc[]
 
-include::build-hat/installing-software.adoc[]
+// Python
 
-include::build-hat/motors.adoc[]
+include::build-hat/py-installing-software.adoc[]
 
-include::build-hat/sensors.adoc[]
+include::build-hat/py-motors.adoc[]
+
+include::build-hat/py-sensors.adoc[]
+
+// .NET
+
+include::build-hat/net-installing-software.adoc[]
+
+include::build-hat/net-brick.adoc[]
+
+include::build-hat/net-motors.adoc[]
+
+include::build-hat/net-sensors.adoc[]
+
+// Close out
 
 include::build-hat/links-to-other.adoc[]
 

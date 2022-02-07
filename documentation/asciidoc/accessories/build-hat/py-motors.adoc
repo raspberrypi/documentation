@@ -1,15 +1,15 @@
-== Motors
+=== Using Motors from Python
 
 There are xref:build-hat.adoc#device-compatibility[a number of motors] that work with the Build HAT.
 
-=== Connecting a Motor
+==== Connecting a Motor
 
 Connect a motor to port A on the Build HAT. The LPF2 connectors need to be inserted the correct way up. If the connector doesn’t slide in easily, rotate by 180 degrees and try again. 
 
 image::images/connect-motor.gif[width="80%"]
 
 
-=== Working with Motors
+==== Working with Motors
 
 Start the https://thonny.org/[Thonny IDE]. Add the program code below:
 
