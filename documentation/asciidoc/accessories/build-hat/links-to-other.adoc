@@ -5,7 +5,7 @@ You can download documentation on the,
 * https://datasheets.raspberrypi.com/build-hat/build-hat-serial-protocol.pdf[Raspberry Pi Build HAT Serial Protocol]
 * https://datasheets.raspberrypi.com/build-hat/build-hat-python-library.pdf[Raspberry Pi Build HAT Python Library]
 
-and full details of the Python Library documentation can also be found https://buildhat.readthedocs.io/[on ReadTheDocs].
+and full details of the Python Library documentation can also be found https://buildhat.readthedocs.io/[on ReadTheDocs]. You can find more information on the .NET library in the https://github.com/dotnet/iot/tree/main/src/devices/BuildHat[.NET IoT] Github repository.
 
 You can also follow along with projects from the Raspberry Pi Foundation,
 
