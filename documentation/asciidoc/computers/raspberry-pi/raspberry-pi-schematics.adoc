@@ -64,7 +64,7 @@ NOTE: Mechanical drawings for the Raspberry Pi 3, Model A+ are also applicable t
 
 ==== Test Pad Locations
 
-The Raspberry Pi Zero 2 has a number of test pad locations used during production of the board. 
+The Raspberry Pi Zero 2 W has a number of test pad locations used during production of the board. 
 
 image::images/zero2-pad-diagram.png[width="70%"]
 
