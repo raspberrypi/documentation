@@ -51,7 +51,7 @@ You will need a keyboard to make use of the network installation feature. While 
 
 video::b1SYVpM9lto[youtube]
 
-You should also insert a **blank** SD Card into the Raspberry Pi's SD Card slot.
+You should also insert a **blank** SD Card into Raspberry Pi computers SD Card slot.
 
 NOTE: You should make sure there isn't a bootable SD Card, or USB drive, attached to your Raspberry Pi.
 
