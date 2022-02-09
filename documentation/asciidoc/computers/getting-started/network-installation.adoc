@@ -20,7 +20,7 @@ WARNING: Installation of the beta bootloader should be fairly safe, but you shou
 
 The easiest way to update the bootloader on your Raspberry Pi 4 or 400 is by using the Raspberry Pi Imager, either running on your Raspberry Pi or another computer, to copy the required software onto an SD card. You’ll need a spare blank SD Card and, if you’re using a Raspberry Pi or another computer that doesn’t have an SD Card slot, a USB to SD Card dongle.
 
-You should be aware that the SD Card you’re using to update your Raspberry Pi computers bootloader will be wiped of any existing data, so you shouldn’t use the SD Card you are currently using with your Raspberry Pi.
+You should be aware that the SD Card you’re using to update your Raspberry Pi computer bootloader will be wiped of any existing data, so you shouldn’t use the SD Card you are currently using with your Raspberry Pi.
 
 In the Imager application, click on the “Choose OS” button and scroll down the “Operating System” list in the pop-up window and select “Misc utility images”, then select “Beta Test Bootloader.”
 
@@ -32,7 +32,7 @@ image::images/beta-bootloader-2.png[width="80%"]
 
 Afterwards, select your media and follow xref:getting-started.adoc#installing-the-operating-system[the normal instructions] to burn the updated bootloader to your SD Card.
 
-When the SD Card has finished burning you should power off your Raspberry Pi and remove the existing SD Card and put it somewhere safe. Insert the card you just flashed with the Imager application into the Raspberry Pi computer and power it back on. The board LED will flash regularly, and the screen will go green to indicate that flashing the new beta bootloader was successful.
+When the SD Card has finished burning you should power off your Raspberry Pi and remove the existing SD Card and put it somewhere safe. Insert the card you just flashed with the Imager application into the Raspberry Pi and power it back on. The board LED will flash regularly, and the screen will go green to indicate that flashing the new beta bootloader was successful.
 
 [NOTE]
 ====
@@ -51,7 +51,7 @@ You will need a keyboard to make use of the network installation feature. While 
 
 video::b1SYVpM9lto[youtube]
 
-You should also insert a **blank** SD Card into the Raspberry Pi computers SD Card slot.
+You should also insert a **blank** SD Card into the Raspberry Pi computer SD Card slot.
 
 NOTE: You should make sure there isn't a bootable SD Card, or USB drive, attached to your Raspberry Pi.
 
