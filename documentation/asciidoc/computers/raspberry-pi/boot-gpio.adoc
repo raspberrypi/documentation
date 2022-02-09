@@ -43,7 +43,7 @@ Once GPIO boot mode is enabled, the Raspberry Pi will no longer boot. You must p
 | USB
 |===
 
-USB in the table above selects both USB device boot mode and USB host boot mode. In order to use a USB boot mode, it must by enabled in the OTP memory. For more information, see xref:raspberry-pi.adoc#usb-device-boot-mode[USB device boot] and xref:raspberry-pi.adoc#usb-host-boot-mode[USB host boot].
+USB in the table above selects both USB device boot mode and USB host boot mode. In order to use a USB boot mode, it must be enabled in the OTP memory. For more information, see xref:raspberry-pi.adoc#usb-device-boot-mode[USB device boot] and xref:raspberry-pi.adoc#usb-host-boot-mode[USB host boot].
 
 ==== Raspberry Pi 3A+, 3B+ and Compute Module 3+
 
