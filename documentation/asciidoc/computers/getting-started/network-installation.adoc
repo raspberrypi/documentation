@@ -73,4 +73,4 @@ image::images/network-install-4.png[width="80%"]
 
 NOTE: More information can about using the Raspberry Pi Imager can be found in the section on xref:getting-started.adoc#installing-the-operating-system[installing your operating system].
 
-After installing the operating system onto your blank SD Card you will not longer see the network installation screen on boot. If you do want to run it, you just need to remove any bootable disks. You can re-insert them later when the Raspberry PI Imager is running. But take care not to overwrite any working disks that you want to keep!
+After installing the operating system onto your blank SD Card you will no longer see the network installation screen on boot. If you do want to run it, you just need to remove any bootable disks. You can re-insert them later when the Raspberry PI Imager is running. But take care not to overwrite any working disks that you want to keep!
