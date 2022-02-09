@@ -32,7 +32,7 @@ image::images/beta-bootloader-2.png[width="80%"]
 
 Afterwards, select your media and follow xref:getting-started.adoc#installing-the-operating-system[the normal instructions] to burn the updated bootloader to your SD Card.
 
-When the SD Card has finished burning you should power off your Raspberry Pi and remove the existing SD Card and put it somewhere safe. Insert the card you just flashed with the Imager application into the Raspberry Pi and power it back on. The board LED will flash regularly, and the screen will go green to indicate that flashing the new beta bootloader was successful.
+When the SD Card has finished burning you should power off your Raspberry Pi and remove the existing SD Card and put it somewhere safe. Insert the card you just flashed with the Imager application into Raspberry Pi computer and power it back on. The board LED will flash regularly, and the screen will go green to indicate that flashing the new beta bootloader was successful.
 
 [NOTE]
 ====
