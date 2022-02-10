@@ -20,7 +20,7 @@ WARNING: Installation of the beta bootloader should be fairly safe, but you shou
 
 The easiest way to update the bootloader on your Raspberry Pi 4 or 400 is by using the Raspberry Pi Imager, either running on your Raspberry Pi or another computer, to copy the required software onto an SD card. You’ll need a spare blank SD Card and, if you’re using a Raspberry Pi or another computer that doesn’t have an SD Card slot, a USB to SD Card dongle.
 
-You should be aware that the SD Card you’re using to update your Raspberry Pi computer bootloader will be wiped of any existing data, so you shouldn’t use the SD Card you are currently using with your Raspberry Pi.
+You should be aware that the SD Card you’re using to update your Raspberry Pi computer's bootloader will be wiped of any existing data, so you shouldn’t use the SD Card you are currently using with your Raspberry Pi.
 
 In the Imager application, click on the “Choose OS” button and scroll down the “Operating System” list in the pop-up window and select “Misc utility images”, then select “Beta Test Bootloader.”
 
