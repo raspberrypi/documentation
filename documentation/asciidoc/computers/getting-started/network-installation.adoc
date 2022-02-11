@@ -55,7 +55,7 @@ You should also insert a **blank** SD Card into the SD card slot of your Raspber
 
 NOTE: You should make sure there isn't a bootable SD Card, or USB drive, attached to your Raspberry Pi.
 
-Power on your the Raspberry Pi. As always it will first look for an SD Card, and then a USB drive, to find bootable media. However if you have a keyboard attached, the Raspberry Pi will now show the network installation screen.
+Power on your Raspberry Pi. As always it will first look for an SD Card, and then a USB drive, to find bootable media. However if you have a keyboard attached, the Raspberry Pi will now show the network installation screen.
 
 image::images/network-install-1.png[width="80%"]
 
