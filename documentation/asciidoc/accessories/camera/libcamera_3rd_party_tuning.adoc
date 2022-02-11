@@ -2,7 +2,7 @@
 
 ==== The Camera Tuning File
 
-Most of the image procesing applied to frames from the sensor is done by the hardware ISP (Image Signal Procesor). This processing is governed by a set of _control algorithms_ and these in turn must have a wide range of parameters supplied to them. These parameters are tuned specifically for each sensor and are collected together in a JSON file known as the _camera tuning file_.
+Most of the image processing applied to frames from the sensor is done by the hardware ISP (Image Signal Processor). This processing is governed by a set of _control algorithms_ and these in turn must have a wide range of parameters supplied to them. These parameters are tuned specifically for each sensor and are collected together in a JSON file known as the _camera tuning file_.
 
 This _tuning file_ can be inspected and edited by users. Using the `--tuning-file` command line option, users can point the system at completely custom camera tuning files.
 

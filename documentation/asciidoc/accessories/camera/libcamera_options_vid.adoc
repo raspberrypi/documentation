@@ -90,7 +90,7 @@ Example: `libcamera-vid -t 0 -o test.h264 -k --initial pause`
 	--split				Split multiple recordings into separate files
 ----
 
-This option should be used in conjunction with `--keypress` or `--signal` and causes each recording session (inbetween the pauses) to be written to a separate file.
+This option should be used in conjunction with `--keypress` or `--signal` and causes each recording session (in between the pauses) to be written to a separate file.
 
 Example: `libcamera-vid -t 0 --keypress --split --initial pause -o test%04d.h264`
 
@@ -98,7 +98,7 @@ Example: `libcamera-vid -t 0 --keypress --split --initial pause -o test%04d.h264
 	--segment			Write the video recording into multiple segments <number>
 ----
 
-This option causes the video recording to be split accross multiple files where the parameter gives the approximate duration of each file in milliseconds.
+This option causes the video recording to be split across multiple files where the parameter gives the approximate duration of each file in milliseconds.
 
 One convenient little trick is to pass a very small duration parameter (namely, `--segment 1`) which will result in each frame being written to a separate output file. This makes it easy to do "burst" JPEG capture (using the MJPEG codec), or "burst" raw frame capture (using `libcamera-raw`).
 

@@ -1,4 +1,4 @@
-== Universial Serial Bus (USB)
+== Universal Serial Bus (USB)
 
 In general, every device supported by Linux can be used with a Raspberry Pi, although there are some limitations for models prior to Pi 4.
 

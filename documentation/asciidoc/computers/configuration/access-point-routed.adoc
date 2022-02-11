@@ -58,7 +58,7 @@ In order to provide network management services (DNS, DHCP) to wireless clients,
 sudo apt install dnsmasq
 ----
 
-Finally, install `netfilter-persistent` and its plugin `iptables-persistent`. This utilty helps by saving firewall rules and restoring them when the Raspberry Pi boots:
+Finally, install `netfilter-persistent` and its plugin `iptables-persistent`. This utility helps by saving firewall rules and restoring them when the Raspberry Pi boots:
 
 ----
 sudo DEBIAN_FRONTEND=noninteractive apt install -y netfilter-persistent iptables-persistent
