@@ -1,0 +1,6 @@
+[codespell]
+skip = Gemfile,Gemfile.lock,jekyll-assets,build
+# For a list of available built-in dictionaries, see:
+#  https://github.com/codespell-project/codespell/tree/master/codespell_lib/data
+builtin = clear,rare,informal
+ignore-words-list = technic,ba,hist
