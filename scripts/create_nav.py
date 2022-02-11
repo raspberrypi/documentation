@@ -16,7 +16,10 @@ file_headings = dict()
 def heading_to_anchor(filepath, heading, anchor):
     if anchor is None:
         # The replace(' -- ', '') is needed because AsciiDoc transforms ' -- ' to '&#8201;&#8212;&#8201;' (narrow-space, em-dash, narrow-space) which then collapses down to '' when calculating the anchor
-        anchor = re.sub(r'\-+', '-', re.sub(r'[^-\w]', '', heading.lower().replace(' -- ', '').replace(' ', '-').replace('.', '-')))
+        heading_low = heading.lower()
+        heading_replace = heading_low.replace(' -- ', '').replace(' ', '-').replace('.', '-')
+        heading_target = re.sub(r'[^-\w]', '', heading_replace)
+        anchor = re.sub(r'\-+', '-', heading_target)
     if filepath not in file_headings:
         file_headings[filepath] = set()
     proposed_anchor = anchor
