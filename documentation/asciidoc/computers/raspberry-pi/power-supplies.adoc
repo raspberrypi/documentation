@@ -52,6 +52,11 @@ Exactly how much current (mA) the Raspberry Pi requires is dependent on what you
 | 1.2A
 | 600mA
 
+| Raspberry Pi 400
+| 3.0A
+| 1.2A
+| 800mA
+
 | Raspberry Pi Zero
 | 1.2A
 | Limited by PSU, board, and connector ratings only
