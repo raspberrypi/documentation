@@ -4,7 +4,7 @@
 
 `libcamera` is a new software library aimed at supporting complex camera systems directly from the Linux operating system. In the case of the Raspberry Pi it enables us to drive the camera system directly from open source code running on ARM processors. The proprietary code running on the Broadcom GPU, and to which users have no access at all, is almost completely by-passed.
 
-`libcamera` presents a C++ API to applications and works at the level of configuring the camera and then allowing an application to request image frames. These image buffers reside in system memory and can be passed directly to still image encoders (such as JPEG) or to video encoders (such as h.264), though such ancilliary functions as encoding images or displaying them are strictly beyond the purview of `libcamera` itself.
+`libcamera` presents a C++ API to applications and works at the level of configuring the camera and then allowing an application to request image frames. These image buffers reside in system memory and can be passed directly to still image encoders (such as JPEG) or to video encoders (such as h.264), though such ancillary functions as encoding images or displaying them are strictly beyond the purview of `libcamera` itself.
 
 For this reason Raspberry Pi supplies a small set of example `libcamera-apps`. These are simple applications, built on top of `libcamera`, and are designed largely to emulate the function of the legacy stack built on Broadcom's propretary GPU code (some users will recognise these legacy applications as `raspstill` and `raspivid`). The applications we provide are:
 

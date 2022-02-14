@@ -102,7 +102,7 @@ dpi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> <
 
 <h_active_pixels> = horizontal pixels (width)
 <h_sync_polarity> = invert hsync polarity
-<h_front_porch>   = horizontal forward padding from DE acitve edge
+<h_front_porch>   = horizontal forward padding from DE active edge
 <h_sync_pulse>    = hsync pulse width in pixel clocks
 <h_back_porch>    = vertical back padding from DE active edge
 <v_active_lines>  = vertical pixels height (lines)

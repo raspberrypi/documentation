@@ -103,7 +103,7 @@ The options for the touchscreen are:
 | Invert Y coordinates
 
 | touchscreen-swapped-x-y
-| Swap X and Y cordinates
+| Swap X and Y coordinates
 |===
 
 === Troubleshooting
