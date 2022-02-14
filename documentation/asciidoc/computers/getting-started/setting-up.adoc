@@ -2,7 +2,7 @@
 
 To get started with your Raspberry Pi computer you'll need the following accessories:
 
-A computer monitor, or television. Most should work as a display for the Raspberry Pi, but for best results, you should use a display with HDMI input. You'll also need a appropriate xref:getting-started.adoc#connecting-a-display[display] cable, to connect your monitor to your Raspberry Pi.
+A computer monitor, or television. Most should work as a display for the Raspberry Pi, but for best results, you should use a display with HDMI input. You'll also need an appropriate xref:getting-started.adoc#connecting-a-display[display] cable, to connect your monitor to your Raspberry Pi.
 
 NOTE: If your display uses an HDMI connection and has built-in speakers, you can use it to output sound.
 
