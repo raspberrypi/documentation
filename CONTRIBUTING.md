@@ -16,6 +16,8 @@ Unless you are opening a pull request which will only make small corrections, fo
 
 Before starting writing your contribution to the documentation, you should take a look at the [style guide](https://github.com/raspberrypi/style-guide/blob/master/style-guide.md).
 
+**IMPORTANT**: Because the documentation makes use of the Asciidoc `include` statement, the `xref:` statements inside the documentation do not link back to the correct pages on Github, as Github does not support Asciidoc include (see [#2005](https://github.com/raspberrypi/documentation/issues/2005) functionality. However, these links work correctly when the HTML documentation is built and deployed. Please do not submit Pull Requests fixing link destinations unless you're sure that the link is broken [on the documentation site](https://www.raspberrypi.com/documentation/) itself.
+
 ## Type of Content
 
 We welcome contributions from the community, ranging from correcting small typos all the way through to adding entire new sections to the documentation. However, going forward we're going to be fairly targeted about what sort of content we add to the documentation. We are looking to keep the repository, and the documentation, focused on Raspberry Pi-specific things, rather than having generic Linux or computing content.
