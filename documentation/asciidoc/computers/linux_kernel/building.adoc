@@ -62,7 +62,7 @@ KERNEL=kernel
 make bcmrpi_defconfig
 ----
 
-For Raspberry Pi 2, 3, 3+, and Zero 2 W, and Raspberry Pi Compute Modules 3 and 3+ default 32-bit build configuration
+For Raspberry Pi 2, 3, 3+ and Zero 2 W, and Raspberry Pi Compute Modules 3 and 3+ default 32-bit build configuration
 
 [,bash]
 ----
