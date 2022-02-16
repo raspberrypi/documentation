@@ -334,6 +334,7 @@ Default: ""
 
 If no USB mass storage devices are found within this timeout then USB-MSD is stopped and the next boot mode is selected
 
+Minimum: `5000` (5 seconds) +
 Default: `20000` (20 seconds) +
 
 [[USB_MSD_LUN_TIMEOUT]]
@@ -341,6 +342,7 @@ Default: `20000` (20 seconds) +
 
 How long to wait in milliseconds before advancing to the next LUN e.g. a multi-slot SD-CARD reader. This is still being tweaked but may help speed up boot if old/slow devices are connected as well as a fast USB-MSD device containing the OS.
 
+Minimum: `100` +
 Default: `2000` (2 seconds)
 
 [[USB_MSD_PWR_OFF_TIME]]
