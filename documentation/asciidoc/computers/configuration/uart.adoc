@@ -89,6 +89,10 @@ The following table summarises the assignment of the first two UARTs:
 | secondary (Bluetooth)
 | primary
 
+| Compute Module 3 & 3+
+| primary
+| secondary
+
 | Raspberry Pi 4
 | secondary (Bluetooth)
 | primary
