@@ -273,32 +273,6 @@ This table gives defaults for options that are the same across all models.
 | 0 (1.2V)
 |===
 
-The firmware uses Adaptive Voltage Scaling (AVS) to determine the optimum CPU/GPU core voltage in the range defined by `over_voltage` and `over_voltage_min`.
-
-|===
-| Model | Default | Resulting voltage
-
-| Pi 1
-| 0
-| 1.2V
-
-| Pi 2
-| 0
-| 1.2-1.3125V
-
-| Pi 3
-| 0
-| 1.2-1.3125V
-
-| Pi 4, Pi400, CM4
-| 0
-| 0.88V
-
-| Pi Zero
-| 6
-| 1.35V
-|===
-
 [discrete]
 ===== Specific to Raspberry Pi 4, Raspberry Pi 400 and CM4
 
