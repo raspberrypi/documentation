@@ -266,7 +266,7 @@ If self update is enabled then the bootloader will look for the update files (.s
 Notes:-
 
 * Self-update is not enabled in SD boot; the ROM can already load recovery.bin from the SD card.
-* Bootloader release prior to 2021 do not support `self-update`.
+* Bootloader releases prior to 2021 do not support `self-update`.
 * For network boot make sure that the TFTP `boot` directory can be mounted via NFS and that `rpi-eeprom-update` can write to it.
 
 Default: `1`
