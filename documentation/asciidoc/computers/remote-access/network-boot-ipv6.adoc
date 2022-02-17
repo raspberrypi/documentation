@@ -25,11 +25,11 @@ If your ISP and router don't support IPv6 you will be limited in what you can do
 
 The first thing the bootloader does is send a router solicitation to get the details of the network. The router responds with an advertisement packet identifying its ethernet address, which the bootloader might need if the TFTP server is on a different network.
 
-The router advertisement includes a flag which tells it whether to use stateful (managed) or stateless (unmanaged) configuration for its IP address. Stateless configuration means that the device configures its own IP address. Currently the bootloader generates an address derived from its ethernet mac address and a network prefix supplied by the router.
+The router advertisement includes a flag which tells it whether to use stateful (managed) or stateless (unmanaged) configuration for its IP address. Stateless configuration means that the device configures its own IP address. Currently the bootloader generates an address derived from its ethernet MAC address and a network prefix supplied by the router.
 
 If the router indicates that stateful configuration is enabled DHCP is used to obtain the IP address of the device. This involves the device sending a solicitation request to a DHCP server which responds with an advertisement. The client then requests the address before getting a reply acknowledgement from the server.
 
-DHCP Servers and clients identify themselves with variable length DUID (Device Unique ID). On the Raspberry Pi this is derived from the mac address (DUID_LL).
+DHCP Servers and clients identify themselves with variable length DUID (Device Unique ID). On the Raspberry Pi this is derived from the MAC address (DUID_LL).
 
 ==== TFTP address
 
@@ -172,7 +172,7 @@ Retransmit time           :  unspecified (0x00000000)
 
 If the boot uart is enabled you should see something like this from the serial port. The lines starting RX6 indicate that IPv6 is in use.
 
-Here `dc:a6:32:6f:73:f4` is the mac address of the TFTP server and it has an IPv6 address of `fd49:869:6f93::1`. The device itself has a MAC address `e4:5f:01:20:24:0b` and an IPv6 address of `fd49:869:6f93::1000`
+Here `dc:a6:32:6f:73:f4` is the MAC address of the TFTP server and it has an IPv6 address of `fd49:869:6f93::1`. The device itself has a MAC address `e4:5f:01:20:24:0b` and an IPv6 address of `fd49:869:6f93::1000`
 
 ----
 Boot mode: NETWORK (02) order f
@@ -259,7 +259,7 @@ The device sends a neighbour solicitation to the FTP server because it needs its
             0x0000:  e45f 0120 240b
 ----
 
-The FTP server replies with its mac address.
+The FTP server replies with its MAC address.
 
 ----
 12:23:36.510854 dc:a6:32:6f:73:f4 (oui Unknown) > e4:5f:01:20:24:0b (oui Unknown), ethertype IPv6 (0x86dd), length 86: (hlim 255, next-header ICMPv6 (58) payload length: 32) fd49:869:6f93::1 > fe80::e65f:1ff:fe20:240b: [icmp6 sum ok] ICMP6, neighbor advertisement, length 32, tgt is fd49:869:6f93::1, Flags [solicited, override]
@@ -317,7 +317,7 @@ The DHCP server replies with the TFTP server details (`opt_59`).
 12:55:27.838898 dc:a6:32:6f:73:f4 (oui Unknown) > e4:5f:01:20:24:0b (oui Unknown), ethertype IPv6 (0x86dd), length 150: (flowlabel 0xd1248, hlim 64, next-header UDP (17) payload length: 96) fe80::537a:52c:c647:b184.dhcpv6-server > fe80::e65f:1ff:fe20:240b.dhcpv6-client: [bad udp cksum 0xd870 -> 0x78bb!] dhcp6 reply (xid=e5e0a4 (client-ID hwaddr type 1 e45f0120240b) (server-ID hwaddr/time type 1 time 671211709 dca6326f73f4) (opt_59))
 ----
 
-The device asks for the TFTP server mac address since it can tell it's on the same network.
+The device asks for the TFTP server MAC address since it can tell it's on the same network.
 
 ----
 12:55:28.834796 e4:5f:01:20:24:0b (oui Unknown) > 33:33:ff:1d:fe:2a (oui Unknown), ethertype IPv6 (0x86dd), length 86: (hlim 255, next-header ICMPv6 (58) payload length: 32) fe80::e65f:1ff:fe20:240b > ff02::1:ff1d:fe2a: [icmp6 sum ok] ICMP6, neighbor solicitation, length 32, who has 2a00:23c5:ee00:5001:57f1:7523:2f1d:fe2a
