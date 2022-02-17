@@ -203,7 +203,7 @@ You can examine network activity with tcpdump.
 $ sudo tcpdump -i eth0 -e ip6 -XX -l -v -vv
 ----
 
-Below is an extract of a tcp dump where the router is configured to use stateful (DHCP) network configuration.
+Below is an extract of a TCP dump where the router is configured to use stateful (DHCP) network configuration.
 
 Device sends a router solicitation.
 
