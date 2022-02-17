@@ -152,7 +152,7 @@ Reachable time            :  unspecified (0x00000000)
 Retransmit time           :  unspecified (0x00000000)
 ----
 
-You might be able to configure your router for stateful configuration, in which means it will use DHCP to obtain an IP address.
+You might be able to configure your router for stateful configuration, which means it will use DHCP to obtain an IP address.
 
 ----
 Hop limit                 :           64 (      0x40)
