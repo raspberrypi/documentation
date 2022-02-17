@@ -68,7 +68,7 @@ $ sudo systemctl start tftpd-hpa
 
 ==== DHCP Server
 
-DHCP in IPv6 has changed a lot in IPv6. We need DHCP to at least tell us the address of the TFTP server, which in this case is the same machine.
+DHCP in IPv6 has changed a lot. We need DHCP to at least tell us the address of the TFTP server, which in this case is the same machine.
 
 [,bash]
 ----
