@@ -39,7 +39,7 @@ You can specify which display `tvservice` uses by adding `-v <display id>` to th
 
 Setting a specific mode is done using the `hdmi_group` and `hdmi_mode` config.txt entries. The group entry selects between CEA or DMT, and the mode selects the resolution and frame rate. You can find tables of modes on the config.txt xref:config_txt.adoc#video-options[Video Configuration] page, but you should use the `tvservice` command described above to find out exactly which modes your device supports.
 
-On the Raspberry Pi 4, to specify the HDMI port, add an index identifier to the `hdmi_group` or `hdmi_mode` entry in config.txt, e.g. `hdmi_mode:0` or `hdmi_group:1`.
+On the Raspberry Pi 4 and Raspberry Pi 400 to specify the HDMI port, add an index identifier to the `hdmi_group` or `hdmi_mode` entry in config.txt, e.g. `hdmi_mode:0` or `hdmi_group:1`.
 
 === Setting a Custom HDMI Mode
 
@@ -140,7 +140,7 @@ hdmi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> 
 | 8
 |===
 
-For the Raspberry Pi 4, to specify the HDMI port, you can add an index identifier to the config.txt. e.g. `+hdmi_cvt:0=...+` or `+hdmi_timings:1=...+`. If no port identifier is specified, the settings are applied to port 0.
+For the Raspberry Pi 4 and Raspberry Pi 400 to specify the HDMI port, you can add an index identifier to the config.txt. e.g. `+hdmi_cvt:0=...+` or `+hdmi_timings:1=...+`. If no port identifier is specified, the settings are applied to port 0.
 
 === Troubleshooting your HDMI
 
