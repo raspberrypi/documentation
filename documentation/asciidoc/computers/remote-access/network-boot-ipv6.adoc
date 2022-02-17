@@ -29,11 +29,11 @@ The router advertisement includes a flag which tells it whether to use stateful 
 
 If the router indicates that stateful configuration is enabled DHCP is used to obtain the IP address of the device. This involves the device sending a solicitation request to a DHCP server which responds with an advertisement. The client then requests the address before getting a reply acknowledgement from the server.
 
-DHCP Servers and clients identify themselves with variable length DUID (device unique ids). On the Raspberry Pi this is derived from the mac address (DUID_LL).
+DHCP Servers and clients identify themselves with variable length DUID (Device Unique ID). On the Raspberry Pi this is derived from the mac address (DUID_LL).
 
 ==== TFTP address
 
-Whether using stateless or stateful configuration, the DHCP server is used to obtain the TFTP server address. This is encoded in the `BOOTFILE-URL` parameter. We send the client architecture type value `0x29` to identify a PI device..
+Whether using stateless or stateful configuration, the DHCP server is used to obtain the TFTP server address. This is encoded in the `BOOTFILE-URL` parameter. We send the client architecture type value `0x29` to identify a device.
 
 See https://datatracker.ietf.org/doc/html/rfc5970[RFC 5970] and the https://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml[IANA Dynamic Host Configutation Protocol for IPv6] documentation.
 
@@ -88,7 +88,7 @@ In `/etc/dhcp/dhcpd6.conf` you need to specify the TFTP server address and setup
 ----
 not authoritative;
 
-# Check if the client looks like a raspberry Pi device
+# Check if the client looks like a Raspberry Pi
 if option dhcp6.client-arch-type = 00:29 {
         option dhcp6.bootfile-url "tftp://[fd49:869:6f93::1]/";
 }
@@ -172,7 +172,7 @@ Retransmit time           :  unspecified (0x00000000)
 
 If the boot uart is enabled you should see something like this from the serial port. The lines starting RX6 indicate that IPv6 is in use.
 
-Here `dc:a6:32:6f:73:f4` is the mac address of the TFTP server and it has an IPv6 address of `fd49:869:6f93::1`. The device itself has a mac address `e4:5f:01:20:24:0b` and an IPv6 address of `fd49:869:6f93::1000`
+Here `dc:a6:32:6f:73:f4` is the mac address of the TFTP server and it has an IPv6 address of `fd49:869:6f93::1`. The device itself has a MAC address `e4:5f:01:20:24:0b` and an IPv6 address of `fd49:869:6f93::1000`
 
 ----
 Boot mode: NETWORK (02) order f
@@ -251,7 +251,7 @@ The DHCP server replies, `opt_59` is used to pass the address of the TFTP server
 12:23:35.512122 dc:a6:32:6f:73:f4 (oui Unknown) > e4:5f:01:20:24:0b (oui Unknown), ethertype IPv6 (0x86dd), length 172: (flowlabel 0xad54d, hlim 64, next-header UDP (17) payload length: 118) fe80::537a:52c:c647:b184.dhcpv6-server > fe80::e65f:1ff:fe20:240b.dhcpv6-client: [bad udp cksum 0xd886 -> 0x6826!] dhcp6 reply (xid=8cdd56 (IA_NA IAID:0 T1:3600 T2:7200 (IA_ADDR fd49:869:6f93::1000 pltime:604800 vltime:2592000)) (client-ID hwaddr type 1 e45f0120240b) (server-ID hwaddr/time type 1 time 671211709 dca6326f73f4) (opt_59))
 ----
 
-The Device sends a neighbour solicitation to the FTP server because it needs its MAC address.
+The device sends a neighbour solicitation to the FTP server because it needs its MAC address.
 
 ----
 12:23:36.510768 e4:5f:01:20:24:0b (oui Unknown) > 33:33:ff:00:00:01 (oui Unknown), ethertype IPv6 (0x86dd), length 86: (hlim 255, next-header ICMPv6 (58) payload length: 32) fe80::e65f:1ff:fe20:240b > ff02::1:ff00:1: [icmp6 sum ok] ICMP6, neighbor solicitation, length 32, who has fd49:869:6f93::1
@@ -317,7 +317,7 @@ The DHCP server replies with the TFTP server details (`opt_59`).
 12:55:27.838898 dc:a6:32:6f:73:f4 (oui Unknown) > e4:5f:01:20:24:0b (oui Unknown), ethertype IPv6 (0x86dd), length 150: (flowlabel 0xd1248, hlim 64, next-header UDP (17) payload length: 96) fe80::537a:52c:c647:b184.dhcpv6-server > fe80::e65f:1ff:fe20:240b.dhcpv6-client: [bad udp cksum 0xd870 -> 0x78bb!] dhcp6 reply (xid=e5e0a4 (client-ID hwaddr type 1 e45f0120240b) (server-ID hwaddr/time type 1 time 671211709 dca6326f73f4) (opt_59))
 ----
 
-The Device asks for the TFTP server mac address since it can tell it's on the same network.
+The device asks for the TFTP server mac address since it can tell it's on the same network.
 
 ----
 12:55:28.834796 e4:5f:01:20:24:0b (oui Unknown) > 33:33:ff:1d:fe:2a (oui Unknown), ethertype IPv6 (0x86dd), length 86: (hlim 255, next-header ICMPv6 (58) payload length: 32) fe80::e65f:1ff:fe20:240b > ff02::1:ff1d:fe2a: [icmp6 sum ok] ICMP6, neighbor solicitation, length 32, who has 2a00:23c5:ee00:5001:57f1:7523:2f1d:fe2a
