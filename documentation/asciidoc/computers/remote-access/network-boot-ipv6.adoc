@@ -25,7 +25,7 @@ If your ISP and router don't support IPv6 you will be limited in what you can do
 
 The first thing the bootloader does is send a router solicitation to get the details of the network. The router responds with an advertisement packet identifying its ethernet address, which the bootloader might need if the TFTP server is on a different network.
 
-The router advertisement includes a flag which tells it whether to use stateful (managed) or stateless (unmanaged) configuration for its IP address. Stateless configuration means that the device configures its own IP address. Currenly the bootloader generates an address derived from its ethernet mac address and a network prefix supplied by the router.
+The router advertisement includes a flag which tells it whether to use stateful (managed) or stateless (unmanaged) configuration for its IP address. Stateless configuration means that the device configures its own IP address. Currently the bootloader generates an address derived from its ethernet mac address and a network prefix supplied by the router.
 
 If the router indicates that stateful configuration is enabled DHCP is used to obtain the IP address of the device. This involves the device sending a solicitation request to a DHCP server which responds with an advertisement. The client then requests the address before getting a reply acknowledgement from the server.
 
