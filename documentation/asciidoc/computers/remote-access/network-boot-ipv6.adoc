@@ -1,25 +1,25 @@
-== Network booting using IPV6
+== Network booting using IPv6
 
-There are 4 stages to booting an PI device over the network:
+There are 4 stages to booting a Raspberry Pi computer over the network:
 
-1. The bootloader negotiates  to get an IP address and the details of a TFTP server. It uses DHCP to do this.
+1. The bootloader negotiates to get an IP address and the details of a TFTP server using DHCP.
 2. The bootloader loads the firmware via TFTP and hands over the boot process to the firmware, passing it the details of the network.
-3. The firmware loads the kernel and command line via TFTP
-4. The kernel boots the rest of the system,  loading the root filesystem (rootfs) via NFS or some other mechanism.
+3. The firmware loads the kernel and command line via TFTP.
+4. The kernel boots the rest of the system, loading the root filesystem (rootfs) via NFS or some other mechanism.
 
-The bootloader and firmware (stages 1 to 3) have been enhanced to support booting over IPV6.
+The bootloader and firmware (stages 1 to 3) have been enhanced to support booting over IPv6.
 
-NOTE: IPV6 netboot is an experimental alpha feature and depending on feedback, we may need to change how it works in future. This only works on PI4 and CM4.
+IMPORTANT: IPv6 netboot is an *experimental alpha feature* and depending on feedback, we may need to change how it works in future. This only works on Raspberry Pi 4 and Compute Module 4.
 
 === How it works
 
-To boot via IPV6 you need an updated version of the firmware (e.g. start4.elf) and the bootloader. Using the Raspberry PI Bullseye release and the latest stable bootloader should be enough.
+To boot via IPv6 you need an updated version of the firmware (e.g. `start4.elf`) and the bootloader. Using the Bullseye release of Raspberry Pi OS and the latest stable bootloader should be sufficient.
 
-The dnsmasq DHCP server doesn't currently support the network boot parameters required for IPV6 network boot. For the time being you will have to use a different DHCP server such as ISC DHCP.
+NOTE: The commonly used `dnsmasq` DHCP server doesn't currently support the network boot parameters required for IPv6 network boot, so for the time being you will have to use a different DHCP server such as https://www.isc.org/dhcp/[ISC DHCP].
 
-To mount rootfs over the network the IPV4 netboot tutorial suggests using nfsroot. This doesn't support IPV6, so another method is needed to mount rootfs over the network.
+To mount `rootfs` over the network the xref:remote-access.adoc#network-boot-your-raspberry-pi[IPv4 netboot tutorial] suggests using `nfsroot`. This doesn't support IPv6, so another method is needed to mount `rootfs` over the network.
 
-If your ISP and router don't support IPV6 you will be limited in what you can do.
+If your ISP and router don't support IPv6 you will be limited in what you can do.
 
 ==== Network addresses
 
@@ -29,13 +29,13 @@ The router advertisement includes a flag which tells it whether to use stateful 
 
 If the router indicates that stateful configuration is enabled DHCP is used to obtain the IP address of the device. This involves the device sending a solicitation request to a DHCP server which responds with an advertisement. The client then requests the address before getting a reply acknowledgement from the server.
 
-DHCP Servers and clients identify themselves with variable length DUID (device unique ids). For the PI device this is derived from the mac address (DUID_LL).
+DHCP Servers and clients identify themselves with variable length DUID (device unique ids). On the Raspberry Pi this is derived from the mac address (DUID_LL).
 
 ==== TFTP address
 
 Whether using stateless or stateful configuration, the DHCP server is used to obtain the TFTP server address. This is encoded in the `BOOTFILE-URL` parameter. We send the client architecture type value `0x29` to identify a PI device..
 
-See https://datatracker.ietf.org/doc/html/rfc5970 and  https://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml
+See https://datatracker.ietf.org/doc/html/rfc5970[RFC 5970] and the https://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml[IANA Dynamic Host Configutation Protocol for IPv6] documentation.
 
 ==== Boot process
 
@@ -43,36 +43,36 @@ The device should now have an IP address and TFTP details. It downloads the firm
 
 ==== Kernel Boot
 
-With IPV4 netboot, nfsroot is used to mount rootfs over the network. This doesn't support IPV6 so another solution is required. It might involve a small ram file system that can mount the appropriate network location before switching to the proper rootfs contents.
+With IPv4 netboot, `nfsroot` is used to mount `rootfs` over the network. This doesn't support IPv6 so another solution is required. It might involve a small RAM file system that can mount the appropriate network location before switching to the proper `rootfs` contents.
 
-NOTE: A mechanism to boot the Linux kernel with nfs via IPV6 is still to be demonstrated.
+NOTE: A mechanism to boot the Linux kernel with NFS via IPv6 is still to be demonstrated.
 
 === Test Setup
 
-If you want to try this out you will need another PI device to act as the TFTP and DHCP server.
+If you want to try this out you will need another Raspberry Pi to act as the TFTP and DHCP server.
 
 The TFTP server can in theory be on any routable network but the DHCP server has to be on the same network as the devices it will serve.
 
 ==== TFTP Server
 
-If you have a working IPV4 network boot setup you can reuse the TFTP server in dnsmasq to supply the files (it can talk to both IPV4 and 
-IPV6).
+If you have a working IPv4 network boot setup you can reuse the TFTP server in dnsmasq to supply the files (it can talk to both IPv4 and 
+IPv6).
 
-Alternatively you can use a standalone TFTP server like tftpd-hpa.
+Alternatively you can use a standalone TFTP server like `tftpd-hpa`.
 
 [,bash]
 ----
-sudo apt-get install tftpd-hpa
-sudo systemctl start tftpd-hpa
+$ sudo apt-get install tftpd-hpa
+$ sudo systemctl start tftpd-hpa
 ----
 
 ==== DHCP Server
 
-DHCP in IPV6 has changed a lot in IPV6. We need DHCP to at least tell us the address of the TFTP server, which in this case is the same machine.
+DHCP in IPv6 has changed a lot in IPv6. We need DHCP to at least tell us the address of the TFTP server, which in this case is the same machine.
 
 [,bash]
 ----
-sudo apt-get install isc-dhcp-server
+$ sudo apt-get install isc-dhcp-server
 ----
 
 Modify the configuration in `/etc/default/isc-dhcp-server`
@@ -101,7 +101,7 @@ subnet6 fd49:869:6f93::/64 {
 }
 ----
 
-Your server has to be assigned the IPV6 address in `/etc/dhcpcd.conf`
+Your server has to be assigned the IPv6 address in `/etc/dhcpcd.conf`
 
 ----
 interface eth0
@@ -112,24 +112,24 @@ Now start the DHCP server.
 
 [,bash]
 ----
-sudo systemctl restart isc-dhcp-server.service
+$ sudo systemctl restart isc-dhcp-server.service
 ----
 
 ==== Bootloader
 
-Modify the configuration to tell it to attempt network boot via IPV6 rather than IPV4.
+Modify the configuration to tell it to attempt network boot via IPv6 rather than IPv4.
 
 ----
 BOOT_ORDER=0xf21 # 2=Network boot
-USE_IPV6=1 # Enable IPV6 network boot
+USE_IPV6=1 # Enable IPv6 network boot
 BOOT_UART=1 # Debug
 ----
 
-To revert to IPV4 network boot just remove the `USE_IPV6` line from `boot.conf`.
+To revert to IPv4 network boot just remove the `USE_IPV6` line from `boot.conf`.
 
 ==== Router
 
-To use IPV6 you really need a router and ISP that supports IPV6. There are sites on the internet that can check this for you or alternatively run the following command.
+To use IPv6 you really need a router and ISP that supports IPv6. There are sites on the internet that can check this for you or alternatively run the following command.
 
 [,bash]
 ----
@@ -137,7 +137,7 @@ sudo apt-get install ndisc6
 rdisc6 -1 eth0
 ----
 
-This sends a router solicitation to your router asking for your network details such as the network prefix, router ethernet address and whether to use DHCP for addressing. If there's no response to this command it's likely your network and ISP only supports IPV4. If IPV6 is supported it's most likely that it will be configured to use stateless configuration where clients generate their own addresses.
+This sends a router solicitation to your router asking for your network details such as the network prefix, router ethernet address and whether to use DHCP for addressing. If there's no response to this command it's likely your network and ISP only supports IPv4. If IPv6 is supported it's most likely that it will be configured to use stateless configuration where clients generate their own addresses.
 
 ----
 Soliciting ff02::2 (ff02::2) on eth0...
@@ -170,9 +170,9 @@ Retransmit time           :  unspecified (0x00000000)
 
 ==== Logs and Traces
 
-If the boot uart is enabled you should see something like this from the serial port. The lines starting RX6 indicate that IPV6 is in use.
+If the boot uart is enabled you should see something like this from the serial port. The lines starting RX6 indicate that IPv6 is in use.
 
-Here `dc:a6:32:6f:73:f4` is the mac address of the TFTP server and it has an IPV6 address of `fd49:869:6f93::1`. The device itself has a mac address `e4:5f:01:20:24:0b` and an IPV6 address of `fd49:869:6f93::1000`
+Here `dc:a6:32:6f:73:f4` is the mac address of the TFTP server and it has an IPv6 address of `fd49:869:6f93::1`. The device itself has a mac address `e4:5f:01:20:24:0b` and an IPv6 address of `fd49:869:6f93::1000`
 
 ----
 Boot mode: NETWORK (02) order f
@@ -200,7 +200,7 @@ You can examine network activity with tcpdump.
 
 [,bash]
 ----
-sudo tcpdump -i eth0 -e ip6 -XX -l -v -vv
+$ sudo tcpdump -i eth0 -e ip6 -XX -l -v -vv
 ----
 
 Below is an extract of a tcp dump where the router is configured to use stateful (DHCP) network configuration.
@@ -239,19 +239,19 @@ The DHCP server replies with an advertisement.
 12:23:35.510478 dc:a6:32:6f:73:f4 (oui Unknown) > e4:5f:01:20:24:0b (oui Unknown), ethertype IPv6 (0x86dd), length 172: (flowlabel 0xad54d, hlim 64, next-header UDP (17) payload length: 118) fe80::537a:52c:c647:b184.dhcpv6-server > fe80::e65f:1ff:fe20:240b.dhcpv6-client: [bad udp cksum 0xd886 -> 0x6d26!] dhcp6 advertise (xid=8cdd56 (IA_NA IAID:0 T1:3600 T2:7200 (IA_ADDR fd49:869:6f93::1000 pltime:604800 vltime:2592000)) (client-ID hwaddr type 1 e45f0120240b) (server-ID hwaddr/time type 1 time 671211709 dca6326f73f4) (opt_59))
 ----
 
-DThe evice sends a request for an address and TFTP details to the DHCP server.
+The device sends a request for an address and TFTP details to the DHCP server.
 
 ----
 12:23:35.510763 e4:5f:01:20:24:0b (oui Unknown) > 33:33:00:01:00:02 (oui Unknown), ethertype IPv6 (0x86dd), length 132: (hlim 255, next-header UDP (17) payload length: 78) fe80::e65f:1ff:fe20:240b.dhcpv6-client > ff02::1:2.dhcpv6-server: [udp sum ok] dhcp6 request (xid=8cdd56 (client-ID hwaddr type 1 e45f0120240b) (server-ID hwaddr/time type 1 time 671211709 dca6326f73f4) (IA_NA IAID:0 T1:0 T2:0) (option-request opt_59) (opt_61) (elapsed-time 1))
 ----
 
-The DHCP server replies, opt_59 is used to pass the address of the TFTP server.
+The DHCP server replies, `opt_59` is used to pass the address of the TFTP server.
 
 ----
 12:23:35.512122 dc:a6:32:6f:73:f4 (oui Unknown) > e4:5f:01:20:24:0b (oui Unknown), ethertype IPv6 (0x86dd), length 172: (flowlabel 0xad54d, hlim 64, next-header UDP (17) payload length: 118) fe80::537a:52c:c647:b184.dhcpv6-server > fe80::e65f:1ff:fe20:240b.dhcpv6-client: [bad udp cksum 0xd886 -> 0x6826!] dhcp6 reply (xid=8cdd56 (IA_NA IAID:0 T1:3600 T2:7200 (IA_ADDR fd49:869:6f93::1000 pltime:604800 vltime:2592000)) (client-ID hwaddr type 1 e45f0120240b) (server-ID hwaddr/time type 1 time 671211709 dca6326f73f4) (opt_59))
 ----
 
-The Device sends a neighbour solicitation to the ftp server because it needs its mac address.
+The Device sends a neighbour solicitation to the FTP server because it needs its MAC address.
 
 ----
 12:23:36.510768 e4:5f:01:20:24:0b (oui Unknown) > 33:33:ff:00:00:01 (oui Unknown), ethertype IPv6 (0x86dd), length 86: (hlim 255, next-header ICMPv6 (58) payload length: 32) fe80::e65f:1ff:fe20:240b > ff02::1:ff00:1: [icmp6 sum ok] ICMP6, neighbor solicitation, length 32, who has fd49:869:6f93::1
@@ -311,7 +311,7 @@ The device sends an information request to the DHCP multicast address asking for
 12:55:27.838300 e4:5f:01:20:24:0b (oui Unknown) > 33:33:00:01:00:02 (oui Unknown), ethertype IPv6 (0x86dd), length 98: (hlim 255, next-header UDP (17) payload length: 44) fe80::e65f:1ff:fe20:240b.dhcpv6-client > ff02::1:2.dhcpv6-server: [udp sum ok] dhcp6 inf-req (xid=e5e0a4 (client-ID hwaddr type 1 e45f0120240b) (option-request opt_59) (opt_61) (elapsed-time 0))
 ----
 
-The DHCP server replies with the TFTP server details (opt_59).
+The DHCP server replies with the TFTP server details (`opt_59`).
 
 ----
 12:55:27.838898 dc:a6:32:6f:73:f4 (oui Unknown) > e4:5f:01:20:24:0b (oui Unknown), ethertype IPv6 (0x86dd), length 150: (flowlabel 0xd1248, hlim 64, next-header UDP (17) payload length: 96) fe80::537a:52c:c647:b184.dhcpv6-server > fe80::e65f:1ff:fe20:240b.dhcpv6-client: [bad udp cksum 0xd870 -> 0x78bb!] dhcp6 reply (xid=e5e0a4 (client-ID hwaddr type 1 e45f0120240b) (server-ID hwaddr/time type 1 time 671211709 dca6326f73f4) (opt_59))
