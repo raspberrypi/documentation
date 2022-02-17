@@ -11,7 +11,7 @@ The resulting file can be played with `vlc` (among other applications)
 ----
 vlc test.h264
 ----
-Note that this is an unpackaged video bistream, it is not wrapped in any kind of container format (such as an mp4 file). The `--save-pts` option can be used to output frame timestamps so that the bitstream can subsequently be converted into an appropriate format using a tool like `mkvmerge`.
+Note that this is an unpackaged video bitstream, it is not wrapped in any kind of container format (such as an mp4 file). The `--save-pts` option can be used to output frame timestamps so that the bitstream can subsequently be converted into an appropriate format using a tool like `mkvmerge`.
 
 `libcamera-vid -o test.h264 --save-pts timestamps.txt`
 

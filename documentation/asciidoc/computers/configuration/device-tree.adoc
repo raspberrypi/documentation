@@ -723,7 +723,7 @@ The HAT overlay is automatically loaded by the firmware after the base DTB, so i
 [[part3.5]]
 ==== Dynamic Device Tree
 
-As of Linux 4.4, the RPi kernels support the dynamic loading of overlays and parameters. Compatible kernels manage a stack of overlays that are applied on top of the base DTB. Changes are immediately reflected in `/proc/device-tree` and can cause modules to be loaded and platform devices to be created and destroyed.
+As of Linux 4.4, Raspberry Pi kernels support the dynamic loading of overlays and parameters. Compatible kernels manage a stack of overlays that are applied on top of the base DTB. Changes are immediately reflected in `/proc/device-tree` and can cause modules to be loaded and platform devices to be created and destroyed.
 
 The use of the word "stack" above is important - overlays can only be added and removed at the top of the stack; changing something further down the stack requires that anything on top of it must first be removed.
 

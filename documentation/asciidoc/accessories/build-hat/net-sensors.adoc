@@ -179,8 +179,8 @@ while (!Console.KeyAvailable)
 {
     var colorRead = colorSensor.GetColor();
     Console.WriteLine($"Color:     {colorRead}");
-    var relected = colorSensor.GetReflectedLight();
-    Console.WriteLine($"Reflected: {relected}");
+    var reflected = colorSensor.GetReflectedLight();
+    Console.WriteLine($"Reflected: {reflected}");
     var ambiant = colorSensor.GetAmbiantLight();
     Console.WriteLine($"Ambiant:   {ambiant}");
     var distance = colorSensor.GetDistance();

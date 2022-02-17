@@ -2,7 +2,7 @@
 
 === Editing the Configuration
 
-Before editing the bootloader configuration, xref:os.adoc#updating-and-upgrading-raspberry-pi-os[update your system] to get the latest version of the `rpi-eeprom` package.  Releases prior to the 2020-09-03 default/critical release will not support all features listed here.
+Before editing the bootloader configuration, xref:os.adoc#updating-and-upgrading-raspberry-pi-os[update your system] to get the latest version of the `rpi-eeprom` package.
 
 To view the current EEPROM configuration: +
 `rpi-eeprom-config`
@@ -28,7 +28,7 @@ Default: `0`
 
 If `1` then `sudo halt` will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.
 
-Default: `1` (`0` in original version of bootloader 2019-05-10)
+Default: `1`
 
 [[POWER_OFF_ON_HALT]]
 ==== POWER_OFF_ON_HALT
@@ -44,7 +44,6 @@ Default: `0`
 
 The `BOOT_ORDER` setting allows flexible configuration for the priority of different boot modes. It is represented as 32bit unsigned integer where each nibble represents a boot mode. The boot modes are attempted in lowest significant nibble to highest significant nibble order.
 
-The minimum supported bootloader version for custom boot modes is 2020-09-03.
 
 [discrete]
 ====== `BOOT_ORDER` fields
@@ -76,7 +75,7 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 
 | 0x5
 | BCM-USB-MSD
-| USB 2.0 boot from USB Type C socket (CM4: USB type A socket on CM IO board, using bootloader EEPROM from 2020-12-14 onwards).
+| USB 2.0 boot from USB Type C socket (CM4: USB type A socket on CM IO board).
 
 | 0x6
 | NVME
@@ -267,10 +266,10 @@ If self update is enabled then the bootloader will look for the update files (.s
 Notes:-
 
 * Self-update is not enabled in SD boot; the ROM can already load recovery.bin from the SD card.
-* Before self-update can be used the bootloader must have already been updated to a version which supports self update. The recommended approach would be to use the Raspberry Pi Imager and a spare SD card to update to pieeprom-2020-09-03 then use self-update for subsequent updates.
+* Bootloader releases prior to 2021 do not support `self-update`.
 * For network boot make sure that the TFTP `boot` directory can be mounted via NFS and that `rpi-eeprom-update` can write to it.
 
-Default: `1` (`0` in versions prior to 2020-09-03)
+Default: `1`
 
 [[FREEZE_VERSION]]
 ==== FREEZE_VERSION
@@ -334,6 +333,7 @@ Default: ""
 
 If no USB mass storage devices are found within this timeout then USB-MSD is stopped and the next boot mode is selected
 
+Minimum: `5000` (5 seconds) +
 Default: `20000` (20 seconds) +
 
 [[USB_MSD_LUN_TIMEOUT]]
@@ -341,6 +341,7 @@ Default: `20000` (20 seconds) +
 
 How long to wait in milliseconds before advancing to the next LUN e.g. a multi-slot SD-CARD reader. This is still being tweaked but may help speed up boot if old/slow devices are connected as well as a fast USB-MSD device containing the OS.
 
+Minimum: `100` +
 Default: `2000` (2 seconds)
 
 [[USB_MSD_PWR_OFF_TIME]]

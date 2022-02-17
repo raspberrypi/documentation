@@ -8,7 +8,7 @@ But how do you get the operating system onto your SD card if you don’t have an
 
 If you do not have another computer to run Raspberry Pi Imager you can start the application directly on a Raspberry Pi 4 or Raspberry Pi 400 by connecting it to the Internet with an Ethernet cable. This will allow you to install the operating system onto a **blank** SD Card directly from the network without using another computer.
 
-IMPORTANT: Network installation is only supported on Raspberry Pi 4 and Raspberry Pi 400. Additionally, to avoid slowing down “normal boot,” the network instllation feature is only enabled if there’s no bootable media present, and you have xref:raspberry-pi.adoc#usb-mass-storage-boot[USB mass storage boot] in your xref:raspberry-pi.adoc#BOOT_ORDER[boot order].
+IMPORTANT: Network installation is only supported on Raspberry Pi 4 and Raspberry Pi 400. Additionally, to avoid slowing down “normal boot,” the network installation feature is only enabled if there’s no bootable media present, and you have xref:raspberry-pi.adoc#usb-mass-storage-boot[USB mass storage boot] in your xref:raspberry-pi.adoc#BOOT_ORDER[boot order].
 
 === Updating to the BETA bootloader
 
@@ -20,7 +20,7 @@ WARNING: Installation of the beta bootloader should be fairly safe, but you shou
 
 The easiest way to update the bootloader on your Raspberry Pi 4 or 400 is by using the Raspberry Pi Imager, either running on your Raspberry Pi or another computer, to copy the required software onto an SD card. You’ll need a spare blank SD Card and, if you’re using a Raspberry Pi or another computer that doesn’t have an SD Card slot, a USB to SD Card dongle.
 
-You should be aware that the SD Card you’re using to update your Raspberry Pi’s bootloader will be wiped of any existing data, so you shouldn’t use the SD Card you are currently using with your Raspberry Pi.
+You should be aware that the SD Card you’re using to update your Raspberry Pi computer's bootloader will be wiped of any existing data, so you shouldn’t use the SD Card you are currently using with your Raspberry Pi.
 
 In the Imager application, click on the “Choose OS” button and scroll down the “Operating System” list in the pop-up window and select “Misc utility images”, then select “Beta Test Bootloader.”
 
@@ -51,11 +51,11 @@ You will need a keyboard to make use of the network installation feature. While 
 
 video::b1SYVpM9lto[youtube]
 
-You should also insert a **blank** SD Card into the Raspberry Pi's SD Card slot.
+You should also insert a **blank** SD Card into the SD card slot of your Raspberry Pi.
 
 NOTE: You should make sure there isn't a bootable SD Card, or USB drive, attached to your Raspberry Pi.
 
-Power on your Raspberry Pi. As always it will first look for an SD Card, and then a USB drive, to find bootable media. However if you have a keyboard attached the Raspberry Pi will now show the network installation screen.
+Power on your Raspberry Pi. As always it will first look for an SD Card, and then a USB drive, to find bootable media. However if you have a keyboard attached, the Raspberry Pi will now show the network installation screen.
 
 image::images/network-install-1.png[width="80%"]
 
@@ -73,4 +73,4 @@ image::images/network-install-4.png[width="80%"]
 
 NOTE: More information can about using the Raspberry Pi Imager can be found in the section on xref:getting-started.adoc#installing-the-operating-system[installing your operating system].
 
-After installing the operating system onto your blank SD Card you will not longer see the network installation screen on boot. If you do want to run it, you just need to remove any bootable disks. You can re-insert them later when the Raspberry PI Imager is running. But take care not to overwrite any working disks that you want to keep!
+After installing the operating system onto your blank SD Card you will no longer see the network installation screen on boot. If you do want to run it, you just need to remove any bootable disks. You can re-insert them later when Raspberry Pi Imager is running. But take care not to overwrite any working disks that you want to keep!

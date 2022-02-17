@@ -1,6 +1,6 @@
 === Using the Build HAT from .NET
 
-The Raspberry Pi Built HAT is refered to "Brick" in LEGO® parlance and you can talk directly to it from .NET using the https://datasheets.raspberrypi.com/build-hat/build-hat-serial-protocol.pdf[Build HAT Serial Protocol].
+The Raspberry Pi Built HAT is referred to "Brick" in LEGO® parlance and you can talk directly to it from .NET using the https://datasheets.raspberrypi.com/build-hat/build-hat-serial-protocol.pdf[Build HAT Serial Protocol].
 
 You can create a `brick` object as below,
 

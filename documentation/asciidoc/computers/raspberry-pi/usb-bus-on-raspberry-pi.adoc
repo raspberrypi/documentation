@@ -1,10 +1,10 @@
-== Universial Serial Bus (USB)
+== Universal Serial Bus (USB)
 
 In general, every device supported by Linux can be used with a Raspberry Pi, although there are some limitations for models prior to Pi 4.
 
 === Maximum Power Output
 
-As with all computers, the USB ports on the Raspberry Pi supply a limited amount of power. Often problems with USB devices are caused by power issues. To rule out power as the cause of an problem, connect your USB devices to the Raspberry Pi using a powered hub.
+As with all computers, the USB ports on the Raspberry Pi supply a limited amount of power. Often problems with USB devices are caused by power issues. To rule out insufficient power as the cause of the problem, connect your USB devices to the Raspberry Pi using a powered hub.
 
 |===
 | Model | Max power output of USB ports
