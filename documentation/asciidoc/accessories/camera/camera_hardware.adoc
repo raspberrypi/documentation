@@ -231,6 +231,8 @@ The maximum exposure times of the three official Raspberry Pi cameras are given 
 
 === Mechanical Drawings
 
+image:images/RPi-S5-conn.png[camera connector]
+
 * Camera Module v2 https://datasheets.raspberrypi.com/camera/camera-v2-mechanical-drawing.pdf[PDF]
 * HQ Camera Module https://datasheets.raspberrypi.com/hq-camera/hq-camera-mechanical-drawing.pdf[PDF]
 * HQ Camera Module lens mount https://datasheets.raspberrypi.com/hq-camera/hq-camera-lensmount-drawing.pdf[PDF]
