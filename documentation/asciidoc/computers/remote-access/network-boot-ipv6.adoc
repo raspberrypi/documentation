@@ -1,0 +1,340 @@
+== Network booting using IPv6
+
+There are 4 stages to booting a Raspberry Pi computer over the network:
+
+1. The bootloader negotiates to get an IP address and the details of a TFTP server using DHCP.
+2. The bootloader loads the firmware via TFTP and hands over the boot process to the firmware, passing it the details of the network.
+3. The firmware loads the kernel and command line via TFTP.
+4. The kernel boots the rest of the system, loading the root filesystem (rootfs) via NFS or some other mechanism.
+
+The bootloader and firmware (stages 1 to 3) have been enhanced to support booting over IPv6.
+
+IMPORTANT: IPv6 netboot is an *experimental alpha feature* and depending on feedback, we may need to change how it works in future. This only works on Raspberry Pi 4 and Compute Module 4.
+
+=== How it works
+
+To boot via IPv6 you need an updated version of the firmware (e.g. `start4.elf`) and the bootloader. Using the Bullseye release of Raspberry Pi OS and the latest stable bootloader should be sufficient.
+
+NOTE: The commonly used `dnsmasq` DHCP server doesn't currently support the network boot parameters required for IPv6 network boot, so for the time being you will have to use a different DHCP server such as https://www.isc.org/dhcp/[ISC DHCP].
+
+To mount `rootfs` over the network the xref:remote-access.adoc#network-boot-your-raspberry-pi[IPv4 netboot tutorial] suggests using `nfsroot`. This doesn't support IPv6, so another method is needed to mount `rootfs` over the network.
+
+If your ISP and router don't support IPv6 you will be limited in what you can do.
+
+==== Network addresses
+
+The first thing the bootloader does is send a router solicitation to get the details of the network. The router responds with an advertisement packet identifying its ethernet address, which the bootloader might need if the TFTP server is on a different network.
+
+The router advertisement includes a flag which tells it whether to use stateful (managed) or stateless (unmanaged) configuration for its IP address. Stateless configuration means that the device configures its own IP address. Currently the bootloader generates an address derived from its ethernet MAC address and a network prefix supplied by the router.
+
+If the router indicates that stateful configuration is enabled DHCP is used to obtain the IP address of the device. This involves the device sending a solicitation request to a DHCP server which responds with an advertisement. The client then requests the address before getting a reply acknowledgement from the server.
+
+DHCP Servers and clients identify themselves with variable length DUID (Device Unique ID). On the Raspberry Pi this is derived from the MAC address (DUID_LL).
+
+==== TFTP address
+
+Whether using stateless or stateful configuration, the DHCP server is used to obtain the TFTP server address. This is encoded in the `BOOTFILE-URL` parameter. We send the client architecture type value `0x29` to identify a device.
+
+See https://datatracker.ietf.org/doc/html/rfc5970[RFC 5970] and the https://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml[IANA Dynamic Host Configutation Protocol for IPv6] documentation.
+
+==== Boot process
+
+The device should now have an IP address and TFTP details. It downloads the firmware binary `start4.elf` from the TFTP server and continues running with this. The firmware is passed the IP address and TFTP server details so it can download the kernel and boot the rest of the system.
+
+==== Kernel Boot
+
+With IPv4 netboot, `nfsroot` is used to mount `rootfs` over the network. This doesn't support IPv6 so another solution is required. It might involve a small RAM file system that can mount the appropriate network location before switching to the proper `rootfs` contents.
+
+NOTE: A mechanism to boot the Linux kernel with NFS via IPv6 is still to be demonstrated.
+
+=== Test Setup
+
+If you want to try this out you will need another Raspberry Pi to act as the TFTP and DHCP server.
+
+The TFTP server can in theory be on any routable network but the DHCP server has to be on the same network as the devices it will serve.
+
+==== TFTP Server
+
+If you have a working IPv4 network boot setup you can reuse the TFTP server in dnsmasq to supply the files (it can talk to both IPv4 and 
+IPv6).
+
+Alternatively you can use a standalone TFTP server like `tftpd-hpa`.
+
+[,bash]
+----
+$ sudo apt-get install tftpd-hpa
+$ sudo systemctl start tftpd-hpa
+----
+
+==== DHCP Server
+
+DHCP in IPv6 has changed a lot. We need DHCP to at least tell us the address of the TFTP server, which in this case is the same machine.
+
+[,bash]
+----
+$ sudo apt-get install isc-dhcp-server
+----
+
+Modify the configuration in `/etc/default/isc-dhcp-server`
+
+[,bash]
+----
+DHCPDv6_CONF=/etc/dhcp/dhcpd6.conf
+INTERFACESv6="eth0"
+----
+
+In `/etc/dhcp/dhcpd6.conf` you need to specify the TFTP server address and setup a subnet. Here the DHCP server is configured to supply some made up unique local addresses (ULA). The `host test-rpi4` line tells DHCP to give a test device a fixed address.
+
+----
+not authoritative;
+
+# Check if the client looks like a Raspberry Pi
+if option dhcp6.client-arch-type = 00:29 {
+        option dhcp6.bootfile-url "tftp://[fd49:869:6f93::1]/";
+}
+
+subnet6 fd49:869:6f93::/64 {
+        host test-rpi4 {
+                host-identifier option dhcp6.client-id 00:03:00:01:e4:5f:01:20:24:0b;
+                fixed-address6 fd49:869:6f93::1000;
+        }
+}
+----
+
+Your server has to be assigned the IPv6 address in `/etc/dhcpcd.conf`
+
+----
+interface eth0
+static ip6_address=fd49:869:6f93::1/64
+----
+
+Now start the DHCP server.
+
+[,bash]
+----
+$ sudo systemctl restart isc-dhcp-server.service
+----
+
+==== Bootloader
+
+Modify the configuration to tell it to attempt network boot via IPv6 rather than IPv4.
+
+----
+BOOT_ORDER=0xf21 # 2=Network boot
+USE_IPV6=1 # Enable IPv6 network boot
+BOOT_UART=1 # Debug
+----
+
+To revert to IPv4 network boot just remove the `USE_IPV6` line from `boot.conf`.
+
+==== Router
+
+To use IPv6 you really need a router and ISP that supports IPv6. There are sites on the internet that can check this for you or alternatively run the following command.
+
+[,bash]
+----
+sudo apt-get install ndisc6
+rdisc6 -1 eth0
+----
+
+This sends a router solicitation to your router asking for your network details such as the network prefix, router ethernet address and whether to use DHCP for addressing. If there's no response to this command it's likely your network and ISP only supports IPv4. If IPv6 is supported it's most likely that it will be configured to use stateless configuration where clients generate their own addresses.
+
+----
+Soliciting ff02::2 (ff02::2) on eth0...
+Hop limit                 :           64 (      0x40)
+Stateful address conf.    :           No
+Stateful other conf.      :          Yes
+Mobile home agent         :           No
+Router preference         :       medium
+Neighbor discovery proxy  :           No
+Router lifetime           :          180 (0x000000b4) seconds
+Reachable time            :  unspecified (0x00000000)
+Retransmit time           :  unspecified (0x00000000)
+----
+
+You might be able to configure your router for stateful configuration, which means it will use DHCP to obtain an IP address.
+
+----
+Hop limit                 :           64 (      0x40)
+Stateful address conf.    :          Yes
+Stateful other conf.      :          Yes
+Mobile home agent         :           No
+Router preference         :       medium
+Neighbor discovery proxy  :           No
+Router lifetime           :          180 (0x000000b4) seconds
+Reachable time            :  unspecified (0x00000000)
+Retransmit time           :  unspecified (0x00000000)
+----
+
+=== Debugging
+
+==== Logs and Traces
+
+If the boot uart is enabled you should see something like this from the serial port. The lines starting RX6 indicate that IPv6 is in use.
+
+Here `dc:a6:32:6f:73:f4` is the MAC address of the TFTP server and it has an IPv6 address of `fd49:869:6f93::1`. The device itself has a MAC address `e4:5f:01:20:24:0b` and an IPv6 address of `fd49:869:6f93::1000`
+
+----
+Boot mode: NETWORK (02) order f
+GENET: RESET_PHY
+PHY ID 600d 84a2
+NET_BOOT: e4:5f:01:20:24:0b wait for link TFTP6: (null)
+LINK STATUS: speed: 100 full duplex
+Link ready
+GENET START: 64 16 32
+GENET: UMAC_START 0xe45f0120 0x240b0000
+RX6: 12 IP: 1 MAC: 1 ICMP: 1/1 UDP: 0/0 ICMP_CSUM_ERR: 0 UDP_CSUM_ERR: 0
+NET fd49:869:6f93::1000 tftp fd49:869:6f93::1
+RX6: 17 IP: 4 MAC: 4 ICMP: 2/2 UDP: 2/2 ICMP_CSUM_ERR: 0 UDP_CSUM_ERR: 0
+TFTP_GET: dc:a6:32:6f:73:f4 fd49:869:6f93::1 ab5a4158/start4.elf
+
+RX6: 17 IP: 4 MAC: 4 ICMP: 2/2 UDP: 2/2 ICMP_CSUM_ERR: 0 UDP_CSUM_ERR: 0
+RX6: 18 IP: 5 MAC: 5 ICMP: 2/2 UDP: 3/3 ICMP_CSUM_ERR: 0 UDP_CSUM_ERR: 0
+TFTP_GET: dc:a6:32:6f:73:f4 fd49:869:6f93::1 ab5a4158/config.txt
+----
+
+Finally the bootloader hands over to firmware which should load the kernel.
+
+==== Stateful configuration
+You can examine network activity with tcpdump.
+
+[,bash]
+----
+$ sudo tcpdump -i eth0 -e ip6 -XX -l -v -vv
+----
+
+Below is an extract of a TCP dump where the router is configured to use stateful (DHCP) network configuration.
+
+Device sends a router solicitation.
+
+----
+12:23:35.387046 e4:5f:01:20:24:0b (oui Unknown) > 33:33:00:00:00:02 (oui Unknown), ethertype IPv6 (0x86dd), length 70: (hlim 255, next-header ICMPv6 (58) payload length: 16) fe80::e65f:1ff:fe20:240b > ip6-allrouters: [icmp6 sum ok] ICMP6, router solicitation, length 16
+          source link-address option (1), length 8 (1): e4:5f:01:20:24:0b
+            0x0000:  e45f 0120 240b
+----
+
+Router sends a response telling the device to use stateful configuration.
+
+----
+12:23:35.498902 60:8d:26:a7:c1:88 (oui Unknown) > 33:33:00:00:00:01 (oui Unknown), ethertype IPv6 (0x86dd), length 110: (hlim 255, next-header ICMPv6 (58) payload length: 56) bthub.home > ip6-allnodes: [icmp6 sum ok] ICMP6, router advertisement, length 56
+        hop limit 64, Flags [managed, other stateful], pref medium, router lifetime 180s, reachable time 0ms, retrans timer 0ms
+          rdnss option (25), length 24 (3):  lifetime 60s, addr: bthub.home
+            0x0000:  0000 0000 003c fe80 0000 0000 0000 628d
+            0x0010:  26ff fea7 c188
+          mtu option (5), length 8 (1):  1492
+            0x0000:  0000 0000 05d4
+          source link-address option (1), length 8 (1): 60:8d:26:a7:c1:88
+            0x0000:  608d 26a7 c188
+----
+
+Device sends a DHCP solicitation.
+
+----
+12:23:35.502517 e4:5f:01:20:24:0b (oui Unknown) > 33:33:00:01:00:02 (oui Unknown), ethertype IPv6 (0x86dd), length 114: (hlim 255, next-header UDP (17) payload length: 60) fe80::e65f:1ff:fe20:240b.dhcpv6-client > ff02::1:2.dhcpv6-server: [udp sum ok] dhcp6 solicit (xid=8cdd56 (client-ID hwaddr type 1 e45f0120240b) (IA_NA IAID:0 T1:0 T2:0) (option-request opt_59) (opt_61) (elapsed-time 0))
+----
+
+The DHCP server replies with an advertisement.
+
+----
+12:23:35.510478 dc:a6:32:6f:73:f4 (oui Unknown) > e4:5f:01:20:24:0b (oui Unknown), ethertype IPv6 (0x86dd), length 172: (flowlabel 0xad54d, hlim 64, next-header UDP (17) payload length: 118) fe80::537a:52c:c647:b184.dhcpv6-server > fe80::e65f:1ff:fe20:240b.dhcpv6-client: [bad udp cksum 0xd886 -> 0x6d26!] dhcp6 advertise (xid=8cdd56 (IA_NA IAID:0 T1:3600 T2:7200 (IA_ADDR fd49:869:6f93::1000 pltime:604800 vltime:2592000)) (client-ID hwaddr type 1 e45f0120240b) (server-ID hwaddr/time type 1 time 671211709 dca6326f73f4) (opt_59))
+----
+
+The device sends a request for an address and TFTP details to the DHCP server.
+
+----
+12:23:35.510763 e4:5f:01:20:24:0b (oui Unknown) > 33:33:00:01:00:02 (oui Unknown), ethertype IPv6 (0x86dd), length 132: (hlim 255, next-header UDP (17) payload length: 78) fe80::e65f:1ff:fe20:240b.dhcpv6-client > ff02::1:2.dhcpv6-server: [udp sum ok] dhcp6 request (xid=8cdd56 (client-ID hwaddr type 1 e45f0120240b) (server-ID hwaddr/time type 1 time 671211709 dca6326f73f4) (IA_NA IAID:0 T1:0 T2:0) (option-request opt_59) (opt_61) (elapsed-time 1))
+----
+
+The DHCP server replies, `opt_59` is used to pass the address of the TFTP server.
+
+----
+12:23:35.512122 dc:a6:32:6f:73:f4 (oui Unknown) > e4:5f:01:20:24:0b (oui Unknown), ethertype IPv6 (0x86dd), length 172: (flowlabel 0xad54d, hlim 64, next-header UDP (17) payload length: 118) fe80::537a:52c:c647:b184.dhcpv6-server > fe80::e65f:1ff:fe20:240b.dhcpv6-client: [bad udp cksum 0xd886 -> 0x6826!] dhcp6 reply (xid=8cdd56 (IA_NA IAID:0 T1:3600 T2:7200 (IA_ADDR fd49:869:6f93::1000 pltime:604800 vltime:2592000)) (client-ID hwaddr type 1 e45f0120240b) (server-ID hwaddr/time type 1 time 671211709 dca6326f73f4) (opt_59))
+----
+
+The device sends a neighbour solicitation to the FTP server because it needs its MAC address.
+
+----
+12:23:36.510768 e4:5f:01:20:24:0b (oui Unknown) > 33:33:ff:00:00:01 (oui Unknown), ethertype IPv6 (0x86dd), length 86: (hlim 255, next-header ICMPv6 (58) payload length: 32) fe80::e65f:1ff:fe20:240b > ff02::1:ff00:1: [icmp6 sum ok] ICMP6, neighbor solicitation, length 32, who has fd49:869:6f93::1
+          source link-address option (1), length 8 (1): e4:5f:01:20:24:0b
+            0x0000:  e45f 0120 240b
+----
+
+The FTP server replies with its MAC address.
+
+----
+12:23:36.510854 dc:a6:32:6f:73:f4 (oui Unknown) > e4:5f:01:20:24:0b (oui Unknown), ethertype IPv6 (0x86dd), length 86: (hlim 255, next-header ICMPv6 (58) payload length: 32) fd49:869:6f93::1 > fe80::e65f:1ff:fe20:240b: [icmp6 sum ok] ICMP6, neighbor advertisement, length 32, tgt is fd49:869:6f93::1, Flags [solicited, override]
+          destination link-address option (2), length 8 (1): dc:a6:32:6f:73:f4
+            0x0000:  dca6 326f 73f4
+----
+
+TFTP requests are made by the device which should now boot over the network.
+
+----
+12:23:36.530820 e4:5f:01:20:24:0b (oui Unknown) > dc:a6:32:6f:73:f4 (oui Unknown), ethertype IPv6 (0x86dd), length 111: (hlim 255, next-header UDP (17) payload length: 57) fd49:869:6f93::1000.61785 > fd49:869:6f93::1.tftp: [udp sum ok]  49 RRQ "ab5a4158/start4.elf" octet tsize 0 blksize 1024
+----
+
+==== Stateless configuration
+
+Below is an extract of a tcp dump for a stateless (non-DHCP) network configuration.
+
+The device sends a router solicitation.
+
+----
+12:55:27.541909 e4:5f:01:20:24:0b (oui Unknown) > 33:33:00:00:00:02 (oui Unknown), ethertype IPv6 (0x86dd), length 70: (hlim 255, next-header ICMPv6 (58) payload length: 16) fe80::e65f:1ff:fe20:240b > ip6-allrouters: [icmp6 sum ok] ICMP6, router solicitation, length 16
+          source link-address option (1), length 8 (1): e4:5f:01:20:24:0b
+            0x0000:  e45f 0120 240b
+----
+
+The router replies with the network details.
+
+----
+12:55:27.834684 60:8d:26:a7:c1:88 (oui Unknown) > 33:33:00:00:00:01 (oui Unknown), ethertype IPv6 (0x86dd), length 174: (hlim 255, next-header ICMPv6 (58) payload length: 120) bthub.home > ip6-allnodes: [icmp6 sum ok] ICMP6, router advertisement, length 120
+        hop limit 64, Flags [other stateful], pref medium, router lifetime 180s, reachable time 0ms, retrans timer 0ms
+          prefix info option (3), length 32 (4): 2a00:23c5:ee00:5001::/64, Flags [onlink, auto, router], valid time 300s, pref. time 120s
+            0x0000:  40e0 0000 012c 0000 0078 0000 0000 2a00
+            0x0010:  23c5 ee00 5001 0000 0000 0000 0000
+          prefix info option (3), length 32 (4): fd4d:869:6f93::/64, Flags [onlink, auto, router], valid time 10080s, pref. time 2880s
+            0x0000:  40e0 0000 2760 0000 0b40 0000 0000 fd4d
+            0x0010:  0869 6f93 0000 0000 0000 0000 0000
+          rdnss option (25), length 24 (3):  lifetime 60s, addr: bthub.home
+            0x0000:  0000 0000 003c fe80 0000 0000 0000 628d
+            0x0010:  26ff fea7 c188
+          mtu option (5), length 8 (1):  1492
+            0x0000:  0000 0000 05d4
+          source link-address option (1), length 8 (1): 60:8d:26:a7:c1:88
+            0x0000:  608d 26a7 c188
+----
+
+The device sends an information request to the DHCP multicast address asking for the TFTP details.
+
+----
+12:55:27.838300 e4:5f:01:20:24:0b (oui Unknown) > 33:33:00:01:00:02 (oui Unknown), ethertype IPv6 (0x86dd), length 98: (hlim 255, next-header UDP (17) payload length: 44) fe80::e65f:1ff:fe20:240b.dhcpv6-client > ff02::1:2.dhcpv6-server: [udp sum ok] dhcp6 inf-req (xid=e5e0a4 (client-ID hwaddr type 1 e45f0120240b) (option-request opt_59) (opt_61) (elapsed-time 0))
+----
+
+The DHCP server replies with the TFTP server details (`opt_59`).
+
+----
+12:55:27.838898 dc:a6:32:6f:73:f4 (oui Unknown) > e4:5f:01:20:24:0b (oui Unknown), ethertype IPv6 (0x86dd), length 150: (flowlabel 0xd1248, hlim 64, next-header UDP (17) payload length: 96) fe80::537a:52c:c647:b184.dhcpv6-server > fe80::e65f:1ff:fe20:240b.dhcpv6-client: [bad udp cksum 0xd870 -> 0x78bb!] dhcp6 reply (xid=e5e0a4 (client-ID hwaddr type 1 e45f0120240b) (server-ID hwaddr/time type 1 time 671211709 dca6326f73f4) (opt_59))
+----
+
+The device asks for the TFTP server MAC address since it can tell it's on the same network.
+
+----
+12:55:28.834796 e4:5f:01:20:24:0b (oui Unknown) > 33:33:ff:1d:fe:2a (oui Unknown), ethertype IPv6 (0x86dd), length 86: (hlim 255, next-header ICMPv6 (58) payload length: 32) fe80::e65f:1ff:fe20:240b > ff02::1:ff1d:fe2a: [icmp6 sum ok] ICMP6, neighbor solicitation, length 32, who has 2a00:23c5:ee00:5001:57f1:7523:2f1d:fe2a
+          source link-address option (1), length 8 (1): e4:5f:01:20:24:0b
+            0x0000:  e45f 0120 240b
+----
+
+The FTP server replies with its MAC address.
+
+----
+12:55:28.834875 dc:a6:32:6f:73:f4 (oui Unknown) > e4:5f:01:20:24:0b (oui Unknown), ethertype IPv6 (0x86dd), length 86: (hlim 255, next-header ICMPv6 (58) payload length: 32) 2a00:23c5:ee00:5001:57f1:7523:2f1d:fe2a > fe80::e65f:1ff:fe20:240b: [icmp6 sum ok] ICMP6, neighbor advertisement, length 32, tgt is 2a00:23c5:ee00:5001:57f1:7523:2f1d:fe2a, Flags [solicited, override]
+          destination link-address option (2), length 8 (1): dc:a6:32:6f:73:f4
+            0x0000:  dca6 326f 73f4
+----
+
+The device starts making TFTP requests.
+
+----
+12:55:28.861097 e4:5f:01:20:24:0b (oui Unknown) > dc:a6:32:6f:73:f4 (oui Unknown), ethertype IPv6 (0x86dd), length 111: (hlim 255, next-header UDP (17) payload length: 57) 2a00:23c5:ee00:5001:e65f:1ff:fe20:240b.46930 > 2a00:23c5:ee00:5001:57f1:7523:2f1d:fe2a.tftp: [udp sum ok]  49 RRQ "ab5a4158/start4.elf" octet tsize 0 blksize 1024
+----
