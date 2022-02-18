@@ -37,7 +37,7 @@ Set the `disable_commandline_tags` command to `1` to stop `start.elf` from filli
 
 === `kernel`
 
-`kernel` is the alternative filename on the boot partition to use when loading the kernel. The default value on the Raspberry Pi 1, Zero and Zero W and Compute Module is `kernel.img`, and on the Pi 2, Pi 3, and Compute Module 3 it is `kernel7.img`. On the Pi4, it is `kernel7l.img`.
+`kernel` is the alternative filename on the boot partition to use when loading the kernel. The default value on the Raspberry Pi 1, Zero and Zero W and Compute Module is `kernel.img`, and on the Raspberry Pi 2, 3, 3+ and Zero 2 W and Compute Module 3 and 3+ it is `kernel7.img`. On the Pi4, it is `kernel7l.img`.
 
 === `arm_64bit`
 
