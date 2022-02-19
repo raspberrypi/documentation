@@ -45,7 +45,7 @@ If set to non-zero, forces the kernel loading system to assume a 64-bit kernel, 
 
 NOTE: 64-bit kernels may be uncompressed image files or a gzip archive of an image (which can still be called kernel8.img; the bootloader will recognize the archive from the signature bytes at the beginning).
 
-NOTE: The 64-bit kernel will only work on the Raspberry Pi 4, 3, and 2B rev 1.2 boards with latest firmware.
+NOTE: The 64-bit kernel will only work on the Raspberry Pi 3, 3+, 4, 400, Zero 2 W and 2B rev 1.2 boards with latest firmware.
 
 === `arm_control`
 
