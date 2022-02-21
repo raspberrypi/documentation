@@ -18,12 +18,16 @@ from buildhat import ForceSensor, ColorSensor
 button = ForceSensor('C')
 cs = ColorSensor('B')
 
-def handle_pressed():
+def handle_pressed(force):
     cs.on()
-    print(c.get_color())
+    print(cs.get_color())
 
-def handle_released():
+def handle_released(force):
     cs.off()
+
+button.when_pressed = handle_pressed
+button.when_released = handle_released
+pause()
 ----
 
 Run it and hold a coloured object (LEGO® elements are ideal) in front of the colour sensor and press the Force sensor plunger. The sensor’s LED should switch on and the name of the closest colour should be displayed in the thonny REPL. 
