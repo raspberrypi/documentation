@@ -1,6 +1,6 @@
 == Boot sequence
 
-IMPORTANT: The following boot sequence applies to the BCM2837 and BCM2837B0 based models of Raspberry Pi only. On models prior to this, the Raspberry Pi will try SD card boot, followed by xref:raspberry-pi.adoc#usb-device-boot-mode[USB device mode boot]. For the Raspberry Pi4 boot sequence please see the xref:raspberry-pi.adoc#raspberry-pi-4-boot-flow[Raspberry Pi 4 boot flow] section.
+IMPORTANT: The following boot sequence applies to the BCM2837 and BCM2837B0 based models of Raspberry Pi only. On models prior to this, the Raspberry Pi will try SD card boot, followed by xref:raspberry-pi.adoc#usb-device-boot-mode[USB device mode boot]. For the Raspberry Pi 4 boot sequence please see the xref:raspberry-pi.adoc#raspberry-pi-4-boot-flow[Raspberry Pi 4 boot flow] section.
 
 USB boot defaults on the Raspberry Pi 3 will depend on which version is being used. See this xref:raspberry-pi.adoc#usb-mass-storage-boot[page] for information on enabling USB boot modes when not enabled by default.
 
