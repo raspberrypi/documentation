@@ -236,7 +236,7 @@ On the Raspberry Pi 4, you can specify whether to boot from USB or network if th
 
 ===== Bootloader Version
 
-On the Raspberry Pi 4, you can tell the system to use the very latest boot ROM software, or default to the factory default if the latest version causes problems.
+On the Raspberry Pi 4, you can tell the system to use the very latest boot ROM software, or revert to the factory default if the latest version causes problems.
 
 [[update]]
 ==== Update
