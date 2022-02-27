@@ -6,7 +6,7 @@ It is used by the xref:raspberry-pi.adoc#raspberry-pi-zero-2-w[Raspberry Pi Zero
 
 image:images/RP3A0-crosssection.png[width="70%"]
 
-The RP3A0 is a Quad-core 64-bit Arm Cortex A53 CPU clocked at 1 GHz, although with a heat sink or other cooling solution in place, the chip can be be potentially overclocked to 1.2 GHz.
+The RP3A0 is a Quad-core 64-bit Arm Cortex A53 CPU clocked at 1 GHz, although with a heat sink or other cooling solution in place, the chip can be potentially overclocked to 1.2 GHz.
 
 Please refer to the following BCM2836 document for details on the ARM peripherals specification, which also applies to the BCM2837 and RP3A0.
 
