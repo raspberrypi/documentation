@@ -90,7 +90,7 @@ Enable/disable 2x2 pixel mapping.
 
 ===== Composite Video
 
-On the Raspberry Pi4, enable composite video. On models prior to the Raspberry Pi4, composite video is enabled by default so this option is not displayed.
+On the Raspberry Pi 4, enable composite video. On models prior to the Raspberry Pi 4, composite video is enabled by default so this option is not displayed.
 
 ===== Screen Blanking
 
@@ -232,11 +232,11 @@ Configure the network's proxy settings.
 
 ===== Boot Order
 
-On the Raspberry Pi4, you can specify whether to boot from USB or network if the SD card isn't inserted. See xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[this page] for more information.
+On the Raspberry Pi 4, you can specify whether to boot from USB or network if the SD card isn't inserted. See xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[this page] for more information.
 
 ===== Bootloader Version
 
-On the Raspberry Pi4, you can tell the system to use the very latest boot ROM software, or default to the factory default if the latest version causes problems.
+On the Raspberry Pi 4, you can tell the system to use the very latest boot ROM software, or revert to the factory default if the latest version causes problems.
 
 [[update]]
 ==== Update
