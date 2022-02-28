@@ -6,7 +6,7 @@ We are keen to accept and distribute interesting post-processing stages contribu
 
 ==== Basic Post-Processing Stages
 
-Post-processing stages have a simple API, and users can create their own by deriving from the `PostProcessingStage` class. The member functions that must be implemented are listed below, though note that some be be unnecessary for simple stages.
+Post-processing stages have a simple API, and users can create their own by deriving from the `PostProcessingStage` class. The member functions that must be implemented are listed below, though note that some may be unnecessary for simple stages.
 
 [cols=",^"]
 |===

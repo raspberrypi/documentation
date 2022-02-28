@@ -19,5 +19,5 @@ Initially, you should fork the https://github.com/raspberrypi/linux[Linux reposi
 
 Next, depending upon whether the code is Raspberry Pi-specific or not:
 
-* For Pi-specific changes or bug fixes, submit a pull request to the kernel.
+* For Raspberry Pi-specific changes or bug fixes, submit a pull request to the kernel.
 * For general Linux kernel changes (i.e. a new driver), these need to be submitted upstream first. Once they've been submitted upstream and accepted, submit the pull request and we'll receive it.
