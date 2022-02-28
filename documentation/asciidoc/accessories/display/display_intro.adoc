@@ -14,7 +14,7 @@ image::images/GPIO_power-500x333.jpg[DSI Display Connections]
 
 The other three pins should be left disconnected, unless connecting the display to an original model Raspberry Pi. See the section on xref:display.adoc#legacy-support[legacy support] for more information on connecting the display to an original Raspberry Pi.
 
-NOTE:  An original Rapsberry Pi can be easily identified from other models, it is the only model with a 26-pin rather than 40-pin GPIO header connector.
+NOTE:  An original Raspberry Pi can be easily identified from other models, it is the only model with a 26-pin rather than 40-pin GPIO header connector.
 
 === Screen Orientation
 
