@@ -59,6 +59,6 @@ To override the automatic camera detection, _Bullseye_ users will also need to d
 
 `camera_auto_detect=1`
 
-if present in the `config.txt` file. If you need to do edit this file then your Raspberry Pi will need to be rebooted. 
+If present in the `config.txt` file. If you need to do edit this file then your Raspberry Pi will need to be rebooted. 
 
 NOTE: Setting `camera_auto_detect=0` disables the boot time detection completely. 
