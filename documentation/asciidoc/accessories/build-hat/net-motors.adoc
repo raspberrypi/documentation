@@ -23,7 +23,7 @@ image::images/train-motor.png[Train motor,width="60%"]
 
 The typical passive motor is a train and older Powered Up motors. The `Speed` property can be set and read. It is the target and the measured speed at the same time as those sensors do not have a way to measure them. The value is from -100 to +100.
 
-Functions to control `Start`, `Stop` and `SetSpeed` are also available. Here is a example of how to use it:
+Functions to control `Start`, `Stop` and `SetSpeed` are also available. Here is an example of how to use it:
 
 [csharp]
 ----
