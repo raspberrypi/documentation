@@ -129,11 +129,6 @@ NOTE: There are various ways that the colour values can be presented on the DPI 
 |-
 |-
 |-
-|-
-|-
-|-
-|-
-|-
 
 |2
 |565
