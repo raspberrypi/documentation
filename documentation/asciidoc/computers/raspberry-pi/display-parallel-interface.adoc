@@ -100,6 +100,7 @@ One of the alternate functions selectable on bank 0 of the Raspberry Pi GPIO is 
 NOTE: There are various ways that the colour values can be presented on the DPI output pins in either 565, 666, or 24-bit modes (see the following table and the `output_format` part of the `dpi_output_format` parameter below):
 
 [cols=30]
+|===
 |Mode |RGB bits |27 |26 |25 |24 |23 |22 |21 |20 |19 |18 |17 |16 |15 |14 |13 |12 |11 |10 |9 |8 |7 |6 |5 |4
 
 |1
