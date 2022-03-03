@@ -41,7 +41,7 @@ Almost all of the GPIO pins have alternative functions. Peripheral blocks intern
 
 === Voltage Specifications
 
-The following table gives the various voltage specifications for the GPIO pins for BCM2835, BCM2837 based products ( e.g PiZero, Pi3B+ ), for compute modules see their datasheet.
+The table below gives the various voltage specifications for the GPIO pins for BCM2835 and BCM2837-based products (e.g. Raspbery Pi Zero or Raspberry Pi 3+). For information about Compute Modules you should see the xref:compute-module.adoc#datasheets-and-schematics[relevant datasheets].
 
 |===
 | Symbol | Parameter | Conditions &emsp; | Min | Typical | Max | Unit
@@ -131,7 +131,8 @@ The following table gives the various voltage specifications for the GPIO pins f
 ^b^ Default drive strength (8mA) +
 ^c^ Maximum drive strength (16mA)
 
-The following table gives the various voltage specifications for the GPIO pins for BCM2711 based products( e.g. Pi4B, Pi400 ), for compute modules see their datasheet
+The table below gives the various voltage specifications for the GPIO pins for BCM2711-based products (e.g. Raspberry Pi 4 and Raspberry Pi 400). For information about Compute Modules you should see the xref:compute-module.adoc#datasheets-and-schematics[relevant datasheets].
+
 |===
 | Symbol | Parameter | Conditions &emsp; | Min | Typical | Max | Unit
 
