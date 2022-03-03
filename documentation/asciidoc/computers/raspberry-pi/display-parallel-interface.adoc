@@ -156,6 +156,7 @@ NOTE: There are various ways that the colour values can be presented on the DPI 
 |5
 |4
 |3
+
 |===
 
 === Disable Other GPIO Peripherals
