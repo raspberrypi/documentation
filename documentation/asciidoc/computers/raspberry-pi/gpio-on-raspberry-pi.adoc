@@ -41,30 +41,14 @@ Almost all of the GPIO pins have alternative functions. Peripheral blocks intern
 
 === Voltage Specifications
 
-The following table gives the various voltage specifications for the GPIO pins, it was extracted from the xref:compute-module.adoc#datasheets-and-schematics[Compute Module datasheet].
+The table below gives the various voltage specifications for the GPIO pins for BCM2835 and BCM2837-based products (e.g. Raspbery Pi Zero or Raspberry Pi 3+). For information about Compute Modules you should see the xref:compute-module.adoc#datasheets-and-schematics[relevant datasheets].
 
 |===
 | Symbol | Parameter | Conditions &emsp; | Min | Typical | Max | Unit
 
 | V~IL~
 | Input Low Voltage
-| VDD IO = 1.8V
 | -
-| -
-| 0.6
-| V
-
-|
-|
-| VDD IO = 2.7V
-| -
-| -
-| 0.8
-| V
-
-|
-|
-| VDD IO = 3.3V
 | -
 | -
 | 0.9
@@ -72,23 +56,7 @@ The following table gives the various voltage specifications for the GPIO pins, 
 
 | V~IH~
 | Input high voltage^a^
-| VDD IO = 1.8V
-| 1.0
 | -
-| -
-| V
-
-|
-|
-| VDD IO = 2.7V
-| 1.3
-| -
-| -
-| V
-
-|
-|
-| VDD IO = 3.3V
 | 1.6
 | -
 | -
@@ -112,23 +80,7 @@ The following table gives the various voltage specifications for the GPIO pins, 
 
 | V~OL~
 | Output low voltage^b^
-| VDD IO = 1.8V, IOL = -2mA
-| -
-| -
-| 0.2
-| V
-
-|
-|
-| VDD IO = 2.7V, IOL = -2mA
-| -
-| -
-| 0.15
-| V
-
-|
-|
-| VDD IO = 3.3V, IOL = -2mA
+| IOL = -2mA
 | -
 | -
 | 0.14
@@ -136,23 +88,7 @@ The following table gives the various voltage specifications for the GPIO pins, 
 
 | V~OH~
 | Output high voltage^b^
-| VDD IO = 1.8V, IOH = 2mA
-| 1.6
-| -
-| -
-| V
-
-|
-|
-| VDD IO = 2.7V, IOH = 2mA
-| 2.5
-| -
-| -
-| V
-
-|
-|
-| VDD IO = 3.3V, IOH = 2mA
+| IOH = 2mA
 | 3.0
 | -
 | -
@@ -160,23 +96,7 @@ The following table gives the various voltage specifications for the GPIO pins, 
 
 | I~OL~
 | Output low current^c^
-| VDD IO = 1.8V, VO = 0.4V
-| 12
-| -
-| -
-| mA
-
-|
-|
-| VDD IO = 2.7V, VO = 0.4V
-| 17
-| -
-| -
-| mA
-
-|
-|
-| VDD IO = 3.3V, VO = 0.4V
+| VO = 0.4V
 | 18
 | -
 | -
@@ -184,23 +104,7 @@ The following table gives the various voltage specifications for the GPIO pins, 
 
 | I~OH~
 | Output high current^c^
-| VDD IO = 1.8V, VO = 1.4V
-| 10
-| -
-| -
-| mA
-
-|
-|
-| VDD IO = 2.7V, VO = 2.3V
-| 16
-| -
-| -
-| mA
-
-|
-|
-| VDD IO = 3.3V, VO = 2.3V
+| VO = 2.3V
 | 17
 | -
 | -
@@ -226,3 +130,85 @@ The following table gives the various voltage specifications for the GPIO pins, 
 ^a^ Hysteresis enabled +
 ^b^ Default drive strength (8mA) +
 ^c^ Maximum drive strength (16mA)
+
+The table below gives the various voltage specifications for the GPIO pins for BCM2711-based products (e.g. Raspberry Pi 4 and Raspberry Pi 400). For information about Compute Modules you should see the xref:compute-module.adoc#datasheets-and-schematics[relevant datasheets].
+
+|===
+| Symbol | Parameter | Conditions &emsp; | Min | Typical | Max | Unit
+
+| V~IL~
+| Input Low Voltage
+| -
+| -
+| -
+| 0.8
+| V
+
+| V~IH~
+| Input high voltage^a^
+| -
+| 2.0
+| -
+| -
+| V
+
+| I~IL~
+| Input leakage current
+| TA = +85◦C
+| -
+| -
+| 10
+| µA
+
+| V~OL~
+| Output low voltage^b^
+| IOL = -4mA
+| -
+| -
+| 0.4
+| V
+
+| V~OH~
+| Output high voltage^b^
+| IOH = 4mA
+| 2.6
+| -
+| -
+| V
+
+| I~OL~
+| Output low current^c^
+| VO = 0.4V
+| 7
+| -
+| -
+| mA
+
+| I~OH~
+| Output high current^c^
+| VO = 2.6V
+| 7
+| -
+| -
+| mA
+
+| R~PU~
+| Pullup resistor
+| -
+| 33
+| -
+| 73
+| kΩ
+
+| R~PD~
+| Pulldown resistor
+| -
+| 33
+| -
+| 73
+| kΩ
+|===
+
+^a^ Hysteresis enabled +
+^b^ Default drive strength (4mA) +
+^c^ Maximum drive strength (8mA)
