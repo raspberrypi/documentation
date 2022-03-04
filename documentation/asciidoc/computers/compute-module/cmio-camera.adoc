@@ -30,7 +30,7 @@ To connect a single camera:
 
 . Power the CM down.
 . On the compute module, run `sudo raspi-config` and enable the camera.
-. Connect the RPI-CAMERA board and Camera Module to the CAM1 port. As an alternative, the Pi Zero camera cable can be used.
+. Connect the RPI-CAMERA board and Camera Module to the CAM1 port. As an alternative, the Raspberry Pi Zero camera cable can be used.
 +
 image::images/CMIO-Cam-Adapter.jpg[Connecting the adapter board]
 
