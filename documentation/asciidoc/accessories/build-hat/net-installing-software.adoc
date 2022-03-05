@@ -11,12 +11,25 @@ WARNING: The installation script is run as `root`. You should read it first and 
 $ wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet5pi/master/install.sh | sudo bash
 ----
 
-After installing the .NET framework you also need to install the nuget packages:
-
+After installing the .NET framework you can create your project:
 [.bash]
 ----
-$ dotnet add package System.Device.Gpio --source https://pkgs.dev.azure.com/dotnet/IoT/_packaging/nightly_iot_builds/nuget/v3/index.json
-$ dotnet add package Iot.Device.Bindings --source https://pkgs.dev.azure.com/dotnet/IoT/_packaging/nightly_iot_builds/nuget/v3/index.json
+$ dotnet new console --name buildhat
+---
+
+This creates a default program in the `buildhat` directory, so we go into that directory and run the program.
+It should print `Hello World!`
+[.bash]
+---
+$ cd buildhat
+$ dotnet run
+Hello World!
+---
+
+You will now need to install the following nuget packages:
+[.bash]
+----
+$ dotnet add package System.Device.Gpio --version 2.1.0
+$ dotnet add package Iot.Device.Bindings --version 2.1.0
 ----
 
-You can now create a project and edit it.
