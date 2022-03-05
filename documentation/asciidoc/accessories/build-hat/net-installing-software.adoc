@@ -48,17 +48,4 @@ Hello World!
 === Editing C# Code
 In the instructions below, you will be editing the file `buildhat/Program.cs`, the C# program which was generated when you ran the above commands.
 
-Any text editor will work to edit C# code, including Geany, the IDE/Text Editor that comes pre-installed in Raspbian. However, https://code.visualstudio.com/[Visual Studio Code] (often called "VS Code") is a popular alternative. It can be installed by running:
-
-[.bash]
-----
-$ sudo apt get install code
-----
-
-Once installed, you can open your current folder in VS Code by running:
-
-[.bash]
-----
-$ code .
-----
-
+Any text editor will work to edit C# code, including Geany, the IDE/Text Editor that comes pre-installed. https://code.visualstudio.com/docs/setup/raspberry-pi/[Visual Studio Code] (often called "VS Code") is also a popular alternative.
