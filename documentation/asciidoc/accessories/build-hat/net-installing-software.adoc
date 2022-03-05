@@ -12,19 +12,21 @@ $ wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet5pi/master/inst
 ----
 
 After installing the .NET framework you can create your project:
+
 [.bash]
 ----
 $ dotnet new console --name buildhat
----
+----
 
 This creates a default program in the `buildhat` directory, so we go into that directory and run the program.
 It should print `Hello World!`
+
 [.bash]
----
+----
 $ cd buildhat
 $ dotnet run
 Hello World!
----
+----
 
 You will now need to install the following nuget packages:
 [.bash]
