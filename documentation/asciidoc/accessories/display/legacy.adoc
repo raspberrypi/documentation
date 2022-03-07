@@ -1,6 +1,6 @@
 == Legacy Support
 
-NOTE: These instructions are for the original Model A and B boards.
+NOTE: These instructions are for the original Raspberry Pi Model A and B boards only. You can identify an original board as it is the only model with a 26-pin GPIO header, all other models have the now-standard 40-pin connector.
 
 The DSI connector on the Model A/B boards does not have the I2C connections required to talk to the touchscreen controller and DSI controller. You can work around this by using the additional set of jumper cables provided with the display kit to wire up the I2C bus on the GPIO pins to the display controller board.
 

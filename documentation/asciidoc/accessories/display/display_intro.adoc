@@ -12,7 +12,9 @@ The following image shows how to attach the Raspberry Pi to the back of the Touc
 
 image::images/GPIO_power-500x333.jpg[DSI Display Connections]
 
-xref:display.adoc#legacy-support[Legacy support for Raspberry Pi 1 Model A/B]
+The other three pins should be left disconnected, unless connecting the display to an original Raspberry Pi 1 Model A or B. See the section on xref:display.adoc#legacy-support[legacy support] for more information on connecting the display to an original Raspberry Pi.
+
+NOTE:  An original Raspberry Pi can be easily identified from other models, it is the only model with a 26-pin rather than 40-pin GPIO header connector.
 
 === Screen Orientation
 

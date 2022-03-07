@@ -5,7 +5,9 @@ GPIO drive strengths do not indicate a maximum current, but a maximum current un
 [discrete]
 === How Drive Strength is Controlled
 
-Inside the pad are a number of drivers in parallel. If the drive strength is set low (0b000) most of these are tri-stated so they do not add anything to the output current. If the drive strength is increased, more and more drivers are put in parallel. The following diagram shows that behaviour:
+Inside the pad are a number of drivers in parallel. If the drive strength is set low (0b000) most of these are tri-stated so they do not add anything to the output current. If the drive strength is increased, more and more drivers are put in parallel. The following diagram shows that behaviour 
+
+WARNING: For Raspberry Pi 4, Raspberry Pi 400 and Compute Module 4 the current level is half the value shown in the diagram.
 
 image::images/pi_gpio_drive_strength_diagram.png[GPIO Drive Strength Diagram]
 
@@ -19,17 +21,17 @@ NOTE: The current value specifies the maximum current under which the pad will s
 
 The pad output is a voltage source:
 
-* If set high,the pad will try to drive the output to the rail voltage, which on the Raspberry Pi is 3V3 (3.3 volts)
+* If set high, the pad will try to drive the output to the rail voltage (3.3 volts)
 * If set low, the pad will try to drive the output to ground (0 volts)
 
 The pad will try to drive the output high or low. Success will depend on the requirements of what is connected. If the pad is shorted to ground, it will not be able to drive high. It will actually try to deliver as much current as it can, and the current is only limited by the internal resistance.
 
-If the pad is driven high and it is shorted to ground, in due time it will fail. The same holds true if you connect it to 3V3 and drive it low.
+If the pad is driven high and it is shorted to ground, in due time it will fail. The same holds true if you connect it to 3.3v and drive it low.
 
 Meeting the specification is determined by the guaranteed voltage levels. Because the pads are digital, there are two voltage levels, high and low. The I/O ports have two parameters which deal with the output level:
 
-* V~OL~, the maximum low-level voltage (0.14V at 3V3 VDD IO)
-* V~OH~, the minimum high-level voltage (3.0V at 3V3 VDD IO)
+* V~OL~, the maximum low-level voltage (0.14V at 3.3V VDD IO)
+* V~OH~, the minimum high-level voltage (3.0V at 3.3V VDD IO)
 
 V~OL~=0.14V means that if the output is Low, it will be \<= 0.14V.
 V~OH~=3.0V means that if the output is High, it will be >= 3.0V.
@@ -40,14 +42,14 @@ If you set the pad high, you can draw up to 16mA, and the output voltage is guar
 
 There is more information on the xref:raspberry-pi.adoc#gpio[physical characteristics] of the GPIO pins. 
 
-NOTE: On the Compute Module devices, it is possible to change the VDD IO from the standard 3V3. In this case, V~OL~ and V~OH~ will change according to the table on the linked page.
+NOTE: On the Compute Module devices, it is possible to change the VDD IO from the standard 3.3V. In this case, V~OL~ and V~OH~ will change according to the table on the linked page.
 
 [discrete]
 === Why don't I set all my pads to the maximum current?
 
 Two reasons:
 
-. The Raspberry Pi 3V3 supply was designed with a maximum current of ~3mA per GPIO pin. If you load each pin with 16mA, the total current is 272mA. The 3V3 supply will collapse under that level of load.
+. The Raspberry Pi 3.3V supply was designed with a maximum current of ~3mA per GPIO pin. If you load each pin with 16mA, the total current is 272mA. The 3.3v supply will collapse under that level of load.
 . Big current spikes will happen, especially if you have a capacitive load. That will "bounce" around all the other pins near it. It is likely to cause interference with the SD card or even the SDRAM behaviour.
 
 [discrete]

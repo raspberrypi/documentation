@@ -55,10 +55,6 @@ If you do need to add your own `dtoverlay`, the following are currently recognis
 | `dtoverlay=ov9281`
 |===
 
-To override the automatic camera detection, _Bullseye_ users will also need to delete the entry
-
-`camera_auto_detect=1`
-
-if present in the `config.txt` file. If you need to do edit this file then your Raspberry Pi will need to be rebooted. 
+To override the automatic camera detection, _Bullseye_ users will also need to delete the entry `camera_auto_detect=1` if present in the `config.txt` file. Your Raspberry Pi will need to be rebooted after editing this file. 
 
 NOTE: Setting `camera_auto_detect=0` disables the boot time detection completely. 
