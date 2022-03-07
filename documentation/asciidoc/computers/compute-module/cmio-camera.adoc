@@ -30,7 +30,7 @@ To connect a single camera:
 
 . Power the CM down.
 . On the compute module, run `sudo raspi-config` and enable the camera.
-. Connect the RPI-CAMERA board and Camera Module to the CAM1 port. As an alternative, the Pi Zero camera cable can be used.
+. Connect the RPI-CAMERA board and Camera Module to the CAM1 port. As an alternative, the Raspberry Pi Zero camera cable can be used.
 +
 image::images/CMIO-Cam-Adapter.jpg[Connecting the adapter board]
 
@@ -66,7 +66,7 @@ status = mmal_port_parameter_set(camera->control, &camera_num.hdr);
 
 === Advanced Issues
 
-The Compute Module IO board has a 22-way 0.5mm FFC for each camera port, with CAM0 being a two-lane interface and CAM1 being the full four-lane interface. The standard Raspberry Pi uses a 15-way 1mm FFC cable, so you will need either an adapter (part# RPI-CAMERA) or a Pi Zero camera cable.
+The Compute Module IO board has a 22-way 0.5mm FFC for each camera port, with CAM0 being a two-lane interface and CAM1 being the full four-lane interface. The standard Raspberry Pi uses a 15-way 1mm FFC cable, so you will need either an adapter (part# RPI-CAMERA) or a Raspberry Pi Zero camera cable.
 
 The CMIO board for Compute Modules 1&3 differ slightly in approach to that for Compute Module 4. They will be considered separately.
 
@@ -80,7 +80,7 @@ The SDA and SCL pins must be either GPIOs 0 and 1, GPIOs 28 and 29, or GPIOs 44 
 
 ===== Steps to attach a Raspberry Pi Camera (to CAM1)
 
-. Attach the 0.5mm 22W FFC flexi (included with the RPI-CAMERA board) to the CAM1 connector (flex contacts face down). As an alternative, the Pi Zero camera cable can be used.
+. Attach the 0.5mm 22W FFC flexi (included with the RPI-CAMERA board) to the CAM1 connector (flex contacts face down). As an alternative, the Raspberry Pi Zero camera cable can be used.
 . Attach the RPI-CAMERA adaptor board to the other end of the 0.5mm flex (flex contacts face down).
 . Attach a Raspberry Pi Camera to the other, larger 15W 1mm FFC on the RPI-CAMERA adaptor board (*contacts on the Raspberry Pi Camera flex must face up*).
 . Attach CD1_SDA (J6 pin 37) to GPIO0 (J5 pin 1).
