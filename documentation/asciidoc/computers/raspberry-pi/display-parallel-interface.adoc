@@ -99,17 +99,14 @@ One of the alternate functions selectable on bank 0 of the Raspberry Pi GPIO is 
 
 NOTE: There are various ways that the colour values can be presented on the DPI output pins in either 565, 666, or 24-bit modes (see the following table and the `output_format` part of the `dpi_output_format` parameter below):
 
-:tabletags-red.bodydata: <td style="background-color:red;">|</td>
-:tabledef-default.red-style: tags="red"
-
 [cols=26]
 |===
 
-.2+|Mode .2+|RGB bits 24+^|GPIO
+.2+|Mode .2+|RGB bits 24+|GPIO
 
 |27 |26 |25 |24 |23 |22 |21 |20 |19 |18 |17 |16 |15 |14 |13 |12 |11 |10 |9 |8 |7 |6 |5 |4
 
-^|1
+|1
 |-
 |-
 |-
@@ -147,24 +144,24 @@ NOTE: There are various ways that the colour values can be presented on the DPI 
 |-
 |-
 |7
-{set:cellbgcolor:red}
+{set:cellbgcolor:#E20000}
 |6
 |5
 |4
 |3
 |7
-{set:cellbgcolor:green}
-|[white]#6#
-|[white]#5#
-|[white]#4#
-|[white]#3#
-|[white]#2#
-|[white]#7#
-{set:cellbgcolor:blue}
-|[white]#6#
-|[white]#5#
-|[white]#4#
-|[white]#3#
+{set:cellbgcolor:#05FF0B}
+|6
+|5
+|4
+|3
+|2
+|7
+{set:cellbgcolor:#5D6CFF}
+|6
+|5
+|4
+|3
 
 |3
 {set:cellbgcolor:!}
@@ -173,7 +170,7 @@ NOTE: There are various ways that the colour values can be presented on the DPI 
 |-
 |-
 |7
-{set:cellbgcolor:red}
+{set:cellbgcolor:#E20000}
 |6
 |5
 |4
@@ -182,22 +179,22 @@ NOTE: There are various ways that the colour values can be presented on the DPI 
 {set:cellbgcolor:!}
 |-
 |7
-{set:cellbgcolor:green}
-|[white]#6#
-|[white]#5#
-|[white]#4#
-|[white]#3#
-|[white]#2#
+{set:cellbgcolor:#05FF0B}
+|6
+|5
+|4
+|3
+|2
 |-
 {set:cellbgcolor:!}
 |-
 |-
 |7
-{set:cellbgcolor:blue}
-|[white]#6#
-|[white]#5#
-|[white]#4#
-|[white]#3#
+{set:cellbgcolor:#5D6CFF}
+|6
+|5
+|4
+|3
 
 |4
 {set:cellbgcolor:!}
@@ -205,7 +202,7 @@ NOTE: There are various ways that the colour values can be presented on the DPI 
 |-
 |-
 |7
-{set:cellbgcolor:red}
+{set:cellbgcolor:#E20000}
 |6
 |5
 |4
@@ -215,21 +212,21 @@ NOTE: There are various ways that the colour values can be presented on the DPI 
 |-
 |-
 |7
-{set:cellbgcolor:green}
-|[white]#6#
-|[white]#5#
-|[white]#4#
-|[white]#3#
-|[white]#2#
+{set:cellbgcolor:#05FF0B}
+|6
+|5
+|4
+|3
+|2
 |-
 {set:cellbgcolor:!}
 |-
 |7
-{set:cellbgcolor:blue}
-|[white]#6#
-|[white]#5#
-|[white]#4#
-|[white]#3#
+{set:cellbgcolor:#5D6CFF}
+|6
+|5
+|4
+|3
 |-
 {set:cellbgcolor:!}
 
@@ -242,26 +239,26 @@ NOTE: There are various ways that the colour values can be presented on the DPI 
 |-
 |-
 |7
-{set:cellbgcolor:red}
+{set:cellbgcolor:#E20000}
 |6
 |5
 |4
 |3
 |2
 |7
-{set:cellbgcolor:green}
-|[white]#6#
-|[white]#5#
-|[white]#4#
-|[white]#3#
-|[white]#2#
-|[white]#7#
-{set:cellbgcolor:blue}
-|[white]#6#
-|[white]#5#
-|[white]#4#
-|[white]#3#
-|[white]#2#
+{set:cellbgcolor:#05FF0B}
+|6
+|5
+|4
+|3
+|2
+|7
+{set:cellbgcolor:#5D6CFF}
+|6
+|5
+|4
+|3
+|2
 
 |6
 {set:cellbgcolor:!}
@@ -269,7 +266,7 @@ NOTE: There are various ways that the colour values can be presented on the DPI 
 |-
 |-
 |7
-{set:cellbgcolor:red}
+{set:cellbgcolor:#E20000}
 |6
 |5
 |4
@@ -279,28 +276,28 @@ NOTE: There are various ways that the colour values can be presented on the DPI 
 {set:cellbgcolor:!}
 |-
 |7
-{set:cellbgcolor:green}
-|[white]#6#
-|[white]#5#
-|[white]#4#
-|[white]#3#
-|[white]#2#
+{set:cellbgcolor:#05FF0B}
+|6
+|5
+|4
+|3
+|2
 |-
 {set:cellbgcolor:!}
 |-
 |7
-{set:cellbgcolor:blue}
-|[white]#6#
-|[white]#5#
-|[white]#4#
-|[white]#3#
-|[white]#2#
+{set:cellbgcolor:#5D6CFF}
+|6
+|5
+|4
+|3
+|2
 
 |7
 {set:cellbgcolor:!}
 |888
 |7
-{set:cellbgcolor:red}
+{set:cellbgcolor:#E20000}
 |6
 |5
 |4
@@ -309,25 +306,26 @@ NOTE: There are various ways that the colour values can be presented on the DPI 
 |1
 |0
 |7
-{set:cellbgcolor:green}
-|[white]#6#
-|[white]#5#
-|[white]#4#
-|[white]#3#
-|[white]#2#
-|[white]#1#
-|[white]#0#
-|[white]#7#
-{set:cellbgcolor:blue}
-|[white]#6#
-|[white]#5#
-|[white]#4#
-|[white]#3#
-|[white]#2#
-|[white]#1#
-|[white]#0#
+{set:cellbgcolor:#05FF0B}
+|6
+|5
+|4
+|3
+|2
+|1
+|0
+|7
+{set:cellbgcolor:#5D6CFF}
+|6
+|5
+|4
+|3
+|2
+|1
+|0
 
 |===
+{set:cellbgcolor:!}
 
 === Disable Other GPIO Peripherals
 
