@@ -101,8 +101,8 @@ NOTE: There are various ways that the colour values can be presented on the DPI 
 
 [cols=26]
 |===
-.2+|*Mode* {set:cellbgcolor:#B8B8B8} .2+|*RGB bits* 24+|*GPIO*
-|*27* |*26* |*25* |*24* |*23* |*22* |*21* |*20* |*19* |*18* |*17* |*16* |*15* |*14* |*13* |*12* |*11* |*10* |*9* |*8* |*7* |*6* |*5* |*4*
+.2+h|*Mode* .2+h|*RGB bits* 24+h|*GPIO*
+h|*27* h|*26* h|*25* h|*24* h|*23* h|*22* h|*21* h|*20* h|*19* h|*18* h|*17* h|*16* h|*15* h|*14* h|*13* h|*12* h|*11* h|*10* h|*9* h|*8* h|*7* h|*6* h|*5* h|*4*
 
 |1
 {set:cellbgcolor:!}
