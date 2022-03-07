@@ -413,6 +413,36 @@ h6 .anchor::before {
   margin-bottom: 0;
 }
 
+#content table.tableblock th.halign-left,
+#content table.tableblock td.halign-left {
+  text-align: left;
+}
+
+#content table.tableblock th.halign-right,
+#content table.tableblock td.halign-right {
+  text-align: right;
+}
+
+#content table.tableblock th.halign-center,
+#content table.tableblock td.halign-center {
+  text-align: center;
+}
+
+#content table.tableblock th.valign-top,
+#content table.tableblock td.valign-top {
+  vertical-align: top;
+}
+
+#content table.tableblock th.valign-bottom,
+#content table.tableblock td.valign-bottom {
+  vertical-align: bottom;
+}
+
+#content table.tableblock th.valign-middle,
+#content table.tableblock td.valign-middle {
+  vertical-align: middle;
+}
+
 #content td.icon {
   font-weight: bold;
   color: #343434;
