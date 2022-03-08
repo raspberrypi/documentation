@@ -50,10 +50,10 @@ Possible options for the display type, the first part of the `video=` entry,  ar
 | video option | Display
 
 | HDMI-A-1
-| HDMI 1 (HDMI 0 on silkscreen of Pi4B, HDMI on single HDMI boards)
+| HDMI 1 (HDMI 0 on silkscreen of Raspberry Pi 4B, HDMI on single HDMI boards)
 
 | HDMI-A-2
-| HDMI 2 (HDMI 1 on silkscreen of Pi4B)
+| HDMI 2 (HDMI 1 on silkscreen of Raspberry Pi 4B)
 
 | DSI-1
 | DSI or DPI
@@ -69,9 +69,7 @@ Possible options for the display type, the first part of the `video=` entry,  ar
 * plymouth.ignore-serial-consoles: normally if the Plymouth module is enabled it will prevent boot messages from appearing on any serial console which may be present. This flag tells Plymouth to ignore all serial consoles, making boot messages visible again, as they would be if Plymouth was not running.
 * dwc_otg.lpm_enable=0: turns off Link Power Management (LPM) in the dwc_otg driver; the dwc_otg driver is the driver for the USB controller built into the processor used on Raspberry Pi computers.
 +
-NOTE: On Raspberry Pi 4 this controller is disabled by default, and is only connected to the type C power input jack; the type A USB ports on Pi 4 are driven by a separate USB controller which is not affected by this setting.
+NOTE: On Raspberry Pi 4 this controller is disabled by default, and is only connected to the USB type C power input connector; the USB type A ports on Raspberry Pi 4 are driven by a separate USB controller which is not affected by this setting.
 * dwc_otg.speed: sets the speed of the USB controller built into the processor on Raspberry Pi computers. `dwc_otg.speed=1` will set it to full speed (USB 1.0), which is slower than high speed (USB 2.0). This option should not be set except during troubleshooting of problems with USB devices.
-+
-NOTE: On Raspberry Pi 4 this controller is disabled by default, and is only connected to the type C power input connector; the type A USB ports on Pi 4 are driven by a separate USB controller which is not affected by this setting.
 * smsc95xx.turbo_mode: enables/disables the wired networking driver turbo mode. `smsc95xx.turbo_mode=N` turns turbo mode off.
 * usbhid.mousepoll: specifies the mouse polling interval. If you have problems with a slow or erratic wireless mouse, setting this to 0 might help: `usbhid.mousepoll=0`.

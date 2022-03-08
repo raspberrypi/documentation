@@ -5,7 +5,7 @@ GPIO drive strengths do not indicate a maximum current, but a maximum current un
 [discrete]
 === How Drive Strength is Controlled
 
-Inside the pad are a number of drivers in parallel. If the drive strength is set low (0b000) most of these are tri-stated so they do not add anything to the output current. If the drive strength is increased, more and more drivers are put in parallel. The following diagram shows that behaviour 
+Inside the pad are a number of drivers in parallel. If the drive strength is set low (0b000) most of these are tri-stated so they do not add anything to the output current. If the drive strength is increased, more and more drivers are put in parallel. The following diagram shows that behaviour.
 
 WARNING: For Raspberry Pi 4, Raspberry Pi 400 and Compute Module 4 the current level is half the value shown in the diagram.
 
@@ -26,7 +26,7 @@ The pad output is a voltage source:
 
 The pad will try to drive the output high or low. Success will depend on the requirements of what is connected. If the pad is shorted to ground, it will not be able to drive high. It will actually try to deliver as much current as it can, and the current is only limited by the internal resistance.
 
-If the pad is driven high and it is shorted to ground, in due time it will fail. The same holds true if you connect it to 3.3v and drive it low.
+If the pad is driven high and it is shorted to ground, in due time it will fail. The same holds true if you connect it to 3.3V and drive it low.
 
 Meeting the specification is determined by the guaranteed voltage levels. Because the pads are digital, there are two voltage levels, high and low. The I/O ports have two parameters which deal with the output level:
 
@@ -49,7 +49,7 @@ NOTE: On the Compute Module devices, it is possible to change the VDD IO from th
 
 Two reasons:
 
-. The Raspberry Pi 3.3V supply was designed with a maximum current of ~3mA per GPIO pin. If you load each pin with 16mA, the total current is 272mA. The 3.3v supply will collapse under that level of load.
+. The Raspberry Pi 3.3V supply was designed with a maximum current of ~3mA per GPIO pin. If you load each pin with 16mA, the total current is 272mA. The 3.3V supply will collapse under that level of load.
 . Big current spikes will happen, especially if you have a capacitive load. That will "bounce" around all the other pins near it. It is likely to cause interference with the SD card or even the SDRAM behaviour.
 
 [discrete]

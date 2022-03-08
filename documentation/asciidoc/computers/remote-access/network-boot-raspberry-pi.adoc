@@ -8,13 +8,13 @@ NOTE: Due to the huge range of networking devices and routers available, we can'
 
 === Client Configuration
 
-==== Raspberry Pi 3, Model B
+==== Raspberry Pi 3 Model B
 
-NOTE: This section only applies to the Raspberry Pi 3, Model B as network boot is enabled on the Raspberry Pi 3, Model B+ at the factory.
+NOTE: This section only applies to the Raspberry Pi 3 Model B, as network boot is enabled on the Raspberry Pi 3 Model B+ at the factory.
 
-Before the Raspberry Pi 3, Model B will network boot it needs to be booted from an SD Card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the Pi 3B will attempt to boot from USB, and from the network, if it cannot boot from the SD card.
+Before the Raspberry Pi 3 Model B will network boot it needs to be booted from an SD Card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the Raspberry Pi 3B will attempt to boot from USB, and from the network, if it cannot boot from the SD card.
 
-Install Raspberry Pi OS Lite, or Raspberry Pi OS with Raspberry Pi Desktop, on the SD card in the usual fashion. Next, enable USB boot mode with the following command:
+Install Raspberry Pi OS Lite, or Raspberry Pi OS with desktop, on the SD card in the usual fashion. Next, enable USB boot mode with the following command:
 
 [,bash]
 ----
@@ -33,23 +33,23 @@ Ensure the output `0x3020000a` is correct.
 
 The client configuration is almost done. The final thing to do is to remove the `program_usb_boot_mode` line from `config.txt`. You can do this with `sudo nano /boot/config.txt`, for example. Finally, shut the client Raspberry Pi down with `sudo poweroff`.
 
-==== Raspberry Pi 4, Model B
+==== Raspberry Pi 4 Model B
 
-Network boot can be enabled on the Pi 4 using the `raspi-config` tool. First, run `raspi-config` as follows:
+Network boot can be enabled on the Raspberry Pi 4 using the `raspi-config` tool. First, run `raspi-config` as follows:
 
 [,bash]
 ----
 sudo raspi-config
 ----
 
-Within `raspi-config`, choose `Advanced Options`, then `Boot Order`, then `Network Boot`. You must then reboot the device for the change to the boot order to be programmed into the bootloader EEPROM. Once the Pi has rebooted, check that the boot order is now `0xf21`:
+Within `raspi-config`, choose `Advanced Options`, then `Boot Order`, then `Network Boot`. You must then reboot the device for the change to the boot order to be programmed into the bootloader EEPROM. Once the Raspberry Pi has rebooted, check that the boot order is now `0xf21`:
 
 [,bash]
 ----
 vcgencmd bootloader_config
 ----
 
-For further details of configuring the Pi 4 bootloader, see xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[Pi 4 Bootloader Configuration].
+For further details of configuring the Raspberry Pi 4 bootloader, see xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[Raspberry Pi 4 Bootloader Configuration].
 
 === Ethernet MAC address
 
@@ -309,11 +309,11 @@ Good luck! If it doesn't boot on the first attempt, keep trying. It can take a m
 
 === Using `pxetools`
 
-We have created a Python script that is used internally to quickly set up Raspberry Pi's that will network boot. 
+We have created a Python script that is used internally to quickly set up Raspberry Pis that will network boot.
 
-The script takes a serial number, which you can find in `cat /proc/cpuinfo`, an owner name and the name of the Raspberry Pi. It then creates a root filesystem for that Pi from a Raspberry Pi OS image. There is also a `--list` option which will print out the IP address of the Pi, and a `--remove` option. 
+The script takes a serial number, which you can find in `cat /proc/cpuinfo`, an owner name and the name of the Raspberry Pi. It then creates a root filesystem for that Raspberry Pi from a Raspberry Pi OS image. There is also a `--list` option which will print out the IP address of the Raspberry Pi, and a `--remove` option.
 
-NOTE: The following instructions describe how to set up the environment required by the script starting from a fresh Raspberry Pi OS lite image. It might be a good idea to mount a hard disk or flash drive on `/nfs` so that your SD card isn't providing filesystems to multiple Pi's. This is left as an exercise for the reader.
+NOTE: The following instructions describe how to set up the environment required by the script starting from a fresh Raspberry Pi OS lite image. It might be a good idea to mount a hard disk or flash drive on `/nfs` so that your SD card isn't providing filesystems to multiple Raspberry Pis. This is left as an exercise for the reader.
 
 ----
 sudo apt update

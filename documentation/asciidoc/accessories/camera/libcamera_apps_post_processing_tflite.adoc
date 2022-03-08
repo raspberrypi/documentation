@@ -1,6 +1,6 @@
 === Post-Processing with TensorFlow Lite
 
-NOTE: These stages require TensorFlow Lite (TFLite) libraries to be installed that export the C++ API. Unfortunately the TFLite libraries are not normally distributed conveniently in this form, however, one place where they can be downloaded is https://lindevs.com/install-precompiled-tensorflow-lite-on-raspberry-pi/[lindevs.com]. Please follow the installation instructions given on that page. Subsequently you may need to recompile `libcamera-apps` with TensorFlow Lite support - please follow the instructions for xref:camera.adoc#building-libcamera-and-libcamera-apps[building `libcamera-apps` for yourself].
+NOTE: These stages require TensorFlow Lite (TFLite) libraries to be installed that export the {cpp} API. Unfortunately the TFLite libraries are not normally distributed conveniently in this form, however, one place where they can be downloaded is https://lindevs.com/install-precompiled-tensorflow-lite-on-raspberry-pi/[lindevs.com]. Please follow the installation instructions given on that page. Subsequently you may need to recompile `libcamera-apps` with TensorFlow Lite support - please follow the instructions for xref:camera.adoc#building-libcamera-and-libcamera-apps[building `libcamera-apps` for yourself].
 
 ==== `object_classify_tf` stage
 

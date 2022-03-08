@@ -13,7 +13,7 @@ WARNING: Please note that the display is *not* designed to be hot pluggable. It 
 Connecting to DISP1
 
 . Connect the display to the DISP1 port on the Compute Module IO board through the 22W to 15W display adaptor.
-. (CM1 and 3 only) Connect these pins together with jumper wires:
+. (CM1 and CM3 only) Connect these pins together with jumper wires:
 +
 ----
  GPIO0 - CD1_SDA
@@ -30,7 +30,7 @@ Connecting to DISP1
 Connecting to DISP0
 
 . Connect the display to the DISP0 port on the Compute Module IO board through the 22W to 15W display adaptor.
-. (CM1 and 3 only) Connect these pins together with jumper wires:
+. (CM1 and CM3 only) Connect these pins together with jumper wires:
 +
 ----
  GPIO28 - CD0_SDA
@@ -49,7 +49,7 @@ Connecting to DISP0
 
 . Connect the display to the DISP1 port on the Compute Module IO board through the 22W to 15W display adaptor, called RPI-DISPLAY.
 . Connect the Camera Module to the CAM1 port on the Compute Module IO board through the 22W to 15W adaptor called RPI-CAMERA. Alternatively, the Raspberry Pi Zero camera cable can be used.
-. (CM 1 and 3 only) Connect these pins together with jumper wires:
+. (CM1 and CM3 only) Connect these pins together with jumper wires:
 +
 ----
  GPIO0 - CD1_SDA
@@ -71,7 +71,7 @@ image:images/CMIO-Cam-Disp-GPIO.jpg[GPIO connection for a single display and Cam
 
 . Follow the steps for connecting the display and one camera above.
 . Connect the Camera Module to the CAM0 port on the Compute Module IO board through the 22W to 15W adaptor called RPI-CAMERA. Alternatively, the Raspberry Pi Zero camera cable can be used.
-. (CM1 & 3 only) Add links:
+. (CM1 and CM3 only) Add links:
 +
 ----
  GPIO28 - CD0_SDA

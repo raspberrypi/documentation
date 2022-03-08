@@ -11,8 +11,6 @@ We recommend using an SD card of 8GB or greater capacity with Raspberry Pi OS. I
 
 === Troubleshooting
 
-We recommend buying anPi SD card from one of our official resellers. The official SD cards are micro SD cards and are supplied with an adaptor which allows them to be used in a full-sized SD card slot.
-
 If you are having problems with your SD card:
 
 * Make sure you are using a genuine SD card. The best way to avoid fake SD cards is to always buy from a reputable supplier.

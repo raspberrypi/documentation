@@ -8,8 +8,8 @@ Raspberry Pi computers are equipped with a number of https://en.wikipedia.org/wi
 
 Raspberry Pi Zero, 1, 2 and 3 have three SPI controllers:
 
-* SPI0, with two hardware chip selects, is available on the header of all Pis; there is also an alternate mapping that is only available on compute modules.
-* SPI1, with three hardware chip selects, is available on all Raspberry Pi models except the original Pi 1 models A and B.
+* SPI0, with two hardware chip selects, is available on the header of all Raspberry Pis; there is also an alternate mapping that is only available on Compute Modules.
+* SPI1, with three hardware chip selects, is available on all Raspberry Pi models except the original Raspberry Pi 1 Model A and Model B.
 * SPI2, also with three hardware chip selects, is only available on Compute Module 1, 3 and 3+.
 
 On the Raspberry Pi 4, 400 and Compute Module 4 there are four additional SPI buses: SPI3 to SPI6, each with 2 hardware chip selects. These extra SPI buses are available via alternate function assignments on certain GPIO pins - see the https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf[BCM2711 ARM Peripherals] datasheet.
@@ -53,7 +53,7 @@ Chapter 10 in the https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals
 | SPI0_CE1_N
 |===
 
-===== SPI0 alternate mapping (compute modules only, except CM4)
+===== SPI0 alternate mapping (Compute Modules only, except CM4)
 
 [cols="1,1,1"]
 |===
@@ -122,7 +122,7 @@ Chapter 10 in the https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals
 | SPI1_CE2_N
 |===
 
-===== SPI2 (compute modules only, except CM4)
+===== SPI2 (Compute Modules only, except CM4)
 
 [cols="1,1,1"]
 |===

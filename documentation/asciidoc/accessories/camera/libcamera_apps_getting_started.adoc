@@ -2,7 +2,7 @@
 
 ==== Using the camera for the first time
 
-NOTE: On Pi3 and earlier devices running _Bullseye_ you need to re-enable _Glamor_ in order to make the X-Windows hardware accelerated preview window work. To do this enter `sudo raspi-config` at a terminal window and then choose `Advanced Options`, `Glamor` and `Yes`. Finally quit `raspi-config` and let it reboot your Pi.
+NOTE: On Raspberry Pi 3 and earlier devices running _Bullseye_ you need to re-enable _Glamor_ in order to make the X-Windows hardware accelerated preview window work. To do this enter `sudo raspi-config` at a terminal window and then choose `Advanced Options`, `Glamor` and `Yes`. Finally quit `raspi-config` and let it reboot your Raspberry Pi.
 
 When running a Raspberry Pi OS based on _Bullseye_, the 5 basic `libcamera-apps` are already installed. In this case, official Raspberry Pi cameras will also be detected and enabled automatically.
 
@@ -17,7 +17,7 @@ You should see a camera preview window for about 5 seconds.
 
 Users running _Buster_ will need to xref:camera.adoc#binary-packages[install one of the `libcamera-apps` packages] first and then configure their `/boot/config.txt` file xref:camera.adoc#if-you-do-need-to-alter-the-configuration[with the appropriate overlay] for the connected camera. Be aware that _libcamera_ and the legacy _raspicam_ stack cannot operate at the same time - to return to the legacy stack after using _libcamera_ you will need to comment out the `dtoverlay` change you made and reboot the system.
 
-NOTE: Pi 3 and older devices may not by default be using the correct display driver. Refer to the `/boot/config.txt` file and ensure that either `dtoverlay=vc4-fkms-v3d` or `dtoverlay=vc4-kms-v3d` is currently active. Please reboot if you needed to change this.
+NOTE: Raspberry Pi 3 and older devices may not by default be using the correct display driver. Refer to the `/boot/config.txt` file and ensure that either `dtoverlay=vc4-fkms-v3d` or `dtoverlay=vc4-kms-v3d` is currently active. Please reboot if you needed to change this.
 
 ==== If you do need to alter the configuration
 

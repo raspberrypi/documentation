@@ -4,7 +4,7 @@ It is important to have a basic understanding of the fundamentals of the Linux f
 
 === Home
 
-When you log into a Pi and open a terminal window, or you boot to the command line instead of the graphical user interface, you start in your home folder; this is located at `/home/pi`, assuming your username is `pi`.
+When you log into a Raspberry Pi and open a terminal window, or you boot to the command line instead of the graphical user interface, you start in your home folder; this is located at `/home/pi`, assuming your username is `pi`.
 
 This is where the user's own files are kept. The contents of the user's desktop is in a directory here called `Desktop`, along with other files and folders.
 

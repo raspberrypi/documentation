@@ -17,7 +17,7 @@ The conditional model filters are applied according to the following table.
 | Filter | Applicable model(s)
 
 | [pi1]
-| Model A, Model B, Compute Module
+| Model 1A, Model 1B, Model 1A+, Model 1B+, Compute Module 1
 
 | [pi2]
 | Model 2B (BCM2836- or BCM2837-based)
@@ -38,10 +38,10 @@ The conditional model filters are applied according to the following table.
 | Compute Module 4
 
 | [pi0]
-| Zero, Zero W, Zero WH, Zero 2 W
+| Zero, Zero W, Zero 2 W
 
 | [pi0w]
-| Zero W, Zero WH
+| Zero W
 
 | [pi02]
 | Zero 2 W
@@ -51,7 +51,7 @@ The conditional model filters are applied according to the following table.
 
 |===
 
-These are particularly useful for defining different `kernel`, `initramfs`, and `cmdline` settings, as the Pi 1 and Pi 2 require different kernels. They can also be useful to define different overclocking settings, as the Pi 1 and Pi 2 have different default speeds. For example, to define separate `initramfs` images for each:
+These are particularly useful for defining different `kernel`, `initramfs`, and `cmdline` settings, as the Raspberry Pi 1 and Raspberry Pi 2 require different kernels. They can also be useful to define different overclocking settings, as the Raspberry Pi 1 and Raspberry Pi 2 have different default speeds. For example, to define separate `initramfs` images for each:
 
 ----
  [pi1]
@@ -61,9 +61,9 @@ These are particularly useful for defining different `kernel`, `initramfs`, and 
  [all]
 ----
 
-Remember to use the `[all]` filter at the end, so that any subsequent settings aren't limited to Pi 2 hardware only.
+Remember to use the `[all]` filter at the end, so that any subsequent settings aren't limited to Raspberry Pi 2 hardware only.
 
-It is important to note that the Raspberry Pi Zero W will see the contents of `[pi0w]` AND `[pi0]`. Likewise, a Raspberry Pi 3B Plus sees `[pi3+]` AND `[pi3]`, and a Raspberry Pi 400 sees `[pi400]` AND `[pi4]`. If you want a setting to apply only to Pi Zero, Pi 3B or Pi 4B, you need to follow it (order is important) with a setting in the `[pi0w]`, `[pi3+]` or `[pi400]` section that reverts it.
+It is important to note that the Raspberry Pi Zero W will see the contents of `[pi0w]` AND `[pi0]`. Likewise, a Raspberry Pi 3B+ sees `[pi3+]` AND `[pi3]`, and a Raspberry Pi 400 sees `[pi400]` AND `[pi4]`. If you want a setting to apply only to Raspberry Pi Zero, Raspberry Pi 3B or Raspberry Pi 4B, you need to follow it (order is important) with a setting in the `[pi0w]`, `[pi3+]` or `[pi400]` section that reverts it.
 
 === The `[none]` filter
 
@@ -71,7 +71,7 @@ The `[none]` filter prevents any settings that follow from being applied to any 
 
 === The `[EDID=*]` filter
 
-When switching between multiple monitors while using a single SD card in your Pi, and where a blank config isn't sufficient to automatically select the desired resolution for each one, this allows specific settings to be chosen based on the monitors' EDID names.
+When switching between multiple monitors while using a single SD card in your Raspberry Pi, and where a blank config isn't sufficient to automatically select the desired resolution for each one, this allows specific settings to be chosen based on the monitors' EDID names.
 
 To view the EDID name of an attached monitor, run the following command:
 
@@ -99,15 +99,15 @@ hdmi_mode=82
 
 This forces 1920x1080 DVT mode for the specified monitor, without affecting any other monitors.
 
-Note that these settings apply only at boot, so the monitor must be connected at boot time and the Pi must be able to read its EDID information to find the correct name. Hotplugging a different monitor into the Pi after boot will not select different settings.
+Note that these settings apply only at boot, so the monitor must be connected at boot time and the Raspberry Pi must be able to read its EDID information to find the correct name. Hotplugging a different monitor into the Raspberry Pi after boot will not select different settings.
 
 On the Raspberry Pi 4, if both HDMI ports are in use, then the EDID will be checked against both of them, and subsequent configuration applied only to the first matching device. You can determine the EDID names for both ports by first running `tvservice -l` in a terminal window to list all attached devices and then using the returned numerical IDs in `tvservice -v <id> -n` to find the EDID name for a specific display ID.
 
 === The Serial Number Filter
 
-Sometimes settings should only be applied to a single specific Pi, even if you swap the SD card to a different one. Examples include licence keys and overclocking settings (although the licence keys already support SD card swapping in a different way). You can also use this to select different display settings, even if the EDID identification above is not possible, provided that you don't swap monitors between your Pis. For example, if your monitor doesn't supply a usable EDID name, or if you are using composite output (for which EDID cannot be read).
+Sometimes settings should only be applied to a single specific Raspberry Pi, even if you swap the SD card to a different one. Examples include licence keys and overclocking settings (although the licence keys already support SD card swapping in a different way). You can also use this to select different display settings, even if the EDID identification above is not possible, provided that you don't swap monitors between your Raspberry Pis. For example, if your monitor doesn't supply a usable EDID name, or if you are using composite output (for which EDID cannot be read).
 
-To view the serial number of your Pi, run the following command:
+To view the serial number of your Raspberry Pi, run the following command:
 
 [source]
 ----
@@ -121,12 +121,12 @@ The serial will be shown as a 16-digit hex value at the bottom. For example, if 
 Serial          : 0000000012345678
 ----
 
-then you can define settings that will only be applied to this specific Pi:
+then you can define settings that will only be applied to this specific Raspberry Pi:
 
 [source]
 ----
 [0x12345678]
-# settings here are applied only to the Pi with this serial
+# settings here are applied only to the Raspberry Pi with this serial
 [all]
 # settings here are applied to all hardware
 ----
@@ -185,7 +185,7 @@ Filters of different types can be combined simply by listing them one after the 
  [EDID=VSC-TD2220]
  # settings here are applied only if monitor VSC-TD2220 is connected
  [pi2]
- # settings here are applied only if monitor VSC-TD2220 is connected *and* on a Pi 2
+ # settings here are applied only if monitor VSC-TD2220 is connected *and* on a Raspberry Pi 2
  [all]
  # settings here are applied to all hardware
 ----

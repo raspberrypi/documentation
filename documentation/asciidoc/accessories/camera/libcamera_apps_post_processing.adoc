@@ -70,7 +70,7 @@ image::images/negate.jpg[Image with negate]
 
 The `hdr` stage implements both HDR (high dynamic range) imaging and DRC (dynamic range compression). The terminology that we use here regards DRC as operating on single images, and HDR works by accumulating multiple under-exposed images and then performing the same algorithm as DRC.
 
-The `hdr` stage has no dependencies on 3rd party libraries, but (like some other stages) may execute more quickly on Pi 3 or Pi 4 devices running a 32-bit OS if recompiled using `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon` (please see the xref:camera.adoc#building-libcamera-and-libcamera-apps[build instructions]). Specifically, the image accumulation stage will run quicker and result in fewer frame drops, though the tonemapping part of the process is unchanged.
+The `hdr` stage has no dependencies on 3rd party libraries, but (like some other stages) may execute more quickly on Raspberry Pi 3 or Raspberry Pi 4 devices running a 32-bit OS if recompiled using `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon` (please see the xref:camera.adoc#building-libcamera-and-libcamera-apps[build instructions]). Specifically, the image accumulation stage will run quicker and result in fewer frame drops, though the tonemapping part of the process is unchanged.
 
 The basic procedure is that we take the image (which in the case of HDR may be multiple images accumulated together) and apply an edge-preserving smoothing filter to generate a low pass (LP) image. We define the high pass (HP) image to be the difference between the LP image and the original. Next we apply a global tonemap to the LP image and add back the HP image. This procedure, in contrast to applying the tonemap directly to the original image, prevents us from squashing and losing all the local contrast in the resulting image.
 
@@ -93,7 +93,7 @@ In summary, the user-configurable parameters fall broadly into three groups: tho
 
 We note that the overall strength of the processing is best controlled by changing the `global_tonemap_strength` and `local_tonemap_strength` parameters.
 
-The full processing takes between 2 and 3 seconds for a 12MP image on a Pi 4. The stage runs only on the still image capture, it ignores preview and video images. In particular, when accumulating multiple frames, the stage "swallows" the output images so that the application does not receive them, and finally sends through only the combined and processed image.
+The full processing takes between 2 and 3 seconds for a 12MP image on a Raspberry Pi 4. The stage runs only on the still image capture, it ignores preview and video images. In particular, when accumulating multiple frames, the stage "swallows" the output images so that the application does not receive them, and finally sends through only the combined and processed image.
 
 Default `drc.json` file for DRC:
 

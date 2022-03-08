@@ -1,6 +1,6 @@
 == Network Booting
 
-This section describes how network booting works on the Raspberry Pi 3B, 3B+ and 2B v1.2. On the Raspberry Pi 4 network booting is implemented in the second stage bootloader in the EEPROM. Please see the xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[Pi 4 Bootloader Configuration] page for more information.
+This section describes how network booting works on the Raspberry Pi 3B, 3B+ and 2B v1.2. On the Raspberry Pi 4 network booting is implemented in the second stage bootloader in the EEPROM. Please see the xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[Raspberry Pi 4 Bootloader Configuration] page for more information.
 We also have a xref:remote-access.adoc#network-boot-your-raspberry-pi[tutorial about setting up a network boot system]. Network booting works only for the wired adapter built into the above models of Raspberry Pi. Booting over wireless LAN is not supported, nor is booting from any other wired network device.
 
 To network boot, the boot ROM does the following:
@@ -14,11 +14,11 @@ To network boot, the boot ROM does the following:
 * TFTP RRQ 'bootcode.bin'
  ** File not found: Server replies with TFTP error response with textual error message
  ** File exists: Server will reply with the first block (512 bytes) of data for the file with a block number in the header
-  *** Pi replies with TFTP ACK packet containing the block number, and repeats until the last block which is not 512 bytes
+  *** Raspberry Pi replies with TFTP ACK packet containing the block number, and repeats until the last block which is not 512 bytes
 * TFTP RRQ 'bootsig.bin'
  ** This will normally result in an error `file not found`. This is to be expected, and TFTP boot servers should be able to handle it.
 
-From this point the `bootcode.bin` code continues to load the system. The first file it will try to access is [`serial_number`]/start.elf. If this does not result in an error then any other files to be read will be pre-pended with the `serial_number`. This is useful because it enables you to create separate directories with separate start.elf / kernels for your Pis
+From this point the `bootcode.bin` code continues to load the system. The first file it will try to access is [`serial_number`]/start.elf. If this does not result in an error then any other files to be read will be pre-pended with the `serial_number`. This is useful because it enables you to create separate directories with separate start.elf / kernels for your Raspberry Pis.
 To get the serial number for the device you can either try this boot mode and see what file is accessed using tcpdump / wireshark, or you can run a standard Raspberry Pi OS SD card and `cat /proc/cpuinfo`.
 
 If you put all your files into the root of your tftp directory then all following files will be accessed from there.
@@ -33,7 +33,7 @@ The first thing to check is that the OTP bit is correctly programmed. To do this
 ----
 
 If row 17 contains `3020000a` then the OTP is correctly programmed. You should now be able to remove the SD card, plug in Ethernet,
-and then the Ethernet LEDs should light up around 5 seconds after the Pi powers up.
+and then the Ethernet LEDs should light up around 5 seconds after the Raspberry Pi powers up.
 
 To capture the ethernet packets on the server, use tcpdump on the tftpboot server (or DHCP server if they are different). You will need to capture the packets there otherwise you will not be able to see packets that get sent directly because network switches are not hubs!
 
@@ -88,7 +88,7 @@ to a bug in the boot ROM, you may need to add three spaces to the end of the str
 
 ==== TFTP file read
 
-You will know whether the Vendor Option is correctly specified: if it is, you'll see a subsequent TFTP RRQ packet being sent. RRQs can be replied to by either the first block of data or an error saying file not found. In a couple of cases they even receive the first packet and then the transmission is aborted by the Pi (this happens when checking whether a file exists). The example below is just three packets: the original read request, the first data block (which is always 516 bytes containing a header and 512 bytes of data, although the last block is always less than 512 bytes and may be zero length), and the third packet (the ACK which contains a frame number to match the frame number in the data block).
+You will know whether the Vendor Option is correctly specified: if it is, you'll see a subsequent TFTP RRQ packet being sent. RRQs can be replied to by either the first block of data or an error saying file not found. In a couple of cases they even receive the first packet and then the transmission is aborted by the Raspberry Pi (this happens when checking whether a file exists). The example below is just three packets: the original read request, the first data block (which is always 516 bytes containing a header and 512 bytes of data, although the last block is always less than 512 bytes and may be zero length), and the third packet (the ACK which contains a frame number to match the frame number in the data block).
 
 ----
 16:44:41.224964 IP (tos 0x0, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 49)
@@ -105,7 +105,7 @@ There are a number of known problems with the Ethernet boot mode. Since the impl
 
 ==== DHCP requests time out after five tries
 
-The Raspberry Pi will attempt a DHCP request five times with five seconds in between, for a total period of 25 seconds.  If the server is not available to respond in this time, then the Pi will drop into a low-power state. There is no workaround for this other than bootcode.bin on an SD card.
+The Raspberry Pi will attempt a DHCP request five times with five seconds in between, for a total period of 25 seconds.  If the server is not available to respond in this time, then the Raspberry Pi will drop into a low-power state. There is no workaround for this other than bootcode.bin on an SD card.
 
 ==== TFTP server on separate subnet not supported
 
@@ -137,6 +137,6 @@ Fixed in Raspberry Pi 3 Model B+.
 
 ==== DHCP request/reply/ack sequence not correctly implemented
 
-At boot time, Raspberry Pi broadcasts a DHCPDISCOVER packet. The DHCP server replies with a DHCPOFFER packet. The Pi then continues booting without doing a DHCPREQUEST or waiting for DHCPACK. This may result in two separate devices being offered the same IP address and using it without it being properly assigned to the client.
+At boot time, Raspberry Pi broadcasts a DHCPDISCOVER packet. The DHCP server replies with a DHCPOFFER packet. The Raspberry Pi then continues booting without doing a DHCPREQUEST or waiting for DHCPACK. This may result in two separate devices being offered the same IP address and using it without it being properly assigned to the client.
 
 Different DHCP servers have different behaviours in this situation. dnsmasq (depending upon settings) will hash the MAC address to determine the IP address, and ping the IP address to make sure it isn't already in use. This reduces the chances of this happening because it requires a collision in the hash.

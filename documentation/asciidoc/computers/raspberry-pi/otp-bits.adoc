@@ -41,7 +41,7 @@ This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext`
  ** Bit 31: Whether the Compute Module has an EMMC module fitted
   *** 0 - EMMC
   *** 1 - No EMMC (Lite)
-* Pi 400
+* Raspberry Pi 400
  ** Bits 0-7: The default keyboard country code used by https://github.com/raspberrypi-ui/piwiz[piwiz]
 
 36-43 - xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer OTP values] +

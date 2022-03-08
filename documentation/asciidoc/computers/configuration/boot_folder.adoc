@@ -17,7 +17,7 @@ This is the bootloader, which is loaded by the SoC on boot, does some very basic
 These are binary blobs (firmware) that are loaded on to the VideoCore in the SoC, which then take over the boot process.
 `start.elf` is the basic firmware, `start_x.elf` includes camera drivers and codec, `start_db.elf` is a debug version of the firmware, and `start_cd.elf` is a cut-down version with no support hardware blocks like codecs and 3D, and for use when `gpu_mem=16` is specified in `config.txt`. More information on how to use these can be found in xref:config_txt.adoc#boot-options[the `config.txt` section].
 
-`start4.elf`, `start4x.elf`, `start4cd.elf`, and `start4db.elf` are firmware files specific to the Pi 4.
+`start4.elf`, `start4x.elf`, `start4cd.elf`, and `start4db.elf` are firmware files specific to the Raspberry Pi 4.
 
 ==== fixup*.dat
 
@@ -29,7 +29,7 @@ The kernel command line passed in to the kernel when it boots.
 
 ==== config.txt
 
-Contains many configuration parameters for setting up the Pi. See xref:config_txt.adoc[the `config.txt` section].
+Contains many configuration parameters for setting up the Raspberry Pi. See xref:config_txt.adoc[the `config.txt` section].
 
 ==== issue.txt
 
@@ -45,7 +45,7 @@ This is the file to configure wireless network settings (if the hardware is capa
 
 ==== Device Tree files
 
-There are various Device Tree blob files, which have the extension `.dtb`. These contain the hardware definitions of the various models of Raspberry Pi, and are used on boot to set up the kernel xref:configuration.adoc#part3.1[according to which Pi model is detected].
+There are various Device Tree blob files, which have the extension `.dtb`. These contain the hardware definitions of the various models of Raspberry Pi, and are used on boot to set up the kernel xref:configuration.adoc#part3.1[according to which Raspberry Pi model is detected].
 
 ==== Kernel Files
 
