@@ -17,7 +17,7 @@ These provide a shortcut to some alternative `start_file` and `fixup_file` setti
   fixup_file=fixup_x.dat
 ----
 
-On the Pi 4, if the files `start4x.elf` and `fixup4x.dat` are present, these files will be used instead.
+On the Raspberry Pi 4, if the files `start4x.elf` and `fixup4x.dat` are present, these files will be used instead.
 
 `start_debug=1` implies
 ----
