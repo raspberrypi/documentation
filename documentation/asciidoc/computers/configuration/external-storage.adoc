@@ -13,7 +13,7 @@ To set up your storage device so that it always mounts to a specific location of
 You can mount your storage device at a specific folder location. It is conventional to do this within the `/mnt` folder, for example `/mnt/mydisk`. Note that the folder must be empty.
 
 . Plug the storage device into a USB port on the Raspberry Pi.
-. List all the disk partitions on the Pi using the following command:
+. List all the disk partitions on the Raspberry Pi using the following command:
 +
 ----
  sudo lsblk -o UUID,NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,MODEL
@@ -90,9 +90,9 @@ Replace `fstype` with the type of your file system, which you found in step 2 of
 
 . If the filesystem type is FAT or NTFS, add `,umask=000` immediately after `nofail` - this will allow all users full read/write access to every file on the storage device.
 
-Now that you have set an entry in `fstab`, you can start up your Raspberry Pi with or without the storage device attached. Before you unplug the device you must either shut down the Pi, or manually unmount it using the steps in 'Unmounting a storage device' below.
+Now that you have set an entry in `fstab`, you can start up your Raspberry Pi with or without the storage device attached. Before you unplug the device you must either shut down the Raspberry Pi, or manually unmount it using the steps in 'Unmounting a storage device' below.
 
-NOTE: if you do not have the storage device attached when the Pi starts, the Pi will take an extra 90 seconds to start up. You can shorten this by adding `,x-systemd.device-timeout=30` immediately after `nofail` in step 4. This will change the timeout to 30 seconds, meaning the system will only wait 30 seconds before giving up trying to mount the disk.
+NOTE: If you do not have the storage device attached when the Raspberry Pi starts, the Raspberry Pi will take an extra 90 seconds to start up. You can shorten this by adding `,x-systemd.device-timeout=30` immediately after `nofail` in step 4. This will change the timeout to 30 seconds, meaning the system will only wait 30 seconds before giving up trying to mount the disk.
 
 For more information on each Linux command, refer to the specific manual page using the `man` command. For example, `man fstab`.
 

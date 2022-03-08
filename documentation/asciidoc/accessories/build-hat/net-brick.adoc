@@ -39,7 +39,7 @@ Console.WriteLine($"{BitConverter.ToString(info.Signature)}");
 Console.WriteLine($"Vin = {brick.InputVoltage.Volts} V");
 ----
 
-NOTE: the input voltage is read only once at boot time and is not read again afterwards.
+NOTE: The input voltage is read only once at boot time and is not read again afterwards.
 
 ==== Getting sensors and motors details
 

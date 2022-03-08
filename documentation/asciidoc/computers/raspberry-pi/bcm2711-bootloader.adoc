@@ -35,7 +35,7 @@ Default: `1`
 
 If `1` and `WAKE_ON_GPIO=0` then `sudo halt` will switch off all PMIC outputs. This is lowest possible power state for halt but may cause problems with some HATs because 5V will still be on. `GLOBAL_EN` must be shorted to ground to boot.
 
-Pi 400 has a dedicated power button which operates even if the processor is switched off. This behaviour is enabled by default, however, `WAKE_ON_GPIO=2` may be set to use an external GPIO power button instead of the dedicated power button.
+Raspberry Pi 400 has a dedicated power button which operates even if the processor is switched off. This behaviour is enabled by default, however, `WAKE_ON_GPIO=2` may be set to use an external GPIO power button instead of the dedicated power button.
 
 Default: `0`
 
@@ -75,7 +75,7 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 
 | 0x5
 | BCM-USB-MSD
-| USB 2.0 boot from USB Type C socket (CM4: USB type A socket on CM IO board).
+| USB 2.0 boot from USB Type C socket (CM4: USB type A socket on CM4IO board).
 
 | 0x6
 | NVME
@@ -166,8 +166,8 @@ Default: ""
 [[TFTP_PREFIX]]
 ==== TFTP_PREFIX
 
-In order to support unique TFTP boot directories for each Pi the bootloader prefixes the filenames with a device specific directory. If neither start4.elf nor start.elf are found in the prefixed directory then the prefix is cleared.
-On earlier models the serial number is used as the prefix, however, on Pi 4 the MAC address is no longer generated from the serial number making it difficult to automatically create tftpboot directories on the server by inspecting DHCPDISCOVER packets. To support this the TFTP_PREFIX may be customized to either be the MAC address, a fixed value or the serial number (default).
+In order to support unique TFTP boot directories for each Raspberry Pi the bootloader prefixes the filenames with a device specific directory. If neither start4.elf nor start.elf are found in the prefixed directory then the prefix is cleared.
+On earlier models the serial number is used as the prefix, however, on Raspberry Pi 4 the MAC address is no longer generated from the serial number making it difficult to automatically create tftpboot directories on the server by inspecting DHCPDISCOVER packets. To support this the TFTP_PREFIX may be customized to either be the MAC address, a fixed value or the serial number (default).
 
 |===
 | Value | Description
@@ -203,7 +203,7 @@ Default: `Raspberry Pi Boot`
 ==== DHCP_OPTION97
 
 In earlier releases the client GUID (Option97) was just the serial number repeated 4 times. By default, the new GUID format is
-the concatenation of the fourcc for RPi4 (0x34695052 - little endian), the board revision (e.g. 0x00c03111) (4-bytes), the least significant 4 bytes of the mac address and the 4-byte serial number.
+the concatenation of the fourcc for `RPi4` (0x34695052 - little endian), the board revision (e.g. 0x00c03111) (4-bytes), the least significant 4 bytes of the mac address and the 4-byte serial number.
 This is intended to be unique but also provide structured information to the DHCP server, allowing Raspberry Pi 4 computers to be identified without relying upon the Ethernet MAC OUID.
 
 Specify DHCP_OPTION97=0 to revert the old behaviour or a non-zero hex-value to specify a custom 4-byte prefix.
@@ -304,7 +304,7 @@ In order to simplify parsing, the bootloader requires every field separator to b
 * dst_ip - 255.255.255.255
 * dst_mac - 00:00:00:00:00
 
-One way to view the data is to connect the test Pi 4 to another Pi running WireShark and select "`udp.srcport == 6665`" as a filter and select `+Analyze -> Follow -> UDP stream+` to view as an ASCII log.
+One way to view the data is to connect the test Raspberry Pi 4 to another Raspberry Pi running WireShark and select "`udp.srcport == 6665`" as a filter and select `+Analyze -> Follow -> UDP stream+` to view as an ASCII log.
 
 `NETCONSOLE` should not be enabled by default because it may cause network problems. It can be enabled on demand via a GPIO filter e.g.
 
@@ -361,7 +361,7 @@ If the `VL805` property is set to `1` then the bootloader will search for a VL80
 
 * On Compute Module 4 the bootloader never writes to the dedicated VL805 SPI EEPROM. This option just configures the controller to load the firmware from SDRAM.
 * Do not use this option if the VL805 XHCI controller has a dedicated EEPROM. It will fail to initialise because the VL805 ROM will attempt to use a dedicated SPI EEPROM if fitted.
-* The embedded VL805 firmware assumes the same USB configuration as Pi4B (2 USB3 ports and 4 USB 2 ports). There is no support for loading alternate VL805 FW images, a dedicated VL805 SPI EEPROM should be used instead for such configurations.
+* The embedded VL805 firmware assumes the same USB configuration as Raspberry Pi 4B (2 USB3 ports and 4 USB 2 ports). There is no support for loading alternate VL805 FW images, a dedicated VL805 SPI EEPROM should be used instead for such configurations.
 
 Default: `0`
 
@@ -470,7 +470,7 @@ Default: `-1`
 [[bootloader_update]]
 ==== bootloader_update
 
-This option may be set to 0 to block self-update without requiring the EEPROM configuration to be updated. This is sometimes useful when updating multiple Pis via network boot because this option can be controlled per Raspberry Pi (e.g. via a serial number filter in `config.txt`).
+This option may be set to 0 to block self-update without requiring the EEPROM configuration to be updated. This is sometimes useful when updating multiple Raspberry Pis via network boot because this option can be controlled per Raspberry Pi (e.g. via a serial number filter in `config.txt`).
 
 Default: `1`
 

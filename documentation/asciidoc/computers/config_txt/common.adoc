@@ -46,6 +46,6 @@ For more details, see xref:configuration.adoc#part3.1[DTBs, overlays and config.
 
 ==== `arm_boost` (Raspberry Pi 4 Only)
 
-All Pi 400s and newer revisions of the Pi 4B are equipped with a second switch-mode power supply for the SoC voltage rail, and this allows the default turbo-mode clock to be increased from 1.5GHz to 1.8GHz. This change should be safe for all such boards, but to avoid unrequested changes for existing installations this change must be accepted by setting `arm_boost=1`. 
+All Raspberry Pi 400s and newer revisions of the Raspberry Pi 4B are equipped with a second switch-mode power supply for the SoC voltage rail, and this allows the default turbo-mode clock to be increased from 1.5GHz to 1.8GHz. This change should be safe for all such boards, but to avoid unrequested changes for existing installations this change must be accepted by setting `arm_boost=1`. 
 
 IMPORTANT: New Raspberry Pi OS images from Bullseye onwards come with this setting by default.

@@ -158,7 +158,7 @@ Use the arrow keys to scroll and type `q` to exit.
 
 ==== MP4 Video Format
 
-The Pi captures video as a raw H264 video stream. Many media players will refuse to play it, or play it at an incorrect speed, unless it is "wrapped" in a suitable container format like MP4. The easiest way to obtain an MP4 file from the raspivid command is using MP4Box.
+The Raspberry Pi captures video as a raw H264 video stream. Many media players will refuse to play it, or play it at an incorrect speed, unless it is "wrapped" in a suitable container format like MP4. The easiest way to obtain an MP4 file from the raspivid command is using MP4Box.
 
 Install MP4Box with this command:
 

@@ -4,7 +4,7 @@
 
 ==== `sdtv_mode`
 
-The `sdtv_mode` command defines the TV standard used for composite video output. On the original Raspberry Pi, composite video is output on the RCA socket. On other Raspberry Pi's, except for Pi Zero and Compute Module, composite video is output along with sound on the 4 pole TRRS ("headphone") socket. On the Pi Zero, there is an unpopulated header labelled "TV" which outputs composite video. On the Compute Module, composite video is available via the TVDAC pin. The default value of `sdtv_mode` is `0`.
+The `sdtv_mode` command defines the TV standard used for composite video output. On the original Raspberry Pi, composite video is output on the RCA socket. On other Raspberry Pis, except for Raspberry Pi Zero and Compute Module, composite video is output along with sound on the 4 pole TRRS ("headphone") socket. On the Raspberry Pi Zero, there is an unpopulated header labelled "TV" which outputs composite video. On the Compute Module, composite video is available via the TVDAC pin. The default value of `sdtv_mode` is `0`.
 
 |===
 | sdtv_mode | result
@@ -49,17 +49,17 @@ The `sdtv_aspect` command defines the aspect ratio for composite video output. T
 
 Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
 
-==== `enable_tvout` (Raspberry Pi 4, Model B Only)
+==== `enable_tvout` (Raspberry Pi 4 Model B Only)
 
-On the Raspberry Pi 4, composite output is disabled by default, due to the way the internal clocks are interrelated and allocated. Because composite video requires a very specific clock, setting that clock to the required speed on the Pi 4 means that other clocks connected to it are detrimentally affected, which slightly slows down the entire system. Since composite video is a less commonly used function, we decided to disable it by default to prevent this system slowdown.
+On the Raspberry Pi 4, composite output is disabled by default, due to the way the internal clocks are interrelated and allocated. Because composite video requires a very specific clock, setting that clock to the required speed on the Raspberry Pi 4 means that other clocks connected to it are detrimentally affected, which slightly slows down the entire system. Since composite video is a less commonly used function, we decided to disable it by default to prevent this system slowdown.
 
 To enable composite output, use the `enable_tvout=1` option. As described above, this will detrimentally affect performance to a small degree.
 
-On older Pi models, the composite behaviour remains the same.
+On older Raspberry Pi models, the composite behaviour remains the same.
 
 === HDMI Mode
 
-NOTE: Because the Raspberry Pi 4B has two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found in the HDMI sub-section of the xref:config_txt.adoc#conditional-filters[conditionals section] of the documentation.
+NOTE: Because the Raspberry Pi 4 and Raspberry Pi 400 have two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found in the HDMI sub-section of the xref:config_txt.adoc#conditional-filters[conditionals section] of the documentation.
 
 In order to support dual 4k displays, the Raspberry Pi 4 has xref:config_txt.adoc#raspberry-pi-4-hdmi-pipeline[updated video hardware], which imposes minor restrictions on the modes supported.
 
@@ -1508,7 +1508,7 @@ hdmi_cvt=<width> <height> <framerate> <aspect> <margins> <interlace> <rb>
 
 Fields at the end can be omitted to use the default values.
 
-Note that this simply *creates* the mode (group 2 mode 87). In order to make the Pi use this by default, you must add some additional settings. For example, the following selects an 800 × 480 resolution and enables audio drive:
+Note that this simply *creates* the mode (group 2 mode 87). In order to make the Raspberry Pi use this by default, you must add some additional settings. For example, the following selects an 800 × 480 resolution and enables audio drive:
 
 ----
 hdmi_cvt=800 480 60 6
@@ -1523,15 +1523,15 @@ This may not work if your monitor does not support standard CVT timings.
 
 ==== `ignore_lcd`
 
-By default the Raspberry Pi LCD display is used when it is detected on the I2C bus. `ignore_lcd=1` will skip this detection phase, and therefore the LCD display will not be used.
+By default the Raspberry Pi Touch Display is used when it is detected on the I2C bus. `ignore_lcd=1` will skip this detection phase, and therefore the LCD display will not be used.
 
 ==== `display_default_lcd`
 
-If a Raspberry Pi DSI LCD is detected it will be used as the default display and will show the framebuffer. Setting `display_default_lcd=0` will ensure the LCD is not the default display, which usually implies the HDMI output will be the default. The LCD can still be used by choosing its display number from supported applications, for example, omxplayer.
+If a Raspberry Pi Touch Display is detected it will be used as the default display and will show the framebuffer. Setting `display_default_lcd=0` will ensure the LCD is not the default display, which usually implies the HDMI output will be the default. The LCD can still be used by choosing its display number from supported applications, for example, omxplayer.
 
 ==== `lcd_framerate`
 
-Specify the framerate of the Raspberry Pi LCD display, in Hertz/fps. Defaults to 60Hz.
+Specify the framerate of the Raspberry Pi Touch Display, in Hertz/fps. Defaults to 60Hz.
 
 ==== `lcd_rotate`
 
@@ -1543,7 +1543,7 @@ For example, `lcd_rotate=2` will compensate for an upside down display.
 
 Enable/disable the touchscreen.
 
-`disable_touchscreen=1` will disable the touchscreen on the official Raspberry Pi LCD display.
+`disable_touchscreen=1` will disable the touchscreen on the official Raspberry Pi Touch Display.
 
 ==== `enable_dpi_lcd`
 
@@ -1705,7 +1705,7 @@ The options that can be set are:
 
 ==== `max_framebuffers`
 
-This configuration entry sets the maximum number of firmware framebuffers that can be created. Valid options are 0, 1, and 2. By default on devices before the Pi4 this is set to 1, so will need to be increased to 2 when using more than one display, for example HDMI and a DSI or DPI display. The Raspberry Pi4 configuration sets this to 2 by default as it has two HDMI ports.
+This configuration entry sets the maximum number of firmware framebuffers that can be created. Valid options are 0, 1, and 2. By default on devices before the Raspberry Pi 4 this is set to 1, so will need to be increased to 2 when using more than one display, for example HDMI and a DSI or DPI display. The Raspberry Pi 4 configuration sets this to 2 by default as it has two HDMI ports.
 
 Generally in most cases it is safe to set this to 2, as framebuffers will only be created when an attached device is actually detected.
 
@@ -1747,7 +1747,7 @@ If using the VC4 FKMS V3D driver (this is the default on the Raspberry Pi 4), th
 
 ==== `display_lcd_rotate`
 
-For the legacy graphics driver (default on models prior to the Pi4), use `display_lcd_rotate` to rotate or flip the LCD orientation. Parameters are the same as `display_hdmi_rotate`. See also `lcd_rotate`.
+For the legacy graphics driver (default on models prior to the Raspberry Pi 4), use `display_lcd_rotate` to rotate or flip the LCD orientation. Parameters are the same as `display_hdmi_rotate`. See also `lcd_rotate`.
 
 ==== `display_rotate`
 

@@ -4,7 +4,7 @@ V4L2 drivers provide a standard Linux interface for accessing camera and codec f
 
 === Driver differences when using `libcamera` or the legacy stack
 
-On systems using `libcamera`, `/dev/video0` and `/dev/video1` are V4L2 drivers for Unicam, the Pi's CSI-2 receiver. The Pi has two CSI-2 receivers, each managed by one of these device nodes.
+On systems using `libcamera`, `/dev/video0` and `/dev/video1` are V4L2 drivers for Unicam, the Raspberry Pi's CSI-2 receiver. The Raspberry Pi has two CSI-2 receivers, each managed by one of these device nodes.
 
 On systems using the legacy stack, `/dev/video0` is a V4L2 driver that gives access to the full camera system using the proprietary Broadcom driver on the GPU. There is no `/dev/video1`. There are no Unicam drivers, though there is a legacy _MMAL Rawcam_ component.
 

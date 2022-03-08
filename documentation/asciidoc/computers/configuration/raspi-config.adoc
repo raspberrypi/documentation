@@ -48,7 +48,7 @@ The default user on Raspberry Pi OS is `pi` with the password `raspberry`. You c
 [[hostname]]
 ===== Hostname
 
-Set the visible name for this Pi on a network.
+Set the visible name for this Raspberry Pi on a network.
 
 [[boot-options]]
 ===== Boot / Auto login
@@ -65,7 +65,7 @@ Enable or disable the splash screen displayed at boot time
 
 ===== Power LED
 
-If the model of Pi permits it, you can change the behaviour of the power LED using this option.
+If the model of Raspberry Pi permits it, you can change the behaviour of the power LED using this option.
 
 ==== Display Options
 
@@ -109,9 +109,9 @@ Enable/disable the CSI camera interface.
 [[ssh]]
 ===== SSH
 
-Enable/disable remote command line access to your Pi using SSH.
+Enable/disable remote command line access to your Raspberry Pi using SSH.
 
-SSH allows you to remotely access the command line of the Raspberry Pi from another computer. SSH is disabled by default. Read more about using SSH on the xref:remote-access.adoc#ssh[SSH documentation page]. If connecting your Pi directly to a public network, you should not enable SSH unless you have set up secure passwords for all users.
+SSH allows you to remotely access the command line of the Raspberry Pi from another computer. SSH is disabled by default. Read more about using SSH on the xref:remote-access.adoc#ssh[SSH documentation page]. If connecting your Raspberry Pi directly to a public network, you should not enable SSH unless you have set up secure passwords for all users.
 
 [[VNC]]
 ===== VNC

@@ -15,9 +15,9 @@ In the terminal window you should be able to see the following prompt:
 pi@raspberrypi ~ $
 ----
 
-This shows your username and the hostname of the Pi. Here the username is `pi` and the hostname is `raspberrypi`.
+This shows your username and the hostname of the Raspberry Pi. Here the username is `pi` and the hostname is `raspberrypi`.
 
-=== Navigating and browsing your Pi
+=== Navigating and browsing your Raspberry Pi
 
 One of the key aspects of using a terminal is being able to navigate your file system. Go ahead and type `ls -la` into the Terminal window, and then hit the RETURN key. You should see something similar to:
 

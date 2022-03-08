@@ -41,7 +41,7 @@ The legacy camera stack can be re-enabled in Bullseye using the following steps.
 1. Ensure your system is up-to-date and reboot it.
 2. Run `sudo raspi-config`.
 3. Navigate to `Interface Options` and select `Legacy camera` to enable it.
-4. Reboot your Pi again.
+4. Reboot your Raspberry Pi again.
 
 These steps are shown in the following video.
 

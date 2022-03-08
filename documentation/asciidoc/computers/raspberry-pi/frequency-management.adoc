@@ -52,4 +52,4 @@ Due to the architecture of the SoCs used on the Raspberry Pi range, and the use 
 
 === Adding Heatsinks
 
-Whilst heatsinks are not necessary to prevent overheating damage to the SoC — the thermal throttling mechanism handles that — a heatsink or small fan will help if you wish to reduce the amount of thermal throttling that takes place. Depending on the exact circumstances, mounting the Pi vertically can also help with heat dissipation, as doing so can improve air flow.
+Whilst heatsinks are not necessary to prevent overheating damage to the SoC — the thermal throttling mechanism handles that — a heatsink or small fan will help if you wish to reduce the amount of thermal throttling that takes place. Depending on the exact circumstances, mounting the Raspberry Pi vertically can also help with heat dissipation, as doing so can improve air flow.

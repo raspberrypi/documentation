@@ -18,7 +18,7 @@ and forward it to the preview window:
 	app.ShowPreview(completed_request, app.ViewfinderStream());
 ----
 
-One important thing to note is that every `CompletedRequest` must be recycled back to the camera system so that the buffers can be reused, otherwise it will simply run out of buffers in which to receive new camera frames. This recycling process happens automatically when all references to the `CompletedRequest` are dropped, using C++'s _shared pointer_ and _custom deleter_ mechanisms.
+One important thing to note is that every `CompletedRequest` must be recycled back to the camera system so that the buffers can be reused, otherwise it will simply run out of buffers in which to receive new camera frames. This recycling process happens automatically when all references to the `CompletedRequest` are dropped, using {cpp}'s _shared pointer_ and _custom deleter_ mechanisms.
 
 In `libcamera-hello` therefore, two things must happen for the `CompletedRequest` to be returned to the camera.
 

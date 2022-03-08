@@ -1,6 +1,6 @@
 == BCM2837B0
 
-This is the Broadcom chip used in the Raspberry Pi 3 Models A+, B+, and the Raspberry Pi Compute Module 3+. The underlying architecture of the BCM2837B0 is identical to the BCM2837 chip used in other versions of the Pi. The ARM core hardware is the same, only the frequency is rated higher.
+This is the Broadcom chip used in the Raspberry Pi 3 Models A+, B+, and the Raspberry Pi Compute Module 3+. The underlying architecture of the BCM2837B0 is identical to the BCM2837 chip used in other versions of the Raspberry Pi. The ARM core hardware is the same, only the frequency is rated higher.
 
 The ARM cores are capable of running at up to 1.4GHz, making the 3B+/3A+ about 17% faster than the original Raspberry Pi 3. The VideoCore IV runs at 400MHz. The ARM core is 64-bit, while the VideoCore IV is 32-bit.
 

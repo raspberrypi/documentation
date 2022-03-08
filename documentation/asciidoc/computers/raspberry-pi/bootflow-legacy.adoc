@@ -33,7 +33,7 @@ Next, the boot ROM checks each of the boot sources for a file called bootcode.bi
    **** DHCP / TFTP boot
  ** else (Device mode boot)
   *** Enable device mode and wait for host PC to enumerate
-  *** We reply to PC with VID: 0a5c PID: 0x2763 (Pi 1 or Pi 2) or 0x2764 (Pi 3)
+  *** We reply to PC with VID: 0a5c PID: 0x2763 (Raspberry Pi 1 or Raspberry Pi 2) or 0x2764 (Raspberry Pi 3)
 
 
 [NOTE]
@@ -51,6 +51,6 @@ The primary SD card boot mode is, as standard, set to be GPIOs 49-53. It is poss
 
 NAND boot and SPI boot modes do work, although they do not yet have full GPU support.
 
-The USB device boot mode is enabled by default at the time of manufacture, but the USB host boot mode is only enabled with `program_usb_boot_mode=1`. Once enabled, the processor will use the value of the OTGID pin on the processor to decide between the two modes. On a Raspberry Pi Model B, the OTGID pin is driven to '0' and therefore will only boot via host mode once enabled (it is not possible to boot through device mode because the LAN9515 device is in the way).
+The USB device boot mode is enabled by default at the time of manufacture, but the USB host boot mode is only enabled with `program_usb_boot_mode=1`. Once enabled, the processor will use the value of the OTGID pin on the processor to decide between the two modes. On any Raspberry Pi Model B / B+, the OTGID pin is driven to '0' and therefore will only boot via host mode once enabled (it is not possible to boot through device mode because the LAN951x device is in the way).
 
-The USB will boot as a USB device on the Pi Zero or Compute Module if the OTGID pin is left floating (when plugged into a PC for example), so you can 'squirt' the bootcode.bin into the device. The code for doing this is https://github.com/raspberrypi/usbboot[`usbboot`] and available on Github.
+The USB will boot as a USB device on the Raspberry Pi Zero or Compute Module if the OTGID pin is left floating (when plugged into a PC for example), so you can 'squirt' the bootcode.bin into the device. The `usbboot` code for doing this is https://github.com/raspberrypi/usbboot[available on Github].

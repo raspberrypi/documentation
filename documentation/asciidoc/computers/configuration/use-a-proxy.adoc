@@ -1,6 +1,6 @@
 == Using a Proxy Server
 
-If you want your Raspberry Pi to access the Internet via a proxy server (perhaps from a school or other workplace), you will need to configure your Pi to use the server before you can get online.
+If you want your Raspberry Pi to access the Internet via a proxy server (perhaps from a school or other workplace), you will need to configure your Raspberry Pi to use the server before you can get online.
 
 You will need:
 
@@ -25,7 +25,7 @@ export http_proxy="http://proxyipaddress:proxyport"
 
 Replace `proxyipaddress` and `proxyport` with the IP address and port of your proxy.
 
-NOTE: if your proxy requires a username and password, add them using the following format:
+NOTE: If your proxy requires a username and password, add them using the following format:
 
 ----
 export http_proxy="http://username:password@proxyipaddress:proxyport"
@@ -37,7 +37,7 @@ Enter the same information for the environment variable `https_proxy`:
 export https_proxy="http://username:password@proxyipaddress:proxyport"
 ----
 
-Create the `no_proxy` environment variable, which is a comma-separated list of addresses your Pi should not use the proxy for:
+Create the `no_proxy` environment variable, which is a comma-separated list of addresses your Raspberry Pi should not use the proxy for:
 
 ----
 export no_proxy="localhost, 127.0.0.1"

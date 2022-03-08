@@ -6,7 +6,7 @@ On Linux, you have a choice of text editors. Some are easy-to-use but have limit
 
 ==== Text Editor
 
-When using Raspberry Pi OS Desktop, in the accessories menu there is an option to run a Text Editor. This is a simple editor which opens in a window like a normal application. It allows use of the mouse and keyboard, and has tabs and syntax highlighting.
+When using Raspberry Pi OS with desktop, in the accessories menu there is an option to run a Text Editor. This is a simple editor which opens in a window like a normal application. It allows use of the mouse and keyboard, and has tabs and syntax highlighting.
 
 You can use keyboard shortcuts, such as `Ctrl + S` to save a file and `Ctrl + X` to exit.
 

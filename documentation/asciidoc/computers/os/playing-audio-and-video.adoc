@@ -93,7 +93,7 @@ omxplayer example.mp4
 
 This will play the `example.mp4` in full screen. Hit `Ctrl + C` to exit.
 
-On the Pi 4, hardware support for MPEG2 and VC-1 codecs has been removed, so we recommend the use of the VLC application, which supports these formats in software. In addition, VLC has hardware support for H264 and the new HEVC codec.
+On the Raspberry Pi 4, hardware support for MPEG2 and VC-1 codecs has been removed, so we recommend the use of the VLC application, which supports these formats in software. In addition, VLC has hardware support for H264 and the new HEVC codec.
 
 ==== An Example Video
 
@@ -104,7 +104,7 @@ A video sample of the animated film _Big Buck Bunny_ is available on your Raspbe
 omxplayer /opt/vc/src/hello_pi/hello_video/test.h264
 ----
 
-On a Pi 4, use the following command for H264 files:
+On a Raspberry Pi 4, use the following command for H264 files:
 
 [,bash]
 ----

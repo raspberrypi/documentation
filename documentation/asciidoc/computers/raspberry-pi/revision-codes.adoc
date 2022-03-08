@@ -391,7 +391,7 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | Embest
 
 | 900061
-| CM
+| CM1
 | 1.1
 | 512MB
 | Sony UK

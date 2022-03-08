@@ -25,7 +25,7 @@ Schematics for the various Raspberry Pi board versions:
 
 * https://datasheets.raspberrypi.com/rpi2/raspberry-pi-2-b-reduced-schematics.pdf[Schematics, Revision 1.2]
 
-=== Raspberry Pi Model B+
+=== Raspberry Pi 1 Model B+
 
 * https://datasheets.raspberrypi.com/rpi/raspberry-pi-b-plus-reduced-schematics.pdf[Schematics, Revision 1.2]
 * https://datasheets.raspberrypi.com/rpi/raspberry-pi-b-plus-mecahnical-drawing.pdf[Mechanical Drawings, PDF]
@@ -37,9 +37,9 @@ Schematics for the various Raspberry Pi board versions:
 * https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-a-plus-mechanical-drawing.pdf[Mechanical Drawings, PDF]
 * https://datasheets.raspberrypi.com/case/raspberry-pi-3-a-plus-case-mechanical-drawing.pdf[Case Drawings, PDF]
 
-NOTE: Mechanical drawings for the Raspberry Pi 3, Model A+ are also applicable to the Raspberry Pi, Model A+.
+NOTE: Mechanical drawings for the Raspberry Pi 3 Model A+ are also applicable to the Raspberry Pi 1 Model A+.
 
-=== Raspberry Pi Model A+
+=== Raspberry Pi 1 Model A+
 
 * https://datasheets.raspberrypi.com/rpi/raspberry-pi-a-plus-reduced-schematics.pdf[Schematics, Revision 1.1]
 

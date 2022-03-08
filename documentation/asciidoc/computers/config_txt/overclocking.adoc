@@ -2,7 +2,7 @@
 
 The kernel has a https://www.kernel.org/doc/html/latest/admin-guide/pm/cpufreq.html[CPUFreq] driver with the "powersave" governor enabled by default, switched to "ondemand" during boot, when xref:configuration.adoc#raspi-config[raspi-config] is installed. With "ondemand" governor, CPU frequency will vary with processor load. You can adjust the minimum values with the `*_min` config options or disable dynamic clocking by applying a static scaling governor ("powersave" or "performance") or with `force_turbo=1`.
 
-Overclocking and overvoltage will be disabled at runtime when the SoC reaches `temp_limit` (see below), which defaults to 85°C, in order to cool down the SoC. You should not hit this limit with Raspberry Pi Models 1 and 2, but you are more likely to with Raspberry Pi 3 and Raspberry Pi 4B. Overclocking and overvoltage are also disabled when an undervoltage situation is detected.
+Overclocking and overvoltage will be disabled at runtime when the SoC reaches `temp_limit` (see below), which defaults to 85°C, in order to cool down the SoC. You should not hit this limit with Raspberry Pi 1 and Raspberry Pi 2, but you are more likely to with Raspberry Pi 3 and Raspberry Pi 4. Overclocking and overvoltage are also disabled when an undervoltage situation is detected.
 
 NOTE: For more information xref:raspberry-pi.adoc#frequency-management-and-thermal-control[see the section on frequency management and thermal control].
 
@@ -23,7 +23,7 @@ WARNING: Setting any overclocking parameters to values other than those used by 
 | Sets `core_freq`, `h264_freq`, `isp_freq`, `v3d_freq` and `hevc_freq` together
 
 | core_freq
-| Frequency of the GPU processor core in MHz, influences CPU performance because it drives the L2 cache and memory bus; the L2 cache benefits only Pi Zero/Pi Zero W/ Pi 1, there is a small benefit for SDRAM on Pi 2/Pi 3. See section below for use on the Pi 4.
+| Frequency of the GPU processor core in MHz, influences CPU performance because it drives the L2 cache and memory bus; the L2 cache benefits only Raspberry Pi Zero / Raspberry Pi Zero W / Raspberry Pi 1, there is a small benefit for SDRAM on Raspberry Pi 2 / Raspberry Pi 3. See section below for use on the Raspberry Pi 4.
 
 | h264_freq
 | Frequency of the hardware video block in MHz; individual override of the `gpu_freq` setting
@@ -35,13 +35,13 @@ WARNING: Setting any overclocking parameters to values other than those used by 
 | Frequency of the 3D block in MHz; individual override of the `gpu_freq` setting
 
 | hevc_freq
-| Frequency of the High Efficiency Video Codec block in MHz; individual override of the `gpu_freq` setting. Pi 4 only.
+| Frequency of the High Efficiency Video Codec block in MHz; individual override of the `gpu_freq` setting. Raspberry Pi 4 only.
 
 | sdram_freq
-| Frequency of the SDRAM in MHz. SDRAM overclocking on Pi 4B is not currently supported
+| Frequency of the SDRAM in MHz. SDRAM overclocking on Raspberry Pi 4B is not currently supported
 
 | over_voltage
-| CPU/GPU core upper voltage limit. The value should be in the range [-16,8] which equates to the range [0.95V,1.55V] ([0.8,1.4V] on RPi 1) with 0.025V steps. In other words, specifying -16 will give 0.95V (0.8V on RPi 1) as the maximum CPU/GPU core voltage, and specifying 8 will allow up to 1.55V (1.4V on RPi 1). For defaults see table below. Values above 6 are only allowed when `force_turbo=1` is specified: this sets the warranty bit if `over_voltage_*` > `0` is also set.
+| CPU/GPU core upper voltage limit. The value should be in the range [-16,8] which equates to the range [0.95V,1.55V] ([0.8,1.4V] on Raspberry Pi 1) with 0.025V steps. In other words, specifying -16 will give 0.95V (0.8V on Raspberry Pi 1) as the maximum CPU/GPU core voltage, and specifying 8 will allow up to 1.55V (1.4V on Raspberry Pi 1). For defaults see table below. Values above 6 are only allowed when `force_turbo=1` is specified: this sets the warranty bit if `over_voltage_*` > `0` is also set.
 
 | over_voltage_sdram
 | Sets `over_voltage_sdram_c`, `over_voltage_sdram_i`, and `over_voltage_sdram_p` together.
@@ -95,7 +95,7 @@ WARNING: Setting any overclocking parameters to values other than those used by 
 | *3A+/3B+ only*. CPU speed throttle control. This sets the temperature at which the CPU clock speed throttling system activates. At this temperature, the clock speed is reduced from 1400MHz to 1200MHz.  Defaults to `60`, can be raised to a maximum of `70`, but this may cause instability.
 |===
 
-This table gives the default values for the options on various Raspberry Pi Models, all frequencies are stated in MHz.
+This table gives the default values for the options on various Raspberry Pi models, all frequencies are stated in MHz.
 
 [cols=",^,^,^,^,^,^,^,^,^"]
 |===
@@ -269,7 +269,7 @@ This table gives defaults for options that are the same across all models.
 | 85 (°C)
 
 | over_voltage
-| 0 (1.35V, 1.2V on RPi 1)
+| 0 (1.35V, 1.2V on Raspberry Pi 1)
 
 | over_voltage_min
 | 0 (1.2V)
@@ -321,19 +321,19 @@ Sets a bit in the OTP memory (one time programmable) that prevents the device fr
 
 ==== `disable_auto_turbo`
 
-On Pi 2/Pi 3, setting this flag will disable the GPU from moving into turbo mode, which it can do in particular load cases.
+On Raspberry Pi 2 / Raspberry Pi 3, setting this flag will disable the GPU from moving into turbo mode, which it can do in particular load cases.
 
 === Clocks Relationship
 
 The GPU core, CPU, SDRAM and GPU each have their own PLLs and https://forums.raspberrypi.com/viewtopic.php?f=29&t=6201&start=275#p168042[can have unrelated frequencies]. The h264, v3d and ISP blocks share a PLL.
 
-To view the Pi's current frequency in KHz, type: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`. Divide the result by 1000 to find the value in MHz. Note that this frequency is the kernel _requested_ frequency, and it is possible that any throttling (for example at high temperatures) may mean the CPU is actually running more slowly than reported. An instantaneous measurement of the actual ARM CPU frequency can be retrieved using the vcgencmd `vcgencmd measure_clock arm`. This is displayed in Hertz.
+To view the Raspberry Pi's current frequency in KHz, type: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`. Divide the result by 1000 to find the value in MHz. Note that this frequency is the kernel _requested_ frequency, and it is possible that any throttling (for example at high temperatures) may mean the CPU is actually running more slowly than reported. An instantaneous measurement of the actual ARM CPU frequency can be retrieved using the vcgencmd `vcgencmd measure_clock arm`. This is displayed in Hertz.
 
 === Monitoring Core Temperature
 
 To view the Raspberry Pi's temperature, type `cat /sys/class/thermal/thermal_zone0/temp`. Divide the result by 1000 to find the value in degrees Celsius. Alternatively, there is a vcgencmd, `vcgencmd measure_temp` that interrogates the GPU directly for its temperature.
 
-Whilst hitting the temperature limit is not harmful to the SoC, it will cause CPU throttling. A heatsink can help to control the core temperature and therefore performance. This is especially useful if the Pi is running inside a case. Airflow over the heatsink will make cooling more efficient.
+Whilst hitting the temperature limit is not harmful to the SoC, it will cause CPU throttling. A heatsink can help to control the core temperature and therefore performance. This is especially useful if the Raspberry Pi is running inside a case. Airflow over the heatsink will make cooling more efficient.
 
 With firmware from 12th September 2016 or later, when the core temperature is between 80'C and 85'C, a warning icon showing a red half-filled thermometer will be displayed, and the ARM cores will be throttled back. If the temperature exceeds 85'C, an icon showing a fully-filled thermometer will be displayed, and both the ARM cores and the GPU will be throttled back.
 
@@ -345,7 +345,7 @@ See the page on xref:configuration.adoc#firmware-warning-icons[warning icons] fo
 
 It is essential to keep the supply voltage above 4.8V for reliable performance. Note that the voltage from some USB chargers/power supplies can fall as low as 4.2V. This is because they are usually designed to charge a 3.7V LiPo battery, not to supply 5V to a computer.
 
-To monitor the Pi's PSU voltage, you will need to use a multimeter to measure between the VCC and GND pins on the GPIO. More information is available in xref:raspberry-pi.adoc#power-supply[power].
+To monitor the Raspberry Pi's PSU voltage, you will need to use a multimeter to measure between the VCC and GND pins on the GPIO. More information is available in xref:raspberry-pi.adoc#power-supply[power].
 
 If the voltage drops below 4.63V (+-5%), recent versions of the firmware will show a yellow lightning bolt symbol on the display to indicate a lack of power, and a message indicating the low voltage state will be added to the kernel log.
 

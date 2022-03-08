@@ -4,10 +4,10 @@
 ====
 These instructions are intended for advanced users, if anything is unclear please use the https://forums.raspberrypi.com/viewforum.php?f=43[Raspberry Pi Camera forums] for technical help.
 
-Unless explicitly stated otherwise, these instructions will work identically on both the Compute Module and Compute Module 3, attached to a Compute Module IO Board. Compute Module 4 is slightly different, so please refer to the appropriate section.
+Unless explicitly stated otherwise, these instructions will work identically on both the Compute Module 1 and Compute Module 3, attached to a Compute Module IO Board. Compute Module 4 is slightly different, so please refer to the appropriate section.
 ====
 
-The Compute Module has two CSI-2 camera interfaces. CAM0 has two CSI-2 data lanes, whilst CAM1 has four data lanes. The Compute Module IO board exposes both of these interfaces. Note that the standard Raspberry Pi devices uses CAM1, but only exposes two lanes.
+The Compute Module has two CSI-2 camera interfaces. CAM0 has two CSI-2 data lanes, whilst CAM1 has four data lanes. The Compute Module IO board exposes both of these interfaces. Note that the standard Raspberry Pi devices use CAM1, but only expose two data lanes.
 
 Please note that the camera modules are *not* designed to be hot pluggable. They should always be connected or disconnected with the power off.
 
@@ -22,14 +22,14 @@ sudo apt full-upgrade
 
 === Crypto Chip
 
-When using the Compute Module to drive cameras, it is NOT necessary to incorporate the crypto chip used on the Raspberry Pi--designed camera boards when attaching the OM5647, IMX219 or HQ Camera Modules directly to the Compute Module carrier board. The Raspberry Pi firmware will automatically detect the CM and allow communications with the Camera Module to proceed without the crypto chip being present.
+When using the Compute Module to drive cameras, it is NOT necessary to incorporate the crypto chip used on the Raspberry Pi--designed camera boards when attaching the OM5647, IMX219 or HQ Camera Modules directly to the Compute Module carrier board. The Raspberry Pi firmware will automatically detect the Compute Module and allow communications with the Camera Module to proceed without the crypto chip being present.
 
 === Quickstart Guide
 
 To connect a single camera:
 
-. Power the CM down.
-. On the compute module, run `sudo raspi-config` and enable the camera.
+. Power the Compute Module down.
+. On the Compute Module, run `sudo raspi-config` and enable the camera.
 . Connect the RPI-CAMERA board and Camera Module to the CAM1 port. As an alternative, the Raspberry Pi Zero camera cable can be used.
 +
 image::images/CMIO-Cam-Adapter.jpg[Connecting the adapter board]
@@ -38,7 +38,7 @@ image::images/CMIO-Cam-Adapter.jpg[Connecting the adapter board]
 +
 image::images/CMIO-Cam-GPIO.jpg[GPIO connection for a single camera]
 
-. Power the CM up and run `+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-cam1.bin -O /boot/dt-blob.bin+`
+. Power the Compute Module up and run `+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-cam1.bin -O /boot/dt-blob.bin+`
 . Finally, reboot for the dt-blob.bin file to be read.
 
 To connect two cameras, follow the steps as for a single camera and then also:
@@ -68,7 +68,7 @@ status = mmal_port_parameter_set(camera->control, &camera_num.hdr);
 
 The Compute Module IO board has a 22-way 0.5mm FFC for each camera port, with CAM0 being a two-lane interface and CAM1 being the full four-lane interface. The standard Raspberry Pi uses a 15-way 1mm FFC cable, so you will need either an adapter (part# RPI-CAMERA) or a Raspberry Pi Zero camera cable.
 
-The CMIO board for Compute Modules 1&3 differ slightly in approach to that for Compute Module 4. They will be considered separately.
+The CMIO board for Compute Modules 1 & 3 differ slightly in approach to that for Compute Module 4. They will be considered separately.
 
 ==== Compute Module 1 & 3
 
@@ -113,7 +113,7 @@ The GPIOs that we are using for the camera default to input mode on the Compute 
 
 <<sample-device-tree-source-files,Sample device tree source files>> are provided at the bottom of this document. These use the default wiring as described in this page.
 
-The `pin_config` section in the `pins_cm { }` (compute module), `pins_cm3 { }` (compute module3), or `pins_cm4 { }` (compute module 4) section of the source dts needs the camera's LED and power enable pins set to outputs:
+The `pin_config` section in the `pins_cm { }` (Compute Module 1), `pins_cm3 { }` (Compute Module 3), or `pins_cm4 { }` (Compute Module 4) section of the source dts needs the camera's LED and power enable pins set to outputs:
 
 ----
 pin@p2  { function = "output"; termination = "no_pulling"; };
