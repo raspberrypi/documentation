@@ -361,7 +361,7 @@ If the `VL805` property is set to `1` then the bootloader will search for a VL80
 
 * On Compute Module 4 the bootloader never writes to the dedicated VL805 SPI EEPROM. This option just configures the controller to load the firmware from SDRAM.
 * Do not use this option if the VL805 XHCI controller has a dedicated EEPROM. It will fail to initialise because the VL805 ROM will attempt to use a dedicated SPI EEPROM if fitted.
-* The embedded VL805 firmware assumes the same USB configuration as Raspberry Pi 4B (2 USB3 ports and 4 USB 2 ports). There is no support for loading alternate VL805 FW images, a dedicated VL805 SPI EEPROM should be used instead for such configurations.
+* The embedded VL805 firmware assumes the same USB configuration as Raspberry Pi 4B (2 USB3 ports and 4 USB 2 ports). There is no support for loading alternate VL805 FW images: a dedicated VL805 SPI EEPROM should be used instead for such configurations.
 
 Default: `0`
 
