@@ -4,7 +4,7 @@ In your home folder you will find a hidden file called `.bashrc` which contains 
 
 If you want your changes to take place in your current terminal, you can use either `source ~/.bashrc` or `exec bash`. These actually do slightly different things: the former simply re-executes the `.bashrc` file, which may result in undesirable changes to things like the path, the latter replaces the current shell with a new bash shell, which resets the shell back to the state at login, throwing away any shell variables you may have set. Choose whichever is most appropriate.
 
-Some useful adaptions are provided for you; some of these are commented out with a `#` by default. To enable them, remove the `#` and they will be active next time you boot your Pi or start a new terminal.
+Some useful adaptions are provided for you; some of these are commented out with a `#` by default. To enable them, remove the `#` and they will be active next time you boot your Raspberry Pi or start a new terminal.
 
 For example, some `ls` aliases:
 

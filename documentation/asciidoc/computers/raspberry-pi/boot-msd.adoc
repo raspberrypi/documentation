@@ -24,7 +24,7 @@ Please see the xref:compute-module.adoc#flashing-the-compute-module-emmc[Flashin
 
 The Raspberry Pi 3B+ supports USB mass storage boot out of the box.
 
-=== Raspberry Pi 2B, 3A+, 3B, CM 3, 3+, Zero 2 W
+=== Raspberry Pi 2B, 3A+, 3B, CM3, CM3+, Zero 2 W
 
 On the Raspberry Pi 2B v1.2, 3A+, 3B, Zero 2 W, and Compute Module 3, 3+ you must first enable xref:raspberry-pi.adoc#usb-host-boot-mode[USB host boot mode]. This is to allow USB mass storage boot, and xref:raspberry-pi.adoc#network-booting[network boot]. Note that network boot is not supported on the Raspberry Pi 3A+ or Zero 2 W.
 
@@ -32,7 +32,7 @@ To enable USB host boot mode, the Raspberry Pi needs to be booted from an SD car
 
 IMPORTANT: Any change you make to the OTP is permanent and cannot be undone.
 
-NOTE: On the Raspberry Pi 3A+, setting the OTP bit to enable USB host boot mode will permanently prevent that Pi from booting in USB device mode.
+NOTE: On the Raspberry Pi 3A+, setting the OTP bit to enable USB host boot mode will permanently prevent that Raspberry Pi from booting in USB device mode.
 
 You can use any SD card running Raspberry Pi OS to program the OTP bit.
 
@@ -55,7 +55,7 @@ vcgencmd otp_dump | grep 17:
 17:3020000a
 ----
 
-Check that the output `0x3020000a` is shown. If it is not, then the OTP bit has not been successfully programmed. In this case, go through the programming procedure again. If the bit is still not set, this may indicate a fault in the Pi hardware itself.
+Check that the output `0x3020000a` is shown. If it is not, then the OTP bit has not been successfully programmed. In this case, go through the programming procedure again. If the bit is still not set, this may indicate a fault in the Raspberry Pi hardware itself.
 
 If you wish, you can remove the `program_usb_boot_mode` line from `config.txt`, so that if you put the SD card into another Raspberry Pi, it won't program USB host boot mode. Make sure there is no blank line at the end of `config.txt`.
 
@@ -65,23 +65,23 @@ You can now boot from a USB mass storage device in the same way as booting from 
 
 The xref:getting-started.adoc#installing-the-operating-system[procedure] is the same as for SD cards - simply image the USB storage device with the operating system image.
 
-After preparing the storage device, connect the drive to the Raspberry Pi and power up the Pi, being aware of the extra USB power requirements of the external drive.
-After five to ten seconds, the Raspberry Pi should begin booting and show the rainbow splash screen on an attached display. Make sure that you do not have an SD card inserted in the Pi, since if you do, it will boot from that first.
+After preparing the storage device, connect the drive to the Raspberry Pi and power up the Raspberry Pi, being aware of the extra USB power requirements of the external drive.
+After five to ten seconds, the Raspberry Pi should begin booting and show the rainbow splash screen on an attached display. Make sure that you do not have an SD card inserted in the Raspberry Pi, since if you do, it will boot from that first.
 
 See the xref:raspberry-pi.adoc#raspberry-pi-boot-modes[bootmodes documentation] for the boot sequence and alternative boot modes (network, USB device, GPIO or SD boot).
 
 === Known Issues 
 
-IMPORTANT: These do *not* apply to Raspberry Pi 4, Model B.
+IMPORTANT: These do *not* apply to Raspberry Pi 4 Model B.
 
 * The default timeout for checking bootable USB devices is 2 seconds. Some flash drives and hard disks power up too slowly. It is possible to extend this timeout to five seconds (add a new file `timeout` to the SD card), but note that some devices take even longer to respond.
 * Some flash drives have a very specific protocol requirement that is not handled by the bootcode and may thus be incompatible.
 
 === Special `bootcode.bin`-only Boot Mode
 
-IMPORTANT: This do *not* apply to Raspberry Pi 4, Model B.
+IMPORTANT: This does *not* apply to Raspberry Pi 4 Model B.
 
-If you are unable to use a particular USB device to boot your Raspberry Pi, an alternative for the Pi 2B v1.2, 3A+, 3B and 3B+ is to use the special xref:raspberry-pi.adoc#raspberry-pi-boot-modes[bootcode.bin-only] boot mode. The Raspberry Pi will still boot from the SD card, but `bootcode.bin` is the only file read from it.
+If you are unable to use a particular USB device to boot your Raspberry Pi, an alternative for the Raspberry Pi 2B v1.2, 3A+, 3B and 3B+ is to use the special xref:raspberry-pi.adoc#raspberry-pi-boot-modes[bootcode.bin-only] boot mode. The Raspberry Pi will still boot from the SD card, but `bootcode.bin` is the only file read from it.
 
 === Hardware Compatibility
 

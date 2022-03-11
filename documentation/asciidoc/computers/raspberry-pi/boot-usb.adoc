@@ -4,9 +4,9 @@ WARNING: The default way of using a Raspberry Pi is to boot it using an SD card.
 
 There are two separate boot modes for USB; USB device boot and USB host boot. 
 
-The choice between the two boot modes is made by the firmware at boot time when it reads the OTP bits. There are two bits to control USB boot: the first enables USB device boot and is enabled by default. The second enables USB host boot; if the USB host boot mode bit is set, then the processor reads the OTGID pin to decide whether to boot as a host (driven to zero as on the Raspberry Pi Model B) or as a device (left floating). The Pi Zero has access to this pin through the OTGID pin on the USB connector, and the Compute Module has access to this pin on the edge connector.
+The choice between the two boot modes is made by the firmware at boot time when it reads the OTP bits. There are two bits to control USB boot: the first enables USB device boot and is enabled by default. The second enables USB host boot; if the USB host boot mode bit is set, then the processor reads the OTGID pin to decide whether to boot as a host (driven to zero as on any Raspberry Pi Model B / B+) or as a device (left floating). The Raspberry Pi Zero has access to this pin through the OTGID pin on the USB connector, and the Compute Module has access to this pin on the edge connector.
 
-There are also OTP bits that allow certain GPIO pins to be used for selecting which boot modes the Pi should attempt to use.
+There are also OTP bits that allow certain GPIO pins to be used for selecting which boot modes the Raspberry Pi should attempt to use.
 
 NOTE: USB boot modes only available on certain models.
 
@@ -14,7 +14,7 @@ NOTE: USB boot modes only available on certain models.
 
 NOTE: Device boot is available on Raspberry Pi Compute Module, Compute Module 3, Raspberry Pi Zero, Zero W, A, A+, and 3A+ only.
 
-When this boot mode is activated (usually after a failure to boot from the SD card), the Raspberry Pi puts its USB port into device mode and awaits a USB reset from the host. Example code showing how the host needs to talk to the Pi can be found https://github.com/raspberrypi/usbboot[on Github].
+When this boot mode is activated (usually after a failure to boot from the SD card), the Raspberry Pi puts its USB port into device mode and awaits a USB reset from the host. Example code showing how the host needs to talk to the Raspberry Pi can be found https://github.com/raspberrypi/usbboot[on Github].
 
 The host first sends a structure to the device down control endpoint 0. This contains the size and signature for the boot (security is not enabled, so no signature is required). Secondly, code is transmitted down endpoint 1 (bootcode.bin).  Finally, the device will reply with a success code of:
 

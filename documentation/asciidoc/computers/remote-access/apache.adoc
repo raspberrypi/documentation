@@ -22,9 +22,9 @@ sudo apt install apache2 -y
 
 === Test the Web Server
 
-By default, Apache puts a test HTML file in the web folder. This default web page is served when you browse to `+http://localhost/+` on the Pi itself, or `+http://192.168.1.10+` (whatever the Pi's IP address is) from another computer on the network. To find the Pi's IP address, type `hostname -I` at the command line (or read more about finding your xref:remote-access.adoc#ip-address[IP address]).
+By default, Apache puts a test HTML file in the web folder. This default web page is served when you browse to `+http://localhost/+` on the Raspberry Pi itself, or `+http://192.168.1.10+` (whatever the Raspberry Pi's IP address is) from another computer on the network. To find the Raspberry Pi's IP address, type `hostname -I` at the command line (or read more about finding your xref:remote-access.adoc#ip-address[IP address]).
 
-Browse to the default web page either on the Pi or from another computer on the network and you should see the following:
+Browse to the default web page either on the Raspberry Pi or from another computer on the network and you should see the following:
 
 image::images/apache-it-works.png[Apache success message]
 

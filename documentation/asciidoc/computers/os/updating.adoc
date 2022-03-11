@@ -10,7 +10,7 @@ The easiest way to manage installing, upgrading, and removing software is using 
 
 ==== Keeping your Operating System up to Date
 
-APT keeps a list of software sources on your Pi in a file at `/etc/apt/sources.list`. Before installing software, you should update your package list with `apt update`. Go ahead and open a Terminal window and type:
+APT keeps a list of software sources on your Raspberry Pi in a file at `/etc/apt/sources.list`. Before installing software, you should update your package list with `apt update`. Go ahead and open a Terminal window and type:
 
 [,bash]
 ----
@@ -32,7 +32,7 @@ However, there are occasional changes made in the Raspberry Pi OS image that req
 
 NOTE: The kernel and firmware are installed as a Debian package, and so will also get updates when using the procedure above. These packages are updated infrequently and after extensive testing.
 
-If moving an existing SD card to a new Raspberry Pi model (for example the Pi Zero 2 W), you may also need to update the kernel and the firmware first using the instructions above.
+If moving an existing SD card to a new Raspberry Pi model (for example the Raspberry Pi Zero 2 W), you may also need to update the kernel and the firmware first using the instructions above.
 
 ==== Running Out of Space
 

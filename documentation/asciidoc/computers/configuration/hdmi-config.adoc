@@ -27,7 +27,7 @@ You can use the `tvservice` application on the command line to determine which m
 * `tvservice -m CEA` lists all supported CEA modes
 * `tvservice -m DMT` lists all supported DMT modes
 
-If you are using a Pi 4 with more than one display attached, then `tvservice` needs to be told which device to ask for information. You can get display IDs for all attached devices by using:
+If you are using a Raspberry Pi 4 with more than one display attached, then `tvservice` needs to be told which device to ask for information. You can get display IDs for all attached devices by using:
 
 `tvservice -l`
 

@@ -8,7 +8,7 @@ This diagnostics page will also appear if the bootloader is unable to boot from 
 
 Once the diagnostics page is displayed, a reboot is only possible by power cycling the device (i.e. unplug then re-plug the power supply).
 
-The top line describes the model of Pi and its memory capacity. The QR code is a link to the https://www.raspberrypi.com/software/[Downloads Page].
+The top line describes the model of Raspberry Pi and its memory capacity. The QR code is a link to the https://www.raspberrypi.com/software/[Downloads Page].
 
 The diagnostic information is as follows:
 

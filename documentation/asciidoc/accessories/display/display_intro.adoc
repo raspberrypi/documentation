@@ -4,7 +4,7 @@ The Raspberry Pi Touch Display is an LCD display which connects to the Raspberry
 
 === Board Support
 
-The DSI display is designed to work with all models of Raspberry Pi, however early models that do not have mounting holes (the Raspberry Pi 1 model A and B) will require additional mounting hardware to fit the HAT-dimensioned stand-offs on the display PCB.
+The DSI display is designed to work with all models of Raspberry Pi, however early models that do not have mounting holes (the Raspberry Pi 1 Model A and B) will require additional mounting hardware to fit the HAT-dimensioned stand-offs on the display PCB.
 
 === Physical Installation
 
@@ -14,7 +14,7 @@ image::images/GPIO_power-500x333.jpg[DSI Display Connections]
 
 The other three pins should be left disconnected, unless connecting the display to an original Raspberry Pi 1 Model A or B. See the section on xref:display.adoc#legacy-support[legacy support] for more information on connecting the display to an original Raspberry Pi.
 
-NOTE:  An original Raspberry Pi can be easily identified from other models, it is the only model with a 26-pin rather than 40-pin GPIO header connector.
+NOTE: An original Raspberry Pi can be easily identified from other models, it is the only model with a 26-pin rather than 40-pin GPIO header connector.
 
 === Screen Orientation
 

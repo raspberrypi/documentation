@@ -230,7 +230,7 @@ Reports on the amount of memory addressable by the ARM  and the GPU. To show the
 
 ===== codec_enabled [type]
 
-Reports whether the specified CODEC type is enabled. Possible options for type are AGIF, FLAC, H263, H264, MJPA, MJPB, MJPG, *MPG2*, MPG4, MVC0, PCM, THRA, VORB, VP6, VP8, *WMV9*, *WVC1*. Those highlighted currently require a paid for licence (see the xref:config_txt.adoc#licence-key-and-codec-options[this config.txt section] for more info), except on the Pi 4 and 400, where these hardware codecs are disabled in preference to software decoding, which requires no licence. Note that because the H.265 HW block on the Raspberry Pi 4 and 400 is not part of the VideoCore GPU, its status is not accessed via this command.
+Reports whether the specified CODEC type is enabled. Possible options for type are AGIF, FLAC, H263, H264, MJPA, MJPB, MJPG, *MPG2*, MPG4, MVC0, PCM, THRA, VORB, VP6, VP8, *WMV9*, *WVC1*. Those highlighted currently require a paid for licence (see the xref:config_txt.adoc#licence-key-and-codec-options[this config.txt section] for more info), except on the Raspberry Pi 4 and 400, where these hardware codecs are disabled in preference to software decoding, which requires no licence. Note that because the H.265 HW block on the Raspberry Pi 4 and 400 is not part of the VideoCore GPU, its status is not accessed via this command.
 
 ===== get_lcd_info
 

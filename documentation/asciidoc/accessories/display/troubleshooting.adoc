@@ -12,7 +12,7 @@ We recommend our official 2.5A adapter because we know it works, but any good 2.
 
 If not, many problems will be solved by making sure your software is up-to date.
 
-You can undo any previous use of `rpi-update` and get your Pi back to the latest stable software by connecting
+You can undo any previous use of `rpi-update` and get your Raspberry Pi back to the latest stable software by connecting
 to a network and running:
 
 [,bash]
@@ -28,7 +28,7 @@ sudo reboot
 * Make sure you've updated Raspberry Pi OS (see above for steps)
 * Check the smaller ribbon cable is seated properly
 
-If you want to make sure your Pi has detected your touchscreen, try running:
+If you want to make sure your Raspberry Pi has detected your touchscreen, try running:
 
 [,bash]
 ----
@@ -73,7 +73,7 @@ sudo reboot
 ----
 
 [discrete]
-=== My display fades out to weird patterns when I shutdown/reboot my Pi
+=== My display fades out to weird patterns when I shutdown/reboot my Raspberry Pi
 
 Don't panic! This is perfectly normal.
 
@@ -81,8 +81,8 @@ Don't panic! This is perfectly normal.
 === My display is black
 
 * Make sure you've updated Raspberry Pi OS (see above for steps)
-* Check the ribbon cable between your Pi and the LCD is properly seated
-* Make sure you have a SD card properly inserted into your Pi
+* Check the ribbon cable between your Raspberry Pi and the LCD is properly seated
+* Make sure you have a SD card properly inserted into your Raspberry Pi
 
 [discrete]
 === My display is white
@@ -143,7 +143,7 @@ To start a second video onto the HDMI type:
 omxplayer --display=5 video.mkv
 ----
 
-*Please note: you may need to increase the amount of memory allocated to the GPU to 128MB if the videos are 1080P. Adjust the gpu_mem value in config.txt for this. The Raspberry Pi headline figures are 1080P30 decode, so if you are using two 1080P clips it may not play correctly depending on the complexity of the videos.*
+NOTE: You may need to increase the amount of memory allocated to the GPU to 128MB if the videos are 1080P. Adjust the gpu_mem value in `config.txt` for this. The Raspberry Pi headline figures are 1080P30 decode, so if you are using two 1080P clips it may not play correctly depending on the complexity of the videos.
 
 Display numbers are:
 

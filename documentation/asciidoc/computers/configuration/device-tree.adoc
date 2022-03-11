@@ -1,6 +1,6 @@
 == Device Trees, Overlays, and Parameters
 
-Raspberry Pi kernels and firmware use a Device Tree (DT) to describe the hardware present in the Pi. These Device Trees may include DT parameters that provide a degree of control over some onboard features. DT overlays allow optional external hardware to be described and configured, and they also support parameters for more control.
+Raspberry Pi kernels and firmware use a Device Tree (DT) to describe the hardware present in the Raspberry Pi. These Device Trees may include DT parameters that provide a degree of control over some onboard features. DT overlays allow optional external hardware to be described and configured, and they also support parameters for more control.
 
 The firmware loader (`start.elf` and its variants) is responsible for loading the DTB (Device Tree Blob - a machine readable DT file). It chooses which one to load based on the board revision number, and makes certain modifications to further tailor it (memory size, Ethernet addresses etc.). This runtime customisation avoids the need for lots of DTBs with only minor differences.
 
@@ -181,7 +181,7 @@ A DT overlay comprises a number of fragments, each of which targets one node and
 };
 ----
 
-The `compatible` string identifies this as being for BCM2835, which is the base architecture for the Raspberry Pi SoCs; if the overlay makes use of features of a Pi 4 then `brcm,bcm2711` is the correct value to use, otherwise `brcm,bcm2835` can be used for all Pi overlays. Then comes the first (and in this case only) fragment. Fragments should be numbered sequentially from zero. Failure to adhere to this may cause some or all of your fragments to be missed.
+The `compatible` string identifies this as being for BCM2835, which is the base architecture for the Raspberry Pi SoCs; if the overlay makes use of features of a Raspberry Pi 4 then `brcm,bcm2711` is the correct value to use, otherwise `brcm,bcm2835` can be used for all Raspberry Pi overlays. Then comes the first (and in this case only) fragment. Fragments should be numbered sequentially from zero. Failure to adhere to this may cause some or all of your fragments to be missed.
 
 Each fragment consists of two parts: a `target` property, identifying the node to apply the overlay to; and the `+__overlay__+` itself, the body of which is added to the target node. The example above can be interpreted as if it were written like this:
 
@@ -466,7 +466,7 @@ The `name` property is a pseudo-property - it shouldn't appear in a DT, but assi
 [[part2.2.10]]
 ===== The overlay map file
 
-The introduction of the Pi 4, built around the BCM2711 SoC, brought with it many changes; some of these changes are additional interfaces, and some are modifications to (or removals of) existing interfaces. There are new overlays intended specifically for the Pi 4 that don't make sense on older hardware, e.g. overlays that enable the new SPI, I2C and UART interfaces, but other overlays don't apply correctly even though they control features that are still relevant on the new device.
+The introduction of the Raspberry Pi 4, built around the BCM2711 SoC, brought with it many changes; some of these changes are additional interfaces, and some are modifications to (or removals of) existing interfaces. There are new overlays intended specifically for the Raspberry Pi 4 that don't make sense on older hardware, e.g. overlays that enable the new SPI, I2C and UART interfaces, but other overlays don't apply correctly even though they control features that are still relevant on the new device.
 
 There is therefore a need for a method of tailoring an overlay to multiple platforms with differing hardware. Supporting them all in a single .dtbo file would require heavy use of hidden ("dormant") fragments and a switch to an on-demand symbol resolution mechanism so that a missing symbol that isn't needed doesn't cause a failure. A simpler solution is to add a facility to map an overlay name to one of several implementation files depending on the current platform.
 
@@ -499,7 +499,7 @@ This is an edited version of the current map file (see the https://github.com/ra
 };
 ----
 
-Each node has the name of an overlay that requires special handling. The properties of each node are either platform names or one of a small number of special directives. The current supported platforms are `bcm2835`, which includes all Pis built around the BCM2835, BCM2836 and BCM2837 SoCs, and `bcm2711` for Pi 4B.
+Each node has the name of an overlay that requires special handling. The properties of each node are either platform names or one of a small number of special directives. The current supported platforms are `bcm2835`, which includes all Raspberry Pis built around the BCM2835, BCM2836 and BCM2837 SoCs, and `bcm2711` for Raspberry Pi 4B.
 
 A platform name with no value (an empty property) indicates that the current overlay is compatible with the platform; for example, `vc4-kms-v3d` is compatible with the `bcm2835` platform. A non-empty value for a platform is the name of an alternative overlay to use in place of the requested one; asking for `vc4-kms-v3d` on BCM2711 results in `vc4-kms-v3d-pi4` being loaded instead. Any platform not included in an overlay's node is not compatible with that overlay.
 
@@ -689,7 +689,7 @@ dtoverlay=
 
 Raspberry Pi boards have two I2C interfaces. These are nominally split: one for the ARM, and one for VideoCore (the "GPU"). On almost all models, `i2c1` belongs to the ARM and `i2c0` to VC, where it is used to control the camera and read the HAT EEPROM. However, there are two early revisions of the Model B that have those roles reversed.
 
-To make it possible to use one set of overlays and parameters with all Pis, the firmware creates some board-specific DT parameters. These are:
+To make it possible to use one set of overlays and parameters with all Raspberry Pis, the firmware creates some board-specific DT parameters. These are:
 
 ----
 i2c/i2c_arm
@@ -698,7 +698,7 @@ i2c_baudrate/i2c_arm_baudrate
 i2c_vc_baudrate
 ----
 
-These are aliases for `i2c0`, `i2c1`, `i2c0_baudrate`, and `i2c1_baudrate`. It is recommended that you only use `i2c_vc` and `i2c_vc_baudrate` if you really need to - for example, if you are programming a HAT EEPROM (which is better done using a software I2C bus using the `i2c-gpio` overlay). Enabling `i2c_vc` can stop the Pi Camera or 7" DSI display functioning correctly.
+These are aliases for `i2c0`, `i2c1`, `i2c0_baudrate`, and `i2c1_baudrate`. It is recommended that you only use `i2c_vc` and `i2c_vc_baudrate` if you really need to - for example, if you are programming a HAT EEPROM (which is better done using a software I2C bus using the `i2c-gpio` overlay). Enabling `i2c_vc` can stop the Raspberry Pi Camera or Raspberry Pi Touch Display functioning correctly.
 
 For people writing overlays, the same aliasing has been applied to the labels on the I2C DT nodes. Thus, you should write:
 
@@ -941,7 +941,7 @@ device_tree=my-pi.dtb
 [[part4.4]]
 ==== Disabling Device Tree usage
 
-Since the switch to the 4.4 kernel and the use of more upstream drivers, Device Tree usage is required in Pi Linux kernels. However, for bare metal and other OSs, the method of disabling DT usage is to add:
+Since the switch to the 4.4 kernel and the use of more upstream drivers, Device Tree usage is required in Raspberry Pi Linux kernels. However, for bare metal and other OSs, the method of disabling DT usage is to add:
 
 ----
 device_tree=
@@ -980,7 +980,7 @@ This sets an (exclusive) limit to the loaded device tree. By default the device 
 If non-zero, turn on some extra logging for the firmware's device tree processing.
 
 `enable_uart`
-Enable the primary/console xref:configuration.adoc#configuring-uarts[UART] (ttyS0 on a Pi 3, ttyAMA0 otherwise - unless swapped with an overlay such as miniuart-bt). If the primary UART is ttyAMA0 then enable_uart defaults to 1 (enabled), otherwise it defaults to 0 (disabled). This is because it is necessary to stop the core frequency from changing which would make ttyS0 unusable, so `enable_uart=1` implies core_freq=250 (unless force_turbo=1). In some cases this is a performance hit, so it is off by default. 
+Enable the primary/console xref:configuration.adoc#configuring-uarts[UART] (ttyS0 on a Raspberry Pi 3, ttyAMA0 otherwise - unless swapped with an overlay such as miniuart-bt). If the primary UART is ttyAMA0 then enable_uart defaults to 1 (enabled), otherwise it defaults to 0 (disabled). This is because it is necessary to stop the core frequency from changing which would make ttyS0 unusable, so `enable_uart=1` implies core_freq=250 (unless force_turbo=1). In some cases this is a performance hit, so it is off by default. 
 
 `overlay_prefix`
 Specifies a subdirectory/prefix from which to load overlays - defaults to "overlays/". Note the trailing "/". If desired you can add something after the final "/" to add a prefix to each file, although this is not likely to be needed.

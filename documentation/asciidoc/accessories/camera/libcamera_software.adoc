@@ -8,7 +8,7 @@ sudo apt update
 sudo apt full-upgrade
 ----
 
-libcamera is under active development which sometimes means that new features need to be supported in Raspberry Pi OS, even before they are officially released. Therefore we currently recommend updating to the latest release candidate. To do this, first reboot your Pi, and then use
+libcamera is under active development which sometimes means that new features need to be supported in Raspberry Pi OS, even before they are officially released. Therefore we currently recommend updating to the latest release candidate. To do this, first reboot your Raspberry Pi, and then use
 
 [,bash]
 ----
@@ -30,7 +30,7 @@ If you are using a sensor other than the `imx219` you will need to supply the al
 
 === Select the Correct Graphics Driver
 
-There are 3 different graphics drivers available on the Raspberry Pi: firmware, FKMS and KMS. The firmware graphics driver cannot be used with _libcamera-apps_. The Raspberry Pi 4 and 400 use the newer FKMS graphics driver by default: this is compatible with _libcamera-apps_. For all other models of Raspberry Pi, you must select the FKMS driver by adding the following line to the `/boot/config.txt` file:
+There are 3 different graphics drivers available on the Raspberry Pi: firmware, FKMS and KMS. The firmware graphics driver cannot be used with _libcamera-apps_. The Raspberry Pi 4 and Raspberry Pi 400 use the newer FKMS graphics driver by default: this is compatible with _libcamera-apps_. For all other models of Raspberry Pi, you must select the FKMS driver by adding the following line to the `/boot/config.txt` file:
 
 ----
 dtoverlay=vc4-fkms-v3d
@@ -58,7 +58,7 @@ Unfortunately, at the time of writing, the default version of meson is a little 
 sudo pip3 install --upgrade meson
 ----
 
-We can now check out the code and build _libcamera_ as follows. Note that if you are using a 1GB system (such as a Pi 3) you may need to replace `ninja -C build` by `ninja -C build -j 2` as this will stop ninja exhausting the system memory and aborting.
+We can now check out the code and build _libcamera_ as follows. Note that if you are using a 1GB system (such as a Raspberry Pi 3) you may need to replace `ninja -C build` by `ninja -C build -j 2` as this will stop ninja exhausting the system memory and aborting.
 
 [,bash]
 ----
@@ -109,9 +109,9 @@ To check everything is working correctly, type `./libcamera-hello` - you should 
 
 [NOTE]
 ====
-For Pi 3 devices, as we saw previously, 1GB devices may need `make -j2` instead of `make -j4`.
+For Raspberry Pi 3 devices, as we saw previously, 1GB devices may need `make -j2` instead of `make -j4`.
 
-Also, Pi 3s do not by default use the correct GL driver, so please ensure you have `dtoverlay=vc4-fkms-v3d` in the `[all]` (not in the `[pi4]`) section of your `/boot/config.txt` file.
+Also, Raspberry Pi 3 does not use the correct GL driver by default, so please ensure you have `dtoverlay=vc4-fkms-v3d` in the `[all]` (not in the `[pi4]`) section of your `/boot/config.txt` file.
 ====
 
 === Further Documentation

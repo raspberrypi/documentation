@@ -17,7 +17,7 @@ These provide a shortcut to some alternative `start_file` and `fixup_file` setti
   fixup_file=fixup_x.dat
 ----
 
-On the Pi 4, if the files `start4x.elf` and `fixup4x.dat` are present, these files will be used instead.
+On the Raspberry Pi 4, if the files `start4x.elf` and `fixup4x.dat` are present, these files will be used instead.
 
 `start_debug=1` implies
 ----
@@ -55,13 +55,13 @@ Sets board-specific control bits.
 
 === `armstub`
 
-`armstub` is the filename on the boot partition from which to load the ARM stub. The default ARM stub is stored in firmware and is selected automatically based on the Pi model and various settings.
+`armstub` is the filename on the boot partition from which to load the ARM stub. The default ARM stub is stored in firmware and is selected automatically based on the Raspberry Pi model and various settings.
 
 The stub is a small piece of ARM code that is run before the kernel. Its job is to set up low-level hardware like the interrupt controller before passing control to the kernel.
 
 === `arm_peri_high`
 
-Set `arm_peri_high` to `1` to enable "High Peripheral" mode on the Pi 4. It is set automatically if a suitable DTB is loaded.
+Set `arm_peri_high` to `1` to enable "High Peripheral" mode on the Raspberry Pi 4. It is set automatically if a suitable DTB is loaded.
 
 NOTE: Enabling "High Peripheral" mode without a compatible device tree will make your system fail to boot. Currently ARM stub support is missing, so you will also need to load a suitable file using `armstub`.
 
@@ -95,13 +95,13 @@ NOTE: This option uses different syntax from all the other options, and you shou
 
 === `init_uart_clock`
 
-`init_uart_clock` is the initial UART clock frequency. The default value is `48000000` (48MHz). Note that this clock only applies to UART0 (ttyAMA0 in Linux), and that the maximum baudrate for the UART is limited to 1/16th of the clock. The default UART on the Pi 3 and Pi Zero is UART1 (ttyS0 in Linux), and its clock is the core VPU clock - at least 250MHz.
+`init_uart_clock` is the initial UART clock frequency. The default value is `48000000` (48MHz). Note that this clock only applies to UART0 (ttyAMA0 in Linux), and that the maximum baudrate for the UART is limited to 1/16th of the clock. The default UART on the Raspberry Pi 3 and Raspberry Pi Zero is UART1 (ttyS0 in Linux), and its clock is the core VPU clock - at least 250MHz.
 
 === `bootcode_delay`
 
 The `bootcode_delay` command delays for a given number of seconds in `bootcode.bin` before loading `start.elf`: the default value is `0`.
 
-This is particularly useful to insert a delay before reading the EDID of the monitor, for example if the Pi and monitor are powered from the same source, but the monitor takes longer to start up than the Pi. Try setting this value if the display detection is wrong on initial boot, but is correct if you soft-reboot the Pi without removing power from the monitor.
+This is particularly useful to insert a delay before reading the EDID of the monitor, for example if the Raspberry Pi and monitor are powered from the same source, but the monitor takes longer to start up than the Raspberry Pi. Try setting this value if the display detection is wrong on initial boot, but is correct if you soft-reboot the Raspberry Pi without removing power from the monitor.
 
 === `boot_delay`
 
@@ -150,7 +150,7 @@ See also <<overlay_prefix,`overlay_prefix`>> and <<upstream_kernel,`upstream_ker
 
 USB On-The-Go (often abbreviated to OTG) is a feature that allows supporting USB devices with an appropriate OTG cable to configure themselves as USB hosts. On older Raspberry Pis, a single USB 2 controller was used in both USB host and device mode.
 
-Pi 4B and Pi 400 (not CM4 or CM4IO) add a high performance USB 3 controller, attached via PCIe, to drive the main USB ports. The legacy USB 2 controller is still available on the USB-C power connector for use as a device (`otg_mode=0`, the default).
+Raspberry Pi 4B and Raspberry Pi 400 (not CM4 or CM4IO) add a high performance USB 3 controller, attached via PCIe, to drive the main USB ports. The legacy USB 2 controller is still available on the USB-C power connector for use as a device (`otg_mode=0`, the default).
 
 `otg_mode=1` requests that a more capable XHCI USB 2 controller is used as another host controller on that USB-C connector. 
 

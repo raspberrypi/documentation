@@ -1,10 +1,10 @@
 == Configuring Networking
 
-A GUI is provided for setting up wireless connections in Raspberry Pi OS within the Raspberry Pi Desktop. However if you are not using the Raspberry Pi Desktop, you can set up wireless networking from the command line.
+A GUI is provided for setting up wireless connections in Raspberry Pi OS with desktop. However if you are using Raspberry Pi OS Lite, you can set up wireless networking from the command line.
 
 === Using the Desktop
 
-Wireless connections can be made via the network icon at the right-hand end of the menu bar. If you are using a Pi with built-in wireless connectivity, or if a wireless dongle is plugged in, left-clicking this icon will bring up a list of available wireless networks, as shown below. If no networks are found, it will show the message 'No APs found - scanning...'. Wait a few seconds without closing the menu, and it should find your network.
+Wireless connections can be made via the network icon at the right-hand end of the menu bar. If you are using a Raspberry Pi with built-in wireless connectivity, or if a wireless dongle is plugged in, left-clicking this icon will bring up a list of available wireless networks, as shown below. If no networks are found, it will show the message 'No APs found - scanning...'. Wait a few seconds without closing the menu, and it should find your network.
 
 Note that on Raspberry Pi devices that support the 5GHz band (Pi3B+, Pi4, CM4, Pi400), wireless networking is disabled for regulatory reasons, until the country code has been set. To set the country code, open the `Raspberry Pi Configuration` application from the Preferences Menu, select *Localisation* and set the appropriate code.
 
@@ -29,7 +29,7 @@ The quickest way to enable wireless networking is to use the command line `raspi
 
 Select the *Localisation Options* item from the menu, then the *Change wireless country* option. On a fresh install, for regulatory purposes, you will need to specify the country in which the device is being used. Then set the SSID of the network, and the passphrase for the network. If you do not know the SSID of the network you want to connect to, see the next section on how to list available networks prior to running `raspi-config`.
 
-Note that `raspi-config` does not provide a complete set of options for setting up wireless networking; you may need to refer to the extra sections below for more details if `raspi-config` fails to connect the Pi to your requested network.
+Note that `raspi-config` does not provide a complete set of options for setting up wireless networking; you may need to refer to the extra sections below for more details if `raspi-config` fails to connect the Raspberry Pi to your requested network.
 
 ==== Getting Wireless LAN Network Details
 
@@ -180,6 +180,6 @@ static domain_name_servers=192.168.0.254 8.8.8.8
 
 You can find the names of the interfaces present on your system using the `ip link` command.
 
-Note that if you have several Raspberry Pis connected to the same network, you may find it easier instead to set address reservations on your DHCP server. In this way, each Pi will keep the same IP address, but they will all be managed in one place, making reconfiguring your network in the future more straightforward.
+Note that if you have several Raspberry Pis connected to the same network, you may find it easier instead to set address reservations on your DHCP server. In this way, each Raspberry Pi will keep the same IP address, but they will all be managed in one place, making reconfiguring your network in the future more straightforward.
 
 On Raspberry Pi systems where the graphical desktop is installed, a GUI tool called `lxplug-network` is used to allow the user to make changes to the configuration of `dhcpcd`, including setting static IP addresses. The `lxplug-network` tool is based on `dhcpcd-ui`, which was also developed by Roy Marples.

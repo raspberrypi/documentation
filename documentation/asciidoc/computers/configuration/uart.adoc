@@ -44,11 +44,11 @@ The Raspberry Pi 4B and 400 have an additional four PL011s, which are disabled b
 | PL011
 |===
 
-=== CM, CM 3, CM 3+ and CM 4
+=== CM1, CM3, CM3+ and CM4
 
 The first generation Compute Module, together with Compute Module 3 and Compute Module 3+ each have two UARTs, while Compute Module 4 has six UARTs as described above.
 
-On all models of compute module, the UARTs are disabled by default and must be explicitly enabled using a device tree overlay. You must also specify which GPIO pins to use, for example:
+On all models of Compute Module, the UARTs are disabled by default and must be explicitly enabled using a device tree overlay. You must also specify which GPIO pins to use, for example:
 
 ----
 dtoverlay=uart1,txd1_pin=32,rxd1_pin=33
@@ -165,27 +165,27 @@ By default, the primary UART is assigned to the Linux console. If you wish to us
 . Select option P6 - Serial Port.
 . At the prompt `Would you like a login shell to be accessible over serial?` answer 'No'
 . At the prompt `Would you like the serial port hardware to be enabled?` answer 'Yes'
-. Exit raspi-config and reboot the Pi for changes to take effect.
+. Exit raspi-config and reboot the Raspberry Pi for changes to take effect.
 
 === Enabling Early Console for Linux
 
 Although the Linux kernel starts the UARTs relatively early in the boot process, it is still long after some critical bits of infrastructure have been set up. A failure in those early stages can be hard to diagnose without access to the kernel log messages from that time. To enable `earlycon` support for one of the UARTs, add one of the following options to `cmdline.txt`, depending on which UART is the primary:
 
-For Pi 4, 400 and Compute Module 4:
+For Raspberry Pi 4, 400 and Compute Module 4:
 
 ----
 earlycon=uart8250,mmio32,0xfe215040
 earlycon=pl011,mmio32,0xfe201000
 ----
 
-For Pi 2, Pi 3 and Compute Module 3:
+For Raspberry Pi 2, Pi 3 and Compute Module 3:
 
 ----
 earlycon=uart8250,mmio32,0x3f215040
 earlycon=pl011,mmio32,0x3f201000
 ----
 
-For Pi 1, Pi Zero and Compute Module:
+For Raspberry Pi 1, Pi Zero and Compute Module 1:
 
 ----
 earlycon=uart8250,mmio32,0x20215040
@@ -194,7 +194,7 @@ earlycon=pl011,mmio32,0x20201000
 
 The baudrate defaults to 115200bps.
 
-NOTE: Selecting the wrong early console can prevent the Pi from booting.
+NOTE: Selecting the wrong early console can prevent the Raspberry Pi from booting.
 
 === UARTs and Device Tree
 
@@ -204,7 +204,7 @@ Various UART Device Tree overlay definitions can be found in the https://github.
 
 `miniuart-bt` switches the Bluetooth function to use the mini UART, and makes the first PL011 (UART0) the primary UART. Note that this may reduce the maximum usable baud rate (see mini UART limitations below). You must also set the VPU core clock to a fixed frequency using either `force_turbo=1` or `core_freq=250`.
 
-The overlays `uart2`, `uart3`, `uart4`, and `uart5` are used to enable the four additional UARTs on the Pi 4. There are other UART-specific overlays in the folder. Refer to `/boot/overlays/README` for details on Device Tree overlays, or run `dtoverlay -h overlay-name` for descriptions and usage information.
+The overlays `uart2`, `uart3`, `uart4`, and `uart5` are used to enable the four additional UARTs on the Raspberry Pi 4. There are other UART-specific overlays in the folder. Refer to `/boot/overlays/README` for details on Device Tree overlays, or run `dtoverlay -h overlay-name` for descriptions and usage information.
 
 You add a line to the `config.txt` file to apply a xref:configuration.adoc#device-trees-overlays-and-parameters[Device Tree overlay]. Note that the `-overlay.dts` part of the filename is removed. For example:
 

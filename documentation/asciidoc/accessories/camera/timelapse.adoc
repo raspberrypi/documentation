@@ -51,7 +51,7 @@ Make sure that you use e.g. `%04d` to ensure that each image is written to a new
 
 ==== Stitching Images Together
 
-Now you'll need to stitch the photos together into a video. You can do this on the Pi using `ffmpeg` but the processing will be slow. You may prefer to transfer the image files to your desktop computer or laptop and produce the video there.
+Now you'll need to stitch the photos together into a video. You can do this on the Raspberry Pi using `ffmpeg` but the processing will be slow. You may prefer to transfer the image files to your desktop computer or laptop and produce the video there.
 
 First you will need to install `ffmpeg` if it's not already installed.
 
@@ -65,7 +65,7 @@ Now you can use the `ffmpeg` tool to convert your JPEG files into an mp4 video:
 ffmpeg -r 10 -f image2 -pattern_type glob -i 'image*.jpg' -s 1280x720 -vcodec libx264 timelapse.mp4
 ----
 
-On a Raspberry Pi 3, this can encode a little more than two frames per second. The performance of other Pi models will vary. The parameters used are:
+On a Raspberry Pi 3, this can encode a little more than two frames per second. The performance of other Raspberry Pi models will vary. The parameters used are:
 
 * `-r 10` Set frame rate (Hz value) to ten frames per second in the output video.
 * `-f image2` Set ffmpeg to read from a list of image files specified by a pattern.

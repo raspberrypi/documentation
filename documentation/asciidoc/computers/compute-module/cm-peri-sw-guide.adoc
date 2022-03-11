@@ -1,10 +1,10 @@
 == Attaching and Enabling Peripherals
 
-NOTE: Unless explicitly stated otherwise, these instructions will work identically on Compute Module and Compute Module 3 Module+IO board(s).
+NOTE: Unless explicitly stated otherwise, these instructions will work identically on Compute Module 1 and Compute Module 3 and their CMIO board(s).
 
-This guide is designed to help developers using the Compute Module (and Compute Module 3) get to grips with how to wire up peripherals to the Compute Module pins, and how to make changes to the software to enable these peripherals to work correctly.
+This guide is designed to help developers using the Compute Module 1 (and Compute Module 3) get to grips with how to wire up peripherals to the Compute Module pins, and how to make changes to the software to enable these peripherals to work correctly.
 
-The Compute Module (CM) and Compute Module 3 (CM3) contain the Raspberry Pi BCM2835 (or BCM2837 for CM3) system on a chip (SoC) or 'processor', memory, and eMMC. The eMMC is similar to an SD card but is soldered onto the board. Unlike SD cards, the eMMC is specifically designed to be used as a disk and has extra features that make it more reliable in this use case. Most of the pins of the SoC (GPIO, two CSI camera interfaces, two DSI display interfaces, HDMI etc) are freely available and can be wired up as the user sees fit (or, if unused, can usually be left unconnected). The Compute Module is a DDR2 SODIMM form-factor-compatible module, so any DDR2 SODIMM socket should be able to be used 
+The Compute Module 1 (CM1) and Compute Module 3 (CM3) contain the Raspberry Pi BCM2835 (or BCM2837 for CM3) system on a chip (SoC) or 'processor', memory, and eMMC. The eMMC is similar to an SD card but is soldered onto the board. Unlike SD cards, the eMMC is specifically designed to be used as a disk and has extra features that make it more reliable in this use case. Most of the pins of the SoC (GPIO, two CSI camera interfaces, two DSI display interfaces, HDMI etc) are freely available and can be wired up as the user sees fit (or, if unused, can usually be left unconnected). The Compute Module is a DDR2 SODIMM form-factor-compatible module, so any DDR2 SODIMM socket should be able to be used 
 
 NOTE: The pinout is NOT the same as an actual SODIMM memory module.
 
@@ -66,23 +66,23 @@ The BCM283x devices as used on Raspberry Pi and Compute Module boards have a thr
 
 . The GPU DSP comes out of reset and executes code from a small internal ROM (the boot ROM). The sole purpose of this code is to load a second stage boot loader via one of the external interfaces. On a Raspberry Pi or Compute Module, this code first looks for a second stage boot loader on the SD card (eMMC); it expects this to be called `bootcode.bin` and to be on the first partition (which must be FAT32). If no SD card is found or `bootcode.bin` is not found, the Boot ROM sits and waits in 'USB boot' mode, waiting for a host to give it a second stage boot loader via the USB interface.
 . The second stage boot loader (`bootcode.bin` on the sdcard or `usbbootcode.bin` for usb boot) is responsible for setting up the LPDDR2 SDRAM interface and various other critical system functions and then loading and executing the main GPU firmware (called `start.elf`, again on the primary SD card partition).
-. `start.elf` takes over and is responsible for further system setup and booting up the ARM processor subsystem, and contains the firmware that runs on the various parts of the GPU. It first reads `dt-blob.bin` to determine initial GPIO pin states and GPU-specific interfaces and clocks, then parses `config.txt`. It then loads an ARM device tree file (e.g. `bcm2708-rpi-cm.dtb` for a Compute Module) and any device tree overlays specified in `config.txt` before starting the ARM subsystem and passing the device tree data to the booting Linux kernel.
+. `start.elf` takes over and is responsible for further system setup and booting up the ARM processor subsystem, and contains the firmware that runs on the various parts of the GPU. It first reads `dt-blob.bin` to determine initial GPIO pin states and GPU-specific interfaces and clocks, then parses `config.txt`. It then loads an ARM device tree file (e.g. `bcm2708-rpi-cm.dtb` for a Compute Module 1) and any device tree overlays specified in `config.txt` before starting the ARM subsystem and passing the device tree data to the booting Linux kernel.
 
 === Device Tree
 
 http://www.devicetree.org/[Device Tree] is a special way of encoding all the information about the hardware attached to a system (and consequently required drivers).
 
-On a Pi or Compute Module there are several files in the first FAT partition of the SD/eMMC that are binary 'Device Tree' files. These binary files (usually with extension `.dtb`) are compiled from human readable text descriptions (usually files with extension `.dts`) by the Device Tree compiler.
+On a Raspberry Pi or Compute Module there are several files in the first FAT partition of the SD/eMMC that are binary 'Device Tree' files. These binary files (usually with extension `.dtb`) are compiled from human-readable text descriptions (usually files with extension `.dts`) by the Device Tree compiler.
 
-On a standard Raspberry Pi OS image in the first (FAT) partition you will find two different types of device tree files, one is used by the GPU only and the rest are standard ARM device tree files for each of the BCM283x based Pi products:
+On a standard Raspberry Pi OS image in the first (FAT) partition you will find two different types of device tree files, one is used by the GPU only and the rest are standard ARM device tree files for each of the BCM283x based Raspberry Pi products:
 
 * `dt-blob.bin` (used by the GPU)
-* `bcm2708-rpi-b.dtb` (Used for Pi model A and B)
-* `bcm2708-rpi-b-plus.dtb` (Used for Pi model B+ and A+)
-* `bcm2709-rpi-2-b.dtb` (Used for Pi 2 model B)
-* `bcm2710-rpi-3-b.dtb` (Used for Pi 3 model B)
-* `bcm2708-rpi-cm.dtb` (Used for Pi Compute Module)
-* `bcm2710-rpi-cm3.dtb` (Used for Pi Compute Module 3)
+* `bcm2708-rpi-b.dtb` (Used for Raspberry Pi 1 Models A and B)
+* `bcm2708-rpi-b-plus.dtb` (Used for Raspberry Pi 1 Models B+ and A+)
+* `bcm2709-rpi-2-b.dtb` (Used for Raspberry Pi 2 Model B)
+* `bcm2710-rpi-3-b.dtb` (Used for Raspberry Pi 3 Model B)
+* `bcm2708-rpi-cm.dtb` (Used for Raspberry Pi Compute Module 1)
+* `bcm2710-rpi-cm3.dtb` (Used for Raspberry Pi Compute Module 3)
 
 NOTE: `dt-blob.bin` by default does not exist as there is a 'default' version compiled into `start.elf`, but for Compute Module projects it will often be necessary to provide a `dt-blob.bin` (which overrides the default built-in file).
 
@@ -99,9 +99,9 @@ Overlays are used to add data to the base dtb that (nominally) describes non boa
 
 === dt-blob.bin
 
-When `start.elf` runs, it first reads something called `dt-blob.bin`. This is a special form of Device Tree blob which tells the GPU how to (initially) set up the GPIO pin states, and also any information about GPIOs/peripherals that are controlled (owned) by the GPU, rather than being used via Linux on the ARM. For example, the Raspberry Pi Camera peripheral is managed by the GPU, and the GPU needs exclusive access to an I2C interface to talk to it, as well as a couple of control pins. I2C0 on most Pi Boards and Compute Modules is nominally reserved for exclusive GPU use. The information on which GPIO pins the GPU should use for I2C0, and to control the camera functions, comes from `dt-blob.bin`.
+When `start.elf` runs, it first reads something called `dt-blob.bin`. This is a special form of Device Tree blob which tells the GPU how to (initially) set up the GPIO pin states, and also any information about GPIOs/peripherals that are controlled (owned) by the GPU, rather than being used via Linux on the ARM. For example, the Raspberry Pi Camera peripheral is managed by the GPU, and the GPU needs exclusive access to an I2C interface to talk to it, as well as a couple of control pins. I2C0 on most Raspberry Pi Boards and Compute Modules is nominally reserved for exclusive GPU use. The information on which GPIO pins the GPU should use for I2C0, and to control the camera functions, comes from `dt-blob.bin`.
 
-NOTE: the `start.elf` firmware has a xref:configuration.adoc#changing-the-default-pin-configuration['built-in' default] `dt-blob.bin` which is used if no `dt-blob.bin` is found on the root of the first FAT partition. Most Compute Module projects will want to provide their own custom `dt-blob.bin`. Note that `dt-blob.bin` specifies which pin is for HDMI hot plug detect, although this should never change on Compute Module. It can also be used to set up a GPIO as a GPCLK output, and specify an ACT LED that the GPU can use while booting. Other functions may be added in future. 
+NOTE: The `start.elf` firmware has a xref:configuration.adoc#changing-the-default-pin-configuration['built-in' default] `dt-blob.bin` which is used if no `dt-blob.bin` is found on the root of the first FAT partition. Most Compute Module projects will want to provide their own custom `dt-blob.bin`. Note that `dt-blob.bin` specifies which pin is for HDMI hot plug detect, although this should never change on Compute Module. It can also be used to set up a GPIO as a GPCLK output, and specify an ACT LED that the GPU can use while booting. Other functions may be added in future. 
 
 https://datasheets.raspberrypi.com/cm/minimal-cm-dt-blob.dts[minimal-cm-dt-blob.dts] is an example `.dts` device tree file that sets up the HDMI hot plug detect and ACT LED and sets all other GPIOs to be inputs with default pulls.
 
@@ -115,7 +115,7 @@ dtc -I dts -O dtb -o dt-blob.bin minimal-cm-dt-blob.dts
 
 After `start.elf` has read `dt-blob.bin` and set up the initial pin states and clocks, it reads xref:config_txt.adoc[`config.txt`] which contains many other options for system setup.
 
-After reading `config.txt` another device tree file specific to the board the hardware is running on is read: this is `bcm2708-rpi-cm.dtb` for a Compute Module, or `bcm2710-rpi-cm.dtb` for CM3. This file is a standard ARM Linux device tree file, which details how hardware is attached to the processor: what peripheral devices exist in the SoC and where, which GPIOs are used, what functions those GPIOs have, and what physical devices are connected. This file will set up the GPIOs appropriately, overwriting the pin state set up in `dt-blob.bin` if it is different. It will also try to load driver(s) for the specific device(s).
+After reading `config.txt` another device tree file specific to the board the hardware is running on is read: this is `bcm2708-rpi-cm.dtb` for a Compute Module 1, or `bcm2710-rpi-cm.dtb` for Compute Module 3. This file is a standard ARM Linux device tree file, which details how hardware is attached to the processor: what peripheral devices exist in the SoC and where, which GPIOs are used, what functions those GPIOs have, and what physical devices are connected. This file will set up the GPIOs appropriately, overwriting the pin state set up in `dt-blob.bin` if it is different. It will also try to load driver(s) for the specific device(s).
 
 Although the `bcm2708-rpi-cm.dtb` file can be used to load all attached devices, the recommendation for Compute Module users is to leave this file alone. Instead, use the one supplied in the standard Raspberry Pi OS software image, and add devices using a custom 'overlay' file as previously described. The `bcm2708-rpi-cm.dtb` file contains (disabled) entries for the various peripherals (I2C, SPI, I2S etc.) and no GPIO pin definitions, apart from the eMMC/SD Card peripheral which has GPIO defs and is enabled, because it is always on the same pins. The idea is that the separate overlay file will enable the required interfaces, describe the pins used, and also describe the required drivers. The `start.elf` firmware will read and merge the `bcm2708-rpi-cm.dtb` with the overlay data before giving the merged device tree to the Linux kernel as it boots up.
 
@@ -163,7 +163,7 @@ NOTE: Please use the https://forums.raspberrypi.com/viewforum.php?f=107[Device T
 
 For these simple examples I used a CMIO board with peripherals attached via jumper wires.
 
-For each of the examples we assume a CM+CMIO or CM3+CMIO3 board with a clean install of the latest Raspberry Pi OS Lite version on the CM. 
+For each of the examples we assume a CM1+CMIO or CM3+CMIO3 board with a clean install of the latest Raspberry Pi OS Lite version on the Compute Module. 
 
 The examples here require internet connectivity, so a USB hub plus keyboard plus wireless LAN or Ethernet dongle plugged into the CMIO USB port is recommended.
 
@@ -174,7 +174,7 @@ Please post any issues, bugs or questions on the Raspberry Pi https://forums.ras
 
 In this simple example we wire an NXP PCF8523 real time clock (RTC) to the CMIO board BANK1 GPIO pins: 3V3, GND, I2C1_SDA on GPIO44 and I2C1_SCL on GPIO45.
 
-Download https://datasheets.raspberrypi.com/cm/minimal-cm-dt-blob.dts[minimal-cm-dt-blob.dts] and copy it to the SD card FAT partition, located in `/boot` when the CM has booted.
+Download https://datasheets.raspberrypi.com/cm/minimal-cm-dt-blob.dts[minimal-cm-dt-blob.dts] and copy it to the SD card FAT partition, located in `/boot` when the Compute Module has booted.
 
 Edit `minimal-cm-dt-blob.dts` and change the pin states of GPIO44 and 45 to be I2C1 with pull-ups:
 

@@ -12,7 +12,7 @@ When the connection works you will see a security/authenticity warning. Type `ye
 
 NOTE: If you receive a `connection timed out` error it is likely that you have entered the wrong IP address for the Raspberry Pi.
 
-WARNING: In the event your Pi has taken the IP address of a device to which your computer has connected before (even if this was on another network), you may be given a warning and asked to clear the record from your list of known devices. Following this instruction and trying the `ssh` command again should be successful.
+WARNING: In the event your Raspberry Pi has taken the IP address of a device to which your computer has connected before (even if this was on another network), you may be given a warning and asked to clear the record from your list of known devices. Following this instruction and trying the `ssh` command again should be successful.
 
 Next you will be prompted for the password for the `pi` login: the default password on Raspberry Pi OS is `raspberry`. 
 

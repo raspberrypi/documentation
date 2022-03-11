@@ -4,7 +4,7 @@ Python is a powerful programming language that's easy to use easy to read and wr
 
 === Thonny
 
-The easiest introduction to Python is through https://thonny.org/[Thonny], a Python 3 development environment. You can open Thonny from the Desktop or applications menu.
+The easiest introduction to Python is through https://thonny.org/[Thonny], a Python 3 development environment. You can open Thonny from the desktop or applications menu.
 
 Thonny gives you a REPL (Read-Evaluate-Print-Loop), which is a prompt you can enter Python commands into. Because it's a REPL, you even get the output of commands printed to the screen without using `print`. In the Thonny application, this is called the Shell window.
 
@@ -346,7 +346,7 @@ sudo pip3 install simplejson
 
 ===== piwheels
 
-The official Python Package Index (PyPI) hosts files uploaded by package maintainers. Some packages require compilation (compiling C/{cpp} or similar code) in order to install them, which can be a time-consuming task, particlarly on the single-core Raspberry Pi 1 or Pi Zero.
+The official Python Package Index (PyPI) hosts files uploaded by package maintainers. Some packages require compilation (compiling C/{cpp} or similar code) in order to install them, which can be a time-consuming task, particlarly on the single-core Raspberry Pi 1 or Raspberry Pi Zero.
 
 piwheels is a service providing pre-compiled packages (called _Python wheels_) ready for use on the Raspberry Pi. Raspberry Pi OS is pre-configured to use piwheels for pip. Read more about the piwheels project at https://www.piwheels.org/[www.piwheels.org].
 

@@ -46,7 +46,7 @@ Please ensure you are not writing to any USB devices whilst the installer is run
 
 ==== Building `rpiboot` on your host system (Cygwin/Linux)
 
-We will be using Git to get the rpiboot source code, so ensure Git is installed. In Cygwin, use the Cygwin installer. On a Pi or other Debian-based Linux machine, use the following command:
+We will be using Git to get the rpiboot source code, so ensure Git is installed. In Cygwin, use the Cygwin installer. On a Raspberry Pi or other Debian-based Linux machine, use the following command:
 
 [,bash]
 ----
@@ -107,7 +107,7 @@ Make sure J4 (USB SLAVE BOOT ENABLE) / J2 (nRPI_BOOT) is set to the disabled pos
 
 ==== Writing to the eMMC (Linux)
 
-After `rpiboot` completes, you will see a new device appear; this is commonly `/dev/sda` on a Pi but it could be another location such as `/dev/sdb`, so check in `/dev/` or run `lsblk` before running `rpiboot` so you can see what changes.
+After `rpiboot` completes, you will see a new device appear; this is commonly `/dev/sda` on a Raspberry Pi but it could be another location such as `/dev/sdb`, so check in `/dev/` or run `lsblk` before running `rpiboot` so you can see what changes.
 
 You now need to write a raw OS image (such as https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-32-bit[Raspberry Pi OS]) to the device. Note the following command may take some time to complete, depending on the size of the image: (Change `/dev/sdX` to the appropriate device.)
 

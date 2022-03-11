@@ -181,11 +181,11 @@ There are a couple of commercially available boards that connect this chip to th
 
 This driver is loaded using the `config.txt` dtoverlay `tc358743`.
 
-The chip also supports capturing stereo HDMI audio via I2S. The Auvidea boards break the relevant signals out onto a header, which can be connected to the Pi's 40 pin header. The required wiring is:
+The chip also supports capturing stereo HDMI audio via I2S. The Auvidea boards break the relevant signals out onto a header, which can be connected to the Raspberry Pi's 40-pin header. The required wiring is:
 
 [cols=",^,^,^"]
 |===
-| Signal | B101 header | Pi 40 pin header | BCM GPIO
+| Signal | B101 header | 40-pin header | BCM GPIO
 
 | LRCK/WFS
 | 7

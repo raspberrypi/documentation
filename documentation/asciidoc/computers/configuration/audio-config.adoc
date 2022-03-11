@@ -6,7 +6,7 @@ If your HDMI monitor or TV has built-in speakers, the audio can be played over t
 
 === Changing the Audio Output
 
-There are two ways of setting the audio output; using the Desktop volume control, or using `raspi-config` command line tool.
+There are two ways of setting the audio output; using the desktop volume control, or using the `raspi-config` command line tool.
 
 ==== Using the Desktop
 

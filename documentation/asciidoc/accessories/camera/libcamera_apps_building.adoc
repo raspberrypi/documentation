@@ -4,13 +4,13 @@ Building `libcamera` and `libcamera-apps` for yourself can bring the following b
 
 * You can pick up the latest enhancements and features.
 
-* `libcamera-apps` can be compiled with extra optimisation for Pi 3 and Pi 4 devices running a 32-bit OS.
+* `libcamera-apps` can be compiled with extra optimisation for Raspberry Pi 3 and Raspberry Pi 4 devices running a 32-bit OS.
 
 * You can include the various optional OpenCV and/or TFLite post-processing stages (or add your own).
 
 * You can customise or add your own applications derived from `libcamera-apps`.
 
-NOTE: When building for Pi 3 or earlier devices there is a risk that the device may run out of swap and fail. We recommend either increasing the amount of swap, or building with fewer threads (the `-j` option to `ninja` and to `make`).
+NOTE: When building on a Raspberry Pi with 1GB or less of RAM, there is a risk that the device may run out of swap and fail. We recommend either increasing the amount of swap, or building with fewer threads (the `-j` option to `ninja` and to `make`).
 
 ==== Building `libcamera-apps` without rebuilding `libcamera`
 
@@ -89,7 +89,7 @@ The only difference is that the latter also builds the `qcam` test application, 
 To complete the `libcamera` build, please run
 
 ----
-ninja -C build   # use -j 2 on Pi 3 or earlier devices
+ninja -C build   # use -j 2 on Raspberry Pi 3 or earlier devices
 sudo ninja -C build install
 ----
 
@@ -138,7 +138,7 @@ cd build
 
 At this point you will need to run `cmake` after deciding what extra flags to pass it. The valid flags are:
 
-* `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon` - you may supply this when building for Pi 3 or Pi 4 devices running a 32-bit OS. Some post-processing features may run more quickly.
+* `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon` - you may supply this when building for Raspberry Pi 3 or Raspberry Pi 4 devices running a 32-bit OS. Some post-processing features may run more quickly.
 
 * `-DENABLE_DRM=1` or `-DENABLE_DRM=0` - this enables or disables the DRM/KMS preview rendering. This is what implements the preview window when X Windows is not running.
 
@@ -162,12 +162,12 @@ and for Raspberry Pi OS Lite users:
 cmake .. -DENABLE_DRM=1 -DENABLE_X11=0 -DENABLE_QT=0 -DENABLE_OPENCV=0 -DENABLE_TFLITE=0
 ----
 
-In both cases, consider `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon` if you are using a 32-bit OS on a Pi 3 or Pi 4. Consider `-DENABLE_OPENCV=1` if you have installed _OpenCV_ and wish to use OpenCV-based post-processing stages. Finally also consider `-DENABLE_TFLITE=1` if you have installed _TensorFlow Lite_ and wish to use it in post-processing stages.
+In both cases, consider `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon` if you are using a 32-bit OS on a Raspberry Pi 3 or Raspberry Pi 4. Consider `-DENABLE_OPENCV=1` if you have installed _OpenCV_ and wish to use OpenCV-based post-processing stages. Finally also consider `-DENABLE_TFLITE=1` if you have installed _TensorFlow Lite_ and wish to use it in post-processing stages.
 
 After executing the `cmake` command of your choice, the whole process concludes with the following:
 
 ----
-make -j4  # use -j1 on Pi 3 or earlier devices
+make -j4  # use -j1 on Raspberry Pi 3 or earlier devices
 sudo make install
 sudo ldconfig # this is only necessary on the first build
 ----
