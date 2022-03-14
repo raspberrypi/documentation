@@ -1,5 +1,4 @@
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 #__rptl-header {
   margin: 0;
   padding: 0;
@@ -177,6 +176,22 @@
     transition: none;
   }
 }
+#__rptl-header .__rptl-header-nav-inner {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  display: block;
+  box-sizing: border-box;
+}
+@media (min-width: 1200px) {
+  #__rptl-header .__rptl-header-nav-inner {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}
 #__rptl-header .__rptl-header-nav-list {
   margin: 0;
   padding: 0;
@@ -187,10 +202,8 @@
   display: block;
   box-sizing: border-box;
 }
-@media (min-width: 1200px) {
-  #__rptl-header .__rptl-header-nav-list {
-    text-align: right;
-  }
+#__rptl-header .__rptl-header-nav-list:first-child .__rptl-header-nav-list-item:first-child {
+  border: 0;
 }
 #__rptl-header .__rptl-header-nav-list-item {
   margin: 0;
@@ -201,9 +214,6 @@
   display: block;
   box-sizing: border-box;
   border-top: 1px solid #dedede;
-}
-#__rptl-header .__rptl-header-nav-list-item:first-child {
-  border-style: none;
 }
 @media (min-width: 1200px) {
   #__rptl-header .__rptl-header-nav-list-item {
@@ -226,6 +236,16 @@
 #__rptl-header .__rptl-header-nav-link:hover {
   color: #fff;
   background-color: #333;
+}
+#__rptl-header .__rptl-header-nav-link--for-home {
+  color: #cd2355;
+  font-weight: 700;
+}
+#__rptl-header .__rptl-header-nav-link--for-home:hover {
+  background-color: #cd2355;
+}
+#__rptl-header .__rptl-header-nav-link--for-industry {
+  font-weight: 700;
 }
 @media (min-width: 800px) {
   #__rptl-header .__rptl-header-nav-link {
@@ -258,15 +278,20 @@
 
   <nav class="__rptl-header-nav">
     <div class="__rptl-header-wrapper">
-      <ul class="__rptl-header-nav-list">
-        <li class="__rptl-header-nav-list-item"><a href="/for-industry/" class="__rptl-header-nav-link">For Industry</a>
-        <li class="__rptl-header-nav-list-item"><a href="/products/" class="__rptl-header-nav-link">Hardware</a>
-        <li class="__rptl-header-nav-list-item"><a href="/software/" class="__rptl-header-nav-link">Software</a>
-        <li class="__rptl-header-nav-list-item"><a href="/documentation/" class="__rptl-header-nav-link">Documentation</a>
-        <li class="__rptl-header-nav-list-item"><a href="/news/" class="__rptl-header-nav-link">News</a>
-        <li class="__rptl-header-nav-list-item"><a href="https://forums.raspberrypi.com/" class="__rptl-header-nav-link">Forums</a>
-        <li class="__rptl-header-nav-list-item"><a href="https://www.raspberrypi.org" class="__rptl-header-nav-link" rel="noopener">Foundation</a>
-      </ul>
+      <div class="__rptl-header-nav-inner">
+        <ul class="__rptl-header-nav-list">
+          <li class="__rptl-header-nav-list-item"><a href="/for-home/" class="__rptl-header-nav-link __rptl-header-nav-link--for-home">For home</a>
+          <li class="__rptl-header-nav-list-item"><a href="/for-industry/" class="__rptl-header-nav-link __rptl-header-nav-link--for-industry">For industry</a>
+        </ul>
+        <ul class="__rptl-header-nav-list">
+          <li class="__rptl-header-nav-list-item"><a href="/products/" class="__rptl-header-nav-link">Hardware</a>
+          <li class="__rptl-header-nav-list-item"><a href="/software/" class="__rptl-header-nav-link">Software</a>
+          <li class="__rptl-header-nav-list-item"><a href="/documentation/" class="__rptl-header-nav-link">Documentation</a>
+          <li class="__rptl-header-nav-list-item"><a href="/news/" class="__rptl-header-nav-link">News</a>
+          <li class="__rptl-header-nav-list-item"><a href="https://forums.raspberrypi.com/" class="__rptl-header-nav-link">Forums</a>
+          <li class="__rptl-header-nav-list-item"><a href="https://www.raspberrypi.org" class="__rptl-header-nav-link " rel="noopener">Foundation</a>
+        </ul>
+      </div>
     </div>
   </nav>
 </header>

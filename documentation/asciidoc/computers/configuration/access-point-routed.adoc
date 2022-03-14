@@ -152,7 +152,7 @@ address=/gw.wlan/192.168.4.1
 
 The Raspberry Pi will deliver IP addresses between `192.168.4.2` and `192.168.4.20`, with a lease time of 24 hours, to wireless DHCP clients. You should be able to reach the Raspberry Pi under the name `gw.wlan` from wireless clients.
 
-NOTE: There are three IP address blocks set aside for private networks. There is a Class A block from `10.0.0.0` to `10.255.255.255`, a Class B block from `172.16.0.0` to `172.31.255.255`, and probably the most frequently used, a Class C block from `192.168.0.0` to 192.168.255.255`.
+NOTE: There are three IP address blocks set aside for private networks. There is a Class A block from `10.0.0.0` to `10.255.255.255`, a Class B block from `172.16.0.0` to `172.31.255.255`, and probably the most frequently used, a Class C block from `192.168.0.0` to `192.168.255.255`.
 
 There are many more options for `dnsmasq`; see the default configuration file (`/etc/dnsmasq.conf`) or the http://www.thekelleys.org.uk/dnsmasq/doc.html[online documentation] for details.
 
