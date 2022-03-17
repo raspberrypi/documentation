@@ -333,7 +333,7 @@ Default: `\http://downloads.raspberrypi.org/os_list_imagingutility_v3.json`
 
 When network install is enabled, the bootloader displays the network install screen on boot if it detects a keyboard.
 
-To enable network install add, `NET_INSTALL_ENABLED=1`, or to disable network install add `NET_INSTALL_ENABLED=0`.
+To enable network install, add `NET_INSTALL_ENABLED=1`, or to disable network install add `NET_INSTALL_ENABLED=0`.
 
 This setting is ignored and network install is disabled if `DISABLE_HDMI=1` is set.
 
