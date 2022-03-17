@@ -321,10 +321,10 @@ Default: `net_install`
 [[IMAGER_REPO_URL]]
 ==== IMAGER_REPO_URL
 
-The Raspberry Pi Imager application is configured with a json file downloaded at startup.
+The embedded Raspberry Pi Imager application is configured with a json file downloaded at startup.
 
-You can change the URL of the json file used by the Raspberry Pi Imager application to get it to offer your own images.
-You can test this with the Windows or Linux versions of Raspberry Pi Imager by passing the URL via the `--repo` argument.
+You can change the URL of the json file used by the embedded Raspberry Pi Imager application to get it to offer your own images.
+You can test this with the standard https://www.raspberrypi.com/software/[Raspberry Pi Imager] application by passing the URL via the `--repo` argument.
 
 Default: `\http://downloads.raspberrypi.org/os_list_imagingutility_v3.json`
 
