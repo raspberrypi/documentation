@@ -42,7 +42,7 @@ Default: `0`
 [[BOOT_ORDER]]
 ==== BOOT_ORDER
 
-The `BOOT_ORDER` setting allows flexible configuration for the priority of different boot modes. It is represented as 32bit unsigned integer where each nibble represents a boot mode. The boot modes are attempted in lowest significant nibble to highest significant nibble order.
+The `BOOT_ORDER` setting allows flexible configuration for the priority of different boot modes. It is represented as 32bit unsigned integer where each nibble represents a boot-mode. The boot modes are attempted in lowest significant nibble to highest significant nibble order.
 
 
 [discrete]
@@ -115,14 +115,14 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 [[MAX_RESTARTS]]
 ==== MAX_RESTARTS
 
-If the RESTART (`0xf`) boot mode is encountered more than MAX_RESTARTS times then a watchdog reset is triggered. This isn't recommended for general use but may be useful for test or remote systems where a full reset is needed to resolve issues with hardware or network interfaces.
+If the RESTART (`0xf`) boot-mode is encountered more than MAX_RESTARTS times then a watchdog reset is triggered. This isn't recommended for general use but may be useful for test or remote systems where a full reset is needed to resolve issues with hardware or network interfaces.
 
 Default: `-1` (infinite)
 
 [[SD_BOOT_MAX_RETRIES]]
 ==== SD_BOOT_MAX_RETRIES
 
-The number of times that SD boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`. +
+The number of times that SD boot will be retried after failure before moving to the next boot-mode defined by `BOOT_ORDER`. +
 `-1` means infinite retries.
 
 Default: `0`
@@ -130,7 +130,7 @@ Default: `0`
 [[NET_BOOT_MAX_RETRIES]]
 ==== NET_BOOT_MAX_RETRIES
 
-The number of times that network boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`. +
+The number of times that network boot will be retried after failure before moving to the next boot-mode defined by `BOOT_ORDER`. +
 `-1` means infinite retries.
 
 Default: `0`
@@ -301,7 +301,7 @@ Default: `fw-download-alias1.raspberrypi.com`
 
 You can use this property to change the port used for network install and HTTP boot. HTTPS is enabled when using the default host `fw-download-alias1.raspberrypi.com`. If `HTTP_HOST` is changed then HTTPS is disabled and plain HTTP will be used instead.
 
-If HTTPS is disabled, plain HTTP will still be used even if `HTTP_PORT` is changed to `443`.
+When HTTPS is disabled, plain HTTP will still be used even if `HTTP_PORT` is changed to `443`.
 
 Default: `443` if HTTPS is enabled otherwise `80`
 
@@ -321,31 +321,32 @@ Default: `net_install`
 [[IMAGER_REPO_URL]]
 ==== IMAGER_REPO_URL
 
-The imager application is configured with a json file downloaded on start up.
+The Raspberry Pi Imager application is configured with a json file downloaded at startup.
 
-You can change the URL of the json file used by the imager application to get it to offer your own images.
-You can test this with the Windows or Linux Imager applications by passing the URL via the `--repo` argument.
+You can change the URL of the json file used by the Raspberry Pi Imager application to get it to offer your own images.
+You can test this with the Windows or Linux versions of Raspberry Pi Imager by passing the URL via the `--repo` argument.
 
 Default: `\http://downloads.raspberrypi.org/os_list_imagingutility_v3.json`
 
 [[NET_INSTALL_ENABLED]]
 ==== NET_INSTALL_ENABLED
 
-By default network install is enabled on Raspberry Pi 4 and Raspberry Pi 400. On Compute Module 4 and other boards it is disabled by default.
-When network install is enabled it detects a keyboard and displays the network install screen on boot.
+When network install is enabled, the bootloader displays the network install screen on boot if it detects a keyboard.
 
 To enable network install add, `NET_INSTALL_ENABLED=1`, or to disable network install add `NET_INSTALL_ENABLED=0`.
 
-This setting is ignored and network install on boot is disabled if `DISABLE_HDMI=1` is set.
+This setting is ignored and network install is disabled if `DISABLE_HDMI=1` is set.
+
+Default: `1` on Raspberry Pi 4 and Raspberry Pi 400, and `0` on Compute Module 4.
 
 [[NET_INSTALL_KEYBOARD_WAIT]]
 ==== NET_INSTALL_KEYBOARD_WAIT
 
 If network install is enabled, the bootloader attempts to detect a keyboard and the `SHIFT` key to initiate network install. You can change the length of this wait in milliseconds with this property.
 
-Setting this to `0` disables the keyboard wait, although network install can still be initiated if no boot files are found and USB boot `4` is in `BOOT_ORDER`.
+Setting this to `0` disables the keyboard wait, although network install can still be initiated if no boot files are found and USB boot-mode `4` is in `BOOT_ORDER`.
 
-NOTE: Testing suggests Keyboard / shift detection takes at least 750ms.
+NOTE: Testing suggests keyboard and SHIFT detection takes at least 750ms.
 
 Default: `900`
 
@@ -400,7 +401,7 @@ Default: ""
 [[USB_MSD_DISCOVER_TIMEOUT]]
 ==== USB_MSD_DISCOVER_TIMEOUT
 
-If no USB mass storage devices are found within this timeout then USB-MSD is stopped and the next boot mode is selected
+If no USB mass storage devices are found within this timeout then USB-MSD is stopped and the next boot-mode is selected
 
 Minimum: `5000` (5 seconds) +
 Default: `20000` (20 seconds) +
@@ -437,7 +438,7 @@ Default: `0`
 [[XHCI_DEBUG]]
 ==== XHCI_DEBUG
 
-This property is a bit field which controls the verbosity of USB debug messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`.
+This property is a bit field which controls the verbosity of USB debug messages for mass storage boot-mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`.
 
 |===
 | Value | Log
@@ -565,11 +566,11 @@ sudo raspi-config
 Navigate to `Advanced Options` and then `Bootloader Version`. Select `Latest` and choose `Yes` to confirm. Select `Finish` and confirm you want to reboot. After the reboot, open a command prompt again and update your system.
 
 ----
-sudo apt-get update
-sudo apt-get install rpi-eeprom # Update to latest version
+sudo apt update
+sudo apt install rpi-eeprom  # Update rpi-eeprom to the latest version
 ----
 
-If you run `rpi-eeprom-update` again after your Raspberry Pi has rebooted, you should now see that a more recent version of the bootloader is available and it's the `stable` release.
+If you run `rpi-eeprom-update`, you should see that a more recent version of the bootloader is available and it's the `stable` release.
 
 ----
 *** UPDATE AVAILABLE ***
@@ -585,10 +586,9 @@ Now you can update your bootloader.
 ----
 sudo rpi-eeprom-update -a
 sudo reboot
-rpi-eeprom-update
 ----
 
-You should now see that the `CURRENT` date is updated to indicate that you are using the latest version of the bootloader.
+If you run `rpi-eeprom-update` again after your Raspberry Pi has rebooted, you should now see that the `CURRENT` date has updated to indicate that you are using the latest version of the bootloader.
 
 ----
 BOOTLOADER: up to date
