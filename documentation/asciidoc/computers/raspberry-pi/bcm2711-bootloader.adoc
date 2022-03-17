@@ -42,7 +42,7 @@ Default: `0`
 [[BOOT_ORDER]]
 ==== BOOT_ORDER
 
-The `BOOT_ORDER` setting allows flexible configuration for the priority of different boot modes. It is represented as 32bit unsigned integer where each nibble represents a boot-mode. The boot modes are attempted in lowest significant nibble to highest significant nibble order.
+The `BOOT_ORDER` setting allows flexible configuration for the priority of different boot modes. It is represented as a 32-bit unsigned integer where each nibble represents a boot-mode. The boot modes are attempted in lowest significant nibble to highest significant nibble order.
 
 
 [discrete]
@@ -438,7 +438,7 @@ Default: `0`
 [[XHCI_DEBUG]]
 ==== XHCI_DEBUG
 
-This property is a bit field which controls the verbosity of USB debug messages for mass storage boot-mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`.
+This property is a bit-field which controls the verbosity of USB debug messages for mass storage boot-mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`.
 
 |===
 | Value | Log
