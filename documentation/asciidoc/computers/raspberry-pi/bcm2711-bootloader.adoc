@@ -431,7 +431,7 @@ If the `VL805` property is set to `1` then the bootloader will search for a VL80
 
 * On Compute Module 4 the bootloader never writes to the dedicated VL805 SPI EEPROM. This option just configures the controller to load the firmware from SDRAM.
 * Do not use this option if the VL805 XHCI controller has a dedicated EEPROM. It will fail to initialise because the VL805 ROM will attempt to use a dedicated SPI EEPROM if fitted.
-* The embedded VL805 firmware assumes the same USB configuration as Raspberry Pi 4B (2 USB3 ports and 4 USB 2 ports). There is no support for loading alternate VL805 FW images, a dedicated VL805 SPI EEPROM should be used instead for such configurations.
+* The embedded VL805 firmware assumes the same USB configuration as Raspberry Pi 4B (2 USB 3.0 ports and 4 USB 2.0 ports). There is no support for loading alternate VL805 FW images, a dedicated VL805 SPI EEPROM should be used instead for such configurations.
 
 Default: `0`
 
@@ -503,7 +503,7 @@ Default: `0x0`
 [[uart_2ndstage]]
 ==== uart_2ndstage
 
-If `uart_2ndstage` is `1` then enable debug logging to the UART. This option also automatically enables UART logging in start.elf. This is also described on the xref:config_txt.adoc#boot-options[Boot options] page.
+If `uart_2ndstage` is `1` then enable debug logging to the UART. This option also automatically enables UART logging in `start.elf`. This is also described on the xref:config_txt.adoc#boot-options[Boot options] page.
 
 The `BOOT_UART` property also enables bootloader UART logging but does not enable UART logging in `start.elf` unless `uart_2ndstage=1` is also set.
 
