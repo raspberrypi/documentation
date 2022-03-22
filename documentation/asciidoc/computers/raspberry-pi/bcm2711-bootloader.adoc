@@ -42,7 +42,7 @@ Default: `0`
 [[BOOT_ORDER]]
 ==== BOOT_ORDER
 
-The `BOOT_ORDER` setting allows flexible configuration for the priority of different boot modes. It is represented as 32bit unsigned integer where each nibble represents a boot mode. The boot modes are attempted in lowest significant nibble to highest significant nibble order.
+The `BOOT_ORDER` setting allows flexible configuration for the priority of different boot modes. It is represented as a 32-bit unsigned integer where each nibble represents a boot-mode. The boot modes are attempted in lowest significant nibble to highest significant nibble order.
 
 
 [discrete]
@@ -81,6 +81,10 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 | NVME
 | CM4 only: boot from an NVMe SSD connected to the PCIe interface. See xref:raspberry-pi.adoc#nvme-ssd-boot[NVMe boot] for more details.
 
+| 0x7
+| HTTP
+| HTTP boot over ethernet. See xref:raspberry-pi.adoc#http-boot[HTTP boot] for more details.
+
 | 0xe
 | STOP
 | Stop and display error pattern. A power cycle is required to exit this state.
@@ -111,14 +115,14 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 [[MAX_RESTARTS]]
 ==== MAX_RESTARTS
 
-If the RESTART (`0xf`) boot mode is encountered more than MAX_RESTARTS times then a watchdog reset is triggered. This isn't recommended for general use but may be useful for test or remote systems where a full reset is needed to resolve issues with hardware or network interfaces.
+If the RESTART (`0xf`) boot-mode is encountered more than MAX_RESTARTS times then a watchdog reset is triggered. This isn't recommended for general use but may be useful for test or remote systems where a full reset is needed to resolve issues with hardware or network interfaces.
 
 Default: `-1` (infinite)
 
 [[SD_BOOT_MAX_RETRIES]]
 ==== SD_BOOT_MAX_RETRIES
 
-The number of times that SD boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`. +
+The number of times that SD boot will be retried after failure before moving to the next boot-mode defined by `BOOT_ORDER`. +
 `-1` means infinite retries.
 
 Default: `0`
@@ -126,7 +130,7 @@ Default: `0`
 [[NET_BOOT_MAX_RETRIES]]
 ==== NET_BOOT_MAX_RETRIES
 
-The number of times that network boot will be retried after failure before moving to the next boot mode defined by `BOOT_ORDER`. +
+The number of times that network boot will be retried after failure before moving to the next boot-mode defined by `BOOT_ORDER`. +
 `-1` means infinite retries.
 
 Default: `0`
@@ -280,6 +284,72 @@ Previously this property was only checked by the `rpi-eeprom-update` script. How
 
 Default: `0`
 
+[[HTTP_HOST]]
+==== HTTP_HOST
+
+If network install or HTTP boot is initiated, `boot.img` and `boot.sig` are downloaded from this server.
+
+Invalid host names will be ignored. They should only contain lower case alphanumeric characters and `-` or `.`.
+If `HTTP_HOST` is set then HTTPS is disabled and plain HTTP used instead.
+You can specify an IP address to avoid the need for a DNS lookup.
+Don`t include the HTTP scheme or any forward slashes in the hostname.
+
+Default: `fw-download-alias1.raspberrypi.com`
+
+[[HTTP_PORT]]
+==== HTTP_PORT
+
+You can use this property to change the port used for network install and HTTP boot. HTTPS is enabled when using the default host `fw-download-alias1.raspberrypi.com`. If `HTTP_HOST` is changed then HTTPS is disabled and plain HTTP will be used instead.
+
+When HTTPS is disabled, plain HTTP will still be used even if `HTTP_PORT` is changed to `443`.
+
+Default: `443` if HTTPS is enabled otherwise `80`
+
+[[HTTP_PATH]]
+==== HTTP_PATH
+
+The path used for network install and HTTP boot.
+
+The case of the path *is* significant.
+Use forward (Linux) slashes for the path separator.
+Leading and trailing forward slashes are not required.
+
+If `HTTP_HOST` is not set, `HTTP_PATH` is ignored and the URL will be `\https://fw-download-alias1.raspberrypi.com:443/net_install/boot.img`. If `HTTP_HOST` is set the URL will be `\http://<HTTP_HOST>:<HTTP_PORT>/<HTTP_PATH>/boot.img`
+
+Default: `net_install`
+
+[[IMAGER_REPO_URL]]
+==== IMAGER_REPO_URL
+
+The embedded Raspberry Pi Imager application is configured with a json file downloaded at startup.
+
+You can change the URL of the json file used by the embedded Raspberry Pi Imager application to get it to offer your own images.
+You can test this with the standard https://www.raspberrypi.com/software/[Raspberry Pi Imager] application by passing the URL via the `--repo` argument.
+
+Default: `\http://downloads.raspberrypi.org/os_list_imagingutility_v3.json`
+
+[[NET_INSTALL_ENABLED]]
+==== NET_INSTALL_ENABLED
+
+When network install is enabled, the bootloader displays the network install screen on boot if it detects a keyboard.
+
+To enable network install, add `NET_INSTALL_ENABLED=1`, or to disable network install add `NET_INSTALL_ENABLED=0`.
+
+This setting is ignored and network install is disabled if `DISABLE_HDMI=1` is set.
+
+Default: `1` on Raspberry Pi 4 and Raspberry Pi 400, and `0` on Compute Module 4.
+
+[[NET_INSTALL_KEYBOARD_WAIT]]
+==== NET_INSTALL_KEYBOARD_WAIT
+
+If network install is enabled, the bootloader attempts to detect a keyboard and the `SHIFT` key to initiate network install. You can change the length of this wait in milliseconds with this property.
+
+Setting this to `0` disables the keyboard wait, although network install can still be initiated if no boot files are found and USB boot-mode `4` is in `BOOT_ORDER`.
+
+NOTE: Testing suggests keyboard and SHIFT detection takes at least 750ms.
+
+Default: `900`
+
 [[NETCONSOLE]]
 ==== NETCONSOLE - advanced logging
 
@@ -331,7 +401,7 @@ Default: ""
 [[USB_MSD_DISCOVER_TIMEOUT]]
 ==== USB_MSD_DISCOVER_TIMEOUT
 
-If no USB mass storage devices are found within this timeout then USB-MSD is stopped and the next boot mode is selected
+If no USB mass storage devices are found within this timeout then USB-MSD is stopped and the next boot-mode is selected
 
 Minimum: `5000` (5 seconds) +
 Default: `20000` (20 seconds) +
@@ -357,18 +427,18 @@ Default: `1000` (1 second)
 ==== VL805
 Compute Module 4 only.
 
-If the `VL805` property is set to `1` then the bootloader will search for a VL805 PCIe XHCI controller and attempt to initialise it with VL805 firmware embedded in the bootloader EEPROM. This enables industrial designs to use VL805 XHCI controllers without providing a dedicated SPI EEPROM for the VL805 FW.
+If the `VL805` property is set to `1` then the bootloader will search for a VL805 PCIe XHCI controller and attempt to initialise it with VL805 firmware embedded in the bootloader EEPROM. This enables industrial designs to use VL805 XHCI controllers without providing a dedicated SPI EEPROM for the VL805 firmware.
 
 * On Compute Module 4 the bootloader never writes to the dedicated VL805 SPI EEPROM. This option just configures the controller to load the firmware from SDRAM.
 * Do not use this option if the VL805 XHCI controller has a dedicated EEPROM. It will fail to initialise because the VL805 ROM will attempt to use a dedicated SPI EEPROM if fitted.
-* The embedded VL805 firmware assumes the same USB configuration as Raspberry Pi 4B (2 USB3 ports and 4 USB 2 ports). There is no support for loading alternate VL805 FW images, a dedicated VL805 SPI EEPROM should be used instead for such configurations.
+* The embedded VL805 firmware assumes the same USB configuration as Raspberry Pi 4B (2 USB 3.0 ports and 4 USB 2.0 ports). There is no support for loading alternate VL805 firmware images, a dedicated VL805 SPI EEPROM should be used instead for such configurations.
 
 Default: `0`
 
 [[XHCI_DEBUG]]
 ==== XHCI_DEBUG
 
-This property is a bit field which controls the verbosity of USB debug messages for mass storage boot mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`.
+This property is a bit-field which controls the verbosity of USB debug messages for mass storage boot-mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`.
 
 |===
 | Value | Log
@@ -417,7 +487,7 @@ The primary purpose of `boot_ramdisk` is to support `secure-boot`, however, unsi
 * The memory for the ramdisk filesystem is released before the operating system is started.
 * If xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT] is selected then the bootloader will search for `tryboot.img` instead of `boot.img`.
 
-For more information about `secure-boot` and creating `boot.img` files please see the https://github.com/raspberrypi/usbboot/blob/master/Readme.md[USBBOOT Readme]
+For more information about `secure-boot` and creating `boot.img` files please see https://github.com/raspberrypi/usbboot/blob/master/Readme.md[USBBOOT]
 
 Default: `0` 
 
@@ -433,7 +503,7 @@ Default: `0x0`
 [[uart_2ndstage]]
 ==== uart_2ndstage
 
-If `uart_2ndstage` is `1` then enable debug logging to the UART. This option also automatically enables UART logging in start.elf. This is also described on the xref:config_txt.adoc#boot-options[Boot options] page.
+If `uart_2ndstage` is `1` then enable debug logging to the UART. This option also automatically enables UART logging in `start.elf`. This is also described on the xref:config_txt.adoc#boot-options[Boot options] page.
 
 The `BOOT_UART` property also enables bootloader UART logging but does not enable UART logging in `start.elf` unless `uart_2ndstage=1` is also set.
 
@@ -480,3 +550,50 @@ Default: `1`
 After reading `config.txt` the GPU firmware `start4.elf` reads the bootloader EEPROM config and checks for a section called `[config.txt]`. If the `[config.txt]` section exists then the contents from the start of this section to the end of the file is appended in memory, to the contents of the `config.txt` file read from the boot partition.  This can be used to automatically apply settings to every operating system, for example, dtoverlays.
 
 WARNING: If an invalid configuration which causes boot to fail is specified then the bootloader EEPROM will have to be re-flashed.
+
+[[bootloader_update_stable]]
+=== Updating to the LATEST / STABLE bootloader
+
+The DEFAULT version of the bootloader is only updated for CRITICAL fixes and major releases. The LATEST / STABLE bootloader is updated more often to include the latest fixes and improvements.
+
+Advanced users can switch to the LATEST / STABLE bootloader to get the latest functionality.
+Open a command prompt and start `raspi-config`.
+
+----
+sudo raspi-config
+----
+
+Navigate to `Advanced Options` and then `Bootloader Version`. Select `Latest` and choose `Yes` to confirm. Select `Finish` and confirm you want to reboot. After the reboot, open a command prompt again and update your system.
+
+----
+sudo apt update
+sudo apt install rpi-eeprom  # Update rpi-eeprom to the latest version
+----
+
+If you run `rpi-eeprom-update`, you should see that a more recent version of the bootloader is available and it's the `stable` release.
+
+----
+*** UPDATE AVAILABLE ***
+BOOTLOADER: update available
+   CURRENT: Tue 25 Jan 14:30:41 UTC 2022 (1643121041)
+    LATEST: Thu 10 Mar 11:57:12 UTC 2022 (1646913432)
+   RELEASE: stable (/lib/firmware/raspberrypi/bootloader/stable)
+            Use raspi-config to change the release.
+----
+
+Now you can update your bootloader.
+
+----
+sudo rpi-eeprom-update -a
+sudo reboot
+----
+
+If you run `rpi-eeprom-update` again after your Raspberry Pi has rebooted, you should now see that the `CURRENT` date has updated to indicate that you are using the latest version of the bootloader.
+
+----
+BOOTLOADER: up to date
+   CURRENT: Thu 10 Mar 11:57:12 UTC 2022 (1646913432)
+    LATEST: Thu 10 Mar 11:57:12 UTC 2022 (1646913432)
+   RELEASE: stable (/lib/firmware/raspberrypi/bootloader/stable)
+            Use raspi-config to change the release.
+----

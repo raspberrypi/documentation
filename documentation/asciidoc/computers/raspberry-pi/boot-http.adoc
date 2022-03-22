@@ -1,0 +1,49 @@
+== HTTP Boot
+
+The network install feature uses HTTP over ethernet to boot the Raspberry Pi into the embedded xref:getting-started.adoc#using-raspberry-pi-imager[Raspberry Pi Imager] application.
+
+In addition to network install, you can explicitly boot your device with files downloaded via HTTP with xref:raspberry-pi.adoc#BOOT_ORDER[boot-mode] `7`. You can still use this even if xref:raspberry-pi.adoc#NET_INSTALL_ENABLED[network install on boot is disabled].
+
+You could for example add this to your `BOOT_ORDER` as a fall-back boot method, or put it behind a GPIO conditional to initiate HTTP boot from your own server when a GPIO pin is pulled low.
+
+For example, if you added the following to your eeprom config and GPIO 8 (which has a default state of 1 or HIGH) were to be pulled low, the files `\http://downloads.raspberrypi.org:80/net_install/boot.img` and `\http://downloads.raspberrypi.org:80/net_install/boot.sig` would be downloaded. If network install on boot were enabled it would use the same URL. If GPIO 8 were not pulled low the behaviour would be unchanged.
+```
+[gpio8=0]
+BOOT_ORDER=0xf7
+HTTP_HOST=downloads.raspberrypi.org
+NET_INSTALL_ENABLED=0
+```
+
+HTTP in the `BOOT_ORDER` will be ignored if secure boot is enabled and xref:raspberry-pi.adoc#HTTP_HOST[HTTP_HOST] is not set.
+
+=== Requirements
+
+To use HTTP boot you need to xref:raspberry-pi.adoc#bootloader_update_stable[use the LATEST / STABLE bootloader configuration] and update to a bootloader dated 10th March 2022 or later. HTTP boot only works over ethernet, so you need to connect your Raspberry Pi to your network via an Ethernet cable, e.g. to a socket on the back of your router.
+
+=== Keys
+
+All HTTP downloads must be signed. The bootloader includes a public key for the files on the default host `fw-download-alias1.raspberrypi.com`. This key will be used to verify the network install image *unless* you set xref:raspberry-pi.adoc#HTTP_HOST[HTTP_HOST] *and* include a public key in the eeprom. This allows you to host the Raspberry Pi network install images on your own server.
+
+WARNING: Using your own network install image will require you to sign the image and add your public key to the eeprom. At the moment, if you then apply a public eeprom update, your key will be lost and will need to be re-added.
+
+https://github.com/raspberrypi/usbboot/blob/master/Readme.md[USBBOOT] has all the tools needed to program public keys. You would do something like this.
+
+----
+# Add your PUBLIC key to the eeprom. boot.conf contains your modifications
+rpi-eeprom-config -c boot.conf -p mypubkey.pem -o pieeprom.upd pieeprom.original.bin
+
+# Generate signature for your eeprom
+rpi-eeprom-digest -i pieeprom.upd -o pieeprom.sig
+
+# Sign the network install image with your PRIVATE key
+# Put boot.img and boot.sig on your web server
+rpi-eeprom-digest -i boot.img -o boot.sig -k myprivkey.pem
+----
+
+=== Secure Boot
+
+If secure boot is enabled then the Raspberry Pi can only run code signed by the customer's private key. So if you want to use network install or HTTP boot mode with secure boot you must sign `boot.img` and generate `boot.sig` with your own key and host these files somewhere for download. The public key in the eeprom will be used to verify the image.
+
+If secure boot is enabled and xref:raspberry-pi.adoc#HTTP_HOST[HTTP_HOST] is not set, then network install and HTTP boot will be disabled.
+
+For more information about secure boot see https://github.com/raspberrypi/usbboot/blob/master/secure-boot-recovery/README.md[USBBOOT].

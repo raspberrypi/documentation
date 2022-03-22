@@ -26,6 +26,8 @@ include::raspberry-pi/boot-gpio.adoc[]
 
 include::raspberry-pi/boot-nvme.adoc[]
 
+include::raspberry-pi/boot-http.adoc[]
+
 include::raspberry-pi/display-parallel-interface.adoc[]
 
 include::raspberry-pi/gpio-on-raspberry-pi.adoc[]
