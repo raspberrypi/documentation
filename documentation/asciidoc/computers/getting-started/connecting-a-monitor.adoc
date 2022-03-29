@@ -1,6 +1,6 @@
 == Connecting a Display
 
-Unless you're setting up your Raspberry Pi to operate xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless], for regular use you'll want to plug the Raspberry Pi in to a display: either a computer monitor, or a televison.
+Unless you're setting up your Raspberry Pi to operate xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless], for regular use you'll want to plug the Raspberry Pi in to a display: either a computer monitor, or a television.
 
 === Connecting using HDMI
 
