@@ -169,9 +169,9 @@ By default, Raspberry Pi OS attempts to automatically configure all network inte
 
 === Static IP Addresses
 
-WARNING: If allocation of IP addresses is normally handled by a DHCP server on your network, allocated your Raspberry Pi a static IP address may cause an address conflict which may lead to networking problems.
+WARNING: If allocation of IP addresses is normally handled by a DHCP server on your network, allocating your Raspberry Pi a static IP address may cause an address conflict which may lead to networking problems.
 
-If you want to allocate a static IP address to your Raspberry Pi the best way to do so is to reserve an address for it on your router. That way your Raspberry Pi will continue to have its address allocated via DHCP but will recieve the same address each time. A "fixed" addresses can be allocated by your DHCP server depending on the MAC address of your Raspberry Pi. Management of IP addresses will remain with the DHCP server and this will avoid address conflicts and potential network problems.
+If you want to allocate a static IP address to your Raspberry Pi, the best way to do so is to reserve an address for it on your router. That way your Raspberry Pi will continue to have its address allocated via DHCP but will receive the same address each time. A "fixed" address can be allocated by your DHCP server associating it with the MAC address of your Raspberry Pi. Management of IP addresses will remain with the DHCP server and this will avoid address conflicts and potential network problems.
 
 However, if you wish to disable automatic configuration for an interface, and instead configure it statically, you can do so in `/etc/dhcpcd.conf`. For example:
 
