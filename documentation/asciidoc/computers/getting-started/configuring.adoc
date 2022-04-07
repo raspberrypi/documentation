@@ -1,6 +1,6 @@
 == Configuration on First Boot
 
-If you have not already configured your operating system using the xref:getting-started.adoc#advanced-options[Advanced Menu] of Raspberry Pi Imager when Raspberry Pi OS starts up for the first time you will be guided through initial setip.
+If you have not already configured your operating system using the xref:getting-started.adoc#advanced-options[Advanced Menu] of Raspberry Pi Imager when Raspberry Pi OS starts up for the first time you will be guided through initial setup.
 
 image::images/initial-setup/1.png[width="80%"]
 
@@ -14,7 +14,7 @@ After hitting "Next" you'll be prompted to create a user account. Here you can c
 
 image::images/initial-setup/3.png[width="80%"]
 
-If you want to you can set your user name to the old default username of `pi`, which was used on older versions of Raspberry Pi OS. 
+If you want to you can set your username to the old default username of `pi`, which was used on older versions of Raspberry Pi OS. 
 
 NOTE: Some older software may require the presence of the `pi` user. 
 
