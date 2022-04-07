@@ -23,13 +23,15 @@ NOTE: If using Raspberry Pi Imager on Windows 10 with controlled folder access e
 
 NOTE: You can see which operating systems are most often downloaded, on our https://rpi-imager-stats.raspberrypi.com/[statistics page].
 
-You can now insert the SD card into the Raspberry Pi and power it up. For Raspberry Pi OS, if you need to manually log in, the default user name is `pi`, with password `raspberry`, and the default keyboard layout is set to https://datasheets.raspberrypi.com/keyboard-mouse/UK-layout.png[United Kingdom (UK)].
+You can now insert the SD card into the Raspberry Pi and power it up. When your Raspberry Pi boots for the first time a xref:getting-started.adoc#configuration-on-first-boot[configuration wizard] will run that allows you to set up your Raspberry Pi.
 
-You should change the default password straight away to ensure your Raspberry Pi is xref:configuration.adoc#securing-your-raspberry-pi[secure].
+NOTE: In the past Raspberry Pi OS had a default user name and password; user name `pi`, with password `raspberry`. This is no longer the case. However if you are using an older version of the operating system, or you are working with an existing installation, this default user may be present. If you have not already done so, you should change the default password straight away to ensure your Raspberry Pi is xref:configuration.adoc#securing-your-raspberry-pi[secure].
 
 ==== Advanced Options
 
-When you have the Raspberry Pi Imager open, and after you have selected the operating system to install, a cog wheel will appear allowing you to open an "Advanced Options" menu if it is supported by the operating system. This menu lets you carry out tasks like enabling SSH, or setting your Raspberry Pi's hostname, before first boot.
+When you have the Raspberry Pi Imager open, and after you have selected the operating system to install, a cog wheel will appear allowing you to open an "Advanced Options" menu if it is supported by the operating system. This menu lets you carry out tasks like enabling SSH, or setting your Raspberry Pi's hostname, and configuring the default user before first boot.
+
+NOTE: If you use the Advanced Options menu in Imager to configure your Raspberry Pi OS installation then the xref:getting-started.adoc#configuration-on-first-boot[configuration wizard] that normally runs on first boot will be skipped.
 
 image::images/rpi_imager.png[width="80%"]
 
@@ -38,6 +40,8 @@ Amongst other things the Advanced Options menu is useful for when you want to co
 image::images/rpi_imager_2.png[width="80%"]
 
 NOTE: In older versions of Imager you should push `Ctrl-Shift-X` to open the "Advanced" menu.
+
+If you are installing Raspberry Pi OS Lite and intend to run it xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless], you will still need to create a new user account. Since you will not be able to create the user account on first boot, you *MUST* configure the operating system using the Advanced Menu.
 
 === Downloading an Image
 

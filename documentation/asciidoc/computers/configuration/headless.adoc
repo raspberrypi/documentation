@@ -4,6 +4,8 @@ If you do not use a monitor or keyboard to run your Raspberry Pi (known as headl
 
 Once an image is created on an SD card, by inserting it into a card reader on a Linux or Windows machines the xref:configuration.adoc#the-boot-folder[boot folder] can be accessed. Adding certain files to this folder will activate certain setup features on the first boot of the Raspberry Pi.
 
+IMPORTANT: If you are installing Raspberry Pi OS Lite and intend to run it headless, you will need to create a new user account. Since you will not be able to create the user account on first boot, you *MUST* add a `userconf.txt` file to the boot folder to create a user on first boot.
+
 === Configuring Networking
 
 You will need to define a `wpa_supplicant.conf` file for your particular wireless network. Put this file onto the boot folder of the SD card. When the Raspberry Pi boots for the first time, it will copy that file into the correct location in the Linux root file system and use those settings to start up wireless networking.
@@ -54,3 +56,18 @@ network={
 NOTE: Some older Raspberry Pi boards and some USB wireless dongles do not support 5GHz networks.
 
 NOTE: With no keyboard or monitor, you will need some way of xref:remote-access.adoc[remotely accessing] your headless Raspberry Pi. For headless setup, SSH can be enabled by placing a file named `ssh`, without any extension, onto the boot folder of the SD Card. For more information see the section on xref:remote-access.adoc#ssh[setting up an SSH server].
+
+=== Configuring a User
+
+You will need to add a `userconf.txt` in the boot partition of the SD card; this is the part of the SD card which can be seen when it is mounted in a Windows or MacOS computer.
+
+This file should contain a single line of text, consisting of `username:password` – so your desired username, followed immediately by a colon, followed immediately by an *encrypted* representation of the password you want to use.
+
+To generate the encrypted password, the easiest way is to use OpenSSL on a Raspberry Pi that is already running – open a terminal window and enter:
+
+----
+echo 'mypassword' | openssl passwd -6 -stdin
+----
+
+This will produce what looks like a string of random characters, which is actually an encrypted version of the supplied password.
+

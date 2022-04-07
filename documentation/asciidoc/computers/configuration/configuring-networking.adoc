@@ -169,7 +169,11 @@ By default, Raspberry Pi OS attempts to automatically configure all network inte
 
 === Static IP Addresses
 
-If you wish to disable automatic configuration for an interface and instead configure it statically, add the details to `/etc/dhcpcd.conf`. For example:
+WARNING: If allocation of IP addresses is normally handled by a DHCP server on your network, allocating your Raspberry Pi a static IP address may cause an address conflict which may lead to networking problems.
+
+If you want to allocate a static IP address to your Raspberry Pi, the best way to do so is to reserve an address for it on your router. That way your Raspberry Pi will continue to have its address allocated via DHCP but will receive the same address each time. A "fixed" address can be allocated by your DHCP server associating it with the MAC address of your Raspberry Pi. Management of IP addresses will remain with the DHCP server and this will avoid address conflicts and potential network problems.
+
+However, if you wish to disable automatic configuration for an interface, and instead configure it statically, you can do so in `/etc/dhcpcd.conf`. For example:
 
 ----
 interface eth0
@@ -177,9 +181,3 @@ static ip_address=192.168.0.4/24
 static routers=192.168.0.254
 static domain_name_servers=192.168.0.254 8.8.8.8
 ----
-
-You can find the names of the interfaces present on your system using the `ip link` command.
-
-Note that if you have several Raspberry Pis connected to the same network, you may find it easier instead to set address reservations on your DHCP server. In this way, each Raspberry Pi will keep the same IP address, but they will all be managed in one place, making reconfiguring your network in the future more straightforward.
-
-On Raspberry Pi systems where the graphical desktop is installed, a GUI tool called `lxplug-network` is used to allow the user to make changes to the configuration of `dhcpcd`, including setting static IP addresses. The `lxplug-network` tool is based on `dhcpcd-ui`, which was also developed by Roy Marples.
