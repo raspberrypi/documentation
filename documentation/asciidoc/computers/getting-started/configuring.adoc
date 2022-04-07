@@ -18,8 +18,6 @@ If you want to you can set your user name to the old default username of `pi`, w
 
 NOTE: Some older software may require the presence of the `pi` user. 
 
-image::images/initial-setup/3.png[width="80%"]
-
 However, if you do choose to create this account you will trigger a warning message, and we'd advise you to avoid the old default password of `raspberry`.
 
 image::images/initial-setup/4.png[width="80%"]
