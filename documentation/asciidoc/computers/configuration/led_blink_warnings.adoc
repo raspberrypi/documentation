@@ -58,6 +58,10 @@ If a Raspberry Pi fails to boot for some reason, or has to shut down, in many ca
 | 3
 | I2C error - Pi 4
 
+| 3
+| 4
+| Secure-boot configuration is not valid
+
 | 4
 | 4
 | Unsupported board type
