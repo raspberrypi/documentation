@@ -1,6 +1,6 @@
 == Installing the Operating System
 
-Raspberry Pi recommend the use of https://www.raspberrypi.com/software/[Raspberry Pi Imager] to install an operating system on your SD card. You will need another computer with an SD card reader to install the image.
+Raspberry Pi recommend the use of https://www.raspberrypi.com/software/[Raspberry Pi Imager] to install an operating system on your SD card. You will need another computer with an SD card reader to install the image. Rapsberry Pi Imager can be run on another Raspberry Pi, but also works on Microsoft Windows, Apple macOS, and Linux.
 
 NOTE: Before you start, don't forget to check the xref:getting-started.adoc#sd-cards[SD card requirements].
 
