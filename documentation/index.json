@@ -36,12 +36,6 @@
                     "subpath": "linux_kernel.adoc"
                 },
                 {
-                    "title": "Using Linux",
-                    "description": "How to use the Linux command line from Raspberry Pi OS",
-                    "image": "full-sized/Using-Linux.png",
-                    "subpath": "using_linux.adoc"
-                },
-                {
                     "title": "Remote Access",
                     "description": "Accessing your Raspberry Pi remotely",
                     "image": "full-sized/Remote-Access.png",

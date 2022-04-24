@@ -111,7 +111,7 @@ NOTE: Choosing option 'Q' will save the file with any syntax errors still in pla
 
 An up-to-date distribution contains all the latest security fixes, so you should go ahead and xref:os.adoc#updating-and-upgrading-raspberry-pi-os[update] your version of Raspberry Pi OS to the latest version.
 
-If you are using SSH to connect to your Raspberry Pi, it can be worthwhile to xref:using_linux.adoc#scheduling-tasks-with-cron[add a cron job] that specifically updates the ssh-server. The following command, perhaps as a daily cron job, will ensure you have the latest SSH security fixes promptly, independent of your normal update process. 
+If you are using SSH to connect to your Raspberry Pi, it can be worthwhile to add a `cron` job that specifically updates the ssh-server. The following command, perhaps as a daily cron job, will ensure you have the latest SSH security fixes promptly, independent of your normal update process. 
 
 [,bash]
 ----

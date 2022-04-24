@@ -244,7 +244,7 @@ Then save this file (`File > Save` or `Ctrl + S`) and run (`Run > Run Module` or
 
 === Using the Command Line
 
-You can write a Python file in a standard xref:using_linux.adoc#text-editors[editor], and run it as a Python script from the command line. Just navigate to the directory the file is saved in (use `cd` and `ls` for guidance) and run with `python3`, e.g. `python3 hello.py`.
+You can write a Python file in a standard editor, and run it as a Python script from the command line. Just navigate to the directory the file is saved in (use `cd` and `ls` for guidance) and run with `python3`, e.g. `python3 hello.py`.
 
 image::images/run-python.png[Python command line]
 
