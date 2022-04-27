@@ -56,6 +56,8 @@ include::camera/timelapse.adoc[]
 
 include::camera/gstreamer.adoc[]
 
+include::camera/qt.adoc[]
+
 include::camera/v4l2.adoc[]
 
 include::camera/csi-2-usage.adoc[]
