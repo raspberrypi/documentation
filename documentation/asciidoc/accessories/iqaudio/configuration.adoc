@@ -1,0 +1,134 @@
+== Configuration
+
+All our latest full size audio boards include a pre-programmed EEPROM. This allows Raspberry Pi
+OS to auto detect and auto configure itself allowing the IQaudio boards to be plug and play.
+
+If you need to configure Raspberry Pi OS yourself, you can edit the boot configuration file (found at
+`/boot/config.txt`) to manually add the appropriate device-tree overlay:
+
+|===
+| Board | *`/boot/config.txt`*
+
+| DAC Pro | `dtoverlay=iqaudio-dacplus`
+| DAC{plus} | `dtoverlay=iqaudio-dacplus`
+| DigiAMP{plus} | `dtoverlay=iqaudio-dacplusdtoverlay=iqaudio-dacplus,unmute_amp` or `dtoverlay=iqaudio-dacplus,auto_mute_amp`
+| Codec Zero | `dtoverlay=iqaudio-codec`
+|===
+
+=== Disabling on-board audio
+
+To make your IQaudio sound card the primary audio device in Raspberry Pi OS you will need to
+disable the Raspberry Pi’s on-board audio card. This is done simply by commenting out the
+`dtparam=audio=on`device tree parameter on your sd card’s `/boot/config.txt` file by placing a `# at the
+start of the line, saving the file and rebooting your Pi.
+
+``/boot/config.txt`` should have the following entry to disable the Pi’s on-board sound card.
+
+----
+#dtparam=audio=on
+----
+
+=== Headless software
+
+Many of the software packages used with the Raspberry Pi simply turn the Pi into a “Headless” endpoint. That is to say that it doesn't need, or expect, a screen/display to be physically attached to the Raspberry Pi’s HDMI socket
+
+So if there’s no screen how do you control it?
+
+Well in some cases you don’t need to do anything with the Pi at all. Take the https://roonlabs.com/[RoonLabs] images, that
+turns the Raspberry Pi into a Roon Certified end-point. The Pi is then controlled form the RoonLabs
+PC/Mac application which connects to and plays music through the IQaudio sound card on your
+Raspberry Pi. No screen needs to be attached to the Pi itself.
+
+Other “headless” applications install a web server onto the Pi, so to control it you simply open a
+browser window on your PC / Mac / Tablet or similar and interact with the Pi based application
+through a web page. 
+
+NOTE: Applications such as https://www.max2play.com/en/[Max2Play], https://moodeaudio.org/[MoodeAudio], https://volumio.com/en/[Volumio] and https://www.runeaudio.com/[RuneAudio] work.
+this way.
+
+NOTE: Most audio applications assume they are the only thing running on the Pi so most require a dedicated SD card. The
+applications are normally distributed as a compressed `.img` file (likely a `.zip` or `.gz` file) and this `.img`
+file will need to be written to the Pi’s SD card to allow the Pi to boot.
+
+=== Attaching the HAT
+
+The IQaudio range of sound cards attach to the Raspberry Pi’s 2x20 way pin header (GPIO header).
+They are designed to be supported on the Pi using the supplied PCB standoffs and screws. In
+general no soldering is required to the IQaudio boards for normal operation.
+
+The IQaudio range of boards are normally supplied with the necessary mounting hardware (PCB
+spacers and screws), these are for our latest low profile boards 4x 9mm PCB spacers and 8x M2.5
+screws. If additional parts (such as 2piece speaker connectors) are required these are normally
+provided too.
+
+image::images/hat.png[width="80%"]
+
+The PCB spacers should be screwed (finger tight only) to the Raspberry Pi before adding the IQaudio
+board. The remaining screws are then screwed into the spacers from above.
+
+=== Codec Zero Configuration
+
+The IQaudio Codec Zero board uses the Dialog Semiconductor DA7212 codec. The DA7212 allows
+the recording of audio from the board’s built in MEMS microphone, from stereo Phono sockets (AUX
+IN), 2x mono external Electret microphones and playback through stereo Phono sockets (AUX OUT)
+and mono speaker connector.
+
+Each input and output device has its own “mixer” allowing the audio levels / volume to be adjusted
+independently. Within the codec itself other mixers / switches exist to allow the output to be Mono’d
+for single speaker output, signals may also be inverted and there is a 5 band Equaliser to adjust
+certain frequency bands. These settings can be controlled through alsamixer interactively or
+programatically.
+
+It is important to note that the AUX IN and AUX OUT are both 1vRMS. It may be necessary to adjust
+the AUX IN’s mixer to ensure the input signal doesn’t saturate the ADCs. (Analogue to Digital
+Convertors). Similarly, the output mixers may been to be adjusted to get the best possible output.
+
+There is a set of preconfigured scripts (loadable ALSA settings) available on GitHub. https://github.com/iqaudio/Pi-Codec.
+
+These cover several use cases such as:
+ 
+* Mono MEMS mic recording, mono speaker playback
+* Mono MEMS mic recording, mono AUX OUT playback
+* Stereo AUX IN recording, stereo AUX OUT playback
+* Stereo MIC1/MIC2 recording, stereo AUX OUT playback
+
+NOTE: THE CODEC BOARD’S DA7212 CHIP NEEDS TO KNOW WHAT IS INPUT AND WHAT IS
+OUTPUT AT EACH POWER CYCLE FOR IT TO OPERATE SUCCESSFULLY. We suggest your
+application does this at startup or you add a suitable configuration to the `/etc/rc.local` file. 
+
+=== Muting and unmuting the DigiAMP{plus}
+
+The DigiAMP{plus} MUTE state is toggled by GPIO22 on the Raspberry Pi. The latest IQaudio device tree
+supports the unmute of the DigiAMP{plus} through additional parameters.
+
+Firstly a "one-shot" unmute when kernel module loads.
+
+----
+dtoverlay=iqaudio-dacplus,unmute_amp
+----
+
+Unmute amp when ALSA device opened by a client. Mute, with 5 second delay
+when ALSA device closed. (Re-opening the device within the 5 second close
+window, will cancel mute.)
+
+----
+dtoverlay=iqaudio-dacplus,auto_mute_amp
+----
+
+If you do not want to control Mute state through device tree then you can also script your own
+solution. 
+
+The amp will startup MUTED `to unmute the amp.
+
+----
+$ sudo sh -c "echo 22 > /sys/class/gpio/export"
+$ sudo sh -c "echo out >/sys/class/gpio/gpio22/direction"
+$ sudo sh -c "echo 1 >/sys/class/gpio/gpio22/value"
+----
+
+to mute the amp once more.
+
+----
+$ sudo sh -c "echo 0 >/sys/class/gpio/gpio22/value"
+----
+

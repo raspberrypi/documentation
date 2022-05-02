@@ -1,0 +1,21 @@
+=== DAC{plus}
+
+IQaudio DAC{plus} is an audio output HAT for all generations of Raspberry Pi from Raspberry Pi 1 Model B{plus} onwards.
+
+* 24‑bit 192kHz high-resolution digital audio
+* Texas Instruments PCM5122 DAC to deliver stereo analogue audio to a pair of phono connectors
+* Dedicated headphone amplifier.
+
+image::images/dac_plus.png[width="80%"]
+
+NOTE: The DAC{plus} is a HAT compliant add-on accessory for the Raspberry Pi A{plus}/B{plus}/RPi2/RPi3 or PRi4.
+
+The DAC{plus} uses the Texas Instruments PCM5122 DAC to deliver analogue audio to the DAC{plus}’s
+Phono connectors. The PI-DAC{plus} also supports a dedicated headphone amplifier.
+
+The DAC{plus} can be connected to the Raspberry Pi’s 40-pin header without any additional
+soldering. The DAC{plus} is powered by the Raspberry Pi.
+
+P1:: Analogue out (0..2VRMS), carries GPIO27, MUTE signal (headphone detect), Left and Right
+Audio and Left and Right Ground.
+P6:: Headphone socket signals (pin1: LEFT, 2:GROUND, 3: RIGHT, 4:GROUND, 5:DETECT)

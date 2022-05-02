@@ -1,0 +1,40 @@
+== Hardware information
+
+=== GPIO usage / Pin headers
+
+The IQaudio range of sound cards for the Raspberry Pi take advantage of a number of Pi signals in
+order to operate successfully. Some of these signals are solely for the use of the IQaudio board and
+some can be shared with other peripherals, sensors, etc.
+
+We expect the following Raspberry Pi GPIO to be used by IQaudio audio boards
+
+* ALL POWER PINS
+* ALL GROUND PINS
+* GPIO 2/3 (I2C)
+* GPIO 18/19/20/21 (I2S)
+
+If appropriate then the following are also used
+
+* GPIO 22 (DigiAMP+ mute / unmute support)
+* GPIO 23/24 for Rotary Encoder (physical volume control) or status LED (Codec Zero)
+* GPIO 25 for the IR Sensor.
+* GPIO 27 for the Rotary Encoder push switch / Code Zero switch
+
+=== DAC PRO, DAC{plus}, DigiAMP{plus}, Codec Zero
+
+image::images/pin_table.png[width="80%"]
+
+The DAC PRO, DAC{plus}, DigiAMP{plus} re-expose the Raspberry Pi signals allowing additional sensors etc
+to be added easily. Please note that some signals are for exclusive use (I2S and EEPROM) for some
+of our boards, others such as I2C can be shared across multiple boards.
+
+image::images/pin_out.png[width="80%"]
+
+=== Adding a rotary encoder
+
+Sample software that converts physical rotation to ALSA audio volume commands is available on GitHub: https://www.github.com/iqaudio/tools.
+
+The recommended pins / GPIO to use when adding a Rotary Encoder as a physical volume control. With the rotary encoder shaft facing you and pins facing downwards:
+
+image::images/rotary.png[width="80%"]
+

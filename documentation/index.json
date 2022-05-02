@@ -121,6 +121,12 @@
                     "subpath": "tv-hat.adoc"
                 },
                 {
+                    "title": "IQ Audio",
+                    "description": "Our range of audio HATs",
+                    "image": "full-sized/Audio-HATs.png",
+                    "subpath": "iqaudio.adoc"
+                },
+                {
                     "title": "Designing a HAT",
                     "description": "Information on the HAT specification",
                     "image": "full-sized/Designing-a-HAT.png",

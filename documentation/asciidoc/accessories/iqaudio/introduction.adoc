@@ -1,0 +1,49 @@
+== Overview of IQAudio products
+
+IQaudio sound cards are all designed to work with the current Raspberry Pi and those that have a
+40way male GPIO pin header. This includes Raspberry Pi 4B, 3B{plus}, 3A{plus}, 3, Zero etc. 
+
+|===
+5+| *High-Resolution Audio Playback* 
+
+| | *DAC Pro* | *DAC{plus}* | *DigiAMP{plus}* | *Codec Zero*
+
+| 24-bit depth | ✓ | ✓ | ✓ | ✓
+| HD Audio (96kHz) | ✓ | ✓ | ✓ | ✓
+| Full HD Audio (192kHz) | ✓ | ✓ | ✓ | 
+|===
+
+Each IQaudio sound card has a specific purpose and has been designed to integrate with your
+existing HiFi / audio or Raspberry Pi equipment. BEST audio playback is from our DAC PRO, DAC+
+and DigiAMP+ boards. All support 24bit depth and 192kHz (Full HD Audio).
+
+|===
+| *Board* | *Line Out (RCA)* | *Balanced (XLR)* | *Stereo Speakers (2×35W)* | *Mono Speaker (1.2W)* | *Headphones* | *Aux In 1vRMS* | *Aux Out 1vRMS* | *Ext Mic* | *Built-in Mic*
+
+| DAC Pro | ✓ | ✓ (XLR Board) | | | ✓ |  | | | 
+| DAC{plus} | ✓ | | | | ✓ | | | | 
+| DigiAMP{plus} | | | ✓ | | | | | | 
+| Codec Zero | | | | ✓ (Mono) | | ✓ (No Fit) | ✓ (No Fit) | ✓ (Electret) | ✓ 
+|===
+
+Line Out:: A double Phono/RCA connector - Normally Red / White in colour. This output is a variable
+analogue signal (0..2vRMS) and connect to your existing HiFi (pre-amp or amplifier) or can be used
+to drive Active speakers (with their own amplifier built in).
+Balanced Out:: An XLR connector - Normally a 3 pin male connector, this is used in Studio and some
+hi-end hifi systems. It can also be used to drive ACTIVE “monitor” speakers as used at discos or on
+stage.
+STEREO Speakers:: Screw terminals - These are normal HiFi speakers (from bookshelf to floor
+standing), normally with 2 or 3 drive units, where the signal is filtered to each drive unit by an internal
+cross over within the speaker cabinet. These are known as PASSIVE speakers.
+MONO Speaker:: Screw terminal - Single drive unit speaker, as found in a transistor radio or similar.
+Headphones:: 3.5mm jack socket. Normally a tip/ring/ground (3pin headphone) delivering stereo
+audio to a set of normal headphones. Our headphone amplifiers on the IQaudio DAC boards can
+drive up to 80/90ohm impedance headphones. The headphone output of the Codec+ is also aux out.
+Aux In:: A double Phono/RCA connector or 3.5mm socket. Accepts analogue audio up to 1vRMS
+input. Can be used to record audio from a variable analogue source such as phone / tape recorder or
+similar.
+Aux Out:: A double Phono/RCA connector or 3.5mm socket. Delivers analogue audio up to 1vRMS
+output. Can be used to feed audio into an amplifier (but at a reduced volume compared to Line Out)
+Mic In:: a 3.5mm socket for use with an external Electret microphone. Some of our boards have a
+built in MEMS microphone that is disabled when the external microphone jack is inserted into the
+3.5mm socket.

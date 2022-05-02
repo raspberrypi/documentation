@@ -1,0 +1,30 @@
+=== DAC Pro
+
+IQaudio DAC Pro is our highest-fidelity audio output HAT for all generations of Raspberry Pi from Raspberry Pi 1 Model B{plus} onwards.
+
+* Texas Instruments PCM5242 DAC to deliver outstanding signal-to-noise ratio performance
+* supports balanced/differential output in parallel to phono/RCA line level output
+* Includes a dedicated headphone amplifier.
+
+image::images/dac_pro.png[width="80%"]
+
+NOTE: The DAC Pro is a HAT compliant add-on accessory for the Raspberry Pi.
+
+The DAC PRO users the Texas Instruments PCM5242 to deliver outstanding Signal to Noise Ration
+and supports Balanced / Differential out in parallel to Phono / RCA line level output. It also includes a
+dedicated headphone amplifier.
+
+The DAC PRO can be connected to the Raspberry Pi A{plus}/B{plus}/RPi2/RPi3 or PRi4’s 40-pin header
+without any additional soldering. The DAC PRO is powered by the Raspberry Pi.
+
+Component selection and track layout have been in the forefront of our design to ensure noise
+immunity and best possible audio playback with the DAC PRO.
+
+The DAC PRO exposes two 3 pin headers (P7/P9) used by the optional XLR board to provide
+Differential / Balanced output exposed by XLR sockets above the Raspberry Pi’s USB/Ethernet ports.
+
+P1:: Analogue out (0..2VRMS), carries GPIO27, MUTE signal (headphone detect), Left and Right
+Audio and Left and Right Ground.
+P6:: Headphone socket signals (pin1: LEFT, 2:GROUND, 3: RIGHT, 4:GROUND, 5:DETECT)
+P7/9:: Differential (0..4VRMS) output (P7:LEFT, P9: RIGHT)
+P10:: Alternative 5v input, powering the Raspberry Pi in parallel
