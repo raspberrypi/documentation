@@ -28,7 +28,7 @@ jobs:
         with:
           python-version: 3.9
       - name: Install Python dependencies
-        uses: py-actions/py-dependency-install@v2
+        uses: py-actions/py-dependency-install@v3
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
