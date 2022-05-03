@@ -23,7 +23,7 @@ jobs:
           echo "Pull requests based on master can only come from the develop branch of this repository"
           echo "Please check your base branch as it should be develop by default"
           exit 1
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-python@v2
         with:
           python-version: 3.9
