@@ -225,7 +225,7 @@ The maximum exposure times of the three official Raspberry Pi cameras are given 
 | V2 (IMX219)
 | 10
 
-| HQ (IMX417)
+| HQ (IMX477)
 | 230
 |===
 
