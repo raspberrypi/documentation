@@ -6,7 +6,7 @@ An incomplete list of boards using RP2040.
 
 image::images/pico.jpg[]
 
-https://www.raspberrypi.com/products/raspberry-pi-pico/[Raspberry Pi Pico]:: Designed by Raspberry Pi, RP2040 features a dual-core Arm Cortex-M0+ processor with 264KB internal RAM and support for up to 16MB of off-chip Flash. A wide range of flexible I/O options includes I2C, SPI, and — uniquely — Programmable I/O (PIO). These support endless possible applications for this small and affordable package.
+https://www.raspberrypi.com/products/raspberry-pi-pico/[Raspberry Pi Pico]:: Designed by Raspberry Pi, RP2040 features a dual-core Arm Cortex-M0+ processor with 264kB internal RAM and support for up to 16MB of off-chip Flash. A wide range of flexible I/O options includes I2C, SPI, and — uniquely — Programmable I/O (PIO). These support endless possible applications for this small and affordable package.
 
 === Boards from Adafruit
 

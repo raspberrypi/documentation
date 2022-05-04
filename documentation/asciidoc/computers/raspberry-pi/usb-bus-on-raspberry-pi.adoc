@@ -26,7 +26,7 @@ On the Raspberry Pi 4, the USB controller used on previous models is located on 
 
 === Raspberry Pi Zero, 1, 2 and 3
 
-The USB controller on models prior to Raspberry Pi 4 has only a basic level of support for certain devices, which presents a higher software processing overhead. It also supports only one root USB port: all traffic from connected devices is funnelled down this single bus, which operates at a maximum speed of 480mbps.
+The USB controller on models prior to Raspberry Pi 4 has only a basic level of support for certain devices, which presents a higher software processing overhead. It also supports only one root USB port: all traffic from connected devices is funnelled down this single bus, which operates at a maximum speed of 480Mbps.
 
 The USB 2.0 specification defines three device speeds - low, full and high. Most mice and keyboards are low speed, most USB sound devices are full speed and most video devices (webcams or video capture) are high speed.
 
