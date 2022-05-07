@@ -1,4 +1,4 @@
-== The `.bashrc ` File
+== The `.bashrc` File
 
 In your home folder you will find a hidden file called `.bashrc` which contains some user configuration options. You can edit this file to suit your needs. Changes made in this file will be actioned the next time a terminal is opened, since that is when the `.bashrc` file is read.
 

@@ -504,6 +504,12 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 2GB
 | Sony UK
 
+| b03115
+| 4B
+| 1.5
+| 2GB
+| Sony UK
+
 | c03111
 | 4B
 | 1.1
@@ -522,9 +528,21 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 4GB
 | Sony UK
 
+| c03115
+| 4B
+| 1.5
+| 4GB
+| Sony UK
+
 | d03114
 | 4B
 | 1.4
+| 8GB
+| Sony UK
+
+| d03115
+| 4B
+| 1.5
 | 8GB
 | Sony UK
 

@@ -1,0 +1,22 @@
+=== Using _libcamera_ and _Qt_ together
+
+_Qt_ is a popular application framework and GUI toolkit, and indeed _libcamera-apps_ optionally makes use of it to implement a camera preview window.
+
+However, _Qt_ defines certain symbols as macros in the global namespace (such as `slot` and `emit`) and this causes errors when including _libcamera_ files. The problem is common to all platforms trying to use both _Qt_ and _libcamera_ and not specific to Raspberry Pi. Nonetheless we suggest that developers experiencing difficulties try the following workarounds.
+
+1. _libcamera_ include files, or files that include _libcamera_ files (such as _libcamera-apps_ files), should be listed before any _Qt_ header files where possible.
+
+2. If you do need to mix your Qt application files with libcamera includes, replace `signals:` with `Q_SIGNALS:`, `slots:` with `Q_SLOTS:`, `emit` with `Q_EMIT` and `foreach` with `Q_FOREACH`.
+
+3. Before any _libcamera_ include files, add
++
+----
+#undef signals
+#undef slots
+#undef emit
+#undef foreach
+----
+
+4. If you are using _qmake_, add `CONFIG += no_keywords` to the project file. If using _cmake_, add `SET(QT_NO_KEYWORDS ON)`.
+
+We are not aware of any plans for the underlying library problems to be addressed.
