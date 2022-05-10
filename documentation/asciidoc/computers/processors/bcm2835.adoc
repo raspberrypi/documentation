@@ -1,8 +1,8 @@
 == BCM2835
 
-The BCM2835 is the Broadcom chip used in the Raspberry Pi 1 Models A, A+, B, B+, the Raspberry Pi Zero, the Raspberry Pi Zero W, and the Raspberry Pi Compute Module 1. Some details of the chip can be found in the https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf[Peripheral specification] document. It contains a single core ARM1176JZF-S processor.
+The BCM2835 is the Broadcom chip used in the Raspberry Pi 1 Models A, A+, B, B+, the Raspberry Pi Zero, the Raspberry Pi Zero W, and the Raspberry Pi Compute Module 1. Some details of the chip can be found in the https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf[peripheral specification] document. It contains a single-core ARM1176JZF-S processor.
 
-NOTE: This document contains a number of errors. However there is a list of currently known https://elinux.org/BCM2835_datasheet_errata[errata].
+NOTE: The peripheral specification document contains a number of errors. However there is a list of currently known https://elinux.org/BCM2835_datasheet_errata[errata].
 
 Other information regarding the processor can be found in the following documents;
 
