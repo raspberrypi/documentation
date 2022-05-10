@@ -1,6 +1,6 @@
 == RP3A0
 
-The Raspberry Pi RP3A0 is our first System-in-Package (SiP) consisting of a Broadcom BCM2710A1 — which is the silicon die packaged inside the Broadcom xref:processors.adoc#bcm2837[BCM2837] chip which is used on the xref:raspberry-pi.adoc#raspberry-pi-3-model-b-2[Raspberry Pi 3] — along with 512 MB of DRAM. 
+The Raspberry Pi RP3A0 is our first System-in-Package (SiP) consisting of a Broadcom BCM2710A1 — which is the silicon die packaged inside the Broadcom xref:processors.adoc#bcm2837[BCM2837] chip which is used on the xref:raspberry-pi.adoc#raspberry-pi-3-model-b-2[Raspberry Pi 3] — along with 512MB of DRAM. 
 
 It is used by the xref:raspberry-pi.adoc#raspberry-pi-zero-2-w[Raspberry Pi Zero 2 W].
 
