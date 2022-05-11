@@ -337,6 +337,8 @@ To enable network install, add `NET_INSTALL_ENABLED=1`, or to disable network in
 
 This setting is ignored and network install is disabled if `DISABLE_HDMI=1` is set.
 
+In order to detect the keyboard network install must initialise the USB controller and enumerate devices. This increases boot time by approximately 1 second so it may be advantageous to disable network install in some embedded applications.
+
 Default: `1` on Raspberry Pi 4 and Raspberry Pi 400, and `0` on Compute Module 4.
 
 [[NET_INSTALL_KEYBOARD_WAIT]]
@@ -386,6 +388,19 @@ NETCONSOLE=6665@169.254.1.1/,6666@/
 
 Default: ""  (not enabled) +
 Max length: 32 characters
+
+[[PARTITION]]
+==== PARTITION
+
+The `PARTITION` option may be used to specify the boot partition number if it has not explicitly been set by the `reboot` command (e.g. `sudo reboot N`) or by `boot_partition=N` in `autoboot.txt`.
+This could be used to boot from a rescue partition if the user presses a button.
+----
+# Boot from partition 2 if GPIO 7 is pulled low
+[gpio7=0]
+PARTITION=2
+----
+
+Default: 0
 
 [[USB_MSD_EXCLUDE_VID_PID]]
 ==== USB_MSD_EXCLUDE_VID_PID
