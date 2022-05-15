@@ -1,62 +1,5 @@
 == Video Options
 
-=== Composite Video Mode
-
-==== `sdtv_mode`
-
-The `sdtv_mode` command defines the TV standard used for composite video output. On the original Raspberry Pi, composite video is output on the RCA socket. On other Raspberry Pis, except for Raspberry Pi Zero and Compute Module, composite video is output along with sound on the 4 pole TRRS ("headphone") socket. On the Raspberry Pi Zero, there is an unpopulated header labelled "TV" which outputs composite video. On the Compute Module, composite video is available via the TVDAC pin. The default value of `sdtv_mode` is `0`.
-
-|===
-| sdtv_mode | result
-
-| 0
-| Normal NTSC
-
-| 1
-| Japanese version of NTSC -- no pedestal
-
-| 2
-| Normal PAL
-
-| 3
-| Brazilian version of PAL -- 525/60 rather than 625/50, different subcarrier
-
-| 16
-| Progressive scan NTSC
-
-| 18
-| Progressive scan PAL
-|===
-
-==== `sdtv_aspect`
-
-The `sdtv_aspect` command defines the aspect ratio for composite video output. The default value is `1`.
-
-|===
-| sdtv_aspect | result
-
-| 1
-| 4:3
-
-| 2
-| 14:9
-
-| 3
-| 16:9
-|===
-
-==== `sdtv_disable_colourburst`
-
-Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
-
-==== `enable_tvout` (Raspberry Pi 4 Model B Only)
-
-On the Raspberry Pi 4, composite output is disabled by default, due to the way the internal clocks are interrelated and allocated. Because composite video requires a very specific clock, setting that clock to the required speed on the Raspberry Pi 4 means that other clocks connected to it are detrimentally affected, which slightly slows down the entire system. Since composite video is a less commonly used function, we decided to disable it by default to prevent this system slowdown.
-
-To enable composite output, use the `enable_tvout=1` option. As described above, this will detrimentally affect performance to a small degree.
-
-On older Raspberry Pi models, the composite behaviour remains the same.
-
 === HDMI Mode
 
 NOTE: Because the Raspberry Pi 4 and Raspberry Pi 400 have two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found in the HDMI sub-section of the xref:config_txt.adoc#conditional-filters[conditionals section] of the documentation.
@@ -1518,6 +1461,63 @@ hdmi_drive=2
 ----
 
 This may not work if your monitor does not support standard CVT timings.
+
+=== Composite Video Mode
+
+==== `sdtv_mode`
+
+The `sdtv_mode` command defines the TV standard used for composite video output. On most models of Raspberry Pi, composite is output on the 3.5mm jack. 
+
+|===
+| sdtv_mode | result
+
+| 0 (default)
+| Normal NTSC
+
+| 1
+| Japanese version of NTSC -- no pedestal
+
+| 2
+| Normal PAL
+
+| 3
+| Brazilian version of PAL -- 525/60 rather than 625/50, different subcarrier
+
+| 16
+| Progressive scan NTSC
+
+| 18
+| Progressive scan PAL
+|===
+
+==== `sdtv_aspect`
+
+The `sdtv_aspect` command defines the aspect ratio for composite video output. The default value is `1`.
+
+|===
+| sdtv_aspect | result
+
+| 1
+| 4:3
+
+| 2
+| 14:9
+
+| 3
+| 16:9
+|===
+
+==== `sdtv_disable_colourburst`
+
+Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
+
+==== `enable_tvout` (Raspberry Pi 4 Model B Only)
+
+On the Raspberry Pi 4, composite output is disabled by default, due to the way the internal clocks are interrelated and allocated. Because composite video requires a very specific clock, setting that clock to the required speed on the Raspberry Pi 4 means that other clocks connected to it are detrimentally affected, which slightly slows down the entire system. Since composite video is a less commonly used function, we decided to disable it by default to prevent this system slowdown.
+
+To enable composite output, use the `enable_tvout=1` option. As described above, this will detrimentally affect performance to a small degree.
+
+On older Raspberry Pi models, the composite behaviour remains the same.
 
 === LCD Displays and Touchscreens
 
