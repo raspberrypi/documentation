@@ -61,6 +61,8 @@ $ brew install ruby@2.7
 If you're using `csh` or `tcsh` add the following lines to your `.cshrc` or `.tcshrc`,
 
 ```
+setenv PATH /usr/local/bin:/usr/local/sbin:$PATH
+
 setenv PATH /usr/local/opt/ruby/bin:${PATH}
 setenv PATH ${PATH}:/usr/local/lib/ruby/gems/2.7.0/bin
 setenv LDFLAGS -L/usr/local/opt/ruby@2.7/lib
@@ -71,6 +73,8 @@ setenv PKG_CONFIG_PATH /usr/local/opt/ruby@2.7/lib/pkgconfig
 or if you're using `bash` add the following lines to your `.bash_profile`,
 
 ```
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="$PATH:/usr/local/lib/ruby/gems/2.7.0/bin"
 export PATH="/usr/local/opt/ruby@2.7/bin:$PATH"
@@ -78,6 +82,8 @@ export LDFLAGS="-L/usr/local/opt/ruby@2.7/lib"
 export CPPFLAGS="-I/usr/local/opt/ruby@2.7/include"
 export PKG_CONFIG_PATH="/usr/local/opt/ruby@2.7/lib/pkgconfig"
 ```
+
+and then open a new Terminal window to make sure you're using the right version of Python and Ruby.
 
 ##### Install Dependencies
 
