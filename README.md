@@ -56,6 +56,8 @@ $ brew install ruby@2.7
 
 **NOTE:** Homebrew defaults to Ruby 3.0 which is incompatible with Asciidoctor.
 
+**IMPORTANT:** Homebrew has problems using `/bin/zsh`, you may have to change your default shell to `/bin/bash`.
+
 ##### Set up Homebrew Version of Ruby
 
 If you're using `csh` or `tcsh` add the following lines to your `.cshrc` or `.tcshrc`,
@@ -82,6 +84,7 @@ export LDFLAGS="-L/usr/local/opt/ruby@2.7/lib"
 export CPPFLAGS="-I/usr/local/opt/ruby@2.7/include"
 export PKG_CONFIG_PATH="/usr/local/opt/ruby@2.7/lib/pkgconfig"
 ```
+NOTE: If you are running macOS on an Apple Silicon based Mac, rather than an Intel Mac, substitute `/opt/homebrew/` for `/usr/local` in the lines dealing with `ruby@2.7` in the above block.
 
 and then open a new Terminal window to make sure you're using the right version of Python and Ruby.
 
