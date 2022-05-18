@@ -826,13 +826,13 @@ These values are valid if `hdmi_group=1` (CEA):
 | 4096x2160
 | 50Hz
 | 256:135
-| Pi 4<sup>1</sup>
+| Pi 4^1^
 
 | 102
 | 4096x2160
 | 60Hz
 | 256:135
-| Pi 4<sup>1</sup>
+| Pi 4^1^
 
 | 103
 | 2160p
