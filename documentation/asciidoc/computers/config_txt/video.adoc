@@ -1606,7 +1606,7 @@ Setting `hdmi_force_hotplug` to `1` pretends that the HDMI hotplug signal is ass
 
 ==== `hdmi_ignore_hotplug`
 
-Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. The HDMI output will therefore be disabled, even if a monitor is connected.
+Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. HDMI output will therefore be disabled, even if a monitor is connected.
 
 ==== `overscan_left`
 
