@@ -9,7 +9,7 @@ libcamera-raw -t 2000 -o test.raw
 
 The raw frames are dumped with no formatting information at all, one directly after another. The application prints the pixel format and image dimensions to the terminal window so that the user can know how to interpret the pixel data.
 
-By default the raw frames are saved in a single (potentially very large) file. As we saw previously, the `--segement` option can be used conveniently to direct each to a separate file.
+By default the raw frames are saved in a single (potentially very large) file. As we saw previously, the `--segment` option can be used conveniently to direct each to a separate file.
 [,bash]
 ----
 libcamera-raw -t 2000 --segment 1 -o test%05d.raw
