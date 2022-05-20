@@ -826,13 +826,13 @@ These values are valid if `hdmi_group=1` (CEA):
 | 4096x2160
 | 50Hz
 | 256:135
-| Pi 4<<super1>>
+| Pi 4<<needsoverclock>>
 
 | 102
 | 4096x2160
 | 60Hz
 | 256:135
-| Pi 4<<super1>>
+| Pi 4<<needsoverclock>>
 
 | 103
 | 2160p
@@ -865,7 +865,7 @@ These values are valid if `hdmi_group=1` (CEA):
 | Pi 4
 |===
 
-[[super1,^**1**^]] **1.** Only available with an overclocked core:set `core_freq_min=600` and `core_freq=600`. See xref:config_txt.adoc#overclocking[overclocking].
+[[needsoverclock,^**1**^]] **1.** Only available with an overclocked core frequency: set `core_freq_min=600` and `core_freq=600`. See xref:config_txt.adoc#overclocking[overclocking].
 
 Pixel doubling and quadrupling indicates a higher clock rate, with each pixel repeated two or four times respectively.
 
