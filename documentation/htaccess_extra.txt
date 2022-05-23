@@ -19,7 +19,6 @@ RedirectMatch 302 "^/documentation/installation/" "/documentation/computers/gett
 RedirectMatch 302 "^/documentation/linux/kernel/" "/documentation/computers/linux_kernel.html"
 RedirectMatch 302 "^/documentation/linux/software/libcamera/" "/documentation/accessories/camera.html"
 RedirectMatch 302 "^/documentation/linux/software/" "/documentation/computers/os.html"
-RedirectMatch 302 "^/documentation/linux/" "/documentation/computers/using_linux.html"
 RedirectMatch 302 "^/documentation/raspbian/" "/documentation/computers/os.html"
 RedirectMatch 302 "^/documentation/remote-access/" "/documentation/computers/remote-access.html"
 RedirectMatch 302 "^/documentation/setup/" "/documentation/computers/getting-started.html"
