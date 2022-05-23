@@ -2,7 +2,7 @@
 
 === Installing the Python Library
 
-Install the Build HAT Python library. Open xref:../computers/using_linux.adoc#terminal[a Terminal window] and type,
+Install the Build HAT Python library. Open a Terminal window and type,
 
 [source]
 ----

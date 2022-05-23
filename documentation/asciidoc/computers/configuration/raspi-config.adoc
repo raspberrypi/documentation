@@ -43,7 +43,9 @@ Specify the audio output destination.
 [[change-user-password]]
 ===== Password
 
-The default user on Raspberry Pi OS is `pi` with the password `raspberry`. You can change that here. Read about other xref:using_linux.adoc#linux-users[users].
+You can change the 'default' user password.
+
+NOTE: Until recently the default user on Raspberry Pi OS was `pi` with the password `raspberry`. The default user is now set on first boot using a configuration wizard.
 
 [[hostname]]
 ===== Hostname
