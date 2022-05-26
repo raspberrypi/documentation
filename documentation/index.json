@@ -121,7 +121,7 @@
                     "subpath": "tv-hat.adoc"
                 },
                 {
-                    "title": "IQ Audio",
+                    "title": "Raspberry Pi Audio",
                     "description": "Our range of audio HATs",
                     "image": "full-sized/Audio-HATs.png",
                     "subpath": "iqaudio.adoc"
