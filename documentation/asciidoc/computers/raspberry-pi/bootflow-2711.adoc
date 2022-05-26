@@ -86,3 +86,6 @@ sudo reboot '0 tryboot'
 
 `tryboot` is supported on all Raspberry Pi models, however, on Raspberry Pi 4 Model B revision 1.0 and 1.1 the EEPROM must not be write protected. This is because older Raspberry Pi 4B devices have to reset the power supply (losing the tryboot state) so this is stored inside the EEPROM instead.
 
+If `secure-boot` is enabled then `tryboot` mode will cause `tryboot.img` to be loaded instead of `boot.img`.
+
+

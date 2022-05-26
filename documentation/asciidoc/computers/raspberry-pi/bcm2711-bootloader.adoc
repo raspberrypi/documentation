@@ -337,6 +337,8 @@ To enable network install, add `NET_INSTALL_ENABLED=1`, or to disable network in
 
 This setting is ignored and network install is disabled if `DISABLE_HDMI=1` is set.
 
+In order to detect the keyboard, network install must initialise the USB controller and enumerate devices. This increases boot time by approximately 1 second so it may be advantageous to disable network install in some embedded applications.
+
 Default: `1` on Raspberry Pi 4 and Raspberry Pi 400, and `0` on Compute Module 4.
 
 [[NET_INSTALL_KEYBOARD_WAIT]]
@@ -386,6 +388,19 @@ NETCONSOLE=6665@169.254.1.1/,6666@/
 
 Default: ""  (not enabled) +
 Max length: 32 characters
+
+[[PARTITION]]
+==== PARTITION
+
+The `PARTITION` option may be used to specify the boot partition number, if it has not explicitly been set by the `reboot` command (e.g. `sudo reboot N`) or by `boot_partition=N` in `autoboot.txt`.
+This could be used to boot from a rescue partition if the user presses a button.
+----
+# Boot from partition 2 if GPIO 7 is pulled low
+[gpio7=0]
+PARTITION=2
+----
+
+Default: 0
 
 [[USB_MSD_EXCLUDE_VID_PID]]
 ==== USB_MSD_EXCLUDE_VID_PID
@@ -474,6 +489,13 @@ XHCI_DEBUG=0x3
 
 Default: `0x0` (no USB debug messages enabled)
 
+[[config_txt]]
+==== config.txt section
+
+After reading `config.txt` the GPU firmware `start4.elf` reads the bootloader EEPROM config and checks for a section called `[config.txt]`. If the `[config.txt]` section exists then the contents from the start of this section to the end of the file is appended in memory, to the contents of the `config.txt` file read from the boot partition.  This can be used to automatically apply settings to every operating system, for example, dtoverlays.
+
+WARNING: If an invalid configuration which causes boot to fail is specified then the bootloader EEPROM will have to be re-flashed.
+
 === Configuration Properties in `config.txt`
 
 [[boot_ramdisk]]
@@ -489,7 +511,7 @@ The primary purpose of `boot_ramdisk` is to support `secure-boot`, however, unsi
 
 For more information about `secure-boot` and creating `boot.img` files please see https://github.com/raspberrypi/usbboot/blob/master/Readme.md[USBBOOT]
 
-Default: `0` 
+Default: `0`
 
 [[boot_load_flags]]
 ==== boot_load_flags
@@ -506,6 +528,13 @@ Default: `0x0`
 If `uart_2ndstage` is `1` then enable debug logging to the UART. This option also automatically enables UART logging in `start.elf`. This is also described on the xref:config_txt.adoc#boot-options[Boot options] page.
 
 The `BOOT_UART` property also enables bootloader UART logging but does not enable UART logging in `start.elf` unless `uart_2ndstage=1` is also set.
+
+Default: `0`
+
+[[erase_eeprom]]
+==== erase_eeprom
+
+If `erase_eeprom` is set to `1` then `recovery.bin` will erase the entire SPI EEPROM instead of flashing the bootloader image. This property has no effect during a normal boot.
 
 Default: `0`
 
@@ -544,12 +573,36 @@ This option may be set to 0 to block self-update without requiring the EEPROM co
 
 Default: `1`
 
-[[config_txt]]
-==== config.txt section
+=== Secure Boot configuration properties in `config.txt`
+The following `config.txt` properties are used to program the `secure-boot` OTP settings. These changes are irreversible and can only be programmed via `RPIBOOT` when flashing the bootloader EEPROM image.  This ensures that `secure-boot` cannot be set remotely or by accidentally inserting a stale SD card image.
 
-After reading `config.txt` the GPU firmware `start4.elf` reads the bootloader EEPROM config and checks for a section called `[config.txt]`. If the `[config.txt]` section exists then the contents from the start of this section to the end of the file is appended in memory, to the contents of the `config.txt` file read from the boot partition.  This can be used to automatically apply settings to every operating system, for example, dtoverlays.
+For more information about enabling `secure-boot` please see the https://github.com/raspberrypi/usbboot/blob/master/Readme.md#secure-boot[secure-boot readme] and the https://github.com/raspberrypi/usbboot/blob/master/secure-boot-example/README.md[secure-boot tutorial] in the https://github.com/raspberrypi/usbboot[USBBOOT] repo.
 
-WARNING: If an invalid configuration which causes boot to fail is specified then the bootloader EEPROM will have to be re-flashed.
+[[program_pubkey]]
+==== program_pubkey
+If this property is set to `1` then `recovery.bin` will write the hash of the public key in the EEPROM image to OTP.  Once set, the bootloader will reject EEPROM images signed with different RSA keys or unsigned images.
+
+Default: `0`
+
+[[revoke_devkey]]
+==== revoke_devkey
+If this property is set to `1` then `recovery.bin` will write a value to OTP that prevents the ROM from loading old versions of the second stage bootloader which do not support `secure-boot`. This prevents `secure-boot` from being turned off by reverting to an older release of the bootloader.
+
+Default: `0`
+
+[[program_rpiboot_gpio]]
+==== program_rpiboot_gpio
+Since there is no dedicated `nRPIBOOT` jumper on Raspberry Pi 4B or Raspberry Pi 400, an alternative GPIO must be used to select `RPIBOOT` mode by pulling the GPIO low. Only one GPIO may be selected and the available options are `2, 4, 5, 7, 8`. This property does not depend on `secure-boot` but please verify that this GPIO configuration does not conflict with any HATs which might pull the GPIO low during boot.
+
+Since for safety this property can only be programmed via `RPIBOOT`, the bootloader EEPROM must first be cleared using `erase_eeprom`. This causes the BCM2711 ROM to failover to `RPIBOOT` mode, which then allows this option to be set.
+
+Default: ``
+
+[[program_jtag_lock]]
+==== program_jtag_lock
+If this property is set to `1` then `recovery.bin` will program an OTP value that prevents VideoCore JTAG from being used. This option requires that `program_pubkey` and `revoke_devkey` are also set. This option can prevent failure-analysis and should only be set after the device has been fully tested.
+
+Default: `0`
 
 [[bootloader_update_stable]]
 === Updating to the LATEST / STABLE bootloader

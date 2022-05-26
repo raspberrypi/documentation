@@ -10,7 +10,7 @@ The BCM2711 chip continues to use the heat spreading technology started with the
 
 *Memory:* Accesses up to 8GB LPDDR4-2400 SDRAM (depending on model)
 
-*Caches:* 32 KB data + 48 KB instruction L1 cache per core. 1MB L2 cache.
+*Caches:* 32kB data + 48kB instruction L1 cache per core. 1MB L2 cache.
 
 *Multimedia:* H.265 (4Kp60 decode); H.264 (1080p60 decode, 1080p30 encode); OpenGL ES, 3.0 graphics
 

@@ -171,7 +171,7 @@ Capture your raw video with raspivid and wrap it in an MP4 container like this:
 
 [,bash]
 ----
-# Capture 30 seconds of raw video at 640x480 and 150kB/s bit rate into a pivideo.h264 file:
+# Capture 30 seconds of raw video at 640x480 and 150kBps bit rate into a pivideo.h264 file:
 raspivid -t 30000 -w 640 -h 480 -fps 25 -b 1200000 -p 0,0,640,480 -o pivideo.h264
 # Wrap the raw video with an MP4 container:
 MP4Box -add pivideo.h264 pivideo.mp4
@@ -945,7 +945,7 @@ Height of resulting video. This should be between 64 and 1080.
 	--bitrate,	-b		Set bitrate
 ----
 
-Use bits per second, so 10Mbits/s would be `-b 10000000`. For H264, 1080p30 a high quality bitrate would be 15Mbits/s or more. Maximum bitrate is 25Mbits/s (`-b 25000000`), but much over 17Mbits/s won't show noticeable improvement at 1080p30.
+Use bits per second, so 10Mbps would be `-b 10000000`. For H264, 1080p30 a high quality bitrate would be 15Mbps or more. Maximum bitrate is 25Mbps (`-b 25000000`), but much over 17Mbps won't show noticeable improvement at 1080p30.
 
 ----
 	--output,	-o		Output filename <filename>
@@ -1308,7 +1308,7 @@ Record a 5s clip with default settings (1080p30):
 raspivid -t 5000 -o video.h264
 ----
 
-Record a 5s clip at a specified bitrate (3.5Mbits/s):
+Record a 5s clip at a specified bitrate (3.5Mbps):
 
 [,bash]
 ----

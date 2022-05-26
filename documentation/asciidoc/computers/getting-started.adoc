@@ -2,15 +2,6 @@ include::getting-started/setting-up.adoc[]
 
 include::getting-started/installing-from-an-image.adoc[]
 
-include::getting-started/configuring.adoc[]
-
 include::getting-started/network-installation.adoc[]
 
-include::getting-started/installing-from-chromeos.adoc[]
-
-include::getting-started/installing-from-linux.adoc[]
-
-include::getting-started/installing-from-mac.adoc[]
-
-include::getting-started/installing-from-windows.adoc[]
-
+include::getting-started/configuring.adoc[]

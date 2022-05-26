@@ -101,7 +101,7 @@ For more information run
 
 ==== Writing to the eMMC (Windows)
 
-After `rpiboot` completes, a new USB mass storage drive will appear in Windows. We recommend following this xref:getting-started.adoc#installing-images-on-windows[guide] and using Win32DiskImager to write images to the drive, rather than trying to use `/dev/sda` etc. from Cygwin.
+After `rpiboot` completes, a new USB mass storage drive will appear in Windows. We recommend using https://www.raspberrypi.com/software/[Raspberry Pi Imager] to write images to the drive.
 
 Make sure J4 (USB SLAVE BOOT ENABLE) / J2 (nRPI_BOOT) is set to the disabled position and/or nothing is plugged into the USB slave port. Power cycling the IO board should now result in the Compute Module booting from eMMC.
 

@@ -31,4 +31,4 @@ Alternatively you can enable it from the terminal using the xref:configuration.a
 
 NOTE: For headless setup, SSH can be enabled by placing a file named `ssh`, without any extension, onto the boot partition of the SD Card. When the Raspberry Pi boots, it looks for the `ssh` file. If it is found, SSH is enabled and the file is deleted. The content of the file does not matter; it could contain text, or nothing at all.
 
-WARNING: When enabling SSH on a Raspberry Pi that may be connected to the internet, you should xref:using_linux.adoc#changing-your-password[change the default password] to ensure that it remains secure.
+WARNING: When enabling SSH on a Raspberry Pi that may be connected to the internet, you should ensure that your password is not easily brute forced.

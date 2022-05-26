@@ -1,6 +1,6 @@
 == Installing the Operating System
 
-Raspberry Pi recommend the use of https://www.raspberrypi.com/software/[Raspberry Pi Imager] to install an operating system on your SD card. You will need another computer with an SD card reader to install the image.
+Raspberry Pi recommend the use of https://www.raspberrypi.com/software/[Raspberry Pi Imager] to install an operating system on to your SD card. You will need another computer with an SD card reader to install the image. Raspberry Pi Imager can be run on another Raspberry Pi, but also works on Microsoft Windows, Apple macOS, and Linux.
 
 NOTE: Before you start, don't forget to check the xref:getting-started.adoc#sd-cards[SD card requirements].
 
@@ -45,7 +45,7 @@ If you are installing Raspberry Pi OS Lite and intend to run it xref:configurati
 
 === Downloading an Image
 
-If you are using a different tool than Raspberry Pi Imager to write to your SD Card, most require you to download the image first, then use the tool to write it to the card. Official images for recommended operating systems are available to download from the Raspberry Pi website https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-32-bit[downloads page]. Alternative operating systems for Raspberry Pi computers are https://www.raspberrypi.com/software/operating-systems/#third-party-software[also available] from some third-party vendors.
+If you are using a different tool than Raspberry Pi Imager to write to your SD Card, most require you to download the image first, then use the tool to write it to the card. Official images for recommended operating systems are available to download from the Raspberry Pi website https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-32-bit[downloads page]. Alternative operating systems for Raspberry Pi computers are also available from some third-party vendors.
 
 You may need to unzip the downloaded file (`.zip`) to get the image file (`.img`) you need to write to the card.
 
