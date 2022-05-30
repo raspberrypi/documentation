@@ -1,7 +1,10 @@
-== Overview of IQAudio products
+== Overview of Raspberry Pi Audio
+ 
+Introducing our range of boards designed to bring high quality audio to your existing Hi-Fi or Raspberry Pi based equipment and projects.
 
-IQaudio sound cards are all designed to work with the current Raspberry Pi and those that have a
-40way male GPIO pin header. This includes Raspberry Pi 4B, 3B{plus}, 3A{plus}, 3, Zero etc. 
+With 4 different boards to choose from all our audio boards will fit any Raspberry Pi utilising a 40-pin GPIO header.
+
+Each board has a specific purpose and set of features. The highest audio quality is from our DAC PRO, DAC{plus} and DigiAMP{plus} boards which support Full HD Audio whilst the Codec Zero supports up to HD Audio and includes a built-in microphone - perfect for those smaller projects.
 
 |===
 5+| *High-Resolution Audio Playback* 
@@ -12,10 +15,6 @@ IQaudio sound cards are all designed to work with the current Raspberry Pi and t
 | HD Audio (96kHz) | ✓ | ✓ | ✓ | ✓
 | Full HD Audio (192kHz) | ✓ | ✓ | ✓ | 
 |===
-
-Each IQaudio sound card has a specific purpose and has been designed to integrate with your
-existing HiFi / audio or Raspberry Pi equipment. BEST audio playback is from our DAC PRO, DAC+
-and DigiAMP+ boards. All support 24bit depth and 192kHz (Full HD Audio).
 
 |===
 | *Board* | *Line Out (RCA)* | *Balanced (XLR)* | *Stereo Speakers (2×35W)* | *Mono Speaker (1.2W)* | *Headphones* | *Aux In 1vRMS* | *Aux Out 1vRMS* | *Ext Mic* | *Built-in Mic*
