@@ -4,17 +4,9 @@ Introducing our range of boards designed to bring high quality audio to your exi
 
 With 4 different boards to choose from all our audio boards will fit any Raspberry Pi utilising a 40-pin GPIO header.
 
-Each board has a specific purpose and set of features. The highest audio quality is from our DAC PRO, DAC{plus} and DigiAMP{plus} boards which support Full HD Audio whilst the Codec Zero supports up to HD Audio and includes a built-in microphone - perfect for those smaller projects.
+Each board has a specific purpose and set of features. The highest audio quality playback is from our DAC PRO, DAC{plus} and DigiAMP{plus} boards which support up to Full HD Audio (192kHz) whilst the Codec Zero supports up to HD Audio (96kHz) and includes a built-in microphone - perfect for those smaller projects.
 
-|===
-5+| *High-Resolution Audio Playback* 
-
-| | *DAC Pro* | *DAC{plus}* | *DigiAMP{plus}* | *Codec Zero*
-
-| 24-bit depth | ✓ | ✓ | ✓ | ✓
-| HD Audio (96kHz) | ✓ | ✓ | ✓ | ✓
-| Full HD Audio (192kHz) | ✓ | ✓ | ✓ | 
-|===
+=== Features at a glance
 
 |===
 | *Board* | *Line Out (RCA)* | *Balanced (XLR)* | *Stereo Speakers (2×35W)* | *Mono Speaker (1.2W)* | *Headphones* | *Aux In 1vRMS* | *Aux Out 1vRMS* | *Ext Mic* | *Built-in Mic*
