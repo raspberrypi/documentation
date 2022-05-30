@@ -11,30 +11,22 @@ Each board has a specific purpose and set of features. The highest audio quality
 |===
 | {set:cellbgcolor:#FFFFFF} | {set:cellbgcolor:#cd2355} *Line Out (RCA)* | *Balanced (XLR)* | *Stereo Speakers (2×35W)* | *Mono Speaker (1.2W)* | *Headphones* | *Aux In 1vRMS* | *Aux Out 1vRMS* | *Ext Mic* | *Built-in Mic*
 
-| {set:cellbgcolor:#cd2355} DAC Pro | {set:cellbgcolor:#FFFFFF} ✓ | ✓ (XLR Board) | | | ✓ |  | | | 
+| {set:cellbgcolor:#cd2355} DAC Pro | {set:cellbgcolor:#FFFFFF} ✓ | ✓  | | | ✓ |  | | | 
 | {set:cellbgcolor:#cd2355} DAC{plus} | {set:cellbgcolor:#FFFFFF}✓ | | | | ✓ | | | | 
 | {set:cellbgcolor:#cd2355} DigiAmp{plus} | {set:cellbgcolor:#FFFFFF} | | ✓ | | | | | | 
-| {set:cellbgcolor:#cd2355} Codec Zero | {set:cellbgcolor:#FFFFFF} | | | ✓ (Mono) | | ✓ (No Fit) | ✓ (No Fit) | ✓ (Electret) | ✓ 
+| {set:cellbgcolor:#cd2355} Codec Zero | {set:cellbgcolor:#FFFFFF} | | | ✓  | | ✓ | ✓ | ✓  | ✓ 
 |===
 
-Line Out:: A double Phono/RCA connector - Normally Red / White in colour. This output is a variable
-analogue signal (0..2vRMS) and connect to your existing HiFi (pre-amp or amplifier) or can be used
-to drive Active speakers (with their own amplifier built in).
-Balanced Out:: An XLR connector - Normally a 3 pin male connector, this is used in Studio and some
-hi-end hifi systems. It can also be used to drive ACTIVE “monitor” speakers as used at discos or on
-stage.
-STEREO Speakers:: Screw terminals - These are normal HiFi speakers (from bookshelf to floor
-standing), normally with 2 or 3 drive units, where the signal is filtered to each drive unit by an internal
-cross over within the speaker cabinet. These are known as PASSIVE speakers.
-MONO Speaker:: Screw terminal - Single drive unit speaker, as found in a transistor radio or similar.
-Headphones:: 3.5mm jack socket. Normally a tip/ring/ground (3pin headphone) delivering stereo
-audio to a set of normal headphones. Our headphone amplifiers on the IQaudio DAC boards can
-drive up to 80/90ohm impedance headphones. The headphone output of the Codec+ is also aux out.
-Aux In:: A double Phono/RCA connector or 3.5mm socket. Accepts analogue audio up to 1vRMS
-input. Can be used to record audio from a variable analogue source such as phone / tape recorder or
-similar.
-Aux Out:: A double Phono/RCA connector or 3.5mm socket. Delivers analogue audio up to 1vRMS
-output. Can be used to feed audio into an amplifier (but at a reduced volume compared to Line Out)
-Mic In:: a 3.5mm socket for use with an external Electret microphone. Some of our boards have a
-built in MEMS microphone that is disabled when the external microphone jack is inserted into the
-3.5mm socket.
+Line Out:: A double Phono/RCA connector - Normally red and white in colour. This output is a variable
+analogue signal (0..2vRMS) and can connect to your existing Hi-Fi (pre-amp or amplifier) or can be used
+to drive active speakers (with their own amplifier built in).
+Balanced Out:: An XLR connector - Normally a 3 pin male connector. This is used in studio and some
+high-end Hi-Fi systems. It can also be used to drive active “monitor” speakers as used at discos or on
+stage directed towards the DJ or performers. 
+STEREO Speakers:: 2 sets of screw terminals. These are for normal Hi-Fi speakers such as bookshelf or floor
+standing. These are known as passive speakers.
+MONO Speaker:: Screw terminal for single drive unit speaker, as found in a transistor radio or similar.
+Headphones:: 3.5mm jack socket delivering stereo audio for a set of normal headphones. Our headphone amplifiers on the DAC boards can drive up to 80/90ohm impedance headphones. The headphone output of the Codec+ is also aux out.
+Aux In:: A double Phono/RCA connector or 3.5mm socket. Accepts analogue audio in up to 1vRMS. This can be used to record audio from a variable analogue source such as a mobile phone, MP3 player or similar.
+Aux Out:: A double Phono/RCA connector or 3.5mm socket. Delivers analogue audio out up to 1vRMS. This can be used to feed audio into an amplifier at a reduced volume compared to Line Out.
+Mic In:: A 3.5mm socket for use with an external Electret microphone. As the Codec Zero has a built in MEMS microphone this is disabled when the external Mic In is used.
