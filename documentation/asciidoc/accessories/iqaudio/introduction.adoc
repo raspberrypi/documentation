@@ -11,10 +11,10 @@ Each board has a specific purpose and set of features. The highest audio quality
 |===
 | {set:cellbgcolor:#FFFFFF} | {set:cellbgcolor:#cd2355} *Line Out (RCA)* | *Balanced Out (XLR)* | *Stereo Speakers* | *Mono Speaker* | *Headphones* | *Aux In 1vRMS* | *Aux Out 1vRMS* | *Ext Mic* | *Built-in Mic*
 
-| {set:cellbgcolor:#cd2355} DAC Pro | {set:cellbgcolor:#FFFFFF} ✓ | ✓ | | | ✓ | | | | 
-| {set:cellbgcolor:#cd2355} DAC{plus} | {set:cellbgcolor:#FFFFFF} ✓ | | | | ✓ | | | | 
-| {set:cellbgcolor:#cd2355} DigiAmp{plus} | {set:cellbgcolor:#FFFFFF} | | ✓ | | | | | | 
-| {set:cellbgcolor:#cd2355} Codec Zero | {set:cellbgcolor:#FFFFFF} | | | ✓ | | ✓ | ✓ | ✓ | ✓ 
+| {set:cellbgcolor:#cd2355} DAC Pro ^| {set:cellbgcolor:#FFFFFF} ✓ ^| ✓ | | ^| ✓ | | | | 
+| {set:cellbgcolor:#cd2355} DAC{plus} ^| {set:cellbgcolor:#FFFFFF} ✓ | | | ^| ✓ | | | | 
+| {set:cellbgcolor:#cd2355} DigiAmp{plus} | {set:cellbgcolor:#FFFFFF} | ^| ✓ | | | | | | 
+| {set:cellbgcolor:#cd2355} Codec Zero | {set:cellbgcolor:#FFFFFF} | | ^| ✓ | ^| ✓ ^| ✓ ^| ✓ ^| ✓ 
 |===
 
 Line Out:: A double Phono/RCA connector - Normally red and white in colour. This output is a variable
