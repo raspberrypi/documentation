@@ -9,12 +9,12 @@ Each board has a specific purpose and set of features. The highest audio quality
 === Features at a glance
 
 |===
-| *Board* | *Line Out (RCA)* | *Balanced (XLR)* | *Stereo Speakers (2×35W)* | *Mono Speaker (1.2W)* | *Headphones* | *Aux In 1vRMS* | *Aux Out 1vRMS* | *Ext Mic* | *Built-in Mic*
+| {set:cellbgcolor:#FFFFFF} | {set:cellbgcolor:#cd2355} *Line Out (RCA)* | *Balanced (XLR)* | *Stereo Speakers (2×35W)* | *Mono Speaker (1.2W)* | *Headphones* | *Aux In 1vRMS* | *Aux Out 1vRMS* | *Ext Mic* | *Built-in Mic*
 
-| DAC Pro | ✓ | ✓ (XLR Board) | | | ✓ |  | | | 
-| DAC{plus} | ✓ | | | | ✓ | | | | 
-| DigiAMP{plus} | | | ✓ | | | | | | 
-| Codec Zero | | | | ✓ (Mono) | | ✓ (No Fit) | ✓ (No Fit) | ✓ (Electret) | ✓ 
+| {set:cellbgcolor:#cd2355} DAC Pro | {set:cellbgcolor:#FFFFFF} ✓ | ✓ (XLR Board) | | | ✓ |  | | | 
+| {set:cellbgcolor:#cd2355} DAC{plus} | {set:cellbgcolor:#FFFFFF}✓ | | | | ✓ | | | | 
+| {set:cellbgcolor:#cd2355} DigiAmp{plus} | {set:cellbgcolor:#FFFFFF} | | ✓ | | | | | | 
+| {set:cellbgcolor:#cd2355} Codec Zero | {set:cellbgcolor:#FFFFFF} | | | ✓ (Mono) | | ✓ (No Fit) | ✓ (No Fit) | ✓ (Electret) | ✓ 
 |===
 
 Line Out:: A double Phono/RCA connector - Normally Red / White in colour. This output is a variable
