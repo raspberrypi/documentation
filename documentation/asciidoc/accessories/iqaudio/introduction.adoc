@@ -23,9 +23,9 @@ to drive active speakers (with their own amplifier built in).
 Balanced Out:: An XLR connector - Normally a 3 pin male connector. This is used in studio and some
 high-end Hi-Fi systems. It can also be used to drive active “monitor” speakers as used at discos or on
 stage directed towards the DJ or performers. 
-STEREO Speakers:: 2 sets of screw terminals for 2 x 25W speakers. These are for normal Hi-Fi speakers such as bookshelf or floor
+Stereo Speakers:: 2 sets of screw terminals for 2 x 25W speakers. These are for normal Hi-Fi speakers such as bookshelf or floor
 standing. These are known as passive speakers.
-MONO Speaker:: Screw terminal for single 1.2W speaker, as found in a transistor radio or similar.
+Mono Speaker:: Screw terminal for single 1.2W speaker, as found in a transistor radio or similar.
 Headphones:: 3.5mm jack socket delivering stereo audio for a set of normal headphones. Our headphone amplifiers on the DAC boards can drive up to 80/90ohm impedance headphones. The headphone output of the Codec+ is also aux out.
 Aux In:: A double Phono/RCA connector or 3.5mm socket. Accepts analogue audio in up to 1vRMS. This can be used to record audio from a variable analogue source such as a mobile phone, MP3 player or similar.
 Aux Out:: A double Phono/RCA connector or 3.5mm socket. Delivers analogue audio out up to 1vRMS. This can be used to feed audio into an amplifier at a reduced volume compared to Line Out.
