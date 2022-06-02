@@ -4,6 +4,8 @@ You can use SSH to connect to your Raspberry Pi from a Linux desktop, another Ra
 
 Open a terminal window on your computer replacing `<IP>` with the IP address of the Raspberry Pi you're trying to connect to,
 
+NOTE: From April 4th 2022 _Raspberry Pi OS installs no longer include the default `pi` user_, there is no replacement. You need to create your own user on first boot. See https://www.raspberrypi.com/news/raspberry-pi-bullseye-update-april-2022/ for more information on why the default user was removed and the various methods to create a user. The instructions below for the user `pi` using password `raspberry` should be repaced with the username and password you created on first boot.
+
 ----
 ssh pi@<IP>
 ----
