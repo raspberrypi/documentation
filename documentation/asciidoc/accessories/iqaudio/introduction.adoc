@@ -18,7 +18,7 @@ Each board has a specific purpose and set of features. The highest audio quality
 |===
 
 Line Out:: A double Phono/RCA connector - Normally red and white in colour. This output is a variable
-analogue signal (0..2vRMS) and can connect to your existing Hi-Fi (pre-amp or amplifier) or can be used
+analogue signal (0..2V RMS) and can connect to your existing Hi-Fi (pre-amp or amplifier) or can be used
 to drive active speakers (with their own amplifier built in).
 Balanced Out:: An XLR connector - Normally a 3 pin male connector. This is used in a studio set-up and some
 high-end Hi-Fi systems. It can also be used to drive active “monitor” speakers as used at discos or on
