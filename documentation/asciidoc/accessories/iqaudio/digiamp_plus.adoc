@@ -1,6 +1,6 @@
 === DigiAMP{plus}
 
-IQAudio DigiAMP{plus} delivers direct connection to passive stereo speakers at up to 2x35wpc with variable output. Ideal for a Raspberry Pi-based hi-fi system.
+Raspberry Pi DigiAMP{plus} delivers direct connection to passive stereo speakers at up to 2x35W with variable output. Ideal for a Raspberry Pi-based Hi-Fi system.
 
 * DigiAMP{plus} must be powered from an external supply, and requires a 12-24V DC power source (the XP Power VEC65US19 power supply is recommended)
 * Uses the Texas Instruments TAS5756M PowerDAC
