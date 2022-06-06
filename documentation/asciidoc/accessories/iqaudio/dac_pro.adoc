@@ -1,6 +1,6 @@
-=== DAC Pro
+=== Raspberry Pi DAC Pro
 
-IQaudio DAC Pro is our highest-fidelity audio output HAT for all generations of Raspberry Pi from Raspberry Pi 1 Model B{plus} onwards.
+Raspberry Pi DAC Pro is our highest-fidelity audio output HAT for all generations of Raspberry Pi.
 
 * Texas Instruments PCM5242 DAC to deliver outstanding signal-to-noise ratio performance
 * supports balanced/differential output in parallel to phono/RCA line level output
