@@ -1,6 +1,6 @@
 === DAC{plus}
 
-IQaudio DAC{plus} is an audio output HAT for all generations of Raspberry Pi from Raspberry Pi 1 Model B{plus} onwards.
+Raspberry Pi DAC{plus} is an audio output HAT for all generations of Raspberry Pi.
 
 * 24‑bit 192kHz high-resolution digital audio
 * Texas Instruments PCM5122 DAC to deliver stereo analogue audio to a pair of phono connectors
