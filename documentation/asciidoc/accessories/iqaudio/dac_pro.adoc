@@ -6,11 +6,11 @@ image::images/dac_pro.png[width="80%"]
 
 NOTE: The DAC Pro is a HAT compliant add-on accessory for Raspberry Pi.
 
-The DAC PRO users the Texas Instruments PCM5242 to deliver outstanding Signal to Noise Ration
+The DAC Pro users the Texas Instruments PCM5242 to deliver outstanding Signal to Noise Ration
 and supports Balanced / Differential out in parallel to Phono / RCA line level output. It also includes a
 dedicated headphone amplifier.
 
-The DAC PRO can be connected to Raspberry Pi A{plus}/B{plus}/RPi2/RPi3 or PRi4’s 40-pin header
+The DAC Pro can be connected to Raspberry Pi A{plus}/B{plus}/RPi2/RPi3 or PRi4’s 40-pin header
 without any additional soldering. The DAC Pro is powered by Raspberry Pi.
 
 Component selection and track layout have been in the forefront of our design to ensure noise
