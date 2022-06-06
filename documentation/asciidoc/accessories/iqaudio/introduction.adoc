@@ -9,12 +9,12 @@ Each board has a specific purpose and set of features. The highest audio quality
 === Features at a glance
 
 |===
-| {set:cellbgcolor:#FFFFFF} | {set:cellbgcolor:#cd2355} *Line Out* | *Balanced Out* | *Stereo Speakers* | *Mono Speaker* | *Headphones* | *Aux In* | *Aux Out* | *Ext Mic* | *Built-in Mic*
+| | *Line Out* | *Balanced Out* | *Stereo Speakers* | *Mono Speaker* | *Headphones* | *Aux In* | *Aux Out* | *Ext Mic* | *Built-in Mic*
 
-| {set:cellbgcolor:#cd2355} DAC Pro ^| {set:cellbgcolor:#FFFFFF} ✓ ^| ✓ | | ^| ✓ | | | | 
-| {set:cellbgcolor:#cd2355} DAC{plus} ^| {set:cellbgcolor:#FFFFFF} ✓ | | | ^| ✓ | | | | 
-| {set:cellbgcolor:#cd2355} DigiAmp{plus} | {set:cellbgcolor:#FFFFFF} | ^| ✓ | | | | | | 
-| {set:cellbgcolor:#cd2355} Codec Zero | {set:cellbgcolor:#FFFFFF} | | ^| ✓ | ^| ✓ ^| ✓ ^| ✓ ^| ✓ 
+| DAC Pro ^| ✓ ^| ✓ | | ^| ✓ | | | | 
+| DAC{plus} ^| ✓ | | | ^| ✓ | | | | 
+| DigiAmp{plus} | | ^| ✓ | | | | | | 
+| Codec Zero | | | ^| ✓ | ^| ✓ ^| ✓ ^| ✓ ^| ✓ 
 |===
 
 Line Out:: A double Phono/RCA connector - Normally red and white in colour. This output is a variable
