@@ -8,13 +8,13 @@ Raspberry Pi DAC Pro is our highest-fidelity audio output HAT for all generation
 
 image::images/dac_pro.png[width="80%"]
 
-NOTE: The DAC Pro is a HAT compliant add-on accessory for the Raspberry Pi.
+NOTE: The DAC Pro is a HAT compliant add-on accessory for Raspberry Pi.
 
 The DAC PRO users the Texas Instruments PCM5242 to deliver outstanding Signal to Noise Ration
 and supports Balanced / Differential out in parallel to Phono / RCA line level output. It also includes a
 dedicated headphone amplifier.
 
-The DAC PRO can be connected to the Raspberry Pi A{plus}/B{plus}/RPi2/RPi3 or PRi4’s 40-pin header
+The DAC PRO can be connected to Raspberry Pi A{plus}/B{plus}/RPi2/RPi3 or PRi4’s 40-pin header
 without any additional soldering. The DAC Pro is powered by the Raspberry Pi.
 
 Component selection and track layout have been in the forefront of our design to ensure noise
@@ -27,4 +27,4 @@ P1:: Analogue out (0..2V RMS), carries GPIO27, MUTE signal (headphone detect), L
 Audio and Left and Right Ground.
 P6:: Headphone socket signals (pin1: LEFT, 2:GROUND, 3: RIGHT, 4:GROUND, 5:DETECT)
 P7/9:: Differential (0..4V RMS) output (P7:LEFT, P9: RIGHT)
-P10:: Alternative 5V input, powering the Raspberry Pi in parallel
+P10:: Alternative 5V input, powering Raspberry Pi in parallel
