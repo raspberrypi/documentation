@@ -14,8 +14,9 @@ NOTE: DigiAMP{plus} is a HAT compliant add-on accessory for Raspberry Pi.
 DigiAMP{plus} can be connected to the Raspberry Pi A{plus}/B{plus}/RPi2/3 or 4's 40-pin header
 without any additional soldering.
 
-DigiAMP{plus}’s barrel connector is 5.5mmx2.5mm. DigiAMP{plus} has been designed to provide
-power to the Raspberry Pi and DigiAMP{plus} combination in parallel, delivering 5.1v at 2.5Amp to the Pi.
+DigiAMP{plus}’s barrel connector is 5.5mm x 2.5mm. 
+
+DigiAMP{plus} has been designed to provide power to the Raspberry Pi and DigiAMP{plus} together in parallel, delivering 5.1V at 2.5Amp to the Raspberry Pi.
 
 The amplifier is by default muted at power on (mute LED lit). The mute state / LED is under software
 control (Raspberry Pi GPIO22).
