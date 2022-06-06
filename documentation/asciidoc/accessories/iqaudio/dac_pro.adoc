@@ -15,16 +15,16 @@ and supports Balanced / Differential out in parallel to Phono / RCA line level o
 dedicated headphone amplifier.
 
 The DAC PRO can be connected to the Raspberry Pi A{plus}/B{plus}/RPi2/RPi3 or PRi4’s 40-pin header
-without any additional soldering. The DAC PRO is powered by the Raspberry Pi.
+without any additional soldering. The DAC Pro is powered by the Raspberry Pi.
 
 Component selection and track layout have been in the forefront of our design to ensure noise
-immunity and best possible audio playback with the DAC PRO.
+immunity and best possible audio playback with the DAC Pro.
 
-The DAC PRO exposes two 3 pin headers (P7/P9) used by the optional XLR board to provide
+The DAC Pro exposes two 3 pin headers (P7/P9) used by the optional XLR board to provide
 Differential / Balanced output exposed by XLR sockets above the Raspberry Pi’s USB/Ethernet ports.
 
-P1:: Analogue out (0..2VRMS), carries GPIO27, MUTE signal (headphone detect), Left and Right
+P1:: Analogue out (0..2V RMS), carries GPIO27, MUTE signal (headphone detect), Left and Right
 Audio and Left and Right Ground.
 P6:: Headphone socket signals (pin1: LEFT, 2:GROUND, 3: RIGHT, 4:GROUND, 5:DETECT)
-P7/9:: Differential (0..4VRMS) output (P7:LEFT, P9: RIGHT)
-P10:: Alternative 5v input, powering the Raspberry Pi in parallel
+P7/9:: Differential (0..4V RMS) output (P7:LEFT, P9: RIGHT)
+P10:: Alternative 5V input, powering the Raspberry Pi in parallel
