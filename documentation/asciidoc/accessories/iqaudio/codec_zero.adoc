@@ -17,9 +17,6 @@ Raspberry Pi Codec Zero is a Raspberry Pi Zero sized audio HAT. It delivers bi-d
 
 image::images/codec_zero.png[width="80%"]
 
-NOTE: Codec Zero is a Raspberry Pi Zero sized board but it also includes the HAT EEPROM allowing for
-auto configuration of the Linux environment if needed.
-
 Codec Zero is a Raspberry Pi Zero sized board but it also includes the HAT EEPROM allowing for
 auto configuration of the Linux environment if needed.
 
