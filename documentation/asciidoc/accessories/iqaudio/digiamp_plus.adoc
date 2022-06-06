@@ -1,4 +1,4 @@
-=== DigiAMP{plus}
+=== Raspberry Pi DigiAMP{plus}
 
 Raspberry Pi DigiAMP{plus} delivers direct connection to passive stereo speakers up to 2x35W with variable output. Ideal for a Raspberry Pi based Hi-Fi system.
 

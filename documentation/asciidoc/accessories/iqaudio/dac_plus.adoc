@@ -1,4 +1,4 @@
-=== DAC{plus}
+=== Raspberry Pi DAC{plus}
 
 Raspberry Pi DAC{plus} is an audio output HAT for all generations of Raspberry Pi.
 
@@ -11,7 +11,7 @@ image::images/dac_plus.png[width="80%"]
 NOTE: The DAC{plus} is a HAT compliant add-on accessory for Raspberry Pi A{plus}/B{plus}/2/3 and 4.
 
 The DAC{plus} uses the Texas Instruments PCM5122 DAC to deliver analogue audio to the DAC{plus}’s
-Phono connectors. The PI-DAC{plus} also supports a dedicated headphone amplifier.
+Phono connectors. The DAC{plus} also supports a dedicated headphone amplifier.
 
 The DAC{plus} can be connected to Raspberry Pi’s 40-pin header without any additional
 soldering. The DAC{plus} is powered by Raspberry Pi.
