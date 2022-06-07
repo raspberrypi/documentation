@@ -1,6 +1,6 @@
 == Configuration
 
-All audio boards include a pre-programmed EEPROM (Electrically Erasable Programmable Read-only Memory), a form of computer memory that does not lose its content when the power supply is cut off and that can be erased and reused. This allows Raspberry Pi OS to autodetect and autoconfigure itself allowing Raspberry Pi boards to be plug and play.
+All audio boards include a pre-programmed EEPROM (Electrically Erasable Programmable Read-only Memory), a form of computer memory that does not lose its content when the power supply is cut off and that can be erased and reused. This allows Raspberry Pi OS to autodetect and autoconfigure itself allowing Raspberry Pi audio boards to be plug and play.
 
 If you need to configure Raspberry Pi OS yourself, you can edit the boot configuration file. Comments may be added, or existing config values may be commented out and disabled, by starting a line with the `#` character. Edit and save the file with with the line appropriate to your board using the following command:
 
