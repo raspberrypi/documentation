@@ -7,7 +7,7 @@ If you need to configure Raspberry Pi OS yourself, you can edit the boot configu
 ----
 $ sudo nano /boot/config.txt
 ----
-
+[cols="1,2"]
 |===
 | Board | *`/boot/config.txt`*
 
