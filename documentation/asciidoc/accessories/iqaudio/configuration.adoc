@@ -56,18 +56,18 @@ file will need to be written to the Pi’s SD card to allow the Pi to boot.
 
 === Attaching the HAT
 
-The IQaudio range of sound cards attach to the Raspberry Pi’s 2x20 way pin header (GPIO header).
-They are designed to be supported on the Pi using the supplied PCB standoffs and screws. In
-general no soldering is required to the IQaudio boards for normal operation.
+The Raspberry Pi range of sound cards attach to the Raspberry Pi’s 2x20 way pin header (GPIO header).
+They are designed to be supported on the Raspberry Pi using the supplied circuit board standoffs and screws. In
+general no soldering is required on the Raspberry Pi audio boards for normal operation with the exception when utilising hardwired connections for specific connectors, XLR (External Line Return) connections on the DAC Pro for example.
 
-The IQaudio range of boards are normally supplied with the necessary mounting hardware (PCB
-spacers and screws), these are for our latest low profile boards 4x 9mm PCB spacers and 8x M2.5
+The Raspberry Pi range of boards are normally supplied with the necessary mounting hardware (PCB
+spacers and screws), these are for our latest low profile boards 4 x 9mm PCB spacers and 8 x M2.5mm
 screws. If additional parts (such as 2piece speaker connectors) are required these are normally
-provided too.
+included.
 
 image::images/hat.png[width="80%"]
 
-The PCB spacers should be screwed (finger tight only) to the Raspberry Pi before adding the IQaudio
+The PCB spacers should be screwed, finger tight only, to the Raspberry Pi before adding the audio
 board. The remaining screws are then screwed into the spacers from above.
 
 === Codec Zero Configuration
