@@ -1,6 +1,6 @@
 === Raspberry Pi DAC Pro
 
-Raspberry Pi DAC Pro is our highest-fidelity digital to analogue converter (DAC) HAT for all generations of Raspberry Pi.
+Raspberry Pi DAC Pro is our highest-fidelity DAC (Digital to Analogue Converter) HAT (Hardware Attached on Top) for all generations of Raspberry Pi.
 
 image::images/dac_pro.png[width="80%"]
 
