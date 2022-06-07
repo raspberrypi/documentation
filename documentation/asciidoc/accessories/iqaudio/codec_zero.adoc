@@ -21,7 +21,7 @@ Codec Zero includes the HAT EEPROM allowing for auto configuration of the Linux 
 
 Built in MEMS microphone and supports mono Electret microphone or mono speaker (1.2W / 8Ω).
 
-It also has GREEN (GPIO23) and RED (GPIO24) LEDs, that can be used for status and a tactile
+It also has GREEN (GPIO23) and RED (GPIO24) LEDs, that can be used for status and a tactile programmable 
 button (GPIO27) that can be used to start an event.
 
 The Codec Zero makes a great starting point for many projects such as a walkie talkie, intelligent doorbell, vintage radio
