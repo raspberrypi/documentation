@@ -11,7 +11,7 @@ Raspberry Pi Codec Zero is a Raspberry Pi Zero sized audio HAT (Hardware Attache
 * Stereo auxiliary input channel (AUX IN) - PHONO/RCA connectors
 * Stereo auxiliary output channel (Headphone / AUX OUT) - 3.5mm Stereo jack
 * Flexible analog and digital mixing paths
-* DSP for ALC (Automatic Level Control)
+* DSP (Digital Signal Processors) for ALC (Automatic Level Control)
 * 5-band EQ (Equalisation)
 * Mono line-out / mini speaker driver: 1.2W @ 5V, THD<10%, R=8Ω
 
