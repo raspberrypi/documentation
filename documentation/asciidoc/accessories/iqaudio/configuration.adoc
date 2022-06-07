@@ -75,13 +75,12 @@ board. The remaining screws are then screwed into the spacers from above.
 The Raspberry Pi Codec Zero board uses the Dialog Semiconductor DA7212 codec. This allows
 the recording of audio from the built in MEMS microphone, from stereo Phono sockets (AUX
 IN) or 2 x mono external Electret microphones. Playback is through stereo Phono sockets (AUX OUT)
-and a mono speaker connector.
+or a mono speaker connector.
 
-Each input and output device has its own “mixer” allowing the audio levels / volume to be adjusted
-independently. Within the codec itself other mixers / switches exist to allow the output to be Mono’d
-for single speaker output, signals may also be inverted and there is a 5 band Equaliser to adjust
-certain frequency bands. These settings can be controlled through alsamixer interactively or
-programatically.
+Each input and output device has its own “mixer” allowing the audio levels and volume to be adjusted
+independently. Within the codec itself other mixers and switches exist to allow the output to be Mono’d
+for single speaker output. Signals may also be inverted and there is a 5 band Equaliser to adjust
+certain frequency bands. These settings can be controlled interactively using alsamixer (a graphical mixer program used in Terminal) or programatically.
 
 It is important to note that the AUX IN and AUX OUT are both 1vRMS. It may be necessary to adjust
 the AUX IN’s mixer to ensure the input signal doesn’t saturate the ADCs. (Analogue to Digital
