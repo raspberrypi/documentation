@@ -25,7 +25,7 @@ It also has GREEN (GPIO23) and RED (GPIO24) LEDs, that can be used for status an
 button (GPIO27) that can be used to start an event.
 
 The Codec Zero makes a great starting point for many projects such as a walkie talkie, intelligent doorbell, vintage radio
-hack or smart type speaker.
+hack or smart speaker.
 
 P1 and P2 will support external PHONO / RCA sockets if needed. P1: AUX IN, P2: AUX OUT.
 
