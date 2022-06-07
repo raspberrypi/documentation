@@ -4,7 +4,7 @@ Raspberry Pi Codec Zero is a Raspberry Pi Zero sized audio HAT. It delivers bi-d
 
 * High performance 24-bit audio codec
 * Supports common audio sample rates between 8-96kHz
-* Built in MEMS microphone (Mic2)
+* Built in MEMS (microelectromechanical) microphone (Mic2)
 * Mono Electret microphone (Mic2 left)
 * Automatic MEMS disabling on Mic2 insert detect
 * Supports additional (no fit) Mono Electret microphone (Mic1 right)
