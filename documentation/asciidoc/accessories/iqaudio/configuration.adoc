@@ -80,9 +80,9 @@ or a mono speaker connector.
 Each input and output device has its own “mixer” allowing the audio levels and volume to be adjusted
 independently. Within the codec itself other mixers and switches exist to allow the output to be Mono’d
 for single speaker output. Signals may also be inverted and there is a 5 band Equaliser to adjust
-certain frequency bands. These settings can be controlled interactively using alsamixer (a graphical mixer program used in Terminal) or programatically.
+certain frequency bands. These settings can be controlled interactively using Alsamixer (a graphical mixer program used in Terminal) or programatically.
 
-It is important to note that the AUX IN and AUX OUT are both 1vRMS. It may be necessary to adjust
+It is important to note that the AUX IN and AUX OUT are both 1V RMS. It may be necessary to adjust
 the AUX IN’s mixer to ensure the input signal doesn’t saturate the ADCs. (Analogue to Digital
 Convertors). Similarly, the output mixers may been to be adjusted to get the best possible output.
 
