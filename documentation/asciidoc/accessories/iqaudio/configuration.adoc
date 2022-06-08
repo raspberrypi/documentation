@@ -56,7 +56,7 @@ file will need to be written to the Pi’s SD card to allow the Pi to boot.
 
 === Attaching the HAT
 
-The Raspberry Pi range of sound cards attach to the Raspberry Pi’s 2x20 way pin header (GPIO header).
+The Raspberry Pi range of sound cards attach to the Raspberry Pi’s 40-pin header.
 They are designed to be supported on the Raspberry Pi using the supplied circuit board standoffs and screws. In
 general no soldering is required on the Raspberry Pi audio boards for normal operation with the exception when utilising hardwired connections for specific connectors, XLR (External Line Return) connections on the DAC Pro for example.
 
