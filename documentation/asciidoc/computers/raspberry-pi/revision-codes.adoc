@@ -326,6 +326,10 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 14: CM4
 
+|
+|
+| 15: CM4S
+
 | RRRR
 | Revision
 | 0, 1, 2, etc.
@@ -574,6 +578,12 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | CM4
 | 1.0
 | 8GB
+| Sony UK
+
+| a03150
+| CM4S
+| 1.0
+| 1GB
 | Sony UK
 
 |902120
