@@ -512,7 +512,7 @@ In the event that a platform is not listed for an overlay, one of the special di
 
 Remember: only exceptions need to be listed - the absence of a node for an overlay means that the default file should be used for all platforms.
 
-Accessing diagnostic messages from the firmware is covered in <<part4.1,Debugging>>.
+Accessing diagnostic messages from the firmware is covered in <<part5.1,Debugging>>.
 
 The `dtoverlay` and `dtmerge` utilities have been extended to support the map file:
 
@@ -798,9 +798,127 @@ The loading of overlays at runtime is a recent addition to the kernel, and so fa
 As it is too time-consuming to document the individual overlays here, please refer to the https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README[README] file found alongside the overlay `.dtbo` files in `/boot/overlays`. It is kept up-to-date with additions and changes.
 
 [[part4]]
+=== Firmware parameters
+The firmware uses the special https://www.kernel.org/doc/html/latest/devicetree/usage-model.html#runtime-configuration[/chosen] node to pass parameters between the bootloader and/or firmware and the operating system.
+
+`boot-mode` - 32-bit integer
+
+The boot-mode used to load the kernel. See xref:raspberry-pi.adoc#BOOT_ORDER[BOOT_ORDER].
+
+`overlay_prefix` - string
+
+The xref:config_txt.adoc#overlay_prefix[overlay_prefix] string selected by `config.txt`.
+
+`os_prefix` - string
+
+The xref:config_txt.adoc#os_prefix[os_prefix] string selected by `config.txt`.
+
+`partition` - 32-bit integer
+
+The partition number used during boot.
+
+`pm_rsts` - 32-bit integer
+
+The value of the `PM_RSTS` register during boot.
+
+`rpi-boardrev-ext` - 32-bit integer
+
+The extended board revision code from xref:raspberry-pi.adoc#otp-register-and-bit-definitions[OTP row 33].
+
+`rpi-country-code` - 32-bit integer
+
+The country code used used by https://github.com/raspberrypi-ui/piwiz[PiWiz] - Pi400 only.
+
+==== BCM2711 bootloader properties `/chosen/bootloader`
+The following properties are specific to BCM2711 SPI EEPROM bootloader.
+
+`build_timestamp` - 32-bit integer
+
+The UTC build time for the EEPROM bootloader.
+
+`capabilities` - 32-bit integer
+
+This bit field, which describes the features supported by the current bootloader. This may be used to check whether a feature (e.g. USB boot) is supported before enabling it in the bootloader EEPROM config.
+
+|===
+| Bit | Feature
+
+| 0
+| xref:raspberry-pi.adoc#usb-mass-storage-boot[USB boot] using the VLI USB host controller.
+
+| 1
+| xref:remote-access.adoc#network-boot-your-raspberry-pi[Network boot]
+
+| 2
+| xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT]
+
+| 3
+| xref:raspberry-pi.adoc#usb-mass-storage-boot[USB boot] using the BCM2711 USB host controller.
+
+| 4
+| xref:raspberry-pi.adoc#boot_ramdisk[RAM disk - boot.img]
+
+| 5
+| xref:raspberry-pi.adoc#nvme-ssd-boot[NVMe boot]
+
+| 6
+| https://github.com/raspberrypi/usbboot/blob/master/Readme.md#secure-boot[Secure Boot]
+|===
+
+`update_timestamp` - 32-bit integer
+
+The UTC update timestamp set by `rpi-eeprom-update`.
+
+`signed_boot` - 32-bit integer
+
+If secure-boot is enabled then this bit field will be non-zero. The individual bits indicate the current secure-boot configuration.
+
+|===
+| Bit | Description
+
+| 0
+| `SIGNED_BOOT` was defined in the EEPROM config file.
+
+| 1
+| Reserved.
+
+| 2
+| The ROM development key has been revoked.  See xref:raspberry-pi.adoc#revoke_devkey[revoke_devkey].
+
+| 3
+| The customer public key digest has been written to OTP. See xref:raspberry-pi.adoc#program_pubkey[program_pubkey].
+
+| 4..31
+| Reserved.
+|===
+
+`version` - string
+
+The Git version string for the bootloader.
+
+==== BCM2711 USB boot properties `/chosen/bootloader/usb`
+The following properties are defined if the system was booted from USB. These may be used to uniquely identify the USB boot device.
+
+`usb-version` - 32-bit integer
+
+The USB major protocol version (2 or 3).
+
+`route-string` - 32-bit integer
+The USB route-string identifier for the device as defined by the USB 3.0 specification.
+
+`root-hub-port-number` - 32-bit integer
+
+The root hub port number that the boot device is connected to - possibly via other USB hubs.
+
+`lun` - 32-bit integer
+
+The Logical Unit Number for the mass-storage device.
+
+
+[[part5]]
 === Troubleshooting
 
-[[part4.1]]
+[[part5.1]]
 ==== Debugging
 
 The loader will skip over missing overlays and bad parameters, but if there are serious errors, such as a missing or corrupt base DTB or a failed overlay merge, then the loader will fall back to a non-DT boot. If this happens, or if your settings don't behave as you expect, it is worth checking for warnings or errors from the loader:
@@ -833,7 +951,7 @@ MODULE_DEVICE_TABLE(of, xxx_of_match);
 
 Failing that, `depmod` has failed or the updated modules haven't been installed on the target filesystem.
 
-[[part4.2]]
+[[part5.2]]
 ==== Testing overlays using dtmerge, dtdiff and ovmerge
 
 Alongside the `dtoverlay` and `dtparam` commands is a utility for applying an overlay to a DTB - `dtmerge`. To use it you first need to obtain your base DTB, which can be obtained in one of two ways:
@@ -929,7 +1047,7 @@ to get:
 
 The https://github.com/raspberrypi/utils[Utils] repo includes another DT utility - `ovmerge`. Unlike `dtmerge`, `ovmerge` combines file and applies overlays in source form. Because the overlay is never compiled, labels are preserved and the result is usually more readable. It also has a number of other tricks, such as the ability to list the order of file inclusion.
 
-[[part4.3]]
+[[part5.3]]
 ==== Forcing a specific Device Tree
 
 If you have very specific needs that aren't supported by the default DTBs, or if you just want to experiment with writing your own DTs, you can tell the loader to load an alternate DTB file like this:
@@ -938,7 +1056,7 @@ If you have very specific needs that aren't supported by the default DTBs, or if
 device_tree=my-pi.dtb
 ----
 
-[[part4.4]]
+[[part5.4]]
 ==== Disabling Device Tree usage
 
 Since the switch to the 4.4 kernel and the use of more upstream drivers, Device Tree usage is required in Raspberry Pi Linux kernels. However, for bare metal and other OSs, the method of disabling DT usage is to add:
@@ -949,7 +1067,7 @@ device_tree=
 
 to `config.txt`.
 
-[[part4.5]]
+[[part5.5]]
 ==== Shortcuts and syntax variants
 
 The loader understands a few shortcuts:
@@ -967,7 +1085,7 @@ dtparam=i2c,i2s
 
 (`i2c` is an alias of `i2c_arm`, and the `=on` is assumed). It also still accepts the long-form versions: `device_tree_overlay` and `device_tree_param`.
 
-[[part4.6]]
+[[part5.6]]
 ==== Other DT commands available in config.txt
 
 `device_tree_address`
@@ -987,7 +1105,8 @@ Specifies a subdirectory/prefix from which to load overlays - defaults to "overl
 
 Further ports can be controlled by the DT, for more details see <<part3,section 3>>.
 
-[[part4.7]]
+[[part5.7]]
 ==== Further help
 
 If you've read through this document and not found the answer to a Device Tree problem, there is help available. The author can usually be found on Raspberry Pi forums, particularly the https://forums.raspberrypi.com/viewforum.php?f=107[Device Tree] forum.
+
