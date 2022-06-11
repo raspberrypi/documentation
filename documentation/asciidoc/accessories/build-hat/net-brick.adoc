@@ -16,7 +16,7 @@ but you need to remember to dispose of the `brick` at the end of your code.
 brick.Dispose();
 ----
 
-WARNING: If you do not call `brick.Dispose()` you program will not terminate.
+WARNING: If you do not call `brick.Dispose()` your program will not terminate.
 
 If you want to avoid calling `brick.Dispose` at the end, then create your brick with the `using` statement:
 
@@ -104,7 +104,7 @@ void MotorPropertyEvent(object? sender, PropertyChangedEventArgs e)
 
 ==== Waiting for initialization
 
-The brick can take long before it initializes. A wait for sensor to be connected has been implemented,
+The brick can take a long time before it initializes. A wait for a sensor to be connected has been implemented.
 
 [csharp]
 ----
