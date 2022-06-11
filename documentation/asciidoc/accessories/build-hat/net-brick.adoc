@@ -104,7 +104,7 @@ void MotorPropertyEvent(object? sender, PropertyChangedEventArgs e)
 
 ==== Waiting for initialization
 
-The brick can take long before it initializes. A wait for a sensor to be connected has been implemented.
+The brick can take a long time before it initializes. A wait for a sensor to be connected has been implemented.
 
 [csharp]
 ----
