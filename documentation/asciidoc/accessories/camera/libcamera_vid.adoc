@@ -38,6 +38,8 @@ Observe that the output file name is normally only sensible if we avoid over-wri
 
 ==== Network Streaming
 
+NOTE: This section describes native streaming from `libcamera-vid`. However, it is also possible to use the libav backend for network streaming. See the xref:camera.adoc#libav-integration-with-libcamera-vid[libav section] for further details.
+
 ===== UDP
 
 To stream video using UDP, on the Raspberry Pi (server) use
