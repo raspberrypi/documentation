@@ -4,7 +4,7 @@ All Raspberry Pi audio boards include a pre-programmed EEPROM (Electrically Eras
 
 image::images/gui.png[]
 
-There are a number of 3rd party audio software applications available for Raspberry Pi that will support the plug and play feature of our audio boards. Often these are used with a "Headless" setup, that is to say that they don't need a keyboard, mouse and display to be physically attached to Raspberry Pi. They are controlled via a PC or Mac application or by a web-server installed on Raspberry Pi as part of the oftware with interaction through a webpage.
+There are a number of 3rd party audio software applications available for Raspberry Pi that will support the plug and play feature of our audio boards. Often these are used with a "Headless" setup, that is to say that they don't need a keyboard, mouse and display to be physically attached to Raspberry Pi. They are controlled via a PC or Mac application or by a web-server installed on Raspberry Pi as part of the software, with interaction through a webpage.
 
 If you need to configure Raspberry Pi OS yourself, perhaps you are running a headless system of your own and therefore don't have the option of control via the GUI, then there are a few extra steps to complete. Using a Terminal session connected to your Raspberry Pi either directly using a keyboard, mouse and monitor or via a SSH (Secure Shell), run the following command to edit the `/boot/config.txt` file:
 

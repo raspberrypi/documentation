@@ -1,8 +1,6 @@
 == Overview of Raspberry Pi Audio
  
-Introducing our range of boards designed to bring high quality audio to your existing Hi-Fi or Raspberry Pi based equipment and projects.
-
-With 4 different boards to choose from all our audio boards will fit any Raspberry Pi utilising a 40-pin GPIO header.
+Introducing our range of boards designed to bring high quality audio to your existing Hi-Fi or Raspberry Pi based equipment and projects. With 4 different HAT's (Hardware Attached on Top) to choose from all our audio boards will fit any Raspberry Pi utilising a 40-pin GPIO header.
 
 Each board has a specific purpose and set of features. The highest audio quality playback is from our DAC PRO, DAC{plus} and DigiAMP{plus} boards which support up to Full HD Audio (192kHz) whilst the Codec Zero supports up to HD Audio (96kHz) and includes a built-in microphone - perfect for those smaller projects.
 
