@@ -132,7 +132,7 @@ $ sudo reboot
 
 === Muting and unmuting the DigiAMP{plus}
 
-The DigiAMP{plus} MUTE state is toggled by GPIO22 on the Raspberry Pi. The latest IQaudio device tree
+The DigiAMP{plus} MUTE state is toggled by GPIO22 on Raspberry Pi. The latest audio device tree
 supports the unmute of the DigiAMP{plus} through additional parameters.
 
 Firstly a "one-shot" unmute when kernel module loads.
@@ -152,7 +152,7 @@ dtoverlay=iqaudio-dacplus,auto_mute_amp
 If you do not want to control Mute state through device tree then you can also script your own
 solution. 
 
-The amp will startup MUTED `to unmute the amp.
+The amp will startup MUTED to unmute the amp:
 
 ----
 $ sudo sh -c "echo 22 > /sys/class/gpio/export"
@@ -160,7 +160,7 @@ $ sudo sh -c "echo out >/sys/class/gpio/gpio22/direction"
 $ sudo sh -c "echo 1 >/sys/class/gpio/gpio22/value"
 ----
 
-to mute the amp once more.
+to mute the amp once more:
 
 ----
 $ sudo sh -c "echo 0 >/sys/class/gpio/gpio22/value"
