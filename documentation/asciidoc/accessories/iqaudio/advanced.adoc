@@ -13,7 +13,7 @@ The following Raspberry Pi GPIO pins will be used by the audio boards:
 * GPIO 2/3 (I2C)
 * GPIO 18/19/20/21 (I2S)
 
-If appropriate then the following are also used
+If appropriate then the following are also used:
 
 * GPIO 22 (DigiAMP+ mute / unmute support)
 * GPIO 23/24 for Rotary Encoder (physical volume control) or status LED (Codec Zero)

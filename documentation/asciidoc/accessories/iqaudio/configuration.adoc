@@ -30,8 +30,8 @@ Alternatively, the `/boot/config.txt` file can be edited directly onto the Raspb
 
 === Disabling on-board audio
 
-To make your Raspberry Pi audio card the primary device in Raspberry Pi OS you will need to
-disable the Raspberry Pi’s on-board audio card and again, this is done by editing the `/boot/config.txt` file. Find the `dtparam=audio=on` line in your `/boot/config.txt` file and comment it out by placing a # symbol at the start of the line. Anything written after the `#` symbol in any given line will be disregarded by the program. Your ``/boot/config.txt`` file should now have the following entry:
+To make your Raspberry Pi audio board the primary device in Raspberry Pi OS you will need to
+disable the Raspberry Pi’s on-board audio device, this is also done by editing the `/boot/config.txt` file. Find the `dtparam=audio=on` line in your `/boot/config.txt` file and comment it out by placing a # symbol at the start of the line. Anything written after the `#` symbol in any given line will be disregarded by the program. Your ``/boot/config.txt`` file should now have the following entry:
 
 ----
 #dtparam=audio=on
@@ -45,13 +45,11 @@ The Raspberry Pi range of sound boards attach to the Raspberry Pi’s 40-pin hea
 They are designed to be supported on the Raspberry Pi using the supplied circuit board standoffs and screws. In
 general no soldering is required on the Raspberry Pi audio boards for normal operation with the exception when utilising hardwired connections for specific connectors, XLR (External Line Return) connections on the DAC Pro for example.
 
-The Raspberry Pi range of boards are supplied with the necessary mounting hardware (PCB
-spacers and screws). If additional parts, such as 2 piece speaker connectors, are required these are
-included.
+The Raspberry Pi range of boards are supplied with all the necessary mounting hardware including spacers, screws and connectors.
 
 image::images/hat.png[width="80%"]
 
-The PCB spacers should be screwed, finger tight only, to the Raspberry Pi before adding the audio
+The PCB spacers should be screwed, finger-tight only, to the Raspberry Pi before adding the audio
 board. The remaining screws are then screwed into the spacers from above.
 
 === Codec Zero Configuration
@@ -62,13 +60,13 @@ IN) or 2 x mono external Electret microphones. Playback is through stereo Phono 
 or a mono speaker connector.
 
 Each input and output device has its own “mixer” allowing the audio levels and volume to be adjusted
-independently. Within the codec itself other mixers and switches exist to allow the output to be Mono’d
+independently. Within the codec itself other mixers and switches exist to allow the output to be mixed to a single mono channel
 for single speaker output. Signals may also be inverted and there is a 5 band Equaliser to adjust
-certain frequency bands. These settings can be controlled interactively using Alsamixer (a graphical mixer program used in Terminal) or programatically.
+certain frequency bands. These settings can be controlled interactively using Alsamixer (a graphical mixer program used in Terminal) or programmatically.
 
 It is important to note that the AUX IN and AUX OUT are both 1V RMS. It may be necessary to adjust
-the AUX IN’s mixer to ensure the input signal doesn’t saturate the ADCs. (Analogue to Digital
-Convertors). Similarly, the output mixers may been to be adjusted to get the best possible output.
+the AUX IN’s mixer to ensure the input signal doesn’t saturate the ADC (Analogue to Digital
+Convertors). Similarly, the output mixers can be to be adjusted to get the best possible output.
 
 There is a set of preconfigured scripts (loadable ALSA settings) available on GitHub. https://github.com/iqaudio/Pi-Codec.
 
