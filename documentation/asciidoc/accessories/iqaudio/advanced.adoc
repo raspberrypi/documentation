@@ -2,11 +2,11 @@
 
 === GPIO usage / Pin headers
 
-The IQaudio range of sound cards for the Raspberry Pi take advantage of a number of Pi signals in
-order to operate successfully. Some of these signals are solely for the use of the IQaudio board and
+Raspberry Pi Audio boards take advantage of a number of Raspberry Pi Pi signals in
+order to operate successfully. Some of these signals are solely for the use of the board and
 some can be shared with other peripherals, sensors, etc.
 
-We expect the following Raspberry Pi GPIO to be used by IQaudio audio boards
+The following Raspberry Pi GPIO pins will be used by the audio boards:
 
 * ALL POWER PINS
 * ALL GROUND PINS
@@ -34,7 +34,9 @@ image::images/pin_out.png[width="80%"]
 
 Sample software that converts physical rotation to ALSA audio volume commands is available on GitHub: https://www.github.com/iqaudio/tools.
 
-The recommended pins / GPIO to use when adding a Rotary Encoder as a physical volume control. With the rotary encoder shaft facing you and pins facing downwards:
+The recommended pins / GPIO to use when adding a Rotary Encoder as a physical volume control, with the rotary encoder shaft facing towards you and pins facing downwards:
 
 image::images/rotary.png[width="80%"]
+
+
 
