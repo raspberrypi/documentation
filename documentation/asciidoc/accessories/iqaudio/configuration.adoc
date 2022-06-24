@@ -1,6 +1,6 @@
 == Configuration
 
-All Raspberry Pi audio boards include a pre-programmed EEPROM (Electrically Erasable Programmable Read-only Memory). This allows Raspberry Pi OS to autodetect and autoconfigure itself allowing Raspberry Pi audio boards to be plug and play. Using Raspberry Pi OS (32-bit) with the Desktop environment and your board attached, you can utilise the built in GUI (Graphical User Interface) by clicking on the audio settings in the top right hand corner of your screen, allowing you to switch between the HAT and the on-board audio settings:
+All Raspberry Pi audio boards include a pre-programmed EEPROM (Electrically Erasable Programmable Read-only Memory). This allows Raspberry Pi OS to autodetect and autoconfigure itself allowing Raspberry Pi audio boards to be plug and play. Using Raspberry Pi OS (32-bit) with the Desktop environment and your board attached, you can utilise the built in GUI (Graphical User Interface) by right clicking on the audio settings in the top right hand corner of your screen, allowing you to switch between the HAT and the on-board audio settings:
 
 image::images/gui.png[]
 
@@ -41,13 +41,12 @@ Save the file and reboot your Raspberry Pi for the settings to take effect.
 
 === Attaching the HAT
 
-The Raspberry Pi range of sound cards attach to the Raspberry Pi’s 40-pin header.
+The Raspberry Pi range of sound boards attach to the Raspberry Pi’s 40-pin header.
 They are designed to be supported on the Raspberry Pi using the supplied circuit board standoffs and screws. In
 general no soldering is required on the Raspberry Pi audio boards for normal operation with the exception when utilising hardwired connections for specific connectors, XLR (External Line Return) connections on the DAC Pro for example.
 
-The Raspberry Pi range of boards are normally supplied with the necessary mounting hardware (PCB
-spacers and screws), these are for our latest low profile boards 4 x 9mm PCB spacers and 8 x M2.5mm
-screws. If additional parts (such as 2 piece speaker connectors) are required these are normally
+The Raspberry Pi range of boards are supplied with the necessary mounting hardware (PCB
+spacers and screws). If additional parts, such as 2 piece speaker connectors, are required these are
 included.
 
 image::images/hat.png[width="80%"]
