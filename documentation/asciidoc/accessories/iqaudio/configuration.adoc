@@ -79,9 +79,50 @@ These cover several use cases such as:
 * Stereo AUX IN recording, stereo AUX OUT playback
 * Stereo MIC1/MIC2 recording, stereo AUX OUT playback
 
-NOTE: THE CODEC BOARD’S DA7212 CHIP NEEDS TO KNOW WHAT IS INPUT AND WHAT IS
-OUTPUT AT EACH POWER CYCLE FOR IT TO OPERATE SUCCESSFULLY. We suggest your
-application does this at startup or you add a suitable configuration to the `/etc/rc.local` file. 
+The Codec Zero DA7212 chip needs to know which of these input and output settings are for each new cycle of power for it to operate correctly. Using a Terminal session connected to your Raspberry Pi either directly using a keyboard, mouse and monitor or via a SSH (Secure Shell), run the following command to download the scripts:
+
+----
+$ git clone https://github.com/iqaudio/Pi-Codec.git
+----
+
+If git is not installed run the following command to install it:
+
+----
+$ sudo apt install git
+----
+
+The following command will set your device, in this case using the on-board MEMS microphone and output for speaker playback:
+
+----
+$ sudo alsactl restore -f /home/pi/Pi-Codec/IQaudIO_Codec_OnboardMIC_record_and_SPK_playback.state
+----
+
+In order for your project to operate with your required settings when it is powered on the easiest way is to add to the `/etc/rc.local` file. The contents of this file are run at the end of every boot process so it is ideal for this purpose. Edit the file using the following:
+
+----
+$ sudo nano /etc/rc.local
+----
+
+Add the chosen script command above the exit 0 line and then Ctrl X, Y and Enter to save. The file should now look similar to this depending on your chosen setting:
+
+----
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+sudo alsactl restore -f /home/pi/Pi-Codec/IQaudIO_Codec_OnboardMIC_record_and_SPK_playback.state
+
+exit 0
+----
 
 === Muting and unmuting the DigiAMP{plus}
 
