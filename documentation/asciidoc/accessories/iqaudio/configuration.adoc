@@ -124,6 +124,12 @@ sudo alsactl restore -f /home/pi/Pi-Codec/IQaudIO_Codec_OnboardMIC_record_and_SP
 exit 0
 ----
 
+Reboot your device for the settings to take effect:
+
+----
+$ sudo reboot
+----
+
 === Muting and unmuting the DigiAMP{plus}
 
 The DigiAMP{plus} MUTE state is toggled by GPIO22 on the Raspberry Pi. The latest IQaudio device tree
