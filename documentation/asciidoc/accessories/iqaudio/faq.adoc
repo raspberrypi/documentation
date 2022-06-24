@@ -1,5 +1,3 @@
-== Frequent Questions
-
 === Saving alsamixer settings
 
 Storing the alsamixer setting can be achieved by performing the following at the command line:
@@ -38,11 +36,11 @@ enable `max_usb_current`
 
 === MPD based audio with volume control
 
-To allow MPD based audio software to control the audio board’s built in HARDWARE volume the file
+To allow MPD (Music Player Daemon) based audio software to control the audio board’s built in volume the file
 `/etc/mpd.conf` may need to be changed to support the correct ALSA mixer name.
 
-This can be achieved by ensuring the'Audio Output' section of /etc/mpd.conf has the 'mixer_control'
-line. Below is an example for the Texas Instruments based IQaudio sound cards (DAC
+This can be achieved by ensuring the 'Audio Output' section of `/etc/mpd.conf` has the 'mixer_control'
+line. Below is an example for the Texas Instruments based boards (DAC
 PRO/DAC{plus}/DigiAMP{plus})
 
 ----
@@ -53,9 +51,7 @@ audio_output {
 }
 ----
 
-=== Screw sizes and part numbers
-
-Useful Data:
+=== Useful information
 
 * PCB screws are all m2.5
 * PCB standoffs (for CASE) are 5mm male / female
