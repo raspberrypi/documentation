@@ -23,7 +23,7 @@ $ sudo alsactl restore -f /home/pi/usecase.state
 
 === Using external USB devices
 
-If you want to enable 1.2AMP USB support (to allow USB hard disks to power up when
+If you want to enable 1.2 amp USB support (to allow USB hard disks to power up when
 accessory boards are in use) then you may also want to add the following line to your `/boot/config.txt`
 file:
 
@@ -31,8 +31,8 @@ file:
 max_usb_current=1
 ----
 
-Please ensure your Pi power supply is able to deliver ~2.5amp if you are powering via mini USB and
-enable `max_usb_current`
+Please ensure your Raspberry Pi power supply is able to deliver a minimum of 2.5 amps if you are powering via mini USB and
+enable `max_usb_current`.
 
 === MPD based audio with volume control
 

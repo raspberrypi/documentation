@@ -9,6 +9,10 @@ image::images/dac_plus.png[width="80%"]
 The DAC{plus} uses the Texas Instruments PCM5122 DAC to deliver analogue audio to the DAC{plus}’s
 Phono connectors. It also supports a dedicated headphone amplifier and is powered by Raspberry Pi through the GPIO header.
 
-P1:: Analogue out (0..2V RMS), carries GPIO27, MUTE signal (headphone detect), Left and Right
+==== Pin Outs:
+[cols="1,12"]
+|===
+| *P1* | Analogue out (0..2V RMS), carries GPIO27, MUTE signal (headphone detect), Left and Right
 Audio and Left and Right Ground.
-P6:: Headphone socket signals (pin1: LEFT, 2:GROUND, 3: RIGHT, 4:GROUND, 5:DETECT).
+| *P6* | Headphone socket signals (pin1: LEFT, 2:GROUND, 3: RIGHT, 4:GROUND, 5:DETECT).
+|===
