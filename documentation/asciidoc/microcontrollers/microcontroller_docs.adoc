@@ -22,7 +22,7 @@ NOTE: While it is not officially supported there is a https://github.com/ndabas/
 
 https://datasheets.raspberrypi.com/picow/pico-w-datasheet.pdf[Raspberry Pi Pico W Datasheet]:: An RP2040-based microcontroller board with wireless
 
-https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W]:: Getting Raspberry Pi Pico W online with C/{cplusplus} or MicroPython
+https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W]:: Getting Raspberry Pi Pico W online with C/{cpp} or MicroPython
 
 === Software Development
 
