@@ -2,7 +2,7 @@
 
 You can program your Pico by connecting it to a computer via USB, then dragging and dropping a file onto it so we’ve put together a downloadable UF2 file to let you install MicroPython more easily.
 
-image::images/MicroPython-Update-v1.gif[]
+image::images/MicroPython-640x360-v2.gif[]
 
 Download the correct MicroPython UF2 file for your board:
 

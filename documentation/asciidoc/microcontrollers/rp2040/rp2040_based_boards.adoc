@@ -8,6 +8,8 @@ image::images/pico.jpg[]
 
 https://www.raspberrypi.com/products/raspberry-pi-pico/[Raspberry Pi Pico]:: Designed by Raspberry Pi, RP2040 features a dual-core Arm Cortex-M0+ processor with 264kB internal RAM and support for up to 16MB of off-chip Flash. A wide range of flexible I/O options includes I2C, SPI, and — uniquely — Programmable I/O (PIO). These support endless possible applications for this small and affordable package.
 
+https://www.raspberrypi.com/products/raspberry-pi-pico/[Raspberry Pi Pico W]:: A Raspberry Pi Pico, with 802.11n wireless LAN.
+
 === Boards from Adafruit
 
 image::images/feather-2040.jpg[]
