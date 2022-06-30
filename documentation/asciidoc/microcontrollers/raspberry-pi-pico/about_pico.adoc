@@ -1,4 +1,4 @@
-== The Family
+== The family
 
 image::images/three_picos.jpg[width="75%"]
 
@@ -11,7 +11,7 @@ Raspberry Pi Pico is a low-cost, high-performance microcontroller board with fle
 
 * xref:rp2040.adoc#welcome-to-rp2040[RP2040] microcontroller chip designed by Raspberry Pi in the United Kingdom
 * Dual-core Arm Cortex M0+ processor, flexible clock running up to 133 MHz
-* 264kB of SRAM, and 2MB of on-board Flash memory
+* 264kB of SRAM, and 2MB of on-board flash memory
 * USB 1.1 with device and host support
 * Low-power sleep and dormant modes
 * Drag-and-drop programming using mass storage over USB
@@ -26,7 +26,7 @@ The Raspberry Pi Pico comes as a castellated module allows soldering direct to c
 
 NOTE: Both boards have a three pin Serial Wire Debug (SWD) header. However, the Pico H has this broken out into a small, keyed, https://datasheets.raspberrypi.com/debug/debug-pin-connector-specification.pdf[3-pin connector] while the Pico has three castellated through-hole pins adjacent to the edge of the board.
 
-=== Pinout and Design Files
+=== Pinout and design files
 
 image::images/pico-pinout.svg[]
 
@@ -35,15 +35,15 @@ image::images/pico-pinout.svg[]
 * Download https://datasheets.raspberrypi.com/pico/Pico-R3-step.zip[STEP File]
 * Download https://datasheets.raspberrypi.com/pico/Pico-R3-Fritzing.fzpz[Fritzing Part]
 
-NOTE: More information on Fritzing is available on the https://fritzing.org/[fritzing.org] web site.
+NOTE: More information on Fritzing is available on the https://fritzing.org/[fritzing.org] website.
 
 == Raspberry Pi Pico W
 
 Raspberry Pi Pico W adds on-board single-band 2.4GHz wireless interfaces (802.11n) using the Infineon CYW4343 while retaining the Pico form factor. The on-board 2.4GHz wireless interface has the following features:
 
-* Wireless (802.11n), Single-band (2.4 GHz)
+* Wireless (802.11n), single-band (2.4 GHz)
 * WPA3
-* Soft Access Point supporting up to 4 clients
+* Soft access point supporting up to four clients
 
 The antenna is an onboard antenna licensed from ABRACON (formerly ProAnt). The wireless interface is connected via
 SPI to the xref:rp2040.adoc#welcome-to-rp2040[RP2040] microcontroller.
@@ -57,7 +57,7 @@ For best wireless performance, the antenna should be in free space. For instance
 antenna can reduce its performance both in terms of gain and bandwidth. Adding grounded metal to the sides of the
 antenna can improve the antenna’s bandwidth.
 
-=== Pinout and Design Files
+=== Pinout and design files
 
 image::images/picow-pinout.svg[]
 
