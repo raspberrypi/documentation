@@ -24,7 +24,7 @@ Raspberry Pi Pico is a low-cost, high-performance microcontroller board with fle
 
 The Raspberry Pi Pico comes as a castellated module allows soldering direct to carrier boards, while the Pico H comes with pre-soldered headers.
 
-NOTE: Both boards have a three pin Serial Wire Debug (SWD) header. However, the Pico H has this broken out into a small, keyed, https://datasheets.raspberrypi.com/debug/debug-pin-connector-specification.pdf[3-pin connector] while the Pico has three castellated through-hole pins adjacent to the edge of the board.
+NOTE: Both boards have a three pin Serial Wire Debug (SWD) header. However, the Pico H has this broken out into a small, keyed, https://datasheets.raspberrypi.com/debug/debug-connector-specification.pdf[3-pin connector] while the Pico has three castellated through-hole pins adjacent to the edge of the board.
 
 === Pinout and Design Files
 

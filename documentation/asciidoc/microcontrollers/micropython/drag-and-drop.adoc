@@ -8,7 +8,7 @@ Download the correct MicroPython UF2 file for your board:
 
 * https://micropython.org/download/rp2-pico/rp2-pico-latest.uf2[Raspberry Pi Pico] 
 
-* https://datasheets.raspberrypi.com/soft/micropython-firmware-pico-w-290622.uf2[Raspberry Pi Pico W] (with https://makeblock-micropython-api.readthedocs.io/en/latest/public_library/Third-party-libraries/urequests.html[urequests] and https://docs.micropython.org/en/latest/reference/packages.html[upip] preinstalled)
+* https://micropython.org/download/rp2-pico-w/rp2-pico-w-latest.uf2[Raspberry Pi Pico W] (with https://makeblock-micropython-api.readthedocs.io/en/latest/public_library/Third-party-libraries/urequests.html[urequests] and https://docs.micropython.org/en/latest/reference/packages.html[upip] preinstalled)
 
 Then go ahead and:
 
