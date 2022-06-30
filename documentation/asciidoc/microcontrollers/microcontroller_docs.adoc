@@ -18,6 +18,12 @@ https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting st
 
 NOTE: While it is not officially supported there is a https://github.com/ndabas/pico-setup-windows[Pico Setup for Windows] installation tool which automates installation of the C/{cpp} SDK on Windows 10.
 
+=== Raspberry Pi Pico W
+
+https://datasheets.raspberrypi.com/picow/pico-w-datasheet.pdf[Raspberry Pi Pico W Datasheet]:: An RP2040-based microcontroller board with wireless
+
+https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W]:: Getting Raspberry Pi Pico W online with C/{cpp} or MicroPython
+
 === Software Development
 
 https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi Pico C/{cpp} SDK]:: Libraries and tools for C/{cpp} development on RP2040 microcontrollers
@@ -25,8 +31,3 @@ https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi
 https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf[Raspberry Pi Pico Python SDK]:: A MicroPython environment for RP2040 microcontrollers
 
 The API level Doxygen documentation for the Raspberry Pi Pico C/{cpp} SDK is also available https://rptl.io/pico-doxygen[as a micro-site].
-
-[NOTE]
-====
-If you are building applications with the C/{cpp} SDK and targeting boards other than the Raspberry Pi Pico, you will need to pass `-DPICO_BOARD=boardname` to CMake. Here `boardname` is the name of your board, e.g. for the Adafruit Feather RP2040 you should pass `-DPICO_BOARD=adafruit_feather_rp2040`. See the https://github.com/raspberrypi/pico-sdk/tree/master/src/boards[`boards/` directory] in the Raspberry Pi Pico SDK, and the https://forums.raspberrypi.com/viewtopic.php?f=147&t=304393[forums], for more information.
-====

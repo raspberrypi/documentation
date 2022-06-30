@@ -14,6 +14,8 @@ include::camera/libcamera_still.adoc[]
 
 include::camera/libcamera_vid.adoc[]
 
+include::camera/libcamera_apps_libav.adoc[]
+
 include::camera/libcamera_raw.adoc[]
 
 include::camera/libcamera_detect.adoc[]

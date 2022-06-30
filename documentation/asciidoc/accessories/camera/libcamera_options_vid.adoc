@@ -49,6 +49,7 @@ This can select how the video frames are encoded. Valid options are:
 * h264 - use H.264 encoder (the default)
 * mjpeg - use MJPEG encoder
 * yuv420 - output uncompressed YUV420 frames.
+* libav - use the libav backend to encode audio and video (see the xref:camera.adoc#libav-integration-with-libcamera-vid[libav section] for further details).
 
 Examples:
 

@@ -2,4 +2,6 @@
 
 Welcome to RP2040, a microcontroller designed here at Raspberry Pi. 
 
+image::images/rp2040.jpg[]
+
 Whether you have a xref:raspberry-pi-pico.adoc#technical-specification[Raspberry Pi Pico] or another RP2040-based microcontroller board, everything you need to get started is here. You'll find support for getting started with xref:c_sdk.adoc#sdk-setup[C/{cpp}] or xref:micropython.adoc#what-is-micropython[MicroPython] on Raspberry Pi Pico, and links to resources for other boards that use RP2040. There are also links to the technical documentation for both the Raspberry Pi Pico microcontroller board and our RP2040 microcontroller chip.
