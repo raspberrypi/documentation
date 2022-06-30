@@ -157,8 +157,8 @@
                     "subpath": "rp2040.adoc"
                 },
                 {
-                    "title": "Raspberry Pi Pico",
-                    "description": "A board built around our RP2040",
+                    "title": "Raspberry Pi Pico and Pico W",
+                    "description": "Support for Rapsbery Pi Pico, Pico H, and Pico W",
                     "image": "full-sized/Pico.png",
                     "subpath": "raspberry-pi-pico.adoc"
                 },

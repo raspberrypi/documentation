@@ -4,7 +4,7 @@
 
 The first program anyone writes when using a new microcontroller is to blink an LED on and off. The Raspberry Pi Pico comes with a single LED on-board (connected to GPIO pin 25). 
 
-image:images/Blink-an-LED-640x360.gif[]
+image:images/Blink-an-LED-640x360-v2.gif[]
 
 You can blink this on and off by,
 
@@ -15,14 +15,13 @@ You can blink this on and off by,
 
 You should see the on-board LED blinking.
 
-* Download https://datasheets.raspberrypi.com/soft/blink.uf2[UF2 File]
-* See the code https://github.com/raspberrypi/pico-examples/blob/master/blink/blink.c[on Github]
+You can see the code https://github.com/raspberrypi/pico-examples/blob/master/blink/blink.c[on Github]
 
 === Say "Hello World"
 
 The next program anyone writes is to say 'Hello World' over a USB serial connection.
 
-image:images/Hello-World-640x360.gif[]
+image:images/Hello-World-640x360-v2.gif[]
 
 . Download the https://datasheets.raspberrypi.com/soft/hello_world.uf2['Hello World' UF2].
 . Push and hold the BOOTSEL button and plug your Pico into the USB port of your Raspberry Pi or other computer.
@@ -36,7 +35,6 @@ sudo apt install minicom
 minicom -b 115200 -o -D /dev/ttyACM0
 ------
 
-You should see 'Hello, world!' printed to the Terminal
+You should see 'Hello, world!' printed to the Terminal.
 
-* Download https://datasheets.raspberrypi.com/soft/hello_world.uf2[UF2 File]
-* See the code https://github.com/raspberrypi/pico-examples/blob/master/hello_world/usb/hello_usb.c[on Github]
+You can see the code https://github.com/raspberrypi/pico-examples/blob/master/hello_world/usb/hello_usb.c[on Github]
