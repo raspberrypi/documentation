@@ -1466,7 +1466,7 @@ This may not work if your monitor does not support standard CVT timings.
 
 ==== `sdtv_mode`
 
-The `sdtv_mode` command defines the TV standard used for composite video output. On most models of Raspberry Pi, composite is output on the 3.5mm jack. 
+The `sdtv_mode` command defines the TV standard used for composite video output. Composite is output on the 3.5mm AV jack, except on the Raspberry Pi 1B where it is output on the RCA jack.
 
 |===
 | sdtv_mode | result
