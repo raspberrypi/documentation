@@ -21,13 +21,13 @@ libcamera-vid --codec libav --libav-format mkv -o test.raw
     --libav-audio,     Enable audio recording
 ----
 
-Set this option to enable audio encoding together with the video stream. When audio encodding is enabled, an output format that supports audio (e.g. mpegts, mkv, mp4) must be used.
+Set this option to enable audio encoding together with the video stream. When audio encoding is enabled, an output format that supports audio (e.g. mpegts, mkv, mp4) must be used.
 
 ----
     --audio-codec,     Selects the audio codec <string>
 ----
 
-Selects which software audio codec is used for encoding. By default `aac` is used. To list the available audio codecs, use the ``ffmpeg -codec`` command.
+Selects which software audio codec is used for encoding. By default `aac` is used. To list the available audio codecs, use the `ffmpeg -codec` command.
 
 ----
     --audio-bitrate,     Selects the audio bitrate <number>
@@ -38,10 +38,10 @@ Sets the audio encoding bitrate in bits per second.
 Example: To record audio at 16 kilobits/sec with the mp2 codec use `libcamera-vid --codec libav -o test.mp4 --audio_codec mp2 --audio-bitrate 16384`
 
 ----
-    --audio-device,     Chooses and audio recording device to use <string>
+    --audio-device,     Chooses an audio recording device to use <string>
 ----
 
-Selects which ALSA input device to use for audio encoding. The audio device string can be obtained by the following command:
+Selects which ALSA input device to use for audio recording. The audio device string can be obtained with the following command:
 
 ----
 pi@pi4:~ $ pactl list | grep -A2 'Source #' | grep 'Name: '
