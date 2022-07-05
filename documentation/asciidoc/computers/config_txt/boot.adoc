@@ -146,7 +146,7 @@ NOTE: Any user-specified OS file can bypass all prefixes by using an absolute pa
 
 See also <<overlay_prefix,`overlay_prefix`>> and <<upstream_kernel,`upstream_kernel`>>.
 
-==== `otg_mode` (Raspberry Pi 4 Only)
+=== `otg_mode` (Raspberry Pi 4 Only)
 
 USB On-The-Go (often abbreviated to OTG) is a feature that allows supporting USB devices with an appropriate OTG cable to configure themselves as USB hosts. On older Raspberry Pis, a single USB 2 controller was used in both USB host and device mode.
 
