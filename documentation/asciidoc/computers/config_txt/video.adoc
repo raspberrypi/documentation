@@ -1511,13 +1511,11 @@ The `sdtv_aspect` command defines the aspect ratio for composite video output. T
 
 Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
 
-==== `enable_tvout` (Raspberry Pi 4 Model B Only)
+==== `enable_tvout`
 
-On the Raspberry Pi 4, composite output is disabled by default, due to the way the internal clocks are interrelated and allocated. Because composite video requires a very specific clock, setting that clock to the required speed on the Raspberry Pi 4 means that other clocks connected to it are detrimentally affected, which slightly slows down the entire system. Since composite video is a less commonly used function, we decided to disable it by default to prevent this system slowdown.
+Raspberry Pi 4 disables composite output unless you set this option to `1`: this will slow down the operation of the system slightly because of how internal clocks are inter-related. Because composite video requires a very specific clock, setting that clock to the required speed on the Raspberry Pi 4 means that other clocks connected to it are detrimentally affected.
 
-To enable composite output, use the `enable_tvout=1` option. As described above, this will detrimentally affect performance to a small degree.
-
-On older Raspberry Pi models, the composite behaviour remains the same.
+On Raspberry Pi Zero, 1, 2 and 3 this option can be set to `0` to prevent composite from becoming active when HDMI output is disabled.
 
 === LCD Displays and Touchscreens
 
