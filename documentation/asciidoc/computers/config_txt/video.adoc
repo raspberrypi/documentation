@@ -1466,7 +1466,7 @@ This may not work if your monitor does not support standard CVT timings.
 
 ==== `sdtv_mode`
 
-The `sdtv_mode` command defines the TV standard used for composite video output. Composite is output on the 3.5mm AV jack, except on the Raspberry Pi 1B where it is output on the RCA jack.
+The `sdtv_mode` command defines the TV standard used for composite video output. Composite is output on the 3.5mm AV jack, except on Raspberry Pi 1A and B where it is output on the RCA jack.
 
 |===
 | sdtv_mode | result
@@ -1513,9 +1513,9 @@ Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite vide
 
 ==== `enable_tvout`
 
-Raspberry Pi 4 disables composite output unless you set this option to `1`: this will slow down the operation of the system slightly because of how internal clocks are inter-related. Because composite video requires a very specific clock, setting that clock to the required speed on the Raspberry Pi 4 means that other clocks connected to it are detrimentally affected.
+Set to `1` to enable composite video output, or `0` to disable. Composite video output is only available on the Raspberry Pi 4 if you set this to `1`.
 
-On Raspberry Pi Zero, 1, 2 and 3 this option can be set to `0` to prevent composite from becoming active when HDMI output is disabled.
+On Raspberry Pi Zero, 1, 2 and 3 the composite video output will be enabled if no HDMI display is detected at boot, or if `hdmi_ignore_hotplug=1` is set. Set `enable_tvout=0` to disable composite even if HDMI is not active.
 
 === LCD Displays and Touchscreens
 
