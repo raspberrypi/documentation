@@ -772,7 +772,7 @@ Retrieves the current camera settings and writes them to stdout.
 	--quality,	-q		Set JPEG quality <0 to 100>
 ----
 
-Quality 100 is almost completely uncompressed. 75 is a good all-round value.
+NOTE: The Quality value is NOT corresponding to typical JPEG Compression level values. A good allround value is -q 10. This is roughly equal to a JPEG Compression Level of 85. For details see https://stackoverflow.com/a/22722920/1331544
 
 ----
 	--raw,	-r		Add raw Bayer data to JPEG metadata
