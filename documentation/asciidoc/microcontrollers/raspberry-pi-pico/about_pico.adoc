@@ -33,7 +33,8 @@ image::images/pico-pinout.svg[]
 * Download the https://datasheets.raspberrypi.com/pico/Pico-R3-A4-Pinout.pdf[Pinout Diagram] (PDF)
 * Download https://datasheets.raspberrypi.com/pico/RPi-Pico-R3-PUBLIC-20200119.zip[Design Files] (Cadence Allegro)
 * Download https://datasheets.raspberrypi.com/pico/Pico-R3-step.zip[STEP File]
-* Download https://datasheets.raspberrypi.com/pico/Pico-R3-Fritzing.fzpz[Fritzing Part]
+* Download https://datasheets.raspberrypi.com/pico/Pico-R3-Fritzing.fzpz[Fritzing Part] for Raspberry Pi Pico
+* Download https://datasheets.raspberrypi.com/pico/PicoH-Fritzing.fzpz[Fritzing Part] for Raspberry Pi Pico H
 
 NOTE: More information on Fritzing is available on the https://fritzing.org/[fritzing.org] website.
 
