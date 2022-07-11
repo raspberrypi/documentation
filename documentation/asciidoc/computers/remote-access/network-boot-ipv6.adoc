@@ -35,7 +35,7 @@ DHCP Servers and clients identify themselves with variable length DUID (Device U
 
 Whether using stateless or stateful configuration, the DHCP server is used to obtain the TFTP server address. This is encoded in the `BOOTFILE-URL` parameter. We send the client architecture type value `0x29` to identify a device.
 
-See https://datatracker.ietf.org/doc/html/rfc5970[RFC 5970] and the https://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml[IANA Dynamic Host Configutation Protocol for IPv6] documentation.
+See https://datatracker.ietf.org/doc/html/rfc5970[RFC 5970] and the https://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml[IANA Dynamic Host Configuration Protocol for IPv6] documentation.
 
 ==== Boot process
 
