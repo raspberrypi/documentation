@@ -1466,7 +1466,7 @@ This may not work if your monitor does not support standard CVT timings.
 
 ==== `sdtv_mode`
 
-The `sdtv_mode` command defines the TV standard used for composite video output. Composite is output on the 3.5mm AV jack, except on Raspberry Pi 1 Model A and B where it is output on the RCA jack.
+The `sdtv_mode` command defines the TV standard used for composite video output. Composite is output on the 3.5mm AV jack, except on Raspberry Pi 1 Model A and B, Raspberry Pi Zero and Zero 2 W. On the Raspberry Pi 1 Model A and B composite is output on the RCA jack. On Raspberry Pi Zero, composite output is available on the unpopulated `TV` header. On Raspberry Pi Zero 2 W, composite output is available via test points on the underside of the board.
 
 |===
 | sdtv_mode | result
@@ -1515,9 +1515,7 @@ Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite vide
 
 Set to `1` to enable composite video output, or `0` to disable. On Raspberry Pi 4, composite output is only available if you set this to `1`.
 
-On Raspberry Pi Zero, 1, 2 and 3, composite output will be enable if HDMI output is disabled. HDMI output is disabled when no HDMI display is detected, or  `hdmi_ignore_hotplug=1` is set.  Set `enable_tvout=0` to prevent composite being enabled when HDMI is disabled.
-
-On Raspberry Pi Zero, composite output is available on the unpopulated `TV` header. On Raspberry Pi Zero 2 W, composite output is available via test points on the underside of the board.
+On Raspberry Pi Zero, 1, 2 and 3, composite output will be enabled if HDMI output is disabled. HDMI output is disabled when no HDMI display is detected, or  `hdmi_ignore_hotplug=1` is set.  Set `enable_tvout=0` to prevent composite being enabled when HDMI is disabled.
 
 [%header,cols="1,1"]
 
