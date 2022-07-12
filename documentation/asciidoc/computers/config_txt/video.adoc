@@ -1466,7 +1466,7 @@ This may not work if your monitor does not support standard CVT timings.
 
 ==== `sdtv_mode`
 
-The `sdtv_mode` command defines the TV standard used for composite video output. Composite is output on the 3.5mm AV jack, except on Raspberry Pi 1 Model A and B, Raspberry Pi Zero and Zero 2 W. On the Raspberry Pi 1 Model A and B composite is output on the RCA jack. On Raspberry Pi Zero, composite output is available on the unpopulated `TV` header. On Raspberry Pi Zero 2 W, composite output is available via test points on the underside of the board.
+The `sdtv_mode` command defines the TV standard used for composite video output:
 
 |===
 | sdtv_mode | result
@@ -1489,6 +1489,26 @@ The `sdtv_mode` command defines the TV standard used for composite video output.
 | 18
 | Progressive scan PAL
 |===
+
+The table below describes where composite video output can be found on each model of Raspberry Pi computer:
+
+|===
+| model | composite output
+
+| Raspberry Pi 1 A and B
+| RCA jack
+
+| Raspberry Pi Zero
+| Unpopulated `TV` header
+
+| Raspberry Pi Zero 2 W
+| Test pads on underside of board
+
+| All other models
+| 3.5mm AV jack
+|===
+
+NOTE: Composite video output is not available on the Raspberry Pi 400.
 
 ==== `sdtv_aspect`
 
