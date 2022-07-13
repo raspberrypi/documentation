@@ -28,19 +28,27 @@ The `--list-cameras` will display the available cameras attached to the board th
 ----
 Available cameras
 -----------------
-0 : imx219 [3280x2464] (/base/soc/i2c0mux/i2c@1/pca@70/i2c@0/imx219@10)
-    Modes: 'SRGGB10_CSI2P' : 640x480 1640x1232 1920x1080 3280x2464 
-           'SRGGB8' : 640x480 1640x1232 1920x1080 3280x2464 
-1 : imx477 [4056x3040] (/base/soc/i2c0mux/i2c@1/pca@70/i2c@1/imx477@1a)
-    Modes: 'SRGGB10_CSI2P' : 1332x990 
-           'SRGGB12_CSI2P' : 2028x1080 2028x1520 4056x3040 
+0 : imx219 [3280x2464] (/base/soc/i2c0mux/i2c@1/imx219@10)
+    Modes: 'SRGGB10_CSI2P' : 640x480 [206.65 fps - (1000, 752)/1280x960 crop]
+                             1640x1232 [41.85 fps - (0, 0)/3280x2464 crop]
+                             1920x1080 [47.57 fps - (680, 692)/1920x1080 crop]
+                             3280x2464 [21.19 fps - (0, 0)/3280x2464 crop]
+           'SRGGB8' : 640x480 [206.65 fps - (1000, 752)/1280x960 crop]
+                      1640x1232 [41.85 fps - (0, 0)/3280x2464 crop]
+                      1920x1080 [47.57 fps - (680, 692)/1920x1080 crop]
+                      3280x2464 [21.19 fps - (0, 0)/3280x2464 crop]
+1 : imx477 [4056x3040] (/base/soc/i2c0mux/i2c@1/imx477@1a)
+    Modes: 'SRGGB10_CSI2P' : 1332x990 [120.05 fps - (696, 528)/2664x1980 crop]
+           'SRGGB12_CSI2P' : 2028x1080 [50.03 fps - (0, 440)/4056x2160 crop]
+                             2028x1520 [40.01 fps - (0, 0)/4056x3040 crop]
+                             4056x3040 [10.00 fps - (0, 0)/4056x3040 crop]
 ----
 
 In the above example, the IMX219 sensor is available at index 0 and IMX477 at index 1. The sensor mode identifier takes the following form:
 ----
 S<Bayer order><Bit-depth>_<Optional packing> : <Resolution list>
 ----
-For the IMX219 in the above example, all modes have a `RGGB` Bayer ordering and provide either 8-bit or 10-bit CSI2 packed readout at the listed resolutions.
+For the IMX219 in the above example, all modes have a `RGGB` Bayer ordering and provide either 8-bit or 10-bit CSI2 packed readout at the listed resolutions. The crop is specified as (<x>, <y>)/<Width>x<Height>, where (x, y) is the location of the crop window of size Width x Height in the sensor array. The units remain native sensor pixels, even if the sensor is being used in a binning or skipping mode.
 
 ----
 	--camera			Selects which camera to use <index>
