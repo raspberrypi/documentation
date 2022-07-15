@@ -1535,7 +1535,7 @@ Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite vide
 
 Set to `1` to enable composite video output, or `0` to disable. On Raspberry Pi 4, composite output is only available if you set this to `1`. Composite output is not available on the Raspberry Pi 400.
 
-On all models except Pi 4 and Pi 400, composite output will be enabled if HDMI output is disabled. HDMI output is disabled when no HDMI display is detected, or  `hdmi_ignore_hotplug=1` is set.  Set `enable_tvout=0` to prevent composite being enabled when HDMI is disabled.
+On all models except Raspberry Pi 4 and Raspberry Pi 400, composite output will be enabled if HDMI output is disabled. HDMI output is disabled when no HDMI display is detected, or  `hdmi_ignore_hotplug=1` is set.  Set `enable_tvout=0` to prevent composite being enabled when HDMI is disabled.
 
 [%header,cols="1,1"]
 
