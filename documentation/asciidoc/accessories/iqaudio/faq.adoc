@@ -51,13 +51,13 @@ audio_output {
 }
 ----
 
-=== Useful information
+=== Hardware information
 
 * PCB screws are all m2.5
 * PCB standoffs (for CASE) are 5mm male / female
-* PCB standoffs (for Pi to IQaudio products) are 9mm female / female
+* PCB standoffs (for Raspberry Pi to audio products) are 9mm female / female
 * PCB standoffs (for XLR to DAC PRO) are 8mm female / male
-* PCB standoffs (for the official Raspberry Pi 7-inch display) are 5mm male / female*
+* PCB standoffs (for the official Raspberry Pi 7-inch display) are 5mm male / female
 * The rotary encoders we have used and tested are the ALPHA 3 pin Rotary Encoder
 RE160F-40E3-20A-24P, the ALPS EC12E2430804 (RS: 729-5848), the Bourns ECW0JB24-AC0006L (RS: 263-2839)
 * The Barrel connector used for powering the DigiAMP+ is 2.5mmID, 5.5mmOD, 11mm
