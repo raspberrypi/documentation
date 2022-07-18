@@ -30,13 +30,7 @@ of our boards, others such as I2C can be shared across multiple boards.
 
 image::images/pin_out.png[width="80%"]
 
-=== Adding a rotary encoder
 
-Sample software that converts physical rotation to ALSA audio volume commands is available on GitHub: https://www.github.com/iqaudio/tools.
-
-The recommended pins / GPIO to use when adding a Rotary Encoder as a physical volume control, with the rotary encoder shaft facing towards you and pins facing downwards:
-
-image::images/rotary.png[width="80%"]
 
 
 
