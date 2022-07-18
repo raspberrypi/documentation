@@ -24,7 +24,7 @@ Built in MEMS microphone and supports mono Electret microphone or mono speaker (
 It also has GREEN (GPIO23) and RED (GPIO24) LEDs, that can be used for status and a tactile programmable 
 button (GPIO27) that can be used to start an event.
 
-==== Pin Outs:
+==== Pinouts:
 [cols="1,12"]
 |===
 | *P1/2* | Support external PHONO / RCA sockets if needed. P1: AUX IN, P2: AUX OUT.

@@ -15,7 +15,7 @@ DigiAMP{plus} has been designed to provide power to the Raspberry Pi and DigiAMP
 
 WARNING: DO NOT APPLY POWER TO THE RASPBERRY PI’s OWN POWER INPUT WHEN USING DIGIAMP{plus}.
 
-==== Pin Outs:
+==== Pinouts:
 [cols="1,12"]
 |===
 | *P5* | Alternative power input for hard wired installations (Polarity must be observed).

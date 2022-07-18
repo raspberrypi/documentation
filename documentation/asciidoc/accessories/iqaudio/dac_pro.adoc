@@ -14,7 +14,7 @@ immunity and best possible audio playback with the DAC Pro.
 The DAC Pro exposes two 3 pin headers (P7/P9) used by the optional XLR board to provide
 Differential / Balanced output exposed by XLR sockets above the Raspberry Pi’s USB/Ethernet ports.
 
-==== Pin Outs:
+==== Pinouts:
 [cols="1,12"]
 |===
 | *P1* | Analogue out (0..2V RMS), carries GPIO27, MUTE signal (headphone detect), Left and Right
