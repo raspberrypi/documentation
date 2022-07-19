@@ -2,7 +2,7 @@
 
 === Blink an LED
 
-The first program anyone writes when using a new microcontroller is to blink an LED on and off. The Raspberry Pi Pico comes with a single LED on-board. The LED is connected to `GP25` on the board's Raspberry RP2040 for Pico, and `WL_GPIO0` on the Infineon 43439 wireless chip for Pico W.
+The first program anyone writes when using a new microcontroller is to blink an LED on and off. The Raspberry Pi Pico comes with a single LED on-board. The LED is connected to `GP25` on the board's Raspberry Pi RP2040 for Pico, and `WL_GPIO0` on the Infineon 43439 wireless chip for Pico W.
 
 image:images/Blink-an-LED-640x360-v2.gif[]
 
