@@ -8,7 +8,7 @@ image:images/Blink-an-LED-640x360-v2.gif[]
 
 You can blink this on and off by,
 
-. Download the https://datasheets.raspberrypi.com/soft/blink.uf2[Blink UF2]
+. Download the Blink UF2 https://datasheets.raspberrypi.com/soft/blink.uf2[for Raspberry Pi Pico], or https://datasheets.raspberrypi.com/soft/blink_picow.uf2[for Pico W].
 . Push and hold the BOOTSEL button and plug your Pico into the USB port of your Raspberry Pi or other computer.
 . It will mount as a Mass Storage Device called RPI-RP2.
 . Drag and drop the Blink UF2 binary onto the RPI-RP2 volume. Pico will reboot.
