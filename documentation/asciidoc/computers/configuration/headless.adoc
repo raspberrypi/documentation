@@ -66,9 +66,9 @@ This file should contain a single line of text, consisting of `username:password
 To generate the encrypted password, the easiest way is to use OpenSSL on a Raspberry Pi that is already running – open a terminal window and enter:
 
 ----
-echo 'mypassword' | openssl passwd -6 -stdin
+openssl passwd -6
 ----
 
-This will produce what looks like a string of random characters, which is actually an encrypted version of the supplied password.
+This will prompt you to enter your password, and verify it. It will then produce what looks like a string of random characters, which is actually an encrypted version of the supplied password.
 
 WARNING: If you are creating this file on Microsoft Windows you should ensure that you do no add a newline to the end of the file. In Windows, lines end with both the line feed and carriage return ASCII characters, but Unix uses only a line feed and treats the additional carriage return character as part of the password hash.
