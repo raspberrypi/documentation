@@ -35,7 +35,7 @@ The conditional model filters are applied according to the following table.
 | Pi 400
 
 | [cm4]
-| Compute Module 4
+| Compute Module 4<<cm4clarification>>
 
 | [pi0]
 | Zero, Zero W, Zero 2 W
@@ -47,11 +47,13 @@ The conditional model filters are applied according to the following table.
 | Zero 2 W
 
 | [board-type=Type]
-| Filter by `Type` number - see xref:raspberry-pi.adoc#raspberry-pi-revision-codes[Raspberry Pi Revision Codes] E.g `[board-type=0x14]` would match CM4.
+| Filter by `Type` number - see xref:raspberry-pi.adoc#raspberry-pi-revision-codes[Raspberry Pi Revision Codes]. For example, `[board-type=0x13]` would match Raspberry Pi 400.
 
 |===
 
-These are particularly useful for defining different `kernel`, `initramfs`, and `cmdline` settings, as the Raspberry Pi 1 and Raspberry Pi 2 require different kernels. They can also be useful to define different overclocking settings, as the Raspberry Pi 1 and Raspberry Pi 2 have different default speeds. For example, to define separate `initramfs` images for each:
+[[cm4clarification,^**1**^]] **1.** Does not include CM4S. To filter for CM4S, use `[board-type=0x15]`.
+
+Filters are particularly useful for defining different `kernel`, `initramfs`, and `cmdline` settings, as the Raspberry Pi 1 and Raspberry Pi 2 require different kernels. They can also be useful to define different overclocking settings, as the Raspberry Pi 1 and Raspberry Pi 2 have different default speeds. For example, to define separate `initramfs` images for each:
 
 ----
  [pi1]
