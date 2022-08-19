@@ -52,6 +52,7 @@ Then you need to install Ruby,
 
 ```
 $ brew install ruby@2.7
+$ gem install bundler
 ```
 
 **NOTE:** Homebrew defaults to Ruby 3.0 which is incompatible with Asciidoctor.
