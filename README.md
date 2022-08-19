@@ -97,6 +97,7 @@ Go ahead and `brew install` the other dependencies,
 $ brew install python@3
 $ brew install ninja
 $ brew install gumbo-parser
+$ pip3 install pyyaml
 ```
 
 ### Install Scripting Dependencies
