@@ -36,7 +36,7 @@ export PATH="$PATH:$GEM_HOME/bin"
 
 and close and relaunch your Terminal window to have these new variables activated. Finally, run
 ```
-$ gem install bundler
+$ gem install bundler -v 2.2.15
 ```
 to install the latest version of the Ruby `bundle` command.
 
