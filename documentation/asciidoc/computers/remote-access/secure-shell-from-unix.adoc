@@ -2,21 +2,29 @@
 
 You can use SSH to connect to your Raspberry Pi from a Linux desktop, another Raspberry Pi, or from an Apple Mac without installing additional software.
 
-Open a terminal window on your computer replacing `<IP>` with the IP address of the Raspberry Pi you're trying to connect to,
+Open a terminal window on your computer replacing `<USERNAME>` with the user name you wish to log into on the Raspberry Pi and `<IP>` with the IP address of the Raspberry Pi you're trying to connect to,
 
 ----
-ssh pi@<IP>
+ssh <USERNAME>@<IP>
+----
+
+For example, if the username is `pi` and the IP address of the Raspberry Pi is `192.168.1.5`, the command would be:
+
+----
+ssh pi@192.168.1.5
 ----
 
 When the connection works you will see a security/authenticity warning. Type `yes` to continue. You will only see this warning the first time you connect.
 
 NOTE: If you receive a `connection timed out` error it is likely that you have entered the wrong IP address for the Raspberry Pi.
 
+NOTE: If you have not logged onto the Raspberry Pi before, with a montior and keyboard plugged in follow xref:getting-started.adoc#configuration-on-first-boot[the first-boot wizard]. If the Raspberry Pi cannot be accessed with a keyboard and a monitor, please refer to xref:configuration.adoc#headless[Setting up a Headless Raspberry Pi]
+
 WARNING: In the event your Raspberry Pi has taken the IP address of a device to which your computer has connected before (even if this was on another network), you may be given a warning and asked to clear the record from your list of known devices. Following this instruction and trying the `ssh` command again should be successful.
 
-Next you will be prompted for the password for the `pi` login: the default password on Raspberry Pi OS is `raspberry`. 
+Next you will be prompted for the password for the user login. The password is not visible while being typed, press enter to submit.
 
-For security reasons it is highly recommended to change the default password on the Raspberry Pi (also, you can not login through ssh if the password is blank). You should now be able to see the Raspberry Pi prompt, which will be identical to the one found on the Raspberry Pi itself.
+You should now be able to see the Raspberry Pi prompt, which will be identical to the one found on the Raspberry Pi itself.
 
 If you have set up another user on the Raspberry Pi, you can connect to it in the same way, replacing the username with your own, e.g. `eben@192.168.1.5`
 
