@@ -5,6 +5,8 @@ You can access the command line of a Raspberry Pi remotely from another computer
 
 You will only have access to the command line, not the full desktop environment. For a full remote desktop, see xref:remote-access.adoc#vnc[VNC].
 
+NOTE: For headless setup, please refer to xref:configuration.adoc#headless[Setting up a Headless Raspberry Pi]
+
 === Set up your Local Network
 
 Make sure your Raspberry Pi is properly set up and connected. If you are using wireless networking, this can be enabled via the desktop user interface, or using from the command line. If you are not using wireless connectivity, plug your Raspberry Pi directly into the router.
@@ -28,7 +30,5 @@ Alternatively you can enable it from the terminal using the xref:configuration.a
 . Choose `Yes`
 . Select `Ok`
 . Choose `Finish`
-
-NOTE: For headless setup, SSH can be enabled by placing a file named `ssh`, without any extension, onto the boot partition of the SD Card. When the Raspberry Pi boots, it looks for the `ssh` file. If it is found, SSH is enabled and the file is deleted. The content of the file does not matter; it could contain text, or nothing at all.
 
 WARNING: When enabling SSH on a Raspberry Pi that may be connected to the internet, you should ensure that your password is not easily brute forced.
