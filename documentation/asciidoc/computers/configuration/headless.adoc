@@ -1,10 +1,22 @@
 == Setting up a Headless Raspberry Pi
 
-If you do not use a monitor or keyboard to run your Raspberry Pi (known as headless), but you still need to do some wireless setup, there is a facility to enable wireless networking and SSH when creating an image.
+For people who run their Raspberry Pi headless and therefore cannot work through xref:getting-started.adoc#configuration-on-first-boot[the first-boot wizard], the Raspberry Pi Imager tool allows you to preconfigure an image with a user account; when an image created like this is first booted, it will come straight up in the desktop, logged in as the user created in the Imager.
 
-Once an image is created on an SD card, by inserting it into a card reader on a Linux or Windows machines the xref:configuration.adoc#the-boot-folder[boot folder] can be accessed. Adding certain files to this folder will activate certain setup features on the first boot of the Raspberry Pi.
+To preconfigure an image like this, when you have selected the source image and destination in Imager, click the “settings” button – the picture of a cogwheel – before clicking “Write”, and use the Advanced options menu to enter a username and password, along with any other preconfiguration you want.
 
-IMPORTANT: If you are installing Raspberry Pi OS, and intend to run it headless, you will need to create a new user account. Since you will not be able to create the user account xref:getting-started.adoc#configuration-on-first-boot[using the first-boot wizard] as it requires both a monitor and a keyboard, you *MUST* add a `userconf.txt` file to the boot folder to create a user on first boot or configure the OS with a user account using the xref:getting-started.adoc#advanced-options[Advanced Menu] in the Raspberry Pi Imager.
+image::../getting-started/images/rpi_imager.png[width="80%"]
+
+There are also mechanisms to preconfigure an image without using Imager. To set up a user on first boot and bypass the wizard completely, create a file called userconf or userconf.txt in the boot partition of the SD card; this is the part of the SD card which can be seen when it is mounted in a Windows or MacOS computer.
+
+This file should contain a single line of text, consisting of username:encrypted- password – so your desired username, followed immediately by a colon, followed immediately by an encrypted representation of the password you want to use.
+
+To generate the encrypted password, the easiest way is to use OpenSSL on a Raspberry Pi that is already running – open a terminal window and enter
+
+```bash
+echo 'mypassword' | openssl passwd -6 -stdin
+```
+
+This will produce what looks like a string of random characters, which is actually an encrypted version of the supplied password.
 
 === Configuring Networking
 
