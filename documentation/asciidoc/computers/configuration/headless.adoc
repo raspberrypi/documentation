@@ -1,6 +1,6 @@
 == Setting up a Headless Raspberry Pi
 
-For people who run their Raspberry Pi headless and therefore cannot work through xref:getting-started.adoc#configuration-on-first-boot[the first-boot wizard], the Raspberry Pi Imager tool allows you to preconfigure an image with a user account; when an image created like this is first booted, it will come straight up in the desktop, logged in as the user created in the Imager.
+For people who run their Raspberry Pi headless and therefore cannot work through xref:getting-started.adoc#configuration-on-first-boot[the first-boot wizard], the Raspberry Pi Imager tool allows you to preconfigure an image with a username and password.
 
 To preconfigure an image like this, when you have selected the source image and destination in Imager, click the “settings” button – the picture of a cogwheel – before clicking “Write”, and use the Advanced options menu to enter a username and password, along with any other preconfiguration you want.
 
