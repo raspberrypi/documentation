@@ -11,8 +11,9 @@ include::iqaudio/codec_zero.adoc[]
 
 include::iqaudio/configuration.adoc[]
 
+include::iqaudio/getting_started.adoc[]
+
 include::iqaudio/advanced.adoc[]
 
 include::iqaudio/faq.adoc[]
 
-include::iqaudio/getting_started.adoc[]
