@@ -1,18 +1,16 @@
 === Raspberry Pi DAC Pro
 
-Raspberry Pi DAC Pro is our highest-fidelity DAC (Digital to Analogue Converter) HAT for all generations of Raspberry Pi.
+Our Raspberry Pi DAC Pro HAT is our highest-fidelity DAC (Digital to Analogue Converter).
 
 image::images/dac_pro.png[width="80%"]
 
-The DAC Pro uses the Texas Instruments PCM5242 to deliver outstanding Signal to Noise Ration
-and supports Balanced / Differential out in parallel to Phono / RCA line level output. It also includes a
+With the Texas Instruments PCM5242, the DAC Pro provides outstanding Signal to Noise Ratio
+and supports Balanced/Differential out in parallel to Phono/RCA line level output. It also includes a
 dedicated headphone amplifier. The DAC Pro is powered by Raspberry Pi through the GPIO header.
 
-Component selection and track layout have been in the forefront of our design to ensure noise
-immunity and best possible audio playback with the DAC Pro.
+A careful selection of components and the layout of tracks have been at the forefront of our design in order to ensure noise immunity and the best playback of audio.
 
-The DAC Pro exposes two 3 pin headers (P7/P9) used by the optional XLR board to provide
-Differential / Balanced output exposed by XLR sockets above the Raspberry Pi’s USB/Ethernet ports.
+As part of the DAC Pro, two 3 pin headers (P7/P9) are exposed above the Raspberry Pi's USB and Ethernet ports for use by the optional XLR board that allows differential/balanced output.
 
 ==== Pinouts:
 [cols="1,12"]
