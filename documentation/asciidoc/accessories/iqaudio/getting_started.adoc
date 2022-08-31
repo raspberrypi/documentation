@@ -1,1 +1,148 @@
 == Getting started
+
+A Raspberry Pi Codec Zero and a few additional components can be used to create a fun and simple swear box for children and is an ideal audio based starter project. Pressing a button will produce a random 'child-friendly' curse word. Holding the button will allow the child to record their own sound for playback and holding the button for a longer period of time will erase all previously recorded sounds. As the Codec Zero comes equipped with an on-board microphone and speaker driver with screw terminals, it's ideal for this application. 
+
+image::images/Swear_Box.png[width="80%"]
+
+=== What you'll need
+
+* Raspberry Pi 4 (although any model will do)
+* USB power supply unit (PSU)
+* microSD card
+* Speaker
+* Momentary push button
+* Container/box for all the components
+
+=== Setting up your Raspberry Pi
+
+It is essential that you have a working operating system installed and updated on your Raspberry Pi. Our guides on https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system[Getting Started] cover this in great detail. Once this has been completed follow the Codec Zero Configuration instructions above, including the example given which will enable the on-board MEMS microphone and output for speaker playback. Don't forget to add to the `/boot/config.txt` file for the commands to remain persistent on reboot.
+
+When you are happy that your Raspberry Pi is configured, and the Codec Zero HAT is attached correctly, we need to create a Python program in your home folder. Whilst we intend to enable your Raspberry Pi to operate without any input other than a single push button until the project is complete you may choose to program it either with a keyboard, mouse, and monitor or headless, via SSH (Secure Shell). To get started open a Terminal window and type:
+
+----
+$ sudo nano box.py
+----
+
+Adding the following to the file:
+
+----
+import gpiozero
+import time
+import os
+import random
+from datetime import datetime
+
+date = datetime.now().strftime("%d_%m_%Y-%H:%M:%S")
+print(f"{date}")
+
+def rndmp3():
+        randomfile = random.choice(os.listdir("/home/pi/sounds/"))
+        file = ' /home/pi/sounds/' + randomfile
+        ext = os.path.splitext(randomfile)[-1].lower()
+        if ext == ".m4a":
+                os.system('pkill mplayer')
+                os.system('mplayer' + file + ' &');
+def record():
+        os.system('pkill mplayer')
+        os.system('pkill aplay')
+        os.system('aplay /home/pi/beep.wav')
+        os.system('pkill aplay')
+        os.system('arecord --device=hw:2,0 --format S16_LE --duration=5 --rate 48000 -c2 /home/pi/sounds/$(date +"%d_%m_%Y-%H:%M:%S")_voice.m4a');
+
+class cmdbutton(object):
+
+    def __init__(self, pin, short_duration, long_duration, short_action=None, long_action=None):
+        self.__pin = pin
+        self.short_duration = short_duration
+        self.long_duration = long_duration
+        self.short_action = short_action
+        self.long_action = long_action
+        self.__button = gpiozero.Button(self.__pin, pull_up=True,
+                                        hold_time=self.long_duration)
+        self.__press_time = None
+        self.__button.when_held = self.__on_hold
+        self.__button.when_pressed = self.__on_press
+        self.__button.when_released = self.__on_release
+    
+    def __on_press(self):
+        self.__press_time = time.time()
+
+    def __on_release(self):
+        release_time = time.time()
+        pressed_for = release_time - self.__press_time
+        if pressed_for <= self.short_duration:
+            # short press
+            try:
+                rndmp3()
+            except KeyboardInterrupt:
+                raise
+            except:
+                pass
+				
+    def __on_hold(self):
+            # long press
+            try:
+                record()
+            except KeyboardInterrupt:
+                raise
+            except:
+                pass
+
+
+if __name__ == '__main__':
+    def do_short():
+        print('short press')
+
+    def do_long():
+        print('long press')
+
+    pin = 27
+    short_duration = 0.1
+    long_duration = 7
+
+    btn = cmdbutton(pin=pin,
+                    short_duration=short_duration,
+                    long_duration=long_duration,
+                    short_action = do_short,
+                    long_action=do_long)
+
+    while True:
+        time.sleep(1)
+----
+
+Ctrl X, Y and Enter to save and now that we have created our main script type the following to make the program executable:
+
+----
+$ sudo chmod +x box.py
+----
+
+We need the script to be run whenever the device is powered so, just as we did in the configuration of the Codec Zero, we will add an entry to the `/boot/config.txt` file to do this automatically, type:
+
+----
+$ sudo nano /etc/rc.local
+----
+
+Add the additional command `python /home/pi/box.py` above the `exit 0` line and then Ctrl X, Y and Enter to save. The file should now look similar to this:
+
+----
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+sudo alsactl restore -f /home/pi/Pi-Codec/IQaudIO_Codec_OnboardMIC_record_and_SPK_playback.state &
+python /home/pi/box.py
+
+exit 0
+----
+
+
+
