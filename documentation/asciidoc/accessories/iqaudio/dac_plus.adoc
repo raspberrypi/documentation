@@ -4,7 +4,7 @@ Raspberry Pi DAC{plus} is a high-resolution audio output HAT that provides 24 bi
 
 image::images/dac_plus.png[width="80%"]
 
-A Texas Instruments PCM5122 is used in the DAC[plus] in order to deliver analogue audio to the Phono connectors of the device. It also supports a dedicated headphone amplifier and is powered by the Raspberry Pi through the GPIO header.
+A Texas Instruments PCM5122 is used in the DAC{plus} in order to deliver analogue audio to the Phono connectors of the device. It also supports a dedicated headphone amplifier and is powered by the Raspberry Pi through the GPIO header.
 
 ==== Pinouts:
 [cols="1,12"]
