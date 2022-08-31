@@ -1,6 +1,6 @@
 == Getting started
 
-A Raspberry Pi Codec Zero and a few additional components can be used to create a fun and simple swear box for children and is an ideal audio based starter project. Pressing a button will produce a random 'child-friendly' curse word. Holding the button will allow the child to record their own sound for playback and holding the button for a longer period of time will erase all previously recorded sounds. As the Codec Zero comes equipped with an on-board microphone and speaker driver with screw terminals, it's ideal for this application. 
+An ideal audio-based starter project, the Raspberry Pi Codec Zero can be used to create a fun and simple chatter box for children. It plays a random 'child-friendly' chat word when the user presses a button. Holding the button for a longer period of time will allow the child to record their own sounds for playback. Due to its on-board microphone and speaker driver with screw terminals, the Codec Zero is ideal for this application. 
 
 image::images/Swear_Box.png[width="80%"]
 
@@ -17,7 +17,7 @@ image::images/Swear_Box.png[width="80%"]
 
 It is essential that you have a working operating system installed and updated on your Raspberry Pi. Our guides on https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system[Getting Started] cover this in great detail. Once this has been completed follow the Codec Zero Configuration instructions above, including the example given which will enable the on-board MEMS microphone and output for speaker playback. Don't forget to add to the `/boot/config.txt` file for the commands to remain persistent on reboot.
 
-When you are happy that your Raspberry Pi is configured, and the Codec Zero HAT is attached correctly, we need to create a Python program in your home folder. Whilst we intend to enable your Raspberry Pi to operate without any input other than a single push button until the project is complete you may choose to program it either with a keyboard, mouse, and monitor or headless, via SSH (Secure Shell). To get started open a Terminal window and type:
+Once your Raspberry Pi has been configured and the Codec Zero HAT has been attached correctly, we need to create a Python script in your home directory. Although we intend to enable your Raspberry Pi to operate without any input other than a single push button until the project is completed, you may choose to program it either with a keyboard, mouse, and monitor or headless, via SSH (Secure Shell). Start by opening a Terminal window and typing:
 
 ----
 $ sudo nano box.py
