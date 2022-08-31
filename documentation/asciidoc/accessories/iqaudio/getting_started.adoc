@@ -35,19 +35,26 @@ from datetime import datetime
 date = datetime.now().strftime("%d_%m_%Y-%H:%M:%S")
 print(f"{date}")
 
-def rndmp3():
+path = '/home/pi/sounds'
+
+isExist = os.path.exists(path)
+
+if not isExist: 
+  os.makedirs(path)
+  print("The new directory is created!")
+  os.system('chmod 777 -R /home/pi/sounds')
+
+def r4ndom():
         randomfile = random.choice(os.listdir("/home/pi/sounds/"))
         file = ' /home/pi/sounds/' + randomfile
         ext = os.path.splitext(randomfile)[-1].lower()
         if ext == ".m4a":
-                os.system('pkill mplayer')
-                os.system('mplayer' + file + ' &');
+                os.system('pkill aplay')
+                os.system('aplay' + file + ' &');
 def record():
-        os.system('pkill mplayer')
         os.system('pkill aplay')
-        os.system('aplay /home/pi/beep.wav')
-        os.system('pkill aplay')
-        os.system('arecord --device=hw:2,0 --format S16_LE --duration=5 --rate 48000 -c2 /home/pi/sounds/$(date +"%d_%m_%Y-%H:%M:%S")_voice.m4a');
+        os.system('speaker-test -c1 -t sine -f 800 -P 64 -p 0.4 -l 1')
+        os.system('arecord --device=hw:2,0 --format S16_LE --duration=5 --rate 48000 -c2 /home/pi/sounds/$(date +"%d_%m_%Y-%H_%M_%S")_voice.m4a &');
 
 class cmdbutton(object):
 
@@ -71,16 +78,14 @@ class cmdbutton(object):
         release_time = time.time()
         pressed_for = release_time - self.__press_time
         if pressed_for <= self.short_duration:
-            # short press
             try:
-                rndmp3()
+                r4ndom()
             except KeyboardInterrupt:
                 raise
             except:
                 pass
-				
+
     def __on_hold(self):
-            # long press
             try:
                 record()
             except KeyboardInterrupt:
@@ -108,6 +113,7 @@ if __name__ == '__main__':
 
     while True:
         time.sleep(1)
+
 ----
 
 Ctrl X, Y and Enter to save and now that we have created our main script type the following to make the program executable:
