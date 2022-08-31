@@ -1,6 +1,6 @@
 === Raspberry Pi Codec Zero
 
-Raspberry Pi Codec Zero is a Raspberry Pi Zero sized audio HAT. It delivers bi-directional digital audio signals (I2S) between Raspberry Pi and its onboard Dialog Semiconductor DA7212 codec. Codec Zero supports a range of input and output devices.
+Raspberry Pi Codec Zero is a Raspberry Pi Zero sized audio HAT. It delivers bi-directional digital audio signals (I2S) between Raspberry Pi and its onboard Dialog Semiconductor DA7212 codec. The Codec Zero supports a range of input and output devices.
 
 * High performance 24-bit audio codec
 * Supports common audio sample rates between 8-96kHz
@@ -9,7 +9,7 @@ Raspberry Pi Codec Zero is a Raspberry Pi Zero sized audio HAT. It delivers bi-d
 * Automatic MEMS disabling on Mic2 insert detect
 * Supports additional (no fit) Mono Electret microphone (Mic1 right)
 * Stereo auxiliary input channel (AUX IN) - PHONO/RCA connectors
-* Stereo auxiliary output channel (Headphone / AUX OUT) - 3.5mm Stereo jack
+* Stereo auxiliary output channel (Headphone / AUX OUT)
 * Flexible analog and digital mixing paths
 * DSP (Digital Signal Processors) for ALC (Automatic Level Control)
 * 5-band EQ (Equalisation)
@@ -17,12 +17,11 @@ Raspberry Pi Codec Zero is a Raspberry Pi Zero sized audio HAT. It delivers bi-d
 
 image::images/codec_zero.png[width="80%"]
 
-Codec Zero includes the HAT EEPROM allowing for auto configuration of the Linux environment if needed.
+The Codec Zero includes an EEPROM which can be used for auto-configuration of the Linux environment if necessary.
 
-Built in MEMS microphone and supports mono Electret microphone or mono speaker (1.2W / 8Ω).
+The unit has an integrated MEMS microphone, can be used with stereo microphone input via 3.5mm socket and a mono speaker (1.2W / 8Ω).
 
-It also has GREEN (GPIO23) and RED (GPIO24) LEDs, that can be used for status and a tactile programmable 
-button (GPIO27) that can be used to start an event.
+In addition to the green (GPIO23) and red (GPIO24) LEDs, a tactile programmable button (GPIO27) is also provided.
 
 ==== Pinouts:
 [cols="1,12"]
@@ -33,5 +32,4 @@ button (GPIO27) that can be used to start an event.
 
 image::images/square.png[]
 
-The Codec Zero makes a great starting point for many projects such as a walkie talkie, intelligent doorbell, vintage radio
-hack or smart speaker.
+A Codec Zero is an ideal design starting point for projects such as walkie-talkies, smart doorbells, vintage radio hacks, or smart speakers.
