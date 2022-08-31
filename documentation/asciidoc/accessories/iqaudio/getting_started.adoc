@@ -20,7 +20,7 @@ It is essential that you have a working operating system installed and updated o
 Once your Raspberry Pi has been configured and the Codec Zero HAT has been attached correctly, we need to create a Python script in your home directory. Although we intend to enable your Raspberry Pi to operate without any input other than a single push button until the project is completed, you may choose to program it either with a keyboard, mouse, and monitor or headless, via SSH (Secure Shell). Start by opening a Terminal window and typing:
 
 ----
-$ sudo nano box.py
+$ sudo nano chatterbox.py
 ----
 
 Adding the following to the file:
@@ -119,7 +119,7 @@ if __name__ == '__main__':
 Ctrl X, Y and Enter to save and now that we have created our main script type the following to make the program executable:
 
 ----
-$ sudo chmod +x box.py
+$ sudo chmod +x chatterbox.py
 ----
 
 We need the script to be run whenever the device is powered so, just as we did in the configuration of the Codec Zero, we will add an entry to the `/boot/config.txt` file to do this automatically, type:
@@ -128,7 +128,7 @@ We need the script to be run whenever the device is powered so, just as we did i
 $ sudo nano /etc/rc.local
 ----
 
-Add the additional command `python /home/pi/box.py` above the `exit 0` line and then Ctrl X, Y and Enter to save. The file should now look similar to this:
+Add the additional command `python /home/pi/chatterbox.py` above the `exit 0` line and then Ctrl X, Y and Enter to save. The file should now look similar to this:
 
 ----
 #!/bin/sh -e
@@ -145,7 +145,7 @@ Add the additional command `python /home/pi/box.py` above the `exit 0` line and 
 # By default this script does nothing.
 
 sudo alsactl restore -f /home/pi/Pi-Codec/IQaudIO_Codec_OnboardMIC_record_and_SPK_playback.state &
-python /home/pi/box.py
+python /home/pi/chatterbox.py
 
 exit 0
 ----
