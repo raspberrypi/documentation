@@ -21,7 +21,7 @@ Raspberry Pi's `libcamera-apps` are not only command line applications that make
 
 `libcamera` is an open source Linux community project. More information is available at the https://libcamera.org[`libcamera` website].
 
-The `libcamera` source code can be found and checked out from the https://git.linuxtv.org/libcamera.git/[official libcamera repository].
+The `libcamera` source code can be found and checked out from the https://git.linuxtv.org/libcamera.git/[official libcamera repository], although we work from a https://github.com/raspberrypi/libcamera.git[fork] that lets us control when we get _libcamera_ updates.
 
 Underneath the `libcamera` core, Raspberry Pi provides a custom _pipeline handler_, which is the layer that `libcamera` uses to drive the sensor and ISP (Image Signal Processor) on the Raspberry Pi itself. Also part of this is a collection of well-known _control algorithms_, or _IPAs_ (Image Processing Algorithms) in `libcamera` parlance, such as AEC/AGC (Auto Exposure/Gain Control), AWB (Auto White Balance), ALSC (Auto Lens Shading Correction) and so on.
 
