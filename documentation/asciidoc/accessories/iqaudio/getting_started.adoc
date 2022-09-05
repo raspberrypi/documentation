@@ -1,6 +1,6 @@
 == Getting started
 
-An ideal audio-based starter project, the Raspberry Pi Codec Zero can be used to create a fun and simple chatter box for children. It plays a random 'child-friendly' chat word when the user presses a button. Holding the button for a longer period of time will allow the child to record their own sounds for playback. Due to its on-board microphone and speaker driver with screw terminals, the Codec Zero is ideal for this application. 
+Using the Raspberry Pi Codec Zero, you can create a fun and simple 'Chatter Box' for children as an ideal audio-based starter project. When the user presses a button, a random 'child-friendly' chat word is played. Holding the button for a longer period of time will allow the child to record their own sounds for playback, while holding for an extended period of time will erase all previously recorded sounds. Its on-board microphone, programmable button, and speaker driver with screw terminals make the Codec Zero an ideal choice for this application. 
 
 image::images/Swear_Box.png[width="80%"]
 
@@ -9,31 +9,42 @@ image::images/Swear_Box.png[width="80%"]
 * Raspberry Pi 4 (although any model will do)
 * USB power supply unit (PSU)
 * microSD card
-* Speaker
-* Momentary push button
+* Passive speaker (we're using a 3" 4Ω - 5W Speaker)
+
+==== Optional extras
+
+Add the following components to your project to make it more impressive: 
+
+* Momentary push button (We're using an illuminated 'arcade' style button)
 * Container/box for all the components
 
 === Setting up your Raspberry Pi
 
 It is essential that you have a working operating system installed and updated on your Raspberry Pi. Our guides on https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system[Getting Started] cover this in great detail. Once this has been completed follow the Codec Zero Configuration instructions above, including the example given which will enable the on-board MEMS microphone and output for speaker playback. Don't forget to add to the `/boot/config.txt` file for the commands to remain persistent on reboot.
 
-Once your Raspberry Pi has been configured and the Codec Zero HAT has been attached correctly, we need to create a Python script in your home directory. Although we intend to enable your Raspberry Pi to operate without any input other than a single push button until the project is completed, you may choose to program it either with a keyboard, mouse, and monitor or headless, via SSH (Secure Shell). Start by opening a Terminal window and typing:
+Once your Raspberry Pi has been configured and the Codec Zero HAT has been attached correctly connect the two wires from you speaker to the screw terminals on the Codec Zero and power the device on. We now need to create a Python script in your home directory. Although we intend to enable your Raspberry Pi to operate without any input other than a single push button until the project is completed, you may choose to program it either with a keyboard, mouse, and monitor or headless, via SSH (Secure Shell). Start by opening a Terminal window and typing:
 
 ----
-$ sudo nano chatterbox.py
+$ sudo nano chatter_box.py
 ----
 
 Adding the following to the file:
 
 ----
-import gpiozero
+#!/usr/bin/env python3
+from gpiozero import Button
+from signal import pause
 import time
-import os
 import random
+import os
 from datetime import datetime
+
+# Setup time and date format -
 
 date = datetime.now().strftime("%d_%m_%Y-%H:%M:%S")
 print(f"{date}")
+
+# Make sure that the 'sounds' folder exists, and if it does not, create it -
 
 path = '/home/pi/sounds'
 
@@ -44,111 +55,78 @@ if not isExist:
   print("The new directory is created!")
   os.system('chmod 777 -R /home/pi/sounds')
 
-def r4ndom():
+# Download a 'burp' sound if it does not already exist -
+
+burp = '/home/pi/burp.wav'
+
+isExist = os.path.exists(burp)
+
+if not isExist:
+  os.system('wget http://rpf.io/burp -O burp.wav')
+  print("Sound downloaded")
+
+# Setup button functions - Pin 27 = Button hold time 10 seconds.
+
+button = Button(27, hold_time=10)
+
+def pressed():
+    global press_time
+    press_time = time.time()
+    print("Pressed at %s" % (press_time));
+
+def released():
+    release_time = time.time()
+    pressed_for = release_time - press_time
+    print("Released at %s after %.2f seconds" % (release_time, pressed_for))
+    if pressed_for < button.hold_time:
+        print("This is a short press")
         randomfile = random.choice(os.listdir("/home/pi/sounds/"))
         file = ' /home/pi/sounds/' + randomfile
-        ext = os.path.splitext(randomfile)[-1].lower()
-        if ext == ".m4a":
-                os.system('pkill aplay')
-                os.system('aplay' + file + ' &');
-def record():
-        os.system('pkill aplay')
-        os.system('speaker-test -c1 -t sine -f 800 -P 64 -p 0.4 -l 1')
-        os.system('arecord --device=hw:2,0 --format S16_LE --duration=5 --rate 48000 -c2 /home/pi/sounds/$(date +"%d_%m_%Y-%H_%M_%S")_voice.m4a &');
+        os.system('aplay' + file + ' &')
+    elif pressed_for > 20:
+        os.system('aplay /home/pi/burp.wav')
+        print("Erasing all recorded sounds")
+        os.system('rm /home/pi/sounds/*');
+		
+def held():
+    print("This is a long press")
+    os.system('aplay /home/pi/burp.wav')
+    os.system('arecord --format S16_LE --duration=5 --rate 48000 -c2 /home/pi/sounds/$(date +"%d_%m_%Y-%H_%M_%S")_voice.m4a');
 
-class cmdbutton(object):
+button.when_pressed = pressed
+button.when_released = released
+button.when_held = held
 
-    def __init__(self, pin, short_duration, long_duration, short_action=None, long_action=None):
-        self.__pin = pin
-        self.short_duration = short_duration
-        self.long_duration = long_duration
-        self.short_action = short_action
-        self.long_action = long_action
-        self.__button = gpiozero.Button(self.__pin, pull_up=True,
-                                        hold_time=self.long_duration)
-        self.__press_time = None
-        self.__button.when_held = self.__on_hold
-        self.__button.when_pressed = self.__on_press
-        self.__button.when_released = self.__on_release
-    
-    def __on_press(self):
-        self.__press_time = time.time()
-
-    def __on_release(self):
-        release_time = time.time()
-        pressed_for = release_time - self.__press_time
-        if pressed_for <= self.short_duration:
-            try:
-                r4ndom()
-            except KeyboardInterrupt:
-                raise
-            except:
-                pass
-
-    def __on_hold(self):
-            try:
-                record()
-            except KeyboardInterrupt:
-                raise
-            except:
-                pass
-
-
-if __name__ == '__main__':
-    def do_short():
-        print('short press')
-
-    def do_long():
-        print('long press')
-
-    pin = 27
-    short_duration = 0.1
-    long_duration = 7
-
-    btn = cmdbutton(pin=pin,
-                    short_duration=short_duration,
-                    long_duration=long_duration,
-                    short_action = do_short,
-                    long_action=do_long)
-
-    while True:
-        time.sleep(1)
+pause()
 
 ----
 
-Ctrl X, Y and Enter to save and now that we have created our main script type the following to make the program executable:
+Ctrl X, Y and Enter to save. To make the script executable type the following:
 
 ----
-$ sudo chmod +x chatterbox.py
+$ sudo chmod +x chatter_box.py
 ----
 
-We need the script to be run whenever the device is powered so, just as we did in the configuration of the Codec Zero, we will add an entry to the `/boot/config.txt` file to do this automatically, type:
+Our script must run whenever the device is powered on, we can use the `/boot/config.txt` file, as we did for the Codec Zero configuration instructions, but another option is to setup a crontab daemon, whose name originates from Chronos, the Greek word for time. It's a very useful process for automating the execution of commands at specified times or intervals. Type the following to create your crontab file:
 
 ----
-$ sudo nano /etc/rc.local
+$ crontab -e
 ----
 
-Add the additional command `python /home/pi/chatterbox.py` above the `exit 0` line and then Ctrl X, Y and Enter to save. The file should now look similar to this:
+You will be prompted to select an editor, we recommend using “nano”. Select it by entering the corresponding number, and hit enter to continue.
+
+There are a number of crontab commands available to you, we want our script to be run on power up we will be using the `@reboot` function. Add the following to the bottom of the crontab file:
 
 ----
-#!/bin/sh -e
-#
-# rc.local
-#
-# This script is executed at the end of each multiuser runlevel.
-# Make sure that the script will "exit 0" on success or any other
-# value on error.
-#
-# In order to enable or disable this script just change the execution
-# bits.
-#
-# By default this script does nothing.
-
-sudo alsactl restore -f /home/pi/Pi-Codec/IQaudIO_Codec_OnboardMIC_record_and_SPK_playback.state &
-python /home/pi/chatterbox.py
-
-exit 0
+@reboot python /home/pi/chatter_box.py
 ----
+
+Ctrl X, Y and Enter to save and then reboot. The next step is to ensure that everything is functioning as expected. In order to record your first sound, push the button and release when you hear the burp sound. Speak near the device and it will record for five seconds. Release the button and press it briefly again to hear the recording. You may repeat this process as many times as you wish and your sounds will be played back in a random order. Delete all recordings by pressing and holding the button, keeping the button pressed through the first burp and recoding process, and releasing the button after at least 20 seconds. At that point, another burp sound will be played confirming that all recordings have been deleted.
+
+==== Optional extras
+
+We added an illuminated button and laser cut acrylic box to house all of our components, but these items are optional. The illuminated button is soldered directly onto the solder pads of the Codec Zero, thereby extending the Raspberry Pi's 40-pin GPIO header. The LED built into the button was soldered to 5V and Ground pins, and the GPIO 27 and Ground pins are used to extend the programmable tactile button on the Codec Zero. 
+
 
 
 
