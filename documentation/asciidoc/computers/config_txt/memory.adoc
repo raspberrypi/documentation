@@ -55,4 +55,4 @@ This value will be clamped between a minimum of 128MB, and a maximum of the tota
 
 === `disable_l2cache`
 
-Setting this to `1` disables the CPUs access to the GPUs L2 cache and requires a corresponding L2 disabled kernel. Default value on BCM2835 is `0`. On BCM2836, BCM2837, and BCM2711, the ARMs have their own L2 cache and therefore the default is `1`. The standard Raspberry Pi `kernel.img` and `kernel7.img` builds reflect this difference in cache setting.
+Setting this to `1` disables the CPUs access to the GPUs system L2 cache (BCM2711 additionally provides a 1MB system L2 cache, which is used primarily by the GPU). Default value on BCM2835 is `0`. On BCM2836, BCM2837, and BCM2711, the ARMs have their own L2 cache and therefore the default is `1`. The standard Raspberry Pi `kernel.img` and `kernel7.img` builds reflect this difference in cache setting.
