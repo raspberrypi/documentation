@@ -15,7 +15,7 @@ For this project, any small passive speaker should be sufficient, we're using on
 image::images/wiring.jpg[width="80%"]
 Note - BRIAN TO ADD LABELS TO THIS PHOTO - GPIO 27, +5V, and Ground x2.
 
-Use a small flat head screwdriver to attach your speaker to the screw terminals. For the additional push button, solder the buttons directly to the Codec Zero pads as indicated on GPIO pin 27 and Ground for the switch, and +5V and Ground for the LED, if necessary. 
+Use a small flat head screwdriver to attach your speaker to the screw terminals. For the additional push button, solder the button wires directly to the Codec Zero pads as indicated on GPIO pin 27 and Ground for the switch, and +5V and Ground for the LED, if necessary. 
 
 === Setting up your Raspberry Pi
 
