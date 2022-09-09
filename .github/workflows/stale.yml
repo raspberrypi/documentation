@@ -20,7 +20,7 @@ jobs:
         stale-pr-message: 'This pull request has been automatically marked as stale because it has not had recent activity. It will be closed if no further activity occurs. Thank you for your contributions.'
         stale-issue-label: 'stale issue'
         stale-pr-label: 'stale pull request'
-        exempt-issue-labels: 'ready to merge,ready for copy-edit,paused,in progress,linked pull request'
-        exempt-pr-labels: 'ready to merge,ready for copy-edit,paused,in progress'
+        exempt-issue-labels: 'ready to merge,ready for copy-edit,paused,in progress,linked pull request,backlog'
+        exempt-pr-labels: 'ready to merge,ready for copy-edit,paused,in progress,backlog'
         days-before-stale: 60
         days-before-close: 7
