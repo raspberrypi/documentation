@@ -2,7 +2,7 @@
 
 Our Raspberry Pi DAC Pro HAT is our highest-fidelity DAC (Digital to Analogue Converter).
 
-image::images/dac_pro.png[width="80%"]
+image::images/DAC_Pro_Board_Diagram.png[]
 
 With the Texas Instruments PCM5242, the DAC Pro provides outstanding Signal to Noise Ratio
 and supports Balanced/Differential out in parallel to Phono/RCA line level output. It also includes a
