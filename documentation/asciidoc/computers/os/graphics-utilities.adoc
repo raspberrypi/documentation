@@ -155,7 +155,7 @@ This returns the current frequency of the specified clock. The options are:
 | core
 | GPU core
 
-| H264
+| h264
 | H.264 block
 
 | isp
