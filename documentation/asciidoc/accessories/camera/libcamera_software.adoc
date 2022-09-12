@@ -62,7 +62,7 @@ We can now check out the code and build _libcamera_ as follows. Note that if you
 
 [,bash]
 ----
-git clone git://linuxtv.org/libcamera.git
+git clone https://github.com/raspberrypi/libcamera.git
 cd libcamera
 meson build
 cd build

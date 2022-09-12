@@ -12,7 +12,7 @@ https://datasheets.raspberrypi.com/rp2040/hardware-design-with-rp2040.pdf[Hardwa
 
 === Raspberry Pi Pico
 
-https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf[Raspberry Pi Pico Datasheet]:: An RP2040-based microcontroller board.
+https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf[Raspberry Pi Pico Datasheet]:: An RP2040-based microcontroller board
 
 https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico]:: C/{cpp} development with Raspberry Pi Pico and other RP2040-based microcontroller boards
 

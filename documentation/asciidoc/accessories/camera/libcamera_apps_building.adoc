@@ -64,11 +64,11 @@ In the `meson` commands below we have enabled the _gstreamer_ plugin. If you _do
 sudo apt install -y libglib2.0-dev libgstreamer-plugins-base1.0-dev
 ----
 
-Now we can check out and build `libcamera` itself.
+Now we can check out and build `libcamera` itself. We check out Raspberry Pi's fork of libcamera which tracks the official repository but lets us control exactly when we pick up new features.
 
 ----
 cd
-git clone git://linuxtv.org/libcamera.git
+git clone https://github.com/raspberrypi/libcamera.git
 cd libcamera
 ----
 

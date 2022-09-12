@@ -58,6 +58,8 @@ For best wireless performance, the antenna should be in free space. For instance
 antenna can reduce its performance both in terms of gain and bandwidth. Adding grounded metal to the sides of the
 antenna can improve the antenna’s bandwidth.
 
+NOTE: The CYW43439 wireless chip is connected via SPI to the RP2040. While the CYW43439 supports both 802.11 wireless and Bluetooth, initially Pico W does not have Bluetooth support. Support may be added later, and will use the same SPI interface. If support is added existing hardware may require a firmware update to support Bluetooth, but there will be no hardware modifications needed.
+
 === Pinout and design files
 
 image::images/picow-pinout.svg[]
