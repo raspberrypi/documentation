@@ -30,6 +30,6 @@ In addition to the green (GPIO23) and red (GPIO24) LEDs, a tactile programmable 
 | *P1* | Pin 1 is square.
 |===
 
-image::images/square.png[]
+image::images/Zero_pins.png[]
 
 A Codec Zero is an ideal design starting point for projects such as walkie-talkies, smart doorbells, vintage radio hacks, or smart speakers.
