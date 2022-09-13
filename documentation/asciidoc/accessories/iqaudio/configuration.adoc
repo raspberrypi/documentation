@@ -49,8 +49,6 @@ general no soldering is required on the Raspberry Pi audio boards for normal ope
 
 The Raspberry Pi range of boards are supplied with all the necessary mounting hardware including spacers, screws and connectors.
 
-image::images/hat.png[width="80%"]
-
 The PCB spacers should be screwed, finger-tight only, to the Raspberry Pi before adding the audio
 board. The remaining screws are then screwed into the spacers from above.
 
