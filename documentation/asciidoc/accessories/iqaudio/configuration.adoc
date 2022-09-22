@@ -6,40 +6,25 @@ image::images/gui.png[]
 
 There are a number of 3rd party audio software applications available for Raspberry Pi that will support the plug and play feature of our audio boards. Often these are used with a "Headless" setup, that is to say that they don't need a keyboard, mouse and display to be physically attached to Raspberry Pi. They are controlled via a PC or Mac application or by a web-server installed on Raspberry Pi as part of the software, with interaction through a webpage.
 
-If you need to configure Raspberry Pi OS yourself, if you are running a headless system of your own perhaps and therefore don't have the option of control via the GUI, there are a few extra steps to complete.
-
-Using a Terminal session connected to your Raspberry Pi either directly using a keyboard, mouse and monitor or via a SSH (Secure Shell), run the following command to edit the `/boot/config.txt` file:
+If you need to configure Raspberry Pi OS yourself, when you're running a headless system of your own perhaps and therefore don't have the option of control via the GUI, you will need to make your Raspberry Pi audio board the primary device in Raspberry Pi OS so you will need to disable the Raspberry Pi’s on-board audio device. This is done by editing the `/boot/config.txt` file. Using a Terminal session connected to your Raspberry Pi via a SSH (Secure Shell), run the following command to edit the file:
 
 ----
 $ sudo nano /boot/config.txt
 ----
 
-Add one of the following lines to the end of the file, depending on your board's model:
-
-[cols="1,2"]
-|===
-| Board | *`/boot/config.txt`* 
-
-| DAC Pro | `dtoverlay=iqaudio-dacplus`
-| DAC{plus} | `dtoverlay=iqaudio-dacplus`
-| DigiAMP{plus} | `dtoverlay=iqaudio-dacplusdtoverlay=iqaudio-dacplus,unmute_amp` or `dtoverlay=iqaudio-dacplus,auto_mute_amp`
-| Codec Zero | `dtoverlay=iqaudio-codec`
-|===
-
-CTRL + X, then Y and ENTER to save.
-
-Alternatively, the `/boot/config.txt` file can be edited directly onto the Raspberry Pi microSD card inserted into your usual computer. Using the default file manager open the `boot` volume on the card and edit the `config.txt` file using an appropriate text editor, such as Notepad or Notepad++, then save the file, eject the microSD card and reinsert it back into your Raspberry Pi.
-
-=== Disabling on-board audio
-
-To make your Raspberry Pi audio board the primary device in Raspberry Pi OS you will need to
-disable the Raspberry Pi’s on-board audio device, this is also done by editing the `/boot/config.txt` file. Find the `dtparam=audio=on` line in your `/boot/config.txt` file and comment it out by placing a # symbol at the start of the line. Anything written after the `#` symbol in any given line will be disregarded by the program. Your ``/boot/config.txt`` file should now have the following entry:
+Find the `dtparam=audio=on` line in the file and comment it out by placing a # symbol at the start of the line. Anything written after the # symbol in any given line will be disregarded by the program. Your ``/boot/config.txt`` file should now have the following entry:
 
 ----
 #dtparam=audio=on
 ----
 
-Save the file and reboot your Raspberry Pi for the settings to take effect.
+Press CTRL + X, then Y and ENTER to save, followed by a reboot of your Raspberry Pi in order for the settings to take effect:
+
+----
+$ sudo reboot
+----
+
+Alternatively, the `/boot/config.txt` file can be edited directly onto the Raspberry Pi microSD card inserted into your usual computer. Using the default file manager open the `boot` volume on the card and edit the `config.txt` file using an appropriate text editor, such as Notepad or Notepad++, then save the file, eject the microSD card and reinsert it back into your Raspberry Pi.
 
 === Attaching the HAT
 
@@ -47,10 +32,7 @@ The Raspberry Pi range of sound boards attach to the Raspberry Pi’s 40-pin hea
 They are designed to be supported on the Raspberry Pi using the supplied circuit board standoffs and screws. In
 general no soldering is required on the Raspberry Pi audio boards for normal operation with the exception when utilising hardwired connections for specific connectors, XLR (External Line Return) connections on the DAC Pro for example.
 
-The Raspberry Pi range of boards are supplied with all the necessary mounting hardware including spacers, screws and connectors.
-
-The PCB spacers should be screwed, finger-tight only, to the Raspberry Pi before adding the audio
-board. The remaining screws are then screwed into the spacers from above.
+Our range of boards are supplied with all the necessary mounting hardware including spacers, screws and connectors. The PCB (Printed Circuit Board) spacers should be screwed, finger-tight only, to the Raspberry Pi before adding the audio board. The remaining screws should then be screwed into the spacers from above.
 
 === Codec Zero Configuration
 
@@ -122,7 +104,28 @@ sudo alsactl restore -f /home/pi/Pi-Codec/IQaudIO_Codec_OnboardMIC_record_and_SP
 exit 0
 ----
 
-Reboot your device for the settings to take effect:
+Ctrl X, Y and Enter to save and reboot your device for the settings to take effect:
+
+----
+$ sudo reboot
+----
+
+If you are using your Raspberry Pi and Codec Zero in a headless environment there is one final step required in order to make the Codec Zero the default audio device. This is because you don't have access top the GUI audio settings afforded to you when using the desktop. We need to create a small file in your home folder:
+
+----
+$ sudo nano ./asoundrc
+----
+
+Add the following to the file:
+
+----
+pcm.!default {
+        type hw
+        card Zero
+}
+----
+
+Ctrl X, Y and Enter to save and one final reboot to complete the configuration:
 
 ----
 $ sudo reboot
@@ -163,4 +166,3 @@ to mute the amp once more:
 ----
 $ sudo sh -c "echo 0 >/sys/class/gpio/gpio22/value"
 ----
-
