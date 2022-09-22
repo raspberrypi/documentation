@@ -1,6 +1,6 @@
 === Raspberry Pi Codec Zero
 
-Raspberry Pi Codec Zero is a Raspberry Pi Zero sized audio HAT. It delivers bi-directional digital audio signals (I2S) between Raspberry Pi and its onboard Dialog Semiconductor DA7212 codec. The Codec Zero supports a range of input and output devices.
+Raspberry Pi Codec Zero is a Raspberry Pi Zero sized audio HAT. It delivers bi-directional digital audio signals (I2S) between Raspberry Pi and its onboard Dialog Semiconductor DA7212 codec. The Codec Zero has multiple features and supports a range of input and output devices:
 
 * High performance 24-bit audio codec
 * Supports common audio sample rates between 8-96kHz
@@ -29,7 +29,6 @@ In addition to the green (GPIO23) and red (GPIO24) LEDs, a tactile programmable 
 | *P1/2* | Support external PHONO / RCA sockets if needed. P1: AUX IN, P2: AUX OUT.
 | *P1* | Pin 1 is square.
 |===
-
 image::images/CODEC_ZERO_ZOOMED_IN_DIAGRAM.png[]
 
 A Codec Zero is an ideal design starting point for projects such as walkie-talkies, smart doorbells, vintage radio hacks, or smart speakers.
