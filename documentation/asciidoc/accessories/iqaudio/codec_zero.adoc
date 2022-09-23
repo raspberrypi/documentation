@@ -15,7 +15,7 @@ Raspberry Pi Codec Zero is a Raspberry Pi Zero sized audio HAT. It delivers bi-d
 * 5-band EQ (Equalisation)
 * Mono line-out / mini speaker driver: 1.2W @ 5V, THD<10%, R=8Ω
 
-image::images/Codec_Zero_Board_Diagram.png[width="60%"]]
+image::images/Codec_Zero_Board_Diagram.jpg[width="80%"]
 
 The Codec Zero includes an EEPROM which can be used for auto-configuration of the Linux environment if necessary.
 
@@ -29,6 +29,6 @@ In addition to the green (GPIO23) and red (GPIO24) LEDs, a tactile programmable 
 | *P1/2* | Support external PHONO / RCA sockets if needed. P1: AUX IN, P2: AUX OUT.
 | *P1* | Pin 1 is square.
 |===
-image::images/CODEC_ZERO_ZOOMED_IN_DIAGRAM.png[]
+image::images/CODEC_ZERO_ZOOMED_IN_DIAGRAM.jpg[width="50%"]
 
 A Codec Zero is an ideal design starting point for projects such as walkie-talkies, smart doorbells, vintage radio hacks, or smart speakers.

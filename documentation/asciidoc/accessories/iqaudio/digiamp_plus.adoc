@@ -4,7 +4,7 @@ With Raspberry Pi DigiAMP{plus}, you can connect passive stereo speakers up to 2
 
 DigiAMP{plus} uses the Texas Instruments TAS5756M PowerDAC and must be powered from an external supply. It requires a 12-24V DC power source (XP Power VEC65US19 power supply is recommended).
 
-image::images/DigiAMP+_Board_Diagram.png[]
+image::images/DigiAMP+_Board_Diagram.jpg[width="80%"]
 
 DigiAMP{plus}’s power in barrel connector is 5.5mm x 2.5mm. 
 

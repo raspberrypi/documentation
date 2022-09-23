@@ -1,10 +1,10 @@
 == Getting started
 
-=== Creating a toy swear box
+=== Creating a toy chatter box
 
-As an example of what Raspberry Pi Audio boards can do, let's walk through the creation of a toy swear box. Its on-board microphone, programmable button, and speaker driver make the Codec Zero an ideal choice for this application. 
+As an example of what Raspberry Pi Audio boards can do, let's walk through the creation of a toy chatter box. Its on-board microphone, programmable button, and speaker driver make the Codec Zero an ideal choice for this application. 
 
-image::images/Swear_Box.jpg[width="80%"]
+image::images/chatter_Box.jpg[width="80%"]
 
 A random pre-recorded 5 second audio clip will be played when the button is pressed. After holding for ten seconds, a notifying burp sound will be emitted, after which a new 5 second clip will be recorded. Lastly, holding for more than 20 seconds will play a second burp sound and then erase all previous recordings.
 
@@ -26,7 +26,7 @@ In this example, we are using Raspberry Pi OS Lite. Our guides on https://www.ra
 Open a shell — for instance by connecting via SSH — on your Raspberry Pi and run the following to create our Python script:
 
 ----
-$ sudo nano swear_box.py
+$ sudo nano chatter_box.py
 ----
 
 Adding the following to the file:
@@ -104,7 +104,7 @@ pause()
 Ctrl X, Y and Enter to save and to make the script executable type the following:
 
 ----
-$ sudo chmod +x swear_box.py
+$ sudo chmod +x chatter_box.py
 ----
 
 Enter the following to create a crontab daemon that will automatically start the script each time the device is powered on:
