@@ -2,7 +2,7 @@
 
 == Documentation
 
-Documentation for Raspberry Pi Pico and other RP2040-based boards.
+Download documentation for Raspberry Pi Pico and other RP2040-based boards.
 
 === RP2040 Device
 
