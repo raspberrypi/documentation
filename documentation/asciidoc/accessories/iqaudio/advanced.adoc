@@ -28,9 +28,9 @@ The DAC PRO, DAC{plus}, DigiAMP{plus} re-expose the Raspberry Pi signals allowin
 to be added easily. Please note that some signals are for exclusive use (I2S and EEPROM) for some
 of our boards, others such as I2C can be shared across multiple boards.
 
-image::images/pin_out.png[width="80%"]
+image::images/pin_out_new.jpg[width="80%"]
 
-
+NOTE: Header is Digikey Part number https://www.digikey.co.uk/en/products/detail/harwin-inc/M20-9762042/3727862[M20-9762042] (CONN HEADER VERT 40POS 2.54MM).
 
 
 
