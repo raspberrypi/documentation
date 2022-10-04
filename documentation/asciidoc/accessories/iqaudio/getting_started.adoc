@@ -4,7 +4,7 @@
 
 As an example of what Raspberry Pi Audio boards can do, let's walk through the creation of a toy chatter box. Its on-board microphone, programmable button, and speaker driver make the Codec Zero an ideal choice for this application. 
 
-image::images/chatter_Box.jpg[width="80%"]
+image::images/Chatter_Box.jpg[width="80%"]
 
 A random pre-recorded 5 second audio clip will be played when the button is pressed. After holding for ten seconds, a notifying burp sound will be emitted, after which a new 5 second clip will be recorded. Lastly, holding for more than 20 seconds will play a second burp sound and then erase all previous recordings.
 
