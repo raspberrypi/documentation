@@ -22,7 +22,7 @@ If appropriate then the following are also used:
 
 === DAC PRO, DAC{plus}, DigiAMP{plus}, Codec Zero
 
-image::images/pin_table.png[width="80%"]
+image::images/pin_table_new.jpg[width="80%"]
 
 The DAC PRO, DAC{plus}, DigiAMP{plus} re-expose the Raspberry Pi signals allowing additional sensors etc
 to be added easily. Please note that some signals are for exclusive use (I2S and EEPROM) for some
