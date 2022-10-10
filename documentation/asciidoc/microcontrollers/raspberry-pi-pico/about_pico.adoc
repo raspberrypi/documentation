@@ -1,8 +1,8 @@
 == The family
 
-image::images/three_picos.jpg[width="75%"]
+image::images/four_picos.png[width="75%"]
 
-The Raspberry Pi Pico family consists of Raspberry Pi Pico (left), Pico H (middle), and Pico W (right).
+The Raspberry Pi Pico family currently consists of four boards; Raspberry Pi Pico (far left), Pico H (middle left), and Pico W (middle right), and Pico WH (far right).
 
 [[technical-specification]]
 == Raspberry Pi Pico and Pico H
@@ -38,7 +38,7 @@ image::images/pico-pinout.svg[]
 
 NOTE: More information on Fritzing is available on the https://fritzing.org/[fritzing.org] website.
 
-== Raspberry Pi Pico W
+== Raspberry Pi Pico W and Pico WH
 
 Raspberry Pi Pico W adds on-board single-band 2.4GHz wireless interfaces (802.11n) using the Infineon CYW4343 while retaining the Pico form factor. The on-board 2.4GHz wireless interface has the following features:
 
@@ -67,4 +67,4 @@ image::images/picow-pinout.svg[]
 * Download the https://datasheets.raspberrypi.com/picow/PicoW-A4-Pinout.pdf[Pinout Diagram] (PDF)
 * Download https://datasheets.raspberrypi.com/picow/RPi-PicoW-PUBLIC-20220607.zip[Design Files] (Cadence Allegro)
 * Download https://datasheets.raspberrypi.com/picow/PicoW-step.zip[STEP File]
-* Download https://datasheets.raspberrypi.com/picow/PicoW-Fritzing.fzpz[Fritzing Part]
+* Download https://datasheets.raspberrypi.com/picow/PicoW-Fritzing.fzpz[Fritzing Part] for Rapsberry Pi Pico W

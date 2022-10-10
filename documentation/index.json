@@ -158,7 +158,7 @@
                 },
                 {
                     "title": "Raspberry Pi Pico and Pico W",
-                    "description": "Support for Raspberry Pi Pico, Pico H, and Pico W",
+                    "description": "Support for Raspberry Pi Pico, Pico H, Pico W, and Pico WH",
                     "image": "full-sized/Pico.png",
                     "subpath": "raspberry-pi-pico.adoc"
                 },
