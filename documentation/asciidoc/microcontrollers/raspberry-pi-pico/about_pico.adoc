@@ -1,6 +1,6 @@
 == The family
 
-image::images/four_picos.png[width="75%"]
+image::images/four_picos.jpg[width="75%"]
 
 The Raspberry Pi Pico family currently consists of four boards; Raspberry Pi Pico (far left), Pico H (middle left), and Pico W (middle right), and Pico WH (far right).
 
