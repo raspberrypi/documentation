@@ -2,24 +2,24 @@
 
 === Creating a toy chatter box
 
-As an example of what Raspberry Pi Audio boards can do, let's walk through the creation of a toy chatter box. Its on-board microphone, programmable button, and speaker driver make the Codec Zero an ideal choice for this application. 
+As an example of what Raspberry Pi Audio Boards can do, let's walk through the creation of a toy chatter box. Its on-board microphone, programmable button and speaker driver make the Codec Zero an ideal choice for this application. 
 
 image::images/Chatter_Box.jpg[width="80%"]
 
-A random pre-recorded 5 second audio clip will be played when the button is pressed. After holding for ten seconds, a notifying burp sound will be emitted, after which a new 5 second clip will be recorded. Lastly, holding for more than 20 seconds will play a second burp sound and then erase all previous recordings.
+A random pre-recorded five-second audio clip will be played when the button is pressed. After holding for ten seconds, a notifying burp sound will be emitted, after which a new five-second clip will be recorded. Holding the button down for more than 20 seconds will play a second burp sound, and then erase all previous recordings.
 
 === Hardware and wiring
 
-For this project, any small passive speaker should be sufficient, we're using one available https://shop.pimoroni.com/products/3-speaker-4-3w?variant=380549926[here], which is a 3" 4Ω - 5W Speaker. We have also used an illuminated momentary push button button and a laser cut box to house all the components, but both are entirely optional. This example will work just using the Codec Zero on-board button, which is pre-wired to GPIO 27. Alternatively, you may use any momentary push button, such as those available https://shop.pimoroni.com/products/mini-arcade-buttons?variant=40377171274[here].
+For this project, any small passive speaker should be sufficient. We're using one available https://shop.pimoroni.com/products/3-speaker-4-3w?variant=380549926[here], which provides 5W of power at 4Ω. We have also used an illuminated momentary push button, and a laser-cut box to house all the components; but both are entirely optional. This example will work just using the Codec Zero's on-board button, which is pre-wired to GPIO 27. (Alternatively, you can use any momentary push button, such as those available https://shop.pimoroni.com/products/mini-arcade-buttons?variant=40377171274[here].)
 
 image::images/wiring.jpg[width="80%"]
 Note - BRIAN TO ADD LABELS TO THIS PHOTO - GPIO 27, +5V, and Ground x2.
 
-Use a small flat head screwdriver to attach your speaker to the screw terminals. For the additional push button, solder the button wires directly to the Codec Zero pads as indicated on GPIO pin 27 and Ground for the switch, and +5V and Ground for the LED, if necessary. 
+Use a small flat-head screwdriver to attach your speaker to the screw terminals. For the additional push button, solder the button wires directly to the Codec Zero pads as indicated, using GPIO pin 27 and Ground for the switch, and +5V and Ground for the LED, if necessary. 
 
 === Setting up your Raspberry Pi
 
-In this example, we are using Raspberry Pi OS Lite. Our guides on https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system[Getting Started] cover this topic in great detail. Make sure that you update your operating system before proceeding and follow the instructions provided for Codec Zero Configuration, including the commands to enable the on-board microphone and speaker output.
+In this example, we are using Raspberry Pi OS Lite. Our guides on https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system[Getting started] cover this topic in great detail. Make sure that you update your operating system before proceeding and follow the instructions provided for Codec Zero configuration, including the commands to enable the on-board microphone and speaker output.
 
 === Programming your Raspberry Pi
 
@@ -101,7 +101,7 @@ pause()
 
 ----
 
-Ctrl X, Y and Enter to save and to make the script executable type the following:
+Ctrl X, Y and Enter to save. To make the script executable, type the following:
 
 ----
 $ sudo chmod +x chatter_box.py
@@ -113,7 +113,7 @@ Enter the following to create a crontab daemon that will automatically start the
 $ crontab -e
 ----
 
-You will be asked to select an editor, we recommend you use "nano". Select it by entering the corresponding number, and press Enter to continue. The following line should be added to the bottom of the file:
+You will be asked to select an editor; we recommend you use Nano. Select it by entering the corresponding number, and press Enter to continue. The following line should be added to the bottom of the file:
 
 ----
 @reboot python /home/pi/chatter_box.py
@@ -127,8 +127,8 @@ The final step is to ensure that everything is operating as expected. Press the 
 
 video::aUD_rcpc08I[youtube]
 
-=== Moving forward
+=== Next steps
 
-Upgrades! It is always fun to upgrade a project, so why not add some additional features, such as an LED that will illuminate when recording? This project has all the parts required to make your own version of a https://aiyprojects.withgoogle.com/[Google intelligent speaker system], or you may want to consider building a second device that can be used to create a pair of walkie-talkies that are capable of transferring audio files over a network via SSH?
+Upgrades! It is always fun to upgrade a project, so why not add some additional features, such as an LED that will illuminate when recording? This project has all the parts required to make your own version of a https://aiyprojects.withgoogle.com/[Google intelligent speaker system], or you may want to consider building a second device that can be used to create a pair of walkie-talkies that are capable of transferring audio files over a network via SSH. 
 
 
