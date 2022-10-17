@@ -1,6 +1,6 @@
 == BCM2711
 
-This is the Broadcom chip used in the Raspberry Pi 4 Model B, the Raspberry Pi 400, and the Raspberry Pi Compute Module 4. The architecture of the BCM2711 is a considerable upgrade on that used by the SoCs in earlier Raspberry Pi models. It continues the quad-core CPU design of the BCM2837, but uses the more powerful ARM A72 core. It has a greatly improved GPU feature, and much faster input/output due to the incorporation of a PCIe link that connects the USB ports, as well as a natively attached Ethernet controller. It is also capable of addressing more memory than previous chips.
+This is the Broadcom chip used in the Raspberry Pi 4 Model B, the Raspberry Pi 400, and the Raspberry Pi Compute Module 4. The architecture of the BCM2711 is a considerable upgrade on that used by the SoCs in earlier Raspberry Pi models. It continues the quad-core CPU design of the BCM2837, but uses the more powerful ARM A72 core. It has a greatly improved GPU, a directly attached Ethernet controller, and much faster input/output due to the incorporation of a PCIe link which connects the USB ports. It is also capable of addressing more memory than previous chips.
 
 The ARM cores are capable of running at up to 1.5 GHz, making the Raspberry Pi 4 about 50% faster than the Raspberry Pi 3B+. The new VideoCore VI 3D unit runs at up to 550 MHz. The GPU now has its own memory management unit (MMU), allowing it to make more efficient use of system memory.
 
@@ -12,7 +12,7 @@ The BCM2711 chip continues to use the heat spreading technology introduced with 
 
 *Caches:* 32kB data + 48kB instruction L1 cache per core. 1MB L2 cache
 
-*Multimedia:* H.265 (4Kp60 decode); H.264 (1080p60 decode, 1080p30 encode); OpenGL ES 3.0 graphics
+*Multimedia:* H.265 (4Kp60 decode); H.264 (1080p60 decode, 1080p30 encode); OpenGL ES 3.0 and Vulkan 1.2 graphics
 
 *I/O:* PCIe bus, onboard Ethernet port, 2 × DSI ports (only one exposed on Raspberry Pi 4B), 2 × CSI ports (only one exposed on Raspberry Pi 4B), up to 6 × I2C, up to 6 × UART (muxed with I2C), up to 6 × SPI (only five exposed on Raspberry Pi 4B), dual HDMI video output, composite video output.
 
