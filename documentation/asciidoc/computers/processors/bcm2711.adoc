@@ -2,7 +2,7 @@
 
 This is the Broadcom chip used in the Raspberry Pi 4 Model B, the Raspberry Pi 400, and the Raspberry Pi Compute Module 4. The architecture of the BCM2711 is a considerable upgrade on that used by the SoCs in earlier Raspberry Pi models. It continues the quad-core CPU design of the BCM2837, but uses the more powerful ARM A72 core. It has a greatly improved GPU, and much faster input/output thanks to a directly attached Ethernet controller, as well as the incorporation of a PCIe link which Raspberry Pi computers use to attach a USB 3 controller. It is also capable of addressing more memory than previous chips.
 
-The ARM cores are capable of running at up to 1.5 GHz, making the Raspberry Pi 4 about 50% faster than the Raspberry Pi 3B+. The new VideoCore VI 3D unit runs at up to 550 MHz. The GPU now has its own memory management unit (MMU), allowing it to make more efficient use of system memory.
+The ARM cores are capable of running at up to 1.5 GHz, making the Raspberry Pi 4 about 50% faster than the Raspberry Pi 3B+. The new VideoCore VI 3D unit runs at up to 550 MHz. The GPU has its own memory management unit (MMU), allowing it to make more efficient use of system memory compared to previous SoCs.
 
 The BCM2711 chip continues to use the heat spreading technology introduced with the BCM2837B0, which provides better thermal management.
 
