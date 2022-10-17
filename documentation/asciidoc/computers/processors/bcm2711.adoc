@@ -8,7 +8,7 @@ The BCM2711 chip continues to use the heat spreading technology introduced with 
 
 *Processor:*  Quad-core https://en.wikipedia.org/wiki/ARM_Cortex-A72[Cortex-A72] (ARM v8) 64-bit SoC @ 1.5 GHz
 
-*Memory:* Accesses up to 8GB LPDDR4-2400 SDRAM (depending on model)
+*Memory:* Accesses up to 8GB LPDDR4-2400 SDRAM
 
 *Caches:* 32kB data + 48kB instruction L1 cache per core. 1MB L2 cache
 
