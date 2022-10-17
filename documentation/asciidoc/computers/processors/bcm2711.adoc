@@ -1,19 +1,19 @@
 == BCM2711
 
-This is the Broadcom chip used in the Raspberry Pi 4 Model B, the Raspberry Pi 400, and the Raspberry Pi Compute Module 4. The architecture of the BCM2711 is a considerable upgrade on that used by the SoCs in earlier Raspberry Pi models. It continues the quad-core CPU design of the BCM2837, but uses the more powerful ARM A72 core as well as a greatly improved GPU. It also has much faster input/output thanks to a directly attached Ethernet controller, as well as the incorporation of a PCIe link which is used to attach a USB 3 controller on Raspberry Pi computers. It is also capable of addressing more memory than previous chips.
+This is the Broadcom chip used in the Raspberry Pi 4 Model B, the Raspberry Pi 400, and the Raspberry Pi Compute Module 4. The BCM2711 is a considerable step up from the SoCs used earlier Raspberry Pi models, with both the ARM and GPU sides of the chip being upgraded. The input/output capability is also improved thanks to a directly attached Ethernet controller, as well as the incorporation of a PCIe link, which is used to attach a USB 3 controller on Raspberry Pi computers. It is also capable of addressing more memory than previous chips.
 
-The ARM cores are capable of running at up to 1.5 GHz, making the Raspberry Pi 4 about 50% faster than the Raspberry Pi 3B+. The new VideoCore VI 3D unit runs at up to 550 MHz. The GPU has its own memory management unit (MMU), allowing it to make more efficient use of system memory compared to previous SoCs.
+The ARM cores are capable of running at up to 1.8 GHz, making the Raspberry Pi 4 about 50% faster than the Raspberry Pi 3B+. The new VideoCore VI 3D unit runs at up to 550 MHz. The GPU has its own memory management unit (MMU), allowing it to make more efficient use of system memory compared to previous SoCs. New graphics drivers have been developed which allow the BCM2711 to use Vulkan 1.2 graphics.
 
 The BCM2711 chip continues to use the heat spreading technology introduced with the BCM2837B0, which provides better thermal management.
 
-*Processor:*  Quad-core https://en.wikipedia.org/wiki/ARM_Cortex-A72[Cortex-A72] (ARM v8) 64-bit SoC @ 1.5 GHz
+*Processor:* Quad-core https://en.wikipedia.org/wiki/ARM_Cortex-A72[Cortex-A72] (ARM v8) 64-bit SoC @ up to 1.8 GHz
 
 *Memory:* Accesses up to 8GB LPDDR4-2400 SDRAM
 
-*Caches:* 32kB data + 48kB instruction L1 cache per core. 1MB L2 cache
+*Caches:* 32kB data + 48kB instruction L1 cache per core; 1MB L2 cache
 
 *Multimedia:* H.265 (4Kp60 decode); H.264 (1080p60 decode, 1080p30 encode); OpenGL ES 3.0 and Vulkan 1.2 graphics
 
-*I/O:* PCIe bus, onboard Ethernet port, 2 × DSI ports (only one exposed on Raspberry Pi 4B), 2 × CSI ports (only one exposed on Raspberry Pi 4B), up to 6 × I2C, up to 6 × UART (muxed with I2C), up to 6 × SPI (only five exposed on Raspberry Pi 4B), dual HDMI video output, composite video output.
+*I/O:* PCIe bus, onboard Ethernet MAC, 2 × DSI ports (only one exposed on Raspberry Pi 4B), 2 × CSI ports (only one exposed on Raspberry Pi 4B), up to 6 × I2C, up to 6 × UART (muxed with I2C), up to 6 × SPI (only five exposed on Raspberry Pi 4B), dual HDMI video output, composite video output
 
 The https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf[datasheet for the BCM2711] contains further details.
