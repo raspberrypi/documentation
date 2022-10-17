@@ -1,12 +1,12 @@
 == Configuration
 
-A pre-programmed EEPROM (Electrically Erasable Programmable Read-only Memory) is included on all Raspberry Pi audio boards. By doing so, Raspberry Pi OS is able to automatically detect and configure itself, enabling Raspberry Pi audio boards to be plug-and-play. Using Raspberry Pi OS (32-bit) with the Desktop environment and your board attached, you can utilise the built in GUI (Graphical User Interface) by right clicking on the audio settings in the top right hand corner of your screen, which allows you to switch between the on-board audio settings and the HAT audio settings:
+A pre-programmed EEPROM is included on all Raspberry Pi audio boards. Raspberry Pi audio boards are designed to be plug-and-play; Raspberry Pi OS is able to automatically detect and configure itself. In Raspberry Pi OS, right-clicking on the audio settings in the top right-hand corner of your screen will allow you to switch between the on-board audio settings and the HAT audio settings:
 
 image::images/gui.png[]
 
-There are a number of 3rd party audio software applications available for Raspberry Pi that will support the plug and play feature of our audio boards. Often these are used with a "Headless" setup, that is to say that they don't need a keyboard, mouse and display to be physically attached to Raspberry Pi. They are controlled via a PC or Mac application or by a web-server installed on Raspberry Pi as part of the software, with interaction through a webpage.
+There are a number of third-party audio software applications available for Raspberry Pi that will support the plug-and-play feature of our audio boards. Often these are used headless. They can be controlled via a PC or Mac application, or by a web server installed on Raspberry Pi, with interaction through a webpage.
 
-If you need to configure Raspberry Pi OS yourself, when you're running a headless system of your own perhaps and therefore don't have the option of control via the GUI, you will need to make your Raspberry Pi audio board the primary device in Raspberry Pi OS so you will need to disable the Raspberry Pi’s on-board audio device. This is done by editing the `/boot/config.txt` file. Using a Terminal session connected to your Raspberry Pi via a SSH (Secure Shell), run the following command to edit the file:
+If you need to configure Raspberry Pi OS yourself, perhaps if you're running a headless system of your own and don't have the option of control via the GUI, you will need to make your Raspberry Pi audio board the primary device in Raspberry Pi OS, disabling the Raspberry Pi’s on-board audio device. This is done by editing the `/boot/config.txt` file. Using a Terminal session connected to your Raspberry Pi via SSH, run the following command to edit the file:
 
 ----
 $ sudo nano /boot/config.txt
@@ -18,66 +18,59 @@ Find the `dtparam=audio=on` line in the file and comment it out by placing a # s
 #dtparam=audio=on
 ----
 
-Press CTRL + X, then Y and ENTER to save, followed by a reboot of your Raspberry Pi in order for the settings to take effect:
+Press CTRL+X, then Y and Enter to save, followed by a reboot of your Raspberry Pi in order for the settings to take effect.
 
 ----
 $ sudo reboot
 ----
 
-Alternatively, the `/boot/config.txt` file can be edited directly onto the Raspberry Pi microSD card inserted into your usual computer. Using the default file manager open the `boot` volume on the card and edit the `config.txt` file using an appropriate text editor, such as Notepad or Notepad++, then save the file, eject the microSD card and reinsert it back into your Raspberry Pi.
+Alternatively, the `/boot/config.txt` file can be edited directly onto the Raspberry Pi's microSD card, inserted into your usual computer. Using the default file manager, open the `boot` volume on the card and edit the `config.txt` file using an appropriate text editor, such as Notepad or Notepad++, then save the file, eject the microSD card and reinsert it back into your Raspberry Pi.
 
 === Attaching the HAT
 
-The Raspberry Pi range of sound boards attach to the Raspberry Pi’s 40-pin header.
-They are designed to be supported on the Raspberry Pi using the supplied circuit board standoffs and screws. In
-general no soldering is required on the Raspberry Pi audio boards for normal operation with the exception when utilising hardwired connections for specific connectors, XLR (External Line Return) connections on the DAC Pro for example.
+The Raspberry Pi audio boards attach to the Raspberry Pi’s 40-pin header. They are designed to be supported on the Raspberry Pi using the supplied circuit board standoffs and screws. No soldering is required on the Raspberry Pi audio boards for normal operation unless you are using hardwired connections for specific connectors such as XLR (External Line Return) connections on the DAC Pro.
 
-Our range of boards are supplied with all the necessary mounting hardware including spacers, screws and connectors. The PCB (Printed Circuit Board) spacers should be screwed, finger-tight only, to the Raspberry Pi before adding the audio board. The remaining screws should then be screwed into the spacers from above.
+All the necessary mounting hardware including spacers, screws and connectors is provided. The PCB spacers should be screwed, finger-tight only, to the Raspberry Pi before adding the audio board. The remaining screws should then be screwed into the spacers from above.
 
-=== Codec Zero Configuration
+=== Codec Zero configuration
 
 The Raspberry Pi Codec Zero board uses the Dialog Semiconductor DA7212 codec. This allows
-the recording of audio from the built in MEMS microphone, from stereo Phono sockets (AUX
-IN) or 2 x mono external Electret microphones. Playback is through stereo Phono sockets (AUX OUT)
+the recording of audio from the built-in MEMS microphone, from stereo phono sockets (AUX
+IN) or two mono external electret microphones. Playback is through stereo phono sockets (AUX OUT)
 or a mono speaker connector.
 
-Each input and output device has its own “mixer” allowing the audio levels and volume to be adjusted
-independently. Within the codec itself other mixers and switches exist to allow the output to be mixed to a single mono channel
-for single speaker output. Signals may also be inverted and there is a 5 band Equaliser to adjust
-certain frequency bands. These settings can be controlled interactively using Alsamixer (a graphical mixer program used in Terminal) or programmatically.
+Each input and output device has its own mixer, allowing the audio levels and volume to be adjusted
+independently. Within the codec itself, other mixers and switches exist to allow the output to be mixed to a single mono channel for single-speaker output. Signals may also be inverted; there is a five-band equaliser to adjust certain frequency bands. These settings can be controlled interactively, using AlsaMixer, or programmatically.
 
-It is important to note that the AUX IN and AUX OUT are both 1V RMS. It may be necessary to adjust
-the AUX IN’s mixer to ensure the input signal doesn’t saturate the ADC (Analogue to Digital
-Convertors). Similarly, the output mixers can be to be adjusted to get the best possible output.
+Both the AUX IN and AUX OUT are 1V RMS. It may be necessary to adjust
+the AUX IN’s mixer to ensure that the input signal doesn’t saturate the ADC. Similarly, the output mixers can be to be adjusted to get the best possible output.
 
-There is a set of preconfigured scripts (loadable ALSA settings) available on GitHub. https://github.com/iqaudio/Pi-Codec.
-
-These cover several use cases such as:
+Preconfigured scripts (loadable ALSA settings) are available on GitHub. https://github.com/iqaudio/Pi-Codec, offering:
  
 * Mono MEMS mic recording, mono speaker playback
 * Mono MEMS mic recording, mono AUX OUT playback
 * Stereo AUX IN recording, stereo AUX OUT playback
 * Stereo MIC1/MIC2 recording, stereo AUX OUT playback
 
-The Codec Zero DA7212 chip needs to know which of these input and output settings are for each new cycle of power for it to operate correctly. Using a Terminal session connected to your Raspberry Pi either directly using a keyboard, mouse and monitor or via a SSH (Secure Shell), run the following command to download the scripts:
+The Codec Zero needs to know which of these input and output settings are for each new cycle of power for it to operate correctly. Using a Terminal session on your Raspberry Pi, run the following command to download the scripts:
 
 ----
 $ git clone https://github.com/iqaudio/Pi-Codec.git
 ----
 
-If git is not installed run the following command to install it:
+If git is not installed, run the following command to install it:
 
 ----
 $ sudo apt install git
 ----
 
-The following command will set your device, in this case using the on-board MEMS microphone and output for speaker playback:
+The following command will set your device to use the on-board MEMS microphone and output for speaker playback:
 
 ----
 $ sudo alsactl restore -f /home/pi/Pi-Codec/IQaudIO_Codec_OnboardMIC_record_and_SPK_playback.state
 ----
 
-In order for your project to operate with your required settings when it is powered on the easiest way is to add to the `/etc/rc.local` file. The contents of this file are run at the end of every boot process so it is ideal for this purpose. Edit the file using the following:
+In order for your project to operate with your required settings when it is powered on, add to the `/etc/rc.local` file. The contents of this file are run at the end of every boot process, so it is ideal for this purpose. Edit the file:
 
 ----
 $ sudo nano /etc/rc.local
@@ -110,7 +103,7 @@ Ctrl X, Y and Enter to save and reboot your device for the settings to take effe
 $ sudo reboot
 ----
 
-If you are using your Raspberry Pi and Codec Zero in a headless environment there is one final step required in order to make the Codec Zero the default audio device. This is because you don't have access top the GUI audio settings afforded to you when using the desktop. We need to create a small file in your home folder:
+If you are using your Raspberry Pi and Codec Zero in a headless environment, there is one final step required to make the Codec Zero the default audio device without access to the GUI audio settings on the desktop. We need to create a small file in your home folder:
 
 ----
 $ sudo nano ./asoundrc
@@ -125,7 +118,7 @@ pcm.!default {
 }
 ----
 
-Ctrl X, Y and Enter to save and one final reboot to complete the configuration:
+Ctrl X, Y and Enter to save, and reboot once more to complete the configuration:
 
 ----
 $ sudo reboot
@@ -142,18 +135,18 @@ Firstly a "one-shot" unmute when kernel module loads.
 dtoverlay=iqaudio-dacplus,unmute_amp
 ----
 
-Unmute amp when ALSA device opened by a client. Mute, with 5 second delay
-when ALSA device closed. (Re-opening the device within the 5 second close
-window, will cancel mute.)
+Unmute the amp when an ALSA device is opened by a client. MUTE, with a five-second delay
+when the ALSA device is closed. (Reopening the device within the five-second close
+window will cancel MUTE.)
 
 ----
 dtoverlay=iqaudio-dacplus,auto_mute_amp
 ----
 
-If you do not want to control Mute state through device tree then you can also script your own
+If you do not want to control the MUTE state through the device tree, you can also script your own
 solution. 
 
-The amp will startup MUTED to unmute the amp:
+The amp will startup MUTED. To unmute the amp:
 
 ----
 $ sudo sh -c "echo 22 > /sys/class/gpio/export"
@@ -161,7 +154,7 @@ $ sudo sh -c "echo out >/sys/class/gpio/gpio22/direction"
 $ sudo sh -c "echo 1 >/sys/class/gpio/gpio22/value"
 ----
 
-to mute the amp once more:
+to MUTE the amp once more:
 
 ----
 $ sudo sh -c "echo 0 >/sys/class/gpio/gpio22/value"
