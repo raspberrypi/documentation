@@ -9,7 +9,7 @@ A Texas Instruments PCM5122 is used in the DAC{plus} to deliver analogue audio t
 ==== Pinouts
 [cols="1,12"]
 |===
-| *P1* | Analogue out (0.2V RMS), carries GPIO27, MUTE signal (headphone detect), left and right
+| *P1* | Analogue out (0-2V RMS), carries GPIO27, MUTE signal (headphone detect), left and right
 audio and left and right ground.
 | *P6* | Headphone socket signals (pin1: LEFT, 2:GROUND, 3: RIGHT, 4:GROUND, 5:DETECT).
 |===
