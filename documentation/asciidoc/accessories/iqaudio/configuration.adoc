@@ -146,7 +146,7 @@ dtoverlay=iqaudio-dacplus,auto_mute_amp
 If you do not want to control the mute state through the device tree, you can also script your own
 solution. 
 
-The amp will startup muted. To unmute the amp:
+The amp will start up muted. To unmute the amp:
 
 ----
 $ sudo sh -c "echo 22 > /sys/class/gpio/export"
