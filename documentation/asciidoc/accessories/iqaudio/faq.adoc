@@ -1,6 +1,6 @@
 === Saving AlsaMixer settings
 
-To store the AlsaMixer setting, add the following at the command line:
+To store the AlsaMixer settings, add the following at the command line:
 
 ----
 $ sudo alsactl store
@@ -30,7 +30,6 @@ file:
 max_usb_current=1
 ----
 
-Please ensure your Raspberry Pi power supply is able to deliver a minimum of 2.5 amps if you are powering via mini USB, and enable `max_usb_current`.
 
 === MPD-based audio with volume control
 
@@ -51,9 +50,9 @@ audio_output {
 
 === Hardware information
 
-* PCB screws are all m2.5.
+* PCB screws are all M2.5.
 * PCB standoffs (for case) are 5mm male/female.
-* PCB standoffs (for Raspberry Pi to audio products) are 9mm female/female.
+* PCB standoffs (for Raspberry Pi to audio boards) are 9mm female/female.
 * PCB standoffs (for XLR to DAC PRO) are 8mm female/male.
 * PCB standoffs (for the official Raspberry Pi 7-inch display) are 5mm male/female.
 * The rotary encoders we have used and tested are the Alpha three-pin rotary encoder
