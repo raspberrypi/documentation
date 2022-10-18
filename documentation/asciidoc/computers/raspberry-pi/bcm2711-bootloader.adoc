@@ -508,6 +508,7 @@ The primary purpose of `boot_ramdisk` is to support `secure-boot`, however, unsi
 * `boot.img` files are raw disk `.img` files. The recommended format is a plain FAT32 partition with no MBR.
 * The memory for the ramdisk filesystem is released before the operating system is started.
 * If xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT] is selected then the bootloader will search for `tryboot.img` instead of `boot.img`.
+* See also xref:config_txt.adoc#autoboot-txt[autoboot.txt]
 
 For more information about `secure-boot` and creating `boot.img` files please see https://github.com/raspberrypi/usbboot/blob/master/Readme.md[USBBOOT]
 
