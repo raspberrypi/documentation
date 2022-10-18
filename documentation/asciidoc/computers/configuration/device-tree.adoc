@@ -860,7 +860,7 @@ This bit field, which describes the features supported by the current bootloader
 | xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT]
 
 | 4
-| xref:raspberry-pi.adoc#usb-mass-storage-boot[USB boot] using the BCM2711 USB host controller.
+| xref:raspberry-pi.adoc#usb-mass-storage-boot[USB boot] using the built-in xHCI USB host controller.
 
 | 5
 | xref:raspberry-pi.adoc#boot_ramdisk[RAM disk - boot.img]
