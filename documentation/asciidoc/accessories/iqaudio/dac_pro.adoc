@@ -15,7 +15,7 @@ As part of the DAC Pro, two three-pin headers (P7/P9) are exposed above the Rasp
 |===
 | *P1* | Analogue out (0-2V RMS), carries GPIO27, MUTE signal (headphone detect), left and right
 audio and left and right ground.
-| *P6* | Headphone socket signals (pin1: LEFT, 2:GROUND, 3: RIGHT, 4:GROUND, 5:DETECT).
-| *P7/9* | Differential (0.4V RMS) output (P7:LEFT, P9: RIGHT).
+| *P6* | Headphone socket signals (1: LEFT, 2: GROUND, 3: RIGHT, 4: GROUND, 5: DETECT).
+| *P7/9* | Differential (0-4V RMS) output (P7: LEFT, P9: RIGHT).
 | *P10* | Alternative 5V input, powering Raspberry Pi in parallel.
 |===
