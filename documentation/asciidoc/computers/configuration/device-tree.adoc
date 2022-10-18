@@ -921,6 +921,37 @@ The root hub port number that the boot device is connected to - possibly via oth
 
 The Logical Unit Number for the mass-storage device.
 
+==== NVMEM nodes
+The firmware provides read-only, in-memory copies of portions of the bootloader EEPROM via the https://www.kernel.org/doc/html/latest/driver-api/nvmem.html[NVMEM] Subsystem.
+
+Each region appears as an NVMEM device under `/sys/bus/nvmem/devices/` with a named alias under `/sys/firmware/devicetree/base/aliases`.
+
+Example shell script code for reading an NVMEM mode from https://github.com/raspberrypi/rpi-eeprom/blob/master/rpi-eeprom-update[rpi-eeprom-update]
+
+----
+blconfig_alias="/sys/firmware/devicetree/base/aliases/blconfig"
+blconfig_nvmem_path=""
+
+if [ -f "${blconfig_alias}" ]; then
+   blconfig_ofnode_path="/sys/firmware/devicetree/base"$(strings "${blconfig_alias}")""
+   blconfig_ofnode_link=$(find -L /sys/bus/nvmem -samefile "${blconfig_ofnode_path}" 2>/dev/null)
+   if [ -e "${blconfig_ofnode_link}" ]; then
+      blconfig_nvmem_path=$(dirname "${blconfig_ofnode_link}")
+      fi
+   fi
+fi
+----
+
+`blconfig`
+
+The `blconfig` alias refers to an NVMEM device that stores a copy of the bootloader EEPROM config file.
+
+`blpubkey`
+
+The `blpubkey` alias points to an NVMEM device that stores a copy of the bootloader EEPROM public key (if defined) in binary format.
+The https://github.com/raspberrypi/usbboot/blob/master/tools/rpi-bootloader-key-convert[rpi-bootloader-key-convert] utility can be used to convert the data into PEM format for use with OpenSSL.
+
+See also: https://github.com/raspberrypi/usbboot#secure-boot[secure-boot]
 
 [[part5]]
 === Troubleshooting
