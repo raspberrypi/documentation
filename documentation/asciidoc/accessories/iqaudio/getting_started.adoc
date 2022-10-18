@@ -10,7 +10,7 @@ A random pre-recorded five-second audio clip will be played when the button is p
 
 === Hardware and wiring
 
-For this project, any small passive speaker should be sufficient. We're using one available https://shop.pimoroni.com/products/3-speaker-4-3w?variant=380549926[here], which provides 5W of power at 4Ω. We have also used an illuminated momentary push button, and a laser-cut box to house all the components; but both are entirely optional. This example will work just using the Codec Zero's on-board button, which is pre-wired to GPIO 27. (Alternatively, you can use any momentary push button, such as those available https://shop.pimoroni.com/products/mini-arcade-buttons?variant=40377171274[here].)
+For this project, any small passive speaker should be sufficient. We're using one available https://shop.pimoroni.com/products/3-speaker-4-3w?variant=380549926[here], which handles 5W of power at 4Ω. We have also used an illuminated momentary push button, and a laser-cut box to house all the components; but both are entirely optional. This example will work just using the Codec Zero's on-board button, which is pre-wired to GPIO 27. (Alternatively, you can use any momentary push button, such as those available https://shop.pimoroni.com/products/mini-arcade-buttons?variant=40377171274[here].)
 
 image::images/wiring.jpg[width="80%"]
 Note - BRIAN TO ADD LABELS TO THIS PHOTO - GPIO 27, +5V, and Ground x2.
@@ -113,7 +113,7 @@ Enter the following to create a crontab daemon that will automatically start the
 $ crontab -e
 ----
 
-You will be asked to select an editor; we recommend you use Nano. Select it by entering the corresponding number, and press Enter to continue. The following line should be added to the bottom of the file:
+You will be asked to select an editor; we recommend you use `nano`. Select it by entering the corresponding number, and press Enter to continue. The following line should be added to the bottom of the file:
 
 ----
 @reboot python /home/pi/chatter_box.py
@@ -123,7 +123,7 @@ Ctrl X, Y and Enter to save, then reboot your device.
 
 === Operating your device
 
-The final step is to ensure that everything is operating as expected. Press the button and release it when you hear the burp. The recording will now begin for a period of five seconds. Once you have released the button, press it briefly again to hear the recording. Repeat this process as many times as you wish, and your sounds will be played at random. You can delete all recordings by pressing and holding the button, keeping the button pressed during the first burp and recoding process, and releasing it after at least 20 seconds, at which point you will hear another burp sound confirming that the recordings have been deleted.
+The final step is to ensure that everything is operating as expected. Press the button and release it when you hear the burp. The recording will now begin for a period of five seconds. Once you have released the button, press it briefly again to hear the recording. Repeat this process as many times as you wish, and your sounds will be played at random. You can delete all recordings by pressing and holding the button, keeping the button pressed during the first burp and recording process, and releasing it after at least 20 seconds, at which point you will hear another burp sound confirming that the recordings have been deleted.
 
 video::aUD_rcpc08I[youtube]
 
