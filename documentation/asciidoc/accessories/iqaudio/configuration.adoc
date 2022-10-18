@@ -6,7 +6,7 @@ image::images/gui.png[]
 
 There are a number of third-party audio software applications available for Raspberry Pi that will support the plug-and-play feature of our audio boards. Often these are used headless. They can be controlled via a PC or Mac application, or by a web server installed on Raspberry Pi, with interaction through a webpage.
 
-If you need to configure Raspberry Pi OS yourself, perhaps if you're running a headless system of your own and don't have the option of control via the GUI, you will need to make your Raspberry Pi audio board the primary device in Raspberry Pi OS, disabling the Raspberry Pi’s on-board audio device. This is done by editing the `/boot/config.txt` file. Using a Terminal session connected to your Raspberry Pi via SSH, run the following command to edit the file:
+If you need to configure Raspberry Pi OS yourself, perhaps if you're running a headless system of your own and don't have the option of control via the GUI, you will need to make your Raspberry Pi audio board the primary audio device in Raspberry Pi OS, disabling the Raspberry Pi’s on-board audio device. This is done by editing the `/boot/config.txt` file. Using a Terminal session connected to your Raspberry Pi via SSH, run the following command to edit the file:
 
 ----
 $ sudo nano /boot/config.txt
@@ -24,7 +24,7 @@ Press CTRL+X, then Y and Enter to save, followed by a reboot of your Raspberry P
 $ sudo reboot
 ----
 
-Alternatively, the `/boot/config.txt` file can be edited directly onto the Raspberry Pi's microSD card, inserted into your usual computer. Using the default file manager, open the `boot` volume on the card and edit the `config.txt` file using an appropriate text editor, such as Notepad or Notepad++, then save the file, eject the microSD card and reinsert it back into your Raspberry Pi.
+Alternatively, the `/boot/config.txt` file can be edited directly onto the Raspberry Pi's microSD card, inserted into your usual computer. Using the default file manager, open the `boot` volume on the card and edit the `config.txt` file using an appropriate text editor, then save the file, eject the microSD card and reinsert it back into your Raspberry Pi.
 
 === Attaching the HAT
 
@@ -45,14 +45,14 @@ independently. Within the codec itself, other mixers and switches exist to allow
 Both the AUX IN and AUX OUT are 1V RMS. It may be necessary to adjust
 the AUX IN’s mixer to ensure that the input signal doesn’t saturate the ADC. Similarly, the output mixers can be to be adjusted to get the best possible output.
 
-Preconfigured scripts (loadable ALSA settings) are available on GitHub. https://github.com/iqaudio/Pi-Codec, offering:
+Preconfigured scripts (loadable ALSA settings) https://github.com/iqaudio/Pi-Codec[are available on GitHub], offering:
  
 * Mono MEMS mic recording, mono speaker playback
 * Mono MEMS mic recording, mono AUX OUT playback
 * Stereo AUX IN recording, stereo AUX OUT playback
 * Stereo MIC1/MIC2 recording, stereo AUX OUT playback
 
-The Codec Zero needs to know which of these input and output settings are for each new cycle of power for it to operate correctly. Using a Terminal session on your Raspberry Pi, run the following command to download the scripts:
+The Codec Zero needs to know which of these input and output settings are being used each time the Raspberry Pi powers on. Using a Terminal session on your Raspberry Pi, run the following command to download the scripts:
 
 ----
 $ git clone https://github.com/iqaudio/Pi-Codec.git
@@ -70,7 +70,7 @@ The following command will set your device to use the on-board MEMS microphone a
 $ sudo alsactl restore -f /home/pi/Pi-Codec/IQaudIO_Codec_OnboardMIC_record_and_SPK_playback.state
 ----
 
-In order for your project to operate with your required settings when it is powered on, add to the `/etc/rc.local` file. The contents of this file are run at the end of every boot process, so it is ideal for this purpose. Edit the file:
+In order for your project to operate with your required settings when it is powered on, edit the `/etc/rc.local` file. The contents of this file are run at the end of every boot process, so it is ideal for this purpose. Edit the file:
 
 ----
 $ sudo nano /etc/rc.local
@@ -135,9 +135,9 @@ Firstly a "one-shot" unmute when kernel module loads.
 dtoverlay=iqaudio-dacplus,unmute_amp
 ----
 
-Unmute the amp when an ALSA device is opened by a client. MUTE, with a five-second delay
+Unmute the amp when an ALSA device is opened by a client. Mute, with a five-second delay
 when the ALSA device is closed. (Reopening the device within the five-second close
-window will cancel MUTE.)
+window will cancel mute.)
 
 ----
 dtoverlay=iqaudio-dacplus,auto_mute_amp
