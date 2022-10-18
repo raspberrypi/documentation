@@ -26,4 +26,4 @@ Mono speaker:: A screw terminal for a single 1.2W speaker, as found in a transis
 Headphones:: A 3.5mm jack socket delivering stereo audio for a set of headphones. The headphone amplifiers on the Raspberry Pi DAC boards can drive up to 80/90Ω impedance headphones. The headphone output of the Codec+ is also aux out.
 Aux in:: A double Phono/RCA connector or 3.5mm socket. Accepts analogue audio in up to 1V RMS. This can be used to record audio from a variable analogue source such as a mobile phone, MP3 player or similar.
 Aux out:: A double Phono/RCA connector or 3.5mm socket. Delivers analogue audio out up to 1V RMS. This can be used to feed audio into an amplifier at a reduced volume compared to Line out.
-Mic in:: A 3.5mm socket for use with an external electret microphone. The built-in MEMS microphone on the Codec Zero is automatically disabled when the external Mic in connector is used.
+Ext mic:: A 3.5mm socket for use with an external electret microphone. The built-in MEMS microphone on the Codec Zero is automatically disabled when the external Mic in connector is used.
