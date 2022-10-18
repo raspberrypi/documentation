@@ -69,6 +69,12 @@ It is important to note that the Raspberry Pi Zero W will see the contents of `[
 
 The `[none]` filter prevents any settings that follow from being applied to any hardware. Although there is nothing that you can't do without `[none]`, it can be a useful way to keep groups of unused settings in config.txt without having to comment out every line.
 
+=== The `[tryboot]` filter
+
+This filter succeeds if the `tryboot` reboot flag was set.
+
+It is intented for use in xref:config_txt.adoc#autoboot-txt[autoboot.txt] to select a different `boot_partition` in `tryboot` mode for fail-safe OS updates.
+
 === The `[EDID=*]` filter
 
 When switching between multiple monitors while using a single SD card in your Raspberry Pi, and where a blank config isn't sufficient to automatically select the desired resolution for each one, this allows specific settings to be chosen based on the monitors' EDID names.

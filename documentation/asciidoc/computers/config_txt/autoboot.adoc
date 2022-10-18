@@ -1,0 +1,41 @@
+== `autoboot.txt`
+
+`autoboot.txt` is an optional configuration file that can be used to specify the
+`boot_partition` number. This is sometimes used with NOOBS to bypass the boot menu
+selection and boot a specific partition.
+
+This can also be used in conjunction with the `tryboot` feature to implement A/B booting for OS upgrades.
+
+`autoboot.txt` is limited to 512 bytes and supports the `[all]`, `[none]` and `[tryboot]` xref:config_txt.adoc#conditional-filters[conditional] filters.
+
+See also xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT] boot flow.
+
+=== `boot_partition`
+Specifies the partition number for booting unless the partition number was already specified as parameter to the `reboot` command (e.g. `sudo reboot 2`).
+
+=== The `[tryboot]` filter
+This filter passes if the system was booted with the `tryboot` flag set.
+----
+sudo reboot "0 tryboot"
+----
+
+=== `tryboot_a_b`
+Set this property to `1` to load the normal `config.txt` and `boot.img` files instead of `tryboot.txt` and `tryboot.img` when the `tryboot` flag is set.
+This enables the `tryboot` switch to be made at the partition level rather than the file-level without having to modify configuration files in the A/B partitions.
+
+
+=== A/B boot example
+In the following example partition `3` would be contain the pending OS upgrade and would be tested by rebooting in `tryboot` mode (`sudo reboot "0 tryboot"`).
+If the OS determines that the upgrade was successful then it would replace `autoboot.txt` swapping the partition numbers.
+Otherwise, if the system is reboot (e.g. watchdog or cold boot) then system would boot from partition `2` as usual.
+
+Since the `autoboot.txt` file is a single sector it will normally be possible to update this with a single sector update to the SD/EMMC.
+
+`autoboot.txt`
+----
+[all]
+tryboot_a_b=1
+boot_partition=2
+[tryboot]
+boot_partition=3
+----
