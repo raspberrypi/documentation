@@ -2,7 +2,7 @@
 
 === GPIO usage 
 
-Raspberry Pi audio boards take advantage of a number of pins on the GPIO expander in
+Raspberry Pi audio boards take advantage of a number of pins on the GPIO header in
 order to operate successfully. Some of these pins are solely for the use of the board, and
 some can be shared with other peripherals, sensors, etc.
 
