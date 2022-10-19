@@ -18,7 +18,7 @@ If appropriate then the following are also used:
 * GPIO 22 (DigiAMP+ mute/unmute support)
 * GPIO 23/24 for rotary encoder (physical volume control) or status LED (Codec Zero)
 * GPIO 25 for the IR Sensor
-* GPIO 27 for the rotary encoder push switch/Code Zero switch
+* GPIO 27 for the rotary encoder push switch/Codec Zero switch
 
 === DAC PRO, DAC{plus}, DigiAMP{plus}, Codec Zero
 
