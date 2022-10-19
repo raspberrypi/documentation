@@ -1,23 +1,21 @@
 === Raspberry Pi DAC Pro
 
-Our Raspberry Pi DAC Pro HAT is our highest-fidelity DAC (Digital to Analogue Converter).
+The Raspberry Pi DAC Pro HAT is our highest-fidelity digital to analogue converter (DAC).
 
 image::images/DAC_Pro_Board_Diagram.jpg[width="80%"]
 
-With the Texas Instruments PCM5242, the DAC Pro provides outstanding Signal to Noise Ratio
-and supports Balanced/Differential out in parallel to Phono/RCA line level output. It also includes a
-dedicated headphone amplifier. The DAC Pro is powered by Raspberry Pi through the GPIO header.
+With the Texas Instruments PCM5242, the DAC Pro provides outstanding signal-to-noise ratio (SNR)
+and supports balanced/differential output in parallel to phono/RCA line-level output. It also includes a
+dedicated headphone amplifier. The DAC Pro is powered by a Raspberry Pi through the GPIO header.
 
-A careful selection of components and the layout of tracks have been at the forefront of our design in order to ensure noise immunity and the best playback of audio.
-
-As part of the DAC Pro, two 3 pin headers (P7/P9) are exposed above the Raspberry Pi's USB and Ethernet ports for use by the optional XLR board that allows differential/balanced output.
+As part of the DAC Pro, two three-pin headers (P7/P9) are exposed above the Raspberry Pi's USB and Ethernet ports for use by the optional XLR board, allowing differential/balanced output.
 
 ==== Pinouts
 [cols="1,12"]
 |===
-| *P1* | Analogue out (0..2V RMS), carries GPIO27, MUTE signal (headphone detect), Left and Right
-Audio and Left and Right Ground.
-| *P6* | Headphone socket signals (pin1: LEFT, 2:GROUND, 3: RIGHT, 4:GROUND, 5:DETECT).
-| *P7/9* | Differential (0..4V RMS) output (P7:LEFT, P9: RIGHT).
+| *P1* | Analogue out (0-2V RMS), carries GPIO27, MUTE signal (headphone detect), left and right
+audio and left and right ground.
+| *P6* | Headphone socket signals (1: LEFT, 2: GROUND, 3: RIGHT, 4: GROUND, 5: DETECT).
+| *P7/9* | Differential (0-4V RMS) output (P7: LEFT, P9: RIGHT).
 | *P10* | Alternative 5V input, powering Raspberry Pi in parallel.
 |===
