@@ -1,0 +1,161 @@
+== Configuration
+
+A pre-programmed EEPROM is included on all Raspberry Pi audio boards. Raspberry Pi audio boards are designed to be plug-and-play; Raspberry Pi OS is able to automatically detect and configure itself. In Raspberry Pi OS, right-clicking on the audio settings in the top right-hand corner of your screen will allow you to switch between the on-board audio settings and the HAT audio settings:
+
+image::images/gui.png[]
+
+There are a number of third-party audio software applications available for Raspberry Pi that will support the plug-and-play feature of our audio boards. Often these are used headless. They can be controlled via a PC or Mac application, or by a web server installed on Raspberry Pi, with interaction through a webpage.
+
+If you need to configure Raspberry Pi OS yourself, perhaps if you're running a headless system of your own and don't have the option of control via the GUI, you will need to make your Raspberry Pi audio board the primary audio device in Raspberry Pi OS, disabling the Raspberry Pi’s on-board audio device. This is done by editing the `/boot/config.txt` file. Using a Terminal session connected to your Raspberry Pi via SSH, run the following command to edit the file:
+
+----
+$ sudo nano /boot/config.txt
+----
+
+Find the `dtparam=audio=on` line in the file and comment it out by placing a # symbol at the start of the line. Anything written after the # symbol in any given line will be disregarded by the program. Your ``/boot/config.txt`` file should now have the following entry:
+
+----
+#dtparam=audio=on
+----
+
+Press CTRL+X, then Y and Enter to save, followed by a reboot of your Raspberry Pi in order for the settings to take effect.
+
+----
+$ sudo reboot
+----
+
+Alternatively, the `/boot/config.txt` file can be edited directly onto the Raspberry Pi's microSD card, inserted into your usual computer. Using the default file manager, open the `boot` volume on the card and edit the `config.txt` file using an appropriate text editor, then save the file, eject the microSD card and reinsert it back into your Raspberry Pi.
+
+=== Attaching the HAT
+
+The Raspberry Pi audio boards attach to the Raspberry Pi’s 40-pin header. They are designed to be supported on the Raspberry Pi using the supplied circuit board standoffs and screws. No soldering is required on the Raspberry Pi audio boards for normal operation unless you are using hardwired connections for specific connectors such as XLR (External Line Return) connections on the DAC Pro.
+
+All the necessary mounting hardware including spacers, screws and connectors is provided. The PCB spacers should be screwed, finger-tight only, to the Raspberry Pi before adding the audio board. The remaining screws should then be screwed into the spacers from above.
+
+=== Codec Zero configuration
+
+The Raspberry Pi Codec Zero board uses the Dialog Semiconductor DA7212 codec. This allows
+the recording of audio from the built-in MEMS microphone, from stereo phono sockets (AUX
+IN) or two mono external electret microphones. Playback is through stereo phono sockets (AUX OUT)
+or a mono speaker connector.
+
+Each input and output device has its own mixer, allowing the audio levels and volume to be adjusted
+independently. Within the codec itself, other mixers and switches exist to allow the output to be mixed to a single mono channel for single-speaker output. Signals may also be inverted; there is a five-band equaliser to adjust certain frequency bands. These settings can be controlled interactively, using AlsaMixer, or programmatically.
+
+Both the AUX IN and AUX OUT are 1V RMS. It may be necessary to adjust
+the AUX IN’s mixer to ensure that the input signal doesn’t saturate the ADC. Similarly, the output mixers can be to be adjusted to get the best possible output.
+
+Preconfigured scripts (loadable ALSA settings) https://github.com/iqaudio/Pi-Codec[are available on GitHub], offering:
+ 
+* Mono MEMS mic recording, mono speaker playback
+* Mono MEMS mic recording, mono AUX OUT playback
+* Stereo AUX IN recording, stereo AUX OUT playback
+* Stereo MIC1/MIC2 recording, stereo AUX OUT playback
+
+The Codec Zero needs to know which of these input and output settings are being used each time the Raspberry Pi powers on. Using a Terminal session on your Raspberry Pi, run the following command to download the scripts:
+
+----
+$ git clone https://github.com/iqaudio/Pi-Codec.git
+----
+
+If git is not installed, run the following command to install it:
+
+----
+$ sudo apt install git
+----
+
+The following command will set your device to use the on-board MEMS microphone and output for speaker playback:
+
+----
+$ sudo alsactl restore -f /home/pi/Pi-Codec/IQaudIO_Codec_OnboardMIC_record_and_SPK_playback.state
+----
+
+In order for your project to operate with your required settings when it is powered on, edit the `/etc/rc.local` file. The contents of this file are run at the end of every boot process, so it is ideal for this purpose. Edit the file:
+
+----
+$ sudo nano /etc/rc.local
+----
+
+Add the chosen script command above the exit 0 line and then Ctrl X, Y and Enter to save. The file should now look similar to this depending on your chosen setting:
+
+----
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+sudo alsactl restore -f /home/pi/Pi-Codec/IQaudIO_Codec_OnboardMIC_record_and_SPK_playback.state
+
+exit 0
+----
+
+Ctrl X, Y and Enter to save and reboot your device for the settings to take effect:
+
+----
+$ sudo reboot
+----
+
+If you are using your Raspberry Pi and Codec Zero in a headless environment, there is one final step required to make the Codec Zero the default audio device without access to the GUI audio settings on the desktop. We need to create a small file in your home folder:
+
+----
+$ sudo nano ./asoundrc
+----
+
+Add the following to the file:
+
+----
+pcm.!default {
+        type hw
+        card Zero
+}
+----
+
+Ctrl X, Y and Enter to save, and reboot once more to complete the configuration:
+
+----
+$ sudo reboot
+----
+
+=== Muting and unmuting the DigiAMP{plus}
+
+The DigiAMP{plus} mute state is toggled by GPIO22 on Raspberry Pi. The latest audio device tree
+supports the unmute of the DigiAMP{plus} through additional parameters.
+
+Firstly a "one-shot" unmute when kernel module loads.
+
+----
+dtoverlay=iqaudio-dacplus,unmute_amp
+----
+
+Unmute the amp when an ALSA device is opened by a client. Mute, with a five-second delay
+when the ALSA device is closed. (Reopening the device within the five-second close
+window will cancel mute.)
+
+----
+dtoverlay=iqaudio-dacplus,auto_mute_amp
+----
+
+If you do not want to control the mute state through the device tree, you can also script your own
+solution. 
+
+The amp will start up muted. To unmute the amp:
+
+----
+$ sudo sh -c "echo 22 > /sys/class/gpio/export"
+$ sudo sh -c "echo out >/sys/class/gpio/gpio22/direction"
+$ sudo sh -c "echo 1 >/sys/class/gpio/gpio22/value"
+----
+
+to mute the amp once more:
+
+----
+$ sudo sh -c "echo 0 >/sys/class/gpio/gpio22/value"
+----
