@@ -124,7 +124,7 @@
                     "title": "Raspberry Pi Audio",
                     "description": "Our range of audio HATs",
                     "image": "full-sized/Audio-HATs.png",
-                    "subpath": "iqaudio.adoc"
+                    "subpath": "audio.adoc"
                 },
                 {
                     "title": "Designing a HAT",
