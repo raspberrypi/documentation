@@ -842,7 +842,7 @@ The UTC build time for the EEPROM bootloader.
 
 `capabilities` - 32-bit integer
 
-This bit field describes the features supported by the current bootloader; it may be used to check whether a feature is supported before enabling it in the bootloader EEPROM config.
+This bit field indicates the features supported by the current bootloader; it may be used to check whether a feature is supported before enabling it in the bootloader EEPROM config.
 
 |===
 | Bit | Feature
