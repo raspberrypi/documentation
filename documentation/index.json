@@ -42,6 +42,12 @@
                     "subpath": "remote-access.adoc"
                 },
                 {
+                    "title": "Camera software",
+                    "description": "Software and libraries for Raspberry Pi camera hardware",
+                    "image": "full-sized/Camera.png",
+                    "subpath": "camera.adoc"
+                },
+                {
                     "title": "Raspberry Pi hardware",
                     "description": "Technical information about Raspberry Pi hardware",
                     "image": "full-sized/Raspberry-Pi-Hardware.png",
