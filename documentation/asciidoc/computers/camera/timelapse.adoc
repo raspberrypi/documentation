@@ -35,7 +35,7 @@ A good way to automate taking a picture at a regular interval is using `cron`. O
 crontab -e
 ----
 
-This will either ask which editor you would like to use, or open in your default editor. Once you have the file open in an editor, add the following line to schedule taking a picture every minute (referring to the Bash script from the xref:camera.adoc#raspistill[raspistill page], though you can use `libcamera-still` in exactly the same way):
+This will either ask which editor you would like to use, or open in your default editor. Once you have the file open in an editor, add the following line to schedule taking a picture every minute (referring to the Bash script from the xref:camera_software.adoc#raspistill[raspistill page], though you can use `libcamera-still` in exactly the same way):
 
 ----
 * * * * * /home/pi/camera.sh 2>&1

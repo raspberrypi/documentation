@@ -45,7 +45,7 @@
                     "title": "Camera software",
                     "description": "Software and libraries for Raspberry Pi camera hardware",
                     "image": "full-sized/Camera.png",
-                    "subpath": "camera.adoc"
+                    "subpath": "camera_software.adoc"
                 },
                 {
                     "title": "Raspberry Pi hardware",
