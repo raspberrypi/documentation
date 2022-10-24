@@ -89,4 +89,4 @@ So to perform a 100 second exposure capture, use
 
 `libcamera-still -o long_exposure.jpg --shutter 100000000 --gain 1 --awbgains 1,1 --immediate`
 
-For reference, the maximum exposure times of the three official Raspberry Pi cameras can be found in xref:../accessories/camera.adoc#maximum-exposure-times[this table].
+For reference, the maximum exposure times of the three official Raspberry Pi cameras can be found in xref:../accessories/camera.adoc#hardware-specification[this table].
