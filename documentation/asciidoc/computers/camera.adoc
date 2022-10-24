@@ -1,1 +1,0 @@
-include::camera/introduction.adoc[]

@@ -231,7 +231,7 @@ During video recording (`libcamera-vid`), specifying a low resolution stream wil
 
 Example: `libcamera-hello --lores-width 224 --lores-height 224`
 
-Note that the low resolution stream is not particularly useful unless used in conjunction with xref:camera.adoc#post-processing[image post-processing].
+Note that the low resolution stream is not particularly useful unless used in conjunction with xref:camera_software.adoc#post-processing[image post-processing].
 
 ----
 	--hflip				Read out with horizontal mirror
@@ -305,7 +305,7 @@ Example: `libcamera-still -o test.jpg --ev 0.3`
 
 The shutter time is fixed to the given value. The gain will still be allowed to vary (unless that is also fixed).
 
-Note that this shutter time may not be achieved if the camera is running at a frame rate that is too fast to allow it. In this case the `--framerate` option may be used to lower the frame rate. The maximum possible shutter times for the official Raspberry Pi supported can be found xref:camera.adoc#maximum-exposure-times[in this table].
+Note that this shutter time may not be achieved if the camera is running at a frame rate that is too fast to allow it. In this case the `--framerate` option may be used to lower the frame rate. The maximum possible shutter times for the official Raspberry Pi supported can be found xref:../accessories/camera.adoc#maximum-exposure-times[in this table].
 
 Using values above these maximums will result in undefined behaviour. Cameras will also have different minimum shutter times, though in practice this is not important as they are all low enough to expose bright scenes appropriately.
 
@@ -467,7 +467,7 @@ Example: `libcamera-vid -t 10000 --flush -o test.h264`
 
 The `--post-process-file` option specifies a JSON file that configures the post-processing that the imaging pipeline applies to camera images before they reach the application. It can be thought of as a replacement for the legacy `raspicam` "image effects".
 
-Post-processing is a large topic and admits the use of 3rd party software like OpenCV and TensorFlowLite to analyse and manipulate images. For more information, please refer to the section on xref:camera.adoc#post-processing[post-processing].
+Post-processing is a large topic and admits the use of 3rd party software like OpenCV and TensorFlowLite to analyse and manipulate images. For more information, please refer to the section on xref:camera_software.adoc#post-processing[post-processing].
 
 Example: `libcamera-hello --post-process-file negate.json`
 
