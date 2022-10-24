@@ -49,18 +49,8 @@ Then, please follow the relevant setup instructions either for xref:../computers
 
 | Video modes
 | 1080p30, 720p60 and 640 × 480p60/90
-| 1080p30, 720p60 and 640 × 480p60/90
-| 1080p30, 720p60 and 640 × 480p60/90
-
-| Linux integration
-| V4L2 driver available
-| V4L2 driver available
-| V4L2 driver available
-
-| C programming API
-| OpenMAX IL and others available
-| OpenMAX IL and others available
-|
+| 1080p47, 1640 × 1232p41 and 640 × 480p60/206
+| 2028 × 1080p50, 2028 × 1520p40 and 1332 × 990p120
 
 | Sensor
 | OmniVision OV5647
@@ -85,7 +75,7 @@ Then, please follow the relevant setup instructions either for xref:../computers
 | Optical size
 | 1/4"
 | 1/4"
-|
+| 1/2.3"
 
 | Full-frame SLR lens equivalent
 | 35 mm
