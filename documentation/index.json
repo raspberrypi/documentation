@@ -72,6 +72,12 @@
                     "url": "https://datasheets.raspberrypi.com"
                 },
                 {
+                    "title": "Tutorials",
+                    "description": "Hands-on hardware and software tutorials",
+                    "image": "full-sized/Tutorials.png",
+                    "url": "https://www.raspberrypi.com/tutorials/"
+                },
+                {
                     "title": "Forums",
                     "description": "User and product support forums",
                     "image": "full-sized/Forums.png",
@@ -145,6 +151,12 @@
                     "url": "https://datasheets.raspberrypi.com"
                 },
                 {
+                    "title": "Tutorials",
+                    "description": "Hands-on hardware and software tutorials",
+                    "image": "full-sized/Tutorials.png",
+                    "url": "https://www.raspberrypi.com/tutorials/"
+                },
+                {
                     "title": "Forums",
                     "description": "User and product support forums",
                     "image": "full-sized/Forums.png",
@@ -191,6 +203,12 @@
                     "description": "The Datasheets site for PDF-based documentation",
                     "image": "full-sized/Datasheets.png",
                     "url": "https://datasheets.raspberrypi.com"
+                },
+                {
+                    "title": "Tutorials",
+                    "description": "Hands-on hardware and software tutorials",
+                    "image": "full-sized/Tutorials.png",
+                    "url": "https://www.raspberrypi.com/tutorials/"
                 },
                 {
                     "title": "Forums",
