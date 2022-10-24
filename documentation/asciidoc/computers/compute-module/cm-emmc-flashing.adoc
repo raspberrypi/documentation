@@ -4,6 +4,8 @@ The Compute Module has an on-board eMMC device connected to the primary SD card 
 
 Please also read the section in the xref:compute-module.adoc#datasheets-and-schematics[Compute Module Datasheets]
 
+IMPORTANT: For mass provisioning of CM3, CM3+ and CM4 the https://github.com/raspberrypi/cmprovision[Raspberry Pi Compute Module Provisioning System] is recommended.
+
 === Steps to Flash the eMMC 
 
 To flash the Compute Module eMMC, you either need a Linux system (a Raspberry Pi is recommended, or Ubuntu on a PC) or a Windows system (Windows 10 is recommended). For BCM2837 (CM3), a bug which affected the Mac has been fixed, so this will also work.
@@ -44,60 +46,9 @@ Please ensure you are not writing to any USB devices whilst the installer is run
 . Once the driver installation is complete, run the `RPiBoot.exe` tool that was previously installed.
 . After a few seconds, the Compute Module eMMC will pop up under Windows as a disk (USB mass storage device).
 
-==== Building `rpiboot` on your host system (Cygwin/Linux)
+==== Building `rpiboot` on your host system.
 
-We will be using Git to get the rpiboot source code, so ensure Git is installed. In Cygwin, use the Cygwin installer. On a Raspberry Pi or other Debian-based Linux machine, use the following command:
-
-[,bash]
-----
-sudo apt install git
-----
-
-Git may produce an error if the date is not set correctly. On a Raspberry Pi, enter the following to correct this:
-
-[,bash]
-----
-sudo date MMDDhhmm
-----
-
-where `MM` is the month, `DD` is the date, and `hh` and `mm` are hours and minutes respectively.
-
-Clone the `usbboot` tool repository:
-
-[,bash]
-----
-git clone --depth=1 https://github.com/raspberrypi/usbboot
-cd usbboot
-----
-
-`libusb` must be installed. If you are using Cygwin, please make sure `libusb` is installed as previously described. On Raspberry Pi OS or other Debian-based Linux, enter the following command:
-
-[,bash]
-----
-sudo apt install libusb-1.0-0-dev
-----
-
-Now build and install the `usbboot` tool:
-
-[,bash]
-----
-make
-----
-
-Run the `usbboot` tool and it will wait for a connection:
-
-[,bash]
-----
-sudo ./rpiboot
-----
-
-Now plug the host machine into the Compute Module IO board USB slave port and power the CMIO board on. The `rpiboot` tool will discover the Compute Module and send boot code to allow access to the eMMC.
-
-For more information run
-
-----
-./rpiboot -h
-----
+Instructions for building and running the latest release of `rpiboot` are documented in the https://github.com/raspberrypi/usbboot/blob/master/Readme.md#building[usbboot readme] on Github.
 
 ==== Writing to the eMMC (Windows)
 
@@ -139,6 +90,12 @@ The default bootloader configuration on CM4 is designed to support bringup and d
 * Enabling hardware write protection on the bootloader EEPROM to ensure that the bootloader can't be modified on remote/inaccessible products.
 
 N.B. The Compute Module 4 ROM never runs `recovery.bin` from SD/EMMC and the `rpi-eeprom-update` service is not enabled by default. This is necessary because the EMMC is not removable and an invalid `recovery.bin` file would prevent the system from booting. This can be overridden and used with `self-update` mode where the bootloader can be updated from USB MSD or Network boot. However, `self-update` mode is not an atomic update and therefore not safe in the event of a power failure whilst the EEPROM was being updated.
+
+==== Flashing NVMe / other storage devices.
+The new Linux-based https://github.com/raspberrypi/usbboot/blob/master/mass-storage-gadget/README.md[mass-storage gadget] supports flashing of NVMe, EMMC and USB block devices.
+This is normally faster than using the `rpiboot` firmware driver and also provides a UART console to the device for easier debug.
+
+See also: https://github.com/raspberrypi/usbboot/blob/master/Readme.md#compute-module-4-extensions[CM4 rpiboot extensions]   
 
 ==== Modifying the bootloader configuration
 
