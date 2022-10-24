@@ -10,7 +10,7 @@ IMPORTANT: For mass provisioning of CM3, CM3+ and CM4 the https://github.com/ras
 
 To flash the Compute Module eMMC, you either need a Linux system (a Raspberry Pi is recommended, or Ubuntu on a PC) or a Windows system (Windows 10 is recommended).
 
-NOTE: It is not possible to flash the eMMC on the Compute Module 1 from a Mac, due to a bug in its processor.
+NOTE: Due to a bug in the Compute Module 1, it is not possible to flash its eMMC from a Mac.
 
 NOTE: There is a bug in the Compute Module 1 bootloader which returns a slightly incorrect USB packet to the host. A small number of USB host controllers object to this and cannot be used to flash the Compute Module 1.
 
