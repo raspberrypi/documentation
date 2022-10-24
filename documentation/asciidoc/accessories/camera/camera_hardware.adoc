@@ -49,7 +49,7 @@ Then, please follow the relevant setup instructions either for xref:../computers
 
 | Video modes
 | 1080p30, 720p60 and 640 × 480p60/90
-| 1080p47, 1640 × 1232p41 and 640 × 480p60/206
+| 1080p47, 1640 × 1232p41 and 640 × 480p206
 | 2028 × 1080p50, 2028 × 1520p40 and 1332 × 990p120
 
 | Sensor
@@ -137,68 +137,6 @@ Then, please follow the relevant setup instructions either for xref:../computers
 | 11.76
 | 670.74
 
-|===
-
-=== Software Features
-
-==== `libcamera` stack
-
-[cols=2]
-|===
-
-| Picture formats
-| JPEG, JPEG + DNG (raw), BMP, PNG, YUV420, RGB888
-
-| Video formats
-| raw h.264 (accelerated), MJPEG
-
-| Post-processing
-| User-definable image effects, customisable DRC and HDR, motion detection, OpenCV integration, TensorFlowLite integration
-
-| Exposure modes
-| normal, short, long, fixed fps, customisable
-
-| Metering modes
-| centre-weighted, average, spot, customisable
-
-| Automatic white balance modes
-| off, auto, incandescent, tungsten, fluorescent, indoor, daylight, cloudy, customisable
-
-| Triggers
-| Keypress, UNIX signal, timeout
-
-| Extra modes
-| timelapse, circular buffer, motion detection, segmented video, many features through flexible post-processing
-|===
-
-==== Legacy stack
-
-[cols=2]
-|===
-
-| Picture formats
-| JPEG (accelerated), JPEG + RAW, GIF, BMP, PNG, YUV420, RGB888
-
-| Video formats
-| raw h.264 (accelerated)
-
-| Effects
-| negative, solarise, posterize, whiteboard, blackboard, sketch, denoise, emboss, oilpaint, hatch, gpen, pastel, watercolour, film, blur, saturation
-
-| Exposure modes
-| auto, night, nightpreview, backlight, spotlight, sports, snow, beach, verylong, fixedfps, antishake, fireworks
-
-| Metering modes
-| average, spot, backlit, matrix
-
-| Automatic white balance modes
-| off, auto, sun, cloud, shade, tungsten, fluorescent, incandescent, flash, horizon
-
-| Triggers
-| Keypress, UNIX signal, timeout
-
-| Extra modes
-| demo, burst/timelapse, circular buffer, video with motion vectors, segmented video, live preview on 3D models
 |===
 
 === HQ Camera IR Filter Transmission
