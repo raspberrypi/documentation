@@ -20,7 +20,7 @@ Depending on the model, the camera may come with a small piece of translucent bl
 
 Before proceeding, we recommend ensuring that your kernel, GPU firmware and applications are all up to date. Please follow the instructions on xref:../computers/os.adoc#using-apt[keeping your operating system up to date].
 
-Then, please follow the relevant setup instructions either for xref:camera.adoc#getting-started[`libcamera`] or for xref:camera.adoc#enabling-the-camera[_Raspicam_].
+Then, please follow the relevant setup instructions either for xref:../computers/camera.adoc#getting-started[libcamera] or for xref:../computers/camera.adoc#enabling-the-camera[Raspicam].
 
 === Hardware Specification
 

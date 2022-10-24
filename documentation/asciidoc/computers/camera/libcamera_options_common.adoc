@@ -305,7 +305,7 @@ Example: `libcamera-still -o test.jpg --ev 0.3`
 
 The shutter time is fixed to the given value. The gain will still be allowed to vary (unless that is also fixed).
 
-Note that this shutter time may not be achieved if the camera is running at a frame rate that is too fast to allow it. In this case the `--framerate` option may be used to lower the frame rate. The maximum possible shutter times for the official Raspberry Pi supported can be found xref:camera.adoc#maximum-exposure-times[in this table].
+Note that this shutter time may not be achieved if the camera is running at a frame rate that is too fast to allow it. In this case the `--framerate` option may be used to lower the frame rate. The maximum possible shutter times for the official Raspberry Pi supported can be found xref:../accessories/camera.adoc#maximum-exposure-times[in this table].
 
 Using values above these maximums will result in undefined behaviour. Cameras will also have different minimum shutter times, though in practice this is not important as they are all low enough to expose bright scenes appropriately.
 
