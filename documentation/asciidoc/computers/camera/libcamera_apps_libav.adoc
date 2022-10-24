@@ -38,6 +38,12 @@ Sets the audio encoding bitrate in bits per second.
 Example: To record audio at 16 kilobits/sec with the mp2 codec use `libcamera-vid --codec libav -o test.mp4 --audio_codec mp2 --audio-bitrate 16384`
 
 ----
+    --audio-samplerate,     Set the audio sampling rate <number>
+----
+
+Set the audio sampling rate in Hz for encoding. Set to 0 (default) to use the input sample rate.
+
+----
     --audio-device,     Chooses an audio recording device to use <string>
 ----
 
