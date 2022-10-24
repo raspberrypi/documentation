@@ -8,17 +8,19 @@ IMPORTANT: For mass provisioning of CM3, CM3+ and CM4 the https://github.com/ras
 
 === Steps to Flash the eMMC 
 
-To flash the Compute Module eMMC, you either need a Linux system (a Raspberry Pi is recommended, or Ubuntu on a PC) or a Windows system (Windows 10 is recommended). For BCM2837 (CM3), a bug which affected the Mac has been fixed, so this will also work.
+To flash the Compute Module eMMC, you either need a Linux system (a Raspberry Pi is recommended, or Ubuntu on a PC) or a Windows system (Windows 10 is recommended).
 
-NOTE: There is a bug in the BCM2835 (CM1) bootloader which returns a slightly incorrect USB packet to the host. Most USB hosts seem to ignore this benign bug and work fine; we do, however, see some USB ports that don't work due to this bug. We don't quite understand why some ports fail, as it doesn't seem to be correlated with whether they are USB2 or USB3 (we have seen both types working), but it's likely to be specific to the host controller and driver. This bug has been fixed in BCM2837.
+NOTE: It is not possible to flash the eMMC on the Compute Module 1 from a Mac, due to a bug in its processor.
+
+NOTE: There is a bug in the Compute Module 1 bootloader which returns a slightly incorrect USB packet to the host. A small number of USB host controllers object to this and cannot be used to flash the Compute Module 1.
 
 === Setting up the CMIO board
 
 ==== Compute Module 4
 
-Ensure the Compute Module is fitted correctly installed on the IO board. It should lie flat on the IO board.
+Ensure the Compute Module is fitted correctly on the IO board: It should lie flat on the IO board.
 
-* Make sure that `nRPI_BOOT` which is on J2 (`disable eMMC Boot`) on the IO board jumper is fitted
+* Make sure that `nRPI_BOOT`, which is on J2 (`disable eMMC Boot`) on the IO board, has a jumper fitted.
 * Use a micro USB cable to connect the micro USB slave port J11 on IO board to the host device.
 * Do not power up yet.
 
@@ -89,11 +91,10 @@ The default bootloader configuration on CM4 is designed to support bringup and d
 * Configuring the boot device (e.g. network boot). See `BOOT_ORDER` section in the xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[bootloader configuration] guide.
 * Enabling hardware write protection on the bootloader EEPROM to ensure that the bootloader can't be modified on remote/inaccessible products.
 
-N.B. The Compute Module 4 ROM never runs `recovery.bin` from SD/EMMC and the `rpi-eeprom-update` service is not enabled by default. This is necessary because the EMMC is not removable and an invalid `recovery.bin` file would prevent the system from booting. This can be overridden and used with `self-update` mode where the bootloader can be updated from USB MSD or Network boot. However, `self-update` mode is not an atomic update and therefore not safe in the event of a power failure whilst the EEPROM was being updated.
+NOTE: The Compute Module 4 ROM never runs `recovery.bin` from SD/EMMC and the `rpi-eeprom-update` service is not enabled by default. This is necessary because the EMMC is not removable and an invalid `recovery.bin` file would prevent the system from booting. This can be overridden and used with `self-update` mode where the bootloader can be updated from USB MSD or Network boot. However, `self-update` mode is not an atomic update and therefore not safe in the event of a power failure whilst the EEPROM was being updated.
 
 ==== Flashing NVMe / other storage devices.
-The new Linux-based https://github.com/raspberrypi/usbboot/blob/master/mass-storage-gadget/README.md[mass-storage gadget] supports flashing of NVMe, EMMC and USB block devices.
-This is normally faster than using the `rpiboot` firmware driver and also provides a UART console to the device for easier debug.
+The new Linux-based https://github.com/raspberrypi/usbboot/blob/master/mass-storage-gadget/README.md[mass-storage gadget] supports flashing of NVMe, EMMC and USB block devices. This is normally faster than using the `rpiboot` firmware driver and also provides a UART console to the device for easier debug.
 
 See also: https://github.com/raspberrypi/usbboot/blob/master/Readme.md#compute-module-4-extensions[CM4 rpiboot extensions]   
 
@@ -123,7 +124,7 @@ To flash the bootloader EEPROM follow the same hardware setup as for flashing th
 ./rpiboot -d recovery
 ----
 
-=== Troubleshooting
+=== Known Issue
 
 For a small percentage of Raspberry Pi Compute Module 3s, booting problems have been reported. We have traced these back to the method used to create the FAT32 partition; we believe the problem is due to a difference in timing between the BCM2835/6/7 and the newer eMMC devices. The following method of creating the partition is a reliable solution in our hands.
 
