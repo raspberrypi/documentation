@@ -2,7 +2,7 @@
 
 [WARNING]
 ====
-Raspberry Pi has transitioned from a legacy camera software stack based on proprietary Broadcom GPU code to an open-source stack based on `libcamera`. As such, the _Raspicam_ stack is now deprecated.  Raspberry Pi OS images from _Bullseye_ onwards will contain *only* the `libcamera`-based stack. Raspberry Pi OS images up to and including _Buster_ will contain the legacy _Raspicam_ stack, though the `libcamera` stack and applications can be installed xref:camera_software.adoc#libcamera-and-libcamera-apps-packages[using _apt_], or built by following the xref:camera_software.adoc#building-libcamera-and-libcamera-apps[normal build instructions].
+Raspberry Pi has transitioned from a legacy camera software stack based on proprietary Broadcom GPU code to an open-source stack based on `libcamera`. As such, the _Raspicam_ stack is now deprecated.  Raspberry Pi OS images from _Bullseye_ onwards contain *only* the `libcamera`-based stack. Raspberry Pi OS images up to and including _Buster_ still contain the legacy _Raspicam_ stack, though the `libcamera` stack and applications can be installed xref:camera_software.adoc#libcamera-and-libcamera-apps-packages[using _apt_], or built by following the xref:camera_software.adoc#building-libcamera-and-libcamera-apps[normal build instructions].
 ====
 
 Users are encouraged to use the newest OS images and the `libcamera`-based stack because:
@@ -22,7 +22,6 @@ Users are encouraged to use the newest OS images and the `libcamera`-based stack
 Reasons to consider staying with an older OS and using the legacy _Raspicam_ stack might include:
 
 * It may perform better on Raspberry Pi 2 and Raspberry Pi Zero devices, as it offloads more to the GPU and is less dependent on the ARM cores.
-* `libcamera` is still missing certain features, most notably Python bindings. Whilst this work is in progress, users who need a Python interface (such as _Picamera_) will have to stay with the legacy stack for the time being.
 
 == Re-enabling the legacy stack
 
