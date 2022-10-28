@@ -30,4 +30,4 @@ These will be installed automatically when needed.
 
 * `libepoxy-dev` contains the necessary `libepoxy` header files and resources. You will only need this if you want support for the X11/GLES preview window.
 
-Subsequently `libcamera-apps` can be xref:camera_software.adoc#building-libcamera-apps-without-rebuilding-libcamera[checked out from Github and rebuilt].
+Subsequently `libcamera-apps` can be xref:camera_software.adoc#building-libcamera-apps-without-rebuilding-libcamera[checked out from GitHub and rebuilt].
