@@ -34,7 +34,7 @@ which will return something like:
 0x00000020 0x80000000 0x00010004 0x00000008 0x800000008 0xnnnnnnnn 0x00000000 0x00000000
 ----
 
-The above uses the https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface[mailbox property interface] `GET_BOARD_SERIAL` with a request size of 8 bytes and response size of 8 bytes (sending two integers for the request 0, 0). The response to this will be two integers (0x00000020 and 0x80000000) followed by the tag code, the request length, the response length (with the 31st bit set to indicate that it is a response) then the 64 bit serial number (where the MS 32bits are always 0).
+The above uses the https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface[mailbox property interface] `GET_BOARD_SERIAL` with a request size of 8 bytes and response size of 8 bytes (sending two integers for the request 0, 0). The response to this will be two integers (0x00000020 and 0x80000000) followed by the tag code, the request length, the response length (with the 31st bit set to indicate that it is a response) then the 64-bit serial number (where the MS 32 bits are always 0).
 
 === Write and Read Customer OTP Values
 
@@ -98,7 +98,7 @@ vcmailbox 0x00038021 8 8 0xffffffff 0xaffebabe
 This operation is unlikely to be useful for the vast majority of users, and is irreversible.
 
 === Device specific private key
-Eight rows of OTP (256bits) are available for use as a device-specific private key. This is intended to support file-system encryption.
+Eight rows of OTP (256 bits) are available for use as a device-specific private key. This is intended to support file-system encryption.
 
 These rows can be programmed and read using similar `vcmailbox` commands to those used for managing customer OTP rows. If
 secure-boot / file-system encryption is not required then the device private key rows can be used to store general purpose information.
