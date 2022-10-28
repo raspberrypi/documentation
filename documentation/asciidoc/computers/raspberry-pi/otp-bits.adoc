@@ -49,7 +49,7 @@ This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext`
 46 -- WVC1 decode key +
 47-54 -- SHA256 of RSA public key for secure-boot +
 55    -- secure-boot flags (reserved for use by the bootloader) +
-56-63 -- 256bit device specific private key +
+56-63 -- 256-bit device-specific private key +
 64-65 -- MAC address; if set, system will use this in preference to the automatically generated address based on the serial number +
 66 -- advanced boot register (not BCM2711)
 
