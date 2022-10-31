@@ -32,7 +32,13 @@ If you want to use the Qt preview window, please also execute
 sudo apt install -y qtbase5-dev libqt5core5a libqt5gui5 libqt5widgets5
 ----
 
-Now proceed directly to the instructions for xref:camera.adoc#building-libcamera-apps[building `libcamera-apps`]. Raspberry Pi OS Lite users should check that _git_ is installed first (`sudo apt install -y git`).
+If you want xref:camera_software.adoc#libav-integration-with-libcamera-vid[libav] support in `libcamera-vid`, additional libraries must be installed:
+
+----
+sudo apt install libavcodec-dev libavdevice-dev libavformat-dev libswresample-dev
+----
+
+Now proceed directly to the instructions for xref:camera_software.adoc#building-libcamera-apps[building `libcamera-apps`]. Raspberry Pi OS Lite users should check that _git_ is installed first (`sudo apt install -y git`).
 
 ==== Building `libcamera`
 
@@ -174,4 +180,4 @@ sudo ldconfig # this is only necessary on the first build
 
 NOTE: If you are using an image where `libcamera-apps` have been previously installed as an `apt` package, and you want to run the new `libcamera-apps` executables from the same terminal window where you have just built and installed them, you may need to run `hash -r` to be sure to pick up the new ones over the system supplied ones.
 
-Finally, if you have not already done so, please be sure to follow the `dtoverlay` and display driver instructions in the  xref:camera.adoc#getting-started[Getting Started section] (and rebooting if you changed anything there).
+Finally, if you have not already done so, please be sure to follow the `dtoverlay` and display driver instructions in the  xref:camera_software.adoc#getting-started[Getting Started section] (and rebooting if you changed anything there).

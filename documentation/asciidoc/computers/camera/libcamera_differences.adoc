@@ -8,7 +8,7 @@ Whilst the `libcamera-apps` attempt to emulate most features of the legacy _Rasp
 
 * `libcamera` performs its own camera mode selection, so the `--mode` option is not supported. It deduces camera modes from the resolutions requested. There is still work ongoing in this area.
 
-* The following features of the legacy apps are not supported as the code has to run on the ARM now. But note that a number of these effects are now provided by the xref:camera.adoc#post-processing[post-processing] mechanism.
+* The following features of the legacy apps are not supported as the code has to run on the ARM now. But note that a number of these effects are now provided by the xref:camera_software.adoc#post-processing[post-processing] mechanism.
   - opacity (`--opacity`)
   - image effects (`--imxfx`)
   - colour effects (`--colfx`)

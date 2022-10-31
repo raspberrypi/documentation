@@ -21,7 +21,7 @@ The preview can be halted either by clicking the window's close button, or using
 
 The options are classified broadly into 3 groups, namely those that are common, those that are specific to still images, and those that are for video encoding. They are supported in an identical manner across all the applications where they apply.
 
-Please refer to the xref:camera.adoc#common-command-line-options[command line options documentation] for a complete list.
+Please refer to the xref:camera_software.adoc#common-command-line-options[command line options documentation] for a complete list.
 
 ==== The Tuning File
 
@@ -67,4 +67,4 @@ will display the current red and blue gain values.
 
 For the HQ camera, use `--info-text "%focus"` to display the focus measure, which will be helpful for focusing the lens.
 
-A full description of the `--info-text` parameter is given in the xref:camera.adoc#common-command-line-options[command line options documentation].
+A full description of the `--info-text` parameter is given in the xref:camera_software.adoc#common-command-line-options[command line options documentation].
