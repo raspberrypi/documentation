@@ -1691,25 +1691,25 @@ Use `framebuffer_depth` to specify the console framebuffer depth in bits per pix
 | framebuffer_depth | result | notes
 
 | 8
-| 8bit framebuffer
+| 8-bit framebuffer
 | Default RGB palette makes screen unreadable
 
 | 16
-| 16bit framebuffer
+| 16-bit framebuffer
 |
 
 | 24
-| 24bit framebuffer
+| 24-bit framebuffer
 | May result in a corrupted display
 
 | 32
-| 32bit framebuffer
+| 32-bit framebuffer
 | May need to be used in conjunction with `framebuffer_ignore_alpha=1`
 |===
 
 ==== `framebuffer_ignore_alpha`
 
-Set `framebuffer_ignore_alpha` to `1` to disable the alpha channel. Can help with the display of a 32bit `framebuffer_depth`.
+Set `framebuffer_ignore_alpha` to `1` to disable the alpha channel. Can help with the display of a 32-bit `framebuffer_depth`.
 
 ==== `framebuffer_priority`
 

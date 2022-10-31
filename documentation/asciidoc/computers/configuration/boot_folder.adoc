@@ -72,7 +72,7 @@ The boot folder will contain various xref:linux_kernel.adoc#kernel[kernel] image
 | kernel8.img
 | BCM2837, BCM2711
 | Pi Zero 2 W, Pi 2, Pi 3, Pi 4, Pi 400
-| Beta xref:config_txt.adoc#boot-options[64 bit kernel]. Raspberry Pi 2 with BCM2836 does not support 64-bit.
+| xref:config_txt.adoc#boot-options[64-bit kernel]. Raspberry Pi 2 with BCM2836 does not support 64-bit kernels.
 |===
 
 NOTE: The architecture reported by `lscpu` is `armv7l` for systems running a 32-bit kernel (i.e. everything except `kernel8.img`), and `aarch64` for systems running a 64-bit kernel. The `l` in the `armv7l` case refers to the architecture being little-endian, not `LPAE` as is indicated by the `l` in the `kernel7l.img` filename.

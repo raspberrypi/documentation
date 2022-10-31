@@ -40,7 +40,7 @@ NOTE: More information on Fritzing is available on the https://fritzing.org/[fri
 
 == Raspberry Pi Pico W and Pico WH
 
-Raspberry Pi Pico W adds on-board single-band 2.4GHz wireless interfaces (802.11n) using the Infineon CYW4343 while retaining the Pico form factor. The on-board 2.4GHz wireless interface has the following features:
+Raspberry Pi Pico W adds on-board single-band 2.4GHz wireless interfaces (802.11n) using the Infineon CYW43439 while retaining the Pico form factor. The on-board 2.4GHz wireless interface has the following features:
 
 * Wireless (802.11n), single-band (2.4 GHz)
 * WPA3

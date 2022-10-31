@@ -1,0 +1,7 @@
+== Introducing the Raspberry Pi Cameras
+
+Raspberry Pi currently sell two types of camera board: an https://www.raspberrypi.com/products/camera-module-v2/[8MP device] and a https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[12MP High Quality (HQ)] camera. The 8MP device is also available in https://www.raspberrypi.com/products/pi-noir-camera-v2/[NoIR form] without an IR filter. The original 5MP device is no longer available from Raspberry Pi. Further details on the camera modules can be found in the xref:../accessories/camera.adoc#camera-modules[camera hardware] page.
+
+All Raspberry Pi cameras are capable of taking high-resolution photographs, along with full HD 1080p video, and can be fully controlled programmatically. This documentation describes how to use the camera in various scenarios, and how to use the various software tools.
+
+Once you've xref:../accessories/camera.adoc#installing-a-raspberry-pi-camera[installed your camera module], there are various ways the cameras can be used. The simplest option is to use one of the provided camera applications, such as `libcamera-still` or `libcamera-vid`.

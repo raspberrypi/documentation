@@ -42,13 +42,13 @@ Image analysis stages often prefer to work on reduced resolution images. `libcam
 
 Furthermore, with the post-processing framework being completely open, Raspberry Pi welcomes the contribution of new and interesting stages from the community and would be happy to host them in our `libcamera-apps` repository. The stages that are currently available are documented below.
 
-NOTE: The `libcamera-apps` supplied with the operating system will be built without any optional 3rd party libraries (such as OpenCV or TensorFlow Lite), meaning that certain post-processing stages that rely on them will not be enabled. To use these stages, please follow the instructions for xref:camera.adoc#building-libcamera-and-libcamera-apps[building `libcamera-apps` for yourself].
+NOTE: The `libcamera-apps` supplied with the operating system will be built without any optional 3rd party libraries (such as OpenCV or TensorFlow Lite), meaning that certain post-processing stages that rely on them will not be enabled. To use these stages, please follow the instructions for xref:camera_software.adoc#building-libcamera-and-libcamera-apps[building `libcamera-apps` for yourself].
 
 ==== `negate` stage
 
 The `negate` stage requires no 3rd party libraries.
 
-On a Raspberry Pi 3 device or a Raspberry Pi 4 running a 32-bit OS, it may execute more quickly if recompiled using `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon`. (Please see the xref:camera.adoc#building-libcamera-and-libcamera-apps[build instructions].)
+On a Raspberry Pi 3 device or a Raspberry Pi 4 running a 32-bit OS, it may execute more quickly if recompiled using `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon`. (Please see the xref:camera_software.adoc#building-libcamera-and-libcamera-apps[build instructions].)
 
 The `negate` stage has no user-configurable parameters.
 
@@ -70,7 +70,7 @@ image::images/negate.jpg[Image with negate]
 
 The `hdr` stage implements both HDR (high dynamic range) imaging and DRC (dynamic range compression). The terminology that we use here regards DRC as operating on single images, and HDR works by accumulating multiple under-exposed images and then performing the same algorithm as DRC.
 
-The `hdr` stage has no dependencies on 3rd party libraries, but (like some other stages) may execute more quickly on Raspberry Pi 3 or Raspberry Pi 4 devices running a 32-bit OS if recompiled using `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon` (please see the xref:camera.adoc#building-libcamera-and-libcamera-apps[build instructions]). Specifically, the image accumulation stage will run quicker and result in fewer frame drops, though the tonemapping part of the process is unchanged.
+The `hdr` stage has no dependencies on 3rd party libraries, but (like some other stages) may execute more quickly on Raspberry Pi 3 or Raspberry Pi 4 devices running a 32-bit OS if recompiled using `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon` (please see the xref:camera_software.adoc#building-libcamera-and-libcamera-apps[build instructions]). Specifically, the image accumulation stage will run quicker and result in fewer frame drops, though the tonemapping part of the process is unchanged.
 
 The basic procedure is that we take the image (which in the case of HDR may be multiple images accumulated together) and apply an edge-preserving smoothing filter to generate a low pass (LP) image. We define the high pass (HP) image to be the difference between the LP image and the original. Next we apply a global tonemap to the LP image and add back the HP image. This procedure, in contrast to applying the tonemap directly to the original image, prevents us from squashing and losing all the local contrast in the resulting image.
 

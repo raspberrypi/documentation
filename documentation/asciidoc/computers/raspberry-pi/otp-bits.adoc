@@ -30,8 +30,8 @@ NOTE: On BCM2711 the bootmode is defined by the xref:raspberry-pi.adoc#raspberry
 18 -- copy of bootmode register +
 28 -- serial number +
 29 -- ~(serial number) +
-30 -- xref:raspberry-pi.adoc#raspberry-pi-revision-codes[revision code]^1^ +
-33 - board revision extended - the meaning depends on the board model. +
+30 -- xref:raspberry-pi.adoc#raspberry-pi-revision-codes[revision code] ^1^ +
+33 -- board revision extended - the meaning depends on the board model. +
 This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext` and for testing purposes this OTP value can be temporarily overridden by setting `board_rev_ext` in `config.txt`.
 
 * Compute Module 4
@@ -44,11 +44,13 @@ This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext`
 * Raspberry Pi 400
  ** Bits 0-7: The default keyboard country code used by https://github.com/raspberrypi-ui/piwiz[piwiz]
 
-36-43 - xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer OTP values] +
-45 - MPG2 decode key +
-46 - WVC1 decode key +
-47-55 - Reserved for signed-boot on Compute Module 4 +
-64/65 -- MAC address; if set, system will use this in preference to the automatically generated address based on the serial number  +
+36-43 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer OTP values] +
+45 -- MPG2 decode key +
+46 -- WVC1 decode key +
+47-54 -- SHA256 of RSA public key for secure-boot +
+55    -- secure-boot flags (reserved for use by the bootloader) +
+56-63 -- 256-bit device-specific private key +
+64-65 -- MAC address; if set, system will use this in preference to the automatically generated address based on the serial number +
 66 -- advanced boot register (not BCM2711)
 
 * Bits 0-6: GPIO for ETH_CLK output pin

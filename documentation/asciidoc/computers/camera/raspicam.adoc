@@ -1,3 +1,45 @@
+== Raspicam applications
+
+[WARNING]
+====
+Raspberry Pi has transitioned from a legacy camera software stack based on proprietary Broadcom GPU code to an open-source stack based on `libcamera`. As such, the _Raspicam_ stack is now deprecated.  Raspberry Pi OS images from _Bullseye_ onwards contain *only* the `libcamera`-based stack. Raspberry Pi OS images up to and including _Buster_ still contain the legacy _Raspicam_ stack, though the `libcamera` stack and applications can be installed xref:camera_software.adoc#libcamera-and-libcamera-apps-packages[using _apt_], or built by following the xref:camera_software.adoc#building-libcamera-and-libcamera-apps[normal build instructions].
+====
+
+Users are encouraged to use the newest OS images and the `libcamera`-based stack because:
+
+* It will continue to be developed moving forward.
+* Raspberry Pi and 3rd parties can fix bugs and problems in the camera stack.
+* Raspberry Pi and 3rd parties can add new features to the camera stack.
+* It is much easier to add support for new cameras.
+* 3rd parties can add support directly for their own cameras.
+* Nearly all aspects of the camera tuning can be changed by users.
+* It integrates much more conveniently with other standard Linux APIs.
+* Raspberry Pi supply a set of `libcamera-apps` which emulate most of the features of the legacy applications.
+* It provdes a feature-rich post-processing framework integrating OpenCV and TensorFlow Lite.
+* Libcamera makes it easier to control the parameters of the image sensor and the camera system.
+* It is fully supported on 64-bit operating systems.
+
+Reasons to consider staying with an older OS and using the legacy _Raspicam_ stack might include:
+
+* It may perform better on Raspberry Pi 2 and Raspberry Pi Zero devices, as it offloads more to the GPU and is less dependent on the ARM cores.
+
+== Re-enabling the legacy stack
+
+The legacy camera stack can be re-enabled in Bullseye using the following steps.
+
+1. Ensure your system is up-to-date and reboot it.
+2. Run `sudo raspi-config`.
+3. Navigate to `Interface Options` and select `Legacy camera` to enable it.
+4. Reboot your Raspberry Pi again.
+
+These steps are shown in the following video.
+
+video::E7KPSc_Xr24[youtube]
+
+NOTE: More information can be found in the https://www.raspberrypi.com/news/bullseye-camera-system/[blog post] discussing the transition.
+
+WARNING: The legacy camera stack cannot be re-enabled on a 64-bit Raspberry Pi OS release.
+
 == Raspicam commands
 
 `raspistill`, `raspivid` and `raspiyuv` are command line tools for using the camera module.
@@ -36,7 +78,7 @@ The display should show a five-second preview from the camera and then take a pi
 
 ==== Basic usage of raspistill
 
-With a camera module xref:camera.adoc#camera-modules[connected and enabled], enter the following command in the terminal to take a picture:
+With a camera module xref:../accessories/camera.adoc#camera-modules[connected and enabled], enter the following command in the terminal to take a picture:
 
 [,bash]
 ----
@@ -123,14 +165,14 @@ Use the arrow keys to scroll and type `q` to exit.
 
 ==== Basic usage of raspivid
 
-With a camera module xref:camera.adoc#camera-modules[connected and enabled], record a video using the following command:
+With a camera module xref:../accessories/camera.adoc#camera-modules[connected and enabled], record a video using the following command:
 
 [,bash]
 ----
 raspivid -o vid.h264
 ----
 
-Remember to use `-hf` and `-vf` to flip the image if required, like with xref:camera.adoc#raspistill[raspistill]
+Remember to use `-hf` and `-vf` to flip the image if required, like with xref:camera_software.adoc#raspistill[raspistill]
 
 This will save a 5 second video file to the path given here as `vid.h264` (default length of time).
 
@@ -1362,7 +1404,7 @@ The applications described here will return a standard error code to the shell o
 
 === Long Exposures
 
-The maximum exposure times of the three official Raspberry Pi cameras can be found in xref:camera.adoc#maximum-exposure-times[this table].
+The maximum exposure times of the three official Raspberry Pi cameras can be found in xref:../accessories/camera.adoc#hardware-specification[this table].
 
 Due to the way the ISP works, by default asking for a long exposure can result in the capture process taking up to 7 times the exposure time, so a 200 second exposure on the HQ camera could take 1400 seconds to actually return an image. This is due to the way the camera system works out the correct exposures and gains to use in the image, using it's AGC (automatic gain control) and AWB (automatic white balance) algorithms. The system needs a few frames to calculate these numbers in order to produce a decent image. When combined with frame discards at the start of processing (in case they are corrupt), and the switching between preview and captures modes, this can result in up to 7 frames needed to produce a final image. With long exposures, that can take a long time.
 
@@ -1390,7 +1432,7 @@ e.g.
 
 `raspistill --encoding png -o fred.png`
 
-Another option is to output completely formatted YUV420 or RGB data using the xref:camera.adoc#raspiyuv[`raspiyuv`] application.
+Another option is to output completely formatted YUV420 or RGB data using the xref:camera_software.adoc#raspiyuv[`raspiyuv`] application.
 
 ==== Unprocessed Images
 

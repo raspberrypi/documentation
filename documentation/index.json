@@ -6,26 +6,26 @@
             "default_tab": "yes",
             "subitems": [
                 {
-                    "title": "Getting Started",
-                    "description": "This is the stuff about how to get started",
+                    "title": "Getting started",
+                    "description": "How to get started with your Raspberry Pi",
                     "image": "full-sized/Getting-Started.png",
                     "subpath": "getting-started.adoc"
                 },
                 {
                     "title": "Raspberry Pi OS",
-                    "description": "The official OS of Raspberry Pi",
+                    "description": "The official Raspberry Pi operating system",
                     "image": "full-sized/Raspberry-Pi-OS.png",
                     "subpath": "os.adoc"
                 },
                 {
                     "title": "Configuration",
-                    "description": "Configuring the Raspberry Pi's settings to suit your needs",
+                    "description": "Configuring your Raspberry Pi's settings",
                     "image": "full-sized/Configuration.png",
                     "subpath": "configuration.adoc"
                 },
                 {
                     "title": "The config.txt file",
-                    "description": "Low-level control of your Raspberry Pi's settings",
+                    "description": "Low-level settings control",
                     "image": "full-sized/The-config-txt-file.png",
                     "subpath": "config_txt.adoc"
                 },
@@ -36,19 +36,25 @@
                     "subpath": "linux_kernel.adoc"
                 },
                 {
-                    "title": "Remote Access",
+                    "title": "Remote access",
                     "description": "Accessing your Raspberry Pi remotely",
                     "image": "full-sized/Remote-Access.png",
                     "subpath": "remote-access.adoc"
                 },
                 {
-                    "title": "Raspberry Pi Hardware",
+                    "title": "Camera software",
+                    "description": "Software and libraries for Raspberry Pi camera hardware",
+                    "image": "full-sized/Camera.png",
+                    "subpath": "camera_software.adoc"
+                },
+                {
+                    "title": "Raspberry Pi hardware",
                     "description": "Technical information about Raspberry Pi hardware",
                     "image": "full-sized/Raspberry-Pi-Hardware.png",
                     "subpath": "raspberry-pi.adoc"
                 },
                 {
-                    "title": "Compute Module Hardware",
+                    "title": "Compute Module hardware",
                     "description": "Technical information about Raspberry Pi Compute Module hardware",
                     "image": "full-sized/Compute-Module-Hardware.png",
                     "subpath": "compute-module.adoc"
@@ -60,14 +66,14 @@
                     "subpath": "processors.adoc"
                 },
                 {
-                    "title": "PIP",
-                    "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents",
+                    "title": "Product Information Portal",
+                    "description": "Raspberry Pi compliance documents",
                     "image": "full-sized/PIP.png",
                     "url": "https://pip.raspberrypi.com/"
                 },
                 {
                     "title": "Datasheets",
-                    "description": "The Datasheets site for PDF-based documentation",
+                    "description": "PDF documentation",
                     "image": "full-sized/Datasheets.png",
                     "url": "https://datasheets.raspberrypi.com"
                 },
@@ -92,7 +98,7 @@
             "subitems": [
                 {
                     "title": "Camera",
-                    "description": "We have several Raspberry Pi cameras",
+                    "description": "Raspberry Pi camera boards",
                     "image": "full-sized/Camera.png",
                     "subpath": "camera.adoc"
                 },
@@ -103,8 +109,8 @@
                     "subpath": "display.adoc"
                 },
                 {
-                    "title": "Keyboard & Mouse",
-                    "description": "We have our own keyboard and mouse",
+                    "title": "Keyboard and mouse",
+                    "description": "Official Raspberry Pi keyboard and mouse",
                     "image": "full-sized/Keyboard-and-Mouse.png",
                     "subpath": "keyboard-and-mouse.adoc"
                 },
@@ -128,7 +134,7 @@
                 },
                 {
                     "title": "Raspberry Pi Audio",
-                    "description": "Our range of audio HATs",
+                    "description": "High-definition audio with Raspberry Pi",
                     "image": "full-sized/Audio-HATs.png",
                     "subpath": "audio.adoc"
                 },
@@ -139,14 +145,14 @@
                     "url": "https://github.com/raspberrypi/hats"
                 },
                 {
-                    "title": "PIP",
-                    "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents",
+                    "title": "Product Information Portal",
+                    "description": "Raspberry Pi compliance documents",
                     "image": "full-sized/PIP.png",
                     "url": "https://pip.raspberrypi.com/"
                 },
                 {
                     "title": "Datasheets",
-                    "description": "The Datasheets site for PDF-based documentation",
+                    "description": "PDF-based documentation",
                     "image": "full-sized/Datasheets.png",
                     "url": "https://datasheets.raspberrypi.com"
                 },
@@ -170,7 +176,7 @@
             "subitems": [
                 {
                     "title": "RP2040",
-                    "description": "Our first microcontroller device",
+                    "description": "Raspberry Pi's flagship microcontroller device",
                     "image": "full-sized/RP2040.png",
                     "subpath": "rp2040.adoc"
                 },
@@ -193,14 +199,14 @@
                     "subpath": "c_sdk.adoc"
                 },
                 {
-                    "title": "PIP",
-                    "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents",
+                    "title": "Product Information Portal",
+                    "description": "Raspberry Pi compliance documents",
                     "image": "full-sized/PIP.png",
                     "url": "https://pip.raspberrypi.com/"
                 },
                 {
                     "title": "Datasheets",
-                    "description": "The Datasheets site for PDF-based documentation",
+                    "description": "PDF-based documentation",
                     "image": "full-sized/Datasheets.png",
                     "url": "https://datasheets.raspberrypi.com"
                 },
