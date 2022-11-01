@@ -21,3 +21,5 @@ Then go ahead and:
 . You can access the REPL via USB Serial. 
 
 The https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf[Raspberry Pi Pico Python SDK] book contains step-by-step instructions for connecting to your Pico and programming it in MicroPython using both the command line and the https://thonny.org/[Thonny] IDE.
+
+WARNING: If you are using an Apple Mac, and running macOS Ventura, there has been a change in how the Finder works which causes drag-and-drop to fail. Please see our https://www.raspberrypi.com/news/the-ventura-problem/[blog post] for a full explanation, and workarounds, and our https://github.com/raspberrypi/pico-sdk/issues/1081[Github issue] tracking the problem for the current status.
