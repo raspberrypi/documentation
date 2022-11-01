@@ -35,6 +35,8 @@ Click on the “interfaces” tab and adjust the Serial settings as shown below:
 
 image::images/setting-up.png[width="50%"]
 
+NOTE: The 1-Wire bus must be disabled. It uses GPIO4, which the Build HAT requires. Even if you don't connect anything to the 1-Wire bus yourself, having that interface enabled will prevent communication with the Build HAT.
+
 ==== Using your Raspberry Pi Headless
 
 If you are running your Raspberry Pi headless and using `raspi-config`, select “Interface Options” from the first menu.
