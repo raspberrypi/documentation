@@ -326,6 +326,10 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 14: CM4
 
+|
+|
+| 15: CM4S
+
 | RRRR
 | Revision
 | 0, 1, 2, etc.
