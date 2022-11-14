@@ -41,7 +41,7 @@ boot_partition=3
 
 * System is powered on and boots to partition 2 by default.
 * An `Update Service` downloads the next version of the OS to partition 3.
-* The update is tested by rebooting to partition 3 in `tryboot` mode `reboot "3 tryboot"`
+* The update is tested by rebooting to `tryboot` mode `reboot "0 tryboot"` where `0` means the default partition.
 
 **Committing or cancelling the update**
 
