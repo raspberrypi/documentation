@@ -801,10 +801,6 @@ As it is too time-consuming to document the individual overlays here, please ref
 === Firmware parameters
 The firmware uses the special https://www.kernel.org/doc/html/latest/devicetree/usage-model.html#runtime-configuration[/chosen] node to pass parameters between the bootloader and/or firmware and the operating system.
 
-`boot-mode` - 32-bit integer
-
-The boot-mode used to load the kernel. See xref:raspberry-pi.adoc#BOOT_ORDER[BOOT_ORDER].
-
 `overlay_prefix` - string
 
 The xref:config_txt.adoc#overlay_prefix[overlay_prefix] string selected by `config.txt`.
@@ -812,14 +808,6 @@ The xref:config_txt.adoc#overlay_prefix[overlay_prefix] string selected by `conf
 `os_prefix` - string
 
 The xref:config_txt.adoc#os_prefix[os_prefix] string selected by `config.txt`.
-
-`partition` - 32-bit integer
-
-The partition number used during boot. If a `boot.img` ramdisk is loaded then this refers to partition that the ramdisk was loaded from rather than the partition number within the ramdisk.
-
-`pm_rsts` - 32-bit integer
-
-The value of the `PM_RSTS` register during boot.
 
 `rpi-boardrev-ext` - 32-bit integer
 
@@ -829,11 +817,24 @@ The extended board revision code from xref:raspberry-pi.adoc#otp-register-and-bi
 
 The country code used used by https://github.com/raspberrypi-ui/piwiz[PiWiz] - Pi400 only.
 
+==== Common bootloader properties `/chosen/bootloader`
+`boot-mode` - 32-bit integer
+
+The boot-mode used to load the kernel. See xref:raspberry-pi.adoc#BOOT_ORDER[BOOT_ORDER].
+
+`partition` - 32-bit integer
+
+The partition number used during boot. If a `boot.img` ramdisk is loaded then this refers to partition that the ramdisk was loaded from rather than the partition number within the ramdisk.
+
+`pm_rsts` - 32-bit integer
+
+The value of the `PM_RSTS` register during boot.
+
 `tryboot` - 32-bit integer
 
 Set to `1` if the `tryboot` flag was set at boot.
 
-==== BCM2711 bootloader properties `/chosen/bootloader`
+==== BCM2711 specific bootloader properties `/chosen/bootloader`
 The following properties are specific to BCM2711 SPI EEPROM bootloader.
 
 `build_timestamp` - 32-bit integer
