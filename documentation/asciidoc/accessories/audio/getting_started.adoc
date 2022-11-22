@@ -125,7 +125,7 @@ Ctrl X, Y and Enter to save, then reboot your device.
 
 The final step is to ensure that everything is operating as expected. Press the button and release it when you hear the burp. The recording will now begin for a period of five seconds. Once you have released the button, press it briefly again to hear the recording. Repeat this process as many times as you wish, and your sounds will be played at random. You can delete all recordings by pressing and holding the button, keeping the button pressed during the first burp and recording process, and releasing it after at least 20 seconds, at which point you will hear another burp sound confirming that the recordings have been deleted.
 
-video::aUD_rcpc08I[youtube]
+video::BjXERzu8nS0[youtube]
 
 === Next steps
 
