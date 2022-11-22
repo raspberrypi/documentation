@@ -24,14 +24,11 @@ Set this property to `1` to load the normal `config.txt` and `boot.img` files in
 This enables the `tryboot` switch to be made at the partition level rather than the file-level without having to modify configuration files in the A/B partitions.
 
 
-=== A/B boot example
-In the following example partition `3` would be contain the pending OS upgrade and would be tested by rebooting in `tryboot` mode (`sudo reboot "0 tryboot"`).
-If the OS determines that the upgrade was successful then it would replace `autoboot.txt` swapping the partition numbers.
-Otherwise, if the system is reboot (e.g. watchdog or cold boot) then system would boot from partition `2` as usual.
+=== Example update flow for A/B booting
 
-Since the `autoboot.txt` file is a single sector it will normally be possible to update this with a single sector update to the SD/EMMC.
+The following pseudo code shows how an hypothetical OS `Update Service` could use `tryboot` + `autoboot.txt` to perform an fail-safe OS upgrade.
 
-`autoboot.txt`
+Initial `autoboot.txt`
 ----
 [all]
 tryboot_a_b=1
@@ -39,3 +36,38 @@ boot_partition=2
 [tryboot]
 boot_partition=3
 ----
+
+**Installing the update**
+
+* System is powered on and boots to partition 2 by default.
+* An `Update Service` downloads the next version of the OS to partition 3.
+* The update is tested by rebooting to `tryboot` mode `reboot "0 tryboot"` where `0` means the default partition.
+
+**Committing or cancelling the update**
+
+* System boots from partition 3 because the `[tryboot]` filter evaluates to true in `tryboot mode`.
+* If tryboot is active (`/proc/device-tree/chosen/bootloader/tryboot == 1`)
+ ** If the current boot partition (`/proc/device-tree/chosen/bootloader/partition`) matches the `boot_partition` in the `[tryboot]` section of `autoboot.txt`
+  *** The `Update Service` validates the system to verify that the update was successful.
+  *** If the update was successful
+   **** Replace `autoboot.txt` swapping the `boot_partition` configuration.
+   **** Normal reboot - partition 3 is now the default boot partition.
+  *** Else
+   **** `Update Service` marks the update as failed e.g. it removes the update files.
+   **** Normal reboot - partition 2 is still the default boot partition because the `tryboot` flag is automatically cleared.
+  *** End if
+ ** End If
+* End If
+
+Updated `autoboot.txt`
+----
+[all]
+tryboot_a_b=1
+boot_partition=3
+[tryboot]
+boot_partition=2
+----
+
+**Notes**
+* It's not mandatory to reboot after updating `autoboot.txt`. However, the `Update Service` must be careful to avoid overwriting the current partition since `autoboot.txt` has already been modified to commit the last update..
+* See also: xref:configuration.adoc#device-trees-overlays-and-parameters[Device-tree parameters].
