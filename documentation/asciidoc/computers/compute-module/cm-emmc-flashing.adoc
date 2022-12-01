@@ -36,7 +36,7 @@ Under Windows, an installer is available to install the required drivers and boo
 
 ==== Windows Installer
 
-For those who just want to enable the Compute Module eMMC as a mass storage device under Windows, the stand-alone installer is the recommended option. This installer has been tested on Windows 10 32-bit and 64-bit, and Windows XP 32-bit.
+For those who just want to enable the Compute Module eMMC as a mass storage device under Windows, the stand-alone installer is the recommended option. This installer has been tested on Windows 10 64-bit.
 
 Please ensure you are not writing to any USB devices whilst the installer is running.
 
