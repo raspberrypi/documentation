@@ -22,4 +22,4 @@ Then go ahead and:
 
 The https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf[Raspberry Pi Pico Python SDK] book contains step-by-step instructions for connecting to your Pico and programming it in MicroPython using both the command line and the https://thonny.org/[Thonny] IDE.
 
-WARNING: If you are using an Apple Mac, and running macOS Ventura, there has been a change in how the Finder works which causes drag-and-drop to fail. Please see our https://www.raspberrypi.com/news/the-ventura-problem/[blog post] for a full explanation, and workarounds, and our https://github.com/raspberrypi/pico-sdk/issues/1081[Github issue] tracking the problem for the current status.
+WARNING: If you are using an Apple Mac and running macOS Ventura 13, there has been a change in how the Finder works which causes drag-and-drop to fail. This https://github.com/raspberrypi/pico-sdk/issues/1081[issue] has been fixed in Ventura version 13.1, however. Please see our https://www.raspberrypi.com/news/the-ventura-problem/[blog post] for a full explanation, and workarounds, if you cannot upgrade to a newer version of macOS Ventura yet.
