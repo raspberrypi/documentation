@@ -153,6 +153,12 @@ The supplied string is set as the title of the preview window (when running unde
 
 | %focus
 | The focus metric for the image, where a larger value implies a sharper image
+
+| %lp
+| The current lens position in dioptres (1 / distance in metres).
+
+| %afstate
+| The autofocus algorithm state (one of `idle`, `scanning`, `focused` or `failed`).
 |===
 
 When not provided, the `--info-text` string defaults to `"#%frame (%fps fps) exp %exp ag %ag dg %dg"`.
