@@ -159,6 +159,12 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | 112
 | 670.74
 
+| Lens Mount
+| N/A
+| N/A
+| N/A 
+| N/A
+| CS- or M12-mount
 |===
 
 === Mechanical Drawings
