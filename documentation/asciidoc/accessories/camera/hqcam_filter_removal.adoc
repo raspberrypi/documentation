@@ -1,4 +1,10 @@
-== Raspberry Pi HQ Camera Filter Removal
+== HQ Camera Filter Transmission
+
+The HQ Camera uses a Hoya CM500 infrared filter. Its transmission characteristics are as represented in the following graph.
+
+image::images/hoyacm500.png[CM500 Transmission Graph]
+
+== HQ Camera Filter Removal
 
 The High Quality Camera contains an IR filter, which is used to reduce the camera's sensitivity to infrared light. This ensures that outdoor photos look more natural. However, some nature photography can be enhanced with the removal of this filter; the colours of sky, plants, and water can be affected by its removal. The camera can also be used without the filter for night vision in a location that is illuminated with infrared light.
 
@@ -29,3 +35,4 @@ image:images/rpi_hq_cam_clear_filter.jpg[camera protective filter, width="70%"]
 *  The nylon washer prevents damage to the circuit board; apply this washer first. Next, fit the steel washer, which prevents damage to the nylon washer.
 *  Screw down the two hex lock keys. As long as the washers have been fitted in the correct order, they do not need to be screwed very tightly.
 *  Note that it is likely to be difficult or impossible to glue the filter back in place and return the device to functioning as a normal optical camera.
+
