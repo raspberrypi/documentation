@@ -80,7 +80,7 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | Sony IMX219
 | Sony IMX708
 | Sony IMX708
-| https://www.sony-semicon.co.jp/products/common/pdf/IMX477-AACK_Flyer.pdf[Sony IMX477]
+| Sony IMX477
 
 | Sensor resolution
 | 2592 × 1944 pixels
@@ -114,7 +114,7 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | Fixed
 | Adjustable
 | Motorized
-| Motorzied
+| Motorized
 | Adjustable
 
 | Depth of field
