@@ -25,6 +25,8 @@ Reasons to consider staying with an older OS and using the legacy _Raspicam_ sta
 
 == Re-enabling the legacy stack
 
+IMPORTANT: The legacy camera stuck is not available in the 64-bit version of Raspberry Pi OS.
+
 The legacy camera stack can be re-enabled in Bullseye using the following steps.
 
 1. Ensure your system is up-to-date and reboot it.
