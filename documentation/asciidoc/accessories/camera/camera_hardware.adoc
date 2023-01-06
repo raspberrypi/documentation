@@ -27,6 +27,8 @@ video::GImeVqHQzsE[youtube]
 
 Depending on the model, the camera may come with a small piece of translucent blue plastic film covering the lens. This is only present to protect the lens while it is being mailed to you, and needs to be removed by gently peeling it off.
 
+NOTE: There is additional documentation available around https://datasheets.raspberrypi.com/hq-camera/cs-mount-lens-guide.pdf[fitting lens] to the HQ Camera.
+
 === Preparing the Software
 
 Before proceeding, we recommend ensuring that your kernel, GPU firmware and applications are all up to date. Please follow the instructions on xref:../computers/os.adoc#using-apt[keeping your operating system up to date].
@@ -163,9 +165,13 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 
 Available mechanical drawings;
 
-* Camera Module v2 https://datasheets.raspberrypi.com/camera/camera-v2-mechanical-drawing.pdf[PDF]
-* HQ Camera Module https://datasheets.raspberrypi.com/hq-camera/hq-camera-mechanical-drawing.pdf[PDF]
-* HQ Camera Module lens mount https://datasheets.raspberrypi.com/hq-camera/hq-camera-lensmount-drawing.pdf[PDF]
+* Camera Module 2 https://datasheets.raspberrypi.com/camera/camera-module-2-mechanical-drawing.pdf[PDF]
+* Camera Module 3 https://datasheets.raspberrypi.com/camera/camera-module-3-standard-mechanical-drawing.pdf[PDF]
+* Camera Module 3 Wide https://datasheets.raspberrypi.com/camera/camera-module-3-wide-mechanical-drawing.pdf[PDF]
+* HQ Camera CS-mount https://datasheets.raspberrypi.com/hq-camera/hq-camera-cs-mechanical-drawing.pdf[PDF]
+* HQ Camera CS-mount lens mount https://datasheets.raspberrypi.com/hq-camera/hq-camera-cs-lensmount-drawing.pdf[PDF]
+* HQ Camera M12-mount https://datasheets.raspberrypi.com/hq-camera/hq-camera-m12-mechanical-drawing.pdf[PDF]
+
 
 === Schematics
 
@@ -174,5 +180,5 @@ image:images/RPi-S5-conn.png[camera connector]
 
 Other available schematics;
 
-* Camera Module v2 https://datasheets.raspberrypi.com/camera/camera-v2-schematics.pdf[PDF]
+* Camera Module v2 https://datasheets.raspberrypi.com/camera/camera-module-2-schematics.pdf[PDF]
 * HQ Camera Module https://datasheets.raspberrypi.com/hq-camera/hq-camera-schematics.pdf[PDF]
