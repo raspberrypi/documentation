@@ -23,7 +23,7 @@ image:images/rpi_hq_cam_gasket.jpg[camera gasket, width="70%"]
 *  Lift up the board and place it down on a very clean surface. Make sure the sensor does not touch the surface.
 *  Before completing the next step, read through all of the steps and decide whether you are willing to void your warranty. *Do not proceed* unless you are sure that you are willing to void your warranty.
 *  Turn the lens around so that it is "looking" upwards and place it on a table.
-* ou may try some ways to weaken the adhesive, such as a little isopropyl alcohol and/or heat (~20-30 C). Using a pen top or similar soft plastic item, push down on the filter only at the very edges where the glass attaches to the aluminium - to minimise the risk of breaking the filter. The glue will break and the filter will detach from the lens mount.
+* You may try some ways to weaken the adhesive, such as a little isopropyl alcohol and/or heat (~20-30 C). Using a pen top or similar soft plastic item, push down on the filter only at the very edges where the glass attaches to the aluminium - to minimise the risk of breaking the filter. The glue will break and the filter will detach from the lens mount.
 
 image:images/rpi_hq_cam_ir_filter.jpg[camera ir filter, width="70%"]
 
