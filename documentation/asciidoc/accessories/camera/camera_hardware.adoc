@@ -1,7 +1,7 @@
 :figure-caption!:
 == Camera Modules
 
-There are now several official Raspberry Pi camera modules. The original 5-megapixel model was https://www.raspberrypi.com/news/camera-board-available-for-sale/[released] in 2013, it was followed by an 8-megapixel https://www.raspberrypi.com/products/camera-module-v2/[Camera Module 2] which was https://www.raspberrypi.com/news/new-8-megapixel-camera-board-sale-25/[released] in 2016. The latest camera model is the 12-megapixel https://raspberrypi.com/products/camera-module-3/[Camera Module 3] which was https://www.raspberrypi.com/news/new-autofocus-camera-modules/[released] in 2023. 
+There are now several official Raspberry Pi camera modules. The original 5-megapixel model was https://www.raspberrypi.com/news/camera-board-available-for-sale/[released] in 2013, it was followed by an 8-megapixel https://www.raspberrypi.com/products/camera-module-v2/[Camera Module 2] which was https://www.raspberrypi.com/news/new-8-megapixel-camera-board-sale-25/[released] in 2016. The latest camera model is the 12-megapixel https://raspberrypi.com/products/camera-module-3/[Camera Module 3] which was https://www.raspberrypi.com/news/new-autofocus-camera-modules/[released] in 2023. The original 5MP device is no longer available from Raspberry Pi. 
 
 All of these cameras come in visible light and infrared versions, while the Camera Module 3 also comes as a standard or wide FoV model for a total of four different variants.
 
@@ -11,7 +11,7 @@ image::images/cm3.jpg[Camera Module 3 normal and wide angle]
 .Camera Module 3 NoIR (left) and Camera Module 3 NoIR Wide (right)
 image::images/cm3_noir.jpg[Camera Module 3 NoIR normal and wide angle]
 
-Aditionally a 12-megapixel https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[High Quality Camera] with CS- or M12-mount variants for use with external lenses was https://www.raspberrypi.com/news/new-product-raspberry-pi-high-quality-camera-on-sale-now-at-50/[released in 2020] and https://www.raspberrypi.com/news/new-autofocus-camera-modules/[2022] respectively. There is no infrared version of the HQ Camera, however the xref:camera.adoc#hq-camera-filter-removal[IR Filter can be removed] if required.
+Aditionally a 12-megapixel https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[High Quality Camera] with CS- or M12-mount variants for use with external lenses was https://www.raspberrypi.com/news/new-product-raspberry-pi-high-quality-camera-on-sale-now-at-50/[released in 2020] and https://www.raspberrypi.com/news/new-autofocus-camera-modules/[2023] respectively. There is no infrared version of the HQ Camera, however the xref:camera.adoc#hq-camera-filter-removal[IR Filter can be removed] if required.
 
 === Installing a Raspberry Pi camera
 
