@@ -14,7 +14,7 @@ image::images/cm3_noir.jpg[Camera Module 3 NoIR normal and wide angle]
 Aditionally a 12-megapixel https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[High Quality Camera] with CS- or M12-mount variants for use with external lenses was https://www.raspberrypi.com/news/new-product-raspberry-pi-high-quality-camera-on-sale-now-at-50/[released in 2020] and https://www.raspberrypi.com/news/new-autofocus-camera-modules/[2023] respectively. There is no infrared version of the HQ Camera, however the xref:camera.adoc#hq-camera-filter-removal[IR Filter can be removed] if required.
 
 .HQ Camera, M12-mount (left) and C/CS-mount (right)
-image::images/cm3_noir.jpg[M12- and C/CS-mount versions of the HQ Camera]
+image::images/hq.jpg[M12- and C/CS-mount versions of the HQ Camera]
 
 NOTE: Raspberry Pi Camera Modules are compatible with all Raspberry Pi computers with CSI connectors - that is, all models except Raspberry Pi 400 and the 2016 launch version of Zero.
 
