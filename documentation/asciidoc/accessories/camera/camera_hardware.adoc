@@ -5,7 +5,7 @@ There are now several official Raspberry Pi camera modules. The original 5-megap
 
 All of these cameras come in visible light and infrared versions, while the Camera Module 3 also comes as a standard or wide FoV model for a total of four different variants.
 
-NOTE: Camera Module 3 is compatible with all Raspberry Pi computers with CSI connectors, with the exception of the 2016 launch version of Zero, which lacks the required FPC connector.
+NOTE: Camera Module 3 is compatible with all Raspberry Pi computers with CSI connectors - that is, all except Raspberry Pi 400 and the 2016 launch version of Zero.
 
 .Camera Module 3 (left) and Camera Module 3 Wide (right)
 image::images/cm3.jpg[Camera Module 3 normal and wide angle]
