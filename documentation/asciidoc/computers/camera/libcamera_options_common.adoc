@@ -153,6 +153,12 @@ The supplied string is set as the title of the preview window (when running unde
 
 | %focus
 | The focus metric for the image, where a larger value implies a sharper image
+
+| %lp
+| The current lens position in dioptres (1 / distance in metres).
+
+| %afstate
+| The autofocus algorithm state (one of `idle`, `scanning`, `focused` or `failed`).
 |===
 
 When not provided, the `--info-text` string defaults to `"#%frame (%fps fps) exp %exp ag %ag dg %dg"`.
@@ -252,6 +258,20 @@ The `--roi` (region of interest) option allows the user to select a particular c
 The `--roi` parameter implements what is commonly referred to as "digital zoom".
 
 Example `libcamera-hello --roi 0.25,0.25,0.5,0.5` will select exactly a quarter of the total number of pixels cropped from the centre of the image.
+
+----
+	--hdr				Run the camera in HDR mode (supported cameras only)
+----
+
+The `--hdr` option causes the camera to be run in HDR (High Dynamic Range) mode. This option only works for certain supported cameras, including the _Raspberry Pi Camera Module 3_.
+
+Example: `libcamera-still --hdr -o hdr.jpg` for capturing a still image, or `libcamera-vid --hdr -o hdr.h264` to capture a video.
+
+Use of the HDR option may generally cause different camera modes to be available, and this can be checked by comparing the output of `libcamera-hello --list-cameras` with `libcamera-hello --hdr --list-cameras`.
+
+Users may also supply `--hdr 0` or `--hdr 1`, where the former disables the HDR modes (and is equivalent to omitting the option entirely), and the latter is the same as using `--hdr` on its own.
+
+NOTE: For the _Raspberry Pi Camera Module 3_, the non-HDR modes include the usual full resolution (12MP) mode as well as its half resolution 2x2 binned (3MP) equivalent. In the case of HDR, only a single half resolution (3MP) mode is available, and it is not possible to switch between HDR and non-HDR modes without restarting the camera application.
 
 ==== Camera Control
 
@@ -427,6 +447,67 @@ This identifies the name of the JSON format tuning file that should be used. The
 For more information on the camera tuning file, please consult the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
 
 Example: `libcamera-hello --tuning-file ~/my-camera-tuning.json`
+
+----
+	--autofocus-mode			Specify the autofocus mode <string>
+----
+
+Specifies the autofocus mode to use, which may be one of
+
+* `default` (also the default if the option is omitted) - normally puts the camera into continuous autofocus mode, except if either `--lens-position` or `--autofocus-on-capture` is given, in which case manual mode is chosen instead
+* `manual` - do not move the lens at all, but it can be set with the `--lens-position` option
+* `auto` - does not move the lens except for an autofocus sweep when the camera starts (and for `libcamera-still`, just before capture if `--autofocus-on-capture` is given)
+* `continuous` - adjusts the lens position automatically as the scene changes.
+
+This option is only supported for certain camera modules (such as the _Raspberry Pi Camera Module 3_).
+
+----
+	--autofocus-range			Specify the autofocus range <string>
+----
+
+Specifies the autofocus range, which may be one of
+
+* `normal` (the default) - focuses from reasonably close to infinity
+* `macro` - focuses only on close objects, including the closest focal distances supported by the camera
+* `full` - will focus on the entire range, from the very closest objects to infinity.
+
+This option is only supported for certain camera modules (such as the _Raspberry Pi Camera Module 3_).
+
+----
+	--autofocus-speed			Specify the autofocus speed <string>
+----
+
+Specifies the autofocus speed, which may be one of
+
+* `normal` (the default) - the lens position will change at the normal speed
+* `fast` - the lens position may change more quickly.
+
+This option is only supported for certain camera modules (such as the _Raspberry Pi Camera Module 3_).
+
+----
+	--autofocus-window			Specify the autofocus window
+----
+
+Specifies the autofocus window, in the form `x,y,width,height` where the coordinates are given as a proportion of the entire image. For example, `--autofocus-window 0.25,0.25,0.5,0.5` would choose a window that is half the size of the output image in each dimension, and centred in the middle.
+
+The default value causes the algorithm to use the middle third of the output image in both dimensions (so 1/9 of the total image area).
+
+This option is only supported for certain camera modules (such as the _Raspberry Pi Camera Module 3_).
+
+----
+	--lens-position				Set the lens to a given position <string>
+----
+
+Moves the lens to a fixed focal distance, normally given in dioptres (units of 1 / _distance in metres_). We have
+
+* 0.0 will move the lens to the "infinity" position
+* Any other `number`: move the lens to the 1 / `number` position, so the value 2 would focus at approximately 0.5m
+* `default` - move the lens to a default position which corresponds to the hyperfocal position of the lens.
+
+It should be noted that lenses can only be expected to be calibrated approximately, and there may well be variation between different camera modules.
+
+This option is only supported for certain camera modules (such as the _Raspberry Pi Camera Module 3_).
+
 
 ==== Output File Options
 
