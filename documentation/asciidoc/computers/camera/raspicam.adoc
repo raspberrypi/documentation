@@ -5,6 +5,8 @@
 Raspberry Pi has transitioned from a legacy camera software stack based on proprietary Broadcom GPU code to an open-source stack based on `libcamera`. As such, the _Raspicam_ stack is now deprecated.  Raspberry Pi OS images from _Bullseye_ onwards contain *only* the `libcamera`-based stack. Raspberry Pi OS images up to and including _Buster_ still contain the legacy _Raspicam_ stack, though the `libcamera` stack and applications can be installed xref:camera_software.adoc#libcamera-and-libcamera-apps-packages[using _apt_], or built by following the xref:camera_software.adoc#building-libcamera-and-libcamera-apps[normal build instructions].
 ====
 
+IMPORTANT: The Raspberry Pi https://www.raspberrypi.com/products/camera-module-3/[Camera Module 3] is *not supported* by the legacy camera stack.
+
 Users are encouraged to use the newest OS images and the `libcamera`-based stack because:
 
 * It will continue to be developed moving forward.
