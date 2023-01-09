@@ -128,3 +128,21 @@ The image data in the raw file is exactly what came out of the sensor, with no p
 This causes `libcamera-still` to make a symbolic link to the most recently saved file, thereby making it easier to identify. (`libcamera-still` only.)
 
 Example: `libcamera-still -t 100000 --timelapse 10000 -o test%d.jpg --latest latest.jpg`
+
+----
+	--autofocus-on-capture			Whether to run an autofocus cycle before capture
+----
+
+If set, this will cause an autofocus cycle to be run just before the image is captured.
+
+If `--autofocus-mode` is not specified, or was set to `default` or `manual`, this will be the only autofocus cycle.
+
+If `--autofocus-mode` was set to `auto`, there will be an additional autofocus cycle at the start of the preview window.
+
+If `--autofocus-mode` was set to `continuous`, this option will be ignored.
+
+You can also use `--autofocus-on-capture 1` in place of `--autofocus-on-capture`, and `--autofocus-on-capture 0` as an alternative to omitting the parameter entirely.
+
+Example: `libcamera-still --autofocus-on-capture -o test.jpg`
+
+This option is only supported for certain camera modules (such as the _Raspberry Pi Camera Module 3_).
