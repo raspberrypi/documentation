@@ -12,7 +12,7 @@ There are 3 independent software interfaces available for communicating with the
 
 NOTE: This interface is available only when using the legacy camera stack.
 
-The closed source GPU firmware has drivers for Unicam and three camera sensors plus a bridge chip. They are the Raspberry Pi Camera v1.3 (Omnivision OV5647), Raspberry Pi Camera v2.1 (Sony IMX219), Raspberry Pi HQ camera (Sony IMX477), and an unsupported driver for the Toshiba TC358743 HDMI\->CSI2 bridge chip.
+The closed source GPU firmware has drivers for Unicam and three camera sensors plus a bridge chip. They are the Raspberry Pi Camera v1.3 (Omnivision OV5647), Raspberry Pi Camera v2.1 (Sony IMX219), Raspberry Pi HQ camera (Sony IMX477), and an unsupported driver for the Toshiba TC358743 HDMI\->CSI2 bridge chip. There is no support for more recent cameras, such as the Camera Module 3 (Sony IMX708).
 
 This driver integrates the source driver, Unicam, ISP, and tuner control into a full camera stack delivering processed output images. It can be used via MMAL, OpenMAX IL and V4L2 using the bcm2835-v4l2 kernel module. Only Raspberry Pi cameras are supported via this interface.
 
@@ -63,6 +63,10 @@ Mainline Linux has a range of existing drivers. The Raspberry Pi kernel tree has
 | Sony IMX477
 | 12MP Camera
 | Raspberry Pi HQ camera
+
+| Sony IMX708
+| 12MP Camera
+| Raspberry Pi Camera Module 3
 
 | Toshiba TC358743
 | HDMI to CSI-2 bridge

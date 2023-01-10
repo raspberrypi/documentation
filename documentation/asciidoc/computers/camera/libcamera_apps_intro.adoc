@@ -27,7 +27,7 @@ Underneath the `libcamera` core, Raspberry Pi provides a custom _pipeline handle
 
 All this code is open source and now runs on the Raspberry Pi's ARM cores. There is only a very thin layer of code on the GPU which translates Raspberry Pi's own control parameters into register writes for the Broadcom ISP.
 
-Raspberry Pi's implementation of `libcamera` supports not only the three standard Raspberry Pi cameras (the OV5647 or V1 camera, the IMX219 or V2 camera and the IMX477 or HQ camera) but also third party senors such as the IMX290, IMX327, OV9281, IMX378. Raspberry Pi is keen to work with vendors who would like to see their sensors supported directly by `libcamera`.
+Raspberry Pi's implementation of `libcamera` supports not only the four standard Raspberry Pi cameras (the OV5647 or V1 camera, the IMX219 or V2 camera, the IMX477 or HQ camera and the IMX708 or Camera Module 3) but also third party senors such as the IMX290, IMX327, OV9281, IMX378. Raspberry Pi is keen to work with vendors who would like to see their sensors supported directly by `libcamera`.
 
 Moreover, Raspberry Pi supplies a _tuning file_ for each of these sensors which can be edited to change the processing performed by the Raspberry Pi hardware on the raw images received from the image sensor, including aspects like the colour processing, the amount of noise suppression or the behaviour of the control algorithms.
 
