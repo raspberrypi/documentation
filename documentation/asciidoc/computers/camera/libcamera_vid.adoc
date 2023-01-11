@@ -98,3 +98,21 @@ ffplay rtsp://<ip-addr-of-server>:8554/stream1 -vf "setpts=N/30" -fflags nobuffe
 In all cases, the preview window on the server (the Raspberry Pi) can be suppressed with the `-n` (`--nopreview`) option. Note also the use of the `--inline` option which forces the stream header information to be included with every I (intra) frame. This is important so that a client can correctly understand the stream if it missed the very beginning.
 
 NOTE: Recent versions of VLC seem to have problems with playback of H.264 streams. We recommend using `ffplay` for playback using the above commands until these issues have been resolved.
+
+==== High framerate capture
+
+Using `libcamera-vid` to capture high framerate video (generally anything over 60 fps) while minimising frame drops requires a few considerations:
+
+1. The https://en.wikipedia.org/wiki/Advanced_Video_Coding#Levels[H.264 target level] must be set to 4.2 with the `--level 4.2` argument.
+2. Software colour denoise processing must be turned off with the `--denoise cdn_off` argument.
+3. For rates over 100 fps, disabling the display window with the `-n` option would free up some additional CPU cycles to help avoid frame drops.
+4. It is advisable to set `force_turbo=1` in `/boot/config.txt` to ensure the CPU clock does not get throttled during the video capture. See https://www.raspberrypi.com/documentation/computers/config_txt.html#force_turbo[here] for further details.
+5. Adjust the ISP output resolution with `--width 1280 --height 720` or something even lower to achieve your framerate target.
+6. On a Pi 4, you can overclock the GPU to improve performance by adding `gpu_freq=550` or higher in `/boot/config.txt`.  See https://www.raspberrypi.com/documentation/computers/config_txt.html#overclocking[here] for further details.
+
+An example command for 1280x720 120fps video encode would be:
+
+[,bash]
+----
+libcamera-vid --level 4.2 --framerate 120 --width 1280 --height 720 --save-pts timestamp.pts -o video.264 -t 10000 --denoise cdn_off -n
+----
