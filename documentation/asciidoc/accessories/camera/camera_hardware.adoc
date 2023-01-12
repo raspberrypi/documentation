@@ -76,8 +76,8 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | Video modes
 | 1080p30, 720p60 and 640 × 480p60/90
 | 1080p47, 1640 × 1232p41 and 640 × 480p206
-| 1080p50 / 720p100 / 640 x 480p120
-| 1080p50 / 720p100 / 640 x 480p120
+| 2304 × 1296p56, 2304 × 1296p30 HDR, 1536 × 864p120
+| 2304 × 1296p56, 2304 × 1296p30 HDR, 1536 × 864p120
 | 2028 × 1080p50, 2028 × 1520p40 and 1332 × 990p120
 
 | Sensor
