@@ -4,7 +4,7 @@ For further help with `libcamera` and the `libcamera-apps`, the first port of ca
 
 * Ensure your xref:../computers/os.adoc#using-apt[software is up to date].
 
-* If you are using _Buster_  or an earlier version of Raspberry Pi OS where you have had to build `libcamera` and `libcamera-apps` for yourself, or indeed if you are using a later version but have built them for yourself anyway, then you may need to update those _git_ repositories and repeat the build process.
+* If you are using _Buster_ please upgrade to the latest OS, as `libcamera-apps` is no longer supported there.
 
 * Make a note of your operating system version (`uname -a`).
 

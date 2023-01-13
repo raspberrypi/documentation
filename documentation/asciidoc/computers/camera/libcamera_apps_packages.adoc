@@ -6,9 +6,9 @@ A number of `apt` packages are provided for convenience. In order to access them
 
 There are two `libcamera-apps` packages available, that contain the necessary executables:
 
-* `libcamera-apps` contains the full applications with support for previews using X Windows. This package is pre-installed in the _Bullseye_ release of Raspberry Pi OS, and can be installed in _Buster_ using `sudo apt install libcamera-apps`.
+* `libcamera-apps` contains the full applications with support for previews using X Windows. This package is pre-installed in the _Bullseye_ release of Raspberry Pi OS.
 
-* `libcamera-apps-lite` omits X Windows support and only the DRM preview is available. This package is pre-installed in the _Bullseye_ release of Raspberry Pi OS Lite, and can be installed in _Buster_ using `sudo apt install libcamera-apps-lite`.
+* `libcamera-apps-lite` omits X Windows support and only the DRM preview is available. This package is pre-installed in the _Bullseye_ release of Raspberry Pi OS Lite.
 
 For _Bullseye_ users, official Raspberry Pi cameras should be detected automatically. Other users will need to xref:camera_software.adoc#if-you-do-need-to-alter-the-configuration[edit their `/boot/config.txt`] file if they have not done so previously.
 
