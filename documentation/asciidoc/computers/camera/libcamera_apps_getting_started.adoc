@@ -15,7 +15,7 @@ libcamera-hello
 
 You should see a camera preview window for about 5 seconds.
 
-Users who are still running _Buster_ should upgrade to _Bullseye_. The new _libcamera_-based stack is no longer supported there, and anyone still using it should stay with the legacy camera stack.
+Users who are still running _Buster_ should upgrade to _Bullseye_. The new _libcamera_-based stack is no longer supported there, and anyone still using _Buster_ should stay with the legacy camera stack.
 
 NOTE: Raspberry Pi 3 and older devices may not by default be using the correct display driver. Refer to the `/boot/config.txt` file and ensure that either `dtoverlay=vc4-fkms-v3d` or `dtoverlay=vc4-kms-v3d` is currently active. Please reboot if you needed to change this.
 
