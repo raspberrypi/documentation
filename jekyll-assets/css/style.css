@@ -545,6 +545,48 @@ div.videoblock iframe {
   border: 0;
 }
 
+/* DOXYGEN ELEMENTS */
+
+div.memproto {
+  background-color: #dedede;
+  padding: 7px;
+  margin-bottom: 15px;
+}
+
+div.memproto table,
+#content div.memproto table {
+  margin-bottom: 0px;
+}
+
+table.params, 
+p.returns {
+  font-weight: 300;
+}
+
+td.paramname {
+  vertical-align: top;
+}
+
+ul.memberdecls {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul.memberdecls li.memitem p {
+  font-weight: bold;
+}
+
+ul.memberdecls li.memdesc {
+  padding-left: 20px;
+}
+
+p.see span.label {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+/* LEGAL */
+
 div.legal {
   margin: 60px auto 0 auto;
   max-width: 1200px;
