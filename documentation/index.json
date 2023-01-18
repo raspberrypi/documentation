@@ -223,6 +223,11 @@
                     "url": "https://forums.raspberrypi.com"
                 }
             ]
+        },
+        {
+            "title": "Pico SDK",
+            "path": "pico-sdk",
+            "subitems": []
         }
     ]
 }

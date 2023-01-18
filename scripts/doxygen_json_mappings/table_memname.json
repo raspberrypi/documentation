@@ -1,0 +1,187 @@
+[
+	{
+		"input": {
+			"description": "Declaration names - parent table",
+			"element": "table",
+			"attributes": [
+				{
+					"name": "class",
+					"value": ["memname"]
+				}
+			],
+			"parents": [],
+			"children": [],
+			"child_mappings": [
+		  	{
+					"input": {
+						"description": "Declaration names - table row",
+						"element": "tr",
+						"attributes": [],
+						"parents": [],
+						"children": [],
+						"child_mappings": [
+						  {
+								"input": {
+									"description": "Declaration names - table cell",
+									"element": "td",
+									"attributes": [
+									  {
+											"name": "class",
+											"value": ["memname"]
+										}
+									],
+									"parents": [],
+									"children": [],
+									"child_mappings": []
+								},
+								"output": {
+									"tree": [
+									  {
+											"position": 0,
+											"element": "span",
+											"attributes": [
+											  {
+													"name": "class",
+													"value": ["memname"]
+												}
+											],
+											"children": []
+										}
+									]
+								}
+							},
+							{
+								"input": {
+									"description": "Declaration names - table cell",
+									"element": "td",
+									"attributes": [
+									  {
+											"name": "class",
+											"value": ["paramtype"]
+										}
+									],
+									"parents": [],
+									"children": [],
+									"child_mappings": []
+								},
+								"output": {
+									"tree": [
+									  {
+											"position": 0,
+											"element": "span",
+											"attributes": [
+											  {
+													"name": "class",
+													"value": ["paramtype"]
+												}
+											],
+											"children": []
+										}
+									]
+								}
+							},
+							{
+								"input": {
+									"description": "Declaration names - table cell",
+									"element": "td",
+									"attributes": [
+									  {
+											"name": "class",
+											"value": ["paramname"]
+										}
+									],
+									"parents": [],
+									"children": [],
+									"child_mappings": []
+								},
+								"output": {
+									"tree": [
+									  {
+											"position": 0,
+											"element": "span",
+											"attributes": [
+											  {
+													"name": "class",
+													"value": ["paramname"]
+												}
+											],
+											"children": []
+										}
+									]
+								}
+							},
+							{
+								"input": {
+									"description": "Declaration names - table cell",
+									"element": "td",
+									"attributes": [
+									  {
+											"name": "class",
+											"value": ["paramkey"]
+										}
+									],
+									"parents": [],
+									"children": [],
+									"child_mappings": []
+								},
+								"output": {
+									"tree": [
+									  {
+											"position": 0,
+											"element": "span",
+											"attributes": [
+											  {
+													"name": "class",
+													"value": ["paramkey"]
+												}
+											],
+											"children": []
+										}
+									]
+								}
+							},
+							{
+								"input": {
+									"description": "Declaration names - table cell",
+									"element": "td",
+									"attributes": [],
+									"parents": [],
+									"children": [],
+									"child_mappings": []
+								},
+								"output": {
+									"tree": [
+									  {
+											"position": 0,
+											"element": "span",
+											"attributes": [],
+											"children": []
+										}
+									]
+								}
+							}
+						]
+					},
+					"output": {
+						"tree": [
+						  {
+								"position": 0,
+								"element": "p",
+								"attributes": [
+								  {
+										"name": "class",
+										"value": ["memname"]
+									}
+								],
+								"children": []
+							}
+						]
+					}
+				}
+			]
+		},
+		"output": {
+			"tree": []
+		}
+	}	
+]
