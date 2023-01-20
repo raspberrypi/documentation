@@ -276,10 +276,14 @@ def prep_for_adoc(root):
   return root
 
 def make_adoc(root_string, title_text):
-  root_string = "= " + title_text + "\n\n++++\n" + root_string
-  root_string = re.sub('(<p class="adoc-h2">\s*)(.*?)(\s*)(</p>)', '\n++++\n\n== \\2\n\n++++\n', root_string)
-  root_string = re.sub('(<p class="adoc-h3">\s*)(.*?)(\s*)(</p>)', '\n++++\n\n=== \\2\n\n++++\n', root_string)
-  root_string = root_string + "\n++++\n"
+  try:
+    root_string = "= " + title_text + "\n\n++++\n" + root_string
+    root_string = re.sub('(<p class="adoc-h2">\s*)(.*?)(\s*)(</p>)', '\n++++\n\n== \\2\n\n++++\n', root_string)
+    root_string = re.sub('(<p class="adoc-h3">\s*)(.*?)(\s*)(</p>)', '\n++++\n\n=== \\2\n\n++++\n', root_string)
+    root_string = root_string + "\n++++\n"
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
   return root_string
 
 def handler(html_path, output_path):
