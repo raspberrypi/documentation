@@ -2,7 +2,7 @@
 
 [WARNING]
 ====
-Raspberry Pi has transitioned from a legacy camera software stack based on proprietary Broadcom GPU code to an open-source stack based on `libcamera`. As such, the _Raspicam_ stack is now deprecated.  Raspberry Pi OS images from _Bullseye_ onwards contain *only* the `libcamera`-based stack. Raspberry Pi OS images up to and including _Buster_ still contain the legacy _Raspicam_ stack, though the `libcamera` stack and applications can be installed xref:camera_software.adoc#libcamera-and-libcamera-apps-packages[using _apt_], or built by following the xref:camera_software.adoc#building-libcamera-and-libcamera-apps[normal build instructions].
+Raspberry Pi has transitioned from a legacy camera software stack based on proprietary Broadcom GPU code to an open-source stack based on `libcamera`. As such, the _Raspicam_ stack is now deprecated.  Raspberry Pi OS images from _Bullseye_ onwards contain *only* the `libcamera`-based stack. Raspberry Pi OS images up to and including _Buster_ still use the legacy _Raspicam_ stack.
 ====
 
 IMPORTANT: The Raspberry Pi https://www.raspberrypi.com/products/camera-module-3/[Camera Module 3] is *not supported* by the legacy camera stack.
@@ -27,7 +27,7 @@ Reasons to consider staying with an older OS and using the legacy _Raspicam_ sta
 
 == Re-enabling the legacy stack
 
-IMPORTANT: The legacy camera stuck is not available in the 64-bit version of Raspberry Pi OS.
+IMPORTANT: The legacy camera stack is **not available** in the 64-bit version of Raspberry Pi OS, it cannot be re-enabled on the 64-bit OS.
 
 The legacy camera stack can be re-enabled in Bullseye using the following steps.
 
@@ -41,8 +41,6 @@ These steps are shown in the following video.
 video::E7KPSc_Xr24[youtube]
 
 NOTE: More information can be found in the https://www.raspberrypi.com/news/bullseye-camera-system/[blog post] discussing the transition.
-
-WARNING: The legacy camera stack cannot be re-enabled on a 64-bit Raspberry Pi OS release.
 
 == Raspicam commands
 

@@ -16,28 +16,37 @@ The diagnostic information is as follows:
 | Line: | Information
 
 | bootloader
-| Bootloader version - build date
+| Bootloader git version - RO (if EEPROM is write protected) - software build date
+
+| update-ts
+| The timestamp corresponding to when the EEPROM configuration was updated.  This timestamp is checked in xref:raspberry-pi.adoc#ENABLE_SELF_UPDATE[self-update] mode to avoid updating to an old configuration.
+
+| secure-boot
+| If xref:raspberry-pi.adoc#secure-boot[secure-boot] is enabled then the processor revision (B0/C0) and xref:configuration.adoc#part4[signed-boot status flags] are displayed. Otherwise, this line is blank.
 
 | board
-| Board revision - Serial Number - Ethernet MAC address
+| xref:raspberry-pi.adoc#raspberry-pi-revision-codes[Board revision] - Serial Number - Ethernet MAC address
 
 | boot
-| mode: (ROM boot mode - 6 SPI), order: EEPROM config xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[BOOT_ORDER], RSTS: PM_RSTS register
+| *mode* (current boot mode name and number) *order* (the xref:raspberry-pi.adoc#BOOT_ORDER[BOOT ORDER] configuration) *retry* (retry count in the current boot mode) *restart* (number of cycles through the list of boot modes).
 
-| SD CID
-| SD Card Identifier defined by SD-CARD manufacturer
+| SD
+| The SD card detect status (detected / not detected).
 
 | part
-| Master Boot Record primary partitions type:LBA
+| Master Boot Record primary partitions type:LBA.
 
 | fw
-| Filename for start.elf and fixup.dat if present (e.g. start4x.elf, fixup4x.dat)
+| Filename for start.elf and fixup.dat if present (e.g. start4x.elf, fixup4x.dat).
 
 | net
 | Network boot: - Link status (up/down) client IP address (ip), Subnet (sn), Default gateway (gw)
 
 | tftp
 | Network boot: TFTP server IP address
+
+| display
+| Indicates whether hotplug was detected (`HPD=1`) and if so whether the EDID was read successfully (`EDID=ok`) for each HDMI output.
 |===
 
 This display can be disabled using the `DISABLE_HDMI` option, see xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[Bootloader Configuration].
