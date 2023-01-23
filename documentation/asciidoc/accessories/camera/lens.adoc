@@ -1,0 +1,43 @@
+== Recommended Lens
+
+The following lens are recommended for use with our HQ cameras.
+
+=== C/CS Lens
+
+We recommend two lens, a 6mm wide angle lens and a 16mm telephoto lens. These lens should be available from your nearest https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[Authorised Reseller].
+
+[cols="1,1,1,1"]
+|===
+2+| | 16mm telephoto | 6mm wide angle
+
+2+| Resolution | 10MP | 3MP
+2+| Image format | 1" | 1/2"
+2+| Aperture | F1.4 to 1.6 | F1.2
+2+| Mount | C | CS
+.4+| Field Angle
+| 1" | 44.6°× 33.6° 
+.4+| 63°
+| 2/3" | 30.0°× 23.2°
+| 1/1.8" | 24.7°× 18.6°
+| 1/2" | 21.8°× 16.4°
+2+| Back focal length | 17.53mm | 7.53mm
+2+| M.O.D. | 0.2m | 0.2m
+2+| Dimensions | φ39.00×50.00mm |	φ30×34mm
+|===
+
+=== M12 Lens
+
+image::images/m12-lens.jpg[]
+
+We recommend three lens manufactured by https://www.gaojiaoptotech.com/[Gaojia Optotech]. These lens should be available from your nearest https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[Authorised Reseller].
+
+[cols="1,1,1,1,1"]
+|===
+2+| | 8mm | 25mm | Fish Eye
+
+2+| Resolution | 12MP | 5MP | 15MP
+2+| Image format | 1/1.7" | 1/2" | 1/2.3"
+2+| Aperture | F1.8 | F2.4 | F2.5
+2+| Mount 3+| M12
+2+| Field of View (D/H/V) | 72.64°/57.12°/42.44° | 18.3°/14.7°/11.1° | 184.6°/140°/102.6°
+|===
