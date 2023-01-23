@@ -1,10 +1,10 @@
-== Recommended Lens
+== Recommended Lenses
 
-The following lens are recommended for use with our HQ cameras.
+The following lenses are recommended for use with our HQ cameras.
 
-=== C/CS Lens
+=== C/CS Lenses
 
-We recommend two lens, a 6mm wide angle lens and a 16mm telephoto lens. These lens should be available from your nearest https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[Authorised Reseller].
+We recommend two lenses, a 6mm wide angle lens and a 16mm telephoto lens. These lenses should be available from your nearest https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[Authorised Reseller].
 
 [cols="1,1,1,1"]
 |===
@@ -25,11 +25,11 @@ We recommend two lens, a 6mm wide angle lens and a 16mm telephoto lens. These le
 2+| Dimensions | φ39.00×50.00mm |	φ30×34mm
 |===
 
-=== M12 Lens
+=== M12 Lenses
 
 image::images/m12-lens.jpg[]
 
-We recommend three lens manufactured by https://www.gaojiaoptotech.com/[Gaojia Optotech]. These lens should be available from your nearest https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[Authorised Reseller].
+We recommend three lenses manufactured by https://www.gaojiaoptotech.com/[Gaojia Optotech]. These lenses should be available from your nearest https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[Authorised Reseller].
 
 [cols="1,1,1,1,1"]
 |===
