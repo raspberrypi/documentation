@@ -2,3 +2,4 @@
 __pycache__
 build
 documentation/html
+documentation/asciidoc/pico-sdk

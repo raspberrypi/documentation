@@ -12,7 +12,10 @@ def check_no_markdown(filename):
         asciidoc = fh.read()
         if re.search('```\n.*?\n```', asciidoc):
             raise Exception("{} uses triple-backticks for markup - please use four-hyphens instead".format(filename))
+        # strip out code blocks
         asciidoc = re.sub('----\n.*?\n----', '', asciidoc, flags=re.DOTALL)
+        # strip out pass-through blocks
+        asciidoc = re.sub('\+\+\+\+\n.*?\n\+\+\+\+', '', asciidoc, flags=re.DOTALL)
         if re.search('(?:^|\n)#+', asciidoc):
             raise Exception("{} contains a Markdown-style header (i.e. '#' rather than '=')".format(filename))
         if re.search(r'(\[.+?\]\(.+?\))', asciidoc):
@@ -42,6 +45,9 @@ if __name__ == "__main__":
                         break
                 if index_title is not None:
                     break
+            elif 'entire_directory' in tab:
+                index_title = tab['title']
+                break
     if index_title is None:
         raise Exception("Couldn't find title for {} in {}".format(os.path.join(output_subdir, adoc_filename), index_json))
 

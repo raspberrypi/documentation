@@ -226,8 +226,7 @@
         },
         {
             "title": "Pico SDK",
-            "path": "pico-sdk",
-            "subitems": []
+            "entire_directory": "pico-sdk"
         }
     ]
 }

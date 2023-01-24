@@ -69,54 +69,62 @@ if __name__ == "__main__":
         available_anchors = dict()
         for tab in data['tabs']:
             nav = []
-            for subitem in tab['subitems']:
-                if 'subpath' in subitem:
-                    fullpath = os.path.join(tab['path'], subitem['subpath'])
-                    if fullpath in available_anchors:
-                        raise Exception("{} occurs twice in {}".format(fullpath, index_json))
-                    available_anchors[fullpath] = set()
-                    nav.append({
-                        'path': os.path.join('/', change_file_ext(fullpath, 'html')),
-                        'title': subitem['title'],
-                        'sections': [],
-                    })
-                    level = min_level
-                    top_level_file = os.path.join(adoc_dir, fullpath)
-                    adoc_content = read_file_with_includes(top_level_file)
-                    last_line_was_discrete = False
-                    header_id = None
-                    for line in adoc_content.split('\n'):
-                        m = re.match(r'^\[\[(.*)\]\]\s*$', line)
-                        if m:
-                            header_id = m.group(1)
-                        else:
-                            m = re.match(r'^\[(.*)\]\s*$', line)
+            if 'path' in tab:
+                for subitem in tab['subitems']:
+                    if 'subpath' in subitem:
+                        fullpath = os.path.join(tab['path'], subitem['subpath'])
+                        if fullpath in available_anchors:
+                            raise Exception("{} occurs twice in {}".format(fullpath, index_json))
+                        available_anchors[fullpath] = set()
+                        nav.append({
+                            'path': os.path.join('/', change_file_ext(fullpath, 'html')),
+                            'title': subitem['title'],
+                            'sections': [],
+                        })
+                        level = min_level
+                        top_level_file = os.path.join(adoc_dir, fullpath)
+                        adoc_content = read_file_with_includes(top_level_file)
+                        last_line_was_discrete = False
+                        header_id = None
+                        for line in adoc_content.split('\n'):
+                            m = re.match(r'^\[\[(.*)\]\]\s*$', line)
                             if m:
-                                attrs = m.group(1).split(',')
-                                last_line_was_discrete = 'discrete' in attrs
-                                header_id = None
+                                header_id = m.group(1)
                             else:
-                                m = re.match(r'^(=+)\s+(.+?)\s*$', line)
+                                m = re.match(r'^\[(.*)\]\s*$', line)
                                 if m:
-                                    newlevel = len(m.group(1))
-                                    # Need to compute anchors for *every* header (updates file_headings)
-                                    heading = strip_adoc(m.group(2))
-                                    anchor = heading_to_anchor(top_level_file, heading, header_id)
-                                    if anchor in available_anchors[fullpath]:
-                                        raise Exception("Anchor {} appears twice in {}".format(anchor, fullpath))
-                                    available_anchors[fullpath].add(anchor)
-                                    if min_level <= newlevel <= max_level and not last_line_was_discrete:
-                                        entry = {'heading': heading, 'anchor': anchor}
-                                        if newlevel > level:
-                                            nav[-1]['sections'][-1]['subsections'] = []
-                                        level = newlevel
-                                        if level == 2:
-                                            nav[-1]['sections'].append(entry)
-                                        elif level == 3:
-                                            nav[-1]['sections'][-1]['subsections'].append(entry)
-                                last_line_was_discrete = False
-                                header_id = None
-            output_data.append({'title': tab['title'], 'path': '/{}/'.format(tab['path']), 'toc': nav})
+                                    attrs = m.group(1).split(',')
+                                    last_line_was_discrete = 'discrete' in attrs
+                                    header_id = None
+                                else:
+                                    m = re.match(r'^(=+)\s+(.+?)\s*$', line)
+                                    if m:
+                                        newlevel = len(m.group(1))
+                                        # Need to compute anchors for *every* header (updates file_headings)
+                                        heading = strip_adoc(m.group(2))
+                                        anchor = heading_to_anchor(top_level_file, heading, header_id)
+                                        if anchor in available_anchors[fullpath]:
+                                            raise Exception("Anchor {} appears twice in {}".format(anchor, fullpath))
+                                        available_anchors[fullpath].add(anchor)
+                                        if min_level <= newlevel <= max_level and not last_line_was_discrete:
+                                            entry = {'heading': heading, 'anchor': anchor}
+                                            if newlevel > level:
+                                                nav[-1]['sections'][-1]['subsections'] = []
+                                            level = newlevel
+                                            if level == 2:
+                                                nav[-1]['sections'].append(entry)
+                                            elif level == 3:
+                                                nav[-1]['sections'][-1]['subsections'].append(entry)
+                                    last_line_was_discrete = False
+                                    header_id = None
+            elif 'entire_directory' in tab:
+                if os.path.exists(os.path.join(adoc_dir, tab['entire_directory'])):
+                    # TODO: Need to do something here to create the appropriate nav entries for tab['entire_directory']
+                    pass
+            else:
+                raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], index_json, 'path', 'entire_directory'))
+
+            output_data.append({'title': tab['title'], 'path': '/{}/'.format(tab.get('path', tab.get('entire_directory'))), 'toc': nav})
         for filepath in sorted(needed_internal_links):
             for linkinfo in needed_internal_links[filepath]:
                 if linkinfo['url'] not in available_anchors:
