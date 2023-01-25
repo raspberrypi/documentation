@@ -1,4 +1,4 @@
-== Sense HAT Hardware
+== Sense HAT hardware
 
 The Sense HAT has an 8×8 RGB LED matrix and a five-button joystick, and includes the following sensors:
 
@@ -49,7 +49,7 @@ Options are:
 Enter option:
 ----
 
-Press lowercase `m`. The following message will then show; press any key to start.
+Press lowercase `m`. The following message will then show. Press any key to start.
 
 ----
     Magnetometer min/max calibration
@@ -70,7 +70,8 @@ After it starts, you will see something similar to this scrolling up the screen:
 ----
 
 Focus on the two lines at the very bottom of the screen, as these are the most recently posted measurements from the program.
-Now you have to move the Astro Pi around in every possible way you can think of. It helps if you unplug all non-essential cables to avoid clutter.
+
+Now, pick up the Astro Pi and move it around in every possible way you can think of. It helps if you unplug all non-essential cables to avoid clutter.
 
 Try and get a complete circle in each of the pitch, roll and yaw axes. Take care not to accidentally eject the SD card while doing this. Spend a few minutes moving the Astro Pi, and stop when you find that the numbers are not changing anymore.
 
@@ -85,8 +86,6 @@ When you're done, copy the resulting `RTIMULib.ini` to /etc/ and remove the loca
 $ rm ~/.config/sense_hat/RTIMULib.ini
 $ sudo cp RTIMULib.ini /etc
 ----
-
-You are now done.
 
 == Reading and writing EEPROM data
 
@@ -155,4 +154,4 @@ Re-enable write protection:
  i2cset -y -f 1 0x46 0xf3 0
 ----
 
-WARNING: This operation is potentially dangerous, and is not needed for the every day use. The steps above are provided for debugging purposes only. If an error occurs, the HAT may no longer be automatically detected.
+WARNING: This operation will not damage your Raspberry Pi or Sense Hat, but if an error occurs, the HAT may no longer be automatically detected. The steps above are provided for debugging purposes only. 
