@@ -72,9 +72,9 @@ After it starts, you will see something similar to this scrolling up the screen:
 
 Focus on the two lines at the very bottom of the screen, as these are the most recently posted measurements from the program.
 
-Now, pick up the Astro Pi and move it around in every possible way you can think of. It helps if you unplug all non-essential cables to avoid clutter.
+Now, pick up the Raspberry Pi and Sense HAT and move it around in every possible way you can think of. It helps if you unplug all non-essential cables to avoid clutter.
 
-Try and get a complete circle in each of the pitch, roll and yaw axes. Take care not to accidentally eject the SD card while doing this. Spend a few minutes moving the Astro Pi, and stop when you find that the numbers are not changing anymore.
+Try and get a complete circle in each of the pitch, roll and yaw axes. Take care not to accidentally eject the SD card while doing this. Spend a few minutes moving the Sense HAT, and stop when you find that the numbers are not changing anymore.
 
 Now press lowercase `s` then lowercase `x` to exit the program. If you run the `ls` command now, you'll see a new `RTIMULib.ini` file has been created.
 
