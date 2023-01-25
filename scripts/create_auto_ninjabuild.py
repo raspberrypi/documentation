@@ -69,6 +69,7 @@ if __name__ == "__main__":
     ])
     doc_pages = set()
     page_images = set()
+    static_pages = set()
     static_images = set()
 
     # Read index.json
@@ -94,7 +95,7 @@ if __name__ == "__main__":
                     # category (boxes) page
                     category_pages.add((os.path.join(tab['entire_directory'], 'index.adoc'), '{} - {}'.format(site_config['title'], tab['title'])))
                     # recursively add entire directory
-                    add_entire_directory(tab_dir, tab['entire_directory'], doc_pages, static_images)
+                    add_entire_directory(tab_dir, tab['entire_directory'], static_pages, static_images)
                     page_images.add('placeholder/placeholder_square.png')
             else:
                 raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], index_json, 'path', 'entire_directory'))
@@ -149,6 +150,20 @@ if __name__ == "__main__":
             if source not in all_doc_sources:
                 all_doc_sources.append(source)
                 ninja.build(dest, 'create_build_adoc', source, extra_sources)
+                targets.append(dest)
+        if targets:
+            ninja.default(targets)
+            targets = []
+            ninja.newline()
+
+        # static pages
+        for page in sorted(static_pages):
+            dest = os.path.join('$out_dir', page)
+            source = os.path.join('$src_dir', page)
+            extra_sources = ['$scripts_dir/create_build_adoc.py', '$documentation_index', '$site_config']
+            if source not in all_doc_sources:
+                all_doc_sources.append(source)
+                ninja.build(dest, 'create_build_adoc2', source, extra_sources)
                 targets.append(dest)
         if targets:
             ninja.default(targets)
