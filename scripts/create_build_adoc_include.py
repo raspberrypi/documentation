@@ -22,22 +22,29 @@ def check_no_markdown(filename):
 
 
 if __name__ == "__main__":
-    config_yaml = sys.argv[1]
-    github_edit = sys.argv[2]
-    src_adoc = sys.argv[3]
-    build_adoc = sys.argv[4]
+    if len(sys.argv) == 5:
+        config_yaml = sys.argv[1]
+        github_edit = sys.argv[2]
+        src_adoc = sys.argv[3]
+        build_adoc = sys.argv[4]
+    elif len(sys.argv) == 4:
+        config_yaml = sys.argv[1]
+        github_edit = None
+        src_adoc = sys.argv[3]
+        build_adoc = sys.argv[4]
 
     check_no_markdown(src_adoc)
 
     with open(config_yaml) as config_fh:
         site_config = yaml.safe_load(config_fh)
 
-    with open(github_edit) as edit_fh:
-        edit_template = edit_fh.read()
-        template_vars = {
-            'github_edit_link': os.path.join(site_config['githuburl'], 'blob', site_config['githubbranch_edit'], src_adoc)
-        }
-        edit_text = re.sub('{{\s*(\w+)\s*}}', lambda m: template_vars[m.group(1)], edit_template)
+    if github_edit is not None:
+        with open(github_edit) as edit_fh:
+            edit_template = edit_fh.read()
+            template_vars = {
+                'github_edit_link': os.path.join(site_config['githuburl'], 'blob', site_config['githubbranch_edit'], src_adoc)
+            }
+            edit_text = re.sub('{{\s*(\w+)\s*}}', lambda m: template_vars[m.group(1)], edit_template)
 
     with open(src_adoc) as in_fh:
         new_contents = ''
@@ -46,7 +53,8 @@ if __name__ == "__main__":
             if line.startswith('== '):
                 if not seen_header:
                     seen_header = True
-                    line += edit_text + "\n\n"
+                    if github_edit is not None:
+                        line += edit_text + "\n\n"
             new_contents += line
 
         with open(build_adoc, 'w') as out_fh:

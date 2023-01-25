@@ -26,6 +26,9 @@ rule create_build_adoc2
 rule create_build_adoc_include
   command = $scripts_dir/create_build_adoc_include.py $site_config $GITHUB_EDIT_TEMPLATE $in $out
 
+rule create_build_adoc_include2
+  command = $scripts_dir/create_build_adoc_include.py $site_config $in $out
+
 rule create_htaccess
   command = $scripts_dir/create_htaccess.py $in $redirects_dir $out
 

@@ -12,31 +12,31 @@ import ninja_syntax
 def resolve_url(filename, relative_link):
     return os.path.normpath(os.path.join(os.path.dirname(filename), relative_link))
 
-def scan_adoc(adoc_filename, apparent_filename, parents):
+def scan_adoc(adoc_filename, apparent_filename, includes, src_images, dest_images, parents):
     parents.add(adoc_filename)
     # look for image files
     with open(os.path.join(input_dir, adoc_filename)) as fh:
         contents = fh.read()
-        join_files[adoc_filename] = set()
+        includes[adoc_filename] = set()
         joinee_dir = os.path.dirname(adoc_filename)
         # look for includes
         for include in re.findall(r'(?:^|\n)include::(.+?)\[\](?:\n|$)', contents):
             include_adoc = os.path.join(joinee_dir, include)
             if include_adoc in parents:
                 raise Exception("{} includes {} which creates an infinite loop".format(adoc_filename, include_adoc))
-            join_files[adoc_filename].add(include_adoc)
-            scan_adoc(include_adoc, apparent_filename, parents.copy())
+            includes[adoc_filename].add(include_adoc)
+            scan_adoc(include_adoc, apparent_filename, includes, src_images, dest_images, parents.copy())
         # look for image files
         for image in re.findall(r'image::?(.+?)\[.*\]', contents):
             if not (image.startswith('http:') or image.startswith('https:')):
                 image_filename = resolve_url(adoc_filename, image)
                 dest_image = resolve_url(apparent_filename, image)
-                if dest_image in destimages2srcimages and destimages2srcimages[dest_image] != image_filename:
-                    raise Exception("{} and {} would both end up as {}".format(destimages2srcimages[dest_image], image_filename, dest_image))
-                srcimages2destimages[image_filename] = dest_image
-                destimages2srcimages[dest_image] = image_filename
+                if dest_image in dest_images and dest_images[dest_image] != image_filename:
+                    raise Exception("{} and {} would both end up as {}".format(dest_images[dest_image], image_filename, dest_image))
+                src_images[image_filename] = dest_image
+                dest_images[dest_image] = image_filename
 
-def add_entire_directory(tab_dir, dir_path, pages_set, images_set):
+def add_entire_directory(tab_dir, dir_path, pages_set, src_images, dest_images):
     #print("Adding all files from {} directory".format(tab_dir))
     for f in os.listdir(tab_dir):
         if os.path.isfile(os.path.join(tab_dir, f)):
@@ -44,7 +44,11 @@ def add_entire_directory(tab_dir, dir_path, pages_set, images_set):
                 pages_set.add(os.path.join(dir_path, f))
             elif f.endswith(".png"):
                 image_filename = os.path.join(dir_path, f)
-                images_set.add(image_filename)
+                dest_image = image_filename
+                if dest_image in dest_images and dest_images[dest_image] != image_filename:
+                    raise Exception("{} and {} would both end up as {}".format(dest_images[dest_image], image_filename, dest_image))
+                src_images[image_filename] = dest_image
+                dest_images[dest_image] = image_filename
 
 if __name__ == "__main__":
     index_json = sys.argv[1]
@@ -69,8 +73,9 @@ if __name__ == "__main__":
     ])
     doc_pages = set()
     page_images = set()
+    srcimages2destimages = {}
+    destimages2srcimages = {} # used for detecting filename conflicts
     static_pages = set()
-    static_images = set()
 
     # Read index.json
     with open(index_json) as json_fh:
@@ -95,7 +100,7 @@ if __name__ == "__main__":
                     # category (boxes) page
                     category_pages.add((os.path.join(tab['entire_directory'], 'index.adoc'), '{} - {}'.format(site_config['title'], tab['title'])))
                     # recursively add entire directory
-                    add_entire_directory(tab_dir, tab['entire_directory'], static_pages, static_images)
+                    add_entire_directory(tab_dir, tab['entire_directory'], static_pages, srcimages2destimages, destimages2srcimages)
                     page_images.add('placeholder/placeholder_square.png')
             else:
                 raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], index_json, 'path', 'entire_directory'))
@@ -126,13 +131,11 @@ if __name__ == "__main__":
             ninja.newline()
 
         all_doc_sources = []
-        srcimages2destimages = {}
-        destimages2srcimages = {} # used for detecting filename conflicts
         join_files = dict() # of sets
         # documentation pages
         for page in doc_pages:
             # find includes and images
-            scan_adoc(page, page, set())
+            scan_adoc(page, page, join_files, srcimages2destimages, destimages2srcimages, set())
         #print(join_files)
         for page in sorted(doc_pages):
             for include in sorted(join_files[page]):
@@ -156,8 +159,22 @@ if __name__ == "__main__":
             targets = []
             ninja.newline()
 
+        include_files = dict() # of sets
         # static pages
+        for page in static_pages:
+            # find includes and images
+            scan_adoc(page, page, include_files, srcimages2destimages, destimages2srcimages, set())
+        #print(include_files)
         for page in sorted(static_pages):
+            for include in sorted(include_files[page]):
+                dest = os.path.join('$inc_dir', include)
+                source = os.path.join('$src_dir', include)
+                extra_sources = ['$scripts_dir/create_build_adoc_include.py', '$site_config']
+                if source not in all_doc_sources:
+                    all_doc_sources.append(source)
+                    ninja.build(dest, 'create_build_adoc_include2', source, extra_sources)
+                    targets.append(dest)
+
             dest = os.path.join('$out_dir', page)
             source = os.path.join('$src_dir', page)
             extra_sources = ['$scripts_dir/create_build_adoc.py', '$documentation_index', '$site_config']
@@ -173,11 +190,6 @@ if __name__ == "__main__":
         # images used on documentation pages
         for source in sorted(srcimages2destimages):
             dest = os.path.join('$out_dir', srcimages2destimages[source])
-            source = os.path.join('$src_dir', source)
-            ninja.build(dest, 'copy', source)
-            targets.append(dest)
-        for source in sorted(static_images):
-            dest = os.path.join('$out_dir', source)
             source = os.path.join('$src_dir', source)
             ninja.build(dest, 'copy', source)
             targets.append(dest)
