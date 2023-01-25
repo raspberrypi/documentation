@@ -1,6 +1,6 @@
 == Introducing the Sense HAT
 
-The https://www.raspberrypi.com/products/sense-hat/[Raspberry Pi Sense HAT] is an add-on board that gives your Raspberry Pi an array of sensing capabilities. The on-board sensors allow you to monitor pressure, humidity, temperature, colour, orientation, and movement. The bright 8x8 RGB LED matrix allows you to visualise data from the sensors, and the five-button joystick lets users interact with your projects.
+The https://www.raspberrypi.com/products/sense-hat/[Raspberry Pi Sense HAT] is an add-on board that gives your Raspberry Pi an array of sensing capabilities. The on-board sensors allow you to monitor pressure, humidity, temperature, colour, orientation, and movement. The bright 8×8 RGB LED matrix allows you to visualise data from the sensors, and the five-button joystick lets users interact with your projects.
 
 image::images/Sense-HAT.jpg[width="70%"]
 

@@ -1,8 +1,19 @@
 == Sense HAT Hardware
 
-Schematics for the Sense HAT are available:
+The Sense HAT has an 8×8 RGB LED matrix and a five-button joystick, and includes the following sensors:
 
-* Raspberry Pi https://datasheets.raspberrypi.com/sense-hat/sense-hat-schematics.pdf[Sense HAT schematics].
+* Gyroscope
+* Accelerometer
+* Magnetometer
+* Temperature
+* Barometric pressure
+* Humidity
+* Colour and brightness
+
+Schematics and mechanical drawings for the Sense HAT are available for download.
+
+* https://datasheets.raspberrypi.com/sense-hat/sense-hat-schematics.pdf[Sense HAT schematics].
+* https://datasheets.raspberrypi.com/sense-hat/sense-hat-mechanical-drawing.pdf[Sense HAT mechanical drawings].
 
 === LED matrix
 
