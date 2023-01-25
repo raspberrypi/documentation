@@ -24,7 +24,7 @@ JEKYLL_CMD = bundle exec jekyll
 
 .DEFAULT_GOAL := html
 
-.PHONY: clean run_ninja clean_ninja html serve_html clean_html build_doxygen_adoc clean_doxygen_adoc
+.PHONY: clean run_ninja clean_ninja html serve_html clean_html build_doxygen_adoc clean_doxygen_adoc clean_submodules clean_everything
 
 $(BUILD_DIR):
 	@mkdir -p $@
@@ -62,6 +62,11 @@ build_doxygen_adoc: | $(DOXYGEN_HTML_DIR) $(ASCIIDOC_DOXYGEN_DIR)
 # Clean all the Doxygen files
 clean_doxygen_adoc:
 	rm -rf $(ASCIIDOC_DIR)/pico-sdk
+
+clean_submodules:
+	git submodule deinit --all
+
+clean_everything: clean_submodules clean_doxygen_adoc clean
 
 # AUTO_NINJABUILD contains all the parts of the ninjabuild where the rules themselves depend on other files
 $(AUTO_NINJABUILD): $(SCRIPTS_DIR)/create_auto_ninjabuild.py $(DOCUMENTATION_INDEX) $(SITE_CONFIG) | $(BUILD_DIR)
