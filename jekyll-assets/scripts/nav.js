@@ -72,9 +72,20 @@ function expandAndCollapseMobile(e) {
 }
 
 window.addEventListener('load', function() {
+  var loc = window.location.href;
   var tocitems = document.querySelectorAll("div.itemcontents:not(#toc)");
   for (var i=0; i < tocitems.length; i++) {
-    addClassJS(tocitems[i], "hidden");
+    // if this is a picosdk page, keep the item expanded
+    if (
+      loc.indexOf("/pico-sdk/") > -1 && 
+      tocitems[i].getAttribute("id") && 
+      tocitems[i].getAttribute("id") == "pico-sdk-toc"
+    ) {
+      removeClassJS(tocitems[i], "hidden");
+    } else {
+      // otherwise:
+      addClassJS(tocitems[i], "hidden");
+    }
   }
   var currentItemNoJS = document.querySelectorAll("div.itemcontents.noJS");
   addClassJS(currentItemNoJS, "hidden");

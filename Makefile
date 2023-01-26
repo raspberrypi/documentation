@@ -18,7 +18,7 @@ PICO_EXAMPLES_DIR = documentation/pico-examples
 DOXYGEN_PICO_SDK_BUILD_DIR = $(BUILD_DIR)/pico-sdk-docs
 DOXYGEN_HTML_DIR = $(DOXYGEN_PICO_SDK_BUILD_DIR)/docs/doxygen/html
 # The pico-sdk here needs to match up with the "entire_directory" in index.json
-ASCIIDOC_DOXYGEN_DIR = $(ASCIIDOC_DIR)/pico-sdk
+ASCIIDOC_DOXYGEN_DIR = $(ASCIIDOC_DIR)/microcontrollers/pico-sdk
 
 JEKYLL_CMD = bundle exec jekyll
 
@@ -57,7 +57,7 @@ $(ASCIIDOC_DOXYGEN_DIR): | $(ASCIIDOC_DIR)
 build_doxygen_adoc: | $(DOXYGEN_HTML_DIR) $(ASCIIDOC_DOXYGEN_DIR)
 	python3 $(SCRIPTS_DIR)/transform_doxygen_html.py $(DOXYGEN_HTML_DIR) $(ASCIIDOC_DOXYGEN_DIR)
 	cp $(DOXYGEN_HTML_DIR)/*.png $(ASCIIDOC_DOXYGEN_DIR)
-	mv $(ASCIIDOC_DOXYGEN_DIR)/index.adoc $(ASCIIDOC_DOXYGEN_DIR)/index_doxygen.adoc
+	mv $(ASCIIDOC_DOXYGEN_DIR)/pico-sdk.adoc $(ASCIIDOC_DIR)/microcontrollers/pico-sdk.adoc
 
 # Clean all the Doxygen files
 clean_doxygen_adoc:
