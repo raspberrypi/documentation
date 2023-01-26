@@ -1,6 +1,6 @@
 <nav id="contents">
 {% for subdir in site.data.nav %}
-{% if page.dir == subdir.path or page.url contains subdir.path %}
+{% if page.dir == subdir.path %}
 
   {% if subdir.toc[0] %}
     <h2><a href="{{ site.baseurl }}{{ subdir.path }}">{{ subdir.title }}</a></h2>
@@ -17,11 +17,9 @@
                 {% if entry.subsections[0] %}
                   <ul>
                     {% for subentry in entry.subsections %}
-                      {% if item.path contains "pico-sdk.html" %}
-                        <a href="{{ site.baseurl }}{{ subentry.url }}">{{ subentry.heading }}</a>
-                      {% else %}
+                      <li>
                         <a href="{{ site.baseurl }}{{ item.path }}#{{ subentry.anchor }}">{{ subentry.heading }}</a>
-                      {% endif %}
+                      </li>
                     {% endfor %}
                   </ul>
                 {% endif %}
@@ -30,11 +28,7 @@
           </ul>
         </div>
         {% else %}
-        {% if item.path contains "pico-sdk.html" %}
-        <div class="itemcontents" id="pico-sdk-toc">
-        {% else %}
         <div class="itemcontents">
-        {% endif %}
           <ul class="sectlevel1">
             {% for entry in item.sections %}
               <li>
@@ -42,11 +36,9 @@
                 {% if entry.subsections[0] %}
                   <ul>
                     {% for subentry in entry.subsections %}
-                      {% if item.path contains "pico-sdk.html" %}
-                        <a href="{{ site.baseurl }}{{ subentry.url }}">{{ subentry.heading }}</a>
-                      {% else %}
+                      <li>
                         <a href="{{ site.baseurl }}{{ item.path }}#{{ subentry.anchor }}">{{ subentry.heading }}</a>
-                      {% endif %}
+                      </li>
                     {% endfor %}
                   </ul>
                 {% endif %}

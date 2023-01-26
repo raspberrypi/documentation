@@ -183,8 +183,10 @@ def transform_element(item, root, is_child=False):
   try:
     # build the selector for the xpath
     sel = make_selector(item["input"], is_child)
+    print(sel)
     if sel is not None:
       matches = root.xpath(sel)
+      print(matches)
       for match in matches:
         # first process any mapped children
         if "child_mappings" in item["input"] and len(item["input"]["child_mappings"]) > 0:
@@ -203,14 +205,6 @@ def transform_element(item, root, is_child=False):
           # first, preserve any children:
           for child in reversed(match.findall("./*")):
             match.addnext(child)
-          # handle the tail if needed
-          if match.tail is not None and re.search("\S", match.tail) is not None:
-            prev = match.getprevious()
-            if prev is not None:
-              prev.tail = prev.tail + match.tail if prev.tail is not None else match.tail
-            else:
-              parent = match.getparent()
-              parent.text = parent.text + match.tail if parent.text is not None else match.tail
           # then remove the element
           match.getparent().remove(match)
   except Exception as e:
@@ -260,6 +254,7 @@ def get_document_title(root):
 def prep_for_adoc(root):
   try:
     h2s = root.findall(".//div[@class='contents']/h2")
+    print(h2s)
     for head in h2s:
       text = ''.join(get_all_text(head))
       newel = etree.Element("p")
@@ -283,10 +278,9 @@ def prep_for_adoc(root):
 def make_adoc(root_string, title_text):
   try:
     root_string = "= " + title_text + "\n\n++++\n" + root_string
-    root_string = re.sub('(<p[^>]+class="adoc-h2"[^>]*>\s*)(.*?)(</p>)', '\n++++\n\n== \\2\n\n++++\n', root_string)
-    root_string = re.sub('(<p[^>]+class="adoc-h3"[^>]*>\s*)(.*?)(</p>)', '\n++++\n\n=== \\2\n\n++++\n', root_string)
+    root_string = re.sub('(<p class="adoc-h2">\s*)(.*?)(\s*)(</p>)', '\n++++\n\n== \\2\n\n++++\n', root_string)
+    root_string = re.sub('(<p class="adoc-h3">\s*)(.*?)(\s*)(</p>)', '\n++++\n\n=== \\2\n\n++++\n', root_string)
     root_string = root_string + "\n++++\n"
-    root_string = ":page-layout: docs\n\n" + root_string
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
@@ -301,10 +295,9 @@ def handler(html_path, output_path):
     # get a list of all the html files
     html_files = os.listdir(html_dir)
     html_files = [f for f in html_files if re.search(".html", f) is not None]
-    # sort the files ascending
-    html_files.sort()
-    # create the parent adoc file
-    parent_adoc = "== Pico SDK Reference\n\n"
+    # first, make sure the output dir exists
+    # if os.path.isdir(output_dir) == False:
+    #   os.mkdir(output_dir)
     # process every html file
     for html_file in html_files:
       # create the full path
@@ -347,26 +340,13 @@ def handler(html_path, output_path):
       # prep and write the adoc
       adoc = make_adoc(final_output, title_text)
       adoc_path = re.sub(".html$", ".adoc", this_output_path)
-      if "index.adoc" in adoc_path:
-        parent_adoc = adoc + "\n" + parent_adoc
-      else:
-        # add an include to the parent adoc file
-        link_name = os.path.basename(adoc_path)
-        # prevent __ from being interpreted as em
-        link_name = re.sub("(__\S*__)", "\\\\\\1", link_name)
-        parent_adoc = parent_adoc + "\n=== xref:pico-sdk/" + link_name + "[" + title_text + "]\n"
-        # parent_adoc = parent_adoc + "\ninclude::pico-sdk/"+os.path.basename(adoc_path)+"[]\n"
-        write_output(adoc_path, adoc)
-        print("Generated " + adoc_path)
-    # write the parent adoc file
-    parent_adoc_path = os.path.join(output_path, "pico-sdk.adoc")
-    write_output(parent_adoc_path, parent_adoc)
+      write_output(adoc_path, adoc)
+      # output_path = os.path.join(html_dir, "out.html")
+      # write_output(this_output_path, final_output)
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
   return
-
-  
 
 if __name__ == "__main__":
   html_path = sys.argv[1]

@@ -27,19 +27,6 @@ def heading_to_anchor(filepath, heading, anchor):
     file_headings[filepath].add(proposed_anchor)
     return proposed_anchor
 
-def make_picosdk_heading(text):
-    m = re.match(r'^(\s*xref:pico-sdk/.+?\[)(.*?)(\])\s*$', text)
-    heading = m.group(2)
-    return heading
-
-def make_picosdk_url(text):
-    url = text
-    url = re.sub("xref:pico-sdk/", "", url) 
-    url = re.sub("\[.*?\]\s*$", "", url)
-    url = re.sub("adoc$", "html", url)
-    url = "/microcontrollers/pico-sdk/" + url
-    return url
-
 needed_internal_links = dict()
 def read_file_with_includes(filepath, output_dir=None):
     if output_dir is None:
@@ -119,13 +106,8 @@ if __name__ == "__main__":
                                         if anchor in available_anchors[fullpath]:
                                             raise Exception("Anchor {} appears twice in {}".format(anchor, fullpath))
                                         available_anchors[fullpath].add(anchor)
-                                        if min_level <= newlevel <= max_level and not last_line_was_discrete:                                                
-                                            if re.search("xref:pico-sdk", m.group(2)) is not None:
-                                                heading = make_picosdk_heading(m.group(2))
-                                                url = make_picosdk_url(m.group(2))
-                                                entry = {'heading': heading, 'url': url}
-                                            else:
-                                                entry = {'heading': heading, 'anchor': anchor}
+                                        if min_level <= newlevel <= max_level and not last_line_was_discrete:
+                                            entry = {'heading': heading, 'anchor': anchor}
                                             if newlevel > level:
                                                 nav[-1]['sections'][-1]['subsections'] = []
                                             level = newlevel
@@ -143,13 +125,13 @@ if __name__ == "__main__":
                 raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], index_json, 'path', 'entire_directory'))
 
             output_data.append({'title': tab['title'], 'path': '/{}/'.format(tab.get('path', tab.get('entire_directory'))), 'toc': nav})
-        # for filepath in sorted(needed_internal_links):
-        #     for linkinfo in needed_internal_links[filepath]:
-        #         if linkinfo['url'] not in available_anchors:
-        #             raise Exception("{} has an internal-link to {} but that destination doesn't exist".format(filepath, linkinfo['url']))
-        #         if 'anchor' in linkinfo:
-        #             if linkinfo['anchor'] not in available_anchors[linkinfo['url']]:
-        #                 raise Exception("{} has an internal-link to {}#{} but that anchor doesn't exist. Available anchors: {}".format(filepath, linkinfo['url'], linkinfo['anchor'], ', '.join(sorted(available_anchors[linkinfo['url']]))))
+        for filepath in sorted(needed_internal_links):
+            for linkinfo in needed_internal_links[filepath]:
+                if linkinfo['url'] not in available_anchors:
+                    raise Exception("{} has an internal-link to {} but that destination doesn't exist".format(filepath, linkinfo['url']))
+                if 'anchor' in linkinfo:
+                    if linkinfo['anchor'] not in available_anchors[linkinfo['url']]:
+                        raise Exception("{} has an internal-link to {}#{} but that anchor doesn't exist. Available anchors: {}".format(filepath, linkinfo['url'], linkinfo['anchor'], ', '.join(sorted(available_anchors[linkinfo['url']]))))
 
         with open(output_json, 'w') as out_fh:
             json.dump(output_data, out_fh, indent=4)

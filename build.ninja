@@ -11,9 +11,6 @@ builddir = build
 rule copy
   command = cp $in $out
 
-rule copy_dir
-  command = cp -R $in $out
-
 rule create_categories_page
   command = echo "---\nlayout: boxes\n---\n:doctitle: $title" > $out
 

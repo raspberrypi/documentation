@@ -199,12 +199,6 @@
                     "subpath": "c_sdk.adoc"
                 },
                 {
-                    "title": "Pico SDK",
-                    "description": "These are the libraries supplied in the Raspberry Pi Pico SDK",
-                    "image": "full-sized/C-and-CPP.png",
-                    "subpath": "pico-sdk.adoc"
-                },
-                {
                     "title": "Product Information Portal",
                     "description": "Raspberry Pi compliance documents",
                     "image": "full-sized/PIP.png",
@@ -229,6 +223,10 @@
                     "url": "https://forums.raspberrypi.com"
                 }
             ]
+        },
+        {
+            "title": "Pico SDK",
+            "entire_directory": "pico-sdk"
         }
     ]
 }

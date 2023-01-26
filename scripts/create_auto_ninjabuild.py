@@ -187,16 +187,6 @@ if __name__ == "__main__":
             targets = []
             ninja.newline()
 
-        # copy doxygen adoc files
-        dest = os.path.join('$out_dir', 'microcontrollers', 'pico-sdk')
-        source = os.path.join('$src_dir', 'microcontrollers', 'pico-sdk')
-        ninja.build(dest, 'copy_dir', source)
-        targets.append(dest)
-        if targets:
-            ninja.default(targets)
-            targets = []
-            ninja.newline()
-
         # images used on documentation pages
         for source in sorted(srcimages2destimages):
             dest = os.path.join('$out_dir', srcimages2destimages[source])
