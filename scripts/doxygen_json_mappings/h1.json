@@ -1,0 +1,45 @@
+[
+	{
+		"input": {
+			"description": "Heading",
+			"element": "h1",
+			"attributes": [],
+			"parents": [],
+			"children": [],
+			"child_mappings": [
+				{
+					"input": {
+						"description": "Link anchor",
+						"element": "a",
+						"attributes": [
+							{
+								"name": "class",
+								"value": ["anchor"]
+							}
+						],
+						"parents": [],
+						"children": []
+					},
+					"output": {
+						"tree": []
+					}
+				}
+			]
+		},
+		"output": {
+			"tree": [
+				{
+					"position": 0,
+					"element": "p",
+					"attributes": [
+					  	{
+							"name": "class",
+							"value": ["adoc-h2"]
+						}
+					],
+					"children": []
+				}
+			]
+		}
+	}
+]

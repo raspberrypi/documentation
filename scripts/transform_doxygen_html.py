@@ -205,6 +205,14 @@ def transform_element(item, root, is_child=False):
           # first, preserve any children:
           for child in reversed(match.findall("./*")):
             match.addnext(child)
+          # handle the tail if needed
+          if match.tail is not None and re.search("\S", match.tail) is not None:
+            prev = match.getprevious()
+            if prev is not None:
+              prev.tail = prev.tail + match.tail if prev.tail is not None else match.tail
+            else:
+              parent = match.getparent()
+              parent.text = parent.text + match.tail if parent.text is not None else match.tail
           # then remove the element
           match.getparent().remove(match)
   except Exception as e:
@@ -278,8 +286,8 @@ def prep_for_adoc(root):
 def make_adoc(root_string, title_text):
   try:
     root_string = "= " + title_text + "\n\n++++\n" + root_string
-    root_string = re.sub('(<p class="adoc-h2">\s*)(.*?)(\s*)(</p>)', '\n++++\n\n== \\2\n\n++++\n', root_string)
-    root_string = re.sub('(<p class="adoc-h3">\s*)(.*?)(\s*)(</p>)', '\n++++\n\n=== \\2\n\n++++\n', root_string)
+    root_string = re.sub('(<p[^>]+class="adoc-h2"[^>]*>\s*)(.*?)(</p>)', '\n++++\n\n== \\2\n\n++++\n', root_string)
+    root_string = re.sub('(<p[^>]+class="adoc-h3"[^>]*>\s*)(.*?)(</p>)', '\n++++\n\n=== \\2\n\n++++\n', root_string)
     root_string = root_string + "\n++++\n"
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -295,9 +303,8 @@ def handler(html_path, output_path):
     # get a list of all the html files
     html_files = os.listdir(html_dir)
     html_files = [f for f in html_files if re.search(".html", f) is not None]
-    # first, make sure the output dir exists
-    # if os.path.isdir(output_dir) == False:
-    #   os.mkdir(output_dir)
+    # sort the files ascending
+    html_files.sort()
     # process every html file
     for html_file in html_files:
       # create the full path
