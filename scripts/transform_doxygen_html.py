@@ -183,10 +183,8 @@ def transform_element(item, root, is_child=False):
   try:
     # build the selector for the xpath
     sel = make_selector(item["input"], is_child)
-    print(sel)
     if sel is not None:
       matches = root.xpath(sel)
-      print(matches)
       for match in matches:
         # first process any mapped children
         if "child_mappings" in item["input"] and len(item["input"]["child_mappings"]) > 0:
@@ -262,7 +260,6 @@ def get_document_title(root):
 def prep_for_adoc(root):
   try:
     h2s = root.findall(".//div[@class='contents']/h2")
-    print(h2s)
     for head in h2s:
       text = ''.join(get_all_text(head))
       newel = etree.Element("p")
@@ -294,12 +291,50 @@ def make_adoc(root_string, title_text):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return root_string
 
-def handler(html_path, output_path):
+def parse_header(header_path):
+  h_json = {}
+  try:
+    with open(header_path) as h:
+      content = h.read()
+    blocks = re.findall("^(\s*)(\*|\/\*\*)(\s*)(\s)(\*)(\s)(\\\\)(defgroup)([^}]*)(\@\})", content, re.M)
+    for (a, b, c, d, e, f, g, h, i, j) in blocks:
+      items = i.split("\defgroup")
+      counter = 0
+      group_id = None
+      for item in items:
+        if counter == 0:
+          m = re.match("(\s*)(\S*)(\s*)([^*]*)(.*)", item, re.M)
+          group_id = m.group(2)
+          group_name = m.group(4)
+          group_name = re.sub("\s*$", "", group_name, re.M)
+          group_desc = m.group(5)
+          group_desc = re.sub("\n*", "", group_desc, re.M)
+          group_desc = re.sub("\*", "", group_desc, re.M)
+          group_desc = re.sub("^\s*", "", group_desc, re.M)
+          h_json[group_id] = { 'name': group_name, 'description': group_desc, 'subitems': {} }
+        else:
+          cleaned = item
+          cleaned = re.sub("\n*", "", cleaned, re.M)
+          cleaned = re.sub("^\s*", "", cleaned, re.M)
+          cleaned = re.sub("\s*\*\s*$", "", cleaned, re.M)
+          val = cleaned.split(" ")[0]
+          filename = re.sub("_", "__", val)
+          filename = "group__" + filename
+          h_json[group_id]['subitems'][counter-1] = { 'name': val, 'file': filename }
+        counter +=1
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return h_json
+
+def handler(html_path, output_path, header_path):
   try:
     dir_path = os.path.dirname(os.path.realpath(__file__))
     json_dir = os.path.join(dir_path, "doxygen_json_mappings")
     html_dir = os.path.realpath(html_path)
     output_dir = os.path.realpath(output_path)
+    # get the file order and groupings
+    h_json = parse_header(header_path)
     # get a list of all the html files
     html_files = os.listdir(html_dir)
     html_files = [f for f in html_files if re.search(".html", f) is not None]
@@ -348,8 +383,20 @@ def handler(html_path, output_path):
       adoc = make_adoc(final_output, title_text)
       adoc_path = re.sub(".html$", ".adoc", this_output_path)
       write_output(adoc_path, adoc)
-      # output_path = os.path.join(html_dir, "out.html")
-      # write_output(this_output_path, final_output)
+      print("Generated " + adoc_path)
+    
+    # make the group adoc files
+    # include::micropython/what-board.adoc[]
+    for item in h_json:
+      group_adoc = "= " + h_json[item]['name'] + "\n\n"
+      group_adoc = group_adoc + h_json[item]['description'] + "\n\n"
+      for subitem in h_json[item]['subitems']:
+        group_adoc = group_adoc + "include::pico-sdk/" + h_json[item]['subitems'][subitem]['file'] + ".adoc[]\n\n"
+      group_output_path = os.path.join(output_path, item + ".adoc")
+      write_output(group_output_path, group_adoc)
+    # write the json structure file as well
+    json_path = os.path.join(output_path, "picosdk_index.json")
+    write_output(json_path, json.dumps(h_json))
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
@@ -358,4 +405,5 @@ def handler(html_path, output_path):
 if __name__ == "__main__":
   html_path = sys.argv[1]
   output_path = sys.argv[2]
-  handler(html_path, output_path)
+  header_path = sys.argv[3]
+  handler(html_path, output_path, header_path)

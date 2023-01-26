@@ -22,6 +22,18 @@ def add_entire_directory_to_tab(tab, adoc_dir):
         newsubitem['path'] = os.path.join(tab['path'], change_file_ext(newsubitem['subpath'], 'html'))
         tab['subitems'].append(newsubitem)
 
+def build_tab_from_json(tab, adoc_dir):
+    json_path = os.path.join(adoc_dir, tab['from_json'])
+    with open(json_path) as json_fh:
+        tab_data = json.load(json_fh)
+        for item in tab_data:
+            newsubitem = {}
+            newsubitem['title'] = tab_data[item]['name']
+            newsubitem['description'] = tab_data[item]['description']
+            newsubitem['subpath'] = item + ".adoc"
+            newsubitem['path'] = os.path.join(tab['path'], change_file_ext(newsubitem['subpath'], 'html'))
+            tab['subitems'].append(newsubitem)
+
 if __name__ == "__main__":
     input_json = sys.argv[1]
     output_json = sys.argv[2]
@@ -48,8 +60,15 @@ if __name__ == "__main__":
                     add_entire_directory_to_tab(tab, tab_dir)
                 else:
                     del data['tabs'][tab_index]
+            elif 'from_json' in tab:
+                tab_dir = os.path.join(input_dir, tab['directory'])
+                if os.path.exists(tab_dir):
+                    tab['path'] = '/{}/'.format(tab['directory'])
+                    build_tab_from_json(tab, tab_dir)
+                else:
+                    del data['tabs'][tab_index]
             else:
-                raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], input_json, 'path', 'entire_directory'))
+                raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}' nor '{}'".format(tab['title'], input_json, 'path', 'entire_directory', 'from_json'))
         if not found_default_tab:
             print("WARNING: no default_tab set in {} so index page will look odd".format(input_json))
 

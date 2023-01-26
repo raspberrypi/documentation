@@ -226,7 +226,8 @@
         },
         {
             "title": "Pico SDK",
-            "entire_directory": "pico-sdk"
+            "from_json": "picosdk_index.json",
+            "directory": "pico-sdk"
         }
     ]
 }

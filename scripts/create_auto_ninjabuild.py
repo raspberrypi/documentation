@@ -102,6 +102,14 @@ if __name__ == "__main__":
                     # recursively add entire directory
                     add_entire_directory(tab_dir, tab['entire_directory'], static_pages, srcimages2destimages, destimages2srcimages)
                     page_images.add('placeholder/placeholder_square.png')
+            elif 'from_json' in tab:
+                tab_dir = os.path.join(input_dir, tab['directory'])
+                if os.path.exists(tab_dir):
+                    # category (boxes) page
+                    category_pages.add((os.path.join(tab['directory'], 'index.adoc'), '{} - {}'.format(site_config['title'], tab['title'])))
+                    # recursively add entire directory
+                    add_entire_directory(tab_dir, static_pages, srcimages2destimages, destimages2srcimages)
+                    page_images.add('placeholder/placeholder_square.png')
             else:
                 raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], index_json, 'path', 'entire_directory'))
 
