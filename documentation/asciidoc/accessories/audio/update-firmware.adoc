@@ -1,0 +1,52 @@
+== Updating your firmware
+
+NOTE: This applies to the following products: Raspberry Pi DAC+, DAC Pro, DigiAmp+, and Codec Zero.
+
+Raspberry Pi Audio Boards use an EEPROM that contains information that is used by the host Raspberry Pi device to select the appropriate driver at boot time. This information is programmed into the EEPROM during manufacture.
+
+There are some circumstances where the end user may wish to update the EEPROM contents, this can be done from the command line.
+
+IMPORTANT: Before proceeding you should update the Raspberry Pi OS running on your Raspberry Pi to the latest version.
+
+=== Identification of the EEPROM write-protect link
+
+NOTE: Thes images shows a 0Ω resistor already fitted to the write-protect link.
+
+TBD
+
+=== Programming the device
+
+Once the write protect line has been pulled down, the EEPROM can be programmed. 
+
+TBD
+
+
+[cols="2"]
+|===
+| Device | Filename
+
+| Codec Zero | Pi-CodecZero.eep
+| DAC+ | Pi-DACPlus.eep
+| DAC Pro | Pi-DACPRO.eep
+| DigiAmp+ | Pi-DigiAMP.eep
+|===
+
+== DeviceTree Overlays
+
+As an alternative to updating the EEPROM contents, it is possible to manually specify the appropriate device tree entries in the `config.txt` file.
+
+The procedure is simple, edit the `config.txt` file using your favourite editor (you will need to run the editor as root using `sudo`), and add a line as follow:
+
+`dtoverlay <name of overlay>`
+
+Use the correct overlay for your device.
+
+[cols="2"]
+|===
+| Device | Overlay name
+
+| {IQ} Codec Zero |  rpi-codeczero
+| {IQ} DAC+ | rpi-dacplus
+| {IQ} DAC Pro | rpi-dacpro
+| {IQ} DigiAmp+ | rpi-digiampplus
+|===

@@ -13,7 +13,7 @@ include::audio/configuration.adoc[]
 
 include::audio/getting_started.adoc[]
 
-include::audio/advanced.adoc[]
+include::audio/hardware-info.adoc[]
 
-include::audio/faq.adoc[]
+include::audio/update-firmware.adoc[]
 
