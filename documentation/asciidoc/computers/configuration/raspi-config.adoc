@@ -9,6 +9,8 @@ sudo raspi-config
 
 The `sudo` is required because you will be changing files that you do not own as the `pi` user.
 
+NOTE: All options are available via a non-interactive command line interface. See the xref:raspi-config_cli.adoc[raspi-config command line interface usage] page for more information.
+
 NOTE: If you are using the Raspberry Pi desktop then you can use the graphical `Raspberry Pi Configuration` application from the `Preferences` menu to configure your Raspberry Pi.
 
 You should then see a blue screen with options in a grey box:
