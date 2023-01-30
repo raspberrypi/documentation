@@ -19,6 +19,7 @@ Once the write-protect line has been pulled down, the EEPROM can be programmed.
 You should first install the utilites and then run the programmer. Open up a terminal window and type the following:
 
 ----
+$ sudo apt update
 $ sudo apt install iqaudio-utils
 $ sudo iqaudio-program
 ----
