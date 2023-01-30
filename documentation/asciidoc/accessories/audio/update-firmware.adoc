@@ -1,20 +1,20 @@
 == Updating your firmware
 
-NOTE: This applies to the following products: Raspberry Pi DAC+, DAC Pro, DigiAmp+, and Codec Zero.
-
-Raspberry Pi Audio Boards use an EEPROM that contains information that is used by the host Raspberry Pi device to select the appropriate driver at boot time. This information is programmed into the EEPROM during manufacture.
-
-There are some circumstances where the end user may wish to update the EEPROM contents, this can be done from the command line.
+Raspberry Pi Audio Boards use an EEPROM that contains information that is used by the host Raspberry Pi device to select the appropriate driver at boot time. This information is programmed into the EEPROM during manufacture. There are some circumstances where the end user may wish to update the EEPROM contents, this can be done from the command line.
 
 IMPORTANT: Before proceeding you should update the Raspberry Pi OS running on your Raspberry Pi to the latest version.
 
-=== Identification of the EEPROM write-protect link
-
-NOTE: Thes images shows a 0Ω resistor already fitted to the write-protect link.
-
-TBD
-
 === Programming the device
+
+==== The EEPROM write-protect link
+
+During the programming process you will need to connect the two pads shown in the red box
+
+image::images/write_protect_tabs.jpg[width="80%"]
+
+NOTE: In some cases the two pads will already have a 0Ω resistor fitted to bridge the write-protect link, as illustrated in the picture of the Codec Zero board above.
+
+==== EEPROM Programming
 
 Once the write protect line has been pulled down, the EEPROM can be programmed. 
 
