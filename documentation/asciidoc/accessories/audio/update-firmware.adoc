@@ -41,5 +41,5 @@ Afterwards a screen will display telling you that the new firmware has installed
 
 image::images/firmware-update/flashed.png[]
 
-NOTE: If the firmware fails to install correctly, an error screen will be displayed. In the first intance you should remove and reseat the HAT board and try flashing the firmware again.
+NOTE: If the firmware fails to install correctly, an error screen will be displayed. In the first instance you should remove and reseat the HAT board and try flashing the firmware again.
 
