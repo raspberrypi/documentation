@@ -4,49 +4,42 @@ Raspberry Pi Audio Boards use an EEPROM that contains information that is used b
 
 IMPORTANT: Before proceeding you should update the Raspberry Pi OS running on your Raspberry Pi to the latest version.
 
-=== Programming the device
+=== The EEPROM write-protect link
 
-==== The EEPROM write-protect link
-
-During the programming process you will need to connect the two pads shown in the red box
+During the programming process you will need to connect the two pads shown in the red box with a wire to "pull down" the EEPROM write-protect link.
 
 image::images/write_protect_tabs.jpg[width="80%"]
 
-NOTE: In some cases the two pads will already have a 0Ω resistor fitted to bridge the write-protect link, as illustrated in the picture of the Codec Zero board above.
+NOTE: In some cases the two pads may already have a 0Ω resistor fitted to bridge the write-protect link, as illustrated in the picture of the Codec Zero board above.
 
-==== EEPROM Programming
+=== EEPROM Programming
 
 Once the write protect line has been pulled down, the EEPROM can be programmed. 
 
-TBD
+You should first install the utilites and then run the programmer. Open up a terminal window and type the following.
 
+----
+$ sudo apt install iqaudio-utils
+$ sudo iqaudio-program
+----
 
-[cols="2"]
-|===
-| Device | Filename
+After starting you will be presented with a warning screen.
 
-| Codec Zero | Pi-CodecZero.eep
-| DAC+ | Pi-DACPlus.eep
-| DAC Pro | Pi-DACPRO.eep
-| DigiAmp+ | Pi-DigiAMP.eep
-|===
+image::images/firmware-update/warning.png[]
 
-== DeviceTree Overlays
+Selecting "Yes" to proceed will present you with a menu allowing to select your hardware.
 
-As an alternative to updating the EEPROM contents, it is possible to manually specify the appropriate device tree entries in the `config.txt` file.
+image::images/firmware-update/select.png[]
 
-The procedure is simple, edit the `config.txt` file using your favourite editor (you will need to run the editor as root using `sudo`), and add a line as follow:
+NOTE: If not HAT is present, or the connected HAT is not a Raspberry Pi Audio board you will be presented with an error screen. Alternatively if the firmware has already been updated on the board a message will be displayed informing you that you do not have to continue.
 
-`dtoverlay <name of overlay>`
+After selecting the correct hardware a screen will display during flashing.
 
-Use the correct overlay for your device.
+image::images/firmware-update/flashing.png[]
 
-[cols="2"]
-|===
-| Device | Overlay name
+Afterwards a screen will display telling you that the new firmware has been successfully flashed to the HAT.
 
-| {IQ} Codec Zero |  rpi-codeczero
-| {IQ} DAC+ | rpi-dacplus
-| {IQ} DAC Pro | rpi-dacpro
-| {IQ} DigiAmp+ | rpi-digiampplus
-|===
+image::images/firmware-update/flashed.png[]
+
+NOTE: If the firmware fails to flash correct an error screen will be displayed. In the first intance you should remove and reseat the HAT board and try flashing the firmware again.
+
