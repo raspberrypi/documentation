@@ -151,3 +151,12 @@ button.when_pressed = led.on
 button.when_released = led.off
 ----
 
+==== Going further
+
+[.float-group]
+--
+image::images/simple-electronics-with-gpio-zero.jpg[role="related thumb right",link=https://github.com/raspberrypipress/released-pdfs/raw/main/simple-electronics-with-gpio-zero.pdf]
+You can find more information on how to program electronics connected to your Raspberry Pi with the GPIO Zero Python library in the Raspberry Pi Press book https://github.com/raspberrypipress/released-pdfs/raw/main/simple-electronics-with-gpio-zero.pdf[Simple Electronics with GPIO Zero]. Written by Phil King, it is part of the MagPi Essentials series published by Raspberry Pi Press. The book gets your started with the GPIO Zero library, and walks you through how to use it by building a series of projects. 
+
+You can download this book as a PDF file for free, it has been released under a Creative Commons https://creativecommons.org/licenses/by-nc-sa/3.0/[Attribution-NonCommercial-ShareAlike] 3.0 Unported (CC BY NC-SA) licence.
+--
