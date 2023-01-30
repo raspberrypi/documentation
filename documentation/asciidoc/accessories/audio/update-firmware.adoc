@@ -28,7 +28,7 @@ After starting you will be presented with a warning screen.
 
 image::images/firmware-update/warning.png[]
 
-Selecting "Yes" to proceed will present you with a menu allowing to select your hardware.
+Selecting "Yes" to proceed will present you with a menu allowing you to select your hardware.
 
 image::images/firmware-update/select.png[]
 
