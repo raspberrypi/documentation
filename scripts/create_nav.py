@@ -82,7 +82,8 @@ if __name__ == "__main__":
                             'sections': [],
                         })
                         level = min_level
-                        top_level_file = os.path.join(adoc_dir, fullpath)
+                        adjusted_path = re.sub("^/", "", fullpath)
+                        top_level_file = os.path.join(adoc_dir, adjusted_path)
                         adoc_content = read_file_with_includes(top_level_file)
                         last_line_was_discrete = False
                         header_id = None
@@ -128,11 +129,12 @@ if __name__ == "__main__":
             output_data.append({'title': tab['title'], 'path': '/{}/'.format(tab.get('path', tab.get('from_json'))), 'toc': nav})
         for filepath in sorted(needed_internal_links):
             for linkinfo in needed_internal_links[filepath]:
-                if linkinfo['url'] not in available_anchors:
-                    raise Exception("{} has an internal-link to {} but that destination doesn't exist".format(filepath, linkinfo['url']))
+                adjusted_url = "/" + linkinfo['url']
+                if adjusted_url not in available_anchors:
+                    raise Exception("{} has an internal-link to {} but that destination doesn't exist".format(filepath, adjusted_url))
                 if 'anchor' in linkinfo:
-                    if linkinfo['anchor'] not in available_anchors[linkinfo['url']]:
-                        raise Exception("{} has an internal-link to {}#{} but that anchor doesn't exist. Available anchors: {}".format(filepath, linkinfo['url'], linkinfo['anchor'], ', '.join(sorted(available_anchors[linkinfo['url']]))))
+                    if linkinfo['anchor'] not in available_anchors[adjusted_url]:
+                        raise Exception("{} has an internal-link to {}#{} but that anchor doesn't exist. Available anchors: {}".format(filepath, adjusted_url, linkinfo['anchor'], ', '.join(sorted(available_anchors[adjusted_url]))))
 
         with open(output_json, 'w') as out_fh:
             json.dump(output_data, out_fh, indent=4)

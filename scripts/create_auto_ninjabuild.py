@@ -116,6 +116,7 @@ if __name__ == "__main__":
         ninja.variable('scripts_dir', scripts_dir)
         ninja.variable('redirects_dir', redirects_dir)
         ninja.variable('documentation_index', index_json)
+        ninja.variable('output_index', os.path.join(output_dir, "_data", "index.json"))
         ninja.variable('site_config', config_yaml)
         ninja.newline()
 
@@ -198,18 +199,6 @@ if __name__ == "__main__":
             targets = []
             ninja.newline()
 
-        # ToC data
-        dest = os.path.join('$out_dir', '_data', 'nav.json')
-        source = '$documentation_index'
-        extra_sources = ['$scripts_dir/create_nav.py']
-        extra_sources.extend(all_doc_sources)
-        ninja.build(dest, 'create_toc', source, extra_sources)
-        targets.append(dest)
-        if targets:
-            ninja.default(targets)
-            targets = []
-            ninja.newline()
-
         # Images on boxes
         for image in sorted(page_images):
             dest = os.path.join('$out_dir', 'images', image)
@@ -229,6 +218,18 @@ if __name__ == "__main__":
                 source = os.path.join(assets_dir, asset_filepath)
                 ninja.build(dest, 'copy', source)
                 targets.append(dest)
+        if targets:
+            ninja.default(targets)
+            targets = []
+            ninja.newline()
+
+        # ToC data
+        dest = os.path.join('$out_dir', '_data', 'nav.json')
+        source = '$output_index'
+        extra_sources = ['$scripts_dir/create_nav.py']
+        extra_sources.extend(all_doc_sources)
+        ninja.build(dest, 'create_toc', source, extra_sources)
+        targets.append(dest)
         if targets:
             ninja.default(targets)
             targets = []

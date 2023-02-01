@@ -1,0 +1,48 @@
+[
+	{
+		"input": {
+			"description": "Code listings - parent div",
+			"element": "div",
+			"attributes": [
+				{
+					"name": "class",
+					"value": ["fragment"]
+				}
+			],
+			"parents": [],
+			"children": [],
+			"child_mappings": []
+		},
+		"output": {
+			"tree": [
+				{
+					"position": 0,
+					"element": "div",
+					"attributes": [
+					  {
+							"name": "class",
+							"value": ["listingblock"]
+						}
+					],
+					"children": [
+						{
+							"position": 0,
+							"element": "div",
+							"attributes": [
+								{
+									"name": "class",
+									"value": ["content"]
+								},
+								{
+									"name": "data-target",
+									"value": ["true"]
+								}
+							],
+							"children": []
+						}
+					]
+				}
+			]
+		}
+	}	
+]

@@ -383,6 +383,32 @@ h6 .anchor::before {
   overflow-x: auto !important;
 }
 
+#content div.listingblock div.content div.line,
+#content div.listingblock div.content div.ttc {
+  font-family: monospace;
+  white-space: pre;
+}
+
+#content div.listingblock div.content div.line a,
+#content div.listingblock div.content div.ttc a {
+  color: var(--red-tint);
+}
+
+td.mlabels-right {
+  padding-left: 30px;
+  vertical-align: bottom;
+}
+
+span.mlabel {
+  display: inline-block;
+  background-color: var(--red);
+  color: #ffffff;
+  padding: 3px;
+  border-radius: 2px;
+  font-size: 0.8em;
+  margin-right: 10px;
+}
+
 #content table {
   margin-bottom: 15px;
 }
@@ -795,7 +821,8 @@ footer {
   #content div.listingblock div.content {
     overflow-x: hidden;
   }
-  #content div.listingblock div.content pre {
+  #content div.listingblock div.content pre,
+  #content div.listingblock div.content div.line {
     white-space: pre-wrap;
     word-break: break-all;
   }

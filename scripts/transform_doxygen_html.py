@@ -241,6 +241,15 @@ def merge_lists(list_type, root):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return root
 
+def fix_heading_levels(root):
+  all_heads = root.xpath(".//p[contains(@class, 'adoc-h2')]|.//p[contains(@class, 'adoc-h3')]")
+  if len(all_heads) > 0:
+    head = all_heads[0]
+    myclass = head.get("class")
+    if "adoc-h3" in myclass:
+      head.set("class", "adoc-h2")
+  return root
+
 def get_document_title(root):
   title_text = ""
   try:
@@ -273,7 +282,7 @@ def prep_for_adoc(root):
     for head in h3s:
       text = ''.join(get_all_text(head))
       newel = etree.Element("p")
-      newel.set("class", "adoc-h2")
+      newel.set("class", "adoc-h3")
       newel.text = text
       head.addnext(newel)
       head.getparent().remove(head)
@@ -284,9 +293,9 @@ def prep_for_adoc(root):
 
 def make_adoc(root_string, title_text):
   try:
-    root_string = "= " + title_text + "\n\n++++\n" + root_string
-    root_string = re.sub('(<p[^>]+class="adoc-h2"[^>]*>\s*)(.*?)(</p>)', '\n++++\n\n== \\2\n\n++++\n', root_string)
-    root_string = re.sub('(<p[^>]+class="adoc-h3"[^>]*>\s*)(.*?)(</p>)', '\n++++\n\n=== \\2\n\n++++\n', root_string)
+    root_string = "== " + title_text + "\n\n++++\n" + root_string
+    root_string = re.sub('(<p[^>]+class="adoc-h2"[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n=== \\2\n\n++++\n', root_string, flags=re.S)
+    root_string = re.sub('(<p[^>]+class="adoc-h3"[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n==== \\2\n\n++++\n', root_string, flags=re.S)
     root_string = root_string + "\n++++\n"
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -371,6 +380,8 @@ def handler(html_path, output_path, header_path, output_json):
       root = merge_lists("ol", root)
       # add some extra items to help with the adoc conversion
       root = prep_for_adoc(root)
+      # fix some heading levels
+      root = fix_heading_levels(root)
       # get the document title
       title_text = get_document_title(root)
       # get only the relevant content
