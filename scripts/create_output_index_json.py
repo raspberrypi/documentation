@@ -9,28 +9,17 @@ import re
 def change_file_ext(filename, extension):
     return os.path.splitext(filename)[0] + '.' + extension
 
-def add_entire_directory_to_tab(tab, adoc_dir):
-    dir_entries = os.listdir(adoc_dir)
-    adoc_files = [f for f in dir_entries if os.path.isfile(os.path.join(adoc_dir, f)) and f.endswith(".adoc")]
-    tab['subitems'] = []
-    for this_file in adoc_files:
-        newsubitem = {}
-        newsubitem['title'] = this_file
-        newsubitem['description'] = this_file
-        newsubitem['subpath'] = this_file
-        newsubitem['imagepath'] = os.path.join('/images', 'placeholder/placeholder_square.png')
-        newsubitem['path'] = os.path.join(tab['path'], change_file_ext(newsubitem['subpath'], 'html'))
-        tab['subitems'].append(newsubitem)
-
 def build_tab_from_json(tab, adoc_dir):
     json_path = os.path.join(adoc_dir, tab['from_json'])
     with open(json_path) as json_fh:
         tab_data = json.load(json_fh)
+        tab['subitems'] = []
         for item in tab_data:
             newsubitem = {}
             newsubitem['title'] = tab_data[item]['name']
             newsubitem['description'] = tab_data[item]['description']
             newsubitem['subpath'] = item + ".adoc"
+            newsubitem['imagepath'] = os.path.join('/images', 'placeholder/placeholder_square.png')
             newsubitem['path'] = os.path.join(tab['path'], change_file_ext(newsubitem['subpath'], 'html'))
             tab['subitems'].append(newsubitem)
 
@@ -53,13 +42,6 @@ if __name__ == "__main__":
                         subitem['path'] = os.path.join(tab['path'], change_file_ext(subitem['subpath'], 'html'))
                     if 'image' in subitem:
                         subitem['imagepath'] = os.path.join('/images', subitem['image'])
-            elif 'entire_directory' in tab:
-                tab_dir = os.path.join(input_dir, tab['entire_directory'])
-                if os.path.exists(tab_dir):
-                    tab['path'] = '/{}/'.format(tab['entire_directory'])
-                    add_entire_directory_to_tab(tab, tab_dir)
-                else:
-                    del data['tabs'][tab_index]
             elif 'from_json' in tab:
                 tab_dir = os.path.join(input_dir, tab['directory'])
                 if os.path.exists(tab_dir):
@@ -68,7 +50,7 @@ if __name__ == "__main__":
                 else:
                     del data['tabs'][tab_index]
             else:
-                raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}' nor '{}'".format(tab['title'], input_json, 'path', 'entire_directory', 'from_json'))
+                raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], input_json, 'path', 'from_json'))
         if not found_default_tab:
             print("WARNING: no default_tab set in {} so index page will look odd".format(input_json))
 

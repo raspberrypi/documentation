@@ -117,14 +117,15 @@ if __name__ == "__main__":
                                                 nav[-1]['sections'][-1]['subsections'].append(entry)
                                     last_line_was_discrete = False
                                     header_id = None
-            elif 'entire_directory' in tab:
-                if os.path.exists(os.path.join(adoc_dir, tab['entire_directory'])):
-                    # TODO: Need to do something here to create the appropriate nav entries for tab['entire_directory']
+            elif 'from_json' in tab:
+                tab_dir = os.path.join(adoc_dir, tab['directory'])
+                if os.path.exists(tab_dir):
+                    # TODO: Need to do something here to create the appropriate nav entries for tab['from_json']
                     pass
             else:
-                raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], index_json, 'path', 'entire_directory'))
+                raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], index_json, 'path', 'from_json'))
 
-            output_data.append({'title': tab['title'], 'path': '/{}/'.format(tab.get('path', tab.get('entire_directory'))), 'toc': nav})
+            output_data.append({'title': tab['title'], 'path': '/{}/'.format(tab.get('path', tab.get('from_json'))), 'toc': nav})
         for filepath in sorted(needed_internal_links):
             for linkinfo in needed_internal_links[filepath]:
                 if linkinfo['url'] not in available_anchors:

@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import json
 import os
 import sys
@@ -299,10 +301,9 @@ def parse_header(header_path):
     blocks = re.findall("^(\s*)(\*|\/\*\*)(\s*)(\s)(\*)(\s)(\\\\)(defgroup)([^}]*)(\@\})", content, re.M)
     for (a, b, c, d, e, f, g, h, i, j) in blocks:
       items = i.split("\defgroup")
-      counter = 0
       group_id = None
       for item in items:
-        if counter == 0:
+        if group_id is None: # must be the first item in the list
           m = re.match("(\s*)(\S*)(\s*)([^*]*)(.*)", item, re.M)
           group_id = m.group(2)
           group_name = m.group(4)
@@ -311,7 +312,7 @@ def parse_header(header_path):
           group_desc = re.sub("\n*", "", group_desc, re.M)
           group_desc = re.sub("\*", "", group_desc, re.M)
           group_desc = re.sub("^\s*", "", group_desc, re.M)
-          h_json[group_id] = { 'name': group_name, 'description': group_desc, 'subitems': {} }
+          h_json[group_id] = { 'name': group_name, 'description': group_desc, 'subitems': [] }
         else:
           cleaned = item
           cleaned = re.sub("\n*", "", cleaned, re.M)
@@ -320,14 +321,13 @@ def parse_header(header_path):
           val = cleaned.split(" ")[0]
           filename = re.sub("_", "__", val)
           filename = "group__" + filename
-          h_json[group_id]['subitems'][counter-1] = { 'name': val, 'file': filename }
-        counter +=1
+          h_json[group_id]['subitems'].append({ 'name': val, 'file': filename + ".adoc" })
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
   return h_json
 
-def handler(html_path, output_path, header_path):
+def handler(html_path, output_path, header_path, output_json):
   try:
     dir_path = os.path.dirname(os.path.realpath(__file__))
     json_dir = os.path.join(dir_path, "doxygen_json_mappings")
@@ -391,12 +391,11 @@ def handler(html_path, output_path, header_path):
       group_adoc = "= " + h_json[item]['name'] + "\n\n"
       group_adoc = group_adoc + h_json[item]['description'] + "\n\n"
       for subitem in h_json[item]['subitems']:
-        group_adoc = group_adoc + "include::pico-sdk/" + h_json[item]['subitems'][subitem]['file'] + ".adoc[]\n\n"
+        group_adoc = group_adoc + "include::" + subitem['file'] + "[]\n\n"
       group_output_path = os.path.join(output_path, item + ".adoc")
       write_output(group_output_path, group_adoc)
     # write the json structure file as well
-    json_path = os.path.join(output_path, "picosdk_index.json")
-    write_output(json_path, json.dumps(h_json))
+    write_output(output_json, json.dumps(h_json, indent="\t"))
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
@@ -406,4 +405,5 @@ if __name__ == "__main__":
   html_path = sys.argv[1]
   output_path = sys.argv[2]
   header_path = sys.argv[3]
-  handler(html_path, output_path, header_path)
+  output_json = sys.argv[4]
+  handler(html_path, output_path, header_path, output_json)

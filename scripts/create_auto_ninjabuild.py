@@ -94,24 +94,16 @@ if __name__ == "__main__":
                             doc_pages.add(os.path.join(tab['path'], subitem['subpath']))
                         if 'image' in subitem:
                             page_images.add(subitem['image'])
-            elif 'entire_directory' in tab:
-                tab_dir = os.path.join(input_dir, tab['entire_directory'])
-                if os.path.exists(tab_dir):
-                    # category (boxes) page
-                    category_pages.add((os.path.join(tab['entire_directory'], 'index.adoc'), '{} - {}'.format(site_config['title'], tab['title'])))
-                    # recursively add entire directory
-                    add_entire_directory(tab_dir, tab['entire_directory'], static_pages, srcimages2destimages, destimages2srcimages)
-                    page_images.add('placeholder/placeholder_square.png')
             elif 'from_json' in tab:
                 tab_dir = os.path.join(input_dir, tab['directory'])
                 if os.path.exists(tab_dir):
                     # category (boxes) page
                     category_pages.add((os.path.join(tab['directory'], 'index.adoc'), '{} - {}'.format(site_config['title'], tab['title'])))
                     # recursively add entire directory
-                    add_entire_directory(tab_dir, static_pages, srcimages2destimages, destimages2srcimages)
+                    add_entire_directory(tab_dir, tab['directory'], static_pages, srcimages2destimages, destimages2srcimages)
                     page_images.add('placeholder/placeholder_square.png')
             else:
-                raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], index_json, 'path', 'entire_directory'))
+                raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], index_json, 'path', 'from_json'))
 
     # Write rules to autogenerate files and copy adoc files
     with open(output_ninjabuild, 'w') as fh:

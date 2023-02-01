@@ -54,7 +54,7 @@ if __name__ == "__main__":
                         break
                 if index_title is not None:
                     break
-            elif 'entire_directory' in tab:
+            elif 'from_json' in tab:
                 index_title = tab['title']
                 break
     if index_title is None:
