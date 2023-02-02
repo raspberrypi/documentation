@@ -70,6 +70,7 @@ if __name__ == "__main__":
         for tab in data['tabs']:
             nav = []
             if 'path' in tab:
+                print(tab['path'])
                 for subitem in tab['subitems']:
                     if 'subpath' in subitem:
                         fullpath = os.path.join(tab['path'], subitem['subpath'])
@@ -126,7 +127,7 @@ if __name__ == "__main__":
             else:
                 raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], index_json, 'path', 'from_json'))
 
-            output_data.append({'title': tab['title'], 'path': '/{}/'.format(tab.get('path', tab.get('from_json'))), 'toc': nav})
+            output_data.append({'title': tab['title'], 'path': '{}'.format(tab.get('path', tab.get('from_json'))), 'toc': nav})
         for filepath in sorted(needed_internal_links):
             for linkinfo in needed_internal_links[filepath]:
                 adjusted_url = "/" + linkinfo['url']

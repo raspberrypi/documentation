@@ -252,7 +252,7 @@ ul#tocify-header1 > ul.tocify-subheader {
 }
 
 #content h4 {
-  font-weight: 500;
+  font-weight: 700;
   font-size: 16px;
   color: #343434;
   margin-top: 40px;
@@ -384,14 +384,22 @@ h6 .anchor::before {
 }
 
 #content div.listingblock div.content div.line,
-#content div.listingblock div.content div.ttc {
+#content div.listingblock div.content div,
+#content div.listingblock div.content div div {
   font-family: monospace;
   white-space: pre;
 }
 
 #content div.listingblock div.content div.line a,
-#content div.listingblock div.content div.ttc a {
+#content div.listingblock div.content div a,
+#content div.listingblock div.content div div a {
   color: var(--red-tint);
+}
+
+span.mlabels {
+  position: absolute;
+  bottom: 8px;
+  right: 0;
 }
 
 td.mlabels-right {
@@ -577,6 +585,7 @@ div.memproto {
   background-color: #dedede;
   padding: 7px;
   margin-bottom: 15px;
+  position: relative;
 }
 
 div.memproto table,
@@ -584,26 +593,45 @@ div.memproto table,
   margin-bottom: 0px;
 }
 
+div.memitem {
+  border: 1px solid black;
+  padding: 10px;
+}
+
 table.params, 
 p.returns {
   font-weight: 300;
 }
 
+table.params td {
+  padding-right: 8px;
+}
+
 td.paramname {
   vertical-align: top;
+  font-weight: bold;
 }
 
 ul.memberdecls {
   list-style-type: none;
   padding-left: 0;
+  border-bottom: 1px solid black;
+}
+
+ul.memberdecls li.memitem {
+  border-top: 1px solid black;
+  padding-top: 10px;
 }
 
 ul.memberdecls li.memitem p {
   font-weight: bold;
+  font-family: monospace;
+  font-size: 1.1em;
 }
 
 ul.memberdecls li.memdesc {
-  padding-left: 20px;
+  margin-left: 14px;
+  list-style-type: disc;
 }
 
 p.see span.label {

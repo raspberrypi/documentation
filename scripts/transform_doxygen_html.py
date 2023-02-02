@@ -241,13 +241,62 @@ def merge_lists(list_type, root):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return root
 
+def wrap_list_items(root):
+  try:
+    matches = root.xpath(".//li[not(./p)]")
+    for match in matches:
+      newp = etree.Element("p")
+      newp.text = match.text
+      match.text = None
+      for child in match.iterchildren():
+        newp.append(child)
+      match.append(newp)
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return root
+
+def make_cell_para(el):
+  try:
+    newp = etree.Element("p")
+    newp.text = el.text
+    el.text = None
+    for child in el.iterchildren():
+      newp.append(child)
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return newp
+
+def merge_note_paras(root):
+  try:
+    matches = root.xpath(".//div[@class='admonitionblock note' and count(.//td[@class='content']) > 1]")
+    for match in matches:
+      first_cell = match.find(".//td[@class='content']")
+      newp = make_cell_para(first_cell)
+      first_cell.append(newp)
+      next = first_cell.getnext()
+      while next is not None:
+        newp = make_cell_para(next)
+        first_cell.append(newp)
+        next.getparent().remove(next)
+        next = first_cell.getnext()
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return root
+
 def fix_heading_levels(root):
-  all_heads = root.xpath(".//p[contains(@class, 'adoc-h2')]|.//p[contains(@class, 'adoc-h3')]")
-  if len(all_heads) > 0:
-    head = all_heads[0]
-    myclass = head.get("class")
-    if "adoc-h3" in myclass:
-      head.set("class", "adoc-h2")
+  try:
+    all_heads = root.xpath(".//p[contains(@class, 'adoc-h2')]|.//p[contains(@class, 'adoc-h3')]")
+    if len(all_heads) > 0:
+      head = all_heads[0]
+      myclass = head.get("class")
+      if "adoc-h3" in myclass:
+        head.set("class", "adoc-h2")
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
   return root
 
 def get_document_title(root):
@@ -378,6 +427,9 @@ def handler(html_path, output_path, header_path, output_json):
       # cleanup
       root = merge_lists("ul", root)
       root = merge_lists("ol", root)
+      root = wrap_list_items(root)
+      # combine multi-para notes into one container
+      root = merge_note_paras(root)
       # add some extra items to help with the adoc conversion
       root = prep_for_adoc(root)
       # fix some heading levels
