@@ -352,7 +352,9 @@ def make_adoc(root_string, title_text):
   return root_string
 
 def parse_header(header_path):
-  h_json = {}
+  h_json = {
+    'index_doxygen': { 'name': 'Introduction', 'description': 'An introduction to the Pico SDK', 'subitems': [] }
+  }
   try:
     with open(header_path) as h:
       content = h.read()
@@ -362,14 +364,14 @@ def parse_header(header_path):
       group_id = None
       for item in items:
         if group_id is None: # must be the first item in the list
-          m = re.match("(\s*)(\S*)(\s*)([^*]*)(.*)", item, re.M)
+          m = re.match("(\s*)(\S*)(\s*)([^*]*)(.*?)(@\{)", item, re.S)
           group_id = m.group(2)
           group_name = m.group(4)
           group_name = re.sub("\s*$", "", group_name, re.M)
           group_desc = m.group(5)
-          group_desc = re.sub("\n*", "", group_desc, re.M)
+          group_desc = re.sub("\n", "", group_desc, re.M)
           group_desc = re.sub("\*", "", group_desc, re.M)
-          group_desc = re.sub("^\s*", "", group_desc, re.M)
+          group_desc = re.sub("^\s", "", group_desc, re.M)
           h_json[group_id] = { 'name': group_name, 'description': group_desc, 'subitems': [] }
         else:
           cleaned = item
