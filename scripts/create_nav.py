@@ -70,7 +70,6 @@ if __name__ == "__main__":
         for tab in data['tabs']:
             nav = []
             if 'path' in tab:
-                print(tab['path'])
                 for subitem in tab['subitems']:
                     if 'subpath' in subitem:
                         fullpath = os.path.join(tab['path'], subitem['subpath'])
