@@ -197,13 +197,13 @@ Other available schematics;
 
 == Filter Transmission
 
-== Camera Module 3
+=== Camera Module 3
 
 The Camera Module 3 is built around the IMX708, which has the following spectral sensitivity characteristics.
 
 image::images/cm3-filter.png[Camera Module 3 Transmission Graph]
 
-== HQ Camera
+=== HQ Camera
 
 The HQ Camera uses a Hoya CM500 infrared filter. Its transmission characteristics are as represented in the following graph.
 
