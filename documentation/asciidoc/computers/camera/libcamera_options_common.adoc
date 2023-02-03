@@ -163,7 +163,7 @@ The supplied string is set as the title of the preview window (when running unde
 
 When not provided, the `--info-text` string defaults to `"#%frame (%fps fps) exp %exp ag %ag dg %dg"`.
 
-Example: `libcamera-hello --info-test "Focus measure: %focus`
+Example: `libcamera-hello --info-text "Focus measure: %focus"`
 
 image::images/focus.jpg[Image showing focus measure]
 
