@@ -1,8 +1,3 @@
-== HQ Camera Filter Transmission
-
-The HQ Camera uses a Hoya CM500 infrared filter. Its transmission characteristics are as represented in the following graph.
-
-image::images/hoyacm500.png[CM500 Transmission Graph]
 
 == HQ Camera Filter Removal
 
