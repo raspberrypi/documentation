@@ -46,7 +46,7 @@ $(PICO_SDK_DIR)/CMakeLists.txt: | $(PICO_SDK_DIR)
 	git -C $(PICO_SDK_DIR) submodule update --init
 
 # Initialise pico-examples submodule
-$(PICO_EXAMPLES_DIR)/CMakeLists.txt: | $(PICO_EXAMPLES_DIR)
+$(PICO_EXAMPLES_DIR)/CMakeLists.txt: | $(PICO_SDK_DIR)/CMakeLists.txt $(PICO_EXAMPLES_DIR)
 	git submodule update --init $(PICO_EXAMPLES_DIR)
 
 fetch_submodules: $(ALL_SUBMODULE_CMAKELISTS)
