@@ -7,8 +7,6 @@ import re
 import random
 import string
 import copy
-import lxml
-import lxml.html
 
 try:
   from lxml import etree
@@ -25,6 +23,7 @@ except ImportError:
       print("running with ElementTree")
     except ImportError:
       print("Failed to import ElementTree from any known place")
+      raise
 
 # TO DO:
 # do internal href links need to be updated?
