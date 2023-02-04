@@ -57,8 +57,9 @@ clean_submodules:
 
 # Create the pico-sdk Doxygen HTML files
 $(DOXYGEN_HTML_DIR): | $(ALL_SUBMODULE_CMAKELISTS) $(DOXYGEN_PICO_SDK_BUILD_DIR)
-	cmake -S $(PICO_SDK_DIR) -B $(DOXYGEN_PICO_SDK_BUILD_DIR) -DPICO_EXAMPLES_PATH=`realpath $(PICO_EXAMPLES_DIR)`
+	cmake -S $(PICO_SDK_DIR) -B $(DOXYGEN_PICO_SDK_BUILD_DIR) -DPICO_EXAMPLES_PATH=../$(PICO_EXAMPLES_DIR)
 	$(MAKE) -C $(DOXYGEN_PICO_SDK_BUILD_DIR) docs
+	test -d "$@"
 
 build_doxygen_html: | $(DOXYGEN_HTML_DIR)
 
