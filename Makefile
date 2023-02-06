@@ -46,7 +46,7 @@ $(PICO_SDK_DIR)/CMakeLists.txt: | $(PICO_SDK_DIR)
 	git -C $(PICO_SDK_DIR) submodule update --init
 
 # Initialise pico-examples submodule
-$(PICO_EXAMPLES_DIR)/CMakeLists.txt: | $(PICO_EXAMPLES_DIR)
+$(PICO_EXAMPLES_DIR)/CMakeLists.txt: | $(PICO_SDK_DIR)/CMakeLists.txt $(PICO_EXAMPLES_DIR)
 	git submodule update --init $(PICO_EXAMPLES_DIR)
 
 fetch_submodules: $(ALL_SUBMODULE_CMAKELISTS)
@@ -57,8 +57,9 @@ clean_submodules:
 
 # Create the pico-sdk Doxygen HTML files
 $(DOXYGEN_HTML_DIR): | $(ALL_SUBMODULE_CMAKELISTS) $(DOXYGEN_PICO_SDK_BUILD_DIR)
-	cmake -S $(PICO_SDK_DIR) -B $(DOXYGEN_PICO_SDK_BUILD_DIR) -DPICO_EXAMPLES_PATH=`realpath $(PICO_EXAMPLES_DIR)`
+	cmake -S $(PICO_SDK_DIR) -B $(DOXYGEN_PICO_SDK_BUILD_DIR) -DPICO_EXAMPLES_PATH=../$(PICO_EXAMPLES_DIR)
 	$(MAKE) -C $(DOXYGEN_PICO_SDK_BUILD_DIR) docs
+	test -d "$@"
 
 build_doxygen_html: | $(DOXYGEN_HTML_DIR)
 
