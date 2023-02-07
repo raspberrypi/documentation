@@ -25,13 +25,18 @@ a.box {
   margin-bottom: 30px;
 }
 
+a.box[href*='/pico-sdk/'] span:not(.title) {
+  font-size: 0.8em;
+}
+
 a.box span {
   color: #343434;
   display: block;
   text-align: center;
 }
 
-a.box span.title {
+a.box span.title, 
+a.box[href*='/pico-sdk/'] span.title {
   color: #000;
   font-size: 1.1em;
   font-weight: bold;
