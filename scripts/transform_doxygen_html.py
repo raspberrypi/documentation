@@ -219,6 +219,94 @@ def transform_element(item, root, is_child=False):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return root
 
+def fix_internal_links(root, html_file, updated_links):
+  try:
+    # first let's make sure internal links are all unique
+    matches = root.xpath(".//a[contains(@href, '#') and not(@data-adjusted)]")
+    while len(matches) > 0:
+      match = matches[0]
+      href = match.get("href")
+      if re.match("^#", href) is not None and len(href) < 30:
+        newid = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(30)])
+        newid = "ga" + newid
+        updated_links[html_file+href] = html_file+"#"+newid
+        match.set("href", "#"+newid)
+        match.set("data-adjusted", "true")
+        links = root.xpath(".//a[@href='#"+href+"']")
+        for link in links:
+          link.set("href", "#"+newid)
+          link.set("data-adjusted", "true")
+        anchor_id = re.sub("^#", "", href)
+        anchors = root.xpath(".//*[@id='"+anchor_id+"']")
+        for anchor in anchors:
+          anchor.set("id", newid)
+      else:
+        match.set("data-adjusted", "true")
+      matches = root.xpath(".//a[contains(@href, '#') and not(@data-adjusted)]")
+    # then we'll adjust them
+    matches = root.xpath(".//a[contains(@href, '"+html_file+"#')]")
+    for match in matches:
+      href = match.get("href")
+      new_href = re.sub(html_file, "", href)
+      match.set("href", new_href)
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return root, updated_links
+
+def find_item_in_dict(k,v,filename):
+  found = False
+  try:
+    if k == filename:
+      found = True
+    elif len(v) > 0:
+      for sk, sv in v.items():
+        found = find_item_in_dict(sk,sv,filename)
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return found
+
+def fix_external_links(root, toc_data):
+  try:
+    matches = root.xpath(".//a[@href]")
+    for match in matches:
+      href = match.get("href")
+      if re.match("^https?:", href) is None and re.match("^#", href) is None:
+        filename = href
+        target_id = None
+        if "#" in href:
+          filename = href.split("#")[0]
+          target_id = href.split("#")[1]
+        # walk the toc data to find the main html file
+        found = False
+        parent_file = None
+        for item in toc_data:
+          if item == filename:
+            parent_file = item
+            found = True
+          else:
+            for k, v in toc_data[item].items():
+              found = find_item_in_dict(k,v,filename)
+              if found == True:
+                parent_file = item
+        if parent_file is not None:
+          parent_file_dest = re.sub("^group__", "", parent_file)
+          new_href = parent_file_dest
+          if filename != parent_file:
+            if target_id is None:
+              my_id = re.sub("__", "_", filename)
+              my_id = re.sub(".html$", "", my_id)
+              my_id = re.sub("^group_", "", my_id)
+              new_href = new_href + "#" + my_id
+            else:
+              new_href = new_href + "#" + target_id
+          match.set("href", new_href)
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return root
+
 def merge_lists(list_type, root):
   try:
     # merge contiguous lists that came from the same original parent
@@ -447,14 +535,14 @@ def walk_nested_adoc(k, v, output_path, level):
     if level > 1:
       # read the adoc file
       adoc_path = re.sub(".html$", ".adoc", k)
-      print(adoc_path)
       filepath = os.path.join(output_path, adoc_path)
       with open(filepath) as f:
         content = f.read()
       subs = "="
       for i in range(level-1):
         subs = subs + "="
-      content = re.sub("^= ", subs, content)
+      content = re.sub("^=", subs, content, flags=re.M)
+      # print(content)
       write_output(filepath, content)
       # adjust the heading levels
     for sk,sv in v.items():
@@ -479,7 +567,14 @@ def handler(html_path, output_path, header_path, output_json):
     html_files = [f for f in html_files if re.search(".html", f) is not None]
     # sort the files ascending
     html_files.sort()
+    # get the TOC data
+    toc_file = os.path.join(html_path, "modules.html")
+    if os.path.exists(toc_file):
+      with open(toc_file) as h:
+        root = etree.HTML(h.read())
+      toc_data = parse_toc(root)
     # process every html file
+    updated_links = {}
     for html_file in html_files:
       # create the full path
       this_path = os.path.join(html_path, html_file)
@@ -488,8 +583,8 @@ def handler(html_path, output_path, header_path, output_json):
       with open(this_path) as h:
         root = etree.HTML(h.read())
       # special handling for the toc file
-      if html_file == "modules.html":
-        toc_data = parse_toc(root)
+      # if html_file == "modules.html":
+      #   toc_data = parse_toc(root)
       # give everything an id
       root = add_ids(root)
       # read the mappings:
@@ -508,6 +603,9 @@ def handler(html_path, output_path, header_path, output_json):
           # convert every element listed in the json file
           for item in data:
             root = transform_element(item, root)
+      # fix links
+      root, updated_links = fix_internal_links(root, html_file, updated_links)
+      root = fix_external_links(root, toc_data)
       # cleanup
       root = merge_lists("ul", root)
       root = merge_lists("ol", root)
@@ -530,13 +628,24 @@ def handler(html_path, output_path, header_path, output_json):
       adoc = make_adoc(final_output, title_text)
       adoc_path = re.sub(".html$", ".adoc", this_output_path)
       write_output(adoc_path, adoc)
-      # print("Generated " + adoc_path)
+      print("Generated " + adoc_path)
 
     # adjust nested adoc headings
     for k,v in toc_data.items():
       level = 0
       # walk the tree and adjust as necessary
       level = walk_nested_adoc(k, v, output_path, level)
+
+    # fix any links that were updated from other files
+    adoc_files = os.listdir(output_path)
+    adoc_files = [f for f in adoc_files if re.search(".adoc", f) is not None]
+    for adoc_file in adoc_files:
+      this_path = os.path.join(output_path, adoc_file)
+      with open(this_path) as h:
+        content = h.read()
+      for link in updated_links:
+        content = re.sub(link, updated_links[link], content)
+      write_output(this_path, content)
     
     # make the group adoc files
     # include::micropython/what-board.adoc[]
