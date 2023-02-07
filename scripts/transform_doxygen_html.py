@@ -262,10 +262,23 @@ def find_item_in_dict(k,v,filename):
     elif len(v) > 0:
       for sk, sv in v.items():
         found = find_item_in_dict(sk,sv,filename)
+        if found == True:
+          break
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
   return found
+
+def make_filename_id(filename):
+  my_id = filename
+  try:
+    my_id = re.sub(".html$", "", my_id)
+    my_id = re.sub("^group__", "", my_id)
+    my_id = re.sub("__", "_", my_id)
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return my_id
 
 def fix_external_links(root, toc_data):
   try:
@@ -285,18 +298,21 @@ def fix_external_links(root, toc_data):
           if item == filename:
             parent_file = item
             found = True
+            break
           else:
             for k, v in toc_data[item].items():
               found = find_item_in_dict(k,v,filename)
               if found == True:
                 parent_file = item
+                break
+            if found == True:
+              break
         if parent_file is not None:
           parent_file_dest = re.sub("^group__", "", parent_file)
           new_href = parent_file_dest
           if filename != parent_file:
             if target_id is None:
-              my_id = re.sub(".html$", "", filename)
-              my_id = re.sub("^group__", "", my_id)
+              my_id = make_filename_id(filename)
               new_href = new_href + "#" + my_id
             else:
               new_href = new_href + "#" + target_id
@@ -427,9 +443,10 @@ def prep_for_adoc(root):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return root
 
-def make_adoc(root_string, title_text):
+def make_adoc(root_string, title_text, filename):
   try:
-    root_string = "== " + title_text + "\n\n++++\n" + root_string
+    my_id = make_filename_id(filename)
+    root_string = "[#"+my_id+"]\n== " + title_text + "\n\n++++\n" + root_string
     root_string = re.sub('(<p[^>]+class="adoc-h2"[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n=== \\2\n\n++++\n', root_string, flags=re.S)
     root_string = re.sub('(<p[^>]+class="adoc-h3"[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n==== \\2\n\n++++\n', root_string, flags=re.S)
     root_string = root_string + "\n++++\n"
@@ -625,7 +642,7 @@ def handler(html_path, output_path, header_path, output_json):
       for child in contents.iterchildren():
         final_output = final_output + "\n" + stringify(child)
       # prep and write the adoc
-      adoc = make_adoc(final_output, title_text)
+      adoc = make_adoc(final_output, title_text, html_file)
       adoc_path = re.sub(".html$", ".adoc", this_output_path)
       write_output(adoc_path, adoc)
       print("Generated " + adoc_path)
