@@ -295,12 +295,12 @@ def fix_external_links(root, toc_data):
           new_href = parent_file_dest
           if filename != parent_file:
             if target_id is None:
-              my_id = re.sub("__", "_", filename)
-              my_id = re.sub(".html$", "", my_id)
-              my_id = re.sub("^group_", "", my_id)
+              my_id = re.sub(".html$", "", filename)
+              my_id = re.sub("^group__", "", my_id)
               new_href = new_href + "#" + my_id
             else:
               new_href = new_href + "#" + target_id
+          new_href = re.sub("__", "_", new_href)
           match.set("href", new_href)
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
