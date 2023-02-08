@@ -8,22 +8,7 @@ import random
 import string
 import copy
 
-try:
-  from lxml import etree
-  print("running with lxml.etree")
-except ImportError:
-  try:
-    # normal cElementTree install
-    import cElementTree as etree
-    print("running with cElementTree")
-  except ImportError:
-    try:
-      # normal ElementTree install
-      import elementtree.ElementTree as etree
-      print("running with ElementTree")
-    except ImportError:
-      print("Failed to import ElementTree from any known place")
-      raise
+from lxml import etree
 
 # TO DO:
 # do internal href links need to be updated?
