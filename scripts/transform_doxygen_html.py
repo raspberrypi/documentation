@@ -519,6 +519,22 @@ def parse_header(header_path):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return h_json
 
+def compile_json_mappings(json_dir, json_files):
+  try:
+    compiled = []
+    skip = ["table_memname.json"]
+    for json_file in json_files:
+      if json_file not in skip:
+        # read the json
+        file_path = os.path.join(json_dir, json_file)
+        with open(file_path) as f:
+          data = json.load(f)
+        compiled.append(data)
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return compiled
+
 def walk_json(k,v,group_adoc):
   try:
     filename = re.sub("html$", "adoc", k)
@@ -564,6 +580,12 @@ def handler(html_path, output_path, header_path, output_json):
     # get the file order and groupings
     h_json = parse_header(header_path)
     toc_data = None
+    # read the json transform mappings:
+    # get all the json files within a specified directory
+    json_files = os.listdir(json_dir)
+    # filter for just json files
+    json_files = [f for f in json_files if re.search(".json", f) is not None]
+    complete_json_mappings = compile_json_mappings(json_dir, json_files)
     # get a list of all the html files
     html_files = os.listdir(html_dir)
     html_files = [f for f in html_files if re.search(".html", f) is not None]
@@ -589,22 +611,11 @@ def handler(html_path, output_path, header_path, output_json):
       #   toc_data = parse_toc(root)
       # give everything an id
       root = add_ids(root)
-      # read the mappings:
-      # get all the json files within a specified directory
-      json_files = os.listdir(json_dir)
-      # filter for just json files
-      json_files = [f for f in json_files if re.search(".json", f) is not None]
       # loop over each json file
       skip = ["table_memname.json"]
-      for json_file in json_files:
-        if json_file not in skip:
-          # read the json
-          file_path = os.path.join(json_dir, json_file)
-          with open(file_path) as f:
-            data = json.load(f)
-          # convert every element listed in the json file
-          for item in data:
-            root = transform_element(item, root)
+      for mapping in complete_json_mappings:
+        for item in mapping:
+          root = transform_element(item, root)
       # fix links
       root, updated_links = fix_internal_links(root, html_file, updated_links)
       root = fix_external_links(root, toc_data)
