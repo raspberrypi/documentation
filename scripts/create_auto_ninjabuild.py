@@ -63,6 +63,8 @@ if __name__ == "__main__":
     redirects_dir = sys.argv[8]
     output_ninjabuild = sys.argv[9]
 
+    global_images = ['full-sized/Datasheets.png', 'full-sized/PIP.png', 'full-sized/Tutorials.png', 'full-sized/Forums.png']
+
     # Read _config.yml
     with open(config_yaml) as config_fh:
         site_config = yaml.safe_load(config_fh)
@@ -104,6 +106,9 @@ if __name__ == "__main__":
                     page_images.add('placeholder/placeholder_square.png')
             else:
                 raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], index_json, 'path', 'from_json'))
+
+    for img in global_images:
+        page_images.add(img)
 
     # Write rules to autogenerate files and copy adoc files
     with open(output_ninjabuild, 'w') as fh:

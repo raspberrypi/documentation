@@ -9,6 +9,35 @@ import re
 def change_file_ext(filename, extension):
     return os.path.splitext(filename)[0] + '.' + extension
 
+def get_global_subitems():
+    items = [
+        {
+            "title": "Product Information Portal",
+            "description": "Raspberry Pi compliance documents",
+            "imagepath": "/images/full-sized/PIP.png",
+            "url": "https://pip.raspberrypi.com/"
+        },
+        {
+            "title": "Datasheets",
+            "description": "PDF-based documentation",
+            "imagepath": "/images/full-sized/Datasheets.png",
+            "url": "https://datasheets.raspberrypi.com"
+        },
+        {
+            "title": "Tutorials",
+            "description": "Hands-on hardware and software tutorials",
+            "imagepath": "/images/full-sized/Tutorials.png",
+            "url": "https://www.raspberrypi.com/tutorials/"
+        },
+        {
+            "title": "Forums",
+            "description": "User and product support forums",
+            "imagepath": "/images/full-sized/Forums.png",
+            "url": "https://forums.raspberrypi.com"
+        }
+    ]
+    return items
+
 def build_tab_from_json(tab, adoc_dir):
     json_path = os.path.join(adoc_dir, tab['from_json'])
     with open(json_path) as json_fh:
@@ -51,6 +80,10 @@ if __name__ == "__main__":
                     del data['tabs'][tab_index]
             else:
                 raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], input_json, 'path', 'from_json'))
+            # add the global boxes
+            global_subitems = get_global_subitems()
+            for item in global_subitems:
+                tab['subitems'].append(item)
         if not found_default_tab:
             print("WARNING: no default_tab set in {} so index page will look odd".format(input_json))
 
