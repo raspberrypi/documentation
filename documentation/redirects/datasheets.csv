@@ -81,13 +81,3 @@
 /documentation/hardware/computemodule/designdata/rpi_DSGN_CMIO_3p0.zip,https://datasheets.raspberrypi.com/cmio/RPi-CMIO-R3P0.zip
 /documentation/hardware/raspberrypi/bootmodes/pxetools/prepare_pxetools,https://datasheets.raspberrypi.com/soft/prepare_pxetools.sh
 /documentation/hardware/raspberrypi/bootmodes/pxetools/pxetools,https://datasheets.raspberrypi.com/soft/pxetools.py
-/documentation/pico/getting-started/static/85aac7081a166b7a3d0739970c3927c9/blink.uf2,https://datasheets.raspberrypi.com/soft/blink.uf2
-/documentation/rp2040/getting-started/static/85aac7081a166b7a3d0739970c3927c9/blink.uf2,https://datasheets.raspberrypi.com/soft/blink.uf2
-/documentation/pico/getting-started/static/6f6f31460c258138bd33cc96ddd76b91/flash_nuke.uf2,https://datasheets.raspberrypi.com/soft/flash_nuke.uf2
-/documentation/rp2040/getting-started/static/6f6f31460c258138bd33cc96ddd76b91/flash_nuke.uf2,https://datasheets.raspberrypi.com/soft/flash_nuke.uf2
-/documentation/pico/getting-started/static/d211f824b207c328c7cae7b0ff733187/hello_world.uf2,https://datasheets.raspberrypi.com/soft/hello_world.uf2
-/documentation/rp2040/getting-started/static/d211f824b207c328c7cae7b0ff733187/hello_world.uf2,https://datasheets.raspberrypi.com/soft/hello_world.uf2
-/documentation/pico/getting-started/static/d6bbb56350627ecd9cf080cbee142b28/picoprobe.uf2,https://datasheets.raspberrypi.com/soft/picoprobe.uf2
-/documentation/rp2040/getting-started/static/d6bbb56350627ecd9cf080cbee142b28/picoprobe.uf2,https://datasheets.raspberrypi.com/soft/picoprobe.uf2
-/documentation/pico/getting-started/static/5d8e777377e8dbe23cf36360d6efc727/pico_micropython_20210121.uf2,https://micropython.org/download/rp2-pico/rp2-pico-latest.uf2
-/documentation/rp2040/getting-started/static/5d8e777377e8dbe23cf36360d6efc727/pico_micropython_20210121.uf2,https://micropython.org/download/rp2-pico/rp2-pico-latest.uf2
