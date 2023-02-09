@@ -40,7 +40,7 @@ As well as simple input and output devices, the GPIO pins can be used with a var
 
 === GPIO pinout
 
-A handy reference can be accessed on the Raspberry Pi by opening a terminal window and running the command `pinout`. This tool is provided by the https://gpiozero.readthedocs.io/[GPIO Zero] Python library, which is installed by default on the Raspberry Pi OS desktop image, but not on Raspberry Pi OS Lite.
+A handy reference can be accessed on the Raspberry Pi by opening a terminal window and running the command `pinout`. This tool is provided by the https://gpiozero.readthedocs.io/[GPIO Zero] Python library, which is installed by default on the Raspberry Pi OS.
 
 image::images/gpiozero-pinout.png[]
 
