@@ -56,6 +56,7 @@ if __name__ == "__main__":
     input_json = sys.argv[1]
     output_json = sys.argv[2]
     input_dir = sys.argv[3]
+    global_subitems = get_global_subitems()
     with open(input_json) as json_fh:
         data = json.load(json_fh)
         found_default_tab = False
@@ -81,9 +82,11 @@ if __name__ == "__main__":
             else:
                 raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], input_json, 'path', 'from_json'))
             # add the global boxes
-            global_subitems = get_global_subitems()
-            for item in global_subitems:
-                tab['subitems'].append(item)
+            if 'subitems' in tab:
+                for item in global_subitems:
+                    tab['subitems'].append(item)
+            else:
+                print("WARNING: no subitems set in {}".format(tab['title']))
         if not found_default_tab:
             print("WARNING: no default_tab set in {} so index page will look odd".format(input_json))
 
