@@ -10,32 +10,10 @@ def change_file_ext(filename, extension):
     return os.path.splitext(filename)[0] + '.' + extension
 
 def get_global_subitems():
-    items = [
-        {
-            "title": "Product Information Portal",
-            "description": "Raspberry Pi compliance documents",
-            "imagepath": "/images/full-sized/PIP.png",
-            "url": "https://pip.raspberrypi.com/"
-        },
-        {
-            "title": "Datasheets",
-            "description": "PDF-based documentation",
-            "imagepath": "/images/full-sized/Datasheets.png",
-            "url": "https://datasheets.raspberrypi.com"
-        },
-        {
-            "title": "Tutorials",
-            "description": "Hands-on hardware and software tutorials",
-            "imagepath": "/images/full-sized/Tutorials.png",
-            "url": "https://www.raspberrypi.com/tutorials/"
-        },
-        {
-            "title": "Forums",
-            "description": "User and product support forums",
-            "imagepath": "/images/full-sized/Forums.png",
-            "url": "https://forums.raspberrypi.com"
-        }
-    ]
+    scripts_dir = os.path.dirname(__file__)
+    json_path = os.path.join(scripts_dir, "global_boxes.json")
+    with open(json_path) as json_fh:
+        items = json.load(json_fh)
     return items
 
 def build_tab_from_json(tab, adoc_dir):
