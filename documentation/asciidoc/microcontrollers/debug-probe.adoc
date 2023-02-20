@@ -9,3 +9,5 @@ include::debug-probe/swd-connection.adoc[]
 include::debug-probe/uart-connection.adoc[]
 
 include::debug-probe/updating-firmware.adoc[]
+
+include::debug-probe/schematics.adoc[]
