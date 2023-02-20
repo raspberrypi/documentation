@@ -1,6 +1,6 @@
 == Serial Wire Debug (SWD)
 
-Serial Wire Debug (SWD) is a two-pin interface (https://developer.arm.com/documentation/101761/0100/Debug-and-trace-interface/Serial-Wire-Debug--SWD--signals[SWDIO and SWCLK]) alternative to the JTAG five-pin debugging interface standard.
+Serial Wire Debug (SWD) is a two-pin interface (https://developer.arm.com/documentation/101761/1-0/Debug-and-trace-interface/Serial-Wire-Debug-signals[SWDIO and SWCLK]) alternative to the JTAG four- or five-pin debugging interface standard.
 
 === Uploading new programs to your Pico
 
