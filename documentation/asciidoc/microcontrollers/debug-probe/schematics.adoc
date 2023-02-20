@@ -1,0 +1,4 @@
+== Schematics
+
+* https://datasheets.raspberrypi.com/debug/raspberry-pi-debug-probe-schematics.pdf[Schematics] (PDF)
+* https://datasheets.raspberrypi.com/debug/raspberry-pi-debug-probe-mechanical-drawing.pdf[Mechanical Diagram] (PDF)
