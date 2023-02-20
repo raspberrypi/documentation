@@ -76,7 +76,7 @@ NOTE: Unfortunately `disable-werror` is needed because not everything compiles c
 
 ==== MS Windows
 
-An OpenOCD Windows package is available https://github.com/raspberrypi/openocd/releases/tag/latest[for download].
+An OpenOCD Windows package is available https://github.com/raspberrypi/openocd/releases/tag/latest[for download] or via https://github.com/raspberrypi/pico-setup-windows/releases/tag/v0.5.1[Pico Windows Installer].
 
 Alternatively to you can build OpenOCD using https://www.msys2.org/[MSYS2]. Download and run the installer, and then update the package database and core system packages,
 
@@ -141,7 +141,7 @@ IMPORTANT: If you have an Arm-based (M1-based) Mac `gdb` is not available via Ho
 
 ==== MS Windows
 
-GDB is available as part of our https://github.com/raspberrypi/pico-setup-windows[Pico setup for Windows] installer.
+GDB is available as part of our via the https://github.com/raspberrypi/pico-setup-windows/releases/tag/v0.5.1[Pico Windows Installer].
 
 Alternatively information about manual installation can be found in Chapter 9 and Appendix A of our https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting Started with Raspberry Pi Pico] book. 
 
