@@ -76,9 +76,9 @@ NOTE: Unfortunately `disable-werror` is needed because not everything compiles c
 
 ==== MS Windows
 
-An OpenOCD Windows package is available https://github.com/raspberrypi/openocd/releases/tag/latest[for download] or via https://github.com/raspberrypi/pico-setup-windows/releases/tag/v0.5.1[Pico Windows Installer].
+A standalone OpenOCD Windows package is available https://github.com/raspberrypi/pico-setup-windows/releases/latest/download/openocd-x64-standalone.zip[for download]. Alternatively it will be installed as part of our https://github.com/raspberrypi/pico-setup-windows/releases/tag/v0.5.1[Pico Windows Installer] package.
 
-Alternatively to you can build OpenOCD using https://www.msys2.org/[MSYS2]. Download and run the installer, and then update the package database and core system packages,
+But, if you want to, you can also build OpenOCD from source using https://www.msys2.org/[MSYS2]. Go ahead and download and run the MSYS2 installer, and then update the package database and core system packages,
 
 ----
 $ pacman -Syu
