@@ -4,7 +4,7 @@ image::images/debug-probe.jpg[width="100%"]
 
 The Raspberry Pi Debug Probe is a USB device that provides both a UART serial port and a standard Arm Serial Wire Debug (SWD) interface. The probe is designed for easy, solderless, plug-and-play debugging. It has the following features:
 
-* USB to ARM https://developer.arm.com/documentation/ihi0031/a/The-Serial-Wire-Debug-Port--SW-DP-/Introduction-to-the-ARM-Serial-Wire-Debug--SWD--protocol[Serial Wire Debug] (SWD) port
+* USB to ARM https://developer.arm.com/documentation/ihi0031/a/The-Serial-Wire-Debug-Port\--SW-DP-/Introduction-to-the-ARM-Serial-Wire-Debug\--SWD\--protocol[Serial Wire Debug] (SWD) port
 * USB to UART bridge
 * Compatible with the https://developer.arm.com/documentation/101451/0100/About-CMSIS-DAP[CMSIS-DAP] standard
 * Works with https://openocd.org/[OpenOCD] and other tools supporting CMSIS-DAP
