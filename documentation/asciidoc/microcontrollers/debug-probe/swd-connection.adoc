@@ -12,6 +12,8 @@ Once you have built a binary:
 $  sudo openocd -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c "adapter speed 10000" -c "program blink.elf verify reset exit"
 ----
 
+NOTE: When you use the Debug Probe to upload a binary the ELF version of the file is used, not the UF2 file that you would use when you drag-and-drop.
+
 === Debugging with SWD
 
 It’ll also let you use `openocd` in server mode, and connect GDB, which gives you break points and “proper” debugging.
