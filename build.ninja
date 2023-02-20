@@ -33,7 +33,7 @@ rule create_htaccess
   command = $scripts_dir/create_htaccess.py $in $redirects_dir $out
 
 rule create_index_json
-  command = $scripts_dir/create_output_index_json.py $in $out $src_dir
+  command = $scripts_dir/create_output_index_json.py $in $out $src_dir $DOCUMENTATION_IMAGES_DIR
 
 rule create_edit_warning
   command = echo "Do not edit any files in this directory. Everything will get overwritten when you run 'make'" > $out
