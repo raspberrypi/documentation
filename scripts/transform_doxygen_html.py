@@ -525,7 +525,7 @@ def compile_json_mappings(json_dir, json_files):
   try:
     compiled = []
     skip = ["table_memname.json"]
-    for json_file in json_files:
+    for json_file in sorted(json_files):
       if json_file not in skip:
         # read the json
         file_path = os.path.join(json_dir, json_file)
