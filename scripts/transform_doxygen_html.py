@@ -102,6 +102,7 @@ def make_selector(item, is_child=False):
     sel = make_parent_selector(sel, item)
     sel = sel + item["element"]
     sel = make_attribute_selector(sel, item)
+    sel = sel + "[not(@data-processed='true')]"
     # add child selectors
     # TO DO
   except Exception as e:
@@ -116,6 +117,7 @@ def make_new_element(item):
     new_el = etree.Element(item["element"])
     for att in item["attributes"]:
       new_el.set(att["name"], ' '.join(att["value"]))
+    new_el.set("data-processed", "true")
     sorted_children = sorted(item["children"], key=lambda d: d['position'])
     for child in sorted_children:
       new_child = make_new_element(child)
