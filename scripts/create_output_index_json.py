@@ -16,17 +16,30 @@ def get_global_subitems():
         items = json.load(json_fh)
     return items
 
-def build_tab_from_json(tab, adoc_dir):
+def build_tab_from_json(tab, adoc_dir, img_dir):
     json_path = os.path.join(adoc_dir, tab['from_json'])
+    tab_key = tab['directory']
+    all_images = os.listdir(os.path.join(img_dir, "full-sized"))
+    available_images = sorted([f for f in all_images if f.startswith(tab_key+"_")])
     with open(json_path) as json_fh:
         tab_data = json.load(json_fh)
         tab['subitems'] = []
+        counter = 0
+        num_available_images = len(available_images)
         for item in tab_data:
             newsubitem = {}
             newsubitem['title'] = tab_data[item]['name']
             newsubitem['description'] = tab_data[item]['description']
             newsubitem['subpath'] = item + ".adoc"
-            newsubitem['imagepath'] = os.path.join('/images', 'placeholder/placeholder_square.png')
+            if tab_key == 'pico-sdk' and newsubitem['title'] == "Introduction":
+                newsubitem['imagepath'] = os.path.join('/images', 'full-sized/SDK-Intro.png')
+            else:
+                if num_available_images > 0:
+                    # loop over available_images
+                    newsubitem['imagepath'] = os.path.join('/images', 'full-sized', available_images[ counter % num_available_images ])
+                    counter += 1
+                else:
+                    newsubitem['imagepath'] = os.path.join('/images', 'placeholder/placeholder_square.png')
             newsubitem['path'] = os.path.join(tab['path'], change_file_ext(newsubitem['subpath'], 'html'))
             tab['subitems'].append(newsubitem)
 
@@ -34,6 +47,7 @@ if __name__ == "__main__":
     input_json = sys.argv[1]
     output_json = sys.argv[2]
     input_dir = sys.argv[3]
+    images_dir = sys.argv[4]
     global_subitems = get_global_subitems()
     with open(input_json) as json_fh:
         data = json.load(json_fh)
@@ -54,7 +68,7 @@ if __name__ == "__main__":
                 tab_dir = os.path.join(input_dir, tab['directory'])
                 if os.path.exists(tab_dir):
                     tab['path'] = '/{}/'.format(tab['directory'])
-                    build_tab_from_json(tab, tab_dir)
+                    build_tab_from_json(tab, tab_dir, images_dir)
                 else:
                     del data['tabs'][tab_index]
             else:

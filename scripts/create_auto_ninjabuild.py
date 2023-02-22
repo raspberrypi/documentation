@@ -61,7 +61,8 @@ if __name__ == "__main__":
     adoc_includes_dir = sys.argv[6]
     assets_dir = sys.argv[7]
     redirects_dir = sys.argv[8]
-    output_ninjabuild = sys.argv[9]
+    images_dir = sys.argv[9]
+    output_ninjabuild = sys.argv[10]
 
     global_images = ['full-sized/Datasheets.png', 'full-sized/PIP.png', 'full-sized/Tutorials.png', 'full-sized/Forums.png']
 
@@ -103,7 +104,17 @@ if __name__ == "__main__":
                     category_pages.add((os.path.join(tab['directory'], 'index.adoc'), '{} - {}'.format(site_config['title'], tab['title'])))
                     # recursively add entire directory
                     add_entire_directory(tab_dir, tab['directory'], static_pages, srcimages2destimages, destimages2srcimages)
-                    page_images.add('placeholder/placeholder_square.png')
+                    # add all box images as well
+                    tab_key = tab['directory']
+                    if tab_key == 'pico-sdk':
+                        page_images.add('full-sized/SDK-Intro.png')
+                    all_images = os.listdir(os.path.join(images_dir, "full-sized"))
+                    available_images = [f for f in all_images if f.startswith(tab_key+"_")]
+                    if len(available_images) > 0:
+                        for img in available_images:
+                            page_images.add(os.path.join('full-sized', img))
+                    else:
+                        page_images.add('placeholder/placeholder_square.png')
             else:
                 raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], index_json, 'path', 'from_json'))
 

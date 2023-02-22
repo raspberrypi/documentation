@@ -2,6 +2,7 @@
 
 ASCIIDOC_DIR = documentation/asciidoc
 HTML_DIR = documentation/html
+IMAGES_DIR = documentation/images
 JEKYLL_ASSETS_DIR = jekyll-assets
 SCRIPTS_DIR = scripts
 DOCUMENTATION_REDIRECTS_DIR = documentation/redirects
@@ -86,7 +87,7 @@ clean_everything: clean_submodules clean_doxygen_html clean
 
 # AUTO_NINJABUILD contains all the parts of the ninjabuild where the rules themselves depend on other files
 $(AUTO_NINJABUILD): $(SCRIPTS_DIR)/create_auto_ninjabuild.py $(DOCUMENTATION_INDEX) $(SITE_CONFIG) | $(BUILD_DIR)
-	$< $(DOCUMENTATION_INDEX) $(SITE_CONFIG) $(ASCIIDOC_DIR) $(SCRIPTS_DIR) $(ASCIIDOC_BUILD_DIR) $(ASCIIDOC_INCLUDES_DIR) $(JEKYLL_ASSETS_DIR) $(DOCUMENTATION_REDIRECTS_DIR) $@
+	$< $(DOCUMENTATION_INDEX) $(SITE_CONFIG) $(ASCIIDOC_DIR) $(SCRIPTS_DIR) $(ASCIIDOC_BUILD_DIR) $(ASCIIDOC_INCLUDES_DIR) $(JEKYLL_ASSETS_DIR) $(DOCUMENTATION_REDIRECTS_DIR) $(IMAGES_DIR) $@
 
 # This runs ninjabuild to build everything in the ASCIIDOC_BUILD_DIR (and ASCIIDOC_INCLUDES_DIR)
 run_ninja: $(AUTO_NINJABUILD)
