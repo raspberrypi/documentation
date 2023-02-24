@@ -441,7 +441,6 @@ def make_adoc(root_string, title_text, filename):
     my_id = make_filename_id(filename)
     root_string = re.sub("<\/div>\s*?$", "", root_string, flags=re.S)
     root_string = re.sub('<div class="contents" id="\S*?">', "", root_string)
-    # root_string = re.sub('<\/div><\!-- contents -->\s*<\/div><\!-- doc-content -->\s*<script src="main\.js" id="\S*?"><\/script>\s*<\/body>\s*<\/html>', '', root_string, flags=re.S)
     root_string = "[#"+my_id+"]\n== " + title_text + "\n\n++++\n" + root_string
     root_string = re.sub('(<p[^>]+class="adoc-h2"[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n=== \\2\n\n++++\n', root_string, flags=re.S)
     root_string = re.sub('(<p[^>]+class="adoc-h3"[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n==== \\2\n\n++++\n', root_string, flags=re.S)
