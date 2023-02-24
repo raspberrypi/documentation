@@ -23,8 +23,8 @@ def get_all_text(node):
   if tail:
     yield tail
 
-def stringify(root):
-  html_string = etree.tostring(root, pretty_print=True, encoding='UTF-8').decode('utf-8')
+def stringify(lxml_content):
+  html_string = etree.tostring(lxml_content, pretty_print=True, encoding='UTF-8').decode('utf-8')
   return html_string
 
 def write_output(filepath, content):
@@ -34,11 +34,17 @@ def write_output(filepath, content):
   return
 
 def add_ids(root):
-  els = root.xpath(".//*[not(@id)]")
+  els = root.xpath(".//body//*[not(@id)]")
   for el in els:
     newid = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(8)])
     newid = "p" + newid
     el.set("id", newid)
+  return root
+
+def strip_attribute(att, root):
+  els = root.xpath(".//*[@"+att+"]")
+  for el in els:
+    el.attrib.pop(att)
   return root
 
 def make_attribute_selector(sel, item):
@@ -160,7 +166,7 @@ def add_content_to_tree(new_tree, match):
     target.set("data-target-for", match.get("id"))
     # children will get processed separately
     # add any children inside the target
-    for child in match.iterchildren():
+    for child in match.findall("./*"):
       target.append(child)
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -320,7 +326,7 @@ def merge_lists(list_type, root):
       if next_el is not None:
         next_ref = next_el.get("data-parent-id")
       while next_el is not None and next_el.tag == list_type and next_ref is not None and next_ref == my_ref:
-        for child in next_el.iterchildren():
+        for child in next_el.findall("./*"):
           match.append(child)
         next_el.getparent().remove(next_el)
         next_el = match.getnext()
@@ -338,7 +344,7 @@ def wrap_list_items(root):
       newp = etree.Element("p")
       newp.text = match.text
       match.text = None
-      for child in match.iterchildren():
+      for child in match.findall("./*"):
         newp.append(child)
       match.append(newp)
   except Exception as e:
@@ -351,7 +357,7 @@ def make_cell_para(el):
     newp = etree.Element("p")
     newp.text = el.text
     el.text = None
-    for child in el.iterchildren():
+    for child in el.findall("./*"):
       newp.append(child)
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -433,6 +439,9 @@ def prep_for_adoc(root):
 def make_adoc(root_string, title_text, filename):
   try:
     my_id = make_filename_id(filename)
+    root_string = re.sub("<\/div>\s*?$", "", root_string, flags=re.S)
+    root_string = re.sub('<div class="contents" id="\S*?">', "", root_string)
+    # root_string = re.sub('<\/div><\!-- contents -->\s*<\/div><\!-- doc-content -->\s*<script src="main\.js" id="\S*?"><\/script>\s*<\/body>\s*<\/html>', '', root_string, flags=re.S)
     root_string = "[#"+my_id+"]\n== " + title_text + "\n\n++++\n" + root_string
     root_string = re.sub('(<p[^>]+class="adoc-h2"[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n=== \\2\n\n++++\n', root_string, flags=re.S)
     root_string = re.sub('(<p[^>]+class="adoc-h3"[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n==== \\2\n\n++++\n', root_string, flags=re.S)
@@ -597,8 +606,8 @@ def handler(html_path, output_path, header_path, output_json):
     toc_file = os.path.join(html_path, "modules.html")
     if os.path.exists(toc_file):
       with open(toc_file) as h:
-        root = etree.HTML(h.read())
-      toc_data = parse_toc(root)
+        toc_root = etree.HTML(h.read())
+      toc_data = parse_toc(toc_root)
     # process every html file
     updated_links = {}
     for html_file in html_files:
@@ -607,10 +616,16 @@ def handler(html_path, output_path, header_path, output_json):
       this_output_path = os.path.join(output_path, html_file)
       # read the input root
       with open(this_path) as h:
-        root = etree.HTML(h.read())
-      # special handling for the toc file
-      # if html_file == "modules.html":
-      #   toc_data = parse_toc(root)
+        html_content = h.read()
+        html_content = re.sub('<\!DOCTYPE html PUBLIC "-\/\/W3C\/\/DTD XHTML 1\.0 Transitional\/\/EN" "https:\/\/www\.w3\.org\/TR\/xhtml1\/DTD\/xhtml1-transitional\.dtd">', '', html_content)
+        html_content = re.sub('rel="stylesheet">', 'rel="stylesheet"/>', html_content)
+        html_content = re.sub('&display=swap"', '"', html_content)
+        html_content = re.sub('<img src="logo-mobile\.svg" alt="Raspberry Pi">', '', html_content)
+        html_content = re.sub('<img src="logo\.svg" alt="Raspberry Pi">', '', html_content)
+        html_content = re.sub("<\!-- HTML header for doxygen \S*?-->", '', html_content)
+        html_content = re.sub(' xmlns="http://www.w3.org/1999/xhtml"', '', html_content)
+        root = etree.HTML(html_content)
+      
       # give everything an id
       root = add_ids(root)
       # loop over each json file
@@ -631,15 +646,14 @@ def handler(html_path, output_path, header_path, output_json):
       root = prep_for_adoc(root)
       # fix some heading levels
       root = fix_heading_levels(root)
+      # cleanup
+      root = strip_attribute("data-processed", root)
       # get the document title
       title_text = get_document_title(root)
       # get only the relevant content
       contents = root.find(".//div[@class='contents']")
-      # prep and print the processed html
-      final_output = ""
-      for child in contents.iterchildren():
-        final_output = final_output + "\n" + stringify(child)
       # prep and write the adoc
+      final_output = stringify(contents)
       adoc = make_adoc(final_output, title_text, html_file)
       adoc_path = re.sub(".html$", ".adoc", this_output_path)
       write_output(adoc_path, adoc)
