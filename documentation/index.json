@@ -153,7 +153,7 @@
             ]
         },
         {
-            "title": "Pico SDK",
+            "title": "Pico C SDK",
             "from_json": "picosdk_index.json",
             "directory": "pico-sdk"
         }
