@@ -1,2 +1,2 @@
-pyyaml == 5.4.1
-lxml == 4.6.5
+pyyaml == 6.0
+lxml == 4.9.2
