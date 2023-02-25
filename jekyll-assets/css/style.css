@@ -619,19 +619,20 @@ ul.memberdecls {
 }
 
 ul.memberdecls li.memitem {
-  border-top: 1px solid black;
   padding-top: 10px;
+  list-style-type: disc;
+  margin-left: 16px;
 }
 
-ul.memberdecls li.memitem p {
+#content ul.memberdecls li.memitem p {
   font-weight: bold;
   font-family: monospace;
   font-size: 1.1em;
 }
 
 ul.memberdecls li.memdesc {
-  margin-left: 14px;
-  list-style-type: disc;
+  margin-left: 16px;
+  list-style-type: none;
 }
 
 p.see span.label {
