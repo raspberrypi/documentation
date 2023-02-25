@@ -529,6 +529,22 @@ def parse_header(header_path):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return h_json
 
+def update_release_version(doxyfile_path, site_config_path):
+  try:
+    with open(doxyfile_path) as f:
+      doxy_content = f.read()
+    version_search = re.search("(\nPROJECT_NUMBER\s*=\s*)([\d.]+)", doxy_content)
+    if version_search is not None:
+      version = version_search.group(2)
+      with open(site_config_path) as c:
+        config_content = c.read()
+      new_config = re.sub("doxygen_release: \S+", "doxygen_release: "+version, config_content)
+      write_output(site_config_path, new_config)
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return
+
 def compile_json_mappings(json_dir, json_files):
   try:
     compiled = []
@@ -581,7 +597,7 @@ def walk_nested_adoc(k, v, output_path, level):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return level
 
-def handler(html_path, output_path, header_path, output_json):
+def handler(html_path, output_path, header_path, doxyfile_path, site_config_path, output_json):
   try:
     dir_path = os.path.dirname(os.path.realpath(__file__))
     json_dir = os.path.join(dir_path, "doxygen_json_mappings")
@@ -688,6 +704,8 @@ def handler(html_path, output_path, header_path, output_json):
       write_output(group_output_path, group_adoc)
     # write the json structure file as well
     write_output(output_json, json.dumps(h_json, indent="\t"))
+    # set the doxygen release version
+    update_release_version(doxyfile_path, site_config_path)
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
@@ -697,5 +715,7 @@ if __name__ == "__main__":
   html_path = sys.argv[1]
   output_path = sys.argv[2]
   header_path = sys.argv[3]
-  output_json = sys.argv[4]
-  handler(html_path, output_path, header_path, output_json)
+  doxyfile_path = sys.argv[4]
+  site_config_path = sys.argv[5]
+  output_json = sys.argv[6]
+  handler(html_path, output_path, header_path, doxyfile_path, site_config_path, output_json)
