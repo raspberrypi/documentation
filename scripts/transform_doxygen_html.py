@@ -516,6 +516,9 @@ def parse_toc(root):
     items = root.findall(".//a[@class='el']")
     for item in items:
       href = item.get("href")
+      target = item.get("target")
+      if target != "_self":
+        continue
       parent = item.xpath("./ancestor::tr")[-1]
       parent_id = parent.get("id")
       level = len(parent_id.split("_"))-2
