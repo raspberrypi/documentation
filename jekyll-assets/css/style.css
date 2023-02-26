@@ -615,7 +615,6 @@ td.paramname {
 ul.memberdecls {
   list-style-type: none;
   padding-left: 0;
-  border-bottom: 1px solid black;
 }
 
 ul.memberdecls li.memitem {

@@ -7,6 +7,7 @@ import re
 import random
 import string
 import copy
+import hashlib
 
 from lxml import etree
 
@@ -33,12 +34,22 @@ def write_output(filepath, content):
   f.close()
   return
 
-def add_ids(root):
+def make_hash(string):
+  hash_object = hashlib.sha1(bytes(string, 'utf-8'))
+  new_hash = hash_object.hexdigest()
+  if len(new_hash) > 20:
+    new_hash = new_hash[:20]
+  return new_hash
+
+def add_ids(root, html_file):
   els = root.xpath(".//body//*[not(@id)]")
+  counter = 0
   for el in els:
-    newid = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(8)])
-    newid = "p" + newid
+    hash_string = str(counter)+html_file+''.join(get_all_text(el))
+    newid = make_hash(hash_string)
+    newid = "rpip" + newid
     el.set("id", newid)
+    counter += 1
   return root
 
 def strip_attribute(att, root):
@@ -212,6 +223,27 @@ def transform_element(item, root, is_child=False):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return root
 
+def fix_duplicate_ids(root, html_file):
+  try:
+    existing = []
+    matches = root.xpath(".//*[contains(@id, 'rpip')]")
+    counter = 0
+    for match in matches:
+      myid = match.get("id")
+      if myid in existing:
+        id_string = str(counter)+html_file+''.join(get_all_text(match))
+        newid = make_hash(id_string)
+        newid = "rpip"+newid
+        match.set("id", newid)
+        existing.append(newid)
+        counter += 1
+      else:
+        existing.append(myid)
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return root
+
 def fix_internal_links(root, html_file, updated_links):
   try:
     # first let's make sure internal links are all unique
@@ -220,7 +252,9 @@ def fix_internal_links(root, html_file, updated_links):
       match = matches[0]
       href = match.get("href")
       if re.match("^#", href) is not None and len(href) < 30:
-        newid = ''.join([random.choice(string.ascii_letters + string.digits) for n in range(30)])
+        # make a new hash string
+        hash_string = html_file+''.join(get_all_text(match))+match.get("href")
+        newid = make_hash(hash_string)
         newid = "ga" + newid
         updated_links[html_file+href] = html_file+"#"+newid
         match.set("href", "#"+newid)
@@ -413,24 +447,36 @@ def get_document_title(root):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return title_text
 
+def retag_heading(head, headtype):
+  try:
+    text = ''.join(get_all_text(head))
+    newel = etree.Element("p")
+    newel.set("class", "adoc-"+headtype)
+    anchors = head.xpath("./a[@class='anchor' and @id]")
+    if len(anchors) > 0:
+      anchor = anchors[0]
+    else:
+      anchor = None
+    if anchor is not None and anchor.text is None:
+      newel.set("id", anchor.get("id"))
+    else:
+      newel.set("id", head.get("id"))
+    newel.text = text
+    head.addnext(newel)
+    head.getparent().remove(head)
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return
+
 def prep_for_adoc(root):
   try:
-    h2s = root.findall(".//div[@class='contents']/h2")
+    h2s = root.xpath(".//div[@class='contents']/h2|.//div[@class='contents']/div[@class='textblock']/h2")
     for head in h2s:
-      text = ''.join(get_all_text(head))
-      newel = etree.Element("p")
-      newel.set("class", "adoc-h2")
-      newel.text = text
-      head.addnext(newel)
-      head.getparent().remove(head)
-    h3s = root.findall(".//div[@class='contents']/h3")
+      retag_heading(head, "h2")
+    h3s = root.xpath(".//div[@class='contents']/h3|.//div[@class='contents']/div[@class='textblock']/h3")
     for head in h3s:
-      text = ''.join(get_all_text(head))
-      newel = etree.Element("p")
-      newel.set("class", "adoc-h3")
-      newel.text = text
-      head.addnext(newel)
-      head.getparent().remove(head)
+      retag_heading(head, "h3")
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
@@ -442,8 +488,8 @@ def make_adoc(root_string, title_text, filename):
     root_string = re.sub("<\/div>\s*?$", "", root_string, flags=re.S)
     root_string = re.sub('<div class="contents" id="\S*?">', "", root_string)
     root_string = "[#"+my_id+"]\n== " + title_text + "\n\n++++\n" + root_string
-    root_string = re.sub('(<p[^>]+class="adoc-h2"[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n=== \\2\n\n++++\n', root_string, flags=re.S)
-    root_string = re.sub('(<p[^>]+class="adoc-h3"[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n==== \\2\n\n++++\n', root_string, flags=re.S)
+    root_string = re.sub('(<p[^>]+class="adoc-h2"[^>]*id=")([^"]+)("[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n[#\\2]\n=== \\4\n\n++++\n', root_string, flags=re.S)
+    root_string = re.sub('(<p[^>]+class="adoc-h3"[^>]*id=")([^"]+)("[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n[#\\2]\n==== \\4\n\n++++\n', root_string, flags=re.S)
     root_string = root_string + "\n++++\n"
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -642,7 +688,7 @@ def handler(html_path, output_path, header_path, doxyfile_path, site_config_path
         root = etree.HTML(html_content)
       
       # give everything an id
-      root = add_ids(root)
+      root = add_ids(root, html_file)
       # loop over each json file
       skip = ["table_memname.json"]
       for mapping in complete_json_mappings:
@@ -661,6 +707,7 @@ def handler(html_path, output_path, header_path, doxyfile_path, site_config_path
       root = prep_for_adoc(root)
       # fix some heading levels
       root = fix_heading_levels(root)
+      root = fix_duplicate_ids(root, html_file)
       # cleanup
       root = strip_attribute("data-processed", root)
       # get the document title
