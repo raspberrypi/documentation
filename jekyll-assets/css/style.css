@@ -269,6 +269,10 @@ ul#tocify-header1 > ul.tocify-subheader {
   padding-left: 1rem;
 }
 
+#content div.listingblock div.content div.ttc {
+  display: none;
+}
+
 h1 .anchor, 
 h2 .anchor, 
 h3 .anchor, 
