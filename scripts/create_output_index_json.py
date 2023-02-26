@@ -9,9 +9,8 @@ import re
 def change_file_ext(filename, extension):
     return os.path.splitext(filename)[0] + '.' + extension
 
-def get_global_subitems():
-    scripts_dir = os.path.dirname(__file__)
-    json_path = os.path.join(scripts_dir, "global_boxes.json")
+def get_global_subitems(src_dir):
+    json_path = os.path.join(src_dir, "global_boxes.json")
     with open(json_path) as json_fh:
         items = json.load(json_fh)
     return items
@@ -48,7 +47,7 @@ if __name__ == "__main__":
     output_json = sys.argv[2]
     input_dir = sys.argv[3]
     images_dir = sys.argv[4]
-    global_subitems = get_global_subitems()
+    global_subitems = get_global_subitems(os.path.join(input_dir, '..'))
     with open(input_json) as json_fh:
         data = json.load(json_fh)
         found_default_tab = False
