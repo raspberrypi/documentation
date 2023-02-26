@@ -129,12 +129,13 @@ if __name__ == "__main__":
             output_data.append({'title': tab['title'], 'path': '{}'.format(tab.get('path', tab.get('from_json'))), 'toc': nav})
         for filepath in sorted(needed_internal_links):
             for linkinfo in needed_internal_links[filepath]:
-                adjusted_url = "/" + linkinfo['url']
-                if adjusted_url not in available_anchors:
-                    raise Exception("{} has an internal-link to {} but that destination doesn't exist".format(filepath, adjusted_url))
-                if 'anchor' in linkinfo:
-                    if linkinfo['anchor'] not in available_anchors[adjusted_url]:
-                        raise Exception("{} has an internal-link to {}#{} but that anchor doesn't exist. Available anchors: {}".format(filepath, adjusted_url, linkinfo['anchor'], ', '.join(sorted(available_anchors[adjusted_url]))))
+                if not linkinfo['url'].startswith('pico-sdk/'): # these pages aren't created by a non-doxygen build
+                    adjusted_url = "/" + linkinfo['url']
+                    if adjusted_url not in available_anchors:
+                        raise Exception("{} has an internal-link to {} but that destination doesn't exist".format(filepath, adjusted_url))
+                    if 'anchor' in linkinfo:
+                        if linkinfo['anchor'] not in available_anchors[adjusted_url]:
+                            raise Exception("{} has an internal-link to {}#{} but that anchor doesn't exist. Available anchors: {}".format(filepath, adjusted_url, linkinfo['anchor'], ', '.join(sorted(available_anchors[adjusted_url]))))
 
         with open(output_json, 'w') as out_fh:
             json.dump(output_data, out_fh, indent=4)
