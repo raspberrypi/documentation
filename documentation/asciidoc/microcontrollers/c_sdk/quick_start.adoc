@@ -118,8 +118,11 @@ int main() {
     printf("Hello, world!\n");
     return 0;
 }
+----
+
 And add the following to your CMakeLists.txt:
 
+----
 add_executable(hello_world
     hello_world.c
 )
