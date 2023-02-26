@@ -156,19 +156,19 @@ if __name__ == "__main__":
         #print(join_files)
         for page in sorted(doc_pages):
             for include in sorted(join_files[page]):
-                dest = os.path.join('$inc_dir', include)
                 source = os.path.join('$src_dir', include)
-                extra_sources = ['$scripts_dir/create_build_adoc_include.py', '$site_config', '$GITHUB_EDIT_TEMPLATE']
                 if source not in all_doc_sources:
                     all_doc_sources.append(source)
+                    dest = os.path.join('$inc_dir', include)
+                    extra_sources = ['$scripts_dir/create_build_adoc_include.py', '$site_config', '$GITHUB_EDIT_TEMPLATE']
                     ninja.build(dest, 'create_build_adoc_include', source, extra_sources)
                     targets.append(dest)
 
-            dest = os.path.join('$out_dir', page)
             source = os.path.join('$src_dir', page)
-            extra_sources = ['$scripts_dir/create_build_adoc.py', '$documentation_index', '$site_config', '$GITHUB_EDIT_TEMPLATE']
             if source not in all_doc_sources:
                 all_doc_sources.append(source)
+                dest = os.path.join('$out_dir', page)
+                extra_sources = ['$scripts_dir/create_build_adoc.py', '$documentation_index', '$site_config', '$GITHUB_EDIT_TEMPLATE']
                 ninja.build(dest, 'create_build_adoc', source, extra_sources)
                 targets.append(dest)
         if targets:
@@ -184,13 +184,9 @@ if __name__ == "__main__":
         #print(include_files)
         for page in sorted(static_pages):
             for include in sorted(include_files[page]):
-                dest = os.path.join('$inc_dir', include)
                 source = os.path.join('$src_dir', include)
-                extra_sources = ['$scripts_dir/create_build_adoc_include.py', '$site_config']
                 if source not in all_doc_sources:
-                    all_doc_sources.append(source)
-                    ninja.build(dest, 'create_build_adoc_include2', source, extra_sources)
-                    targets.append(dest)
+                    raise Exception("{} was included in {} but it should have already been dealt with elsewhere".format(include, page))
 
             dest = os.path.join('$out_dir', page)
             source = os.path.join('$src_dir', page)
