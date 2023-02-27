@@ -12,7 +12,10 @@ def check_no_markdown(filename):
         asciidoc = fh.read()
         if re.search('```\n.*?\n```', asciidoc):
             raise Exception("{} uses triple-backticks for markup - please use four-hyphens instead".format(filename))
+        # strip out code blocks
         asciidoc = re.sub('----\n.*?\n----', '', asciidoc, flags=re.DOTALL)
+        # strip out pass-through blocks
+        asciidoc = re.sub('\+\+\+\+\n.*?\n\+\+\+\+', '', asciidoc, flags=re.DOTALL)
         if re.search('(?:^|\n)#+', asciidoc):
             raise Exception("{} contains a Markdown-style header (i.e. '#' rather than '=')".format(filename))
         if re.search(r'(\[.+?\]\(.+?\))', asciidoc):
@@ -20,12 +23,21 @@ def check_no_markdown(filename):
 
 
 if __name__ == "__main__":
-    index_json = sys.argv[1]
-    config_yaml = sys.argv[2]
-    github_edit = sys.argv[3]
-    src_adoc = sys.argv[4]
-    includes_dir = sys.argv[5]
-    build_adoc = sys.argv[6]
+    if len(sys.argv) == 7:
+        index_json = sys.argv[1]
+        config_yaml = sys.argv[2]
+        github_edit = sys.argv[3]
+        src_adoc = sys.argv[4]
+        includes_dir = sys.argv[5]
+        build_adoc = sys.argv[6]
+    elif len(sys.argv) == 6:
+        index_json = sys.argv[1]
+        config_yaml = sys.argv[2]
+        github_edit = None
+        src_adoc = sys.argv[3]
+        includes_dir = sys.argv[4]
+        build_adoc = sys.argv[5]
+
     output_subdir = os.path.basename(os.path.dirname(build_adoc))
     adoc_filename = os.path.basename(build_adoc)
 
@@ -42,18 +54,22 @@ if __name__ == "__main__":
                         break
                 if index_title is not None:
                     break
+            elif 'from_json' in tab:
+                index_title = tab['title']
+                break
     if index_title is None:
         raise Exception("Couldn't find title for {} in {}".format(os.path.join(output_subdir, adoc_filename), index_json))
 
     with open(config_yaml) as config_fh:
         site_config = yaml.safe_load(config_fh)
 
-    with open(github_edit) as edit_fh:
-        edit_template = edit_fh.read()
-        template_vars = {
-            'github_edit_link': os.path.join(site_config['githuburl'], 'blob', site_config['githubbranch_edit'], src_adoc)
-        }
-        edit_text = re.sub('{{\s*(\w+)\s*}}', lambda m: template_vars[m.group(1)], edit_template)
+    if github_edit is not None:
+        with open(github_edit) as edit_fh:
+            edit_template = edit_fh.read()
+            template_vars = {
+                'github_edit_link': os.path.join(site_config['githuburl'], 'blob', site_config['githubbranch_edit'], src_adoc)
+            }
+            edit_text = re.sub('{{\s*(\w+)\s*}}', lambda m: template_vars[m.group(1)], edit_template)
 
     new_contents = ''
     seen_header = False
@@ -62,7 +78,8 @@ if __name__ == "__main__":
             if line.startswith('== '):
                 if not seen_header:
                     seen_header = True
-                    line += edit_text + "\n\n"
+                    if github_edit is not None:
+                        line += edit_text + "\n\n"
             else:
                 m = re.match('^(include::)(.+)(\[\]\n?)$', line)
                 if m:

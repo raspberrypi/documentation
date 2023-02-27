@@ -1,0 +1,22 @@
+[
+	{
+		"input": {
+			"description": "Heading",
+			"element": "h1",
+			"attributes": [],
+			"parents": [],
+			"children": [],
+			"child_mappings": []
+		},
+		"output": {
+			"tree": [
+				{
+					"position": 0,
+					"element": "h2",
+					"attributes": [],
+					"children": []
+				}
+			]
+		}
+	}
+]

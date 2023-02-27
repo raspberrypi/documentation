@@ -14,7 +14,7 @@ https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.
 
 https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi Pico C/{cpp} SDK]:: Libraries and tools for C/{cpp} development on RP2040 microcontrollers
 
-The API level Doxygen documentation for the Raspberry Pi Pico C/{cpp} SDK is also available https://rptl.io/pico-doxygen[as a micro-site].
+xref:../pico-sdk/index_doxygen.adoc[API level documentation]:: Documentation for the Raspberry Pi Pico C/{cpp} SDK
 
 [NOTE]
 ====

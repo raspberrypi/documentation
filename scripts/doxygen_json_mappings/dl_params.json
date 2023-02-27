@@ -1,0 +1,66 @@
+[
+	{
+		"input": {
+			"description": "Parameters section",
+			"element": "dl",
+			"attributes": [
+				{
+					"name": "class",
+					"value": ["params"]
+				}
+			],
+			"parents": [],
+			"children": [],
+			"child_mappings": [
+			  {
+					"input": {
+						"description": "Heading",
+						"element": "dt",
+						"attributes": [],
+						"parents": [],
+						"children": [],
+						"child_mappings": []
+					},
+					"output": {
+						"tree": [
+							{
+								"position": 0,
+								"element": "h4",
+								"attributes": [],
+								"children": []
+							}
+						]
+					}
+				},
+				{
+					"input": {
+						"description": "Content",
+						"element": "dd",
+						"attributes": [],
+						"parents": [],
+						"children": [],
+						"child_mappings": []
+					},
+					"output": {
+						"tree": [
+							{
+								"position": 0,
+								"element": "p",
+								"attributes": [
+									{
+										"name": "class",
+										"value": ["paragraph"]
+									}
+								],
+								"children": []
+							}
+						]
+					}
+				}
+			]
+		},
+		"output": {
+			"tree": []
+		}
+	}
+]

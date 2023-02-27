@@ -1,0 +1,8 @@
+[submodule "documentation/pico-sdk"]
+	path = lib/pico-sdk
+	url = https://github.com/raspberrypi/pico-sdk
+	branch = master
+[submodule "documentation/pico-examples"]
+	path = lib/pico-examples
+	url = https://github.com/raspberrypi/pico-examples.git
+	branch = master
