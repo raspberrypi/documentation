@@ -37,7 +37,7 @@ While the cable with 3-pin JST connectors is intended to be used with the https:
 The Debug Probe has five LEDs, a red LED to indicate power, and four more activity indicator LEDs
 
 * D2 (green) - GPIO7 - `UART_RX` activity
-* D3 (yellow) - GPIO8 - UART_TX` activity
+* D3 (yellow) - GPIO8 - `UART_TX` activity
 * D4 (green) - GPIO15 - activated on `DAP_CONNECTED` signal
 * D5 (yellow) - GPIO16 - activated on `DAP_TARGET_RUNNING` signal
 
