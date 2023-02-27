@@ -17,7 +17,7 @@ You can blink this on and off by,
 
 You should see the on-board LED blinking.
 
-You can see the code on Github for the https://github.com/raspberrypi/pico-examples/blob/master/blink/blink.c[Raspberry Pi Pico] and https://github.com/raspberrypi/pico-examples/blob/master/pico_w/blink/picow_blink.c[Pico W] versions.
+You can see the code on Github for the https://github.com/raspberrypi/pico-examples/blob/master/blink/blink.c[Raspberry Pi Pico] and https://github.com/raspberrypi/pico-examples/blob/master/pico_w/wifi/blink/picow_blink.c[Pico W] versions.
 
 === Say "Hello World"
 

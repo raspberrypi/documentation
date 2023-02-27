@@ -1,0 +1,27 @@
+[
+	{
+		"input": {
+			"description": "Function heading",
+			"element": "h2",
+			"attributes": [
+				{
+					"name": "class",
+					"value": ["memtitle"]
+				}
+			],
+			"parents": [],
+			"children": [],
+			"child_mappings": []
+		},
+		"output": {
+			"tree": [
+				{
+					"position": 0,
+					"element": "h3",
+					"attributes": [],
+					"children": []
+				}
+			]
+		}
+	}
+]

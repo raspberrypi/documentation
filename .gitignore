@@ -1,4 +1,6 @@
 .DS_Store
 __pycache__
 build
+build-pico-sdk-docs
 documentation/html
+documentation/asciidoc/pico-sdk

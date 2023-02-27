@@ -25,13 +25,18 @@ a.box {
   margin-bottom: 30px;
 }
 
+a.box[href*='/pico-sdk/'] span:not(.title) {
+  font-size: 0.8em;
+}
+
 a.box span {
   color: #343434;
   display: block;
   text-align: center;
 }
 
-a.box span.title {
+a.box span.title, 
+a.box[href*='/pico-sdk/'] span.title {
   color: #000;
   font-size: 1.1em;
   font-weight: bold;
@@ -59,10 +64,38 @@ div.subtitle.error-message p a {
   color: #fff;
 }
 
+p#release {
+  text-align: right;
+  padding-top: 10px;
+  color: #888888;
+  font-size: 0.9em;
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #container {
   justify-content: center;
 }
 
-@media screen and (max-width: 889px) {
+p#release + #container {
+  margin-top: 75px;
+}
 
+@media screen and (max-width: 1219px) {
+  p#release {
+    width: 800px;
+  }
+
+  ul#tab-container li {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 889px) {
+  p#release {
+    text-align: center;
+    padding-right: 0px;
+    width: 100%;
+  }
 }

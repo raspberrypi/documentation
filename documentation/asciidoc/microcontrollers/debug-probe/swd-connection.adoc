@@ -53,6 +53,8 @@ $ gdb blink.elf
 > continue
 ----
 
+NOTE: On non-Raspberry Pi Linux platforms you should invoke GDB by using `gdb-multiarch blink.elf`.
+
 [NOTE]
 ======
 If you are on an Arm-based (M1) Mac without `gdb`, you can make use of `lldb`, which is installed along with the XCode Command Line Tools. The syntax used by `lldb` is https://lldb.llvm.org/use/map.html[slightly different] to `gdb`.

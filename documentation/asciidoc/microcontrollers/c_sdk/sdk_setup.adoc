@@ -3,3 +3,4 @@
 For a full walk-through of how to get going with the C/{cpp} SDK, you should read our 'https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[getting started]' documentation. However, if you are intending to develop for Pico on a xref:../computers/os.adoc[Raspberry Pi], then you can set up the C/{cpp} toolchain quickly by running our https://raw.githubusercontent.com/raspberrypi/pico-setup/master/pico_setup.sh[setup script] from the command line.
 
 NOTE: You should make sure the OS on your Raspberry Pi is xref:../computers/os.adoc#updating-and-upgrading-raspberry-pi-os[up to date] before running the setup script.
+
