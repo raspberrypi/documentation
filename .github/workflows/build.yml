@@ -24,11 +24,11 @@ jobs:
           echo "Please check your base branch as it should be develop by default"
           exit 1
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
           python-version: 3.9
       - name: Install Python dependencies
-        uses: py-actions/py-dependency-install@v2
+        uses: py-actions/py-dependency-install@v4
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
