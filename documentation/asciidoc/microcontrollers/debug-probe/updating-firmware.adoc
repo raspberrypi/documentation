@@ -1,6 +1,6 @@
 == Updating the firmware on the Debug Probe
 
-NOTE: There is currently no newer version of the firmware. The firmware running on your Debug Probe is the latest available. If you have accidentally overwritten the firmware off your Debug Probe, the https://github.com/raspberrypi/picoprobe/releases/latest/download/debugprobe.uf2[latest release of the firmware] can be found https://github.com/raspberrypi/picoprobe/releases/latest[on Github].
+NOTE: There is currently no newer version of the firmware. The firmware running on your Debug Probe is the latest available. If you have accidentally overwritten the firmware on your Debug Probe, the https://github.com/raspberrypi/picoprobe/releases/latest/download/debugprobe.uf2[latest release of the firmware] can be found https://github.com/raspberrypi/picoprobe/releases/latest[on Github].
 
 From time to time you may need to update the Debug Probe firmware. New firmware for the debug probe will be made available as a UF2 file distributed by Raspberry Pi.
 
