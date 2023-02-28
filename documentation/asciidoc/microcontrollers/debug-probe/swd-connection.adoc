@@ -1,0 +1,68 @@
+== Serial Wire Debug (SWD)
+
+Serial Wire Debug (SWD) is a two-pin interface (https://developer.arm.com/documentation/101761/1-0/Debug-and-trace-interface/Serial-Wire-Debug-signals[SWDIO and SWCLK]) alternative to the JTAG four- or five-pin debugging interface standard.
+
+=== Uploading new programs to your Pico
+
+The Pico Debug Probe will let you load binaries via the SWD port and OpenOCD: you will not need to unplug, and then push-and-hold, the BOOTSEL button every time you push a new binary to your Pico. Using the Debug Probe uploading new binaries is an entirely hands off affair.
+
+Once you have built a binary: 
+
+----
+$  sudo openocd -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c "adapter speed 5000" -c "program blink.elf verify reset exit"
+----
+
+NOTE: When you use the Debug Probe to upload a binary the ELF version of the file is used, not the UF2 file that you would use when you drag-and-drop.
+
+=== Debugging with SWD
+
+It’ll also let you use `openocd` in server mode, and connect GDB, which gives you break points and “proper” debugging.
+
+[IMPORTANT] 
+======
+To allow debugging, you must build your binaries as `Debug` rather than `Release` build type, e.g.
+
+----
+$ cd ~/pico/pico-examples/
+$ rm -rf build
+$ mkdir build
+$ cd build
+$ export PICO_SDK_PATH=../../pico-sdk
+$ cmake -DCMAKE_BUILD_TYPE=Debug ..
+$ cd blink
+$ make -j4
+----
+
+In a debug build you will get more information when you run it under the debugger, as the compiler builds your program with the information to tell GDB what your program is doing.
+
+See chapter Chapter 6 of https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico] for more information.
+======
+
+Run OpenOCD 'server' ready to attach GDB to:
+
+----
+$ sudo openocd -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c "adapter speed 5000"
+----
+
+Then open a second terminal window, switch to the directory containing your built binary, and start GDB.
+
+----
+$ gdb blink.elf
+> target remote localhost:3333
+> monitor reset init
+> continue
+----
+
+NOTE: On non-Raspberry Pi Linux platforms you should invoke GDB by using `gdb-multiarch blink.elf`.
+
+[NOTE]
+======
+If you are on an Arm-based (M1) Mac without `gdb`, you can make use of `lldb`, which is installed along with the XCode Command Line Tools. The syntax used by `lldb` is https://lldb.llvm.org/use/map.html[slightly different] to `gdb`.
+
+----
+$ lldb blink.elf
+(lldb) gdb-remote 3333
+(lldb) process plugin packet monitor reset
+(lldb) continue
+----
+======

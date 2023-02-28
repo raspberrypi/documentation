@@ -73,7 +73,7 @@ The following table summarises the assignment of the first two UARTs:
 | primary
 | secondary
 
-| Raspberry Pi Zero W
+| Raspberry Pi Zero W / Raspberry Pi Zero 2 W
 | secondary (Bluetooth)
 | primary
 

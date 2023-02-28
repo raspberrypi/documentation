@@ -1,6 +1,6 @@
 == GPIO and the 40-pin Header
 
-A powerful feature of the Raspberry Pi is the row of GPIO (general-purpose input/output) pins along the top edge of the board. A 40-pin GPIO header is found on all current Raspberry Pi boards (unpopulated on Raspberry Pi Zero, Raspberry Pi Zero W and Raspberry Pi Zero 2 W). Prior to the Raspberry Pi 1 Model B+ (2014), boards comprised a shorter 26-pin header.
+A powerful feature of the Raspberry Pi is the row of GPIO (general-purpose input/output) pins along the top edge of the board. A 40-pin GPIO header is found on all current Raspberry Pi boards (unpopulated on Raspberry Pi Zero, Raspberry Pi Zero W and Raspberry Pi Zero 2 W). Prior to the Raspberry Pi 1 Model B+ (2014), boards comprised a shorter 26-pin header. The GPIO header on all boards (including the Raspberry Pi 400) have a 0.1" (2.54mm) pin pitch.
 
 image::images/GPIO-Pinout-Diagram-2.png[GPIO pins]
 
@@ -40,7 +40,7 @@ As well as simple input and output devices, the GPIO pins can be used with a var
 
 === GPIO pinout
 
-A handy reference can be accessed on the Raspberry Pi by opening a terminal window and running the command `pinout`. This tool is provided by the https://gpiozero.readthedocs.io/[GPIO Zero] Python library, which is installed by default on the Raspberry Pi OS desktop image, but not on Raspberry Pi OS Lite.
+A handy reference can be accessed on the Raspberry Pi by opening a terminal window and running the command `pinout`. This tool is provided by the https://gpiozero.readthedocs.io/[GPIO Zero] Python library, which is installed by default in Raspberry Pi OS.
 
 image::images/gpiozero-pinout.png[]
 
@@ -151,3 +151,12 @@ button.when_pressed = led.on
 button.when_released = led.off
 ----
 
+==== Going further
+
+[.float-group]
+--
+image::images/simple-electronics-with-gpio-zero.jpg[role="related thumb right",link=https://github.com/raspberrypipress/released-pdfs/raw/main/simple-electronics-with-gpio-zero.pdf]
+You can find more information on how to program electronics connected to your Raspberry Pi with the GPIO Zero Python library in the Raspberry Pi Press book https://github.com/raspberrypipress/released-pdfs/raw/main/simple-electronics-with-gpio-zero.pdf[Simple Electronics with GPIO Zero]. Written by Phil King, it is part of the MagPi Essentials series published by Raspberry Pi Press. The book gets you started with the GPIO Zero library, and walks you through how to use it by building a series of projects. 
+
+You can download this book as a PDF file for free, it has been released under a Creative Commons https://creativecommons.org/licenses/by-nc-sa/3.0/[Attribution-NonCommercial-ShareAlike] 3.0 Unported (CC BY NC-SA) licence.
+--

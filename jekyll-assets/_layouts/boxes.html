@@ -15,6 +15,10 @@
     {% endif %}
     {% include tabs.html %}
 
+    {% if page.dir contains "pico-sdk" %}
+    <p id="release">Release {{ site.doxygen_release }}</p>
+    {% endif %}
+
     <div id="container">
       <section id="box-content">
         {% for item in site.data.index.tabs %}

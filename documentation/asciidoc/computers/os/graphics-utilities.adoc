@@ -97,7 +97,7 @@ Displays the enabled and detected state of the Raspberry Pi camera: `1` means ye
 
 ==== get_throttled
 
-Returns the throttled state of the system. This is a bit pattern - a bit being set indicates the following meanings:
+Returns the throttled state of the system. This is a bit-pattern - a bit being set indicates the following meanings:
 
 [cols="^,,"]
 |===
@@ -155,7 +155,7 @@ This returns the current frequency of the specified clock. The options are:
 | core
 | GPU core
 
-| H264
+| h264
 | H.264 block
 
 | isp
@@ -211,7 +211,7 @@ Displays the current voltages used by the specific block.
 
 ==== otp_dump
 
-Displays the content of the OTP (one-time programmable) memory inside the SoC. These are 32 bit values, indexed from 8 to 64. See the xref:raspberry-pi.adoc#otp-register-and-bit-definitions[OTP bits page] for more details.
+Displays the content of the OTP (one-time programmable) memory inside the SoC. These are 32-bit values, indexed from 8 to 64. See the xref:raspberry-pi.adoc#otp-register-and-bit-definitions[OTP bits page] for more details.
 
 [[getconfig]]
 ==== get_config [configuration item|int|str]

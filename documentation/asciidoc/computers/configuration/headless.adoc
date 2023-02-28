@@ -57,6 +57,7 @@ NOTE: Some older Raspberry Pi boards and some USB wireless dongles do not suppor
 
 NOTE: With no keyboard or monitor, you will need some way of xref:remote-access.adoc[remotely accessing] your headless Raspberry Pi. For headless setup, SSH can be enabled by placing a file named `ssh`, without any extension, onto the boot folder of the SD Card. For more information see the section on xref:remote-access.adoc#ssh[setting up an SSH server].
 
+[[configuring-a-user]]
 === Configuring a User
 
 You will need to add a `userconf.txt` in the boot partition of the SD card; this is the part of the SD card which can be seen when it is mounted in a Windows or MacOS computer.
@@ -66,9 +67,8 @@ This file should contain a single line of text, consisting of `username:password
 To generate the encrypted password, the easiest way is to use OpenSSL on a Raspberry Pi that is already running – open a terminal window and enter:
 
 ----
-echo 'mypassword' | openssl passwd -6 -stdin
+openssl passwd -6
 ----
 
-This will produce what looks like a string of random characters, which is actually an encrypted version of the supplied password.
+This will prompt you to enter your password, and verify it. It will then produce what looks like a string of random characters, which is actually an encrypted version of the supplied password.
 
-WARNING: If you are creating this file on Microsoft Windows you should ensure that you do no add a newline to the end of the file. In Windows, lines end with both the line feed and carriage return ASCII characters, but Unix uses only a line feed and treats the additional carriage return character as part of the password hash.

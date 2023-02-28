@@ -88,4 +88,9 @@ sudo reboot '0 tryboot'
 
 If `secure-boot` is enabled then `tryboot` mode will cause `tryboot.img` to be loaded instead of `boot.img`.
 
+=== TRYBOOT_A_B mode
+If the `tryboot_a_b` property in xref:config_txt.adoc#autoboot-txt[autoboot.txt] is set to `1` then `config.txt` is loaded instead of `tryboot.txt`.
+This is because the `tryboot` switch has already been made at a higher level (the partition) and so it's unnecessary to have a `tryboot.txt` file within alternate partition itself.
+
+N.B. The `tryboot_a_b` property is implicitly set to `1` when loading files from within a `boot.img` ramdisk.
 

@@ -1,8 +1,8 @@
 == The family
 
-image::images/three_picos.jpg[width="75%"]
+image::images/four_picos.jpg[width="75%"]
 
-The Raspberry Pi Pico family consists of Raspberry Pi Pico (left), Pico H (middle), and Pico W (right).
+The Raspberry Pi Pico family currently consists of four boards; Raspberry Pi Pico (far left), Pico H (middle left), Pico W (middle right), and Pico WH (far right).
 
 [[technical-specification]]
 == Raspberry Pi Pico and Pico H
@@ -33,13 +33,14 @@ image::images/pico-pinout.svg[]
 * Download the https://datasheets.raspberrypi.com/pico/Pico-R3-A4-Pinout.pdf[Pinout Diagram] (PDF)
 * Download https://datasheets.raspberrypi.com/pico/RPi-Pico-R3-PUBLIC-20200119.zip[Design Files] (Cadence Allegro)
 * Download https://datasheets.raspberrypi.com/pico/Pico-R3-step.zip[STEP File]
-* Download https://datasheets.raspberrypi.com/pico/Pico-R3-Fritzing.fzpz[Fritzing Part]
+* Download https://datasheets.raspberrypi.com/pico/Pico-R3-Fritzing.fzpz[Fritzing Part] for Raspberry Pi Pico
+* Download https://datasheets.raspberrypi.com/pico/PicoH-Fritzing.fzpz[Fritzing Part] for Raspberry Pi Pico H
 
 NOTE: More information on Fritzing is available on the https://fritzing.org/[fritzing.org] website.
 
-== Raspberry Pi Pico W
+== Raspberry Pi Pico W and Pico WH
 
-Raspberry Pi Pico W adds on-board single-band 2.4GHz wireless interfaces (802.11n) using the Infineon CYW4343 while retaining the Pico form factor. The on-board 2.4GHz wireless interface has the following features:
+Raspberry Pi Pico W adds on-board single-band 2.4GHz wireless interfaces (802.11n) using the Infineon CYW43439 while retaining the Pico form factor. The on-board 2.4GHz wireless interface has the following features:
 
 * Wireless (802.11n), single-band (2.4 GHz)
 * WPA3
@@ -57,6 +58,8 @@ For best wireless performance, the antenna should be in free space. For instance
 antenna can reduce its performance both in terms of gain and bandwidth. Adding grounded metal to the sides of the
 antenna can improve the antenna’s bandwidth.
 
+NOTE: The CYW43439 wireless chip is connected via SPI to the RP2040. While the CYW43439 supports both 802.11 wireless and Bluetooth, initially Pico W does not have Bluetooth support. Support may be added later, and will use the same SPI interface. If support is added existing hardware may require a firmware update to support Bluetooth, but there will be no hardware modifications needed.
+
 === Pinout and design files
 
 image::images/picow-pinout.svg[]
@@ -64,4 +67,4 @@ image::images/picow-pinout.svg[]
 * Download the https://datasheets.raspberrypi.com/picow/PicoW-A4-Pinout.pdf[Pinout Diagram] (PDF)
 * Download https://datasheets.raspberrypi.com/picow/RPi-PicoW-PUBLIC-20220607.zip[Design Files] (Cadence Allegro)
 * Download https://datasheets.raspberrypi.com/picow/PicoW-step.zip[STEP File]
-* Download https://datasheets.raspberrypi.com/picow/PicoW-Fritzing.fzpz[Fritzing Part]
+* Download https://datasheets.raspberrypi.com/picow/PicoW-Fritzing.fzpz[Fritzing Part] for Rapsberry Pi Pico W

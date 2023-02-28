@@ -214,6 +214,36 @@ Specify DHCP_OPTION97=0 to revert the old behaviour or a non-zero hex-value to s
 
 Default: `0x34695052`
 
+[[MAC_ADDRESS]]
+==== MAC_ADDRESS
+
+Overrides the Raspberry Pi Ethernet MAC address with the given value. e.g. `dc:a6:32:01:36:c2`
+
+Default: ""
+
+[[MAC_ADDRESS_OTP]]
+==== MAC_ADDRESS_OTP
+Overrides the Raspberry Pi Ethernet MAC address with a value stored in the xref:raspberry-pi.adoc#write-and-read-customer-otp-values[Customer OTP] registers.
+
+For example, to use a MAC address stored in rows 0 and 1 of the `Customer OTP`.
+----
+MAC_ADDRESS_OTP=0,1
+----
+
+The first value (row 0 in the example) contains the OUI and the most significant 8 bits of the MAC address. The second value (row 1 in the example) stores the remaining 16-bits of the MAC address.
+This is the same format as used for the Raspberry Pi MAC address programmed at manufacture.
+
+Any two customer rows may be selected and combined in either order. 
+
+The `Customer OTP` rows are OTP registers 36 to 43 in the `vcgencmd otp_dump` output so if the first two rows are programmed as follows then `MAC_ADDRESS_OTP=0,1` would give a MAC address of `e4:5f:01:20:24:7e`.
+
+----
+36:247e0000
+37:e45f0120
+----
+
+Default: ""
+
 ==== Static IP address configuration
 
 If TFTP_IP and the following options are set then DHCP is skipped and the static IP configuration is applied. If the TFTP server is on the same subnet as the client then GATEWAY may be omitted.
@@ -236,13 +266,6 @@ Default: ""
 ===== GATEWAY
 
 The gateway address to use if the TFTP server is on a different subnet e.g. `192.168.0.1`
-
-Default: ""
-
-[[MAC_ADDRESS]]
-===== MAC_ADDRESS
-
-Overrides the Ethernet MAC address with the given value. e.g. `dc:a6:32:01:36:c2`
 
 Default: ""
 
@@ -508,6 +531,7 @@ The primary purpose of `boot_ramdisk` is to support `secure-boot`, however, unsi
 * `boot.img` files are raw disk `.img` files. The recommended format is a plain FAT32 partition with no MBR.
 * The memory for the ramdisk filesystem is released before the operating system is started.
 * If xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT] is selected then the bootloader will search for `tryboot.img` instead of `boot.img`.
+* See also xref:config_txt.adoc#autoboot-txt[autoboot.txt]
 
 For more information about `secure-boot` and creating `boot.img` files please see https://github.com/raspberrypi/usbboot/blob/master/Readme.md[USBBOOT]
 

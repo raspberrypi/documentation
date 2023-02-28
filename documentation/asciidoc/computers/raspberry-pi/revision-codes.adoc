@@ -330,7 +330,9 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 15: CM4S
 
+
 | RRRR (bits 0-3)
+
 | Revision
 | 0, 1, 2, etc.
 |===

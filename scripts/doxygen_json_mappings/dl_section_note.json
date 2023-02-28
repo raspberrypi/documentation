@@ -1,0 +1,116 @@
+[
+	{
+		"input": {
+			"description": "Notes and admonitions - main container",
+			"element": "dl",
+			"attributes": [
+				{
+					"name": "class",
+					"value": ["section", "note"]
+				}
+			],
+			"parents": [],
+			"children": [],
+			"child_mappings": [
+			  {
+					"input": {
+						"description": "Notes and admonitions - label",
+						"element": "dt",
+						"attributes": [],
+						"parents": [],
+						"children": []
+					},
+					"output": {
+						"tree": [
+							{
+								"position": 0,
+								"element": "td",
+								"attributes": [
+								  {
+										"name": "class",
+										"value": ["icon"]
+									}
+								],
+								"children": [
+									{
+										"position": 0,
+										"element": "div",
+										"attributes": [
+											{
+												"name": "class",
+												"value": ["title"]
+											},
+											{
+												"name": "data-target",
+												"value": ["true"]
+											}
+										],
+										"children": []
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"input": {
+						"description": "Notes and admonitions - content",
+						"element": "dd",
+						"attributes": [],
+						"parents": [],
+						"children": []
+					},
+					"output": {
+						"tree": [
+							{
+								"position": 0,
+								"element": "td",
+								"attributes": [
+								  {
+										"name": "class",
+										"value": ["content"]
+									}
+								],
+								"children": []
+							}
+						]
+					}
+				}
+			]
+		},
+		"output": {
+			"tree": [
+			  {
+					"position": 0,
+					"element": "div",
+					"attributes": [
+					  {
+							"name": "class",
+							"value": ["admonitionblock", "note"]
+						}
+					],
+					"children": [
+						{
+							"position": 0,
+							"element": "table",
+							"attributes": [],
+							"children": [
+								{
+									"position": 0,
+									"element": "tr",
+									"attributes": [
+										{
+											"name": "data-target",
+											"value": ["true"]
+										}
+									],
+									"children": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	}
+]

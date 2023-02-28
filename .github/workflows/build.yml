@@ -23,12 +23,12 @@ jobs:
           echo "Pull requests based on master can only come from the develop branch of this repository"
           echo "Please check your base branch as it should be develop by default"
           exit 1
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: 3.9
       - name: Install Python dependencies
-        uses: py-actions/py-dependency-install@v2
+        uses: py-actions/py-dependency-install@v4
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
@@ -36,6 +36,15 @@ jobs:
       - uses: seanmiddleditch/gha-setup-ninja@v3
         with:
           version: 1.10.2
+      - name: Install arm-none-eabi-gcc GNU Arm Embedded Toolchain
+        uses: carlosperate/arm-none-eabi-gcc-action@v1.6.0
+      - name: Install Doxygen
+        run: |
+          wget https://www.doxygen.nl/files/doxygen-1.9.6.linux.bin.tar.gz
+          tar xf doxygen-1.9.6.linux.bin.tar.gz -C "$HOME"
+          echo "$HOME/doxygen-1.9.6/bin" >> $GITHUB_PATH
+      - name: Build Doxygen documentation
+        run: make build_doxygen_adoc
       - name: Build documentation
         run: make -j 2
       - name: Deploy to Mythic Beasts

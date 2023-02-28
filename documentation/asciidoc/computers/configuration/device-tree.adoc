@@ -801,10 +801,6 @@ As it is too time-consuming to document the individual overlays here, please ref
 === Firmware parameters
 The firmware uses the special https://www.kernel.org/doc/html/latest/devicetree/usage-model.html#runtime-configuration[/chosen] node to pass parameters between the bootloader and/or firmware and the operating system.
 
-`boot-mode` - 32-bit integer
-
-The boot-mode used to load the kernel. See xref:raspberry-pi.adoc#BOOT_ORDER[BOOT_ORDER].
-
 `overlay_prefix` - string
 
 The xref:config_txt.adoc#overlay_prefix[overlay_prefix] string selected by `config.txt`.
@@ -812,14 +808,6 @@ The xref:config_txt.adoc#overlay_prefix[overlay_prefix] string selected by `conf
 `os_prefix` - string
 
 The xref:config_txt.adoc#os_prefix[os_prefix] string selected by `config.txt`.
-
-`partition` - 32-bit integer
-
-The partition number used during boot.
-
-`pm_rsts` - 32-bit integer
-
-The value of the `PM_RSTS` register during boot.
 
 `rpi-boardrev-ext` - 32-bit integer
 
@@ -829,7 +817,24 @@ The extended board revision code from xref:raspberry-pi.adoc#otp-register-and-bi
 
 The country code used used by https://github.com/raspberrypi-ui/piwiz[PiWiz] - Pi400 only.
 
-==== BCM2711 bootloader properties `/chosen/bootloader`
+==== Common bootloader properties `/chosen/bootloader`
+`boot-mode` - 32-bit integer
+
+The boot-mode used to load the kernel. See xref:raspberry-pi.adoc#BOOT_ORDER[BOOT_ORDER].
+
+`partition` - 32-bit integer
+
+The partition number used during boot. If a `boot.img` ramdisk is loaded then this refers to partition that the ramdisk was loaded from rather than the partition number within the ramdisk.
+
+`pm_rsts` - 32-bit integer
+
+The value of the `PM_RSTS` register during boot.
+
+`tryboot` - 32-bit integer
+
+Set to `1` if the `tryboot` flag was set at boot.
+
+==== BCM2711 specific bootloader properties `/chosen/bootloader`
 The following properties are specific to BCM2711 SPI EEPROM bootloader.
 
 `build_timestamp` - 32-bit integer
@@ -838,7 +843,7 @@ The UTC build time for the EEPROM bootloader.
 
 `capabilities` - 32-bit integer
 
-This bit field, which describes the features supported by the current bootloader. This may be used to check whether a feature (e.g. USB boot) is supported before enabling it in the bootloader EEPROM config.
+This bit-field describes the features supported by the current bootloader. This may be used to check whether a feature (e.g. USB boot) is supported before enabling it in the bootloader EEPROM config.
 
 |===
 | Bit | Feature
@@ -850,18 +855,21 @@ This bit field, which describes the features supported by the current bootloader
 | xref:remote-access.adoc#network-boot-your-raspberry-pi[Network boot]
 
 | 2
-| xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT]
+| xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT_A_B] mode.
 
 | 3
-| xref:raspberry-pi.adoc#usb-mass-storage-boot[USB boot] using the BCM2711 USB host controller.
+| xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT]
 
 | 4
-| xref:raspberry-pi.adoc#boot_ramdisk[RAM disk - boot.img]
+| xref:raspberry-pi.adoc#usb-mass-storage-boot[USB boot] using the BCM2711 USB host controller.
 
 | 5
-| xref:raspberry-pi.adoc#nvme-ssd-boot[NVMe boot]
+| xref:raspberry-pi.adoc#boot_ramdisk[RAM disk - boot.img]
 
 | 6
+| xref:raspberry-pi.adoc#nvme-ssd-boot[NVMe boot]
+
+| 7
 | https://github.com/raspberrypi/usbboot/blob/master/Readme.md#secure-boot[Secure Boot]
 |===
 
@@ -871,7 +879,7 @@ The UTC update timestamp set by `rpi-eeprom-update`.
 
 `signed_boot` - 32-bit integer
 
-If secure-boot is enabled then this bit field will be non-zero. The individual bits indicate the current secure-boot configuration.
+If secure-boot is enabled then this bit-field will be non-zero. The individual bits indicate the current secure-boot configuration.
 
 |===
 | Bit | Description
@@ -914,6 +922,37 @@ The root hub port number that the boot device is connected to - possibly via oth
 
 The Logical Unit Number for the mass-storage device.
 
+==== NVMEM nodes
+The firmware provides read-only, in-memory copies of portions of the bootloader EEPROM via the https://www.kernel.org/doc/html/latest/driver-api/nvmem.html[NVMEM] Subsystem.
+
+Each region appears as an NVMEM device under `/sys/bus/nvmem/devices/` with a named alias under `/sys/firmware/devicetree/base/aliases`.
+
+Example shell script code for reading an NVMEM mode from https://github.com/raspberrypi/rpi-eeprom/blob/master/rpi-eeprom-update[rpi-eeprom-update]
+
+----
+blconfig_alias="/sys/firmware/devicetree/base/aliases/blconfig"
+blconfig_nvmem_path=""
+
+if [ -f "${blconfig_alias}" ]; then
+   blconfig_ofnode_path="/sys/firmware/devicetree/base"$(strings "${blconfig_alias}")""
+   blconfig_ofnode_link=$(find -L /sys/bus/nvmem -samefile "${blconfig_ofnode_path}" 2>/dev/null)
+   if [ -e "${blconfig_ofnode_link}" ]; then
+      blconfig_nvmem_path=$(dirname "${blconfig_ofnode_link}")
+      fi
+   fi
+fi
+----
+
+`blconfig`
+
+The `blconfig` alias refers to an NVMEM device that stores a copy of the bootloader EEPROM config file.
+
+`blpubkey`
+
+The `blpubkey` alias points to an NVMEM device that stores a copy of the bootloader EEPROM public key (if defined) in binary format.
+The https://github.com/raspberrypi/usbboot/blob/master/tools/rpi-bootloader-key-convert[rpi-bootloader-key-convert] utility can be used to convert the data into PEM format for use with OpenSSL.
+
+See also: https://github.com/raspberrypi/usbboot#secure-boot[secure-boot]
 
 [[part5]]
 === Troubleshooting

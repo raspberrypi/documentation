@@ -1,21 +1,23 @@
 == Your First Binaries
 
+WARNING: If you are using an Apple Mac, and running macOS Ventura, there has been a change in how the Finder works which causes drag-and-drop to fail. Please see our https://www.raspberrypi.com/news/the-ventura-problem/[blog post] for a full explanation, and workarounds, and our https://github.com/raspberrypi/pico-sdk/issues/1081[Github issue] tracking the problem for the current status.
+
 === Blink an LED
 
-The first program anyone writes when using a new microcontroller is to blink an LED on and off. The Raspberry Pi Pico comes with a single LED on-board (connected to GPIO pin 25). 
+The first program anyone writes when using a new microcontroller is to blink an LED on and off. The Raspberry Pi Pico comes with a single LED on-board. The LED is connected to `GP25` on the board's Raspberry Pi RP2040 for Pico, and `WL_GPIO0` on the Infineon 43439 wireless chip for Pico W.
 
 image:images/Blink-an-LED-640x360-v2.gif[]
 
 You can blink this on and off by,
 
-. Download the https://datasheets.raspberrypi.com/soft/blink.uf2[Blink UF2]
+. Download the Blink UF2 https://datasheets.raspberrypi.com/soft/blink.uf2[for Raspberry Pi Pico], or https://datasheets.raspberrypi.com/soft/blink_picow.uf2[for Pico W].
 . Push and hold the BOOTSEL button and plug your Pico into the USB port of your Raspberry Pi or other computer.
 . It will mount as a Mass Storage Device called RPI-RP2.
 . Drag and drop the Blink UF2 binary onto the RPI-RP2 volume. Pico will reboot.
 
 You should see the on-board LED blinking.
 
-You can see the code https://github.com/raspberrypi/pico-examples/blob/master/blink/blink.c[on Github]
+You can see the code on Github for the https://github.com/raspberrypi/pico-examples/blob/master/blink/blink.c[Raspberry Pi Pico] and https://github.com/raspberrypi/pico-examples/blob/master/pico_w/wifi/blink/picow_blink.c[Pico W] versions.
 
 === Say "Hello World"
 

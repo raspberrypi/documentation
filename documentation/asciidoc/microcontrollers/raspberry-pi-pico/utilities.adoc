@@ -10,7 +10,7 @@ If you have forgotten what has been programmed into your Raspberry Pi Pico, and 
 
 It is possible to use one Raspberry Pi Pico to debug another Pico. This is possible via picoprobe, an application that allows a Pico to act as a USB → SWD and UART converter. This makes it easy to use a Pico on non-Raspberry Pi platforms such as Windows, Mac, and Linux computers where you don’t have GPIOs to connect directly to your Pico. Full instructions on how to use Picoprobe to do this are available in our 'https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[getting started]' documentation.
 
-* Download the https://datasheets.raspberrypi.com/soft/picoprobe.uf2[UF2 file]
+* Download the https://github.com/raspberrypi/picoprobe/releases/latest/download/picoprobe.uf2[UF2 file]
 * Go to the https://github.com/raspberrypi/picoprobe[Picoprobe Github repository]
 
 === Resetting Flash memory

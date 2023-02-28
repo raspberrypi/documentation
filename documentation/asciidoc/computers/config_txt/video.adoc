@@ -1,62 +1,5 @@
 == Video Options
 
-=== Composite Video Mode
-
-==== `sdtv_mode`
-
-The `sdtv_mode` command defines the TV standard used for composite video output. On the original Raspberry Pi, composite video is output on the RCA socket. On other Raspberry Pis, except for Raspberry Pi Zero and Compute Module, composite video is output along with sound on the 4 pole TRRS ("headphone") socket. On the Raspberry Pi Zero, there is an unpopulated header labelled "TV" which outputs composite video. On the Compute Module, composite video is available via the TVDAC pin. The default value of `sdtv_mode` is `0`.
-
-|===
-| sdtv_mode | result
-
-| 0
-| Normal NTSC
-
-| 1
-| Japanese version of NTSC -- no pedestal
-
-| 2
-| Normal PAL
-
-| 3
-| Brazilian version of PAL -- 525/60 rather than 625/50, different subcarrier
-
-| 16
-| Progressive scan NTSC
-
-| 18
-| Progressive scan PAL
-|===
-
-==== `sdtv_aspect`
-
-The `sdtv_aspect` command defines the aspect ratio for composite video output. The default value is `1`.
-
-|===
-| sdtv_aspect | result
-
-| 1
-| 4:3
-
-| 2
-| 14:9
-
-| 3
-| 16:9
-|===
-
-==== `sdtv_disable_colourburst`
-
-Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
-
-==== `enable_tvout` (Raspberry Pi 4 Model B Only)
-
-On the Raspberry Pi 4, composite output is disabled by default, due to the way the internal clocks are interrelated and allocated. Because composite video requires a very specific clock, setting that clock to the required speed on the Raspberry Pi 4 means that other clocks connected to it are detrimentally affected, which slightly slows down the entire system. Since composite video is a less commonly used function, we decided to disable it by default to prevent this system slowdown.
-
-To enable composite output, use the `enable_tvout=1` option. As described above, this will detrimentally affect performance to a small degree.
-
-On older Raspberry Pi models, the composite behaviour remains the same.
-
 === HDMI Mode
 
 NOTE: Because the Raspberry Pi 4 and Raspberry Pi 400 have two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found in the HDMI sub-section of the xref:config_txt.adoc#conditional-filters[conditionals section] of the documentation.
@@ -826,13 +769,13 @@ These values are valid if `hdmi_group=1` (CEA):
 | 4096x2160
 | 50Hz
 | 256:135
-| Pi 4
+| Pi 4<<needsoverclock>>
 
 | 102
 | 4096x2160
 | 60Hz
 | 256:135
-| Pi 4
+| Pi 4<<needsoverclock>>
 
 | 103
 | 2160p
@@ -864,6 +807,8 @@ These values are valid if `hdmi_group=1` (CEA):
 | 64:27
 | Pi 4
 |===
+
+[[needsoverclock,^**1**^]] **1.** Only available with an overclocked core frequency: set `core_freq_min=600` and `core_freq=600`. See xref:config_txt.adoc#overclocking[overclocking].
 
 Pixel doubling and quadrupling indicates a higher clock rate, with each pixel repeated two or four times respectively.
 
@@ -1519,6 +1464,94 @@ hdmi_drive=2
 
 This may not work if your monitor does not support standard CVT timings.
 
+=== Composite Video Mode
+
+The table below describes where composite video output can be found on each model of Raspberry Pi computer:
+
+|===
+| model | composite output
+
+| Raspberry Pi 1 A and B
+| RCA jack
+
+| Raspberry Pi Zero
+| Unpopulated `TV` header
+
+| Raspberry Pi Zero 2 W
+| Test pads on underside of board
+
+| All other models
+| 3.5mm AV jack
+|===
+
+NOTE: Composite video output is not available on the Raspberry Pi 400.
+
+==== `sdtv_mode`
+
+The `sdtv_mode` command defines the TV standard used for composite video output:
+
+|===
+| sdtv_mode | result
+
+| 0 (default)
+| Normal NTSC
+
+| 1
+| Japanese version of NTSC -- no pedestal
+
+| 2
+| Normal PAL
+
+| 3
+| Brazilian version of PAL -- 525/60 rather than 625/50, different subcarrier
+
+| 16
+| Progressive scan NTSC
+
+| 18
+| Progressive scan PAL
+|===
+
+==== `sdtv_aspect`
+
+The `sdtv_aspect` command defines the aspect ratio for composite video output. The default value is `1`.
+
+|===
+| sdtv_aspect | result
+
+| 1
+| 4:3
+
+| 2
+| 14:9
+
+| 3
+| 16:9
+|===
+
+==== `sdtv_disable_colourburst`
+
+Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
+
+==== `enable_tvout`
+
+Set to `1` to enable composite video output, or `0` to disable. On Raspberry Pi 4, composite output is only available if you set this to `1`. Composite output is not available on the Raspberry Pi 400.
+
+On all models except Raspberry Pi 4 and Raspberry Pi 400, composite output will be enabled if HDMI output is disabled. HDMI output is disabled when no HDMI display is detected, or  `hdmi_ignore_hotplug=1` is set.  Set `enable_tvout=0` to prevent composite being enabled when HDMI is disabled.
+
+[%header,cols="1,1"]
+
+|===
+|Model
+|Default
+
+|Pi 4 and 400
+|0
+
+|All other models
+|1
+|===
+
 === LCD Displays and Touchscreens
 
 ==== `ignore_lcd`
@@ -1606,7 +1639,7 @@ Setting `hdmi_force_hotplug` to `1` pretends that the HDMI hotplug signal is ass
 
 ==== `hdmi_ignore_hotplug`
 
-Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. In other words, composite output mode will be used, even if an HDMI monitor is detected.
+Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. HDMI output will therefore be disabled, even if a monitor is connected.
 
 ==== `overscan_left`
 
@@ -1658,25 +1691,25 @@ Use `framebuffer_depth` to specify the console framebuffer depth in bits per pix
 | framebuffer_depth | result | notes
 
 | 8
-| 8bit framebuffer
+| 8-bit framebuffer
 | Default RGB palette makes screen unreadable
 
 | 16
-| 16bit framebuffer
+| 16-bit framebuffer
 |
 
 | 24
-| 24bit framebuffer
+| 24-bit framebuffer
 | May result in a corrupted display
 
 | 32
-| 32bit framebuffer
+| 32-bit framebuffer
 | May need to be used in conjunction with `framebuffer_ignore_alpha=1`
 |===
 
 ==== `framebuffer_ignore_alpha`
 
-Set `framebuffer_ignore_alpha` to `1` to disable the alpha channel. Can help with the display of a 32bit `framebuffer_depth`.
+Set `framebuffer_ignore_alpha` to `1` to disable the alpha channel. Can help with the display of a 32-bit `framebuffer_depth`.
 
 ==== `framebuffer_priority`
 

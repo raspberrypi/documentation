@@ -1,5 +1,7 @@
 include::config_txt/what_is_config_txt.adoc[]
 
+include::config_txt/autoboot.adoc[]
+
 include::config_txt/common.adoc[]
 
 include::config_txt/audio.adoc[]

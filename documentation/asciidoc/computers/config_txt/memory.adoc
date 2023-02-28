@@ -24,8 +24,10 @@ The recommended maximum values are as follows:
 | `384`
 
 | 1GB or greater
-| `512`, `256` on the Raspberry Pi 4
+| `512`, `76` on the Raspberry Pi 4
 |===
+
+IMPORTANT: The default camera stack (libcamera2) on Raspberry Pi OS - Bullseye uses Linux CMA memory to allocate buffers instead of GPU memory so there is no benefit in increasing the GPU memory size.
 
 It is possible to set `gpu_mem` to larger values, however this should be avoided since it can cause problems, such as preventing Linux from booting. The minimum value is `16`, however this disables certain GPU features.
 
@@ -55,4 +57,4 @@ This value will be clamped between a minimum of 128MB, and a maximum of the tota
 
 === `disable_l2cache`
 
-Setting this to `1` disables the CPUs access to the GPUs L2 cache and requires a corresponding L2 disabled kernel. Default value on BCM2835 is `0`. On BCM2836, BCM2837, and BCM2711, the ARMs have their own L2 cache and therefore the default is `1`. The standard Raspberry Pi `kernel.img` and `kernel7.img` builds reflect this difference in cache setting.
+Setting this to `1` disables the CPU's access to the GPU's L2 cache and requires a corresponding L2 disabled kernel. Default value on BCM2835 is `0`. On BCM2836, BCM2837, and BCM2711, the ARMs have their own L2 cache and therefore the default is `1`. The standard Raspberry Pi `kernel.img` and `kernel7.img` builds reflect this difference in cache setting.

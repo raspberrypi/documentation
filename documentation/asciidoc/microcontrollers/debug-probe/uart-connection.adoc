@@ -1,0 +1,56 @@
+== Serial connections
+
+Ensure that the Debug Probe is connected to the UART pins of your Raspberry Pi Pico. 
+
+image:images/wiring.png[width="80%"]
+
+The default pins for Raspberry Pi Pico UART0 are as follows:
+
+[cols="1,1,1"]
+|===
+| Default UART0 | Physical Pin | GPIO Pin
+
+| GND | 3 | N/A
+| UART0_TX | 1 | GP0
+| UART0_RX | 2 | GP1
+|===
+
+Once connected, traffic over the Raspberry Pi Pico's UART will relayed to your computer by the Debug Probe and exposed as a CDC UART. On a Raspberry Pi this will show up as `/dev/ttyACM0`; on other platforms this serial port will show up differently (e.g. on macOS it will appear as `/dev/cu.usbmodemXXXX`).
+
+If you have not already done so you should install minicom:
+
+----
+$ sudo apt install minicom
+----
+
+and open the serial port:
+
+----
+$ minicom -b 115200 -o -D /dev/ttyACM0
+----
+
+TIP: To exit `minicom`, use CTRL-A followed by X.
+
+To test serial communication you can build and upload the "Hello World" example application. 
+
+Change directory into the `hello_world` directory inside the `pico-examples` tree, and run `make`. Afterwards, you can upload it to your Raspberry Pi Pico using `openocd`. For a full walkthrough of building the `hello_serial` example program, see Chapter 4 of https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico].
+
+----
+$ cd pico-examples
+$ mkdir build
+$ cd build
+$ export PICO_SDK_PATH=../../pico-sdk
+$ cmake ..
+$ cd hello_world/serial
+$ make -j4
+$ sudo openocd -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c "adapter speed 5000" -c "program hello_serial.elf verify reset exit"
+$ minicom -b 115200 -o -D /dev/ttyACM0
+----
+
+On opening `minicom` you should see "Hello, world!" printed to the console.
+
+For terminal programs that support it, a description of the USB serial UART is advertised in the USB device description. 
+
+image::images/description.jpg[width="60%"]
+
+The unique serial number in this description means that on Windows your COM port numbering is "sticky" per device, and will allow you to write `udev` rules to associate a named device node with a particular Debug Probe. 

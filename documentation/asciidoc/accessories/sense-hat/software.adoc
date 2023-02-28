@@ -1,0 +1,51 @@
+== Installation
+
+In order to work correctly, the Sense HAT requires an up-to-date kernel, I2C to be enabled, and a few libraries to get started.
+
+Ensure your APT package list is up-to-date:
+
+[,bash]
+----
+ sudo apt update
+----
+
+Next, install the sense-hat package, which will ensure the kernel is up to date, enable I2C, and install the necessary libraries and programs:
+
+[,bash]
+----
+ sudo apt install sense-hat
+----
+
+Finally, a reboot may be required if I2C was disabled or the kernel was not up-to-date prior to the install:
+
+[,bash]
+----
+ sudo reboot
+----
+
+== Getting started
+
+[.float-group]
+--
+image::images/experiment-with-the-sense-hat.png[role="related thumb right",link=https://github.com/raspberrypipress/released-pdfs/raw/main/experiment-with-the-sense-hat.pdf]
+After installation, example code can be found under `/usr/src/sense-hat/examples`.
+
+
+You can find more information on how to use the Sense HAT in the Raspberry Pi Press book https://github.com/raspberrypipress/released-pdfs/raw/main/experiment-with-the-sense-hat.pdf[Experiment with the Sense HAT]. Written by The Raspberry Pi Foundation's Education Team, it is part of the MagPi Essentials series published by Raspberry Pi Press. The book covers the background of the Astro Pi project, and walks you through how to make use of all the Sense HAT features using the xref:sense-hat.adoc#using-the-sense-hat-with-python[Python library]. 
+
+You can download this book as a PDF file for free, it has been released under a Creative Commons https://creativecommons.org/licenses/by-nc-sa/3.0/[Attribution-NonCommercial-ShareAlike] 3.0 Unported (CC BY NC-SA) licence.
+--
+
+=== Using the Sense HAT with Python
+
+`sense-hat` is the officially supported library for the Sense HAT; it provides access to all of the on-board sensors and the LED matrix.
+
+Complete documentation for the library can be found at https://pythonhosted.org/sense-hat/[pythonhosted.org/sense-hat].
+
+=== Using the Sense HAT with {cpp}
+
+https://github.com/RPi-Distro/RTIMULib[RTIMULib] is a {cpp} and Python library that makes it easy to use 9-dof and 10-dof IMUs with embedded Linux systems. A pre-calibrated settings file is provided in `/etc/RTIMULib.ini`, which is also copied and used by `sense-hat`. The included examples look for `RTIMULib.ini` in the current working directory, so you may wish to copy the file there to get more accurate data.
+
+The RTIMULibDrive11 example comes pre-compiled to help ensure everything works as intended. It can be launched by running `RTIMULibDrive11` and closed by pressing `Ctrl C`.
+
+NOTE: The C/{cpp} examples can be compiled by running `make` in the appropriate directory.

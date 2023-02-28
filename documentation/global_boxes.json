@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Product Information Portal",
+        "description": "Raspberry Pi compliance documents",
+        "imagepath": "/images/full-sized/PIP.png",
+        "url": "https://pip.raspberrypi.com/"
+    },
+    {
+        "title": "Datasheets",
+        "description": "PDF-based documentation",
+        "imagepath": "/images/full-sized/Datasheets.png",
+        "url": "https://datasheets.raspberrypi.com"
+    },
+    {
+        "title": "Tutorials",
+        "description": "Hands-on hardware and software tutorials",
+        "imagepath": "/images/full-sized/Tutorials.png",
+        "url": "https://www.raspberrypi.com/tutorials/"
+    },
+    {
+        "title": "Forums",
+        "description": "User and product support forums",
+        "imagepath": "/images/full-sized/Forums.png",
+        "url": "https://forums.raspberrypi.com"
+    }
+]

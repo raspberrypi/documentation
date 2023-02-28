@@ -10,6 +10,8 @@ The easiest way to manage installing, upgrading, and removing software is using 
 
 ==== Keeping your Operating System up to Date
 
+video::2AhCWJ6YQHk[youtube]
+
 APT keeps a list of software sources on your Raspberry Pi in a file at `/etc/apt/sources.list`. Before installing software, you should update your package list with `apt update`. Go ahead and open a Terminal window and type:
 
 [,bash]

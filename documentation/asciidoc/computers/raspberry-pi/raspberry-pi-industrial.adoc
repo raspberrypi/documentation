@@ -25,7 +25,7 @@ The vcmailbox application can be used directly from the command line on Raspberr
 
 [,bash]
 ----
-/opt/vc/bin/vcmailbox 0x00010004 8 8 0 0
+vcmailbox 0x00010004 8 8 0 0
 ----
 
 which will return something like:
@@ -34,7 +34,7 @@ which will return something like:
 0x00000020 0x80000000 0x00010004 0x00000008 0x800000008 0xnnnnnnnn 0x00000000 0x00000000
 ----
 
-The above uses the https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface[mailbox property interface] `GET_BOARD_SERIAL` with a request size of 8 bytes and response size of 8 bytes (sending two integers for the request 0, 0). The response to this will be two integers (0x00000020 and 0x80000000) followed by the tag code, the request length, the response length (with the 31st bit set to indicate that it is a response) then the 64 bit serial number (where the MS 32bits are always 0).
+The above uses the https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface[mailbox property interface] `GET_BOARD_SERIAL` with a request size of 8 bytes and response size of 8 bytes (sending two integers for the request 0, 0). The response to this will be two integers (0x00000020 and 0x80000000) followed by the tag code, the request length, the response length (with the 31st bit set to indicate that it is a response) then the 64-bit serial number (where the MS 32 bits are always 0).
 
 === Write and Read Customer OTP Values
 
@@ -44,7 +44,7 @@ To set the customer OTP values you will need to use the `SET_CUSTOMER_OTP` (0x38
 
 [,bash]
 ----
-/opt/vc/bin/vcmailbox 0x00038021 [8 + number * 4] [8 + number * 4] [start_num] [number] [value] [value] [value] ...
+vcmailbox 0x00038021 [8 + number * 4] [8 + number * 4] [start_num] [number] [value] [value] [value] ...
 ----
 
 * `start_num` = the first row to program from 0-7
@@ -55,7 +55,7 @@ So, to program OTP customer rows 4, 5, and 6 to 0x11111111, 0x22222222, 0x333333
 
 [,bash]
 ----
-/opt/vc/bin/vcmailbox 0x00038021 20 20 4 3 0x11111111 0x22222222 0x33333333
+vcmailbox 0x00038021 20 20 4 3 0x11111111 0x22222222 0x33333333
 ----
 
 This will then program rows 40, 41, and 42.
@@ -64,7 +64,7 @@ To read the values back, you can use:
 
 [,bash]
 ----
-/opt/vc/bin/vcmailbox 0x00030021 20 20 4 3 0 0 0
+vcmailbox 0x00030021 20 20 4 3 0 0 0
 ----
 
 which should display:
@@ -81,7 +81,7 @@ It is possible to lock the OTP changes to avoid them being edited again. This ca
 
 [,bash]
 ----
-/opt/vc/bin/vcmailbox 0x00038021 8 8 0xffffffff 0xaffe0000
+vcmailbox 0x00038021 8 8 0xffffffff 0xaffe0000
 ----
 
 Once locked, the customer OTP values can no longer be altered. Note that this locking operation is irreversible.
@@ -92,7 +92,63 @@ It is possible to prevent the customer OTP bits from being read at all. This can
 
 [,bash]
 ----
-/opt/vc/bin/vcmailbox 0x00038021 8 8 0xffffffff 0xaffebabe
+vcmailbox 0x00038021 8 8 0xffffffff 0xaffebabe
 ----
 
 This operation is unlikely to be useful for the vast majority of users, and is irreversible.
+
+=== Device specific private key
+Eight rows of OTP (256 bits) are available for use as a device-specific private key. This is intended to support file-system encryption.
+
+These rows can be programmed and read using similar `vcmailbox` commands to those used for managing customer OTP rows. If
+secure-boot / file-system encryption is not required then the device private key rows can be used to store general purpose information.
+
+* The device private key rows can only be read via the `vcmailbox` command which requires access to `/dev/vcio` which is restricted to the `video` group on Raspberry Pi OS.
+* Raspberry Pi computers do not have a hardware protected key store.  It is recommended that this feature is used in conjunction with https://github.com/raspberrypi/usbboot/blob/master/secure-boot-example/README.md[secure-boot] in order to restrict access to this data.
+* Raspberry Pi OS does not support an encrypted root-filesystem.
+
+See https://gitlab.com/cryptsetup/cryptsetup[cryptsetup] for more information about open-source disk encryption.
+
+==== Key programming script `rpi-otp-private-key`
+The https://github.com/raspberrypi/usbboot/blob/master/tools/rpi-otp-private-key[rpi-otp-private-key] script wraps the device private key `vcmailbox` APIs in order to make it easier to read/write a key in the same format as OpenSSL.
+
+Read the key as a 64-byte hex number
+[,bash]
+----
+rpi-otp-private-key
+----
+
+Example output
+----
+f8dbc7b0a4fcfb1d706e298ac9d0485c2226ce8df7f7596ac77337bd09fbe160
+----
+
+Writes a 64-byte randomly generated number to the device private key. +
+**Warning: This operation cannot be undone. **
+[,bash]
+----
+# rpi-otp-private-key -w $(openssl rand -hex 32)
+----
+
+==== Mailbox API for reading/writing the key.
+Read all of the rows.
+[,bash]
+----
+vcmailbox 0x00030081 40 40 0 8 0 0 0 0 0 0 0 0
+----
+
+Example output
+----
+0x00000040 0x80000000 0x00030081 0x00000028 0x80000028 0x00000000 0x00000008 0xf8dbc7b0 0xa4fcfb1d 0x706e298a 0xc9d0485c 0x2226ce8d 0xf7f7596a 0xc77337bd 0x09fbe160 0x00000000
+----
+
+Write all of the row (replace the trailing eight zeros with the key data)
+[,bash]
+----
+vcmailbox 0x00038081 40 40 0 8 0 0 0 0 0 0 0 0
+----
+
+Write the key shown in the previous example
+----
+vcmailbox 0x38081 40 40 0 8 0xf8dbc7b0 0xa4fcfb1d 0x706e298a 0xc9d0485c 0x2226ce8d 0xf7f7596a 0xc77337bd 0x09fbe160
+----

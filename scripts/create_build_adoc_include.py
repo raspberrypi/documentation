@@ -11,7 +11,10 @@ def check_no_markdown(filename):
         asciidoc = fh.read()
         if re.search('```\n.*?\n```', asciidoc):
             raise Exception("{} uses triple-backticks for markup - please use four-hyphens instead".format(filename))
+        # strip out code blocks
         asciidoc = re.sub('----\n.*?\n----', '', asciidoc, flags=re.DOTALL)
+        # strip out pass-through blocks
+        asciidoc = re.sub('\+\+\+\+\n.*?\n\+\+\+\+', '', asciidoc, flags=re.DOTALL)
         if re.search('(?:^|\n)#+', asciidoc):
             raise Exception("{} contains a Markdown-style header (i.e. '#' rather than '=')".format(filename))
         if re.search(r'(\[.+?\]\(.+?\))', asciidoc):
@@ -43,7 +46,8 @@ if __name__ == "__main__":
             if line.startswith('== '):
                 if not seen_header:
                     seen_header = True
-                    line += edit_text + "\n\n"
+                    if github_edit is not None:
+                        line += edit_text + "\n\n"
             new_contents += line
 
         with open(build_adoc, 'w') as out_fh:

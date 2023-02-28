@@ -1,0 +1,10 @@
+== Updating the firmware on the Debug Probe
+
+NOTE: There is currently no newer version of the firmware. The firmware running on your Debug Probe is the latest available. If you have accidentally overwritten the firmware on your Debug Probe, the https://github.com/raspberrypi/picoprobe/releases/latest/download/debugprobe.uf2[latest release of the firmware] can be found https://github.com/raspberrypi/picoprobe/releases/latest[on Github].
+
+From time to time you may need to update the Debug Probe firmware. New firmware for the debug probe will be made available as a UF2 file distributed by Raspberry Pi.
+
+Pinch to remove the top of the Debug Probe enclosure, then push and hold the BOOTSEL button as you plug the Debug Probe into your computer. This will mount an RPI-RP2 volume on your desktop. Drag-and-drop the firmware UF2 onto the RPI-RP2 volume. The firmware will be copied to the Debug Probe and the volume will dismount.
+
+Your Debug Probe will reboot. You are now running an updated version of the Debug Probe firmware.
+

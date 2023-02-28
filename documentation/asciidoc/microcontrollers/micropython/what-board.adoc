@@ -1,6 +1,6 @@
 == Which hardware am I running on?
 
-There is no direct method for software written in MircoPython to discover whether it is running on a Raspberry Pi Pico or a Pico W by looking at the hardware. However, you can tell indirectly by looking to see if network functionality is included in your particular MicroPython firmware:
+There is no direct method for software written in MicroPython to discover whether it is running on a Raspberry Pi Pico or a Pico W by looking at the hardware. However, you can tell indirectly by looking to see if network functionality is included in your particular MicroPython firmware:
 
 [source,python]
 ----
@@ -18,4 +18,4 @@ Alternatively, you can inspect the MicroPython firmware version to check whether
 (name='micropython', version=(1, 19, 1), _machine='Raspberry Pi Pico W with RP2040', _mpy=4102)
 ----
 
-So `if 'Pico W' in sys.implementation._machine` can be used to detect whether your firmware was compiled for Pico W.
+So if the 'Pico W' string is present and in `sys.implementation._machine` that can be used to determine whether your firmware was compiled for Pico W.

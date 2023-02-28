@@ -1,0 +1,29 @@
+== Overview
+ 
+Raspberry Pi Audio Boards bring high quality audio to your existing hi-fi or Raspberry Pi-based equipment and projects. We offer four different Hardware Attached on Top (HAT) options that will fit any Raspberry Pi using the 40-pin GPIO header.
+
+Each board has a specific purpose and set of features. The highest audio quality playback is available from our DAC PRO, DAC{plus} and DigiAMP{plus} boards, which support up to full HD audio (192kHz); while the Codec Zero supports up to HD audio (96kHz) and includes a built-in microphone, making it ideal for compact projects.
+
+=== Features at a glance
+[cols="2,1,1,1,1,1,1,1,1,1"]
+|===
+| | *Line out* | *Balanced out* | *Stereo speakers* | *Mono speaker* | *Headphones* | *Aux in* | *Aux out* | *Ext mic* | *Built-in mic*
+
+| DAC Pro ^| ✓ ^| ✓ | | ^| ✓ | | | | 
+| DAC{plus} ^| ✓ | | | ^| ✓ | | | | 
+| DigiAmp{plus} | | ^| ✓ | | | | | | 
+| Codec Zero | | | ^| ✓ | ^| ✓ ^| ✓ ^| ✓ ^| ✓ 
+|===
+
+Line out:: A double phono/RCA connector, normally red and white in colour. This output is a variable
+analogue signal (0-2V RMS) and can connect to your existing hi-fi (pre-amp or amplifier), or can be used
+to drive active speakers which have their own amplifier built in.
+Balanced out:: An XLR connector, normally a three-pin male connector. This is used in a studio set-up, and in some
+high-end hi-fi systems. It can also be used to drive active monitor speakers like those used at clubs or on
+stage directed towards the DJ or performers. 
+Stereo speakers:: Two sets of screw terminals for 2×25W speakers. These are for traditional hi-fi speakers without built-in amplification. These are known as passive speakers.
+Mono speaker:: A screw terminal for a single 1.2W speaker, as found in a transistor radio or similar.
+Headphones:: A 3.5mm jack socket delivering stereo audio for a set of headphones. The headphone amplifiers on the Raspberry Pi DAC boards can drive up to 80/90Ω impedance headphones. 
+Aux in:: A double Phono/RCA connector or 3.5mm socket. Accepts analogue audio in up to 1V RMS. This can be used to record audio from a variable analogue source such as a mobile phone, MP3 player or similar.
+Aux out:: A double Phono/RCA connector or 3.5mm socket. Delivers analogue audio out up to 1V RMS. This can be used to feed audio into an amplifier at a reduced volume compared to Line out.
+Ext mic:: A 3.5mm socket for use with an external electret microphone. The built-in MEMS microphone on the Codec Zero is automatically disabled when the external Mic in connector is used.

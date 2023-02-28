@@ -1,0 +1,148 @@
+== Installing Tools
+
+Before we get started we need to install some tools.
+
+=== Installing OpenOCD
+
+You need to install OpenOCD.
+
+NOTE: SMP support for debugging on both RP2040 cores is not yet available in the release version of `openocd`. However, support is available in the `rp2040` branch and will be enabled if you build from source.
+
+==== Linux (and Raspberry Pi)
+
+On Raspberry Pi OS you can install `openocd` directly from the command line.
+
+----
+$ sudo apt install openocd
+----
+
+You need to be running OpenOCD version 0.11.0 or 0.12.0 to have support for the Debug Probe. If you're not running Raspberry Pi OS, or your distrbution installs an older version, or require SMP support, you can build and install `openocd` from source.
+
+Start by installing needed dependencies, 
+
+----
+$ sudo apt install automake autoconf build-essential texinfo libtool libftdi-dev libusb-1.0-0-dev
+----
+
+and then build OpenOCD.
+
+----
+$ git clone https://github.com/raspberrypi/openocd.git --branch rp2040 --depth=1 --no-single-branch
+$ cd openocd
+$ ./bootstrap
+$ ./configure 
+$ make -j4
+$ sudo make install
+----
+
+NOTE: If you are building on a Raspberry Pi you can also pass `--enable-sysfsgpio --enable-bcm2835gpio` when you `./configure` to allow bit-banging SWD via the GPIO pins. See Chapters 5 and 6 of https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting Started with Raspberry Pi Pico] for more details.
+
+==== macOS
+
+Install https://brew.sh/[Homebrew] if needed,
+
+----
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+----
+
+and then OpenOCD.
+
+----
+$ brew install open-ocd
+----
+
+Alternatively you can install needed dependencies,
+
+----
+$ brew install libtool automake libusb wget pkg-config gcc texinfo 
+----
+
+and build OpenOCD from source.
+
+----
+$ cd ~/pico
+$ git clone https://github.com/raspberrypi/openocd.git --branch rp2040 --depth=1
+$ cd openocd
+$ export PATH="/usr/local/opt/texinfo/bin:$PATH"
+$ ./bootstrap
+$ ./configure --disable-werror
+$ make -j4
+$ sudo make install
+----
+
+NOTE: If you are using a newer Arm-based Mac, the path to `texinfo` will be `/opt/homebrew/opt/texinfo/bin`.
+
+NOTE: Unfortunately `disable-werror` is needed because not everything compiles cleanly on macOS
+
+==== MS Windows
+
+A standalone OpenOCD Windows package is available https://github.com/raspberrypi/pico-setup-windows/releases/latest/download/openocd-x64-standalone.zip[for download]. Alternatively it will be installed as part of our https://github.com/raspberrypi/pico-setup-windows/releases/latest[Pico setup for Windows installer] package.
+
+But, if you want to, you can also build OpenOCD from source using https://www.msys2.org/[MSYS2]. Go ahead and download and run the MSYS2 installer, and then update the package database and core system packages,
+
+----
+$ pacman -Syu
+----
+
+NOTE: If MSYS2 closes, start it again (making sure you select the 64-bit version) and run `pacman -Su` to finish the update.
+
+Install required dependencies,
+
+----
+$ pacman -S mingw-w64-x86_64-toolchain git make libtool pkg-config autoconf automake texinfo
+mingw-w64-x86_64-libusb
+----
+
+Pick all when installing the `mingw-w64-x86_64` toolchain by pressing ENTER.
+
+Close MSYS2 and reopen the 64-bit version to make sure the environment picks up GCC,
+
+----
+$ git clone https://github.com/raspberrypi/openocd.git --branch rp2040 --depth=1
+$ cd openocd
+$ ./bootstrap
+$ ./configure --disable-werror 
+$ make -j4
+----
+
+NOTE: Unfortunately `disable-werror` is needed because not everything compiles cleanly on Windows
+
+NOTE: Manual installation of `openocd` on MS Windows is not recommended.
+
+=== Installing GDB
+
+We also need to install the GNU debugger (GDB).
+
+==== Linux (and Raspberry Pi)
+
+Install `gdb-multiarch`.
+
+----
+$ sudo apt install gdb-multiarch
+----
+
+==== macOS
+
+Install https://brew.sh/[Homebrew] if needed,
+
+----
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+----
+
+then install `gdb`.
+
+----
+$ brew install gdb
+----
+
+NOTE: You can safely ignore the request for "special privileges" messages on installation.
+
+IMPORTANT: If you have an Arm-based (M1-based) Mac `gdb` is not available via Homebrew, instead you will either have to https://gist.github.com/m0sys/711d0ec5e52102c6ba44451caf38bd38[install it from source] or use `lldb` instead of `gdb`. At this time there is https://inbox.sourceware.org/gdb/3185c3b8-8a91-4beb-a5d5-9db6afb93713@Spark/[no official support] from the developers for running GDB on Arm-based Macs. Suppport for GDB can be found on the https://inbox.sourceware.org/gdb/[GDB mailing list] on Sourceware.org. `lldb` is installed as part of the Xcode Command Line Tools.
+
+==== MS Windows
+
+GDB is available as part of our https://github.com/raspberrypi/pico-setup-windows/releases/latest[Pico setup for Windows installer]. It is also included in the https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads[Arm GNU Toolchain Downloads].
+
+Alternatively information about manual installation can be found in Chapter 9 and Appendix A of our https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting Started with Raspberry Pi Pico] book. 
+
+NOTE: Manual installation of GDB on Windows is not recommended.

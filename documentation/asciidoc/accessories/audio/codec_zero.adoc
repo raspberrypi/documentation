@@ -1,0 +1,32 @@
+=== Raspberry Pi Codec Zero
+
+Raspberry Pi Codec Zero is a Raspberry Pi Zero-sized audio HAT. It delivers bi-directional digital audio signals (I2S) between a Raspberry Pi and the Codec Zero's on-board Dialog Semiconductor DA7212 codec. The Codec Zero supports a range of input and output devices.
+
+* High performance 24-bit audio codec
+* Supports common audio sample rates between 8-96kHz
+* Built in micro-electro-mechanical (MEMS) microphone (Mic2)
+* Mono electret microphone (Mic2 left)
+* Automatic MEMS disabling on Mic2 insert detect
+* Supports additional (no fit) mono electret microphone (Mic1 right)
+* Stereo auxiliary input channel (AUX IN) - PHONO/RCA connectors
+* Stereo auxiliary output channel (Headphone/AUX OUT)
+* Flexible analogue and digital mixing paths
+* Digital signal processors (DSP) for  automatic level control (ALC)
+* Five-band EQ 
+* Mono line-out/mini speaker driver: 1.2W @ 5V, THD<10%, R=8Ω
+
+image::images/Codec_Zero_Board_Diagram.jpg[width="80%"]
+
+The Codec Zero includes an EEPROM which can be used for auto-configuration of the Linux environment if necessary. It has an integrated MEMS microphone, and can be used with stereo microphone input via a 3.5mm socket and a mono speaker (1.2W/8Ω).
+
+In addition to the green (GPIO23) and red (GPIO24) LEDs, a tactile programmable button (GPIO27) is also provided.
+
+==== Pinouts
+[cols="1,12"]
+|===
+| *P1/2* | Support external PHONO/RCA sockets if needed. P1: AUX IN, P2: AUX OUT.
+| *P1* | Pin 1 is square.
+|===
+image::images/CODEC_ZERO_ZOOMED_IN_DIAGRAM.jpg[width="50%"]
+
+Codec Zero is an ideal design starting point for small-scale projects such as walkie-talkies, smart doorbells, vintage radio hacks, or smart speakers.

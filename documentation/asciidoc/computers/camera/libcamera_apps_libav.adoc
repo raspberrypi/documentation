@@ -1,0 +1,77 @@
+=== libav integration with libcamera-vid
+
+`libcamera-vid` can use the ffmpeg/libav codec backend to encode audio and video streams and either save to a local file or stream over the network. At present, video is encoded through the hardware H.264 encoder, and audio is encoded by a number of available software encoders. To list the available output formats, use the `ffmpeg -formats` command.
+
+To enable the libav backend, use the `--codec libav` command line option. Once enabled, the following configuration options are available:
+
+----
+    --libav-format,     libav output format to be used <string>
+----
+
+Set the libav output format to use. These output formats can be specified as containers (e.g. mkv, mp4, avi) or stream output (e.g. h264 or mpegts). If this option is not provided, libav tries to deduce the output format from the filename specified by the `-o` command line argument.
+
+Example: To save a video in an mkv container, the following commands are equivalent:
+
+----
+libcamera-vid --codec libav -o test.mkv
+libcamera-vid --codec libav --libav-format mkv -o test.raw
+----
+
+----
+    --libav-audio,     Enable audio recording
+----
+
+Set this option to enable audio encoding together with the video stream. When audio encoding is enabled, an output format that supports audio (e.g. mpegts, mkv, mp4) must be used.
+
+----
+    --audio-codec,     Selects the audio codec <string>
+----
+
+Selects which software audio codec is used for encoding. By default `aac` is used. To list the available audio codecs, use the `ffmpeg -codec` command.
+
+----
+    --audio-bitrate,     Selects the audio bitrate <number>
+----
+
+Sets the audio encoding bitrate in bits per second.
+
+Example: To record audio at 16 kilobits/sec with the mp2 codec use `libcamera-vid --codec libav -o test.mp4 --audio_codec mp2 --audio-bitrate 16384`
+
+----
+    --audio-samplerate,     Set the audio sampling rate <number>
+----
+
+Set the audio sampling rate in Hz for encoding. Set to 0 (default) to use the input sample rate.
+
+----
+    --audio-device,     Chooses an audio recording device to use <string>
+----
+
+Selects which ALSA input device to use for audio recording. The audio device string can be obtained with the following command:
+
+----
+pi@pi4:~ $ pactl list | grep -A2 'Source #' | grep 'Name: '
+    Name: alsa_output.platform-bcm2835_audio.analog-stereo.monitor
+    Name: alsa_output.platform-fef00700.hdmi.hdmi-stereo.monitor
+    Name: alsa_output.usb-GN_Netcom_A_S_Jabra_EVOLVE_LINK_000736B1214E0A-00.analog-stereo.monitor
+    Name: alsa_input.usb-GN_Netcom_A_S_Jabra_EVOLVE_LINK_000736B1214E0A-00.mono-fallback
+----
+
+----
+    --av-sync,     Audio/Video sync control <number>
+----
+This option can be used to shift the audio sample timestamp by a value given in microseconds relative to the video frame. Negative values may also be used.
+
+==== Network streaming with libav
+
+It is possible to use the libav backend as a network streaming source for audio/video. To do this, the output filename specified by the `-o` argument must be given as a protocol url, see https://ffmpeg.org/ffmpeg-protocols.html[ffmpeg protocols] for more details on protocol usage. Some examples:
+
+To stream audio/video using TCP
+----
+libcamera-vid -t 0 --codec libav --libav-format mpegts --libav-audio -o "tcp://0.0.0.0:1234?listen=1"
+----
+
+To stream audio/video using UDP
+----
+libcamera-vid -t 0 --codec libav --libav-format mpegts --libav-audio  -o "udp://<ip-addr>:<port>"
+----

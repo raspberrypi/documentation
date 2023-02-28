@@ -1,0 +1,138 @@
+=== Video Command Line Options
+
+----
+	--quality,	-q		JPEG quality <number>
+----
+
+Set the JPEG quality. 100 is maximum quality and 50 is the default. Only applies when saving in MJPEG format.
+
+Example: `libcamera-vid --codec mjpeg -o test.mjpeg -q 80`
+
+----
+	--bitrate,	-b		H.264 bitrate <number>
+----
+
+Set the target bitrate for the H.264 encoder, in _bits per second_. Only applies when encoding in H.264 format.
+
+Example: `libcamera-vid -b 10000000 --width 1920 --height 1080 -o test.h264`
+
+----
+	--intra,	-g		Intra-frame period (H.264 only) <number>
+----
+
+Sets the frequency of I (Intra) frames in the H.264 bitstream, as a number of frames. The default value is 60.
+
+Example: `libcamera-vid --intra 30 --width 1920 --height 1080 -o test.h264`
+
+----
+	--profile			H.264 profile <string>
+----
+
+Set the H.264 profile. The value may be `baseline`, `main` or `high`.
+
+Example: `libcamera-vid --width 1920 --height 1080 --profile main -o test.h264`
+
+----
+	--level				H.264 level <string>
+----
+
+Set the H.264 level. The value may be `4`, `4.1` or `4.2`.
+
+Example: `libcamera-vid --width 1920 --height 1080 --level 4.1 -o test.h264`
+
+----
+	--codec				Encoder to be used <string>
+----
+
+This can select how the video frames are encoded. Valid options are:
+
+* h264 - use H.264 encoder (the default)
+* mjpeg - use MJPEG encoder
+* yuv420 - output uncompressed YUV420 frames.
+* libav - use the libav backend to encode audio and video (see the xref:camera_software.adoc#libav-integration-with-libcamera-vid[libav section] for further details).
+
+Examples:
+
+`libcamera-vid -t 10000 --codec mjpeg -o test.mjpeg`
+
+`libcamera-vid -t 10000 --codec yuv420 -o test.data`
+
+----
+	--keypress,	-k		Toggle between recording and pausing
+----
+
+Pressing Enter will toggle `libcamera-vid` between recording the video stream and not recording it (i.e. discarding it). The application starts off in the recording state, unless the `--initial` option specifies otherwise. Typing `x` and Enter causes `libcamera-vid` to quit.
+
+Example: `libcamera-vid -t 0 -o test.h264 -k`
+
+----
+	--signal,	-s		Toggle between recording and pausing when SIGUSR1 received
+----
+
+The SIGUSR1 signal will toggle `libcamera-vid` between recording the video stream and not recording it (i.e. discarding it). The application starts off in the recording state, unless the `--initial` option specifies otherwise. SIGUSR2 causes `libcamera-vid` to quit.
+
+Example:
+
+`libcamera-vid -t 0 -o test.h264 -s`
+
+then 
+
+`kill -SIGUSR1 $!`
+
+----
+	--initial			Start the application in the recording or paused state <string>
+----
+
+The value passed may be `record` or `pause` to start the application in, respectively, the recording or the paused state. This option should be used in conjunction with either `--keypress` or `--signal` to toggle between the two states.
+
+Example: `libcamera-vid -t 0 -o test.h264 -k --initial pause`
+
+----
+	--split				Split multiple recordings into separate files
+----
+
+This option should be used in conjunction with `--keypress` or `--signal` and causes each recording session (in between the pauses) to be written to a separate file.
+
+Example: `libcamera-vid -t 0 --keypress --split --initial pause -o test%04d.h264`
+
+----
+	--segment			Write the video recording into multiple segments <number>
+----
+
+This option causes the video recording to be split across multiple files where the parameter gives the approximate duration of each file in milliseconds.
+
+One convenient little trick is to pass a very small duration parameter (namely, `--segment 1`) which will result in each frame being written to a separate output file. This makes it easy to do "burst" JPEG capture (using the MJPEG codec), or "burst" raw frame capture (using `libcamera-raw`).
+
+Example: `libcamera-vid -t 100000 --segment 10000 -o test%04d.h264`
+
+----
+	--circular			Write the video recording into a circular buffer of the given <size>
+----
+
+The video recording is written to a circular buffer which is written to disk when the application quits. The size of the circular buffer may be given in units of megabytes, defaulting to 4MB.
+
+Example: `libcamera-vid -t 0 --keypress --inline --circular -o test.h264`
+
+----
+	--inline			Write sequence header in every I frame (H.264 only)
+----
+
+This option causes the H.264 sequence headers to be written into every I (Intra) frame. This is helpful because it means a client can understand and decode the video sequence from any I frame, not just from the very beginning of the stream. It is recommended to use this option with any output type that breaks the output into pieces (`--segment`, `--split`, `--circular`), or transmits the output over a network.
+
+Example: `libcamera-vid -t 0 --keypress --inline --split -o test%04d.h264`
+
+----
+	--listen			Wait for an incoming TCP connection
+----
+
+This option is provided for streaming over a network using TCP/IP. Using `--listen` will cause `libcamera-vid` to wait for an incoming client connection before starting the video encode process, which will then be forwarded to that client.
+
+Example: `libcamera-vid -t 0 --inline --listen -o tcp://0.0.0.0:8123`
+
+----
+	--frames			Record exactly this many frames <number>
+----
+
+Exactly `<number>` frames are recorded. Specifying a non-zero value will override any timeout.
+
+Example: `libcamera-vid -o test.h264 --frames 1000`

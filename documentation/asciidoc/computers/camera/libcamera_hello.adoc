@@ -1,0 +1,70 @@
+=== `libcamera-hello`
+
+`libcamera-hello` is the equivalent of a "hello world" application for the camera. It starts the camera, displays a preview window, and does nothing else. For example
+
+[,bash]
+----
+libcamera-hello
+----
+should display a preview window for about 5 seconds. The `-t <duration>` option lets the user select how long the window is displayed, where `<duration>` is given in milliseconds. To run the preview indefinitely, use:
+
+[,bash]
+----
+libcamera-hello -t 0
+----
+
+The preview can be halted either by clicking the window's close button, or using `Ctrl-C` in the terminal.
+
+==== Options
+
+`libcamera-apps` uses a 3rd party library to interpret command line options. This includes _long form_ options where the option name consists of more than one character preceded by `--`, and _short form_ options which can only be a single character preceded by a single `-`. For the most part option names are chosen to match those used by the legacy `raspicam` applications with the exception that we can no longer handle multi-character option names with a single `-`. Any such legacy options have been dropped and the long form with `--` must be used instead.
+
+The options are classified broadly into 3 groups, namely those that are common, those that are specific to still images, and those that are for video encoding. They are supported in an identical manner across all the applications where they apply.
+
+Please refer to the xref:camera_software.adoc#common-command-line-options[command line options documentation] for a complete list.
+
+==== The Tuning File
+
+Raspberry Pi's `libcamera` implementation includes a _tuning file_ for each different type of camera module. This is a file that describes or "tunes" the parameters that will be passed to the algorithms and hardware to produce the best image quality. `libcamera` is only able to determine automatically the image sensor being used, not the module as a whole - even though the whole module affects the "tuning".
+
+For this reason it is sometimes necessary to override the default tuning file for a particular sensor.
+
+For example, the NOIR (no IR-filter) versions of sensors require different AWB settings to the standard versions, so the IMX219 NOIR should be run using
+
+[,bash]
+----
+libcamera-hello --tuning-file /usr/share/libcamera/ipa/raspberrypi/imx219_noir.json
+----
+
+If you are using a Soho Enterprises SE327M12 module you should use
+
+[,bash]
+----
+libcamera-hello --tuning-file /usr/share/libcamera/ipa/raspberrypi/se327m12.json
+----
+
+Notice how this also means that users can copy an existing tuning file and alter it according to their own preferences, so long as the `--tuning-file` parameter is pointed to the new version.
+
+Finally, the `--tuning-file` parameter, in common with other `libcamera-hello` command line options, applies identically across all the `libcamera-apps`.
+
+==== Preview Window
+
+Most of the `libcamera-apps` display a preview image in a window. When X Windows is not running it will draw directly to the display using Linux DRM (Direct Rendering Manager), otherwise it will attempt to use X Windows. Both paths use zero-copy buffer sharing with the GPU, and a consequence of this is that X forwarding is _not_ supported.
+
+For this reason there is a third kind of preview window which does support X forwarding, and can be requested with the `--qt-preview` option. This implementation does not benefit from zero-copy buffer sharing nor from 3D acceleration which makes it computationally expensive (especially for large previews), and so is not normally recommended.
+
+NOTE: Older systems using Gtk2 may, when linked with OpenCV, produce `Glib-GObject` errors and fail to show the Qt preview window. In this case please (as root) edit the file `/etc/xdg/qt5ct/qt5ct.conf` and replace the line containing `style=gtk2` with `style=gtk3`.
+
+The preview window can be suppressed entirely with the `-n` (`--nopreview`) option.
+
+The `--info-text` option allows the user to request that certain helpful image information is displayed on the window title bar using "% directives". For example
+
+[,bash]
+----
+libcamera-hello --info-text "red gain %rg, blue gain %bg"
+----
+will display the current red and blue gain values.
+
+For the HQ camera, use `--info-text "%focus"` to display the focus measure, which will be helpful for focusing the lens.
+
+A full description of the `--info-text` parameter is given in the xref:camera_software.adoc#common-command-line-options[command line options documentation].
