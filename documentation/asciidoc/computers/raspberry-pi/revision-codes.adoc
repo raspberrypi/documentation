@@ -589,7 +589,7 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 
 === Using revision codes for board identification
 
-From the command line we can use the following to get the revision code of the board.
+From the command line we can use the following to get the revision code of the board:
 
 [source, bash]
 ----
@@ -597,13 +597,13 @@ $cat /proc/cpuinfo | grep Revision
 Revision      : c03111
 ----
 
-In this example above, we have a hexadecimal revision code of `c03111`. Converting this to binary, we get `1 100 0000 0011 00010001 0001`. Spaces have been inserted to show the borders between each section of the revision code, according to the above table.
+In this example above, we have a hexadecimal revision code of `c03111`. Converting this to binary, we get `0 0 0 000 0 0 1 100 0000 0011 00010001 0001`. Spaces have been inserted to show the borders between each section of the revision code, according to the above table.
 
-Starting from the lowest order bits, the bottom four (0-3) are the board revision number, so this board has a revision of 1. The next four bits (4-11) are the board type, in this case binary `10001`, hex `11`, so this is a Raspberry Pi 4B. Using the same process, we can determine that the processor is a BCM2711, the board was manufactured by Sony UK, and it has 4GB of RAM.
+Starting from the lowest order bits, the bottom four (0-3) are the board revision number, so this board has a revision of 1. The next eight bits (4-11) are the board type, in this case binary `00010001`, hex `11`, so this is a Raspberry Pi 4B. Using the same process, we can determine that the processor is a BCM2711, the board was manufactured by Sony UK, and it has 4GB of RAM.
 
 ==== Getting the revision code in your program
 
-Obviously there are so many languages out there that it's not possible to give examples for all of them, but here are two quick examples for `C` and `Python`. Both these examples use a system call to run a bash command that gets the `cpuinfo` and pipes the result to `awk` to recover the required revision code. They then use bit operations to extract the `New`, `Model`, and `Memory` fields from the code.
+Obviously there are so many programming languages out there it's not possible to give examples for all of them, but here are two quick examples for `C` and `Python`. Both these examples use a system call to run a bash command that gets the `cpuinfo` and pipes the result to `awk` to recover the required revision code. They then use bit operations to extract the `New`, `Model`, and `Memory` fields from the code.
 
 
 [source, c, linenums]
@@ -654,11 +654,11 @@ if new and model == 0x11 and mem >= 3 : # Note, 3 in the mem field is 2GB
 
 ==== Best practice for revision code usage
 
-Raspberry Pi advises against using the revision code as a whole (`c03111`) to avoid problems when new board revisions are created. For example, you might consider having a list of  revision codes you support in your program, and compare the detected code with your list to determine if you allow your program to run. However, this mechanism will break when a new board revision comes out, or if the production location changes, prompting the issue of a new revision code. This changes the overall revision code schema, and this new revision code will not be in your program's list. Your program will now reject the unrecognised code, and perhaps abort, even though revisions of the same board type are always backwards-compatible. You would need to release a new version of the software with the specific revision added to the list, which can be a maintenance burden.
+Raspberry Pi advises against using the revision code as a whole (`c03111`) to avoid problems when new board revisions are created. For example, you might consider having a list of supported revision codes in your program, and comparing the detected code with your list to determine if your program is allowed to run. However, this mechanism will break when a new board revision comes out, or if the production location changes, each of which would create a new revision code that's not in your program's list. Your program would now reject the unrecognised code, and perhaps abort, even though revisions of the same board type are always backwards-compatible. You would need to release a new version of your program with the specific revision added to the list, which can be a maintenance burden.
 
-Similarly, using revision codes to indicate which model your program supports can create issues. If your program is only intended to work on devices with 2GB of RAM or more, a naive approach is to look at the list of revision codes for models that have 2GB of RAM or more, and build that list in to your code. But of course, this breaks as soon as a new board revision is released, or if boards are manufactured at a different location.
+Similarly, using revision codes to indicate which model your program supports can create issues. If your program is only intended to work on devices with 2GB of RAM or more, a naive approach would be to look at the list of revision codes for models that have 2GB of RAM or more, and build that list in to your program. But of course, this breaks as soon as a new board revision is released, or if boards are manufactured at a different location.
 
-A better mechanism is to just use the board-type field (3A, 4B etc) to determine which model your program supports; or perhaps just the amount-of-memory field. So you might say you will support any Raspberry Pi 4Bs, whatever their board revision code, because that should always work. Or you might want to restrict your code to 4B devices with 2GB of RAM or more. Simply look at those two fields to determine whether you are going to allow you code to run.
+A better mechanism is to just use the board-type field (3A, 4B, etc.) to determine which model your program supports; or perhaps just the amount-of-memory field. So you might say you will support any Raspberry Pi 4Bs, whatever their board revision code, because that should always work. Or you might want to restrict your program to 4B devices with 2GB of RAM or more. Simply look at those two fields to determine whether you are going to allow your program to run.
 
 The examples in the previous section use the recommended approach. They pull out the board type and memory size from the revision code, and use them to determine whether or not they are a Raspberry Pi 4B with 2GB or more of RAM.
 
