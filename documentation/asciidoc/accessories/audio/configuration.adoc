@@ -106,7 +106,7 @@ $ sudo reboot
 If you are using your Raspberry Pi and Codec Zero in a headless environment, there is one final step required to make the Codec Zero the default audio device without access to the GUI audio settings on the desktop. We need to create a small file in your home folder:
 
 ----
-$ sudo nano ./asoundrc
+$ sudo nano .asoundrc
 ----
 
 Add the following to the file:
