@@ -1,6 +1,6 @@
 == RP2040-based Boards
 
-Designed by Raspberry Pi as a both a development board, and as a reference design, the xref:raspberry-pi-pico.adoc[Raspberry Pi Pico] series is a family of RP2040-based boards. The Pico family currently consists of Raspberry Pi Pico (far left), Pico H (left), and Pico W (right), and Pico WH (far right).
+Designed by Raspberry Pi as both a development board, and as a reference design, the xref:raspberry-pi-pico.adoc[Raspberry Pi Pico] series is a family of RP2040-based boards. The Pico family currently consists of Raspberry Pi Pico (far left), Pico H (left), Pico W (right), and Pico WH (far right).
 
 
 image::images/pico_family.jpg[width="75%"]

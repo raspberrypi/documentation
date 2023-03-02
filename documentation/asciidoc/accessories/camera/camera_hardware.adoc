@@ -172,6 +172,8 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | CS- or M12-mount
 |===
 
+NOTE: There is https://github.com/raspberrypi/libcamera/issues/43[some evidence] to suggest that the Camera Module 3 may emit some RFI at a harmonic of the CSI clock rate. This RFI is in a range to interfer with GPS L1 frequences (1575 MHz). Please see the https://github.com/raspberrypi/libcamera/issues/43[thread on Github] for details and proposed workarounds.
+
 === Mechanical Drawings
 
 Available mechanical drawings;

@@ -1,4 +1,4 @@
-== Raspberry Pi Revision Codes
+== Raspberry Pi revision codes
 
 Each distinct Raspberry Pi model revision has a unique revision code. You can look up a Raspberry Pi's revision code by running:
 
@@ -17,7 +17,7 @@ Serial      : 00000000765fc593
 
 NOTE: As of the 4.9 kernel, all Raspberry Pi computers report `BCM2835`, even those with BCM2836, BCM2837 and BCM2711 processors. You should not use this string to detect the processor. Decode the revision code using the information below, or `cat /sys/firmware/devicetree/base/model`.
 
-=== Old-style Revision Codes
+=== Old-style revision codes
 
 The first set of Raspberry Pi models were given sequential hex revision codes from `0002` to `0015`:
 
@@ -127,7 +127,7 @@ The first set of Raspberry Pi models were given sequential hex revision codes fr
 | Embest
 |===
 
-=== New-style Revision Codes
+=== New-style revision codes
 
 With the launch of the Raspberry Pi 2, new-style revision codes were introduced. Rather than being sequential, each bit of the hex code represents a piece of information about the revision:
 
@@ -138,7 +138,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |===
 | Part | Represents | Options
 
-| N
+| N (bit 31)
 | Overvoltage
 | 0: Overvoltage allowed
 
@@ -146,7 +146,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 1: Overvoltage disallowed
 
-| O
+| O (bit 30)
 | OTP Program^1^
 | 0: OTP programming allowed
 
@@ -154,7 +154,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 1: OTP programming disallowed
 
-| Q
+| Q (bit 29)
 | OTP Read^1^
 | 0: OTP reading allowed
 
@@ -162,11 +162,11 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 1: OTP reading disallowed
 
-| uuu
+| uuu (bits 26-28)
 | Unused
 | Unused
 
-| W
+| W (bit 25)
 | Warranty bit^2^
 | 0: Warranty is intact
 
@@ -174,11 +174,11 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 1: Warranty has been voided by xref:config_txt.adoc#overclocking-options[overclocking]
 
-| u
+| u (bit 24)
 | Unused
 | Unused
 
-| F
+| F (bit 23)
 | New flag
 | 1: new-style revision
 
@@ -186,7 +186,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 0: old-style revision
 
-| MMM
+| MMM (bits 20-22)
 | Memory size
 | 0: 256MB
 
@@ -210,7 +210,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 5: 8GB
 
-| CCCC
+| CCCC (bits 16-19)
 | Manufacturer
 | 0: Sony UK
 
@@ -234,7 +234,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 5: Stadium
 
-| PPPP
+| PPPP (bits 12-15)
 | Processor
 | 0: BCM2835
 
@@ -250,7 +250,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 3: BCM2711
 
-| TTTTTTTT
+| TTTTTTTT (bits 4-11)
 | Type
 | 0: A
 
@@ -330,18 +330,18 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 15: CM4S
 
-| RRRR
+| RRRR (bits 0-3)
 | Revision
 | 0, 1, 2, etc.
 |===
 
 ^1^ Information on xref:raspberry-pi.adoc#otp-register-and-bit-definitions[programming the OTP bits].
 
-^2^ Warranty bit is never set on Raspberry Pi 4.
+^2^ The warranty bit is never set on Raspberry Pi 4.
 
-=== New-style Revision Codes in Use
+=== New-style revision codes in use
 
-NOTE: This list is not exhaustive - there may be codes in use that are not in this table.
+NOTE: This list is not exhaustive - there may be codes in use that are not in this table. Please see the next section for best practices on using revision codes to identify boards.
 
 |===
 | Code | Model | Revision | RAM | Manufacturer
@@ -580,9 +580,86 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 8GB
 | Sony UK
 
-|902120
+| 902120
 | Zero 2 W
 | 1.0
 | 512MB
 | Sony UK
 |===
+
+=== Using revision codes for board identification
+
+From the command line we can use the following to get the revision code of the board:
+
+[source, bash]
+----
+$cat /proc/cpuinfo | grep Revision
+Revision      : c03111
+----
+
+In this example above, we have a hexadecimal revision code of `c03111`. Converting this to binary, we get `0 0 0 000 0 0 1 100 0000 0011 00010001 0001`. Spaces have been inserted to show the borders between each section of the revision code, according to the above table.
+
+Starting from the lowest order bits, the bottom four (0-3) are the board revision number, so this board has a revision of 1. The next eight bits (4-11) are the board type, in this case binary `00010001`, hex `11`, so this is a Raspberry Pi 4B. Using the same process, we can determine that the processor is a BCM2711, the board was manufactured by Sony UK, and it has 4GB of RAM.
+
+==== Getting the revision code in your program
+
+Obviously there are so many programming languages out there it's not possible to give examples for all of them, but here are two quick examples for `C` and `Python`. Both these examples use a system call to run a bash command that gets the `cpuinfo` and pipes the result to `awk` to recover the required revision code. They then use bit operations to extract the `New`, `Model`, and `Memory` fields from the code.
+
+
+[source, c, linenums]
+----
+#include <stdio.h>
+#include <stdlib.h>
+
+int main( int argc, char *argv[] )
+{
+  FILE *fp;
+  char revcode[32];
+
+  fp = popen("cat /proc/cpuinfo | awk '/Revision/ {print $3}'", "r");
+  if (fp == NULL)
+    exit(1);
+  fgets(revcode, sizeof(revcode), fp);
+  pclose(fp);
+
+  int code = strtol(revcode, NULL, 16);
+  int new = (code >> 23) & 0x1;
+  int model = (code >> 4) & 0xff;
+  int mem = (code >> 20) & 0x7;
+
+  if (new && model == 0x11 && mem >= 3)  // Note, 3 in the mem field is 2GB
+     printf("We are a 4B with at least 2GB of RAM!\n" );
+
+  return 0;
+}
+----
+
+And the same in Python:
+
+[source, python, linenums]
+----
+import subprocess
+
+cmd = "cat /proc/cpuinfo | awk '/Revision/ {print $3}'"
+revcode = subprocess.check_output(cmd, shell=True)
+
+code = int(revcode, 16)  
+new = (code >> 23) & 0x1
+model = (code >> 4) & 0xff
+mem = (code >> 20) & 0x7
+
+if new and model == 0x11 and mem >= 3 : # Note, 3 in the mem field is 2GB
+    print("We are a 4B with at least 2GB RAM!")
+----
+
+==== Best practice for revision code usage
+
+Raspberry Pi advises against using the revision code as a whole (`c03111`) to avoid problems when new board revisions are created. For example, you might consider having a list of supported revision codes in your program, and comparing the detected code with your list to determine if your program is allowed to run. However, this mechanism will break when a new board revision comes out, or if the production location changes, each of which would create a new revision code that's not in your program's list. Your program would now reject the unrecognised code, and perhaps abort, even though revisions of the same board type are always backwards-compatible. You would need to release a new version of your program with the specific revision added to the list, which can be a maintenance burden.
+
+Similarly, using revision codes to indicate which model your program supports can create issues. If your program is only intended to work on devices with 2GB of RAM or more, a naive approach would be to look at the list of revision codes for models that have 2GB of RAM or more, and build that list in to your program. But of course, this breaks as soon as a new board revision is released, or if boards are manufactured at a different location.
+
+A better mechanism is to just use the board-type field (3A, 4B, etc.) to determine which model your program supports; or perhaps just the amount-of-memory field. So you might say you will support any Raspberry Pi 4Bs, whatever their board revision code, because that should always work. Or you might want to restrict your program to 4B devices with 2GB of RAM or more. Simply look at those two fields to determine whether you are going to allow your program to run.
+
+The examples in the previous section use the recommended approach. They pull out the board type and memory size from the revision code, and use them to determine whether or not they are a Raspberry Pi 4B with 2GB or more of RAM.
+
+NOTE: You should always check bit 23, the 'New' flag, to ensure that the revision code is the new version before checking any other fields. The examples here also do this.
