@@ -280,7 +280,7 @@ NOTE: There is no consistent meaning for `0` and `1` in arguments. Each function
 
 NOTE: Due to the continual development of the `raspi-config` tool, the list of options below may not be completely up to date. Also please be aware that different models of Raspberry Pi may have different options available.
 
-==== Wireless LAN `do_wifi_ssid_passphrase`
+==== Wireless LAN 
 
 Allows setting of the wireless LAN SSID and passphrase.
 
