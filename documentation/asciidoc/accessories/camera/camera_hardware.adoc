@@ -223,7 +223,7 @@ NOTE: Board dimensions and mounting-hole positions for Camera Module 3 are ident
 === Schematics
 
 .Schematic of the Raspberry Pi CSI camera connector.
-image:images/RPi-S5-conn.png[camera connector]
+image:images/RPi-S5-conn.png[camera connector, width="65%"]
 
 Other available schematics;
 
@@ -236,10 +236,10 @@ Other available schematics;
 
 The Camera Module 3 is built around the IMX708, which has the following spectral sensitivity characteristics.
 
-image::images/cm3-filter.png[Camera Module 3 Transmission Graph]
+image::images/cm3-filter.png[Camera Module 3 Transmission Graph, width="65%"]
 
 === HQ Camera
 
 The HQ Camera uses a Hoya CM500 infrared filter. Its transmission characteristics are as represented in the following graph.
 
-image::images/hoyacm500.png[CM500 Transmission Graph]
+image::images/hoyacm500.png[CM500 Transmission Graph,width="65%"]
