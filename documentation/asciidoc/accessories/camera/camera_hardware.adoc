@@ -81,7 +81,7 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | 3g
 | 4g
 | 4g
-|
+| 30.4g
 | 34g (41g with adaptor and dust cap)
 
 | Still resolution
