@@ -1,5 +1,5 @@
 :figure-caption!:
-== Camera Modules
+== About the Camera Modules
 
 There are now several official Raspberry Pi camera modules. The original 5-megapixel model was https://www.raspberrypi.com/news/camera-board-available-for-sale/[released] in 2013, it was followed by an 8-megapixel https://www.raspberrypi.com/products/camera-module-v2/[Camera Module 2] which was https://www.raspberrypi.com/news/new-8-megapixel-camera-board-sale-25/[released] in 2016. The latest camera model is the 12-megapixel https://raspberrypi.com/products/camera-module-3/[Camera Module 3] which was https://www.raspberrypi.com/news/new-autofocus-camera-modules/[released] in 2023. The original 5MP device is no longer available from Raspberry Pi. 
 
@@ -11,7 +11,7 @@ image::images/cm3.jpg[Camera Module 3 normal and wide angle]
 .Camera Module 3 NoIR (left) and Camera Module 3 NoIR Wide (right)
 image::images/cm3_noir.jpg[Camera Module 3 NoIR normal and wide angle]
 
-Aditionally a 12-megapixel https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[High Quality Camera] with CS- or M12-mount variants for use with external lenses was https://www.raspberrypi.com/news/new-product-raspberry-pi-high-quality-camera-on-sale-now-at-50/[released in 2020] and https://www.raspberrypi.com/news/new-autofocus-camera-modules/[2023] respectively. There is no infrared version of the HQ Camera, however the xref:camera.adoc#hq-camera-filter-removal[IR Filter can be removed] if required.
+Aditionally a 12-megapixel https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[High Quality Camera] with CS- or M12-mount variants for use with external lenses was https://www.raspberrypi.com/news/new-product-raspberry-pi-high-quality-camera-on-sale-now-at-50/[released in 2020] and https://www.raspberrypi.com/news/new-autofocus-camera-modules/[2023] respectively. There is no infrared version of the HQ Camera, however the xref:camera.adoc#filter-removal[IR Filter can be removed] if required.
 
 .HQ Camera, M12-mount (left) and C/CS-mount (right)
 image::images/hq.jpg[M12- and C/CS-mount versions of the HQ Camera]
@@ -33,11 +33,11 @@ Why is this useful? Fast-moving objects, like those propeller blades, are now ea
 
 NOTE: The Global Shutter Camera’s image sensor has a 6.3mm diagonal active sensing area, which is similar in size to Raspberry Pi’s HQ Camera. However, the pixels are larger and can collect more light. Large pixel size and low pixel count are valuable in machine-vision applications; the more pixels a sensor produces, the harder it is to process the image in real time. To get around this, many applications downsize and crop images. This is unnecessary with the Global Shutter Camera and the appropriate lens magnification, where the lower resolution and large pixel size mean an image can be captured natively. 
 
-=== Installing a Raspberry Pi camera
+== Installing a Raspberry Pi camera
 
 WARNING: Cameras are sensitive to static. Earth yourself prior to handling the PCB. A sink tap or similar should suffice if you don't have an earthing strap.
 
-==== Connecting the Camera
+=== Connecting the Camera
 
 The flex cable inserts into the connector labelled CAMERA on the Raspberry Pi, which is located between the Ethernet and HDMI ports. The cable must be inserted with the silver contacts facing the HDMI port. To open the connector, pull the tabs on the top of the connector upwards, then towards the Ethernet port. The flex cable should be inserted firmly into the connector, with care taken not to bend the flex at too acute an angle. To close the connector, push the top part of the connector towards the HDMI port and down, while holding the flex cable in place.
 
@@ -55,7 +55,7 @@ Before proceeding, we recommend ensuring that your kernel, GPU firmware and appl
 
 Then, please follow the relevant setup instructions for the xref:../computers/camera_software.adoc#getting-started[libcamera] software stack, and the https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf[Picamera2 Python library].
 
-=== Hardware Specification
+== Hardware Specification
 
 |===
 |  | Camera Module v1 | Camera Module v2 | Camera Module 3 | Camera Module 3 Wide | HQ Camera | GS Camera
@@ -232,16 +232,3 @@ Other available schematics;
 * Camera Module v2 https://datasheets.raspberrypi.com/camera/camera-module-2-schematics.pdf[PDF]
 * HQ Camera Module https://datasheets.raspberrypi.com/hq-camera/hq-camera-schematics.pdf[PDF]
 
-== Filter Transmission
-
-=== Camera Module 3
-
-The Camera Module 3 is built around the IMX708, which has the following spectral sensitivity characteristics.
-
-image::images/cm3-filter.png[Camera Module 3 Transmission Graph, width="65%"]
-
-=== HQ Camera
-
-The HQ Camera uses a Hoya CM500 infrared filter. Its transmission characteristics are as represented in the following graph.
-
-image::images/hoyacm500.png[CM500 Transmission Graph,width="65%"]

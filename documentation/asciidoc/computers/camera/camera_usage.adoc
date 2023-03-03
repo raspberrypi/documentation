@@ -6,7 +6,7 @@ Aditionally a 12-megapixel https://www.raspberrypi.com/products/raspberry-pi-hig
 
 All of these cameras come in visible light and infrared versions, while the Camera Module 3 also comes as a standard or wide FoV model for a total of four different variants.
  
-Further details on the camera modules can be found in the xref:../accessories/camera.adoc#camera-modules[camera hardware] page.
+Further details on the camera modules can be found in the xref:../accessories/camera.adoc#about-the-camera-modules[camera hardware] page.
 
 All Raspberry Pi cameras are capable of taking high-resolution photographs, along with full HD 1080p video, and can be fully controlled programmatically. This documentation describes how to use the camera in various scenarios, and how to use the various software tools.
 
