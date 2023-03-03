@@ -217,6 +217,8 @@ Available mechanical drawings;
 * HQ Camera Module (CS-mount version) https://datasheets.raspberrypi.com/hq-camera/hq-camera-cs-mechanical-drawing.pdf[PDF]
 ** The CS-mount https://datasheets.raspberrypi.com/hq-camera/hq-camera-cs-lensmount-drawing.pdf[PDF]
 * HQ Camera Module (M12-mount version) https://datasheets.raspberrypi.com/hq-camera/hq-camera-m12-mechanical-drawing.pdf[PDF]
+* GS Camera Module 
+https://datasheets.raspberrypi.com/gs-camera/gs-camera-mechanical-drawing.pdf[PDF]
 
 NOTE: Board dimensions and mounting-hole positions for Camera Module 3 are identical to Camera Module 2. However, due to changes in the size and position of the sensor module, it is not mechanically compatible with the camera lid for the Raspberry Pi Zero Case.
 
