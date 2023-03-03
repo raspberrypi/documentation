@@ -16,7 +16,22 @@ Aditionally a 12-megapixel https://www.raspberrypi.com/products/raspberry-pi-hig
 .HQ Camera, M12-mount (left) and C/CS-mount (right)
 image::images/hq.jpg[M12- and C/CS-mount versions of the HQ Camera]
 
+Finally, there is the Global Shutter camera, which was released in 2023. There is no infrared version of the GS Camera.
+
+.Global Shutter Camera
+image::images/gs-camera.jpg[GS Camera]
+
 NOTE: Raspberry Pi Camera Modules are compatible with all Raspberry Pi computers with CSI connectors - that is, all models except Raspberry Pi 400 and the 2016 launch version of Zero.
+
+=== Rolling or Global shutter?
+
+Most digital cameras — and our Camera Modules — use a rolling shutter: they scan the image they’re capturing line-by-line, then output the results. You may have noticed that this can cause distortion effects in some settings; if you’ve ever photographed rotating propeller blades, you’ve probably spotted the image shimmering rather than looking like an object that is rotating. The propeller blades have had enough time to change position in the tiny moment that the camera has taken to swipe across and observe the scene.
+
+A global shutter — and our Global Shutter Camera Module — doesn’t do this. It captures the light from every pixel in the scene at once, so your photograph of propeller blades will not suffer from the same distortion.
+
+Why is this useful? Fast-moving objects, like those propeller blades, are now easy to capture; we can also synchronise several cameras to take a photo at precisely the same moment in time. There are plenty of benefits here, like minimising distortion when capturing stereo images. (The human brain is confused if any movement that appears in the left eye has not appeared in the right eye yet.) The Raspberry Pi Global Shutter Camera can also operate with shorter exposure times - down to 30µs, given enough light - than a rolling shutter camera, which makes it useful for high-speed photography. 
+
+NOTE: The Global Shutter Camera’s image sensor has a 6.3mm diagonal active sensing area, which is similar in size to Raspberry Pi’s HQ Camera. However, the pixels are larger and can collect more light. Large pixel size and low pixel count are valuable in machine-vision applications; the more pixels a sensor produces, the harder it is to process the image in real time. To get around this, many applications downsize and crop images. This is unnecessary with the Global Shutter Camera and the appropriate lens magnification, where the lower resolution and large pixel size mean an image can be captured natively. 
 
 === Installing a Raspberry Pi camera
 
@@ -43,13 +58,14 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 === Hardware Specification
 
 |===
-|  | Camera Module v1 | Camera Module v2 | Camera Module 3 | Camera Module 3 Wide | HQ Camera
+|  | Camera Module v1 | Camera Module v2 | Camera Module 3 | Camera Module 3 Wide | HQ Camera | GS Camera
 
 | Net price
 | $25
 | $25
 | $25 
 | $35
+| $50
 | $50
 
 | Size
@@ -58,6 +74,7 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | Around 25 × 24 × 11.5 mm
 | Around 25 × 24 × 12.4 mm
 | 38 x 38 x 18.4mm (excluding lens)
+| 38 x 38 x 19.8mm (29.5mm with adaptor and dust cap)
 
 | Weight
 | 3g
@@ -65,6 +82,7 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | 4g
 | 4g
 |
+| 34g (41g with adaptor and dust cap)
 
 | Still resolution
 | 5 Megapixels
@@ -72,6 +90,7 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | 11.9 Megapixels
 | 11.9 Megapixels
 | 12.3 Megapixels
+| 1.58 Megapixels
 
 | Video modes
 | 1080p30, 720p60 and 640 × 480p60/90
@@ -79,6 +98,7 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | 2304 × 1296p56, 2304 × 1296p30 HDR, 1536 × 864p120
 | 2304 × 1296p56, 2304 × 1296p30 HDR, 1536 × 864p120
 | 2028 × 1080p50, 2028 × 1520p40 and 1332 × 990p120
+| 1456 x 1088p60
 
 | Sensor
 | OmniVision OV5647
@@ -86,6 +106,7 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | Sony IMX708
 | Sony IMX708
 | Sony IMX477
+| Sony IMX296
 
 | Sensor resolution
 | 2592 × 1944 pixels
@@ -93,6 +114,7 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | 4608 x 2592 pixels
 | 4608 x 2592 pixels
 | 4056 x 3040 pixels
+| 1456 x 1088 pixels
 
 | Sensor image area
 | 3.76 × 2.74 mm
@@ -100,6 +122,7 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | 6.45 x 3.63mm (7.4mm diagonal)
 | 6.45 x 3.63mm (7.4mm diagonal)
 | 6.287mm x 4.712 mm (7.9mm diagonal)
+| 6.3mm diagonal
 
 | Pixel size
 | 1.4 µm × 1.4 µm
@@ -107,6 +130,7 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | 1.4 µm x 1.4 µm
 | 1.4 µm x 1.4 µm
 | 1.55 µm x 1.55 µm
+| 3.45 µm x 3.45 µm
 
 | Optical size
 | 1/4"
@@ -114,12 +138,14 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | 1/2.43"
 | 1/2.43"
 | 1/2.3"
+| 1/2.9"
 
 | Focus
 | Fixed
 | Adjustable
 | Motorized
 | Motorized
+| Adjustable
 | Adjustable
 
 | Depth of field
@@ -128,12 +154,14 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | Approx 10 cm to ∞ 
 | Approx 5 cm to ∞ 
 | N/A
+| N/A
 
 | Focal length
 | 3.60 mm +/- 0.01
 | 3.04 mm
 | 4.74 mm
 | 2.75 mmm
+| Depends on lens
 | Depends on lens
 
 | Horizontal Field of View (FoV)
@@ -142,12 +170,14 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | 66 degrees
 | 102 degrees
 | Depends on lens
+| Depends on lens
 
 | Vertical Field of View (FoV)
 | 41.41 +/- 0.11 degrees
 | 48.8 degrees
 | 41 degrees
 | 67 degrees
+| Depends on lens
 | Depends on lens
 
 | Focal ratio (F-Stop)
@@ -156,6 +186,7 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | F1.8
 | F2.2
 | Depends on lens
+| Depends on lens
 
 | Maximum exposure times (seconds)
 | 6
@@ -163,6 +194,7 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | 112
 | 112
 | 670.74
+| 15.5 
 
 | Lens Mount
 | N/A
@@ -170,6 +202,7 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | N/A 
 | N/A
 | CS- or M12-mount
+| C/CS
 |===
 
 NOTE: There is https://github.com/raspberrypi/libcamera/issues/43[some evidence] to suggest that the Camera Module 3 may emit some RFI at a harmonic of the CSI clock rate. This RFI is in a range to interfere with GPS L1 frequencies (1575 MHz). Please see the https://github.com/raspberrypi/libcamera/issues/43[thread on Github] for details and proposed workarounds.
