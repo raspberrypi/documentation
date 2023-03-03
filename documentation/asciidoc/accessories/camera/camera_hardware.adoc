@@ -201,7 +201,7 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | N/A
 | N/A 
 | N/A
-| CS- or M12-mount
+| C/CS- or M12-mount
 | C/CS
 |===
 
