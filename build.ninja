@@ -20,8 +20,8 @@ rule create_toc
 rule create_build_adoc
   command = $scripts_dir/create_build_adoc.py $documentation_index $site_config $GITHUB_EDIT_TEMPLATE $in $inc_dir $out
 
-rule create_build_adoc2
-  command = $scripts_dir/create_build_adoc.py $documentation_index $site_config $in $out_dir $out
+rule create_build_adoc_doxygen
+  command = $scripts_dir/create_build_adoc_doxygen.py $documentation_index $site_config $in $out_dir $out
 
 rule create_build_adoc_include
   command = $scripts_dir/create_build_adoc_include.py $site_config $GITHUB_EDIT_TEMPLATE $in $out

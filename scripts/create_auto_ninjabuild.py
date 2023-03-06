@@ -190,10 +190,10 @@ if __name__ == "__main__":
 
             dest = os.path.join('$out_dir', page)
             source = os.path.join('$src_dir', page)
-            extra_sources = ['$scripts_dir/create_build_adoc.py', '$documentation_index', '$site_config']
+            extra_sources = ['$scripts_dir/create_build_adoc_doxygen.py', '$documentation_index', '$site_config']
             if source not in all_doc_sources:
                 all_doc_sources.append(source)
-                ninja.build(dest, 'create_build_adoc2', source, extra_sources)
+                ninja.build(dest, 'create_build_adoc_doxygen', source, extra_sources)
                 targets.append(dest)
         if targets:
             ninja.default(targets)
