@@ -25,8 +25,8 @@ def check_no_markdown(filename):
 if __name__ == "__main__":
     index_json = sys.argv[1]
     config_yaml = sys.argv[2]
-    github_edit = sys.argv[3]
-    src_adoc = sys.argv[4]
+    src_adoc = sys.argv[3]
+    picosdk_json = sys.argv[4]
     includes_dir = sys.argv[5]
     build_adoc = sys.argv[6]
 
@@ -35,29 +35,25 @@ if __name__ == "__main__":
 
     check_no_markdown(src_adoc)
 
+    with open(picosdk_json) as json_fh:
+        picosdk_data = json.load(json_fh)
+
     index_title = None
     with open(index_json) as json_fh:
         data = json.load(json_fh)
         for tab in data['tabs']:
-            if 'path' in tab and tab['path'] == output_subdir:
-                for subitem in tab['subitems']:
-                    if 'subpath' in subitem and subitem['subpath'] == adoc_filename:
-                        index_title = subitem['title']
-                        break
-                if index_title is not None:
-                    break
+            if 'from_json' in tab and 'directory' in tab and tab['directory'] == output_subdir:
+                filebase = os.path.splitext(adoc_filename)[0]
+                if filebase in picosdk_data:
+                    index_title = picosdk_data[filebase]['name']
+                else:
+                    index_title = filebase
+                break
     if index_title is None:
         raise Exception("Couldn't find title for {} in {}".format(os.path.join(output_subdir, adoc_filename), index_json))
 
     with open(config_yaml) as config_fh:
         site_config = yaml.safe_load(config_fh)
-
-    with open(github_edit) as edit_fh:
-        edit_template = edit_fh.read()
-        template_vars = {
-            'github_edit_link': os.path.join(site_config['githuburl'], 'blob', site_config['githubbranch_edit'], src_adoc)
-        }
-        edit_text = re.sub('{{\s*(\w+)\s*}}', lambda m: template_vars[m.group(1)], edit_template)
 
     new_contents = ''
     seen_header = False
@@ -66,8 +62,6 @@ if __name__ == "__main__":
             if line.startswith('== '):
                 if not seen_header:
                     seen_header = True
-                    if github_edit is not None:
-                        line += edit_text + "\n\n"
             else:
                 m = re.match('^(include::)(.+)(\[\]\n?)$', line)
                 if m:

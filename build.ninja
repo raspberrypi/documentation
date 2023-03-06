@@ -4,6 +4,7 @@
 DOCUMENTATION_IMAGES_DIR = documentation/images
 GITHUB_EDIT_TEMPLATE = jekyll-assets/_includes/github_edit.adoc
 HTACCESS_EXTRA = documentation/htaccess_extra.txt
+DOXYGEN_PICOSDK_INDEX_JSON = documentation/asciidoc/pico-sdk/picosdk_index.json
 
 # this corresponds to BUILD_DIR in Makefile
 builddir = build
@@ -20,8 +21,8 @@ rule create_toc
 rule create_build_adoc
   command = $scripts_dir/create_build_adoc.py $documentation_index $site_config $GITHUB_EDIT_TEMPLATE $in $inc_dir $out
 
-rule create_build_adoc2
-  command = $scripts_dir/create_build_adoc.py $documentation_index $site_config $in $out_dir $out
+rule create_build_adoc_doxygen
+  command = $scripts_dir/create_build_adoc_doxygen.py $documentation_index $site_config $in $DOXYGEN_PICOSDK_INDEX_JSON $out_dir $out
 
 rule create_build_adoc_include
   command = $scripts_dir/create_build_adoc_include.py $site_config $GITHUB_EDIT_TEMPLATE $in $out
