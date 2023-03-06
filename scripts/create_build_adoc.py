@@ -46,9 +46,6 @@ if __name__ == "__main__":
                         break
                 if index_title is not None:
                     break
-            elif 'from_json' in tab:
-                index_title = tab['title']
-                break
     if index_title is None:
         raise Exception("Couldn't find title for {} in {}".format(os.path.join(output_subdir, adoc_filename), index_json))
 

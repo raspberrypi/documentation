@@ -26,27 +26,28 @@ if __name__ == "__main__":
     index_json = sys.argv[1]
     config_yaml = sys.argv[2]
     src_adoc = sys.argv[3]
-    includes_dir = sys.argv[4]
-    build_adoc = sys.argv[5]
+    picosdk_json = sys.argv[4]
+    includes_dir = sys.argv[5]
+    build_adoc = sys.argv[6]
 
     output_subdir = os.path.basename(os.path.dirname(build_adoc))
     adoc_filename = os.path.basename(build_adoc)
 
     check_no_markdown(src_adoc)
 
+    with open(picosdk_json) as json_fh:
+        picosdk_data = json.load(json_fh)
+
     index_title = None
     with open(index_json) as json_fh:
         data = json.load(json_fh)
         for tab in data['tabs']:
-            if 'path' in tab and tab['path'] == output_subdir:
-                for subitem in tab['subitems']:
-                    if 'subpath' in subitem and subitem['subpath'] == adoc_filename:
-                        index_title = subitem['title']
-                        break
-                if index_title is not None:
-                    break
-            elif 'from_json' in tab:
-                index_title = tab['title']
+            if 'from_json' in tab and 'directory' in tab and tab['directory'] == output_subdir:
+                filebase = os.path.splitext(adoc_filename)[0]
+                if filebase in picosdk_data:
+                    index_title = picosdk_data[filebase]['name']
+                else:
+                    index_title = filebase
                 break
     if index_title is None:
         raise Exception("Couldn't find title for {} in {}".format(os.path.join(output_subdir, adoc_filename), index_json))
