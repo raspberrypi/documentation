@@ -60,9 +60,12 @@ if __name__ == "__main__":
     output_dir = sys.argv[5]
     adoc_includes_dir = sys.argv[6]
     assets_dir = sys.argv[7]
-    redirects_dir = sys.argv[8]
-    images_dir = sys.argv[9]
-    output_ninjabuild = sys.argv[10]
+    doxygen_pico_sdk_build_dir = sys.argv[8]
+    if not os.path.exists(doxygen_pico_sdk_build_dir):
+        raise Exception("{} doesn't exist".format(doxygen_pico_sdk_build_dir))
+    redirects_dir = sys.argv[9]
+    images_dir = sys.argv[10]
+    output_ninjabuild = sys.argv[11]
 
     global_images = ['full-sized/Datasheets.png', 'full-sized/PIP.png', 'full-sized/Tutorials.png', 'full-sized/Forums.png']
 
@@ -134,6 +137,7 @@ if __name__ == "__main__":
         ninja.variable('documentation_index', index_json)
         ninja.variable('output_index', os.path.join(output_dir, "_data", "index.json"))
         ninja.variable('site_config', config_yaml)
+        ninja.variable('doxyfile', os.path.join(doxygen_pico_sdk_build_dir, "docs", "Doxyfile"))
         ninja.newline()
 
         targets = []
@@ -241,6 +245,17 @@ if __name__ == "__main__":
         extra_sources = ['$scripts_dir/create_nav.py']
         extra_sources.extend(all_doc_sources)
         ninja.build(dest, 'create_toc', source, extra_sources)
+        targets.append(dest)
+        if targets:
+            ninja.default(targets)
+            targets = []
+            ninja.newline()
+
+        # supplemental data
+        dest = os.path.join('$out_dir', '_data', 'supplemental.json')
+        source = '$doxyfile'
+        extra_sources = ['$scripts_dir/create_output_supplemental_data.py']
+        ninja.build(dest, 'create_output_supplemental_data', source, extra_sources)
         targets.append(dest)
         if targets:
             ninja.default(targets)
