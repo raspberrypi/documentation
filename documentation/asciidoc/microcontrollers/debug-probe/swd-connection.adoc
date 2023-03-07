@@ -35,7 +35,7 @@ $ make -j4
 
 In a debug build you will get more information when you run it under the debugger, as the compiler builds your program with the information to tell GDB what your program is doing.
 
-See chapter Chapter 6 of https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico] for more information.
+See Chapter 6 of https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico] for more information.
 ======
 
 Run OpenOCD 'server' ready to attach GDB to:
