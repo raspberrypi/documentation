@@ -11,7 +11,7 @@ image::images/cm3.jpg[Camera Module 3 normal and wide angle]
 .Camera Module 3 NoIR (left) and Camera Module 3 NoIR Wide (right)
 image::images/cm3_noir.jpg[Camera Module 3 NoIR normal and wide angle]
 
-Aditionally a 12-megapixel https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[High Quality Camera] with CS- or M12-mount variants for use with external lenses was https://www.raspberrypi.com/news/new-product-raspberry-pi-high-quality-camera-on-sale-now-at-50/[released in 2020] and https://www.raspberrypi.com/news/new-autofocus-camera-modules/[2023] respectively. There is no infrared version of the HQ Camera, however the xref:camera.adoc#hq-camera-filter-removal[IR Filter can be removed] if required.
+Additionally a 12-megapixel https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[High Quality Camera] with CS- or M12-mount variants for use with external lenses was https://www.raspberrypi.com/news/new-product-raspberry-pi-high-quality-camera-on-sale-now-at-50/[released in 2020] and https://www.raspberrypi.com/news/new-autofocus-camera-modules/[2023] respectively. There is no infrared version of the HQ Camera, however the xref:camera.adoc#hq-camera-filter-removal[IR Filter can be removed] if required.
 
 .HQ Camera, M12-mount (left) and C/CS-mount (right)
 image::images/hq.jpg[M12- and C/CS-mount versions of the HQ Camera]
