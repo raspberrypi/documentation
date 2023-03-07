@@ -38,9 +38,4 @@ The Debug Probe has five LEDs, a red LED to indicate power, and four more activi
 
 image::images/debug-leds.png[width="70%"]
 
-* D2 (green) - GPIO7 - `UART_RX` activity
-* D3 (yellow) - GPIO8 - `UART_TX` activity
-* D4 (green) - GPIO15 - activated on `DAP_CONNECTED` signal
-* D5 (yellow) - GPIO16 - activated on `DAP_TARGET_RUNNING` signal
-
 NOTE: OpenOCD just switches both DAP LEDs on when the target is connected, and turns them off when it calls `DAP_DISCONNECT`.
