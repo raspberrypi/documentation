@@ -76,7 +76,7 @@ The `[none]` filter prevents any settings that follow from being applied to any 
 
 This filter succeeds if the `tryboot` reboot flag was set.
 
-It is intented for use in xref:config_txt.adoc#autoboot-txt[autoboot.txt] to select a different `boot_partition` in `tryboot` mode for fail-safe OS updates.
+It is intended for use in xref:config_txt.adoc#autoboot-txt[autoboot.txt] to select a different `boot_partition` in `tryboot` mode for fail-safe OS updates.
 
 === The `[EDID=*]` filter
 

@@ -1,9 +1,23 @@
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
 <script type="text/javascript">
-  docsearch({
-    appId: 'IHWGNTJ1NP',
-    apiKey: '94f8e1d1619229399fe8b33bcf750dfd',
-    indexName: 'raspberrypi',
-    container: '#docsearch'
-  });
+  (function () {
+    var lvl0 = document.querySelector('#tab-menu li.selected'),
+        lvl1 = document.querySelector('#content h1'),
+        searchParameters = { optionalFilters: [] };
+
+    if (lvl0) {
+      searchParameters.optionalFilters.push("hierarchy.lvl0:" + lvl0.innerText);
+    }
+    if (lvl1) {
+      searchParameters.optionalFilters.push("hierarchy.lvl1:" + lvl1.innerText + "<score=2>");
+    }
+
+    docsearch({
+      appId: 'IHWGNTJ1NP',
+      apiKey: '94f8e1d1619229399fe8b33bcf750dfd',
+      indexName: 'raspberrypi',
+      container: '#docsearch',
+      searchParameters: searchParameters
+    });
+  }());
 </script>
