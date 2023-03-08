@@ -643,6 +643,10 @@ p.see span.label {
   margin-right: 5px;
 }
 
+span.obfuscator {
+  display: none;
+}
+
 /* LEGAL */
 
 div.legal {
