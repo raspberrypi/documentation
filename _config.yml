@@ -37,9 +37,6 @@ destination: documentation/html
 sass:
     sass_dir: css
 
-# doxygen config
-doxygen_release: 1.5.0
-
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
