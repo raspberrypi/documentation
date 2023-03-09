@@ -80,7 +80,7 @@ The display should show a five-second preview from the camera and then take a pi
 
 ==== Basic usage of raspistill
 
-With a camera module xref:../accessories/camera.adoc#camera-modules[connected and enabled], enter the following command in the terminal to take a picture:
+With a camera module xref:../accessories/camera.adoc#about-the-camera-modules[connected and enabled], enter the following command in the terminal to take a picture:
 
 [,bash]
 ----
@@ -167,7 +167,7 @@ Use the arrow keys to scroll and type `q` to exit.
 
 ==== Basic usage of raspivid
 
-With a camera module xref:../accessories/camera.adoc#camera-modules[connected and enabled], record a video using the following command:
+With a camera module xref:../accessories/camera.adoc#about-the-camera-modules[connected and enabled], record a video using the following command:
 
 [,bash]
 ----

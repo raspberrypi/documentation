@@ -1,5 +1,5 @@
 include::camera/camera_hardware.adoc[]
 
-include::camera/hqcam_filter_removal.adoc[]
+include::camera/filters.adoc[]
 
 include::camera/lens.adoc[]
