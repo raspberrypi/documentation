@@ -17,7 +17,7 @@ Aditionally a 12-megapixel https://www.raspberrypi.com/products/raspberry-pi-hig
 .HQ Camera, M12-mount (left) and C/CS-mount (right)
 image::images/hq.jpg[M12- and C/CS-mount versions of the HQ Camera]
 
-Finally, there is the Global Shutter camera, which was released in 2023. There is no infrared version of the GS Camera.
+Finally, there is the Global Shutter camera, which was http://raspberrypi.com/news/new-raspberry-pi-global-shutter-camera[released in 2023]. There is no infrared version of the GS Camera.
 
 .Global Shutter Camera
 image::images/gs-camera.jpg[GS Camera]
