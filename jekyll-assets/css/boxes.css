@@ -64,22 +64,8 @@ div.subtitle.error-message p a {
   color: #fff;
 }
 
-p#release {
-  text-align: right;
-  padding-top: 10px;
-  color: #888888;
-  font-size: 0.9em;
-  width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 #container {
   justify-content: center;
-}
-
-p#release + #container {
-  margin-top: 75px;
 }
 
 @media screen and (max-width: 1219px) {

@@ -15,7 +15,7 @@ The default pins for Raspberry Pi Pico UART0 are as follows:
 | UART0_RX | 2 | GP1
 |===
 
-Once connected, traffic over the Raspberry Pi Pico's UART will relayed to your computer by the Debug Probe and exposed as a CDC UART. On a Raspberry Pi this will show up as `/dev/ttyACM0`; on other platforms this serial port will show up differently (e.g. on macOS it will appear as `/dev/cu.usbmodemXXXX`).
+Once connected, traffic over the Raspberry Pi Pico's UART will be relayed to your computer by the Debug Probe and exposed as a CDC UART. On a Raspberry Pi this will show up as `/dev/ttyACM0`; on other platforms this serial port will show up differently (e.g. on macOS it will appear as `/dev/cu.usbmodemXXXX`).
 
 If you have not already done so you should install minicom:
 

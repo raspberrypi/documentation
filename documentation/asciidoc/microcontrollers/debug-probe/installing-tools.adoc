@@ -16,7 +16,7 @@ On Raspberry Pi OS you can install `openocd` directly from the command line.
 $ sudo apt install openocd
 ----
 
-You need to be running OpenOCD version 0.11.0 or 0.12.0 to have support for the Debug Probe. If you're not running Raspberry Pi OS, or your distrbution installs an older version, or require SMP support, you can build and install `openocd` from source.
+You need to be running OpenOCD version 0.11.0 or 0.12.0 to have support for the Debug Probe. If you're not running Raspberry Pi OS, or your distribution installs an older version, or require SMP support, you can build and install `openocd` from source.
 
 Start by installing needed dependencies, 
 
@@ -137,7 +137,7 @@ $ brew install gdb
 
 NOTE: You can safely ignore the request for "special privileges" messages on installation.
 
-IMPORTANT: If you have an Arm-based (M1-based) Mac `gdb` is not available via Homebrew, instead you will either have to https://gist.github.com/m0sys/711d0ec5e52102c6ba44451caf38bd38[install it from source] or use `lldb` instead of `gdb`. At this time there is https://inbox.sourceware.org/gdb/3185c3b8-8a91-4beb-a5d5-9db6afb93713@Spark/[no official support] from the developers for running GDB on Arm-based Macs. Suppport for GDB can be found on the https://inbox.sourceware.org/gdb/[GDB mailing list] on Sourceware.org. `lldb` is installed as part of the Xcode Command Line Tools.
+IMPORTANT: If you have an Arm-based (M1-based) Mac `gdb` is not available via Homebrew, instead you will either have to https://gist.github.com/m0sys/711d0ec5e52102c6ba44451caf38bd38[install it from source] or use `lldb` instead of `gdb`. At this time there is https://inbox.sourceware.org/gdb/3185c3b8-8a91-4beb-a5d5-9db6afb93713@Spark/[no official support] from the developers for running GDB on Arm-based Macs. Support for GDB can be found on the https://inbox.sourceware.org/gdb/[GDB mailing list] on Sourceware.org. `lldb` is installed as part of the Xcode Command Line Tools.
 
 ==== MS Windows
 
