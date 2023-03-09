@@ -41,6 +41,9 @@ If you do need to add your own `dtoverlay`, the following are currently recognis
 | HQ camera (IMX477)
 | `dtoverlay=imx477`
 
+| GS camera (IMX296)
+| `dtoverlay=imx296`
+
 | Camera Module 3 (IMX708)
 | `dtoverlay=imx708`
 

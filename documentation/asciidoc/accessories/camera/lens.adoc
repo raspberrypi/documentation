@@ -1,6 +1,8 @@
 == Recommended Lenses
 
-The following lenses are recommended for use with our HQ cameras.
+The following lenses are recommended for use with our HQ and GS cameras.
+
+NOTE: While the HQ Camera is available in both C/CS- and M12-mount versions, the GS Camera is available only with a C/CS-mount.
 
 === C/CS Lenses
 

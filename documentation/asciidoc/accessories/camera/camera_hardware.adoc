@@ -17,7 +17,7 @@ Aditionally a 12-megapixel https://www.raspberrypi.com/products/raspberry-pi-hig
 .HQ Camera, M12-mount (left) and C/CS-mount (right)
 image::images/hq.jpg[M12- and C/CS-mount versions of the HQ Camera]
 
-Finally, there is the Global Shutter camera, which was http://raspberrypi.com/news/new-raspberry-pi-global-shutter-camera[released in 2023]. There is no infrared version of the GS Camera.
+Finally, there is the Global Shutter camera, which was http://raspberrypi.com/news/new-raspberry-pi-global-shutter-camera[released in 2023]. There is no infrared version of the GS Camera, however the IR Filter can be removed if required.
 
 .Global Shutter Camera
 image::images/gs-camera.jpg[GS Camera]
@@ -204,6 +204,14 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | N/A
 | C/CS- or M12-mount
 | C/CS
+
+| NoIR version available?
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| No
 |===
 
 NOTE: There is https://github.com/raspberrypi/libcamera/issues/43[some evidence] to suggest that the Camera Module 3 may emit some RFI at a harmonic of the CSI clock rate. This RFI is in a range to interfere with GPS L1 frequencies (1575 MHz). Please see the https://github.com/raspberrypi/libcamera/issues/43[thread on Github] for details and proposed workarounds.
