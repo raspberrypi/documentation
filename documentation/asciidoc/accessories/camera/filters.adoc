@@ -15,9 +15,9 @@ image::images/hoyacm500.png[CM500 Transmission Graph,width="65%"]
 
 == Filter Removal
 
-NOTE: This proceedure applies to both the HQ and GS cameras. 
+NOTE: This procedure applies to both the HQ and GS cameras. 
 
-Both the High Quality Camera and Global Shutter Camera contains an IR filter, which is used to reduce the camera's sensitivity to infrared light. This ensures that outdoor photos look more natural. However, some nature photography can be enhanced with the removal of this filter; the colours of sky, plants, and water can be affected by its removal. The camera can also be used without the filter for night vision in a location that is illuminated with infrared light.
+Both the High Quality Camera and Global Shutter Camera contain an IR filter, which is used to reduce the camera's sensitivity to infrared light. This ensures that outdoor photos look more natural. However, some nature photography can be enhanced with the removal of this filter; the colours of sky, plants, and water can be affected by its removal. The camera can also be used without the filter for night vision in a location that is illuminated with infrared light.
 
 WARNING: *This procedure cannot be reversed:* the adhesive that attaches the filter will not survive being lifted and replaced, and while the IR filter is about 1.1mm thick, it may crack when it is removed. *Removing it will void the warranty on the product*. Nevertheless, removing the filter will be desirable to some users.
 
