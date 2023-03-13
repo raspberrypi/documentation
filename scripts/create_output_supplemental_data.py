@@ -14,17 +14,16 @@ def get_release_version(doxyfile_path):
 		version = version_search.group(2)
 	return version
 
-def write_new_data_file(output_dir, data_obj):
-	f = open(output_dir, 'w')
+def write_new_data_file(output_json_file, data_obj):
+	f = open(output_json_file, 'w')
 	f.write(json.dumps(data_obj))
 	f.close()
-	return
 
 if __name__ == "__main__":
 	# read the doxygen config file
 	doxyfile_path = sys.argv[1]
 	# output the new data file
-	output_dir = sys.argv[2]
+	output_json_file = sys.argv[2]
 	version = get_release_version(doxyfile_path)
 	data_obj = {"pico_sdk_release": version}
-	write_new_data_file(output_dir, data_obj)
+	write_new_data_file(output_json_file, data_obj)
