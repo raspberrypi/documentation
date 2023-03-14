@@ -616,6 +616,10 @@ td.paramname {
   font-weight: bold;
 }
 
+table.memname td, table.memname td.paramname {
+  vertical-align: bottom;
+}
+
 ul.memberdecls {
   list-style-type: none;
   padding-left: 0;
