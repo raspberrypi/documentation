@@ -37,13 +37,6 @@ var extractDoxygenCode = function(node) {
   return preText;
 };
 
-var deleteDoxygenCode = function() {
-  var pres = document.querySelectorAll("pre.hiddenCode");
-  for (var i = 0; i < pres.length; i++) {
-    pres[i].remove();
-  }
-};
-
 for (var i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener('mouseenter', showTooltip, false);
   buttons[i].addEventListener('mouseleave', hideTooltip, false);
