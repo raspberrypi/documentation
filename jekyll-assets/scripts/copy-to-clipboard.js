@@ -67,8 +67,6 @@ window.addEventListener('load', function() {
     var tooltip = event.trigger.querySelector('span.tooltip');
     tooltip.className = "tooltip hidden";
     textEl.textContent = ' Copied!';
-    // deleteDoxygenCode();
-    // delete the extracted text if needed
     setTimeout(function() {
       textEl.textContent = '';
     }, 2000);
