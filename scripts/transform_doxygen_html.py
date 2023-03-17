@@ -487,9 +487,9 @@ def make_adoc(root_string, title_text, filename):
     my_id = make_filename_id(filename)
     root_string = re.sub("<\/div>\s*?$", "", root_string, flags=re.S)
     root_string = re.sub('<div class="contents" id="\S*?">', "", root_string)
-    root_string = "[#"+my_id+"]\n== " + title_text + "\n\n++++\n" + root_string
-    root_string = re.sub('(<p[^>]+class="adoc-h2"[^>]*id=")([^"]+)("[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n[#\\2]\n=== \\4\n\n++++\n', root_string, flags=re.S)
-    root_string = re.sub('(<p[^>]+class="adoc-h3"[^>]*id=")([^"]+)("[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n[#\\2]\n==== \\4\n\n++++\n', root_string, flags=re.S)
+    root_string = "[["+my_id+"]]\n== " + title_text + "\n\n++++\n" + root_string
+    root_string = re.sub('(<p[^>]+class="adoc-h2"[^>]*id=")([^"]+)("[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n[[\\2]]\n=== \\4\n\n++++\n', root_string, flags=re.S)
+    root_string = re.sub('(<p[^>]+class="adoc-h3"[^>]*id=")([^"]+)("[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n[[\\2]]\n==== \\4\n\n++++\n', root_string, flags=re.S)
     root_string = root_string + "\n++++\n"
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
