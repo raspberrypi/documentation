@@ -28,6 +28,8 @@ NOTE: In long lists of option values (like the list of timezone cities), you can
 
 NOTE: Due to the continual development of the `raspi-config` tool, the list of options below may not be completely up to date. Also please be aware that different models of Raspberry Pi may have different options available.
 
+NOTE: All options are available via a non-interactive command line interface. See the section on the <<raspi-config-cli,`raspi-config` command line interface>> for more information.
+
 ==== System Options
 
 The system options submenu allows you to make configuration changes to various parts of the boot, login and networking process, along with some other system level changes.
@@ -260,3 +262,456 @@ Although it can be run at any time, some of the options may have difficulties if
 
 Use this button when you have completed your changes. You will be asked whether you want to reboot or not. When used for the first time, it's best to reboot. There will be a delay in rebooting if you have chosen to resize your SD card.
 
+[[raspi-config-cli]]
+== The `raspi-config` Command Line Interface
+
+The `raspi-config` tool can also be run in a non-interactive mode, which is useful for setting up a Raspberry Pi image for distribution.
+
+----
+sudo raspi-config nonint <command> <arguments>
+----
+
+The `sudo` is required because you will be changing files that you do not own as the `pi` user.
+
+NOTE: There is no consistent meaning for `0` and `1` in arguments. Each function will document what `0` and `1` mean for that function.
+
+[[raspi-config-cli-commands]]
+=== List of Options
+
+NOTE: Due to the continual development of the `raspi-config` tool, the list of options below may not be completely up to date. Also please be aware that different models of Raspberry Pi may have different options available.
+
+==== Wireless LAN 
+
+Allows setting of the wireless LAN SSID and passphrase.
+
+----
+sudo raspi-config nonint do_wifi_ssid_passphrase <ssid> <passphrase> [hidden] [plain]
+----
+
+Hidden: `0` = visible, `1` = hidden. Defaults to visible.
+Plain: If plain is `1`, the default, passphrase is quoted
+
+Example:
+
+----
+sudo raspi-config nonint do_wifi_ssid_passphrase myssid mypassphrase
+sudo raspi-config nonint do_wifi_ssid_passphrase myssid mypassphrase 1 # Hidden SSID
+sudo raspi-config nonint do_wifi_ssid_passphrase myssid '"mypassphrase"' 0 0 # Visible SSID, passphrase quoted
+----
+
+==== Audio
+
+Specify the audio output destination.
+
+----
+sudo raspi-config nonint do_audio <N>
+----
+
+===== Raspberry Pi 4B+
+
+- `0` - bcm2835 Headphones
+- `1` - vc4-hdmi-0
+- `2` - vc4-hdmi-1
+
+[[change-user-password]]
+===== Password
+
+You can change the 'default' user password.
+
+NOTE: Until recently the default user on Raspberry Pi OS was `pi` with the password `raspberry`. The default user is now set on first boot using a configuration wizard.
+
+----
+sudo raspi-config nonint do_change_pass
+----
+
+NOTE: This does not check for the interactive flag and will show full-screen messages.
+
+[[hostname]]
+===== Hostname
+
+Set the visible name for this Raspberry Pi on a network.
+
+----
+sudo raspi-config nonint do_hostname <hostname>
+----
+
+[[boot-options]]
+===== Network at Boot
+
+Use this option to wait for a network connection before letting boot proceed.
+
+----
+sudo raspi-config nonint do_boot_wait <0/1>
+----
+
+`0` - Boot without waiting for network connection
+`1` - Boot after waiting for network connection
+
+===== Splash Screen
+
+Enable or disable the splash screen displayed at boot time
+
+----
+sudo raspi-config nonint do_boot_splash <0/1>
+----
+
+`0` - Enable splash screen
+`1` - Disable splash screen
+
+===== Power LED
+
+If the model of Raspberry Pi permits it, you can change the behaviour of the power LED using this option.
+
+----
+sudo raspi-config nonint do_leds <0/1>
+----
+
+`0` - Flash for disk activity
+`1` - Be on constantly
+
+==== Display Options
+
+[[resolution]]
+===== Resolution
+
+Define the default HDMI/DVI video resolution to use when the system boots without a TV or monitor being connected. This can have an effect on RealVNC if the VNC option is enabled.
+
+----
+sudo raspi-config nonint do_resolution <group> <mode>
+----
+
+Group: `2` = DMT, otherwise = CEA
+Mode: `0` = Default Automatic
+
+[[underscan]]
+===== Underscan
+
+Old TV sets had a significant variation in the size of the picture they produced; some had cabinets that overlapped the screen. TV pictures were therefore given a black border so that none of the picture was lost; this is called overscan. Modern TVs and monitors don't need the border, and the signal doesn't allow for it. If the initial text shown on the screen disappears off the edge, you need to enable overscan to bring the border back.
+
+Any changes will take effect after a reboot. You can have greater control over the settings by editing xref:config_txt.adoc[config.txt].
+
+On some displays, particularly monitors, disabling overscan will make the picture fill the whole screen and correct the resolution. For other displays, it may be necessary to leave overscan enabled and adjust its values.
+
+----
+sudo raspi-config nonint do_overscan <0/1>
+----
+
+`0` - Enable overscan
+`1` - Disable overscan
+
+[[pixel-doubling]]
+===== Pixel Doubling
+
+Enable/disable 2x2 pixel mapping.
+
+----
+sudo raspi-config nonint do_pixdub <0/1>
+----
+
+`0` - Enable pixel doubling
+`1` - Disable pixel doubling
+
+===== Composite Video
+
+On the Raspberry Pi 4, enable composite video. On models prior to the Raspberry Pi 4, composite video is enabled by default so this option is not displayed.
+
+----
+sudo raspi-config nonint do_composite <0/1>
+----
+
+`0` - Enable composite video
+`1` - Disable composite video
+
+===== Screen Blanking
+
+Enable or disable screen blanking.
+
+----
+sudo raspi-config nonint do_blanking <0/1>
+----
+
+`0` - Enable screen blanking
+`1` - Disable screen blanking
+
+[[interfacing-options]]
+==== Interfacing Options
+
+In this submenu there are the following options to enable/disable: Camera, SSH, VNC, SPI, I2C, Serial, 1-wire, and Remote GPIO.
+
+[[camera]]
+===== Camera
+
+Enable/disable the CSI camera interface.
+
+----
+sudo raspi-config nonint do_camera <0/1>
+----
+
+`0` - Enable camera
+`1` - Disable camera
+
+[[ssh]]
+===== SSH
+
+Enable/disable remote command line access to your Raspberry Pi using SSH.
+
+SSH allows you to remotely access the command line of the Raspberry Pi from another computer. SSH is disabled by default. Read more about using SSH on the xref:remote-access.adoc#ssh[SSH documentation page]. If connecting your Raspberry Pi directly to a public network, you should not enable SSH unless you have set up secure passwords for all users.
+
+----
+sudo raspi-config nonint do_ssh <0/1>
+----
+
+`0` - Enable SSH
+`1` - Disable SSH
+
+[[VNC]]
+===== VNC
+
+Enable/disable the RealVNC virtual network computing server.
+
+----
+sudo raspi-config nonint do_vnc <0/1>
+----
+
+`0` - Enable VNC
+`1` - Disable VNC
+
+[[spi]]
+===== SPI
+
+Enable/disable SPI interfaces and automatic loading of the SPI kernel module, needed for products such as PiFace.
+
+----
+sudo raspi-config nonint do_spi <0/1>
+----
+
+`0` - Enable SPI
+`1` - Disable SPI
+
+[[i2c]]
+===== I2C
+
+Enable/disable I2C interfaces and automatic loading of the I2C kernel module.
+
+----
+sudo raspi-config nonint do_i2c <0/1>
+----
+
+`0` - Enable I2C
+`1` - Disable I2C
+
+[[serial]]
+===== Serial
+
+Enable/disable shell and kernel messages on the serial connection.
+
+----
+sudo raspi-config nonint do_serial <0/1/2>
+----
+
+`0` - Enable console over serial port
+`1` - Disable serial port
+`2` - Enable serial port
+
+[[one-wire]]
+===== 1-wire
+
+Enable/disable the Dallas 1-wire interface. This is usually used for DS18B20 temperature sensors.
+
+----
+sudo raspi-config nonint do_onewire <0/1>
+----
+
+`0` - Enable 1-wire
+`1` - Disable 1-wire
+
+===== Remote GPIO
+
+Enable or disable remote access to the GPIO pins.
+
+----
+sudo raspi-config nonint do_rgpio <0/1>
+----
+
+`0` - Enable remote GPIO
+`1` - Disable remote GPIO
+
+==== Performance Options
+
+[[overclock]]
+==== Overclock
+
+On some models it is possible to overclock your Raspberry Pi's CPU using this tool. The overclocking you can achieve will vary; overclocking too high may result in instability. Selecting this option shows the following warning:
+
+*Be aware that overclocking may reduce the lifetime of your Raspberry Pi.* If overclocking at a certain level causes system instability, try a more modest overclock. Hold down the Shift key during boot to temporarily disable overclocking.
+
+----
+sudo raspi-config nonint do_overclock <setting>
+----
+
+Setting is one of:
+ - `None` - The default
+ - `Modest` - Overclock to 50% of the maximum
+ - `Medium` - Overclock to 75% of the maximum
+ - `High` - Overclock to 100% of the maximum
+ - `Turbo` - Overclock to 125% of the maximum
+
+[[memory-split]]
+===== GPU Memory
+
+Change the amount of memory made available to the GPU.
+
+----
+sudo raspi-config nonint do_memory_split <megabytes>
+----
+
+===== Overlay File System
+
+Enable or disable a read-only filesystem
+
+----
+sudo raspi-config nonint do_overlayfs <0/1>
+----
+
+`0` - Enable overlay filesystem
+`1` - Disable overlay filesystem
+
+===== Fan
+
+Set the behaviour of a GPIO connected fan
+
+----
+sudo raspi-config nonint do_fan <0/1> <gpio> <onTemp>
+----
+
+`0` - Enable fan
+`1` - Disable fan
+
+GPIO defaults to `14`.
+
+`onTemp` defaults to `80` °C.
+
+[[localisation-options]]
+==== Localisation Options
+
+The localisation submenu gives you these options to choose from: keyboard layout, time zone, locale, and wireless LAN country code.
+
+[[change-locale]]
+===== Locale
+
+Select a locale, for example `en_GB.UTF-8 UTF-8`.
+
+----
+sudo raspi-config nonint do_change_locale <locale>
+----
+
+[[change-timezone]]
+===== Time Zone
+
+Select your local time zone, starting with the region, e.g. Europe, then selecting a city, e.g. London. Type a letter to skip down the list to that point in the alphabet.
+
+----
+sudo raspi-config nonint do_change_timezone <timezone>
+sudo raspi-config nonint do_change_timezone America/Los_Angeles
+----
+
+[[change-keyboard-layout]]
+===== Keyboard
+
+This option opens another menu which allows you to select your keyboard layout. It will take a long time to display while it reads all the keyboard types. Changes usually take effect immediately, but may require a reboot.
+
+----
+sudo raspi-config nonint do_configure_keyboard <keymap>
+sudo raspi-config nonint do_configure_keyboard us
+----
+
+===== WLAN Country
+
+This option sets the country code for your wireless network.
+
+----
+sudo raspi-config nonint do_wifi_country <country>
+sudo raspi-config nonint do_wifi_country US
+----
+
+[[advanced-options]]
+==== Advanced Options
+
+[[expand-filesystem]]
+===== Expand Filesystem
+
+This option will expand your installation to fill the whole SD card, giving you more space to use for files. You will need to reboot the Raspberry Pi to make this available. 
+
+WARNING: There is no confirmation: selecting the option begins the partition expansion immediately.
+
+----
+sudo raspi-config nonint do_expand_rootfs
+----
+
+[[GL-driver]]
+===== GL Driver
+
+Enable/disable the experimental GL desktop graphics drivers.
+
+[[GL-full-KMS]]
+====== GL (Full KMS)
+
+Enable/disable the experimental OpenGL Full KMS (kernel mode setting) desktop graphics driver.
+
+[[GL-fake-KMS]]
+====== GL (Fake KMS)
+
+Enable/disable the experimental OpenGL Fake KMS desktop graphics driver.
+
+[[legacy]]
+====== Legacy
+
+Enable/disable the original legacy non-GL VideoCore desktop graphics driver.
+
+===== Compositor
+
+Enable/Display the xcompmgr composition manager
+
+===== Network Interface Names
+
+Enable or disable predictable network interface names.
+
+----
+sudo raspi-config nonint do_net_names <0/1>
+----
+
+`0` - Enable predictable network interface names
+`1` - Disable predictable network interface names
+
+===== Network Proxy Settings
+
+Configure the network's proxy settings.
+
+----
+sudo raspi-config nonint do_proxy <SCHEMES> <ADDRESS>
+----
+
+===== Boot Order
+
+On the Raspberry Pi 4, you can specify whether to boot from USB or network if the SD card isn't inserted. See xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[this page] for more information.
+
+----
+sudo raspi-config nonint do_boot_order <B1/B2/B3>
+----
+
+ - `B1` - SD Card Boot - Boot from SD Card if available, otherwise boot from USB
+ - `B2` - USB Boot - Boot from USB if available, otherwise boot from SD Card
+ - `B3` - Network Boot - Boot from network if SD card boot fails
+
+===== Bootloader Version
+
+On the Raspberry Pi 4, you can tell the system to use the very latest boot ROM software, or revert to the factory default if the latest version causes problems.
+
+[[update]]
+==== Update
+
+Update this tool to the latest version.
+
+----
+sudo raspi-config nonint do_update
+----

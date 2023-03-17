@@ -18,15 +18,23 @@ for (var i = 0; i < listings.length; i++) {
 var buttons = document.querySelectorAll('button.copy-button');
 
 var showTooltip = function() {
-  console.log("showing");
   var tooltip = this.querySelector("span.tooltip");
   tooltip.className = "tooltip";
 };
 
 var hideTooltip = function() {
-  console.log("hiding");
   var tooltip = this.querySelector("span.tooltip");
   tooltip.className = "tooltip hidden";
+};
+
+var extractDoxygenCode = function(node) {
+  var lines = node.querySelectorAll("div.line");
+  var preText = "";
+  for (var i = 0; i < lines.length; i++) {
+    var myText = lines[i].textContent;
+    preText = preText + myText + "\n";
+  }
+  return preText;
 };
 
 for (var i = 0; i < buttons.length; i++) {
@@ -36,8 +44,13 @@ for (var i = 0; i < buttons.length; i++) {
 
 window.addEventListener('load', function() {
   var clipboard = new ClipboardJS('.copy-button', {
-    target: function(trigger) {
-      return trigger.parentNode.querySelector('pre');
+    text: function(trigger) {
+      if (trigger.parentNode.querySelector('div.line')) {
+        var text = extractDoxygenCode(trigger.parentNode);
+      } else {
+        var text = trigger.parentNode.querySelector('pre').textContent;
+      }
+      return text;
     },
   });
 
@@ -50,5 +63,10 @@ window.addEventListener('load', function() {
     setTimeout(function() {
       textEl.textContent = '';
     }, 2000);
+  });
+
+  clipboard.on('error', function (e) {
+    console.error('Action:', e.action);
+    console.error('Trigger:', e.trigger);
   });
 });
