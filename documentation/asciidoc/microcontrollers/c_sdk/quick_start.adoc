@@ -8,9 +8,7 @@ Install CMake (at least version 3.13), and GCC cross compiler
 $ sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
 ----
 
-Set up your project to point to use the Raspberry Pi Pico SDK
-
-Either by cloning the SDK locally (most common) :
+Set up your project to point to use the Raspberry Pi Pico SDK by cloning the SDK locally:
 
 ----
 $ git clone https://github.com/raspberrypi/pico-sdk.git
@@ -37,75 +35,7 @@ pico_sdk_init()
 # rest of your project
 ----
 
-Or with the Raspberry Pi Pico SDK as a submodule :
-
-Clone the SDK as a submodule called `pico-sdk`
-
-Setup a `CMakeLists.txt` like:
-
-----
-cmake_minimum_required(VERSION 3.13)
-
-# initialize pico-sdk from submodule
-# note: this must happen before project()
-include(pico-sdk/pico_sdk_init.cmake)
-
-project(my_project)
-
-# initialize the Raspberry Pi Pico SDK
-pico_sdk_init()
-
-# rest of your project
-----
-
-Or with automatic download from GitHub :
-
-Copy `pico_sdk_import.cmake` from the SDK into your project directory
-
-Setup a `CMakeLists.txt` like:
-
-----
-cmake_minimum_required(VERSION 3.13)
-
-# initialize pico-sdk from GIT
-# (note this can come from environment, CMake cache etc)
-set(PICO_SDK_FETCH_FROM_GIT on)
-
-# pico_sdk_import.cmake is a single file copied from this SDK
-# note: this must happen before project()
-include(pico_sdk_import.cmake)
-
-project(my_project)
-
-# initialize the Raspberry Pi Pico SDK
-pico_sdk_init()
-
-# rest of your project
-----
-
-Or by cloning the SDK locally, but without copying `pico_sdk_import.cmake`:
-
-----
-$ git clone this Raspberry Pi Pico SDK repository
-----
-
-Setup a `CMakeLists.txt` like:
-
-----
-cmake_minimum_required(VERSION 3.13)
-
-# initialize the SDK directly
-include(/path/to/pico-sdk/pico_sdk_init.cmake)
-
-project(my_project)
-
-# initialize the Raspberry Pi Pico SDK
-pico_sdk_init()
-
-# rest of your project
-----
-
-Write your code (see https://github.com/raspberrypi/pico-examples[pico-examples] or the https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi Pico C/{cpp} SDK] book for more information)
+Go ahead and write your code, see https://github.com/raspberrypi/pico-examples[pico-examples] or the https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi Pico C/{cpp} SDK] book for more information on how to go about that.
 
 About the simplest you can do is a single source file (e.g. `hello_world.c`)
 
@@ -120,7 +50,7 @@ int main() {
 }
 ----
 
-And add the following to your CMakeLists.txt:
+and add the following to your CMakeLists.txt:
 
 ----
 add_executable(hello_world
