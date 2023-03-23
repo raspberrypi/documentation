@@ -1,6 +1,6 @@
 == Signing up to Raspberry Pi ID 
 
-To use Raspberry Pi services, you will first have to create a Raspberry Pi ID account using our https://id.raspberrypi.com[identity service]. This account will be your gateway to the Raspberry Pi website and other services.
+To use Raspberry Pi services, you will first have to create a Raspberry Pi ID account using our https://id.raspberrypi.com[identity service]. This account will be your gateway to the Raspberry Pi website and other services such as the https://events.raspberrypi.com/[Raspberry Pi Events] pages.
 
 === Creating a Raspberry Pi ID
 
@@ -20,4 +20,4 @@ You will be signed into the identity service.
 
 image::images/signed_in_identity.png[width="80%"]
 
-After creating a Raspberry Pi ID, you can log in to Raspberry Pi services using the "Sign in with Raspberry Pi" button to sign in with your Raspberry Pi ID. After logging in with your identity, you may be asked to authorise the service to use your Raspberry Pi ID.
+After creating a Raspberry Pi ID, you can log in to Raspberry Pi services using the "Sign in with Raspberry Pi" button to sign in with your Raspberry Pi ID. 
