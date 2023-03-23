@@ -48,5 +48,5 @@ image::images/rp2040_explanation.svg[width=640]
 
 === Design Files
 
-* Download https://datasheets.raspberrypi.com/rp2040/Minimal-KiCAD.zip[Minimal Viable Board] Design Files (KiCAD)
-* Download https://datasheets.raspberrypi.com/rp2040/VGA-KiCAD.zip[VGA Carrier Board] Design Files (KiCAD)
+* Download https://datasheets.raspberrypi.com/rp2040/Minimal-KiCAD.zip[Minimal Viable Board] Design Files (KiCad)
+* Download https://datasheets.raspberrypi.com/rp2040/VGA-KiCAD.zip[VGA Carrier Board] Design Files (KiCad)

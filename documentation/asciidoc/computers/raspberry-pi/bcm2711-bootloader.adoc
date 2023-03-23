@@ -461,6 +461,15 @@ Minimum: `250` +
 Maximum: `5000` +
 Default: `1000` (1 second)
 
+[[USB_MSD_STARTUP_DELAY]]
+==== USB_MSD_STARTUP_DELAY
+
+If defined, delays USB enumeration for the given timeout after the USB host controller has initialised. If a USB hard disk drive takes a long time to initialise and triggers USB timeouts then this delay can be used to give the driver additional time to initialise. It may also be necessary to increase the overall USB timeout (`USB_MSD_DISCOVER_TIMEOUT`).
+
+Minimum: `0` +
+Maximum: `30000` (30 seconds) +
+Default: `0`
+
 [[VL805]]
 ==== VL805
 Compute Module 4 only.

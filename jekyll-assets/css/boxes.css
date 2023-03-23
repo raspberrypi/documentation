@@ -72,10 +72,6 @@ div.subtitle.error-message p a {
   p#release {
     width: 800px;
   }
-
-  ul#tab-container li {
-    width: 200px;
-  }
 }
 
 @media screen and (max-width: 889px) {
