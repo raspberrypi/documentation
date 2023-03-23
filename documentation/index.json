@@ -159,6 +159,18 @@
             ]
         },
         {
+            "title": "Services",
+            "path": "services",
+            "subitems": [
+                {
+                    "title": "Raspberry Pi ID",
+                    "description": "Our identity service",
+                    "image": "full-sized/Getting-Started.png",
+                    "subpath": "id.adoc"
+                }
+            ]
+        },
+        {
             "title": "Pico C SDK",
             "from_json": "picosdk_index.json",
             "directory": "pico-sdk"
