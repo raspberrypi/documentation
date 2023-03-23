@@ -7,9 +7,9 @@ Design data for the Compute Module 4 IO board can be found in its datasheet:
 
 * https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf[Compute Module 4 IO Board datasheet]
 
-There is also a KiCAD PCB design set available:
+There is also a KiCad PCB design set available:
 
-* https://datasheets.raspberrypi.com/cm4io/CM4IO-KiCAD.zip[Compute Module 4 IO Board KiCAD files]
+* https://datasheets.raspberrypi.com/cm4io/CM4IO-KiCAD.zip[Compute Module 4 IO Board KiCad files]
 
 [discrete]
 === Older Products
