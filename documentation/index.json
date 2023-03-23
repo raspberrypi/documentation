@@ -159,6 +159,36 @@
             ]
         },
         {
+            "title": "Services",
+            "path": "services",
+            "subitems": [
+                {
+                    "title": "Raspberry Pi ID",
+                    "description": "Our identity service",
+                    "image": "full-sized/Getting-Started.png",
+                    "subpath": "id.adoc"
+                },
+                {
+                    "title": "PIP",
+                    "description": "The Product Information Portal (PIP) for Raspberry Pi compliance documents",
+                    "image": "full-sized/PIP.png",
+                    "url": "https://pip.raspberrypi.com/"
+                },
+                {
+                    "title": "Datasheets",
+                    "description": "The Datasheets site for PDF-based documentation",
+                    "image": "full-sized/Datasheets.png",
+                    "url": "https://datasheets.raspberrypi.com"
+                },
+                {
+                    "title": "Forums",
+                    "description": "User and product support forums",
+                    "image": "full-sized/Forums.png",
+                    "url": "https://forums.raspberrypi.com"
+                }
+            ]
+        },
+        {
             "title": "Pico C SDK",
             "from_json": "picosdk_index.json",
             "directory": "pico-sdk"
