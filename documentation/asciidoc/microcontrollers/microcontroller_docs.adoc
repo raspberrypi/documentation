@@ -30,5 +30,5 @@ https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf[Raspber
 
 The API level Doxygen documentation for the Raspberry Pi Pico C/{cpp} SDK is also available https://rptl.io/pico-doxygen[as a micro-site].
 
-NOTE: A one-click installer for the Pico C/{cpp} SDK for Windows 10 and Windows 11 can be downloaded here https://github.com/raspberrypi/pico-setup-windows/releases/latest/download/pico-setup-windows-x64-standalone.exe[Pico Setup for Windows]
+NOTE: A https://github.com/raspberrypi/pico-setup-windows/releases/latest/download/pico-setup-windows-x64-standalone.exe[one-click installer] for the Pico C/{cpp} SDK for Windows 10 and Windows 11 is available.
 
