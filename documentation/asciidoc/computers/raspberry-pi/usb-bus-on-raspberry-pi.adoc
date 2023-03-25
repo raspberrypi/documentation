@@ -2,6 +2,50 @@
 
 In general, every device supported by Linux can be used with a Raspberry Pi, although there are some limitations for models prior to Raspberry Pi 4.
 
+|===
+| Model | USB ports
+
+| Pi 1 A
+| 1x 2.0, 1x µUSB (power)
+
+| Pi 1 B
+| 2x 2.0
+
+| Pi 1 B+
+| 4x 2.0
+
+| Pi Zero
+| 1x OTG, 1x µUSB (power)
+
+| Pi Zero W
+| 1x OTG, 1x µUSB (power)
+
+| Pi 2 B 1.0/1.1
+| 4x 2.0
+
+| Pi 2 B 1.2
+| 4x 2.0
+
+| Pi 3 B
+| 1x µUSB (power), 4x 2.0
+
+| Pi 3 B+
+| 1x µUSB (power), 4x 2.0
+
+| Pi 3 CM3
+| 1x 2.0
+
+| Pi 4 B
+| 1x OTG, 2x 2.0, 2x 3.0
+
+| Pi 4 400
+| 1x 2.0, 1x OTG, 2x 3.0
+
+| Pi 4 CM4
+| 1x OTG, 2x 2.0
+|===
+
+
 === Maximum Power Output
 
 As with all computers, the USB ports on the Raspberry Pi supply a limited amount of power. Often problems with USB devices are caused by power issues. To rule out insufficient power as the cause of the problem, connect your USB devices to the Raspberry Pi using a powered hub.
