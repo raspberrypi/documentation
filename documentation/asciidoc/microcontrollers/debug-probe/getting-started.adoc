@@ -12,7 +12,7 @@ Here we have connected:
 ** Debug Probe TX connected to Pico H RX pin
 ** Debug Probe GND connected to Pico H GND pin
 
-NOTE: If you have a "original" Raspberry Pi Pico, or Pico W, without a JST connecto, you can still connect it to a Debug Probe. To do so, solder a male connector to the SWDCLK, SWDIO, GND header pins on the board, and connect them to the Debug Probe "D" connector using the alternate 3-pin JST connector to 0.1-inch header (female) wire included with the Debug Probe.
+NOTE: If you have an "original" Raspberry Pi Pico, or Pico W, without a JST connector, you can still connect it to a Debug Probe. To do so, solder a male connector to the SWDCLK, SWDIO and GND header pins on the board, and connect them to the Debug Probe "D" connector using the alternate 3-pin JST connector to 0.1-inch header (female) cable included with the Debug Probe.
 
 image:images/wiring.png[width="70%"]
 
