@@ -7,12 +7,12 @@ Depending on your setup, there are several ways to wire the Debug Probe to a xre
 Here we have connected:
 
 * The Debug Probe "D" connector to Pico H SWD JST connector
-* The Debug Probe "U" connector has the three-pin JST connector to 0.1-inch header 
+* The Debug Probe "U" connector has the three-pin JST connector to 0.1-inch header (male)
 ** Debug Probe RX connected to Pico H TX pin
 ** Debug Probe TX connected to Pico H RX pin
 ** Debug Probe GND connected to Pico H GND pin
 
-Note: If you have a non-H version of Raspberry Pi Pico or Pico W with a 3-pin SWD connector, you can still connect it to a Debug Probe. To do so, connect the SWDCLK, SWDIO, GND, and 3V3 pins on the Pico board to the corresponding pins on the Debug Probe using jumper wires. Then, use your preferred debugging and programming tools to work with the Pico board.
+NOTE: If you have a "original" Raspberry Pi Pico, or Pico W, without a JST connecto, you can still connect it to a Debug Probe. To do so, solder a male connector to the SWDCLK, SWDIO, GND header pins on the board, and connect them to the Debug Probe "D" connector using the alternate 3-pin JST connector to 0.1-inch header (female) wire included with the Debug Probe.
 
 image:images/wiring.png[width="70%"]
 
