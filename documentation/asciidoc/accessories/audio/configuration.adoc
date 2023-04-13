@@ -45,6 +45,25 @@ independently. Within the codec itself, other mixers and switches exist to allow
 Both the AUX IN and AUX OUT are 1V RMS. It may be necessary to adjust
 the AUX IN’s mixer to ensure that the input signal doesn’t saturate the ADC. Similarly, the output mixers can be to be adjusted to get the best possible output.
 
+Edit the ``/boot/config.txt`` file again:
+
+----
+$ sudo nano /boot/config.txt
+----
+
+Find the `#dtparam=audio=on` line in the file to add `dtoverlay=iqaudio-codec` on a new line:
+
+```
+#dtparam=audio=on
+dtoverlay=iqaudio-codec
+```
+
+Ctrl X, Y and Enter to save and reboot your device for the settings to take effect:
+
+----
+$ sudo reboot
+----
+
 Preconfigured scripts (loadable ALSA settings) https://github.com/iqaudio/Pi-Codec[are available on GitHub], offering:
  
 * Mono MEMS mic recording, mono speaker playback
@@ -67,7 +86,7 @@ $ sudo apt install git
 The following command will set your device to use the on-board MEMS microphone and output for speaker playback:
 
 ----
-$ sudo alsactl restore -f /home/pi/Pi-Codec/IQaudIO_Codec_OnboardMIC_record_and_SPK_playback.state
+$ sudo alsactl restore -D IQaudIOCODEC -f /home/pi/Pi-Codec/IQaudIO_Codec_OnboardMIC_record_and_SPK_playback.state
 ----
 
 In order for your project to operate with your required settings when it is powered on, edit the `/etc/rc.local` file. The contents of this file are run at the end of every boot process, so it is ideal for this purpose. Edit the file:
@@ -92,7 +111,7 @@ Add the chosen script command above the exit 0 line and then Ctrl X, Y and Enter
 #
 # By default this script does nothing.
 
-sudo alsactl restore -f /home/pi/Pi-Codec/IQaudIO_Codec_OnboardMIC_record_and_SPK_playback.state
+/usr/sbin/alsactl restore -D IQaudIOCODEC -f /home/pi/Pi-Codec/IQaudIO_Codec_OnboardMIC_record_and_SPK_playback.state
 
 exit 0
 ----
@@ -114,7 +133,7 @@ Add the following to the file:
 ----
 pcm.!default {
         type hw
-        card Zero
+        card IQaudIOCODEC
 }
 ----
 
@@ -133,6 +152,7 @@ Firstly a "one-shot" unmute when kernel module loads.
 
 ----
 dtoverlay=iqaudio-dacplus,unmute_amp
+dtoverlay=iqaudio-codec,unmute_amp
 ----
 
 Unmute the amp when an ALSA device is opened by a client. Mute, with a five-second delay
@@ -141,6 +161,7 @@ window will cancel mute.)
 
 ----
 dtoverlay=iqaudio-dacplus,auto_mute_amp
+dtoverlay=iqaudio-codec,auto_mute_amp
 ----
 
 If you do not want to control the mute state through the device tree, you can also script your own
