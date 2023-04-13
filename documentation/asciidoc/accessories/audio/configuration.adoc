@@ -53,10 +53,10 @@ $ sudo nano /boot/config.txt
 
 Find the `#dtparam=audio=on` line in the file to add `dtoverlay=iqaudio-codec` on a new line:
 
-```
+----
 #dtparam=audio=on
 dtoverlay=iqaudio-codec
-```
+----
 
 Ctrl X, Y and Enter to save and reboot your device for the settings to take effect:
 
