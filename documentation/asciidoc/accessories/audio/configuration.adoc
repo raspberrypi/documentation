@@ -32,7 +32,27 @@ The Raspberry Pi audio boards attach to the Raspberry Pi’s 40-pin header. They
 
 All the necessary mounting hardware including spacers, screws and connectors is provided. The PCB spacers should be screwed, finger-tight only, to the Raspberry Pi before adding the audio board. The remaining screws should then be screwed into the spacers from above.
 
-=== Codec Zero configuration
+=== Hardware versions
+
+There are multiple versions of the audio cards, and the version that you possess determines the actions required to configure it. Older IQaudIO-marked boards (black PCB) are electrically equivalent to the Raspberry Pi-branded boards (green PCB) but have different EEPROM contents. The following command can be used to confirm which version you have:
+
+----
+$ grep -a . /proc/device-tree/hat/*
+----
+
+If the vendor string says "Raspberry Pi Ltd." then no further action is needed (but see below for the extra Codec Zero configuration). If it says "IQaudIO Limited www.iqaudio.com" then you will need the additional config.txt settings outlined below. If it says "No such file or directory" then the HAT is not being detected, but these config.txt settings may still make it work.
+
+----
+# Some magic to prevent the normal HAT overlay from being loaded
+dtoverlay=
+# And then choose one of the following, according to the model:
+dtoverlay=rpi-codeczero
+dtoverlay=rpi-dacplus
+dtoverlay=rpi-dacpro
+dtoverlay=rpi-digiampplus
+----
+
+=== Extra Codec Zero configuration
 
 The Raspberry Pi Codec Zero board uses the Dialog Semiconductor DA7212 codec. This allows
 the recording of audio from the built-in MEMS microphone, from stereo phono sockets (AUX
