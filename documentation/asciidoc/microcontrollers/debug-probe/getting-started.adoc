@@ -4,6 +4,8 @@ image:images/labelled-wiring.jpg[width="100%"]
 
 Depending on your setup, there are several ways to wire the Debug Probe to a xref:raspberry-pi-pico.adoc[Raspberry Pi Pico]. Below, we connect the Debug Probe to a Raspberry Pi Pico H which has the newer three-pin JST connector for SWD.
 
+video::4RCZBZsfsek[youtube]
+
 Here we have connected:
 
 * The Debug Probe "D" connector to Pico H SWD JST connector

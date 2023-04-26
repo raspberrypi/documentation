@@ -149,7 +149,7 @@ and clean up afterwards by using,
 $ make clean_everything
 ```
 
-which will revert the repository to a cpristine state.
+which will revert the repository to a pristine state.
 
 ## Licence
 

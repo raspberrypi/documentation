@@ -715,6 +715,18 @@ footer {
     background-image: url(https://www.raspberrypi.com/app/themes/mind-control/images/application/footer/social/youtube.svg);
 }
 
+@media screen and (max-width: 1350px) {
+  div.contribute {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .legal {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   #content {
     width: 625px;

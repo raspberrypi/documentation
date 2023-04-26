@@ -59,7 +59,7 @@ If you aren't using an HDMI monitor with speakers you might also need some form 
 If you are having problems with your SD card:
 
 * Make sure you are using a genuine SD card. The best way to avoid fake SD cards is to always buy from a reputable supplier.
-* Make sure you are using a good quality power supply: we recommend using an official Raspberry Pi power supply.
+* Make sure you are using a good quality power supply; we recommend using an official Raspberry Pi power supply.
 * The cable from the power supply unit to the Raspberry Pi can also cause problems. This is usually due to the resistance of the wires in the USB power cable; to save money, USB cables have as little copper in them as possible, which causes a voltage drop across the cable.
 * Make sure you shut down the operating system correctly before you power down the Raspberry Pi.
 
