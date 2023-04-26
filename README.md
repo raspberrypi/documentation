@@ -116,6 +116,7 @@ $ pip3 install --user -r requirements.txt
 After you've installed both the toolchain and scripting dependencies, you can build the documentation with,
 
 ```
+$ make build_doxygen_adoc
 $ make
 ```
 
@@ -130,7 +131,7 @@ As the local server launches, the local URL will be printed in the terminal -- o
 
 You can revert your repository to a pristine state by running,
 ```
-$ make clean
+$ make clean_everything
 ```
 which will delete the `build/` and `documentation/html/` directories.
 

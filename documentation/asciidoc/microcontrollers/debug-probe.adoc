@@ -1,8 +1,8 @@
 include::debug-probe/introduction.adoc[]
 
-include::debug-probe/installing-tools.adoc[]
-
 include::debug-probe/getting-started.adoc[]
+
+include::debug-probe/installing-tools.adoc[]
 
 include::debug-probe/swd-connection.adoc[]
 
