@@ -7,7 +7,7 @@ These options specify the firmware files transferred to the VideoCore GPU prior 
 `start_file` specifies the VideoCore firmware file to use.
 `fixup_file` specifies the file used to fix up memory locations used in the `start_file` to match the GPU memory split. Note that the `start_file` and the `fixup_file` are a matched pair - using unmatched files will stop the board from booting. This is an advanced option, so we advise that you use `start_x` and `start_debug` rather than this option.
 
-Note that the cut-down firmware (`start*cd.elf` and `fixup*cd.dat`) cannot be selected this way - the system will fail to boot.  The only way to enable the cut-down firmware is to specify `gpu_mem=16`.
+NOTE: Cut-down firmware (`start*cd.elf` and `fixup*cd.dat`) cannot be selected this way - the system will fail to boot.  The only way to enable the cut-down firmware is to specify `gpu_mem=16`.
 
 === `start_x`, `start_debug`
 
