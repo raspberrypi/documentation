@@ -66,7 +66,7 @@ These are particularly useful for defining different `kernel`, `initramfs`, and 
 
 Remember to use the `[all]` filter at the end, so that any subsequent settings aren't limited to Raspberry Pi 2 hardware only.
 
-NOTE: A Raspberry Pi Zero W will see the contents of `[pi0w]` *and* `[pi0]` sections (and a Zero 2 W will see any `[pi02]` sections also). Likewise, Raspberry Pi 3B+ see `[pi3+]` *and* `[pi3]` sections, Raspberry Pi 400 see `[pi400]` *and* `[pi4]` sections, Raspberry Pi Compute Module 4 see `[cm4]` *and* `[pi4]` sections and Raspberry Pi Compute Module 4S see `[cm4s]` *and* `[pi4]` sections. If you want a setting to apply _only_ to a Raspberry Pi Zero, Raspberry Pi Zero W, Raspberry Pi 3B, or Raspberry Pi 4B then you need to follow it - the ordering is significant - with a setting in a `[pi0w]`, `[pi02]`, `[pi3+]`, `[pi400]`, `[cm4]` or `[cm4s]` section which reverts the shared setting.
+NOTE: Some models of Raspberry Pi (Zero W, Zero 2 W, Model 3B+, Pi 400, Compute Module 4 and Compute Module 4S) see the settings for multiple filters (as listed in the table above). This means that if want a setting to apply only to, e.g., a Model 4B without _also_ applying that setting to a Pi 400, then the setting in the `[pi4]` section would need to be reverted by an alternate setting in a following `[pi400]` section - the ordering of such sections is significant. Alternatively, you could use a `[board-type=0x11]` filter which has a one-to-one mapping to different hardware products.
 
 === The `[none]` filter
 
