@@ -47,7 +47,7 @@ The conditional model filters are applied according to the following table.
 | Zero W (also sees `[pi0]` contents)
 
 | `[pi02]`
-| Zero 2 W (also sees `[pi0]` contents)
+| Zero 2 W (also sees `[pi0w]` and `[pi0]` contents)
 
 | `[board-type=Type]`
 | Filter by `Type` number - see xref:raspberry-pi.adoc#raspberry-pi-revision-codes[Raspberry Pi Revision Codes] E.g `[board-type=0x14]` would match CM4.
@@ -66,7 +66,7 @@ These are particularly useful for defining different `kernel`, `initramfs`, and 
 
 Remember to use the `[all]` filter at the end, so that any subsequent settings aren't limited to Raspberry Pi 2 hardware only.
 
-NOTE: A Raspberry Pi Zero W will see the contents of `[pi0w]` *and* `[pi0]`. Likewise, Raspberry Pi 3B+ see `[pi3+]` *and* `[pi3]` sections, Raspberry Pi 400 see `[pi400]` *and* `[pi4]` sections, Raspberry Pi Compute Module 4 see `[cm4]` *and* `[pi4]` sections and Raspberry Pi Compute Module 4S see `[cm4s]` *and* `[pi4]` sections. If you want a setting to apply _only_ to a Raspberry Pi Zero, Raspberry Pi 3B, or Raspberry Pi 4B then you need to follow it - the ordering is significant - with a setting in a `[pi0w]`, `[pi3+]`, `[pi400]`, `[cm4]` or `[cm4s]` section which reverts the shared setting.
+NOTE: A Raspberry Pi Zero W will see the contents of `[pi0w]` *and* `[pi0]` sections (and a Zero 2 W will see any `[pi02]` sections also). Likewise, Raspberry Pi 3B+ see `[pi3+]` *and* `[pi3]` sections, Raspberry Pi 400 see `[pi400]` *and* `[pi4]` sections, Raspberry Pi Compute Module 4 see `[cm4]` *and* `[pi4]` sections and Raspberry Pi Compute Module 4S see `[cm4s]` *and* `[pi4]` sections. If you want a setting to apply _only_ to a Raspberry Pi Zero, Raspberry Pi Zero W, Raspberry Pi 3B, or Raspberry Pi 4B then you need to follow it - the ordering is significant - with a setting in a `[pi0w]`, `[pi02]`, `[pi3+]`, `[pi400]`, `[cm4]` or `[cm4s]` section which reverts the shared setting.
 
 === The `[none]` filter
 
