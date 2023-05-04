@@ -38,8 +38,6 @@ jobs:
           version: 1.10.2
       - name: Install arm-none-eabi-gcc GNU Arm Embedded Toolchain
         uses: carlosperate/arm-none-eabi-gcc-action@v1.6.1
-        env:
-          NODE_TLS_REJECT_UNAUTHORIZED: 0
       - name: Install Doxygen
         run: |
           wget https://www.doxygen.nl/files/doxygen-1.9.6.linux.bin.tar.gz
