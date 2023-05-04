@@ -165,7 +165,7 @@
                 {
                     "title": "Raspberry Pi ID",
                     "description": "Our identity service",
-                    "image": "full-sized/Getting-Started.png",
+                    "image": "full-sized/Raspberry-Pi-ID.png",
                     "subpath": "id.adoc"
                 }
             ]
