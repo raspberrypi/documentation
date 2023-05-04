@@ -12,12 +12,14 @@ Once Linux has booted, the boot partition is mounted as `/boot`.
 
 This is the bootloader, which is loaded by the SoC on boot, does some very basic setup, and then loads one of the `start*.elf` files. `bootcode.bin` is not used on the Raspberry Pi 4, because it has been replaced by boot code in the xref:raspberry-pi.adoc#raspberry-pi-4-boot-eeprom[onboard EEPROM].
 
-==== start.elf, start_x.elf, start_db.elf, start_cd.elf, start4.elf, start4x.elf, start4cd.elf, start4db.elf
+==== start.elf, start_x.elf, start_db.elf, start_cd.elf, start4.elf, start4x.elf, start4db.elf, start4cd.elf
 
-These are binary blobs (firmware) that are loaded on to the VideoCore in the SoC, which then take over the boot process.
-`start.elf` is the basic firmware, `start_x.elf` includes camera drivers and codec, `start_db.elf` is a debug version of the firmware, and `start_cd.elf` is a cut-down version with no support hardware blocks like codecs and 3D, and for use when `gpu_mem=16` is specified in `config.txt`. More information on how to use these can be found in xref:config_txt.adoc#boot-options[the `config.txt` section].
+These are binary blobs (firmware) that are loaded on to the VideoCore GPU in the SoC, which then take over the boot process.
+`start.elf` is the basic firmware, `start_x.elf` also includes camera drivers and codecs, `start_db.elf` can be used for debugging purposes and `start_cd.elf` is a cut-down version of the firmware. `start_cd.elf` removes support for hardware blocks such as cameras, codecs and 3D as well as having initial framebuffer limitations. The cut-down firmware is automatically used when `gpu_mem=16` is specified in `config.txt`.
 
-`start4.elf`, `start4x.elf`, `start4cd.elf`, and `start4db.elf` are firmware files specific to the Raspberry Pi 4.
+`start4.elf`, `start4x.elf`, `start4db.elf` and `start4cd.elf` are equivalent firmware files specific to the Raspberry Pi 4-series (Model 4B, Pi 400, Compute Module 4 and Compute Module 4S).
+
+More information on how to use these files can be found in xref:config_txt.adoc#boot-options[the `config.txt` section].
 
 ==== fixup*.dat
 
