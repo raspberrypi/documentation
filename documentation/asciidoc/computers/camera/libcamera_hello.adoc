@@ -1,6 +1,6 @@
 === `libcamera-hello`
 
-`libcamera-hello` is the equivalent of a "hello world" application for the camera. It starts the camera, displays a preview window, and does nothing else. For example
+`libcamera-hello` is the equivalent of a "hello world" application for the camera. It starts the camera, displays a preview window, and does nothing else. For example, the command:
 
 [,bash]
 ----
