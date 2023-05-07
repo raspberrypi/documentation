@@ -9,7 +9,7 @@ sudo raspi-config
 
 The `sudo` is required because you will be changing files that you do not own as the `pi` user.
 
-NOTE: If you are using the Raspberry Pi desktop then you can use the graphical `Raspberry Pi Configuration` application from the `Preferences` menu to configure your Raspberry Pi.
+NOTE: If you are using the Raspberry Pi desktop, then you can use the graphical `Raspberry Pi Configuration` application from the `Preferences` menu to configure your Raspberry Pi.
 
 You should then see a blue screen with options in a grey box:
 
@@ -17,7 +17,7 @@ image::images/raspi-config.png[raspi-config main screen]
 
 NOTE: The menu shown may differ slightly.
 
-Use the `up` and `down` arrow keys to move the highlighted selection between the options available. Pressing the `right` arrow key will jump out of the Options menu and take you to the `<Select>` and `<Finish>` buttons. Pressing `left` will take you back to the options. Alternatively, you can use the `Tab` key to switch between these.
+Use the `up` and `down` arrow keys to move the highlighted selection between the options available. Pressing the `right` arrow key will jump out of the **Options** menu and take you to the `<Select>` and `<Finish>` buttons. Pressing `left` will take you back to the options. Alternatively, you can use the `Tab` key to switch between these.
 
 Generally speaking, `raspi-config` aims to provide the functionality to make the most common configuration changes. This may result in automated edits to `/boot/config.txt` and various standard Linux configuration files. Some options require a reboot to take effect. If you changed any of those, `raspi-config` will ask if you wish to reboot now when you select the `<Finish>` button.
 
@@ -26,13 +26,13 @@ NOTE: In long lists of option values (like the list of timezone cities), you can
 [[menu-options]]
 === List of Options
 
-NOTE: Due to the continual development of the `raspi-config` tool, the list of options below may not be completely up to date. Also please be aware that different models of Raspberry Pi may have different options available.
+NOTE: Due to the continual development of the `raspi-config` tool, the list of options below may not be completely up to date. Also, please be aware that different models of Raspberry Pi may have different options available.
 
 NOTE: All options are available via a non-interactive command line interface. See the section on the <<raspi-config-cli,`raspi-config` command line interface>> for more information.
 
 ==== System Options
 
-The system options submenu allows you to make configuration changes to various parts of the boot, login and networking process, along with some other system level changes.
+The **System Options** submenu allows you to make configuration changes to various parts of the boot, login and networking process, along with some other system-level changes.
 
 ===== Wireless LAN
 
