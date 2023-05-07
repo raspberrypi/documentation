@@ -25,7 +25,7 @@ This works on both regular Debian or Ubuntu Linux — and has been tested in a m
 You can install the necessary dependencies on Linux as follows,
 
 ```
-$ sudo apt install -y ruby ruby-dev python3 python3-pip make ninja-build
+$ sudo apt install -y ruby ruby-dev python3 python3-pip make ninja-build gcc-arm-node-eabi
 ```
 
 then add these lines to the bottom of your `$HOME/.bashrc`,
@@ -113,8 +113,15 @@ $ pip3 install --user -r requirements.txt
 
 ### Building the Documentation Site
 
-After you've installed both the toolchain and scripting dependencies, you can build the documentation with,
+After you've installed both the toolchain and scripting dependencies, you can build the documentation.
 
+Before building the main documentation,
+build the Pico C SDK Doxygen documentation first with,
+```
+$ make build_doxygen_doc
+```
+
+Build the main documentation with,
 ```
 $ make
 ```
@@ -128,28 +135,12 @@ $ make serve_html
 
 As the local server launches, the local URL will be printed in the terminal -- open this URL in a browser to see the locally-built site.
 
-You can revert your repository to a pristine state by running,
-```
-$ make clean
-```
-which will delete the `build/` and `documentation/html/` directories.
+### Cleaning up afterward
 
-### Building with Doxygen
-
-If you want to build the Pico C SDK Doxygen documentation alongside the main documentation site you can do so with,
-
-```
-$ make build_doxygen_doc
-$ make
-```
-
-and clean up afterwards by using,
-
+You can revert your repositoryt to a pristine state by running,
 ```
 $ make clean_everything
 ```
-
-which will revert the repository to a pristine state.
 
 ## Licence
 
