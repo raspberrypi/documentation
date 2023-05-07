@@ -4,21 +4,23 @@ video::CQtliTJ41ZE[youtube]
 
 To get started with your Raspberry Pi computer, you'll need the following accessories:
 
-A computer monitor or television. Most should work as a display for the Raspberry Pi, but for best results, you should use a display with HDMI input. You'll also need an appropriate xref:getting-started.adoc#connecting-a-display[display] cable to connect your monitor to your Raspberry Pi.
+1. A computer monitor or television. 
 
-A computer keyboard and mouse
+Most should work as a display for the Raspberry Pi, but for best results, you should use a display with HDMI input. You'll also need an appropriate xref:getting-started.adoc#connecting-a-display[display] cable to connect your monitor to your Raspberry Pi.
+
+2. A computer keyboard and mouse
 
  * Any standard USB keyboard and mouse will work with your Raspberry Pi.
  * Wireless keyboards and mice will work if already paired.
  * For keyboard layout configuration options, see xref:configuration.adoc#raspi-config[raspi-config].
 
-A good quality xref:raspberry-pi.adoc#power-supply[power supply].
+3. A good quality xref:raspberry-pi.adoc#power-supply[power supply].
 
 We recommend the official Raspberry Pi Power Supply, which has been specifically designed to consistently provide +5.1V despite rapid fluctuations in current draw. Those fluctuations in demand are something that happens a lot when you’re using peripherals with the Raspberry Pi and something that other supplies—designed to provide consistent current for charging cellphones—usually don’t cope with all that well. It also has an attached micro USB cable, which means that you don’t accidentally use a poor-quality cable—something that can be an issue.
 
 For the Raspberry Pi 4 Model B and Raspberry Pi 400, you should use the https://www.raspberrypi.com/products/type-c-power-supply/[type C power supply]; for all other models, you should use the https://www.raspberrypi.com/products/micro-usb-power-supply/[micro USB power supply].
 
-Finally, you'll need an xref:getting-started.adoc#sd-cards[SD card]; we recommend a minimum of 8GB micro SD card and use the https://www.raspberrypi.com/software/[Raspberry Pi Imager] to install an operating system onto it.
+4. Finally, you'll need an xref:getting-started.adoc#sd-cards[SD card]; we recommend a minimum of 8GB micro SD card and use the https://www.raspberrypi.com/software/[Raspberry Pi Imager] to install an operating system onto it.
 
 === Connecting a Display
 
