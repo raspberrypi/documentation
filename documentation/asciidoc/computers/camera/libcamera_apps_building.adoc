@@ -81,14 +81,16 @@ cd libcamera
 Next we recommend that Raspberry Pi OS Lite users run
 
 ----
-meson build --buildtype=release -Dpipelines=raspberrypi -Dipas=raspberrypi -Dv4l2=true -Dgstreamer=enabled -Dtest=false -Dlc-compliance=disabled -Dcam=disabled -Dqcam=disabled -Ddocumentation=disabled
+meson build --buildtype=release -Dpipelines=raspberrypi -Dipas=raspberrypi -Dv4l2=true -Dgstreamer=enabled -Dtest=false -Dlc-compliance=disabled -Dcam=disabled -Dqcam=disabled -Ddocumentation=disabled -Dpycamera=enabled
 ----
 
 Users of Raspberry Pi OS can instead use
 
 ----
-meson build --buildtype=release -Dpipelines=raspberrypi -Dipas=raspberrypi -Dv4l2=true -Dgstreamer=enabled -Dtest=false -Dlc-compliance=disabled -Dcam=disabled -Dqcam=enabled -Ddocumentation=disabled
+meson build --buildtype=release -Dpipelines=raspberrypi -Dipas=raspberrypi -Dv4l2=true -Dgstreamer=enabled -Dtest=false -Dlc-compliance=disabled -Dcam=disabled -Dqcam=enabled -Ddocumentation=disabled -Dpycamera=enabled
 ----
+
+NOTE: As of 6th May 2023, there has been a directory restructuring in the upstream libcamera git tree (https://git.libcamera.org/). If users are building libcamera from this tree, please replace `-Dpipelines=raspberrypi -Dipas=raspberrypi` with `-Dpipelines=rpi/vc4 -Dipas=rpi/vc4` in the above commands. This directory restructuring has not yet made it into the Raspberry Pi libcamera repo (https://github.com/raspberrypi/libcamera.git), so the above commands should be used without modifications if using that repo.
 
 The only difference is that the latter also builds the `qcam` test application, which has dependencies on Qt and X Windows (after completing the `libcamera` build users can run `build/src/qcam/qcam` to verify that `libcamera` is functioning correctly).
 
