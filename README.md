@@ -137,7 +137,7 @@ As the local server launches, the local URL will be printed in the terminal -- o
 
 ### Cleaning up afterward
 
-You can revert your repositoryt to a pristine state by running,
+You can revert your repository to a pristine state by running,
 ```
 $ make clean_everything
 ```
