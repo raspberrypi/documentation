@@ -61,8 +61,7 @@ if __name__ == "__main__":
     adoc_includes_dir = sys.argv[6]
     assets_dir = sys.argv[7]
     doxygen_pico_sdk_build_dir = sys.argv[8]
-    if not os.path.exists(doxygen_pico_sdk_build_dir):
-        raise Exception("{} doesn't exist".format(doxygen_pico_sdk_build_dir))
+    build_doxygen = os.path.exists(doxygen_pico_sdk_build_dir)
     redirects_dir = sys.argv[9]
     images_dir = sys.argv[10]
     output_ninjabuild = sys.argv[11]
@@ -256,7 +255,8 @@ if __name__ == "__main__":
         source = '$doxyfile'
         extra_sources = ['$scripts_dir/create_output_supplemental_data.py']
         ninja.build(dest, 'create_output_supplemental_data', source, extra_sources)
-        targets.append(dest)
+        if build_doxygen:
+            targets.append(dest)
         if targets:
             ninja.default(targets)
             targets = []
