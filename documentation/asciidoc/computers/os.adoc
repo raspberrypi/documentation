@@ -8,8 +8,6 @@ include::os/using-webcams.adoc[]
 
 include::os/graphics-utilities.adoc[]
 
-include::os/using-python.adoc[]
-
 include::os/using-gpio.adoc[]
 
 
