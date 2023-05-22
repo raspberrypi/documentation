@@ -666,7 +666,6 @@ def handler(html_path, output_path, header_path, output_json):
       with open(toc_file) as h:
         toc_root = etree.HTML(h.read())
       toc_data, toc_list = parse_toc(toc_root)
-    print(toc_list)
     # process every html file
     updated_links = {}
     for html_file in html_files:
