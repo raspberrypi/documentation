@@ -496,6 +496,14 @@ def make_adoc(root_string, title_text, filename):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return root_string
 
+def decrease_heading_levels(adoc):
+  try:
+    adoc = re.sub("\n==", "\n=", adoc, flags=re.S)
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return adoc
+
 def make_dict_path(arr, level):
   try:
     dict_path_str = ""
@@ -512,6 +520,7 @@ def make_dict_path(arr, level):
 def parse_toc(root):
   try:
     toc_data = {}
+    toc_list = {}
     parents = []
     items = root.findall(".//a[@class='el']")
     for item in items:
@@ -531,6 +540,7 @@ def parse_toc(root):
         cmd = make_dict_path(parents, parent_level-1)
         cmd = cmd + "[href] = {}"
         exec(cmd)
+      toc_list[href] = level
       if len(parents) > level-1:
         parents[level-1] = href
       else:
@@ -538,7 +548,7 @@ def parse_toc(root):
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
-  return toc_data
+  return toc_data, toc_list
 
 def parse_header(header_path):
   h_json = {
@@ -655,7 +665,8 @@ def handler(html_path, output_path, header_path, output_json):
     if os.path.exists(toc_file):
       with open(toc_file) as h:
         toc_root = etree.HTML(h.read())
-      toc_data = parse_toc(toc_root)
+      toc_data, toc_list = parse_toc(toc_root)
+    print(toc_list)
     # process every html file
     updated_links = {}
     for html_file in html_files:
@@ -704,6 +715,8 @@ def handler(html_path, output_path, header_path, output_json):
       # prep and write the adoc
       final_output = stringify(contents)
       adoc = make_adoc(final_output, title_text, html_file)
+      if html_file not in toc_list or toc_list[html_file] > 2:
+        adoc = decrease_heading_levels(adoc)
       adoc_path = re.sub(".html$", ".adoc", this_output_path)
       write_output(adoc_path, adoc)
       print("Generated " + adoc_path)
