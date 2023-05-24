@@ -37,11 +37,11 @@ image:images/SCREW_REMOVED_small.jpg[width="65%"]
 
 image:images/FLATLAY_small.jpg[width="65%"]
 
-*  Turn the lens around so that it is "looking" upwards and place it on a table.
-
 * You may try some ways to weaken the adhesive, such as a little isopropyl alcohol and/or heat (~20-30 C). 
 
 image:images/SOLVENT_small.jpg[width="65%"]
+
+*  Turn the lens mount around so that it is "looking" upwards and place it on a table.
 
 * Using a pen top or similar soft plastic item, push down on the filter only at the very edges where the glass attaches to the aluminium - to minimise the risk of breaking the filter. The glue will break and the filter will detach from the lens mount.
 
