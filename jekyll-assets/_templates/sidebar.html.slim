@@ -1,0 +1,21 @@
+- if role? 'whitepaper'
+	.sidebarblock id=id class=role
+		.content
+			- if title?
+				.title 
+					h5 
+						a href=(attr 'link') target='_blank' =title
+			div.inner
+				div.coverimage
+					- if title?
+						p.title =title
+					- if attr? 'subtitle'
+						p.subtitle =attr 'subtitle'
+				div
+					=content
+- else
+	.sidebarblock id=id class=role
+		.content
+			- if title?
+				.title =title
+			=content

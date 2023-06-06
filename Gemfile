@@ -34,3 +34,7 @@ end
 gem "wdm", "~> 0.1.0", :install_if => Gem.win_platform?
 
 gem "nokogiri", "~> 1.13"
+
+# So we can add custom element templates
+gem 'slim', '~> 3.0.7'
+gem 'thread_safe', '~> 0.3.5'
