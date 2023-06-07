@@ -68,7 +68,7 @@ To find the serial number:
 
 [,bash]
 ----
-grep Serial /proc/cpuinfo | cut -d ' ' -f 2 | cut -c 8-16
+grep Serial /proc/cpuinfo | cut -d ' ' -f 2 | cut -c 9-16
 ----
 
 === Server Configuration
