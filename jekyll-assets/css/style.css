@@ -583,6 +583,58 @@ div.videoblock iframe {
   border: 0;
 }
 
+/* WHITEPAPER BLOCKS */
+
+.whitepaper .content {
+  border: 2px solid var(--red);
+  padding: 10px;
+}
+
+.whitepaper::before {
+  content: "Whitepaper";
+  text-transform: uppercase;
+  display: block;
+  color: var(--red);
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.whitepaper div.inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.whitepaper .coverimage {
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-image: url(whitepaper_coverimage.png);
+  background-size: 177px 242px;
+  flex: 2 0 auto;
+  margin-right: 10px;
+  height: 242px;
+  width: 177px;
+  border: 1px solid #cecece;
+  text-align: right;
+  padding: 80px 15px 15px;
+  font-family: monospace;
+  color: var(--red);
+  font-size: 10px;
+  cursor: pointer;
+}
+
+#content .whitepaper .coverimage p.title {
+  font-family: monospace;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+#content .whitepaper h5 {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
 /* DOXYGEN ELEMENTS */
 
 div.memproto {
