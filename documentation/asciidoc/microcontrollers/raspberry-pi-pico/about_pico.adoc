@@ -45,6 +45,7 @@ Raspberry Pi Pico W adds on-board single-band 2.4GHz wireless interfaces (802.11
 * Wireless (802.11n), single-band (2.4 GHz)
 * WPA3
 * Soft access point supporting up to four clients
+* Bluetooth 5.2
 
 The antenna is an onboard antenna licensed from ABRACON (formerly ProAnt). The wireless interface is connected via
 SPI to the xref:rp2040.adoc#welcome-to-rp2040[RP2040] microcontroller.
@@ -58,7 +59,7 @@ For best wireless performance, the antenna should be in free space. For instance
 antenna can reduce its performance both in terms of gain and bandwidth. Adding grounded metal to the sides of the
 antenna can improve the antenna’s bandwidth.
 
-NOTE: The CYW43439 wireless chip is connected via SPI to the RP2040. While the CYW43439 supports both 802.11 wireless and Bluetooth, initially Pico W does not have Bluetooth support. Support may be added later, and will use the same SPI interface. If support is added existing hardware may require a firmware update to support Bluetooth, but there will be no hardware modifications needed.
+NOTE: The CYW43439 wireless chip is connected via SPI to the RP2040.The CYW43439 supports both 802.11 wireless and Bluetooth over this interface.
 
 === Pinout and design files
 
