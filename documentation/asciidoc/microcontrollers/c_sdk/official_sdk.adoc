@@ -23,5 +23,10 @@ If you are building applications with the C/{cpp} SDK and targeting boards other
 
 [NOTE]
 ====
-If you are building applications with the C/{cpp} SDK for Raspberry Pi Pico W and, to connect to a network you will need to pass `-DPICO_BOARD=pico_w -DWIFI_SSID="Your Network" -DWIFI_PASSWORD="Your Password"` to CMake. 
+Documentation introducing working with Wi-Fi and Bluetooth on Raspberry Pi Pico W with C/{cpp} or MicroPython is presented in the https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W] book.
+====
+
+[NOTE]
+====
+If you are building applications with the C/{cpp} SDK for Raspberry Pi Pico W and, to connect to a network you will need to pass `-DPICO_BOARD=pico_w -DWIFI_SSID="Your Network" -DWIFI_PASSWORD="Your Password"` to CMake. If you only need to enable Bluetooth support then you do not need to pass a SSID and password, but still need to pass the `-DPICO_BOARD=pico_w` string to CMake.
 ====
