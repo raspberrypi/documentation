@@ -22,6 +22,8 @@ https://datasheets.raspberrypi.com/picow/pico-w-datasheet.pdf[Raspberry Pi Pico 
 
 https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W]:: Getting Raspberry Pi Pico W online with C/{cpp} or MicroPython
 
+NOTE: Documentation on how to use Wi-Fi and Bluetooth on Raspberry Pi Pico W with C/{cpp} or MicroPython is presented in the https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W] book.
+
 === Software Development
 
 https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi Pico C/{cpp} SDK]:: Libraries and tools for C/{cpp} development on RP2040 microcontrollers
