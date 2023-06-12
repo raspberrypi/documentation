@@ -620,6 +620,7 @@ div.videoblock iframe {
   font-family: monospace;
   color: var(--red);
   font-size: 10px;
+  cursor: pointer;
 }
 
 #content .whitepaper .coverimage p.title {

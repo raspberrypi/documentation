@@ -6,7 +6,7 @@
 					h5 
 						a href=(attr 'link') target='_blank' =title
 			div.inner
-				div.coverimage
+				div.coverimage data-link=(attr 'link')
 					- if title?
 						p.title =title
 					- if attr? 'subtitle'
