@@ -8,10 +8,10 @@ Download the correct MicroPython UF2 file for your board:
 
 * https://micropython.org/download/rp2-pico/rp2-pico-latest.uf2[Raspberry Pi Pico] 
 
-* https://micropython.org/download/rp2-pico-w/rp2-pico-w-latest.uf2[Raspberry Pi Pico W] 
+* https://micropython.org/download/rp2-pico-w/rp2-pico-w-latest.uf2[Raspberry Pi Pico W] with Wi-Fi support
 //(with https://makeblock-micropython-api.readthedocs.io/en/latest/public_library/Third-party-libraries/urequests.html[urequests] and https://docs.micropython.org/en/latest/reference/packages.html[upip] preinstalled)
 
-* https://datasheets.raspberrypi.com/XYZZY.uf2[Raspberry Pi Pico W] with Bluetooth LE support
+* https://datasheets.raspberrypi.com/XYZZY.uf2[Raspberry Pi Pico W] with Wi-Fi and Bluetooth LE support
 
 IMPORTANT: Until Bluetooth support is integrated into the upstream repo you should download the beta https://datasheets.raspberrypi.com/XYZZY.uf2[UF2 firmware] which has both Wi-Fi and Bluetooth support built in. Documentation introducing working with Wi-Fi and Bluetooth on Raspberry Pi Pico W with C/{cpp} or MicroPython is presented in the https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W] book.
 
