@@ -15,6 +15,8 @@ Download the correct MicroPython UF2 file for your board:
 
 IMPORTANT: Until Bluetooth support is integrated into the upstream repo you should download the beta https://datasheets.raspberrypi.com/XYZZY.uf2[UF2 firmware] which has both Wi-Fi and Bluetooth support built in. Documentation introducing working with Wi-Fi and Bluetooth on Raspberry Pi Pico W with C/{cpp} or MicroPython is presented in the https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W] book.
 
+NOTE: MicroPython distributions for other RP2040-based boards are available on the https://micropython.org/download/[MicroPython download page].
+
 Then go ahead and:
 
 . Push and hold the BOOTSEL button and plug your Pico into the USB port of your Raspberry Pi or other computer. Release the BOOTSEL button after your Pico is connected.
@@ -28,3 +30,4 @@ Then go ahead and:
 The https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf[Raspberry Pi Pico Python SDK] book contains step-by-step instructions for connecting to your Pico and programming it in MicroPython using both the command line and the https://thonny.org/[Thonny] IDE.
 
 WARNING: If you are using an Apple Mac and running macOS Ventura there has been a change in how the Finder works which causes drag-and-drop to fail. This https://github.com/raspberrypi/pico-sdk/issues/1081[issue] was fixed as of macOS Ventura version 13.1. Please see our https://www.raspberrypi.com/news/the-ventura-problem/[blog post] for a full explanation along with workarounds if you are unable to upgrade to the latest version of Ventura.
+
