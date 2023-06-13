@@ -46,6 +46,8 @@ Raspberry Pi Pico W adds on-board single-band 2.4GHz wireless interfaces (802.11
 * WPA3
 * Soft access point supporting up to four clients
 * Bluetooth 5.2
+** Support for Bluetooth LE Central and Peripheral roles
+** Support for Bluetooth Classic
 
 The antenna is an onboard antenna licensed from ABRACON (formerly ProAnt). The wireless interface is connected via
 SPI to the xref:rp2040.adoc#welcome-to-rp2040[RP2040] microcontroller.
