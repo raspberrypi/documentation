@@ -1,5 +1,14 @@
 == Flashing the Compute Module eMMC
 
+[.whitepaper, title="Using the Compute Module Provisioner", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003468-WP/Using-the-Compute-Module-Provisioner.pdf]
+****
+The CM Provisioner is a web application designed to make programming a large number of Raspberry Pi Compute Module (CM) devices much easier and quicker. It is simple to install and simple to use. 
+
+It provides an interface to a database of kernel images that can be uploaded, along with the ability to use scripts to customise various parts of the installation during the flashing process. Label printing and firmware updating is also supported.
+
+This whitepaper assumes that the Provisioner server, software version 1.5 or newer, is running on a Raspberry Pi.
+****
+
 The Compute Module has an on-board eMMC device connected to the primary SD card interface. This guide explains how to write data to the eMMC storage using a Compute Module IO board.
 
 Please also read the section in the xref:compute-module.adoc#datasheets-and-schematics[Compute Module Datasheets]
