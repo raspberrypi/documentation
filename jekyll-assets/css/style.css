@@ -585,6 +585,10 @@ div.videoblock iframe {
 
 /* WHITEPAPER BLOCKS */
 
+.whitepaper {
+  margin-bottom: 30px;
+}
+
 .whitepaper .content {
   border: 2px solid var(--red);
   padding: 10px;
