@@ -81,6 +81,7 @@ if __name__ == "__main__":
 :doctitle: {}
 :page-sub_title: {}
 :sectanchors:
+:figure-caption!:
 
 {}
 """.format(output_subdir, includes_dir, '{} - {}'.format(site_config['title'], index_title), index_title, new_contents))
