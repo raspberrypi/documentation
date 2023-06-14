@@ -714,8 +714,10 @@ def handler(html_path, output_path, header_path, output_json):
       # prep and write the adoc
       final_output = stringify(contents)
       adoc = make_adoc(final_output, title_text, html_file)
-      if html_file not in toc_list or toc_list[html_file] > 2:
+      # fix heading levels for non-included pages
+      if html_file not in toc_list:
         adoc = decrease_heading_levels(adoc)
+      # write the final adoc file
       adoc_path = re.sub(".html$", ".adoc", this_output_path)
       write_output(adoc_path, adoc)
       print("Generated " + adoc_path)
