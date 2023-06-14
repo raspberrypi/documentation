@@ -38,6 +38,9 @@ sass:
     sass_dir: css
     quiet_deps: true
 
+asciidoctor:
+    template_dir: build/jekyll/_templates
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

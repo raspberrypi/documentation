@@ -4,6 +4,14 @@ The Raspberry Pi is often used as part of another product. This documentation de
 
 === One-Time Programmable Settings
 
+[.whitepaper, title="Using the One-Time Programmable Memory on Raspberry Pi Single- Board Computers", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003611-WP/Using-the-One-time-programmable-memory-on-Raspberry-Pi-single-board-computers.pdf]
+****
+All Raspberry Pi single-board computers (SBCs) have an inbuilt area of one-time programmable (OTP) memory, which is actually part of the main system on a chip (SoC). As its name implies, OTP memory can be written to (i.e. a binary 0 can be changed to a 1) only once. Once a bit has been changed to 1, it can never be returned to 0. One way of looking at the OTP is to consider each bit as a fuse. Programming involves deliberately blowing the fuse — an irreversible process as you cannot get inside the chip to replace it!
+
+
+This white paper assumes that the Raspberry Pi is running the Raspberry Pi operating system (OS), and is fully up to date with the latest firmware and kernels.
+****
+
 There are a number of OTP values that can be used. To see a list of all the xref:raspberry-pi.adoc#otp-register-and-bit-definitions[OTP values], you can use:
 
 [,bash]

@@ -1,4 +1,4 @@
-= Two-factor authentication
+== Two-factor authentication
 
 Like most modern web services, the Raspberry Pi ID service supports two-factor authentication (2FA) using a https://en.wikipedia.org/wiki/Time-based_one-time_password[time-based one-time password] (TOTP).
 
