@@ -1,5 +1,12 @@
 == Parallel Display Interface (DPI)
 
+[.whitepaper, title="Using a DPI Display on the Raspberry Pi", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003471-WP/Using-a-DPI-display.pdf]
+****
+Display Parallel Interface (DPI) displays can be connected to Raspberry Pi devices via the 40-pin general-purpose input/output (GPIO) connector as an alternative to using the dedicated Display Serial Interface (DSI) or High-Definition Multimedia Interface (HDMI) ports. Many third-party DPI displays have been made available to take advantage of this. The Buster (and earlier) Raspberry Pi operating system (OS) and the legacy display stack used Raspberry Pi-specific parameters in config.txt to configure DPI displays. With the move to Bullseye and its use of the Kernel Mode Setting (KMS) graphics driver by default, these config.txt entries are no longer relevant as all control of the display pipeline has shifted to the Linux kernel.
+
+This whitepaper assumes that the Raspberry Pi is running the Raspberry Pi OS (Linux), and is fully up to date with the latest firmware and kernels.
+****
+
 An up-to-24-bit parallel RGB interface is available on all Raspberry Pi boards with the 40 way header and the Compute Modules. This interface allows parallel RGB displays to be attached to the Raspberry Pi GPIO either in RGB24 (8 bits for red, green and blue) or RGB666 (6 bits per colour) or RGB565 (5 bits red, 6 green, and 5 blue).
 
 This interface is controlled by the GPU firmware and can be programmed by a user via special config.txt parameters and by enabling the correct Linux Device Tree overlay.
