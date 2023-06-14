@@ -45,6 +45,9 @@ Raspberry Pi Pico W adds on-board single-band 2.4GHz wireless interfaces (802.11
 * Wireless (802.11n), single-band (2.4 GHz)
 * WPA3
 * Soft access point supporting up to four clients
+* Bluetooth 5.2
+** Support for Bluetooth LE Central and Peripheral roles
+** Support for Bluetooth Classic
 
 The antenna is an onboard antenna licensed from ABRACON (formerly ProAnt). The wireless interface is connected via
 SPI to the xref:rp2040.adoc#welcome-to-rp2040[RP2040] microcontroller.
@@ -58,7 +61,11 @@ For best wireless performance, the antenna should be in free space. For instance
 antenna can reduce its performance both in terms of gain and bandwidth. Adding grounded metal to the sides of the
 antenna can improve the antenna’s bandwidth.
 
-NOTE: The CYW43439 wireless chip is connected via SPI to the RP2040. While the CYW43439 supports both 802.11 wireless and Bluetooth, initially Pico W does not have Bluetooth support. Support may be added later, and will use the same SPI interface. If support is added existing hardware may require a firmware update to support Bluetooth, but there will be no hardware modifications needed.
+NOTE: The CYW43439 wireless chip is connected via SPI to the RP2040.The CYW43439 supports both 802.11 wireless and Bluetooth over this interface.
+
+IMPORTANT: By default `libcyw43` is licensed for non-commercial use, but Pico W users, and anyone else who builds their product around RP2040 and CYW43439, benefit from a free https://github.com/georgerobotics/cyw43-driver/blob/195dfcc10bb6f379e3dea45147590db2203d3c7b/LICENSE.RP[commercial-use license]. 
+
+IMPORTANT: In addition to the https://github.com/bluekitchen/btstack/blob/master/LICENSE[standard BTstack licensing] terms, a https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/pico_btstack/LICENSE.RP[supplemental licence] which covers commercial use of BTstack with Raspberry Pi Pico W or Raspberry Pi Pico WH is provided.
 
 === Pinout and design files
 
