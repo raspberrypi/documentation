@@ -43,7 +43,7 @@ if __name__ == "__main__":
         new_contents = ''
         seen_header = False
         for line in in_fh.readlines():
-            if line.startswith('== '):
+            if re.match('^=+ ', line) is not None:
                 if not seen_header:
                     seen_header = True
                     if github_edit is not None:
