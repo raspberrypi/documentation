@@ -33,7 +33,7 @@ jobs:
         with:
           ruby-version: 2.7.0
           rubygems: 3.3.22
-          bundler: Gemfile.lock
+          bundler: 2.3.22
           bundler-cache: true
       - uses: seanmiddleditch/gha-setup-ninja@v3
         with:
