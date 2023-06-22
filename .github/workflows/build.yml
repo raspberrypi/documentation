@@ -31,7 +31,9 @@ jobs:
         uses: py-actions/py-dependency-install@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: 2.7.0
+          rubygems: 3.3.22
+          bundler: 2.3.22
           bundler-cache: true
       - uses: seanmiddleditch/gha-setup-ninja@v3
         with:
