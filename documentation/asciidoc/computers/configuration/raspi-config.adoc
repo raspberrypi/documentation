@@ -103,12 +103,7 @@ Enable or disable screen blanking.
 [[interfacing-options]]
 ==== Interfacing Options
 
-In this submenu there are the following options to enable/disable: Camera, SSH, VNC, SPI, I2C, Serial, 1-wire, and Remote GPIO.
-
-[[camera]]
-===== Camera
-
-Enable/disable the CSI camera interface.
+In this submenu there are the following options to enable/disable: SSH, VNC, SPI, I2C, Serial, 1-wire, and Remote GPIO.
 
 [[ssh]]
 ===== SSH
@@ -436,19 +431,7 @@ sudo raspi-config nonint do_blanking <0/1>
 [[interfacing-options-nonint]]
 ==== Interfacing Options
 
-In this submenu there are the following options to enable/disable: Camera, SSH, VNC, SPI, I2C, Serial, 1-wire, and Remote GPIO.
-
-[[camera-nonint]]
-===== Camera
-
-Enable/disable the CSI camera interface.
-
-----
-sudo raspi-config nonint do_camera <0/1>
-----
-
-`0` - Enable camera
-`1` - Disable camera
+In this submenu there are the following options to enable/disable: SSH, VNC, SPI, I2C, Serial, 1-wire, and Remote GPIO.
 
 [[ssh-nonint]]
 ===== SSH

@@ -125,7 +125,7 @@ Example `libcamera-still -n -o test.jpg`
 	--info-text			Set window title bar text <string>
 ----
 
-The supplied string is set as the title of the preview window (when running under X Windows). Additionally the string may contain a number of `%` directives which are substituted with information from the image metadata. The permitted directives are
+The supplied string is set as the title of the preview window (when running under a desktop environment). Additionally the string may contain a number of `%` directives which are substituted with information from the image metadata. The permitted directives are
 
 |===
 | Directive | Substitution
