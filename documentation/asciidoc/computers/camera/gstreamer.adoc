@@ -1,6 +1,6 @@
 === Using Gstreamer
 
-_Gstreamer_ is a Linux framework for reading, processing and playing multimedia files. There is a lot of information and many tutorials at the https://gstreamer.freedesktop.org/[_gstreamer_ website]. Here we show how `libcamera-vid` (and similarly `raspivid`) can be used to stream video over a network.
+_Gstreamer_ is a Linux framework for reading, processing and playing multimedia files. There is a lot of information and many tutorials at the https://gstreamer.freedesktop.org/[_gstreamer_ website]. Here we show how `libcamera-vid` can be used to stream video over a network.
 
 On the server we need `libcamera-vid` to output an encoded h.264 bitstream to _stdout_ and can use the _gstreamer_ `fdsrc` element to receive it. Then extra _gstreamer_ elements can send this over the network. As an example we can simply send and receive the stream on the same device over a UDP link. On the server:
 
