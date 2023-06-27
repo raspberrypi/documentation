@@ -29,7 +29,6 @@ When using the Compute Module to drive cameras, it is NOT necessary to incorpora
 To connect a single camera:
 
 . Power the Compute Module down.
-. On the Compute Module, run `sudo raspi-config` and enable the camera.
 . Connect the RPI-CAMERA board and Camera Module to the CAM1 port. As an alternative, the Raspberry Pi Zero camera cable can be used.
 +
 image::images/CMIO-Cam-Adapter.jpg[Connecting the adapter board]
@@ -55,14 +54,7 @@ NOTE: The default wiring uses GPIOs 2&3 to control the primary camera. These GPI
 
 ==== Software Support
 
-The supplied camera applications `raspivid` and `raspistill` have the -cs (--camselect) option to specify which camera should be used.
-
-If you are writing your own camera application based on the MMAL API you can use the MMAL_PARAMETER_CAMERA_NUM parameter to set the current camera. E.g.
-
-----
-MMAL_PARAMETER_INT32_T camera_num = {{MMAL_PARAMETER_CAMERA_NUM, sizeof(camera_num)}, CAMERA_NUMBER};
-status = mmal_port_parameter_set(camera->control, &camera_num.hdr);
-----
+The supplied camera applications support a `--camera` option to specify which camera should be used.
 
 === Advanced Issues
 
