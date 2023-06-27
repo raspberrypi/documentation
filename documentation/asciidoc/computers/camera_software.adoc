@@ -60,8 +60,4 @@ include::camera/v4l2.adoc[]
 
 include::camera/csi-2-usage.adoc[]
 
-[IMPORTANT]
-====
-Raspberry Pi has transitioned from a legacy camera software stack based on proprietary Broadcom GPU code to an open-source stack based on `libcamera`. As such, the old _Raspicam_ stack (`raspistill`, `raspivid`, etc.) is no longer supported.
-====
 
