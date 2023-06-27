@@ -1,5 +1,10 @@
 == `libcamera` and `libcamera-apps`
 
+[IMPORTANT]
+====
+Raspberry Pi has transitioned from a legacy camera software stack based on proprietary Broadcom GPU code to an open-source stack based on `libcamera`. As such, the old _Raspicam_ stack (`raspistill`, `raspivid`, etc.) is no longer supported.
+====
+
 === Introduction
 
 `libcamera` is a new software library aimed at supporting complex camera systems directly from the Linux operating system. In the case of the Raspberry Pi it enables us to drive the camera system directly from open source code running on ARM processors. The proprietary code running on the Broadcom GPU, and to which users have no access at all, is almost completely by-passed.
