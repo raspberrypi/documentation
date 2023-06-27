@@ -1,6 +1,6 @@
 == Useful Utilities
 
-There are several useful command line
+There are several useful command line utilities.
 
 === tvservice
 
@@ -90,10 +90,6 @@ The `vcos` command has two useful sub-commands:
 ==== version
 
 Displays the build date and version of the VideoCore firmware.
-
-==== get_camera
-
-Displays the enabled and detected state of the Raspberry Pi camera: `1` means yes, `0` means no. Whilst all firmware except cutdown versions support the camera, this support needs to be enabled by using xref:configuration.adoc#raspi-config[raspi-config].
 
 ==== get_throttled
 
