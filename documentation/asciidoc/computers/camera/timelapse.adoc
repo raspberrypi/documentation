@@ -2,20 +2,14 @@
 
 === Creating Timelapse Video
 
-To create a time-lapse video, you simply configure the Raspberry Pi to take a picture at a regular interval, such as once a minute, then use an application to stitch the pictures together into a video. There are a couple of ways of doing this.
+To create a time-lapse video, you simply configure the Raspberry Pi to take a picture at a regular interval, such as once a minute, then use an application to stitch the pictures together into a video.
 
-==== Using `libcamera-still` or `raspistill` Timelapse Mode
+==== Using `libcamera-still` Timelapse Mode
 
-Both `libcamera-still` and `raspistill` have a built in time-lapse mode, using the `--timelapse` command line switch. The value that follows the switch is the time between shots in milliseconds:
+`libcamera-still` has a built in time-lapse mode, using the `--timelapse` command line switch. The value that follows the switch is the time between shots in milliseconds:
 
 ----
 libcamera-still -t 30000 --timelapse 2000 -o image%04d.jpg
-----
-
-or
-
-----
-raspistill -t 30000 --timelapse 2000 -o image%04d.jpg
 ----
 
 [NOTE]
@@ -29,17 +23,39 @@ If a timelapse value of 0 is entered, the application will take pictures as fast
 
 ==== Automating using `cron` Jobs
 
-A good way to automate taking a picture at a regular interval is using `cron`. Open the cron table for editing:
+A good way to automate taking a picture at a regular interval is running a script with `cron`. First create the script that we'll be using with your editor of choice (replacing `pi` below with the name of the user you created during first boot):
 
 ----
-crontab -e
+#!/bin/bash
+DATE=$(date +"%Y-%m-%d_%H%M")
+libcamera-still -o /home/pi/camera/$DATE.jpg
 ----
 
-This will either ask which editor you would like to use, or open in your default editor. Once you have the file open in an editor, add the following line to schedule taking a picture every minute (referring to the Bash script from the xref:camera_software.adoc#raspistill[raspistill page], though you can use `libcamera-still` in exactly the same way):
+and save it as `camera.sh`. You'll need to make the script executable:
+
+----
+$ chmod +x camera.sh
+----
+
+and also create the `camera` directory into which you'll be saving the pictures:
+
+----
+$ mkdir camera
+----
+
+Now open the cron table for editing:
+
+----
+$ crontab -e
+----
+
+This will either ask which editor you would like to use, or open in your default editor. Once you have the file open in an editor, add the following line to schedule taking a picture every minute:
 
 ----
 * * * * * /home/pi/camera.sh 2>&1
 ----
+
+NOTE: You'll need to replace the `pi` username above with the name of the user you created during the first boot.
 
 Save and exit and you should see the message:
 
