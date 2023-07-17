@@ -151,16 +151,32 @@ supports the unmute of the DigiAMP{plus} through additional parameters.
 
 Firstly a "one-shot" unmute when kernel module loads.
 
+For Raspberry Pi boards:
+
 ----
-dtoverlay=iqaudio-dacplus,unmute_amp
+dtoverlay=rpi-digiampplus,unmute_amp
+----
+
+For IQaudIO boards:
+
+----
+dtoverlay=iqaudio-digiampplus,unmute_amp
 ----
 
 Unmute the amp when an ALSA device is opened by a client. Mute, with a five-second delay
 when the ALSA device is closed. (Reopening the device within the five-second close
 window will cancel mute.)
 
+For Raspberry Pi boards:
+
 ----
-dtoverlay=iqaudio-dacplus,auto_mute_amp
+dtoverlay=rpi-digiampplus,auto_mute_amp
+----
+
+For IQaudIO boards:
+
+----
+dtoverlay=iqaudio-digiampplus,auto_mute_amp
 ----
 
 If you do not want to control the mute state through the device tree, you can also script your own
