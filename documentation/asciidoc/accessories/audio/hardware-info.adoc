@@ -70,16 +70,6 @@ To restore a saved file:
 $ sudo alsactl restore -f /home/pi/usecase.state
 ----
 
-=== Using external USB devices
-
-If you want to enable 1.2 amp USB support (to allow USB hard disks to power up when
-accessory boards are in use), you may also want to add the following line to your `/boot/config.txt`
-file:
-
-----
-max_usb_current=1
-----
-
 === MPD-based audio with volume control
 
 To allow Music Player Daemon (MPD)-based audio software to control the audio board’s built in volume, the file
