@@ -509,6 +509,14 @@ td div.listingblock div.content code {
   height: auto;
 }
 
+div.imageblock div.title {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.8em;
+  margin-top: -15px;
+  margin-bottom: 30px;
+}
+
 .w10 { width: 10%; }
 .w20 { width: 20%; }
 .w30 { width: 30%; }

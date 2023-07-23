@@ -27,7 +27,7 @@ $ sudo apt install automake autoconf build-essential texinfo libtool libftdi-dev
 and then build OpenOCD.
 
 ----
-$ git clone https://github.com/raspberrypi/openocd.git --branch rp2040 --depth=1 --no-single-branch
+$ git clone https://github.com/raspberrypi/openocd.git --branch rp2040-v0.12.0 --depth=1 --no-single-branch
 $ cd openocd
 $ ./bootstrap
 $ ./configure 
@@ -61,7 +61,7 @@ and build OpenOCD from source.
 
 ----
 $ cd ~/pico
-$ git clone https://github.com/raspberrypi/openocd.git --branch rp2040 --depth=1
+$ git clone https://github.com/raspberrypi/openocd.git --branch rp2040-v0.12.0 --depth=1
 $ cd openocd
 $ export PATH="/usr/local/opt/texinfo/bin:$PATH"
 $ ./bootstrap
@@ -98,7 +98,7 @@ Pick all when installing the `mingw-w64-x86_64` toolchain by pressing ENTER.
 Close MSYS2 and reopen the 64-bit version to make sure the environment picks up GCC,
 
 ----
-$ git clone https://github.com/raspberrypi/openocd.git --branch rp2040 --depth=1
+$ git clone https://github.com/raspberrypi/openocd.git --branch rp2040-v0.12.0 --depth=1
 $ cd openocd
 $ ./bootstrap
 $ ./configure --disable-werror 
