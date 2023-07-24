@@ -58,7 +58,7 @@ For Raspberry Pi 1, Zero and Zero W, and Raspberry Pi Compute Module 1 default (
 [,bash]
 ----
 cd linux
-KERNEL=kernel
+export KERNEL=kernel
 make bcmrpi_defconfig
 ----
 
@@ -67,7 +67,7 @@ For Raspberry Pi 2, 3, 3+ and Zero 2 W, and Raspberry Pi Compute Modules 3 and 3
 [,bash]
 ----
 cd linux
-KERNEL=kernel7
+export KERNEL=kernel7
 make bcm2709_defconfig
 ----
 
@@ -76,7 +76,7 @@ For Raspberry Pi 4 and 400, and Raspberry Pi Compute Module 4 default 32-bit bui
 [,bash]
 ----
 cd linux
-KERNEL=kernel7l
+export KERNEL=kernel7l
 make bcm2711_defconfig
 ----
 
@@ -84,7 +84,7 @@ For Raspberry Pi 3, 3+, 4, 400 and Zero 2 W, and Raspberry Pi Compute Modules 3,
 [,bash]
 ----
 cd linux
-KERNEL=kernel8
+export KERNEL=kernel8
 make bcm2711_defconfig
 ----
 
@@ -183,7 +183,7 @@ For Raspberry Pi 1, Zero and Zero W, and Raspberry Pi Compute Module 1:
 [,bash]
 ----
 cd linux
-KERNEL=kernel
+export KERNEL=kernel
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
 ----
 
@@ -192,7 +192,7 @@ For Raspberry Pi 2, 3, 3+ and Zero 2 W, and Raspberry Pi Compute Modules 3 and 3
 [,bash]
 ----
 cd linux
-KERNEL=kernel7
+export KERNEL=kernel7
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
 ----
 
@@ -201,7 +201,7 @@ For Raspberry Pi 4 and 400, and Raspberry Pi Compute Module 4:
 [,bash]
 ----
 cd linux
-KERNEL=kernel7l
+export KERNEL=kernel7l
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
 ----
 
@@ -212,7 +212,7 @@ For Raspberry Pi 3, 3+, 4, 400 and Zero 2 W, and Raspberry Pi Compute Modules 3,
 [,bash]
 ----
 cd linux
-KERNEL=kernel8
+export KERNEL=kernel8
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2711_defconfig
 ----
 
