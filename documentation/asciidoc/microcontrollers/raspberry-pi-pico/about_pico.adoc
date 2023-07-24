@@ -74,4 +74,4 @@ image::images/picow-pinout.svg[]
 * Download the https://datasheets.raspberrypi.com/picow/PicoW-A4-Pinout.pdf[Pinout Diagram] (PDF)
 * Download https://datasheets.raspberrypi.com/picow/RPi-PicoW-PUBLIC-20220607.zip[Design Files] (Cadence Allegro)
 * Download https://datasheets.raspberrypi.com/picow/PicoW-step.zip[STEP File]
-* Download https://datasheets.raspberrypi.com/picow/PicoW-Fritzing.fzpz[Fritzing Part] for Rapsberry Pi Pico W
+* Download https://datasheets.raspberrypi.com/picow/PicoW-Fritzing.fzpz[Fritzing Part] for Raspberry Pi Pico W
