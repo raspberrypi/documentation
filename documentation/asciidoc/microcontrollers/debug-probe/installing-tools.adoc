@@ -45,19 +45,13 @@ Install https://brew.sh/[Homebrew] if needed,
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ----
 
-and then OpenOCD.
-
-----
-$ brew install open-ocd
-----
-
-Alternatively you can install needed dependencies,
+install needed dependencies,
 
 ----
 $ brew install libtool automake libusb wget pkg-config gcc texinfo 
 ----
 
-and build OpenOCD from source.
+and then build OpenOCD from source.
 
 ----
 $ cd ~/pico
