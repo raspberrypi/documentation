@@ -6,7 +6,7 @@ Before we get started we need to install some tools.
 
 You need to install OpenOCD.
 
-NOTE: SMP support for debugging on both RP2040 cores is not yet available in the release version of `openocd`. However, support is available in the `rp2040` branch and will be enabled if you build from source.
+NOTE: SMP support for debugging on both RP2040 cores is not yet available in the release version of `openocd`. However, support is available in the `rp2040-v0.12.0` branch and will be enabled if you build from source.
 
 ==== Linux (and Raspberry Pi)
 
