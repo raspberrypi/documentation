@@ -12,6 +12,8 @@ The instructions below are divided into native builds and cross-compilation; cho
 
 === Building the Kernel Locally
 
+IMPORTANT: If you are build a 32-bit kernel on the 32-bit distribution of Raspberry Pi OS you should be aware that while the user land in this distribution is 32-bit, the kernel itself is a 64-bit kernel. You therefore need to follow the <<cross-compiling-the-kernel,instructions for cross-compiling the kernel>>.  
+
 On a Raspberry Pi, first install the latest version of https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-32-bit[Raspberry Pi OS]. Then boot your Raspberry Pi, log in, and ensure you're connected to the internet to give you access to the sources.
 
 First install Git and the build dependencies:
