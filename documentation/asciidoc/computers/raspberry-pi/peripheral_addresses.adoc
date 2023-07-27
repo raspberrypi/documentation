@@ -88,5 +88,5 @@ So a simple command line compile might be:
 
 [,bash]
 ----
-cc myfile.c -I/opt/vc/include -L/opt/vc/lib -lbcm_host -o myfile
+cc myfile.c -lbcm_host -o myfile
 ----
