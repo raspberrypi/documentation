@@ -12,7 +12,7 @@ The instructions below are divided into native builds and cross-compilation; cho
 
 === Building the Kernel Locally
 
-IMPORTANT: Building the 64-bit kernel on the 32-bit distribution of Raspberry Pi OS is a cross-compilation exercise because it requires the installation of the cross-compiler (`gcc-aarch64-linux-gnu`). Building the 32-bit kernel on the 32-bit distribution of Raspberry Pi OS — which has a 32-bit userland, and 64-bit kernel — you should set `ARCH=arm`, although it's likely that this may already be set as `arm_64bit=0` will have been set. Instructions for <<cross-compiling-the-kernel,cross-compiling the kernel>> can be found later on this page.  
+IMPORTANT: Building the 64-bit kernel on the 32-bit distribution of Raspberry Pi OS is a cross-compilation exercise because it requires the installation of the cross-compiler (`gcc-aarch64-linux-gnu`). If you're running the 32-bit distribution of Raspberry Pi OS on a Pi 4B, Pi 400, CM4 or CM4S then you'll be running a 32-bit userland, and 64-bit kernel — so if you want to explicitly build a 32-bit kernel you should set `ARCH=arm`, and to boot this kernel you'll need to set `arm_64bit=0` in `config.txt`. Instructions for <<cross-compiling-the-kernel,cross-compiling the kernel>> can be found later on this page.  
 
 On a Raspberry Pi, first install the latest version of https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-32-bit[Raspberry Pi OS]. Then boot your Raspberry Pi, log in, and ensure you're connected to the internet to give you access to the sources.
 
