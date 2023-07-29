@@ -1,6 +1,7 @@
 == Setting up a Headless Raspberry Pi
 
 To use your Raspberry Pi without a monitor or keyboard (known as headless), you need to enable wireless networking and SSH.
+Further, you need to configure it such that it boots without a screen.
 
 If you haven't already imaged your Raspberry Pi, you can set up wireless networking and SSH during the xref:getting-started.adoc#installing-the-operating-system[imaging process].
 
@@ -74,3 +75,20 @@ openssl passwd -6
 
 This will prompt you to enter your password, and verify it. It will then produce what looks like a string of random characters, which is actually an encrypted version of the supplied password.
 
+[[configuring-screenless-boot]]
+=== Configure screenless boot
+
+To enable smooth booting without HDMI connected screen, you may need to tell the boot-procedure that the HDMI may be hotplugged later. This you acheive by removing a comment sign in '/boot/config.txt'.
+
+Alter
+----
+# uncomment if hdmi display is not detected and composite is being output
+#hdmi_force_hotplug=1
+----
+to
+----
+# uncomment if hdmi display is not detected and composite is being output
+hdmi_force_hotplug=1
+----
+
+With that, your Raspberry pi should boot both with and without a HDMI cable connected.
