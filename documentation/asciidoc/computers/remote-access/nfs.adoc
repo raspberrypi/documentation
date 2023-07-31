@@ -267,7 +267,7 @@ You'll want to run this command whenever `/etc/exports` is modified.
 
 ==== Restart services
 
-By default, `rpcbind` only binds to the loopback interface. To enable access to `rpcbind` from remote machines, you need to change `/etc/conf.d/rpcbind` to get rid of either `-l` or `-i 127.0.0.1`.
+By default, `rpcbind` only binds to the loopback interface. To enable access to `rpcbind` from remote machines, you need to change `/etc/default/rpcbind` to get rid of either `-l` or `-h 127.0.0.1`.
 
 If any changes are made, rpcbind and NFS will need to be restarted:
 
