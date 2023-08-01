@@ -30,6 +30,12 @@
                     "subpath": "config_txt.adoc"
                 },
                 {
+                    "title": "Legacy config.txt options",
+                    "description": "Options which may be useful for OSes other than Raspberry Pi OS",
+                    "image": "full-sized/Legacy-config-txt.png",
+                    "subpath": "legacy_config_txt.adoc"
+                },
+                {
                     "title": "The Linux kernel",
                     "description": "How to configure and build a custom kernel for your Raspberry Pi",
                     "image": "full-sized/Linux-Kernel.png",
