@@ -1,0 +1,52 @@
+== Legacy Video Options
+
+=== Composite Video Mode
+
+==== `sdtv_mode`
+
+The `sdtv_mode` command defines the TV standard used for composite video output:
+
+|===
+| sdtv_mode | result
+
+| 0 (default)
+| Normal NTSC
+
+| 1
+| Japanese version of NTSC -- no pedestal
+
+| 2
+| Normal PAL
+
+| 3
+| Brazilian version of PAL -- 525/60 rather than 625/50, different subcarrier
+
+| 16
+| Progressive scan NTSC
+
+| 18
+| Progressive scan PAL
+|===
+
+==== `sdtv_aspect`
+
+The `sdtv_aspect` command defines the aspect ratio for composite video output. The default value is `1`.
+
+|===
+| sdtv_aspect | result
+
+| 1
+| 4:3
+
+| 2
+| 14:9
+
+| 3
+| 16:9
+|===
+
+==== `sdtv_disable_colourburst`
+
+Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
+
+
