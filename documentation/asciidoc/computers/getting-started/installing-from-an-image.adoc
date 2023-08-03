@@ -1,10 +1,10 @@
 == Installing the Operating System
 
-Raspberry Pi recommend the use of https://www.raspberrypi.com/software/[Raspberry Pi Imager] to install an operating system on to your SD card. You will need another computer with an SD card reader to install the image. Raspberry Pi Imager can be run on another Raspberry Pi, but also works on Microsoft Windows, Apple macOS, and Linux.
+We recommend using the https://www.raspberrypi.com/software/[Raspberry Pi Imager] to install an operating system on to your SD card. You will need another computer with an SD card reader to install the image. Raspberry Pi Imager can be run on another Raspberry Pi, but also works on Microsoft Windows, Apple macOS, and Linux.
 
 NOTE: Before you start, don't forget to check the xref:getting-started.adoc#sd-cards[SD card requirements].
 
-IMPORTANT: NOOBS, or New Out Of the Box Software to give it its full name, was an SD card-based installer for Raspberry Pi computers; we no longer recommend or support using NOOBS. Going forward, please use Raspberry Pi Imager.
+IMPORTANT: NOOBS (New Out Of the Box Software) was an SD card-based installer for Raspberry Pi computers; we no longer recommend or support using NOOBS. Going forward, please use Raspberry Pi Imager.
 
 === Using Raspberry Pi Imager
 
@@ -16,14 +16,14 @@ Download the latest version of https://www.raspberrypi.com/software/[Raspberry P
 
 * Connect an SD card reader with the SD card inside.
 * Open Raspberry Pi Imager and choose the required OS from the list presented.
-* Choose  the SD card you wish to write your image to.
+* Choose the SD card you want to write your image to.
 * Review your selections and click on the `Write` button to begin writing data to the SD Card.
 
 NOTE: If using Raspberry Pi Imager on Windows 10 with controlled folder access enabled, you will need to explicitly allow Raspberry Pi Imager permission to write the SD card. If this is not done, the imaging process will fail with a "failed to write" error.
 
 NOTE: You can see which operating systems are most often downloaded, on our https://rpi-imager-stats.raspberrypi.com/[statistics page].
 
-You can now insert the SD card into the Raspberry Pi and power it up. When your Raspberry Pi boots for the first time a xref:getting-started.adoc#configuration-on-first-boot[configuration wizard] will run that allows you to set up your Raspberry Pi.
+After the Raspberry Pi Imager finishes writing to the SD card, you can insert the SD card into your Raspberry Pi and connect it to the power supply. On first boot, a xref:getting-started.adoc#configuration-on-first-boot[configuration wizard] will run that allows you to set up your Raspberry Pi.
 
 NOTE: In the past Raspberry Pi OS had a default user name and password; user name `pi`, with password `raspberry`. This is no longer the case. However if you are using an older version of the operating system, or you are working with an existing installation, this default user may be present. If you have not already done so, you should change the default password straight away to ensure your Raspberry Pi is xref:configuration.adoc#securing-your-raspberry-pi[secure].
 
