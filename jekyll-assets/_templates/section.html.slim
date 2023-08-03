@@ -1,0 +1,32 @@
+- sect0 = level == 0
+- if sect0
+  *{tag: %(h#{level + 1}), id: id, class: ('sect0' if sect0)}
+    - if id && (document.attr? :sectanchors)
+      a.anchor href="##{id}"
+      =section_title
+    - elsif id && (document.attr? :sectlinks)
+      a.link href="##{id}" =section_title
+    - else
+      =section_title
+  =content
+- else
+  div class=[%(sect#{level}), role]
+    *{tag: %(h#{level + 1}), id: id, class: ('sect0' if sect0)}
+      - if id && (document.attr? :sectanchors)
+        a.anchor href="##{id}"
+        =section_title
+      - elsif id && (document.attr? :sectlinks)
+        a.link href="##{id}" =section_title
+      - else
+        =section_title
+    - if level == 1
+      .sectionbody 
+        =content
+        p "Heyo!"
+        - if role? 'booklink'
+          p =book_link
+    - else
+      =content
+      p "Heyo!"
+      - if role? 'booklink'
+        p =book_link
