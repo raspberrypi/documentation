@@ -1,6 +1,6 @@
 == Configuration on First Boot
 
-If you have not already configured your operating system using the xref:getting-started.adoc#advanced-options[Advanced Menu] of Raspberry Pi Imager when Raspberry Pi OS starts up for the first time, you will be guided through initial setup.
+If you have not already configured your operating system using the xref:getting-started.adoc#advanced-options[Advanced options menu] of Raspberry Pi Imager when Raspberry Pi OS starts up for the first time, you will be guided through initial setup.
 
 .The Raspberry Pi Configuration Wizard dialog.
 image::images/initial-setup/1.png[alt=Click Next to get started with configuration.,width="80%"]
