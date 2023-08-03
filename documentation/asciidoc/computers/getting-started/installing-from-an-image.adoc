@@ -45,7 +45,7 @@ image::images/rpi_imager.png[width="80%"]
 
 image::images/rpi_imager_2.png[width="80%"]
 
-WARNING: If you are installing Raspberry Pi OS Lite to run xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless], you need to create a new user account using the advanced options since you cannot do this during the normal configuration wizard.
+WARNING: If you are installing Raspberry Pi OS Lite to run xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless], you need to create a new user account using the advanced options since you will not have access to the configuration wizard.
 
 === Downloading an Image
 
