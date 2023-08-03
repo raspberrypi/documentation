@@ -31,7 +31,7 @@ On the Raspberry Pi 4, if the files `start4x.elf` and `fixup4x.dat` are present,
 
 `start_x=1` should be specified when using the camera module. Enabling the camera via `raspi-config` will set this automatically.
 
-NOTE: `start_file` and `fixup_file` are used by the bootloader, and so are only valid in `config.txt`
+NOTE: `start_x` and `start_debug` are used by the bootloader, and so are only valid in `config.txt`
 
 === `disable_commandline_tags`
 
