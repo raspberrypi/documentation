@@ -1,0 +1,17 @@
+== Next steps
+
+Now that your Raspberry Pi is set up and ready to go, what's next?
+
+=== Installing recommended software
+
+Raspberry Pi OS comes with many essential applications pre-installed, so you can start using them straight away. If you'd like to take advantage of other applications we think our users will find useful, click the raspberry icon in the top left corner of the screen and select *Preferences* then *Recommended Software* from the drop-down menu to install them for free.
+
+If you plan to use your Raspberry Pi as a home computer, you might find LibreOffice useful for writing and editing documents and spreadsheets. If you want to use accessibility apps such as a screen magnifier and Orca screen reader, select Universal Access.
+
+=== Tutorials
+
+Our https://www.raspberrypi.com/tutorials/[tutorials page] contains information and lessons on how to use your new computer in various ways. You can learn to code, control external devices, and build exciting new projects by following the tutorials that pique your interest.
+
+=== Get more help
+
+For support with official Raspberry Pi products, or to connect with other Raspberry Pi users, visit the https://forums.raspberrypi.com/[Raspberry Pi forums].
