@@ -47,9 +47,9 @@ For example, adding the line `include extraconfig.txt` to `config.txt` will incl
 [NOTE]
 ====
 
-*Include directives are not supported by the bootcode.bin or EEPROM bootloader*.
+*Include directives are not supported by the bootcode.bin or EEPROM bootloaders*.
 
-Settings which are applied by the bootloader and so which will only apply if they are specified in `config.txt` (rather than any additional included file) are:
+Settings which are handled by the bootloader and so which will only take effect if they are specified in `config.txt` (rather than any additional included file) are:
 
 * `bootcode_delay`,
 * `gpu_mem`, `gpu_mem_256`, `gpu_mem_512`, `gpu_mem_1024`,
