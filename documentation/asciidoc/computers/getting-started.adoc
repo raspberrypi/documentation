@@ -5,3 +5,5 @@ include::getting-started/installing-from-an-image.adoc[]
 include::getting-started/network-installation.adoc[]
 
 include::getting-started/configuring.adoc[]
+
+include::getting-started/wrapping-up.adoc[]
