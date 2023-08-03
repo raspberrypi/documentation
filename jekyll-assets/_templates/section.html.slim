@@ -22,11 +22,9 @@
     - if level == 1
       .sectionbody 
         =content
-        p "Heyo!"
         - if role? 'booklink'
           p =book_link
     - else
       =content
-      p "Heyo!"
       - if role? 'booklink'
         p =book_link
