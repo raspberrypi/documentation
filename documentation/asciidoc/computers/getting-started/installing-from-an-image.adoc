@@ -14,20 +14,17 @@ video::ntaXWS8Lk34[youtube]
 
 Download and install the latest version of https://www.raspberrypi.com/software/[Raspberry Pi Imager]. If you want to use Raspberry Pi Imager from a second Raspberry Pi, you can install it from a terminal using `sudo apt install rpi-imager`.
 
-After starting the Raspberry Pi Imager, follow these steps to install an operating system:
+After starting the Raspberry Pi Imager, connect your micro SD card to your computer using an external or built-in SD card reader. If you have more than one mountable storage device connected to your computer, make sure you choose the correct card. 
 
-1. Connect your micro SD card to your computer using an external or built-in SD card reader.
-2. Open Raspberry Pi Imager and choose an OS from the list. The current recommended version of Raspberry Pi OS will always be at the top.
-3. Choose the SD card you want to write your image to. If you have more than one mountable storage device connected to your computer, make sure you choose the correct card.
-4. Review your selections and click *Write* to begin writing data to the SD Card. An admin prompt may display at this point. This is expected behavior and it's safe to continue.
-+
+Next, select the OS you want to install. The current recommended version of Raspberry Pi OS is always at the top of the list.
+
+Review your selections and click *Write* to begin writing data to the SD Card. An admin prompt may display at this point. This is expected behavior and it's safe to continue.
+
 Optionally, you can click the cog wheel icon to open the <<Advanced options>> menu.
-+
+
 NOTE: If using Raspberry Pi Imager on Windows 10 with controlled folder access enabled, you will need to explicitly allow Raspberry Pi Imager permission to write to the SD card. If this is not done, the imaging process will fail with a "failed to write" error.
 
-5. After the Raspberry Pi OS installation is complete, insert the micro SD card into your Raspberry Pi.
-6. Connect your monitor, mouse, and keyboard.
-7. Finally, connect the power supply to your Raspberry Pi. This should always be the last thing you connect to your device. 
+After the Raspberry Pi OS installation is complete, insert the micro SD card into your Raspberry Pi and connect your monitor, mouse, and keyboard. Finally, connect the power supply to your Raspberry Pi. This should always be the last thing you connect to your device.
 
 The first time your Raspberry Pi boots, a xref:getting-started.adoc#configuration-on-first-boot[configuration wizard] will run so you can set up your Raspberry Pi.
 
