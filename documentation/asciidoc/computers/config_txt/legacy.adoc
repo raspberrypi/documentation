@@ -1,3 +1,0 @@
-== Legacy Options
-
-The remaining groups of `config.txt` options are considered legacy settings, either because they relate to older software such as the firmware graphics driver, or because they have been deprecated or removed altogether.
