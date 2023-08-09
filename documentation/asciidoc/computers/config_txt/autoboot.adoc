@@ -1,8 +1,6 @@
 == `autoboot.txt`
 
-`autoboot.txt` is an optional configuration file that can be used to specify the
-`boot_partition` number. This is sometimes used with NOOBS to bypass the boot menu
-selection and boot a specific partition.
+`autoboot.txt` is an optional configuration file that can be used to specify the `boot_partition` number.
 
 This can also be used in conjunction with the `tryboot` feature to implement A/B booting for OS upgrades.
 
@@ -11,7 +9,7 @@ This can also be used in conjunction with the `tryboot` feature to implement A/B
 See also xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT] boot flow.
 
 === `boot_partition`
-Specifies the partition number for booting unless the partition number was already specified as parameter to the `reboot` command (e.g. `sudo reboot 2`).
+Specifies the partition number for booting unless the partition number was already specified as a parameter to the `reboot` command (e.g. `sudo reboot 2`).
 
 === The `[tryboot]` filter
 This filter passes if the system was booted with the `tryboot` flag set.
@@ -26,7 +24,7 @@ This enables the `tryboot` switch to be made at the partition level rather than 
 
 === Example update flow for A/B booting
 
-The following pseudo code shows how an hypothetical OS `Update Service` could use `tryboot` + `autoboot.txt` to perform an fail-safe OS upgrade.
+The following pseudo-code shows how a hypothetical OS `Update Service` could use `tryboot` + `autoboot.txt` to perform a fail-safe OS upgrade.
 
 Initial `autoboot.txt`
 ----
@@ -69,5 +67,5 @@ boot_partition=2
 ----
 
 **Notes**
-* It's not mandatory to reboot after updating `autoboot.txt`. However, the `Update Service` must be careful to avoid overwriting the current partition since `autoboot.txt` has already been modified to commit the last update..
+* It's not mandatory to reboot after updating `autoboot.txt`. However, the `Update Service` must be careful to avoid overwriting the current partition since `autoboot.txt` has already been modified to commit the last update.
 * See also: xref:configuration.adoc#device-trees-overlays-and-parameters[Device-tree parameters].
