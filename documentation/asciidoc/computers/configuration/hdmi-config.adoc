@@ -50,7 +50,7 @@ On the Raspberry Pi 4 and Raspberry Pi 400 to specify the HDMI port, add an inde
 
 There are two options for setting a custom mode: `hdmi_cvt` and `hdmi_timings`.
 
-`hdmi_cvt` sets a custom Coordinated Video Timing entry, which is described fully here: xref:config_txt.adoc#custom-mode[Video Configuration]
+`hdmi_cvt` sets a custom Coordinated Video Timing entry, which is described fully here: xref:legacy_config_txt.adoc#custom-mode[Video Configuration]
 
 In certain rare cases it may be necessary to define the exact clock requirements of the HDMI signal. This is a fully custom mode, and it is activated by setting `hdmi_group=2` and `hdmi_mode=87`. You can then use the `hdmi_timings` config.txt command to set the specific parameters for your display.
 `hdmi_timings` specifies all the timings that an HDMI signal needs to use. These timings are usually found in the datasheet of the display being used.

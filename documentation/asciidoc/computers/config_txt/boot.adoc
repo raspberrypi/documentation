@@ -9,28 +9,6 @@ These options specify the firmware files transferred to the VideoCore GPU prior 
 
 NOTE: Cut-down firmware (`start*cd.elf` and `fixup*cd.dat`) cannot be selected this way - the system will fail to boot.  The only way to enable the cut-down firmware is to specify `gpu_mem=16`. The cut-down firmware removes support for codecs and 3D as well as limiting the initial early-boot framebuffer to 1080p @  16bpp - although KMS can replace this with up-to 32bpp 4K framebuffer(s) at a later stage as with any firmware.
 
-=== `start_x`, `start_debug`
-
-These provide a shortcut to some alternative `start_file` and `fixup_file` settings, and are the recommended methods for selecting firmware configurations.
-
-`start_x=1` implies
-----
-  start_file=start_x.elf
-  fixup_file=fixup_x.dat
-----
-
-On the Raspberry Pi 4, if the files `start4x.elf` and `fixup4x.dat` are present, these files will be used instead.
-
-`start_debug=1` implies
-----
-  start_file=start_db.elf
-  fixup_file=fixup_db.dat
-----
-
-=== `disable_commandline_tags`
-
-Set the `disable_commandline_tags` command to `1` to stop `start.elf` from filling in ATAGS (memory from `0x100`) before launching the kernel.
-
 === `cmdline`
 
 `cmdline` is the alternative filename on the boot partition from which to read the kernel command line string; the default value is `cmdline.txt`.
@@ -51,32 +29,6 @@ NOTE: 64-bit kernels may be uncompressed image files or a gzip archive of an ima
 
 NOTE: The 64-bit kernel will only work on the Raspberry Pi 3, 3+, 4, 400, Zero 2 W and 2B rev 1.2, and Raspberry Pi Compute Modules 3, 3+ and 4.
 
-=== `arm_control`
-
-WARNING: This setting is *DEPRECATED*, use `arm_64bit` instead to enable 64-bit kernels.
-
-Sets board-specific control bits.
-
-=== `armstub`
-
-`armstub` is the filename on the boot partition from which to load the ARM stub. The default ARM stub is stored in firmware and is selected automatically based on the Raspberry Pi model and various settings.
-
-The stub is a small piece of ARM code that is run before the kernel. Its job is to set up low-level hardware like the interrupt controller before passing control to the kernel.
-
-=== `arm_peri_high`
-
-Set `arm_peri_high` to `1` to enable "High Peripheral" mode on the Raspberry Pi 4. It is set automatically if a suitable DTB is loaded.
-
-NOTE: Enabling "High Peripheral" mode without a compatible device tree will make your system fail to boot. Currently ARM stub support is missing, so you will also need to load a suitable file using `armstub`.
-
-=== `kernel_address`
-
-`kernel_address` is the memory address to which the kernel image should be loaded. 32-bit kernels are loaded to address `0x8000` by default, and 64-bit kernels to address `0x200000`. If `kernel_old` is set, kernels are loaded to the address `0x0`.
-
-=== `kernel_old`
-
-Set `kernel_old` to `1` to load the kernel to the memory address `0x0`.
-
 === `ramfsfile`
 
 `ramfsfile` is the optional filename on the boot partition of a `ramfs` to load. 
@@ -93,29 +45,6 @@ The `initramfs` command specifies both the ramfs filename *and* the memory addre
 
 NOTE: This option uses different syntax from all the other options, and you should not use a `=` character here.
 
-=== `init_uart_baud`
-
-`init_uart_baud` is the initial UART baud rate. The default value is `115200`.
-
-=== `init_uart_clock`
-
-`init_uart_clock` is the initial UART clock frequency. The default value is `48000000` (48MHz). Note that this clock only applies to UART0 (ttyAMA0 in Linux), and that the maximum baudrate for the UART is limited to 1/16th of the clock. The default UART on the Raspberry Pi 3 and Raspberry Pi Zero is UART1 (ttyS0 in Linux), and its clock is the core VPU clock - at least 250MHz.
-
-=== `bootcode_delay`
-
-The `bootcode_delay` command delays for a given number of seconds in `bootcode.bin` before loading `start.elf`: the default value is `0`.
-
-This is particularly useful to insert a delay before reading the EDID of the monitor, for example if the Raspberry Pi and monitor are powered from the same source, but the monitor takes longer to start up than the Raspberry Pi. Try setting this value if the display detection is wrong on initial boot, but is correct if you soft-reboot the Raspberry Pi without removing power from the monitor.
-
-=== `boot_delay`
-
-The `boot_delay` command instructs to wait for a given number of seconds in `start.elf` before loading the kernel: the default value is `0`. The total delay in milliseconds is calculated as `(1000 x boot_delay) + boot_delay_ms`. This can be useful if your SD card needs a while to get ready before Linux is able to boot from it.
-
-=== `boot_delay_ms`
-
-The `boot_delay_ms` command means wait for a given number of milliseconds in `start.elf`, together with `boot_delay`, before loading the kernel. The default value is `0`.
-
-
 [[disable_poe_fan]]
 === `disable_poe_fan`
 
@@ -124,10 +53,6 @@ By default, a probe on the I2C bus will happen at startup, even when a PoE HAT i
 === `disable_splash`
 
 If `disable_splash` is set to `1`, the rainbow splash screen will not be shown on boot. The default value is `0`.
-
-=== `enable_gic` (Raspberry Pi 4 Only)
-
-On the Raspberry Pi 4B, if this value is set to `0` then the interrupts will be routed to the ARM cores using the legacy interrupt controller, rather than via the GIC-400. The default value is `1`.
 
 === `enable_uart`
 
@@ -148,7 +73,7 @@ In an attempt to reduce the chance of a non-bootable system, the firmware first 
 
 NOTE: Any user-specified OS file can bypass all prefixes by using an absolute path (with respect to the boot partition) - just start the file path with a `/`, e.g. `kernel=/my_common_kernel.img`.
 
-See also <<overlay_prefix,`overlay_prefix`>> and <<upstream_kernel,`upstream_kernel`>>.
+See also <<overlay_prefix,`overlay_prefix`>> and xref:legacy_config_txt.adoc#upstream_kernel[`upstream_kernel`].
 
 === `otg_mode` (Raspberry Pi 4 Only)
 
@@ -167,20 +92,3 @@ Specifies a subdirectory/prefix from which to load overlays - defaults to `overl
 
 NOTE: Unless `+${os_prefix}${overlay_prefix}README+` exists, overlays are shared with the main OS (i.e. `os_prefix` is ignored).
 
-[[sha256]]
-=== `sha256`
-
-If set to non-zero, enables the logging of SHA256 hashes for loaded files (the kernel, initramfs, Device Tree .dtb file and overlays), as generated by the `sha256sum` utility. The logging output goes to the UART if enabled, and is also accessible via `sudo vcdbg log msg`. This option may be useful when debugging booting problems, but at the cost of potentially adding _many_ seconds to the boot time. Defaults to 0 on all platforms.
-
-=== `uart_2ndstage`
-
-Setting `uart_2ndstage=1` causes the second-stage loader (`bootcode.bin` on devices prior to the Raspberry Pi 4, or the boot code in the  EEPROM for Raspberry Pi 4 devices) and the main firmware (`start*.elf`) to output diagnostic information to UART0.
-
-Be aware that output is likely to interfere with Bluetooth operation unless it is disabled (`dtoverlay=disable-bt`) or switched to the other UART (`dtoverlay=miniuart-bt`), and if the UART is accessed simultaneously to output from Linux then data loss can occur leading to corrupted output. This feature should only be required when trying to diagnose an early boot loading problem.
-
-[[upstream_kernel]]
-=== `upstream_kernel`
-
-If `upstream_kernel=1` is used, the firmware sets <<os_prefix,`os_prefix`>> to "upstream/", unless it has been explicitly set to something else, but like other `os_prefix` values it will be ignored if the required kernel and .dtb file can't be found when using the prefix.
-
-The firmware will also prefer upstream Linux names for DTBs (`bcm2837-rpi-3-b.dtb` instead of `bcm2710-rpi-3-b.dtb`, for example). If the upstream file isn't found the firmware will load the downstream variant instead  and automatically apply the "upstream" overlay to make some adjustments. Note that this process happens _after_ the `os_prefix` has been finalised.
