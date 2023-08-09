@@ -6,10 +6,17 @@ module Slim::Helpers
     when 'buy'
       %(You can <a href="#{self.attr 'link'}" target="_blank">buy this book</a> on the Raspberry Pi Press site.)
     when 'donate'
-      %(You can <a href="#{document.attr 'link'}" target="_blank">download this book</a> for an optional donation on the Raspberry Pi Press site.)
+      %(You can <a href="#{self.attr 'link'}" target="_blank">download this book</a> for an optional donation on the Raspberry Pi Press site.)
     else
       return
     end
+  end
+
+  def book_image
+    src = (self.attr 'image').dup
+    src = src.gsub(/^image::/, "")
+    src = src.gsub(/\[.*?\]$/, "")
+    return src
   end
 
   def section_title

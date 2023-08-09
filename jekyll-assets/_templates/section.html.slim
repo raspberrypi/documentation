@@ -21,10 +21,30 @@
         =section_title
     - if level == 1
       .sectionbody 
-        =content
-        - if role? 'booklink'
-          p =book_link
-    - else
-      =content
       - if role? 'booklink'
-        p =book_link
+        div class="openblock float-group"
+          div class="content"
+            - if attr 'image'
+              div class="imageblock related thumb right"
+                div class="content"
+                  a href=(attr 'link') target='_blank' class='image'
+                    img src=(book_image)
+            =content
+            div class="paragraph"
+              p =book_link
+      - else
+        =content
+    - else
+      - if role? 'booklink'
+        div class="openblock float-group"
+          div class="content"
+            - if attr 'image'
+              div class="imageblock related thumb right"
+                div class="content"
+                  a href=(attr 'link') target='_blank' class='image'
+                    img src=(book_image)
+            =content
+            div class="paragraph"
+              p =book_link
+      - else
+        =content
