@@ -1,5 +1,0 @@
-== Miscellaneous Options
-
-=== `logging_level`
-
-Sets the VideoCore logging level. The value is a VideoCore-specific bitmask.

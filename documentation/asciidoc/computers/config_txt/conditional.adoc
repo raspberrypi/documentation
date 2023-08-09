@@ -89,7 +89,7 @@ To view the "EDID name" of an attached monitor you need to follow a few steps. F
 ls -1 /sys/class/drm/card?-HDMI-A-?/edid
 ----
 
-On a Pi 400, this will print something like:
+On a Raspberry Pi 4, this will print something like:
 
 [source]
 ----
@@ -142,7 +142,7 @@ To view the serial number of your Raspberry Pi, run the following command:
 cat /proc/cpuinfo
 ----
 
-The serial will be shown as a 16-digit hex value at the bottom. For example, if you see:
+A 16-digit hex value will be displayed near the bottom of the output -- your Raspberry Pi's serial number is the last eight hex-digits. For example, if you see:
 
 [source]
 ----
@@ -173,32 +173,6 @@ You can also filter depending on the state of a GPIO. For example
 
 [all]
 # settings here are applied to all hardware
-----
-
-=== The `[HDMI:*]` Filter
-
-NOTE: This filter is for the Raspberry Pi 4 only.
-
-The Raspberry Pi 4 has two HDMI ports, and for many `config.txt` commands related to HDMI, it is necessary to specify which HDMI port is being referred to. The HDMI conditional filters subsequent HDMI configurations to the specific port.
-
-[source]
-----
- [HDMI:0]
-   hdmi_group=2
-   hdmi_mode=45
- [HDMI:1]
-   hdmi_group=2
-   hdmi_mode=67
-----
-
-An alternative `variable:index` syntax is available on all port-specific HDMI commands. You could use the following, which is the same as the previous example:
-
-[source]
-----
- hdmi_group:0=2
- hdmi_mode:0=45
- hdmi_group:1=2
- hdmi_mode:1=67
 ----
 
 === Combining Conditional Filters
