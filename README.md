@@ -51,7 +51,7 @@ $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/
 Then you need to install Ruby,
 
 ```
-$ brew install ruby@2.7
+$ brew install ruby
 $ gem install bundler -v 2.2.15
 ```
 
@@ -61,31 +61,31 @@ $ gem install bundler -v 2.2.15
 
 ##### Set up Homebrew Version of Ruby
 
-If you're using `csh` or `tcsh` add the following lines to your `.cshrc` or `.tcshrc`,
+If you're using `csh` or `tcsh` add the following lines to your `.cshrc` or `.tcshrc` (making sure to update YOUR_VERSION with the ruby version you have installed),
 
 ```
 setenv PATH /usr/local/bin:/usr/local/sbin:$PATH
 
 setenv PATH /usr/local/opt/ruby/bin:${PATH}
-setenv PATH ${PATH}:/usr/local/lib/ruby/gems/2.7.0/bin
-setenv LDFLAGS -L/usr/local/opt/ruby@2.7/lib
-setenv CPPFLAGS -I/usr/local/opt/ruby@2.7/include
-setenv PKG_CONFIG_PATH /usr/local/opt/ruby@2.7/lib/pkgconfig
+setenv PATH ${PATH}:/usr/local/lib/ruby/gems/YOUR_VERSION/bin
+setenv LDFLAGS -L/usr/local/opt/ruby@YOUR_VERSION/lib
+setenv CPPFLAGS -I/usr/local/opt/ruby@YOUR_VERSION/include
+setenv PKG_CONFIG_PATH /usr/local/opt/ruby@YOUR_VERSION/lib/pkgconfig
 ```
 
-or if you're using `bash` add the following lines to your `.bash_profile`,
+or if you're using `bash` add the following lines to your `.bash_profile` (making sure to update YOUR_VERSION with the ruby version you have installed),
 
 ```
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="$PATH:/usr/local/lib/ruby/gems/2.7.0/bin"
-export PATH="/usr/local/opt/ruby@2.7/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/ruby@2.7/lib"
-export CPPFLAGS="-I/usr/local/opt/ruby@2.7/include"
-export PKG_CONFIG_PATH="/usr/local/opt/ruby@2.7/lib/pkgconfig"
+export PATH="$PATH:/usr/local/lib/ruby/gems/YOUR_VERSION/bin"
+export PATH="/usr/local/opt/ruby@YOUR_VERSION/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/ruby@YOUR_VERSION/lib"
+export CPPFLAGS="-I/usr/local/opt/ruby@YOUR_VERSION/include"
+export PKG_CONFIG_PATH="/usr/local/opt/ruby@YOUR_VERSION/lib/pkgconfig"
 ```
-NOTE: If you are running macOS on an Apple Silicon based Mac, rather than an Intel Mac, substitute `/opt/homebrew/` for `/usr/local` in the lines dealing with `ruby@2.7` in the above block.
+NOTE: If you are running macOS on an Apple Silicon based Mac, rather than an Intel Mac, substitute `/opt/homebrew/` for `/usr/local` in the lines dealing with `ruby@YOUR_VERSION` in the above block.
 
 and then open a new Terminal window to make sure you're using the right version of Python and Ruby.
 
