@@ -1,4 +1,4 @@
-== Configuration on First Boot
+== Initial setup and configuration
 
 When you start your Raspberry Pi for the first time after installing an operating system, a configuration wizard will guide you through the system's initial setup.
 
@@ -34,28 +34,28 @@ image::images/initial-setup/4.png[alt="A warning appears if the default password
 
 WARNING: If you are installing Raspberry Pi OS Lite you must create a new user account using the command line when you first boot a Lite image. If you are booting Raspberry Pi OS xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless] you *MUST* configure the operating system using Raspberry Pi Imager using the xref:getting-started.adoc#advanced-options[Advanced Menu].
 
-=== Set up screen
+=== Set up your desktop
 
 .The Set Up Screen dialog.
 image::images/initial-setup/5.png[alt="You can adjust the size of the desktop for your monitor.",width="80%"]
 
 Here you can manually resize the desktop if it doesn't look correct on your display device.
 
-=== Select wireless network
+=== Select a wireless network
 
 .The Select Wireless Network dialog.
 image::images/initial-setup/6.png[alt="The Select Wireless Network dialog.",width="80%"]
 
 Your Raspberry Pi will scan for nearby WiFi access points. You can choose which network to connect to from this list. 
 
-=== Update software
+=== Check for software updates
 
 .The Update Software dialog.
 image::images/initial-setup/8.png[alt="The wizard automatically checks for updates to install."width="80%"]
 
 Once your Raspberry Pi has internet access you can update the operating system to the latest version. This will automatically download any patches and updates needed to for your operating system.
 
-=== Setup complete
+=== Finish
 
 At the end of the configuration wizard, you will need to reboot your Raspberry Pi to apply the new configuration and launch to desktop.
 
