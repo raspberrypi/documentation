@@ -6,6 +6,8 @@ Now that your Raspberry Pi is set up and ready to go, what's next?
 
 Raspberry Pi OS comes with many essential applications pre-installed, so you can start using them straight away. If you'd like to take advantage of other applications we find useful, click the raspberry icon in the top left corner of the screen and select *Preferences* then *Recommended Software* from the drop-down menu to install them for free.
 
+image::images/pi_recommended.png[]
+
 For example, if you plan to use your Raspberry Pi as a home computer, you might find LibreOffice useful for writing and editing documents and spreadsheets. You can also make your Raspberry Pi more accessible with apps like a screen magnifier and Orca screen reader, found under Universal Access.
 
 === Tutorials
