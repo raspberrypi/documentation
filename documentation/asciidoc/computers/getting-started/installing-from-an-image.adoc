@@ -1,4 +1,4 @@
-== Install the operating system
+== Installing the operating system
 
 We recommend using the https://www.raspberrypi.com/software/[Raspberry Pi Imager] to install an operating system on to your SD card. You will need another computer with an SD card reader to install the image. Raspberry Pi Imager can be run on another Raspberry Pi, but also works on Microsoft Windows, Apple macOS, and Linux.
 
@@ -6,7 +6,7 @@ NOTE: Before you start, don't forget to check the xref:getting-started.adoc#sd-c
 
 IMPORTANT: NOOBS (New Out Of the Box Software) was an SD card-based installer for Raspberry Pi computers; we no longer recommend or support using NOOBS. Going forward, please use Raspberry Pi Imager.
 
-=== Use Raspberry Pi Imager
+=== Raspberry Pi Imager
 
 Raspberry Pi offers a free SD card writing tool that works on Mac OS, Ubuntu for x86, Windows, and Raspberry Pi OS called https://www.raspberrypi.com/software/[Raspberry Pi Imager]. This is the easiest installation option for most users since it will download the image automatically and install it to the SD card.
 
