@@ -152,7 +152,7 @@ At this point you will need to run `meson setup` after deciding what extra flags
 
 * `-Denable_drm=true` or `-Denable_drm=false` - this enables or disables the DRM/KMS preview rendering. This is what implements the preview window when a desktop environment is not running.
 
-* `-Denable_egl=true` or `-Denable_egl=false` - this enables or disables the desktop environment preview. You should disable this if your system does not have a desktop environment installed.
+* `-Denable_egl=true` or `-Denable_egl=false` - this enables or disables the desktop environment-based preview. You should disable this if your system does not have a desktop environment installed.
 
 * `-Denable_qt=true` or `-Denable_qt=false` - this enables or disables support for the Qt-based implementation of the preview window. You should disable it if you do not have a desktop environment installed, or if you have no intention of using the Qt-based preview window. The Qt-based preview is normally not recommended because it is computationally very expensive, however it does work with X display forwarding.
 
