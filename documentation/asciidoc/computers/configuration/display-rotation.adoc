@@ -15,22 +15,22 @@ If you are running the Raspberry Pi desktop then rotation is most easily achieve
 It is also possible to change these settings using the command line, although the method for doing this depends on whether you're running the X11 or Wayland backend. Type
 [,bash]
 ----
-echo $WAYFIRE_CONFIG_FILE
+ps ax | grep [w]ayfire
 ----
-into a Terminal window, and if you get a filename displayed then you're running Wayland, otherwise you're running X11.
+into a Terminal window, and if you get `/usr/bin/wayfire` displayed then you're running Wayland, and if you get no output you're running X11.
 
 NOTE: In the current version of Raspberry Pi OS Bookworm, Raspberry Pi 4 and 400 default to using Wayland to display the desktop environment; whereas earlier models of Raspberry Pi default to using X11 to display the desktop environment.
 
 ==== Rotating the desktop environment using Wayland
 
-Under Wayland you can rotate the display using the `wlr-randr` command. The following commands give give 0°, -90°, +90° and 180° rotations respectively.
+Under Wayland you can rotate the display using the `wlr-randr` command. The following commands give give 0°, 90°, 180° and 270° rotations respectively.
 
 [,bash]
 ----
 wlr-randr --output HDMI-A-1 --transform normal
-wlr-randr --output HDMI-A-1 --transform 270
 wlr-randr --output HDMI-A-1 --transform 90
 wlr-randr --output HDMI-A-1 --transform 180
+wlr-randr --output HDMI-A-1 --transform 270
 ----
 
 Note that the `--output` entry specifies to which device the rotation applies. You can determine the device name by typing `kmsprint | grep Connector` on the command line which will display information for all attached devices.
@@ -41,14 +41,14 @@ You can also use one of the following `--transform` options to mirror the displa
 
 ==== Rotating the desktop environment using X11
 
-Under X11 you can rotate the display using the `xrandr` command. The following commands give 0°, -90°, +90° and 180° rotations respectively.
+Under X11 you can rotate the display using the `xrandr` command. The following commands give 0°, 90°, 180° and 270° rotations respectively.
 
 [,bash]
 ----
 xrandr --output HDMI-1 --rotate normal
 xrandr --output HDMI-1 --rotate left
-xrandr --output HDMI-1 --rotate right
 xrandr --output HDMI-1 --rotate inverted
+xrandr --output HDMI-1 --rotate right
 ----
 
 Note that the `--output` entry specifies to which device the rotation applies. You can determine the device name by typing `xrandr --listmonitors` on the command line which will display information for all attached devices.
