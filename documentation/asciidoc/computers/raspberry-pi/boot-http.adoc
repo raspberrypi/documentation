@@ -1,6 +1,6 @@
 == HTTP Boot
 
-The network install feature uses HTTP over ethernet to boot the Raspberry Pi into the embedded xref:getting-started.adoc#using-raspberry-pi-imager[Raspberry Pi Imager] application.
+The network install feature uses HTTP over ethernet to boot the Raspberry Pi into the embedded xref:getting-started.adoc#raspberry-pi-imager[Raspberry Pi Imager] application.
 
 In addition to network install, you can explicitly boot your device with files downloaded via HTTP with xref:raspberry-pi.adoc#BOOT_ORDER[boot-mode] `7`. You can still use this even if xref:raspberry-pi.adoc#NET_INSTALL_ENABLED[network install on boot is disabled].
 
