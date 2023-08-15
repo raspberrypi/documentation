@@ -1,4 +1,4 @@
-== Initial setup and configuration
+== Configuration on first boot
 
 When you start your Raspberry Pi for the first time after installing an operating system, a configuration wizard will guide you through the system's initial setup.
 
