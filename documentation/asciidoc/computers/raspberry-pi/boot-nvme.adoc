@@ -17,7 +17,7 @@ If you need to connect the NVMe drive to a PC or Mac you can use a USB adaptor: 
 
 === Required Software
 
-To boot from NVMe you need a recent version of the bootloader (after July 2021), and a recent version of the VideoCore firmware and Raspberry Pi OS Linux kernel. The latest Raspberry Pi OS release has everything you need, so you can use the xref:getting-started.adoc#using-raspberry-pi-imager[Raspberry Pi Imager] to install the software to your SSD.
+To boot from NVMe you need a recent version of the bootloader (after July 2021), and a recent version of the VideoCore firmware and Raspberry Pi OS Linux kernel. The latest Raspberry Pi OS release has everything you need, so you can use the xref:getting-started.adoc#raspberry-pi-imager[Raspberry Pi Imager] to install the software to your SSD.
 
 ==== Bootloader
 
