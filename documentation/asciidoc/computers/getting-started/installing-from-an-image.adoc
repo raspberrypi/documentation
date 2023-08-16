@@ -36,7 +36,7 @@ NOTE: If using Raspberry Pi Imager on Windows 10 with controlled folder access e
 After the Raspberry Pi OS installation is complete, insert the micro SD card into your Raspberry Pi and connect your monitor, mouse, and keyboard. Finally, connect the power supply to your Raspberry Pi. This should always be the last thing you connect to your device.
 
 .Connect your power supply last
-image::images/peripherals/cable-all.png[width="50%"]
+image::images/peripherals/cable-all.png[alt="Attaching the power supply to a Raspberry Pi.",width="50%"]
 
 The first time your Raspberry Pi boots, a xref:getting-started.adoc#configuration-on-first-boot[configuration wizard] will run so you can set up your Raspberry Pi.
 
