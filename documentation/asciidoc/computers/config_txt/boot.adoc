@@ -9,8 +9,6 @@ These options specify the firmware files transferred to the VideoCore GPU prior 
 
 NOTE: Cut-down firmware (`start*cd.elf` and `fixup*cd.dat`) cannot be selected this way - the system will fail to boot.  The only way to enable the cut-down firmware is to specify `gpu_mem=16`. The cut-down firmware removes support for cameras, codecs and 3D as well as limiting the initial early-boot framebuffer to 1080p @  16bpp - although KMS can replace this with up-to 32bpp 4K framebuffer(s) at a later stage as with any firmware.
 
-NOTE: `start_file` and `fixup_file` are used by the bootloader, and so are only valid in `config.txt`
-
 === `start_x`, `start_debug`
 
 These provide a shortcut to some alternative `start_file` and `fixup_file` settings, and are the recommended methods for selecting firmware configurations.
@@ -30,8 +28,6 @@ On the Raspberry Pi 4, if the files `start4x.elf` and `fixup4x.dat` are present,
 ----
 
 `start_x=1` should be specified when using the camera module. Enabling the camera via `raspi-config` will set this automatically.
-
-NOTE: `start_x` and `start_debug` are used by the bootloader, and so are only valid in `config.txt`
 
 === `disable_commandline_tags`
 
@@ -113,8 +109,6 @@ The `bootcode_delay` command delays for a given number of seconds in `bootcode.b
 
 This is particularly useful to insert a delay before reading the EDID of the monitor, for example if the Raspberry Pi and monitor are powered from the same source, but the monitor takes longer to start up than the Raspberry Pi. Try setting this value if the display detection is wrong on initial boot, but is correct if you soft-reboot the Raspberry Pi without removing power from the monitor.
 
-NOTE: `bootcode_delay` is used by the bootloader, and so is only valid in `config.txt`
-
 === `boot_delay`
 
 The `boot_delay` command instructs to wait for a given number of seconds in `start.elf` before loading the kernel: the default value is `1`. The total delay in milliseconds is calculated as `(1000 x boot_delay) + boot_delay_ms`. This can be useful if your SD card needs a while to get ready before Linux is able to boot from it.
@@ -185,8 +179,6 @@ If set to non-zero, enables the logging of SHA256 hashes for loaded files (the k
 Setting `uart_2ndstage=1` causes the second-stage loader (`bootcode.bin` on devices prior to the Raspberry Pi 4, or the boot code in the  EEPROM for Raspberry Pi 4 devices) and the main firmware (`start*.elf`) to output diagnostic information to UART0.
 
 Be aware that output is likely to interfere with Bluetooth operation unless it is disabled (`dtoverlay=disable-bt`) or switched to the other UART (`dtoverlay=miniuart-bt`), and if the UART is accessed simultaneously to output from Linux then data loss can occur leading to corrupted output. This feature should only be required when trying to diagnose an early boot loading problem.
-
-NOTE: `uart_2ndstage` is used by the bootloader, and so is only valid in `config.txt`
 
 [[upstream_kernel]]
 === `upstream_kernel`

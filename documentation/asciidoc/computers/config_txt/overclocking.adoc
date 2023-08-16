@@ -95,8 +95,6 @@ WARNING: Setting any overclocking parameters to values other than those used by 
 | *3A+/3B+ only*. CPU speed throttle control. This sets the temperature at which the CPU clock speed throttling system activates. At this temperature, the clock speed is reduced from 1400MHz to 1200MHz.  Defaults to `60`, can be raised to a maximum of `70`, but this may cause instability.
 |===
 
-NOTE: `sdram_freq` is used by the bootloader, and so is only valid in `config.txt`
-
 This table gives the default values for the options on various Raspberry Pi models, all frequencies are stated in MHz.
 
 [cols=",^,^,^,^,^,^,^,^,^"]
