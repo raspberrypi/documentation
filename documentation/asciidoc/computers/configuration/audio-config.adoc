@@ -28,5 +28,5 @@ Select `System Options` (currently option 1, but yours may be different) and pre
 
 Now select the `Audio` option (currently option S2, but yours may be different) and press `Enter`.
 
-Select your required mode -- the line mentioning `bcm2835_audio` is referring to the headphone jack, and the line(s) mentioning `hdmi-stereo` are referring to the HDMI port(s). After selecting your desired mode, press `Enter` and press the right arrow key to exit the options list, then select `Finish` to exit the configuration tool.
+Select your required mode, press `Enter` and press the right arrow key to exit the options list, then select `Finish` to exit the configuration tool.
 
