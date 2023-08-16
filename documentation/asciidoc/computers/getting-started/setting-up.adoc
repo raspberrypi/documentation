@@ -36,7 +36,7 @@ The Raspberry Pi 4 has two micro HDMI connectors, so you'll need a https://www.r
 
 For monitors with a DVI port, you can use an HDMI-to-DVI cable or an HDMI cable with a DVI adapter. In addition, you can use an HDMI-to-VGA adapter for older monitors that only support VGA.
 
-Finally, some models of Raspberry Pi have a composite out port for connecting to analog devices. The original Raspberry Pi used an RCA connector, and any standard RCA composite video lead will work. Other models (Raspberry Pi B+ and later) combine the audio and composite out onto the same 3.5mm jack. This requires a particular type of lead, with audio left on the tip, audio right on ring 1, ground on ring 2, and video on the sleeve. This is the same as leads used on the on Apple and Android devices.
+Finally, some models of Raspberry Pi have a composite out port for connecting to analog devices. The original Raspberry Pi used an RCA connector, and any standard RCA composite video lead will work. Other models (Raspberry Pi B+ and later) combine the audio and composite out onto the same 3.5mm jack. This requires a particular type of lead, with audio left on the tip, audio right on ring 1, ground on ring 2, and video on the sleeve. This is the same as leads used on Apple and Android devices.
 
 More information on displays can be found in as part of the Raspberry Pi Foundation's https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up[Learning Resources].
 
@@ -52,7 +52,7 @@ WARNING: Because of a hardware limitation in the Raspberry Pi Zero, 1, and 2, th
 
 ==== Recommended capacity
 
-We recommend using an SD card of 8GB or greater capacity with Raspberry Pi OS. If you are using the lite version of Raspberry Pi OS, you can use a 4GB card. Other operating systems have different requirements: for example, LibreELEC can run from a smaller card. Please check with the supplier of the operating system to find out what capacity of card they recommend.
+We recommend using an SD card with at least 16GB of storage with Raspberry Pi OS. If you are using the lite version of Raspberry Pi OS, you can use a 4GB card. Other operating systems have different requirements: for example, LibreELEC can run from a smaller card. Please check with the supplier of the operating system to find out what capacity of card they recommend.
 
 === Connecting to the internet
 
