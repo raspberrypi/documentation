@@ -44,7 +44,7 @@ NOTE: Current versions of the Raspberry Pi OS no longer have a default user name
 
 ==== Advanced options
 
-After you have selected the operating system to install, a cog wheel will appear allowing you to open the advanced options menu if it is supported by the operating system. This menu lets you carry out tasks like enabling SSH, or setting your Raspberry Pi's hostname, and configuring the default user before first boot. You can also use this menu to set up a a xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless] Raspberry Pi.
+After you have selected the operating system to install, a cog wheel will appear allowing you to open the advanced options menu if it is supported by the operating system. This menu lets you carry out tasks like enabling SSH, or setting your Raspberry Pi's hostname, and configuring the default user before first boot. You can also use this menu to set up a xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless] Raspberry Pi.
 
 .Advanced options menu
 image::images/rpi_imager_2.png[alt="Menu showing advanced configuration options.",width="80%"]

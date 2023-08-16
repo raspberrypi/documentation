@@ -53,7 +53,7 @@ Your Raspberry Pi will scan for nearby WiFi access points. You can choose which 
 .The Update Software dialog.
 image::images/initial-setup/8.png[alt="The wizard automatically checks for updates to install."width="80%"]
 
-Once your Raspberry Pi has internet access you can update the operating system to the latest version. This will automatically download any patches and updates needed to for your operating system.
+Once your Raspberry Pi has internet access you can update the operating system to the latest version. This will automatically download any patches and updates needed for your operating system.
 
 === Finish
 
