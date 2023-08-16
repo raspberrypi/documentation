@@ -46,7 +46,7 @@ More information on displays can be found in as part of the Raspberry Pi Foundat
 Raspberry Pi computers use a micro SD card, except for very early models which use a full-sized SD card.
 
 .Insert a micro SD card into the SD card slot
-image::images/peripherals/sd-card.png[width="50%"]
+image::images/peripherals/sd-card.png[alt="Photo showing a micro SD card inserted into a Raspberry Pi.",width="50%"]
 
 WARNING: Because of a hardware limitation in the Raspberry Pi Zero, 1, and 2, the boot partition on the SD card must be 256GB or less. Otherwise the device will not boot up. Later models of Raspberry Pi 2 — with a BCM2837 SoC — along with the Raspberry Pi 3, 4, Zero 2 W, and the Raspberry Pi 400 do not have this limitation. This does not affect Raspberry Pi OS, which always uses a small boot partition.
 
@@ -56,17 +56,17 @@ We recommend using an SD card with at least 16GB of storage with Raspberry Pi OS
 
 === Connecting to the internet
 
-Raspberry Pi 4, 3B+, 3, and Raspberry Pi Zero W and Zero 2 W come with Wi‑Fi® and Bluetooth connectivity. If you're using one of these models, you'll be able to connect your Raspberry Pi to your local wireless network during initial setup. To connect an older model, or if you'd like a faster and more secure connection, you can connect your Raspberry Pi using an Ethernet cable. Raspberry Pi Zero models will require an Ethernet-to-micro USB adapter.
+Raspberry Pi 4, 3B+, 3, and Raspberry Pi Zero W and Zero 2 W come with Wi-Fi® and Bluetooth connectivity. If you're using one of these models, you'll be able to connect your Raspberry Pi to your local wireless network during initial setup. To connect an older model, or if you'd like a faster and more secure connection, you can connect your Raspberry Pi using an Ethernet cable. Raspberry Pi Zero models will require an Ethernet-to-micro USB adapter.
 
 .You can use an ethernet cable to connect to the internet
-image::images/peripherals/cable-net.png[width="50%"]
+image::images/peripherals/cable-net.png[alt="Photo showing an ethernet cable plugged into a Raspberry Pi.",width="50%"]
 
 === Connecting a keyboard and mouse
 
 You can use any of the USB-A ports on your Raspberry Pi to connect a wired keyboard and mouse. If you want to use a wireless input device, you can plug in a USB Bluetooth adapter.
 
-image:images/peripherals/cable-key.png[width="35%"]
-image:images/peripherals/cable-mouse.png[width="35%"]
+image:images/peripherals/cable-key.png[alt="Photo showing a keyboard plugged into a Raspberry Pi.",width="35%"]
+image:images/peripherals/cable-mouse.png[alt="Photo showing a computer mouse plugged into a Raspberry Pi.",width="35%"]
 
 === Connecting audio
 
@@ -75,7 +75,7 @@ If you're using an HDMI cable to connect a monitor or television with built-in s
 NOTE: Speakers need amplification — either self-powered or from an external amplifier — since the output from the Raspberry Pi is not powerful enough to drive them directly.
 
 .Connect headphones or speakers using the 3.5mm audio port
-image::images/peripherals/cable-audio.png[width="50%"]
+image::images/peripherals/cable-audio.png[alt="Photo showing an audio cable plugged into a Raspberry Pi.",width="50%"]
 
 === Troubleshooting
 
