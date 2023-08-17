@@ -315,14 +315,6 @@ By default (`force_turbo=0`) the "On Demand" CPU frequency driver will raise clo
 
 `force_turbo=1` overrides this behaviour and forces maximum frequencies even when the ARM cores are not busy.
 
-==== `never_over_voltage`
-
-Sets a bit in the OTP memory (one time programmable) that prevents the device from being overvoltaged. This is intended to lock the device down so the warranty bit cannot be set either inadvertently or maliciously by using an invalid overvoltage.
-
-==== `disable_auto_turbo`
-
-On Raspberry Pi 2 / Raspberry Pi 3, setting this flag will disable the GPU from moving into turbo mode, which it can do in particular load cases.
-
 === Clocks Relationship
 
 The GPU core, CPU, SDRAM and GPU each have their own PLLs and https://forums.raspberrypi.com/viewtopic.php?f=29&t=6201&start=275#p168042[can have unrelated frequencies]. The h264, v3d and ISP blocks share a PLL.
@@ -335,11 +327,9 @@ To view the Raspberry Pi's temperature, type `cat /sys/class/thermal/thermal_zon
 
 Whilst hitting the temperature limit is not harmful to the SoC, it will cause CPU throttling. A heatsink can help to control the core temperature and therefore performance. This is especially useful if the Raspberry Pi is running inside a case. Airflow over the heatsink will make cooling more efficient.
 
-With firmware from 12th September 2016 or later, when the core temperature is between 80'C and 85'C, a warning icon showing a red half-filled thermometer will be displayed, and the ARM cores will be throttled back. If the temperature exceeds 85'C, an icon showing a fully-filled thermometer will be displayed, and both the ARM cores and the GPU will be throttled back.
+When the core temperature is between 80'C and 85'C, the ARM cores will be throttled back. If the temperature exceeds 85'C, the ARM cores and the GPU will be throttled back.
 
 For the Raspberry Pi 3 Model B+, the PCB technology has been changed to provide better heat dissipation and increased thermal mass. In addition, a soft temperature limit has been introduced, with the goal of maximising the time for which a device can "sprint" before reaching the hard limit at 85°C. When the soft limit is reached, the clock speed is reduced from 1.4GHz to 1.2GHz, and the operating voltage is reduced slightly. This reduces the rate of temperature increase: we trade a short period at 1.4GHz for a longer period at 1.2GHz. By default, the soft limit is 60°C, and this can be changed via the `temp_soft_limit` setting in config.txt.
-
-See the page on xref:configuration.adoc#firmware-warning-icons[warning icons] for more details.
 
 === Monitoring Voltage
 
@@ -347,9 +337,7 @@ It is essential to keep the supply voltage above 4.8V for reliable performance. 
 
 To monitor the Raspberry Pi's PSU voltage, you will need to use a multimeter to measure between the VCC and GND pins on the GPIO. More information is available in xref:raspberry-pi.adoc#power-supply[power].
 
-If the voltage drops below 4.63V (+-5%), recent versions of the firmware will show a yellow lightning bolt symbol on the display to indicate a lack of power, and a message indicating the low voltage state will be added to the kernel log.
-
-See the page on xref:configuration.adoc#firmware-warning-icons[warning icons] for more details.
+If the voltage drops below 4.63V (+-5%), the ARM cores and the GPU will be throttled back, and a message indicating the low voltage state will be added to the kernel log.
 
 === Overclocking Problems
 
