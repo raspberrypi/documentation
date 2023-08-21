@@ -1,176 +1,110 @@
 == Playing Audio and Video
 
-[WARNING]
-====
-The following documentation refers to Raspberry Pi OS Buster and earlier versions. OMXPlayer has been deprecated in the https://www.raspberrypi.com/news/raspberry-pi-os-debian-bullseye/[latest OS release]. If you are running Bullseye, VLC is now the recommended alternative. 
-====
+The simplest way of playing audio and video on Raspberry Pi is to use the pre-installed VLC application. This is hardware accelerated, and can play back many popular audio and video file formats. More extensive information can be found at https://www.videolan.org/
 
-The simplest way of playing audio and video on Raspberry Pi is to use the installed OMXPlayer application.
+=== The VLC application
 
-This is hardware accelerated, and can play back many popular audio and video file formats. OMXPlayer uses the OpenMAX (`omx`) hardware acceleration interface (API) which is the officially supported media API on Raspberry Pi. OMXPlayer was developed by the Kodi Project's Edgar Hucek.
+To play an audio or video file in the Raspberry Pi OS desktop environment, you can simply double-click on the file in the file-manager, and VLC will automatically launch and play the file. Alternatively, you can launch "VLC Media Player" from the "Sound & Video" menu, and then select "Media" -> "Open File..." and navigate to the file you want to play. By default the audio is sent over the HDMI link; if you instead want to output the audio over the Headphone jack, right-click on the speaker-icon in the top-right corner of the screen, and select "AV Jack".
 
-=== The OMXPlayer Application
-
-The simplest command line is `omxplayer <name of media file>`. The media file can be audio or video or both. For the examples below, we used an H264 video file that is included with the standard Raspberry Pi OS installation.
+For more fine-grained control, you can also launch VLC from the command-line. For the examples below, we used a short clip from Big Buck Bunny.
 
 ----
-omxplayer /opt/vc/src/hello_pi/hello_video/test.h264
+wget --trust-server-names http://rptl.io/big-buck-bunny
+vlc big-buck-bunny-1080p.mp4
 ----
 
-By default the audio is sent to the analog port. If you are using a HDMI-equipped display device with speakers, you need to tell omxplayer to send the audio signal over the HDMI link.
+To prevent the VLC GUI staying open after your file has finished playing, you can add the `--play-and-exit` flag:
 
 ----
-omxplayer --adev hdmi /opt/vc/src/hello_pi/hello_video/test.h264
+vlc --play-and-exit big-buck-bunny-1080p.mp4
 ----
 
-When displaying video, the whole display will be used as output. You can specify which part of the display you want the video to be on using the window option.
+You can also add the `--fullscreen` flag to force a video to use the full screen - and this can also lead to smoother playback in some circumstances.
 
 ----
-omxplayer --win 0,0,640,480 /opt/vc/src/hello_pi/hello_video/test.h264
+vlc --play-and-exit --fullscreen big-buck-bunny-1080p.mp4
 ----
 
-You can also specify which part of the video you want to be displayed: this is called a crop window. This portion of the video will be scaled up to match the display, unless you also use the window option.
+If you use `cvlc` instead of `vlc` with any of these commands, then the VLC GUI won't be shown:
 
 ----
-omxplayer --crop 100,100,300,300 /opt/vc/src/hello_pi/hello_video/test.h264
+cvlc --play-and-exit big-buck-bunny-1080p.mp4
 ----
 
-If you are using the https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry Pi Touch Display], and you want to use it for video output, use the display option to specify which display to use. `n` is 5 for HDMI, 4 for the touchscreen. With the Raspberry Pi 4 you have two options for HDMI output. `n` is 2 for HDMI0 and 7 for HDMI1.
-
-----
-omxplayer --display n /opt/vc/src/hello_pi/hello_video/test.h264
-----
-
-=== How to Play Audio
-
-To play an MP3 file, navigate to the location of the `.mp3` file in the terminal using `cd` and then type the following command:
-
-[,bash]
-----
-omxplayer example.mp3
-----
-
-This will play the audio file `example.mp3` through either your monitor's built-in speakers or your headphones, connected via the headphone jack.
-
-If you need an example file you can download one from here using the following command:
-
-[,bash]
-----
-wget https://raw.githubusercontent.com/raspberrypilearning/burping-jelly-baby/master/data/la.mp3 -O example.mp3 --no-check-certificate
-----
-
-If you cannot hear anything, make sure your headphones or speakers are connected correctly. Note that omxplayer doesn't use ALSA and so ignores the xref:configuration.adoc#audio-configuration[audio configuration] set by `raspi-config` or `amixer`.
-
-If omxplayer's auto-detection of the correct audio output device fails, you can force output over HDMI with:
-
-[,bash]
-----
-omxplayer -o hdmi example.mp3
-----
-
-Alternatively, you can force output over the headphone jack with:
-
-[,bash]
-----
-omxplayer -o local example.mp3
-----
-
-You can even force output over both the headphone jack and HDMI with:
-
-[,bash]
-----
-omxplayer -o both example.mp3
-----
-
-=== How to Play Video
-
-To play a video, navigate to the location of your video file in the terminal using `cd`, then type the following command:
-
-[,bash]
-----
-omxplayer example.mp4
-----
-
-This will play the `example.mp4` in full screen. Hit `Ctrl + C` to exit.
-
-On the Raspberry Pi 4, hardware support for MPEG2 and VC-1 codecs has been removed, so we recommend the use of the VLC application, which supports these formats in software. In addition, VLC has hardware support for H264 and the new HEVC codec.
-
-==== An Example Video
-
-A video sample of the animated film _Big Buck Bunny_ is available on your Raspberry Pi. To play it enter the following command into a terminal window:
-
-[,bash]
-----
-omxplayer /opt/vc/src/hello_pi/hello_video/test.h264
-----
-
-On a Raspberry Pi 4, use the following command for H264 files:
-
-[,bash]
-----
-omxplayer /opt/vc/src/hello_pi/hello_video/test.h264
-----
-
-or for H264, VC1, or MPEG2
-
-[,bash]
-----
-vlc /opt/vc/src/hello_pi/hello_video/test.h264
-----
-
-When using VLC, you can improve playback performance by encapsulating the raw H264 stream, for example from the Raspberry Pi Camera Module. This is easily done using `ffmpeg`. Playback is also improved if VLC is run full screen; either select fullscreen from the user interface, or you can add the `--fullscreen` options to the `vlc` command line.
-
-This example command converts `video.h264` to a containerised `video.mp4` at 30 fps:
+If you have a raw H264 stream, for example as captured from the Raspberry Pi Camera Module, you will get much smoother playback in VLC by encapsulating the stream inside a container-format. This can be done using `ffmpeg`, for example this command converts `video.h264` to a containerised `video.mp4` at 30 fps:
 
 `ffmpeg -r 30 -i video.h264 -c:v copy video.mp4`
 
-=== Options During Playback
+=== Playing Audio and Video on Raspberry Pi OS Lite
 
-There are a number of options available during playback, actioned by pressing the appropriate key. Not all options will be available on all files. The list of key bindings can be displayed using `omxplayer --keys`:
+Firstly, install the necessary VLC components:
 
 ----
-    1           decrease speed
-    2           increase speed
-    <           rewind
-    >           fast forward
-    z           show info
-    j           previous audio stream
-    k           next audio stream
-    i           previous chapter
-    o           next chapter
-    n           previous subtitle stream
-    m           next subtitle stream
-    s           toggle subtitles
-    w           show subtitles
-    x           hide subtitles
-    d           decrease subtitle delay (- 250 ms)
-    f           increase subtitle delay (+ 250 ms)
-    q           exit omxplayer
-    p / space   pause/resume
-    -           decrease volume
-    + / =       increase volume
-    left arrow  seek -30 seconds
-    right arrow seek +30 seconds
-    down arrow  seek -600 seconds
-    up arrow    seek +600 seconds
+sudo apt install --no-install-recommends vlc-bin vlc-plugin-base
 ----
 
-=== Playing in the Background
+And then download and play an example audio file:
 
-`omxplayer` will close immediately if run in the background without tty (user input), so to run successfully, you need to tell `omxplayer` not to require any user input using the `--no-keys` option.
-
-[,bash]
 ----
-omxplayer --no-keys example.mp3 &
+wget --trust-server-names http://rptl.io/startup-music
+cvlc --play-and-exit computer-startup-music.mp3
 ----
 
-Adding the `&` at the end of the command runs the job in the background. You can then check the status of this background job using the `jobs` command. By default, the job will complete when `omxplayer` finishes playing, but if necessary, you can stop it at any point using the `kill` command.
+To force the audio output to a particular device, you need to use:
 
-[,bash]
 ----
-$ jobs
-[1]-  Running             omxplayer --no-keys example.mp3 &
-$ kill %1
-$
-[1]-  Terminated          omxplayer --no-keys example.mp3 &
+cvlc --play-and-exit -A alsa --alsa-audio-device <alsa-device> computer-startup-music.mp3
 ----
+
+replacing `<alsa-device>` with one of the following options:
+
+|===
+| ALSA device | Description
+
+| sysdefault:CARD=Headphones | The headphone jack
+
+| sysdefault:CARD=vc4hdmi | The HDMI output on a Raspberry Pi Zero, or Raspberry Pi Model 1, 2 or 3
+
+| sysdefault:CARD=vc4hdmi0 | The HDMI0 output on a Raspberry Pi 4 or 400
+
+| sysdefault:CARD=vc4hdmi1 | The HDMI1 output on a Raspberry Pi 4 or 400
+
+|===
+
+Use the following command to get a list of all ALSA devices on your Raspberry Pi:
+
+----
+aplay -L | grep sysdefault
+----
+
+To force the video output to a particular device, you need to use:
+
+----
+cvlc --play-and-exit --drm-vout-display <drm-device> big-buck-bunny-1080p.mp4
+----
+
+replacing `<drm-device>` with one of the following options:
+
+|===
+| DRM device | Description
+
+| HDMI-A-1 | The HDMI output on a Raspberry Pi Zero, or Raspberry Pi Model 1, 2 or 3; *or* the HDMI0 output on a Raspberry Pi 4 or 400
+
+| HDMI-A-2 | The HDMI1 output on a Raspberry Pi 4 or 400
+
+| DSI-1 | The Raspberry Pi Touch Display
+
+|===
+
+Use the following command to get a list of all DRM devices on your Raspberry Pi:
+
+----
+kmsprint | grep Connector
+----
+
+You can combine these options, so to direct the video output to the touchscreen, and the audio output to the headphone jack, you'd use
+
+----
+cvlc --play-and-exit --fullscreen --drm-vout-display DSI-1 -A alsa --alsa-audio-device sysdefault:CARD=Headphones your_video.mp4
+----
+
