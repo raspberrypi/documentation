@@ -65,7 +65,7 @@ This is particularly useful to insert a delay before reading the EDID of the mon
 
 === `boot_delay`
 
-The `boot_delay` command instructs to wait for a given number of seconds in `start.elf` before loading the kernel: the default value is `1`. The total delay in milliseconds is calculated as `(1000 x boot_delay) + boot_delay_ms`. This can be useful if your SD card needs a while to get ready before Linux is able to boot from it.
+The `boot_delay` command instructs to wait for a given number of seconds in `start.elf` before loading the kernel: the default value is `0`. The total delay in milliseconds is calculated as `(1000 x boot_delay) + boot_delay_ms`. This can be useful if your SD card needs a while to get ready before Linux is able to boot from it.
 
 === `boot_delay_ms`
 
