@@ -1,12 +1,6 @@
 == Rotating your Display
 
-The options to rotate the display of your Raspberry Pi depend on whether you're booting to CLI (text console) or booting to the desktop environment.
-
-=== Rotating the text console
-
-This is acheived by editing the KMS settings - see <<the-kernel-command-line,configuring the kernel command line>> for more details.
-
-NOTE: If you have multiple screens connected, they must all be set to the same rotation value in console mode, or no rotation will be applied.
+The options to rotate the display of your Raspberry Pi depend on whether you're booting to the desktop environment or booting to the CLI (text console).
 
 === Rotating the desktop environment
 
@@ -61,4 +55,10 @@ You can also use the command line to mirror the display using the `--reflect` op
 ----
 xrandr --output HDMI-1 --reflect x
 ----
+
+=== Rotating the text console
+
+This is acheived by editing the KMS settings - see <<the-kernel-command-line,configuring the kernel command line>> for more details.
+
+NOTE: If you have multiple screens connected, they must all be set to the same rotation value in console mode, or no rotation will be applied.
 
