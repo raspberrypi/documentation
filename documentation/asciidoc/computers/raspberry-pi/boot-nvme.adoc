@@ -25,8 +25,6 @@ You might need to use `rpiboot` to update the CM4 bootloader. Instructions for b
 
 Remember to add the NVMe boot mode `6` to BOOT_ORDER in `recovery/boot.conf`.
 
-==== Firmware and kernel
-
 If you are using CM4 lite, remove the SD card and the board will boot from the NVMe disk. For versions of CM4 with an eMMC, make sure you have set NVMe first in the boot order.
 
 ==== NVMe BOOT_ORDER
