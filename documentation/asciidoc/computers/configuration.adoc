@@ -4,10 +4,6 @@ include::configuration/configuring-networking.adoc[]
 
 include::configuration/headless.adoc[]
 
-include::configuration/access-point-routed.adoc[]
-
-include::configuration/access-point-bridged.adoc[]
-
 include::configuration/use-a-proxy.adoc[]
 
 include::configuration/hdmi-config.adoc[]
