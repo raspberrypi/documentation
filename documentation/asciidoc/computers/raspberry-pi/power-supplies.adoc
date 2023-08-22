@@ -123,7 +123,7 @@ NOTE: For these measurements we used a standard Raspberry Pi OS image (current a
 
 === Power Supply Warnings
 
-On all models of Raspberry Pi since the Raspberry Pi B+ (2014) except the Zero range, there is low-voltage detection circuitry that will detect if the supply voltage drops below 4.63V (+/- 5%). This will result in a xref:configuration.adoc#firmware-warning-icons[warning icon] being displayed on all attached displays and an entry being added to the kernel log.
+On all models of Raspberry Pi since the Raspberry Pi B+ (2014) except the Zero range, there is low-voltage detection circuitry that will detect if the supply voltage drops below 4.63V (+/- 5%). This will result in an entry added to the kernel log.
 
 If you are seeing warnings, you should improve the power supply and/or cable, as low power can cause problems with corruption of SD cards, or erratic behaviour of the Raspberry Pi itself; for example, unexplained crashes.
 
