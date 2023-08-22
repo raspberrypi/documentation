@@ -30,3 +30,8 @@ Now select the `Audio` option (currently option S2, but yours may be different) 
 
 Select your required mode, press `Enter` and press the right arrow key to exit the options list, then select `Finish` to exit the configuration tool.
 
+=== Pro Audio profile
+
+You may see a device profile named "Pro Audio" when viewing an audio device on the system tray. This profile exposes the maximum number of channels across every audio device allowing you greater control over the routing of signals. Unless you have a specific use case in mind for this type of control, we recommend using a different device profile.
+
+For more information about the Pro Audio profile, visit https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/FAQ#what-is-the-pro-audio-profile[PipeWire's FAQ].
