@@ -86,7 +86,7 @@ On the Raspberry Pi 3B+ and Raspberry Pi 4B, you will also need to set the count
 country=GB
 ----
 
-Note that with the latest Buster Raspberry Pi OS release, you must ensure that the `wpa_supplicant.conf` file contains the following information at the top:
+Note that with the latest Raspberry Pi OS release, you must ensure that the `wpa_supplicant.conf` file contains the following information at the top:
 
 ----
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
