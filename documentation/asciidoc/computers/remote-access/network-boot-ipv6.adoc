@@ -13,7 +13,7 @@ IMPORTANT: IPv6 netboot is an *experimental alpha feature* and depending on feed
 
 === How it works
 
-To boot via IPv6 you need an updated version of the firmware (e.g. `start4.elf`) and the bootloader. Using the Bullseye release of Raspberry Pi OS and the latest stable bootloader should be sufficient.
+To boot via IPv6 you need an updated version of the firmware (e.g. `start4.elf`) and the bootloader. Using the latest release of Raspberry Pi OS and the latest stable bootloader should be sufficient.
 
 NOTE: The commonly used `dnsmasq` DHCP server doesn't currently support the network boot parameters required for IPv6 network boot, so for the time being you will have to use a different DHCP server such as https://www.isc.org/dhcp/[ISC DHCP].
 
