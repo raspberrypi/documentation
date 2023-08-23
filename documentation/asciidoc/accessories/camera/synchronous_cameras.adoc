@@ -6,8 +6,6 @@ The other camera can then listen for this sync pulse, and capture a frame at the
 
 === Using the HQ Camera
 
-==== Preparation
-
 For correct operation, both cameras require a 1.65v pull up voltage on the XVS line, which is created by a potential divider through the 3.3v and GND pins on the Raspberry Pi.
 
 image::images/synchronous_camera_wiring.jpg[alt="Image showing potential divider setup",width="50%"]
@@ -59,11 +57,9 @@ This ensures that no frames are created or lost upon startup. The source whilst 
 
 === Using the GS Camera
 
-The Global Shutter (GS) camera can also be operated in a synchonous mode. However, the source camera will record one extra frame. A much better alternative method to ensure that both cameras capture the same amount of frames is to use the xref:camera.adoc#external-trigger-on-the-gs-camera[external trigger method].
+NOTE: The Global Shutter (GS) camera can also be operated in a synchonous mode. However, the source camera will record one extra frame. A much better alternative method to ensure that both cameras capture the same amount of frames is to use the xref:camera.adoc#external-trigger-on-the-gs-camera[external trigger method].
 
 To operate as source and sink together, the Global Shutter Cameras also require connection of the XHS (horizontal sync) pins together. However, these do not need connection to a pullup resistor.
-
-==== Preparation
 
 Create a potential divider made of 2x 1.5KOhm Resistors to 3v3 and ground, creating 1.65V. This can be connected to either pi.
 
