@@ -25,16 +25,11 @@ Finally, a reboot may be required if I2C was disabled or the kernel was not up-t
 
 == Getting started
 
-[.float-group]
---
-image::images/experiment-with-the-sense-hat.png[role="related thumb right",link=https://github.com/raspberrypipress/released-pdfs/raw/main/experiment-with-the-sense-hat.pdf]
 After installation, example code can be found under `/usr/src/sense-hat/examples`.
 
-
-You can find more information on how to use the Sense HAT in the Raspberry Pi Press book https://github.com/raspberrypipress/released-pdfs/raw/main/experiment-with-the-sense-hat.pdf[Experiment with the Sense HAT]. Written by The Raspberry Pi Foundation's Education Team, it is part of the MagPi Essentials series published by Raspberry Pi Press. The book covers the background of the Astro Pi project, and walks you through how to make use of all the Sense HAT features using the xref:sense-hat.adoc#using-the-sense-hat-with-python[Python library]. 
-
-You can download this book as a PDF file for free, it has been released under a Creative Commons https://creativecommons.org/licenses/by-nc-sa/3.0/[Attribution-NonCommercial-ShareAlike] 3.0 Unported (CC BY NC-SA) licence.
---
+[.booklink, booktype="free", link=https://github.com/raspberrypipress/released-pdfs/raw/main/experiment-with-the-sense-hat.pdf, image=image::images/experiment-with-the-sense-hat.png[]]
+=== Further reading
+You can find more information on how to use the Sense HAT in the Raspberry Pi Press book https://github.com/raspberrypipress/released-pdfs/raw/main/experiment-with-the-sense-hat.pdf[Experiment with the Sense HAT]. Written by The Raspberry Pi Foundation's Education Team, it is part of the MagPi Essentials series published by Raspberry Pi Press. The book covers the background of the Astro Pi project, and walks you through how to make use of all the Sense HAT features using the xref:sense-hat.adoc#using-the-sense-hat-with-python[Python library].
 
 === Using the Sense HAT with Python
 
