@@ -10,9 +10,7 @@ image::images/external_trigger.jpg[alt="Image showing pulse format",width="80%"]
 
 WARNING: This modification includes removing an SMD soldered part. You should not attempt this modification unless you feel you are competent to complete it. When soldering to the Camera board, please remove the plastic back cover to avoid damaging it.
 
-IMPORTANT: If your board has transistor Q2 fitted, shown in blue on the image below, you will need to remove R11 from the board, as shown in red. 
-
-This connects GP0 to XTR and without removal, the camera will not operate in external trigger mode.
+If your board has transistor Q2 fitted, shown in blue on the image below, you will need to remove R11 from the board, as shown in red. This connects GP0 to XTR and without removal, the camera will not operate in external trigger mode.
 The location of the components is displayed below.
 
 image::images/resistor.jpg[alt="Image showing resistor to be removed",width="80%"]
