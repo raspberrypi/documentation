@@ -470,9 +470,9 @@ The introduction of the Raspberry Pi 4, built around the BCM2711 SoC, brought wi
 
 There is therefore a need for a method of tailoring an overlay to multiple platforms with differing hardware. Supporting them all in a single .dtbo file would require heavy use of hidden ("dormant") fragments and a switch to an on-demand symbol resolution mechanism so that a missing symbol that isn't needed doesn't cause a failure. A simpler solution is to add a facility to map an overlay name to one of several implementation files depending on the current platform.
 
-The overlay map, which is rolling out with the switch to Linux 5.4, is a file that gets loaded by the firmware at bootup. It is written in DTS source format - `overlay_map.dts`, compiled to `overlay_map.dtb` and stored in the overlays directory.
+The overlay map is a file that gets loaded by the firmware at bootup. It is written in DTS source format - `overlay_map.dts`, compiled to `overlay_map.dtb` and stored in the overlays directory.
 
-This is an edited version of the current map file (see the https://github.com/raspberrypi/linux/blob/rpi-5.4.y/arch/arm/boot/dts/overlays/overlay_map.dts[full version]):
+This is an edited version of the current map file (see the https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/overlay_map.dts[full version]):
 
 ----
 / {
@@ -587,7 +587,7 @@ Here are some examples of different types of properties, with parameters to modi
 };
 ----
 
-For further examples, there is a large collection of overlay source files https://github.com/raspberrypi/linux/tree/rpi-5.4.y/arch/arm/boot/dts/overlays[hosted in the Raspberry Pi Linux GitHub repository].
+For further examples, there is a large collection of overlay source files https://github.com/raspberrypi/linux/tree/rpi-6.1.y/arch/arm/boot/dts/overlays[hosted in the Raspberry Pi Linux GitHub repository].
 
 [[part2.3]]
 ==== Exporting labels
@@ -1098,7 +1098,7 @@ device_tree=my-pi.dtb
 [[part5.4]]
 ==== Disabling Device Tree usage
 
-Since the switch to the 4.4 kernel and the use of more upstream drivers, Device Tree usage is required in Raspberry Pi Linux kernels. However, for bare metal and other OSs, the method of disabling DT usage is to add:
+Device Tree usage is required in Raspberry Pi Linux kernels. However, for bare metal and other OSs, the method of disabling DT usage is to add:
 
 ----
 device_tree=
