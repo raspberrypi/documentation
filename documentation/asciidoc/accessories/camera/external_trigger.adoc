@@ -15,7 +15,9 @@ The location of the components is displayed below.
 
 image::images/resistor.jpg[alt="Image showing resistor to be removed",width="80%"]
 
-Next solder a wire to the touchpoint of XTR on the GS Camera board. We can use a Raspberry Pi Pico to provide the trigger. Connect these to the Pico - XTR to any pin. Ground does not need to be connected.
+Next solder a wire to the touchpoints of XTR and GND on the GS Camera board. We can use a Raspberry Pi Pico to provide the trigger. Connect these to the Pico - XTR to any pin (GP28 is used in this example). Also connect Pico GND to Camera GND. A wiring diagram is shown below.
+
+image::images/pico_wiring.jpg[alt="Image showing Raspberry Pi Pico wiring",width="50%"]
 
 ==== Boot up the Raspberry Pi with the camera connected.
 

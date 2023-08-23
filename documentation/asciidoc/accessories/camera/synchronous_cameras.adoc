@@ -61,13 +61,15 @@ NOTE: The Global Shutter (GS) camera can also be operated in a synchonous mode. 
 
 To operate as source and sink together, the Global Shutter Cameras also require connection of the XHS (horizontal sync) pins together. However, these do not need connection to a pullup resistor.
 
-Create a potential divider made of 2x 1.5KOhm Resistors to 3v3 and ground, creating 1.65V. This can be connected to either pi.
+The wiring setup is identical to the xref:camera.adoc#using-the-hq-camera[HQ Camera method], except that you will need to connect the XHS pins together.
+
+Create a potential divider made of 2 equally high impedance ( > 1kOhm) resistors resistors to 3v3 and ground, creating 1.65V. This can be connected to either Pi.
 
 Solder 2 wires to the XVS touchpoint on each board and connect both of these wires together to the 1.65V potential divider.
 
 Solder the GND of each Camera board to each other. Also solder 2 wires to the XHS touchpoints on each board and connect these. No pullup is needed for XHS pin.
 
-On the boards that you wish to act as sinks, solder the two halves of the MAS pad together. This enters the sensor into sink mode.
+On the boards that you wish to act as sinks, solder the two halves of the MAS pad together. This tells the sensor to act as a sink, and will wait for a signal to capture a frame.
 
 ==== Boot up both Raspberry Pis
 
