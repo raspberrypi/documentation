@@ -14,6 +14,12 @@ There are two ways of setting the audio output; using the desktop volume control
 
 Right-clicking the volume icon on the desktop taskbar brings up the audio output selector; this allows you to select between the internal audio outputs. It also allows you to select any external audio devices, such as USB sound cards and Bluetooth audio devices. A tick is shown against the currently selected audio output device -- simply left-click the desired output in the pop-up menu to change this. The volume control and mute operate on the currently selected device.
 
+===== Pro Audio profile
+
+You may see a device profile named "Pro Audio" when viewing an audio device on the system tray. This profile exposes the maximum number of channels across every audio device allowing you greater control over the routing of signals. Unless you have a specific use case in mind for this type of control, we recommend using a different device profile.
+
+For more information about the Pro Audio profile, visit https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/FAQ#what-is-the-pro-audio-profile[PipeWire's FAQ].
+
 ==== Using raspi-config
 
 Open up xref:configuration.adoc#raspi-config[raspi-config] by entering the following into the command line:
@@ -29,9 +35,3 @@ Select `System Options` (currently option 1, but yours may be different) and pre
 Now select the `Audio` option (currently option S2, but yours may be different) and press `Enter`.
 
 Select your required mode, press `Enter` and press the right arrow key to exit the options list, then select `Finish` to exit the configuration tool.
-
-=== Pro Audio profile
-
-You may see a device profile named "Pro Audio" when viewing an audio device on the system tray. This profile exposes the maximum number of channels across every audio device allowing you greater control over the routing of signals. Unless you have a specific use case in mind for this type of control, we recommend using a different device profile.
-
-For more information about the Pro Audio profile, visit https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/FAQ#what-is-the-pro-audio-profile[PipeWire's FAQ].
