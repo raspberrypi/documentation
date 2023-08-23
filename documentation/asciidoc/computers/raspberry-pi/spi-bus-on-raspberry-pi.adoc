@@ -430,7 +430,7 @@ This can be used to test SPI send and receive. Put a wire between MOSI and MISO.
 
 [,bash]
 ----
-wget https://raw.githubusercontent.com/raspberrypi/linux/rpi-3.10.y/Documentation/spi/spidev_test.c
+wget https://raw.githubusercontent.com/raspberrypi/linux/rpi-6.1.y/tools/spi/spidev_test.c
 gcc -o spidev_test spidev_test.c
 ./spidev_test -D /dev/spidev0.0
 spi mode: 0
