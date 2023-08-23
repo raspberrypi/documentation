@@ -17,7 +17,7 @@ The location of the components is displayed below.
 
 image::images/resistor.jpg[alt="Image showing resistor to be removed",width="80%"]
 
-Next solder a wire to the touchpoint of XTR on the GS Camera board.  Connect these to the Pico - XTR to any pin. Pin 28 is used in this example. Ground does not need to be connected.
+Next solder a wire to the touchpoint of XTR on the GS Camera board. We can use a Raspberry Pi Pico to provide the trigger. Connect these to the Pico - XTR to any pin. Ground does not need to be connected.
 
 ==== Boot up the Raspberry Pi with the camera connected.
 
@@ -50,6 +50,8 @@ pwm.duty_u16(int((1 - (shutter - 14) / frame_length) * 65535))
 ----
 
 The low pulsewidth is equal to the shutter time, and the frequency of the PWM equals the framerate.
+
+NOTE: In this example Pin 28 is used to connect to the XTR touchpoint on the GS camera board.
 
 === Operation
 
