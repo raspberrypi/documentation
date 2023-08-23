@@ -1,0 +1,66 @@
+== External Trigger on the GS Camera
+
+The Global Shutter (GS) camera can be triggered externally by pulsing the external trigger (denoted on the board as XTR) connection on the board. Multiple cameras can be connected to the same pulse, allowing for an alternative way to synchronise two cameras.
+
+The exposure time is equal to the low pulse-width time plus an additional 14.26us. i.e. a low pulse of 10000us leads to an exposure time of 10014.26us. Framerate is directly controlled by how often you pulse the pin. A PWM frequency of 30Hz will lead to a framerate of 30 frames per second.
+
+image::images/external_trigger.jpg[alt="Image showing pulse format",width="80%"]
+
+=== Preparation
+
+WARNING: This modification includes removing an SMD soldered part. You should not attempt this modification unless you feel you are competent to complete it. When soldering to the Camera board, please remove the plastic back cover to avoid damaging it.
+
+If your board has transistor Q2 fitted, shown in blue on the image below, you will need to remove R11 from the board, as shown in red. This connects GP0 to XTR and without removal, the camera will not operate in external trigger mode.
+The location of the components is displayed below.
+
+image::images/resistor.jpg[alt="Image showing resistor to be removed",width="80%"]
+
+Next solder a wire to the touchpoint of XTR on the GS Camera board. We can use a Raspberry Pi Pico to provide the trigger. Connect these to the Pico - XTR to any pin. Ground does not need to be connected.
+
+==== Boot up the Raspberry Pi with the camera connected.
+
+Enable external triggering through superuser mode:
+
+[,bash]
+----
+sudo su
+echo 1 > /sys/module/imx296/parameters/trigger_mode
+exit
+----
+
+==== Raspberry Pi Pico Micropython Code
+
+[,python]
+----
+from machine import Pin, PWM
+
+from time import sleep
+
+pwm = PWM(Pin(28))
+
+framerate = 30
+shutter = 6000  # In microseconds
+
+frame_length = 1000000 / framerate
+pwm.freq(framerate)
+
+pwm.duty_u16(int((1 - (shutter - 14) / frame_length) * 65535))
+----
+
+The low pulsewidth is equal to the shutter time, and the frequency of the PWM equals the framerate.
+
+NOTE: In this example Pin 28 is used to connect to the XTR touchpoint on the GS camera board.
+
+=== Operation
+
+Run the code on the Pico, and set the camera running:
+
+[,bash]
+----
+libcamera-hello -t 0 --qt-preview --shutter 3000
+----
+
+A frame should now be generated every time that the Pico pulses the pin. Variable framerate is acceptable, and can be controlled by simply
+varying the duration between pulses. No options need to be passed to libcamera-apps to enable external trigger.
+
+NOTE: When running libcamera apps, you will need to specify a fixed shutter duration (the value does not matter). This will ensure the AGC does not try adjusting camera's shutter speed, which is controlled by the external trigger pulse.

@@ -3,3 +3,7 @@ include::camera/camera_hardware.adoc[]
 include::camera/filters.adoc[]
 
 include::camera/lens.adoc[]
+
+include::camera/synchronous_cameras.adoc[]
+
+include::camera/external_trigger.adoc[]

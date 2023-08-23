@@ -28,8 +28,6 @@ include::configuration/kernel-command-line-config.adoc[]
 
 include::configuration/uart.adoc[]
 
-include::configuration/warning-icons.adoc[]
-
 include::configuration/led_blink_warnings.adoc[]
 
 include::configuration/securing-the-raspberry-pi.adoc[]
