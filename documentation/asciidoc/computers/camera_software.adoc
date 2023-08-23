@@ -61,7 +61,3 @@ include::camera/v4l2.adoc[]
 include::camera/csi-2-usage.adoc[]
 
 include::camera/raspicam.adoc[]
-
-include::camera/synchronous_cameras.adoc[]
-
-include::camera/external_trigger.adoc[]
