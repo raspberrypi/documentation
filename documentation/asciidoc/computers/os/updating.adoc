@@ -44,7 +44,7 @@ When running `sudo apt full-upgrade`, it will show how much data will be downloa
 
 WARNING: Upgrading an existing image is sometimes possible, but is not guaranteed to work in every circumstance and we do not recommend it. If you do wish to try upgrading your operating system version, we strongly suggest making a backup first. We accept no responsibility for the loss of any data during a failed update.
 
-The latest version of Raspberry Pi OS is based on https://link.tbd[Debian Bookworm]. The previous version was based on https://www.raspberrypi.com/news/raspberry-pi-os-debian-bullseye/[Debian Bullseye].
+The latest version of Raspberry Pi OS is based on Debian Bookworm. The previous version was based on https://www.raspberrypi.com/news/raspberry-pi-os-debian-bullseye/[Debian Bullseye].
 
 ==== Searching for Software
 
