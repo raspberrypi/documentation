@@ -139,7 +139,7 @@ which will delete the `build/` and `documentation/html/` directories.
 If you want to build the Pico C SDK Doxygen documentation alongside the main documentation site you can do so with,
 
 ```
-$ make build_doxygen_html
+$ make build_doxygen_adoc
 $ make
 ```
 
