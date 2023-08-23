@@ -198,7 +198,7 @@ NOTE: Selecting the wrong early console can prevent the Raspberry Pi from bootin
 
 === UARTs and Device Tree
 
-Various UART Device Tree overlay definitions can be found in the https://github.com/raspberrypi/linux[kernel GitHub tree]. The two most useful overlays are https://github.com/raspberrypi/linux/blob/rpi-5.4.y/arch/arm/boot/dts/overlays/disable-bt-overlay.dts[`disable-bt`] and https://github.com/raspberrypi/linux/blob/rpi-5.4.y/arch/arm/boot/dts/overlays/miniuart-bt-overlay.dts[`miniuart-bt`].
+Various UART Device Tree overlay definitions can be found in the https://github.com/raspberrypi/linux[kernel GitHub tree]. The two most useful overlays are https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/disable-bt-overlay.dts[`disable-bt`] and https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/miniuart-bt-overlay.dts[`miniuart-bt`].
 
 `disable-bt` disables the Bluetooth device and makes the first PL011 (UART0) the primary UART. You must also disable the system service that initialises the modem, so it does not connect to the UART, using `sudo systemctl disable hciuart`.
 
