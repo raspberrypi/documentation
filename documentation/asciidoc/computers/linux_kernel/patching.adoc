@@ -10,12 +10,12 @@ It's important to check what version of the kernel you have when downloading and
 
 [source]
 ----
-VERSION = 3
-PATCHLEVEL = 10
-SUBLEVEL = 25
+VERSION = 6
+PATCHLEVEL = 1
+SUBLEVEL = 38
 ----
 
-In this instance, the sources are for a 3.10.25 kernel. You can see what version you're running on your system with the `uname -r` command.
+In this instance, the sources are for a 6.1.38 kernel. You can see what version you're running on your system with the `uname -r` command.
 
 === Applying Patches
 
@@ -23,9 +23,9 @@ How you apply patches depends on the format in which the patches are made availa
 
 [,bash]
 ----
- wget https://www.kernel.org/pub/linux/kernel/projects/rt/3.10/older/patch-3.10.25-rt23.patch.gz
- gunzip patch-3.10.25-rt23.patch.gz
- cat patch-3.10.25-rt23.patch | patch -p1
+ wget https://www.kernel.org/pub/linux/kernel/projects/rt/6.1/patch-6.1.38-rt13-rc1.patch.gz
+ gunzip patch-6.1.38-rt13-rc1.patch.gz
+ cat patch-6.1.38-rt13-rc1.patch | patch -p1
 ----
 
 In our example we simply download the file, uncompress it, and then pass it to the `patch` utility using the `cat` tool and a Unix pipe.
