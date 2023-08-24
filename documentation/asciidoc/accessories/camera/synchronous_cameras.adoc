@@ -61,7 +61,7 @@ NOTE: The Global Shutter (GS) camera can also be operated in a synchonous mode. 
 
 To operate as source and sink together, the Global Shutter Cameras also require connection of the XHS (horizontal sync) pins together. However, these do not need connection to a pullup resistor.
 
-The wiring setup is identical to the xref:camera.adoc#using-the-hq-camera[HQ Camera method], except that you will need to connect the XHS pins together.
+The wiring setup is identical to the xref:camera.adoc#using-the-hq-camera[HQ Camera method], except that you will also need to connect the XHS pins together.
 
 Create a potential divider made of 2 equally high impedance ( > 1kOhm) resistors resistors to 3v3 and ground, creating 1.65V. This can be connected to either Pi.
 
