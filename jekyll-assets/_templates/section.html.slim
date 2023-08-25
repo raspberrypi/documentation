@@ -32,6 +32,13 @@
             =content
             div class="paragraph"
               p =book_link
+      - elsif role? 'tutoriallink'
+        div class="openblock float-group"
+          div class="content"
+            div class="imageblock related thumb right"
+              div class="content"
+                =tutorial_image  
+            =content
       - else
         =content
     - else
@@ -46,5 +53,12 @@
             =content
             div class="paragraph"
               p =book_link
+      - elsif role? 'tutoriallink'
+        div class="openblock float-group"
+          div class="content"
+            div class="imageblock related thumb right"
+              div class="content"
+                =tutorial_image  
+            =content
       - else
         =content
