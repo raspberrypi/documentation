@@ -141,6 +141,15 @@ Returns the throttled state of the system. This is a bit-pattern - a bit being s
 Returns the temperature of the SoC as measured by its internal temperature sensor;
 on Raspberry Pi 4, `measure_temp pmic` returns the temperature of the PMIC.
 
+[.whitepaper, title="Extra PMIC features on Raspberry Pi 4 and Compute Module 4", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-004340-WP/Extra-PMIC-features-on-Raspberry-Pi-4-and-Compute-Module-4.pdf]
+****
+Raspberry Pi 4 and Raspberry Pi Compute Module 4 devices use a Power Management Integrated Circuit (PMIC) to supply the various voltages required by the various components on the PCB. They also sequence power ups to ensure the devices are started in the correct order.
+
+Over the duration of production of these models, a number of different PMIC devices have been used on both Raspberry Pi 4 and CM4. All the PMICs have provided extra functionality over and above that of voltage supply. This document describes how to access these features in software.
+
+This whitepaper assumes that the Raspberry Pi is running Raspberry Pi OS, and is fully up to date with the latest firmware and kernels.
+****
+
 ==== measure_clock [clock]
 
 This returns the current frequency of the specified clock. The options are:

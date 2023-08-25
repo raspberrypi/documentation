@@ -15,6 +15,13 @@ If you are using legacy graphics drivers, or find yourself in circumstances wher
 
 NOTE: All the commands are documented fully in the xref:config_txt.adoc#video-options[config.txt] section of the documentation.
 
+[.whitepaper, title="Troubleshooting KMS HDMI output", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-004341-WP/Troubleshooting-KMS-HDMI-output.pdf]
+****
+With the introduction of the KMS (Kernel Mode Setting) graphics driver, Raspberry Pi Ltd is moving away from legacy firmware control of the video output system and towards a more open source graphics system. This document is intended to help with any issues that might arise when moving to the new system.
+
+This whitepaper assumes that Raspberry Pi is running Raspberry Pi OS, and is fully up to date with the latest firmware and kernels.
+****
+
 === HDMI Groups and Mode
 
 HDMI has two common groups: CEA (Consumer Electronics Association, the standard typically used by TVs) and DMT (Display Monitor Timings, the standard typically used by monitors). Each group advertises a particular set of modes, where a mode describes the resolution, frame rate, clock rate, and aspect ratio of the output.

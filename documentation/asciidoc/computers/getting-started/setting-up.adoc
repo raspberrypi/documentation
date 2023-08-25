@@ -20,6 +20,15 @@ For the Raspberry Pi 4 Model B and Raspberry Pi 400, you should use the https://
 
 Finally, you'll need an xref:getting-started.adoc#sd-cards[SD card]; we recommend a minimum of 8GB micro SD card and use the https://www.raspberrypi.com/software/[Raspberry Pi Imager] to install an operating system onto it.
 
+[.whitepaper, title="Transitioning from Pi 3 to Pi 4", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003475-WP/Transitioning-from-Pi-3-to-Pi-4.pdf]
+****
+This whitepaper is for those who wish to move from using a Raspberry Pi 3B+ to the Raspberry Pi 4 device.
+
+From a software perspective, the move from the Raspberry Pi 3B+ to the Raspberry Pi 4B is relatively painless as a Raspberry Pi operating system (OS) image should work on all platforms. If, however, you are using a custom kernel, there are some things that will need to be considered in the move.
+
+The hardware changes are more extensive, and the differences are described in a later section.
+****
+
 === Connecting a Display
 
 Unless you're setting up your Raspberry Pi to operate xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless], for regular use, you'll want to plug the Raspberry Pi into a display: either a computer monitor or a television.

@@ -21,3 +21,12 @@ The Powered by Raspberry Pi progamme provides a process for companies wanting to
 === Approved Design Partners
 
 Our list of https://www.raspberrypi.com/for-industry/design-partners/[approved design partners] provide a  set of consultancies that we work closely with and support so they can provide paid for design services across hardware, software, and mechanical.
+
+[.whitepaper, title="Fleet management - A brief introduction", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003609-WP/Fleet-management-A-brief-introduction.pdf]
+****
+The sheer range of applications that the Raspberry Pi devices are suitable for means any one company may have hundreds, thousands, or even tens of thousands of devices in their portfolio. All these devices need to be maintained and, as numbers increase, manual checking becomes extremely inefficient. This is where fleet management software comes into play.
+
+Raspberry Pi do not provide any sort of fleet management software, this is an area where there is a plethora of existing suppliers. This whitepaper attempts to show what these suppliers can do, and also provides a brief introduction to some that Raspberry Pi know work with Raspberry Pi devices.
+
+Please note that these are NOT recommendations; Raspberry Pi have not done any deep investigations into any of these products, simply ensured that Raspberry Pi devices are supported. It is down to the individual to ensure that any product or service matches their use case. Please also note that any suppliers listed are not the only suppliers of services that may be appropriate, i.e. the list is not exhaustive.
+****

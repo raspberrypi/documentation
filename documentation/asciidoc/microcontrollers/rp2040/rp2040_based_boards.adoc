@@ -2,7 +2,6 @@
 
 Designed by Raspberry Pi as both a development board, and as a reference design, the xref:raspberry-pi-pico.adoc[Raspberry Pi Pico] series is a family of RP2040-based boards. The Pico family currently consists of Raspberry Pi Pico (far left), Pico H (left), Pico W (right), and Pico WH (far right).
 
-
 image::images/pico_family.jpg[width="75%"]
 
 The design files for Raspberry Pi Pico and Pico W are available openly, with no limitations. 
@@ -17,3 +16,10 @@ THE DESIGN IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGA
 === Other Boards
 
 Discussions around other third party RP2040-based boards can be found on the https://forums.raspberrypi.com/viewforum.php?f=147[Raspberry Pi forums].
+
+[.whitepaper, title="Power switching RP2040 for low standby current applications", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-004339-WP/Power-switching-RP2040-for-low-standby-current-applications.pdf]
+****
+Even in deep sleep RP2040 draws a typical current of ~180μA, and sleep current is very dependent on PVT: process (current varies from chip to chip), voltage (current varies linearly with voltage), and temperature (current varies nonlinearly with temperature).
+
+For many use cases where minimal current draw is required, the best option is to power off the system (or the RP2040 part of the system) completely if possible. This application note gives a couple of options for how this can be done, and these circuits are simple enough that a designer can adjust them for their own use case.
+****

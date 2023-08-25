@@ -2,6 +2,13 @@
 
 The Raspberry Pi Touch Display is an LCD display which connects to the Raspberry Pi through the DSI connector. In some situations, it allows for the use of both the HDMI and LCD displays at the same time (this requires software support).
 
+[.whitepaper, title="Implementing a DSI Driver on the Raspberry Pi", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003472-WP/Using-a-DSI-display.pdf]
+****
+This whitepaper is an introduction to writing a Display Serial Interface (DSI) driver for liquid crystal display (LCD) panels running under the Kernel Mode Setting (KMS) graphics system. It does not cover DSI drivers for the legacy graphics system, or Fake Kernel Mode Setting (FKMS).
+
+It assumes that the Raspberry Pi is running the Raspberry Pi operating system (OS; Linux), and are fully up to date with the latest firmware and kernels.
+****
+
 === Board Support
 
 The DSI display is designed to work with all models of Raspberry Pi, however early models that do not have mounting holes (the Raspberry Pi 1 Model A and B) will require additional mounting hardware to fit the HAT-dimensioned stand-offs on the display PCB.
@@ -137,3 +144,10 @@ Read our troubleshooting steps, tips, and tricks here: xref:display.adoc#trouble
 * Outer dimensions: 192.96 × 110.76mm
 * Viewable area: 154.08 × 85.92mm
 * https://datasheets.raspberrypi.com/display/7-inch-display-mechanical-drawing.pdf[Download mechanical drawing (PDF)]
+
+[.whitepaper, title="Touch Display Enclosure Mechanical Design", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003473-WP/Touch-Display-Enclosure-Mechanical-Design.pdf]
+****
+This whitepaper provides information for designing mechanical enclosures for the Raspberry Pi Touch Display.
+
+The Raspberry Pi Touch Display is dual-source manufactured, and there are very slight differences in the mechanical design between the two manufacturers. This document describes those differences and provides possible mitigation mechanisms for ensuring that enclosure designs can incorporate either version of the panel. For the purposes of this document, the two versions of the panel will be designated 'Supplier A' and 'Supplier B'. Raspberry Pi Ltd will not be publishing the names of the manufacturers used for the liquid crystal display (LCD) panel, or the panel datasheets.
+****

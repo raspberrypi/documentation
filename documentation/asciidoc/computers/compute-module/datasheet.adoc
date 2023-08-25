@@ -13,6 +13,28 @@ There is also a KiCad PCB design set available:
 
 * https://datasheets.raspberrypi.com/cm4io/CM4IO-KiCAD.zip[Compute Module 4 IO Board KiCad files]
 
+[.whitepaper, title="Transitioning from CM3 to CM4", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003469-WP/Transitioning-from-CM3-to-CM4.pdf]
+[.whitepaper, title="Transitioning from CM 3 to CM 4S", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003478-WP/Transitioning-from-CM-3-to-CM-4S.pdf]
+****
+This whitepaper is for those who wish to move from using a Raspberry Pi Compute Module (CM) 1 or 3 to a Raspberry Pi CM 4 or 4S. There are several reasons why this might be desirable:
+• Greater computing power
+• More memory
+• Higher-resolution output up to 4Kp60
+• Better availability
+• Longer product life (last time buy not before January 2028)
+
+From a software perspective, the move from Raspberry Pi CM 1/3 to Raspberry Pi CM 4S is relatively painless, as a Raspberry Pi operating system (OS) image should work on all platforms. If, however, you are using a custom kernel, some things will need to be considered in the move. The hardware changes are considerable, and the differences are described in a later section.
+****
+
+[.whitepaper, title="Configuring the Compute Module 4", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003470-WP/Configuring-the-Compute-Module-4.pdf]
+****
+The Raspberry Pi Compute Module 4 (CM 4) is available in a number of different hardware configurations. Sometimes it may be necessary to disable some of these features when they are not required.
+
+Disabling features also results in power saving, which can be important when CM 4 devices are used in battery environments or similar.
+
+This document describes how to disable various hardware interfaces, in both hardware and software, and how to reduce the amount of memory used by the Linux operating system (OS).
+****
+
 === Older Products
 
 Raspberry Pi CM1, CM3 and CM3L are supported products with an End-of-Life (EOL) date no earlier than January 2026. The Compute Module 3+ offers improved thermal performance, and a wider range of Flash memory options.
