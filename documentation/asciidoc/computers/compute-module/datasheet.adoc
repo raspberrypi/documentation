@@ -14,9 +14,8 @@ There is also a KiCad PCB design set available:
 * https://datasheets.raspberrypi.com/cm4io/CM4IO-KiCAD.zip[Compute Module 4 IO Board KiCad files]
 
 [.whitepaper, title="Transitioning from CM3 to CM4", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003469-WP/Transitioning-from-CM3-to-CM4.pdf]
-[.whitepaper, title="Transitioning from CM 3 to CM 4S", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003478-WP/Transitioning-from-CM-3-to-CM-4S.pdf]
 ****
-This whitepaper is for those who wish to move from using a Raspberry Pi Compute Module (CM) 1 or 3 to a Raspberry Pi CM 4 or 4S. There are several reasons why this might be desirable:
+This whitepaper is for those who wish to move from using a Raspberry Pi Compute Module (CM) 1 or 3 to a Raspberry Pi CM 4. There are several reasons why this might be desirable:
 • Greater computing power
 • More memory
 • Higher-resolution output up to 4Kp60
