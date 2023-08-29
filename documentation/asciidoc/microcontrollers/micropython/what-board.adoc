@@ -14,7 +14,7 @@ Alternatively, you can inspect the MicroPython firmware version to check whether
 [source]
 ----
 >>> import sys
->> sys.implementation
+>>> sys.implementation
 (name='micropython', version=(1, 19, 1), _machine='Raspberry Pi Pico W with RP2040', _mpy=4102)
 ----
 
