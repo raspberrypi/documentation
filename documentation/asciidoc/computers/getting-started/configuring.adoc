@@ -4,25 +4,25 @@ When you start your Raspberry Pi for the first time after installing an operatin
 
 NOTE: This wizard will not run if you used the xref:getting-started.adoc#advanced-options[Advanced options menu] of Raspberry Pi Imager to configure the operating system.
 
-.The Raspberry Pi Configuration Wizard dialog.
+.The Raspberry Pi Configuration Wizard dialogue.
 image::images/initial-setup/1.png[alt=Click Next to get started with configuration.,width="80%"]
 
 === Set up Bluetooth devices
 
-If you're using a Bluetooth keyboard or mouse, it will tell you to put each device into pairing mode. While on this page, the Raspberry Pi will scan for pairable devices and connect to the first device it finds for each item. Your devices are ready to use when you see the `connected` dialog.
+If you're using a Bluetooth keyboard or mouse, it will tell you to put each device into pairing mode. While on this page, the Raspberry Pi will scan for pairable devices and connect to the first device it finds for each item. Your devices are ready to use when you see the `connected` dialogue.
 
 This process works with the built-in Bluetooth adapter on Raspberry Pi 3 and 4, and with USB Bluetooth adapters on earlier models. Make sure any adapters you want to use are plugged in before powering on your Raspberry Pi.
 
 === Set country
 
-.The Set Country dialog.
+.The Set Country dialogue.
 image::images/initial-setup/2.png[alt="Adjust the international settings of the device.",width="80%"]
 
 This page lets you set your country, language, and timezone. You can also select the a specific keyboard layout.
 
 === Create user
 
-.The Create User dialog.
+.The Create User dialogue.
 image::images/initial-setup/3.png[alt="Create your username and password.",width="80%"]
 
 Before you can continue, you need to set the username and password for the default user account.
@@ -36,21 +36,21 @@ WARNING: If you are installing Raspberry Pi OS Lite you must create a new user a
 
 === Set up your desktop
 
-.The Set Up Screen dialog.
+.The Set Up Screen dialogue.
 image::images/initial-setup/5.png[alt="You can adjust the size of the desktop for your monitor.",width="80%"]
 
 Here you can manually resize the desktop if it doesn't look correct on your display device.
 
 === Select a wireless network
 
-.The Select Wireless Network dialog.
+.The Select Wireless Network dialogue.
 image::images/initial-setup/6.png[alt="The Select Wireless Network dialog.",width="80%"]
 
 Your Raspberry Pi will scan for nearby WiFi access points. You can choose which network to connect to from this list. 
 
 === Check for software updates
 
-.The Update Software dialog.
+.The Update Software dialogue.
 image::images/initial-setup/8.png[alt="The wizard automatically checks for updates to install."width="80%"]
 
 Once your Raspberry Pi has internet access you can update the operating system to the latest version. This will automatically download any patches and updates needed for your operating system.
@@ -60,4 +60,4 @@ Once your Raspberry Pi has internet access you can update the operating system t
 At the end of the configuration wizard, you will need to reboot your Raspberry Pi to apply the new configuration and launch to desktop.
 
 .When setup completes, click Restart to restart your Raspberry Pi.
-image::images/initial-setup/10.png[alt="The Setup Complete dialog prompts to restart your Raspberry Pi.",width="80%"]
+image::images/initial-setup/10.png[alt="The Setup Complete dialogue prompts to restart your Raspberry Pi.",width="80%"]
