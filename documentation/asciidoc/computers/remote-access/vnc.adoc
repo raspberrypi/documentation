@@ -81,7 +81,7 @@ If you're connecting from the https://www.realvnc.com/download/viewer/[compatibl
 
 If you're connecting from a non-RealVNC Viewer app, you'll first need to downgrade VNC Server's authentication scheme, specify a password unique to VNC Server, and then enter that instead.
 
-* If you are in front of your Raspberry Pi and can see its screen, open the VNC Server dialog on your Raspberry Pi, select menu:Menu[Options > Security], and choose *VNC password* from the *Authentication* dropdown.
+* If you are in front of your Raspberry Pi and can see its screen, open the VNC Server dialogue on your Raspberry Pi, select menu:Menu[Options > Security], and choose *VNC password* from the *Authentication* dropdown.
 * *Or* if you're configuring your Raspberry Pi remotely from the command line, then to make the changes for Service Mode (the default configuration for the Raspberry Pi):
  ** Open the `/root/.vnc/config.d/vncserver-x11` config file.
  ** Replace `Authentication=SystemAuth` with `Authentication=VncAuth` and save the file.
@@ -94,7 +94,7 @@ You can remotely access apps which use a directly rendered overlay such as; the 
 
 To turn this feature on:
 
-* On your Raspberry Pi, open the VNC Server dialog.
+* On your Raspberry Pi, open the VNC Server dialogue.
 * Navigate to menu:Menu[Options > Troubleshooting] and select *Enable experimental direct capture mode*.
 * On the device you'll use to take control, run VNC Viewer and connect.
 +
