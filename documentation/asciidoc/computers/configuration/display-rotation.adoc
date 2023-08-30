@@ -6,7 +6,7 @@ The options to rotate the display of your Raspberry Pi depend on whether you're 
 
 If you are running the Raspberry Pi desktop then rotation is most easily achieved by using the `Screen Configuration Utility` from the desktop `Preferences` menu. This will bring up a graphical representation of the display or displays connected to the Raspberry Pi. Right click on the display you wish to rotate and select the required option.
 
-It is also possible to change these settings using the command line, although the method for doing this depends on whether you're running the X11 or Wayland backend. Type
+It is also possible to change these settings using the command line, although the method for doing this depends on whether you're running the Wayland or X11 backend. Type
 [,bash]
 ----
 ps ax | grep [w]ayfire
