@@ -26,6 +26,8 @@ mode = 1920x1080@60
 The second half of the `[output:]` line (`HDMI-A-1` in the example shown here) matches the display options <<the-kernel-command-line,described for KMS>>.
 The `mode` line is _similar_ to that used by KMS, but slightly different. Consult the https://github.com/WayfireWM/wayfire-wiki/blob/master/Configuration.md#output-configuration[Wayfire documentation] for more extensive information. 
 
+If you've set Raspberry Pi OS to boot to desktop but *not* auto-login, then you'll also need to edit `/usr/share/greeter.ini` as this determines the resolution used by the login screen. This file has the same format as `.config/wayfire.ini` described earlier, so again you'll need to add or edit the `[output:]` section.
+
 // TODO: ==== Manually setting the desktop environment resolution for X11
 
 === Manually setting the text console resolution
