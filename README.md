@@ -36,103 +36,122 @@ export PATH="$PATH:$GEM_HOME/bin"
 
 and close and relaunch your Terminal window to have these new variables activated. Finally, run
 ```
-$ gem install bundler -v 2.2.15
+$ gem install bundler
 ```
 to install the latest version of the Ruby `bundle` command.
 
 #### On macOS
 
-If you don't already have it installed you should go ahead and install [HomeBrew](https://brew.sh/), 
+If you don't already have it, install the [Homebrew](https://brew.sh/) package manager: 
 
 ```
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
-Then you need to install Ruby,
+Next, install Ruby:
 
 ```
-$ brew install ruby@2.7
-$ gem install bundler -v 2.2.15
+$ brew install ruby
 ```
 
-**NOTE:** Homebrew defaults to Ruby 3.0 which is incompatible with Asciidoctor.
+And install the [Ruby bundler](https://bundler.io/):
 
-**IMPORTANT:** Homebrew has problems using `/bin/zsh`, you may have to change your default shell to `/bin/bash`.
+```
+$ gem install bundler
+```
 
 ##### Set up Homebrew Version of Ruby
 
-If you're using `csh` or `tcsh` add the following lines to your `.cshrc` or `.tcshrc`,
+Because macOS provides its own version of Ruby, Homebrew doesn't automatically set up symlinks to access the version you justinstalled version with the `ruby` command. But after a successful install, Homebrew outputs the commands you'll need to run to set up the symlink yourself. If you use the default macOS `zsh` shell on Apple Silicon, you can set up the symlink with the following command:
 
 ```
-setenv PATH /usr/local/bin:/usr/local/sbin:$PATH
-
-setenv PATH /usr/local/opt/ruby/bin:${PATH}
-setenv PATH ${PATH}:/usr/local/lib/ruby/gems/2.7.0/bin
-setenv LDFLAGS -L/usr/local/opt/ruby@2.7/lib
-setenv CPPFLAGS -I/usr/local/opt/ruby@2.7/include
-setenv PKG_CONFIG_PATH /usr/local/opt/ruby@2.7/lib/pkgconfig
+$ echo 'export PATH="/opt/homebrew/opt/ruby/bin:$PATH"' >> ~/.zshrc
 ```
 
-or if you're using `bash` add the following lines to your `.bash_profile`,
+If you run macOS on an Intel-based Mac, replace `opt/homebrew` with `usr/local` in the above command.
+
+If you run a shell other than the default, check which config file to modify for the command. For instance, `bash` uses `~/.bashrc` or `~/.bash_profile`.
+
+Once you've made the changes to your shell configuration, open a new terminal instance and run the following command:
 
 ```
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="$PATH:/usr/local/lib/ruby/gems/2.7.0/bin"
-export PATH="/usr/local/opt/ruby@2.7/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/ruby@2.7/lib"
-export CPPFLAGS="-I/usr/local/opt/ruby@2.7/include"
-export PKG_CONFIG_PATH="/usr/local/opt/ruby@2.7/lib/pkgconfig"
+$ ruby --version
 ```
-NOTE: If you are running macOS on an Apple Silicon based Mac, rather than an Intel Mac, substitute `/opt/homebrew/` for `/usr/local` in the lines dealing with `ruby@2.7` in the above block.
 
-and then open a new Terminal window to make sure you're using the right version of Python and Ruby.
+You should see output similar to the following:
 
-##### Install Dependencies
+```
+ruby 3.2.2 (2023-03-30 revision e51014f9c0) [arm64-darwin22]
+```
 
-Go ahead and `brew install` the other dependencies,
+As long as you see a Ruby version greater than or equal to 3.2.2, you've succeeded.
+
+##### Install Homebrew Dependencies
+
+Next, use Homebrew to install the other dependencies.
+Start with the latest version of Python:
 
 ```
 $ brew install python@3
+```
+
+Then install the [Ninja build system](https://formulae.brew.sh/formula/ninja#default):
+
+```
 $ brew install ninja
+```
+
+Then install the [Gumbo HTML5 parser](https://formulae.brew.sh/formula/gumbo-parser#default):
+
+```
 $ brew install gumbo-parser
+```
+
+And finally, install the [YAML module for Python 3](https://formulae.brew.sh/formula/pyyaml#default):
+
+```
 $ pip3 install pyyaml
 ```
 
+Now you've installed all of the dependencies you'll need from Homebrew.
+
 ### Install Scripting Dependencies
 
-After you've installed the toolchain (on either Linux or macOS), you'll need to install the required Ruby gems and Python modules. Make sure you're in the top-level `documentation/` directory (i.e. the one containing `Gemfile.lock` and `requirements.txt`) and then run,
+After installing the toolchain, install the required Ruby gems and Python modules. Make sure you're in the top-level directory of this repository (the one containing `Gemfile.lock` and `requirements.txt`), and run the following command to install the Ruby gems (this may take several minutes):
+
 ```
 $ bundle install
 ```
-(which may take several minutes), followed by,
+
+Then, run the following command to install the remaining required Python modules:
+
 ```
 $ pip3 install --user -r requirements.txt
 ```
 
 ### Building the Documentation Site
 
-After you've installed both the toolchain and scripting dependencies, you can build the documentation with,
+After you've installed both the toolchain and scripting dependencies, you can build the documentation with the following command:
 
 ```
 $ make
 ```
 
-This will automatically use [Ninja build](https://ninja-build.org/) to convert the source files in `documentation/asciidoc/` to a suitable intermediate structure in `build/jekyll/`, and then use [Jekyll AsciiDoc](https://github.com/asciidoctor/jekyll-asciidoc) to convert the files in `build/jekyll/` to the final output HTML files in `documentation/html/`.
+This automatically uses [Ninja build](https://ninja-build.org/) to convert the source files in `documentation/asciidoc/` to a suitable intermediate structure in `build/jekyll/` and then uses [Jekyll AsciiDoc](https://github.com/asciidoctor/jekyll-asciidoc) to convert the files in `build/jekyll/` to the final output HTML files in `documentation/html/`.
 
-You can also start a local server to view the built site by running,
+You can also start a local server to view the built site:
+
 ```
 $ make serve_html
 ```
 
 As the local server launches, the local URL will be printed in the terminal -- open this URL in a browser to see the locally-built site.
 
-You can revert your repository to a pristine state by running,
+You can also use `make` to delete the `build/` and `documentation/html/` directories:
+
 ```
 $ make clean
 ```
-which will delete the `build/` and `documentation/html/` directories.
 
 ### Building with Doxygen
 
