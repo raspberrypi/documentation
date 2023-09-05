@@ -62,7 +62,7 @@ $ gem install bundler
 
 ##### Set up Homebrew Version of Ruby
 
-Because macOS provides its own version of Ruby, Homebrew doesn't automatically set up symlinks to access the version you justinstalled version with the `ruby` command. But after a successful install, Homebrew outputs the commands you'll need to run to set up the symlink yourself. If you use the default macOS `zsh` shell on Apple Silicon, you can set up the symlink with the following command:
+Because macOS provides its own version of Ruby, Homebrew doesn't automatically set up symlinks to access the version you just installed with the `ruby` command. But after a successful install, Homebrew outputs the commands you'll need to run to set up the symlink yourself. If you use the default macOS `zsh` shell on Apple Silicon, you can set up the symlink with the following command:
 
 ```
 $ echo 'export PATH="/opt/homebrew/opt/ruby/bin:$PATH"' >> ~/.zshrc
