@@ -190,7 +190,7 @@ Then, please follow the relevant setup instructions for the xref:../computers/ca
 | Depends on lens
 
 | Maximum exposure times (seconds)
-| 6 (legacy) / 0.97 (libcamera)
+| 0.97
 | 11.76
 | 112
 | 112
