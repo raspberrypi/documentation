@@ -1,3 +1,5 @@
+require 'net/http'
+
 module Slim::Helpers
   def book_link
     case (self.attr 'booktype')
@@ -17,6 +19,24 @@ module Slim::Helpers
     src = src.gsub(/^image::/, "")
     src = src.gsub(/\[.*?\]$/, "")
     return src
+  end
+
+  def tutorial_image
+    uri = URI(self.attr 'link')
+    source = Net::HTTP.get(uri)
+    # get the short description
+    desc = ""
+    desc_arr = /<meta[^>]+name="description"[^>]+content="([^>]+)"[^>]*>/.match(source)
+    if desc_arr
+      desc = desc_arr[1]
+    end
+    # get the image source
+    img_src = ""
+    img_arr = /<meta[^>]+property="og:image"[^>]+content="([^>]+)"[^>]*>/.match(source)
+    if img_arr
+      img_src = img_arr[1]
+    end
+    return '<a href="'+(self.attr 'link')+'" target="_blank" class="image"><div class="tutorialcard"><img src="'+img_src+'"/><p class="caption">'+desc+'</p></div></a>'
   end
 
   def section_title

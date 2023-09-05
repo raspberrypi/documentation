@@ -647,6 +647,20 @@ div.videoblock iframe {
   margin-bottom: 10px;
 }
 
+/* TUTORIAL BLOCKS */
+
+#content .tutorialcard {
+  max-width: 400px;
+  border: 1px solid #dedede;
+  border-radius: 5px;
+}
+
+#content .tutorialcard p.caption {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 0.9em;
+}
+
 /* DOXYGEN ELEMENTS */
 
 div.memproto {
