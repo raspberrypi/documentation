@@ -1,0 +1,1 @@
+NOTE: Prior to version 12 (_Bookworm_), Raspberry Pi OS stored the boot configuration in a partition named `/boot/`. Versions 12 renamed the boot partition to `/boot/firmware/`.

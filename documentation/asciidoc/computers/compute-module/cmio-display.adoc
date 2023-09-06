@@ -94,9 +94,11 @@ image:images/CMIO-Cam-Disp-Example.jpg[Camera Preview on the 7 inch display]
 
 There is no additional configuration required to enable the touchscreen. The touch interface should work out of the box once the screen is successfully detected.
 
-If you wish to disable the touchscreen element and only use the display side, you can add the command `disable_touchscreen=1` to /boot/config.txt to do so.
+If you wish to disable the touchscreen element and only use the display side, add the command `disable_touchscreen=1` to `/boot/firmware/config.txt` to do so.
 
-To make the firmware to ignore the display even if connected, then add `ignore_lcd=1` to /boot/config.txt.
+To make the firmware to ignore the display even if connected, add `ignore_lcd=1` to `/boot/firmware/config.txt`.
+
+include::config_txt/note_moved_bookworm.adoc[]
 
 === Firmware Configuration
 

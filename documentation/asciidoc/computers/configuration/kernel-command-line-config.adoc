@@ -3,10 +3,12 @@
 The Linux kernel accepts a command line of parameters during boot. On the Raspberry Pi, this command line is defined in a file in the boot partition, called `cmdline.txt`. This is a simple text file that can be edited using any text editor, e.g. Nano.
 
 ----
-sudo nano /boot/cmdline.txt
+sudo nano /boot/firmware/cmdline.txt
 ----
 
-NOTE: We have to use `sudo` to edit anything in the boot partition, and all parameters in `cmdline.txt` must be on the same line (no carriage returns).
+include::config_txt/note_moved_bookworm.adoc[]
+
+You must use `sudo` to edit anything in the boot partition. All parameters in `cmdline.txt` must be on the same line (no carriage returns).
 
 The command line that was passed to the kernel at boot time can be displayed using `cat /proc/cmdline`. It will not be exactly the same as that in `cmdline.txt` as the firmware can make changes to it prior to launching the kernel.
 

@@ -106,9 +106,11 @@ Using `libcamera-vid` to capture high framerate video (generally anything over 6
 1. The https://en.wikipedia.org/wiki/Advanced_Video_Coding#Levels[H.264 target level] must be set to 4.2 with the `--level 4.2` argument.
 2. Software colour denoise processing must be turned off with the `--denoise cdn_off` argument.
 3. For rates over 100 fps, disabling the display window with the `-n` option would free up some additional CPU cycles to help avoid frame drops.
-4. It is advisable to set `force_turbo=1` in `/boot/config.txt` to ensure the CPU clock does not get throttled during the video capture. See https://www.raspberrypi.com/documentation/computers/config_txt.html#force_turbo[here] for further details.
+4. It is advisable to set `force_turbo=1` in `/boot/firmware/config.txt` to ensure the CPU clock does not get throttled during the video capture. See https://www.raspberrypi.com/documentation/computers/config_txt.html#force_turbo[here] for further details.
 5. Adjust the ISP output resolution with `--width 1280 --height 720` or something even lower to achieve your framerate target.
-6. On a Pi 4, you can overclock the GPU to improve performance by adding `gpu_freq=550` or higher in `/boot/config.txt`.  See https://www.raspberrypi.com/documentation/computers/config_txt.html#overclocking[here] for further details.
+6. On a Pi 4, you can overclock the GPU to improve performance by adding `gpu_freq=550` or higher in `/boot/firmware/config.txt`.  See https://www.raspberrypi.com/documentation/computers/config_txt.html#overclocking[here] for further details.
+
+include::config_txt/note_moved_bookworm.adoc[]
 
 An example command for 1280x720 120fps video encode would be:
 

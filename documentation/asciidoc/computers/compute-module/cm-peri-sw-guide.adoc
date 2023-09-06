@@ -212,11 +212,13 @@ sudo dtc -@ -I dts -O dtb -o /boot/overlays/example1.dtbo /boot/example1-overlay
 
 NOTE: The '-@' in the `dtc` command line. This is necessary if you are compiling dts files with external references, as overlays tend to be.
 
-Edit `/boot/config.txt` and add the line:
+Edit `/boot/firmware/config.txt` and add the line:
 
 ----
 dtoverlay=example1
 ----
+
+NOTE: Prior to version 12 (_Bookworm_), Raspberry Pi OS stored the boot configuration in `/boot/`. Versions 12 and above store these files in `/boot/firmware/`.
 
 Now save and reboot.
 
@@ -235,11 +237,13 @@ In this example we use one of the already available overlays in /boot/overlays t
 
 In this example we won't change `dt-blob.bin`, although of course you can if you wish. We should see that Linux Device Tree correctly sets up the pins.
 
-Edit `/boot/config.txt` and add the line:
+Edit `/boot/firmware/config.txt` and add the line:
 
 ----
 dtoverlay=enc28j60
 ----
+
+include::config_txt/note_moved_bookworm.adoc[]
 
 Now save and reboot.
 

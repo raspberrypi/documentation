@@ -90,12 +90,14 @@ $ sudo cp RTIMULib.ini /etc
 
 == Reading and writing EEPROM data
 
-Enable I2C0 and I2C1 by adding the following line to `/boot/config.txt`:
+Enable I2C0 and I2C1 by adding the following line to `/boot/firmware/config.txt`:
 
 ----
  dtparam=i2c_vc=on
  dtparam=i2c_arm=on
 ----
+
+include::config_txt/note_moved_bookworm.adoc[]
 
 Enter the following command to reboot:
 

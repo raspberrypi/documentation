@@ -8,9 +8,11 @@ Using the jumper cables, connect SCL/SDA on the GPIO header to the horizontal pi
 
 For the GPIO header pinout, see http://pinout.xyz/[this diagram].
 
-DSI display autodetection is disabled by default on these boards. To enable detection, add the following line to `/boot/config.txt`:
+DSI display autodetection is disabled by default on these boards. To enable detection, add the following line to `/boot/firmware/config.txt`:
 
 `ignore_lcd=0`
+
+include::config_txt/note_moved_bookworm.adoc[]
 
 Power the setup via the `PWR IN` micro-USB connector on the display board. Do not power the setup via the Raspberry Pi's micro-USB port: the input polyfuse's maximum current rating will be exceeded as the display consumes approximately 400mA.
 

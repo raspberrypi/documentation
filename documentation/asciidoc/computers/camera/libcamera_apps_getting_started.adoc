@@ -15,20 +15,22 @@ libcamera-hello
 
 You should see a camera preview window for about 5 seconds.
 
-NOTE: Raspberry Pi 3 and older devices running _Bullseye_ may not by default be using the correct display driver. Refer to the `/boot/config.txt` file and ensure that either `dtoverlay=vc4-fkms-v3d` or `dtoverlay=vc4-kms-v3d` is currently active. Please reboot if you needed to change this.
+NOTE: Raspberry Pi 3 and older devices running _Bullseye_ may not by default be using the correct display driver. Refer to the `/boot/firmware/config.txt` file and ensure that either `dtoverlay=vc4-fkms-v3d` or `dtoverlay=vc4-kms-v3d` is currently active. Please reboot if you needed to change this.
 
 ==== If you do need to alter the configuration
 
-You may need to alter the camera configuration in your `/boot/config.txt` file if:
+You may need to alter the camera configuration in your `/boot/firmware/config.txt` file if:
 
 * You are using a 3rd party camera (the manufacturer's instructions should explain the changes you need to make).
 
 * You are using an official Raspberry Pi camera but wish to use a non-standard driver/overlay.
 
+include::config_txt/note_moved_bookworm.adoc[]
+
 If you do need to add your own `dtoverlay`, the following are currently recognised.
 
 |===
-| Camera Module | In `/boot/config.txt`
+| Camera Module | In `/boot/firmware/config.txt`
 
 | V1 camera (OV5647)
 | `dtoverlay=ov5647`
