@@ -218,7 +218,7 @@ Edit `/boot/firmware/config.txt` and add the line:
 dtoverlay=example1
 ----
 
-NOTE: Prior to version 12 (_Bookworm_), Raspberry Pi OS stored the boot configuration in `/boot/`. Versions 12 and above store these files in `/boot/firmware/`.
+include::config_txt/note_moved_bookworm.adoc[]
 
 Now save and reboot.
 
