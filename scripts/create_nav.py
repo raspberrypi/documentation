@@ -76,8 +76,8 @@ def read_file_with_includes(filepath, filelevel, mainfile, output_dir=None):
         for line in adoc_fh.readlines():
             collect_all_internal_links(line, filepath, mainfile, output_dir, adoc_dir, needed_internal_links)
             m = re.match(r'^include::(.*)\[\]\s*$', line)
-            filelevel += 1
             if m:
+                filelevel += 1
                 new_content, filelevel = read_file_with_includes(os.path.join(parent_dir, m.group(1)), filelevel, mainfile, output_dir)
                 content += new_content
             else:
