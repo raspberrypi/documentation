@@ -121,6 +121,13 @@ This is the typical amount of power (in Ampere) drawn by different Raspberry Pi 
 
 NOTE: For these measurements we used a standard Raspberry Pi OS image (current as of 26 Feb 2016, or June 2019 for the Raspberry Pi 4), at room temperature, with the Raspberry Pi connected to a HDMI monitor, USB keyboard, and USB mouse. The Raspberry Pi 3 Model B was connected to a wireless LAN access point, the Raspberry Pi 4 was connected to Ethernet. All these power measurements are approximate and do not take into account power consumption from additional USB devices; power consumption can easily exceed these measurements if multiple additional USB devices or a HAT are connected to the Raspberry Pi.
 
+[.whitepaper, title="Extra PMIC features on Raspberry Pi 4 and Compute Module 4", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-004340-WP/Extra-PMIC-features-on-Raspberry-Pi-4-and-Compute-Module-4.pdf]
+****
+A number of different PMIC devices have been used on both Raspberry Pi 4 and CM4. All the PMICs have provided extra functionality over and above that of voltage supply. This document describes how to access these features in software.
+
+This whitepaper assumes that your Raspberry Pi is running Raspberry Pi OS, and is fully up to date with the latest firmware and kernels.
+****
+
 === Power Supply Warnings
 
 On all models of Raspberry Pi since the Raspberry Pi B+ (2014) except the Zero range, there is low-voltage detection circuitry that will detect if the supply voltage drops below 4.63V (+/- 5%). This will result in an entry added to the kernel log.
@@ -131,9 +138,9 @@ Voltages can drop for a variety of reasons, for example if the power supply itse
 
 [.whitepaper, title="Making a more resilient file system", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003610-WP/Making-a-more-resilient-file-system.pdf]
 ****
-Raspberry Pi Ltd devices are frequently used as data storage and monitoring devices, often in places where sudden power downs may occur. As with any computing device, power dropouts can cause storage corruption. This whitepaper provides some options on how to prevent data corruption under these and other circumstances by selecting appropriate file systems and setups to ensure data integrity.
+Raspberry Pi devices are frequently used as data storage and monitoring devices, often in places where sudden power downs may occur. As with any computing device, power dropouts can cause storage corruption.
 
-This whitepaper assumes that the Raspberry Pi is running the Raspberry Pi (Linux) operating system (OS), and is fully up to date with the latest firmware and kernels.
+This whitepaper provides some options on how to prevent data corruption under these and other circumstances by selecting appropriate file systems and setups to ensure data integrity.
 ****
 
 === Back-powering

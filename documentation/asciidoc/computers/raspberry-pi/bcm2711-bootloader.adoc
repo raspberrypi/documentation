@@ -244,15 +244,6 @@ The `Customer OTP` rows are OTP registers 36 to 43 in the `vcgencmd otp_dump` ou
 
 Default: ""
 
-[.whitepaper, title="Changing MAC addresses", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003474-WP/Changing-MAC-addresses.pdf]
-****
-This whitepaper describes how to set a specific media access control (MAC) address on your Raspberry Pi device. It applies to both Ethernet and wireless interfaces.
-
-Two mechanisms are described, one for devices up to the Pi 3 and one for the Pi 4/400 and CM 4. These latter three devices use the BCM2711 system on a chip (SoC), which has a built-in Ethernet port and hence defines its MAC addresses in a different way.
-
-This whitepaper assumes that the Raspberry Pi is running the Raspberry Pi operating system (OS), and is fully up to date with the latest firmware and kernels.
-****
-
 ==== Static IP address configuration
 
 If TFTP_IP and the following options are set then DHCP is skipped and the static IP configuration is applied. If the TFTP server is on the same subnet as the client then GATEWAY may be omitted.
@@ -627,7 +618,7 @@ the BCM2711 system on a chip (SoC).
 ****
 This whitepaper describes how to implement secure boot on devices based on Raspberry Pi 4. For an overview of the secure boot implementation, please see the Raspberry Pi 4 Boot Security whitepaper.
 
-This whitepaper assumes that the Raspberry Pi running RPIBOOT is running Raspberry Pi OS (Linux), Bullseye version or later, and is fully up to date with the latest firmware and kernels. The secure boot system is intended for use with buildroot (or similar)-based OS images; using it with Raspberry Pi OS is not recommended or supported.
+The secure boot system is intended for use with buildroot (or similar)-based OS images; using it with Raspberry Pi OS is not recommended or supported.
 ****
 
 The following `config.txt` properties are used to program the `secure-boot` OTP settings. These changes are irreversible and can only be programmed via `RPIBOOT` when flashing the bootloader EEPROM image.  This ensures that `secure-boot` cannot be set remotely or by accidentally inserting a stale SD card image.
