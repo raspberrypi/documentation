@@ -28,7 +28,7 @@ def heading_to_anchor(filepath, heading, anchor):
     return proposed_anchor
 
 needed_internal_links = dict()
-def collect_xref_internal_inks(line, filepath, output_dir, adoc_dir, needed_internal_links):
+def collect_xref_internal_inks(line, filepath, output_dir, adoc_dir):
     for m in re.finditer(r'xref:(.+?)(?:#(.+?))?\[.*?\]', line):
         link = m.group(1)
         anchor = m.group(2)
@@ -42,7 +42,7 @@ def collect_xref_internal_inks(line, filepath, output_dir, adoc_dir, needed_inte
         needed_internal_links[filepath].append(linkinfo)
     return
 
-def collect_simple_internal_links(line, filepath, mainfile, output_dir, adoc_dir, needed_internal_links):
+def collect_simple_internal_links(line, filepath, mainfile, output_dir, adoc_dir):
     # <<overlay_prefix,overlay_prefix>>
     for m in re.finditer(r'<<(.+?),(.+?)>>', line):
         anchor = m.group(1)
@@ -57,9 +57,9 @@ def collect_simple_internal_links(line, filepath, mainfile, output_dir, adoc_dir
         needed_internal_links[filepath].append(linkinfo)
     return
 
-def collect_all_internal_links(line, filepath, mainfile, output_dir, adoc_dir, needed_internal_links):
-    collect_xref_internal_inks(line, filepath, output_dir, adoc_dir, needed_internal_links)
-    collect_simple_internal_links(line, filepath, mainfile, output_dir, adoc_dir, needed_internal_links)
+def collect_all_internal_links(line, filepath, mainfile, output_dir, adoc_dir):
+    collect_xref_internal_inks(line, filepath, output_dir, adoc_dir)
+    collect_simple_internal_links(line, filepath, mainfile, output_dir, adoc_dir)
     return
 
 # need to get the main file path somehow...
@@ -74,7 +74,7 @@ def read_file_with_includes(filepath, filelevel, mainfile, output_dir=None):
             needed_internal_links[filepath] = []
         parent_dir = os.path.dirname(filepath)
         for line in adoc_fh.readlines():
-            collect_all_internal_links(line, filepath, mainfile, output_dir, adoc_dir, needed_internal_links)
+            collect_all_internal_links(line, filepath, mainfile, output_dir, adoc_dir)
             m = re.match(r'^include::(.*)\[\]\s*$', line)
             if m:
                 filelevel += 1
