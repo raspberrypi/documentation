@@ -4,7 +4,9 @@ If you find yourself in circumstances where the Raspberry Pi may not be able to 
 
 === Setting the desktop environment resolution
 
-If you are running the Raspberry Pi desktop then the resolution is most easily changed by using the `Screen Configuration Utility` from the desktop `Preferences` menu. This will bring up a graphical representation of the display or displays connected to the Raspberry Pi. Right click on the display you wish to modify and select the required option.
+If you are running the Raspberry Pi desktop then the resolution is most easily changed by using the `Screen Configuration` utility from the desktop `Preferences` menu. This will bring up a graphical representation of the display or displays connected to the Raspberry Pi. Right click on the display you wish to modify and select the required option.
+
+NOTE: If you are using the X11 backend, you need to ensure that you close the Screen Configuration utility in order to save the changes you've made. If you don't do this, the changes you made will be "forgotten" when you reboot.
 
 It is also possible to change these settings by editing config files, although the method for doing this depends on whether you're running the Wayland or X11 backend. Type
 [,bash]
