@@ -43,14 +43,13 @@ def collect_xref_internal_inks(line, filepath, output_dir, adoc_dir):
     return
 
 def collect_simple_internal_links(line, filepath, mainfile, output_dir, adoc_dir):
-    # <<overlay_prefix,overlay_prefix>>
+    # looking for links like this: <<overlay_prefix,overlay_prefix>>
     for m in re.finditer(r'<<(.+?),(.+?)>>', line):
         anchor = m.group(1)
         link_path = re.sub(adoc_dir, "", mainfile)
         link_path = re.sub("^/", "", link_path)
         link_path = os.path.normpath(link_path)
         link_relpath = os.path.relpath(link_path, adoc_dir)
-        # linkinfo = {'url': link_relpath}
         linkinfo = {'url': link_path}
         if anchor:
             linkinfo['anchor'] = anchor
