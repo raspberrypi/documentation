@@ -29,13 +29,13 @@ Note that it may take a few seconds to get from stage 1 to stage 4. During that 
 In order to compile a Device Tree source (`.dts`) file into a Device Tree blob (`.dtb`) file, the Device Tree compiler must be installed by running `sudo apt install device-tree-compiler`. The `dtc` command can then be used as follows:
 
 ----
-sudo dtc -I dts -O dtb -o /boot/dt-blob.bin dt-blob.dts
+sudo dtc -I dts -O dtb -o /boot/firmware/dt-blob.bin dt-blob.dts
 ----
 
 Similarly, a `.dtb` file can be converted back to a `.dts` file, if required.
 
 ----
-dtc -I dtb -O dts -o dt-blob.dts /boot/dt-blob.bin
+dtc -I dtb -O dts -o dt-blob.dts /boot/firmware/dt-blob.bin
 ----
 
 === Sections of the `dt-blob`
