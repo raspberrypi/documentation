@@ -179,7 +179,7 @@ Download https://datasheets.raspberrypi.com/cm/minimal-cm-dt-blob.dts[minimal-cm
 Edit `minimal-cm-dt-blob.dts` and change the pin states of GPIO44 and 45 to be I2C1 with pull-ups:
 
 ----
-sudo nano /boot/minimal-cm-dt-blob.dts
+sudo nano /boot/firmware/minimal-cm-dt-blob.dts
 ----
 
 Change lines:
@@ -201,18 +201,18 @@ NOTE: We could use this `dt-blob.dts` with no changes The Linux Device Tree will
 Compile `dt-blob.bin`:
 
 ----
-sudo dtc -I dts -O dtb -o /boot/dt-blob.bin /boot/minimal-cm-dt-blob.dts
+sudo dtc -I dts -O dtb -o /boot/firmware/dt-blob.bin /boot/firmware/minimal-cm-dt-blob.dts
 ----
 
 Grab https://datasheets.raspberrypi.com/cm/example1-overlay.dts[example1-overlay.dts] and put it in `/boot` then compile it:
 
 ----
-sudo dtc -@ -I dts -O dtb -o /boot/overlays/example1.dtbo /boot/example1-overlay.dts
+sudo dtc -@ -I dts -O dtb -o /boot/firmware/overlays/example1.dtbo /boot/firmware/example1-overlay.dts
 ----
 
 NOTE: The '-@' in the `dtc` command line. This is necessary if you are compiling dts files with external references, as overlays tend to be.
 
-Edit `/boot/config.txt` and add the line:
+Edit xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] and add the line:
 
 ----
 dtoverlay=example1
@@ -231,11 +231,11 @@ will return with the hardware clock time, and not an error.
 [discrete]
 === Example 2 - Attaching an ENC28J60 SPI Ethernet Controller on BANK0
 
-In this example we use one of the already available overlays in /boot/overlays to add an ENC28J60 SPI Ethernet controller to BANK0. The Ethernet controller is connected to SPI pins CE0, MISO, MOSI and SCLK (GPIO8-11 respectively), as well as GPIO25 for a falling edge interrupt, and of course GND and 3V3.
+In this example we use one of the already available overlays in `/boot/firmware/overlays` to add an ENC28J60 SPI Ethernet controller to BANK0. The Ethernet controller is connected to SPI pins CE0, MISO, MOSI and SCLK (GPIO8-11 respectively), as well as GPIO25 for a falling edge interrupt, and of course GND and 3V3.
 
 In this example we won't change `dt-blob.bin`, although of course you can if you wish. We should see that Linux Device Tree correctly sets up the pins.
 
-Edit `/boot/config.txt` and add the line:
+Edit `/boot/firmware/config.txt` and add the following line:
 
 ----
 dtoverlay=enc28j60

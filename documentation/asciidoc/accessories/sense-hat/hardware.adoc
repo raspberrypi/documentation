@@ -90,7 +90,7 @@ $ sudo cp RTIMULib.ini /etc
 
 == Reading and writing EEPROM data
 
-Enable I2C0 and I2C1 by adding the following line to `/boot/config.txt`:
+Enable I2C0 and I2C1 by adding the following line to the xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] file:
 
 ----
  dtparam=i2c_vc=on
@@ -131,7 +131,7 @@ Download EEPROM settings and build the `.eep` binary:
 [,bash]
 ----
 $ wget https://github.com/raspberrypi/rpi-sense/raw/master/eeprom/eeprom_settings.txt -O sense_eeprom.txt
- ./eepmake sense_eeprom.txt sense.eep /boot/overlays/rpi-sense-overlay.dtb
+ ./eepmake sense_eeprom.txt sense.eep /boot/firmware/overlays/rpi-sense-overlay.dtb
 ----
 
 Disable write protection:

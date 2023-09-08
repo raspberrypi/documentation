@@ -22,7 +22,7 @@ Connecting to DISP1
 
 . Power up the Compute Module and run:
 +
-`+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-only.bin -O /boot/dt-blob.bin+`
+`+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-only.bin -O /boot/firmware/dt-blob.bin+`
 
 . Reboot for the `dt-blob.bin` file to be read.
 
@@ -39,7 +39,7 @@ Connecting to DISP0
 
 . Power up the Compute Module and run:
 +
-`+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp0-only.bin -O /boot/dt-blob.bin+`
+`+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp0-only.bin -O /boot/firmware/dt-blob.bin+`
 
 . Reboot for the `dt-blob.bin` file to be read.
 
@@ -63,7 +63,7 @@ image:images/CMIO-Cam-Disp-GPIO.jpg[GPIO connection for a single display and Cam
 
 . Power up the Compute Module and run:
 +
-`+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-cam1.bin -O /boot/dt-blob.bin+`
+`+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-cam1.bin -O /boot/firmware/dt-blob.bin+`
 
 . Reboot for the `dt-blob.bin` file to be read.
 
@@ -83,7 +83,7 @@ image:images/CMIO-Cam-Disp-GPIO.jpg[GPIO connection for a single display and Cam
 . (CM4 only) Add jumpers to J6.
 . Power up the Compute Module and run:
 +
-`+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-cam2.bin -O /boot/dt-blob.bin+`
+`+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-cam2.bin -O /boot/firmware/dt-blob.bin+`
 
 . Reboot for the `dt-blob.bin` file to be read.
 +
@@ -94,9 +94,9 @@ image:images/CMIO-Cam-Disp-Example.jpg[Camera Preview on the 7 inch display]
 
 There is no additional configuration required to enable the touchscreen. The touch interface should work out of the box once the screen is successfully detected.
 
-If you wish to disable the touchscreen element and only use the display side, you can add the command `disable_touchscreen=1` to /boot/config.txt to do so.
+If you wish to disable the touchscreen element and only use the display side, you can add the command `disable_touchscreen=1` to xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] to do so.
 
-To make the firmware to ignore the display even if connected, then add `ignore_lcd=1` to /boot/config.txt.
+To make the firmware to ignore the display even if connected, then add `ignore_lcd=1` to `/boot/firmware/config.txt`.
 
 === Firmware Configuration
 
