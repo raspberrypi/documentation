@@ -40,10 +40,10 @@ Enable USB host boot mode with this code:
 
 [,bash]
 ----
-echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
+echo program_usb_boot_mode=1 | sudo tee -a /boot/firmware/config.txt
 ----
 
-This adds `program_usb_boot_mode=1` to the end of `/boot/config.txt`.
+This adds `program_usb_boot_mode=1` to the end of xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`].
 
 Note that although the option is named `program_usb_boot_mode`, it only enables USB _host_ boot mode. USB _device_ boot mode is only available on certain models of Raspberry Pi - see xref:raspberry-pi.adoc#usb-device-boot-mode[USB device boot mode].
 
