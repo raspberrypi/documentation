@@ -28,32 +28,60 @@ def heading_to_anchor(filepath, heading, anchor):
     return proposed_anchor
 
 needed_internal_links = dict()
-def read_file_with_includes(filepath, output_dir=None):
+def collect_xref_internal_inks(line, filepath, output_dir, adoc_dir):
+    for m in re.finditer(r'xref:(.+?)(?:#(.+?))?\[.*?\]', line):
+        link = m.group(1)
+        anchor = m.group(2)
+        if not link.endswith('.adoc'):
+            raise Exception("{} links to non-adoc file {}".format(filepath, link))
+        link_path = os.path.normpath(os.path.join(output_dir, link))
+        link_relpath = os.path.relpath(link_path, adoc_dir)
+        linkinfo = {'url': link_relpath}
+        if anchor:
+            linkinfo['anchor'] = anchor
+        needed_internal_links[filepath].append(linkinfo)
+    return
+
+def collect_simple_internal_links(line, filepath, mainfile, output_dir, adoc_dir):
+    # looking for links like this: <<overlay_prefix,overlay_prefix>>
+    for m in re.finditer(r'<<(.+?),(.+?)>>', line):
+        anchor = m.group(1)
+        link_path = re.sub(adoc_dir, "", mainfile)
+        link_path = re.sub("^/", "", link_path)
+        link_path = os.path.normpath(link_path)
+        link_relpath = os.path.relpath(link_path, adoc_dir)
+        linkinfo = {'url': link_path}
+        if anchor:
+            linkinfo['anchor'] = anchor
+        needed_internal_links[filepath].append(linkinfo)
+    return
+
+def collect_all_internal_links(line, filepath, mainfile, output_dir, adoc_dir):
+    collect_xref_internal_inks(line, filepath, output_dir, adoc_dir)
+    collect_simple_internal_links(line, filepath, mainfile, output_dir, adoc_dir)
+    return
+
+# need to get the main file path somehow...
+def read_file_with_includes(filepath, filelevel, mainfile, output_dir=None):
     if output_dir is None:
         output_dir = os.path.dirname(filepath)
     content = ''
+    if filelevel == 1:
+        mainfile = filepath
     with open(filepath) as adoc_fh:
         if filepath not in needed_internal_links:
             needed_internal_links[filepath] = []
         parent_dir = os.path.dirname(filepath)
         for line in adoc_fh.readlines():
-            for m in re.finditer(r'xref:(.+?)(?:#(.+?))?\[.*?\]', line):
-                link = m.group(1)
-                anchor = m.group(2)
-                if not link.endswith('.adoc'):
-                    raise Exception("{} links to non-adoc file {}".format(filepath, link))
-                link_path = os.path.normpath(os.path.join(output_dir, link))
-                link_relpath = os.path.relpath(link_path, adoc_dir)
-                linkinfo = {'url': link_relpath}
-                if anchor:
-                    linkinfo['anchor'] = anchor
-                needed_internal_links[filepath].append(linkinfo)
+            collect_all_internal_links(line, filepath, mainfile, output_dir, adoc_dir)
             m = re.match(r'^include::(.*)\[\]\s*$', line)
             if m:
-                content += read_file_with_includes(os.path.join(parent_dir, m.group(1)), output_dir)
+                filelevel += 1
+                new_content, filelevel = read_file_with_includes(os.path.join(parent_dir, m.group(1)), filelevel, mainfile, output_dir)
+                content += new_content
             else:
                 content += line
-    return content
+    return content, filelevel
 
 min_level = 2 # this has to be 2
 max_level = 3 # this can be 2 or 3
@@ -84,7 +112,7 @@ if __name__ == "__main__":
                         level = min_level
                         adjusted_path = re.sub("^/", "", fullpath)
                         top_level_file = os.path.join(adoc_dir, adjusted_path)
-                        adoc_content = read_file_with_includes(top_level_file)
+                        adoc_content, filelevel = read_file_with_includes(top_level_file, 1, top_level_file)
                         last_line_was_discrete = False
                         header_id = None
                         for line in adoc_content.split('\n'):
