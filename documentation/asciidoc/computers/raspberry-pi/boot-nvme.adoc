@@ -60,7 +60,7 @@ In Linux the SSD appears as `/dev/nvme0` and the "namespace" as `/dev/nvme0n1`. 
 ----
 NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 nvme0n1     259:0    0 232.9G  0 disk
-├─nvme0n1p1 259:1    0   256M  0 part /boot
+├─nvme0n1p1 259:1    0   256M  0 part /boot/firmware
 └─nvme0n1p2 259:2    0 232.6G  0 part /
 ----
 

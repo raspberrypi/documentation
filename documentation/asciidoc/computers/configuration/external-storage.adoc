@@ -19,7 +19,7 @@ You can mount your storage device at a specific folder location. It is conventio
  sudo lsblk -o UUID,NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,MODEL
 ----
 +
-The Raspberry Pi uses mount points `/` and `/boot`. Your storage device will show up in this list, along with any other connected storage.
+The Raspberry Pi uses mount points `/` and `/boot/firmware/`. Your storage device will show up in this list, along with any other connected storage.
 
 . Use the SIZE, LABEL, and MODEL columns to identify the name of the disk partition that points to your storage device. For example, `sda1`.
 . The FSTYPE column contains the filesystem type. If your storage device uses an exFAT file system, install the exFAT driver:
