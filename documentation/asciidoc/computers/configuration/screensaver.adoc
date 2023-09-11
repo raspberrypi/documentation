@@ -18,19 +18,3 @@ You can use the `raspi-config` tool to disable screen blanking. Note that the sc
 === On the Desktop
 
 Raspberry Pi OS will blank the graphical desktop after 10 minutes without user input. You can disable this by changing the 'Screen Blanking' option in the Raspberry Pi Configuration tool, available from the *Preferences* menu. The 'Screen Blanking' option also controls screen blanking when the graphical desktop is not running.
-
-=== Switching off HDMI
-
-If you want to switch off the video display entirely, you can use the xref:os.adoc#vcgencmd[vcgencmd] command,
-
-[,bash]
-----
-vcgencmd display_power 0
-----
-
-Video will not come back on until you reboot or switch it back on:
-
-[,bash]
-----
-vcgencmd display_power 1
-----
