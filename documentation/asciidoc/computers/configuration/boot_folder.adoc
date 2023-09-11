@@ -4,7 +4,7 @@ In a basic xref:os.adoc[Raspberry Pi OS] install, the boot files are stored on t
 
 When the Raspberry Pi is powered on, it loads various files from the boot partition/folder in order to start up the various processors, then it boots the Linux kernel.
 
-Once Linux has booted, the boot partition is mounted as `/boot`.
+Once Linux has booted, the boot partition is mounted as `/boot/firmware/`.
 
 === Boot Folder Contents
 

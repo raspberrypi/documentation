@@ -174,7 +174,7 @@ Please post any issues, bugs or questions on the Raspberry Pi https://forums.ras
 
 In this simple example we wire an NXP PCF8523 real time clock (RTC) to the CMIO board BANK1 GPIO pins: 3V3, GND, I2C1_SDA on GPIO44 and I2C1_SCL on GPIO45.
 
-Download https://datasheets.raspberrypi.com/cm/minimal-cm-dt-blob.dts[minimal-cm-dt-blob.dts] and copy it to the SD card FAT partition, located in `/boot` when the Compute Module has booted.
+Download https://datasheets.raspberrypi.com/cm/minimal-cm-dt-blob.dts[minimal-cm-dt-blob.dts] and copy it to the SD card FAT partition, located in `/boot/firmware/` when the Compute Module has booted.
 
 Edit `minimal-cm-dt-blob.dts` and change the pin states of GPIO44 and 45 to be I2C1 with pull-ups:
 
@@ -204,7 +204,7 @@ Compile `dt-blob.bin`:
 sudo dtc -I dts -O dtb -o /boot/firmware/dt-blob.bin /boot/firmware/minimal-cm-dt-blob.dts
 ----
 
-Grab https://datasheets.raspberrypi.com/cm/example1-overlay.dts[example1-overlay.dts] and put it in `/boot` then compile it:
+Grab https://datasheets.raspberrypi.com/cm/example1-overlay.dts[example1-overlay.dts], put it in `/boot/firmware/`, then compile it:
 
 ----
 sudo dtc -@ -I dts -O dtb -o /boot/firmware/overlays/example1.dtbo /boot/firmware/example1-overlay.dts
