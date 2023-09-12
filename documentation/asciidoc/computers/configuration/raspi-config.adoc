@@ -80,7 +80,7 @@ Use this option to change the default web browser. Choosing a web browser that i
 [[underscan]]
 ===== Underscan
 
-NOTE: This option isn't available on the Raspberry Pi 4, as it uses Wayland rather than X11.
+NOTE: This option isn't available if you're using the Wayland backend.
 
 If the initial text shown on the screen disappears off the edge, you need to enable overscan to bring the border back. On some displays, particularly monitors, disabling overscan will make the picture fill the whole screen and remove the black border.
 
@@ -187,7 +187,7 @@ This option sets the country code for your wireless network.
 [[advanced-options]]
 ==== Advanced Options
 
-NOTE: The options documented here will change depending on the model of Raspberry Pi that you're using, and whether you're using Wayland or X11.
+NOTE: The options documented here will change depending on the model of Raspberry Pi that you're using, and whether you're using the Wayland or X11 backend. In the current version of Raspberry Pi OS Bookworm, the Raspberry Pi 4 and Pi 400 use Wayland by default; other models of Raspberry Pi use X11 by default.
 
 [[expand-filesystem]]
 ===== Expand Filesystem
@@ -214,11 +214,11 @@ On the Raspberry Pi 4, you can tell the system to use the very latest boot ROM s
 
 ===== Wayland
 
-Use this option to switch between the X11 and Wayland backends. On the Raspberry Pi 4, Wayland is used by default; on other models of Raspberry Pi, X11 is used by default.
+Use this option to switch between the X11 and Wayland backends. The Wayland backend was introduced in Bookworm, X11 was used in older versions of Raspberry Pi OS.
 
 ===== Audio Config
 
-Use this option to switch between the PulseAudio and PipeWire audio backends.
+Use this option to switch between the PulseAudio and PipeWire audio backends. The PipeWire backend was introduced in Bookworm, PulseAudio was used in older versions of Rasperry Pi OS.
 
 
 [[update]]
