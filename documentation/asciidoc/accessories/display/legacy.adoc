@@ -14,4 +14,3 @@ DSI display autodetection is disabled by default on these boards. To enable dete
 
 Power the setup via the `PWR IN` micro-USB connector on the display board. Do not power the setup via the Raspberry Pi's micro-USB port: the input polyfuse's maximum current rating will be exceeded as the display consumes approximately 400mA.
 
-NOTE: With the display connected to the GPIO I2C pins, the GPU will assume control of the respective I2C bus. The host operating system should not access this I2C bus, as simultaneous use of the bus by both the GPU and Linux will result in sporadic crashes.

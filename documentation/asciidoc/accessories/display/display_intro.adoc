@@ -1,6 +1,6 @@
 == Raspberry Pi Touch Display
 
-The Raspberry Pi Touch Display is an LCD display which connects to the Raspberry Pi through the DSI connector. In some situations, it allows for the use of both the HDMI and LCD displays at the same time (this requires software support).
+The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry Pi Touch Display] is an LCD display which connects to the Raspberry Pi through the DSI connector. In recent versions of Raspberry Pi OS, both the HDMI and LCD display outputs can be used at the same time.
 
 === Board Support
 
@@ -8,7 +8,7 @@ The DSI display is designed to work with all models of Raspberry Pi, however ear
 
 === Physical Installation
 
-The following image shows how to attach the Raspberry Pi to the back of the Touch Display (if required), and how to connect both the data (ribbon cable) and power (red/black wires) from the Raspberry Pi to the display. If you are not attaching the Raspberry Pi to the back of the display, take extra care when attaching the ribbon cable to ensure it is the correct way round. The black and red power wires should be attached to the GND and 5v pins respectively.
+The following image shows how to attach the Raspberry Pi to the back of the Touch Display (if required), and how to connect both the data (ribbon cable) and power (red/black wires) from the Raspberry Pi to the display. If you are not attaching the Raspberry Pi to the back of the display, take extra care when attaching the ribbon cable to ensure it is the correct way round. The black and red power wires should be attached to the GND and 5V pins respectively.
 
 image::images/GPIO_power-500x333.jpg[DSI Display Connections]
 
@@ -19,10 +19,6 @@ NOTE: An original Raspberry Pi can be easily identified from other models, it is
 === Screen Orientation
 
 LCD displays have an optimum viewing angle, and depending on how the screen is mounted it may be necessary to change the orientation of the display to give the best results. By default, the Raspberry Pi Touch Display and Raspberry Pi are set up to work best when viewed from slightly above, for example on a desktop. If viewing from below, you can physically rotate the display, and then tell the system software to compensate by running the screen upside down.
-
-==== KMS and FKMS Mode
-
-KMS and FKMS modes are used by default on the Raspberry Pi 4B. KMS and FKMS use the DRM/MESA libraries to provide graphics and 3D acceleration.
 
 To set screen orientation when running the graphical desktop, select the `Screen Configuration` option from the `Preferences` menu. Right click on the DSI display rectangle in the layout editor, select Orientation then the required option.
 
@@ -39,47 +35,7 @@ To rotate by 90 degrees clockwise, add the following to the cmdline, making sure
 video=DSI-1:800x480@60,rotate=90
 ----
 
-NOTE: In console mode it is not possible to rotate the DSI display separately to the HDMI display, so if you have both attached they must both be set to the same value.
-
-==== Legacy Graphics Mode
-
-Legacy graphics mode is used by default on all Raspberry Pi models prior to the Raspberry Pi 4B, and can also be used on the Raspberry Pi 4B if required, by disabling KMS and FKMS modes by commenting out the KMS or FKMS line in `config.txt`. 
-
-NOTE: Legacy mode on the Raspberry Pi 4B has no 3D acceleration so it should only be used if you have a specific reason for needing it.
-
-To flip the display, add the following line to the xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] file:
-
-`lcd_rotate=2`
-
-This will vertically flip the LCD and the touch screen, compensating for the physical orientation of the display.
-
-You can also rotate the display by adding the following to `config.txt`:
-
-* `display_lcd_rotate=x`, where `x` can be one of the following:
-
-|===
-| display_lcd_rotate | result
-
-| 0
-| no rotation
-
-| 1
-| rotate 90 degrees clockwise
-
-| 2
-| rotate 180 degrees clockwise
-
-| 3
-| rotate 270 degrees clockwise
-
-| 0x10000
-| horizontal flip
-
-| 0x20000
-| vertical flip
-|===
-
-NOTE: The 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16MB GPU split.
+NOTE: In console mode it is not possible to rotate the DSI display separately to the HDMI display, so if you have both attached they must both be set to the same rotation value.
 
 === Touchscreen Orientation
 
