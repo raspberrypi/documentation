@@ -10,8 +10,6 @@ include::configuration/hdmi-config.adoc[]
 
 include::configuration/display-resolution.adoc[]
 
-include::configuration/display-rotation.adoc[]
-
 include::configuration/audio-config.adoc[]
 
 include::configuration/external-storage.adoc[]

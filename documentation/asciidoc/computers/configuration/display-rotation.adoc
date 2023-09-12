@@ -1,3 +1,5 @@
+// This file is no longer used, but keep it around in case we want to add the `wlr-randr` and `xrandr` commands to display-resolution.adoc at some point
+
 == Rotating your Display
 
 The options to rotate the display of your Raspberry Pi depend on whether you're booting to the desktop environment or booting to the CLI (text console).

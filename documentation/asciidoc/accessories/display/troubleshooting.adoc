@@ -36,7 +36,7 @@ You should see a couple of lines that look like this:
 [discrete]
 === My screen is upside-down!
 
-Depending on your display stand, you might find that the LCD display defaults to being upside-down. You can fix this by xref:../computers/configuration.adoc#rotating-your-display[rotating your display].
+Depending on your display stand, you might find that the LCD display defaults to being upside-down. You can fix this by xref:../computers/configuration.adoc#setting-your-displays-resolution-and-rotation[rotating your display].
 
 [discrete]
 === My display fades out to weird patterns when I shutdown/reboot my Raspberry Pi
