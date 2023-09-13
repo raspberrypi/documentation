@@ -44,9 +44,14 @@ Here you can manually resize the desktop if it doesn't look correct on your disp
 === Select a wireless network
 
 .The Select Wireless Network dialogue.
-image::images/initial-setup/6.png[alt="The Select Wireless Network dialog.",width="80%"]
+image::images/initial-setup/6.png[alt="The Select Wireless Network window.",width="80%"]
 
 Your Raspberry Pi will scan for nearby WiFi access points. You can choose which network to connect to from this list. 
+
+=== Select a default browser
+image::images/initial-setup/11.png[alt="The Choose Browser window.",width="80%"]
+
+Select Chromium or Firefox as the default internet browser to use with Raspberry Pi. You can also choose to uninstall the browser you don't set as default.
 
 === Check for software updates
 
