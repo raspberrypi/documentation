@@ -1,10 +1,10 @@
-== Parallel Display Interface (DPI)
+== Parallel Display Interface
 
 [.whitepaper, title="Using a DPI Display on the Raspberry Pi", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003471-WP/Using-a-DPI-display.pdf]
 ****
 Display Parallel Interface (DPI) displays can be connected to Raspberry Pi devices via the 40-pin general-purpose input/output (GPIO) connector as an alternative to using the dedicated Display Serial Interface (DSI) or High-Definition Multimedia Interface (HDMI) ports. Many third-party DPI displays have been made available to take advantage of this. The Buster (and earlier) Raspberry Pi operating system (OS) and the legacy display stack used Raspberry Pi-specific parameters in `config.txt` to configure DPI displays. With the move to Bullseye and its use of the Kernel Mode Setting (KMS) graphics driver by default, these `config.txt` entries are no longer relevant as all control of the display pipeline has shifted to the Linux kernel.
 
-This whitepaper assumes that the Raspberry Pi runs Raspberry Pi OS (Linux) and is fully up to date with the latest firmware and kernels.
+This whitepaper assumes that the Raspberry Pi is running the Raspberry Pi OS (Linux), and is fully up to date with the latest firmware and kernels.
 ****
 
 An up-to-24-bit parallel RGB interface is available on all Raspberry Pi boards with the 40 way header and the Compute Modules. This interface allows parallel RGB displays to be attached to the Raspberry Pi GPIO either in RGB24 (8 bits for red, green and blue) or RGB666 (6 bits per colour) or RGB565 (5 bits red, 6 green, and 5 blue).
@@ -335,7 +335,7 @@ h|*27* h|*26* h|*25* h|*24* h|*23* h|*22* h|*21* h|*20* h|*19* h|*18* h|*17* h|*
 
 === Disable Other GPIO Peripherals
 
-Note that all other peripheral overlays that use conflicting GPIO pins must be disabled. In `config.txt`, take care to comment out or invert any dtparams that enable I2C or SPI:
+All other peripheral overlays that use conflicting GPIO pins must be disabled. In `config.txt`, take care to comment out or invert any dtparams that enable I2C or SPI:
 
 ----
 dtparam=i2c_arm=off
@@ -349,7 +349,7 @@ The https://en.wikipedia.org/wiki/Direct_Rendering_Manager#Kernel_mode_setting[K
 ==== Auto Detect
 
 Auto detect allows your Raspberry Pi to connect with a display without a manually configured device tree overlay.
-Auto detection is enabled by default. You can enable display autodetect by adding the following line to `config.txt`:
+Auto detection is enabled by default. You can enable display auto detect by adding the following line to `config.txt`:
 
 ----
 `display_auto_detect=1`
@@ -362,7 +362,7 @@ When you connect the official Raspberry Pi display with auto detect enabled, KMS
 
 NOTE: In Raspberry Pi OS _Bookworm_ or later, the `dpi_output_format` and `dpi_timings` entries in `config.txt` previously used to set up DPI have been superseded by the `vc4-kms-dpi-generic` overlay.
 
-To use any display other than the official Raspberry Pi display, you must specify a `dtoverlay` entry in `config.txt`. The panel manufacturer should configure timings for your display in Linux kernel code and provide an overlay to enable those settings. See the https://github.com/raspberrypi/linux/blob/rpi-5.10.y/arch/arm/boot/dts/overlays/vc4-kms-kippah-7inch-overlay.dts[Adafruit Kippah display entry] for an example. The following example demonstrates how to set a `dtoverlay` entry for the Kippah display in your xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] file:
+To use any display other than the official Raspberry Pi display, you must specify a `dtoverlay` entry in `config.txt`. The panel manufacturer should configure timings for your display in Linux kernel code and provide an overlay to enable those settings. See the https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/vc4-kms-kippah-7inch-overlay.dts[Adafruit Kippah display entry] for an example. The following example demonstrates how to set a `dtoverlay` entry for the Kippah display in your xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] file:
 
 ----
 dtoverlay=vc4-kms-kippah-7inch-overlay
@@ -381,7 +381,7 @@ dtparam=clock-frequency=32000000,rgb666-padhi
 
 NOTE: Device tree line length must not exceed 80 characters. When a setting requires a line longer than 80 characters, split the assignment of that parameter across multiple lines.
 
-Paramater display tree definitions support the following options:
+Parameter display tree definitions support the following options:
 
 [cols="1,2"]
 |===
@@ -427,10 +427,10 @@ Paramater display tree definitions support the following options:
 | Negative edge pixel clock
 
 | `width-mm`
-| Defines the screen width in millimeters
+| Defines the screen width in millimetres
 
 | `height-mm`
-| Defines the screen height in millimeters
+| Defines the screen height in millimetres
 
 | `rgb565`
 | Change to RGB565 output on GPIOs 0-19
