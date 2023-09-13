@@ -35,7 +35,7 @@ mode = 1920x1080@60
 transform = 270
 ----
 
-where the allowable `transform` options are: `normal`, `90`, `180`, `270`, `flipped`, `90_flipped`, `180_flipped` and `270_flipped`.
+where the allowable `transform` options are: `normal`, `90`, `180` and `270`.
 
 If you've set Raspberry Pi OS to boot to desktop but *not* auto-login, then you'll also need to edit `/usr/share/greeter.ini` as this determines the resolution and rotation used by the login screen. This file has the same format as `.config/wayfire.ini` described earlier, so again you'll need to add or edit the `[output:<device>]` section.
 
