@@ -1362,23 +1362,50 @@ hdmi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> 
 <pixel_rep>       = leave at zero
 <frame_rate>      = screen refresh rate in Hz
 <interlaced>      = leave at zero
-<pixel_freq>      = clock frequency (width*height*framerate)
-<aspect_ratio>    = *
+<pixel_freq>      = clock frequency (h_active_pixels + h_front_porch + h_sync_pulse + h_back_porch)
+                                    * (v_active_lines + v_front_porch + v_sync_pulse + v_back_porch)
+                                    * framerate
+<aspect_ratio>    = [see footnote]
 ----
 
-`*` The aspect ratio can be set to one of eight values (choose the closest for your screen):
+The aspect ratio can be set to one of eight values. Choose a value representing the aspect ratio most similar to your screen from the following:
 
-[source]
-----
-HDMI_ASPECT_4_3 = 1
-HDMI_ASPECT_14_9 = 2
-HDMI_ASPECT_16_9 = 3
-HDMI_ASPECT_5_4 = 4
-HDMI_ASPECT_16_10 = 5
-HDMI_ASPECT_15_9 = 6
-HDMI_ASPECT_21_9 = 7
-HDMI_ASPECT_64_27 = 8
-----
+[cols="1,2,1"]
+|===
+|Aspect Ratio |Name |Value
+
+| 4:3
+| HDMI_ASPECT_4_3
+| 1
+
+| 14:9
+| HDMI_ASPECT_14_9
+| 2
+
+| 16:9
+| HDMI_ASPECT_16_9
+| 3
+
+| 5:4
+| HDMI_ASPECT_5_4
+| 4
+
+| 16:10
+| HDMI_ASPECT_16_10
+| 5
+
+| 15:9
+| HDMI_ASPECT_15_9
+| 6
+
+| 21:9
+| HDMI_ASPECT_21_9
+| 7
+
+| 64:27
+| HDMI_ASPECT_64_27
+| 8
+|===
 
 ==== `hdmi_force_mode`
 
