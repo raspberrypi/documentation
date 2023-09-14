@@ -124,8 +124,6 @@ NOTE: For these measurements we used a standard Raspberry Pi OS image (current a
 [.whitepaper, title="Extra PMIC features on Raspberry Pi 4 and Compute Module 4", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-004340-WP/Extra-PMIC-features-on-Raspberry-Pi-4-and-Compute-Module-4.pdf]
 ****
 A number of different PMIC devices have been used on both Raspberry Pi 4 and CM4. All the PMICs have provided extra functionality over and above that of voltage supply. This document describes how to access these features in software.
-
-This whitepaper assumes that your Raspberry Pi is running Raspberry Pi OS, and is fully up to date with the latest firmware and kernels.
 ****
 
 === Power Supply Warnings

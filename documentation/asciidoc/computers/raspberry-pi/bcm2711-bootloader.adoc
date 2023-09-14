@@ -610,7 +610,7 @@ Default: `1`
 
 [.whitepaper, title="Raspberry Pi 4 Boot Security", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-004651-WP/Raspberry-Pi-4-Boot-Security.pdf]
 ****
-This white paper describes Raspberry Pi Ltd’s approach to boot security on the Raspberry Pi 4 family of devices, based on
+This whitepaper describes Raspberry Pi Ltd’s approach to boot security on the Raspberry Pi 4 family of devices, based on
 the BCM2711 system on a chip (SoC).
 ****
 
