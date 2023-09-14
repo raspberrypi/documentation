@@ -172,10 +172,6 @@ Enable or disable a read-only filesystem
 
 Set the behaviour of a GPIO connected fan
 
-===== USB Current
-
-Set the current limit for the USB ports.
-
 [[localisation-options]]
 ==== Localisation Options
 
