@@ -34,6 +34,8 @@ NOTE: All options are available via a non-interactive command line interface. Se
 
 The system options submenu allows you to make configuration changes to various parts of the boot, login and networking process, along with some other system level changes.
 
+image::images/raspi-system.png[raspi-config system options]
+
 ===== Wireless LAN
 
 Allows setting of the wireless LAN SSID and passphrase.
@@ -77,6 +79,8 @@ Use this option to change the default web browser. Choosing a web browser that i
 
 ==== Display Options
 
+image::images/raspi-display.png[raspi-config display options]
+
 [[underscan]]
 ===== Underscan
 
@@ -95,12 +99,18 @@ Define the video resolution to use in xref:configuration.adoc#setting-up-a-headl
 
 ===== Composite
 
-Enable or disable composite video. On Raspberry Pi 4, this option also allows you to enable 4Kp60 output.
+Enable or disable composite video.
+
+===== 4Kp60 HDMI
+
+Enable or disable 4Kp60 resolution for HDMI outputs.
 
 [[interfacing-options]]
 ==== Interface Options
 
 In this submenu there are the following options to enable/disable: SSH, VNC, SPI, I2C, Serial Port, 1-wire, and Remote GPIO.
+
+image::images/raspi-interface.png[raspi-config interface options]
 
 [[ssh]]
 ===== SSH
@@ -140,6 +150,8 @@ Enable or disable remote access to the GPIO pins.
 
 ==== Performance Options
 
+image::images/raspi-perf.png[raspi-config performance options]
+
 [[overclock]]
 ===== Overclock
 
@@ -160,10 +172,16 @@ Enable or disable a read-only filesystem
 
 Set the behaviour of a GPIO connected fan
 
+===== USB Current
+
+Set the current limit for the USB ports.
+
 [[localisation-options]]
 ==== Localisation Options
 
 The localisation submenu gives you these options to choose from: keyboard layout, time zone, locale, and wireless LAN country code.
+
+image::images/raspi-l18n.png[raspi-config localisation options]
 
 [[change-locale]]
 ===== Locale
@@ -187,6 +205,8 @@ This option sets the country code for your wireless network.
 [[advanced-options]]
 ==== Advanced Options
 
+image::images/raspi-adv.png[raspi-config advanced options]
+
 NOTE: The options documented here will change depending on the model of Raspberry Pi that you're using, and whether you're using the Wayland or X11 backend. In the current version of Raspberry Pi OS Bookworm, the Raspberry Pi 4 and Pi 400 use Wayland by default; other models of Raspberry Pi use X11 by default.
 
 [[expand-filesystem]]
@@ -195,6 +215,10 @@ NOTE: The options documented here will change depending on the model of Raspberr
 This option will expand your installation to fill the whole SD card, giving you more space to use for files. You will need to reboot the Raspberry Pi to make this available. 
 
 WARNING: There is no confirmation: selecting the option begins the partition expansion immediately.
+
+===== Compositor
+
+Enable or disable the xcompmgr composition manager.
 
 ===== Network Interface Names
 
