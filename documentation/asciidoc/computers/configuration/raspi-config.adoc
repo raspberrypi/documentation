@@ -216,10 +216,6 @@ This option will expand your installation to fill the whole SD card, giving you 
 
 WARNING: There is no confirmation: selecting the option begins the partition expansion immediately.
 
-===== Compositor
-
-Enable or disable the xcompmgr composition manager.
-
 ===== Network Interface Names
 
 Enable or disable predictable network interface names.
