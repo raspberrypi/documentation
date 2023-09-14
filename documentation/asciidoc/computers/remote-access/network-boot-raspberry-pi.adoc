@@ -249,7 +249,7 @@ Now monitor the `dnsmasq` log:
 
 [,bash]
 ----
-journalctl -ef
+journalctl -f
 ----
 
 You should see something like this:
