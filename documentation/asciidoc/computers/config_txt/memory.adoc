@@ -24,7 +24,7 @@ The recommended maximum values are as follows:
 | `384`
 
 | 1GB or greater
-| `512`, `76` on the Raspberry Pi 4
+| `512`, `768` on the Raspberry Pi 4
 |===
 
 IMPORTANT: The default camera stack (libcamera2) on Raspberry Pi OS - Bullseye uses Linux CMA memory to allocate buffers instead of GPU memory so there is no benefit in increasing the GPU memory size.
