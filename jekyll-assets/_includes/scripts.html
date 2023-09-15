@@ -45,6 +45,7 @@
   function scrollToElement(selector) {
     try {
       // if found, scroll to that id hash
+      console.log("Scrolling to ", selector);
       var target = document.querySelector(selector);
       if (target) {
         var bbox = target.getBoundingClientRect();
