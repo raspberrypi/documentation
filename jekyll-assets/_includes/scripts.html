@@ -17,8 +17,61 @@
   function hasher(text, element) {
     return text.toLowerCase().replace(/ /g, "-").replace(/\./g, "-").replace(/[^-\w]/g, "").replace(/-+/g, "-");
   }
+
+  function waitForElementToDisplay(selector, checkFrequencyInMs, timeoutInMs) {
+    try {
+      // wait for all the content to load first...
+      var startTimeInMs = Date.now();
+      (function loopSearch() {
+        //  && document.querySelector(selector).getBoundingClientRect().top > 0
+        if (document.querySelector(selector) != null && document.querySelector(selector).getBoundingClientRect().top > 0) {
+          scrollToElement(selector);
+          return;
+        }
+        else {
+          setTimeout(function () {
+            if (timeoutInMs && Date.now() - startTimeInMs > timeoutInMs)
+              return;
+            loopSearch();
+          }, checkFrequencyInMs);
+        }
+      })();
+    } catch (e) {
+      console.log("there was an error in scrollToElement:");
+      console.log(e);
+    }
+  }
+
+  function scrollToElement(selector) {
+    try {
+      // if found, scroll to that id hash
+      var target = document.querySelector(selector);
+      if (target) {
+        var bbox = target.getBoundingClientRect();
+        var myid = target.getAttribute("id");
+        window.scrollTo({
+          top: bbox.top,
+          left: 0,
+          behavior: "smooth",
+        });
+      } else {
+        console.log("Target not found :(");
+      }
+    } catch (e) {
+      console.log("there was an error in scrollToElement:");
+      console.log(e);
+    }
+  }
+
   $(function() {
     $("#toc").tocify({ showAndHide: false, hashGenerator: hasher, extendPage: false, ignoreSelector: ".discrete" });
+    // special handling to scroll to tocify elements on the page
+    if (window.location.hasOwnProperty("hash") && window.location.hash.indexOf("#") > -1) {
+      var myhash = window.location.hash;
+      myhash = myhash.replace("#", "");
+      var selector = "div[data-unique="+myhash+"] + *";
+      waitForElementToDisplay(selector, 1000, 9000);
+    }
   });
 </script>
 
