@@ -18,7 +18,9 @@ Use a small flat-head screwdriver to attach your speaker to the screw terminals.
 
 === Setting up your Raspberry Pi
 
-In this example, we are using Raspberry Pi OS Lite. Our guides on https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system[Getting started] cover this topic in great detail. Make sure that you update your operating system before proceeding and follow the instructions provided for Codec Zero configuration, including the commands to enable the on-board microphone and speaker output.
+In this example, we are using Raspberry Pi OS Lite. Refer to our guide on xref:../computers/getting-started.adoc#installing-the-operating-system[installing Raspberry Pi OS] for more details.
+
+Make sure that you update your operating system before proceeding and follow the instructions provided for Codec Zero configuration, including the commands to enable the on-board microphone and speaker output.
 
 === Programming your Raspberry Pi
 
