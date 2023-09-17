@@ -2,6 +2,8 @@
 
 The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry Pi Touch Display] is an LCD display which connects to the Raspberry Pi through the DSI connector. In recent versions of Raspberry Pi OS, both the HDMI and LCD display outputs can be used at the same time.
 
+Make sure your Raspberry Pi OS is up-to-date before you begin working with the Touch Display to reduce the chances of errors or issues.
+
 === Board Support
 
 The DSI display is designed to work with all models of Raspberry Pi, however early models that do not have mounting holes (the Raspberry Pi 1 Model A and B) will require additional mounting hardware to fit the HAT-dimensioned stand-offs on the display PCB.
@@ -12,28 +14,44 @@ The following image shows how to attach a Raspberry Pi to the back of the Touch 
 
 image::images/GPIO_power-500x333.jpg[DSI Display pinout]
 
-Connect one end of the ribbon cable to the `RPI-DISPLAY` port on the Touch Display PCB (make sure the blue stripe faces the PCB) and then connect the other end to the `DISPLAY` port on the Raspberry Pi (the blue stripe should face outwards).
+Connect one end of the ribbon cable to the `RPI-DISPLAY` port on the Touch Display PCB (make sure the blue stripe faces the PCB) and then connect the other end to the `DISPLAY` port on the Raspberry Pi (the blue stripe should face outwards). 
+
+If the ribbon cable isn't fully inserted in the correct position you will experience issues with the display. Make sure you check this connection if you don't see anything on your display, or if the display is showing a single color.
 
 ==== Powering the Touch Display
 
 There are two options to power the Touch Display: using the Raspberry Pi's GPIO to send power, or powering the display directly with a separate micro USB cable. 
 
-WARNING: If you use a micro USB cable to power the display it must be mounted inside a chassis to reduce the risk of electrocution. The chassis also must block access to the display's PCB while its in use.
+===== Provide power through Raspberry Pi
 
-The following instructions are only relevant if you're using the Raspberry Pi for power. Do not make these connections when powering the display through its micro USB port.
-
-Make sure the Raspberry Pi is powered off and unplugged, then connect one end of the black jumper wire to pin six (GND) on the Raspberry Pi and one end of the red jumper wire to pin four (5V). Next, connect the other end of the black wire to the GND pin on the display and the other end of the red wire to the 5V pin on the display.
+To power the Touch Display using a Raspberry Pi, you need to connect two jumper wires between the xref::/../../computers/raspberry-pi.adoc#gpio-and-the-40-pin-header[Raspberry Pi's GPIO] and the GPIO pins on the display's PCB.
 
 .Connect the red and black wires to 5V and GND
-image::images/touch-GPIO.png[Illustration of display pins, width=250]
+image::images/touch-GPIO.png[Illustration of display pins, width="30%"]
+
+Before you begin, make sure the Raspberry Pi is powered off and not connected to any power source.Connect one end of the black jumper wire to pin six (GND) on the Raspberry Pi and one end of the red jumper wire to pin four (5V).
+
+// image placeholder
+
+Next, connect the other end of the black wire to the GND pin on the display and the other end of the red wire to the 5V pin on the display.
+
+// image placeholder
 
 The other three pins on the Touch Display are used to connect the display to an original Raspberry Pi 1 Model A or B. Refer to our documentation on xref:display.adoc#legacy-support[legacy support] for more information.
 
 NOTE: An original Raspberry Pi can be easily identified from other models, it is the only model with a 26-pin rather than 40-pin GPIO header connector.
 
+===== Provide power through micro USB
+
+If you don't want to use a Raspberry Pi to provide power to the Touch Display, you can use a micro USB power supply instead. We recommend using the https://www.raspberrypi.com/products/micro-usb-power-supply/[Raspberry Pi 12.5W power supply] to ensure the display runs as intended.
+
+Do not make connections between the GPIO of your Raspberry Pi and the GPIO pins on the display if you choose to use micro USB for power.
+
+WARNING: If you use a micro USB cable to power the display it must be mounted inside a chassis to reduce the risk of electrocution. The chassis also must block access to the display's PCB while its in use.
+
 === Screen Orientation
 
-LCD displays have an optimum viewing angle, and depending on how the screen is mounted it may be necessary to change the orientation of the display to give the best results. By default, the Raspberry Pi Touch Display and Raspberry Pi are set up to work best when viewed from slightly above, for example on a desktop. If viewing from below, you can physically rotate the display, and then tell the system software to compensate by running the screen upside down.
+LCD displays have an optimum viewing angle, and depending on how the screen is mounted it may be necessary to change the orientation of the display to give the best results. By default, the Raspberry Pi Touch Display and Raspberry Pi are set up to work best when viewed from slightly above, for example on top of a desk. If you need to physically rotate the display, or mount it in a specific position, you can use software to adjust the orientation of the screen.
 
 To set screen orientation when running the graphical desktop, select the `Screen Configuration` option from the `Preferences` menu. Right click on the DSI display rectangle in the layout editor, select Orientation then the required option.
 
@@ -79,9 +97,28 @@ The options for the touchscreen are:
 | Swap X and Y coordinates
 |===
 
-=== Troubleshooting
+=== X11-only features
 
-Read our troubleshooting steps, tips, and tricks here: xref:display.adoc#troubleshooting-the-display[Raspberry Pi Touch Display troubleshooting].
+If you're using X11 on your Raspberry Pi you can access an on-screen keyboard and set up virtual right clicks on the Touch Display.
+
+==== On-screen keyboard
+
+To install a virtual keyboard, run `sudo apt install matchbox-keyboard` in the terminal.
+
+==== Emulate right click
+
+You can emulate a right click on the Touch Display by adding this code to `/etc/X11/xorg.conf`:
+----
+Section "InputClass"
+   Identifier "calibration"
+   Driver "evdev"
+   MatchProduct "FT5406 memory based driver"
+
+   Option "EmulateThirdButton" "1"
+   Option "EmulateThirdButtonTimeout" "750"
+   Option "EmulateThirdButtonMoveThreshold" "30"
+EndSection
+----
 
 === Specifications
 
