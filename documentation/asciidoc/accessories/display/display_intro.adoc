@@ -6,13 +6,28 @@ The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry P
 
 The DSI display is designed to work with all models of Raspberry Pi, however early models that do not have mounting holes (the Raspberry Pi 1 Model A and B) will require additional mounting hardware to fit the HAT-dimensioned stand-offs on the display PCB.
 
-=== Physical Installation
+=== Connecting a Raspberry Pi
 
-The following image shows how to attach the Raspberry Pi to the back of the Touch Display (if required), and how to connect both the data (ribbon cable) and power (red/black wires) from the Raspberry Pi to the display. If you are not attaching the Raspberry Pi to the back of the display, take extra care when attaching the ribbon cable to ensure it is the correct way round. The black and red power wires should be attached to the GND and 5V pins respectively.
+The following image shows how to attach a Raspberry Pi to the back of the Touch Display using the included standoffs. It also shows the connections you need to make between Raspberry Pi and the display's PCB. You can also mount the touch display in a separate chassis if you have one available. The connections remain the same, though you may need longer cables depending on the chassis you use.
 
-image::images/GPIO_power-500x333.jpg[DSI Display Connections]
+image::images/GPIO_power-500x333.jpg[DSI Display pinout]
 
-The other three pins should be left disconnected, unless connecting the display to an original Raspberry Pi 1 Model A or B. See the section on xref:display.adoc#legacy-support[legacy support] for more information on connecting the display to an original Raspberry Pi.
+Connect one end of the ribbon cable to the `RPI-DISPLAY` port on the Touch Display PCB (make sure the blue stripe faces the PCB) and then connect the other end to the `DISPLAY` port on the Raspberry Pi (the blue stripe should face outwards).
+
+==== Powering the Touch Display
+
+There are two options to power the Touch Display: using the Raspberry Pi's GPIO to send power, or powering the display directly with a separate micro USB cable. 
+
+WARNING: If you use a micro USB cable to power the display it must be mounted inside a chassis to reduce the risk of electrocution. The chassis also must block access to the display's PCB while its in use.
+
+The following instructions are only relevant if you're using the Raspberry Pi for power. Do not make these connections when powering the display through its micro USB port.
+
+Make sure the Raspberry Pi is powered off and unplugged, then connect one end of the black jumper wire to pin six (GND) on the Raspberry Pi and one end of the red jumper wire to pin four (5V). Next, connect the other end of the black wire to the GND pin on the display and the other end of the red wire to the 5V pin on the display.
+
+.Connect the red and black wires to 5V and GND
+image::images/touch-GPIO.png[Illustration of display pins, width=250]
+
+The other three pins on the Touch Display are used to connect the display to an original Raspberry Pi 1 Model A or B. Refer to our documentation on xref:display.adoc#legacy-support[legacy support] for more information.
 
 NOTE: An original Raspberry Pi can be easily identified from other models, it is the only model with a 26-pin rather than 40-pin GPIO header connector.
 
