@@ -4,7 +4,7 @@ The kernel has a https://www.kernel.org/doc/html/latest/admin-guide/pm/cpufreq.h
 
 Overclocking and overvoltage will be disabled at runtime when the SoC reaches `temp_limit` (see below), which defaults to 85°C, in order to cool down the SoC. You should not hit this limit with Raspberry Pi Models 1 and 2, but you are more likely to with Raspberry Pi 3 and Raspberry Pi 4B. Overclocking and overvoltage are also disabled when an undervoltage situation is detected.
 
-NOTE: For more information xref:raspberry-pi.adoc#frequency-management-and-thermal-control[see the section on frequency managment and thermal control].
+NOTE: For more information xref:raspberry-pi.adoc#frequency-management-and-thermal-control[see the section on frequency management and thermal control].
 
 WARNING: Setting any overclocking parameters to values other than those used by xref:configuration.adoc#overclock[raspi-config] may set a permanent bit within the SoC, making it possible to detect that your Raspberry Pi has been overclocked. The specific circumstances where the overclock bit is set are if `force_turbo` is set to `1` and any of the `over_voltage_*` options are set to a value > `0`. See the https://www.raspberrypi.org/blog/introducing-turbo-mode-up-to-50-more-performance-for-free/[blog post on Turbo Mode] for more information.
 

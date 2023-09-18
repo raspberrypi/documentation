@@ -6,7 +6,7 @@ All Raspberry Pi cameras are capable of taking high-resolution photographs, alon
 
 Once xref:camera.adoc#installing-a-raspberry-pi-camera[installed], there are various ways the cameras can be used. The simplest option is to use one of the provided camera applications. There are four Linux xref:camera.adoc#raspicam-commands[command-line applications] installed by default (e.g. `raspistill`).
 
-You can also programatically access the camera using the Python programming language, using the https://projects.raspberrypi.org/en/projects/getting-started-with-picamera[`picamera` library].
+You can also programmatically access the camera using the Python programming language, using the https://projects.raspberrypi.org/en/projects/getting-started-with-picamera[`picamera` library].
 
 === About `libcamera` 
 

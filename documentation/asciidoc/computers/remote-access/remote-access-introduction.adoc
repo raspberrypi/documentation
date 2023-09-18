@@ -1,6 +1,6 @@
 == Remote Access
 
-Sometimes you need to access a Raspberry Pi without connecting it to a monitor. Perhaps the Pi is embedded in something like a robot, or you may want to view some information from it from elsewhere. Ore perhaps you simply don't have a spare monitor!
+Sometimes you need to access a Raspberry Pi without connecting it to a monitor. Perhaps the Pi is embedded in something like a robot, or you may want to view some information from it from elsewhere. Or perhaps you simply don't have a spare monitor!
 
 You can connect to your Raspberry Pi from another machine. But in order to do so you'll need to know it's IP Address. 
 

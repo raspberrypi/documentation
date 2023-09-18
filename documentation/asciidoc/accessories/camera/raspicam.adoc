@@ -1073,7 +1073,7 @@ Forces a flush of output data buffers as soon as video data is written. This byp
 	--save-pts,	-pts
 ----
 
-Saves timestamp information to the specified file. Useful as an imput file to `mkvmerge`.
+Saves timestamp information to the specified file. Useful as an input file to `mkvmerge`.
 
 ----
 	--codec,	-cd
