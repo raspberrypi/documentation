@@ -963,7 +963,7 @@ See also: https://github.com/raspberrypi/usbboot#secure-boot[secure-boot]
 The loader will skip over missing overlays and bad parameters, but if there are serious errors, such as a missing or corrupt base DTB or a failed overlay merge, then the loader will fall back to a non-DT boot. If this happens, or if your settings don't behave as you expect, it is worth checking for warnings or errors from the loader:
 
 ----
-sudo vcdbg log msg
+sudo vclog --msg
 ----
 
 Extra debugging can be enabled by adding `dtdebug=1` to `config.txt`.

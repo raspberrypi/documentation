@@ -152,7 +152,7 @@ raspi-gpio get
 If something seems to be going awry, useful information can also be found by dumping the GPU log messages:
 
 ----
-sudo vcdbg log msg
+sudo vclog --msg
 ----
 
 You can include more diagnostics in the output by adding `dtdebug=1` to `config.txt`.
