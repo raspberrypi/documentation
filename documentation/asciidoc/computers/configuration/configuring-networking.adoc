@@ -6,9 +6,9 @@ NOTE: These instructions work for Raspberry Pi OS _Bookworm_ and later. For earl
 
 === Using the Desktop
 
-Quickly access the Network Manager via the network icon at the right-hand end of the menu bar. If you are using a Raspberry Pi with built-in wireless connectivity, or if a wireless dongle is plugged in, click this icon to bring up a list of available wireless networks. If you see the message 'No APs found - scanning...', wait a few seconds, and the Network Manager should find your network.
+Access the Network Manager via the network icon at the right-hand end of the menu bar. If you are using a Raspberry Pi with built-in wireless connectivity, or if a wireless dongle is plugged in, click this icon to bring up a list of available wireless networks. If you see the message 'No APs found - scanning...', wait a few seconds, and the Network Manager should find your network.
 
-NOTE: Raspberry Pi devices that support the 5GHz band (Pi3B+, Pi4, CM4, Pi400), disable wireless networking until you assign a locale. To set a locale, open the `Raspberry Pi Configuration` application from the Preferences Menu, select *Localisation* and select your country.
+NOTE: Raspberry Pi devices that support the 5GHz band (Pi3B+, Pi4, CM4, Pi400), disable wireless networking until you assign a wireless LAN country. To set a wireless LAN country, open the `Raspberry Pi Configuration` application from the Preferences Menu, select *Localisation* and select your country.
 
 image::images/wifi2.png[wifi2]
 
@@ -29,9 +29,9 @@ NOTE: This guide should work for WEP, WPA, WPA2, or WPA3 networks, but may not w
 
 On a fresh install, you must specify the country where you use your device.
 This allows your device to choose the correct frequency bands for 5GHz networking.
-Once you have specified a locale, you can use your Raspberry Pi's built-in wireless networking module.
+Once you have specified a wireless LAN country, you can use your Raspberry Pi's built-in wireless networking module.
 
-To do this, set your locale with the command line `raspi-config` tool. Run the following command:
+To do this, set your wireless LAN country with the command line `raspi-config` tool. Run the following command:
 ----
 sudo raspi-config
 ----
