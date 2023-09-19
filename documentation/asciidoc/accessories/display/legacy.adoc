@@ -1,6 +1,31 @@
 == Legacy Support
 
-NOTE: These instructions are for the original Raspberry Pi 1 Model A and B boards only. You can identify an original board as it is the only model with a 26-pin GPIO header, all other models have the now-standard 40-pin connector.
+[NOTE]
+====
+Older Raspberry Pi hardware, and older versions of Raspberry Pi OS, with X11 can install an on-screen keyboard and emulate right clicks on the touchscreen. 
+
+Run the following in a terminal to enable the keyboard:
+----
+sudo apt install matchbox-keyboard
+----
+
+Add the following to `/etc/X11/xorg.conf` enable right click emulation:
+
+----
+Section "InputClass"
+   Identifier "calibration"
+   Driver "evdev"
+   MatchProduct "FT5406 memory based driver"
+
+   Option "EmulateThirdButton" "1"
+   Option "EmulateThirdButtonTimeout" "750"
+   Option "EmulateThirdButtonMoveThreshold" "30"
+EndSection
+----
+
+====
+
+NOTE: The following instructions are for the original Raspberry Pi 1 Model A and B boards only. You can identify an original board as it is the only model with a 26-pin GPIO header, all other models have the now-standard 40-pin connector.
 
 The DSI connector on the Raspberry Pi 1 Model A and B boards does not have the I2C connections required to talk to the touchscreen controller and DSI controller. You can work around this by using the additional set of jumper cables provided with the display kit to wire up the I2C bus on the GPIO pins to the display controller board.
 
