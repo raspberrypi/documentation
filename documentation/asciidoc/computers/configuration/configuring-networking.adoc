@@ -72,7 +72,6 @@ Look in the "SSID" column for the name of the network you would like to connect 
 
 ==== Connect to a Network
 
-We'll use `nmcli` to connect to a WiFi network.
 Run the following command to configure a network connection:
 
 ----
