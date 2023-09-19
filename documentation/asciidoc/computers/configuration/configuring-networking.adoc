@@ -1,6 +1,8 @@
 == Configuring Networking
 
-Raspberry Pi OS provides a GUI (graphical user interface) for setting up wireless connections. Users of Raspberry Pi OS Lite and headless machines can set up wireless networking from the command line with https://developer-old.gnome.org/NetworkManager/stable/nmcli.html[`nmcli`].
+Raspberry Pi OS provides a Graphical User Interface (GUI) for setting up wireless connections. Users of Raspberry Pi OS Lite and headless machines can set up wireless networking from the command line with https://developer-old.gnome.org/NetworkManager/stable/nmcli.html[`nmcli`].
+
+NOTE: These instructions work for Raspberry Pi OS _Bookworm_ and later. For earlier versions, check an older version of the documentation.
 
 === Using the Desktop
 
@@ -29,18 +31,12 @@ On a fresh install, you must specify the country where you use your device.
 This allows your device to choose the correct frequency bands for 5GHz networking.
 Once you have specified a locale, you can use your Raspberry Pi's built-in wireless networking module.
 
-To do this, set your locale with the command line `raspi-config` tool.
-
-1. Run the following command:
-+
---
+To do this, set your locale with the command line `raspi-config` tool. Run the following command:
 ----
 sudo raspi-config
 ----
---
-2. Select the *Localisation Options* menu item using the arrow keys. Press `Enter`.
-3. Select the *WLAN Country* option.
-4. Pick your country from the dropdown using the arrow keys. Press `Enter` to select a country.
+Select the *Localisation Options* menu item using the arrow keys. Choose the *WLAN Country* option.
+Pick your country from the dropdown using the arrow keys. Press `Enter` to select your country.
 
 You should now have access to wireless networking. Run the following command to check if your wifi radio is enabled:
 
@@ -83,7 +79,7 @@ Run the following command to configure a network connection:
 sudo nmcli --ask dev wifi connect <example_ssid>
 ----
 
-NOTE: Don't forget to replace `<example_ssid>` with the name of the network you're trying to configure!
+Don't forget to replace `<example_ssid>` with the name of the network you're trying to configure.
 
 Enter your network password when prompted.
 
@@ -113,6 +109,7 @@ IN-USE  BSSID              SSID            MODE   CHAN  RATE        SIGNAL  BARS
 
 Check for an asterisk (`*`) in the "IN-USE" column; it should appear in the same row as the SSID of the network you intended to connect to.
 
+NOTE: You can manually edit your connection configurations in the `/etc/NetworkManager/system-connections/` directory.
 
 ==== Connect to an Unsecured Network
 
@@ -158,7 +155,20 @@ The following example command sets the priority of a network named "Pi Towers" t
 nmcli connection modify "Pi Towers" connection.autoconnect-priority 10
 ----
 
-Your device will always try to connect to the in-range network with the highest priority. You can also assign a network a negative priority; your device will only attempt to connect to a negative priority network if no other known network is in range.
+Your device will always try to connect to the in-range network with the highest non-negative priority value. You can also assign a network a negative priority; your device will only attempt to connect to a negative priority network if no other known network is in range. For example, consider three networks:
+
+----
+AUTOCONNECT-PRIORITY  NAME
+-1                    snake
+0                     rabbit
+1                     cat
+1000                  dog
+----
+
+- If all of these networks were in range, your device would first attempt to connect to the "dog" network.
+- If connection to the "dog" network fails, your device would attempt to connect to the "cat" network.
+- If connection to the "cat" network fails, your device would attempt to connect to the "rabbit" network.
+- If connection to the "rabbit" network fails, and your device detects no other known networks, your device will attempt to connect to the "snake" network.
 
 === Configure DHCP
 
