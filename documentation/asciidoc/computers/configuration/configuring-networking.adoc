@@ -2,13 +2,13 @@
 
 Raspberry Pi OS provides a Graphical User Interface (GUI) for setting up wireless connections. Users of Raspberry Pi OS Lite and headless machines can set up wireless networking from the command line with https://developer-old.gnome.org/NetworkManager/stable/nmcli.html[`nmcli`].
 
-NOTE: These instructions work for Raspberry Pi OS _Bookworm_ and later. For earlier versions, check an older version of the documentation.
+NOTE: Network Manager is the default networking configuration tool under Raspberry Pi OS _Bookworm_ or later. While Network Manager can be installed on earlier versions of the operating system using `apt` and configured as the default using `raspi-config`, earlier versions used `dhcpd` and other tools for network configuration by default.
 
 === Using the Desktop
 
 Access the Network Manager via the network icon at the right-hand end of the menu bar. If you are using a Raspberry Pi with built-in wireless connectivity, or if a wireless dongle is plugged in, click this icon to bring up a list of available wireless networks. If you see the message 'No APs found - scanning...', wait a few seconds, and the Network Manager should find your network.
 
-NOTE: Raspberry Pi devices that support the 5GHz band (Pi3B+, Pi4, CM4, Pi400), disable wireless networking until you assign a wireless LAN country. To set a wireless LAN country, open the `Raspberry Pi Configuration` application from the Preferences Menu, select *Localisation* and select your country.
+NOTE: Raspberry Pi devices that support dual-band wireless (Raspberry Pi 3B+, Raspberry Pi 4, Compute Module 4, and Raspberry Pi 400) automatically disable networking until a you assign a wireless LAN country. To set a wireless LAN country, open the Raspberry Pi Configuration application from the Preferences Menu, select *Localisation* and select your country from the menu.
 
 image::images/wifi2.png[wifi2]
 
@@ -21,7 +21,7 @@ Enter the key and click *OK*, then wait a couple of seconds. The network icon wi
 [[wireless-networking-command-line]]
 === Using the Command Line
 
-This guide will help you configure a wireless connection on your Raspberry Pi entirely from a terminal without using a GUI. No additional software is required; Raspberry Pi OS comes preconfigured with everything you need.
+This guide will help you configure a wireless connection on your Raspberry Pi entirely from a terminal without using graphical tools. No additional software is required; Raspberry Pi OS comes preconfigured with everything you need.
 
 NOTE: This guide should work for WEP, WPA, WPA2, or WPA3 networks, but may not work for enterprise networks.
 
