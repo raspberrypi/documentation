@@ -61,7 +61,7 @@ NOTE: In console mode it is not possible to rotate the DSI display separately fr
 
 === Touchscreen orientation
 
-You also have the option to change the rotation of the active touchscreen area independently of the display itself by adding a `dtoverlay` instruction in the xref:../computers/config_txt.adoc[`/boot/config.txt` file], as in the following example:
+You also have the option to change the rotation of the active touchscreen area independently of the display itself by adding a `dtoverlay` instruction in the xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`] file, as in the following example:
 
 ----
 dtoverlay=rpi-ft5406,touchscreen-swapped-x-y=1,touchscreen-inverted-x=1
