@@ -12,13 +12,15 @@ Raspberry Pi OS includes https://github.com/any1/wayvnc[wayvnc]. This provides a
 
 Before you can use VNC on your Raspberry Pi, you must enable the VNC server.
 
+NOTE: Previous versions of Raspberry Pi OS supported client connections from RealVNC. In version _Bookworm_ and above, Raspberry Pi OS no longer supports client connections from RealVNC. Instead, you can connect using TigerVNC.
+
 === Install VNC on Raspberry Pi
 
-Raspberry Pi OS comes with wayvnc already installed. If you run a version of Raspberry Pi OS that does not include wayvnc, you can:
+Raspberry Pi OS comes with WayVNC already installed. If you run a version of Raspberry Pi OS that does not include WayVNC, you can:
 
-- install wayvnc via `Recommended Software` in the `Preferences` menu.
+- install WayVNC via `Recommended Software` in the `Preferences` menu.
 
-- install wayvnc from the command line as follows:
+- install WayVNC from the command line as follows:
 +
 --
 [source,console]
@@ -32,7 +34,7 @@ sudo apt install wayvnc
 
 Raspberry Pi OS supports enabling the VNC server both graphically and at the command line.
 
-TIP: Once enabled, you can access your wayvnc configuration at `~/.config/wayvnc/`.
+TIP: Once enabled, you can access your WayVNC configuration at `~/.config/wayvnc/`.
 
 ==== Enable VNC Server Graphically
 
@@ -78,3 +80,6 @@ If you don't know the IP address of your device, see xref:remote-access.adoc#ip-
    * If TigerVNC warns you that the "certificate has been signed by an unknown authority", click the "Yes" button to grant an exception for your Raspberry Pi.
 5. When prompted for a username and password, enter your credentials.
 6. Click the "OK" button to authenticate with the VNC server. If your credentials are correct, TigerVNC should open a window containing the desktop corresponding to your account on the Raspberry Pi. You should be able to move your mouse and keyboard to input text and interact with the desktop.
+
+TIP: If you can't see the cursor in your VNC client, enable the "Show dot when no cursor" input option in TigerVNC.
+
