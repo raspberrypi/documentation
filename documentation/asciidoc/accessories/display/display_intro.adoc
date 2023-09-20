@@ -38,7 +38,7 @@ If you don't want to use a Raspberry Pi to provide power to the Touch Display, y
 
 Do not connect the GPIO pins on your Raspberry Pi to the display if you choose to use micro USB for power. The only connection between the two boards should be the ribbon cable.
 
-WARNING: If you use a micro USB cable to power the display it must be mounted inside a chassis to reduce the risk of electrocution. The chassis also must block access to the display's PCB while it's in use.
+WARNING: If you use a micro USB cable to power the display it must be mounted inside a chassis that blocks access to the display's PCB while it's in use.
 
 === Screen Orientation
 
