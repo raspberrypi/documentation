@@ -9,7 +9,7 @@ You can mount a Raspberry Pi to the back of the Touch Display using its stand-of
 .A Raspberry Pi connected to the Touch Display
 image::images/GPIO_power-500x333.jpg[Image of Raspberry Pi connected to the Touch Display, width="70%"]
 
-Connect one end of the ribbon cable to the `RPI-DISPLAY` port on the Touch Display PCB so the side with the silver or gold pins faces away from the display. Then connect the other end of the ribbon cable to the `DISPLAY` port on the Raspberry Pi. The pins should face inward, towards the Raspberry Pi.
+Connect one end of the ribbon cable to the `RPI-DISPLAY` port on the Touch Display PCB. The silver or gold contacts should face away from the display. Then connect the other end of the ribbon cable to the `DISPLAY` port on the Raspberry Pi. The contacts on this end should face inward, towards the Raspberry Pi.
 
 If the ribbon cable isn't fully inserted, or it's not positioned correctly, you will experience issues with the display. You should always double-check this connection when troubleshooting, especially if you don't see anything on your display, or the display is showing a single colour.
 
