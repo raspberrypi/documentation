@@ -1,6 +1,6 @@
 == Introduction to Remote Access
 
-Sometimes you need to access a Raspberry Pi without connecting it to a monitor. Perhaps the Raspberry Pi is embedded in something like a robot, or you may want to view some information from it from elsewhere. Or perhaps you simply don't have a spare monitor!
+Sometimes you need to access a Raspberry Pi without connecting it to a monitor. Perhaps the Raspberry Pi is embedded in something like a robot, or you want to view some information from it from elsewhere. Or perhaps you simply don't have a spare monitor!
 
 You can connect to your Raspberry Pi from another machine. But in order to do so you'll need to know its IP Address. 
 
@@ -9,13 +9,91 @@ Any device connected to a Local Area Network is assigned an IP address. In order
 [[ip-address]]
 === How to Find your IP Address
 
-It is possible to find the IP address of your Raspberry Pi without connecting to a screen using one of the following methods:
+To find the IP of your Raspberry Pi, use one of the following methods.
 
-NOTE: If you are using a display with your Raspberry Pi and if you boot to the command line instead of the desktop, your IP address should be shown in the last few messages before the login prompt. Otherwise open a Terminal window and type `hostname -I` which will reveal your Raspberry Pi's IP address.
+==== Command Line
+
+Run the following command to output your IP address to the command line:
+
+----
+hostname -I
+----
+
+==== Boot Output
+
+If you use a display with your Raspberry Pi and you boot to the command line instead of the desktop, the boot sequence will include your IP address as one of the last few output messages before your login prompt.
 
 ==== Router devices list
 
-In a web browser navigate to your router's IP address e.g. `+http://192.168.1.1+`, which is usually printed on a label on your router; this will take you to a control panel. Then log in using your credentials, which is usually also printed on the router or sent to you in the accompanying paperwork. Browse to the list of connected devices or similar (all routers are different), and you should see some devices you recognise. Some devices are detected as PCs, tablets, phones, printers, etc. so you should recognise some and rule them out to figure out which is your Raspberry Pi. Also note the connection type; if your Raspberry Pi is connected with a wire there should be fewer devices to choose from.
+In a web browser, navigate to your router's IP address. This is often `http://192.168.1.1`, but you may be able to find it printed on a label on your router. This will take you to a control panel. Then log in using your credentials, which is usually also printed on the router or sent to you in the accompanying paperwork. Browse to the list of connected devices or similar (all routers are different), and you should see some devices you recognise. Some devices are detected as PCs, tablets, phones, printers, etc. so you should recognise some and rule them out to figure out which is your Raspberry Pi. Also note the connection type; if your Raspberry Pi is connected with a wire there should be fewer devices to choose from.
+
+==== Network Manager
+
+You can use the built-in Network Manager CLI (`nmcli`) to access details about your network. Run the following command:
+
+----
+nmcli device show
+----
+
+You should see output similar to the following:
+
+----
+GENERAL.DEVICE:                         wlan0
+GENERAL.TYPE:                           wifi
+GENERAL.HWADDR:                         D0:3B:FF:41:AB:8A
+GENERAL.MTU:                            1500
+GENERAL.STATE:                          100 (connected)
+GENERAL.CONNECTION:                     exampleNetworkName
+GENERAL.CON-PATH:                       /org/freedesktop/NetworkManager/ActiveConnection/2
+IP4.ADDRESS[1]:                         192.168.1.42/24
+IP4.GATEWAY:                            192.168.1.1
+IP4.ROUTE[1]:                           dst = 192.168.1.0/24, nh = 0.0.0.0, mt = 600
+IP4.ROUTE[2]:                           dst = 0.0.0.0/0, nh = 192.168.1.1, mt = 600
+IP4.DNS[1]:                             192.168.1.3
+IP6.ADDRESS[1]:                         ab80::11ab:b1fc:bb7e:a8a5/64
+IP6.GATEWAY:                            --
+IP6.ROUTE[1]:                           dst = ab80::/64, nh = ::, mt = 1024
+
+GENERAL.DEVICE:                         lo
+GENERAL.TYPE:                           loopback
+GENERAL.HWADDR:                         00:00:00:00:00:00
+GENERAL.MTU:                            65536
+GENERAL.STATE:                          100 (connected (externally))
+GENERAL.CONNECTION:                     lo
+GENERAL.CON-PATH:                       /org/freedesktop/NetworkManager/ActiveConnection/1
+IP4.ADDRESS[1]:                         127.0.0.1/8
+IP4.GATEWAY:                            --
+IP6.ADDRESS[1]:                         ::1/128
+IP6.GATEWAY:                            --
+
+GENERAL.DEVICE:                         p2p-dev-wlan0
+GENERAL.TYPE:                           wifi-p2p
+GENERAL.HWADDR:                         (unknown)
+GENERAL.MTU:                            0
+GENERAL.STATE:                          30 (disconnected)
+GENERAL.CONNECTION:                     --
+GENERAL.CON-PATH:                       --
+
+GENERAL.DEVICE:                         eth0
+GENERAL.TYPE:                           ethernet
+GENERAL.HWADDR:                         D0:3B:FF:41:AB:89
+GENERAL.MTU:                            1500
+GENERAL.STATE:                          20 (unavailable)
+GENERAL.CONNECTION:                     --
+GENERAL.CON-PATH:                       --
+WIRED-PROPERTIES.CARRIER:               off
+IP4.GATEWAY:                            --
+IP6.GATEWAY:                            --
+----
+
+This command outputs information about the various network interfaces accessible on your Raspberry Pi. Check the `GENERAL.TYPE` row to see which kind of network interface each block describes. For example, "eth0" is the ethernet port on your device, and "wifi" refers to the WiFi chip built into some devices. You'll look at different blocks of output to find your IP address depending on the way your device accesses the internet:
+
+* if your device connects to the internet using WiFi, check the "wifi" block
+* if your device connects to the internet using the ethernet port, check the "eth0" block
+
+Once you've identified the correct network interface block, look for a field named `IP4.ADDRESS[1]` for an IPv4 address or `IP6.ADDRESS[1]` for an IPv6 address. You can ignore the trailing slash and number (e.g. `/24`) in those fields.
+
+In the example above, the Raspberry Pi uses WiFi to access the internet. Check the block where the `GENERAL.TYPE` field reads "wifi" to find the IP address. In this case, you can access this device using the IPv4 address in the `IP4.ADDRESS[1]` field: `192.168.1.42`.
 
 ==== Resolving `raspberrypi.local` with mDNS
 
