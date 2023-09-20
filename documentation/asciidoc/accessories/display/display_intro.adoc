@@ -1,28 +1,23 @@
 == Raspberry Pi Touch Display
 
-The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry Pi Touch Display] is an LCD display which connects to the Raspberry Pi through the DSI connector. You can also use the HDMI and DSI display outputs at the same time.
+The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry Pi Touch Display] is an LCD display which connects to the Raspberry Pi through the DSI connector. While the panel is connected, you can use both it, and the the normal HDMI display output at the same time.
 
-=== Board Support
+The Touch Display will function with all models of Raspberry Pi. Although, the earliest Raspberry Pi models, which lack appropriate mounting holes, require additional mounting hardware to fit the stand-offs on the display PCB.
 
-The Touch Display is designed to work with all models of Raspberry Pi, however early models without mounting holes (the Raspberry Pi 1 Model A and B) will require additional mounting hardware to fit the HAT-sized stand-offs on the display PCB.
+You can mount a Raspberry Pi to the back of the Touch Display using its stand-offs and then connect the appropriate cables between each device, depending on your use case. You can also mount the Touch Display in a separate chassis if you have one available. The connections remain the same, though you may need longer cables depending on the chassis you use.
 
-=== Connecting a Raspberry Pi
+.A Raspberry Pi connected to the Touch Display
+image::images/GPIO_power-500x333.jpg[Image of Raspberry Pi connected to the Touch Display, width="70%"]
 
-The following image shows how to attach a Raspberry Pi directly to the back of the Touch Display using its standoffs. It also shows the connections you need to make between Raspberry Pi and the display's PCB. You can also mount the Touch Display in a separate chassis if you have one available. The connections will remain the same, though you may need longer cables depending on the chassis you use.
+Connect one end of the ribbon cable to the `RPI-DISPLAY` port on the Touch Display PCB so the side with the silver or gold pins faces away from the display. Then connect the other end of the ribbon cable to the `DISPLAY` port on the Raspberry Pi. The pins should face inward, towards the Raspberry Pi.
 
-image::images/GPIO_power-500x333.jpg[DSI Display pinout]
+If the ribbon cable isn't fully inserted, or it's not positioned correctly, you will experience issues with the display. You should always double-check this connection when troubleshooting, especially if you don't see anything on your display, or the display is showing a single colour.
 
-==== Connecting the display cable
-
-Connect one end of the ribbon cable to the `RPI-DISPLAY` port on the Touch Display PCB so the side with the blue stripe faces the display. Then connect the other end of the ribbon cable to the `DISPLAY` port on the Raspberry Pi. The blue stripe should face away from the Raspberry Pi.
-
-If the ribbon cable isn't fully inserted, or it's not positioned correctly, you will experience issues with the display. You should always double-check this connection when troubleshooting, especially if you don't see anything on your display, or the display is showing a single color.
-
-==== Powering the Touch Display
+=== Powering the Touch Display
 
 There are two options available to provide power to the Touch Display: using the Raspberry Pi's GPIO, or a separate micro USB power supply. We recommend using the Raspberry Pi to provide power to the Touch Display whenever possible.
 
-===== Provide power through the Raspberry Pi
+==== Provide power through the Raspberry Pi
 
 To power the Touch Display using a Raspberry Pi, you need to connect two jumper wires between the 5V and GND pins on xref::/../../computers/raspberry-pi.adoc#gpio-and-the-40-pin-header[Raspberry Pi's GPIO] and the 5V and GND pins on the display, as shown in the following illustration.
 
@@ -37,7 +32,7 @@ The other three pins on the Touch Display are used to connect the display to an 
 
 NOTE: An original Raspberry Pi is easily identified compared to other models; it is the only model with a 26-pin rather than 40-pin GPIO header connector.
 
-===== Power the Touch Display directly
+==== Power the Touch Display directly
 
 If you don't want to use a Raspberry Pi to provide power to the Touch Display, you can use a micro USB power supply instead. We recommend using the https://www.raspberrypi.com/products/micro-usb-power-supply/[Raspberry Pi 12.5W power supply] to make sure the display runs as intended.
 
@@ -51,7 +46,7 @@ LCD displays have an ideal viewing angle, and it may be necessary to change the 
 
 To set the screen orientation from the desktop environment, select the **Screen Configuration** option from the **Preferences** menu. Right click on the DSI display rectangle in the layout editor, select **Orientation**, then pick the best option to fit your needs.
 
-To set screen orientation on a headless setup, or while in console mode, you need to edit the kernel's `cmdline.txt` file to pass the required orientation to the system.
+To set screen orientation while in console mode, you need to edit the kernel's `cmdline.txt` file to pass the required orientation to the system.
 
 [source ,bash]
 ----

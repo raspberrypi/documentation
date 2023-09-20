@@ -2,14 +2,14 @@
 
 [NOTE]
 ====
-Older Raspberry Pi hardware, and older versions of Raspberry Pi OS, with X11 can install an on-screen keyboard and emulate right clicks on the touchscreen. 
+Older Raspberry Pi hardware (pre-Raspberry Pi 4), and older versions of Raspberry Pi OS (pre-Bookworm), with X11 can install an on-screen keyboard and emulate right-clicks on the touchscreen. 
 
-Run the following in a terminal to enable the keyboard:
+Run the following in a terminal to install the on-screen keyboard:
 ----
 sudo apt install matchbox-keyboard
 ----
 
-Add the following to `/etc/X11/xorg.conf` enable right click emulation:
+Add the following to `/etc/X11/xorg.conf` enable right-click emulation:
 
 ----
 Section "InputClass"
@@ -22,7 +22,6 @@ Section "InputClass"
    Option "EmulateThirdButtonMoveThreshold" "30"
 EndSection
 ----
-
 ====
 
 NOTE: The following instructions are for the original Raspberry Pi 1 Model A and B boards only. You can identify an original board as it is the only model with a 26-pin GPIO header, all other models have the now-standard 40-pin connector.
