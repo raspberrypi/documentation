@@ -1,7 +1,7 @@
 [[ip-address]]
-=== How to Find your IP Address
+=== How to find your IP address
 
-To find the local IP of your Raspberry Pi, use one of the following methods.
+To find the local IP address of your Raspberry Pi, use one of the following methods.
 
 ==== Desktop
 
@@ -9,7 +9,7 @@ Hover over the network icon in the system tray, and a tooltip will appear. This 
 
 image::images/network-tooltip.png[the Network Manager tooltip displaying a WiFi network name and IP address]
 
-==== Command Line
+==== Command line
 
 Run the following command to output your IP address to the command line:
 
@@ -17,13 +17,9 @@ Run the following command to output your IP address to the command line:
 hostname -I
 ----
 
-==== Boot Output
+==== Boot output
 
 If you use a display with your Raspberry Pi and you boot to the command line instead of the desktop, the boot sequence will include your IP address as one of the last few output messages before your login prompt.
-
-==== Router devices list
-
-In a web browser, navigate to your router's IP address. This is often `http://192.168.1.1`, but you may be able to find it printed on a label on your router. This will take you to a control panel. Then log in using your credentials, which is usually also printed on the router or sent to you in the accompanying paperwork. Browse to the list of connected devices or similar (all routers are different), and you should see some devices you recognise. Some devices are detected as PCs, tablets, phones, printers, etc. so you should recognise some and rule them out to figure out which is your Raspberry Pi. Also note the connection type; if your Raspberry Pi is connected with a wire there should be fewer devices to choose from.
 
 ==== Network Manager
 
@@ -87,7 +83,7 @@ IP6.GATEWAY:                            --
 This command outputs information about the various network interfaces accessible on your Raspberry Pi. Check the `GENERAL.TYPE` row to see which kind of network interface each block describes. For example, "ethernet" is the ethernet port on your device, and "wifi" refers to the WiFi chip built into some devices. You'll look at different blocks of output to find your IP address depending on the way your device accesses the internet:
 
 * if your device connects to the internet using WiFi, check the "wifi" block
-* if your device connects to the internet using the ethernet port, check the "eth0" block
+* if your device connects to the internet using the ethernet port, check the "ethernet" block
 
 Once you've identified the correct network interface block, look for a field named `IP4.ADDRESS[1]` for an IPv4 address or `IP6.ADDRESS[1]` for an IPv6 address. You can ignore the trailing slash and number (e.g. `/24`) in those fields.
 
@@ -116,6 +112,10 @@ If you change the system hostname of the Raspberry Pi (e.g., by editing `/etc/ho
 
 If you don't remember the hostname of the Raspberry Pi, but have a system with Avahi installed, you can browse all the hosts and services on the LAN with the https://linux.die.net/man/1/avahi-browse[`avahi-browse`] command.
 
+==== Router devices list
+
+In a web browser, navigate to your router's IP address. This is often `http://192.168.1.1`, but you may be able to find it printed on a label on your router. This will take you to a control panel. Then log in using your credentials, which is usually also printed on the router or sent to you in the accompanying paperwork. Browse to the list of connected devices or similar (all routers are different), and you should see some devices you recognise. Some devices are detected as PCs, tablets, phones, printers, etc. so you should recognise some and rule them out to figure out which is your Raspberry Pi. Also note the connection type; if your Raspberry Pi is connected with a wire there should be fewer devices to choose from.
+
 ==== nmap command
 
 The `nmap` command (Network Mapper) is a free and open-source tool for network discovery, available for Linux, macOS, and Windows.
@@ -129,7 +129,7 @@ To use `nmap` to scan the devices on your network, you need to know the subnet y
 * On *macOS*, go to `System Preferences` then `Network` and select your active network connection to view the IP address
 * On *Windows*, go to the Control Panel, then under `Network and Sharing Center`, click `View network connections`, select your active network connection and click `View status of this connection` to view the IP address
 
-Now you have the IP address of your computer, you will scan the whole subnet for other devices. For example, if your IP address is `192.168.1.5`, other devices will be at addresses like `192.168.1.2`, `192.168.1.3`, `192.168.1.4`, etc. The notation of this subnet range is `192.168.1.0/24` (this covers `192.168.1.0` to `192.168.1.255`).
+Now you have the IP address of your computer, you will scan the whole subnet for other devices. For example, if your IP address is `192.168.1.5`, other devices will use addresses like `192.168.1.2`, `192.168.1.6`, `192.168.1.20`, etc. The notation of this subnet range is `192.168.1.0/24` (this covers `192.168.1.0` to `192.168.1.255`).
 
 Now use the `nmap` command with the `-sn` flag (ping scan) on the whole subnet range. This may take a few seconds:
 
@@ -162,7 +162,7 @@ by `hostname -I`
 
 `fd00::ba27:ebff:feb6:f293 2001:db8:494:9d01:ba27:ebff:feb6:f293`
 
-The example shows two IP addresses. The first one is a so called unique local unicast address(`fc00::/7`). The second one is the global unicast address(`2000::/3`). It is also possible to see only one of them depending on your network (router) configuration. Both addresses are valid for reaching the Raspberry Pi within your LAN. The address out of `2000::/3` is accessible world wide, provided your router's firewall is opened.
+The example shows two IP addresses. The first one is a so called unique local unicast address(`fc00::/7`). The second one is the global unicast address (`2000::/3`). It is also possible to see only one of them depending on your network (router) configuration. Both addresses are valid for reaching the Raspberry Pi within your LAN. The address out of `2000::/3` is accessible world wide, provided your router's firewall is opened.
 
 Now use one of IPs from the first step to ping all local nodes:
 
@@ -199,7 +199,7 @@ rtt min/avg/max/mdev = 0.480/1.283/2.623/0.735 ms
 
 This should result in replies from all the nodes on your (W)LAN link, with associated DNS names.
 
-Exclude your own IP( here `2001:db8:494:9d01:ba27:ebff:feb6:f293` ),
+Exclude your own IP (here `2001:db8:494:9d01:ba27:ebff:feb6:f293`),
 then check the others by trying to connect them via SSH.
 
 ----
