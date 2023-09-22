@@ -23,10 +23,18 @@ TIP: Once enabled, you can access your WayVNC configuration at `~/.config/wayvnc
 ==== Enable VNC Server Graphically
 
 1. Boot into the graphical desktop on your Raspberry Pi.
-2. Click the Raspberry Pi icon in the task bar on your desktop.
+2. Click the Raspberry Pi icon in the system tray of your desktop.
 3. Select `Preferences` > `Raspberry Pi Configuration` from the menu.
++
+--
+image::images/raspberry-pi-configuration.png[Select Raspberry Pi Configuration from the Preferences menu in the system tray]
+--
 4. Navigate to the `Interfaces` tab.
 5. Click the radio button next to *VNC* into the active position.
++
+--
+image::images/vnc-enable.png[In the Interfaces tab, click the VNC toggle into the active position to enable VNC.]
+--
 6. Click the "OK" button to save your configuration changes.
 
 ==== Enable the VNC server on the command line
@@ -59,11 +67,33 @@ If you don't know the IP address of your device, see xref:remote-access.adoc#ip-
 1. Download https://tigervnc.org/[TigerVNC]. You can install the latest version from the https://github.com/TigerVNC/tigervnc/releases[Releases page of their GitHub repository]. Click on the link in the latest release, and find the binary for your platform. Windows users should download an `exe`; macOS users should download the `dmg`; Linux users should install the `jar`.
 2. On your client device, launch TigerVNC by double-clicking the binary.
 3. In the "VNC server" field, enter the IP address of your Raspberry Pi.
++
+--
+image::images/vnc-tigervnc-enter-ip.png[Entering the Raspberry Pi's local IP address into TigerVNC]
+--
 4. Click the "Connect" button to initiate a connection with the server.
    * If TigerVNC warns you that the "Hostname does not match the server certificate", click the "Yes" button to continue.
-   * If TigerVNC warns you that the "certificate has been signed by an unknown authority", click the "Yes" button to grant an exception for your Raspberry Pi.
++
+--
+image::images/vnc-tigervnc-cert-warning.png[TigerVNC warning about mismatched certificates]
+--
+* If TigerVNC warns you that the "certificate has been signed by an unknown authority", click the "Yes" button to grant an exception for your Raspberry Pi.
++
+--
+image::images/vnc-tigervnc-cert-signer-warning.png[TigerVNC warning about certificates signed by an unknown authority]
+--
 5. When prompted for a username and password, enter your credentials.
++
+--
+image::images/vnc-tigervnc-username-password.png[Entering a username and password to authenticate via TigerVNC]
+--
 6. Click the "OK" button to authenticate with the VNC server. If your credentials are correct, TigerVNC should open a window containing the desktop corresponding to your account on the Raspberry Pi. You should be able to move your mouse and keyboard to input text and interact with the desktop.
++
+--
+image::images/vnc-tigervnc-desktop.png[The desktop of a Raspberry Pi after successfully authenticating with TigerVNC]
+--
 
 TIP: If you can't see the cursor in your VNC client, enable the "Show dot when no cursor" input option in TigerVNC.
-
+--
+image::images/vnc-tigervnc-show-dot.png[TigerVNC option to render the cursor at all times as a dot]
+--
