@@ -24,12 +24,12 @@ TIP: Once enabled, you can access your WayVNC configuration at `~/.config/wayvnc
 
 1. Boot into the graphical desktop on your Raspberry Pi.
 2. Click the Raspberry Pi icon in the system tray of your desktop.
-3. Select `Preferences` > `Raspberry Pi Configuration` from the menu.
+3. Select *Preferences* > *Raspberry Pi Configuration* from the menu.
 +
 --
 image::images/raspberry-pi-configuration.png[Select Raspberry Pi Configuration from the Preferences menu in the system tray]
 --
-4. Navigate to the `Interfaces` tab.
+4. Navigate to the *Interfaces* tab.
 5. Click the radio button next to *VNC* into the active position.
 +
 --
@@ -50,9 +50,9 @@ sudo raspi-config
 ----
 --
 2. Navigate to *Interface Options*. Press `Enter` to select.
-3. Select `VNC`. Press `Enter` to select.
+3. Select *VNC*. Press `Enter` to select.
 4. Under "Would you like the VNC Server to be enabled?", highlight `<Yes>` and press `Enter`.
-5. Press `Enter` to return to the menu. Press Esc to exit `raspi-config`.
+5. Press `Enter` to return to the menu. Press `Esc` to exit `raspi-config`.
 
 === Connect to your Raspberry Pi
 
