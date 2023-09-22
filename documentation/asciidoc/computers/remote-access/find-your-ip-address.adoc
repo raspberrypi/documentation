@@ -157,27 +157,33 @@ Here you can see a device with hostname `raspberrypi` has IP address `192.168.1.
 
 ==== Getting IPv6 addresses by pinging from a second device 
 
-First find your own IP address(es), in other words the one of the computer you're using to find your Raspberry Pi's IP address
-by `hostname -I`
+First, find the IP address of the computer you're using with the following command:
 
-`fd00::ba27:ebff:feb6:f293 2001:db8:494:9d01:ba27:ebff:feb6:f293`
+----
+hostname -I
+----
 
-The example shows two IP addresses. The first one is a so called unique local unicast address(`fc00::/7`). The second one is the global unicast address (`2000::/3`). It is also possible to see only one of them depending on your network (router) configuration. Both addresses are valid for reaching the Raspberry Pi within your LAN. The address out of `2000::/3` is accessible world wide, provided your router's firewall is opened.
+You should see output similar to the following if your network uses IPv6:
+
+----
+fd00::ba27:ebff:feb6:f293 2001:db8:494:9d01:ba27:ebff:feb6:f293
+----
+
+The example shows two IP addresses. The first one is a _unique local unicast address_ (`fc00::/7`). The second one is the _global unicast address_ (`2000::/3`). You may see only one of them depending on your network configuration. You can reach your Raspberry Pi within your LAN using either address. The address out of `2000::/3` is accessible world wide, provided your router's firewall is opened.
 
 Now use one of IPs from the first step to ping all local nodes:
 
 ----
-ping -c 2 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293  ff02::1
 ping -c 2 -I 2001:db8:494:9d01:ba27:ebff:feb6:f293  ff02::1%eth0
 ----
 
-`-c 2` stands for sending two echo requests
+* `-c 2` sends two echo requests
 
-`-I` with the IP address, it sets the interface and the source address of the echo request,
-it is necessary to choose the interface's IP address,
-`eth0` isn't sufficient - the answer would be the local link address(`fe80::/10`), we need the global or local unicast address
+* `-I` sets the interface and the source address of the echo request
 
-`ff02::1` is a well known multicast address for all nodes on the link, so it behaves like a local broadcast, usually it is defined in `/etc/hosts` so you can also use the name (`ip6-allnodes` or `ipv6-allnodes`) instead of the literal address
+* `ff02::1` is a well-known multicast address for all nodes on the link, so it behaves like a local broadcast
+
+TIP: Usually a well-known multicast address is defined in `/etc/hosts`. As a result, you can also use `ip6-allnodes` or `ipv6-allnodes` instead of a literal address. Check your `/etc/hosts` file to be sure.
 
 Some newer systems expect the interface ID behind the multicast address.
 
@@ -215,6 +221,8 @@ Linux raspberrypi4 4.19.75-v7l+ #1270 SMP Tue Sep 24 18:51:41 BST 2019 armv7l
 
 pi@raspberrypi4:~ $
 ----
+
+When you successfully connect over SSH as demonstrated in the example above, you have identified the address of your Raspberry Pi.
 
 ==== Getting the IP address of a Raspberry Pi using your smartphone
 
