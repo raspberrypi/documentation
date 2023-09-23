@@ -2,6 +2,11 @@
 
 The Raspberry Pi Touch Display is an LCD display which connects to the Raspberry Pi through the DSI connector. In some situations, it allows for the use of both the HDMI and LCD displays at the same time (this requires software support).
 
+[.whitepaper, title="Implementing a DSI Driver on the Raspberry Pi", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003472-WP/Using-a-DSI-display.pdf]
+****
+This whitepaper is an introduction to writing a Display Serial Interface (DSI) driver for liquid crystal display (LCD) panels running under the Kernel Mode Setting (KMS) graphics system.
+****
+
 === Board Support
 
 The DSI display is designed to work with all models of Raspberry Pi, however early models that do not have mounting holes (the Raspberry Pi 1 Model A and B) will require additional mounting hardware to fit the HAT-dimensioned stand-offs on the display PCB.

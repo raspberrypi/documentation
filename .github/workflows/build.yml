@@ -23,7 +23,7 @@ jobs:
           echo "Pull requests based on master can only come from the develop branch of this repository"
           echo "Please check your base branch as it should be develop by default"
           exit 1
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: 3.9
@@ -39,7 +39,7 @@ jobs:
         with:
           version: 1.10.2
       - name: Install arm-none-eabi-gcc GNU Arm Embedded Toolchain
-        uses: carlosperate/arm-none-eabi-gcc-action@v1.6.3
+        uses: carlosperate/arm-none-eabi-gcc-action@v1.7.1
       - name: Install Doxygen
         run: |
           wget https://www.doxygen.nl/files/doxygen-1.9.6.linux.bin.tar.gz
