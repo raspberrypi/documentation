@@ -2,9 +2,9 @@
 
 ==== Using the camera for the first time
 
-NOTE: On Raspberry Pi 3 and earlier devices running _Bullseye_ you need to re-enable _Glamor_ in order to make the X-Windows hardware accelerated preview window work. To do this enter `sudo raspi-config` at a terminal window and then choose `Advanced Options`, `Glamor` and `Yes`. Finally quit `raspi-config` and let it reboot your Raspberry Pi.
+NOTE: On Raspberry Pi 3 and earlier devices running _Bullseye_ you need to re-enable _Glamor_ in order to make the X Windows hardware accelerated preview window work. To do this enter `sudo raspi-config` at a terminal window and then choose `Advanced Options`, `Glamor` and `Yes`. Finally quit `raspi-config` and let it reboot your Raspberry Pi.
 
-When running a Raspberry Pi OS based on _Bullseye_, the 5 basic `libcamera-apps` are already installed. In this case, official Raspberry Pi cameras will also be detected and enabled automatically.
+When running a recent version of Raspberry Pi OS, the 5 basic `libcamera-apps` are already installed. In this case, official Raspberry Pi cameras will also be detected and enabled automatically.
 
 You can check that everything is working by entering:
 
@@ -15,13 +15,11 @@ libcamera-hello
 
 You should see a camera preview window for about 5 seconds.
 
-Users who are still running _Buster_ should upgrade to _Bullseye_. The new _libcamera_-based stack is no longer supported there, and anyone still using _Buster_ should stay with the legacy camera stack.
-
-NOTE: Raspberry Pi 3 and older devices may not by default be using the correct display driver. Refer to the `/boot/config.txt` file and ensure that either `dtoverlay=vc4-fkms-v3d` or `dtoverlay=vc4-kms-v3d` is currently active. Please reboot if you needed to change this.
+NOTE: Raspberry Pi 3 and older devices running _Bullseye_ may not by default be using the correct display driver. Refer to the xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] file and ensure that either `dtoverlay=vc4-fkms-v3d` or `dtoverlay=vc4-kms-v3d` is currently active. Please reboot if you needed to change this.
 
 ==== If you do need to alter the configuration
 
-You may need to alter the camera configuration in your `/boot/config.txt` file if:
+You may need to alter the camera configuration in your `/boot/firmware/config.txt` file if:
 
 * You are using a 3rd party camera (the manufacturer's instructions should explain the changes you need to make).
 
@@ -30,7 +28,7 @@ You may need to alter the camera configuration in your `/boot/config.txt` file i
 If you do need to add your own `dtoverlay`, the following are currently recognised.
 
 |===
-| Camera Module | In `/boot/config.txt`
+| Camera Module | In `/boot/firmware/config.txt`
 
 | V1 camera (OV5647)
 | `dtoverlay=ov5647`
@@ -57,6 +55,18 @@ If you do need to add your own `dtoverlay`, the following are currently recognis
 | `dtoverlay=ov9281`
 |===
 
-To override the automatic camera detection, _Bullseye_ users will also need to delete the entry `camera_auto_detect=1` if present in the `config.txt` file. Your Raspberry Pi will need to be rebooted after editing this file. 
+To override the automatic camera detection, you will need to delete the entry `camera_auto_detect=1` if present in the `config.txt` file. Your Raspberry Pi will need to be rebooted after editing this file. 
 
-NOTE: Setting `camera_auto_detect=0` disables the boot time detection completely. 
+NOTE: Setting `camera_auto_detect=0` disables the boot-time detection completely. 
+
+=== Troubleshooting
+
+If the Camera Module isn't working correctly, there are number of things to try:
+
+* Is the ribbon cable attached to the Camera Serial Interface (CSI), not the Display Serial Interface (DSI)? The ribbon connector will fit into either port. The Camera port is located near the HDMI connector.
+* Are the ribbon connectors all firmly seated, and are they the right way round? They must be straight in their sockets.
+* Is the Camera Module connector, between the smaller black Camera Module itself and the PCB, firmly attached? Sometimes this connection can come loose during transit or when putting the Camera Module in a case. Using a fingernail, flip up the connector on the PCB, then reconnect it with gentle pressure. It engages with a very slight click. Don't force it; if it doesn't engage, it's probably slightly misaligned.
+* Have `sudo apt update` and `sudo apt full-upgrade` been run?
+* Is your power supply sufficient? The Camera Module adds about 200-250mA to the power requirements of your Raspberry Pi.
+* If you've checked all the above issues and the Camera Module is still not working, try posting on our forums for more help.
+

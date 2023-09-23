@@ -60,4 +60,4 @@ include::camera/v4l2.adoc[]
 
 include::camera/csi-2-usage.adoc[]
 
-include::camera/raspicam.adoc[]
+

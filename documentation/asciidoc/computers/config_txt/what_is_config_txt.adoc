@@ -1,6 +1,8 @@
 == What is `config.txt`?
 
-The Raspberry Pi uses a configuration file instead of the https://en.wikipedia.org/wiki/BIOS[BIOS] you would expect to find on a conventional PC. The system configuration parameters, which would traditionally be edited and stored using a BIOS, are stored instead in an optional text file named `config.txt`. This is read by the GPU before the ARM CPU and Linux are initialised. It must therefore be located on the first (boot) partition of your SD card, alongside `bootcode.bin` and `start.elf`. This file is normally accessible as `/boot/config.txt` from Linux, and must be edited as the `root` user. From Windows or OS X it is visible as a file in the only accessible part of the card. If you need to apply some of the config settings below, but you don't have a `config.txt` on your boot partition yet, simply create it as a new text file.
+NOTE: Prior to _Bookworm_, Raspberry Pi OS stored the boot partition at `/boot/`. Since _Bookworm_, the boot partition is located at `/boot/firmware/`.
+
+The Raspberry Pi uses a configuration file instead of the https://en.wikipedia.org/wiki/BIOS[BIOS] you would expect to find on a conventional PC. The system configuration parameters, which would traditionally be edited and stored using a BIOS, are stored instead in an optional text file named `config.txt`. This is read by the GPU before the ARM CPU and Linux are initialised. It must therefore be located on the first (boot) partition of your SD card, alongside `bootcode.bin` and `start.elf`. This file is normally accessible as `/boot/firmware/config.txt` from Linux, and must be edited as the `root` user. From Windows or OS X it is visible as a file in the only accessible part of the card. If you need to apply some of the config settings below, but you don't have a `config.txt` on your boot partition yet, simply create it as a new text file.
 
 Any changes will only take effect after you have rebooted your Raspberry Pi. After Linux has booted, you can view the current active settings using the following commands:
 
@@ -14,7 +16,7 @@ NOTE: There are some config settings that cannot be retrieved using `vcgencmd`.
 
 The `config.txt` file is read by the early-stage boot firmware, so it has a very simple file format. The format is a single `property=value` statement on each line, where `value` is either an integer or a string. Comments may be added, or existing config values may be commented out and disabled, by starting a line with the `#` character.
 
-There is a 98-character line length limit (previously 78) for entries - any characters past this limit will be ignored.
+There is a 98-character line length limit for entries - any characters past this limit will be ignored.
 
 Here is an example file:
 
@@ -30,10 +32,6 @@ display_auto_detect=1
 
 # Enable DRM VC4 V3D driver
 dtoverlay=vc4-kms-v3d
-max_framebuffers=2
-
-# Disable compensation for displays with overscan
-disable_overscan=1
 ----
 
 === Advanced Features

@@ -354,7 +354,7 @@ Setup and hold times related to the automatic assertion and de-assertion of the 
 
 The default Linux driver is `spi-bcm2835`.
 
-SPI0 is disabled by default. To enable it, use xref:configuration.adoc#raspi-config[raspi-config], or ensure the line `dtparam=spi=on` is not commented out in `/boot/config.txt`. By default it uses 2 chip select lines, but this can be reduced to 1 using `dtoverlay=spi0-1cs`. `dtoverlay=spi0-2cs` also exists, and without any parameters it is equivalent to `dtparam=spi=on`.
+SPI0 is disabled by default. To enable it, use xref:configuration.adoc#raspi-config[raspi-config], or ensure the line `dtparam=spi=on` is not commented out in xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]. By default it uses 2 chip select lines, but this can be reduced to 1 using `dtoverlay=spi0-1cs`. `dtoverlay=spi0-2cs` also exists, and without any parameters it is equivalent to `dtparam=spi=on`.
 
 To enable SPI1, you can use 1, 2 or 3 chip select lines, adding in each case:
 
@@ -364,9 +364,9 @@ dtoverlay=spi1-2cs  #2 chip select
 dtoverlay=spi1-3cs  #3 chip select
 ----
 
-to the `/boot/config.txt` file. Similar overlays exist for SPI2, SPI3, SPI4, SPI5 and SPI6.
+to the `/boot/firmware/config.txt` file. Similar overlays exist for SPI2, SPI3, SPI4, SPI5 and SPI6.
 
-The driver does not make use of the hardware chip select lines because of some limitations - instead it can use an arbitrary number of GPIOs as software/GPIO chip selects. This means you are free to choose any spare GPIO as a CS line, and all of these SPI overlays include that control - see `/boot/overlays/README` for details, or run (for example) `dtoverlay -h spi0-2cs` (`dtoverlay -a | grep spi` might be helpful to list them all).
+The driver does not make use of the hardware chip select lines because of some limitations - instead it can use an arbitrary number of GPIOs as software/GPIO chip selects. This means you are free to choose any spare GPIO as a CS line, and all of these SPI overlays include that control - see `/boot/firmware/overlays/README` for details, or run (for example) `dtoverlay -h spi0-2cs` (`dtoverlay -a | grep spi` might be helpful to list them all).
 
 ===== Speed
 
@@ -430,7 +430,7 @@ This can be used to test SPI send and receive. Put a wire between MOSI and MISO.
 
 [,bash]
 ----
-wget https://raw.githubusercontent.com/raspberrypi/linux/rpi-3.10.y/Documentation/spi/spidev_test.c
+wget https://raw.githubusercontent.com/raspberrypi/linux/rpi-6.1.y/tools/spi/spidev_test.c
 gcc -o spidev_test spidev_test.c
 ./spidev_test -D /dev/spidev0.0
 spi mode: 0

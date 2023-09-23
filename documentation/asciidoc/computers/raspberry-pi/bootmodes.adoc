@@ -8,7 +8,7 @@ USB host and Ethernet boot can be performed by BCM2837-based Raspberry Pis - tha
 
 NOTE: The Raspberry Pi 4B does not use the bootcode.bin file - instead the bootloader is located in an on-board EEPROM chip. See xref:raspberry-pi.adoc#raspberry-pi-4-boot-flow[Raspberry Pi 4 Bootflow] and  xref:raspberry-pi.adoc#raspberry-pi-4-boot-eeprom[SPI Boot EEPROM].
 
-Format an SD card as FAT32 and copy on the latest https://github.com/raspberrypi/firmware/raw/master/boot/bootcode.bin[`bootcode.bin`]. The SD card must be present in the Raspberry Pi for it to boot. Once bootcode.bin is loaded from the SD card, the Raspberry Pi continues booting using USB host mode.
+Format an SD card as FAT32 and copy on the latest https://github.com/raspberrypi/firmware/raw/master/boot/firmware/bootcode.bin[`bootcode.bin`]. The SD card must be present in the Raspberry Pi for it to boot. Once bootcode.bin is loaded from the SD card, the Raspberry Pi continues booting using USB host mode.
 
 This is useful for the Raspberry Pi 1, 2, and Zero models, which are based on the BCM2835 and BCM2836 chips, and in situations where a Raspberry Pi 3 fails to boot (the latest bootcode.bin includes additional bugfixes for the Raspberry Pi 3B, compared to the boot code burned into the BCM2837A0).
 

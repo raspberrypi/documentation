@@ -4,7 +4,7 @@ In a basic xref:os.adoc[Raspberry Pi OS] install, the boot files are stored on t
 
 When the Raspberry Pi is powered on, it loads various files from the boot partition/folder in order to start up the various processors, then it boots the Linux kernel.
 
-Once Linux has booted, the boot partition is mounted as `/boot`.
+Once Linux has booted, the boot partition is mounted as `/boot/firmware/`.
 
 === Boot Folder Contents
 
@@ -15,7 +15,7 @@ This is the bootloader, which is loaded by the SoC on boot, does some very basic
 ==== start.elf, start_x.elf, start_db.elf, start_cd.elf, start4.elf, start4x.elf, start4db.elf, start4cd.elf
 
 These are binary blobs (firmware) that are loaded on to the VideoCore GPU in the SoC, which then take over the boot process.
-`start.elf` is the basic firmware, `start_x.elf` also includes camera drivers and codecs, `start_db.elf` can be used for debugging purposes and `start_cd.elf` is a cut-down version of the firmware. `start_cd.elf` removes support for hardware blocks such as cameras, codecs and 3D as well as having initial framebuffer limitations. The cut-down firmware is automatically used when `gpu_mem=16` is specified in `config.txt`.
+`start.elf` is the basic firmware, `start_x.elf` also includes additional codecs, `start_db.elf` can be used for debugging purposes and `start_cd.elf` is a cut-down version of the firmware. `start_cd.elf` removes support for hardware blocks such as codecs and 3D as well as having initial framebuffer limitations. The cut-down firmware is automatically used when `gpu_mem=16` is specified in `config.txt`.
 
 `start4.elf`, `start4x.elf`, `start4db.elf` and `start4cd.elf` are equivalent firmware files specific to the Raspberry Pi 4-series (Model 4B, Pi 400, Compute Module 4 and Compute Module 4S).
 

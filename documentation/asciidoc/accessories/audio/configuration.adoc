@@ -6,13 +6,13 @@ image::images/gui.png[]
 
 There are a number of third-party audio software applications available for Raspberry Pi that will support the plug-and-play feature of our audio boards. Often these are used headless. They can be controlled via a PC or Mac application, or by a web server installed on Raspberry Pi, with interaction through a webpage.
 
-If you need to configure Raspberry Pi OS yourself, perhaps if you're running a headless system of your own and don't have the option of control via the GUI, you will need to make your Raspberry Pi audio board the primary audio device in Raspberry Pi OS, disabling the Raspberry Pi’s on-board audio device. This is done by editing the `/boot/config.txt` file. Using a Terminal session connected to your Raspberry Pi via SSH, run the following command to edit the file:
+If you need to configure Raspberry Pi OS yourself, perhaps if you're running a headless system of your own and don't have the option of control via the GUI, you will need to make your Raspberry Pi audio board the primary audio device in Raspberry Pi OS, disabling the Raspberry Pi’s on-board audio device. This is done by editing the xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] file. Using a Terminal session connected to your Raspberry Pi via SSH, run the following command to edit the file:
 
 ----
-$ sudo nano /boot/config.txt
+$ sudo nano /boot/firmware/config.txt
 ----
 
-Find the `dtparam=audio=on` line in the file and comment it out by placing a # symbol at the start of the line. Anything written after the # symbol in any given line will be disregarded by the program. Your ``/boot/config.txt`` file should now have the following entry:
+Find the `dtparam=audio=on` line in the file and comment it out by placing a # symbol at the start of the line. Anything written after the # symbol in any given line will be disregarded by the program. Your `/boot/firmware/config.txt` file should now contain the following entry:
 
 ----
 #dtparam=audio=on
@@ -24,7 +24,7 @@ Press CTRL+X, then Y and Enter to save, followed by a reboot of your Raspberry P
 $ sudo reboot
 ----
 
-Alternatively, the `/boot/config.txt` file can be edited directly onto the Raspberry Pi's microSD card, inserted into your usual computer. Using the default file manager, open the `boot` volume on the card and edit the `config.txt` file using an appropriate text editor, then save the file, eject the microSD card and reinsert it back into your Raspberry Pi.
+Alternatively, the `/boot/firmware/config.txt` file can be edited directly onto the Raspberry Pi's microSD card, inserted into your usual computer. Using the default file manager, open the `/boot/firmware/` volume on the card and edit the `config.txt` file using an appropriate text editor, then save the file, eject the microSD card and reinsert it back into your Raspberry Pi.
 
 === Attaching the HAT
 

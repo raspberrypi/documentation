@@ -1,52 +1,71 @@
-== Installing the Operating System
+== Installing the operating system
 
-Raspberry Pi recommend the use of https://www.raspberrypi.com/software/[Raspberry Pi Imager] to install an operating system on to your SD card. You will need another computer with an SD card reader to install the image. Raspberry Pi Imager can be run on another Raspberry Pi, but also works on Microsoft Windows, Apple macOS, and Linux.
+We recommend using the https://www.raspberrypi.com/software/[Raspberry Pi Imager] to install an operating system on to your SD card. You will need another computer with an SD card reader to install the image. Raspberry Pi Imager can be run on another Raspberry Pi, but also works on Microsoft Windows, Apple macOS, and Linux.
 
 NOTE: Before you start, don't forget to check the xref:getting-started.adoc#sd-cards[SD card requirements].
 
-IMPORTANT: NOOBS, or New Out Of the Box Software to give it its full name, was an SD card-based installer for Raspberry Pi computers; we no longer recommend or support using NOOBS. Going forward, please use Raspberry Pi Imager.
+IMPORTANT: NOOBS (New Out Of the Box Software) was an SD card-based installer for Raspberry Pi computers; we no longer recommend or support using NOOBS. Going forward, please use Raspberry Pi Imager.
 
-=== Using Raspberry Pi Imager
+=== Raspberry Pi Imager
 
-Raspberry Pi have developed a graphical SD card writing tool that works on Mac OS, Ubuntu 18.04, and Windows called https://www.raspberrypi.com/software/[Raspberry Pi Imager]; this is the easiest option for most users since it will download the image automatically and install it to the SD card.
+Raspberry Pi offers a free SD card writing tool that works on Mac OS, Ubuntu for x86, Windows, and Raspberry Pi OS called https://www.raspberrypi.com/software/[Raspberry Pi Imager]. This is the easiest installation option for most users since it will download the image automatically and install it to the SD card.
 
 video::ntaXWS8Lk34[youtube]
 
-Download the latest version of https://www.raspberrypi.com/software/[Raspberry Pi Imager] and install it. If you want to use Raspberry Pi Imager from a second Raspberry Pi, you can install it from a terminal using `sudo apt install rpi-imager`. Then:
+Download and install the latest version of https://www.raspberrypi.com/software/[Raspberry Pi Imager]. If you want to use Raspberry Pi Imager from a second Raspberry Pi, you can install it from a terminal using `sudo apt install rpi-imager`.
 
-* Connect an SD card reader with the SD card inside.
-* Open Raspberry Pi Imager and choose the required OS from the list presented.
-* Choose  the SD card you wish to write your image to.
-* Review your selections and click on the `Write` button to begin writing data to the SD Card.
+.Raspberry Pi Imager
+image::images/pi_imager_1.png[alt="Raspberry Pi Imager main window.",width="80%"]
 
-NOTE: If using Raspberry Pi Imager on Windows 10 with controlled folder access enabled, you will need to explicitly allow Raspberry Pi Imager permission to write the SD card. If this is not done, the imaging process will fail with a "failed to write" error.
+After starting the Raspberry Pi Imager, connect your micro SD card to your computer using an external or built-in SD card reader. If you have more than one mountable storage device connected to your computer, make sure you choose the correct card. 
 
-NOTE: You can see which operating systems are most often downloaded, on our https://rpi-imager-stats.raspberrypi.com/[statistics page].
+.Select your storage device
+image::images/pi_imager_3.png[alt="Storage selection options in Raspberry Pi Imager.",width="80%"]
 
-You can now insert the SD card into the Raspberry Pi and power it up. When your Raspberry Pi boots for the first time a xref:getting-started.adoc#configuration-on-first-boot[configuration wizard] will run that allows you to set up your Raspberry Pi.
+Next, select the OS you want to install. The current recommended version of Raspberry Pi OS is always at the top of the list.
 
-NOTE: In the past Raspberry Pi OS had a default user name and password; user name `pi`, with password `raspberry`. This is no longer the case. However if you are using an older version of the operating system, or you are working with an existing installation, this default user may be present. If you have not already done so, you should change the default password straight away to ensure your Raspberry Pi is xref:configuration.adoc#securing-your-raspberry-pi[secure].
+.Raspberry Pi operating systems
+image::images/pi_imager_2.png[alt="Operating system selections in Raspberry Pi Imager.",width="80%"]
 
-==== Advanced Options
+Review your selections and click *Write* to begin writing data to the SD Card. An admin prompt may display at this point. This is expected behavior and it's safe to continue.
 
-When you have the Raspberry Pi Imager open, and after you have selected the operating system to install, a cog wheel will appear allowing you to open an "Advanced Options" menu if it is supported by the operating system. This menu lets you carry out tasks like enabling SSH, or setting your Raspberry Pi's hostname, and configuring the default user before first boot.
+Optionally, you can click the cog wheel icon to open the <<Advanced options>> menu.
 
-NOTE: If you use the Advanced Options menu in Imager to configure your Raspberry Pi OS installation then the xref:getting-started.adoc#configuration-on-first-boot[configuration wizard] that normally runs on first boot will be skipped.
+NOTE: If using Raspberry Pi Imager on Windows 10 with controlled folder access enabled, you will need to explicitly allow Raspberry Pi Imager permission to write to the SD card. If this is not done, the imaging process will fail with a "failed to write" error.
 
-image::images/rpi_imager.png[width="80%"]
+After the Raspberry Pi OS installation is complete, insert the micro SD card into your Raspberry Pi and connect your monitor, mouse, and keyboard. Finally, connect the power supply to your Raspberry Pi. This should always be the last thing you connect to your device.
 
-Amongst other things the Advanced Options menu is useful for when you want to configure a xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless] Raspberry Pi.
+.Connect your power supply last
+image::images/peripherals/cable-all.png[alt="Attaching the power supply to a Raspberry Pi.",width="50%"]
 
-image::images/rpi_imager_2.png[width="80%"]
+The first time your Raspberry Pi boots, a xref:getting-started.adoc#configuration-on-first-boot[configuration wizard] will run so you can set up your Raspberry Pi.
 
-NOTE: In older versions of Imager you should push `Ctrl-Shift-X` to open the "Advanced" menu.
+NOTE: Current versions of the Raspberry Pi OS no longer have a default user name and password (`pi` and `raspberry`, respectively). If you are using an older version of the operating system, or are working with an existing installation, these defaults may be present. If you have not already done so, you should change the default password straight away to keep your Raspberry Pi xref:configuration.adoc#securing-your-raspberry-pi[secure].
 
-If you are installing Raspberry Pi OS Lite and intend to run it xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless], you will still need to create a new user account. Since you will not be able to create the user account on first boot, you *MUST* configure the operating system using the Advanced Menu.
+==== Advanced options
 
-=== Downloading an Image
+After you have selected the operating system to install, a cog wheel will appear allowing you to open the advanced options menu if it is supported by the operating system. This menu lets you carry out tasks like enabling SSH, or setting your Raspberry Pi's hostname, and configuring the default user before first boot. You can also use this menu to set up a xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless] Raspberry Pi.
 
-If you are using a different tool than Raspberry Pi Imager to write to your SD Card, most require you to download the image first, then use the tool to write it to the card. Official images for recommended operating systems are available to download from the Raspberry Pi website https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-32-bit[downloads page]. Alternative operating systems for Raspberry Pi computers are also available from some third-party vendors.
+.Advanced options menu
+image::images/rpi_imager_2.png[alt="Menu showing advanced configuration options.",width="80%"]
+
+If you're using an older version of Raspberry Pi Imager, press `Ctrl-Shift-X` to open the advanced options menu.
+
+NOTE: Using the advanced options to configure your installation will skip the xref:getting-started.adoc#configuration-on-first-boot[configuration wizard] that normally runs on first boot.
+
+WARNING: If you are installing Raspberry Pi OS Lite to run xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless], you need to create a new user account using the advanced options since you will not have access to the configuration wizard.
+
+=== Download an image
+
+Other software designed to write an operating system to an SD card usually requires you to download the system image first. Official images for Raspberry Pi operating systems are available to download from the Raspberry Pi website https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-32-bit[downloads page]. Alternative and unofficial operating systems for Raspberry Pi computers are available from some third-party vendors.
 
 You may need to unzip the downloaded file (`.zip`) to get the image file (`.img`) you need to write to the card.
 
-NOTE: The Raspberry Pi OS with desktop image contained in the ZIP archive is over 4GB in size and uses the https://en.wikipedia.org/wiki/Zip_%28file_format%29#ZIP64[ZIP64] format. To uncompress the archive, an unzip tool that supports ZIP64 is required. The following zip tools support ZIP64: http://www.7-zip.org/[7-Zip] for Windows, http://unarchiver.c3.cx/unarchiver[The Unarchiver] for macOS, and https://linux.die.net/man/1/unzip[unzip] on Linux.
+[NOTE]
+====
+Raspberry Pi OS with desktop Zip archives are over 4GB in size and use the https://en.wikipedia.org/wiki/Zip_%28file_format%29#ZIP64[ZIP64] format. To uncompress the archive, you need one of the following tools that support ZIP64:
+
+* http://www.7-zip.org/[7-Zip] for Windows.
+* http://unarchiver.c3.cx/unarchiver[The Unarchiver] for macOS.
+* https://linux.die.net/man/1/unzip[unzip] on Linux.
+====

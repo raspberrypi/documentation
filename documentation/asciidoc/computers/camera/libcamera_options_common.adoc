@@ -89,7 +89,7 @@ Example: `libcamera-hello -t 0`
 	--preview,	-p		Preview window settings <x,y,w,h>
 ----
 
-Sets the size and location of the preview window (both X Windows and DRM versions). It does not affect the resolution or aspect ratio of images being requested from the camera. The camera images will be scaled to the size of the preview window for display, and will be pillar/letter-boxed to fit.
+Sets the size and location of the preview window (both desktop and DRM versions). It does not affect the resolution or aspect ratio of images being requested from the camera. The camera images will be scaled to the size of the preview window for display, and will be pillar/letter-boxed to fit.
 
 Example: `libcamera-hello -p 100,100,500,500`
 
@@ -125,7 +125,7 @@ Example `libcamera-still -n -o test.jpg`
 	--info-text			Set window title bar text <string>
 ----
 
-The supplied string is set as the title of the preview window (when running under X Windows). Additionally the string may contain a number of `%` directives which are substituted with information from the image metadata. The permitted directives are
+The supplied string is set as the title of the preview window (when running on a desktop environment). Additionally the string may contain a number of `%` directives which are substituted with information from the image metadata. The permitted directives are
 
 |===
 | Directive | Substitution

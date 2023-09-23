@@ -198,13 +198,13 @@ NOTE: Selecting the wrong early console can prevent the Raspberry Pi from bootin
 
 === UARTs and Device Tree
 
-Various UART Device Tree overlay definitions can be found in the https://github.com/raspberrypi/linux[kernel GitHub tree]. The two most useful overlays are https://github.com/raspberrypi/linux/blob/rpi-5.4.y/arch/arm/boot/dts/overlays/disable-bt-overlay.dts[`disable-bt`] and https://github.com/raspberrypi/linux/blob/rpi-5.4.y/arch/arm/boot/dts/overlays/miniuart-bt-overlay.dts[`miniuart-bt`].
+Various UART Device Tree overlay definitions can be found in the https://github.com/raspberrypi/linux[kernel GitHub tree]. The two most useful overlays are https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/disable-bt-overlay.dts[`disable-bt`] and https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/miniuart-bt-overlay.dts[`miniuart-bt`].
 
 `disable-bt` disables the Bluetooth device and makes the first PL011 (UART0) the primary UART. You must also disable the system service that initialises the modem, so it does not connect to the UART, using `sudo systemctl disable hciuart`.
 
 `miniuart-bt` switches the Bluetooth function to use the mini UART, and makes the first PL011 (UART0) the primary UART. Note that this may reduce the maximum usable baud rate (see mini UART limitations below). You must also set the VPU core clock to a fixed frequency using either `force_turbo=1` or `core_freq=250`.
 
-The overlays `uart2`, `uart3`, `uart4`, and `uart5` are used to enable the four additional UARTs on the Raspberry Pi 4. There are other UART-specific overlays in the folder. Refer to `/boot/overlays/README` for details on Device Tree overlays, or run `dtoverlay -h overlay-name` for descriptions and usage information.
+The overlays `uart2`, `uart3`, `uart4`, and `uart5` are used to enable the four additional UARTs on the Raspberry Pi 4. There are other UART-specific overlays in the folder. Refer to `/boot/firmware/overlays/README` for details on Device Tree overlays, or run `dtoverlay -h overlay-name` for descriptions and usage information.
 
 You add a line to the `config.txt` file to apply a xref:configuration.adoc#device-trees-overlays-and-parameters[Device Tree overlay]. Note that the `-overlay.dts` part of the filename is removed. For example:
 

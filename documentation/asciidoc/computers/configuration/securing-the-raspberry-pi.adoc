@@ -279,11 +279,11 @@ Add the following section to the `jail.local` file. On some versions of fail2ban
 enabled  = true
 port     = ssh
 filter   = sshd
-logpath  = /var/log/auth.log
+backend  = systemd
 maxretry = 6
 ----
 
-As you can see, this section is named ssh, is enabled, examines the ssh port, filters using the `sshd` parameters, parses the `/var/log/auth.log` for malicious activity, and allows six retries before the detection threshold is reached. Checking the default section, we can see that the default banning action is:
+As you can see, this section is named ssh, is enabled, examines the ssh port, filters using the `sshd` parameters, parses the system log for malicious activity, and allows six retries before the detection threshold is reached. Checking the default section, we can see that the default banning action is:
 
 [,bash]
 ----
@@ -303,7 +303,7 @@ If you want to permanently ban an IP address after three failed attempts, you ca
 enabled  = true
 port     = ssh
 filter   = sshd
-logpath  = /var/log/auth.log
+backend  = systemd
 maxretry = 3
 bantime = -1
 ----

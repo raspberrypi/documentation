@@ -2,10 +2,6 @@
 
 For further help with `libcamera` and the `libcamera-apps`, the first port of call will usually be the https://forums.raspberrypi.com/viewforum.php?f=43[Raspberry Pi Camera Forum]. Before posting, it's helpful to:
 
-* Ensure your xref:../computers/os.adoc#using-apt[software is up to date].
-
-* If you are using _Buster_ please upgrade to the latest OS, as `libcamera-apps` is no longer supported there.
-
 * Make a note of your operating system version (`uname -a`).
 
 * Make a note of your `libcamera` and `libcamera-apps` versions (`libcamera-hello --version`).

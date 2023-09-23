@@ -4,9 +4,18 @@ If you are compiling a kernel module or similar, you will need the Linux Kernel 
 
 If you have cloned the entire kernel from github, the headers are already included in the source tree. If you don't need all the extra files, it is possible to install only the kernel headers from the Raspberry Pi OS repo.
 
+If you are using the 32-bit version of Raspberry Pi OS, run:
+
 [,bash]
 ----
- sudo apt install raspberrypi-kernel-headers
+ sudo apt install linux-headers-rpi-{v6,v7,v7l}
+----
+
+Or if you are using the 64-bit version of Raspberry Pi OS, run:
+
+[,bash]
+----
+ sudo apt install linux-headers-rpi-v8
 ----
 
 NOTE: It can take quite a while for this command to complete, as it installs a lot of small files. There is no progress indicator.

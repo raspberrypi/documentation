@@ -1,78 +1,10 @@
 == Useful Utilities
 
-There are several useful command line
+There are several useful command line utilities pre-installed in Raspberry Pi OS.
 
-=== tvservice
+=== kmsprint
 
-`tvservice` is a command line application used to get and set information about the display, targeted mainly at HDMI video and audio.
-
-Typing `tvservice` by itself will display a list of available command line options.
-
-==== -p, --preferred
-
-Power on the HDMI output with preferred settings.
-
-==== -o, --off
-
-Powers off the display output.
-
-NOTE: Powering off the output using this command will also destroy any framebuffers/dispmanx layers associated with the display. These are NOT re-established with a subsequent power on, so will result in a blank screen.
-
-A better option is to use the xref:os.adoc#vcgencmd[vcgencmd display_power] option, as this will retain any framebuffers, so when the power is turned back on the display will be the returned to the previous power on state.
-
-==== -e, --explicit="Group Mode Drive"
-
-Power on the HDMI with the specified settings
-
-Group can be one of `CEA`, `DMT`, `CEA_3D_SBS`, `CEA_3D_TB`, `CEA_3D_FP`, `CEA_3D_FS`. +
-Mode is one of the modes returned from the `-m, --modes` option. +
-Drive can be one of `HDMI`, `DVI`.
-
-==== -t, --ntsc
-
-Use 59.94Hz (NTSC frequency) rather than 60Hz for HDMI mode.
-
-==== -c, --sdtvon="Mode Aspect [P]"
-
-Power on the SDTV (composite output) with the specified mode, `PAL` or `NTSC`, and the specified aspect, `4:3`, `14:9`, `16:9`. The optional `P` parameter can be used to specify progressive mode.
-
-==== -m, --modes=Group
-
-where Group is `CEA` or `DMT`.
-
-Shows a list of display modes available in the specified group.
-
-==== -M, --monitor
-
-Monitors for any HDMI events, for example unplugging or attaching.
-
-==== -s, --status
-
-Shows the current settings for the display mode, including mode, resolution, and frequency.
-
-==== -a, --audio
-
-Shows the current settings for the audio mode, including channels, sample rate and sample size.
-
-==== -d, --dumpid=filename
-
-Save the current EDID to the specified filename. You can then use `edidparser <filename>` to display the data in a human readable form.
-
-==== -j, --json
-
-When used in combination with the `--modes` options, displays the mode information in JSON format.
-
-==== -n, --name
-
-Extracts the display name from the EDID data and shows it.
-
-==== -l, --list
-
-Lists all attached displays and their display ID.
-
-==== -v, --device=display
-
-Specifies the ID of the device to use; see the output of `--list` for available IDs.
+The `kmsprint` tool can be used to list the display-modes supported by the monitors attached to the Raspberry Pi. Use `kmsprint` to see details of the monitors connected to the Raspberry Pi, and `kmsprint -m` to see a list of all the display-modes supported by each monitor. You can find source code for the `kmsprint` utility https://github.com/tomba/kmsxx[on Github].
 
 === vcgencmd
 
@@ -90,10 +22,6 @@ The `vcos` command has two useful sub-commands:
 ==== version
 
 Displays the build date and version of the VideoCore firmware.
-
-==== get_camera
-
-Displays the enabled and detected state of the Raspberry Pi camera: `1` means yes, `0` means no. Whilst all firmware except cutdown versions support the camera, this support needs to be enabled by using xref:configuration.adoc#raspi-config[raspi-config].
 
 ==== get_throttled
 
@@ -232,10 +160,6 @@ Reports on the amount of memory addressable by the ARM  and the GPU. To show the
 
 Reports whether the specified CODEC type is enabled. Possible options for type are AGIF, FLAC, H263, H264, MJPA, MJPB, MJPG, *MPG2*, MPG4, MVC0, PCM, THRA, VORB, VP6, VP8, *WMV9*, *WVC1*. Those highlighted currently require a paid for licence (see the xref:config_txt.adoc#licence-key-and-codec-options[this config.txt section] for more info), except on the Raspberry Pi 4 and 400, where these hardware codecs are disabled in preference to software decoding, which requires no licence. Note that because the H.265 HW block on the Raspberry Pi 4 and 400 is not part of the VideoCore GPU, its status is not accessed via this command.
 
-===== get_lcd_info
-
-Displays the resolution and colour depth of any attached display.
-
 ===== mem_oom
 
 Displays statistics on any OOM (out of memory) events occurring in the VideoCore memory space.
@@ -248,103 +172,8 @@ Displays statistics from the relocatable memory allocator on the VideoCore.
 
 Returns the current speed voltage and temperature of the ring oscillator.
 
-===== hdmi_timings
+=== vclog
 
-Displays the current HDMI settings timings. See xref:config_txt.adoc#video-options[Video Config] for details of the values returned.
+`vclog` is an application to display log messages from the VideoCore GPU from Linux running on the ARM. It needs to be run as root.
 
-===== dispmanx_list
-
-Dump a list of all dispmanx items currently being displayed.
-
-===== display_power [0 | 1 | -1] [display]
-
-Show current display power state, or set the display power state. `vcgencmd display_power 0` will turn off power to the current display. `vcgencmd display_power 1` will turn on power to the display. If no parameter is set, this will display the current power state. The final parameter is an optional display ID, as returned by `tvservice -l` or from the table below, which allows a specific display to be turned on or off.
-
-Note that for the 7" Raspberry Pi Touch Display this simply turns the backlight on and off. The touch functionality continues to operate as normal.
-
-`vcgencmd display_power 0 7` will turn off power to display ID 7, which is HDMI 1 on a Raspberry Pi 4.
-
-|===
-| Display | ID
-
-| Main LCD
-| 0
-
-| Secondary LCD
-| 1
-
-| HDMI 0
-| 2
-
-| Composite
-| 3
-
-| HDMI 1
-| 7
-|===
-
-To determine if a specific display ID is on or off, use -1 as the first parameter.
-
-`vcgencmd display_power -1 7` will return 0 if display ID 7 is off, 1 if display ID 7 is on, or -1 if display ID 7 is in an unknown state, for example undetected.
-
-=== vcdbg
-
-`vcdbg` is an application to help with debugging the VideoCore GPU from Linux running on the ARM. It needs to be run as root. This application is mostly of use to Raspberry Pi engineers, although there are some commands that general users may find useful.
-
-`sudo vcdbg help` will give a list of available commands.
-
-NOTE: Only options of use to end users have been listed.
-
-==== version
-
-Shows various items of version information from the VideoCore.
-
-==== log
-
-Dumps logs from the specified subsystem. Possible options are:
-
-|===
-| log | Description
-
-| msg
-| Prints out the message log
-
-| assert
-| Prints out the assertion log
-
-| ex
-| Prints out the exception log
-
-| info
-| Prints out information from the logging headers
-
-| level
-| Sets the VCOS logging level for the specified category, n\|e\|w\|i\|t
-
-| list
-| List the VCOS logging levels
-|===
-
-e.g. To print out the current contents of the message log:
-
-`vcdbg log msg`
-
-==== malloc
-
-List all memory allocations current in the VideoCore heap.
-
-==== pools
-
-List the current status of the pool allocator
-
-==== reloc
-
-Without any further parameters, lists the current status of the relocatable allocator. Use `sudo vcdbg reloc small` to list small allocations as well.
-
-Use the subcommand `sudo vcdbg reloc stats` to list statistics for the relocatable allocator.
-
-==== hist
-
-Commands related to task history.
-
-Use `sudo vcdbg hist gnuplot` to dump task history in gnuplot format to task.gpt and task.dat
+`sudo vclog --msg` prints out the message log, whilst `sudo vclog --assert` prints out the assertion log.

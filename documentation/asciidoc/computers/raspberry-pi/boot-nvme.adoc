@@ -17,17 +17,13 @@ If you need to connect the NVMe drive to a PC or Mac you can use a USB adaptor: 
 
 === Required Software
 
-To boot from NVMe you need a recent version of the bootloader (after July 2021), and a recent version of the VideoCore firmware and Raspberry Pi OS Linux kernel. The latest Raspberry Pi OS release has everything you need, so you can use the xref:getting-started.adoc#using-raspberry-pi-imager[Raspberry Pi Imager] to install the software to your SSD.
+To boot from NVMe you need a recent version of the bootloader (after July 2021), and a recent version of the VideoCore firmware and Raspberry Pi OS Linux kernel. The latest Raspberry Pi OS release has everything you need, so you can use the xref:getting-started.adoc#raspberry-pi-imager[Raspberry Pi Imager] to install the software to your SSD.
 
 ==== Bootloader
 
 You might need to use `rpiboot` to update the CM4 bootloader. Instructions for building `rpiboot` and configuring the IO board to switch the ROM to usbboot mode are in the https://github.com/raspberrypi/usbboot[usbboot Github repository].
 
 Remember to add the NVMe boot mode `6` to BOOT_ORDER in `recovery/boot.conf`.
-
-==== Firmware and kernel
-
-You must have the latest versions of the VideoCore firmware and Raspberry Pi OS Linux kernel to boot directly from an NVMe SSD disk. The Raspberry Pi Bullseye and Buster Legacy releases have everything needed.
 
 If you are using CM4 lite, remove the SD card and the board will boot from the NVMe disk. For versions of CM4 with an eMMC, make sure you have set NVMe first in the boot order.
 
@@ -64,7 +60,7 @@ In Linux the SSD appears as `/dev/nvme0` and the "namespace" as `/dev/nvme0n1`. 
 ----
 NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 nvme0n1     259:0    0 232.9G  0 disk
-├─nvme0n1p1 259:1    0   256M  0 part /boot
+├─nvme0n1p1 259:1    0   256M  0 part /boot/firmware
 └─nvme0n1p2 259:2    0 232.6G  0 part /
 ----
 

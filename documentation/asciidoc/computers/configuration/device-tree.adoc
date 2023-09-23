@@ -470,9 +470,9 @@ The introduction of the Raspberry Pi 4, built around the BCM2711 SoC, brought wi
 
 There is therefore a need for a method of tailoring an overlay to multiple platforms with differing hardware. Supporting them all in a single .dtbo file would require heavy use of hidden ("dormant") fragments and a switch to an on-demand symbol resolution mechanism so that a missing symbol that isn't needed doesn't cause a failure. A simpler solution is to add a facility to map an overlay name to one of several implementation files depending on the current platform.
 
-The overlay map, which is rolling out with the switch to Linux 5.4, is a file that gets loaded by the firmware at bootup. It is written in DTS source format - `overlay_map.dts`, compiled to `overlay_map.dtb` and stored in the overlays directory.
+The overlay map is a file that gets loaded by the firmware at bootup. It is written in DTS source format - `overlay_map.dts`, compiled to `overlay_map.dtb` and stored in the overlays directory.
 
-This is an edited version of the current map file (see the https://github.com/raspberrypi/linux/blob/rpi-5.4.y/arch/arm/boot/dts/overlays/overlay_map.dts[full version]):
+This is an edited version of the current map file (see the https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/overlay_map.dts[full version]):
 
 ----
 / {
@@ -587,7 +587,7 @@ Here are some examples of different types of properties, with parameters to modi
 };
 ----
 
-For further examples, there is a large collection of overlay source files https://github.com/raspberrypi/linux/tree/rpi-5.4.y/arch/arm/boot/dts/overlays[hosted in the Raspberry Pi Linux GitHub repository].
+For further examples, there is a large collection of overlay source files https://github.com/raspberrypi/linux/tree/rpi-6.1.y/arch/arm/boot/dts/overlays[hosted in the Raspberry Pi Linux GitHub repository].
 
 [[part2.3]]
 ==== Exporting labels
@@ -624,7 +624,7 @@ This split is particularly important for runtime overlays, since step (i) occurs
 [[part3.1]]
 ==== DTBs, overlays and config.txt
 
-On a Raspberry Pi it is the job of the loader (one of the `start.elf` images) to combine overlays with an appropriate base device tree, and then to pass a fully resolved Device Tree to the kernel. The base Device Trees are located alongside `start.elf` in the FAT partition (/boot from Linux), named `bcm2711-rpi-4-b.dtb`, `bcm2710-rpi-3-b-plus.dtb`, etc. Note that some models (3A+, A, A+) will use the "b" equivalents (3B+, B, B+), respectively. This selection is automatic, and allows the same SD card image to be used in a variety of devices.
+On a Raspberry Pi it is the job of the loader (one of the `start.elf` images) to combine overlays with an appropriate base device tree, and then to pass a fully resolved Device Tree to the kernel. The base Device Trees are located alongside `start.elf` in the FAT partition (`/boot/firmware/` from Linux), named `bcm2711-rpi-4-b.dtb`, `bcm2710-rpi-3-b-plus.dtb`, etc. Note that some models (3A+, A, A+) will use the "b" equivalents (3B+, B, B+), respectively. This selection is automatic, and allows the same SD card image to be used in a variety of devices.
 
 NOTE: DT and ATAGs are mutually exclusive, and passing a DT blob to a kernel that doesn't understand it will cause a boot failure. The firmware will always try to load the DT and pass it to the kernel, since all kernels since rpi-4.4.y will not function without a DTB. You can override this by adding `device_tree=` in config.txt, which forces the use of ATAGs, which can be useful for simple "bare-metal" kernels.
 
@@ -639,7 +639,7 @@ dtoverlay=acme-board
 dtparam=foo=bar,level=42
 ----
 
-This will cause the loader to look for `overlays/acme-board.dtbo` in the firmware partition, which Raspberry Pi OS mounts on `/boot`. It will then search for parameters `foo` and `level`, and assign the indicated values to them.
+This will cause the loader to look for `overlays/acme-board.dtbo` in the firmware partition, which Raspberry Pi OS mounts on `/boot/firmware/`. It will then search for parameters `foo` and `level`, and assign the indicated values to them.
 
 The loader will also search for an attached HAT with a programmed EEPROM, and load the supporting overlay from there - either directly or by name from the "overlays" directory; this happens without any user intervention.
 
@@ -751,7 +751,7 @@ Usage:
     where <overlay> is the name of an overlay or 'dtparam' for dtparams
 Options applicable to most variants:
     -d <dir>    Specify an alternate location for the overlays
-                (defaults to /boot/overlays or /flash/overlays)
+                (defaults to /boot/firmware/overlays or /flash/overlays)
     -v          Verbose operation
 ----
 
@@ -795,7 +795,7 @@ The loading of overlays at runtime is a recent addition to the kernel, and so fa
 [[part3.6]]
 ==== Supported overlays and parameters
 
-As it is too time-consuming to document the individual overlays here, please refer to the https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README[README] file found alongside the overlay `.dtbo` files in `/boot/overlays`. It is kept up-to-date with additions and changes.
+As it is too time-consuming to document the individual overlays here, please refer to the https://github.com/raspberrypi/firmware/blob/master/boot/firmware/overlays/README[README] file found alongside the overlay `.dtbo` files in `/boot/firmware/overlays`. It is kept up-to-date with additions and changes.
 
 [[part4]]
 === Firmware parameters
@@ -963,7 +963,7 @@ See also: https://github.com/raspberrypi/usbboot#secure-boot[secure-boot]
 The loader will skip over missing overlays and bad parameters, but if there are serious errors, such as a missing or corrupt base DTB or a failed overlay merge, then the loader will fall back to a non-DT boot. If this happens, or if your settings don't behave as you expect, it is worth checking for warnings or errors from the loader:
 
 ----
-sudo vcdbg log msg
+sudo vclog --msg
 ----
 
 Extra debugging can be enabled by adding `dtdebug=1` to `config.txt`.
@@ -1003,10 +1003,10 @@ dtc -I fs -O dtb -o base.dtb /proc/device-tree
 
 This will include any overlays and parameters you have applied so far, either in `config.txt` or by loading them at runtime, which may or may not be what you want. Alternatively...
 
-b) copy it from the source DTBs in /boot. This won't include overlays and parameters, but it also won't include any other modifications by the firmware. To allow testing of all overlays, the `dtmerge` utility will create some of the board-specific aliases ("i2c_arm", etc.), but this means that the result of a merge will include more differences from the original DTB than you might expect. The solution to this is to use dtmerge to make the copy:
+b) copy it from the source DTBs in `/boot/firmware/`. This won't include overlays and parameters, but it also won't include any other modifications by the firmware. To allow testing of all overlays, the `dtmerge` utility will create some of the board-specific aliases ("i2c_arm", etc.), but this means that the result of a merge will include more differences from the original DTB than you might expect. The solution to this is to use dtmerge to make the copy:
 
 ----
-dtmerge /boot/bcm2710-rpi-3-b.dtb base.dtb -
+dtmerge /boot/firmware/bcm2710-rpi-3-b.dtb base.dtb -
 ----
 
 (the `-` indicates an absent overlay name).
@@ -1037,8 +1037,8 @@ which will return:
 You can also compare different overlays or parameters.
 
 ----
-dtmerge base.dtb merged1.dtb /boot/overlays/spi1-1cs.dtbo
-dtmerge base.dtb merged2.dtb /boot/overlays/spi1-2cs.dtbo
+dtmerge base.dtb merged1.dtb /boot/firmware/overlays/spi1-1cs.dtbo
+dtmerge base.dtb merged2.dtb /boot/firmware/overlays/spi1-2cs.dtbo
 dtdiff merged1.dtb merged2.dtb
 ----
 
@@ -1098,7 +1098,7 @@ device_tree=my-pi.dtb
 [[part5.4]]
 ==== Disabling Device Tree usage
 
-Since the switch to the 4.4 kernel and the use of more upstream drivers, Device Tree usage is required in Raspberry Pi Linux kernels. However, for bare metal and other OSs, the method of disabling DT usage is to add:
+Device Tree usage is required in Raspberry Pi Linux kernels. However, for bare metal and other OSs, the method of disabling DT usage is to add:
 
 ----
 device_tree=
