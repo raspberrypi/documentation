@@ -18,7 +18,7 @@ Connect the XVS wires to the 1.65V potential divider pull up.
 
 ==== Boot up both Raspberry Pis
 
-The file `/sys/module/imx477/parameters/trigger_mode` determines which board outputs pulses, or waits to recieve pulses (source and sink).
+The file `/sys/module/imx477/parameters/trigger_mode` determines which board outputs pulses, or waits to receive pulses (source and sink).
 This parameter can only be altered in superuser mode.
 
 On the sink, run:
@@ -57,7 +57,7 @@ This ensures that no frames are created or lost upon startup. The source whilst 
 
 === Using the GS Camera
 
-NOTE: The Global Shutter (GS) camera can also be operated in a synchonous mode. However, the source camera will record one extra frame. A much better alternative method to ensure that both cameras capture the same amount of frames is to use the xref:camera.adoc#external-trigger-on-the-gs-camera[external trigger method].
+NOTE: The Global Shutter (GS) camera can also be operated in a synchronous mode. However, the source camera will record one extra frame. A much better alternative method to ensure that both cameras capture the same amount of frames is to use the xref:camera.adoc#external-trigger-on-the-gs-camera[external trigger method].
 
 To operate as source and sink together, the Global Shutter Cameras also require connection of the XHS (horizontal sync) pins together. However, these do not need connection to a pullup resistor.
 
