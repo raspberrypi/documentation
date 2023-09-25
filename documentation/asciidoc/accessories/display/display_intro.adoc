@@ -124,4 +124,6 @@ Section "InputClass"
    Option "EmulateThirdButtonMoveThreshold" "30"
 EndSection
 ----
+
+This feature is not available when running Raspberry Pi OS Bookworm and Wayland.
 ====
