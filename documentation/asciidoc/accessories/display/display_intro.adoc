@@ -76,27 +76,7 @@ To rotate the screen, add `video=DSI-1:800x480@60,rotate=90` to the `cmdline.txt
 
 NOTE: It is not possible to rotate the DSI display separately from the HDMI display using the command line. If you have both attached they need to be set to the same rotation value.
 
-[NOTE]
-====
-If you are using Raspberry Pi OS Bullseye or earlier, you can install an on-screen keyboard by adding the following section to the `/etc/X11/xorg.conf` file.
-
-[source]
-----
-Section "InputClass"
-   Identifier "calibration"
-   Driver "evdev"
-   MatchProduct "FT5406 memory based driver"
-
-   Option "EmulateThirdButton" "1"
-   Option "EmulateThirdButtonTimeout" "750"
-   Option "EmulateThirdButtonMoveThreshold" "30"
-EndSection
-----
-====
-
-=== Touchscreen orientation
-
-You also have the option to change the rotation of the active touchscreen area independently of the display itself by adding a `dtoverlay` instruction in the xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`] file, as in the following example:
+You also have the option to change the rotation of the active touchscreen area independently of the orientation display itself by adding a `dtoverlay` instruction in the xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`] file,
 
 ----
 dtoverlay=rpi-ft5406,touchscreen-swapped-x-y=1,touchscreen-inverted-x=1
@@ -122,3 +102,21 @@ The options for the touchscreen are:
 | touchscreen-swapped-x-y
 | Swap X and Y coordinates
 |===
+
+[NOTE]
+====
+If you are using Raspberry Pi OS Bullseye or earlier, you can install an on-screen keyboard by adding the following section to the `/etc/X11/xorg.conf` file.
+
+[source]
+----
+Section "InputClass"
+   Identifier "calibration"
+   Driver "evdev"
+   MatchProduct "FT5406 memory based driver"
+
+   Option "EmulateThirdButton" "1"
+   Option "EmulateThirdButtonTimeout" "750"
+   Option "EmulateThirdButtonMoveThreshold" "30"
+EndSection
+----
+====
