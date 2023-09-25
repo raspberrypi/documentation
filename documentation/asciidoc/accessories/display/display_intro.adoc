@@ -29,6 +29,8 @@ The display has the following key features:
 * Outer dimensions: 192.96 × 110.76mm
 * Viewable area: 154.08 × 85.92mm
 
+=== Mounting the Touch Display 
+
 You can mount a Raspberry Pi to the back of the Touch Display using its stand-offs and then connect the appropriate cables between each device, depending on your use case. You can also mount the Touch Display in a separate chassis if you have one available. The connections remain the same, though you may need longer cables depending on the chassis you use.
 
 .A Raspberry Pi connected to the Touch Display
