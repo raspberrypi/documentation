@@ -1,6 +1,6 @@
 == Raspberry Pi Touch Display
 
-The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry Pi Touch Display] is an LCD display which connects to the Raspberry Pi using the DSI connector. While the panel is connected, you can use both it, and the the normal HDMI display output at the same time.
+The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry Pi Touch Display] is an LCD display that connects to the Raspberry Pi using the DSI connector. While the panel is connected, you can use both it, and the the normal HDMI display output at the same time.
 
 .The Raspberry Pi 7-inch Touch Display
 image::images/display.png[The Raspberry Pi 7-inch Touch Display, width="70%"]
@@ -28,6 +28,26 @@ The display has the following key features:
 * Power requirements: 200mA at 5V typical, at maximum brightness.
 * Outer dimensions: 192.96 × 110.76mm
 * Viewable area: 154.08 × 85.92mm
+
+[NOTE]
+====
+If you are using Raspberry Pi OS Bullseye or earlier, you can install an on-screen keyboard by adding the following section to the `/etc/X11/xorg.conf` file.
+
+[source]
+----
+Section "InputClass"
+   Identifier "calibration"
+   Driver "evdev"
+   MatchProduct "FT5406 memory based driver"
+
+   Option "EmulateThirdButton" "1"
+   Option "EmulateThirdButtonTimeout" "750"
+   Option "EmulateThirdButtonMoveThreshold" "30"
+EndSection
+----
+
+This feature is not available when running Raspberry Pi OS Bookworm and Wayland.
+====
 
 === Mounting the Touch Display 
 
@@ -107,23 +127,3 @@ The options for the touchscreen are:
 | touchscreen-swapped-x-y
 | Swap X and Y coordinates
 |===
-
-[NOTE]
-====
-If you are using Raspberry Pi OS Bullseye or earlier, you can install an on-screen keyboard by adding the following section to the `/etc/X11/xorg.conf` file.
-
-[source]
-----
-Section "InputClass"
-   Identifier "calibration"
-   Driver "evdev"
-   MatchProduct "FT5406 memory based driver"
-
-   Option "EmulateThirdButton" "1"
-   Option "EmulateThirdButtonTimeout" "750"
-   Option "EmulateThirdButtonMoveThreshold" "30"
-EndSection
-----
-
-This feature is not available when running Raspberry Pi OS Bookworm and Wayland.
-====
