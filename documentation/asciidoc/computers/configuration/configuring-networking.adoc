@@ -18,6 +18,18 @@ image::images/key.png[key]
 
 Enter the key and click *OK*, then wait a couple of seconds. The network icon will flash briefly to show that a connection is being made. When connected, the icon will stop flashing and show the signal strength.
 
+==== Connect to a Hidden Network
+
+If you want to use a hidden network, use the *Advanced Options* > *Connect to a Hidden Wi-Fi Network* in the network menu:
+
+image::images/network-hidden.png[the connect to a hidden wi-fi network option in advanced options]
+
+Then, enter the SSID for the hidden network. Ask your network administrator which type of security your network uses; while most home networks currently use WPA & WPA2 Personal security, public networks sometimes use WPA & WPA2 Enterprise security. Select the security type for your network, and enter your credentials:
+
+image::images/network-hidden-authentication.png[hidden wi-fi network authentication]
+
+Click the *Connect* button to initiate the network connection.
+
 [[wireless-networking-command-line]]
 === Using the Command Line
 
