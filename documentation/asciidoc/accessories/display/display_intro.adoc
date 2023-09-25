@@ -31,7 +31,7 @@ The display has the following key features:
 
 [NOTE]
 ====
-If you are using Raspberry Pi OS Bullseye or earlier, you can install an on-screen keyboard by adding the following section to the `/etc/X11/xorg.conf` file.
+If you are using Raspberry Pi OS Bullseye or earlier, you can install an on-screen keyboard by typing `sudo apt install matchbox-keyboard` in a terminal. Additionally you can enable right-click emulation by adding the following section to the `/etc/X11/xorg.conf` file.
 
 [source]
 ----
@@ -46,7 +46,7 @@ Section "InputClass"
 EndSection
 ----
 
-This feature is not available when running Raspberry Pi OS Bookworm and Wayland.
+These features are not available when running Raspberry Pi OS Bookworm.
 ====
 
 === Mounting the Touch Display 
