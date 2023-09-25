@@ -6,8 +6,6 @@ The DSI connector on both the Raspberry Pi 1 Model A and B boards does not have 
 
 Using the jumper cables, connect SCL/SDA on the GPIO header to the horizontal pins marked SCL/SDA on the display board. We also recommend that you power the Model A/B via the GPIO pins using the jumper cables.
 
-For the GPIO header pinout, see http://pinout.xyz/[this diagram].
-
 DSI display autodetection is disabled by default on these boards. To enable detection, add the following line to the xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] file:
 
 [source]
