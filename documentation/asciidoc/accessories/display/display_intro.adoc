@@ -2,6 +2,9 @@
 
 The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry Pi Touch Display] is an LCD display which connects to the Raspberry Pi using the DSI connector. While the panel is connected, you can use both it, and the the normal HDMI display output at the same time.
 
+.The Raspberry Pi 7-inch Touch Display
+image::images/display.png[The Raspberry Pi 7-inch Touch Display, width="70%"]
+
 The Touch Display will function with all models of Raspberry Pi. Although the earliest Raspberry Pi models, which lack appropriate mounting holes, require additional mounting hardware to fit the stand-offs on the display PCB.
 
 The display has the following key features: 
