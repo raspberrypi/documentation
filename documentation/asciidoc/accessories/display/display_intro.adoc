@@ -4,6 +4,28 @@ The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry P
 
 The Touch Display will function with all models of Raspberry Pi. Although the earliest Raspberry Pi models, which lack appropriate mounting holes, require additional mounting hardware to fit the stand-offs on the display PCB.
 
+The display has the following key features: 
+
+* 800×480 RGB LCD display
+* 24-bit colour
+* Industrial quality: 140-degree viewing angle horizontal, 130-degree viewing angle vertical
+* 10-point multi-touch touchscreen
+* PWM backlight control and power control over I2C interface
+* Metal-framed back with mounting points for Raspberry Pi display conversion board and Raspberry Pi
+* Backlight lifetime: 20000 hours
+* Operating temperature: -20 to +70 degrees centigrade
+* Storage temperature: -30 to +80 degrees centigrade
+* Contrast ratio: 500
+* Average brightness: 250 cd/m^2^
+* Viewing angle (degrees):
+ ** Top - 50
+ ** Bottom - 70
+ ** Left - 70
+ ** Right - 70
+* Power requirements: 200mA at 5V typical, at maximum brightness.
+* Outer dimensions: 192.96 × 110.76mm
+* Viewable area: 154.08 × 85.92mm
+
 You can mount a Raspberry Pi to the back of the Touch Display using its stand-offs and then connect the appropriate cables between each device, depending on your use case. You can also mount the Touch Display in a separate chassis if you have one available. The connections remain the same, though you may need longer cables depending on the chassis you use.
 
 .A Raspberry Pi connected to the Touch Display
@@ -13,11 +35,13 @@ Connect one end of the Flat Flexible Cable (FFC) to the `RPI-DISPLAY` port on th
 
 If the FFC isn't fully inserted, or it's not positioned correctly, you will experience issues with the display. You should always double-check this connection when troubleshooting, especially if you don't see anything on your display, or the display is showing a single colour.
 
+NOTE: A https://datasheets.raspberrypi.com/display/7-inch-display-mechanical-drawing.pdf[mechanical drawing] of the Touch Display is available for download.
+
 === Powering the Touch Display
 
 We recommend using the Raspberry Pi's GPIO to provide power to the Touch Display. However, if you want to power the display directly, you can use a separate micro USB power supply to provide power. 
 
-==== Provide power through the Raspberry Pi
+==== Using the Raspberry Pi
 
 To power the Touch Display using a Raspberry Pi, you need to connect two jumper wires between the 5V and GND pins on xref:../computers/raspberry-pi.adoc#gpio-and-the-40-pin-header[Raspberry Pi's GPIO] and the 5V and GND pins on the display, as shown in the following illustration.
 
@@ -32,7 +56,7 @@ The other three pins on the Touch Display are used to connect the display to an 
 
 NOTE: An original Raspberry Pi is easily identified compared to other models; it is the only model with a 26-pin rather than 40-pin GPIO header connector.
 
-==== Provide power through a micro USB power supply
+==== Using a micro USB supply
 
 If you don't want to use a Raspberry Pi to provide power to the Touch Display, you can use a micro USB power supply instead. We recommend using the https://www.raspberrypi.com/products/micro-usb-power-supply/[Raspberry Pi 12.5W power supply] to make sure the display runs as intended.
 
@@ -87,29 +111,3 @@ The options for the touchscreen are:
 | touchscreen-swapped-x-y
 | Swap X and Y coordinates
 |===
-
-=== Specifications
-
-* 800×480 RGB LCD display
-* 24-bit colour
-* Industrial quality: 140-degree viewing angle horizontal, 130-degree viewing angle vertical
-* 10-point multi-touch touchscreen
-* PWM backlight control and power control over I2C interface
-* Metal-framed back with mounting points for Raspberry Pi display conversion board and Raspberry Pi
-* Backlight lifetime: 20000 hours
-* Operating temperature: -20 to +70 degrees centigrade
-* Storage temperature: -30 to +80 degrees centigrade
-* Contrast ratio: 500
-* Average brightness: 250 cd/m^2^
-* Viewing angle (degrees):
- ** Top - 50
- ** Bottom - 70
- ** Left - 70
- ** Right - 70
-* Power requirements: 200mA at 5V typical, at maximum brightness.
-
-==== Mechanical specification
-
-* Outer dimensions: 192.96 × 110.76mm
-* Viewable area: 154.08 × 85.92mm
-* https://datasheets.raspberrypi.com/display/7-inch-display-mechanical-drawing.pdf[Download mechanical drawing (PDF)]
