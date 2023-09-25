@@ -64,7 +64,7 @@ Do not connect the GPIO pins on your Raspberry Pi to the display if you choose t
 
 WARNING: If you use a micro USB cable to power the display it must be mounted inside a chassis that blocks access to the display's PCB while it's in use.
 
-=== Screen orientation
+=== Changing the screen orientation
 
 If you want to physically rotate the display, or mount it in a specific position, you can use software to adjust the orientation of the screen to better match your setup. To set the screen orientation from the desktop environment, select **Screen Configuration** from the **Preferences** menu. Right-click on the DSI display rectangle in the layout editor, select **Orientation**, then pick the best option to fit your needs.
 
