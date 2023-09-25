@@ -66,22 +66,33 @@ WARNING: If you use a micro USB cable to power the display it must be mounted in
 
 === Screen orientation
 
-LCD displays have an ideal viewing angle, and it may be necessary to change the orientation of the display to find the perfect angle. If you need to physically rotate the display, or mount it in a specific position, you can use software to adjust the orientation of the screen to better match your setup.
-
-To set the screen orientation from the desktop environment, select **Screen Configuration** from the **Preferences** menu. Right-click on the DSI display rectangle in the layout editor, select **Orientation**, then pick the best option to fit your needs.
+If you want to physically rotate the display, or mount it in a specific position, you can use software to adjust the orientation of the screen to better match your setup. To set the screen orientation from the desktop environment, select **Screen Configuration** from the **Preferences** menu. Right-click on the DSI display rectangle in the layout editor, select **Orientation**, then pick the best option to fit your needs.
 
 image::images/display-rotation.png[Screenshot of orientation options in screen configuration, width="80%"]
 
-To set screen orientation from the command line, you need to edit the kernel's `/boot/firmware/cmdline.txt` file to pass the required orientation to the system.
-
-[source ,bash]
-----
-sudo nano /boot/firmware/cmdline.txt
-----
+To set screen orientation from the command line, you can edit the kernel's `/boot/firmware/cmdline.txt` file to pass the required orientation to the system.
 
 To rotate the screen, add `video=DSI-1:800x480@60,rotate=90` to the `cmdline.txt` configuration file. Make sure everything is on the same line; do not add any carriage returns. Possible rotation values are 0, 90, 180 and 270.
 
-NOTE: In console mode it is not possible to rotate the DSI display separately from the HDMI display. If you have both attached they need to be set to the same rotation value.
+NOTE: It is not possible to rotate the DSI display separately from the HDMI display using the command line. If you have both attached they need to be set to the same rotation value.
+
+[NOTE]
+====
+If you are using Raspberry Pi OS Bullseye or earlier, you can install an on-screen keyboard by adding the following section to the `/etc/X11/xorg.conf` file.
+
+[source]
+----
+Section "InputClass"
+   Identifier "calibration"
+   Driver "evdev"
+   MatchProduct "FT5406 memory based driver"
+
+   Option "EmulateThirdButton" "1"
+   Option "EmulateThirdButtonTimeout" "750"
+   Option "EmulateThirdButtonMoveThreshold" "30"
+EndSection
+----
+====
 
 === Touchscreen orientation
 
