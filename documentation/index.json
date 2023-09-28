@@ -12,6 +12,12 @@
                     "subpath": "getting-started.adoc"
                 },
                 {
+                    "title": "Raspberry Pi 5",
+                    "description": "Everything you need to know about Raspberry Pi 5",
+                    "image": "full-sized/Pi-5.png",
+                    "subpath": "raspberry-pi-5.adoc"
+                },
+                {
                     "title": "Raspberry Pi OS",
                     "description": "The official Raspberry Pi operating system",
                     "image": "full-sized/Raspberry-Pi-OS.png",

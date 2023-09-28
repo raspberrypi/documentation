@@ -1,0 +1,28 @@
+
+== MIPI CSI/DSI connectors
+
+The CSI and DSI ports found on previous models of Rasbpberry Pi have been combined into two multi-purpose CSI/DSI ports. To fit onto the board these now using the denser connector pinout prevously only found on Raspberry Pi Zero. You can connect either two displays, or two cameras (or one camera and one display) to these ports.
+
+NOTE: The Compute Module cable adaptors, see https://datasheets.raspberrypi.com/cmcda/cmcda-schematics.pdf[schematics] and https://datasheets.raspberrypi.com/cmcda/RPi-CMCDA-1P1.zip[design files], can be used.
+
+=== Cameras cables
+
+.Camera cables
+image::images/camera-cables.jpg[alt="Camera cables",width="70%"]
+
+There are three Flat Flexible Cable (FFC) available to connect CSI cameras to the Raspberry Pi 5:
+
+* 200 mm camera cable Standard to Mini
+* 300 mm camera cable Standard to Mini
+* 500 mm camera cable Standard to Mini
+
+=== Displays cables
+
+.Display cables
+image::images/display-cables.jpg[alt="Display cables",width="70%"]
+
+There are three Flat Flexible Cable (FFC) available to connect DSI displays to the Raspberry Pi 5:
+
+* 200 mm display cable Standard to Mini
+* 300 mm display cable Standard to Mini
+* 500 mm display cable Standard to Mini

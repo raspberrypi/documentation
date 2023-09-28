@@ -1,0 +1,5 @@
+
+== Power over Ethernet (PoE) connector
+
+.The Raspberry Pi PoE+ HAT for Raspberry Pi 5
+image::images/poe-prototype.jpg[alt="The PoE+ HAT for Raspberry Pi 5,width="70%"]
