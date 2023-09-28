@@ -601,7 +601,7 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | c04170
 | 5B
 | 1.0
-| 8GB
+| 4GB
 | Sony UK
 
 | d04170
