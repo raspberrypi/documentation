@@ -1,0 +1,14 @@
+
+== Raspberry Pi connector for PCIe
+
+
+=== Enabling PCIe
+
+You can enable the PCIe by setting "dtparam=pciex1" or "dtaparam=nvme" in the `config.txt` file. If you see,
+
+[source]
+----
+brcm-pcie 1000110000.pcie: link down
+----
+
+then the driver is enabled.

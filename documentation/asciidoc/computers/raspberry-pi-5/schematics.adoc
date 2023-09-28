@@ -1,0 +1,4 @@
+
+== Schematics and mechanical drawings
+
+* https://datasheets.raspberrypi.com/rpi5/raspberry-pi-5-mechanical-drawing.pdf[Mechanical Drawings, PDF]

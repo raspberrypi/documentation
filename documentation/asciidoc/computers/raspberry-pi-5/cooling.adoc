@@ -1,0 +1,47 @@
+
+== Cooling Raspberry Pi 5
+
+Raspberry Pi 5 has been designed to handle typical client workloads, uncased, with no active cooling. However for heavier loads there are two official options when it comes to cooling your Raspberry Pi 5. Both of these plug into the four-pin JST fan connector located in the upper right of the board between the 40-pin GPIO header and the USB 2 ports.
+
+Both of the available official accessories are actively managed by the Raspberry Pi firmware: at 60°C the fan will be turned on, at 67.5°C fan speed increases, and finally at 75°C the fan increases to full speed. When the temperature drops back below these limits the fan will spin down automatically.
+
+NOTE: The USB ports and fan connector both pull from the same 1.6A current limit.
+
+=== Official Case
+
+.The official Case for Raspberry Pi 5
+image::images/case.jpg[alt="Case with integrated fan for Raspberry Pi 5",width="70%"]
+
+The official case for Raspberry Pi 5 comes with an integrated fan. HATs can be fitted diretly on top of Raspberry Pi 5 by removing the fan, or on top of the fan by use of 14mm high standoffs and a 19mm GPIO extender. These are available separately from Authorised Resellers.
+
+The integrated 2.79 (max) CFM fan has fluid dynamic bearings selected for low noise and an extended operating lifetime. Air is drawn in through a 360-degree slot under the lid and blown over a heatsink attached to the BCM2712, and exhausted through connector apertures and vents in the base.
+
+=== Active Cooler
+
+.The Active Cooler for Raspberry Pi 5
+image::images/active-cooler.jpg[alt="Active Cooler for Raspberry Pi 5",width="70%"]
+
+The active cooler is a single-piece annodized aluminium heatsink with a integrated blower. It has pre-applied thermal pads for heat transfer, and is mounted to the Raspberry Pi 5 board directly using spring-loaded push pings, and connects to the same 4-pin JST connector as the case fan.
+
+A radial blower, again selected for low noise and extended operating lifetime, pushes air through an extruded and milled aluminium heatsink. The cooling performance of the Active Cooler is somewhat superior to the Fan Case, making it particularly suitable for overclockers.
+
+NOTE: Blowers are electromechanical systems that direct air towards a specific direction using a fan and designated channels. While fans displace large volumes of air and promote circulation within a designated area, blowers provide a degree of air pressurization to drive it out and forward.
+
+=== Thermals
+
+A stress test was started on all four cores of the Raspberry Pi 5 to load the CPU. Maximum power consumption on Raspberry Pi 5 with all four cores running is between 11 to 12W.
+
+Two main thermal management regimes were examined during ; no cooling, and managed active cooling using the new Active Cooler. The Raspberry Pi 5 was not placed inside a case. Instead, temperatures were observed while the board was sitting in the open air on the lab bench. 
+
+.Graph of CPU temeprature against time. 
+image::images/thermals.png[alt="Graphs of CPU temperature against time",width="100%"]
+
+With no cooling, we see an idle temperature of approximately 65°C, with a maximum temperature above 85°C during extended testing leading to sustained thermal throttling after the temperature reported by the processor rises above throttling limits. 
+
+Due to the passive heatsink with the Active Cooler fitted we see a much lower idle temperature, around 45°C. During extended testing under load the fan of the Cooler spins up at low speed to stabilise the CPU temperature at 60°C, with a maximum temperatures of 62 to 63°C being seen during the tests.
+
+Noise levels of between 35 to 40 dB were measured during the load test while the fan was in operation. The observed low noise levels were due to the low speeds of the blower. At no point during the extended stress testing require the fan spin up to full speed to maintain temperature control of the Raspberry Pi.
+
+Raspberry Pi 5 has been designed to handle typical client workloads, uncased, with no active cooling. For normal use adding cooling is therefore optional, although performace may improve with active cooling. However a heavy continuous load, such as rebuilding the Linux kernel, will force the new Raspberry Pi 5 into thermal throttling. For heavy loads thermal throttling can extend processing times and passive cooling is probably insufficient thermal management for heavy loads which extend beyond ~200 seconds of duration, with active cooling necessary to prevent thermal throttling from occurring. 
+
+Cooling of any type isn't mandatory, no harm will come to the Raspberry Pi if left uncooled, and while throttling under heavy load a Raspberry Pi 5 is still faster than an unthrottled Raspberry Pi 4. 
