@@ -330,6 +330,14 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 15: CM4S
 
+|
+|
+| 16: Internal use only
+
+|
+|
+| 17: 5B
+
 | RRRR (bits 0-3)
 | Revision
 | 0, 1, 2, etc.
@@ -584,6 +592,18 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | Zero 2 W
 | 1.0
 | 512MB
+| Sony UK
+
+| c04170
+| 5B
+| 1.0
+| 8GB
+| Sony UK
+
+| d04170
+| 5B
+| 1.0
+| 8GB
 | Sony UK
 |===
 
