@@ -1,4 +1,4 @@
-== Configuring Networking
+#Configuring Networking
 
 Raspberry Pi OS provides a Graphical User Interface (GUI) for setting up wireless connections. Users of Raspberry Pi OS Lite and headless machines can set up wireless networking from the command line with https://developer-old.gnome.org/NetworkManager/stable/nmcli.html[`nmcli`].
 
