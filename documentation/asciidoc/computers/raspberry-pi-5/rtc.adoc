@@ -1,11 +1,18 @@
 
 == Real Time Clock (RTC)
 
-The Raspberry Pi 5 includes an RTC module. This may be battery powered (e.g. 3V coin cell battery), connected to J5 (BAT) connector. However, it is still has uses without a battery.
+The Raspberry Pi 5 includes an RTC module. This may be battery powered, via the J5 (BAT) connector on the board located to the right of the USB-C power connector. However, even without a battery backup the RTC is useable
 
-You can set a wake alarm and switch to a very low power state (e.g. 3mA). When alarm time is reached, it will power back on. You could imagine using this for periodic (e.g. time-lapse images) jobs.
+You can set a wake alarm while will switch the board to a very low power state (approximately 3mA). When alarm time is reached, the board will power back on. You could imagine using this for periodic jobs, e.g. time lapse imagery.
 
-To support the low powered mode for wake up alarms you want this bootloader config:
+To support the low powered mode for wake up alarms you should edit the bootloader config,
+
+[source,bash]
+----
+sudo -E rpi-eeprom-config --edit
+----
+
+adding the following two lines.
 
 [source, bash]
 ----
@@ -13,14 +20,7 @@ POWER_OFF_ON_HALT=1
 WAKE_ON_GPIO=0
 ----
 
-use this to edit them:
-
-[source,bash]
-----
-sudo -E rpi-eeprom-config --edit
-----
-
-You can test with:
+You can test the functionality with with:
 
 [source,bash]
 ----
@@ -28,7 +28,7 @@ echo +600 | sudo tee /sys/class/rtc/rtc0/wakealarm
 sudo halt
 ----
 
-That will halt (in a very low power state) then wake and restart after 10 minutes.
+That will halt the board into a very low power state, then wake and restart after 10 minutes.
 
 The RTC also provides the time on boot. e.g. in `dmesg`:
 
@@ -53,9 +53,9 @@ This setting is persistent, so you should only have to do this once.
 
 === Adding a backup battery
 
-WARNING: We do not recommend using a primary Lithium cell for the RTC. 
+WARNING: We do not recommend using a primary Lithium cell for the RTC as it has a trickle charge circuit which, while disabled by default, if enabled will kill the cell quite quickly. 
 
 .Lithium-manganese rechargeable RTC battery
 image::images/rtc-battery.jpg[alt="Lithium-manganese rechargeable RTC battery",width="70%"]
 
-The official battery part is a rechargeable Lithium Manganese coin cell, with a pre-fitted two-pin JST plug and adhesive mounting pad. This is suitable for powering the Raspberry Pi 5 RTC when the main power supply for the board is disconnected.
+The official battery part is a rechargeable Lithium Manganese coin cell, with a pre-fitted two-pin JST plug and adhesive mounting pad. This is suitable for powering the Raspberry Pi 5 RTC when the main power supply for the board is disconnected with a power-off current draw is single-digit µA, giving a retention retention time measured in months.
