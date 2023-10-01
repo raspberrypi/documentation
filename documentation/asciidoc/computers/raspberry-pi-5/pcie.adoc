@@ -4,11 +4,25 @@
 
 === Enabling PCIe
 
-You can enable the PCIe by setting "dtparam=pciex1" or "dtaparam=nvme" in the `config.txt` file. If you see,
+By default mthe PCIe header is not enabled To enable it you can add the following options into `/boot/firmware/config.txt` and reboot:
 
 [source]
 ----
-brcm-pcie 1000110000.pcie: link down
+# Enable the PCIe External connector.
+dtparam=pciex1
 ----
 
-then the driver is enabled.
+NOTE: A more memorable alias for `pciex1` exists, so you can alternatively add `dtparam=nvme` to the `/boot/firmware/config.txt` file.
+
+The connection is certified for Gen 2.0 speeds (5 GT/sec), but you can force it to Gen 3.0 (10 GT/sec) if you add the following lines
+
+[source]
+----
+# Enable the PCIe External connector.
+dtparam=pciex1
+
+# Force Gen 3.0 speeds
+dtparam=pciex1_gen=3
+----
+
+WARNING: The Raspberry Pi 5 is not certified for Gen 3.0 speeds, and connections to PCIe devices at these speeds may be unstable. 
