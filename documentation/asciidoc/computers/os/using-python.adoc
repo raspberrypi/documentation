@@ -180,7 +180,7 @@ We can again check we're in a separate environment by using `pip list`,
 
 [source,bash]
 ----
-(env) $ pip list
+(.env) $ pip list
 Package    Version
 ---------- -------
 pip        23.0.1
@@ -191,7 +191,7 @@ and leave it using `deactivate`.
 
 [source,bash]
 ----
-(env) $ deactivate
+(.env) $ deactivate
 $
 ----
 
