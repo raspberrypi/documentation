@@ -171,7 +171,7 @@ and prove to yourself you've done so by checking the installed packages using `p
 
 ==== Using a separate environment for each user
 
-An alternative method to to creating a virtual environment for each of your Python projects is to create a single virtual environment for your user account and then activate that environment before running any of your Python code. This approach may be prefered if you commonly install the same set of modules for each project, and don't want to have to bother creating individual Python environments for each project essentially just duplicating your environment.
+An alternative method to creating a virtual environment for each of your Python projects is to create a single virtual environment for your user account and then activate that environment before running any of your Python code. This approach may be prefered if you commonly install the same set of modules for each project, and don't want to have to bother creating individual Python environments for each project essentially just duplicating your environment.
 
 [source,bash]
 ----
