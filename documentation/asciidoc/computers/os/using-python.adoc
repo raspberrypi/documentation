@@ -1,6 +1,6 @@
 == Python on Raspberry Pi
 
-Python 3 is installed by default on Raspberry Pi OS and is used for many important functions. Interfering with the system Python installation can therefore cause problems for your operating system, so its important that if you install third-party Python libaries you use the correct package management tools.
+Python 3 is installed by default on Raspberry Pi OS and is used for many important functions. Interfering with the system Python installation can therefore cause problems for your operating system, so it's important that if you install third-party Python libaries you use the correct package management tools.
 
 There are two routes to installing libaries into the default `python` distribution. Firstly you can use `apt` and install pre-configured system packages, or alternatively you can use `pip` to install packages that are not distributed as part of Rapsberry Pi OS.
 
@@ -55,7 +55,7 @@ note: If you believe this is a mistake, please contact your Python installation 
 hint: See PEP 668 for the detailed specification.
 ----
 
-This error is generated because you're trying to install a third-party package into the system Python. There has been a long-standing practical problem for Python users has been conflicts between OS package managers like `pat` and Python-specific package management tools like `pip`. These conflicts include both Python-level API incompatibilities and conflicts over file ownership.
+This error is generated because you're trying to install a third-party package into the system Python. A long-standing practical problem for Python users has been conflicts between OS package managers like `apt` and Python-specific package management tools like `pip`. These conflicts include both Python-level API incompatibilities and conflicts over file ownership.
 
 Therefore from _Bookworm_ onwards packages installed via `pip` must be installed into a Python Virtal Environment using `venv`. A virtual environment is a container where you can safely install third-party modules so they won't interfere with, or break, your system Python.
 
@@ -169,7 +169,7 @@ and prove to yourself you've done so by checking the installed packages using `p
 
 ==== Using a separate environment for each user
 
-An alternative method to creating a virtual environment for each of your Python projects is to create a single virtual environment for your user account and then activate that environment before running any of your Python code. This approach may be prefered if you commonly install the same set of modules for each project, and don't want to have to bother creating individual Python environments for each project essentially just duplicating your environment.
+An alternative method to creating a virtual environment for each of your Python projects is to create a single virtual environment for your user account and then activate that environment before running any of your Python code. This approach may be preferred if you commonly install the same set of modules for each project, and don't want to have to bother creating individual Python environments for each project essentially just duplicating your environment.
 
 [source,bash]
 ----
