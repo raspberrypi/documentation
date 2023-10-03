@@ -71,7 +71,7 @@ One way you can proceed is to create a new virtual environment for each Python p
 ----
 $ mkdir my_project
 $ cd my_project
-$ python3.8 -m venv env
+$ python -m venv env
 ----
 
 if you now look inside the `my_project` directory you'll see a directory called `env`.
