@@ -1,14 +1,14 @@
 
 == Introduction
 
+IMPORTANT: If you are using a Raspberry Pi for the first time please see our instructions on xref:getting-started.adoc#setting-up-your-raspberry-pi[how to get started].
+
 .Raspberry Pi 5
 image::images/pi5-labelled.png[alt="Labelled diagram of the Raspberry Pi 5",width="100%"]
 
 Featuring a 64-bit quad-core Arm Cortex-A76 processor running at 2.4GHz, Raspberry Pi 5 delivers a ×2 to ×3 increase in CPU performance relative to Raspberry Pi 4. Alongside a substantial uplift in graphics performance from an 800MHz VideoCore VII GPU; dual 4Kp60 display output over HDMI; and state-of-the-art camera support from a rearchitected Raspberry Pi Image Signal Processor, it provides a smooth desktop experience for consumers, and opens the door to new applications for industrial customers.
 
 For the first time, this is a full-size Raspberry Pi computer using silicon built in-house at Raspberry Pi. The RP1 provides the bulk of the I/O capabilities for Raspberry Pi 5, and delivers a step change in peripheral performance and functionality. Aggregate USB bandwidth is more than doubled, yielding faster transfer speeds to external UAS drives and other high-speed peripherals; the dedicated two-lane 1Gbps MIPI camera and display interfaces present on earlier models have been replaced by a pair of four-lane 1.5Gbps MIPI transceivers, tripling total bandwidth, and supporting any combination of up to two cameras or displays; peak SD card performance is doubled, through support for the SDR104 high-speed mode; and for the first time the platform exposes a single-lane PCI Express 2.0 interface, providing support for high-bandwidth peripherals.
-
-=== Key features
 
 Key features include:
 
@@ -37,15 +37,22 @@ Key features include:
 ** RTC battery connector
 * Power button
 
-=== Power button
+=== Turning it off and back on again
 
-The Raspberry Pi 5 has a power button. However, when you plug your Raspberry Pi into power it will automatically turn on without having to push the button. 
+When you plug your Raspberry Pi into power for the first time it will automatically turn on and boot into the operating system without having to push the button. 
 
-While your Raspberry Pi is running you can initiate a clean shutdown by pressing the Power Button, and then releasing it. If you want to force a hard shutdown, you should press and hold the Power Button.
+While your Raspberry Pi is running you can initiate a clean shutdown by briefly pressing the power button located on the left-hand side of the board, and then releasing it. This will cause a Desktop menu to appear asking whether you want to Shutdown, Reboot, or Logout. You can select whether you want to shutdown or reboot, or alternatively pressing the power button briefly for a second time will initiate a clean shutdown.
 
-If the Raspberry Pi board is powered, but turned off, pressing the power button will restart the board.
+.Shutting down your Raspberry Pi 5 using the power button.
+image::images/shutdown.jpg[alt="Desktop menu asking whether you want to Shutdown, Reboot, or Logout",width="70%"]
 
-Default shutdown wattage is around 1 to 1.4W, this can be decreased by manually editing the EEPROM configuration, `sudo rpi-eeprom-config -e` and change the settings to:
+NOTE: If you are running your Raspberry Pi headless without a monitor or Desktop, press the power button twice to shutdown.
+
+If you want to force a hard shutdown, you should press and hold the Power Button.
+
+If the Raspberry Pi board is shutdown, but still powered, pressing the power button will restart the board.
+
+Default shutdown wattage is around 1 to 1.4W. However this can be decreased by manually editing the EEPROM configuration, `sudo rpi-eeprom-config -e` and change the settings to:
 
 [source]
 ----
@@ -66,3 +73,5 @@ sudo apt update
 sudo apt upgrade
 sudo rpi-eeprom-update -a
 ----
+
+If a firmware update is available you will be prompted to install it and your Raspberry Pi will reboot.
