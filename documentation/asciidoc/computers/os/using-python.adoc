@@ -23,6 +23,8 @@ to install the pre-built library.
 
 Using `apt` makes installing larger packages, like `numpy` which has many native dependencies including a Fortran compiler, much simpler than installing individual packages using Python's own package management system.
 
+If you want to install a Package called "foobar" you can can use `apt search foobar` to search for the exact package name. It's likely these packages will be called `python-foobar` or `python3-foobar`.
+
 === About Python virtual enivronments
 
 In previous versions of the operating system you used to be able to directly install libraries system wide using the package installer for Python, commonly known as `pip`. You'll find the following sort of command in many tutorials online.
