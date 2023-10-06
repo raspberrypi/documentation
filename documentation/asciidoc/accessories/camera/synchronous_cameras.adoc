@@ -6,7 +6,7 @@ The other camera can then listen for this sync pulse, and capture a frame at the
 
 === Using the HQ Camera
 
-For correct operation, both cameras require a 1.65v pull up voltage on the XVS line, which is created by a potential divider through the 3.3v and GND pins on the Raspberry Pi.
+For correct operation, both cameras require a 1.65V pull up voltage on the XVS line, which is created by a potential divider through the 3.3V and GND pins on the Raspberry Pi.
 
 image::images/synchronous_camera_wiring.jpg[alt="Image showing potential divider setup",width="50%"]
 
