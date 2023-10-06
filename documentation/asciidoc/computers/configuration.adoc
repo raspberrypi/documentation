@@ -4,6 +4,8 @@ include::configuration/configuring-networking.adoc[]
 
 include::configuration/headless.adoc[]
 
+include::configuration/host-wireless-network.adoc[]
+
 include::configuration/use-a-proxy.adoc[]
 
 include::configuration/hdmi-config.adoc[]
