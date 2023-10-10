@@ -3,7 +3,7 @@
 === Raspberry Pi RP1
 
 .Architecture of the RP1
-image::images/rp1.jpg[alt="Architecture diagram of the RP1",width="50%"]
+image::images/rp1.jpg[alt="Architecture diagram of the RP1",width="70%"]
 
 The RP1 is a 12 × 12mm, 0.65mm-pitch BGA, “southbridge” which provides the majority of the I/O capabilities for Raspberry Pi 5. Access to peripherals from BCM2712 is done via the RP1 on Raspberry Pi 5. It provides:
 
@@ -20,3 +20,4 @@ The RP1 is a 12 × 12mm, 0.65mm-pitch BGA, “southbridge” which provides the 
 * Low-speed peripherals (SPI, UART, I2C, PWM, GPIO, I2S)
 * Delta Sigma PWM audio out
 
+More information on RP1 can be found in the https://datasheets.raspberrypi.com/rp1/rp1-peripherals.pdf[RP1 Peripherals] document.

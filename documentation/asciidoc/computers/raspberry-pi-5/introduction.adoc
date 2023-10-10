@@ -63,6 +63,13 @@ BOOT_ORDER=0xf416
 
 This should drop the shutdown power consumption to around 0.01W.
 
+==== Adding your own power button
+
+.The J2 jumper
+image::images/j2.jpg[alt="The J2 jumper on Raspberry Pi 5",width="70%"]
+
+The J2 jumper, located between the RTC battery connector and the board edge, is a breakout allowing you to add your own power button to Raspberry Pi 5 by adding a Normally Open (NO) momentary switch bridging the two pads. Briefly closing this switch will perform the same actions as the onboard power button.
+
 === Updating your firmware
 
 While firmware updates are rare, if you run into a problem with your Raspberry Pi you may want to check to see if one is available. You can do so as below:
