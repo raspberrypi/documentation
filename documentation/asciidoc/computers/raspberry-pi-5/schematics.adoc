@@ -2,3 +2,4 @@
 == Schematics and mechanical drawings
 
 * https://datasheets.raspberrypi.com/rpi5/raspberry-pi-5-mechanical-drawing.pdf[Mechanical Drawings, PDF]
+* https://datasheets.raspberrypi.com/rpi5/RaspberryPi5-step.zip[STEP file] for Raspberry Pi 5
