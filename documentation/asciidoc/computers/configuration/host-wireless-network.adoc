@@ -15,43 +15,7 @@ With this network configuration, wireless clients can all communicate with each 
 
 NOTE: The Raspberry Pi 4, Raspberry Pi 3, and Raspberry Pi Zero W can host a wireless network using the built-in wireless module. Raspberry Pi models that lack a built-in module support this functionality using a separate wireless dongle.
 
-=== Prerequisites
-
-To host a wireless network with your Raspberry Pi, you will need the following:
-
-* a Raspberry Pi with a wireless module (built-in or separate)
-* a wireless client, such as a laptop or smartphone, to test your new wireless network
-
-=== Setup
-
-You can configure a hosted wireless network on your Raspberry Pi through the Network Manager app on the desktop or on the command line with `nmcli`.
-
-==== Graphical desktop
-
-To create a hosted wireless network using the Network Manager app on the desktop, complete the following steps:
-
-1. Click the network icon in the system tray. Select *Advanced Options* > *Create Wi-Fi Hotspot*.
-+
---
-image::images/create-hotspot-network-menu.png[Opening the Hotspot creation menu from the desktop]
---
-2. Enter a network name.
-+
---
-image::images/create-hotspot-dialog.png[The Network Manager Hotspot creation menu]
---
-3. From the *Wi-Fi Security* dropdown, select *WPA and WPA2 Personal*.
-4. Enter a password. WPA encryption requires a password at least 8 characters long.
-5. Click the *Create* button to begin hosting a wireless network from your Raspberry Pi.
-
-To disable the network:
-
-1. Click the network icon in the system tray. Select *Turn Off Wireless LAN*.
-2. Click the network icon in the system tray. Select *Turn On Wireless LAN*.
-
-The wireless module should automatically connect to your preferred wireless network when you complete the second step. If it doesn't, pick a wireless network from the dropdown.
-
-==== Command line
+=== Enable hotspot
 
 To create a hosted wireless network on the command line, run the following command, replacing the `<example-network-name>` and `<example-password>` placeholders with your own values:
 
@@ -59,7 +23,11 @@ To create a hosted wireless network on the command line, run the following comma
 sudo nmcli device wifi hotspot ssid <example-network-name> password <example-password>
 ----
 
-To disable the network, run the following command:
+Use another wireless client, such as a laptop or smartphone, to connect to the network. Look for a network with a SSID matching `<example-network-name>`. Enter your network password, and you should connect successfully to the network. If your Raspberry Pi has internet access via an Ethernet connection or a second wireless adapter, you should be able to access the internet.
+
+=== Disable hotspot
+
+To disable the hotspot network and resume use of your Pi as a wireless client, run the following command:
 
 ----
 sudo nmcli device disconnect wlan0
@@ -99,7 +67,7 @@ sudo nmcli connection add type ethernet slave-type bridge \
 
 Finally, add your wireless hotspot connection to the bridge. You can either add an existing hotspot interface or create a new one:
 
-* If you have already created a wireless hotspot connection, add the existing interface to the bridge with the following command:
+* If you have already created a wireless hotspot connection using the instructions above, add the existing interface to the bridge with the following command:
 +
 ----
 sudo nmcli connection modify 'Hotspot' master bridge0
