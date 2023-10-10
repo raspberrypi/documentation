@@ -1,7 +1,7 @@
 
 == Cooling Raspberry Pi 5
 
-Raspberry Pi 5 has been designed to handle typical client workloads, uncased, with no active cooling. However for heavier loads there are two official options when it comes to cooling your Raspberry Pi 5. Both of these plug into the four-pin JST fan connector located in the upper right of the board between the 40-pin GPIO header and the USB 2 ports.
+Raspberry Pi 5 has been designed to handle typical client workloads, uncased, with no active cooling. However for heavier loads there are two official options when it comes to cooling your Raspberry Pi 5. Both of these plug into the four-pin JST PWM fan connector located in the upper right of the board between the 40-pin GPIO header and the USB 2 ports.
 
 Both of the available official accessories are actively managed by the Raspberry Pi firmware: at 60°C the fan will be turned on, at 67.5°C fan speed increases, and finally at 75°C the fan increases to full speed. When the temperature drops back below these limits the fan will spin down automatically.
 
