@@ -35,7 +35,6 @@ NOTE: The Raspberry Pi 4, Raspberry Pi 3, and Raspberry Pi Zero W can host a wir
 To host a wireless network with your Raspberry Pi, you will need the following:
 
 * a Raspberry Pi with a wireless module (built-in or separate)
-* administrative access to your Raspberry Pi
 * a wireless client, such as a laptop or smartphone, to test your new wireless network
 
 === Setup
