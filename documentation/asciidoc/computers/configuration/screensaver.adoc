@@ -1,6 +1,6 @@
 == Configure Screen Blanking
 
-You can configure your Raspberry Pi to blank the screen after a period of inactivity.
+You can configure your Raspberry Pi to blank the screen after a period of inactivity. By default, Raspberry Pi OS blanks the screen after 10 minutes of inactivity when screen blanking is enabled.
 
 === Desktop
 
