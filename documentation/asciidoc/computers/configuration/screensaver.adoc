@@ -37,10 +37,9 @@ The `dpms_timeout` variable controls the number of seconds of inactivity require
 
 === Console
 
-The `raspi-config` screen blanking configuration only effects desktop sessions. *Console mode*, when your Raspberry Pi is connected to a monitor and keyboard with only a terminal for input, uses the `consoleblank` setting.
+The `dpms_timeout` screen blanking configuration used by Raspberry Pi Configuration only effects desktop sessions. In *console mode*, when your Raspberry Pi is connected to a monitor and keyboard with only a terminal for input, use the `consoleblank` setting in the boot command line.
 
 ==== Set console mode screen blanking
-
 
 To change the console mode screen blanking configuration, open `/boot/firmware/cmdline.txt` in a text editor as an administrator:
 
