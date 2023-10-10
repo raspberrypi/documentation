@@ -9,14 +9,14 @@ The USB-C standard, used by the Raspberry Pi 4 supply, is limited to 5V at 3A, f
 
 NOTE: It's not possible to use older USB "dumb" cables and connectors to provide more than 15W even with a USB-PD capable supply.
 
-While any USB-PD capable phone charges advertise greater than 15W of power. However, virtually all of them achieve this by increasing the voltage instead of providing more current at +5V. 
-
-If you are using a power supply that cannot provide 5A at +5V on first boot you will be warned by the operating system that the current draw to peripherals will be restricted.
+While any USB-PD capable phone charges advertise greater than 15W of power. However, virtually all of them achieve this by increasing the voltage instead of providing more current at +5V. If you are using a power supply that cannot provide 5A at +5V on first boot you will be warned by the operating system that the current draw to peripherals will be restricted.
 
 .On screen warning of under-voltage event
 image::images/firstboot-powerwarning.png[alt="On screen warning of under-voltage event in Raspberry Pi OS",width="70%"]
 
 We recommend the official Raspberry Pi Power Supply, which has been specifically designed to consistently provide +5V despite rapid fluctuations in current draw. Those fluctuations in demand are something that happens a lot when you’re using peripherals with the Raspberry Pi and something that other supplies—designed to provide consistent current for charging cellphones—usually don’t cope with all that well. It also has an attached micro USB cable, which means that you don’t accidentally use a poor-quality cable—something that can be an issue.
+
+WARNING: If you are using a third-party USB-PD capable multi-port power supply plugging an additional device into the supply, as well as your Raspberry Pi, will cause a renegotiation between the supply and the Raspberry Pi. This will happen seamlessly if the Raspberry Pi is powered, but if the Raspberry Pi is plugged in, and powered down this renegotiation may cause the Raspberry Pi to boot.
 
 NOTE: Raspberry Pi 5 makes use of the Renesas DA9091 “Gilmour” power-management IC (PMIC). This integrates eight separate switch-mode power supplies to generate the various voltages required by the board, including a quad-phase core supply, capable of providing 20 amps of current to power the Cortex-A76 cores and other digital logic in BCM2712.
 
