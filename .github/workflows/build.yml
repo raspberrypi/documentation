@@ -35,7 +35,7 @@ jobs:
           rubygems: 3.3.22
           bundler: 2.3.22
           bundler-cache: true
-      - uses: seanmiddleditch/gha-setup-ninja@v3
+      - uses: seanmiddleditch/gha-setup-ninja@v4
         with:
           version: 1.10.2
       - name: Install arm-none-eabi-gcc GNU Arm Embedded Toolchain
