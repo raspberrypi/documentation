@@ -1,20 +1,62 @@
-== Configuring Screen Blanking
+== Configure Screen Blanking
 
-You can configure your Raspberry Pi to use a screen saver or to blank the screen.
+You can configure your Raspberry Pi to blank the screen after a period of inactivity.
 
-=== On Console
+=== Desktop
 
-When running without a graphical desktop, Raspberry Pi OS will blank the screen after 10 minutes without user input, e.g. mouse movement or key presses.
+You can control screen blanking using the *Screen Blanking* option in the Raspberry Pi Configuration menu.
 
-The current setting, in seconds, can be displayed using:
+==== Raspberry Pi Configuration
+
+Click the Raspberry Pi button in the menu bar. Navigate to *Preferences* > *Raspberry Pi Configuration*.
+
+image::images/pi-configuration.png[opening the Raspberry Pi Configuration menu from the desktop]
+
+Select the *Display* tab. Toggle the *Screen Blanking* radio button into the on position. Press *OK* to confirm your selection.
+
+image::images/blanking.png[toggle Screen Blanking on in the Raspberry Pi Configuration menu]
+
+==== CLI
+
+You can enable and disable screen blanking with the `raspi-config` CLI tool. Run the following command to open the tool:
+
+----
+sudo raspi-config
+----
+
+Use the arrow keys to navigate and the *Enter* key to select. Select `Display Options` > `Screen Blanking`. Choose `yes` with the arrow keys to enable screen blanking, or `no` to disable screen blanking.
+
+Alternatively, you can add or edit the following lines to `~/.config/wayfire.ini`:
+
+----
+[idle]
+dpms_timeout=600
+----
+
+The `dpms_timeout` variable controls the number of seconds of inactivity required before Raspberry Pi OS blanks your screen. For example, a value of `600` blanks the screen after 600 seconds, or 10 minutes. Set the value to `0` to never blank the screen.
+
+=== Console
+
+The `raspi-config` screen blanking configuration only effects desktop sessions. *Console mode*, when your Raspberry Pi is connected to a monitor and keyboard with only a terminal for input, uses the `consoleblank` setting.
+
+==== Set console mode screen blanking
+
+
+To change the console mode screen blanking configuration, open `/boot/firmware/cmdline.txt` in a text editor as an administrator:
+
+----
+sudo nano /boot/firmware/cmdline.txt
+----
+
+You can adjust the number of seconds before Raspberry Pi OS blanks the console here. For instance, add `consoleblank=600` to disable HDMI output after 600 seconds of inactivity. Set the value to `0` to never blank the screen.
+
+Changes to `cmdline.txt` only go into effect after a reboot. Use the `reboot` command to reboot your Raspberry Pi.
+
+==== View current screen blanking setting
+
+You can display the current console blank time in seconds with the following command:
 
 [,bash]
 ----
 cat /sys/module/kernel/parameters/consoleblank
 ----
-
-You can use the `raspi-config` tool to disable screen blanking. Note that the screen blanking setting in `raspi-config` also controls screen blanking when the graphical desktop is running.
-
-=== On the Desktop
-
-Raspberry Pi OS will blank the graphical desktop after 10 minutes without user input. You can disable this by changing the 'Screen Blanking' option in the Raspberry Pi Configuration tool, available from the *Preferences* menu. The 'Screen Blanking' option also controls screen blanking when the graphical desktop is not running.
