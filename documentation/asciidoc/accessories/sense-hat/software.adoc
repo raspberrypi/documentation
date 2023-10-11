@@ -35,7 +35,7 @@ You can find more information on how to use the Sense HAT in the Raspberry Pi Pr
 
 `sense-hat` is the officially supported library for the Sense HAT; it provides access to all of the on-board sensors and the LED matrix.
 
-Complete documentation for the library can be found at https://pythonhosted.org/sense-hat/[pythonhosted.org/sense-hat].
+Complete documentation for the library can be found at https://sense-hat.readthedocs.io/en/latest/[sense-hat.readthedocs.io].
 
 === Using the Sense HAT with {cpp}
 
