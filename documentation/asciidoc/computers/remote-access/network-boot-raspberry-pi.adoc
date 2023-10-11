@@ -18,10 +18,10 @@ Install Raspberry Pi OS Lite, or Raspberry Pi OS with desktop, on the SD card in
 
 [,bash]
 ----
-echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
+echo program_usb_boot_mode=1 | sudo tee -a /boot/firmware/config.txt
 ----
 
-This adds `program_usb_boot_mode=1` to the end of `/boot/config.txt`. Reboot the Raspberry Pi with `sudo reboot`. Once the client Raspberry Pi has rebooted, check that the OTP has been programmed with:
+This adds `program_usb_boot_mode=1` to the end of xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]. Reboot the Raspberry Pi with `sudo reboot`. Once the client Raspberry Pi has rebooted, check that the OTP has been programmed with:
 
 [,bash]
 ----
@@ -31,7 +31,14 @@ vcgencmd otp_dump | grep 17:
 
 Ensure the output `0x3020000a` is correct.
 
-The client configuration is almost done. The final thing to do is to remove the `program_usb_boot_mode` line from `config.txt`. You can do this with `sudo nano /boot/config.txt`, for example. Finally, shut the client Raspberry Pi down with `sudo poweroff`.
+The client configuration is almost done. As a final step, disable USB booting. Run the following command:
+
+[,bash]
+----
+sudo nano /boot/firmware/config.txt
+----
+
+Remove the line that contains the text `program_usb_boot_mode=1`. Finally, shut the client Raspberry Pi down with `sudo poweroff`.
 
 ==== Raspberry Pi 4 Model B
 
@@ -242,7 +249,7 @@ Now monitor the `dnsmasq` log:
 
 [,bash]
 ----
-tail -F /var/log/daemon.log
+journalctl -f
 ----
 
 You should see something like this:
@@ -257,7 +264,7 @@ First, press +++<kbd>+++CTRL + C+++</kbd>+++ to exit the monitoring state. Then 
 
 [,bash]
 ----
-cp -r /boot/* /tftpboot
+cp -r /boot/firmware/* /tftpboot
 ----
 
 Since the tftp location has changed, restart `dnsmasq`:
@@ -302,7 +309,7 @@ Finally, edit `/nfs/client1/etc/fstab` and remove the `/dev/mmcblk0p1` and `p2` 
 
 [,bash]
 ----
-echo "10.42.0.211:/tftpboot /boot nfs defaults,vers=4.1,proto=tcp 0 0" | sudo tee -a /nfs/client1/etc/fstab
+echo "10.42.0.211:/tftpboot /boot/firmware/ nfs defaults,vers=4.1,proto=tcp 0 0" | sudo tee -a /nfs/client1/etc/fstab
 ----
 
 Good luck! If it doesn't boot on the first attempt, keep trying. It can take a minute or so for the Raspberry Pi to boot, so be patient.

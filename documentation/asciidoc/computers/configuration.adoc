@@ -4,15 +4,13 @@ include::configuration/configuring-networking.adoc[]
 
 include::configuration/headless.adoc[]
 
-include::configuration/access-point-routed.adoc[]
-
-include::configuration/access-point-bridged.adoc[]
+include::configuration/host-wireless-network.adoc[]
 
 include::configuration/use-a-proxy.adoc[]
 
 include::configuration/hdmi-config.adoc[]
 
-include::configuration/display-rotation.adoc[]
+include::configuration/display-resolution.adoc[]
 
 include::configuration/audio-config.adoc[]
 

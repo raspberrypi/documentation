@@ -1,96 +1,111 @@
 == Raspberry Pi Touch Display
 
-The Raspberry Pi Touch Display is an LCD display which connects to the Raspberry Pi through the DSI connector. In some situations, it allows for the use of both the HDMI and LCD displays at the same time (this requires software support).
+The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry Pi Touch Display] is an LCD display that connects to the Raspberry Pi using the DSI connector. While the panel is connected, you can use both it, and the the normal HDMI display output at the same time.
 
-[.whitepaper, title="Implementing a DSI Driver on the Raspberry Pi", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003472-WP/Using-a-DSI-display.pdf]
-****
-This whitepaper is an introduction to writing a Display Serial Interface (DSI) driver for liquid crystal display (LCD) panels running under the Kernel Mode Setting (KMS) graphics system.
-****
+.The Raspberry Pi 7-inch Touch Display
+image::images/display.png[The Raspberry Pi 7-inch Touch Display, width="70%"]
 
-=== Board Support
+The Touch Display will function with all models of Raspberry Pi. Although the earliest Raspberry Pi models, which lack appropriate mounting holes, require additional mounting hardware to fit the stand-offs on the display PCB.
 
-The DSI display is designed to work with all models of Raspberry Pi, however early models that do not have mounting holes (the Raspberry Pi 1 Model A and B) will require additional mounting hardware to fit the HAT-dimensioned stand-offs on the display PCB.
+The display has the following key features: 
 
-=== Physical Installation
+* 800×480 RGB LCD display
+* 24-bit colour
+* Industrial quality: 140-degree viewing angle horizontal, 130-degree viewing angle vertical
+* 10-point multi-touch touchscreen
+* PWM backlight control and power control over I2C interface
+* Metal-framed back with mounting points for Raspberry Pi display conversion board and Raspberry Pi
+* Backlight lifetime: 20000 hours
+* Operating temperature: -20 to +70 degrees centigrade
+* Storage temperature: -30 to +80 degrees centigrade
+* Contrast ratio: 500
+* Average brightness: 250 cd/m^2^
+* Viewing angle (degrees):
+ ** Top - 50
+ ** Bottom - 70
+ ** Left - 70
+ ** Right - 70
+* Power requirements: 200mA at 5V typical, at maximum brightness.
+* Outer dimensions: 192.96 × 110.76mm
+* Viewable area: 154.08 × 85.92mm
 
-The following image shows how to attach the Raspberry Pi to the back of the Touch Display (if required), and how to connect both the data (ribbon cable) and power (red/black wires) from the Raspberry Pi to the display. If you are not attaching the Raspberry Pi to the back of the display, take extra care when attaching the ribbon cable to ensure it is the correct way round. The black and red power wires should be attached to the GND and 5v pins respectively.
+[NOTE]
+====
+If you are using Raspberry Pi OS Bullseye or earlier, you can install an on-screen keyboard by typing `sudo apt install matchbox-keyboard` in a terminal. Additionally you can enable right-click emulation by adding the following section to the `/etc/X11/xorg.conf` file.
 
-image::images/GPIO_power-500x333.jpg[DSI Display Connections]
-
-The other three pins should be left disconnected, unless connecting the display to an original Raspberry Pi 1 Model A or B. See the section on xref:display.adoc#legacy-support[legacy support] for more information on connecting the display to an original Raspberry Pi.
-
-NOTE: An original Raspberry Pi can be easily identified from other models, it is the only model with a 26-pin rather than 40-pin GPIO header connector.
-
-=== Screen Orientation
-
-LCD displays have an optimum viewing angle, and depending on how the screen is mounted it may be necessary to change the orientation of the display to give the best results. By default, the Raspberry Pi Touch Display and Raspberry Pi are set up to work best when viewed from slightly above, for example on a desktop. If viewing from below, you can physically rotate the display, and then tell the system software to compensate by running the screen upside down.
-
-==== KMS and FKMS Mode
-
-KMS and FKMS modes are used by default on the Raspberry Pi 4B. KMS and FKMS use the DRM/MESA libraries to provide graphics and 3D acceleration.
-
-To set screen orientation when running the graphical desktop, select the `Screen Configuration` option from the `Preferences` menu. Right click on the DSI display rectangle in the layout editor, select Orientation then the required option.
-
-To set screen orientation when in console mode, you will need to edit the kernel command line to pass the required orientation to the system.
-
-[,bash]
+[source]
 ----
-sudo nano /boot/cmdline.txt
+Section "InputClass"
+   Identifier "calibration"
+   Driver "evdev"
+   MatchProduct "FT5406 memory based driver"
+
+   Option "EmulateThirdButton" "1"
+   Option "EmulateThirdButtonTimeout" "750"
+   Option "EmulateThirdButtonMoveThreshold" "30"
+EndSection
 ----
 
-To rotate by 90 degrees clockwise, add the following to the cmdline, making sure everything is on the same line, do not add any carriage returns. Possible rotation values are 0, 90, 180 and 270.
+These features are not available when running Raspberry Pi OS Bookworm.
+====
+
+=== Mounting the Touch Display 
+
+You can mount a Raspberry Pi to the back of the Touch Display using its stand-offs and then connect the appropriate cables between each device, depending on your use case. You can also mount the Touch Display in a separate chassis if you have one available. The connections remain the same, though you may need longer cables depending on the chassis you use.
+
+.A Raspberry Pi connected to the Touch Display
+image::images/GPIO_power-500x333.jpg[Image of Raspberry Pi connected to the Touch Display, width="70%"]
+
+Connect one end of the Flat Flexible Cable (FFC) to the `RPI-DISPLAY` port on the Touch Display PCB. The silver or gold contacts should face away from the display. Then connect the other end of the FFC to the `DISPLAY` port on the Raspberry Pi. The contacts on this end should face inward, towards the Raspberry Pi.
+
+If the FFC isn't fully inserted, or it's not positioned correctly, you will experience issues with the display. You should always double-check this connection when troubleshooting, especially if you don't see anything on your display, or the display is showing a single colour.
+
+NOTE: A https://datasheets.raspberrypi.com/display/7-inch-display-mechanical-drawing.pdf[mechanical drawing] of the Touch Display is available for download.
+
+=== Powering the Touch Display
+
+We recommend using the Raspberry Pi's GPIO to provide power to the Touch Display. However, if you want to power the display directly, you can use a separate micro USB power supply to provide power. 
+
+==== Using the Raspberry Pi
+
+To power the Touch Display using a Raspberry Pi, you need to connect two jumper wires between the 5V and GND pins on xref:../computers/raspberry-pi.adoc#gpio-and-the-40-pin-header[Raspberry Pi's GPIO] and the 5V and GND pins on the display, as shown in the following illustration.
+
+.The location of the display's 5V and GND pins
+image::images/touch-GPIO.png[Illustration of display pins, width="30%"]
+
+Before you begin, make sure the Raspberry Pi is powered off and not connected to any power source. Connect one end of the black jumper wire to pin six (GND) on the Raspberry Pi and one end of the red jumper wire to pin four (5V). If pin six isn't available, you can use any other open GND pin to connect the black wire. 
+
+Next, connect the other end of the black wire to the GND pin on the display and the other end of the red wire to the 5V pin on the display. Once all the connections are made, you should see the Touch Display turn on the next time you turn on your Raspberry Pi.
+
+The other three pins on the Touch Display are used to connect the display to an original Raspberry Pi 1 Model A or B. Refer to our documentation on xref:display.adoc#legacy-support[legacy support] for more information.
+
+NOTE: An original Raspberry Pi is easily identified compared to other models; it is the only model with a 26-pin rather than 40-pin GPIO header connector.
+
+==== Using a micro USB supply
+
+If you don't want to use a Raspberry Pi to provide power to the Touch Display, you can use a micro USB power supply instead. We recommend using the https://www.raspberrypi.com/products/micro-usb-power-supply/[Raspberry Pi 12.5W power supply] to make sure the display runs as intended.
+
+Do not connect the GPIO pins on your Raspberry Pi to the display if you choose to use micro USB for power. The only connection between the two boards should be the Flat Flexible Cable.
+
+WARNING: If you use a micro USB cable to power the display it must be mounted inside a chassis that blocks access to the display's PCB while it's in use.
+
+=== Changing the screen orientation
+
+If you want to physically rotate the display, or mount it in a specific position, you can use software to adjust the orientation of the screen to better match your setup. To set the screen orientation from the desktop environment, select **Screen Configuration** from the **Preferences** menu. Right-click on the DSI display rectangle in the layout editor, select **Orientation**, then pick the best option to fit your needs.
+
+image::images/display-rotation.png[Screenshot of orientation options in screen configuration, width="80%"]
+
+To set screen orientation from the command line, you can edit the kernel's `/boot/firmware/cmdline.txt` file to pass the required orientation to the system.
+
+To rotate the screen, add `video=DSI-1:800x480@60,rotate=90` to the `cmdline.txt` configuration file. Make sure everything is on the same line; do not add any carriage returns. Possible rotation values are 0, 90, 180 and 270.
+
+NOTE: It is not possible to rotate the DSI display separately from the HDMI display using the command line. If you have both attached they need to be set to the same rotation value.
+
+You also have the option to change the rotation of the active touchscreen area independently of the orientation display itself by adding a `dtoverlay` instruction in the xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`] file,
 
 ----
-video=DSI-1:800x480@60,rotate=90
+dtoverlay=rpi-ft5406,touchscreen-swapped-x-y=1,touchscreen-inverted-x=1
 ----
-
-NOTE: In console mode it is not possible to rotate the DSI display separately to the HDMI display, so if you have both attached they must both be set to the same value.
-
-==== Legacy Graphics Mode
-
-Legacy graphics mode is used by default on all Raspberry Pi models prior to the Raspberry Pi 4B, and can also be used on the Raspberry Pi 4B if required, by disabling KMS and FKMS modes by commenting out the KMS or FKMS line in `config.txt`. 
-
-NOTE: Legacy mode on the Raspberry Pi 4B has no 3D acceleration so it should only be used if you have a specific reason for needing it.
-
-To flip the display, add the following line to the file `/boot/config.txt`:
-
-`lcd_rotate=2`
-
-This will vertically flip the LCD and the touch screen, compensating for the physical orientation of the display.
-
-You can also rotate the display by adding the following to the `config.txt` file.
-
-* `display_lcd_rotate=x`, where `x` can be one of the following:
-
-|===
-| display_lcd_rotate | result
-
-| 0
-| no rotation
-
-| 1
-| rotate 90 degrees clockwise
-
-| 2
-| rotate 180 degrees clockwise
-
-| 3
-| rotate 270 degrees clockwise
-
-| 0x10000
-| horizontal flip
-
-| 0x20000
-| vertical flip
-|===
-
-NOTE: The 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16MB GPU split.
-
-=== Touchscreen Orientation
-
-Additionally, you have the option to change the rotation of the touchscreen independently of the display itself by adding a `dtoverlay` instruction in `config.txt`, for example:
-
-`dtoverlay=rpi-ft5406,touchscreen-swapped-x-y=1,touchscreen-inverted-x=1`
 
 The options for the touchscreen are:
 
@@ -112,33 +127,3 @@ The options for the touchscreen are:
 | touchscreen-swapped-x-y
 | Swap X and Y coordinates
 |===
-
-=== Troubleshooting
-
-Read our troubleshooting steps, tips, and tricks here: xref:display.adoc#troubleshooting-the-display[Raspberry Pi Touch Display troubleshooting].
-
-=== Specifications
-
-* 800×480 RGB LCD display
-* 24-bit colour
-* Industrial quality: 140-degree viewing angle horizontal, 130-degree viewing angle vertical
-* 10-point multi-touch touchscreen
-* PWM backlight control and power control over I2C interface
-* Metal-framed back with mounting points for Raspberry Pi display conversion board and Raspberry Pi
-* Backlight lifetime: 20000 hours
-* Operating temperature: -20 to +70 degrees centigrade
-* Storage temperature: -30 to +80 degrees centigrade
-* Contrast ratio: 500
-* Average brightness: 250 cd/m^2^
-* Viewing angle (degrees):
- ** Top - 50
- ** Bottom - 70
- ** Left - 70
- ** Right - 70
-* Power requirements: 200mA at 5V typical, at maximum brightness.
-
-==== Mechanical Specification
-
-* Outer dimensions: 192.96 × 110.76mm
-* Viewable area: 154.08 × 85.92mm
-* https://datasheets.raspberrypi.com/display/7-inch-display-mechanical-drawing.pdf[Download mechanical drawing (PDF)]

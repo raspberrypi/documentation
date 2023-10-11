@@ -2,12 +2,6 @@
 
 === Common Display Options
 
-==== `disable_overscan`
-
-The default value for `disable_overscan` is `0` which gives default values of overscan for the left, right, top, and bottom edges of `48` for HD CEA modes, `32` for SD CEA modes, and `0` for DMT modes. 
-
-Set `disable_overscan` to `1` to disable the default values of xref:configuration.adoc#underscan[overscan] that are set by the firmware. 
-
 ==== `hdmi_enable_4kp60` (Raspberry Pi 4 Only)
 
 By default, when connected to a 4K monitor, the Raspberry Pi 4B, 400 and CM4 will select a 30Hz refresh rate. Use this option to allow selection of 60Hz refresh rates. 
@@ -20,15 +14,11 @@ WARNING: Setting `hdmi_enable_4kp60` will increase power consumption and the tem
 
 ==== `camera_auto_detect`
 
-With this setting enabled (set to `1`), the firmware will automatically load overlays for cameras that it recognises. 
-
-IMPORTANT: New Raspberry Pi OS images from Bullseye onwards come with this setting by default.
+With this setting enabled (which it is in Raspberry Pi OS), the firmware will automatically load overlays for CSI cameras that it recognises. Set `camera_auto_detect=0` to disable.
 
 ==== `display_auto_detect`
 
-With this setting enabled (set to `1`), the firmware will automatically load overlays for displays that it recognises. 
-
-IMPORTANT: New Raspberry Pi OS images from Bullseye onwards come with this setting by default.
+With this setting enabled (which it is in Raspberry Pi OS), the firmware will automatically load overlays for DSI displays that it recognises. Set `display_auto_detect=0` to disable.
 
 ==== `dtoverlay`
 
@@ -40,12 +30,10 @@ For more details, see xref:configuration.adoc#part3.1[DTBs, overlays and config.
 
 ==== `dtparam`
 
-Device Tree configuration files for Raspberry Pis support a number of parameters for such things as enabling I2C and SPI interfaces. Many DT overlays are configurable via the use of parameters. Both types of parameters can be supplied using the `dtparam` setting. In addition, overlay parameters can be appended to the `dtoverlay` option, separated by commas, but beware the line length limit - previously 78 characters, now 98 characters.
+Device Tree configuration files for Raspberry Pis support a number of parameters for such things as enabling I2C and SPI interfaces. Many DT overlays are configurable via the use of parameters. Both types of parameters can be supplied using the `dtparam` setting. In addition, overlay parameters can be appended to the `dtoverlay` option, separated by commas, but beware the line length limit of 98 characters.
 
 For more details, see xref:configuration.adoc#part3.1[DTBs, overlays and config.txt].
 
 ==== `arm_boost` (Raspberry Pi 4 Only)
 
-All Raspberry Pi 400s and newer revisions of the Raspberry Pi 4B are equipped with a second switch-mode power supply for the SoC voltage rail, and this allows the default turbo-mode clock to be increased from 1.5GHz to 1.8GHz. This change should be safe for all such boards, but to avoid unrequested changes for existing installations this change must be accepted by setting `arm_boost=1`. 
-
-IMPORTANT: New Raspberry Pi OS images from Bullseye onwards come with this setting by default.
+All Raspberry Pi 400s and newer revisions of the Raspberry Pi 4B are equipped with a second switch-mode power supply for the SoC voltage rail, and this allows the default turbo-mode clock to be increased from 1.5GHz to 1.8GHz. This change is enabled by default in Raspberry Pi OS. Set `arm_boost=0` to disable.

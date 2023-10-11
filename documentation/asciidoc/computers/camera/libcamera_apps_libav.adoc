@@ -50,7 +50,7 @@ Set the audio sampling rate in Hz for encoding. Set to 0 (default) to use the in
 Selects which ALSA input device to use for audio recording. The audio device string can be obtained with the following command:
 
 ----
-pi@pi4:~ $ pactl list | grep -A2 'Source #' | grep 'Name: '
+$ pactl list | grep -A2 'Source #' | grep 'Name: '
     Name: alsa_output.platform-bcm2835_audio.analog-stereo.monitor
     Name: alsa_output.platform-fef00700.hdmi.hdmi-stereo.monitor
     Name: alsa_output.usb-GN_Netcom_A_S_Jabra_EVOLVE_LINK_000736B1214E0A-00.analog-stereo.monitor

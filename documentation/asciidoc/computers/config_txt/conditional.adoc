@@ -82,35 +82,54 @@ It is intended for use in xref:config_txt.adoc#autoboot-txt[autoboot.txt] to sel
 
 When switching between multiple monitors while using a single SD card in your Raspberry Pi, and where a blank config isn't sufficient to automatically select the desired resolution for each one, this allows specific settings to be chosen based on the monitors' EDID names.
 
-To view the EDID name of an attached monitor, run the following command:
+To view the "EDID name" of an attached monitor you need to follow a few steps. First run the following command to see which output-devices you have on your Raspberry Pi:
 
 [source]
 ----
-tvservice -n
+ls -1 /sys/class/drm/card?-HDMI-A-?/edid
 ----
- 
-This will print something like this:
+
+On a Raspberry Pi 4, this will print something like:
 
 [source]
 ----
-device_name=VSC-TD2220
+/sys/class/drm/card1-HDMI-A-1/edid
+/sys/class/drm/card1-HDMI-A-2/edid
 ----
- 
-You can then specify settings that apply only to this monitor:
+
+You then need to run `edid-decode` against each of these filenames, e.g.
 
 [source]
 ----
-[EDID=VSC-TD2220]
-hdmi_group=2
-hdmi_mode=82
+edid-decode /sys/class/drm/card1-HDMI-A-1/edid
+----
+
+If there's no monitor connected to that particular output-device it'll tell you the EDID was empty, otherwise it'll give you *lots* of information about your monitor's capabilities. You need to look for the lines specifying the `Manufacturer` and the `Display Product Name`. The "EDID name" is then `<Manufacturer>-<Display Product Name>`, with any spaces in either string replaced by underscores. For example, if your `edid-decode` output included:
+
+[source]
+----
+....
+  Vendor & Product Identification:
+    Manufacturer: DEL
+....
+    Display Product Name: 'DELL U2422H'
+....
+----
+
+then the EDID name for this monitor would be `DEL-DELL_U2422H`.
+
+You can then use this as a conditional-filter to specify settings that only apply when this particular monitor is connected:
+
+[source]
+----
+[EDID=DEL-DELL_U2422H]
+cmdline=cmdline_U2422H.txt
 [all]
 ----
 
-This forces 1920x1080 DVT mode for the specified monitor, without affecting any other monitors.
-
 Note that these settings apply only at boot, so the monitor must be connected at boot time and the Raspberry Pi must be able to read its EDID information to find the correct name. Hotplugging a different monitor into the Raspberry Pi after boot will not select different settings.
 
-On the Raspberry Pi 4, if both HDMI ports are in use, then the EDID will be checked against both of them, and subsequent configuration applied only to the first matching device. You can determine the EDID names for both ports by first running `tvservice -l` in a terminal window to list all attached devices and then using the returned numerical IDs in `tvservice -v <id> -n` to find the EDID name for a specific display ID.
+On the Raspberry Pi 4, if both HDMI ports are in use, then the EDID filter will be checked against both of them, and configuration from all matching conditional filters will be applied.
 
 === The Serial Number Filter
 
@@ -123,7 +142,7 @@ To view the serial number of your Raspberry Pi, run the following command:
 cat /proc/cpuinfo
 ----
 
-The serial will be shown as a 16-digit hex value at the bottom. For example, if you see:
+A 16-digit hex value will be displayed near the bottom of the output -- your Raspberry Pi's serial number is the last eight hex-digits. For example, if you see:
 
 [source]
 ----
@@ -154,32 +173,6 @@ You can also filter depending on the state of a GPIO. For example
 
 [all]
 # settings here are applied to all hardware
-----
-
-=== The `[HDMI:*]` Filter
-
-NOTE: This filter is for the Raspberry Pi 4 only.
-
-The Raspberry Pi 4 has two HDMI ports, and for many `config.txt` commands related to HDMI, it is necessary to specify which HDMI port is being referred to. The HDMI conditional filters subsequent HDMI configurations to the specific port.
-
-[source]
-----
- [HDMI:0]
-   hdmi_group=2
-   hdmi_mode=45
- [HDMI:1]
-   hdmi_group=2
-   hdmi_mode=67
-----
-
-An alternative `variable:index` syntax is available on all port-specific HDMI commands. You could use the following, which is the same as the previous example:
-
-[source]
-----
- hdmi_group:0=2
- hdmi_mode:0=45
- hdmi_group:1=2
- hdmi_mode:1=67
 ----
 
 === Combining Conditional Filters

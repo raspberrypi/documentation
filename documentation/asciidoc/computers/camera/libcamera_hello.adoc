@@ -49,7 +49,7 @@ Finally, the `--tuning-file` parameter, in common with other `libcamera-hello` c
 
 ==== Preview Window
 
-Most of the `libcamera-apps` display a preview image in a window. When X Windows is not running it will draw directly to the display using Linux DRM (Direct Rendering Manager), otherwise it will attempt to use X Windows. Both paths use zero-copy buffer sharing with the GPU, and a consequence of this is that X forwarding is _not_ supported.
+Most of the `libcamera-apps` display a preview image in a window. If there is no active desktop environment, it will draw directly to the display using Linux DRM (Direct Rendering Manager), otherwise it will attempt to use the desktop environment. Both paths use zero-copy buffer sharing with the GPU, and a consequence of this is that X forwarding is _not_ supported.
 
 For this reason there is a third kind of preview window which does support X forwarding, and can be requested with the `--qt-preview` option. This implementation does not benefit from zero-copy buffer sharing nor from 3D acceleration which makes it computationally expensive (especially for large previews), and so is not normally recommended.
 

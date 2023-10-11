@@ -110,10 +110,10 @@ Build and install the kernel, modules, and Device Tree blobs; this step can take
 ----
 make -j4 zImage modules dtbs
 sudo make modules_install
-sudo cp arch/arm/boot/dts/*.dtb /boot/
-sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
-sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
-sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
+sudo cp arch/arm/boot/dts/*.dtb /boot/firmware/
+sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/firmware/overlays/
+sudo cp arch/arm/boot/dts/overlays/README /boot/firmware/overlays/
+sudo cp arch/arm/boot/zImage /boot/firmware/$KERNEL.img
 ----
 
 For the 64-bit kernel:
@@ -122,10 +122,10 @@ For the 64-bit kernel:
 ----
 make -j4 Image.gz modules dtbs
 sudo make modules_install
-sudo cp arch/arm64/boot/dts/broadcom/*.dtb /boot/
-sudo cp arch/arm64/boot/dts/overlays/*.dtb* /boot/overlays/
-sudo cp arch/arm64/boot/dts/overlays/README /boot/overlays/
-sudo cp arch/arm64/boot/Image.gz /boot/$KERNEL.img
+sudo cp arch/arm64/boot/dts/broadcom/*.dtb /boot/firmware/
+sudo cp arch/arm64/boot/dts/overlays/*.dtb* /boot/firmware/overlays/
+sudo cp arch/arm64/boot/dts/overlays/README /boot/firmware/overlays/
+sudo cp arch/arm64/boot/Image.gz /boot/firmware/$KERNEL.img
 ----
 
 NOTE: On a Raspberry Pi 2/3/4, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.

@@ -1,0 +1,48 @@
+== Setting your display's resolution and rotation
+
+If you find yourself in circumstances where the Raspberry Pi may not be able to determine the best mode, or you specifically wish to set a non-default resolution, you can manually set the resolution or rotation. The method for doing this depends on whether you're booting to the desktop environment or booting to the CLI (text console).
+
+=== Setting the desktop environment resolution and rotation
+
+If you are running the Raspberry Pi desktop then the resolution or rotation is most easily changed by using the `Screen Configuration` utility from the desktop `Preferences` menu. This will bring up a graphical representation of the display or displays connected to the Raspberry Pi. Right click on the display you wish to modify and select the required option(s) before clicking `Apply`.
+
+NOTE: If you are using the X11 backend, you need to ensure that you close the Screen Configuration utility in order to save the changes you've made. If you don't do this, the changes you made will be "forgotten" when you reboot.
+
+It is also possible to change these settings by editing config files, although the method for doing this depends on whether you're running the Wayland or X11 backend. Type
+[,bash]
+----
+ps ax | grep [w]ayfire
+----
+into a Terminal window, and if you get `/usr/bin/wayfire` displayed then you're running Wayland, and if you get no output you're running X11.
+
+NOTE: In the current version of Raspberry Pi OS Bookworm, Raspberry Pi 4 and 400 default to using Wayland to display the desktop environment; whereas earlier models of Raspberry Pi default to using X11 to display the desktop environment.
+
+==== Manually setting the desktop environment resolution and rotation for Wayland
+
+Under Wayland you can set a custom display resolution by editing the `.config/wayfire.ini` file in your home directory. You need to edit the existing `[output:<device>]` section, or add a new `[output:<device>]` section for your display device if one doesn't exist. For example:
+----
+[output:HDMI-A-1]
+mode = 1920x1080@60
+----
+
+The `<device>` part of the `output:` line (`HDMI-A-1` in the example shown here) matches the display options <<the-kernel-command-line,described for KMS>>.
+The `mode` line is _similar_ to that used by KMS, but slightly different. Consult the https://github.com/WayfireWM/wayfire-wiki/blob/master/Configuration.md#output-configuration[Wayfire documentation] for more extensive information. 
+
+You can also rotate your display by adding a `transform` line like:
+----
+[output:HDMI-A-1]
+mode = 1920x1080@60
+transform = 270
+----
+
+where the allowable `transform` options are: `normal`, `90`, `180` and `270`.
+
+If you've set Raspberry Pi OS to boot to desktop but *not* auto-login, then you'll also need to edit `/usr/share/greeter.ini` as this determines the resolution and rotation used by the login screen. This file has the same format as `.config/wayfire.ini` described earlier, so again you'll need to add or edit the `[output:<device>]` section.
+
+// TODO: ==== Manually setting the desktop environment resolution and rotation for X11
+
+=== Setting the text console resolution and rotation
+
+This is achieved by editing the KMS settings - see <<the-kernel-command-line,configuring the kernel command line>> for more details.
+
+NOTE: If you have multiple screens connected, they must all be set to the same rotation value in console mode, or no rotation will be applied.

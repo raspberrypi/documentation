@@ -1,5 +1,7 @@
 include::remote-access/remote-access-introduction.adoc[]
 
+include::remote-access/find-your-ip-address.adoc[]
+
 include::remote-access/secure-shell.adoc[]
 
 include::remote-access/secure-shell-from-unix.adoc[]
