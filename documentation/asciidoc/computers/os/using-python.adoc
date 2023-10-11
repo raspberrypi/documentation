@@ -4,7 +4,7 @@ Python 3 is installed by default on Raspberry Pi OS and is used for many importa
 
 There are two routes to installing libraries into the default `python` distribution. Firstly you can use `apt` and install pre-configured system packages, or alternatively you can use `pip` to install packages that are not distributed as part of Raspberry Pi OS.
 
-IMPORTANT: From _Bookworm_ onwards packages installed via `pip` must be installed into a Python Virtal Environment using `venv`. This has been introduced by the Python community not Raspberry Pi, see https://peps.python.org/pep-0668/[PEP 668] for more details
+IMPORTANT: From _Bookworm_ onwards packages installed via `pip` must be installed into a Python Virtual Environment using `venv`. This has been introduced by the Python community not Raspberry Pi, see https://peps.python.org/pep-0668/[PEP 668] for more details
 
 === Installing Python packages using apt
 
@@ -59,7 +59,7 @@ hint: See PEP 668 for the detailed specification.
 
 This error is generated because you're trying to install a third-party package into the system Python. A long-standing practical problem for Python users has been conflicts between OS package managers like `apt` and Python-specific package management tools like `pip`. These conflicts include both Python-level API incompatibilities and conflicts over file ownership.
 
-Therefore from _Bookworm_ onwards packages installed via `pip` must be installed into a Python Virtal Environment using `venv`. A virtual environment is a container where you can safely install third-party modules so they won't interfere with, or break, your system Python.
+Therefore from _Bookworm_ onwards packages installed via `pip` must be installed into a Python Virtual Environment using `venv`. A virtual environment is a container where you can safely install third-party modules so they won't interfere with, or break, your system Python.
 
 === Using pip with virtual environments
 
