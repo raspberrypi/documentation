@@ -37,7 +37,7 @@ The `dpms_timeout` variable controls the number of seconds of inactivity require
 
 === Console
 
-The `dpms_timeout` screen blanking configuration used by Raspberry Pi Configuration only effects desktop sessions. In *console mode*, when your Raspberry Pi is connected to a monitor and keyboard with only a terminal for input, use the `consoleblank` setting in the boot command line.
+The `dpms_timeout` screen blanking configuration used by Raspberry Pi Configuration only affects desktop sessions. In *console mode*, when your Raspberry Pi is connected to a monitor and keyboard with only a terminal for input, use the `consoleblank` setting in the boot command line.
 
 ==== Set console mode screen blanking
 
@@ -47,9 +47,13 @@ To change the console mode screen blanking configuration, open `/boot/firmware/c
 sudo nano /boot/firmware/cmdline.txt
 ----
 
-You can adjust the number of seconds before Raspberry Pi OS blanks the console here. For instance, add `consoleblank=600` to disable HDMI output after 600 seconds of inactivity. Set the value to `0` to never blank the screen.
+You can adjust the number of seconds before Raspberry Pi OS blanks the console here. For instance, add `consoleblank=600` to disable display output after 600 seconds of inactivity. Set the value to `0` to never blank the screen.
 
-Changes to `cmdline.txt` only go into effect after a reboot. Use the `reboot` command to reboot your Raspberry Pi.
+Changes to `cmdline.txt` only take effect after a reboot. Use the following command to reboot your Raspberry Pi:
+
+----
+sudo reboot
+----
 
 ==== View current screen blanking setting
 
