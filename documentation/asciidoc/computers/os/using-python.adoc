@@ -4,7 +4,7 @@ Python 3 is installed by default on Raspberry Pi OS and is used for many importa
 
 There are two routes to installing libraries into the default `python` distribution. Firstly you can use `apt` and install pre-configured system packages, or alternatively you can use `pip` to install packages that are not distributed as part of Raspberry Pi OS.
 
-IMPORTANT: From _Bookworm_ onwards packages installed via `pip` must be installed into a Python Virtal Environment using `venv`. This has been imposed by the Python community not Raspberry Pi, see https://peps.python.org/pep-0668/[PEP 668] for more details
+IMPORTANT: From _Bookworm_ onwards packages installed via `pip` must be installed into a Python Virtal Environment using `venv`. This has been introduced by the Python community not Raspberry Pi, see https://peps.python.org/pep-0668/[PEP 668] for more details
 
 === Installing Python packages using apt
 
