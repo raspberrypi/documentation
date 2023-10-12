@@ -1,3 +1,4 @@
+[[setting-up-a-headless-raspberry-pi]]
 == Set up a headless Raspberry Pi
 
 A **headless** Raspberry Pi runs without a monitor, keyboard, or mouse. To run a Raspberry Pi headless, you need a way to access it from a remote machine. To access your Raspberry Pi remotely, you'll need to connect your Raspberry Pi to a network, and a way to access the Raspberry Pi over that network.
