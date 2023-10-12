@@ -1,39 +1,41 @@
-== Setting up a Headless Raspberry Pi
+== Set up a headless Raspberry Pi
 
-To use your Raspberry Pi without a monitor or keyboard (known as headless), you need to enable wireless networking and SSH.
+A **headless** Raspberry Pi runs without a monitor, keyboard, or mouse. To run a Raspberry Pi headless, you need a way to access it from a remote machine. To access your Raspberry Pi remotely, you'll need to connect your Raspberry Pi to a network, and a way to access the Raspberry Pi over that network.
 
-If you haven't already imaged your Raspberry Pi, you can set up wireless networking and SSH during the xref:getting-started.adoc#installing-the-operating-system[imaging process].
+To connect your Raspberry Pi to a network, you can either plug your machine into a wired connection via Ethernet or configure wireless networking.
 
-If you already have an image on the micro SD card, you can access the xref:configuration.adoc#the-boot-folder[boot folder] by inserting the card into a card reader on a Linux or Windows machine. Adding certain files to this folder will activate certain setup features on the first boot of the Raspberry Pi.
+To access your Raspberry Pi over that network, use SSH. Once you've connected over SSH, you can use `raspi-config` to xref:remote-access.adoc#vnc[enable VNC] if you'd prefer a graphical desktop environment.
 
-If you plan on using VNC to access the desktop environment of your headless Raspberry Pi, use the `raspi-config` tool to set a xref:configuration.adoc#resolution[default display resolution].
+If you're setting up your Raspberry Pi from scratch, set up wireless networking and SSH during the xref:getting-started.adoc#installing-the-operating-system[imaging process]. If you've already got a Raspberry Pi set up, you can configure SSH using `raspi-config`.
 
-IMPORTANT: If you are installing Raspberry Pi OS, and intend to run it headless, you will need to create a new user account. Since you will not be able to create the user account xref:getting-started.adoc#configuration-on-first-boot[using the first-boot wizard] as it requires both a monitor and a keyboard, you *MUST* add a `userconf.txt` file to the boot folder to create a user on first boot or configure the OS with a user account using the xref:getting-started.adoc#advanced-options[Advanced Menu] in Raspberry Pi Imager.
-
-=== Configuring Networking
+=== Connect to a network
 
 To configure network access at first boot in a headless Raspberry Pi, use the advanced settings menu in Rasbperry Pi Imager. Enter the SSID and password of your preferred wireless network. Your Raspberry Pi will use these credentials to connect to the network on first boot. Some wireless adapters and some Raspberry Pi boards do not support 5Ghz networks; check the documentation for your wireless module to ensure compatibility with your preferred network.
 
-With no keyboard or monitor, you need some way of xref:remote-access.adoc[remotely accessing] your headless Raspberry Pi. To enable SSH:
-
-* enable SSH in the Advanced Menu of Raspberry Pi Imager, then enter a username and password
-* place a file named `ssh` (no file extension) into the boot folder (`/boot/firmware/`) of the SD Card, then provide a username and password xref:headless.adoc#configuring-a-user[via `userconf.txt`].
-
-For more information, see xref:remote-access.adoc#ssh[set up an SSH server].
-
 WARNING: Depending on the model and SD card, your Raspberry Pi may require up to 5 minutes to boot and connect to your wireless network.
 
+=== Remote access
+
+With no keyboard or monitor, you need a way to xref:remote-access.adoc[remotely control] your headless Raspberry Pi. On first boot, the only option is SSH. To enable SSH on a fresh installation of Raspberry Pi OS, choose one of the following methods:
+
+* enable SSH in the Advanced Menu of Raspberry Pi Imager, then enter a username and password
+* place a file named `ssh` (no file extension) into the boot folder (`/boot/firmware/`) of the SD Card, then configure a user with `userconf.txt`
+
+IMPORTANT: To use SSH on a fresh Raspberry Pi OS installation, you must create a user account in the xref:getting-started.adoc#advanced-options[Advanced Menu] of Raspberry Pi Imager.
+
+For more information, see xref:remote-access.adoc#ssh[set up an SSH server]. Once you've connected over SSH, you can use `raspi-config` to xref:remote-access.adoc#vnc[enable VNC] if you'd prefer a graphical desktop environment.
+
 [[configuring-a-user]]
-=== Configuring a User
+=== Configure a User
 
-You will need to add a `userconf.txt` in the boot partition of the SD card; this is the part of the SD card which can be seen when it is mounted in a Windows or MacOS computer.
+In the boot partition of your SD card (`/boot/firmware`), create a file named `userconf.txt`.
 
-This file should contain a single line of text, consisting of `username:password` – so your desired username, followed immediately by a colon, followed immediately by an *encrypted* representation of the password you want to use.
+This file should contain a single line of text, consisting of `<username>:<password>`: your desired username, followed immediately by a colon, followed immediately by an *encrypted* representation of the password you want to use.
 
-To generate the encrypted password, the easiest way is to use OpenSSL on a Raspberry Pi that is already running – open a terminal window and enter:
+To generate the encrypted password, use OpenSSL on another Unix machine. Open a terminal and enter the following:
 
 ----
 openssl passwd -6
 ----
 
-This will prompt you to enter your password, and verify it. It will then produce what looks like a string of random characters, which is actually an encrypted version of the supplied password.
+When prompted, enter your password and verify it. This command will then output an encrypted version of the supplied password.
