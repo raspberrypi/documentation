@@ -41,10 +41,6 @@ Some text-based housekeeping information containing the date and git commit ID o
 
 When this file is present, SSH will be enabled on boot. The contents don't matter, it can be empty. SSH is otherwise disabled by default.
 
-==== wpa_supplicant.conf
-
-This is the file to configure wireless network settings (if the hardware is capable of it). Edit the country code and the network part to fit your case. More information on how to use this file can be found in xref:configuration.adoc#setting-up-a-headless-raspberry-pi[the `wireless/headless` section].
-
 ==== Device Tree files
 
 There are various Device Tree blob files, which have the extension `.dtb`. These contain the hardware definitions of the various models of Raspberry Pi, and are used on boot to set up the kernel xref:configuration.adoc#part3.1[according to which Raspberry Pi model is detected].
