@@ -17,7 +17,7 @@ To configure network access at first boot in a headless Raspberry Pi, use the ad
 With no keyboard or monitor, you need some way of xref:remote-access.adoc[remotely accessing] your headless Raspberry Pi. To enable SSH:
 
 * enable SSH in the Advanced Menu of Raspberry Pi Imager, then enter a username and password
-* place a file named `ssh` (no file extension) into the boot folder (`/boot/firmware/`) of the SD Card, then provide a username and password xref:configuring-a-user[via `userconf.txt`].
+* place a file named `ssh` (no file extension) into the boot folder (`/boot/firmware/`) of the SD Card, then provide a username and password xref:headless.adoc#configuring-a-user[via `userconf.txt`].
 
 For more information, see xref:remote-access.adoc#ssh[set up an SSH server].
 
