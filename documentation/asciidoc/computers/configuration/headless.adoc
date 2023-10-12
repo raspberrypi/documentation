@@ -3,7 +3,7 @@
 
 A **headless** Raspberry Pi runs without a monitor, keyboard, or mouse. To run a Raspberry Pi headless, you need a way to access it from another computer. To access your Raspberry Pi remotely, you'll need to connect your Raspberry Pi to a network, and a way to access the Raspberry Pi over that network.
 
-To connect your Raspberry Pi to a network, you can either plug your computer into a wired connection via Ethernet or configure wireless networking.
+To connect your Raspberry Pi to a network, you can either plug your device into a wired connection via Ethernet or configure wireless networking.
 
 To access your Raspberry Pi over that network, use SSH. Once you've connected over SSH, you can use `raspi-config` to xref:remote-access.adoc#vnc[enable VNC] if you'd prefer a graphical desktop environment.
 
