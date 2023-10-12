@@ -8,13 +8,18 @@ If you already have an image on the micro SD card, you can access the xref:confi
 
 If you plan on using VNC to access the desktop environment of your headless Raspberry Pi, use the `raspi-config` tool to set a xref:configuration.adoc#resolution[default display resolution].
 
-IMPORTANT: If you are installing Raspberry Pi OS, and intend to run it headless, you will need to create a new user account. Since you will not be able to create the user account xref:getting-started.adoc#configuration-on-first-boot[using the first-boot wizard] as it requires both a monitor and a keyboard, you *MUST* add a `userconf.txt` file to the boot folder to create a user on first boot or configure the OS with a user account using the xref:getting-started.adoc#advanced-options[Advanced Menu] in the Raspberry Pi Imager.
+IMPORTANT: If you are installing Raspberry Pi OS, and intend to run it headless, you will need to create a new user account. Since you will not be able to create the user account xref:getting-started.adoc#configuration-on-first-boot[using the first-boot wizard] as it requires both a monitor and a keyboard, you *MUST* add a `userconf.txt` file to the boot folder to create a user on first boot or configure the OS with a user account using the xref:getting-started.adoc#advanced-options[Advanced Menu] in Raspberry Pi Imager.
 
 === Configuring Networking
 
-To configure network access at first boot in a headless Raspberry Pi, use the advanced settings menu in the Imager application. Enter a the SSID and password for your preferred wireless network. Your Raspberry Pi will use these credentials to connect to the network on first boot. Some wireless adapters and some Raspberry Pi boards do not support 5Ghz networks; check the documentation for your wireless module to ensure compatibility with your preferred network.
+To configure network access at first boot in a headless Raspberry Pi, use the advanced settings menu in Rasbperry Pi Imager. Enter the SSID and password of your preferred wireless network. Your Raspberry Pi will use these credentials to connect to the network on first boot. Some wireless adapters and some Raspberry Pi boards do not support 5Ghz networks; check the documentation for your wireless module to ensure compatibility with your preferred network.
 
-With no keyboard or monitor, you need some way of xref:remote-access.adoc[remotely accessing] your headless Raspberry Pi. To enable SSH, place a file named `ssh` (no file extension) into the boot folder (`/boot/firmware/`) of the SD Card. For more information, see xref:remote-access.adoc#ssh[set up an SSH server].
+With no keyboard or monitor, you need some way of xref:remote-access.adoc[remotely accessing] your headless Raspberry Pi. To enable SSH:
+
+* enable SSH in the Advanced Menu of Raspberry Pi Imager, then enter a username and password
+* place a file named `ssh` (no file extension) into the boot folder (`/boot/firmware/`) of the SD Card, then provide a username and password xref:configuring-a-user[via `userconf.txt`].
+
+For more information, see xref:remote-access.adoc#ssh[set up an SSH server].
 
 WARNING: Depending on the model and SD card, your Raspberry Pi may require up to 5 minutes to boot and connect to your wireless network.
 
