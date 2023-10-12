@@ -20,14 +20,14 @@ WARNING: Depending on the model and SD card, your Raspberry Pi may require up to
 With no keyboard or monitor, you need a way to xref:remote-access.adoc[remotely control] your headless Raspberry Pi. On first boot, the only option is SSH. To enable SSH on a fresh installation of Raspberry Pi OS, choose one of the following methods:
 
 * enable SSH in the Advanced Menu of Raspberry Pi Imager, then enter a username and password
-* place a file named `ssh` into the root (`/`) of the SD card, then configure a user manually with `userconf.txt` following the instructions below
+* create a file named `ssh` at the root of the SD card, then configure a user manually with `userconf.txt` following the instructions in the section below
 
 For more information, see xref:remote-access.adoc#ssh[set up an SSH server]. Once you've connected over SSH, you can use `raspi-config` to xref:remote-access.adoc#vnc[enable VNC] if you'd prefer a graphical desktop environment.
 
 [[configuring-a-user]]
 === Configure a user manually
 
-Using another computer, at the root (`/`) of your SD card, create a file named `userconf.txt`.
+At the root of your SD card, create a file named `userconf.txt`.
 
 This file should contain a single line of text, consisting of `<username>:<password>`: your desired username, followed immediately by a colon, followed immediately by an *encrypted* representation of the password you want to use.
 
