@@ -43,7 +43,7 @@ In addition, it is possible to add rotation and reflect parameters as documented
 video=HDMI-A-1:1920x1080M@60,rotate=90,reflect_x`
 ----
 
-NOTE: It is not possible to specify the rotation and reflection parameters without also explictly specifying the resolution.
+NOTE: It is not possible to specify the rotation and reflection parameters without also explicitly specifying the resolution.
 
 Possible options for the display type, the first part of the `video=` entry,  are as follows:
 
