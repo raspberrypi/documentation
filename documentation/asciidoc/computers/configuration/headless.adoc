@@ -9,6 +9,8 @@ To access your Raspberry Pi over that network, use SSH. Once you've connected ov
 
 If you're setting up your Raspberry Pi from scratch, set up wireless networking and SSH during the xref:getting-started.adoc#installing-the-operating-system[imaging process]. If you've already got a Raspberry Pi set up, you can configure SSH using `raspi-config`.
 
+WARNING: Depending on the model and SD card, your Raspberry Pi may require up to 5 minutes to boot and connect to your wireless network the first time it boots.
+
 === Connect to a wired network
 
 To connect to a wired network at first boot, plug your headless Raspberry Pi in via Ethernet, or an Ethernet adapter if your Raspberry Pi model does not include an Ethernet port. Your Raspberry Pi will automatically connect to the network.
@@ -17,7 +19,7 @@ To connect to a wired network at first boot, plug your headless Raspberry Pi in 
 
 To configure wireless network access at first boot in a headless Raspberry Pi, use the advanced settings menu in Raspberry Pi Imager. Enter the SSID and password of your preferred wireless network. Your Raspberry Pi will use these credentials to connect to the network on first boot. Some wireless adapters and some Raspberry Pi boards do not support 5Ghz networks; check the documentation for your wireless module to ensure compatibility with your preferred network.
 
-WARNING: Depending on the model and SD card, your Raspberry Pi may require up to 5 minutes to boot and connect to your wireless network.
+NOTE: Previous versions of Raspberry Pi OS made use of a `wpa_supplicant.conf` file which could be placed into the boot folder to configure wireless network settings. This is no longer possible from Raspberry Pi OS Bookworm onwards.
 
 === Remote access
 
