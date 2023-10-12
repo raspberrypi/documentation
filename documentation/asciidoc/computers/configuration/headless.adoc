@@ -26,7 +26,7 @@ IMPORTANT: To use SSH on a fresh Raspberry Pi OS installation, you must create a
 For more information, see xref:remote-access.adoc#ssh[set up an SSH server]. Once you've connected over SSH, you can use `raspi-config` to xref:remote-access.adoc#vnc[enable VNC] if you'd prefer a graphical desktop environment.
 
 [[configuring-a-user]]
-=== Configure a User
+=== Configure a user
 
 In the boot partition of your SD card (`/boot/firmware`), create a file named `userconf.txt`.
 
