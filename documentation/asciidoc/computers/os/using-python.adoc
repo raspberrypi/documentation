@@ -90,7 +90,7 @@ $
 
 NOTE: If you want to inherit the currently installed packages from the system Python you should create your virtual environment using `python -m venv --system-site-packages env`.
 
-Inside this directory is full a Python distribution. To activate your virtual environment and make that version of Python the one you're currently using you should type,
+Inside this directory is a full Python distribution. To activate your virtual environment and make that version of Python the one you're currently using you should type,
 
 [source,bash]
 ----
