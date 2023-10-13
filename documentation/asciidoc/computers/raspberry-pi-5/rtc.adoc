@@ -1,7 +1,10 @@
 
 == Real Time Clock (RTC)
 
-The Raspberry Pi 5 includes an RTC module. This may be battery powered, via the J5 (BAT) connector on the board located to the right of the USB-C power connector. However, even without a battery backup the RTC is useable
+The Raspberry Pi 5 includes an RTC module. This may be battery powered, via the J5 (BAT) connector on the board located to the right of the USB-C power connector. 
+
+.The J5 battery connector
+image::images/j5.png[alt="The J5 battery connector",width="70%"]
 
 You can set a wake alarm while will switch the board to a very low power state (approximately 3mA). When alarm time is reached, the board will power back on. You could imagine using this for periodic jobs, e.g. time lapse imagery.
 
@@ -39,6 +42,8 @@ The RTC also provides the time on boot. e.g. in `dmesg`:
 
 which may be useful if you don't have an internet connection for getting time through NTP.
 
+NOTE: The RTC is still usable even in the case where there is no backup battery attached to the J5 connector. 
+
 === Adding a backup battery
 
 WARNING: We do not recommend using a primary Lithium cell for the RTC as it has a trickle charge circuit which, while disabled by default, if enabled will kill the cell quite quickly. 
@@ -59,7 +64,7 @@ Trickle charging of the battery is disabled by default. There are `sysfs` files 
 /sys/devices/platform/soc/soc:rpi_rtc/rtc/rtc0/charging_voltage_min:1300000
 ----
 
-If you add to `/boot/firmware/config.txt`,
+If you add https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README#L279[`rtc_bbat_vchg`] to `/boot/firmware/config.txt`,
 
 [source,bash]
 ----
