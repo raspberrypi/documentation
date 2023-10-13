@@ -22,7 +22,10 @@ NOTE: Raspberry Pi 5 makes use of the Renesas DA9091 “Gilmour” power-managem
 
 === USB Boot and Power Supplies
 
-By default, USB boot is not enabled with a 3A power supply. A warning message is displayed on the bootloader HDMI diagnostics screen and the bootloader will skip to the next boot mode.
+By default, USB boot is not enabled with a 3A power supply. However, setting `usb_max_current_enable=1` in the `/boot/firmware/config.txt` file will override this and enable USB boot with a lower wattage power supply.
+
+When booting using a 3A supply without this statement in the `config.txt`, a warning message is displayed on the bootloader HDMI diagnostics screen and the bootloader will skip to the next boot mode.
+
 
 [source]
 ----

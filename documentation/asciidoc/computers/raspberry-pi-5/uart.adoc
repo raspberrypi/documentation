@@ -3,6 +3,9 @@
 
 The Raspberry Pi 5 has a dedicated debug UART designed for use with the xref:../microcontrollers/debug-probe.adoc[Debug Probe]. It has a maximum baud rate of 921,600 bps which can be configured with an EEPROM parameter. It is always active and enabled and provides direct access to early boot and firmware information, as well as a Linux console after boot.
 
+.The 3-pin UART connector
+image::images/uart-connector.png[alt="The 3-pin UART connector",width="70%"]
+
 The UART connector is a 3-pin header compatible with the Raspberry Pi Debug Connector https://rptl.io/debug-spec[specification], a cable terminating in an appropriate JST connector allowing you to connect to the UART is provided with the xref:../microcontrollers/debug-probe.adoc[Debug Probe].
 
 === Connecting to 

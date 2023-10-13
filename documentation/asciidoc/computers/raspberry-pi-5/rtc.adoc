@@ -39,18 +39,6 @@ The RTC also provides the time on boot. e.g. in `dmesg`:
 
 which may be useful if you don't have an internet connection for getting time through NTP.
 
-[NOTE]
-====
-The current bootloader doesn't enable the RTC XOSC, until an update is released you can manually do this:
-
-[source, bash]
-----
-vcgencmd pmicwr 0x5003 1
-----
-
-This setting is persistent, so you should only have to do this once.
-====
-
 === Adding a backup battery
 
 WARNING: We do not recommend using a primary Lithium cell for the RTC as it has a trickle charge circuit which, while disabled by default, if enabled will kill the cell quite quickly. 
@@ -58,4 +46,33 @@ WARNING: We do not recommend using a primary Lithium cell for the RTC as it has 
 .Lithium-manganese rechargeable RTC battery
 image::images/rtc-battery.jpg[alt="Lithium-manganese rechargeable RTC battery",width="70%"]
 
-The official battery part is a rechargeable Lithium Manganese coin cell, with a pre-fitted two-pin JST plug and adhesive mounting pad. This is suitable for powering the Raspberry Pi 5 RTC when the main power supply for the board is disconnected with a power-off current draw is single-digit µA, giving a retention retention time measured in months.
+The official battery part is a rechargeable Lithium Manganese coin cell, with a pre-fitted two-pin JST plug and an adhesive mounting pad. This is suitable for powering the Raspberry Pi 5 RTC when the main power supply for the board is disconnected with a power-off current draw is single-digit µA, giving a retention retention time measured in months.
+
+=== Enabling trickle charging
+
+Trickle charging of the battery is disabled by default. There are `sysfs` files that show the current trickle charging voltage and limits:
+
+[source,bash]
+----
+/sys/devices/platform/soc/soc:rpi_rtc/rtc/rtc0/charging_voltage:0
+/sys/devices/platform/soc/soc:rpi_rtc/rtc/rtc0/charging_voltage_max:4400000
+/sys/devices/platform/soc/soc:rpi_rtc/rtc/rtc0/charging_voltage_min:1300000
+----
+
+If you add to `/boot/firmware/config.txt`,
+
+[source,bash]
+----
+dtparam=rtc_bbat_vchg=3000000
+----
+
+and reboot, you'll see,
+
+[source,bash]
+----
+/sys/devices/platform/soc/soc:rpi_rtc/rtc/rtc0/charging_voltage:3000000
+/sys/devices/platform/soc/soc:rpi_rtc/rtc/rtc0/charging_voltage_max:4400000
+/sys/devices/platform/soc/soc:rpi_rtc/rtc/rtc0/charging_voltage_min:1300000
+----
+
+and the battery will be trickle charging. Remove the `dtparam` line from `config.txt` to stop the trickle charging.
