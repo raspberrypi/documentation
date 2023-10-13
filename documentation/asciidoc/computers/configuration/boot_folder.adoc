@@ -6,6 +6,8 @@ When the Raspberry Pi is powered on, it loads various files from the boot partit
 
 Once Linux has booted, the boot partition is mounted as `/boot/firmware/`.
 
+NOTE: Prior to _Bookworm_, Raspberry Pi OS stored the boot partition at `/boot/`. Since _Bookworm_, the boot partition is located at `/boot/firmware/`.
+
 === Boot Folder Contents
 
 ==== bootcode.bin
