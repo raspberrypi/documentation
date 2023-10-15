@@ -157,6 +157,12 @@
                     "subpath": "debug-probe.adoc"
                 },
                 {
+                    "title": "RP1",
+                    "description": "Our southbridge for Raspberry Pi 5",
+                    "image": "full-sized/RP1.png",
+                    "subpath": "rp1.adoc"
+                },				
+                {
                     "title": "MicroPython",
                     "description": "Getting started with MicroPython",
                     "image": "full-sized/MP.png",

@@ -1,8 +1,6 @@
 
 include::raspberry-pi-5/introduction.adoc[]
 
-include::raspberry-pi-5/rp1.adoc[]
-
 include::raspberry-pi-5/power-supply.adoc[]
 
 include::raspberry-pi-5/cooling.adoc[]

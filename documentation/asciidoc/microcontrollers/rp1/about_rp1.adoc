@@ -1,6 +1,5 @@
 
-// currently loaded in the ToC as part of the introduction section
-=== Raspberry Pi RP1
+== About RP1
 
 .Architecture of the RP1
 image::images/rp1.jpg[alt="Architecture diagram of the RP1",width="70%"]
