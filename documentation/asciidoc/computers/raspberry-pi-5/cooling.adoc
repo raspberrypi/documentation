@@ -29,10 +29,10 @@ NOTE: Blowers are electromechanical systems that direct air towards a specific d
 
 === Thermals
 
-A stress test was started on all four cores of the Raspberry Pi 5 to load the CPU. Two main thermal management regimes were examined during ; no cooling, and managed active cooling. The managed active cooling tests were run using the Active Cooler, and the Raspberry Pi case for Raspberry Pi 5. 
+A stress test was started on all four cores of the Raspberry Pi 5 to load the CPU. Two main thermal management regimes were examined during ; no cooling, and managed active cooling. The managed active cooling tests were run using both the Active Cooler, and the Raspberry Pi case for Raspberry Pi 5. 
 
 .Graph of CPU temeprature against time. 
-image::images/thermals.png[alt="Graphs of CPU temperature against time",width="100%"]
+image::images/thermals.png[alt="Graphs of CPU temperature against time while under heavy load",width="100%"]
 
 With no cooling, we see an idle temperature of approximately 65°C, with a maximum temperature above 85°C during extended testing leading to sustained thermal throttling after the temperature reported by the processor rises above throttling limits. 
 
