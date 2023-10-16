@@ -3,7 +3,7 @@
 .The Raspberry Pi TV HAT
 image::images/tv-hat.jpg[width="80%"]
 
-The Raspberry Pi TV HAT allows you to receive digital terrestrial TV broadcast systems, using an onboard DVB-T and DVB-T2 tuner, on a Raspberry Pi. With the board you can receive and view TV on a Raspberry Pi, or create a TV server that allows you to stream received TV over a network to other devices. The TV HAT can be used with any 40-pin Raspberry Pi board as a server for other devices on the network. Performance when receiving and viewing TV on the Pi itself can vary, and we recommend using a Raspberry Pi 2 or later for thi spurpose
+The Raspberry Pi TV HAT allows you to receive digital terrestrial TV broadcast systems, using an onboard DVB-T and DVB-T2 tuner, on a Raspberry Pi. With the board you can receive and view TV on a Raspberry Pi, or create a TV server that allows you to stream received TV over a network to other devices. The TV HAT can be used with any 40-pin Raspberry Pi board as a server for other devices on the network. Performance when receiving and viewing TV on the Pi itself can vary, and we recommend using a Raspberry Pi 2 or later for this purpose
 
 Key features:
 
@@ -18,14 +18,14 @@ Key features:
 
 WARNING: The TV HAT does not support ATSC, the digital TV standard used in North America.
 
-Digital Video Broadcasting – Terrestrial (DVB-T) is the DVB European-based consortium standard for the broadcast transmission of digital terrestrial television. There are other digital TV standards used elsewhere in the world, e.g. ATSC which is used in North American. However the TV HAT only supports the DVB-T and DVB-T2 standards.
+Digital Video Broadcasting – Terrestrial (DVB-T) is the DVB European-based consortium standard for the broadcast transmission of digital terrestrial television. There are other digital TV standards used elsewhere in the world, e.g. ATSC which is used in North America. However the TV HAT only supports the DVB-T and DVB-T2 standards.
 
 .DTT system implemented or adopted (Source: DVB/EBU/BNE DTT Deployment Database, March 2023)
 image::images/dvbt-map.png[width="80%"]
 
 == Setup Instructions
 
-Follow our xref:../computers/getting-started.adoc[getting started] documentation and set up the Raspberry Pi with the newest version of Raspberry Pi OS operating system
+Follow our xref:../computers/getting-started.adoc[getting started] documentation and set up the Raspberry Pi with the newest version of Raspberry Pi OS.
 
 Connect the aerial adaptor to the TV HAT and with the adaptor pointing away from the USB ports, press the HAT gently down over the Raspberry Pi's GPIO pins, and place the spacers at two or three of the corners of the HAT, and tighten the screws through the mounting holes to hold them in place. Then connect the TV HAT's aerial adaptor to the cable from your TV aerial.
 

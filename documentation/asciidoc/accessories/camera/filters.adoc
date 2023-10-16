@@ -1,15 +1,32 @@
 == Camera Filters
 
-Some transmission characteristics are available for the Camera Module 3 and the HQ camera.
+Some transmission characteristics are available for the Camera Module 3 and the HQ and GS cameras.
+
+NOTE: These graphs are available as https://datasheets.raspberrypi.com/camera/camera-extended-spectral-sensitivity.pdf[a PDF].
 
 === Camera Module 3
+
 The Camera Module 3 is built around the IMX708, which has the following spectral sensitivity characteristics.
 
 image::images/cm3-filter.png[Camera Module 3 Transmission Graph, width="65%"]
 
 === HQ Camera
 
-The HQ Camera uses a Hoya CM500 infrared filter. Its transmission characteristics are as represented in the following graph.
+Raspberry Pi HQ Camera without IR-Cut filter.
+
+image::images/hq.png[HQ Camera Transmission Graph without IR-Cut filter,width="65%"]
+
+
+=== GS Camera
+
+Raspberry Pi GS Camera without IR-Cut filter.
+
+image::images/gs.png[GS Camera Transmission Graph without IR-Cut filter,width="65%"]
+
+
+=== HQ and GS Cameras
+
+The HQ and GS Cameras use a Hoya CM500 infrared filter. Its transmission characteristics are as represented in the following graph.
 
 image::images/hoyacm500.png[CM500 Transmission Graph,width="65%"]
 
