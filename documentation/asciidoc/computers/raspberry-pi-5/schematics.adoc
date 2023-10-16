@@ -1,5 +1,7 @@
 
 == Schematics and mechanical drawings
 
+The following mechanical drawings of the Raspberry Pi 5 are available:
+
 * https://datasheets.raspberrypi.com/rpi5/raspberry-pi-5-mechanical-drawing.pdf[Mechanical Drawings, PDF]
 * https://datasheets.raspberrypi.com/rpi5/RaspberryPi5-step.zip[STEP file] for Raspberry Pi 5
