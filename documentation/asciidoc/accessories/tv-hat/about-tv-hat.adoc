@@ -68,3 +68,8 @@ To watch a TV channel in the browser, click the little TV icon to the left of th
 To watch a TV channel in a local media player, e.g. https://www.videolan.org/vlc[VLC], you'll need to download it as a stream. Click the `i` icon to the left of a channel listing to bring up the information panel for that channel. Here you can see a stream file that you can download.
 
 NOTE: `tvheadend` is supported by numerous apps, such as TvhClient for iOS, which will play TV from the Raspberry Pi.
+
+== Mechanical Drawing
+
+.The Raspberry Pi TV HAT
+image::images/mechanical.png[]
