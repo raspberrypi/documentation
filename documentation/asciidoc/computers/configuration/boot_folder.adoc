@@ -6,11 +6,13 @@ When the Raspberry Pi is powered on, it loads various files from the boot partit
 
 Once Linux has booted, the boot partition is mounted as `/boot/firmware/`.
 
+NOTE: Prior to _Bookworm_, Raspberry Pi OS stored the boot partition at `/boot/`. Since _Bookworm_, the boot partition is located at `/boot/firmware/`.
+
 === Boot Folder Contents
 
 ==== bootcode.bin
 
-This is the bootloader, which is loaded by the SoC on boot, does some very basic setup, and then loads one of the `start*.elf` files. `bootcode.bin` is not used on the Raspberry Pi 4, because it has been replaced by boot code in the xref:raspberry-pi.adoc#raspberry-pi-4-boot-eeprom[onboard EEPROM].
+This is the bootloader, which is loaded by the SoC on boot; it does some very basic setup, and then loads one of the `start*.elf` files. `bootcode.bin` is not used on the Raspberry Pi 4, because it has been replaced by boot code in the xref:raspberry-pi.adoc#raspberry-pi-4-boot-eeprom[onboard EEPROM].
 
 ==== start.elf, start_x.elf, start_db.elf, start_cd.elf, start4.elf, start4x.elf, start4db.elf, start4cd.elf
 
@@ -27,7 +29,7 @@ These are linker files and are matched pairs with the `start*.elf` files listed 
 
 ==== cmdline.txt
 
-The kernel command line passed in to the kernel when it boots.
+The kernel <<the-kernel-command-line,command line>> passed in to the kernel when it boots.
 
 ==== config.txt
 
