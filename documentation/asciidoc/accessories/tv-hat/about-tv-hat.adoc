@@ -16,7 +16,7 @@ Key features:
 
 == About DVB-T
 
-WARNING: The TV HAT does not support ASTC, the digital TV standard used in North America.
+WARNING: The TV HAT does not support ATSC, the digital TV standard used in North America.
 
 Digital Video Broadcasting – Terrestrial (DVB-T) is the DVB European-based consortium standard for the broadcast transmission of digital terrestrial television. There are other digital TV standards used elsewhere in the world, e.g. ATSC which is used in North American. However the TV HAT only supports the DVB-T and DVB-T2 standards.
 
