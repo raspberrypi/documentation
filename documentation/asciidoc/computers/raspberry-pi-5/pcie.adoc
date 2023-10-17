@@ -6,9 +6,11 @@ image::images/pcie.jpg[alt="Raspberry Pi connector for PCIe",width="70%"]
 
 Raspberry Pi 5 has an FPC connector on the right-hand side of the board. This connector breaks out PCIe Gen 2.0 x1 interface for fast peripherals. 
 
+NOTE: More information around the PCIe FPC connector pin out, and other details needed to create third-party devices, accessories, and HATs, will be released at a later point.
+
 === Enabling PCIe
 
-By default mthe PCIe connector is not enabled. To enable it you should add the following option into `/boot/firmware/config.txt` and reboot:
+By default the PCIe connector is not enabled. To enable it you should add the following option into `/boot/firmware/config.txt` and reboot:
 
 [source]
 ----
