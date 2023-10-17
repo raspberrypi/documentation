@@ -47,6 +47,7 @@
       // if found, scroll to that id hash
       console.log("Scrolling to ", selector);
       var target = document.querySelector(selector);
+      waitForElementToDisplay(selector, 10, 500);
       if (target) {
         var bbox = target.getBoundingClientRect();
         var myid = target.getAttribute("id");
