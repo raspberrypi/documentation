@@ -632,7 +632,7 @@ def compile_includes(my_adoc, output_path, v):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return my_adoc
 
-def walk_json(k,v,group_adoc, output_path):
+def walk_json(k, v, group_adoc, output_path):
   try:
     filename = re.sub("html$", "adoc", k)
     group_adoc = group_adoc + "include::" + filename + "[]\n\n"
