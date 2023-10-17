@@ -307,6 +307,28 @@ def make_filename_id(filename):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return my_id
 
+def find_item_in_toc(toc_data, filename):
+  try:
+    found = False
+    matching_file = None
+    for item in toc_data:
+      if item == filename:
+        matching_file = item
+        found = True
+        break
+      else:
+        for k, v in toc_data[item].items():
+          found = find_item_in_dict(k,v,filename)
+          if found == True:
+            matching_file = item
+            break
+        if found == True:
+          break
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return matching_file
+
 def fix_external_links(root, toc_data):
   try:
     matches = root.xpath(".//a[@href]")
@@ -319,21 +341,7 @@ def fix_external_links(root, toc_data):
           filename = href.split("#")[0]
           target_id = href.split("#")[1]
         # walk the toc data to find the main html file
-        found = False
-        parent_file = None
-        for item in toc_data:
-          if item == filename:
-            parent_file = item
-            found = True
-            break
-          else:
-            for k, v in toc_data[item].items():
-              found = find_item_in_dict(k,v,filename)
-              if found == True:
-                parent_file = item
-                break
-            if found == True:
-              break
+        parent_file = find_item_in_toc(toc_data, filename)
         if parent_file is not None:
           parent_file_dest = re.sub("^group__", "", parent_file)
           new_href = parent_file_dest
@@ -496,6 +504,14 @@ def make_adoc(root_string, title_text, filename):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return root_string
 
+def decrease_heading_levels(adoc):
+  try:
+    adoc = re.sub("\n==", "\n=", adoc, flags=re.S)
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return adoc
+
 def make_dict_path(arr, level):
   try:
     dict_path_str = ""
@@ -512,6 +528,7 @@ def make_dict_path(arr, level):
 def parse_toc(root):
   try:
     toc_data = {}
+    toc_list = {}
     parents = []
     items = root.findall(".//a[@class='el']")
     for item in items:
@@ -531,6 +548,7 @@ def parse_toc(root):
         cmd = make_dict_path(parents, parent_level-1)
         cmd = cmd + "[href] = {}"
         exec(cmd)
+      toc_list[href] = level
       if len(parents) > level-1:
         parents[level-1] = href
       else:
@@ -538,7 +556,7 @@ def parse_toc(root):
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
-  return toc_data
+  return toc_data, toc_list
 
 def parse_header(header_path):
   h_json = {
@@ -594,13 +612,39 @@ def compile_json_mappings(json_dir, json_files):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return compiled
 
-def walk_json(k,v,group_adoc):
+def compile_includes(my_adoc, output_path, v):
+  try:
+    for sk, sv in v.items():
+      # append includes directly to the parent file
+      adoc_filename = re.sub("html$", "adoc", sk)
+      full_adoc_path = os.path.join(output_path, adoc_filename)
+      # read the adoc
+      included_content = ""
+      with open(full_adoc_path) as f:
+        included_content = f.read()
+      my_adoc += "\n\n"
+      my_adoc += included_content
+      if len(sv) > 0:
+        my_adoc = compile_includes(my_adoc, output_path, sv)
+      os.remove(full_adoc_path)
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return my_adoc
+
+def walk_json(k, v, group_adoc, output_path):
   try:
     filename = re.sub("html$", "adoc", k)
     group_adoc = group_adoc + "include::" + filename + "[]\n\n"
     if len(v) > 0:
-      for sk, sv in v.items():
-        group_adoc = walk_json(sk,sv,group_adoc)
+      # compile includes into a single file
+      my_adoc = ""
+      my_adoc_path = os.path.join(output_path, filename)
+      with open(my_adoc_path) as f:
+        my_adoc = f.read()
+      my_adoc = compile_includes(my_adoc, output_path, v)
+      # write the new file
+      write_output(my_adoc_path, my_adoc)
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
@@ -630,6 +674,57 @@ def walk_nested_adoc(k, v, output_path, level):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return level
 
+def parse_indiviual_file(html_path, html_file, complete_json_mappings, updated_links, toc_data):
+  try:
+    # create the full path
+    this_path = os.path.join(html_path, html_file)
+    # read the input root
+    with open(this_path) as h:
+      html_content = h.read()
+      html_content = re.sub('<\!DOCTYPE html PUBLIC "-\/\/W3C\/\/DTD XHTML 1\.0 Transitional\/\/EN" "https:\/\/www\.w3\.org\/TR\/xhtml1\/DTD\/xhtml1-transitional\.dtd">', '', html_content)
+      html_content = re.sub('rel="stylesheet">', 'rel="stylesheet"/>', html_content)
+      html_content = re.sub('&display=swap"', '"', html_content)
+      html_content = re.sub('<img src="logo-mobile\.svg" alt="Raspberry Pi">', '', html_content)
+      html_content = re.sub('<img src="logo\.svg" alt="Raspberry Pi">', '', html_content)
+      html_content = re.sub("<\!-- HTML header for doxygen \S*?-->", '', html_content)
+      html_content = re.sub(' xmlns="http://www.w3.org/1999/xhtml"', '', html_content)
+      root = etree.HTML(html_content)
+    
+    # give everything an id
+    root = add_ids(root, html_file)
+    # loop over each json file
+    skip = ["table_memname.json"]
+    for mapping in complete_json_mappings:
+      for item in mapping:
+        root = transform_element(item, root)
+    # fix links
+    root, updated_links = fix_internal_links(root, html_file, updated_links)
+    root = fix_external_links(root, toc_data)
+    # cleanup
+    root = merge_lists("ul", root)
+    root = merge_lists("ol", root)
+    root = wrap_list_items(root)
+    # combine multi-para notes into one container
+    root = merge_note_paras(root)
+    # add some extra items to help with the adoc conversion
+    root = prep_for_adoc(root)
+    # fix some heading levels
+    root = fix_heading_levels(root)
+    root = fix_duplicate_ids(root, html_file)
+    # cleanup
+    root = strip_attribute("data-processed", root)
+    # get the document title
+    title_text = get_document_title(root)
+    # get only the relevant content
+    contents = root.find(".//div[@class='contents']")
+    # prep and write the adoc
+    final_output = stringify(contents)
+    adoc = make_adoc(final_output, title_text, html_file)
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return adoc
+
 def handler(html_path, output_path, header_path, output_json):
   try:
     dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -655,55 +750,17 @@ def handler(html_path, output_path, header_path, output_json):
     if os.path.exists(toc_file):
       with open(toc_file) as h:
         toc_root = etree.HTML(h.read())
-      toc_data = parse_toc(toc_root)
+      toc_data, toc_list = parse_toc(toc_root)
     # process every html file
     updated_links = {}
     for html_file in html_files:
-      # create the full path
-      this_path = os.path.join(html_path, html_file)
       this_output_path = os.path.join(output_path, html_file)
-      # read the input root
-      with open(this_path) as h:
-        html_content = h.read()
-        html_content = re.sub('<\!DOCTYPE html PUBLIC "-\/\/W3C\/\/DTD XHTML 1\.0 Transitional\/\/EN" "https:\/\/www\.w3\.org\/TR\/xhtml1\/DTD\/xhtml1-transitional\.dtd">', '', html_content)
-        html_content = re.sub('rel="stylesheet">', 'rel="stylesheet"/>', html_content)
-        html_content = re.sub('&display=swap"', '"', html_content)
-        html_content = re.sub('<img src="logo-mobile\.svg" alt="Raspberry Pi">', '', html_content)
-        html_content = re.sub('<img src="logo\.svg" alt="Raspberry Pi">', '', html_content)
-        html_content = re.sub("<\!-- HTML header for doxygen \S*?-->", '', html_content)
-        html_content = re.sub(' xmlns="http://www.w3.org/1999/xhtml"', '', html_content)
-        root = etree.HTML(html_content)
-      
-      # give everything an id
-      root = add_ids(root, html_file)
-      # loop over each json file
-      skip = ["table_memname.json"]
-      for mapping in complete_json_mappings:
-        for item in mapping:
-          root = transform_element(item, root)
-      # fix links
-      root, updated_links = fix_internal_links(root, html_file, updated_links)
-      root = fix_external_links(root, toc_data)
-      # cleanup
-      root = merge_lists("ul", root)
-      root = merge_lists("ol", root)
-      root = wrap_list_items(root)
-      # combine multi-para notes into one container
-      root = merge_note_paras(root)
-      # add some extra items to help with the adoc conversion
-      root = prep_for_adoc(root)
-      # fix some heading levels
-      root = fix_heading_levels(root)
-      root = fix_duplicate_ids(root, html_file)
-      # cleanup
-      root = strip_attribute("data-processed", root)
-      # get the document title
-      title_text = get_document_title(root)
-      # get only the relevant content
-      contents = root.find(".//div[@class='contents']")
-      # prep and write the adoc
-      final_output = stringify(contents)
-      adoc = make_adoc(final_output, title_text, html_file)
+      # parse the file
+      adoc = parse_indiviual_file(html_path, html_file, complete_json_mappings, updated_links, toc_data)
+      # fix heading levels for non-included pages
+      if html_file not in toc_list:
+        adoc = decrease_heading_levels(adoc)
+      # write the final adoc file
       adoc_path = re.sub(".html$", ".adoc", this_output_path)
       write_output(adoc_path, adoc)
       print("Generated " + adoc_path)
@@ -733,7 +790,7 @@ def handler(html_path, output_path, header_path, output_json):
       if 'filename' in h_json[item]:
         item_filename = h_json[item]['filename']
         for k,v in toc_data[item_filename].items():
-          group_adoc = walk_json(k,v,group_adoc)
+          group_adoc = walk_json(k,v,group_adoc,output_path)
       group_output_path = os.path.join(output_path, item + ".adoc")
       write_output(group_output_path, group_adoc)
     # write the json structure file as well
