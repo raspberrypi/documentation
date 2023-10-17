@@ -47,14 +47,19 @@
       // if found, scroll to that id hash
       console.log("Scrolling to ", selector);
       var target = document.querySelector(selector);
+      waitForElementToDisplay(selector, 10, 500);
+      console.log(target);
       if (target) {
         var bbox = target.getBoundingClientRect();
+        console.log(bbox);
         var myid = target.getAttribute("id");
+        console.log(myid);
         window.scrollTo({
           top: bbox.top,
           left: 0,
           behavior: "smooth",
         });
+        console.log("scrolled!");
       } else {
         console.log("Target not found :(");
       }
