@@ -103,8 +103,10 @@ image::images/CMIO-Cam-Adapter.jpg[Connect the adapter board]
 image:images/CMIO-Cam-GPIO2.jpg[GPIO connection with additional camera]
 
 . _(CM4 only)_: Connect the J6 GPIO pins with two vertical-orientation jumper cables.
+////
 +
-// TODO: (https://app.asana.com/0/1159385100249297/1205740210973410/f) image::images/CM4-J6.jpg[Connect the J6 GPIO pins in vertical orientation]
+TODO: (https://app.asana.com/0/1159385100249297/1205740210973410/f) image::images/CM4-J6.jpg[Connect the J6 GPIO pins in vertical orientation]
+////
 
 . _(CM1, CM3, CM3+, and CM4S only)_: Add the following directive to `/boot/firmware/config.txt` to assign GPIO 3 as the CAM0 regulator:
 +
