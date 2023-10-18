@@ -1,8 +1,10 @@
 == Python on Raspberry Pi
 
-Python 3 is installed by default on Raspberry Pi OS and is used for many important functions. Interfering with the system Python installation can therefore cause problems for your operating system, so its important that if you install third-party Python libaries you use the correct package management tools.
+Python 3 is installed by default on Raspberry Pi OS and is used for many important functions. Interfering with the system Python installation can therefore cause problems for your operating system, so it's important that if you install third-party Python libraries you use the correct package management tools.
 
-There are two routes to installing libaries into the default `python` distribution. Firstly you can use `apt` and install pre-configured system packages, or alternatively you can use `pip` to install packages that are not distributed as part of Rapsberry Pi OS.
+There are two routes to installing libraries into the default `python` distribution. Firstly you can use `apt` and install pre-configured system packages, or alternatively, you can use `pip` to install packages that are not distributed as part of Raspberry Pi OS.
+
+IMPORTANT: From _Bookworm_ onwards packages installed via `pip` must be installed into a Python Virtual Environment using `venv`. This has been introduced by the Python community, not Raspberry Pi, see https://peps.python.org/pep-0668/[PEP 668] for more details
 
 === Installing Python packages using apt
 
@@ -21,9 +23,9 @@ to install the pre-built library.
 
 Using `apt` makes installing larger packages, like `numpy` which has many native dependencies including a Fortran compiler, much simpler than installing individual packages using Python's own package management system.
 
-=== About Python virtual enivronments
+If you want to install a Python library called "foobar" you can use `apt search foobar` to search for the exact package name. In most cases, you'll find that the required package is going to be called `python-foobar` or `python3-foobar`.
 
-IMPORTANT: From _Bookworm_ onwards packages installed via `pip` must be installed into a Python Virtal Environment using `venv`. This has been imposed by the Python community not Raspberry Pi, see https://peps.python.org/pep-0668/[PEP 668] for more details
+=== About Python virtual environments
 
 In previous versions of the operating system you used to be able to directly install libraries system wide using the package installer for Python, commonly known as `pip`. You'll find the following sort of command in many tutorials online.
 
@@ -32,7 +34,7 @@ In previous versions of the operating system you used to be able to directly ins
 $ pip install buildhat
 ----
 
-However, in newer versions of Raspberry Pi OS, and other operating systems, this is disallowed. If you try and install a Python package system wide you'll recieve an error similar to this,
+However, in newer versions of Raspberry Pi OS, and other operating systems, this is disallowed. If you try and install a Python package system-wide you'll receive an error similar to this,
 
 [source,bash]
 ----
@@ -41,27 +43,23 @@ error: externally-managed-environment
 
 × This environment is externally managed
 ╰─> To install Python packages system-wide, try apt install
-    python3-xyz, where xyz is the package you are trying to
-    install.
-    
-    If you wish to install a non-Debian-packaged Python package,
-    create a virtual environment using python3 -m venv path/to/venv.
-    Then use path/to/venv/bin/python and path/to/venv/bin/pip. Make
-    sure you have python3-full installed.
-    
-    If you wish to install a non-Debian packaged Python application,
-    it may be easiest to use pipx install xyz, which will manage a
-    virtual environment for you. Make sure you have pipx installed.
-    
-    See /usr/share/doc/python3.11/README.venv for more information.
+  python3-xyz, where xyz is the package you are trying to
+  install.
+
+  If you wish to install a non-Debian-packaged Python package,
+  create a virtual environment using python3 -m venv path/to/venv.
+  Then use path/to/venv/bin/python and path/to/venv/bin/pip. Make
+  sure you have python3-full installed.
+
+  For more information visit http://rptl.io/venv
 
 note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
 hint: See PEP 668 for the detailed specification.
 ----
 
-This error is generated because you're trying to install a third-party package into the system Python. There has been a long-standing practical problem for Python users has been conflicts between OS package managers like `pat` and Python-specific package management tools like `pip`. These conflicts include both Python-level API incompatibilities and conflicts over file ownership.
+This error is generated because you're trying to install a third-party package into the system Python. A long-standing practical problem for Python users has been conflicts between OS package managers like `apt` and Python-specific package management tools like `pip`. These conflicts include both Python-level API incompatibilities and conflicts over file ownership.
 
-Therefore from _Bookworm_ onwards packages installed via `pip` must be installed into a Python Virtal Environment using `venv`. A virtual environment is a container where you can safely install third-party modules so they won't interfere with, or break, your system Python.
+Therefore from _Bookworm_ onwards packages installed via `pip` must be installed into a Python Virtual Environment using `venv`. A virtual environment is a container where you can safely install third-party modules so they won't interfere with, or break, your system Python.
 
 === Using pip with virtual environments
 
@@ -75,7 +73,7 @@ One way you can proceed is to create a new virtual environment for each Python p
 ----
 $ mkdir my_project
 $ cd my_project
-$ python3.8 -m venv env
+$ python -m venv env
 ----
 
 if you now look inside the `my_project` directory you'll see a directory called `env`.
@@ -90,7 +88,9 @@ drwxr-xr-x  5 pi pi 4096 Oct  3 14:34 env
 $
 ----
 
-Inside this directory is full Python distribution. To activate your virtual environment and make that version of Python the one you're currently using you should type,
+NOTE: If you want to inherit the currently installed packages from the system Python you should create your virtual environment using `python -m venv --system-site-packages env`.
+
+Inside this directory is a full Python distribution. To activate your virtual environment and make that version of Python the one you're currently using you should type,
 
 [source,bash]
 ----
@@ -98,7 +98,7 @@ $ source env/bin/activate
 (env) $
 ----
 
-and you'll see that your prompt is now prepended with `(env)` to indicate that you're no longer using the system Python. Instead you're using the version of Python contained inside your virtual environment. Any changes you make here, or modules you install into your environment, won't cause problems for your system Python.
+and you'll see that your prompt is now prepended with `(env)` to indicate that you're no longer using the system Python. Instead, you're using the version of Python contained inside your virtual environment. Any changes you make here, or modules you install into your environment, won't cause problems for your system Python.
 
 [source,bash]
 ----
@@ -171,7 +171,7 @@ and prove to yourself you've done so by checking the installed packages using `p
 
 ==== Using a separate environment for each user
 
-An alternative method to to creating a virtual environment for each of your Python projects is to create a single virtual environment for your user account and then activate that environment before running any of your Python code. This approach may be prefered if you commonly install the same set of modules for each project, and don't want to have to bother creating individual Python environments for each project essentially just duplicating your environment.
+An alternative method to creating a virtual environment for each of your Python projects is to create a single virtual environment for your user account and then activate that environment before running any of your Python code. This approach may be preferred if you commonly install the same set of modules for each project, and don't want to have to bother creating individual Python environments for each project essentially just duplicating your environment.
 
 [source,bash]
 ----
@@ -184,7 +184,7 @@ We can again check we're in a separate environment by using `pip list`,
 
 [source,bash]
 ----
-(env) $ pip list
+(.env) $ pip list
 Package    Version
 ---------- -------
 pip        23.0.1
@@ -195,7 +195,7 @@ and leave it using `deactivate`.
 
 [source,bash]
 ----
-(env) $ deactivate
+(.env) $ deactivate
 $
 ----
 

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     {% include head.html %} 
-    <link rel="stylesheet" href="{{ site.baseurl }}/css/boxes.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/boxes.css?ver={{ site.time | date: '%s' }}">
   </head>
   <body>
     {% include header.html %}      
