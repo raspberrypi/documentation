@@ -115,7 +115,7 @@ selects between DSI1 (the default) and DSI0.
 
 Once all the required changes have been made to the `dts` file, it needs to be compiled and placed on the boot partition of the device.
 
-Instructions for doing this can be found on the xref:configuration.adoc#changing-the-default-pin-configuration[Pin Configuration] page.
+Instructions for doing this can be found on the xref:configuration.adoc#change-the-default-pin-configuration[Pin Configuration] page.
 
 ==== Sources
 
