@@ -8,6 +8,9 @@ image::images/uart-connector.png[alt="The 3-pin UART connector",width="70%"]
 
 The UART connector is a 3-pin header compatible with the Raspberry Pi Debug Connector https://rptl.io/debug-spec[specification], a cable terminating in an appropriate JST connector allowing you to connect to the UART is provided with the xref:../microcontrollers/debug-probe.adoc[Debug Probe].
 
+.The Raspberry Pi Debug Probe connected to Raspberry Pi 5
+image::images/debug-probe-and-pi5.jpg[alt="The Raspberry Pi Debug Probe connected to Raspberry Pi 5",width="70%"]
+
 By default it offers a 115,200 baud 8N1 connection on `/dev/ttyAMA0` (aliased to `/dev/serial0`).
 
 === Creating a serial console
@@ -15,6 +18,6 @@ By default it offers a 115,200 baud 8N1 connection on `/dev/ttyAMA0` (aliased to
 .Enabling a serial console
 image::images/serial-console.png[alt="Enabling a serial console",width="70%"]
 
-Unlike previous Raspberry Pi models where you could enable a serial console on GPIO14 and 15, enabling a serial console from `raspi-config` will enable a serial console on the new UART connector on `/dev/ttyAMA0`.
+Unlike previous Raspberry Pi models where you could enable a serial console on GPIO14 and 15, enabling a serial console from `raspi-config` will enable a serial console on the new UART connector on `/dev/ttyAMA0` on Raspberry Pi 5.
 
 
