@@ -56,7 +56,7 @@ NOTE: `dt-blob.bin` by default does not exist as there is a 'default' version co
 
 NOTE: `dt-blob.bin` is in compiled device tree format, but is only read by the GPU firmware to set up functions exclusive to the GPU - see below.
 
-* A guide to xref:configuration.adoc#changing-the-default-pin-configuration[creating `dt-blob.bin`].
+* A guide to xref:configuration.adoc#change-the-default-pin-configuration[creating `dt-blob.bin`].
 * A guide to the xref:configuration.adoc#device-trees-overlays-and-parameters[Linux Device Tree for Raspberry Pi].
 
 During boot, the user can specify a specific ARM device tree to use via the `device_tree` parameter in `config.txt`, for example adding the line `device_tree=mydt.dtb` to `config.txt` where `mydt.dtb` is the dtb file to load instead of one of the standard ARM dtb files. While a user can create a full device tree for their Compute Module product, the recommended way to add hardware is to use overlays (see next section).
