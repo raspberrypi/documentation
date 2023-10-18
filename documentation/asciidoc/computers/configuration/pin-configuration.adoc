@@ -33,7 +33,7 @@ sudo dtc -I dts -O dtb -o /boot/firmware/dt-blob.bin dt-blob.dts
 Similarly, a `.dtb` file can be converted back to a `.dts` file, if required.
 
 ----
-dtc -I dtb -O dts -o dt-.dts /boot/firmware/dt-.bin
+dtc -I dtb -O dts -o dt-blob.dts /boot/firmware/dt-blob.bin
 ----
 
 === Sections of the `dt-blob`
