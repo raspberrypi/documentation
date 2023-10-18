@@ -1,0 +1,76 @@
+
+== Powering Raspberry Pi 5
+
+Raspberry Pi manufactuer two different USB-C power supplies. 
+
+The first is the Raspberry Pi 15W USB-C Power Supply, this is the recommended supply for Raspberry Pi 4 and Raspberry Pi 400. The second Raspberry Pi 27W USB-C Power Supply, this provides up to 5A current at +5.1V, and it is the recommended supply for Raspberry Pi 5.
+
+The USB-C standard, used by the Raspberry Pi 4 supply, is limited to 5V at 3A, for a total power output of 15W. The USB-PD standard allows higher voltages and currents to be negotiated via software but requires an appropriate Power Management Integrated Circuit (PMIC) which is only present on Raspberry Pi 5. Additionally these supplies requires you to use a suitable USB-PD compatible cables. 
+
+NOTE: It's not possible to use older USB "dumb" cables and connectors to provide more than 15W even with a USB-PD capable supply.
+
+While any USB-PD capable phone charges advertise greater than 15W of power. However, virtually all of them achieve this by increasing the voltage instead of providing more current at +5V. If you are using a power supply that cannot provide 5A at +5V on first boot you will be warned by the operating system that the current draw to peripherals will be restricted.
+
+.On screen warning of under-voltage event
+image::images/firstboot-powerwarning.png[alt="On screen warning of under-voltage event in Raspberry Pi OS",width="70%"]
+
+We recommend the official Raspberry Pi Power Supply, which has been specifically designed to consistently provide +5V despite rapid fluctuations in current draw. Those fluctuations in demand are something that happens a lot when you’re using peripherals with the Raspberry Pi and something that other supplies—designed to provide consistent current for charging cellphones—usually don’t cope with all that well. Our supply also has an attached (captive) USB cable, which means that you don’t accidentally use a poor-quality or "dumb" cable—something that can be an issue with other supplies.
+
+WARNING: If you are using a third-party USB-PD capable multi-port power supply plugging an additional device into the supply, as well as your Raspberry Pi, will cause a renegotiation between the supply and the Raspberry Pi. This will happen seamlessly if the Raspberry Pi is powered, but if the Raspberry Pi is plugged in, and powered down this renegotiation may cause the Raspberry Pi to boot.
+
+//NOTE: Raspberry Pi 5 makes use of the Renesas DA9091 “Gilmour” power-management IC (PMIC). This integrates eight separate switch-mode power supplies to generate the various voltages required by the board, including a quad-phase core supply, capable of providing 20 amps of current to power the Cortex-A76 cores and other digital logic in BCM2712.
+
+=== USB Boot and Power Supplies
+
+By default, USB boot is not enabled with a 3A power supply. However, setting `usb_max_current_enable=1` in the `/boot/firmware/config.txt` file will override this and enable USB boot with a lower wattage power supply.
+
+When booting using a 3A supply without this statement in the `config.txt`, a warning message is displayed on the bootloader HDMI diagnostics screen and the bootloader will skip to the next boot mode.
+
+
+[source]
+----
+Trying partition: 0
+type: 32 lba: 8192 'mkfs.fat' ' bootfs     ' clusters 130554 (4)
+rsc 32 fat-sectors 1020 root dir cluster 2 sectors 0 entries 0
+FAT32 clusters 130554
+[MSD [01:00] 2.00 000000:02] autoboot.txt not found
+Trying partition: 0
+type: 32 lba: 8192 'mkfs.fat' ' bootfs     ' clusters 130554 (4)
+rsc 32 fat-sectors 1020 root dir cluster 2 sectors 0 entries 0
+FAT32 clusters 130554
+Read config.txt bytes     2109 hnd 0x10a
+[MSD [01:00] 2.00 000000:02] pieeprom.upd not found
+usb_max_current_enable default 0 max-current 900
+Read bcm2712-rpi-5-b.dtb bytes    71862 hnd 0x5101
+dt-match: compatible: raspberrypi,5-model-b match: brcm,bcm2712
+dt-match: compatible: brcm,bcm2712 match: brcm,bcm2712
+***
+USB boot requires high current (5 volt 5 amp) power supply.
+To disable this check set usb_max_current_enable=1 in config.txt
+or press the power button to temporarily enable usb_max_current_enable
+and continue booting.
+See https://rptl.io/rp5-power_supply for more information
+***
+----
+
+The bootloader will prompt to "press power button to continue" which effectively sets `usb_max_current_enable=1` for the current boot, temporarily to allow you to allow from USB. However unless your disk has its own external power supply it is possible that there may not be sufficient current available to your Raspberry Pi.
+
+=== Power supplies and Raspberry Pi OS
+
+The bootloader passes information about the power-supply via device-tree `/proc/device-tree/chosen/power`. Users would typically not read this directly.
+
+max_current:: The max current in mA
+uspd_power_data_objects:: A dump of the PDOs - debug for advanced users.
+usb_max_current_enable:: Whether the current limiter was set to high or low. 
+usb_over_current_detected:: Whether any USB over current occured during boot before transferring control to the OS.
+reset_event:: The PMIC reset reason e.g. watchdog, over or under voltage, over-temperature
+
+The PMIC has built-in ADCs that, amongst other things, can measure the supply voltage `EXT5V_V`
+
+[source,bash]
+----
+vcgencmd pmic_read_adc
+----
+
+NOTE: You can't see USB current or anything else connected directly to 5V because this bypasses the PMIC, so you should not expect this to add up to the wattage of the source power supply. However, it can be useful to monitor things like the core-voltage.
+

@@ -39,7 +39,7 @@ based on the model, serial number, and EDID.
 
 GPIO changes made through this mechanism do not have any direct effect on the kernel -- they don't cause GPIO pins to
 be exported to the sysfs interface, and they can be overridden by pinctrl entries in the Device Tree as well as
-utilities like `raspi-gpio`.
+utilities like `pinctrl`.
 
 Note also that there is a delay of a few seconds between power being applied and the changes taking effect -- longer
 if booting over the network or from a USB mass storage device.

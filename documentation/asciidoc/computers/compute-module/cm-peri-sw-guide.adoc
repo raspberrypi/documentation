@@ -22,39 +22,7 @@ On a Compute Module, both Bank 0 and Bank 1 are free to use. Bank 2 is used for 
 
 It is useful on a running system to look at the state of each of the GPIO pins (what function they are set to, and the voltage level at the pin) so that you can see if the system is set up as expected. This is particularly helpful if you want to see if a Device Tree is working as expected, or to get a look at the pin states during hardware debug.
 
-Raspberry Pi provides the `raspi-gpio` package which is a tool for hacking and debugging GPIO 
-
-NOTE: You need to run `raspi-gpio` as root.
-
-To install `raspi-gpio`:
-
-----
-sudo apt install raspi-gpio
-----
-
-If `apt` can't find the `raspi-gpio` package, you will need to do an update first:
-
-----
-sudo apt update
-----
-
-To get help on `raspi-gpio`, run it with the `help` argument:
-
-----
-sudo raspi-gpio help
-----
-
-For example, to see the current function and level of all GPIO pins use:
-
-----
-sudo raspi-gpio get
-----
-
-NOTE: `raspi-gpio` can be used with the `funcs` argument to get a list of all supported GPIO functions per pin. It will print out a table in CSV format. The idea is to pipe the table to a `.csv` file and then load this file using e.g. Excel:
-
-----
-sudo raspi-gpio funcs > gpio-funcs.csv
-----
+Raspberry Pi provides the `pinctrl` package which is a tool for hacking and debugging GPIO. 
 
 === BCM283x Boot Process
 
@@ -143,13 +111,7 @@ You can use `dtc` to write this out as a human readable dts file for debugging. 
 dtc -I fs -O dts -o proc-dt.dts /proc/device-tree
 ----
 
-As previously explained in the GPIO section, it is also very useful to use `raspi-gpio` to look at the setup of the GPIO pins to check that they are as you expect:
-
-----
-raspi-gpio get
-----
-
-If something seems to be going awry, useful information can also be found by dumping the GPU log messages:
+As previously explained in the GPIO section, it is also very useful to use `pinctrl` to look at the setup of the GPIO pins to check that they are as you expect. If something seems to be going awry, useful information can also be found by dumping the GPU log messages:
 
 ----
 sudo vclog --msg
@@ -262,7 +224,7 @@ should work.
 finally running:
 
 ----
-sudo raspi-gpio get
+pinctrl
 ----
 
 should show that GPIO8-11 have changed to ALT0 (SPI) functions.

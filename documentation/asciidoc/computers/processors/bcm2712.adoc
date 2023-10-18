@@ -1,0 +1,26 @@
+== BCM2712
+
+Broadcom BCM2712 is the 16nm application processor at the heart of Raspberry Pi 5. It is the successor to the BCM2711 device used in Raspberry Pi 4, and shares many common architectural features with other devices in the BCM27xx family, used on earlier Raspberry Pi products.
+
+Built around a quad-core Arm Cortex-A76 CPU cluster, clocked at up to 2.4GHz, with 512KB per-core L2 caches and a 2MB shared L3 cache, it integrates an improved 12-core VideoCore VII GPU; a hardware video scaler and HDMI controller capable of driving dual 4kp60 displays; and a Raspberry Pi-developed HEVC decoder and Image Signal Processor. A 32-bit LPDDR4X memory interface provides up to 17GB/s of memory bandwidth, while x1 and x4 PCI Express interfaces support high-bandwidth external peripherals; on Raspberry Pi 5 the latter is used to connect to the Raspberry Pi RP1 south bridge, which provides the bulk of the external-facing I/O functionality on the platform.
+
+Headline features include: 
+
+* Quad-core Arm Cortex-A76 @ 2.4GHz
+** ARMv8-A ISA
+** 64KByte I and D caches
+** 512KB L2 per core, 2MB shared L3
+* New Raspberry Pi-developed ISP
+** 1 gigapixel/sec
+* Improved HVS and display pipeline
+** Dual 4Kp60 support
+* VideoCore V3D VII
+** ~2-2.5× faster (more hardware, 1GHz versus 600MHz on Pi 4)
+** OpenGL ES 3.1, Vulkan 1.3
+* 4Kp60 HEVC hardware decode
+** Other CODECs run in software
+** H264 1080p24 decode ~10–20% of CPU
+** H264 1080p60 decode ~50–60% of CPU
+** H264 1080p30 encode (from ISP) ~30–40% CPU
+
+In aggregate, the new features present in BCM2712 deliver a performance uplift of 2-3x over Raspberry Pi 4 for common CPU or I/O-intensive use cases.

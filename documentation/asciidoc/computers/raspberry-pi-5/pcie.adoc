@@ -1,0 +1,36 @@
+
+== Raspberry Pi connector for PCIe
+
+.Raspberry Pi connector for PCIe
+image::images/pcie.jpg[alt="Raspberry Pi connector for PCIe",width="70%"]
+
+Raspberry Pi 5 has an FPC connector on the right-hand side of the board. This connector breaks out PCIe Gen 2.0 x1 interface for fast peripherals. 
+
+NOTE: More information around the PCIe FPC connector pin out, and other details needed to create third-party devices, accessories, and HATs, will be released at a later point.
+
+=== Enabling PCIe
+
+By default the PCIe connector is not enabled. To enable it you should add the following option into `/boot/firmware/config.txt` and reboot:
+
+[source]
+----
+# Enable the PCIe External connector.
+dtparam=pciex1
+----
+
+NOTE: A more memorable alias for `pciex1` exists, so you can alternatively add `dtparam=nvme` to the `/boot/firmware/config.txt` file.
+
+=== PCIe Gen 3.0
+
+The connection is certified for Gen 2.0 speeds (5 GT/sec), but you can force it to Gen 3.0 (10 GT/sec) if you add the following lines to your `/boot/firmware/config.txt`.
+
+[source]
+----
+# Enable the PCIe External connector.
+dtparam=pciex1
+
+# Force Gen 3.0 speeds
+dtparam=pciex1_gen=3
+----
+
+WARNING: The Raspberry Pi 5 is not certified for Gen 3.0 speeds, and connections to PCIe devices at these speeds may be unstable. 
