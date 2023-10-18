@@ -6,7 +6,9 @@ image::images/pcie.jpg[alt="Raspberry Pi connector for PCIe",width="70%"]
 
 Raspberry Pi 5 has an FPC connector on the right-hand side of the board. This connector breaks out PCIe Gen 2.0 x1 interface for fast peripherals. 
 
-NOTE: More information around the PCIe FPC connector pin out, and other details needed to create third-party devices, accessories, and HATs, will be released at a later point.
+NOTE: An M.2 HAT which provides an M.2 connector to allow the use of NVMe drives is still in protoype, and has not yet been released.
+
+NOTE: More information around the PCIe FPC connector pin out, and other details needed to create third-party devices, accessories, and HATs, will be released at a later point in time.
 
 === Enabling PCIe
 
