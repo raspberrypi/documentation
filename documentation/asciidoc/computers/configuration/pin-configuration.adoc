@@ -16,7 +16,7 @@ During the bootup sequence, the GPIO pins go through various actions.
 
 On a soft reset, the same procedure applies, except for default pulls, which are only applied on a power-on reset.
 
-Note that it may take a few seconds to get from stage 1 to stage 4. During that time, the GPIO pins may not be in the state expected by attached peripherals (as defined in `dtblob.bin` or `config.txt`). Since different GPIO pins have different default pulls, you should do *one of the following* for your peripheral:
+Note that it may take a few seconds to get from stage 1 to stage 4. During that time, the GPIO pins may not be in the state expected by attached peripherals (as defined in `dt-blob.bin` or `config.txt`). Since different GPIO pins have different default pulls, you should do *one of the following* for your peripheral:
 
 * Choose a GPIO pins that defaults to pulls as required by the peripheral on reset
 * Delay the peripheral's startup until stage 4/5 has been reached
@@ -33,12 +33,12 @@ sudo dtc -I dts -O dtb -o /boot/firmware/dt-blob.bin dt-blob.dts
 Similarly, a `.dtb` file can be converted back to a `.dts` file, if required.
 
 ----
-dtc -I dtb -O dts -o dt-blob.dts /boot/firmware/dt-blob.bin
+dtc -I dtb -O dts -o dt-.dts /boot/firmware/dt-.bin
 ----
 
 === Sections of the `dt-blob`
 
-The `dt-blob.bin` is used to configure the binary blob (VideoCore) at boot time. It is not currently used by the Linux kernel, but a kernel section will be added at a later stage, when we reconfigure the Raspberry Pi kernel to use a dt-blob for configuration.  The dt-blob can configure all versions of the Raspberry Pi, including the Compute Module, to use the alternative settings. The following sections are valid in the dt-blob:
+The `dt-blob.bin` is used to configure the binary blob (VideoCore) at boot time. It is not currently used by the Linux kernel, but a kernel section will be added at a later stage, when we reconfigure the Raspberry Pi kernel to use a dt-blob for configuration. The dt-blob can configure all versions of the Raspberry Pi, including the Compute Module, to use the alternative settings. The following sections are valid in the dt-blob:
 
 . `videocore`
 +
