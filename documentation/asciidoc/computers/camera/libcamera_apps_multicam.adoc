@@ -2,7 +2,7 @@
 
 Basic support for multiple cameras is available within `libcamera-apps`. Multiple cameras may be attached to a Raspberry Pi in the following ways:
 
-* Two cameras connected directly to a Raspberry Pi Compute Module board, see the xref:../computers/compute-module.adoc#attaching-a-raspberry-pi-camera-module[Compute Module documentation] for further details.
+* Two cameras connected directly to a Raspberry Pi Compute Module board, see the xref:../computers/compute-module.adoc#attach-a-raspberry-pi-camera-module[Compute Module documentation] for further details.
 * Two or more cameras attached to a non-compute Raspberry Pi board using a Video Mux board, like https://www.arducam.com/product/multi-camera-v2-1-adapter-raspberry-pi/[this 3rd party product].
 
 In the latter case, only one camera may be used at a time since both cameras are attached to a single Unicam port. For the former, both cameras can run simultaneously.
