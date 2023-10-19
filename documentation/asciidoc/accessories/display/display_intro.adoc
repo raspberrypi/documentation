@@ -116,7 +116,7 @@ The options for the touchscreen are:
 | Sets X resolution (default 800)
 
 | touchscreen-size-y
-| Sets Y resolution (default 600)
+| Sets Y resolution (default 480)
 
 | touchscreen-inverted-x
 | Invert X coordinates
