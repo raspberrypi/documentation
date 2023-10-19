@@ -22,7 +22,7 @@ dtparam=pciex1
 
 A more memorable alias for `pciex1` exists, so you can alternatively add `dtparam=nvme` to the `/boot/firmware/config.txt` file.
 
-NOTE: Enummeration of PCIe devices behind a switch is https://github.com/raspberrypi/firmware/issues/1833[not currently supported].
+NOTE: Enumeration of PCIe devices behind a switch is https://github.com/raspberrypi/firmware/issues/1833[not currently supported].
 
 === PCIe Gen 3.0
 
@@ -30,7 +30,7 @@ The connection is certified for Gen 2.0 speeds (5 GT/sec), but you can force it 
 
 [source]
 ----
-# Enable the PCIe External connector.
+# Enable the PCIe external connector
 dtparam=pciex1
 
 # Force Gen 3.0 speeds
