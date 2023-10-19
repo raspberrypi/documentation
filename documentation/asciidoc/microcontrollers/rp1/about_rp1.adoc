@@ -4,7 +4,11 @@
 .Architecture 
 image::images/rp1.jpg[alt="Architecture diagram of the RP1",width="70%"]
 
-RP1 is a 12×12mm, 0.65mm-pitch BGA southbridge, which provides the majority of the I/O capabilities for xref:../computers/raspberry-pi-5.adoc[Raspberry Pi 5]. Access to peripherals from BCM2712 is done via the RP1 on Raspberry Pi 5. It provides:
+RP1 is a 12×12mm, 0.65mm-pitch BGA southbridge, which provides the majority of the I/O capabilities for xref:../computers/raspberry-pi-5.adoc[Raspberry Pi 5]. Access to peripherals from BCM2712 is done via the RP1 on Raspberry Pi 5. 
+
+video::aioB40BGQYU[youtube]
+
+It provides:
 
 * 4-lane PCIe 2.0 endpoint
 * Gigabit Ethernet MAC

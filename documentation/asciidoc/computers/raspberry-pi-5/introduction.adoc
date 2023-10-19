@@ -13,13 +13,14 @@ For the first time, this is a full-size Raspberry Pi computer using silicon buil
 Key features include:
 
 * Quad Arm Cortex-A76 @ 2.4GHz
-* 512KB per-core L2 caches
-* 2MB L3 cache
+** Cryptographic Extension support (AES on hardware)
+** 512KB per-core L2 caches
+** 2MB L3 cache
 * 4GB or 8GB LPDDR4X-4267 SDRAM
 * Dual 4kp60 HDMI display output with HDR support
 * 4kp60 HEVC decoder
 * VideoCore VII graphics, with OpenGL-ES 3.1, Vulkan 1.2
-* Raspberry Pi Image Sensor Pipeline (ISP)
+* Raspberry Pi Image Sensor Processor (ISP)
 * Raspberry Pi connector for PCIe (1 x 2.0 port, additional HAT required)
 * 802.11ac dual-band Wi-Fi
 * Bluetooth 5.0 (with BLE support)
