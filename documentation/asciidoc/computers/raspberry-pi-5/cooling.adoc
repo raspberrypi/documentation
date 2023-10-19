@@ -21,7 +21,7 @@ The integrated 2.79 (max) CFM fan has fluid dynamic bearings selected for low no
 .The Active Cooler for Raspberry Pi 5
 image::images/active-cooler.jpg[alt="Active Cooler for Raspberry Pi 5",width="70%"]
 
-The Active Cooler is a single-piece annodised aluminium heatsink with a integrated blower. It has pre-applied thermal pads for heat transfer, and is mounted to the Raspberry Pi 5 board directly using spring-loaded push pins. It connects to the same 4-pin JST connector as the case fan.
+The Active Cooler is a single-piece anodised aluminium heatsink with an integrated blower. It has pre-applied thermal pads for heat transfer, and is mounted to the Raspberry Pi 5 board directly using spring-loaded push pins. It connects to the same 4-pin JST connector as the case fan.
 
 A radial blower, again selected for low noise and extended operating lifetime, pushes air through an extruded and milled aluminium heatsink. The cooling performance of the Active Cooler is somewhat superior to the Fan Case, making it particularly suitable for overclockers.
 
