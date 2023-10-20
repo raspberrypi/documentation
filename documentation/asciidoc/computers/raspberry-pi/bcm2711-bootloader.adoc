@@ -647,6 +647,8 @@ Default: `0`
 [[bootloader_update_stable]]
 === Updating to the LATEST / STABLE bootloader
 
+IMPORTANT: Do not update the firmware on your Raspberry Pi unless instructed by a Raspberry Pi engineer.
+
 The DEFAULT version of the bootloader is only updated for CRITICAL fixes and major releases. The LATEST / STABLE bootloader is updated more often to include the latest fixes and improvements.
 
 Advanced users can switch to the LATEST / STABLE bootloader to get the latest functionality.

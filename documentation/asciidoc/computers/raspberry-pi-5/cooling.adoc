@@ -29,6 +29,8 @@ A radial blower, again selected for low noise and extended operating lifetime, p
 
 NOTE: Blowers are electromechanical systems that direct air towards a specific direction using a fan and designated channels. While fans displace large volumes of air and promote circulation within a designated area, blowers provide a degree of air pressurisation to drive it out and forward.
 
+The Active Cooler has not been designed to be repeatedly removed from the Raspberry Pi 5.
+
 === Thermals
 
 A stress test was started on all four cores of the Raspberry Pi 5 to load the CPU. Two main thermal management regimes were examined during the test: no cooling, and managed active cooling. The managed active cooling tests were run using both the Active Cooler, and the Raspberry Pi Case for Raspberry Pi 5. 
