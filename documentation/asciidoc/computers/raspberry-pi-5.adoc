@@ -1,11 +1,11 @@
 
 include::raspberry-pi-5/introduction.adoc[]
 
-include::raspberry-pi-5/gpio.adoc[]
-
 include::raspberry-pi-5/power-supply.adoc[]
 
 include::raspberry-pi-5/cooling.adoc[]
+
+include::raspberry-pi-5/gpio.adoc[]
 
 include::raspberry-pi-5/pcie.adoc[]
 

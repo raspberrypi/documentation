@@ -47,3 +47,18 @@ Using the fan case we see idle temperatures a couple of degrees hotter than with
 Raspberry Pi 5 has been designed to handle typical client workloads, uncased, with no active cooling. For normal use adding cooling is optional, although performace may improve with active cooling. However a heavy continuous load, such as rebuilding the Linux kernel, will force the new Raspberry Pi 5 into thermal throttling. For heavy loads thermal throttling can extend processing times, and passive cooling is probably insufficient thermal management. 
 
 However, cooling of any type isn't mandatory, and no harm will come to the Raspberry Pi if left uncooled.
+
+=== Pinout
+
+The fan connector has four pins:
+
+
+[cols="1,2",width="50"%"]
+|===
+| Pin | Function
+
+| 1 | +5V
+| 2 | PWM
+| 3 | GND
+| 4 | Tach
+|===

@@ -1,3 +1,7 @@
 == Raspberry Pi and GPIO
 
-We recommend https://gpiozero.readthedocs.io/en/latest/[GPIO Zero]. More information about using the GPIO pins on Raspberry Pi can be found xref:raspberry-pi.adoc#gpio-and-the-40-pin-header[elsewhere in the documentation].
+Using the https://gpiozero.readthedocs.io/[GPIO Zero] library makes it easy to get started with controlling GPIO devices with Python. The library is comprehensively documented at https://gpiozero.readthedocs.io/[gpiozero.readthedocs.io].
+
+image::images/GPIO-duplicate.png[GPIO layout]
+
+More information about using the GPIO pins on Raspberry Pi can be found xref:raspberry-pi.adoc#gpio-and-the-40-pin-header[elsewhere in the documentation].
