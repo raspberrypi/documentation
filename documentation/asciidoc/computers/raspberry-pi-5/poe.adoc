@@ -6,4 +6,8 @@ The Ethernet jack on Raspberry Pi 5 is PoE+ capable, supporting the IEEE 802.3at
 .Raspberry Pi 5 PoE header
 image::images/poe.png[alt="The PoE connector,width="70%"]
 
-NOTE: The Raspberry Pi PoE+ HAT for Raspberry Pi 5 is an add-on board for Raspberry Pi 5 computers which connects to the PoE header. It is used to power your Raspberry Pi via an Ethernet cable, provided that power-sourcing equipment is installed on the Ethernet network. The PoE+ HAT for Raspberry Pi 5 is still in protoype, and has not yet been released.
+The Raspberry Pi PoE+ HAT for Raspberry Pi 5 is an add-on board for Raspberry Pi 5 computers which connects to the PoE header. It is used to power your Raspberry Pi via an Ethernet cable, provided that power-sourcing equipment is installed on the Ethernet network. 
+
+video:vc8xWyJuQY0[youtube]
+
+NOTE: The PoE+ HAT for Raspberry Pi 5 is still in protoype, and has not yet been released.

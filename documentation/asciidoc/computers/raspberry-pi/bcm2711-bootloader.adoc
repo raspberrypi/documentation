@@ -608,17 +608,9 @@ Default: `1`
 
 === Secure Boot configuration properties in `config.txt`
 
-[.whitepaper, title="Raspberry Pi 4 Boot Security", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-004651-WP/Raspberry-Pi-4-Boot-Security.pdf]
+[.whitepaper, title="How To Use Raspberry Pi Secure Boot", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003466-WP/Boot-Security-Howto.pdf]
 ****
-This whitepaper describes Raspberry Pi Ltd’s approach to boot security on the Raspberry Pi 4 family of devices, based on
-the BCM2711 system on a chip (SoC).
-****
-
-[.whitepaper, title="Boot security howto", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003466-WP/Boot-Security-Howto.pdf]
-****
-This whitepaper describes how to implement secure boot on devices based on Raspberry Pi 4. For an overview of the secure boot implementation, please see the Raspberry Pi 4 Boot Security whitepaper.
-
-The secure boot system is intended for use with buildroot (or similar)-based OS images; using it with Raspberry Pi OS is not recommended or supported.
+This whitepaper describes how to implement secure boot on devices based on Raspberry Pi 4. For an overview of our approach to implementing secure boot implementation, please see the https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-004651-WP/Raspberry-Pi-4-Boot-Security.pdf[Raspberry Pi 4 Boot Security] whitepaper. The secure boot system is intended for use with `buildroot`-based OS images; using it with Raspberry Pi OS is not recommended or supported.
 ****
 
 The following `config.txt` properties are used to program the `secure-boot` OTP settings. These changes are irreversible and can only be programmed via `RPIBOOT` when flashing the bootloader EEPROM image.  This ensures that `secure-boot` cannot be set remotely or by accidentally inserting a stale SD card image.

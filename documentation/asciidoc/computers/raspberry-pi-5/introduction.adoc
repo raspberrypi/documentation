@@ -13,13 +13,14 @@ For the first time, this is a full-size Raspberry Pi computer using silicon buil
 Key features include:
 
 * Quad Arm Cortex-A76 @ 2.4GHz
-* 512KB per-core L2 caches
-* 2MB L3 cache
+** Cryptographic Extension support (AES on hardware)
+** 512KB per-core L2 caches
+** 2MB L3 cache
 * 4GB or 8GB LPDDR4X-4267 SDRAM
 * Dual 4kp60 HDMI display output with HDR support
 * 4kp60 HEVC decoder
 * VideoCore VII graphics, with OpenGL-ES 3.1, Vulkan 1.2
-* Raspberry Pi Image Sensor Pipeline (ISP)
+* Raspberry Pi Image Sensor Processor (ISP)
 * Raspberry Pi connector for PCIe (1 x 2.0 port, additional HAT required)
 * 802.11ac dual-band Wi-Fi
 * Bluetooth 5.0 (with BLE support)
@@ -41,12 +42,14 @@ Key features include:
 
 When you plug your Raspberry Pi into power for the first time it will automatically turn on and boot into the operating system without having to push the button. 
 
-While your Raspberry Pi is running you can initiate a clean shutdown by briefly pressing the power button located on the left-hand side of the board, and then releasing it. This will cause a Desktop menu to appear asking whether you want to Shutdown, Reboot, or Logout. You can select whether you want to shutdown or reboot, or alternatively pressing the power button briefly for a second time will initiate a clean shutdown.
+If you are running the Raspberry Pi Desktop you can initiate a clean shutdown by briefly pressing the power button located on the left-hand side of the board, and then releasing it. This will cause a Desktop menu to appear asking whether you want to Shutdown, Reboot, or Logout. You can select whether you want to shutdown or reboot, or alternatively pressing the power button briefly for a second time will initiate a clean shutdown.
 
 .Shutting down your Raspberry Pi 5 using the power button.
 image::images/shutdown.jpg[alt="Desktop menu asking whether you want to Shutdown, Reboot, or Logout",width="70%"]
 
-NOTE: If you are running your Raspberry Pi headless without a monitor or Desktop, press the power button twice to shutdown.
+NOTE: If you are running your Raspberry Pi OS with a Desktop you can press the power button twice in quick succession to shutdown. However if you are running your Raspberry Pi OS
+
+If you are running Raspberry Pi OS Lite in headless mode pressing the power button a single time will initite a shutdown.
 
 If you want to force a hard shutdown, you should press and hold the Power Button.
 
@@ -72,6 +75,8 @@ The J2 jumper, located between the RTC battery connector and the board edge, is 
 
 === Updating your firmware
 
+WARNING: Do not update the firmware on your Raspberry Pi unless instructed by a Raspberry Pi engineer.
+
 While firmware updates are rare, if you run into a problem with your Raspberry Pi you may want to check to see if one is available. You can do so as below:
 
 [source,bash]
@@ -81,4 +86,4 @@ sudo apt upgrade
 sudo rpi-eeprom-update -a
 ----
 
-If a firmware update is available you will be prompted to install it and your Raspberry Pi will reboot.
+If a firmware update is available you will be prompted to install it and your Raspberry Pi will reboot. More information about updating the firmware on your Raspberry Pi is available xref:raspberry-pi.adoc#bootloader_update_stable[elsewhere in the documentation].
