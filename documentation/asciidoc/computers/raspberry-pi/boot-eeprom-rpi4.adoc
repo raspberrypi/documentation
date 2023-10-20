@@ -8,7 +8,9 @@ NOTE: The scripts and pre-compiled binaries used to create the `rpi-eeprom` pack
 
 If an error occurs during boot then an xref:configuration.adoc#led-warning-flash-codes[error code] will be displayed via the green LED. Newer versions of the bootloader will display a xref:raspberry-pi.adoc#boot-diagnostics-on-the-raspberry-pi-4[diagnostic message] which will be shown on both HDMI displays.
 
-=== Updating the Bootloader
+=== Update the Bootloader
+
+[[bootloader_update_stable]]
 
 ==== Raspberry Pi 4 and Raspberry Pi 400
 
@@ -17,42 +19,90 @@ Raspberry Pi OS automatically updates the bootloader for critical bug fixes. The
 [[imager]]
 ==== Using Raspberry Pi Imager to update the bootloader
 
-IMPORTANT: This is the recommended route to updating the bootloader.
-
 Raspberry Pi Imager provides a GUI for updating the bootloader and selecting the boot mode.
 
 . Download https://www.raspberrypi.com/software/[Raspberry Pi Imager]
-. Select a spare SD card. The contents will get overwritten!
-. Launch `Raspberry Pi Imager`
-. Select `Misc utility images` under `Operating System`
-. Select `Bootloader`
-. Select a boot-mode i.e. `SD` (recommended), `USB` or `Network`.
-. Select `SD card` and then `Write`
-. Boot the Raspberry Pi with the new image and wait for at least 10 seconds.
-. The green activity LED will blink with a steady pattern and the HDMI display will be green on success.
-. Power off the Raspberry Pi and remove the SD card.
+. Select a spare SD card (bootloader images overwrite the entire card)
+. Launch Raspberry Pi Imager
+. Select **Choose OS**
+. Select **Misc utility images**
++ 
+image::images/misc-utility-images.png[alt="Select Misc utility images"]
+. Select **Bootloader** for your Raspberry Pi device version (Pi 400 is part of the 4 family)
++ 
+image::images/bootloader-family-select.png[alt="Choose a family for your bootloader"]
+. Select a boot mode: **SD** (recommended), **USB** or **Network**
++ 
+image::images/bootloader-storage-select.png[alt="Choose the storage from which you'd like to boot"]
+. Select **SD card** and then **Write**
+. Click **Yes** to continue
+. Boot the Raspberry Pi with the new image and wait for at least 10 seconds
+. When the green activity LED blinks with a steady pattern and the HDMI display shows a green screen, you have successfully written the bootloader
+. Power off the Raspberry Pi and remove the SD card
 
 [[raspi-config]]
 ==== Using raspi-config to update the bootloader
 
 To change the boot-mode or bootloader version from within Raspberry Pi OS run xref:configuration.adoc#raspi-config[raspi-config]
 
-. xref:os.adoc#updating-and-upgrading-raspberry-pi-os[Update] Raspberry Pi OS to get the latest version of the `rpi-eeprom` package.
+. xref:os.adoc#updating-and-upgrading-raspberry-pi-os[Update] Raspberry Pi OS to get the latest version of the `rpi-eeprom` package
 . Run `sudo raspi-config`
 . Select `Advanced Options`
 . Select `Bootloader Version`
-. Select `Default` for factory default settings or `Latest` for the latest stable bootloader release.
+. Select `Default` for factory default settings or `Latest` for the latest stable bootloader release
 . Reboot
 
 === Updating the EEPROM Configuration
 
-The boot behaviour (e.g. SD or USB boot) is controlled by a configuration file embedded in the EEPROM image and can be modified via the `rpi-eeprom-config` tool.
+The default version of the bootloader is only updated for critical fixes and major releases. The `LATEST/STABLE` bootloader updates more often to include the latest fixes and improvements.
 
-Please see the xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[Bootloader Configuration] sections for details of the configuration.
+Advanced users can switch to the LATEST / STABLE bootloader to get the latest functionality.
+Open a command prompt and start `raspi-config`.
+
+----
+sudo raspi-config
+----
+
+Navigate to `Advanced Options` and then `Bootloader Version`. Select `Latest` and choose `Yes` to confirm. Select `Finish` and confirm you want to reboot. After the reboot, open a command prompt again and update your system:
+
+----
+sudo apt update
+----
+
+If you run `rpi-eeprom-update`, you should see that a more recent version of the bootloader is available and it's the `stable` release.
+
+----
+*** UPDATE AVAILABLE ***
+BOOTLOADER: update available
+   CURRENT: Tue 25 Jan 14:30:41 UTC 2022 (1643121041)
+    LATEST: Thu 10 Mar 11:57:12 UTC 2022 (1646913432)
+   RELEASE: stable (/lib/firmware/raspberrypi/bootloader/stable)
+            Use raspi-config to change the release.
+----
+
+Now you can update your bootloader.
+
+----
+sudo rpi-eeprom-update -a
+sudo reboot
+----
+
+Reboot, then run `rpi-eeprom-update`. You should now see that the `CURRENT` date has updated to the latest version of the bootloader:
+
+----
+BOOTLOADER: up to date
+   CURRENT: Thu 19 Oct 11:57:12 UTC 2023 (1646913432)
+    LATEST: Thu 19 Oct 11:57:12 UTC 2023 (1646913432)
+   RELEASE: stable (/lib/firmware/raspberrypi/bootloader/stable)
+            Use raspi-config to change the release.
+----
 
 ==== Reading the current EEPROM configuration
 
-To view the configuration used by the current bootloader during the last boot run `rpi-eeprom-config` or `vcgencmd bootloader_config`.
+To view the configuration used by the current bootloader during the last boot, run one of the following:
+
+* `rpi-eeprom-config`
+* `vcgencmd bootloader_config`
 
 ==== Reading the configuration from an EEPROM image
 

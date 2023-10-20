@@ -1,68 +1,81 @@
 == Configuration on first boot
 
-When you start your Raspberry Pi for the first time after installing an operating system, a configuration wizard will guide you through the system's initial setup.
+After installing an operating system image, connect your storage device to your Raspberry Pi.
 
-NOTE: This wizard will not run if you used the xref:getting-started.adoc#advanced-options[Advanced options menu] of Raspberry Pi Imager to configure the operating system.
+First, unplug your Raspberry Pi's power supply to ensure that the Raspberry Pi is powered down while you connect peripherals.
+If you installed the operating system on a microSD card, you can plug it into your Raspberry Pi's card slot now.
+If you installed the operating system on any other storage device, you can connect it to your Raspberry Pi now.
 
-.The Raspberry Pi Configuration Wizard dialogue.
-image::images/initial-setup/1.png[alt=Click Next to get started with configuration.,width="80%"]
+image::images/peripherals/sd-card.png[alt="Inserting a microSD card into a Raspberry Pi."]
 
-=== Set up Bluetooth devices
+Then, plug in any other peripherals, such as your mouse, keyboard, and monitor.
 
-If you're using a Bluetooth keyboard or mouse, it will tell you to put each device into pairing mode. While on this page, the Raspberry Pi will scan for pairable devices and connect to the first device it finds for each item. Your devices are ready to use when you see the `connected` dialogue.
+image::images/peripherals/cable-all.png[alt="Attaching the power supply to a Raspberry Pi."]
 
-This process works with the built-in Bluetooth adapter on Raspberry Pi 3 and 4, and with USB Bluetooth adapters on earlier models. Make sure any adapters you want to use are plugged in before powering on your Raspberry Pi.
+Finally, connect the power supply to your Raspberry Pi. You should see the status LED light up when your Pi powers on. If your Pi is connected to a display, you should see the boot screen within minutes.
 
-=== Set country
+If you used OS customisation in Imager to preconfigure your Raspberry Pi, **congratulations!** Your device is ready to use. Proceed to xref:getting-started.adoc#next-steps[next steps] to learn how you can put your Raspberry Pi to good use.
 
-.The Set Country dialogue.
-image::images/initial-setup/2.png[alt="Adjust the international settings of the device.",width="80%"]
+If your Raspberry Pi does not boot within 5 minutes, check the status LED. If it's flashing, see the xref:configuration.adoc#led-warning-flash-codes[LED warning flash codes for more information]. If your Pi refuses to boot, try the following mitigation steps:
 
-This page lets you set your country, language, and timezone. You can also select the a specific keyboard layout.
+* if you used a boot device other than an SD card, try booting from an SD card
+* xref:getting-started.adoc#installing-the-operating-system[re-image your SD card]; be sure to complete the entire verify step in Imager
+* xref:raspberry-pi.adoc#update-the-bootloader[update the bootloader] on your Raspberry Pi, then xref:getting-started.adoc#installing-the-operating-system[re-image your SD card]
 
-=== Create user
+If you chose to skip OS customisation in Imager, your Raspberry Pi will run a configuration wizard on first boot. You need a monitor and keyboard to navigate through the wizard; a mouse is optional.
 
-.The Create User dialogue.
-image::images/initial-setup/3.png[alt="Create your username and password.",width="80%"]
+image::images/initial-setup/start.png[alt="Click Next to get started with configuration."]
 
-Before you can continue, you need to set the username and password for the default user account.
+=== Bluetooth
 
-While you can set your username to the old default username of `pi` — used on older versions of Raspberry Pi OS — you will trigger a warning message. If you decide to continue, we recommend you avoid the old default password of `raspberry`.
+If you're using a Bluetooth keyboard or mouse, this step will walk you through device pairing. Your Raspberry Pi will scan for pairable devices and connect to the first device it finds for each item.
 
-.A warning appears if the default password is used.
-image::images/initial-setup/4.png[alt="A warning appears if the default password is used.",width="80%"]
+This process works with built-in or external USB Bluetooth adapters. If you use a USB adapter, plug it in before booting your Raspberry Pi.
 
-WARNING: If you are installing Raspberry Pi OS Lite you must create a new user account using the command line when you first boot a Lite image. If you are booting Raspberry Pi OS xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless] you *MUST* configure the operating system using Raspberry Pi Imager using the xref:getting-started.adoc#advanced-options[Advanced Menu].
+=== Locale
 
-=== Set up your desktop
+This page helps you configure your country, language, and time zone, and keyboard layout.
 
-.The Set Up Screen dialogue.
-image::images/initial-setup/5.png[alt="You can adjust the size of the desktop for your monitor.",width="80%"]
+image::images/initial-setup/locale.png[alt="Adjust country, language, time zone, and keyboard layout."]
 
-Here you can manually resize the desktop if it doesn't look correct on your display device.
+=== User
 
-=== Select a wireless network
+This page helps you configure the username and password for the default user account.
 
-.The Select Wireless Network dialogue.
-image::images/initial-setup/6.png[alt="The Select Wireless Network window.",width="80%"]
+By default, older versions of Raspberry Pi OS set the username to "pi". If you use the username "pi", avoid the old default password of "raspberry" to keep your Raspberry Pi secure.
 
-Your Raspberry Pi will scan for nearby WiFi access points. You can choose which network to connect to from this list. 
+image::images/initial-setup/user.png[alt="Create your username and password."]
 
-=== Select a default browser
-image::images/initial-setup/11.png[alt="The Choose Browser window.",width="80%"]
+=== Wi-Fi
 
-Select Chromium or Firefox as the default internet browser to use with Raspberry Pi. You can also choose to uninstall the browser you don't set as default.
+This page helps you connect to a WiFi network. Choose your preferred network from the list.
 
-=== Check for software updates
+image::images/initial-setup/network.png[alt="Selecting a wireless network."]
 
-.The Update Software dialogue.
-image::images/initial-setup/8.png[alt="The wizard automatically checks for updates to install."width="80%"]
+If your network requires a password, you can enter it here.
 
-Once your Raspberry Pi has internet access you can update the operating system to the latest version. This will automatically download any patches and updates needed for your operating system.
+image::images/initial-setup/network_password.png[alt="Entering a password for a wireless network."]
+
+=== Browser
+
+This page lets you select Firefox or Chromium as your default internet browser. You can optionally uninstall the browser you don't set as default.
+
+image::images/initial-setup/browser.png[alt="The Choose Browser page."]
+
+=== Software updates
+
+Once your Raspberry Pi has internet access, this page helps you update your operating system and software to the latest versions. During the software update process, the wizard will remove the non-default browser if you opted to uninstall it in the browser selection step. Downloading updates may take several minutes.
+
+image::images/initial-setup/update.png[alt="You can download the latest software updates during the wizard before you boot for the first time."]
+
+image::images/initial-setup/download.png[alt="You can download the latest software updates during the wizard before you boot for the first time."]
+
+When you see a popup indicating that your system is up to date, click **OK** to proceed to the next step.
+
+image::images/initial-setup/up-to-date.png[alt="When the wizard says your software is up to date, it's time to move on to the next step."]
 
 === Finish
 
-At the end of the configuration wizard, you will need to reboot your Raspberry Pi to apply the new configuration and launch to desktop.
+At the end of the configuration wizard, click **Restart** to reboot your Raspberry Pi. Your Raspberry Pi will apply your configuration and boot to the desktop.
 
-.When setup completes, click Restart to restart your Raspberry Pi.
-image::images/initial-setup/10.png[alt="The Setup Complete dialogue prompts to restart your Raspberry Pi.",width="80%"]
+image::images/initial-setup/restart.png[alt="The Setup Complete dialogue prompts to restart your Raspberry Pi."]
