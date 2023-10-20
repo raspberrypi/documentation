@@ -75,7 +75,7 @@ If you run `rpi-eeprom-update`, you should see that a more recent version of the
 *** UPDATE AVAILABLE ***
 BOOTLOADER: update available
    CURRENT: Tue 25 Jan 14:30:41 UTC 2022 (1643121041)
-    LATEST: Thu 10 Mar 11:57:12 UTC 2022 (1646913432)
+    LATEST: Thu 19 Oct 11:57:12 UTC 2022 (1646913432)
    RELEASE: stable (/lib/firmware/raspberrypi/bootloader/stable)
             Use raspi-config to change the release.
 ----
