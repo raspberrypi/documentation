@@ -14,27 +14,23 @@ Most Raspberry Pi users choose microSD cards as their boot device.
 
 We recommend installing an operating system using xref:getting-started.adoc#raspberry-pi-imager[Raspberry Pi Imager].
 
+Raspberry Pi Imager is a tool that helps you download and write images on macOS, Windows, and Linux. Imager includes many popular operating system images for Raspberry Pi. Imager also supports loading images downloaded directly from https://www.raspberrypi.com/software/operating-systems/[Raspberry Pi] or third-party vendors such as https://ubuntu.com/download/raspberry-pi[Ubuntu]. You can use Imager to preconfigure credentials and remote access settings for your Raspberry Pi.
+
+Imager supports images packaged in the `.img` format as well as container formats like `.zip`.
+
 If you have no other computer to write an image to a boot device, you may be able to install an operating system xref:getting-started.adoc#network-install[directly on your Raspberry Pi from the internet].
 
 [[raspberry-pi-imager]]
 === Imager
 
-Raspberry Pi Imager is a tool that helps you download and write images on macOS, Windows, and Linux. Imager includes many popular operating system images for Raspberry Pi. Imager also supports loading images downloaded directly from https://www.raspberrypi.com/software/operating-systems/[Raspberry Pi] or third-party vendors such as https://ubuntu.com/download/raspberry-pi[Ubuntu]. You can use Imager to preconfigure credentials and remote access settings for your Raspberry Pi.
-
 ////
 TODO: Update this video for the new Imager look & flow (video::ntaXWS8Lk34[youtube])
 ////
-
-Imager supports images packaged in the `.img` format as well as container formats like `.zip`.
-
-==== Install Imager
 
 You can install Imager in the following ways:
 
 * Download the latest version from https://www.raspberrypi.com/software/[raspberrypi.com/software] and run the installer.
 * Install it from a terminal using your package manager, e.g. `sudo apt install rpi-imager`.
-
-==== Run Imager
 
 Once you've installed Imager, launch the application by clicking the Raspberry Pi Imager icon or running `rpi-imager`.
 
