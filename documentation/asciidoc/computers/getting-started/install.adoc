@@ -58,7 +58,7 @@ Next, click **Write**.
 
 image::images/imager/os-customisation-prompt.png[alt="Imager prompt to open OS customisation menu."]
 
-In a popup, Imager will ask you to apply OS customisation. We strongly recommend configuring your Raspberry Pi via the OS customisation settings. Click the **Edit Settings** button to open xref:getting-started.adoc#os-customisation[OS customisation].
+In a popup, Imager will ask you to apply OS customisation. We strongly recommend configuring your Raspberry Pi via the OS customisation settings. Click the **Edit Settings** button to open xref:getting-started.adoc#advanced-options[OS customisation].
 
 If you don't configure your Raspberry Pi via OS customisation settings, Raspberry Pi OS will ask you for the same information at first boot during the xref:getting-started.adoc#configuration-on-first-boot[configuration wizard]. You can click the **No** button to skip OS customisation.
 
