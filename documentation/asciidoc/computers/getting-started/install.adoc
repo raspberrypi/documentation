@@ -14,7 +14,7 @@ Most Raspberry Pi users choose microSD cards as their boot device.
 
 We recommend installing an operating system using xref:getting-started.adoc#raspberry-pi-imager[Raspberry Pi Imager].
 
-If you have no other computer to write an image to a boot device, you may be able to install an operating system xref:getting-started#network-install[directly on your Raspberry Pi from the internet].
+If you have no other computer to write an image to a boot device, you may be able to install an operating system xref:getting-started.adoc#network-install[directly on your Raspberry Pi from the internet].
 
 [[raspberry-pi-imager]]
 === Imager
