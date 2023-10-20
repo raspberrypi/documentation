@@ -76,7 +76,7 @@ The **hostname** option defines the hostname your Raspberry Pi broadcasts to the
 
 The **username and password** option defines the username and password of the admin user account on your Raspberry Pi.
 
-The **wireless LAN** option allows you to enter an SSID (name) and password for your wireless network. If your network does not broadcast an SSID publicly, you should enable the "Hidden SSID" setting. By default, Imager uses your the country you're currently in as the "Wireless LAN country". This setting controls the WiFi broadcast frequencies used by your Raspberry Pi. Enter credentials for the wireless LAN option if you plan to run a headless Raspberry Pi.
+The **wireless LAN** option allows you to enter an SSID (name) and password for your wireless network. If your network does not broadcast an SSID publicly, you should enable the "Hidden SSID" setting. By default, Imager uses the country you're currently in as the "Wireless LAN country". This setting controls the WiFi broadcast frequencies used by your Raspberry Pi. Enter credentials for the wireless LAN option if you plan to run a headless Raspberry Pi.
 
 The **locale settings** option allows you to define the time zone and default keyboard layout for your Pi. 
 
