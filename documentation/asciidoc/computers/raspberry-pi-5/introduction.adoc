@@ -75,6 +75,8 @@ The J2 jumper, located between the RTC battery connector and the board edge, is 
 
 === Updating your firmware
 
+WARNING: Do not update the firmware on your Raspberry Pi unless instructed by a Raspberry Pi engineer.
+
 While firmware updates are rare, if you run into a problem with your Raspberry Pi you may want to check to see if one is available. You can do so as below:
 
 [source,bash]
@@ -84,4 +86,4 @@ sudo apt upgrade
 sudo rpi-eeprom-update -a
 ----
 
-If a firmware update is available you will be prompted to install it and your Raspberry Pi will reboot.
+If a firmware update is available you will be prompted to install it and your Raspberry Pi will reboot. More information about updating the firmware on your Raspberry Pi is available xref:raspberry-pi.adoc#bootloader_update_stable[elsewhere in the documentation].
