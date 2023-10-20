@@ -21,7 +21,7 @@ Imager supports images packaged in the `.img` format as well as container format
 If you have no other computer to write an image to a boot device, you may be able to install an operating system xref:getting-started.adoc#network-install[directly on your Raspberry Pi from the internet].
 
 [[raspberry-pi-imager]]
-=== Imager
+=== Install using Imager
 
 ////
 TODO: Update this video for the new Imager look & flow (video::ntaXWS8Lk34[youtube])
@@ -120,7 +120,7 @@ image::images/imager/finished.png[alt="The screen Imager shows when it finishes 
 
 Next, proceed to the xref:getting-started.adoc#configuration-on-first-boot[first boot configuration instructions] to get your Raspberry Pi up and running.
 
-=== Network Install
+=== Install over the network
 
 Network Install enables a Raspberry Pi to install an operating system on a storage device using a version of Raspberry Pi Imager downloaded over the network. With Network Install, you can get an operating system installed on your Raspberry Pi with no separate SD card reader and no computer other than your Raspberry Pi. You can run Network Install on any compatible storage device, including SD cards and USB storage.
 
