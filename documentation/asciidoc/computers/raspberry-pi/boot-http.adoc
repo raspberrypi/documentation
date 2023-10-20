@@ -18,7 +18,7 @@ HTTP in the `BOOT_ORDER` will be ignored if secure boot is enabled and xref:rasp
 
 === Requirements
 
-To use HTTP boot, xref:raspberry-pi.adoc#update-the-bootloader[update the bootloader] to a bootloader dated 10th March 2022 or later. HTTP boot only works over Ethernet, so you need to connect your Raspberry Pi to your network via an Ethernet cable, e.g. to a socket on the back of your router.
+To use HTTP boot, xref:raspberry-pi.adoc#bootloader_update_stable[update the bootloader] to a bootloader dated 10th March 2022 or later. HTTP boot only works over Ethernet, so you need to connect your Raspberry Pi to your network via an Ethernet cable, e.g. to a socket on the back of your router.
 
 === Keys
 

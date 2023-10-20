@@ -22,7 +22,7 @@ If your Raspberry Pi does not boot within 5 minutes, check the status LED. If it
 
 * if you used a boot device other than an SD card, try booting from an SD card
 * xref:getting-started.adoc#installing-the-operating-system[re-image your SD card]; be sure to complete the entire verify step in Imager
-* xref:raspberry-pi.adoc#update-the-bootloader[update the bootloader] on your Raspberry Pi, then xref:getting-started.adoc#installing-the-operating-system[re-image your SD card]
+* xref:raspberry-pi.adoc#bootloader_update_stable[update the bootloader] on your Raspberry Pi, then xref:getting-started.adoc#installing-the-operating-system[re-image your SD card]
 
 If you chose to skip OS customisation in Imager, your Raspberry Pi will run a configuration wizard on first boot. You need a monitor and keyboard to navigate through the wizard; a mouse is optional.
 

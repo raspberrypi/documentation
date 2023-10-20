@@ -128,7 +128,7 @@ Next, proceed to the xref:getting-started.adoc#configuration-on-first-boot[first
 
 Network Install enables a Raspberry Pi to install an operating system on a storage device using a version of Raspberry Pi Imager downloaded over the network. With Network Install, you can get an operating system installed on your Raspberry Pi with no separate SD card reader and no computer other than your Raspberry Pi. You can run Network Install on any compatible storage device, including SD cards and USB storage.
 
-Network Install only runs on Raspberry Pi 4, 400. If your Raspberry Pi runs an older bootloader, you may need to xref:raspberry-pi.adoc#update-the-bootloader[update the bootloader] to use Network Install.
+Network Install only runs on Raspberry Pi 4, 400. If your Raspberry Pi runs an older bootloader, you may need to xref:raspberry-pi.adoc#bootloader_update_stable[update the bootloader] to use Network Install.
 
 IMPORTANT: Currently, Network Install is not available on Raspberry Pi 5. Support will be added in a future bootloader update.
 

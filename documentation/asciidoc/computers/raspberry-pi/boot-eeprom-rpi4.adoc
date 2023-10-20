@@ -8,9 +8,10 @@ NOTE: The scripts and pre-compiled binaries used to create the `rpi-eeprom` pack
 
 If an error occurs during boot then an xref:configuration.adoc#led-warning-flash-codes[error code] will be displayed via the green LED. Newer versions of the bootloader will display a xref:raspberry-pi.adoc#boot-diagnostics-on-the-raspberry-pi-4[diagnostic message] which will be shown on both HDMI displays.
 
+[[bootloader_update_stable]]
 === Update the Bootloader
 
-[[bootloader_update_stable]]
+There are multiple ways to update the bootloader of your Raspberry Pi.
 
 ==== Raspberry Pi 4 and Raspberry Pi 400
 
