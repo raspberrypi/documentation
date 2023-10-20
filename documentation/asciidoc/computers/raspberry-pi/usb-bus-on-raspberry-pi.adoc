@@ -9,11 +9,14 @@ As with all computers, the USB ports on the Raspberry Pi supply a limited amount
 |===
 | Model | Max power output of USB ports
 
-| Pi Zero, 1
+| Raspberry Pi Zero, 1
 | 500mA per port^1^
 
-| Pi 2, 3, 4
+| Raspberry Pi 2, 3, 4
 | 1200mA total across all ports
+
+| Raspberry Pi 5
+| 600mA if using a 3A supply, 1600mA if using a 5A supply
 |===
 
 . For the original Raspberry Pi 1 Model B the limit is 100mA per port.
