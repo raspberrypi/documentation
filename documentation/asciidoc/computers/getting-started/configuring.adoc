@@ -1,4 +1,4 @@
-== Configuration on first boot
+== Set up your Raspberry Pi
 
 After installing an operating system image, connect your storage device to your Raspberry Pi.
 
@@ -13,6 +13,8 @@ Then, plug in any other peripherals, such as your mouse, keyboard, and monitor.
 image::images/peripherals/cable-all.png[alt="Attaching the power supply to a Raspberry Pi."]
 
 Finally, connect the power supply to your Raspberry Pi. You should see the status LED light up when your Pi powers on. If your Pi is connected to a display, you should see the boot screen within minutes.
+
+== Configuration on first boot
 
 If you used OS customisation in Imager to preconfigure your Raspberry Pi, **congratulations!** Your device is ready to use. Proceed to xref:getting-started.adoc#next-steps[next steps] to learn how you can put your Raspberry Pi to good use.
 
@@ -71,8 +73,6 @@ image::images/initial-setup/update.png[alt="You can download the latest software
 image::images/initial-setup/download.png[alt="You can download the latest software updates during the wizard before you boot for the first time."]
 
 When you see a popup indicating that your system is up to date, click **OK** to proceed to the next step.
-
-image::images/initial-setup/up-to-date.png[alt="When the wizard says your software is up to date, it's time to move on to the next step."]
 
 === Finish
 

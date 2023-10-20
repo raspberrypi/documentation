@@ -1,5 +1,5 @@
 [[setting-up-your-raspberry-pi]]
-== Set up your Raspberry Pi
+== Getting started with your Raspberry Pi
 
 video::CQtliTJ41ZE[youtube]
 
@@ -23,11 +23,11 @@ You can use any high quality power supply that provides the correct power mode.
 [%header,cols="1,1,1"]
 |===
 |Model
-|Recommended USB-PD Power Mode (Voltage/Current)
-|Recommended Power Supply
+|Recommended Power Supply (Voltage/Current)
+|Raspberry Pi Power Supply
 
 |Raspberry Pi 5
-|5V/5A, 5V/3A limits peripherals to 1.6A
+|5V/5A, 5V/3A limits peripherals to 600mA
 |https://www.raspberrypi.com/products/27w-usb-c-power-supply/[27W USB-C Power Supply]
 
 |Raspberry Pi 4 Model B
@@ -76,23 +76,23 @@ Because of a hardware limitation, the following devices will only boot from a bo
 * Raspberry Pi 1
 * early Raspberry Pi 2 models with the BCM2836 SoC
 
-Other operating systems have different requirements: for example, https://libreelec.tv/[LibreELEC] can run from a smaller card. Check the documentation for your operating system for capacity requirements.
+Other operating systems have different requirements. Check the documentation for your operating system for capacity requirements.
 
 === Keyboard
 
-You can use any of the USB ports on your Raspberry Pi to connect a wired keyboard or USB Bluetooth receiver.
+You can use any of the USB ports on your Raspberry Pi to connect a https://www.raspberrypi.com/products/raspberry-pi-keyboard-and-hub/[wired keyboard] or USB Bluetooth receiver.
 
 image:images/peripherals/cable-key.png[alt="Plugging a keyboard into a Raspberry Pi."]
 
 === Mouse
 
-You can use any of the USB ports on your Raspberry Pi to connect a wired mouse or USB Bluetooth receiver.
+You can use any of the USB ports on your Raspberry Pi to connect a https://www.raspberrypi.com/products/raspberry-pi-mouse/[wired mouse] or USB Bluetooth receiver.
 
 image:images/peripherals/cable-mouse.png[alt="Plugging a computer mouse into a Raspberry Pi."]
 
 === Display
 
-If your Raspberry Pi has multiple display ports, always plug your primary monitor into the port marked `HDMI0`.
+If your Raspberry Pi has more than one HDMI ports, plug your primary monitor into the port marked `HDMI0`.
 
 Raspberry Pi models have the following display connectivity:
 
@@ -105,16 +105,16 @@ Raspberry Pi models have the following display connectivity:
 |2x micro HDMI
 
 |Raspberry Pi 4 (all models)
-|2x micro HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack.
+|2x micro HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi 3 (all models)
-|HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack.
+|HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi 2 (all models)
-|HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack.
+|HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi 1 Model B+
-|HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack.
+|HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi 1 Model A+
 |HDMI, RCA connector

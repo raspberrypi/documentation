@@ -12,19 +12,29 @@ To install an operating system on a storage device for your Raspberry Pi, you'll
 
 Most Raspberry Pi users choose microSD cards as their boot device.
 
+We recommend installing an operating system using xref:getting-started.adoc#raspberry-pi-imager[Raspberry Pi Imager].
+
+If you have no other computer to write an image to a boot device, you may be able to install an operating system xref:getting-started#network-install[directly on your Raspberry Pi from the internet].
+
 [[raspberry-pi-imager]]
 === Imager
 
-Raspberry Pi Imager is a tool that helps you download and write images on macOS, Windows, and Linux. Imager offers a number of operating system images for Raspberry Pi. Imager also provides customisation options so you can preconfigure credentials and remote access settings.
+Raspberry Pi Imager is a tool that helps you download and write images on macOS, Windows, and Linux. Imager includes many popular operating system images for Raspberry Pi. Imager also supports loading images downloaded directly from https://www.raspberrypi.com/software/operating-systems/[Raspberry Pi] or third-party vendors such as https://ubuntu.com/download/raspberry-pi[Ubuntu]. You can use Imager to preconfigure credentials and remote access settings for your Raspberry Pi.
 
 ////
 TODO: Update this video for the new Imager look & flow (video::ntaXWS8Lk34[youtube])
 ////
 
+Imager supports images packaged in the `.img` format as well as container formats like `.zip`.
+
+==== Install Imager
+
 You can install Imager in the following ways:
 
-* Download the latest version of from https://www.raspberrypi.com/software/[raspberrypi.com/software/] and run the installer.
+* Download the latest version from https://www.raspberrypi.com/software/[raspberrypi.com/software] and run the installer.
 * Install it from a terminal using your package manager, e.g. `sudo apt install rpi-imager`.
+
+==== Run Imager
 
 Once you've installed Imager, launch the application by clicking the Raspberry Pi Imager icon or running `rpi-imager`.
 
@@ -48,7 +58,7 @@ Next, click **Write**.
 
 image::images/imager/os-customisation-prompt.png[alt="Imager prompt to open OS customisation menu."]
 
-Imager will ask you to apply OS customisation settings via a popup. We recommend configuring your Raspberry Pi via the OS customisation settings. Click the **Edit Settings** button to open the OS customisation menu.
+In a popup, Imager will ask you to apply OS customisation. We strongly recommend configuring your Raspberry Pi via the OS customisation settings. Click the **Edit Settings** button to open xref:getting-started.adoc#os-customisation[OS customisation].
 
 If you don't configure your Raspberry Pi via OS customisation settings, Raspberry Pi OS will ask you for the same information at first boot during the xref:getting-started.adoc#configuration-on-first-boot[configuration wizard]. You can click the **No** button to skip OS customisation.
 
@@ -66,7 +76,7 @@ The OS customisation menu lets you set up your Raspberry Pi before first boot. Y
 
 When you first open the OS customisation menu, you might see a prompt asking for permission to load WiFi credentials from your host computer. If you respond "yes", Imager will prefill WiFi credentials from the network you're currently connected to. If you respond "no", you can enter WiFi credentials manually.
 
-The **hostname** option defines the hostname your Raspberry Pi broadcasts to the network using https://en.wikipedia.org/wiki/Multicast_DNS[mDNS]. When you connect your Raspberry Pi to your network, other devices on the network can communicate with your computer using `<hostname>.local`.
+The **hostname** option defines the hostname your Raspberry Pi broadcasts to the network using https://en.wikipedia.org/wiki/Multicast_DNS[mDNS]. When you connect your Raspberry Pi to your network, other devices on the network can communicate with your computer using `<hostname>.local` or `<hostname>.lan`.
 
 The **username and password** option defines the username and password of the admin user account on your Raspberry Pi.
 
@@ -114,15 +124,13 @@ image::images/imager/finished.png[alt="The screen Imager shows when it finishes 
 
 Next, proceed to the xref:getting-started.adoc#configuration-on-first-boot[first boot configuration instructions] to get your Raspberry Pi up and running.
 
-=== Download an image
-
-You can download official images of Raspberry Pi OS at https://www.raspberrypi.com/software/operating-systems/[raspberrypi.com/software/operating-systems]. Alternative and unofficial operating systems for Raspberry Pi computers are available from some third-party vendors.
-
-Imager supports images in both `.img` and `.zip` formats.
-
 === Network Install
 
 Network Install enables a Raspberry Pi to install an operating system on a storage device using a version of Raspberry Pi Imager downloaded over the network. With Network Install, you can get an operating system installed on your Raspberry Pi with no separate SD card reader and no computer other than your Raspberry Pi. You can run Network Install on any compatible storage device, including SD cards and USB storage.
+
+Network Install only runs on Raspberry Pi 4, 400. If your Raspberry Pi runs an older bootloader, you may need to xref:raspberry-pi.adoc#update-the-bootloader[update the bootloader] to use Network Install.
+
+IMPORTANT: Currently, Network Install is not available on Raspberry Pi 5. Support will be added in a future bootloader update.
 
 ////
 TODO: Update this video for the new Imager look & flow video::b1SYVpM9lto[youtube]
@@ -134,8 +142,6 @@ Network Install requires the following:
 * a monitor
 * a keyboard
 * a wired internet connection
-
-Currently, Network Install only runs on Raspberry Pi 4, 400, and 5. If your Raspberry Pi runs an older bootloader, you may need to xref:raspberry-pi.adoc#update-the-bootloader[update the bootloader] to use Network Install.
 
 To launch Network Install, power on your Raspberry Pi _while pressing and holding the **SHIFT** key_ in the following configuration:
 

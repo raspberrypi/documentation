@@ -56,7 +56,7 @@ To change the boot-mode or bootloader version from within Raspberry Pi OS run xr
 
 The default version of the bootloader is only updated for critical fixes and major releases. The `LATEST/STABLE` bootloader updates more often to include the latest fixes and improvements.
 
-Advanced users can switch to the LATEST / STABLE bootloader to get the latest functionality.
+Advanced users can switch to the `LATEST / STABLE` bootloader to get the latest functionality.
 Open a command prompt and start `raspi-config`.
 
 ----
