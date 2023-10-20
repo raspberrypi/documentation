@@ -18,7 +18,7 @@ Raspberry Pi Imager is a tool that helps you download and write images on macOS,
 
 Imager supports images packaged in the `.img` format as well as container formats like `.zip`.
 
-If you have no other computer to write an image to a boot device, you may be able to install an operating system xref:getting-started.adoc#network-install[directly on your Raspberry Pi from the internet].
+If you have no other computer to write an image to a boot device, you may be able to install an operating system xref:getting-started.adoc#install-over-the-network[directly on your Raspberry Pi from the internet].
 
 [[raspberry-pi-imager]]
 === Install using Imager
