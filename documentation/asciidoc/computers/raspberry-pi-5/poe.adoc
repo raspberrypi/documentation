@@ -10,4 +10,4 @@ The Raspberry Pi PoE+ HAT for Raspberry Pi 5 is an add-on board for Raspberry Pi
 
 video:vc8xWyJuQY0[youtube]
 
-NOTE: The PoE+ HAT for Raspberry Pi 5 is still in protoype, and has not yet been released.
+NOTE: The PoE+ HAT for Raspberry Pi 5 is still in prototype, and has not yet been released.
