@@ -199,5 +199,10 @@ and leave it using `deactivate`.
 $
 ----
 
+=== Using the Thonny editor
 
+https://thonny.org/[Thonny] is our recommended editor when you're working with Python on the Raspberry Pi. By default Thonny uses the system Python. However, you can switch to using a Python virtual environment by clickin on the interpreter menu located at the bottom right of the Thonny window. Clicking on this will offer you a menu to select a configured interpreter or to `Configure interpreter…`. 
 
+image::images/thonny-venv.png[width="100%"]
+
+Selecting this will open a popup allowing you to create a new virtual environment.
