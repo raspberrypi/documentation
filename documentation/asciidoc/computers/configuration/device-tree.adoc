@@ -817,6 +817,10 @@ The extended board revision code from xref:raspberry-pi.adoc#otp-register-and-bi
 
 The country code used used by https://github.com/raspberrypi-ui/piwiz[PiWiz] - Pi400 only.
 
+`rpi-duid` - string
+
+Raspberry Pi 5 only. A string representation of the QR code on the PCB.
+
 ==== Common bootloader properties `/chosen/bootloader`
 `boot-mode` - 32-bit integer
 
@@ -830,9 +834,38 @@ The partition number used during boot. If a `boot.img` ramdisk is loaded then th
 
 The value of the `PM_RSTS` register during boot.
 
+`rpi_power_supply` - 2 32-bit integers
+
+The USB VID and PID of the official Raspberry Pi 5A power supply (if connected).
+
 `tryboot` - 32-bit integer
 
 Set to `1` if the `tryboot` flag was set at boot.
+
+==== Power supply properties `/chosen/power`
+Raspberry Pi 5 only.
+
+`max_current` - 32-bit integer
+
+The maximum current in mA that the power supply can supply. The firmware reports the value indicated by the USB-C, USB-PD or POE interfaces.
+For bench power supplies (e.g. connected to the GPIO header) define `PSU_MAX_CURRENT` in the bootloader configuration to indicate the power supply current capability.
+
+`usb_max_current_enable` - 32-bit integer
+
+Zero if the USB port current limiter was set to the low-limit during boot or non-zero if the high limit was enabled.
+The high level is automatically enabled if the power supply claims 5A max-current OR `usb_max_current_enable=1` is forced in `config.txt`
+
+`usb_over_current_detected` - 32-bit integer
+
+Non-zero if a USB over-current event occurred during USB boot.
+
+`usbpd_power_data_objects` - binary blob (multiple 32-bit integers)
+
+The raw binary USB-PD objects (fixed supply only) received by the bootloader during USB-PD negotiation.
+To capture this for a bug report run `hexdump -C /proc/device-tree/chosen/power/usbpd_power_data_objects`
+
+The format is defined by the https://usb.org/document-library/usb-power-delivery[USB Power Delivery] specification.
+
 
 ==== BCM2711 specific bootloader properties `/chosen/bootloader`
 The following properties are specific to BCM2711 SPI EEPROM bootloader.
