@@ -12,7 +12,7 @@ NOTE: It's not possible to use older USB "dumb" cables and connectors to provide
 While USB-PD capable phone chargers advertise greater than 15W of power, virtually all of them achieve this by increasing the voltage instead of providing more current at +5V. If you are using a power supply that cannot provide 5A at +5V on first boot you will be warned by the operating system that the current draw to peripherals will be restricted to 600mA.
 
 .On-screen warning of under-voltage event
-image::images/firstboot-powerwarning.png[alt="On-screen warning of under-voltage event in Raspberry Pi OS",width="70%"]
+image::images/firstboot-powerwarning.png[alt="On-screen warning of under-voltage event in Raspberry Pi OS",width="100%"]
 
 For users who wish to drive high-power peripherals like hard drives and SSDs, while retaining margin for peak workloads, a USB-PD enabled power supply capable of supplying a 5A at +5V (25W) should be used. If the Raspberry Pi 5 firmware detects such a supply, it increases the USB current limit for peripherals to 1.6A, providing 5W of extra power for downstream USB devices, and 5W of extra onboard power budget.
 
