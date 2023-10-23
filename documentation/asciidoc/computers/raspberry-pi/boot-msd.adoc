@@ -13,7 +13,7 @@ See:-
 
 * Instructions for changing the boot mode via the xref:raspberry-pi.adoc#imager[Raspberry Pi Imager].
 * Instructions for changing the boot mode via the xref:raspberry-pi.adoc#raspi-config[raspi-config].
-* The xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[bootloader configuration] page for other boot configuration options.
+* The xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration] page for other boot configuration options.
 
 [[cm4]]
 === Compute Module 4

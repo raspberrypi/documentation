@@ -25,7 +25,7 @@ This list contains the publicly available information on the registers. If a reg
 * Bit 28: enables USB device booting
 * Bit 29: enables USB host booting (ethernet and mass storage)
 
-NOTE: On BCM2711 the bootmode is defined by the xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[bootloader EEPROM configuration] instead of OTP.
+NOTE: On BCM2711 the bootmode is defined by the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader EEPROM configuration] instead of OTP.
 
 18 -- copy of bootmode register +
 28 -- serial number +

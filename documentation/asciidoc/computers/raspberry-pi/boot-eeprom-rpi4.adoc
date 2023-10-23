@@ -1,6 +1,6 @@
-== Raspberry Pi 4 Boot EEPROM
+== Raspberry Pi Boot EEPROM
 
-Raspberry Pi 4, 400, Compute Module 4, and Compute Module 4S computers use an EEPROM to boot the system. All other models of Raspberry Pi computer use the `bootcode.bin` file located in the boot filesystem.
+Raspberry Pi 5, Raspberry Pi 4, 400, Compute Module 4, and Compute Module 4S computers use an EEPROM to boot the system. All other models of Raspberry Pi computer use the `bootcode.bin` file located in the boot filesystem.
 
 NOTE: The scripts and pre-compiled binaries used to create the `rpi-eeprom` package which is used to update the Raspberry Pi 4 bootloader and VLI USB controller EEPROMs is available https://github.com/raspberrypi/rpi-eeprom/[on Github].
 
@@ -13,7 +13,7 @@ If an error occurs during boot then an xref:configuration.adoc#led-warning-flash
 
 There are multiple ways to update the bootloader of your Raspberry Pi.
 
-==== Raspberry Pi 4 and Raspberry Pi 400
+==== Raspberry Pi 5, Raspberry Pi 4 and Raspberry Pi 400
 
 Raspberry Pi OS automatically updates the bootloader for critical bug fixes. The recommended methods for manually updating the bootloader or changing the boot modes are https://www.raspberrypi.com/software/[Raspberry Pi Imager] and xref:configuration.adoc#raspi-config[raspi-config]
 
@@ -212,8 +212,7 @@ rpi-eeprom-update -h
 The firmware release status corresponds to a particular subdirectory of bootloader firmware images (`+/lib/firmware/raspberrypi/bootloader/...+`), and can be changed to select a different release stream.
 
 * `default` - Updated for new hardware support, critical bug fixes and periodic update for new features that have been tested via the `latest` release.
-* `latest` - Updated when new features have been successfully beta tested.
-* `beta` - New or experimental features are tested here first.
+* `latest` - Updated when new features are available.
 
 Since the release status string is just a subdirectory name, then it is possible to create your own release streams e.g. a pinned release or custom network boot configuration.
 
@@ -258,7 +257,7 @@ See also xref:raspberry-pi.adoc#raspberry-pi-4-boot-flow[Raspberry Pi 4 boot-flo
 | The sha256 checksum of bootloader image (pieeprom.upd/pieeprom.bin)
 
 | vl805.bin
-| The VLI805 USB firmware EEPROM image - ignored on 1.4 and later board revisions which do not have a dedicated VLI EEPROM
+| The VLI805 USB firmware EEPROM image - Raspberry Pi 4B revision 1.3 and earlier only.
 
 | vl805.sig| The sha256 checksum of vl805.bin
 |===
@@ -266,7 +265,7 @@ See also xref:raspberry-pi.adoc#raspberry-pi-4-boot-flow[Raspberry Pi 4 boot-flo
 * If the bootloader update image is called `pieeprom.upd` then `recovery.bin` is renamed to `recovery.000` once the update has completed, then the system is rebooted. Since `recovery.bin` is no longer present the ROM loads the newly updated bootloader from EEPROM and the OS is booted as normal.
 * If the bootloader update image is called `pieeprom.bin` then `recovery.bin` will stop after the update has completed. On success the HDMI output will be green and the green activity LED is flashed rapidly. If the update fails, the HDMI output will be red and an xref:configuration.adoc#led-warning-flash-codes[error code] will be displayed via the activity LED.
 * The `.sig` files contain the hexadecimal sha256 checksum of the corresponding image file; additional fields may be added in the future.
-* The BCM2711 ROM does not support loading `recovery.bin` from USB mass storage or TFTP. Instead, newer versions of the bootloader support a self-update mechanism where the bootloader is able to reflash the EEPROM itself. See `ENABLE_SELF_UPDATE` on the xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[bootloader configuration] page.
+* The BCM2711 ROM does not support loading `recovery.bin` from USB mass storage or TFTP. Instead, newer versions of the bootloader support a self-update mechanism where the bootloader is able to reflash the EEPROM itself. See `ENABLE_SELF_UPDATE` on the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration] page.
 * The temporary EEPROM update files are automatically deleted by the `rpi-eeprom-update` service at startup.
 
 For more information about the `rpi-eeprom-update` configuration file see `rpi-eeprom-update -h`.

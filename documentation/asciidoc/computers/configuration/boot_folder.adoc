@@ -12,7 +12,7 @@ NOTE: Prior to _Bookworm_, Raspberry Pi OS stored the boot partition at `/boot/`
 
 ==== bootcode.bin
 
-This is the bootloader, which is loaded by the SoC on boot; it does some very basic setup, and then loads one of the `start*.elf` files. `bootcode.bin` is not used on the Raspberry Pi 4, because it has been replaced by boot code in the xref:raspberry-pi.adoc#raspberry-pi-4-boot-eeprom[onboard EEPROM].
+This is the bootloader, which is loaded by the SoC on boot; it does some very basic setup, and then loads one of the `start*.elf` files. `bootcode.bin` is not used on the Raspberry Pi 4, because it has been replaced by boot code in the xref:raspberry-pi.adoc#raspberry-pi-boot-eeprom[onboard EEPROM].
 
 ==== start.elf, start_x.elf, start_db.elf, start_cd.elf, start4.elf, start4x.elf, start4db.elf, start4cd.elf
 

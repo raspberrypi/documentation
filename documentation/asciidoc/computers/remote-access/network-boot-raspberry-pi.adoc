@@ -56,7 +56,7 @@ Within `raspi-config`, choose `Advanced Options`, then `Boot Order`, then `Netwo
 vcgencmd bootloader_config
 ----
 
-For further details of configuring the Raspberry Pi 4 bootloader, see xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[Raspberry Pi 4 Bootloader Configuration].
+For further details of configuring the Raspberry Pi 4 bootloader, see xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[Raspberry Pi Bootloader Configuration].
 
 === Ethernet MAC address
 
