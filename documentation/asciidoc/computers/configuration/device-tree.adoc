@@ -843,6 +843,7 @@ The USB VID and PID of the official Raspberry Pi 5A power supply (if connected).
 Set to `1` if the `tryboot` flag was set at boot.
 
 ==== Power supply properties `/chosen/power`
+
 Raspberry Pi 5 only.
 
 `max_current` - 32-bit integer
