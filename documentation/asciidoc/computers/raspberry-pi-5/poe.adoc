@@ -8,6 +8,6 @@ image::images/poe.jpg[alt="The PoE connector,width="70%"]
 
 The Raspberry Pi PoE+ HAT for Raspberry Pi 5 is an add-on board for Raspberry Pi 5 computers which connects to the PoE header. It is used to power your Raspberry Pi via an Ethernet cable, provided that power-sourcing equipment is installed on the Ethernet network. 
 
-video:vc8xWyJuQY0[youtube]
+video::vc8xWyJuQY0[youtube]
 
 NOTE: The PoE+ HAT for Raspberry Pi 5 is still in prototype, and has not yet been released.
