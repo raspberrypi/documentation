@@ -93,7 +93,7 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 
 | 0x6
 | NVME
-| CM4 and Pi5 only: boot from an NVMe SSD connected to the PCIe interface. See xref:raspberry-pi.adoc#nvme-ssd-boot[NVMe boot] for more details.
+| CM4 and Pi 5 only: boot from an NVMe SSD connected to the PCIe interface. See xref:raspberry-pi.adoc#nvme-ssd-boot[NVMe boot] for more details.
 
 | 0x7
 | HTTP
@@ -624,7 +624,7 @@ See the https://www.winbond.com/resource-files/w25x40cl_f%2020140325.pdf[Winbond
 
 NOTE: `flashrom` does not support clearing of the write-protect regions and will fail to update the EEPROM if write-protect regions are defined.
 
-On Raspberry Pi5 `/WP` is pulled low by default and consequently write-protect is enabled as soon as the `Write Status Register` is configued. To clear write-protect pull `/WP` high by connecting `TP14` and `TP1`.
+On Raspberry Pi 5 `/WP` is pulled low by default and consequently write-protect is enabled as soon as the `Write Status Register` is configued. To clear write-protect pull `/WP` high by connecting `TP14` and `TP1`.
 
 Default: `-1`
 

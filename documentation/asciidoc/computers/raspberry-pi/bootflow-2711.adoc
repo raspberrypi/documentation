@@ -70,7 +70,7 @@ Please see the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[boot
  ** else if boot-mode == `RPIBOOT` then
   *** Attempt to load firmware using USB device mode from the USB OTG port - see https://github.com/raspberrypi/usbboot[usbboot]. There is no timeout for `RPIBOOT` mode.
 
-==== Differences on Raspberry Pi5
+==== Differences on Raspberry Pi 5
 * The power button is used to wakeup from PMIC `STANDBY` or HALT instead of `GPIO 3`
 * Instead of loading `start.elf` the firmware loads the Linux kernel. Effectively, the bootloader has an embedded version of `start.elf`
 
