@@ -1,0 +1,89 @@
+
+== Introduction
+
+IMPORTANT: If you are using a Raspberry Pi for the first time please see our instructions on xref:getting-started.adoc#setting-up-your-raspberry-pi[how to get started].
+
+.Raspberry Pi 5
+image::images/pi5-labelled.png[alt="Labelled diagram of the Raspberry Pi 5",width="100%"]
+
+Featuring a 64-bit quad-core Arm Cortex-A76 processor running at 2.4GHz, Raspberry Pi 5 delivers a ×2 to ×3 increase in CPU performance relative to Raspberry Pi 4. Alongside a substantial uplift in graphics performance from an 800MHz VideoCore VII GPU; dual 4Kp60 display output over HDMI; and state-of-the-art camera support from a rearchitected Raspberry Pi Image Signal Processor, it provides a smooth desktop experience for consumers, and opens the door to new applications for industrial customers.
+
+For the first time, this is a full-size Raspberry Pi computer using silicon built in-house at Raspberry Pi. The xref:../microcontrollers/rp1.adoc[RP1] provides the bulk of the I/O capabilities for Raspberry Pi 5, and delivers a step change in peripheral performance and functionality. Aggregate USB bandwidth is more than doubled, yielding faster transfer speeds to external UAS drives and other high-speed peripherals; the dedicated two-lane 1Gbps MIPI camera and display interfaces present on earlier models have been replaced by a pair of four-lane 1.5Gbps MIPI transceivers, tripling total bandwidth, and supporting any combination of up to two cameras or displays; peak SD card performance is doubled, through support for the SDR104 high-speed mode; and for the first time the platform exposes a single-lane PCI Express 2.0 interface, providing support for high-bandwidth peripherals.
+
+Key features include:
+
+* Quad Arm Cortex-A76 @ 2.4GHz
+** Cryptographic Extension support (AES on hardware)
+** 512KB per-core L2 caches
+** 2MB L3 cache
+* 4GB or 8GB LPDDR4X-4267 SDRAM
+* Dual 4kp60 HDMI display output with HDR support
+* 4kp60 HEVC decoder
+* VideoCore VII graphics, with OpenGL-ES 3.1, Vulkan 1.2
+* Raspberry Pi Image Sensor Processor (ISP)
+* Raspberry Pi connector for PCIe (1 x 2.0 port, additional HAT required)
+* 802.11ac dual-band Wi-Fi
+* Bluetooth 5.0 (with BLE support)
+* Gigabit Ethernet
+* 2x USB 3.0 (capable of simultaneous full throughput)
+* 2x USB 2.0
+* PoE support (additional HAT required)
+* Dual 4-lane MIPI CSI/DSI transceivers, supporting
+** 2x display; or
+** 2x camera; or
+** 1x display + 1x camera
+* Raspberry Pi 40-pin GPIO header
+* Fan connector
+* Real Time Clock (RTC)
+** RTC battery connector
+* Power button
+
+=== Turning it off and back on again
+
+When you plug your Raspberry Pi into power for the first time it will automatically turn on and boot into the operating system without having to push the button. 
+
+If you are running the Raspberry Pi Desktop you can initiate a clean shutdown by briefly pressing the power button located on the left-hand side of the board, and then releasing it. This will cause a Desktop menu to appear asking whether you want to Shutdown, Reboot, or Logout. You can select whether you want to shutdown or reboot, or alternatively pressing the power button briefly for a second time will initiate a clean shutdown.
+
+.Shutting down your Raspberry Pi 5 using the power button.
+image::images/shutdown.jpg[alt="Desktop menu asking whether you want to Shutdown, Reboot, or Logout",width="70%"]
+
+NOTE: If you are running your Raspberry Pi OS with a Desktop you can press the power button twice in quick succession to shutdown. However if you are running your Raspberry Pi OS
+
+If you are running Raspberry Pi OS Lite in headless mode pressing the power button a single time will initite a shutdown.
+
+If you want to force a hard shutdown, you should press and hold the Power Button.
+
+If the Raspberry Pi board is shutdown, but still powered, pressing the power button will restart the board.
+
+Default shutdown wattage is around 1 to 1.4W. However this can be decreased by manually editing the EEPROM configuration, `sudo rpi-eeprom-config -e` and change the settings to:
+
+[source]
+----
+BOOT_UART=1
+POWER_OFF_ON_HALT=1
+BOOT_ORDER=0xf416
+----
+
+This should drop the shutdown power consumption to around 0.01W.
+
+==== Adding your own power button
+
+.The J2 jumper
+image::images/j2.jpg[alt="The J2 jumper on Raspberry Pi 5",width="70%"]
+
+The J2 jumper, located between the RTC battery connector and the board edge, is a breakout allowing you to add your own power button to Raspberry Pi 5 by adding a Normally Open (NO) momentary switch bridging the two pads. Briefly closing this switch will perform the same actions as the onboard power button.
+
+=== Updating your firmware
+
+WARNING: Do not update the firmware on your Raspberry Pi unless instructed by a Raspberry Pi engineer.
+
+While firmware updates are rare, if you run into a problem with your Raspberry Pi you may want to check to see if one is available. You can do so as below:
+
+[source,bash]
+----
+sudo apt update
+sudo apt upgrade
+sudo rpi-eeprom-update -a
+----
+
+If a firmware update is available you will be prompted to install it and your Raspberry Pi will reboot. More information about updating the firmware on your Raspberry Pi is available xref:raspberry-pi.adoc#bootloader_update_stable[elsewhere in the documentation].

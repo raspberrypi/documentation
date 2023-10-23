@@ -250,6 +250,10 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 3: BCM2711
 
+|
+|
+| 4: BCM2712
+
 | TTTTTTTT (bits 4-11)
 | Type
 | 0: A
@@ -329,6 +333,14 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 |
 | 15: CM4S
+
+|
+|
+| 16: Internal use only
+
+|
+|
+| 17: 5
 
 | RRRR (bits 0-3)
 | Revision
@@ -585,6 +597,19 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 1.0
 | 512MB
 | Sony UK
+
+| c04170
+| 5
+| 1.0
+| 4GB
+| Sony UK
+
+| d04170
+| 5
+| 1.0
+| 8GB
+| Sony UK
+
 |===
 
 === Using revision codes for board identification

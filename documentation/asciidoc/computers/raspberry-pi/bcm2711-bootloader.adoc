@@ -608,17 +608,9 @@ Default: `1`
 
 === Secure Boot configuration properties in `config.txt`
 
-[.whitepaper, title="Raspberry Pi 4 Boot Security", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-004651-WP/Raspberry-Pi-4-Boot-Security.pdf]
+[.whitepaper, title="How To Use Raspberry Pi Secure Boot", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003466-WP/Boot-Security-Howto.pdf]
 ****
-This whitepaper describes Raspberry Pi Ltd’s approach to boot security on the Raspberry Pi 4 family of devices, based on
-the BCM2711 system on a chip (SoC).
-****
-
-[.whitepaper, title="Boot security howto", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003466-WP/Boot-Security-Howto.pdf]
-****
-This whitepaper describes how to implement secure boot on devices based on Raspberry Pi 4. For an overview of the secure boot implementation, please see the Raspberry Pi 4 Boot Security whitepaper.
-
-The secure boot system is intended for use with buildroot (or similar)-based OS images; using it with Raspberry Pi OS is not recommended or supported.
+This whitepaper describes how to implement secure boot on devices based on Raspberry Pi 4. For an overview of our approach to implementing secure boot implementation, please see the https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-004651-WP/Raspberry-Pi-4-Boot-Security.pdf[Raspberry Pi 4 Boot Security] whitepaper. The secure boot system is intended for use with `buildroot`-based OS images; using it with Raspberry Pi OS is not recommended or supported.
 ****
 
 The following `config.txt` properties are used to program the `secure-boot` OTP settings. These changes are irreversible and can only be programmed via `RPIBOOT` when flashing the bootloader EEPROM image.  This ensures that `secure-boot` cannot be set remotely or by accidentally inserting a stale SD card image.
@@ -651,50 +643,3 @@ Default: ``
 If this property is set to `1` then `recovery.bin` will program an OTP value that prevents VideoCore JTAG from being used. This option requires that `program_pubkey` and `revoke_devkey` are also set. This option can prevent failure-analysis and should only be set after the device has been fully tested.
 
 Default: `0`
-
-[[bootloader_update_stable]]
-=== Updating to the LATEST / STABLE bootloader
-
-The DEFAULT version of the bootloader is only updated for CRITICAL fixes and major releases. The LATEST / STABLE bootloader is updated more often to include the latest fixes and improvements.
-
-Advanced users can switch to the LATEST / STABLE bootloader to get the latest functionality.
-Open a command prompt and start `raspi-config`.
-
-----
-sudo raspi-config
-----
-
-Navigate to `Advanced Options` and then `Bootloader Version`. Select `Latest` and choose `Yes` to confirm. Select `Finish` and confirm you want to reboot. After the reboot, open a command prompt again and update your system.
-
-----
-sudo apt update
-sudo apt install rpi-eeprom  # Update rpi-eeprom to the latest version
-----
-
-If you run `rpi-eeprom-update`, you should see that a more recent version of the bootloader is available and it's the `stable` release.
-
-----
-*** UPDATE AVAILABLE ***
-BOOTLOADER: update available
-   CURRENT: Tue 25 Jan 14:30:41 UTC 2022 (1643121041)
-    LATEST: Thu 10 Mar 11:57:12 UTC 2022 (1646913432)
-   RELEASE: stable (/lib/firmware/raspberrypi/bootloader/stable)
-            Use raspi-config to change the release.
-----
-
-Now you can update your bootloader.
-
-----
-sudo rpi-eeprom-update -a
-sudo reboot
-----
-
-If you run `rpi-eeprom-update` again after your Raspberry Pi has rebooted, you should now see that the `CURRENT` date has updated to indicate that you are using the latest version of the bootloader.
-
-----
-BOOTLOADER: up to date
-   CURRENT: Thu 10 Mar 11:57:12 UTC 2022 (1646913432)
-    LATEST: Thu 10 Mar 11:57:12 UTC 2022 (1646913432)
-   RELEASE: stable (/lib/firmware/raspberrypi/bootloader/stable)
-            Use raspi-config to change the release.
-----

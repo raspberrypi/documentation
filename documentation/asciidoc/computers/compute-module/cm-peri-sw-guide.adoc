@@ -22,39 +22,7 @@ On a Compute Module, both Bank 0 and Bank 1 are free to use. Bank 2 is used for 
 
 It is useful on a running system to look at the state of each of the GPIO pins (what function they are set to, and the voltage level at the pin) so that you can see if the system is set up as expected. This is particularly helpful if you want to see if a Device Tree is working as expected, or to get a look at the pin states during hardware debug.
 
-Raspberry Pi provides the `raspi-gpio` package which is a tool for hacking and debugging GPIO 
-
-NOTE: You need to run `raspi-gpio` as root.
-
-To install `raspi-gpio`:
-
-----
-sudo apt install raspi-gpio
-----
-
-If `apt` can't find the `raspi-gpio` package, you will need to do an update first:
-
-----
-sudo apt update
-----
-
-To get help on `raspi-gpio`, run it with the `help` argument:
-
-----
-sudo raspi-gpio help
-----
-
-For example, to see the current function and level of all GPIO pins use:
-
-----
-sudo raspi-gpio get
-----
-
-NOTE: `raspi-gpio` can be used with the `funcs` argument to get a list of all supported GPIO functions per pin. It will print out a table in CSV format. The idea is to pipe the table to a `.csv` file and then load this file using e.g. Excel:
-
-----
-sudo raspi-gpio funcs > gpio-funcs.csv
-----
+Raspberry Pi provides the `pinctrl` package which is a tool for hacking and debugging GPIO. 
 
 === BCM283x Boot Process
 
@@ -88,7 +56,7 @@ NOTE: `dt-blob.bin` by default does not exist as there is a 'default' version co
 
 NOTE: `dt-blob.bin` is in compiled device tree format, but is only read by the GPU firmware to set up functions exclusive to the GPU - see below.
 
-* A guide to xref:configuration.adoc#changing-the-default-pin-configuration[creating `dt-blob.bin`].
+* A guide to xref:configuration.adoc#change-the-default-pin-configuration[creating `dt-blob.bin`].
 * A guide to the xref:configuration.adoc#device-trees-overlays-and-parameters[Linux Device Tree for Raspberry Pi].
 
 During boot, the user can specify a specific ARM device tree to use via the `device_tree` parameter in `config.txt`, for example adding the line `device_tree=mydt.dtb` to `config.txt` where `mydt.dtb` is the dtb file to load instead of one of the standard ARM dtb files. While a user can create a full device tree for their Compute Module product, the recommended way to add hardware is to use overlays (see next section).
@@ -101,7 +69,7 @@ Overlays are used to add data to the base dtb that (nominally) describes non-boa
 
 When `start.elf` runs, it first reads something called `dt-blob.bin`. This is a special form of Device Tree blob which tells the GPU how to (initially) set up the GPIO pin states, and also any information about GPIOs/peripherals that are controlled (owned) by the GPU, rather than being used via Linux on the ARM. For example, the Raspberry Pi Camera peripheral is managed by the GPU, and the GPU needs exclusive access to an I2C interface to talk to it, as well as a couple of control pins. I2C0 on most Raspberry Pi Boards and Compute Modules is nominally reserved for exclusive GPU use. The information on which GPIO pins the GPU should use for I2C0, and to control the camera functions, comes from `dt-blob.bin`.
 
-NOTE: The `start.elf` firmware has a xref:configuration.adoc#changing-the-default-pin-configuration['built-in' default] `dt-blob.bin` which is used if no `dt-blob.bin` is found on the root of the first FAT partition. Most Compute Module projects will want to provide their own custom `dt-blob.bin`. Note that `dt-blob.bin` specifies which pin is for HDMI hot plug detect, although this should never change on Compute Module. It can also be used to set up a GPIO as a GPCLK output, and specify an ACT LED that the GPU can use while booting. Other functions may be added in future. 
+NOTE: The `start.elf` firmware has a xref:configuration.adoc#change-the-default-pin-configuration['built-in' default] `dt-blob.bin` which is used if no `dt-blob.bin` is found on the root of the first FAT partition. Most Compute Module projects will want to provide their own custom `dt-blob.bin`. Note that `dt-blob.bin` specifies which pin is for HDMI hot plug detect, although this should never change on Compute Module. It can also be used to set up a GPIO as a GPCLK output, and specify an ACT LED that the GPU can use while booting. Other functions may be added in future. 
 
 https://datasheets.raspberrypi.com/cm/minimal-cm-dt-blob.dts[minimal-cm-dt-blob.dts] is an example `.dts` device tree file that sets up the HDMI hot plug detect and ACT LED and sets all other GPIOs to be inputs with default pulls.
 
@@ -143,13 +111,7 @@ You can use `dtc` to write this out as a human readable dts file for debugging. 
 dtc -I fs -O dts -o proc-dt.dts /proc/device-tree
 ----
 
-As previously explained in the GPIO section, it is also very useful to use `raspi-gpio` to look at the setup of the GPIO pins to check that they are as you expect:
-
-----
-raspi-gpio get
-----
-
-If something seems to be going awry, useful information can also be found by dumping the GPU log messages:
+As previously explained in the GPIO section, it is also very useful to use `pinctrl` to look at the setup of the GPIO pins to check that they are as you expect. If something seems to be going awry, useful information can also be found by dumping the GPU log messages:
 
 ----
 sudo vclog --msg
@@ -262,7 +224,7 @@ should work.
 finally running:
 
 ----
-sudo raspi-gpio get
+pinctrl
 ----
 
 should show that GPIO8-11 have changed to ALT0 (SPI) functions.
