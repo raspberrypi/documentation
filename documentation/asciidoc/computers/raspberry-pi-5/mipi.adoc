@@ -4,7 +4,7 @@
 .The two MIPI connectors
 image::images/mipi-connectors.png[alt="The two MIPI connectors",width="70%"]
 
-The CSI and DSI ports found on previous models of Rasbpberry Pi have been combined into two dual-purpose CSI/DSI (MIPI) ports. To fit onto the board these now use a denser connector pinout, prevously only found on Raspberry Pi Zero and the CM4IO board. You can connect two displays, two cameras,vor one camera and one display to these ports.
+The CSI and DSI ports found on previous models of Rasbpberry Pi have been combined into two dual-purpose CSI/DSI (MIPI) ports. To fit onto the board these now use a denser connector pinout, previously only found on Raspberry Pi Zero and the CM4IO board. You can connect two displays, two cameras, or one camera and one display to these ports.
 
 === Attaching cameras
 
