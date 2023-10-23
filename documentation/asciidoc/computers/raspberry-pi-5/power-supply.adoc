@@ -68,7 +68,7 @@ The bootloader passes information about the powe supply via device-tree `/proc/d
 max_current:: The max current in mA
 uspd_power_data_objects:: A dump of the PDOs - debug for advanced users
 usb_max_current_enable:: Whether the current limiter was set to high or low
-usb_over_current_detected:: Whether any USB over current occured during boot before transferring control to the OS
+usb_over_current_detected:: Whether any USB over current occurred during boot before transferring control to the OS
 reset_event:: The PMIC reset reason e.g. watchdog, over- or under-voltage, over-temperature
 
 The PMIC has built-in ADCs that, among other things, can measure the supply voltage `EXT5V_V`.
