@@ -4,7 +4,7 @@
 .The two MIPI connectors
 image::images/mipi-connectors.jpg[alt="The two MIPI connectors",width="70%"]
 
-The CSI and DSI ports found on previous models of Rasbpberry Pi have been combined into two dual-purpose CSI/DSI (MIPI) ports. To fit onto the board these now use a denser connector pinout, previously only found on Raspberry Pi Zero and the CM4IO board. You can connect two displays, two cameras, or one camera and one display to these ports.
+The CSI and DSI ports found on previous models of Raspberry Pi have been combined into two dual-purpose CSI/DSI (MIPI) ports. To fit onto the board these now use a denser connector pinout, previously only found on Raspberry Pi Zero and the CM4IO board. You can connect two displays, two cameras, or one camera and one display to these ports.
 
 === Attaching cameras
 
@@ -25,18 +25,18 @@ NOTE: The Compute Module cable adapters, see https://datasheets.raspberrypi.com/
 
 === Attaching a display
 
-If you are using our xref:../accessories/display.adoc[7-inch Touch Display] with Raspberry Pi 5, it will not automatically be configured. You will need to add one of the following two lines to your `/boot/firmware/config.txt` file. Attaching the display to the `CSI/DSI1` connector you should add:
+If you are using our xref:../accessories/display.adoc[7-inch Touch Display] with Raspberry Pi 5, it will not automatically be configured. You will need to add one of the following two lines to your `/boot/firmware/config.txt` file. Attaching the display to the `CAM/DISP 1` connector you should add:
 
 [source,bash]
 ----
-CAM/DISP1 dtoverlay=vc4-kms-dsi-7inch
+dtoverlay=vc4-kms-dsi-7inch
 ----
 
-alternatively, attaching it to the `CSI/DSI0` connector you can add the following line:
+alternatively, attaching it to the `CAM/DISP 0` connector you can add the following line:
 
 [source,bash]
 ----
-CAM/DISP0 dtoverlay=vc4-kms-dsi-7inch,dsi0
+dtoverlay=vc4-kms-dsi-7inch,dsi0
 ----
 
 WARNING: At the time of writing, to get touch support on the 7-inch Touch Display you will need to `rpi-update` to get a newer kernel.
