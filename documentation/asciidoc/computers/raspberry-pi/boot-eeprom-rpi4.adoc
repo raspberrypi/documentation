@@ -235,7 +235,7 @@ rpi-eeprom-config --config boot.conf --out new.bin pieeprom.bin
 
 At power on, the BCM2711 ROM looks for a file called `recovery.bin` in the root directory of the boot partition on the SD card. If a valid `recovery.bin` is found then the ROM executes this instead of the contents of the EEPROM. This mechanism ensures that the bootloader EEPROM can always be reset to a valid image with factory default settings.
 
-See also xref:raspberry-pi.adoc#raspberry-pi-4-boot-flow[Raspberry Pi 4 boot-flow]
+See also xref:raspberry-pi.adoc#raspberry-pi-4-and-raspberry-pi-5-boot-flow[Raspberry Pi boot-flow]
 
 ==== EEPROM update files
 
