@@ -131,6 +131,8 @@ Note that these settings apply only at boot, so the monitor must be connected at
 
 On the Raspberry Pi 4, if both HDMI ports are in use, then the EDID filter will be checked against both of them, and configuration from all matching conditional filters will be applied.
 
+NOTE: This setting is not available on Raspberry Pi 5.
+
 === The Serial Number Filter
 
 Sometimes settings should only be applied to a single specific Raspberry Pi, even if you swap the SD card to a different one. Examples include licence keys and overclocking settings (although the licence keys already support SD card swapping in a different way). You can also use this to select different display settings, even if the EDID identification above is not possible, provided that you don't swap monitors between your Raspberry Pis. For example, if your monitor doesn't supply a usable EDID name, or if you are using composite output (for which EDID cannot be read).
