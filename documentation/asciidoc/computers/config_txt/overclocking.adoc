@@ -2,7 +2,7 @@
 
 The kernel has a https://www.kernel.org/doc/html/latest/admin-guide/pm/cpufreq.html[CPUFreq] driver with the "powersave" governor enabled by default, switched to "ondemand" during boot, when xref:configuration.adoc#raspi-config[raspi-config] is installed. With "ondemand" governor, CPU frequency will vary with processor load. You can adjust the minimum values with the `*_min` config options or disable dynamic clocking by applying a static scaling governor ("powersave" or "performance") or with `force_turbo=1`.
 
-Overclocking and overvoltage will be disabled at runtime when the SoC reaches `temp_limit` (see below), which defaults to 85°C, in order to cool down the SoC. You should not hit this limit with Raspberry Pi 1 and Raspberry Pi 2, but you are more likely to with Raspberry Pi 3 and Raspberry Pi 4. Overclocking and overvoltage are also disabled when an undervoltage situation is detected.
+Overclocking and overvoltage will be disabled at runtime when the SoC reaches `temp_limit` (see below), which defaults to 85°C, in order to cool down the SoC. You should not hit this limit with Raspberry Pi 1 and Raspberry Pi 2, but you are more likely to with Raspberry Pi 3 and newer Overclocking and overvoltage are also disabled when an undervoltage situation is detected.
 
 NOTE: For more information xref:raspberry-pi.adoc#frequency-management-and-thermal-control[see the section on frequency management and thermal control].
 
@@ -32,13 +32,13 @@ WARNING: Setting any overclocking parameters to values other than those used by 
 | Frequency of the image sensor pipeline block in MHz; individual override of the `gpu_freq` setting
 
 | v3d_freq
-| Frequency of the 3D block in MHz; individual override of the `gpu_freq` setting
+| Frequency of the 3D block in MHz; individual override of the `gpu_freq` setting. On Raspberry Pi 5 V3D is independent of `core_freq`, `isp_freq`  and `hevc_freq`
 
 | hevc_freq
 | Frequency of the High Efficiency Video Codec block in MHz; individual override of the `gpu_freq` setting. Raspberry Pi 4 only.
 
 | sdram_freq
-| Frequency of the SDRAM in MHz. SDRAM overclocking on Raspberry Pi 4B is not currently supported
+| Frequency of the SDRAM in MHz. SDRAM overclocking on Raspberry Pi 4 or newer is not supported.
 
 | over_voltage
 | CPU/GPU core upper voltage limit. The value should be in the range [-16,8] which equates to the range [0.95V,1.55V] ([0.8,1.4V] on Raspberry Pi 1) with 0.025V steps. In other words, specifying -16 will give 0.95V (0.8V on Raspberry Pi 1) as the maximum CPU/GPU core voltage, and specifying 8 will allow up to 1.55V (1.4V on Raspberry Pi 1). For defaults see table below. Values above 6 are only allowed when `force_turbo=1` is specified: this sets the warranty bit if `over_voltage_*` > `0` is also set.
@@ -47,14 +47,14 @@ WARNING: Setting any overclocking parameters to values other than those used by 
 | Sets `over_voltage_sdram_c`, `over_voltage_sdram_i`, and `over_voltage_sdram_p` together.
 
 | over_voltage_sdram_c
-| SDRAM controller voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps.
+| SDRAM controller voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. Not supported on Raspberry Pi 4 or newer.
 
 | over_voltage_sdram_i
-| SDRAM I/O voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps.
+| SDRAM I/O voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. Not supported on Raspberry Pi 4 or newer.
 
 | over_voltage_sdram_p
-| SDRAM phy voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps.
-
+| SDRAM phy voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. Not supported on Raspberry Pi 4 or newer.
+ 
 | force_turbo
 | Forces turbo mode frequencies even when the ARM cores are not busy. Enabling this may set the warranty bit if `over_voltage_*` is also set.
 
@@ -86,7 +86,10 @@ WARNING: Setting any overclocking parameters to values other than those used by 
 | Minimum value of `sdram_freq` used for dynamic frequency clocking.
 
 | over_voltage_min
-| Minimum value of `over_voltage` used for dynamic frequency clocking. The value should be in the range [-16,8] which equates to the range [0.8V,1.4V] with 0.025V steps. In other words, specifying -16 will give 0.8V as the CPU/GPU core idle voltage, and specifying 8 will give a minimum of 1.4V.
+| Minimum value of `over_voltage` used for dynamic frequency clocking. The value should be in the range [-16,8] which equates to the range [0.8V,1.4V] with 0.025V steps. In other words, specifying -16 will give 0.8V as the CPU/GPU core idle voltage, and specifying 8 will give a minimum of 1.4V. This setting is deprecated on Raspberry Pi 4 and Raspberry Pi 5.
+
+| over_voltage_delta
+| On Raspberry Pi 4 and Raspberry Pi 5 the over_voltage_delta parameter adds the given offset in microvolts to the number calculated by the DVFS algorithm.
 
 | temp_limit
 | Overheat protection. This sets the clocks and voltages to default when the SoC reaches this value in degree Celsius. Values over 85 are clamped to 85.
@@ -97,9 +100,9 @@ WARNING: Setting any overclocking parameters to values other than those used by 
 
 This table gives the default values for the options on various Raspberry Pi models, all frequencies are stated in MHz.
 
-[cols=",^,^,^,^,^,^,^,^,^"]
+[cols=",^,^,^,^,^,^,^,^,^,^"]
 |===
-| Option | Pi 0/W | Pi1 | Pi2 | Pi3 | Pi3A+/Pi3B+ | CM4 & Pi4B <= R1.3 | Pi4B R1.4 | Pi 400 | Pi Zero 2 W
+| Option | Pi 0/W | Pi1 | Pi2 | Pi3 | Pi3A+/Pi3B+ | CM4 & Pi4B <= R1.3 | Pi4B R1.4 | Pi 400 | Pi Zero 2 W | Pi 5
 
 | arm_freq
 | 1000
@@ -111,6 +114,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 | 1500 or 1800 if arm_boost=1
 | 1800
 | 1000
+| 2400
 
 | core_freq
 | 400
@@ -122,6 +126,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 | 500
 | 500
 | 400
+| 910
 
 | h264_freq
 | 300
@@ -133,6 +138,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 | 500
 | 500
 | 300
+| N/A
 
 | isp_freq
 | 300
@@ -144,6 +150,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 | 500
 | 500
 | 300
+| 910
 
 | v3d_freq
 | 300
@@ -155,6 +162,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 | 500
 | 500
 | 300
+| 910
 
 | hevc_freq
 | N/A
@@ -166,6 +174,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 | 500
 | 500
 | N/A
+| 910
 
 | sdram_freq
 | 450
@@ -177,6 +186,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 | 3200
 | 3200
 | 450
+| 4267
 
 | arm_freq_min
 | 700
@@ -188,6 +198,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 | 600
 | 600
 | 600
+| 1500
 
 | core_freq_min
 | 250
@@ -199,6 +210,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 | 200
 | 200
 | 250
+| 500
 
 | gpu_freq_min
 | 250
@@ -210,6 +222,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 | 250
 | 250
 | 250
+| 500
 
 | h264_freq_min
 | 250
@@ -221,6 +234,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 | 250
 | 250
 | 250
+| N/A
 
 | isp_freq_min
 | 250
@@ -232,6 +246,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 | 250
 | 250
 | 250
+| 500
 
 | v3d_freq_min
 | 250
@@ -243,6 +258,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 | 250
 | 250
 | 250
+| 500
 
 | sdram_freq_min
 | 400
@@ -254,6 +270,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 | 3200
 | 3200
 | 400
+| 4267
 |===
 
 This table gives defaults for options that are the same across all models.
@@ -304,10 +321,12 @@ The minimum core frequency when the system is idle must be fast enough to suppor
 | 550
 |===
 
+NOTE: Raspberry Pi 5 supports dual-4Kp60 displays with the idle-clock settings so `hdmi_enable_4kp60` is redundant.
+
 * Overclocking requires the latest firmware release.
 * The latest firmware automatically scales up the voltage if the system is overclocked. Manually setting `over_voltage` disables automatic voltage scaling for overclocking.
 * It is recommended when overclocking to use the individual frequency settings (`isp_freq`, `v3d_freq` etc) rather than `gpu_freq` because the maximum stable frequency will be different for ISP, V3D, HEVC etc.
-* The SDRAM frequency is not configurable on Raspberry Pi 4.
+* The SDRAM frequency is not configurable on Raspberry Pi 4 or newer.
 
 ==== `force_turbo`
 
@@ -317,6 +336,7 @@ By default (`force_turbo=0`) the "On Demand" CPU frequency driver will raise clo
 
 === Clocks Relationship
 
+==== Raspberry Pi 4
 The GPU core, CPU, SDRAM and GPU each have their own PLLs and https://forums.raspberrypi.com/viewtopic.php?f=29&t=6201&start=275#p168042[can have unrelated frequencies]. The h264, v3d and ISP blocks share a PLL.
 
 To view the Raspberry Pi's current frequency in KHz, type: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`. Divide the result by 1000 to find the value in MHz. Note that this frequency is the kernel _requested_ frequency, and it is possible that any throttling (for example at high temperatures) may mean the CPU is actually running more slowly than reported. An instantaneous measurement of the actual ARM CPU frequency can be retrieved using the vcgencmd `vcgencmd measure_clock arm`. This is displayed in Hertz.
@@ -342,6 +362,8 @@ It is essential to keep the supply voltage above 4.8V for reliable performance. 
 To monitor the Raspberry Pi's PSU voltage, you will need to use a multimeter to measure between the VCC and GND pins on the GPIO. More information is available in xref:raspberry-pi.adoc#power-supply[power].
 
 If the voltage drops below 4.63V (+-5%), the ARM cores and the GPU will be throttled back, and a message indicating the low voltage state will be added to the kernel log.
+
+The Raspberry Pi 5 `PMIC` has built in ADCs that allows the supply voltage to be measured. To do this run `vcgencmd pmic_read_adc EXT5V_V`
 
 === Overclocking Problems
 
