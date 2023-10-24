@@ -504,15 +504,26 @@ sudo raspi-config nonint do_i2c <0/1>
 [[serial-nonint]]
 ===== Serial Port
 
+Enable/disable the serial connection hardware.
+
+----
+sudo raspi-config nonint do_serial_hw <0/1/2>
+----
+
+- `0` - Enable serial port
+- `1` - Disable serial port
+
+[[serial-console-nonint]]
+===== Serial Console
+
 Enable/disable shell and kernel messages on the serial connection.
 
 ----
-sudo raspi-config nonint do_serial <0/1/2>
+raspi-config nonint do_serial_cons <0/1/2>
 ----
 
 - `0` - Enable console over serial port
-- `1` - Disable serial port
-- `2` - Enable serial port
+- `1` - Disable console over serial port
 
 [[one-wire-nonint]]
 ===== 1-Wire
