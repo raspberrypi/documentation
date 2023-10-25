@@ -260,16 +260,18 @@ The `--roi` parameter implements what is commonly referred to as "digital zoom".
 Example `libcamera-hello --roi 0.25,0.25,0.5,0.5` will select exactly a quarter of the total number of pixels cropped from the centre of the image.
 
 ----
-	--hdr				Run the camera in HDR mode (supported cameras only)
+	--hdr				Run the camera in HDR mode <mode>
 ----
 
-The `--hdr` option causes the camera to be run in HDR (High Dynamic Range) mode. This option only works for certain supported cameras, including the _Raspberry Pi Camera Module 3_.
+The `--hdr` option causes the camera to be run in the HDR (High Dynamic Range) mode given by `<mode>`. On Pi 4 and earlier devices, this option only works for certain supported cameras, including the _Raspberry Pi Camera Module 3_, and on Pi 5 devices it can be used with all cameras. `<mode>` may take the following values:
+
+* `off` - HDR is disabled. This is the default value if the `--hdr` option is omitted entirely.
+* `auto` - If the sensor supports HDR, then the on-sensor HDR mode is enabled. Otherwise, on Pi 5 devices, the Pi 5's on-chip HDR mode will be enabled. On a Pi 4 or earlier device, HDR will be disabled if the sensor does not support it. This mode will be applied if the `--hdr` option is supplied without a `<mode>` value.
+* `single-exp` - On a Pi 5, the on-chip HDR mode will be enabled, even if the sensor itself supports HDR. On earlier devices, HDR (even on-sensor HDR) will be disabled.
 
 Example: `libcamera-still --hdr -o hdr.jpg` for capturing a still image, or `libcamera-vid --hdr -o hdr.h264` to capture a video.
 
-Use of the HDR option may generally cause different camera modes to be available, and this can be checked by comparing the output of `libcamera-hello --list-cameras` with `libcamera-hello --hdr --list-cameras`.
-
-Users may also supply `--hdr 0` or `--hdr 1`, where the former disables the HDR modes (and is equivalent to omitting the option entirely), and the latter is the same as using `--hdr` on its own.
+When sensors support on-sensor HDR, use of the that option may generally cause different camera modes to be available, and this can be checked by comparing the output of `libcamera-hello --list-cameras` with `libcamera-hello --hdr sensor --list-cameras`.
 
 NOTE: For the _Raspberry Pi Camera Module 3_, the non-HDR modes include the usual full resolution (12MP) mode as well as its half resolution 2x2 binned (3MP) equivalent. In the case of HDR, only a single half resolution (3MP) mode is available, and it is not possible to switch between HDR and non-HDR modes without restarting the camera application.
 
