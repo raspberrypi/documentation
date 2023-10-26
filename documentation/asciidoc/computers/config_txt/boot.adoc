@@ -19,7 +19,7 @@ NOTE: The Raspberry Pi 5 firmware is self-contained in the bootloader EEPROM.
 
 `kernel` is the alternative filename on the boot partition to use when loading the kernel. The default value on the Raspberry Pi 1, Zero and Zero W, and Raspberry Pi Compute Module 1 is `kernel.img`. The default value on the Raspberry Pi 2, 3, 3+ and Zero 2 W, and Raspberry Pi Compute Modules 3 and 3+ is `kernel7.img`. The default value on the Raspberry Pi 4 and 400, and Raspberry Pi Compute Module 4 is `kernel8.img`, or `kernel7l.img` if `arm_64bit` is set to 0.
 
-The Raspberry Pi 5 firmware defaults to loading `kernel_2712.img` because this image contains optmizations specific to Raspberry Pi 5 (e.g. 16K page-size). If this file is not present then the common 64-bit kernel (`kernel8.img`) will be loaded instead.
+The Raspberry Pi 5 firmware defaults to loading `kernel_2712.img` because this image contains optimisations specific to Raspberry Pi 5 (e.g. 16K page-size). If this file is not present then the common 64-bit kernel (`kernel8.img`) will be loaded instead.
 
 === `arm_64bit`
 
