@@ -1,6 +1,8 @@
 == Legacy Memory Options
 (see also xref:config_txt.adoc#memory-options[config.txt Memory Options])
 
+NOTE: Raspberry Pi 5 does not allocate GPU memory on behalf of the OS so the following settings have no effect.
+
 === `gpu_mem`
 
 Specifies how much memory, in megabytes, to reserve for the exclusive use of the GPU: the remaining memory is allocated to the ARM CPU for use by the OS. For Raspberry Pis with less than 1GB of memory, the default is `64`; for Raspberry Pis with 1GB or more of memory the default is `76`.

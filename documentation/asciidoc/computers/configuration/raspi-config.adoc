@@ -222,7 +222,7 @@ Configure the network's proxy settings.
 
 ===== Boot Order
 
-On the Raspberry Pi 4, you can specify whether to boot from USB or network if the SD card isn't inserted. See xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[this page] for more information.
+On the Raspberry Pi 4, you can specify whether to boot from USB or network if the SD card isn't inserted. See xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[this page] for more information.
 
 ===== Bootloader Version
 
@@ -504,15 +504,26 @@ sudo raspi-config nonint do_i2c <0/1>
 [[serial-nonint]]
 ===== Serial Port
 
+Enable/disable the serial connection hardware.
+
+----
+sudo raspi-config nonint do_serial_hw <0/1/2>
+----
+
+- `0` - Enable serial port
+- `1` - Disable serial port
+
+[[serial-console-nonint]]
+===== Serial Console
+
 Enable/disable shell and kernel messages on the serial connection.
 
 ----
-sudo raspi-config nonint do_serial <0/1/2>
+raspi-config nonint do_serial_cons <0/1/2>
 ----
 
 - `0` - Enable console over serial port
-- `1` - Disable serial port
-- `2` - Enable serial port
+- `1` - Disable console over serial port
 
 [[one-wire-nonint]]
 ===== 1-Wire
@@ -669,7 +680,7 @@ sudo raspi-config nonint do_proxy <SCHEMES> <ADDRESS>
 
 ===== Boot Order
 
-On the Raspberry Pi 4, you can specify whether to boot from USB or network if the SD card isn't inserted. See xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[this page] for more information.
+On the Raspberry Pi 4, you can specify whether to boot from USB or network if the SD card isn't inserted. See xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[this page] for more information.
 
 ----
 sudo raspi-config nonint do_boot_order <B1/B2/B3>

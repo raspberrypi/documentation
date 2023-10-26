@@ -9,6 +9,8 @@ These options specify the firmware files transferred to the VideoCore GPU prior 
 
 NOTE: Cut-down firmware (`start*cd.elf` and `fixup*cd.dat`) cannot be selected this way - the system will fail to boot.  The only way to enable the cut-down firmware is to specify `gpu_mem=16`. The cut-down firmware removes support for codecs and 3D as well as limiting the initial early-boot framebuffer to 1080p @  16bpp - although KMS can replace this with up-to 32bpp 4K framebuffer(s) at a later stage as with any firmware.
 
+NOTE: The Raspberry Pi 5 firmware is self-contained in the bootloader EEPROM.
+
 === `cmdline`
 
 `cmdline` is the alternative filename on the boot partition from which to read the kernel command line string; the default value is `cmdline.txt`.
@@ -16,6 +18,8 @@ NOTE: Cut-down firmware (`start*cd.elf` and `fixup*cd.dat`) cannot be selected t
 === `kernel`
 
 `kernel` is the alternative filename on the boot partition to use when loading the kernel. The default value on the Raspberry Pi 1, Zero and Zero W, and Raspberry Pi Compute Module 1 is `kernel.img`. The default value on the Raspberry Pi 2, 3, 3+ and Zero 2 W, and Raspberry Pi Compute Modules 3 and 3+ is `kernel7.img`. The default value on the Raspberry Pi 4 and 400, and Raspberry Pi Compute Module 4 is `kernel8.img`, or `kernel7l.img` if `arm_64bit` is set to 0.
+
+The Raspberry Pi 5 firmware defaults to loading `kernel_2712.img` because this image contains optmizations specific to Raspberry Pi 5 (e.g. 16K page-size). If this file is not present then the common 64-bit kernel (`kernel8.img`) will be loaded instead.
 
 === `arm_64bit`
 
@@ -28,6 +32,8 @@ Defaults to 1 on Pi 4s (Pi 4B, Pi 400, CM4 and CM4S), and 0 on all other platfor
 NOTE: 64-bit kernels may be uncompressed image files or a gzip archive of an image (which can still be called kernel8.img; the bootloader will recognize the archive from the signature bytes at the beginning).
 
 NOTE: The 64-bit kernel will only work on the Raspberry Pi 3, 3+, 4, 400, Zero 2 W and 2B rev 1.2, and Raspberry Pi Compute Modules 3, 3+ and 4.
+
+NOTE: Raspberry Pi 5 only supports 64-bit kernel so this parameter has been removed.
 
 === `ramfsfile`
 

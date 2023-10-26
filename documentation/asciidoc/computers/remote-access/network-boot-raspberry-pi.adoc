@@ -56,7 +56,7 @@ Within `raspi-config`, choose `Advanced Options`, then `Boot Order`, then `Netwo
 vcgencmd bootloader_config
 ----
 
-For further details of configuring the Raspberry Pi 4 bootloader, see xref:raspberry-pi.adoc#raspberry-pi-4-bootloader-configuration[Raspberry Pi 4 Bootloader Configuration].
+For further details of configuring the Raspberry Pi 4 bootloader, see xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[Raspberry Pi Bootloader Configuration].
 
 === Ethernet MAC address
 
@@ -300,7 +300,7 @@ sudo systemctl restart nfs-kernel-server
 Edit `/tftpboot/cmdline.txt` and from `root=` onwards, and replace it with:
 
 ----
-root=/dev/nfs nfsroot=10.42.0.211:/nfs/client1,vers=4.1,proto=tcp rw ip=dhcp rootwait
+root=/dev/nfs nfsroot=10.42.0.211:/nfs/client1,vers=3 rw ip=dhcp rootwait
 ----
 
 You should substitute the IP address here with the IP address you have noted down. Also remove any part of the command line starting with init=.
@@ -309,7 +309,7 @@ Finally, edit `/nfs/client1/etc/fstab` and remove the `/dev/mmcblk0p1` and `p2` 
 
 [,bash]
 ----
-echo "10.42.0.211:/tftpboot /boot/firmware/ nfs defaults,vers=4.1,proto=tcp 0 0" | sudo tee -a /nfs/client1/etc/fstab
+echo "10.42.0.211:/tftpboot /boot/firmware/ nfs defaults,vers=3 0 0" | sudo tee -a /nfs/client1/etc/fstab
 ----
 
 Good luck! If it doesn't boot on the first attempt, keep trying. It can take a minute or so for the Raspberry Pi to boot, so be patient.

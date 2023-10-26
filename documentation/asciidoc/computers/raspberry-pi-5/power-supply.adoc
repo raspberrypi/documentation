@@ -63,7 +63,7 @@ The bootloader will prompt you to "press power button to continue", which effect
 
 === Power supplies and Raspberry Pi OS
 
-The bootloader passes information about the powe supply via device-tree `/proc/device-tree/chosen/power`. Users will typically not read this directly.
+The bootloader passes information about the power supply via device-tree `/proc/device-tree/chosen/power`. Users will typically not read this directly.
 
 max_current:: The max current in mA
 uspd_power_data_objects:: A dump of the PDOs - debug for advanced users

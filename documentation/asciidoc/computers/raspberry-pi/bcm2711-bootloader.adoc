@@ -1,4 +1,4 @@
-== Raspberry Pi 4 Bootloader Configuration
+== Raspberry Pi Bootloader Configuration
 
 === Editing the Configuration
 
@@ -10,7 +10,7 @@ To view the current EEPROM configuration: +
 To edit it and apply the updates to latest EEPROM release: +
 `sudo -E rpi-eeprom-config --edit`
 
-Please see the xref:raspberry-pi.adoc#raspberry-pi-4-boot-eeprom[boot EEPROM] page for more information about the EEPROM update process.
+Please see the xref:raspberry-pi.adoc#raspberry-pi-boot-eeprom[boot EEPROM] page for more information about the EEPROM update process.
 
 === Configuration Properties
 
@@ -23,10 +23,21 @@ If `1` then enable UART debug output on GPIO 14 and 15. Configure the receiving 
 
 Default: `0`
 
+[[UART_BAUD]]
+==== UART_BAUD
+Raspberry Pi 5 only.
+
+Changes the baud rate for the bootloader UART. +
+Supported values are `9600`, `19200`, `38400`, `57600`, `115200`, `230400`, `460800`, `921600`
+
+Default: `115200`
+
 [[WAKE_ON_GPIO]]
 ==== WAKE_ON_GPIO
 
 If `1` then `sudo halt` will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.
+
+This setting is not relevant on Raspberry Pi 5 because the xref:raspberry-pi-5.adoc#adding-your-own-power-button[dedicated power button] may always be used to wakeup from `HALT` or `STANDBY`.
 
 Default: `1`
 
@@ -36,6 +47,9 @@ Default: `1`
 If `1` and `WAKE_ON_GPIO=0` then `sudo halt` will switch off all PMIC outputs. This is lowest possible power state for halt but may cause problems with some HATs because 5V will still be on. `GLOBAL_EN` must be shorted to ground to boot.
 
 Raspberry Pi 400 has a dedicated power button which operates even if the processor is switched off. This behaviour is enabled by default, however, `WAKE_ON_GPIO=2` may be set to use an external GPIO power button instead of the dedicated power button.
+
+On Raspberry Pi 5 this places the PMIC in `STANDBY` mode where all outputs are switched off. There is no need to set `WAKE_ON_GPIO` and pressing the xref:raspberry-pi-5.adoc#adding-your-own-power-button[dedicated power button] will boot the device.
+
 
 Default: `0`
 
@@ -75,11 +89,11 @@ The BOOT_ORDER property defines the sequence for the different boot modes. It is
 
 | 0x5
 | BCM-USB-MSD
-| USB 2.0 boot from USB Type C socket (CM4: USB type A socket on CM4IO board).
+| USB 2.0 boot from USB Type C socket (CM4: USB type A socket on CM4IO board). Not available on Raspberry Pi 5.
 
 | 0x6
 | NVME
-| CM4 only: boot from an NVMe SSD connected to the PCIe interface. See xref:raspberry-pi.adoc#nvme-ssd-boot[NVMe boot] for more details.
+| CM4 and Pi 5 only: boot from an NVMe SSD connected to the PCIe interface. See xref:raspberry-pi.adoc#nvme-ssd-boot[NVMe boot] for more details.
 
 | 0x7
 | HTTP
@@ -425,6 +439,15 @@ PARTITION=2
 
 Default: 0
 
+[[PSU_MAX_CURRENT]]
+==== PSU_MAX_CURRENT
+Raspberry Pi 5 only.
+
+If set, this property instructions the firmware to skip USB power-deliber negoation and assume that it is connected to a bench power supply with the given current rating.
+Typically, this would either be set to `3000` or `5000` i.e. low or high-current capable power supply.
+
+Default: ""
+
 [[USB_MSD_EXCLUDE_VID_PID]]
 ==== USB_MSD_EXCLUDE_VID_PID
 
@@ -530,6 +553,8 @@ WARNING: If an invalid configuration which causes boot to fail is specified then
 
 === Configuration Properties in `config.txt`
 
+Raspberry Pi 5 requires a `config.txt` file to be present to indicate that the partition is bootable. 
+
 [[boot_ramdisk]]
 ==== boot_ramdisk
 If this property is set to `1` then the bootloader will attempt load a ramdisk file called `boot.img` containing the boot xref:configuration.adoc#boot-folder-contents[boot file-system]. Subsequent files (e.g. `start4.elf`) are read from the ramdisk instead of the original boot file-system.
@@ -552,6 +577,8 @@ Default: `0`
 Experimental property for custom firmware (bare metal).
 
 Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any compatibility checks (e.g. is USB MSD boot supported) and resets PCIe before starting the executable.
+
+Not relevant on Raspberry Pi 5 because there is no `start.elf` file.
 
 Default: `0x0`
 
@@ -578,7 +605,7 @@ Configures the EEPROM `Write Status Register`. This can be set to either mark th
 
 This option must be used in conjunction with the EEPROM `/WP` pin which controls updates to the EEPROM `Write Status Register`.  Pulling `/WP` low (CM4 `EEPROM_nWP` or on a Raspberry Pi 4 `TP5`) does NOT write-protect the EEPROM unless the `Write Status Register` has also been configured.
 
-See the https://www.winbond.com/resource-files/w25x40cl_f%2020140325.pdf[Winbond W25x40cl datasheet] for further details.
+See the https://www.winbond.com/resource-files/w25x40cl_f%2020140325.pdf[Winbond W25x40cl] or https://www.winbond.com/hq/product/code-storage-flash-memory/serial-nor-flash/?__locale=en&partNo=W25Q16JV[Winbond W25Q16JV] datasheets for further details.
 
 `eeprom_write_protect` settings in `config.txt` for `recovery.bin`.
 
@@ -597,7 +624,16 @@ See the https://www.winbond.com/resource-files/w25x40cl_f%2020140325.pdf[Winbond
 
 NOTE: `flashrom` does not support clearing of the write-protect regions and will fail to update the EEPROM if write-protect regions are defined.
 
+On Raspberry Pi 5 `/WP` is pulled low by default and consequently write-protect is enabled as soon as the `Write Status Register` is configued. To clear write-protect pull `/WP` high by connecting `TP14` and `TP1`.
+
 Default: `-1`
+
+[[os_check]]
+==== os_check
+On Raspberry Pi 5 the firmware automatically checks for a compatible device-tree file before attempting to boot from the current partition. Otherwise, older non-compatible kernels would be loaded and then hang.
+To disable this check (e.g. for bare metal development) set `os_check=0` in config.txt
+
+Default: `1`
 
 [[bootloader_update]]
 ==== bootloader_update
