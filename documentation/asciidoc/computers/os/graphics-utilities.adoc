@@ -8,7 +8,7 @@ The `kmsprint` tool can be used to list the display-modes supported by the monit
 
 === vcgencmd
 
-The `vcgencmd` tool is used to output information from the VideoCore GPU on the Raspberry Pi. You can find source code for the `vcgencmd` utility https://github.com/raspberrypi/userland/tree/master/host_applications/linux/apps/gencmd[on Github].
+The `vcgencmd` tool is used to output information from the VideoCore GPU on the Raspberry Pi. You can find source code for the `vcgencmd` utility https://github.com/raspberrypi/utils/tree/master/vcgencmd[on Github].
 
 To get a list of all commands which `vcgencmd` supports, use `vcgencmd commands`. Some useful commands and their required parameters are listed below.
 
