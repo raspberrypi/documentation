@@ -28,7 +28,7 @@ You can use any high quality power supply that provides the correct power mode.
 
 |Raspberry Pi 5
 |5V/5A, 5V/3A limits peripherals to 600mA
-|https://www.raspberrypi.com/products/27w-usb-c-power-supply/[27W USB-C Power Supply]
+|https://www.raspberrypi.com/products/27w-power-supply/[27W USB-C Power Supply]
 
 |Raspberry Pi 4 Model B
 |5V/3A
