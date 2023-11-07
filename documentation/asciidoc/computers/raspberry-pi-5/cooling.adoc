@@ -50,8 +50,7 @@ However, cooling of any type isn't mandatory, and no harm will come to the Raspb
 
 === Pinout
 
-The fan connector has four pins:
-
+The fan connector is a 1mm pitch JST SH socket and has four pins:
 
 [cols="1,2",width="50"%"]
 |===

@@ -71,9 +71,12 @@ We recommend using the Raspberry Pi's GPIO to provide power to the Touch Display
 To power the Touch Display using a Raspberry Pi, you need to connect two jumper wires between the 5V and GND pins on xref:../computers/raspberry-pi.adoc#gpio-and-the-40-pin-header[Raspberry Pi's GPIO] and the 5V and GND pins on the display, as shown in the following illustration.
 
 .The location of the display's 5V and GND pins
-image::images/touch-GPIO.png[Illustration of display pins, width="30%"]
+image::images/display_plugs.png[Illustration of display pins, width="40%"]
 
 Before you begin, make sure the Raspberry Pi is powered off and not connected to any power source. Connect one end of the black jumper wire to pin six (GND) on the Raspberry Pi and one end of the red jumper wire to pin four (5V). If pin six isn't available, you can use any other open GND pin to connect the black wire. 
+
+.The location of the Raspberry Pi headers
+image::images/pi_plugs.png[Illustration of Raspberry Pi headers, width="40%"]
 
 Next, connect the other end of the black wire to the GND pin on the display and the other end of the red wire to the 5V pin on the display. Once all the connections are made, you should see the Touch Display turn on the next time you turn on your Raspberry Pi.
 
@@ -91,39 +94,50 @@ WARNING: If you use a micro USB cable to power the display it must be mounted in
 
 === Changing the screen orientation
 
-If you want to physically rotate the display, or mount it in a specific position, you can use software to adjust the orientation of the screen to better match your setup. To set the screen orientation from the desktop environment, select **Screen Configuration** from the **Preferences** menu. Right-click on the DSI display rectangle in the layout editor, select **Orientation**, then pick the best option to fit your needs.
+If you want to physically rotate the display, or mount it in a specific position, you can use software to adjust the orientation of the screen to better match your setup.
+
+To set the screen orientation from the desktop environment, select **Screen Configuration** from the **Preferences** menu. Right-click on the DSI-1 display rectangle in the layout editor, select **Orientation**, then pick the best option to fit your needs. You can also ensure that the touch overlay is assigned to the correct display with the **Touchscreen** option.
 
 image::images/display-rotation.png[Screenshot of orientation options in screen configuration, width="80%"]
 
-To set screen orientation from the command line, you can edit the kernel's `/boot/firmware/cmdline.txt` file to pass the required orientation to the system.
+If only using the console and not a desktop environment, you can edit the kernel's `/boot/firmware/cmdline.txt` file to pass the required orientation to the system.
 
-To rotate the screen, add `video=DSI-1:800x480@60,rotate=90` to the `cmdline.txt` configuration file. Make sure everything is on the same line; do not add any carriage returns. Possible rotation values are 0, 90, 180 and 270.
+To rotate the console text, add `video=DSI-1:800x480@60,rotate=90` to the `cmdline.txt` configuration file. Make sure everything is on the same line; do not add any carriage returns. Possible rotation values are 0, 90, 180 and 270.
 
 NOTE: It is not possible to rotate the DSI display separately from the HDMI display using the command line. If you have both attached they need to be set to the same rotation value.
 
-You also have the option to change the rotation of the active touchscreen area independently of the orientation display itself by adding a `dtoverlay` instruction in the xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`] file,
+Rotation of the touchscreen area is independent of the orientation of the display itself. To change this you need to manually add a `dtoverlay` instruction in the xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`] file,
 
 ----
-dtoverlay=rpi-ft5406,touchscreen-swapped-x-y=1,touchscreen-inverted-x=1
+dtoverlay=vc4-kms-dsi-7inch,invx,invy
 ----
 
-The options for the touchscreen are:
+and disable the autodetection of the display by removing or commenting out
+
+----
+display_auto_detect=1
+----
+
+The options for the vc4-kms-dsi-7inch overlay are:
 
 |===
 | DT parameter | Action
 
-| touchscreen-size-x
+| sizex
 | Sets X resolution (default 800)
 
-| touchscreen-size-y
+| sizey
 | Sets Y resolution (default 480)
 
-| touchscreen-inverted-x
+| invx
 | Invert X coordinates
 
-| touchscreen-inverted-y
+| invy
 | Invert Y coordinates
 
-| touchscreen-swapped-x-y
+| swapxy
 | Swap X and Y coordinates
+
+| disable_touch
+| Disables the touch overlay totally
 |===

@@ -17,3 +17,21 @@ Our tutorials demonstrate various ways you can use your new computer. You can le
 === Support
 
 For support with official Raspberry Pi products, or to connect with other Raspberry Pi users, visit the https://forums.raspberrypi.com/[Raspberry Pi forums].
+
+
+[.booklink, booktype="buy", link=https://store.rpipress.cc/products/the-official-raspberry-pi-beginners-guide-5th-edition,image=image::images/fifth-editon-cover.png[]]
+=== Further reading
+
+You can find more information on how get started with your Raspberry Pi in the latest edition of https://store.rpipress.cc/collections/latest-releases/products/the-official-raspberry-pi-beginners-guide-5th-edition[Official Raspberry Pi Beginners Guide] by Gareth Halfacree.
+
+Learn how to:
+
+* Set up your Raspberry Pi, install its operating system, and start using this fully functional computer.
+* Start coding projects, with step-by-step guides using the Scratch 3, Python, and MicroPython programming languages.
+* Experiment with connecting electronic components, and have fun creating amazing projects.
+
+New in the 5th edition:
+
+* Updated for the latest Raspberry Pi computers: Raspberry Pi 5 and Raspberry Pi Zero 2 W.
+* Covers the latest Raspberry Pi OS.
+* Includes a new chapter on the Raspberry Pi Pico!

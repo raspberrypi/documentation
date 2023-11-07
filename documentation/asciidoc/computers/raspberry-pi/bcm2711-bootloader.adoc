@@ -443,7 +443,7 @@ Default: 0
 ==== PSU_MAX_CURRENT
 Raspberry Pi 5 only.
 
-If set, this property instructions the firmware to skip USB power-deliber negoation and assume that it is connected to a bench power supply with the given current rating.
+If set, this property instructions the firmware to skip USB power-delivery negotiation and assume that it is connected to a power supply with the given current rating.
 Typically, this would either be set to `3000` or `5000` i.e. low or high-current capable power supply.
 
 Default: ""
@@ -624,7 +624,7 @@ See the https://www.winbond.com/resource-files/w25x40cl_f%2020140325.pdf[Winbond
 
 NOTE: `flashrom` does not support clearing of the write-protect regions and will fail to update the EEPROM if write-protect regions are defined.
 
-On Raspberry Pi 5 `/WP` is pulled low by default and consequently write-protect is enabled as soon as the `Write Status Register` is configued. To clear write-protect pull `/WP` high by connecting `TP14` and `TP1`.
+On Raspberry Pi 5 `/WP` is pulled low by default and consequently write-protect is enabled as soon as the `Write Status Register` is configured. To clear write-protect pull `/WP` high by connecting `TP14` and `TP1`.
 
 Default: `-1`
 
