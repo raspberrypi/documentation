@@ -544,6 +544,11 @@ div.imageblock div.title {
   margin-top: 0px;
 }
 
+#content .imageblock.left img,
+#content  .imageblock.right img {
+  max-width: 250px;
+}
+
 div.admonitionblock table {
   display: flex;
   width: 100%;
