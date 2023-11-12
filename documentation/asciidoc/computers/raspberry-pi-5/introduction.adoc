@@ -49,7 +49,7 @@ image::images/shutdown.jpg[alt="Desktop menu asking whether you want to Shutdown
 
 NOTE: If you are running your Raspberry Pi OS with a Desktop you can press the power button twice in quick succession to shutdown. However if you are running your Raspberry Pi OS
 
-If you are running Raspberry Pi OS Lite in headless mode pressing the power button a single time will initite a shutdown.
+If you are running Raspberry Pi OS Lite in headless mode pressing the power button a single time will initiate a shutdown.
 
 If you want to force a hard shutdown, you should press and hold the Power Button.
 
