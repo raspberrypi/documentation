@@ -59,10 +59,10 @@ Run the code on the Pico, and set the camera running:
 
 [,bash]
 ----
-libcamera-hello -t 0 --qt-preview --shutter 3000
+rpicam-hello -t 0 --qt-preview --shutter 3000
 ----
 
 A frame should now be generated every time that the Pico pulses the pin. Variable framerate is acceptable, and can be controlled by simply
-varying the duration between pulses. No options need to be passed to libcamera-apps to enable external trigger.
+varying the duration between pulses. No options need to be passed to rpicam-apps to enable external trigger.
 
 NOTE: When running libcamera apps, you will need to specify a fixed shutter duration (the value does not matter). This will ensure the AGC does not try adjusting camera's shutter speed, which is controlled by the external trigger pulse.

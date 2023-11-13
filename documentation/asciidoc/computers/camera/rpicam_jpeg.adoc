@@ -1,12 +1,12 @@
-=== `libcamera-jpeg`
+=== `rpicam-jpeg`
 
-`libcamera-jpeg` is a simple still image capture application. It deliberately avoids some of the additional features of `libcamera-still` which attempts to emulate `raspistill` more fully. As such the code is significantly easier to understand, and in practice still provides many of the same features.
+`rpicam-jpeg` is a simple still image capture application. It deliberately avoids some of the additional features of `rpicam-still` which attempts to emulate `raspistill` more fully. As such the code is significantly easier to understand, and in practice still provides many of the same features.
 
 To capture a full resolution JPEG image use
 
 [,bash]
 ----
-libcamera-jpeg -o test.jpg
+rpicam-jpeg -o test.jpg
 ----
 which will display a preview for about 5 seconds, and then capture a full resolution JPEG image to the file `test.jpg`. 
 
@@ -14,17 +14,17 @@ The `-t <duration>` option can be used to alter the length of time the preview s
 
 [,bash]
 ----
-libcamera-jpeg -o test.jpg -t 2000 --width 640 --height 480
+rpicam-jpeg -o test.jpg -t 2000 --width 640 --height 480
 ----
 will capture a VGA sized image.
 
 ==== Exposure Control
 
-All the `libcamera-apps` allow the user to run the camera with fixed shutter speed and gain. For example
+All the `rpicam-apps` allow the user to run the camera with fixed shutter speed and gain. For example
 
 [,bash]
 ----
-libcamera-jpeg -o test.jpg -t 2000 --shutter 20000 --gain 1.5
+rpicam-jpeg -o test.jpg -t 2000 --shutter 20000 --gain 1.5
 ----
 would capture an image with an exposure of 20ms and a gain of 1.5x. Note that the gain will be applied as _analogue gain_ within the sensor up until it reaches the maximum analogue gain permitted by the kernel sensor driver, after which the remainder will be applied as digital gain.
 
@@ -32,9 +32,9 @@ Raspberry Pi's AEC/AGC algorithm allows applications to specify _exposure compen
 
 [,bash]
 ----
-libcamera-jpeg --ev -0.5 -o darker.jpg
-libcamera-jpeg --ev 0 -o normal.jpg
-libcamera-jpeg --ev 0.5 -o brighter.jpg
+rpicam-jpeg --ev -0.5 -o darker.jpg
+rpicam-jpeg --ev 0 -o normal.jpg
+rpicam-jpeg --ev 0.5 -o brighter.jpg
 ----
 
 ===== Further remarks on Digital Gain

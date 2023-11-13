@@ -1,46 +1,46 @@
 include::camera/camera_usage.adoc[]
 
-include::camera/libcamera_apps_intro.adoc[]
+include::camera/rpicam_apps_intro.adoc[]
 
-include::camera/libcamera_apps_getting_started.adoc[]
+include::camera/rpicam_apps_getting_started.adoc[]
 
-include::camera/libcamera_hello.adoc[]
+include::camera/rpicam_hello.adoc[]
 
-include::camera/libcamera_jpeg.adoc[]
+include::camera/rpicam_jpeg.adoc[]
 
-include::camera/libcamera_still.adoc[]
+include::camera/rpicam_still.adoc[]
 
-include::camera/libcamera_vid.adoc[]
+include::camera/rpicam_vid.adoc[]
 
-include::camera/libcamera_apps_libav.adoc[]
+include::camera/rpicam_apps_libav.adoc[]
 
-include::camera/libcamera_raw.adoc[]
+include::camera/rpicam_raw.adoc[]
 
-include::camera/libcamera_detect.adoc[]
+include::camera/rpicam_detect.adoc[]
 
-include::camera/libcamera_options_common.adoc[]
+include::camera/rpicam_options_common.adoc[]
 
-include::camera/libcamera_options_still.adoc[]
+include::camera/rpicam_options_still.adoc[]
 
-include::camera/libcamera_options_vid.adoc[]
+include::camera/rpicam_options_vid.adoc[]
 
 include::camera/libcamera_differences.adoc[]
 
-include::camera/libcamera_apps_post_processing.adoc[]
+include::camera/rpicam_apps_post_processing.adoc[]
 
-include::camera/libcamera_apps_post_processing_opencv.adoc[]
+include::camera/rpicam_apps_post_processing_opencv.adoc[]
 
-include::camera/libcamera_apps_post_processing_tflite.adoc[]
+include::camera/rpicam_apps_post_processing_tflite.adoc[]
 
-include::camera/libcamera_apps_post_processing_writing.adoc[]
+include::camera/rpicam_apps_post_processing_writing.adoc[]
 
-include::camera/libcamera_apps_multicam.adoc[]
+include::camera/rpicam_apps_multicam.adoc[]
 
-include::camera/libcamera_apps_packages.adoc[]
+include::camera/rpicam_apps_packages.adoc[]
 
-include::camera/libcamera_apps_building.adoc[]
+include::camera/rpicam_apps_building.adoc[]
 
-include::camera/libcamera_apps_writing.adoc[]
+include::camera/rpicam_apps_writing.adoc[]
 
 include::camera/libcamera_python.adoc[]
 
@@ -48,7 +48,7 @@ include::camera/libcamera_3rd_party_tuning.adoc[]
 
 include::camera/libcamera_known_issues.adoc[]
 
-include::camera/libcamera_apps_getting_help.adoc[]
+include::camera/rpicam_apps_getting_help.adoc[]
 
 include::camera/timelapse.adoc[]
 
@@ -59,5 +59,3 @@ include::camera/qt.adoc[]
 include::camera/v4l2.adoc[]
 
 include::camera/csi-2-usage.adoc[]
-
-

@@ -40,13 +40,13 @@ exit
 Start the sink running:
 [,bash]
 ----
-libcamera-vid --frames 300 --qt-preview -o sink.h264
+rpicam-vid --frames 300 --qt-preview -o sink.h264
 ----
 
 Start the source running
 [,bash]
 ----
-libcamera-vid --frames 300 --qt-preview -o source.h264
+rpicam-vid --frames 300 --qt-preview -o source.h264
 ----
 
 Frames should be synchronous. Use `--frames` to ensure the same number of frames are captured, and that the recordings are exactly the same length.
@@ -75,14 +75,14 @@ On the boards that you wish to act as sinks, solder the two halves of the MAS pa
 Start the sink running:
 [,bash]
 ----
-libcamera-vid --frames 300 -o sync.h264
+rpicam-vid --frames 300 -o sync.h264
 ----
 Allow a delay before you start the source running (see note below). Needs to be roughly > 2 seconds.
 
 Start the source running:
 [,bash]
 ----
-libcamera-vid --frames 299 -o sync.h264
+rpicam-vid --frames 299 -o sync.h264
 ----
 
 [NOTE]

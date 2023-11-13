@@ -1,22 +1,22 @@
-=== `libcamera-still`
+=== `rpicam-still`
 
-`libcamera-still` is very similar to `libcamera-jpeg` but supports more of the legacy `raspistill` options. As before, a single image can be captured with
+`rpicam-still` is very similar to `rpicam-jpeg` but supports more of the legacy `raspistill` options. As before, a single image can be captured with
 
 [,bash]
 ----
-libcamera-still -o test.jpg
+rpicam-still -o test.jpg
 ----
 
 ==== Encoders
 
-`libcamera-still` allows files to be saved in a number of different formats. It supports both `png` and `bmp` encoding. It also allows files to be saved as a binary dump of RGB or YUV pixels with no encoding or file format at all. In these latter cases the application reading the files will have to understand the pixel arrangement for itself.
+`rpicam-still` allows files to be saved in a number of different formats. It supports both `png` and `bmp` encoding. It also allows files to be saved as a binary dump of RGB or YUV pixels with no encoding or file format at all. In these latter cases the application reading the files will have to understand the pixel arrangement for itself.
 
 [,bash]
 ----
-libcamera-still -e png -o test.png
-libcamera-still -e bmp -o test.bmp
-libcamera-still -e rgb -o test.data
-libcamera-still -e yuv420 -o test.data
+rpicam-still -e png -o test.png
+rpicam-still -e bmp -o test.bmp
+rpicam-still -e rgb -o test.data
+rpicam-still -e yuv420 -o test.data
 ----
 Note that the format in which the image is saved depends on the `-e` (equivalently `--encoding`) option and is _not_ selected automatically based on the output file name.
 
@@ -28,7 +28,7 @@ To capture a raw image use
 
 [,bash]
 ----
-libcamera-still -r -o test.jpg
+rpicam-still -r -o test.jpg
 ----
 
 Here, the `-r` option (also `--raw`) indicates to capture the raw image as well as the JPEG. In fact, the raw image is the exact image from which the JPEG was produced. Raw images are saved in DNG (Adobe Digital Negative) format and are compatible with many standard applications, such as _dcraw_ or _RawTherapee_. The raw image is saved to a file with the same name but the extension `.dng`, thus `test.dng` in this case.
@@ -50,7 +50,7 @@ Exif Byte Order                 : Little-endian (Intel, II)
 Make                            : Raspberry Pi
 Camera Model Name               : /base/soc/i2c0mux/i2c@1/imx477@1a
 Orientation                     : Horizontal (normal)
-Software                        : libcamera-still
+Software                        : rpicam-still
 Subfile Type                    : Full-resolution Image
 Image Width                     : 4056
 Image Height                    : 3040
@@ -87,6 +87,6 @@ To capture very long exposure images, we need to be careful to disable the AEC/A
 
 So to perform a 100 second exposure capture, use
 
-`libcamera-still -o long_exposure.jpg --shutter 100000000 --gain 1 --awbgains 1,1 --immediate`
+`rpicam-still -o long_exposure.jpg --shutter 100000000 --gain 1 --awbgains 1,1 --immediate`
 
 For reference, the maximum exposure times of the three official Raspberry Pi cameras can be found in xref:../accessories/camera.adoc#hardware-specification[this table].

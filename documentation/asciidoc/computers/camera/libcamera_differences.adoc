@@ -1,10 +1,10 @@
 === Differences compared to _Raspicam_ Apps
 
-Whilst the `libcamera-apps` attempt to emulate most features of the legacy _Raspicam_ applications, there are some differences. Here we list the principal ones that users are likely to notice.
+Whilst the `rpicam-apps` attempt to emulate most features of the legacy _Raspicam_ applications, there are some differences. Here we list the principal ones that users are likely to notice.
 
 * The use of Boost `program_options` doesn't allow multi-character short versions of options, so where these were present they have had to be dropped. The long form options are named the same, and any single character short forms are preserved.
 
-* `libcamera-still` and `libcamera-jpeg` do not show the capture image in the preview window.
+* `rpicam-still` and `rpicam-jpeg` do not show the capture image in the preview window.
 
 * `libcamera` performs its own camera mode selection, so the `--mode` option is not supported. It deduces camera modes from the resolutions requested. There is still work ongoing in this area.
 
@@ -25,7 +25,7 @@ Whilst the `libcamera-apps` attempt to emulate most features of the legacy _Rasp
 
 * There are some differences in the metering, exposure and AWB options. In particular the legacy apps conflate metering (by which we mean the "metering mode") and the exposure (by which we now mean the "exposure profile"). With regards to AWB, to turn it off you have to set a pair of colour gains (e.g. `--awbgains 1.0,1.0`).
 
-* `libcamera` has no mechanism to set the AWB into "grey world" mode, which is useful for "NOIR" camera modules. However, tuning files are supplied which switch the AWB into the correct mode, so for example, you could use `libcamera-hello --tuning-file /usr/share/libcamera/ipa/rpi/vc4/imx219_noir.json` (for Pi 4 and earlier devices) or `libcamera-hello --tuning-file /usr/share/libcamera/ipa/rpi/pisp/imx219_noir.json` (Pi 5 and later devices).
+* `libcamera` has no mechanism to set the AWB into "grey world" mode, which is useful for "NOIR" camera modules. However, tuning files are supplied which switch the AWB into the correct mode, so for example, you could use `rpicam-hello --tuning-file /usr/share/libcamera/ipa/rpi/vc4/imx219_noir.json` (for Pi 4 and earlier devices) or `rpicam-hello --tuning-file /usr/share/libcamera/ipa/rpi/pisp/imx219_noir.json` (Pi 5 and later devices).
 
 * There is support for setting the exposure time (`--shutter`) and analogue gain (`--analoggain` or just `--gain`). There is no explicit control of the digital gain; you get this if the gain requested is larger than the analogue gain can deliver by itself.
 
@@ -33,7 +33,7 @@ Whilst the `libcamera-apps` attempt to emulate most features of the legacy _Rasp
 
 * There is no support for setting the flicker period yet.
 
-* `libcamera-still` does not support burst capture. In fact, because the JPEG encoding is not multi-threaded and pipelined it would produce quite poor framerates. Instead, users are advised to consider using `libcamera-vid` in MJPEG mode instead (and `--segment 1` can be used to force each frame into a separate JPEG file).
+* `rpicam-still` does not support burst capture. In fact, because the JPEG encoding is not multi-threaded and pipelined it would produce quite poor framerates. Instead, users are advised to consider using `rpicam-vid` in MJPEG mode instead (and `--segment 1` can be used to force each frame into a separate JPEG file).
 
 * `libcamera` uses open source drivers for all the image sensors, so the mechanism for enabling or disabling on-sensor DPC (Defective Pixel Correction) is different. The imx477 (HQ cam) driver enables on-sensor DPC by default; to disable it the user should, as root, enter
 
