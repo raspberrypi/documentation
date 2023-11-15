@@ -1,6 +1,6 @@
 === Python Bindings for `libcamera`
 
-The https://github.com/raspberrypi/picamera2[Picamera2 library] is a libcamera-based replacement for Picamera, which was a Python interface to Raspberry Pi's legacy camera stack. Picamera2 presents an easy to use Python API.
+The https://github.com/raspberrypi/picamera2[Picamera2 library] is a rpicam-based replacement for Picamera, which was a Python interface to Raspberry Pi's legacy camera stack. Picamera2 presents an easy to use Python API.
 
 Documentation about Picamera2 is available https://github.com/raspberrypi/picamera2[on Github] and in the https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf[Picamera2 Manual].
 

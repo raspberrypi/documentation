@@ -1,12 +1,12 @@
 === Post-Processing
 
-`libcamera-apps` share a common post-processing framework. This allows them to pass the images received from the camera system through a number of custom image processing and image analysis routines. Each such routine is known as a _post-processing stage_ and the description of exactly which stages should be run, and what configuration they may have, is supplied in a JSON file. Every stage, along with its source code, is supplied with a short example JSON file showing how to enable it.
+`rpicam-apps` share a common post-processing framework. This allows them to pass the images received from the camera system through a number of custom image processing and image analysis routines. Each such routine is known as a _post-processing stage_ and the description of exactly which stages should be run, and what configuration they may have, is supplied in a JSON file. Every stage, along with its source code, is supplied with a short example JSON file showing how to enable it.
 
 For example, the simple _negate_ stage (which "negates" all the pixels in an image, turning light pixels dark and vice versa) is supplied with a `negate.json` file that configures the post-processing pipeline to run it:
 
-`libcamera-hello --post-process-file /path/to/negate.json`
+`rpicam-hello --post-process-file /path/to/negate.json`
 
-TIP: Example JSON files can be found in the `assets` folder of the `libcamera-apps` repository at https://github.com/raspberrypi/libcamera-apps/tree/main/assets[].
+TIP: Example JSON files can be found in the `assets` folder of the `rpicam-apps` repository at https://github.com/raspberrypi/rpicam-apps/tree/main/assets[].
 
 The negate stage is particularly trivial and has no configuration parameters of its own, therefore the JSON file merely has to name the stage, with no further information, and it will be run. Thus `negate.json` contains
 
@@ -38,17 +38,17 @@ image::images/sobel_negate.jpg[Image with Sobel and negate]
 
 Some stages actually alter the image in some way, and this is their primary function (such as _negate_). Others are primarily for image analysis, and while they may indicate something on the image, all they really do is generate useful information. For this reason we also have a very flexible form of _metadata_ that can be populated by the post-processing stages, and this will get passed all the way through to the application itself.
 
-Image analysis stages often prefer to work on reduced resolution images. `libcamera-apps` are able to supply applications with a ready-made low resolution image provided directly by the ISP hardware, and this can be helpful in improving performance.
+Image analysis stages often prefer to work on reduced resolution images. `rpicam-apps` are able to supply applications with a ready-made low resolution image provided directly by the ISP hardware, and this can be helpful in improving performance.
 
-Furthermore, with the post-processing framework being completely open, Raspberry Pi welcomes the contribution of new and interesting stages from the community and would be happy to host them in our `libcamera-apps` repository. The stages that are currently available are documented below.
+Furthermore, with the post-processing framework being completely open, Raspberry Pi welcomes the contribution of new and interesting stages from the community and would be happy to host them in our `rpicam-apps` repository. The stages that are currently available are documented below.
 
-NOTE: The `libcamera-apps` supplied with the operating system will be built without any optional 3rd party libraries (such as OpenCV or TensorFlow Lite), meaning that certain post-processing stages that rely on them will not be enabled. To use these stages, please follow the instructions for xref:camera_software.adoc#building-libcamera-and-libcamera-apps[building `libcamera-apps` for yourself].
+NOTE: The `rpicam-apps` supplied with the operating system will be built without any optional 3rd party libraries (such as OpenCV or TensorFlow Lite), meaning that certain post-processing stages that rely on them will not be enabled. To use these stages, please follow the instructions for xref:camera_software.adoc#building-libcamera-and-rpicam-apps[building `rpicam-apps` for yourself].
 
 ==== `negate` stage
 
 The `negate` stage requires no 3rd party libraries.
 
-On a Raspberry Pi 3 device or a Raspberry Pi 4 running a 32-bit OS, it may execute more quickly if recompiled using `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon`. (Please see the xref:camera_software.adoc#building-libcamera-and-libcamera-apps[build instructions].)
+On a Raspberry Pi 3 device or a Raspberry Pi 4 running a 32-bit OS, it may execute more quickly if recompiled using `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon`. (Please see the xref:camera_software.adoc#building-libcamera-and-rpicam-apps[build instructions].)
 
 The `negate` stage has no user-configurable parameters.
 
@@ -70,7 +70,7 @@ image::images/negate.jpg[Image with negate]
 
 The `hdr` stage implements both HDR (high dynamic range) imaging and DRC (dynamic range compression). The terminology that we use here regards DRC as operating on single images, and HDR works by accumulating multiple under-exposed images and then performing the same algorithm as DRC.
 
-The `hdr` stage has no dependencies on 3rd party libraries, but (like some other stages) may execute more quickly on Raspberry Pi 3 or Raspberry Pi 4 devices running a 32-bit OS if recompiled using `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon` (please see the xref:camera_software.adoc#building-libcamera-and-libcamera-apps[build instructions]). Specifically, the image accumulation stage will run quicker and result in fewer frame drops, though the tonemapping part of the process is unchanged.
+The `hdr` stage has no dependencies on 3rd party libraries, but (like some other stages) may execute more quickly on Raspberry Pi 3 or Raspberry Pi 4 devices running a 32-bit OS if recompiled using `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon` (please see the xref:camera_software.adoc#building-libcamera-and-rpicam-apps[build instructions]). Specifically, the image accumulation stage will run quicker and result in fewer frame drops, though the tonemapping part of the process is unchanged.
 
 The basic procedure is that we take the image (which in the case of HDR may be multiple images accumulated together) and apply an edge-preserving smoothing filter to generate a low pass (LP) image. We define the high pass (HP) image to be the difference between the LP image and the original. Next we apply a global tonemap to the LP image and add back the HP image. This procedure, in contrast to applying the tonemap directly to the original image, prevents us from squashing and losing all the local contrast in the resulting image.
 
@@ -125,7 +125,7 @@ Without DRC:
 
 image::images/nodrc.jpg[Image without DRC processing]
 
-With full-strength DRC: (use `libcamera-still -o test.jpg --post-process-file drc.json`)
+With full-strength DRC: (use `rpicam-still -o test.jpg --post-process-file drc.json`)
 
 image::images/drc.jpg[Image with DRC processing]
 
@@ -159,7 +159,7 @@ Without HDR:
 
 image::images/nohdr.jpg[Image without HDR processing]
 
-With HDR: (use `libcamera-still -o test.jpg --ev -2 --denoise cdn_off --post-process-file hdr.json`)
+With HDR: (use `rpicam-still -o test.jpg --ev -2 --denoise cdn_off --post-process-file hdr.json`)
 
 image::images/hdr.jpg[Image with DRC processing]
 
@@ -213,4 +213,4 @@ If the amount of computation needs to be reduced (perhaps you have other stages 
 
 To use the `motion_detect` stage you might enter the following example command:
 
-`libcamera-hello --lores-width 128 --lores-height 96 --post-process-file motion_detect.json`
+`rpicam-hello --lores-width 128 --lores-height 96 --post-process-file motion_detect.json`

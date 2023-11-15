@@ -10,4 +10,4 @@ Further details on the camera modules can be found in the xref:../accessories/ca
 
 All Raspberry Pi cameras are capable of taking high-resolution photographs, along with full HD 1080p video, and can be fully controlled programmatically. This documentation describes how to use the camera in various scenarios, and how to use the various software tools.
 
-Once you've xref:../accessories/camera.adoc#installing-a-raspberry-pi-camera[installed your camera module], there are various ways the cameras can be used. The simplest option is to use one of the provided camera applications, such as `libcamera-still` or `libcamera-vid`.
+Once you've xref:../accessories/camera.adoc#installing-a-raspberry-pi-camera[installed your camera module], there are various ways the cameras can be used. The simplest option is to use one of the provided camera applications, such as `rpicam-still` or `rpicam-vid`.

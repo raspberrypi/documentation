@@ -1,6 +1,6 @@
 === Writing your own Post-Processing Stages
 
-The `libcamera-apps` _post-processing framework_ is not only very flexible but is meant to make it easy for users to create their own custom post-processing stages. It is easy to include algorithms and routines that are already available both in OpenCV and TensorFlow Lite.
+The `rpicam-apps` _post-processing framework_ is not only very flexible but is meant to make it easy for users to create their own custom post-processing stages. It is easy to include algorithms and routines that are already available both in OpenCV and TensorFlow Lite.
 
 We are keen to accept and distribute interesting post-processing stages contributed by our users.
 

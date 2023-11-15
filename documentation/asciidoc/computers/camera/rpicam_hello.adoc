@@ -1,23 +1,23 @@
-=== `libcamera-hello`
+=== `rpicam-hello`
 
-`libcamera-hello` is the equivalent of a "hello world" application for the camera. It starts the camera, displays a preview window, and does nothing else. For example
+`rpicam-hello` is the equivalent of a "hello world" application for the camera. It starts the camera, displays a preview window, and does nothing else. For example
 
 [,bash]
 ----
-libcamera-hello
+rpicam-hello
 ----
 should display a preview window for about 5 seconds. The `-t <duration>` option lets the user select how long the window is displayed, where `<duration>` is given in milliseconds. To run the preview indefinitely, use:
 
 [,bash]
 ----
-libcamera-hello -t 0
+rpicam-hello -t 0
 ----
 
 The preview can be halted either by clicking the window's close button, or using `Ctrl-C` in the terminal.
 
 ==== Options
 
-`libcamera-apps` uses a 3rd party library to interpret command line options. This includes _long form_ options where the option name consists of more than one character preceded by `--`, and _short form_ options which can only be a single character preceded by a single `-`. For the most part option names are chosen to match those used by the legacy `raspicam` applications with the exception that we can no longer handle multi-character option names with a single `-`. Any such legacy options have been dropped and the long form with `--` must be used instead.
+`rpicam-apps` uses a 3rd party library to interpret command line options. This includes _long form_ options where the option name consists of more than one character preceded by `--`, and _short form_ options which can only be a single character preceded by a single `-`. For the most part option names are chosen to match those used by the legacy `raspicam` applications with the exception that we can no longer handle multi-character option names with a single `-`. Any such legacy options have been dropped and the long form with `--` must be used instead.
 
 The options are classified broadly into 3 groups, namely those that are common, those that are specific to still images, and those that are for video encoding. They are supported in an identical manner across all the applications where they apply.
 
@@ -33,30 +33,30 @@ For example, the NOIR (no IR-filter) versions of sensors require different AWB s
 
 [,bash]
 ----
-libcamera-hello --tuning-file /usr/share/libcamera/ipa/rpi/vc4/imx219_noir.json
+rpicam-hello --tuning-file /usr/share/libcamera/ipa/rpi/vc4/imx219_noir.json
 ----
 
 Pi 5 (or later devices) use a different tuning file in a different folder, so here you would use
 
 [,bash]
 ----
-libcamera-hello --tuning-file /usr/share/libcamera/ipa/rpi/pisp/imx219_noir.json
+rpicam-hello --tuning-file /usr/share/libcamera/ipa/rpi/pisp/imx219_noir.json
 ----
 
 If you are using a Soho Enterprises SE327M12 module with a Pi 4 you would use
 
 [,bash]
 ----
-libcamera-hello --tuning-file /usr/share/libcamera/ipa/rpi/vc4/se327m12.json
+rpicam-hello --tuning-file /usr/share/libcamera/ipa/rpi/vc4/se327m12.json
 ----
 
 Notice how this also means that users can copy an existing tuning file and alter it according to their own preferences, so long as the `--tuning-file` parameter is pointed to the new version.
 
-Finally, the `--tuning-file` parameter, in common with other `libcamera-hello` command line options, applies identically across all the `libcamera-apps`.
+Finally, the `--tuning-file` parameter, in common with other `rpicam-hello` command line options, applies identically across all the `rpicam-apps`.
 
 ==== Preview Window
 
-Most of the `libcamera-apps` display a preview image in a window. If there is no active desktop environment, it will draw directly to the display using Linux DRM (Direct Rendering Manager), otherwise it will attempt to use the desktop environment. Both paths use zero-copy buffer sharing with the GPU, and a consequence of this is that X forwarding is _not_ supported.
+Most of the `rpicam-apps` display a preview image in a window. If there is no active desktop environment, it will draw directly to the display using Linux DRM (Direct Rendering Manager), otherwise it will attempt to use the desktop environment. Both paths use zero-copy buffer sharing with the GPU, and a consequence of this is that X forwarding is _not_ supported.
 
 For this reason there is a third kind of preview window which does support X forwarding, and can be requested with the `--qt-preview` option. This implementation does not benefit from zero-copy buffer sharing nor from 3D acceleration which makes it computationally expensive (especially for large previews), and so is not normally recommended.
 
@@ -68,7 +68,7 @@ The `--info-text` option allows the user to request that certain helpful image i
 
 [,bash]
 ----
-libcamera-hello --info-text "red gain %rg, blue gain %bg"
+rpicam-hello --info-text "red gain %rg, blue gain %bg"
 ----
 will display the current red and blue gain values.
 
