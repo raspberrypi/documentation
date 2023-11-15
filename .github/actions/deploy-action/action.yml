@@ -1,5 +1,5 @@
 name: Deploy via Bastion Host
-description: "Deploy specified files and directories to a server via a bastion host"
+description: "Deploy specified files and directories to a primary and secondary server via a bastion host"
 inputs:
   private_ssh_key:
     description: "The private SSH key used to authenticate with the remote servers"
@@ -13,8 +13,12 @@ inputs:
     description: "The [user@]hostname of the bastion server"
     required: true
 
-  host:
-    description: "The [user@]hostname of the web server"
+  primary_host:
+    description: "The [user@]hostname of the primary web server"
+    required: true
+
+  secondary_host:
+    description: "The [user@]hostname of the secondary web server"
     required: true
 
   source:
@@ -45,6 +49,10 @@ runs:
         chmod 600 ~/.ssh/known_hosts
       shell: bash
 
-    - name: rsync source to destination
-      run: rsync -avz --delete -e 'ssh -A ${{ inputs.bastion_host }} ssh' ${{ inputs.source }} ${{ inputs.host }}:${{ inputs.destination }}
+    - name: Deploy to primary server
+      run: rsync -avz --delete -e 'ssh -A ${{ inputs.bastion_host }} ssh' ${{ inputs.source }} ${{ inputs.primary_host }}:${{ inputs.destination }}
+      shell: bash
+
+    - name: Deploy to secondary server
+      run: rsync -avz --delete -e 'ssh -A ${{ inputs.bastion_host }} ssh' ${{ inputs.source }} ${{ inputs.secondary_host }}:${{ inputs.destination }}
       shell: bash
