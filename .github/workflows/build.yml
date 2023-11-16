@@ -40,9 +40,9 @@ jobs:
         uses: carlosperate/arm-none-eabi-gcc-action@v1.8.0
       - name: Install Doxygen
         run: |
-          wget https://www.doxygen.nl/files/doxygen-1.9.6.linux.bin.tar.gz
-          tar xf doxygen-1.9.6.linux.bin.tar.gz -C "$HOME"
-          echo "$HOME/doxygen-1.9.6/bin" >> $GITHUB_PATH
+          wget https://www.doxygen.nl/files/doxygen-1.9.8.linux.bin.tar.gz
+          tar xf doxygen-1.9.8.linux.bin.tar.gz -C "$HOME"
+          echo "$HOME/doxygen-1.9.8/bin" >> $GITHUB_PATH
       - name: Build Doxygen documentation
         run: make build_doxygen_adoc
       - name: Build documentation
