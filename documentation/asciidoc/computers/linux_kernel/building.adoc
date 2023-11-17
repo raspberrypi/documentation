@@ -90,6 +90,14 @@ KERNEL=kernel8
 make bcm2711_defconfig
 ----
 
+For Raspberry Pi 5 default 64-bit build configuration
+[,bash]
+----
+cd linux
+KERNEL=kernel_2712
+make bcm2712_defconfig
+----
+
 ===== Customising the Kernel Version Using `LOCALVERSION`
 
 In addition to your kernel configuration changes, you may wish to adjust the `LOCALVERSION` to ensure your new kernel does not receive the same version string as the upstream kernel. This both clarifies you are running your own kernel in the output of `uname` and ensures existing modules in `/lib/modules` are not overwritten.
@@ -128,7 +136,7 @@ sudo cp arch/arm64/boot/dts/overlays/README /boot/firmware/overlays/
 sudo cp arch/arm64/boot/Image.gz /boot/firmware/$KERNEL.img
 ----
 
-NOTE: On a Raspberry Pi 2/3/4, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
+NOTE: On a Raspberry Pi 2/3/4/5, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
 
 If you now reboot, your Raspberry Pi should be running your freshly-compiled kernel!
 
