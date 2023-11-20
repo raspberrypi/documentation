@@ -4,12 +4,12 @@
 
 To create a time-lapse video, you simply configure the Raspberry Pi to take a picture at a regular interval, such as once a minute, then use an application to stitch the pictures together into a video.
 
-==== Using `libcamera-still` Timelapse Mode
+==== Using `rpicam-still` Timelapse Mode
 
-`libcamera-still` has a built in time-lapse mode, using the `--timelapse` command line switch. The value that follows the switch is the time between shots in milliseconds:
+`rpicam-still` has a built in time-lapse mode, using the `--timelapse` command line switch. The value that follows the switch is the time between shots in milliseconds:
 
 ----
-libcamera-still -t 30000 --timelapse 2000 -o image%04d.jpg
+rpicam-still -t 30000 --timelapse 2000 -o image%04d.jpg
 ----
 
 [NOTE]
@@ -28,7 +28,7 @@ A good way to automate taking a picture at a regular interval is running a scrip
 ----
 #!/bin/bash
 DATE=$(date +"%Y-%m-%d_%H%M")
-libcamera-still -o /home/pi/camera/$DATE.jpg
+rpicam-still -o /home/pi/camera/$DATE.jpg
 ----
 
 and save it as `camera.sh`. You'll need to make the script executable:

@@ -1,20 +1,20 @@
-=== Building `libcamera` and `libcamera-apps`
+=== Building `libcamera` and `rpicam-apps`
 
-Building `libcamera` and `libcamera-apps` for yourself can bring the following benefits.
+Building `libcamera` and `rpicam-apps` for yourself can bring the following benefits.
 
 * You can pick up the latest enhancements and features.
 
-* `libcamera-apps` can be compiled with extra optimisation for Raspberry Pi 3 and Raspberry Pi 4 devices running a 32-bit OS.
+* `rpicam-apps` can be compiled with extra optimisation for Raspberry Pi 3 and Raspberry Pi 4 devices running a 32-bit OS.
 
 * You can include the various optional OpenCV and/or TFLite post-processing stages (or add your own).
 
-* You can customise or add your own applications derived from `libcamera-apps`.
+* You can customise or add your own applications derived from `rpicam-apps`.
 
 NOTE: When building on a Raspberry Pi with 1GB or less of RAM, there is a risk that the device may run out of swap and fail. We recommend either increasing the amount of swap, or building with fewer threads (the `-j` option to `ninja` and to `make`).
 
-==== Building `libcamera-apps` without rebuilding `libcamera`
+==== Building `rpicam-apps` without rebuilding `libcamera`
 
-You can rebuild `libcamera-apps` _without_ first rebuilding the whole of `libcamera` and `libepoxy`. If you do not need support for the GLES/EGL preview window then `libepoxy` can be omitted entirely. Mostly this will include Raspberry Pi OS Lite users, and they must be sure to use `-Denable_egl=false` when running `meson setup` later. These users should run:
+You can rebuild `rpicam-apps` _without_ first rebuilding the whole of `libcamera` and `libepoxy`. If you do not need support for the GLES/EGL preview window then `libepoxy` can be omitted entirely. Mostly this will include Raspberry Pi OS Lite users, and they must be sure to use `-Denable_egl=false` when running `meson setup` later. These users should run:
 
 ----
 sudo apt install -y libcamera-dev libjpeg-dev libtiff5-dev
@@ -32,13 +32,13 @@ If you want to use the Qt preview window, please also execute
 sudo apt install -y qtbase5-dev libqt5core5a libqt5gui5 libqt5widgets5
 ----
 
-If you want xref:camera_software.adoc#libav-integration-with-libcamera-vid[libav] support in `libcamera-vid`, additional libraries must be installed:
+If you want xref:camera_software.adoc#libav-integration-with-rpicam-vid[libav] support in `rpicam-vid`, additional libraries must be installed:
 
 ----
 sudo apt install libavcodec-dev libavdevice-dev libavformat-dev libswresample-dev
 ----
 
-Now proceed directly to the instructions for xref:camera_software.adoc#building-libcamera-apps[building `libcamera-apps`]. Raspberry Pi OS Lite users should check that _git_ is installed first (`sudo apt install -y git`).
+Now proceed directly to the instructions for xref:camera_software.adoc#building-rpicam-apps[building `rpicam-apps`]. Raspberry Pi OS Lite users should check that _git_ is installed first (`sudo apt install -y git`).
 
 ==== Building `libcamera`
 
@@ -89,7 +89,7 @@ ninja -C build   # use -j 2 on Raspberry Pi 3 or earlier devices
 sudo ninja -C build install
 ----
 
-NOTE: At the time of writing `libcamera` does not yet have a stable binary interface. Therefore, if you have rebuilt `libcamera` we recommend continuing and rebuilding `libcamera-apps` from scratch too.
+NOTE: At the time of writing `libcamera` does not yet have a stable binary interface. Therefore, if you have rebuilt `libcamera` we recommend continuing and rebuilding `rpicam-apps` from scratch too.
 
 ==== Building `libepoxy`
 
@@ -114,21 +114,21 @@ ninja
 sudo ninja install
 ----
 
-==== Building `libcamera-apps`
+==== Building `rpicam-apps`
 
-First fetch the necessary dependencies for `libcamera-apps`.
+First fetch the necessary dependencies for `rpicam-apps`.
 
 ----
 sudo apt install -y cmake libboost-program-options-dev libdrm-dev libexif-dev
 sudo apt install -y meson ninja-build
 ----
 
-The `libcamera-apps` build process begins with the following:
+The `rpicam-apps` build process begins with the following:
 
 ----
 cd
-git clone https://github.com/raspberrypi/libcamera-apps.git
-cd libcamera-apps
+git clone https://github.com/raspberrypi/rpicam-apps.git
+cd rpicam-apps
 ----
 
 At this point you will need to run `meson setup` after deciding what extra flags to pass it. The valid flags are:
@@ -169,6 +169,6 @@ sudo meson install -C build
 sudo ldconfig # this is only necessary on the first build
 ----
 
-NOTE: If you are using an image where `libcamera-apps` have been previously installed as an `apt` package, and you want to run the new `libcamera-apps` executables from the same terminal window where you have just built and installed them, you may need to run `hash -r` to be sure to pick up the new ones over the system supplied ones.
+NOTE: If you are using an image where `rpicam-apps` have been previously installed as an `apt` package, and you want to run the new `rpicam-apps` executables from the same terminal window where you have just built and installed them, you may need to run `hash -r` to be sure to pick up the new ones over the system supplied ones.
 
 Finally, if you have not already done so, please be sure to follow the `dtoverlay` and display driver instructions in the  xref:camera_software.adoc#getting-started[Getting Started section] (and rebooting if you changed anything there).

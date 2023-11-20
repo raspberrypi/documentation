@@ -82,7 +82,7 @@ dtparam=cam1_reg
 . Run the following command to check the list of detected cameras:
 +
 ----
-libcamera-hello --list
+rpicam-hello --list
 ----
 You should see your camera model, referred to by the driver directive in the table above, in the output.
 
@@ -142,7 +142,7 @@ NOTE: If your Compute Module includes onboard EMMC storage, you can boot, edit t
 . Run the following command to check the list of detected cameras:
 +
 ----
-libcamera-hello --list
+rpicam-hello --list
 ----
 +
 You should see both camera models, referred to by the driver directives in the table above, in the output.
@@ -157,7 +157,7 @@ Raspberry Pi OS includes the `libcamera` library to help you take images with yo
 Use the following command to immediately take a picture and save it to a file in PNG encoding using the `MMDDhhmmss` date format as a filename:
 
 ----
-libcamera-still --datetime -e png
+rpicam-still --datetime -e png
 ----
 
 Use the `-t` option to add a delay in milliseconds.
@@ -168,7 +168,7 @@ Use the `--width` and `--height` options to specify a width and height for the i
 Use the following command to immediately start recording a 10 second long video and save it to a file with the h264 codec named `video.h264`:
 
 ----
-libcamera-vid -t 10000 -o video.h264
+rpicam-vid -t 10000 -o video.h264
 ----
 
 ==== Specify which camera to use
@@ -177,7 +177,7 @@ By default, `libcamera` always uses the camera with index `0` in the `--list-cam
 To specify a camera option, get an index value for each camera from the following command:
 
 ----
-$ libcamera-hello --list-cameras
+$ rpicam-hello --list-cameras
 Available cameras
 -----------------
 0 : imx477 [4056x3040] (/base/soc/i2c0mux/i2c@1/imx477@1a)
@@ -200,13 +200,13 @@ In the above output:
 To use the HQ camera, pass its index (`0`) to the `--camera` `libcamera` option:
 
 ----
-libcamera-hello --camera 0
+rpicam-hello --camera 0
 ----
 
 To use the v3 camera, pass its index (`1`) to the `--camera` `libcamera` option:
 
 ----
-libcamera-hello --camera 1
+rpicam-hello --camera 1
 ----
 
 

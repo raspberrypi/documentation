@@ -1,6 +1,6 @@
-=== libav integration with libcamera-vid
+=== libav integration with rpicam-vid
 
-`libcamera-vid` can use the ffmpeg/libav codec backend to encode audio and video streams and either save to a local file or stream over the network. At present, video is encoded through the hardware H.264 encoder, and audio is encoded by a number of available software encoders. To list the available output formats, use the `ffmpeg -formats` command.
+`rpicam-vid` can use the ffmpeg/libav codec backend to encode audio and video streams and either save to a local file or stream over the network. At present, video is encoded through the hardware H.264 encoder, and audio is encoded by a number of available software encoders. To list the available output formats, use the `ffmpeg -formats` command.
 
 To enable the libav backend, use the `--codec libav` command line option. Once enabled, the following configuration options are available:
 
@@ -13,8 +13,8 @@ Set the libav output format to use. These output formats can be specified as con
 Example: To save a video in an mkv container, the following commands are equivalent:
 
 ----
-libcamera-vid --codec libav -o test.mkv
-libcamera-vid --codec libav --libav-format mkv -o test.raw
+rpicam-vid --codec libav -o test.mkv
+rpicam-vid --codec libav --libav-format mkv -o test.raw
 ----
 
 ----
@@ -35,7 +35,7 @@ Selects which software audio codec is used for encoding. By default `aac` is use
 
 Sets the audio encoding bitrate in bits per second.
 
-Example: To record audio at 16 kilobits/sec with the mp2 codec use `libcamera-vid --codec libav -o test.mp4 --audio_codec mp2 --audio-bitrate 16384`
+Example: To record audio at 16 kilobits/sec with the mp2 codec use `rpicam-vid --codec libav -o test.mp4 --audio_codec mp2 --audio-bitrate 16384`
 
 ----
     --audio-samplerate,     Set the audio sampling rate <number>
@@ -68,10 +68,10 @@ It is possible to use the libav backend as a network streaming source for audio/
 
 To stream audio/video using TCP
 ----
-libcamera-vid -t 0 --codec libav --libav-format mpegts --libav-audio -o "tcp://0.0.0.0:1234?listen=1"
+rpicam-vid -t 0 --codec libav --libav-format mpegts --libav-audio -o "tcp://0.0.0.0:1234?listen=1"
 ----
 
 To stream audio/video using UDP
 ----
-libcamera-vid -t 0 --codec libav --libav-format mpegts --libav-audio  -o "udp://<ip-addr>:<port>"
+rpicam-vid -t 0 --codec libav --libav-format mpegts --libav-audio  -o "udp://<ip-addr>:<port>"
 ----

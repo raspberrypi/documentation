@@ -304,10 +304,11 @@ Enables the bootloader to update itself from a TFTP or USB mass storage device (
 
 If self update is enabled then the bootloader will look for the update files (.sig/.upd) in the boot file system. If the update image differs from the current image then the update is applied and system is reset. Otherwise, if the EEPROM images are byte-for-byte identical then boot continues as normal.
 
-Notes:-
+Notes:
 
-* Self-update is not enabled in SD boot; the ROM can already load recovery.bin from the SD card.
 * Bootloader releases prior to 2021 do not support `self-update`.
+* Prior to 2022, self-update was not enabled in SD boot. On a Raspberry Pi 4, the ROM can already load recovery.bin from the SD card. On a CM4, neither self-update nor recovery.bin have any effect and USB boot is required (see the xref:compute-module.adoc#cm4bootloader[CM4 bootloader docs]).
+* Starting in 2022 (https://github.com/raspberrypi/rpi-eeprom/blob/master/firmware-2711/release-notes.md#2022-02-04---network-install---beta[beta] and https://github.com/raspberrypi/rpi-eeprom/blob/master/firmware-2711/release-notes.md#2022-03-10---promote-the-2022-03-10-beta-release-to-lateststable[stable]), self-update from an SD card is enabled.
 * For network boot make sure that the TFTP `boot` directory can be mounted via NFS and that `rpi-eeprom-update` can write to it.
 
 Default: `1`

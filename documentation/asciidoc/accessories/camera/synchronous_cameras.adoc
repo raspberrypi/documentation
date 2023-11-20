@@ -10,7 +10,7 @@ For correct operation, both cameras require a 1.65V pull up voltage on the XVS l
 
 image::images/synchronous_camera_wiring.jpg[alt="Image showing potential divider setup",width="50%"]
 
-Connect a potential divider of 2 equally high impedance ( > 2.2kΩ) resistors to 3.3V and ground, creating 1.65V. This can be connected to either Pi.
+Create a potential divider from two 10kΩ resistors to 3.3V and ground (to make 1.65V with an effective source impedence of 5kΩ). This can be connected to either Raspberry Pi.
 
 Solder the GND and XVS test points of each HQ Camera board to each other.
 
@@ -40,13 +40,13 @@ exit
 Start the sink running:
 [,bash]
 ----
-libcamera-vid --frames 300 --qt-preview -o sink.h264
+rpicam-vid --frames 300 --qt-preview -o sink.h264
 ----
 
 Start the source running
 [,bash]
 ----
-libcamera-vid --frames 300 --qt-preview -o source.h264
+rpicam-vid --frames 300 --qt-preview -o source.h264
 ----
 
 Frames should be synchronous. Use `--frames` to ensure the same number of frames are captured, and that the recordings are exactly the same length.
@@ -62,7 +62,7 @@ To operate as source and sink together, the Global Shutter Cameras also require 
 
 The wiring setup is identical to the xref:camera.adoc#using-the-hq-camera[HQ Camera method], except that you will also need to connect the XHS pins together.
 
-Create a potential divider made of 2 equally high impedance ( > 2.2kΩ) resistors resistors to 3.3V and ground, creating 1.65V. This can be connected to either Raspberry Pi.
+Create a potential divider from two 10kΩ resistors to 3.3V and ground (to make 1.65V with an effective source impedence of 5kΩ). This can be connected to either Raspberry Pi.
 
 Solder 2 wires to the XVS test points on each board and connect both of these wires together to the 1.65V potential divider.
 
@@ -75,14 +75,14 @@ On the boards that you wish to act as sinks, solder the two halves of the MAS pa
 Start the sink running:
 [,bash]
 ----
-libcamera-vid --frames 300 -o sync.h264
+rpicam-vid --frames 300 -o sync.h264
 ----
 Allow a delay before you start the source running (see note below). Needs to be roughly > 2 seconds.
 
 Start the source running:
 [,bash]
 ----
-libcamera-vid --frames 299 -o sync.h264
+rpicam-vid --frames 299 -o sync.h264
 ----
 
 [NOTE]
