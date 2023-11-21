@@ -27,9 +27,9 @@ def build_tab_from_json(tab, adoc_dir, img_dir):
         num_available_images = len(available_images)
         for item in tab_data:
             newsubitem = {}
-            newsubitem['title'] = tab_data[item]['name']
-            newsubitem['description'] = tab_data[item]['description']
-            newsubitem['subpath'] = item + ".adoc"
+            newsubitem['title'] = item['name']
+            newsubitem['description'] = item['description']
+            newsubitem['subpath'] = item['group_id'] + ".adoc"
             if tab_key == 'pico-sdk' and newsubitem['title'] == "Introduction":
                 newsubitem['imagepath'] = os.path.join('/images', 'full-sized/SDK-Intro.png')
             else:
