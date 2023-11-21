@@ -281,21 +281,6 @@ def fix_internal_links(root, html_file, updated_links):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return root, updated_links
 
-def find_item_in_dict(k,v,filename):
-  found = False
-  try:
-    if k == filename:
-      found = True
-    elif len(v) > 0:
-      for sk, sv in v.items():
-        found = find_item_in_dict(sk,sv,filename)
-        if found == True:
-          break
-  except Exception as e:
-    exc_type, exc_obj, exc_tb = sys.exc_info()
-    print("ERROR: ", e, exc_tb.tb_lineno)
-  return found
-
 def make_filename_id(filename):
   my_id = filename
   try:
@@ -312,22 +297,22 @@ def find_item_in_toc(h_json, filename):
     found = False
     matching_file = None
     for item in h_json:
-      if "html" in item and item["html"] == filename:
-        matching_file = item["html"]
-        found = True
-        break
-      elif "subitems" in item:
-        matching_file, found = find_item_in_toc(item["subitems"], filename)
+      if found == False:
+        if "html" in item and item["html"] == filename:
+          matching_file = item["html"]
+          found = True
+        elif "subitems" in item:
+          matching_file, found = find_item_in_toc(item["subitems"], filename)
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
-  return matching_file, found
 
-def fix_external_links(root, h_json):
+def fix_external_links(adoc, h_json):
   try:
-    matches = root.xpath(".//a[@href]")
+    matches = re.findall("(href=[\"'])([^\s>]*?)([\"'])", adoc)
     for match in matches:
-      href = match.get("href")
+      href = match[1]
+      # href = match.get("href")
       if re.match("^https?:", href) is None and re.match("^#", href) is None:
         filename = href
         target_id = None
@@ -335,22 +320,25 @@ def fix_external_links(root, h_json):
           filename = href.split("#")[0]
           target_id = href.split("#")[1]
         # walk the toc data to find the main html file
-        parent_file, found = find_item_in_toc(h_json, filename)
-        if parent_file is not None:
-          parent_file_dest = re.sub("^group__", "", parent_file)
-          new_href = parent_file_dest
-          if filename != parent_file:
-            if target_id is None:
-              my_id = make_filename_id(filename)
-              new_href = new_href + "#" + my_id
-            else:
-              new_href = new_href + "#" + target_id
-          new_href = re.sub("__", "_", new_href)
-          match.set("href", new_href)
+        val, parent_tree = find_toc_item(h_json, filename, [])
+        if val is not None:
+          parent_file = h_json[parent_tree[0]]["html"]
+          # parent_file, found = find_item_in_toc(h_json, filename)
+          if parent_file is not None:
+            parent_file_dest = re.sub("^group__", "", parent_file)
+            new_href = parent_file_dest
+            if filename != parent_file:
+              if target_id is None:
+                my_id = make_filename_id(filename)
+                new_href = new_href + "#" + my_id
+              else:
+                new_href = new_href + "#" + target_id
+            new_href = re.sub("__", "_", new_href)
+            adoc = re.sub(href, new_href, adoc)
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
-  return root
+  return adoc
 
 def merge_lists(list_type, root):
   try:
@@ -644,32 +632,20 @@ def walk_nested_adoc(item, output_path, level):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return level
 
-# <div class="headertitle"><div class="title">timestamp<div class="ingroups"><a class="el" href="group__high__level.html">High Level APIs</a> &raquo; <a class="el" href="group__pico__time.html">pico_time</a></div></div></div>
-
-# <table class="memberdecls">
-# <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="groups" name="groups"></a>
-# Modules</h2></td></tr>
-# <tr class="memitem:group__sm__config" id="r_group__sm__config"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sm__config.html">sm_config</a></td></tr>
-# <tr class="memdesc:group__sm__config"><td class="mdescLeft">&#160;</td><td class="mdescRight">PIO state machine configuration. <br /></td></tr>
-# <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-# <tr class="memitem:group__pio__instructions" id="r_group__pio__instructions"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pio__instructions.html">pio_instructions</a></td></tr>
-# <tr class="memdesc:group__pio__instructions"><td class="mdescLeft">&#160;</td><td class="mdescRight">PIO instruction encoding. <br /></td></tr>
-# <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-# </table>
-
 def find_toc_item(subitems, path, parent_tree):
   try:
     val = None
     original_tree = parent_tree.copy()
     for ix, item in enumerate(subitems):
-      parent_tree.append(ix)
-      if "html" in item and item["html"] == path:
-        val = item
-        break
-      elif "subitems" in item:
-        val, parent_tree = find_toc_item(item["subitems"], path, parent_tree)
       if val is None:
-        parent_tree = original_tree.copy()
+        parent_tree.append(ix)
+        if "html" in item and item["html"] == path:
+          val = item
+          print("FOUND!")
+        elif "subitems" in item:
+          val, parent_tree = find_toc_item(item["subitems"], path, parent_tree)
+        if val is None:
+          parent_tree = original_tree.copy()
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
@@ -723,7 +699,7 @@ def check_toc_level(h_json, html_file, root):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return h_json
 
-def parse_indiviual_file(html_path, html_file, complete_json_mappings, updated_links, h_json):
+def parse_individual_file(html_path, html_file, complete_json_mappings, updated_links, h_json):
   try:
     # create the full path
     this_path = os.path.join(html_path, html_file)
@@ -750,7 +726,6 @@ def parse_indiviual_file(html_path, html_file, complete_json_mappings, updated_l
         root = transform_element(item, root)
     # fix links
     root, updated_links = fix_internal_links(root, html_file, updated_links)
-    root = fix_external_links(root, h_json)
     # cleanup
     root = merge_lists("ul", root)
     root = merge_lists("ol", root)
@@ -795,19 +770,13 @@ def handler(html_path, output_path, header_path, output_json):
     html_files = [f for f in html_files if re.search(".html", f) is not None]
     # sort the files ascending
     html_files.sort()
-    # collect the TOC data
-    # toc_file = os.path.join(html_path, "modules.html")
-    # if os.path.exists(toc_file):
-    #   with open(toc_file) as h:
-    #     toc_root = etree.HTML(h.read())
-    #   toc_data, toc_list = parse_toc(toc_root)
     # process every html file
     updated_links = {}
 
     for html_file in html_files:
       this_output_path = os.path.join(output_path, html_file)
       # parse the file
-      adoc, h_json = parse_indiviual_file(html_path, html_file, complete_json_mappings, updated_links, h_json)
+      adoc, h_json = parse_individual_file(html_path, html_file, complete_json_mappings, updated_links, h_json)
       # write the final adoc file
       adoc_path = re.sub(".html$", ".adoc", this_output_path)
       write_output(adoc_path, adoc)
@@ -829,10 +798,11 @@ def handler(html_path, output_path, header_path, output_json):
       this_path = os.path.join(output_path, adoc_file)
       with open(this_path) as h:
         content = h.read()
-      src_html_file = re.sub(".adoc", ".html", adoc_file)
+      # fix links
+      content = fix_external_links(content, h_json)
       # fix heading levels for non-included pages
+      src_html_file = re.sub(".adoc", ".html", adoc_file)
       if src_html_file not in toc_list:
-        print(src_html_file)
         adoc = decrease_heading_levels(adoc)
       for link in updated_links:
         content = re.sub(link, updated_links[link], content)
