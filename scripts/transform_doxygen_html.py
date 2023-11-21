@@ -431,8 +431,8 @@ def fix_heading_levels(root):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return root
 
-def get_document_title(root):
-  title_text = ""
+def get_document_title(root, html_file):
+  title_text = re.sub(".html", "", html_file)
   try:
     title = root.find(".//div[@class='headertitle']/div[@class='title']")
     if title is not None:
@@ -765,7 +765,7 @@ def parse_indiviual_file(html_path, html_file, complete_json_mappings, updated_l
     # cleanup
     root = strip_attribute("data-processed", root)
     # get the document title
-    title_text = get_document_title(root)
+    title_text = get_document_title(root, html_file)
     # get only the relevant content
     contents = root.find(".//div[@class='contents']")
     # prep and write the adoc
@@ -808,10 +808,6 @@ def handler(html_path, output_path, header_path, output_json):
       this_output_path = os.path.join(output_path, html_file)
       # parse the file
       adoc, h_json = parse_indiviual_file(html_path, html_file, complete_json_mappings, updated_links, h_json)
-      # fix heading levels for non-included pages
-      # MOVED BELOW
-      # if html_file not in toc_list:
-      #   adoc = decrease_heading_levels(adoc)
       # write the final adoc file
       adoc_path = re.sub(".html$", ".adoc", this_output_path)
       write_output(adoc_path, adoc)
@@ -834,7 +830,9 @@ def handler(html_path, output_path, header_path, output_json):
       with open(this_path) as h:
         content = h.read()
       src_html_file = re.sub(".adoc", ".html", adoc_file)
+      # fix heading levels for non-included pages
       if src_html_file not in toc_list:
+        print(src_html_file)
         adoc = decrease_heading_levels(adoc)
       for link in updated_links:
         content = re.sub(link, updated_links[link], content)
