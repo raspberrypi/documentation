@@ -50,7 +50,7 @@ WARNING: If you have more than one storage device connected to your computer, _b
 
 image::images/imager/choose-storage.png[alt="Storage selection options in Imager."]
 
-Next, click **Write**.
+Next, click **Next**.
 
 image::images/imager/os-customisation-prompt.png[alt="Imager prompt to open OS customisation menu."]
 
