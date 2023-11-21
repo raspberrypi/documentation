@@ -641,7 +641,6 @@ def find_toc_item(subitems, path, parent_tree):
         parent_tree.append(ix)
         if "html" in item and item["html"] == path:
           val = item
-          print("FOUND!")
         elif "subitems" in item:
           val, parent_tree = find_toc_item(item["subitems"], path, parent_tree)
         if val is None:
