@@ -849,7 +849,7 @@ For bench power supplies (e.g. connected to the GPIO header) define `PSU_MAX_CUR
 
 `rpi_power_supply` - 2 32-bit integers
 
-The USB VID and PID of the official Raspberry Pi 5A power supply (if connected).
+The USB VID and Product VDO of the official Raspberry Pi 5A power supply (if connected).
 
 `usb_max_current_enable` - 32-bit integer
 
