@@ -834,10 +834,6 @@ The partition number used during boot. If a `boot.img` ramdisk is loaded then th
 
 The value of the `PM_RSTS` register during boot.
 
-`rpi_power_supply` - 2 32-bit integers
-
-The USB VID and PID of the official Raspberry Pi 5A power supply (if connected).
-
 `tryboot` - 32-bit integer
 
 Set to `1` if the `tryboot` flag was set at boot.
@@ -848,8 +844,12 @@ Raspberry Pi 5 only.
 
 `max_current` - 32-bit integer
 
-The maximum current in mA that the power supply can supply. The firmware reports the value indicated by the USB-C, USB-PD or POE interfaces.
+The maximum current in mA that the power supply can supply. The firmware reports the value indicated by the USB-C, USB-PD or PoE interfaces.
 For bench power supplies (e.g. connected to the GPIO header) define `PSU_MAX_CURRENT` in the bootloader configuration to indicate the power supply current capability.
+
+`rpi_power_supply` - 2 32-bit integers
+
+The USB VID and Product VDO of the official Raspberry Pi 5A power supply (if connected).
 
 `usb_max_current_enable` - 32-bit integer
 
