@@ -88,7 +88,7 @@ The secondary UART is not normally present on the GPIO connector. By default, th
 
 === Primary and Secondary UART
 
-The following table summarises the assignment of the first two UARTs:
+The following table summarises the assignment of UARTs on various Raspberry Pi devices:
 
 |===
 | Model | Primary | Secondary | Bluetooth
