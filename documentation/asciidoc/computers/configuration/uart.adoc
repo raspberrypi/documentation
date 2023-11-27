@@ -84,6 +84,8 @@ dtoverlay=uart1,txd1_pin=32,rxd1_pin=33
 
 On the Raspberry Pi, one UART is selected to be present on GPIO 14 (transmit) and 15 (receive) - this is the primary UART. By default, this will also be the UART on which a Linux console may be present. Note that GPIO 14 is pin 8 on the GPIO header, while GPIO 15 is pin 10.
 
+On the Raspberry Pi 5, the primary UART appears on the Debug header.
+
 === Secondary UART
 
 The secondary UART is not normally present on the GPIO connector. By default, the secondary UART is connected to the Bluetooth side of the combined wireless LAN/Bluetooth controller, on models which contain this controller.
@@ -124,8 +126,8 @@ The following table summarises the assignment of UARTs on various Raspberry Pi d
 | UART0
 
 | Raspberry Pi 5
-| UART1
-| UART0
+| UART10
+| <dedicated UART>
 |===
 
 Linux devices on Raspberry Pi OS:
@@ -144,6 +146,9 @@ Linux devices on Raspberry Pi OS:
 
 | `/dev/serial1`
 | secondary UART
+
+| `/dev/ttyAMA10`
+| Raspberry Pi 5 Debug UART
 |===
 
 `/dev/serial0` and `/dev/serial1` are symbolic links which point to either `/dev/ttyS0` or `/dev/ttyAMA0`.
