@@ -4,30 +4,6 @@ There are two types of UART available on the Raspberry Pi -  http://infocenter.a
 
 All UARTs on the Raspberry Pi are 3.3V only - damage will occur if they are connected to 5V systems. An adaptor can be used to connect to 5V systems. Alternatively, low-cost USB to 3.3V serial adaptors are available from various third parties.
 
-=== Raspberry Pi 5
-
-The Raspberry Pi 5 has an additional four PL011s, which are disabled by default:
-
-|===
-| Name | Type
-
-| UART0
-| PL011
-
-| UART1
-| PL011
-
-| UART2
-| PL011
-
-| UART3
-| PL011
-
-| UART4
-| PL011
-
-|===
-
 === Raspberry Pi Zero, 1, 2 and 3
 
 The Raspberry Pi Zero, 1, 2, and 3 each contain two UARTs as follows:
@@ -42,7 +18,7 @@ The Raspberry Pi Zero, 1, 2, and 3 each contain two UARTs as follows:
 | mini UART
 |===
 
-=== Raspberry Pi 4 and 400 
+=== Raspberry Pi 4 and 400
 
 The Raspberry Pi 4 Model B and 400 have an additional four PL011s, which are disabled by default:
 
@@ -67,6 +43,32 @@ The Raspberry Pi 4 Model B and 400 have an additional four PL011s, which are dis
 | UART5
 | PL011
 |===
+
+=== Raspberry Pi 5
+
+The Raspberry Pi 5 has an additional four PL011s, which are disabled by default:
+
+|===
+| Name | Type
+
+| UART0
+| PL011
+
+| UART1
+| PL011
+
+| UART2
+| PL011
+
+| UART3
+| PL011
+
+| UART4
+| PL011
+
+|===
+
+The Raspberry Pi 5 does not have mini UART.
 
 === CM1, CM3, CM3+ and CM4
 
