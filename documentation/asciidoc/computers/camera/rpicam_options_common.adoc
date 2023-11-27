@@ -432,7 +432,7 @@ The following denoise modes are supported:
 
 * `cdn_off` - Disables colour denoise.
 
-* `cdn_fast` - Uses fast color denoise.
+* `cdn_fast` - Uses fast colour denoise.
 
 * `cdn_hq` - Uses high quality colour denoise. Not appropriate for video/viewfinder due to reduced throughput.
 
