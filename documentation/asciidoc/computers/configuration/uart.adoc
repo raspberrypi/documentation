@@ -93,47 +93,39 @@ The secondary UART is not normally present on the GPIO connector. By default, th
 The following table summarises the assignment of UARTs on various Raspberry Pi devices:
 
 |===
-| Model | Primary | Secondary | Bluetooth
+| Model | Primary/console | Secondary/Bluetooth
 
 | Raspberry Pi Zero
 | UART0
 | UART1
-| -
 
 | Raspberry Pi Zero W / Raspberry Pi Zero 2 W
 | UART1
 | UART0
-| UART1
 
 | Raspberry Pi 1
 | UART0
 | UART1
-| -
 
 | Raspberry Pi 2
 | UART0
 | UART1
-| -
 
 | Raspberry Pi 3
 | UART1
 | UART0
-| UART1
 
 | Compute Module 3 & 3+
 | UART0
 | UART1
-| -
 
 | Raspberry Pi 4
 | UART1
 | UART0
-| UART1
 
 | Raspberry Pi 5
 | UART1
 | UART0
-| -
 |===
 
 Linux devices on Raspberry Pi OS:
@@ -163,7 +155,7 @@ On the Raspberry Pi 5, `/dev/serial0` is a symbolic link that points to `/dev/tt
 dtparam=krnbt=off
 ----
 
-TIP: This option may not work on all models in the future.
+TIP: This option may not work on all models in the future. Only use this option if there is no other alternative for your use case.
 
 === Mini-UART and CPU Core Frequency
 
