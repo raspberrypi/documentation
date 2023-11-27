@@ -6,7 +6,7 @@ All UARTs on the Raspberry Pi are 3.3V only - damage will occur if they are conn
 
 === Raspberry Pi 5
 
-On the Raspberry Pi 5, the primary UART is the mini UART port. The Raspberry Pi 5 also has an additional four PL011s, which are disabled by default:
+The Raspberry Pi 5 has an additional four PL011s, which are disabled by default:
 
 |===
 | Name | Type
@@ -15,7 +15,7 @@ On the Raspberry Pi 5, the primary UART is the mini UART port. The Raspberry Pi 
 | PL011
 
 | UART1
-| mini UART
+| PL011
 
 | UART2
 | PL011
@@ -26,8 +26,6 @@ On the Raspberry Pi 5, the primary UART is the mini UART port. The Raspberry Pi 
 | UART4
 | PL011
 
-| UART5
-| PL011
 |===
 
 === Raspberry Pi Zero, 1, 2 and 3
@@ -93,42 +91,48 @@ The secondary UART is not normally present on the GPIO connector. By default, th
 The following table summarises the assignment of the first two UARTs:
 
 |===
-| Model | first PL011 (UART0) | mini UART
+| Model | Primary | Secondary | Bluetooth
 
 | Raspberry Pi Zero
-| primary
-| secondary
+| UART0
+| UART1
+| -
 
 | Raspberry Pi Zero W / Raspberry Pi Zero 2 W
-| secondary (Bluetooth)
-| primary
+| UART1
+| UART0
+| UART1
 
 | Raspberry Pi 1
-| primary
-| secondary
+| UART0
+| UART1
+| -
 
 | Raspberry Pi 2
-| primary
-| secondary
+| UART0
+| UART1
+| -
 
 | Raspberry Pi 3
-| secondary (Bluetooth)
-| primary
+| UART1
+| UART0
+| UART1
 
 | Compute Module 3 & 3+
-| primary
-| secondary
+| UART0
+| UART1
+| -
 
 | Raspberry Pi 4
-| secondary (Bluetooth)
-| primary
+| UART1
+| UART0
+| UART1
 
 | Raspberry Pi 5
-| secondary (Bluetooth)
-| primary
+| UART1
+| UART0
+| -
 |===
-
-NOTE: The mini UART is disabled by default, whether it is designated primary or secondary UART.
 
 Linux devices on Raspberry Pi OS:
 
@@ -150,14 +154,18 @@ Linux devices on Raspberry Pi OS:
 
 `/dev/serial0` and `/dev/serial1` are symbolic links which point to either `/dev/ttyS0` or `/dev/ttyAMA0`.
 
-On the Raspberry Pi 5 `serial0` maps by default to `/dev/ttyAMA10`. Due to changes in Bookworm, `/dev/serial1` does not exist by default. You can enable `serial1` by setting the following values in `confix.txt`:
+On the Raspberry Pi 5, `/dev/serial0` is a symbolic link that points to `/dev/ttyAMA10`. Due to changes in Bookworm, `/dev/serial1` does not exist by default on the Raspberry Pi 5. You can enable `serial1` by setting the following values in `confix.txt`:
 
 [source,bash]
 ----
 dtparam=krnbt=off
 ----
 
+TIP: This option may not work on all models in the future.
+
 === Mini-UART and CPU Core Frequency
+
+NOTE: The mini UART is disabled by default if it is the primary or when Bluetooth is disabled.
 
 In order to use the mini UART, you need to configure the Raspberry Pi to use a fixed VPU core clock frequency. This is because the mini UART clock is linked to the VPU core clock, so that when the core clock frequency changes, the UART baud rate will also change. The `enable_uart` and `core_freq` settings can be added to `config.txt` to change the behaviour of the mini UART. The following table summarises the possible combinations:
 
@@ -208,7 +216,13 @@ By default, the primary UART is assigned to the Linux console. If you wish to us
 
 Although the Linux kernel starts the UARTs relatively early in the boot process, it is still long after some critical bits of infrastructure have been set up. A failure in those early stages can be hard to diagnose without access to the kernel log messages from that time. To enable `earlycon` support for one of the UARTs, add one of the following options to `cmdline.txt`, depending on which UART is the primary:
 
-For Raspberry Pi 5, 4, 400 and Compute Module 4:
+For Raspberry Pi 5, `earlycon` output only appears on the 3-pin debug connector with the following configuration:
+
+----
+earlycon=pl011,0x107d001000,115200n8
+----
+
+For Raspberry Pi 4, 400 and Compute Module 4:
 
 ----
 earlycon=uart8250,mmio32,0xfe215040
