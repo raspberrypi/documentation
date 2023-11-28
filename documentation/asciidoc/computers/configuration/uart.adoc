@@ -153,7 +153,9 @@ Linux devices on Raspberry Pi OS:
 
 `/dev/serial0` and `/dev/serial1` are symbolic links which point to either `/dev/ttyS0` or `/dev/ttyAMA0`.
 
-On the Raspberry Pi 5, `/dev/serial0` is a symbolic link that points to `/dev/ttyAMA10`. Due to changes in Bookworm, `/dev/serial1` does not exist by default on the Raspberry Pi 5. You can re-enable `serial1` by setting the following values in `config.txt`:
+On the Raspberry Pi 5, `/dev/serial0` is a symbolic link that points to `/dev/ttyAMA10`.
+
+Due to changes in Bookworm, `/dev/serial1` does not exist by default. You can re-enable `serial1` by setting the following values in `config.txt`:
 
 [source,bash]
 ----
