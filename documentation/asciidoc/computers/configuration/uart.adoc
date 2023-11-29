@@ -18,9 +18,9 @@ The Raspberry Pi Zero, 1, 2, and 3 each contain two UARTs as follows:
 | mini UART
 |===
 
-=== Raspberry Pi 4 and 400 
+=== Raspberry Pi 4 and 400
 
-The Raspberry Pi 4B and 400 have an additional four PL011s, which are disabled by default:
+The Raspberry Pi 4 Model B and 400 have an additional four PL011s, which are disabled by default:
 
 |===
 | Name | Type
@@ -44,6 +44,32 @@ The Raspberry Pi 4B and 400 have an additional four PL011s, which are disabled b
 | PL011
 |===
 
+=== Raspberry Pi 5
+
+The Raspberry Pi 5 has an additional four PL011s, which are disabled by default:
+
+|===
+| Name | Type
+
+| UART0
+| PL011
+
+| UART1
+| PL011
+
+| UART2
+| PL011
+
+| UART3
+| PL011
+
+| UART4
+| PL011
+
+|===
+
+The Raspberry Pi 5 does not have mini UART.
+
 === CM1, CM3, CM3+ and CM4
 
 The first generation Compute Module, together with Compute Module 3 and Compute Module 3+ each have two UARTs, while Compute Module 4 has six UARTs as described above.
@@ -58,47 +84,51 @@ dtoverlay=uart1,txd1_pin=32,rxd1_pin=33
 
 On the Raspberry Pi, one UART is selected to be present on GPIO 14 (transmit) and 15 (receive) - this is the primary UART. By default, this will also be the UART on which a Linux console may be present. Note that GPIO 14 is pin 8 on the GPIO header, while GPIO 15 is pin 10.
 
+On the Raspberry Pi 5, the primary UART appears on the Debug header.
+
 === Secondary UART
 
 The secondary UART is not normally present on the GPIO connector. By default, the secondary UART is connected to the Bluetooth side of the combined wireless LAN/Bluetooth controller, on models which contain this controller.
 
 === Primary and Secondary UART
 
-The following table summarises the assignment of the first two UARTs:
+The following table summarises the assignment of UARTs on various Raspberry Pi devices:
 
 |===
-| Model | first PL011 (UART0) | mini UART
+| Model | Primary/console | Secondary/Bluetooth
 
 | Raspberry Pi Zero
-| primary
-| secondary
+| UART0
+| UART1
 
 | Raspberry Pi Zero W / Raspberry Pi Zero 2 W
-| secondary (Bluetooth)
-| primary
+| UART1
+| UART0
 
 | Raspberry Pi 1
-| primary
-| secondary
+| UART0
+| UART1
 
 | Raspberry Pi 2
-| primary
-| secondary
+| UART0
+| UART1
 
 | Raspberry Pi 3
-| secondary (Bluetooth)
-| primary
+| UART1
+| UART0
 
 | Compute Module 3 & 3+
-| primary
-| secondary
+| UART0
+| UART1
 
 | Raspberry Pi 4
-| secondary (Bluetooth)
-| primary
-|===
+| UART1
+| UART0
 
-NOTE: The mini UART is disabled by default, whether it is designated primary or secondary UART.
+| Raspberry Pi 5
+| UART10
+| <dedicated UART>
+|===
 
 Linux devices on Raspberry Pi OS:
 
@@ -116,11 +146,27 @@ Linux devices on Raspberry Pi OS:
 
 | `/dev/serial1`
 | secondary UART
+
+| `/dev/ttyAMA10`
+| Raspberry Pi 5 Debug UART
 |===
 
-NOTE: `/dev/serial0` and `/dev/serial1` are symbolic links which point to either `/dev/ttyS0` or `/dev/ttyAMA0`.
+`/dev/serial0` and `/dev/serial1` are symbolic links which point to either `/dev/ttyS0` or `/dev/ttyAMA0`.
+
+On the Raspberry Pi 5, `/dev/serial0` is a symbolic link that points to `/dev/ttyAMA10`.
+
+Due to changes in Bookworm, `/dev/serial1` does not exist by default. You can re-enable `serial1` by setting the following values in `config.txt`:
+
+[source,bash]
+----
+dtparam=krnbt=off
+----
+
+TIP: This option may not work on all models in the future. Only use this option if there is no other alternative for your use case.
 
 === Mini-UART and CPU Core Frequency
+
+NOTE: The mini UART is disabled by default if it is the primary or when Bluetooth is disabled.
 
 In order to use the mini UART, you need to configure the Raspberry Pi to use a fixed VPU core clock frequency. This is because the mini UART clock is linked to the VPU core clock, so that when the core clock frequency changes, the UART baud rate will also change. The `enable_uart` and `core_freq` settings can be added to `config.txt` to change the behaviour of the mini UART. The following table summarises the possible combinations:
 
@@ -170,6 +216,12 @@ By default, the primary UART is assigned to the Linux console. If you wish to us
 === Enabling Early Console for Linux
 
 Although the Linux kernel starts the UARTs relatively early in the boot process, it is still long after some critical bits of infrastructure have been set up. A failure in those early stages can be hard to diagnose without access to the kernel log messages from that time. To enable `earlycon` support for one of the UARTs, add one of the following options to `cmdline.txt`, depending on which UART is the primary:
+
+For Raspberry Pi 5, `earlycon` output only appears on the 3-pin debug connector with the following configuration:
+
+----
+earlycon=pl011,0x107d001000,115200n8
+----
 
 For Raspberry Pi 4, 400 and Compute Module 4:
 
