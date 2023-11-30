@@ -21,7 +21,7 @@ You need to be running OpenOCD version 0.11.0 or 0.12.0 to have support for the 
 Start by installing needed dependencies, 
 
 ----
-$ sudo apt install automake autoconf build-essential texinfo libtool libftdi-dev libusb-1.0-0-dev
+$ sudo apt install automake autoconf build-essential texinfo libtool libftdi-dev libusb-1.0-0-dev pkg-config
 ----
 
 and then build OpenOCD.
