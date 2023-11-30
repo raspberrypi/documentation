@@ -40,16 +40,14 @@ Key features include:
 
 === Turning it off and back on again
 
-When you plug your Raspberry Pi into power for the first time it will automatically turn on and boot into the operating system without having to push the button. 
+When you plug your Raspberry Pi into power for the first time, it will automatically turn on and boot into the operating system without having to push the button. 
 
-If you are running the Raspberry Pi Desktop you can initiate a clean shutdown by briefly pressing the power button located on the left-hand side of the board, and then releasing it. This will cause a Desktop menu to appear asking whether you want to Shutdown, Reboot, or Logout. You can select whether you want to shutdown or reboot, or alternatively pressing the power button briefly for a second time will initiate a clean shutdown.
+If you are running the Raspberry Pi Desktop, you can initiate a clean shutdown by briefly pressing the power button located on the left-hand side of the board, and then releasing it. This will cause a Desktop menu to appear asking whether you want to Shutdown, Reboot, or Logout. You can select whether you want to shutdown or reboot, or alternatively pressing the power button briefly for a second time will initiate a clean shutdown.
 
 .Shutting down your Raspberry Pi 5 using the power button.
 image::images/shutdown.jpg[alt="Desktop menu asking whether you want to Shutdown, Reboot, or Logout",width="100%"]
 
-NOTE: If you are running your Raspberry Pi OS with a Desktop you can press the power button twice in quick succession to shutdown. However if you are running your Raspberry Pi OS
-
-If you are running Raspberry Pi OS Lite in headless mode pressing the power button a single time will initiate a shutdown.
+NOTE: If you are running your Raspberry Pi OS with a Desktop, you can press the power button twice in quick succession to shutdown. However, if you are running Raspberry Pi OS Lite in headless mode, pressing the power button a single time will initiate a shutdown.
 
 If you want to force a hard shutdown, you should press and hold the Power Button.
 
