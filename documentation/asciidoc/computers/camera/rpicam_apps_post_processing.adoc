@@ -82,7 +82,7 @@ In summary, the user-configurable parameters fall broadly into three groups: tho
 |===
 | num_frames | The number of frames to accumulate. For DRC (in our terminology) this would take the value 1, but for multi-frame HDR we would suggest a value such as 8.
 | lp_filter_strength | The coefficient of the low pass IIR filter.
-| lp_fiter_threshold | A piecewise linear function that relates the pixel level to the threshold that is regarded as being "meaningful detail".
+| lp_filter_threshold | A piecewise linear function that relates the pixel level to the threshold that is regarded as being "meaningful detail".
 | global_tonemap_points | A list of points in the input image histogram and targets in the output range where we wish to move them. We define an inter-quantile mean (`q` and `width`), a target as a proportion of the full output range (`target`) and maximum and minimum gains by which we are prepared to move the measured inter-quantile mean (as this prevents us from changing an image too drastically).
 | global_tonemap_strength | Strength of application of the global tonemap.
 | local_pos_strength | A piecewise linear function that defines the gain applied to local contrast when added back to the tonemapped LP image, for positive (bright) detail.

@@ -281,21 +281,6 @@ def fix_internal_links(root, html_file, updated_links):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return root, updated_links
 
-def find_item_in_dict(k,v,filename):
-  found = False
-  try:
-    if k == filename:
-      found = True
-    elif len(v) > 0:
-      for sk, sv in v.items():
-        found = find_item_in_dict(sk,sv,filename)
-        if found == True:
-          break
-  except Exception as e:
-    exc_type, exc_obj, exc_tb = sys.exc_info()
-    print("ERROR: ", e, exc_tb.tb_lineno)
-  return found
-
 def make_filename_id(filename):
   my_id = filename
   try:
@@ -307,33 +292,27 @@ def make_filename_id(filename):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return my_id
 
-def find_item_in_toc(toc_data, filename):
+def find_item_in_toc(h_json, filename):
   try:
     found = False
     matching_file = None
-    for item in toc_data:
-      if item == filename:
-        matching_file = item
-        found = True
-        break
-      else:
-        for k, v in toc_data[item].items():
-          found = find_item_in_dict(k,v,filename)
-          if found == True:
-            matching_file = item
-            break
-        if found == True:
-          break
+    for item in h_json:
+      if found == False:
+        if "html" in item and item["html"] == filename:
+          matching_file = item["html"]
+          found = True
+        elif "subitems" in item:
+          matching_file, found = find_item_in_toc(item["subitems"], filename)
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
-  return matching_file
 
-def fix_external_links(root, toc_data):
+def fix_external_links(adoc, h_json):
   try:
-    matches = root.xpath(".//a[@href]")
+    matches = re.findall("(href=[\"'])([^\s>]*?)([\"'])", adoc)
     for match in matches:
-      href = match.get("href")
+      href = match[1]
+      # href = match.get("href")
       if re.match("^https?:", href) is None and re.match("^#", href) is None:
         filename = href
         target_id = None
@@ -341,22 +320,25 @@ def fix_external_links(root, toc_data):
           filename = href.split("#")[0]
           target_id = href.split("#")[1]
         # walk the toc data to find the main html file
-        parent_file = find_item_in_toc(toc_data, filename)
-        if parent_file is not None:
-          parent_file_dest = re.sub("^group__", "", parent_file)
-          new_href = parent_file_dest
-          if filename != parent_file:
-            if target_id is None:
-              my_id = make_filename_id(filename)
-              new_href = new_href + "#" + my_id
-            else:
-              new_href = new_href + "#" + target_id
-          new_href = re.sub("__", "_", new_href)
-          match.set("href", new_href)
+        val, parent_tree = find_toc_item(h_json, filename, [])
+        if val is not None:
+          parent_file = h_json[parent_tree[0]]["html"]
+          # parent_file, found = find_item_in_toc(h_json, filename)
+          if parent_file is not None:
+            parent_file_dest = re.sub("^group__", "", parent_file)
+            new_href = parent_file_dest
+            if filename != parent_file:
+              if target_id is None:
+                my_id = make_filename_id(filename)
+                new_href = new_href + "#" + my_id
+              else:
+                new_href = new_href + "#" + target_id
+            new_href = re.sub("__", "_", new_href)
+            adoc = re.sub(href, new_href, adoc)
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
-  return root
+  return adoc
 
 def merge_lists(list_type, root):
   try:
@@ -437,8 +419,8 @@ def fix_heading_levels(root):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return root
 
-def get_document_title(root):
-  title_text = ""
+def get_document_title(root, html_file):
+  title_text = re.sub(".html", "", html_file)
   try:
     title = root.find(".//div[@class='headertitle']/div[@class='title']")
     if title is not None:
@@ -512,56 +494,30 @@ def decrease_heading_levels(adoc):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return adoc
 
-def make_dict_path(arr, level):
-  try:
-    dict_path_str = ""
-    counter = level
-    while counter >= 0:
-      dict_path_str = "['"+arr[counter]+"']" + dict_path_str
-      counter -= 1
-    dict_path_str = "toc_data" + dict_path_str
-  except Exception as e:
-    exc_type, exc_obj, exc_tb = sys.exc_info()
-    print("ERROR: ", e, exc_tb.tb_lineno)
-  return dict_path_str
+def traverse_subitems(subitems, toc_list):
+  for item in subitems:
+    if "html" in item:
+      toc_list.append(item["html"])
+    if "subitems" in item:
+      toc_list = traverse_subitems(item["subitems"], toc_list)
+  return toc_list
 
-def parse_toc(root):
+def parse_toc(h_json, toc_list):
   try:
-    toc_data = {}
-    toc_list = {}
-    parents = []
-    items = root.findall(".//a[@class='el']")
-    for item in items:
-      href = item.get("href")
-      target = item.get("target")
-      if target != "_self":
-        continue
-      parent = item.xpath("./ancestor::tr")[-1]
-      parent_id = parent.get("id")
-      level = len(parent_id.split("_"))-2
-      parent_level = level-1
-      if parent_level == 0:
-        # just add it to the main tree
-        toc_data[href] = {}
-      else:
-        # add it as a child at the correct nesting level
-        cmd = make_dict_path(parents, parent_level-1)
-        cmd = cmd + "[href] = {}"
-        exec(cmd)
-      toc_list[href] = level
-      if len(parents) > level-1:
-        parents[level-1] = href
-      else:
-        parents.append(href)
+    for item in h_json:
+      if "filename" in item:
+        toc_list.append(item["filename"])
+      elif "subitems" in item:
+        toc_list = traverse_subitems(item["subitems"], toc_list)
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
-  return toc_data, toc_list
+  return h_json, toc_list
 
 def parse_header(header_path):
-  h_json = {
-    'index_doxygen': { 'name': 'Introduction', 'description': 'An introduction to the Pico SDK', 'subitems': [] }
-  }
+  h_json = [
+    { 'group_id': 'index_doxygen', 'name': 'Introduction', 'description': 'An introduction to the Pico SDK', 'html': 'index_doxygen.html', 'subitems': [] }
+  ]
   try:
     with open(header_path) as h:
       content = h.read()
@@ -581,7 +537,8 @@ def parse_header(header_path):
           group_desc = re.sub("\n", "", group_desc, re.M)
           group_desc = re.sub("\*", "", group_desc, re.M)
           group_desc = re.sub("^\s", "", group_desc, re.M)
-          h_json[group_id] = { 'name': group_name, 'description': group_desc, 'filename': group_filename, 'subitems': [] }
+          group_json = { 'group_id': group_id, 'name': group_name, 'description': group_desc, 'html': group_filename, 'subitems': [] }
+          h_json.append(group_json)
         else:
           cleaned = item
           cleaned = re.sub("\n*", "", cleaned, re.M)
@@ -590,7 +547,7 @@ def parse_header(header_path):
           val = cleaned.split(" ")[0]
           filename = re.sub("_", "__", val)
           filename = "group__" + filename
-          h_json[group_id]['subitems'].append({ 'name': val, 'file': filename + ".adoc" })
+          group_json['subitems'].append({ 'name': val, 'file': filename + ".adoc", 'html': filename + ".html", 'subitems': [] })
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
@@ -612,11 +569,11 @@ def compile_json_mappings(json_dir, json_files):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return compiled
 
-def compile_includes(my_adoc, output_path, v):
+def compile_includes(my_adoc, output_path, subitems):
   try:
-    for sk, sv in v.items():
+    for item in subitems:
       # append includes directly to the parent file
-      adoc_filename = re.sub("html$", "adoc", sk)
+      adoc_filename = item["file"]
       full_adoc_path = os.path.join(output_path, adoc_filename)
       # read the adoc
       included_content = ""
@@ -624,25 +581,25 @@ def compile_includes(my_adoc, output_path, v):
         included_content = f.read()
       my_adoc += "\n\n"
       my_adoc += included_content
-      if len(sv) > 0:
-        my_adoc = compile_includes(my_adoc, output_path, sv)
+      if "subitems" in item and len(item["subitems"]) > 0:
+        my_adoc = compile_includes(my_adoc, output_path, item["subitems"])
       os.remove(full_adoc_path)
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
   return my_adoc
 
-def walk_json(k, v, group_adoc, output_path):
+def walk_json(item, group_adoc, output_path):
   try:
-    filename = re.sub("html$", "adoc", k)
+    filename = item["file"]
     group_adoc = group_adoc + "include::" + filename + "[]\n\n"
-    if len(v) > 0:
+    if "subitems" in item and len(item["subitems"]) > 0:
       # compile includes into a single file
       my_adoc = ""
       my_adoc_path = os.path.join(output_path, filename)
       with open(my_adoc_path) as f:
         my_adoc = f.read()
-      my_adoc = compile_includes(my_adoc, output_path, v)
+      my_adoc = compile_includes(my_adoc, output_path, item["subitems"])
       # write the new file
       write_output(my_adoc_path, my_adoc)
   except Exception as e:
@@ -650,12 +607,13 @@ def walk_json(k, v, group_adoc, output_path):
     print("ERROR: ", e, exc_tb.tb_lineno)
   return group_adoc
 
-def walk_nested_adoc(k, v, output_path, level):
+def walk_nested_adoc(item, output_path, level):
   try:
     # only adjust nested items
     if level > 1:
       # read the adoc file
-      adoc_path = re.sub(".html$", ".adoc", k)
+      # not all items in the json have an adoc path
+      adoc_path = re.sub(".html$", ".adoc", item["html"])
       filepath = os.path.join(output_path, adoc_path)
       with open(filepath) as f:
         content = f.read()
@@ -663,18 +621,84 @@ def walk_nested_adoc(k, v, output_path, level):
       for i in range(level-1):
         subs = subs + "="
       content = re.sub("^=", subs, content, flags=re.M)
-      # print(content)
       write_output(filepath, content)
       # adjust the heading levels
-    for sk,sv in v.items():
-      newlevel = level + 1
-      newlevel = walk_nested_adoc(sk, sv, output_path, newlevel)
+    if "subitems" in item:
+      for subitem in item["subitems"]:
+        newlevel = level + 1
+        newlevel = walk_nested_adoc(subitem, output_path, newlevel)
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
   return level
 
-def parse_indiviual_file(html_path, html_file, complete_json_mappings, updated_links, toc_data):
+def find_toc_item(subitems, path, parent_tree):
+  try:
+    val = None
+    original_tree = parent_tree.copy()
+    for ix, item in enumerate(subitems):
+      if val is None:
+        parent_tree.append(ix)
+        if "html" in item and item["html"] == path:
+          val = item
+        elif "subitems" in item:
+          val, parent_tree = find_toc_item(item["subitems"], path, parent_tree)
+        if val is None:
+          parent_tree = original_tree.copy()
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return val, parent_tree
+
+def check_toc_level(h_json, html_file, root):
+  try:
+    # check for the Modules table
+    tables = root.xpath(".//table[@class='memberdecls' and ./tr/td/h2[contains(text(),'Modules')]]")
+    if len(tables) > 0:
+      table = tables[0]
+      modules = table.xpath(".//tr[contains(@class, 'memitem:')]//a")
+      modules = [f.get("href") for f in modules]
+      # also collect this file's parents
+      header = root.find(".//div[@class='headertitle']")
+      outer_parents = []
+      if header is not None:
+        h_parents = header.findall(".//div[@class='ingroups']/a")
+        for h_item in h_parents:
+          outer_parents.append(h_item.get("href"))
+      outer_parents.append(html_file)
+      
+      # first check the outer parents to find our starting point
+      level = h_json
+      for ix, parent in enumerate(outer_parents):
+        #for toc_item in level:
+        val, parent_tree = find_toc_item(level, parent, [])
+        if val is not None:
+          for n in parent_tree:
+            level = level[n]
+          if "subitems" not in level:
+            level["subitems"] = []
+          level = level["subitems"]
+        # create each toc level as needed
+        elif ix > 0:
+          new_subitem = {'name': re.sub(".html", "", parent), 'file': re.sub(".html", ".adoc", parent), 'html': parent, 'subitems': []}
+          level.append(new_subitem)
+          level = new_subitem["subitems"]
+      
+      # then check all the modules
+      for ix, module in enumerate(modules):
+        found = False
+        for toc_item in level:
+          if "html" in toc_item and toc_item["html"] == module:
+            found = True
+            break
+        if found == False:
+          level.append({'name': re.sub(".html", "", module), 'file': re.sub(".html", ".adoc", module), 'html': module, 'subitems': []})
+  except Exception as e:
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    print("ERROR: ", e, exc_tb.tb_lineno)
+  return h_json
+
+def parse_individual_file(html_path, html_file, complete_json_mappings, updated_links, h_json):
   try:
     # create the full path
     this_path = os.path.join(html_path, html_file)
@@ -692,6 +716,8 @@ def parse_indiviual_file(html_path, html_file, complete_json_mappings, updated_l
     
     # give everything an id
     root = add_ids(root, html_file)
+    # first check to see if this should be in the toc list
+    h_json = check_toc_level(h_json, html_file, root)
     # loop over each json file
     skip = ["table_memname.json"]
     for mapping in complete_json_mappings:
@@ -699,7 +725,6 @@ def parse_indiviual_file(html_path, html_file, complete_json_mappings, updated_l
         root = transform_element(item, root)
     # fix links
     root, updated_links = fix_internal_links(root, html_file, updated_links)
-    root = fix_external_links(root, toc_data)
     # cleanup
     root = merge_lists("ul", root)
     root = merge_lists("ol", root)
@@ -714,7 +739,7 @@ def parse_indiviual_file(html_path, html_file, complete_json_mappings, updated_l
     # cleanup
     root = strip_attribute("data-processed", root)
     # get the document title
-    title_text = get_document_title(root)
+    title_text = get_document_title(root, html_file)
     # get only the relevant content
     contents = root.find(".//div[@class='contents']")
     # prep and write the adoc
@@ -723,7 +748,7 @@ def parse_indiviual_file(html_path, html_file, complete_json_mappings, updated_l
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
-  return adoc
+  return adoc, h_json
 
 def handler(html_path, output_path, header_path, output_json):
   try:
@@ -733,7 +758,6 @@ def handler(html_path, output_path, header_path, output_json):
     output_dir = os.path.realpath(output_path)
     # get the file order and groupings
     h_json = parse_header(header_path)
-    toc_data = None
     # read the json transform mappings:
     # get all the json files within a specified directory
     json_files = os.listdir(json_dir)
@@ -745,31 +769,26 @@ def handler(html_path, output_path, header_path, output_json):
     html_files = [f for f in html_files if re.search(".html", f) is not None]
     # sort the files ascending
     html_files.sort()
-    # get the TOC data
-    toc_file = os.path.join(html_path, "modules.html")
-    if os.path.exists(toc_file):
-      with open(toc_file) as h:
-        toc_root = etree.HTML(h.read())
-      toc_data, toc_list = parse_toc(toc_root)
     # process every html file
     updated_links = {}
+
     for html_file in html_files:
       this_output_path = os.path.join(output_path, html_file)
       # parse the file
-      adoc = parse_indiviual_file(html_path, html_file, complete_json_mappings, updated_links, toc_data)
-      # fix heading levels for non-included pages
-      if html_file not in toc_list:
-        adoc = decrease_heading_levels(adoc)
+      adoc, h_json = parse_individual_file(html_path, html_file, complete_json_mappings, updated_links, h_json)
       # write the final adoc file
       adoc_path = re.sub(".html$", ".adoc", this_output_path)
       write_output(adoc_path, adoc)
       print("Generated " + adoc_path)
 
+    toc_list = []
+    toc_list = parse_toc(h_json, toc_list)
+
     # adjust nested adoc headings
-    for k,v in toc_data.items():
+    for item in h_json:
       level = 0
       # walk the tree and adjust as necessary
-      level = walk_nested_adoc(k, v, output_path, level)
+      level = walk_nested_adoc(item, output_path, level)
 
     # fix any links that were updated from other files
     adoc_files = os.listdir(output_path)
@@ -778,6 +797,12 @@ def handler(html_path, output_path, header_path, output_json):
       this_path = os.path.join(output_path, adoc_file)
       with open(this_path) as h:
         content = h.read()
+      # fix links
+      content = fix_external_links(content, h_json)
+      # fix heading levels for non-included pages
+      src_html_file = re.sub(".adoc", ".html", adoc_file)
+      if src_html_file not in toc_list:
+        adoc = decrease_heading_levels(adoc)
       for link in updated_links:
         content = re.sub(link, updated_links[link], content)
       write_output(this_path, content)
@@ -785,13 +810,13 @@ def handler(html_path, output_path, header_path, output_json):
     # make the group adoc files
     # include::micropython/what-board.adoc[]
     for item in h_json:
-      group_adoc = "= " + h_json[item]['name'] + "\n\n"
-      group_adoc = group_adoc + h_json[item]['description'] + "\n\n"
-      if 'filename' in h_json[item]:
-        item_filename = h_json[item]['filename']
-        for k,v in toc_data[item_filename].items():
-          group_adoc = walk_json(k,v,group_adoc,output_path)
-      group_output_path = os.path.join(output_path, item + ".adoc")
+      group_adoc = "= " + item['name'] + "\n\n"
+      group_adoc = group_adoc + item['description'] + "\n\n"
+      if 'html' in item:
+        item_filename = item['html']
+        for toc_item in item["subitems"]:
+          group_adoc = walk_json(toc_item,group_adoc,output_path)
+      group_output_path = os.path.join(output_path, item["group_id"] + ".adoc")
       write_output(group_output_path, group_adoc)
     # write the json structure file as well
     write_output(output_json, json.dumps(h_json, indent="\t"))

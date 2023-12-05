@@ -80,14 +80,14 @@ IP4.GATEWAY:                            --
 IP6.GATEWAY:                            --
 ----
 
-This command outputs information about the various network interfaces accessible on your Raspberry Pi. Check the `GENERAL.TYPE` row to see which kind of network interface each block describes. For example, "ethernet" is the ethernet port on your device, and "wifi" refers to the WiFi chip built into some devices. You'll look at different blocks of output to find your IP address depending on the way your device accesses the internet:
+This command outputs information about the various network interfaces accessible on your Raspberry Pi. Check the `GENERAL.TYPE` row to see which kind of network interface each block describes. For example, "ethernet" is the Ethernet port on your device, and "wifi" refers to the Wi-Fi chip built into some devices. You'll look at different blocks of output to find your IP address depending on the way your device accesses the internet:
 
-* if your device connects to the internet using WiFi, check the "wifi" block
-* if your device connects to the internet using the ethernet port, check the "ethernet" block
+* if your device connects to the internet using Wi-Fi, check the "wifi" block
+* if your device connects to the internet using the Ethernet port, check the "ethernet" block
 
 Once you've identified the correct network interface block, look for a field named `IP4.ADDRESS[1]` for an IPv4 address or `IP6.ADDRESS[1]` for an IPv6 address. You can ignore the trailing slash and number (e.g. `/24`) in those fields.
 
-In the example above, the Raspberry Pi uses WiFi to access the internet. Check the block where the `GENERAL.TYPE` field reads "wifi" to find the IP address. In this case, you can access this device using the IPv4 address in the `IP4.ADDRESS[1]` field: `192.168.1.42`.
+In the example above, the Raspberry Pi uses Wi-Fi to access the internet. Check the block where the `GENERAL.TYPE` field reads "wifi" to find the IP address. In this case, you can access this device using the IPv4 address in the `IP4.ADDRESS[1]` field: `192.168.1.42`.
 
 ==== Resolving `raspberrypi.local` with mDNS
 

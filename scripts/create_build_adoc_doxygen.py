@@ -44,11 +44,12 @@ if __name__ == "__main__":
         for tab in data['tabs']:
             if 'from_json' in tab and 'directory' in tab and tab['directory'] == output_subdir:
                 filebase = os.path.splitext(adoc_filename)[0]
-                if filebase in picosdk_data:
-                    index_title = picosdk_data[filebase]['name']
-                else:
-                    index_title = filebase
-                break
+                index_title = filebase
+                picosdk_filename = re.sub("_", "__", filebase)+".html"
+                for item in picosdk_data:
+                    if re.sub("^group__", "", item["html"]) == picosdk_filename:
+                        index_title = item['name']
+                        break
     if index_title is None:
         raise Exception("Couldn't find title for {} in {}".format(os.path.join(output_subdir, adoc_filename), index_json))
 
@@ -59,7 +60,7 @@ if __name__ == "__main__":
     seen_header = False
     with open(src_adoc) as in_fh:
         for line in in_fh.readlines():
-            if line.startswith('== '):
+            if re.match('^=+ ', line) is not None:
                 if not seen_header:
                     seen_header = True
             else:
@@ -75,6 +76,7 @@ if __name__ == "__main__":
 :doctitle: {}
 :page-sub_title: {}
 :sectanchors:
+:figure-caption!:
 
 {}
 """.format(output_subdir, includes_dir, '{} - {}'.format(site_config['title'], index_title), index_title, new_contents))
