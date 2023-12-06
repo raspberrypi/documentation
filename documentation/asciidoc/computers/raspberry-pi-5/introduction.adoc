@@ -42,18 +42,18 @@ Key features include:
 
 When you plug your Raspberry Pi into power for the first time, it will automatically turn on and boot into the operating system without having to push the button. 
 
-If you are running the Raspberry Pi Desktop, you can initiate a clean shutdown by briefly pressing the power button located on the left-hand side of the board, and then releasing it. This will cause a Desktop menu to appear asking whether you want to Shutdown, Reboot, or Logout. You can select whether you want to shutdown or reboot, or alternatively pressing the power button briefly for a second time will initiate a clean shutdown.
+If you run Raspberry Pi Desktop, you can initiate a clean shutdown by briefly pressing the power button. A menu will appear asking whether you want to shutdown, reboot, or logout. Select an option from the menu or press the power button again to initiate a clean shutdown.
 
 .Shutting down your Raspberry Pi 5 using the power button.
 image::images/shutdown.jpg[alt="Desktop menu asking whether you want to Shutdown, Reboot, or Logout",width="100%"]
 
-NOTE: If you are running your Raspberry Pi OS with a Desktop, you can press the power button twice in quick succession to shutdown. However, if you are running Raspberry Pi OS Lite in headless mode, pressing the power button a single time will initiate a shutdown.
+NOTE: If you run Raspberry Pi Desktop, you can press the power button twice in quick succession to shutdown. If you run Raspberry Pi OS Lite without a desktop, press the power button a single time to initiate a shutdown.
 
-If you want to force a hard shutdown, you should press and hold the Power Button.
+To force a hard shutdown, press and hold the power button.
 
-If the Raspberry Pi board is shutdown, but still powered, pressing the power button will restart the board.
+If the Raspberry Pi board is shut down, but still powered, pressing the power button will restart the board.
 
-Default shutdown wattage is around 1 to 1.4W. However this can be decreased by manually editing the EEPROM configuration, `sudo rpi-eeprom-config -e` and change the settings to:
+Default shutdown wattage is around 1 to 1.4W. However this can be decreased by manually editing the EEPROM configurationw with `sudo rpi-eeprom-config -e`. Change the settings to the following:
 
 [source]
 ----
@@ -69,7 +69,7 @@ This should drop the shutdown power consumption to around 0.01W.
 .The J2 jumper
 image::images/j2.jpg[alt="The J2 jumper on Raspberry Pi 5",width="70%"]
 
-The J2 jumper, located between the RTC battery connector and the board edge, is a breakout allowing you to add your own power button to Raspberry Pi 5 by adding a Normally Open (NO) momentary switch bridging the two pads. Briefly closing this switch will perform the same actions as the onboard power button.
+The J2 jumper is located between the RTC battery connector and the board edge. This breakout allows you to add your own power button to Raspberry Pi 5 by adding a Normally Open (NO) momentary switch bridging the two pads. Briefly closing this switch will perform the same actions as the onboard power button.
 
 === Updating your firmware
 
