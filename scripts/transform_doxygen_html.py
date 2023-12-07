@@ -791,6 +791,7 @@ def handler(html_path, output_path, header_path, output_json):
       level = walk_nested_adoc(item, output_path, level)
 
     # fix any links that were updated from other files
+    decrease = ["index.html"]
     adoc_files = os.listdir(output_path)
     adoc_files = [f for f in adoc_files if re.search(".adoc", f) is not None]
     for adoc_file in adoc_files:
