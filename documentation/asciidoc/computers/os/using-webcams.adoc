@@ -11,7 +11,7 @@ First, install the `fswebcam` package:
 sudo apt install fswebcam
 ----
 
-If you are not using the default `pi` user account, you need to add your username to the `video` group, otherwise you will see 'permission denied' errors.
+Next, add your username to the `video` group, otherwise you will see 'permission denied' errors:
 
 [,bash]
 ----
