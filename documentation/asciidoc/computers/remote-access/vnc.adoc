@@ -65,7 +65,7 @@ To connect to your Raspberry Pi, you'll need the following:
 If you don't know the IP address of your device, see xref:remote-access.adoc#ip-address[our instructions on finding your IP address].
 
 1. Download https://tigervnc.org/[TigerVNC]. You can install the latest version from the https://github.com/TigerVNC/tigervnc/releases[Releases page of their GitHub repository]. Click on the link in the latest release, and find the binary for your platform. Windows users should download an `exe`; macOS users should download the `dmg`; Linux users should install the `jar`.
-2. On your client device, launch TigerVNC by double-clicking the binary.
+2. On your client device, launch TigerVNC. On macOS and Windows, you can double-click the binary. On Linux, install java with `sudo apt install default-jre`, then run `java -jar VncViewer-<version>.jar`, replacing the `<version>` placeholder with the version you downloaded. 
 3. In the "VNC server" field, enter the IP address of your Raspberry Pi.
 +
 --
