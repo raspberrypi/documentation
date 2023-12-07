@@ -1,0 +1,4384 @@
+[
+    {
+        "title": "Computers",
+        "path": "/computers/",
+        "toc": [
+            {
+                "path": "/computers/getting-started.html",
+                "title": "Getting started",
+                "sections": [
+                    {
+                        "heading": "Getting started with your Raspberry Pi",
+                        "anchor": "setting-up-your-raspberry-pi",
+                        "subsections": [
+                            {
+                                "heading": "Power Supply",
+                                "anchor": "power-supply"
+                            },
+                            {
+                                "heading": "Boot Media",
+                                "anchor": "sd-cards"
+                            },
+                            {
+                                "heading": "Keyboard",
+                                "anchor": "keyboard"
+                            },
+                            {
+                                "heading": "Mouse",
+                                "anchor": "mouse"
+                            },
+                            {
+                                "heading": "Display",
+                                "anchor": "display"
+                            },
+                            {
+                                "heading": "Audio",
+                                "anchor": "audio"
+                            },
+                            {
+                                "heading": "Networking",
+                                "anchor": "networking"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Install an operating system",
+                        "anchor": "installing-the-operating-system",
+                        "subsections": [
+                            {
+                                "heading": "Install using Imager",
+                                "anchor": "raspberry-pi-imager"
+                            },
+                            {
+                                "heading": "Install over the network",
+                                "anchor": "install-over-the-network"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Set up your Raspberry Pi",
+                        "anchor": "set-up-your-raspberry-pi"
+                    },
+                    {
+                        "heading": "Configuration on first boot",
+                        "anchor": "configuration-on-first-boot",
+                        "subsections": [
+                            {
+                                "heading": "Bluetooth",
+                                "anchor": "bluetooth"
+                            },
+                            {
+                                "heading": "Locale",
+                                "anchor": "locale"
+                            },
+                            {
+                                "heading": "User",
+                                "anchor": "user"
+                            },
+                            {
+                                "heading": "Wi-Fi",
+                                "anchor": "wi-fi"
+                            },
+                            {
+                                "heading": "Browser",
+                                "anchor": "browser"
+                            },
+                            {
+                                "heading": "Software updates",
+                                "anchor": "software-updates"
+                            },
+                            {
+                                "heading": "Finish",
+                                "anchor": "finish"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Next steps",
+                        "anchor": "next-steps",
+                        "subsections": [
+                            {
+                                "heading": "Recommended software",
+                                "anchor": "recommended-software"
+                            },
+                            {
+                                "heading": "Tutorials",
+                                "anchor": "tutorials"
+                            },
+                            {
+                                "heading": "Support",
+                                "anchor": "support"
+                            },
+                            {
+                                "heading": "Further reading",
+                                "anchor": "further-reading"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/computers/raspberry-pi-5.html",
+                "title": "Raspberry Pi 5",
+                "sections": [
+                    {
+                        "heading": "Introduction",
+                        "anchor": "introduction",
+                        "subsections": [
+                            {
+                                "heading": "Turning it off and back on again",
+                                "anchor": "turning-it-off-and-back-on-again"
+                            },
+                            {
+                                "heading": "Updating your firmware",
+                                "anchor": "updating-your-firmware"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Powering Raspberry Pi 5",
+                        "anchor": "powering-raspberry-pi-5",
+                        "subsections": [
+                            {
+                                "heading": "USB boot and power supplies",
+                                "anchor": "usb-boot-and-power-supplies"
+                            },
+                            {
+                                "heading": "Power supplies and Raspberry Pi OS",
+                                "anchor": "power-supplies-and-raspberry-pi-os"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Cooling Raspberry Pi 5",
+                        "anchor": "cooling-raspberry-pi-5",
+                        "subsections": [
+                            {
+                                "heading": "Fan Case",
+                                "anchor": "fan-case"
+                            },
+                            {
+                                "heading": "Active Cooler",
+                                "anchor": "active-cooler"
+                            },
+                            {
+                                "heading": "Thermals",
+                                "anchor": "thermals"
+                            },
+                            {
+                                "heading": "Pinout",
+                                "anchor": "pinout"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Raspberry Pi and GPIO",
+                        "anchor": "raspberry-pi-and-gpio"
+                    },
+                    {
+                        "heading": "Raspberry Pi connector for PCIe",
+                        "anchor": "raspberry-pi-connector-for-pcie",
+                        "subsections": [
+                            {
+                                "heading": "Enabling PCIe",
+                                "anchor": "enabling-pcie"
+                            },
+                            {
+                                "heading": "PCIe Gen 3.0",
+                                "anchor": "pcie-gen-3-0"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "MIPI CSI/DSI connectors",
+                        "anchor": "mipi-csidsi-connectors",
+                        "subsections": [
+                            {
+                                "heading": "Attaching cameras",
+                                "anchor": "attaching-cameras"
+                            },
+                            {
+                                "heading": "Attaching a display",
+                                "anchor": "attaching-a-display"
+                            },
+                            {
+                                "heading": "Using non-Raspberry Pi devices",
+                                "anchor": "using-non-raspberry-pi-devices"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "UART connector",
+                        "anchor": "uart-connector",
+                        "subsections": [
+                            {
+                                "heading": "Creating a serial console",
+                                "anchor": "creating-a-serial-console"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Real Time Clock (RTC)",
+                        "anchor": "real-time-clock-rtc",
+                        "subsections": [
+                            {
+                                "heading": "Adding a backup battery",
+                                "anchor": "adding-a-backup-battery"
+                            },
+                            {
+                                "heading": "Enabling trickle charging",
+                                "anchor": "enabling-trickle-charging"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Power over Ethernet (PoE) connector",
+                        "anchor": "power-over-ethernet-poe-connector"
+                    },
+                    {
+                        "heading": "Schematics and mechanical drawings",
+                        "anchor": "schematics-and-mechanical-drawings"
+                    }
+                ]
+            },
+            {
+                "path": "/computers/os.html",
+                "title": "Raspberry Pi OS",
+                "sections": [
+                    {
+                        "heading": "Introduction",
+                        "anchor": "introduction"
+                    },
+                    {
+                        "heading": "Updating and Upgrading Raspberry Pi OS",
+                        "anchor": "updating-and-upgrading-raspberry-pi-os",
+                        "subsections": [
+                            {
+                                "heading": "Using APT",
+                                "anchor": "using-apt"
+                            },
+                            {
+                                "heading": "Using rpi-update",
+                                "anchor": "rpi-update"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Playing Audio and Video",
+                        "anchor": "playing-audio-and-video",
+                        "subsections": [
+                            {
+                                "heading": "The VLC application",
+                                "anchor": "the-vlc-application"
+                            },
+                            {
+                                "heading": "Playing Audio and Video on Raspberry Pi OS Lite",
+                                "anchor": "playing-audio-and-video-on-raspberry-pi-os-lite"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Using a USB webcam",
+                        "anchor": "using-a-usb-webcam",
+                        "subsections": [
+                            {
+                                "heading": "Basic Usage",
+                                "anchor": "basic-usage"
+                            },
+                            {
+                                "heading": "Automating Image Capture",
+                                "anchor": "automating-image-capture"
+                            },
+                            {
+                                "heading": "Time-Lapse Captures",
+                                "anchor": "time-lapse-captures"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Useful Utilities",
+                        "anchor": "useful-utilities",
+                        "subsections": [
+                            {
+                                "heading": "kmsprint",
+                                "anchor": "kmsprint"
+                            },
+                            {
+                                "heading": "vcgencmd",
+                                "anchor": "vcgencmd"
+                            },
+                            {
+                                "heading": "vclog",
+                                "anchor": "vclog"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Accessibility options",
+                        "anchor": "accessibility-options",
+                        "subsections": [
+                            {
+                                "heading": "Visual aids",
+                                "anchor": "visual-aids"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Python on Raspberry Pi",
+                        "anchor": "python-on-raspberry-pi",
+                        "subsections": [
+                            {
+                                "heading": "Installing Python packages using apt",
+                                "anchor": "installing-python-packages-using-apt"
+                            },
+                            {
+                                "heading": "About Python virtual environments",
+                                "anchor": "about-python-virtual-environments"
+                            },
+                            {
+                                "heading": "Using pip with virtual environments",
+                                "anchor": "using-pip-with-virtual-environments"
+                            },
+                            {
+                                "heading": "Using the Thonny editor",
+                                "anchor": "using-the-thonny-editor"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "GPIO and the 40-pin Header",
+                        "anchor": "gpio-and-the-40-pin-header",
+                        "subsections": [
+                            {
+                                "heading": "Voltages",
+                                "anchor": "voltages"
+                            },
+                            {
+                                "heading": "Outputs",
+                                "anchor": "outputs"
+                            },
+                            {
+                                "heading": "Inputs",
+                                "anchor": "inputs"
+                            },
+                            {
+                                "heading": "More",
+                                "anchor": "more"
+                            },
+                            {
+                                "heading": "GPIO pinout",
+                                "anchor": "gpio-pinout"
+                            },
+                            {
+                                "heading": "Permissions",
+                                "anchor": "permissions"
+                            },
+                            {
+                                "heading": "GPIO in Python",
+                                "anchor": "gpio-in-python"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/computers/configuration.html",
+                "title": "Configuration",
+                "sections": [
+                    {
+                        "heading": "The raspi-config Tool",
+                        "anchor": "raspi-config",
+                        "subsections": [
+                            {
+                                "heading": "List of Options",
+                                "anchor": "menu-options"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "The raspi-config Command Line Interface",
+                        "anchor": "raspi-config-cli",
+                        "subsections": [
+                            {
+                                "heading": "List of Options",
+                                "anchor": "raspi-config-cli-commands"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Configuring Networking",
+                        "anchor": "configuring-networking",
+                        "subsections": [
+                            {
+                                "heading": "Using the Desktop",
+                                "anchor": "using-the-desktop"
+                            },
+                            {
+                                "heading": "Using the Command Line",
+                                "anchor": "wireless-networking-command-line"
+                            },
+                            {
+                                "heading": "Configure DHCP",
+                                "anchor": "configure-dhcp"
+                            },
+                            {
+                                "heading": "Assign a Static IP Address",
+                                "anchor": "assign-a-static-ip-address"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Set up a headless Raspberry Pi",
+                        "anchor": "setting-up-a-headless-raspberry-pi",
+                        "subsections": [
+                            {
+                                "heading": "Connect to a wired network",
+                                "anchor": "connect-to-a-wired-network"
+                            },
+                            {
+                                "heading": "Connect to a wireless network",
+                                "anchor": "connect-to-a-wireless-network"
+                            },
+                            {
+                                "heading": "Remote access",
+                                "anchor": "remote-access"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Host a wireless network on your Raspberry Pi",
+                        "anchor": "host-a-wireless-network-on-your-raspberry-pi",
+                        "subsections": [
+                            {
+                                "heading": "Enable hotspot",
+                                "anchor": "enable-hotspot"
+                            },
+                            {
+                                "heading": "Disable hotspot",
+                                "anchor": "disable-hotspot"
+                            },
+                            {
+                                "heading": "Use your Raspberry Pi as a network bridge",
+                                "anchor": "use-your-raspberry-pi-as-a-network-bridge"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Using a Proxy Server",
+                        "anchor": "using-a-proxy-server",
+                        "subsections": [
+                            {
+                                "heading": "Configuring your Raspberry Pi",
+                                "anchor": "configuring-your-raspberry-pi"
+                            },
+                            {
+                                "heading": "Update the sudoers File",
+                                "anchor": "update-the-sudoers-file"
+                            },
+                            {
+                                "heading": "Reboot your Raspberry Pi",
+                                "anchor": "reboot-your-raspberry-pi"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "HDMI Configuration",
+                        "anchor": "hdmi-configuration"
+                    },
+                    {
+                        "heading": "Setting your display's resolution and rotation",
+                        "anchor": "setting-your-displays-resolution-and-rotation",
+                        "subsections": [
+                            {
+                                "heading": "Setting the desktop environment resolution and rotation",
+                                "anchor": "setting-the-desktop-environment-resolution-and-rotation"
+                            },
+                            {
+                                "heading": "Setting the text console resolution and rotation",
+                                "anchor": "setting-the-text-console-resolution-and-rotation"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Audio Configuration",
+                        "anchor": "audio-configuration",
+                        "subsections": [
+                            {
+                                "heading": "Changing the Audio Output",
+                                "anchor": "changing-the-audio-output"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "External Storage Configuration",
+                        "anchor": "external-storage-configuration",
+                        "subsections": [
+                            {
+                                "heading": "Mounting a Storage Device",
+                                "anchor": "mounting-a-storage-device"
+                            },
+                            {
+                                "heading": "Setting up Automatic Mounting",
+                                "anchor": "setting-up-automatic-mounting"
+                            },
+                            {
+                                "heading": "Unmounting a Storage Device",
+                                "anchor": "unmounting-a-storage-device"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Localising your Raspberry Pi",
+                        "anchor": "localising-your-raspberry-pi",
+                        "subsections": [
+                            {
+                                "heading": "Changing the Language",
+                                "anchor": "changing-the-language"
+                            },
+                            {
+                                "heading": "Configuring the Keyboard",
+                                "anchor": "configuring-the-keyboard"
+                            },
+                            {
+                                "heading": "Changing the Timezone",
+                                "anchor": "changing-the-timezone"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Change the default pin configuration",
+                        "anchor": "change-the-default-pin-configuration",
+                        "subsections": [
+                            {
+                                "heading": "Device pins during boot sequence",
+                                "anchor": "device-pins-during-boot-sequence"
+                            },
+                            {
+                                "heading": "Provide a custom Device Tree blob",
+                                "anchor": "provide-a-custom-device-tree-blob"
+                            },
+                            {
+                                "heading": "Sections of the dt-blob",
+                                "anchor": "sections-of-the-dt-blob"
+                            },
+                            {
+                                "heading": "Clock configuration",
+                                "anchor": "clock-configuration"
+                            },
+                            {
+                                "heading": "Sample Device Tree source file",
+                                "anchor": "sample-device-tree-source-file"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Device Trees, Overlays, and Parameters",
+                        "anchor": "device-trees-overlays-and-parameters",
+                        "subsections": [
+                            {
+                                "heading": "Device Trees",
+                                "anchor": "part1"
+                            },
+                            {
+                                "heading": "Device Tree Overlays",
+                                "anchor": "part2"
+                            },
+                            {
+                                "heading": "Using Device Trees on Raspberry Pi",
+                                "anchor": "part3"
+                            },
+                            {
+                                "heading": "Firmware parameters",
+                                "anchor": "part4"
+                            },
+                            {
+                                "heading": "Troubleshooting",
+                                "anchor": "part5"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "The Kernel Command Line",
+                        "anchor": "the-kernel-command-line",
+                        "subsections": [
+                            {
+                                "heading": "Command Line Options",
+                                "anchor": "command-line-options"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Configuring UARTs",
+                        "anchor": "configuring-uarts",
+                        "subsections": [
+                            {
+                                "heading": "Raspberry Pi Zero, 1, 2 and 3",
+                                "anchor": "raspberry-pi-zero-1-2-and-3"
+                            },
+                            {
+                                "heading": "Raspberry Pi 4 and 400",
+                                "anchor": "raspberry-pi-4-and-400"
+                            },
+                            {
+                                "heading": "Raspberry Pi 5",
+                                "anchor": "raspberry-pi-5"
+                            },
+                            {
+                                "heading": "CM1, CM3, CM3+ and CM4",
+                                "anchor": "cm1-cm3-cm3-and-cm4"
+                            },
+                            {
+                                "heading": "Primary UART",
+                                "anchor": "primary-uart"
+                            },
+                            {
+                                "heading": "Secondary UART",
+                                "anchor": "secondary-uart"
+                            },
+                            {
+                                "heading": "Primary and Secondary UART",
+                                "anchor": "primary-and-secondary-uart"
+                            },
+                            {
+                                "heading": "Mini-UART and CPU Core Frequency",
+                                "anchor": "mini-uart-and-cpu-core-frequency"
+                            },
+                            {
+                                "heading": "Disabling the Linux Serial Console",
+                                "anchor": "disabling-the-linux-serial-console"
+                            },
+                            {
+                                "heading": "Enabling Early Console for Linux",
+                                "anchor": "enabling-early-console-for-linux"
+                            },
+                            {
+                                "heading": "UARTs and Device Tree",
+                                "anchor": "uarts-and-device-tree"
+                            },
+                            {
+                                "heading": "PL011 and mini-UART",
+                                "anchor": "pl011-and-mini-uart"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "LED Warning Flash Codes",
+                        "anchor": "led-warning-flash-codes"
+                    },
+                    {
+                        "heading": "Securing your Raspberry Pi",
+                        "anchor": "securing-your-raspberry-pi",
+                        "subsections": [
+                            {
+                                "heading": "Change the Default Password",
+                                "anchor": "change-the-default-password"
+                            },
+                            {
+                                "heading": "Changing your Username",
+                                "anchor": "changing-your-username"
+                            },
+                            {
+                                "heading": "Make sudo Require a Password",
+                                "anchor": "make-sudo-require-a-password"
+                            },
+                            {
+                                "heading": "Updating Raspberry Pi OS",
+                                "anchor": "updating-raspberry-pi-os"
+                            },
+                            {
+                                "heading": "Improving SSH Security",
+                                "anchor": "improving-ssh-security"
+                            },
+                            {
+                                "heading": "Install a Firewall",
+                                "anchor": "install-a-firewall"
+                            },
+                            {
+                                "heading": "Installing fail2ban",
+                                "anchor": "installing-fail2ban"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Configure Screen Blanking",
+                        "anchor": "configure-screen-blanking",
+                        "subsections": [
+                            {
+                                "heading": "Desktop",
+                                "anchor": "desktop"
+                            },
+                            {
+                                "heading": "Console",
+                                "anchor": "console"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "The boot Folder",
+                        "anchor": "the-boot-folder",
+                        "subsections": [
+                            {
+                                "heading": "Boot Folder Contents",
+                                "anchor": "boot-folder-contents"
+                            },
+                            {
+                                "heading": "The Overlays Folder",
+                                "anchor": "the-overlays-folder"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/computers/config_txt.html",
+                "title": "The config.txt file",
+                "sections": [
+                    {
+                        "heading": "What is config.txt?",
+                        "anchor": "what-is-config-txt",
+                        "subsections": [
+                            {
+                                "heading": "File Format",
+                                "anchor": "file-format"
+                            },
+                            {
+                                "heading": "Advanced Features",
+                                "anchor": "advanced-features"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "autoboot.txt",
+                        "anchor": "autoboot-txt",
+                        "subsections": [
+                            {
+                                "heading": "boot_partition",
+                                "anchor": "boot_partition"
+                            },
+                            {
+                                "heading": "The [tryboot] filter",
+                                "anchor": "the-tryboot-filter"
+                            },
+                            {
+                                "heading": "tryboot_a_b",
+                                "anchor": "tryboot_a_b"
+                            },
+                            {
+                                "heading": "Example update flow for A/B booting",
+                                "anchor": "example-update-flow-for-ab-booting"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Common Options",
+                        "anchor": "common-options",
+                        "subsections": [
+                            {
+                                "heading": "Common Display Options",
+                                "anchor": "common-display-options"
+                            },
+                            {
+                                "heading": "Common Hardware Configuration Options",
+                                "anchor": "common-hardware-configuration-options"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Onboard Analogue Audio (3.5mm Jack)",
+                        "anchor": "onboard-analogue-audio-3-5mm-jack",
+                        "subsections": [
+                            {
+                                "heading": "audio_pwm_mode",
+                                "anchor": "audio_pwm_mode"
+                            },
+                            {
+                                "heading": "disable_audio_dither",
+                                "anchor": "disable_audio_dither"
+                            },
+                            {
+                                "heading": "enable_audio_dither",
+                                "anchor": "enable_audio_dither"
+                            },
+                            {
+                                "heading": "pwm_sample_bits",
+                                "anchor": "pwm_sample_bits"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Boot Options",
+                        "anchor": "boot-options",
+                        "subsections": [
+                            {
+                                "heading": "start_file, fixup_file",
+                                "anchor": "start_file-fixup_file"
+                            },
+                            {
+                                "heading": "cmdline",
+                                "anchor": "cmdline"
+                            },
+                            {
+                                "heading": "kernel",
+                                "anchor": "kernel"
+                            },
+                            {
+                                "heading": "arm_64bit",
+                                "anchor": "arm_64bit"
+                            },
+                            {
+                                "heading": "ramfsfile",
+                                "anchor": "ramfsfile"
+                            },
+                            {
+                                "heading": "ramfsaddr",
+                                "anchor": "ramfsaddr"
+                            },
+                            {
+                                "heading": "initramfs",
+                                "anchor": "initramfs"
+                            },
+                            {
+                                "heading": "auto_initramfs",
+                                "anchor": "auto_initramfs"
+                            },
+                            {
+                                "heading": "disable_poe_fan",
+                                "anchor": "disable_poe_fan"
+                            },
+                            {
+                                "heading": "disable_splash",
+                                "anchor": "disable_splash"
+                            },
+                            {
+                                "heading": "enable_uart",
+                                "anchor": "enable_uart"
+                            },
+                            {
+                                "heading": "force_eeprom_read",
+                                "anchor": "force_eeprom_read"
+                            },
+                            {
+                                "heading": "os_prefix",
+                                "anchor": "os_prefix"
+                            },
+                            {
+                                "heading": "otg_mode (Raspberry Pi 4 Only)",
+                                "anchor": "otg_mode-raspberry-pi-4-only"
+                            },
+                            {
+                                "heading": "overlay_prefix",
+                                "anchor": "overlay_prefix"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "GPIO Control",
+                        "anchor": "gpio-control",
+                        "subsections": [
+                            {
+                                "heading": "gpio",
+                                "anchor": "gpio"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Overclocking Options",
+                        "anchor": "overclocking-options",
+                        "subsections": [
+                            {
+                                "heading": "Overclocking",
+                                "anchor": "overclocking"
+                            },
+                            {
+                                "heading": "Clocks Relationship",
+                                "anchor": "clocks-relationship"
+                            },
+                            {
+                                "heading": "Monitoring Core Temperature",
+                                "anchor": "monitoring-core-temperature"
+                            },
+                            {
+                                "heading": "Monitoring Voltage",
+                                "anchor": "monitoring-voltage"
+                            },
+                            {
+                                "heading": "Overclocking Problems",
+                                "anchor": "overclocking-problems"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Conditional Filters",
+                        "anchor": "conditional-filters",
+                        "subsections": [
+                            {
+                                "heading": "The [all] filter",
+                                "anchor": "the-all-filter"
+                            },
+                            {
+                                "heading": "Model Filters",
+                                "anchor": "model-filters"
+                            },
+                            {
+                                "heading": "The [none] filter",
+                                "anchor": "the-none-filter"
+                            },
+                            {
+                                "heading": "The [tryboot] filter",
+                                "anchor": "the-tryboot-filter-2"
+                            },
+                            {
+                                "heading": "The [EDID=*] filter",
+                                "anchor": "the-edid-filter"
+                            },
+                            {
+                                "heading": "The Serial Number Filter",
+                                "anchor": "the-serial-number-filter"
+                            },
+                            {
+                                "heading": "The GPIO Filter",
+                                "anchor": "the-gpio-filter"
+                            },
+                            {
+                                "heading": "Combining Conditional Filters",
+                                "anchor": "combining-conditional-filters"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Memory Options",
+                        "anchor": "memory-options",
+                        "subsections": [
+                            {
+                                "heading": "total_mem",
+                                "anchor": "total_mem"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Licence Key and Codec Options",
+                        "anchor": "licence-key-and-codec-options",
+                        "subsections": [
+                            {
+                                "heading": "decode_MPG2",
+                                "anchor": "decode_mpg2"
+                            },
+                            {
+                                "heading": "decode_WVC1",
+                                "anchor": "decode_wvc1"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Video Options",
+                        "anchor": "video-options",
+                        "subsections": [
+                            {
+                                "heading": "HDMI Mode",
+                                "anchor": "hdmi-mode"
+                            },
+                            {
+                                "heading": "Composite Video Mode",
+                                "anchor": "composite-video-mode"
+                            },
+                            {
+                                "heading": "LCD Displays and Touchscreens",
+                                "anchor": "lcd-displays-and-touchscreens"
+                            },
+                            {
+                                "heading": "Generic Display Options",
+                                "anchor": "generic-display-options"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Raspberry Pi 4 HDMI Pipeline",
+                        "anchor": "raspberry-pi-4-hdmi-pipeline"
+                    },
+                    {
+                        "heading": "Camera Settings",
+                        "anchor": "camera-settings",
+                        "subsections": [
+                            {
+                                "heading": "disable_camera_led",
+                                "anchor": "disable_camera_led"
+                            },
+                            {
+                                "heading": "awb_auto_is_greyworld",
+                                "anchor": "awb_auto_is_greyworld"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/computers/legacy_config_txt.html",
+                "title": "Legacy config.txt options",
+                "sections": [
+                    {
+                        "heading": "Legacy Options",
+                        "anchor": "legacy-options"
+                    },
+                    {
+                        "heading": "Legacy Boot Options",
+                        "anchor": "legacy-boot-options",
+                        "subsections": [
+                            {
+                                "heading": "start_x, start_debug",
+                                "anchor": "start_x-start_debug"
+                            },
+                            {
+                                "heading": "disable_commandline_tags",
+                                "anchor": "disable_commandline_tags"
+                            },
+                            {
+                                "heading": "arm_control",
+                                "anchor": "arm_control"
+                            },
+                            {
+                                "heading": "armstub",
+                                "anchor": "armstub"
+                            },
+                            {
+                                "heading": "arm_peri_high",
+                                "anchor": "arm_peri_high"
+                            },
+                            {
+                                "heading": "kernel_address",
+                                "anchor": "kernel_address"
+                            },
+                            {
+                                "heading": "kernel_old",
+                                "anchor": "kernel_old"
+                            },
+                            {
+                                "heading": "init_uart_baud",
+                                "anchor": "init_uart_baud"
+                            },
+                            {
+                                "heading": "init_uart_clock",
+                                "anchor": "init_uart_clock"
+                            },
+                            {
+                                "heading": "bootcode_delay",
+                                "anchor": "bootcode_delay"
+                            },
+                            {
+                                "heading": "boot_delay",
+                                "anchor": "boot_delay"
+                            },
+                            {
+                                "heading": "boot_delay_ms",
+                                "anchor": "boot_delay_ms"
+                            },
+                            {
+                                "heading": "enable_gic (Raspberry Pi 4 Only)",
+                                "anchor": "enable_gic-raspberry-pi-4-only"
+                            },
+                            {
+                                "heading": "sha256",
+                                "anchor": "sha256"
+                            },
+                            {
+                                "heading": "uart_2ndstage",
+                                "anchor": "uart_2ndstage"
+                            },
+                            {
+                                "heading": "upstream_kernel",
+                                "anchor": "upstream_kernel"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Legacy GPIO Control",
+                        "anchor": "legacy-gpio-control",
+                        "subsections": [
+                            {
+                                "heading": "enable_jtag_gpio",
+                                "anchor": "enable_jtag_gpio"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Legacy Overclocking Options",
+                        "anchor": "legacy-overclocking-options",
+                        "subsections": [
+                            {
+                                "heading": "Overclocking",
+                                "anchor": "overclocking"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Legacy Conditional Filters",
+                        "anchor": "legacy-conditional-filters",
+                        "subsections": [
+                            {
+                                "heading": "The [HDMI:*] Filter",
+                                "anchor": "the-hdmi-filter"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Legacy Memory Options",
+                        "anchor": "legacy-memory-options",
+                        "subsections": [
+                            {
+                                "heading": "gpu_mem",
+                                "anchor": "gpu_mem"
+                            },
+                            {
+                                "heading": "gpu_mem_256",
+                                "anchor": "gpu_mem_256"
+                            },
+                            {
+                                "heading": "gpu_mem_512",
+                                "anchor": "gpu_mem_512"
+                            },
+                            {
+                                "heading": "gpu_mem_1024",
+                                "anchor": "gpu_mem_1024"
+                            },
+                            {
+                                "heading": "disable_l2cache",
+                                "anchor": "disable_l2cache"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Legacy Video Options",
+                        "anchor": "legacy-video-options",
+                        "subsections": [
+                            {
+                                "heading": "HDMI Mode",
+                                "anchor": "hdmi-mode"
+                            },
+                            {
+                                "heading": "Which Values are Valid for my Monitor?",
+                                "anchor": "which-values-are-valid-for-my-monitor"
+                            },
+                            {
+                                "heading": "Custom Mode",
+                                "anchor": "custom-mode"
+                            },
+                            {
+                                "heading": "Composite Video Mode",
+                                "anchor": "composite-video-mode"
+                            },
+                            {
+                                "heading": "LCD Displays and Touchscreens",
+                                "anchor": "lcd-displays-and-touchscreens"
+                            },
+                            {
+                                "heading": "Generic Display Options",
+                                "anchor": "generic-display-options"
+                            },
+                            {
+                                "heading": "Other Options",
+                                "anchor": "other-options"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Legacy Raspberry Pi 4 HDMI Pipeline",
+                        "anchor": "legacy-raspberry-pi-4-hdmi-pipeline"
+                    },
+                    {
+                        "heading": "Legacy Miscellaneous Options",
+                        "anchor": "legacy-miscellaneous-options",
+                        "subsections": [
+                            {
+                                "heading": "avoid_warnings",
+                                "anchor": "avoid_warnings"
+                            },
+                            {
+                                "heading": "logging_level",
+                                "anchor": "logging_level"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/computers/linux_kernel.html",
+                "title": "The Linux kernel",
+                "sections": [
+                    {
+                        "heading": "Kernel",
+                        "anchor": "kernel",
+                        "subsections": [
+                            {
+                                "heading": "Updating your Kernel",
+                                "anchor": "updating-your-kernel"
+                            },
+                            {
+                                "heading": "Getting your Code into the Kernel",
+                                "anchor": "getting-your-code-into-the-kernel"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Building the Kernel",
+                        "anchor": "building",
+                        "subsections": [
+                            {
+                                "heading": "Building the Kernel Locally",
+                                "anchor": "building-the-kernel-locally"
+                            },
+                            {
+                                "heading": "Cross-Compiling the Kernel",
+                                "anchor": "cross-compiling-the-kernel"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Configuring the Kernel",
+                        "anchor": "configuring-the-kernel",
+                        "subsections": [
+                            {
+                                "heading": "Preparing to Configure",
+                                "anchor": "preparing-to-configure"
+                            },
+                            {
+                                "heading": "Using menuconfig",
+                                "anchor": "using-menuconfig"
+                            },
+                            {
+                                "heading": "Saving your Changes",
+                                "anchor": "saving-your-changes"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Patching the Kernel",
+                        "anchor": "patching-the-kernel",
+                        "subsections": [
+                            {
+                                "heading": "Version Identification",
+                                "anchor": "version-identification"
+                            },
+                            {
+                                "heading": "Applying Patches",
+                                "anchor": "applying-patches"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Kernel Headers",
+                        "anchor": "kernel-headers"
+                    }
+                ]
+            },
+            {
+                "path": "/computers/remote-access.html",
+                "title": "Remote access",
+                "sections": [
+                    {
+                        "heading": "Introduction to remote access",
+                        "anchor": "introduction-to-remote-access",
+                        "subsections": [
+                            {
+                                "heading": "How to find your IP address",
+                                "anchor": "ip-address"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Setting up an SSH Server",
+                        "anchor": "ssh",
+                        "subsections": [
+                            {
+                                "heading": "Set up your Local Network",
+                                "anchor": "set-up-your-local-network"
+                            },
+                            {
+                                "heading": "Enabling the Server",
+                                "anchor": "enabling-the-server"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Secure Shell from Linux or Mac OS",
+                        "anchor": "secure-shell-from-linux-or-mac-os"
+                    },
+                    {
+                        "heading": "Secure Shell from Windows 10",
+                        "anchor": "secure-shell-from-windows-10"
+                    },
+                    {
+                        "heading": "Passwordless SSH Access",
+                        "anchor": "passwordless-ssh-access",
+                        "subsections": [
+                            {
+                                "heading": "Checking for Existing SSH Keys",
+                                "anchor": "checking-for-existing-ssh-keys"
+                            },
+                            {
+                                "heading": "Generate new SSH Keys",
+                                "anchor": "generate-new-ssh-keys"
+                            },
+                            {
+                                "heading": "Copy your Key to your Raspberry Pi",
+                                "anchor": "copy-your-public-key-to-your-raspberry-pi"
+                            },
+                            {
+                                "heading": "Adjust Directory Permissions",
+                                "anchor": "adjust-directory-permissions"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Using Secure Copy",
+                        "anchor": "using-secure-copy",
+                        "subsections": [
+                            {
+                                "heading": "Copying Files to your Raspberry Pi",
+                                "anchor": "copying-files-to-your-raspberry-pi"
+                            },
+                            {
+                                "heading": "Copying Files from your Raspberry Pi",
+                                "anchor": "copying-files-from-your-raspberry-pi"
+                            },
+                            {
+                                "heading": "Copying Multiple Files",
+                                "anchor": "copying-multiple-files"
+                            },
+                            {
+                                "heading": "Copying a Whole Directory",
+                                "anchor": "copying-a-whole-directory"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Using rsync",
+                        "anchor": "using-rsync"
+                    },
+                    {
+                        "heading": "Network File System (NFS)",
+                        "anchor": "network-file-system-nfs",
+                        "subsections": [
+                            {
+                                "heading": "Setting up a Basic NFS Server",
+                                "anchor": "setting-up-a-basic-nfs-server"
+                            },
+                            {
+                                "heading": "Configuring an NFS Client",
+                                "anchor": "configuring-an-nfs-client"
+                            },
+                            {
+                                "heading": "A More Complex NFS Server",
+                                "anchor": "a-more-complex-nfs-server"
+                            },
+                            {
+                                "heading": "Troubleshooting",
+                                "anchor": "troubleshooting"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Samba (SMB/CIFS)",
+                        "anchor": "samba-smbcifs",
+                        "subsections": [
+                            {
+                                "heading": "Installing Samba Support",
+                                "anchor": "installing-samba-support"
+                            },
+                            {
+                                "heading": "Mount a Folder Shared from Windows",
+                                "anchor": "mount-a-folder-shared-from-windows"
+                            },
+                            {
+                                "heading": "Sharing a Folder from your Raspberry Pi",
+                                "anchor": "sharing-a-folder-from-your-raspberry-pi"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Virtual Network Computing (VNC)",
+                        "anchor": "vnc",
+                        "subsections": [
+                            {
+                                "heading": "Enable the VNC server",
+                                "anchor": "enable-the-vnc-server"
+                            },
+                            {
+                                "heading": "Connect to your Raspberry Pi",
+                                "anchor": "connect-to-your-raspberry-pi"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Setting up an Apache Web Server",
+                        "anchor": "setting-up-an-apache-web-server",
+                        "subsections": [
+                            {
+                                "heading": "Installing Apache",
+                                "anchor": "installing-apache"
+                            },
+                            {
+                                "heading": "Test the Web Server",
+                                "anchor": "test-the-web-server"
+                            },
+                            {
+                                "heading": "Installing PHP for Apache",
+                                "anchor": "installing-php-for-apache"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Network boot your Raspberry Pi",
+                        "anchor": "network-boot-your-raspberry-pi",
+                        "subsections": [
+                            {
+                                "heading": "Client Configuration",
+                                "anchor": "client-configuration"
+                            },
+                            {
+                                "heading": "Ethernet MAC address",
+                                "anchor": "ethernet-mac-address"
+                            },
+                            {
+                                "heading": "Server Configuration",
+                                "anchor": "server-configuration"
+                            },
+                            {
+                                "heading": "Using pxetools",
+                                "anchor": "using-pxetools"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Network booting using IPv6",
+                        "anchor": "network-booting-using-ipv6",
+                        "subsections": [
+                            {
+                                "heading": "How it works",
+                                "anchor": "how-it-works"
+                            },
+                            {
+                                "heading": "Test Setup",
+                                "anchor": "test-setup"
+                            },
+                            {
+                                "heading": "Debugging",
+                                "anchor": "debugging"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/computers/camera_software.html",
+                "title": "Camera software",
+                "sections": [
+                    {
+                        "heading": "Introducing the Raspberry Pi Cameras",
+                        "anchor": "introducing-the-raspberry-pi-cameras"
+                    },
+                    {
+                        "heading": "libcamera and rpicam-apps",
+                        "anchor": "libcamera-and-rpicam-apps",
+                        "subsections": [
+                            {
+                                "heading": "Introduction",
+                                "anchor": "introduction"
+                            },
+                            {
+                                "heading": "Getting Started",
+                                "anchor": "getting-started"
+                            },
+                            {
+                                "heading": "Troubleshooting",
+                                "anchor": "troubleshooting"
+                            },
+                            {
+                                "heading": "rpicam-hello",
+                                "anchor": "rpicam-hello"
+                            },
+                            {
+                                "heading": "rpicam-jpeg",
+                                "anchor": "rpicam-jpeg"
+                            },
+                            {
+                                "heading": "rpicam-still",
+                                "anchor": "rpicam-still"
+                            },
+                            {
+                                "heading": "rpicam-vid",
+                                "anchor": "rpicam-vid"
+                            },
+                            {
+                                "heading": "libav integration with rpicam-vid",
+                                "anchor": "libav-integration-with-rpicam-vid"
+                            },
+                            {
+                                "heading": "rpicam-raw",
+                                "anchor": "rpicam-raw"
+                            },
+                            {
+                                "heading": "rpicam-detect",
+                                "anchor": "rpicam-detect"
+                            },
+                            {
+                                "heading": "Common Command Line Options",
+                                "anchor": "common-command-line-options"
+                            },
+                            {
+                                "heading": "Still Command Line Options",
+                                "anchor": "still-command-line-options"
+                            },
+                            {
+                                "heading": "Video Command Line Options",
+                                "anchor": "video-command-line-options"
+                            },
+                            {
+                                "heading": "Differences compared to Raspicam Apps",
+                                "anchor": "differences-compared-to-raspicam-apps"
+                            },
+                            {
+                                "heading": "Post-Processing",
+                                "anchor": "post-processing"
+                            },
+                            {
+                                "heading": "Post-Processing with OpenCV",
+                                "anchor": "post-processing-with-opencv"
+                            },
+                            {
+                                "heading": "Post-Processing with TensorFlow Lite",
+                                "anchor": "post-processing-with-tensorflow-lite"
+                            },
+                            {
+                                "heading": "Writing your own Post-Processing Stages",
+                                "anchor": "writing-your-own-post-processing-stages"
+                            },
+                            {
+                                "heading": "Multiple Cameras Usage",
+                                "anchor": "multiple-cameras-usage"
+                            },
+                            {
+                                "heading": "libcamera and rpicam-apps Packages",
+                                "anchor": "libcamera-and-rpicam-apps-packages"
+                            },
+                            {
+                                "heading": "Building libcamera and rpicam-apps",
+                                "anchor": "building-libcamera-and-rpicam-apps"
+                            },
+                            {
+                                "heading": "Understanding and Writing your own Apps",
+                                "anchor": "understanding-and-writing-your-own-apps"
+                            },
+                            {
+                                "heading": "Python Bindings for libcamera",
+                                "anchor": "python-bindings-for-libcamera"
+                            },
+                            {
+                                "heading": "Camera Tuning and supporting 3rd Party Sensors",
+                                "anchor": "camera-tuning-and-supporting-3rd-party-sensors"
+                            },
+                            {
+                                "heading": "Known Issues",
+                                "anchor": "known-issues"
+                            },
+                            {
+                                "heading": "Getting Help",
+                                "anchor": "getting-help"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Application Notes",
+                        "anchor": "application-notes",
+                        "subsections": [
+                            {
+                                "heading": "Creating Timelapse Video",
+                                "anchor": "creating-timelapse-video"
+                            },
+                            {
+                                "heading": "Using Gstreamer",
+                                "anchor": "using-gstreamer"
+                            },
+                            {
+                                "heading": "Using libcamera and Qt together",
+                                "anchor": "using-libcamera-and-qt-together"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "V4L2 Drivers",
+                        "anchor": "v4l2-drivers",
+                        "subsections": [
+                            {
+                                "heading": "Device nodes when using libcamera",
+                                "anchor": "device-nodes-when-using-libcamera"
+                            },
+                            {
+                                "heading": "Using the Driver",
+                                "anchor": "using-the-driver"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Camera Serial Interface 2 (CSI2) \"Unicam\"",
+                        "anchor": "camera-serial-interface-2-csi2-unicam",
+                        "subsections": [
+                            {
+                                "heading": "Software Interfaces",
+                                "anchor": "software-interfaces"
+                            },
+                            {
+                                "heading": "Developing Third-Party Drivers",
+                                "anchor": "developing-third-party-drivers"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/computers/raspberry-pi.html",
+                "title": "Raspberry Pi hardware",
+                "sections": [
+                    {
+                        "heading": "GPIO and the 40-pin Header",
+                        "anchor": "gpio-and-the-40-pin-header",
+                        "subsections": [
+                            {
+                                "heading": "Voltages",
+                                "anchor": "voltages"
+                            },
+                            {
+                                "heading": "Outputs",
+                                "anchor": "outputs"
+                            },
+                            {
+                                "heading": "Inputs",
+                                "anchor": "inputs"
+                            },
+                            {
+                                "heading": "More",
+                                "anchor": "more"
+                            },
+                            {
+                                "heading": "GPIO pinout",
+                                "anchor": "gpio-pinout"
+                            },
+                            {
+                                "heading": "Permissions",
+                                "anchor": "permissions"
+                            },
+                            {
+                                "heading": "GPIO in Python",
+                                "anchor": "gpio-in-python"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Schematics and Mechanical Drawings",
+                        "anchor": "schematics-and-mechanical-drawings",
+                        "subsections": [
+                            {
+                                "heading": "Raspberry Pi 5",
+                                "anchor": "raspberry-pi-5"
+                            },
+                            {
+                                "heading": "Raspberry Pi 4 Model B",
+                                "anchor": "raspberry-pi-4-model-b"
+                            },
+                            {
+                                "heading": "Raspberry Pi 3 Model B+",
+                                "anchor": "raspberry-pi-3-model-b"
+                            },
+                            {
+                                "heading": "Raspberry Pi 3 Model B",
+                                "anchor": "raspberry-pi-3-model-b-2"
+                            },
+                            {
+                                "heading": "Raspberry Pi 2 Model B",
+                                "anchor": "raspberry-pi-2-model-b"
+                            },
+                            {
+                                "heading": "Raspberry Pi 1 Model B+",
+                                "anchor": "raspberry-pi-1-model-b"
+                            },
+                            {
+                                "heading": "Raspberry Pi 3 Model A+",
+                                "anchor": "raspberry-pi-3-model-a"
+                            },
+                            {
+                                "heading": "Raspberry Pi 1 Model A+",
+                                "anchor": "raspberry-pi-1-model-a"
+                            },
+                            {
+                                "heading": "Raspberry Pi Zero",
+                                "anchor": "raspberry-pi-zero"
+                            },
+                            {
+                                "heading": "Raspberry Pi Zero W",
+                                "anchor": "raspberry-pi-zero-w"
+                            },
+                            {
+                                "heading": "Raspberry Pi Zero 2 W",
+                                "anchor": "raspberry-pi-zero-2-w"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Product compliance and safety",
+                        "anchor": "product-compliance-and-safety",
+                        "subsections": [
+                            {
+                                "heading": "Flammability Rating",
+                                "anchor": "flammability-rating"
+                            },
+                            {
+                                "heading": "The Raspberry Pi Compliance Support",
+                                "anchor": "the-raspberry-pi-compliance-support"
+                            },
+                            {
+                                "heading": "Powered by Raspberry Pi",
+                                "anchor": "powered-by-raspberry-pi"
+                            },
+                            {
+                                "heading": "Approved Design Partners",
+                                "anchor": "approved-design-partners"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Frequency Management and Thermal Control",
+                        "anchor": "frequency-management-and-thermal-control",
+                        "subsections": [
+                            {
+                                "heading": "Using DVFS",
+                                "anchor": "using-dvfs"
+                            },
+                            {
+                                "heading": "Measuring Temperatures",
+                                "anchor": "measuring-temperatures"
+                            },
+                            {
+                                "heading": "Adding Heatsinks",
+                                "anchor": "adding-heatsinks"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Raspberry Pi Boot EEPROM",
+                        "anchor": "raspberry-pi-boot-eeprom",
+                        "subsections": [
+                            {
+                                "heading": "Boot Diagnostics",
+                                "anchor": "boot-diagnostics"
+                            },
+                            {
+                                "heading": "Update the Bootloader",
+                                "anchor": "bootloader_update_stable"
+                            },
+                            {
+                                "heading": "Updating the EEPROM Configuration",
+                                "anchor": "updating-the-eeprom-configuration"
+                            },
+                            {
+                                "heading": "Automatic Updates",
+                                "anchor": "automaticupdates"
+                            },
+                            {
+                                "heading": "Bootloader Release Status",
+                                "anchor": "bootloader-release"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Boot Diagnostics on the Raspberry Pi 4",
+                        "anchor": "boot-diagnostics-on-the-raspberry-pi-4"
+                    },
+                    {
+                        "heading": "Raspberry Pi Boot Modes",
+                        "anchor": "raspberry-pi-boot-modes",
+                        "subsections": [
+                            {
+                                "heading": "Special bootcode.bin-only boot mode",
+                                "anchor": "special-bootcode-bin-only-boot-mode"
+                            },
+                            {
+                                "heading": "bootcode.bin UART Enable",
+                                "anchor": "bootcode-bin-uart-enable"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Boot sequence",
+                        "anchor": "boot-sequence"
+                    },
+                    {
+                        "heading": "Raspberry Pi 4 and Raspberry Pi 5 Boot Flow",
+                        "anchor": "raspberry-pi-4-and-raspberry-pi-5-boot-flow",
+                        "subsections": [
+                            {
+                                "heading": "First Stage Bootloader",
+                                "anchor": "first-stage-bootloader"
+                            },
+                            {
+                                "heading": "Second Stage Bootloader",
+                                "anchor": "second-stage-bootloader"
+                            },
+                            {
+                                "heading": "Bootloader Updates",
+                                "anchor": "bootloader-updates"
+                            },
+                            {
+                                "heading": "Fail-safe OS updates (TRYBOOT)",
+                                "anchor": "fail-safe-os-updates-tryboot"
+                            },
+                            {
+                                "heading": "TRYBOOT_A_B mode",
+                                "anchor": "tryboot_a_b-mode"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Raspberry Pi Bootloader Configuration",
+                        "anchor": "raspberry-pi-bootloader-configuration",
+                        "subsections": [
+                            {
+                                "heading": "Editing the Configuration",
+                                "anchor": "editing-the-configuration"
+                            },
+                            {
+                                "heading": "Configuration Properties",
+                                "anchor": "configuration-properties"
+                            },
+                            {
+                                "heading": "Configuration Properties in config.txt",
+                                "anchor": "configuration-properties-in-config-txt"
+                            },
+                            {
+                                "heading": "Secure Boot configuration properties in config.txt",
+                                "anchor": "secure-boot-configuration-properties-in-config-txt"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "USB Boot Modes",
+                        "anchor": "usb-boot-modes",
+                        "subsections": [
+                            {
+                                "heading": "USB Device Boot Mode",
+                                "anchor": "usb-device-boot-mode"
+                            },
+                            {
+                                "heading": "USB Host Boot Mode",
+                                "anchor": "usb-host-boot-mode"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "USB Mass Storage Boot",
+                        "anchor": "usb-mass-storage-boot",
+                        "subsections": [
+                            {
+                                "heading": "Raspberry Pi 4B and Raspberry Pi 400",
+                                "anchor": "pi4"
+                            },
+                            {
+                                "heading": "Compute Module 4",
+                                "anchor": "cm4"
+                            },
+                            {
+                                "heading": "Raspberry Pi 3B+",
+                                "anchor": "raspberry-pi-3b"
+                            },
+                            {
+                                "heading": "Raspberry Pi 2B, 3A+, 3B, CM3, CM3+, Zero 2 W",
+                                "anchor": "raspberry-pi-2b-3a-3b-cm3-cm3-zero-2-w"
+                            },
+                            {
+                                "heading": "Booting from USB Mass Storage",
+                                "anchor": "booting-from-usb-mass-storage"
+                            },
+                            {
+                                "heading": "Known Issues",
+                                "anchor": "known-issues"
+                            },
+                            {
+                                "heading": "Special bootcode.bin-only Boot Mode",
+                                "anchor": "special-bootcode-bin-only-boot-mode-2"
+                            },
+                            {
+                                "heading": "Hardware Compatibility",
+                                "anchor": "hardware-compatibility"
+                            },
+                            {
+                                "heading": "Multiple Bootable Drives",
+                                "anchor": "multiple-bootable-drives"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Network Booting",
+                        "anchor": "network-booting",
+                        "subsections": [
+                            {
+                                "heading": "Debugging Network Boot Mode",
+                                "anchor": "debugging-network-boot-mode"
+                            },
+                            {
+                                "heading": "Known Problems",
+                                "anchor": "known-problems"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "GPIO Boot Mode",
+                        "anchor": "gpio-boot-mode",
+                        "subsections": [
+                            {
+                                "heading": "Pin Assignments",
+                                "anchor": "pin-assignments"
+                            },
+                            {
+                                "heading": "Boot Flow",
+                                "anchor": "boot-flow"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "NVMe SSD Boot",
+                        "anchor": "nvme-ssd-boot",
+                        "subsections": [
+                            {
+                                "heading": "Required Hardware",
+                                "anchor": "required-hardware"
+                            },
+                            {
+                                "heading": "Required Software",
+                                "anchor": "required-software"
+                            },
+                            {
+                                "heading": "Troubleshooting",
+                                "anchor": "troubleshooting"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "HTTP Boot",
+                        "anchor": "http-boot",
+                        "subsections": [
+                            {
+                                "heading": "Requirements",
+                                "anchor": "requirements"
+                            },
+                            {
+                                "heading": "Keys",
+                                "anchor": "keys"
+                            },
+                            {
+                                "heading": "Secure Boot",
+                                "anchor": "secure-boot"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Parallel Display Interface",
+                        "anchor": "parallel-display-interface",
+                        "subsections": [
+                            {
+                                "heading": "GPIO Pins",
+                                "anchor": "gpio-pins"
+                            },
+                            {
+                                "heading": "Disable Other GPIO Peripherals",
+                                "anchor": "disable-other-gpio-peripherals"
+                            },
+                            {
+                                "heading": "Configure a Display",
+                                "anchor": "configure-a-display"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "General Purpose I/O (GPIO)",
+                        "anchor": "gpio",
+                        "subsections": [
+                            {
+                                "heading": "GPIO Pads",
+                                "anchor": "gpio-pads"
+                            },
+                            {
+                                "heading": "Interrupts",
+                                "anchor": "interrupts"
+                            },
+                            {
+                                "heading": "Alternative Functions",
+                                "anchor": "alternative-functions"
+                            },
+                            {
+                                "heading": "Voltage Specifications",
+                                "anchor": "voltage-specifications"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "GPIO Pads Control",
+                        "anchor": "gpio-pads-control"
+                    },
+                    {
+                        "heading": "Peripheral Addresses",
+                        "anchor": "peripheral-addresses"
+                    },
+                    {
+                        "heading": "Industrial use of the Raspberry Pi",
+                        "anchor": "industrial-use-of-the-raspberry-pi",
+                        "subsections": [
+                            {
+                                "heading": "One-Time Programmable Settings",
+                                "anchor": "one-time-programmable-settings"
+                            },
+                            {
+                                "heading": "Write and Read Customer OTP Values",
+                                "anchor": "write-and-read-customer-otp-values"
+                            },
+                            {
+                                "heading": "Locking the OTP Changes",
+                                "anchor": "locking-the-otp-changes"
+                            },
+                            {
+                                "heading": "Making Customer OTP bits Unreadable",
+                                "anchor": "making-customer-otp-bits-unreadable"
+                            },
+                            {
+                                "heading": "Device specific private key",
+                                "anchor": "device-specific-private-key"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "OTP Register and Bit Definitions",
+                        "anchor": "otp-register-and-bit-definitions",
+                        "subsections": [
+                            {
+                                "heading": "OTP Registers",
+                                "anchor": "otp-registers"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Power Supply",
+                        "anchor": "power-supply",
+                        "subsections": [
+                            {
+                                "heading": "Typical Power Requirements",
+                                "anchor": "typical-power-requirements"
+                            },
+                            {
+                                "heading": "Power Supply Warnings",
+                                "anchor": "power-supply-warnings"
+                            },
+                            {
+                                "heading": "Back-powering",
+                                "anchor": "back-powering"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Serial Peripheral Interface (SPI)",
+                        "anchor": "spi-overview",
+                        "subsections": [
+                            {
+                                "heading": "SPI Hardware",
+                                "anchor": "spi-hardware"
+                            },
+                            {
+                                "heading": "SPI Software",
+                                "anchor": "software"
+                            },
+                            {
+                                "heading": "Troubleshooting",
+                                "anchor": "troubleshooting-spi-hardware"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Universal Serial Bus (USB)",
+                        "anchor": "universal-serial-bus-usb",
+                        "subsections": [
+                            {
+                                "heading": "Maximum Power Output",
+                                "anchor": "maximum-power-output"
+                            },
+                            {
+                                "heading": "Raspberry Pi 5",
+                                "anchor": "raspberry-pi-5-2"
+                            },
+                            {
+                                "heading": "Raspberry Pi 4",
+                                "anchor": "raspberry-pi-4"
+                            },
+                            {
+                                "heading": "Raspberry Pi Zero, 1, 2 and 3",
+                                "anchor": "raspberry-pi-zero-1-2-and-3"
+                            },
+                            {
+                                "heading": "Known USB Issues",
+                                "anchor": "known-usb-issues"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Raspberry Pi revision codes",
+                        "anchor": "raspberry-pi-revision-codes",
+                        "subsections": [
+                            {
+                                "heading": "Old-style revision codes",
+                                "anchor": "old-style-revision-codes"
+                            },
+                            {
+                                "heading": "New-style revision codes",
+                                "anchor": "new-style-revision-codes"
+                            },
+                            {
+                                "heading": "New-style revision codes in use",
+                                "anchor": "new-style-revision-codes-in-use"
+                            },
+                            {
+                                "heading": "Using revision codes for board identification",
+                                "anchor": "using-revision-codes-for-board-identification"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/computers/compute-module.html",
+                "title": "Compute Module hardware",
+                "sections": [
+                    {
+                        "heading": "Datasheets and Schematics",
+                        "anchor": "datasheets-and-schematics",
+                        "subsections": [
+                            {
+                                "heading": "Compute Module 4",
+                                "anchor": "compute-module-4"
+                            },
+                            {
+                                "heading": "Older Products",
+                                "anchor": "older-products"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Design Files for CMIO Boards",
+                        "anchor": "design-files-for-cmio-boards"
+                    },
+                    {
+                        "heading": "Flashing the Compute Module eMMC",
+                        "anchor": "flashing-the-compute-module-emmc",
+                        "subsections": [
+                            {
+                                "heading": "Steps to Flash the eMMC",
+                                "anchor": "steps-to-flash-the-emmc"
+                            },
+                            {
+                                "heading": "Setting up the CMIO board",
+                                "anchor": "setting-up-the-cmio-board"
+                            },
+                            {
+                                "heading": "Compute Module 4 Bootloader",
+                                "anchor": "cm4bootloader"
+                            },
+                            {
+                                "heading": "Troubleshooting",
+                                "anchor": "troubleshooting"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Attaching and Enabling Peripherals",
+                        "anchor": "attaching-and-enabling-peripherals",
+                        "subsections": [
+                            {
+                                "heading": "BCM283x GPIOs",
+                                "anchor": "bcm283x-gpios"
+                            },
+                            {
+                                "heading": "BCM283x Boot Process",
+                                "anchor": "bcm283x-boot-process"
+                            },
+                            {
+                                "heading": "Device Tree",
+                                "anchor": "device-tree"
+                            },
+                            {
+                                "heading": "dt-blob.bin",
+                                "anchor": "dt-blob-bin"
+                            },
+                            {
+                                "heading": "ARM Linux Device Tree",
+                                "anchor": "arm-linux-device-tree"
+                            },
+                            {
+                                "heading": "Device Tree Source and Compilation",
+                                "anchor": "device-tree-source-and-compilation"
+                            },
+                            {
+                                "heading": "Device Tree Debugging",
+                                "anchor": "device-tree-debugging"
+                            },
+                            {
+                                "heading": "Examples",
+                                "anchor": "examples"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Attach a Raspberry Pi Camera Module",
+                        "anchor": "attach-a-raspberry-pi-camera-module",
+                        "subsections": [
+                            {
+                                "heading": "Update your system",
+                                "anchor": "update-your-system"
+                            },
+                            {
+                                "heading": "Connect one camera",
+                                "anchor": "connect-one-camera"
+                            },
+                            {
+                                "heading": "Connect two cameras",
+                                "anchor": "connect-two-cameras"
+                            },
+                            {
+                                "heading": "Software",
+                                "anchor": "software"
+                            },
+                            {
+                                "heading": "I2C mapping of GPIO pins",
+                                "anchor": "i2c-mapping-of-gpio-pins"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Attaching the Official 7-inch Display",
+                        "anchor": "attaching-the-official-7-inch-display",
+                        "subsections": [
+                            {
+                                "heading": "Quickstart Guide (Display Only)",
+                                "anchor": "quickstart-guide-display-only"
+                            },
+                            {
+                                "heading": "Quickstart Guide (Display and Cameras)",
+                                "anchor": "quickstart-guide-display-and-cameras"
+                            },
+                            {
+                                "heading": "Software Support",
+                                "anchor": "software-support"
+                            },
+                            {
+                                "heading": "Firmware Configuration",
+                                "anchor": "firmware-configuration"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/computers/processors.html",
+                "title": "Processors",
+                "sections": [
+                    {
+                        "heading": "BCM2835",
+                        "anchor": "bcm2835"
+                    },
+                    {
+                        "heading": "BCM2836",
+                        "anchor": "bcm2836"
+                    },
+                    {
+                        "heading": "BCM2837",
+                        "anchor": "bcm2837"
+                    },
+                    {
+                        "heading": "BCM2837B0",
+                        "anchor": "bcm2837b0"
+                    },
+                    {
+                        "heading": "BCM2711",
+                        "anchor": "bcm2711"
+                    },
+                    {
+                        "heading": "BCM2712",
+                        "anchor": "bcm2712"
+                    },
+                    {
+                        "heading": "RP3A0",
+                        "anchor": "rp3a0"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Accessories",
+        "path": "/accessories/",
+        "toc": [
+            {
+                "path": "/accessories/camera.html",
+                "title": "Camera",
+                "sections": [
+                    {
+                        "heading": "About the Camera Modules",
+                        "anchor": "about-the-camera-modules",
+                        "subsections": [
+                            {
+                                "heading": "Rolling or Global shutter?",
+                                "anchor": "rolling-or-global-shutter"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Installing a Raspberry Pi camera",
+                        "anchor": "installing-a-raspberry-pi-camera",
+                        "subsections": [
+                            {
+                                "heading": "Connecting the Camera",
+                                "anchor": "connecting-the-camera"
+                            },
+                            {
+                                "heading": "Preparing the Software",
+                                "anchor": "preparing-the-software"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Hardware Specification",
+                        "anchor": "hardware-specification",
+                        "subsections": [
+                            {
+                                "heading": "Mechanical Drawings",
+                                "anchor": "mechanical-drawings"
+                            },
+                            {
+                                "heading": "Schematics",
+                                "anchor": "schematics"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Camera Filters",
+                        "anchor": "camera-filters",
+                        "subsections": [
+                            {
+                                "heading": "Camera Module 3",
+                                "anchor": "camera-module-3"
+                            },
+                            {
+                                "heading": "HQ Camera",
+                                "anchor": "hq-camera"
+                            },
+                            {
+                                "heading": "GS Camera",
+                                "anchor": "gs-camera"
+                            },
+                            {
+                                "heading": "HQ and GS Cameras",
+                                "anchor": "hq-and-gs-cameras"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Filter Removal",
+                        "anchor": "filter-removal"
+                    },
+                    {
+                        "heading": "Recommended Lenses",
+                        "anchor": "recommended-lenses",
+                        "subsections": [
+                            {
+                                "heading": "C/CS Lenses",
+                                "anchor": "ccs-lenses"
+                            },
+                            {
+                                "heading": "M12 Lenses",
+                                "anchor": "m12-lenses"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Synchronous Captures",
+                        "anchor": "synchronous-captures",
+                        "subsections": [
+                            {
+                                "heading": "Using the HQ Camera",
+                                "anchor": "using-the-hq-camera"
+                            },
+                            {
+                                "heading": "Using the GS Camera",
+                                "anchor": "using-the-gs-camera"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "External Trigger on the GS Camera",
+                        "anchor": "external-trigger-on-the-gs-camera",
+                        "subsections": [
+                            {
+                                "heading": "Preparation",
+                                "anchor": "preparation"
+                            },
+                            {
+                                "heading": "Operation",
+                                "anchor": "operation"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/accessories/display.html",
+                "title": "Display",
+                "sections": [
+                    {
+                        "heading": "Raspberry Pi Touch Display",
+                        "anchor": "raspberry-pi-touch-display",
+                        "subsections": [
+                            {
+                                "heading": "Mounting the Touch Display",
+                                "anchor": "mounting-the-touch-display"
+                            },
+                            {
+                                "heading": "Powering the Touch Display",
+                                "anchor": "powering-the-touch-display"
+                            },
+                            {
+                                "heading": "Changing the screen orientation",
+                                "anchor": "changing-the-screen-orientation"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Legacy Support",
+                        "anchor": "legacy-support"
+                    }
+                ]
+            },
+            {
+                "path": "/accessories/keyboard-and-mouse.html",
+                "title": "Keyboard and mouse",
+                "sections": [
+                    {
+                        "heading": "Getting Started with your Keyboard",
+                        "anchor": "getting-started-with-your-keyboard",
+                        "subsections": [
+                            {
+                                "heading": "Keyboard Features",
+                                "anchor": "keyboard-features"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Getting Started with your Mouse",
+                        "anchor": "getting-started-with-your-mouse"
+                    },
+                    {
+                        "heading": "Connecting it all Together",
+                        "anchor": "connecting-it-all-together"
+                    }
+                ]
+            },
+            {
+                "path": "/accessories/build-hat.html",
+                "title": "Build HAT",
+                "sections": [
+                    {
+                        "heading": "Introducing the Build HAT",
+                        "anchor": "introducing-the-build-hat"
+                    },
+                    {
+                        "heading": "Preparing your Build HAT",
+                        "anchor": "preparing-your-build-hat",
+                        "subsections": [
+                            {
+                                "heading": "Access the GPIO Pins",
+                                "anchor": "access-the-gpio-pins"
+                            },
+                            {
+                                "heading": "Setting up your Raspberry Pi",
+                                "anchor": "setting-up-your-raspberry-pi"
+                            },
+                            {
+                                "heading": "Powering the Build HAT",
+                                "anchor": "powering-the-build-hat"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Using the Build HAT from Python",
+                        "anchor": "using-the-build-hat-from-python",
+                        "subsections": [
+                            {
+                                "heading": "Installing the Python Library",
+                                "anchor": "installing-the-python-library"
+                            },
+                            {
+                                "heading": "Using Motors from Python",
+                                "anchor": "using-motors-from-python"
+                            },
+                            {
+                                "heading": "Using Sensors from Python",
+                                "anchor": "using-sensors-from-python"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Using the Build HAT from .NET",
+                        "anchor": "using-the-build-hat-from-net",
+                        "subsections": [
+                            {
+                                "heading": "Installing the .NET Framework",
+                                "anchor": "installing-the-net-framework"
+                            },
+                            {
+                                "heading": "Running C# Code",
+                                "anchor": "running-c-code"
+                            },
+                            {
+                                "heading": "Editing C# Code",
+                                "anchor": "editing-c-code"
+                            },
+                            {
+                                "heading": "Using the Build HAT from .NET",
+                                "anchor": "using-the-build-hat-from-net-2"
+                            },
+                            {
+                                "heading": "Using Motors from .NET",
+                                "anchor": "using-motors-from-net"
+                            },
+                            {
+                                "heading": "Using Sensors from .NET",
+                                "anchor": "using-sensors-from-net"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Further Resources",
+                        "anchor": "further-resources"
+                    },
+                    {
+                        "heading": "Device Compatibility",
+                        "anchor": "device-compatibility"
+                    },
+                    {
+                        "heading": "Mechanical Drawings",
+                        "anchor": "mechanical-drawings"
+                    }
+                ]
+            },
+            {
+                "path": "/accessories/sense-hat.html",
+                "title": "Sense HAT",
+                "sections": [
+                    {
+                        "heading": "Introducing the Sense HAT",
+                        "anchor": "introducing-the-sense-hat"
+                    },
+                    {
+                        "heading": "Installation",
+                        "anchor": "installation"
+                    },
+                    {
+                        "heading": "Getting started",
+                        "anchor": "getting-started",
+                        "subsections": [
+                            {
+                                "heading": "Further reading",
+                                "anchor": "further-reading"
+                            },
+                            {
+                                "heading": "Using the Sense HAT with Python",
+                                "anchor": "using-the-sense-hat-with-python"
+                            },
+                            {
+                                "heading": "Using the Sense HAT with {cpp}",
+                                "anchor": "using-the-sense-hat-with-cpp"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Sense HAT hardware",
+                        "anchor": "sense-hat-hardware",
+                        "subsections": [
+                            {
+                                "heading": "LED matrix",
+                                "anchor": "led-matrix"
+                            },
+                            {
+                                "heading": "Joystick",
+                                "anchor": "joystick"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Hardware calibration",
+                        "anchor": "hardware-calibration"
+                    },
+                    {
+                        "heading": "Reading and writing EEPROM data",
+                        "anchor": "reading-and-writing-eeprom-data",
+                        "subsections": [
+                            {
+                                "heading": "Reading",
+                                "anchor": "reading"
+                            },
+                            {
+                                "heading": "Writing",
+                                "anchor": "writing"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/accessories/tv-hat.html",
+                "title": "TV HAT",
+                "sections": [
+                    {
+                        "heading": "About the TV HAT",
+                        "anchor": "about-the-tv-hat"
+                    },
+                    {
+                        "heading": "About DVB-T",
+                        "anchor": "about-dvb-t"
+                    },
+                    {
+                        "heading": "Setup Instructions",
+                        "anchor": "setup-instructions"
+                    },
+                    {
+                        "heading": "Mechanical Drawing",
+                        "anchor": "mechanical-drawing"
+                    }
+                ]
+            },
+            {
+                "path": "/accessories/audio.html",
+                "title": "Raspberry Pi Audio",
+                "sections": [
+                    {
+                        "heading": "Overview",
+                        "anchor": "overview",
+                        "subsections": [
+                            {
+                                "heading": "Features at a glance",
+                                "anchor": "features-at-a-glance"
+                            },
+                            {
+                                "heading": "Raspberry Pi DAC Pro",
+                                "anchor": "raspberry-pi-dac-pro"
+                            },
+                            {
+                                "heading": "Raspberry Pi DAC{plus}",
+                                "anchor": "raspberry-pi-dacplus"
+                            },
+                            {
+                                "heading": "Raspberry Pi DigiAMP{plus}",
+                                "anchor": "raspberry-pi-digiampplus"
+                            },
+                            {
+                                "heading": "Raspberry Pi Codec Zero",
+                                "anchor": "raspberry-pi-codec-zero"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Configuration",
+                        "anchor": "configuration",
+                        "subsections": [
+                            {
+                                "heading": "Attaching the HAT",
+                                "anchor": "attaching-the-hat"
+                            },
+                            {
+                                "heading": "Hardware versions",
+                                "anchor": "hardware-versions"
+                            },
+                            {
+                                "heading": "Extra Codec Zero configuration",
+                                "anchor": "extra-codec-zero-configuration"
+                            },
+                            {
+                                "heading": "Muting and unmuting the DigiAMP{plus}",
+                                "anchor": "muting-and-unmuting-the-digiampplus"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Getting started",
+                        "anchor": "getting-started",
+                        "subsections": [
+                            {
+                                "heading": "Creating a toy chatter box",
+                                "anchor": "creating-a-toy-chatter-box"
+                            },
+                            {
+                                "heading": "Hardware and wiring",
+                                "anchor": "hardware-and-wiring"
+                            },
+                            {
+                                "heading": "Setting up your Raspberry Pi",
+                                "anchor": "setting-up-your-raspberry-pi"
+                            },
+                            {
+                                "heading": "Programming your Raspberry Pi",
+                                "anchor": "programming-your-raspberry-pi"
+                            },
+                            {
+                                "heading": "Operating your device",
+                                "anchor": "operating-your-device"
+                            },
+                            {
+                                "heading": "Next steps",
+                                "anchor": "next-steps"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Hardware information",
+                        "anchor": "hardware-information",
+                        "subsections": [
+                            {
+                                "heading": "GPIO usage",
+                                "anchor": "gpio-usage"
+                            },
+                            {
+                                "heading": "DAC PRO, DAC{plus}, DigiAMP{plus}, Codec Zero",
+                                "anchor": "dac-pro-dacplus-digiampplus-codec-zero"
+                            },
+                            {
+                                "heading": "Saving AlsaMixer settings",
+                                "anchor": "saving-alsamixer-settings"
+                            },
+                            {
+                                "heading": "MPD-based audio with volume control",
+                                "anchor": "mpd-based-audio-with-volume-control"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Updating your firmware",
+                        "anchor": "updating-your-firmware",
+                        "subsections": [
+                            {
+                                "heading": "The EEPROM write-protect link",
+                                "anchor": "the-eeprom-write-protect-link"
+                            },
+                            {
+                                "heading": "EEPROM Programming",
+                                "anchor": "eeprom-programming"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Microcontrollers",
+        "path": "/microcontrollers/",
+        "toc": [
+            {
+                "path": "/microcontrollers/rp2040.html",
+                "title": "RP2040",
+                "sections": [
+                    {
+                        "heading": "Welcome to RP2040",
+                        "anchor": "welcome-to-rp2040"
+                    },
+                    {
+                        "heading": "Technical Specification",
+                        "anchor": "technical-specification",
+                        "subsections": [
+                            {
+                                "heading": "Why is the chip called RP2040?",
+                                "anchor": "why-is-the-chip-called-rp2040"
+                            },
+                            {
+                                "heading": "Design Files",
+                                "anchor": "design-files"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Internal Temperature Sensor",
+                        "anchor": "internal-temperature-sensor"
+                    },
+                    {
+                        "heading": "Documentation",
+                        "anchor": "documentation",
+                        "subsections": [
+                            {
+                                "heading": "RP2040 Device",
+                                "anchor": "rp2040-device"
+                            },
+                            {
+                                "heading": "Raspberry Pi Pico",
+                                "anchor": "raspberry-pi-pico"
+                            },
+                            {
+                                "heading": "Raspberry Pi Pico W",
+                                "anchor": "raspberry-pi-pico-w"
+                            },
+                            {
+                                "heading": "Software Development",
+                                "anchor": "software-development"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "RP2040-based Boards",
+                        "anchor": "rp2040-based-boards",
+                        "subsections": [
+                            {
+                                "heading": "Other Boards",
+                                "anchor": "other-boards"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/microcontrollers/raspberry-pi-pico.html",
+                "title": "Raspberry Pi Pico and Pico W",
+                "sections": [
+                    {
+                        "heading": "The family",
+                        "anchor": "the-family"
+                    },
+                    {
+                        "heading": "Raspberry Pi Pico and Pico H",
+                        "anchor": "technical-specification",
+                        "subsections": [
+                            {
+                                "heading": "Pinout and design files",
+                                "anchor": "pinout-and-design-files"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Raspberry Pi Pico W and Pico WH",
+                        "anchor": "raspberry-pi-pico-w-and-pico-wh",
+                        "subsections": [
+                            {
+                                "heading": "Pinout and design files",
+                                "anchor": "pinout-and-design-files-2"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Documentation",
+                        "anchor": "documentation",
+                        "subsections": [
+                            {
+                                "heading": "RP2040 Device",
+                                "anchor": "rp2040-device"
+                            },
+                            {
+                                "heading": "Raspberry Pi Pico",
+                                "anchor": "raspberry-pi-pico"
+                            },
+                            {
+                                "heading": "Raspberry Pi Pico W",
+                                "anchor": "raspberry-pi-pico-w"
+                            },
+                            {
+                                "heading": "Software Development",
+                                "anchor": "software-development"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Software Utilities",
+                        "anchor": "software-utilities",
+                        "subsections": [
+                            {
+                                "heading": "What is on your Pico?",
+                                "anchor": "what-is-on-your-pico"
+                            },
+                            {
+                                "heading": "Debugging using another Raspberry Pi Pico",
+                                "anchor": "debugging-using-another-raspberry-pi-pico"
+                            },
+                            {
+                                "heading": "Resetting Flash memory",
+                                "anchor": "resetting-flash-memory"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/microcontrollers/debug-probe.html",
+                "title": "Raspberry Pi Debug Probe",
+                "sections": [
+                    {
+                        "heading": "About the Debug Probe",
+                        "anchor": "about-the-debug-probe",
+                        "subsections": [
+                            {
+                                "heading": "The Debug Probe",
+                                "anchor": "the-debug-probe"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Getting started",
+                        "anchor": "getting-started"
+                    },
+                    {
+                        "heading": "Installing Tools",
+                        "anchor": "installing-tools",
+                        "subsections": [
+                            {
+                                "heading": "Installing OpenOCD",
+                                "anchor": "installing-openocd"
+                            },
+                            {
+                                "heading": "Installing GDB",
+                                "anchor": "installing-gdb"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Serial Wire Debug (SWD)",
+                        "anchor": "serial-wire-debug-swd",
+                        "subsections": [
+                            {
+                                "heading": "Uploading new programs to your Pico",
+                                "anchor": "uploading-new-programs-to-your-pico"
+                            },
+                            {
+                                "heading": "Debugging with SWD",
+                                "anchor": "debugging-with-swd"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Serial connections",
+                        "anchor": "serial-connections"
+                    },
+                    {
+                        "heading": "Updating the firmware on the Debug Probe",
+                        "anchor": "updating-the-firmware-on-the-debug-probe"
+                    },
+                    {
+                        "heading": "Schematics",
+                        "anchor": "schematics"
+                    }
+                ]
+            },
+            {
+                "path": "/microcontrollers/rp1.html",
+                "title": "RP1",
+                "sections": [
+                    {
+                        "heading": "About RP1",
+                        "anchor": "about-rp1"
+                    }
+                ]
+            },
+            {
+                "path": "/microcontrollers/micropython.html",
+                "title": "MicroPython",
+                "sections": [
+                    {
+                        "heading": "What is MicroPython?",
+                        "anchor": "what-is-micropython"
+                    },
+                    {
+                        "heading": "Drag-and-Drop MicroPython",
+                        "anchor": "drag-and-drop-micropython"
+                    },
+                    {
+                        "heading": "Where can I find documentation?",
+                        "anchor": "where-can-i-find-documentation",
+                        "subsections": [
+                            {
+                                "heading": "Further reading",
+                                "anchor": "further-reading"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Which hardware am I running on?",
+                        "anchor": "which-hardware-am-i-running-on"
+                    }
+                ]
+            },
+            {
+                "path": "/microcontrollers/c_sdk.html",
+                "title": "The C/C++ SDK",
+                "sections": [
+                    {
+                        "heading": "SDK Setup",
+                        "anchor": "sdk-setup"
+                    },
+                    {
+                        "heading": "Raspberry Pi Pico C/{cpp} SDK",
+                        "anchor": "raspberry-pi-pico-ccpp-sdk"
+                    },
+                    {
+                        "heading": "Your First Binaries",
+                        "anchor": "your-first-binaries",
+                        "subsections": [
+                            {
+                                "heading": "Blink an LED",
+                                "anchor": "blink-an-led"
+                            },
+                            {
+                                "heading": "Say \"Hello World\"",
+                                "anchor": "say-hello-world"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Quick-start your own project",
+                        "anchor": "quick-start-your-own-project"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Services",
+        "path": "/services/",
+        "toc": [
+            {
+                "path": "/services/id.html",
+                "title": "Raspberry Pi ID",
+                "sections": [
+                    {
+                        "heading": "Signing up to Raspberry Pi ID",
+                        "anchor": "signing-up-to-raspberry-pi-id",
+                        "subsections": [
+                            {
+                                "heading": "Creating a Raspberry Pi ID",
+                                "anchor": "creating-a-raspberry-pi-id"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Two-factor authentication",
+                        "anchor": "two-factor-authentication",
+                        "subsections": [
+                            {
+                                "heading": "Installing a two-factor authenticator application",
+                                "anchor": "installing-a-two-factor-authenticator-application"
+                            },
+                            {
+                                "heading": "Enabling two-factor authentication",
+                                "anchor": "enabling-two-factor-authentication"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Pico C SDK",
+        "path": "/pico-sdk/",
+        "toc": [
+            {
+                "path": "/pico-sdk/index_doxygen.html",
+                "title": "Introduction",
+                "sections": [
+                    {
+                        "heading": "Raspberry Pi Pico SDK",
+                        "anchor": "index",
+                        "subsections": [
+                            {
+                                "heading": "SDK Design",
+                                "anchor": "autotoc_md3"
+                            },
+                            {
+                                "heading": "The Build System",
+                                "anchor": "autotoc_md4"
+                            },
+                            {
+                                "heading": "Examples",
+                                "anchor": "autotoc_md5"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/pico-sdk/hardware.html",
+                "title": "Hardware APIs",
+                "sections": [
+                    {
+                        "heading": "hardware_adc",
+                        "anchor": "hardware_adc",
+                        "subsections": [
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipfbfe5b0fe8af96a15d1f"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip1318736da13326ece40a"
+                            },
+                            {
+                                "heading": "Example",
+                                "anchor": "adc_example"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpipb1b9395908d4e2a12887"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_base",
+                        "anchor": "hardware_base",
+                        "subsections": [
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip3926938a4b94e0a060f0"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip5e97a423451c4125ff52"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip5890e78d07d55fd68817"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_claim",
+                        "anchor": "hardware_claim",
+                        "subsections": [
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipdfa7d254a5da841f0df2"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipf16363c8578d135dc4c6"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpipa15a55e2e3989550f7ed"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_clocks",
+                        "anchor": "hardware_clocks",
+                        "subsections": [
+                            {
+                                "heading": "Typedefs",
+                                "anchor": "rpip89c91da66ffde1cc30ac"
+                            },
+                            {
+                                "heading": "Enumerations",
+                                "anchor": "rpip40f62231af86e9b1b15e"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip6926edf64e9d5c45434f"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipe23aef4aa7e7b878d8ea"
+                            },
+                            {
+                                "heading": "Example",
+                                "anchor": "clock_example"
+                            },
+                            {
+                                "heading": "Typedef Documentation",
+                                "anchor": "rpip0afcc189bc2f1a47e3d5"
+                            },
+                            {
+                                "heading": "Enumeration Type Documentation",
+                                "anchor": "rpip31333e3fca56e3bbe79e"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip2f0296311cc245ad955a"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_divider",
+                        "anchor": "hardware_divider",
+                        "subsections": [
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip7b4dfc6580b2c53a2f61"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip20964efa9024dcd9bbd9"
+                            },
+                            {
+                                "heading": "Example",
+                                "anchor": "divider_example"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip18a7a4c4e3289f823a23"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_dma",
+                        "anchor": "hardware_dma",
+                        "subsections": [
+                            {
+                                "heading": "Modules",
+                                "anchor": "rpip5fc5374acc78a0097d96"
+                            },
+                            {
+                                "heading": "Enumerations",
+                                "anchor": "rpip9c0559a7d8745d062e08"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipdecae9a23f531c1da4bd"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipf764418ef7eeb39b27f1"
+                            },
+                            {
+                                "heading": "Enumeration Type Documentation",
+                                "anchor": "rpip5b5ec014e1146cf87130"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip8325da689765f387a692"
+                            },
+                            {
+                                "heading": "channel_config",
+                                "anchor": "channel_config"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_exception",
+                        "anchor": "hardware_exception",
+                        "subsections": [
+                            {
+                                "heading": "Typedefs",
+                                "anchor": "rpip18a3627e557367243979"
+                            },
+                            {
+                                "heading": "Enumerations",
+                                "anchor": "rpip089779f33882ac115fd5"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipd4bad83ca68f3cada106"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip782db88f643354a6c871"
+                            },
+                            {
+                                "heading": "Typedef Documentation",
+                                "anchor": "rpipde984f23c70d196dbd55"
+                            },
+                            {
+                                "heading": "Enumeration Type Documentation",
+                                "anchor": "rpip6a0fdd5a89e981ea1edb"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip1834cff6cbaffbbf221d"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_flash",
+                        "anchor": "hardware_flash",
+                        "subsections": [
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip9bebeb9fda46d7931f29"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip8fbada2000346488ed78"
+                            },
+                            {
+                                "heading": "Example",
+                                "anchor": "flash_example"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip64bdc1f944dbd9cd5a5f"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_gpio",
+                        "anchor": "hardware_gpio",
+                        "subsections": [
+                            {
+                                "heading": "Typedefs",
+                                "anchor": "rpipfad69ce2636c0406f313"
+                            },
+                            {
+                                "heading": "Enumerations",
+                                "anchor": "rpipb54cede382105a9a7d23"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip9726860b041dce89463e"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipdb2f492eb8ee35cd3758"
+                            },
+                            {
+                                "heading": "Typedef Documentation",
+                                "anchor": "rpip9e801b74f40dfd12ffcf"
+                            },
+                            {
+                                "heading": "Enumeration Type Documentation",
+                                "anchor": "rpipda81ea00785a647cef53"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip3d45bc79713363fb8722"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_i2c",
+                        "anchor": "hardware_i2c",
+                        "subsections": [
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipeb9b68cb7743d9da904d"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipca4eb5ec5ff93fe849f9"
+                            },
+                            {
+                                "heading": "Example",
+                                "anchor": "i2c_example"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip310e4a2ab821afff2a14"
+                            },
+                            {
+                                "heading": "Variable Documentation",
+                                "anchor": "rpipc40094fbd682191d2596"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_interp",
+                        "anchor": "hardware_interp",
+                        "subsections": [
+                            {
+                                "heading": "Modules",
+                                "anchor": "rpipc1cdb32b7c7ebdbf8c6d"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipaa5e4db909dc63a69ed6"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip0f36b886eeb4d853733e"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip822a26db23f7d9c380a2"
+                            },
+                            {
+                                "heading": "interp_config",
+                                "anchor": "interp_config"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_irq",
+                        "anchor": "hardware_irq",
+                        "subsections": [
+                            {
+                                "heading": "Typedefs",
+                                "anchor": "rpip7d7ce744d18b50aa39e0"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip9d9907a4461dceb9f11c"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip646da72222ac60310ec7"
+                            },
+                            {
+                                "heading": "Interrupt Numbers",
+                                "anchor": "interrupt_nums"
+                            },
+                            {
+                                "heading": "Typedef Documentation",
+                                "anchor": "rpip4e3231f901f3afa655ee"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip3ebda8633a83c48c184e"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_pio",
+                        "anchor": "hardware_pio",
+                        "subsections": [
+                            {
+                                "heading": "Modules",
+                                "anchor": "rpip6649e09e7b4258dca43b"
+                            },
+                            {
+                                "heading": "Macros",
+                                "anchor": "rpip3ebd24f30ea02c830bcf"
+                            },
+                            {
+                                "heading": "Enumerations",
+                                "anchor": "rpip4b9b1217a7ae1f6e6232"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipd72a1b2ef4cc2a216250"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip27a2111bf36b4a04eb7b"
+                            },
+                            {
+                                "heading": "Macro Definition Documentation",
+                                "anchor": "rpip21609fe0e09df8180af2"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpipc5faa886a195c207fe67"
+                            },
+                            {
+                                "heading": "sm_config",
+                                "anchor": "sm_config"
+                            },
+                            {
+                                "heading": "pio_instructions",
+                                "anchor": "pio_instructions"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_pll",
+                        "anchor": "hardware_pll",
+                        "subsections": [
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip04a79fbadb11764c1347"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip3f45b5a1e49f06a01880"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip890f1287886564719479"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_pwm",
+                        "anchor": "hardware_pwm",
+                        "subsections": [
+                            {
+                                "heading": "Enumerations",
+                                "anchor": "rpipb46b1035246cbafd4775"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip089064ee858bed4a1f25"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip4b38ba5e59222465dcff"
+                            },
+                            {
+                                "heading": "Example",
+                                "anchor": "pwm_example"
+                            },
+                            {
+                                "heading": "Enumeration Type Documentation",
+                                "anchor": "rpip145ec763707e21a4eb2b"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpipbdc4bd10b4fc1e7ea83a"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_resets",
+                        "anchor": "hardware_resets",
+                        "subsections": [
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip01db3f21293c4654deff"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip65fffbc8a5b1d968744c"
+                            },
+                            {
+                                "heading": "Example",
+                                "anchor": "reset_example"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip0d3d530c62d9083d03c0"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_rtc",
+                        "anchor": "hardware_rtc",
+                        "subsections": [
+                            {
+                                "heading": "Typedefs",
+                                "anchor": "rpip517ae21bc4c79589cb63"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipe164a6e982450f1f5b46"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip059c0f8938d4536a1717"
+                            },
+                            {
+                                "heading": "Example",
+                                "anchor": "rtc_example"
+                            },
+                            {
+                                "heading": "Typedef Documentation",
+                                "anchor": "rpip177dfca3912890d66275"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpipf92d6164e2e759430481"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_spi",
+                        "anchor": "hardware_spi",
+                        "subsections": [
+                            {
+                                "heading": "Macros",
+                                "anchor": "rpip3f5aca6fc7b2f7e386a6"
+                            },
+                            {
+                                "heading": "Enumerations",
+                                "anchor": "rpipe130f9d455459ed6bd0a"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip601c497793130a26e7b7"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip3b93422282d5491e870a"
+                            },
+                            {
+                                "heading": "Macro Definition Documentation",
+                                "anchor": "rpip5331ed139c83b89529e5"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip11b1a48051994bc943cc"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_sync",
+                        "anchor": "hardware_sync",
+                        "subsections": [
+                            {
+                                "heading": "Typedefs",
+                                "anchor": "rpipaf2c26a82e2081c77391"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip9181ec0f1d4569014b21"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipdb2690955f4f087cbfdb"
+                            },
+                            {
+                                "heading": "Spin Locks",
+                                "anchor": "autotoc_md1"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip4d4b625efc6df0f9fa4d"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_timer",
+                        "anchor": "hardware_timer",
+                        "subsections": [
+                            {
+                                "heading": "Typedefs",
+                                "anchor": "rpip54d900e51ca5d5f92dc1"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip45330e5784ba1db85682"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipd7c5ad7e35018f42c694"
+                            },
+                            {
+                                "heading": "Example",
+                                "anchor": "timer_example"
+                            },
+                            {
+                                "heading": "Typedef Documentation",
+                                "anchor": "rpipfeec83b6384e3c7e87ec"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip09984396d60dfa63371d"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_uart",
+                        "anchor": "hardware_uart",
+                        "subsections": [
+                            {
+                                "heading": "Enumerations",
+                                "anchor": "rpipa1024710aeeb196b78bd"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipdc77cff1dad5e6c42c3f"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipde268b5b42accfb88089"
+                            },
+                            {
+                                "heading": "Example",
+                                "anchor": "uart_example"
+                            },
+                            {
+                                "heading": "Macro Definition Documentation",
+                                "anchor": "rpip773088a2574976ad154f"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpipd2f7ea6281f7f11f65f3"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_vreg",
+                        "anchor": "hardware_vreg",
+                        "subsections": [
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip2e95f90d0e541df0fbd5"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipd6f37c069ccee2c01287"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip822143a61fdaa9fdd0db"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_watchdog",
+                        "anchor": "hardware_watchdog",
+                        "subsections": [
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip3e4251ba95a5958301b7"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip3b893cd47191acc8af51"
+                            },
+                            {
+                                "heading": "Example",
+                                "anchor": "watchdog_example"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip5be5428db3923076fb3c"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "hardware_xosc",
+                        "anchor": "hardware_xosc",
+                        "subsections": [
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipb7b0130814aa84716e89"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipb6489fd3a900d0e34c1f"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip047d8240e35fe74caa3d"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/pico-sdk/high_level.html",
+                "title": "High Level APIs",
+                "sections": [
+                    {
+                        "heading": "pico_async_context",
+                        "anchor": "pico_async_context",
+                        "subsections": [
+                            {
+                                "heading": "Modules",
+                                "anchor": "rpip334b1daca4d436cd2653"
+                            },
+                            {
+                                "heading": "Data Structures",
+                                "anchor": "rpipd14ca62e7d51945417d8"
+                            },
+                            {
+                                "heading": "Typedefs",
+                                "anchor": "rpip8b86f1540bf02bfab995"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip22430d9254987e7c53d4"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipf7e29fcf3a157e58cc0d"
+                            },
+                            {
+                                "heading": "Typedef Documentation",
+                                "anchor": "rpip2b7317e3e1fc9b4870aa"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip5eeb276d46e615206cfc"
+                            },
+                            {
+                                "heading": "async_context_freertos",
+                                "anchor": "async_context_freertos"
+                            },
+                            {
+                                "heading": "async_context_poll",
+                                "anchor": "async_context_poll"
+                            },
+                            {
+                                "heading": "async_context_threadsafe_background",
+                                "anchor": "async_context_threadsafe_background"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_flash",
+                        "anchor": "pico_flash",
+                        "subsections": [
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipcb13fd2e8f843c73e3be"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip58b9606407c1c2c7baa3"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip60dc036f77bc5473fdc6"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_i2c_slave",
+                        "anchor": "pico_i2c_slave",
+                        "subsections": [
+                            {
+                                "heading": "Typedefs",
+                                "anchor": "rpipff46d0780fe042bf707c"
+                            },
+                            {
+                                "heading": "Enumerations",
+                                "anchor": "rpipdc5f3b645258d9d4ad67"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipf3d9bd0076a68bc06a7f"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipe486afa4904bd4b305ab"
+                            },
+                            {
+                                "heading": "Typedef Documentation",
+                                "anchor": "rpip830a0124fdd03a0aa411"
+                            },
+                            {
+                                "heading": "Enumeration Type Documentation",
+                                "anchor": "rpip348abdf467de6f5a4c8e"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpipa90b81a0b39607dce648"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_multicore",
+                        "anchor": "pico_multicore",
+                        "subsections": [
+                            {
+                                "heading": "Modules",
+                                "anchor": "rpip7baf405557a57f41b9de"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip72139edc32468d584175"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip7ec31a0c19d1e3a7cbfb"
+                            },
+                            {
+                                "heading": "Example",
+                                "anchor": "multicore_example"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip2e7d115036cade522fdf"
+                            },
+                            {
+                                "heading": "fifo",
+                                "anchor": "multicore_fifo"
+                            },
+                            {
+                                "heading": "lockout",
+                                "anchor": "multicore_lockout"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_rand",
+                        "anchor": "pico_rand",
+                        "subsections": [
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip2ac37766eddd02aaed07"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipce9d2db67cc78ad47f4e"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip98302fde76b5bf685a61"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_stdlib",
+                        "anchor": "pico_stdlib",
+                        "subsections": [
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip04d09fa6ec88d8737403"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip7156f3e738f7fc08bb15"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip99b6eca407f36938cac2"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_sync",
+                        "anchor": "pico_sync",
+                        "subsections": [
+                            {
+                                "heading": "Modules",
+                                "anchor": "rpip42988faa0a4de968a0fe"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip2d3d3c524d77f8b5b256"
+                            },
+                            {
+                                "heading": "critical_section",
+                                "anchor": "critical_section"
+                            },
+                            {
+                                "heading": "lock_core",
+                                "anchor": "lock_core"
+                            },
+                            {
+                                "heading": "mutex",
+                                "anchor": "mutex"
+                            },
+                            {
+                                "heading": "sem",
+                                "anchor": "sem"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_time",
+                        "anchor": "pico_time",
+                        "subsections": [
+                            {
+                                "heading": "Modules",
+                                "anchor": "rpip75fc0e1fb693907ffae4"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip2cc8334d73a1b3d2778d"
+                            },
+                            {
+                                "heading": "timestamp",
+                                "anchor": "timestamp"
+                            },
+                            {
+                                "heading": "sleep",
+                                "anchor": "sleep"
+                            },
+                            {
+                                "heading": "alarm",
+                                "anchor": "alarm"
+                            },
+                            {
+                                "heading": "repeating_timer",
+                                "anchor": "repeating_timer"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_unique_id",
+                        "anchor": "pico_unique_id",
+                        "subsections": [
+                            {
+                                "heading": "Data Structures",
+                                "anchor": "rpip7981e60e740d763c8048"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip04f6f057a3030914c7d2"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip8e5ac78fce9de10bef65"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpipbca95643695906453d0e"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_util",
+                        "anchor": "pico_util",
+                        "subsections": [
+                            {
+                                "heading": "Modules",
+                                "anchor": "rpip158b48d2746d665569ba"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip9566740cd4284b371ea6"
+                            },
+                            {
+                                "heading": "datetime",
+                                "anchor": "util_datetime"
+                            },
+                            {
+                                "heading": "pheap",
+                                "anchor": "util_pheap"
+                            },
+                            {
+                                "heading": "queue",
+                                "anchor": "queue"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/pico-sdk/third_party.html",
+                "title": "Third-party Libraries",
+                "sections": [
+                    {
+                        "heading": "tinyusb_device",
+                        "anchor": "tinyusb_device"
+                    },
+                    {
+                        "heading": "tinyusb_host",
+                        "anchor": "tinyusb_host"
+                    }
+                ]
+            },
+            {
+                "path": "/pico-sdk/networking.html",
+                "title": "Networking Libraries",
+                "sections": [
+                    {
+                        "heading": "pico_btstack",
+                        "anchor": "pico_btstack",
+                        "subsections": [
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipabe482207518b13daea8"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip2109427faef5939b1e08"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip671e7413858800c5885c"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_lwip",
+                        "anchor": "pico_lwip",
+                        "subsections": [
+                            {
+                                "heading": "Modules",
+                                "anchor": "rpip192837c4e57e2f47dbf6"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipad725b8c01648f6ed9d9"
+                            },
+                            {
+                                "heading": "pico_lwip_arch",
+                                "anchor": "pico_lwip_arch"
+                            },
+                            {
+                                "heading": "pico_lwip_freertos",
+                                "anchor": "pico_lwip_freertos"
+                            },
+                            {
+                                "heading": "pico_lwip_nosys",
+                                "anchor": "pico_lwip_nosys"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_cyw43_driver",
+                        "anchor": "pico_cyw43_driver",
+                        "subsections": [
+                            {
+                                "heading": "Modules",
+                                "anchor": "rpip0627746aa35c1c42f44c"
+                            },
+                            {
+                                "heading": "Files",
+                                "anchor": "rpipe176a7f49dbaf003d221"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipc616fb97f3e0a46cb5c6"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip8e1eacb394cf33371b81"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip26cf83ddefcc45ae03f0"
+                            },
+                            {
+                                "heading": "pico_btstack_cyw43",
+                                "anchor": "pico_btstack_cyw43"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_cyw43_arch",
+                        "anchor": "pico_cyw43_arch",
+                        "subsections": [
+                            {
+                                "heading": "Modules",
+                                "anchor": "rpip5075fc02ab0fb367c7ed"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipdce1d0d30c0b2560115e"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip31c6d1db4dbbdd810379"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpipb66453583fb25afb6cb4"
+                            },
+                            {
+                                "heading": "cyw43_driver",
+                                "anchor": "cyw43_driver"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "path": "/pico-sdk/runtime.html",
+                "title": "Runtime Infrastructure",
+                "sections": [
+                    {
+                        "heading": "boot_stage2",
+                        "anchor": "boot_stage2"
+                    },
+                    {
+                        "heading": "pico_base",
+                        "anchor": "pico_base",
+                        "subsections": [
+                            {
+                                "heading": "Enumerations",
+                                "anchor": "rpip45542cfabd24f25c2b10"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipa033e223c2d62e244f85"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_binary_info",
+                        "anchor": "pico_binary_info",
+                        "subsections": [
+                            {
+                                "heading": "Macros",
+                                "anchor": "rpip7989f07e71fba07188be"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipa8a97ecb5ad99ec1aedd"
+                            },
+                            {
+                                "heading": "Macro Definition Documentation",
+                                "anchor": "rpip6f773b4750c63a6456ca"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_bit_ops",
+                        "anchor": "pico_bit_ops",
+                        "subsections": [
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipf1806233ab08edf2d1a4"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip6572eb39dd488ba5cea2"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpipead1d3be6a54f7bf9117"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_bootrom",
+                        "anchor": "pico_bootrom",
+                        "subsections": [
+                            {
+                                "heading": "Macros",
+                                "anchor": "rpipcf60d5fd56095181a98e"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipe13b1c46ede013fb8462"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip15c093d585d653c7235e"
+                            },
+                            {
+                                "heading": "Macro Definition Documentation",
+                                "anchor": "rpip7296ce5a116f5e626e3a"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip3e7ee4d25382f2b45654"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_bootsel_via_double_reset",
+                        "anchor": "pico_bootsel_via_double_reset"
+                    },
+                    {
+                        "heading": "pico_cxx_options",
+                        "anchor": "pico_cxx_options"
+                    },
+                    {
+                        "heading": "pico_divider",
+                        "anchor": "pico_divider",
+                        "subsections": [
+                            {
+                                "heading": "Files",
+                                "anchor": "rpipfb1beee11febefbf90cc"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipbde3848f21f174ffedfe"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip1b6c6d623ad27db766db"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpip66599b57a1e37f40ffd9"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_double",
+                        "anchor": "pico_double"
+                    },
+                    {
+                        "heading": "pico_float",
+                        "anchor": "pico_float"
+                    },
+                    {
+                        "heading": "pico_int64_ops",
+                        "anchor": "pico_int64_ops"
+                    },
+                    {
+                        "heading": "pico_malloc",
+                        "anchor": "pico_malloc"
+                    },
+                    {
+                        "heading": "pico_mem_ops",
+                        "anchor": "pico_mem_ops"
+                    },
+                    {
+                        "heading": "pico_platform",
+                        "anchor": "pico_platform",
+                        "subsections": [
+                            {
+                                "heading": "Macros",
+                                "anchor": "rpipb6ca92b8ab23006742ba"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpip822e3014dfa301a35d56"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpipc1e4122bb92cb27c2c10"
+                            },
+                            {
+                                "heading": "Macro Definition Documentation",
+                                "anchor": "rpip18aaa931de067485a7fc"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpipf4a81a6ff20256c69500"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_printf",
+                        "anchor": "pico_printf"
+                    },
+                    {
+                        "heading": "pico_runtime",
+                        "anchor": "pico_runtime"
+                    },
+                    {
+                        "heading": "pico_stdio",
+                        "anchor": "pico_stdio",
+                        "subsections": [
+                            {
+                                "heading": "Modules",
+                                "anchor": "rpip66600d8c06f1ab929c23"
+                            },
+                            {
+                                "heading": "Functions",
+                                "anchor": "rpipef08e480551c80e7cd76"
+                            },
+                            {
+                                "heading": "Detailed Description",
+                                "anchor": "rpip6d5171ae1c521d31cb1e"
+                            },
+                            {
+                                "heading": "Function Documentation",
+                                "anchor": "rpipb1a84f659f24455a835d"
+                            },
+                            {
+                                "heading": "pico_stdio_semihosting",
+                                "anchor": "pico_stdio_semihosting"
+                            },
+                            {
+                                "heading": "pico_stdio_uart",
+                                "anchor": "pico_stdio_uart"
+                            },
+                            {
+                                "heading": "pico_stdio_usb",
+                                "anchor": "pico_stdio_usb"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "pico_standard_link",
+                        "anchor": "pico_standard_link"
+                    }
+                ]
+            },
+            {
+                "path": "/pico-sdk/misc.html",
+                "title": "External API Headers",
+                "sections": [
+                    {
+                        "heading": "boot_picoboot",
+                        "anchor": "boot_picoboot"
+                    },
+                    {
+                        "heading": "boot_uf2",
+                        "anchor": "boot_uf2"
+                    }
+                ]
+            }
+        ]
+    }
+]
