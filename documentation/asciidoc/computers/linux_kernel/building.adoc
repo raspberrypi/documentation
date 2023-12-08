@@ -235,6 +235,8 @@ KERNEL=kernel_2712
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2712_defconfig
 ----
 
+NOTE: The standard, `bcm2711_defconfig`-based kernel (`kernel8.img`) also runs on Raspberrt Pi 5. For best performance you should use `kernel_2712.img`, but for situations where a 4KB page size is required then `kernel8.img` (`kernel=kernel8.img`) should be used.
+
 ===== Build with Configs
 
 NOTE: To speed up compilation on multiprocessor systems, and get some improvement on single processor ones, use `-j n`, where n is the number of processors * 1.5. You can use the `nproc` command to see how many processors you have. Alternatively, feel free to experiment and see what works!
