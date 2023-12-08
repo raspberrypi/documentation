@@ -8,7 +8,7 @@ Raspberry Pi 5 has an FPC connector on the right-hand side of the board. This co
 
 NOTE: An M.2 HAT which provides an M.2 connector to allow the use of NVMe drives is still in prototype, and has not yet been released.
 
-NOTE: More information around the PCIe FPC connector pin out, and other details needed to create third-party devices, accessories, and HATs, will be released at a later point in time.
+More information around the PCIe FPC connector pin out, and other details needed to create third-party devices, accessories, and HATs, see the https://datasheets.raspberrypi.com/pcie/pcie-connector-standard.pdf[Raspberry Pi Connector for PCIe] standards document. It should be read alongside the new https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[Raspberry Pi HAT+ Specification].
 
 === Enabling PCIe
 
@@ -19,7 +19,7 @@ By default the PCIe connector is not enabled. To enable it you should add the fo
 # Enable the PCIe External connector.
 dtparam=pciex1
 ----
-
+ S
 A more memorable alias for `pciex1` exists, so you can alternatively add `dtparam=nvme` to the `/boot/firmware/config.txt` file.
 
 NOTE: Enumeration of PCIe devices behind a switch is https://github.com/raspberrypi/firmware/issues/1833[not currently supported].
