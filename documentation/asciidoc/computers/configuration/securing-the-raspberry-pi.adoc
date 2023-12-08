@@ -95,7 +95,7 @@ Change the `<username>` entry to the following, replacing `<username>` with your
 
 Save the file. Your new preference should take effect immediately.
 
-=== UpdateRaspberry Pi OS
+=== Update Raspberry Pi OS
 
 Only the latest OS distribution contains all the latest security fixes. Always keep your device xref:os.adoc#updating-and-upgrading-raspberry-pi-os[updated] to the latest version of Raspberry Pi OS.
 
