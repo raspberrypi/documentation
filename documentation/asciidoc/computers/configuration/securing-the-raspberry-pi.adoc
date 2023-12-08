@@ -1,146 +1,136 @@
-== Securing your Raspberry Pi
+== Secure your Raspberry Pi
 
 The security of your Raspberry Pi is important. Gaps in security leave your Raspberry Pi open to hackers who can then use it without your permission.
 
-What level of security you need depends on how you wish to use your Raspberry Pi. For example, if you are simply using your Raspberry Pi on your home network, behind a router with a firewall, then it is already quite secure by default.
+If you expose your Raspberry Pi directly to the internet, either with a direct connection or by letting certain protocols, such as SSH, through your router firewall, you should take steps to ensure the security of your device.
 
-However, if you wish to expose your Raspberry Pi directly to the internet, either with a direct connection (unlikely) or by letting certain protocols through your router firewall (e.g. SSH), then you need to make some basic security changes.
+This documentation describes some common ways to improve the security of your Raspberry Pi.
 
-Even if you are hidden behind a firewall, it is sensible to take security seriously. This documentation will describe some ways of improving the security of your Raspberry Pi. Please note, though, that it is not exhaustive.
+=== Change a user's password
 
-=== Change the Default Password
+You can change the password for the current user account via the `raspi-config` application on from the command line:
 
-The default username and password is used for every single Raspberry Pi running Raspberry Pi OS. So, if you can get access to a Raspberry Pi, and these settings have not been changed, you have `root` access to that Raspberry Pi.
-
-So the first thing to do is change the password. This can be done via the `raspi-config` application, or from the command line.
-
-[,bash]
+[source,console]
 ----
-sudo raspi-config
+$ sudo raspi-config
 ----
 
 Select option 2, and follow the instructions to change the password.
 
-However, all `raspi-config` does is start up the command line `passwd` application, which you can do from the command line. So instead you can type in your new password and confirm it.
+Alternatively, use the `passwd` application:
 
-[,bash]
+[source,console]
 ----
-passwd
-----
-
-=== Changing your Username
-
-You can, of course, make your Raspberry Pi even more secure by also changing your username. All Raspberry Pis come with the default username `pi`, so changing this will immediately make your Raspberry Pi more secure.
-
-To add a new user, enter:
-
-[,bash]
-----
-sudo adduser alice
+$ passwd
 ----
 
-You will be prompted to create a password for the new user.
+=== Add a user
 
-The new user will have a home directory at `/home/alice/`.
+To add a new user, enter the following command, replacing the `<username>` placeholder with the username for the new user:
 
-To add them to the `sudo` group to give them `sudo` permissions as well as all of the other necessary permissions:
-
-[,bash]
+[source,console]
 ----
-sudo usermod -a -G adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi alice
+$ sudo adduser <username>
 ----
 
-You can check your permissions are in place (i.e. you can use `sudo`) by trying the following:
+When prompted, enter a password for the new user.
 
-[,bash]
+You can find the home directory for the new user at `/home/<username>/`.
+
+To grant the new user necessary permissions, like `sudo`, run the following command to add the user to the associated user groups, replacing the `<username>` placeholder with the username for the new user:
+
+[source,console]
 ----
-sudo su - alice
-----
-
-If it runs successfully, then you can be sure that the new account is in the `sudo` group.
-
-Once you have confirmed that the new account is working, you can delete the `pi` user. In order to do this, you'll need to first change the autologin user to your new user `alice`, with the following:
-
-[,bash]
-----
-sudo raspi-config
+$ sudo usermod -a -G adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi <username>
 ----
 
-Select option 1, S5 `Boot / Auto login`, and say yes to reboot.
-Please note that with the current Raspberry Pi OS distribution, there are some aspects that require the `pi` user to be present. If you are unsure whether you will be affected by this, then leave the `pi` user in place. Work is being done to reduce the dependency on the `pi` user.
+To check that the permissions were successfully granted, run the following command, replacing the `<username>` placeholder with the username for the new user:
 
-To delete the `pi` user, type the following:
-
-[,bash]
+[source,console]
 ----
-sudo deluser pi
+$ sudo su - <username>
 ----
 
-This command will delete the `pi` user but will leave the `/home/pi` folder. If necessary, you can use the command below to remove the home folder for the `pi` user at the same time. Note the data in this folder will be permanently deleted, so make sure any required data is stored elsewhere.
+If the above command runs successfully, permissions were successfully configured for the user.
 
-[,bash]
+=== Delete a user
+
+To delete a user, run the following command, replacing the `<username>` placeholder with the username of the user you would like to delete:
+
+[source,console]
 ----
-sudo deluser -remove-home pi
-----
-
-This command will result in a warning that the group `pi` has no more members. The `deluser` command removes both the `pi` user and the `pi` group though, so the warning can be safely ignored.
-
-=== Make `sudo` Require a Password
-
-Placing `sudo` in front of a command runs it as a superuser, and by default, that does not need a password. In general, this is not a problem. However, if your Raspberry Pi is exposed to the internet and somehow becomes exploited (perhaps via a webpage exploit for example), the attacker will be able to change things that require superuser credentials, unless you have set `sudo` to require a password.
-
-To force `sudo` to require a password, enter:
-
-[,bash]
-----
-sudo visudo /etc/sudoers.d/010_pi-nopasswd
+$ sudo deluser -remove-home <username>
 ----
 
-and change the `pi` entry (or whichever usernames have superuser rights) to:
+This command deletes the user as well as their home directory. If you'd like to preserve the user's home directory, run the command without the `-remove-home` option.
 
-[,bash]
+== Change the default user
+
+To change the user that automatically logs into your Raspberry Pi on boot, run the following command:
+
+[source,console]
 ----
-pi ALL=(ALL) PASSWD: ALL
+$ sudo raspi-config
 ----
 
-Then save the file: it will be checked for any syntax errors. If no errors were detected, the file will be saved and you will be returned to the shell prompt. If errors were detected, you will be asked 'what now?' Press the 'enter' key on your keyboard: this will bring up a list of options. You will probably want to use 'e' for '(e)dit sudoers file again', so you can edit the file and fix the problem.
+Select option 1, S5 `Boot / Auto login`. Then, say yes to reboot.
 
-NOTE: Choosing option 'Q' will save the file with any syntax errors still in place, which makes it impossible for _any_ user to use the sudo command.
+=== Require a password for `sudo` commands
 
-=== Updating Raspberry Pi OS
+Placing `sudo` in front of a command runs it as a superuser. By default, that does not need a password. However, you can make your Raspberry Pi more secure by requiring a password for all commands run with `sudo`.
 
-An up-to-date distribution contains all the latest security fixes, so you should go ahead and xref:os.adoc#updating-and-upgrading-raspberry-pi-os[update] your version of Raspberry Pi OS to the latest version.
+To force `sudo` to require a password, edit the `nopasswd` sudoers file for your user account, replacing the `<username>` placeholder in the file name with your username:
 
-If you are using SSH to connect to your Raspberry Pi, it can be worthwhile to add a `cron` job that specifically updates the ssh-server. The following command, perhaps as a daily cron job, will ensure you have the latest SSH security fixes promptly, independent of your normal update process. 
-
-[,bash]
+[source,console]
 ----
-apt install openssh-server
+$ sudo visudo /etc/sudoers.d/010_<username>-nopasswd
+----
+
+Change the `<username>` entry to the following, replacing `<username>` with your username:
+
+[source,console]
+----
+<username> ALL=(ALL) PASSWD: ALL
+----
+
+Save the file. Your new preference should take effect immediately.
+
+=== Update Raspberry Pi OS
+
+Only the latest OS distribution contains all the latest security fixes. Always keep your device xref:os.adoc#updating-and-upgrading-raspberry-pi-os[updated] to the latest version of Raspberry Pi OS.
+
+If you use SSH to connect to your Raspberry Pi, it can be worthwhile to add a `cron` job that specifically updates the SSH server. The following command, perhaps as a daily cron job, ensures you have the latest SSH security fixes promptly, independent of your normal update process.
+
+[source,console]
+----
+$ apt install openssh-server
 ----
 
 === Improving SSH Security
 
-SSH is a common way of accessing a Raspberry Pi remotely. By default, logging in with SSH requires a username/password pair, and there are ways to make this more secure. An even more secure method is to use key based authentication.
+SSH is a common way of accessing a Raspberry Pi remotely. By default, logging in with SSH requires a username/password pair. But you can make this even more secure with key-based authentication.
 
 ==== Improving username/password security
 
-The most important thing to do is ensure you have a very robust password. If your Raspberry Pi is exposed to the internet, the password needs to be very secure. This will help to avoid dictionary attacks or the like.
+Always ensure you have a very robust password. If your Raspberry Pi is exposed to the internet, the password needs to be very secure. This will help to avoid dictionary attacks or the like.
 
 You can also *allow* or *deny* specific users by altering the `sshd` configuration.
 
-[,bash]
+[source,console]
 ----
-sudo nano /etc/ssh/sshd_config
+$ sudo nano /etc/ssh/sshd_config
 ----
 
 Add, edit, or append to the end of the file the following line, which contains the usernames you wish to allow to log in:
 
+[source,bash]
 ----
 AllowUsers alice bob
 ----
 
 You can also use `DenyUsers` to specifically stop some usernames from logging in:
 
+[source,bash]
 ----
 DenyUsers jane john
 ----
@@ -161,9 +151,9 @@ The public key now needs to be moved on to the server: see xref:remote-access.ad
 
 Finally, we need to disable password logins, so that all authentication is done by the key pairs.
 
-[,bash]
+[source,console]
 ----
-sudo nano /etc/ssh/sshd_config
+$ sudo nano /etc/ssh/sshd_config
 ----
 
 There are three lines that need to be changed to `no`, if they are not set that way already:
@@ -179,11 +169,11 @@ Save the file and either restart the ssh system with `sudo service ssh reload` o
 
 === Install a Firewall
 
-There are many firewall solutions available for Linux. Most use the underlying http://www.netfilter.org/projects/iptables/index.html[iptables] project to provide packet filtering. This project sits over the Linux netfiltering system. `iptables` is installed by default on Raspberry Pi OS, but is not set up. Setting it up can be a complicated task, and one project that provides a simpler interface than `iptables` is https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw[ufw], which stands for 'Uncomplicated Fire Wall'. This is the default firewall tool in Ubuntu, and can be easily installed on your Raspberry Pi:
+There are many firewall solutions available for Linux. Most use the underlying http://www.netfilter.org/projects/iptables/index.html[iptables] project to provide packet filtering. This project sits over the Linux netfiltering system. `iptables` is installed by default on Raspberry Pi OS, but is not set up. Setting it up can be a complicated task, and one project that provides a simpler interface than `iptables` is https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw[ufw], which stands for 'Uncomplicated Fire Wall'. This is the default firewall tool in Ubuntu, and can be  installed on your Raspberry Pi:
 
-[,bash]
+[source,console]
 ----
-sudo apt install ufw
+$ sudo apt install ufw
 ----
 
 `ufw` is a fairly straightforward command line tool, although there are some GUIs available for it. This document will describe a few of the basic command line options. Note that `ufw` needs to be run with superuser privileges, so all commands are preceded with `sudo`. It is also possible to use the option `--dry-run` any `ufw` commands, which indicates the results of the command without actually making any changes.
@@ -259,21 +249,22 @@ If you are using your Raspberry Pi as some sort of server, for example an `ssh` 
 
 Install `fail2ban` using the following command:
 
-[,bash]
+[source,console]
 ----
-sudo apt install fail2ban
+$ sudo apt install fail2ban
 ----
 
 On installation, Fail2ban creates a folder `/etc/fail2ban` in which there is a configuration file called `jail.conf`. This needs to be copied to `jail.local` to enable it. Inside this configuration file are a set of default options, together with options for checking specific services for abnormalities. Do the following to examine/change the rules that are used for `ssh`:
 
-[,bash]
+[source,console]
 ----
-sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
-sudo nano /etc/fail2ban/jail.local
+$ sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+$ sudo nano /etc/fail2ban/jail.local
 ----
 
 Add the following section to the `jail.local` file. On some versions of fail2ban this section may already exist, so update this pre-existing section if it is there.
 
+[source,bash]
 ----
 [ssh]
 enabled  = true
@@ -285,7 +276,7 @@ maxretry = 6
 
 As you can see, this section is named ssh, is enabled, examines the ssh port, filters using the `sshd` parameters, parses the system log for malicious activity, and allows six retries before the detection threshold is reached. Checking the default section, we can see that the default banning action is:
 
-[,bash]
+[source,bash]
 ----
 # Default banning action (e.g. iptables, iptables-new,
 # iptables-multiport, shorewall, etc) It is used to define
@@ -298,6 +289,7 @@ banaction = iptables-multiport
 
 If you want to permanently ban an IP address after three failed attempts, you can change the maxretry value in the `[ssh]` section, and set the bantime to a negative number:
 
+[source,bash]
 ----
 [ssh]
 enabled  = true

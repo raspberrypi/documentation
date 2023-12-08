@@ -114,20 +114,20 @@ You may need to try different versions to match up with the server version. Poss
 
 === Sharing a Folder from your Raspberry Pi
 
-Firstly, create a folder to share. This example creates a folder called `shared` in the `home` folder of the current user, and  assumes the current user is `pi`.
+Firstly, create a folder to share. This example creates a folder called `shared` in the `home` folder of the current user:
 
-[,bash]
+[source,console]
 ----
-cd ~
-mkdir shared
-chmod 0740 shared
+$ cd ~
+$ mkdir shared
+$ chmod 0740 shared
 ----
 
-Now we need to tell Samba that there is a `pi` user when accessing that folder. When asked, enter the password of the `pi` user - this can be the default password, but that is well known and should be changed for better security.
+Now we need to tell Samba about your default user account when accessing that folder. When prompted, enter your password, replacing the `<username>` placeholder with the username of your primary user account:
 
-[,bash]
+[source,console]
 ----
-sudo smbpasswd -a pi
+$ sudo smbpasswd -a <username>
 ----
 
 Now we need to tell Samba to share this folder, using the Samba configuration file.
@@ -137,11 +137,11 @@ Now we need to tell Samba to share this folder, using the Samba configuration fi
 sudo nano /etc/samba/smb.conf
 ----
 
-At the end of the file, add the following to share the folder, giving the remote user read/write permissions:
+At the end of the file, add the following to share the folder, giving the remote user read/write permissions. Replace the `<username>` placeholder with the username of your primary user account:
 
 ----
 [share]
-    path = /home/pi/shared
+    path = /home/<username>/shared
     read only = no
     public = yes
     writable = yes
