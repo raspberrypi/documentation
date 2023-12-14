@@ -63,6 +63,10 @@ If a Raspberry Pi fails to boot for some reason, or has to shut down, in many ca
 | Secure-boot configuration is not valid
 
 | 4
+| 3
+| RP1 not found
+
+| 4
 | 4
 | Unsupported board type
 
@@ -77,8 +81,4 @@ If a Raspberry Pi fails to boot for some reason, or has to shut down, in many ca
 | 4
 | 7
 | Power failure type B
-
-| 4
-| 3
-| RP1 not found
 |===
