@@ -37,3 +37,7 @@ For more details, see xref:configuration.adoc#part3.1[DTBs, overlays and config.
 ==== `arm_boost` (Raspberry Pi 4 Only)
 
 All Raspberry Pi 400s and newer revisions of the Raspberry Pi 4B are equipped with a second switch-mode power supply for the SoC voltage rail, and this allows the default turbo-mode clock to be increased from 1.5GHz to 1.8GHz. This change is enabled by default in Raspberry Pi OS. Set `arm_boost=0` to disable.
+
+==== `power_force_3v3_pwm` (Raspberry Pi 5 Only)
+
+Forces PWM when using a 3V3 power supply supply. Set `power_force_3v3_pwm=0` to disable.
