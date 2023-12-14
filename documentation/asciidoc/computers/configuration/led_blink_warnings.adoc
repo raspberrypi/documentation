@@ -77,4 +77,8 @@ If a Raspberry Pi fails to boot for some reason, or has to shut down, in many ca
 | 4
 | 7
 | Power failure type B
+
+| 4
+| 3
+| RP1 not found
 |===
