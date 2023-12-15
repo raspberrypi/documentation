@@ -12,7 +12,7 @@ NOTE: Prior to _Bookworm_, Raspberry Pi OS stored the boot partition at `/boot/`
 
 ==== bootcode.bin
 
-This is the bootloader, which is loaded by the SoC on boot; it does some very basic setup, and then loads one of the `start*.elf` files. `bootcode.bin` is not used on the Raspberry Pi 4, because it has been replaced by boot code in the xref:raspberry-pi.adoc#raspberry-pi-boot-eeprom[onboard EEPROM].
+This is the bootloader, which is loaded by the SoC on boot; it does some very basic setup, and then loads one of the `start*.elf` files. `bootcode.bin` is not used on the Raspberry Pi 4 or Raspberry Pi 5, because it has been replaced by boot code in the xref:raspberry-pi.adoc#raspberry-pi-boot-eeprom[onboard EEPROM].
 
 ==== start.elf, start_x.elf, start_db.elf, start_cd.elf, start4.elf, start4x.elf, start4db.elf, start4cd.elf
 
@@ -22,6 +22,8 @@ These are binary blobs (firmware) that are loaded on to the VideoCore GPU in the
 `start4.elf`, `start4x.elf`, `start4db.elf` and `start4cd.elf` are equivalent firmware files specific to the Raspberry Pi 4-series (Model 4B, Pi 400, Compute Module 4 and Compute Module 4S).
 
 More information on how to use these files can be found in xref:config_txt.adoc#boot-options[the `config.txt` section].
+
+The Raspberry Pi 5 firmware is self-contained withing the bootloader EEPROM and does not load firmware `.elf` files from the boot filesystem.
 
 ==== fixup*.dat
 
@@ -34,6 +36,8 @@ The kernel <<the-kernel-command-line,command line>> passed in to the kernel when
 ==== config.txt
 
 Contains many configuration parameters for setting up the Raspberry Pi. See xref:config_txt.adoc[the `config.txt` section].
+
+NOTE: Raspberry Pi 5 requires that the boot partition contains a non-empty `config.txt` file.
 
 ==== issue.txt
 
@@ -66,13 +70,18 @@ The boot folder will contain various xref:linux_kernel.adoc#kernel[kernel] image
 
 | kernel7l.img
 | BCM2711
-| Pi 4, Pi 400
+| Pi 4, Pi 400, CM4, CM4-S
 | Large Physical Address Extension (LPAE)
 
 | kernel8.img
-| BCM2837, BCM2711
-| Pi Zero 2 W, Pi 2, Pi 3, Pi 4, Pi 400
+| BCM2837, BCM2711, BCM2712
+| Pi Zero 2 W, Pi 2, Pi 3, Pi 4, Pi 400, CM4, CM4-S, Pi 5
 | xref:config_txt.adoc#boot-options[64-bit kernel]. Raspberry Pi 2 with BCM2836 does not support 64-bit kernels.
+
+| kernel_2712.img
+| BCM2712
+| Pi 5
+| Pi 5 optmized xref:config_txt.adoc#boot-options[64-bit kernel].
 |===
 
 NOTE: The architecture reported by `lscpu` is `armv7l` for systems running a 32-bit kernel (i.e. everything except `kernel8.img`), and `aarch64` for systems running a 64-bit kernel. The `l` in the `armv7l` case refers to the architecture being little-endian, not `LPAE` as is indicated by the `l` in the `kernel7l.img` filename.
