@@ -118,7 +118,11 @@ Build and install the kernel, modules, and Device Tree blobs; this step can take
 ----
 make -j4 zImage modules dtbs
 sudo make modules_install
-sudo cp arch/arm/boot/dts/*.dtb /boot/firmware/
+# Choose one of the following based on the kernel version
+  # For kernels up to 6.4:
+  sudo cp arch/arm/boot/dts/*.dtb /boot/firmware/
+  # For kernel 6.5 and above:
+  sudo cp arch/arm/boot/dts/broadcom/*.dtb /boot/firmware/
 sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/firmware/overlays/
 sudo cp arch/arm/boot/dts/overlays/README /boot/firmware/overlays/
 sudo cp arch/arm/boot/zImage /boot/firmware/$KERNEL.img
@@ -308,7 +312,11 @@ Finally, copy the kernel and Device Tree blobs onto the SD card, making sure to 
 ----
 sudo cp mnt/fat32/$KERNEL.img mnt/fat32/$KERNEL-backup.img
 sudo cp arch/arm/boot/zImage mnt/fat32/$KERNEL.img
-sudo cp arch/arm/boot/dts/*.dtb mnt/fat32/
+# Choose one of the following based on the kernel version
+  # For kernels up to 6.4:
+  sudo cp arch/arm/boot/dts/*.dtb mnt/fat32/
+  # For kernel 6.5 and above:
+  sudo cp arch/arm/boot/dts/broadcom/*.dtb mnt/fat32/
 sudo cp arch/arm/boot/dts/overlays/*.dtb* mnt/fat32/overlays/
 sudo cp arch/arm/boot/dts/overlays/README mnt/fat32/overlays/
 sudo umount mnt/fat32
