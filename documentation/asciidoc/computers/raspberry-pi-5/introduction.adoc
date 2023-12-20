@@ -53,7 +53,7 @@ To force a hard shutdown, press and hold the power button.
 
 If the Raspberry Pi board is shut down, but still powered, pressing the power button will restart the board.
 
-Default shutdown wattage is around 1 to 1.4W. However this can be decreased by manually editing the EEPROM configurationw with `sudo rpi-eeprom-config -e`. Change the settings to the following:
+Default shutdown wattage is around 1 to 1.4W. However this can be decreased by manually editing the EEPROM configuration with `sudo rpi-eeprom-config -e`. Change the settings to the following:
 
 [source]
 ----
