@@ -137,7 +137,7 @@ sudo make modules_install
 sudo cp arch/arm64/boot/dts/broadcom/*.dtb /boot/firmware/
 sudo cp arch/arm64/boot/dts/overlays/*.dtb* /boot/firmware/overlays/
 sudo cp arch/arm64/boot/dts/overlays/README /boot/firmware/overlays/
-sudo cp arch/arm64/boot/Image.gz /boot/firmware/$KERNEL.img
+sudo cp arch/arm64/boot/Image /boot/firmware/$KERNEL.img
 ----
 
 NOTE: On a Raspberry Pi 2/3/4/5, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
