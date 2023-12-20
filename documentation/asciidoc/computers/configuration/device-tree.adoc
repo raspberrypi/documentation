@@ -847,6 +847,31 @@ Raspberry Pi 5 only.
 The maximum current in mA that the power supply can supply. The firmware reports the value indicated by the USB-C, USB-PD or PoE interfaces.
 For bench power supplies (e.g. connected to the GPIO header) define `PSU_MAX_CURRENT` in the bootloader configuration to indicate the power supply current capability.
 
+`power_reset` - 32-bit integer
+
+Raspberry Pi 5 only.
+
+A bit field indicating the reason why the PMIC was reset.
+
+|===
+| Bit | Reason
+
+| 0
+| Over voltage
+
+| 1
+| Under voltage
+
+| 2
+| Over temperature
+
+| 3
+| Enable signal
+
+| 4
+| Watchdog
+|===
+
 `rpi_power_supply` - 2 32-bit integers
 
 The USB VID and Product VDO of the official Raspberry Pi 5A power supply (if connected).
@@ -868,7 +893,7 @@ To capture this for a bug report run `hexdump -C /proc/device-tree/chosen/power/
 The format is defined by the https://usb.org/document-library/usb-power-delivery[USB Power Delivery] specification.
 
 
-==== BCM2711 specific bootloader properties `/chosen/bootloader`
+==== BCM2711 & BCM2712 specific bootloader properties `/chosen/bootloader`
 The following properties are specific to BCM2711 SPI EEPROM bootloader.
 
 `build_timestamp` - 32-bit integer
@@ -938,7 +963,7 @@ If secure-boot is enabled then this bit-field will be non-zero. The individual b
 
 The Git version string for the bootloader.
 
-==== BCM2711 USB boot properties `/chosen/bootloader/usb`
+==== BCM2711 & BCM2712 USB boot properties `/chosen/bootloader/usb`
 The following properties are defined if the system was booted from USB. These may be used to uniquely identify the USB boot device.
 
 `usb-version` - 32-bit integer

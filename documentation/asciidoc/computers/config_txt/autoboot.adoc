@@ -11,6 +11,10 @@ See also xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT] boot flow.
 === `boot_partition`
 Specifies the partition number for booting unless the partition number was already specified as a parameter to the `reboot` command (e.g. `sudo reboot 2`).
 
+Partition numbers start at `1` and the MBR partitions are `1` to `4`. Specifying partition `0` means boot from the `default` partition which is the first bootable FAT partition.
+
+Bootable partitions must be formatted as FAT12, FAT16 or FAT32 and contain a `start.elf` file (or `config.txt` file on Raspberry Pi 5) in order to be classed as be bootable by the bootloader.
+
 === The `[tryboot]` filter
 This filter passes if the system was booted with the `tryboot` flag set.
 ----
