@@ -32,7 +32,7 @@ If you are using our xref:../accessories/display.adoc[7-inch Touch Display] with
 dtoverlay=vc4-kms-dsi-7inch
 ----
 
-alternatively, attaching it to the `CAM/DISP 0` connector you can add the following line:
+Alternatively, attaching it to the `CAM/DISP 0` connector you can add the following line:
 
 [source,bash]
 ----
