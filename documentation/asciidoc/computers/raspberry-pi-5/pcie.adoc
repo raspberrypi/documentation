@@ -38,3 +38,25 @@ dtparam=pciex1_gen=3
 ----
 
 WARNING: The Raspberry Pi 5 is not certified for Gen 3.0 speeds, and connections to PCIe devices at these speeds may be unstable. 
+
+You should then reboot your Raspberry Pi for these settings to take effect.
+
+=== Booting from PCIe
+
+Once enabled, and after you reboot, an NVMe disk attached via the PCIe should be visible. However, your Raspberry Pi won't try to boot off the NVMe drive. If you wish to enable boot support you will need to change the `BOOT_ORDER` in the bootloader configuration. Edit the EEPROM configuration by,
+
+[source]
+----
+sudo rpi-eeprom-config --edit
+----
+
+and change the `BOOT_ORDER` line to be as below.
+
+[source]
+----
+BOOT_ORDER=0xf416
+----
+
+after saving your changes, reboot your Raspberry Pi to update the EEPROM.
+
+NOTE: Your Raspberry Pi will not boot from an attached NVMe drive unless you have the external PCIe port enabledd, and there's a NVMe drive with a valid boot partition attached to the PCIe bus.
