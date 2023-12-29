@@ -57,6 +57,16 @@ and change the `BOOT_ORDER` line to be as below.
 BOOT_ORDER=0xf416
 ----
 
-after saving your changes, reboot your Raspberry Pi to update the EEPROM.
+If you are booting from a non-HAT+ device you should also add,
 
-NOTE: Your Raspberry Pi will not boot from an attached NVMe drive unless you have the external PCIe port enabledd, and there's a NVMe drive with a valid boot partition attached to the PCIe bus.
+[source]
+----
+PCIE_PROBE=1
+----
+
+to the EEPROM configuration. This is not needed if your NVMe device is https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[a HAT+].
+
+After saving your changes, reboot your Raspberry Pi to update the EEPROM.
+
+
+NOTE: Your Raspberry Pi will not boot from an attached NVMe drive unless you have the external PCIe port enabled, and there's an NVMe drive with a valid boot partition attached to the PCIe bus.
