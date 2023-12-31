@@ -22,7 +22,7 @@ https://datasheets.raspberrypi.com/picow/pico-w-datasheet.pdf[Raspberry Pi Pico 
 
 https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W]:: Getting Raspberry Pi Pico W online with C/{cpp} or MicroPython
 
-NOTE: Documentation introducing working with Wi-Fi and Bluetooth on Raspberry Pi Pico W with C/{cpp} or MicroPython is presented in the https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W] book.
+NOTE: Code compiled for the Pico may not work on the Pico W! Especially the onboard LED, which switches from (pin 25 on pico to pin 00 on W) Documentation introducing working with Wi-Fi and Bluetooth on Raspberry Pi Pico W with C/{cpp} or MicroPython is presented in the https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W] book.
 
 === Software Development
 
