@@ -17,13 +17,13 @@ NOTE: When building on a Raspberry Pi with 1GB or less of RAM, there is a risk t
 You can rebuild `rpicam-apps` _without_ first rebuilding the whole of `libcamera` and `libepoxy`. If you do not need support for the GLES/EGL preview window then `libepoxy` can be omitted entirely. Mostly this will include Raspberry Pi OS Lite users, and they must be sure to use `-Denable_egl=false` when running `meson setup` later. These users should run:
 
 ----
-sudo apt install -y libcamera-dev libjpeg-dev libtiff5-dev
+sudo apt install -y libcamera-dev libjpeg-dev libtiff5-dev libpng-dev
 ----
 
 All other users should execute:
 
 ----
-sudo apt install -y libcamera-dev libepoxy-dev libjpeg-dev libtiff5-dev
+sudo apt install -y libcamera-dev libepoxy-dev libjpeg-dev libtiff5-dev libpng-dev
 ----
 
 If you want to use the Qt preview window, please also execute
