@@ -66,6 +66,8 @@ PCIE_PROBE=1
 
 to the EEPROM configuration. This is not needed if your NVMe device is https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[a HAT+].
 
+IMPORTANT: For boards that follow the new https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[HAT+ standard], you will not need to modify either the `config.txt` file or the EEPROM configuration.
+
 After saving your changes, reboot your Raspberry Pi to update the EEPROM.
 
 
