@@ -33,7 +33,7 @@ end
 # Performance-booster for watching directories on Windows
 gem "wdm", "~> 0.1.0", :install_if => Gem.win_platform?
 
-gem "nokogiri", "~> 1.15"
+gem "nokogiri", "~> 1.16"
 
 # So we can add custom element templates
 gem 'slim', '~> 5.2.0'

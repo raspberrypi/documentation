@@ -57,7 +57,7 @@ GEM
       jekyll (>= 3.5, < 5.0)
       jekyll-feed (~> 0.9)
       jekyll-seo-tag (~> 2.1)
-    nokogiri (1.15.5)
+    nokogiri (1.16.0)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     pathutil (0.16.2)
@@ -98,7 +98,7 @@ DEPENDENCIES
   jekyll-asciidoc
   jekyll-feed (~> 0.17)
   minima (~> 2.0)
-  nokogiri (~> 1.15)
+  nokogiri (~> 1.16)
   slim (~> 5.2.0)
   thread_safe (~> 0.3.5)
   tzinfo (~> 2.0)
