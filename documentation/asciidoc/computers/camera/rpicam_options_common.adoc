@@ -209,11 +209,24 @@ Example: `rpicam-raw -t 2000 --segment 1 --rawfull -o test%03d.raw` will cause m
 	--mode				Specify sensor mode, given as <width>:<height>:<bit-depth>:<packing>
 ----
 
-This option is more general than `--rawfull` and allows the precise selection of one of the camera modes. The mode should be specified by giving its width, height, bit-depth and packing, separated by colons. These numbers do not have to be exact as the system will select the closest it can find. Moreover, the bit-depth and packing are optional (defaulting to 12 and `P` for "packed" respectively). For example:
+This option is more general than `--rawfull` and allows the precise selection of one of the camera modes. The mode should be specified by giving its width, height, bit-depth and packing, separated by colons. These numbers do not have to be exact as the system will select the closest it can find. Moreover, the bit-depth and packing are optional (defaulting to 12 and `P` for "packed" respectively).
 
-* `4056:3040:12:P` - 4056x3040 resolution, 12 bits per pixel, packed. This means that raw image buffers will be packed so that 2 pixel values occupy only 3 bytes.
-* `1632:1224:10` - 1632x1224 resolution, 10 bits per pixel. It will default to "packed". A 10-bit packed mode would store 4 pixels in every 5 bytes.
-* `2592:1944:10:U` - 2592x1944 resolution, 10 bits per pixel, unpacked. An unpacked format will store every pixel in 2 bytes, in this case with the top 6 bits of each value being zero.
+On a Pi 4 or earlier device, "packed" modes will return pixels that are packed according to the MIPI CSI-2 standard, meaning:
+
+* 10 bit camera modes will be packed with 4 pixels in 5 bytes. The first 4 bytes contain the 8 MSBs (most significant bits) of each pixel, and the final byte contains the 4 pairs of LSBs.
+* 12 bit camera modes will be packed with 2 pixels in 3 bytes. The first 2 bytes contain the 8 MSBs, and the final byte contains the 4 LSBs of both pixels.
+
+"Unpacked" modes will use exactly 2 bytes per pixel. The 2-byte words will be zero padded at the most significant end, meaning that, for example, a pixel from a 10-bit camera mode cannot exceed the value 1023.
+
+On a Pi 5 (and any subsequent) devices, raw modes are handled somewhat differently. The "packed" modes will give you pixel values that are compressed with a visually lossless compression scheme into 8 bits, therefore using only 1 byte per pixel.
+
+"Unpacked" modes on a Pi 5 will be interpreted as a request for uncompressed and unpacked pixels, again using 16 bits per pixel. However, in contrast to the Pi 4, these values are zero-padded at the least significant end. Therefore, they will use the full 16 bit dynamic range, whatever pixel depth the sensor was delivering.
+
+In both cases, users wishing to access the pixel values themselves are advised to use the "unpacked" formats as these are much easier to manipulate.
+
+* `4056:3040:12:P` - 4056x3040 resolution, 12 bits per pixel, packed. On a Pi 4 (or earlier) the raw image buffers will be packed so that 2 pixel values occupy only 3 bytes. On a Pi 5 the pixels will be compressed to 1 byte per pixel.
+* `1632:1224:10` - 1632x1224 resolution, 10 bits per pixel. It will default to "packed". A 10-bit packed mode would store 4 pixels in every 5 bytes on a Pi 4, or 1 byte per pixel (compressed) on a Pi 5.
+* `2592:1944:10:U` - 2592x1944 resolution, 10 bits per pixel, unpacked. An unpacked format will store every pixel in 2 bytes. On a Pi 4 the top 6 bits of each value will be zero, but on a Pi 5 the bottom 6 bits of each value will be zero.
 * `3264:2448` - 3264x2448 resolution. It will try to select the default 12-bit mode but in the case of the v2 camera there isn't one, so a 10-bit mode would be chosen instead.
 
 The `--mode` option affects the mode choice for video recording and stills capture. To control the mode choice during the preview phase prior to stills capture, please use the `--viewfinder-mode` option.

@@ -21,3 +21,5 @@ In good conditions (using a fast SSD) `rpicam-raw` can get close to writing 12MP
 ----
 rpicam-raw -t 5000 --width 4056 --height 3040 -o test.raw --framerate 8
 ----
+
+For more information on the raw formats, including how to choose between "packed" and "unpacked" versions, as well as the differences between Pi 5 and earlier Pis, please refer to the `--mode` option in the  xref:camera_software.adoc#camera-resolution-and-readout[camera resolution options section].
