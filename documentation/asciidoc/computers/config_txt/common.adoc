@@ -40,4 +40,4 @@ All Raspberry Pi 400s and newer revisions of the Raspberry Pi 4B are equipped wi
 
 ==== `power_force_3v3_pwm` (Raspberry Pi 5 Only)
 
-Forces PWM when using a 3V3 power supply supply. Set `power_force_3v3_pwm=0` to disable.
+Forces PWM when using a 3V3 power supply. Set `power_force_3v3_pwm=0` to disable.
