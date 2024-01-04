@@ -83,9 +83,11 @@ which should display:
 
 If you'd like to integrate this functionality into your own code, you should be able to achieve this by using the vcmailbox.c code as an example.
 
-=== Locking the OTP Changes
+=== Locking OTP on 2711
 
-It is possible to lock the OTP changes to avoid them being edited again. This can be done using a special argument with the OTP write mailbox:
+It is possible to lock the OTP changes to avoid them being edited again.
+
+This can be done using a special argument with the OTP write mailbox:
 
 [,bash]
 ----
@@ -94,7 +96,18 @@ vcmailbox 0x00038021 8 8 0xffffffff 0xaffe0000
 
 Once locked, the customer OTP values can no longer be altered. Note that this locking operation is irreversible.
 
-=== Making Customer OTP bits Unreadable
+=== Locking OTP on 2712
+
+The customer region can be marked as read only with the following command.
+
+[,bash]
+----
+vcmailbox 0x00030086 4 4 0
+----
+
+OTP is only locked until the device is reset, so OTP locks need to be reapplied on every boot.
+
+=== Making Customer OTP bits Unreadable (2711 only)
 
 It is possible to prevent the customer OTP bits from being read at all. This can be done using a special argument with the OTP write mailbox:
 
@@ -105,7 +118,50 @@ vcmailbox 0x00038021 8 8 0xffffffff 0xaffebabe
 
 This operation is unlikely to be useful for the vast majority of users, and is irreversible.
 
+=== Customer MAC addresses (2712 only)
+
+On 2712 the Ethernet, Wifi and Bluetooth MAC addresses are set in OTP memory. These values can be change with customer values.
+
+Get customer mac address `vcmailbox 0x00030082/3/4 6 6 0 0` Where 2 is ethernet, 3 is wifi and 4 is BT.
+
+Example...
+[,bash]
+----
+vcmailbox 0x00030083 6 6 0 0
+0x00000020 0x80000000 0x00030083 0x00000006 0x80000006 0xddccbbaa 0x0000ffee 0x00000000
+----
+
+To set a customer mac address it has to be sent as two 32 words with the bytes in the right order. You can run a command to check it's formatted properly.
+
+Example...
+[,bash]
+----
+vcmailbox 0x00030085 6 6 0x44332211 0x6655
+----
+
+Check the log to see if the mac is what's expected...
+[,bash]
+----
+sudo vclog -m
+1057826.701: read mac address 11:22:33:44:55:66
+----
+
+A multicast address is NOT considered valid. The least significant bit in the most significant octet of a MAC address is the multicast bit, so make sure this is NOT set.
+
+You can then set the customer mac with the command `vcmailbox 0x00038082/3/4 6 6 <row1> <row0>`
+
+Example...
+[,bash]
+----
+vcmailbox 0x00038082 6 6 0x44332211 0x6655
+----
+
+If a customer mac address is set to ff:ff:ff:ff:ff:ff then it’s ignored.
+
 === Device specific private key
+
+NOTE: This is not yet implemented on 2712
+
 Eight rows of OTP (256 bits) are available for use as a device-specific private key. This is intended to support file-system encryption.
 
 These rows can be programmed and read using similar `vcmailbox` commands to those used for managing customer OTP rows. If
