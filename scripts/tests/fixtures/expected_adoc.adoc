@@ -1,0 +1,2534 @@
+[[hardware_dma]]
+== hardware_dma
+
+++++
+
+<div class="ingroups" id="rpip419eab713d48a5f28978">Part of: <a class="el" href="group__hardware.html" id="rpipdc8295350e500dcdae8a">Hardware APIs</a></div>
+++++
+
+[[rpip5fc5374acc78a0097d96]]
+=== Modules
+
+
+++++
+
+<ul class="memberdecls" id="r_group__channel__config" data-parent-id="rpip5cf45d30d9b2b87d763e"><li class="memitem"><p data-target="true" data-target-for="r_group__channel__config"><span class="memItemLeft" data-target="true" id="rpip24422272b48989b9a58b" data-parent-id="r_group__channel__config" data-target-for="rpip24422272b48989b9a58b"> </span><span class="memItemRight" data-target="true" id="rpip7290ad87e3438e119351" data-parent-id="r_group__channel__config" data-target-for="rpip7290ad87e3438e119351"><a class="el" href="group__channel__config.html" id="rpipb1ec408ccf030643ea70">channel_config</a></span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip81fd54c08e73f9b43338"><span class="mdescLeft" data-target="true" id="rpipc017670de185d8c6d5ca" data-parent-id="rpip81fd54c08e73f9b43338" data-target-for="rpipc017670de185d8c6d5ca"> </span><span class="mdescRight" data-target="true" id="rpip8073c61f9c4d76bbc08f" data-parent-id="rpip81fd54c08e73f9b43338" data-target-for="rpip8073c61f9c4d76bbc08f">DMA channel configuration. <br id="rpipc0723924221d544f501c"/></span></p>
+</li></ul>
+
+++++
+
+[[rpip9c0559a7d8745d062e08]]
+=== Enumerations
+
+
+++++
+
+<ul class="memberdecls" id="r_gaccecdff367b06a019373e9a55d4f3e01" data-parent-id="rpipa3d2e7e4a0cce32b6717"><li class="memitem"><p data-target="true" data-target-for="r_gaccecdff367b06a019373e9a55d4f3e01"><span class="memItemLeft" data-target="true" id="rpip8522a1e0fb2ec6bbce2d" data-parent-id="r_gaccecdff367b06a019373e9a55d4f3e01" data-target-for="rpip8522a1e0fb2ec6bbce2d">enum  </span><span class="memItemRight" data-target="true" id="rpip162d05d86d52db14a5c8" data-parent-id="r_gaccecdff367b06a019373e9a55d4f3e01" data-target-for="rpip162d05d86d52db14a5c8"><a class="el" href="#gaccecdff367b06a019373e9a55d4f3e01" id="rpipf9dc7230bf77d5f96e1a" data-adjusted="true">dma_channel_transfer_size</a> { <a class="el" href="#ggaccecdff367b06a019373e9a55d4f3e01abd7d246406a2ebe4dd49780db176dc3c" id="rpip4ec3d4c0eed799b47138" data-adjusted="true">DMA_SIZE_8</a> = 0
+, <a class="el" href="#ggaccecdff367b06a019373e9a55d4f3e01a2e343022ac046b6b67bb99eebc833cfc" id="rpipb3800e3cf590da8b08cc" data-adjusted="true">DMA_SIZE_16</a> = 1
+, <a class="el" href="#ggaccecdff367b06a019373e9a55d4f3e01abf1030013f4ad74b45d25cd9a07b6296" id="rpipe2ae62d01c13cd87fe01" data-adjusted="true">DMA_SIZE_32</a> = 2
+ }</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip3791c79e6a81ee49ca7b"><span class="mdescLeft" data-target="true" id="rpip0573ecd241da494084da" data-parent-id="rpip3791c79e6a81ee49ca7b" data-target-for="rpip0573ecd241da494084da"> </span><span class="mdescRight" data-target="true" id="rpipaed8e22e5f9edb745efd" data-parent-id="rpip3791c79e6a81ee49ca7b" data-target-for="rpipaed8e22e5f9edb745efd">Enumeration of available DMA channel transfer sizes.  <a href="#gaccecdff367b06a019373e9a55d4f3e01" id="rpip5523f595f65e8d83bf26" data-adjusted="true">More...</a><br id="rpip6f1e9a8b8c4a8660852d"/></span></p>
+</li></ul>
+
+++++
+
+[[rpipdecae9a23f531c1da4bd]]
+=== Functions
+
+
+++++
+
+<ul class="memberdecls" id="r_gae1b3c916746b3d2052f21b7dda34aab9" data-parent-id="rpip3bffd6c6d7738cee0227"><li class="memitem"><p data-target="true" data-target-for="r_gae1b3c916746b3d2052f21b7dda34aab9"><span class="memItemLeft" data-target="true" id="rpipa853156c2847c44ba2f3" data-parent-id="r_gae1b3c916746b3d2052f21b7dda34aab9" data-target-for="rpipa853156c2847c44ba2f3">void </span><span class="memItemRight" data-target="true" id="rpip97b42fccffd4d6ab5d20" data-parent-id="r_gae1b3c916746b3d2052f21b7dda34aab9" data-target-for="rpip97b42fccffd4d6ab5d20"><a class="el" href="#gae1b3c916746b3d2052f21b7dda34aab9" id="rpip12a5da7bc473d460f639" data-adjusted="true">dma_channel_claim</a> (uint channel)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip2b6aa70c86834dd0b741"><span class="mdescLeft" data-target="true" id="rpipa28e39df48fe03c5f94e" data-parent-id="rpip2b6aa70c86834dd0b741" data-target-for="rpipa28e39df48fe03c5f94e"> </span><span class="mdescRight" data-target="true" id="rpip5f7cfab28d8ab2186ca9" data-parent-id="rpip2b6aa70c86834dd0b741" data-target-for="rpip5f7cfab28d8ab2186ca9">Mark a dma channel as used.  <br id="rpip8d1ad7fea8a2d8dc6932"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gaa430bc53dc2b36d727ad976f6348c8b3"><span class="memItemLeft" data-target="true" id="rpipfd611fb0178dfcb54534" data-parent-id="r_gaa430bc53dc2b36d727ad976f6348c8b3" data-target-for="rpipfd611fb0178dfcb54534">void </span><span class="memItemRight" data-target="true" id="rpip7640a24d73f4d005e462" data-parent-id="r_gaa430bc53dc2b36d727ad976f6348c8b3" data-target-for="rpip7640a24d73f4d005e462"><a class="el" href="#gaa430bc53dc2b36d727ad976f6348c8b3" id="rpip1ff7e319943dd82598fc" data-adjusted="true">dma_claim_mask</a> (uint32_t channel_mask)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip5299258911ac5d01fc85"><span class="mdescLeft" data-target="true" id="rpip5e1d6b5837a5f7d751e8" data-parent-id="rpip5299258911ac5d01fc85" data-target-for="rpip5e1d6b5837a5f7d751e8"> </span><span class="mdescRight" data-target="true" id="rpipf7ad41082328b3116a4b" data-parent-id="rpip5299258911ac5d01fc85" data-target-for="rpipf7ad41082328b3116a4b">Mark multiple dma channels as used.  <br id="rpip54d10f7851589202844d"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gac50200739b88a2fd52316f4150533035"><span class="memItemLeft" data-target="true" id="rpipf288cd6a9bead85aa975" data-parent-id="r_gac50200739b88a2fd52316f4150533035" data-target-for="rpipf288cd6a9bead85aa975">void </span><span class="memItemRight" data-target="true" id="rpipdf5c14ec864837b8c6af" data-parent-id="r_gac50200739b88a2fd52316f4150533035" data-target-for="rpipdf5c14ec864837b8c6af"><a class="el" href="#gac50200739b88a2fd52316f4150533035" id="rpip13dc78ccf0508272a100" data-adjusted="true">dma_channel_unclaim</a> (uint channel)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip55d0f5e0592f4b125e71"><span class="mdescLeft" data-target="true" id="rpip05608daa6783450011dd" data-parent-id="rpip55d0f5e0592f4b125e71" data-target-for="rpip05608daa6783450011dd"> </span><span class="mdescRight" data-target="true" id="rpip4e808102601dc91db29f" data-parent-id="rpip55d0f5e0592f4b125e71" data-target-for="rpip4e808102601dc91db29f">Mark a dma channel as no longer used.  <br id="rpipe3ea7ae8adfcfae3c65e"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga0211681c906ebe4971d0cded8e98f8b5"><span class="memItemLeft" data-target="true" id="rpip2b838fcb3952a80e8e8d" data-parent-id="r_ga0211681c906ebe4971d0cded8e98f8b5" data-target-for="rpip2b838fcb3952a80e8e8d">void </span><span class="memItemRight" data-target="true" id="rpipdde68694885ca9736845" data-parent-id="r_ga0211681c906ebe4971d0cded8e98f8b5" data-target-for="rpipdde68694885ca9736845"><a class="el" href="#ga0211681c906ebe4971d0cded8e98f8b5" id="rpip71cea64b0f65858c4fa3" data-adjusted="true">dma_unclaim_mask</a> (uint32_t channel_mask)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip7e939bb61cc5f038355b"><span class="mdescLeft" data-target="true" id="rpipbebc5d1be90fbb257189" data-parent-id="rpip7e939bb61cc5f038355b" data-target-for="rpipbebc5d1be90fbb257189"> </span><span class="mdescRight" data-target="true" id="rpip03f38c7ce59d997c7b37" data-parent-id="rpip7e939bb61cc5f038355b" data-target-for="rpip03f38c7ce59d997c7b37">Mark multiple dma channels as no longer used.  <br id="rpipa656a6af7ebbbcbeea76"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga4b0a6680795b9c9ed787362a8a057206"><span class="memItemLeft" data-target="true" id="rpip7cb2330991f963e976d9" data-parent-id="r_ga4b0a6680795b9c9ed787362a8a057206" data-target-for="rpip7cb2330991f963e976d9">int </span><span class="memItemRight" data-target="true" id="rpip80730b618fa1c5829101" data-parent-id="r_ga4b0a6680795b9c9ed787362a8a057206" data-target-for="rpip80730b618fa1c5829101"><a class="el" href="#ga4b0a6680795b9c9ed787362a8a057206" id="rpipa52e7b3fdb630b0a7093" data-adjusted="true">dma_claim_unused_channel</a> (bool required)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip8e39dc3998144ec6248c"><span class="mdescLeft" data-target="true" id="rpip83d9056c0bef43beb925" data-parent-id="rpip8e39dc3998144ec6248c" data-target-for="rpip83d9056c0bef43beb925"> </span><span class="mdescRight" data-target="true" id="rpip405997fce8d93cb94dab" data-parent-id="rpip8e39dc3998144ec6248c" data-target-for="rpip405997fce8d93cb94dab">Claim a free dma channel.  <br id="rpip603c2329968d2dee48f8"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga9aadb81f53b979bde1c1a81164d1eff2"><span class="memItemLeft" data-target="true" id="rpip3ff2471834d6d9f7683a" data-parent-id="r_ga9aadb81f53b979bde1c1a81164d1eff2" data-target-for="rpip3ff2471834d6d9f7683a">bool </span><span class="memItemRight" data-target="true" id="rpipc2aea75f606d0dbb0f2e" data-parent-id="r_ga9aadb81f53b979bde1c1a81164d1eff2" data-target-for="rpipc2aea75f606d0dbb0f2e"><a class="el" href="#ga9aadb81f53b979bde1c1a81164d1eff2" id="rpip2ee2bc6510a10aad91f2" data-adjusted="true">dma_channel_is_claimed</a> (uint channel)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip97f9d514f6d15001968d"><span class="mdescLeft" data-target="true" id="rpip303f5e98aff82588a621" data-parent-id="rpip97f9d514f6d15001968d" data-target-for="rpip303f5e98aff82588a621"> </span><span class="mdescRight" data-target="true" id="rpip3eea25b6829c4e308a0c" data-parent-id="rpip97f9d514f6d15001968d" data-target-for="rpip3eea25b6829c4e308a0c">Determine if a dma channel is claimed.  <br id="rpip596694145d4c965c6f90"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga7449b659efb178a408f42f7f8f7b02f9"><span class="memItemLeft" data-target="true" id="rpipaa022c4582ae5d002036" data-parent-id="r_ga7449b659efb178a408f42f7f8f7b02f9" data-target-for="rpipaa022c4582ae5d002036">static void </span><span class="memItemRight" data-target="true" id="rpip1e4631a622fc0b4f1f24" data-parent-id="r_ga7449b659efb178a408f42f7f8f7b02f9" data-target-for="rpip1e4631a622fc0b4f1f24"><a class="el" href="#ga7449b659efb178a408f42f7f8f7b02f9" id="rpip6f8df7ca503aec3b84be" data-adjusted="true">dma_channel_set_config</a> (uint channel, const <a class="el" href="structdma__channel__config.html" id="rpip28d111f0f19acc187c7b">dma_channel_config</a> *config, bool trigger)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpipbb6ffcabe7bd81153caf"><span class="mdescLeft" data-target="true" id="rpipde1ac9664a08f0473f48" data-parent-id="rpipbb6ffcabe7bd81153caf" data-target-for="rpipde1ac9664a08f0473f48"> </span><span class="mdescRight" data-target="true" id="rpipd086212143bb46bcba5a" data-parent-id="rpipbb6ffcabe7bd81153caf" data-target-for="rpipd086212143bb46bcba5a">Set a channel configuration.  <br id="rpipf62a93ee438326974732"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gabf6f6ffe56fa42dcb105032f110589ae"><span class="memItemLeft" data-target="true" id="rpip088d9419fc0c46f44b6c" data-parent-id="r_gabf6f6ffe56fa42dcb105032f110589ae" data-target-for="rpip088d9419fc0c46f44b6c">static void </span><span class="memItemRight" data-target="true" id="rpip8993509b32a75415f58f" data-parent-id="r_gabf6f6ffe56fa42dcb105032f110589ae" data-target-for="rpip8993509b32a75415f58f"><a class="el" href="#gabf6f6ffe56fa42dcb105032f110589ae" id="rpip889f5bb5bf1dc42d225f" data-adjusted="true">dma_channel_set_read_addr</a> (uint channel, const volatile void *read_addr, bool trigger)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip5c363e55d10991da4aa6"><span class="mdescLeft" data-target="true" id="rpipaa05e054a2a3d41ef3aa" data-parent-id="rpip5c363e55d10991da4aa6" data-target-for="rpipaa05e054a2a3d41ef3aa"> </span><span class="mdescRight" data-target="true" id="rpipf95a7247e6a1eec82c78" data-parent-id="rpip5c363e55d10991da4aa6" data-target-for="rpipf95a7247e6a1eec82c78">Set the DMA initial read address.  <br id="rpipf97a208f72fb3d4e3d2a"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gaf0156609fe51c07d07118b2aeb4e9ae6"><span class="memItemLeft" data-target="true" id="rpip44a1a948d10ed90c22c6" data-parent-id="r_gaf0156609fe51c07d07118b2aeb4e9ae6" data-target-for="rpip44a1a948d10ed90c22c6">static void </span><span class="memItemRight" data-target="true" id="rpip1d61bd2cd57e9bc571a6" data-parent-id="r_gaf0156609fe51c07d07118b2aeb4e9ae6" data-target-for="rpip1d61bd2cd57e9bc571a6"><a class="el" href="#gaf0156609fe51c07d07118b2aeb4e9ae6" id="rpipbaeedc6728b0741ef875" data-adjusted="true">dma_channel_set_write_addr</a> (uint channel, volatile void *write_addr, bool trigger)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip56ce41232440ca8c090d"><span class="mdescLeft" data-target="true" id="rpip1bf120489a728165b5b1" data-parent-id="rpip56ce41232440ca8c090d" data-target-for="rpip1bf120489a728165b5b1"> </span><span class="mdescRight" data-target="true" id="rpip6aba20cbc8459943b016" data-parent-id="rpip56ce41232440ca8c090d" data-target-for="rpip6aba20cbc8459943b016">Set the DMA initial write address.  <br id="rpip77f3bfd0cda34635cad2"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga16c0e08eda636f13053d8c8b0f81e821"><span class="memItemLeft" data-target="true" id="rpip3f4cd961a03b1dba1fd2" data-parent-id="r_ga16c0e08eda636f13053d8c8b0f81e821" data-target-for="rpip3f4cd961a03b1dba1fd2">static void </span><span class="memItemRight" data-target="true" id="rpip5d6865206152490cacd2" data-parent-id="r_ga16c0e08eda636f13053d8c8b0f81e821" data-target-for="rpip5d6865206152490cacd2"><a class="el" href="#ga16c0e08eda636f13053d8c8b0f81e821" id="rpip628e7d2fe81bd16caae8" data-adjusted="true">dma_channel_set_trans_count</a> (uint channel, uint32_t trans_count, bool trigger)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip0b4e0ec8589fc270128b"><span class="mdescLeft" data-target="true" id="rpip2ffa2e684f0f85ef16ad" data-parent-id="rpip0b4e0ec8589fc270128b" data-target-for="rpip2ffa2e684f0f85ef16ad"> </span><span class="mdescRight" data-target="true" id="rpipc8a707fbab9de239109a" data-parent-id="rpip0b4e0ec8589fc270128b" data-target-for="rpipc8a707fbab9de239109a">Set the number of bus transfers the channel will do.  <br id="rpip2d93861d4a6e4a82474b"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga971d077ac39b2d7f7c6b45e2ddc5d190"><span class="memItemLeft" data-target="true" id="rpip3b437b6d265d31ef1f51" data-parent-id="r_ga971d077ac39b2d7f7c6b45e2ddc5d190" data-target-for="rpip3b437b6d265d31ef1f51">static void </span><span class="memItemRight" data-target="true" id="rpipe5bc756f0db30b9c47a0" data-parent-id="r_ga971d077ac39b2d7f7c6b45e2ddc5d190" data-target-for="rpipe5bc756f0db30b9c47a0"><a class="el" href="#ga971d077ac39b2d7f7c6b45e2ddc5d190" id="rpip077694f466804237f480" data-adjusted="true">dma_channel_configure</a> (uint channel, const <a class="el" href="structdma__channel__config.html" id="rpip7142fd309e4bf890de37">dma_channel_config</a> *config, volatile void *write_addr, const volatile void *read_addr, uint transfer_count, bool trigger)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpipae724a8e26bbbfbe1aff"><span class="mdescLeft" data-target="true" id="rpip3ce49bd5d375f994aad4" data-parent-id="rpipae724a8e26bbbfbe1aff" data-target-for="rpip3ce49bd5d375f994aad4"> </span><span class="mdescRight" data-target="true" id="rpipaa67d9030b1431afa6ec" data-parent-id="rpipae724a8e26bbbfbe1aff" data-target-for="rpipaa67d9030b1431afa6ec">Configure all DMA parameters and optionally start transfer.  <br id="rpip853ed059e3c558668648"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gabf64c461a405a8114591105d9dc53575"><span class="memItemLeft" data-target="true" id="rpipfd5fae90f72d88275c67" data-parent-id="r_gabf64c461a405a8114591105d9dc53575" data-target-for="rpipfd5fae90f72d88275c67">static void </span><span class="memItemRight" data-target="true" id="rpip46c2dd440420ad8dd0bb" data-parent-id="r_gabf64c461a405a8114591105d9dc53575" data-target-for="rpip46c2dd440420ad8dd0bb"><a class="el" href="#gabf64c461a405a8114591105d9dc53575" id="rpip2696a6b5eaec3a84fcc6" data-adjusted="true">dma_channel_transfer_from_buffer_now</a> (uint channel, const volatile void *read_addr, uint32_t transfer_count)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip0956b1d97be44d939141"><span class="mdescLeft" data-target="true" id="rpipb82d18755865892136bc" data-parent-id="rpip0956b1d97be44d939141" data-target-for="rpipb82d18755865892136bc"> </span><span class="mdescRight" data-target="true" id="rpipca67cf94168c9fa364c8" data-parent-id="rpip0956b1d97be44d939141" data-target-for="rpipca67cf94168c9fa364c8">Start a DMA transfer from a buffer immediately.  <br id="rpip9bcf5df30cecc69880b2"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga9110135d8161fc268d87dfb040d0f854"><span class="memItemLeft" data-target="true" id="rpip8a8e14e3a517b8f7fa83" data-parent-id="r_ga9110135d8161fc268d87dfb040d0f854" data-target-for="rpip8a8e14e3a517b8f7fa83">static void </span><span class="memItemRight" data-target="true" id="rpip2ea70406bb07cf9aa8fd" data-parent-id="r_ga9110135d8161fc268d87dfb040d0f854" data-target-for="rpip2ea70406bb07cf9aa8fd"><a class="el" href="#ga9110135d8161fc268d87dfb040d0f854" id="rpipced3b1bbedb0132aefe2" data-adjusted="true">dma_channel_transfer_to_buffer_now</a> (uint channel, volatile void *write_addr, uint32_t transfer_count)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip338437292093eca37bcd"><span class="mdescLeft" data-target="true" id="rpip10a9e65dffbaf4c2cc9e" data-parent-id="rpip338437292093eca37bcd" data-target-for="rpip10a9e65dffbaf4c2cc9e"> </span><span class="mdescRight" data-target="true" id="rpip852f074a926afe6adc02" data-parent-id="rpip338437292093eca37bcd" data-target-for="rpip852f074a926afe6adc02">Start a DMA transfer to a buffer immediately.  <br id="rpipb78fab0ec711c68b5dfd"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga6407f7763b533c98e23f65e35c5e48ee"><span class="memItemLeft" data-target="true" id="rpip02a8a369b713ce30a4d2" data-parent-id="r_ga6407f7763b533c98e23f65e35c5e48ee" data-target-for="rpip02a8a369b713ce30a4d2">static void </span><span class="memItemRight" data-target="true" id="rpip1e03bf569579d77d600c" data-parent-id="r_ga6407f7763b533c98e23f65e35c5e48ee" data-target-for="rpip1e03bf569579d77d600c"><a class="el" href="#ga6407f7763b533c98e23f65e35c5e48ee" id="rpip620a7b3af4884e3d1677" data-adjusted="true">dma_start_channel_mask</a> (uint32_t chan_mask)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpipc02c78483a875486fb19"><span class="mdescLeft" data-target="true" id="rpipd0ad29651d1d3f479f92" data-parent-id="rpipc02c78483a875486fb19" data-target-for="rpipd0ad29651d1d3f479f92"> </span><span class="mdescRight" data-target="true" id="rpipb40053424b1f208180e2" data-parent-id="rpipc02c78483a875486fb19" data-target-for="rpipb40053424b1f208180e2">Start one or more channels simultaneously.  <br id="rpip4d7177b7b99bda08b461"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga355720e02713c7324b540efc6f632366"><span class="memItemLeft" data-target="true" id="rpipc4c68d478bca6830d079" data-parent-id="r_ga355720e02713c7324b540efc6f632366" data-target-for="rpipc4c68d478bca6830d079">static void </span><span class="memItemRight" data-target="true" id="rpip95ffe25fbe04c2eee8b5" data-parent-id="r_ga355720e02713c7324b540efc6f632366" data-target-for="rpip95ffe25fbe04c2eee8b5"><a class="el" href="#ga355720e02713c7324b540efc6f632366" id="rpip59b748856bb39cf58ac0" data-adjusted="true">dma_channel_start</a> (uint channel)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpipd9b3cf8a983951e36494"><span class="mdescLeft" data-target="true" id="rpip2ec96b611ca7f261a813" data-parent-id="rpipd9b3cf8a983951e36494" data-target-for="rpip2ec96b611ca7f261a813"> </span><span class="mdescRight" data-target="true" id="rpipdc9ef3f7803c93889182" data-parent-id="rpipd9b3cf8a983951e36494" data-target-for="rpipdc9ef3f7803c93889182">Start a single DMA channel.  <br id="rpipa9a63498924c974579c3"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga735e7c6c136c078689ead70790f4edb2"><span class="memItemLeft" data-target="true" id="rpip720cdf87ee97db3c2427" data-parent-id="r_ga735e7c6c136c078689ead70790f4edb2" data-target-for="rpip720cdf87ee97db3c2427">static void </span><span class="memItemRight" data-target="true" id="rpip7eb5d44814d34b21c08b" data-parent-id="r_ga735e7c6c136c078689ead70790f4edb2" data-target-for="rpip7eb5d44814d34b21c08b"><a class="el" href="#ga735e7c6c136c078689ead70790f4edb2" id="rpipf6636ef5d21e31a32f18" data-adjusted="true">dma_channel_abort</a> (uint channel)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip9e9e766eb0ace57ae89a"><span class="mdescLeft" data-target="true" id="rpip87e26748f61190c29f68" data-parent-id="rpip9e9e766eb0ace57ae89a" data-target-for="rpip87e26748f61190c29f68"> </span><span class="mdescRight" data-target="true" id="rpip956e965543c6ceaff2e9" data-parent-id="rpip9e9e766eb0ace57ae89a" data-target-for="rpip956e965543c6ceaff2e9">Stop a DMA transfer.  <br id="rpip221f95ce797bdd5f2b16"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gaf60011d46676c87b7139f37188eaa4b9"><span class="memItemLeft" data-target="true" id="rpipf3ee0633a1bd9327f9e1" data-parent-id="r_gaf60011d46676c87b7139f37188eaa4b9" data-target-for="rpipf3ee0633a1bd9327f9e1">static void </span><span class="memItemRight" data-target="true" id="rpip75d6bed33e6cfb9af427" data-parent-id="r_gaf60011d46676c87b7139f37188eaa4b9" data-target-for="rpip75d6bed33e6cfb9af427"><a class="el" href="#gaf60011d46676c87b7139f37188eaa4b9" id="rpip47eec137466ed62145a4" data-adjusted="true">dma_channel_set_irq0_enabled</a> (uint channel, bool enabled)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpipe5baf382f54e74426b79"><span class="mdescLeft" data-target="true" id="rpipabd7416d912d6d11632b" data-parent-id="rpipe5baf382f54e74426b79" data-target-for="rpipabd7416d912d6d11632b"> </span><span class="mdescRight" data-target="true" id="rpip39faabae132eebdb8286" data-parent-id="rpipe5baf382f54e74426b79" data-target-for="rpip39faabae132eebdb8286">Enable single DMA channel's interrupt via DMA_IRQ_0.  <br id="rpipdc352bd16aec19fc66bb"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gad5c1ac22e0b4d9b831912fbb95460be4"><span class="memItemLeft" data-target="true" id="rpip1945716897f08103f43c" data-parent-id="r_gad5c1ac22e0b4d9b831912fbb95460be4" data-target-for="rpip1945716897f08103f43c">static void </span><span class="memItemRight" data-target="true" id="rpip6ca9bbf021fd8c786a78" data-parent-id="r_gad5c1ac22e0b4d9b831912fbb95460be4" data-target-for="rpip6ca9bbf021fd8c786a78"><a class="el" href="#gad5c1ac22e0b4d9b831912fbb95460be4" id="rpipfaab8f9360efab478cc2" data-adjusted="true">dma_set_irq0_channel_mask_enabled</a> (uint32_t channel_mask, bool enabled)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpipe7228023f24641102784"><span class="mdescLeft" data-target="true" id="rpip06553ebf6a156595826f" data-parent-id="rpipe7228023f24641102784" data-target-for="rpip06553ebf6a156595826f"> </span><span class="mdescRight" data-target="true" id="rpip7e0de92303e46242b1e9" data-parent-id="rpipe7228023f24641102784" data-target-for="rpip7e0de92303e46242b1e9">Enable multiple DMA channels' interrupts via DMA_IRQ_0.  <br id="rpip6ddcec2654da0efee92e"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga4f9415c8f77ff0bacedf5a138a88d76f"><span class="memItemLeft" data-target="true" id="rpip66894b4a385083a5cec3" data-parent-id="r_ga4f9415c8f77ff0bacedf5a138a88d76f" data-target-for="rpip66894b4a385083a5cec3">static void </span><span class="memItemRight" data-target="true" id="rpip53dbf2ed891f3c24c501" data-parent-id="r_ga4f9415c8f77ff0bacedf5a138a88d76f" data-target-for="rpip53dbf2ed891f3c24c501"><a class="el" href="#ga4f9415c8f77ff0bacedf5a138a88d76f" id="rpip7478cd2fa87e8ea2f4e9" data-adjusted="true">dma_channel_set_irq1_enabled</a> (uint channel, bool enabled)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip50b956ed40fecd858410"><span class="mdescLeft" data-target="true" id="rpip46ece3c8ee6a3f1f165f" data-parent-id="rpip50b956ed40fecd858410" data-target-for="rpip46ece3c8ee6a3f1f165f"> </span><span class="mdescRight" data-target="true" id="rpip87b59ee4c280d3c24e68" data-parent-id="rpip50b956ed40fecd858410" data-target-for="rpip87b59ee4c280d3c24e68">Enable single DMA channel's interrupt via DMA_IRQ_1.  <br id="rpipd91254d549b062bd6a47"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gaaa20edc55a2cc4977d24bdb487a22aa5"><span class="memItemLeft" data-target="true" id="rpipd009d01e774d19fab51b" data-parent-id="r_gaaa20edc55a2cc4977d24bdb487a22aa5" data-target-for="rpipd009d01e774d19fab51b">static void </span><span class="memItemRight" data-target="true" id="rpip6b24062571c86976bbb1" data-parent-id="r_gaaa20edc55a2cc4977d24bdb487a22aa5" data-target-for="rpip6b24062571c86976bbb1"><a class="el" href="#gaaa20edc55a2cc4977d24bdb487a22aa5" id="rpip853eb25526d49a8cae68" data-adjusted="true">dma_set_irq1_channel_mask_enabled</a> (uint32_t channel_mask, bool enabled)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip6a03f0a8786c177a9d1e"><span class="mdescLeft" data-target="true" id="rpip6c037497a87cb0c2938d" data-parent-id="rpip6a03f0a8786c177a9d1e" data-target-for="rpip6c037497a87cb0c2938d"> </span><span class="mdescRight" data-target="true" id="rpip645092e2cc8ee677e39b" data-parent-id="rpip6a03f0a8786c177a9d1e" data-target-for="rpip645092e2cc8ee677e39b">Enable multiple DMA channels' interrupts via DMA_IRQ_1.  <br id="rpip792898a0644aa6b70f34"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga6fefe19fa5539580315de923e42131d3"><span class="memItemLeft" data-target="true" id="rpip297b98290afafd6a04e0" data-parent-id="r_ga6fefe19fa5539580315de923e42131d3" data-target-for="rpip297b98290afafd6a04e0">static void </span><span class="memItemRight" data-target="true" id="rpip0fcd0e71833bcac780da" data-parent-id="r_ga6fefe19fa5539580315de923e42131d3" data-target-for="rpip0fcd0e71833bcac780da"><a class="el" href="#ga6fefe19fa5539580315de923e42131d3" id="rpip11d291f7e737b317bc1d" data-adjusted="true">dma_irqn_set_channel_enabled</a> (uint irq_index, uint channel, bool enabled)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip4fa0680473543dd5ae93"><span class="mdescLeft" data-target="true" id="rpip59ec5d558441d59e18ef" data-parent-id="rpip4fa0680473543dd5ae93" data-target-for="rpip59ec5d558441d59e18ef"> </span><span class="mdescRight" data-target="true" id="rpip79a8bacb9e69b1133475" data-parent-id="rpip4fa0680473543dd5ae93" data-target-for="rpip79a8bacb9e69b1133475">Enable single DMA channel interrupt on either DMA_IRQ_0 or DMA_IRQ_1.  <br id="rpipd2358aa67c324ba68d80"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga720f2335e93b0e53e28959566ca18f3e"><span class="memItemLeft" data-target="true" id="rpip7cc55276c5f754bf1c87" data-parent-id="r_ga720f2335e93b0e53e28959566ca18f3e" data-target-for="rpip7cc55276c5f754bf1c87">static void </span><span class="memItemRight" data-target="true" id="rpipa6cb698ce431f48b99e4" data-parent-id="r_ga720f2335e93b0e53e28959566ca18f3e" data-target-for="rpipa6cb698ce431f48b99e4"><a class="el" href="#ga720f2335e93b0e53e28959566ca18f3e" id="rpip33bb37e0810e1742e61a" data-adjusted="true">dma_irqn_set_channel_mask_enabled</a> (uint irq_index, uint32_t channel_mask, bool enabled)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpipad3b3cc7d4ed3a554e9b"><span class="mdescLeft" data-target="true" id="rpipab174c27e918338e1985" data-parent-id="rpipad3b3cc7d4ed3a554e9b" data-target-for="rpipab174c27e918338e1985"> </span><span class="mdescRight" data-target="true" id="rpip358ed4f15104d1325bb0" data-parent-id="rpipad3b3cc7d4ed3a554e9b" data-target-for="rpip358ed4f15104d1325bb0">Enable multiple DMA channels' interrupt via either DMA_IRQ_0 or DMA_IRQ_1.  <br id="rpip323dfa2f5cdf157ac251"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gaa86e892c47b054d3c22fa39c001c7c23"><span class="memItemLeft" data-target="true" id="rpip7a042c612d80c1201132" data-parent-id="r_gaa86e892c47b054d3c22fa39c001c7c23" data-target-for="rpip7a042c612d80c1201132">static bool </span><span class="memItemRight" data-target="true" id="rpip061895090af34574618f" data-parent-id="r_gaa86e892c47b054d3c22fa39c001c7c23" data-target-for="rpip061895090af34574618f"><a class="el" href="#gaa86e892c47b054d3c22fa39c001c7c23" id="rpipcefb5f44d0d4b8d6b452" data-adjusted="true">dma_channel_get_irq0_status</a> (uint channel)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpipdc697f2b8e6a84745c5f"><span class="mdescLeft" data-target="true" id="rpipc95044f02b38f706f273" data-parent-id="rpipdc697f2b8e6a84745c5f" data-target-for="rpipc95044f02b38f706f273"> </span><span class="mdescRight" data-target="true" id="rpip94c66890a27a46eb4b2b" data-parent-id="rpipdc697f2b8e6a84745c5f" data-target-for="rpip94c66890a27a46eb4b2b">Determine if a particular channel is a cause of DMA_IRQ_0.  <br id="rpipbb945e0aa0c0b4f43356"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gaf61d25264e49058d20fb607dc1c40981"><span class="memItemLeft" data-target="true" id="rpip2bf090aa24459f73edc8" data-parent-id="r_gaf61d25264e49058d20fb607dc1c40981" data-target-for="rpip2bf090aa24459f73edc8">static bool </span><span class="memItemRight" data-target="true" id="rpip167cfa40484d5a105ae9" data-parent-id="r_gaf61d25264e49058d20fb607dc1c40981" data-target-for="rpip167cfa40484d5a105ae9"><a class="el" href="#gaf61d25264e49058d20fb607dc1c40981" id="rpipad4d8dd10e9e7af68070" data-adjusted="true">dma_channel_get_irq1_status</a> (uint channel)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip05558e47f93e7c0bde89"><span class="mdescLeft" data-target="true" id="rpip703fc96d316ebe1fd15e" data-parent-id="rpip05558e47f93e7c0bde89" data-target-for="rpip703fc96d316ebe1fd15e"> </span><span class="mdescRight" data-target="true" id="rpip7649bd03504c40c511f3" data-parent-id="rpip05558e47f93e7c0bde89" data-target-for="rpip7649bd03504c40c511f3">Determine if a particular channel is a cause of DMA_IRQ_1.  <br id="rpip2aaf6714ef9bfe8d5e44"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga43f1fe10d5eb241788f72ad11599fc11"><span class="memItemLeft" data-target="true" id="rpip1630d46a02d2f7b32d86" data-parent-id="r_ga43f1fe10d5eb241788f72ad11599fc11" data-target-for="rpip1630d46a02d2f7b32d86">static bool </span><span class="memItemRight" data-target="true" id="rpip0a74c46c3172ccac3788" data-parent-id="r_ga43f1fe10d5eb241788f72ad11599fc11" data-target-for="rpip0a74c46c3172ccac3788"><a class="el" href="#ga43f1fe10d5eb241788f72ad11599fc11" id="rpip48029632398314f22ca7" data-adjusted="true">dma_irqn_get_channel_status</a> (uint irq_index, uint channel)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip4c36fe1af093b5c8b1bd"><span class="mdescLeft" data-target="true" id="rpip54666e2ab46e120d89cc" data-parent-id="rpip4c36fe1af093b5c8b1bd" data-target-for="rpip54666e2ab46e120d89cc"> </span><span class="mdescRight" data-target="true" id="rpip4913cdae0e1bc8fe86c7" data-parent-id="rpip4c36fe1af093b5c8b1bd" data-target-for="rpip4913cdae0e1bc8fe86c7">Determine if a particular channel is a cause of DMA_IRQ_N.  <br id="rpipe76c8f664e60d1fe736a"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gafefe50f20c44bcfa7f729829a5d494f4"><span class="memItemLeft" data-target="true" id="rpip229d9b90637e417fc87a" data-parent-id="r_gafefe50f20c44bcfa7f729829a5d494f4" data-target-for="rpip229d9b90637e417fc87a">static void </span><span class="memItemRight" data-target="true" id="rpip1f096525d5b01053873a" data-parent-id="r_gafefe50f20c44bcfa7f729829a5d494f4" data-target-for="rpip1f096525d5b01053873a"><a class="el" href="#gafefe50f20c44bcfa7f729829a5d494f4" id="rpip82b0e36a597c7ceb304c" data-adjusted="true">dma_channel_acknowledge_irq0</a> (uint channel)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip91a2250a134f651c60e9"><span class="mdescLeft" data-target="true" id="rpip048a1a704aed4d75154d" data-parent-id="rpip91a2250a134f651c60e9" data-target-for="rpip048a1a704aed4d75154d"> </span><span class="mdescRight" data-target="true" id="rpip342f1f524f14a4f00f03" data-parent-id="rpip91a2250a134f651c60e9" data-target-for="rpip342f1f524f14a4f00f03">Acknowledge a channel IRQ, resetting it as the cause of DMA_IRQ_0.  <br id="rpip38dc34d77c3f33fec987"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga4d4b5d461ff09bb6e4e2a05df3b7c75c"><span class="memItemLeft" data-target="true" id="rpip83c307c6eebdafc6968c" data-parent-id="r_ga4d4b5d461ff09bb6e4e2a05df3b7c75c" data-target-for="rpip83c307c6eebdafc6968c">static void </span><span class="memItemRight" data-target="true" id="rpip94b013c486daf1885c71" data-parent-id="r_ga4d4b5d461ff09bb6e4e2a05df3b7c75c" data-target-for="rpip94b013c486daf1885c71"><a class="el" href="#ga4d4b5d461ff09bb6e4e2a05df3b7c75c" id="rpip54cbb552183de0efc72b" data-adjusted="true">dma_channel_acknowledge_irq1</a> (uint channel)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpipa68d91b55a0fb5bd0003"><span class="mdescLeft" data-target="true" id="rpip97238ea5b658d4916536" data-parent-id="rpipa68d91b55a0fb5bd0003" data-target-for="rpip97238ea5b658d4916536"> </span><span class="mdescRight" data-target="true" id="rpip2e82375d5cc840b04368" data-parent-id="rpipa68d91b55a0fb5bd0003" data-target-for="rpip2e82375d5cc840b04368">Acknowledge a channel IRQ, resetting it as the cause of DMA_IRQ_1.  <br id="rpipa0fb70cf2e13c47db2e8"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gad0e8e022fbe67b80c16912254526fada"><span class="memItemLeft" data-target="true" id="rpipb9c63851452a580b9271" data-parent-id="r_gad0e8e022fbe67b80c16912254526fada" data-target-for="rpipb9c63851452a580b9271">static void </span><span class="memItemRight" data-target="true" id="rpip906daf29b18d9b0fa9b2" data-parent-id="r_gad0e8e022fbe67b80c16912254526fada" data-target-for="rpip906daf29b18d9b0fa9b2"><a class="el" href="#gad0e8e022fbe67b80c16912254526fada" id="rpip1ec019edb85c7c2a701c" data-adjusted="true">dma_irqn_acknowledge_channel</a> (uint irq_index, uint channel)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip57652971fdcb985e7b83"><span class="mdescLeft" data-target="true" id="rpipbb03dafd5dd27f6bcf42" data-parent-id="rpip57652971fdcb985e7b83" data-target-for="rpipbb03dafd5dd27f6bcf42"> </span><span class="mdescRight" data-target="true" id="rpipc2c1f90cfbba20ea71cf" data-parent-id="rpip57652971fdcb985e7b83" data-target-for="rpipc2c1f90cfbba20ea71cf">Acknowledge a channel IRQ, resetting it as the cause of DMA_IRQ_N.  <br id="rpip3fbf60a6b6a39e80e561"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gafbb5020a529ed6d39a11da88a6f313f2"><span class="memItemLeft" data-target="true" id="rpipf276b69c53e16a09a3e6" data-parent-id="r_gafbb5020a529ed6d39a11da88a6f313f2" data-target-for="rpipf276b69c53e16a09a3e6">static bool </span><span class="memItemRight" data-target="true" id="rpip935c47e28a8bfa047c61" data-parent-id="r_gafbb5020a529ed6d39a11da88a6f313f2" data-target-for="rpip935c47e28a8bfa047c61"><a class="el" href="#gafbb5020a529ed6d39a11da88a6f313f2" id="rpip87c73fc1fc607a7b8e7c" data-adjusted="true">dma_channel_is_busy</a> (uint channel)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpipc43f1d05eb6944a0ca1a"><span class="mdescLeft" data-target="true" id="rpip227964c3c41895f43a9c" data-parent-id="rpipc43f1d05eb6944a0ca1a" data-target-for="rpip227964c3c41895f43a9c"> </span><span class="mdescRight" data-target="true" id="rpipebb92586673fbe8a56ab" data-parent-id="rpipc43f1d05eb6944a0ca1a" data-target-for="rpipebb92586673fbe8a56ab">Check if DMA channel is busy.  <br id="rpip5555051f31e1bb3e757e"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gab57c68850b8e6ed1623de75ad611db62"><span class="memItemLeft" data-target="true" id="rpipb1c3e82f15f1a338eff9" data-parent-id="r_gab57c68850b8e6ed1623de75ad611db62" data-target-for="rpipb1c3e82f15f1a338eff9">static void </span><span class="memItemRight" data-target="true" id="rpip3a26177a8aff9a9a086b" data-parent-id="r_gab57c68850b8e6ed1623de75ad611db62" data-target-for="rpip3a26177a8aff9a9a086b"><a class="el" href="#gab57c68850b8e6ed1623de75ad611db62" id="rpipbe320a1e9cf13f5629f9" data-adjusted="true">dma_channel_wait_for_finish_blocking</a> (uint channel)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip30ca680d0fe27e2fc6d8"><span class="mdescLeft" data-target="true" id="rpip6ebcc37f456104a16e31" data-parent-id="rpip30ca680d0fe27e2fc6d8" data-target-for="rpip6ebcc37f456104a16e31"> </span><span class="mdescRight" data-target="true" id="rpip4f3665b2500008ec44ab" data-parent-id="rpip30ca680d0fe27e2fc6d8" data-target-for="rpip4f3665b2500008ec44ab">Wait for a DMA channel transfer to complete.  <br id="rpipe2b7630a18e7c11129f2"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga078c3c80d5637850ec64e8f5ad5ce0c2"><span class="memItemLeft" data-target="true" id="rpip5363f1baefed1a68f387" data-parent-id="r_ga078c3c80d5637850ec64e8f5ad5ce0c2" data-target-for="rpip5363f1baefed1a68f387">static void </span><span class="memItemRight" data-target="true" id="rpipf6f24f9fa1f825e4cd80" data-parent-id="r_ga078c3c80d5637850ec64e8f5ad5ce0c2" data-target-for="rpipf6f24f9fa1f825e4cd80"><a class="el" href="#ga078c3c80d5637850ec64e8f5ad5ce0c2" id="rpip01d1651cae0ca20dddf9" data-adjusted="true">dma_sniffer_enable</a> (uint channel, uint mode, bool force_channel_enable)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip87df44b8392c96a78e8e"><span class="mdescLeft" data-target="true" id="rpip578d60369f979314cf79" data-parent-id="rpip87df44b8392c96a78e8e" data-target-for="rpip578d60369f979314cf79"> </span><span class="mdescRight" data-target="true" id="rpip96f1d6813f257ef492eb" data-parent-id="rpip87df44b8392c96a78e8e" data-target-for="rpip96f1d6813f257ef492eb">Enable the DMA sniffing targeting the specified channel.  <br id="rpipec711b188d822841d0d4"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gac3b250d97550527a584de9d3f770acea"><span class="memItemLeft" data-target="true" id="rpip4afab835e3bcc3043019" data-parent-id="r_gac3b250d97550527a584de9d3f770acea" data-target-for="rpip4afab835e3bcc3043019">static void </span><span class="memItemRight" data-target="true" id="rpip72b1889f5543aac78e38" data-parent-id="r_gac3b250d97550527a584de9d3f770acea" data-target-for="rpip72b1889f5543aac78e38"><a class="el" href="#gac3b250d97550527a584de9d3f770acea" id="rpip8fdcbd0db0008db9821c" data-adjusted="true">dma_sniffer_set_byte_swap_enabled</a> (bool swap)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip4ea30413cb2013101b95"><span class="mdescLeft" data-target="true" id="rpip8d62e389eaffffa14268" data-parent-id="rpip4ea30413cb2013101b95" data-target-for="rpip8d62e389eaffffa14268"> </span><span class="mdescRight" data-target="true" id="rpipa52798135366618a3876" data-parent-id="rpip4ea30413cb2013101b95" data-target-for="rpipa52798135366618a3876">Enable the Sniffer byte swap function.  <br id="rpip23debda8087337f4d9bc"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga1366c938a8322aa1eb8e703b1f22d6af"><span class="memItemLeft" data-target="true" id="rpip27e3f60d444d5c28f6ec" data-parent-id="r_ga1366c938a8322aa1eb8e703b1f22d6af" data-target-for="rpip27e3f60d444d5c28f6ec">static void </span><span class="memItemRight" data-target="true" id="rpipc76bafa0ce79a218b38c" data-parent-id="r_ga1366c938a8322aa1eb8e703b1f22d6af" data-target-for="rpipc76bafa0ce79a218b38c"><a class="el" href="#ga1366c938a8322aa1eb8e703b1f22d6af" id="rpip65c3f6b6d91c149992f4" data-adjusted="true">dma_sniffer_set_output_invert_enabled</a> (bool invert)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpipcab98572a45a407db393"><span class="mdescLeft" data-target="true" id="rpip4f7b2de38e31c9758c17" data-parent-id="rpipcab98572a45a407db393" data-target-for="rpip4f7b2de38e31c9758c17"> </span><span class="mdescRight" data-target="true" id="rpip0c1fd9da982238c0afe4" data-parent-id="rpipcab98572a45a407db393" data-target-for="rpip0c1fd9da982238c0afe4">Enable the Sniffer output invert function.  <br id="rpipb9b008d90a45a31b0ddf"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gaa2c5775bdb86d63a4866b2f6f5b41143"><span class="memItemLeft" data-target="true" id="rpipb060b4473eaf5eb028dc" data-parent-id="r_gaa2c5775bdb86d63a4866b2f6f5b41143" data-target-for="rpipb060b4473eaf5eb028dc">static void </span><span class="memItemRight" data-target="true" id="rpipe32e9edca87c135d4f75" data-parent-id="r_gaa2c5775bdb86d63a4866b2f6f5b41143" data-target-for="rpipe32e9edca87c135d4f75"><a class="el" href="#gaa2c5775bdb86d63a4866b2f6f5b41143" id="rpipb33ddfc86bf8d6d69d15" data-adjusted="true">dma_sniffer_set_output_reverse_enabled</a> (bool reverse)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip27852c0418420da413e4"><span class="mdescLeft" data-target="true" id="rpip7e86157c1a3ddcac0f5f" data-parent-id="rpip27852c0418420da413e4" data-target-for="rpip7e86157c1a3ddcac0f5f"> </span><span class="mdescRight" data-target="true" id="rpipe05fbc638131f2279283" data-parent-id="rpip27852c0418420da413e4" data-target-for="rpipe05fbc638131f2279283">Enable the Sniffer output bit reversal function.  <br id="rpip2eddaf10342680820ed3"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga9c9bcbe60b4c6102cae3e616476c4735"><span class="memItemLeft" data-target="true" id="rpipe928c8af5c0865de4944" data-parent-id="r_ga9c9bcbe60b4c6102cae3e616476c4735" data-target-for="rpipe928c8af5c0865de4944"><a id="ga9c9bcbe60b4c6102cae3e616476c4735" name="ga9c9bcbe60b4c6102cae3e616476c4735"/>
+static void </span><span class="memItemRight" data-target="true" id="rpip7c8762d889ad9e9c64d0" data-parent-id="r_ga9c9bcbe60b4c6102cae3e616476c4735" data-target-for="rpip7c8762d889ad9e9c64d0"><b id="rpipf44736e96e7c3346b667">dma_sniffer_disable</b> (void)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip6bf76e13d6fed308d5f6"><span class="mdescLeft" data-target="true" id="rpip9aef747b0a6160301821" data-parent-id="rpip6bf76e13d6fed308d5f6" data-target-for="rpip9aef747b0a6160301821"> </span><span class="mdescRight" data-target="true" id="rpip8f741ee6a029b66e19ce" data-parent-id="rpip6bf76e13d6fed308d5f6" data-target-for="rpip8f741ee6a029b66e19ce">Disable the DMA sniffer. <br id="rpip1c8ab12b1724e6c037ba"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_gacab1f8010c206dfc77b81cb16902a4e4"><span class="memItemLeft" data-target="true" id="rpipe1447388e57e99418fe6" data-parent-id="r_gacab1f8010c206dfc77b81cb16902a4e4" data-target-for="rpipe1447388e57e99418fe6">static void </span><span class="memItemRight" data-target="true" id="rpipe7bff0bb8a1c6bf85c7b" data-parent-id="r_gacab1f8010c206dfc77b81cb16902a4e4" data-target-for="rpipe7bff0bb8a1c6bf85c7b"><a class="el" href="#gacab1f8010c206dfc77b81cb16902a4e4" id="rpip8514cf955767dfb15680" data-adjusted="true">dma_sniffer_set_data_accumulator</a> (uint32_t seed_value)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip19162a04a71229e63859"><span class="mdescLeft" data-target="true" id="rpipa1a652b6747d82fc4a1c" data-parent-id="rpip19162a04a71229e63859" data-target-for="rpipa1a652b6747d82fc4a1c"> </span><span class="mdescRight" data-target="true" id="rpip7f04f0bff6d649974b03" data-parent-id="rpip19162a04a71229e63859" data-target-for="rpip7f04f0bff6d649974b03">Set the sniffer's data accumulator with initial value.  <br id="rpip6dfd495060b9110f1209"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga3527c2567c9253ca602b91d30ae49d1e"><span class="memItemLeft" data-target="true" id="rpip0a86915383086a5f6cab" data-parent-id="r_ga3527c2567c9253ca602b91d30ae49d1e" data-target-for="rpip0a86915383086a5f6cab">static uint32_t </span><span class="memItemRight" data-target="true" id="rpipa12dabe5564b3cbd7b6e" data-parent-id="r_ga3527c2567c9253ca602b91d30ae49d1e" data-target-for="rpipa12dabe5564b3cbd7b6e"><a class="el" href="#ga3527c2567c9253ca602b91d30ae49d1e" id="rpip4e58211dbf3e54790f32" data-adjusted="true">dma_sniffer_get_data_accumulator</a> (void)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip46e7c234f0bfc2aaa347"><span class="mdescLeft" data-target="true" id="rpipa8b012f11568e29b98ed" data-parent-id="rpip46e7c234f0bfc2aaa347" data-target-for="rpipa8b012f11568e29b98ed"> </span><span class="mdescRight" data-target="true" id="rpipa5ff833b1ebda43ccb14" data-parent-id="rpip46e7c234f0bfc2aaa347" data-target-for="rpipa5ff833b1ebda43ccb14">Get the sniffer's data accumulator value.  <br id="rpip9324bb37baa39ddd554d"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga08fc90c0064510e7a0a2cf8d1cd187bc"><span class="memItemLeft" data-target="true" id="rpip82ffeea59fb21382a90e" data-parent-id="r_ga08fc90c0064510e7a0a2cf8d1cd187bc" data-target-for="rpip82ffeea59fb21382a90e">void </span><span class="memItemRight" data-target="true" id="rpip199eded74b4db9b03dbb" data-parent-id="r_ga08fc90c0064510e7a0a2cf8d1cd187bc" data-target-for="rpip199eded74b4db9b03dbb"><a class="el" href="#ga08fc90c0064510e7a0a2cf8d1cd187bc" id="rpip19ce876562d4f51d2bda" data-adjusted="true">dma_timer_claim</a> (uint timer)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip460372fd8e123978b3ef"><span class="mdescLeft" data-target="true" id="rpip8d25139167f52d438923" data-parent-id="rpip460372fd8e123978b3ef" data-target-for="rpip8d25139167f52d438923"> </span><span class="mdescRight" data-target="true" id="rpip3108885fac66f9157e28" data-parent-id="rpip460372fd8e123978b3ef" data-target-for="rpip3108885fac66f9157e28">Mark a dma timer as used.  <br id="rpipbce6c6876c00e671efed"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga890490576d8806b8933aad0e34d09c5e"><span class="memItemLeft" data-target="true" id="rpip444aa411e31f7061bc20" data-parent-id="r_ga890490576d8806b8933aad0e34d09c5e" data-target-for="rpip444aa411e31f7061bc20">void </span><span class="memItemRight" data-target="true" id="rpip95645973682b1abeac48" data-parent-id="r_ga890490576d8806b8933aad0e34d09c5e" data-target-for="rpip95645973682b1abeac48"><a class="el" href="#ga890490576d8806b8933aad0e34d09c5e" id="rpip574db067916166f4119d" data-adjusted="true">dma_timer_unclaim</a> (uint timer)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip278d34d4d5428e234d0e"><span class="mdescLeft" data-target="true" id="rpip45fd4550b874e8d59c8c" data-parent-id="rpip278d34d4d5428e234d0e" data-target-for="rpip45fd4550b874e8d59c8c"> </span><span class="mdescRight" data-target="true" id="rpipbaf1ec2114475edc7e22" data-parent-id="rpip278d34d4d5428e234d0e" data-target-for="rpipbaf1ec2114475edc7e22">Mark a dma timer as no longer used.  <br id="rpip6a272a5b1791809341de"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga2f218b6acd97e09430afbb74172bd570"><span class="memItemLeft" data-target="true" id="rpip9135722379179a4acf18" data-parent-id="r_ga2f218b6acd97e09430afbb74172bd570" data-target-for="rpip9135722379179a4acf18">int </span><span class="memItemRight" data-target="true" id="rpipf116cdcf78bbc19ff0b0" data-parent-id="r_ga2f218b6acd97e09430afbb74172bd570" data-target-for="rpipf116cdcf78bbc19ff0b0"><a class="el" href="#ga2f218b6acd97e09430afbb74172bd570" id="rpip3d23550c99fa94eace4e" data-adjusted="true">dma_claim_unused_timer</a> (bool required)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpipab39b6e8a14724e6fdbf"><span class="mdescLeft" data-target="true" id="rpip122664ea6685cc0fbf06" data-parent-id="rpipab39b6e8a14724e6fdbf" data-target-for="rpip122664ea6685cc0fbf06"> </span><span class="mdescRight" data-target="true" id="rpip529a817b2bcba02cda5c" data-parent-id="rpipab39b6e8a14724e6fdbf" data-target-for="rpip529a817b2bcba02cda5c">Claim a free dma timer.  <br id="rpip72342c5c0f33041a2b4c"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga9b45bfe6985f8c0894d34876eedc3090"><span class="memItemLeft" data-target="true" id="rpipbbfc3aa8ec1cd4a8cae4" data-parent-id="r_ga9b45bfe6985f8c0894d34876eedc3090" data-target-for="rpipbbfc3aa8ec1cd4a8cae4">bool </span><span class="memItemRight" data-target="true" id="rpip08ef577ea4e650c1330d" data-parent-id="r_ga9b45bfe6985f8c0894d34876eedc3090" data-target-for="rpip08ef577ea4e650c1330d"><a class="el" href="#ga9b45bfe6985f8c0894d34876eedc3090" id="rpip1194df8f9299d2478f27" data-adjusted="true">dma_timer_is_claimed</a> (uint timer)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip74e6d4072dd231768830"><span class="mdescLeft" data-target="true" id="rpipaa7fb72dbdc010190882" data-parent-id="rpip74e6d4072dd231768830" data-target-for="rpipaa7fb72dbdc010190882"> </span><span class="mdescRight" data-target="true" id="rpip3a35f1064ae87b95771b" data-parent-id="rpip74e6d4072dd231768830" data-target-for="rpip3a35f1064ae87b95771b">Determine if a dma timer is claimed.  <br id="rpip54079776fd9f1941e788"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga58f9c3cb606759e4620c82583f833dc8"><span class="memItemLeft" data-target="true" id="rpip8bc674c0298213e1feb5" data-parent-id="r_ga58f9c3cb606759e4620c82583f833dc8" data-target-for="rpip8bc674c0298213e1feb5">static void </span><span class="memItemRight" data-target="true" id="rpipbbcc098d212f5a0b330d" data-parent-id="r_ga58f9c3cb606759e4620c82583f833dc8" data-target-for="rpipbbcc098d212f5a0b330d"><a class="el" href="#ga58f9c3cb606759e4620c82583f833dc8" id="rpipdeafa89e4dc6f40e1af3" data-adjusted="true">dma_timer_set_fraction</a> (uint timer, uint16_t numerator, uint16_t denominator)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip96296fae1b9c82cc8311"><span class="mdescLeft" data-target="true" id="rpip2ff8dac6ecca25d2666b" data-parent-id="rpip96296fae1b9c82cc8311" data-target-for="rpip2ff8dac6ecca25d2666b"> </span><span class="mdescRight" data-target="true" id="rpip1406a43f49836c1ca365" data-parent-id="rpip96296fae1b9c82cc8311" data-target-for="rpip1406a43f49836c1ca365">Set the divider for the given DMA timer.  <br id="rpipde8fa4dbfb351cde8de1"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga75ef6881795fd1760fe813f9e0a79223"><span class="memItemLeft" data-target="true" id="rpip3728a4cbddad86c8f1d3" data-parent-id="r_ga75ef6881795fd1760fe813f9e0a79223" data-target-for="rpip3728a4cbddad86c8f1d3">static uint </span><span class="memItemRight" data-target="true" id="rpip6b7329599fa18aa23607" data-parent-id="r_ga75ef6881795fd1760fe813f9e0a79223" data-target-for="rpip6b7329599fa18aa23607"><a class="el" href="#ga75ef6881795fd1760fe813f9e0a79223" id="rpip22472ae56c3f1fd04df6" data-adjusted="true">dma_get_timer_dreq</a> (uint timer_num)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpip0dbc5bb0b106414961c0"><span class="mdescLeft" data-target="true" id="rpip6671345d785ce93dbc6f" data-parent-id="rpip0dbc5bb0b106414961c0" data-target-for="rpip6671345d785ce93dbc6f"> </span><span class="mdescRight" data-target="true" id="rpipf0d7c70504e3137433b4" data-parent-id="rpip0dbc5bb0b106414961c0" data-target-for="rpipf0d7c70504e3137433b4">Return the DREQ number for a given DMA timer.  <br id="rpip168e0d5428c27faa9167"/></span></p>
+</li><li class="memitem"><p data-target="true" data-target-for="r_ga655130988c1045bdf711135698adf321"><span class="memItemLeft" data-target="true" id="rpipe7f891756224b4b4408e" data-parent-id="r_ga655130988c1045bdf711135698adf321" data-target-for="rpipe7f891756224b4b4408e">void </span><span class="memItemRight" data-target="true" id="rpipc1fa375f243e173ab036" data-parent-id="r_ga655130988c1045bdf711135698adf321" data-target-for="rpipc1fa375f243e173ab036"><a class="el" href="#ga655130988c1045bdf711135698adf321" id="rpipe2d1e911d5ccd47a1132" data-adjusted="true">dma_channel_cleanup</a> (uint channel)</span></p>
+</li><li class="memdesc"><p data-target="true" data-target-for="rpipb9943955ad6f22b6ad40"><span class="mdescLeft" data-target="true" id="rpipfd26ab8ddc566cbb9606" data-parent-id="rpipb9943955ad6f22b6ad40" data-target-for="rpipfd26ab8ddc566cbb9606"> </span><span class="mdescRight" data-target="true" id="rpip7a3e2cdf478147b2ac03" data-parent-id="rpipb9943955ad6f22b6ad40" data-target-for="rpip7a3e2cdf478147b2ac03">Performs DMA channel cleanup after use.  <br id="rpipb8d484c3e8f87051a5d8"/></span></p>
+</li></ul>
+<a name="details" id="details"/>
+++++
+
+[[rpipf764418ef7eeb39b27f1]]
+=== Detailed Description
+
+
+++++
+
+<p id="rpip6a148783c6ac3b766316">DMA Controller API</p>
+<p id="rpip9aafa74654bc20e980ad">The RP2040 Direct Memory Access (DMA) master performs bulk data transfers on a processor’s behalf. This leaves processors free to attend to other tasks, or enter low-power sleep states. The data throughput of the DMA is also significantly higher than one of RP2040’s processors.</p>
+<p id="rpip4ac3c612c21a8c507f95">The DMA can perform one read access and one write access, up to 32 bits in size, every clock cycle. There are 12 independent channels, which each supervise a sequence of bus transfers, usually in one of the following scenarios:</p>
+<div class="ulist" id="rpip547f674b68514c5aa941" data-parent-id="rpip9b48a9e1f757253abd8d"><ul data-target="true" data-target-for="rpip547f674b68514c5aa941">
+<li id="rpipfaedeaabb891e3c86645"><p>Memory to peripheral</p></li>
+<li id="rpipad537c02d8ed5b01c023"><p>Peripheral to memory</p></li>
+<li id="rpip60a04eb02bda20c30802"><p>Memory to memory </p></li>
+</ul>
+</div>
+
+++++
+
+[[rpip5b5ec014e1146cf87130]]
+=== Enumeration Type Documentation
+
+
+++++
+
+<a id="gaccecdff367b06a019373e9a55d4f3e01" name="gaccecdff367b06a019373e9a55d4f3e01"/>
+
+++++
+
+[[rpip3bd2a1de7a2b22c276e7]]
+==== ◆ dma_channel_transfer_size
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip85a6f38beb5c99f2e932">
+<div class="memproto" id="rpip6682c765e897077e43be">
+      <table class="memname" id="rpip82ee9835d2569af29ac5">
+        <tr id="rpip57cb778ede9a9a4b05d1">
+          <td class="memname" id="rpip135ec166ab513e739b14">enum <a class="el" href="#gaccecdff367b06a019373e9a55d4f3e01" id="rpip1c16e465ca49138c653a" data-adjusted="true">dma_channel_transfer_size</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc" id="rpipd582e4cbd5b72c9c27e4">
+
+<p id="rpip83854a1ef99719c36f0e">Enumeration of available DMA channel transfer sizes. </p>
+<p id="rpip8b709672152332df28bc">Names indicate the number of bits. </p>
+<table class="tableblock frame-all grid-all stretch" id="rpip5ed96976d377e669d80e" data-parent-id="rpipd582e4cbd5b72c9c27e4" data-target-for="rpip5ed96976d377e669d80e">
+<tr id="rpip661da3a6321463ff50b8"><th colspan="2" id="rpipa84cab3faf78709e0760">Enumerator</th></tr><tr id="rpip24439e0f6cc38b6864db"><td class="tableblock" id="rpipbe4f34b2f813f011ac43" data-parent-id="rpip24439e0f6cc38b6864db" data-target-for="rpipbe4f34b2f813f011ac43"><a id="ggaccecdff367b06a019373e9a55d4f3e01abd7d246406a2ebe4dd49780db176dc3c" name="ggaccecdff367b06a019373e9a55d4f3e01abd7d246406a2ebe4dd49780db176dc3c"/>DMA_SIZE_8 </td><td class="tableblock" id="rpipbe1c23ab4241c04db1d5" data-parent-id="rpip24439e0f6cc38b6864db" data-target-for="rpipbe1c23ab4241c04db1d5"><p id="rpipac3183f3680da76a6949">Byte transfer (8 bits) </p>
+</td></tr>
+<tr id="rpip6fdea5df3ac7164d8f50"><td class="tableblock" id="rpipda4ca28ef627c7f7b9bb" data-parent-id="rpip6fdea5df3ac7164d8f50" data-target-for="rpipda4ca28ef627c7f7b9bb"><a id="ggaccecdff367b06a019373e9a55d4f3e01a2e343022ac046b6b67bb99eebc833cfc" name="ggaccecdff367b06a019373e9a55d4f3e01a2e343022ac046b6b67bb99eebc833cfc"/>DMA_SIZE_16 </td><td class="tableblock" id="rpip3b9b43cd7ae241b38d4f" data-parent-id="rpip6fdea5df3ac7164d8f50" data-target-for="rpip3b9b43cd7ae241b38d4f"><p id="rpipad6470e5734d35f939d6">Half word transfer (16 bits) </p>
+</td></tr>
+<tr id="rpip7c068f584d65a1017c14"><td class="tableblock" id="rpipf96b3f1148adf1699b7f" data-parent-id="rpip7c068f584d65a1017c14" data-target-for="rpipf96b3f1148adf1699b7f"><a id="ggaccecdff367b06a019373e9a55d4f3e01abf1030013f4ad74b45d25cd9a07b6296" name="ggaccecdff367b06a019373e9a55d4f3e01abf1030013f4ad74b45d25cd9a07b6296"/>DMA_SIZE_32 </td><td class="tableblock" id="rpip4c34bf25eb0e52b77a67" data-parent-id="rpip7c068f584d65a1017c14" data-target-for="rpip4c34bf25eb0e52b77a67"><p id="rpip985088626c2d8019d14b">Word transfer (32 bits) </p>
+</td></tr>
+</table>
+
+
+
+</div>
+</div>
+
+++++
+
+[[rpip8325da689765f387a692]]
+=== Function Documentation
+
+
+++++
+
+<a id="ga735e7c6c136c078689ead70790f4edb2" name="ga735e7c6c136c078689ead70790f4edb2"/>
+
+++++
+
+[[rpipf33c6960491e3e991589]]
+==== ◆ dma_channel_abort()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipfac4d654f62f690eca12">
+<div class="memproto" id="rpip366521466c5cddb0848f">
+<table class="mlabels" id="rpip08c013a313f0e0454a8e">
+  <tr id="rpip9a739f9f8f348d4fd1cb">
+  <td class="mlabels-left" id="rpip23793e7ad51918abbd42">
+      <table class="memname" id="rpip89c2e52833f5ea6bd94c">
+        <tr id="rpipdec64734788fa25ca372">
+          <td class="memname" id="rpip68ab94d0dc402e7c907e">static void dma_channel_abort </td>
+          <td id="rpipfc48dd0c6aa38495e434">(</td>
+          <td class="paramtype" id="rpipee49c145e252a7442f19">uint </td>
+          <td class="paramname" id="rpip4b43ecebe37b0cb0b813"><em id="rpip96b890e5a6f85c335cf2">channel</em></td><td id="rpipe3ed6ffa723c2302c340">)</td>
+          <td id="rpip74514a09bea7e271d19f"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpipb026c873f012029aa7d5">
+<span class="mlabels" id="rpipa31eace7f5da0e14d1e5"><span class="mlabel" id="rpip05313a4f6b9fe57c8e18">inline</span><span class="mlabel" id="rpip248ac3db83c3c5d83a82">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip1a9d58842dadc1529f61">
+
+<p id="rpipdba56894ed6e0a0b9aa8">Stop a DMA transfer. </p>
+<p id="rpipc6f755877d9b96e3468d">Function will only return once the DMA has stopped.</p>
+<p id="rpip967909f8940118f73f07">Note that due to errata RP2040-E13, aborting a channel which has transfers in-flight (i.e. an individual read has taken place but the corresponding write has not), the ABORT status bit will clear prematurely, and subsequently the in-flight transfers will trigger a completion interrupt once they complete.</p>
+<p id="rpip0f78cb1d483f1c977a45">The effect of this is that you <em id="rpipfb7b88e72d451f7c465e">may</em> see a spurious completion interrupt on the channel as a result of calling this method.</p>
+<p id="rpipcac24dac64bd59ff745a">The calling code should be sure to ignore a completion IRQ as a result of this method. This may not require any additional work, as aborting a channel which may be about to complete, when you have a completion IRQ handler registered, is inherently race-prone, and so code is likely needed to disambiguate the two occurrences.</p>
+<p id="rpip071e2941da4f68d86893">If that is not the case, but you do have a channel completion IRQ handler registered, you can simply disable/re-enable the IRQ around the call to this method as shown by this code fragment (using DMA IRQ0).</p>
+<div class="listingblock" id="rpip259ebe839a404c36a743" data-parent-id="rpip1a9d58842dadc1529f61"><div class="content" data-target="true" data-target-for="rpip259ebe839a404c36a743"><div class="line" id="rpipb8a0b00b3a8377f47e56"><span class="comment" id="rpip3e1a2e9aefdbf836a1ea">// disable the channel on IRQ0</span></div>
+<div class="line" id="rpip695a6f478f4aeb9da079"><a class="code hl_function" href="#gaf60011d46676c87b7139f37188eaa4b9" id="rpipac741a0531e6fe267678" data-adjusted="true">dma_channel_set_irq0_enabled</a>(channel, <span class="keyword" id="rpipa4bc3ccde401188a0b90">false</span>);</div>
+<div class="line" id="rpipd77b5c785ec90982024a"><span class="comment" id="rpip7861692db0fcc25531fb">// abort the channel</span></div>
+<div class="line" id="rpip8b8939aca8b987625dca"><a class="code hl_function" href="#ga735e7c6c136c078689ead70790f4edb2" id="rpip34dde5ca3db4e23d91aa" data-adjusted="true">dma_channel_abort</a>(channel);</div>
+<div class="line" id="rpip3ca9100a30ce1de40010"><span class="comment" id="rpipf7b36d769fdebf2d287e">// clear the spurious IRQ (if there was one)</span></div>
+<div class="line" id="rpip7ca808048cf17c9c7a61"><a class="code hl_function" href="#gafefe50f20c44bcfa7f729829a5d494f4" id="rpip8075be46e73c64cf9efa" data-adjusted="true">dma_channel_acknowledge_irq0</a>(channel);</div>
+<div class="line" id="rpip512bf9d1d778bd8beede"><span class="comment" id="rpip98df1fc537787e893752">// re-enable the channel on IRQ0</span></div>
+<div class="line" id="rpipf20d6c74c4a8820b4cfd"><a class="code hl_function" href="#gaf60011d46676c87b7139f37188eaa4b9" id="rpip536463a12fe578ae62e7" data-adjusted="true">dma_channel_set_irq0_enabled</a>(channel, <span class="keyword" id="rpipec1a2eb6cc7dfd54d72d">true</span>);</div>
+<div class="ttc" id="agroup__hardware__dma_html_ga735e7c6c136c078689ead70790f4edb2"><div class="ttname" id="rpipce2f808637e5b655db08"><a href="#ga735e7c6c136c078689ead70790f4edb2" id="rpipecb3d4042b516fe02e31" data-adjusted="true">dma_channel_abort</a></div><div class="ttdeci" id="rpipd193a68fde02ac61889d">static void dma_channel_abort(uint channel)</div><div class="ttdoc" id="rpip375a4257ba4042036b5c">Stop a DMA transfer.</div><div class="ttdef" id="rpip6baa2fae9796fb9aa2c2"><b id="rpip7d9819ba4b0fa087ce7f">Definition</b> dma.h:527</div></div>
+<div class="ttc" id="agroup__hardware__dma_html_gaf60011d46676c87b7139f37188eaa4b9"><div class="ttname" id="rpip00d41eae8b7c6e2515c1"><a href="#gaf60011d46676c87b7139f37188eaa4b9" id="rpip420b959637b4d64168fb" data-adjusted="true">dma_channel_set_irq0_enabled</a></div><div class="ttdeci" id="rpipeccf8e7e32834b8c9f35">static void dma_channel_set_irq0_enabled(uint channel, bool enabled)</div><div class="ttdoc" id="rpip7b28e963f8cb8ce976d8">Enable single DMA channel's interrupt via DMA_IRQ_0.</div><div class="ttdef" id="rpip563dfb32a66596202d4c"><b id="rpip4d29cd7f54eb6a58fd15">Definition</b> dma.h:541</div></div>
+<div class="ttc" id="agroup__hardware__dma_html_gafefe50f20c44bcfa7f729829a5d494f4"><div class="ttname" id="rpip9df50e68c0d9d1fe6e20"><a href="#gafefe50f20c44bcfa7f729829a5d494f4" id="rpipafcc84a21ad0dc2968a9" data-adjusted="true">dma_channel_acknowledge_irq0</a></div><div class="ttdeci" id="rpipebfb2557232d5e830080">static void dma_channel_acknowledge_irq0(uint channel)</div><div class="ttdoc" id="rpip3ae701bdbad353e59ee9">Acknowledge a channel IRQ, resetting it as the cause of DMA_IRQ_0.</div><div class="ttdef" id="rpip49e268b1878fdd376a94"><b id="rpip3d66730d5705ae666fb7">Definition</b> dma.h:665</div></div>
+</div></div><!-- fragment --><h4 id="rpipfce47477e83b682b94c5" data-parent-id="rpipbc6f42e74e4515cbe7e0" data-target-for="rpipfce47477e83b682b94c5">Parameters</h4><p class="paragraph" id="rpip1cd5146a2142153c8941" data-parent-id="rpipbc6f42e74e4515cbe7e0" data-target-for="rpip1cd5146a2142153c8941">
+  <table class="params" id="rpip673c530e104becd6b435">
+    <tr id="rpip3ae59afc16243d08140d"><td class="paramname" id="rpipcdd5fad025ec81fa6250">channel</td><td id="rpip0fe6096aaeefe788e25a">DMA channel </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="gafefe50f20c44bcfa7f729829a5d494f4" name="gafefe50f20c44bcfa7f729829a5d494f4"/>
+
+++++
+
+[[rpip864fb78497f046456528]]
+==== ◆ dma_channel_acknowledge_irq0()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip628c758d7156ac47cef3">
+<div class="memproto" id="rpip5b6640bd49e90649f637">
+<table class="mlabels" id="rpipcf64c198611c178c607d">
+  <tr id="rpip966159320bf36d5b7a5a">
+  <td class="mlabels-left" id="rpip557820e8dd3fd03543be">
+      <table class="memname" id="rpipbc694d4b57993ef7384d">
+        <tr id="rpip44fb54f759320c5c1fb2">
+          <td class="memname" id="rpip70711c46f8d2336fbfd6">static void dma_channel_acknowledge_irq0 </td>
+          <td id="rpip9d8afe9e089ed21fffd2">(</td>
+          <td class="paramtype" id="rpip2777c000ba13636bb41c">uint </td>
+          <td class="paramname" id="rpipdedaa61416471f0d1b30"><em id="rpipb3e8eb2d749af13267fd">channel</em></td><td id="rpipa6ab8b7913fa4ee22e5b">)</td>
+          <td id="rpip1b5e17c77d806683de8c"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpipc8307ae6257fa4e765ce">
+<span class="mlabels" id="rpip2ce590f9aa028defd89e"><span class="mlabel" id="rpip91330a83b8ab43b9ff85">inline</span><span class="mlabel" id="rpip004b41cef4d5f2470489">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip6d945bbb017797acde31">
+
+<p id="rpip0dac66a2dc1617c13547">Acknowledge a channel IRQ, resetting it as the cause of DMA_IRQ_0. </p>
+<h4 id="rpipc2925670f0ae33351af9" data-parent-id="rpipfa7632e19b1800c185dc" data-target-for="rpipc2925670f0ae33351af9">Parameters</h4><p class="paragraph" id="rpipcb4c6e1393a36990d16a" data-parent-id="rpipfa7632e19b1800c185dc" data-target-for="rpipcb4c6e1393a36990d16a">
+  <table class="params" id="rpip7cd9ef9e16d5a95a5a3b">
+    <tr id="rpip4dedfdcb676daff472a3"><td class="paramname" id="rpipda4a61c7a81e63fa8f5e">channel</td><td id="rpipb72906622e7addccd52a">DMA channel </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga4d4b5d461ff09bb6e4e2a05df3b7c75c" name="ga4d4b5d461ff09bb6e4e2a05df3b7c75c"/>
+
+++++
+
+[[rpip52890d32c3dc03a60391]]
+==== ◆ dma_channel_acknowledge_irq1()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipd2129ab99ed53cc37ace">
+<div class="memproto" id="rpip4a0b208864d4c183b6f7">
+<table class="mlabels" id="rpip9a5f5b52dbd324c84d6d">
+  <tr id="rpip943f270f9c47d609c0e7">
+  <td class="mlabels-left" id="rpip1a292a22aa14cf2b47da">
+      <table class="memname" id="rpip1750e21e37b36e527cdf">
+        <tr id="rpip6801acfd2799a43af0d6">
+          <td class="memname" id="rpip22bc1458be4d0720ada4">static void dma_channel_acknowledge_irq1 </td>
+          <td id="rpip329be1826150cbe0fff6">(</td>
+          <td class="paramtype" id="rpip36bce66bf78230bf0398">uint </td>
+          <td class="paramname" id="rpip7e8ae4b47ce20c5d5ae2"><em id="rpipc0c9ccc0808606a3ebe5">channel</em></td><td id="rpipc700c4b6b01c48e13266">)</td>
+          <td id="rpip01dba530e90564b0436b"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip2b95c0c4bfd96bad4377">
+<span class="mlabels" id="rpipfd872feb5fe52972aa4b"><span class="mlabel" id="rpip1e3f4cfd88aebeca5959">inline</span><span class="mlabel" id="rpip61aaa2bc3418c340231b">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpipc6ec25d7fec9dc6fa009">
+
+<p id="rpip792c0a5da905f826e8ac">Acknowledge a channel IRQ, resetting it as the cause of DMA_IRQ_1. </p>
+<h4 id="rpip01fa0b64b62d8dcb8cb1" data-parent-id="rpip5ebc4e0bec81b91f95ef" data-target-for="rpip01fa0b64b62d8dcb8cb1">Parameters</h4><p class="paragraph" id="rpipbf2cc721422364dd86e4" data-parent-id="rpip5ebc4e0bec81b91f95ef" data-target-for="rpipbf2cc721422364dd86e4">
+  <table class="params" id="rpipa9e9a82a2ee278b9677d">
+    <tr id="rpip8dd7db8649808d432b45"><td class="paramname" id="rpip8062609017d0892de23c">channel</td><td id="rpipce42cab39636d3551b22">DMA channel </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="gae1b3c916746b3d2052f21b7dda34aab9" name="gae1b3c916746b3d2052f21b7dda34aab9"/>
+
+++++
+
+[[rpip765f1bf56f386c813e18]]
+==== ◆ dma_channel_claim()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip6e0bdde63eaedd0e4447">
+<div class="memproto" id="rpip77ab7ec407c8e0f9fc92">
+      <table class="memname" id="rpipb777539e85b245b66dba">
+        <tr id="rpip00257fe3551788654c95">
+          <td class="memname" id="rpip13996d4cc476084b354d">void dma_channel_claim </td>
+          <td id="rpip8257ab43922fcd085ff4">(</td>
+          <td class="paramtype" id="rpip8b6f66c6bfdcb1719435">uint </td>
+          <td class="paramname" id="rpip267e443c8f6919a2c2d0"><em id="rpip4a0213487190a2b7110b">channel</em></td><td id="rpip18d2bb7e5a8e1f7aae29">)</td>
+          <td id="rpipdaf7c9050fd457ce9441"/>
+        </tr>
+      </table>
+</div><div class="memdoc" id="rpip25a3a50fb121f6f471c2">
+
+<p id="rpipb02afa296941adc7b9c8">Mark a dma channel as used. </p>
+<p id="rpip80e2960cb5d6b2aec99f">Method for cooperative claiming of hardware. Will cause a panic if the channel is already claimed. Use of this method by libraries detects accidental configurations that would fail in unpredictable ways.</p>
+<h4 id="rpip977a4448b95d1852324e" data-parent-id="rpipc500170ad2f766f83392" data-target-for="rpip977a4448b95d1852324e">Parameters</h4><p class="paragraph" id="rpipa0cb72c97a4298959d4a" data-parent-id="rpipc500170ad2f766f83392" data-target-for="rpipa0cb72c97a4298959d4a">
+  <table class="params" id="rpip7e73d0db40cb5f8c6c82">
+    <tr id="rpip1c40883f234af25c0b14"><td class="paramname" id="rpipe6da53010fd94f4e4ff1">channel</td><td id="rpip8b38990bdade2dd68222">the dma channel </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga655130988c1045bdf711135698adf321" name="ga655130988c1045bdf711135698adf321"/>
+
+++++
+
+[[rpip1c3534d9aeb9a9aa2d20]]
+==== ◆ dma_channel_cleanup()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip90f166ceda2c4bb77510">
+<div class="memproto" id="rpip333b82cbf33ab25049c4">
+      <table class="memname" id="rpip5ef391eac67b9f8e633d">
+        <tr id="rpip782e519aefd262230d1f">
+          <td class="memname" id="rpip56b54e8325cd552431f6">void dma_channel_cleanup </td>
+          <td id="rpipa96f5effab0cd9153e6a">(</td>
+          <td class="paramtype" id="rpip052e4ac05fb23dc31e27">uint </td>
+          <td class="paramname" id="rpip0ff5b842456bffd245b2"><em id="rpip62411d2107bd94116d3b">channel</em></td><td id="rpip3a15d26cee405e334c6d">)</td>
+          <td id="rpip2bf741fdf15066402b25"/>
+        </tr>
+      </table>
+</div><div class="memdoc" id="rpip826a18a8e81ae06f0a05">
+
+<p id="rpip028d4d4e2acbbbd13987">Performs DMA channel cleanup after use. </p>
+<p id="rpipbe65c132e0b553575de9">This can be used to cleanup dma channels when they're no longer needed, such that they are in a clean state for reuse. IRQ's for the channel are disabled, any in flight-transfer is aborted and any outstanding interrupts are cleared. The channel is then clear to be reused for other purposes.</p>
+<div class="listingblock" id="rpip5d618942d3c36d8314aa" data-parent-id="rpip826a18a8e81ae06f0a05"><div class="content" data-target="true" data-target-for="rpip5d618942d3c36d8314aa"><div class="line" id="rpipa4c1f2adf27565821188"><span class="keywordflow" id="rpip5331ba99931958411db3">if</span> (dma_channel &gt;= 0) {</div>
+<div class="line" id="rpipcfffd331e65f0c627f11">    <a class="code hl_function" href="#ga655130988c1045bdf711135698adf321" id="rpip371d2c9e733ca2f2a2b7" data-adjusted="true">dma_channel_cleanup</a>(dma_channel);</div>
+<div class="line" id="rpip9729acb2ca308b72feb7">    <a class="code hl_function" href="#gac50200739b88a2fd52316f4150533035" id="rpipa2c52236f74a2fd7ed7c" data-adjusted="true">dma_channel_unclaim</a>(dma_channel);</div>
+<div class="line" id="rpip26915f0be251a015fd61">    dma_channel = -1;</div>
+<div class="line" id="rpipc32370cc5c017dcd2610">}</div>
+<div class="ttc" id="agroup__hardware__dma_html_ga655130988c1045bdf711135698adf321"><div class="ttname" id="rpipd28952750cc3a6e6dce2"><a href="#ga655130988c1045bdf711135698adf321" id="rpipe9008ddaf12199adbde6" data-adjusted="true">dma_channel_cleanup</a></div><div class="ttdeci" id="rpip6882f430c548b738d68c">void dma_channel_cleanup(uint channel)</div><div class="ttdoc" id="rpip3ef857822fa3ca167591">Performs DMA channel cleanup after use.</div><div class="ttdef" id="rpipa9cfa73003bf2cebbff2"><b id="rpip3a754dc0daa0a2fb6140">Definition</b> dma.c:73</div></div>
+<div class="ttc" id="agroup__hardware__dma_html_gac50200739b88a2fd52316f4150533035"><div class="ttname" id="rpipc8c9179a17d65421ffad"><a href="#gac50200739b88a2fd52316f4150533035" id="rpip5276b3e136c3c4451820" data-adjusted="true">dma_channel_unclaim</a></div><div class="ttdeci" id="rpipca4939f8a0666fab64d8">void dma_channel_unclaim(uint channel)</div><div class="ttdoc" id="rpip5e55788f8384a9f02492">Mark a dma channel as no longer used.</div><div class="ttdef" id="rpip567bab0f615fb9ff5a16"><b id="rpip433a960bab5dc35899d7">Definition</b> dma.c:34</div></div>
+</div></div><!-- fragment --><h4 id="rpip6733bd73f488ff2453f3" data-parent-id="rpipdb03c58ff47b7886f303" data-target-for="rpip6733bd73f488ff2453f3">Parameters</h4><p class="paragraph" id="rpipc2b4ae695d479fe2d8f0" data-parent-id="rpipdb03c58ff47b7886f303" data-target-for="rpipc2b4ae695d479fe2d8f0">
+  <table class="params" id="rpipa832519be2818f5be8bb">
+    <tr id="rpip4f71e115592f36053dc5"><td class="paramname" id="rpip77f756f5f6a9aa5c764f">channel</td><td id="rpipd1e00337479856966fdf">DMA channel </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga971d077ac39b2d7f7c6b45e2ddc5d190" name="ga971d077ac39b2d7f7c6b45e2ddc5d190"/>
+
+++++
+
+[[rpip3a0f429dc518f66bf558]]
+==== ◆ dma_channel_configure()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipda86ad032f6537d39805">
+<div class="memproto" id="rpip7fbd64bf743977a2d2ec">
+<table class="mlabels" id="rpip204c6b5dab8329720211">
+  <tr id="rpip3e24efa95d3d055465f2">
+  <td class="mlabels-left" id="rpip2108f7946034440e0dac">
+      <table class="memname" id="rpipb8aa76970db582ef7b6a">
+        <tr id="rpip7403f9855e3f2ddad41b">
+          <td class="memname" id="rpipf29616880b22b51e6b48">static void dma_channel_configure </td>
+          <td id="rpipef44522183568d78f761">(</td>
+          <td class="paramtype" id="rpip35cec042ab6714227bdc">uint </td>
+          <td class="paramname" id="rpip7104c438d2bd49fa2a90"><em id="rpip0498f6d0c89a9fb23a97">channel</em>, </td>
+        </tr>
+        <tr id="rpip686729ac9fa3b54767b6">
+          <td class="paramkey" id="rpip706f8a9dde14fd43c1a3"/>
+          <td id="rpip6c2bd53345476feb2382"/>
+          <td class="paramtype" id="rpip843a18f00a64eff06815">const <a class="el" href="structdma__channel__config.html" id="rpip32411cc8a03a6e4753e2">dma_channel_config</a> * </td>
+          <td class="paramname" id="rpipb980f16adbf972af91ce"><em id="rpip253c5d8c90ea9c68f2ee">config</em>, </td>
+        </tr>
+        <tr id="rpipfc4eb8b8e160f964c6a3">
+          <td class="paramkey" id="rpipff76bebdf33de1e04632"/>
+          <td id="rpip6bd82ee542c13b9e8fcc"/>
+          <td class="paramtype" id="rpip999dc412bfbdae2d557b">volatile void * </td>
+          <td class="paramname" id="rpip97eb37b6bf0141b3b9e9"><em id="rpip1fe4e593b3c21d093eb3">write_addr</em>, </td>
+        </tr>
+        <tr id="rpipec649ee7353359afdb0e">
+          <td class="paramkey" id="rpip411f698ca276e59c435d"/>
+          <td id="rpip03480592644f6eacdce1"/>
+          <td class="paramtype" id="rpipc00ac9ea2082e894fc2f">const volatile void * </td>
+          <td class="paramname" id="rpipda6db26b3bb26c9ff29d"><em id="rpipde2c4cbac237c5390ddf">read_addr</em>, </td>
+        </tr>
+        <tr id="rpip3e726f2d7664fa8bdffe">
+          <td class="paramkey" id="rpip9c3fad79eadcb1a31a65"/>
+          <td id="rpipf04718658b016ea2233e"/>
+          <td class="paramtype" id="rpip54db26cec5fa5f365e3f">uint </td>
+          <td class="paramname" id="rpip4f6d7e60c05c97d9078a"><em id="rpip7741164838f787edd031">transfer_count</em>, </td>
+        </tr>
+        <tr id="rpip556678cc5503b818b453">
+          <td class="paramkey" id="rpipc44d639bd7272fd1f1ec"/>
+          <td id="rpipa4a6b858b1688d06c364"/>
+          <td class="paramtype" id="rpip68108d3bd0707d464550">bool </td>
+          <td class="paramname" id="rpip9c901965bf0b29aaf7b0"><em id="rpipa3f555c21c6ed832ce54">trigger</em> </td>
+        </tr>
+        <tr id="rpip5c42d33b719a31623717">
+          <td id="rpip35d0d96fe225bd4e56a3"/>
+          <td id="rpipb4ad9faf7ad97c33abe5">)</td>
+          <td id="rpip00fe605d097b34afa497"/><td id="rpipab1f08f00bc26f0e87a7"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpipb4ab45a03c50ac294219">
+<span class="mlabels" id="rpip4eab8940d16e0e47afcb"><span class="mlabel" id="rpipa851f4e94b7d7cdd0279">inline</span><span class="mlabel" id="rpip323037ab15b7c9dff1b6">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip80c6629d5f8a847d041b">
+
+<p id="rpip6495f6b57afd860dcdf6">Configure all DMA parameters and optionally start transfer. </p>
+<h4 id="rpip795ef9b8ae447cbd60de" data-parent-id="rpip248faac6288961cff718" data-target-for="rpip795ef9b8ae447cbd60de">Parameters</h4><p class="paragraph" id="rpip043253688b56b61bba30" data-parent-id="rpip248faac6288961cff718" data-target-for="rpip043253688b56b61bba30">
+  <table class="params" id="rpip1c002e7a4289e1536136">
+    <tr id="rpip990ffdde0d36945d6162"><td class="paramname" id="rpip23c1f22a13f0bac025b9">channel</td><td id="rpip6f2e23dd75e5f4c1660f">DMA channel </td></tr>
+    <tr id="rpip5215b33baf8a426de6b1"><td class="paramname" id="rpip1a8ca23c108d9f39e8a7">config</td><td id="rpip4635dcd1033cc04ac954">Pointer to DMA config structure </td></tr>
+    <tr id="rpipd6fe34f5619342f40221"><td class="paramname" id="rpip0c0bc0eeee79ba048b3a">write_addr</td><td id="rpip2e943c538fa1a669f746">Initial write address </td></tr>
+    <tr id="rpip2a94823dae6de951088d"><td class="paramname" id="rpip46d86b54990b9c1770d4">read_addr</td><td id="rpipec9ddb99a6ec91e4f689">Initial read address </td></tr>
+    <tr id="rpip6c6ea705215e9c0b8cb6"><td class="paramname" id="rpip738ed16a7535ed6c6fe5">transfer_count</td><td id="rpipd749bcc7400c134d4882">Number of transfers to perform </td></tr>
+    <tr id="rpipbdb4127635639fbe20fe"><td class="paramname" id="rpip277885f4a60bad9daa39">trigger</td><td id="rpip49c5701e88b2743e138c">True to start the transfer immediately </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="gaa86e892c47b054d3c22fa39c001c7c23" name="gaa86e892c47b054d3c22fa39c001c7c23"/>
+
+++++
+
+[[rpip4aa83001486169726a87]]
+==== ◆ dma_channel_get_irq0_status()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipf45abc38eaa7b2269423">
+<div class="memproto" id="rpipdeea78e2aaddb1a95110">
+<table class="mlabels" id="rpip41b13796b7e75795b484">
+  <tr id="rpip309256fc7c5539d0e1c8">
+  <td class="mlabels-left" id="rpip8f2c04c473277ea8578a">
+      <table class="memname" id="rpip4f9fc0a8c76e1c4a1a02">
+        <tr id="rpip041355c74aae34ef156e">
+          <td class="memname" id="rpip8de7caac0f20a4fbefd7">static bool dma_channel_get_irq0_status </td>
+          <td id="rpipffb698adaf1be312219b">(</td>
+          <td class="paramtype" id="rpipcb3009091517d810a326">uint </td>
+          <td class="paramname" id="rpip4970fc378c2f807264d1"><em id="rpip29bc56850afa6a689bbe">channel</em></td><td id="rpip82b9262fa3eac9952bed">)</td>
+          <td id="rpip74424b84428dccc91cf4"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip4f460af81cdc08459cd1">
+<span class="mlabels" id="rpip8b944173760802312c41"><span class="mlabel" id="rpip89e89556c2466bc23302">inline</span><span class="mlabel" id="rpip84e469f09ec35ba45668">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpipf40fd7dc732f7b195ff5">
+
+<p id="rpip8f2c01366c5196ca5377">Determine if a particular channel is a cause of DMA_IRQ_0. </p>
+<h4 id="rpip1de5daccedec88a9ddd3" data-parent-id="rpip58de0f3f3bcaf3626167" data-target-for="rpip1de5daccedec88a9ddd3">Parameters</h4><p class="paragraph" id="rpip7af69db21df9a749718a" data-parent-id="rpip58de0f3f3bcaf3626167" data-target-for="rpip7af69db21df9a749718a">
+  <table class="params" id="rpipca10cc7a3f1df49167c3">
+    <tr id="rpipd865aec012f71ecbd3e7"><td class="paramname" id="rpip17e2233af7c71d742a7e">channel</td><td id="rpip7a6beb542a198b2b7024">DMA channel </td></tr>
+  </table>
+  </p>
+
+
+<h4 class="label" id="rpip49f0e58bd1b1be62bd1e" data-parent-id="rpip98d9b28e837f1949662c" data-target-for="rpip49f0e58bd1b1be62bd1e">Returns</h4><p class="returns" id="rpip06f4f0791267c9334b3e" data-parent-id="rpip98d9b28e837f1949662c" data-target-for="rpip06f4f0791267c9334b3e">true if the channel is a cause of DMA_IRQ_0, false otherwise </p>
+
+</div>
+</div>
+<a id="gaf61d25264e49058d20fb607dc1c40981" name="gaf61d25264e49058d20fb607dc1c40981"/>
+
+++++
+
+[[rpip78f155feaace614d40ca]]
+==== ◆ dma_channel_get_irq1_status()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip9809f15d25a3ea6223e3">
+<div class="memproto" id="rpip30555d26dec15a2baa29">
+<table class="mlabels" id="rpipde5305e6e7b54a8399c1">
+  <tr id="rpip3a010c8a7bd55394a01c">
+  <td class="mlabels-left" id="rpipa23f5a74645b0def603e">
+      <table class="memname" id="rpipf74edaf82da2ea791a4f">
+        <tr id="rpipb2e311bcb721bf784df9">
+          <td class="memname" id="rpip57e7b77ae82fe4c61961">static bool dma_channel_get_irq1_status </td>
+          <td id="rpip7a1267ab8782f519624a">(</td>
+          <td class="paramtype" id="rpipfbec9b82ec9398a9de03">uint </td>
+          <td class="paramname" id="rpipd312060c323559811143"><em id="rpip9073e84937e3e31605df">channel</em></td><td id="rpip18e563ba36e959f4dc88">)</td>
+          <td id="rpipf37ef2a29b4df7b248f8"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip52246c3f8387b9f6df5b">
+<span class="mlabels" id="rpip898e24cb01f3717373a7"><span class="mlabel" id="rpip50f83e5546cd94bc0d39">inline</span><span class="mlabel" id="rpipc6ea2d13104ea73c6aac">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip9070b0ad8702c44b40f9">
+
+<p id="rpip4afe9b1d93f6d5e07683">Determine if a particular channel is a cause of DMA_IRQ_1. </p>
+<h4 id="rpip55f86b0e726d2aefb743" data-parent-id="rpip30aecb3bb30d6ab16cf0" data-target-for="rpip55f86b0e726d2aefb743">Parameters</h4><p class="paragraph" id="rpipa498ea9c9f09992c60d6" data-parent-id="rpip30aecb3bb30d6ab16cf0" data-target-for="rpipa498ea9c9f09992c60d6">
+  <table class="params" id="rpipca80555238303a1d83c2">
+    <tr id="rpip765e14a67df8e717c359"><td class="paramname" id="rpip7e64c11bb098adca1db6">channel</td><td id="rpipc094c8321a6e8d1717d3">DMA channel </td></tr>
+  </table>
+  </p>
+
+
+<h4 class="label" id="rpip6c2e6f59d12311ca14dd" data-parent-id="rpip031767db53ea975c3ea8" data-target-for="rpip6c2e6f59d12311ca14dd">Returns</h4><p class="returns" id="rpip85932ce14277e34ff43d" data-parent-id="rpip031767db53ea975c3ea8" data-target-for="rpip85932ce14277e34ff43d">true if the channel is a cause of DMA_IRQ_1, false otherwise </p>
+
+</div>
+</div>
+<a id="gafbb5020a529ed6d39a11da88a6f313f2" name="gafbb5020a529ed6d39a11da88a6f313f2"/>
+
+++++
+
+[[rpip5ed74fd483e37377f242]]
+==== ◆ dma_channel_is_busy()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip0338873854396e9d4b9d">
+<div class="memproto" id="rpip8895b0819acc356caede">
+<table class="mlabels" id="rpipadc00f2ccf56c04ff773">
+  <tr id="rpip01de4224a167259ac8b6">
+  <td class="mlabels-left" id="rpip415f4c6af1b9fdfac6b4">
+      <table class="memname" id="rpip2d5236c0557b1dbb3560">
+        <tr id="rpip6da4de1bc872e8fb8873">
+          <td class="memname" id="rpip37e5446edc88b337c8ee">static bool dma_channel_is_busy </td>
+          <td id="rpipd292760724fe77f3b650">(</td>
+          <td class="paramtype" id="rpipca6be507da9c148dc489">uint </td>
+          <td class="paramname" id="rpip43b38a1bb11bed583481"><em id="rpip6b2cdc9fa9ee4235f2fa">channel</em></td><td id="rpipceefbb58f35bd029cd48">)</td>
+          <td id="rpip56ac1f2ff149f1a0caeb"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpipd73cb688c65355cebb5e">
+<span class="mlabels" id="rpip95ad83a59d3a7e0a632f"><span class="mlabel" id="rpipe765945663b97bc6e501">inline</span><span class="mlabel" id="rpip8c12cca2e958ee4dcc9f">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpipe2f6c47668e5fe43e2b9">
+
+<p id="rpipa70b3d6140ef9b1f3bac">Check if DMA channel is busy. </p>
+<h4 id="rpip6ae8ef1544c7c36520f1" data-parent-id="rpip0697e986c38b1b3ddb8d" data-target-for="rpip6ae8ef1544c7c36520f1">Parameters</h4><p class="paragraph" id="rpip30a61ce2124d28176858" data-parent-id="rpip0697e986c38b1b3ddb8d" data-target-for="rpip30a61ce2124d28176858">
+  <table class="params" id="rpipcc2648cda60d79e5da1f">
+    <tr id="rpip7a37459d4475fcf9eb70"><td class="paramname" id="rpipea68603459d61170dd77">channel</td><td id="rpip11ab042c076ea3d6f9e3">DMA channel </td></tr>
+  </table>
+  </p>
+
+
+<h4 class="label" id="rpipda97c2c619282b91c4a3" data-parent-id="rpip8e5263c9f2a5b5864f07" data-target-for="rpipda97c2c619282b91c4a3">Returns</h4><p class="returns" id="rpip33cca7c42a816f7351ed" data-parent-id="rpip8e5263c9f2a5b5864f07" data-target-for="rpip33cca7c42a816f7351ed">true if the channel is currently busy </p>
+
+</div>
+</div>
+<a id="ga9aadb81f53b979bde1c1a81164d1eff2" name="ga9aadb81f53b979bde1c1a81164d1eff2"/>
+
+++++
+
+[[rpip412b84414e8d579b85b2]]
+==== ◆ dma_channel_is_claimed()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip8700f562f50368b035bc">
+<div class="memproto" id="rpipe52bbc3bb27e3dca1b18">
+      <table class="memname" id="rpipc63b18cd9dc13c1ccf6f">
+        <tr id="rpipe6557e6c1621de6c8574">
+          <td class="memname" id="rpipa851f13eca4f8d4e99fc">bool dma_channel_is_claimed </td>
+          <td id="rpip5df6c6ed018484555873">(</td>
+          <td class="paramtype" id="rpip648904290d57c76657ea">uint </td>
+          <td class="paramname" id="rpipfa9708095a1f48ea9318"><em id="rpip3c0384dca5cf486a1ffc">channel</em></td><td id="rpipe2a6b6e09fc6a77b47dc">)</td>
+          <td id="rpip9af7f05275e9977e6c3a"/>
+        </tr>
+      </table>
+</div><div class="memdoc" id="rpipa0bbf7dfdcfe5fb005c1">
+
+<p id="rpipb59cf6e121cc74c28967">Determine if a dma channel is claimed. </p>
+<h4 id="rpip3ca62a58ab0a3dae4943" data-parent-id="rpip94aba7fcaea8b9139601" data-target-for="rpip3ca62a58ab0a3dae4943">Parameters</h4><p class="paragraph" id="rpipd2c30e50458c3233ea60" data-parent-id="rpip94aba7fcaea8b9139601" data-target-for="rpipd2c30e50458c3233ea60">
+  <table class="params" id="rpip742ff567bfca87340328">
+    <tr id="rpip6eb54de5953a7828bbb0"><td class="paramname" id="rpip4476c41db0b8f2b7975b">channel</td><td id="rpipfa9ed28fae80dbae685a">the dma channel </td></tr>
+  </table>
+  </p>
+
+
+<h4 class="label" id="rpipbfcc2b6a52040376753d" data-parent-id="rpipf8a9f377a6a098db5073" data-target-for="rpipbfcc2b6a52040376753d">Returns</h4><p class="returns" id="rpip2c31f5a1c7ad57caaa7f" data-parent-id="rpipf8a9f377a6a098db5073" data-target-for="rpip2c31f5a1c7ad57caaa7f">true if the channel is claimed, false otherwise </p>
+<p class="see" id="rpip6b62af41af7590e6a703" data-parent-id="rpipa0bbf7dfdcfe5fb005c1" data-target-for="rpip6b62af41af7590e6a703"><span class="label" id="rpipcf5a341cdd9ffe8e88ee" data-parent-id="rpip6b62af41af7590e6a703" data-target-for="rpipcf5a341cdd9ffe8e88ee">See also</span><span class="target" id="rpipceddc6ed8487885a15fa" data-parent-id="rpip6b62af41af7590e6a703" data-target-for="rpipceddc6ed8487885a15fa"><a class="el" href="#gae1b3c916746b3d2052f21b7dda34aab9" title="Mark a dma channel as used." id="rpip9b9184fc91dac4c4ff6a" data-adjusted="true">dma_channel_claim</a> </span>
+
+<span class="target" id="rpipa3bebe11a58a1de88184" data-parent-id="rpip6b62af41af7590e6a703" data-target-for="rpipa3bebe11a58a1de88184">
+dma_channel_claim_mask </span></p>
+
+
+
+</div>
+</div>
+<a id="ga7449b659efb178a408f42f7f8f7b02f9" name="ga7449b659efb178a408f42f7f8f7b02f9"/>
+
+++++
+
+[[rpipe13fc09e2d1a094ffa93]]
+==== ◆ dma_channel_set_config()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip0ff7039e55d194fa3284">
+<div class="memproto" id="rpipab89b444176ea42e725b">
+<table class="mlabels" id="rpip0dbb3df60352a4d3da9a">
+  <tr id="rpipf35f7b7c468f44aec253">
+  <td class="mlabels-left" id="rpip302db8d6462f28ab81b5">
+      <table class="memname" id="rpip8567f62d9ea73a7c469d">
+        <tr id="rpipb39ea168f3b561e10c7f">
+          <td class="memname" id="rpipf961a2070e0cb91f5a44">static void dma_channel_set_config </td>
+          <td id="rpip49268d98c65b8501a8ab">(</td>
+          <td class="paramtype" id="rpip2e09cbd8ad444d5713eb">uint </td>
+          <td class="paramname" id="rpip7c1579c0956a2affd1f5"><em id="rpip14013682d9f688ed4a05">channel</em>, </td>
+        </tr>
+        <tr id="rpip9473e31f217364f3d4fe">
+          <td class="paramkey" id="rpip0b211982df5389eb36cf"/>
+          <td id="rpip2df895ddec52af438e83"/>
+          <td class="paramtype" id="rpipecabe99e96adc729f978">const <a class="el" href="structdma__channel__config.html" id="rpip708447b53cffbc67eb8e">dma_channel_config</a> * </td>
+          <td class="paramname" id="rpipc0d9a2062634568cf536"><em id="rpip942d663250358467c2a7">config</em>, </td>
+        </tr>
+        <tr id="rpip29b156f61db5efd1868c">
+          <td class="paramkey" id="rpip5decb09bcc7e0ac5f86b"/>
+          <td id="rpip2195074735af67da3db2"/>
+          <td class="paramtype" id="rpip208e844405403fee0502">bool </td>
+          <td class="paramname" id="rpipfc10753697b57033620f"><em id="rpip6977b37e69344d2d1ce2">trigger</em> </td>
+        </tr>
+        <tr id="rpip2c270515ec379e3d96d1">
+          <td id="rpip0d4d2097cbae687f49b2"/>
+          <td id="rpip96cbe586ab04ef08ba5a">)</td>
+          <td id="rpip62358f28e6b838fd4017"/><td id="rpipbc23d0461766d73352f4"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip1311a5e9fd8ebd44270d">
+<span class="mlabels" id="rpip657d985e568f99fbe486"><span class="mlabel" id="rpipaade6fa3a46b78d424e0">inline</span><span class="mlabel" id="rpipf60a81791d1e555c38db">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip99d97248afd53d87362d">
+
+<p id="rpip3729ca9aba375fe9268d">Set a channel configuration. </p>
+<h4 id="rpip89c994fb7fdc7255412b" data-parent-id="rpip1f2acf9a275c760380c4" data-target-for="rpip89c994fb7fdc7255412b">Parameters</h4><p class="paragraph" id="rpip4ad801a9157bcfba50a7" data-parent-id="rpip1f2acf9a275c760380c4" data-target-for="rpip4ad801a9157bcfba50a7">
+  <table class="params" id="rpip92c8d4e6b60a0ab0f1e3">
+    <tr id="rpip5c266587118c345a180c"><td class="paramname" id="rpipc0c72232cf36c9b3590b">channel</td><td id="rpip19be1d1cc6a2b3bb25ec">DMA channel </td></tr>
+    <tr id="rpipa29c9186dc12fb6cedf6"><td class="paramname" id="rpipb7d36a0ac29aba4d23cd">config</td><td id="rpip3b92ab795468988b57a4">Pointer to a config structure with required configuration </td></tr>
+    <tr id="rpipba713c155baee93bcacf"><td class="paramname" id="rpipa3763a8ea83e60dfd30c">trigger</td><td id="rpip7c1936af9c8c6aa5bab2">True to trigger the transfer immediately </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="gaf60011d46676c87b7139f37188eaa4b9" name="gaf60011d46676c87b7139f37188eaa4b9"/>
+
+++++
+
+[[rpip2e937f3ff6b156e330ae]]
+==== ◆ dma_channel_set_irq0_enabled()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip7efbe88811e5167b672a">
+<div class="memproto" id="rpip5989a63ea1764f134792">
+<table class="mlabels" id="rpip5f49d7a71de7252daafd">
+  <tr id="rpipb0d490435294356b71b4">
+  <td class="mlabels-left" id="rpipdc66c972b453dc9c76e8">
+      <table class="memname" id="rpipeed313eba417eac33754">
+        <tr id="rpipbe7d94b44cff38ae53a4">
+          <td class="memname" id="rpipbeead3fe523429b88e81">static void dma_channel_set_irq0_enabled </td>
+          <td id="rpip300bcfa762f6b8569eeb">(</td>
+          <td class="paramtype" id="rpipc53a95a1af5fbda00c87">uint </td>
+          <td class="paramname" id="rpip78d9c1d51491de13c11f"><em id="rpip42423cbb9d5d89b39a35">channel</em>, </td>
+        </tr>
+        <tr id="rpip0477d65d644d85d94659">
+          <td class="paramkey" id="rpipc1181682aab6e2098738"/>
+          <td id="rpipf3d645c7d60c2e436014"/>
+          <td class="paramtype" id="rpip0ba481649538b3cc1fdc">bool </td>
+          <td class="paramname" id="rpip34af39ebb482359104fd"><em id="rpip52dd44c153a058dc7006">enabled</em> </td>
+        </tr>
+        <tr id="rpipbc24d82c6a9f70fbb21a">
+          <td id="rpipc9eaf71f7ca1dcde4d03"/>
+          <td id="rpip0081a6a70f652a0425dd">)</td>
+          <td id="rpipb648883ff47f1b6d36ab"/><td id="rpip14c9503717c064739a74"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip85571323d738ce7ff3fa">
+<span class="mlabels" id="rpip235d16c4ce1097fa3319"><span class="mlabel" id="rpip66b38d9c32312c66d85f">inline</span><span class="mlabel" id="rpip683c70a02a05351e0dff">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpipbe5d8629c69b30e35527">
+
+<p id="rpip7521b63593c8df9d3117">Enable single DMA channel's interrupt via DMA_IRQ_0. </p>
+<h4 id="rpip4bf312572099bae30a7d" data-parent-id="rpip735d13b9bb22d077da3d" data-target-for="rpip4bf312572099bae30a7d">Parameters</h4><p class="paragraph" id="rpipa9f6252a741eadff1ed6" data-parent-id="rpip735d13b9bb22d077da3d" data-target-for="rpipa9f6252a741eadff1ed6">
+  <table class="params" id="rpipc453798d4cb583977afa">
+    <tr id="rpip0736c8aecdebc910db8c"><td class="paramname" id="rpip62fbc73b4a9590e9c1d3">channel</td><td id="rpipd4e360451dcd9e610a20">DMA channel </td></tr>
+    <tr id="rpipc05c5170f802ea394be3"><td class="paramname" id="rpipeb749c10ce561e644cab">enabled</td><td id="rpip49464258625920db601a">true to enable interrupt 0 on specified channel, false to disable. </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga4f9415c8f77ff0bacedf5a138a88d76f" name="ga4f9415c8f77ff0bacedf5a138a88d76f"/>
+
+++++
+
+[[rpipb7df7177520f669154e8]]
+==== ◆ dma_channel_set_irq1_enabled()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip08753d32bee198af85b3">
+<div class="memproto" id="rpipaa77ab36d3edc9988526">
+<table class="mlabels" id="rpip99001b4d058ecd6915ee">
+  <tr id="rpip17d9b87fb1ea0a1857fc">
+  <td class="mlabels-left" id="rpip1e079f4386c062033e61">
+      <table class="memname" id="rpipdbf66fcbd849b9708d52">
+        <tr id="rpip6b714e0a03bf3db1cc8d">
+          <td class="memname" id="rpipb4ccc157434048727166">static void dma_channel_set_irq1_enabled </td>
+          <td id="rpipeb85c2b7a72f8af3d09b">(</td>
+          <td class="paramtype" id="rpip073428d58b672b57a399">uint </td>
+          <td class="paramname" id="rpipb87cb5b16bc26b083e5f"><em id="rpipd54a38ca715d2c51b29e">channel</em>, </td>
+        </tr>
+        <tr id="rpipd5869ccbacb70816cef3">
+          <td class="paramkey" id="rpipf53f585548bbe4b286b5"/>
+          <td id="rpip43f596ad581ea27db428"/>
+          <td class="paramtype" id="rpip3adb2f6cd63be83641d1">bool </td>
+          <td class="paramname" id="rpipca98329a37a83943b3ea"><em id="rpip862d74a2a49864e85b42">enabled</em> </td>
+        </tr>
+        <tr id="rpipfa4e46f69cd4dc5e752b">
+          <td id="rpip8b4f65f9a81535608de5"/>
+          <td id="rpip1ebda1a97b1880836a44">)</td>
+          <td id="rpipb6be781123fd94e3ee8d"/><td id="rpipd9a067a7848a74e1724e"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpipafb0e212e3cceeff2739">
+<span class="mlabels" id="rpip9e6fb4da5790a8146108"><span class="mlabel" id="rpip4645d498cf1a67433fa3">inline</span><span class="mlabel" id="rpip705f57ba13a734226687">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip04c5b3443684b443e7e9">
+
+<p id="rpipd308277ac375b80ba1ef">Enable single DMA channel's interrupt via DMA_IRQ_1. </p>
+<h4 id="rpip99c2387036f0a10a742f" data-parent-id="rpip87b0f2716d61db20b876" data-target-for="rpip99c2387036f0a10a742f">Parameters</h4><p class="paragraph" id="rpip2a2f154decb67dcd43ed" data-parent-id="rpip87b0f2716d61db20b876" data-target-for="rpip2a2f154decb67dcd43ed">
+  <table class="params" id="rpipd414b9014daae7fad924">
+    <tr id="rpip27faabd51413e8522bf6"><td class="paramname" id="rpipa442b37b7c227558710a">channel</td><td id="rpip3e7b1c1133198b28ce95">DMA channel </td></tr>
+    <tr id="rpipc071998dac93b4c0db63"><td class="paramname" id="rpip5d58062fdc88a853ec85">enabled</td><td id="rpipfbb71ef8041b3ebdba6f">true to enable interrupt 1 on specified channel, false to disable. </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="gabf6f6ffe56fa42dcb105032f110589ae" name="gabf6f6ffe56fa42dcb105032f110589ae"/>
+
+++++
+
+[[rpipf1ebb8f57fcab55ed93a]]
+==== ◆ dma_channel_set_read_addr()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip16e1cb5cf89caea90456">
+<div class="memproto" id="rpip955bb47d30725a55d2a5">
+<table class="mlabels" id="rpip73d88ffaa828748a6725">
+  <tr id="rpip896070dc38e169b6b75d">
+  <td class="mlabels-left" id="rpip671b86365d7775136122">
+      <table class="memname" id="rpip16dc907290743a6fad50">
+        <tr id="rpip0857ca73327069d037dc">
+          <td class="memname" id="rpip3e1cedf94315016e015d">static void dma_channel_set_read_addr </td>
+          <td id="rpip4454417d8a0989c7e760">(</td>
+          <td class="paramtype" id="rpip0d386c0d4171f89a1015">uint </td>
+          <td class="paramname" id="rpipffd500a13b324a5463d3"><em id="rpip520d99d7560d0c72978d">channel</em>, </td>
+        </tr>
+        <tr id="rpipbd8acd10a73cac4e4764">
+          <td class="paramkey" id="rpipab5c9adb5591102f60d0"/>
+          <td id="rpip2b30cdacb521b420b67c"/>
+          <td class="paramtype" id="rpipa8d2c9925be979904990">const volatile void * </td>
+          <td class="paramname" id="rpip3eed568ad93bf1e7bbd1"><em id="rpipcac0c9132ce3ebb708c3">read_addr</em>, </td>
+        </tr>
+        <tr id="rpip370b508936c9fafbabbf">
+          <td class="paramkey" id="rpip049ef7f061610d7519da"/>
+          <td id="rpip2bfd9dfb67dc5aa7a3dd"/>
+          <td class="paramtype" id="rpip22995b956d10f7786974">bool </td>
+          <td class="paramname" id="rpipa8a0071e5ce062c645bf"><em id="rpipa99431f11e62a38d0fd1">trigger</em> </td>
+        </tr>
+        <tr id="rpip9e2fc7070835595e2782">
+          <td id="rpipb8b9db563bf0cf2dab87"/>
+          <td id="rpip34b0758b6c9b3db5bd80">)</td>
+          <td id="rpip35bc37d8a9b3000823b6"/><td id="rpipefd71f9b1924012b3b34"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip12e1022cbd9cacddb0b4">
+<span class="mlabels" id="rpip5cdec886b1b76871e805"><span class="mlabel" id="rpip0ea6392bc7dbd58c7f88">inline</span><span class="mlabel" id="rpip51ee4a94a89616033748">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip841640cec58db049712f">
+
+<p id="rpipc22ff705e96921901f13">Set the DMA initial read address. </p>
+<h4 id="rpip5033c6ecce10d6252143" data-parent-id="rpipa53b4595265756bd6b34" data-target-for="rpip5033c6ecce10d6252143">Parameters</h4><p class="paragraph" id="rpipc6be2e478056152de8bf" data-parent-id="rpipa53b4595265756bd6b34" data-target-for="rpipc6be2e478056152de8bf">
+  <table class="params" id="rpip2bc4996826da36ff9b38">
+    <tr id="rpip6f6818c7ae2e38dc08bb"><td class="paramname" id="rpipe4caa15e428ddf63188c">channel</td><td id="rpipa73a91e3041e88d80134">DMA channel </td></tr>
+    <tr id="rpipf5d90630ab438c02aecc"><td class="paramname" id="rpip29207cc33e59908da1cd">read_addr</td><td id="rpipaa205bef3259e460d67b">Initial read address of transfer. </td></tr>
+    <tr id="rpip36605d8570c0466342b9"><td class="paramname" id="rpip5fdc0d8dcbd97356648e">trigger</td><td id="rpip65ff5c8cbb19294a9de2">True to start the transfer immediately </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga16c0e08eda636f13053d8c8b0f81e821" name="ga16c0e08eda636f13053d8c8b0f81e821"/>
+
+++++
+
+[[rpipc0dd31c541e5afc96deb]]
+==== ◆ dma_channel_set_trans_count()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip26759b33d27e86e96b83">
+<div class="memproto" id="rpipe4c8bdf5dc0a57459060">
+<table class="mlabels" id="rpip22e4e123d54a84cddecd">
+  <tr id="rpipa37be86aedfb3514ba85">
+  <td class="mlabels-left" id="rpip2a63715cab00a856765d">
+      <table class="memname" id="rpipd14ad453bba0a1c2e664">
+        <tr id="rpipa31484674f1b5397585f">
+          <td class="memname" id="rpipa3f047b39ea1358144e0">static void dma_channel_set_trans_count </td>
+          <td id="rpip5d939a1035fce5dd7529">(</td>
+          <td class="paramtype" id="rpipfc96032e6e6eaf974567">uint </td>
+          <td class="paramname" id="rpipd40bc395d6f71d908c3b"><em id="rpipc5499c6ed5eeb7d51198">channel</em>, </td>
+        </tr>
+        <tr id="rpip7076bca08339edca89f9">
+          <td class="paramkey" id="rpipde5c00bc1f1fe610622e"/>
+          <td id="rpipaf0a17f4697facbdf2c9"/>
+          <td class="paramtype" id="rpip8f1c87e88d97c0e24c99">uint32_t </td>
+          <td class="paramname" id="rpip96f416bfb5e8fdb1bb07"><em id="rpipa9ff2699008946760e74">trans_count</em>, </td>
+        </tr>
+        <tr id="rpipc61ab5b5e9fece5fd525">
+          <td class="paramkey" id="rpip4f1cc919c601fb070931"/>
+          <td id="rpipa9acd5fc7caaeab3d507"/>
+          <td class="paramtype" id="rpipc450d5c4b3307ea625c1">bool </td>
+          <td class="paramname" id="rpip40cbe895e4aeb847400c"><em id="rpip54dbf8463eab6f8d167d">trigger</em> </td>
+        </tr>
+        <tr id="rpipd72275fa1f4ec2bd6d4f">
+          <td id="rpip32df12ca8ebfac43754c"/>
+          <td id="rpipae92b281e63d2a313383">)</td>
+          <td id="rpipd711a4668a5db34d359b"/><td id="rpip23ab343a29ca58a5f16c"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpipcf84d6a6df8db566a435">
+<span class="mlabels" id="rpip278881f0b84a9f517658"><span class="mlabel" id="rpipb405361a7a7742461a23">inline</span><span class="mlabel" id="rpipb1847eb78bbc2fe510f8">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip4ecaa817bcfe81e33ab1">
+
+<p id="rpipdad79f403f714bdaa160">Set the number of bus transfers the channel will do. </p>
+<h4 id="rpipe575927dc9bad7a05586" data-parent-id="rpip623a758db2df360b772e" data-target-for="rpipe575927dc9bad7a05586">Parameters</h4><p class="paragraph" id="rpipfcae49d5f176b0dec3df" data-parent-id="rpip623a758db2df360b772e" data-target-for="rpipfcae49d5f176b0dec3df">
+  <table class="params" id="rpipeef358cf804c80df0ec1">
+    <tr id="rpip64b20708ec8b5227dbfc"><td class="paramname" id="rpip293ecbcfd6f1f15f01bb">channel</td><td id="rpipd569fef17a282b542fc8">DMA channel </td></tr>
+    <tr id="rpipd60eb31e55b89faa3746"><td class="paramname" id="rpip5841c2cf3e910c93b970">trans_count</td><td id="rpipb304cb23f9e4115dd888">The number of transfers (not NOT bytes, see channel_config_set_transfer_data_size) </td></tr>
+    <tr id="rpipad94f9f666086deec864"><td class="paramname" id="rpip99acaf3c6df52d851bf5">trigger</td><td id="rpip4eb63f5f882f9d1c2fcc">True to start the transfer immediately </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="gaf0156609fe51c07d07118b2aeb4e9ae6" name="gaf0156609fe51c07d07118b2aeb4e9ae6"/>
+
+++++
+
+[[rpip998cdbd263af22a875f0]]
+==== ◆ dma_channel_set_write_addr()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip7fdc1ddf4002fd36e8e1">
+<div class="memproto" id="rpip141a426a1dabc8f41694">
+<table class="mlabels" id="rpip1b48aa2aba907116d9d3">
+  <tr id="rpip731ad4de11209d2acdd5">
+  <td class="mlabels-left" id="rpip3bdf085ffdedeee536b8">
+      <table class="memname" id="rpipcf7e1bcbb7785d0376c4">
+        <tr id="rpipc1dde53ee498d85e688d">
+          <td class="memname" id="rpipe47c4d922e5d8d7da1bb">static void dma_channel_set_write_addr </td>
+          <td id="rpip5225176905cb24a7ac51">(</td>
+          <td class="paramtype" id="rpip6369d870586513e05589">uint </td>
+          <td class="paramname" id="rpip669c4df72eae1ec7d1bc"><em id="rpip62a8bbafe53c01ad1e1b">channel</em>, </td>
+        </tr>
+        <tr id="rpipe21b83a9afb082bc0759">
+          <td class="paramkey" id="rpip08d0d13951765ecafefe"/>
+          <td id="rpipf93a221c8b38d7b109dc"/>
+          <td class="paramtype" id="rpip9b4d425286e52256ccc5">volatile void * </td>
+          <td class="paramname" id="rpip3a4f91332a84326d7006"><em id="rpipb726f6a88d00ed6d1479">write_addr</em>, </td>
+        </tr>
+        <tr id="rpip498e710bb1a31f8c858b">
+          <td class="paramkey" id="rpipb969fc265c9a980020e1"/>
+          <td id="rpip017fade294f9675f5d1f"/>
+          <td class="paramtype" id="rpipd367e7e966f97b00884f">bool </td>
+          <td class="paramname" id="rpip47389b2f125839f4ba1d"><em id="rpip21978e48d7515d6d44a4">trigger</em> </td>
+        </tr>
+        <tr id="rpipb961386e9de7a356dbb6">
+          <td id="rpipbda500952f47288e9eec"/>
+          <td id="rpip3051c6ffae8b9e11ff14">)</td>
+          <td id="rpip6681d03a50ad08ac8c46"/><td id="rpip057cf29b48a87ee5a61d"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip94b3fa9864a0bc65dcc0">
+<span class="mlabels" id="rpipb72933a6af542da6a851"><span class="mlabel" id="rpip44466798c68850de3727">inline</span><span class="mlabel" id="rpip3d13fb0cf99f8bea1778">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip045cd9442137f0da98fd">
+
+<p id="rpip73224d486b5f1eed6cfb">Set the DMA initial write address. </p>
+<h4 id="rpip35d513e51d178566e390" data-parent-id="rpip09c75e6aeb2157ca5e93" data-target-for="rpip35d513e51d178566e390">Parameters</h4><p class="paragraph" id="rpipd23138ea78db04c6e923" data-parent-id="rpip09c75e6aeb2157ca5e93" data-target-for="rpipd23138ea78db04c6e923">
+  <table class="params" id="rpip48e8a3deb72b28a0a5fa">
+    <tr id="rpip75f6ef0ece8190983cd7"><td class="paramname" id="rpip7a9b1863e44a52e1b25d">channel</td><td id="rpipfee1c54c96ad82c9827c">DMA channel </td></tr>
+    <tr id="rpipa761121b1ff0a50a6fc0"><td class="paramname" id="rpip10a35d1355b5c47f7f2f">write_addr</td><td id="rpip1bac6e3a9cfc81222f74">Initial write address of transfer. </td></tr>
+    <tr id="rpip18869529acd12ca61d1b"><td class="paramname" id="rpip938ec3ed4ccc6e0fd876">trigger</td><td id="rpip497fe9ce24d7100452a8">True to start the transfer immediately </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga355720e02713c7324b540efc6f632366" name="ga355720e02713c7324b540efc6f632366"/>
+
+++++
+
+[[rpip1abce4c409151eea2388]]
+==== ◆ dma_channel_start()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip1e1cf2d8d010234f95b1">
+<div class="memproto" id="rpip7045471e8f2db7167057">
+<table class="mlabels" id="rpipa3796586ea87a12787d5">
+  <tr id="rpip17c1d787f57647bfa577">
+  <td class="mlabels-left" id="rpipa5ef2f77859fd66aed1b">
+      <table class="memname" id="rpipb4422a5d847bb1d26de2">
+        <tr id="rpipf1b26a2632a996122fa4">
+          <td class="memname" id="rpip824b8bedce7bf699b3c9">static void dma_channel_start </td>
+          <td id="rpipdbd7e503aedff65596fe">(</td>
+          <td class="paramtype" id="rpipa39b163bbde7ea06161c">uint </td>
+          <td class="paramname" id="rpip3e4338ec3e940459b88d"><em id="rpip5a21aba113c37e569e6d">channel</em></td><td id="rpip5a9bf0d14fd56a44736a">)</td>
+          <td id="rpipbc7c0253c03fb483e5e1"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip1536bf8ee8cdfeee3183">
+<span class="mlabels" id="rpip5865e983dbf812be6f1b"><span class="mlabel" id="rpipbe4202a5ad6265b7094a">inline</span><span class="mlabel" id="rpip09f6dce4ba0da42f92c9">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip3813f926873807a0b40a">
+
+<p id="rpip52278754044768d7c930">Start a single DMA channel. </p>
+<h4 id="rpipdec6645509292ea66614" data-parent-id="rpip367c66fcae425d24c4c0" data-target-for="rpipdec6645509292ea66614">Parameters</h4><p class="paragraph" id="rpip292fef75a2d8e6c8eed5" data-parent-id="rpip367c66fcae425d24c4c0" data-target-for="rpip292fef75a2d8e6c8eed5">
+  <table class="params" id="rpip5dfaaa4056548e0d1811">
+    <tr id="rpip0d34407c4701207bb611"><td class="paramname" id="rpipa35362b8448138015827">channel</td><td id="rpip823c0cb3abda7b3b9130">DMA channel </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="gabf64c461a405a8114591105d9dc53575" name="gabf64c461a405a8114591105d9dc53575"/>
+
+++++
+
+[[rpipe3daa7c6be47a2e9ab21]]
+==== ◆ dma_channel_transfer_from_buffer_now()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipc9b360b7df38f1c1e82a">
+<div class="memproto" id="rpip473e9ba327538247779d">
+<table class="mlabels" id="rpip944aad80f231a408ddfe">
+  <tr id="rpip30dd4a52b7f9f13661de">
+  <td class="mlabels-left" id="rpip608790f76a8039b1a5e9">
+      <table class="memname" id="rpip43a12818bc72171dc452">
+        <tr id="rpip083c448a07682a67b215">
+          <td class="memname" id="rpipf26d52f62f43436a014f">static void dma_channel_transfer_from_buffer_now </td>
+          <td id="rpip8cae607e4672e55311aa">(</td>
+          <td class="paramtype" id="rpip750d8c1b43864df15c8d">uint </td>
+          <td class="paramname" id="rpip047b3940172d2e68f0d0"><em id="rpip540e67ef6c4938e8988b">channel</em>, </td>
+        </tr>
+        <tr id="rpip1468c8b1b41661a62ffa">
+          <td class="paramkey" id="rpipe7d1d85f22d26cb99fb3"/>
+          <td id="rpipb4882323b9226f846f1b"/>
+          <td class="paramtype" id="rpipd2d4fef8901e6fa4e719">const volatile void * </td>
+          <td class="paramname" id="rpipb96a291c95562d142fca"><em id="rpip6affdd09beb007f1ca3f">read_addr</em>, </td>
+        </tr>
+        <tr id="rpip68c5648ee2c5a9ac39ea">
+          <td class="paramkey" id="rpipfda5f1789fe62b871b08"/>
+          <td id="rpipdad7f2e4622d35d4a9e4"/>
+          <td class="paramtype" id="rpipb5a19734e26af3b70317">uint32_t </td>
+          <td class="paramname" id="rpip3e243e90727736f7e7bc"><em id="rpip025a20133b46a19a7b90">transfer_count</em> </td>
+        </tr>
+        <tr id="rpipc025015ae59b9ed05b40">
+          <td id="rpip27314887ec83eeb17406"/>
+          <td id="rpip0ca084fc15728b5c1d53">)</td>
+          <td id="rpipf464aa31d3b3cc041017"/><td id="rpip9543429dbef30ff8c7da"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip199fa22d9e290d347e45">
+<span class="mlabels" id="rpip96a6afc18dd197e1c2e7"><span class="mlabel" id="rpip8e234546be496be1240d">inline</span><span class="mlabel" id="rpip23e221c673f11caedda0">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpipc020b4e7f4721eacf83c">
+
+<p id="rpip7b7545f510e3c83a1d42">Start a DMA transfer from a buffer immediately. </p>
+<h4 id="rpipa471d17a93762455b876" data-parent-id="rpipe7bec87bc68fe1258171" data-target-for="rpipa471d17a93762455b876">Parameters</h4><p class="paragraph" id="rpipffbc6258a1380a7deedc" data-parent-id="rpipe7bec87bc68fe1258171" data-target-for="rpipffbc6258a1380a7deedc">
+  <table class="params" id="rpipa298350fbbb887680d9f">
+    <tr id="rpip0cc1ad590fe9dc2a8653"><td class="paramname" id="rpipddfd820bdf2b31ab1cc2">channel</td><td id="rpip09af6d45146c601f25fe">DMA channel </td></tr>
+    <tr id="rpip5b3d4a170a056a3c50a4"><td class="paramname" id="rpip8dab9d7b818a9af1ad5c">read_addr</td><td id="rpip067c874cfa7a345d4fe0">Sets the initial read address </td></tr>
+    <tr id="rpipdddb7ab7df02da574291"><td class="paramname" id="rpip53a02936af2301bc0615">transfer_count</td><td id="rpip0f3e5d696ada43c7fe01">Number of transfers to make. Not bytes, but the number of transfers of <a class="el" href="group__channel__config.html#gad1a02fcee90d21f133460006b025bac0" title="Set the size of each DMA bus transfer in a channel configuration object." id="rpipc13741e4938ccf5e1729" data-adjusted="true">channel_config_set_transfer_data_size()</a> to be sent. </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga9110135d8161fc268d87dfb040d0f854" name="ga9110135d8161fc268d87dfb040d0f854"/>
+
+++++
+
+[[rpip8d5c58d4ec2c50467eac]]
+==== ◆ dma_channel_transfer_to_buffer_now()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipb51e21c0130ca1ea92db">
+<div class="memproto" id="rpipa5b81e8f3930d898ad8f">
+<table class="mlabels" id="rpip975e8b83c79d2caa659d">
+  <tr id="rpip02db3cd26975f585f7e1">
+  <td class="mlabels-left" id="rpip837b2c3c1e8d699550d3">
+      <table class="memname" id="rpip8988c135bfb6b5339dc1">
+        <tr id="rpipa7f929a9ff6f33409978">
+          <td class="memname" id="rpipc23b9097807ce72f04ef">static void dma_channel_transfer_to_buffer_now </td>
+          <td id="rpip7dacc3c5276dadd00ab4">(</td>
+          <td class="paramtype" id="rpipbd570b4c12c62e783383">uint </td>
+          <td class="paramname" id="rpip6b518253b94624a1173b"><em id="rpip1798c99b346067ed2cf9">channel</em>, </td>
+        </tr>
+        <tr id="rpipd524693fb07780afc2e7">
+          <td class="paramkey" id="rpipd9b315927d7fe7e8bb46"/>
+          <td id="rpip5ad25ae80115db9014db"/>
+          <td class="paramtype" id="rpipb63f14af5cebeca1deba">volatile void * </td>
+          <td class="paramname" id="rpip1d99c7592cbc316530dc"><em id="rpipaf79bdc60392991759f8">write_addr</em>, </td>
+        </tr>
+        <tr id="rpipd5c594d0e814d2e17189">
+          <td class="paramkey" id="rpipf4aa61a3c38efe328a5c"/>
+          <td id="rpipd9b3049899de5ad7c2b5"/>
+          <td class="paramtype" id="rpipfa40495b25af808b31fc">uint32_t </td>
+          <td class="paramname" id="rpipb2d2b92752b87d884f61"><em id="rpip146be113d9df94f877b0">transfer_count</em> </td>
+        </tr>
+        <tr id="rpipe59f74c8cc871eaecb4a">
+          <td id="rpipa5419fbeb85f9d895e71"/>
+          <td id="rpipbc2e178ba51d7d62070e">)</td>
+          <td id="rpip20858a5d71ef6452f6b8"/><td id="rpipc24eef0ba28e6113ec55"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip99bda0de8ec07836041f">
+<span class="mlabels" id="rpip5689d1de59fa990385f8"><span class="mlabel" id="rpip9086f66b10e5842e9568">inline</span><span class="mlabel" id="rpipd51e27023a48ded14b4c">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip84ad103b97872ce08f55">
+
+<p id="rpip450e945e3fc7dfcf1eeb">Start a DMA transfer to a buffer immediately. </p>
+<h4 id="rpip672ff463fe2479d7a1b3" data-parent-id="rpipd0c54b96c622d5cc48f6" data-target-for="rpip672ff463fe2479d7a1b3">Parameters</h4><p class="paragraph" id="rpipdbb12718fd289708d0fc" data-parent-id="rpipd0c54b96c622d5cc48f6" data-target-for="rpipdbb12718fd289708d0fc">
+  <table class="params" id="rpip7392aafac1325362e333">
+    <tr id="rpipd7f0b15f83f0218d99f4"><td class="paramname" id="rpip610c9a977ef6ca8eac43">channel</td><td id="rpipab4a1d9a4da162fab998">DMA channel </td></tr>
+    <tr id="rpipf18be925827739ec5b8c"><td class="paramname" id="rpip4898e8c8334f580c1d24">write_addr</td><td id="rpip3223225f799de0a155e7">Sets the initial write address </td></tr>
+    <tr id="rpipf2d0ee8f3a271149f7ec"><td class="paramname" id="rpip1f886ea63a6693372531">transfer_count</td><td id="rpip975e8e02127c2c305f56">Number of transfers to make. Not bytes, but the number of transfers of <a class="el" href="group__channel__config.html#gad1a02fcee90d21f133460006b025bac0" title="Set the size of each DMA bus transfer in a channel configuration object." id="rpip11375366e321a02b77ef" data-adjusted="true">channel_config_set_transfer_data_size()</a> to be sent. </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="gac50200739b88a2fd52316f4150533035" name="gac50200739b88a2fd52316f4150533035"/>
+
+++++
+
+[[rpipde568a4b5da073153d29]]
+==== ◆ dma_channel_unclaim()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip1415f2b89fe7c281f90c">
+<div class="memproto" id="rpip487f5589e0d92da4ba7c">
+      <table class="memname" id="rpipca099523f18ef68ae38d">
+        <tr id="rpipad042d499748ccb1e356">
+          <td class="memname" id="rpip8071848a937ade2d553a">void dma_channel_unclaim </td>
+          <td id="rpip6fdc3fb18f67bd979112">(</td>
+          <td class="paramtype" id="rpip7bf36db56df8c49252d5">uint </td>
+          <td class="paramname" id="rpipa449c5eb41a29755cc80"><em id="rpipfa9afaa08e29c9be77a1">channel</em></td><td id="rpip3c4b4c451c7fc6e14f10">)</td>
+          <td id="rpipc0bbcaba84f91b982f1c"/>
+        </tr>
+      </table>
+</div><div class="memdoc" id="rpip9f818ad2bf36a6d3bad7">
+
+<p id="rpip8e575e84e7be5979c700">Mark a dma channel as no longer used. </p>
+<h4 id="rpip8a9a41931aa26229aace" data-parent-id="rpip80e21a75bd43a354690a" data-target-for="rpip8a9a41931aa26229aace">Parameters</h4><p class="paragraph" id="rpip4c65546d21bc346bb615" data-parent-id="rpip80e21a75bd43a354690a" data-target-for="rpip4c65546d21bc346bb615">
+  <table class="params" id="rpip64005c975f1d8c5a9c01">
+    <tr id="rpipc7e60228962ec7583632"><td class="paramname" id="rpipf6531e5ddf9e7a055598">channel</td><td id="rpip554d8b810de75b8ac32d">the dma channel to release </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="gab57c68850b8e6ed1623de75ad611db62" name="gab57c68850b8e6ed1623de75ad611db62"/>
+
+++++
+
+[[rpip3e836c8aa7f0c703c73e]]
+==== ◆ dma_channel_wait_for_finish_blocking()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipadc533ae1a613c2e0f54">
+<div class="memproto" id="rpip5ed95247f40a07504b68">
+<table class="mlabels" id="rpip360eb4d4b36a07ba85f2">
+  <tr id="rpip22a6cdd9b6a6ce1eef23">
+  <td class="mlabels-left" id="rpip8ef368c74dbffa20794e">
+      <table class="memname" id="rpipb1b49f5751e1132b8652">
+        <tr id="rpip500f06fabc13ca0f5afd">
+          <td class="memname" id="rpip2360e5576949f722cbae">static void dma_channel_wait_for_finish_blocking </td>
+          <td id="rpipa97582f485fb8a722c66">(</td>
+          <td class="paramtype" id="rpipe529623b3692fd329c04">uint </td>
+          <td class="paramname" id="rpip0450273b8e19635aa691"><em id="rpip1885a59862036825ec7a">channel</em></td><td id="rpip61fcbe4a00907abc7639">)</td>
+          <td id="rpip61a00037bc6c83d966e6"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpipd7de6590fa09f4a20afc">
+<span class="mlabels" id="rpip9bb2921405fdc000f0ff"><span class="mlabel" id="rpip6131ade431919211669d">inline</span><span class="mlabel" id="rpip9dbdee360c6b7e4bea27">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpipa9bfa37d7619e17dcdc1">
+
+<p id="rpip934ea4b3cc9974166a4d">Wait for a DMA channel transfer to complete. </p>
+<h4 id="rpip3b5d650e1daa9edc396b" data-parent-id="rpip749854d0911373bb25e3" data-target-for="rpip3b5d650e1daa9edc396b">Parameters</h4><p class="paragraph" id="rpipfcbca9a7d19ed44ffd3d" data-parent-id="rpip749854d0911373bb25e3" data-target-for="rpipfcbca9a7d19ed44ffd3d">
+  <table class="params" id="rpip5f380951038c9f4556c3">
+    <tr id="rpip447ac1452df660345b9b"><td class="paramname" id="rpip8c84c6f62f15a010a2d8">channel</td><td id="rpipa8af6dd43ff68a42a489">DMA channel </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="gaa430bc53dc2b36d727ad976f6348c8b3" name="gaa430bc53dc2b36d727ad976f6348c8b3"/>
+
+++++
+
+[[rpip90b24a0a341d4abd5d9b]]
+==== ◆ dma_claim_mask()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipd84824b8ba9fefda3d14">
+<div class="memproto" id="rpip3ec08cfaceb0425ea9c8">
+      <table class="memname" id="rpip19412d9500f345091389">
+        <tr id="rpip9e5ee6136603f4007617">
+          <td class="memname" id="rpip7f2182dca43fcfcbb0c6">void dma_claim_mask </td>
+          <td id="rpip5fd178cef6bc6b7432c6">(</td>
+          <td class="paramtype" id="rpipde9b1101cec53dfc4f19">uint32_t </td>
+          <td class="paramname" id="rpip4d89d217116a9095b065"><em id="rpip2cd7bb192afc0d6f637d">channel_mask</em></td><td id="rpip0c20c094a02fc07b47cf">)</td>
+          <td id="rpip23250191121f642a6b40"/>
+        </tr>
+      </table>
+</div><div class="memdoc" id="rpip132ac3b4badf79c1f0e7">
+
+<p id="rpip96b7efd85c8a16f4c48c">Mark multiple dma channels as used. </p>
+<p id="rpipf86539451de0ebb8846c">Method for cooperative claiming of hardware. Will cause a panic if any of the channels are already claimed. Use of this method by libraries detects accidental configurations that would fail in unpredictable ways.</p>
+<h4 id="rpip09ac970dab0457f863d5" data-parent-id="rpip85a6cf592e9ac27f584f" data-target-for="rpip09ac970dab0457f863d5">Parameters</h4><p class="paragraph" id="rpip79b467829f4baeb90119" data-parent-id="rpip85a6cf592e9ac27f584f" data-target-for="rpip79b467829f4baeb90119">
+  <table class="params" id="rpip546d1877a3e854de16ec">
+    <tr id="rpip38ad1406893badf80fff"><td class="paramname" id="rpip0cb4dc030a80d229331e">channel_mask</td><td id="rpip70c1f227cfab4368fab7">Bitfield of all required channels to claim (bit 0 == channel 0, bit 1 == channel 1 etc) </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga4b0a6680795b9c9ed787362a8a057206" name="ga4b0a6680795b9c9ed787362a8a057206"/>
+
+++++
+
+[[rpip9ec3b00d0ccde6c54e48]]
+==== ◆ dma_claim_unused_channel()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipbce7691afb7f0f1a0885">
+<div class="memproto" id="rpipab26f69e16c53b4f6e1c">
+      <table class="memname" id="rpipc3fe805b2062c52f687d">
+        <tr id="rpipfff3677d997815aebf71">
+          <td class="memname" id="rpip2c2ebd57d7bb96f24cfc">int dma_claim_unused_channel </td>
+          <td id="rpip6d14c75d9f3f61641086">(</td>
+          <td class="paramtype" id="rpipf04cdc120087fd4c0f05">bool </td>
+          <td class="paramname" id="rpip3ca981a94614393cbe3e"><em id="rpip5ba8f0f8151abf2951ab">required</em></td><td id="rpipf1d69cfaf81c466f1b08">)</td>
+          <td id="rpip3612498fa3963d3269f8"/>
+        </tr>
+      </table>
+</div><div class="memdoc" id="rpipfde42236a965d5c28caf">
+
+<p id="rpipd9562dca0fd50df0a9dc">Claim a free dma channel. </p>
+<h4 id="rpip7975d1943eed3873cf4e" data-parent-id="rpip6dcd3e83111a95b52c6c" data-target-for="rpip7975d1943eed3873cf4e">Parameters</h4><p class="paragraph" id="rpip7a70f486d6bdecbe5f58" data-parent-id="rpip6dcd3e83111a95b52c6c" data-target-for="rpip7a70f486d6bdecbe5f58">
+  <table class="params" id="rpip049bb1576ba202a705e2">
+    <tr id="rpipe9115ff7e9963e52f9c4"><td class="paramname" id="rpipc697a261ed76629d4d81">required</td><td id="rpip016eed0b51948296af9f">if true the function will panic if none are available </td></tr>
+  </table>
+  </p>
+
+
+<h4 class="label" id="rpip878148eaf6f5745fe888" data-parent-id="rpip8e5d0eb74cdb4f905c2f" data-target-for="rpip878148eaf6f5745fe888">Returns</h4><p class="returns" id="rpip39351e87e9b49f089fb8" data-parent-id="rpip8e5d0eb74cdb4f905c2f" data-target-for="rpip39351e87e9b49f089fb8">the dma channel number or -1 if required was false, and none were free </p>
+
+</div>
+</div>
+<a id="ga2f218b6acd97e09430afbb74172bd570" name="ga2f218b6acd97e09430afbb74172bd570"/>
+
+++++
+
+[[rpip2fcce7b74119ce65b7c4]]
+==== ◆ dma_claim_unused_timer()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip83caa3ed59cddbcedb0e">
+<div class="memproto" id="rpipb8ea69cc632f974b8866">
+      <table class="memname" id="rpip397afbb9822842890217">
+        <tr id="rpipc9293189b4e1fe5e2dde">
+          <td class="memname" id="rpip8f26d1709cd6bf9a4098">int dma_claim_unused_timer </td>
+          <td id="rpipdf6c0f6b9a35fde11e05">(</td>
+          <td class="paramtype" id="rpip00c0aa7f5b1c3c03f6b8">bool </td>
+          <td class="paramname" id="rpip461dc815fab76b893a33"><em id="rpip0627285c08726e2a50ad">required</em></td><td id="rpip58085f0015d9b8b4bedf">)</td>
+          <td id="rpipf3415db7e214e400c4c1"/>
+        </tr>
+      </table>
+</div><div class="memdoc" id="rpipc1b8700fcce7c52256e4">
+
+<p id="rpip24374822e1b3bffd40ec">Claim a free dma timer. </p>
+<h4 id="rpipf676aa7b5a27d734e409" data-parent-id="rpip26c461f0df16494153cf" data-target-for="rpipf676aa7b5a27d734e409">Parameters</h4><p class="paragraph" id="rpip3053e1d612f344558872" data-parent-id="rpip26c461f0df16494153cf" data-target-for="rpip3053e1d612f344558872">
+  <table class="params" id="rpipb82865312eea9d915770">
+    <tr id="rpip22aa13afeeb71d85ca97"><td class="paramname" id="rpip7a35738ca546c8d29c65">required</td><td id="rpip574eb2767d54c4b98e3d">if true the function will panic if none are available </td></tr>
+  </table>
+  </p>
+
+
+<h4 class="label" id="rpipace14690d7560ed4236d" data-parent-id="rpipbe569435828497ca153f" data-target-for="rpipace14690d7560ed4236d">Returns</h4><p class="returns" id="rpipcc39ba9adc4bd0ad5a63" data-parent-id="rpipbe569435828497ca153f" data-target-for="rpipcc39ba9adc4bd0ad5a63">the dma timer number or -1 if required was false, and none were free </p>
+
+</div>
+</div>
+<a id="ga75ef6881795fd1760fe813f9e0a79223" name="ga75ef6881795fd1760fe813f9e0a79223"/>
+
+++++
+
+[[rpip0b8ae4edcb8399bc5695]]
+==== ◆ dma_get_timer_dreq()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip7557f94e7f44d6af32f9">
+<div class="memproto" id="rpip6e42fdf889a7a2b85821">
+<table class="mlabels" id="rpipac96a142155c271f5bc7">
+  <tr id="rpip3455def511fb31a5e1eb">
+  <td class="mlabels-left" id="rpipe9bceecdb36fef5d2593">
+      <table class="memname" id="rpip202e7e8c69e24b57d83f">
+        <tr id="rpipbe4e22b330eb01bbb0a2">
+          <td class="memname" id="rpip561f37266e03d1b99ff2">static uint dma_get_timer_dreq </td>
+          <td id="rpip19342d7224ab46cd8e2c">(</td>
+          <td class="paramtype" id="rpip79d97fe9a03c278922de">uint </td>
+          <td class="paramname" id="rpipb8abe1c220917f331b20"><em id="rpip8a5643f23392f705e350">timer_num</em></td><td id="rpipf729a21e9a1ca49bbe96">)</td>
+          <td id="rpip2e0f25d8a33bf0b0075e"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpipf882d1a6cdd71fef4f0c">
+<span class="mlabels" id="rpip086134e95980fe135bcf"><span class="mlabel" id="rpip16ce394ac9ab1bc0800b">inline</span><span class="mlabel" id="rpip574622ef347fe407cbbc">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip51f92494bbb3b89245c1">
+
+<p id="rpipef81c7667ab0b2df2754">Return the DREQ number for a given DMA timer. </p>
+<h4 id="rpipdfbed2d71b527169bdcc" data-parent-id="rpip7b0108cc19550798cb04" data-target-for="rpipdfbed2d71b527169bdcc">Parameters</h4><p class="paragraph" id="rpip84faf78084925da63fa6" data-parent-id="rpip7b0108cc19550798cb04" data-target-for="rpip84faf78084925da63fa6">
+  <table class="params" id="rpip6f05e606e4d4b6870fdf">
+    <tr id="rpip58c1edb7b253f8e7fbe1"><td class="paramname" id="rpipf9a7effbd2b029596548">timer_num</td><td id="rpipce5ccfdd3f14f526cd17">DMA timer number 0-3 </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="gad0e8e022fbe67b80c16912254526fada" name="gad0e8e022fbe67b80c16912254526fada"/>
+
+++++
+
+[[rpip9d91f107bd770725be33]]
+==== ◆ dma_irqn_acknowledge_channel()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipa829a64ffc8dbdda3f52">
+<div class="memproto" id="rpip106731b85c758f0de29a">
+<table class="mlabels" id="rpip3690c1b80778c306090a">
+  <tr id="rpip5814d461396e9cb3e38c">
+  <td class="mlabels-left" id="rpip1dcaa112f3ee456ef47a">
+      <table class="memname" id="rpipa9cf58af9c0864cc6959">
+        <tr id="rpip20bf0bd88cf8b4f1d9e8">
+          <td class="memname" id="rpip7374bb845b33f6686965">static void dma_irqn_acknowledge_channel </td>
+          <td id="rpip33136dc89fad853aaba8">(</td>
+          <td class="paramtype" id="rpip06b5f970892357773eaa">uint </td>
+          <td class="paramname" id="rpip3507fda1b886da23d24d"><em id="rpip90ae8d0d053fa0eb1a3d">irq_index</em>, </td>
+        </tr>
+        <tr id="rpip5389602eff8b86b59e1a">
+          <td class="paramkey" id="rpipbc25b2bd2f562583f8d3"/>
+          <td id="rpipe6cda4e8527e49a657fc"/>
+          <td class="paramtype" id="rpip948ed1e56f4c8fbc865e">uint </td>
+          <td class="paramname" id="rpip5572378f87c26131fa77"><em id="rpip3cd5b8b0699a2193406c">channel</em> </td>
+        </tr>
+        <tr id="rpip7b5aa9f66002e87889b9">
+          <td id="rpipce62c25931168ebdff80"/>
+          <td id="rpipadf59b6de2809b2f68a3">)</td>
+          <td id="rpipa8ab5e44acf4f7a10adc"/><td id="rpip5482ba9fe6473edbe8a4"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip0cb5f101503fe72333d0">
+<span class="mlabels" id="rpip37a0b673b1e806d8ee41"><span class="mlabel" id="rpipb17341b206cff57e7479">inline</span><span class="mlabel" id="rpip92af1029857808cb107c">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip38eab4b42aa9fcd8a438">
+
+<p id="rpip13a68ad947972e2a3b8c">Acknowledge a channel IRQ, resetting it as the cause of DMA_IRQ_N. </p>
+<h4 id="rpipeb886d305c46cec20c14" data-parent-id="rpipf8109266fe99d8050733" data-target-for="rpipeb886d305c46cec20c14">Parameters</h4><p class="paragraph" id="rpipa65bbdc217819762a500" data-parent-id="rpipf8109266fe99d8050733" data-target-for="rpipa65bbdc217819762a500">
+  <table class="params" id="rpip4a21c44e5749dcce96ac">
+    <tr id="rpip99ab775cb7bb7a189cd6"><td class="paramname" id="rpip0bb6d279ae10925c1347">irq_index</td><td id="rpip8fca5e0f5794114d7a73">the IRQ index; either 0 or 1 for DMA_IRQ_0 or DMA_IRQ_1 </td></tr>
+    <tr id="rpipc198d0b336358baced55"><td class="paramname" id="rpip08d7fa472ef664eb36ca">channel</td><td id="rpipfa4219b7e342efac17d9">DMA channel </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga43f1fe10d5eb241788f72ad11599fc11" name="ga43f1fe10d5eb241788f72ad11599fc11"/>
+
+++++
+
+[[rpipe714eb0d8ab4c74c2e1f]]
+==== ◆ dma_irqn_get_channel_status()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipd33d19ce67db19c50147">
+<div class="memproto" id="rpip7691bac7136e4cbba51e">
+<table class="mlabels" id="rpipd62a84dc8fc73bc74804">
+  <tr id="rpip2091ea128fffde22c890">
+  <td class="mlabels-left" id="rpipb5fb38c5f0041f6537d6">
+      <table class="memname" id="rpipcf708441deac7f84f651">
+        <tr id="rpip901e88eb80b4d20ca765">
+          <td class="memname" id="rpip1e0dd51b6f6735ad1ef0">static bool dma_irqn_get_channel_status </td>
+          <td id="rpipc2349dd25024cd3384d1">(</td>
+          <td class="paramtype" id="rpipaa204098eebba6650a69">uint </td>
+          <td class="paramname" id="rpipc151e33af31415c60d15"><em id="rpip60b6aa15c634aa5de164">irq_index</em>, </td>
+        </tr>
+        <tr id="rpipb2c242a7a5f0b8c082f6">
+          <td class="paramkey" id="rpip0a570427cf6c36c61c15"/>
+          <td id="rpip85005b5eda838c1bc8ab"/>
+          <td class="paramtype" id="rpip41f51d9600b05a1565fe">uint </td>
+          <td class="paramname" id="rpip318dbf67f081d687c34b"><em id="rpipeba76e4a6da4d623ab42">channel</em> </td>
+        </tr>
+        <tr id="rpip4beeccfdaca4230d0102">
+          <td id="rpipc3b039cd2da4325be818"/>
+          <td id="rpip69ba84043ebaf0f9ec86">)</td>
+          <td id="rpip6d137bcce932f2ab3b2c"/><td id="rpip6aef62f8bef78db1359f"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpipb46740f40bfb4c1d5b61">
+<span class="mlabels" id="rpip1686d70fd576e6dd667f"><span class="mlabel" id="rpip41088e558ff36daac64e">inline</span><span class="mlabel" id="rpip1bda53dcd960a1c3f983">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip62622e607db8ee6082a1">
+
+<p id="rpip08b0aff963706e9d19a9">Determine if a particular channel is a cause of DMA_IRQ_N. </p>
+<h4 id="rpip420b18f51e5190ac326d" data-parent-id="rpipf2581db6163d9f4993cc" data-target-for="rpip420b18f51e5190ac326d">Parameters</h4><p class="paragraph" id="rpipa3f65684385f6c35352b" data-parent-id="rpipf2581db6163d9f4993cc" data-target-for="rpipa3f65684385f6c35352b">
+  <table class="params" id="rpipac8346e4ae685f7fa0ea">
+    <tr id="rpipdf5be2a8d309bb4c1a73"><td class="paramname" id="rpip2e7cfe4301abf0497059">irq_index</td><td id="rpip57802415926f707cc657">the IRQ index; either 0 or 1 for DMA_IRQ_0 or DMA_IRQ_1 </td></tr>
+    <tr id="rpipd47e6ef38bea95084814"><td class="paramname" id="rpip3db212ea3afa630bb15a">channel</td><td id="rpipffeb4a04dc6f47862ec2">DMA channel </td></tr>
+  </table>
+  </p>
+
+
+<h4 class="label" id="rpipc99957e1af69c9ab5ff6" data-parent-id="rpip84692ebdf758aeece38c" data-target-for="rpipc99957e1af69c9ab5ff6">Returns</h4><p class="returns" id="rpip42ece3a59f80fbc04e97" data-parent-id="rpip84692ebdf758aeece38c" data-target-for="rpip42ece3a59f80fbc04e97">true if the channel is a cause of the DMA_IRQ_N, false otherwise </p>
+
+</div>
+</div>
+<a id="ga6fefe19fa5539580315de923e42131d3" name="ga6fefe19fa5539580315de923e42131d3"/>
+
+++++
+
+[[rpip7ea4a1d8ecdc4821aa13]]
+==== ◆ dma_irqn_set_channel_enabled()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipb6b484768f51023744f9">
+<div class="memproto" id="rpip5165d4506a179d95baf7">
+<table class="mlabels" id="rpipa80f86d018de20670b5a">
+  <tr id="rpip454a8794acc57b3825e5">
+  <td class="mlabels-left" id="rpipea0b32147a223bbdfd31">
+      <table class="memname" id="rpip7f2922d6ccf04b28c669">
+        <tr id="rpip3d73ba784f916d73f819">
+          <td class="memname" id="rpip68f3911eb66a4b07cb26">static void dma_irqn_set_channel_enabled </td>
+          <td id="rpip543518c67f822eff299f">(</td>
+          <td class="paramtype" id="rpip0cdb7d44a5efdbdc8efd">uint </td>
+          <td class="paramname" id="rpipfc1524e1697072c06bc1"><em id="rpip024072b631ea536fa495">irq_index</em>, </td>
+        </tr>
+        <tr id="rpip2479a7e1d85ae880d5db">
+          <td class="paramkey" id="rpip2212eda120356f522551"/>
+          <td id="rpip7e96dc90cc636183f3b1"/>
+          <td class="paramtype" id="rpipcc23442b9e858afb80b4">uint </td>
+          <td class="paramname" id="rpipe0de07ad9ee6bfe47b0c"><em id="rpip65d1f1c75aaa47a860d8">channel</em>, </td>
+        </tr>
+        <tr id="rpip21e5815ddacd29e9c7fc">
+          <td class="paramkey" id="rpipa4b26ffdb0dd81fc17f0"/>
+          <td id="rpipfe52221f613169e9100a"/>
+          <td class="paramtype" id="rpipaca6b949639dde956a7b">bool </td>
+          <td class="paramname" id="rpipa7b90d856ce193af82ea"><em id="rpip212a0da30910210a71de">enabled</em> </td>
+        </tr>
+        <tr id="rpip96375f16f4a2b0154107">
+          <td id="rpip7f6da3bfa78e55e23e03"/>
+          <td id="rpip2f8347fa079a3a1f7dbe">)</td>
+          <td id="rpip7c165befd0c79dceb279"/><td id="rpip09c8518472fb54db5bf3"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip7f997db848cf658cc01e">
+<span class="mlabels" id="rpip8984395e81d4f453efea"><span class="mlabel" id="rpip407f59f2fff389f1d8eb">inline</span><span class="mlabel" id="rpipc59c277d161e4008093e">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpipa4aa99010dc3213a6482">
+
+<p id="rpip763b78d45ef38ea5d705">Enable single DMA channel interrupt on either DMA_IRQ_0 or DMA_IRQ_1. </p>
+<h4 id="rpip90a035053a9f6243e475" data-parent-id="rpip3def82f5ae00e60df83c" data-target-for="rpip90a035053a9f6243e475">Parameters</h4><p class="paragraph" id="rpipaf2f3ed2056f9e621e2e" data-parent-id="rpip3def82f5ae00e60df83c" data-target-for="rpipaf2f3ed2056f9e621e2e">
+  <table class="params" id="rpip7028b0c3754f3e0d562b">
+    <tr id="rpip4176296de6d9a0dd0eac"><td class="paramname" id="rpip89f3456d125899147857">irq_index</td><td id="rpipf6016c762162c7f56411">the IRQ index; either 0 or 1 for DMA_IRQ_0 or DMA_IRQ_1 </td></tr>
+    <tr id="rpip339502dea7275ecb48eb"><td class="paramname" id="rpipca863798097fc5055a17">channel</td><td id="rpip673aafa949bca7896cc6">DMA channel </td></tr>
+    <tr id="rpipaa01bf59f04c4e46acd1"><td class="paramname" id="rpipc345e9fbbd90482aed9f">enabled</td><td id="rpip39033d43e9526c522220">true to enable interrupt via irq_index for specified channel, false to disable. </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga720f2335e93b0e53e28959566ca18f3e" name="ga720f2335e93b0e53e28959566ca18f3e"/>
+
+++++
+
+[[rpip2cd553a02795d4b287c2]]
+==== ◆ dma_irqn_set_channel_mask_enabled()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip38af616ec516a102028d">
+<div class="memproto" id="rpip850a40eb51bc3c1921ad">
+<table class="mlabels" id="rpip8b70a0c0148e15c61536">
+  <tr id="rpip7cb58c8c1dacbf12ad44">
+  <td class="mlabels-left" id="rpip8f62394199557ad27d9c">
+      <table class="memname" id="rpip613cc333ac58e27e2711">
+        <tr id="rpip88cc426efaabf91ee242">
+          <td class="memname" id="rpipe6ef5693399dab68c326">static void dma_irqn_set_channel_mask_enabled </td>
+          <td id="rpip53f39e535389b756040d">(</td>
+          <td class="paramtype" id="rpipc89d0be53de437a4e446">uint </td>
+          <td class="paramname" id="rpip6f8bf9c1d05817a30b6b"><em id="rpip1728da60703754656595">irq_index</em>, </td>
+        </tr>
+        <tr id="rpip6435871f91fbd76c7363">
+          <td class="paramkey" id="rpip030fd3fc9f5368023ced"/>
+          <td id="rpip73f121bdf2b443b87484"/>
+          <td class="paramtype" id="rpip81a005b2675b5918bbac">uint32_t </td>
+          <td class="paramname" id="rpip02cb9012346137d3d2b6"><em id="rpip71ec5fafde834937dea8">channel_mask</em>, </td>
+        </tr>
+        <tr id="rpip51bf3fa486728079706d">
+          <td class="paramkey" id="rpip0c932bfb38d704773224"/>
+          <td id="rpip178424015ddc2501f225"/>
+          <td class="paramtype" id="rpipb7aa12e19b257e39259a">bool </td>
+          <td class="paramname" id="rpipe145b51faea27a20aaf4"><em id="rpipabd7e5968f2afce57061">enabled</em> </td>
+        </tr>
+        <tr id="rpip32615e1ec72e30741fa7">
+          <td id="rpipe9b1991b5876fe288c66"/>
+          <td id="rpip552879876a4b7107b634">)</td>
+          <td id="rpip0a4bb3abee824b2b6c6c"/><td id="rpip65ec1e11884cbc6fdf8c"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip95bd842a2cc852fab476">
+<span class="mlabels" id="rpip79cb9acb8bde7378e54a"><span class="mlabel" id="rpip07b54329c396e78887ce">inline</span><span class="mlabel" id="rpip5868d89fbdaef239246d">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip3a5c758a2f96f07bdc37">
+
+<p id="rpip0359a1a4d7d8c1765124">Enable multiple DMA channels' interrupt via either DMA_IRQ_0 or DMA_IRQ_1. </p>
+<h4 id="rpip59f1104263eb0e0b85b4" data-parent-id="rpipf0ec756683f93fb67441" data-target-for="rpip59f1104263eb0e0b85b4">Parameters</h4><p class="paragraph" id="rpip4f2e74c5708ac8242737" data-parent-id="rpipf0ec756683f93fb67441" data-target-for="rpip4f2e74c5708ac8242737">
+  <table class="params" id="rpip53e9d8835f69f4c331cf">
+    <tr id="rpipc41ecdfe9da6947cc3ba"><td class="paramname" id="rpipe743299cb08010c014a4">irq_index</td><td id="rpip94bdbff667a4b983f3bf">the IRQ index; either 0 or 1 for DMA_IRQ_0 or DMA_IRQ_1 </td></tr>
+    <tr id="rpipeae2645b4c026a55151d"><td class="paramname" id="rpipa54ac5dedf00e13516aa">channel_mask</td><td id="rpipaf42c0abbdc0bcdf4529">Bitmask of all the channels to enable/disable. Channel 0 = bit 0, channel 1 = bit 1 etc. </td></tr>
+    <tr id="rpip85649624b4f08d1436da"><td class="paramname" id="rpipb005d217973b2cd8e1e4">enabled</td><td id="rpipd6fec117e13b6fb03d5c">true to enable all the interrupts specified in the mask, false to disable all the interrupts specified in the mask. </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="gad5c1ac22e0b4d9b831912fbb95460be4" name="gad5c1ac22e0b4d9b831912fbb95460be4"/>
+
+++++
+
+[[rpip23e76c87a5796bfce413]]
+==== ◆ dma_set_irq0_channel_mask_enabled()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip1f66b2568b8594a63879">
+<div class="memproto" id="rpipb0383e0a92acff64a673">
+<table class="mlabels" id="rpipa587dc319631929a96a9">
+  <tr id="rpipc1d497d05a072418b412">
+  <td class="mlabels-left" id="rpipff1dbc6cdb7b60dedfae">
+      <table class="memname" id="rpipdac40d454ab367187722">
+        <tr id="rpip825f2dc2597da264f0fd">
+          <td class="memname" id="rpipae87314ecdaf9baf58f7">static void dma_set_irq0_channel_mask_enabled </td>
+          <td id="rpipfc26c795e361da93d53e">(</td>
+          <td class="paramtype" id="rpipde9859eccc6a82b85289">uint32_t </td>
+          <td class="paramname" id="rpip5af8bcfb8ccf2b021e74"><em id="rpip7069cb243daa3b9c62b0">channel_mask</em>, </td>
+        </tr>
+        <tr id="rpip31230263cb41a384cbf2">
+          <td class="paramkey" id="rpipa53713d84f89e428a3ee"/>
+          <td id="rpipe4864b2c816627becc6e"/>
+          <td class="paramtype" id="rpip9c050b68f07ef110f8e6">bool </td>
+          <td class="paramname" id="rpipbb38a735ee6c8a4ca184"><em id="rpip8a829f14d551c07a9b30">enabled</em> </td>
+        </tr>
+        <tr id="rpip35af6bfd9f6b3b5d4415">
+          <td id="rpip09e61027142cae92063e"/>
+          <td id="rpip84f8e37c37b4c99385d8">)</td>
+          <td id="rpipd3a12bfe21becd54e236"/><td id="rpip800e398afddbeea3fd41"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip50236f1bb4941a2ec5b9">
+<span class="mlabels" id="rpip34132dd8f2cc530e1055"><span class="mlabel" id="rpipff2f3d7cc08b68e84f3a">inline</span><span class="mlabel" id="rpipf57d8295e98104556d35">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpipba56ecbf6c888e7f42c8">
+
+<p id="rpipb2b37197ce9362361df3">Enable multiple DMA channels' interrupts via DMA_IRQ_0. </p>
+<h4 id="rpip88036964f80cc31d6d4f" data-parent-id="rpip618a27faee24ae13a22d" data-target-for="rpip88036964f80cc31d6d4f">Parameters</h4><p class="paragraph" id="rpip7fcffb1651596f420d2c" data-parent-id="rpip618a27faee24ae13a22d" data-target-for="rpip7fcffb1651596f420d2c">
+  <table class="params" id="rpip1c2fd30d35e5c049f678">
+    <tr id="rpip464e77ac89436a7bfaae"><td class="paramname" id="rpip13a05e7df87ce5f56c10">channel_mask</td><td id="rpipfe428e9790a1e20b01a0">Bitmask of all the channels to enable/disable. Channel 0 = bit 0, channel 1 = bit 1 etc. </td></tr>
+    <tr id="rpip0b6b3e8f1e8b92a33fb8"><td class="paramname" id="rpip4a47f3472a150301db8e">enabled</td><td id="rpip202c7d9381a3d14980e7">true to enable all the interrupts specified in the mask, false to disable all the interrupts specified in the mask. </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="gaaa20edc55a2cc4977d24bdb487a22aa5" name="gaaa20edc55a2cc4977d24bdb487a22aa5"/>
+
+++++
+
+[[rpip613b77bda7cc2223d5ff]]
+==== ◆ dma_set_irq1_channel_mask_enabled()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip627e58c2e45bd86c6d47">
+<div class="memproto" id="rpip5cd545e10cf0d5d9b280">
+<table class="mlabels" id="rpip8a6971012ed932738f9f">
+  <tr id="rpip15d88867fd225113f1dc">
+  <td class="mlabels-left" id="rpipba18689f4ba6ba8c5b14">
+      <table class="memname" id="rpipbed214fda0f3aa2b79c4">
+        <tr id="rpip98a2725ca8d11fea4e3a">
+          <td class="memname" id="rpip872b521a5d3e25f6340b">static void dma_set_irq1_channel_mask_enabled </td>
+          <td id="rpipfdf6e42398e4234a14c0">(</td>
+          <td class="paramtype" id="rpip39dc4722565830af3c4d">uint32_t </td>
+          <td class="paramname" id="rpip405ed882629cac0cdc1d"><em id="rpipaaac939f63bfff19285f">channel_mask</em>, </td>
+        </tr>
+        <tr id="rpip1663277fcf08f9a6ec0b">
+          <td class="paramkey" id="rpip8c5aaaa46d4629fcbd58"/>
+          <td id="rpip9b0f4562b99bb315119a"/>
+          <td class="paramtype" id="rpipae3d18a900b0bb04d2e4">bool </td>
+          <td class="paramname" id="rpipb6f399471f4e8d4de36d"><em id="rpip64b9fbc3d7a442c21a48">enabled</em> </td>
+        </tr>
+        <tr id="rpip290136f62974b941e5b9">
+          <td id="rpipd7906b2e4c5ffd168019"/>
+          <td id="rpipfb75b49a136ee5d179d2">)</td>
+          <td id="rpipad11583b9708430c782a"/><td id="rpipc01abddb6d4aea47890f"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip2046117bfd5e7d59f389">
+<span class="mlabels" id="rpipee4eb0913c09fb929b44"><span class="mlabel" id="rpipabd1a02eea5c20b204fe">inline</span><span class="mlabel" id="rpip95cfa04afc9547a8b117">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpipf5031e803a1e3f0635b9">
+
+<p id="rpipd3272be0833d546f6e89">Enable multiple DMA channels' interrupts via DMA_IRQ_1. </p>
+<h4 id="rpip708b4e8c7b62f9d0b6f3" data-parent-id="rpipca56c7e60a9abbef4fa7" data-target-for="rpip708b4e8c7b62f9d0b6f3">Parameters</h4><p class="paragraph" id="rpip5e123650d8e38c2f9976" data-parent-id="rpipca56c7e60a9abbef4fa7" data-target-for="rpip5e123650d8e38c2f9976">
+  <table class="params" id="rpip6d20bdf28bc6fc7a92ab">
+    <tr id="rpipfe1f4d6e3b3cc2d57371"><td class="paramname" id="rpipdbccab4d58811ca82ad6">channel_mask</td><td id="rpip438d6a28d06ff1b6577c">Bitmask of all the channels to enable/disable. Channel 0 = bit 0, channel 1 = bit 1 etc. </td></tr>
+    <tr id="rpip50162b52bd071a72739c"><td class="paramname" id="rpipcc572c6d18ef4523c9dc">enabled</td><td id="rpip992d1b55564490e2018a">true to enable all the interrupts specified in the mask, false to disable all the interrupts specified in the mask. </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga078c3c80d5637850ec64e8f5ad5ce0c2" name="ga078c3c80d5637850ec64e8f5ad5ce0c2"/>
+
+++++
+
+[[rpipe38c7fb5c16638218718]]
+==== ◆ dma_sniffer_enable()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipc2bdb03a4ba0fd6c65eb">
+<div class="memproto" id="rpip76a0a30d5da5d0357c88">
+<table class="mlabels" id="rpipb32833b5c91f4068493f">
+  <tr id="rpipfaff19a6b7786272fc3c">
+  <td class="mlabels-left" id="rpipebc8b25610e997aa3b3c">
+      <table class="memname" id="rpip844b32bedad7ba799f23">
+        <tr id="rpipe85b44d497a22b371079">
+          <td class="memname" id="rpip8f9e382d9adf4eb55eea">static void dma_sniffer_enable </td>
+          <td id="rpipd6f815242cff978e949e">(</td>
+          <td class="paramtype" id="rpipbbf2a136d2534e73fdfa">uint </td>
+          <td class="paramname" id="rpipd0ddde96c03d1cd9dc18"><em id="rpipbd0e478aae9675b75a85">channel</em>, </td>
+        </tr>
+        <tr id="rpipa4b8c8228733b1a47c5e">
+          <td class="paramkey" id="rpip3673da65b474abcdaf6a"/>
+          <td id="rpip92276bf063346c62d980"/>
+          <td class="paramtype" id="rpipd4a20664f253c0e09bb3">uint </td>
+          <td class="paramname" id="rpipacd089b952894c8a0688"><em id="rpipab170ff2b2eec507caf3">mode</em>, </td>
+        </tr>
+        <tr id="rpip54676f83426cb1a907dd">
+          <td class="paramkey" id="rpip7a8777b49a9f9ea087ae"/>
+          <td id="rpip4020b73941e529112471"/>
+          <td class="paramtype" id="rpip1dd2875fc3c7bb6ee9df">bool </td>
+          <td class="paramname" id="rpip4e74b3152a5e95b2abfe"><em id="rpip26727b01332b1faefae7">force_channel_enable</em> </td>
+        </tr>
+        <tr id="rpipfbfed4d882d7625ba738">
+          <td id="rpip62e14bcb15721687f1dc"/>
+          <td id="rpipf840506015486eaabdd6">)</td>
+          <td id="rpip914a010f205eaaeffa75"/><td id="rpip97a1c4cf3ce8b4c8e3b0"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip58d592debe072b4e9312">
+<span class="mlabels" id="rpipd5ea2a51aea0f8abc86a"><span class="mlabel" id="rpipead7395502628fb786a1">inline</span><span class="mlabel" id="rpip903f77ec6effbebdf73f">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip7918cc631d4f9b2f9149">
+
+<p id="rpip7cb1f22992d2eba5c6a3">Enable the DMA sniffing targeting the specified channel. </p>
+<p id="rpip89989968c6c45f9caa6d">The mode can be one of the following:</p>
+<table class="tableblock frame-all grid-all stretch" id="rpip53e1b9a6719b55d8c66e" data-parent-id="rpip7918cc631d4f9b2f9149" data-target-for="rpip53e1b9a6719b55d8c66e">
+<tr class="markdownTableHead" id="rpipafa2b66e0a3b86bfd8ab">
+<th class="markdownTableHeadNone" id="rpip57561f3389f99d4bfb0b">Mode   </th><th class="markdownTableHeadNone" id="rpip4edbb2084abdae360f49">Function    </th></tr>
+<tr class="markdownTableRowOdd" id="rpip1ba74fad12309b456133">
+<td class="tableblock" id="rpipddd8bdb930e025f7271b" data-parent-id="rpip1ba74fad12309b456133" data-target-for="rpipddd8bdb930e025f7271b">0x0   </td><td class="tableblock" id="rpipb14e284b71102fb42737" data-parent-id="rpip1ba74fad12309b456133" data-target-for="rpipb14e284b71102fb42737">Calculate a CRC-32 (IEEE802.3 polynomial)    </td></tr>
+<tr class="markdownTableRowEven" id="rpip9dfee27f46d63e1c8bb0">
+<td class="tableblock" id="rpip2af4e5b7abb8c65f011f" data-parent-id="rpip9dfee27f46d63e1c8bb0" data-target-for="rpip2af4e5b7abb8c65f011f">0x1   </td><td class="tableblock" id="rpip602e5fdb4416cf6c5f82" data-parent-id="rpip9dfee27f46d63e1c8bb0" data-target-for="rpip602e5fdb4416cf6c5f82">Calculate a CRC-32 (IEEE802.3 polynomial) with bit reversed data    </td></tr>
+<tr class="markdownTableRowOdd" id="rpip132f169bdc13dc564c06">
+<td class="tableblock" id="rpipd31bb252cee074259908" data-parent-id="rpip132f169bdc13dc564c06" data-target-for="rpipd31bb252cee074259908">0x2   </td><td class="tableblock" id="rpipe3e8143338703f2cd0e6" data-parent-id="rpip132f169bdc13dc564c06" data-target-for="rpipe3e8143338703f2cd0e6">Calculate a CRC-16-CCITT    </td></tr>
+<tr class="markdownTableRowEven" id="rpipce27c867ab08b31ec019">
+<td class="tableblock" id="rpipa4bc0f53f73feeef2e2f" data-parent-id="rpipce27c867ab08b31ec019" data-target-for="rpipa4bc0f53f73feeef2e2f">0x3   </td><td class="tableblock" id="rpip9e382b54ecac681fcef9" data-parent-id="rpipce27c867ab08b31ec019" data-target-for="rpip9e382b54ecac681fcef9">Calculate a CRC-16-CCITT with bit reversed data    </td></tr>
+<tr class="markdownTableRowOdd" id="rpipeda62b5fba6bf141007a">
+<td class="tableblock" id="rpipf6073b46c14177a7f3c0" data-parent-id="rpipeda62b5fba6bf141007a" data-target-for="rpipf6073b46c14177a7f3c0">0xe   </td><td class="tableblock" id="rpip88cd6c0ba66ae859e634" data-parent-id="rpipeda62b5fba6bf141007a" data-target-for="rpip88cd6c0ba66ae859e634">XOR reduction over all data. == 1 if the total 1 population count is odd.    </td></tr>
+<tr class="markdownTableRowEven" id="rpipe42b874d40737af4ad16">
+<td class="tableblock" id="rpip8d508f48a558dd79d65e" data-parent-id="rpipe42b874d40737af4ad16" data-target-for="rpip8d508f48a558dd79d65e">0xf   </td><td class="tableblock" id="rpip314dd6d021747ae95ad9" data-parent-id="rpipe42b874d40737af4ad16" data-target-for="rpip314dd6d021747ae95ad9">Calculate a simple 32-bit checksum (addition with a 32 bit accumulator)   </td></tr>
+</table>
+
+<h4 id="rpip0417f3d47103355bb634" data-parent-id="rpipf28044e07426b331d698" data-target-for="rpip0417f3d47103355bb634">Parameters</h4><p class="paragraph" id="rpipff12741ed938a5d8bdcc" data-parent-id="rpipf28044e07426b331d698" data-target-for="rpipff12741ed938a5d8bdcc">
+  <table class="params" id="rpipa036dea55786cec9d88e">
+    <tr id="rpipcafb366941c252938765"><td class="paramname" id="rpipc749f3ba749102409001">channel</td><td id="rpip63b0bfd8e480c5c11d61">DMA channel </td></tr>
+    <tr id="rpipaf0797e89faf5af9efaf"><td class="paramname" id="rpip2d453ea7e05d7a0d7f56">mode</td><td id="rpip9dc912f3ee2a451736d7">See description </td></tr>
+    <tr id="rpip997569d435fcdf424c02"><td class="paramname" id="rpipd71b2e130b782e08e52d">force_channel_enable</td><td id="rpip28a78ac79bd26c27a8d6">Set true to also turn on sniffing in the channel configuration (this is usually what you want, but sometimes you might have a chain DMA with only certain segments of the chain sniffed, in which case you might pass false). </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga3527c2567c9253ca602b91d30ae49d1e" name="ga3527c2567c9253ca602b91d30ae49d1e"/>
+
+++++
+
+[[rpip2b30f7b1050e8e633217]]
+==== ◆ dma_sniffer_get_data_accumulator()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip05e03bc2b02b3a032ea8">
+<div class="memproto" id="rpip5d21d67453f873e891c6">
+<table class="mlabels" id="rpipf08162acafbd7c1da08a">
+  <tr id="rpip0e213540299e6ec6224e">
+  <td class="mlabels-left" id="rpipd0b4a8937acec837088b">
+      <table class="memname" id="rpip150b02f3b8c0120a0dad">
+        <tr id="rpipfe3d65e627c1bc050f75">
+          <td class="memname" id="rpip901c3c10e2c33cac5e94">static uint32_t dma_sniffer_get_data_accumulator </td>
+          <td id="rpip71108da7c696c9ca62c0">(</td>
+          <td class="paramtype" id="rpipb8e0f5f6745e9f9d6e5c">void </td>
+          <td class="paramname" id="rpipc869764847529c5bdbca"/><td id="rpip40f3269132216df11f1f">)</td>
+          <td id="rpipc6bb37b31aa6c7ae37ce"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip72152e314761f527b445">
+<span class="mlabels" id="rpipbe8f02dabecb9255c471"><span class="mlabel" id="rpipe98328dc0896d99bd062">inline</span><span class="mlabel" id="rpip3311756e70816c336897">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpipd22fa708498a94d61fef">
+
+<p id="rpipb4a430f429380f287d98">Get the sniffer's data accumulator value. </p>
+<p id="rpip8c15c48a3bf76865c8a1">Read value calculated by the hardware from sniffing the DMA stream </p>
+
+</div>
+</div>
+<a id="gac3b250d97550527a584de9d3f770acea" name="gac3b250d97550527a584de9d3f770acea"/>
+
+++++
+
+[[rpipbeb608b979f204d1c300]]
+==== ◆ dma_sniffer_set_byte_swap_enabled()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipdde2a9b6f98855c07d90">
+<div class="memproto" id="rpip2e8ca793ef08a73cac1f">
+<table class="mlabels" id="rpip62deeaefacebcff518bc">
+  <tr id="rpip19b36c8b5f5e03829547">
+  <td class="mlabels-left" id="rpip793c36d4cfa328c1ed00">
+      <table class="memname" id="rpip9a5d80e034bab2cd8b8b">
+        <tr id="rpip824d0fbfb97440143f85">
+          <td class="memname" id="rpipda5d5243ddb27b498c66">static void dma_sniffer_set_byte_swap_enabled </td>
+          <td id="rpip9cd71cd5896ee7be6098">(</td>
+          <td class="paramtype" id="rpip93ea16644abb698861a0">bool </td>
+          <td class="paramname" id="rpip5dcdf5bf8dafaa7780b4"><em id="rpip99d39b5c895416beda89">swap</em></td><td id="rpip9350ce05839fa1db72ea">)</td>
+          <td id="rpip6d7e080582ca1484cd90"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpipcafe550ad2c40971a00c">
+<span class="mlabels" id="rpipe6d31fd7c66abf98fe45"><span class="mlabel" id="rpip97ad472f4086a161bdb5">inline</span><span class="mlabel" id="rpipcf33c4beafef592417e1">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpipebd38b1b003e05e249e8">
+
+<p id="rpip42ed6346b092c179a630">Enable the Sniffer byte swap function. </p>
+<p id="rpip49a9c70639392b750ae1">Locally perform a byte reverse on the sniffed data, before feeding into checksum.</p>
+<p id="rpip777727315ca81192dcf4">Note that the sniff hardware is downstream of the DMA channel byteswap performed in the read master: if <a class="el" href="group__channel__config.html#ga43c3a2dd43fe7e962b1de0e90a46bb9e" title="Set DMA byte swapping config in a channel configuration object." id="rpip6ed7ede08b472214708e" data-adjusted="true">channel_config_set_bswap()</a> and <a class="el" href="#gac3b250d97550527a584de9d3f770acea" title="Enable the Sniffer byte swap function." id="rpip5d20fb9c0bffa6da7ba2" data-adjusted="true">dma_sniffer_set_byte_swap_enabled()</a> are both enabled, their effects cancel from the sniffer’s point of view.</p>
+<h4 id="rpip824c09af82738bfd08f0" data-parent-id="rpip9404f20c7293667ff472" data-target-for="rpip824c09af82738bfd08f0">Parameters</h4><p class="paragraph" id="rpipcbab1b89a117f959b8d4" data-parent-id="rpip9404f20c7293667ff472" data-target-for="rpipcbab1b89a117f959b8d4">
+  <table class="params" id="rpip742ea6cc38ae5b88bf44">
+    <tr id="rpipf96421d33725a9cb4753"><td class="paramname" id="rpip650a500a368b7fa5e3c6">swap</td><td id="rpipeac8048bdba3c2e6e085">Set true to enable byte swapping </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="gacab1f8010c206dfc77b81cb16902a4e4" name="gacab1f8010c206dfc77b81cb16902a4e4"/>
+
+++++
+
+[[rpipc58d29dde9ab317c0d7c]]
+==== ◆ dma_sniffer_set_data_accumulator()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipace13663c93757fba895">
+<div class="memproto" id="rpip1f101cd77654c35a887f">
+<table class="mlabels" id="rpipbe64a7efdd72cd780d4f">
+  <tr id="rpip7f8140545da43602ea1f">
+  <td class="mlabels-left" id="rpipa4cde68591819f2c3b23">
+      <table class="memname" id="rpip5cacfc3cbf0706423653">
+        <tr id="rpipb7d6a21175e682d00376">
+          <td class="memname" id="rpipf5675c62c69cbe3dd61f">static void dma_sniffer_set_data_accumulator </td>
+          <td id="rpip77798d103a542deaa971">(</td>
+          <td class="paramtype" id="rpipdc3483e83ef1b8924bee">uint32_t </td>
+          <td class="paramname" id="rpipbe0ba1c2cd769e5f5371"><em id="rpip7696984ca2320bc06e40">seed_value</em></td><td id="rpip69d2a39f1a62f89ce8ac">)</td>
+          <td id="rpip9d8b5df5844a5fa32cae"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpipafa5692e5a9c610b6865">
+<span class="mlabels" id="rpip7f0a63f428287341ebae"><span class="mlabel" id="rpipf8ecd4edccfea65a170d">inline</span><span class="mlabel" id="rpip87248c180bfc5f7d8bb7">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpipd21f9f2b56bc0415d5ee">
+
+<p id="rpipf40a1a06d9a302d9d3e9">Set the sniffer's data accumulator with initial value. </p>
+<p id="rpipdd62404943f16e8f7761">Generally, CRC algorithms are used with the data accumulator initially seeded with 0xFFFF or 0xFFFFFFFF (for crc16 and crc32 algorithms)</p>
+<h4 id="rpip0f7b8233c308edb30a20" data-parent-id="rpip2f6775357b325bb6100a" data-target-for="rpip0f7b8233c308edb30a20">Parameters</h4><p class="paragraph" id="rpip8861bbac6e6d8c34cf4d" data-parent-id="rpip2f6775357b325bb6100a" data-target-for="rpip8861bbac6e6d8c34cf4d">
+  <table class="params" id="rpip2d2a5089c68dbf8e1856">
+    <tr id="rpip83995b6c860aeb2663ed"><td class="paramname" id="rpip149a93f8b8ceb1ce9de1">seed_value</td><td id="rpip2b49cea696b28aadec69">value to set data accumulator </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga1366c938a8322aa1eb8e703b1f22d6af" name="ga1366c938a8322aa1eb8e703b1f22d6af"/>
+
+++++
+
+[[rpip8da87f5c0f02c85b4a90]]
+==== ◆ dma_sniffer_set_output_invert_enabled()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip97b057c418df07b33d97">
+<div class="memproto" id="rpipd9dcd5cbe0ba70c65abe">
+<table class="mlabels" id="rpipd33ef5faa46567072518">
+  <tr id="rpip11e70280842cbd94db4e">
+  <td class="mlabels-left" id="rpip5fae854b4da8f5677690">
+      <table class="memname" id="rpip83005805dca3e0713e95">
+        <tr id="rpip3038adf34f28129607d2">
+          <td class="memname" id="rpip087673bf3934171a4ca6">static void dma_sniffer_set_output_invert_enabled </td>
+          <td id="rpip9daea85ccae5a334fca3">(</td>
+          <td class="paramtype" id="rpipf787c3948f5fc9fdb8b0">bool </td>
+          <td class="paramname" id="rpipaa282f43bf7d97353b50"><em id="rpip3316af14fef281b69079">invert</em></td><td id="rpip38c86f00320ffb371c21">)</td>
+          <td id="rpip73e6947b2814f8804d4d"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip29744c016e85e0505ba5">
+<span class="mlabels" id="rpipafbdd0fa164d155c2304"><span class="mlabel" id="rpipa1c311b6d72bc8ac2b65">inline</span><span class="mlabel" id="rpip2fd07657b930a6f47dea">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpipdc2ed1f61080a2cace89">
+
+<p id="rpipac7b9398f39eeb6a3500">Enable the Sniffer output invert function. </p>
+<p id="rpip8c589a172af9d845d374">If enabled, the sniff data result appears bit-inverted when read. This does not affect the way the checksum is calculated.</p>
+<h4 id="rpip795e29e132496e979a47" data-parent-id="rpip9a95f4e5506548b5016c" data-target-for="rpip795e29e132496e979a47">Parameters</h4><p class="paragraph" id="rpip9ae50c78b9e387e70430" data-parent-id="rpip9a95f4e5506548b5016c" data-target-for="rpip9ae50c78b9e387e70430">
+  <table class="params" id="rpip8ecb70ed4cabdb3209ed">
+    <tr id="rpip59823cdb8b0d2c5f2079"><td class="paramname" id="rpipb0a31a76a8f66b1edae0">invert</td><td id="rpip610a4bd0c922b10ea875">Set true to enable output bit inversion </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="gaa2c5775bdb86d63a4866b2f6f5b41143" name="gaa2c5775bdb86d63a4866b2f6f5b41143"/>
+
+++++
+
+[[rpip9a5a3cd542330b307cb1]]
+==== ◆ dma_sniffer_set_output_reverse_enabled()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipdb521f5058f488206e2a">
+<div class="memproto" id="rpip68708d10009f24af058d">
+<table class="mlabels" id="rpip31b56732982ebe614be7">
+  <tr id="rpipad61c4c04f3f44e3a437">
+  <td class="mlabels-left" id="rpip36f4cb4d96115ba35dcf">
+      <table class="memname" id="rpip1fa6d09215441b08d001">
+        <tr id="rpip013da66bd5ade422ff6e">
+          <td class="memname" id="rpip972171854a96ad107bdb">static void dma_sniffer_set_output_reverse_enabled </td>
+          <td id="rpipce935f0360012ceec29f">(</td>
+          <td class="paramtype" id="rpip5be200433984fdafc999">bool </td>
+          <td class="paramname" id="rpip49e231047966e9c72882"><em id="rpip0b5710b42dd3abd7c61b">reverse</em></td><td id="rpipdf513aac6db214eda04a">)</td>
+          <td id="rpip6d586b30138ae7b4a2a3"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip2f0402c5e0614bf7425d">
+<span class="mlabels" id="rpip715f0055a0101a09f5c6"><span class="mlabel" id="rpipdecfb9853dac0bb43e64">inline</span><span class="mlabel" id="rpip28f2e48ca06865067707">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip97bb14c4f56ccad01c13">
+
+<p id="rpip9c5857adb31ea29a00e1">Enable the Sniffer output bit reversal function. </p>
+<p id="rpip1e6c8c27c35745191261">If enabled, the sniff data result appears bit-reversed when read. This does not affect the way the checksum is calculated.</p>
+<h4 id="rpipe8562dd97771894563b0" data-parent-id="rpip441b46fee3aae184a6b6" data-target-for="rpipe8562dd97771894563b0">Parameters</h4><p class="paragraph" id="rpipad9581147c74c0fee76d" data-parent-id="rpip441b46fee3aae184a6b6" data-target-for="rpipad9581147c74c0fee76d">
+  <table class="params" id="rpipc5ef32535954d7c2eb26">
+    <tr id="rpip7c8291c6a09afce353e9"><td class="paramname" id="rpip4e8d685278f59d937fd9">reverse</td><td id="rpip0c499045fce983dbb8c5">Set true to enable output bit reversal </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga6407f7763b533c98e23f65e35c5e48ee" name="ga6407f7763b533c98e23f65e35c5e48ee"/>
+
+++++
+
+[[rpipc548707865620dfdd197]]
+==== ◆ dma_start_channel_mask()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipb03c6627ee32d574dda3">
+<div class="memproto" id="rpip30a7603ec523b2b042ce">
+<table class="mlabels" id="rpip8edf3f9719126f99dcdd">
+  <tr id="rpip0276963c9c632203b273">
+  <td class="mlabels-left" id="rpip0aecf969b48a71ec3116">
+      <table class="memname" id="rpipedab98a54577cf5e6216">
+        <tr id="rpip4efd0e8d90824f450457">
+          <td class="memname" id="rpipf043503395c3a1f1a503">static void dma_start_channel_mask </td>
+          <td id="rpip75d0c27c73834669c9e1">(</td>
+          <td class="paramtype" id="rpip5c9dfe3bac1ffcaa4acc">uint32_t </td>
+          <td class="paramname" id="rpip4e7457903a91f217959b"><em id="rpip7365622914faf0652d3c">chan_mask</em></td><td id="rpip93abd9eeaa2f9c429ae1">)</td>
+          <td id="rpip6ce232e50f0b4d4f43f5"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip2a6ad93c5a3a211799d9">
+<span class="mlabels" id="rpipb2f5b5f24193dcd5e464"><span class="mlabel" id="rpipdc08578de0e397cbb077">inline</span><span class="mlabel" id="rpipe940c892a5da16c98a9b">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpip12b9d97c26ca097909be">
+
+<p id="rpip1864cf661de032f88519">Start one or more channels simultaneously. </p>
+<h4 id="rpip03c32a44ba3a2bc06c32" data-parent-id="rpip703154a39e8b54f6d1bf" data-target-for="rpip03c32a44ba3a2bc06c32">Parameters</h4><p class="paragraph" id="rpipc9689dd0b56c1d720c63" data-parent-id="rpip703154a39e8b54f6d1bf" data-target-for="rpipc9689dd0b56c1d720c63">
+  <table class="params" id="rpip9cc7103eb1c4765c254f">
+    <tr id="rpip8b801a126b1ff66813f0"><td class="paramname" id="rpip1beacfacda8bcb8c9130">chan_mask</td><td id="rpip1b0091a07df9f88e73e3">Bitmask of all the channels requiring starting. Channel 0 = bit 0, channel 1 = bit 1 etc. </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga08fc90c0064510e7a0a2cf8d1cd187bc" name="ga08fc90c0064510e7a0a2cf8d1cd187bc"/>
+
+++++
+
+[[rpip18d2782a9d7f8bcddb09]]
+==== ◆ dma_timer_claim()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipea231e975df16395e7e2">
+<div class="memproto" id="rpip2f9bd95dbcbe9f75e1be">
+      <table class="memname" id="rpipbd3d432effc1f841629c">
+        <tr id="rpip32af932df11953e8538b">
+          <td class="memname" id="rpip3359158b3009c4e273e6">void dma_timer_claim </td>
+          <td id="rpipe36b8c8debca1bd18f93">(</td>
+          <td class="paramtype" id="rpipce46ffd26598f2706cb9">uint </td>
+          <td class="paramname" id="rpipccbc3f51101856e9f249"><em id="rpip75338b8ca45c07264583">timer</em></td><td id="rpip5a320209148ced496d8c">)</td>
+          <td id="rpipf0c1873d984dd95e019b"/>
+        </tr>
+      </table>
+</div><div class="memdoc" id="rpip082f891b38f23fdd9556">
+
+<p id="rpip4f28481e553a2527a9b1">Mark a dma timer as used. </p>
+<p id="rpipc2bf77647db5d61798f1">Method for cooperative claiming of hardware. Will cause a panic if the timer is already claimed. Use of this method by libraries detects accidental configurations that would fail in unpredictable ways.</p>
+<h4 id="rpipa18bec95fabea7fb8ac6" data-parent-id="rpip251a61d52542e677e589" data-target-for="rpipa18bec95fabea7fb8ac6">Parameters</h4><p class="paragraph" id="rpip9c84b36cf9eab2dc4105" data-parent-id="rpip251a61d52542e677e589" data-target-for="rpip9c84b36cf9eab2dc4105">
+  <table class="params" id="rpipa18bf7c105aceb782d0a">
+    <tr id="rpip71d2484f84651719276d"><td class="paramname" id="rpip687d9837143859358a8d">timer</td><td id="rpip2f38f6355dab4e6e9377">the dma timer </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga9b45bfe6985f8c0894d34876eedc3090" name="ga9b45bfe6985f8c0894d34876eedc3090"/>
+
+++++
+
+[[rpip8b1846fbbe5676663145]]
+==== ◆ dma_timer_is_claimed()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip96c9d1e454c5e6620f67">
+<div class="memproto" id="rpip75ef7f3f561cbe37fcb3">
+      <table class="memname" id="rpipf312964e65d4a294ca98">
+        <tr id="rpip6c8b84f312369dcc619b">
+          <td class="memname" id="rpip92a765bdfaeda1bfcde0">bool dma_timer_is_claimed </td>
+          <td id="rpip1930e5ff0d710763acac">(</td>
+          <td class="paramtype" id="rpip214997d2cacb214dc16a">uint </td>
+          <td class="paramname" id="rpip2d52b42020b2b8755158"><em id="rpip23d1dc49281f5ee157e3">timer</em></td><td id="rpip443584dbedd0f0283f26">)</td>
+          <td id="rpip56a2a3d61a5718626fb1"/>
+        </tr>
+      </table>
+</div><div class="memdoc" id="rpipabac6a8b0b4f99964cb9">
+
+<p id="rpipd48d237e4d7fd7868fbc">Determine if a dma timer is claimed. </p>
+<h4 id="rpip50186588c986cbc1fff8" data-parent-id="rpip636864f4b04e5a47fe22" data-target-for="rpip50186588c986cbc1fff8">Parameters</h4><p class="paragraph" id="rpipb233b91f4cc58d4cfc89" data-parent-id="rpip636864f4b04e5a47fe22" data-target-for="rpipb233b91f4cc58d4cfc89">
+  <table class="params" id="rpip4cd9c5fbc76ea28192dc">
+    <tr id="rpip833809ff0a1baf4786e0"><td class="paramname" id="rpip0b4c1ffc9276b2e7e994">timer</td><td id="rpipd7903f351749ab2b8cfb">the dma timer </td></tr>
+  </table>
+  </p>
+
+
+<h4 class="label" id="rpipa738713d4cb285fa50bd" data-parent-id="rpip0494ff0c3b188a07fab4" data-target-for="rpipa738713d4cb285fa50bd">Returns</h4><p class="returns" id="rpip172aa17f1459ba3b7739" data-parent-id="rpip0494ff0c3b188a07fab4" data-target-for="rpip172aa17f1459ba3b7739">true if the timer is claimed, false otherwise </p>
+<p class="see" id="rpipcbbe2fd7ca7d98636b12" data-parent-id="rpipabac6a8b0b4f99964cb9" data-target-for="rpipcbbe2fd7ca7d98636b12"><span class="label" id="rpip76966bdce7a1767486c9" data-parent-id="rpipcbbe2fd7ca7d98636b12" data-target-for="rpip76966bdce7a1767486c9">See also</span><span class="target" id="rpipaaedd3000c9fe1068ec4" data-parent-id="rpipcbbe2fd7ca7d98636b12" data-target-for="rpipaaedd3000c9fe1068ec4"><a class="el" href="#ga08fc90c0064510e7a0a2cf8d1cd187bc" title="Mark a dma timer as used." id="rpipdec0ed2b493e6a039168" data-adjusted="true">dma_timer_claim</a> </span></p>
+
+
+
+</div>
+</div>
+<a id="ga58f9c3cb606759e4620c82583f833dc8" name="ga58f9c3cb606759e4620c82583f833dc8"/>
+
+++++
+
+[[rpip00d4ca1d7668747c727d]]
+==== ◆ dma_timer_set_fraction()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpipd267fe3ce181813031fd">
+<div class="memproto" id="rpipf9cf70790c74b158d436">
+<table class="mlabels" id="rpipa1ec2e1777b8885b38a2">
+  <tr id="rpip0f4e2d700827056a9799">
+  <td class="mlabels-left" id="rpip2cacfefe73be6656c2c5">
+      <table class="memname" id="rpip977cbe157f2206ffe918">
+        <tr id="rpip1195ab004defa68a5846">
+          <td class="memname" id="rpip5ef0a075b7a9e34b3eb6">static void dma_timer_set_fraction </td>
+          <td id="rpip8fb8bbdcd0a940b30065">(</td>
+          <td class="paramtype" id="rpipcb39548ae0b1f02c6982">uint </td>
+          <td class="paramname" id="rpip3ebb8cce7862daaeff60"><em id="rpip18e5ada1d630827b53b2">timer</em>, </td>
+        </tr>
+        <tr id="rpipfc8c95bfd65be1b819f6">
+          <td class="paramkey" id="rpipda21cb793bca649627fc"/>
+          <td id="rpipfbe455b6895f6714c366"/>
+          <td class="paramtype" id="rpipa08f02f5e3186aae185a">uint16_t </td>
+          <td class="paramname" id="rpipb7b24cf2760a1cfa048d"><em id="rpipbf8cfce6d3f27e421154">numerator</em>, </td>
+        </tr>
+        <tr id="rpip7440935430f088ef27c2">
+          <td class="paramkey" id="rpip7fddbc7befa328d0d168"/>
+          <td id="rpip18c842e5d5dd051909eb"/>
+          <td class="paramtype" id="rpip8944319bba5c558dc4d1">uint16_t </td>
+          <td class="paramname" id="rpipe3fed44fcf8521a4860b"><em id="rpip17945ae03da2348a4c0e">denominator</em> </td>
+        </tr>
+        <tr id="rpip885360bba37e39f6d13b">
+          <td id="rpip4083d2c876cbafe2e268"/>
+          <td id="rpip477286f731344eb53233">)</td>
+          <td id="rpipf9ed8bb1df1826a6d25a"/><td id="rpip9f692a4a259d59f2b8f2"/>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right" id="rpip6af5f499ee6409c3a627">
+<span class="mlabels" id="rpip5bc7d4b06bd8b153cf7b"><span class="mlabel" id="rpipfc4df5e31ed94af2dd75">inline</span><span class="mlabel" id="rpip31fe31ad1e80874adf7a">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc" id="rpipc7fc215d142871f7c6d4">
+
+<p id="rpipeee57013011cb98e3943">Set the divider for the given DMA timer. </p>
+<p id="rpip7652f673b9f1a578346a">The timer will run at the system_clock_freq * numerator / denominator, so this is the speed that data elements will be transferred at via a DMA channel using this timer as a DREQ</p>
+<h4 id="rpiped113c5be8ede9882127" data-parent-id="rpip629fa8c02352382e6401" data-target-for="rpiped113c5be8ede9882127">Parameters</h4><p class="paragraph" id="rpip39c9df7a5b3bb4501a17" data-parent-id="rpip629fa8c02352382e6401" data-target-for="rpip39c9df7a5b3bb4501a17">
+  <table class="params" id="rpip7597781e0479a0fc89e8">
+    <tr id="rpip685d2049b4df311feb4f"><td class="paramname" id="rpip8ffbb38789925bedf472">timer</td><td id="rpip08188971ae78454b2d03">the dma timer </td></tr>
+    <tr id="rpipfdba56d19039cd32355e"><td class="paramname" id="rpipf534c8a544f672e8f780">numerator</td><td id="rpip6a532d38899193835852">the fraction's numerator </td></tr>
+    <tr id="rpipd5ad8a6ccff1ce464ede"><td class="paramname" id="rpip8b8c2983aa04502c779c">denominator</td><td id="rpipbd3a206ce7ceb9b43171">the fraction's denominator </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga890490576d8806b8933aad0e34d09c5e" name="ga890490576d8806b8933aad0e34d09c5e"/>
+
+++++
+
+[[rpip10306313bcf6f64efc14]]
+==== ◆ dma_timer_unclaim()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip09ec44dbbcab6ce2a159">
+<div class="memproto" id="rpipf103ae0db58062c7f04e">
+      <table class="memname" id="rpip8c11e1867e577150c2ba">
+        <tr id="rpip07c1681593a1f2e65da7">
+          <td class="memname" id="rpip0ee4f17b23a8b909a47f">void dma_timer_unclaim </td>
+          <td id="rpip98127e898d6d7700ef6e">(</td>
+          <td class="paramtype" id="rpipfa50b0a34a11d75ca69c">uint </td>
+          <td class="paramname" id="rpip3805f4f56fee6d437e21"><em id="rpip0386a47283252a07eace">timer</em></td><td id="rpipfaf3ee45273146173cbc">)</td>
+          <td id="rpipe361975be31da1c17f52"/>
+        </tr>
+      </table>
+</div><div class="memdoc" id="rpip06237cdf207062fac025">
+
+<p id="rpipd254fa0a66dbc30bd3de">Mark a dma timer as no longer used. </p>
+<p id="rpip61a75b0e2aade3d7ac64">Method for cooperative claiming of hardware.</p>
+<h4 id="rpip929b31bff8aa8e492329" data-parent-id="rpipa5fdbe79049e1a2fc817" data-target-for="rpip929b31bff8aa8e492329">Parameters</h4><p class="paragraph" id="rpip3d43e7b9b405741d6fe6" data-parent-id="rpipa5fdbe79049e1a2fc817" data-target-for="rpip3d43e7b9b405741d6fe6">
+  <table class="params" id="rpipa30ca99221ab2337e610">
+    <tr id="rpip653ece6b700d6d45043c"><td class="paramname" id="rpip620343914f21319285fe">timer</td><td id="rpip4465391039198b11b4e6">the dma timer to release </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+<a id="ga0211681c906ebe4971d0cded8e98f8b5" name="ga0211681c906ebe4971d0cded8e98f8b5"/>
+
+++++
+
+[[rpip678cf2ec761143361f27]]
+==== ◆ dma_unclaim_mask()
+
+
+
+
+
+++++
+
+
+
+
+<div class="memitem" id="rpip27e3150b5836b4c8af7f">
+<div class="memproto" id="rpipe4527ac64b2325fb4fc2">
+      <table class="memname" id="rpipf36acf75f9ae303e3384">
+        <tr id="rpipcad65d5f0f269a5471a7">
+          <td class="memname" id="rpipbbb510257c55e4203393">void dma_unclaim_mask </td>
+          <td id="rpipd0773ee4d3241ae332e3">(</td>
+          <td class="paramtype" id="rpip11f7645f0f6b94e9f32c">uint32_t </td>
+          <td class="paramname" id="rpip9ad985fcc2539e51183e"><em id="rpip9a1e6b5167dab5011e60">channel_mask</em></td><td id="rpip7a5ea596930bf2e46eab">)</td>
+          <td id="rpipd8bbe4e1185818eac934"/>
+        </tr>
+      </table>
+</div><div class="memdoc" id="rpip9dc6fa76a3eec47fd40f">
+
+<p id="rpipf4718b69db4307a6f0bb">Mark multiple dma channels as no longer used. </p>
+<h4 id="rpip453f5ebfa7126f99b195" data-parent-id="rpip45564aaa23c8ac37c36f" data-target-for="rpip453f5ebfa7126f99b195">Parameters</h4><p class="paragraph" id="rpipf1026892e5feb714f189" data-parent-id="rpip45564aaa23c8ac37c36f" data-target-for="rpipf1026892e5feb714f189">
+  <table class="params" id="rpip3bd80d32d703039351cc">
+    <tr id="rpipc22d465c790f245c5678"><td class="paramname" id="rpip90d94ce256a9e6bd8642">channel_mask</td><td id="rpip1d1bdb9ecee4c4a5719f">Bitfield of all channels to unclaim (bit 0 == channel 0, bit 1 == channel 1 etc) </td></tr>
+  </table>
+  </p>
+
+
+
+</div>
+</div>
+
+
+++++

@@ -772,6 +772,8 @@ def handler(html_path, output_path, header_path, output_json):
     # process every html file
     updated_links = {}
 
+    print(h_json)
+
     for html_file in html_files:
       this_output_path = os.path.join(output_path, html_file)
       # parse the file
