@@ -27,7 +27,7 @@ Some interesting lines from this dump are:
 
 Also, from 36 to 43 (inclusive), there are eight rows of 32 bits available for the customer
 
-NOTE: On 2712 these numbers are different. Row 31 is the serial number and row 32 is the board revision number. The customer rows are 77 to 84 inclusive
+NOTE: On BCM2712 devices these numbers are different. Row 31 is the serial number and row 32 is the board revision number. The customer rows are 77 to 84 inclusive
 
 Some of these rows can be programmed with `vcmailbox`. This is a Linux driver interface to the firmware which will handle the programming of the rows. To do this, please refer to the https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface[documentation], and the vcmailbox https://github.com/raspberrypi/userland/blob/master/host_applications/linux/apps/vcmailbox/vcmailbox.c[example application].
 
@@ -85,7 +85,7 @@ which should display:
 
 If you'd like to integrate this functionality into your own code, you should be able to achieve this by using the vcmailbox.c code as an example.
 
-=== Locking OTP on 2711
+=== Locking OTP on non-BCM2712 devices
 
 It is possible to lock the OTP changes to avoid them being edited again.
 
@@ -98,7 +98,7 @@ vcmailbox 0x00038021 8 8 0xffffffff 0xaffe0000
 
 Once locked, the customer OTP values can no longer be altered. Note that this locking operation is irreversible.
 
-=== Locking OTP on 2712
+=== Locking OTP on BCM2712 devices
 
 The customer region can be marked as read only with the following command.
 
@@ -109,7 +109,7 @@ vcmailbox 0x00030086 4 4 0
 
 OTP is only locked until the device is reset, so OTP locks need to be reapplied on every boot.
 
-=== Making Customer OTP bits Unreadable (2711 only)
+=== Making Customer OTP bits Unreadable on non-BCM2712 devices
 
 It is possible to prevent the customer OTP bits from being read at all. This can be done using a special argument with the OTP write mailbox:
 
@@ -120,9 +120,9 @@ vcmailbox 0x00038021 8 8 0xffffffff 0xaffebabe
 
 This operation is unlikely to be useful for the vast majority of users, and is irreversible.
 
-=== Customer MAC addresses (2712 only)
+=== Customer MAC addresses on BCM2712 devices
 
-On 2712 the Ethernet, Wifi and Bluetooth MAC addresses are set in OTP memory. These values can be change with customer values.
+On BCM2712 devices the Ethernet, Wifi and Bluetooth MAC addresses are set in OTP memory. These values can be change with customer values.
 
 Get customer mac address `vcmailbox 0x00030082/3/4 6 6 0 0` Where 2 is ethernet, 3 is wifi and 4 is BT.
 
@@ -162,7 +162,7 @@ If a customer mac address is set to ff:ff:ff:ff:ff:ff then it’s ignored.
 
 === Device specific private key
 
-NOTE: This is not yet implemented on 2712
+NOTE: This is not yet implemented for BCM2712 devices
 
 Eight rows of OTP (256 bits) are available for use as a device-specific private key. This is intended to support file-system encryption.
 

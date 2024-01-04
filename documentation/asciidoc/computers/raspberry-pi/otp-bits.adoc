@@ -4,8 +4,8 @@ All SoCs used by the Raspberry Pi range have a inbuilt One-Time Programmable (OT
 
 OTP memory size:
 
-* 2711: 66 32-bit values
-* 2712: 192 32-bit values
+* non-BCM2712 devices: 66 32-bit values
+* BCM2712 devices: 192 32-bit values
 
 The `vcgencmd` to display the contents of the OTP is:
 
@@ -13,7 +13,7 @@ The `vcgencmd` to display the contents of the OTP is:
 vcgencmd otp_dump
 ----
 
-=== 2711 - OTP Registers
+=== OTP Registers on non-BCM2712 devices
 
 This list contains the publicly available information on the registers. If a register or bit is not defined here, then it is not public.
 
@@ -67,7 +67,7 @@ This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext`
 
 ^1^Also contains bits to disable overvoltage, OTP programming, and OTP reading.
 
-=== 2712 - OTP Registers
+=== OTP Registers on BCM2712 devices
 
 This list contains the publicly available information on the registers. If a register or bit is not defined here, then it is not public.
 
