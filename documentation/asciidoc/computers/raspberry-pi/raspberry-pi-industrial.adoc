@@ -23,11 +23,13 @@ Some interesting lines from this dump are:
 
 * 28 - Serial number
 * 29 - Ones complement of serial number
-* 30 - Revision number
+* 30 - Board revision number
 
 Also, from 36 to 43 (inclusive), there are eight rows of 32 bits available for the customer
 
-To program these bits, you will need to use the vcmailbox. This is a Linux driver interface to the firmware which will handle the programming of the rows. To do this, please refer to the https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface[documentation], and the vcmailbox https://github.com/raspberrypi/userland/blob/master/host_applications/linux/apps/vcmailbox/vcmailbox.c[example application].
+NOTE: On 2712 these numbers are different. Row 31 is the serial number and row 32 is the board revision number. The customer rows are 77 to 84 inclusive
+
+Some of these rows can be programmed with `vcmailbox`. This is a Linux driver interface to the firmware which will handle the programming of the rows. To do this, please refer to the https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface[documentation], and the vcmailbox https://github.com/raspberrypi/userland/blob/master/host_applications/linux/apps/vcmailbox/vcmailbox.c[example application].
 
 The vcmailbox application can be used directly from the command line on Raspberry Pi OS. An example usage would be:
 
