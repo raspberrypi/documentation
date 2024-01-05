@@ -1,8 +1,11 @@
 == OTP Register and Bit Definitions
 
-All SoCs used by the Raspberry Pi range have a inbuilt One-Time Programmable (OTP) memory block.
+All SoCs used by the Raspberry Pi range have a inbuilt One-Time Programmable (OTP) memory block. A few locations have factory-programmed data.
 
-It is 66 32-bit values long, although only a few locations have factory-programmed data.
+OTP memory size:
+
+* non-BCM2712 devices: 66 32-bit values
+* BCM2712 devices: 192 32-bit values
 
 The `vcgencmd` to display the contents of the OTP is:
 
@@ -10,7 +13,7 @@ The `vcgencmd` to display the contents of the OTP is:
 vcgencmd otp_dump
 ----
 
-=== OTP Registers
+=== OTP Registers on non-BCM2712 devices
 
 This list contains the publicly available information on the registers. If a register or bit is not defined here, then it is not public.
 
@@ -63,3 +66,55 @@ This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext`
  ** 1 - 24MHz
 
 ^1^Also contains bits to disable overvoltage, OTP programming, and OTP reading.
+
+=== OTP Registers on BCM2712 devices
+
+This list contains the publicly available information on the registers. If a register or bit is not defined here, then it is not public.
+
+22 -- bootmode register +
+
+* Bit 1: Boot from SD card
+* Bits 2-4: Booting from SPI EEPROM (and which GPIOs)
+* Bit 10: Disable booting from SD card
+* Bit 11: Disable booting from SPI
+* Bit 12: Disable booting from USB
+
+23 -- copy of bootmode register +
+29 -- advanced boot mode +
+
+* Bits 0-7: GPIO for SD card detect
+* Bits 8-15: GPIO to use for RPIBOOT
+
+31 -- lower 32 bits of serial number +
+32 -- xref:raspberry-pi.adoc#raspberry-pi-revision-codes[board revision] +
+33 -- board attributes - the meaning depends on the board model. +
+This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext`
+
+35 -- upper 32 bits of serial number +
+The full 64 bit serial number is available in `/proc/device-tree/serial-number`
+
+50-51 -- Ethernet mac address +
+This is passed to the operating system in the device-tree, e.g. `/proc/device-tree/axi/pcie@120000/rp1/ethernet@100000/local-mac-address`
+
+52-53 -- Wifi mac address +
+This is passed to the operating system in the device-tree, e.g. `/proc/device-tree/axi/mmc@1100000/wifi@1/local-mac-address`
+
+54-55 -- Bluetooth mac address +
+This is passed to the operating system in the device-tree, e.g. `/proc/device-tree/soc/serial@7d50c000/bluetooth/local-bd-address`
+
+77-84 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer OTP values] +
+86 -- board country - The default keyboard country code used by https://github.com/raspberrypi-ui/piwiz[piwiz] +
+If set, this is available via device-tree in `/proc/device-tree/chosen/rpi-country-code`
+
+87-88 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Ethernet mac address] +
+Overrides OTP rows 50-51 if set
+
+89-90 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Wifi mac address] +
+Overrides OTP rows 52-53 if set
+
+89-90 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Bluetooth mac address] +
+Overrides OTP rows 54-55 if set
+
+109-114 -- Factory device UUID +
+Currently a 16 digit numerical id. which should match the bar code on the device. Padded with zero characters and c40 encoded.
+This is available via device-tree in `/proc/device-tree/chosen/rpi-duid`
