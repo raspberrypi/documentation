@@ -442,6 +442,12 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 1GB
 | Sony UK
 
+| a020d4
+| 3B+
+| 1.4
+| 1GB
+| Sony UK
+
 | a02042
 | 2B (with BCM2837)
 | 1.2
