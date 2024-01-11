@@ -37,6 +37,8 @@ At the root of your SD card, create a file named `userconf.txt`.
 
 This file should contain a single line of text, consisting of `<username>:<password>`: your desired username, followed immediately by a colon, followed immediately by an *encrypted* representation of the password you want to use.
 
+NOTE: `<username>` must only contain lower-case letters, digits and hyphens, and must start with a letter. (More details `/etc/adduser.conf`: `NAME_REGEX="^[a-z][-a-z0-9_]*\$?$"`)
+
 To generate the encrypted password, use https://www.openssl.org[OpenSSL] on another computer. Open a terminal and enter the following:
 
 ----
