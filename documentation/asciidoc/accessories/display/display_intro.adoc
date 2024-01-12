@@ -1,11 +1,11 @@
 == Raspberry Pi Touch Display
 
-The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry Pi Touch Display] is an LCD display that connects to the Raspberry Pi using the DSI connector. While the panel is connected, you can use both it, and the the normal HDMI display output at the same time.
+The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry Pi Touch Display] is an LCD display that connects to the Raspberry Pi using the DSI connector. While the panel is connected, you can use both it and the the normal HDMI display output at the same time.
 
 .The Raspberry Pi 7-inch Touch Display
 image::images/display.png[The Raspberry Pi 7-inch Touch Display, width="70%"]
 
-The Touch Display will function with all models of Raspberry Pi. Although the earliest Raspberry Pi models, which lack appropriate mounting holes, require additional mounting hardware to fit the stand-offs on the display PCB.
+The Touch Display functions with all models of Raspberry Pi. However, the earliest Raspberry Pi models lack appropriate mounting holes, requiring additional mounting hardware to fit the stand-offs on the display PCB.
 
 The display has the following key features: 
 
@@ -31,7 +31,7 @@ The display has the following key features:
 
 [NOTE]
 ====
-If you are using Raspberry Pi OS Bullseye or earlier, you can install an on-screen keyboard by typing `sudo apt install matchbox-keyboard` in a terminal. Additionally you can enable right-click emulation by adding the following section to the `/etc/X11/xorg.conf` file.
+If you use Raspberry Pi OS Bullseye or earlier, you can install an on-screen keyboard by typing `sudo apt install matchbox-keyboard` in a terminal. You can also enable right-click emulation by adding the following section to the `/etc/X11/xorg.conf` file.
 
 [source]
 ----
@@ -51,20 +51,20 @@ These features are not available when running Raspberry Pi OS Bookworm.
 
 === Mounting the Touch Display 
 
-You can mount a Raspberry Pi to the back of the Touch Display using its stand-offs and then connect the appropriate cables between each device, depending on your use case. You can also mount the Touch Display in a separate chassis if you have one available. The connections remain the same, though you may need longer cables depending on the chassis you use.
+You can mount a Raspberry Pi to the back of the Touch Display using its stand-offs and then connect the appropriate cables. You can also mount the Touch Display in a separate chassis if you have one available. The connections remain the same, though you may need longer cables depending on the chassis.
 
 .A Raspberry Pi connected to the Touch Display
 image::images/GPIO_power-500x333.jpg[Image of Raspberry Pi connected to the Touch Display, width="70%"]
 
 Connect one end of the Flat Flexible Cable (FFC) to the `RPI-DISPLAY` port on the Touch Display PCB. The silver or gold contacts should face away from the display. Then connect the other end of the FFC to the `DISPLAY` port on the Raspberry Pi. The contacts on this end should face inward, towards the Raspberry Pi.
 
-If the FFC isn't fully inserted, or it's not positioned correctly, you will experience issues with the display. You should always double-check this connection when troubleshooting, especially if you don't see anything on your display, or the display is showing a single colour.
+If the FFC is not fully inserted or positioned correctly, you will experience issues with the display. You should always double check this connection when troubleshooting, especially if you don't see anything on your display, or the display shows only a single colour.
 
 NOTE: A https://datasheets.raspberrypi.com/display/7-inch-display-mechanical-drawing.pdf[mechanical drawing] of the Touch Display is available for download.
 
 === Powering the Touch Display
 
-We recommend using the Raspberry Pi's GPIO to provide power to the Touch Display. However, if you want to power the display directly, you can use a separate micro USB power supply to provide power. 
+We recommend using the Raspberry Pi's GPIO to provide power to the Touch Display. Alternatively, you can power the display directly with a separate micro USB power supply.
 
 ==== Using the Raspberry Pi
 
@@ -82,7 +82,7 @@ Next, connect the other end of the black wire to the GND pin on the display and 
 
 The other three pins on the Touch Display are used to connect the display to an original Raspberry Pi 1 Model A or B. Refer to our documentation on xref:display.adoc#legacy-support[legacy support] for more information.
 
-NOTE: An original Raspberry Pi is easily identified compared to other models; it is the only model with a 26-pin rather than 40-pin GPIO header connector.
+NOTE: To identify an original Raspberry Pi, check the GPIO header connector. Only the original model has a 26-pin GPIO header connector; subsequent models have 40 pins.
 
 ==== Using a micro USB supply
 
@@ -90,54 +90,85 @@ If you don't want to use a Raspberry Pi to provide power to the Touch Display, y
 
 Do not connect the GPIO pins on your Raspberry Pi to the display if you choose to use micro USB for power. The only connection between the two boards should be the Flat Flexible Cable.
 
-WARNING: If you use a micro USB cable to power the display it must be mounted inside a chassis that blocks access to the display's PCB while it's in use.
+WARNING: When using a micro USB cable to power the display, mount it inside a chassis that blocks access to the display's PCB during usage.
 
 === Changing the screen orientation
 
 If you want to physically rotate the display, or mount it in a specific position, you can use software to adjust the orientation of the screen to better match your setup.
 
+==== Rotate screen from the desktop
+
 To set the screen orientation from the desktop environment, select **Screen Configuration** from the **Preferences** menu. Right-click on the DSI-1 display rectangle in the layout editor, select **Orientation**, then pick the best option to fit your needs. You can also ensure that the touch overlay is assigned to the correct display with the **Touchscreen** option.
 
 image::images/display-rotation.png[Screenshot of orientation options in screen configuration, width="80%"]
 
-If only using the console and not a desktop environment, you can edit the kernel's `/boot/firmware/cmdline.txt` file to pass the required orientation to the system.
+==== Rotate screen without a desktop
 
-To rotate the console text, add `video=DSI-1:800x480@60,rotate=90` to the `cmdline.txt` configuration file. Make sure everything is on the same line; do not add any carriage returns. Possible rotation values are 0, 90, 180 and 270.
+To set the screen orientation on a device that lacks a desktop environment, edit the `/boot/firmware/cmdline.txt` configuration file to pass an orientation to the system. Add the following line to `cmdline.txt`:
 
-NOTE: It is not possible to rotate the DSI display separately from the HDMI display using the command line. If you have both attached they need to be set to the same rotation value.
+[source]
+----
+video=DSI-1:800x480@60,rotate=<rotation-value>
+----
 
-Rotation of the touchscreen area is independent of the orientation of the display itself. To change this you need to manually add a `dtoverlay` instruction in the xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`] file,
+Replace the `<rotation-value>` placeholder with one of the following values, which correspond to the degree of rotation relative to the default on your display:
 
+* `0`
+* `90`
+* `180`
+* `270`
+
+For example, a rotation value of `90` rotates the display 90 degrees to the right. `180` rotates the display 180 degrees, or upside-down.
+
+NOTE: It is not possible to rotate the DSI display separately from the HDMI display with `cmdline.txt`. When you use DSI and HDMI simultaneously, they share the same rotation value.
+
+==== Rotate touch input
+
+WARNING: Rotating touch input via device tree can cause conflicts with your input library. Whenever possible, configure touch event rotation in your input library or desktop.
+
+Rotation of touch input is independent of the orientation of the display itself. To change this you need to manually add a `dtoverlay` instruction in xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`]. Add the following line in `config.txt`:
+
+[source]
 ----
 dtoverlay=vc4-kms-dsi-7inch,invx,invy
 ----
 
-and disable the autodetection of the display by removing or commenting out
+Then, disable automatic display detection by removing the following line from `config.txt`, if it exists:
 
+[source]
 ----
 display_auto_detect=1
 ----
 
-The options for the vc4-kms-dsi-7inch overlay are:
+==== Touch Display device tree option reference
+
+The `vc4-kms-dsi-7inch` overlay supports the following options:
 
 |===
 | DT parameter | Action
 
-| sizex
+| `sizex`
 | Sets X resolution (default 800)
 
-| sizey
+| `sizey`
 | Sets Y resolution (default 480)
 
-| invx
+| `invx`
 | Invert X coordinates
 
-| invy
+| `invy`
 | Invert Y coordinates
 
-| swapxy
+| `swapxy`
 | Swap X and Y coordinates
 
-| disable_touch
+| `disable_touch`
 | Disables the touch overlay totally
 |===
+
+To specify these options, add them, separated by commas, to your `dtoverlay` line in `/boot/firmware/cmdline.txt`. Boolean values default to true when present, but you can set them to false with the suffix "=0". Integer values require a value, e.g. `sizey=240`. For instance, to set the X resolution to 400 pixels and invert both X and Y coordinates, use the following line:
+
+[source]
+----
+dtoverlay=vc4-kms-dsi-7inch,sizex=400,invx,invy
+----
