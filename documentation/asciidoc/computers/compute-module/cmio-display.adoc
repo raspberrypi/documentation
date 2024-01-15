@@ -5,9 +5,9 @@ NOTE: These instructions are intended for advanced users. If anything is unclear
 Update your system software and firmware to the latest version before starting.
 Compute Modules mostly use the same process, but sometimes physical differences force changes for a particular model.
 
-=== Quickstart guide (display only)
+=== Connect a display to DISP1
 
-INFO: The Raspberry Pi Zero camera cable cannot be used as an alternative to the RPI-DISPLAY adapter. The two cables have distinct wiring.
+NOTE: The Raspberry Pi Zero camera cable cannot be used as an alternative to the RPI-DISPLAY adapter. The two cables have distinct wiring.
 
 To connect a display to DISP1:
 
@@ -25,6 +25,8 @@ To connect a display to DISP1:
 dtoverlay=vc4-kms-dsi-7inch
 ----
 . Reboot your Compute Module with `sudo reboot`. Your device should detect and begin displaying output to your display.
+
+=== Connect a display to DISP0
 
 To connect a display to DISP0:
 
@@ -52,6 +54,8 @@ To disable the touchscreen element, but still use the display, add the following
 ----
 disable_touchscreen=1
 ----
+
+=== Disable display
 
 To entirely ignore the display when connected, add the following line to to `/boot/firmware/config.txt`:
 
