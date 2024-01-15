@@ -893,9 +893,9 @@ To capture this for a bug report run `hexdump -C /proc/device-tree/chosen/power/
 The format is defined by the https://usb.org/document-library/usb-power-delivery[USB Power Delivery] specification.
 
 
-==== BCM2711 & BCM2712 specific bootloader properties `/chosen/bootloader`
+==== BCM2711 and BCM2712 specific bootloader properties `/chosen/bootloader`
 
-The following properties are specific to the BCM2711 & BCM2712 SPI EEPROM bootloaders.
+The following properties are specific to the BCM2711 and BCM2712 SPI EEPROM bootloaders.
 
 `build_timestamp` - 32-bit integer
 
@@ -964,7 +964,7 @@ If secure-boot is enabled then this bit-field will be non-zero. The individual b
 
 The Git version string for the bootloader.
 
-==== BCM2711 & BCM2712 USB boot properties `/chosen/bootloader/usb`
+==== BCM2711 and BCM2712 USB boot properties `/chosen/bootloader/usb`
 
 The following properties are defined if the system was booted from USB. These may be used to uniquely identify the USB boot device.
 
