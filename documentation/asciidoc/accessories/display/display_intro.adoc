@@ -166,7 +166,7 @@ The `vc4-kms-dsi-7inch` overlay supports the following options:
 | Disables the touch overlay totally
 |===
 
-To specify these options, add them, separated by commas, to your `dtoverlay` line in `/boot/firmware/cmdline.txt`. Boolean values default to true when present, but you can set them to false with the suffix "=0". Integer values require a value, e.g. `sizey=240`. For instance, to set the X resolution to 400 pixels and invert both X and Y coordinates, use the following line:
+To specify these options, add them, separated by commas, to your `dtoverlay` line in `/boot/firmware/config.txt`. Boolean values default to true when present, but you can set them to false with the suffix "=0". Integer values require a value, e.g. `sizey=240`. For instance, to set the X resolution to 400 pixels and invert both X and Y coordinates, use the following line:
 
 [source]
 ----
