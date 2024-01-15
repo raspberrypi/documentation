@@ -4,11 +4,11 @@
 .Raspberry Pi connector for PCIe
 image::images/pcie.jpg[alt="Raspberry Pi connector for PCIe",width="70%"]
 
-Raspberry Pi 5 has an FPC connector on the right-hand side of the board. This connector breaks out PCIe Gen 2.0 x1 interface for fast peripherals. 
+Raspberry Pi 5 has an FPC connector on the right-hand side of the board. This connector breaks out PCIe Gen 2.0 ×1 interface for fast peripherals. 
 
 NOTE: An M.2 HAT which provides an M.2 connector to allow the use of NVMe drives is still in prototype, and has not yet been released.
 
-More information around the PCIe FPC connector pin out, and other details needed to create third-party devices, accessories, and HATs, see the https://datasheets.raspberrypi.com/pcie/pcie-connector-standard.pdf[Raspberry Pi Connector for PCIe] standards document. It should be read alongside the new https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[Raspberry Pi HAT+ Specification].
+More information around the PCIe FPC connector pin-out, and other details needed to create third-party devices, accessories, and HATs, see the https://datasheets.raspberrypi.com/pcie/pcie-connector-standard.pdf[Raspberry Pi Connector for PCIe] standards document. It should be read alongside the new https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[Raspberry Pi HAT+ Specification].
 
 === Enabling PCIe
 
@@ -16,11 +16,11 @@ By default the PCIe connector is not enabled. To enable it you should add the fo
 
 [source]
 ----
-# Enable the PCIe External connector.
+# Enable the PCIe external connector.
 dtparam=pciex1
 ----
 
-A more memorable alias for `pciex1` exists, so you can alternatively add `dtparam=nvme` to the `/boot/firmware/config.txt` file.
+A more memorable alias for `pciex1` exists, so alternatively you can add `dtparam=nvme` to the `/boot/firmware/config.txt` file.
 
 NOTE: Enumeration of PCIe devices behind a switch is https://github.com/raspberrypi/firmware/issues/1833[not currently supported].
 
@@ -43,7 +43,7 @@ You should then reboot your Raspberry Pi for these settings to take effect.
 
 === Booting from PCIe
 
-Once enabled, and after you reboot, an NVMe disk attached via the PCIe should be visible. However, your Raspberry Pi won't try to boot off the NVMe drive. If you wish to enable boot support you will need to change the `BOOT_ORDER` in the bootloader configuration. Edit the EEPROM configuration by,
+Once enabled, and after rebooting, an NVMe disk attached via the PCIe should be visible. However, your Raspberry Pi won't try to boot from the NVMe drive. If you wish to enable boot support you will need to change the `BOOT_ORDER` in the bootloader configuration. Edit the EEPROM configuration by:
 
 [source]
 ----
@@ -57,7 +57,7 @@ and change the `BOOT_ORDER` line to be as below.
 BOOT_ORDER=0xf416
 ----
 
-If you are booting from a non-HAT+ device you should also add,
+If you are booting from a non-HAT+ device you should also add:
 
 [source]
 ----
@@ -71,4 +71,4 @@ IMPORTANT: For boards that follow the new https://datasheets.raspberrypi.com/hat
 After saving your changes, reboot your Raspberry Pi to update the EEPROM.
 
 
-NOTE: Your Raspberry Pi will not boot from an attached NVMe drive unless you have the external PCIe port enabled, and there's an NVMe drive with a valid boot partition attached to the PCIe bus.
+NOTE: Your Raspberry Pi will not boot from an attached NVMe drive unless you have the external PCIe port enabled, and an NVMe drive with a valid boot partition is attached to the PCIe bus.
