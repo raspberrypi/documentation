@@ -36,8 +36,6 @@ include::raspberry-pi/gpio-on-raspberry-pi.adoc[]
 
 include::raspberry-pi/gpio-pad-controls.adoc[]
 
-include::raspberry-pi/peripheral_addresses.adoc[]
-
 include::raspberry-pi/raspberry-pi-industrial.adoc[]
 
 include::raspberry-pi/otp-bits.adoc[]
