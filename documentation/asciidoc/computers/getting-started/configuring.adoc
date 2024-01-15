@@ -48,7 +48,7 @@ By default, older versions of Raspberry Pi OS set the username to "pi". If you u
 
 image::images/initial-setup/user.png[alt="Create your username and password."]
 
-=== Wi-Fi
+=== WiFi
 
 This page helps you connect to a WiFi network. Choose your preferred network from the list.
 
