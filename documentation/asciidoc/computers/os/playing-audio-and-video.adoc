@@ -1,12 +1,12 @@
-== Playing Audio and Video
+== Playing audio and video
 
 The simplest way of playing audio and video on Raspberry Pi is to use the pre-installed VLC application. This is hardware accelerated, and can play back many popular audio and video file formats. More extensive information can be found at https://www.videolan.org/
 
 === The VLC application
 
-To play an audio or video file in the Raspberry Pi OS desktop environment, you can simply double-click on the file in the file-manager, and VLC will automatically launch and play the file. Alternatively, you can launch "VLC Media Player" from the "Sound & Video" menu, and then select "Media" -> "Open File..." and navigate to the file you want to play. By default the audio is sent over the HDMI link; if you instead want to output the audio over the Headphone jack, right-click on the speaker-icon in the top-right corner of the screen, and select "AV Jack".
+To play an audio or video file in the Raspberry Pi OS desktop environment, double-click on the file in the file-manager, and VLC will automatically launch and play the file. Alternatively, you can launch "VLC Media Player" from the "Sound & Video" menu, and then select "Media" -> "Open File..." and navigate to the file you want to play. By default, the audio is sent over the HDMI link; if you instead want to output the audio over the headphone jack, right-click on the speaker icon in the top-right corner of the screen, and select "AV Jack".
 
-For more fine-grained control, you can also launch VLC from the command-line. For the examples below, we used a short clip from Big Buck Bunny.
+For more fine-grained control, you can also launch VLC from the command line. For the examples below, we used a short clip from Big Buck Bunny.
 
 ----
 wget --trust-server-names http://rptl.io/big-buck-bunny
@@ -19,7 +19,7 @@ To prevent the VLC GUI staying open after your file has finished playing, you ca
 vlc --play-and-exit big-buck-bunny-1080p.mp4
 ----
 
-You can also add the `--fullscreen` flag to force a video to use the full screen - and this can also lead to smoother playback in some circumstances.
+You can also add the `--fullscreen` flag to force a video into fullscreen mode. This can also lead to smoother playback in some circumstances.
 
 ----
 vlc --play-and-exit --fullscreen big-buck-bunny-1080p.mp4
@@ -31,13 +31,13 @@ If you use `cvlc` instead of `vlc` with any of these commands, then the VLC GUI 
 cvlc --play-and-exit big-buck-bunny-1080p.mp4
 ----
 
-If you have a raw H264 stream, for example as captured from the Raspberry Pi Camera Module, you will get much smoother playback in VLC by encapsulating the stream inside a container-format. This can be done using `ffmpeg`, for example this command converts `video.h264` to a containerised `video.mp4` at 30 fps:
+If you have a raw H264 stream, for example as captured from the Raspberry Pi Camera Module, you will get much smoother playback in VLC by encapsulating the stream inside a container format. This can be done using `ffmpeg`. For example, this command converts `video.h264` to a containerised `video.mp4` at 30fps:
 
 `ffmpeg -r 30 -i video.h264 -c:v copy video.mp4`
 
-=== Playing Audio and Video on Raspberry Pi OS Lite
+=== Playing audio and video on Raspberry Pi OS Lite
 
-Firstly, install the necessary VLC components:
+Begin by installing the necessary VLC components:
 
 ----
 sudo apt install --no-install-recommends vlc-bin vlc-plugin-base
@@ -50,13 +50,13 @@ wget --trust-server-names http://rptl.io/startup-music
 cvlc --play-and-exit computer-startup-music.mp3
 ----
 
-To force the audio output to a particular device, you need to use:
+To force the audio output to a particular device, you should use:
 
 ----
 cvlc --play-and-exit -A alsa --alsa-audio-device <alsa-device> computer-startup-music.mp3
 ----
 
-replacing `<alsa-device>` with one of the following options:
+...replacing `<alsa-device>` with one of the following options:
 
 |===
 | ALSA device | Description
@@ -83,7 +83,7 @@ To force the video output to a particular device, you need to use:
 cvlc --play-and-exit --drm-vout-display <drm-device> big-buck-bunny-1080p.mp4
 ----
 
-replacing `<drm-device>` with one of the following options:
+...replacing `<drm-device>` with one of the following options:
 
 |===
 | DRM device | Description
@@ -102,7 +102,7 @@ Use the following command to get a list of all DRM devices on your Raspberry Pi:
 kmsprint | grep Connector
 ----
 
-You can combine these options, so to direct the video output to the touchscreen, and the audio output to the headphone jack, you'd use
+You can combine these options, so to direct the video output to the touchscreen, and the audio output to the headphone jack, you'd use:
 
 ----
 cvlc --play-and-exit --fullscreen --drm-vout-display DSI-1 -A alsa --alsa-audio-device sysdefault:CARD=Headphones your_video.mp4
