@@ -2,7 +2,7 @@
 
 The kernel has a https://www.kernel.org/doc/html/latest/admin-guide/pm/cpufreq.html[CPUFreq] driver with the "powersave" governor enabled by default, switched to "ondemand" during boot, when xref:configuration.adoc#raspi-config[raspi-config] is installed. With "ondemand" governor, CPU frequency will vary with processor load. You can adjust the minimum values with the `*_min` config options or disable dynamic clocking by applying a static scaling governor ("powersave" or "performance") or with `force_turbo=1`.
 
-Overclocking and overvoltage will be disabled at runtime when the SoC reaches `temp_limit` (see below), which defaults to 85°C, in order to cool down the SoC. You should not hit this limit with Raspberry Pi 1 and Raspberry Pi 2, but you are more likely to with Raspberry Pi 3 and newer Overclocking and overvoltage are also disabled when an undervoltage situation is detected.
+Overclocking and overvoltage will be disabled at runtime when the SoC reaches `temp_limit` (see below), which defaults to 85°C, in order to cool down the SoC. You should not hit this limit with Raspberry Pi 1 and Raspberry Pi 2, but you are more likely to with Raspberry Pi 3 and newer. Overclocking and overvoltage are also disabled when an undervoltage situation is detected.
 
 NOTE: For more information xref:raspberry-pi.adoc#frequency-management-and-thermal-control[see the section on frequency management and thermal control].
 

@@ -51,6 +51,7 @@ The `initramfs` command specifies both the ramfs filename *and* the memory addre
 
 NOTE: This option uses different syntax from all the other options, and you should not use a `=` character here.
 
+[[auto_initramfs]]
 === `auto_initramfs`
 
 If `auto_initramfs` is set to `1`, look for an initramfs file using the same rules as the kernel selection.
