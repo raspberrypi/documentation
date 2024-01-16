@@ -1,6 +1,6 @@
-== Configure Screen Blanking
+== Configure screen blanking
 
-You can configure your Raspberry Pi to blank the screen after a period of inactivity. By default, Raspberry Pi OS blanks the screen after 10 minutes of inactivity when screen blanking is enabled.
+You can configure your Raspberry Pi to blank the screen after a period of inactivity. By default, Raspberry Pi OS blanks the screen after ten minutes of inactivity when screen blanking is enabled.
 
 === Desktop
 
@@ -33,7 +33,7 @@ Alternatively, you can add or edit the following lines to `~/.config/wayfire.ini
 dpms_timeout=600
 ----
 
-The `dpms_timeout` variable controls the number of seconds of inactivity required before Raspberry Pi OS blanks your screen. For example, a value of `600` blanks the screen after 600 seconds, or 10 minutes. Set the value to `0` to never blank the screen.
+The `dpms_timeout` variable controls the number of seconds of inactivity required before Raspberry Pi OS blanks your screen. For example, a value of `600` blanks the screen after 600 seconds, or ten minutes. Set the value to `0` to never blank the screen.
 
 === Console
 
