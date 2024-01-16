@@ -1,27 +1,27 @@
-== The Kernel Command Line
+== The kernel command line
 
-The Linux kernel accepts a command line of parameters during boot. On the Raspberry Pi, this command line is defined in a file in the boot partition, called `cmdline.txt`. You can edit this text file with any text editor, e.g. Nano:
+The Linux kernel accepts a command line of parameters during boot. On the Raspberry Pi, this command line is defined in a file in the boot partition, called `cmdline.txt`. You can edit this text file with any text editor. To use Nano:
 
 ----
 sudo nano /boot/firmware/cmdline.txt
 ----
 
-NOTE: Use `sudo` to edit anything in the boot partition. Put all parameters in `cmdline.txt` on the same line; no carriage returns.
+NOTE: Use `sudo` to edit anything in the boot partition. Put all parameters in `cmdline.txt` on the same line; do not use carriage returns.
 
 The command line that was passed to the kernel at boot time can be displayed using `cat /proc/cmdline`. It will not be exactly the same as that in `cmdline.txt` as the firmware can make changes to it prior to launching the kernel.
 
-=== Command Line Options
+=== Command line options
 
-There are many kernel command line parameters, some of which are defined by the kernel. Others are defined by code that the kernel may be using, such as the Plymouth splash screen system.
+There are many kernel command line parameters, some of which are defined by the kernel itself. Others are defined by code that the kernel may be using, such as the Plymouth splash screen system.
 
 [discrete]
-===== Standard Entries
+===== Standard entries
 
 * console: defines the serial console. There are usually two entries:
  ** `console=serial0,115200`
  ** `console=tty1`
-* root: defines the location of the root filesystem, e.g. `root=/dev/mmcblk0p2` means multimedia card block 0 partition 2.
-* rootfstype: defines what type of filesystem the rootfs uses, e.g. `rootfstype=ext4`
+* root: defines the location of the root filesystem. e.g. `root=/dev/mmcblk0p2` means multimedia card block 0 partition 2.
+* rootfstype: defines what type of filesystem the rootfs uses, e.g. `rootfstype=ext4`.
 * quiet: sets the default kernel log level to `KERN_WARNING`, which suppresses all but very serious log messages during boot.
 
 [discrete]
@@ -29,14 +29,14 @@ There are many kernel command line parameters, some of which are defined by the 
 
 The "legacy firmware" and "FKMS" display modes used in earlier versions of Raspberry Pi OS are no longer supported; KMS (Kernel Mode Setting) is now used instead.
 
-If no `video` entry is present in `cmdline.txt` then the Linux kernel will read the EDID of an HDMI-connected monitor, and automatically pick the best display resolution supported by your monitor / television. If you're using Raspberry Pi OS Lite, or the "boot to CLI" mode of Raspberry Pi OS, and you want to change the resolution of the text console, then you'll need to add a `video` setting to `cmdline.txt`, for example:
+If no `video` entry is present in `cmdline.txt` then the Linux kernel will read the EDID of an HDMI-connected monitor, and automatically pick the best resolution supported by your display. If you're using Raspberry Pi OS Lite, or the "boot to CLI" mode of Raspberry Pi OS, and you want to change the resolution of the text console, then you'll need to add a `video` setting to `cmdline.txt`, for example:
 
 [source]
 ----
 video=HDMI-A-1:1920x1080M@60
 ----
 
-In addition, it is possible to add rotation and reflect parameters as documented in the standard https://github.com/raspberrypi/linux/blob/rpi-6.1.y/Documentation/fb/modedb.rst[Linux framebuffer documentation]. An example entry may be as follows:
+In addition, it is possible to add rotation and reflect parameters as documented in the standard https://github.com/raspberrypi/linux/blob/rpi-6.1.y/Documentation/fb/modedb.rst[Linux framebuffer documentation]. An example entry might look like this:
 
 [source]
 ----
@@ -45,7 +45,7 @@ video=HDMI-A-1:1920x1080M@60,rotate=90,reflect_x`
 
 NOTE: It is not possible to specify the rotation and reflection parameters without also explicitly specifying the resolution.
 
-Possible options for the display type, the first part of the `video=` entry,  are as follows:
+Possible options for the display type - the first part of the `video=` entry - include:
 
 [cols="^,<"]
 |===
@@ -65,15 +65,15 @@ Possible options for the display type, the first part of the `video=` entry,  ar
 |===
 
 [discrete]
-===== Other Entries (not exhaustive)
+===== Other entries (not exhaustive)
 
 * splash: tells the boot to use a splash screen via the Plymouth module.
 * plymouth.ignore-serial-consoles: normally if the Plymouth module is enabled it will prevent boot messages from appearing on any serial console which may be present. This flag tells Plymouth to ignore all serial consoles, making boot messages visible again, as they would be if Plymouth was not running.
-* dwc_otg.lpm_enable=0: turns off Link Power Management (LPM) in the dwc_otg driver; the dwc_otg driver is the driver for the USB controller built into the processor used on Raspberry Pi computers.
+* dwc_otg.lpm_enable=0: turns off Link Power Management (LPM) in the dwc_otg driver, which drives the USB controller built into the processor used on Raspberry Pi computers.
 +
 NOTE: On Raspberry Pi 4 this controller is disabled by default, and is only connected to the USB type C power input connector; the USB type A ports on Raspberry Pi 4 are driven by a separate USB controller which is not affected by this setting.
 * dwc_otg.speed: sets the speed of the USB controller built into the processor on Raspberry Pi computers. `dwc_otg.speed=1` will set it to full speed (USB 1.0), which is slower than high speed (USB 2.0). This option should not be set except during troubleshooting of problems with USB devices.
 * smsc95xx.turbo_mode: enables/disables the wired networking driver turbo mode. `smsc95xx.turbo_mode=N` turns turbo mode off.
-* usbhid.mousepoll: specifies the mouse polling interval. If you have problems with a slow or erratic wireless mouse, setting this to 0 might help: `usbhid.mousepoll=0`.
-* drm.edid_firmware=HDMI-A-1:edid/your_edid.bin: Override your monitor's built-in EDID with the contents of `/usr/lib/firmware/edid/your_edid.bin`
+* usbhid.mousepoll: specifies the mouse polling interval. If you have problems with a slow or erratic wireless mouse, setting this to 0 with `usbhid.mousepoll=0` might help. 
+* drm.edid_firmware=HDMI-A-1:edid/your_edid.bin: Override your monitor's built-in EDID with the contents of `/usr/lib/firmware/edid/your_edid.bin`.
 
