@@ -1,22 +1,24 @@
-== Device Trees, Overlays, and Parameters
+== Device Trees, overlays, and parameters
 
-Raspberry Pi kernels and firmware use a Device Tree (DT) to describe the hardware present in the Raspberry Pi. These Device Trees may include DT parameters that provide a degree of control over some onboard features. DT overlays allow optional external hardware to be described and configured, and they also support parameters for more control.
+Raspberry Pi kernels and firmware use a Device Tree (DT) to describe the hardware present on the Raspberry Pi. These Device Trees may include DT parameters that provide a degree of control over some onboard features. DT overlays allow optional external hardware to be described and configured, and they also support parameters for more control.
 
-The firmware loader (`start.elf` and its variants) is responsible for loading the DTB (Device Tree Blob - a machine readable DT file). It chooses which one to load based on the board revision number, and makes certain modifications to further tailor it (memory size, Ethernet addresses etc.). This runtime customisation avoids the need for lots of DTBs with only minor differences.
+The firmware loader (`start.elf` and its variants) is responsible for loading the DTB (Device Tree Blob - a machine-readable DT file). It chooses which one to load based on the board revision number, and makes modifications to further tailor it. This runtime customisation avoids the need for many DTBs with only minor differences.
 
-`config.txt` is scanned for user-provided parameters, along with any overlays and their parameters, which are then applied. The loader examines the result to learn (for example) which UART, if any, is to be used for the console. Finally it launches the kernel, passing a pointer to the merged DTB.
+User-provided parameters in `config.txt` are scanned, along with any overlays and their parameters, which are then applied. The loader examines the result to learn (for example) which UART, if any, is to be used for the console. Finally it launches the kernel, passing a pointer to the merged DTB.
 
 [[part1]]
 === Device Trees
 
-A Device Tree (DT) is a description of the hardware in a system. It should include the name of the base CPU, its memory configuration, and any peripherals (internal and external). A DT should not be used to describe the software, although by listing the hardware modules it does usually cause driver modules to be loaded. It helps to remember that DTs are supposed to be OS-neutral, so anything which is Linux-specific probably shouldn't be there.
+A Device Tree (DT) is a description of the hardware in a system. It should include the name of the base CPU, its memory configuration, and any peripherals (internal and external). A DT should not be used to describe the software, although by listing the hardware modules it does usually cause driver modules to be loaded. 
+
+NOTE: It helps to remember that DTs are supposed to be OS-neutral, so anything which is Linux-specific shouldn't be there.
 
 A Device Tree represents the hardware configuration as a hierarchy of nodes. Each node may contain properties and subnodes. Properties are named arrays of bytes, which may contain strings, numbers (big-endian), arbitrary sequences of bytes, and any combination thereof. By analogy to a filesystem, nodes are directories and properties are files. The locations of nodes and properties within the tree can be described using a path, with slashes as separators and a single slash (`/`) to indicate the root.
 
 [[part1.1]]
 ==== Basic DTS syntax
 
-Device Trees are usually written in a textual form known as Device Tree Source (DTS) and stored in files with a `.dts` suffix. DTS syntax is C-like, with braces for grouping and semicolons at the end of each line. Note that DTS requires semicolons after closing braces: think of C ``struct``s rather than functions. The compiled binary format is referred to as Flattened Device Tree (FDT) or Device Tree Blob (DTB), and is stored in `.dtb` files.
+Device Trees are usually written in a textual form known as Device Tree Source (DTS), and are stored in files with a `.dts` suffix. DTS syntax is C-like, with braces for grouping and semicolons at the end of each line. Note that DTS requires semicolons after closing braces: think of C ``struct``s rather than functions. The compiled binary format is referred to as Flattened Device Tree (FDT) or Device Tree Blob (DTB), and is stored in `.dtb` files.
 
 The following is a simple tree in the `.dts` format:
 
@@ -53,14 +55,14 @@ The following is a simple tree in the `.dts` format:
 
 This tree contains:
 
-* a required header: `/dts-v1/`.
-* The inclusion of another DTS file, conventionally named `*.dtsi` and analogous to a `.h` header file in C - see _An aside about /include/_ below.
+* a required header: `/dts-v1/`
+* The inclusion of another DTS file, conventionally named `*.dtsi` and analogous to a `.h` header file in C 
 * a single root node: `/`
 * a couple of child nodes: `node1` and `node2`
 * some children for node1: `child-node1` and `child-node2`
-* a label (`cousin`) and a reference to that label (`&cousin`): see _Labels and References_ below.
+* a label (`cousin`) and a reference to that label (`&cousin`)
 * several properties scattered through the tree
-* a repeated node (`/node2`) - see _An aside about /include/_ below.
+* a repeated node (`/node2`) 
 
 Properties are simple key-value pairs where the value can either be empty or contain an arbitrary byte stream. While data types are not encoded in the data structure, there are a few fundamental data representations that can be expressed in a Device Tree source file.
 
@@ -112,42 +114,42 @@ In the example above, the second appearance of `/node2` causes a new property to
 };
 ----
 
-It is thus possible for one `.dtsi` to overwrite, or provide defaults for, multiple places in a tree.
+It is therefore possible for one `.dtsi` to overwrite, or provide defaults for, multiple places in a tree.
 
 [[part1.3]]
 ==== Labels and references
 
 It is often necessary for one part of the tree to refer to another, and there are four ways to do this:
 
-. Path strings
+* Path strings
 +
 Paths should be self-explanatory, by analogy with a filesystem - `/soc/i2s@7e203000` is the full path to the I2S device in BCM2835 and BCM2836. Note that although it is easy to construct a path to a property (for example, `/soc/i2s@7e203000/status`), the standard APIs don't do that; you first find a node, then choose properties of that node.
 
-. phandles
+* Phandles
 +
-A phandle is a unique 32-bit integer assigned to a node in its `phandle` property. For historical reasons, you may also see a redundant, matching `linux,phandle`. phandles are numbered sequentially, starting from 1; 0 is not a valid phandle. They are usually allocated by the DT compiler when it encounters a reference to a node in an integer context, usually in the form of a label (see below). References to nodes using phandles are simply encoded as the corresponding integer (cell) values; there is no markup to indicate that they should be interpreted as phandles, as that is application-defined.
+A phandle is a unique 32-bit integer assigned to a node in its `phandle` property. For historical reasons, you may also see a redundant, matching `linux,phandle`. Phandles are numbered sequentially, starting from 1; 0 is not a valid phandle. They are usually allocated by the DT compiler when it encounters a reference to a node in an integer context, usually in the form of a label. References to nodes using phandles are simply encoded as the corresponding integer (cell) values; there is no markup to indicate that they should be interpreted as phandles, as that is application-defined.
 
-. Labels
+* Labels
 +
 Just as a label in C gives a name to a place in the code, a DT label assigns a name to a node in the hierarchy. The compiler takes references to labels and converts them into paths when used in string context (`&node`) and phandles in integer context (`<&node>`); the original labels do not appear in the compiled output. Note that labels contain no structure; they are just tokens in a flat, global namespace.
 
-. Aliases
+* Aliases
 +
 Aliases are similar to labels, except that they do appear in the FDT output as a form of index. They are stored as properties of the `/aliases` node, with each property mapping an alias name to a path string. Although the aliases node appears in the source, the path strings usually appear as references to labels (`&node`), rather then being written out in full. DT APIs that resolve a path string to a node typically look at the first character of the path, treating paths that do not start with a slash as aliases that must first be converted to a path using the `/aliases` table.
 
 [[part1.4]]
 ==== Device Tree semantics
 
-How to construct a Device Tree, and how best to use it to capture the configuration of some hardware, is a large and complex subject. There are many resources available, some of which are listed below, but several points deserve mentioning in this document:
+How to construct a Device Tree, and how best to use it to capture the configuration of some hardware, is a large and complex subject. There are many resources available, some of which are listed below, but several points deserve highlighting:
 
 `compatible` properties are the link between the hardware description and the driver software. When an OS encounters a node with a `compatible` property, it looks it up in its database of device drivers to find the best match. In Linux, this usually results in the driver module being automatically loaded, provided it has been appropriately labelled and not blacklisted.
 
 The `status` property indicates whether a device is enabled or disabled. If the `status` is `ok`, `okay` or absent, then the device is enabled. Otherwise, `status` should be `disabled`, so that the device is disabled. It can be useful to place devices in a `.dtsi` file with the status set to `disabled`. A derived configuration can then include that `.dtsi` and set the status for the devices which are needed to `okay`.
 
 [[part2]]
-=== Device Tree Overlays
+=== Device Tree overlays
 
-A modern SoC (System on a Chip) is a very complicated device; a complete Device Tree could be hundreds of lines long. Taking that one step further and placing the SoC on a board with other components only makes matters worse. To keep that manageable, particularly if there are related devices that share components, it makes sense to put the common elements in `.dtsi` files, to be included from possibly multiple `.dts` files.
+A modern System on a Chip (SoC) is a very complicated device; a complete Device Tree could be hundreds of lines long. Taking that one step further and placing the SoC on a board with other components only makes matters more complicated. To keep that manageable, particularly if there are related devices which share components, it makes sense to put the common elements in `.dtsi` files, to be included from possibly multiple `.dts` files.
 
 When a system like Raspberry Pi also supports optional plug-in accessories such as HATs, the problem grows. Ultimately, each possible configuration requires a Device Tree to describe it, but once you factor in all the different base models and the large number of available accessories, the number of combinations starts to multiply rapidly.
 
@@ -202,7 +204,7 @@ Each fragment consists of two parts: a `target` property, identifying the node t
 };
 ----
 
-(In fact, with a sufficiently new version of `dtc` you can write it exactly like that and get identical output, but some homegrown tools don't understand this format yet so any overlay that you might want to be included in the standard Raspberry Pi OS kernel should be written in the old format for now).
+With a sufficiently new version of `dtc` you can write the example exactly as above and get identical output, but some homegrown tools don't understand this format yet. Any overlay that you might want to see included in the standard Raspberry Pi OS kernel should be written in the old format for now.
 
 The effect of merging that overlay with a standard Raspberry Pi base Device Tree (e.g. `bcm2708-rpi-b-plus.dtb`), provided the overlay is loaded afterwards, would be to enable the I2S interface by changing its status to `okay`. But if you try to compile this overlay using:
 
@@ -210,7 +212,7 @@ The effect of merging that overlay with a standard Raspberry Pi base Device Tree
 dtc -I dts -O dtb -o 2nd.dtbo 2nd-overlay.dts
 ----
 
-you will get an error:
+...you will get an error:
 
 ----
 Label or path i2s not found
@@ -230,7 +232,7 @@ If `dtc` returns an error about the third line, it doesn't have the extensions r
 make ARCH=arm dtbs
 ----
 
-It is interesting to dump the contents of the DTB file to see what the compiler has generated:
+Dump the contents of the DTB file to see what the compiler has generated:
 
 [,bash]
 ----
@@ -318,7 +320,7 @@ name = <&label>,"property:offset"; // 32-bit
 name = <&label>,"property#offset"; // 64-bit
 ----
 
-where `label`, `property` and `offset` are replaced by suitable values; the offset is specified in bytes relative to the start of the property (in decimal by default), and the preceding separator dictates the size of the parameter. In a change from earlier implementations, integer parameters may refer to non-existent properties or to offsets beyond the end of an existing property.
+Here, `label`, `property` and `offset` are replaced by suitable values; the offset is specified in bytes relative to the start of the property (in decimal by default), and the preceding separator dictates the size of the parameter. In a change from earlier implementations, integer parameters may refer to non-existent properties or to offsets beyond the end of an existing property.
 
 [[part2.2.3]]
 ===== Boolean parameters
@@ -329,15 +331,15 @@ Device Tree encodes boolean values as zero-length properties; if present then th
 boolean_property; // Set 'boolean_property' to true
 ----
 
-Note that a property is assigned the value `false` by not defining it. Boolean parameters are declared like this:
+A property is assigned the value `false` by not defining it. Boolean parameters are declared like this:
 
 ----
 name = <&label>,"property?";
 ----
 
-where `label` and `property` are replaced by suitable values.
+...where `label` and `property` are replaced by suitable values.
 
-Inverted booleans invert the input value before applying it in the same was as a regular boolean; they are declared similarly, but use `!` to indicate the inversion:
+Inverted booleans invert the input value before applying it in the same way as a regular boolean; they are declared similarly, but use `!` to indicate the inversion:
 
 ----
 name = <&label>,"property!";
@@ -380,7 +382,7 @@ NOTE: It is even possible to target properties of different types with a single 
 [[part2.2.6]]
 ===== Literal assignments
 
-As seen in <<part2.2.5,2.2.5>>, the DT parameter mechanism allows multiple targets to be patched from the same parameter, but the utility is limited by the fact that the same value has to be written to all locations (except for format conversion and the negation available from inverted booleans). The addition of embedded literal assignments allows a parameter to write arbitrary values, regardless of the parameter value supplied by the user.
+The DT parameter mechanism allows multiple targets to be patched from the same parameter, but the utility is limited by the fact that the same value has to be written to all locations (except for format conversion and the negation available from inverted booleans). The addition of embedded literal assignments allows a parameter to write arbitrary values, regardless of the parameter value supplied by the user.
 
 Assignments appear at the end of a declaration, and are indicated by a `=`:
 
@@ -399,7 +401,7 @@ exp_led = <&led1>,"gpios:0=",<&gpio>,
           <&led1>,"gpios:4";
 ----
 
-When the overlay is applied, the label will be resolved against the base DTB in the usual way. Note that it is a good idea to split multi-part parameters over multiple lines like this to make them easier to read - something that becomes more necessary with the addition of cell value assignments like this.
+When the overlay is applied, the label will be resolved against the base DTB in the usual way. It is a good idea to split multi-part parameters over multiple lines like this to make them easier to read - something that becomes more necessary with the addition of cell value assignments.
 
 Bear in mind that parameters do nothing unless they are applied - a default value in a lookup table is ignored unless the parameter name is used without assigning a value.
 
@@ -422,7 +424,7 @@ NOTE: As lookup tables operate on input values and literal assignments ignore th
 [[part2.2.8]]
 ===== Overlay/fragment parameters
 
-The DT parameter mechanism as described has a number of limitations, including no easy way to create arrays of integers and the inability to create new nodes. One way to overcome some of these limitations is to conditionally include or exclude certain fragments.
+The DT parameter mechanism as described has a number of limitations, including the lack of an easy way to create arrays of integers, and the inability to create new nodes. One way to overcome some of these limitations is to conditionally include or exclude certain fragments.
 
 A fragment can be excluded from the final merge process (disabled) by renaming the `+__overlay__+` node to `+__dormant__+`. The parameter declaration syntax has been extended to allow the otherwise illegal zero target phandle to indicate that the following string contains operations at fragment or overlay scope. So far, four operations have been implemented:
 
@@ -446,7 +448,7 @@ The `i2c-rtc` overlay uses this technique.
 [[part2.2.9]]
 ===== Special properties
 
-A few property names, when targeted by a parameter, get special handling. One you may have noticed already - `status` - which will convert a boolean to either `okay` for true and `disabled` for false.
+A few property names, when targeted by a parameter, get special handling. One you may have noticed already - `status` -  will convert a boolean to either `okay` for true and `disabled` for false.
 
 Assigning to the `bootargs` property appends to it rather than overwriting it - this is how settings can be added to the kernel command line.
 
@@ -587,14 +589,14 @@ Here are some examples of different types of properties, with parameters to modi
 };
 ----
 
-For further examples, there is a large collection of overlay source files https://github.com/raspberrypi/linux/tree/rpi-6.1.y/arch/arm/boot/dts/overlays[hosted in the Raspberry Pi Linux GitHub repository].
+For further examples, a large collection of overlay source files is hosted in the https://github.com/raspberrypi/linux/tree/rpi-6.1.y/arch/arm/boot/dts/overlays[Raspberry Pi Linux GitHub repository].
 
 [[part2.3]]
 ==== Exporting labels
 
-The overlay handling in the firmware and the run-time overlay application using the `dtoverlay` utility treat labels defined in an overlay as being private to that overlay. This avoids the need to invent globally unique names for labels (which keeps them short), and it allows the same overlay to be used multiple times without clashing (provided some tricks are used - see <<part2.2.9,Special properties>>).
+The overlay handling in the firmware, and the run-time overlay application using the `dtoverlay` utility, treat labels defined in an overlay as being private to that overlay. This avoids the need to invent globally unique names for labels (which keeps them short), and it allows the same overlay to be used multiple times without clashing (provided some tricks are used - see <<part2.2.9,Special properties>>).
 
-Sometimes, however, it is very useful to be able to create a label with one overlay and use it from another. Firmware released since 14th February 2020 has the ability to declare some labels as being global - the `+__exports__+` node:
+Sometimes it is very useful to be able to create a label with one overlay and use it from another. Firmware released since 14th February 2020 has the ability to declare some labels as being global - the `+__exports__+` node:
 
 ----
     ...
@@ -611,12 +613,12 @@ When this overlay is applied, the loader strips out all symbols except those tha
 [[part2.4]]
 ==== Overlay application order
 
-Under most circumstances it shouldn't matter which order the fragments are applied, but for overlays that patch themselves (where the target of a fragment is a label in the overlay, known as an intra-overlay fragment) it becomes important. In older firmware, fragments are applied strictly in order, top to bottom. With firmware released since 14th February 2020, fragments are applied in two passes:
+Under most circumstances it shouldn't matter in which order the fragments are applied, but for overlays that patch themselves (where the target of a fragment is a label in the overlay, known as an intra-overlay fragment) it becomes important. In older firmware, fragments are applied strictly in order, top to bottom. With firmware released since 14th February 2020, fragments are applied in two passes:
 
-. First the fragments that target other fragments are applied and hidden.
-. Then the regular fragments are applied.
+* First the fragments that target other fragments are applied and hidden.
+* Then the regular fragments are applied.
 
-This split is particularly important for runtime overlays, since step (i) occurs in the `dtoverlay` utility, and step (ii) is performed by the kernel (which can't handle intra-overlay fragments).
+This split is particularly important for runtime overlays, since the first step occurs in the `dtoverlay` utility, and the second is performed by the kernel (which can't handle intra-overlay fragments).
 
 [[part3]]
 === Using Device Trees on Raspberry Pi
@@ -626,9 +628,7 @@ This split is particularly important for runtime overlays, since step (i) occurs
 
 On a Raspberry Pi it is the job of the loader (one of the `start.elf` images) to combine overlays with an appropriate base device tree, and then to pass a fully resolved Device Tree to the kernel. The base Device Trees are located alongside `start.elf` in the FAT partition (`/boot/firmware/` from Linux), named `bcm2711-rpi-4-b.dtb`, `bcm2710-rpi-3-b-plus.dtb`, etc. Note that some models (3A+, A, A+) will use the "b" equivalents (3B+, B, B+), respectively. This selection is automatic, and allows the same SD card image to be used in a variety of devices.
 
-NOTE: DT and ATAGs are mutually exclusive, and passing a DT blob to a kernel that doesn't understand it will cause a boot failure. The firmware will always try to load the DT and pass it to the kernel, since all kernels since rpi-4.4.y will not function without a DTB. You can override this by adding `device_tree=` in config.txt, which forces the use of ATAGs, which can be useful for simple "bare-metal" kernels.
-
-[ The firmware used to look for a trailer appended to kernels by the `mkknlimg` utility, but support for this has been withdrawn. ]
+NOTE: DT and ATAGs are mutually exclusive, and passing a DT blob to a kernel that doesn't understand it will cause a boot failure. The firmware will always try to load the DT and pass it to the kernel, since all kernels since rpi-4.4.y will not function without a DTB. You can override this by adding `device_tree=` in config.txt, which forces the use of ATAGs, which can be useful for simple bare-metal kernels.
 
 The loader now supports builds using bcm2835_defconfig, which selects the upstreamed BCM2835 support. This configuration will cause `bcm2835-rpi-b.dtb` and `bcm2835-rpi-b-plus.dtb` to be built. If these files are copied with the kernel, then the loader will attempt to load one of those DTBs by default.
 
@@ -643,10 +643,10 @@ This will cause the loader to look for `overlays/acme-board.dtbo` in the firmwar
 
 The loader will also search for an attached HAT with a programmed EEPROM, and load the supporting overlay from there - either directly or by name from the "overlays" directory; this happens without any user intervention.
 
-There are several ways to tell that the kernel is using Device Tree:
+There are multiple ways to tell that the kernel is using Device Tree:
 
-. The "Machine model:" kernel message during bootup has a board-specific value such as "Raspberry Pi 2 Model B", rather than "BCM2709".
-. `/proc/device-tree` exists, and contains subdirectories and files that exactly mirror the nodes and properties of the DT.
+* The "Machine model:" kernel message during bootup has a board-specific value such as "Raspberry Pi 2 Model B", rather than "BCM2709".
+* `/proc/device-tree` exists, and contains subdirectories and files that exactly mirror the nodes and properties of the DT.
 
 With a Device Tree, the kernel will automatically search for and load modules that support the indicated enabled devices. As a result, by creating an appropriate DT overlay for a device you save users of the device from having to edit `/etc/modules`; all of the configuration goes in `config.txt`, and in the case of a HAT, even that step is unnecessary. Note, however, that layered modules such as `i2c-dev` still need to be loaded explicitly.
 
@@ -672,13 +672,13 @@ dtparam=gpio_in_pin=17
 dtparam=gpio_in_pull=down
 ----
 
-or appended to the overlay line like this:
+...or appended to the overlay line like this:
 
 ----
 dtoverlay=lirc-rpi,gpio_out_pin=16,gpio_in_pin=17,gpio_in_pull=down
 ----
 
-Overlay parameters are only in scope until the next overlay is loaded. In the event of a parameter with the same name being exported by both the overlay and the base, the parameter in the overlay takes precedence; for clarity, it's recommended that you avoid doing this. To expose the parameter exported by the base DTB instead, end the current overlay scope using:
+Overlay parameters are only in scope until the next overlay is loaded. In the event of a parameter with the same name being exported by both the overlay and the base, the parameter in the overlay takes precedence; it's recommended that you avoid doing this. To expose the parameter exported by the base DTB instead, end the current overlay scope using:
 
 ----
 dtoverlay=
@@ -687,7 +687,7 @@ dtoverlay=
 [[part3.3]]
 ==== Board-specific labels and parameters
 
-Raspberry Pi boards have two I2C interfaces. These are nominally split: one for the ARM, and one for VideoCore (the "GPU"). On almost all models, `i2c1` belongs to the ARM and `i2c0` to VC, where it is used to control the camera and read the HAT EEPROM. However, there are two early revisions of the Model B that have those roles reversed.
+Raspberry Pi boards have two I2C interfaces. These are nominally split: one for the ARM, and one for VideoCore (the GPU). On almost all models, `i2c1` belongs to the ARM and `i2c0` to VC, where it is used to control the camera and read the HAT EEPROM. However, there are two early revisions of the Model B that have those roles reversed.
 
 To make it possible to use one set of overlays and parameters with all Raspberry Pis, the firmware creates some board-specific DT parameters. These are:
 
@@ -733,6 +733,7 @@ There are some new commands for managing overlays:
 ===== The `dtoverlay` command
 
 `dtoverlay` is a command line utility that loads and removes overlays while the system is running, as well as listing the available overlays and displaying their help information.
+
 Use `dtoverlay -h` to get usage information:
 
 ----
@@ -757,33 +758,26 @@ Options applicable to most variants:
 
 Unlike the `config.txt` equivalent, all parameters to an overlay must be included in the same command line - the <<part3.5.2,dtparam>> command is only for parameters of the base DTB.
 
-Two points to note:
-
-. Command variants that change kernel state (adding and removing things) require root privilege, so you may need to prefix the command with `sudo`.
-. Only overlays and parameters applied at run-time can be unloaded - an overlay or parameter applied by the firmware becomes "baked in" such that it won't be listed by `dtoverlay` and can't be removed.
+Command variants that change kernel state (adding and removing things) require root privilege, so you may need to prefix the command with `sudo`. Only overlays and parameters applied at run-time can be unloaded - an overlay or parameter applied by the firmware becomes "baked in" such that it won't be listed by `dtoverlay` and can't be removed.
 
 [[part3.5.2]]
 ===== The `dtparam` command
 
-`dtparam` creates and loads an overlay that has largely the same effect as using a dtparam directive in `config.txt`. In usage it is largely equivalent to `dtoverlay` with an overlay name of `-`, but there are a few differences:
-
-. `dtparam` will list the help information for all known parameters of the base DTB. Help on the dtparam command is still available using `dtparam -h`.
-. When indicating a parameter for removal, only index numbers can be used (not names).
-. Not all Linux subsystems respond to the addition of devices at runtime - I2C, SPI and sound devices work, but some won't.
+`dtparam` creates and loads an overlay that has largely the same effect as using a dtparam directive in `config.txt`. In usage it is largely equivalent to `dtoverlay` with an overlay name of `-`, but there are a few differences: `dtparam` will list the help information for all known parameters of the base DTB. Help on the dtparam command is still available using `dtparam -h`. When indicating a parameter for removal, only index numbers can be used (not names). Not all Linux subsystems respond to the addition of devices at runtime - I2C, SPI and sound devices work, but some won't.
 
 [[part3.5.3]]
 ===== Guidelines for writing runtime-capable overlays
 
-This area is poorly documented, but here are some accumulated tips:
+The creation or deletion of a device object is triggered by a node being added or removed, or by the status of a node changing from disabled to enabled or vice versa. The absence of a "status" property means the node is enabled.
 
-* The creation or deletion of a device object is triggered by a node being added or removed, or by the status of a node changing from disabled to enabled or vice versa. Beware - the absence of a "status" property means the node is enabled.
-* Don't create a node within a fragment that will overwrite an existing node in the base DTB - the kernel will rename the new node to make it unique. If you want to change the properties of an existing node, create a fragment that targets it.
-* ALSA doesn't prevent its codecs and other components from being unloaded while they are in use. Removing an overlay can cause a kernel exception if it deletes a codec that is still being used by a sound card. Experimentation found that devices are deleted in the reverse of fragment order in the overlay, so placing the node for the card after the nodes for the components allows an orderly shutdown.
+Don't create a node within a fragment that will overwrite an existing node in the base DTB - the kernel will rename the new node to make it unique. If you want to change the properties of an existing node, create a fragment that targets it.
+
+ALSA doesn't prevent its codecs and other components from being unloaded while they are in use. Removing an overlay can cause a kernel exception if it deletes a codec that is still being used by a sound card. Experimentation found that devices are deleted in the reverse of fragment order in the overlay, so placing the node for the card after the nodes for the components allows an orderly shutdown.
 
 [[part3.5.4]]
 ===== Caveats
 
-The loading of overlays at runtime is a recent addition to the kernel, and so far there is no accepted way to do this from userspace. By hiding the details of this mechanism behind commands the aim is to insulate users from changes in the event that a different kernel interface becomes standardised.
+The loading of overlays at runtime is a recent addition to the kernel, and at the time of writing there is no accepted way to do this from userspace. By hiding the details of this mechanism behind commands, users are insulated from changes in the event that a different kernel interface becomes standardised.
 
 * Some overlays work better at run-time than others. Parts of the Device Tree are only used at boot time - changing them using an overlay will not have any effect.
 * Applying or removing some overlays may cause unexpected behaviour, so it should be done with caution. This is one of the reasons it requires `sudo`.
@@ -795,7 +789,7 @@ The loading of overlays at runtime is a recent addition to the kernel, and so fa
 [[part3.6]]
 ==== Supported overlays and parameters
 
-As it is too time-consuming to document the individual overlays here, please refer to the https://github.com/raspberrypi/firmware/blob/master/boot/firmware/overlays/README[README] file found alongside the overlay `.dtbo` files in `/boot/firmware/overlays`. It is kept up-to-date with additions and changes.
+Please refer to the https://github.com/raspberrypi/firmware/blob/master/boot/firmware/overlays/README[README] file found alongside the overlay `.dtbo` files in `/boot/firmware/overlays`. It is kept up-to-date with additions and changes.
 
 [[part4]]
 === Firmware parameters
@@ -842,12 +836,13 @@ Set to `1` if the `tryboot` flag was set at boot.
 
 Raspberry Pi 5 only.
 
-`max_current` - 32-bit integer
+*`max_current` - 32-bit integer
 
 The maximum current in mA that the power supply can supply. The firmware reports the value indicated by the USB-C, USB-PD or PoE interfaces.
+
 For bench power supplies (e.g. connected to the GPIO header) define `PSU_MAX_CURRENT` in the bootloader configuration to indicate the power supply current capability.
 
-`power_reset` - 32-bit integer
+*`power_reset` - 32-bit integer
 
 Raspberry Pi 5 only.
 
@@ -878,7 +873,7 @@ The USB VID and Product VDO of the official Raspberry Pi 5A power supply (if con
 
 `usb_max_current_enable` - 32-bit integer
 
-Zero if the USB port current limiter was set to the low-limit during boot or non-zero if the high limit was enabled.
+Zero if the USB port current limiter was set to the low-limit during boot; or non-zero if the high limit was enabled.
 The high level is automatically enabled if the power supply claims 5A max-current OR `usb_max_current_enable=1` is forced in `config.txt`
 
 `usb_over_current_detected` - 32-bit integer
@@ -888,10 +883,9 @@ Non-zero if a USB over-current event occurred during USB boot.
 `usbpd_power_data_objects` - binary blob (multiple 32-bit integers)
 
 The raw binary USB-PD objects (fixed supply only) received by the bootloader during USB-PD negotiation.
-To capture this for a bug report run `hexdump -C /proc/device-tree/chosen/power/usbpd_power_data_objects`
+To capture this for a bug report run `hexdump -C /proc/device-tree/chosen/power/usbpd_power_data_objects`.
 
 The format is defined by the https://usb.org/document-library/usb-power-delivery[USB Power Delivery] specification.
-
 
 ==== BCM2711 and BCM2712 specific bootloader properties `/chosen/bootloader`
 
@@ -909,19 +903,19 @@ This bit-field describes the features supported by the current bootloader. This 
 | Bit | Feature
 
 | 0
-| xref:raspberry-pi.adoc#usb-mass-storage-boot[USB boot] using the VLI USB host controller.
+| xref:raspberry-pi.adoc#usb-mass-storage-boot[USB boot] using the VLI USB host controller
 
 | 1
 | xref:remote-access.adoc#network-boot-your-raspberry-pi[Network boot]
 
 | 2
-| xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT_A_B] mode.
+| xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT_A_B] mode
 
 | 3
 | xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT]
 
 | 4
-| xref:raspberry-pi.adoc#usb-mass-storage-boot[USB boot] using the BCM2711 USB host controller.
+| xref:raspberry-pi.adoc#usb-mass-storage-boot[USB boot] using the BCM2711 USB host controller
 
 | 5
 | xref:raspberry-pi.adoc#boot_ramdisk[RAM disk - boot.img]
@@ -939,7 +933,7 @@ The UTC update timestamp set by `rpi-eeprom-update`.
 
 `signed_boot` - 32-bit integer
 
-If secure-boot is enabled then this bit-field will be non-zero. The individual bits indicate the current secure-boot configuration.
+If Secure Boot is enabled then this bit-field will be non-zero. The individual bits indicate the current Secure Boot configuration.
 
 |===
 | Bit | Description
@@ -948,7 +942,7 @@ If secure-boot is enabled then this bit-field will be non-zero. The individual b
 | `SIGNED_BOOT` was defined in the EEPROM config file.
 
 | 1
-| Reserved.
+| Reserved
 
 | 2
 | The ROM development key has been revoked.  See xref:raspberry-pi.adoc#revoke_devkey[revoke_devkey].
@@ -956,8 +950,8 @@ If secure-boot is enabled then this bit-field will be non-zero. The individual b
 | 3
 | The customer public key digest has been written to OTP. See xref:raspberry-pi.adoc#program_pubkey[program_pubkey].
 
-| 4..31
-| Reserved.
+| 4...31
+| Reserved
 |===
 
 `version` - string
@@ -984,11 +978,11 @@ The root hub port number that the boot device is connected to - possibly via oth
 The Logical Unit Number for the mass-storage device.
 
 ==== NVMEM nodes
-The firmware provides read-only, in-memory copies of portions of the bootloader EEPROM via the https://www.kernel.org/doc/html/latest/driver-api/nvmem.html[NVMEM] Subsystem.
+The firmware provides read-only, in-memory copies of portions of the bootloader EEPROM via the https://www.kernel.org/doc/html/latest/driver-api/nvmem.html[NVMEM] subsystem.
 
 Each region appears as an NVMEM device under `/sys/bus/nvmem/devices/` with a named alias under `/sys/firmware/devicetree/base/aliases`.
 
-Example shell script code for reading an NVMEM mode from https://github.com/raspberrypi/rpi-eeprom/blob/master/rpi-eeprom-update[rpi-eeprom-update]
+Example shell script code for reading an NVMEM mode from https://github.com/raspberrypi/rpi-eeprom/blob/master/rpi-eeprom-update[rpi-eeprom-update]:
 
 ----
 blconfig_alias="/sys/firmware/devicetree/base/aliases/blconfig"
@@ -1056,15 +1050,15 @@ Failing that, `depmod` has failed or the updated modules haven't been installed 
 
 Alongside the `dtoverlay` and `dtparam` commands is a utility for applying an overlay to a DTB - `dtmerge`. To use it you first need to obtain your base DTB, which can be obtained in one of two ways:
 
-a) generate it from the live DT state in `/proc/device-tree`:
+Generate it from the live DT state in `/proc/device-tree`:
 
 ----
 dtc -I fs -O dtb -o base.dtb /proc/device-tree
 ----
 
-This will include any overlays and parameters you have applied so far, either in `config.txt` or by loading them at runtime, which may or may not be what you want. Alternatively...
+This will include any overlays and parameters you have applied so far, either in `config.txt` or by loading them at runtime, which may or may not be what you want. Alternatively:
 
-b) copy it from the source DTBs in `/boot/firmware/`. This won't include overlays and parameters, but it also won't include any other modifications by the firmware. To allow testing of all overlays, the `dtmerge` utility will create some of the board-specific aliases ("i2c_arm", etc.), but this means that the result of a merge will include more differences from the original DTB than you might expect. The solution to this is to use dtmerge to make the copy:
+Copy it from the source DTBs in `/boot/firmware/`. This won't include overlays and parameters, but it also won't include any other modifications by the firmware. To allow testing of all overlays, the `dtmerge` utility will create some of the board-specific aliases ("i2c_arm", etc.), but this means that the result of a merge will include more differences from the original DTB than you might expect. The solution to this is to use dtmerge to make the copy:
 
 ----
 dtmerge /boot/firmware/bcm2710-rpi-3-b.dtb base.dtb -
@@ -1159,7 +1153,7 @@ device_tree=my-pi.dtb
 [[part5.4]]
 ==== Disabling Device Tree usage
 
-Device Tree usage is required in Raspberry Pi Linux kernels. However, for bare metal and other OSs, the method of disabling DT usage is to add:
+Device Tree usage is required in Raspberry Pi Linux kernels. For bare metal and other OSs, DT usage can be disabled by adding:
 
 ----
 device_tree=
@@ -1203,10 +1197,10 @@ Enable the primary/console xref:configuration.adoc#configuring-uarts[UART] (ttyS
 `overlay_prefix`
 Specifies a subdirectory/prefix from which to load overlays - defaults to "overlays/". Note the trailing "/". If desired you can add something after the final "/" to add a prefix to each file, although this is not likely to be needed.
 
-Further ports can be controlled by the DT, for more details see <<part3,section 3>>.
+Further ports can be controlled by the DT. For more details see <<part3,section 3>>.
 
 [[part5.7]]
 ==== Further help
 
-If you've read through this document and not found the answer to a Device Tree problem, there is help available. The author can usually be found on Raspberry Pi forums, particularly the https://forums.raspberrypi.com/viewforum.php?f=107[Device Tree] forum.
+If you've read through this document and have not found the answer to a Device Tree problem, there is help available. The author can usually be found on Raspberry Pi forums, particularly the https://forums.raspberrypi.com/viewforum.php?f=107[Device Tree] forum.
 
