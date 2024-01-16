@@ -1,68 +1,66 @@
-== Configuring Networking
+== Configuring networking
 
-Raspberry Pi OS provides a Graphical User Interface (GUI) for setting up wireless connections. Users of Raspberry Pi OS Lite and headless machines can set up wireless networking from the command line with https://developer-old.gnome.org/NetworkManager/stable/nmcli.html[`nmcli`].
+Raspberry Pi OS provides a graphical user interface (GUI) for setting up wireless connections. Users of Raspberry Pi OS Lite and headless machines can set up wireless networking from the command line with https://developer-old.gnome.org/NetworkManager/stable/nmcli.html[`nmcli`].
 
 NOTE: Network Manager is the default networking configuration tool under Raspberry Pi OS _Bookworm_ or later. While Network Manager can be installed on earlier versions of the operating system using `apt` and configured as the default using `raspi-config`, earlier versions used `dhcpd` and other tools for network configuration by default.
 
-=== Using the Desktop
+=== Using the desktop
 
-Access the Network Manager via the network icon at the right-hand end of the menu bar. If you are using a Raspberry Pi with built-in wireless connectivity, or if a wireless dongle is plugged in, click this icon to bring up a list of available wireless networks. If you see the message 'No APs found - scanning...', wait a few seconds, and the Network Manager should find your network.
+Access Network Manager via the network icon at the right-hand end of the menu bar. If you are using a Raspberry Pi with built-in wireless connectivity, or if a wireless dongle is plugged in, click this icon to bring up a list of available wireless networks. If you see the message 'No APs found - scanning...', wait a few seconds, and Network Manager should find your network.
 
-NOTE: Raspberry Pi devices that support dual-band wireless (Raspberry Pi 3B+, Raspberry Pi 4, Compute Module 4, and Raspberry Pi 400) automatically disable networking until a you assign a wireless LAN country. To set a wireless LAN country, open the Raspberry Pi Configuration application from the Preferences Menu, select *Localisation* and select your country from the menu.
+NOTE: Raspberry Pi devices that support dual-band wireless (Raspberry Pi 3B+, Raspberry Pi 4, Compute Module 4, Raspberry Pi 400 and Raspberry Pi 5) automatically disable networking until a you assign a wireless LAN country. To set a wireless LAN country, open the Raspberry Pi Configuration application from the Preferences menu, select *Localisation* and select your country from the menu.
 
 image::images/wifi2.png[wifi2]
 
-The icons on the right show whether a network is secured or not and give an indication of signal strength. Click the network that you want to connect to. If the network is secured, a dialogue box will prompt you to enter the network key:
+The icons on the right show whether a network is secured or not, and give an indication of signal strength. Click the network that you want to connect to. If the network is secured, a dialogue box will prompt you to enter the network key:
 
 image::images/key.png[key]
 
 Enter the key and click *OK*, then wait a couple of seconds. The network icon will flash briefly to show that a connection is being made. When connected, the icon will stop flashing and show the signal strength.
 
-==== Connect to a Hidden Network
+==== Connect to a hidden network
 
-If you want to use a hidden network, use the *Advanced Options* > *Connect to a Hidden Wi-Fi Network* in the network menu:
+If you want to use a hidden network, use the *Advanced options* > *Connect to a hidden Wi-Fi network* in the network menu:
 
 image::images/network-hidden.png[the connect to a hidden wi-fi network option in advanced options]
 
-Then, enter the SSID for the hidden network. Ask your network administrator which type of security your network uses; while most home networks currently use WPA & WPA2 Personal security, public networks sometimes use WPA & WPA2 Enterprise security. Select the security type for your network, and enter your credentials:
+Then, enter the SSID for the hidden network. Ask your network administrator which type of security your network uses; while most home networks currently use WPA and WPA2 personal security, public networks sometimes use WPA and WPA2 enterprise security. Select the security type for your network, and enter your credentials:
 
 image::images/network-hidden-authentication.png[hidden wi-fi network authentication]
 
 Click the *Connect* button to initiate the network connection.
 
 [[wireless-networking-command-line]]
-=== Using the Command Line
+=== Using the command line
 
-This guide will help you configure a wireless connection on your Raspberry Pi entirely from a terminal without using graphical tools. No additional software is required; Raspberry Pi OS comes preconfigured with everything you need.
+This guide will help you configure a wireless connection on your Raspberry Pi from a terminal without using graphical tools. No additional software is required.
 
 NOTE: This guide should work for WEP, WPA, WPA2, or WPA3 networks, but may not work for enterprise networks.
 
-==== Enable Wireless Networking
+==== Enable wireless networking
 
-On a fresh install, you must specify the country where you use your device.
-This allows your device to choose the correct frequency bands for 5GHz networking.
-Once you have specified a wireless LAN country, you can use your Raspberry Pi's built-in wireless networking module.
+On a fresh install, you must specify the country where you use your device. This allows your device to choose the correct frequency bands for 5GHz networking. Once you have specified a wireless LAN country, you can use your Raspberry Pi's built-in wireless networking module.
 
 To do this, set your wireless LAN country with the command line `raspi-config` tool. Run the following command:
 ----
 sudo raspi-config
 ----
-Select the *Localisation Options* menu item using the arrow keys. Choose the *WLAN Country* option.
+Select the *Localisation options* menu item using the arrow keys. Choose the *WLAN country* option.
 Pick your country from the dropdown using the arrow keys. Press `Enter` to select your country.
 
-You should now have access to wireless networking. Run the following command to check if your wifi radio is enabled:
+You should now have access to wireless networking. Run the following command to check if your Wi-Fi radio is enabled:
 
 ----
 nmcli radio wifi
 ----
 
-If this command returns the text "enabled", you're ready to configure a connection. If this command returns "disabled", try enabling WiFi with the following command:
+If this command returns the text "enabled", you're ready to configure a connection. If this command returns "disabled", try enabling Wi-Fi with the following command:
 
 ----
 nmcli radio wifi on
 ----
 
-==== Find Networks
+==== Find networks
 
 To scan for wireless networks, run the following command:
 
@@ -82,7 +80,7 @@ IN-USE  BSSID              SSID            MODE   CHAN  RATE        SIGNAL  BARS
 
 Look in the "SSID" column for the name of the network you would like to connect to. Use the SSID and a password to connect to the network.
 
-==== Connect to a Network
+==== Connect to a network
 
 Run the following command to configure a network connection:
 
@@ -122,7 +120,7 @@ Check for an asterisk (`*`) in the "IN-USE" column; it should appear in the same
 
 NOTE: You can manually edit your connection configurations in the `/etc/NetworkManager/system-connections/` directory.
 
-==== Connect to an Unsecured Network
+==== Connect to an unsecured network
 
 If the network you are connecting to does not use a password, run the following command:
 
@@ -132,7 +130,7 @@ sudo nmcli dev wifi connect <example_ssid>
 
 WARNING: Be careful when using unsecured wireless networks. 
 
-==== Connect to a Hidden Network
+==== Connect to a hidden network
 
 If you are using a hidden network, specify the "hidden" option with a value of "yes" when you run `nmcli`:
 
@@ -140,9 +138,9 @@ If you are using a hidden network, specify the "hidden" option with a value of "
 sudo nmcli --ask dev wifi connect <example_ssid> hidden yes
 ----
 
-==== Set Priority Among Multiple Networks
+==== Set priority among multiple networks
 
-If your device detects more than one known networks at the same time, it could connect any of the detected known networks. Use the priority option to force your device to prefer certain networks. Your device will connect to the network that is in range with the highest priority. Run the following command to view the priority of known networks:
+If your device detects more than one known networks at the same time, it could connect any of the detected known networks. Use the priority option to force your Raspberry Pi to prefer certain networks. Your device will connect to the network that is in range with the highest priority. Run the following command to view the priority of known networks:
 
 ----
 nmcli --fields autoconnect-priority,name connection
@@ -185,6 +183,6 @@ AUTOCONNECT-PRIORITY  NAME
 
 By default, Raspberry Pi OS attempts to automatically configure all network interfaces by DHCP, falling back to automatic private addresses in the range 169.254.0.0/16 if DHCP fails.
 
-=== Assign a Static IP Address
+=== Assign a static IP address
 
-To allocate a static IP address to your Raspberry Pi, reserve an address for it on your router. That way your Raspberry Pi will continue to have its address allocated via DHCP but will receive the same address each time. A "fixed" address can be allocated by associating the MAC address of your Raspberry Pi with a static IP address in your DHCP server.
+To allocate a static IP address to your Raspberry Pi, reserve an address for it on your router. Your Raspberry Pi will continue to have its address allocated via DHCP, but will receive the same address each time. A "fixed" address can be allocated by associating the MAC address of your Raspberry Pi with a static IP address in your DHCP server.
