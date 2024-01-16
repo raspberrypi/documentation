@@ -558,7 +558,7 @@ Raspberry Pi 5 requires a `config.txt` file to be present to indicate that the p
 
 [[boot_ramdisk]]
 ==== boot_ramdisk
-If this property is set to `1` then the bootloader will attempt load a ramdisk file called `boot.img` containing the boot xref:configuration.adoc#boot-folder-contents[boot file-system]. Subsequent files (e.g. `start4.elf`) are read from the ramdisk instead of the original boot file-system.
+If this property is set to `1` then the bootloader will attempt load a ramdisk file called `boot.img` containing the xref:configuration.adoc#the-boot-folder[boot filesystem]. Subsequent files (e.g. `start4.elf`) are read from the ramdisk instead of the original boot file-system.
 
 The primary purpose of `boot_ramdisk` is to support `secure-boot`, however, unsigned `boot.img` files can also be useful to Network Boot or `RPIBOOT` configurations.
 

@@ -1,91 +1,103 @@
-== The `boot` Folder
+== The boot folder
 
-In a basic xref:os.adoc[Raspberry Pi OS] install, the boot files are stored on the first partition of the SD card, which is formatted with the FAT file system. This means that it can be read on Windows, macOS, and Linux devices.
+Raspberry Pi OS stores boot files on the first partition of the SD card, formatted with the FAT file system.
 
-When the Raspberry Pi is powered on, it loads various files from the boot partition/folder in order to start up the various processors, then it boots the Linux kernel.
+On startup, each Raspberry Pi loads various files from the boot partition in order to start up the various processors before the Linux kernel boots.
 
-Once Linux has booted, the boot partition is mounted as `/boot/firmware/`.
+On boot, Linux mounts the boot partition as `/boot/firmware/`.
 
 NOTE: Prior to _Bookworm_, Raspberry Pi OS stored the boot partition at `/boot/`. Since _Bookworm_, the boot partition is located at `/boot/firmware/`.
 
-=== Boot Folder Contents
+=== `bootcode.bin`
 
-==== bootcode.bin
+The bootloader, loaded by the SoC on boot. It performs some very basic setup, and then loads one of the `start*.elf` files.
 
-This is the bootloader, which is loaded by the SoC on boot; it does some very basic setup, and then loads one of the `start*.elf` files. `bootcode.bin` is not used on the Raspberry Pi 4 or Raspberry Pi 5, because it has been replaced by boot code in the xref:raspberry-pi.adoc#raspberry-pi-boot-eeprom[onboard EEPROM].
+The Raspberry Pi 4 and 5 do not use `bootcode.bin`. It has been replaced by boot code in the xref:raspberry-pi.adoc#raspberry-pi-boot-eeprom[onboard EEPROM].
 
-==== start.elf, start_x.elf, start_db.elf, start_cd.elf, start4.elf, start4x.elf, start4db.elf, start4cd.elf
+=== `start*.elf`
 
-These are binary blobs (firmware) that are loaded on to the VideoCore GPU in the SoC, which then take over the boot process.
-`start.elf` is the basic firmware, `start_x.elf` also includes additional codecs, `start_db.elf` can be used for debugging purposes and `start_cd.elf` is a cut-down version of the firmware. `start_cd.elf` removes support for hardware blocks such as codecs and 3D as well as having initial framebuffer limitations. The cut-down firmware is automatically used when `gpu_mem=16` is specified in `config.txt`.
+Binary firmware blobs loaded onto the VideoCore GPU in the SoC, which then take over the boot process.
+
+* `start.elf` is the basic firmware.
+* `start_x.elf` includes additional codecs.
+* `start_db.elf` can be used for debugging purposes.
+* `start_cd.elf` is a cut-down version of the firmware that removes support for hardware blocks such as codecs and 3D; it also imposes initial framebuffer limitations. The cut-down firmware is automatically used when `gpu_mem=16` is specified in `config.txt`.
 
 `start4.elf`, `start4x.elf`, `start4db.elf` and `start4cd.elf` are equivalent firmware files specific to the Raspberry Pi 4-series (Model 4B, Pi 400, Compute Module 4 and Compute Module 4S).
 
-More information on how to use these files can be found in xref:config_txt.adoc#boot-options[the `config.txt` section].
+For more information on how to use these files, see the xref:config_txt.adoc#boot-options[`config.txt` documentation].
 
-The Raspberry Pi 5 firmware is self-contained withing the bootloader EEPROM and does not load firmware `.elf` files from the boot filesystem.
+The Raspberry Pi 5 does not use `elf` files. The firmware is self-contained within the bootloader EEPROM.
 
-==== fixup*.dat
+=== `fixup*.dat`
 
-These are linker files and are matched pairs with the `start*.elf` files listed in the previous section.
+Linker files found in matched pairs with the `start*.elf` files listed in the previous section.
 
-==== cmdline.txt
+=== `cmdline.txt`
 
-The kernel <<the-kernel-command-line,command line>> passed in to the kernel when it boots.
+The kernel <<the-kernel-command-line,command line>> passed into the kernel at boot.
 
-==== config.txt
+=== `config.txt`
 
-Contains many configuration parameters for setting up the Raspberry Pi. See xref:config_txt.adoc[the `config.txt` section].
+Contains many configuration parameters for setting up the Raspberry Pi. For more information, see the xref:config_txt.adoc[`config.txt` documentation].
 
-NOTE: Raspberry Pi 5 requires that the boot partition contains a non-empty `config.txt` file.
+NOTE: Raspberry Pi 5 requires a non-empty `config.txt` file in the boot partition.
 
-==== issue.txt
+=== `issue.txt`
 
-Some text-based housekeeping information containing the date and git commit ID of the distribution.
+Text-based housekeeping information containing the date and git commit ID of the distribution.
 
-==== ssh or ssh.txt
+=== `initramfs*`
 
-When this file is present, SSH will be enabled on boot. The contents don't matter, it can be empty. SSH is otherwise disabled by default.
+Contents of the initial ramdisk. This loads a temporary root file system into memory before the real root file system can be mounted.
 
-==== Device Tree files
+NOTE: Since Bookworm, Raspberry Pi OS includes an `initramfs` file by default. To enable the initial ramdisk, configure it in xref:config_txt.adoc[`config.txt`] with the xref:config_txt.adoc#auto_initramfs[`auto_initramfs`] keyword.
 
-There are various Device Tree blob files, which have the extension `.dtb`. These contain the hardware definitions of the various models of Raspberry Pi, and are used on boot to set up the kernel xref:configuration.adoc#part3.1[according to which Raspberry Pi model is detected].
+=== `ssh` or `ssh.txt`
 
-==== Kernel Files
+When this file is present, enables SSH at boot. SSH is otherwise disabled by default.
 
-The boot folder will contain various xref:linux_kernel.adoc#kernel[kernel] image files, used for the different Raspberry Pi models:
+NOTE: The contents do not matter. Even an empty file enables SSH.
+
+=== Device Tree blob files (`*.dtb`)
+
+Device tree blob files contain the hardware definitions of the various models of Raspberry Pi. These files set up the kernel at boot xref:configuration.adoc#part3.1[based on the detected Raspberry Pi model].
+
+=== Kernel files (`*.img`)
+
+Various xref:linux_kernel.adoc#kernel[kernel] image files that correspond to Raspberry Pi models:
 
 |===
 | Filename | Processor | Raspberry Pi model | Notes
 
-| kernel.img
+| `kernel.img`
 | BCM2835
 | Pi Zero, Pi 1
 |
 
-| kernel7.img
+| `kernel7.img`
 | BCM2836, BCM2837
 | Pi Zero 2 W, Pi 2, Pi 3
 | Later Pi 2 uses the BCM2837
 
-| kernel7l.img
+| `kernel7l.img`
 | BCM2711
 | Pi 4, Pi 400, CM4, CM4-S
 | Large Physical Address Extension (LPAE)
 
-| kernel8.img
+| `kernel8.img`
 | BCM2837, BCM2711, BCM2712
 | Pi Zero 2 W, Pi 2, Pi 3, Pi 4, Pi 400, CM4, CM4-S, Pi 5
 | xref:config_txt.adoc#boot-options[64-bit kernel]. Raspberry Pi 2 with BCM2836 does not support 64-bit kernels.
 
-| kernel_2712.img
+| `kernel_2712.img`
 | BCM2712
 | Pi 5
-| Pi 5 optmized xref:config_txt.adoc#boot-options[64-bit kernel].
+| Pi 5-optimized xref:config_txt.adoc#boot-options[64-bit kernel].
 |===
 
-NOTE: The architecture reported by `lscpu` is `armv7l` for systems running a 32-bit kernel (i.e. everything except `kernel8.img`), and `aarch64` for systems running a 64-bit kernel. The `l` in the `armv7l` case refers to the architecture being little-endian, not `LPAE` as is indicated by the `l` in the `kernel7l.img` filename.
+NOTE: `lscpu` reports a CPU architecture of `armv7l` for systems running a 32-bit kernel, and `aarch64` for systems running a 64-bit kernel. The `l` in the `armv7l` case refers to little-endian CPU architecture, not `LPAE` as is indicated by the `l` in the `kernel7l.img` filename.
 
-=== The Overlays Folder
+=== `overlays` folder
 
-The `overlays` sub-folder contains Device Tree overlays. These are used to configure various hardware devices that may be attached to the system, for example the Raspberry Pi Touch Display or third-party sound boards. These overlays are selected using entries in `config.txt` -- see xref:configuration.adoc#part2['Device Trees, overlays and parameters, part 2' for more info].
+Contains Device Tree overlays. These are used to configure various hardware devices, such as third-party sound boards. Entries in `config.txt` select these overlays. For more information, see xref:configuration.adoc#part2[Device Trees, overlays and parameters].
