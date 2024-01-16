@@ -1,10 +1,8 @@
 == Host a wireless network on your Raspberry Pi
 
-Your Raspberry Pi can host its own wireless network using a wireless module.
-If you connect your Raspberry Pi to the internet via the Ethernet port (or a second wireless module), other devices connected to the wireless network can access the internet through your Raspberry Pi.
+Your Raspberry Pi can host its own wireless network using a wireless module. If you connect your Raspberry Pi to the internet via the Ethernet port (or a second wireless module), other devices connected to the wireless network can access the internet through your Raspberry Pi.
 
 Consider a wired network that uses the `10.x.x.x` IP block. You can connect your Raspberry Pi to that network and serve wireless clients on a separate network that uses another IP block, such as `192.168.x.x`.
-
 
 In the diagram below, note that the laptop exists in an IP block separate from the router and wired clients:
 
@@ -13,7 +11,7 @@ image::images/host-a-network.png[]
 
 With this network configuration, wireless clients can all communicate with each other through the Raspberry Pi router. However, clients on the wireless network cannot directly interact with clients on the wired network other than the Raspberry Pi; wireless clients exist in a private network separate from the network that serves wired clients.
 
-NOTE: The Raspberry Pi 4, Raspberry Pi 3, and Raspberry Pi Zero W can host a wireless network using the built-in wireless module. Raspberry Pi models that lack a built-in module support this functionality using a separate wireless dongle.
+NOTE: The Raspberry Pi 5, 4, 3, and Raspberry Pi Zero W can host a wireless network using the built-in wireless module. Raspberry Pi models that lack a built-in module support this functionality using a separate wireless dongle.
 
 === Enable hotspot
 
@@ -39,7 +37,7 @@ After disabling the network, run the following command to reconnect to another W
 sudo nmcli device up wlan0
 ----
 
-TIP: For more information about connecting to wireless networks, see xref:configuration.adoc#configuring-networking[Configuring Networking].
+TIP: For more information about connecting to wireless networks, see xref:configuration.adoc#configuring-networking[Configuring networking].
 
 === Use your Raspberry Pi as a network bridge
 
