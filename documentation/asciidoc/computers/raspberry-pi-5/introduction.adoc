@@ -40,20 +40,26 @@ Key features include:
 
 === Turning it off and back on again
 
-When you plug your Raspberry Pi into power for the first time, it will automatically turn on and boot into the operating system without having to push the button. 
+When you plug your Raspberry Pi into power for the first time, it will automatically turn on and boot into the operating system without having to push the button.
 
-If you run Raspberry Pi Desktop, you can initiate a clean shutdown by briefly pressing the power button. A menu will appear asking whether you want to shutdown, reboot, or logout. Select an option from the menu or press the power button again to initiate a clean shutdown.
+If you run Raspberry Pi Desktop, you can initiate a clean shutdown by briefly pressing the power button. A menu will appear asking whether you want to shutdown, reboot, or logout:
 
 .Shutting down your Raspberry Pi 5 using the power button.
 image::images/shutdown.jpg[alt="Desktop menu asking whether you want to Shutdown, Reboot, or Logout",width="100%"]
 
+Select an option from the menu or press the power button again to initiate a clean shutdown.
+
 NOTE: If you run Raspberry Pi Desktop, you can press the power button twice in quick succession to shut down. If you run Raspberry Pi OS Lite without a desktop, press the power button a single time to initiate a shutdown.
 
-To force a hard shutdown, press and hold the power button.
+==== Restart
 
-If the Raspberry Pi board is shut down, but still powered, pressing the power button will restart the board.
+If the Raspberry Pi board is turned off, but still connected to power, pressing the power button will restart the board.
 
-Default shutdown wattage is around 1W to 1.4W. This can be decreased by manually editing the EEPROM configuration with `sudo rpi-eeprom-config -e`. Change the settings to the following:
+NOTE: Resetting the Power Management Integrated Circuit (PMIC) can also restart the board. Connecting a HAT can reset the PMIC. Always disconnect your device from the power supply before connecting a HAT.
+
+==== Decrease wattage when turned off
+
+By default, the Raspberry Pi 5 consumes around 1W to 1.4W of power when turned off. This can be decreased by manually editing the EEPROM configuration with `sudo rpi-eeprom-config -e`. Change the settings to the following:
 
 [source]
 ----
@@ -62,7 +68,11 @@ POWER_OFF_ON_HALT=1
 BOOT_ORDER=0xf416
 ----
 
-This should drop the shutdown power consumption to around 0.01W.
+This should drop the power consumption when powered down to around 0.01W.
+
+==== Hard shutdown
+
+To force a hard shutdown, press and hold the power button.
 
 ==== Adding your own power button
 
