@@ -1,6 +1,6 @@
-== Using a Proxy Server
+== Using a proxy server
 
-If you want your Raspberry Pi to access the Internet via a proxy server (perhaps from a school or other workplace), you will need to configure your Raspberry Pi to use the server before you can get online.
+If you want your Raspberry Pi to access the internet via a proxy server (perhaps from a school or other workplace), you will need to configure your Raspberry Pi to use the server before you can get online.
 
 You will need:
 
@@ -55,7 +55,7 @@ image::images/proxy-environment-variables.png[environment variables]
 
 Press +++<kbd>+++Ctrl + X+++</kbd>+++ to save and exit.
 
-=== Update the `sudoers` File
+=== Update the `sudoers` file
 
 In order for operations that run as `sudo` (e.g. downloading and installing software) to use the new environment variables, you'll need to update `sudoers`.
 
