@@ -1,16 +1,16 @@
 == Python on Raspberry Pi
 
-Python 3 is installed by default on Raspberry Pi OS and is used for many important functions. Interfering with the system Python installation can cause problems for your operating system, so it's important that if you install third-party Python libraries, you use the correct package-management tools.
+Python 3 is installed by default on Raspberry Pi OS, and is used for many important functions. Interfering with the system Python installation can cause problems for your operating system, so it's important that if you install third-party Python libraries, you use the correct package-management tools.
 
 There are two routes to installing libraries into the default `python` distribution. You can use `apt` and install pre-configured system packages, or you can use `pip` to install packages which are not distributed as part of Raspberry Pi OS.
 
-IMPORTANT: From _Bookworm_ onwards, packages installed via `pip` must be installed into a Python Virtual Environment using `venv`. This has been introduced by the Python community, not Raspberry Pi; see https://peps.python.org/pep-0668/[PEP 668] for more details.
+IMPORTANT: From _Bookworm_ onwards, packages installed via `pip` must be installed into a Python Virtual Environment using `venv`. This has been introduced by the Python community, not by Raspberry Pi; see https://peps.python.org/pep-0668/[PEP 668] for more details.
 
 === Installing Python packages using apt
 
-IMPORTANT: Installing packages using `apt` is the preferred method for installing Python libraries on Raspberry Pi OS. 
+IMPORTANT: Installing packages using `apt` is the preferred method for installing Python libraries under Raspberry Pi OS. 
 
-Packages installed via `apt` are tested, are usually pre-compiled so they install faster, and are designed for Raspberry Pi OS. They won't break your system. Installing via this route also means that all required dependencies are also installed, and a log of installation is maintained by the OS so installation can be easily rolled back (uninstalled) if needed.
+Packages installed via `apt` are tested, are usually pre-compiled so they install faster, and are designed for Raspberry Pi OS. They won't break your system. Installing via this route also means that all required dependencies are also installed, and a log of installation is maintained by the OS so installation can be easily rolled back (libraries can be uninstalled) if needed.
 
 For instance, to install the Python 3 library to support the Raspberry Pi xref:../accessories/build-hat.adoc[Build HAT] you would:
 
@@ -180,7 +180,7 @@ $ source ~/.env/bin/activate
 (.env) $
 ----
 
-You can again check you're in a separate environment by using `pip list`,
+You can check again that you're in a separate environment by using `pip list`:
 
 [source,bash]
 ----
@@ -191,7 +191,7 @@ pip        23.0.1
 setuptools 66.1.1
 ----
 
-and leave it using `deactivate`.
+...and leave it using `deactivate`.
 
 [source,bash]
 ----
@@ -201,7 +201,7 @@ $
 
 === Using the Thonny editor
 
-https://thonny.org/[Thonny] is our recommended editor when you're working with Python on the Raspberry Pi. By default Thonny uses the system Python. However, you can switch to using a Python virtual environment by clicking on the interpreter menu located at the bottom right of the Thonny window. Clicking on this will offer you a menu to select a configured interpreter or to `Configure interpreter…`. 
+https://thonny.org/[Thonny] is our recommended editor when you're working with Python on the Raspberry Pi. By default, Thonny uses the system Python. However, you can switch to using a Python virtual environment by clicking on the interpreter menu located at the bottom right of the Thonny window. Clicking on this will offer you a menu to select a configured interpreter or to `Configure interpreter...`. 
 
 image::images/thonny-venv.png[width="100%"]
 
