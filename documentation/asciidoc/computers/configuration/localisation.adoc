@@ -1,5 +1,5 @@
 == Localising your Raspberry Pi
 
-You can set your Raspberry Pi up to match your regional settings. Language, keyboard layout and time zone can all be changed using the xref:configuration.adoc#the-raspi-config-tool[raspi-config] tool. 
+You can set your Raspberry Pi up to match your regional settings. Language, keyboard layout and time zone can all be changed using the xref:configuration.adoc#raspi-config[`raspi-config`] tool. 
 
 
