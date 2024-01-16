@@ -1,26 +1,26 @@
 == Change the default pin configuration
 
-WARNING: Custom default pin configurations via user-provided Device Tree blobs has been deprecated.
+NOTE: Custom default pin configurations via user-provided Device Tree blobs has been deprecated.
 
 === Device pins during boot sequence
 
 During the bootup sequence, the GPIO pins go through various actions.
 
-. Power-on -- pins default to inputs with default pulls; the default pulls for each pin are described in the https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf[datasheet]
-. Setting by the bootrom
-. Setting by `bootcode.bin`
-. Setting by `dt-blob.bin` (this page)
-. Setting by the xref:config_txt.adoc#gpio-control[GPIO command] in `config.txt`
-. Additional firmware pins (e.g. UARTS)
-. Kernel/Device Tree
+* Power-on - pins default to inputs with default pulls, which are described in the https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf[datasheet]
+* Setting by the bootrom
+* Setting by `bootcode.bin`
+* Setting by `dt-blob.bin` (this page)
+* Setting by the xref:config_txt.adoc#gpio-control[GPIO command] in `config.txt`
+* Additional firmware pins (e.g. UARTS)
+* Kernel/Device Tree
 
 On a soft reset, the same procedure applies, except for default pulls, which are only applied on a power-on reset.
 
-Note that it may take a few seconds to get from stage 1 to stage 4. During that time, the GPIO pins may not be in the state expected by attached peripherals (as defined in `dt-blob.bin` or `config.txt`). Since different GPIO pins have different default pulls, you should do *one of the following* for your peripheral:
+Note that it may take a few seconds to run through the process. During this time, the GPIO pins may not be in the state expected by attached peripherals (as defined in `dt-blob.bin` or `config.txt`). Since different GPIO pins have different default pulls, you should do *one of the following* for your peripheral:
 
-* Choose a GPIO pins that defaults to pulls as required by the peripheral on reset
-* Delay the peripheral's startup until stage 4/5 has been reached
-* Add an appropriate pull-up/-down resistor
+* Choose a GPIO pin that defaults to pulls as required by the peripheral on reset
+* Delay the peripheral's startup until the actions are completed
+* Add an appropriate pull-up/pull-down resistor
 
 === Provide a custom Device Tree blob
 
@@ -38,13 +38,13 @@ dtc -I dtb -O dts -o dt-blob.dts /boot/firmware/dt-blob.bin
 
 === Sections of the `dt-blob`
 
-The `dt-blob.bin` is used to configure the binary blob (VideoCore) at boot time. It is not currently used by the Linux kernel, but a kernel section will be added at a later stage, when we reconfigure the Raspberry Pi kernel to use a dt-blob for configuration. The dt-blob can configure all versions of the Raspberry Pi, including the Compute Module, to use the alternative settings. The following sections are valid in the dt-blob:
+The `dt-blob.bin` is used to configure the binary blob (VideoCore) at boot time. It is not currently used by the Linux kernel. The dt-blob can configure all versions of the Raspberry Pi, including the Compute Module, to use the alternative settings. The following sections are valid in the dt-blob:
 
-. `videocore`
+==== `videocore`
 +
 This section contains all of the VideoCore blob information. All subsequent sections must be enclosed within this section.
 
-. `pins_*`
+==== `pins_*`
 +
 There are a number of separate `pins_*` sections, based on particular Raspberry Pi models, namely:
 
@@ -62,7 +62,7 @@ There are a number of separate `pins_*` sections, based on particular Raspberry 
 * `pins_pi0`: Raspberry Pi Zero
 * `pins_pi0w`: Raspberry Pi Zero W
 * `pins_pi02w`: Raspberry Pi Zero 2 W
-* `pins_cm`: Raspberry Pi Compute Module 1. The default for this is the default for the chip, so it is a useful source of information about default pull ups/downs on the chip.
+* `pins_cm`: Raspberry Pi Compute Module 1. The default for this is the default for the chip, so it is a useful source of information about default pull-ups/pull-downs on the chip.
 * `pins_cm3`: Raspberry Pi Compute Module 3
 * `pins_cm3plus`: Raspberry Pi Compute Module 3+
 * `pins_cm4s`: Raspberry Pi Compute Module 4S
@@ -70,48 +70,48 @@ There are a number of separate `pins_*` sections, based on particular Raspberry 
 +
 Each `pins_*` section can contain `pin_config` and `pin_defines` sections.
 
-. `pin_config`
+==== `pin_config`
 +
 The `pin_config` section is used to configure the individual pins. Each item in this section must be a named pin section, such as `pin@p32`, meaning GPIO32. There is a special section `pin@default`, which contains the default settings for anything not specifically named in the pin_config section.
 
-. `pin@pinname`
+==== `pin@pinname`
 +
 This section can contain any combination of the following items:
 
- .. `polarity`
-  *** `active_high`
-  *** `active_low`
- .. `termination`
-  *** `pull_up`
-  *** `pull_down`
-  *** `no_pulling`
- .. `startup_state`
-  *** `active`
-  *** `inactive`
- .. `function`
-  *** `input`
-  *** `output`
-  *** `sdcard`
-  *** `i2c0`
-  *** `i2c1`
-  *** `spi`
-  *** `spi1`
-  *** `spi2`
-  *** `smi`
-  *** `dpi`
-  *** `pcm`
-  *** `pwm`
-  *** `uart0`
-  *** `uart1`
-  *** `gp_clk`
-  *** `emmc`
-  *** `arm_jtag`
- .. `drive_strength_mA`
+ * `polarity`
+  ** `active_high`
+  ** `active_low`
+ * `termination`
+  ** `pull_up`
+  ** `pull_down`
+  ** `no_pulling`
+ * `startup_state`
+  ** `active`
+  ** `inactive`
+ * `function`
+  ** `input`
+  ** `output`
+  ** `sdcard`
+  ** `i2c0`
+  ** `i2c1`
+  ** `spi`
+  ** `spi1`
+  ** `spi2`
+  ** `smi`
+  ** `dpi`
+  ** `pcm`
+  ** `pwm`
+  ** `uart0`
+  ** `uart1`
+  ** `gp_clk`
+  ** `emmc`
+  ** `arm_jtag`
+ * `drive_strength_mA`
 The drive strength is used to set a strength for the pins. Please note that you can only specify a single drive strength for the bank. <8> and <16> are valid values.
 
-. `pin_defines`
+==== `pin_defines`
 +
-This section is used to set specific VideoCore functionality to particular pins. This enables the user to move the camera power enable pin to somewhere different, or move the HDMI hotplug position: things that Linux does not control. Please refer to the example DTS file below.
+This section is used to set specific VideoCore functionality to particular pins. This enables the user to move the camera power enable pin to somewhere different, or move the HDMI hotplug position: these are things that Linux does not control. Please refer to the example DTS file below.
 
 === Clock configuration
 
