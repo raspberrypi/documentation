@@ -2,7 +2,7 @@
 
 There are two types of UART available on the Raspberry Pi -  http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0183g/index.html[PL011] and mini UART. The PL011 is a capable, broadly 16550-compatible UART, while the mini UART has a reduced feature set.
 
-All UARTs on the Raspberry Pi are 3.3V only - damage will occur if they are connected to 5V systems. An adaptor can be used to connect to 5V systems. Alternatively, low-cost USB to 3.3V serial adaptors are available from various third parties.
+All UARTs on the Raspberry Pi are 3.3V only - damage will occur if they are connected to 5V systems. An adapter can be used to connect to 5V systems. Alternatively, low-cost USB to 3.3V serial adapters are available from various third parties.
 
 === Raspberry Pi Zero, 1, 2 and 3
 
@@ -46,7 +46,7 @@ The Raspberry Pi 4 Model B and 400 have an additional four PL011s, which are dis
 
 === Raspberry Pi 5
 
-The Raspberry Pi 5 has an additional four PL011s, which are disabled by default:
+Raspberry Pi 5 has an additional four PL011s, which are disabled by default:
 
 |===
 | Name | Type
@@ -68,13 +68,13 @@ The Raspberry Pi 5 has an additional four PL011s, which are disabled by default:
 
 |===
 
-The Raspberry Pi 5 does not have mini UART.
+Raspberry Pi 5 does not have mini UART.
 
 === CM1, CM3, CM3+ and CM4
 
-The first generation Compute Module, together with Compute Module 3 and Compute Module 3+ each have two UARTs, while Compute Module 4 has six UARTs as described above.
+The first generation Compute Module, together with Compute Module 3 and Compute Module 3+, has two UARTs, while Compute Module 4 has six UARTs as described above.
 
-On all models of Compute Module, the UARTs are disabled by default and can be explicitly enabled using a device tree overlay. You may also specify which GPIO pins to use, for example:
+On all models of Compute Module, the UARTs are disabled by default and can be explicitly enabled using a Device Tree overlay. You may also specify which GPIO pins to use, for example:
 
 ----
 dtoverlay=uart1,txd1_pin=32,rxd1_pin=33
@@ -84,7 +84,7 @@ dtoverlay=uart1,txd1_pin=32,rxd1_pin=33
 
 On the Raspberry Pi, one UART is selected to be present on GPIO 14 (transmit) and 15 (receive) - this is the primary UART. By default, this will also be the UART on which a Linux console may be present. Note that GPIO 14 is pin 8 on the GPIO header, while GPIO 15 is pin 10.
 
-On the Raspberry Pi 5, the primary UART appears on the Debug header.
+On Raspberry Pi 5, the primary UART appears on the Debug header.
 
 === Secondary UART
 
@@ -206,14 +206,14 @@ The default state of the `enable_uart` flag depends on which UART is the primary
 
 By default, the primary UART is assigned to the Linux console. If you wish to use the primary UART for other purposes, you must reconfigure Raspberry Pi OS. This can be done by using xref:configuration.adoc#raspi-config[raspi-config]:
 
-. Start raspi-config: `sudo raspi-config`.
-. Select option 3 - Interface Options.
-. Select option P6 - Serial Port.
-. At the prompt `Would you like a login shell to be accessible over serial?` answer 'No'
-. At the prompt `Would you like the serial port hardware to be enabled?` answer 'Yes'
-. Exit raspi-config and reboot the Raspberry Pi for changes to take effect.
+* Start raspi-config: `sudo raspi-config`
+* Select option 3 - Interface Options
+* Select option P6 - Serial Port
+* At the prompt `Would you like a login shell to be accessible over serial?`, answer 'No'
+* At the prompt `Would you like the serial port hardware to be enabled?`, answer 'Yes'
+* Exit raspi-config and reboot the Raspberry Pi for changes to take effect
 
-=== Enabling Early Console for Linux
+=== Enabling early console for Linux
 
 Although the Linux kernel starts the UARTs relatively early in the boot process, it is still long after some critical bits of infrastructure have been set up. A failure in those early stages can be hard to diagnose without access to the kernel log messages from that time. To enable `earlycon` support for one of the UARTs, add one of the following options to `cmdline.txt`, depending on which UART is the primary:
 
@@ -250,7 +250,7 @@ NOTE: Selecting the wrong early console can prevent the Raspberry Pi from bootin
 
 === UARTs and Device Tree
 
-Various UART Device Tree overlay definitions can be found in the https://github.com/raspberrypi/linux[kernel GitHub tree]. The two most useful overlays are https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/disable-bt-overlay.dts[`disable-bt`] and https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/miniuart-bt-overlay.dts[`miniuart-bt`].
+Various UART Device Tree overlay definitions can be found in the https://github.com/raspberrypi/linux[kernel GitHub]. The two most useful overlays are https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/disable-bt-overlay.dts[`disable-bt`] and https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/miniuart-bt-overlay.dts[`miniuart-bt`].
 
 `disable-bt` disables the Bluetooth device and makes the first PL011 (UART0) the primary UART. You must also disable the system service that initialises the modem, so it does not connect to the UART, using `sudo systemctl disable hciuart`.
 
@@ -270,13 +270,13 @@ There are some differences between PL011 UARTs and mini-UART.
 
 The mini-UART has smaller FIFOs. Combined with the lack of flow control, this makes it more prone to losing characters at higher baudrates. It is also generally less capable than a PL011, mainly due to its baud rate link to the VPU clock speed.
 
-The particular deficiencies of the mini UART compared to a PL011 are :
+The particular deficiencies of the mini UART compared to a PL011 are:
 
 * No break detection
 * No framing errors detection
 * No parity bit
 * No receive timeout interrupt
 
-Neither the mini UART nor the BCM2835 implementation of the PL011 have DCD, DSR, DTR or RI signals.
+Neither the mini UART nor the BCM2835 implementation of the PL011 has DCD, DSR, DTR or RI signals.
 
 Further documentation on the mini UART can be found in the https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf[SoC peripherals document].
