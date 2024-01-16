@@ -16,7 +16,7 @@ During the bootup sequence, the GPIO pins go through various actions.
 
 On a soft reset, the same procedure applies, except for default pulls, which are only applied on a power-on reset.
 
-Note that it may take a few seconds to run through the process. During this time, the GPIO pins may not be in the state expected by attached peripherals (as defined in `dt-blob.bin` or `config.txt`). Since different GPIO pins have different default pulls, you should do *one of the following* for your peripheral:
+It may take a few seconds to run through the process. During this time, the GPIO pins may not be in the state expected by attached peripherals (as defined in `dt-blob.bin` or `config.txt`). Since different GPIO pins have different default pulls, you should do *one of the following* for your peripheral:
 
 * Choose a GPIO pin that defaults to pulls as required by the peripheral on reset
 * Delay the peripheral's startup until the actions are completed
