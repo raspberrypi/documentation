@@ -303,7 +303,7 @@ Edit `/tftpboot/cmdline.txt` and from `root=` onwards, and replace it with:
 root=/dev/nfs nfsroot=10.42.0.211:/nfs/client1,vers=3 rw ip=dhcp rootwait
 ----
 
-You should substitute the IP address here with the IP address you have noted down. Also remove any part of the command line starting with init=.
+You should substitute the IP address here with the IP address you have noted down. Also remove any part of the command line starting with `init=`.
 
 Finally, edit `/nfs/client1/etc/fstab` and remove the `/dev/mmcblk0p1` and `p2` lines (only `proc` should be left). Then, add the boot partition back in:
 
@@ -313,32 +313,3 @@ echo "10.42.0.211:/tftpboot /boot/firmware/ nfs defaults,vers=3 0 0" | sudo tee 
 ----
 
 Good luck! If it doesn't boot on the first attempt, keep trying. It can take a minute or so for the Raspberry Pi to boot, so be patient.
-
-=== Using `pxetools`
-
-We have created a Python script that is used internally to quickly set up Raspberry Pis that will network boot.
-
-The script takes a serial number, which you can find in `cat /proc/cpuinfo`, an owner name and the name of the Raspberry Pi. It then creates a root filesystem for that Raspberry Pi from a Raspberry Pi OS image. There is also a `--list` option which will print out the IP address of the Raspberry Pi, and a `--remove` option.
-
-NOTE: The following instructions describe how to set up the environment required by the script starting from a fresh Raspberry Pi OS lite image. It might be a good idea to mount a hard disk or flash drive on `/nfs` so that your SD card isn't providing filesystems to multiple Raspberry Pis. This is left as an exercise for the reader.
-
-----
-sudo apt update
-sudo apt full-upgrade -y
-sudo reboot
-
-wget https://datasheets.raspberrypi.com/soft/prepare_pxetools.sh
-bash prepare_pxetools
-----
-
-When prompted about saving `iptables` rules, say `no`.
-
-The `prepare_pxetools` script should prepare everything you need to use `pxetools`.
-
-We found that we needed to restart the `nfs` server after using `pxetools` for the first time. Do this with:
-
-----
-sudo systemctl restart nfs-kernel-server
-----
-
-Then plug in your Raspberry Pi and it should boot!
