@@ -1,0 +1,36 @@
+[[ssh]]
+== Set up an SSH server
+
+You can access the command line of a Raspberry Pi remotely from another computer or device on the same network using the Secure Shell (SSH) protocol.
+
+SSH provides access to the command line, not a desktop environment. For a full remote desktop, configure xref:remote-access.adoc#vnc[VNC].
+
+=== Set up your local network
+
+You can connect your Raspberry Pi to the network using a wired or wireless connection.
+Configure your connection using the desktop, command line, or by plugging your Raspberry Pi directly into your router.
+
+=== Enable the SSH server
+
+By default, Raspberry Pi OS disables the SSH server. Enable SSH in one of the following ways:
+
+==== On the desktop
+
+* From the *Preferences* menu, launch *Raspberry Pi Configuration*
+* Navigate to the *Interfaces* tab
+* Select *Enabled* next to *SSH*
+* Click *OK*
+
+==== From the terminal
+
+* Enter `sudo raspi-config` in a terminal window
+* Select `Interfacing Options`
+* Navigate to and select `SSH`
+* Choose `Yes`
+* Select `Ok`
+* Choose `Finish`
+
+==== Manually
+
+* Create an empty `ssh` file in the boot partition: `sudo touch /boot/firmware/ssh`
+* Reboot the machine: `sudo reboot`
