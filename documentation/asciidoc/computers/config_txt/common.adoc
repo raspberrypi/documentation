@@ -1,36 +1,36 @@
-== Common Options
+== Common options
 
-=== Common Display Options
+=== Common display options
 
-==== `hdmi_enable_4kp60` (Raspberry Pi 4 Only)
+==== `hdmi_enable_4kp60` (Raspberry Pi 4 only)
 
 By default, when connected to a 4K monitor, the Raspberry Pi 4B, 400 and CM4 will select a 30Hz refresh rate. Use this option to allow selection of 60Hz refresh rates. 
 
-IMPORTANT: It is not possible to output 4Kp60 on both micro HDMI ports simultaneously.
+IMPORTANT: It is not possible to output 4Kp60 on both micro HDMI ports simultaneously on your Raspberry Pi 4.
 
 WARNING: Setting `hdmi_enable_4kp60` will increase power consumption and the temperature of your Raspberry Pi. 
 
-=== Common Hardware Configuration Options
+=== Common hardware configuration options
 
 ==== `camera_auto_detect`
 
-With this setting enabled (which it is in Raspberry Pi OS), the firmware will automatically load overlays for CSI cameras that it recognises. Set `camera_auto_detect=0` to disable.
+With this setting enabled (in Raspberry Pi OS it is enabled by default), the firmware will automatically load overlays for CSI cameras that it recognises. Set `camera_auto_detect=0` to disable the setting.
 
 ==== `display_auto_detect`
 
-With this setting enabled (which it is in Raspberry Pi OS), the firmware will automatically load overlays for DSI displays that it recognises. Set `display_auto_detect=0` to disable.
+With this setting enabled (it is enabled by default in Raspberry Pi OS), the firmware will automatically load overlays for DSI displays that it recognises. Set `display_auto_detect=0` to disable.
 
 ==== `dtoverlay`
 
 The `dtoverlay` option requests the firmware to load a named Device Tree overlay - a configuration file that can enable kernel support for built-in and external hardware. For example, `dtoverlay=vc4-kms-v3d` loads an overlay that enables the kernel graphics driver.
 
-As a special case, if called with no value - `dtoverlay=` - it marks the end of a list of overlay parameters. If used before any other `dtoverlay` or `dtparam` setting it prevents the loading of any HAT overlay.
+As a special case, if called with no value - `dtoverlay=` - the option marks the end of a list of overlay parameters. If used before any other `dtoverlay` or `dtparam` setting, it prevents the loading of any HAT overlay.
 
 For more details, see xref:configuration.adoc#part3.1[DTBs, overlays and config.txt].
 
 ==== `dtparam`
 
-Device Tree configuration files for Raspberry Pis support a number of parameters for such things as enabling I2C and SPI interfaces. Many DT overlays are configurable via the use of parameters. Both types of parameters can be supplied using the `dtparam` setting. In addition, overlay parameters can be appended to the `dtoverlay` option, separated by commas, but beware the line length limit of 98 characters.
+Device Tree configuration files for Raspberry Pis support a number of parameters for such things as enabling I2C and SPI interfaces. Many DT overlays are configurable via the use of parameters. Both types of parameters can be supplied using the `dtparam` setting. In addition, overlay parameters can be appended to the `dtoverlay` option, separated by commas, but keep in mind the line length limit of 98 characters.
 
 For more details, see xref:configuration.adoc#part3.1[DTBs, overlays and config.txt].
 
