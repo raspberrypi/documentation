@@ -1,10 +1,10 @@
 == Kernel
 
-The Raspberry Pi kernel is https://github.com/raspberrypi/linux[stored in GitHub]; it follows behind the main https://github.com/torvalds/linux[Linux kernel]. The main Linux kernel is continuously updating; we take long-term releases of the kernel, which are mentioned on the front page, and integrate the changes into the Raspberry Pi kernel. We then create a 'next' branch which contains an unstable port of the kernel, and after extensive testing and discussion, we push this to the main branch.
+The Raspberry Pi kernel is https://github.com/raspberrypi/linux[hosted on GitHub]; updates lag behind the upstream https://github.com/torvalds/linux[Linux kernel]. The upstream kernel is continuously updating; we take long-term releases of the kernel, which are mentioned on the front page, and integrate the changes into our own Raspberry Pi kernel. We then create a 'next' branch which contains an unstable port of the kernel, and after extensive testing and discussion, we push this to the main branch of our repository.
 
 === Updating your kernel
 
-If you use the standard Raspberry Pi OS xref:os.adoc#updating-and-upgrading-raspberry-pi-os[update and upgrade process], this will automatically update the kernel to the latest stable version. This is the recommended procedure. However, in certain circumstances, you may wish to update to the latest "bleeding edge" or test kernel. You should only do this if recommended to do so by a Raspberry Pi engineer, or if there is a specific feature only available in this latest software.
+If you use the standard Raspberry Pi OS xref:os.adoc#updating-and-upgrading-raspberry-pi-os[update and upgrade process], this will automatically update the kernel to the latest stable version of our kernel. This is the recommended procedure. However, in certain circumstances, you may wish to update to the latest "bleeding edge" or test kernel. You should only do this if recommended to do so by a Raspberry Pi engineer, or if there is a specific feature only available in this latest software.
 
 === Getting your code into the kernel
 
