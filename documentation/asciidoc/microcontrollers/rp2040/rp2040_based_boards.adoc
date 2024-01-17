@@ -15,4 +15,16 @@ THE DESIGN IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGA
 
 === Other Boards
 
-Discussions around other third party RP2040-based boards can be found on the https://forums.raspberrypi.com/viewforum.php?f=147[Raspberry Pi forums].
+You can find discussions around third-party RP2040-based boards on the https://forums.raspberrypi.com/viewforum.php?f=147[Raspberry Pi forums].
+
+==== USB PIDs
+
+Many RP2040-based devices use Raspberry Pi's USB Vendor ID and Product ID combination. If you build a third-party board based on RP2040, you may require a unique USB Product ID (PID).
+
+You might need a unique USB PID if you need to provide a custom driver for Windows users.
+
+USB-IF have given Raspberry Pi permission to license USB product ID values for its Vendor ID (`0x2E8A`) for common silicon components used with RP2040.
+
+To reserve a USB PID associated with Raspberry Pi's vendor ID, follow the instructions in the https://github.com/raspberrypi/usb-pid[Raspberry Pi USB PID git repository].
+
+NOTE: If you use the standard RP2040 PID, you can use the `iManufacturer`, `iProduct`, and `iSerial` strings to uniquely identify your device.
