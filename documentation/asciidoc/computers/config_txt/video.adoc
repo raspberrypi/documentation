@@ -1,14 +1,14 @@
-== Video Options
+== Video options
 
-=== HDMI Mode
+=== HDMI mode
 
 In order to support dual 4k displays, the Raspberry Pi 4 has xref:config_txt.adoc#raspberry-pi-4-hdmi-pipeline[updated video hardware], which imposes minor restrictions on the modes supported.
 
-The HDMI settings used to be configured by firmware via settings in `config.txt`; this configuration is now instead done by KMS via xref:configuration.adoc#hdmi-configuration[settings] in `cmdline.txt`.
+The HDMI settings used to be configured by firmware via settings in `config.txt`; now the settings are configured by KMS via xref:configuration.adoc#hdmi-configuration[settings] in `cmdline.txt`.
 
-=== Composite Video Mode
+=== Composite video mode
 
-The table below describes where composite video output can be found on each model of Raspberry Pi computer:
+Composite video output can be found on each model of Raspberry Pi computer:
 
 |===
 | model | composite output
@@ -19,18 +19,21 @@ The table below describes where composite video output can be found on each mode
 | Raspberry Pi Zero
 | Unpopulated `TV` header
 
-| Raspberry Pi Zero 2 W
+| Raspberry Pi Zero 2 W 
 | Test pads on underside of board
+
+| Raspberry Pi 5
+| J7 pad next to HDMI socket
 
 | All other models
 | 3.5mm AV jack
 |===
 
-NOTE: Composite video output is not available on the Raspberry Pi 400.
+NOTE: Composite video output is not available on Raspberry Pi 400.
 
 ==== `enable_tvout`
 
-Set to `1` to enable composite video output, or `0` to disable. On Raspberry Pi 4, composite output is only available if you set this to `1`, which also disables HDMI output. Composite output is not available on the Raspberry Pi 400.
+Set to `1` to enable composite video output, or `0` to disable. On Raspberry Pi 4 and 5, composite output is only available if you set this to `1`, which also disables HDMI output. Composite output is not available on the Raspberry Pi 400.
 
 [%header,cols="1,1"]
 
@@ -38,14 +41,14 @@ Set to `1` to enable composite video output, or `0` to disable. On Raspberry Pi 
 |Model
 |Default
 
-|Pi 4 and 400
+|Pi 4, 5 and 400
 |0
 
 |All other models
 |1
 |===
 
-On all models except Raspberry Pi 4, HDMI output needs to be disabled in order for composite output to be enabled. HDMI output is disabled when no HDMI display is connected / detected. Set `enable_tvout=0` to prevent composite being enabled when HDMI is disabled.
+On all models except Raspberry Pi 4 and 5, HDMI output needs to be disabled in order for composite output to be enabled. HDMI output is disabled when no HDMI display is connected / detected. Set `enable_tvout=0` to prevent composite being enabled when HDMI is disabled.
 
 To enable composite output (on all models of Raspberry Pi) you also need to append `,composite` to the end of the `dtoverlay=vc4-kms-v3d` line in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]:
 
@@ -61,7 +64,7 @@ vc4.tv_norm=video_mode
 
 to the single line in `/boot/firmware/cmdline.txt`, where `video_mode` is one of `NTSC`, `NTSC-J`, `NTSC-443`, `PAL`, `PAL-M`, `PAL-N`, `PAL60` or `SECAM`.
 
-=== LCD Displays and Touchscreens
+=== LCD displays and touchscreens
 
 ==== `ignore_lcd`
 
@@ -73,7 +76,7 @@ Enable/disable the touchscreen.
 
 `disable_touchscreen=1` will disable the touchscreen on the official Raspberry Pi Touch Display.
 
-=== Generic Display Options
+=== Generic display options
 
 ==== `disable_fw_kms_setup`
 
