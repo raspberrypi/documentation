@@ -46,16 +46,20 @@ NOTE: The RTC is still usable even when there is no backup battery attached to t
 
 === Adding a backup battery
 
-WARNING: We do not recommend using a primary lithium cell for the RTC, as it has a trickle charge circuit which is disabled by default. If enabled, this will kill the cell quickly. 
-
 .Lithium-manganese rechargeable RTC battery
 image::images/rtc-battery.jpg[alt="Lithium-manganese rechargeable RTC battery",width="70%"]
 
 The official battery part is a rechargeable lithium manganese coin cell, with a pre-fitted two-pin JST plug and an adhesive mounting pad. This is suitable for powering the Raspberry Pi 5 RTC when the main power supply for the board is disconnected, with a power-off current draw measuring in single-digit µA, giving a retention time that can be measured in months.
 
-=== Enabling trickle charging
+Note: We do not recommend using a primary (non-rechargeable) lithium cell for the RTC. The RTC backup current consumption is higher than most dedicated RTC modules and will result in a short service life.
 
-Trickle charging of the battery is disabled by default. There are `sysfs` files that show the current trickle charging voltage and limits:
+WARNING: Do not use a Lithium Ion cell for the RTC.
+
+=== Enabling battery charging
+
+The RTC is equipped with a constant-current (3mA) constant-voltage charger.
+
+Charging of the battery is disabled by default. There are `sysfs` files that show the charging voltage setpoint and limits:
 
 [source,bash]
 ----
@@ -80,4 +84,4 @@ dtparam=rtc_bbat_vchg=3000000
 /sys/devices/platform/soc/soc:rpi_rtc/rtc/rtc0/charging_voltage_min:1300000
 ----
 
-The battery will be trickle charging. Remove the `dtparam` line from `config.txt` to stop the trickle charging.
+The battery will be charged at the set voltage. Remove the `dtparam` line from `config.txt` to stop charging.
