@@ -1,12 +1,12 @@
 == Kernel
 
-The Raspberry Pi kernel is stored in GitHub and can be viewed at https://github.com/raspberrypi/linux[github.com/raspberrypi/linux]; it follows behind the main https://github.com/torvalds/linux[Linux kernel]. The main Linux kernel is continuously updating; we take long-term releases of the kernel, which are mentioned on the front page, and integrate the changes into the Raspberry Pi kernel. We then create a 'next' branch which contains an unstable port of the kernel; after extensive testing and discussion, we push this to the main branch.
+The Raspberry Pi kernel is https://github.com/raspberrypi/linux[stored in GitHub]; it follows behind the main https://github.com/torvalds/linux[Linux kernel]. The main Linux kernel is continuously updating; we take long-term releases of the kernel, which are mentioned on the front page, and integrate the changes into the Raspberry Pi kernel. We then create a 'next' branch which contains an unstable port of the kernel, and after extensive testing and discussion, we push this to the main branch.
 
-=== Updating your Kernel
+=== Updating your kernel
 
-If you use the standard Raspberry Pi OS xref:os.adoc#updating-and-upgrading-raspberry-pi-os[update and upgrade process], this will automatically update the kernel to the latest stable version. This is the recommended procedure. However, in certain circumstances, you may wish to update to the latest 'bleeding edge' or test kernel. You should only do this if recommended to do so by a Raspberry Pi engineer, or if there is a specific feature only available in this latest software.
+If you use the standard Raspberry Pi OS xref:os.adoc#updating-and-upgrading-raspberry-pi-os[update and upgrade process], this will automatically update the kernel to the latest stable version. This is the recommended procedure. However, in certain circumstances, you may wish to update to the latest "bleeding edge" or test kernel. You should only do this if recommended to do so by a Raspberry Pi engineer, or if there is a specific feature only available in this latest software.
 
-=== Getting your Code into the Kernel
+=== Getting your code into the kernel
 
 There are many reasons you may want to put something into the kernel:
 
@@ -15,7 +15,7 @@ There are many reasons you may want to put something into the kernel:
 * You've fixed a generic kernel bug
 * You've fixed a Raspberry Pi-specific kernel bug
 
-Initially, you should fork the https://github.com/raspberrypi/linux[Linux repository] and clone that on your build system; this can be either on the Raspberry Pi or on a Linux machine you're using for cross-compiling. You can then make your changes, test them, and commit them into your fork.
+Initially, you should fork the https://github.com/raspberrypi/linux[Linux repository] and clone that on your build system; this can be either on your Raspberry Pi or on a Linux machine you're using for cross-compiling. You can then make your changes, test them, and commit them into your fork.
 
 Next, depending upon whether the code is Raspberry Pi-specific or not:
 
