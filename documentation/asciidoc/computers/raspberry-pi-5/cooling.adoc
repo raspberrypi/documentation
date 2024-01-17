@@ -60,10 +60,9 @@ However, cooling of any type isn't mandatory, and no harm will come to the Raspb
 
 The fan connector is a 1mm pitch JST-SH socket containing the following four pins:
 
-[cols="1,2",width="50"%"]
+[cols="1,2,2",width="50"%"]
 |===
 | Pin | Function | Wire colour
-
 | 1 | +5V | Red
 | 2 | PWM | Blue
 | 3 | GND | Black
