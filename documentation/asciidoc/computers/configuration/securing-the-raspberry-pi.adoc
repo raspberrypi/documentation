@@ -1,10 +1,6 @@
 == Secure your Raspberry Pi
 
-The security of your Raspberry Pi is important. Gaps in security leave your Raspberry Pi open to hackers who can then use it without your permission.
-
-If you expose your Raspberry Pi directly to the internet, either with a direct connection or by letting certain protocols, such as SSH, through your router firewall, you should take steps to ensure the security of your device.
-
-This documentation describes some common ways to improve the security of your Raspberry Pi.
+Here, we describe some common ways to improve the security of your Raspberry Pi.
 
 === Change a user's password
 
@@ -55,7 +51,7 @@ If the above command runs successfully, permissions were successfully configured
 
 === Delete a user
 
-To delete a user, run the following command, replacing the `<username>` placeholder with the username of the user you would like to delete:
+To delete a user, run the following command, replacing the `<username>` placeholder with the username you would like to delete:
 
 [source,console]
 ----
@@ -73,7 +69,7 @@ To change the user that automatically logs into your Raspberry Pi on boot, run t
 $ sudo raspi-config
 ----
 
-Select option 1, S5 `Boot / Auto login`. Then, say yes to reboot.
+Select option 1, S5 `Boot/Auto login`. Then say yes to reboot.
 
 === Require a password for `sudo` commands
 
@@ -99,22 +95,20 @@ Save the file. Your new preference should take effect immediately.
 
 Only the latest OS distribution contains all the latest security fixes. Always keep your device xref:os.adoc#updating-and-upgrading-raspberry-pi-os[updated] to the latest version of Raspberry Pi OS.
 
-If you use SSH to connect to your Raspberry Pi, it can be worthwhile to add a `cron` job that specifically updates the SSH server. The following command, perhaps as a daily cron job, ensures you have the latest SSH security fixes promptly, independent of your normal update process.
+If you use SSH to connect to your Raspberry Pi, it can be worthwhile to add a `cron` job that specifically updates the SSH server. The following command, perhaps run as a daily `cron` job, ensures you have the latest SSH security fixes promptly, independent of your normal update process.
 
 [source,console]
 ----
 $ apt install openssh-server
 ----
 
-=== Improving SSH Security
+=== Improving SSH security
 
-SSH is a common way of accessing a Raspberry Pi remotely. By default, logging in with SSH requires a username/password pair. But you can make this even more secure with key-based authentication.
+SSH is a common way of accessing a Raspberry Pi remotely. By default, logging in with SSH requires a username/password pair. You can make this even more secure with key-based authentication.
 
 ==== Improving username/password security
 
-Always ensure you have a very robust password. If your Raspberry Pi is exposed to the internet, the password needs to be very secure. This will help to avoid dictionary attacks or the like.
-
-You can also *allow* or *deny* specific users by altering the `sshd` configuration.
+Always ensure you have a very robust password. You can also *allow* or *deny* specific users by altering the `sshd` configuration.
 
 [source,console]
 ----
@@ -145,9 +139,9 @@ The client generates two keys, which are cryptographically linked to each other.
 
 Generating a key pair in Linux is done using the `ssh-keygen` command on the *client*; the keys are stored by default in the `.ssh` folder in the user's home directory. The private key will be called `id_rsa` and the associated public key will be called `id_rsa.pub`. The key will be 2048 bits long: breaking the encryption on a key of that length would take an extremely long time, so it is very secure. You can make longer keys if the situation demands it. Note that you should only do the generation process once: if repeated, it will overwrite any previous generated keys. Anything relying on those old keys will need to be updated to the new keys.
 
-You will be prompted for a passphrase during key generation: this is an extra level of security. For the moment, leave this blank.
+You will be prompted for a passphrase during key generation: this offers an extra level of security. For the moment, leave this blank.
 
-The public key now needs to be moved on to the server: see xref:remote-access.adoc#copy-your-public-key-to-your-raspberry-pi[Copy your public key to your Raspberry Pi].
+The public key now needs to be xref:remote-access.adoc#copy-your-public-key-to-your-raspberry-pi[moved onto the server].
 
 Finally, we need to disable password logins, so that all authentication is done by the key pairs.
 
@@ -167,16 +161,16 @@ UsePAM no
 
 Save the file and either restart the ssh system with `sudo service ssh reload` or reboot.
 
-=== Install a Firewall
+=== Install a firewall
 
-There are many firewall solutions available for Linux. Most use the underlying http://www.netfilter.org/projects/iptables/index.html[iptables] project to provide packet filtering. This project sits over the Linux netfiltering system. `iptables` is installed by default on Raspberry Pi OS, but is not set up. Setting it up can be a complicated task, and one project that provides a simpler interface than `iptables` is https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw[ufw], which stands for 'Uncomplicated Fire Wall'. This is the default firewall tool in Ubuntu, and can be  installed on your Raspberry Pi:
+There are many firewall solutions available for Linux. Most use the underlying http://www.netfilter.org/projects/iptables/index.html[iptables] project to provide packet filtering. This project sits over the Linux netfiltering system. By default, `iptables` is installed on Raspberry Pi OS, but is not set up. Setting it up can be a complicated task, and one project that offers a simpler interface than `iptables` is https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw[Uncomplicated Firewall (UFW)]. This is the default firewall tool in Ubuntu, and can be installed on your Raspberry Pi:
 
 [source,console]
 ----
 $ sudo apt install ufw
 ----
 
-`ufw` is a fairly straightforward command line tool, although there are some GUIs available for it. This document will describe a few of the basic command line options. Note that `ufw` needs to be run with superuser privileges, so all commands are preceded with `sudo`. It is also possible to use the option `--dry-run` any `ufw` commands, which indicates the results of the command without actually making any changes.
+`ufw` is a fairly straightforward command-line tool, although there are some GUIs available for it. Note that `ufw` needs to be run with superuser privileges, so all commands are preceded with `sudo`. It is also possible to use the option `--dry-run` any `ufw` commands, which indicates the results of the command without actually making any changes.
 
 To enable the firewall, which will also ensure it starts up on boot, use:
 
@@ -227,9 +221,9 @@ The status command lists all current settings for the firewall:
 sudo ufw status
 ----
 
-The rules can be quite complicated, allowing specific IP addresses to be blocked, specifying in which direction traffic is allowed, or limiting the number of attempts to connect, for example to help defeat a Denial of Service (DoS) attack. You can also specify the device rules are to be applied to (e.g. eth0, wlan0). Please refer to the `ufw` man page (`man ufw`) for full details, but here are some examples of more sophisticated commands.
+The rules can be quite complicated, allowing specific IP addresses to be blocked, specifying in which direction traffic is allowed, or limiting the number of attempts to connect (for example to help defeat a DDoS attack). You can also specify the device rules are to be applied to (e.g. eth0, wlan0). Please refer to the `ufw` man page (`man ufw`) for full details beyond the commands below.
 
-Limit login attempts on ssh port using tcp: this denies connection if an IP address has attempted to connect six or more times in the last 30 seconds:
+Limit login attempts on ssh port using TCP. This denies connection if an IP address has attempted to connect six or more times in the last 30 seconds:
 
 [,bash]
 ----
