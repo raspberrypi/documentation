@@ -1,11 +1,11 @@
-== Legacy Conditional Filters
-(see also xref:config_txt.adoc#conditional-filters[config.txt Conditional Filters])
+== Legacy conditional filters
+(See also xref:config_txt.adoc#conditional-filters[config.txt conditional filters].)
 
-=== The `[HDMI:*]` Filter
+=== The `[HDMI:*]` filter
 
-NOTE: This filter is for the Raspberry Pi 4 only.
+NOTE: This filter is for Raspberry Pi 4 only.
 
-The Raspberry Pi 4 has two HDMI ports, and for many `config.txt` commands related to HDMI, it is necessary to specify which HDMI port is being referred to. The HDMI conditional filters subsequent HDMI configurations to the specific port.
+Raspberry Pi 4 has two HDMI ports, and for many `config.txt` commands related to HDMI, it is necessary to specify which HDMI port is being referred to. The HDMI conditional filters subsequent HDMI configurations to the specific port.
 
 [source]
 ----
