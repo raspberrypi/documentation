@@ -8,47 +8,47 @@ To get started with your Raspberry Pi, you'll need the following:
 * a xref:raspberry-pi.adoc#power-supply[power supply]
 * boot media (e.g. a xref:getting-started.adoc#recommended-sd-cards[microSD card with ample storage and speed])
 
-You can set up your Raspberry Pi as an interactive computer with a desktop, or as a _headless_ computer accessible only over the network. To set your Raspberry Pi up headless, you don't need any additional peripherals; you can preconfigure a hostname, user account, network connection, and SSH when you xref:getting-started.adoc#installing-the-operating-system[install an operating system]. If you want to use your Raspberry Pi directly, you'll need the following additional accessories:
+You can set up your Raspberry Pi as an interactive computer with a desktop, or as a _headless_ computer accessible only over the network. To set your Raspberry Pi up headless, you don't need any additional peripherals: you can preconfigure a hostname, user account, network connection, and SSH when you xref:getting-started.adoc#installing-the-operating-system[install an operating system]. If you want to use your Raspberry Pi directly, you'll need the following additional accessories:
 
 * a display
 * a cable to connect your Raspberry Pi to your display
 * a keyboard
 * a mouse
 
-=== Power Supply
+=== Power supply
 
 The following table shows the USB-PD power mode required to power various Raspberry Pi models.
-You can use any high quality power supply that provides the correct power mode.
+You can use any high-quality power supply that provides the correct power mode.
 
 [%header,cols="1,1,1"]
 |===
 |Model
-|Recommended Power Supply (Voltage/Current)
-|Raspberry Pi Power Supply
+|Recommended power supply (voltage/current)
+|Raspberry Pi power supply
 
 |Raspberry Pi 5
 |5V/5A, 5V/3A limits peripherals to 600mA
-|https://www.raspberrypi.com/products/27w-power-supply/[27W USB-C Power Supply]
+|https://www.raspberrypi.com/products/27w-power-supply/[27W USB-C power supply]
 
 |Raspberry Pi 4 Model B
 |5V/3A
-|https://www.raspberrypi.com/products/type-c-power-supply/[15W USB-C Power Supply]
+|https://www.raspberrypi.com/products/type-c-power-supply/[15W USB-C power supply]
 
 |Raspberry Pi 3 (all models)
 |5V/2.5A
-|https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5W Micro USB Power Supply]
+|https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5W Micro USB power supply]
 
 |Raspberry Pi 2 (all models)
 |5V/2.5A
-|https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5W Micro USB Power Supply]
+|https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5W Micro USB power supply]
 
 |Raspberry Pi 1 (all models)
 |5V/2.5A
-|https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5W Micro USB Power Supply]
+|https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5W Micro USB power supply]
 
 |Raspberry Pi Zero (all models)
 |5V/2.5A
-|https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5W Micro USB Power Supply]
+|https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5W Micro USB power supply]
 |===
 
 image::images/peripherals/cable-power.png[alt="Plugging a power supply into a Raspberry Pi."]
@@ -58,7 +58,7 @@ Plug your power supply into the port marked "POWER IN", "PWR IN", or "PWR". Some
 [[sd-cards]]
 === Boot Media
 
-Raspberry Pi models lack onboard storage, so you have to supply it. You can boot your Raspberry Pi from an operating system image installed on any supported media: commonly microSD cards, but also USB storage, network storage, and storage connected via a PCIe HAT. However, only recent Raspberry Pi models support all of these media types.
+Raspberry Pi models lack onboard storage, so you have to supply it. You can boot your Raspberry Pi from an operating system image installed on any supported media: microSD cards are used commonly, but USB storage, network storage, and storage connected via a PCIe HAT are also available. However, only recent Raspberry Pi models support all of these media types.
 
 All Raspberry Pi consumer models since the Raspberry Pi 1 Model A+ feature a microSD slot. Your Raspberry Pi automatically boots from the microSD slot when the slot contains a card.
 
@@ -88,11 +88,11 @@ image:images/peripherals/cable-key.png[alt="Plugging a keyboard into a Raspberry
 
 You can use any of the USB ports on your Raspberry Pi to connect a https://www.raspberrypi.com/products/raspberry-pi-mouse/[wired mouse] or USB Bluetooth receiver.
 
-image:images/peripherals/cable-mouse.png[alt="Plugging a computer mouse into a Raspberry Pi."]
+image:images/peripherals/cable-mouse.png[alt="Plugging a mouse into a Raspberry Pi."]
 
 === Display
 
-If your Raspberry Pi has more than one HDMI ports, plug your primary monitor into the port marked `HDMI0`.
+If your Raspberry Pi has more than one HDMI port, plug your primary monitor into the port marked `HDMI0`.
 
 Raspberry Pi models have the following display connectivity:
 
@@ -102,10 +102,10 @@ Raspberry Pi models have the following display connectivity:
 |Display outputs
 
 |Raspberry Pi 5
-|2x micro HDMI
+|2× micro HDMI
 
 |Raspberry Pi 4 (all models)
-|2x micro HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
+|2× micro HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi 3 (all models)
 |HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
@@ -123,7 +123,7 @@ Raspberry Pi models have the following display connectivity:
 |mini HDMI
 |===
 
-Most displays don't have micro or mini HDMI ports. However, you can use a https://www.raspberrypi.com/products/micro-hdmi-to-standard-hdmi-a-cable/[micro HDMI to HDMI cable] or https://www.raspberrypi.com/products/standard-hdmi-a-male-to-mini-hdmi-c-male-cable/[mini HDMI to HDMI cable] to connect those ports on your Raspberry Pi to any HDMI display. For displays that don't support HDMI, consider an adapter that translates display output from HDMI to a port supported by your display.
+Most displays don't have micro or mini HDMI ports. However, you can use a https://www.raspberrypi.com/products/micro-hdmi-to-standard-hdmi-a-cable/[micro-HDMI-to-HDMI cable] or https://www.raspberrypi.com/products/standard-hdmi-a-male-to-mini-hdmi-c-male-cable/[mini-HDMI-to-HDMI cable] to connect those ports on your Raspberry Pi to any HDMI display. For displays that don't support HDMI, consider an adapter that translates display output from HDMI to a port supported by your display.
 
 image::images/peripherals/cable-hdmi.png[alt="Plugging a micro HDMI cable into a Raspberry Pi."]
 
@@ -131,7 +131,7 @@ image::images/peripherals/cable-hdmi.png[alt="Plugging a micro HDMI cable into a
 
 All Raspberry Pi models with HDMI, micro HDMI, or mini HDMI support audio output over HDMI.
 All Raspberry Pi models support audio over USB. All Raspberry Pi models equipped with Bluetooth support Bluetooth audio.
-All variants of the Raspberry Pi 1, 2, 3, and 4 include a 3.5mm auxiliary http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack which may require amplification for sufficient output volume.
+All variants of the Raspberry Pi 1, 2, 3, and 4 include a 3.5mm auxiliary http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack, which may require amplification for sufficient output volume.
 
 === Networking
 
@@ -144,6 +144,6 @@ The following Raspberry Pi models come with WiFi and Bluetooth connectivity:
 * Raspberry Pi Zero W
 * Rsapberry Pi Zero 2 W
 
-The "Model B" suffix indicates variants with an Ethernet port; "Model A" indicates no Ethernet port. If your model doesn't have an Ethernet port, you can still connect to a wired internet connection using a USB-to-Ethernet adapter.
+The "Model B" suffix indicates variants with an Ethernet port; "Model A" indicates no Ethernet port. If your Raspberry Pi doesn't have an Ethernet port, you can still connect to a wired internet connection using a USB-to-Ethernet adapter.
 
 image::images/peripherals/cable-net.png[alt="Plugging an Ethernet cable into a Raspberry Pi."]

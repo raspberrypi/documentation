@@ -4,9 +4,9 @@ The main difference between this and previous products is that the second stage 
 
 === First Stage Bootloader
 
-The boot flow for the ROM (first stage) is as follows:-
+The boot flow for the ROM (first stage) is as follows:
 
-* BCM2711 SoC powers up
+* SoC powers up
 * Read OTP to determine if the `nRPIBOOT` GPIO is configured
 * If `nRPIBOOT` GPIO is high or OTP does NOT define `nRPIBOOT` GPIO
  ** Check OTP to see if `recovery.bin` can be loaded from SD/EMMC
@@ -17,11 +17,9 @@ The boot flow for the ROM (first stage) is as follows:-
   *** Success - run second stage bootloader
   *** Fail - continue
 * While True
- ** Attempt to load recovery.bin from xref:compute-module.adoc#flashing-the-compute-module-emmc[USB device boot]
+ ** Attempt to load `recovery.bin` from xref:compute-module.adoc#flashing-the-compute-module-emmc[USB device boot]
   *** Success - run `recovery.bin` and update the SPI EEPROM or switch to USB mass storage device mode
   *** Fail - retry USB device boot
-
-NOTE: Currently only CM4 reserves a GPIO for `nRPIBOOT`.
 
 NOTE: `recovery.bin` is a minimal second stage program used to reflash the bootloader SPI EEPROM image.
 

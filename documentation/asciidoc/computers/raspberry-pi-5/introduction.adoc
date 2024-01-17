@@ -8,7 +8,7 @@ image::images/pi5-labelled.jpg[alt="Labelled diagram of the Raspberry Pi 5",widt
 
 Featuring a 64-bit quad-core Arm Cortex-A76 processor running at 2.4GHz, Raspberry Pi 5 delivers a ×2 to ×3 increase in CPU performance relative to Raspberry Pi 4. Alongside a substantial uplift in graphics performance from an 800MHz VideoCore VII GPU; dual 4Kp60 display output over HDMI; and state-of-the-art camera support from a rearchitected Raspberry Pi Image Signal Processor, it provides a smooth desktop experience for consumers, and opens the door to new applications for industrial customers.
 
-For the first time, this is a full-size Raspberry Pi computer using silicon built in-house at Raspberry Pi. The xref:../microcontrollers/rp1.adoc[RP1] provides the bulk of the I/O capabilities for Raspberry Pi 5, and delivers a step change in peripheral performance and functionality. Aggregate USB bandwidth is more than doubled, yielding faster transfer speeds to external UAS drives and other high-speed peripherals; the dedicated two-lane 1Gbps MIPI camera and display interfaces present on earlier models have been replaced by a pair of four-lane 1.5Gbps MIPI transceivers, tripling total bandwidth, and supporting any combination of up to two cameras or displays; peak SD card performance is doubled, through support for the SDR104 high-speed mode; and for the first time the platform exposes a single-lane PCI Express 2.0 interface, providing support for high-bandwidth peripherals.
+For the first time, this is a full-size Raspberry Pi computer using silicon built in-house at Raspberry Pi. The xref:../microcontrollers/rp1.adoc[RP1] provides the bulk of the I/O capabilities for Raspberry Pi 5, and delivers a step-change in peripheral performance and functionality. Aggregate USB bandwidth is more than doubled, yielding faster transfer speeds to external UAS drives and other high-speed peripherals; the dedicated two-lane 1Gbps MIPI camera and display interfaces present on earlier models have been replaced by a pair of four-lane 1.5Gbps MIPI transceivers, tripling total bandwidth, and supporting any combination of up to two cameras or displays; peak SD card performance is doubled, through support for the SDR104 high-speed mode; and for the first time the platform exposes a single-lane PCI Express 2.0 interface, providing support for high-bandwidth peripherals.
 
 Key features include:
 
@@ -21,17 +21,17 @@ Key features include:
 * 4kp60 HEVC decoder
 * VideoCore VII graphics, with OpenGL-ES 3.1, Vulkan 1.2
 * Raspberry Pi Image Sensor Processor (ISP)
-* Raspberry Pi connector for PCIe (1 x 2.0 port, additional HAT required)
-* 802.11ac dual-band Wi-Fi
+* Raspberry Pi connector for PCIe (1× 2.0 port, additional HAT required)
+* 802.11ac dual-band WiFi
 * Bluetooth 5.0 (with BLE support)
 * Gigabit Ethernet
-* 2x USB 3.0 (capable of simultaneous full throughput)
-* 2x USB 2.0
+* 2× USB 3.0 (capable of simultaneous full throughput)
+* 2× USB 2.0
 * PoE support (additional HAT required)
 * Dual 4-lane MIPI CSI/DSI transceivers, supporting
-** 2x display; or
-** 2x camera; or
-** 1x display + 1x camera
+** 2× display; or
+** 2× camera; or
+** 1× display and 1× camera
 * Raspberry Pi 40-pin GPIO header
 * Fan connector
 * Real Time Clock (RTC)
@@ -40,20 +40,26 @@ Key features include:
 
 === Turning it off and back on again
 
-When you plug your Raspberry Pi into power for the first time, it will automatically turn on and boot into the operating system without having to push the button. 
+When you plug your Raspberry Pi into power for the first time, it will automatically turn on and boot into the operating system without having to push the button.
 
-If you run Raspberry Pi Desktop, you can initiate a clean shutdown by briefly pressing the power button. A menu will appear asking whether you want to shutdown, reboot, or logout. Select an option from the menu or press the power button again to initiate a clean shutdown.
+If you run Raspberry Pi Desktop, you can initiate a clean shutdown by briefly pressing the power button. A menu will appear asking whether you want to shutdown, reboot, or logout:
 
 .Shutting down your Raspberry Pi 5 using the power button.
 image::images/shutdown.jpg[alt="Desktop menu asking whether you want to Shutdown, Reboot, or Logout",width="100%"]
 
-NOTE: If you run Raspberry Pi Desktop, you can press the power button twice in quick succession to shutdown. If you run Raspberry Pi OS Lite without a desktop, press the power button a single time to initiate a shutdown.
+Select an option from the menu or press the power button again to initiate a clean shutdown.
 
-To force a hard shutdown, press and hold the power button.
+NOTE: If you run Raspberry Pi Desktop, you can press the power button twice in quick succession to shut down. If you run Raspberry Pi OS Lite without a desktop, press the power button a single time to initiate a shutdown.
 
-If the Raspberry Pi board is shut down, but still powered, pressing the power button will restart the board.
+==== Restart
 
-Default shutdown wattage is around 1 to 1.4W. However this can be decreased by manually editing the EEPROM configuration with `sudo rpi-eeprom-config -e`. Change the settings to the following:
+If the Raspberry Pi board is turned off, but still connected to power, pressing the power button will restart the board.
+
+NOTE: Resetting the Power Management Integrated Circuit (PMIC) can also restart the board. Connecting a HAT can reset the PMIC. Always disconnect your device from the power supply before connecting a HAT.
+
+==== Decrease wattage when turned off
+
+By default, the Raspberry Pi 5 consumes around 1W to 1.4W of power when turned off. This can be decreased by manually editing the EEPROM configuration with `sudo rpi-eeprom-config -e`. Change the settings to the following:
 
 [source]
 ----
@@ -62,7 +68,11 @@ POWER_OFF_ON_HALT=1
 BOOT_ORDER=0xf416
 ----
 
-This should drop the shutdown power consumption to around 0.01W.
+This should drop the power consumption when powered down to around 0.01W.
+
+==== Hard shutdown
+
+To force a hard shutdown, press and hold the power button.
 
 ==== Adding your own power button
 

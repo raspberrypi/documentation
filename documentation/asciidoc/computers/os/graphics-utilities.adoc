@@ -1,16 +1,16 @@
-== Useful Utilities
+== Utilities
 
-There are several useful command line utilities pre-installed in Raspberry Pi OS.
+There are several useful command-line utilities pre-installed in Raspberry Pi OS.
 
 === kmsprint
 
-The `kmsprint` tool can be used to list the display-modes supported by the monitors attached to the Raspberry Pi. Use `kmsprint` to see details of the monitors connected to the Raspberry Pi, and `kmsprint -m` to see a list of all the display-modes supported by each monitor. You can find source code for the `kmsprint` utility https://github.com/tomba/kmsxx[on Github].
+The `kmsprint` tool can be used to list the display-modes supported by the monitors attached to the Raspberry Pi. Use `kmsprint` to see details of the monitors connected to the Raspberry Pi, and `kmsprint -m` to see a list of all the display modes supported by each monitor. You can find source code for the `kmsprint` utility https://github.com/tomba/kmsxx[on Github].
 
 === vcgencmd
 
-The `vcgencmd` tool is used to output information from the VideoCore GPU on the Raspberry Pi. You can find source code for the `vcgencmd` utility https://github.com/raspberrypi/utils/tree/master/vcgencmd[on Github].
+The `vcgencmd` tool is used to output information from the VideoCore GPU on the Raspberry Pi. You can find source code for the `vcgencmd` utility https://github.com/raspberrypi/utils/tree/master/vcgencmd[on GitHub].
 
-To get a list of all commands which `vcgencmd` supports, use `vcgencmd commands`. Some useful commands and their required parameters are listed below.
+To get a list of all commands supported by `vcgencmd`, use `vcgencmd commands`. Some useful commands and their required parameters are listed below.
 
 ==== vcos
 
@@ -25,7 +25,7 @@ Displays the build date and version of the VideoCore firmware.
 
 ==== get_throttled
 
-Returns the throttled state of the system. This is a bit-pattern - a bit being set indicates the following meanings:
+Returns the throttled state of the system. This is a bit pattern. A bit being set indicates the following meanings:
 
 [cols="^,,"]
 |===
@@ -33,7 +33,7 @@ Returns the throttled state of the system. This is a bit-pattern - a bit being s
 
 | 0
 | 0x1
-| Under-voltage detected
+| Undervoltage detected
 
 | 1
 | 0x2
@@ -49,7 +49,7 @@ Returns the throttled state of the system. This is a bit-pattern - a bit being s
 
 | 16
 | 0x10000
-| Under-voltage has occurred
+| Undervoltage has occurred
 
 | 17
 | 0x20000
@@ -66,8 +66,8 @@ Returns the throttled state of the system. This is a bit-pattern - a bit being s
 
 ==== measure_temp
 
-Returns the temperature of the SoC as measured by its internal temperature sensor;
-on Raspberry Pi 4, `measure_temp pmic` returns the temperature of the PMIC.
+Returns the temperature of the SoC as measured by its internal temperature sensor.
+On Raspberry Pi 4, `measure_temp pmic` returns the temperature of the PMIC.
 
 ==== measure_clock [clock]
 
@@ -150,15 +150,15 @@ Display value of the configuration setting specified: alternatively, specify eit
 vcgencmd get_config total_mem
 ----
 
-returns the total memory on the device in megabytes.
+...returns the total memory on the device in megabytes.
 
 ==== get_mem type
 
-Reports on the amount of memory addressable by the ARM  and the GPU. To show the amount of ARM-addressable memory use `vcgencmd get_mem arm`; to show the amount of GPU-addressable memory use `vcgencmd get_mem gpu`. Note that on devices with more than 1GB of memory the `arm` parameter will always return 1GB minus the `gpu` memory value, since the GPU firmware is only aware of the first 1GB of memory. To get an accurate report of the total memory on the device, see the `total_mem` configuration item - see <<getconfig,`get_config`>> section above.
+Reports on the amount of memory addressable by the Arm and the GPU. To show the amount of Arm-addressable memory, use `vcgencmd get_mem arm`; to show the amount of GPU-addressable memory, use `vcgencmd get_mem gpu`. Note that on devices with more than 1GB of memory, the `arm` parameter will always return 1GB minus the `gpu` memory value, since the GPU firmware is only aware of the first 1GB of memory. To get an accurate report of the total memory on the device, see the `total_mem` configuration item and the <<getconfig,`get_config`>> section above.
 
 ===== codec_enabled [type]
 
-Reports whether the specified CODEC type is enabled. Possible options for type are AGIF, FLAC, H263, H264, MJPA, MJPB, MJPG, *MPG2*, MPG4, MVC0, PCM, THRA, VORB, VP6, VP8, *WMV9*, *WVC1*. Those highlighted currently require a paid for licence (see the xref:config_txt.adoc#licence-key-and-codec-options[this config.txt section] for more info), except on the Raspberry Pi 4 and 400, where these hardware codecs are disabled in preference to software decoding, which requires no licence. Note that because the H.265 HW block on the Raspberry Pi 4 and 400 is not part of the VideoCore GPU, its status is not accessed via this command.
+Reports whether the specified codec type is enabled. Possible options for type are AGIF, FLAC, H263, H264, MJPA, MJPB, MJPG, MPG2, MPG4, MVC0, PCM, THRA, VORB, VP6, VP8, WMV9, WVC1. Note that because the H.265 HW block on the Raspberry Pi 4 and 400 is not part of the VideoCore GPU, its status is not accessed via this command.
 
 ===== mem_oom
 
@@ -170,10 +170,10 @@ Displays statistics from the relocatable memory allocator on the VideoCore.
 
 ===== read_ring_osc
 
-Returns the current speed voltage and temperature of the ring oscillator.
+Returns the current speed, voltage and temperature of the ring oscillator.
 
 === vclog
 
-`vclog` is an application to display log messages from the VideoCore GPU from Linux running on the ARM. It needs to be run as root.
+`vclog` is an application to display log messages from the VideoCore GPU from Linux running on the Arm. It needs to be run as root.
 
 `sudo vclog --msg` prints out the message log, whilst `sudo vclog --assert` prints out the assertion log.

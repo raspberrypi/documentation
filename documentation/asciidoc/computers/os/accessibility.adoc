@@ -2,9 +2,9 @@
 
 === Visual aids
 
-Visually-impaired users of Raspberry Pi OS can find helpful tools in the Recommend Software menu.
+Users of Raspberry Pi OS who have visual impairments can find helpful tools in the *Recommended Software* menu.
 
-We offer the https://help.gnome.org/users/orca/stable/introduction.html.en[Orca screen reader] to better navigate your way through the Raspberry Pi operating system, along with a screen magnifier to increase the readability of UI and screen elements.
+We offer the https://help.gnome.org/users/orca/stable/introduction.html.en[Orca screen reader] to better navigate the Raspberry Pi operating system, along with a screen magnifier to increase the readability of UI and screen elements.
 
 ==== Orca screen reader
 

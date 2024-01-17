@@ -9,23 +9,23 @@ To access your Raspberry Pi over that network, use SSH. Once you've connected ov
 
 If you're setting up your Raspberry Pi from scratch, set up wireless networking and SSH during the xref:getting-started.adoc#installing-the-operating-system[imaging process]. If you've already got a Raspberry Pi set up, you can configure SSH using `raspi-config`.
 
-WARNING: Depending on the model and SD card, your Raspberry Pi may require up to 5 minutes to boot and connect to your wireless network the first time it boots.
+WARNING: Depending on the model of Raspberry Pi and type of SD card you are using, your Raspberry Pi may require up to five minutes to boot and connect to your wireless network the first time it boots.
 
 === Connect to a wired network
 
-To connect to a wired network at first boot, plug your headless Raspberry Pi in via Ethernet, or an Ethernet adapter if your Raspberry Pi model does not include an Ethernet port. Your Raspberry Pi will automatically connect to the network.
+To connect to a wired network at first boot, plug your headless Raspberry Pi in via Ethernet, or use an Ethernet adapter if your Raspberry Pi model does not include an Ethernet port. Your Raspberry Pi will automatically connect to the network.
 
 === Connect to a wireless network
 
-To configure wireless network access at first boot in a headless Raspberry Pi, use the advanced settings menu in Raspberry Pi Imager. Enter the SSID and password of your preferred wireless network. Your Raspberry Pi will use these credentials to connect to the network on first boot. Some wireless adapters and some Raspberry Pi boards do not support 5Ghz networks; check the documentation for your wireless module to ensure compatibility with your preferred network.
+To configure wireless network access at first boot in a headless Raspberry Pi, use the advanced settings menu in Raspberry Pi Imager. Enter the SSID and password of your preferred wireless network. Your Raspberry Pi will use these credentials to connect to the network on first boot. Some wireless adapters and some Raspberry Pi boards do not support 5GHz networks; check the documentation for your wireless module to ensure compatibility with your preferred network.
 
-NOTE: Previous versions of Raspberry Pi OS made use of a `wpa_supplicant.conf` file which could be placed into the boot folder to configure wireless network settings. This is no longer possible from Raspberry Pi OS Bookworm onwards.
+NOTE: Previous versions of Raspberry Pi OS made use of a `wpa_supplicant.conf` file which could be placed into the boot folder to configure wireless network settings. This functionality is not available from Raspberry Pi OS Bookworm onwards.
 
 === Remote access
 
 With no keyboard or monitor, you need a way to xref:remote-access.adoc[remotely control] your headless Raspberry Pi. On first boot, the only option is SSH. To enable SSH on a fresh installation of Raspberry Pi OS, choose one of the following methods:
 
-* enable SSH in the OS Customisation menu in Raspberry Pi Imager, then enter a username and password
+* enable SSH in the OS customisation menu in Raspberry Pi Imager, then enter a username and password
 * create a file named `ssh` at the root of the SD card, then configure a user manually with `userconf.txt` following the instructions in the section below
 
 For more information, see xref:remote-access.adoc#ssh[set up an SSH server]. Once you've connected over SSH, you can use `raspi-config` to xref:remote-access.adoc#vnc[enable VNC] if you'd prefer a graphical desktop environment.
@@ -36,6 +36,8 @@ For more information, see xref:remote-access.adoc#ssh[set up an SSH server]. Onc
 At the root of your SD card, create a file named `userconf.txt`.
 
 This file should contain a single line of text, consisting of `<username>:<password>`: your desired username, followed immediately by a colon, followed immediately by an *encrypted* representation of the password you want to use.
+
+NOTE: `<username>` must only contain lower-case letters, digits and hyphens, and must start with a letter. It may not be longer than 31 characters. 
 
 To generate the encrypted password, use https://www.openssl.org[OpenSSL] on another computer. Open a terminal and enter the following:
 

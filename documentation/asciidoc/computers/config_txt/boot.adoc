@@ -5,9 +5,11 @@
 These options specify the firmware files transferred to the VideoCore GPU prior to booting.
 
 `start_file` specifies the VideoCore firmware file to use.
-`fixup_file` specifies the file used to fix up memory locations used in the `start_file` to match the GPU memory split. Note that the `start_file` and the `fixup_file` are a matched pair - using unmatched files will stop the board from booting. This is an advanced option, so we advise that you use `start_x` and `start_debug` rather than this option.
+`fixup_file` specifies the file used to fix up memory locations used in the `start_file` to match the GPU memory split. 
 
-NOTE: Cut-down firmware (`start*cd.elf` and `fixup*cd.dat`) cannot be selected this way - the system will fail to boot.  The only way to enable the cut-down firmware is to specify `gpu_mem=16`. The cut-down firmware removes support for codecs and 3D as well as limiting the initial early-boot framebuffer to 1080p @  16bpp - although KMS can replace this with up-to 32bpp 4K framebuffer(s) at a later stage as with any firmware.
+The `start_file` and the `fixup_file` are a matched pair - using unmatched files will stop the board from booting. This is an advanced option, so we advise that you use `start_x` and `start_debug` rather than this option.
+
+NOTE: Cut-down firmware (`start*cd.elf` and `fixup*cd.dat`) cannot be selected this way - the system will fail to boot.  The only way to enable the cut-down firmware is to specify `gpu_mem=16`. The cut-down firmware removes support for codecs and 3D as well as limiting the initial early-boot framebuffer to 1080p @16bpp - although KMS can replace this with up to 32bpp 4K framebuffer(s) at a later stage as with any firmware.
 
 NOTE: The Raspberry Pi 5 firmware is self-contained in the bootloader EEPROM.
 
@@ -17,9 +19,9 @@ NOTE: The Raspberry Pi 5 firmware is self-contained in the bootloader EEPROM.
 
 === `kernel`
 
-`kernel` is the alternative filename on the boot partition to use when loading the kernel. The default value on the Raspberry Pi 1, Zero and Zero W, and Raspberry Pi Compute Module 1 is `kernel.img`. The default value on the Raspberry Pi 2, 3, 3+ and Zero 2 W, and Raspberry Pi Compute Modules 3 and 3+ is `kernel7.img`. The default value on the Raspberry Pi 4 and 400, and Raspberry Pi Compute Module 4 is `kernel8.img`, or `kernel7l.img` if `arm_64bit` is set to 0.
+`kernel` is the alternative filename on the boot partition for loading the kernel. The default value on the Raspberry Pi 1, Zero and Zero W, and Raspberry Pi Compute Module 1 is `kernel.img`. The default value on the Raspberry Pi 2, 3, 3+ and Zero 2 W, and Raspberry Pi Compute Modules 3 and 3+ is `kernel7.img`. The default value on the Raspberry Pi 4 and 400, and Raspberry Pi Compute Module 4 is `kernel8.img`, or `kernel7l.img` if `arm_64bit` is set to 0.
 
-The Raspberry Pi 5 firmware defaults to loading `kernel_2712.img` because this image contains optimisations specific to Raspberry Pi 5 (e.g. 16K page-size). If this file is not present then the common 64-bit kernel (`kernel8.img`) will be loaded instead.
+The Raspberry Pi 5 firmware defaults to loading `kernel_2712.img` because this image contains optimisations specific to Raspberry Pi 5 (e.g. 16K page-size). If this file is not present, then the common 64-bit kernel (`kernel8.img`) will be loaded instead.
 
 === `arm_64bit`
 
@@ -29,11 +31,7 @@ In 64-bit mode, the firmware will choose an appropriate kernel (e.g. `kernel8.im
 
 Defaults to 1 on Pi 4s (Pi 4B, Pi 400, CM4 and CM4S), and 0 on all other platforms. However, if the name given in an explicit `kernel` option matches one of the known kernels then `arm_64bit` will be set accordingly.
 
-NOTE: 64-bit kernels may be uncompressed image files or a gzip archive of an image (which can still be called kernel8.img; the bootloader will recognize the archive from the signature bytes at the beginning).
-
-NOTE: The 64-bit kernel will only work on the Raspberry Pi 3, 3+, 4, 400, Zero 2 W and 2B rev 1.2, and Raspberry Pi Compute Modules 3, 3+ and 4.
-
-NOTE: Raspberry Pi 5 only supports 64-bit kernel so this parameter has been removed.
+NOTE: 64-bit kernels may be uncompressed image files or a gzip archive of an image (which can still be called kernel8.img; the bootloader will recognize the archive from the signature bytes at the beginning). The 64-bit kernel will only work on the Raspberry Pi 3, 3+, 4, 400, Zero 2 W and 2B rev 1.2, and Raspberry Pi Compute Modules 3, 3+ and 4. Raspberry Pi 5 only supports a 64-bit kernel, so this parameter has been removed for that device.
 
 === `ramfsfile`
 
@@ -49,8 +47,9 @@ NOTE: Newer firmware supports the loading of multiple `ramfs` files. You should 
 
 The `initramfs` command specifies both the ramfs filename *and* the memory address to which to load it. It performs the actions of both `ramfsfile` and `ramfsaddr` in one parameter. The address can also be `followkernel` (or `0`) to place it in memory after the kernel image. Example values are: `initramfs initramf.gz 0x00800000` or `initramfs init.gz followkernel`. As with `ramfsfile`, newer firmwares allow the loading of multiple files by comma-separating their names.
 
-NOTE: This option uses different syntax from all the other options, and you should not use a `=` character here.
+NOTE: This option uses different syntax from all the other options, and you should not use the `=` character here.
 
+[[auto_initramfs]]
 === `auto_initramfs`
 
 If `auto_initramfs` is set to `1`, look for an initramfs file using the same rules as the kernel selection.
@@ -58,7 +57,7 @@ If `auto_initramfs` is set to `1`, look for an initramfs file using the same rul
 [[disable_poe_fan]]
 === `disable_poe_fan`
 
-By default, a probe on the I2C bus will happen at startup, even when a PoE HAT is not attached. Setting this option to 1 disables control of a PoE HAT fan through I2C (on pins ID_SD & ID_SC). If you are not intending to use a PoE HAT doing this is useful if you need to minimise boot time.
+By default, a probe on the I2C bus will happen at startup, even when a PoE HAT is not attached. Setting this option to 1 disables control of a PoE HAT fan through I2C (on pins ID_SD & ID_SC). If you are not intending to use a PoE HAT, this is a helpful way to minimise boot time.
 
 === `disable_splash`
 
@@ -75,17 +74,17 @@ Set this option to `0` to prevent the firmware from trying to read an I2C HAT EE
 [[os_prefix]]
 === `os_prefix`
 
-`os_prefix` is an optional setting that allows you to choose between multiple versions of the kernel and Device Tree files installed on the same card. Any value in `os_prefix` is prepended to (stuck in front of) the name of any operating system files loaded by the firmware, where "operating system files" is defined to mean kernels, initramfs, cmdline.txt, .dtbs and overlays. The prefix would commonly be a directory name, but it could also be part of the filename such as "test-". For this reason, directory prefixes must include the trailing `/` character.
+`os_prefix` is an optional setting that allows you to choose between multiple versions of the kernel and Device Tree files installed on the same card. Any value in `os_prefix` is prepended to the name of any operating system files loaded by the firmware, where "operating system files" is defined to mean kernels, initramfs, cmdline.txt, .dtbs and overlays. The prefix would commonly be a directory name, but it could also be part of the filename such as "test-". For this reason, directory prefixes must include the trailing `/` character.
 
 In an attempt to reduce the chance of a non-bootable system, the firmware first tests the supplied prefix value for viability - unless the expected kernel and .dtb can be found at the new location/name, the prefix is ignored (set to ""). A special case of this viability test is applied to overlays, which will only be loaded from `+${os_prefix}${overlay_prefix}+` (where the default value of <<overlay_prefix,`overlay_prefix`>> is "overlays/") if `+${os_prefix}${overlay_prefix}README+` exists, otherwise it ignores `os_prefix` and treats overlays as shared.
 
-(The reason the firmware checks for the existence of key files rather than directories when checking prefixes is twofold - the prefix may not be a directory, and not all boot methods support testing for the existence of a directory.)
+(The reason the firmware checks for the existence of key files rather than directories when checking prefixes is twofold: the prefix may not be a directory, and not all boot methods support testing for the existence of a directory.)
 
 NOTE: Any user-specified OS file can bypass all prefixes by using an absolute path (with respect to the boot partition) - just start the file path with a `/`, e.g. `kernel=/my_common_kernel.img`.
 
 See also <<overlay_prefix,`overlay_prefix`>> and xref:legacy_config_txt.adoc#upstream_kernel[`upstream_kernel`].
 
-=== `otg_mode` (Raspberry Pi 4 Only)
+=== `otg_mode` (Raspberry Pi 4 only)
 
 USB On-The-Go (often abbreviated to OTG) is a feature that allows supporting USB devices with an appropriate OTG cable to configure themselves as USB hosts. On older Raspberry Pis, a single USB 2 controller was used in both USB host and device mode.
 
@@ -98,7 +97,7 @@ NOTE: Because CM4 and CM4IO don't include the external USB 3 controller, Raspber
 [[overlay_prefix]]
 === `overlay_prefix`
 
-Specifies a subdirectory/prefix from which to load overlays - defaults to `overlays/` (note the trailing `/`). If used in conjunction with <<os_prefix,`os_prefix`>>, the `os_prefix` comes before the `overlay_prefix`, i.e. `dtoverlay=disable-bt` will attempt to load `+${os_prefix}${overlay_prefix}disable-bt.dtbo+`.
+Specifies a subdirectory/prefix from which to load overlays, and defaults to `overlays/` (note the trailing `/`). If used in conjunction with <<os_prefix,`os_prefix`>>, the `os_prefix` comes before the `overlay_prefix`, i.e. `dtoverlay=disable-bt` will attempt to load `+${os_prefix}${overlay_prefix}disable-bt.dtbo+`.
 
 NOTE: Unless `+${os_prefix}${overlay_prefix}README+` exists, overlays are shared with the main OS (i.e. `os_prefix` is ignored).
 

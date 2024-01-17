@@ -15,7 +15,7 @@ Revision    : a02082
 Serial      : 00000000765fc593
 ----
 
-NOTE: All Raspberry Pi computers report `BCM2835`, even those with BCM2836, BCM2837 and BCM2711 processors. You should not use this string to detect the processor. Decode the revision code using the information below, or `cat /sys/firmware/devicetree/base/model`.
+NOTE: All Raspberry Pi computers report `BCM2835`, even those with BCM2836, BCM2837, BCM2711, and BCM2712 processors. You should not use this string to detect the processor. Decode the revision code using the information below, or `cat /sys/firmware/devicetree/base/model`.
 
 === Old-style revision codes
 
@@ -394,6 +394,12 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 512MB
 | Sony UK
 
+| 9020e1
+| 3A+
+| 1.1
+| 512MB
+| Sony UK
+
 | 920092
 | Zero
 | 1.2
@@ -439,6 +445,12 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | a020d3
 | 3B+
 | 1.3
+| 1GB
+| Sony UK
+
+| a020d4
+| 3B+
+| 1.4
 | 1GB
 | Sony UK
 

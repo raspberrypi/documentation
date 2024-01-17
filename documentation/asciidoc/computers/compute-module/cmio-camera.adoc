@@ -2,8 +2,6 @@
 
 The Compute Module has two CSI-2 camera interfaces: CAM1 and CAM0. This section explains how to connect one or two Raspberry Pi Cameras to a Compute Module using the CAM1 and CAM0 interfaces with a Compute Module I/O Board.
 
-IMPORTANT: Camera modules are not hot-pluggable. *Always* power down your board before connecting or disconnecting a camera module.
-
 === Update your system
 
 Before configuring a camera, ensure your system runs the latest available software:
@@ -17,7 +15,7 @@ sudo apt full-upgrade
 
 To connect a single camera to a Compute Module, complete the following steps:
 
-. Power the Compute Module down.
+. Disconnect the Compute Module from power.
 . Connect the Camera Module to the CAM1 port using a RPI-CAMERA board or a Raspberry Pi Zero camera cable.
 +
 image::images/CMIO-Cam-Adapter.jpg[Connecting the adapter board]
@@ -30,6 +28,7 @@ image::images/CMIO-Cam-Adapter.jpg[Connecting the adapter board]
 +
 image::images/CMIO-Cam-GPIO.jpg[GPIO connection for a single camera]
 
+. Reconnect the Compute Module to power.
 
 . Remove (or comment out with the prefix `#`) the following lines, if they exist, in `/boot/firmware/config.txt`:
 +
@@ -40,7 +39,6 @@ camera_auto_detect=1
 ----
 dtparam=i2c_arm=on
 ----
-NOTE: If your Compute Module includes onboard EMMC storage, you can boot, edit the boot configuration, then reboot to load the configuration changes.
 
 . _(CM1, CM3, CM3+, and CM4S only)_: Add the following directive to `/boot/firmware/config.txt` to accommodate the swapped GPIO pin assignment on the I/O board:
 +
@@ -52,7 +50,7 @@ dtoverlay=cm-swap-i2c0
 +
 ----
 dtparam=cam1_reg
----- 
+----
 
 . Add the appropriate directive to `/boot/firmware/config.txt` to manually configure the driver for your camera model:
 +
@@ -61,7 +59,7 @@ dtparam=cam1_reg
 | camera model
 | directive
 
-| v1 camera 
+| v1 camera
 | `dtoverlay=ov5647,cam1`
 
 | v2 camera
@@ -77,7 +75,7 @@ dtparam=cam1_reg
 | `dtoverlay=imx296,cam1`
 |===
 
-. Power the Compute Module on.
+. Reboot your Compute Module with `sudo reboot`.
 
 . Run the following command to check the list of detected cameras:
 +
@@ -90,8 +88,8 @@ You should see your camera model, referred to by the driver directive in the tab
 
 To connect two cameras to a Compute Module, complete the following steps:
 
-. Follow the single camera quickstart above.
-. Power the Compute Module down.
+. Follow the single camera instructions above.
+. Disconnect the Compute Module from power.
 . Connect the Camera Module to the CAM0 port using a RPI-CAMERA board or a Raspberry Pi Zero camera cable.
 +
 image::images/CMIO-Cam-Adapter.jpg[Connect the adapter board]
@@ -107,12 +105,13 @@ image:images/CMIO-Cam-GPIO2.jpg[GPIO connection with additional camera]
 +
 image:images/j6_vertical.jpg[Connect the J6 GPIO pins in vertical orientation]
 
+. Reconnect the Compute Module to power.
+
 . _(CM1, CM3, CM3+, and CM4S only)_: Add the following directive to `/boot/firmware/config.txt` to assign GPIO 31 as the CAM0 regulator:
 +
 ----
 dtparam=cam0_reg
 ----
-NOTE: If your Compute Module includes onboard EMMC storage, you can boot, edit the boot configuration, then reboot to load the configuration changes.
 
 . Add the appropriate directive to `/boot/firmware/config.txt` to manually configure the driver for your camera model:
 +
@@ -121,7 +120,7 @@ NOTE: If your Compute Module includes onboard EMMC storage, you can boot, edit t
 | camera model
 | directive
 
-| v1 camera 
+| v1 camera
 | `dtoverlay=ov5647,cam0`
 
 | v2 camera
@@ -137,7 +136,7 @@ NOTE: If your Compute Module includes onboard EMMC storage, you can boot, edit t
 | `dtoverlay=imx296,cam0`
 |===
 
-. Power the Compute Module on.
+. Reboot your Compute Module with `sudo reboot`.
 
 . Run the following command to check the list of detected cameras:
 +
@@ -146,7 +145,6 @@ rpicam-hello --list
 ----
 +
 You should see both camera models, referred to by the driver directives in the table above, in the output.
-
 
 === Software
 

@@ -1,125 +1,65 @@
-== Attaching the Official 7-inch Display
+== Attaching the official 7-inch display
 
-NOTE: These instructions are intended for advanced users, if anything is unclear please use the https://forums.raspberrypi.com/viewforum.php?f=98[Raspberry Pi Compute Module forums] for technical help.
+NOTE: These instructions are intended for advanced users. If anything is unclear, use the https://forums.raspberrypi.com/viewforum.php?f=98[Raspberry Pi Compute Module forums] for technical help.
 
-Please ensure your system software is updated before starting. Largely speaking the approach taken for Compute Modules 1, 3, and 4 is the same, but there are minor differences in physical setup required. It will be indicated where a step applies only to a specific platform.
+Update your system software and firmware to the latest version before starting.
+Compute Modules mostly use the same process, but sometimes physical differences force changes for a particular model.
 
-WARNING: The Raspberry Pi Zero camera cable cannot be used as an alternative to the RPI-DISPLAY adaptor, because its wiring is different.
+=== Connect a display to DISP1
 
-WARNING: Please note that the display is *not* designed to be hot pluggable. It (and camera modules) should always be connected or disconnected with the power off.
+NOTE: The Raspberry Pi Zero camera cable cannot be used as an alternative to the RPI-DISPLAY adapter. The two cables have distinct wiring.
 
-=== Quickstart Guide (Display Only)
+To connect a display to DISP1:
 
-Connecting to DISP1
+. Disconnect the Compute Module from power.
+. Connect the display to the DISP1 port on the Compute Module IO board through the 22W to 15W display adapter.
+. _(CM1, CM3, CM3+, and CM4S only)_: Connect the following GPIO pins with jumper cables:
+  * `0` to `CD1_SDA`
+  * `1` to `CD1_SCL`
 
-. Connect the display to the DISP1 port on the Compute Module IO board through the 22W to 15W display adaptor.
-. (CM1 and CM3 only) Connect these pins together with jumper wires:
+. Reconnect the Compute Module to power.
+. Add the following line to xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]:
 +
+[source,bash]
 ----
- GPIO0 - CD1_SDA
- GPIO1 - CD1_SCL
+dtoverlay=vc4-kms-dsi-7inch
 ----
+. Reboot your Compute Module with `sudo reboot`. Your device should detect and begin displaying output to your display.
 
-. Power up the Compute Module and run:
+=== Connect a display to DISP0
+
+To connect a display to DISP0:
+
+. Connect the display to the DISP0 port on the Compute Module IO board through the 22W to 15W display adapter.
+. _(CM1, CM3, CM3+, and CM4S only)_: Connect the following GPIO pins with jumper cables:
+  * `28` to `CD0_SDA`
+  * `29` to `CD0_SCL`
+
+. Reconnect the Compute Module to power.
+. Add the following line to `/boot/firmware/config.txt`:
 +
-`+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-only.bin -O /boot/firmware/dt-blob.bin+`
-
-. Reboot for the `dt-blob.bin` file to be read.
-
-
-Connecting to DISP0
-
-. Connect the display to the DISP0 port on the Compute Module IO board through the 22W to 15W display adaptor.
-. (CM1 and CM3 only) Connect these pins together with jumper wires:
-+
+[source,bash]
 ----
- GPIO28 - CD0_SDA
- GPIO29 - CD0_SCL
+dtoverlay=vc4-kms-dsi-7inch
 ----
+. Reboot your Compute Module with `sudo reboot`. Your device should detect and begin displaying output to your display.
 
-. Power up the Compute Module and run:
-+
-`+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp0-only.bin -O /boot/firmware/dt-blob.bin+`
+=== Disable touchscreen
 
-. Reboot for the `dt-blob.bin` file to be read.
+The touchscreen requires no additional configuration. Connect it to your Compute Module, and both the touchscreen element and display should work once successfully detected.
 
-=== Quickstart Guide (Display and Cameras)
+To disable the touchscreen element, but still use the display, add the following line to `/boot/firmware/config.txt`:
 
-==== To enable the display and one camera:*
-
-. Connect the display to the DISP1 port on the Compute Module IO board through the 22W to 15W display adaptor, called RPI-DISPLAY.
-. Connect the Camera Module to the CAM1 port on the Compute Module IO board through the 22W to 15W adaptor called RPI-CAMERA. Alternatively, the Raspberry Pi Zero camera cable can be used.
-. (CM1 and CM3 only) Connect these pins together with jumper wires:
-+
+[source]
 ----
- GPIO0 - CD1_SDA
- GPIO1 - CD1_SCL
- GPIO2 - CAM1_IO1
- GPIO3 - CAM1_IO0
-----
-+
-image:images/CMIO-Cam-Disp-GPIO.jpg[GPIO connection for a single display and Camera Modules]
- (Please note this image needs to be updated to have the extra jumper leads removed and use the standard wiring (2&3 not 4&5))
-
-. Power up the Compute Module and run:
-+
-`+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-cam1.bin -O /boot/firmware/dt-blob.bin+`
-
-. Reboot for the `dt-blob.bin` file to be read.
-
-==== To enable the display and both cameras:*
-
-. Follow the steps for connecting the display and one camera above.
-. Connect the Camera Module to the CAM0 port on the Compute Module IO board through the 22W to 15W adaptor called RPI-CAMERA. Alternatively, the Raspberry Pi Zero camera cable can be used.
-. (CM1 and CM3 only) Add links:
-+
-----
- GPIO28 - CD0_SDA
- GPIO29 - CD0_SCL
- GPIO30 - CAM0_IO1
- GPIO31 - CAM0_IO0
+disable_touchscreen=1
 ----
 
-. (CM4 only) Add jumpers to J6.
-. Power up the Compute Module and run:
-+
-`+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-cam2.bin -O /boot/firmware/dt-blob.bin+`
+=== Disable display
 
-. Reboot for the `dt-blob.bin` file to be read.
-+
-image:images/CMIO-Cam-Disp-Example.jpg[Camera Preview on the 7 inch display]
- (Please note this image needs to be updated to show two Camera Modules and the standard wiring)
+To entirely ignore the display when connected, add the following line to to `/boot/firmware/config.txt`:
 
-=== Software Support
-
-There is no additional configuration required to enable the touchscreen. The touch interface should work out of the box once the screen is successfully detected.
-
-If you wish to disable the touchscreen element and only use the display side, you can add the command `disable_touchscreen=1` to xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] to do so.
-
-To make the firmware to ignore the display even if connected, then add `ignore_lcd=1` to `/boot/firmware/config.txt`.
-
-=== Firmware Configuration
-
-The firmware looks at the dt-blob.bin file for the relevant configuration to use
-for the screen. It looks at the pin_number@ defines for
-
+[source]
 ----
-DISPLAY_I2C_PORT
-DISPLAY_SDA
-DISPLAY_SCL
-DISPLAY_DSI_PORT
+ignore_lcd=1
 ----
-
-The I2C port, SDA and SCL pin numbers are self explanatory. DISPLAY_DSI_PORT
-selects between DSI1 (the default) and DSI0.
-
-Once all the required changes have been made to the `dts` file, it needs to be compiled and placed on the boot partition of the device.
-
-Instructions for doing this can be found on the xref:configuration.adoc#change-the-default-pin-configuration[Pin Configuration] page.
-
-==== Sources
-
-* https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-only.dts[dt-blob-disp1-only.dts]
-* https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-cam1.dts[dt-blob-disp1-cam1.dts]
-* https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-cam2.dts[dt-blob-disp1-cam2.dts]
-* https://datasheets.raspberrypi.com/cmio/dt-blob-disp0-only.dts[dt-blob-disp0-only.dts] (Uses wiring as for CAM0)

@@ -1,9 +1,8 @@
-== Legacy Raspberry Pi 4 HDMI Pipeline
-(see also xref:config_txt.adoc#raspberry-pi-4-hdmi-pipeline[config.txt Raspberry Pi 4 HDMI Pipeline])
+== Legacy Raspberry Pi 4 HDMI pipeline
 
 IMPORTANT: When using the VC4 KMS graphics driver, the complete display pipeline is managed by Linux - this includes the HDMI outputs. These settings only apply to the legacy FKMS and firmware-based graphics driver.
 
-As explained xref:config_txt.adoc#raspberry-pi-4-hdmi-pipeline[here], the Raspberry Pi 4 is unable to output over HDMI at 1366x768 @ 60Hz. On some monitors it is possible to configure them to use 1360x768 @ 60Hz. They typically do not advertise this mode via their EDID so the selection can't be made automatically, but it can be manually chosen by adding
+Raspberry Pi 4 is unable to output over HDMI at 1366×768 @ 60Hz. On some monitors it is possible to configure them to use 1360×768 @ 60Hz. They do not typically advertise this mode via their EDID, so the selection can't be made automatically, but it can be selected manually by adding:
 
 [source]
 ----
@@ -12,8 +11,8 @@ hdmi_mode=87
 hdmi_cvt=1360 768 60
 ----
 
-to xref:legacy_config_txt.adoc#legacy-video-options[config.txt].
+...to xref:legacy_config_txt.adoc#legacy-video-options[config.txt].
 
-Timings specified manually via a `hdmi_timings=` line in `config.txt` will also need to comply with the restriction of all horizontal timing parameters being divisible by 2.
+Timings specified manually via a `hdmi_timings=` line in `config.txt` will also need to comply with the restriction of all horizontal timing parameters being divisible by two.
 
-`dpi_timings=` are not restricted in the same way as that pipeline still only runs at a single pixel per clock cycle.
+`dpi_timings=` are not restricted in the same way, as that pipeline still only runs at a single pixel per clock cycle.

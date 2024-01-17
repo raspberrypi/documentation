@@ -1,22 +1,22 @@
-== Audio Configuration
+== Audio configuration
 
-The Raspberry Pi has up to three audio output modes: HDMI 1 and 2, if present, and a headphone jack. You can switch between these modes at any time.
+The Raspberry Pi has up to three audio output modes: HDMI 1 and 2, and a headphone jack. You can switch between these modes at any time.
 
 NOTE: Audio output over HDMI will provide better sound quality than audio output over the headphone jack.
 
-If your HDMI monitor or TV has built-in speakers, the audio can be played over the HDMI cable, but you can switch it to a set of headphones or other speakers plugged into the headphone jack. If your display claims to have speakers, sound is output via HDMI by default; if not, it is output via the headphone jack. This may not be the desired output setup, or the auto-detection is inaccurate, in which case you can manually switch the output.
+If your HDMI monitor or TV has built-in speakers, the audio can be played over the HDMI cable, but you can switch it to a set of headphones or other speakers plugged into the headphone jack. If your display has integrated speakers, audio output is via HDMI by default. Otherwise, it is played via the headphone jack. If this is not your desired output setup, or if the auto-detection is inaccurate, you can manually switch the output.
 
-=== Changing the Audio Output
+=== Changing the audio output
 
-There are two ways of setting the audio output; using the desktop volume control, or using the `raspi-config` command line tool.
+There are two ways of setting the audio output: using the desktop volume control, or using the `raspi-config` command-line tool.
 
-==== Using the Desktop
+==== Desktop volume control
 
-Right-clicking the volume icon on the desktop taskbar brings up the audio output selector; this allows you to select between the internal audio outputs. It also allows you to select any external audio devices, such as USB sound cards and Bluetooth audio devices. A tick is shown against the currently selected audio output device -- simply left-click the desired output in the pop-up menu to change this. The volume control and mute operate on the currently selected device.
+Right-clicking the volume icon on the desktop taskbar brings up the audio output selector, allowing you to choose between the internal audio outputs. It also allows you to select any external audio devices, such as USB sound cards and Bluetooth audio devices. A tick is shown against the currently selected audio output device. Left-click the desired output in the pop-up menu to change this setting. 
 
 ===== Pro Audio profile
 
-You may see a device profile named "Pro Audio" when viewing an audio device on the system tray. This profile exposes the maximum number of channels across every audio device allowing you greater control over the routing of signals. Unless you have a specific use case in mind for this type of control, we recommend using a different device profile.
+You may see a device profile named Pro Audio when viewing an audio device on the system tray. This profile exposes the maximum number of channels across every audio device, allowing you greater control over the routing of signals. Unless you have a specific use-case in mind for this type of control, we recommend using a different device profile.
 
 For more information about the Pro Audio profile, visit https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/FAQ#what-is-the-pro-audio-profile[PipeWire's FAQ].
 
@@ -30,7 +30,7 @@ sudo raspi-config
 
 This will open the configuration screen:
 
-Select `System Options` (currently option 1, but yours may be different) and press `Enter`.
+Select `System options` (currently option 1, but yours may be different) and press `Enter`.
 
 Now select the `Audio` option (currently option S2, but yours may be different) and press `Enter`.
 

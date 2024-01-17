@@ -1,3 +1,3 @@
-== Legacy Options
+== Legacy options
 
-The `config.txt` options described here are considered legacy settings, are not used by Raspberry Pi OS Bookworm, and are no longer officially supported. They either relate to older software such as the firmware graphics driver, they've been deprecated, or they are very unlikely to be used by most people. However they remain documented here as they may still be of benefit to users of older OSes, or people doing https://forums.raspberrypi.com/viewforum.php?f=72[bare-metal] development.
+The `config.txt` options described here are considered legacy settings, are not used by Raspberry Pi OS Bookworm, and are no longer officially supported. They either relate to older software such as the firmware graphics driver, have been deprecated, or are very unlikely to be used by most people. However they remain documented here as they may still be of benefit to users of older OSes, or people doing bare-metal development.

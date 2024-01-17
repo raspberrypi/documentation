@@ -1,4 +1,4 @@
-== Memory Options
+== Memory options
 
 === `total_mem`
 

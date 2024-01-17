@@ -6,7 +6,7 @@ The Raspberry Pi 5 has a dedicated debug UART connector. It has a maximum baud r
 .The three-pin UART connector
 image::images/uart-connector.jpg[alt="The 3-pin UART connector",width="70%"]
 
-The UART connector is a three-pin header compatible with the Raspberry Pi Debug Connector https://rptl.io/debug-spec[specification]. A cable terminating in an appropriate JST connector allowing you to connect to the UART is provided with the xref:../microcontrollers/debug-probe.adoc[Debug Probe].
+The UART connector is a three-pin header compatible with the Raspberry Pi Debug Connector https://rptl.io/debug-spec[specification]. The xref:../microcontrollers/debug-probe.adoc[Debug Probe] includes a cable terminating in a three-pin JST-SH connector that can connect to the UART.
 
 .The Raspberry Pi Debug Probe connected to Raspberry Pi 5
 image::images/debug-probe-and-pi5.jpg[alt="The Raspberry Pi Debug Probe connected to Raspberry Pi 5",width="70%"]

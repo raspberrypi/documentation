@@ -1,9 +1,9 @@
-== Camera Settings
+== Camera settings
 
 === `disable_camera_led`
 
-Setting `disable_camera_led` to `1` prevents the red camera LED from turning on when recording video or taking a still picture. This is useful for preventing reflections when the camera is facing a window, for example.
+Setting `disable_camera_led` to `1` prevents the red camera LED from turning on when recording video or taking a still picture. This is useful for preventing reflections, for example when the camera is facing a window.
 
 === `awb_auto_is_greyworld`
 
-Setting `awb_auto_is_greyworld` to `1` allows libraries or applications that do not support the greyworld option internally to capture valid images and videos with NoIR cameras. It switches "auto" awb mode to use the "greyworld" algorithm. This should only be needed for NoIR cameras, or when the High Quality camera has had its xref:../accessories/camera.adoc#filter-removal[IR filter removed].
+Setting `awb_auto_is_greyworld` to `1` allows libraries or applications that do not support the greyworld option internally to capture valid images and videos with NoIR cameras. It switches auto awb mode to use the greyworld algorithm. This should only be needed for NoIR cameras, or when the High Quality camera has had its xref:../accessories/camera.adoc#filter-removal[IR filter removed].

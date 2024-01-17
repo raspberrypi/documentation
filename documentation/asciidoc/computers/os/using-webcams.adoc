@@ -2,7 +2,7 @@
 
 Rather than using the Raspberry Pi xref:../accessories/camera.adoc#about-the-camera-modules[camera module], you can use a standard USB webcam to take pictures and video on your Raspberry Pi.
 
-NOTE: The quality and configurability of the camera module is highly superior to a standard USB webcam.
+NOTE: The quality and configurability of the Raspberry Pi Camera Modules is highly superior to a standard USB webcam.
 
 First, install the `fswebcam` package:
 
@@ -20,9 +20,9 @@ sudo usermod -a -G video <username>
 
 To check that the user has been added to the group correctly, use the `groups` command.
 
-=== Basic Usage
+=== Basic usage
 
-Enter the command `fswebcam` followed by a filename and a picture will be taken using the webcam, and saved to the filename specified:
+Enter the command `fswebcam` followed by a filename, and a picture will be taken using the webcam and saved to the filename specified:
 
 [,bash]
 ----
@@ -48,7 +48,7 @@ image::images/image.jpg[Basic image capture]
 
 NOTE: The small default resolution used, and the presence of a banner showing the timestamp.
 
-The webcam used in this example has a resolution of `1280 x 720` so to specify the resolution I want the image to be taken at, use the `-r` flag:
+The webcam used in this example has a resolution of `1280 x 720`. So to specify the resolution you want the image to be taken at, use the `-r` flag:
 
 [,bash]
 ----
@@ -71,9 +71,9 @@ Writing JPEG image to 'image2.jpg'.
 
 image::images/image2.jpg[Full resolution image]
 
-Picture now taken at the full resolution of the webcam, with the banner present.
+A picture is now taken using the full resolution of the webcam, with the banner present.
 
-==== Removing the Banner
+==== Removing the banner
 
 Now add the `--no-banner` flag:
 
@@ -82,7 +82,7 @@ Now add the `--no-banner` flag:
 fswebcam -r 1280x720 --no-banner image3.jpg
 ----
 
-which shows the following information:
+...which shows the following information:
 
 ----
 --- Opening /dev/video0...
@@ -101,7 +101,7 @@ image::images/image3.jpg[Full resolution image with no banner]
 
 Now the picture is taken at full resolution with no banner.
 
-=== Automating Image Capture
+=== Automating image capture
 
 You can write a Bash script which takes a picture with the webcam. The script below saves the images in the `/home/pi/webcam` directory, so create the `webcam` subdirectory first with:
 
@@ -121,7 +121,7 @@ DATE=$(date +"%Y-%m-%d_%H%M")
 fswebcam -r 1280x720 --no-banner /home/pi/webcam/$DATE.jpg
 ----
 
-This script will take a picture and name the file with a timestamp. Say we saved it as `webcam.sh`, we would first make the file executable:
+This script will take a picture and name the file with a timestamp. Saving the file as `webcam.sh`, first make the file executable:
 
 [,bash]
 ----
@@ -135,7 +135,7 @@ Then run with:
 ./webcam.sh
 ----
 
-Which would run the commands in the file and give the usual output:
+...which would run the commands in the file and give the usual output.
 
 ----
 --- Opening /dev/video0...
@@ -150,9 +150,9 @@ Disabling banner.
 Writing JPEG image to '/home/pi/webcam/2013-06-07_2338.jpg'.
 ----
 
-=== Time-Lapse Captures
+=== Time-lapse captures
 
-You can use `cron` to schedule taking a picture at a given interval, such as every minute to capture a time-lapse.
+You can use `cron` to schedule taking a series of pictures at a given interval, such as once a minute, to capture a time-lapse scene.
 
 First open the cron table for editing:
 
@@ -167,12 +167,12 @@ This will either ask which editor you would like to use, or open in your default
 * * * * * /home/pi/webcam.sh 2>&1
 ----
 
-Save and exit and you should see the message:
+Save and exit, and you should see the message:
 
 [,bash]
 ----
 crontab: installing new crontab
 ----
 
-Ensure your script does not save each picture taken with the same filename. This will overwrite the picture each time.
+Ensure your script does not save each picture with the same filename. This will overwrite the picture every time.
 
