@@ -1,6 +1,6 @@
 === libav integration with rpicam-vid
 
-`rpicam-vid` can use the ffmpeg/libav codec backend to encode audio and video streams and either save to a local file or stream over the network. At present, video is encoded through the hardware H.264 encoder, and audio is encoded by a number of available software encoders. To list the available output formats, use the `ffmpeg -formats` command.
+`rpicam-vid` can use the ffmpeg/libav codec backend to encode audio and video streams and either save to a local file or stream over the network. At present, video is encoded through the hardware H.264 encoder on those models of Raspberry Pi that support hardware encoding, and audio is encoded by a number of available software encoders. To list the available output formats, use the `ffmpeg -formats` command.
 
 To enable the libav backend, use the `--codec libav` command line option. Once enabled, the following configuration options are available:
 
@@ -8,7 +8,7 @@ To enable the libav backend, use the `--codec libav` command line option. Once e
     --libav-format,     libav output format to be used <string>
 ----
 
-Set the libav output format to use. These output formats can be specified as containers (e.g. mkv, mp4, avi) or stream output (e.g. h264 or mpegts). If this option is not provided, libav tries to deduce the output format from the filename specified by the `-o` command line argument.
+Set the libav output format to use. These output formats can be specified as containers (e.g. mkv, mp4, avi), or stream output (e.g. h264 or mpegts). If this option is not provided, libav tries to deduce the output format from the filename specified by the `-o` command line argument.
 
 Example: To save a video in an mkv container, the following commands are equivalent:
 
