@@ -1,4 +1,4 @@
-== Onboard Analogue Audio (3.5mm Jack)
+== Onboard analogue audio (3.5mm jack)
 
 The onboard audio output uses config options to change the way the analogue audio is driven, and whether some firmware features are enabled or not.
 
@@ -8,11 +8,11 @@ The onboard audio output uses config options to change the way the analogue audi
 
 `audio_pwm_mode=2` (the default) selects high quality analogue audio using an advanced modulation scheme. 
 
-NOTE: This option uses more GPU compute resources and can interfere with some use cases.
+NOTE: This option uses more GPU compute resources and can interfere with some use cases on some models.
 
 === `disable_audio_dither`
 
-By default, a 1.0LSB dither is applied to the audio stream if it is routed to the analogue audio output. This can create audible background "hiss" in some situations, for example when the ALSA volume is set to a low level. Set `disable_audio_dither` to `1` to disable dither application.
+By default, a 1.0LSB dither is applied to the audio stream if it is routed to the analogue audio output. This can create audible background hiss in some situations, for example when the ALSA volume is set to a low level. Set `disable_audio_dither` to `1` to disable dither application.
 
 === `enable_audio_dither`
 
