@@ -1,10 +1,10 @@
-== Patching the Kernel
+== Patching the kernel
 
-When xref:linux_kernel.adoc#building[building] your custom kernel you may wish to apply patches, or collections of patches ('patchsets'), to the Linux kernel.
+When xref:linux_kernel.adoc#building[building] your custom kernel you may wish to apply patches, or collections of patches (patchsets), to the Linux kernel.
 
-Patchsets are often provided with newer hardware as a temporary measure, before the patches are applied to the upstream Linux kernel ('mainline') and then propagated down to the Raspberry Pi kernel sources. However, patchsets for other purposes exist, for instance to enable a fully pre-emptible kernel for real-time usage.
+Patchsets are often provided with newer hardware as a temporary measure, before the patches are applied to the upstream (mainline) Linux kernel and then propagated down to the Raspberry Pi kernel sources. However, patchsets for other purposes exist, for instance to enable a fully preemptible kernel for real-time usage.
 
-=== Version Identification
+=== Version identification
 
 It's important to check what version of the kernel you have when downloading and applying patches. In a kernel source directory, running `head Makefile -n 3` will show you the version the sources relate to:
 
@@ -17,9 +17,9 @@ SUBLEVEL = 38
 
 In this instance, the sources are for a 6.1.38 kernel. You can see what version you're running on your system with the `uname -r` command.
 
-=== Applying Patches
+=== Applying patches
 
-How you apply patches depends on the format in which the patches are made available. Most patches are a single file, and applied with the `patch` utility. For example, let's download and patch our example kernel version with the real-time kernel patches:
+How you apply patches depends on the format in which the patches are made available. Most patches are a single file, and are applied with the `patch` utility. To download and patch our example kernel version with the real-time kernel patches:
 
 [,bash]
 ----
