@@ -1,4 +1,4 @@
-== Licence Key and Codec Options
+== Licence key and codec options
 
 Hardware decoding of additional codecs on the Raspberry Pi 3 and earlier models can be enabled by https://codecs.raspberrypi.com/license-keys/[purchasing a licence] that is locked to the CPU serial number of your Raspberry Pi.
 
