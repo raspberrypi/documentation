@@ -1,6 +1,8 @@
 === `rpicam-vid`
 
-The video capture application for Raspberry Pi is `rpicam-vid`. By default, it uses the Raspberry Pi's hardware H.264 encoder. It will display a preview window and write the encoded bitstream to the specified output. For example, to write a ten-second video to file:
+The video capture application for Raspberry Pi is `rpicam-vid`. It will display a preview window and write the encoded bitstream to the specified output. For example, to write a ten-second video to file:
+
+NOTE: On those Raspberry Pi models with a hardware H.264 encoder it is used by default.
 
 [,bash]
 ----
