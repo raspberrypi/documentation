@@ -25,6 +25,6 @@ You might need a unique USB PID if you need to provide a custom driver for Windo
 
 USB-IF have given Raspberry Pi permission to license USB product ID values for its Vendor ID (`0x2E8A`) for common silicon components used with RP2040.
 
-To reserve a USB PID associated with Raspberry Pi's vendor ID, follow the instructions found at the https://github.com/raspberrypi/usb-pid[Raspberry Pi USB PID git repository].
+To reserve a USB PID associated with Raspberry Pi's vendor ID, follow the instructions in the https://github.com/raspberrypi/usb-pid[Raspberry Pi USB PID git repository].
 
 NOTE: If you use the standard RP2040 PID, you can use the `iManufacturer`, `iProduct`, and `iSerial` strings to uniquely identify your device.
