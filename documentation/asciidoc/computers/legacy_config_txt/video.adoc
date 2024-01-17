@@ -1301,7 +1301,7 @@ These values are valid if `hdmi_group=2` (DMT):
 | 1366x768
 | 60Hz
 | 16:9
-| xref:config_txt.adoc#raspberry-pi-4-hdmi-pipeline[NOT on Raspberry Pi 4]
+| xref:config_txt.adoc#hdmi-pipeline-for-raspberry-pi-4[NOT on Raspberry Pi 4]
 
 | 82
 | 1920x1080
