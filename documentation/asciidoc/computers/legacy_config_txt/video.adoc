@@ -1,9 +1,9 @@
-== Legacy Video Options
+== Legacy video options
 (see also xref:config_txt.adoc#video-options[config.txt Video Options])
 
-=== HDMI Mode
+=== HDMI mode
 
-NOTE: Because the Raspberry Pi 4 and Raspberry Pi 400 have two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternatives mechanisms can be found in the HDMI sub-section of the xref:legacy_config_txt.adoc#legacy-conditional-filters[conditionals section] of the documentation.
+NOTE: Because Raspberry Pi 4 and Raspberry Pi 400 have two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternative mechanisms can be found in the HDMI sub-section of the xref:legacy_config_txt.adoc#legacy-conditional-filters[conditionals section] of the documentation.
 
 ==== `hdmi_safe`
 
@@ -28,7 +28,7 @@ Setting `hdmi_ignore_edid` to `0xa5000080` enables the ignoring of EDID/display 
 
 ==== `hdmi_edid_file`
 
-Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. More information is available https://forums.raspberrypi.com/viewtopic.php?p=173430#p173430[on the forums].
+Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. 
 
 ==== `hdmi_edid_filename`
 
@@ -60,7 +60,7 @@ Setting `hdmi_ignore_cec_init` to `1` will stop the initial active source messag
 
 ==== `hdmi_ignore_cec`
 
-Setting `hdmi_ignore_cec` to `1` pretends that https://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC[CEC] is not supported at all by the TV. No CEC functions will be supported.
+Setting `hdmi_ignore_cec` to `1` pretends that https://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC[CEC] is not supported at all by the display. No CEC functions will be supported.
 
 ==== `cec_osd_name`
 
@@ -95,9 +95,9 @@ The pixel frequency is used by the firmware and KMS to filter HDMI modes. Note, 
 
 ==== `hdmi_blanking`
 
-The `hdmi_blanking` command controls what happens when the operating system asks for the display to be put into standby mode, using DPMS, to save power. If this option is not set or set to 0, the HDMI output is blanked but not switched off. In order to mimic the behaviour of other computers, you can set the HDMI output to switch off as well by setting this option to 1: the attached display will go into a low power standby mode.
+The `hdmi_blanking` command controls what happens when the operating system asks for the display to be put into standby mode, using DPMS, to save power. If this option is not set or set to 0, the HDMI output is blanked but not switched off. In order to mimic the behaviour of other computers, you can set the HDMI output to switch off as well by setting this option to 1: the attached display will go into a low-power standby mode.
 
-NOTE: On the Raspberry Pi 4, setting `hdmi_blanking=1` will not cause the HDMI output to be switched off, since this feature has not yet been implemented. This feature may cause issues when using applications which don't use the framebuffer, such as `omxplayer`.
+NOTE: On Raspberry Pi 4, setting `hdmi_blanking=1` will not cause the HDMI output to be switched off, since this feature has not yet been implemented. This feature may cause issues when using applications which don't use the framebuffer, such as `omxplayer`.
 
 |===
 | hdmi_blanking | result
@@ -131,7 +131,7 @@ The default value for the original Model B and A is `2`. The default value for t
 
 If you are seeing HDMI issues (speckling, interference) then try `7`. Very long HDMI cables may need up to `11`, but values this high should not be used unless absolutely necessary.
 
-This option is ignored on the Raspberry Pi 4.
+This option is ignored on Raspberry Pi 4.
 
 ==== `hdmi_group`
 
@@ -154,15 +154,13 @@ The `hdmi_group` command defines the HDMI output group to be either CEA (Consume
 
 Together with `hdmi_group`, `hdmi_mode` defines the HDMI output format. Format mode numbers are derived from the https://web.archive.org/web/20171201033424/https://standards.cta.tech/kwspub/published_docs/CTA-861-G_FINAL_revised_2017.pdf[CTA specification].
 
-To set a custom display mode not listed here, see more information on https://forums.raspberrypi.com/viewtopic.php?f=29&t=24679[the forums].
-
 NOTE: Not all modes are available on all models.
 
 These values are valid if `hdmi_group=1` (CEA):
 
 [cols=",,,^,"]
 |===
-| hdmi_mode | Resolution | Frequency | Screen Aspect | Notes
+| hdmi_mode | Resolution | Frequency | Screen aspect | Notes
 
 | 1
 | VGA (640x480)
@@ -905,7 +903,7 @@ These values are valid if `hdmi_group=2` (DMT):
 | 1024x768
 | 43Hz
 | 4:3
-| incompatible with the Raspberry Pi
+| incompatible with Raspberry Pi
 
 | 16
 | 1024x768
@@ -1334,7 +1332,7 @@ These values are valid if `hdmi_group=2` (DMT):
 | reduced blanking
 |===
 
-NOTE: There is a https://forums.raspberrypi.com/viewtopic.php?f=26&t=20155&p=195443#p195443[pixel clock limit]. The highest supported mode on models prior to the Raspberry Pi 4 is 1920x1200 at 60Hz with reduced blanking, whilst the Raspberry Pi 4 can support up to 4096x2160 (known as 4k) at 60Hz. Also note that if you are using both HDMI ports of the Raspberry Pi 4 for 4k output, then you are limited to 30Hz on both.
+NOTE: There is a pixel clock limit. The highest supported mode on models prior to the Raspberry Pi 4 is 1920×1200 at 60Hz with reduced blanking, whilst the Raspberry Pi 4 can support up to 4096×2160 (colloquially 4k) at 60Hz. Also note that if you are using both HDMI ports of the Raspberry Pi 4 for 4k output, then you are limited to 30Hz on both.
 
 ==== `hdmi_timings`
 
@@ -1417,26 +1415,26 @@ Forces the EDID content type to a specific value.
 
 The options are:
 
-* `0` = `EDID_ContentType_NODATA`, content type none.
+* `0` = `EDID_ContentType_NODATA`, content type none
 * `1` = `EDID_ContentType_Graphics`, content type graphics, ITC must be set to 1
 * `2` = `EDID_ContentType_Photo`, content type photo
 * `3` = `EDID_ContentType_Cinema`,  content type cinema
 * `4` = `EDID_ContentType_Game`,  content type game
 
-=== Which Values are Valid for my Monitor?
+=== Which values are valid for my monitor?
 
 Your HDMI monitor may only support a limited set of formats. To find out which formats are supported, use the following method:
 
-. Set the output format to VGA 60Hz (`hdmi_group=1` and `hdmi_mode=1`) and boot up your Raspberry Pi
-. Enter the following command to give a list of CEA-supported modes: `/opt/vc/bin/tvservice -m CEA`
-. Enter the following command to give a list of DMT-supported modes: `/opt/vc/bin/tvservice -m DMT`
-. Enter the following command to show your current state: `/opt/vc/bin/tvservice -s`
-. Enter the following commands to dump more detailed information from your monitor: `/opt/vc/bin/tvservice -d edid.dat; /opt/vc/bin/edidparser edid.dat`
+* Set the output format to VGA 60Hz (`hdmi_group=1` and `hdmi_mode=1`) and boot up your Raspberry Pi
+* Enter the following command to give a list of CEA-supported modes: `/opt/vc/bin/tvservice -m CEA`
+* Enter the following command to give a list of DMT-supported modes: `/opt/vc/bin/tvservice -m DMT`
+* Enter the following command to show your current state: `/opt/vc/bin/tvservice -s`
+* Enter the following commands to dump more detailed information from your monitor: `/opt/vc/bin/tvservice -d edid.dat; /opt/vc/bin/edidparser edid.dat`
 
 The `edid.dat` should also be provided when troubleshooting problems with the default HDMI mode.
 
 [[custom-mode]]
-=== Custom Mode
+=== Custom mode
 
 If your monitor requires a mode that is not in one of the tables above, then it's possible to define a custom CVT mode for it instead:
 
@@ -1479,7 +1477,7 @@ hdmi_cvt=<width> <height> <framerate> <aspect> <margins> <interlace> <rb>
 
 Fields at the end can be omitted to use the default values.
 
-Note that this simply *creates* the mode (group 2 mode 87). In order to make the Raspberry Pi use this by default, you must add some additional settings. For example, the following selects an 800 × 480 resolution and enables audio drive:
+Note that this simply *creates* the mode (group 2 mode 87). In order to make the Raspberry Pi use this by default, you must add some additional settings. For example, to select an 800×480 resolution and enable audio drive:
 
 ----
 hdmi_cvt=800 480 60 6
@@ -1490,7 +1488,7 @@ hdmi_drive=2
 
 This may not work if your monitor does not support standard CVT timings.
 
-=== Composite Video Mode
+=== Composite video mode
 
 ==== `sdtv_mode`
 
@@ -1539,7 +1537,7 @@ The `sdtv_aspect` command defines the aspect ratio for composite video output. T
 
 Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
 
-=== LCD Displays and Touchscreens
+=== LCD displays and touchscreens
 
 ==== `display_default_lcd`
 
@@ -1547,13 +1545,13 @@ If a Raspberry Pi Touch Display is detected it will be used as the default displ
 
 ==== `lcd_framerate`
 
-Specify the framerate of the Raspberry Pi Touch Display, in Hertz/fps. Defaults to 60Hz.
+Specify the framerate of the Raspberry Pi Touch Display, in Hz/fps. Defaults to 60Hz.
 
 ==== `lcd_rotate`
 
-This flips the display using the LCD's inbuilt flip functionality, which is a cheaper operation that using the GPU-based rotate operation.
+This flips the display using the LCD's inbuilt flip functionality, which is a computationally cheaper operation than using the GPU-based rotate operation.
 
-For example, `lcd_rotate=2` will compensate for an upside down display.
+For example, `lcd_rotate=2` will compensate for an upside-down display.
 
 ==== `enable_dpi_lcd`
 
@@ -1601,7 +1599,7 @@ The aspect ratio can be set to one of eight values. Choose a value representing 
 
 [cols="1,2,1"]
 |===
-|Aspect Ratio |Name |Value
+|Aspect ratio |Name |Value
 
 | 4:3
 | HDMI_ASPECT_4_3
@@ -1636,7 +1634,7 @@ The aspect ratio can be set to one of eight values. Choose a value representing 
 | 8
 |===
 
-=== Generic Display Options
+=== Generic display options
 
 ==== `hdmi_force_hotplug`
 
@@ -1692,7 +1690,7 @@ The `framebuffer_height` command specifies the console framebuffer height in pix
 
 ==== `max_framebuffer_height`, `max_framebuffer_width`
 
-Specifies the maximum dimensions that the internal frame buffer is allowed to be.
+Specifies the maximum dimensions of the internal frame buffer.
 
 ==== `framebuffer_depth`
 
@@ -1751,9 +1749,9 @@ The options that can be set are:
 
 This configuration entry sets the maximum number of firmware framebuffers that can be created. Valid options are 0, 1, and 2. By default on devices before the Raspberry Pi 4 this is set to 1, so will need to be increased to 2 when using more than one display, for example HDMI and a DSI or DPI display. The Raspberry Pi 4 configuration sets this to 2 by default as it has two HDMI ports.
 
-Generally in most cases it is safe to set this to 2, as framebuffers will only be created when an attached device is actually detected.
+It is safe to set this to 2 in most instances, as framebuffers will only be created when an attached device is actually detected.
 
-Setting this value to 0 can be used to reduce memory requirements when used in headless mode as it will prevent any framebuffers from being allocated.
+Setting this value to 0 can be used to reduce memory requirements when used in headless mode, as it will prevent any framebuffers from being allocated.
 
 ==== `test_mode`
 
@@ -1795,12 +1793,12 @@ For the legacy graphics driver (default on models prior to the Raspberry Pi 4), 
 
 ==== `display_rotate`
 
-`display_rotate` is deprecated in the latest firmware but has been retained for backwards compatibility. Please use `display_lcd_rotate` and `display_hdmi_rotate` instead.
+In the latest firmware, `display_rotate` is deprecated. It has only been retained for backwards compatibility. Please use `display_lcd_rotate` and `display_hdmi_rotate` instead.
 
 Use `display_rotate` to rotate or flip the screen orientation. Parameters are the same as `display_hdmi_rotate`.
 
-=== Other Options
+=== Other options
 
 ==== `dispmanx_offline`
 
-Forces `dispmanx` composition to be done offline in two offscreen framebuffers. This can allow more `dispmanx` elements to be composited, but is slower and may limit screen framerate to typically 30fps.
+Forces `dispmanx` composition to be done offline in two offscreen framebuffers. This can allow more `dispmanx` elements to be composited, but is slower and may limit screen framerate to around 30fps.
