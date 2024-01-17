@@ -1,19 +1,19 @@
-== Legacy Memory Options
+== Legacy memory options
 (see also xref:config_txt.adoc#memory-options[config.txt Memory Options])
 
-NOTE: Raspberry Pi 5 does not allocate GPU memory on behalf of the OS so the following settings have no effect.
+NOTE: Raspberry Pi 5 does not allocate GPU memory on behalf of the OS, so the following settings have no effect.
 
 === `gpu_mem`
 
-Specifies how much memory, in megabytes, to reserve for the exclusive use of the GPU: the remaining memory is allocated to the ARM CPU for use by the OS. For Raspberry Pis with less than 1GB of memory, the default is `64`; for Raspberry Pis with 1GB or more of memory the default is `76`.
+Specifies how much memory, in megabytes, to reserve for the exclusive use of the GPU: the remaining memory is allocated to the Arm CPU for use by the OS. For Raspberry Pis with less than 1GB of memory, the default is `64`; for Raspberry Pis with 1GB or more of memory the default is `76`.
 
-IMPORTANT: Unlike GPUs found on x86 machines, where increasing memory can improve 3D performance, the architecture of the VideoCore means *there is no performance advantage from specifying values larger than is necessary*, and in fact it can harm performance.
+IMPORTANT: Unlike GPUs found on x86 machines, where increasing memory can improve 3D performance, the architecture of the VideoCore means *there is no performance advantage from specifying values larger than is necessary*, and doing this can in fact harm performance.
 
 To ensure the best performance of Linux, you should set `gpu_mem` to the lowest possible value. If a particular graphics feature is not working correctly, try increasing the value of `gpu_mem`, being mindful of the recommended maximums shown below.
 
-On the Raspberry Pi 4 the 3D component of the GPU has its own memory management unit (MMU), and does not use memory from the `gpu_mem` allocation. Instead memory is allocated dynamically within Linux. This allows a smaller value to be specified for `gpu_mem` on the Raspberry Pi 4, compared to previous models.
+On Raspberry Pi 4 the 3D component of the GPU has its own memory management unit (MMU), and does not use memory from the `gpu_mem` allocation. Instead memory is allocated dynamically within Linux. This allows a smaller value to be specified for `gpu_mem` on the Raspberry Pi 4, compared to previous models.
 
-On legacy kernels, the memory allocated to the GPU is used for display, 3D, Codec and camera purposes as well as some basic firmware housekeeping. The maximums specified below assume you are using all these features. If you are not, then smaller values of gpu_mem should be used.
+On legacy kernels, the memory allocated to the GPU is used for display, 3D, codec and camera purposes as well as some basic firmware housekeeping. The maximums specified below assume you are using all these features. If you are not, then smaller values of gpu_mem should be used.
 
 The recommended maximum values are as follows:
 
@@ -30,7 +30,7 @@ The recommended maximum values are as follows:
 | `512`, `76` on the Raspberry Pi 4
 |===
 
-IMPORTANT: The camera stack (libcamera) on Raspberry Pi OS uses Linux CMA memory to allocate buffers instead of GPU memory so there is no benefit in increasing the GPU memory size.
+IMPORTANT: The camera stack (libcamera) on Raspberry Pi OS uses Linux CMA memory to allocate buffers instead of GPU memory, so there is no benefit in increasing the GPU memory size.
 
 It is possible to set `gpu_mem` to larger values, however this should be avoided since it can cause problems, such as preventing Linux from booting. The minimum value is `16`, however this disables certain GPU features.
 
@@ -38,15 +38,15 @@ You can also use `gpu_mem_256`, `gpu_mem_512`, and `gpu_mem_1024` to allow swapp
 
 === `gpu_mem_256`
 
-The `gpu_mem_256` command sets the GPU memory in megabytes for Raspberry Pis with 256MB of memory. (It is ignored if memory size is not 256MB). This overrides `gpu_mem`.
+The `gpu_mem_256` command sets the GPU memory in megabytes for Raspberry Pis with 256MB of memory. It is ignored if memory size is not 256MB. This overrides `gpu_mem`.
 
 === `gpu_mem_512`
 
-The `gpu_mem_512` command sets the GPU memory in megabytes for Raspberry Pis with 512MB of memory. (It is ignored if memory size is not 512MB). This overrides `gpu_mem`.
+The `gpu_mem_512` command sets the GPU memory in megabytes for Raspberry Pis with 512MB of memory. It is ignored if memory size is not 512MB. This overrides `gpu_mem`.
 
 === `gpu_mem_1024`
 
-The `gpu_mem_1024` command sets the GPU memory in megabytes for Raspberry Pis with 1GB or more of memory. (It is ignored if memory size is smaller than 1GB). This overrides `gpu_mem`.
+The `gpu_mem_1024` command sets the GPU memory in megabytes for Raspberry Pis with 1GB or more of memory. It is ignored if memory size is smaller than 1GB. This overrides `gpu_mem`.
 
 === `disable_l2cache`
 
