@@ -1,7 +1,7 @@
 
 == Cooling Raspberry Pi 5
 
-Raspberry Pi 5 has been designed to handle typical client workloads, uncased, with no active cooling. For heavier loads there are two official options when it comes to cooling your Raspberry Pi 5. Both of these plug into the four-pin JST PWM fan connector located in the upper right of the board, between the 40-pin GPIO header and the USB 2 ports.
+Raspberry Pi 5 has been designed to handle typical client workloads, uncased, with no active cooling. For heavier loads there are two official options when it comes to cooling your Raspberry Pi 5. Both of these plug into the four-pin JST-SH PWM fan connector located in the upper right of the board, between the 40-pin GPIO header and the USB 2 ports.
 
 Both of the available official accessories are actively managed by the Raspberry Pi firmware. As the temperature of the Raspberry Pi increases, the fan reacts in the following way:
 
@@ -31,7 +31,7 @@ The integrated 2.79 (max) CFM fan has fluid dynamic bearings selected for low no
 .The Active Cooler for Raspberry Pi 5
 image::images/active-cooler.jpg[alt="Active Cooler for Raspberry Pi 5",width="70%"]
 
-The Active Cooler is a single-piece anodised aluminium heatsink with an integrated blower. It has pre-applied thermal pads for heat transfer, and is mounted to the Raspberry Pi 5 board directly using spring-loaded push pins. It connects to the same 4-pin JST connector as the case fan.
+The Active Cooler is a single-piece anodised aluminium heatsink with an integrated blower. It has pre-applied thermal pads for heat transfer, and is mounted to the Raspberry Pi 5 board directly using spring-loaded push pins. It connects to the same four-pin JST-SH connector as the case fan.
 
 A radial blower, again selected for low noise and extended operating lifetime, pushes air through an extruded and milled aluminium heatsink. The cooling performance of the Active Cooler is somewhat superior to the Fan Case, making it particularly suitable for overclockers.
 
@@ -58,7 +58,7 @@ However, cooling of any type isn't mandatory, and no harm will come to the Raspb
 
 === Pinout
 
-The fan connector is a 1mm pitch JST SH socket and has four pins:
+The fan connector is a 1mm pitch JST-SH socket containing the following four pins:
 
 [cols="1,2",width="50"%"]
 |===

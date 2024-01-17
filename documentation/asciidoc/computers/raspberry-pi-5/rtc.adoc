@@ -49,7 +49,7 @@ NOTE: The RTC is still usable even when there is no backup battery attached to t
 .Lithium-manganese rechargeable RTC battery
 image::images/rtc-battery.jpg[alt="Lithium-manganese rechargeable RTC battery",width="70%"]
 
-The official battery part is a rechargeable lithium manganese coin cell, with a pre-fitted two-pin JST plug and an adhesive mounting pad. This is suitable for powering the Raspberry Pi 5 RTC when the main power supply for the board is disconnected, with a power-off current draw measuring in single-digit µA, giving a retention time that can be measured in months.
+The official battery part is a rechargeable lithium manganese coin cell, with a pre-fitted two-pin JST-SH plug and an adhesive mounting pad. This is suitable for powering the Raspberry Pi 5 RTC when the main power supply for the board is disconnected, with a power-off current draw measuring in single-digit µA, giving a retention time that can be measured in months.
 
 NOTE: We do not recommend using a primary (non-rechargeable) lithium cell for the RTC. The RTC backup current consumption is higher than most dedicated RTC modules and will result in a short service life.
 

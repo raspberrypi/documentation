@@ -22,9 +22,9 @@ image:images/the-probe.png[width="70%"]
 
 Included with the Debug Probe is a USB power cable and three debug cables:
 
-* 3-pin JST connector to 3-pin JST connector cable
-* 3-pin JST connector to 0.1-inch header (female)
-* 3-pin JST connector to 0.1-inch header (male)
+* three-pin JST-SH connector to 3-pin JST-SH connector cable
+* three-pin JST-SH connector to 0.1-inch header (female)
+* three-pin JST-SH connector to 0.1-inch header (male)
 
 The two 0.1-inch header cables — intended for breadboard (male) or direct connection to a board with header pins (female) — are coloured as below:
 
@@ -32,7 +32,7 @@ Orange:: TX/SC (Output from Probe)
 Black:: GND
 Yellow:: RX/SD (Input to Probe or I/O)
 
-While the cable with 3-pin JST connectors is intended to be used with the https://rptl.io/debug-spec[standard 3-pin connector] which newer Raspberry Pi boards use for the SWD debug port and UART connectors.
+While the cable with three-pin JST-SH connectors is intended to be used with the https://rptl.io/debug-spec[standard three-pin connector] which newer Raspberry Pi boards use for the SWD debug port and UART connectors.
 
 The Debug Probe has five LEDs, a red LED to indicate power, and four more activity indicator LEDs
 
