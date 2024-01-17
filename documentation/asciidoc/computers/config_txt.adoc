@@ -20,7 +20,5 @@ include::config_txt/codeclicence.adoc[]
 
 include::config_txt/video.adoc[]
 
-include::config_txt/pi4-hdmi.adoc[]
-
 include::config_txt/camera.adoc[]
 
