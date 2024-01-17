@@ -70,6 +70,8 @@ boot_partition=3
 boot_partition=2
 ----
 
-Note:
+[NOTE]
+======
 * It's not mandatory to reboot after updating `autoboot.txt`. However, the `Update Service` must be careful to avoid overwriting the current partition since `autoboot.txt` has already been modified to commit the last update.
 * See also: xref:configuration.adoc#device-trees-overlays-and-parameters[Device-tree parameters].
+======
