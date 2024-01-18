@@ -1,10 +1,10 @@
-=== Video Command Line Options
+=== Video command line options
 
 ----
 	--quality,	-q		JPEG quality <number>
 ----
 
-Set the JPEG quality. 100 is maximum quality and 50 is the default. Only applies when saving in MJPEG format.
+Set the JPEG quality. The maximum quality is 100, and 50 is the default. Only applies when saving in MJPEG format.
 
 Example: `rpicam-vid --codec mjpeg -o test.mjpeg -q 80`
 
@@ -49,7 +49,7 @@ This can select how the video frames are encoded. Valid options are:
 * h264 - use H.264 encoder (the default)
 * mjpeg - use MJPEG encoder
 * yuv420 - output uncompressed YUV420 frames.
-* libav - use the libav backend to encode audio and video (see the xref:camera_software.adoc#libav-integration-with-rpicam-vid[libav section] for further details).
+* libav - use the libav backend to encode audio and video (see the xref:camera_software.adoc#libav-integration-with-rpicam-vid[libav section] for further details)
 
 Examples:
 
@@ -101,7 +101,7 @@ Example: `rpicam-vid -t 0 --keypress --split --initial pause -o test%04d.h264`
 
 This option causes the video recording to be split across multiple files where the parameter gives the approximate duration of each file in milliseconds.
 
-One convenient little trick is to pass a very small duration parameter (namely, `--segment 1`) which will result in each frame being written to a separate output file. This makes it easy to do "burst" JPEG capture (using the MJPEG codec), or "burst" raw frame capture (using `rpicam-raw`).
+One convenient little trick is to pass a very small duration parameter (namely, `--segment 1`), which will result in each frame being written to a separate output file. This makes it easy to do burst JPEG capture (using the MJPEG codec), or burst raw frame capture (using `rpicam-raw`).
 
 Example: `rpicam-vid -t 100000 --segment 10000 -o test%04d.h264`
 
