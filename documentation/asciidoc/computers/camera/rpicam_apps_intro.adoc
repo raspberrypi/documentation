@@ -20,7 +20,7 @@ For this reason Raspberry Pi supplies a small set of example `rpicam-apps`. Thes
 * _rpicam-raw_ A basic application for capturing raw (unprocessed Bayer) frames directly from the sensor.
 * _rpicam-detect_ This application is not built by default, but users can build it if they have TensorFlow Lite installed on their Raspberry Pi. It captures JPEG images when certain objects are detected.
 
-Raspberry Pi's `rpicam-apps` are command-line applications that make it easy to capture images and video from the camera. They are also examples of how users can create their own rpicam-based applications with custom functionality to suit their own requirements. The https://github.com/raspberrypi/rpicam-app[source code for the `rpicam-apps`] is freely available under a BSD 2-Clause licence.
+Raspberry Pi's `rpicam-apps` are command-line applications that make it easy to capture images and video from the camera. They are also examples of how users can create their own rpicam-based applications with custom functionality to suit their own requirements. The https://github.com/raspberrypi/rpicam-apps[source code for the `rpicam-apps`] is freely available under a BSD 2-Clause licence.
 
 ==== More about `libcamera`
 
