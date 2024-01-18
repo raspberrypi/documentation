@@ -1,14 +1,14 @@
 == Product compliance and safety
 
-All Raspberry Pi products have undergone extensive compliance testing, for more information see the https://pip.raspberrypi.com[Product Information Portal]
+All Raspberry Pi products have undergone extensive compliance testing. For more information see the https://pip.raspberrypi.com[Product Information Portal].
 
-=== Flammability Rating
+=== Flammability rating
 
 The PCBs used in Raspberry Pi devices adhere to UL94-V0. 
 
-NOTE: This applies to the PCBs *only*.
+NOTE: This applies to the PCBs only.
 
-=== The Raspberry Pi Compliance Support
+=== Raspberry Pi Compliance Support
 
 The Compliance Support programme is designed to eliminate the burden of navigating compliance issues and make it easier for companies to bring new products to consumers. It provides access to the same test engineers who worked on our Raspberry Pis during their compliance testing, connecting the user to a dedicated team at https://www.ul-certification.com/[UL] who assess and test the user's product, facilitated by their in-depth knowledge of Raspberry Pi.
 
@@ -20,4 +20,4 @@ The Powered by Raspberry Pi progamme provides a process for companies wanting to
 
 === Approved Design Partners
 
-Our list of https://www.raspberrypi.com/for-industry/design-partners/[approved design partners] provide a  set of consultancies that we work closely with and support so they can provide paid for design services across hardware, software, and mechanical.
+Our list of https://www.raspberrypi.com/for-industry/design-partners/[Approved Design Partners] provides a set of consultancies which we work closely with and support so they can provide paid-for design services across hardware, software, and mechanical fields.
