@@ -2,9 +2,9 @@
 
 IMPORTANT: The following boot sequence applies to the BCM2837 and BCM2837B0 based models of Raspberry Pi only. On models prior to this, the Raspberry Pi will try SD card boot, followed by xref:raspberry-pi.adoc#usb-device-boot-mode[USB device mode boot]. For the Raspberry Pi 4 and Raspberry Pi 5 boot sequence please see the xref:raspberry-pi.adoc#raspberry-pi-4-and-raspberry-pi-5-boot-flow[Raspberry Pi boot flow] section.
 
-USB boot defaults on the Raspberry Pi 3 will depend on which version is being used. See this xref:raspberry-pi.adoc#usb-mass-storage-boot[page] for information on enabling USB boot modes when not enabled by default.
+USB boot defaults on Raspberry Pi 3 will depend on which version is being used. See this xref:raspberry-pi.adoc#usb-mass-storage-boot[page] for information on enabling USB boot modes when not enabled by default.
 
-When the BCM2837 boots, it uses two different sources to determine which boot modes to enable. Firstly, the OTP (one-time programmable) memory block is checked to see which boot modes are enabled. If the GPIO boot mode setting is enabled, then the relevant GPIO lines are tested to select which of the OTP-enabled boot modes should be attempted. Note that GPIO boot mode can only be used to select boot modes that are already enabled in the OTP. See xref:raspberry-pi.adoc#gpio-boot-mode[GPIO boot mode] for details on configuring GPIO boot mode. GPIO boot mode is disabled by default.
+When the BCM2837 boots, it uses two different sources to determine which boot modes to enable. Firstly, the one-time-programmable (OTP) memory block is checked to see which boot modes are enabled. If the GPIO boot mode setting is enabled, then the relevant GPIO lines are tested to select which of the OTP-enabled boot modes should be attempted. Note that GPIO boot mode can only be used to select boot modes that are already enabled in the OTP. See xref:raspberry-pi.adoc#gpio-boot-mode[GPIO boot mode] for details on configuring GPIO boot mode. GPIO boot mode is disabled by default.
 
 Next, the boot ROM checks each of the boot sources for a file called bootcode.bin; if it is successful it will load the code into the local 128K cache and jump to it. The overall boot mode process is as follows:
 
@@ -12,10 +12,10 @@ Next, the boot ROM checks each of the boot sources for a file called bootcode.bi
 * Read OTP to determine which boot modes to enable
 * If GPIO boot mode enabled, use GPIO boot mode to refine list of enabled boot modes
 * If enabled: check primary SD for bootcode.bin on GPIO 48-53
- ** Success - Boot
+ ** Success - boot
  ** Fail - timeout (five seconds)
 * If enabled: check secondary SD
- ** Success - Boot
+ ** Success - boot
  ** Fail - timeout (five seconds)
 * If enabled: check NAND
 * If enabled: check SPI
@@ -31,7 +31,7 @@ Next, the boot ROM checks each of the boot sources for a file called bootcode.bi
    **** If bootcode.bin found boot
   *** Recurse through each LAN951x
    **** DHCP / TFTP boot
- ** else (Device mode boot)
+ ** Else (device mode boot)
   *** Enable device mode and wait for host PC to enumerate
   *** We reply to PC with VID: 0a5c PID: 0x2763 (Raspberry Pi 1 or Raspberry Pi 2) or 0x2764 (Raspberry Pi 3)
 
@@ -51,6 +51,6 @@ The primary SD card boot mode is, as standard, set to be GPIOs 49-53. It is poss
 
 NAND boot and SPI boot modes do work, although they do not yet have full GPU support.
 
-The USB device boot mode is enabled by default at the time of manufacture, but the USB host boot mode is only enabled with `program_usb_boot_mode=1`. Once enabled, the processor will use the value of the OTGID pin on the processor to decide between the two modes. On any Raspberry Pi Model B / B+, the OTGID pin is driven to '0' and therefore will only boot via host mode once enabled (it is not possible to boot through device mode because the LAN951x device is in the way).
+The USB device boot mode is enabled by default at the time of manufacture, but the USB host boot mode is only enabled with `program_usb_boot_mode=1`. Once enabled, the processor will use the value of the OTGID pin on the processor to decide between the two modes. On any Raspberry Pi Model B/B+, the OTGID pin is driven to 0 and therefore will only boot via host mode once enabled (it is not possible to boot through device mode because the LAN951x device is in the way).
 
-The USB will boot as a USB device on the Raspberry Pi Zero or Compute Module if the OTGID pin is left floating (when plugged into a PC for example), so you can 'squirt' the bootcode.bin into the device. The `usbboot` code for doing this is https://github.com/raspberrypi/usbboot[available on Github].
+The USB will boot as a USB device on the Raspberry Pi Zero or Compute Module if the OTGID pin is left floating (when plugged into a PC for example), so you can push the bootcode.bin into the device. The `usbboot` code for doing this is https://github.com/raspberrypi/usbboot[available on GitHub].
