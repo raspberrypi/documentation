@@ -41,11 +41,11 @@ dtc -I dtb -O dts -o dt-blob.dts /boot/firmware/dt-blob.bin
 The `dt-blob.bin` is used to configure the binary blob (VideoCore) at boot time. It is not currently used by the Linux kernel. The dt-blob can configure all versions of the Raspberry Pi, including the Compute Module, to use the alternative settings. The following sections are valid in the dt-blob:
 
 ==== `videocore`
-+
+
 This section contains all of the VideoCore blob information. All subsequent sections must be enclosed within this section.
 
 ==== `pins_*`
-+
+
 There are a number of separate `pins_*` sections, based on particular Raspberry Pi models, namely:
 
 * `pins_rev1`: Rev1 pin setup. There are some differences because of the moved I2C pins.
@@ -67,15 +67,15 @@ There are a number of separate `pins_*` sections, based on particular Raspberry 
 * `pins_cm3plus`: Raspberry Pi Compute Module 3+
 * `pins_cm4s`: Raspberry Pi Compute Module 4S
 * `pins_cm4`: Raspberry Pi Compute Module 4
-+
+
 Each `pins_*` section can contain `pin_config` and `pin_defines` sections.
 
 ==== `pin_config`
-+
+
 The `pin_config` section is used to configure the individual pins. Each item in this section must be a named pin section, such as `pin@p32`, meaning GPIO32. There is a special section `pin@default`, which contains the default settings for anything not specifically named in the pin_config section.
 
 ==== `pin@pinname`
-+
+
 This section can contain any combination of the following items:
 
  * `polarity`
@@ -107,10 +107,11 @@ This section can contain any combination of the following items:
   ** `emmc`
   ** `arm_jtag`
  * `drive_strength_mA`
++
 The drive strength is used to set a strength for the pins. Please note that you can only specify a single drive strength for the bank. <8> and <16> are valid values.
 
 ==== `pin_defines`
-+
+
 This section is used to set specific VideoCore functionality to particular pins. This enables the user to move the camera power enable pin to somewhere different, or move the HDMI hotplug position: these are things that Linux does not control. Please refer to the example DTS file below.
 
 === Clock configuration
