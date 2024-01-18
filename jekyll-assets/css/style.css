@@ -349,6 +349,10 @@ h6 .anchor::before {
   position: relative;
 }
 
+#content div.admonitionblock div.listingblock {
+  margin-top: 15px;
+}
+
 #content div.listingblock button.copy-button {
   position: absolute;
   top: 1px;
