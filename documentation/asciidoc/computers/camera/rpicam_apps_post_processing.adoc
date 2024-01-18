@@ -6,7 +6,7 @@ For example, the simple _negate_ stage (which negates all the pixels in an image
 
 `rpicam-hello --post-process-file /path/to/negate.json`
 
-Example JSON files can be found in the https://github.com/raspberrypi/rpicam-apps/tree/main/assets[`assets` folder]. of the `rpicam-apps` repository.
+Example JSON files can be found in the https://github.com/raspberrypi/rpicam-apps/tree/main/assets[`assets` folder] of the `rpicam-apps` repository.
 
 The negate stage is particularly trivial and has no configuration parameters of its own. The JSON file merely has to name the stage, with no further information, and it will be run. So `negate.json` contains:
 
