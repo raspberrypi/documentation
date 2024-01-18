@@ -1,0 +1,44 @@
+== Secure Shell
+
+You can use SSH to connect to your Raspberry Pi remotely.
+
+Open a terminal window on your computer and enter the following command, replacing the `<ip address>` placeholder with the xref:remote-access.adoc#ip-address[IP address of the Raspberry Pi you're trying to connect to] and `<username>` with your username:
+
+[source,console]
+----
+$ ssh <username>@<ip address>
+----
+
+When the connection works, you will see a security warning. Type `yes` to continue. You will only see this warning the first time you connect.
+
+Enter your account password when prompted.
+
+You should now see the Raspberry Pi command prompt:
+
+[source,console]
+----
+<username>@<hostname> ~ $
+----
+
+You are now connected to the Raspberry Pi remotely, and can execute commands.
+
+NOTE: If you receive a `connection timed out` error, you may have entered the wrong IP address for the Raspberry Pi. Check the xref:remote-access.adoc#ip-address[IP address of the Raspberry Pi].
+
+[discrete]
+=== Forwarding X11
+
+NOTE: X11 is no longer installed by default on many desktop environments. Install a third-party X server such as https://www.xquartz.org/[XQuartz] to use X11 forwarding.
+
+X11 enables graphical applications over SSH. Pass the `-Y` flag to forward an X session over SSH:
+
+[source,console]
+----
+$ ssh -Y <username>@<ip address>
+----
+
+Once authenticated, you will see the command line as usual. However, you can also open graphical windows that an X server can render for you. For example, type the following command to launch a https://www.geany.org/[Geany] window:
+
+[source,console]
+----
+$ geany &
+----
