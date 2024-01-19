@@ -6,15 +6,6 @@ Documentation about Picamera2 is available https://github.com/raspberrypi/picame
 
 ==== Installation
 
-Picamera2 is only supported on Raspberry Pi OS Bullseye (or later) images, both 32- and 64-bit.
-
-NOTE: As of September 2022, Picamera2 is pre-installed on images downloaded from Raspberry Pi. It works on all Raspberry Pi boards, although less powerful devices may be less performant.
-
-Picamera2 is not supported on:
-
-* Images based on Buster or earlier releases
-* Bullseye images where the legacy camera stack has been re-enabled
-
 On Raspberry Pi OS images, Picamera2 is now installed with all the GUI (Qt and OpenGL) dependencies. On Raspberry Pi OS Lite, it is installed without the GUI dependencies, although preview images can still be displayed using DRM/KMS. If  users wish to use the additional GUI features, they will need to run:
 
 ----
