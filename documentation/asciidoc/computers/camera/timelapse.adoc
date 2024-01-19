@@ -86,7 +86,7 @@ On a Raspberry Pi 3, this can encode a little more than two frames per second. T
 * `-pattern_type glob` When importing the image files, use wildcard patterns (globbing) to interpret the filename input by `-i`, in this case `image*.jpg`, where `*` would be the image number.
 * `-i 'image*.jpg'` The input file specification (to match the files produced during the capture).
 * `-s 1280×720` Scale to 720p. You can also use 1920×1080, or lower resolutions, depending on your requirements.
-* `-vcodec libx264` Use the software ×264 encoder.
+* `-vcodec libx264` Use the software x264 encoder.
 * `timelapse.mp4` The name of the output video file.
 
 `ffmpeg` has a comprehensive parameter set for varying encoding options and other settings. These can be listed using `ffmpeg --help`.
