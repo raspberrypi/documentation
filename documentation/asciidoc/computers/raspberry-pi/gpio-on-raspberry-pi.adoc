@@ -9,9 +9,9 @@ WARNING: Connection of a GPIO to a voltage higher than 3.3V will likely destroy 
 
 A selection of pins from Bank 0 is available on the P1 header on Raspberry Pi.
 
-=== GPIO Pads
+=== GPIO pads
 
-The GPIO connections on the BCM2835 package are sometimes referred to in the peripherals data sheet as "pads" -- a semiconductor design term meaning 'chip connection to outside world'.
+The GPIO connections on the BCM2835 package are sometimes referred to in the peripherals data sheet as "pads" -- a semiconductor design term meaning "chip connection to outside world".
 
 The pads are configurable CMOS push-pull output drivers/input buffers. Register-based control settings are available for:
 
@@ -21,11 +21,11 @@ The pads are configurable CMOS push-pull output drivers/input buffers. Register-
 
 ==== Power-on states
 
-All GPIO pins revert to general-purpose inputs on power-on reset. The default pull states are also applied, which are detailed in the alternate function table in the ARM peripherals datasheet. Most GPIOs have a default pull applied.
+All GPIO pins revert to general-purpose inputs on power-on reset. The default pull states are also applied, which are detailed in the alternate function table in the Arm peripherals datasheet. Most GPIOs have a default pull applied.
 
 === Interrupts
 
-Each GPIO pin, when configured as a general-purpose input, can be configured as an interrupt source to the ARM. Several interrupt generation sources are configurable:
+Each GPIO pin, when configured as a general-purpose input, can be configured as an interrupt source to the Arm. Several interrupt generation sources are configurable:
 
 * Level-sensitive (high/low)
 * Rising/falling edge
@@ -33,13 +33,13 @@ Each GPIO pin, when configured as a general-purpose input, can be configured as 
 
 Level interrupts maintain the interrupt status until the level has been cleared by system software (e.g. by servicing the attached peripheral generating the interrupt).
 
-The normal rising/falling edge detection has a small amount of synchronisation built into the detection. At the system clock frequency, the pin is sampled with the criteria for generation of an interrupt being a stable transition within a three-cycle window, i.e. a record of '1 0 0' or '0 1 1'. Asynchronous detection bypasses this synchronisation to enable the detection of very narrow events.
+The normal rising/falling edge detection has a small amount of synchronisation built into the detection. At the system clock frequency, the pin is sampled with the criteria for generation of an interrupt being a stable transition within a three-cycle window, i.e. a record of 1 0 0 or 0 1 1. Asynchronous detection bypasses this synchronisation to enable the detection of very narrow events.
 
-=== Alternative Functions
+=== Alternative functions
 
-Almost all of the GPIO pins have alternative functions. Peripheral blocks internal to the SoC can be selected to appear on one or more of a set of GPIO pins, for example the I2C buses can be configured to at least 3 separate locations. xref:raspberry-pi.adoc#gpio-pads-control[Pad control], such as drive strength or Schmitt filtering, still applies when the pin is configured as an alternate function.
+Almost all of the GPIO pins have alternative functions. Peripheral blocks internal to the SoC can be selected to appear on one or more of a set of GPIO pins, for example the I2C buses can be configured to at least three separate locations. xref:raspberry-pi.adoc#gpio-pads-control[Pad control], such as drive strength or Schmitt filtering, still applies when the pin is configured as an alternate function.
 
-=== Voltage Specifications
+=== Voltage specifications
 
 The table below gives the various voltage specifications for the GPIO pins for BCM2835, BCM2836, BCM2837 and RP3A0-based products (e.g. Raspberry Pi Zero or Raspberry Pi 3+). For information about Compute Modules you should see the xref:compute-module.adoc#datasheets-and-schematics[relevant datasheets].
 
@@ -131,7 +131,7 @@ The table below gives the various voltage specifications for the GPIO pins for B
 ^b^ Default drive strength (8mA) +
 ^c^ Maximum drive strength (16mA)
 
-The table below gives the various voltage specifications for the GPIO pins for BCM2711-based products (e.g. Raspberry Pi 4 and Raspberry Pi 400). For information about Compute Modules you should see the xref:compute-module.adoc#datasheets-and-schematics[relevant datasheets].
+The table below gives the voltage specifications for the GPIO pins on BCM2711-based products (e.g. Raspberry Pi 4 and Raspberry Pi 400). For information about Compute Modules you should see the xref:compute-module.adoc#datasheets-and-schematics[relevant datasheets].
 
 |===
 | Symbol | Parameter | Conditions &emsp; | Min | Typical | Max | Unit
