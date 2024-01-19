@@ -34,10 +34,10 @@ The diagnostic information is as follows:
 | The SD card detect status (detected/not detected).
 
 | part
-| Master boot record primary partitions type:LBA.
+| Master Boot Record primary partitions type:LBA.
 
 | fw
-| Filename for start.elf and fixup.dat if present (e.g. start4x.elf, fixup4x.dat).
+| Filename for `start.elf` and `fixup.dat` if present (e.g. `start4x.elf`, `fixup4x.dat`).
 
 | net
 | Network boot: link status (up/down), client IP address (ip), subnet (sn), default gateway (gw)
