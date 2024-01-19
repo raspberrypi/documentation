@@ -1,6 +1,6 @@
-== OTP Register and Bit Definitions
+== OTP register and bit definitions
 
-All SoCs used by the Raspberry Pi range have a inbuilt One-Time Programmable (OTP) memory block. A few locations have factory-programmed data.
+All SoCs used by the Raspberry Pi range have a inbuilt one-time programmable (OTP) memory block. A few locations have factory-programmed data.
 
 OTP memory size:
 
@@ -13,7 +13,7 @@ The `vcgencmd` to display the contents of the OTP is:
 vcgencmd otp_dump
 ----
 
-=== OTP Registers on non-BCM2712 devices
+=== OTP registers on non-BCM2712 devices
 
 This list contains the publicly available information on the registers. If a register or bit is not defined here, then it is not public.
 
@@ -38,9 +38,9 @@ NOTE: On BCM2711 the bootmode is defined by the xref:raspberry-pi.adoc#raspberry
 This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext` and for testing purposes this OTP value can be temporarily overridden by setting `board_rev_ext` in `config.txt`.
 
 * Compute Module 4
- ** Bit 30: Whether the Compute Module has a WiFi module fitted
-  *** 0 - WiFi
-  *** 1 - No WiFi
+ ** Bit 30: Whether the Compute Module has a Wi-Fi module fitted
+  *** 0 - Wi-Fi
+  *** 1 - No Wi-Fi
  ** Bit 31: Whether the Compute Module has an EMMC module fitted
   *** 0 - EMMC
   *** 1 - No EMMC (Lite)
@@ -93,28 +93,29 @@ This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext`
 35 -- upper 32 bits of serial number +
 The full 64 bit serial number is available in `/proc/device-tree/serial-number`
 
-50-51 -- Ethernet mac address +
-This is passed to the operating system in the device-tree, e.g. `/proc/device-tree/axi/pcie@120000/rp1/ethernet@100000/local-mac-address`
+50-51 -- Ethernet MAC address +
+This is passed to the operating system in the Device Tree, e.g. `/proc/device-tree/axi/pcie@120000/rp1/ethernet@100000/local-mac-address`
 
-52-53 -- Wifi mac address +
-This is passed to the operating system in the device-tree, e.g. `/proc/device-tree/axi/mmc@1100000/wifi@1/local-mac-address`
+52-53 -- Wi-Fi MAC address +
+This is passed to the operating system in the Device Tree, e.g. `/proc/device-tree/axi/mmc@1100000/wifi@1/local-mac-address`
 
-54-55 -- Bluetooth mac address +
-This is passed to the operating system in the device-tree, e.g. `/proc/device-tree/soc/serial@7d50c000/bluetooth/local-bd-address`
+54-55 -- Bluetooth MAC address +
+This is passed to the operating system in the Device Tree, e.g. `/proc/device-tree/soc/serial@7d50c000/bluetooth/local-bd-address`
 
 77-84 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer OTP values] +
 86 -- board country - The default keyboard country code used by https://github.com/raspberrypi-ui/piwiz[piwiz] +
-If set, this is available via device-tree in `/proc/device-tree/chosen/rpi-country-code`
+If set, this is available via Device Tree in `/proc/device-tree/chosen/rpi-country-code`
 
-87-88 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Ethernet mac address] +
+87-88 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Ethernet MAC address] +
 Overrides OTP rows 50-51 if set
 
-89-90 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Wifi mac address] +
+89-90 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Wi-Fi MAC address] +
 Overrides OTP rows 52-53 if set
 
-89-90 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Bluetooth mac address] +
+89-90 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Bluetooth MAC address] +
 Overrides OTP rows 54-55 if set
 
 109-114 -- Factory device UUID +
-Currently a 16 digit numerical id. which should match the bar code on the device. Padded with zero characters and c40 encoded.
-This is available via device-tree in `/proc/device-tree/chosen/rpi-duid`
+Currently a 16-digit numerical id which should match the bar code on the device. Padded with zero characters and c40 encoded.
+
+This is available via device-tree in `/proc/device-tree/chosen/rpi-duid`.
