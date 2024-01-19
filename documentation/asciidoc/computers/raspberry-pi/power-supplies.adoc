@@ -1,6 +1,6 @@
 == Power supply
 
-The power supply requirements differ by Raspberry Pi model. All models require a 5.1V supply, but the current required generally increases according to model. All models up to the Raspberry Pi 3 require a micro USB power connector, while  Raspberry Pi 4 and Raspberry Pi 400 use a USB-C connector.
+The power supply requirements differ by Raspberry Pi model. All models require a 5.1V supply, but the current required generally increases according to model. All models up to the Raspberry Pi 3 require a micro USB power connector, while Raspberry Pi 4 and Raspberry Pi 400 use a USB-C connector.
 
 Exactly how much current (mA) the Raspberry Pi requires depends on what you connect to it. 
 
