@@ -612,7 +612,7 @@ div.videoblock iframe {
 }
 
 .whitepaper::before {
-  content: "Whitepaper";
+  content: "White Paper";
   text-transform: uppercase;
   display: block;
   color: var(--red);
