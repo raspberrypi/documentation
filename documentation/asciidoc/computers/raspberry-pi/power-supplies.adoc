@@ -1,8 +1,8 @@
-== Power Supply
+== Power supply
 
-The power supply requirements differ by Raspberry Pi model. All models require a 5.1V supply, but the current required generally increases according to model. All models up to the Raspberry Pi 3 require a micro USB power connector, whilst the Raspberry Pi 4 and Raspberry Pi 400 use a USB-C connector.
+The power supply requirements differ by Raspberry Pi model. All models require a 5.1V supply, but the current required generally increases according to model. All models up to the Raspberry Pi 3 require a micro USB power connector, while Raspberry Pi 4 and Raspberry Pi 400 use a USB-C connector.
 
-Exactly how much current (mA) the Raspberry Pi requires is dependent on what you connect to it. The following table gives various current requirements.
+Exactly how much current (mA) the Raspberry Pi requires depends on what you connect to it. 
 
 |===
 | Product | Recommended PSU current capacity | Maximum total USB peripheral current draw | Typical bare-board active current consumption
@@ -73,15 +73,13 @@ Exactly how much current (mA) the Raspberry Pi requires is dependent on what you
 | 350mA
 |===
 
-Raspberry Pi have developed their own power supplies for use with all models. These are reliable, use heavy gauge wires and are reasonably priced.
+Raspberry Pi develops their own power supplies for use with all models. These are reliable, use heavy-gauge wires and are reasonably priced.
 
-For Raspberry Pi 0-3, we recommend our https://www.raspberrypi.com/products/micro-usb-power-supply/[2.5A micro USB Supply]. For Raspberry Pi 4 and Raspberry Pi 400, we recommend our https://www.raspberrypi.com/products/type-c-power-supply/[3A USB-C Supply].
+For Raspberry Pi 0-3, we recommend our https://www.raspberrypi.com/products/micro-usb-power-supply/[2.5A micro USB supply]. For Raspberry Pi 4 and Raspberry Pi 400, we recommend our https://www.raspberrypi.com/products/type-c-power-supply/[3A USB-C Supply for Raspberry Pi 4].
 
 If you need to connect a USB device that will take the power requirements above the values specified in the table above, then you must connect it using an externally-powered USB hub. 
 
-=== Typical Power Requirements
-
-The specific power requirements of each model are shown below.
+=== Typical power requirements
 
 |===
 | Product | Recommended PSU current capacity | Maximum total USB peripheral current draw | Typical bare-board active current consumption 
@@ -92,12 +90,12 @@ The specific power requirements of each model are shown below.
 | Raspberry Pi 1 Model B+ | 1.8A | 1.2A | 330mA 
 | Raspberry Pi 2 Model B | 1.8A | 1.2A | 350mA 
 | Raspberry Pi 3 Model B | 2.5A | 1.2A | 400mA 
-| Raspberry Pi 3 Model A+ | 2.5A | Limited by PSU, board, and connector ratings only. | 350mA 
+| Raspberry Pi 3 Model A+ | 2.5A | Limited by PSU, board, and connector ratings only | 350mA 
 | Raspberry Pi 3 Model B+ | 2.5A | 1.2A | 500mA 
 | Raspberry Pi 4 Model B | 3.0A | 1.2A | 600mA 
 | Raspberry Pi 400       | 3.0A | 1.2A | 800mA 
 | Raspberry Pi Zero | 1.2A | Limited by PSU, board, and connector ratings only | 100mA 
-| Raspberry Pi Zero W | 1.2A | Limited by PSU, board, and connector ratings only.| 150mA 
+| Raspberry Pi Zero W | 1.2A | Limited by PSU, board, and connector ratings only| 150mA 
 | Raspberry Pi Zero 2 W | 2A | Limited by PSU, board, and connector ratings only | 350mA
 |===
 
@@ -105,7 +103,7 @@ From the Raspberry Pi B+ onwards, 1.2A is supplied to downstream USB peripherals
 
 Very high-current devices, or devices which can draw a surge current such as certain modems and USB hard disks, will still require an external powered USB hub. The power requirements of the Raspberry Pi increase as you make use of the various interfaces on the Raspberry Pi. The GPIO pins can draw 50mA safely (note that that means 50mA distributed across all the pins: an individual GPIO pin can only safely draw 16mA), the HDMI port uses 50mA, the Camera Module requires 250mA, and keyboards and mice can take as little as 100mA or as much as 1000mA! Check the power rating of the devices you plan to connect to the Raspberry Pi and purchase a power supply accordingly. If you're not sure, we would advise you to buy a powered USB hub.
 
-This is the typical amount of power (in Ampere) drawn by different Raspberry Pi models during standard processes:
+This is the typical amount of power (in amps) drawn by different Raspberry Pi models during standard processes:
 
 |===
 | | | Raspberry Pi 1B+ | Raspberry Pi 2B | Raspberry Pi 3B | Raspberry Pi Zero | Raspberry Pi 4B 
@@ -123,24 +121,24 @@ NOTE: For these measurements we used a standard Raspberry Pi OS image (current a
 
 [.whitepaper, title="Extra PMIC features on Raspberry Pi 4 and Compute Module 4", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-004340-WP/Extra-PMIC-features-on-Raspberry-Pi-4-and-Compute-Module-4.pdf]
 ****
-A number of different PMIC devices have been used on both Raspberry Pi 4 and CM4. All the PMICs have provided extra functionality over and above that of voltage supply. This document describes how to access these features in software.
+A number of different PMIC devices have been used on both Raspberry Pi 4 and CM4. All the PMICs provide extra functionality alongside that of voltage supply. This document describes how to access these features in software.
 ****
 
-=== Power Supply Warnings
+=== Power supply warnings
 
-On all models of Raspberry Pi since the Raspberry Pi B+ (2014) except the Zero range, there is low-voltage detection circuitry that will detect if the supply voltage drops below 4.63V (+/- 5%). This will result in an entry added to the kernel log.
+On all models of Raspberry Pi since the Raspberry Pi B+ (2014) except the Zero range, there is low-voltage detection circuitry that will detect if the supply voltage drops below 4.63V (±5%). This will result in an entry being added to the kernel log.
 
-If you are seeing warnings, you should improve the power supply and/or cable, as low power can cause problems with corruption of SD cards, or erratic behaviour of the Raspberry Pi itself; for example, unexplained crashes.
+If you are seeing warnings, you should improve the power supply and/or cable, as low power can cause problems with corruption of SD cards, or erratic behaviour of the Raspberry Pi itself.
 
-Voltages can drop for a variety of reasons, for example if the power supply itself is inadequate, the power supply cable is made of too thin wires, or you have plugged in high demand USB devices.
+Voltages can drop for a variety of reasons, for example if the power supply itself is inadequate, the power supply cable is made of wires which are too thin, or you have plugged in high-demand USB devices.
 
 [.whitepaper, title="Making a more resilient file system", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003610-WP/Making-a-more-resilient-file-system.pdf]
 ****
-Raspberry Pi devices are frequently used as data storage and monitoring devices, often in places where sudden power downs may occur. As with any computing device, power dropouts can cause storage corruption.
+Raspberry Pi devices are frequently used as data storage and monitoring devices, often in places where sudden power-downs may occur. As with any computing device, power dropouts can cause storage corruption.
 
-This whitepaper provides some options on how to prevent data corruption under these and other circumstances by selecting appropriate file systems and setups to ensure data integrity.
+This white paper provides some options on how to prevent data corruption under these and other circumstances by selecting appropriate file systems and setups to ensure data integrity.
 ****
 
 === Back-powering
 
-The USB specification requires that USB devices must not supply current to upstream devices. If a USB device does supply current to an upstream device then this is called back-powering. Often this happens when a badly-made powered USB hub is connected, and will result in the powered USB hub supplying power to the host Raspberry Pi. This is not recommended since the power being supplied to the Raspberry Pi via the hub will bypass the protection circuitry built into the Raspberry Pi, leaving it vulnerable to damage in the event of a power surge.
+The USB specification requires that USB devices must not supply current to upstream devices. If a USB device does supply current to an upstream device, then this is called back-powering. Often this happens when a badly-made powered USB hub is connected, and will result in the powered USB hub supplying power to the host Raspberry Pi. This is not recommended since the power being supplied to the Raspberry Pi via the hub will bypass the protection circuitry built into the Raspberry Pi, leaving it vulnerable to damage in the event of a power surge.
