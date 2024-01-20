@@ -1,4 +1,4 @@
-== Design Files for CMIO Boards
+== Design files for CMIO Boards
 
 [discrete]
 === Compute Module IO board for CM4
@@ -12,7 +12,7 @@ There is also a KiCad PCB design set available:
 * https://datasheets.raspberrypi.com/cm4io/CM4IO-KiCAD.zip[Compute Module 4 IO Board KiCad files]
 
 [discrete]
-=== Older Products
+=== Older products
 
 * https://datasheets.raspberrypi.com/cmio/RPi-CMIO-R1P2.zip[CMIO Rev 1.2]
 * https://datasheets.raspberrypi.com/cmio/RPi-CMIO-R3P0.zip[CMIO Rev 3.0]
