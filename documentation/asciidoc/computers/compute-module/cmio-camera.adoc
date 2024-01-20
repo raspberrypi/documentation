@@ -163,7 +163,7 @@ Use the `--width` and `--height` options to specify a width and height for the i
 
 ==== Take a video
 
-Use the following command to immediately start recording a 10 second long video and save it to a file with the h264 codec named `video.h264`:
+Use the following command to immediately start recording a ten-second long video and save it to a file with the h264 codec named `video.h264`:
 
 ----
 rpicam-vid -t 10000 -o video.h264
@@ -263,9 +263,9 @@ Alternative boards may use other pin assignments. Check the documentation for yo
 
 For camera shutdown, Device Tree uses the pins assigned by the `cam1_reg` and `cam0_reg` overlays.
 
-The CM4 IO Board provides a single GPIO pin for both aliases, so both cameras share the same regulator.
+The CM4 IO board provides a single GPIO pin for both aliases, so both cameras share the same regulator.
 
-The CM1, CM3, CM3+, and CM4S I/O Board provides no GPIO pin for `cam1_reg` and `cam0_reg`, so the regulators are disabled on those boards. However, you can enable them with the following directives in `/boot/firmware/config.txt`:
+The CM1, CM3, CM3+, and CM4S I/O boards provides no GPIO pin for `cam1_reg` and `cam0_reg`, so the regulators are disabled on those boards. However, you can enable them with the following directives in `/boot/firmware/config.txt`:
 
 * `dtparam=cam1_reg`
 * `dtparam=cam0_reg`
