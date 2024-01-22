@@ -26,7 +26,7 @@ Raspberry Pi CM1, CM3 and CM3L are supported products with an end-of-life (EOL) 
 
 * https://datasheets.raspberrypi.com/cm/cm1-and-cm3-datasheet.pdf[Compute Module 1 and Compute Module 3]
 
-Raspberry Pi CM3+ and CM3+ Lite are supported products with an end-of-life (EOL) date no earlier than January 2026.
+Raspberry Pi CM3+ and CM3+ Lite are supported products with an end-of-life (EOL) date no earlier than January 2028.
 
 * https://datasheets.raspberrypi.com/cm/cm3-plus-datasheet.pdf[Compute Module 3+]
 
