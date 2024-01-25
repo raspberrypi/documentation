@@ -16,7 +16,7 @@ include::raspberry-pi/bootflow-legacy.adoc[]
 
 include::raspberry-pi/bootflow-2711.adoc[]
 
-include::raspberry-pi/bcm2711-bootloader.adoc[]
+include::raspberry-pi/eeprom-bootloader.adoc[]
 
 include::raspberry-pi/boot-usb.adoc[]
 

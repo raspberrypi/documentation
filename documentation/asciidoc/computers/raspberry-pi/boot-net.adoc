@@ -1,49 +1,57 @@
-== Network Booting
+== Network booting
 
-This section describes how network booting works on the Raspberry Pi 3B, 3B+ and 2B v1.2. On the Raspberry Pi 4 network booting is implemented in the second stage bootloader in the EEPROM. Please see the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[Raspberry Pi 4 Bootloader Configuration] page for more information.
-We also have a xref:remote-access.adoc#network-boot-your-raspberry-pi[tutorial about setting up a network boot system]. Network booting works only for the wired adapter built into the above models of Raspberry Pi. Booting over wireless LAN is not supported, nor is booting from any other wired network device.
+This section describes how network booting works on Raspberry Pi 3B, 3B+ and 2B v1.2.
+
+On Pi 4 and Pi 5, network booting is implemented in the second stage bootloader in the EEPROM. For more information, see xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[Raspberry Pi 4 bootloader configuration].
+
+We also have a xref:remote-access.adoc#network-boot-your-raspberry-pi[tutorial about setting up a network boot system].
+
+Network booting works only for the wired adapter built into the above models of Raspberry Pi. Booting over wireless LAN is not supported, nor is booting from any other wired network device.
+
+=== Network boot flow
 
 To network boot, the boot ROM does the following:
 
 * Initialise on-board Ethernet device (Microchip LAN9500 or LAN7500)
-* Send DHCP request (with Vendor Class identifier DHCP option 60 set to 'PXEClient:Arch:00000:UNDI:002001')
+* Send DHCP request (with Vendor Class identifier DHCP option 60 set to `PXEClient:Arch:00000:UNDI:002001`)
 * Receive DHCP reply
 * (optional) Receive DHCP proxy reply
 * ARP to tftpboot server
 * ARP reply includes tftpboot server ethernet address
-* TFTP RRQ 'bootcode.bin'
+* TFTP RRQ `bootcode.bin`
  ** File not found: Server replies with TFTP error response with textual error message
  ** File exists: Server will reply with the first block (512 bytes) of data for the file with a block number in the header
   *** Raspberry Pi replies with TFTP ACK packet containing the block number, and repeats until the last block which is not 512 bytes
-* TFTP RRQ 'bootsig.bin'
+* TFTP RRQ `bootsig.bin`
  ** This will normally result in an error `file not found`. This is to be expected, and TFTP boot servers should be able to handle it.
 
-From this point the `bootcode.bin` code continues to load the system. The first file it will try to access is [`serial_number`]/start.elf. If this does not result in an error then any other files to be read will be prepended with the `serial_number`. This is useful because it enables you to create separate directories with separate start.elf / kernels for your Raspberry Pis.
+From this point the `bootcode.bin` code continues to load the system. The first file it will try to access is `<serial_number>/start.elf`. If this does not result in an error then any other files to be read will be prepended with the `serial_number`. This is useful because it enables you to create separate directories with separate `start.elf` / kernels for your Raspberry Pis.
+
 To get the serial number for the device you can either try this boot mode and see what file is accessed using tcpdump / wireshark, or you can run a standard Raspberry Pi OS SD card and `cat /proc/cpuinfo`.
 
-If you put all your files into the root of your tftp directory then all following files will be accessed from there.
+If you put all your files into the root of your TFTP directory then all following files will be accessed from there.
 
-=== Debugging Network Boot Mode
+=== Debugging network boot mode
 
-The first thing to check is that the OTP bit is correctly programmed. To do this, you need to add `program_usb_boot_mode=1` to config.txt and reboot (with a standard SD card that boots correctly into Raspberry Pi OS). Once you've done this, you should be able to do:
+The first thing to check is that the OTP bit is correctly programmed. To do this, you need to add `program_usb_boot_mode=1` to `config.txt` and reboot (with a standard SD card that boots correctly into Raspberry Pi OS). Once you've done this, you should be able to do:
 
-[,bash]
+[source,console]
 ----
- vcgencmd otp_dump | grep 17:
-----
-
-If row 17 contains `3020000a` then the OTP is correctly programmed. You should now be able to remove the SD card, plug in Ethernet,
-and then the Ethernet LEDs should light up around 5 seconds after the Raspberry Pi powers up.
-
-To capture the ethernet packets on the server, use tcpdump on the tftpboot server (or DHCP server if they are different). You will need to capture the packets there otherwise you will not be able to see packets that get sent directly because network switches are not hubs!
-
-----
-sudo tcpdump -i eth0 -w dump.pcap
+$ vcgencmd otp_dump | grep 17:
 ----
 
-This will write everything from eth0 to a file dump.pcap you can then post process it or upload it to cloudshark.com for communication
+If row 17 contains `3020000a` then the OTP is correctly programmed. You should now be able to remove the SD card, plug in Ethernet, and then the Ethernet LEDs should light up around 5 seconds after the Raspberry Pi powers up.
 
-==== DHCP Request / Reply
+To capture the Ethernet packets on the server, use tcpdump on the tftpboot server (or DHCP server if they are different). You will need to capture the packets there otherwise you will not be able to see packets that get sent directly because network switches are not hubs!
+
+[source,console]
+----
+$ sudo tcpdump -i eth0 -w dump.pcap
+----
+
+This will write everything from eth0 to a file named `dump.pcap`. You can then post-process or upload the packets to cloudshark for communication.
+
+==== DHCP request / reply
 
 As a minimum you should see a DHCP request and reply which looks like the following:
 
@@ -83,12 +91,11 @@ As a minimum you should see a DHCP request and reply which looks like the follow
 	    END Option 255, length 0
 ----
 
-The important part of the reply is the Vendor-Option Option 43. This needs to contain the string "Raspberry Pi Boot", although, due
-to a bug in the boot ROM, you may need to add three spaces to the end of the string.
+ `Vendor-Option Option 43` contains the important part of the reply. This must contain the string "Raspberry Pi Boot". Due to a bug in the boot ROM, you may need to add three spaces to the end of the string.
 
 ==== TFTP file read
 
-You will know whether the Vendor Option is correctly specified: if it is, you'll see a subsequent TFTP RRQ packet being sent. RRQs can be replied to by either the first block of data or an error saying file not found. In a couple of cases they even receive the first packet and then the transmission is aborted by the Raspberry Pi (this happens when checking whether a file exists). The example below is just three packets: the original read request, the first data block (which is always 516 bytes containing a header and 512 bytes of data, although the last block is always less than 512 bytes and may be zero length), and the third packet (the ACK which contains a frame number to match the frame number in the data block).
+When the Vendor Option is correctly specified, you'll see a subsequent TFTP RRQ packet being sent. RRQs can be replied to by either the first block of data or an error saying file not found. In a couple of cases they even receive the first packet and then the transmission is aborted by the Raspberry Pi (this happens when checking whether a file exists). The example below is just three packets: the original read request, the first data block (which is always 516 bytes containing a header and 512 bytes of data, although the last block is always less than 512 bytes and may be zero length), and the third packet (the ACK which contains a frame number to match the frame number in the data block).
 
 ----
 16:44:41.224964 IP (tos 0x0, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 49)
@@ -99,9 +106,9 @@ You will know whether the Vendor Option is correctly specified: if it is, you'll
     192.168.1.139.49152 > 192.168.1.1.55985: [no cksum] UDP, length 4
 ----
 
-=== Known Problems
+=== Known problems
 
-There are a number of known problems with the Ethernet boot mode. Since the implementation of the boot modes is in the chip itself, there are no workarounds other than to use an SD card with just the bootcode.bin file.
+There are a number of known problems with the Ethernet boot mode. Since the implementation of the boot modes is in the chip itself, there are no workarounds other than to use an SD card with just the `bootcode.bin` file.
 
 ==== DHCP requests time out after five tries
 
@@ -117,11 +124,11 @@ The DHCP check also checked if the hops value was `1`, which it wouldn't be with
 
 Fixed in Raspberry Pi 3 Model B+.
 
-==== Raspberry Pi Boot string
+==== Raspberry Pi boot string
 
 The "Raspberry Pi Boot   " string in the DHCP reply requires the extra three spaces due to an error calculating the string length.
 
-Fixed in Raspberry Pi 3 Model B+
+Fixed in Raspberry Pi 3 Model B+.
 
 ==== DHCP UUID constant
 
