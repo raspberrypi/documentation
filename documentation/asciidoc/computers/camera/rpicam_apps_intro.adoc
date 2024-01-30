@@ -3,6 +3,8 @@
 [WARNING]
 ====
 `rpicam-apps` applications have been renamed from `libcamera-\*` to `rpicam-*`. Symbolic links are installed to allow users to keep using the old application names, but these will be deprecated in the future. Users are encouraged to adopt the new application names as soon as possible.
+
+There's no current plan to build `rpicam-apps` packages for Debian version prior to Bookworm. If you are using Bullseye, you'll still have `libcamera-\*` apps and would not be able to install `rpicam-apps` using the package manager.
 ====
 
 === Introduction
