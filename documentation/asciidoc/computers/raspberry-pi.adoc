@@ -40,7 +40,11 @@ include::raspberry-pi/raspberry-pi-industrial.adoc[]
 
 include::raspberry-pi/otp-bits.adoc[]
 
+include::raspberry-pi/power-button.adoc[]
+
 include::raspberry-pi/power-supplies.adoc[]
+
+include::raspberry-pi/rtc.adoc[]
 
 include::raspberry-pi/spi-bus-on-raspberry-pi.adoc[]
 
