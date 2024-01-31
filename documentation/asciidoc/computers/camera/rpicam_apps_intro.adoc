@@ -2,7 +2,7 @@
 
 [WARNING]
 ====
-`rpicam-apps` applications have been renamed from `libcamera-\*` to `rpicam-*`. Symbolic links are installed to allow users to keep using the old application names, but these will be deprecated in the future. Users are encouraged to adopt the new application names as soon as possible.
+Raspberry Pi OS _Bookworm_ renamed the camera capture applications from `libcamera-\*` to `rpicam-*`. Symbolic links currently allow users to keep using the old application names, but those links will eventually be deprecated. Adopt the new application names as soon as possible. Raspberry Pi OS versions prior to _Bookworm_ only provide access to older versions of the suite using the `libcamera-\*` name prefix.
 ====
 
 === Introduction
