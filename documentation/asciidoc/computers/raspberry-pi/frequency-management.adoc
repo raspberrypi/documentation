@@ -54,7 +54,7 @@ Due to the architecture of the SoCs used on Raspberry Pi devices, and the use of
 
 === Adding heatsinks
 
-Whilst heatsinks are not necessary to prevent overheating damage to the SoC — the thermal throttling mechanism handles that — a heatsink or small fan will help if you wish to reduce the amount of thermal throttling that takes place. Depending on the exact circumstances, mounting the Raspberry Pi vertically can also help with heat dissipation, as doing so can improve air flow. For Raspberry Pi 5, a https://www.raspberrypi.com/products/raspberry-pi-5-case/[case with an integrated fan] is available; if you prefer to keep your Raspberry Pi uncased, we also manufacture an https://www.raspberrypi.com/products/active-cooler/[Active Cooler] that can be mounted on the Raspberry Pi 5 itself.
+Thanks to built-in throttling, heatsinks are not necessary to prevent overheating damage to the SoC. However, a heatsink or small fan can reduce thermal throttling and improve performance. Mount the Raspberry Pi vertically for the best airflow and thus slightly improved heat dissipation.
 
 === Fan cases
 
@@ -77,7 +77,7 @@ Temperature decreases use the same mapping with a 5°C **hysteresis**; fan speed
 
 At boot the fan is turned on, and the tachometer input is checked to see if the fan is spinning. If it is, then the `cooling_fan` device tree overlay is enabled. This overlay is in `bcm2712-rpi-5-b.dtb` by default, but with `status=disabled`.
 
-The official fan is a Coolcox https://www.coolcox.com/products/pdf/CC3007.pdf[CC3007H05S] part.
+INFO: Both fan options use the Coolcox https://www.coolcox.com/products/pdf/CC3007.pdf[CC3007H05S] part.
 
 ==== Fan connector pinout
 

@@ -19,7 +19,6 @@ The Ethernet jack on Raspberry Pi 5 is PoE+ capable, supporting the IEEE 802.3at
 .Raspberry Pi 5 PoE header
 image::images/poe.jpg[alt="The PoE connector,width="70%"]
 
-
 === Typical power requirements
 
 |===
@@ -147,7 +146,7 @@ This should drop the power consumption when powered down to around 0.01W.
 
 On all models of Raspberry Pi since the Raspberry Pi B+ (2014) except the Zero range, there is low-voltage detection circuitry that will detect if the supply voltage drops below 4.63V (±5%). This will result in an entry being added to the kernel log.
 
-If you see warnings, switch to a better power supply and cable. Low power can corrupt storage or cause unpredictable behaviour within the Raspberry Pi.
+If you see warnings, switch to a higher quality power supply and cable. Low quality power supplies can corrupt storage or cause unpredictable behaviour within the Raspberry Pi.
 
 Voltages can drop for a variety of reasons. You may have plugged in too many high-demand USB devices. The power supply could be inadequate. Or the power supply cable could use wires that are too thin.
 

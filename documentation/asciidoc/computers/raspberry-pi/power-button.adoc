@@ -4,9 +4,9 @@ NOTE: This section only applies to Raspberry Pi models with a power button, such
 
 When you plug your Raspberry Pi into power for the first time, it will automatically turn on and boot into the operating system without having to push the button.
 
-If you run Raspberry Pi Desktop, you can initiate a clean shutdown by briefly pressing the power button. A menu will appear asking whether you want to shutdown, reboot, or logout.
+If you run Raspberry Pi Desktop, you can initiate a clean shutdown by briefly pressing the power button. A window will appear asking whether you want to shutdown, reboot, or logout.
 
-Select an option from the menu or press the power button again to initiate a clean shutdown.
+Select an option or press the power button again to initiate a clean shutdown.
 
 NOTE: If you run Raspberry Pi Desktop, you can press the power button twice in quick succession to shut down. If you run Raspberry Pi OS Lite without a desktop, press the power button a single time to initiate a shutdown.
 
