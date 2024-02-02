@@ -657,6 +657,7 @@ Default: `-1`
 
 [[os_check]]
 ==== `os_check`
+
 On Raspberry Pi 5 the firmware automatically checks for a compatible Device Tree file before attempting to boot from the current partition. Otherwise, older non-compatible kernels would be loaded and then hang.
 To disable this check (e.g. for bare-metal development), set `os_check=0` in config.txt
 
