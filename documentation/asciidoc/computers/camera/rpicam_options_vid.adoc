@@ -136,4 +136,3 @@ Example: `rpicam-vid -t 0 --inline --listen -o tcp://0.0.0.0:8123`
 Exactly `<number>` frames are recorded. Specifying a non-zero value will override any timeout.
 
 Example: `rpicam-vid -o test.h264 --frames 1000`
-
