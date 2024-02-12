@@ -403,7 +403,7 @@ This https://forums.raspberrypi.com/viewtopic.php?f=44&t=19489[thread] discusses
 
 ===== Using spidev from C
 
-There is a loopback test program in the Linux documentation that can be used as a starting point. See the <<troubleshooting,Troubleshooting>> section.
+There is a loopback test program in the Linux documentation that can be used as a starting point. See the <<troubleshooting-spi-hardware,Troubleshooting>> section.
 
 ===== Using spidev from Python
 
