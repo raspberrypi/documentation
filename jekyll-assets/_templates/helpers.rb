@@ -36,14 +36,14 @@ module Slim::Helpers
     if img_arr
       img_src = img_arr[1]
     end
-    return '<a href="'+(self.attr 'link')+'" target="_blank" class="image"><div class="tutorialcard"><img src="https://www.raspberrypi.com/tutorials/tutorials/images/NAS-BOX-800x533.jpg"/><p class="caption">'+desc+'</p></div></a>'
+    return '<a href="'+(self.attr 'link')+'" target="_blank" class="image"><div class="tutorialcard"><img src="'+img_src+'"/><p class="caption">'+desc+'</p></div></a>'
   end
 
   def tutorial_image_sidebar
     uri = URI(self.attr 'link')
     source = Net::HTTP.get(uri)
     # get the image source
-    img_src = "https://www.raspberrypi.com/tutorials/tutorials/images/NAS-BOX-800x533.jpg"
+    img_src = ""
     img_arr = /<meta[^>]+property="og:image"[^>]+content="([^>]+)"[^>]*>/.match(source)
     if img_arr
       img_src = img_arr[1]
@@ -55,7 +55,7 @@ module Slim::Helpers
     uri = URI(self.attr 'link')
     source = Net::HTTP.get(uri)
     # get the short description
-    desc = "A Raspberry Pi NAS (network-attached storage) lets you save files from all your devices to external hard drives via your wireless network. Create secure backups of your files that are accessible from anywhere."
+    desc = ""
     desc_arr = /<meta[^>]+name="description"[^>]+content="([^>]+)"[^>]*>/.match(source)
     if desc_arr
       desc = desc_arr[1]
