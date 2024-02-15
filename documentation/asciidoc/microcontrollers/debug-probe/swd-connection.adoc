@@ -14,6 +14,12 @@ $  sudo openocd -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c "adapter spee
 
 NOTE: When you use the Debug Probe to upload a binary the ELF version of the file is used, not the UF2 file that you would use when you drag-and-drop.
 
+On linux you might be able to run `openocd` without `sudo` depending on your distribution. If it doesn't work without `sudo` you can add a udev rule, e.g. add the following to `/etc/udev/rules.d/51-usb-perms.rules` and reload your udev rules with `sudo udevadm control --reload ; sudo udevadm trigger`
+
+----
+SUBSYSTEM=="usb", ATTR{idVendor}=="0a5c", ATTR{idProduct}=="000c", GROUP="plugdev", MODE="0660"
+----
+
 === Debugging with SWD
 
 It’ll also let you use `openocd` in server mode, and connect GDB, which gives you break points and “proper” debugging.
