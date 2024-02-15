@@ -88,3 +88,6 @@ image::images/vnc-client-enter-credentials.png[Entering Raspberry Pi user accoun
 --
 image::images/vnc-client-desktop.png[The desktop of a Raspberry Pi after successfully authenticating.]
 --
+
+NOTE: If you authenticate successfully but the desktop display window closes immediately, check the Expert settings on VNC Viewer. If *ColorLevel* is set to *pal8*, change it to any other value, and VNC Viewer should display the desktop properly next time you connect.
+
