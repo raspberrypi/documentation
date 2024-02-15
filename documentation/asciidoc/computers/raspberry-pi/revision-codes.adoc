@@ -717,7 +717,7 @@ raspberrypi,5-model-b
 brcm,bcm2712
 ----
 
-This outputs two null-separated string values, each containing a comma-separated make and model. For instance, a Raspberry Pi 5 Model B outputs the board and CPU strings above. These correspond to the following values:
+This outputs two null-separated string values, each containing a comma-separated make and model. For instance, the Raspberry Pi 5 outputs the board and CPU strings above. These correspond to the following values:
 
 * `raspberrypi` (board make)
 * `5-model-b` (board model)
