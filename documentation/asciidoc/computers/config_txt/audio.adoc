@@ -31,3 +31,4 @@ To disable HDMI audio output, append `,noaudio` to the end of the `dtoverlay=vc4
 ----
 dtoverlay=vc4-kms-v3d,noaudio
 ----
+
