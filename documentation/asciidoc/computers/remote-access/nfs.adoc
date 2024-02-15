@@ -11,8 +11,6 @@ Before deploying an NFS, you should be familiar with:
 * Linux file and directory permissions
 * mounting and unmounting filesystems
 
-CAUTION: Deploying an NFS requires familiarity with Linux file permissions and mounting filesystems.
-
 === Setting up a Basic NFS Server
 
 Install the packages required using the command below:
