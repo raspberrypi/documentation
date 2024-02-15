@@ -1,6 +1,6 @@
 == Host a wireless network on your Raspberry Pi
 
-Your Raspberry Pi can host its own wireless network using a wireless module. If you connect your Raspberry Pi to the internet via the Ethernet port or a second wireless module, other devices connected to the wireless network can access the internet through the built-in wireless module of your Raspberry Pi.
+Your Raspberry Pi can host its own wireless network using a wireless module. If you connect your Raspberry Pi to the internet via the Ethernet port (or a second wireless module), other devices connected to the wireless network can access the internet through your Raspberry Pi.
 
 Consider a wired network that uses the `10.x.x.x` IP block. You can connect your Raspberry Pi to that network and serve wireless clients on a separate network that uses another IP block, such as `192.168.x.x`.
 
@@ -10,11 +10,6 @@ image::images/host-a-network.png[]
 
 
 With this network configuration, wireless clients can all communicate with each other through the Raspberry Pi router. However, clients on the wireless network cannot directly interact with clients on the wired network other than the Raspberry Pi; wireless clients exist in a private network separate from the network that serves wired clients.
-
-[.tutoriallink, link=https://www.raspberrypi.com/tutorials/host-a-hotel-wifi-hotspot/]
-==== Hotel Wi-Fi Hotspot Tutorial
-
-For step-by-step instructions on how to host a wireless network from your Raspberry Pi, check out our hotel Wi-Fi hotspot tutorial.
 
 NOTE: The Raspberry Pi 5, 4, 3, and Raspberry Pi Zero W can host a wireless network using the built-in wireless module. Raspberry Pi models that lack a built-in module support this functionality using a separate wireless dongle.
 

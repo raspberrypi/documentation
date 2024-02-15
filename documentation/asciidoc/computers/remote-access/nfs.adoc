@@ -6,10 +6,10 @@ For smaller networks, an NFS is perfect for creating a simple NAS (Network-attac
 
 An NFS is perhaps best suited to more permanent network-mounted directories, such as `/home` directories or regularly-accessed shared resources. If you want a network share that guest users can easily connect to, Samba is better suited to the task. This is because tools to temporarily mount and detach from Samba shares are more readily available across old and proprietary operating systems.
 
-[.tutoriallink, link=https://www.raspberrypi.com/tutorials/nas-box-raspberry-pi-tutorial/]
-==== Raspberry Pi NAS Tutorial
+Before deploying an NFS, you should be familiar with:
 
-For step-by-step instructions on how to host network-attached storage from your Raspberry Pi, check out our NAS tutorial.
+* Linux file and directory permissions
+* mounting and unmounting filesystems
 
 CAUTION: Deploying an NFS requires familiarity with Linux file permissions and mounting filesystems.
 
