@@ -12,7 +12,7 @@ The Raspberry Pi Debug Probe is a USB device that provides both a UART serial po
 
 NOTE: For more information on the Raspberry Pi three-pin debug connector see the https://rptl.io/debug-spec[specification].
 
-This makes it easy to use a Raspberry Pi Pico on non-Raspberry Pi platforms such as Windows, Mac, and “normal” Linux computers, where you don’t have a GPIO header to connect directly to the Pico's serial UART or SWD port.
+This makes it easy to use a Raspberry Pi Pico on platforms such as Windows, macOS, and Linux that lack a GPIO header to connect directly to the Pico's serial UART or SWD port.
 
 === The Debug Probe
 
@@ -38,4 +38,4 @@ The Debug Probe has five LEDs, a red LED to indicate power, and four more activi
 
 image::images/debug-leds.png[width="70%"]
 
-NOTE: OpenOCD just switches both DAP LEDs on when the target is connected, and turns them off when it calls `DAP_DISCONNECT`.
+NOTE: OpenOCD switches both DAP LEDs on when the target is connected, and turns them off when it calls `DAP_DISCONNECT`.
