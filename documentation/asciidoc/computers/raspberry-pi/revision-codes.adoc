@@ -628,9 +628,9 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 
 From the command line we can use the following to get the revision code of the board:
 
-[source, bash]
+[source, console]
 ----
-$cat /proc/cpuinfo | grep Revision
+$ cat /proc/cpuinfo | grep Revision
 Revision      : c03111
 ----
 
@@ -643,7 +643,7 @@ Starting from the lowest order bits, the bottom four (0-3) are the board revisio
 Obviously there are so many programming languages out there it's not possible to give examples for all of them, but here are two quick examples for `C` and `Python`. Both these examples use a system call to run a bash command that gets the `cpuinfo` and pipes the result to `awk` to recover the required revision code. They then use bit operations to extract the `New`, `Model`, and `Memory` fields from the code.
 
 
-[source, c, linenums]
+[source, c]
 ----
 #include <stdio.h>
 #include <stdlib.h>
@@ -673,7 +673,7 @@ int main( int argc, char *argv[] )
 
 And the same in Python:
 
-[source, python, linenums]
+[source, python]
 ----
 import subprocess
 
@@ -689,14 +689,63 @@ if new and model == 0x11 and mem >= 3 : # Note, 3 in the mem field is 2GB
     print("We are a 4B with at least 2GB RAM!")
 ----
 
-==== Best practice for revision code usage
+=== Best practices for revision code usage
 
-Raspberry Pi advises against using the revision code as a whole (`c03111`) to avoid problems when new board revisions are created. For example, you might consider having a list of supported revision codes in your program, and comparing the detected code with your list to determine if your program is allowed to run. However, this mechanism will break when a new board revision comes out, or if the production location changes, each of which would create a new revision code that's not in your program's list. Your program would now reject the unrecognised code, and perhaps abort, even though revisions of the same board type are always backwards-compatible. You would need to release a new version of your program with the specific revision added to the list, which can be a maintenance burden.
+To avoid problems when new board revisions are created, do not use the revision code (e.g. `c03111`).
 
-Similarly, using revision codes to indicate which model your program supports can create issues. If your program is only intended to work on devices with 2GB of RAM or more, a naive approach would be to look at the list of revision codes for models that have 2GB of RAM or more, and build that list in to your program. But of course, this breaks as soon as a new board revision is released, or if boards are manufactured at a different location.
+A naive implementation uses a list of supported revision codes, comparing the detected code with the list to decide if the device is supported.
+This breaks when a new board revision comes out or if the production location changes: each creates a new revision code not in the supported revision code list. This would cause rejections of new revisions of the same board type, despite the fact that they are always backwards-compatible. Every time a new revision appears, you would have to release a new supported revision code list containing the new revision code - an onerous support burden.
 
-A better mechanism is to just use the board-type field (3A, 4B, etc.) to determine which model your program supports; or perhaps just the amount-of-memory field. So you might say you will support any Raspberry Pi 4Bs, whatever their board revision code, because that should always work. Or you might want to restrict your program to 4B devices with 2GB of RAM or more. Simply look at those two fields to determine whether you are going to allow your program to run.
+Instead, use one of the following approaches:
 
-The examples in the previous section use the recommended approach. They pull out the board type and memory size from the revision code, and use them to determine whether or not they are a Raspberry Pi 4B with 2GB or more of RAM.
+* Filter by the board-type field (3A, 4B, etc.), which indicates the model, but not the revision.
+* Filter by the amount-of-memory field, since RAM vaguely corresponds to the computing power of a board.
 
-NOTE: You should always check bit 23, the 'New' flag, to ensure that the revision code is the new version before checking any other fields. The examples here also do this.
+For instance, you could limit support to Raspberry Pi 4B models with 2GB of RAM or more.
+The examples in the previous section use this recommended approach.
+
+NOTE: Always check bit 23, the 'New' flag, to ensure that the revision code is the new version before checking any other fields.
+
+==== Check Raspberry Pi model and CPU across distributions
+
+Support and formatting for `/proc/cpuinfo` varies across Linux distributions. To check the model or CPU of a Raspberry Pi device on any Linux distribution (including Raspberry Pi OS), check the device tree:
+
+[source, console]
+----
+$ cat /proc/device-tree/compatible | tr '\0' '\n'
+raspberrypi,5-model-b
+brcm,bcm2712
+----
+
+This outputs two null-separated string values, each containing a comma-separated make and model. For instance, the Raspberry Pi 5 outputs the board and CPU strings above. These correspond to the following values:
+
+* `raspberrypi` (board make)
+* `5-model-b` (board model)
+* `brcm` (CPU make)
+* `bcm2712` (CPU model)
+
+Raspberry Pi models have the following device tree values:
+
+|===
+| Device Name                   | Make            | Model              | CPU Make   | CPU
+
+| Raspberry Pi 5                | `raspberrypi`   | `5-model-b`        | `brcm`     | `bcm2712`
+| Raspberry Pi 400              | `raspberrypi`   | `400`              | `brcm`     | `bcm2711`
+| Raspberry Pi Compute Module 4 | `raspberrypi`   | `4-compute-module` | `brcm`     | `bcm2711`
+| Raspberry Pi 4 Model A        | `raspberrypi`   | `4-model-a`        | `brcm`     | `bcm2711`
+| Raspberry Pi 4 Model B        | `raspberrypi`   | `4-model-b`        | `brcm`     | `bcm2711`
+| Raspberry Pi Compute Module 3 | `raspberrypi`   | `3-compute-module` | `brcm`     | `bcm2837`
+| Raspberry Pi 3 Model A+       | `raspberrypi`   | `3-model-a-plus`   | `brcm`     | `bcm2837`
+| Raspberry Pi 3 Model B+       | `raspberrypi`   | `3-model-b-plus`   | `brcm`     | `bcm2837`
+| Raspberry Pi 3 Model B        | `raspberrypi`   | `3-model-b`        | `brcm`     | `bcm2837`
+| Raspberry Pi 2 Model B        | `raspberrypi`   | `2-model-b`        | `brcm`     | `bcm2836`
+| Raspberry Pi Compute Module   | `raspberrypi`   | `compute-module`   | `brcm`     | `bcm2835`
+| Raspberry Pi Model A+         | `raspberrypi`   | `model-a-plus`     | `brcm`     | `bcm2835`
+| Raspberry Pi Model B+         | `raspberrypi`   | `model-b-plus`     | `brcm`     | `bcm2835`
+| Raspberry Pi Model B Rev 2    | `raspberrypi`   | `model-b-rev2`     | `brcm`     | `bcm2835`
+| Raspberry Pi Model A          | `raspberrypi`   | `model-a`          | `brcm`     | `bcm2835`
+| Raspberry Pi Model B          | `raspberrypi`   | `model-b`          | `brcm`     | `bcm2835`
+| Raspberry Pi Zero 2 W         | `raspberrypi`   | `model-zero-2-w`   | `brcm`     | `bcm2837`
+| Raspberry Pi Zero             | `raspberrypi`   | `model-zero`       | `brcm`     | `bcm2835`
+| Raspberry Pi Zero W           | `raspberrypi`   | `model-zero-w`     | `brcm`     | `bcm2835`
+|===
