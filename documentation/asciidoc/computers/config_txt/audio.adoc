@@ -21,3 +21,14 @@ Audio dither (see disable_audio_dither above) is normally disabled when the audi
 === `pwm_sample_bits`
 
 The `pwm_sample_bits` command adjusts the bit depth of the analogue audio output. The default bit depth is `11`. Selecting bit depths below `8` will result in nonfunctional audio, as settings below `8` result in a PLL frequency too low to support. This is generally only useful as a demonstration of how bit depth affects quantisation noise.
+
+== HDMI audio
+
+By default, HDMI audio output is enabled on all Raspberry Pi models with HDMI output. 
+
+To disable HDMI audio output, append `,noaudio` to the end of the `dtoverlay=vc4-kms-v3d` line in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]:
+
+----
+dtoverlay=vc4-kms-v3d,noaudio
+----
+
