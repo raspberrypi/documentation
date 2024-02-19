@@ -14,7 +14,7 @@ The bootloader in Raspberry Pi 400 and newer Raspberry Pi 4B boards supports USB
 See:
 
 * Instructions for changing the boot mode via the xref:raspberry-pi.adoc#imager[Raspberry Pi Imager]
-* Instructions for changing the boot mode via the xref:raspberry-pi.adoc#raspi-config[raspi-config]
+* Instructions for changing the boot mode via xref:raspberry-pi.adoc#raspi-config[raspi-config]
 * The xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration] page for other boot configuration options
 
 [[cm4]]

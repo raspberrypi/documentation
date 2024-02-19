@@ -80,9 +80,12 @@ image::images/pi_plugs.png[Illustration of Raspberry Pi headers, width="40%"]
 
 Next, connect the other end of the black wire to the GND pin on the display and the other end of the red wire to the 5V pin on the display. Once all the connections are made, you should see the Touch Display turn on the next time you turn on your Raspberry Pi.
 
+WARNING: The Raspberry Pi 5 does not support automatic display configuration. To attach a display to the `CAM/DISP 1` connector, add `dtoverlay=vc4-kms-dsi-7inch` to `/boot/firmware/config.txt`. To attach a display to the `CAM/DISP 0` connector, add `dtoverlay=vc4-kms-dsi-7inch,dsi0`. Reboot with `sudo reboot` to load the new configuration.
+
 The other three pins on the Touch Display are used to connect the display to an original Raspberry Pi 1 Model A or B. Refer to our documentation on xref:display.adoc#legacy-support[legacy support] for more information.
 
 NOTE: To identify an original Raspberry Pi, check the GPIO header connector. Only the original model has a 26-pin GPIO header connector; subsequent models have 40 pins.
+
 
 ==== Using a micro USB supply
 
