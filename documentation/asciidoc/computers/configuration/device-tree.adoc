@@ -474,43 +474,48 @@ There is therefore a need for a method of tailoring an overlay to multiple platf
 
 The overlay map is a file that gets loaded by the firmware at bootup. It is written in DTS source format - `overlay_map.dts`, compiled to `overlay_map.dtb` and stored in the overlays directory.
 
-This is an edited version of the current map file (see the https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/overlay_map.dts[full version]):
+This is an extract from the current map file (see the https://github.com/raspberrypi/linux/blob/rpi-6.6.y/arch/arm/boot/dts/overlays/overlay_map.dts[full version]):
 
 ----
 / {
-    vc4-kms-v3d {
-        bcm2835;
-        bcm2711 = "vc4-kms-v3d-pi4";
-    };
+	disable-bt {
+		bcm2835;
+		bcm2711;
+		bcm2712 = "disable-bt-pi5";
+	};
 
-    vc4-kms-v3d-pi4 {
-        bcm2711;
-    };
+	disable-bt-pi5 {
+		bcm2712;
+	};
 
-    uart5 {
-        bcm2711;
-    };
+	uart5 {
+		bcm2711;
+	};
 
-    pi3-disable-bt {
-        renamed = "disable-bt";
-    };
+	pi3-disable-bt {
+		renamed = "disable-bt";
+	};
 
-    lirc-rpi {
-        deprecated = "use gpio-ir";
-    };
+	lirc-rpi {
+		deprecated = "use gpio-ir";
+	};
 };
 ----
 
-Each node has the name of an overlay that requires special handling. The properties of each node are either platform names or one of a small number of special directives. The current supported platforms are `bcm2835`, which includes all Raspberry Pis built around the BCM2835, BCM2836 and BCM2837 SoCs, and `bcm2711` for Raspberry Pi 4B.
+Each node has the name of an overlay that requires special handling. The properties of each node are either platform names or one of a small number of special directives. The current supported platforms are `bcm2835`, which includes all Raspberry Pis built around the BCM2835, BCM2836 and BCM2837 SoCs, `bcm2711` for Raspberry Pi 4B, 400 and CM4, and `bcm2712` for Raspberry Pi 5 and CM5.
 
-A platform name with no value (an empty property) indicates that the current overlay is compatible with the platform; for example, `vc4-kms-v3d` is compatible with the `bcm2835` platform. A non-empty value for a platform is the name of an alternative overlay to use in place of the requested one; asking for `vc4-kms-v3d` on BCM2711 results in `vc4-kms-v3d-pi4` being loaded instead. Any platform not included in an overlay's node is not compatible with that overlay.
+A platform name with no value (an empty property) indicates that the current overlay is compatible with the platform; for example, `uart5` is compatible with the `bcm2711` platform. A non-empty value for a platform is the name of an alternative overlay to use in place of the requested one; asking for `disable-bt` on BCM2712 results in `disable-bt-pi5` being loaded instead. Any platform not included in an overlay's node is not compatible with that overlay. Any overlay not mentioned in the map is assumed to be compatible with all platforms.
 
-The second example node - `vc4-kms-v3d-pi4` - could be inferred from the content of `vc4-kms-v3d`, but that intelligence goes into the construction of the file, not its interpretation.
+The second example node - `disable-bt-pi5` - could be inferred from the content of `disable-bt`, but that intelligence goes into the construction of the file, not its interpretation.
+
+The `uart5` overlay only makes sense on BCM2711.
 
 In the event that a platform is not listed for an overlay, one of the special directives may apply:
 
 * The `renamed` directive indicates the new name of the overlay (which should be largely compatible with the original), but also logs a warning about the rename.
 * The `deprecated` directive contains a brief explanatory error message which will be logged after the common prefix `+overlay '...' is deprecated:+`.
+
+Chaining renames and platform-specific implementations is possible, but be careful to avoid loops!
 
 Remember: only exceptions need to be listed - the absence of a node for an overlay means that the default file should be used for all platforms.
 
@@ -869,7 +874,7 @@ A bit field indicating the reason why the PMIC was reset.
 
 `rpi_power_supply` - 2 32-bit integers
 
-The USB VID and Product VDO of the official Raspberry Pi 5A power supply (if connected).
+The USB VID and Product VDO of the official Raspberry Pi 27W power supply (if connected).
 
 `usb_max_current_enable` - 32-bit integer
 
