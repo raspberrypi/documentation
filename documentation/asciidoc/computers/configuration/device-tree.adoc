@@ -502,7 +502,7 @@ This is an extract from the current map file (see the https://github.com/raspber
 };
 ----
 
-Each node has the name of an overlay that requires special handling. The properties of each node are either platform names or one of a small number of special directives. The current supported platforms are `bcm2835`, which includes all Raspberry Pis built around the BCM2835, BCM2836 and BCM2837 SoCs, `bcm2711` for Raspberry Pi 4B, 400 and CM4, and `bcm2712` for Pi 5 and CM5.
+Each node has the name of an overlay that requires special handling. The properties of each node are either platform names or one of a small number of special directives. The current supported platforms are `bcm2835`, which includes all Raspberry Pis built around the BCM2835, BCM2836 and BCM2837 SoCs, `bcm2711` for Raspberry Pi 4B, 400 and CM4, and `bcm2712` for Raspberry Pi 5 and CM5.
 
 A platform name with no value (an empty property) indicates that the current overlay is compatible with the platform; for example, `uart5` is compatible with the `bcm2711` platform. A non-empty value for a platform is the name of an alternative overlay to use in place of the requested one; asking for `disable-bt` on BCM2712 results in `disable-bt-pi5` being loaded instead. Any platform not included in an overlay's node is not compatible with that overlay. Any overlay not mentioned in the map is assumed to be compatible with all platforms.
 
@@ -874,7 +874,7 @@ A bit field indicating the reason why the PMIC was reset.
 
 `rpi_power_supply` - 2 32-bit integers
 
-The USB VID and Product VDO of the official Raspberry Pi 5A power supply (if connected).
+The USB VID and Product VDO of the official Raspberry Pi 27W power supply (if connected).
 
 `usb_max_current_enable` - 32-bit integer
 
