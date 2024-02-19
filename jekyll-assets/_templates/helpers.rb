@@ -1,4 +1,5 @@
 require 'net/http'
+require 'json'
 
 module Slim::Helpers
   def book_link
@@ -22,19 +23,15 @@ module Slim::Helpers
   end
 
   def tutorial_image
-    uri = URI(self.attr 'link')
-    source = Net::HTTP.get(uri)
-    # get the short description
     desc = ""
-    desc_arr = /<meta[^>]+name="description"[^>]+content="([^>]+)"[^>]*>/.match(source)
-    if desc_arr
-      desc = desc_arr[1]
-    end
-    # get the image source
     img_src = ""
-    img_arr = /<meta[^>]+property="og:image"[^>]+content="([^>]+)"[^>]*>/.match(source)
-    if img_arr
-      img_src = img_arr[1]
+    # hit the api
+    res = Net::HTTP.get_response(URI("https://www.raspberrypi.com/tutorials/api.json"))
+    data = JSON.parse(res.body)
+    record = data.select {|item| item["url"] == (self.attr 'link')}
+    if record.length() > 0
+      desc = record[0]["excerpt"]
+      img_src = record[0]["featuredImageUrl"]
     end
     return '<a href="'+(self.attr 'link')+'" target="_blank" class="image"><div class="tutorialcard"><img src="'+img_src+'"/><p class="caption">'+desc+'</p></div></a>'
   end
