@@ -14,6 +14,7 @@
 				div
 					=content
 - elsif role? 'tutorial'
+	- update_attributes(fetch_tutorial_data)
 	.sidebarblock id=id class=role
 		.content
 			- if title?

@@ -22,45 +22,28 @@ module Slim::Helpers
     return src
   end
 
-  def fetch_tutorial_data()
-  end
-
-  def tutorial_image
-    desc = ""
-    img_src = ""
+  def fetch_tutorial_data
     # hit the api
     res = Net::HTTP.get_response(URI("https://www.raspberrypi.com/tutorials/api.json"))
     data = JSON.parse(res.body)
     record = data.select {|item| item["url"] == (self.attr 'link')}
     if record.length() > 0
-      desc = record[0]["excerpt"]
-      img_src = record[0]["featuredImageUrl"]
+      {"tutorial_image" => record[0]["featuredImageUrl"], "tutorial_description" => record[0]["excerpt"]}
+    else
+      {"tutorial_image" => "", "tutorial_description" => ""}
     end
-    return '<a href="'+(self.attr 'link')+'" target="_blank" class="image"><div class="tutorialcard"><img src="'+img_src+'"/><p class="caption">'+desc+'</p></div></a>'
+  end
+
+  def tutorial_image
+    return '<a href="'+(self.attr 'link')+'" target="_blank" class="image"><div class="tutorialcard"><img src="'+(self.attr 'tutorial_image')+'"/><p class="caption">'+(self.attr 'tutorial_description')+'</p></div></a>'
   end
 
   def tutorial_image_sidebar
-    uri = URI(self.attr 'link')
-    source = Net::HTTP.get(uri)
-    # get the image source
-    img_src = ""
-    img_arr = /<meta[^>]+property="og:image"[^>]+content="([^>]+)"[^>]*>/.match(source)
-    if img_arr
-      img_src = img_arr[1]
-    end
-    return '<a href="'+(self.attr 'link')+'" target="_blank" class="image"><div class="tutorialcard"><img src="'+img_src+'"/></div></a>'
+    return '<a href="'+(self.attr 'link')+'" target="_blank" class="image"><div class="tutorialcard"><img src="'+(self.attr 'tutorial_image')+'"/></div></a>'
   end
 
   def tutorial_description_sidebar
-    uri = URI(self.attr 'link')
-    source = Net::HTTP.get(uri)
-    # get the short description
-    desc = ""
-    desc_arr = /<meta[^>]+name="description"[^>]+content="([^>]+)"[^>]*>/.match(source)
-    if desc_arr
-      desc = desc_arr[1]
-    end
-    return '<div class="paragraph tutorialdescription"><p>'+desc+'</p></div>'
+    return '<div class="paragraph tutorialdescription"><p>'+(self.attr 'tutorial_description')+'</p></div>'
   end
 
   def section_title

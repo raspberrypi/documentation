@@ -34,6 +34,7 @@
               p =book_link
         p class="clear"
       - elsif role? 'tutoriallink'
+        - update_attributes(fetch_tutorial_data)
         div class="openblock float-group"
           div class="content"
             div class="imageblock related thumb left"
@@ -57,6 +58,7 @@
               p =book_link
         p class="clear"
       - elsif role? 'tutoriallink'
+        - update_attributes(fetch_tutorial_data)
         div class="openblock float-group"
           div class="content"
             div class="imageblock related thumb left"
