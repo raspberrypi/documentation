@@ -22,6 +22,9 @@ module Slim::Helpers
     return src
   end
 
+  def fetch_tutorial_data()
+  end
+
   def tutorial_image
     desc = ""
     img_src = ""
