@@ -39,6 +39,30 @@ module Slim::Helpers
     return '<a href="'+(self.attr 'link')+'" target="_blank" class="image"><div class="tutorialcard"><img src="'+img_src+'"/><p class="caption">'+desc+'</p></div></a>'
   end
 
+  def tutorial_image_sidebar
+    uri = URI(self.attr 'link')
+    source = Net::HTTP.get(uri)
+    # get the image source
+    img_src = ""
+    img_arr = /<meta[^>]+property="og:image"[^>]+content="([^>]+)"[^>]*>/.match(source)
+    if img_arr
+      img_src = img_arr[1]
+    end
+    return '<a href="'+(self.attr 'link')+'" target="_blank" class="image"><div class="tutorialcard"><img src="'+img_src+'"/></div></a>'
+  end
+
+  def tutorial_description_sidebar
+    uri = URI(self.attr 'link')
+    source = Net::HTTP.get(uri)
+    # get the short description
+    desc = ""
+    desc_arr = /<meta[^>]+name="description"[^>]+content="([^>]+)"[^>]*>/.match(source)
+    if desc_arr
+      desc = desc_arr[1]
+    end
+    return '<div class="paragraph tutorialdescription"><p>'+desc+'</p></div>'
+  end
+
   def section_title
     if caption
       captioned_title
