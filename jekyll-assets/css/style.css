@@ -694,6 +694,11 @@ div.videoblock iframe {
   margin-bottom: 0px;
 }
 
+#content .tutoriallink .imageblock.left img,
+#content  .tutoriallink .imageblock.right img {
+  max-width: 400px;
+}
+
 /* DOXYGEN ELEMENTS */
 
 div.memproto {
