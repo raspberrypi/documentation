@@ -10,9 +10,10 @@ The Sense HAT has an 8×8 RGB LED matrix and a five-button joystick, and include
 * Humidity
 * Colour and brightness
 
-Schematics and mechanical drawings for the Sense HAT are available for download.
+Schematics and mechanical drawings for the Sense HAT and the Sense HAT V2 are available for download.
 
-* https://datasheets.raspberrypi.com/sense-hat/sense-hat-schematics.pdf[Sense HAT schematics].
+* https://datasheets.raspberrypi.com/sense-hat/sense-hat-schematics.pdf[Sense HAT V1 schematics].
+* https://datasheets.raspberrypi.com/sense-hat/sense-hat-v2-schematics.pdf[Sense HAT V2 schematics].
 * https://datasheets.raspberrypi.com/sense-hat/sense-hat-mechanical-drawing.pdf[Sense HAT mechanical drawings].
 
 === LED matrix
