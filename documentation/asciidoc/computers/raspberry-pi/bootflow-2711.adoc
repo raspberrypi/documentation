@@ -69,8 +69,10 @@ Please see the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[boot
   *** Attempt to load firmware using USB device mode from the USB OTG port - see https://github.com/raspberrypi/usbboot[USB boot]. There is no timeout for `RPIBOOT` mode.
 
 ==== Differences on Raspberry Pi 5
+
 * The power button is used to wake up from PMIC `STANDBY` or `HALT` instead of `GPIO 3`.
 * Instead of loading `start.elf`, the firmware loads the Linux kernel. Effectively, the bootloader has an embedded version of `start.elf`.
+* USB boot is disabled by default when connected to a 3A power supply. Set `usb_max_current_enable=1` in `/boot/firmware/config.txt` to enable USB boot. Alternatively, you can press the power button a single time on a failed USB boot to temporarily enable `usb_max_current_enable` and continue booting. However, this setting will not persist after a reboot if enabled by pressing the power button.
 
 === Bootloader updates
 

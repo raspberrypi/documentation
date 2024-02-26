@@ -25,7 +25,7 @@ Please refer to the xref:camera_software.adoc#common-command-line-options[comman
 
 ==== The tuning file
 
-Raspberry Pi's `libcamera` implementation includes a tuning file for each different type of camera module. This is a file that describes or tunes the parameters that will be passed to the algorithms and hardware to produce the best image quality. `libcamera` is only able to automaticaly determine the image sensor being used, not the module as a whole, even though the whole module affects the "tuning". For this reason it is sometimes necessary to override the default tuning file for a particular sensor.
+Raspberry Pi's `libcamera` implementation includes a tuning file for each different type of camera module. This is a file that describes or tunes the parameters that will be passed to the algorithms and hardware to produce the best image quality. `libcamera` is only able to automatically determine the image sensor being used, not the module as a whole, even though the whole module affects the "tuning". For this reason it is sometimes necessary to override the default tuning file for a particular sensor.
 
 For example, the no-IR-filter (NoIR) versions of sensors require different AWB settings to the standard versions, so the IMX219 NoIR being used with a Pi 4 or earlier device should be run using:
 

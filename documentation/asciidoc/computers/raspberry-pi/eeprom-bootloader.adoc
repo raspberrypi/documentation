@@ -47,7 +47,7 @@ Default: `115200`
 
 If `1` then `sudo halt` will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.
 
-This setting is not relevant on Raspberry Pi 5 because the xref:raspberry-pi-5.adoc#adding-your-own-power-button[dedicated power button] may always be used to wakeup from `HALT` or `STANDBY`.
+This setting is not relevant on Raspberry Pi 5 because the xref:raspberry-pi.adoc#power-button[dedicated power button] may always be used to wakeup from `HALT` or `STANDBY`.
 
 Default: `1`
 
@@ -58,7 +58,7 @@ If `1` and `WAKE_ON_GPIO=0` then `sudo halt` will switch off all PMIC outputs. T
 
 Raspberry Pi 400 has a dedicated power button which operates even if the processor is switched off. This behaviour is enabled by default, however, `WAKE_ON_GPIO=2` may be set to use an external GPIO power button instead of the dedicated power button.
 
-On Raspberry Pi 5 this places the PMIC in `STANDBY` mode where all outputs are switched off. There is no need to set `WAKE_ON_GPIO` and pressing the xref:raspberry-pi-5.adoc#adding-your-own-power-button[dedicated power button] will boot the device.
+On Raspberry Pi 5 this places the PMIC in `STANDBY` mode where all outputs are switched off. There is no need to set `WAKE_ON_GPIO` and pressing the xref:raspberry-pi.adoc#power-button[dedicated power button] will boot the device.
 
 Default: `0`
 
@@ -499,9 +499,22 @@ Default: `2000` (2 seconds)
 [[USB_MSD_PWR_OFF_TIME]]
 ==== `USB_MSD_PWR_OFF_TIME`
 
-During USB mass storage boot, power to the USB ports is switched off for a short time to ensure the correct operation of USB mass storage devices. Most devices work correctly using the default setting: change this only if you have problems booting from a particular device. Setting `USB_MSD_PWR_OFF_TIME=0` will prevent power to the USB ports being switched off during USB mass storage boot.
+Raspberry Pi 4 only.
 
-Minimum: `250`
+When the Pi is rebooted power USB power is switched off by the hardware. A short power off time can
+cause problems with some USB devices so this parameter may be used to force a longer power off
+as though the cable was physically removed.
+
+On Pi4 v1.3 and older the configurable/long power off requires the XHCI controller to be enabled
+so there is actually a short power off followed by a longer configurable power off. The longer
+configurable power off may be skipped by setting this parameter to zero.
+
+On newer revisions the hardware ensures that USB power is off from reboot and the bootloader
+only enables power after this timeout has elapsed. This is happens after memory is initialised
+ensuring that USB power is off for at least two seconds. Therefore, this parameter generally
+has no effect on newer hardware revisions.
+
+Minimum: `0`
 
 Maximum: `5000`
 
@@ -657,6 +670,7 @@ Default: `-1`
 
 [[os_check]]
 ==== `os_check`
+
 On Raspberry Pi 5 the firmware automatically checks for a compatible Device Tree file before attempting to boot from the current partition. Otherwise, older non-compatible kernels would be loaded and then hang.
 To disable this check (e.g. for bare-metal development), set `os_check=0` in config.txt
 

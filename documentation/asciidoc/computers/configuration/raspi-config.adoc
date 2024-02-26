@@ -222,7 +222,7 @@ Configure the network's proxy settings.
 
 ===== Boot order
 
-On Raspberry Pi 4, you can specify whether to boot from USB or network if the SD card isn't inserted. See xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[this page] for more information.
+On Raspberry Pi 4, you can specify whether to boot from USB or network if the SD card isn't inserted. For more information, see xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration].
 
 ===== Bootloader version
 
@@ -680,7 +680,7 @@ sudo raspi-config nonint do_proxy <SCHEMES> <ADDRESS>
 
 ===== Boot order
 
-On the Raspberry Pi 4, you can specify whether to boot from USB or network if the SD card isn't inserted. See the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration] section for more information.
+On the Raspberry Pi 4 and 5, you can specify whether to boot from USB or network if the SD card isn't inserted. See the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration] section for more information.
 
 ----
 sudo raspi-config nonint do_boot_order <B1/B2/B3>

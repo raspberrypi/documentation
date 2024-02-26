@@ -521,6 +521,13 @@ Moves the lens to a fixed focal distance, normally given in dioptres (units of 1
 
 It should be noted that lenses can only be expected to be calibrated approximately, and there may well be variation between different camera modules.
 
+----
+	--verbose,	-v		Set verbosity level.
+----
+
+Level 0 is no output, 1 is default, 2 is verbose.
+
+Example: `rpicam-vid -o test.h264 --verbose 2`
 
 
 ==== Output file options

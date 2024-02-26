@@ -54,4 +54,42 @@ Due to the architecture of the SoCs used on Raspberry Pi devices, and the use of
 
 === Adding heatsinks
 
-Whilst heatsinks are not necessary to prevent overheating damage to the SoC — the thermal throttling mechanism handles that — a heatsink or small fan will help if you wish to reduce the amount of thermal throttling that takes place. Depending on the exact circumstances, mounting the Raspberry Pi vertically can also help with heat dissipation, as doing so can improve air flow. For Raspberry Pi 5, a https://www.raspberrypi.com/products/raspberry-pi-5-case/[case with an integrated fan] is available; if you prefer to keep your Raspberry Pi uncased, we also manufacture an https://www.raspberrypi.com/products/active-cooler/[Active Cooler] that can be mounted on the Raspberry Pi 5 itself.
+Thanks to built-in throttling, heatsinks are not necessary to prevent overheating damage to the SoC. However, a heatsink or small fan can reduce thermal throttling and improve performance. Mount the Raspberry Pi vertically for the best airflow and thus slightly improved heat dissipation.
+
+=== Fan cases
+
+Raspberry Pi 5 has two official fan options to assist with cooling:
+
+* https://www.raspberrypi.com/products/active-cooler/[Active Cooler]
+* https://www.raspberrypi.com/products/raspberry-pi-5-case/[Case for Raspberry Pi 5]
+
+Both of these plug into the four-pin JST-SH PWM fan connector located in the upper right of the board between the 40-pin GPIO header and the USB 2 ports. The fan connector pulls from the same current limit as USB peripherals. We recommend the Active Cooler case for overclockers, since it provides better cooling performance.
+
+Both of the available official accessories are actively managed by Raspberry Pi firmware. As the temperature of the Raspberry Pi increases, the fan reacts in the following way:
+
+* below 50°C, the fan does not spin at all (0% speed)
+* at 50°C, the fan turns on at a low speed (30% speed)
+* at 60°C, the fan speed increases to a medium speed (50% speed)
+* at 67.5°C, the fan speed increases to a high speed (70% speed)
+* at 75°C the fan increases to full speed (100% speed)
+
+Temperature decreases use the same mapping with a 5°C **hysteresis**; fan speed decreases when the temperature drops to 5°C below each of the above thresholds.
+
+At boot the fan is turned on, and the tachometer input is checked to see if the fan is spinning. If it is, then the `cooling_fan` device tree overlay is enabled. This overlay is in `bcm2712-rpi-5-b.dtb` by default, but with `status=disabled`.
+
+INFO: Both fan options use the Coolcox https://www.coolcox.com/products/pdf/CC3007.pdf[CC3007H05S] part.
+
+==== Fan connector pinout
+
+The fan connector is a 1mm pitch JST-SH socket containing the following four pins:
+
+[cols="1,2,2",width="50"%"]
+|===
+| Pin | Function | Wire colour
+| 1 | +5V | Red
+| 2 | PWM | Blue
+| 3 | GND | Black
+| 4 | Tach | Yellow
+|===
+
+

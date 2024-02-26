@@ -68,7 +68,7 @@ image::images/peripherals/sd-card.png[alt="Inserting a microSD card into a Raspb
 
 [[recommended-capacity]]
 
-We recommend using an SD card with at least 16GB of storage with Raspberry Pi OS. If you use Raspberry Pi OS Lite, we recommend at least 4GB.
+We recommend using an SD card with at least 32GB of storage for Raspberry Pi OS installations. For Raspberry Pi OS Lite, we recommend at least 16GB. You can use any SD card with a capacity of less than 2TB. Capacities above 2TB are currently not supported due to limitations in the https://en.wikipedia.org/wiki/Master_boot_record[MBR]. As with any other boot media, you'll see improved performance on SD cards with faster read and write speeds.
 
 Because of a hardware limitation, the following devices will only boot from a boot partition of 256GB or less:
 
