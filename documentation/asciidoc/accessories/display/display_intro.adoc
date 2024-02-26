@@ -29,7 +29,6 @@ The display has the following key features:
 * Outer dimensions: 192.96 × 110.76mm
 * Viewable area: 154.08 × 85.92mm
 
-WARNING: The Raspberry Pi 5 does not support automatic display configuration. To attach a display to the `CAM/DISP 1` connector, add `dtoverlay=vc4-kms-dsi-7inch` to `/boot/firmware/config.txt`. To attach a display to the `CAM/DISP 0` connector, add `dtoverlay=vc4-kms-dsi-7inch,dsi0`. Reboot with `sudo reboot` to load the new configuration.
 
 === Mount the Touch Display
 
