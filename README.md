@@ -155,7 +155,21 @@ $ make clean
 
 ### Building with Doxygen
 
-If you want to build the Pico C SDK Doxygen documentation alongside the main documentation site you can do so with,
+If you want to build the Pico C SDK Doxygen documentation alongside the main documentation site, first install the following dependencies:
+
+NOTE: For the time being, building with any Doxygen version other than 1.8.17 will result in formatting errors in the built site.
+
+```
+$ brew install doxygen@1.8.17 graphviz
+```
+
+Or on Linux, 
+
+```
+$ sudo apt -y install doxygen=1.8.17 graphviz
+```
+
+Then you can build with,
 
 ```
 $ make build_doxygen_adoc
