@@ -131,7 +131,7 @@ $ pip3 install --user -r requirements.txt
 
 ### Building the Documentation Site
 
-After you've installed both the toolchain and scripting dependencies, you can build the documentation with the following command:
+After you have installed both the toolchain and scripting dependencies, you can build the documentation with the following command:
 
 ```
 $ make
