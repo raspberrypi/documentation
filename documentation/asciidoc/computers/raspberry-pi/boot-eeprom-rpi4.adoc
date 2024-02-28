@@ -15,7 +15,7 @@ There are multiple ways to update the bootloader of your Raspberry Pi.
 
 ==== Raspberry Pi 5, Raspberry Pi 4 and Raspberry Pi 400
 
-Raspberry Pi OS automatically updates the bootloader for critical bug fixes. The recommended methods for manually updating the bootloader or changing the boot modes are https://www.raspberrypi.com/software/[Raspberry Pi Imager] and xref:configuration.adoc#raspi-config[raspi-config].
+Raspberry Pi OS automatically updates the bootloader for important bug fixes. The recommended methods for manually updating the bootloader or changing the boot modes are https://www.raspberrypi.com/software/[Raspberry Pi Imager] and xref:configuration.adoc#raspi-config[raspi-config].
 
 [[imager]]
 ==== Using Raspberry Pi Imager to update the bootloader
@@ -50,14 +50,15 @@ To change the boot-mode or bootloader version from within Raspberry Pi OS, run x
 * Run `sudo raspi-config`
 * Select `Advanced Options`
 * Select `Bootloader Version`
-* Select `Default` for factory default settings or `Latest` for the latest stable bootloader release
+* Select `Default` for factory default settings or `Latest` for the latest bootloader release.
 * Reboot
 
-=== Updating the EEPROM Configuration
+=== Updating the bootloader configuration
 
-The default version of the bootloader is only updated for critical fixes and major releases. The `LATEST/STABLE` bootloader updates more often to include the latest fixes and improvements.
+The `DEFAULT` version of the bootloader represents the latest factory default firmware image. It's update for critical bug fixes, hardware support and periodically after features have been tested in the `LATEST` release. 
+The `LATEST` bootloader updates more often to include the latest fixes and improvements.
 
-Advanced users can switch to the `LATEST/STABLE` bootloader to get the latest functionality.
+Advanced users can switch to the `LATEST` bootloader to get the latest functionality.
 
 Open a command prompt and start `raspi-config`.
 
@@ -71,15 +72,20 @@ Navigate to `Advanced Options` and then `Bootloader Version`. Select `Latest` an
 sudo apt update
 ----
 
-If you run `rpi-eeprom-update`, you should see that a more recent version of the bootloader is available and it's the `stable` release.
+If you run `sudo rpi-eeprom-update`, you should see that a more recent version of the bootloader is available and it's the `latest` release.
 
 ----
 *** UPDATE AVAILABLE ***
 BOOTLOADER: update available
-   CURRENT: Tue 25 Jan 14:30:41 UTC 2022 (1643121041)
-    LATEST: Thu 19 Oct 11:57:12 UTC 2022 (1646913432)
-   RELEASE: stable (/lib/firmware/raspberrypi/bootloader/stable)
+   CURRENT: Thu 18 Jan 13:59:23 UTC 2024 (1705586363)
+    LATEST: Mon 22 Jan 10:41:21 UTC 2024 (1705920081)
+   RELEASE: latest (/lib/firmware/raspberrypi/bootloader-2711/latest)
             Use raspi-config to change the release.
+
+  VL805_FW: Using bootloader EEPROM
+     VL805: up to date
+   CURRENT: 000138c0
+    LATEST: 000138c0
 ----
 
 Now you can update your bootloader.
@@ -89,26 +95,30 @@ sudo rpi-eeprom-update -a
 sudo reboot
 ----
 
-Reboot, then run `rpi-eeprom-update`. You should now see that the `CURRENT` date has updated to the latest version of the bootloader:
+Reboot, then run `sudo rpi-eeprom-update`. You should now see that the `CURRENT` date has updated to the latest version of the bootloader:
 
 ----
 BOOTLOADER: up to date
-   CURRENT: Thu 19 Oct 11:57:12 UTC 2023 (1646913432)
-    LATEST: Thu 19 Oct 11:57:12 UTC 2023 (1646913432)
-   RELEASE: stable (/lib/firmware/raspberrypi/bootloader/stable)
+   CURRENT: Mon 22 Jan 10:41:21 UTC 2024 (1705920081)
+    LATEST: Mon 22 Jan 10:41:21 UTC 2024 (1705920081)
+   RELEASE: latest (/lib/firmware/raspberrypi/bootloader-2711/latest)
             Use raspi-config to change the release.
+
+  VL805_FW: Using bootloader EEPROM
+     VL805: up to date
+   CURRENT: 000138c0
+    LATEST: 000138c0
 ----
 
-==== Reading the current EEPROM configuration
+==== Reading the current bootloader configuration
 
-To view the configuration used by the current bootloader during the last boot, run one of the following:
+To view the configuration used by the current running bootloader run:
 
 * `rpi-eeprom-config`
-* `vcgencmd bootloader_config`
 
-==== Reading the configuration from an EEPROM image
+==== Reading the configuration from an bootloader image
 
-To read the configuration from an EEPROM image:
+To read the configuration from a bootloader image:
 
 [,bash]
 ----
@@ -117,7 +127,7 @@ rpi-eeprom-config pieeprom.bin
 
 ==== Editing the current bootloader configuration
 
-The following command loads the current EEPROM configuration into a text editor. When the editor is closed, `rpi-eeprom-config` applies the updated configuration to latest available EEPROM release and uses `rpi-eeprom-update` to schedule an update when the system is rebooted:
+The following command loads the current bootloader configuration into a text editor. When the editor is closed, `rpi-eeprom-config` applies the updated configuration to latest available bootloader release and uses `rpi-eeprom-update` to schedule an update when the system is rebooted:
 
 [,bash]
 ----
@@ -131,7 +141,7 @@ The editor is selected by the `EDITOR` environment variable.
 
 ==== Applying a saved configuration
 
-The following command applies `boot.conf` to the latest available EEPROM image and uses `rpi-eeprom-update` to schedule an update when the system is rebooted.
+The following command applies `boot.conf` to the latest available bootloader image and uses `rpi-eeprom-update` to schedule an update when the system is rebooted.
 
 ----
 sudo rpi-eeprom-config --apply boot.conf
@@ -157,13 +167,13 @@ To re-enable automatic updates:
 sudo systemctl unmask rpi-eeprom-update
 ----
 
-NOTE: If the xref:raspberry-pi.adoc#FREEZE_VERSION[FREEZE_VERSION] bootloader EEPROM config is set then the EEPROM update service will skip any automatic updates. This removes the need to individually disable the EEPROM update service if there are multiple operating systems installed, or when swapping SD cards.
+NOTE: If the xref:raspberry-pi.adoc#FREEZE_VERSION[FREEZE_VERSION] bootloader config is set then the update service will skip any automatic updates. This removes the need to individually disable the update service if there are multiple operating systems installed, or when swapping SD cards.
 
 ==== `rpi-eeprom-update`
 
 Raspberry Pi OS uses the `rpi-eeprom-update` script to implement an <<automaticupdates,automatic update>> service. The script can also be run interactively or wrapped to create a custom bootloader update service.
 
-Reading the current EEPROM version:
+Reading the current bootloader version:
 
 [,bash]
 ----
@@ -191,7 +201,7 @@ Cancel the pending update:
 sudo rpi-eeprom-update -r
 ----
 
-Installing a specific bootloader EEPROM image:
+Installing a specific bootloader image:
 
 [,bash]
 ----
@@ -217,13 +227,11 @@ The firmware release status corresponds to a particular subdirectory of bootload
 
 Since the release status string is just a subdirectory name, it is possible to create your own release streams e.g. a pinned release or custom network boot configuration.
 
-NOTE: `default` and `latest` are symbolic links to the older release names of `critical` and `stable`.
-
 ==== Changing the bootloader release
 
 NOTE: You can change which release stream is to be used during an update by editing the `/etc/default/rpi-eeprom-update` file and changing the `FIRMWARE_RELEASE_STATUS` entry to the appropriate stream.
 
-==== Updating the bootloader configuration in an EEPROM image file
+==== Updating the bootloader configuration in an bootloader image file
 
 The following command replaces the bootloader configuration in `pieeprom.bin` with `boot.conf` and writes the new image to `new.bin`:
 
@@ -234,11 +242,11 @@ rpi-eeprom-config --config boot.conf --out new.bin pieeprom.bin
 
 ==== recovery.bin
 
-At power on, the ROM found on BCM2711 and BCM2712 looks for a file called `recovery.bin` in the root directory of the boot partition on the SD card. If a valid `recovery.bin` is found then the ROM executes this instead of the contents of the EEPROM. This mechanism ensures that the bootloader EEPROM can always be reset to a valid image with factory default settings.
+At power on, the ROM found on BCM2711 and BCM2712 looks for a file called `recovery.bin` in the root directory of the boot partition on the SD card. If a valid `recovery.bin` is found then the ROM executes this instead of the contents of the EEPROM. This mechanism ensures that the bootloader flash image can always be reset to a valid image with factory default settings.
 
 See also xref:raspberry-pi.adoc#raspberry-pi-4-and-raspberry-pi-5-boot-flow[Raspberry Pi boot-flow]
 
-==== EEPROM update files
+==== Bootloader update files
 
 [cols="1,1"]
 |===
@@ -246,7 +254,7 @@ See also xref:raspberry-pi.adoc#raspberry-pi-4-and-raspberry-pi-5-boot-flow[Rasp
 | Purpose
 
 | recovery.bin
-| Bootloader EEPROM recovery executable
+| Bootloader recovery executable
 
 | pieeprom.upd
 | Bootloader EEPROM image
@@ -263,10 +271,10 @@ See also xref:raspberry-pi.adoc#raspberry-pi-4-and-raspberry-pi-5-boot-flow[Rasp
 | vl805.sig| The sha256 checksum of vl805.bin
 |===
 
-* If the bootloader update image is called `pieeprom.upd` then `recovery.bin` is renamed to `recovery.000` once the update has completed, then the system is rebooted. Since `recovery.bin` is no longer present the ROM loads the newly updated bootloader from EEPROM and the OS is booted as normal.
+* If the bootloader update image is called `pieeprom.upd` then `recovery.bin` is renamed to `recovery.000` once the update has completed, then the system is rebooted. Since `recovery.bin` is no longer present the ROM loads the newly updated bootloader from SPI flash and the OS is booted as normal.
 * If the bootloader update image is called `pieeprom.bin` then `recovery.bin` will stop after the update has completed. On success the HDMI output will be green and the green activity LED is flashed rapidly. If the update fails, the HDMI output will be red and an xref:configuration.adoc#led-warning-flash-codes[error code] will be displayed via the activity LED.
 * The `.sig` files contain the hexadecimal sha256 checksum of the corresponding image file; additional fields may be added in the future.
-* The ROM found on BCM2711 and BCM2712 does not support loading `recovery.bin` from USB mass storage or TFTP. Instead, newer versions of the bootloader support a self-update mechanism where the bootloader is able to reflash the EEPROM itself. See `ENABLE_SELF_UPDATE` on the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration] page.
+* The ROM found on BCM2711 and BCM2712 does not support loading `recovery.bin` from USB mass storage or TFTP. Instead, newer versions of the bootloader support a self-update mechanism where the bootloader is able to reflash the SPI flash itself. See `ENABLE_SELF_UPDATE` on the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration] page.
 * The temporary EEPROM update files are automatically deleted by the `rpi-eeprom-update` service at startup.
 
 For more information about the `rpi-eeprom-update` configuration file see `rpi-eeprom-update -h`.
