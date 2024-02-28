@@ -74,7 +74,7 @@ GEM
     sass-embedded (1.69.6)
       google-protobuf (~> 3.25)
       rake (>= 13.0.0)
-    slim (5.2.0)
+    slim (5.2.1)
       temple (~> 0.10.0)
       tilt (>= 2.1.0)
     temple (0.10.3)
@@ -99,7 +99,7 @@ DEPENDENCIES
   jekyll-feed (~> 0.17)
   minima (~> 2.0)
   nokogiri (~> 1.16)
-  slim (~> 5.2.0)
+  slim (~> 5.2.1)
   thread_safe (~> 0.3.5)
   tzinfo (~> 2.0)
   tzinfo-data
