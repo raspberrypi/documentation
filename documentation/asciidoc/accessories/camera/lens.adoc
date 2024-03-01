@@ -14,7 +14,7 @@ We recommend two lenses, a 6mm wide angle lens and a 16mm telephoto lens. These 
 
 2+| Resolution | 10MP | 3MP
 2+| Image format | 1" | 1/2"
-2+| Aperture | F1.4 to 1.6 | F1.2
+2+| Aperture | F1.4 to F16 | F1.2
 2+| Mount | C | CS
 .2+| Field of View H°×V° (D°)
 | HQ | 22.2°×16.7° (27.8°)| 55°×45° (71°)
