@@ -180,6 +180,27 @@ Open a new terminal window after installation to ensure that you use the new bin
 
 Finally, follow the `dtoverlay` and display driver instructions in the  xref:camera_software.adoc#getting-started[Getting Started section].
 
+===== `rpicam-apps` meson flag reference
+
+The `meson` build configuration for `rpicam-apps` supports the following flags:
+
+`-Dneon_flags=armv8-neon`:: Speeds up certain post-processing features on Raspberry Pi 3 or Raspberry Pi 4 devices running a 32-bit OS.
+
+`-Denable_libav=true`:: Enables or disables `libav` encoder integration.
+
+`-Denable_drm=true`:: Enables or disables **DRM/KMS preview rendering**, a preview window used in the absence of a desktop environment.
+
+`-Denable_egl=true`:: Enables or disables the non-Qt desktop environment-based preview. Disable if your system lacks a desktop environment.
+
+`-Denable_qt=true`:: Enables or disables support for the Qt-based implementation of the preview window. Disable if you do not have a desktop environment installed or if you have no intention of using the Qt-based preview window. The Qt-based preview is normally not recommended because it is computationally very expensive, however it does work with X display forwarding.
+
+`-Denable_opencv=true`:: Forces OpenCV-based post-processing stages to link or not link. Requires OpenCV to enable. Defaults to `true` when OpenCV is installed, `false` otherwise.
+
+`-Denable_tflite=true`:: Enables or disables TensorFlow Lite post-processing stages. Disabled by default. Requires Tensorflow Lite to enable. Depending on how you have built and/or installed TFLite, you may need to tweak the `meson.build` file in the `post_processing_stages` directory.
+
+NOTE: To disable any of the flags shown above with `true` as a value, replace `true` with `false`.
+
+
 ==== Building `libepoxy`
 
 Rebuilding `libepoxy` should not normally be necessary as this library changes only very rarely. If you do want to build it from scratch, however, please follow the instructions below.
