@@ -180,7 +180,7 @@ Open a new terminal window after installation to ensure that you use the new bin
 
 Finally, follow the `dtoverlay` and display driver instructions in the  xref:camera_software.adoc#getting-started[Getting Started section].
 
-===== `rpicam-apps` meson flag reference
+==== `rpicam-apps` meson flag reference
 
 The `meson` build configuration for `rpicam-apps` supports the following flags:
 
