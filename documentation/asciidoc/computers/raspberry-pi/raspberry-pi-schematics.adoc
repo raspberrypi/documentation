@@ -1,75 +1,73 @@
-== Schematics and Mechanical Drawings
+== Schematics and mechanical drawings
 
 Schematics for the various Raspberry Pi board versions:
 
 === Raspberry Pi 5
 
-* https://datasheets.raspberrypi.com/rpi5/raspberry-pi-5-mechanical-drawing.pdf[Mechanical Drawings, PDF]
+* https://datasheets.raspberrypi.com/rpi5/raspberry-pi-5-mechanical-drawing.pdf[Mechanical drawings, PDF]
 * https://datasheets.raspberrypi.com/rpi5/RaspberryPi5-step.zip[STEP file] for Raspberry Pi 5
-
-NOTE: More information on the new xref:raspberry-pi-5.adoc[Raspberry Pi 5] can be found elsewhere in the documentation.
 
 === Raspberry Pi 4 Model B
 
-* https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-reduced-schematics.pdf[Schematics, Revision 4.0]
-* https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-mechanical-drawing.pdf[Mechanical Drawings, PDF]
-* https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-mechanical-drawing.dxf[Mechanical Drawings, DXF]
+* https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-reduced-schematics.pdf[Schematics, revision 4.0]
+* https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-mechanical-drawing.pdf[Mechanical drawings, PDF]
+* https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-mechanical-drawing.dxf[Mechanical drawings, DXF]
 
 === Raspberry Pi 3 Model B+
 
-* https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-b-plus-reduced-schematics.pdf[Schematics, Revision 1.0]
-* https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-b-plus-mechanical-drawing.pdf[Mechanical Drawings, PDF]
-* https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-b-plus-mechanical-drawing.dxf[Mechanical Drawings, DXF]
-* https://datasheets.raspberrypi.com/case/raspberry-pi-3-b-plus-case-mechanical-drawing.pdf[Case Drawings, PDF]
+* https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-b-plus-reduced-schematics.pdf[Schematics, revision 1.0]
+* https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-b-plus-mechanical-drawing.pdf[Mechanical drawings, PDF]
+* https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-b-plus-mechanical-drawing.dxf[Mechanical drawings, DXF]
+* https://datasheets.raspberrypi.com/case/raspberry-pi-3-b-plus-case-mechanical-drawing.pdf[Case drawings, PDF]
 
 === Raspberry Pi 3 Model B
 
-* https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-b-reduced-schematics.pdf[Schematics, Revision 1.2]
-* https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-b-mechanical-drawing.pdf[Mechanical Drawings, PDF]
-* https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-b-mechanical-drawing.dxf[Mechanical Drawings, DXF]
+* https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-b-reduced-schematics.pdf[Schematics, revision 1.2]
+* https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-b-mechanical-drawing.pdf[Mechanical drawings, PDF]
+* https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-b-mechanical-drawing.dxf[Mechanical drawings, DXF]
 
 === Raspberry Pi 2 Model B
 
-* https://datasheets.raspberrypi.com/rpi2/raspberry-pi-2-b-reduced-schematics.pdf[Schematics, Revision 1.2]
+* https://datasheets.raspberrypi.com/rpi2/raspberry-pi-2-b-reduced-schematics.pdf[Schematics, revision 1.2]
 
 === Raspberry Pi 1 Model B+
 
-* https://datasheets.raspberrypi.com/rpi/raspberry-pi-b-plus-reduced-schematics.pdf[Schematics, Revision 1.2]
-* https://datasheets.raspberrypi.com/rpi/raspberry-pi-b-plus-mecahnical-drawing.pdf[Mechanical Drawings, PDF]
-* https://datasheets.raspberrypi.com/rpi/raspberry-pi-b-plus-mecahnical-drawing.dxf[Mechanical Drawings, DXF]
+* https://datasheets.raspberrypi.com/rpi/raspberry-pi-b-plus-reduced-schematics.pdf[Schematics, revision 1.2]
+* https://datasheets.raspberrypi.com/rpi/raspberry-pi-b-plus-mecahnical-drawing.pdf[Mechanical drawings, PDF]
+* https://datasheets.raspberrypi.com/rpi/raspberry-pi-b-plus-mecahnical-drawing.dxf[Mechanical drawings, DXF]
 
 === Raspberry Pi 3 Model A+
 
-* https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-a-plus-reduced-schematics.pdf[Schematics, Revision 1.0]
-* https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-a-plus-mechanical-drawing.pdf[Mechanical Drawings, PDF]
-* https://datasheets.raspberrypi.com/case/raspberry-pi-3-a-plus-case-mechanical-drawing.pdf[Case Drawings, PDF]
+* https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-a-plus-reduced-schematics.pdf[Schematics, revision 1.0]
+* https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-a-plus-mechanical-drawing.pdf[Mechanical drawings, PDF]
+* https://datasheets.raspberrypi.com/case/raspberry-pi-3-a-plus-case-mechanical-drawing.pdf[Case drawings, PDF]
 
 NOTE: Mechanical drawings for the Raspberry Pi 3 Model A+ are also applicable to the Raspberry Pi 1 Model A+.
 
 === Raspberry Pi 1 Model A+
 
-* https://datasheets.raspberrypi.com/rpi/raspberry-pi-a-plus-reduced-schematics.pdf[Schematics, Revision 1.1]
+* https://datasheets.raspberrypi.com/rpi/raspberry-pi-a-plus-reduced-schematics.pdf[Schematics, revision 1.1]
 
 === Raspberry Pi Zero
 
-* https://datasheets.raspberrypi.com/rpizero/raspberry-pi-zero-reduced-schematics.pdf[Schematics, Revision 1.3]
-* https://datasheets.raspberrypi.com/rpizero/raspberry-pi-zero-mechanical-drawing.pdf[Mechanical Drawings, PDF]
-* https://datasheets.raspberrypi.com/case/raspberry-pi-zero-case-mechanical-drawing.pdf[Case Drawings, PDF - Blank Lid]
-* https://datasheets.raspberrypi.com/case/raspberry-pi-zero-case-with-gpio-mechanical-drawing.pdf[Case Drawings, PDF - GPIO Lid]
-* https://datasheets.raspberrypi.com/case/raspberry-pi-zero-case-with-camera-mechanical-drawing.pdf[Case Drawings, PDF - Camera Lid]
+* https://datasheets.raspberrypi.com/rpizero/raspberry-pi-zero-reduced-schematics.pdf[Schematics, revision 1.3]
+* https://datasheets.raspberrypi.com/rpizero/raspberry-pi-zero-mechanical-drawing.pdf[Mechanical drawings, PDF]
+* https://datasheets.raspberrypi.com/case/raspberry-pi-zero-case-mechanical-drawing.pdf[Case drawings, PDF - blank lid]
+* https://datasheets.raspberrypi.com/case/raspberry-pi-zero-case-with-gpio-mechanical-drawing.pdf[Case drawings, PDF - GPIO lid]
+* https://datasheets.raspberrypi.com/case/raspberry-pi-zero-case-with-camera-mechanical-drawing.pdf[Case Drawings, PDF - camera lid]
 
 === Raspberry Pi Zero W
 
-* https://datasheets.raspberrypi.com/rpizero/raspberry-pi-zero-w-reduced-schematics.pdf[Schematics, Revision 1.1]
-* https://datasheets.raspberrypi.com/rpizero/raspberry-pi-zero-w-mechanical-drawing.pdf[Mechanical Drawings, PDF]
+* https://datasheets.raspberrypi.com/rpizero/raspberry-pi-zero-w-reduced-schematics.pdf[Schematics, revision 1.1]
+* https://datasheets.raspberrypi.com/rpizero/raspberry-pi-zero-w-mechanical-drawing.pdf[Mechanical drawings, PDF]
 
 === Raspberry Pi Zero 2 W
 
 * https://datasheets.raspberrypi.com/rpizero2/raspberry-pi-zero-2-w-reduced-schematics.pdf[Schematics]
-* https://datasheets.raspberrypi.com/rpizero2/raspberry-pi-zero-2-w-mechanical-drawing.pdf[Mechanical Drawings, PDF]
-* https://datasheets.raspberrypi.com/rpizero2/raspberry-pi-zero-2-w-test-pads.pdf[Test Pad Positions]
+* https://datasheets.raspberrypi.com/rpizero2/raspberry-pi-zero-2-w-mechanical-drawing.pdf[Mechanical drawings, PDF]
+* https://datasheets.raspberrypi.com/rpizero2/raspberry-pi-zero-2-w-test-pads.pdf[Test pad positions]
 
-==== Test Pad Locations
+==== Test pad locations
 
 The Raspberry Pi Zero 2 W has a number of test pad locations used during production of the board. 
 
@@ -81,8 +79,8 @@ image::images/zero2-pad-diagram.png[width="70%"]
 | STATUS_LED	| Power state of LED (LOW = ON)	| 5.15	| 8.8
 | CORE	| Processor power	| 6.3	| 18.98
 | RUN	| Connect to GND to reset	| 8.37	| 22.69
-| 5V	| 5V Input	| 8.75	| 11.05
-| 5V	| 5V Input	| 11.21	| 6.3
+| 5V	| 5V input	| 8.75	| 11.05
+| 5V	| 5V input	| 11.21	| 6.3
 | GND	| Ground pin	| 10.9	| 3.69
 | GND	| Ground pin	| 17.29	| 2.41
 | USB_DP	| USB port	| 22.55	| 1.92

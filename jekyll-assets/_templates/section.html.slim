@@ -32,13 +32,16 @@
             =content
             div class="paragraph"
               p =book_link
+        p class="clear"
       - elsif role? 'tutoriallink'
+        - update_attributes(fetch_tutorial_data)
         div class="openblock float-group"
           div class="content"
-            div class="imageblock related thumb right"
+            div class="imageblock related thumb left"
               div class="content"
                 =tutorial_image  
             =content
+        p class="clear"
       - else
         =content
     - else
@@ -53,12 +56,15 @@
             =content
             div class="paragraph"
               p =book_link
+        p class="clear"
       - elsif role? 'tutoriallink'
+        - update_attributes(fetch_tutorial_data)
         div class="openblock float-group"
           div class="content"
-            div class="imageblock related thumb right"
+            div class="imageblock related thumb left"
               div class="content"
                 =tutorial_image  
             =content
+        p class="clear"
       - else
         =content

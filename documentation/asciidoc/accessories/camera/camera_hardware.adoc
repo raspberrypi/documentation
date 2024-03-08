@@ -223,6 +223,7 @@ Available mechanical drawings;
 * Camera Module 2 https://datasheets.raspberrypi.com/camera/camera-module-2-mechanical-drawing.pdf[PDF]
 * Camera Module 3 https://datasheets.raspberrypi.com/camera/camera-module-3-standard-mechanical-drawing.pdf[PDF]
 * Camera Module 3 Wide https://datasheets.raspberrypi.com/camera/camera-module-3-wide-mechanical-drawing.pdf[PDF]
+* Camera Module 3 https://datasheets.raspberrypi.com/camera/camera-module-3-step.zip[STEP files]
 * HQ Camera Module (CS-mount version) https://datasheets.raspberrypi.com/hq-camera/hq-camera-cs-mechanical-drawing.pdf[PDF]
 ** The CS-mount https://datasheets.raspberrypi.com/hq-camera/hq-camera-cs-lensmount-drawing.pdf[PDF]
 * HQ Camera Module (M12-mount version) https://datasheets.raspberrypi.com/hq-camera/hq-camera-m12-mechanical-drawing.pdf[PDF]

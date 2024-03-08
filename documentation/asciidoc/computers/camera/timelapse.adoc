@@ -1,12 +1,12 @@
-== Application Notes
+== Application notes
 
-=== Creating Timelapse Video
+=== Creating timelapse video
 
-To create a time-lapse video, you simply configure the Raspberry Pi to take a picture at a regular interval, such as once a minute, then use an application to stitch the pictures together into a video.
+To create a timelapse video, configure the Raspberry Pi to take a picture at a regular interval, such as once a minute, then use an application to stitch the pictures together into a video.
 
-==== Using `rpicam-still` Timelapse Mode
+==== Using `rpicam-still` timelapse mode
 
-`rpicam-still` has a built in time-lapse mode, using the `--timelapse` command line switch. The value that follows the switch is the time between shots in milliseconds:
+`rpicam-still` has a built-in timelapse mode, using the `--timelapse` command line switch. The value that follows the switch is the time between shots in milliseconds:
 
 ----
 rpicam-still -t 30000 --timelapse 2000 -o image%04d.jpg
@@ -14,14 +14,14 @@ rpicam-still -t 30000 --timelapse 2000 -o image%04d.jpg
 
 [NOTE]
 ====
-The `%04d` in the output filename: this indicates the point in the filename where you want a frame count number to appear. So, for example, the command above will produce a capture every two seconds (2000ms), over a total period of 30 seconds (30000ms), named image0001.jpg, image0002.jpg, and so on, through to image0015.jpg.
+The `%04d` in the output filename indicates the point in the filename where you want a frame count number to appear. So, for example, the command above will produce a capture every two seconds (2000ms), over a total period of 30 seconds (30000ms), named image0001.jpg, image0002.jpg, and so on, through to image0015.jpg.
 
 The `%04d` indicates a four-digit number, with leading zeros added to make up the required number of digits. So, for example, `%08d` would result in an eight-digit number. You can miss out the `0` if you don't want leading zeros.
 
 If a timelapse value of 0 is entered, the application will take pictures as fast as possible. Note that there's an minimum enforced pause of approximately 30 milliseconds between captures to ensure that exposure calculations can be made.
 ====
 
-==== Automating using `cron` Jobs
+==== Automating using `cron` jobs
 
 A good way to automate taking a picture at a regular interval is running a script with `cron`. First create the script that we'll be using with your editor of choice, replacing the `<username>` placeholder below with the name of the user you created during first boot:
 
@@ -31,13 +31,13 @@ DATE=$(date +"%Y-%m-%d_%H%M")
 rpicam-still -o /home/<username>/camera/$DATE.jpg
 ----
 
-and save it as `camera.sh`. You'll need to make the script executable:
+...and save it as `camera.sh`. You'll need to make the script executable:
 
 ----
 $ chmod +x camera.sh
 ----
 
-and also create the `camera` directory into which you'll be saving the pictures:
+...and also create the `camera` directory into which you'll be saving the pictures:
 
 ----
 $ mkdir camera
@@ -55,15 +55,15 @@ This will either ask which editor you would like to use, or open in your default
 * * * * * /home/<username>/camera.sh 2>&1
 ----
 
-Save and exit and you should see the message:
+Save and exit, and you should see this message:
 
 ----
 crontab: installing new crontab
 ----
 
-Make sure that you use e.g. `%04d` to ensure that each image is written to a new file: if you don't, then each new image will overwrite the previous file.
+NOTE: Make sure that you use e.g. `%04d` to ensure that each image is written to a new file: if you don't, then each new image will overwrite the previous file.
 
-==== Stitching Images Together
+==== Stitching images together
 
 Now you'll need to stitch the photos together into a video. You can do this on the Raspberry Pi using `ffmpeg` but the processing will be slow. You may prefer to transfer the image files to your desktop computer or laptop and produce the video there.
 
@@ -85,7 +85,7 @@ On a Raspberry Pi 3, this can encode a little more than two frames per second. T
 * `-f image2` Set ffmpeg to read from a list of image files specified by a pattern.
 * `-pattern_type glob` When importing the image files, use wildcard patterns (globbing) to interpret the filename input by `-i`, in this case `image*.jpg`, where `*` would be the image number.
 * `-i 'image*.jpg'` The input file specification (to match the files produced during the capture).
-* `-s 1280x720` Scale to 720p. You can also use 1920x1080, or lower resolutions, depending on your requirements.
+* `-s 1280×720` Scale to 720p. You can also use 1920×1080, or lower resolutions, depending on your requirements.
 * `-vcodec libx264` Use the software x264 encoder.
 * `timelapse.mp4` The name of the output video file.
 

@@ -21,7 +21,7 @@ Binary firmware blobs loaded onto the VideoCore GPU in the SoC, which then take 
 * `start.elf` is the basic firmware.
 * `start_x.elf` includes additional codecs.
 * `start_db.elf` can be used for debugging purposes.
-* `start_cd.elf` is a cut-down version of the firmware that removes support for hardware blocks such as codecs and 3D; it also imposes initial framebuffer limitations. The cut-down firmware is automatically used when `gpu_mem=16` is specified in `config.txt`.
+* `start_cd.elf` is a cut-down version of the firmware that removes support for hardware blocks such as codecs and 3D as well as debug logging support; it also imposes initial framebuffer limitations. The cut-down firmware is automatically used when `gpu_mem=16` is specified in `config.txt`.
 
 `start4.elf`, `start4x.elf`, `start4db.elf` and `start4cd.elf` are equivalent firmware files specific to the Raspberry Pi 4-series (Model 4B, Pi 400, Compute Module 4 and Compute Module 4S).
 

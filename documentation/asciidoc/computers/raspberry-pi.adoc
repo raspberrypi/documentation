@@ -16,7 +16,7 @@ include::raspberry-pi/bootflow-legacy.adoc[]
 
 include::raspberry-pi/bootflow-2711.adoc[]
 
-include::raspberry-pi/bcm2711-bootloader.adoc[]
+include::raspberry-pi/eeprom-bootloader.adoc[]
 
 include::raspberry-pi/boot-usb.adoc[]
 
@@ -40,7 +40,13 @@ include::raspberry-pi/raspberry-pi-industrial.adoc[]
 
 include::raspberry-pi/otp-bits.adoc[]
 
+include::raspberry-pi/pcie.adoc[]
+
+include::raspberry-pi/power-button.adoc[]
+
 include::raspberry-pi/power-supplies.adoc[]
+
+include::raspberry-pi/rtc.adoc[]
 
 include::raspberry-pi/spi-bus-on-raspberry-pi.adoc[]
 

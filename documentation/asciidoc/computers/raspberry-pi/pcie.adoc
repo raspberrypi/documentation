@@ -1,0 +1,63 @@
+== Raspberry Pi connector for PCIe
+
+.Raspberry Pi connector for PCIe
+image::images/pcie.jpg[alt="Raspberry Pi connector for PCIe",width="70%"]
+
+Raspberry Pi 5 has an FPC connector on the right-hand side of the board. This connector breaks out a PCIe Gen 2.0 ×1 interface for fast peripherals.
+
+To connect a PCIe https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[HAT+ device], connect it to your Raspberry Pi. Your Raspberry Pi should automatically detect the device. To connect a non-HAT+ device, connect it to your Raspberry Pi, then <<enable-pcie, manually enable PCIe>>.
+
+For more information about the PCIe FPC connector pinout and other details needed to create third-party devices, accessories, and HATs, see the https://datasheets.raspberrypi.com/pcie/pcie-connector-standard.pdf[Raspberry Pi Connector for PCIe] standards document. It should be read alongside the https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[Raspberry Pi HAT+ Specification].
+
+NOTE: Enumeration of PCIe devices behind a switch is https://github.com/raspberrypi/firmware/issues/1833[not currently supported].
+
+=== Enable PCIe
+
+By default, the PCIe connector is not enabled unless connected to a HAT+ device. To enable the connector, add the following line to `/boot/firmware/config.txt`:
+
+[source,perl]
+----
+dtparam=pciex1
+----
+
+Reboot with `sudo reboot` for the configuration changes to take effect.
+
+NOTE: You can also use the alias `nvme`.
+
+=== Boot from PCIe
+
+By default, Raspberry Pi devices do not boot from PCIe storage. To enable boot from PCIe, change the `BOOT_ORDER` in the bootloader configuration. Edit the EEPROM configuration with the following command:
+
+[source,console]
+----
+$ sudo rpi-eeprom-config --edit
+----
+
+Replace the `BOOT_ORDER` line with the following line:
+
+[source,perl]
+----
+BOOT_ORDER=0xf416
+----
+
+To boot from a non-HAT+ device, also add the following line:
+
+[source,perl]
+----
+PCIE_PROBE=1
+----
+
+After saving your changes, reboot your Raspberry Pi with `sudo reboot` to update the EEPROM.
+
+=== PCIe Gen 3.0
+
+WARNING: The Raspberry Pi 5 is not certified for Gen 3.0 speeds. PCIe Gen 3.0 connections may be unstable.
+
+The connection is certified for Gen 2.0 speeds (5 GT/sec), but you can force Gen 3.0 (10 GT/sec) speeds. To enable PCIe Gen 3.0 speeds, add the following line to `/boot/firmware/config.txt`:
+
+[source,perl]
+----
+dtparam=pciex1_gen=3
+----
+
+Reboot your Raspberry Pi with `sudo reboot` for these settings to take effect.

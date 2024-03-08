@@ -349,6 +349,10 @@ h6 .anchor::before {
   position: relative;
 }
 
+#content div.admonitionblock div.listingblock {
+  margin-top: 15px;
+}
+
 #content div.listingblock button.copy-button {
   position: absolute;
   top: 1px;
@@ -596,19 +600,20 @@ div.videoblock iframe {
   border: 0;
 }
 
-/* WHITEPAPER BLOCKS */
+/* WHITEPAPER SIDEBARS */
 
-.whitepaper {
+.whitepaper, .tutorial {
   margin-bottom: 30px;
 }
 
-.whitepaper .content {
+.whitepaper .content,
+.tutorial .content {
   border: 2px solid var(--red);
   padding: 10px;
 }
 
 .whitepaper::before {
-  content: "Whitepaper";
+  content: "White paper";
   text-transform: uppercase;
   display: block;
   color: var(--red);
@@ -616,7 +621,8 @@ div.videoblock iframe {
   font-weight: bold;
 }
 
-.whitepaper div.inner {
+.whitepaper div.inner,
+.tutorial div.inner {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -646,13 +652,19 @@ div.videoblock iframe {
   margin-bottom: 6px;
 }
 
-#content .whitepaper h5 {
+#content .whitepaper h5,
+#content .tutorial h5 {
   font-size: 18px;
   margin-top: 0;
   margin-bottom: 10px;
 }
 
-/* TUTORIAL BLOCKS */
+#content .tutorial div.paragraph.tutorialdescription p {
+  font-style: italic;
+  color: var(--red);
+}
+
+/* TUTORIAL SECTIONS */
 
 #content .tutorialcard {
   max-width: 400px;
@@ -664,6 +676,27 @@ div.videoblock iframe {
   padding-left: 10px;
   padding-right: 10px;
   font-size: 0.9em;
+}
+
+#content p.clear {
+  clear: both;
+  margin-bottom: 0px;
+}
+
+#content .tutorial .tutorialcard {
+  margin-right: 10px;
+  border-radius: 0px;
+  border-width: 0px;
+}
+
+#content .tutorial .tutorialcard img {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#content .tutoriallink .imageblock.left img,
+#content  .tutoriallink .imageblock.right img {
+  max-width: 400px;
 }
 
 /* DOXYGEN ELEMENTS */

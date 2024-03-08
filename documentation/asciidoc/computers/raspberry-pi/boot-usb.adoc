@@ -1,16 +1,16 @@
-== USB Boot Modes
+== USB boot modes
 
-WARNING: The default way of using a Raspberry Pi is to boot it using an SD card. This is the recommended method for new and inexperienced users. 
+WARNING: By default, Raspberry Pi boots from an SD card. This is the recommended method for new and inexperienced users. 
 
-There are two separate boot modes for USB; USB device boot and USB host boot. 
+There are two separate boot modes for USB: USB device boot and USB host boot. 
 
-The choice between the two boot modes is made by the firmware at boot time when it reads the OTP bits. There are two bits to control USB boot: the first enables USB device boot and is enabled by default. The second enables USB host boot; if the USB host boot mode bit is set, then the processor reads the OTGID pin to decide whether to boot as a host (driven to zero as on any Raspberry Pi Model B / B+) or as a device (left floating). The Raspberry Pi Zero has access to this pin through the OTGID pin on the USB connector, and the Compute Module has access to this pin on the edge connector.
+The choice between the two boot modes is made by the firmware at boot time when it reads the OTP bits. There are two bits to control USB boot. The first enables USB device boot and is enabled by default; the second enables USB host boot. If the USB host boot mode bit is set, then the processor reads the OTGID pin to decide whether to boot as a host (driven to zero as on any Raspberry Pi Model B/B+) or as a device (left floating). The Raspberry Pi Zero has access to this pin through the OTGID pin on the USB connector, and the Compute Module has access to this pin on the edge connector.
 
 There are also OTP bits that allow certain GPIO pins to be used for selecting which boot modes the Raspberry Pi should attempt to use.
 
 NOTE: USB boot modes only available on certain models.
 
-=== USB Device Boot Mode
+=== USB device boot mode
 
 NOTE: Device boot is available on Raspberry Pi Compute Module, Compute Module 3, Raspberry Pi Zero, Zero W, A, A+, and 3A+ only.
 
@@ -21,7 +21,7 @@ The host first sends a structure to the device down control endpoint 0. This con
 * 0    - Success
 * 0x80 - Failed
 
-=== USB Host Boot Mode
+=== USB host boot mode
 
 NOTE: Host boot is available on Raspberry Pi 3B, 3B+, 3A+, and 2B v1.2 only. Raspberry Pi 3A+ only supports mass storage boot, not network boot.
 

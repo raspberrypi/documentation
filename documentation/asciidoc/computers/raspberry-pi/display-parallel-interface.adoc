@@ -9,7 +9,7 @@ An up-to-24-bit parallel RGB interface is available on all Raspberry Pi boards w
 
 This interface is controlled by the GPU firmware and can be programmed by a user via special `config.txt` parameters and by enabling the correct Linux Device Tree overlay.
 
-=== GPIO Pins
+=== GPIO pins
 
 One of the alternate functions selectable on bank 0 of the Raspberry Pi GPIO is DPI (Display Parallel Interface) which is a simple clocked parallel interface (up to 8 bits of R, G and B; clock, enable, hsync, and vsync). This interface is available as alternate function 2 (ALT2) on GPIO bank 0:
 
@@ -331,7 +331,7 @@ h|*27* h|*26* h|*25* h|*24* h|*23* h|*22* h|*21* h|*20* h|*19* h|*18* h|*17* h|*
 |===
 {set:cellbgcolor:!}
 
-=== Disable Other GPIO Peripherals
+=== Disable other GPIO peripherals
 
 All other peripheral overlays that use conflicting GPIO pins must be disabled. In `config.txt`, take care to comment out or invert any dtparams that enable I2C or SPI:
 
@@ -340,11 +340,11 @@ dtparam=i2c_arm=off
 dtparam=spi=off
 ----
 
-=== Configure a Display
+=== Configure a display
 
 The https://en.wikipedia.org/wiki/Direct_Rendering_Manager#Kernel_mode_setting[Kernel Mode Setting (KMS)] generic display interface enables output to arbitrary displays, as long as you have an appropriate driver.
 
-==== Auto Detect
+==== Auto detect
 
 Auto detect allows your Raspberry Pi to connect with a display without a manually configured device tree overlay.
 Auto detection is enabled by default. You can enable display auto detect by adding the following line to `config.txt`:
@@ -356,7 +356,7 @@ Auto detection is enabled by default. You can enable display auto detect by addi
 Replace the `1` with a `0` to disable auto detect.
 When you connect the official Raspberry Pi display with auto detect enabled, KMS determines the display model automatically and configures the appropriate display settings.
 
-==== Manually Configure a Display
+==== Manually configure a display
 
 NOTE: In Raspberry Pi OS _Bookworm_ or later, the `dpi_output_format` and `dpi_timings` entries in `config.txt` previously used to set up DPI have been superseded by the `vc4-kms-dpi-generic` overlay.
 

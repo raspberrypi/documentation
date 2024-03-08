@@ -1,10 +1,10 @@
-=== Still Command Line Options
+=== Still command line options
 
 ----
 	--quality,	-q		JPEG quality <number>
 ----
 
-Set the JPEG quality. 100 is maximum quality and 93 is the default. Only applies when saving JPEG files.
+Set the JPEG quality. Maximum quality is 100, and 93 is the default. Only applies when saving JPEG files.
 
 Example: `rpicam-jpeg -o test.jpg -q 80`
 
@@ -12,11 +12,11 @@ Example: `rpicam-jpeg -o test.jpg -q 80`
 	--exif,		-x		Add extra EXIF tags <string>
 ----
 
-The given extra EXIF tags are saved in the JPEG file. Only applies when saving JPEG files.
+The extra EXIF tags are saved in the JPEG file. Only applies when saving JPEG files.
 
-EXIF is supported using the `libexif` library and so there are some associated limitations. In particular, `libexif` seems to recognise a number of tags but without knowing the correct format for them. The software will currently treat these (incorrectly, in many cases) as ASCII, but will print a warning to the terminal. As we come across these they can be added to the table of known exceptions in the software.
+EXIF is supported using the `libexif` library, so there are some associated limitations. In particular, `libexif` seems to recognise a number of tags, but without knowing the correct format for them. The software will currently treat these (incorrectly, in many cases) as ASCII, but will print a warning to the terminal. As we come across these they can be added to the table of known exceptions in the software.
 
-Clearly the application needs to supply EXIF tags that contain specific camera data (like the exposure time). But for other tags that have nothing to do with the camera, a reasonable workaround would simply be to add them _post facto_, using something like `exiftool`.
+The application needs to supply EXIF tags that contain specific camera data (like the exposure time). But for other tags that have nothing to do with the camera, a reasonable workaround would simply be to add them _post facto_, using something like `exiftool`.
 
 Example: `rpicam-still -o test.jpg --exif IDO0.Artist=Someone`
 
@@ -24,7 +24,7 @@ Example: `rpicam-still -o test.jpg --exif IDO0.Artist=Someone`
 	--timelapse			Time interval between timelapse captures <milliseconds>
 ----
 
-This puts `rpicam-still` into timelapse mode where it runs according to the timeout (`--timeout` or `-t`) that has been set, and for that period will capture repeated images at the interval specified here. (`rpicam-still` only.)
+This puts `rpicam-still` into timelapse mode, where it runs according to the timeout (`--timeout` or `-t`) that has been set, and for that period will capture repeated images at the interval specified here. (`rpicam-still` only.)
 
 Example: `rpicam-still -t 100000 -o test%d.jpg --timelapse 10000` captures an image every 10s for about 100s.
 
@@ -72,7 +72,7 @@ Example: `rpicam-still -t 0 -o test.jpg -k`
 	--signal,	-s		Capture image when SIGUSR1 received
 ----
 
-This switches `rpicam-still` into signal mode. It will capture a still image either when the timeout expires or a SIGUSR1 is received. SIGUSR2 will cause `rpicam-still` to quit without capturing.
+This switches `rpicam-still` into signal mode. It will capture a still image either when the timeout expires or when a SIGUSR1 is received. SIGUSR2 will cause `rpicam-still` to quit without capturing.
 
 Example:
 
@@ -86,7 +86,7 @@ then
 	--thumb				Set thumbnail parameters <w:h:q> or none
 ----
 
-Sets the dimensions and quality parameter of the associated thumbnail image. The defaults are size 320x240 and quality 70.
+Sets the dimensions and quality parameter of the associated thumbnail image. The defaults are size 320×240, and quality 70.
 
 Example: `rpicam-still -o test.jpg --thumb 640:480:80`
 
@@ -119,7 +119,7 @@ The image data in the raw file is exactly what came out of the sensor, with no p
 * exposure time
 * analogue gain (the ISO tag is 100 times the analogue gain used)
 * white balance gains (which are the reciprocals of the "as shot neutral" values)
-* the colour matrix used by the ISP.
+* the colour matrix used by the ISP
 
 ----
 	--latest			Make symbolic link to latest file saved <string>

@@ -1,14 +1,14 @@
-=== Using _libcamera_ and _Qt_ together
+=== Using libcamera and Qt together
 
-_Qt_ is a popular application framework and GUI toolkit, and indeed _rpicam-apps_ optionally makes use of it to implement a camera preview window.
+Qt is a popular application framework and GUI toolkit. There is the option in `rpicam-apps` to use it to implement a camera preview window.
 
-However, _Qt_ defines certain symbols as macros in the global namespace (such as `slot` and `emit`) and this causes errors when including _libcamera_ files. The problem is common to all platforms trying to use both _Qt_ and _libcamera_ and not specific to Raspberry Pi. Nonetheless we suggest that developers experiencing difficulties try the following workarounds.
+However, Qt defines certain symbols as macros in the global namespace (such as `slot` and `emit`) and this causes errors when including libcamera files. The problem is common to all platforms trying to use both Qt and libcamera and not specific to Raspberry Pi. Nonetheless we suggest that developers experiencing difficulties try the following workarounds.
 
-1. _libcamera_ include files, or files that include _libcamera_ files (such as _rpicam-apps_ files), should be listed before any _Qt_ header files where possible.
+* libcamera include files, or files that include libcamera files (such as `rpicam-apps` files), should be listed before any Qt header files where possible.
 
-2. If you do need to mix your Qt application files with libcamera includes, replace `signals:` with `Q_SIGNALS:`, `slots:` with `Q_SLOTS:`, `emit` with `Q_EMIT` and `foreach` with `Q_FOREACH`.
+* If you do need to mix your Qt application files with libcamera includes, replace `signals:` with `Q_SIGNALS:`, `slots:` with `Q_SLOTS:`, `emit` with `Q_EMIT` and `foreach` with `Q_FOREACH`.
 
-3. Before any _libcamera_ include files, add
+* Before any libcamera include files, add
 +
 ----
 #undef signals
@@ -17,6 +17,6 @@ However, _Qt_ defines certain symbols as macros in the global namespace (such as
 #undef foreach
 ----
 
-4. If you are using _qmake_, add `CONFIG += no_keywords` to the project file. If using _cmake_, add `SET(QT_NO_KEYWORDS ON)`.
+* If you are using qmake, add `CONFIG += no_keywords` to the project file. If using cmake, add `SET(QT_NO_KEYWORDS ON)`.
 
 We are not aware of any plans for the underlying library problems to be addressed.

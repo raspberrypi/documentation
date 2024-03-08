@@ -211,7 +211,7 @@ By default, the primary UART is assigned to the Linux console. If you wish to us
 * Select option P6 - Serial Port
 * At the prompt `Would you like a login shell to be accessible over serial?`, answer 'No'
 * At the prompt `Would you like the serial port hardware to be enabled?`, answer 'Yes'
-* Exit raspi-config and reboot the Raspberry Pi for changes to take effect
+* Exit `raspi-config` and reboot the Raspberry Pi for changes to take effect
 
 === Enabling early console for Linux
 

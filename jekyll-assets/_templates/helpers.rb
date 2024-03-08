@@ -1,4 +1,5 @@
 require 'net/http'
+require 'json'
 
 module Slim::Helpers
   def book_link
@@ -21,22 +22,28 @@ module Slim::Helpers
     return src
   end
 
+  def fetch_tutorial_data
+    # hit the api
+    res = Net::HTTP.get_response(URI("https://www.raspberrypi.com/tutorials/api.json"))
+    data = JSON.parse(res.body)
+    record = data.select {|item| item["url"] == (self.attr 'link')}
+    if record.length() > 0
+      {"tutorial_image" => record[0]["featuredImageUrl"], "tutorial_description" => record[0]["excerpt"]}
+    else
+      {"tutorial_image" => "", "tutorial_description" => ""}
+    end
+  end
+
   def tutorial_image
-    uri = URI(self.attr 'link')
-    source = Net::HTTP.get(uri)
-    # get the short description
-    desc = ""
-    desc_arr = /<meta[^>]+name="description"[^>]+content="([^>]+)"[^>]*>/.match(source)
-    if desc_arr
-      desc = desc_arr[1]
-    end
-    # get the image source
-    img_src = ""
-    img_arr = /<meta[^>]+property="og:image"[^>]+content="([^>]+)"[^>]*>/.match(source)
-    if img_arr
-      img_src = img_arr[1]
-    end
-    return '<a href="'+(self.attr 'link')+'" target="_blank" class="image"><div class="tutorialcard"><img src="'+img_src+'"/><p class="caption">'+desc+'</p></div></a>'
+    return '<a href="'+(self.attr 'link')+'" target="_blank" class="image"><div class="tutorialcard"><img src="'+(self.attr 'tutorial_image')+'"/><p class="caption">'+(self.attr 'tutorial_description')+'</p></div></a>'
+  end
+
+  def tutorial_image_sidebar
+    return '<a href="'+(self.attr 'link')+'" target="_blank" class="image"><div class="tutorialcard"><img src="'+(self.attr 'tutorial_image')+'"/></div></a>'
+  end
+
+  def tutorial_description_sidebar
+    return '<div class="paragraph tutorialdescription"><p>'+(self.attr 'tutorial_description')+'</p></div>'
   end
 
   def section_title

@@ -106,7 +106,7 @@ Finally, respond **Yes** to the "Are you sure you want to continue?" popup to be
 
 image::images/imager/are-you-sure.png[alt="Confirming a reimage of a storage device in Imager."]
 
-If you see an admin prompt asking for permissions to read and write to your storage medium, it's safe to proceed.
+If you see an admin prompt asking for permissions to read and write to your storage medium, grant Imager the permissions to proceed.
 
 .Grab a cup of coffee or go for a walk. This could take a few minutes.
 image::images/imager/writing.png[alt="Writing an image to a device in Imager."]

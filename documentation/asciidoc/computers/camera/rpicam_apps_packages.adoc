@@ -1,26 +1,26 @@
-=== `libcamera` and `rpicam-apps` Packages
+=== `libcamera` and `rpicam-apps` packages
 
 A number of `apt` packages are provided for convenience. In order to access them, we recommend keeping your OS up to date xref:../computers/os.adoc#using-apt[in the usual way].
 
-==== Binary Packages
+==== Binary packages
 
-There are two `rpicam-apps` packages available, that contain the necessary executables:
+There are two `rpicam-apps` packages available, containing the necessary executables:
 
 * `rpicam-apps` contains the full applications with support for previews using a desktop environment. This package is pre-installed in Raspberry Pi OS.
 
-* `rpicam-apps-lite` omits desktop environment support and only the DRM preview is available. This package is pre-installed in Raspberry Pi OS Lite.
+* `rpicam-apps-lite` omits desktop environment support, and only makes the DRM preview available. This package is pre-installed in Raspberry Pi OS Lite.
 
 ==== Dependencies
 
-These applications depend on a number of library packages which are named _library-name<n>_ where _<n>_ is a version number (actually the ABI, or Application Binary Interface, version), and which stands at zero at the time of writing. Thus we have the following:
+These applications depend on a number of library packages which are named _library-name<n>_ where _<n>_ is a version number (actually the ABI, or Application Binary Interface, version), and which stands at zero at the time of writing. 
 
-* The package `libcamera0` contains the `libcamera` libraries.
+* The package `libcamera0` contains the `libcamera` libraries
 
-* The package `libepoxy0` contains the `libepoxy` libraries.
+* The package `libepoxy0` contains the `libepoxy` libraries
 
 These will be installed automatically when needed.
 
-==== Dev Packages
+==== Dev packages
 
 `rpicam-apps` can be rebuilt on their own without installing and building `libcamera` and `libepoxy` from scratch. To enable this, the following packages should be installed:
 

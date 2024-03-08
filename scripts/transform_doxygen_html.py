@@ -742,9 +742,12 @@ def parse_individual_file(html_path, html_file, complete_json_mappings, updated_
     title_text = get_document_title(root, html_file)
     # get only the relevant content
     contents = root.find(".//div[@class='contents']")
-    # prep and write the adoc
-    final_output = stringify(contents)
-    adoc = make_adoc(final_output, title_text, html_file)
+    if contents is not None:
+      # prep and write the adoc
+      final_output = stringify(contents)
+      adoc = make_adoc(final_output, title_text, html_file)
+    else:
+      adoc = None
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
@@ -778,8 +781,11 @@ def handler(html_path, output_path, header_path, output_json):
       adoc, h_json = parse_individual_file(html_path, html_file, complete_json_mappings, updated_links, h_json)
       # write the final adoc file
       adoc_path = re.sub(".html$", ".adoc", this_output_path)
-      write_output(adoc_path, adoc)
-      print("Generated " + adoc_path)
+      if adoc is not None:
+        write_output(adoc_path, adoc)
+        print("Generated " + adoc_path)
+      else:
+        print("--------- SKIPPED " + adoc_path)
 
     toc_list = []
     toc_list = parse_toc(h_json, toc_list)
