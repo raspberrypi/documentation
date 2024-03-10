@@ -123,7 +123,7 @@ $ sudo apt install -y cmake libboost-program-options-dev libdrm-dev libexif-dev
 $ sudo apt install -y meson ninja-build
 ----
 
-Download a local copy of Raspberry Pi's fork of `rpicam-apps` from GitHub:
+Download a local copy of Raspberry Pi's `rpicam-apps` GitHub repository:
 
 [source,console]
 ----
