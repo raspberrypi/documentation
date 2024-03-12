@@ -77,7 +77,7 @@ Temperature decreases use the same mapping with a 5°C **hysteresis**; fan speed
 
 At boot the fan is turned on, and the tachometer input is checked to see if the fan is spinning. If it is, then the `cooling_fan` device tree overlay is enabled. This overlay is in `bcm2712-rpi-5-b.dtb` by default, but with `status=disabled`.
 
-INFO: Both fan options use the Coolcox https://www.coolcox.com/products/pdf/CC3007.pdf[CC3007H05S] part.
+NOTE: Both fan options use the Coolcox https://www.coolcox.com/products/pdf/CC3007.pdf[CC3007H05S] part.
 
 ==== Fan connector pinout
 
