@@ -95,5 +95,3 @@ image::images/vnc-tigervnc-username-password.png[Entering a username and passwor
 --
 image::images/vnc-tigervnc-desktop.png[The desktop of a Raspberry Pi after successfully authenticating with TigerVNC]
 --
-
-TIP: You can also connect with RealVNC's https://www.realvnc.com/download/viewer/[VNC Viewer] client.
