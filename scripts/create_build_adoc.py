@@ -13,9 +13,9 @@ def check_no_markdown(filename):
         if re.search('```\n.*?\n```', asciidoc):
             raise Exception("{} uses triple-backticks for markup - please use four-hyphens instead".format(filename))
         # strip out code blocks
-        asciidoc = re.sub('----\n.*?\n----', '', asciidoc, flags=re.DOTALL)
+        asciidoc = re.sub(r'----\n.*?\n----', '', asciidoc, flags=re.DOTALL)
         # strip out pass-through blocks
-        asciidoc = re.sub('\+\+\+\+\n.*?\n\+\+\+\+', '', asciidoc, flags=re.DOTALL)
+        asciidoc = re.sub(r'\+\+\+\+\n.*?\n\+\+\+\+', '', asciidoc, flags=re.DOTALL)
         if re.search('(?:^|\n)#+', asciidoc):
             raise Exception("{} contains a Markdown-style header (i.e. '#' rather than '=')".format(filename))
         if re.search(r'(\[.+?\]\(.+?\))', asciidoc):
@@ -57,19 +57,19 @@ if __name__ == "__main__":
         template_vars = {
             'github_edit_link': os.path.join(site_config['githuburl'], 'blob', site_config['githubbranch_edit'], src_adoc)
         }
-        edit_text = re.sub('{{\s*(\w+)\s*}}', lambda m: template_vars[m.group(1)], edit_template)
+        edit_text = re.sub(r'{{\s*(\w+)\s*}}', lambda m: template_vars[m.group(1)], edit_template)
 
     new_contents = ''
     seen_header = False
     with open(src_adoc) as in_fh:
         for line in in_fh.readlines():
-            if re.match('^=+ ', line) is not None:
+            if re.match(r'^=+ ', line) is not None:
                 if not seen_header:
                     seen_header = True
                     if github_edit is not None:
                         line += edit_text + "\n\n"
             else:
-                m = re.match('^(include::)(.+)(\[\]\n?)$', line)
+                m = re.match(r'^(include::)(.+)(\[\]\n?)$', line)
                 if m:
                     line = m.group(1) + os.path.join('{includedir}/{parentdir}', m.group(2)) + m.group(3)
             new_contents += line
