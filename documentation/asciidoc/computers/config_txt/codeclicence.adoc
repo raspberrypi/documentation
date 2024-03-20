@@ -2,7 +2,9 @@
 
 Hardware decoding of additional codecs on the Raspberry Pi 3 and earlier models can be enabled by https://codecs.raspberrypi.com/license-keys/[purchasing a licence] that is locked to the CPU serial number of your Raspberry Pi.
 
-On the Raspberry Pi 4, the hardware codecs for MPEG2 or VC1 are permanently disabled and cannot be enabled even with a licence key; on the Raspberry Pi 4, thanks to its increased processing power compared to earlier models, MPEG2 and VC1 can be decoded in software via applications such as VLC. Therefore, a hardware codec licence key is not needed if you're using a Raspberry Pi 4.
+The Raspberry Pi 4 has permanently disabled hardware decoders for MPEG2 and VC1. These codecs cannot be enabled, so a hardware codec licence key is not needed. Software decoding of MPEG2 and VC1 files performs well enough for typical use cases.
+
+The Raspberry Pi 5 has H.265 (HEVC) hardware decoding. This decoding is enabled by default, so a hardware codec licence key is not needed.
 
 === `decode_MPG2`
 

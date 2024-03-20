@@ -13,53 +13,60 @@ To set up your storage device so that it always mounts to a specific location of
 You can mount your storage device at a specific folder location. It is conventional to do this within the `/mnt` folder, for example `/mnt/mydisk`. Note that the folder must be empty.
 
 Plug the storage device into a USB port on the Raspberry Pi, and list all the disk partitions on the Raspberry Pi using the following command:
-+
+
+[source,console]
 ----
- sudo lsblk -o UUID,NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,MODEL
+$ sudo lsblk -o UUID,NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,MODEL
 ----
-+
+
 The Raspberry Pi uses mount points `/` and `/boot/firmware/`. Your storage device will show up in this list, along with any other connected storage.
 
 Use the SIZE, LABEL, and MODEL columns to identify the name of the disk partition that points to your storage device. For example, `sda1`.
 The FSTYPE column contains the filesystem type. If your storage device uses an exFAT file system, install the exFAT driver:
-+
+
+[source,console]
 ----
- sudo apt update
- sudo apt install exfat-fuse
+$ sudo apt update
+$ sudo apt install exfat-fuse
 ----
 
 If your storage device uses an NTFS file system, you will have read-only access to it. If you want to write to the device, you can install the ntfs-3g driver:
-+
+
+[source,console]
 ----
- sudo apt update
- sudo apt install ntfs-3g
+$ sudo apt update
+$ sudo apt install ntfs-3g
 ----
 
 Run the following command to get the location of the disk partition:
-+
+
+[source,console]
 ----
- sudo blkid
+$ sudo blkid
 ----
-+
+
 For example, `/dev/sda1`.
 
 Create a target folder to be the mount point of the storage device.
 The mount point name used in this case is `mydisk`. You can specify a name of your choice:
-+
+
+[source,console]
 ----
- sudo mkdir /mnt/mydisk
+$ sudo mkdir /mnt/mydisk
 ----
 
 Mount the storage device at the mount point you created:
-+
+
+[source,console]
 ----
- sudo mount /dev/sda1 /mnt/mydisk
+$ sudo mount /dev/sda1 /mnt/mydisk
 ----
 
 Verify that the storage device is mounted successfully by listing the contents:
-+
+
+[source,console]
 ----
- ls /mnt/mydisk
+$ ls /mnt/mydisk
 ----
 
 === Setting up automatic mounting
@@ -67,23 +74,26 @@ Verify that the storage device is mounted successfully by listing the contents:
 You can modify the `fstab` file to define the location where the storage device will be automatically mounted when the Raspberry Pi starts up. In the `fstab` file, the disk partition is identified by the universally unique identifier (UUID).
 
 Get the UUID of the disk partition:
-+
+
+[source,console]
 ----
- sudo blkid
+$ sudo blkid
 ----
 
 Find the disk partition from the list and note the UUID. (For example, `5C24-1453`.) Open the fstab file using a command line editor such as nano:
-+
+
+[source,console]
 ----
- sudo nano /etc/fstab
+$ sudo nano /etc/fstab
 ----
 
 Add the following line in the `fstab` file:
-+
+
+[source,console]
 ----
- UUID=5C24-1453 /mnt/mydisk fstype defaults,auto,users,rw,nofail 0 0
+$ UID=5C24-1453 /mnt/mydisk fstype defaults,auto,users,rw,nofail 0 0
 ----
-+
+
 Replace `fstype` with the type of your file system, which you found when you went through the steps above, for example: `ntfs`.
 
 If the filesystem type is FAT or NTFS, add `,umask=000` immediately after `nofail` - this will allow all users full read/write access to every file on the storage device.
@@ -98,8 +108,9 @@ For more information on each Linux command, refer to the specific manual page us
 
 When the Raspberry Pi shuts down, the system takes care of unmounting the storage device so that it is safe to unplug it. If you want to manually unmount a device, you can use the following command:
 
+[source,console]
 ----
-sudo umount /mnt/mydisk
+$ sudo umount /mnt/mydisk
 ----
 
 If you receive an error that the 'target is busy', this means that the storage device was not unmounted. If no error was displayed, you can now safely unplug the device.
@@ -111,14 +122,16 @@ The 'target is busy' message means there are files on the storage device that ar
 Close any program which has open files on the storage device. If you have a terminal open, make sure that you are not in the folder where the storage device is mounted, or in a sub-folder of it.
 
 If you are still unable to unmount the storage device, you can use the `lsof` tool to check which program has files open on the device. You need to first install `lsof` using `apt`:
-+
+
+[source,console]
 ----
- sudo apt update
- sudo apt install lsof
+$ sudo apt update
+$ sudo apt install lsof
 ----
-+
+
 To use lsof:
-+
+
+[source,console]
 ----
- lsof /mnt/mydisk
+$ lsof /mnt/mydisk
 ----

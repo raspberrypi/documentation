@@ -1,93 +1,205 @@
 === Building `libcamera` and `rpicam-apps`
 
-Building `libcamera` and `rpicam-apps` for yourself can bring the following benefits.
+Build `libcamera` and `rpicam-apps` for yourself for the following benefits:
 
-* You can pick up the latest enhancements and features
+* You can pick up the latest enhancements and features.
 
-* `rpicam-apps` can be compiled with extra optimisation for Raspberry Pi 3 and Raspberry Pi 4 devices running a 32-bit OS
+* `rpicam-apps` can be compiled with extra optimisation for Raspberry Pi 3 and Raspberry Pi 4 devices running a 32-bit OS.
 
-* You can include the various optional OpenCV and/or TFLite post-processing stages (or add your own)
+* You can include optional OpenCV and/or TFLite post-processing stages, or add your own.
 
 * You can customise or add your own applications derived from `rpicam-apps`
 
-NOTE: When building on a Raspberry Pi with 1GB RAM or less, there is a risk that the device may run out of swap and fail. We recommend either increasing the amount of swap, or building with fewer threads (the `-j` option to `ninja` and to `make`).
+==== Building `rpicam-apps` without building `libcamera`
 
-==== Building `rpicam-apps` without rebuilding `libcamera`
+To build `rpicam-apps` without first rebuilding `libcamera` and `libepoxy`, install `libcamera`, `libepoxy` and their dependencies with `apt`:
 
-You can rebuild `rpicam-apps` _without_ first rebuilding the whole of `libcamera` and `libepoxy`. If you do not need support for the GLES/EGL preview window then `libepoxy` can be omitted entirely. Raspberry Pi OS Lite users must be sure to use `-Denable_egl=false` when running `meson setup` later:
-
+[source,console]
 ----
-sudo apt install -y libcamera-dev libjpeg-dev libtiff5-dev libpng-dev
-----
-
-All other users should execute:
-
-----
-sudo apt install -y libcamera-dev libepoxy-dev libjpeg-dev libtiff5-dev libpng-dev
+$ sudo apt install -y libcamera-dev libepoxy-dev libjpeg-dev libtiff5-dev libpng-dev
 ----
 
-If you want to use the Qt preview window:
+TIP: If you do not need support for the GLES/EGL preview window, omit `libepoxy-dev`.
 
-----
-sudo apt install -y qtbase5-dev libqt5core5a libqt5gui5 libqt5widgets5
-----
+To use the Qt preview window, install the following additional dependencies:
 
-If you want xref:camera_software.adoc#libav-integration-with-rpicam-vid[`libav`] support in `rpicam-vid`, additional libraries must be installed:
-
+[source,console]
 ----
-sudo apt install libavcodec-dev libavdevice-dev libavformat-dev libswresample-dev
+$ sudo apt install -y qtbase5-dev libqt5core5a libqt5gui5 libqt5widgets5
 ----
 
-Now proceed directly to the instructions for xref:camera_software.adoc#building-rpicam-apps[building `rpicam-apps`]. Raspberry Pi OS Lite users should check that git is installed first (`sudo apt install -y git`).
+For xref:camera_software.adoc#libav-integration-with-rpicam-vid[`libav`] support in `rpicam-vid`, install the following additional dependencies:
+
+[source,console]
+----
+$ sudo apt install libavcodec-dev libavdevice-dev libavformat-dev libswresample-dev
+----
+
+If you run Raspberry Pi OS Lite, install `git`:
+
+[source,console]
+----
+$ sudo apt install -y git
+----
+
+Next, xref:camera_software.adoc#building-rpicam-apps[build `rpicam-apps`].
 
 ==== Building `libcamera`
 
-Rebuilding `libcamera` from scratch should be necessary only if you need the latest features that may not yet have reached the `apt` repositories, or if you need to customise its behaviour in some way.
+NOTE: Only build `libcamera` from scratch if you need custom behaviour or the latest features that have not yet reached `apt` repositories.
 
-First install all the necessary dependencies for `libcamera`. Raspberry Pi OS Lite users will first need to install the following additional packages if they have not done so previously:
+[NOTE]
+======
+If you run Raspberry Pi OS Lite, begin by installing the following packages:
 
+[source,console]
 ----
-sudo apt install -y python3-pip git python3-jinja2
+$ sudo apt install -y python3-pip git python3-jinja2
 ----
+======
 
-All users should then install the following:
+First, install the following `libcamera` dependencies:
 
+[source,console]
 ----
-sudo apt install -y libboost-dev
-sudo apt install -y libgnutls28-dev openssl libtiff5-dev pybind11-dev
-sudo apt install -y qtbase5-dev libqt5core5a libqt5gui5 libqt5widgets5
-sudo apt install -y meson cmake
-sudo apt install -y python3-yaml python3-ply
-----
-
-In the `meson` commands below we have enabled the gstreamer plugin. If you do not need this, you can set `-Dgstreamer=disabled` instead and the next pair of dependencies will not be required. But if you do leave _gstreamer_ enabled, then you will need the following:
-
-----
-sudo apt install -y libglib2.0-dev libgstreamer-plugins-base1.0-dev
-----
-
-Now we can check out and build `libcamera` itself. We check out Raspberry Pi's fork of `libcamera`, which tracks the official repository but lets us control exactly when we pick up new features.
-
-----
-cd
-git clone https://github.com/raspberrypi/libcamera.git
-cd libcamera
+$ sudo apt install -y libboost-dev
+$ sudo apt install -y libgnutls28-dev openssl libtiff5-dev pybind11-dev
+$ sudo apt install -y qtbase5-dev libqt5core5a libqt5gui5 libqt5widgets5
+$ sudo apt install -y meson cmake
+$ sudo apt install -y python3-yaml python3-ply
+$ sudo apt install -y libglib2.0-dev libgstreamer-plugins-base1.0-dev
 ----
 
-Now run:
+Now we're ready to build `libcamera` itself.
 
-----
-meson setup build --buildtype=release -Dpipelines=rpi/vc4,rpi/pisp -Dipas=rpi/vc4,rpi/pisp -Dv4l2=true -Dgstreamer=enabled -Dtest=false -Dlc-compliance=disabled -Dcam=disabled -Dqcam=disabled -Ddocumentation=disabled -Dpycamera=enabled
-----
+Download a local copy of Raspberry Pi's fork of `libcamera` from GitHub:
 
-To complete the `libcamera` build, use:
-
+[source,console]
 ----
-ninja -C build   # use -j 2 on Raspberry Pi 3 or earlier devices
-sudo ninja -C build install
+$ git clone https://github.com/raspberrypi/libcamera.git
 ----
 
-NOTE: At the time of writing, `libcamera` does not yet have a stable binary interface. Therefore, if you have rebuilt `libcamera`, we recommend continuing and rebuilding `rpicam-apps` from scratch too.
+Navigate into the root directory of the repository:
+
+[source,console]
+----
+$ cd libcamera
+----
+
+Next, run `meson` to configure the build environment:
+
+[source,console]
+----
+$ meson setup build --buildtype=release -Dpipelines=rpi/vc4,rpi/pisp -Dipas=rpi/vc4,rpi/pisp -Dv4l2=true -Dgstreamer=enabled -Dtest=false -Dlc-compliance=disabled -Dcam=disabled -Dqcam=disabled -Ddocumentation=disabled -Dpycamera=enabled
+----
+
+NOTE: You can disable the `gstreamer` plugin by replacing `-Dgstreamer=enabled` with `-Dgstreamer=disabled` during the `meson` build configuration. If you disable `gstreamer`, there is no need to install the `libglib2.0-dev` and `libgstreamer-plugins-base1.0-dev` dependencies.
+
+Now, you can build `libcamera` with `ninja`:
+
+[source,console]
+----
+$ ninja -C build
+----
+
+Finally, run the following command to install your freshly-built `libcamera` binary:
+
+[source,console]
+----
+$ sudo ninja -C build install
+----
+
+TIP: On devices with 1GB of memory or less, the build may exceed available memory. Append the `-j 1` flag to `ninja` commands to limit the build to a single process. This should prevent the build from exceeding available memory on devices like the Raspberry Pi Zero and the Raspberry Pi 3.
+
+`libcamera` does not yet have a stable binary interface. Always build `rpicam-apps` after you build `libcamera`.
+
+==== Building `rpicam-apps`
+
+First fetch the necessary dependencies for `rpicam-apps`.
+
+[source,console]
+----
+$ sudo apt install -y cmake libboost-program-options-dev libdrm-dev libexif-dev
+$ sudo apt install -y meson ninja-build
+----
+
+Download a local copy of Raspberry Pi's `rpicam-apps` GitHub repository:
+
+[source,console]
+----
+$ git clone https://github.com/raspberrypi/rpicam-apps.git
+----
+
+Navigate into the root directory of the repository:
+
+[source,console]
+----
+$ cd rpicam-apps
+----
+
+For desktop-based operating systems like Raspberry Pi OS, configure the `rpicam-apps` build with the following `meson` command:
+
+[source,console]
+----
+$ meson setup build -Denable_libav=true -Denable_drm=true -Denable_egl=true -Denable_qt=true -Denable_opencv=false -Denable_tflite=false
+----
+
+For headless operating systems like Raspberry Pi OS Lite, configure the `rpicam-apps` build with the following `meson` command:
+
+[source,console]
+----
+$ meson setup build -Denable_libav=false -Denable_drm=true -Denable_egl=false -Denable_qt=false -Denable_opencv=false -Denable_tflite=false
+----
+
+[TIP]
+======
+
+* Use `-Dneon_flags=armv8-neon` to enable optimisations for 32-bit OSes on Raspberry Pi 3 or Raspberry Pi 4.
+* Use `-Denable_opencv=true` if you have installed OpenCV and wish to use OpenCV-based post-processing stages.
+* Use `-Denable_tflite=true` if you have installed TensorFlow Lite and wish to use it in post-processing stages.
+
+======
+
+You can now build `rpicam-apps` with the following command:
+
+[source,console]
+----
+$ meson compile -C build
+----
+
+TIP: On devices with 1GB of memory or less, the build may exceed available memory. Append the `-j 1` flag to `meson` commands to limit the build to a single process. This should prevent the build from exceeding available memory on devices like the Raspberry Pi Zero and the Raspberry Pi 3.
+
+Finally, run the following command to install your freshly-built `rpicam-apps` binary:
+
+[source,console]
+----
+$ sudo meson install -C build
+----
+
+Open a new terminal window after installation to ensure that you use the new binary.
+
+Finally, follow the `dtoverlay` and display driver instructions in the  xref:camera_software.adoc#getting-started[Getting Started section].
+
+==== `rpicam-apps` meson flag reference
+
+The `meson` build configuration for `rpicam-apps` supports the following flags:
+
+`-Dneon_flags=armv8-neon`:: Speeds up certain post-processing features on Raspberry Pi 3 or Raspberry Pi 4 devices running a 32-bit OS.
+
+`-Denable_libav=true`:: Enables or disables `libav` encoder integration.
+
+`-Denable_drm=true`:: Enables or disables **DRM/KMS preview rendering**, a preview window used in the absence of a desktop environment.
+
+`-Denable_egl=true`:: Enables or disables the non-Qt desktop environment-based preview. Disable if your system lacks a desktop environment.
+
+`-Denable_qt=true`:: Enables or disables support for the Qt-based implementation of the preview window. Disable if you do not have a desktop environment installed or if you have no intention of using the Qt-based preview window. The Qt-based preview is normally not recommended because it is computationally very expensive, however it does work with X display forwarding.
+
+`-Denable_opencv=true`:: Forces OpenCV-based post-processing stages to link or not link. Requires OpenCV to enable. Defaults to `true` when OpenCV is installed, `false` otherwise.
+
+`-Denable_tflite=true`:: Enables or disables TensorFlow Lite post-processing stages. Disabled by default. Requires Tensorflow Lite to enable. Depending on how you have built and/or installed TFLite, you may need to tweak the `meson.build` file in the `post_processing_stages` directory.
+
+NOTE: To disable any of the flags shown above with `true` as a value, replace `true` with `false`.
+
 
 ==== Building `libepoxy`
 
@@ -95,78 +207,50 @@ Rebuilding `libepoxy` should not normally be necessary as this library changes o
 
 Start by installing the necessary dependencies.
 
+[source,console]
 ----
-sudo apt install -y libegl1-mesa-dev
-----
-
-Next, check out and build `libepoxy`.
-
-----
-cd
-git clone https://github.com/anholt/libepoxy.git
-cd libepoxy
-mkdir _build
-cd _build
-meson
-ninja
-sudo ninja install
+$ sudo apt install -y libegl1-mesa-dev
 ----
 
-==== Building `rpicam-apps`
+Next, download a local copy of the `libepoxy` repository from GitHub:
 
-First fetch the necessary dependencies for `rpicam-apps`.
-
+[source,console]
 ----
-sudo apt install -y cmake libboost-program-options-dev libdrm-dev libexif-dev
-sudo apt install -y meson ninja-build
+$ git clone https://github.com/anholt/libepoxy.git
 ----
 
-The `rpicam-apps` build process begins with the following:
+Navigate into the root directory of the repository:
 
+[source,console]
 ----
-cd
-git clone https://github.com/raspberrypi/rpicam-apps.git
-cd rpicam-apps
-----
-
-At this point you will need to run `meson setup` after deciding what extra flags to pass it. The valid flags are:
-
-* `-Dneon_flags=armv8-neon` - you may supply this when building for Raspberry Pi 3 or Raspberry Pi 4 devices running a 32-bit OS. Some post-processing features may run more quickly.
-
-* `-Denable_libav=true` or `-Denable_libav=false` - this enables or disables the libav encoder integration.
-
-* `-Denable_drm=true` or `-Denable_drm=false` - this enables or disables the DRM/KMS preview rendering. This is what implements the preview window when a desktop environment is not running.
-
-* `-Denable_egl=true` or `-Denable_egl=false` - this enables or disables the desktop environment-based preview. You should disable this if your system does not have a desktop environment installed.
-
-* `-Denable_qt=true` or `-Denable_qt=false` - this enables or disables support for the Qt-based implementation of the preview window. You should disable it if you do not have a desktop environment installed, or if you have no intention of using the Qt-based preview window. The Qt-based preview is normally not recommended because it is computationally very expensive, however it does work with X display forwarding.
-
-* `-Denable_opencv=true` or `-Denable_opencv=false` - you may choose one of these to force OpenCV-based post-processing stages to be linked (or not). If you enable them, then OpenCV must be installed on your system. Normally they will be built by default if OpenCV is available.
-
-* `-Denable_tflite=true` or `-Denable_tflite=false` - choose one of these to enable TensorFlow Lite post-processing stages (or not). By default they will not be enabled. If you enable them then TensorFlow Lite must be available on your system. Depending on how you have built and/or installed TFLite, you may need to tweak the `meson.build` file in the `post_processing_stages` directory.
-
-For Raspberry Pi OS users we recommend the following `meson setup` command:
-
-----
-meson setup build -Denable_libav=true -Denable_drm=true -Denable_egl=true -Denable_qt=true -Denable_opencv=false -Denable_tflite=false
+$ cd libepoxy
 ----
 
-and for Raspberry Pi OS Lite users:
+Create a build directory at the root level of the repository, then navigate into that directory:
 
+[source,console]
 ----
-meson setup build -Denable_libav=false -Denable_drm=true -Denable_egl=false -Denable_qt=false -Denable_opencv=false -Denable_tflite=false
-----
-
-In both cases, consider `-Dneon_flags=armv8-neon` if you are using a 32-bit OS on a Raspberry Pi 3 or Raspberry Pi 4. Consider `-Denable_opencv=true` if you have installed OpenCV and wish to use OpenCV-based post-processing stages. Finally also consider `-Denable_tflite=true` if you have installed TensorFlow Lite and wish to use it in post-processing stages.
-
-After executing the `meson setup` command of your choice, the whole process concludes with the following:
-
-----
-meson compile -C build # use -j1 on Raspberry Pi 3 or earlier devices
-sudo meson install -C build
-sudo ldconfig # this is only necessary on the first build
+$ mkdir _build
+$ cd _build
 ----
 
-NOTE: If you are using an image where `rpicam-apps` have been previously installed as an `apt` package, and you want to run the new `rpicam-apps` executables from the same terminal window where you have just built and installed them, you may need to run `hash -r` to be sure to pick up the new executables over the system supplied ones.
+Next, run `meson` to configure the build environment:
 
-Finally, if you have not already done so, please be sure to follow the `dtoverlay` and display driver instructions in the  xref:camera_software.adoc#getting-started[Getting Started section] (and rebooting if you changed anything there).
+[source,console]
+----
+$ meson
+----
+
+Now, you can build `libexpoxy` with `ninja`:
+
+[source,console]
+----
+$ ninja
+----
+
+Finally, run the following command to install your freshly-built `libepoxy` binary:
+
+[source,console]
+----
+$ sudo ninja install
+----
