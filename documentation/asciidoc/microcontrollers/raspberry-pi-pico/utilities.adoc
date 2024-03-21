@@ -8,10 +8,19 @@ If you have forgotten what has been programmed into your Raspberry Pi Pico, and 
 
 === Debugging using another Raspberry Pi Pico
 
-It is possible to use one Raspberry Pi Pico to debug another Pico. This is possible via debugprobe, an application that allows a Pico to act as a USB → SWD and UART converter. This makes it easy to use a Pico on non-Raspberry Pi platforms such as Windows, Mac, and Linux computers where you don’t have GPIOs to connect directly to your Pico. Full instructions on how to use debugprobe to do this are available in our 'https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[getting started]' documentation.
+You can use one Raspberry Pi Pico to debug another Pico. This is possible via `debugprobe`, an application that allows a Pico to act as a USB → SWD and UART converter.
 
-* Download the https://github.com/raspberrypi/debugprobe/releases/latest/download/debugprobe_on_pico.uf2[UF2 file]
-* Go to the https://github.com/raspberrypi/debugprobe[Debug Probe Github repository]
+You can find the latest release of the firmware in https://github.com/raspberrypi/debugprobe/releases/latest[the debugprobe GitHub repository].
+
+Download `debugprobe_on_pico.uf2` from the latest release.
+
+Push and hold the BOOTSEL button as you plug the debugger Pico into your computer to mount a volume called "RPI-RP2".
+
+Copy `debugprobe_on_pico.uf2` onto the volume. The volume will dismount automatically after the file finishes copying onto the device.
+
+Your Pico will reboot and now runs an updated version of the `debugprobe` firmware. It is now ready for debugging.
+
+TIP: For instructions on how to use the debugger, see https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting Started with Pico].
 
 === Resetting Flash memory
 
