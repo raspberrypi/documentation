@@ -21,7 +21,7 @@ The Ethernet jack on Raspberry Pi 5 is PoE+ capable, supporting the IEEE 802.3at
 
 The Ethernet jack on Raspberry Pi 4B and Pi 3B+ is PoE capable, supporting the IEEE 802.3af-2003 PoE standard.
 
-All Raspberry Pi models require a HAT to draw power through the Ethernet port. For models that support PoE, we recommend the https://www.raspberrypi.com/products/poe-hat/[PoE HAT]. For models that support PoE+, we recommend the https://www.raspberrypi.com/products/poe-plus-hat/[PoE+ HAT].
+All Raspberry Pi models with a PoE-capable Ethernet jack require a HAT to draw power through the Ethernet port. For models that support PoE, we recommend the https://www.raspberrypi.com/products/poe-hat/[PoE HAT]. For models that support PoE+, we recommend the https://www.raspberrypi.com/products/poe-plus-hat/[PoE+ HAT].
 
 === Typical power requirements
 
