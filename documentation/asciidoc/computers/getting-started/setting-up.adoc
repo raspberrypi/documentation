@@ -146,6 +146,6 @@ The following Raspberry Pi models come with WiFi and Bluetooth connectivity:
 * Raspberry Pi Zero W
 * Rsapberry Pi Zero 2 W
 
-The "Model B" suffix indicates variants with an Ethernet port; "Model A" indicates no Ethernet port. If your Raspberry Pi doesn't have an Ethernet port, you can still connect to a wired internet connection using a USB-to-Ethernet adapter.
+The "Model B" suffix indicates variants with an Ethernet port; "Model A" indicates no Ethernet port. If your Raspberry Pi doesn't have an Ethernet port, you can still connect to a wired Ethernet connection using a USB-to-Ethernet adapter.
 
 image::images/peripherals/cable-net.png[alt="Plugging an Ethernet cable into a Raspberry Pi."]
