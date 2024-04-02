@@ -84,7 +84,7 @@ image::images/imager/os-customisation-general.png[alt="General settings in the O
 
 The **Services** tab includes settings to help you connect to your Raspberry Pi remotely.
 
-If you plan to use your Raspberry Pi remotely over your network, check the box next to **Enable SSH**. You should enable this option if you plan to run a headless Raspberry Pi.
+If you plan to use your Raspberry Pi remotely over your network, tick the box next to **Enable SSH**. You should enable this option if you plan to run a headless Raspberry Pi.
 
 * Choose the **password authentication** option to SSH into your Raspberry Pi over the network using the username and password you provided in the general tab of OS customisation.
 
