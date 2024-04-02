@@ -60,7 +60,9 @@ Plug your power supply into the port marked "POWER IN", "PWR IN", or "PWR". Some
 
 Raspberry Pi models lack onboard storage, so you have to supply it. You can boot your Raspberry Pi from an operating system image installed on any supported media: microSD cards are used commonly, but USB storage, network storage, and storage connected via a PCIe HAT are also available. However, only recent Raspberry Pi models support all of these media types.
 
-All Raspberry Pi consumer models since the Raspberry Pi 1 Model A+ feature a microSD slot. Your Raspberry Pi automatically boots from the microSD slot when the slot contains a card.
+All Raspberry Pi consumer models since the Raspberry Pi 1 Model A+ feature a microSD slot. Models prior to that feature a full-sized SD slot. This documentation will usually say "SD" to refer to either size.
+
+Your Raspberry Pi automatically boots from the SD slot when the slot contains a card.
 
 image::images/peripherals/sd-card.png[alt="Inserting a microSD card into a Raspberry Pi."]
 
