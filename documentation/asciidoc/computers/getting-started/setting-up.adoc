@@ -137,7 +137,7 @@ All variants of the Raspberry Pi 1, 2, 3, and 4 include a 3.5mm auxiliary http:/
 
 === Networking
 
-The following Raspberry Pi models come with WiFi and Bluetooth connectivity:
+The following Raspberry Pi models come with Wi-Fi and Bluetooth connectivity:
 
 * Raspberry Pi 5
 * Raspberry Pi 4
