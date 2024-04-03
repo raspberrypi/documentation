@@ -92,8 +92,6 @@ image:images/peripherals/cable-mouse.png[alt="Plugging a mouse into a Raspberry 
 
 === Display
 
-If your Raspberry Pi has more than one HDMI port, plug your primary monitor into the port marked `HDMI0`.
-
 Raspberry Pi models have the following display connectivity:
 
 [%header,cols="1,1"]
@@ -124,6 +122,8 @@ Raspberry Pi models have the following display connectivity:
 |===
 
 NOTE: No Raspberry Pi models support video over USB-C (DisplayPort alt mode).
+
+If your Raspberry Pi has more than one HDMI port, plug your primary monitor into the port marked `HDMI0`.
 
 Most displays don't have micro or mini HDMI ports. However, you can use a https://www.raspberrypi.com/products/micro-hdmi-to-standard-hdmi-a-cable/[micro-HDMI-to-HDMI cable] or https://www.raspberrypi.com/products/standard-hdmi-a-male-to-mini-hdmi-c-male-cable/[mini-HDMI-to-HDMI cable] to connect those ports on your Raspberry Pi to any HDMI display. For displays that don't support HDMI, consider an adapter that translates display output from HDMI to a port supported by your display.
 
