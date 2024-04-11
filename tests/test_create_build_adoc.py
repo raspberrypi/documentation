@@ -28,7 +28,7 @@ class TestCreateBuildAdoc(unittest.TestCase):
         index_json = os.path.join(self.fixtures_path, "index.json")
         config_yaml = os.path.join(self.fixtures_path, "_config.yml")
         github_edit = os.path.join(self.fixtures_path, "github_edit.adoc")
-        src_adoc = os.path.join(self.fixtures_path, "c_sdk.adoc")
+        src_adoc = os.path.join(self.fixtures_path, "microcontrollers", "c_sdk.adoc")
         includes_dir = os.path.join(self.fixtures_path, "build", "adoc_includes")
         build_adoc = self.output_file
 

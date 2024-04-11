@@ -1,0 +1,32 @@
+[[channel_config]]
+== channel_config
+
+++++
+
+
+<div class="ingroups" id="rpipf87063354e1b844cb285">Part of: <a class="el" href="hardware.html" id="rpip7b15f314e61b3d67d47a">Hardware APIs</a> » <a class="el" href="hardware.html#hardware_dma" id="rpipff99d40da73fc6dea3fa">hardware_dma</a></div><p id="rpip53d2edb3499ae77e6177">DMA channel configuration   .  
+<a href="#gaebee0ee46a0e8f91042d" id="rpipe8e703f5e5c1e27bc721" data-adjusted="true">More...</a></p>
+
+++++
+
+[[rpipbcecd949811e64d5957a]]
+=== Functions
+
+
+++++
+
+<ul class="memberdecls" id="r_ga28d1103cea7f7d73406a2aee44bfebd9" data-parent-id="rpip9346572900aa9571ed1e"><li class="memitem"><p data-target="true" data-target-for="r_ga28d1103cea7f7d73406a2aee44bfebd9"><span class="memItemLeft" data-target="true" id="rpipba886656deedaa0dacb4" data-parent-id="r_ga28d1103cea7f7d73406a2aee44bfebd9" data-target-for="rpipba886656deedaa0dacb4">static void </span><span class="memItemRight" data-target="true" id="rpip5083c99dc8ed5710fa03" data-parent-id="r_ga28d1103cea7f7d73406a2aee44bfebd9" data-target-for="rpip5083c99dc8ed5710fa03"><a class="el" href="#ga28d1103cea7f7d73406a2aee44bfebd9" id="rpipe27a3a16c24ea1ffd583" data-adjusted="true">channel_config_set_read_increment</a> (<a class="el" href="structdma__channel__config.html" id="rpipd1a8408f6093cf231b71">dma_channel_config</a> *c, bool incr)</span></p>
+</li></ul>
+<a name="details" id="gaebee0ee46a0e8f91042d"/>
+++++
+
+[[rpip1326aa77c0728be36c25]]
+=== Detailed Description
+
+
+++++
+
+<p id="rpipc21a40f920cc762d5fca">DMA channel configuration   . </p>
+<p id="rpip461019a49239e7b74a04">A DMA channel needs to be configured, these functions provide handy helpers to set up configuration structures. See <a class="el" href="structdma__channel__config.html" id="rpip5392bc71bddfee8d94b2">dma_channel_config</a> </p>
+
+++++

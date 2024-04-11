@@ -27,7 +27,7 @@ class TestCreateBuildAdocInclude(unittest.TestCase):
         os.makedirs(self.output_path)
         config_yaml = os.path.join(self.fixtures_path, "_config.yml")
         github_edit = os.path.join(self.fixtures_path, "github_edit.adoc")
-        src_adoc = os.path.join(self.fixtures_path, "your_first_binary.adoc")
+        src_adoc = os.path.join(self.fixtures_path, "microcontrollers", "c_sdk", "your_first_binary.adoc")
         build_adoc = self.output_file
 
         subprocess.run(["python3", self.process_path, config_yaml, github_edit, src_adoc, build_adoc])
@@ -77,7 +77,7 @@ minicom -b 115200 -o -D /dev/ttyACM0
 You should see 'Hello, world!' printed to the Terminal.
 
 You can see the code https://github.com/raspberrypi/pico-examples/blob/master/hello_world/usb/hello_usb.c[on Github]
-'''.format(os.path.join(self.fixtures_path, "your_first_binary.adoc"))
+'''.format(os.path.join(self.fixtures_path, "microcontrollers", "c_sdk", "your_first_binary.adoc"))
         res = ""
         if os.path.isfile(self.output_file):
             with open(self.output_file) as f:

@@ -1,0 +1,32 @@
+== Raspberry Pi Pico C/{cpp} SDK
+
+Our official C SDK can be used from the command line, or from popular integrated development environments like Visual Studio Code, Eclipse, and CLion. To get started, download our C/{cpp} SDK and Examples, and take a look at our 'https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[getting started]' documentation to get going. Or for a quick setup see the next section.
+
+* The SDK https://github.com/raspberrypi/pico-sdk[Github repository]
+
+* The Examples https://github.com/raspberrypi/pico-examples[Github repository]
+
+You can find documentation around the C/{cpp} SDK at;
+
+https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico]:: C/{cpp} development with Raspberry Pi Pico and other RP2040-based microcontroller boards
+
+https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W]:: Getting Raspberry Pi Pico W online with C/{cpp} or MicroPython
+
+https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi Pico C/{cpp} SDK]:: Libraries and tools for C/{cpp} development on RP2040 microcontrollers
+
+xref:../pico-sdk/index_doxygen.adoc[API level documentation]:: Documentation for the Raspberry Pi Pico C/{cpp} SDK
+
+[NOTE]
+====
+If you are building applications with the C/{cpp} SDK and targeting boards other than the Raspberry Pi Pico, you will need to pass `-DPICO_BOARD=boardname` to CMake. Here `boardname` is the name of your board, e.g. for the Adafruit Feather RP2040 you should pass `-DPICO_BOARD=adafruit_feather_rp2040`. See the https://github.com/raspberrypi/pico-sdk/tree/master/src/boards[`boards/` directory] in the Raspberry Pi Pico SDK, and the https://forums.raspberrypi.com/viewtopic.php?f=147&t=304393[forums], for more information.
+====
+
+[NOTE]
+====
+Documentation introducing working with Wi-Fi and Bluetooth on Raspberry Pi Pico W with C/{cpp} or MicroPython is presented in the https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W] book.
+====
+
+[NOTE]
+====
+If you are building applications with the C/{cpp} SDK for Raspberry Pi Pico W and, to connect to a network you will need to pass `-DPICO_BOARD=pico_w -DWIFI_SSID="Your Network" -DWIFI_PASSWORD="Your Password"` to CMake. If you only need to enable Bluetooth support then you do not need to pass a SSID and password, but still need to pass the `-DPICO_BOARD=pico_w` string to CMake.
+====
