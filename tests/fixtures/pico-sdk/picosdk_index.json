@@ -1,0 +1,417 @@
+[
+	{
+		"group_id": "index_doxygen",
+		"name": "Introduction",
+		"description": "An introduction to the Pico SDK",
+		"html": "index_doxygen.html",
+		"subitems": []
+	},
+	{
+		"group_id": "hardware",
+		"name": "Hardware APIs",
+		"description": "This group of libraries provides a thin and efficient C API / abstractions to access the RP2040 hardware without having to read and write  hardware registers directly.  ",
+		"html": "group__hardware.html",
+		"subitems": [
+			{
+				"name": "hardware_adc",
+				"file": "group__hardware__adc.adoc",
+				"html": "group__hardware__adc.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_base",
+				"file": "group__hardware__base.adoc",
+				"html": "group__hardware__base.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_claim",
+				"file": "group__hardware__claim.adoc",
+				"html": "group__hardware__claim.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_clocks",
+				"file": "group__hardware__clocks.adoc",
+				"html": "group__hardware__clocks.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_divider",
+				"file": "group__hardware__divider.adoc",
+				"html": "group__hardware__divider.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_dma",
+				"file": "group__hardware__dma.adoc",
+				"html": "group__hardware__dma.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_exception",
+				"file": "group__hardware__exception.adoc",
+				"html": "group__hardware__exception.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_flash",
+				"file": "group__hardware__flash.adoc",
+				"html": "group__hardware__flash.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_gpio",
+				"file": "group__hardware__gpio.adoc",
+				"html": "group__hardware__gpio.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_i2c",
+				"file": "group__hardware__i2c.adoc",
+				"html": "group__hardware__i2c.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_interp",
+				"file": "group__hardware__interp.adoc",
+				"html": "group__hardware__interp.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_irq",
+				"file": "group__hardware__irq.adoc",
+				"html": "group__hardware__irq.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_pio",
+				"file": "group__hardware__pio.adoc",
+				"html": "group__hardware__pio.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_pll",
+				"file": "group__hardware__pll.adoc",
+				"html": "group__hardware__pll.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_pwm",
+				"file": "group__hardware__pwm.adoc",
+				"html": "group__hardware__pwm.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_resets",
+				"file": "group__hardware__resets.adoc",
+				"html": "group__hardware__resets.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_rtc",
+				"file": "group__hardware__rtc.adoc",
+				"html": "group__hardware__rtc.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_spi",
+				"file": "group__hardware__spi.adoc",
+				"html": "group__hardware__spi.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_sync",
+				"file": "group__hardware__sync.adoc",
+				"html": "group__hardware__sync.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_timer",
+				"file": "group__hardware__timer.adoc",
+				"html": "group__hardware__timer.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_uart",
+				"file": "group__hardware__uart.adoc",
+				"html": "group__hardware__uart.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_vreg",
+				"file": "group__hardware__vreg.adoc",
+				"html": "group__hardware__vreg.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_watchdog",
+				"file": "group__hardware__watchdog.adoc",
+				"html": "group__hardware__watchdog.html",
+				"subitems": []
+			},
+			{
+				"name": "hardware_xosc",
+				"file": "group__hardware__xosc.adoc",
+				"html": "group__hardware__xosc.html",
+				"subitems": []
+			}
+		]
+	},
+	{
+		"group_id": "high_level",
+		"name": "High Level APIs",
+		"description": "This group of libraries provide higher level functionality that isn't hardware related or provides a richer  set of functionality above the basic hardware interfaces  ",
+		"html": "group__high__level.html",
+		"subitems": [
+			{
+				"name": "pico_async_context",
+				"file": "group__pico__async__context.adoc",
+				"html": "group__pico__async__context.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_flash",
+				"file": "group__pico__flash.adoc",
+				"html": "group__pico__flash.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_i2c_slave",
+				"file": "group__pico__i2c__slave.adoc",
+				"html": "group__pico__i2c__slave.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_multicore",
+				"file": "group__pico__multicore.adoc",
+				"html": "group__pico__multicore.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_rand",
+				"file": "group__pico__rand.adoc",
+				"html": "group__pico__rand.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_stdlib",
+				"file": "group__pico__stdlib.adoc",
+				"html": "group__pico__stdlib.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_sync",
+				"file": "group__pico__sync.adoc",
+				"html": "group__pico__sync.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_time",
+				"file": "group__pico__time.adoc",
+				"html": "group__pico__time.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_unique_id",
+				"file": "group__pico__unique__id.adoc",
+				"html": "group__pico__unique__id.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_util",
+				"file": "group__pico__util.adoc",
+				"html": "group__pico__util.html",
+				"subitems": []
+			}
+		]
+	},
+	{
+		"group_id": "third_party",
+		"name": "Third-party Libraries",
+		"description": "Third party libraries for implementing high level functionality.  ",
+		"html": "group__third__party.html",
+		"subitems": [
+			{
+				"name": "tinyusb_device",
+				"file": "group__tinyusb__device.adoc",
+				"html": "group__tinyusb__device.html",
+				"subitems": []
+			},
+			{
+				"name": "tinyusb_host",
+				"file": "group__tinyusb__host.adoc",
+				"html": "group__tinyusb__host.html",
+				"subitems": []
+			}
+		]
+	},
+	{
+		"group_id": "networking",
+		"name": "Networking Libraries",
+		"description": "Functions for implementing networking  ",
+		"html": "group__networking.html",
+		"subitems": [
+			{
+				"name": "pico_btstack",
+				"file": "group__pico__btstack.adoc",
+				"html": "group__pico__btstack.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_lwip",
+				"file": "group__pico__lwip.adoc",
+				"html": "group__pico__lwip.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_cyw43_driver",
+				"file": "group__pico__cyw43__driver.adoc",
+				"html": "group__pico__cyw43__driver.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_cyw43_arch",
+				"file": "group__pico__cyw43__arch.adoc",
+				"html": "group__pico__cyw43__arch.html",
+				"subitems": []
+			}
+		]
+	},
+	{
+		"group_id": "runtime",
+		"name": "Runtime Infrastructure",
+		"description": "Libraries that are used to provide efficient implementation of certain  language level and C library functions, as well as CMake INTERFACE libraries  abstracting the compilation and link steps in the SDK  ",
+		"html": "group__runtime.html",
+		"subitems": [
+			{
+				"name": "boot_stage2",
+				"file": "group__boot__stage2.adoc",
+				"html": "group__boot__stage2.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_base",
+				"file": "group__pico__base.adoc",
+				"html": "group__pico__base.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_binary_info",
+				"file": "group__pico__binary__info.adoc",
+				"html": "group__pico__binary__info.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_bit_ops",
+				"file": "group__pico__bit__ops.adoc",
+				"html": "group__pico__bit__ops.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_bootrom",
+				"file": "group__pico__bootrom.adoc",
+				"html": "group__pico__bootrom.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_bootsel_via_double_reset",
+				"file": "group__pico__bootsel__via__double__reset.adoc",
+				"html": "group__pico__bootsel__via__double__reset.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_cxx_options",
+				"file": "group__pico__cxx__options.adoc",
+				"html": "group__pico__cxx__options.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_divider",
+				"file": "group__pico__divider.adoc",
+				"html": "group__pico__divider.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_double",
+				"file": "group__pico__double.adoc",
+				"html": "group__pico__double.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_float",
+				"file": "group__pico__float.adoc",
+				"html": "group__pico__float.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_int64_ops",
+				"file": "group__pico__int64__ops.adoc",
+				"html": "group__pico__int64__ops.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_malloc",
+				"file": "group__pico__malloc.adoc",
+				"html": "group__pico__malloc.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_mem_ops",
+				"file": "group__pico__mem__ops.adoc",
+				"html": "group__pico__mem__ops.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_platform",
+				"file": "group__pico__platform.adoc",
+				"html": "group__pico__platform.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_printf",
+				"file": "group__pico__printf.adoc",
+				"html": "group__pico__printf.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_runtime",
+				"file": "group__pico__runtime.adoc",
+				"html": "group__pico__runtime.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_stdio",
+				"file": "group__pico__stdio.adoc",
+				"html": "group__pico__stdio.html",
+				"subitems": []
+			},
+			{
+				"name": "pico_standard_link",
+				"file": "group__pico__standard__link.adoc",
+				"html": "group__pico__standard__link.html",
+				"subitems": []
+			}
+		]
+	},
+	{
+		"group_id": "misc",
+		"name": "External API Headers",
+		"description": "Headers for interfaces that are shared with code outside of the SDK  ",
+		"html": "group__misc.html",
+		"subitems": [
+			{
+				"name": "boot_picoboot",
+				"file": "group__boot__picoboot.adoc",
+				"html": "group__boot__picoboot.html",
+				"subitems": []
+			},
+			{
+				"name": "boot_uf2",
+				"file": "group__boot__uf2.adoc",
+				"html": "group__boot__uf2.html",
+				"subitems": []
+			}
+		]
+	}
+]
