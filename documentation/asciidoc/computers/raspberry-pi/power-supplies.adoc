@@ -12,12 +12,16 @@ NOTE: No Raspberry Pi models support USB-PPS.
 
 NOTE: If you use a third-party USB-PD multi-port power supply, plugging an additional device into the supply when your Raspberry Pi is connected causes a renegotiation between the supply and the Raspberry Pi. If the Raspberry Pi is powered, this happens seamlessly. If the Raspberry Pi is powered down, this renegotiation may cause the Raspberry Pi to boot.
 
-== Power over Ethernet (PoE) connector
-
-The Ethernet jack on Raspberry Pi 5 is PoE+ capable, supporting the IEEE 802.3at-2009 PoE standard. The Raspberry Pi 5 has a 4-pin Power-over-Ethernet (PoE) header block, located between the Ethernet jack and the two MIPI connectors.
+=== Power over Ethernet (PoE) connector
 
 .Raspberry Pi 5 PoE header
 image::images/poe.jpg[alt="The PoE connector,width="70%"]
+
+The Ethernet jack on Raspberry Pi 5 is PoE+ capable, supporting the IEEE 802.3at-2009 PoE standard.
+
+The Ethernet jack on Raspberry Pi 4B and Pi 3B+ is PoE capable, supporting the IEEE 802.3af-2003 PoE standard.
+
+All Raspberry Pi models with a PoE-capable Ethernet jack require a HAT to draw power through the Ethernet port. For models that support PoE, we recommend the https://www.raspberrypi.com/products/poe-hat/[PoE HAT]. For models that support PoE+, we recommend the https://www.raspberrypi.com/products/poe-plus-hat/[PoE+ HAT].
 
 === Typical power requirements
 

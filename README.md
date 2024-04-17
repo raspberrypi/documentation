@@ -60,6 +60,8 @@ And install the [Ruby bundler](https://bundler.io/):
 $ gem install bundler
 ```
 
+If you're using a system version of Python 3.12, you may also need to run the Python 3.12 certificate-installation script. Find the Python3.12 folder on your machine, and run `Install Certificates.command`.
+
 ##### Set up Homebrew Version of Ruby
 
 Because macOS provides its own version of Ruby, Homebrew doesn't automatically set up symlinks to access the version you just installed with the `ruby` command. But after a successful install, Homebrew outputs the commands you'll need to run to set up the symlink yourself. If you use the default macOS `zsh` shell on Apple Silicon, you can set up the symlink with the following command:

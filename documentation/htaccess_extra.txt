@@ -24,5 +24,6 @@ RedirectMatch 302 "^/documentation/setup/" "/documentation/computers/getting-sta
 RedirectMatch 302 "^/documentation/usage/camera/" "/documentation/accessories/camera.html"
 RedirectMatch 302 "^/documentation/usage/" "/documentation/computers/os.html"
 RedirectMatch 302 "^/documentation/configuration/" "/documentation/computers/configuration.html"
+RedirectMatch 302 "^/documentation/computers/raspberry-pi-5.html" "/documentation/computers/raspberry-pi.html"
 </IfModule>
 

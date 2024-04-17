@@ -7,7 +7,7 @@ To find the local IP address of your Raspberry Pi, use one of the following meth
 
 Hover over the network icon in the system tray, and a tooltip will appear. This tooltip displays the name of the network you're currently connected to and your IP address.
 
-image::images/network-tooltip.png[the Network Manager tooltip displaying a WiFi network name and IP address]
+image::images/network-tooltip.png[the Network Manager tooltip displaying a Wi-Fi network name and IP address]
 
 ==== Command line
 

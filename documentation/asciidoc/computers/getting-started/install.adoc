@@ -64,19 +64,19 @@ If you don't configure your Raspberry Pi via OS customisation settings, Raspberr
 The OS customisation menu lets you set up your Raspberry Pi before first boot. You can preconfigure:
 
 * a username and password
-* WiFi credentials
+* Wi-Fi credentials
 * the device hostname
 * the time zone
 * your keyboard layout
 * remote connectivity
 
-When you first open the OS customisation menu, you might see a prompt asking for permission to load WiFi credentials from your host computer. If you respond "yes", Imager will prefill WiFi credentials from the network you're currently connected to. If you respond "no", you can enter WiFi credentials manually.
+When you first open the OS customisation menu, you might see a prompt asking for permission to load Wi-Fi credentials from your host computer. If you respond "yes", Imager will prefill Wi-Fi credentials from the network you're currently connected to. If you respond "no", you can enter Wi-Fi credentials manually.
 
 The **hostname** option defines the hostname your Raspberry Pi broadcasts to the network using https://en.wikipedia.org/wiki/Multicast_DNS[mDNS]. When you connect your Raspberry Pi to your network, other devices on the network can communicate with your computer using `<hostname>.local` or `<hostname>.lan`.
 
 The **username and password** option defines the username and password of the admin user account on your Raspberry Pi.
 
-The **wireless LAN** option allows you to enter an SSID (name) and password for your wireless network. If your network does not broadcast an SSID publicly, you should enable the "Hidden SSID" setting. By default, Imager uses the country you're currently in as the "Wireless LAN country". This setting controls the WiFi broadcast frequencies used by your Raspberry Pi. Enter credentials for the wireless LAN option if you plan to run a headless Raspberry Pi.
+The **wireless LAN** option allows you to enter an SSID (name) and password for your wireless network. If your network does not broadcast an SSID publicly, you should enable the "Hidden SSID" setting. By default, Imager uses the country you're currently in as the "Wireless LAN country". This setting controls the Wi-Fi broadcast frequencies used by your Raspberry Pi. Enter credentials for the wireless LAN option if you plan to run a headless Raspberry Pi.
 
 The **locale settings** option allows you to define the time zone and default keyboard layout for your Pi. 
 
@@ -124,9 +124,7 @@ Next, proceed to the xref:getting-started.adoc#configuration-on-first-boot[first
 
 Network Install enables a Raspberry Pi to install an operating system on a storage device using a version of Raspberry Pi Imager downloaded over the network. With Network Install, you can get an operating system installed on your Raspberry Pi with no separate SD card reader and no computer other than your Raspberry Pi. You can run Network Install on any compatible storage device, including SD cards and USB storage.
 
-Network Install only runs on Raspberry Pi 4, 400. If your Raspberry Pi runs an older bootloader, you may need to xref:raspberry-pi.adoc#bootloader_update_stable[update the bootloader] to use Network Install.
-
-IMPORTANT: Currently, Network Install is not available on Raspberry Pi 5. Support will be added in a future bootloader update.
+Network Install only runs on Raspberry Pi 4, 400, and 5. If your Raspberry Pi runs an older bootloader, you may need to xref:raspberry-pi.adoc#bootloader_update_stable[update the bootloader] to use Network Install.
 
 ////
 TODO: Update this video for the new Imager look & flow video::b1SYVpM9lto[youtube]

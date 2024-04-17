@@ -92,8 +92,6 @@ image:images/peripherals/cable-mouse.png[alt="Plugging a mouse into a Raspberry 
 
 === Display
 
-If your Raspberry Pi has more than one HDMI port, plug your primary monitor into the port marked `HDMI0`.
-
 Raspberry Pi models have the following display connectivity:
 
 [%header,cols="1,1"]
@@ -117,13 +115,15 @@ Raspberry Pi models have the following display connectivity:
 |HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi 1 Model A+
-|HDMI, RCA connector
+|HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi Zero (all models)
 |mini HDMI
 |===
 
 NOTE: No Raspberry Pi models support video over USB-C (DisplayPort alt mode).
+
+If your Raspberry Pi has more than one HDMI port, plug your primary monitor into the port marked `HDMI0`.
 
 Most displays don't have micro or mini HDMI ports. However, you can use a https://www.raspberrypi.com/products/micro-hdmi-to-standard-hdmi-a-cable/[micro-HDMI-to-HDMI cable] or https://www.raspberrypi.com/products/standard-hdmi-a-male-to-mini-hdmi-c-male-cable/[mini-HDMI-to-HDMI cable] to connect those ports on your Raspberry Pi to any HDMI display. For displays that don't support HDMI, consider an adapter that translates display output from HDMI to a port supported by your display.
 
@@ -137,7 +137,7 @@ All variants of the Raspberry Pi 1, 2, 3, and 4 include a 3.5mm auxiliary http:/
 
 === Networking
 
-The following Raspberry Pi models come with WiFi and Bluetooth connectivity:
+The following Raspberry Pi models come with Wi-Fi and Bluetooth connectivity:
 
 * Raspberry Pi 5
 * Raspberry Pi 4
