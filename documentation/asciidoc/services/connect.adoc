@@ -1,0 +1,8 @@
+include::connect/introduction.adoc[]
+
+include::connect/install.adoc[]
+
+include::connect/use.adoc[]
+
+include::connect/troubleshooting.adoc[]
+
