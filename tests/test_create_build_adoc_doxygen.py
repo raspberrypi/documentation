@@ -38,7 +38,7 @@ class TestCreateBuildAdocDoxygen(unittest.TestCase):
         expected = ''':parentdir: pico-sdk
 :page-layout: docs
 :includedir: {0}
-:doctitle: Raspberry Pi Documentation - group__channel__config
+:doctitle: group__channel__config - Raspberry Pi Documentation
 :page-sub_title: group__channel__config
 :sectanchors:
 :figure-caption!:
