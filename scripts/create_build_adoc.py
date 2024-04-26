@@ -84,4 +84,4 @@ if __name__ == "__main__":
 :figure-caption!:
 
 {}
-""".format(output_subdir, includes_dir, '{} - {}'.format(site_config['title'], index_title), index_title, new_contents))
+""".format(output_subdir, includes_dir, '{} - {}'.format(index_title, site_config['title']), index_title, new_contents))

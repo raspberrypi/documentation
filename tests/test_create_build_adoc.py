@@ -36,7 +36,7 @@ class TestCreateBuildAdoc(unittest.TestCase):
         expected = ''':parentdir: microcontrollers
 :page-layout: docs
 :includedir: {0}
-:doctitle: Raspberry Pi Documentation - The C/C++ SDK
+:doctitle: The C/C++ SDK - Raspberry Pi Documentation
 :page-sub_title: The C/C++ SDK
 :sectanchors:
 :figure-caption!:
