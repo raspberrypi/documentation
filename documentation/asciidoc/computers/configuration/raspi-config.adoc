@@ -203,7 +203,7 @@ This option sets the country code for your wireless network.
 
 image::images/raspi-adv.png[raspi-config advanced options]
 
-NOTE: The options documented here will change depending on the model of Raspberry Pi that you're using, and whether you're using the Wayland or X11 backend. In the current version of Raspberry Pi OS Bookworm, the Raspberry Pi 4 and Pi 400 use Wayland by default; other models of Raspberry Pi use X11 by default.
+NOTE: The options documented here will change depending on the model of Raspberry Pi that you're using, and whether you're using the Wayland or X11 backend. In the current version of Raspberry Pi OS Bookworm, the Raspberry Pi 4, Pi 400 and Pi 5 use Wayland by default; other models of Raspberry Pi use X11 by default.
 
 [[expand-filesystem]]
 ===== Expand filesystem
@@ -222,11 +222,11 @@ Configure the network's proxy settings.
 
 ===== Boot order
 
-On Raspberry Pi 4, you can specify whether to boot from USB or network if the SD card isn't inserted. For more information, see xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration].
+On Raspberry Pi 4 and 5, you can specify whether to boot from USB or network if the SD card isn't inserted. For more information, see xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration].
 
 ===== Bootloader version
 
-On the Raspberry Pi 4, you can tell the system to use the very latest boot ROM software, or revert to the factory default if the latest version causes problems.
+On the Raspberry Pi 4 and 5, you can tell the system to use the very latest boot ROM software, or revert to the factory default if the latest version causes problems.
 
 ===== Wayland
 
@@ -305,7 +305,7 @@ Specify the audio output destination.
 sudo raspi-config nonint do_audio <N>
 ----
 
-====== Raspberry Pi 4B+
+====== Raspberry Pi 4B
 
 - `0` - bcm2835 Headphones
 - `1` - vc4-hdmi-0
@@ -439,7 +439,7 @@ sudo raspi-config nonint do_pi4video <V1/V2/V3>
 - `V2` - Enable composite video output
 - `V3` - Disable 4Kp60 and composite output
 
-On models prior to the Raspberry Pi 4, use:
+On other models of Raspberry Pi, use:
 
 ----
 sudo raspi-config nonint do_composite <0/1>
