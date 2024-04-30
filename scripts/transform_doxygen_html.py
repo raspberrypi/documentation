@@ -14,6 +14,12 @@ from lxml import etree
 # TO DO:
 # do internal href links need to be updated?
 
+def add_next_with_tail(target, inserted):
+  if target.tail is not None:
+      inserted.tail = inserted.tail + target.tail if inserted.tail is not None else target.tail
+  target.tail = None
+  target.addnext(inserted)
+
 def get_all_text(node):
   text = node.text if node.text else None
   if text:
@@ -69,7 +75,7 @@ def make_attribute_selector(sel, item):
         if "*" in att_value:
           contains = True
       if contains == True:
-        val = re.sub("\*", "", " ".join(att["value"]))
+        val = re.sub(r"\*", "", " ".join(att["value"]))
         atts.append("contains(@" + att["name"] + ",'" + val + "')")
       else:
         # otherwise it's a normal attribute selector
@@ -200,16 +206,16 @@ def transform_element(item, root, is_child=False):
           # set attributes, add text/tail, and add children
           new_tree = add_content_to_tree(new_tree, match)
           # add the new tree to the document
-          match.addnext(new_tree)
+          add_next_with_tail(match, new_tree)
           # remove the old element
           match.getparent().remove(match)
         else:
           # if there is no tree, the element should be removed
           # first, preserve any children:
           for child in reversed(match.findall("./*")):
-            match.addnext(child)
+            add_next_with_tail(match, child)
           # handle the tail if needed
-          if match.tail is not None and re.search("\S", match.tail) is not None:
+          if match.tail is not None and re.search(r"\S", match.tail) is not None:
             prev = match.getprevious()
             if prev is not None:
               prev.tail = prev.tail + match.tail if prev.tail is not None else match.tail
@@ -309,7 +315,7 @@ def find_item_in_toc(h_json, filename):
 
 def fix_external_links(adoc, h_json):
   try:
-    matches = re.findall("(href=[\"'])([^\s>]*?)([\"'])", adoc)
+    matches = re.findall(r"(href=[\"'])([^\s>]*?)([\"'])", adoc)
     for match in matches:
       href = match[1]
       # href = match.get("href")
@@ -452,7 +458,7 @@ def retag_heading(head, headtype):
     else:
       newel.set("id", head.get("id"))
     newel.text = text
-    head.addnext(newel)
+    add_next_with_tail(head, newel)
     head.getparent().remove(head)
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -475,11 +481,11 @@ def prep_for_adoc(root):
 def make_adoc(root_string, title_text, filename):
   try:
     my_id = make_filename_id(filename)
-    root_string = re.sub("<\/div>\s*?$", "", root_string, flags=re.S)
-    root_string = re.sub('<div class="contents" id="\S*?">', "", root_string)
+    root_string = re.sub(r"<\/div>\s*?$", "", root_string, flags=re.S)
+    root_string = re.sub(r'<div class="contents" id="\S*?">', "", root_string)
     root_string = "[["+my_id+"]]\n== " + title_text + "\n\n++++\n" + root_string
-    root_string = re.sub('(<p[^>]+class="adoc-h2"[^>]*id=")([^"]+)("[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n[[\\2]]\n=== \\4\n\n++++\n', root_string, flags=re.S)
-    root_string = re.sub('(<p[^>]+class="adoc-h3"[^>]*id=")([^"]+)("[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n[[\\2]]\n==== \\4\n\n++++\n', root_string, flags=re.S)
+    root_string = re.sub(r'(<p[^>]+class="adoc-h2"[^>]*id=")([^"]+)("[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n[[\\2]]\n=== \\4\n\n++++\n', root_string, flags=re.S)
+    root_string = re.sub(r'(<p[^>]+class="adoc-h3"[^>]*id=")([^"]+)("[^>]*>\s*)(.*?)(<\/p>)', '\n++++\n\n[[\\2]]\n==== \\4\n\n++++\n', root_string, flags=re.S)
     root_string = root_string + "\n++++\n"
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -488,7 +494,7 @@ def make_adoc(root_string, title_text, filename):
 
 def decrease_heading_levels(adoc):
   try:
-    adoc = re.sub("\n==", "\n=", adoc, flags=re.S)
+    adoc = re.sub(r"\n==", "\n=", adoc, flags=re.S)
   except Exception as e:
     exc_type, exc_obj, exc_tb = sys.exc_info()
     print("ERROR: ", e, exc_tb.tb_lineno)
@@ -521,29 +527,29 @@ def parse_header(header_path):
   try:
     with open(header_path) as h:
       content = h.read()
-    blocks = re.findall("^(\s*)(\*|\/\*\*)(\s*)(\s)(\*)(\s)(\\\\)(defgroup)([^}]*)(\@\})", content, re.M)
+    blocks = re.findall(r"^(\s*)(\*|\/\*\*)(\s*)(\s)(\*)(\s)(\\)(defgroup)([^}]*)(\@\})", content, re.M)
     for (a, b, c, d, e, f, g, h, i, j) in blocks:
-      items = i.split("\defgroup")
+      items = i.split(r"\defgroup")
       group_id = None
       for item in items:
         if group_id is None: # must be the first item in the list
-          m = re.match("(\s*)(\S*)(\s*)([^*]*)(.*?)(@\{)", item, re.S)
+          m = re.match(r"(\s*)(\S*)(\s*)([^*]*)(.*?)(@\{)", item, re.S)
           group_id = m.group(2)
           group_filename = "group_"+group_id+".html"
           group_filename = re.sub("_", "__", group_filename)
           group_name = m.group(4)
-          group_name = re.sub("\s*$", "", group_name, re.M)
+          group_name = re.sub(r"\s*$", "", group_name, re.M)
           group_desc = m.group(5)
-          group_desc = re.sub("\n", "", group_desc, re.M)
-          group_desc = re.sub("\*", "", group_desc, re.M)
-          group_desc = re.sub("^\s", "", group_desc, re.M)
+          group_desc = re.sub(r"\n", "", group_desc, re.M)
+          group_desc = re.sub(r"\*", "", group_desc, re.M)
+          group_desc = re.sub(r"^\s", "", group_desc, re.M)
           group_json = { 'group_id': group_id, 'name': group_name, 'description': group_desc, 'html': group_filename, 'subitems': [] }
           h_json.append(group_json)
         else:
           cleaned = item
-          cleaned = re.sub("\n*", "", cleaned, re.M)
-          cleaned = re.sub("^\s*", "", cleaned, re.M)
-          cleaned = re.sub("\s*\*\s*$", "", cleaned, re.M)
+          cleaned = re.sub(r"\n*", "", cleaned, re.M)
+          cleaned = re.sub(r"^\s*", "", cleaned, re.M)
+          cleaned = re.sub(r"\s*\*\s*$", "", cleaned, re.M)
           val = cleaned.split(" ")[0]
           filename = re.sub("_", "__", val)
           filename = "group__" + filename
@@ -705,12 +711,12 @@ def parse_individual_file(html_path, html_file, complete_json_mappings, updated_
     # read the input root
     with open(this_path) as h:
       html_content = h.read()
-      html_content = re.sub('<\!DOCTYPE html PUBLIC "-\/\/W3C\/\/DTD XHTML 1\.0 Transitional\/\/EN" "https:\/\/www\.w3\.org\/TR\/xhtml1\/DTD\/xhtml1-transitional\.dtd">', '', html_content)
+      html_content = re.sub(r'<\!DOCTYPE html PUBLIC "-\/\/W3C\/\/DTD XHTML 1\.0 Transitional\/\/EN" "https:\/\/www\.w3\.org\/TR\/xhtml1\/DTD\/xhtml1-transitional\.dtd">', '', html_content)
       html_content = re.sub('rel="stylesheet">', 'rel="stylesheet"/>', html_content)
       html_content = re.sub('&display=swap"', '"', html_content)
-      html_content = re.sub('<img src="logo-mobile\.svg" alt="Raspberry Pi">', '', html_content)
-      html_content = re.sub('<img src="logo\.svg" alt="Raspberry Pi">', '', html_content)
-      html_content = re.sub("<\!-- HTML header for doxygen \S*?-->", '', html_content)
+      html_content = re.sub(r'<img src="logo-mobile\.svg" alt="Raspberry Pi">', '', html_content)
+      html_content = re.sub(r'<img src="logo\.svg" alt="Raspberry Pi">', '', html_content)
+      html_content = re.sub(r"<\!-- HTML header for doxygen \S*?-->", '', html_content)
       html_content = re.sub(' xmlns="http://www.w3.org/1999/xhtml"', '', html_content)
       root = etree.HTML(html_content)
     

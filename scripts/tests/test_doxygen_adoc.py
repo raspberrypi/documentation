@@ -40,31 +40,31 @@ class TestDoxygenAdoc(unittest.TestCase):
 		# test will fail if ANY of the below are different or missing
 		expected = {
 			"pico-sdk/index_doxygen.adoc" : [
-				":doctitle: Raspberry Pi Documentation - Introduction",
+				":doctitle: Introduction - Raspberry Pi Documentation",
 				":page-sub_title: Introduction"
 			],
 			"pico-sdk/hardware.adoc": [
-				":doctitle: Raspberry Pi Documentation - Hardware APIs",
+				":doctitle: Hardware APIs - Raspberry Pi Documentation",
 				":page-sub_title: Hardware APIs"
 			],
 			"pico-sdk/high_level.adoc": [
-				":doctitle: Raspberry Pi Documentation - High Level APIs",
+				":doctitle: High Level APIs - Raspberry Pi Documentation",
 				":page-sub_title: High Level APIs"
 			],
 			"pico-sdk/third_party.adoc": [
-				":doctitle: Raspberry Pi Documentation - Third-party Libraries",
+				":doctitle: Third-party Libraries - Raspberry Pi Documentation",
 				":page-sub_title: Third-party Libraries"
 			],
 			"pico-sdk/networking.adoc": [
-				":doctitle: Raspberry Pi Documentation - Networking Libraries",
+				":doctitle: Networking Libraries - Raspberry Pi Documentation",
 				":page-sub_title: Networking Libraries"
 			],
 			"pico-sdk/runtime.adoc": [
-				":doctitle: Raspberry Pi Documentation - Runtime Infrastructure",
+				":doctitle: Runtime Infrastructure - Raspberry Pi Documentation",
 				":page-sub_title: Runtime Infrastructure"
 			],
 			"pico-sdk/misc.adoc": [
-				":doctitle: Raspberry Pi Documentation - External API Headers",
+				":doctitle: External API Headers - Raspberry Pi Documentation",
 				":page-sub_title: External API Headers"
 			]
 		}

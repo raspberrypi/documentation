@@ -9,7 +9,7 @@ def get_release_version(doxyfile_path):
 	version = "unknown"
 	with open(doxyfile_path) as f:
 		doxy_content = f.read()
-	version_search = re.search("(\nPROJECT_NUMBER\s*=\s*)([\d.]+)", doxy_content)
+	version_search = re.search(r"(\nPROJECT_NUMBER\s*=\s*)([\d.]+)", doxy_content)
 	if version_search is not None:
 		version = version_search.group(2)
 	return version

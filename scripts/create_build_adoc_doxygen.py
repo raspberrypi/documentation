@@ -10,13 +10,13 @@ import yaml
 def check_no_markdown(filename):
     with open(filename) as fh:
         asciidoc = fh.read()
-        if re.search('```\n.*?\n```', asciidoc):
+        if re.search(r'```\n.*?\n```', asciidoc):
             raise Exception("{} uses triple-backticks for markup - please use four-hyphens instead".format(filename))
         # strip out code blocks
-        asciidoc = re.sub('----\n.*?\n----', '', asciidoc, flags=re.DOTALL)
+        asciidoc = re.sub(r'----\n.*?\n----', '', asciidoc, flags=re.DOTALL)
         # strip out pass-through blocks
-        asciidoc = re.sub('\+\+\+\+\n.*?\n\+\+\+\+', '', asciidoc, flags=re.DOTALL)
-        if re.search('(?:^|\n)#+', asciidoc):
+        asciidoc = re.sub(r'\+\+\+\+\n.*?\n\+\+\+\+', '', asciidoc, flags=re.DOTALL)
+        if re.search(r'(?:^|\n)#+', asciidoc):
             raise Exception("{} contains a Markdown-style header (i.e. '#' rather than '=')".format(filename))
         if re.search(r'(\[.+?\]\(.+?\))', asciidoc):
             raise Exception("{} contains a Markdown-style link (i.e. '[title](url)' rather than 'url[title]')".format(filename))
@@ -67,7 +67,7 @@ if __name__ == "__main__":
                 if not seen_header:
                     seen_header = True
             else:
-                m = re.match('^(include::)(.+)(\[\]\n?)$', line)
+                m = re.match(r'^(include::)(.+)(\[\]\n?)$', line)
                 if m:
                     line = m.group(1) + os.path.join('{includedir}/{parentdir}', m.group(2)) + m.group(3)
             new_contents += line
