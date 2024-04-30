@@ -527,7 +527,7 @@ def parse_header(header_path):
   try:
     with open(header_path) as h:
       content = h.read()
-    blocks = re.findall(r"^(\s*)(\*|\/\*\*)(\s*)(\s)(\*)(\s)(\\\\)(defgroup)([^}]*)(\@\})", content, re.M)
+    blocks = re.findall(r"^(\s*)(\*|\/\*\*)(\s*)(\s)(\*)(\s)(\\)(defgroup)([^}]*)(\@\})", content, re.M)
     for (a, b, c, d, e, f, g, h, i, j) in blocks:
       items = i.split(r"\defgroup")
       group_id = None
