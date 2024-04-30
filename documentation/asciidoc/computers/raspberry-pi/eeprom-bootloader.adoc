@@ -196,9 +196,9 @@ Default: `""`
 [[TFTP_PREFIX]]
 ==== `TFTP_PREFIX`
 
-In order to support unique TFTP boot directories for each Raspberry Pi the bootloader prefixes the filenames with a device specific directory. If neither start4.elf nor start.elf are found in the prefixed directory then the prefix is cleared.
+In order to support unique TFTP boot directories for each Raspberry Pi, the bootloader prefixes the filenames with a device-specific directory. If neither start4.elf nor start.elf are found in the prefixed directory then the prefix is cleared.
 
-On earlier models the serial number is used as the prefix, however, on Raspberry Pi 4 the MAC address is no longer generated from the serial number making it difficult to automatically create tftpboot directories on the server by inspecting DHCPDISCOVER packets. To support this the TFTP_PREFIX may be customized to either be the MAC address, a fixed value or the serial number (default).
+On earlier models the serial number is used as the prefix, however on Raspberry Pi 4 and 5 the MAC address is no longer generated from the serial number, making it difficult to automatically create tftpboot directories on the server by inspecting DHCPDISCOVER packets. To support this the TFTP_PREFIX may be customized to either be the MAC address, a fixed value or the serial number (default).
 
 |===
 | Value | Description
@@ -234,8 +234,8 @@ Default: `Raspberry Pi Boot`
 [[DHCP_OPTION97]]
 ==== `DHCP_OPTION97`
 
-In earlier releases the client GUID (Option97) was just the serial number repeated four times. By default, the new GUID format is the concatenation of the four-character code (FourCC) for `RPi4` (0x34695052 - little endian), the board revision (e.g. 0x00c03111) (4-bytes), the least significant 4 bytes of the mac address and the 4-byte serial number.
-This is intended to be unique but also provides structured information to the DHCP server, allowing Raspberry Pi 4 computers to be identified without relying upon the Ethernet MAC OUID.
+In earlier releases the client GUID (Option97) was just the serial number repeated four times. By default, the new GUID format is the concatenation of the four-character code (FourCC) (`RPi4` 0x34695052 for Raspberry Pi 4  or `RPi5` 0x35695052 for Raspberry Pi 5), the board revision (e.g. 0x00c03111 or 0x00d04170) (4-bytes), the least significant 4 bytes of the mac address and the 4-byte serial number.
+This is intended to be unique but also provides structured information to the DHCP server, allowing Raspberry Pi 4 and 5 computers to be identified without relying upon the Ethernet MAC OUID.
 
 Specify DHCP_OPTION97=0 to revert the old behaviour or a non-zero hex-value to specify a custom 4-byte prefix.
 

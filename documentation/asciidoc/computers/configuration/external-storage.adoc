@@ -89,9 +89,8 @@ $ sudo nano /etc/fstab
 
 Add the following line in the `fstab` file:
 
-[source,console]
 ----
-$ UID=5C24-1453 /mnt/mydisk fstype defaults,auto,users,rw,nofail 0 0
+UUID=5C24-1453 /mnt/mydisk fstype defaults,auto,users,rw,nofail 0 0
 ----
 
 Replace `fstype` with the type of your file system, which you found when you went through the steps above, for example: `ntfs`.
