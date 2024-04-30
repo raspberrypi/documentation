@@ -47,6 +47,10 @@ jobs:
         run: make build_doxygen_adoc
       - name: Build documentation
         run: make -j 2
+      - name: Run tests
+        run: |
+          chmod 777 ./tests/run_documentation_tests.sh
+          ./tests/run_documentation_tests.sh
       - name: Deploy to Mythic Beasts
         if: ${{ github.ref == 'refs/heads/master' }}
         uses: ./.github/actions/deploy-action
