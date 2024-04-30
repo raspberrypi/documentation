@@ -49,7 +49,6 @@ jobs:
         run: make -j 2
       - name: Run tests
         run: |
-          chmod 777 ./tests/run_documentation_tests.sh
           ./tests/run_documentation_tests.sh
       - name: Deploy to Mythic Beasts
         if: ${{ github.ref == 'refs/heads/master' }}
