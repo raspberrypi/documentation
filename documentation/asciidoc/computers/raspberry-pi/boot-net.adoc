@@ -91,7 +91,7 @@ As a minimum you should see a DHCP request and reply which looks like the follow
 	    END Option 255, length 0
 ----
 
- `Vendor-Option Option 43` contains the important part of the reply. This must contain the string "Raspberry Pi Boot". Due to a bug in the boot ROM, you may need to add three spaces to the end of the string.
+`Vendor-Option Option 43` contains the important part of the reply. This must contain the string "Raspberry Pi Boot". Due to a bug in the boot ROM, you may need to add three spaces to the end of the string.
 
 ==== TFTP file read
 
