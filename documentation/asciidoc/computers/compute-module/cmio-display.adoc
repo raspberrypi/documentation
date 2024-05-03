@@ -57,7 +57,7 @@ disable_touchscreen=1
 
 === Disable display
 
-To entirely ignore the display when connected, add the following line to to `/boot/firmware/config.txt`:
+To entirely ignore the display when connected, add the following line to `/boot/firmware/config.txt`:
 
 [source]
 ----
