@@ -1,120 +1,160 @@
 === `rpicam-vid`
 
-The video capture application for Raspberry Pi is `rpicam-vid`. It will display a preview window and write the encoded bitstream to the specified output. For example, to write a ten-second video to file:
+`rpicam-vid` helps you capture video on Raspberry Pi devices. `rpicam-vid` displays a preview window and writes an encoded bitstream to the specified output. This produces an unpackaged video bitstream that is not wrapped in any kind of container (such as an mp4 file) format.
 
-NOTE: On those Raspberry Pi models with a hardware H.264 encoder it is used by default.
+NOTE: When available, `rpicam-vid` uses hardware H.264 encoding.
 
-[,bash]
+For example, the following command writes a ten-second video to a file named `test.h264`:
+
+[source,console]
 ----
-rpicam-vid -t 10000 -o test.h264
+$ rpicam-vid -t 10s -o test.h264
 ----
-The resulting file can be played with `vlc` (among other applications).
-[,bash]
+
+You can play the resulting file with VLC and other video players:
+
+[source,console]
 ----
-vlc test.h264
+$ vlc test.h264
 ----
-This is an unpackaged video bitstream, and is not wrapped in any kind of container format (such as an mp4 file). The `--save-pts` option can be used to output frame timestamps so that the bitstream can subsequently be converted into an appropriate format using a tool like `mkvmerge`.
 
-`rpicam-vid -o test.h264 --save-pts timestamps.txt`
+On Raspberry Pi 5, you can output to the MP4 container format directly by specifying the `mp4` file extension for your output file:
 
-If you want an _mkv_ file:
+[source,console]
+----
+$ rpicam-vid  -t 10s -o test.mp4
+----
 
-`mkvmerge -o test.mkv --timecodes 0:timestamps.txt test.h264`
+==== Convert bitstream into container format
+
+Use the `--save-pts` flag to output frame timestamps, which allow you to convert the bitstream into a container format using a tool like `mkvmerge`:
+
+[source,console]
+----
+$ rpicam-vid -o test.h264 --save-pts timestamps.txt
+----
+
+TIP: Raspberry Pi 5 does not support timestamp generation using the `--save-pts` flag. The `libav` codec framework automatically generates timestamps and encodes them into the output when you use a container format.
+
+You can then use the following command to generate an MKV container file from the bitstream and timestamps:
+
+[source,console]
+----
+$ mkvmerge -o test.mkv --timecodes 0:timestamps.txt test.h264
+----
 
 ==== Encoders
 
-There is support for motion JPEG, and also for uncompressed and unformatted YUV420:
-[,bash]
-----
-rpicam-vid -t 10000 --codec mjpeg -o test.mjpeg
-rpicam-vid -t 10000 --codec yuv420 -o test.data
-----
-In both cases the `--codec` parameter determines the output format, not the extension of the output file.
+`rpicam-vid` supports motion JPEG as well as both uncompressed and unformatted YUV420:
 
-The `--segment` parameter breaks output files up into chunks of the segment size (given in milliseconds). This is handy for breaking a motion JPEG stream up into individual JPEG files by specifying very short (1 millisecond) segments.
-[,bash]
+[source,console]
 ----
-rpicam-vid -t 10000 --codec mjpeg --segment 1 -o test%05d.jpeg
+$ rpicam-vid -t 10000 --codec mjpeg -o test.mjpeg
 ----
-The output file name may not make sense unless we avoid overwriting the previous file every time, such as by using a file name that includes a counter (as above). 
+
+[source,console]
+----
+$ rpicam-vid -t 10000 --codec yuv420 -o test.data
+----
+
+The `--codec` parameter determines the output format, not the extension of the output file.
+
+The `--segment` parameter breaks output files up into chunks of the segment size (given in milliseconds). This is handy for breaking a motion JPEG stream up into individual JPEG files by specifying very short (1 millisecond) segments. For example, the following command combines segments of 1 millisecond with a counter in the output file name to generate a new filename for each segment:
+
+[source,console]
+----
+$ rpicam-vid -t 10000 --codec mjpeg --segment 1 -o test%05d.jpeg
+----
 
 ==== Network streaming
 
-NOTE: This section describes native streaming from `rpicam-vid`. It is also possible to use the xref:camera_software.adoc#libav-integration-with-rpicam-vid[`libav`] backend for network streaming. 
+This section describes native streaming from `rpicam-vid`. You can also use the xref:camera_software.adoc#libav-integration-with-rpicam-vid[`libav`] backend for network streaming.
 
 ===== UDP
 
-To stream video using UDP, on the Raspberry Pi (server) use:
-[,bash]
+To stream video over UDP using a Raspberry Pi as a server, use the following command, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+
+[source,console]
 ----
-rpicam-vid -t 0 --inline -o udp://<ip-addr>:<port>
-----
-...where `<ip-addr>` is the IP address of the client, or multicast address (if appropriately configured to reach the client). On the client use (for example):
-[,bash]
-----
-vlc udp://@:<port> :demux=h264
-----
-Alternatively, using the same `<port>` value:
-----
-ffplay udp://<ip-addr-of-server>:<port> -fflags nobuffer -flags low_delay -framedrop
+$ rpicam-vid -t 0 --inline -o udp://<ip-addr>:<port>
 ----
 
+To view video streamed over UDP using a Raspberry Pi as a client, use the following command, replacing the `<port>` placeholder with the port you would like to stream from:
+
+[source,console]
+----
+$ vlc udp://@:<port> :demux=h264
+----
+
+Alternatively, use the following command on a client to stream using `ffplay`:
+
+[source,console]
+----
+$ ffplay udp://<ip-addr-of-server>:<port> -fflags nobuffer -flags low_delay -framedrop
+----
 
 ===== TCP
 
-Video can be streamed using TCP. To use the Raspberry Pi as a server:
-[,bash]
-----
-rpicam-vid -t 0 --inline --listen -o tcp://0.0.0.0:<port>
-----
-On the client:
-[,bash]
-----
-vlc tcp/h264://<ip-addr-of-server>:<port>
-----
-Alternatively:
-----
-ffplay tcp://<ip-addr-of-server>:<port> -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
-----
-...for a 30 frames per second stream with low latency.
+You can also stream video over TCP. To use a Raspberry Pi as a server:
 
-The Raspberry Pi will wait until the client connects, and then start streaming video.
+[source,console]
+----
+$ rpicam-vid -t 0 --inline --listen -o tcp://0.0.0.0:<port>
+----
+
+To view video streamed over TCP using a Raspberry Pi as a client, use the following command:
+
+[source,console]
+----
+$ vlc tcp/h264://<ip-addr-of-server>:<port>
+----
+
+Alternatively, use the following command on a client to stream using `ffplay` at 30 frames per second:
+
+[source,console]
+----
+$ ffplay tcp://<ip-addr-of-server>:<port> -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
+----
 
 ===== RTSP
 
-If formatting an RTSP stream, vlc is useful on the Raspberry Pi. (Other RTSP servers are available.)
-[,bash]
+To use VLC to stream video over RTSP using a Raspberry Pi as a server, use the following command:
+
+[source,console]
 ----
-rpicam-vid -t 0 --inline -o - | cvlc stream:///dev/stdin --sout '#rtp{sdp=rtsp://:8554/stream1}' :demux=h264
-----
-This can be played with:
-[,bash]
-----
-vlc rtsp://<ip-addr-of-server>:8554/stream1
-----
-Alternatively:
-----
-ffplay rtsp://<ip-addr-of-server>:8554/stream1 -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
+$ rpicam-vid -t 0 --inline -o - | cvlc stream:///dev/stdin --sout '#rtp{sdp=rtsp://:8554/stream1}' :demux=h264
 ----
 
-In all cases, the preview window on the server (the Raspberry Pi) can be suppressed with the `-n` (`--nopreview`) option. Note also the use of the `--inline` option, which forces the stream header information to be included with every intra (I) frame. This is important so that a client can correctly understand the stream if it missed the very beginning.
+To view video streamed over RTSP using a Raspberry Pi as a client, use the following command:
 
-NOTE: Recent versions of VLC seem to have problems with playback of H.264 streams. We recommend using `ffplay` for playback using the above commands until these issues have been resolved.
+[source,console]
+----
+$ ffplay rtsp://<ip-addr-of-server>:8554/stream1 -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
+----
+
+Alternatively, use the following command on a client to stream using VLC:
+
+[source,console]
+----
+$ vlc rtsp://<ip-addr-of-server>:8554/stream1
+----
+
+To suppress the preview window on the server, use the `--nopreview` (`-n`) flag. You can also use the `--inline` flag to force stream header information into every intra frame, which helps clients understand the stream if they miss the beginning.
 
 ==== High framerate capture
 
-Using `rpicam-vid` to capture high framerate video (generally anything over 60fps) while minimising frame drops requires a few considerations.
+To minimise frame drops for high framerate (> 60fps) video, try the following configuration tweaks:
 
-* The https://en.wikipedia.org/wiki/Advanced_Video_Coding#Levels[H.264 target level] must be set to 4.2 with the `--level 4.2` argument.
-* Software colour denoise processing must be turned off with the `--denoise cdn_off` argument.
-* For rates over 100 fps, disabling the display window with the `-n` option would free up some additional CPU cycles to help avoid frame drops.
-* It is advisable to set `force_turbo=1` in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] to ensure the CPU clock does not get throttled during the video capture. See xref:config_txt.adoc#force_turbo[the `force_turbo` documentation] for further details.
+* Set the https://en.wikipedia.org/wiki/Advanced_Video_Coding#Levels[H.264 target level] to 4.2 with `--level 4.2`.
+* Turn off software colour denoise processing with the `--denoise cdn_off` argument.
+* Disable the display window with the `--nopreview` (`-n`) flag to free up some additional CPU cycles.
+* Set `force_turbo=1` in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] to ensure that the CPU clock does not throttle during video capture. For more information, see xref:config_txt.adoc#force_turbo[the `force_turbo` documentation].
 * Adjust the ISP output resolution with `--width 1280 --height 720` or something even lower to achieve your framerate target.
-* On a Pi 4, you can overclock the GPU to improve performance by adding `gpu_freq=550` or higher in `/boot/firmware/config.txt`.  See xref:config_txt.adoc#overclocking[the overclocking documentation] for further details.
+* On Raspberry Pi 4, you can overclock the GPU to improve performance by adding `gpu_freq=550` or higher in `/boot/firmware/config.txt`.  See xref:config_txt.adoc#overclocking[the overclocking documentation] for further details.
 
-An example command for 1280×720 120fps video encode would be:
+The following command demonstrates how you might achieve 1280×720 120fps video:
 
-[,bash]
+[source,console]
 ----
-rpicam-vid --level 4.2 --framerate 120 --width 1280 --height 720 --save-pts timestamp.pts -o video.264 -t 10000 --denoise cdn_off -n
+$ rpicam-vid --level 4.2 --framerate 120 --width 1280 --height 720 --save-pts timestamp.pts -o video.264 -t 10000 --denoise cdn_off -n
 ----
