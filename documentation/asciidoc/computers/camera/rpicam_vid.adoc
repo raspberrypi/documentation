@@ -1,6 +1,10 @@
 === `rpicam-vid`
 
-`rpicam-vid` helps you capture video on Raspberry Pi devices. `rpicam-vid` displays a preview window and writes the encoded bitstream to the specified output. This produces an unpackaged video bitstream that is not wrapped in any kind of container format (such as an mp4 file). When available, `rpicam-vid` uses hardware H.264 encoding. For example, the following command writes a ten-second video to a file named `test.h264`:
+`rpicam-vid` helps you capture video on Raspberry Pi devices. `rpicam-vid` displays a preview window and writes an encoded bitstream to the specified output. This produces an unpackaged video bitstream that is not wrapped in any kind of container (such as an mp4 file) format.
+
+NOTE: When available, `rpicam-vid` uses hardware H.264 encoding.
+
+For example, the following command writes a ten-second video to a file named `test.h264`:
 
 [source,console]
 ----
@@ -23,14 +27,14 @@ $ rpicam-vid  -t 10s -o test.mp4
 
 ==== Convert bitstream into container format
 
-TIP: Raspberry Pi 5 does not support the `--save-pts` flag. Instead, output the bitstream to a container format directly using the instructions in the above section.
-
 Use the `--save-pts` flag to output frame timestamps, which allow you to convert the bitstream into a container format using a tool like `mkvmerge`:
 
 [source,console]
 ----
 $ rpicam-vid -o test.h264 --save-pts timestamps.txt
 ----
+
+TIP: Raspberry Pi 5 does not support timestamp generation using the `--save-pts` flag. The `libav` codec framework automatically generates timestamps and encodes them into the output when you use a container format.
 
 You can then use the following command to generate an MKV container file from the bitstream and timestamps:
 
@@ -146,7 +150,7 @@ To minimise frame drops for high framerate (> 60fps) video, try the following co
 * Disable the display window with the `--nopreview` (`-n`) flag to free up some additional CPU cycles.
 * Set `force_turbo=1` in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] to ensure that the CPU clock does not throttle during video capture. For more information, see xref:config_txt.adoc#force_turbo[the `force_turbo` documentation].
 * Adjust the ISP output resolution with `--width 1280 --height 720` or something even lower to achieve your framerate target.
-* On a Pi 4, you can overclock the GPU to improve performance by adding `gpu_freq=550` or higher in `/boot/firmware/config.txt`.  See xref:config_txt.adoc#overclocking[the overclocking documentation] for further details.
+* On Raspberry Pi 4, you can overclock the GPU to improve performance by adding `gpu_freq=550` or higher in `/boot/firmware/config.txt`.  See xref:config_txt.adoc#overclocking[the overclocking documentation] for further details.
 
 The following command demonstrates how you might achieve 1280×720 120fps video:
 
