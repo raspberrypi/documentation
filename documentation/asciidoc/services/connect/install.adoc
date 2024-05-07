@@ -1,0 +1,44 @@
+[[install-connect]]
+== Install
+
+Connect requires a **Raspberry Pi** running a **64-bit** distribution of Raspberry Pi OS **Bookworm** that uses the **Wayland** window server. The required OS version requires a Raspberry Pi 5, Raspberry Pi 4, or Raspberry Pi 400.
+
+NOTE: Connect is **not** compatible with Raspberry Pi OS Lite or systems that use the X window server.
+
+To begin installation, open a Terminal window. Run the following command to update your system and packages:
+
+[source,console]
+----
+$ sudo apt update
+$ sudo apt upgrade
+----
+
+=== Install Connect
+
+Run the following command on your Raspberry Pi to install Connect:
+
+[source,console]
+----
+$ sudo apt install rpi-connect
+----
+
+After installation, reboot your Raspberry Pi to start the Connect service:
+
+[source,console]
+----
+$ sudo reboot
+----
+
+Connect will automatically start the next time you log in to your Raspberry Pi.
+
+=== Start Connect
+
+NOTE: By default, Connect automatically starts at login. You don't need to manually start Connect unless you remove it from your login items.
+
+To start the service manually from the command line, run the following command:
+
+[source,console]
+----
+$ systemctl --user start rpi-connect
+----
+

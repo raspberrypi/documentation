@@ -179,6 +179,12 @@
                     "description": "Our identity service",
                     "image": "full-sized/Raspberry-Pi-ID.png",
                     "subpath": "id.adoc"
+                },
+                {
+                    "title": "Raspberry Pi Connect",
+                    "description": "Connect to your Raspberry Pi from your browser",
+                    "image": "full-sized/Connect-BIG.png",
+                    "subpath": "connect.adoc"
                 }
             ]
         },
