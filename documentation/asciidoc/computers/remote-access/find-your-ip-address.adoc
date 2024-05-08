@@ -1,5 +1,5 @@
 [[ip-address]]
-== Find your IP address
+== Find the IP address of your Raspberry Pi
 
 Most methods of connecting to your Raspberry Pi from another machine require you to know the local IP address of your Raspberry Pi.
 
