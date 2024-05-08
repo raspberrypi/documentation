@@ -44,19 +44,19 @@ If a Raspberry Pi fails to boot for some reason, or has to shut down, in many ca
 
 | 2
 | 4
-| File signature/hash mismatch - Pi 4
+| File signature/hash mismatch - Pi 4 and Pi 5
 
 | 3
 | 1
-| SPI EEPROM error - Pi 4
+| SPI EEPROM error - Pi 4 and Pi 5
 
 | 3
 | 2
-| SPI EEPROM is write protected - Pi 4
+| SPI EEPROM is write protected - Pi 4 and Pi 5
 
 | 3
 | 3
-| I2C error - Pi 4
+| I2C error - Pi 4 and Pi 5
 
 | 3
 | 4
