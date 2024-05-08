@@ -1,0 +1,24 @@
+== Introduction to remote access
+
+Sometimes you need to access a Raspberry Pi without connecting it to a monitor, keyboard, and mouse. Perhaps the Raspberry Pi is embedded in a robot or mounted in an inconvenient location. Or maybe you don't have a spare monitor.
+
+=== Remote control over the local network
+
+To remotely control your Raspberry Pi from another device on your local network, use one of the following services:
+
+* xref:remote-access.adoc#ssh[SSH]
+* xref:remote-access.adoc#vnc[VNC]
+* xref:remote-access.adoc#raspberry-pi-connect[Raspberry Pi Connect]
+
+SSH (**S**ecure **SH**ell) provides secure access to a terminal session on your Raspberry Pi. VNC (**V**irtual **N**etwork **C**omputing) provides secure access to a desktop screen share on your Raspberry Pi. All you need is another computer, a local network, and the local https://en.wikipedia.org/wiki/IP_address[IP address] of your Raspberry Pi. Raspberry Pi Connect shares your Raspberry Pi's screen securely with no need to determine your local IP address.
+
+=== Share files between devices over the local network
+
+Services like xref:remote-access.adoc#nfs[NFS] (Network File Share), xref:remote-access.adoc#scp[SCP] (Secure Copy Protocol), xref:remote-access.adoc#samba[Samba], and xref:remote-access.adoc#rsync[`rsync`] enable you to share files between devices on the local network without directly controlling the remote device. These services can be useful when you need to access data stored on one device from another device.
+
+=== Remote control over the Internet
+
+To remotely control your Raspberry Pi from any device connected to the Internet, you can:
+
+* Expose xref:remote-access.adoc#ssh[SSH] or xref:remote-access.adoc#vnc[VNC] on your Raspberry Pi over the open internet, within a VPN, or using an external service like RealVNC's cloud https://www.realvnc.com/download/viewer/[VNC Viewer].
+* Use xref:remote-access.adoc#raspberry-pi-connect[Raspberry Pi Connect], a free screen sharing service provided by Raspberry Pi.

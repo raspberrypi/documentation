@@ -1,0 +1,6 @@
+[[raspberry-pi-connect]]
+== Screen share with Raspberry Pi Connect
+
+You can access the desktop of a Raspberry Pi remotely from another computer or device on the same network using Raspberry Pi Connect.
+
+For more information, see xref:../services/connect.adoc[the Connect documentation].
