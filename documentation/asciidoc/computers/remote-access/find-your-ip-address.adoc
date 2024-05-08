@@ -1,5 +1,5 @@
 [[ip-address]]
-=== Find your IP address
+== Find your IP address
 
 Most methods of connecting to your Raspberry Pi from another machine require you to know the local IP address of your Raspberry Pi.
 
@@ -7,13 +7,13 @@ Any device connected to a Local Area Network is assigned an IP address. In order
 
 To find the local IP address of your Raspberry Pi, use one of the following methods.
 
-==== Desktop
+=== Desktop
 
 Hover over the network icon in the system tray, and a tooltip will appear. This tooltip displays the name of the network you're currently connected to and your IP address.
 
 image::images/network-tooltip.png[the Network Manager tooltip displaying a Wi-Fi network name and IP address]
 
-==== Command line
+=== Command line
 
 Run the following command to output your local IP address to the command line:
 
@@ -22,11 +22,11 @@ Run the following command to output your local IP address to the command line:
 $ hostname -I
 ----
 
-==== Boot output
+=== Boot output
 
 If you use a display with your Raspberry Pi and you boot to the command line instead of the desktop, the boot sequence includes your IP address as one of the last few output messages before your login prompt.
 
-==== Network Manager
+=== Network Manager
 
 You can use the built-in Network Manager CLI (`nmcli`) to access details about your network. Run the following command:
 
@@ -95,7 +95,7 @@ Once you've identified the correct network interface block, look for a field nam
 
 In the example above, the Raspberry Pi uses Wi-Fi to access the internet. Check the block where the `GENERAL.TYPE` field reads "wifi" to find the IP address. In this case, you can access this device using the IPv4 address in the `IP4.ADDRESS[1]` field: `192.168.1.42`.
 
-==== Resolve `raspberrypi.local` with mDNS
+=== Resolve `raspberrypi.local` with mDNS
 
 On Raspberry Pi OS, multicast DNS is supported out-of-the-box by the Avahi service.
 
@@ -118,7 +118,7 @@ If you change the system hostname of the Raspberry Pi (e.g., by editing `/etc/ho
 
 If you don't remember the hostname of the Raspberry Pi, you can install Avahi on another device, then use https://linux.die.net/man/1/avahi-browse[`avahi-browse`] to browse all the hosts and services on your local network.
 
-==== Check your router's list of devices
+=== Check your router's list of devices
 
 In a web browser, navigate to your router's IP address. Then, log in using your credentials.
 
@@ -128,7 +128,7 @@ This will take you to a control panel. Browse to the list of connected devices o
 
 TIP: If you connect your Raspberry Pi to your network with a wire, try filtering for wired devices in the list. There should be fewer devices to choose from.
 
-==== Find devices on your network with `nmap`
+=== Find devices with `nmap`
 
 The Network Mapper command (`nmap`) is a free and open source tool for network discovery. It is available for Linux, macOS, and Windows.
 
@@ -167,7 +167,7 @@ Nmap done: 256 IP addresses (4 hosts up) scanned in 2.41 seconds
 
 The output above shows a device with hostname `raspberrypi` has IP address `192.168.1.8`.
 
-==== Find devices on your network with an app on your smartphone
+=== Find devices with a smartphone app
 
 The Fing app is a free network scanner for smartphones. It is available for https://play.google.com/store/apps/details?id=com.overlook.android.fing[Android] and https://itunes.apple.com/gb/app/fing-network-scanner/id430921107?mt=8[iOS].
 
