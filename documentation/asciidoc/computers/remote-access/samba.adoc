@@ -1,88 +1,91 @@
+[[samba]]
 == Samba (SMB/CIFS)
 
-Samba is an implementation of the SMB/CIFS networking protocol that is used by Microsoft Windows devices to provide shared access to files, printers, and serial ports.
+Samba is a free software reimplementation of the https://en.wikipedia.org/wiki/Server_Message_Block[Server Message Block] (SMB) networking protocol. With Samba, you can share folders between Windows, macOS, and Linux machines.
 
-You can use Samba to mount a folder shared from a Windows machine so it appears on your Raspberry Pi, or to share a folder from your Raspberry Pi so it can be accessed by your Windows machine.
+=== Install Samba on your Raspberry Pi
 
-=== Installing Samba Support
+By default, Raspberry Pi OS does not include Samba. To install Samba on your Raspberry Pi, run the following command, which installs all the dependencies you need to run a Samba server or client:
 
-By default, Raspberry Pi OS does not include CIFS/Samba support, but this can be added. The following commands will install all the required components for using Samba as a server or a client.
-
-[,bash]
+[source,console]
 ----
-sudo apt update
-sudo apt install samba samba-common-bin smbclient cifs-utils
+$ sudo apt update
+$ sudo apt install samba samba-common-bin smbclient cifs-utils
 ----
 
-=== Mount a Folder Shared from Windows
+=== Mount a folder shared from Windows
 
-First, you need to share a folder on your Windows device. This is quite a convoluted process!
+First, you need to share a folder on your Windows device.
 
 ==== Turn on sharing
 
-. Open the Networking and Sharing Centre by right-clicking on the system tray and selecting it
-. Click on *Change advanced sharing settings*
-. Select *Turn on network discovery*
-. Select *Turn on file and printer sharing*
-. Save changes
+. Right click the system tray and select *Networking and Sharing Centre* from the menu.
+. Select *Change advanced sharing settings*.
+. Select *Turn on network discovery*.
+. Select *Turn on file and printer sharing*.
+. Click the *Save* button to save your changes.
 
 ==== Share the folder
 
-You can share any folder you want, but for this example, simply create a folder called `share`.
+Follow these steps to share a folder from Windows:
 
-. Create the folder `share` on your desktop.
-. Right-click on the new folder, and select *Properties*.
-. Click on the *Sharing* tab, and then the *Advanced Sharing* button
-. Select *Share this folder*; by default, the share name is the name of the folder
-. Click on the *Permissions* button
-. For this example, select *Everyone* and *Full Control* (you can limit access to specific users if required); click *OK* when done, then *OK* again to leave the *Advanced Sharing* page
-. Click on the *Security* tab, as we now need to configure the same permissions
-. Select the same settings as the *Permissions* tab, adding the chosen user if necessary
-. Click *OK*
+. Right click the folder you want to share and select *Properties*.
+. Select the *Sharing* tab.
+. Click the *Advanced Sharing* button.
+. Select *Share this folder*; by default, Windows uses the folder name as the share name.
+. Click the *Permissions* button.
+. Configure the *Everyone* and *Full Control* permissions.
+. Click the *OK* button to leave the *Permissions* page.
+. Click the *OK* button again to leave the *Advanced Sharing* page.
+. Select the *Security* tab.
+. Configure the *Everyone* and *Full Control* permissions.
+. Click the *OK* button.
 
-The folder should now be shared.
+The folder should now be shared. You can modify shared folder permissions by changing permissions on both the *Permissions* and *Security* pages.
 
 ==== Windows 10 Sharing Wizard
 
 On Windows 10 there is a Sharing Wizard that helps with some of these steps.
 
-. Run the Computer Management application from the Start Bar
-. Select *Shared Folders*, then *Shares*
-. Right-click and select *New Share*, which will start up the Sharing Wizard; click *Next*
-. Select the folder you wish to share, and click *Next*
-. Click *Next* to use all the sharing defaults
-. Select *Custom* and set the required permissions, and click *OK*, then *Finish*
+. Run the *Computer Management* application from the Start Bar.
+. Select *Shared Folders* > *Shares*.
+. Right click and select *New Share* to begin the Sharing Wizard.
+. Click the *Next* button.
+. Select the folder you wish to share, then click the *Next* button.
+. Click *Next* to use the sharing defaults or select *Custom* and set the required permissions.
+. Click the *OK* button.
+. Click the *Finish* button to share the folder.
 
 ==== Mount the folder on the Raspberry Pi
 
 *Mounting* in Linux is the process of attaching a folder to a location, so firstly we need that location.
 
-[,bash]
+[source,console]
 ----
-mkdir windowshare
+$ mkdir windowshare
 ----
 
 Now, we need to mount the remote folder to that location. The remote folder is the host name or IP address of the Windows PC, and the share name used when sharing it. We also need to provide the Windows username that will be used to access the remote machine.
 
-[,bash]
+[source,console]
 ----
-sudo mount.cifs //<hostname or IP address>/share /home/pi/windowshare -o user=<name>
+$ sudo mount.cifs //<hostname or IP address>/<shared windows folder> /home/pi/windowshare -o user=<name>
 ----
 
 You should now be able to view the content of the Windows share on your Raspberry Pi.
 
-[,bash]
+[source,console]
 ----
-cd windowshare
-ls
+$ ls windowshare/
 ----
 
 ==== "Host is down" error
 
-This error is caused by a combination of two things: A SMB protocol version mismatch, and the CIFS client on Linux returning a misleading error message. In order to fix this a version entry needs to be added to the mount command. By default Raspberry Pi OS will only use versions 2.1 and above, which are compatible with Windows 7 and later. Older devices, including some NAS, may require version 1.0:
+This error occurs when SMB protocol version do not match and the Linux Samba client returns a misleading error message. By default Raspberry Pi OS uses versions 2.1 and above, compatible with Windows 7 and later. Older devices, including some NAS, may require version 1.0. To fix this error, append a version entry (e.g. `,vers=1.0`) to your mount command:
 
+[source,console]
 ----
-sudo mount.cifs //IP/share /mnt/point -o user=<uname>,vers=1.0
+$ sudo mount.cifs //IP/share /mnt/point -o user=<uname>,vers=1.0
 ----
 
 You may need to try different versions to match up with the server version. Possible values are:
@@ -137,7 +140,7 @@ Now we need to tell Samba to share this folder, using the Samba configuration fi
 sudo nano /etc/samba/smb.conf
 ----
 
-At the end of the file, add the following to share the folder, giving the remote user read/write permissions. Replace the `<username>` placeholder with the username of your primary user account:
+At the end of the file, add the following to share the folder, giving the remote user read/write permissions. Replace the `<username>` placeholder with the username of the primary user account on your Raspberry Pi:
 
 ----
 [share]
@@ -154,4 +157,4 @@ In the same file, find the `workgroup` line, and if necessary, change it to the 
 workgroup = <your workgroup name here>
 ----
 
-That should be enough to share the folder. On your Windows device, when you browse the network, the folder should appear and you should be able to connect to it.
+The shared folder should now appear to Windows or macOS devices on the network. Enter your Raspberry Pi username and password to mount the folder.

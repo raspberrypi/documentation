@@ -1,4 +1,4 @@
-== Network booting using IPv6
+== Network boot using IPv6
 
 There are 4 stages to booting a Raspberry Pi computer over the network:
 
@@ -47,13 +47,13 @@ With IPv4 netboot, `nfsroot` is used to mount `rootfs` over the network. This do
 
 NOTE: A mechanism to boot the Linux kernel with NFS via IPv6 is still to be demonstrated.
 
-=== Test Setup
+=== Test setup
 
 If you want to try this out you will need another Raspberry Pi to act as the TFTP and DHCP server.
 
 The TFTP server can in theory be on any routable network but the DHCP server has to be on the same network as the devices it will serve.
 
-==== TFTP Server
+==== TFTP server
 
 If you have a working IPv4 network boot setup you can reuse the TFTP server in dnsmasq to supply the files (it can talk to both IPv4 and 
 IPv6).
@@ -66,7 +66,7 @@ $ sudo apt-get install tftpd-hpa
 $ sudo systemctl start tftpd-hpa
 ----
 
-==== DHCP Server
+==== DHCP server
 
 DHCP in IPv6 has changed a lot. We need DHCP to at least tell us the address of the TFTP server, which in this case is the same machine.
 
@@ -168,9 +168,9 @@ Retransmit time           :  unspecified (0x00000000)
 
 === Debugging
 
-==== Logs and Traces
+==== Logs and traces
 
-If the boot uart is enabled you should see something like this from the serial port. The lines starting RX6 indicate that IPv6 is in use.
+If the boot UART is enabled, you should see something like this from the serial port. The lines starting RX6 indicate that IPv6 is in use.
 
 Here `dc:a6:32:6f:73:f4` is the MAC address of the TFTP server and it has an IPv6 address of `fd49:869:6f93::1`. The device itself has a MAC address `e4:5f:01:20:24:0b` and an IPv6 address of `fd49:869:6f93::1000`
 
@@ -196,9 +196,10 @@ TFTP_GET: dc:a6:32:6f:73:f4 fd49:869:6f93::1 ab5a4158/config.txt
 Finally the bootloader hands over to firmware which should load the kernel.
 
 ==== Stateful configuration
+
 You can examine network activity with tcpdump.
 
-[,bash]
+[source,console]
 ----
 $ sudo tcpdump -i eth0 -e ip6 -XX -l -v -vv
 ----
