@@ -1,23 +1,28 @@
-== Using `rsync`
+[[rsync]]
+== Synchronise folders between computers with `rsync`
 
-You can use the tool `rsync` to synchronise folders between computers. You might want to transfer some files from your desktop computer or laptop to your Raspberry Pi, for example, and for them to be kept up to date, or you might want the pictures taken by your Raspberry Pi transferred to your computer automatically.
+You can use `rsync` to synchronise folders between computers. For example, you could use `rsync` to transfer new pictures taken by your Raspberry Pi to your personal computer automatically.
 
-Using `rsync` over SSH allows you to transfer files to your computer automatically.
+Before you can configure `rsync`, determine values for the following:
 
-Here is an example of how to set up the sync of a folder of pictures on your Raspberry Pi to your computer:
+* `<pi_ip_address>`: your Raspberry Pi's local IP address: see xref:remote-access.adoc#ip-address[Find your Raspberry Pi's IP address] for more information
+* `<pi_username>`: the username you use to log into your Raspberry Pi
+* `<pi_folder_name>`: the name of the folder you want to copy files from on your Raspberry Pi
+* `<pc_folder_name>`: the name of the folder you would like to synchronise on your personal computer
 
-On your computer, create a folder called `camera`:
+To configure `rsync` to share files, complete the following steps on your personal computer, replacing placeholders in the commands with the values you determined above:
 
+. Create the folder you would like to synchronise to:
++
+[source,console]
 ----
-mkdir camera
+$ mkdir <pc_folder_name>
+----
+. Synchronise files to the folder with `rsync`:
++
+[source,console]
+----
+$ rsync -avz -e ssh <pi_username>@<pi_ip_address>:<pi_folder_name>/ <folder_name>/
 ----
 
-Look up the Raspberry Pi's IP address by logging in to it and running `hostname -I`. In this example, the Raspberry Pi is creating a timelapse by capturing a photo every minute, and saving the picture with a timestamp in the local folder `camera` on its SD card.
-
-Now run the following command (substituting your own Raspberry Pi's IP address):
-
-----
-rsync -avz -e ssh pi@192.168.1.10:camera/ camera/
-----
-
-This will copy all files from the Raspberry Pi's `camera` folder to your computer's new `camera` folder.
+This command copies all files from the selected folder on your Raspberry Pi to the selected folder on your personal computer. If you run the command multiple times, `rsync` keeps track of the files you have already downloaded and skips them. If you delete or modify an already synchronised file on the Raspberry Pi, `rsync` updates the files on your personal computer accordingly.

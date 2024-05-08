@@ -1,12 +1,12 @@
-include::remote-access/remote-access-introduction.adoc[]
+include::remote-access/introduction.adoc[]
 
 include::remote-access/find-your-ip-address.adoc[]
 
-include::remote-access/ssh-server.adoc[]
+include::remote-access/ssh.adoc[]
 
-include::remote-access/ssh-client.adoc[]
+include::remote-access/vnc.adoc[]
 
-include::remote-access/ssh-passwordless.adoc[]
+include::remote-access/raspberry-pi-connect.adoc[]
 
 include::remote-access/scp.adoc[]
 
@@ -15,8 +15,6 @@ include::remote-access/rsync.adoc[]
 include::remote-access/nfs.adoc[]
 
 include::remote-access/samba.adoc[]
-
-include::remote-access/vnc.adoc[]
 
 include::remote-access/apache.adoc[]
 

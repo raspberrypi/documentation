@@ -1,39 +1,49 @@
+[[nfs]]
 == Network File System (NFS)
 
 Network File System (NFS) allows you to share a directory located on one networked computer with other computers or devices on the same network. The computer where the directory is located is called the *server*, and computers or devices connecting to that server are called clients. Clients usually `mount` the shared directory to make it a part of their own directory structure. The shared directory is an example of a shared resource or network share.
 
-For smaller networks, an NFS is perfect for creating a simple NAS (Network-attached storage) in a Linux/Unix environment.
+NFS is a popular way to create a simple NAS (Network-attached storage) in a Linux/Unix environment.
 
-An NFS is perhaps best suited to more permanent network-mounted directories, such as `/home` directories or regularly-accessed shared resources. If you want a network share that guest users can easily connect to, Samba is better suited to the task. This is because tools to temporarily mount and detach from Samba shares are more readily available across old and proprietary operating systems.
+An NFS is perhaps best suited to more permanent network-mounted directories, such as `/home` directories or regularly-accessed shared resources. If you want a network share that guest users can easily connect to, Samba is better suited to the task. Tools to temporarily mount and detach from Samba shares are more readily available across operating systems.
 
 Before deploying an NFS, you should be familiar with:
 
 * Linux file and directory permissions
 * mounting and unmounting filesystems
 
-=== Setting up a Basic NFS Server
+=== Set up a basic NFS server
 
 Install the packages required using the command below:
 
-[,bash]
+[source,console]
 ----
-sudo apt install nfs-kernel-server
+$ sudo apt install nfs-kernel-server
 ----
 
 For easier maintenance, we will isolate all NFS exports in single directory, into which the real directories will be mounted with the `--bind` option.
 
 Suppose we want to export our users' home directories, which are in `/home/users`. First we create the export filesystem:
 
-[,bash]
+[source,console]
 ----
-sudo mkdir -p /export/users
+$ sudo mkdir -p /export/users
 ----
 
-Note that `/export` and `/export/users` will need 777 permissions, as we will be accessing the NFS share from the client without LDAP/NIS authentication. This will not apply if using authentication (see below). Now mount the real `users` directory with:
+TIP: If you plan to configure LDAP/NIS authentication, skip the `chmod` step below.
 
-[,bash]
+Grant `/export` and `/export/users` read, write, and execute permissions (`777`) so you can access the NFS share from the client without LDAP/NIS authentication:
+
+[source,console]
 ----
-sudo mount --bind /home/users /export/users
+$ chmod -R 777 777 /export
+----
+
+Next, mount the real `users` directory with:
+
+[source,console]
+----
+$ sudo mount --bind /home/users /export/users
 ----
 
 To save us from retyping this after every reboot, we add the following line to `/etc/fstab`:
@@ -61,10 +71,10 @@ Nobody-Group = nogroup
 
 However, note that the client may have different requirements for the Nobody-User and Nobody-Group. For example, on RedHat variants, it is `nfsnobody` for both. If you're not sure, check via the following commands to see if `nobody` and `nogroup` are there:
 
-[,bash]
+[source,console]
 ----
-cat /etc/passwd
-cat /etc/group
+$ cat /etc/passwd
+$ cat /etc/group
 ----
 
 This way, server and client do not need the users to share same UID/GUID. For those who use LDAP-based authentication, add the following lines to the `idmapd.conf` of your clients:
@@ -77,7 +87,7 @@ Method = nsswitch
 
 This will cause `idmapd` to know to look at `nsswitch.conf` to determine where it should look for credential information. If you have LDAP authentication already working, `nsswitch` shouldn't require further explanation.
 
-To export our directories to a local network `192.168.1.0/24`, we add the following two lines to `/etc/exports`:
+To export our directories to a local network `192.168.1.0/24`, add the following two lines to `/etc/exports`:
 
 ----
 /export       192.168.1.0/24(rw,fsid=0,insecure,no_subtree_check,async)
@@ -108,25 +118,25 @@ Please ensure that the list of authorised IP addresses includes the `localhost` 
 
 Finally, to make your changes take effect, restart the service:
 
-[,bash]
+[source,console]
 ----
-sudo systemctl restart nfs-kernel-server
+$ sudo systemctl restart nfs-kernel-server
 ----
 
-=== Configuring an NFS Client
+=== Configure an NFS client
 
 Now that your server is running, you need to set up any clients to be able to access it. To start, install the required packages:
 
-[,bash]
+[source,console]
 ----
-sudo apt install nfs-common
+$ sudo apt install nfs-common
 ----
 
 On the client, we can mount the complete export tree with one command:
 
-[,bash]
+[source,console]
 ----
-mount -t nfs -o proto=tcp,port=2049 <nfs-server-IP>:/ /mnt
+$ mount -t nfs -o proto=tcp,port=2049 <nfs-server-IP>:/ /mnt
 ----
 
 You can also specify the NFS server hostname instead of its IP address, but in this case you need to ensure that the hostname can be resolved to an IP on the client side. A robust way of ensuring that this will always resolve is to use the `/etc/hosts` file.
@@ -135,9 +145,9 @@ Note that `<nfs-server-IP>:/export` is not necessary in NFSv4, as it was in NFSv
 
 We can also mount an exported subtree with:
 
-[,bash]
+[source,console]
 ----
-mount -t nfs -o proto=tcp,port=2049 <nfs-server-IP>:/users /home/users
+$ mount -t nfs -o proto=tcp,port=2049 <nfs-server-IP>:/users /home/users
 ----
 
 To ensure this is mounted on every reboot, add the following line to `/etc/fstab`:
@@ -166,7 +176,7 @@ rpcbind : <NFS server IP address>
 
 where `<NFS server IP address>` is the IP address of the server.
 
-=== A More Complex NFS Server
+=== Configure a complex NFS server
 
 NFS user permissions are based on user ID (UID). UIDs of any users on the client must match those on the server in order for the users to have access. The typical ways of doing this are:
 
@@ -199,9 +209,9 @@ where `myclients` is the netgroup name.
 
 Next run this command to rebuild the NIS database:
 
-[,bash]
+[source,console]
 ----
-sudo make -C /var/yp
+$ sudo make -C /var/yp
 ----
 
 The filename `yp` refers to Yellow Pages, the former name of NIS.
@@ -228,9 +238,9 @@ where `<list of IPs>` is a list of the IP addresses of the server and all client
 
 Install the necessary packages:
 
-[,bash]
+[source,console]
 ----
-sudo apt install rpcbind nfs-kernel-server
+$ sudo apt install rpcbind nfs-kernel-server
 ----
 
 Edit `/etc/exports` and add the shares:
@@ -258,22 +268,21 @@ Here, `rw` makes the share read/write, and `sync` requires the server to only re
 
 After setting up `/etc/exports`, export the shares:
 
-[,bash]
+[source,console]
 ----
-sudo exportfs -ra
+$ sudo exportfs -ra
 ----
 
 You'll want to run this command whenever `/etc/exports` is modified.
 
 ==== Restart services
 
+Restart `rpcbind` and NFS for the changes to take effect:
 
-If any changes are made, rpcbind and NFS will need to be restarted:
-
-[,bash]
+[source,console]
 ----
-sudo systemctl restart rpcbind
-sudo systemctl restart nfs-kernel-server
+$ sudo systemctl restart rpcbind
+$ sudo systemctl restart nfs-kernel-server
 ----
 
 ==== Security items to consider
@@ -290,10 +299,10 @@ Mounting an NFS share inside an encrypted home directory will only work after yo
 
 . Create an alternative directory to mount the NFS shares in:
 
-[,bash]
+[source,console]
 ----
-sudo mkdir /nfs
-sudo mkdir /nfs/music
+$ sudo mkdir /nfs
+$ sudo mkdir /nfs/music
 ----
 
 . Edit `/etc/fstab` to mount the NFS share into that directory instead:
@@ -304,8 +313,8 @@ nfsServer:music    /nfs/music    nfs    auto    0 0
 
 . Create a symbolic link inside your home, pointing to the actual mount location. For example, and in this case deleting the `Music` directory already existing there first:
 
-[,bash]
+[source,console]
 ----
-rmdir /home/user/Music
-ln -s /nfs/music/ /home/user/Music
+$ rmdir /home/user/Music
+$ ln -s /nfs/music/ /home/user/Music
 ----

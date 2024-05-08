@@ -1,10 +1,10 @@
-== Setting up an Apache Web Server
+== Set up an Apache web server
 
 Apache is a popular web server application you can install on the Raspberry Pi to allow it to serve web pages.
 
 On its own, Apache can serve HTML files over HTTP, and with additional modules can serve dynamic web pages using scripting languages such as PHP.
 
-=== Installing Apache
+=== Install Apache
 
 First, update the available packages by typing the following command into the Terminal:
 
@@ -20,7 +20,7 @@ Then, install the `apache2` package with this command:
 sudo apt install apache2 -y
 ----
 
-=== Test the Web Server
+=== Test the web server
 
 By default, Apache puts a test HTML file in the web folder. This default web page is served when you browse to `+http://localhost/+` on the Raspberry Pi itself, or `+http://192.168.1.10+` (whatever the Raspberry Pi's IP address is) from another computer on the network. To find the Raspberry Pi's IP address, type `hostname -I` at the command line (or read more about finding your xref:remote-access.adoc#ip-address[IP address]).
 
@@ -30,7 +30,7 @@ image::images/apache-it-works.png[Apache success message]
 
 This means you have Apache working!
 
-==== Changing the Default Web Page
+==== Change the default web page
 
 This default web page is just an HTML file on the filesystem. It is located at `/var/www/html/index.html`.
 
@@ -60,7 +60,7 @@ $ sudo chown <username>: index.html
 
 You can now try editing this file and then refreshing the browser to see the web page change. If you know HTML you can put your own HTML files and other assets in this directory and serve them as a website on your local network.
 
-=== Installing PHP for Apache
+=== Install PHP for Apache
 
 To allow your Apache server to process PHP files, you'll need to install the latest version of PHP and the PHP module for Apache. Type the following command to install these:
 
