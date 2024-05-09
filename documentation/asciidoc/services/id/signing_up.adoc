@@ -17,4 +17,4 @@ Click the **Verify email** button in the email to verify your email address and 
 
 image::images/signed_in_identity.png[width="80%"]
 
-After creating a Raspberry Pi ID, you can log in to Raspberry Pi services using the **Sign in with Raspberry Pi** button.
+After creating a Raspberry Pi ID, you can log in to Raspberry Pi services using the **Sign in with Raspberry Pi ID** button.
