@@ -14,7 +14,7 @@ SSH (**S**ecure **SH**ell) provides secure access to a terminal session on your 
 
 === Share files between devices over the local network
 
-Services like xref:remote-access.adoc#nfs[NFS] (Network File Share), xref:remote-access.adoc#scp[SCP] (Secure Copy Protocol), xref:remote-access.adoc#samba[Samba], and xref:remote-access.adoc#rsync[`rsync`] enable you to share files between devices on the local network without directly controlling the remote device. These services can be useful when you need to access data stored on one device from another device.
+Services like xref:remote-access.adoc#nfs[NFS] (Network File System), xref:remote-access.adoc#scp[SCP] (Secure Copy Protocol), xref:remote-access.adoc#samba[Samba], and xref:remote-access.adoc#rsync[`rsync`] enable you to share files between devices on the local network without directly controlling the remote device. These services can be useful when you need to access data stored on one device from another device.
 
 === Remote control over the Internet
 
