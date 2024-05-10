@@ -18,7 +18,7 @@ By default, Raspberry Pi OS disables the SSH server. Enable SSH in one of the fo
 
 To configure SSH on a completely new installation of Raspberry Pi OS:
 
-. Follow the instructions in the xref:../computers/getting-started.adoc#install-using-imager[Install with Imager] guide.
+. Follow the instructions in the xref:../computers/getting-started.adoc#raspberry-pi-imager[Install with Imager] guide.
 . During the **OS Customisation** step, navigate to the **Services** tab.
 . Tick the checkbox to **Enable SSH**.
 . Select **password authentication** to log in using the same username and password you use while physically using your Raspberry Pi. Select **Allow public-key authentication only** to xref:remote-access.adoc#configure-ssh-without-a-password[configure an SSH key] for passwordless login.
