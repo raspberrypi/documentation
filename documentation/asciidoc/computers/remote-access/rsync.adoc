@@ -10,7 +10,7 @@ Before you can configure `rsync`, determine values for the following:
 * `<pi_folder_name>`: the name of the folder you want to copy files from on your Raspberry Pi
 * `<pc_folder_name>`: the name of the folder you would like to synchronise on your personal computer
 
-To configure `rsync` to share files, complete the following steps on your personal computer, replacing placeholders in the commands with the values you determined above:
+To configure `rsync` to synchronise files, complete the following steps on your personal computer, replacing placeholders in the commands with the values you determined above:
 
 . Create the folder you would like to synchronise to:
 +
@@ -22,7 +22,7 @@ $ mkdir <pc_folder_name>
 +
 [source,console]
 ----
-$ rsync -avz -e ssh <pi_username>@<pi_ip_address>:<pi_folder_name>/ <folder_name>/
+$ rsync -avz -e ssh <pi_username>@<pi_ip_address>:<pi_folder_name>/ <pc_folder_name>/
 ----
 
 This command copies all files from the selected folder on your Raspberry Pi to the selected folder on your personal computer. If you run the command multiple times, `rsync` keeps track of the files you have already downloaded and skips them. If you delete or modify an already synchronised file on the Raspberry Pi, `rsync` updates the files on your personal computer accordingly.
