@@ -73,7 +73,7 @@ $ scp "my file.txt" <username>@<pi_ip_address>:
 
 === Copy a folder
 
-To copy a folder, pass the folder name with the suffix `/`:
+To copy a folder and all of its contents, pass the folder name with the `-r` (recursive) flag:
 
 [source,console]
 ----
