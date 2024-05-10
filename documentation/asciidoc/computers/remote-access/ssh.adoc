@@ -14,6 +14,15 @@ By default, Raspberry Pi OS disables the SSH server. Enable SSH in one of the fo
 . Select *Enabled* next to *SSH*.
 . Click *OK*.
 
+==== While flashing a fresh OS image
+
+To configure SSH on a completely new installation of Raspberry Pi OS:
+
+. Follow the instructions in the xref:../computers/getting-started.adoc#raspberry-pi-imager[Install with Imager] guide.
+. During the **OS Customisation** step, navigate to the **Services** tab.
+. Tick the checkbox to **Enable SSH**.
+. Select **password authentication** to log in using the same username and password you use while physically using your Raspberry Pi. Select **Allow public-key authentication only** to xref:remote-access.adoc#configure-ssh-without-a-password[configure an SSH key] for passwordless login.
+
 ==== From the terminal
 
 . Enter `sudo raspi-config` in a terminal window.
@@ -86,12 +95,12 @@ $ geany &
 
 To remotely access your Raspberry Pi without providing a password each time you connect, use an SSH keypair.
 
-==== Preconfigure a boot image with Raspberry Pi Imager
+==== Preconfigure an OS image with Raspberry Pi Imager
 
-When configuring a boot image with Raspberry Pi Imager, you can preconfigure SSH keys. You can use a new SSH keypair or an existing SSH key.
+When configuring a boot image with Raspberry Pi Imager, you can preconfigure SSH keys. You can generate a new SSH keypair or an existing SSH key.
 
 . Follow the xref:getting-started.adoc#raspberry-pi-imager[install using Imager] guide to configure your boot image.
-. During the OS Customisation step, navigate to the Services tab and select the *Enable SSH* checkbox.
+. During the *OS Customisation* step, navigate to the *Services* tab and tick the *Enable SSH* checkbox.
 . Select the *Allow public-key authentication only* radio button. If you already have an SSH public key stored in `~/.ssh/id_rsa.pub`, Imager automatically uses that public key to prefill the text box. If Imager doesn't find an SSH public key, you can click the *RUN SSH-KEYGEN* button to generate a new keypair.
 
 ==== Manually configure an SSH key
@@ -111,7 +120,7 @@ If you see files named `id_ed25519.pub`, `id_rsa.pub`, or `id_dsa.pub`, you alre
 
 ==== Generate new SSH keypair
 
-TIP: This guide provides instructions to generate a new RSA key. For additional security, you can instead generate a http://ed25519.cr.yp.to/[Ed25519] key. Replace `rsa` with `ed25519` in your public and private key file names and the instructions should work the same.
+TIP: This guide provides instructions to generate a new RSA key. For additional security, you can instead generate a http://ed25519.cr.yp.to/[Ed25519] key. Pass `-t ed25519` to `ssh-keygen` and replace `rsa` with `ed25519` when referencing your public and private key file names to use an Ed25519 key.
 
 To generate a new SSH keypair, enter the following command:
 
@@ -159,7 +168,7 @@ $ ssh-add ~/.ssh/id_rsa
 ----
 
 [[copy-your-public-key-to-your-raspberry-pi]]
-==== Copy the public key to your Raspberry Pi
+==== Copy a public key to your Raspberry Pi
 
 On the computer you use to remotely connect to the Raspberry Pi, use the following command to securely copy your public key to the Raspberry Pi:
 
@@ -168,9 +177,38 @@ On the computer you use to remotely connect to the Raspberry Pi, use the followi
 $ ssh-copy-id <username>@<ip address>
 ----
 
-When prompted, enter the password for your user account on the Raspberry Pi.
+When prompted, enter the password for your user account on the Raspberry Pi. 
+You can now connect to your Raspberry Pi without entering a password.
 
-TIP: If your operating system does not support `ssh-copy-id`, you can copy your public key with xref:remote-access.adoc#scp[`scp`] or a network share instead.
+==== Manually copy a public key to your Raspberry Pi
 
-You can now connect without entering a password.
+If your operating system does not support `ssh-copy-id`, you can instead copy your public key with xref:remote-access.adoc#scp[`scp`].
 
+First, create the directory where Linux expects to find keys on your Raspberry Pi: 
+
+[source,console]
+----
+$ mkdir -p .ssh/authorized_keys
+----
+
+Then, configure the proper permissions for the directories:
+
+[source,console]
+----
+$ chmod 700 .ssh
+----
+
+[source,console]
+----
+$ chmod 644 .ssh/authorized_keys
+----
+
+Finally, on your usual computer, copy the keys to the Raspberry Pi using `scp`:
+
+[source,console]
+----
+$ scp .ssh/id_rsa.pub <username>@<ip address>:.ssh/authorized_keys/
+----
+
+When prompted, enter the password for your user account on the Raspberry Pi. 
+You can now connect to your Raspberry Pi without entering a password.
