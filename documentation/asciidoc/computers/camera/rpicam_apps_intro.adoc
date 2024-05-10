@@ -15,8 +15,8 @@ For this reason Raspberry Pi supplies a small set of example `rpicam-apps`. Thes
 
 * `rpicam-hello`: A "hello world"-equivalent for cameras, which starts a camera preview stream and displays it on the screen.
 * `rpicam-jpeg`: Runs a preview window, then captures high-resolution still images.
-* `rpicam-still`: A more complex image capture application which emulates many of the features of the original `raspistill` application.
-* `rpicam-vid`: A video capture application.
+* `rpicam-still`: Emulates many of the features of the original `raspistill` application.
+* `rpicam-vid`: Captures video.
 * `rpicam-raw`: Captures raw (unprocessed Bayer) frames directly from the sensor.
 * `rpicam-detect`: Not built by default, but users can build it if they have TensorFlow Lite installed on their Raspberry Pi. Captures JPEG images when certain objects are detected.
 
