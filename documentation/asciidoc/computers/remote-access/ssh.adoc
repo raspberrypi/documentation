@@ -198,7 +198,7 @@ Then, configure the proper permissions for the `.ssh` directory:
 $ chmod 700 .ssh
 ----
 
-_On your usual computer_, copy your public key to a file named .ssh/authorized_keys on your Raspberry Pi using `scp`:
+_On your usual computer_, use `scp` to copy your public key to a file named `.ssh/authorized_keys` on your Raspberry Pi:
 
 [source,console]
 ----
