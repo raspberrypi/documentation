@@ -114,6 +114,13 @@ To boot from an NVMe drive attached to the M.2 HAT+, complete the following step
 . Under `Advanced Options` > `Boot Order`, choose `NVMe/USB boot`.
 . Reboot your Raspberry Pi with `sudo reboot`.
 
+== Schematics
+
+.Schematics for the Raspberry Pi M.2 HAT+ M Key
+image::images/m2-hat-plus-schematics.png[width="80%"]
+
+Schematics are also available as a https://datasheets.raspberrypi.com/m2-hat-plus/raspberry-pi-m2-hat-plus-schematics[PDF].
+
 == Product brief
 
 For more information about the M.2 HAT+, including mechanical specifications and operating environment limitations, see the https://datasheets.raspberrypi.com/m2-hat-plus/raspberry-pi-m2-hat-plus-product-brief.pdf[product brief].
