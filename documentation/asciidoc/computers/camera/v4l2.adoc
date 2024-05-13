@@ -1,6 +1,6 @@
 == V4L2 drivers
 
-V4L2 drivers provide a standard Linux interface for accessing camera and codec features. They are loaded automatically when the system is started, though in some non-standard situations you may need to xref:camera_software.adoc#if-you-do-need-to-alter-the-configuration[load camera drivers explicitly].
+V4L2 drivers provide a standard Linux interface for accessing camera and codec features. Normally, Linux loads drivers automatically during boot. But in some situations you may need to xref:camera_software.adoc#configuration[load camera drivers explicitly].
 
 === Device nodes when using `libcamera`
 
@@ -21,7 +21,7 @@ V4L2 drivers provide a standard Linux interface for accessing camera and codec f
 | Video encode
 
 | video12
-| Simple ISP. Can perform conversion and resizing between RGB/YUV formats, and also Bayer to RGB/YUV conversion
+| Simple ISP. Can perform conversion and resizing between RGB/YUV formats in addition to Bayer to RGB/YUV conversion
 
 | video13
 | Input to fully programmable ISP
@@ -41,4 +41,4 @@ V4L2 drivers provide a standard Linux interface for accessing camera and codec f
 
 === Using the driver
 
-Please see the https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/v4l2.html[V4L2 documentation] for details on using this driver.
+For more information on how to use the V4L2 drivers, see the https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/v4l2.html[V4L2 documentation].
