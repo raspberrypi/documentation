@@ -184,31 +184,36 @@ You can now connect to your Raspberry Pi without entering a password.
 
 If your operating system does not support `ssh-copy-id`, you can instead copy your public key with xref:remote-access.adoc#scp[`scp`].
 
-First, create the directory where Linux expects to find keys on your Raspberry Pi: 
+First, _on your Raspberry Pi_, create the directory where Linux expects to find keys: 
 
 [source,console]
 ----
-$ mkdir -p .ssh/authorized_keys
+$ mkdir .ssh
 ----
 
-Then, configure the proper permissions for the directories:
+Then, configure the proper permissions for the `.ssh` directory:
 
 [source,console]
 ----
 $ chmod 700 .ssh
 ----
 
+_On your usual computer_, copy your public key to a file named .ssh/authorized_keys on your Raspberry Pi using `scp`:
+
+[source,console]
+----
+$ scp .ssh/id_rsa.pub <username>@<ip address>:.ssh/authorized_keys
+----
+
+TIP: The command above assumes you have never before authorized any keys to access your Raspberry Pi. If you have previously added at least one key, you should instead add a new line containing the public key to the end of the `authorized_keys` file to preserve your existing keys.
+
+When prompted, enter the password for your user account on the Raspberry Pi.
+
+Then, _on your Raspberry Pi_, configure permissions for the `authorized_keys` file:
+
 [source,console]
 ----
 $ chmod 644 .ssh/authorized_keys
 ----
 
-Finally, on your usual computer, copy the keys to the Raspberry Pi using `scp`:
-
-[source,console]
-----
-$ scp .ssh/id_rsa.pub <username>@<ip address>:.ssh/authorized_keys/
-----
-
-When prompted, enter the password for your user account on the Raspberry Pi. 
 You can now connect to your Raspberry Pi without entering a password.
