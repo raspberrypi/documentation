@@ -121,7 +121,7 @@ For more information, see xref:../computers/raspberry-pi.adoc#nvme-ssd-boot[NVMe
 .Schematics for the Raspberry Pi M.2 HAT+
 image::images/m2-hat-plus-schematics.png[width="80%"]
 
-Schematics are also available as a https://datasheets.raspberrypi.com/m2-hat-plus/raspberry-pi-m2-hat-plus-schematics[PDF].
+Schematics are also available as a https://datasheets.raspberrypi.com/m2-hat-plus/raspberry-pi-m2-hat-plus-schematics.pdf[PDF].
 
 == Product brief
 
