@@ -1,6 +1,6 @@
 == Configuring networking
 
-Raspberry Pi OS provides a graphical user interface (GUI) for setting up wireless connections. Users of Raspberry Pi OS Lite and headless machines can set up wireless networking from the command line with https://developer-old.gnome.org/NetworkManager/stable/nmcli.html[`nmcli`].
+Raspberry Pi OS provides a graphical user interface (GUI) for setting up wireless connections. Users of Raspberry Pi OS Lite and headless machines can set up wireless networking from the command line with https://networkmanager.dev/docs/api/latest/nmcli.html[`nmcli`].
 
 NOTE: Network Manager is the default networking configuration tool under Raspberry Pi OS _Bookworm_ or later. While Network Manager can be installed on earlier versions of the operating system using `apt` and configured as the default using `raspi-config`, earlier versions used `dhcpd` and other tools for network configuration by default.
 
