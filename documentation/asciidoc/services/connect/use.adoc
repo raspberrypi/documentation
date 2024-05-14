@@ -109,7 +109,7 @@ image::images/no-connect-button-ui.png[width="80%"]
 
 To re-enable screen sharing, click the Connect system tray icon and select **Allow screen sharing**.
 
-IMPORTANT: Connect automatically enables screen sharing after a reboot. To permanently disable screen sharing, sign out of Connect.
+NOTE: You can also use the terminal command `rpi-connect vnc on` to re-enable screen sharing.
 
 === Manage your Raspberry Pis
 
