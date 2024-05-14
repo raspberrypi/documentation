@@ -97,7 +97,7 @@ image::images/installation-05.png[width="60%"]
 --
 image::images/installation-06.png[width="60%"]
 --
-. Congratulations, you have successfully installed the M.2 HAT+. Connect your Raspberry Pi to power; Raspberry Pi OS will automatically detect the M.2 HAT+. If you use Raspberry Pi Desktop, you should see an icon representing the drive on your desktop. If you don't use a desktop, you can find the drive at `/dev/nvme0n1`. Add an entry to `fstab` to automatically mount the drive when your Raspberry Pi boots.
+. Congratulations, you have successfully installed the M.2 HAT+. Connect your Raspberry Pi to power; Raspberry Pi OS will automatically detect the M.2 HAT+. If you use Raspberry Pi Desktop, you should see an icon representing the drive on your desktop. If you don't use a desktop, you can find the drive at `/dev/nvme0n1`. To make your drive automatically available for file access, consider xref:../computers/configuration.adoc#setting-up-automatic-mounting[configuring automatic mounting].
 +
 --
 image::images/installation-07.png[width="60%"]
@@ -109,10 +109,12 @@ WARNING: Always disconnect your Raspberry Pi from power before connecting or dis
 
 To boot from an NVMe drive attached to the M.2 HAT+, complete the following steps:
 
-. Format your drive using Raspberry Pi Imager. You can do this from your Raspberry Pi if you already have an SD card with a Raspberry Pi OS image.
+. xref:../computers/getting-started.adoc#raspberry-pi-imager[Format your drive using Raspberry Pi Imager]. You can do this from your Raspberry Pi if you already have an SD card with a Raspberry Pi OS image.
 . In a terminal, run `sudo raspi-config` to open the Raspberry Pi Configuration CLI.
 . Under `Advanced Options` > `Boot Order`, choose `NVMe/USB boot`.
 . Reboot your Raspberry Pi with `sudo reboot`.
+
+For more information, see xref:../computers/raspberry-pi.adoc#nvme-ssd-boot[NVMe boot].
 
 == Schematics
 
