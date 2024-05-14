@@ -1,0 +1,1 @@
+include::m2-hat-plus/about.adoc[]

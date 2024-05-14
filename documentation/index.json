@@ -104,15 +104,21 @@
                 },
                 {
                     "title": "Sense HAT",
-                    "description": "How to use the Sense HAT",
+                    "description": "Monitor and visualise sensor data",
                     "image": "full-sized/Sense-HAT.png",
                     "subpath": "sense-hat.adoc"
                 },
                 {
                     "title": "TV HAT",
-                    "description": "How to watch TV on your Raspberry Pi",
+                    "description": "Watch TV on your Raspberry Pi",
                     "image": "full-sized/TV-HAT.png",
                     "subpath": "tv-hat.adoc"
+                },
+                {
+                    "title": "M.2 HAT+",
+                    "description": "Connect storage to your Raspberry Pi via PCIe",
+                    "image": "full-sized/m2-hat-plus.png",
+                    "subpath": "m2-hat-plus.adoc"
                 },
                 {
                     "title": "Raspberry Pi Audio",
