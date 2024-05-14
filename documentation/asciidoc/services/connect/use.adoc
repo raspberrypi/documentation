@@ -111,7 +111,6 @@ To re-enable screen sharing, do one of the following:
 * click the Connect system tray icon and select **Allow screen sharing**
 * run the terminal command `rpi-connect vnc on`
 
-NOTE: You can also use the terminal command `rpi-connect vnc on` to re-enable screen sharing.
 
 === Manage your Raspberry Pis
 
