@@ -194,7 +194,7 @@ The `meson` build configuration for `rpicam-apps` supports the following flags:
 
 `-Denable_qt=enabled`:: Enables or disables support for the Qt-based implementation of the preview window. Disable if you do not have a desktop environment installed or if you have no intention of using the Qt-based preview window. The Qt-based preview is normally not recommended because it is computationally very expensive, however it does work with X display forwarding.
 
-`-Denable_opencv=enabled`:: Forces OpenCV-based post-processing stages to link or not link. Requires OpenCV to enable. Defaults to `enabled` when OpenCV is installed, `disabled` otherwise.
+`-Denable_opencv=enabled`:: Forces OpenCV-based post-processing stages to link or not link. Requires OpenCV to enable. Defaults to `disabled`.
 
 `-Denable_tflite=enabled`:: Enables or disables TensorFlow Lite post-processing stages. Disabled by default. Requires Tensorflow Lite to enable. Depending on how you have built and/or installed TFLite, you may need to tweak the `meson.build` file in the `post_processing_stages` directory.
 
