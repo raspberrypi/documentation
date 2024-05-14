@@ -116,7 +116,7 @@ To boot from an NVMe drive attached to the M.2 HAT+, complete the following step
 
 == Schematics
 
-.Schematics for the Raspberry Pi M.2 HAT+ M Key
+.Schematics for the Raspberry Pi M.2 HAT+
 image::images/m2-hat-plus-schematics.png[width="80%"]
 
 Schematics are also available as a https://datasheets.raspberrypi.com/m2-hat-plus/raspberry-pi-m2-hat-plus-schematics[PDF].
