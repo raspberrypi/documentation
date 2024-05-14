@@ -223,7 +223,7 @@ _On Raspberry Pi 5 and later devices_, the packed format compresses pixel values
 
 The unpacked format provides pixel values that are much easier to manually manipulate, at the expense of using more storage for pixel data.
 
-On all devices, the unpacked format use 2 bytes per pixel.
+On all devices, the unpacked format uses 2 bytes per pixel.
 
 _On Raspberry Pi 4 and earlier devices_, applications apply zero padding at the *most significant end*. In the unpacked format, a pixel from a 10-bit camera mode cannot exceed the value 1023.
 
