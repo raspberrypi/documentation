@@ -198,9 +198,9 @@ The `meson` build configuration for `rpicam-apps` supports the following flags:
 
 `-Denable_tflite=enabled`:: Enables or disables TensorFlow Lite post-processing stages. Disabled by default. Requires Tensorflow Lite to enable. Depending on how you have built and/or installed TFLite, you may need to tweak the `meson.build` file in the `post_processing_stages` directory.
 
-Each of the above options supports the following values:
+Each of the above options (except for `neon_flags`) supports the following values:
 
-* `enabled`: force-enables the option, even if dependencies are not available
+* `enabled`: enables the option, fails the build if dependencies are not available
 * `disabled`: disables the option
 * `auto`: enables the option if dependencies are available
 
