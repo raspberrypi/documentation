@@ -183,7 +183,7 @@ Examples:
 
 ==== `viewfinder-width` and `viewfinder-height`
 
-Each accepts a single number defining the dimensions, in pixels, of the image sent to for display in the preview window. Does not effect the preview window, since images are resized to fit. Does not effect captured still image or videos.
+Each accepts a single number defining the dimensions, in pixels, of the image displayed in the preview window. Does not effect the preview window dimensions, since images are resized to fit. Does not affect captured still images or videos.
 
 ==== `rawfull`
 
