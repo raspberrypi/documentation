@@ -262,7 +262,7 @@ Rotates the image extracted from the sensor. Accepts only the values 0 or 180.
 
 Crops the image extracted from the full field of the sensor. Accepts a proportion of the available field of view in the following format: `<x>,<y>,<w>,h>`
 
-These value define the following proportions:
+These values define the following proportions:
 
 * `<x>`: X coordinates to skip before extracting an image
 * `<y>`: Y coordinates to skip before extracting an image
