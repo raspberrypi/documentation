@@ -20,7 +20,7 @@ For this reason Raspberry Pi supplies a small set of example `rpicam-apps`. Thes
 * `rpicam-raw`: Captures raw (unprocessed Bayer) frames directly from the sensor.
 * `rpicam-detect`: Not built by default, but users can build it if they have TensorFlow Lite installed on their Raspberry Pi. Captures JPEG images when certain objects are detected.
 
-Users can create their own rpicam-based applications with custom functionality to suit their own requirements. The https://github.com/raspberrypi/rpicam-apps[`rpicam-apps` source code] is freely available under a BSD 2-Clause licence.
+Users can create their own rpicam-based applications with custom functionality to suit their own requirements. The https://github.com/raspberrypi/rpicam-apps[`rpicam-apps` source code] is freely available under a BSD-2-Clause licence.
 
 ==== More about `libcamera`
 
