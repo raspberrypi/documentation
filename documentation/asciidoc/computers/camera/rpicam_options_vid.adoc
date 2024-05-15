@@ -1,138 +1,119 @@
-=== Video command line options
+=== Video options
 
-----
-	--quality,	-q		JPEG quality <number>
-----
+The command line options specified in this section apply only to video output.
 
-Set the JPEG quality. The maximum quality is 100, and 50 is the default. Only applies when saving in MJPEG format.
+To pass one of the following options to an application, prefix the option name with `--`. If the option requires a value, pass the value immediately after the option name, separated by a single space. If the value contains a space, surround the value in quotes.
 
-Example: `rpicam-vid --codec mjpeg -o test.mjpeg -q 80`
+Some options have shorthand aliases, for example `-h` instead of `--help`. Use these shorthand aliases instead of the full option name to save space and time at the expense of readability.
 
-----
-	--bitrate,	-b		H.264 bitrate <number>
-----
+==== `quality`
 
-Set the target bitrate for the H.264 encoder, in _bits per second_. Only applies when encoding in H.264 format.
+Alias: `-q`
+
+Default value: `50`
+
+Accepts an MJPEG quality level between 1 and 100. Only applies to videos encoded in the MJPEG format.
+
+==== `bitrate`
+
+Alias: `-b`
+
+Controls the target bitrate used by the H.264 encoder in bits per second. Only applies to videos encoded in the H.264 format. Impacts the size of the output video.
+
 
 Example: `rpicam-vid -b 10000000 --width 1920 --height 1080 -o test.h264`
 
-----
-	--intra,	-g		Intra-frame period (H.264 only) <number>
-----
+==== `intra`
 
-Sets the frequency of I (Intra) frames in the H.264 bitstream, as a number of frames. The default value is 60.
+Alias: `-g`
 
-Example: `rpicam-vid --intra 30 --width 1920 --height 1080 -o test.h264`
+Default value: `60`
 
-----
-	--profile			H.264 profile <string>
-----
+Sets the frequency of Iframes (intra frames) in the H.264 bitstream. Accepts a number of frames. Only applies to videos encoded in the H.264 format.
 
-Set the H.264 profile. The value may be `baseline`, `main` or `high`.
+==== `profile`
 
-Example: `rpicam-vid --width 1920 --height 1080 --profile main -o test.h264`
+Sets the H.264 profile. Accepts the following values:
 
-----
-	--level				H.264 level <string>
-----
+* `baseline`
+* `main`
+* `high`
 
-Set the H.264 level. The value may be `4`, `4.1` or `4.2`.
+Only applies to videos encoded in the H.264 format.
 
-Example: `rpicam-vid --width 1920 --height 1080 --level 4.1 -o test.h264`
+==== `level`
 
-----
-	--codec				Encoder to be used <string>
-----
+Sets the H.264 level. Accepts the following values:
 
-This can select how the video frames are encoded. Valid options are:
+* `4`
+* `4.1`
+* `4.2`
 
-* h264 - use H.264 encoder (the default)
-* mjpeg - use MJPEG encoder
-* yuv420 - output uncompressed YUV420 frames.
-* libav - use the libav backend to encode audio and video (see the xref:camera_software.adoc#libav-integration-with-rpicam-vid[libav section] for further details)
+Only applies to videos encoded in the H.264 format.
 
-Examples:
+==== `codec`
 
-`rpicam-vid -t 10000 --codec mjpeg -o test.mjpeg`
+Sets the encoder to use for video output. Accepts the following values:
 
-`rpicam-vid -t 10000 --codec yuv420 -o test.data`
+* `h264` - use H.264 encoder (the default)
+* `mjpeg` - use MJPEG encoder
+* `yuv420` - output uncompressed YUV420 frames.
+* `libav` - use the libav backend to encode audio and video (for more information, see xref:camera_software.adoc#libav-integration-with-rpicam-vid[`libav`])
 
-----
-	--keypress,	-k		Toggle between recording and pausing
-----
+==== `keypress`
 
-Pressing Enter will toggle `rpicam-vid` between recording the video stream and not recording it (i.e. discarding it). The application starts off in the recording state, unless the `--initial` option specifies otherwise. Typing `x` and Enter causes `rpicam-vid` to quit.
+Alias: `-k`
 
-Example: `rpicam-vid -t 0 -o test.h264 -k`
+Allows the CLI to enable and disable video output using the *Enter* key. Always starts in the recording state unless specified otherwise with xref:camera_software.adoc#initial[`initial`]. Type the `x` key and press *Enter* to exit. Does not accept a value.
 
-----
-	--signal,	-s		Toggle between recording and pausing when SIGUSR1 received
-----
+==== `signal`
 
-The SIGUSR1 signal will toggle `rpicam-vid` between recording the video stream and not recording it (i.e. discarding it). The application starts off in the recording state, unless the `--initial` option specifies otherwise. SIGUSR2 causes `rpicam-vid` to quit.
+Alias: `-s`
 
-Example:
+Allows the CLI to enable and disable video output using `SIGUSR1`. Use `SIGUSR2` to exit. Always starts in the recording state unless specified otherwise with xref:camera_software.adoc#initial[`initial`]. Does not accept a value.
 
-`rpicam-vid -t 0 -o test.h264 -s`
+==== `initial`
 
-then 
+Default value: `record`
 
-`kill -SIGUSR1 $!`
+Specifies whether to start the application with video output enabled or disabled. Accepts the following values:
 
-----
-	--initial			Start the application in the recording or paused state <string>
-----
+* `record`: Starts with video output enabled.
+* `pause`: Starts with video output disabled.
 
-The value passed may be `record` or `pause` to start the application in, respectively, the recording or the paused state. This option should be used in conjunction with either `--keypress` or `--signal` to toggle between the two states.
+Use this option with either xref:camera_software.adoc#keypress[`keypress`] or xref:camera_software.adoc#signal[`signal`] to toggle between the two states.
 
-Example: `rpicam-vid -t 0 -o test.h264 -k --initial pause`
+==== `split`
 
-----
-	--split				Split multiple recordings into separate files
-----
+When toggling recording with xref:camera_software.adoc#keypress[`keypress`] or xref:camera_software.adoc#signal[`signal`], writes the video output from separate recording sessions into separate files. Does not accept a value. Unless combined with xref:camera_software.adoc#output[`output`] to specify unique names for each file, overwrites each time it writes a file.
 
-This option should be used in conjunction with `--keypress` or `--signal` and causes each recording session (in between the pauses) to be written to a separate file.
+==== `segment`
 
-Example: `rpicam-vid -t 0 --keypress --split --initial pause -o test%04d.h264`
+Cuts video output into multiple files of the passed duration. Accepts a duration in milliseconds. If passed a very small duration (for instance, `1`), records each frame to a separate output file to simulate burst capture.
 
-----
-	--segment			Write the video recording into multiple segments <number>
-----
+You can specify separate filenames for each file using string formatting, e.g. `--output test%04d.h264`.
 
-This option causes the video recording to be split across multiple files where the parameter gives the approximate duration of each file in milliseconds.
+==== `circular`
 
-One convenient little trick is to pass a very small duration parameter (namely, `--segment 1`), which will result in each frame being written to a separate output file. This makes it easy to do burst JPEG capture (using the MJPEG codec), or burst raw frame capture (using `rpicam-raw`).
+Default value: `4`
 
-Example: `rpicam-vid -t 100000 --segment 10000 -o test%04d.h264`
+Writes video recording into a circular buffer in memory. When the application quits, records the circular buffer to disk. Accepts an optional size in megabytes.
 
-----
-	--circular			Write the video recording into a circular buffer of the given <size>
-----
+==== `inline`
 
-The video recording is written to a circular buffer which is written to disk when the application quits. The size of the circular buffer may be given in units of megabytes, defaulting to 4MB.
+Writes a sequence header in every Iframe (intra frame). This can help clients decode the video sequence from any point in the video, instead of just the beginning. Recommended with xref:camera_software.adoc#segment[`segment`], xref:camera_software.adoc#split[`split`], xref:camera_software.adoc#circular[`circular`], and streaming options.
 
-Example: `rpicam-vid -t 0 --keypress --inline --circular -o test.h264`
+Only applies to videos encoded in the H.264 format. Does not accept a value.
 
-----
-	--inline			Write sequence header in every I frame (H.264 only)
-----
+==== `listen`
 
-This option causes the H.264 sequence headers to be written into every I (Intra) frame. This is helpful because it means a client can understand and decode the video sequence from any I frame, not just from the very beginning of the stream. It is recommended to use this option with any output type that breaks the output into pieces (`--segment`, `--split`, `--circular`), or transmits the output over a network.
+Waits for an incoming client connection before encoding video. Intended for network streaming over TCP/IP. Does not accept a value.
 
-Example: `rpicam-vid -t 0 --keypress --inline --split -o test%04d.h264`
+==== `frames`
 
-----
-	--listen			Wait for an incoming TCP connection
-----
+Records exactly the specified number of frames. Any non-zero value overrides xref:camera_software.adoc#timeout[`timeout`]. Accepts a nonzero integer.
 
-This option is provided for streaming over a network using TCP/IP. Using `--listen` will cause `rpicam-vid` to wait for an incoming client connection before starting the video encode process, which will then be forwarded to that client.
+==== `framerate`
 
-Example: `rpicam-vid -t 0 --inline --listen -o tcp://0.0.0.0:8123`
+Records exactly the specified framerate. Accepts a nonzero integer.
 
-----
-	--frames			Record exactly this many frames <number>
-----
-
-Exactly `<number>` frames are recorded. Specifying a non-zero value will override any timeout.
-
-Example: `rpicam-vid -o test.h264 --frames 1000`

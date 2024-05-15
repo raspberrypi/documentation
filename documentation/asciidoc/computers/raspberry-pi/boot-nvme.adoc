@@ -7,9 +7,9 @@ NVMe (Non-Volatile Memory express) is a standard for external storage access ove
 ==== Hardware
 
 * NVMe M.2 SSD
-* an adapter to convert from PCIe FFC to an M.2 standard.
+* an adapter to convert from PCIe to an M.2 standard.
+** For Raspberry Pi 5, we recommend the xref:../accessories/m2-hat-plus.adoc[M.2 HAT+], which converts from the Raspberry Pi's *PCIe FFC* slot to an M Key interface.
 ** For the CM4, search for a "PCI-E 3.0 ×1 lane to M.2 NGFF M-Key SSD NVMe PCI Express adapter card"
-** For Raspberry Pi 5, we recommend the xref:../accessories/m2-hat-plus.adoc[M.2 HAT+].
 
 To check that your NVMe drive is connected correctly, boot your Raspberry Pi from another storage device (such as an SD card) and run `ls -l /dev/nvme*`. Example output is shown below.
 
@@ -48,7 +48,7 @@ Use the Raspberry Pi Configuration CLI to update the bootloader:
 $ sudo raspi-config
 ----
 
-Under `Advanced Options` > `Bootloader Version`, choose `Latest`.
+Under `Advanced Options` > `Bootloader Version`, choose `Latest`. Then, exit `raspi-config` with `Finish` or the *Escape* key.
 
 Run the following command to update your firmware to the latest version:
 

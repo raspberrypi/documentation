@@ -1,29 +1,41 @@
-=== Common command line options
+=== Common options
 
 The following options apply across all the `rpicam-apps` with similar or identical semantics, unless otherwise noted.
 
-----
-	--help,		-h		Print help information for the application
-----
+To pass one of the following options to an application, prefix the option name with `--`. If the option requires a value, pass the value immediately after the option name, separated by a single space. If the value contains a space, surround the value in quotes.
 
-The `--help` option causes every application to print its full set of command line options with a brief synopsis of each, and then quit.
+Some options have shorthand aliases, for example `-h` instead of `--help`. Use these shorthand aliases instead of the full option name to save space and time at the expense of readability.
 
-----
-	--version			Print out a software version number
-----
+==== `help`
 
-All `rpicam-apps` will, when they see the `--version` option, print out a version string both for `libcamera` and `rpicam-apps` and then quit, for example:
+Alias: `-h`
+
+Prints the full set of options, along with a brief synopsis of each option. Does not accept a value.
+
+==== `version`
+
+Prints out version strings for `libcamera` and `rpicam-apps`. Does not accept a value.
+
+Example output:
 
 ----
 rpicam-apps build: ca559f46a97a 27-09-2021 (14:10:24)
 libcamera build: v0.0.0+3058-c29143f7
 ----
 
+==== `list-cameras`
+
+Lists the detected cameras attached to your Raspberry Pi and their available sensor modes. Does not accept a value.
+
+Sensor mode identifiers have the following form:
+
 ----
-	--list-cameras			List the cameras available for use
+S<Bayer order><Bit-depth>_<Optional packing> : <Resolution list>
 ----
 
-The `--list-cameras` will display the available cameras attached to the board that can be used by the application. This option also lists the sensor modes supported by each camera. For example:
+Crop is specified in native sensor pixels (even in pixel binning mode) as `(<x>, <y>)/<Width>×<Height>`. `(x, y)` specifies the location of the crop window of size `width × height` in the sensor array.
+
+For example, the following output displays information about an `IMX219` sensor at index 0 and an `IMX477` sensor at index 1:
 
 ----
 Available cameras
@@ -44,533 +56,508 @@ Available cameras
                              4056x3040 [10.00 fps - (0, 0)/4056x3040 crop]
 ----
 
-In the above example, the IMX219 sensor is available at index 0 and IMX477 at index 1. The sensor mode identifier takes the following form:
-----
-S<Bayer order><Bit-depth>_<Optional packing> : <Resolution list>
-----
-For the IMX219 in the above example, all modes have a `RGGB` Bayer ordering and provide either 8-bit or 10-bit CSI2 packed readout at the listed resolutions. The crop is specified as (<x>, <y>)/<Width>×<Height>, where (x, y) is the location of the crop window of size width × height in the sensor array. The units remain native sensor pixels, even if the sensor is being used in a binning or skipping mode.
+For the IMX219 sensor in the above example:
 
-----
-	--camera			Selects which camera to use <index>
-----
+* all modes have an `RGGB` Bayer ordering
+* all modes provide either 8-bit or 10-bit CSI2 packed readout at the listed resolutions
 
-The `--camera` option will select which camera to use from the supplied <index> value. The <index> value can be obtained from the `--list-cameras` option.
+==== `camera`
 
-----
-	--config,	-c		Read options from the given file <filename>
-----
+Selects the camera to use. Specify an index from the xref:camera_software.adoc#list-cameras[list of available cameras].
 
-Normally options are read from the command line, but in case multiple options are required it may be more convenient to keep them in a file.
+==== `config`
 
-Example: `rpicam-hello -c config.txt`
+Alias: `-c`
 
-This is a text file containing individual lines of `key=value` pairs, for example:
+Specify a file containing CLI options and values. Consider a file named `example_configuration.txt` that contains the following text, specifying options and values as key-value pairs, one option per line, long (non-alias) option names only:
 
 ----
 timeout=99000
 verbose=
 ----
 
-Note how the `=` is required even for implicit options, and that the `--` used on the command line are omitted. Only long form options are permitted (`t=99000` would not be accepted).
+TIP: Omit the leading `--` that you normally pass on the command line. For flags that lack a value, such as `verbose` in the above example, you must include a trailing `=`.
 
+You could then run the following command to specify a timeout of 99000 milliseconds and verbose output:
+
+[source,console]
 ----
-	--timeout,	-t		Delay before application stops automatically <milliseconds>
-----
-
-The `--timeout` option specifies how long the application runs before it stops, whether it is recording a video or showing a preview. In the case of still image capture, the application will show the preview window for this long before capturing the output image.
-
-If unspecified, the default value is 5000 (5 seconds). The value zero causes the application to run indefinitely.
-
-Example: `rpicam-hello -t 0`
-
-==== Preview window
-
-----
-	--preview,	-p		Preview window settings <x,y,w,h>
+$ rpicam-hello --config example_configuration.txt
 ----
 
-Sets the size and location of the preview window (both desktop and DRM versions). It does not affect the resolution or aspect ratio of images being requested from the camera. The camera images will be scaled to the size of the preview window for display, and will be pillar/letter-boxed to fit.
+==== `timeout`
 
-Example: `rpicam-hello -p 100,100,500,500`
+Alias: `-t`
+
+Default value: 5000 milliseconds (5 seconds)
+
+Specify how long the application runs before closing. This applies to both video recording and preview windows. When capturing a still image, the application shows a preview window for `timeout` milliseconds before capturing the output image.
+
+To run the application indefinitely, specify a value of `0`.
+
+==== `preview`
+
+Alias: `-p`
+
+Sets the location (x,y coordinates) and size (w,h dimensions) of the desktop or DRM preview window. Does not affect the resolution or aspect ratio of images requested from the camera. Scales image size and pillar or letterboxes image aspect ratio to fit within the preview window.
+
+Pass the preview window dimensions in the following comma-separated form: `x,y,w,h`
+
+Example: `rpicam-hello --preview 100,100,500,500`
 
 image::images/preview_window.jpg[Letterboxed preview image]
 
-----
-	--fullscreen,	-f		Fullscreen preview mode
-----
+==== `fullscreen`
 
-Forces the preview window to use the whole screen, and the window will have no border or title bar. Again the image may be pillar/letter-boxed.
+Alias: `-f`
 
-Example `rpicam-still -f -o test.jpg`
+Forces the preview window to use the entire screen with no border or title bar. Scales image size and pillar or letterboxes image aspect ratio to fit within the entire screen. Does not accept a value.
 
-----
-	--qt-preview			Use Qt-based preview window
-----
+==== `qt-preview`
 
-The preview window is switched to use the Qt-based implementation. This option is not normally recommended because it no longer uses zero-copy buffer sharing, nor GPU acceleration, and is therefore computationally very expensive. However, it does support X forwarding, which the other preview implementations do not.
+Uses the Qt preview window, which consumes more resources than the alternatives, but supports X window forwarding. Incompatible with the xref:camera_software.adoc#fullscreen[`fullscreen`] flag. Does not accept a value.
 
-The Qt preview window does not support the `--fullscreen` option. It is advised to try and keep the preview window small.
+==== `nopreview`
 
-Example `rpicam-hello --qt-preview`
+Alias: `-n`
 
-----
-	--nopreview,	-n		Do not display a preview window
-----
+Causes the application to _not_ display a preview window at all. Does not accept a value.
 
-The preview window is suppressed entirely.
 
-Example `rpicam-still -n -o test.jpg`
+==== `info-text`
 
-----
-	--info-text			Set window title bar text <string>
-----
+Default value: `"#%frame (%fps fps) exp %exp ag %ag dg %dg"`
 
-The supplied string is set as the title of the preview window, when running in a desktop environment. The string may contain a number of `%` directives, which are substituted with information from the image metadata. The permitted directives are:
+Sets the supplied string as the title of the preview window when running in a desktop environment. Supports the following image metadata substitutions:
 
 |===
 | Directive | Substitution
 
 | %frame
-| The sequence number of the frame
+| Sequence number of the frame.
 
 | %fps
-| The instantaneous frame rate
+| Instantaneous frame rate.
 
 | %exp
-| The shutter speed used to capture the image, in microseconds
+| Shutter speed used to capture the image, in microseconds.
 
 | %ag
-| The analogue gain applied to the image in the sensor
+| Analogue gain applied to the image in the sensor.
 
 | %dg
-| The digital gain applied to the image by the ISP
+| Digital gain applied to the image by the ISP.
 
 | %rg
-| The gain applied to the red component of each pixel
+| Gain applied to the red component of each pixel.
 
 | %bg
-| The gain applied to the blue component of each pixel
+| Gain applied to the blue component of each pixel.
 
 | %focus
-| The focus metric for the image, where a larger value implies a sharper image
+| Focus metric for the image, where a larger value implies a sharper image.
 
 | %lp
-| The current lens position in dioptres (1 / distance in metres).
+| Current lens position in dioptres (1 / distance in metres).
 
 | %afstate
-| The autofocus algorithm state (one of `idle`, `scanning`, `focused` or `failed`).
+| Autofocus algorithm state (`idle`, `scanning`, `focused` or `failed`).
 |===
-
-When not provided, the `--info-text` string defaults to `"#%frame (%fps fps) exp %exp ag %ag dg %dg"`.
-
-Example: `rpicam-hello --info-text "Focus measure: %focus"`
 
 image::images/focus.jpg[Image showing focus measure]
 
-==== Camera resolution and readout
+==== `width` and `height`
 
-----
-	--width				Capture image width <width>
-	--height			Capture image height <height>
-----
+Each accepts a single number defining the dimensions, in pixels, of the captured image.
 
-These numbers specify the output resolution of the camera images captured by `rpicam-still`, `rpicam-jpeg` and `rpicam-vid`.
+For `rpicam-still`, `rpicam-jpeg` and `rpicam-vid`, specifies output resolution.
 
-For `rpicam-raw`, it affects the size of the raw frames captured. Where a camera has a 2×2 binned readout mode. Specifying a resolution not larger than this binned mode will result in the capture of 2×2 binned raw frames.
+For `rpicam-raw`, specifies raw frame resolution. For cameras with a 2×2 binned readout mode, specifying a resolution equal to or smaller than the binned mode captures 2×2 binned raw frames.
 
-For `rpicam-hello` these parameters have no effect.
+For `rpicam-hello`, has no effect.
 
 Examples:
 
-`rpicam-vid -o test.h264 --width 1920 --height 1080` will capture 1080p video.
+* `rpicam-vid -o test.h264 --width 1920 --height 1080` captures 1080p video.
 
-`rpicam-still -r -o test.jpg --width 2028 --height 1520` will capture a 2028x1520 resolution JPEG. When using the HQ camera, the sensor will be driven in its 2×2 binned mode so the raw file - captured in `test.dng` - will contain a 2028×1520 raw Bayer image.
+* `rpicam-still -r -o test.jpg --width 2028 --height 1520` captures a 2028×1520 resolution JPEG. If used with the HQ camera, uses 2×2 binned mode, so the raw file (`test.dng`) contains a 2028×1520 raw Bayer image.
 
-----
-	--viewfinder-width		Capture image width <width>
-	--viewfinder-height		Capture image height <height>
-----
+==== `viewfinder-width` and `viewfinder-height`
 
-These options affect only the preview (meaning both `rpicam-hello` and the preview phase of `rpicam-jpeg` and `rpicam-still`), and specify the image size that will be requested from the camera for the preview window. They have no effect on captured still images or videos. Nor do they affect the preview window as the images are resized to fit.
+Each accepts a single number defining the dimensions, in pixels, of the image displayed in the preview window. Does not effect the preview window dimensions, since images are resized to fit. Does not affect captured still images or videos.
 
-Example: `rpicam-hello --viewfinder-width 640 --viewfinder-height 480`
+==== `rawfull`
 
-----
-	--rawfull			Force sensor to capture in full resolution mode
-----
+Forces the sensor to capture images in full resolution mode regardless of xref:camera_software.adoc#width-and-height[requested output resolution]. Because larger resolutions require more resources, this can negatively impact framerate. When used with the HQ camera, each frame can take up to 18MB of space (compared with 5MB in 2×2 binned mode). Does not accept a value.
 
-This option forces the sensor to be driven in its full resolution readout mode for still and video capture, irrespective of the requested output resolution (given by `--width` and `--height`). It has no effect for `rpicam-hello`.
+For `rpicam-hello`, has no effect.
 
-Using this option often incurs a framerate penalty, as larger-resolution frames are slower to read out.
+==== `mode`
 
-Example: `rpicam-raw -t 2000 --segment 1 --rawfull -o test%03d.raw` will cause multiple full resolution raw frames to be captured. On the HQ camera each frame will be about 18MB in size. Without the `--rawfull` option the default video output resolution would have caused the 2×2 binned mode to be selected, resulting in 4.5MB raw frames.
+Allows you to specify a camera mode in the following colon-separated format: `<width>:<height>:<bit-depth>:<packing>`. The system selects the closest available option for the sensor if there is not an exact match for a provided value. You can use the packed (`P`) or unpacked (`U`) packing formats. Impacts the format of stored videos and stills, but not the format of frames passed to the preview window.
 
-----
-	--mode				Specify sensor mode, given as <width>:<height>:<bit-depth>:<packing>
-----
+Bit-depth and packing are optional.
+Bit-depth defaults to 12.
+Packing defaults to `P` (packed).
 
-This option is more general than `--rawfull` and allows the precise selection of one of the camera modes. The mode should be specified by giving its width, height, bit-depth and packing, separated by colons. These numbers do not have to be exact as the system will select the closest it can find. Moreover, the bit-depth and packing are optional (defaulting to 12 and `P` for "packed" respectively).
+For information about the bit-depth, resolution, and packing options available for your sensor, see xref:camera_software.adoc#list-cameras[`list-cameras`].
 
-On a Pi 4 or earlier device, "packed" modes will return pixels that are packed according to the MIPI CSI-2 standard, meaning:
+Examples:
 
-* 10-bit camera modes will be packed with 4 pixels in 5 bytes. The first 4 bytes contain the 8 most significant bits (MSBs) of each pixel, and the final byte contains the 4 pairs of LSBs.
-* 12-bit camera modes will be packed with 2 pixels in 3 bytes. The first 2 bytes contain the 8 MSBs, and the final byte contains the 4 LSBs of both pixels.
+* `4056:3040:12:P` - 4056×3040 resolution, 12 bits per pixel, packed.
+* `1632:1224:10` - 1632×1224 resolution, 10 bits per pixel.
+* `2592:1944:10:U` - 2592×1944 resolution, 10 bits per pixel, unpacked.
+* `3264:2448` - 3264×2448 resolution.
 
-"Unpacked" modes will use exactly 2 bytes per pixel. The 2-byte words will be zero-padded at the most significant end, meaning that, for example, a pixel from a 10-bit camera mode cannot exceed the value 1023.
+===== Packed format details
 
-On a Pi 5 (and any subsequent) devices, raw modes are handled somewhat differently. The "packed" modes will give you pixel values that are compressed with a visually lossless compression scheme into 8 bits, therefore using only 1 byte per pixel.
+The packed format uses less storage for pixel data.
 
-"Unpacked" modes on a Pi 5 will be interpreted as a request for uncompressed and unpacked pixels, again using 16 bits per pixel. However, in contrast to the Pi 4, these values are zero-padded at the least significant end. This means they will use the full 16-bit dynamic range, whatever pixel depth the sensor was delivering.
+_On Raspberry Pi 4 and earlier devices_, the packed format packs pixels using the MIPI CSI-2 standard. This means:
 
-In both cases, users wishing to access the pixel values themselves are advised to use the unpacked formats, as these are much easier to manipulate.
+* 10-bit camera modes pack 4 pixels into 5 bytes. The first 4 bytes contain the 8 most significant bits (MSBs) of each pixel, and the final byte contains the 4 pairs of least significant bits (LSBs).
+* 12-bit camera modes pack 2 pixels into 3 bytes. The first 2 bytes contain the 8 most significant bits (MSBs) of each pixel, and the final byte contains the 4 least significant bits (LSBs) of both pixels.
 
-* `4056:3040:12:P` - 4056×3040 resolution, 12 bits per pixel, packed. On a Pi 4 (or earlier devices), the raw image buffers will be packed so that 2 pixel values occupy only 3 bytes. On a Pi 5 the pixels will be compressed to 1 byte per pixel.
-* `1632:1224:10` - 1632×1224 resolution, 10 bits per pixel. It will default to packed. A 10-bit packed mode would store 4 pixels in every 5 bytes on a Pi 4, or 1 byte per pixel (compressed) on a Pi 5.
-* `2592:1944:10:U` - 2592×1944 resolution, 10 bits per pixel, unpacked. An unpacked format will store every pixel in 2 bytes. On a Pi 4 the top 6 bits of each value will be zero, but on a Pi 5 the bottom 6 bits of each value will be zero.
-* `3264:2448` - 3264×2448 resolution. It will try to select the default 12-bit mode, but in the case of the v2 camera there isn't one, so a 10-bit mode would be chosen instead.
+_On Raspberry Pi 5 and later devices_, the packed format compresses pixel values with a visually lossless compression scheme into 8 bits (1 byte) per pixel.
 
-The `--mode` option affects the mode choice for video recording and stills capture. To control the mode choice during the preview phase prior to stills capture, use the `--viewfinder-mode` option.
+===== Unpacked format details
 
-----
-	--viewfinder-mode		Specify sensor mode, given as <width>:<height>:<bit-depth>:<packing>
-----
+The unpacked format provides pixel values that are much easier to manually manipulate, at the expense of using more storage for pixel data.
 
-This option is identical to the `--mode` option except that it applies only during the preview phase of stills capture (also used by the `rpicam-hello` application).
+On all devices, the unpacked format uses 2 bytes per pixel.
 
-----
-	--lores-width			Low-resolution image width <width>
-	--lores-height			Low-resolution image height <height>
-----
+_On Raspberry Pi 4 and earlier devices_, applications apply zero padding at the *most significant end*. In the unpacked format, a pixel from a 10-bit camera mode cannot exceed the value 1023.
 
-`libcamera` allows the possibility of delivering a second, lower-resolution image stream from the camera system to the application. This stream is available in both the preview and the video modes (i.e. `rpicam-hello` and the preview phase of `rpicam-still`, and `rpicam-vid`), and can be used, among other things, for image analysis. For stills captures, the low-resolution image stream is not available.
+_On Raspberry Pi 5 and later devices_, applications apply zero padding at the *least significant end*, so images use the full 16-bit dynamic range of the pixel depth delivered by the sensor.
 
-The low-resolution stream has the same field of view as the other image streams. If a different aspect ratio is specified for the low-resolution stream, then those images will be squashed so that the pixels are no longer square.
+==== `viewfinder-mode`
 
-During video recording (`rpicam-vid`), specifying a low-resolution stream will disable some extra colour-denoise processing that would normally occur.
+Identical to the `mode` option, but it applies to the data passed to the preview window. For more information, see the xref:camera_software.adoc#mode[`mode` documentation].
 
-Example: `rpicam-hello --lores-width 224 --lores-height 224`
+==== `lores-width` and `lores-height`
 
-Note that the low-resolution stream is not particularly useful unless used in conjunction with xref:camera_software.adoc#post-processing[image post-processing].
+Delivers a second, lower-resolution image stream from the camera, scaled down to the specified dimensions.
 
-----
-	--hflip				Read out with horizontal mirror
-	--vflip				Read out with vertical flip
-	--rotation			Use hflip and vflip to create the given rotation <angle>
-----
+Each accepts a single number defining the dimensions, in pixels, of the lower-resolution stream.
 
-These options affect the order of read-out from the sensor, and can be used to mirror the image horizontally, and/or flip it vertically. The `--rotation` option permits only the value 0 or 180, so note that 90 or 270 degree rotations are not supported. Moreover, `--rotation 180` is identical to `--hflip --vflip`.
+Available for preview and video modes. Not available for still captures. If you specify a aspect ratio different from the normal resolution stream, generates non-square pixels.
 
-Example: `rpicam-hello --vflip --hflip`
+For `rpicam-vid`, disables extra colour-denoise processing.
 
-----
-	--roi				Select a crop (region of interest) from the camera <x,y,w,h>
-----
 
-The `--roi` (region of interest) option allows the user to select a particular crop from the full field of view provided by the sensor. The coordinates are specified as a proportion of the available field of view, so `--roi 0,0,1,1` would have no effect at all.
+Useful for image analysis when combined with xref:camera_software.adoc#post-processing[image post-processing].
 
-The `--roi` parameter implements what is commonly referred to as "digital zoom".
+==== `hflip`
 
-Example `rpicam-hello --roi 0.25,0.25,0.5,0.5` will select exactly a quarter of the total number of pixels cropped from the centre of the image.
+Flips the image horizontally. Does not accept a value.
 
-----
-	--hdr				Run the camera in HDR mode <mode>
-----
+==== `vflip`
 
-The `--hdr` option causes the camera to be run in the HDR (High Dynamic Range) mode given by `<mode>`. On Pi 4 and earlier devices, this option only works for certain supported cameras, including the _Raspberry Pi Camera Module 3_, and on Pi 5 devices it can be used with all cameras. `<mode>` may take the following values:
+Flips the image vertically. Does not accept a value.
 
-* `off` - HDR is disabled. This is the default value if the `--hdr` option is omitted entirely.
-* `auto` - If the sensor supports HDR, then the on-sensor HDR mode is enabled. Otherwise, on Pi 5 devices, the Pi 5's on-chip HDR mode will be enabled. On a Pi 4 or earlier device, HDR will be disabled if the sensor does not support it. This mode will be applied if the `--hdr` option is supplied without a `<mode>` value.
-* `single-exp` - On a Pi 5, the on-chip HDR mode will be enabled, even if the sensor itself supports HDR. On earlier devices, HDR (even on-sensor HDR) will be disabled.
+==== `rotation`
 
-Example: `rpicam-still --hdr -o hdr.jpg` for capturing a still image, or `rpicam-vid --hdr -o hdr.h264` to capture a video.
+Rotates the image extracted from the sensor. Accepts only the values 0 or 180.
 
-When sensors support on-sensor HDR, use of this option may cause different camera modes to be available. This can be checked by comparing the output of `rpicam-hello --list-cameras` with `rpicam-hello --hdr sensor --list-cameras`.
+==== `roi`
 
-NOTE: For the _Raspberry Pi Camera Module 3_, the non-HDR modes include the usual full-resolution (12MP) mode as well as its half-resolution 2×2 binned (3MP) equivalent. In the case of HDR, only a single half-resolution (3MP) mode is available, and it is not possible to switch between HDR and non-HDR modes without restarting the camera application.
+Crops the image extracted from the full field of the sensor. Accepts four decimal values, _ranged 0 to 1_, in the following format: `<x>,<y>,<w>,h>`. Each of these values represents a percentage of the available width and heights as a decimal between 0 and 1.
 
-==== Camera control
+These values define the following proportions:
 
-The following options affect the image processing and control algorithms that affect the camera image quality.
+* `<x>`: X coordinates to skip before extracting an image
+* `<y>`: Y coordinates to skip before extracting an image
+* `<w>`: image width to extract
+* `<h>`: image height to extract
 
-----
-	--sharpness			Set image sharpness <number>
-----
+Defaults to `0,0,1,1` (starts at the first X coordinate and the first Y coordinate, uses 100% of the image width, uses 100% of the image height).
 
-The given `<number>` adjusts the image sharpness. The value zero means that no sharpening is applied, the value 1.0 uses the default amount of sharpening, and values greater than 1.0 use extra sharpening.
+Examples:
 
-Example: `rpicam-still -o test.jpg --sharpness 2.0`
+* `rpicam-hello --roi 0.25,0.25,0.5,0.5` selects exactly a half of the total number of pixels cropped from the centre of the image (skips the first 25% of X coordinates, skips the first 25% of Y coordinates, uses 50% of the total image width, uses 50% of the total image height).
+* `rpicam-hello --roi 0,0,0.25,0.25` selects exactly a quarter of the total number of pixels cropped from the top left of the image (skips the first 0% of X coordinates, skips the first 0% of Y coordinates, uses 25% of the image width, uses 25% of the image height).
 
-----
-	--contrast			Set image contrast <number>
-----
+==== `hdr`
 
-The given `<number>` adjusts the image contrast. The value zero produces minimum contrast, the value 1.0 uses the default amount of contrast, and values greater than 1.0 apply extra contrast.
+Default value: `off`
 
-Example: `rpicam-still -o test.jpg --contrast 1.5`
+Runs the camera in HDR mode. If passed without a value, assumes `auto`. Accepts one of the following values:
 
-----
-	--brightness			Set image brightness <number>
-----
+* `off` - Disables HDR.
+* `auto` - Enables HDR on supported devices. Uses the sensor's built-in HDR mode if available. If the sensor lacks a built-in HDR mode, uses on-board HDR mode, if available.
+* `single-exp` - Uses on-board HDR mode, if available, even if the sensor has a built-in HDR mode. If on-board HDR mode is not available, disables HDR.
 
-The given `<number>` adjusts the image brightness. The value -1.0 produces an (almost) black image, the value 1.0 produces an almost entirely white image and the value 0.0 produces standard image brightness.
+Raspberry Pi 5 and later devices have an on-board HDR mode.
 
-Note that the brightness parameter adds (or subtracts) an offset from all pixels in the output image. The `--ev` option is often more appropriate.
+To check for built-in HDR modes in a sensor, pass this option in addition to xref:camera_software.adoc#list-cameras[`list-cameras`].
 
-Example: `rpicam-still -o test.jpg --brightness 0.2`
+=== Camera control options
 
-----
-	--saturation			Set image colour saturation <number>
-----
+The following options control image processing and algorithms that affect camera image quality.
 
-The given `<number>` adjusts the colour saturation. The value zero produces a greyscale image, the value 1.0 uses the default amount of sautration, and values greater than 1.0 apply extra colour saturation.
+==== `sharpness`
 
-Example: `rpicam-still -o test.jpg --saturation 0.8`
+Sets image sharpness. Accepts a numeric value along the following spectrum:
 
-----
-	--ev				Set EV compensation <number>
-----
+* `0.0` applies no sharpening
+* values greater than `0.0`, but less than `1.0` apply less than the default amount of sharpening
+* `1.0` applies the default amount of sharpening
+* values greater than `1.0` apply extra sharpening
 
-Sets the EV compensation of the image in units of stops, in the range -10 to 10. Default is 0. It works by raising or lowering the target values the AEC/AGC algorithm is attempting to match.
+==== `contrast`
 
-Example: `rpicam-still -o test.jpg --ev 0.3`
+Specifies the image contrast. Accepts a numeric value along the following spectrum:
 
-----
-	--shutter			Set the exposure time in microseconds <number>
-----
+* `0.0` applies minimum contrast
+* values greater than `0.0`, but less than `1.0` apply less than the default amount of contrast
+* `1.0` applies the default amount of contrast
+* values greater than `1.0` apply extra contrast
 
-The shutter time is fixed to the given value. The gain will still be allowed to vary (unless that is also fixed).
 
-Note that this shutter time may not be achieved if the camera is running at a frame rate that is too fast to allow it. In this case the `--framerate` option may be used to lower the frame rate. See the xref:../accessories/camera.adoc#hardware-specification[maximum possible shutter times] for the official Raspberry Pi cameras.
+==== `brightness`
 
-Using values above these maximums will result in undefined behaviour. Cameras will also have different minimum shutter times, though in practice this is not important, as they are all low enough to expose bright scenes appropriately.
+Specifies the image brightness, added as an offset to all pixels in the output image. Accepts a numeric value along the following spectrum:
 
-Example: `rpicam-hello --shutter 30000`
+* `-1.0` applies minimum brightness (black)
+* `0.0` applies standard brightness
+* `1.0` applies maximum brightness (white)
 
-----
-	--gain				Sets the combined analogue and digital gains <number>
-	--analoggain			Synonym for --gain
-----
+For many use cases, prefer xref:camera_software.adoc#ev[`ev`].
 
-These two options are actually identical, and set the combined analogue and digital gains that will be used. The `--analoggain` form is permitted so as to be more compatible with the legacy `raspicam` applications. Where the requested gain can be supplied by the sensor driver, then only analogue gain will be used. Once the analogue gain reaches the maximum permitted value, then extra gain beyond this will be supplied as digital gain.
+==== `saturation`
 
-Note that there are circumstances where the digital gain can go above 1 even when the analogue gain limit is not exceeded. This can occur when:
+Specifies the image colour saturation. Accepts a numeric value along the following spectrum:
 
-* Either of the colour gains goes below 1.0, which will cause the digital gain to settle to 1.0/min(red_gain,blue_gain). This means that the total digital gain being applied to any colour channel does not go below 1.0, as this would cause discolouration artifacts.
-* The digital gain can vary slightly while the AEC/AGC changes, though this effect should be only transient.
+* `0.0` applies minimum saturation (grayscale)
+* values greater than `0.0`, but less than `1.0` apply less than the default amount of saturation
+* `1.0` applies the default amount of saturation
+* values greater than `1.0` apply extra saturation
 
-----
-	--metering			Set the metering mode <string>
-----
+==== `ev`
 
-Sets the metering mode of the AEC/AGC algorithm. This may one of the following values:
+Specifies the https://en.wikipedia.org/wiki/Exposure_value[exposure value (EV)] compensation of the image in stops. Accepts a numeric value that controls target values passed to the Automatic Exposure/Gain Control (AEC/AGC) processing algorithm along the following spectrum:
 
-* `centre` - centre weighted metering (which is the default)
+* `-10.0` applies minimum target values
+* `0.0` applies standard target values
+* `10.0` applies maximum target values
+
+==== `shutter`
+
+Specifies the exposure time, using the shutter, in _microseconds_. Gain can still vary when you use this option. If the camera runs at a framerate so fast it does not allow for the specified exposure time (for instance, a framerate of 1fps and an exposure time of 10000 microseconds), the sensor will use the maximum exposure time allowed by the framerate.
+
+For a list of minimum and maximum shutter times for official cameras, see the xref:../accessories/camera.adoc#hardware-specification[camera hardware documentation]. Values above the maximum result in undefined behaviour.
+
+==== `gain`
+
+Alias: `--analoggain`
+
+Sets the combined analogue and digital gain. When the sensor driver can provide the requested gain, only uses analogue gain. When analogue gain reaches the maximum value, applies digital gain. Accepts a numeric value.
+
+For a list of analogue gain limits, for official cameras, see the xref:../accessories/camera.adoc#hardware-specification[camera hardware documentation].
+
+Sometimes, digital gain can exceed 1.0 even when the analogue gain limit is not exceeded. This can occur in the following situations:
+
+* Either of the colour gains drops below 1.0, which will cause the digital gain to settle to 1.0/min(red_gain,blue_gain). This keeps the total digital gain applied to any colour channel above 1.0 to avoid discolouration artefacts.
+* Slight variances during Automatic Exposure/Gain Control (AEC/AGC) changes.
+
+==== `metering`
+
+Default value: `centre`
+
+Sets the metering mode of the Automatic Exposure/Gain Control (AEC/AGC) algorithm. Accepts the following values:
+
+* `centre` - centre weighted metering
 * `spot` - spot metering
 * `average` - average or whole frame metering
-* `custom` - custom metering mode which needs to be defined in the camera tuning file
+* `custom` - custom metering mode defined in the camera tuning file
 
-For more information on defining a custom metering mode, and also on how to adjust the region weights in the existing metering modes, please refer to the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
+For more information on defining a custom metering mode, and adjusting region weights in existing metering modes, see the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
 
-Example: `rpicam-still -o test.jpg --metering spot`
+==== `exposure`
 
-----
-	--exposure			Set the exposure profile <string>
-----
+Sets the exposure profile. Changing the exposure profile should not affect the image exposure. Instead, different modes adjust gain settings to achieve the same net result. Accepts the following values:
 
-The exposure profile may be either `normal`, `sport` or `long`. Changing the exposure profile should not affect the overall exposure of an image, but the `sport` mode will tend to prefer shorter exposure times and larger gains to achieve the same net result.
+* `sport`: short exposure, larger gains
+* `normal`: normal exposure, normal gains
+* `long`: long exposure, smaller gains
 
-Exposure profiles can be edited in the camera tuning file. Please refer to the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera] for more information.
+You can edit exposure profiles using tuning files. For more information, see the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
 
-Example: `rpicam-still -o test.jpg --exposure sport`
+==== `awb`
 
-----
-	--awb				Set the AWB mode <string>
-----
-
-This option sets the AWB algorithm into the named AWB mode. Valid modes are:
+Sets the Auto White Balance (AWB) mode. Accepts the following values:
 
 |===
-| Mode name | Colour temperature
+| Mode name | Colour temperature range
 
-| auto
+| `auto`
 | 2500K to 8000K
 
-| incandescent
+| `incandescent`
 | 2500K to 3000K
 
-| tungsten
+| `tungsten`
 | 3000K to 3500K
 
-| fluorescent
+| `fluorescent`
 | 4000K to 4700K
 
-| indoor
+| `indoor`
 | 3000K to 5000K
 
-| daylight
+| `daylight`
 | 5500K to 6500K
 
-| cloudy
+| `cloudy`
 | 7000K to 8500K
 
-| custom
-| A custom range would have to be defined in the camera tuning file.
+| `custom`
+| A custom range defined in the tuning file.
 |===
 
-There is no mode that turns the AWB off, instead fixed colour gains should be specified with the `--awbgains` option.
+These values are only approximate: values could vary according to the camera tuning.
 
-Note that these values are only approximate, the values could vary according to the camera tuning.
+No mode fully disables AWB. Instead, you can fix colour gains with xref:camera_software.adoc#awbgains[`awbgains`].
 
-For more information on AWB modes and how to define a custom one, please refer to the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
+For more information on AWB modes, including how to define a custom one, see the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
 
-Example: `rpicam-still -o test.jpg --awb tungsten`
+==== `awbgains`
 
-----
-	--awbgains				Set fixed colour gains <number,number>
-----
+Sets a fixed red and blue gain value to be used instead of an Auto White Balance (AWB) algorithm. Set non-zero values to disable AWB. Accepts comma-separated numeric input in the following format: `<red_gain>,<blue_gain>`
 
-This option accepts a red and a blue gain value and uses them directly in place of running the AWB algorithm. Setting non-zero values here has the effect of disabling the AWB calculation.
+==== `denoise`
 
-Example: `rpicam-still -o test.jpg --awbgains 1.5,2.0`
+Default value: `auto`
 
-----
-	--denoise				Set the denoising mode <string>
-----
+Sets the denoising mode. Accepts the following values:
 
-The following denoise modes are supported:
+* `auto`: Enables standard spatial denoise. Uses extra-fast colour denoise for video, and high-quality colour denoise for images. Enables no extra colour denoise in the preview window.
 
-* `auto` - This is the default. It always enables standard spatial denoise. It uses extra-fast colour denoise for video, and high-quality colour denoise for stills capture. Preview does not enable any extra colour denoise at all.
+* `off`: Disables spatial and colour denoise.
 
-* `off` - Disables spatial and colour denoise.
+* `cdn_off`: Disables colour denoise.
 
-* `cdn_off` - Disables colour denoise.
+* `cdn_fast`: Uses fast colour denoise.
 
-* `cdn_fast` - Uses fast colour denoise.
+* `cdn_hq`: Uses high-quality colour denoise. Not appropriate for video/viewfinder due to reduced throughput.
 
-* `cdn_hq` - Uses high-quality colour denoise. Not appropriate for video/viewfinder due to reduced throughput.
+Even fast colour denoise can lower framerates. High quality colour denoise _significantly_ lowers framerates.
 
-Note that even the use of fast colour denoise can result in lower framerates. The high quality colour denoise will normally result in much lower framerates.
+==== `tuning-file`
 
-Example: `rpicam-vid -o test.h264 --denoise cdn_off`
+Specifies the camera tuning file. The tuning file allows you to control many aspects of image processing, including the  Automatic Exposure/Gain Control (AEC/AGC), AWB, colour shading correction, colour processing, denoising and more. Accepts a tuning file path as input.
 
-----
-	--tuning-file				Specify the camera tuning to use <string>
-----
+For more information about tuning files, see xref:camera_software.adoc#tuning-files[Tuning Files].
 
-This identifies the name of the JSON format tuning file that should be used. The tuning file covers many aspects of the image processing, including the AEC/AGC, AWB, colour shading correction, colour processing, denoising and so forth.
+==== `autofocus-mode`
 
-For more information on the camera tuning file, please consult the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
+Default value: `default`
 
-Example: `rpicam-hello --tuning-file ~/my-camera-tuning.json`
+Specifies the autofocus mode. Accepts the following values:
 
-----
-	--autofocus-mode			Specify the autofocus mode <string>
-----
-
-Specifies the autofocus mode to use, which may be one of:
-
-* `default` (also the default if the option is omitted) - normally puts the camera into continuous autofocus mode, except if either `--lens-position` or `--autofocus-on-capture` is given, in which case manual mode is chosen instead
-* `manual` - do not move the lens at all, but it can be set with the `--lens-position` option
-* `auto` - does not move the lens except for an autofocus sweep when the camera starts (and for `rpicam-still`, just before capture if `--autofocus-on-capture` is given)
-* `continuous` - adjusts the lens position automatically as the scene changes
+* `default`: puts the camera into continuous autofocus mode unless xref:camera_software.adoc#lens-position[`lens-position`] or xref:camera_software.adoc#autofocus-on-capture[`autofocus-on-capture`] override the mode to manual
+* `manual`: does not move the lens at all unless manually configured with xref:camera_software.adoc#lens-position[`lens-position`]
+* `auto`: only moves the lens for an autofocus sweep when the camera starts or just before capture if xref:camera_software.adoc#autofocus-on-capture[`autofocus-on-capture`] is also used
+* `continuous`: adjusts the lens position automatically as the scene changes
 
 This option is only supported for certain camera modules.
 
-----
-	--autofocus-range			Specify the autofocus range <string>
-----
+==== `autofocus-range`
 
-Specifies the autofocus range, which may be one of
+Default value: `normal`
 
-* `normal` (the default) - focuses from reasonably close to infinity
-* `macro` - focuses only on close objects, including the closest focal distances supported by the camera
-* `full` - will focus on the entire range, from the very closest objects to infinity
+Specifies the autofocus range. Accepts the following values:
 
-This option is only supported for certain camera modules.
-
-----
-	--autofocus-speed			Specify the autofocus speed <string>
-----
-
-Specifies the autofocus speed, which may be one of:
-
-* `normal` (the default) - the lens position will change at the normal speed
-* `fast` - the lens position may change more quickly
+* `normal`: focuses from reasonably close to infinity
+* `macro`: focuses only on close objects, including the closest focal distances supported by the camera
+* `full`: focus on the entire range, from the very closest objects to infinity
 
 This option is only supported for certain camera modules.
 
-----
-	--autofocus-window			Specify the autofocus window
-----
+==== `autofocus-speed`
 
-Specifies the autofocus window, in the form `x,y,width,height` where the coordinates are given as a proportion of the entire image. For example, `--autofocus-window 0.25,0.25,0.5,0.5` would choose a window that is half the size of the output image in each dimension, and centred in the middle.
+Default value: `normal`
 
-The default value causes the algorithm to use the middle third of the output image in both dimensions (so 1/9 of the total image area).
+Specifies the autofocus speed. Accepts the following values:
+
+* `normal`: changes the lens position at normal speed
+* `fast`: changes the lens position quickly
 
 This option is only supported for certain camera modules.
 
-----
-	--lens-position				Set the lens to a given position <string>
-----
+==== `autofocus-range`
 
-Moves the lens to a fixed focal distance, normally given in dioptres (units of 1 / _distance in metres_). 
+Specifies the autofocus window within the full field of the sensor. Accepts four decimal values, _ranged 0 to 1_, in the following format: `<x>,<y>,<w>,h>`. Each of these values represents a percentage of the available width and heights as a decimal between 0 and 1.
 
-* 0.0 will move the lens to the "infinity" position
-* Any other `number`: move the lens to the 1 / `number` position, so the value 2 would focus at approximately 0.5m
-* `default` - move the lens to a default position which corresponds to the hyperfocal position of the lens
+These values define the following proportions:
 
-It should be noted that lenses can only be expected to be calibrated approximately, and there may well be variation between different camera modules.
+* `<x>`: X coordinates to skip before applying autofocus
+* `<y>`: Y coordinates to skip before applying autofocus
+* `<w>`: autofocus area width
+* `<h>`: autofocus area height
 
-----
-	--verbose,	-v		Set verbosity level.
-----
-
-Level 0 is no output, 1 is default, 2 is verbose.
-
-Example: `rpicam-vid -o test.h264 --verbose 2`
-
-
-==== Output file options
-
-----
-	--output,	-o			Output file name <string>
-----
-
-`--output` sets the name of the output file to which the output image or video is written. Besides regular file names, this may take the following special values:
-
-* `-` - write to stdout.
-* `udp://` - a string starting with this is taken as a network address for streaming.
-* `tcp://` - a string starting with this is taken as a network address for streaming.
-* a string containing a `%d` directive is taken as a file name where the format directive is replaced with a count that increments for each file that is opened. Standard C format directive modifiers are permitted.
+The default value uses the middle third of the output image in both dimensions (1/9 of the total image area).
 
 Examples:
 
-`rpicam-vid -t 100000 --segment 10000 -o chunk%04d.h264` records a 100 second file in 10 second segments, where each file is named `chunk.h264` but with the inclusion of an incrementing counter. Note that `%04d` writes the count to a string, but padded up to a total width of at least four characters by adding leading zeroes.
+* `rpicam-hello --autofocus-window 0.25,0.25,0.5,0.5` selects exactly half of the total number of pixels cropped from the centre of the image (skips the first 25% of X coordinates, skips the first 25% of Y coordinates, uses 50% of the total image width, uses 50% of the total image height).
+* `rpicam-hello --autofocus-window 0,0,0.25,0.25` selects exactly a quarter of the total number of pixels cropped from the top left of the image (skips the first 0% of X coordinates, skips the first 0% of Y coordinates, uses 25% of the image width, uses 25% of the image height).
 
-`rpicam-vid -t 0 --inline -o udp://192.168.1.13:5000` stream H.264 video to network address 192.168.1.13 on port 5000.
+This option is only supported for certain camera modules.
 
-----
-	--wrap					Wrap output file counter at <number>
-----
+==== `lens-position`
 
-When outputting to files with an incrementing counter (e.g. `%d` in the output file name), wrap the counter back to zero when it reaches this value.
+Default value: `default`
 
-Example: `rpicam-vid -t 0 --codec mjpeg --segment 1 --wrap 100 -o image%d.jpg`
+Moves the lens to a fixed focal distance, normally given in dioptres (units of 1 / _distance in metres_). Accepts the following spectrum of values:
 
-----
-	--flush					Flush output files immediately
-----
+* `0.0`: moves the lens to the "infinity" position
+* Any other `number`: moves the lens to the 1 / `number` position. For example, the value `2.0` would focus at approximately 0.5m
+* `default`: move the lens to a default position which corresponds to the hyperfocal position of the lens
 
-`--flush` causes output files to be flushed to disk as soon as every frame is written, rather than waiting for the system to do it.
+Lens calibration is imperfect, so different camera modules of the same model may vary.
 
-Example: `rpicam-vid -t 10000 --flush -o test.h264`
+==== `verbose`
 
-==== Post-processing options
+Alias: `-v`
 
-The `--post-process-file` option specifies a JSON file that configures the post-processing that the imaging pipeline applies to camera images before they reach the application. It can be thought of as a replacement for the legacy `raspicam` "image effects".
+Default value: `1`
 
-Post-processing is a large topic and admits the use of third-party software like OpenCV and TensorFlowLite to analyse and manipulate images. For more information, please refer to the section on xref:camera_software.adoc#post-processing[post-processing].
+Sets the verbosity level. Accepts the following values:
 
-Example: `rpicam-hello --post-process-file negate.json`
+* `0`: no output
+* `1`: normal output
+* `2`: verbose output
 
-This might apply a "negate" effect to an image, if the file `negate.json` is appropriately configured.
+=== Output file options
+
+==== `output`
+
+Alias: `-o`
+
+Sets the name of the file used to record images or video. Besides plaintext file names, accepts the following special values:
+
+* `-`: write to stdout.
+* `udp://` (prefix): a network address for UDP streaming.
+* `tcp://` (prefix): a network address for TCP streaming.
+* Include the `%d` directive in the file name to replace the directive with a count that increments for each opened file. This directive supports standard C format directive modifiers.
+
+Examples:
+
+* `rpicam-vid -t 100000 --segment 10000 -o chunk%04d.h264` records a 100 second file in 10 second segments, where each file includes an incrementing four-digit counter padded with leading zeros: e.g. `chunk0001.h264`, `chunk0002.h264`, etc.
+
+* `rpicam-vid -t 0 --inline -o udp://192.168.1.13:5000` streams H.264 video to network address 192.168.1.13 using UDP on port 5000.
+
+==== `wrap`
+
+Sets a maximum value for the counter used by the xref:camera_software.adoc#output[`output`] `%d` directive. The counter resets to zero after reaching this value. Accepts a numeric value.
+
+==== `flush`
+
+Flushes output files to disk as soon as a frame finishes writing, instead of waiting for the system to handle it. Does not accept a value.
+
+==== `post-process-file`
+
+Specifies a JSON file that configures the post-processing applied by the imaging pipeline. This applies to camera images _before_ they reach the application. This works similarly to the legacy `raspicam` "image effects". Accepts a file name path as input.
+
+Post-processing is a large topic and admits the use of third-party software like OpenCV and TensorFlowLite to analyse and manipulate images. For more information, see xref:camera_software.adoc#post-processing[post-processing].

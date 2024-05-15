@@ -346,7 +346,6 @@ Setup and hold times related to the automatic assertion and de-assertion of the 
 * The CS line will be asserted at least three core clock cycles before the msb of the first byte of the transfer.
 * The CS line will be de-asserted no earlier than one core clock cycle after the trailing edge of the final clock pulse.
 
-[[software]]
 === SPI software
 
 [[driver]]

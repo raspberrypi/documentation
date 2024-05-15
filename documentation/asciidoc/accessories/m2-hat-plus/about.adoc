@@ -53,7 +53,7 @@ If you see December 6, 2023 or a later date, proceed to the next step. If you se
 $ sudo raspi-config
 ----
 +
-Under `Advanced Options` > `Bootloader Version`, choose `Latest`.
+Under `Advanced Options` > `Bootloader Version`, choose `Latest`. Then, exit `raspi-config` with `Finish` or the *Escape* key.
 +
 Run the following command to update your firmware to the latest version:
 +
@@ -109,9 +109,10 @@ WARNING: Always disconnect your Raspberry Pi from power before connecting or dis
 
 To boot from an NVMe drive attached to the M.2 HAT+, complete the following steps:
 
-. xref:../computers/getting-started.adoc#raspberry-pi-imager[Format your drive using Raspberry Pi Imager]. You can do this from your Raspberry Pi if you already have an SD card with a Raspberry Pi OS image.
-. In a terminal, run `sudo raspi-config` to open the Raspberry Pi Configuration CLI.
-. Under `Advanced Options` > `Boot Order`, choose `NVMe/USB boot`.
+. xref:../computers/getting-started.adoc#raspberry-pi-imager[Format your NVMe drive using Raspberry Pi Imager]. You can do this from your Raspberry Pi if you already have an SD card with a Raspberry Pi OS image.
+. Boot your Raspberry Pi into Raspberry Pi OS using an SD card or USB drive to alter the boot order in the persistent on-board EEPROM configuration.
+. In a terminal on your Raspberry Pi, run `sudo raspi-config` to open the Raspberry Pi Configuration CLI.
+. Under `Advanced Options` > `Boot Order`, choose `NVMe/USB boot`. Then, exit `raspi-config` with `Finish` or the *Escape* key.
 . Reboot your Raspberry Pi with `sudo reboot`.
 
 For more information, see xref:../computers/raspberry-pi.adoc#nvme-ssd-boot[NVMe boot].
