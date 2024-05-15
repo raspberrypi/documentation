@@ -40,6 +40,55 @@ rpi-eeprom-digest -i pieeprom.upd -o pieeprom.sig
 rpi-eeprom-digest -i boot.img -o boot.sig -k myprivkey.pem
 ----
 
+=== Certificates
+
+For security the Network install feature uses HTTPS to download the image from the Raspberry Pi website. It uses our own CA root included in the bootloader so it can verify it's talking to the correct host.
+
+Since the 5th April 2024, 2712 devices have had the ability to add their own custom CA certificate to the eeprom to securely download images from their own web sites. To achieve this, the DER encoded certificate is added with the new `--cacertder` option in the `rpi-eeprom-config` tool.
+
+To ensure that the certificate is not modified, a hash of the certificate must be placed in the eeprom config settings and a key used to guard against tampering.
+
+----
+# Generate a DER encoded certificate
+openssl x509 -in your_ca_root_cert.pem -out cert.der -outform DER
+
+# generate the hash of the certificate
+sha256sum cert.der
+701bd97f67b0f5483a9734e6e5cf72f9a123407b346088638f597878563193fc  cert.der
+----
+
+Update boot.conf to include the hash of the certificate
+
+----
+[all]
+BOOT_UART=1
+POWER_OFF_ON_HALT=0
+BOOT_ORDER=0xf461
+
+[gpio8=0]
+BOOT_ORDER=0xf7
+NET_INSTALL_ENABLED=0
+HTTP_HOST=yourserver.org
+HTTP_PATH=path/to/files
+HTTP_CACERT_HASH=701bd97f67b0f5483a9734e6e5cf72f9a123407b346088638f597878563193fc
+----
+
+NOTE: If `HTTP_CACERT_HASH` is specified it assumes that you want to use HTTPS and changes to use port 443 for the download.
+
+----
+# Add everything to the eeprom
+../tools/rpi-eeprom-config -c boot.conf -p public_key.pem -o pieeprom.bin --cacertder cert.der pieeprom.original.bin
+../tools/rpi-eeprom-digest -k private_key.pem -i pieeprom.bin -o pieeprom.sig
+----
+
+On boot it should use HTTPS instead of HTTP.
+
+----
+Loading boot.img ...
+HTTP: GET request for https://yourserver.org:443/path/to/files/boot.sig
+HTTP: GET request for https://yourserver.org:443/path/to/files/boot.img
+----
+
 === Secure boot
 
 If secure boot is enabled, then the Raspberry Pi can only run code signed by the customer's private key. So if you want to use network install or HTTP boot mode with secure boot, you must sign `boot.img` and generate `boot.sig` with your own key and host these files somewhere for download. The public key in the EEPROM will be used to verify the image.
