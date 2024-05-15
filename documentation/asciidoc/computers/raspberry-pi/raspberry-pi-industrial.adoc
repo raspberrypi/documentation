@@ -161,9 +161,8 @@ If a customer MAC address is set to ff:ff:ff:ff:ff:ff, then it’s ignored.
 
 === Device-specific private key
 
-NOTE: This is not yet implemented for BCM2712 devices
-
-Eight rows of OTP (256 bits) are available for use as a device-specific private key. This is intended to support file-system encryption.
+Devices that use the Broadcom BCM2712 processor have 16 rows of OTP data (512 bits) to support filesystem encryption.
+Devices that do not use BCM2712 have 8 rows of OTP (256 bits) available for use as a device-specific private key.
 
 These rows can be programmed and read using similar `vcmailbox` commands to those used for managing customer OTP rows. If
 secure-boot / file-system encryption is not required, then the device private key rows can be used to store general-purpose information.
@@ -175,11 +174,14 @@ secure-boot / file-system encryption is not required, then the device private ke
 See https://gitlab.com/cryptsetup/cryptsetup[Cryptsetup] for more information about open-source disk encryption.
 
 ==== Key programming script `rpi-otp-private-key`
-The https://github.com/raspberrypi/usbboot/blob/master/tools/rpi-otp-private-key[`rpi-otp-private-key`] script wraps the device private key `vcmailbox` APIs in order to make it easier to read/write a key in the same format as OpenSSL.
+The https://github.com/raspberrypi/rpi-eeprom/blob/master/tools/rpi-otp-private-key[`rpi-otp-private-key`] script wraps the device private key `vcmailbox` APIs to make it easier to read and write a key in the OpenSSL format.
 
-Read the key as a 64-byte hex number:
+NOTE: The https://github.com/raspberrypi/usbboot[`usbboot`] repository contains all the tools you need, including https://github.com/raspberrypi/rpi-eeprom[`rpi-eeprom`] as a Git submodule.
+
+Read the 32-byte key as a 64-character hex number:
 [,bash]
 ----
+cd usbboot/tools
 rpi-otp-private-key
 ----
 
@@ -188,12 +190,16 @@ Example output:
 f8dbc7b0a4fcfb1d706e298ac9d0485c2226ce8df7f7596ac77337bd09fbe160
 ----
 
-Writes a 64-byte randomly generated number to the device private key. +
-WARNING: This operation cannot be undone. 
+Writes a 32-byte randomly generated number to the device private key.
+
+WARNING: This operation cannot be undone.
+
 [,bash]
 ----
 # rpi-otp-private-key -w $(openssl rand -hex 32)
 ----
+
+NOTE: To specify the number of OTP rows to use, pass `-l <word count>`. To specify a start location in the key store, pass `-o <word offset>`.
 
 ==== Mailbox API for reading/writing the key.
 Read all of the rows.
