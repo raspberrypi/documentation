@@ -2,6 +2,10 @@
 
 The command line options specified in this section apply only to video output.
 
+To pass one of the following options to an application, prefix the option name with `--`. If the option requires a value, pass the value immediately after the option name, separated by a single space. If the value contains a space, surround the value in quotes.
+
+Some options have shorthand aliases, for example `-h` instead of `--help`. Use these shorthand aliases instead of the full option name to save space and time at the expense of readability.
+
 ==== `quality`
 
 Alias: `-q`
@@ -81,7 +85,7 @@ Use this option with either xref:camera_software.adoc#keypress[`keypress`] or xr
 
 ==== `split`
 
-When toggling recording with xref:camera_software.adoc#keypress[`keypress`] or xref:camera_software.adoc#signal[`signal`], writes the video output from separate recording sessions into separate files. Does not accept a value.
+When toggling recording with xref:camera_software.adoc#keypress[`keypress`] or xref:camera_software.adoc#signal[`signal`], writes the video output from separate recording sessions into separate files. Does not accept a value. Unless combined with xref:camera_software.adoc#output[`output`] to specify unique names for each file, overwrites each time it writes a file.
 
 ==== `segment`
 

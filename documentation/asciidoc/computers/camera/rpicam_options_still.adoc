@@ -2,6 +2,10 @@
 
 The command line options specified in this section apply only to still image output.
 
+To pass one of the following options to an application, prefix the option name with `--`. If the option requires a value, pass the value immediately after the option name, separated by a single space. If the value contains a space, surround the value in quotes.
+
+Some options have shorthand aliases, for example `-h` instead of `--help`. Use these shorthand aliases instead of the full option name to save space and time at the expense of readability.
+
 ==== `quality`
 
 Alias: `-q`
@@ -12,7 +16,9 @@ Sets the JPEG quality. Accepts a value between `1` and `100`.
 
 ==== `exif`
 
-Saves extra EXIF tags in the JPEG output file. Only applies to JPEG output. Because of limitations in the `libexif` library, many tags are currently (incorrectly) formatted as ASCII and print a warning in the terminal. Necessary for certain tags related to camera settings. You can instead add tags unrelated to camera settings to the output JPEG after recording with https://exiftool.org/[ExifTool].
+Saves extra EXIF tags in the JPEG output file. Only applies to JPEG output. Because of limitations in the `libexif` library, many tags are currently (incorrectly) formatted as ASCII and print a warning in the terminal.
+
+This option is necessary to add certain EXIF tags related to camera settings. You can add tags unrelated to camera settings to the output JPEG after recording with https://exiftool.org/[ExifTool].
 
 Example: `rpicam-still -o test.jpg --exif IDO0.Artist=Someone`
 
@@ -54,11 +60,11 @@ Configures the restart marker interval for JPEG output. JPEG restart markers can
 
 Alias: `-k`
 
-Captures an image when the timeout expires or on press of the *Enter* key, whichever comes first. Press the `x` key, then *Enter* to exit without capturing. Does not accept a value.
+Captures an image when the xref:camera_software.adoc#timeout[`timeout`] expires or on press of the *Enter* key, whichever comes first. Press the `x` key, then *Enter* to exit without capturing. Does not accept a value.
 
 ==== `signal`
 
-Captures an image when the timeout expires or when `SIGUSR1` is received. Use `SIGUSR2` to exit without capturing. Does not accept a value.
+Captures an image when the xref:camera_software.adoc#timeout[`timeout`] expires or when `SIGUSR1` is received. Use `SIGUSR2` to exit without capturing. Does not accept a value.
 
 ==== `thumb`
 

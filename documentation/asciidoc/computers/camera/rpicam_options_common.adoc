@@ -16,7 +16,7 @@ Prints the full set of options, along with a brief synopsis of each option. Does
 
 Prints out version strings for `libcamera` and `rpicam-apps`. Does not accept a value.
 
-For example:
+Example output:
 
 ----
 rpicam-apps build: ca559f46a97a 27-09-2021 (14:10:24)
@@ -26,6 +26,14 @@ libcamera build: v0.0.0+3058-c29143f7
 ==== `list-cameras`
 
 Lists the detected cameras attached to your Raspberry Pi and their available sensor modes. Does not accept a value.
+
+Sensor mode identifiers have the following form:
+
+----
+S<Bayer order><Bit-depth>_<Optional packing> : <Resolution list>
+----
+
+Crop is specified in native sensor pixels (even in pixel binning mode) as `(<x>, <y>)/<Width>×<Height>`. `(x, y)` specifies the location of the crop window of size `width × height` in the sensor array.
 
 For example, the following output displays information about an `IMX219` sensor at index 0 and an `IMX477` sensor at index 1:
 
@@ -48,17 +56,10 @@ Available cameras
                              4056x3040 [10.00 fps - (0, 0)/4056x3040 crop]
 ----
 
-Sensor mode identifiers have the following form:
-
-----
-S<Bayer order><Bit-depth>_<Optional packing> : <Resolution list>
-----
-
-For the IMX219 in the above example:
+For the IMX219 sensor in the above example:
 
 * all modes have an `RGGB` Bayer ordering
 * all modes provide either 8-bit or 10-bit CSI2 packed readout at the listed resolutions
-* crop, specified as `(<x>, <y>)/<Width>×<Height>`, where `(x, y)` is the location of the crop window of size width × height in the sensor array. The units remain native sensor pixels, even if the sensor is used in binning or skipping mode.
 
 ==== `camera`
 
@@ -68,7 +69,7 @@ Selects the camera to use. Specify an index from the xref:camera_software.adoc#l
 
 Alias: `-c`
 
-Specify a file containing CLI options and values. Consider a file named `config.txt` that contains the following text, specifying options and values as key-value pairs, one option per line:
+Specify a file containing CLI options and values. Consider a file named `example_configuration.txt` that contains the following text, specifying options and values as key-value pairs, one option per line, long (non-alias) option names only:
 
 ----
 timeout=99000
@@ -81,7 +82,7 @@ You could then run the following command to specify a timeout of 99000 milliseco
 
 [source,console]
 ----
-$ rpicam-hello -c config.txt
+$ rpicam-hello --config example_configuration.txt
 ----
 
 ==== `timeout`
@@ -187,7 +188,7 @@ Each accepts a single number defining the dimensions, in pixels, of the image di
 
 ==== `rawfull`
 
-Forces the sensor to capture images in full resolution mode regardless of xref:camera_software.adoc#width-and-height[requested output resolution]. Because larger resolutions require more resources, can negatively impact framerate. When used with the HQ camera, each frame can take up to 18MB of space (compared with 5MB in 2×2 binned mode). Does not accept a value.
+Forces the sensor to capture images in full resolution mode regardless of xref:camera_software.adoc#width-and-height[requested output resolution]. Because larger resolutions require more resources, this can negatively impact framerate. When used with the HQ camera, each frame can take up to 18MB of space (compared with 5MB in 2×2 binned mode). Does not accept a value.
 
 For `rpicam-hello`, has no effect.
 
@@ -260,7 +261,7 @@ Rotates the image extracted from the sensor. Accepts only the values 0 or 180.
 
 ==== `roi`
 
-Crops the image extracted from the full field of the sensor. Accepts a proportion of the available field of view in the following format: `<x>,<y>,<w>,h>`
+Crops the image extracted from the full field of the sensor. Accepts four decimal values, _ranged 0 to 1_, in the following format: `<x>,<y>,<w>,h>`. Each of these values represents a percentage of the available width and heights as a decimal between 0 and 1.
 
 These values define the following proportions:
 
@@ -334,7 +335,7 @@ Specifies the image colour saturation. Accepts a numeric value along the followi
 
 ==== `ev`
 
-Specifies the https://en.wikipedia.org/wiki/Exposure_value[exposure value (EV)] compensation of the image in stops. Accepts a numeric value that controls target values passed to the Automatic Gain/Exposure Control (AEC/AGC) processing algorithm along the following spectrum:
+Specifies the https://en.wikipedia.org/wiki/Exposure_value[exposure value (EV)] compensation of the image in stops. Accepts a numeric value that controls target values passed to the Automatic Exposure/Gain Control (AEC/AGC) processing algorithm along the following spectrum:
 
 * `-10.0` applies minimum target values
 * `0.0` applies standard target values
@@ -357,13 +358,13 @@ For a list of analogue gain limits, for official cameras, see the xref:../access
 Sometimes, digital gain can exceed 1.0 even when the analogue gain limit is not exceeded. This can occur in the following situations:
 
 * Either of the colour gains drops below 1.0, which will cause the digital gain to settle to 1.0/min(red_gain,blue_gain). This keeps the total digital gain applied to any colour channel above 1.0 to avoid discolouration artefacts.
-* Slight variances during Automatic Gain/Exposure Control (AEC/AGC) changes.
+* Slight variances during Automatic Exposure/Gain Control (AEC/AGC) changes.
 
 ==== `metering`
 
 Default value: `centre`
 
-Sets the metering mode of the Automatic Gain/Exposure Control (AEC/AGC) algorithm. Accepts the following values:
+Sets the metering mode of the Automatic Exposure/Gain Control (AEC/AGC) algorithm. Accepts the following values:
 
 * `centre` - centre weighted metering
 * `spot` - spot metering
@@ -374,7 +375,7 @@ For more information on defining a custom metering mode, and adjusting region we
 
 ==== `exposure`
 
-Sets the exposure profile. Changing the exposure profile should not effect the image exposure. Instead, different modes adjust gain settings to achieve the same net result. Accepts the following values:
+Sets the exposure profile. Changing the exposure profile should not affect the image exposure. Instead, different modes adjust gain settings to achieve the same net result. Accepts the following values:
 
 * `sport`: short exposure, larger gains
 * `normal`: normal exposure, normal gains
@@ -384,7 +385,7 @@ You can edit exposure profiles using tuning files. For more information, see the
 
 ==== `awb`
 
-Sets the Auto White Balance (AWB) algorithm. Accepts the following values:
+Sets the Auto White Balance (AWB) mode. Accepts the following values:
 
 |===
 | Mode name | Colour temperature range
@@ -444,7 +445,7 @@ Even fast colour denoise can lower framerates. High quality colour denoise _sign
 
 ==== `tuning-file`
 
-Specifies the camera tuning file. The tuning file allows you to control many aspects of image processing, including the AEC/AGC, AWB, colour shading correction, colour processing, denoising and more. Accepts a tuning file path as input.
+Specifies the camera tuning file. The tuning file allows you to control many aspects of image processing, including the  Automatic Exposure/Gain Control (AEC/AGC), AWB, colour shading correction, colour processing, denoising and more. Accepts a tuning file path as input.
 
 For more information about tuning files, see xref:camera_software.adoc#tuning-files[Tuning Files].
 
@@ -486,9 +487,9 @@ This option is only supported for certain camera modules.
 
 ==== `autofocus-range`
 
-Specifies the autofocus window within the full field of the sensor. Accepts a proportion of the available field of view in the following format: `<x>,<y>,<w>,h>`
+Specifies the autofocus window within the full field of the sensor. Accepts four decimal values, _ranged 0 to 1_, in the following format: `<x>,<y>,<w>,h>`. Each of these values represents a percentage of the available width and heights as a decimal between 0 and 1.
 
-These value define the following proportions:
+These values define the following proportions:
 
 * `<x>`: X coordinates to skip before applying autofocus
 * `<y>`: Y coordinates to skip before applying autofocus
