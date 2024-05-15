@@ -5,8 +5,6 @@
 Raspberry Pi OS _Bookworm_ renamed the camera capture applications from ``libcamera-\*`` to ``rpicam-*``. Symbolic links currently allow users to keep using the old application names, but those links will eventually be deprecated. **Adopt the new application names as soon as possible.** Raspberry Pi OS versions prior to _Bookworm_ only provide access to older versions of the suite using the ``libcamera-*`` name prefix.
 ====
 
-=== Introduction
-
 `libcamera` is an open-source software library aimed at supporting camera systems directly from the Linux operating system on Arm processors. The proprietary code running on the Broadcom GPU, to which users have no access, is almost completely bypassed.
 
 `libcamera` presents a {cpp} API to applications. The library configures the camera, then allows applications to request image frames. These image buffers reside in system memory and can be passed directly to still image encoders (such as JPEG) or to video encoders (such as h.264). Ancillary functions such as encoding images or displaying them are beyond the purview of `libcamera` itself.
@@ -20,9 +18,11 @@ For this reason Raspberry Pi supplies a small set of example `rpicam-apps`. Thes
 * `rpicam-raw`: Captures raw (unprocessed Bayer) frames directly from the sensor.
 * `rpicam-detect`: Not built by default, but users can build it if they have TensorFlow Lite installed on their Raspberry Pi. Captures JPEG images when certain objects are detected.
 
-Users can create their own rpicam-based applications with custom functionality to suit their own requirements. The https://github.com/raspberrypi/rpicam-apps[`rpicam-apps` source code] is freely available under a BSD-2-Clause licence.
+Recent versions of Raspberry Pi OS include the five basic `rpicam-apps`, so you can record images and videos using a camera even on a fresh Raspberry Pi OS installation.
 
-==== More about `libcamera`
+Users can create their own `rpicam`-based applications with custom functionality to suit their own requirements. The https://github.com/raspberrypi/rpicam-apps[`rpicam-apps` source code] is freely available under a BSD-2-Clause licence.
+
+=== `libcamera`
 
 `libcamera` is an open source Linux community project. More information is available at the https://libcamera.org[`libcamera` website].
 
@@ -38,7 +38,7 @@ Raspberry Pi's implementation of `libcamera` supports the following cameras:
 ** IMX477 (HQ)
 ** IMX296 (GS)
 ** IMX708 (V3)
-* third-party sensors:
+* Third-party sensors:
 ** IMX290
 ** IMX327
 ** IMX378
@@ -46,6 +46,7 @@ Raspberry Pi's implementation of `libcamera` supports the following cameras:
 
 To extend support to a new sensor, https://git.linuxtv.org/libcamera.git/[contribute to `libcamera`].
 
-We supply a tuning file for each of these sensors. You can use this tuning file to change the processing performed by the Raspberry Pi hardware on the raw images received from the image sensor, including colour processing, noise suppression, and IPAs.
+We supply a xref:camera_software.adoc#tuning-files[tuning file] for each of these sensors. You can use this tuning file to change the processing performed by the Raspberry Pi hardware on the raw images received from the image sensor, including colour processing, noise suppression, and IPAs.
 
 For further information on `libcamera` for the Raspberry Pi, see the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Raspberry Pi Camera Algorithm and Tuning Guide].
+

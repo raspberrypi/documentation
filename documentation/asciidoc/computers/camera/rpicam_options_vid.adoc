@@ -60,6 +60,21 @@ Sets the encoder to use for video output. Accepts the following values:
 * `yuv420` - output uncompressed YUV420 frames.
 * `libav` - use the libav backend to encode audio and video (for more information, see xref:camera_software.adoc#libav-integration-with-rpicam-vid[`libav`])
 
+==== `save-pts`
+
+WARNING: Raspberry Pi 5 does not support the `save-pts` option. Use `libav` to automatically generate timestamps for container formats instead.
+
+Enables frame timestamp output, which allow you to convert the bitstream into a container format using a tool like `mkvmerge`. Accepts a plaintext file name for the timestamp output file.
+
+Example: `rpicam-vid -o test.h264 --save-pts timestamps.txt`
+
+You can then use the following command to generate an MKV container file from the bitstream and timestamps file:
+
+[source,console]
+----
+$ mkvmerge -o test.mkv --timecodes 0:timestamps.txt test.h264
+----
+
 ==== `keypress`
 
 Alias: `-k`

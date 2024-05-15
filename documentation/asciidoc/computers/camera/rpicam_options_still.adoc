@@ -56,6 +56,10 @@ Default value: `0`
 
 Configures the restart marker interval for JPEG output. JPEG restart markers can help limit the impact of corruption on JPEG images, and additionally enable the use of multi-threaded JPEG encoding and decoding. Accepts an integer value.
 
+==== `immediate`
+
+Captures the image immediately when the application runs.
+
 ==== `keypress`
 
 Alias: `-k`
