@@ -166,3 +166,58 @@ You can stream over UDP with a similar command:
 $ rpicam-vid -t 0 --codec libav --libav-format mpegts --libav-audio  -o "udp://<ip-addr>:<port>"
 ----
 
+==== Stream video over a network with GStreamer
+
+https://gstreamer.freedesktop.org/[GStreamer] is a Linux framework for reading, processing and playing multimedia files. This section shows how to use `rpicam-vid` to stream video over a network.
+
+This setup uses `rpicam-vid` to output an encoded h.264 bitstream to stdout. Then, we use the GStreamer `fdsrc` element to receive the bitstream, and extra GStreamer elements to send it over the network. On the server, run the following command to start the stream, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+
+[source,console]
+----
+$ rpicam-vid -t 0 -n --inline -o - | gst-launch-1.0 fdsrc fd=0 ! udpsink host=<ip-addr> port=<port>
+----
+
+On the client, run the following command to receive the stream, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+
+[source,console]
+----
+$ gst-launch-1.0 udpsrc address=<ip-addr> port=<port> ! h264parse ! v4l2h264dec ! autovideosink
+----
+
+TIP: To test this configuration, run the server and client commands in separate terminals on the same device, using `localhost` as the address.
+
+===== RTP
+
+To stream using RTP, run the following command on the server, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+
+[source,console]
+----
+$ rpicam-vid -t 0 -n --inline -o - | gst-launch-1.0 fdsrc fd=0 ! h264parse ! rtph264pay ! udpsink host=<ip-addr> port=<port>
+----
+
+To receive over RTP, run the following command on the client, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+
+[source,console]
+----
+$ gst-launch-1.0 udpsrc address=<ip-addr> port=<port> caps=application/x-rtp ! rtph264depay ! h264parse ! v4l2h264dec ! autovideosink
+----
+
+
+If the client is not a Raspberry Pi it may have different GStreamer elements available. On an x86 device running Linux, you might run the following command instead:
+
+[source,console]
+----
+$ gst-launch-1.0 udpsrc address=<ip-addr> port=<port> caps=application/x-rtp ! rtph264depay ! h264parse ! avdec_h264 ! autovideosink
+----
+
+===== `libcamerasrc` GStreamer element
+
+`libcamera` provides a `libcamerasrc` GStreamer element which can be used directly instead of `rpicam-vid`. To use this element, run the following command on the server, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+
+[source,console]
+----
+$ gst-launch-1.0 libcamerasrc ! capsfilter caps=video/x-raw,width=1280,height=720,format=NV12 ! v4l2convert ! v4l2h264enc extra-controls="controls,repeat_sequence_header=1" ! 'video/x-h264,level=(string)4.1' ! h264parse ! rtph264pay ! udpsink host=<ip-addr> port=<port>
+----
+
+and on the client we use the same playback pipeline as previously.
+

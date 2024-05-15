@@ -1,42 +1,42 @@
-=== Differences compared to `Raspicam` apps
+=== Differences between `rpicam` and `raspicam`
 
-Whilst the `rpicam-apps` attempt to emulate most features of the legacy `Raspicam` applications, there are some differences. 
+The `rpicam-apps` emulate most features of the legacy `raspicam` applications. However, users may notice the following differences:
 
-* The use of Boost `program_options` doesn't allow multi-character short versions of options, so where these were present they have had to be dropped. The long form options are named the same way, and any single-character short forms are preserved.
+* Boost `program_options` don't allow multi-character short versions of options, so where these were present they have had to be dropped. The long form options are named the same way, and any single-character short forms are preserved.
 
-* `rpicam-still` and `rpicam-jpeg` do not show the capture image in the preview window.
+* `rpicam-still` and `rpicam-jpeg` do not show the captured image in the preview window.
 
-* `libcamera` performs its own camera mode selection, so the `--mode` option is not supported. It deduces camera modes from the resolutions requested. There is still work ongoing in this area.
+* `rpicam-apps` removed the following `raspicam` features:
++
+** opacity (`--opacity`)
+** image effects (`--imxfx`)
+** colour effects (`--colfx`)
+** annotation (`--annotate`, `--annotateex`)
+** dynamic range compression, or DRC (`--drc`)
+** stereo (`--stereo`, `--decimate` and `--3dswap`)
+** image stabilisation (`--vstab`)
+** demo modes (`--demo`)
++
+xref:camera_software.adoc#post-processing[Post-processing] replaced many of these features.
 
-* The following features of the legacy apps are not supported, as the code has to run on the Arm processor now. A number of these effects are now provided by the xref:camera_software.adoc#post-processing[post-processing] mechanism.
-  - opacity (`--opacity`)
-  - image effects (`--imxfx`)
-  - colour effects (`--colfx`)
-  - annotation (`--annotate`, `--annotateex`)
-  - dynamic range compression, or DRC (`--drc`)
+* `rpicam-apps` removed xref:camera_software.adoc#rotation[`rotation`] option support for 90° and 270° rotations. You can still achieve these rotations with xref:camera_software.adoc#hflip[`hflip`] and xref:camera_software.adoc#vflip[`vflip`].
 
-* stereo (`--stereo`, `--decimate` and `--3dswap`). There is currently no support in `libcamera` for stereo.
+* `raspicam` conflated metering and exposure; `rpicam-apps` separates these options.
+* To disable Auto White Balance (AWB) in `rpicam-apps`, set a pair of colour gains with xref:camera_software.adoc#awbgains[`awbgains`] (e.g. `1.0,1.0`).
 
-* There is no image stabilisation (`--vstab`).
+* `rpicam-apps` cannot set Auto White Balance (AWB) into greyworld mode for NoIR camera modules. Instead, pass the xref:camera_software.adoc#tuning-file[`tuning-file`] option a NoIR-specific tuning file like `imx219_noir.json`.
 
-* There are no demo modes (`--demo`).
+* `rpicam-apps` does not provide explicit control of digital gain. Instead, the xref:camera_software.adoc#gain[`gain`] option sets it implicitly.
 
-* The transformations supported are those which do not involve a transposition. This means that rotations of 180° are among those permitted, but 90° and 270° rotations are not.
+* `rpicam-apps` removed the `--ISO` option. Instead, calculate the gain corresponding to the ISO value required. Vendors can provide mappings of gain to ISO.
 
-* There are some differences in the metering, exposure and AWB options. In particular the legacy apps conflate metering (by which we mean the "metering mode") and the exposure (by which we now mean the "exposure profile"). With regards to AWB, to turn it off you will need to set a pair of colour gains (e.g. `--awbgains 1.0,1.0`).
+* `rpicam-apps` does not support setting a flicker period.
 
-* `libcamera` has no mechanism to set the AWB into greyworld mode, which is useful for NoIR camera modules. However, tuning files are supplied which switch the AWB into the correct mode. You could use `rpicam-hello --tuning-file /usr/share/libcamera/ipa/rpi/vc4/imx219_noir.json` (for Pi 4 and earlier devices) or `rpicam-hello --tuning-file /usr/share/libcamera/ipa/rpi/pisp/imx219_noir.json` (Pi 5 and later devices).
+* `rpicam-still` does not support burst capture. Instead, consider using `rpicam-vid` in MJPEG mode with `--segment 1` to force each frame into a separate file.
 
-* There is support for setting the exposure time (`--shutter`) and analogue gain (`--analoggain` or just `--gain`). There is no explicit control of the digital gain; it will be imposed if the gain requested is larger than the analogue gain can deliver by itself.
-
-* `libcamera` has no understanding of ISO, so there is no `--ISO` option. Users should calculate the gain corresponding to the ISO value required (usually a manufacturer will tell you that, for example, a gain of 1 corresponds to an ISO of 40), and use the `--gain` parameter instead.
-
-* There is no support for setting the flicker period yet.
-
-* `rpicam-still` does not support burst capture. In fact, because the JPEG encoding is not multi-threaded and pipelined it would produce quite poor framerates. Instead, users are advised to consider using `rpicam-vid` in MJPEG mode instead (and `--segment 1` can be used to force each frame into a separate JPEG file).
-
-* `libcamera` uses open source drivers for all the image sensors, so the mechanism for enabling or disabling on-sensor defective pixel correction (DPC) is different. The imx477 driver on the Raspberry Pi HQ Camera Module enables on-sensor DPC by default. To disable it the user should, as root, enter:
-
+* `rpicam-apps` uses open source drivers for all image sensors, so the mechanism for enabling or disabling on-sensor Defective Pixel Correction (DPC) is different. The imx477 driver on the Raspberry Pi HQ Camera enables on-sensor DPC by default. To disable on-sensor DPC on the HQ Camera, run the following command:
++
+[source,console]
 ----
-echo 0 > /sys/module/imx477/parameters/dpc_enable
+$ sudo echo 0 > /sys/module/imx477/parameters/dpc_enable
 ----

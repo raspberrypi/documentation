@@ -1,6 +1,6 @@
 === Post-processing with OpenCV
 
-NOTE: These stages all require an OpenCV installation. You may need to xref:camera_software.adoc#building-libcamera-and-rpicam-apps[rebuild `rpicam-apps` with OpenCV support].
+NOTE: These stages all require an OpenCV installation. You may need to xref:camera_software.adoc#build-libcamera-and-rpicam-apps[rebuild `rpicam-apps` with OpenCV support].
 
 ==== `sobel_cv` stage
 

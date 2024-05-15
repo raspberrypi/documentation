@@ -16,6 +16,10 @@ include::camera/rpicam_detect.adoc[]
 
 include::camera/rpicam_configuration.adoc[]
 
+include::camera/rpicam_apps_multicam.adoc[]
+
+include::camera/rpicam_apps_packages.adoc[]
+
 include::camera/rpicam_options_common.adoc[]
 
 include::camera/rpicam_options_still.adoc[]
@@ -26,8 +30,6 @@ include::camera/rpicam_options_libav.adoc[]
 
 include::camera/rpicam_options_detect.adoc[]
 
-include::camera/libcamera_differences.adoc[]
-
 include::camera/rpicam_apps_post_processing.adoc[]
 
 include::camera/rpicam_apps_post_processing_opencv.adoc[]
@@ -36,28 +38,20 @@ include::camera/rpicam_apps_post_processing_tflite.adoc[]
 
 include::camera/rpicam_apps_post_processing_writing.adoc[]
 
-include::camera/rpicam_apps_multicam.adoc[]
-
-include::camera/rpicam_apps_packages.adoc[]
-
 include::camera/rpicam_apps_building.adoc[]
 
 include::camera/rpicam_apps_writing.adoc[]
 
-include::camera/libcamera_python.adoc[]
-
-include::camera/libcamera_3rd_party_tuning.adoc[]
-
-include::camera/libcamera_known_issues.adoc[]
-
-include::camera/rpicam_apps_getting_help.adoc[]
-
-include::camera/timelapse.adoc[]
-
-include::camera/gstreamer.adoc[]
-
 include::camera/qt.adoc[]
+
+include::camera/libcamera_python.adoc[]
 
 include::camera/v4l2.adoc[]
 
 include::camera/csi-2-usage.adoc[]
+
+include::camera/libcamera_differences.adoc[]
+
+include::camera/troubleshooting.adoc[]
+
+include::camera/rpicam_apps_getting_help.adoc[]

@@ -1,4 +1,4 @@
-=== Python bindings for `libcamera`
+=== Use `libcamera` from Python with Picamera2
 
 The https://github.com/raspberrypi/picamera2[Picamera2 library] is a `rpicam`-based replacement for Picamera, which was a Python interface to Raspberry Pi's legacy camera stack. Picamera2 presents an easy-to-use Python API.
 
@@ -6,31 +6,20 @@ Documentation about Picamera2 is available https://github.com/raspberrypi/picame
 
 ==== Installation
 
-On Raspberry Pi OS images, Picamera2 is now installed with all the GUI (Qt and OpenGL) dependencies. On Raspberry Pi OS Lite, it is installed without the GUI dependencies, although preview images can still be displayed using DRM/KMS. If  users wish to use the additional GUI features, they will need to run:
+Recent Raspberry Pi OS images include Picamera2 with all the GUI (Qt and OpenGL) dependencies. Recent Raspberry Pi OS Lite images include Picamera2 without the GUI dependencies, although preview images can still be displayed using DRM/KMS.
 
-----
-$ sudo apt install -y python3-pyqt5 python3-opengl
-----
+If your image did not include Picamera2, run the following command to install Picamera2 with all of the GUI dependencies:
 
-NOTE: No changes are required to Picamera2 itself.
-
-If your image did not come pre-installed with Picamera2, `apt` is the recommended way of installing and updating Picamera2.
-
-----
-$ sudo apt update
-$ sudo apt upgrade
-----
-
-Now you can install Picamera2 with all the GUI (Qt and OpenGL) dependencies using:
-
+[source,console]
 ----
 $ sudo apt install -y python3-picamera2
 ----
 
-If you do not want the GUI dependencies, use:
+If you don't want the GUI dependencies, you can run the following command to install Picamera2 without the GUI dependencies:
 
+[source,console]
 ----
 $ sudo apt install -y python3-picamera2 --no-install-recommends
 ----
 
-NOTE: If you have installed Picamera2 previously using `pip`, then you should also uninstall this, using the command `pip3 uninstall picamera2`. If Picamera2 is already installed, you can update it with `sudo apt install -y python3-picamera2`, or as part of a full system update (for example, `sudo apt upgrade`).
+NOTE: If you previously installed Picamera2 with `pip`, uninstall it with: `pip3 uninstall picamera2`.
