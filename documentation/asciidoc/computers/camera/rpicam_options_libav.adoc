@@ -44,7 +44,14 @@ Sets the audio sampling rate in Hz. Accepts numeric input. `0` uses the input sa
 
 ==== `audio-device`
 
-Select an ALSO input device for audio recording. For a list of available devices, run `pactl list | grep -A2 'Source \#' | grep 'Name: '`. You should see output similar to the following:
+Select an ALSO input device for audio recording. For a list of available devices, run the following command:
+
+[source,console]
+----
+$ pactl list | grep -A2 'Source #' | grep 'Name: '
+----
+
+You should see output similar to the following:
 
 ----
 Name: alsa_output.platform-bcm2835_audio.analog-stereo.monitor

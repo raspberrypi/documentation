@@ -70,7 +70,7 @@ image::images/negate.jpg[Image with negate]
 
 The `hdr` stage implements both high dynamic range (HDR) imaging and dynamic range compression (DRC). The terminology that we use here regards DRC as operating on single images, while HDR works by accumulating multiple under-exposed images and then performing the same algorithm as DRC.
 
-The `hdr` stage has no dependencies on third-party libraries, but (like some other stages) may execute faster on Raspberry Pi 3 or Raspberry Pi 4 devices running a 32-bit OS if ref:camera_software.adoc#building-libcamera-and-rpicam-apps[recompiled] using `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon`. The image accumulation stage will run faster and result in fewer frame drops, though the tonemapping part of the process is unchanged.
+The `hdr` stage has no dependencies on third-party libraries, but (like some other stages) may execute faster on Raspberry Pi 3 or Raspberry Pi 4 devices running a 32-bit OS if xref:camera_software.adoc#building-libcamera-and-rpicam-apps[recompiled] using `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon`. The image accumulation stage will run faster and result in fewer frame drops, though the tone mapping part of the process is unchanged.
 
 We take the image (which in the case of HDR may be multiple images accumulated together) and apply an edge-preserving smoothing filter to generate a low pass (LP) image. We define the high pass (HP) image to be the difference between the LP image and the original. Next we apply a global tonemap to the LP image and add back the HP image. This procedure, in contrast to applying the tonemap directly to the original image, prevents us from squashing and losing all the local contrast in the resulting image.
 
