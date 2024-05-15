@@ -1,3 +1,5 @@
+== `rpicam-apps` options reference
+
 === Common options
 
 The following options apply across all the `rpicam-apps` with similar or identical semantics, unless otherwise noted.

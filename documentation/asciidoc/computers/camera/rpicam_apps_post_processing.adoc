@@ -1,3 +1,5 @@
+== Advanced `rpicam-apps` usage
+
 === Post-processing
 
 `rpicam-apps` share a common post-processing framework. This allows them to pass the images received from the camera system through a number of custom image-processing and image-analysis routines. Each such routine is known as a _post-processing stage_. The description of exactly which stages should be run, and what configuration they may have, is supplied in a JSON file. Every stage, along with its source code, is supplied with a short example JSON file showing how to enable it.
@@ -42,13 +44,13 @@ Image analysis stages often prefer to work on reduced-resolution images. A ready
 
 The post-processing framework is open source, and Raspberry Pi welcomes the contribution of new and interesting stages from the community that we can host in the `rpicam-apps` repository. The stages that are currently available are documented below.
 
-NOTE: The `rpicam-apps` supplied with the operating system will be built without any optional 3rd party libraries (such as OpenCV or TensorFlow Lite), meaning that certain post-processing stages that rely on them will not be enabled. To use these stages, please follow the instructions for xref:camera_software.adoc#building-libcamera-and-rpicam-apps[building `rpicam-apps` for yourself].
+NOTE: The `rpicam-apps` supplied with the operating system will be built without any optional 3rd party libraries (such as OpenCV or TensorFlow Lite), meaning that certain post-processing stages that rely on them will not be enabled. To use these stages, please follow the instructions on xref:camera_software.adoc#build-libcamera-and-rpicam-apps[build `rpicam-apps` for yourself].
 
 ==== `negate` stage
 
 The `negate` stage requires no third-party libraries.
 
-On a Raspberry Pi 3 or a Raspberry Pi 4 running a 32-bit OS, it may execute more quickly if xref:camera_software.adoc#building-libcamera-and-rpicam-apps[recompiled] using `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon`. 
+On a Raspberry Pi 3 or a Raspberry Pi 4 running a 32-bit OS, it may execute more quickly if xref:camera_software.adoc#build-libcamera-and-rpicam-apps[recompiled] using `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon`.
 
 The `negate` stage has no user-configurable parameters.
 
@@ -70,7 +72,7 @@ image::images/negate.jpg[Image with negate]
 
 The `hdr` stage implements both high dynamic range (HDR) imaging and dynamic range compression (DRC). The terminology that we use here regards DRC as operating on single images, while HDR works by accumulating multiple under-exposed images and then performing the same algorithm as DRC.
 
-The `hdr` stage has no dependencies on third-party libraries, but (like some other stages) may execute faster on Raspberry Pi 3 or Raspberry Pi 4 devices running a 32-bit OS if xref:camera_software.adoc#building-libcamera-and-rpicam-apps[recompiled] using `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon`. The image accumulation stage will run faster and result in fewer frame drops, though the tone mapping part of the process is unchanged.
+The `hdr` stage has no dependencies on third-party libraries, but (like some other stages) may execute faster on Raspberry Pi 3 or Raspberry Pi 4 devices running a 32-bit OS if xref:camera_software.adoc#build-libcamera-and-rpicam-apps[recompiled] using `-DENABLE_COMPILE_FLAGS_FOR_TARGET=armv8-neon`. The image accumulation stage will run faster and result in fewer frame drops, though the tone mapping part of the process is unchanged.
 
 We take the image (which in the case of HDR may be multiple images accumulated together) and apply an edge-preserving smoothing filter to generate a low pass (LP) image. We define the high pass (HP) image to be the difference between the LP image and the original. Next we apply a global tonemap to the LP image and add back the HP image. This procedure, in contrast to applying the tonemap directly to the original image, prevents us from squashing and losing all the local contrast in the resulting image.
 

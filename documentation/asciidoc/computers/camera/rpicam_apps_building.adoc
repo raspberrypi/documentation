@@ -1,4 +1,4 @@
-=== Building `libcamera` and `rpicam-apps`
+=== Build `libcamera` and `rpicam-apps`
 
 Build `libcamera` and `rpicam-apps` for yourself for the following benefits:
 

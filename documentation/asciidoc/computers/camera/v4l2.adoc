@@ -8,37 +8,37 @@ V4L2 drivers provide a standard Linux interface for accessing camera and codec f
 |===
 | /dev/videoX | Default action
 
-| video0
+| `video0`
 | Unicam driver for the first CSI-2 receiver
 
-| video1
+| `video1`
 | Unicam driver for the second CSI-2 receiver
 
-| video10
+| `video10`
 | Video decode
 
-| video11
+| `video11`
 | Video encode
 
-| video12
-| Simple ISP. Can perform conversion and resizing between RGB/YUV formats in addition to Bayer to RGB/YUV conversion
+| `video12`
+| Simple ISP, can perform conversion and resizing between RGB/YUV formats in addition to Bayer to RGB/YUV conversion
 
-| video13
+| `video13`
 | Input to fully programmable ISP
 
-| video14
+| `video14`
 | High resolution output from fully programmable ISP
 
-| video15
+| `video15`
 | Low result output from fully programmable ISP
 
-| video16
+| `video16`
 | Image statistics from fully programmable ISP
 
-| video19
+| `video19`
 | HEVC decode
 |===
 
-=== Using the driver
+=== Use the V4L2 drivers
 
 For more information on how to use the V4L2 drivers, see the https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/v4l2.html[V4L2 documentation].
