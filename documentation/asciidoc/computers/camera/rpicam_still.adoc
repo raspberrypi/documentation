@@ -1,39 +1,44 @@
 === `rpicam-still`
 
-`rpicam-still` is very similar to `rpicam-jpeg` but supports more of the legacy `raspistill` options. As before, a single image can be captured with
+`rpicam-still`, like `rpicam-jpeg`, helps you capture images on Raspberry Pi devices.
+Unlike `rpicam-jpeg`, `rpicam-still` supports many options provided in the legacy `raspistill` application.
 
-[,bash]
+To capture a full resolution JPEG image and save it to a file named `test.jpg`, run the following command:
+
+[source,console]
 ----
-rpicam-still -o test.jpg
+$ rpicam-still --output test.jpg
 ----
 
 ==== Encoders
 
-`rpicam-still` allows files to be saved in a number of different formats. It supports both `png` and `bmp` encoding. It also allows files to be saved as a binary dump of RGB or YUV pixels with no encoding or file format at all. In these latter cases the application reading the files will have to understand the pixel arrangement for itself.
+`rpicam-still` can save images in multiple formats, including `png`, `bmp`, and both RGB and YUV binary pixel dumps. To read these binary dumps, any application reading the files must understand the pixel arrangement.
 
-[,bash]
+Use the xref:camera_software.adoc#encoding[`encoding`] option to specify an output format. The file name passed to xref:camera_software.adoc#output[`output`] has no impact on the output file type.
+
+To capture a full resolution PNG image and save it to a file named `test.png`, run the following command:
+
+[source,console]
 ----
-rpicam-still -e png -o test.png
-rpicam-still -e bmp -o test.bmp
-rpicam-still -e rgb -o test.data
-rpicam-still -e yuv420 -o test.data
-----
-Note that the format in which the image is saved depends on the `-e` (equivalently `--encoding`) option and is _not_ selected automatically based on the output file name.
-
-==== Raw Image Capture
-
-_Raw_ images are the images produced directly by the image sensor, before any processing is applied to them either by the ISP (Image Signal Processor) or any of the CPU cores. For colour image sensors these are usually _Bayer_ format images. Note that _raw_ images are quite different from the processed but unencoded RGB or YUV images that we saw earlier.
-
-To capture a raw image use
-
-[,bash]
-----
-rpicam-still -r -o test.jpg
+$ rpicam-still --encoding png --output test.png
 ----
 
-Here, the `-r` option (also `--raw`) indicates to capture the raw image as well as the JPEG. In fact, the raw image is the exact image from which the JPEG was produced. Raw images are saved in DNG (Adobe Digital Negative) format and are compatible with many standard applications, such as _dcraw_ or _RawTherapee_. The raw image is saved to a file with the same name but the extension `.dng`, thus `test.dng` in this case.
+For more information about specifying an image format, see the xref:camera_software.adoc#encoding[`encoding` option reference].
 
-These DNG files contain metadata pertaining to the image capture, including black levels, white balance information and the colour matrix used by the ISP to produce the JPEG. This makes these DNG files much more convenient for later "by hand" raw conversion with some of the aforementioned tools. Using `exiftool` shows all the metadata encoded into the DNG file:
+==== Capture raw images
+
+Raw images are the images produced directly by the image sensor, before any processing is applied to them either by the Image Signal Processor (ISP) or CPU. Colour image sensors usually use the Bayer format. Use the xref:camera_software.adoc#raw[`raw`] option to capture raw images.
+
+To capture an image, save it to a file named `test.jpg`, and also save a raw version of the image to a file named `test.dng`, run the following command:
+
+[source,console]
+----
+$ rpicam-still --raw --output test.jpg
+----
+
+`rpicam-still` saves raw images in the DNG (Adobe Digital Negative) format. To determine the filename of the raw images, `rpicam-still` uses the same name as the output file, with the extension changed to `.dng`. To work with DNG images, use an application like https://en.wikipedia.org/wiki/Dcraw[Dcraw] or https://en.wikipedia.org/wiki/RawTherapee[RawTherapee].
+
+DNG files contain metadata about the image capture, including black levels, white balance information and the colour matrix used by the ISP to produce the JPEG. Use https://exiftool.org/[ExifTool] to view DNG metadata. The following output shows typical metadata stored in a raw image captured by a Raspberry Pi using the HQ camera:
 
 ----
 File Name                       : test.dng
@@ -79,14 +84,21 @@ Image Size                      : 4056x3040
 Megapixels                      : 12.3
 Shutter Speed                   : 1/20
 ----
-We note that there is only a single calibrated illuminant (the one determined by the AWB algorithm even though it gets labelled always as "D65"), and that dividing the ISO number by 100 gives the analogue gain that was being used.
 
-==== Very long exposures
+To find the analogue gain, divide the ISO number by 100.
+The Auto White Balance (AWB) algorithm determines a single calibrated illuminant, which is always labelled `D65`.
 
-To capture very long exposure images, we need to be careful to disable the AEC/AGC and AWB because these algorithms will otherwise force the user to wait for a number of frames while they converge. The way to disable them is to supply explicit values. Additionally, the entire preview phase of the capture can be skipped with the `--immediate` option.
+==== Capture long exposures
 
-So to perform a 100 second exposure capture, use
+To capture very long exposure images, disable the Automatic Exposure/Gain Control (AEC/AGC) and Auto White Balance (AWB). These algorithms will otherwise force the user to wait for a number of frames while they converge.
 
-`rpicam-still -o long_exposure.jpg --shutter 100000000 --gain 1 --awbgains 1,1 --immediate`
+To disable these algorithms, supply explicit values for gain and AWB. Because long exposures take plenty of time already, it often makes sense to skip the preview phase entirely with the xref:camera_software.adoc#immediate[`immediate`] option.
 
-For reference, the maximum exposure times of the three official Raspberry Pi cameras can be found in xref:../accessories/camera.adoc#hardware-specification[this table].
+To perform a 100 second exposure capture, run the following command:
+
+[source,console]
+----
+$ rpicam-still -o long_exposure.jpg --shutter 100000000 --gain 1 --awbgains 1,1 --immediate
+----
+
+To find the maximum exposure times of official Raspberry Pi cameras, see xref:../accessories/camera.adoc#hardware-specification[the camera hardware specification].

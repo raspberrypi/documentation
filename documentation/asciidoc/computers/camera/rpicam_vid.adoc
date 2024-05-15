@@ -25,24 +25,6 @@ On Raspberry Pi 5, you can output to the MP4 container format directly by specif
 $ rpicam-vid  -t 10s -o test.mp4
 ----
 
-==== Convert bitstream into container format
-
-Use the `--save-pts` flag to output frame timestamps, which allow you to convert the bitstream into a container format using a tool like `mkvmerge`:
-
-[source,console]
-----
-$ rpicam-vid -o test.h264 --save-pts timestamps.txt
-----
-
-TIP: Raspberry Pi 5 does not support timestamp generation using the `--save-pts` flag. The `libav` codec framework automatically generates timestamps and encodes them into the output when you use a container format.
-
-You can then use the following command to generate an MKV container file from the bitstream and timestamps:
-
-[source,console]
-----
-$ mkvmerge -o test.mkv --timecodes 0:timestamps.txt test.h264
-----
-
 ==== Encoders
 
 `rpicam-vid` supports motion JPEG as well as both uncompressed and unformatted YUV420:
@@ -57,16 +39,16 @@ $ rpicam-vid -t 10000 --codec mjpeg -o test.mjpeg
 $ rpicam-vid -t 10000 --codec yuv420 -o test.data
 ----
 
-The `--codec` parameter determines the output format, not the extension of the output file.
+The xref:camera_software.adoc#codec[`codec`] option determines the output format, not the extension of the output file.
 
-The `--segment` parameter breaks output files up into chunks of the segment size (given in milliseconds). This is handy for breaking a motion JPEG stream up into individual JPEG files by specifying very short (1 millisecond) segments. For example, the following command combines segments of 1 millisecond with a counter in the output file name to generate a new filename for each segment:
+The xref:camera_software.adoc#segment[`segment`] option breaks output files up into chunks of the segment size (given in milliseconds). This is handy for breaking a motion JPEG stream up into individual JPEG files by specifying very short (1 millisecond) segments. For example, the following command combines segments of 1 millisecond with a counter in the output file name to generate a new filename for each segment:
 
 [source,console]
 ----
 $ rpicam-vid -t 10000 --codec mjpeg --segment 1 -o test%05d.jpeg
 ----
 
-==== Network streaming
+==== Stream video over a network
 
 This section describes native streaming from `rpicam-vid`. You can also use the xref:camera_software.adoc#libav-integration-with-rpicam-vid[`libav`] backend for network streaming.
 
@@ -139,15 +121,17 @@ Alternatively, use the following command on a client to stream using VLC:
 $ vlc rtsp://<ip-addr-of-server>:8554/stream1
 ----
 
-To suppress the preview window on the server, use the `--nopreview` (`-n`) flag. You can also use the `--inline` flag to force stream header information into every intra frame, which helps clients understand the stream if they miss the beginning.
+To suppress the preview window on the server, use xref:camera_software.adoc#nopreview[`nopreview`].
 
-==== High framerate capture
+Use the xref:camera_software.adoc#inline[`inline`] flag to force stream header information into every intra frame, which helps clients understand the stream if they miss the beginning.
+
+==== Capture high framerate video
 
 To minimise frame drops for high framerate (> 60fps) video, try the following configuration tweaks:
 
 * Set the https://en.wikipedia.org/wiki/Advanced_Video_Coding#Levels[H.264 target level] to 4.2 with `--level 4.2`.
-* Turn off software colour denoise processing with the `--denoise cdn_off` argument.
-* Disable the display window with the `--nopreview` (`-n`) flag to free up some additional CPU cycles.
+* Disable software colour denoise processing by setting the xref:camera_software.adoc#denoise[`denoise`] option to `cdn_off`.
+* Disable the display window with xref:camera_software.adoc#nopreview[`nopreview`] to free up some additional CPU cycles.
 * Set `force_turbo=1` in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] to ensure that the CPU clock does not throttle during video capture. For more information, see xref:config_txt.adoc#force_turbo[the `force_turbo` documentation].
 * Adjust the ISP output resolution with `--width 1280 --height 720` or something even lower to achieve your framerate target.
 * On Raspberry Pi 4, you can overclock the GPU to improve performance by adding `gpu_freq=550` or higher in `/boot/firmware/config.txt`.  See xref:config_txt.adoc#overclocking[the overclocking documentation] for further details.
@@ -158,3 +142,27 @@ The following command demonstrates how you might achieve 1280×720 120fps video:
 ----
 $ rpicam-vid --level 4.2 --framerate 120 --width 1280 --height 720 --save-pts timestamp.pts -o video.264 -t 10000 --denoise cdn_off -n
 ----
+
+==== `libav` integration with `rpicam-vid`
+
+`rpicam-vid` can use the `ffmpeg`/`libav` codec backend to encode audio and video streams. You can either save these streams to a file or stream them over the network. `libav` uses hardware H.264 video encoding when present.
+
+To enable the `libav` backend, pass the xref:camera_software.adoc#codec[`codec`] option the value `libav`.
+
+===== Stream video over a network with `libav`
+
+You can use the `libav` backend as a network streaming source for audio/video.
+To stream video over TCP using a Raspberry Pi as a server, use the following command, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+
+[source,console]
+----
+$ rpicam-vid -t 0 --codec libav --libav-format mpegts --libav-audio -o "tcp://<ip-addr>:<port>?listen=1"
+----
+
+You can stream over UDP with a similar command:
+
+[source,console]
+----
+$ rpicam-vid -t 0 --codec libav --libav-format mpegts --libav-audio  -o "udp://<ip-addr>:<port>"
+----
+

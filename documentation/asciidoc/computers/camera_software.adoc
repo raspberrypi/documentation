@@ -2,8 +2,6 @@ include::camera/camera_usage.adoc[]
 
 include::camera/rpicam_apps_intro.adoc[]
 
-include::camera/rpicam_apps_getting_started.adoc[]
-
 include::camera/rpicam_hello.adoc[]
 
 include::camera/rpicam_jpeg.adoc[]
@@ -12,17 +10,21 @@ include::camera/rpicam_still.adoc[]
 
 include::camera/rpicam_vid.adoc[]
 
-include::camera/rpicam_apps_libav.adoc[]
-
 include::camera/rpicam_raw.adoc[]
 
 include::camera/rpicam_detect.adoc[]
+
+include::camera/rpicam_configuration.adoc[]
 
 include::camera/rpicam_options_common.adoc[]
 
 include::camera/rpicam_options_still.adoc[]
 
 include::camera/rpicam_options_vid.adoc[]
+
+include::camera/rpicam_options_libav.adoc[]
+
+include::camera/rpicam_options_detect.adoc[]
 
 include::camera/libcamera_differences.adoc[]
 
