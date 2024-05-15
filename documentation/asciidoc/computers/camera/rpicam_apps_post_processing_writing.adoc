@@ -1,4 +1,4 @@
-=== Writing your own post-processing stages
+=== Write your own post-processing stages
 
 The `rpicam-apps` post-processing framework is not only very flexible, but is meant to make it easy for users to create their own custom post-processing stages. It is easy to include algorithms and routines that are already available both in OpenCV and TensorFlow Lite.
 

@@ -102,3 +102,100 @@ $ rpicam-still -o long_exposure.jpg --shutter 100000000 --gain 1 --awbgains 1,1 
 ----
 
 To find the maximum exposure times of official Raspberry Pi cameras, see xref:../accessories/camera.adoc#hardware-specification[the camera hardware specification].
+
+==== Create a time lapse video
+
+To create a time lapse video, capture a still image at a regular interval, such as once a minute, then use an application to stitch the pictures together into a video.
+
+===== via `rpicam-still` time lapse mode
+
+To use the built-in time lapse mode of `rpicam-still`, use the xref:camera_software.adoc#timelapse[`timelapse`] option. This option accepts a value representing the period of time you want your Raspberry Pi to wait between captures, in milliseconds.
+
+First, create a directory where you can store your time lapse photos:
+
+[source,console]
+----
+$ mkdir timelapse
+----
+
+Run the following command to create a time lapse over 30 seconds, recording a photo every two seconds, saving output into `image0001.jpg` through `image0014.jpg`:
+
+[source,console]
+----
+$ rpicam-still --timeout 30000 --timelapse 2000 -o timelapse/image%04d.jpg
+----
+
+===== via `cron`
+
+You can also automate time lapses with `cron`. First, create the script, named `timelapse.sh` containing the following commands. Replace the `<username>` placeholder with the name of your user account on your Raspberry Pi:
+
+----
+#!/bin/bash
+DATE=$(date +"%Y-%m-%d_%H%M")
+rpicam-still -o /home/<username>/timelapse/$DATE.jpg
+----
+
+Then, make the script executable:
+
+[source,console]
+----
+$ chmod +x timelapse.sh
+----
+
+Create the `timelapse` directory into which you'll save time lapse pictures:
+
+[source,console]
+----
+$ mkdir timelapse
+----
+
+Open your crontab for editing:
+
+[source,console]
+----
+$ crontab -e
+----
+
+Once you have the file open in an editor, add the following line to schedule an image capture every minute, replacing the `<username>` placeholder with the username of your primary user account:
+
+----
+* * * * * /home/<username>/timelapse.sh 2>&1
+----
+
+Save and exit, and you should see this message:
+
+----
+crontab: installing new crontab
+----
+
+TIP: To stop recording images for the time lapse, remove the above line from your crontab.
+
+===== Stitch images together
+
+Once you have a series of time lapse photos, you probably want to combine them into a video. Use `ffmpeg` to do this on a Raspberry Pi.
+
+First, install `ffmpeg`:
+
+[source,console]
+----
+$ sudo apt install ffmpeg
+----
+
+Run the following command in the `crontimelapse` directory to convert your JPEG files into an mp4 video:
+
+[source,console]
+----
+$ ffmpeg -r 10 -f image2 -pattern_type glob -i 'timelapse/*.jpg' -s 1280x720 -vcodec libx264 timelapse.mp4
+----
+
+The command above uses the following parameters:
+
+* `-r 10`: sets the frame rate (Hz value) to ten frames per second in the output video
+* `-f image2`: sets `ffmpeg` to read from a list of image files specified by a pattern
+* `-pattern_type glob`: use wildcard patterns (globbing) to interpret filename input with `-i`
+* `-i 'timelapse/*.jpg'`: specifies input files to match JPG files in the `timelapse` directory
+* `-s 1280x720`: scales to 720p
+* `-vcodec libx264` use the software x264 encoder.
+* `timelapse.mp4` The name of the output video file.
+
+For more information about `ffmpeg` options, run `ffmpeg --help` in a terminal.
