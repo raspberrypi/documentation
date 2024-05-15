@@ -133,34 +133,34 @@ Sets the supplied string as the title of the preview window when running in a de
 |===
 | Directive | Substitution
 
-| %frame
+| `%frame`
 | Sequence number of the frame.
 
-| %fps
+| `%fps`
 | Instantaneous frame rate.
 
-| %exp
+| `%exp`
 | Shutter speed used to capture the image, in microseconds.
 
-| %ag
+| `%ag`
 | Analogue gain applied to the image in the sensor.
 
-| %dg
+| `%dg`
 | Digital gain applied to the image by the ISP.
 
-| %rg
+| `%rg`
 | Gain applied to the red component of each pixel.
 
-| %bg
+| `%bg`
 | Gain applied to the blue component of each pixel.
 
-| %focus
+| `%focus`
 | Focus metric for the image, where a larger value implies a sharper image.
 
-| %lp
+| `%lp`
 | Current lens position in dioptres (1 / distance in metres).
 
-| %afstate
+| `%afstate`
 | Autofocus algorithm state (`idle`, `scanning`, `focused` or `failed`).
 |===
 
@@ -351,7 +351,7 @@ For a list of minimum and maximum shutter times for official cameras, see the xr
 
 Alias: `--analoggain`
 
-Sets the combined analogue and digital gain. When the sensor driver can provide the requested gain, only uses analogue gain. When analogue gain reaches the maximum value, applies digital gain. Accepts a numeric value.
+Sets the combined analogue and digital gain. When the sensor driver can provide the requested gain, only uses analogue gain. When analogue gain reaches the maximum value, the ISP applies digital gain. Accepts a numeric value.
 
 For a list of analogue gain limits, for official cameras, see the xref:../accessories/camera.adoc#hardware-specification[camera hardware documentation].
 
@@ -445,7 +445,7 @@ Even fast colour denoise can lower framerates. High quality colour denoise _sign
 
 ==== `tuning-file`
 
-Specifies the camera tuning file. The tuning file allows you to control many aspects of image processing, including the  Automatic Exposure/Gain Control (AEC/AGC), AWB, colour shading correction, colour processing, denoising and more. Accepts a tuning file path as input.
+Specifies the camera tuning file. The tuning file allows you to control many aspects of image processing, including the  Automatic Exposure/Gain Control (AEC/AGC), Auto White Balance (AWB), colour shading correction, colour processing, denoising and more. Accepts a tuning file path as input.
 
 For more information about tuning files, see xref:camera_software.adoc#tuning-files[Tuning Files].
 

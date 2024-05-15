@@ -178,7 +178,7 @@ $ sudo meson install -C build
 
 Open a new terminal window after installation to ensure that you use the new binary.
 
-Finally, follow the `dtoverlay` and display driver instructions in the  xref:camera_software.adoc#getting-started[Getting Started section].
+Finally, follow the `dtoverlay` and display driver instructions in the  xref:camera_software.adoc#configuration[Configuration section].
 
 ==== `rpicam-apps` meson flag reference
 

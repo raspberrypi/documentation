@@ -1,14 +1,4 @@
-=== Getting started
-
-Recent versions of Raspberry Pi OS include the five basic `rpicam-apps`.
-This means that you can run the following command on any Raspberry Pi with a camera connected to open a camera preview window for five seconds:
-
-[source,console]
-----
-$ rpicam-hello
-----
-
-==== Configuration
+=== Configuration
 
 Most use cases work automatically with no need to alter the camera configuration. However, some common use cases do require configuration tweaks, including:
 
@@ -48,7 +38,23 @@ Raspberry Pi OS recognises the following overlays in `/boot/firmware/config.txt`
 
 To use one of these overlays, you must disable automatic camera detection. To disable automatic detection, set `camera_auto_detect=0` in `/boot/firmware/config.txt`. If `config.txt` already contains a line assigning an `camera_auto_detect` value, change the value to `0`. Reboot your Raspberry Pi with `sudo reboot` to load your changes.
 
-=== Troubleshooting
+[[tuning-files]]
+==== Tweak camera behaviour with tuning files
+
+Raspberry Pi's `libcamera` implementation includes a **tuning file** for each camera. This file controls algorithms and hardware to produce the best image quality. `libcamera` can only determine the sensor in use, not the module. As a result, some modules require a tuning file override. Use the xref:camera_software.adoc#tuning-file[`tuning-file`] option to specify an override. You can also copy and alter existing tuning files to customise camera behaviour.
+
+For example, the no-IR-filter (NoIR) versions of sensors use Auto White Balance (AWB) settings different from the standard versions. On a Raspberry Pi 5 or later, you can specify the the NoIR tuning file for the IMX219 sensor with the following command:
+
+[source,console]
+----
+$ rpicam-hello --tuning-file /usr/share/libcamera/ipa/rpi/pisp/imx219_noir.json
+----
+
+NOTE: Raspberry Pi models prior to Raspberry Pi 5 use different tuning files. On those devices, use the files stored in `/usr/share/libcamera/ipa/rpi/vc4/` instead.
+
+`libcamera` maintains tuning files for a number of cameras, including third-party models. For instance, you can find the tuning file for the Soho Enterprises SE327M12 in `se327m12.json`.
+
+==== Troubleshooting
 
 If your Camera Module doesn't work like you expect, try some of the following fixes:
 

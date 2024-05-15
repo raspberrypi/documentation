@@ -1,68 +1,41 @@
-==== Tuning files
-
-Raspberry Pi's `libcamera` implementation includes a **tuning file** for each camera module. This file controls algorithms and hardware to produce the best image quality. `libcamera` can only determine the sensor in use, not the module. As a result, some modules require a tuning file override. Use the `--tuning-file` option to specify an override.
-
-For example, the no-IR-filter (NoIR) versions of sensors use AWB settings that are different from the standard versions. On a Raspberry Pi 4 or earlier, you can specify the the IMX219 NoIR sensor tuning file with the following command:
-
-[source,console]
-----
-$ rpicam-hello --tuning-file /usr/share/libcamera/ipa/rpi/vc4/imx219_noir.json
-----
-
-On a Raspberry Pi 5 or later, you would instead use the following command:
-
-[source,console]
-----
-$ rpicam-hello --tuning-file /usr/share/libcamera/ipa/rpi/pisp/imx219_noir.json
-----
-
-On a Raspberry Pi 4 or earlier, you can specify the the Soho Enterprises SE327M12 camera module tuning file with the following command:
-
-[source,console]
-----
-$ rpicam-hello --tuning-file /usr/share/libcamera/ipa/rpi/vc4/se327m12.json
-----
-
-You can copy and alter existing tuning files and pass them to the `--tuning-file` option.
-
-=== Display an image sensor preview
-
-Most of the `rpicam-apps` display a preview image in a window. If there is no active desktop environment, the preview draws directly to the display using the Linux Direct Rendering Manager (DRM). Otherwise, `rpicam-apps` attempt to use the desktop environment. Both paths use zero-copy GPU buffer sharing: as a result, X forwarding is _not_ supported.
-
-If you run the X window server and want to use X forwarding, pass the `--qt-preview` flag to render the preview window in a https://en.wikipedia.org/wiki/Qt_(software)[Qt] window. The Qt preview window uses more resources than the alternatives.
-
-NOTE: Older systems using Gtk2 may, when linked with OpenCV, produce `Glib-GObject` errors and fail to show the Qt preview window. In this case edit the file `/etc/xdg/qt5ct/qt5ct.conf` as root and replace the line containing `style=gtk2` with `style=gtk3`.
-
-To suppress the preview window entirely, pass the `-n` or `--nopreview` flag:
-
-[source,console]
-----
-$ rpicam-hello -n
-----
-
-The `--info-text` option displays image information on the window title bar using % directives. For example, the following command displays the current red and blue gain values:
-
-[source,console]
-----
-$ rpicam-hello --info-text "red gain %rg, blue gain %bg"
-----
-
-The HQ camera displays focus measure using `%focus`.
-
 === `rpicam-hello`
 
-`rpicam-hello` briefly displays a preview window containing the video feed from a connected camera. To try `rpicam-hello`, run the following command in a terminal:
+`rpicam-hello` briefly displays a preview window containing the video feed from a connected camera. To use `rpicam-hello` to display a preview window for five seconds, run the following command in a terminal:
 
 [source,console]
 ----
 $ rpicam-hello
 ----
 
-You can pass an optional duration (in milliseconds) with the `-t <duration>` option. A value of `0` runs the preview indefinitely:
+You can pass an optional duration (in milliseconds) with the xref:camera_software.adoc#timeout[`timeout`] option. A value of `0` runs the preview indefinitely:
 
 [source,console]
 ----
-$ rpicam-hello -t 0
+$ rpicam-hello --timeout 0
 ----
 
-Use `Ctrl-C` in the terminal or the close button on the preview window to stop `rpicam-hello`.
+Use `Ctrl+C` in the terminal or the close button on the preview window to stop `rpicam-hello`.
+
+==== Display an image sensor preview
+
+Most of the `rpicam-apps` display a preview image in a window. If there is no active desktop environment, the preview draws directly to the display using the Linux Direct Rendering Manager (DRM). Otherwise, `rpicam-apps` attempt to use the desktop environment. Both paths use zero-copy GPU buffer sharing: as a result, X forwarding is _not_ supported.
+
+If you run the X window server and want to use X forwarding, pass the xref:camera_software.adoc#qt-preview[`qt-preview`] flag to render the preview window in a https://en.wikipedia.org/wiki/Qt_(software)[Qt] window. The Qt preview window uses more resources than the alternatives.
+
+NOTE: Older systems using Gtk2 may, when linked with OpenCV, produce `Glib-GObject` errors and fail to show the Qt preview window. In this case edit the file `/etc/xdg/qt5ct/qt5ct.conf` as root and replace the line containing `style=gtk2` with `style=gtk3`.
+
+To suppress the preview window entirely, pass the xref:camera_software.adoc#nopreview[`nopreview`] flag:
+
+[source,console]
+----
+$ rpicam-hello -n
+----
+
+The xref:camera_software.adoc#info-text[`info-text`] option displays image information on the window title bar using `%` directives. For example, the following command displays the current red and blue gain values:
+
+[source,console]
+----
+$ rpicam-hello --info-text "red gain %rg, blue gain %bg"
+----
+
+For a full list of directives, see the xref:camera_software.adoc#info-text[`info-text` reference].
