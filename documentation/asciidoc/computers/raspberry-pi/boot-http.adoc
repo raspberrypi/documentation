@@ -48,9 +48,7 @@ rpi-eeprom-digest -i boot.img -o boot.sig -k myprivkey.pem
 
 For security, Network Install uses HTTPS to download OS images from the Raspberry Pi website. This feature uses our own CA root included in the bootloader to verify the host.
 
-You can add your own custom CA certificate to the EEPROM to securely download images from your own website. Use the `--cacertder` option of the `rpi-eeprom-config` tool to add the DER-encoded certificate.
-
-To ensure that the certificate is not modified, place a hash of the certificate in the EEPROM config settings.
+You can add your own custom CA certificate to your device EEPROM to securely download images from your own website. Use the `--cacertder` option of the `rpi-eeprom-config` tool to add the DER-encoded certificate. You must place a hash of the certificate in the EEPROM config settings to ensure that the certificate is not modified.
 
 Run the following command to generate a DER-encoded certificate:
 
