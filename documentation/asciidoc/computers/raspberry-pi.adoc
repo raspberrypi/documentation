@@ -14,7 +14,7 @@ include::raspberry-pi/bootmodes.adoc[]
 
 include::raspberry-pi/bootflow-legacy.adoc[]
 
-include::raspberry-pi/bootflow-2711-and-2712.adoc[]
+include::raspberry-pi/bootflow-eeprom.adoc[]
 
 include::raspberry-pi/eeprom-bootloader.adoc[]
 
