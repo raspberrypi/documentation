@@ -55,7 +55,7 @@ To change the boot-mode or bootloader version from within Raspberry Pi OS, run x
 
 === Updating the bootloader configuration
 
-The `DEFAULT` version of the bootloader represents the latest factory default firmware image. It's update for critical bug fixes, hardware support and periodically after features have been tested in the `LATEST` release. 
+The `DEFAULT` version of the bootloader represents the latest factory default firmware image. It updates to provide critical bug fixes, hardware support and periodically after features have been tested in the `LATEST` release. 
 The `LATEST` bootloader updates more often to include the latest fixes and improvements.
 
 Advanced users can switch to the `LATEST` bootloader to get the latest functionality.
