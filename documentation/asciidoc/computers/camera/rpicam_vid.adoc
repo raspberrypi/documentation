@@ -70,7 +70,7 @@ $ rpicam-vid --level 4.2 --framerate 120 --width 1280 --height 720 --save-pts ti
 
 `rpicam-vid` can use the `ffmpeg`/`libav` codec backend to encode audio and video streams. You can either save these streams to a file or stream them over the network. `libav` uses hardware H.264 video encoding when present.
 
-To enable the `libav` backend, pass the xref:camera_software.adoc#codec[`codec`] option the value `libav`:
+To enable the `libav` backend, pass `libav` to the xref:camera_software.adoc#codec[`codec`] option:
 
 [source,console]
 ----
