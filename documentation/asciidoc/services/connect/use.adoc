@@ -103,7 +103,7 @@ To turn off screen sharing, click the Connect system tray icon and unselect **Al
 
 image:images/no-sharing.png[width="80%"]
 
-In the Connect portal, the **Connect** button and the **Screen sharing** label next to that Raspberry Pi will disappear.
+In the Connect portal, the **Connect** button next to that Raspberry Pi will disappear and the **Screen sharing** label will appear crossed-out.
 
 image::images/no-connect-button-ui.png[width="80%"] 
 
