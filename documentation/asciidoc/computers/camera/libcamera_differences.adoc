@@ -17,9 +17,9 @@ The `rpicam-apps` emulate most features of the legacy `raspicam` applications. H
 ** image stabilisation (`--vstab`)
 ** demo modes (`--demo`)
 +
-xref:camera_software.adoc#post-processing[Post-processing] replaced many of these features.
+xref:camera_software.adoc#post-processing-with-rpicam-apps[Post-processing] replaced many of these features.
 
-* `rpicam-apps` removed xref:camera_software.adoc#rotation[`rotation`] option support for 90° and 270° rotations. You can still achieve these rotations with xref:camera_software.adoc#hflip[`hflip`] and xref:camera_software.adoc#vflip[`vflip`].
+* `rpicam-apps` removed xref:camera_software.adoc#rotation[`rotation`] option support for 90° and 270° rotations.
 
 * `raspicam` conflated metering and exposure; `rpicam-apps` separates these options.
 * To disable Auto White Balance (AWB) in `rpicam-apps`, set a pair of colour gains with xref:camera_software.adoc#awbgains[`awbgains`] (e.g. `1.0,1.0`).

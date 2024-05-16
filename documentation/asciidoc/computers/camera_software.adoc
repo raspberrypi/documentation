@@ -20,6 +20,8 @@ include::camera/rpicam_apps_multicam.adoc[]
 
 include::camera/rpicam_apps_packages.adoc[]
 
+include::camera/streaming.adoc[]
+
 include::camera/rpicam_options_common.adoc[]
 
 include::camera/rpicam_options_still.adoc[]
