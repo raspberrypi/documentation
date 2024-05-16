@@ -841,13 +841,13 @@ Set to `1` if the `tryboot` flag was set at boot.
 
 Raspberry Pi 5 only.
 
-*`max_current` - 32-bit integer
+`max_current` - 32-bit integer
 
 The maximum current in mA that the power supply can supply. The firmware reports the value indicated by the USB-C, USB-PD or PoE interfaces.
 
 For bench power supplies (e.g. connected to the GPIO header) define `PSU_MAX_CURRENT` in the bootloader configuration to indicate the power supply current capability.
 
-*`power_reset` - 32-bit integer
+`power_reset` - 32-bit integer
 
 Raspberry Pi 5 only.
 
@@ -936,7 +936,7 @@ This bit-field describes the features supported by the current bootloader. This 
 
 The UTC update timestamp set by `rpi-eeprom-update`.
 
-`signed_boot` - 32-bit integer
+`signed` - 32-bit integer
 
 If Secure Boot is enabled then this bit-field will be non-zero. The individual bits indicate the current Secure Boot configuration.
 

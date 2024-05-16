@@ -17,10 +17,15 @@ vcgencmd otp_dump
 
 This list contains the publicly available information on the registers. If a register or bit is not defined here, then it is not public.
 
+16 -- OTP control register - BCM2711
+* Bit 26: disables VC JTAG
+* Bit 27: disables VC JTAG
+
 17 -- bootmode register
 
 * Bit 1: sets the oscillator frequency to 19.2MHz
 * Bit 3: enables pull ups on the SDIO pins
+* Bit 15: disables ROM RSA key 0 - (secure boot enabled if set) (BCM2711)
 * Bit 19: enables GPIO bootmode
 * Bit 20: sets the bank to check for GPIO bootmode
 * Bit 21: enables booting from SD card
