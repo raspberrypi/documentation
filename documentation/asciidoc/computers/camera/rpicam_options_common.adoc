@@ -247,7 +247,7 @@ Available for preview and video modes. Not available for still captures. If you 
 For `rpicam-vid`, disables extra colour-denoise processing.
 
 
-Useful for image analysis when combined with xref:camera_software.adoc#post-processing[image post-processing].
+Useful for image analysis when combined with xref:camera_software.adoc#post-processing-with-rpicam-apps[image post-processing].
 
 ==== `hflip`
 
@@ -562,4 +562,4 @@ Flushes output files to disk as soon as a frame finishes writing, instead of wai
 
 Specifies a JSON file that configures the post-processing applied by the imaging pipeline. This applies to camera images _before_ they reach the application. This works similarly to the legacy `raspicam` "image effects". Accepts a file name path as input.
 
-Post-processing is a large topic and admits the use of third-party software like OpenCV and TensorFlowLite to analyse and manipulate images. For more information, see xref:camera_software.adoc#post-processing[post-processing].
+Post-processing is a large topic and admits the use of third-party software like OpenCV and TensorFlowLite to analyse and manipulate images. For more information, see xref:camera_software.adoc#post-processing-with-rpicam-apps[post-processing].

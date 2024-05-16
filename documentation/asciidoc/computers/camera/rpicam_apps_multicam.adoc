@@ -3,8 +3,9 @@
 `rpicam-apps` has basic support for multiple cameras. You can attach multiple cameras to a Raspberry Pi in the following ways:
 
 * For Raspberry Pi Compute Modules, you can connect two cameras directly to a Raspberry Pi Compute Module I/O board. See the xref:../computers/compute-module.adoc#attach-a-raspberry-pi-camera-module[Compute Module documentation] for further details. With this method, you can _use both cameras simultaneously_.
-* For Raspberry Pi devices other than Compute Modules, you can attach two or more cameras with a Video Mux board such as https://www.arducam.com/product/multi-camera-v2-1-adapter-raspberry-pi/[this third-party product]. Since both cameras are attached to a single Unicam port, _only one camera may be used at a time_.
+* For Raspberry Pi 5, you can connect two cameras directly to the board using the dual MIPI connectors.
+* For other Raspberry Pi devices with a camera port, you can attach two or more cameras with a Video Mux board such as https://www.arducam.com/product/multi-camera-v2-1-adapter-raspberry-pi/[this third-party product]. Since both cameras are attached to a single Unicam port, _only one camera may be used at a time_.
 
-To list all the cameras available on your platform, use the xref:camera_software.adoc#list-cameras[`list-cameras`] option. To choose which camera to use, pass the xref:camera_software.adoc#camera[`camera`] option the index value of the requested camera.
+To list all the cameras available on your platform, use the xref:camera_software.adoc#list-cameras[`list-cameras`] option. To choose which camera to use, pass the camera index to the xref:camera_software.adoc#camera[`camera`] option.
 
 NOTE: `libcamera` does not yet provide stereoscopic camera support. When running two cameras simultaneously, they must be run in separate processes. This means there is no way to synchronise sensor framing or 3A operation between them.  As a workaround, you could synchronise the cameras through an external sync signal for the HQ (IMX477) camera, and switch the 3A to manual mode if necessary.

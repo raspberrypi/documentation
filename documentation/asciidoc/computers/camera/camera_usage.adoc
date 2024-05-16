@@ -10,4 +10,4 @@ Raspberry Pi produces several official camera modules, including:
 
 For more information about camera hardware, see the xref:../accessories/camera.adoc#about-the-camera-modules[camera hardware documentation].
 
-First, xref:../accessories/camera.adoc#installing-a-raspberry-pi-camera[install your camera module]. Then, follow the guides in this section to put your camera module to use.
+First, xref:../accessories/camera.adoc#install-a-raspberry-pi-camera[install your camera module]. Then, follow the guides in this section to put your camera module to use.

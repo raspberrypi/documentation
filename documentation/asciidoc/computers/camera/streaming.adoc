@@ -1,0 +1,149 @@
+== Stream video over a network with `rpicam-apps`
+
+This section describes native streaming from `rpicam-vid`. You can also use the xref:camera_software.adoc#libav-integration-with-rpicam-vid[`libav`] backend for network streaming.
+
+=== UDP
+
+To stream video over UDP using a Raspberry Pi as a server, use the following command, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+
+[source,console]
+----
+$ rpicam-vid -t 0 --inline -o udp://<ip-addr>:<port>
+----
+
+To view video streamed over UDP using a Raspberry Pi as a client, use the following command, replacing the `<port>` placeholder with the port you would like to stream from:
+
+[source,console]
+----
+$ vlc udp://@:<port> :demux=h264
+----
+
+Alternatively, use the following command on a client to stream using `ffplay`:
+
+[source,console]
+----
+$ ffplay udp://<ip-addr-of-server>:<port> -fflags nobuffer -flags low_delay -framedrop
+----
+
+=== TCP
+
+You can also stream video over TCP. To use a Raspberry Pi as a server:
+
+[source,console]
+----
+$ rpicam-vid -t 0 --inline --listen -o tcp://0.0.0.0:<port>
+----
+
+To view video streamed over TCP using a Raspberry Pi as a client, use the following command:
+
+[source,console]
+----
+$ vlc tcp/h264://<ip-addr-of-server>:<port>
+----
+
+Alternatively, use the following command on a client to stream using `ffplay` at 30 frames per second:
+
+[source,console]
+----
+$ ffplay tcp://<ip-addr-of-server>:<port> -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
+----
+
+=== RTSP
+
+To use VLC to stream video over RTSP using a Raspberry Pi as a server, use the following command:
+
+[source,console]
+----
+$ rpicam-vid -t 0 --inline -o - | cvlc stream:///dev/stdin --sout '#rtp{sdp=rtsp://:8554/stream1}' :demux=h264
+----
+
+To view video streamed over RTSP using a Raspberry Pi as a client, use the following command:
+
+[source,console]
+----
+$ ffplay rtsp://<ip-addr-of-server>:8554/stream1 -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
+----
+
+Alternatively, use the following command on a client to stream using VLC:
+
+[source,console]
+----
+$ vlc rtsp://<ip-addr-of-server>:8554/stream1
+----
+
+To suppress the preview window on the server, use xref:camera_software.adoc#nopreview[`nopreview`].
+
+Use the xref:camera_software.adoc#inline[`inline`] flag to force stream header information into every intra frame, which helps clients understand the stream if they miss the beginning.
+
+=== `libav`
+
+You can use the `libav` backend as a network streaming source for audio/video.
+To stream video over TCP using a Raspberry Pi as a server, use the following command, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+
+[source,console]
+----
+$ rpicam-vid -t 0 --codec libav --libav-format mpegts --libav-audio -o "tcp://<ip-addr>:<port>?listen=1"
+----
+
+You can stream over UDP with a similar command:
+
+[source,console]
+----
+$ rpicam-vid -t 0 --codec libav --libav-format mpegts --libav-audio  -o "udp://<ip-addr>:<port>"
+----
+
+=== GStreamer
+
+https://gstreamer.freedesktop.org/[GStreamer] is a Linux framework for reading, processing and playing multimedia files. This section shows how to use `rpicam-vid` to stream video over a network.
+
+This setup uses `rpicam-vid` to output an encoded h.264 bitstream to stdout. Then, we use the GStreamer `fdsrc` element to receive the bitstream, and extra GStreamer elements to send it over the network. On the server, run the following command to start the stream, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+
+[source,console]
+----
+$ rpicam-vid -t 0 -n --inline -o - | gst-launch-1.0 fdsrc fd=0 ! udpsink host=<ip-addr> port=<port>
+----
+
+On the client, run the following command to receive the stream, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+
+[source,console]
+----
+$ gst-launch-1.0 udpsrc address=<ip-addr> port=<port> ! h264parse ! v4l2h264dec ! autovideosink
+----
+
+TIP: To test this configuration, run the server and client commands in separate terminals on the same device, using `localhost` as the address.
+
+==== RTP
+
+To stream using RTP, run the following command on the server, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+
+[source,console]
+----
+$ rpicam-vid -t 0 -n --inline -o - | gst-launch-1.0 fdsrc fd=0 ! h264parse ! rtph264pay ! udpsink host=<ip-addr> port=<port>
+----
+
+To receive over RTP, run the following command on the client, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+
+[source,console]
+----
+$ gst-launch-1.0 udpsrc address=<ip-addr> port=<port> caps=application/x-rtp ! rtph264depay ! h264parse ! v4l2h264dec ! autovideosink
+----
+
+
+If the client is not a Raspberry Pi it may have different GStreamer elements available. On an x86 device running Linux, you might run the following command instead:
+
+[source,console]
+----
+$ gst-launch-1.0 udpsrc address=<ip-addr> port=<port> caps=application/x-rtp ! rtph264depay ! h264parse ! avdec_h264 ! autovideosink
+----
+
+==== `libcamerasrc` GStreamer element
+
+`libcamera` provides a `libcamerasrc` GStreamer element which can be used directly instead of `rpicam-vid`. To use this element, run the following command on the server, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+
+[source,console]
+----
+$ gst-launch-1.0 libcamerasrc ! capsfilter caps=video/x-raw,width=1280,height=720,format=NV12 ! v4l2convert ! v4l2h264enc extra-controls="controls,repeat_sequence_header=1" ! 'video/x-h264,level=(string)4.1' ! h264parse ! rtph264pay ! udpsink host=<ip-addr> port=<port>
+----
+
+and on the client we use the same playback pipeline as previously.
+
