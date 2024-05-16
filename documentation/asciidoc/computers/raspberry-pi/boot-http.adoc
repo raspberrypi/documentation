@@ -99,7 +99,7 @@ HTTP_PATH=<path_to_files>
 HTTP_CACERT_HASH=<hash>
 ----
 
-When you specify a `HTTP_CACERT_HASH`, Network Install downloads the image using HTTPS over port 443 instead of HTTP over port 80.
+When you specify a `HTTP_CACERT_HASH`, Network Install downloads the image using HTTPS over port 443. Without a hash, Network install downloads the image using HTTP over port 80.
 
 Finally, use the following commands to load everything into EEPROM:
 
