@@ -26,19 +26,19 @@ NOTE: Raspberry Pi Camera Modules are compatible with all Raspberry Pi computers
 
 === Rolling or Global shutter?
 
-Most digital cameras — and our Camera Modules — use a rolling shutter: they scan the image they’re capturing line-by-line, then output the results. You may have noticed that this can cause distortion effects in some settings; if you’ve ever photographed rotating propeller blades, you’ve probably spotted the image shimmering rather than looking like an object that is rotating. The propeller blades have had enough time to change position in the tiny moment that the camera has taken to swipe across and observe the scene.
+Most digital cameras, including our Camera Modules, use a **rolling shutter**: they scan the image they’re capturing line-by-line, then output the results. You may have noticed that this can cause distortion effects in some settings; if you’ve ever photographed rotating propeller blades, you’ve probably spotted the image shimmering rather than looking like an object that is rotating. The propeller blades have had enough time to change position in the tiny moment that the camera has taken to swipe across and observe the scene.
 
-A global shutter — and our Global Shutter Camera Module — doesn’t do this. It captures the light from every pixel in the scene at once, so your photograph of propeller blades will not suffer from the same distortion.
+A **global shutter**, like the one on our Global Shutter Camera Module, doesn’t do this. It captures the light from every pixel in the scene at once, so your photograph of propeller blades will not suffer from the same distortion.
 
 Why is this useful? Fast-moving objects, like those propeller blades, are now easy to capture; we can also synchronise several cameras to take a photo at precisely the same moment in time. There are plenty of benefits here, like minimising distortion when capturing stereo images. (The human brain is confused if any movement that appears in the left eye has not appeared in the right eye yet.) The Raspberry Pi Global Shutter Camera can also operate with shorter exposure times - down to 30µs, given enough light - than a rolling shutter camera, which makes it useful for high-speed photography. 
 
 NOTE: The Global Shutter Camera’s image sensor has a 6.3mm diagonal active sensing area, which is similar in size to Raspberry Pi’s HQ Camera. However, the pixels are larger and can collect more light. Large pixel size and low pixel count are valuable in machine-vision applications; the more pixels a sensor produces, the harder it is to process the image in real time. To get around this, many applications downsize and crop images. This is unnecessary with the Global Shutter Camera and the appropriate lens magnification, where the lower resolution and large pixel size mean an image can be captured natively. 
 
-== Installing a Raspberry Pi camera
+== Install a Raspberry Pi camera
 
 WARNING: Cameras are sensitive to static. Earth yourself prior to handling the PCB. A sink tap or similar should suffice if you don't have an earthing strap.
 
-=== Connecting the Camera
+=== Connect the Camera
 
 The flex cable inserts into the connector labelled CAMERA on the Raspberry Pi, which is located between the Ethernet and HDMI ports. The cable must be inserted with the silver contacts facing the HDMI port. To open the connector, pull the tabs on the top of the connector upwards, then towards the Ethernet port. The flex cable should be inserted firmly into the connector, with care taken not to bend the flex at too acute an angle. To close the connector, push the top part of the connector towards the HDMI port and down, while holding the flex cable in place.
 
@@ -50,7 +50,7 @@ Depending on the model, the camera may come with a small piece of translucent bl
 
 NOTE: There is additional documentation available around fitting the recommended https://datasheets.raspberrypi.com/hq-camera/cs-mount-lens-guide.pdf[6mm] and https://datasheets.raspberrypi.com/hq-camera/c-mount-lens-guide.pdf[16mm] lens to the HQ Camera.
 
-=== Preparing the Software
+=== Prepare the Software
 
 Before proceeding, we recommend ensuring that your kernel, GPU firmware and applications are all up to date. Please follow the instructions on xref:../computers/os.adoc#using-apt[keeping your operating system up to date].
 

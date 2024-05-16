@@ -6,15 +6,15 @@ include::raspberry-pi/raspberry-pi-compliance.adoc[]
 
 include::raspberry-pi/frequency-management.adoc[]
 
-include::raspberry-pi/boot-eeprom-rpi4.adoc[]
+include::raspberry-pi/boot-eeprom.adoc[]
 
-include::raspberry-pi/boot-diagnostics-rpi4.adoc[]
+include::raspberry-pi/boot-eeprom-diagnostics.adoc[]
 
 include::raspberry-pi/bootmodes.adoc[]
 
 include::raspberry-pi/bootflow-legacy.adoc[]
 
-include::raspberry-pi/bootflow-2711.adoc[]
+include::raspberry-pi/bootflow-eeprom.adoc[]
 
 include::raspberry-pi/eeprom-bootloader.adoc[]
 

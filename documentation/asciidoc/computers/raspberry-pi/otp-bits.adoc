@@ -17,10 +17,16 @@ vcgencmd otp_dump
 
 This list contains the publicly available information on the registers. If a register or bit is not defined here, then it is not public.
 
-17 -- bootmode register
+`16`:: OTP control register - BCM2711
++
+* Bit 26: disables VC JTAG
+* Bit 27: disables VC JTAG
 
+`17`:: bootmode register
++
 * Bit 1: sets the oscillator frequency to 19.2MHz
 * Bit 3: enables pull ups on the SDIO pins
+* Bit 15: disables ROM RSA key 0 - (secure boot enabled if set) (BCM2711)
 * Bit 19: enables GPIO bootmode
 * Bit 20: sets the bank to check for GPIO bootmode
 * Bit 21: enables booting from SD card
@@ -30,13 +36,13 @@ This list contains the publicly available information on the registers. If a reg
 
 NOTE: On BCM2711 the bootmode is defined by the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader EEPROM configuration] instead of OTP.
 
-18 -- copy of bootmode register +
-28 -- serial number +
-29 -- ~(serial number) +
-30 -- xref:raspberry-pi.adoc#raspberry-pi-revision-codes[revision code] ^1^ +
-33 -- board revision extended - the meaning depends on the board model. +
+`18`:: copy of bootmode register
+`28`:: serial number
+`29`:: ~(serial number)
+`30`:: xref:raspberry-pi.adoc#raspberry-pi-revision-codes[revision code] ^1^
+`33`:: board revision extended - the meaning depends on the board model.
 This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext` and for testing purposes this OTP value can be temporarily overridden by setting `board_rev_ext` in `config.txt`.
-
++
 * Compute Module 4
  ** Bit 30: Whether the Compute Module has a Wi-Fi module fitted
   *** 0 - Wi-Fi
@@ -47,15 +53,15 @@ This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext`
 * Raspberry Pi 400
  ** Bits 0-7: The default keyboard country code used by https://github.com/raspberrypi-ui/piwiz[piwiz]
 
-36-43 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer OTP values] +
-45 -- MPG2 decode key +
-46 -- WVC1 decode key +
-47-54 -- SHA256 of RSA public key for secure-boot +
-55    -- secure-boot flags (reserved for use by the bootloader) +
-56-63 -- 256-bit device-specific private key +
-64-65 -- MAC address; if set, system will use this in preference to the automatically generated address based on the serial number +
-66 -- advanced boot register (not BCM2711)
-
+`36-43`:: xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer OTP values]
+`45`:: MPG2 decode key
+`46`:: WVC1 decode key
+`47-54`:: SHA256 of RSA public key for secure-boot
+`55`:: secure-boot flags (reserved for use by the bootloader)
+`56-63`:: 256-bit device-specific private key
+`64-65`:: MAC address; if set, system will use this in preference to the automatically generated address based on the serial number
+`66`:: advanced boot register (not BCM2711)
++
 * Bits 0-6: GPIO for ETH_CLK output pin
 * Bit 7: enables ETH_CLK output
 * Bits 8-14: GPIO for LAN_RUN output pin
@@ -71,51 +77,51 @@ This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext`
 
 This list contains the publicly available information on the registers. If a register or bit is not defined here, then it is not public.
 
-22 -- bootmode register +
-
+`22`:: bootmode register
++
 * Bit 1: Boot from SD card
 * Bits 2-4: Booting from SPI EEPROM (and which GPIOs)
 * Bit 10: Disable booting from SD card
 * Bit 11: Disable booting from SPI
 * Bit 12: Disable booting from USB
 
-23 -- copy of bootmode register +
-29 -- advanced boot mode +
-
+`23`:: copy of bootmode register
+`29`:: advanced boot mode
++
 * Bits 0-7: GPIO for SD card detect
 * Bits 8-15: GPIO to use for RPIBOOT
 
-31 -- lower 32 bits of serial number +
-32 -- xref:raspberry-pi.adoc#raspberry-pi-revision-codes[board revision] +
-33 -- board attributes - the meaning depends on the board model. +
+`31`:: lower 32 bits of serial number
+`32`:: xref:raspberry-pi.adoc#raspberry-pi-revision-codes[board revision]
+`33`:: board attributes - the meaning depends on the board model.
 This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext`
 
-35 -- upper 32 bits of serial number +
+`35`:: upper 32 bits of serial number
 The full 64 bit serial number is available in `/proc/device-tree/serial-number`
 
-50-51 -- Ethernet MAC address +
+`50-51`:: Ethernet MAC address
 This is passed to the operating system in the Device Tree, e.g. `/proc/device-tree/axi/pcie@120000/rp1/ethernet@100000/local-mac-address`
 
-52-53 -- Wi-Fi MAC address +
+`52-53`:: Wi-Fi MAC address
 This is passed to the operating system in the Device Tree, e.g. `/proc/device-tree/axi/mmc@1100000/wifi@1/local-mac-address`
 
-54-55 -- Bluetooth MAC address +
+`54-55`:: Bluetooth MAC address
 This is passed to the operating system in the Device Tree, e.g. `/proc/device-tree/soc/serial@7d50c000/bluetooth/local-bd-address`
 
-77-84 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer OTP values] +
-86 -- board country - The default keyboard country code used by https://github.com/raspberrypi-ui/piwiz[piwiz] +
+`77-84`:: xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer OTP values]
+86:: board country - The default keyboard country code used by https://github.com/raspberrypi-ui/piwiz[piwiz]
 If set, this is available via Device Tree in `/proc/device-tree/chosen/rpi-country-code`
 
-87-88 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Ethernet MAC address] +
+`87-88`:: xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Ethernet MAC address]
 Overrides OTP rows 50-51 if set
 
-89-90 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Wi-Fi MAC address] +
+`89-90`:: xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Wi-Fi MAC address]
 Overrides OTP rows 52-53 if set
 
-89-90 -- xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Bluetooth MAC address] +
+`89-90`:: xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Bluetooth MAC address]
 Overrides OTP rows 54-55 if set
 
-109-114 -- Factory device UUID +
+`109-114`:: Factory device UUID
 Currently a 16-digit numerical id which should match the bar code on the device. Padded with zero characters and c40 encoded.
 
 This is available via device-tree in `/proc/device-tree/chosen/rpi-duid`.

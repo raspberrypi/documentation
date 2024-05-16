@@ -168,7 +168,7 @@ Save and exit, and you should see this message:
 crontab: installing new crontab
 ----
 
-TIP: To stop recording images for the time lapse, remove the above line from your crontab.
+TIP: To stop recording images for the time lapse, run `crontab -e` again and remove the above line from your crontab.
 
 ===== Stitch images together
 
@@ -181,7 +181,7 @@ First, install `ffmpeg`:
 $ sudo apt install ffmpeg
 ----
 
-Run the following command in the `crontimelapse` directory to convert your JPEG files into an mp4 video:
+Run the following command from the directory that contains the `timelapse` directory to convert your JPEG files into an mp4 video:
 
 [source,console]
 ----

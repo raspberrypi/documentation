@@ -14,11 +14,15 @@ HTTP_HOST=downloads.raspberrypi.org
 NET_INSTALL_ENABLED=0
 ```
 
+`boot.img` and the `boot.sig` signature file is a ram disk containing a boot file system. For more details, see xref:raspberry-pi.adoc#boot_ramdisk[boot_ramdisk].
+
 HTTP in the `BOOT_ORDER` will be ignored if secure boot is enabled and xref:raspberry-pi.adoc#HTTP_HOST[HTTP_HOST] is not set.
 
 === Requirements
 
-To use HTTP boot, xref:raspberry-pi.adoc#bootloader_update_stable[update the bootloader] to a bootloader dated 10th March 2022 or later. HTTP boot only works over Ethernet, so you need to connect your Raspberry Pi to your network via an Ethernet cable, e.g. to a socket on the back of your router.
+To use HTTP boot, xref:raspberry-pi.adoc#bootloader_update_stable[update] to a bootloader released 10th March 2022 or later. HTTP boot requires a wired Ethernet connection.
+
+To use custom CA certificates, xref:raspberry-pi.adoc#bootloader_update_stable[update] to a bootloader released 5th April 2024 or later. Only devices running the BCM2712 CPU support custom CA certificates.
 
 === Keys
 
@@ -38,6 +42,77 @@ rpi-eeprom-digest -i pieeprom.upd -o pieeprom.sig
 # Sign the network install image with your PRIVATE key
 # Put boot.img and boot.sig on your web server
 rpi-eeprom-digest -i boot.img -o boot.sig -k myprivkey.pem
+----
+
+=== Certificates
+
+For security, Network Install uses HTTPS to download OS images from the Raspberry Pi website. This feature uses our own CA root included in the bootloader to verify the host.
+
+You can add your own custom CA certificate to your device EEPROM to securely download images from your own website. Use the `--cacertder` option of the `rpi-eeprom-config` tool to add the DER-encoded certificate. You must place a hash of the certificate in the EEPROM config settings to ensure that the certificate is not modified.
+
+Run the following command to generate a DER-encoded certificate:
+
+[source,console]
+----
+$ openssl x509 -in your_ca_root_cert.pem -out cert.der -outform DER
+----
+
+Then, run the following command to generate a SHA-256 hash of the certificate:
+
+[source,console]
+----
+$ sha256sum cert.der
+----
+
+You should see output similar to the following:
+
+----
+701bd97f67b0f5483a9734e6e5cf72f9a123407b346088638f597878563193fc  cert.der
+----
+
+Next, update `boot.conf` to include the hash of the certificate:
+
+[source,console]
+----
+$ sudo rpi-eeprom-config --edit
+----
+
+Configure the following settings in the `[gpio8=0]` section, replacing:
+
+* `<your_website>` with xref:raspberry-pi.adoc#HTTP_HOST[your website], e.g. `yourserver.org`
+* `<path_to_files>` with the xref:raspberry-pi.adoc#HTTP_PATH[path to your OS image] hosted on your website, e.g. `path/to/files`
+* `<hash>` with the hash value you generated above, e.g. `701bd97f67b0f5483a9734e6e5cf72f9a123407b346088638f597878563193fc`
+
+----
+[all]
+BOOT_UART=1
+POWER_OFF_ON_HALT=0
+BOOT_ORDER=0xf461
+
+[gpio8=0]
+BOOT_ORDER=0xf7
+NET_INSTALL_ENABLED=0
+HTTP_HOST=<your_website>
+HTTP_PATH=<path_to_files>
+HTTP_CACERT_HASH=<hash>
+----
+
+When you specify a `HTTP_CACERT_HASH`, Network Install downloads the image using HTTPS over port 443. Without a hash, Network install downloads the image using HTTP over port 80.
+
+Finally, use the following commands to load everything into EEPROM:
+
+[source,console]
+----
+$ rpi-eeprom-config -c boot.conf -p mypubkey.pem -o pieeprom.bin --cacertder cert.der pieeprom.original.bin
+$ rpi-eeprom-digest -k myprivkey.pem -i pieeprom.bin -o pieeprom.sig
+----
+
+During network boot, your Raspberry Pi should use HTTPS instead of HTTP. To see the full HTTPS URL resolved by Network Install for the download, check the boot output:
+
+----
+Loading boot.img ...
+HTTP: GET request for https://yourserver.org:443/path/to/files/boot.sig
+HTTP: GET request for https://yourserver.org:443/path/to/files/boot.img
 ----
 
 === Secure boot

@@ -2,7 +2,7 @@
 
 Raspberry Pi SoCs all have two camera interfaces that support either CSI-2 D-PHY 1.1 or Compact Camera Port 2 (CCP2) sources. This interface is known by the codename Unicam. The first instance of Unicam supports two CSI-2 data lanes, while the second supports four. Each lane can run at up to 1Gbit/s (DDR, so the max link frequency is 500MHz).
 
-Compute Modules route out all lanes from both peripherals. Other models only expose the second instance, routing out only two of the data lanes to the camera connector.
+Compute Modules and Raspberry Pi 5 route out all lanes from both peripherals. Non-Compute Module models prior to Raspberry Pi 5 only expose the second instance, routing out only two of the data lanes to the camera connector.
 
 === Software interfaces
 
@@ -73,7 +73,7 @@ Mainline Linux contains a range of existing drivers. The Raspberry Pi kernel tre
 
 As the subdevice driver is also a kernel driver with a standardised API, third parties are free to write their own for any source of their choosing.
 
-=== Developing third-party drivers
+=== Write a third-party driver
 
 This is the recommended approach to interfacing via Unicam.
 

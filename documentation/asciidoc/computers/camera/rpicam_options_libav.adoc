@@ -12,11 +12,11 @@ Some options have shorthand aliases, for example `-h` instead of `--help`. Use t
 
 Sets the `libav` output format. Accepts the following values:
 
-* `mkv`
-* `mp4`
-* `avi`
-* `h264`
-* `mpegts`
+* `mkv` encoding
+* `mp4` encoding
+* `avi` encoding
+* `h264` streaming
+* `mpegts` streaming
 
 If you do not provide this option, the file extension passed to the xref:camera_software.adoc#output[`output`] option determines the file format.
 
