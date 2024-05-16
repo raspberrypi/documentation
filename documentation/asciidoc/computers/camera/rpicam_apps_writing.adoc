@@ -1,57 +1,53 @@
 === Write your own `rpicam` apps
 
-`rpicam-apps` is not supposed to offer a full set of all the applications with all the features that anyone could ever need. We offer applications which are commonly used and easy to understand, while enabling those users who require slightly different behaviour to implement that behaviour for themselves.
+`rpicam-apps` does not provide all of the camera-related features that anyone could ever need. Instead, these applications are small and flexible. Users who require different behaviour can implement it themselves.
 
-All the applications work by having a simple event loop which receives a message with a new set of frames from the camera system. This set of frames is called a `CompletedRequest`. It contains all the images that have been derived from that single camera frame (so perhaps a low resolution image in addition to the full-size output), as well as metadata from the camera system and further metadata from the post-processing system.
+All of the `rpicam-apps` use an event loop that receives messages when a new set of frames arrives from the camera system. This set of frames is called a `CompletedRequest`. The `CompletedRequest` contains:
+* all images derived from that single camera frame: often a low-resolution image and a full-size output
+* metadata from the camera and post-processing systems
 
 ==== `rpicam-hello`
 
-`rpicam-hello` is much the easiest application to understand. The only thing it does with the camera images is to extract the `CompletedRequestPtr` (a shared pointer to the `CompletedRequest`) from the message:
+`rpicam-hello` is the smallest application, and the best place to start understanding `rpicam-apps` design. It extract the `CompletedRequestPtr`, a shared pointer to the `CompletedRequest`, from the message, and forwards it to the preview window:
 
+[cpp]
 ----
 CompletedRequestPtr &completed_request = std::get<CompletedRequestPtr>(msg.payload);
-----
-
-...and forward it to the preview window:
-
-----
 app.ShowPreview(completed_request, app.ViewfinderStream());
 ----
 
-One important thing to note is that every `CompletedRequest` must be recycled back to the camera system so that the buffers can be reused, otherwise it will simply run out of buffers in which to receive new camera frames. This recycling process happens automatically when all references to the `CompletedRequest` are dropped, using {cpp}'s _shared pointer_ and _custom deleter_ mechanisms.
+Every `CompletedRequest` must be recycled back to the camera system so that the buffers can be reused. Otherwise, the camera runs out of buffers for new camera frames. This recycling process happens automatically when no references to the `CompletedRequest` remain using {cpp}'s _shared pointer_ and _custom deleter_ mechanisms.
 
-This means that in `rpicam-hello`, two things must happen for the `CompletedRequest` to be returned to the camera:
+As a result, `rpicam-hello` must complete the following actions to recycle the buffer space:
 
-* The event loop must go round again so that the message (`msg` in the code), which is holding a reference to the shared pointer, is dropped
+* The event loop must finish a cycle so the message (`msg` in the code), which holds a reference to `CompletedRequest`, can be replaced with the next message. This discards the reference to the previous message.
 
-* The preview thread, which takes another reference to the `CompletedRequest` when `ShowPreview` is called, must be called again with a new `CompletedRequest`, causing the previous one to be dropped
+* When the event thread calls `ShowPreview`, it passes the preview thread a reference to the `CompletedRequest`. The preview thread discards the last `CompletedRequest` instance each time `ShowPreview` is called.
 
 ==== `rpicam-vid`
 
-`rpicam-vid` is not unlike `rpicam-hello`, but it adds a codec to the event loop and the preview. Before the event loop starts, we must configure that encoder with a callback which says what happens to the buffer containing the encoded image data.
+`rpicam-vid` is similar to `rpicam-hello` with encoding added to the event loop. Before the event loop starts, `rpicam-vid` configures the encoder with a callback. The callback handles the buffer containing the encoded image data. In the code below, we send the buffer to the `Output` object. `Output` could write it to a file or stream it, depending on the options specified.
 
+[cpp]
 ----
 app.SetEncodeOutputReadyCallback(std::bind(&Output::OutputReady, output.get(), _1, _2, _3, _4));
 ----
 
-Here we send the buffer to the `Output` object which may write it to a file, or send it over the network, according to our choice when we started the application.
-
-The encoder also takes a new reference to the `CompletedRequest`, so once the event loop, the preview window and the encoder all drop their references, the `CompletedRequest` will be recycled automatically back to the camera system.
+Because this code passes the encoder a reference to the `CompletedRequest`, `rpicam-vid` can't recycle buffer data until the event loop, preview window, _and_ encoder all discard their references.
 
 ==== `rpicam-raw`
 
-`rpicam-raw` is not so very different from `rpicam-vid`. It too uses an encoder, although this time it is a dummy encoder called the `NullEncoder`. This just treats the input image directly as the output buffer and is careful not to drop its reference to the input until the output callback has dealt with it first.
+`rpicam-raw` is similar to `rpicam-vid`. It also encodes during the event loop. However, `rpicam-raw` uses a dummy encoder called the `NullEncoder`. This uses the input image as the output buffer instead of encoding it with a codec. `NullEncoder` only discards its reference to the buffer once the output callback completes. This guarantees that the buffer isn't recycled before the callback processes the image.
 
-This time, however, we do not forward anything to the preview window, although we could have displayed the (processed) video stream if we had wanted.
+`rpicam-raw` doesn't forward anything to the preview window.
 
-The use of the `NullEncoder` is possibly overkill in this application, as we could probably just send the image straight to the `Output` object. However, it serves to underline the general principle that it is normally a bad idea to do too much work directly in the event loop, and that time-consuming processes are often better left to other threads.
+`NullEncoder` is possibly overkill in `rpicam-raw`. We could probably send images straight to the `Output` object, instead. However, `rpicam-apps` need to limit work in the event loop. `NullEncoder` demonstrates how you can handle most processes (even holding onto a reference) in other threads.
 
 ==== `rpicam-jpeg`
 
-We discuss `rpicam-jpeg` rather than `rpicam-still` as the basic function (that of switching the camera from preview into capture mode) is the same, and `rpicam-jpeg` has far fewer additional options (such as timelapse capture) that serve to distract from the basic function.
+`rpicam-jpeg` starts the camera in preview mode in the usual way. When the timer completes, it stops the preview and switches to still capture:
 
-`rpicam-jpeg` starts the camera in preview mode in the usual way, but at the appropriate moment stops it and switches to still capture:
-
+[cpp]
 ----
 app.StopCamera();
 app.Teardown();
@@ -59,4 +55,4 @@ app.ConfigureStill();
 app.StartCamera();
 ----
 
-Then the event loop will grab the first frame that emerges once it's no longer in preview mode, and saves this as a JPEG.
+The event loop grabs the first frame returned from still mode and saves this as a JPEG.
