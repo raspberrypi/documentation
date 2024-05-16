@@ -109,7 +109,7 @@ $ rpi-eeprom-config -c boot.conf -p mypubkey.pem -o pieeprom.bin --cacertder cer
 $ rpi-eeprom-digest -k myprivkey.pem -i pieeprom.bin -o pieeprom.sig
 ----
 
-During network boot, your Raspberry Pi should use HTTPS instead of HTTP. You can check the boot output for the HTTPS URL:
+During network boot, your Raspberry Pi should use HTTPS instead of HTTP. To see the full HTTPS URL resolved by Network Install for the download, check the boot output:
 
 ----
 Loading boot.img ...
