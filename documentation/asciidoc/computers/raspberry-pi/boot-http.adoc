@@ -14,6 +14,8 @@ HTTP_HOST=downloads.raspberrypi.org
 NET_INSTALL_ENABLED=0
 ```
 
+boot.img and its associated boot.sig file is a ram disk containg a boot file system, see xref:raspberry-pi.adoc#boot_ramdisk[boot_ramdisk] for more details.
+
 HTTP in the `BOOT_ORDER` will be ignored if secure boot is enabled and xref:raspberry-pi.adoc#HTTP_HOST[HTTP_HOST] is not set.
 
 === Requirements
