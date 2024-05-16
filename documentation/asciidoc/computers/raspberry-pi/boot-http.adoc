@@ -22,7 +22,7 @@ HTTP in the `BOOT_ORDER` will be ignored if secure boot is enabled and xref:rasp
 
 To use HTTP boot, xref:raspberry-pi.adoc#bootloader_update_stable[update] to a bootloader released 10th March 2022 or later. HTTP boot requires a wired Ethernet connection.
 
-To use custom CA certificates, xref:raspberry-pi.adoc#bootloader_update_stable[update the bootloader] to a bootloader released 5th April 2024 or later. Only devices running the BCM2712 CPU support custom CA certificates.
+To use custom CA certificates, xref:raspberry-pi.adoc#bootloader_update_stable[update] to a bootloader released 5th April 2024 or later. Only devices running the BCM2712 CPU support custom CA certificates.
 
 === Keys
 
