@@ -936,7 +936,7 @@ This bit-field describes the features supported by the current bootloader. This 
 
 The UTC update timestamp set by `rpi-eeprom-update`.
 
-`signed_boot` - 32-bit integer
+`signed` - 32-bit integer
 
 If Secure Boot is enabled then this bit-field will be non-zero. The individual bits indicate the current Secure Boot configuration.
 
