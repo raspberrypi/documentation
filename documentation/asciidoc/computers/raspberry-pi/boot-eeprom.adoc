@@ -55,21 +55,23 @@ To change the boot-mode or bootloader version from within Raspberry Pi OS, run x
 
 === Updating the bootloader configuration
 
-The `DEFAULT` version of the bootloader represents the latest factory default firmware image. It updates to provide critical bug fixes, hardware support and periodically after features have been tested in the `LATEST` release. 
-The `LATEST` bootloader updates more often to include the latest fixes and improvements.
+The `default` version of the bootloader represents the latest factory default firmware image. It updates to provide critical bug fixes, hardware support and periodically after features have been tested in the `latest` release.
+The `latest` bootloader updates more often to include the latest fixes and improvements.
 
-Advanced users can switch to the `LATEST` bootloader to get the latest functionality.
+Advanced users can switch to the `latest` bootloader to get the latest functionality.
 
 Open a command prompt and start `raspi-config`.
 
+[source,console]
 ----
-sudo raspi-config
+$ sudo raspi-config
 ----
 
 Navigate to `Advanced Options` and then `Bootloader Version`. Select `Latest` and choose `Yes` to confirm. Select `Finish` and confirm you want to reboot. After the reboot, open a command prompt again and update your system:
 
+[source,console]
 ----
-sudo apt update
+$ sudo apt update
 ----
 
 If you run `sudo rpi-eeprom-update`, you should see that a more recent version of the bootloader is available and it's the `latest` release.
@@ -90,9 +92,10 @@ BOOTLOADER: update available
 
 Now you can update your bootloader.
 
+[source,console]
 ----
-sudo rpi-eeprom-update -a
-sudo reboot
+$ sudo rpi-eeprom-update -a
+$ sudo reboot
 ----
 
 Reboot, then run `sudo rpi-eeprom-update`. You should now see that the `CURRENT` date has updated to the latest version of the bootloader:
@@ -120,19 +123,19 @@ To view the configuration used by the current running bootloader run:
 
 To read the configuration from a bootloader image:
 
-[,bash]
+[source,console]
 ----
-rpi-eeprom-config pieeprom.bin
+$ rpi-eeprom-config pieeprom.bin
 ----
 
 ==== Editing the current bootloader configuration
 
 The following command loads the current bootloader configuration into a text editor. When the editor is closed, `rpi-eeprom-config` applies the updated configuration to latest available bootloader release and uses `rpi-eeprom-update` to schedule an update when the system is rebooted:
 
-[,bash]
+[source,console]
 ----
-sudo -E rpi-eeprom-config --edit
-sudo reboot
+$ sudo -E rpi-eeprom-config --edit
+$ sudo reboot
 ----
 
 If the updated configuration is identical or empty, then no changes are made.
@@ -143,9 +146,10 @@ The editor is selected by the `EDITOR` environment variable.
 
 The following command applies `boot.conf` to the latest available bootloader image and uses `rpi-eeprom-update` to schedule an update when the system is rebooted.
 
+[source,console]
 ----
-sudo rpi-eeprom-config --apply boot.conf
-sudo reboot
+$ sudo rpi-eeprom-config --apply boot.conf
+$ sudo reboot
 ----
 
 [[automaticupdates]]
@@ -155,16 +159,16 @@ The `rpi-eeprom-update` `systemd` service runs at startup and applies an update 
 
 To disable automatic updates:
 
-[,bash]
+[source,console]
 ----
-sudo systemctl mask rpi-eeprom-update
+$ sudo systemctl mask rpi-eeprom-update
 ----
 
 To re-enable automatic updates:
 
-[,bash]
+[source,console]
 ----
-sudo systemctl unmask rpi-eeprom-update
+$ sudo systemctl unmask rpi-eeprom-update
 ----
 
 NOTE: If the xref:raspberry-pi.adoc#FREEZE_VERSION[FREEZE_VERSION] bootloader config is set then the update service will skip any automatic updates. This removes the need to individually disable the update service if there are multiple operating systems installed, or when swapping SD cards.
@@ -175,47 +179,48 @@ Raspberry Pi OS uses the `rpi-eeprom-update` script to implement an <<automaticu
 
 Reading the current bootloader version:
 
-[,bash]
+[source,console]
 ----
-vcgencmd bootloader_version
+$ vcgencmd bootloader_version
 ----
 
 Check if an update is available:
 
-[,bash]
+[source,console]
 ----
-sudo rpi-eeprom-update
+$ sudo rpi-eeprom-update
 ----
 
 Install the update:
 
+[source,console]
 ----
-sudo rpi-eeprom-update -a
-sudo reboot
+$ sudo rpi-eeprom-update -a
+$ sudo reboot
 ----
 
 Cancel the pending update:
 
-[,bash]
+[source,console]
 ----
-sudo rpi-eeprom-update -r
+$ sudo rpi-eeprom-update -r
 ----
 
 Installing a specific bootloader image:
 
-[,bash]
+[source,console]
 ----
-sudo rpi-eeprom-update -d -f pieeprom.bin
+$ sudo rpi-eeprom-update -d -f pieeprom.bin
 ----
 
 The `-d` flag instructs `rpi-eeprom-update` to use the configuration in the specified image file instead of automatically migrating the current configuration.
 
 Display the built-in documentation:
 
+[source,console]
 ----
-rpi-eeprom-update -h
+$ rpi-eeprom-update -h
 ----
-
 
 [[bootloader-release]]
 === Bootloader release status
@@ -235,9 +240,9 @@ NOTE: You can change which release stream is to be used during an update by edit
 
 The following command replaces the bootloader configuration in `pieeprom.bin` with `boot.conf` and writes the new image to `new.bin`:
 
-[,bash]
+[source,console]
 ----
-rpi-eeprom-config --config boot.conf --out new.bin pieeprom.bin
+$ rpi-eeprom-config --config boot.conf --out new.bin pieeprom.bin
 ----
 
 ==== recovery.bin
@@ -253,22 +258,23 @@ See also xref:raspberry-pi.adoc#raspberry-pi-4-and-raspberry-pi-5-boot-flow[Rasp
 | Filename
 | Purpose
 
-| recovery.bin
+| `recovery.bin`
 | Bootloader recovery executable
 
-| pieeprom.upd
+| `pieeprom.upd`
 | Bootloader EEPROM image
 
-| pieeprom.bin
+| `pieeprom.bin`
 | Bootloader EEPROM image - same as pieeprom.upd but changes recovery.bin behaviour
 
-| pieeprom.sig
+| `pieeprom.sig`
 | The sha256 checksum of bootloader image (pieeprom.upd/pieeprom.bin)
 
-| vl805.bin
+| `vl805.bin`
 | The VLI805 USB firmware EEPROM image - Raspberry Pi 4B revision 1.3 and earlier only.
 
-| vl805.sig| The sha256 checksum of vl805.bin
+| `vl805.sig`
+| The sha256 checksum of vl805.bin
 |===
 
 * If the bootloader update image is called `pieeprom.upd` then `recovery.bin` is renamed to `recovery.000` once the update has completed, then the system is rebooted. Since `recovery.bin` is no longer present the ROM loads the newly updated bootloader from SPI flash and the OS is booted as normal.
