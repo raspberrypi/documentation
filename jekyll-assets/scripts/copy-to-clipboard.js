@@ -59,6 +59,7 @@ window.addEventListener('load', function() {
             if (x.startsWith('$ ')) {
               return x.substring(2);
             }
+            else return x;
           })
 
           // re-assemble the snippet into multiple lines
