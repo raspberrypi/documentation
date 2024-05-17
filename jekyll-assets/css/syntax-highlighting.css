@@ -68,3 +68,15 @@
 .highlight .vg { color: #40ffff } /* Name.Variable.Global */
 .highlight .vi { color: #40ffff } /* Name.Variable.Instance */
 .highlight .il { color: #3677a9 } /* Literal.Number.Integer.Long */
+
+.highlight .gp, .highlight .gp + .w {
+	/* Disable text selection highlighting for console snippets
+   * Credit: https://stackoverflow.com/a/4407335/1558022 with modifications by Nate Contino */
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}

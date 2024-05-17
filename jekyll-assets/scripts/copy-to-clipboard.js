@@ -48,7 +48,17 @@ window.addEventListener('load', function() {
       if (trigger.parentNode.querySelector('div.line')) {
         var text = extractDoxygenCode(trigger.parentNode);
       } else {
-        var text = trigger.parentNode.querySelector('pre').textContent;
+        // if the code snippet represents a console snippet
+        if (trigger.parentNode.querySelector('pre').querySelector('code') != null && trigger.parentNode.querySelector('pre').querySelector('code').getAttribute('data-lang') == 'console') {
+          var text = trigger.parentNode.querySelector('pre').textContent
+          // trim the '$ ' from the clipboard copy so users don't have to trim it themselves
+          if (text.startsWith('$ ')) {
+            text = text.substring(2) // string guaranteed to be at least 2 tokens long if it already has '$ ' at beginning
+          }
+        } else {
+          var text = trigger.parentNode.querySelector('pre').textContent;
+
+        }
       }
       return text;
     },
