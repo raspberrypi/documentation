@@ -70,7 +70,7 @@
 .highlight .il { color: #3677a9 } /* Literal.Number.Integer.Long */
 
 .highlight .gp, .highlight .gp + .w {
-	/* Disable text selection highlighting for console snippets
+	/* Disable text selection highlighting for the '$ ' prefix at the beginning of console snippets (if it exists -- otherwise has no effect)
    * Credit: https://stackoverflow.com/a/4407335/1558022 with modifications by Nate Contino */
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
