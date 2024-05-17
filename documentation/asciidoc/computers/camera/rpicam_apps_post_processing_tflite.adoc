@@ -28,7 +28,7 @@ You can configure this stage with the following parameters:
 
 Example `object_classify_tf.json` file:
 
-[json]
+[source,json]
 ----
 {
     "object_classify_tf" : {
@@ -36,17 +36,17 @@ Example `object_classify_tf.json` file:
         "refresh_rate" : 30,
         "threshold_high" : 0.6,
         "threshold_low" : 0.4,
-        "model_file" : "/home/pi/models/mobilenet_v1_1.0_224_quant.tflite",
-        "labels_file" : "/home/pi/models/labels.txt",
+        "model_file" : "/home/<username>/models/mobilenet_v1_1.0_224_quant.tflite",
+        "labels_file" : "/home/<username>/models/labels.txt",
         "display_labels" : 1
     },
     "annotate_cv" : {
-    	"text" : "",
-    	"fg" : 255,
-    	"bg" : 0,
-    	"scale" : 1.0,
-    	"thickness" : 2,
-    	"alpha" : 0.3
+        "text" : "",
+        "fg" : 255,
+        "bg" : 0,
+        "scale" : 1.0,
+        "thickness" : 2,
+        "alpha" : 0.3
     }
 }
 ----
@@ -88,7 +88,7 @@ You can configure the `plot_pose_cv` stage with the following parameters:
 
 Example `pose_estimation_tf.json` file:
 
-[json]
+[source,json]
 ----
 {
     "pose_estimation_tf" : {
@@ -96,7 +96,7 @@ Example `pose_estimation_tf.json` file:
         "model_file" : "posenet_mobilenet_v1_100_257x257_multi_kpt_stripped.tflite"
     },
     "plot_pose_cv" : {
-	   "confidence_threshold" : -0.5
+       "confidence_threshold" : -0.5
     }
 }
 ----
@@ -143,20 +143,20 @@ You can configure the `object_detect_draw_cv` stage with the following parameter
 
 Example `object_detect_tf.json` file:
 
-[json]
+[source,json]
 ----
 {
     "object_detect_tf" : {
-    	"number_of_threads" : 2,
-    	"refresh_rate" : 10,
-    	"confidence_threshold" : 0.5,
-    	"overlap_threshold" : 0.5,
-    	"model_file" : "/home/pi/models/coco_ssd_mobilenet_v1_1.0_quant_2018_06_29/detect.tflite",
-    	"labels_file" : "/home/pi/models/coco_ssd_mobilenet_v1_1.0_quant_2018_06_29/labelmap.txt",
-    	"verbose" : 1
+        "number_of_threads" : 2,
+        "refresh_rate" : 10,
+        "confidence_threshold" : 0.5,
+        "overlap_threshold" : 0.5,
+        "model_file" : "/home/<username>/models/coco_ssd_mobilenet_v1_1.0_quant_2018_06_29/detect.tflite",
+        "labels_file" : "/home/<username>/models/coco_ssd_mobilenet_v1_1.0_quant_2018_06_29/labelmap.txt",
+        "verbose" : 1
     },
     "object_detect_draw_cv" : {
-	   "line_thickness" : 2
+       "line_thickness" : 2
     }
 }
 ----
@@ -193,16 +193,16 @@ You can configure this stage with the following parameters:
 
 Example `segmentation_tf.json` file:
 
-[json]
+[source,json]
 ----
 {
     "segmentation_tf" : {
-    	"number_of_threads" : 2,
-    	"refresh_rate" : 10,
-    	"model_file" : "/home/pi/models/lite-model_deeplabv3_1_metadata_2.tflite",
-    	"labels_file" : "/home/pi/models/segmentation_labels.txt",
-    	"draw" : 1,
-    	"verbose" : 1
+        "number_of_threads" : 2,
+        "refresh_rate" : 10,
+        "model_file" : "/home/<username>/models/lite-model_deeplabv3_1_metadata_2.tflite",
+        "labels_file" : "/home/<username>/models/segmentation_labels.txt",
+        "draw" : 1,
+        "verbose" : 1
     }
 }
 ----
