@@ -4,7 +4,7 @@
 
 For example, the **negate** stage turns light pixels dark and dark pixels light. Because the negate stage is basic, requiring no configuration, `negate.json` just names the stage:
 
-[json]
+[source,json]
 ----
 {
     "negate": {}
@@ -20,7 +20,7 @@ $ rpicam-hello --post-process-file negate.json
 
 To run multiple post-processing stages, create a JSON file that contains multiple stages as top-level keys. For example, to the following configuration runs the Sobel stage, then the negate stage:
 
-[json]
+[source,json]
 ----
 {
     "sobel_cv":
@@ -52,7 +52,7 @@ The `negate` stage has no user-configurable parameters.
 
 Default `negate.json` file:
 
-[json]
+[source,json]
 ----
 {
     "negate" : {}
@@ -113,7 +113,7 @@ Processing a single image takes between two and three seconds for a 12MP image o
 
 Default `drc.json` file for DRC:
 
-[json]
+[source,json]
 ----
 {
     "hdr" : {
@@ -152,7 +152,7 @@ image::images/drc.jpg[Image with DRC processing]
 
 Default `hdr.json` file for HDR:
 
-[json]
+[source,json]
 ----
 {
     "hdr" : {
@@ -214,7 +214,7 @@ You can configure this stage with the following parameters, passing dimensions a
 
 Default `motion_detect.json` configuration file:
 
-[json]
+[source,json]
 ----
 {
     "motion_detect" : {

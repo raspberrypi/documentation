@@ -29,11 +29,7 @@ libcamera build: v0.0.0+3058-c29143f7
 
 Lists the detected cameras attached to your Raspberry Pi and their available sensor modes. Does not accept a value.
 
-Sensor mode identifiers have the following form:
-
-----
-S<Bayer order><Bit-depth>_<Optional packing> : <Resolution list>
-----
+Sensor mode identifiers have the following form: `S<Bayer order><Bit-depth>_<Optional packing> : <Resolution list>`
 
 Crop is specified in native sensor pixels (even in pixel binning mode) as `(<x>, <y>)/<Width>×<Height>`. `(x, y)` specifies the location of the crop window of size `width × height` in the sensor array.
 
