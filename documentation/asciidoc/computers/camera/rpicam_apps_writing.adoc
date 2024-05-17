@@ -8,7 +8,7 @@ All of the `rpicam-apps` use an event loop that receives messages when a new set
 
 ==== `rpicam-hello`
 
-`rpicam-hello` is the smallest application, and the best place to start understanding `rpicam-apps` design. It extract the `CompletedRequestPtr`, a shared pointer to the `CompletedRequest`, from the message, and forwards it to the preview window:
+`rpicam-hello` is the smallest application, and the best place to start understanding `rpicam-apps` design. It extracts the `CompletedRequestPtr`, a shared pointer to the `CompletedRequest`, from the message, and forwards it to the preview window:
 
 [cpp]
 ----
