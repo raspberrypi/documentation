@@ -48,9 +48,10 @@ window.addEventListener('load', function() {
       if (trigger.parentNode.querySelector('div.line')) {
         var text = extractDoxygenCode(trigger.parentNode);
       } else {
+        var text = trigger.parentNode.querySelector('pre').textContent
+        
         // if the code snippet represents a console snippet
         if (trigger.parentNode.querySelector('pre').querySelector('code') != null && trigger.parentNode.querySelector('pre').querySelector('code').getAttribute('data-lang') == 'console') {
-          var text = trigger.parentNode.querySelector('pre').textContent
           // for each line of the code snippet
           var text_split_into_lines = text.split('\n');
 
@@ -64,9 +65,6 @@ window.addEventListener('load', function() {
 
           // re-assemble the snippet into multiple lines
           text = text_split_into_lines.join('\n');
-        } else {
-          var text = trigger.parentNode.querySelector('pre').textContent;
-
         }
       }
       return text;
