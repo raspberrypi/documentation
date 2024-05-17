@@ -16,7 +16,7 @@ You can configure this stage with the following parameters:
 
 Default `sobel_cv.json` file:
 
-[json]
+[source,javascript]
 ----
 {
     "sobel_cv" : {
@@ -51,7 +51,7 @@ The `face_detect_cv` stage runs only during preview and video capture. It ignore
 
 Default `face_detect_cv.json` file:
 
-[cols="1,3"]
+[source,json]
 ----
 {
     "face_detect_cv" : {
@@ -99,16 +99,16 @@ You can configure this stage with the following parameters:
 
 Default `annotate_cv.json` file:
 
-[json]
+[source,json]
 ----
 {
     "annotate_cv" : {
-    	"text" : "Frame %frame exp %exp ag %ag dg %dg",
-    	"fg" : 255,
-    	"bg" : 0,
-    	"scale" : 1.0,
-    	"thickness" : 2,
-    	"alpha" : 0.3
+        "text" : "Frame %frame exp %exp ag %ag dg %dg",
+        "fg" : 255,
+        "bg" : 0,
+        "scale" : 1.0,
+        "thickness" : 2,
+        "alpha" : 0.3
     }
 }
 ----
