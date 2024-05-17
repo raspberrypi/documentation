@@ -103,14 +103,14 @@ Now the picture is taken at full resolution with no banner.
 
 === Automating image capture
 
-You can write a Bash script which takes a picture with the webcam. The script below saves the images in the `/home/pi/webcam` directory, so create the `webcam` subdirectory first with:
+You can write a Bash script which takes a picture with the webcam. The script below saves the images in the `/home/<username>/webcam` directory, so create the `webcam` subdirectory first with:
 
 [,bash]
 ----
 mkdir webcam
 ----
 
-To create a script, open up your editor of choice and write the following example code:
+To create a script, open up your editor of choice and write the following example code, replacing `<username>` with your username:
 
 [,bash]
 ----
@@ -118,7 +118,7 @@ To create a script, open up your editor of choice and write the following exampl
 
 DATE=$(date +"%Y-%m-%d_%H%M")
 
-fswebcam -r 1280x720 --no-banner /home/pi/webcam/$DATE.jpg
+fswebcam -r 1280x720 --no-banner /home/<username>/webcam/$DATE.jpg
 ----
 
 This script will take a picture and name the file with a timestamp. Saving the file as `webcam.sh`, first make the file executable:
@@ -147,7 +147,7 @@ Corrupt JPEG data: 2 extraneous bytes before marker 0xd6
 Captured frame in 0.00 seconds.
 --- Processing captured image...
 Disabling banner.
-Writing JPEG image to '/home/pi/webcam/2013-06-07_2338.jpg'.
+Writing JPEG image to '/home/<username>/webcam/2013-06-07_2338.jpg'.
 ----
 
 === Time-lapse captures
@@ -160,11 +160,11 @@ First open the cron table for editing:
 crontab -e
 ----
 
-This will either ask which editor you would like to use, or open in your default editor. Once you have the file open in an editor, add the following line to schedule taking a picture every minute (referring to the Bash script from above):
+This will either ask which editor you would like to use, or open in your default editor. Once you have the file open in an editor, add the following line to schedule taking a picture every minute (referring to the Bash script from above), replacing `<username>` with your username:
 
 [,bash]
 ----
-* * * * * /home/pi/webcam.sh 2>&1
+* * * * * /home/<username>/webcam.sh 2>&1
 ----
 
 Save and exit, and you should see the message:

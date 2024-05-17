@@ -8,6 +8,7 @@ There are a number of third-party audio software applications available for Rasp
 
 If you need to configure Raspberry Pi OS yourself, perhaps if you're running a headless system of your own and don't have the option of control via the GUI, you will need to make your Raspberry Pi audio board the primary audio device in Raspberry Pi OS, disabling the Raspberry Pi’s on-board audio device. This is done by editing the xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] file. Using a Terminal session connected to your Raspberry Pi via SSH, run the following command to edit the file:
 
+[source,console]
 ----
 $ sudo nano /boot/firmware/config.txt
 ----
@@ -18,8 +19,9 @@ Find the `dtparam=audio=on` line in the file and comment it out by placing a # s
 #dtparam=audio=on
 ----
 
-Press CTRL+X, then Y and Enter to save, followed by a reboot of your Raspberry Pi in order for the settings to take effect.
+Press `Ctrl+X`, then the `Y` key, then *Enter* to save. Finally, reboot your Raspberry Pi in order for the settings to take effect.
 
+[source,console]
 ----
 $ sudo reboot
 ----
@@ -36,6 +38,7 @@ All the necessary mounting hardware including spacers, screws and connectors is 
 
 There are multiple versions of the audio cards, and the version that you possess determines the actions required to configure it. Older IQaudIO-marked boards (black PCB) are electrically equivalent to the Raspberry Pi-branded boards (green PCB) but have different EEPROM contents. The following command can be used to confirm which version you have:
 
+[source,console]
 ----
 $ grep -a . /proc/device-tree/hat/*
 ----
@@ -74,24 +77,28 @@ Preconfigured scripts (loadable ALSA settings) https://github.com/raspberrypi/Pi
 
 The Codec Zero needs to know which of these input and output settings are being used each time the Raspberry Pi powers on. Using a Terminal session on your Raspberry Pi, run the following command to download the scripts:
 
+[source,console]
 ----
 $ git clone https://github.com/raspberrypi/Pi-Codec.git
 ----
 
 If git is not installed, run the following command to install it:
 
+[source,console]
 ----
 $ sudo apt install git
 ----
 
 The following command will set your device to use the on-board MEMS microphone and output for speaker playback:
 
+[source,console]
 ----
-$ sudo alsactl restore -f /home/pi/Pi-Codec/Codec_Zero_OnboardMIC_record_and_SPK_playback.state
+$ sudo alsactl restore -f /home/<username>/Pi-Codec/Codec_Zero_OnboardMIC_record_and_SPK_playback.state
 ----
 
 In order for your project to operate with your required settings when it is powered on, edit the `/etc/rc.local` file. The contents of this file are run at the end of every boot process, so it is ideal for this purpose. Edit the file:
 
+[source,console]
 ----
 $ sudo nano /etc/rc.local
 ----
@@ -112,19 +119,21 @@ Add the chosen script command above the exit 0 line and then Ctrl X, Y and Enter
 #
 # By default this script does nothing.
 
-sudo alsactl restore -f /home/pi/Pi-Codec/Codec_Zero_OnboardMIC_record_and_SPK_playback.state
+sudo alsactl restore -f /home/<username>/Pi-Codec/Codec_Zero_OnboardMIC_record_and_SPK_playback.state
 
 exit 0
 ----
 
-Ctrl X, Y and Enter to save and reboot your device for the settings to take effect:
+Press `Ctrl+X`, then the `Y` key, then *Enter* to save. Reboot for the settings to take effect:
 
+[source,console]
 ----
 $ sudo reboot
 ----
 
 If you are using your Raspberry Pi and Codec Zero in a headless environment, there is one final step required to make the Codec Zero the default audio device without access to the GUI audio settings on the desktop. We need to create a small file in your home folder:
 
+[source,console]
 ----
 $ sudo nano .asoundrc
 ----
@@ -138,8 +147,9 @@ pcm.!default {
 }
 ----
 
-Ctrl X, Y and Enter to save, and reboot once more to complete the configuration:
+Press `Ctrl+X`, then the `Y` key, then *Enter* to save. Reboot once more to complete the configuration:
 
+[source,console]
 ----
 $ sudo reboot
 ----
@@ -184,6 +194,7 @@ solution.
 
 The amp will start up muted. To unmute the amp:
 
+[source,console]
 ----
 $ sudo sh -c "echo 22 > /sys/class/gpio/export"
 $ sudo sh -c "echo out >/sys/class/gpio/gpio22/direction"
@@ -192,6 +203,7 @@ $ sudo sh -c "echo 1 >/sys/class/gpio/gpio22/value"
 
 to mute the amp once more:
 
+[source,console]
 ----
 $ sudo sh -c "echo 0 >/sys/class/gpio/gpio22/value"
 ----
