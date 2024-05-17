@@ -58,16 +58,17 @@ $ sudo alsactl store
 
 You can save the current state to a file, then reload that state at startup.
 
-To save:
+To save, run the following command, replacing `<username>` with your username:
+
+[source,console]
+----
+$ sudo alsactl store -f /home/<username>/usecase.state
+----
+
+To restore a saved file, run the following command, replacing `<username>` with your username:
 
 ----
-$ sudo alsactl store -f /home/pi/usecase.state
-----
-
-To restore a saved file:
-
-----
-$ sudo alsactl restore -f /home/pi/usecase.state
+$ sudo alsactl restore -f /home/<username>/usecase.state
 ----
 
 === MPD-based audio with volume control

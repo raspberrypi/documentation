@@ -65,11 +65,11 @@ On Windows 10 there is a Sharing Wizard that helps with some of these steps.
 $ mkdir windowshare
 ----
 
-Now, we need to mount the remote folder to that location. The remote folder is the host name or IP address of the Windows PC, and the share name used when sharing it. We also need to provide the Windows username that will be used to access the remote machine.
+Now, we need to mount the remote folder to that location. The remote folder is the host name or IP address of the Windows PC, and the share name used when sharing it. We also need to provide the Windows username that will be used to access the remote machine. Don't forget to replace the `<username>` placeholder with your Raspberry Pi OS username.
 
 [source,console]
 ----
-$ sudo mount.cifs //<hostname or IP address>/<shared windows folder> /home/pi/windowshare -o user=<name>
+$ sudo mount.cifs //<hostname or IP address>/<shared windows folder> /home/<username>/windowshare -o user=<name>
 ----
 
 You should now be able to view the content of the Windows share on your Raspberry Pi.

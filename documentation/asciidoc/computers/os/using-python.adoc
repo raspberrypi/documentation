@@ -69,7 +69,7 @@ To use a virtual environment you will need to create a container to store the en
 
 One way you can proceed is to create a new virtual environment for each Python project you make. Here, you'll create a directory to hold your own code along with a virtual environment directory: 
 
-[source,bash]
+[source,console]
 ----
 $ mkdir my_project
 $ cd my_project
@@ -78,7 +78,6 @@ $ python -m venv env
 
 If you now look inside the `my_project` directory you'll see a directory called `env`.
 
-[source,bash]
 ----
 $ ls -la
 total 12
@@ -92,7 +91,6 @@ NOTE: If you want to inherit the currently installed packages from the system Py
 
 Inside this directory is a full Python distribution. To activate your virtual environment and make that version of Python the one you're currently using, you should type:
 
-[source,bash]
 ----
 $ source env/bin/activate
 (env) $
@@ -100,15 +98,13 @@ $ source env/bin/activate
 
 You'll see that your prompt is now prepended with `(env)` to indicate that you're no longer using the system Python. Instead, you're using the version of Python contained inside your virtual environment. Any changes you make here won't cause problems for your system Python; nor will any new modules you install into your environment.
 
-[source,bash]
 ----
 (env) $ which python
-/home/pi/my_project/env/bin/python
+/home/<username>/my_project/env/bin/python
 ----
 
 If you install a third-party package, it'll install into the Python distribution in your virtual environment:
 
-[source,bash]
 ----
 (env) $ pip install buildhat
 Looking in indexes: https://pypi.org/simple, https://www.piwheels.org/simple
@@ -131,7 +127,6 @@ Successfully installed buildhat-0.5.12 colorzero-2.0 gpiozero-2.0 pyserial-3.5
 
 Now, if you `pip list`, you'll see that your current version of Python includes your new modules. 
 
-[source,bash]
 ----
 (env) $ pip list
 Package    Version
@@ -173,7 +168,7 @@ $
 
 An alternative method to creating a virtual environment for each of your Python projects is to create a single virtual environment for your user account, and then activate that environment before running any of your Python code. This approach may be preferred if you commonly install the same set of modules for each project, and don't want to have to bother creating individual Python environments for each project, essentially just duplicating your environment.
 
-[source,bash]
+[source,console]
 ----
 $ python -m venv ~/.env
 $ source ~/.env/bin/activate
@@ -182,7 +177,6 @@ $ source ~/.env/bin/activate
 
 You can check again that you're in a separate environment by using `pip list`:
 
-[source,bash]
 ----
 (.env) $ pip list
 Package    Version
@@ -193,7 +187,6 @@ setuptools 66.1.1
 
 ...and leave it using `deactivate`.
 
-[source,bash]
 ----
 (.env) $ deactivate
 $
