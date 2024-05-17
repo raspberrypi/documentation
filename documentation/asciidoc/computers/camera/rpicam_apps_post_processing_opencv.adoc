@@ -16,7 +16,7 @@ You can configure this stage with the following parameters:
 
 Default `sobel_cv.json` file:
 
-[source,javascript]
+[source,json]
 ----
 {
     "sobel_cv" : {
