@@ -51,10 +51,18 @@ window.addEventListener('load', function() {
         // if the code snippet represents a console snippet
         if (trigger.parentNode.querySelector('pre').querySelector('code') != null && trigger.parentNode.querySelector('pre').querySelector('code').getAttribute('data-lang') == 'console') {
           var text = trigger.parentNode.querySelector('pre').textContent
+          // for each line of the code snippet
+          var text_split_into_lines = text.split('\n');
+
           // trim the '$ ' from the clipboard copy so users don't have to trim it themselves
-          if (text.startsWith('$ ')) {
-            text = text.substring(2) // string guaranteed to be at least 2 tokens long if it already has '$ ' at beginning
-          }
+          text_split_into_lines = text_split_into_lines.map(function(x) {
+            if (x.startsWith('$ ')) {
+              return x.substring(2);
+            }
+          })
+
+          // re-assemble the snippet into multiple lines
+          text = text_split_into_lines.join('\n');
         } else {
           var text = trigger.parentNode.querySelector('pre').textContent;
 
