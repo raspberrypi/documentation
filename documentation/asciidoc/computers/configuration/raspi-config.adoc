@@ -543,7 +543,7 @@ Enable or disable shell and kernel messages on the serial connection.
 
 [source,console]
 ----
-$ raspi-config nonint do_serial_cons <0/1/2>
+$ sudo raspi-config nonint do_serial_cons <0/1/2>
 ----
 
 * `0`: enable console over serial port
@@ -692,7 +692,7 @@ For a full list of possible `<country>` values, see the abbreviations used in th
 
 Expand your OS partition to fill the whole storage device, giving you more space to use for files. Reboot the Raspberry Pi to complete this action. Normally, Raspberry Pi OS runs this action on first boot. This option can be useful if you clone your OS to a separate storage device with more storage than the original.
 
-WARNING: There is no confirmation step: selecting the option begins the partition expansion immediately.
+WARNING: There is no confirmation step. Selecting the option begins the partition expansion immediately.
 
 [source,console]
 ----
