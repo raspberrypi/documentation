@@ -232,6 +232,8 @@ On the Raspberry Pi 4 and 5, you can tell the system to use the very latest boot
 
 Use this option to switch between the X11 and Wayland backends. The Wayland backend was introduced in Bookworm, X11 was used in older versions of Raspberry Pi OS.
 
+NOTE: To use Wayland on Raspberry Pi models prior to Raspberry Pi 4, you must also add `wayland=on` to `/boot/firmware/cmdline.txt`.
+
 ===== Audio config
 
 Use this option to switch between the PulseAudio and PipeWire audio backends. The PipeWire backend was introduced in Bookworm. PulseAudio was used in older versions of Rasperry Pi OS.
