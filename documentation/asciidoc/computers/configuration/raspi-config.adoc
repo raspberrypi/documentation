@@ -37,10 +37,11 @@ Configure Wi-Fi SSID and passphrase.
 
 Specify the audio output destination.
 
-[[change-user-password]]
 ==== Password
 
 Change your password.
+
+For more information, see xref:configuration.adoc#change-user-password[Change a user's password].
 
 [[hostname]]
 ==== Hostname
@@ -317,6 +318,8 @@ For a full list of possible `<N>` values, see the numbers used in the interactiv
 ==== Password
 
 Change your password.
+
+For more information, see xref:configuration.adoc#change-user-password[Change a user's password].
 
 [source,console]
 ----

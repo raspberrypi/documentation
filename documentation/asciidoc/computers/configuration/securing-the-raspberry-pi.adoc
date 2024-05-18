@@ -2,6 +2,7 @@
 
 Here, we describe some common ways to improve the security of your Raspberry Pi.
 
+[[change-user-password]]
 === Change a user's password
 
 You can change the password for the current user account via the `raspi-config` application on from the command line:
