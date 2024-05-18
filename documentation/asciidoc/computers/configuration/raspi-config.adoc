@@ -1,13 +1,12 @@
 [[raspi-config]]
-== The `raspi-config` Tool
+== `raspi-config`
 
-`raspi-config` is the Raspberry Pi configuration tool, originally written by https://github.com/asb[Alex Bradbury]. To open the configuration tool, type the following on the command line:
+`raspi-config` helps you configure your Raspberry Pi. To open the configuration tool, run the following command:
 
+[source,console]
 ----
-sudo raspi-config
+$ sudo raspi-config
 ----
-
-The `sudo` is required because you will be changing files that you do not own as the regular user.
 
 NOTE: If you are using the Raspberry Pi desktop, you can use the graphical `Raspberry Pi Configuration` application from the `Preferences` menu to configure your Raspberry Pi.
 
@@ -47,9 +46,7 @@ Specify the audio output destination.
 [[change-user-password]]
 ===== Password
 
-You can change the 'default' user password.
-
-NOTE: Originally, the default user on early versions of Raspberry Pi OS was `pi` with the password `raspberry`. The default user is now set while configuring the OS image or on first boot using a configuration wizard.
+Change your password.
 
 [[hostname]]
 ===== Hostname
@@ -84,7 +81,7 @@ image::images/raspi-display.png[raspi-config display options]
 [[underscan]]
 ===== Underscan
 
-NOTE: This option isn't available if you're using the Wayland backend.
+NOTE: Not available when running Wayland.
 
 If the initial text shown on the screen disappears off the edge, you need to enable overscan to bring the border back. On some displays, particularly monitors, disabling overscan will make the picture fill the whole screen and will remove the black border.
 
@@ -108,7 +105,7 @@ Enable or disable 4Kp60 resolution for HDMI outputs.
 [[interfacing-options]]
 ==== Interface options
 
-In this submenu there are the following options to enable/disable: SSH, VNC, SPI, I2C, Serial port, 1-wire, and Remote GPIO.
+Use this submenu to enable and disable various physical and virtual interfaces.
 
 image::images/raspi-interface.png[raspi-config interface options]
 
@@ -155,9 +152,9 @@ image::images/raspi-perf.png[raspi-config performance options]
 [[overclock]]
 ===== Overclock
 
-On some models it is possible to overclock your Raspberry Pi's CPU using this tool. The overclocking you can achieve will vary; overclocking too high may result in instability. Selecting this option shows the following warning:
+Some models can overclock the CPU using this tool. Overclocking potential varies between individual Raspberry Pi devices. Overclocking too high may result in instability.
 
-*Be aware that overclocking may reduce the lifetime of your Raspberry Pi.* If overclocking at a certain level causes system instability, try a more modest overclock. Hold down the Shift key during boot to temporarily disable overclocking.
+WARNING: *Overclocking may reduce the lifetime of your Raspberry Pi.* If overclocking at a certain level causes system instability, try a more modest overclock. Hold down the *Shift* key during boot to temporarily disable overclocking.
 
 [[memory-split]]
 ===== GPU memory
@@ -170,12 +167,12 @@ Enable or disable a read-only filesystem.
 
 ===== Fan
 
-Set the behaviour of a GPIO connected fan.
+Customise the behaviour of a GPIO connected fan.
 
 [[localisation-options]]
 ==== Localisation options
 
-The localisation submenu gives you these options to choose from: keyboard layout, time zone, locale, and wireless LAN country code.
+Use localisation submenu to control location and country-related options.
 
 image::images/raspi-l18n.png[raspi-config localisation options]
 
@@ -203,14 +200,12 @@ This option sets the country code for your wireless network.
 
 image::images/raspi-adv.png[raspi-config advanced options]
 
-NOTE: The options documented here will change depending on the model of Raspberry Pi that you're using, and whether you're using the Wayland or X11 backend. In the current version of Raspberry Pi OS Bookworm, the Raspberry Pi 4, Pi 400 and Pi 5 use Wayland by default; other models of Raspberry Pi use X11 by default.
-
 [[expand-filesystem]]
 ===== Expand filesystem
 
-This option will expand your installation to fill the whole SD card, giving you more space to use for files. You will need to reboot the Raspberry Pi to make this available. 
+Expands your installation to fill the entire storage device, giving you more space to use for files. You must reboot the Raspberry Pi to make this available.
 
-WARNING: There is no confirmation step: selecting the option begins the partition expansion immediately.
+WARNING: There is no confirmation step. Selecting the option begins the partition expansion immediately.
 
 ===== Network interface names
 
@@ -222,22 +217,21 @@ Configure the network's proxy settings.
 
 ===== Boot order
 
-On Raspberry Pi 4 and 5, you can specify whether to boot from USB or network if the SD card isn't inserted. For more information, see xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration].
+On Raspberry Pi 4 and later, you can specify whether to boot from USB or network if the SD card isn't inserted. For more information, see xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration].
 
 ===== Bootloader version
 
-On the Raspberry Pi 4 and 5, you can tell the system to use the very latest boot ROM software, or revert to the factory default if the latest version causes problems.
+On the Raspberry Pi 4 and later, you can switch to the latest boot ROM software. Alternatively, you can revert to the factory default if the latest version causes problems.
 
 ===== Wayland
 
-Use this option to switch between the X11 and Wayland backends. The Wayland backend was introduced in Bookworm, X11 was used in older versions of Raspberry Pi OS.
+Use this option to switch between the X11 and Wayland backends. Prior to Raspberry Pi OS Bookworm, Raspberry Pi OS used X11.
 
 NOTE: To use Wayland on Raspberry Pi models prior to Raspberry Pi 4, you must also add `wayland=on` to `/boot/firmware/cmdline.txt`.
 
 ===== Audio config
 
-Use this option to switch between the PulseAudio and PipeWire audio backends. The PipeWire backend was introduced in Bookworm. PulseAudio was used in older versions of Rasperry Pi OS.
-
+Use this option to switch between the PulseAudio and PipeWire audio backends. Prior to Raspberry Pi OS Bookworm, Raspberry Pi OS used PulseAudio.
 
 [[update]]
 ==== Update
@@ -247,35 +241,27 @@ Update this tool to the latest version.
 [[about]]
 ==== About raspi-config
 
-Selecting this option shows the following text:
-
-----
-This tool provides a straightforward way of doing initial configuration of the Raspberry Pi.
-Although it can be run at any time, some of the options may have difficulties if you have heavily customised your installation.
-----
+Selecting this option displays a description of `raspi-config`.
 
 [[finish]]
 ==== Finish
 
-Use this option when you have completed your changes. You will be asked whether you want to reboot or not. When implementing changes for the first time, it's best to reboot. There will be a delay in rebooting if you have chosen to resize your SD card.
+Use this option when you have completed your changes. You will be asked whether you want to reboot or not. When implementing changes for the first time, it's best to reboot. If you chose to resize your SD card, rebooting may take longer than usual.
 
 [[raspi-config-cli]]
-== The `raspi-config` Command Line Interface
+== The `raspi-config` CLI
 
-The `raspi-config` tool can also be run in a non-interactive mode, which is useful for setting up a Raspberry Pi image for distribution.
+The `raspi-config` tool supports non-interactive command line options and flags instead of the interactive menu. These options can be useful when configuring a Raspberry Pi image for distribution.
 
+[source,console]
 ----
-sudo raspi-config nonint <command> <arguments>
+$ sudo raspi-config nonint <command> <arguments> [optional-argument]
 ----
 
-The `sudo` is required because you will be changing files that are not owned by the default user.
-
-NOTE: There is no consistent meaning for `0` and `1` in arguments. Each function will document what `0` and `1` mean for that particular function.
+NOTE: The meaning of `0` and `1` varies between options. Always check the documentation before passing a value to an option.
 
 [[raspi-config-cli-commands]]
 === List of options
-
-NOTE: The `raspi-config` tool is under continuous development, and the list of options below may not be completely up to date. Please be aware that different models of Raspberry Pi may have different options available.
 
 ==== System options
 
@@ -283,58 +269,76 @@ NOTE: The `raspi-config` tool is under continuous development, and the list of o
 
 Allows setting of the wireless LAN SSID and passphrase.
 
+[source,console]
 ----
-sudo raspi-config nonint do_wifi_ssid_passphrase <ssid> <passphrase> [hidden] [plain]
+$ sudo raspi-config nonint do_wifi_ssid_passphrase <ssid> <passphrase> [hidden] [plain]
 ----
 
-Hidden: `0` = visible, `1` = hidden. Defaults to visible.
+Pass a wireless network name (SSID) and passphrase, if required. The following flags are optional:
 
-Plain: If plain is `1` (the default), the passphrase is quoted.
+The `<hidden>` option indicates the visibility of the SSID. If the network broadcasts an open SSID, pass `0` or omit the option. If your SSID is hidden, pass `1`. Defaults to `0`.
+
+The `<plain>` option indicates whether or not you intend to pass the passphrase as plaintext. If your passphrase includes a space or a special character like `!`, you must pass `0` and use quotes around your passphrase. Otherwise, you can pass `1` or omit the option. Defaults to `1`.  To pass this option, you must specify a value for `<hidden>`.
 
 Example:
 
+Connect to a non-hidden network named `myssid` with the passphrase `mypassphrase`:
+
+[source,console]
 ----
-sudo raspi-config nonint do_wifi_ssid_passphrase myssid mypassphrase
-sudo raspi-config nonint do_wifi_ssid_passphrase myssid mypassphrase 1 # Hidden SSID
-sudo raspi-config nonint do_wifi_ssid_passphrase myssid '"mypassphrase"' 0 0 # Visible SSID, passphrase quoted
+$ sudo raspi-config nonint do_wifi_ssid_passphrase myssid mypassphrase
+----
+
+Connect to a hidden network named `myssid` with the passphrase `mypassphrase`:
+[source,console]
+----
+$ sudo raspi-config nonint do_wifi_ssid_passphrase myssid mypassphrase 1
+----
+
+Connect to a non-hidden network named `myssid` with the passphrase `my passphrase`:
+
+[source,console]
+----
+$ sudo raspi-config nonint do_wifi_ssid_passphrase myssid "my passphrase" 0 0
 ----
 
 ===== Audio
 
 Specify the audio output destination.
 
+[source,console]
 ----
-sudo raspi-config nonint do_audio <N>
+$ sudo raspi-config nonint do_audio <N>
 ----
 
-====== Raspberry Pi 4B
+On Raspberry Pi 4B, you can use the following options:
 
-- `0` - bcm2835 Headphones
-- `1` - vc4-hdmi-0
-- `2` - vc4-hdmi-1
+* `0`: bcm2835 headphone jack
+* `1`: vc4-hdmi-0
+* `2`: vc4-hdmi-1
 
-NOTE: You may need to run the interactive version of `raspi-config` to determine the appropriate numbers to use with this option.
+For a full list of possible `<N>` values, see the abbreviations used in the interactive `raspi-config` version of this option.
 
 [[change-user-password-nonint]]
 ===== Password
 
-You can change the 'default' user password.
+Change your password.
 
-NOTE: Under old versions of Raspberry Pi OS, the default user was `pi` with the password `raspberry`. The default user is now set while configuring the OS image, or on first boot using a configuration wizard.
-
+[source,console]
 ----
-sudo raspi-config nonint do_change_pass
+$ sudo raspi-config nonint do_change_pass
 ----
 
-NOTE: This does not check for the interactive flag, and will show full-screen messages.
+NOTE: This function uses a full-screen interactive interface, even when run from a CLI option.
 
 [[hostname-nonint]]
 ===== Hostname
 
 Set the visible name for this Raspberry Pi on a network.
 
+[source,console]
 ----
-sudo raspi-config nonint do_hostname <hostname>
+$ sudo raspi-config nonint do_hostname <hostname>
 ----
 
 [[boot-options-nonint]]
@@ -342,54 +346,59 @@ sudo raspi-config nonint do_hostname <hostname>
 
 Select whether to boot to console or desktop and whether you need to log in or not.
 
+[source,console]
 ----
-sudo raspi-config nonint do_boot_behaviour <B1/B2/B3/B4>
+$ sudo raspi-config nonint do_boot_behaviour <B1/B2/B3/B4>
 ----
 
-- `B1` - Boot to console, requiring login
-- `B2` - Boot to console, logging in automatically
-- `B3` - Boot to desktop, requiring login
-- `B4` - Boot to desktop, logging in automatically
+* `B1`: boot to console, requiring login
+* `B2`: boot to console, logging in automatically
+* `B3`: boot to desktop, requiring login
+* `B4`: boot to desktop, logging in automatically
 
 ===== Network at boot
 
 Use this option to wait for a network connection before letting boot proceed.
 
+[source,console]
 ----
-sudo raspi-config nonint do_boot_wait <0/1>
+$ sudo raspi-config nonint do_boot_wait <0/1>
 ----
 
-- `0` - Boot without waiting for network connection
-- `1` - Boot after waiting for network connection
+* `0`: boot without waiting for network connection
+* `1`: boot after waiting for network connection
 
 ===== Splash screen
 
 Enable or disable the splash screen displayed at boot time.
 
+[source,console]
 ----
-sudo raspi-config nonint do_boot_splash <0/1>
+$ sudo raspi-config nonint do_boot_splash <0/1>
 ----
 
-- `0` - Enable splash screen
-- `1` - Disable splash screen
+* `0`: enable splash screen
+* `1`: disable splash screen
 
 ===== Power LED
 
 If the model of Raspberry Pi permits it, you can change the behaviour of the power LED using this option.
 
+[source,console]
 ----
-sudo raspi-config nonint do_leds <0/1>
+$ sudo raspi-config nonint do_leds <0/1>
 ----
 
-- `0` - Flash for disk activity
-- `1` - Be on constantly
+* `0`: flash for disk activity
+* `1`: keep the power LED lit at all times
 
 ===== Browser
 
 Change the default web browser. Choosing a web browser that isn't currently installed won't work.
 
+[source,console]
 ----
-sudo raspi-config nonint do_browser <chromium-browser/firefox>
+$ sudo raspi-config nonint do_browser <chromium-browser/firefox>
 ----
 
 ==== Display options
@@ -397,58 +406,69 @@ sudo raspi-config nonint do_browser <chromium-browser/firefox>
 [[underscan-nonint]]
 ===== Underscan
 
-If the initial text shown on the screen disappears off the edge, you need to enable overscan to bring the border back. On some displays, particularly monitors, disabling overscan will make the picture fill the whole screen and remove the black border.
+If the initial text shown on the screen disappears off the edge, enable overscan to adjust the border. On some displays, particularly monitors, disabling overscan will make the picture fill the whole screen and remove the black border.
 
+[source,console]
 ----
-sudo raspi-config nonint do_overscan_kms <device> <enabled>
+$ sudo raspi-config nonint do_overscan_kms <device> <enabled>
 ----
 
-Device: `1` = HDMI-1, `2` = HDMI-2
+Device:
 
-Enabled: `0` = Enable overscan, `1` = Disable overscan
+* `1`: HDMI-1
+* `2`: HDMI-2
+
+Enabled:
+
+* `0`: enable overscan
+* `1`: disable overscan
 
 ===== Screen blanking
 
 Enable or disable screen blanking.
 
+[source,console]
 ----
-sudo raspi-config nonint do_blanking <0/1>
+$ sudo raspi-config nonint do_blanking <0/1>
 ----
 
-- `0` - Enable screen blanking
-- `1` - Disable screen blanking
+* `0`: enable screen blanking
+* `1`: disable screen blanking
 
 [[resolution-nonint]]
 ===== VNC resolution
 
-Define the video resolution to use in xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless] setups.
+Define the video resolution to use for VNC in xref:configuration.adoc#setting-up-a-headless-raspberry-pi[headless] setups.
 
+[source,console]
 ----
-sudo raspi-config nonint do_vnc_resolution <width>x<height>
+$ sudo raspi-config nonint do_vnc_resolution <width>x<height>
 ----
 
 ===== Composite
 
 Enable or disable composite video output.
 
-On Raspberry Pi 4, use:
+On Raspberry Pi 4:
 
+[source,console]
 ----
-sudo raspi-config nonint do_pi4video <V1/V2/V3>
-----
-
-- `V1` - Enable 4Kp60 HDMI output
-- `V2` - Enable composite video output
-- `V3` - Disable 4Kp60 and composite output
-
-On other models of Raspberry Pi, use:
-
-----
-sudo raspi-config nonint do_composite <0/1>
+$ sudo raspi-config nonint do_pi4video <V1/V2/V3>
 ----
 
-- `0` - Enable composite video
-- `1` - Disable composite video
+* `V1`: enable 4Kp60 HDMI output
+* `V2`: enable composite video output
+* `V3`: disable 4Kp60 and composite output
+
+On other models:
+
+[source,console]
+----
+$ sudo raspi-config nonint do_composite <0/1>
+----
+
+* `0`: enable composite video
+* `1`: disable composite video
 
 [[interfacing-options-nonint]]
 ==== Interface options
@@ -456,155 +476,167 @@ sudo raspi-config nonint do_composite <0/1>
 [[ssh-nonint]]
 ===== SSH
 
-Enable/disable remote command line access to your Raspberry Pi using SSH.
+Enable/disable remote terminal access to your Raspberry Pi using SSH.
 
-SSH allows you to remotely access the command line of the Raspberry Pi from another computer. SSH is disabled by default. Read more about using SSH on the xref:remote-access.adoc#ssh[SSH documentation page]. If connecting your Raspberry Pi directly to a public network, you should not enable SSH unless you have set up secure passwords for all users.
+SSH allows you to remotely access the command line of the Raspberry Pi from another computer. For more information about SSH, see the xref:remote-access.adoc#ssh[SSH documentation].
 
+[source,console]
 ----
-sudo raspi-config nonint do_ssh <0/1>
+$ sudo raspi-config nonint do_ssh <0/1>
 ----
 
-- `0` - Enable SSH
-- `1` - Disable SSH
+* `0`: enable SSH
+* `1`: disable SSH
 
 [[VNC-nonint]]
 ===== VNC
 
-Enable/disable a virtual network computing server.
+Enable/disable a Virtual Network Computing (VNC) server. For more information about VNC, see the xref:remote-access.adoc#vnc[VNC documentation].
 
+[source,console]
 ----
-sudo raspi-config nonint do_vnc <0/1>
+$ sudo raspi-config nonint do_vnc <0/1>
 ----
 
-- `0` - Enable VNC
-- `1` - Disable VNC
+* `0`: enable VNC
+* `1`: disable VNC
 
 [[spi-nonint]]
 ===== SPI
 
 Enable/disable SPI interfaces and automatic loading of the SPI kernel module.
 
+[source,console]
 ----
-sudo raspi-config nonint do_spi <0/1>
+$ sudo raspi-config nonint do_spi <0/1>
 ----
 
-- `0` - Enable SPI
-- `1` - Disable SPI
+* `0`: enable SPI
+* `1`: disable SPI
 
 [[i2c-nonint]]
 ===== I2C
 
 Enable/disable I2C interfaces and automatic loading of the I2C kernel module.
 
+[source,console]
 ----
-sudo raspi-config nonint do_i2c <0/1>
+$ sudo raspi-config nonint do_i2c <0/1>
 ----
 
-- `0` - Enable I2C
-- `1` - Disable I2C
+* `0`: enable I2C
+* `1`: disable I2C
 
 [[serial-nonint]]
 ===== Serial Port
 
 Enable/disable the serial connection hardware.
 
+[source,console]
 ----
-sudo raspi-config nonint do_serial_hw <0/1/2>
+$ sudo raspi-config nonint do_serial_hw <0/1/2>
 ----
 
-- `0` - Enable serial port
-- `1` - Disable serial port
+* `0`: enable serial port
+* `1`: disable serial port
 
 [[serial-console-nonint]]
 ===== Serial console
 
 Enable/disable shell and kernel messages on the serial connection.
 
+[source,console]
 ----
-raspi-config nonint do_serial_cons <0/1/2>
+$ raspi-config nonint do_serial_cons <0/1/2>
 ----
 
-- `0` - Enable console over serial port
-- `1` - Disable console over serial port
+* `0`: enable console over serial port
+* `1`: disable console over serial port
 
 [[one-wire-nonint]]
 ===== 1-wire
 
 Enable/disable the Dallas 1-wire interface. This is usually used for DS18B20 temperature sensors.
 
+[source,console]
 ----
-sudo raspi-config nonint do_onewire <0/1>
+$ sudo raspi-config nonint do_onewire <0/1>
 ----
 
-- `0` - Enable 1-wire
-- `1` - Disable 1-wire
+* `0`: enable 1-wire
+* `1`: disable 1-wire
 
 ===== Remote GPIO
 
 Enable or disable remote access to the GPIO pins.
 
+[source,console]
 ----
-sudo raspi-config nonint do_rgpio <0/1>
+$ sudo raspi-config nonint do_rgpio <0/1>
 ----
 
-- `0` - Enable remote GPIO
-- `1` - Disable remote GPIO
+* `0`: enable remote GPIO
+* `1`: disable remote GPIO
 
 ==== Performance options
 
 [[overclock-nonint]]
 ===== Overclock
 
-On some models it is possible to overclock your Raspberry Pi's CPU using this tool. The overclocking you can achieve will vary, and overclocking too high may result in instability. Selecting this option shows the following warning:
+Some models can overclock the CPU using this tool. Overclocking potential varies between individual Raspberry Pi devices. Overclocking too high may result in instability.
 
-*Be aware that overclocking may reduce the lifetime of your Raspberry Pi.* If overclocking at a certain level causes system instability, try a more modest overclock. Hold down the Shift key during boot to temporarily disable overclocking.
+WARNING: *Overclocking may reduce the lifetime of your Raspberry Pi.* If overclocking at a certain level causes system instability, try a more modest overclock. Hold down the *Shift* key during boot to temporarily disable overclocking.
 
+[source,console]
 ----
-sudo raspi-config nonint do_overclock <setting>
+$ sudo raspi-config nonint do_overclock <setting>
 ----
 
-Setting is one of:
+This command accepts the following `<setting>` values:
 
- - `None` - The default
- - `Modest` - Overclock to 50% of the maximum
- - `Medium` - Overclock to 75% of the maximum
- - `High` - Overclock to 100% of the maximum
- - `Turbo` - Overclock to 125% of the maximum
+* `None`: no overclock (default)
+* `Modest`: overclock to 50% of the maximum
+* `Medium`: overclock to 75% of the maximum
+* `High`: overclock to 100% of the maximum
+* `Turbo`: overclock to 125% of the maximum
 
 [[memory-split-nonint]]
 ===== GPU memory
 
 Change the amount of memory made available to the GPU.
 
+[source,console]
 ----
-sudo raspi-config nonint do_memory_split <megabytes>
+$ sudo raspi-config nonint do_memory_split <megabytes>
 ----
 
 ===== Overlay file system
 
 Enable or disable a read-only filesystem.
 
+[source,console]
 ----
-sudo raspi-config nonint do_overlayfs <0/1>
+$ sudo raspi-config nonint do_overlayfs <0/1>
 ----
 
-- `0` - Enable overlay filesystem
-- `1` - Disable overlay filesystem
+* `0`: enable overlay filesystem
+* `1`: disable overlay filesystem
 
 ===== Fan
 
 Set the behaviour of a GPIO connected fan.
 
+[source,console]
 ----
-sudo raspi-config nonint do_fan <0/1> [gpio] [onTemp]
+$ sudo raspi-config nonint do_fan <0/1> [gpio] [onTemp]
 ----
 
-- `0` - Enable fan
-- `1` - Disable fan
+* `0`: enable fan
+* `1`: disable fan
 
 `gpio` defaults to `14`.
 
-`onTemp` defaults to `80` °C.
+`onTemp` defaults to `80` **degrees Celsius**.
 
 [[localisation-options-nonint]]
 ==== Localisation options
@@ -614,38 +646,47 @@ sudo raspi-config nonint do_fan <0/1> [gpio] [onTemp]
 
 Select a locale, for example `en_GB.UTF-8 UTF-8`.
 
+[source,console]
 ----
-sudo raspi-config nonint do_change_locale <locale>
+$ sudo raspi-config nonint do_change_locale <locale>
 ----
+
+For a full list of possible `<locale>` values, see the abbreviations used in the interactive `raspi-config` version of this option.
 
 [[change-timezone-nonint]]
 ===== Time zone
 
-Select your local time zone, starting with the region, e.g. Europe, then selecting a city, e.g. London. Type a letter to skip down the list to that point in the alphabet.
+Sets your local time zone, starting with the region then selecting a city, e.g. "Europe/London".
 
+[source,console]
 ----
-sudo raspi-config nonint do_change_timezone <timezone>
-sudo raspi-config nonint do_change_timezone America/Los_Angeles
+$ sudo raspi-config nonint do_change_timezone <timezone>
 ----
+
+For a full list of possible `<timezone>` values, see the abbreviations used in the interactive `raspi-config` version of this option.
 
 [[change-keyboard-layout-nonint]]
 ===== Keyboard
 
-This option opens another menu which allows you to select your keyboard layout. Changes usually take effect immediately, but may require a reboot.
+Sets your keyboard layout. Changes usually take effect immediately, but may require a reboot.
 
+[source,console]
 ----
-sudo raspi-config nonint do_configure_keyboard <keymap>
-sudo raspi-config nonint do_configure_keyboard us
+$ sudo raspi-config nonint do_configure_keyboard <keymap>
 ----
+
+For a full list of possible `<keymap>` values, see the the abbreviations used in the interactive `raspi-config` version of this option.
 
 ===== WLAN country
 
-This option sets the country code for your wireless network.
+Sets the country code for your wireless network.
 
+[source,console]
 ----
-sudo raspi-config nonint do_wifi_country <country>
-sudo raspi-config nonint do_wifi_country US
+$ sudo raspi-config nonint do_wifi_country <country>
 ----
+
+For a full list of possible `<country>` values, see the abbreviations used in the interactive `raspi-config` version of this option.
 
 [[advanced-options-nonint]]
 ==== Advanced options
@@ -653,83 +694,93 @@ sudo raspi-config nonint do_wifi_country US
 [[expand-filesystem-nonint]]
 ===== Expand filesystem
 
-This option will expand your installation to fill the whole SD card, giving you more space to use for files. You will need to reboot the Raspberry Pi to make this available. 
+This option will expand your installation to fill the whole storage device, giving you more space to use for files. You will need to reboot the Raspberry Pi to make this available.
 
 WARNING: There is no confirmation step: selecting the option begins the partition expansion immediately.
 
+[source,console]
 ----
-sudo raspi-config nonint do_expand_rootfs
+$ sudo raspi-config nonint do_expand_rootfs
 ----
 
 ===== Network interface names
 
 Enable or disable predictable network interface names.
 
+[source,console]
 ----
-sudo raspi-config nonint do_net_names <0/1>
+$ sudo raspi-config nonint do_net_names <0/1>
 ----
 
-- `0` - Enable predictable network interface names
-- `1` - Disable predictable network interface names
+* `0`: enable predictable network interface names
+* `1`: disable predictable network interface names
 
 ===== Network proxy settings
 
 Configure the network's proxy settings.
 
+[source,console]
 ----
-sudo raspi-config nonint do_proxy <SCHEMES> <ADDRESS>
+$ sudo raspi-config nonint do_proxy <SCHEMES> <ADDRESS>
 ----
 
 ===== Boot order
 
 On the Raspberry Pi 4 and 5, you can specify whether to boot from USB or network if the SD card isn't inserted. See the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration] section for more information.
 
+[source,console]
 ----
-sudo raspi-config nonint do_boot_order <B1/B2/B3>
+$ sudo raspi-config nonint do_boot_order <B1/B2/B3>
 ----
 
- - `B1` - SD card boot - boot from SD card if available, otherwise boot from USB
- - `B2` - USB boot - boot from USB if available, otherwise boot from SD card
- - `B3` - Network boot - boot from network if SD card boot fails
+Depending on your device, you can choose from the following options:
+
+* `B1`: SD card boot - boot from SD card if available, otherwise boot from NVMe, otherwise boot from USB
+* `B2`: NVMe/USB boot - boot from NVMe if available, otherwise boot from USB if available, otherwise boot from SD card
+* `B3`: Network boot - boot from SD card _if inserted_, otherwise boot from network
 
 ===== Bootloader version
 
-On Raspberry Pi 4 and 5, you can tell the system to use the very latest boot ROM software, or revert to the factory default if the latest version causes problems.
+On the Raspberry Pi 4 and later, you can switch to the latest boot ROM software. Alternatively, you can revert to the factory default if the latest version causes problems.
 
+[source,console]
 ----
-sudo raspi-config nonint do_boot_rom <E1/E2>
+$ sudo raspi-config nonint do_boot_rom <E1/E2>
 ----
 
-- `E1` - Use the latest boot ROM
-- `E2` - Use the factory default
+* `E1`: use the latest boot ROM
+* `E2`: use the factory default
 
 ===== Wayland
 
 Use this option to switch between the X11 and Wayland backends. On the Raspberry Pi 4 and 5, Wayland is used by default; on other models of Raspberry Pi, X11 is used by default. 
 
+[source,console]
 ----
-sudo raspi-config nonint do_wayland <W1/W2>
+$ sudo raspi-config nonint do_wayland <W1/W2>
 ----
 
-- `W1` - Use the X11 backend
-- `W2` - Use the Wayland backend
+* `W1`: use the X11 backend
+* `W2`: use the Wayland backend
 
 ===== Audio config
 
 Use this option to switch between the PulseAudio and PipeWire audio backends.
 
+[source,console]
 ----
-sudo raspi-config nonint do_audioconf <1/2>
+$ sudo raspi-config nonint do_audioconf <1/2>
 ----
 
-- `1` - Use the PulseAudio backend
-- `2` - Use the PipeWire backend
+* `1`: use the PulseAudio backend
+* `2`: use the PipeWire backend
 
 [[update-nonint]]
 ==== Update
 
 Update this tool to the latest version.
 
+[source,console]
 ----
-sudo raspi-config nonint do_update
+$ sudo raspi-config nonint do_update
 ----
