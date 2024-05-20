@@ -7,7 +7,11 @@ The Raspberry Pi M.2 HAT+ M Key enables you to connect M.2 peripherals such as N
 
 The M.2 HAT+ adapter board converts between the PCIe connector on Raspberry Pi 5 and a single M.2 M key edge connector. You can connect any device that uses the 2230 or 2242 form factors. The M.2 HAT+ can supply up to 3A of power.
 
-The M.2 HAT+ uses Raspberry Pi's https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[HAT+ specification], which allows Raspberry Pi OS to automatically detect the HAT+ and any connected devices. The included threaded spacers provide ample room to fit the Raspberry Pi Active Cooler beneath an M.2 HAT+.
+The M.2 HAT+ uses Raspberry Pi's https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[HAT+ specification], which allows Raspberry Pi OS to automatically detect the HAT+ and any connected devices.
+
+The included threaded spacers provide ample room to fit the Raspberry Pi Active Cooler beneath an M.2 HAT+.
+
+The M.2 HAT+ is _only_ compatible with the https://www.raspberrypi.com/products/raspberry-pi-5-case/[Raspberry Pi Case for Raspberry Pi 5] _if you remove the lid and the included fan_.
 
 == Features
 
