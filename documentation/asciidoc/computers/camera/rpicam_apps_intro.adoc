@@ -22,7 +22,7 @@ Users can create their own `rpicam`-based applications with custom functionality
 
 `libcamera` is an open-source software library aimed at supporting camera systems directly from the Linux operating system on Arm processors. Proprietary code running on the Broadcom GPU is minimised. For more information about `libcamera` see the https://libcamera.org[`libcamera` website].
 
-`libcamera` provides a {cpp} API that configures the camera, then allows applications to request image frames. These image buffers reside in system memory and can be passed directly to still image encoders (such as JPEG) or to video encoders (such as h.264). `libcamera` doesn't encode or display images itself: that that functionality, use `rpicam-apps`.
+`libcamera` provides a {cpp} API that configures the camera, then allows applications to request image frames. These image buffers reside in system memory and can be passed directly to still image encoders (such as JPEG) or to video encoders (such as H.264). `libcamera` doesn't encode or display images itself: that that functionality, use `rpicam-apps`.
 
 You can find the source code in the https://git.linuxtv.org/libcamera.git/[official libcamera repository]. The Raspberry Pi OS distribution uses a https://github.com/raspberrypi/libcamera.git[fork] to control updates.
 

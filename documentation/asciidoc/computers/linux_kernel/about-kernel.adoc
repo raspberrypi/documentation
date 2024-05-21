@@ -4,7 +4,7 @@ The Raspberry Pi kernel is https://github.com/raspberrypi/linux[hosted on GitHub
 
 === Updating your kernel
 
-If you use the standard Raspberry Pi OS xref:os.adoc#updating-and-upgrading-raspberry-pi-os[update and upgrade process], this will automatically update the kernel to the latest stable version of our kernel. This is the recommended procedure. However, in certain circumstances, you may wish to update to the latest "bleeding edge" or test kernel. You should only do this if recommended to do so by a Raspberry Pi engineer, or if there is a specific feature only available in this latest software.
+If you use the standard Raspberry Pi OS xref:os.adoc#update-software[update and upgrade process], this will automatically update the kernel to the latest stable version of our kernel. This is the recommended procedure. However, in certain circumstances, you may wish to update to the latest "bleeding edge" or test kernel. You should only do this if recommended to do so by a Raspberry Pi engineer, or if there is a specific feature only available in this latest software.
 
 === Getting your code into the kernel
 
