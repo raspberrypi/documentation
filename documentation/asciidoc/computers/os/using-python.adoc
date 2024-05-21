@@ -4,9 +4,9 @@ Raspberry Pi OS comes with Python 3 pre-installed. Interfering with the system P
 
 On Linux, you can install `python` dependencies in two ways:
 
-* use `apt` to install pre-configured system packages (preferred)
-* use `pip` to install libraries using Python's built-in dependency manager
-
+* use `apt` to install pre-configured system packages
+* use `pip` to install libraries using Python's dependency manager _in a virtual environment_
++
 IMPORTANT: Starting in Raspberry Pi OS _Bookworm_, you can only use `pip` to install into a Python Virtual Environment (`venv`). This change was introduced by the Python community, not by Raspberry Pi: for more information, see https://peps.python.org/pep-0668/[PEP 668].
 
 === Install Python packages using `apt`
@@ -55,7 +55,7 @@ hint: See PEP 668 for the detailed specification.
 
 Python users have long dealt with conflicts between OS package managers like `apt` and Python-specific package management tools like `pip`. These conflicts include both Python-level API incompatibilities and conflicts over file ownership.
 
-Starting in Raspberry Pi OS _Bookworm_,, packages installed via `pip` _must be installed into a Python virtual environment using `venv`._ A virtual environment is a container where you can safely install third-party modules so they won't interfere with your system Python.
+Starting in Raspberry Pi OS _Bookworm_, packages installed via `pip` _must be installed into a Python virtual environment_ (``venv``). A virtual environment is a container where you can safely install third-party modules so they won't interfere with your system Python.
 
 ==== Use pip with virtual environments
 
@@ -75,6 +75,11 @@ Then, execute the `bin/activate` script in the virtual environment configuration
 [source,console]
 ----
 $ source <env-name>/bin/activate
+----
+
+You should then see a prompt similar to the following:
+
+----
 (<env-name>) $
 ----
 
@@ -96,7 +101,6 @@ To leave a virtual environment, run the following command:
 
 ----
 (<env-name>) $ deactivate
-$
 ----
 
 ==== Use a separate environment for each project
@@ -108,20 +112,23 @@ Many users create separate virtual environments for each Python project. Locate 
 $ python -m venv env
 ----
 
-
-Before you work on a project, run the following command to start using the virtual environment:
+Before you work on a project, run the following command from the root of the project to start using the virtual environment:
 
 [source,console]
 ----
 $ source env/bin/activate
+----
+
+You should then see a prompt similar to the following:
+
+----
 (env) $
 ----
 
 When you finish working on a project, run the following command from any directory to leave the virtual environment:
 
 ----
-(<env-name>) $ deactivate
-$
+(env) $ deactivate
 ----
 
 ==== Use a separate environment for each user
@@ -137,19 +144,23 @@ Use the following command to create a virtual environment in a hidden folder in 
 $ python -m venv ~/.env
 ----
 
-Run the following command to start using the virtual environment:
+Run the following command from any directory to start using the virtual environment:
 
 [source,console]
 ----
-$ source .env/bin/activate
-(env) $
+$ source ~/.env/bin/activate
+----
+
+You should then see a prompt similar to the following:
+
+----
+(.env) $
 ----
 
 To leave the virtual environment, run the following command from any directory:
 
 ----
 (.env) $ deactivate
-$
 ----
 
 === Use the Thonny editor

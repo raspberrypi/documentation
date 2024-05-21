@@ -92,7 +92,7 @@ Use this command to verify that the maintainer, version, and size match your exp
 
 ==== Install a package
 
-To install a package on your Raspberry Pi, pass the following command the name of the package:
+To install a package on your Raspberry Pi, pass the name of the package to the following command:
 
 [source,console]
 ----
@@ -103,7 +103,7 @@ $ sudo apt install <package-name>
 
 ==== Uninstall a package
 
-To uninstall a package from your Raspberry Pi, pass the following command the name of the package:
+To uninstall a package from your Raspberry Pi, pass the name of the package to the following command:
 
 [source,console]
 ----
@@ -142,6 +142,8 @@ To update the operating system to a new major release on your Raspberry Pi, imag
 
 WARNING: Before attempting a firmware upgrade, make a backup.
 
+WARNING: Pre-release versions of software are not guaranteed to work. Do not use `rpi-update` on any system unless recommended to do so by a Raspberry Pi engineer. It could leave your system unreliable or broken. Do not use `rpi-update` as part of any regular update process.
+
 To update the firmware on your Raspberry Pi to the latest version, use https://github.com/raspberrypi/rpi-update[`rpi-update`].
 
 `rpi-update` downloads the latest pre-release version of the Linux kernel, its matching modules, device tree files, and the latest versions of the VideoCore firmware. It then installs these files into an existing Raspberry Pi OS install.
@@ -161,7 +163,7 @@ $ sudo reboot
 This whitepaper documents how to update the VideoCore firmware in a Raspberry Pi OS image.
 ****
 
-=== Downgrade to the last stable release
+=== Downgrade firmware to the last stable release
 
 If you update your firmware to the latest release and experience an issue, use the following command to return to the last stable firmware release:
 
