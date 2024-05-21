@@ -94,7 +94,7 @@ Save the file. Your new preference should take effect immediately.
 
 === Update Raspberry Pi OS
 
-Only the latest OS distribution contains all the latest security fixes. Always keep your device xref:os.adoc#updating-and-upgrading-raspberry-pi-os[updated] to the latest version of Raspberry Pi OS.
+Only the latest OS distribution contains all the latest security fixes. Always keep your device xref:os.adoc#update-software[updated] to the latest version of Raspberry Pi OS.
 
 If you use SSH to connect to your Raspberry Pi, it can be worthwhile to add a `cron` job that specifically updates the SSH server. The following command, perhaps run as a daily `cron` job, ensures you have the latest SSH security fixes promptly, independent of your normal update process.
 

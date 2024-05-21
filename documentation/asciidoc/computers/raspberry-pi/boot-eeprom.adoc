@@ -46,7 +46,7 @@ image::images/bootloader-storage-select.png[alt="Choose the storage from which y
 
 To change the boot-mode or bootloader version from within Raspberry Pi OS, run xref:configuration.adoc#raspi-config[raspi-config].
 
-* xref:os.adoc#updating-and-upgrading-raspberry-pi-os[Update] Raspberry Pi OS to get the latest version of the `rpi-eeprom` package
+* xref:os.adoc#update-software[Update] Raspberry Pi OS to get the latest version of the `rpi-eeprom` package
 * Run `sudo raspi-config`
 * Select `Advanced Options`
 * Select `Bootloader Version`

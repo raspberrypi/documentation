@@ -4,8 +4,6 @@ include::os/updating.adoc[]
 
 include::os/playing-audio-and-video.adoc[]
 
-include::os/using-webcams.adoc[]
-
 include::os/graphics-utilities.adoc[]
 
 include::os/accessibility.adoc[]

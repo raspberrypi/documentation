@@ -1,163 +1,186 @@
-== Updating and upgrading Raspberry Pi OS
+== Update software
 
-It's important to keep your Raspberry Pi up to date. The first and probably the most important reason is security. A device running Raspberry Pi OS contains millions of lines of code that you rely on. Over time, these millions of lines of code will expose well-known vulnerabilities, which are documented in https://cve.mitre.org/index.html[publicly available databases], meaning that they are easy to exploit. The only way to mitigate these exploits as a user of Raspberry Pi OS is to keep your software up to date, as the upstream repositories track CVEs closely and try to mitigate them quickly.
+Always keep the software running on your Raspberry Pi updated to the latest version. This keeps your device secure from from https://cve.mitre.org/index.html[vulnerabilities] and ensures that you get the latest bug fixes.
 
-The second reason, related to the first, is that the software you are running on your device most certainly contains bugs. Some bugs are CVEs, but bugs could also be affecting the desired functionality without being related to security. By keeping your software up to date, you are lowering the chances of hitting these bugs.
+=== Manage software packages with APT
 
-=== Using APT
+https://en.wikipedia.org/wiki/APT_(software)[Advanced Package Tool (APT)] is the recommended way to install, update, and remove software in Raspberry Pi OS. You can access APT through the `apt` CLI.
 
-The easiest way to manage installing, upgrading, and removing software is using APT (Advanced Packaging Tool) from Debian. To update software in Raspberry Pi OS, you can use the `apt` tool from a Terminal window.
+==== Install updates
 
-==== Keeping your operating system up-to-date
+`apt` stores a list of software sources in a file at `/etc/apt/sources.list`. Before installing software, run the following command to *update* your local list of packages using `/etc/apt/sources.list`:
 
-video::2AhCWJ6YQHk[youtube]
-
-APT keeps a list of software sources on your Raspberry Pi in a file at `/etc/apt/sources.list`. Before installing software, you should update your package list with `apt update`. Open a Terminal window and type:
-
-[,bash]
+[source,console]
 ----
-sudo apt update
+$ sudo apt update
 ----
 
-Next, *upgrade* all your installed packages to their latest versions with the following command:
+Run the following command to *upgrade* all your installed packages to their latest versions:
 
-[,bash]
+[source,console]
 ----
-sudo apt full-upgrade
-----
-
-Note that `full-upgrade` is used in preference to a simple `upgrade`, as it also picks up any dependency changes that may have been made.
-
-Generally speaking, doing this regularly will keep your installation up to date for the particular major Raspberry Pi OS release you are using (e.g. Bookworm). It will not update from one major release to another (e.g. from Buster to Bullseye, or from Bullseye to Bookworm).
-
-However, there are occasional changes made in the Raspberry Pi OS image that will require manual intervention, for example a newly introduced package. These are not installed with an upgrade, as this command only updates the packages you already have installed.
-
-NOTE: The kernel and firmware are installed as a Debian package, and so will also get updates when using the procedure above. These packages are updated infrequently and after extensive testing.
-
-If moving an existing SD card to a new Raspberry Pi model (for example the Raspberry Pi Zero 2 W), you may also need to update the kernel and the firmware first, using the instructions above.
-
-==== Running out of space
-
-When running `sudo apt full-upgrade`, it will show how much data will be downloaded, and how much space it will take up on the SD card. It's worth checking with `df -h` that you have enough free disk space, as unfortunately `apt` will not do this for you. Also be aware that downloaded package files (`.deb` files) are kept in `/var/cache/apt/archives`. You can remove these in order to free up space with `sudo apt clean` (`sudo apt-get clean` in older releases of apt).
-
-==== Upgrading from previous operating system versions
-
-WARNING: Upgrading an existing image is sometimes possible, but is not guaranteed to work in every circumstance, and we do not recommend it. If you do wish to try upgrading your operating system version, we strongly suggest making a backup first. We accept no responsibility for the loss of any data during a failed update.
-
-The latest version of Raspberry Pi OS is based on Debian Bookworm. The previous version was based on https://www.raspberrypi.com/news/raspberry-pi-os-debian-bullseye/[Debian Bullseye].
-
-==== Searching for software
-
-You can search the archives for a package with a given keyword using `apt-cache search`:
-
-[,bash]
-----
-apt-cache search locomotive
-sl - Correct you if you type `sl' by mistake
+$ sudo apt upgrade
 ----
 
-You can view more information about a package before installing it with `apt-cache show`:
+Run these commands regularly to keep your software up-to-date. You can even use `apt` to upgrade your Linux kernel and firmware, since Raspberry Pi distributes them as Debian packages.
 
-[,bash]
+When Raspberry Pi releases a new major version of Raspberry Pi OS, the above commands won't upgrade your operating system to that new major version.
+
+==== Search for software
+
+To search the archives for a package, pass a search keyword to `apt-cache search`:
+
+[source,console]
 ----
-apt-cache show sl
-Package: sl
-Version: 3.03-17
-Architecture: armhf
-Maintainer: Hiroyuki Yamamoto <yama1066@gmail.com>
-Installed-Size: 114
-Depends: libc6 (>= 2.4), libncurses5 (>= 5.5-5~), libtinfo5
-Homepage: http://www.tkl.iis.u-tokyo.ac.jp/~toyoda/index_e.html
+$ apt-cache search <keyword>
+----
+
+For example, consider the following search for the keyword "raspi":
+
+[source,console]
+----
+$ apt-cache search raspi
+raspi3-firmware - Raspberry Pi 2 and 3 GPU firmware and bootloaders
+libcamera-apps - libcamera-apps
+libcamera-apps-lite - libcamera-apps-lite
+python-picamera - Pure Python interface to the Raspberry Pi's camera module.
+python-picamera-docs - Documentation for the Python interface to the RPi's camera module.
+python3-picamera - Pure Python interface to the Raspberry Pi's camera module.
+raspi-config - Raspberry Pi configuration tool
+raspi-gpio - Dump the state of the BCM270x GPIOs
+raspi-gpio-dbgsym - debug symbols for raspi-gpio
+raspinfo - Dump information about the Pi
+rc-gui - raspi-config GUI
+raspi-copies-and-fills - ARM-accelerated versions of selected functions from string.h
+raspi-copies-and-fills-dbgsym - debug symbols for raspi-copies-and-fills
+----
+
+The search returned multiple packages with names or descriptions that included the keyword.
+
+Use the following command to view detailed information about a package:
+
+[source,console]
+----
+$ apt-cache show <package-name>
+----
+
+For example, consider the following query for the "raspi-config" package:
+
+[source,console]
+----
+$ apt-cache show raspi-config
+Package: raspi-config
+Version: 20210212
+Architecture: all
+Maintainer: Serge Schneider <serge@raspberrypi.org>
+Installed-Size: 121
+Depends: whiptail, parted, lua5.1, alsa-utils, psmisc, initramfs-tools
+Recommends: triggerhappy, iw
 Priority: optional
-Section: games
-Filename: pool/main/s/sl/sl_3.03-17_armhf.deb
-Size: 26246
-SHA256: 42dea9d7c618af8fe9f3c810b3d551102832bf217a5bcdba310f119f62117dfb
-SHA1: b08039acccecd721fc3e6faf264fe59e56118e74
-MD5sum: 450b21cc998dc9026313f72b4bd9807b
-Description: Correct you if you type `sl' by mistake
- Sl is a program that can display animations aimed to correct you
- if you type 'sl' by mistake.
- SL stands for Steam Locomotive.
+Section: utils
+Filename: pool/main/r/raspi-config/raspi-config_20210212_all.deb
+Size: 27976
+SHA256: 772d4fd3c6d8c9da47ac56012b74e7828b53c8521ff1c47266bb38ec71750c10
+SHA1: 08254c976a8260bde914c2df72f92ffb9317fef6
+MD5sum: 80aaac13be6a9b455c822edb91cf8ea2
+Description: Raspberry Pi configuration tool
+ A simple configuration tool for common Raspberry Pi administrative tasks
+Description-md5: 19630c04463bfe7193152448b53d85a0
 ----
 
-==== Installing a package with APT
+Use this command to verify that the maintainer, version, and size match your expectations for a package.
 
-[,bash]
-----
-sudo apt install tree
-----
+==== Install a package
 
-Typing this command should tell the user how much disk space the package will take up, and asks for confirmation of the package installation. Entering `Y` (or just pressing `Enter`, as yes is the default action) will allow the installation to occur. This can be bypassed by adding the `-y` flag to the command:
+To install a package on your Raspberry Pi, pass the name of the package to the following command:
 
-[,bash]
+[source,console]
 ----
-sudo apt install tree -y
+$ sudo apt install <package-name>
 ----
 
-Installing this package makes `tree` available for the user.
+`apt` will display the amount of disk space the package will consume. Enter *Y* and press **Enter** to confirm installation of the package. You can skip this confirmation step by adding the `-y` flag to the command above.
 
-==== Uninstalling a package with APT
+==== Uninstall a package
 
-You can uninstall a package with `apt remove`:
+To uninstall a package from your Raspberry Pi, pass the name of the package to the following command:
 
-[,bash]
+[source,console]
 ----
-sudo apt remove tree
+$ sudo apt remove <package-name>
 ----
 
-The user is prompted to confirm the removal. Again, the `-y` flag will auto-confirm.
+TIP: To completely remove all traces of the package, including configuration files, use `purge` instead of `remove`.
 
-You can also choose to completely remove the package and its associated configuration files with `apt purge`:
+`apt` will display the amount of disk space removing the package will free up.
+Enter *Y* and press **Enter** to confirm installation of the package. You can skip this confirmation step by adding the `-y` flag to the command above.
 
-[,bash]
+==== Manage `apt` disk usage
+
+Before running, `sudo apt full-upgrade` shows the amount of data you'll need to download and store on disk to complete an upgrade. To check that you have enough free disk space, run the following command:
+
+[source,console]
 ----
-sudo apt purge tree
+$ df -h
 ----
+
+`apt` stores downloaded package (`.deb`) files in `/var/cache/apt/archives`. During installation, `apt` downloads these packages, then copies files from the packages to the correct installation locations. Depending on the software you have installed, package files can take up significant amounts of space. To delete any lingering package files, run the following command:
+
+[source,console]
+----
+$ sudo apt clean
+----
+
+=== Upgrade your operating system to a new major version
+
+WARNING: Before attempting a major version upgrade, make a backup.
+
+To update the operating system to a new major release on your Raspberry Pi, image a second SD card with the new release. Use a USB SD card reader or network storage to copy files and configuration from your current installation to the new SD card. Then, swap the new SD card into the slot on your Raspberry Pi, and boot.
 
 [[rpi-update]]
-=== Using `rpi-update`
+=== Upgrade your firmware
+
+WARNING: Before attempting a firmware upgrade, make a backup.
+
+WARNING: Pre-release versions of software are not guaranteed to work. Do not use `rpi-update` on any system unless recommended to do so by a Raspberry Pi engineer. It could leave your system unreliable or broken. Do not use `rpi-update` as part of any regular update process.
+
+To update the firmware on your Raspberry Pi to the latest version, use https://github.com/raspberrypi/rpi-update[`rpi-update`].
+
+`rpi-update` downloads the latest pre-release version of the Linux kernel, its matching modules, device tree files, and the latest versions of the VideoCore firmware. It then installs these files into an existing Raspberry Pi OS install.
+
+All the source data used by `rpi-update` comes from the https://github.com/raspberrypi/rpi-firmware[`rpi-firmware` repository]. This repository contains a subset of the data from the https://github.com/raspberrypi/firmware[official firmware repository].
+
+Run `rpi-update` as root to initiate the update. Once the update is complete, reboot your Raspberry Pi for these changes to take effect:
+
+[source,console]
+----
+$ sudo rpi-update
+$ sudo reboot
+----
 
 [.whitepaper, title="Updating Raspberry Pi firmware", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003476-WP/Updating-Pi-firmware.pdf]
 ****
-In some circumstances it may be necessary to update the VideoCore firmware in a Raspberry Pi operating system (OS) image without going through the normal upgrade process. This white paper documents how to use the normal upgrade process, and also gives information on how to bypass the standard update process if it is not suitable.
+This whitepaper documents how to update the VideoCore firmware in a Raspberry Pi OS image.
 ****
 
-`rpi-update` is a command line application that will update your Raspberry Pi OS kernel and VideoCore firmware to the latest pre-release versions.
+=== Downgrade firmware to the last stable release
 
-WARNING: Pre-release versions of software are not guaranteed to work. You should not use `rpi-update` on any system unless recommended to do so by a Raspberry Pi engineer. It may leave your system unreliable or even completely broken. It should not be used as part of any regular update process.
+If you update your firmware to the latest release and experience an issue, use the following command to return to the last stable firmware release:
 
-The `rpi-update` script was originally written by https://github.com/Hexxeh[Hexxeh], but is now supported by Raspberry Pi engineers. The script source is in the https://github.com/raspberrypi/rpi-update[rpi-update repository].
-
-==== What it does
-
-`rpi-update` will download the latest pre-release version of the Linux kernel, its matching modules, device tree files, along with the latest versions of the VideoCore firmware. It will then install these files to relevant locations on the SD card, overwriting any previous versions.
-
-All the source data used by `rpi-update` comes from the https://github.com/raspberrypi/rpi-firmware[rpi-firmware repository]. This repository simply contains a subset of the data from the https://github.com/raspberrypi/firmware[official firmware repository], as not all the data from that repo is required.
-
-==== Running `rpi-update`
-
-If you are sure that you need to use `rpi-update`, it is advisable to take a backup of your current system first as running `rpi-update` could result in a non-booting system.
-
-`rpi-update` needs to be run as root. Once the update is complete you will need to reboot.
-
+[source,console]
 ----
-sudo rpi-update
-sudo reboot
+$ sudo apt-get update
+$ sudo apt install --reinstall raspi-firmware
 ----
 
-It has a number of options documented in the https://github.com/raspberrypi/rpi-update[rpi-update repository].
+[NOTE]
+====
+If you still run Raspberry Pi OS Bullseye, you must instead reinstall `raspberrypi-kernel` using the following command:
 
-==== How to get back to safety
-
-If you have done an `rpi-update` and things are not working as you wish but your Raspberry Pi is still bootable, you can return to the stable release using:
-
+[source,console]
 ----
-sudo apt-get update
-sudo apt install --reinstall raspi-firmware
+$ sudo apt install --reinstall libraspberrypi0 libraspberrypi-{bin,dev,doc} raspberrypi-{kernel,bootloader}
 ----
 
-NOTE: If your device still runs Raspberry Pi OS Bullseye, use the following command to reinstall `raspberrypi-kernel` instead: `sudo apt install --reinstall libraspberrypi0 libraspberrypi-{bin,dev,doc} raspberrypi-{kernel,bootloader}`.
-
-You will need to reboot your Raspberry Pi for these changes to take effect.
-
+Reboot your Raspberry Pi with `sudo reboot` to put these changes into effect.
+====

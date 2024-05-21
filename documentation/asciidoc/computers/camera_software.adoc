@@ -48,6 +48,8 @@ include::camera/qt.adoc[]
 
 include::camera/libcamera_python.adoc[]
 
+include::camera/webcams.adoc[]
+
 include::camera/v4l2.adoc[]
 
 include::camera/csi-2-usage.adoc[]

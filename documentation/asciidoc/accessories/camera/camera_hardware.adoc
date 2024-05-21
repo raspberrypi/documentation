@@ -52,7 +52,7 @@ NOTE: There is additional documentation available around fitting the recommended
 
 === Prepare the Software
 
-Before proceeding, we recommend ensuring that your kernel, GPU firmware and applications are all up to date. Please follow the instructions on xref:../computers/os.adoc#using-apt[keeping your operating system up to date].
+Before proceeding, we recommend ensuring that your kernel, GPU firmware and applications are all up to date. Please follow the instructions on xref:../computers/os.adoc#update-software[keeping your operating system up to date].
 
 Then, please follow the relevant setup instructions for xref:../computers/camera_software.adoc#rpicam-apps[`rpicam-apps`], and the https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf[Picamera2 Python library].
 

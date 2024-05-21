@@ -2,7 +2,7 @@
 
 === Editing the configuration
 
-Before editing the bootloader configuration, xref:os.adoc#updating-and-upgrading-raspberry-pi-os[update your system] to get the latest version of the `rpi-eeprom` package.
+Before editing the bootloader configuration, xref:os.adoc#update-software[update your system] to get the latest version of the `rpi-eeprom` package.
 
 To view the current EEPROM configuration, run the following command:
 

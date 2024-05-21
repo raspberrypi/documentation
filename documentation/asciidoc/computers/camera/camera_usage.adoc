@@ -1,4 +1,4 @@
-This documentation describes how use supported camera modules with our software tools. All Raspberry Pi cameras can record high-resolution photographs and full HD 1080p video (or better) with our software tools.
+This documentation describes how to use supported camera modules with our software tools. All Raspberry Pi cameras can record high-resolution photographs and full HD 1080p video (or better) with our software tools.
 
 Raspberry Pi produces several official camera modules, including:
 
