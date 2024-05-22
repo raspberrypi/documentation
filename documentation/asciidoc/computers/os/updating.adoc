@@ -19,12 +19,14 @@ Run the following command to *upgrade* all your installed packages to their late
 
 [source,console]
 ----
-$ sudo apt upgrade
+$ sudo apt full-upgrade
 ----
 
-Run these commands regularly to keep your software up-to-date. You can even use `apt` to upgrade your Linux kernel and firmware, since Raspberry Pi distributes them as Debian packages.
+TIP: Unlike Debian, Raspberry Pi OS is under continual development. As a result, package dependencies sometimes change, so you should always use `full-upgrade` instead of the standard `upgrade`.
 
-When Raspberry Pi releases a new major version of Raspberry Pi OS, the above commands won't upgrade your operating system to that new major version.
+Run these commands regularly to keep your software up-to-date. Using `apt` to keep Raspberry Pi OS up to date also keeps your Linux kernel and firmware up to date, , since Raspberry Pi distributes them as Debian packages.
+
+When Raspberry Pi releases a new major version of Raspberry Pi OS, the above commands won't upgrade your operating system to that new major version. To upgrade to a new major version, follow our xref:os.adoc#upgrade-your-operating-system-to-a-new-major-version[OS upgrade instructions].
 
 ==== Search for software
 

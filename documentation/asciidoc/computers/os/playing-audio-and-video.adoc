@@ -120,9 +120,9 @@ Replace the `<drm-device>` placeholder with one of the following options:
 |===
 | DRM device | Description
 
-| `HDMI-A-1` | The HDMI output on a Raspberry Pi Zero, or Raspberry Pi Model 1, 2 or 3; *or* the HDMI0 output on a Raspberry Pi 4 or 400
+| `HDMI-A-1` | The HDMI output on a Raspberry Pi Zero, or Raspberry Pi Model 1, 2 or 3; *or* the HDMI0 output on a Raspberry Pi 4, 5, or 400
 
-| `HDMI-A-2` | The HDMI1 output on a Raspberry Pi 4 or 400
+| `HDMI-A-2` | The HDMI1 output on a Raspberry Pi 4, 5, or 400
 
 | `DSI-1` | The Raspberry Pi Touch Display
 
