@@ -80,6 +80,7 @@ if __name__ == "__main__":
 :page-sub_title: {}
 :sectanchors:
 :figure-caption!:
+:source-highlighter: rouge
 
 {}
 """.format(output_subdir, includes_dir, '{} - {}'.format(index_title, site_config['title']), index_title, new_contents))
