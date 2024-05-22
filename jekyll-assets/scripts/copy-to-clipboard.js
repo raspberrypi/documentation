@@ -48,23 +48,12 @@ window.addEventListener('load', function() {
       if (trigger.parentNode.querySelector('div.line')) {
         var text = extractDoxygenCode(trigger.parentNode);
       } else {
-        var text = trigger.parentNode.querySelector('pre').textContent
+        var text = trigger.parentNode.querySelector('pre').textContent;
         
-        // if the code snippet represents a console snippet
-        if (trigger.parentNode.querySelector('pre').querySelector('code') != null && trigger.parentNode.querySelector('pre').querySelector('code').getAttribute('data-lang') == 'console') {
-          // for each line of the code snippet
-          var text_split_into_lines = text.split('\n');
-
-          // trim the '$ ' from the clipboard copy so users don't have to trim it themselves
-          text_split_into_lines = text_split_into_lines.map(function(x) {
-            if (x.startsWith('$ ')) {
-              return x.substring(2);
-            }
-            else return x;
-          })
-
-          // re-assemble the snippet into multiple lines
-          text = text_split_into_lines.join('\n');
+        // if the code snippet represents a console snippet, do not include the '$ ' prefix when copying
+        if (trigger.parentNode.querySelector('pre > code[data-lang="console"]')) {
+          // apply prefix trimming to each line for multi-line snippets
+          text = text.replaceAll(/^\$\s/gm, "");
         }
       }
       return text;
