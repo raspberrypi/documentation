@@ -622,6 +622,15 @@ Not relevant on Raspberry Pi 5 because there is no `start.elf` file.
 
 Default: `0x0`
 
+[[pciex4_reset]]
+==== `pciex4_reset`
+
+Raspberry Pi 5 only.
+
+By default, the PCIe x4 controller used by `RP1` is reset before starting the operating system. If this parameter is set to `0` then the reset is disabled allowing operating system or bare metal code to inherit the PCIe configuration setup from the bootloader.
+
+Default: `1`
+
 [[uart_2ndstage]]
 ==== `uart_2ndstage`
 
