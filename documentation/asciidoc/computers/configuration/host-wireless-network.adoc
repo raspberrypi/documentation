@@ -17,8 +17,9 @@ NOTE: The Raspberry Pi 5, 4, 3, and Raspberry Pi Zero W can host a wireless netw
 
 To create a hosted wireless network on the command line, run the following command, replacing the `<example-network-name>` and `<example-password>` placeholders with your own values:
 
+[source,console]
 ----
-sudo nmcli device wifi hotspot ssid <example-network-name> password <example-password>
+$ sudo nmcli device wifi hotspot ssid <example-network-name> password <example-password>
 ----
 
 Use another wireless client, such as a laptop or smartphone, to connect to the network. Look for a network with a SSID matching `<example-network-name>`. Enter your network password, and you should connect successfully to the network. If your Raspberry Pi has internet access via an Ethernet connection or a second wireless adapter, you should be able to access the internet.
@@ -27,17 +28,19 @@ Use another wireless client, such as a laptop or smartphone, to connect to the n
 
 To disable the hotspot network and resume use of your Pi as a wireless client, run the following command:
 
+[source,console]
 ----
-sudo nmcli device disconnect wlan0
+$ sudo nmcli device disconnect wlan0
 ----
 
 After disabling the network, run the following command to reconnect to another Wi-Fi network:
 
+[source,console]
 ----
-sudo nmcli device up wlan0
+$ sudo nmcli device up wlan0
 ----
 
-TIP: For more information about connecting to wireless networks, see xref:configuration.adoc#configuring-networking[Configuring networking].
+TIP: For more information about connecting to wireless networks, see xref:configuration.adoc#configure-networking[Configure networking].
 
 === Use your Raspberry Pi as a network bridge
 
@@ -52,14 +55,16 @@ The following steps describe how to set up a network bridge on your Raspberry Pi
 
 First, create a network bridge interface:
 
+[source,console]
 ----
-sudo nmcli connection add type bridge con-name 'Bridge' ifname bridge0
+$ sudo nmcli connection add type bridge con-name 'Bridge' ifname bridge0
 ----
 
 Next, add your device's Ethernet connection to the parent network to the bridge:
 
+[source,console]
 ----
-sudo nmcli connection add type ethernet slave-type bridge \
+$ sudo nmcli connection add type ethernet slave-type bridge \
     con-name 'Ethernet' ifname eth0 master bridge0
 ----
 
@@ -67,14 +72,16 @@ Finally, add your wireless hotspot connection to the bridge. You can either add 
 
 * If you have already created a wireless hotspot connection using the instructions above, add the existing interface to the bridge with the following command:
 +
+[source,console]
 ----
-sudo nmcli connection modify 'Hotspot' master bridge0
+$ sudo nmcli connection modify 'Hotspot' master bridge0
 ----
 
 * If you have not yet created a wireless hotspot connection, create a new interface and add it to the bridge with a single command, replacing the `<hotspot-password>` placeholder with a password of your choice:
 +
+[source,console]
 ----
-sudo nmcli connection add con-name 'Hotspot' \
+$ sudo nmcli connection add con-name 'Hotspot' \
     ifname wlan0 type wifi slave-type bridge master bridge0 \
     wifi.mode ap wifi.ssid Hotspot wifi-sec.key-mgmt wpa-psk \
     wifi-sec.proto rsn wifi-sec.pairwise ccmp \
@@ -84,14 +91,16 @@ sudo nmcli connection add con-name 'Hotspot' \
 
 Now that you've configured your bridge, it's time to activate it. Run the following command to activate the bridge:
 
+[source,console]
 ----
-sudo nmcli connection up Bridge
+$ sudo nmcli connection up Bridge
 ----
 
 And run the following command to start hosting your wireless network:
 
+[source,console]
 ----
-sudo nmcli connection up Hotspot
+$ sudo nmcli connection up Hotspot
 ----
 
 You can use the `nmcli device` command to verify that the bridge, Ethernet interface, and wireless hotspot interface are all active.

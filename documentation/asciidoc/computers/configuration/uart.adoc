@@ -1,4 +1,4 @@
-== Configuring UARTs
+== Configure UARTs
 
 There are two types of UART available on the Raspberry Pi -  http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0183g/index.html[PL011] and mini UART. The PL011 is a capable, broadly 16550-compatible UART, while the mini UART has a reduced feature set.
 
@@ -157,7 +157,6 @@ On the Raspberry Pi 5, `/dev/serial0` is a symbolic link that points to `/dev/tt
 
 Due to changes in Bookworm, `/dev/serial1` does not exist by default. You can re-enable `serial1` by setting the following values in `config.txt`:
 
-[source,bash]
 ----
 dtparam=krnbt=off
 ----
