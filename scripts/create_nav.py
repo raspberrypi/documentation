@@ -10,7 +10,7 @@ def change_file_ext(filename, extension):
     return os.path.splitext(filename)[0] + '.' + extension
 
 def strip_adoc(heading):
-    return re.sub(r'\b(_|\*)(.+?)\1\b', r'\2', heading.replace('`', ''))
+    return re.sub(r'\b(_|\*)(.+?)\1\b', r'\2', heading)
 
 file_headings = dict()
 def heading_to_anchor(filepath, heading, anchor):
