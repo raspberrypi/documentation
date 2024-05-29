@@ -1,4 +1,4 @@
-== Host a wireless network on your Raspberry Pi
+== Host a wireless network from your Raspberry Pi
 
 Your Raspberry Pi can host its own wireless network using a wireless module. If you connect your Raspberry Pi to the internet via the Ethernet port (or a second wireless module), other devices connected to the wireless network can access the internet through your Raspberry Pi.
 
@@ -11,7 +11,7 @@ image::images/host-a-network.png[]
 
 With this network configuration, wireless clients can all communicate with each other through the Raspberry Pi router. However, clients on the wireless network cannot directly interact with clients on the wired network other than the Raspberry Pi; wireless clients exist in a private network separate from the network that serves wired clients.
 
-NOTE: The Raspberry Pi 5, 4, 3, and Raspberry Pi Zero W can host a wireless network using the built-in wireless module. Raspberry Pi models that lack a built-in module support this functionality using a separate wireless dongle.
+NOTE: The Raspberry Pi 5, 4, 3, Zero W, and Zero 2 W can host a wireless network using the built-in wireless module. Raspberry Pi models that lack a built-in module support this functionality using a separate wireless dongle.
 
 === Enable hotspot
 
@@ -40,14 +40,13 @@ After disabling the network, run the following command to reconnect to another W
 $ sudo nmcli device up wlan0
 ----
 
-TIP: For more information about connecting to wireless networks, see xref:configuration.adoc#configure-networking[Configure networking].
+TIP: For more information about connecting to wireless networks, see xref:configuration.adoc#networking[Configure networking].
 
 === Use your Raspberry Pi as a network bridge
 
 By default, the wireless network hosted from your Raspberry Pi exists separately from the parent network connected via Ethernet. In this arrangement, devices connected to the parent network cannot directly communicate with devices connected to the wireless network hosted from your Raspberry Pi. If you want connected wireless devices to be able to communicate with devices on the parent network, you can configure your Raspberry Pi as a https://en.wikipedia.org/wiki/Network_bridge[network bridge]. With a network bridge in place, each device connected to the Pi-hosted wireless network is assigned an IP address in the parent network.
 
-
-In the diagram below, note that the laptop exists in the same IP block as the router and wired clients:
+In the diagram below, the laptop exists in the same IP block as the router and wired clients:
 
 image::images/bridge-network.png[]
 
@@ -79,7 +78,7 @@ $ sudo nmcli connection modify 'Hotspot' master bridge0
 
 * If you have not yet created a wireless hotspot connection, create a new interface and add it to the bridge with a single command, replacing the `<hotspot-password>` placeholder with a password of your choice:
 +
-[source,console]
+[source,console?prompt=$]
 ----
 $ sudo nmcli connection add con-name 'Hotspot' \
     ifname wlan0 type wifi slave-type bridge master bridge0 \

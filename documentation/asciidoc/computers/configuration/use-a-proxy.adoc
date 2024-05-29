@@ -21,7 +21,7 @@ $ sudo nano /etc/environment
 
 Add the following to the `/etc/environment` file to create the `http_proxy` variable:
 
-[bash]
+[source,bash]
 ----
 export http_proxy="http://<proxy_ip_address>:<proxy_port>"
 ----
@@ -32,7 +32,7 @@ Replace the `<proxy_ip_address>` and `<proxy_port>` placeholders with the IP add
 ====
 If your proxy requires a username and password, add them using the following format:
 
-[bash]
+[source,bash]
 ----
 export http_proxy="http://<username>:<password>@proxyipaddress:proxyport"
 ----
@@ -42,20 +42,21 @@ Replace the `<username>` and `<password>` placeholders with the username and pas
 
 Enter the same information for the environment variable `https_proxy`:
 
-[bash]
+[source,bash]
 ----
 export https_proxy="http://username:password@proxyipaddress:proxyport"
 ----
 
 Create the `no_proxy` environment variable, which is a comma-separated list of addresses your Raspberry Pi should not use the proxy for:
 
-[bash]
+[source,bash]
 ----
 export no_proxy="localhost, 127.0.0.1"
 ----
 
 Your `/etc/environment` file should now look like the following:
 
+[source,bash]
 ----
 export http_proxy="http://username:password@proxyipaddress:proxyport"
 export https_proxy="http://username:password@proxyipaddress:proxyport"
@@ -77,6 +78,7 @@ $ sudo visudo
 
 Add the following line to the file so `sudo` will use the environment variables you just created:
 
+[source,bash]
 ----
 Defaults	env_keep+="http_proxy https_proxy no_proxy"
 ----

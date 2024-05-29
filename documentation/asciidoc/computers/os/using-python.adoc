@@ -79,6 +79,7 @@ $ source <env-name>/bin/activate
 
 You should then see a prompt similar to the following:
 
+[source,console?prompt=(<env-name>) $]
 ----
 (<env-name>) $
 ----
@@ -87,6 +88,7 @@ The `(<env-name>)` command prompt prefix indicates that the current terminal ses
 
 To check that you're in a virtual environment, use `pip list` to view the list of installed packages:
 
+[source,console?prompt=(<env-name>) $]
 ----
 (<env-name>) $ pip list
 Package    Version
@@ -99,6 +101,7 @@ The list should be much shorter than the list of packages installed in your syst
 
 To leave a virtual environment, run the following command:
 
+[source,console?prompt=(<env-name>) $]
 ----
 (<env-name>) $ deactivate
 ----
@@ -121,12 +124,14 @@ $ source env/bin/activate
 
 You should then see a prompt similar to the following:
 
+[source,console?prompt=(env) $]
 ----
 (env) $
 ----
 
 When you finish working on a project, run the following command from any directory to leave the virtual environment:
 
+[source,console?prompt=(env) $]
 ----
 (env) $ deactivate
 ----
@@ -153,12 +158,14 @@ $ source ~/.env/bin/activate
 
 You should then see a prompt similar to the following:
 
+[source,console?prompt=(.env) $]
 ----
 (.env) $
 ----
 
 To leave the virtual environment, run the following command from any directory:
 
+[source,console?prompt=(.env) $]
 ----
 (.env) $ deactivate
 ----

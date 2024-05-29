@@ -1,4 +1,4 @@
-== External storage configuration
+== External storage
 
 You can connect your external hard disk, SSD, or USB stick to any of the USB ports on the Raspberry Pi, and mount the file system to access the data stored on it.
 
@@ -8,7 +8,7 @@ NOTE: Raspberry Pi OS Lite does not implement automounting.
 
 To set up your storage device so that it always mounts to a specific location of your choice, you must mount it manually.
 
-=== Mounting a storage device
+=== Mount a storage device
 
 You can mount your storage device at a specific folder location. It is conventional to do this within the `/mnt` folder, for example `/mnt/mydisk`. Note that the folder must be empty.
 
@@ -69,7 +69,7 @@ Verify that the storage device is mounted successfully by listing the contents:
 $ ls /mnt/mydisk
 ----
 
-=== Setting up automatic mounting
+=== Automatically mount a storage device
 
 You can modify the `fstab` file to define the location where the storage device will be automatically mounted when the Raspberry Pi starts up. In the `fstab` file, the disk partition is identified by the universally unique identifier (UUID).
 
@@ -89,6 +89,7 @@ $ sudo nano /etc/fstab
 
 Add the following line in the `fstab` file:
 
+[source,bash]
 ----
 UUID=5C24-1453 /mnt/mydisk fstype defaults,auto,users,rw,nofail 0 0
 ----
@@ -103,7 +104,7 @@ NOTE: If you do not have the storage device attached when the Raspberry Pi start
 
 For more information on each Linux command, refer to the specific manual page using the `man` command. For example, `man fstab`.
 
-=== Unmounting a storage device
+=== Unmount a storage device
 
 When the Raspberry Pi shuts down, the system takes care of unmounting the storage device so that it is safe to unplug it. If you want to manually unmount a device, you can use the following command:
 

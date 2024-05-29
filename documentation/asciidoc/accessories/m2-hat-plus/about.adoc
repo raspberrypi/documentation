@@ -101,7 +101,7 @@ image::images/installation-05.png[width="60%"]
 --
 image::images/installation-06.png[width="60%"]
 --
-. Congratulations, you have successfully installed the M.2 HAT+. Connect your Raspberry Pi to power; Raspberry Pi OS will automatically detect the M.2 HAT+. If you use Raspberry Pi Desktop, you should see an icon representing the drive on your desktop. If you don't use a desktop, you can find the drive at `/dev/nvme0n1`. To make your drive automatically available for file access, consider xref:../computers/configuration.adoc#setting-up-automatic-mounting[configuring automatic mounting].
+. Congratulations, you have successfully installed the M.2 HAT+. Connect your Raspberry Pi to power; Raspberry Pi OS will automatically detect the M.2 HAT+. If you use Raspberry Pi Desktop, you should see an icon representing the drive on your desktop. If you don't use a desktop, you can find the drive at `/dev/nvme0n1`. To make your drive automatically available for file access, consider xref:../computers/configuration.adoc#automatically-mount-a-storage-device[configuring automatic mounting].
 +
 --
 image::images/installation-07.png[width="60%"]

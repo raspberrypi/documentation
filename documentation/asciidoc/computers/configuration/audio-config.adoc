@@ -1,4 +1,4 @@
-== Audio configuration
+== Audio
 
 Raspberry Pi OS has multiple audio output modes: HDMI 1, the headphone jack (if your device has one), and USB audio.
 
