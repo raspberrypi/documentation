@@ -40,6 +40,7 @@ class TestCreateBuildAdoc(unittest.TestCase):
 :page-sub_title: The C/C++ SDK
 :sectanchors:
 :figure-caption!:
+:source-highlighter: rouge
 
 include::{{includedir}}/{{parentdir}}/c_sdk/sdk_setup.adoc[]
 
