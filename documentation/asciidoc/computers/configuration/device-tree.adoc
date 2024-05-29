@@ -404,7 +404,7 @@ Assignments appear at the end of a declaration, and are indicated by a `=`:
 [source,kotlin]
 ----
 str_val  = <&target>,"strprop=value";              // 1
-int_val  = <&target>,"intprop:0=42                 // 2
+int_val  = <&target>,"intprop:0=42"                // 2
 int_val2 = <&target>,"intprop:0=",<42>;            // 3
 bytes    = <&target>,"bytestr[=b8:27:eb:01:23:45"; // 4
 ----
@@ -988,16 +988,12 @@ if [ -f "${blconfig_alias}" ]; then
 fi
 ----
 
-`blconfig`
+`blconfig`:: alias that refers to an NVMEM device that stores a copy of the bootloader EEPROM config file.
 
-The `blconfig` alias refers to an NVMEM device that stores a copy of the bootloader EEPROM config file.
-
-`blpubkey`
-
-The `blpubkey` alias points to an NVMEM device that stores a copy of the bootloader EEPROM public key (if defined) in binary format.
+`blpubkey`:: alias that points to an NVMEM device that stores a copy of the bootloader EEPROM public key (if defined) in binary format.
 The https://github.com/raspberrypi/usbboot/blob/master/tools/rpi-bootloader-key-convert[rpi-bootloader-key-convert] utility can be used to convert the data into PEM format for use with OpenSSL.
 
-See also: https://github.com/raspberrypi/usbboot#secure-boot[secure-boot]
+For more information, see https://github.com/raspberrypi/usbboot#secure-boot[secure-boot].
 
 [[part5]]
 === Troubleshooting

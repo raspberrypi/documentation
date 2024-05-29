@@ -122,6 +122,7 @@ It is possible to change the configuration of the clocks through this interface,
 
 Here are a couple of example configurations that you can use to alter specific clocks. We will add to this resource when requests for clock configurations are made.
 
+[source,kotlin]
 ----
 clock_routing {
    vco@PLLA  {    freq = <1966080000>; };
