@@ -24,13 +24,13 @@
                     "subpath": "configuration.adoc"
                 },
                 {
-                    "title": "The config.txt file",
+                    "title": "`config.txt`",
                     "description": "Low-level settings control",
                     "image": "full-sized/The-config-txt-file.png",
                     "subpath": "config_txt.adoc"
                 },
                 {
-                    "title": "Legacy config.txt options",
+                    "title": "Legacy `config.txt` options",
                     "description": "Options which may be useful for OSes other than Raspberry Pi OS",
                     "image": "full-sized/Legacy-config-txt.png",
                     "subpath": "legacy_config_txt.adoc"
