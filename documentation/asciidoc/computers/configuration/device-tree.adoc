@@ -857,9 +857,7 @@ Each property is stored as a 32-bit integer unless indicated otherwise.
 
 Raspberry Pi 5 only. Each property is stored as a 32-bit integer unless indicated otherwise.
 
-`max_current`:: The maximum current in mA that the power supply can supply. The firmware reports the value indicated by the USB-C, USB-PD or PoE interfaces.
-
-For bench power supplies (e.g. connected to the GPIO header) define `PSU_MAX_CURRENT` in the bootloader configuration to indicate the power supply current capability.
+`max_current`:: The maximum current in mA that the power supply can supply. The firmware reports the value indicated by the USB-C, USB-PD or PoE interfaces. For bench power supplies (e.g. connected to the GPIO header) define `PSU_MAX_CURRENT` in the bootloader configuration to indicate the power supply current capability.
 
 `power_reset`:: Raspberry Pi 5 only. A bit field indicating the reason why the PMIC was reset.
 
