@@ -500,6 +500,11 @@ span.mlabel {
 td code {
   font-size: 1.1em;
   background-color: #dedede;
+  border-radius: 3px;
+}
+
+#content h1 > p > code {
+  background-color: unset;
 }
 
 td div.listingblock div.content code {
