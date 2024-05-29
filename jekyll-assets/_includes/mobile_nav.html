@@ -10,18 +10,18 @@
     </div>
     <div class="contents-inner hidden">
     {% for item in subdir.toc %}
-      <h3 class="contentshead">{{ item.title }}</h3>
+      <h3 class="contentshead">{{ item.title | markdownify }}</h3>
       {% if item.sections[0] %}
         <div class="itemcontents">
           <ul class="sectlevel1">
             {% for entry in item.sections %}
               <li>
-                <a href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}">{{ entry.heading }}</a>
+                <a href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}">{{ entry.heading | markdownify }}</a>
                 {% if entry.subsections[0] %}
                   <ul>
                     {% for subentry in entry.subsections %}
                       <li>
-                        <a href="{{ site.baseurl }}{{ item.path }}#{{ subentry.anchor }}">{{ subentry.heading }}</a>
+                        <a href="{{ site.baseurl }}{{ item.path }}#{{ subentry.anchor }}">{{ subentry.heading | markdownify }}</a>
                       </li>
                     {% endfor %}
                   </ul>
