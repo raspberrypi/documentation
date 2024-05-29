@@ -1,6 +1,22 @@
 include::configuration/raspi-config.adoc[]
 
+include::configuration/display-resolution.adoc[]
+
+include::configuration/audio-config.adoc[]
+
 include::configuration/configuring-networking.adoc[]
+
+include::configuration/screensaver.adoc[]
+
+include::configuration/users.adoc[]
+
+include::configuration/external-storage.adoc[]
+
+include::configuration/kernel-command-line-config.adoc[]
+
+include::configuration/localisation.adoc[]
+
+include::configuration/securing-the-raspberry-pi.adoc[]
 
 include::configuration/headless.adoc[]
 
@@ -8,30 +24,23 @@ include::configuration/host-wireless-network.adoc[]
 
 include::configuration/use-a-proxy.adoc[]
 
-include::configuration/hdmi-config.adoc[]
-
-include::configuration/display-resolution.adoc[]
-
-include::configuration/audio-config.adoc[]
-
-include::configuration/external-storage.adoc[]
-
-include::configuration/localisation.adoc[]
-
-include::configuration/pin-configuration.adoc[]
-
-include::configuration/device-tree.adoc[]
-
-include::configuration/kernel-command-line-config.adoc[]
-
-include::configuration/uart.adoc[]
+include::configuration/boot_folder.adoc[]
 
 include::configuration/led_blink_warnings.adoc[]
 
-include::configuration/securing-the-raspberry-pi.adoc[]
+include::configuration/uart.adoc[]
 
-include::configuration/screensaver.adoc[]
+include::configuration/device-tree.adoc[]
 
-include::configuration/boot_folder.adoc[]
+include::configuration/pin-configuration.adoc[]
+
+
+
+
+
+
+
+
+
 
 
