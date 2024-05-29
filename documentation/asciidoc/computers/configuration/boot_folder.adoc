@@ -1,4 +1,4 @@
-== The boot folder
+== `boot` folder contents
 
 Raspberry Pi OS stores boot files on the first partition of the SD card, formatted with the FAT file system.
 
@@ -18,10 +18,10 @@ The Raspberry Pi 4 and 5 do not use `bootcode.bin`. It has been replaced by boot
 
 Binary firmware blobs loaded onto the VideoCore GPU in the SoC, which then take over the boot process.
 
-* `start.elf` is the basic firmware.
-* `start_x.elf` includes additional codecs.
-* `start_db.elf` can be used for debugging purposes.
-* `start_cd.elf` is a cut-down version of the firmware that removes support for hardware blocks such as codecs and 3D as well as debug logging support; it also imposes initial framebuffer limitations. The cut-down firmware is automatically used when `gpu_mem=16` is specified in `config.txt`.
+`start.elf`:: the basic firmware.
+`start_x.elf`:: includes additional codecs.
+`start_db.elf`:: used for debugging.
+`start_cd.elf`:: a cut-down version of the firmware that removes support for hardware blocks such as codecs and 3D as well as debug logging support; it also imposes initial frame buffer limitations. The cut-down firmware is automatically used when `gpu_mem=16` is specified in `config.txt`.
 
 `start4.elf`, `start4x.elf`, `start4db.elf` and `start4cd.elf` are equivalent firmware files specific to the Raspberry Pi 4-series (Model 4B, Pi 400, Compute Module 4 and Compute Module 4S).
 
@@ -35,13 +35,13 @@ Linker files found in matched pairs with the `start*.elf` files listed in the pr
 
 === `cmdline.txt`
 
-The kernel <<the-kernel-command-line,command line>> passed into the kernel at boot.
+The <<kernel-command-line-cmdline-txt,kernel command line>> passed into the kernel at boot.
 
 === `config.txt`
 
 Contains many configuration parameters for setting up the Raspberry Pi. For more information, see the xref:config_txt.adoc[`config.txt` documentation].
 
-NOTE: Raspberry Pi 5 requires a non-empty `config.txt` file in the boot partition.
+IMPORTANT: Raspberry Pi 5 requires a non-empty `config.txt` file in the boot partition.
 
 === `issue.txt`
 
@@ -51,13 +51,11 @@ Text-based housekeeping information containing the date and git commit ID of the
 
 Contents of the initial ramdisk. This loads a temporary root file system into memory before the real root file system can be mounted.
 
-NOTE: Since Bookworm, Raspberry Pi OS includes an `initramfs` file by default. To enable the initial ramdisk, configure it in xref:config_txt.adoc[`config.txt`] with the xref:config_txt.adoc#auto_initramfs[`auto_initramfs`] keyword.
+Since Bookworm, Raspberry Pi OS includes an `initramfs` file by default. To enable the initial ramdisk, configure it in xref:config_txt.adoc[`config.txt`] with the xref:config_txt.adoc#auto_initramfs[`auto_initramfs`] keyword.
 
 === `ssh` or `ssh.txt`
 
-When this file is present, enables SSH at boot. SSH is otherwise disabled by default.
-
-NOTE: The contents do not matter. Even an empty file enables SSH.
+When this file is present, enables SSH at boot. SSH is otherwise disabled by default. The contents do not matter. Even an empty file enables SSH.
 
 === Device Tree blob files (`*.dtb`)
 

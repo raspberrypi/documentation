@@ -597,7 +597,7 @@ Raspberry Pi 5 requires a `config.txt` file to be present to indicate that the p
 [[boot_ramdisk]]
 ==== `boot_ramdisk`
 
-If this property is set to `1` then the bootloader will attempt load a ramdisk file called `boot.img` containing the xref:configuration.adoc#the-boot-folder[boot filesystem]. Subsequent files (e.g. `start4.elf`) are read from the ramdisk instead of the original boot file system.
+If this property is set to `1` then the bootloader will attempt load a ramdisk file called `boot.img` containing the xref:configuration.adoc#boot-folder-contents[boot filesystem]. Subsequent files (e.g. `start4.elf`) are read from the ramdisk instead of the original boot file system.
 
 The primary purpose of `boot_ramdisk` is to support `secure-boot`, however, unsigned `boot.img` files can also be useful to Network Boot or `RPIBOOT` configurations.
 
@@ -621,6 +621,15 @@ Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any c
 Not relevant on Raspberry Pi 5 because there is no `start.elf` file.
 
 Default: `0x0`
+
+[[pciex4_reset]]
+==== `pciex4_reset`
+
+Raspberry Pi 5 only.
+
+By default, the PCIe x4 controller used by `RP1` is reset before starting the operating system. If this parameter is set to `0` then the reset is disabled allowing operating system or bare metal code to inherit the PCIe configuration setup from the bootloader.
+
+Default: `1`
 
 [[uart_2ndstage]]
 ==== `uart_2ndstage`
@@ -712,7 +721,7 @@ Default: `0`
 [[program_rpiboot_gpio]]
 ==== `program_rpiboot_gpio`
 
-Since there is no dedicated `nRPIBOOT` jumper on Raspberry Pi 4B or Raspberry Pi 400, an alternative GPIO must be used to select `RPIBOOT` mode by pulling the GPIO low. Only one GPIO may be selected and the available options are `2, 4, 5, 7, 8`. This property does not depend on `secure-boot`, but verify that this GPIO configuration does not conflict with any HATs which might pull the GPIO low during boot.
+Since there is no dedicated `nRPIBOOT` jumper on Raspberry Pi 4B or Raspberry Pi 400, an alternative GPIO must be used to select `RPIBOOT` mode by pulling the GPIO low. Only one GPIO may be selected and the available options are `2, 4, 5, 6, 7, 8`. This property does not depend on `secure-boot`, but verify that this GPIO configuration does not conflict with any HATs which might pull the GPIO low during boot.
 
 Since for safety this property can only be programmed via `RPIBOOT`, the bootloader EEPROM must first be cleared using `erase_eeprom`. This causes the BCM2711 ROM to failover to `RPIBOOT` mode, which then allows this option to be set.
 

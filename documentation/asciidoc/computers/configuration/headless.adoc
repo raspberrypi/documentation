@@ -9,7 +9,7 @@ To access your Raspberry Pi over that network, use SSH. Once you've connected ov
 
 If you're setting up your Raspberry Pi from scratch, set up wireless networking and SSH during the xref:getting-started.adoc#installing-the-operating-system[imaging process]. If you've already got a Raspberry Pi set up, you can configure SSH using `raspi-config`.
 
-WARNING: Depending on the model of Raspberry Pi and type of SD card you are using, your Raspberry Pi may require up to five minutes to boot and connect to your wireless network the first time it boots.
+WARNING: Depending on the model of Raspberry Pi and type of SD card you use, your Raspberry Pi may require up to five minutes to boot and connect to your wireless network the first time it boots.
 
 === Connect to a wired network
 
@@ -41,8 +41,9 @@ NOTE: `<username>` must only contain lower-case letters, digits and hyphens, and
 
 To generate the encrypted password, use https://www.openssl.org[OpenSSL] on another computer. Open a terminal and enter the following:
 
+[source,console]
 ----
-openssl passwd -6
+$ openssl passwd -6
 ----
 
 When prompted, enter your password and verify it. This command will then output an encrypted version of the supplied password.

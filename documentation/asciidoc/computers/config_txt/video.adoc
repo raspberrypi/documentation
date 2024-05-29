@@ -2,9 +2,7 @@
 
 === HDMI mode
 
-In order to support dual 4k displays, the Raspberry Pi 4 has updated video hardware, which imposes minor restrictions on the modes supported.
-
-The HDMI settings used to be configured by firmware via settings in `config.txt`; now the settings are configured by KMS via xref:configuration.adoc#hdmi-configuration[settings] in `cmdline.txt`.
+To control HDMI settings, use the xref:configuration.adoc#set-resolution-and-rotation[Screen Configuration utility] or xref:configuration.adoc#set-the-kms-display-mode[KMS video settings] in `cmdline.txt`.
 
 ==== HDMI Pipeline for Raspberry Pi 4 and 5
 

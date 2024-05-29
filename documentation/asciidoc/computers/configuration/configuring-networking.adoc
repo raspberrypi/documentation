@@ -1,10 +1,12 @@
-== Configuring networking
+== Networking
 
 Raspberry Pi OS provides a graphical user interface (GUI) for setting up wireless connections. Users of Raspberry Pi OS Lite and headless machines can set up wireless networking from the command line with https://networkmanager.dev/docs/api/latest/nmcli.html[`nmcli`].
 
-NOTE: Network Manager is the default networking configuration tool under Raspberry Pi OS _Bookworm_ or later. While Network Manager can be installed on earlier versions of the operating system using `apt` and configured as the default using `raspi-config`, earlier versions used `dhcpd` and other tools for network configuration by default.
+NOTE: Starting with Raspberry Pi OS _Bookworm_, Network Manager is the default networking configuration tool. Earlier versions of Raspberry Pi OS used `dhcpd` and other tools for network configuration.
 
-=== Using the desktop
+=== Connect to a wireless network
+
+==== via the desktop
 
 Access Network Manager via the network icon at the right-hand end of the menu bar. If you are using a Raspberry Pi with built-in wireless connectivity, or if a wireless dongle is plugged in, click this icon to bring up a list of available wireless networks. If you see the message 'No APs found - scanning...', wait a few seconds, and Network Manager should find your network.
 
@@ -18,9 +20,9 @@ image::images/key.png[key]
 
 Enter the key and click *OK*, then wait a couple of seconds. The network icon will flash briefly to show that a connection is being made. When connected, the icon will stop flashing and show the signal strength.
 
-==== Connect to a hidden network
+===== Connect to a hidden network
 
-If you want to use a hidden network, use the *Advanced options* > *Connect to a hidden Wi-Fi network* in the network menu:
+To use a hidden network, navigate to *Advanced options* > *Connect to a hidden Wi-Fi network* in the network menu:
 
 image::images/network-hidden.png[the connect to a hidden wi-fi network option in advanced options]
 
@@ -31,41 +33,47 @@ image::images/network-hidden-authentication.png[hidden wi-fi network authenticat
 Click the *Connect* button to initiate the network connection.
 
 [[wireless-networking-command-line]]
-=== Using the command line
+==== via the command line
 
 This guide will help you configure a wireless connection on your Raspberry Pi from a terminal without using graphical tools. No additional software is required.
 
 NOTE: This guide should work for WEP, WPA, WPA2, or WPA3 networks, but may not work for enterprise networks.
 
-==== Enable wireless networking
+===== Enable wireless networking
 
 On a fresh install, you must specify the country where you use your device. This allows your device to choose the correct frequency bands for 5GHz networking. Once you have specified a wireless LAN country, you can use your Raspberry Pi's built-in wireless networking module.
 
 To do this, set your wireless LAN country with the command line `raspi-config` tool. Run the following command:
+
+[source,console]
 ----
-sudo raspi-config
+$ sudo raspi-config
 ----
+
 Select the *Localisation options* menu item using the arrow keys. Choose the *WLAN country* option.
 Pick your country from the dropdown using the arrow keys. Press `Enter` to select your country.
 
 You should now have access to wireless networking. Run the following command to check if your Wi-Fi radio is enabled:
 
+[source,console]
 ----
-nmcli radio wifi
+$ nmcli radio wifi
 ----
 
 If this command returns the text "enabled", you're ready to configure a connection. If this command returns "disabled", try enabling Wi-Fi with the following command:
 
+[source,console]
 ----
-nmcli radio wifi on
+$ nmcli radio wifi on
 ----
 
-==== Find networks
+===== Find networks
 
 To scan for wireless networks, run the following command:
 
+[source,console]
 ----
-nmcli dev wifi list
+$ nmcli dev wifi list
 ----
 
 You should see output similar to the following:
@@ -80,30 +88,26 @@ IN-USE  BSSID              SSID            MODE   CHAN  RATE        SIGNAL  BARS
 
 Look in the "SSID" column for the name of the network you would like to connect to. Use the SSID and a password to connect to the network.
 
-==== Connect to a network
+===== Connect to a network
 
-Run the following command to configure a network connection:
+Run the following command to configure a network connection, replacing the `<example_ssid>` placeholder with the name of the network you're trying to configure:
 
+[source,console]
 ----
-sudo nmcli --ask dev wifi connect <example_ssid>
+$ sudo nmcli --ask dev wifi connect <example_ssid>
 ----
-
-Don't forget to replace `<example_ssid>` with the name of the network you're trying to configure.
 
 Enter your network password when prompted.
 
-Your Raspberry Pi should automatically connect to the network once you enter your password. If you see the following output:
+Your Raspberry Pi should automatically connect to the network once you enter your password.
 
-----
-Error: Connection activation failed: Secrets were required, but not provided.
-----
-
-This means that you entered an incorrect password. If you see this error, run the above command again, being careful to enter your password correctly.
+If you see error output that claims that "Secrets were required, but not provided", you entered an incorrect password. Run the above command again, carefully entering your password.
 
 To check if you're connected to a network, run the following command:
 
+[source,console]
 ----
-nmcli dev wifi list
+$ nmcli dev wifi list
 ----
 
 You should see output similar to the following:
@@ -120,30 +124,33 @@ Check for an asterisk (`*`) in the "IN-USE" column; it should appear in the same
 
 NOTE: You can manually edit your connection configurations in the `/etc/NetworkManager/system-connections/` directory.
 
-==== Connect to an unsecured network
+===== Connect to an unsecured network
 
 If the network you are connecting to does not use a password, run the following command:
 
+[source,console]
 ----
-sudo nmcli dev wifi connect <example_ssid>
+$ sudo nmcli dev wifi connect <example_ssid>
 ----
 
-WARNING: Be careful when using unsecured wireless networks. 
+WARNING: Unsecured wireless networks can put your personal information at risk. Whenever possible, use a secured wireless network or VPN.
 
-==== Connect to a hidden network
+===== Connect to a hidden network
 
 If you are using a hidden network, specify the "hidden" option with a value of "yes" when you run `nmcli`:
 
+[source,console]
 ----
-sudo nmcli --ask dev wifi connect <example_ssid> hidden yes
+$ sudo nmcli --ask dev wifi connect <example_ssid> hidden yes
 ----
 
-==== Set priority among multiple networks
+===== Set network priority
 
 If your device detects more than one known networks at the same time, it could connect any of the detected known networks. Use the priority option to force your Raspberry Pi to prefer certain networks. Your device will connect to the network that is in range with the highest priority. Run the following command to view the priority of known networks:
 
+[source,console]
 ----
-nmcli --fields autoconnect-priority,name connection
+$ nmcli --fields autoconnect-priority,name connection
 ----
 
 You should see output similar to the following:
@@ -160,8 +167,9 @@ AUTOCONNECT-PRIORITY  NAME
 Use the `nmcli connection modify` command to set the priority of a network.
 The following example command sets the priority of a network named "Pi Towers" to `10`:
 
+[source,console]
 ----
-nmcli connection modify "Pi Towers" connection.autoconnect-priority 10
+$ nmcli connection modify "Pi Towers" connection.autoconnect-priority 10
 ----
 
 Your device will always try to connect to the in-range network with the highest non-negative priority value. You can also assign a network a negative priority; your device will only attempt to connect to a negative priority network if no other known network is in range. For example, consider three networks:
@@ -174,10 +182,10 @@ AUTOCONNECT-PRIORITY  NAME
 1000                  dog
 ----
 
-- If all of these networks were in range, your device would first attempt to connect to the "dog" network.
-- If connection to the "dog" network fails, your device would attempt to connect to the "cat" network.
-- If connection to the "cat" network fails, your device would attempt to connect to the "rabbit" network.
-- If connection to the "rabbit" network fails, and your device detects no other known networks, your device will attempt to connect to the "snake" network.
+* If all of these networks were in range, your device would first attempt to connect to the "dog" network.
+* If connection to the "dog" network fails, your device would attempt to connect to the "cat" network.
+* If connection to the "cat" network fails, your device would attempt to connect to the "rabbit" network.
+* If connection to the "rabbit" network fails, and your device detects no other known networks, your device will attempt to connect to the "snake" network.
 
 === Configure DHCP
 
