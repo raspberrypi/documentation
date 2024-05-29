@@ -42,6 +42,7 @@ class TestCreateBuildAdocDoxygen(unittest.TestCase):
 :page-sub_title: group__channel__config
 :sectanchors:
 :figure-caption!:
+:source-highlighter: rouge
 
 [[channel_config]]
 == channel_config
