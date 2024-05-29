@@ -22,7 +22,7 @@ Device Trees are usually written in a textual form known as Device Tree Source (
 
 The following is a simple tree in the `.dts` format:
 
-[source]
+[source,kotlin]
 ----
 /dts-v1/;
 /include/ "common.dtsi";
@@ -69,35 +69,35 @@ Properties are simple key-value pairs where the value can either be empty or con
 
 Text strings (NUL-terminated) are indicated with double quotes:
 
-[source,c]
+[source,kotlin]
 ----
 string-property = "a string";
 ----
 
 Cells are 32-bit unsigned integers delimited by angle brackets:
 
-[source,c]
+[source,kotlin]
 ----
 cell-property = <0xbeef 123 0xabcd1234>;
 ----
 
 Arbitrary byte data is delimited with square brackets, and entered in hex:
 
-[source,c]
+[source,kotlin]
 ----
 binary-property = [01 23 45 67 89 ab cd ef];
 ----
 
 Data of differing representations can be concatenated using a comma:
 
-[source,c]
+[source,kotlin]
 ----
 mixed-property = "a string", [01 23 45 67], <0x12345678>;
 ----
 
 Commas are also used to create lists of strings:
 
-[source,c]
+[source,kotlin]
 ----
 string-list = "red fish", "blue fish";
 ----
@@ -109,7 +109,7 @@ The `/include/` directive results in simple textual inclusion, much like C's `#i
 
 In the example above, the second appearance of `/node2` causes a new property to be added to the original:
 
-[source]
+[source,kotlin]
 ----
 /node2 {
     an-empty-property;
@@ -161,7 +161,7 @@ Unless you want to learn how to write overlays for Raspberry Pis, you might pref
 
 A DT overlay comprises a number of fragments, each of which targets one node and its subnodes. Although the concept sounds simple enough, the syntax seems rather strange at first:
 
-[source]
+[source,kotlin]
 ----
 // Enable the i2s interface
 /dts-v1/;
@@ -187,7 +187,7 @@ The `compatible` string identifies this as being for BCM2835, which is the base 
 
 Each fragment consists of two parts: a `target` property, identifying the node to apply the overlay to; and the `+__overlay__+` itself, the body of which is added to the target node. The example above can be interpreted as if it were written like this:
 
-[source]
+[source,kotlin]
 ----
 /dts-v1/;
 /plugin/;
@@ -245,7 +245,7 @@ $ fdtdump 1st.dtbo
 
 This should output something similar to the following:
 
-[source]
+[source,kotlin]
 ----
 /dts-v1/;
 // magic:		0xd00dfeed
@@ -310,7 +310,7 @@ Parameters are defined in the DTS by adding an `+__overrides__+` node to the roo
 
 String parameters are declared like this:
 
-[source,c]
+[source,kotlin]
 ----
 name = <&label>,"property";
 ----
@@ -324,7 +324,7 @@ Note that properties called `status` are treated specially; non-zero/true/yes/on
 
 Integer parameters are declared like this:
 
-[source]
+[source,kotlin]
 ----
 name = <&label>,"property.offset"; // 8-bit
 name = <&label>,"property;offset"; // 16-bit
@@ -339,21 +339,21 @@ Here, `label`, `property` and `offset` are replaced by suitable values; the offs
 
 Device Tree encodes boolean values as zero-length properties; if present then the property is true, otherwise it is false. They are defined like this:
 
-[source,c]
+[source,kotlin]
 ----
 boolean_property; // Set 'boolean_property' to true
 ----
 
 A property is assigned the value `false` by not defining it. Boolean parameters are declared like this, replacing the `label` and `property` placeholders with suitable values:
 
-[source,c]
+[source,kotlin]
 ----
 name = <&label>,"property?";
 ----
 
 Inverted booleans invert the input value before applying it in the same way as a regular boolean; they are declared similarly, but use `!` to indicate the inversion:
 
-[source,c]
+[source,kotlin]
 ----
 name = <&label>,"<property>!";
 ----
@@ -365,7 +365,7 @@ Boolean parameters can cause properties to be created or deleted, but they can't
 
 Byte string properties are arbitrary sequences of bytes, e.g. MAC addresses. They accept strings of hexadecimal bytes, with or without colons between the bytes.
 
-[source,c]
+[source,kotlin]
 ----
 mac_address = <&ethernet0>,"local_mac_address[";
 ----
@@ -381,13 +381,13 @@ local_mac_address = [aa bb cc dd ee ff];
 
 There are some situations where it is convenient to be able to set the same value in multiple locations within the Device Tree. Rather than the ungainly approach of creating multiple parameters, it is possible to add multiple targets to a single parameter by concatenating them, like this:
 
-[source]
+[source,kotlin]
 ----
-    __overrides__ {
-        gpiopin = <&w1>,"gpios:4",
-                  <&w1_pins>,"brcm,pins:0";
-        ...
-    };
+__overrides__ {
+    gpiopin = <&w1>,"gpios:4",
+              <&w1_pins>,"brcm,pins:0";
+    ...
+};
 ----
 
 (example taken from the `w1-gpio` overlay)
@@ -401,7 +401,7 @@ The DT parameter mechanism allows multiple targets to be patched from the same p
 
 Assignments appear at the end of a declaration, and are indicated by a `=`:
 
-[source]
+[source,kotlin]
 ----
 str_val  = <&target>,"strprop=value";              // 1
 int_val  = <&target>,"intprop:0=42                 // 2
@@ -411,7 +411,7 @@ bytes    = <&target>,"bytestr[=b8:27:eb:01:23:45"; // 4
 
 Lines 1, 2 and 4 are fairly obvious, but line 3 is more interesting because the value appears as an integer (cell) value. The DT compiler evaluates integer expressions at compile time, which might be convenient (particularly if macro values are used), but the cell can also contain a reference to a label:
 
-[source,c]
+[source,kotlin]
 ----
 // Force an LED to use a GPIO on the internal GPIO controller.
 exp_led = <&led1>,"gpios:0=",<&gpio>,
@@ -427,7 +427,7 @@ Bear in mind that parameters do nothing unless they are applied - a default valu
 
 Lookup tables allow parameter input values to be transformed before they are used. They act as associative arrays, rather like switch/case statements:
 
-[source,c]
+[source,kotlin]
 ----
 phonetic = <&node>,"letter{a=alpha,b=bravo,c=charlie,d,e,='tango uniform'}";
 bus      = <&fragment>,"target:0{0=",<&i2c0>,"1=",<&i2c1>,"}";
@@ -446,7 +446,7 @@ The DT parameter mechanism as described has a number of limitations, including t
 
 A fragment can be excluded from the final merge process (disabled) by renaming the `+__overlay__+` node to `+__dormant__+`. The parameter declaration syntax has been extended to allow the otherwise illegal zero target phandle to indicate that the following string contains operations at fragment or overlay scope. So far, four operations have been implemented:
 
-[source,c]
+[source,kotlin]
 ----
 +<n>    // Enable fragment <n>
 -<n>    // Disable fragment <n>
@@ -456,7 +456,7 @@ A fragment can be excluded from the final merge process (disabled) by renaming t
 
 Examples:
 
-[source,c]
+[source,kotlin]
 ----
 just_one    = <0>,"+1-2"; // Enable 1, disable 2
 conditional = <0>,"=3!4"; // Enable 3, disable 4 if value is true,
@@ -474,7 +474,7 @@ Assigning to the `bootargs` property appends to it rather than overwriting it - 
 
 The `reg` property is used to specify device addresses - the location of a memory-mapped hardware block, the address on an I2C bus, etc. The names of child nodes should be qualified with their addresses in hexadecimal, using `@` as a separator:
 
-[source]
+[source,kotlin]
 ----
 bmp280@76 {
     reg = <0x77>;
@@ -497,30 +497,30 @@ The overlay map is a file that gets loaded by the firmware at bootup. It is writ
 
 This is an extract from the current map file (see the https://github.com/raspberrypi/linux/blob/rpi-6.6.y/arch/arm/boot/dts/overlays/overlay_map.dts[full version]):
 
-[source,c]
+[source,kotlin]
 ----
 / {
-	disable-bt {
-		bcm2835;
-		bcm2711;
-		bcm2712 = "disable-bt-pi5";
-	};
+    disable-bt {
+        bcm2835;
+        bcm2711;
+        bcm2712 = "disable-bt-pi5";
+    };
 
-	disable-bt-pi5 {
-		bcm2712;
-	};
+    disable-bt-pi5 {
+        bcm2712;
+    };
 
-	uart5 {
-		bcm2711;
-	};
+    uart5 {
+        bcm2711;
+    };
 
-	pi3-disable-bt {
-		renamed = "disable-bt";
-	};
+    pi3-disable-bt {
+        renamed = "disable-bt";
+    };
 
-	lirc-rpi {
-		deprecated = "use gpio-ir";
-	};
+    lirc-rpi {
+        deprecated = "use gpio-ir";
+    };
 };
 ----
 
@@ -555,7 +555,7 @@ They both send errors, warnings and any debug output to STDERR.
 
 Here are some examples of different types of properties, with parameters to modify them:
 
-[source]
+[source,kotlin]
 ----
 / {
     fragment@0 {
@@ -626,7 +626,7 @@ The overlay handling in the firmware, and the run-time overlay application using
 
 Sometimes it is very useful to be able to create a label with one overlay and use it from another. Firmware released since 14th February 2020 has the ability to declare some labels as being global - the `+__exports__+` node:
 
-[source]
+[source,kotlin]
 ----
     ...
     public: ...
@@ -736,7 +736,7 @@ These are aliases for `i2c0`, `i2c1`, `i2c0_baudrate`, and `i2c1_baudrate`. It i
 
 For people writing overlays, the same aliasing has been applied to the labels on the I2C DT nodes. Thus, you should write:
 
-[source]
+[source,kotlin]
 ----
 fragment@0 {
     target = <&i2c_arm>;
