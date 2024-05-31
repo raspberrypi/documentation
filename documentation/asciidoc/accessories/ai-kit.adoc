@@ -1,0 +1,3 @@
+include::ai-kit/about.adoc[]
+
+include::ai-kit/getting-started.adoc[]

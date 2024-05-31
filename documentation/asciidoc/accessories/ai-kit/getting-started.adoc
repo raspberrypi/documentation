@@ -1,0 +1,131 @@
+== Getting Started
+
+This guide will help you set up the Raspberry Pi AI Kit with your Raspberry Pi 5. You will then be able to run our `rpicam-apps` camera demos using the Hailo AI neural network accelerator.
+
+=== Prerequisites
+
+For this guide, you will need the following:
+
+- a Raspberry Pi 5
+- the Raspberry Pi AI Kit, which includes:
+** a M.2 HAT+
+** a pre-installed Hailo 8L AI module
+- a 64-bit Raspberry Pi OS Bookworm install
+- any official Raspberry Pi camera (e.g. Camera Module 3 or High Quality Camera)
+
+=== Installation
+
+
+. Attach the M.2 HAT+ pre-installed with the Hailo 8L AI accelerator card onto the Raspberry Pi 5 board. For detailed instructions on how to do this, please refer to our guide at https://www.raspberrypi.com/documentation/accessories/m2-hat-plus.html.
+
+Also attach the camera to your Raspberry Pi 5 board follwing the instructions at https://www.raspberrypi.com/documentation/accessories/camera.html#install-a-raspberry-pi-camera.
+
+Step 2
+Boot up your Raspberry Pi 5 to a graphical environment and update your base software. To do this, open a terminal window and run:
+
+sudo apt update
+sudo apt full-upgrade
+
+Step 3
+Enable PCIe Gen 3 mode - this step is optional, but HIGHLY RECOMMENDED if you want to achieve the best performance from the Raspberry Pi AI Kit. To do this, run:
+
+sudo raspi-config
+
+Select option "6 Advanced Options", then select option "A8 PCIe Speed". Choose "Yes" to enable PCIe Gen 3 mode. Click "Finish" to exit and reboot your Raspberry Pi.
+
+Step 4
+Install all the necessary software to get the Raspberry Pi AI Kit working. To do this, run the following command from a terminal window:
+
+sudo apt install hailo-all rpicam-apps-hailo
+
+This will install the following software components:
+
+- Hailo kernel device driver and firmware
+- HailoRT middleware software
+- Hailo Tappas core postprocessing libraries
+- The rpicam-apps Hailo postprocessing software demo stages
+
+Once installed, reboot the Raspberry Pi.
+
+Step 5
+Ensure everything is running correctly. After a reboot, open a terminal window and run:
+
+sudo hailortcli fw-control identify
+
+and you should see:
+
+Executing on device: 0000:01:00.0
+Identifying board
+Control Protocol Version: 2
+Firmware Version: 4.17.0 (release,app,extended context switch buffer)
+Logger Version: 0
+Board Name: Hailo-8
+Device Architecture: HAILO8L
+Serial Number: HLDDLBB234500054
+Part Number: HM21LB1C2LAE
+Product Name: HAILO-8L AI ACC M.2 B+M KEY MODULE EXT TMP
+
+Additionally, in the kernel logs (by running "dmesg | grep -i hailo" in the terminal window), you should get:
+
+[    3.049657] hailo: Init module. driver version 4.17.0
+[    3.051983] hailo 0000:01:00.0: Probing on: 1e60:2864...
+[    3.051989] hailo 0000:01:00.0: Probing: Allocate memory for device extension, 11600
+[    3.052006] hailo 0000:01:00.0: enabling device (0000 -> 0002)
+[    3.052011] hailo 0000:01:00.0: Probing: Device enabled
+[    3.052028] hailo 0000:01:00.0: Probing: mapped bar 0 - 000000000d8baaf1 16384
+[    3.052034] hailo 0000:01:00.0: Probing: mapped bar 2 - 000000009eeaa33c 4096
+[    3.052039] hailo 0000:01:00.0: Probing: mapped bar 4 - 00000000b9b3d17d 16384
+[    3.052044] hailo 0000:01:00.0: Probing: Force setting max_desc_page_size to 4096 (recommended value is 16384)
+[    3.052052] hailo 0000:01:00.0: Probing: Enabled 64 bit dma
+[    3.052055] hailo 0000:01:00.0: Probing: Using userspace allocated vdma buffers
+[    3.052059] hailo 0000:01:00.0: Disabling ASPM L0s
+[    3.052070] hailo 0000:01:00.0: Successfully disabled ASPM L0s
+[    3.221043] hailo 0000:01:00.0: Firmware was loaded successfully
+[    3.231845] hailo 0000:01:00.0: Probing: Added board 1e60-2864, /dev/hailo0
+
+Next, to ensure the camera is operating correctly, run:
+
+rpicam-hello -t 10s
+
+This will start the camera and show a preview window for 10 seconds. Once you have verified everything is installed correctly, it's time to run some demos.
+
+Demos
+-----
+
+Raspberry Pi have implemented a xref:../computers/camera_software.adoc#post-processing-with-rpicam-apps[postprocessing framework in our `rpicam-apps` suite of camera applications]. We have put together a few demo postprocessing stages to highlight some of the capabilities of the AI Kit.
+
+Boot up your Raspberry Pi 5 to a graphical environment and run the commands listed below to start the appropriate demos. The application used for the demos is rpicam-hello, which by default displays a preview window. However, you can use other applications (such as rpicam-vid or rpicam-still) in a similar way. For example, to record a video use rpicam-vid --width 1920 --height 1080 with the additional command line arguments provided below.
+
+One futher thing to note, most of the JSON files used below have a set of parameters that can be tweaked to change certain behaviour of the demos. For example, you can enable/disable or turn up/down the strength of the temporal filtering occurring for the object detection demos, or enable/disable the output mask drawing in the segmentation demo.
+
+Object Detection
+----------------
+
+These demos will display bounding boxes around objects that the neural network has detected. You can disable the viewfinder with the "-n" argument, and return purely textural output of the objects detected by adding the "-v 2" argument to the commands below. We have a number of neural network models for object detection with different trade-offs in performace and efficiency:
+
+MobileNetSSD
+rpicam-hello -t 0 --post-process-file /home/pi/rpicam-apps/assets/hailo_mobilenet_ssd.json --lores-width 300 --lores-height 300
+
+Yolov5
+rpicam-hello -t 0 --post-process-file /home/pi/rpicam-apps/assets/hailo_yolo5_inference.json --lores-width 640 --lores-height 640
+
+Yolov8
+rpicam-hello -t 0 --post-process-file /home/pi/rpicam-apps/assets/hailo_yolo8_inference.json --lores-width 640 --lores-height 640
+
+YoloX
+rpicam-hello -t 0 --post-process-file /home/pi/rpicam-apps/assets/hailo_yolox_inference.json --lores-width 640 --lores-height 640
+
+Image Segmentation
+------------------
+
+This demo will perform object detection and segment the object by drawing a colour mask on the viewfinder image.
+
+rpicam-hello -t 0 --post-process-file /home/pi/rpicam-apps/assets/hailo_yolo5_segmentation.json --lores-width 640 --lores-height 640 --framerate 20
+
+Pose Estimation
+---------------
+
+This demo will perform 17-point human pose estimation and draw lines connecting the detected keypoints.
+
+rpicam-hello -t 0 --post-process-file /home/pi/rpicam-apps/assets/hailo_yolo8_pose.json --lores-width 640 --lores-height 640
+
