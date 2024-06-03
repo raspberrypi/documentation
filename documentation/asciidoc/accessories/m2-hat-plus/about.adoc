@@ -83,7 +83,7 @@ image::images/m2-hat-plus-installation-01.png[width="60%"]
 --
 image::images/m2-hat-plus-installation-02.png[width="60%"]
 --
-. Set the M.2 HAT+ on top of the spacers, and use the four remaining screws to secure the M.2 HAT+ in place.
+. Set the M.2 HAT+ on top of the spacers, and use the four remaining screws to secure it in place.
 +
 --
 image::images/m2-hat-plus-installation-03.png[width="60%"]

@@ -4,7 +4,7 @@
 .The Raspberry Pi AI Kit
 image::images/ai-kit.jpg[width="80%"]
 
-The Raspberry Pi M.2 AI Kit bundles the xref:m2-hat-plus.adoc#m2-hat-plus[Raspberry Pi M.2 HAT+] with a Hailo AI acceleration module for use with Raspberry Pi 5. The kit contains the following:
+The Raspberry Pi AI Kit bundles the xref:m2-hat-plus.adoc#m2-hat-plus[Raspberry Pi M.2 HAT+] with a Hailo AI acceleration module for use with Raspberry Pi 5. The kit contains the following:
 
 * Hailo AI module containing a Neural Processing Unit (NPU)
 * Raspberry Pi M.2 HAT+, to connect the AI module to your Raspberry Pi 5
@@ -14,7 +14,7 @@ The Raspberry Pi M.2 AI Kit bundles the xref:m2-hat-plus.adoc#m2-hat-plus[Raspbe
 
 == AI module features
 
-* 13 tera-operations per second (TOPS) neural network inference accelerator built around the Hail-8L chip.
+* 13 tera-operations per second (TOPS) neural network inference accelerator built around the Hailo-8L chip.
 * M.2 2242 form factor
 
 [[ai-kit-installation]]
@@ -40,7 +40,7 @@ $ sudo apt update && sudo apt upgrade
 $ sudo rpi-eeprom-update
 ----
 +
-If you see December 6, 2023 or a later date, proceed to the next step. If you see a date earlier than December 6, 2023, run the following command to open the Raspberry Pi Configuration CLI:
+If you see 6 December 2023 or a later date, proceed to the next step. If you see a date earlier than 6 December 2023, run the following command to open the Raspberry Pi Configuration CLI:
 +
 [source,console]
 ----
@@ -60,7 +60,7 @@ Then, reboot with `sudo reboot`.
 
 . Disconnect the Raspberry Pi from power before beginning installation.
 
-. For the best performance, we recommend using the AI Kit with the Raspberry Pi 5 Active Cooler. If you have an Active Cooler, install it before installing the AI Kit.
+. For the best performance, we recommend using the AI Kit with the Raspberry Pi Active Cooler. If you have an Active Cooler, install it before installing the AI Kit.
 +
 --
 image::images/ai-kit-installation-01.png[width="60%"]
@@ -70,7 +70,7 @@ image::images/ai-kit-installation-01.png[width="60%"]
 --
 image::images/ai-kit-installation-02.png[width="60%"]
 --
-. Set the AI Kit on top of the spacers, and use the four remaining screws to secure the AI Kit in place.
+. Set the AI Kit on top of the spacers, and use the four remaining screws to secure it in place.
 +
 --
 image::images/ai-kit-installation-03.png[width="60%"]

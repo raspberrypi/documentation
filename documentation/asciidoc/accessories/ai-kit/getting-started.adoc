@@ -7,15 +7,15 @@ This guide will help you set up the Raspberry Pi AI Kit with your Raspberry Pi 5
 For this guide, you will need the following:
 
 - a Raspberry Pi 5
-- the Raspberry Pi AI Kit, which includes:
-** a M.2 HAT+
-** a pre-installed Hailo 8L AI module
+- a Raspberry Pi AI Kit, which includes:
+** an M.2 HAT+
+** a pre-installed Hailo-8L AI module
 - a 64-bit Raspberry Pi OS Bookworm install
 - any official Raspberry Pi camera (e.g. Camera Module 3 or High Quality Camera)
 
-=== Quickstart
+=== Hardware setup
 
-. Attach the camera to your Raspberry Pi 5 board following the instructions at xref:camera.adoc#install-a-raspberry-pi-camera[Install a Raspberry Pi Camera]. You can skip re-connecting your Raspberry Pi to power, because you'll need to disconnect your Raspberry Pi from power for the next step.
+. Attach the camera to your Raspberry Pi 5 board following the instructions at xref:camera.adoc#install-a-raspberry-pi-camera[Install a Raspberry Pi Camera]. You can skip reconnecting your Raspberry Pi to power, because you'll need to disconnect your Raspberry Pi from power for the next step.
 
 . Follow the xref:ai-kit.adoc#ai-kit-installation[installation instructions] to get your AI Kit hardware connected to your Raspberry Pi 5.
 
@@ -44,7 +44,7 @@ This installs the following dependencies:
 $ hailortcli fw-control identify
 ----
 +
-If you see output similar to the following, you've successfully installed the AI Kit and its software depenencies:
+If you see output similar to the following, you've successfully installed the AI Kit and its software dependencies:
 +
 ----
 Executing on device: 0000:01:00.0
@@ -86,7 +86,7 @@ Additionally, you can run `dmesg | grep -i hailo` to check the kernel logs, whic
 $ rpicam-hello -t 10s
 ----
 +
-This starts the camera and shows a preview window for 10 seconds. Once you have verified everything is installed correctly, it's time to run some demos.
+This starts the camera and shows a preview window for ten seconds. Once you have verified everything is installed correctly, it's time to run some demos.
 
 === Demos
 
@@ -107,7 +107,7 @@ TIP: The commands provided in subsequent sections use the JSON files in this rep
 
 ==== Object Detection
 
-This demo displays bounding boxes around objects detected by a neural network. To disable the viewfinder, use the xref:../computers/camera_software.adoc#nopreview[`-n`] flag. To return purely textural output describing the objects detected, add the `-v 2` option. Run the following command to try the demo on your Raspberry Pi:
+This demo displays bounding boxes around objects detected by a neural network. To disable the viewfinder, use the xref:../computers/camera_software.adoc#nopreview[`-n`] flag. To return purely textual output describing the objects detected, add the `-v 2` option. Run the following command to try the demo on your Raspberry Pi:
 
 [source,console]
 ----
@@ -139,7 +139,7 @@ $ rpicam-hello -t 0 --post-process-file ~/rpicam-apps/assets/hailo_yolov5_person
 
 ==== Image Segmentation
 
-This demo performs object detection and segment the object by drawing a colour mask on the viewfinder image. Run the following command to try the demo on your Raspberry Pi:
+This demo performs object detection and segments the object by drawing a colour mask on the viewfinder image. Run the following command to try the demo on your Raspberry Pi:
 
 [source,console]
 ----
