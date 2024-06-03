@@ -26,7 +26,7 @@
             <a class="box" href="{{ entry.url }}">
             {% endif %}
               <span><img src="{{ site.baseurl }}{{ entry.imagepath }}" width="121" height="121" alt=""></span>
-              <span class="title">{{ entry.title }}</span>
+              <span class="title">{{ entry.title | markdownify }}</span>
               <span>{{ entry.description }}</span>
             </a>
             {% endfor %}
