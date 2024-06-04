@@ -638,7 +638,7 @@ div.videoblock iframe {
   background-repeat: no-repeat;
   background-image: url(whitepaper_coverimage.png);
   background-size: 177px 242px;
-  flex: 2 0 auto;
+  flex: 0 0 auto;
   margin-right: 10px;
   height: 242px;
   width: 177px;

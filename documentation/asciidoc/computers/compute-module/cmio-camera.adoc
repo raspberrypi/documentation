@@ -19,7 +19,7 @@ To connect a single camera to a Compute Module, complete the following steps:
 . Disconnect the Compute Module from power.
 . Connect the Camera Module to the CAM1 port using a RPI-CAMERA board or a Raspberry Pi Zero camera cable.
 +
-image::images/CMIO-Cam-Adapter.jpg[Connecting the adapter board]
+image::images/CMIO-Cam-Adapter.jpg[alt="Connecting the adapter board", width="60%"]
 
 . _(CM1, CM3, CM3+, and CM4S only)_: Connect the following GPIO pins with jumper cables:
   * `0` to `CD1_SDA`
@@ -27,7 +27,7 @@ image::images/CMIO-Cam-Adapter.jpg[Connecting the adapter board]
   * `2` to `CAM1_I01`
   * `3` to `CAM1_I00`
 +
-image::images/CMIO-Cam-GPIO.jpg[GPIO connection for a single camera]
+image::images/CMIO-Cam-GPIO.jpg[alt="GPIO connection for a single camera", width="60%"]
 
 . Reconnect the Compute Module to power.
 
@@ -98,18 +98,18 @@ To connect two cameras to a Compute Module, complete the following steps:
 . Disconnect the Compute Module from power.
 . Connect the Camera Module to the CAM0 port using a RPI-CAMERA board or a Raspberry Pi Zero camera cable.
 +
-image::images/CMIO-Cam-Adapter.jpg[Connect the adapter board]
+image::images/CMIO-Cam-Adapter.jpg[alt="Connect the adapter board", width="60%"]
 . _(CM1, CM3, CM3+, and CM4S only)_: Connect the following GPIO pins with jumper cables:
   * `28` to `CD0_SDA`
   * `29` to `CD0_SCL`
   * `30` to `CAM0_I01`
   * `31` to `CAM0_I00`
 +
-image:images/CMIO-Cam-GPIO2.jpg[GPIO connection with additional camera]
+image:images/CMIO-Cam-GPIO2.jpg[alt="GPIO connection with additional camera", width="60%"]
 
 . _(CM4 only)_: Connect the J6 GPIO pins with two vertical-orientation jumpers.
 +
-image:images/j6_vertical.jpg[Connect the J6 GPIO pins in vertical orientation]
+image:images/j6_vertical.jpg[alt="Connect the J6 GPIO pins in vertical orientation", width="60%"]
 
 . Reconnect the Compute Module to power.
 
