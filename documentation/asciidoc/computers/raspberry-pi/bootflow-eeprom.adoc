@@ -17,7 +17,7 @@ The boot flow for the ROM (first stage) is as follows:
   *** Success - run second stage bootloader
   *** Fail - continue
 * While True
- ** Attempt to load `recovery.bin` from xref:compute-module.adoc#flashing-the-compute-module-emmc[USB device boot]
+ ** Attempt to load `recovery.bin` from xref:compute-module.adoc#flash-compute-module-emmc[USB device boot]
   *** Success - run `recovery.bin` and update the SPI EEPROM or switch to USB mass storage device mode
   *** Fail - retry USB device boot
 

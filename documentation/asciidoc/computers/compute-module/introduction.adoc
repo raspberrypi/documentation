@@ -1,0 +1,119 @@
+== Compute Modules
+
+Raspberry Pi Compute Modules are **system-on-module** variants of the flagship Raspberry Pi models. Compute Modules are especially popular for industrial and commercial applications, including digital signage, thin clients, and process automation. Some of these applications use the flagship Raspberry Pi design, but many users want a more compact design or on-board eMMC storage.
+
+Compute Modules come in multiple variants, varying both in memory and embedded Multi-Media Card (eMMC) flash storage capacity. The eMMC is similar to an SD card, but soldered onto the board. Unlike SD cards, eMMC is specifically designed to be used as a disk and includes extra features to improve reliability. **Lite** models have no on-board storage, and are sometimes referred to with the shorthand suffix **L**, e.g. "CM3L".
+
+Compute Modules use the following Raspberry Pi SoCs:
+
+* BCM2835 for CM1
+* BCM2837 for CM3, CM3+
+* BCM2711 for CM4, CM4S
+
+=== Compute Module 4
+
+The latest version of the Compute Module is the Compute Module 4 (CM4). We recommend CM4 for all future development.
+
+.Compute Module 4
+image::images/cm4.jpg[alt="Compute Module 4", width="60%"]
+
+The Compute Module 4 (CM4) contains the internals of a Raspberry Pi 4 (the BCM2711 processor and 1GB, 2GB, 4GB, or 8GB of RAM) as well as an optional 0GB (Lite), 8GB, 16GB or 32GB of eMMC flash storage.
+
+Unlike CM1, CM3, and CM3+, CM4 does not use the DDR2 SODIMM form factor. Instead, CM4 uses two 100-pin high density connectors in a smaller physical footprint.
+This change helped add the following interfaces:
+
+* an additional second HDMI port
+* PCIe
+* Ethernet
+
+The previous form factor could not have supported these interfaces.
+
+=== Compute Module 4S
+
+.Compute Module 4S
+image::images/cm4s.jpg[alt="Compute Module 4S", width="60%"]
+
+The Compute Module 4S (CM4S) contains the internals of a Raspberry Pi 4 (the BCM2711 processor and 1GB, 2GB, 4GB, or 8GB of RAM) as well as an optional 0GB (Lite), 8GB, 16GB or 32GB of eMMC flash storage. Unlike CM4, CM4S comes in same the DDR2 SODIMM form factor as CM1, CM3, and CM3+.
+
+[[compute-module-3-plus]]
+=== Compute Module 3+
+
+.Compute Module 3+
+image::images/cm3-plus.jpg[alt="Compute Module 3+", width="60%"]
+
+The Compute Module 3+ (CM3+) contains the internals of a Raspberry Pi 3 Model B+ (the BCM2837 processor and 1GB of RAM) as well as an optional 0GB (Lite), 8GB, 16GB or 32GB of eMMC flash storage.
+
+=== Compute Module 3
+
+.Compute Module 3
+image::images/cm3.jpg[alt="Compute Module 3", width="60%"]
+
+The Compute Module 3 (CM3) contains the internals of a Raspberry Pi 3 (the BCM2837 processor and 1GB of RAM) as well as an optional 4GB of eMMC flash storage.
+
+=== Compute Module 1
+
+.Compute Module 1
+image::images/cm1.jpg[alt="Compute Module 1", width="60%"]
+
+The Compute Module 1 (CM1) contains the internals of a Raspberry Pi (the BCM2835 processor and 512MB of RAM) as well as an optional 4GB of eMMC flash storage.
+
+== IO Boards
+
+Raspberry Pi IO Boards provide a way to connect a single Compute Module to a variety of I/O (input/output) interfaces. Compute Modules are, by nature, small. As a result, they lack ports and connectors. IO Boards provide a way to connect Compute Modules to a variety of peripherals.
+
+IO Boards are breakout boards intended for development; in production, you should use a smaller, potentially custom board that provides only the ports and peripherals required for your use-case.
+
+=== Compute Module 4 IO Board
+
+.Compute Module 4 IO Board
+image::images/cm4io.jpg[alt="Compute Module 4 IO Board", width="60%"]
+
+Compute Module 4 IO Board provides the following interfaces:
+
+* HAT footprint with 40-pin GPIO connector and PoE header
+* Two HDMI ports
+* Two USB 2.0 ports
+* Gigabit Ethernet RJ45 with PoE support
+* MicroSD card slot (only for use with Lite variants with no eMMC)
+* PCIe Gen 2 socket
+* 12V input via barrel jack (supports up to 26V if PCIe unused)
+* 2 x MIPI DSI display FPC connectors (22-pin 0.5 mm pitch cable)
+* 2 x MIPI CSI-2 camera FPC connectors (22-pin 0.5 mm pitch cable)
+* Real-time clock with battery socket
+
+=== Compute Module IO Board
+
+.Compute Module IO Board
+image::images/cmio.jpg[alt="Compute Module IO Board", width="60%"]
+
+Compute Module IO Board provides the following interfaces:
+
+* 120 GPIO pins
+* an HDMI port
+* a USB-A port
+* 2 x MIPI DSI display FPC connectors (22-pin 0.5 mm pitch cable)
+* 2 x MIPI CSI-2 camera FPC connectors (22-pin 0.5 mm pitch cable)
+
+The Compute Module IO Board comes in two variants: Version 1 and Version 3. Version 1 is only compatible with CM1. Version 3 is compatible with CM1, CM3, CM3+, and CM4S. Compute Module IO Board Version 3 is sometimes written as the shorthand CMIO3.
+
+=== IO Board compatibility
+
+Not all Compute Module IO Boards work with all Compute Module models. The following table shows which Compute Modules work with each IO Board:
+
+[cols="1,1"]
+|===
+| IO Board | Compatible Compute Modules
+
+| Compute Module IO Board Version 1 (CMIO)/(CMIO1)
+a|
+* CM1
+| Compute Module IO Board Version 3 (CMIO)/(CMIO3)
+a|
+* CM1
+* CM3
+* CM3+
+* CM4S
+| Compute Module 4 IO Board (CM4IO)
+a|
+* CM4
+|===
