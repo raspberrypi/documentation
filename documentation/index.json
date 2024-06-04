@@ -121,6 +121,12 @@
                     "subpath": "m2-hat-plus.adoc"
                 },
                 {
+                    "title": "AI Kit",
+                    "description": "An NPU for your Raspberry Pi",
+                    "image": "full-sized/ai-kit.png",
+                    "subpath": "ai-kit.adoc"
+                },
+                {
                     "title": "Raspberry Pi Audio",
                     "description": "High-definition audio with Raspberry Pi",
                     "image": "full-sized/Audio-HATs.png",
