@@ -19,7 +19,7 @@ For this guide, you will need the following:
 
 . Follow the xref:ai-kit.adoc#ai-kit-installation[installation instructions] to get your AI Kit hardware connected to your Raspberry Pi 5.
 
-. (optional) Follow the instructions to xref:../computers/raspberry-pi.adoc#pcie-gen-3-0[enable PCIe Gen 3.0]. This helps achieve the best performance with your AI Kit.
+. Follow the instructions to xref:../computers/raspberry-pi.adoc#pcie-gen-3-0[enable PCIe Gen 3.0]. This step is optional, but HIGHLY RECOMMENDED to achieve the best performance with your AI Kit.
 
 . Install the dependencies required to use the AI Kit. Run the following command from a terminal window:
 +
@@ -155,11 +155,10 @@ This demo performs 17-point human pose estimation, drawing lines connecting the 
 $ rpicam-hello -t 0 --post-process-file ~/rpicam-apps/assets/hailo_yolov8_pose.json --lores-width 640 --lores-height 640
 ----
 
-=== Third-party demos
+=== Further Resources
 
 Hailo has also created a set of demos that you can run on a Raspberry Pi 5, available in the https://github.com/hailo-ai/hailo-rpi5-examples[hailo-ai/hailo-rpi5-examples GitHub repository].
 
 You can find Hailo's extensive model zoo, which contains a large number of neural networks, in the https://github.com/hailo-ai/hailo_model_zoo/tree/master/docs/public_models/HAILO8L[hailo-ai/hailo_model_zoo GitHub repository].
 
-To run your own neural network models on the AI module, check out the https://community.hailo.ai/[Hailo community forums and developer zone].
-
+Check out the https://community.hailo.ai/[Hailo community forums and developer zone] for further discussions on the Hailo hardware and tooling.
