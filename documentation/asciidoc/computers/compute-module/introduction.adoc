@@ -94,7 +94,7 @@ Compute Module IO Board provides the following interfaces:
 * 2 x MIPI DSI display FPC connectors (22-pin 0.5 mm pitch cable)
 * 2 x MIPI CSI-2 camera FPC connectors (22-pin 0.5 mm pitch cable)
 
-The Compute Module IO Board comes in two variants: revision 1 and revision 3. Revision 1 is only compatible with CM1. Revision 3 is compatible with CM1, CM3, CM3+, and CM4S. Compute Module IO Board Revision 3 is sometimes written as the shorthand CMIO3.
+The Compute Module IO Board comes in two variants: Version 1 and Version 3. Version 1 is only compatible with CM1. Version 3 is compatible with CM1, CM3, CM3+, and CM4S. Compute Module IO Board Version 3 is sometimes written as the shorthand CMIO3.
 
 === IO Board compatibility
 
@@ -104,10 +104,10 @@ Not all Compute Module IO Boards work with all Compute Module models. The follow
 |===
 | IO Board | Compatible Compute Modules
 
-| Compute Module IO Board Rev 1 (CMIO)/(CMIO1)
+| Compute Module IO Board Version 1 (CMIO)/(CMIO1)
 a|
 * CM1
-| Compute Module IO Board Rev 3 (CMIO)/(CMIO3)
+| Compute Module IO Board Version 3 (CMIO)/(CMIO3)
 a|
 * CM1
 * CM3

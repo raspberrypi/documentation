@@ -53,15 +53,15 @@ This white paper helps developers migrate from Compute Module 1 or Compute Modul
 The Compute Module IO Board (CMIO) provides a variety of interfaces for CM1, CM3, CM3L, and CM3+. To learn more about CMIO, see the following documents:
 
 * https://datasheets.raspberrypi.com/cmio/cmio-schematics.pdf[Schematics for CMIO]
-* https://datasheets.raspberrypi.com/cmio/RPi-CMIO-R1P2.zip[Design documents for CMIO Rev 1.2 (CMIO1)]
-* https://datasheets.raspberrypi.com/cmio/RPi-CMIO-R3P0.zip[Design documents for CMIO Rev 3.0 (CMIO3)]
+* https://datasheets.raspberrypi.com/cmio/RPi-CMIO-R1P2.zip[Design documents for CMIO Version 1.2 (CMIO1)]
+* https://datasheets.raspberrypi.com/cmio/RPi-CMIO-R3P0.zip[Design documents for CMIO Version 3.0 (CMIO3)]
 
 === Compute Module Camera/Display Adapter Board schematics
 
 The Compute Module Camera/Display Adapter Board (CMCDA) provides camera and display interfaces for Compute Modules. To learn more about the CMCDA, see the following documents:
 
 * https://datasheets.raspberrypi.com/cmcda/cmcda-schematics.pdf[Schematics for the CMCDA]
-* https://datasheets.raspberrypi.com/cmcda/RPi-CMCDA-1P1.zip[Design documents for CMCDA Rev 1.1]
+* https://datasheets.raspberrypi.com/cmcda/RPi-CMCDA-1P1.zip[Design documents for CMCDA Version 1.1]
 
 === Under-voltage detection
 
