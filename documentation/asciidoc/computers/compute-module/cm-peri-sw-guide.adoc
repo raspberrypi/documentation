@@ -85,7 +85,7 @@ By default, `dt-blob.bin` does not exist. Instead, `start.elf` includes a built-
 * GPIO pins used as a GPCLK output
 * an ACT LED that the GPU can use while booting
 
-https://datasheets.raspberrypi.com/cm/minimal-cm-dt-blob.dts[minimal-cm-dt-blob.dts] is an example `.dts` device tree file. It sets up HDMI hot plug detection, an ACT LED, and sets all other GPIOs as inputs with default pulls.
+https://datasheets.raspberrypi.com/cm/minimal-cm-dt-blob.dts[`minimal-cm-dt-blob.dts`] is an example `.dts` device tree file. It sets up HDMI hot plug detection, an ACT LED, and sets all other GPIOs as inputs with default pulls.
 
 To compile `minimal-cm-dt-blob.dts` to `dt-blob.bin`, use the xref:configuration.adoc#device-trees-overlays-and-parameters[Device Tree compiler] `dtc`.
 To install `dtc` on a Raspberry Pi, run the following command:
@@ -157,7 +157,7 @@ The following examples use an IO Board with peripherals attached via jumper wire
 
 In this example, we wire an NXP PCF8523 real time clock (RTC) to the IO Board BANK1 GPIO pins: 3V3, GND, I2C1_SDA on GPIO44 and I2C1_SCL on GPIO45.
 
-Download https://datasheets.raspberrypi.com/cm/minimal-cm-dt-blob.dts[minimal-cm-dt-blob.dts] and copy it to the boot partition in `/boot/firmware/`.
+Download https://datasheets.raspberrypi.com/cm/minimal-cm-dt-blob.dts[`minimal-cm-dt-blob.dts`] and copy it to the boot partition in `/boot/firmware/`.
 
 Edit `minimal-cm-dt-blob.dts` and change the pin states of GPIO44 and 45 to be I2C1 with pull-ups:
 
@@ -191,7 +191,7 @@ Run the following command to compile `dt-blob.bin`:
 $ sudo dtc -I dts -O dtb -o /boot/firmware/dt-blob.bin /boot/firmware/minimal-cm-dt-blob.dts
 ----
 
-Download https://datasheets.raspberrypi.com/cm/example1-overlay.dts[example1-overlay.dts], copy it to the boot partition in `/boot/firmware/`, then compile it with the following command:
+Download https://datasheets.raspberrypi.com/cm/example1-overlay.dts[`example1-overlay.dts`], copy it to the boot partition in `/boot/firmware/`, then compile it with the following command:
 
 [source,console]
 ----
