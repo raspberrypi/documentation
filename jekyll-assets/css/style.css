@@ -389,6 +389,7 @@ h6 .anchor::before {
   background-color: #343434;
   padding: 7px 15px 7px;
   overflow-x: auto !important;
+  border-radius: 3px;
 }
 
 #content div.listingblock div.content div.line,
