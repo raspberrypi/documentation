@@ -19,7 +19,7 @@ For this guide, you will need the following:
 
 . Follow the xref:ai-kit.adoc#ai-kit-installation[installation instructions] to get your AI Kit hardware connected to your Raspberry Pi 5.
 
-. Follow the instructions to xref:../computers/raspberry-pi.adoc#pcie-gen-3-0[enable PCIe Gen 3.0]. This step is optional, but HIGHLY RECOMMENDED to achieve the best performance with your AI Kit.
+. Follow the instructions to xref:../computers/raspberry-pi.adoc#pcie-gen-3-0[enable PCIe Gen 3.0]. This step is optional, but _highly recommended_ to achieve the best performance with your AI Kit.
 
 . Install the dependencies required to use the AI Kit. Run the following command from a terminal window:
 +
