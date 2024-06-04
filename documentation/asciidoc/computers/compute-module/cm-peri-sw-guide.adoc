@@ -1,4 +1,4 @@
-== Attaching and enabling peripherals
+== Attach peripherals
 
 This guide is designed to help developers using Compute Modules get to grips with how to wire up peripherals to the Compute Module pins, and how to make changes to the software to enable these peripherals to work correctly.
 
@@ -50,12 +50,9 @@ On a standard Raspberry Pi OS image in the first (FAT) partition you will find t
 * `bcm2708-rpi-cm.dtb` (Used for Raspberry Pi Compute Module 1)
 * `bcm2710-rpi-cm3.dtb` (Used for Raspberry Pi Compute Module 3)
 
-NOTE: `dt-blob.bin` does not exist by default as there is a version compiled into `start.elf`, but for Compute Module projects it will often be necessary to provide a `dt-blob.bin` (which overrides the default built-in file).
-+
- `dt-blob.bin` is in compiled Device Tree format, but is only read by the GPU firmware to set up functions exclusive to the GPU - see below.
+NOTE: `dt-blob.bin` does not exist by default, because `start.elf` includes a built-in version of the file. Many Compute Module projects provide a `dt-blob.bin`, which overrides the default built-in file.
 
-* A guide to xref:configuration.adoc#change-the-default-pin-configuration[creating `dt-blob.bin`].
-* A guide to the xref:configuration.adoc#device-trees-overlays-and-parameters[Linux Device Tree for Raspberry Pi].
+`dt-blob.bin` uses a compiled xref:configuration.adoc#device-trees-overlays-and-parameters[Linux Device Tree for Raspberry Pi] format, but is only read by the GPU firmware to set up functions exclusive to the GPU. For more information, see our xref:configuration.adoc#change-the-default-pin-configuration[guide to creating `dt-blob.bin`].
 
 During boot, the user can specify a specific Arm Device Tree to use via the `device_tree` parameter in `config.txt`, for example adding the line `device_tree=mydt.dtb` to `config.txt` where `mydt.dtb` is the dtb file to load instead of one of the standard Arm dtb files. While a user can create a full Device Tree for their Compute Module product, the recommended way to add hardware is to use overlays (see next section).
 
@@ -63,23 +60,24 @@ In addition to loading an Arm dtb, `start.elf` supports loading additional Devic
 
 Overlays are used to add data to the base dtb that (nominally) describes non-board-specific hardware. This includes GPIO pins used and their function, as well as the device(s) attached, so that the correct drivers can be loaded. The convention is that on a Raspberry Pi, all hardware attached to the Bank0 GPIOs (the GPIO header) should be described using an overlay. On a Compute Module all hardware attached to the Bank0 and Bank1 GPIOs should be described in an overlay file. You don't have to follow these conventions: you can roll all the information into one single dtb file, as previously described, replacing `bcm2708-rpi-cm.dtb`. However, following the conventions means that you can use a standard Raspberry Pi OS release, with its standard base dtb and all the product-specific information contained in a separate overlay. Occasionally the base dtb might change - usually in a way that will not break overlays - which is why using an overlay is suggested.
 
-=== dt-blob.bin
+=== `dt-blob.bin`
 
 When `start.elf` runs, it first reads something called `dt-blob.bin`. This is a special form of Device Tree blob which tells the GPU how to (initially) set up the GPIO pin states, and also any information about GPIOs/peripherals that are controlled (owned) by the GPU, rather than being used via Linux on the Arm. For example, the Raspberry Pi Camera peripheral is managed by the GPU, and the GPU needs exclusive access to an I2C interface to talk to it, as well as a couple of control pins. I2C0 on most Raspberry Pi Boards and Compute Modules is nominally reserved for exclusive GPU use. The information on which GPIO pins the GPU should use for I2C0, and to control the camera functions, comes from `dt-blob.bin`.
 
-NOTE: The `start.elf` firmware has a xref:configuration.adoc#change-the-default-pin-configuration[built-in default] `dt-blob.bin` which is used if no `dt-blob.bin` is found on the root of the first FAT partition. Most Compute Module projects will want to provide their own custom `dt-blob.bin`. Note that `dt-blob.bin` specifies which pin is for HDMI hot plug detect, although this should never change on Compute Module. It can also be used to set up a GPIO as a GPCLK output, and specify an ACT LED that the GPU can use while booting. Other functions may be added in future. 
+NOTE: The `start.elf` firmware includes a xref:configuration.adoc#change-the-default-pin-configuration[built-in default] `dt-blob.bin` which is used if no `dt-blob.bin` is found on the root of the first FAT partition. Most Compute Module projects provide their own custom `dt-blob.bin`. Note that `dt-blob.bin` specifies the pin used for HDMI hot plug detect, although this should never change on any Compute Module. It can also be used to set up a GPIO as a GPCLK output, and specify an ACT LED that the GPU can use while booting. Other functions may be added in future.
 
 https://datasheets.raspberrypi.com/cm/minimal-cm-dt-blob.dts[minimal-cm-dt-blob.dts] is an example `.dts` device tree file that sets up the HDMI hot plug detect and ACT LED and sets all other GPIOs to be inputs with default pulls.
 
-To compile the `minimal-cm-dt-blob.dts` to `dt-blob.bin` use the Device Tree compiler `dtc`:
+To compile the `minimal-cm-dt-blob.dts` to `dt-blob.bin`, use the Device Tree compiler `dtc`:
 
+[source,console]
 ----
-dtc -I dts -O dtb -o dt-blob.bin minimal-cm-dt-blob.dts
+$ dtc -I dts -O dtb -o dt-blob.bin minimal-cm-dt-blob.dts
 ----
 
 === Arm Linux Device Tree
 
-After `start.elf` has read `dt-blob.bin` and set up the initial pin states and clocks, it reads xref:config_txt.adoc[`config.txt`] which contains many other options for system setup.
+After `start.elf` has read `dt-blob.bin` and set up the initial pin states and clocks, it reads xref:config_txt.adoc[`config.txt`], which contains many other options for system setup.
 
 After reading `config.txt` another device tree file specific to the board the hardware is running on is read: this is `bcm2708-rpi-cm.dtb` for a Compute Module 1, or `bcm2710-rpi-cm.dtb` for Compute Module 3. This file is a standard ARM Linux device tree file, which details how hardware is attached to the processor: it enumerates what peripheral devices exist in the SoC and where, which GPIOs are used, what functions those GPIOs have, and what physical devices are connected. This file will set up the GPIOs appropriately, overwriting the pin state set up in `dt-blob.bin` if it is different. It will also try to load driver(s) for the specific device(s).
 
@@ -93,8 +91,9 @@ Some default overlay dts files live in `arch/arm/boot/dts/overlays`. Correspondi
 
 Compiling these dts files to dtb files requires an up-to-date version of the xref:configuration.adoc#device-trees-overlays-and-parameters[Device Tree compiler] `dtc`. The way to install an appropriate version on Raspberry Pi is to run:
 
+[source,console]
 ----
-sudo apt install device-tree-compiler
+$ sudo apt install device-tree-compiler
 ----
 
 If you are building your own kernel then the build host also gets a version in `scripts/dtc`. You can arrange for your overlays to be built automatically by adding them to `Makefile` in `arch/arm/boot/dts/overlays`, and using the 'dtbs' make target.
@@ -105,21 +104,23 @@ When the Linux kernel is booted on the Arm core(s), the GPU provides it with a f
 
 You can use `dtc` to write this out as a human readable dts file for debugging. You can see the fully assembled device tree, which is often very useful:
 
+[source,console]
 ----
-dtc -I fs -O dts -o proc-dt.dts /proc/device-tree
+$ dtc -I fs -O dts -o proc-dt.dts /proc/device-tree
 ----
 
 As previously explained in the GPIO section, it is also very useful to use `pinctrl` to look at the setup of the GPIO pins to check that they are as you expect. If something seems to be going awry, useful information can also be found by dumping the GPU log messages:
 
+[source,console]
 ----
-sudo vclog --msg
+$ sudo vclog --msg
 ----
 
-You can include more diagnostics in the output by adding `dtdebug=1` to `config.txt`.
+To include even more diagnostics in the output, add `dtdebug=1` to `config.txt`.
 
 === Examples
 
-NOTE: Please use the https://forums.raspberrypi.com/viewforum.php?f=107[Device Tree subforum] on the Raspberry Pi forums to ask Device Tree-related questions, or to post any issues, questions or bugs.
+NOTE: Use the https://forums.raspberrypi.com/viewforum.php?f=107[Device Tree Raspberry Pi forum] on the to ask Device Tree-related questions, or to post any issues, questions or bugs.
 
 For these simple examples we used a CMIO board with peripherals attached via jumper wires. We assume a CM1+CMIO or CM3+CMIO3 board with a clean install of the latest Raspberry Pi OS Lite version on the Compute Module. The examples here require internet connectivity, so a USB hub plus keyboard plus wireless LAN or Ethernet dongle plugged into the CMIO USB port is recommended.
 
@@ -132,12 +133,14 @@ Download https://datasheets.raspberrypi.com/cm/minimal-cm-dt-blob.dts[minimal-cm
 
 Edit `minimal-cm-dt-blob.dts` and change the pin states of GPIO44 and 45 to be I2C1 with pull-ups:
 
+[source,console]
 ----
-sudo nano /boot/firmware/minimal-cm-dt-blob.dts
+$ sudo nano /boot/firmware/minimal-cm-dt-blob.dts
 ----
 
 Change lines:
 
+[source,kotlin]
 ----
 pin@p44 { function = "input"; termination = "pull_down"; }; // DEFAULT STATE WAS INPUT NO PULL
 pin@p45 { function = "input"; termination = "pull_down"; }; // DEFAULT STATE WAS INPUT NO PULL
@@ -145,6 +148,7 @@ pin@p45 { function = "input"; termination = "pull_down"; }; // DEFAULT STATE WAS
 
 to:
 
+[source,kotlin]
 ----
 pin@p44 { function = "i2c1"; termination = "pull_up"; }; // SDA1
 pin@p45 { function = "i2c1"; termination = "pull_up"; }; // SCL1
@@ -154,33 +158,35 @@ NOTE: We could use this `dt-blob.dts` with no changes. The Linux Device Tree wil
 
 Compile `dt-blob.bin`:
 
+[source,console]
 ----
-sudo dtc -I dts -O dtb -o /boot/firmware/dt-blob.bin /boot/firmware/minimal-cm-dt-blob.dts
+$ sudo dtc -I dts -O dtb -o /boot/firmware/dt-blob.bin /boot/firmware/minimal-cm-dt-blob.dts
 ----
 
 Grab https://datasheets.raspberrypi.com/cm/example1-overlay.dts[example1-overlay.dts], put it in `/boot/firmware/`, then compile it:
 
+[source,console]
 ----
-sudo dtc -@ -I dts -O dtb -o /boot/firmware/overlays/example1.dtbo /boot/firmware/example1-overlay.dts
+$ sudo dtc -@ -I dts -O dtb -o /boot/firmware/overlays/example1.dtbo /boot/firmware/example1-overlay.dts
 ----
 
 NOTE: Pay attention to the '-@' in the `dtc` command line. This is necessary if you are compiling dts files with external references, which is what overlays tend to be.
 
 Edit xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] and add the line:
 
+[source,ini]
 ----
 dtoverlay=example1
 ----
 
 Now save and reboot.
 
-Once rebooted, you should see an rtc0 entry in /dev. Running:
+Once rebooted, you should see an rtc0 entry in /dev. Run the following command to view the hardware clock time:
 
+[source,console]
 ----
-sudo hwclock
+$ sudo hwclock
 ----
-
-...will return with the hardware clock time, and not an error.
 
 [discrete]
 === Example 2 - Attaching an ENC28J60 SPI Ethernet controller on BANK0
@@ -191,31 +197,31 @@ In this example we won't change `dt-blob.bin`, although of course you can if you
 
 Edit `/boot/firmware/config.txt` and add the following line:
 
+[source,ini]
 ----
 dtoverlay=enc28j60
 ----
 
 Now save and reboot.
 
-Once rebooted you should see, as before, an rtc0 entry in /dev. Running:
+Once rebooted you should see, as before, an rtc0 entry in /dev. Run the following command to view the hardware clock time:
 
+[source,console]
 ----
-sudo hwclock
+$ sudo hwclock
 ----
-
-...will return with the hardware clock time, and not an error.
 
 You should also have Ethernet connectivity:
 
+[source,console]
 ----
-ping 8.8.8.8
-----
-
-Finally running:
-
-----
-pinctrl
+$ ping 8.8.8.8
 ----
 
-...should show that GPIO8-11 have changed to ALT0 (SPI) functions.
+Run the following command to show GPIO functions; GPIO8-11 should now provide ALT0 (SPI) functions:
+
+[source,console]
+----
+$ pinctrl
+----
 

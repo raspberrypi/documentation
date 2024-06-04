@@ -1,4 +1,4 @@
-== Flashing the Compute Module eMMC
+== Flash Compute Module eMMC
 
 [.whitepaper, title="Using the Compute Module provisioner", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003468-WP/Using-the-Compute-Module-Provisioner.pdf]
 ****
@@ -19,27 +19,27 @@ To flash the Compute Module eMMC, you either need a Linux system (a Raspberry Pi
 
 NOTE: There is a bug in the BCM2835 (CM1) bootloader which returns a slightly incorrect USB packet to the host. Most USB hosts seem to ignore this benign bug and work fine; we do, however, see some USB ports that don't work due to this bug. We don't quite understand why some ports fail, as it doesn't seem to be correlated with whether they are USB2 or USB3 (we have seen both types working), but it's likely to be specific to the host controller and driver. This bug has been fixed in BCM2837.
 
-=== Setting up the CMIO board
+=== Set up the CMIO board
 
 ==== Compute Module 4
 
 Ensure the Compute Module is fitted correctly installed on the IO board. It should lie flat on the IO board.
 
-* Make sure that `nRPI_BOOT` which is on J2 (`disable eMMC Boot`) on the IO board jumper is fitted
-* Use a micro USB cable to connect the micro USB slave port J11 on IO board to the host device
+* Make sure that `nRPI_BOOT` which is on J2 (`disable eMMC Boot`) on the IO board jumper is fitted.
+* Use a micro USB cable to connect the micro USB slave port J11 on IO board to the host device.
 * Do not power up yet.
 
 ==== Compute Module 1 and 3
 
 Ensure the Compute Module itself is correctly installed on the IO board. It should lie parallel with the board, with the engagement clips clicked into place.
 
-* Make sure that J4 (USB SLAVE BOOT ENABLE) is set to the 'EN' position
-* Use a micro USB cable to connect the micro USB slave port J15 on IO board to the host device
-* Do not power up yet
+* Make sure that J4 (USB SLAVE BOOT ENABLE) is set to the 'EN' position.
+* Use a micro USB cable to connect the micro USB slave port J15 on IO board to the host device.
+* Do not power up yet.
 
 ==== For Windows users
 
-Under Windows, an installer is available to install the required drivers and boot tool automatically. Alternatively, a user can compile and run it using Cygwin and/or install the drivers manually.
+Under Windows, an installer is available to install the required drivers and boot tool automatically. Alternatively, a user can compile and run it using Cygwin or install the drivers manually.
 
 ==== Windows installer
 
@@ -53,25 +53,25 @@ Please ensure you are not writing to any USB devices whilst the installer is run
 * Once the driver installation is complete, run the `RPiBoot.exe` tool that was previously installed
 * After a few seconds, the Compute Module eMMC will pop up under Windows as a disk (USB mass storage device)
 
-==== Building `rpiboot` on your host system.
+==== Build `rpiboot` on your host system.
 
 Instructions for building and running the latest release of `rpiboot` are documented in the https://github.com/raspberrypi/usbboot/blob/master/Readme.md#building[USB boot readme] on GitHub.
 
-==== Writing to the eMMC (Windows)
+==== Write to the eMMC (Windows)
 
 After `rpiboot` completes, a new USB mass storage drive will appear in Windows. We recommend using https://www.raspberrypi.com/software/[Raspberry Pi Imager] to write images to the drive.
 
 Make sure J4 (USB SLAVE BOOT ENABLE)/J2 (nRPI_BOOT) is set to the disabled position and/or nothing is plugged into the USB slave port. Power-cycling the IO board should now result in the Compute Module booting from eMMC.
 
-==== Writing to the eMMC (Linux)
+==== Write to the eMMC (Linux)
 
 After `rpiboot` completes, you will see a new device appear; this is commonly `/dev/sda` on a Raspberry Pi but it could be in another location such as `/dev/sdb`, so check in `/dev/` or run `lsblk` before running `rpiboot` so you can see what changes.
 
 You now need to write a raw OS image (such as https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-32-bit[Raspberry Pi OS]) to the device. Note the following command may take some time to complete, depending on the size of the image (change `/dev/sdX` to the appropriate device):
 
-[,bash]
+[source,console]
 ----
-sudo dd if=raw_os_image_of_your_choice.img of=/dev/sdX bs=4MiB
+$ sudo dd if=raw_os_image_of_your_choice.img of=/dev/sdX bs=4MiB
 ----
 
 Once the image has been written, unplug and re-plug the USB; you should see two partitions appear (for Raspberry Pi OS) in `/dev`. In total, you should see something similar to this:
@@ -98,13 +98,13 @@ The default bootloader configuration on CM4 is designed to support bringup and d
 
 NOTE: The Compute Module 4 ROM never runs `recovery.bin` from SD/EMMC and the `rpi-eeprom-update` service is not enabled by default. This is necessary because the EMMC is not removable and an invalid `recovery.bin` file would prevent the system from booting. This can be overridden and used with `self-update` mode where the bootloader can be updated from USB MSD or network boot. However, `self-update` mode is not an atomic update and therefore is not safe in the event of a power failure while the EEPROM is being updated.
 
-==== Flashing storage devices other than SD cards
+==== Flash storage devices other than SD cards
 
 The Linux-based https://github.com/raspberrypi/usbboot/blob/master/mass-storage-gadget/README.md[mass-storage gadget] supports flashing of NVMe, EMMC and USB block devices. This is normally faster than using the `rpiboot` firmware driver and also provides a UART console to the device for easier debug.
 
 See also: https://github.com/raspberrypi/usbboot/blob/master/Readme.md#compute-module-4-extensions[CM4 rpiboot extensions].   
 
-==== Modifying the bootloader configuration
+==== Modify the bootloader configuration
 
 To modify the CM4 bootloader configuration:
 
@@ -120,25 +120,24 @@ To modify the CM4 bootloader configuration:
 
 The `pieeprom.bin` file is now ready to be flashed to Compute Module 4.
 
-==== Flashing the bootloader EEPROM - Compute Module 4
+==== Flash the bootloader EEPROM - Compute Module 4
 
-To flash the bootloader EEPROM, follow the same hardware setup as for flashing the EMMC, but also ensure EEPROM_nWP is NOT pulled low. Once complete `EEPROM_nWP` may be pulled low again.
+To flash the bootloader EEPROM, follow the same hardware setup as for flashing the EMMC, but also ensure `EEPROM_nWP` is NOT pulled low. Once complete, `EEPROM_nWP` may be pulled low again. Run the following command to write `recovery/pieeprom.bin` to the bootloader EEPROM:
 
-[,bash]
+[source,console]
 ----
-# Writes recovery/pieeprom.bin to the bootloader EEPROM.
-./rpiboot -d recovery
+$ ./rpiboot -d recovery
 ----
 
 === Troubleshooting
 
 For a small percentage of Raspberry Pi Compute Module 3s, booting problems have been reported. We have traced these back to the method used to create the FAT32 partition; we believe the problem is due to a difference in timing between the BCM2835/6/7 and the newer eMMC devices. The following method of creating the partition is a reliable solution in our hands.
 
-[,bash]
+[source,console]
 ----
-sudo parted /dev/<device>
+$ sudo parted /dev/<device>
 (parted) mkpart primary fat32 4MiB 64MiB
 (parted) q
-sudo mkfs.vfat -F32 /dev/<device>
-sudo cp -r <files>/* <mountpoint>
+$ sudo mkfs.vfat -F32 /dev/<device>
+$ sudo cp -r <files>/* <mountpoint>
 ----

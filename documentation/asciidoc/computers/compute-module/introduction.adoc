@@ -1,0 +1,12 @@
+== Compute Modules
+
+== IO Boards
+
+== Configuration
+
+[.whitepaper, title="Configuring the Compute Module 4", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003470-WP/Configuring-the-Compute-Module-4.pdf]
+****
+The Raspberry Pi Compute Module 4 (CM4) is available in a number of different hardware configurations. Sometimes it may be necessary to disable some of these features when they are not required.
+
+This document describes how to disable various hardware interfaces, in both hardware and software, and how to reduce the amount of memory used by Linux.
+****
