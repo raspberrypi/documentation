@@ -1,3 +1,4 @@
+[[m2-hat-plus]]
 == About
 
 .The Raspberry Pi M.2 HAT+
@@ -28,6 +29,7 @@ The M.2 HAT+ is _only_ compatible with the https://www.raspberrypi.com/products/
 ** 8 screws
 ** 1 knurled double-flanged drive attachment screw to secure and support the M.2 peripheral
 
+[[m2-hat-plus-installation]]
 == Installation
 
 To use the Raspberry Pi M.2 HAT+, you will need:
@@ -74,37 +76,37 @@ Then, reboot with `sudo reboot`.
 . The M.2 HAT+ is compatible with the Raspberry Pi 5 Active Cooler. If you have an Active Cooler, install it before installing the M.2 HAT+.
 +
 --
-image::images/installation-01.png[width="60%"]
+image::images/m2-hat-plus-installation-01.png[width="60%"]
 --
-. Install the spacers using four of the provided screws. Firmly press the GPIO stacking header on top of the Raspberry Pi GPIO pins; orientation does not matter as long as all pins fit into place. Disconnect the ribbon cable from the M.2 HAT+, and insert one end into the PCIe port of your Raspberry Pi. Lift the ribbon cable holder from both sides, then insert the cable with the copper contact points facing inward, towards the USB ports. With the ribbon cable fully and evenly inserted into the PCIe port, push the cable holder down from both sides to secure the ribbon cable firmly in place.
+. Install the spacers using four of the provided screws. Firmly press the GPIO stacking header on top of the Raspberry Pi GPIO pins; orientation does not matter as long as all pins fit into place. Disconnect the ribbon cable from the M.2 HAT+, and insert the other end into the PCIe port of your Raspberry Pi. Lift the ribbon cable holder from both sides, then insert the cable with the copper contact points facing inward, towards the USB ports. With the ribbon cable fully and evenly inserted into the PCIe port, push the cable holder down from both sides to secure the ribbon cable firmly in place.
 +
 --
-image::images/installation-02.png[width="60%"]
+image::images/m2-hat-plus-installation-02.png[width="60%"]
 --
-. Set the M.2 HAT+ on top of the spacers, and use the four remaining screws to secure the M.2 HAT+ in place.
+. Set the M.2 HAT+ on top of the spacers, and use the four remaining screws to secure it in place.
 +
 --
-image::images/installation-03.png[width="60%"]
+image::images/m2-hat-plus-installation-03.png[width="60%"]
 --
 . Insert the ribbon cable into the slot on the M.2 HAT+. Lift the ribbon cable holder from both sides, then insert the cable with the copper contact points facing up. With the ribbon cable fully and evenly inserted into the port, push the cable holder down from both sides to secure the ribbon cable firmly in place.
 +
 --
-image::images/installation-04.png[width="60%"]
+image::images/m2-hat-plus-installation-04.png[width="60%"]
 --
 . Remove the drive attachment screw by turning the screw counter-clockwise. Insert your M.2 SSD into the M.2 key edge connector, sliding the drive into the slot at a slight upward angle. Do not force the drive into the slot: it should slide in gently.
 +
 --
-image::images/installation-05.png[width="60%"]
+image::images/m2-hat-plus-installation-05.png[width="60%"]
 --
 . Push the notch on the drive attachment screw into the slot at the end of your M.2 drive. Push the drive flat against the M.2 HAT+, and insert the SSD attachment screw by turning the screw clockwise until the SSD feels secure. Do not over-tighten the screw.
 +
 --
-image::images/installation-06.png[width="60%"]
+image::images/m2-hat-plus-installation-06.png[width="60%"]
 --
 . Congratulations, you have successfully installed the M.2 HAT+. Connect your Raspberry Pi to power; Raspberry Pi OS will automatically detect the M.2 HAT+. If you use Raspberry Pi Desktop, you should see an icon representing the drive on your desktop. If you don't use a desktop, you can find the drive at `/dev/nvme0n1`. To make your drive automatically available for file access, consider xref:../computers/configuration.adoc#automatically-mount-a-storage-device[configuring automatic mounting].
 +
 --
-image::images/installation-07.png[width="60%"]
+image::images/m2-hat-plus-installation-07.png[width="60%"]
 --
 
 WARNING: Always disconnect your Raspberry Pi from power before connecting or disconnecting a device from the M.2 slot.
@@ -120,6 +122,12 @@ To boot from an NVMe drive attached to the M.2 HAT+, complete the following step
 . Reboot your Raspberry Pi with `sudo reboot`.
 
 For more information, see xref:../computers/raspberry-pi.adoc#nvme-ssd-boot[NVMe boot].
+
+== Enable PCIe Gen 3
+
+WARNING: The Raspberry Pi 5 is not certified for Gen 3.0 speeds. PCIe Gen 3.0 connections may be unstable.
+
+To enable PCIe Gen 3 speeds, follow the instructions at xref:../computers/raspberry-pi.adoc#pcie-gen-3-0[enable PCIe Gen 3.0].
 
 == Schematics
 

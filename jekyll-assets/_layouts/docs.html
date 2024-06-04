@@ -13,7 +13,7 @@
       {% include nav.html %}
 
       <section id="content">
-        <h1>{{ page.sub_title | markdownify }}</h1>
+        <h1>{{ page.sub_title | markdownify | remove: '<p>' | remove: '</p>'}}</h1>
         {{ content }}
       </section>
     </div>
