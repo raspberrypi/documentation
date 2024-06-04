@@ -389,6 +389,7 @@ h6 .anchor::before {
   background-color: #343434;
   padding: 7px 15px 7px;
   overflow-x: auto !important;
+  border-radius: 3px;
 }
 
 #content div.listingblock div.content div.line,
@@ -637,14 +638,14 @@ div.videoblock iframe {
   background-color: #fff;
   background-repeat: no-repeat;
   background-image: url(whitepaper_coverimage.png);
-  background-size: 177px 242px;
-  flex: 2 0 auto;
+  background-size: 100px 170px;
+  flex: 0 0 auto;
   margin-right: 10px;
-  height: 242px;
-  width: 177px;
+  height: 170px;
+  width: 100px;
   border: 1px solid #cecece;
   text-align: right;
-  padding: 80px 15px 15px;
+  padding: 20px 15px 15px;
   font-family: monospace;
   color: var(--red);
   font-size: 10px;

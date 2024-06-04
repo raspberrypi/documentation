@@ -1,6 +1,4 @@
-== Attaching the official 7-inch display
-
-NOTE: These instructions are intended for advanced users. If anything is unclear, use the https://forums.raspberrypi.com/viewforum.php?f=98[Raspberry Pi Compute Module forums] for technical help.
+== Attach the official 7-inch display
 
 Update your system software and firmware to the latest version before starting.
 Compute Modules mostly use the same process, but sometimes physical differences force changes for a particular model.
@@ -20,7 +18,7 @@ To connect a display to DISP1:
 . Reconnect the Compute Module to power.
 . Add the following line to xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]:
 +
-[source,bash]
+[source,ini]
 ----
 dtoverlay=vc4-kms-dsi-7inch
 ----
@@ -38,7 +36,7 @@ To connect a display to DISP0:
 . Reconnect the Compute Module to power.
 . Add the following line to `/boot/firmware/config.txt`:
 +
-[source,bash]
+[source,ini]
 ----
 dtoverlay=vc4-kms-dsi-7inch
 ----
@@ -50,7 +48,7 @@ The touchscreen requires no additional configuration. Connect it to your Compute
 
 To disable the touchscreen element, but still use the display, add the following line to `/boot/firmware/config.txt`:
 
-[source]
+[source,ini]
 ----
 disable_touchscreen=1
 ----
@@ -59,7 +57,7 @@ disable_touchscreen=1
 
 To entirely ignore the display when connected, add the following line to `/boot/firmware/config.txt`:
 
-[source]
+[source,ini]
 ----
 ignore_lcd=1
 ----

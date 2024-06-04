@@ -20,7 +20,7 @@ See:
 [[cm4]]
 === Compute Module 4
 
-Please see the xref:compute-module.adoc#flashing-the-compute-module-emmc[Flashing the Compute Module eMMC] for bootloader update instructions.
+Please see the xref:compute-module.adoc#flash-compute-module-emmc[Flash Compute Module eMMC] for bootloader update instructions.
 
 === Raspberry Pi 3B+
 
