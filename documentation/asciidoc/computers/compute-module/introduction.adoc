@@ -96,6 +96,8 @@ Compute Module IO Board provides the following interfaces:
 
 The Compute Module IO Board comes in two variants: Version 1 and Version 3. Version 1 is only compatible with CM1. Version 3 is compatible with CM1, CM3, CM3+, and CM4S. Compute Module IO Board Version 3 is sometimes written as the shorthand CMIO3.
 
+Compute Module IO Board Version 3 added a microSD card slot that did not exist in Compute Module IO Board Version 1.
+
 === IO Board compatibility
 
 Not all Compute Module IO Boards work with all Compute Module models. The following table shows which Compute Modules work with each IO Board:
