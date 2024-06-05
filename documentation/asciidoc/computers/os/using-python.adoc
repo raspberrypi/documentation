@@ -22,7 +22,9 @@ $ sudo apt install python3-build-hat
 
 To find Python packages distributed with `apt`, xref:os.adoc#search-for-software[use `apt search`]. In most cases, Python packages use the prefix `python-` or `python3-`: for instance, you can find the `numpy` package under the name `python3-numpy`.
 
-=== [[python-on-raspberry-pi]]Install Python libraries using `pip`
+=== Install Python libraries using `pip`
+
+[[python-on-raspberry-pi]]
 
 ==== Bookworm changes to `pip` installation
 
