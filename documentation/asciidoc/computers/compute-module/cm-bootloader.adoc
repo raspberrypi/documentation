@@ -1,6 +1,6 @@
 == Compute Module EEPROM bootloader
 
-Since Compute Module 4, Compute Modules use an EEPROM bootloader. This bootloader lives in a small segment of on-board storage instead of the boot partition. As a result, it requires different procedures to update. Before using CM4 in production, always follow these best practices:
+Since Compute Module 4, Compute Modules use an EEPROM bootloader. This bootloader lives in a small segment of on-board storage instead of the boot partition. As a result, it requires different procedures to update. Before using a Compute Module with an EEPROM bootloader in production, always follow these best practices:
 
 * Select a specific bootloader release. Verify that every Compute Module you use has that release. The version in the `usbboot` repo is always a recent stable release.
 * Configure the boot device by xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[setting the `BOOT_ORDER` ].
@@ -23,7 +23,7 @@ $ ./rpiboot -d recovery
 
 The Linux-based https://github.com/raspberrypi/usbboot/blob/master/mass-storage-gadget/README.md[`mass-storage-gadget`] supports flashing of NVMe, eMMC and USB block devices. `mass-storage-gadget` works faster than `rpiboot` and also provides a UART console to the device for debugging.
 
-`usbboot` also includes a number of https://github.com/raspberrypi/usbboot/blob/master/Readme.md#compute-module-4-extensions[CM4 `rpiboot` extensions] that enable you to interact with the EEPROM bootloader on Compute Module 4.
+`usbboot` also includes a number of https://github.com/raspberrypi/usbboot/blob/master/Readme.md#compute-module-4-extensions[`rpiboot` extensions] that enable you to interact with the EEPROM bootloader on a Compute Module.
 
 === Update the Compute Module bootloader
 
@@ -35,7 +35,7 @@ WARNING: `self-update` mode does not update the bootloader atomically. If a powe
 
 === Modify the bootloader configuration
 
-To modify the CM4 bootloader configuration:
+To modify the Compute Module EEPROM bootloader configuration:
 
 . Navigate to the `usbboot/recovery` directory.
 . If you require a specific bootloader release, replace `pieeprom.original.bin` with the equivalent from your bootloader release.
