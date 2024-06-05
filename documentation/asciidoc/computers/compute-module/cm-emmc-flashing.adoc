@@ -3,6 +3,8 @@
 
 The Compute Module has an on-board eMMC device connected to the primary SD card interface. This guide explains how to flash (write) an operating system image to the eMMC storage of a single Compute Module.
 
+NOTE: **Lite** variants of Compute Modules do not have on-board eMMC. Instead, you can follow the procedure to flash a storage device for other Raspberry Pi devices at xref:../computers/getting-started.adoc#installing-the-operating-system[Install an operating system].
+
 When flashing an image to multiple Compute Modules, consider using the Compute Module Provisioner instead:
 
 [.whitepaper, title="Mass Provision with the Compute Module Provisioner", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003468-WP/Using-the-Compute-Module-Provisioner.pdf]
