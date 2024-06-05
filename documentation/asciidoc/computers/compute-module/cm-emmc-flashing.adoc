@@ -1,5 +1,7 @@
 [[flash-compute-module-emmc]]
-== [[flashing-the-compute-module-emmc]]Flash an image to a Compute Module
+== Flash an image to a Compute Module
+
+[[flashing-the-compute-module-emmc]]
 
 The Compute Module has an on-board eMMC device connected to the primary SD card interface. This guide explains how to flash (write) an operating system image to the eMMC storage of a single Compute Module.
 
