@@ -1,41 +1,55 @@
-[[cm4bootloader]]
-=== Compute Module 4 bootloader
+== Compute Module EEPROM bootloader
 
-The default bootloader configuration on CM4 is designed to support bringup and development on a https://www.raspberrypi.com/products/compute-module-4-io-board/[Compute Module 4 IO board], and the software version flashed at manufacture may be older than the latest release. For final products please consider:
+Since Compute Module 4, Compute Modules use an EEPROM bootloader. This bootloader lives in a small segment of on-board storage instead of the boot partition. As a result, it requires different procedures to update. Before using CM4 in production, always follow these best practices:
 
-* Selecting and verifying a specific bootloader release. The version in the `usbboot` repo is always a recent stable release.
-* Configuring the boot device (e.g. network boot). See `BOOT_ORDER` section in the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration] guide.
-* Enabling hardware write-protection on the bootloader EEPROM to ensure that the bootloader can't be modified on inaccessible products (such as remote or embedded devices).
+* Select a specific bootloader release. Verify that every Compute Module you use has that release. The version in the `usbboot` repo is always a recent stable release.
+* Configure the boot device by xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[setting the `BOOT_ORDER` ].
+* Enable hardware write-protection on the bootloader EEPROM to ensure that the bootloader can't be modified on inaccessible products (such as remote or embedded devices).
 
-NOTE: The Compute Module 4 ROM never runs `recovery.bin` from SD/eMMC and the `rpi-eeprom-update` service is not enabled by default. This is necessary because the eMMC is not removable and an invalid `recovery.bin` file would prevent the system from booting. This can be overridden and used with `self-update` mode where the bootloader can be updated from USB MSD or network boot. However, `self-update` mode is not an atomic update and therefore is not safe in the event of a power failure while the EEPROM is being updated.
+=== Flash Compute Module bootloader EEPROM
 
-==== Flash storage devices other than SD cards
+To flash the bootloader EEPROM:
 
-The Linux-based https://github.com/raspberrypi/usbboot/blob/master/mass-storage-gadget/README.md[mass-storage gadget] supports flashing of NVMe, eMMC and USB block devices. This is normally faster than using the `rpiboot` firmware driver and also provides a UART console to the device for easier debug.
-
-See also: https://github.com/raspberrypi/usbboot/blob/master/Readme.md#compute-module-4-extensions[CM4 rpiboot extensions].
-
-==== Modify the bootloader configuration
-
-To modify the CM4 bootloader configuration:
-
-* Navigate to the `usbboot/recovery` directory
-* Replace `pieeprom.original.bin` if a specific bootloader release is required
-* Edit the default `boot.conf` bootloader configuration file; typically, at least the BOOT_ORDER must be updated:
- ** For network boot, use `BOOT_ORDER=0xf2`
- ** For SD/eMMC boot, use `BOOT_ORDER=0xf1`
- ** For USB boot failing over to eMMC, use `BOOT_ORDER=0xf15`
-* Run `./update-pieeprom.sh` to update the EEPROM image `pieeprom.bin` image file
-* If EEPROM write-protection is required, edit `config.txt` and add `eeprom_write_protect=1`. Hardware write-protection must be enabled via software and then locked by pulling the `EEPROM_nWP` pin low
-* Run `../rpiboot -d .` to update the bootloader using the updated EEPROM image `pieeprom.bin`
-
-The `pieeprom.bin` file is now ready to be flashed to Compute Module 4.
-
-==== Flash the bootloader EEPROM - Compute Module 4
-
-To flash the bootloader EEPROM, follow the same hardware setup as for flashing the eMMC, but also ensure `EEPROM_nWP` is NOT pulled low. Once complete, `EEPROM_nWP` may be pulled low again. Run the following command to write `recovery/pieeprom.bin` to the bootloader EEPROM:
-
+. Set up the hardware as you would when xref:../computers/compute-module.adoc#flash-compute-module-emmc[flashing the eMMC], but ensure `EEPROM_nWP` is _not_ pulled low.
+. Once complete, `EEPROM_nWP` may be pulled low again.
+. Run the following command to write `recovery/pieeprom.bin` to the bootloader EEPROM:
++
 [source,console]
 ----
 $ ./rpiboot -d recovery
+----
+
+=== Flash storage devices other than SD cards
+
+The Linux-based https://github.com/raspberrypi/usbboot/blob/master/mass-storage-gadget/README.md[`mass-storage-gadget`] supports flashing of NVMe, eMMC and USB block devices. `mass-storage-gadget` works faster than `rpiboot` and also provides a UART console to the device for debugging.
+
+`usbboot` also includes a number of https://github.com/raspberrypi/usbboot/blob/master/Readme.md#compute-module-4-extensions[CM4 `rpiboot` extensions] that enable you to interact with the EEPROM bootloader on Compute Module 4.
+
+=== Update the Compute Module bootloader
+
+On Compute Modules with an EEPROM bootloader, ROM never runs `recovery.bin` from SD/eMMC. These Compute Modules disable the `rpi-eeprom-update` service by default, because eMMC is not removable and an invalid `recovery.bin` file could prevent the system from booting.
+
+You can override this behaviour with `self-update` mode. In `self-update` mode, you can update the bootloader from USB MSD or network boot.
+
+WARNING: `self-update` mode does not update the bootloader atomically. If a power failure occurs during an EEPROM update, you could corrupt the EEPROM.
+
+=== Modify the bootloader configuration
+
+To modify the CM4 bootloader configuration:
+
+. Navigate to the `usbboot/recovery` directory.
+. If you require a specific bootloader release, replace `pieeprom.original.bin` with the equivalent from your bootloader release.
+. Edit the default `boot.conf` bootloader configuration file to define a xref:../computers/raspberry-pi.adoc#BOOT_ORDER[`BOOT_ORDER`]:
+ * For network boot, use `BOOT_ORDER=0xf2`.
+ * For SD/eMMC boot, use `BOOT_ORDER=0xf1`.
+ * For USB boot failing over to eMMC, use `BOOT_ORDER=0xf15`.
+ * For NVMe boot, use `BOOT_ORDER=0xf6`.
+. Run `./update-pieeprom.sh` to generate a new EEPROM image `pieeprom.bin` image file.
+. If you require EEPROM write-protection, add `eeprom_write_protect=1` to  `/boot/firmware/config.txt`.
+ * Once enabled in software, you can lock hardware write-protection by pulling the `EEPROM_nWP` pin low.
+. Run the following command to write the updated `pieeprom.bin` image to EEPROM:
++
+[source,console]
+----
+$ ../rpiboot -d .
 ----
