@@ -6,7 +6,7 @@ Overclocking and overvoltage will be disabled at runtime when the SoC reaches `t
 
 NOTE: For more information xref:raspberry-pi.adoc#frequency-management-and-thermal-control[see the section on frequency management and thermal control].
 
-WARNING: Setting any overclocking parameters to values other than those used by xref:configuration.adoc#overclock[raspi-config] may set a permanent bit within the SoC, making it possible to detect that your Raspberry Pi has been overclocked. The specific circumstances where the overclock bit is set are if `force_turbo` is set to `1` and any of the `over_voltage_*` options are set to a value of more than `0`. See the https://www.raspberrypi.com/news/introducing-turbo-mode-up-to-50-more-performance-for-free/[blog post on Turbo mode] for more information.
+WARNING: Setting any overclocking parameters to values other than those used by xref:configuration.adoc#overclock[`raspi-config`] may set a permanent bit within the SoC. This makes it possible to detect that your Raspberry Pi was once overclocked. The overclock bit sets when `force_turbo` is set to `1` and any of the `over_voltage_*` options are set to a value of more than `0`. See the https://www.raspberrypi.com/news/introducing-turbo-mode-up-to-50-more-performance-for-free/[blog post on Turbo mode] for more information.
 
 === Overclocking
 
