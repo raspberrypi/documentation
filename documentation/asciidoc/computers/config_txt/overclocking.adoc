@@ -10,6 +10,7 @@ WARNING: Setting any overclocking parameters to values other than those used by 
 
 === Overclocking
 
+[cols="1m,3"]
 |===
 | Option | Description
 
@@ -100,7 +101,7 @@ WARNING: Setting any overclocking parameters to values other than those used by 
 
 This table gives the default values for the options on various Raspberry Pi models, all frequencies are stated in MHz.
 
-[cols=",^,^,^,^,^,^,^,^,^,^"]
+[cols="m,^,^,^,^,^,^,^,^,^,^"]
 |===
 | Option | Pi 0/W | Pi1 | Pi2 | Pi3 | Pi3A+/Pi3B+ | CM4 & Pi4B <= R1.3 | Pi4B R1.4 | Pi 400 | Pi Zero 2 W | Pi 5
 
@@ -111,7 +112,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 | 1200
 | 1400
 | 1500
-| 1500 or 1800 if arm_boost=1
+| 1500 or 1800 if `arm_boost`=1
 | 1800
 | 1000
 | 2400
@@ -275,7 +276,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 
 This table gives defaults for options which are the same across all models.
 
-[cols=",^"]
+[cols="m,^"]
 |===
 | Option | Default
 
@@ -317,11 +318,11 @@ The minimum core frequency when the system is idle must be fast enough to suppor
 | Default
 | 500
 
-| hdmi_enable_4kp60
+| `hdmi_enable_4kp60`
 | 550
 |===
 
-NOTE: Raspberry Pi 5 supports dual-4Kp60 displays with the idle-clock settings so `hdmi_enable_4kp60` is redundant.
+NOTE: There is no need to use `hdmi_enable_4kp60` on Raspberry Pi 5; it supports dual-4Kp60 displays by default.
 
 * Overclocking requires the latest firmware release.
 * The latest firmware automatically scales up the voltage if the system is overclocked. Manually setting `over_voltage` disables automatic voltage scaling for overclocking.
@@ -337,6 +338,7 @@ By default (`force_turbo=0`) the on-demand CPU frequency driver will raise clock
 === Clocks relationship
 
 ==== Raspberry Pi 4
+
 The GPU core, CPU, SDRAM and GPU each have their own PLLs and can have unrelated frequencies. The h264, v3d and ISP blocks share a PLL.
 
 To view the Raspberry Pi's current frequency in KHz, type: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`. Divide the result by 1000 to find the value in MHz. Note that this frequency is the kernel _requested_ frequency, and it is possible that any throttling (for example at high temperatures) may mean the CPU is actually running more slowly than reported. An instantaneous measurement of the actual ARM CPU frequency can be retrieved using the vcgencmd `vcgencmd measure_clock arm`. This is displayed in Hertz.
@@ -347,9 +349,16 @@ To view the Raspberry Pi's current frequency in KHz, type: `cat /sys/devices/sys
 This white paper goes through the reasons why your Raspberry Pi may get hot and why you might want to cool it back down, offering options on the cooling process.
 ****
 
-To view the Raspberry Pi's temperature, type `cat /sys/class/thermal/thermal_zone0/temp`. Divide the result by 1000 to find the value in degrees Celsius. Alternatively, there is a vcgencmd, `vcgencmd measure_temp`, that interrogates the GPU directly for its temperature.
+To view the temperature of a Raspberry Pi, run the following command:
 
-Hitting the temperature limit is not harmful to the SoC, but it will cause the CPU to throttle. A heatsink can help to control the core temperature, and therefore performance. This is especially useful if the Raspberry Pi is running inside a case. Airflow over the heatsink will make cooling more efficient.
+[source,console]
+----
+$ cat /sys/class/thermal/thermal_zone0/temp
+----
+
+Divide the result by 1000 to find the value in degrees Celsius. Alternatively, you can use `vcgencmd measure_temp` to report the GPU temperature.
+
+Hitting the temperature limit is not harmful to the SoC, but it will cause the CPU to throttle. A heat sink can help to control the core temperature, and therefore performance. This is especially useful if the Raspberry Pi is running inside a case. Airflow over the heat sink will make cooling more efficient.
 
 When the core temperature is between 80°C and 85°C, the ARM cores will be throttled back. If the temperature exceeds 85°C, the ARM cores and the GPU will be throttled back.
 
@@ -363,7 +372,12 @@ To monitor the Raspberry Pi's PSU voltage, you will need to use a multimeter to 
 
 If the voltage drops below 4.63V (±5%), the ARM cores and the GPU will be throttled back, and a message indicating the low voltage state will be added to the kernel log.
 
-The Raspberry Pi 5 PMIC has built in ADCs that allow the supply voltage to be measured. To do this run `vcgencmd pmic_read_adc EXT5V_V`
+The Raspberry Pi 5 PMIC has built in ADCs that allow the supply voltage to be measured. To view the current supply voltage, run the following command:
+
+[source,console]
+----
+$ vcgencmd pmic_read_adc EXT5V_V
+----
 
 === Overclocking problems
 

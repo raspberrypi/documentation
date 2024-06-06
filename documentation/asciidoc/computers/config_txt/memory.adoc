@@ -4,6 +4,7 @@
 
 This parameter can be used to force a Raspberry Pi to limit its memory capacity: specify the total amount of RAM, in megabytes, you wish the Raspberry Pi to use. For example, to make a 4GB Raspberry Pi 4B behave as though it were a 1GB model, use the following:
 
+[source,ini]
 ----
 total_mem=1024
 ----

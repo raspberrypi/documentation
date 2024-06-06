@@ -134,7 +134,7 @@ display_auto_detect=1
 
 [NOTE]
 ====
-In Raspberry Pi OS _Bookworm_, a bug in https://github.com/WayfireWM/wayfire[Wayfire] currently prevents cursor movement rotation. There is no workaround for this bug in Wayfire. Instead, you can use https://github.com/labwc/labwc[`labwc`] (currently in beta).
+In Raspberry Pi OS _Bookworm_, a bug in https://github.com/WayfireWM/wayfire[Wayfire] currently prevents cursor movement rotation when using WayVNC. There is no workaround for this bug in Wayfire. Instead, you can use https://github.com/labwc/labwc[`labwc`] (currently in beta).
 
 First install `labwc`:
 
