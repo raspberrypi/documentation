@@ -4,12 +4,14 @@ NOTE: The following instructions are terse, and Linux-based only. For detailed s
 
 Install CMake (at least version 3.13), and GCC cross compiler
 
+[source,console]
 ----
 $ sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
 ----
 
 Set up your project to point to use the Raspberry Pi Pico SDK by cloning the SDK locally:
 
+[source,console]
 ----
 $ git clone https://github.com/raspberrypi/pico-sdk.git
 ----
@@ -39,6 +41,7 @@ Go ahead and write your code, see https://github.com/raspberrypi/pico-examples[p
 
 About the simplest you can do is a single source file (e.g. `hello_world.c`)
 
+[source,c]
 ----
 #include <stdio.h>
 #include "pico/stdlib.h"
@@ -68,6 +71,7 @@ NOTE: This example uses the default UART for stdout; if you want to use the defa
 
 Setup a CMake build directory. For example, if not using an IDE:
 
+[source,console]
 ----
 $ mkdir build
 $ cd build
@@ -82,6 +86,7 @@ For a list of boards defined in the SDK itself, look in https://github.com/raspb
 
 Make your target from the build directory you created.
 
+[source,console]
 ----
 $ make hello_world
 ----

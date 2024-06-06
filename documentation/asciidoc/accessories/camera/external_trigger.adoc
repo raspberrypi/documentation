@@ -25,16 +25,16 @@ image::images/pico_wiring.jpg[alt="Image showing Raspberry Pi Pico wiring",width
 
 Enable external triggering through superuser mode:
 
-[,bash]
+[source,console]
 ----
-sudo su
-echo 1 > /sys/module/imx296/parameters/trigger_mode
-exit
+$ sudo su
+$ echo 1 > /sys/module/imx296/parameters/trigger_mode
+$ exit
 ----
 
-==== Raspberry Pi Pico Micropython Code
+==== Raspberry Pi Pico MicroPython Code
 
-[,python]
+[source,python]
 ----
 from machine import Pin, PWM
 
@@ -51,20 +51,19 @@ pwm.freq(framerate)
 pwm.duty_u16(int((1 - (shutter - 14) / frame_length) * 65535))
 ----
 
-The low pulsewidth is equal to the shutter time, and the frequency of the PWM equals the framerate.
+The low pulse width is equal to the shutter time, and the frequency of the PWM equals the framerate.
 
-NOTE: In this example Pin 28 is used to connect to the XTR touchpoint on the GS camera board.
+NOTE: In this example, Pin 28 connects to the XTR touchpoint on the GS camera board.
 
 === Operation
 
 Run the code on the Pico, and set the camera running:
 
-[,bash]
+[source,console]
 ----
-rpicam-hello -t 0 --qt-preview --shutter 3000
+$ rpicam-hello -t 0 --qt-preview --shutter 3000
 ----
 
-A frame should now be generated every time that the Pico pulses the pin. Variable framerate is acceptable, and can be controlled by simply
-varying the duration between pulses. No options need to be passed to rpicam-apps to enable external trigger.
+Every time that the Pico pulses the pin, it should generate a frame. To control the framerate, vary the duration between pulses.
 
-NOTE: When running libcamera apps, you will need to specify a fixed shutter duration (the value does not matter). This will ensure the AGC does not try adjusting camera's shutter speed, which is controlled by the external trigger pulse.
+NOTE: When running `rpicam-apps`, always specify a fixed shutter duration to ensure the AGC does not adjust the camera's shutter speed. The duration does not matter, since it is actually controlled by the external trigger pulse.

@@ -19,12 +19,14 @@ Once connected, traffic over the Raspberry Pi Pico's UART will be relayed to you
 
 If you have not already done so you should install minicom:
 
+[source,console]
 ----
 $ sudo apt install minicom
 ----
 
 and open the serial port:
 
+[source,console]
 ----
 $ minicom -b 115200 -o -D /dev/ttyACM0
 ----
@@ -35,6 +37,7 @@ To test serial communication you can build and upload the "Hello World" example 
 
 Change directory into the `hello_world` directory inside the `pico-examples` tree, and run `make`. Afterwards, you can upload it to your Raspberry Pi Pico using `openocd`. For a full walkthrough of building the `hello_serial` example program, see Chapter 4 of https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico].
 
+[source,console]
 ----
 $ cd pico-examples
 $ mkdir build

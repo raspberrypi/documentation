@@ -12,29 +12,30 @@ image::images/write_protect_tabs.jpg[width="80%"]
 
 NOTE: In some cases the two pads may already have a 0Ω resistor fitted to bridge the write-protect link, as illustrated in the picture of the Codec Zero board above.
 
-=== EEPROM Programming
+=== Program the EEPROM
 
 Once the write-protect line has been pulled down, the EEPROM can be programmed. 
 
 You should first install the utilities and then run the programmer. Open up a terminal window and type the following:
 
+[source,console]
 ----
 $ sudo apt update
 $ sudo apt install rpi-audio-utils
 $ sudo rpi-audio-flash
 ----
 
-After starting you will be presented with a warning screen.
+After starting, you will see a warning screen.
 
 image::images/firmware-update/warning.png[]
 
-Selecting "Yes" to proceed will present you with a menu allowing you to select your hardware.
+Select "Yes" to proceed. You should see a menu where you can select your hardware.
 
 image::images/firmware-update/select.png[]
 
 NOTE: If no HAT is present, or if the connected HAT is not a Raspberry Pi Audio board, you will be presented with an error screen. If the firmware has already been updated on the board, a message will be displayed informing you that you do not have to continue.
 
-After selecting the correct hardware a screen will display while the new firmware is flashed to the HAT.
+After selecting the hardware, a screen will display while the new firmware is flashed to the HAT.
 
 image::images/firmware-update/flashing.png[]
 
@@ -42,5 +43,5 @@ Afterwards a screen will display telling you that the new firmware has installed
 
 image::images/firmware-update/flashed.png[]
 
-NOTE: If the firmware fails to install correctly, an error screen will be displayed. In the first instance you should remove and reseat the HAT board and try flashing the firmware again.
+NOTE: If the firmware fails to install correctly, you will see an error screen. Try removing and reseating the HAT, then flash the firmware again.
 

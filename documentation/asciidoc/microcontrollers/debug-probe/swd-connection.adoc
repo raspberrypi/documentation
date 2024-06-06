@@ -17,7 +17,7 @@ NOTE: When you use the Debug Probe to upload a binary the ELF version of the fil
 
 === Debugging with SWD
 
-It’ll also let you use `openocd` in server mode, and connect GDB, which gives you break points and “proper” debugging.
+It'll also let you use `openocd` in server mode, and connect GDB, which gives you break points and "proper" debugging.
 
 [IMPORTANT] 
 ======

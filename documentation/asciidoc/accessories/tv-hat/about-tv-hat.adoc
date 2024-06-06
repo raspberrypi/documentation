@@ -33,7 +33,7 @@ The software we recommend to decode the streams (known as multiplexes, or muxes 
 
 Boot your Raspberry Pi and then go ahead open a terminal window, and run the following two commands to install the `tvheadend` software:
 
-[source, bash]
+[source,console]
 ----
 $ sudo apt update
 $ sudo apt install tvheadend
@@ -55,7 +55,7 @@ NOTE: Your local transmitter can be found using the https://www.freeview.co.uk/h
 
 When you click *Save & Next*, the software will start scanning for the selected mux, and will show a progress bar. After about two minutes, you should see something like:
 
-[source, bash]
+[source,console]
 ----
 Found muxes: 8
 Found services: 172

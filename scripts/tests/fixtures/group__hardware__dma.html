@@ -270,7 +270,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>dma_sniffer_di
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>DMA Controller API</p>
-<p>The RP2040 Direct Memory Access (DMA) master performs bulk data transfers on a processor’s behalf. This leaves processors free to attend to other tasks, or enter low-power sleep states. The data throughput of the DMA is also significantly higher than one of RP2040’s processors.</p>
+<p>The RP2040 Direct Memory Access (DMA) master performs bulk data transfers on a processor's behalf. This leaves processors free to attend to other tasks, or enter low-power sleep states. The data throughput of the DMA is also significantly higher than one of RP2040's processors.</p>
 <p>The DMA can perform one read access and one write access, up to 32 bits in size, every clock cycle. There are 12 independent channels, which each supervise a sequence of bus transfers, usually in one of the following scenarios:</p>
 <ul>
 <li>Memory to peripheral</li>
@@ -1711,7 +1711,7 @@ dma_channel_claim_mask </dd></dl>
 
 <p>Enable the Sniffer byte swap function. </p>
 <p>Locally perform a byte reverse on the sniffed data, before feeding into checksum.</p>
-<p>Note that the sniff hardware is downstream of the DMA channel byteswap performed in the read master: if <a class="el" href="group__channel__config.html#ga43c3a2dd43fe7e962b1de0e90a46bb9e" title="Set DMA byte swapping config in a channel configuration object.">channel_config_set_bswap()</a> and <a class="el" href="group__hardware__dma.html#gac3b250d97550527a584de9d3f770acea" title="Enable the Sniffer byte swap function.">dma_sniffer_set_byte_swap_enabled()</a> are both enabled, their effects cancel from the sniffer’s point of view.</p>
+<p>Note that the sniff hardware is downstream of the DMA channel byteswap performed in the read master: if <a class="el" href="group__channel__config.html#ga43c3a2dd43fe7e962b1de0e90a46bb9e" title="Set DMA byte swapping config in a channel configuration object.">channel_config_set_bswap()</a> and <a class="el" href="group__hardware__dma.html#gac3b250d97550527a584de9d3f770acea" title="Enable the Sniffer byte swap function.">dma_sniffer_set_byte_swap_enabled()</a> are both enabled, their effects cancel from the sniffer's point of view.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">swap</td><td>Set true to enable byte swapping </td></tr>

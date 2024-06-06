@@ -52,6 +52,7 @@ image::images/pin_out_new.jpg[width="80%"]
 
 To store the AlsaMixer settings, add the following at the command line:
 
+[source,console]
 ----
 $ sudo alsactl store
 ----
@@ -67,13 +68,14 @@ $ sudo alsactl store -f /home/<username>/usecase.state
 
 To restore a saved file, run the following command, replacing `<username>` with your username:
 
+[source,console]
 ----
 $ sudo alsactl restore -f /home/<username>/usecase.state
 ----
 
 === MPD-based audio with volume control
 
-To allow Music Player Daemon (MPD)-based audio software to control the audio board’s built in volume, the file
+To allow Music Player Daemon (MPD)-based audio software to control the audio board's built in volume, the file
 `/etc/mpd.conf` may need to be changed to support the correct AlsaMixer name.
 
 This can be achieved by ensuring the 'Audio output' section of `/etc/mpd.conf` has the 'mixer_control'

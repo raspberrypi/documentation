@@ -139,7 +139,7 @@ static void </span><span class="memItemRight" data-target="true" id="rpip7c8762
 ++++
 
 <p id="rpip6a148783c6ac3b766316">DMA Controller API</p>
-<p id="rpip9aafa74654bc20e980ad">The RP2040 Direct Memory Access (DMA) master performs bulk data transfers on a processor’s behalf. This leaves processors free to attend to other tasks, or enter low-power sleep states. The data throughput of the DMA is also significantly higher than one of RP2040’s processors.</p>
+<p id="rpip9aafa74654bc20e980ad">The RP2040 Direct Memory Access (DMA) master performs bulk data transfers on a processor's behalf. This leaves processors free to attend to other tasks, or enter low-power sleep states. The data throughput of the DMA is also significantly higher than one of RP2040's processors.</p>
 <p id="rpip4ac3c612c21a8c507f95">The DMA can perform one read access and one write access, up to 32 bits in size, every clock cycle. There are 12 independent channels, which each supervise a sequence of bus transfers, usually in one of the following scenarios:</p>
 <div class="ulist" id="rpip547f674b68514c5aa941" data-parent-id="rpip9b48a9e1f757253abd8d"><ul data-target="true" data-target-for="rpip547f674b68514c5aa941">
 <li id="rpipfaedeaabb891e3c86645"><p>Memory to peripheral</p></li>
@@ -2090,7 +2090,7 @@ dma_channel_claim_mask </span></p>
 
 <p id="rpip42ed6346b092c179a630">Enable the Sniffer byte swap function. </p>
 <p id="rpip49a9c70639392b750ae1">Locally perform a byte reverse on the sniffed data, before feeding into checksum.</p>
-<p id="rpip777727315ca81192dcf4">Note that the sniff hardware is downstream of the DMA channel byteswap performed in the read master: if <a class="el" href="group__channel__config.html#ga43c3a2dd43fe7e962b1de0e90a46bb9e" title="Set DMA byte swapping config in a channel configuration object." id="rpip6ed7ede08b472214708e" data-adjusted="true">channel_config_set_bswap()</a> and <a class="el" href="#gac3b250d97550527a584de9d3f770acea" title="Enable the Sniffer byte swap function." id="rpip5d20fb9c0bffa6da7ba2" data-adjusted="true">dma_sniffer_set_byte_swap_enabled()</a> are both enabled, their effects cancel from the sniffer’s point of view.</p>
+<p id="rpip777727315ca81192dcf4">Note that the sniff hardware is downstream of the DMA channel byteswap performed in the read master: if <a class="el" href="group__channel__config.html#ga43c3a2dd43fe7e962b1de0e90a46bb9e" title="Set DMA byte swapping config in a channel configuration object." id="rpip6ed7ede08b472214708e" data-adjusted="true">channel_config_set_bswap()</a> and <a class="el" href="#gac3b250d97550527a584de9d3f770acea" title="Enable the Sniffer byte swap function." id="rpip5d20fb9c0bffa6da7ba2" data-adjusted="true">dma_sniffer_set_byte_swap_enabled()</a> are both enabled, their effects cancel from the sniffer's point of view.</p>
 <h4 id="rpip824c09af82738bfd08f0" data-parent-id="rpip9404f20c7293667ff472" data-target-for="rpip824c09af82738bfd08f0">Parameters</h4><p class="paragraph" id="rpipcbab1b89a117f959b8d4" data-parent-id="rpip9404f20c7293667ff472" data-target-for="rpipcbab1b89a117f959b8d4">
   <table class="params" id="rpip742ea6cc38ae5b88bf44">
     <tr id="rpipf96421d33725a9cb4753"><td class="paramname" id="rpip650a500a368b7fa5e3c6">swap</td><td id="rpipeac8048bdba3c2e6e085">Set true to enable byte swapping </td></tr>

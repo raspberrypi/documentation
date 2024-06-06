@@ -2,7 +2,7 @@
 
 Our official keyboard includes three host USB ports for connecting external devices, such as USB mice, USB drives, and other USB- controlled devices.
 
-The product’s micro USB port is for connection to the Raspberry Pi. Via the USB hub built into the keyboard, the Raspberry Pi controls, and provides power to, the three USB Type A ports.
+The product's micro USB port is for connection to the Raspberry Pi. Via the USB hub built into the keyboard, the Raspberry Pi controls, and provides power to, the three USB Type A ports.
 
 image::images/back-of-keyboard.png[width="80%"]
 

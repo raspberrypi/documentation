@@ -11,6 +11,7 @@ dedicated headphone amplifier. The DAC Pro is powered by a Raspberry Pi through 
 As part of the DAC Pro, two three-pin headers (P7/P9) are exposed above the Raspberry Pi's USB and Ethernet ports for use by the optional XLR board, allowing differential/balanced output.
 
 ==== Pinouts
+
 [cols="1,12"]
 |===
 | *P1* | Analogue out (0-2V RMS), carries GPIO27, MUTE signal (headphone detect), left and right
@@ -22,8 +23,8 @@ audio and left and right ground.
 
 ==== Optional XLR Board
 
-The Pi-DAC PRO exposes a 6 pin header used by the optional XLR board to provide Differential / Balanced output exposed by XLR sockets above the Pi’s USB/Ethernet ports. 
+The Pi-DAC PRO exposes a 6 pin header used by the optional XLR board to provide Differential / Balanced output exposed by XLR sockets above the Pi's USB/Ethernet ports.
 
 image::images/optional_xlr_board.jpg[width="80%"]
 
-An XLR connector is used in Studio and some hi-end hifi systems. It can also be used to drive ACTIVE “monitor” speakers as used at discos or on stage.
+An XLR connector is used in Studio and some hi-end hifi systems. It can also be used to drive ACTIVE "monitor" speakers as used at discos or on stage.

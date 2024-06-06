@@ -1,4 +1,4 @@
-== Preparing your Build HAT
+== Prepare your Build HAT
 
 NOTE: Before starting to work with your Raspberry Pi Build HAT you should xref:../computers/getting-started.adoc#setting-up-your-raspberry-pi[set up] your Raspberry Pi, xref:../computers/getting-started.adoc#installing-the-operating-system[install] the latest version of the operating system using https://www.raspberrypi.com/downloads/[Raspberry Pi Imager].
 
@@ -27,21 +27,21 @@ The following pins are used by the Build HAT itself and you should not connect a
 |===
 
 
-=== Setting up your Raspberry Pi
+=== Set up your Raspberry Pi
 
-Once the Raspberry Pi has booted, open the Raspberry Pi Configuration tool by clicking on the Raspberry Menu button and then selecting “Preferences” and then “Raspberry Pi Configuration”.
+Once the Raspberry Pi has booted, open the Raspberry Pi Configuration tool by clicking on the Raspberry Menu button and then selecting "Preferences" and then "Raspberry Pi Configuration".
 
-Click on the “interfaces” tab and adjust the Serial settings as shown below:
+Click on the "interfaces" tab and adjust the Serial settings as shown below:
 
 image::images/setting-up.png[width="50%"]
 
-==== Using your Raspberry Pi Headless
+==== Use your Raspberry Pi headless
 
-If you are running your Raspberry Pi headless and using `raspi-config`, select “Interface Options” from the first menu.
+If you are running your Raspberry Pi headless and using `raspi-config`, select "Interface Options" from the first menu.
 
 image::images/raspi-config-1.png[width="70%"]
 
-Then “P6 Serial Port”.
+Then "P6 Serial Port".
 
 image::images/raspi-config-2.png[width="70%"]
 
@@ -59,9 +59,9 @@ image::images/raspi-config-5.png[width="70%"]
 
 You will need to reboot at this point if you have made any changes.
 
-=== Powering the Build HAT
+=== Power the Build HAT
 
-Connect an external power supply — the https://raspberrypi.com/products/build-hat-power-supply[official Raspberry Pi Build HAT power supply] is recommended — however any reliable +8V±10% power supply capable of supplying 48W via a DC 5521 centre positive barrel connector (5.5mm × 2.1mm × 11mm) will power the Build HAT. You don’t need to connect an additional USB power supply to the Raspberry Pi as well, unless you are using a Raspberry Pi 400.
+Connect an external power supply — the https://raspberrypi.com/products/build-hat-power-supply[official Raspberry Pi Build HAT power supply] is recommended — however any reliable +8V±10% power supply capable of supplying 48W via a DC 5521 centre positive barrel connector (5.5mm × 2.1mm × 11mm) will power the Build HAT. You don't need to connect an additional USB power supply to the Raspberry Pi as well, unless you are using a Raspberry Pi 400.
 
 [NOTE]
 ====
@@ -72,7 +72,7 @@ image::images/powering-build-hat.gif[width="80%"]
 
 [NOTE]
 ====
-The LEGO® Technic™ motors are very powerful; so to drive them you’ll need an external 8V power supply. If you want to read from motor encoders and the SPIKE™ force sensor, you can power your Raspberry Pi and Build HAT the usual way, via your Raspberry Pi’s USB power socket. The SPIKE™ colour and distance sensors, like the motors, require an https://raspberrypi.com/products/build-hat-power-supply[external power supply].
+The LEGO® Technic™ motors are very powerful; so to drive them you'll need an external 8V power supply. If you want to read from motor encoders and the SPIKE™ force sensor, you can power your Raspberry Pi and Build HAT the usual way, via your Raspberry Pi's USB power socket. The SPIKE™ colour and distance sensors, like the motors, require an https://raspberrypi.com/products/build-hat-power-supply[external power supply].
 ====
 
 You have the choice to use Build HAT with Python or .NET.
