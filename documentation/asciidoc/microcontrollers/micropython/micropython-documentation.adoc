@@ -16,5 +16,5 @@ Check out https://store.rpipress.cc/collections/getting-started/products/get-sta
 * Set up your Raspberry Pi Pico and start using it
 * Start writing programs using MicroPython
 * Control and sense electronic components
-* Discover how to use Pico’s unique Programmable IO
+* Discover how to use Pico's unique Programmable IO
 * Make a reaction game, burglar alarm, temperature gauge, and more

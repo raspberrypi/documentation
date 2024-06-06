@@ -6,7 +6,7 @@ image::images/gui.png[]
 
 There are a number of third-party audio software applications available for Raspberry Pi that will support the plug-and-play feature of our audio boards. Often these are used headless. They can be controlled via a PC or Mac application, or by a web server installed on Raspberry Pi, with interaction through a webpage.
 
-If you need to configure Raspberry Pi OS yourself, perhaps if you're running a headless system of your own and don't have the option of control via the GUI, you will need to make your Raspberry Pi audio board the primary audio device in Raspberry Pi OS, disabling the Raspberry Pi’s on-board audio device. This is done by editing the xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] file. Using a Terminal session connected to your Raspberry Pi via SSH, run the following command to edit the file:
+If you need to configure Raspberry Pi OS yourself, perhaps if you're running a headless system of your own and don't have the option of control via the GUI, you will need to make your Raspberry Pi audio board the primary audio device in Raspberry Pi OS, disabling the Raspberry Pi's on-board audio device. This is done by editing the xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] file. Using a Terminal session connected to your Raspberry Pi via SSH, run the following command to edit the file:
 
 [source,console]
 ----
@@ -31,7 +31,7 @@ Alternatively, the `/boot/firmware/config.txt` file can be edited directly onto 
 
 === Attach the HAT
 
-The Raspberry Pi audio boards attach to the Raspberry Pi’s 40-pin header. They are designed to be supported on the Raspberry Pi using the supplied circuit board standoffs and screws. No soldering is required on the Raspberry Pi audio boards for normal operation unless you are using hardwired connections for specific connectors such as XLR (External Line Return) connections on the DAC Pro.
+The Raspberry Pi audio boards attach to the Raspberry Pi's 40-pin header. They are designed to be supported on the Raspberry Pi using the supplied circuit board standoffs and screws. No soldering is required on the Raspberry Pi audio boards for normal operation unless you are using hardwired connections for specific connectors such as XLR (External Line Return) connections on the DAC Pro.
 
 All the necessary mounting hardware including spacers, screws and connectors is provided. The PCB spacers should be screwed, finger-tight only, to the Raspberry Pi before adding the audio board. The remaining screws should then be screwed into the spacers from above.
 
@@ -68,7 +68,7 @@ Each input and output device has its own mixer, allowing the audio levels and vo
 independently. Within the codec itself, other mixers and switches exist to allow the output to be mixed to a single mono channel for single-speaker output. Signals may also be inverted; there is a five-band equaliser to adjust certain frequency bands. These settings can be controlled interactively, using AlsaMixer, or programmatically.
 
 Both the AUX IN and AUX OUT are 1V RMS. It may be necessary to adjust
-the AUX IN’s mixer to ensure that the input signal doesn’t saturate the ADC. Similarly, the output mixers can be to be adjusted to get the best possible output.
+the AUX IN's mixer to ensure that the input signal doesn't saturate the ADC. Similarly, the output mixers can be to be adjusted to get the best possible output.
 
 Preconfigured scripts (loadable ALSA settings) https://github.com/raspberrypi/Pi-Codec[are available on GitHub], offering:
  

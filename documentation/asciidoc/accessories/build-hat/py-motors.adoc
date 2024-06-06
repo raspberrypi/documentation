@@ -4,7 +4,7 @@ There are xref:build-hat.adoc#device-compatibility[a number of motors] that work
 
 ==== Connect a Motor
 
-Connect a motor to port A on the Build HAT. The LPF2 connectors need to be inserted the correct way up. If the connector doesn’t slide in easily, rotate by 180 degrees and try again. 
+Connect a motor to port A on the Build HAT. The LPF2 connectors need to be inserted the correct way up. If the connector doesn't slide in easily, rotate by 180 degrees and try again.
 
 image::images/connect-motor.gif[width="80%"]
 
@@ -22,7 +22,7 @@ motor_a = Motor('A')
 motor_a.run_for_seconds(5)
 ----
 
-Run the program by clicking the play/run button. If this is the first time you’re running a Build HAT program since the Raspberry Pi has booted, there will be a few seconds pause while the firmware is copied across to the board. You should see the red LED extinguish and the green LED illuminate. Subsequent executions of a Python program will not require this pause.
+Run the program by clicking the play/run button. If this is the first time you're running a Build HAT program since the Raspberry Pi has booted, there will be a few seconds pause while the firmware is copied across to the board. You should see the red LED extinguish and the green LED illuminate. Subsequent executions of a Python program will not require this pause.
 
 image::images/blinking-light.gif[width="80%"]
 

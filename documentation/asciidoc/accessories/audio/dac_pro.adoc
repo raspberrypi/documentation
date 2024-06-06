@@ -23,8 +23,8 @@ audio and left and right ground.
 
 ==== Optional XLR Board
 
-The Pi-DAC PRO exposes a 6 pin header used by the optional XLR board to provide Differential / Balanced output exposed by XLR sockets above the Pi’s USB/Ethernet ports. 
+The Pi-DAC PRO exposes a 6 pin header used by the optional XLR board to provide Differential / Balanced output exposed by XLR sockets above the Pi's USB/Ethernet ports.
 
 image::images/optional_xlr_board.jpg[width="80%"]
 
-An XLR connector is used in Studio and some hi-end hifi systems. It can also be used to drive ACTIVE “monitor” speakers as used at discos or on stage.
+An XLR connector is used in Studio and some hi-end hifi systems. It can also be used to drive ACTIVE "monitor" speakers as used at discos or on stage.
