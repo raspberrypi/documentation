@@ -1,4 +1,3 @@
-
 include::audio/introduction.adoc[]
 
 include::audio/dac_pro.adoc[]
@@ -16,4 +15,3 @@ include::audio/getting_started.adoc[]
 include::audio/hardware-info.adoc[]
 
 include::audio/update-firmware.adoc[]
-

@@ -1,43 +1,43 @@
-== Using the Build HAT from .NET 
+== Use the Build HAT from .NET
 
-=== Installing the .NET Framework
+=== Install the .NET Framework
 
 The .NET framework from Microsoft is not available via `apt` on Raspberry Pi. However, you can follow the https://docs.microsoft.com/en-us/dotnet/iot/deployment[official instructions] from Microsoft to install the .NET framework. Alternatively, there is a simplified https://www.petecodes.co.uk/install-and-use-microsoft-dot-net-5-with-the-raspberry-pi/[third party route] to get the .NET toolchain on to your Raspberry Pi. 
 
 WARNING: The installation script is run as `root`. You should read it first and make sure you understand what it is doing. If you are at all unsure you should follow the https://docs.microsoft.com/en-us/dotnet/iot/deployment[official instructions] manually.
 
-[.bash]
+[source,console]
 ----
 $ wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet5pi/master/install.sh | sudo bash
 ----
 
 After installing the .NET framework you can create your project:
 
-[.bash]
+[source,console]
 ----
 $ dotnet new console --name buildhat
 ----
 
 This creates a default program in the `buildhat` subdirectory, and we need to be in that directory in order to continue:
 
-[.bash]
+[source,console]
 ----
 $ cd buildhat
 ----
 
 You will now need to install the following nuget packages:
-[.bash]
+
+[source,console]
 ----
 $ dotnet add package System.Device.Gpio --version 2.1.0
 $ dotnet add package Iot.Device.Bindings --version 2.1.0
 ----
 
-=== Running C# Code
+=== Run C# Code
 
-You can run the program with the `dotnet run` command. Let's try it now to make sure everything works. 
-It should print "Hello World!"
+You can run the program with the `dotnet run` command. Let's try it now to make sure everything works.  It should print "Hello World!"
 
-[.bash]
+[source,console]
 ----
 $ dotnet run
 Hello World!
@@ -45,7 +45,8 @@ Hello World!
 
 (When instructed to "run the program" in the instructions that follow, you will simply rerun `dotnet run`) 
 
-=== Editing C# Code
+=== Edit C# Code
+
 In the instructions below, you will be editing the file `buildhat/Program.cs`, the C# program which was generated when you ran the above commands.
 
 Any text editor will work to edit C# code, including Geany, the IDE/Text Editor that comes pre-installed. https://code.visualstudio.com/docs/setup/raspberry-pi/[Visual Studio Code] (often called "VS Code") is also a popular alternative.

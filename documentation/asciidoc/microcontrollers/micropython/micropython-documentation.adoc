@@ -8,13 +8,13 @@ https://docs.micropython.org/en/latest/rp2/quickref.html[RP2 Quick Reference]:: 
 https://docs.micropython.org/en/latest/library/rp2.html[RP2 Library]:: The official documentation about the `rp2` module in MicroPython
 
 [.booklink, booktype="buy", link=https://store.rpipress.cc/products/get-started-with-micropython-on-raspberry-pi-pico,image=image::images/micropython_book_thumb.png[]]
-=== Further reading
-There is also a book by https://store.rpipress.cc/[Raspberry Pi Press] available written by Gareth Halfacree and Ben Everard.
 
-In "Get Started with MicroPython on Raspberry Pi Pico", you will learn how to use the beginner-friendly language MicroPython to write programs and connect hardware to make your Raspberry Pi Pico interact with the world around it. Using these skills, you can create your own electro-mechanical projects, whether for fun or to make your life easier. 
+=== Further reading
+
+Check out https://store.rpipress.cc/collections/getting-started/products/get-started-with-micropython-on-raspberry-pi-pico[_Get Started with MicroPython on Raspberry Pi Pico_] to learn how to use the beginner-friendly language MicroPython to make your Raspberry Pi Pico interact with the world around it. Using these skills, you can create your own electro-mechanical projects, whether for fun or to make your life easier.
 
 * Set up your Raspberry Pi Pico and start using it
 * Start writing programs using MicroPython
 * Control and sense electronic components
-* Discover how to use Pico’s unique Programmable IO
-* Make a reaction game, burglar alarm, temperature gauge, and many more
+* Discover how to use Pico's unique Programmable IO
+* Make a reaction game, burglar alarm, temperature gauge, and more

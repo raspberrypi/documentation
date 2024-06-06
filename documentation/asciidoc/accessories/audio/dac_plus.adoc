@@ -7,6 +7,7 @@ image::images/DAC+_Board_Diagram.jpg[width="80%"]
 A Texas Instruments PCM5122 is used in the DAC{plus} to deliver analogue audio to the phono connectors of the device. It also supports a dedicated headphone amplifier and is powered via the Raspberry Pi through the GPIO header.
 
 ==== Pinouts
+
 [cols="1,12"]
 |===
 | *P1* | Analogue out (0-2V RMS), carries GPIO27, MUTE signal (headphone detect), left and right

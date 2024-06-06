@@ -98,7 +98,7 @@ image::images/display-rotation.png[Screenshot of orientation options in screen c
 
 To set the screen orientation on a device that lacks a desktop environment, edit the `/boot/firmware/cmdline.txt` configuration file to pass an orientation to the system. Add the following line to `cmdline.txt`:
 
-[source]
+[source,ini]
 ----
 video=DSI-1:800x480@60,rotate=<rotation-value>
 ----
@@ -120,14 +120,14 @@ WARNING: Rotating touch input via device tree can cause conflicts with your inpu
 
 Rotation of touch input is independent of the orientation of the display itself. To change this you need to manually add a `dtoverlay` instruction in xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`]. Add the following line in `config.txt`:
 
-[source]
+[source,ini]
 ----
 dtoverlay=vc4-kms-dsi-7inch,invx,invy
 ----
 
 Then, disable automatic display detection by removing the following line from `config.txt`, if it exists:
 
-[source]
+[source,ini]
 ----
 display_auto_detect=1
 ----
@@ -160,7 +160,7 @@ The `vc4-kms-dsi-7inch` overlay supports the following options:
 
 To specify these options, add them, separated by commas, to your `dtoverlay` line in `/boot/firmware/config.txt`. Boolean values default to true when present, but you can set them to false with the suffix "=0". Integer values require a value, e.g. `sizey=240`. For instance, to set the X resolution to 400 pixels and invert both X and Y coordinates, use the following line:
 
-[source]
+[source,ini]
 ----
 dtoverlay=vc4-kms-dsi-7inch,sizex=400,invx,invy
 ----

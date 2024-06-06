@@ -1,10 +1,10 @@
-=== Using Motors from .NET
+=== Use Motors from .NET
 
 There are two types of motors, the *passive* ones and the *active* ones. Active motors will provide detailed position, absolute position and speed while passive motors can only be controlled with speed.
 
 A common set of functions to control the speed of the motors are available. There are 2 important ones: `SetPowerLimit` and `SetBias`:
 
-[csharp]
+[source,csharp]
 ----
 train.SetPowerLimit(1.0);
 train.SetBias(0.2);
@@ -25,7 +25,7 @@ The typical passive motor is a train and older Powered Up motors. The `Speed` pr
 
 Functions to control `Start`, `Stop` and `SetSpeed` are also available. Here is an example of how to use it:
 
-[csharp]
+[source,csharp]
 ----
 Console.WriteLine("This will run the motor for 20 secondes incrementing the PWM");
 train.SetPowerLimit(1.0);
@@ -60,7 +60,7 @@ Active motors have `Speed`, `AbsolutePosition`, `Position` and `TargetSpeed` as 
 
 The code snippet shows how to get the motors, start them and read the properties:
 
-[csharp]
+[source,csharp]
 ----
 brick.WaitForSensorToConnect(SensorPort.PortA);
 brick.WaitForSensorToConnect(SensorPort.PortD);
@@ -86,11 +86,11 @@ active.Stop();
 active2.Stop();
 ----
 
-NOTE: You should not forget to start and stop your motors when needed.
+NOTE: Don't forget to start and stop your motors when needed.
 
 Advance features are available for active motors. You can request to move for seconds, to a specific position, a specific absolute position. Here are couple of examples:
 
-[csharp]
+[source,csharp]
 ----
 // From the previous example, this will turn the motors back to their initial position:
 active.TargetSpeed = 100;
@@ -103,7 +103,7 @@ active2.MoveToPosition(0, true);
 
 Each function allow you to block or not the thread for the time the operation will be performed. Note that for absolute and relative position moves, there is a tolerance of few degrees.
 
-[csharp]
+[source,csharp]
 ----
 brick.WaitForSensorToConnect(SensorPort.PortA);
 var active = (ActiveMotor)brick.GetMotor(SensorPort.PortA);

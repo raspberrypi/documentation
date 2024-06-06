@@ -6,7 +6,7 @@ The DSI connector on both the Raspberry Pi 1 Model A and B boards does not have 
 
 DSI display autodetection is disabled by default on these boards. To enable detection, add the following line to the xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] file:
 
-[source]
+[source,ini]
 ----
 ignore_lcd=0
 ----

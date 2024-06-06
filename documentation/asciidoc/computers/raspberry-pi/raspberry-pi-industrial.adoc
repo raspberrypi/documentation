@@ -157,7 +157,7 @@ Example...
 vcmailbox 0x00038082 6 6 0x44332211 0x6655
 ----
 
-If a customer MAC address is set to ff:ff:ff:ff:ff:ff, then it’s ignored.
+If a customer MAC address is set to ff:ff:ff:ff:ff:ff, then it's ignored.
 
 === Device-specific private key
 

@@ -22,6 +22,7 @@ The Codec Zero includes an EEPROM which can be used for auto-configuration of th
 In addition to the green (GPIO23) and red (GPIO24) LEDs, a tactile programmable button (GPIO27) is also provided.
 
 ==== Pinouts
+
 [cols="1,12"]
 |===
 | *P1/2* | Support external PHONO/RCA sockets if needed. P1: AUX IN, P2: AUX OUT.

@@ -6,7 +6,7 @@ image::images/gui.png[]
 
 There are a number of third-party audio software applications available for Raspberry Pi that will support the plug-and-play feature of our audio boards. Often these are used headless. They can be controlled via a PC or Mac application, or by a web server installed on Raspberry Pi, with interaction through a webpage.
 
-If you need to configure Raspberry Pi OS yourself, perhaps if you're running a headless system of your own and don't have the option of control via the GUI, you will need to make your Raspberry Pi audio board the primary audio device in Raspberry Pi OS, disabling the Raspberry Pi’s on-board audio device. This is done by editing the xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] file. Using a Terminal session connected to your Raspberry Pi via SSH, run the following command to edit the file:
+If you need to configure Raspberry Pi OS yourself, perhaps if you're running a headless system of your own and don't have the option of control via the GUI, you will need to make your Raspberry Pi audio board the primary audio device in Raspberry Pi OS, disabling the Raspberry Pi's on-board audio device. This is done by editing the xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] file. Using a Terminal session connected to your Raspberry Pi via SSH, run the following command to edit the file:
 
 [source,console]
 ----
@@ -15,6 +15,7 @@ $ sudo nano /boot/firmware/config.txt
 
 Find the `dtparam=audio=on` line in the file and comment it out by placing a # symbol at the start of the line. Anything written after the # symbol in any given line will be disregarded by the program. Your `/boot/firmware/config.txt` file should now contain the following entry:
 
+[source,ini]
 ----
 #dtparam=audio=on
 ----
@@ -28,9 +29,9 @@ $ sudo reboot
 
 Alternatively, the `/boot/firmware/config.txt` file can be edited directly onto the Raspberry Pi's microSD card, inserted into your usual computer. Using the default file manager, open the `/boot/firmware/` volume on the card and edit the `config.txt` file using an appropriate text editor, then save the file, eject the microSD card and reinsert it back into your Raspberry Pi.
 
-=== Attaching the HAT
+=== Attach the HAT
 
-The Raspberry Pi audio boards attach to the Raspberry Pi’s 40-pin header. They are designed to be supported on the Raspberry Pi using the supplied circuit board standoffs and screws. No soldering is required on the Raspberry Pi audio boards for normal operation unless you are using hardwired connections for specific connectors such as XLR (External Line Return) connections on the DAC Pro.
+The Raspberry Pi audio boards attach to the Raspberry Pi's 40-pin header. They are designed to be supported on the Raspberry Pi using the supplied circuit board standoffs and screws. No soldering is required on the Raspberry Pi audio boards for normal operation unless you are using hardwired connections for specific connectors such as XLR (External Line Return) connections on the DAC Pro.
 
 All the necessary mounting hardware including spacers, screws and connectors is provided. The PCB spacers should be screwed, finger-tight only, to the Raspberry Pi before adding the audio board. The remaining screws should then be screwed into the spacers from above.
 
@@ -45,6 +46,7 @@ $ grep -a . /proc/device-tree/hat/*
 
 If the vendor string says "Raspberry Pi Ltd." then no further action is needed (but see below for the extra Codec Zero configuration). If it says "IQaudIO Limited www.iqaudio.com" then you will need the additional config.txt settings outlined below. If it says "No such file or directory" then the HAT is not being detected, but these config.txt settings may still make it work.
 
+[source,ini]
 ----
 # Some magic to prevent the normal HAT overlay from being loaded
 dtoverlay=
@@ -66,7 +68,7 @@ Each input and output device has its own mixer, allowing the audio levels and vo
 independently. Within the codec itself, other mixers and switches exist to allow the output to be mixed to a single mono channel for single-speaker output. Signals may also be inverted; there is a five-band equaliser to adjust certain frequency bands. These settings can be controlled interactively, using AlsaMixer, or programmatically.
 
 Both the AUX IN and AUX OUT are 1V RMS. It may be necessary to adjust
-the AUX IN’s mixer to ensure that the input signal doesn’t saturate the ADC. Similarly, the output mixers can be to be adjusted to get the best possible output.
+the AUX IN's mixer to ensure that the input signal doesn't saturate the ADC. Similarly, the output mixers can be to be adjusted to get the best possible output.
 
 Preconfigured scripts (loadable ALSA settings) https://github.com/raspberrypi/Pi-Codec[are available on GitHub], offering:
  
@@ -103,8 +105,9 @@ In order for your project to operate with your required settings when it is powe
 $ sudo nano /etc/rc.local
 ----
 
-Add the chosen script command above the exit 0 line and then Ctrl X, Y and Enter to save. The file should now look similar to this depending on your chosen setting:
+Add the chosen script command above the exit 0 line and then *Ctrl X*, *Y* and *Enter* to save. The file should now look similar to this depending on your chosen setting:
 
+[source,bash]
 ----
 #!/bin/sh -e
 #
@@ -154,7 +157,7 @@ Press `Ctrl+X`, then the `Y` key, then *Enter* to save. Reboot once more to comp
 $ sudo reboot
 ----
 
-=== Muting and unmuting the DigiAMP{plus}
+=== Mute and unmute the DigiAMP{plus}
 
 The DigiAMP{plus} mute state is toggled by GPIO22 on Raspberry Pi. The latest audio device tree
 supports the unmute of the DigiAMP{plus} through additional parameters.
@@ -163,12 +166,14 @@ Firstly a "one-shot" unmute when kernel module loads.
 
 For Raspberry Pi boards:
 
+[source,ini]
 ----
 dtoverlay=rpi-digiampplus,unmute_amp
 ----
 
 For IQaudIO boards:
 
+[source,ini]
 ----
 dtoverlay=iqaudio-digiampplus,unmute_amp
 ----
@@ -179,12 +184,14 @@ window will cancel mute.)
 
 For Raspberry Pi boards:
 
+[source,ini]
 ----
 dtoverlay=rpi-digiampplus,auto_mute_amp
 ----
 
 For IQaudIO boards:
 
+[source,ini]
 ----
 dtoverlay=iqaudio-digiampplus,auto_mute_amp
 ----
@@ -201,7 +208,7 @@ $ sudo sh -c "echo out >/sys/class/gpio/gpio22/direction"
 $ sudo sh -c "echo 1 >/sys/class/gpio/gpio22/value"
 ----
 
-to mute the amp once more:
+To mute the amp once more:
 
 [source,console]
 ----
