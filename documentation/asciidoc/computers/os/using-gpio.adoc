@@ -1,63 +1,10 @@
-== GPIO and the 40-pin header
-
-A powerful feature of the Raspberry Pi is the row of GPIO (general-purpose input/output) pins along the top edge of the board. A 40-pin GPIO header is found on all current Raspberry Pi boards, although it is unpopulated on Raspberry Pi Zero, Raspberry Pi Zero W, and Raspberry Pi Zero 2 W. The GPIO headers on all boards have a 0.1in (2.54mm) pin pitch.
-
-image::images/GPIO-Pinout-Diagram-2.png[GPIO pins]
-
-Any of the GPIO pins can be designated in software as an input or output pin and used for a wide range of purposes.
-
-image::images/GPIO.png[GPIO layout]
-
-NOTE: The GPIO pin numbering scheme is not in numerical order. GPIO pins 0 and 1 are present on the board (physical pins 27 and 28), but are reserved for advanced use.
-
-=== Voltages
-
-Two 5V pins and two 3.3V pins are present on the board, as well as a number of ground pins (GND), which can not be reconfigured. The remaining pins are all general-purpose 3.3V pins, meaning outputs are set to 3.3V and inputs are 3.3V-tolerant.
-
-=== Outputs
-
-A GPIO pin designated as an output pin can be set to high (3.3V) or low (0V).
-
-=== Inputs
-
-A GPIO pin designated as an input pin can be read as high (3.3V) or low (0V). This is made easier with the use of internal pull-up or pull-down resistors. Pins GPIO2 and GPIO3 have fixed pull-up resistors, but for other pins this can be configured in software.
-
-=== Other GPIO functions
-
-As well as simple input and output devices, the GPIO pins can be used with a variety of alternative functions. Some functions are available on all pins, others on specific pins:
-
-* PWM (pulse-width modulation)
- ** Software PWM available on all pins
- ** Hardware PWM available on GPIO12, GPIO13, GPIO18, GPIO19
-* SPI
- ** SPI0: MOSI (GPIO10); MISO (GPIO9); SCLK (GPIO11); CE0 (GPIO8), CE1 (GPIO7)
- ** SPI1: MOSI (GPIO20); MISO (GPIO19); SCLK (GPIO21); CE0 (GPIO18); CE1 (GPIO17); CE2 (GPIO16)
-* I2C
- ** Data: (GPIO2); Clock (GPIO3)
- ** EEPROM Data: (GPIO0); EEPROM Clock (GPIO1)
-* Serial
- ** TX (GPIO14); RX (GPIO15)
-
-=== View a GPIO pinout for your Raspberry Pi
-
-A GPIO reference can be accessed on your Raspberry Pi by opening a terminal window and running the command `pinout`. This tool is provided by the https://gpiozero.readthedocs.io/[GPIO Zero] Python library, which is installed by default in Raspberry Pi OS.
-
-WARNING: While connecting simple components to GPIO pins is safe, be careful how you wire things up. LEDs should have resistors to limit the current passing through them. Do not use 5V for 3.3V components. Do not connect motors directly to the GPIO pins, instead use an https://projects.raspberrypi.org/en/projects/physical-computing/14[H-bridge circuit or a motor controller board].
-
-=== Permissions
-
-In order to use the GPIO ports, your user must be a member of the `gpio` group. The default user account is a member by default, but you must add other users manually using the following command:
-
-[source,console]
-----
-$ sudo usermod -a -G gpio <username>
-----
-
-=== GPIO in Python
+== Use GPIO from Python
 
 Using the https://gpiozero.readthedocs.io/[GPIO Zero] library makes it easy to control GPIO devices with Python. The library is comprehensively documented at https://gpiozero.readthedocs.io/[gpiozero.readthedocs.io].
 
-==== LED
+For information about GPIO hardware, see xref:../computers/raspberry-pi.adoc#gpio[GPIO hardware].
+
+=== LED control
 
 The following example code controls an LED connected to GPIO17:
 
@@ -79,7 +26,7 @@ Run this in an IDE like Thonny, and the LED will blink on and off repeatedly.
 
 LED methods include `on()`, `off()`, `toggle()`, and `blink()`.
 
-==== Button
+=== Read button state
 
 The following example code reads the state of a button connected to GPIO2:
 
@@ -100,11 +47,11 @@ while True:
 
 Button functionality includes the properties `is_pressed` and `is_held`; callbacks `when_pressed`, `when_released`, and `when_held`; and methods `wait_for_press()` and `wait_for_release`.
 
-==== Button and LED
+=== Control an LED with a button
 
 The following example code reads the state of a button connected to GPIO2, and lights an LED connected to GPIO17 when the button is pressed:
 
-[,python]
+[source,python]
 ----
 from gpiozero import LED, Button
 
@@ -120,7 +67,7 @@ while True:
 
 Alternatively:
 
-[,python]
+[source,python]
 ----
 from gpiozero import LED, Button
 
@@ -136,7 +83,7 @@ while True:
 
 or:
 
-[,python]
+[source,python]
 ----
 from gpiozero import LED, Button
 
@@ -148,6 +95,7 @@ button.when_released = led.off
 ----
 
 [.booklink, booktype="free", link=https://github.com/raspberrypipress/released-pdfs/raw/main/simple-electronics-with-gpio-zero.pdf, image=image::images/simple-electronics-with-gpio-zero.jpg[]]
+
 ==== Going further
 
 You can find more information on how to program electronics connected to your Raspberry Pi with the GPIO Zero Python library in the Raspberry Pi Press book https://github.com/raspberrypipress/released-pdfs/raw/main/simple-electronics-with-gpio-zero.pdf[Simple Electronics with GPIO Zero]. The book gets you started with the GPIO Zero library, and walks you through how to use it by building a series of projects.

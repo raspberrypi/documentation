@@ -11,9 +11,9 @@ This interface is controlled by the GPU firmware and can be programmed by a user
 
 === GPIO pins
 
-One of the alternate functions selectable on bank 0 of the Raspberry Pi GPIO is DPI (Display Parallel Interface) which is a simple clocked parallel interface (up to 8 bits of R, G and B; clock, enable, hsync, and vsync). This interface is available as alternate function 2 (ALT2) on GPIO bank 0:
+One of the alternate functions selectable on Bank 0 of the Raspberry Pi GPIO is DPI (Display Parallel Interface) which is a simple clocked parallel interface (up to 8 bits of R, G and B; clock, enable, hsync, and vsync). This interface is available as alternate function 2 (ALT2) on GPIO Bank 0:
 
-[cols=2]
+[cols="1m,1m"]
 |===
 |GPIO |ALT2
 
@@ -335,6 +335,7 @@ h|*27* h|*26* h|*25* h|*24* h|*23* h|*22* h|*21* h|*20* h|*19* h|*18* h|*17* h|*
 
 All other peripheral overlays that use conflicting GPIO pins must be disabled. In `config.txt`, take care to comment out or invert any dtparams that enable I2C or SPI:
 
+[source,ini]
 ----
 dtparam=i2c_arm=off
 dtparam=spi=off
@@ -349,8 +350,9 @@ The https://en.wikipedia.org/wiki/Direct_Rendering_Manager#Kernel_mode_setting[K
 Auto detect allows your Raspberry Pi to connect with a display without a manually configured device tree overlay.
 Auto detection is enabled by default. You can enable display auto detect by adding the following line to `config.txt`:
 
+[source,ini]
 ----
-`display_auto_detect=1`
+display_auto_detect=1
 ----
 
 Replace the `1` with a `0` to disable auto detect.
@@ -362,6 +364,7 @@ NOTE: In Raspberry Pi OS _Bookworm_ or later, the `dpi_output_format` and `dpi_t
 
 To use any display other than the official Raspberry Pi display, you must specify a `dtoverlay` entry in `config.txt`. The panel manufacturer should configure timings for your display in Linux kernel code and provide an overlay to enable those settings. See the https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/vc4-kms-kippah-7inch-overlay.dts[Adafruit Kippah display entry] for an example. The following example demonstrates how to set a `dtoverlay` entry for the Kippah display in your xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] file:
 
+[source,ini]
 ----
 dtoverlay=vc4-kms-kippah-7inch-overlay
 ----
@@ -370,6 +373,7 @@ Display timings are usually defined in the kernel, but you can also define them 
 
 The following example demonstrates how you can define timings using device tree parameters:
 
+[source,ini]
 ----
 dtoverlay=vc4-kms-v3d
 dtoverlay=vc4-kms-dpi-generic,hactive=480,hfp=26,hsync=16,hbp=10

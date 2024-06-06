@@ -82,10 +82,11 @@ The bootloader may also be updated before the firmware is started if a `pieeprom
 
 The bootloader/firmware provide a one-shot flag which, if set, is cleared but causes `tryboot.txt` to be loaded instead of `config.txt`. This alternate config would specify the pending OS update firmware, cmdline, kernel and os_prefix parameters. Since the flag is cleared before starting the firmware, a crash or reset will cause the original `config.txt` file to be loaded on the next reboot.
 
-To set the `tryboot` flag add `tryboot` after the partition number in the `reboot` command. Normally, the partition number defaults to zero but it must be specified if extra arguments are added.
+To set the `tryboot` flag, add `tryboot` after the partition number in the `reboot` command. Normally, the partition number defaults to zero but it must be specified if extra arguments are added. Always use quotes when passing arguments to `reboot`: it accepts only a single argument:
+
+[source,console]
 ----
-# Quotes are important. Reboot only accepts a single argument.
-sudo reboot '0 tryboot'
+$ sudo reboot '0 tryboot'
 ----
 
 All Raspberry Pi models support `tryboot`, however, on Raspberry Pi 4 Model B revision 1.0 and 1.1 the EEPROM must not be write protected. This is because older Raspberry Pi 4B devices have to reset the power supply (losing the tryboot state), so this is stored inside the EEPROM instead.
@@ -95,5 +96,5 @@ If `secure-boot` is enabled, then `tryboot` mode will cause `tryboot.img` to be 
 === `tryboot_a_b` mode
 If the `tryboot_a_b` property in xref:config_txt.adoc#autoboot-txt[autoboot.txt] is set to `1` then `config.txt` is loaded instead of `tryboot.txt`. This is because the `tryboot` switch has already been made at a higher level (the partition),  so it's unnecessary to have a `tryboot.txt` file within alternate partition itself.
 
-N.B. The `tryboot_a_b` property is implicitly set to `1` when loading files from within a `boot.img` ramdisk.
+The `tryboot_a_b` property is implicitly set to `1` when loading files from within a `boot.img` ramdisk.
 

@@ -7,10 +7,11 @@ OTP memory size:
 * non-BCM2712 devices: 66 32-bit values
 * BCM2712 devices: 192 32-bit values
 
-The `vcgencmd` to display the contents of the OTP is:
+To display the contents of the OTP, run the following command:
 
+[source,console]
 ----
-vcgencmd otp_dump
+$ vcgencmd otp_dump
 ----
 
 === OTP registers on non-BCM2712 devices
