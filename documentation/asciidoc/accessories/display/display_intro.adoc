@@ -132,6 +132,27 @@ Then, disable automatic display detection by removing the following line from `c
 display_auto_detect=1
 ----
 
+[NOTE]
+====
+In Raspberry Pi OS _Bookworm_, a bug in https://github.com/WayfireWM/wayfire[Wayfire] currently prevents cursor movement rotation. There is no workaround for this bug in Wayfire. Instead, you can use https://github.com/labwc/labwc[`labwc`] (currently in beta).
+
+First install `labwc`:
+
+[source,console]
+----
+$ sudo apt install labwc
+----
+
+Then, use the Raspberry Pi Configuration CLI to switch to the `labwc` window compositor. Run the following command to open `raspi-config`:
+
+[source,console]
+----
+$ sudo raspi-config
+----
+
+Go to **Advanced Options**. Select **Wayland**, then select **labwc**. Exit `raspi-config` and reboot with `sudo reboot`. Switching to `labwc` may reset some configuration, including keyboard layout and rotation settings.
+====
+
 ==== Touch Display device tree option reference
 
 The `vc4-kms-dsi-7inch` overlay supports the following options:
