@@ -107,11 +107,11 @@ Most Raspberry Pis provide enough current to USB peripherals to power most USB d
 
 The power requirements of the Raspberry Pi increase as you make use of the various interfaces on the Raspberry Pi. Combined, the GPIO pins can draw 50mA safely; each pin can individually draw up to 16mA. The HDMI port uses 50mA. The Camera Module requires 250mA. USB keyboards and mice can take as little as 100mA or as much as 1000mA. Check the power rating of the devices you plan to connect to the Raspberry Pi and purchase a power supply accordingly. If you're not sure, use an externally-powered USB hub.
 
-You can check the status of power output to the USB ports using `vcgencmd`.
+Run the following command to check the status of power output to the USB ports:
 
-[source,bash]
+[source,console]
 ----
-vcgencmd get_config usb_max_current_enable
+$ vcgencmd get_config usb_max_current_enable
 ----
 
 The following table describes the amount of power (in amps) drawn by different Raspberry Pi models during various workloads:
@@ -139,7 +139,7 @@ A number of different PMIC devices have been used on both Raspberry Pi 4 and CM4
 
 By default, the Raspberry Pi 5 consumes around 1W to 1.4W of power when turned off. This can be decreased by manually editing the EEPROM configuration with `sudo rpi-eeprom-config -e`. Change the settings to the following:
 
-[source]
+[source,ini]
 ----
 BOOT_UART=1
 POWER_OFF_ON_HALT=1
@@ -175,12 +175,12 @@ reset_event:: The PMIC reset reason e.g. watchdog, over- or under-voltage, over-
 
 The PMIC has built-in ADCs that, among other things, can measure the supply voltage `EXT5V_V`. Use the following command to view ADC measurements:
 
-[source,bash]
+[source,console]
 ----
-vcgencmd pmic_read_adc
+$ vcgencmd pmic_read_adc
 ----
 
-NOTE: You can't see USB current or anything else connected directly to 5V, because this bypasses the PMIC. You should not expect this to add up to the wattage of the source power supply. However, it can be useful to monitor things like the core voltage.
+You can't see USB current or anything else connected directly to 5V, because this bypasses the PMIC. You should not expect this to add up to the wattage of the source power supply. However, it can be useful to monitor things like the core voltage.
 
 === Back-powering
 

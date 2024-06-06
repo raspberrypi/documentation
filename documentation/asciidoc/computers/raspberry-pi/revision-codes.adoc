@@ -2,9 +2,9 @@
 
 Each distinct Raspberry Pi model revision has a unique revision code. You can look up a Raspberry Pi's revision code by running:
 
-[,bash]
+[source,console]
 ----
-cat /proc/cpuinfo
+$ cat /proc/cpuinfo
 ----
 
 The last three lines show the hardware type, the revision code, and the Raspberry Pi's unique serial number. For example:
@@ -628,7 +628,7 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 
 From the command line we can use the following to get the revision code of the board:
 
-[source, console]
+[source,console]
 ----
 $ cat /proc/cpuinfo | grep Revision
 Revision      : c03111
@@ -643,7 +643,7 @@ Starting from the lowest order bits, the bottom four (0-3) are the board revisio
 Obviously there are so many programming languages out there it's not possible to give examples for all of them, but here are two quick examples for `C` and `Python`. Both these examples use a system call to run a bash command that gets the `cpuinfo` and pipes the result to `awk` to recover the required revision code. They then use bit operations to extract the `New`, `Model`, and `Memory` fields from the code.
 
 
-[source, c]
+[source,c]
 ----
 #include <stdio.h>
 #include <stdlib.h>
@@ -673,7 +673,7 @@ int main( int argc, char *argv[] )
 
 And the same in Python:
 
-[source, python]
+[source,python]
 ----
 import subprocess
 
@@ -710,7 +710,7 @@ NOTE: Always check bit 23, the 'New' flag, to ensure that the revision code is t
 
 Support and formatting for `/proc/cpuinfo` varies across Linux distributions. To check the model or CPU of a Raspberry Pi device on any Linux distribution (including Raspberry Pi OS), check the device tree:
 
-[source, console]
+[source,console]
 ----
 $ cat /proc/device-tree/compatible | tr '\0' '\n'
 raspberrypi,5-model-b

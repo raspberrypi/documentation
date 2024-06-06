@@ -49,7 +49,7 @@ We recommend using the Raspberry Pi's GPIO to provide power to the Touch Display
 
 ==== Power from a Raspberry Pi
 
-To power the Touch Display using a Raspberry Pi, you need to connect two jumper wires between the 5V and `GND` pins on xref:../computers/raspberry-pi.adoc#gpio-and-the-40-pin-header[Raspberry Pi's GPIO] and the 5V and `GND` pins on the display, as shown in the following illustration.
+To power the Touch Display using a Raspberry Pi, you need to connect two jumper wires between the 5V and `GND` pins on xref:../computers/raspberry-pi.adoc#gpio[Raspberry Pi's GPIO] and the 5V and `GND` pins on the display, as shown in the following illustration.
 
 .The location of the display's 5V and `GND` pins
 image::images/display_plugs.png[Illustration of display pins, width="40%"]

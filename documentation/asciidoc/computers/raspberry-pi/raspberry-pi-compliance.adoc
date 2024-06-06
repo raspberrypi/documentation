@@ -16,7 +16,7 @@ Find out more about the https://www.raspberrypi.com/for-industry/integrator-prog
 
 === Powered by Raspberry Pi
 
-The Powered by Raspberry Pi progamme provides a process for companies wanting to use a form of the Raspberry Pi logo, and covers products with Raspberry Pi computers or silicon inside, and services provided by a Raspberry Pi. If you wish to start the process to apply you can do so https://www.raspberrypi.com/trademark-rules/powered-raspberry-pi/[online].
+The Powered by Raspberry Pi program provides a process for companies wanting to use a form of the Raspberry Pi logo, and covers products with Raspberry Pi computers or silicon inside, and services provided by a Raspberry Pi. If you wish to start the process to apply you can do so https://www.raspberrypi.com/trademark-rules/powered-raspberry-pi/[online].
 
 === Approved Design Partners
 

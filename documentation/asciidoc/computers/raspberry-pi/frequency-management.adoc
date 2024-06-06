@@ -8,7 +8,7 @@ For Raspberry Pi 3 Model B+, the PCB technology has been changed to provide bett
 
 The Raspberry Pi 4 Model B continues with the same PCB technology as the Raspberry Pi 3 Model B+, to help dissipate excess heat. There is currently no soft limit defined.
 
-=== Using DVFS
+=== Use DVFS
 
 NOTE: Discussion of DVFS applies to Raspberry Pi 4 Model B, Raspberry Pi 400, and Compute Module 4 only.
 
@@ -18,6 +18,7 @@ Various clocks (e.g. Arm, Core, V3D, ISP, H264, HEVC) inside the SoC are monitor
 
 Due to possible system stability problems involved with running an undervoltage, especially when using undervoltaged fixed clock peripherals (eg. PCIe), three DVFS modes are available and can be configured in xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] with the below properties. Most systems should use `dvfs=3`, headless systems may benefit from a small power reduction with `dvfs=1` at the risk of PCIe stability issues.
 
+[cols="1m,3"]
 |===
 | property=value | Description
 
@@ -37,22 +38,22 @@ In addition, a more stepped CPU governor is also used to produce finer-grained c
 
 The default CPU governor is `ondemand`. The governor can be manually changed with the `cpufreq-set` command (from the `cpufrequtils` package) to reduce idle power consumption:
 
-[,bash]
+[source,console]
 ----
- sudo apt install cpufrequtils
- sudo cpufreq-set -g powersave
+$ sudo apt install cpufrequtils
+$ sudo cpufreq-set -g powersave
 ----
 
-=== Measuring temperatures
+=== Measure temperatures
 
 Due to the architecture of the SoCs used on Raspberry Pi devices, and the use of the upstream temperature monitoring code in the Raspberry Pi OS distribution, Linux-based temperature measurements can be inaccurate. However, the `vcgencmd` command provides an accurate and instantaneous reading of the current SoC temperature, as it communicates with the GPU directly:
 
-[,bash]
+[source,console]
 ----
- vcgencmd measure_temp
+$ vcgencmd measure_temp
 ----
 
-=== Adding heatsinks
+=== Add heat sinks
 
 Thanks to built-in throttling, heatsinks are not necessary to prevent overheating damage to the SoC. However, a heatsink or small fan can reduce thermal throttling and improve performance. Mount the Raspberry Pi vertically for the best airflow and thus slightly improved heat dissipation.
 
@@ -84,6 +85,7 @@ The fan connector is a 1mm pitch JST-SH socket containing the following four pin
 [cols="1,2,2",width="50"%"]
 |===
 | Pin | Function | Wire colour
+
 | 1 | +5V | Red
 | 2 | PWM | Blue
 | 3 | GND | Black

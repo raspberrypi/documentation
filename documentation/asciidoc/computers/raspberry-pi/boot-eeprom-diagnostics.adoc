@@ -12,8 +12,9 @@ The top line describes the model of Raspberry Pi and its memory capacity. The QR
 
 The diagnostic information is as follows:
 
+[cols="1m,4"]
 |===
-| Line: | Information
+| Line | Information
 
 | bootloader
 | Bootloader git version - RO (if EEPROM is write protected) - software build date

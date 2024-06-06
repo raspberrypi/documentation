@@ -2,20 +2,18 @@
 
 GPIO drive strengths do not indicate a maximum current, but a maximum current under which the pad will still meet the specification. You should set the GPIO drive strengths to match the device being attached in order for the device to work correctly.
 
-[discrete]
-=== How drive strength is controlled
+=== Control drive strength
 
-Inside the pad are a number of drivers in parallel. If the drive strength is set low (0b000), most of these are tri-stated so they do not add anything to the output current. If the drive strength is increased, more and more drivers are put in parallel. The diagram shows that behaviour.
+Inside the pad are a number of drivers in parallel. If the drive strength is set low (`0b000`), most of these are tri-stated so they do not add anything to the output current. If the drive strength is increased, more and more drivers are put in parallel. The diagram shows that behaviour.
 
 WARNING: For Raspberry Pi 4, Raspberry Pi 400 and Compute Module 4 the current level is half the value shown in the diagram.
 
 image::images/pi_gpio_drive_strength_diagram.png[GPIO drive strength diagram]
 
-[discrete]
-=== What does the current value mean?
+=== Current value
 
-NOTE: The current value specifies the maximum current under which the pad will still meet the specification.
-+
+The current value specifies the maximum current under which the pad will still meet the specification.
+
 Current value is _not_ the current that the pad will deliver, and is _not_ a current limit.
 
 The pad output is a voltage source:
@@ -41,18 +39,12 @@ There is more information on the xref:raspberry-pi.adoc#gpio[physical characteri
 
 NOTE: On the Compute Module devices, it is possible to change the VDD IO from the standard 3.3V. In this case, V~OL~ and V~OH~ will change according to the table in the xref:raspberry-pi.adoc#gpio[GPIO] section.
 
-[discrete]
-=== Why can't I set all my pads to the maximum current?
+The Raspberry Pi 3.3V supply was designed with a maximum current of ~3mA per GPIO pin. If you load each pin with 16mA, the total current is 272mA. The 3.3V supply will collapse under that level of load. Big current spikes will happen, especially if you have a capacitive load. Spikes will bounce around all the other pins near them. This is likely to cause interference with the SD card, or even the SDRAM behaviour.
 
-* The Raspberry Pi 3.3V supply was designed with a maximum current of ~3mA per GPIO pin. If you load each pin with 16mA, the total current is 272mA. The 3.3V supply will collapse under that level of load.
-* Big current spikes will happen, especially if you have a capacitive load. Spikes will bounce around all the other pins near them. This is likely to cause interference with the SD card, or even the SDRAM behaviour.
-
-[discrete]
-=== What is a safe current?
+=== Safe current
 
 All the electronics of the pads are designed for 16mA. This is a safe value under which you will not damage the device. Even if you set the drive strength to 2mA and then load it so 16mA comes out, this will not damage the device. Other than that, there is no guaranteed maximum safe current.
 
-[discrete]
 === GPIO addresses
 
 * 0x 7e10 002c PADS (GPIO 0-27)
@@ -95,7 +87,6 @@ All the electronics of the pads are designed for 16mA. This is a safe value unde
 
 Beware of Simultaneous Switching Outputs (SSO) limitations which are device-dependent as well as dependent on the quality and layout of the PCB, the amount and quality of the decoupling capacitors, the type of load on the pads (resistance, capacitance), and other factors beyond the control of Raspberry Pi.
 
-[discrete]
 === Drive strength list
 
 * 0 = 2mA
