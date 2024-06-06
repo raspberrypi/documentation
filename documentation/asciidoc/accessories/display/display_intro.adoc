@@ -150,7 +150,7 @@ Then, use the Raspberry Pi Configuration CLI to switch to the `labwc` window com
 $ sudo raspi-config
 ----
 
-Go to **Advanced Options**. Select **Wayland**, then select **labwc**. Exit `raspi-config` and reboot with `sudo reboot`. Switching to `labwc` may reset some configuration, including keyboard layout.
+Go to **Advanced Options**. Select **Wayland**, then select **labwc**. Exit `raspi-config` and reboot with `sudo reboot`. Switching to `labwc` may reset some configuration, including keyboard layout and rotation settings.
 ====
 
 ==== Touch Display device tree option reference
