@@ -52,6 +52,7 @@ image::images/pin_out_new.jpg[width="80%"]
 
 To store the AlsaMixer settings, add the following at the command line:
 
+[source,console]
 ----
 $ sudo alsactl store
 ----
@@ -67,6 +68,7 @@ $ sudo alsactl store -f /home/<username>/usecase.state
 
 To restore a saved file, run the following command, replacing `<username>` with your username:
 
+[source,console]
 ----
 $ sudo alsactl restore -f /home/<username>/usecase.state
 ----

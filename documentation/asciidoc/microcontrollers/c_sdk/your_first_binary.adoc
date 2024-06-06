@@ -31,10 +31,10 @@ image:images/Hello-World-640x360-v2.gif[]
 . Drag and drop the 'Hello World' UF2 binary onto the RPI-RP2 volume. Pico will reboot.
 . Open a Terminal window and type:
 +
-[source]
+[source,console]
 ------
-sudo apt install minicom
-minicom -b 115200 -o -D /dev/ttyACM0
+$ sudo apt install minicom
+$ minicom -b 115200 -o -D /dev/ttyACM0
 ------
 
 You should see 'Hello, world!' printed to the Terminal.

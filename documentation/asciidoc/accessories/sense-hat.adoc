@@ -1,4 +1,3 @@
-
 include::sense-hat/intro.adoc[]
 
 include::sense-hat/software.adoc[]

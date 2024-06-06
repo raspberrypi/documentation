@@ -4,23 +4,23 @@ In order to work correctly, the Sense HAT requires an up-to-date kernel, I2C to 
 
 Ensure your APT package list is up-to-date:
 
-[,bash]
+[source,console]
 ----
- sudo apt update
+$ sudo apt update
 ----
 
 Next, install the sense-hat package, which will ensure the kernel is up to date, enable I2C, and install the necessary libraries and programs:
 
-[,bash]
+[source,console]
 ----
- sudo apt install sense-hat
+$ sudo apt install sense-hat
 ----
 
 Finally, a reboot may be required if I2C was disabled or the kernel was not up-to-date prior to the install:
 
-[,bash]
+[source,console]
 ----
- sudo reboot
+$ sudo reboot
 ----
 
 == Getting started
@@ -28,16 +28,18 @@ Finally, a reboot may be required if I2C was disabled or the kernel was not up-t
 After installation, example code can be found under `/usr/src/sense-hat/examples`.
 
 [.booklink, booktype="free", link=https://github.com/raspberrypipress/released-pdfs/raw/main/experiment-with-the-sense-hat.pdf, image=image::images/experiment-with-the-sense-hat.png[]]
-=== Further reading
-You can find more information on how to use the Sense HAT in the Raspberry Pi Press book https://github.com/raspberrypipress/released-pdfs/raw/main/experiment-with-the-sense-hat.pdf[Experiment with the Sense HAT]. Written by The Raspberry Pi Foundation's Education Team, it is part of the MagPi Essentials series published by Raspberry Pi Press. The book covers the background of the Astro Pi project, and walks you through how to make use of all the Sense HAT features using the xref:sense-hat.adoc#using-the-sense-hat-with-python[Python library].
 
-=== Using the Sense HAT with Python
+=== Further reading
+
+You can find more information on how to use the Sense HAT in the Raspberry Pi Press book https://github.com/raspberrypipress/released-pdfs/raw/main/experiment-with-the-sense-hat.pdf[Experiment with the Sense HAT]. Written by The Raspberry Pi Foundation's Education Team, it is part of the MagPi Essentials series published by Raspberry Pi Press. The book covers the background of the Astro Pi project, and walks you through how to make use of all the Sense HAT features using the xref:sense-hat.adoc#use-the-sense-hat-with-python[Python library].
+
+=== Use the Sense HAT with Python
 
 `sense-hat` is the officially supported library for the Sense HAT; it provides access to all of the on-board sensors and the LED matrix.
 
 Complete documentation for the library can be found at https://sense-hat.readthedocs.io/en/latest/[sense-hat.readthedocs.io].
 
-=== Using the Sense HAT with {cpp}
+=== Use the Sense HAT with {cpp}
 
 https://github.com/RPi-Distro/RTIMULib[RTIMULib] is a {cpp} and Python library that makes it easy to use 9-dof and 10-dof IMUs with embedded Linux systems. A pre-calibrated settings file is provided in `/etc/RTIMULib.ini`, which is also copied and used by `sense-hat`. The included examples look for `RTIMULib.ini` in the current working directory, so you may wish to copy the file there to get more accurate data.
 

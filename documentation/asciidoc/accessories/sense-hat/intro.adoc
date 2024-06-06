@@ -6,4 +6,4 @@ image::images/Sense-HAT.jpg[width="70%"]
 
 The Sense HAT was originally developed for use on the International Space Station, as part of the educational https://astro-pi.org/[Astro Pi] programme run by the https://raspberrypi.org[Raspberry Pi Foundation] in partnership with the https://www.esa.int/[European Space Agency]. It is well suited to many projects that require position, motion, orientation, or environmental sensing. The Sense HAT is powered by the Raspberry Pi computer to which it is connected.
 
-An officially supported xref:sense-hat.adoc#using-the-sense-hat-with-python[Python library] provides access to all of the on-board sensors, the LED matrix, and the joystick. The Sense HAT is compatible with any Raspberry Pi computer with a 40-pin GPIO header.
+An officially supported xref:sense-hat.adoc#use-the-sense-hat-with-python[Python library] provides access to all of the on-board sensors, the LED matrix, and the joystick. The Sense HAT is compatible with any Raspberry Pi computer with a 40-pin GPIO header.

@@ -1,17 +1,17 @@
-=== Using the Build HAT from .NET
+=== Use the Build HAT from .NET
 
 The Raspberry Pi Built HAT is referred to "Brick" in LEGO® parlance and you can talk directly to it from .NET using the https://datasheets.raspberrypi.com/build-hat/build-hat-serial-protocol.pdf[Build HAT Serial Protocol].
 
 You can create a `brick` object as below,
 
-[csharp]
+[source,csharp]
 ----
 Brick brick = new("/dev/serial0");
 ----
 
 but you need to remember to dispose of the `brick` at the end of your code.
 
-[csharp]
+[source,csharp]
 ----
 brick.Dispose();
 ----
@@ -20,18 +20,18 @@ WARNING: If you do not call `brick.Dispose()` your program will not terminate.
 
 If you want to avoid calling `brick.Dispose` at the end, then create your brick with the `using` statement:
 
-[csharp]
+[source,csharp]
 ----
 using Brick brick = new("/dev/serial0");
 ----
 
 In this case, when reaching the end of the program, your brick will be automatically disposed.
 
-==== Displaying the information
+==== Display Build HAT information
 
 You can gather the various software versions, the signature, and the input voltage:
 
-[csharp]
+[source,csharp]
 ----
 var info = brick.BuildHatInformation;
 Console.WriteLine($"version: {info.Version}, firmware date: {info.FirmwareDate}, signature:");
@@ -45,7 +45,7 @@ NOTE: The input voltage is read only once at boot time and is not read again aft
 
 The functions `GetSensorType`, `GetSensor` will allow you to retrieve any information on connected sensor.
 
-[csharp]
+[source,csharp]
 ----
 SensorType sensor = brick.GetSensorType((SensorPort)i);
 Console.Write($"Port: {i} {(Brick.IsMotor(sensor) ? "Sensor" : "Motor")} type: {sensor} Connected: ");
@@ -53,7 +53,7 @@ Console.Write($"Port: {i} {(Brick.IsMotor(sensor) ? "Sensor" : "Motor")} type: {
 
 In this example, you can as well use the `IsMotor` static function to check if the connected element is a sensor or a motor.
 
-[csharp]
+[source,csharp]
 ----
 if (Brick.IsActiveSensor(sensor))
 {
@@ -72,9 +72,9 @@ else
 
 Most sensors implements events on their special properties. You can simply subscribe to `PropertyChanged` and `PropertyUpdated`. The changed one will be fired when the value is changing while the updated one when there is a success update to the property. Depending on the modes used, some properties may be updated in the background all the time while some others occasionally.
 
-You may be interested only when a color is changing or the position of the motor is changing, using it as a tachometer. In this case, the `PropertyChanged` is what you need!
+You may be interested only when a colour is changing or the position of the motor is changing, using it as a tachometer. In this case, the `PropertyChanged` is what you need!
 
-[csharp]
+[source,csharp]
 ----
 Console.WriteLine("Move motor on Port A to more than position 100 to stop this test.");
 brick.WaitForSensorToConnect(SensorPort.PortA);
@@ -102,11 +102,11 @@ void MotorPropertyEvent(object? sender, PropertyChangedEventArgs e)
 }
 ----
 
-==== Waiting for initialization
+==== Wait for initialization
 
 The brick can take a long time before it initializes. A wait for a sensor to be connected has been implemented.
 
-[csharp]
+[source,csharp]
 ----
 brick.WaitForSensorToConnect(SensorPort.PortB);
 ----
