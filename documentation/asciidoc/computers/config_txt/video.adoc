@@ -62,12 +62,14 @@ On all models except Raspberry Pi 4 and 5, HDMI output needs to be disabled in o
 
 To enable composite output, append `,composite` to the end of the `dtoverlay=vc4-kms-v3d` line in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]:
 
+[source,ini]
 ----
 dtoverlay=vc4-kms-v3d,composite
 ----
 
 By default, this outputs composite NTSC video. To choose a different mode, instead append the following to the single line in `/boot/firmware/cmdline.txt`:
 
+[source,ini]
 ----
 vc4.tv_norm=<video_mode>
 ----

@@ -17,8 +17,10 @@ Bootable partitions must be formatted as FAT12, FAT16 or FAT32 and contain a `st
 
 === The `[tryboot]` filter
 This filter passes if the system was booted with the `tryboot` flag set.
+
+[source,console]
 ----
-sudo reboot "0 tryboot"
+$ sudo reboot "0 tryboot"
 ----
 
 === `tryboot_a_b`
@@ -28,9 +30,11 @@ This enables the `tryboot` switch to be made at the partition level rather than 
 
 === Example update flow for A/B booting
 
-The following pseudo-code shows how a hypothetical OS `Update service` could use `tryboot` + `autoboot.txt` to perform a fail-safe OS upgrade.
+The following pseudo-code shows how a hypothetical OS `Update service` could use `tryboot` in `autoboot.txt` to perform a fail-safe OS upgrade.
 
-Initial `autoboot.txt`
+Initial `autoboot.txt`:
+
+[source,ini]
 ----
 [all]
 tryboot_a_b=1
@@ -61,7 +65,9 @@ boot_partition=3
  ** End If
 * End If
 
-Updated `autoboot.txt`
+Updated `autoboot.txt`:
+
+[source,ini]
 ----
 [all]
 tryboot_a_b=1
@@ -72,6 +78,5 @@ boot_partition=2
 
 [NOTE]
 ======
-* It's not mandatory to reboot after updating `autoboot.txt`. However, the `Update Service` must be careful to avoid overwriting the current partition since `autoboot.txt` has already been modified to commit the last update.
-* See also: xref:configuration.adoc#device-trees-overlays-and-parameters[Device-tree parameters].
+It's not mandatory to reboot after updating `autoboot.txt`. However, the `Update Service` must be careful to avoid overwriting the current partition since `autoboot.txt` has already been modified to commit the last update. For more information, see xref:configuration.adoc#device-trees-overlays-and-parameters[Device Tree parameters].
 ======
