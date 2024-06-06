@@ -33,7 +33,7 @@ Each AI Kit comes with a pre-installed AI module, ribbon cable, GPIO stacking he
 $ sudo apt update && sudo apt full-upgrade
 ----
 
-. Next, xref:../computers/raspberry-pi.adoc#updating-the-bootloader-configuration[ensure that your Raspberry Pi firmware is up-to-date]. Run the following command to see what firmware you're running:
+. Next, xref:../computers/raspberry-pi.adoc#update-the-bootloader-configuration[ensure that your Raspberry Pi firmware is up-to-date]. Run the following command to see what firmware you're running:
 +
 [source,console]
 ----

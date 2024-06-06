@@ -194,7 +194,6 @@ Filters of different types can be combined by listing them one after the other, 
 ----
 # settings here apply to all hardware
 [EDID=VSC-TD2220]
-
 # settings here apply only if monitor VSC-TD2220 is connected
 
 [pi2]

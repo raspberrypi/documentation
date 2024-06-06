@@ -1,6 +1,6 @@
 == Raspberry Pi bootloader configuration
 
-=== Editing the configuration
+=== Edit the configuration
 
 Before editing the bootloader configuration, xref:os.adoc#update-software[update your system] to get the latest version of the `rpi-eeprom` package.
 
@@ -8,14 +8,14 @@ To view the current EEPROM configuration, run the following command:
 
 [source,console]
 ----
-rpi-eeprom-config
+$ rpi-eeprom-config
 ----
 
 To edit the current EEPROM configuration and apply the updates to latest EEPROM release, run the following command:
 
 [source,console]
 ----
-sudo -E rpi-eeprom-config --edit
+$ sudo -E rpi-eeprom-config --edit
 ----
 
 For more information about the EEPROM update process, see xref:raspberry-pi.adoc#raspberry-pi-boot-eeprom[boot EEPROM].
@@ -212,7 +212,7 @@ On earlier models the serial number is used as the prefix, however on Raspberry 
 | Use the serial number e.g. `9ffefdef/`
 
 | 1
-| Use the string specified by TFTP_PREFIX_STR
+| Use the string specified by `TFTP_PREFIX_STR`
 
 | 2
 | Use the MAC address e.g. `dc-a6-32-01-36-c2/`
@@ -239,10 +239,10 @@ Default: `Raspberry Pi Boot`
 [[DHCP_OPTION97]]
 ==== `DHCP_OPTION97`
 
-In earlier releases the client GUID (Option97) was just the serial number repeated four times. By default, the new GUID format is the concatenation of the four-character code (FourCC) (`RPi4` 0x34695052 for Raspberry Pi 4  or `RPi5` 0x35695052 for Raspberry Pi 5), the board revision (e.g. 0x00c03111 or 0x00d04170) (4-bytes), the least significant 4 bytes of the mac address and the 4-byte serial number.
+In earlier releases the client GUID (Option97) was just the serial number repeated four times. By default, the new GUID format is the concatenation of the four-character code (FourCC) (`RPi4` `0x34695052` for Raspberry Pi 4  or `RPi5` `0x35695052` for Raspberry Pi 5), the board revision (e.g. `0x00c03111` or `0x00d04170`) (4-bytes), the least significant 4 bytes of the mac address and the 4-byte serial number.
 This is intended to be unique but also provides structured information to the DHCP server, allowing Raspberry Pi 4 and 5 computers to be identified without relying upon the Ethernet MAC OUID.
 
-Specify DHCP_OPTION97=0 to revert the old behaviour or a non-zero hex-value to specify a custom 4-byte prefix.
+Specify `DHCP_OPTION97=0` to revert the old behaviour or a non-zero hex-value to specify a custom 4-byte prefix.
 
 Default: `0x34695052`
 
@@ -259,6 +259,8 @@ Default: `""`
 Overrides the Raspberry Pi Ethernet MAC address with a value stored in the xref:raspberry-pi.adoc#write-and-read-customer-otp-values[Customer OTP] registers.
 
 For example, to use a MAC address stored in rows 0 and 1 of the `Customer OTP`.
+
+[source,ini]
 ----
 MAC_ADDRESS_OTP=0,1
 ----
@@ -378,9 +380,9 @@ Default: `net_install`
 [[IMAGER_REPO_URL]]
 ==== `IMAGER_REPO_URL`
 
-The embedded Raspberry Pi Imager application is configured with a json file downloaded at startup.
+The embedded Raspberry Pi Imager application is configured with a JSON file downloaded at startup.
 
-You can change the URL of the json file used by the embedded Raspberry Pi Imager application to get it to offer your own images.
+You can change the URL of the JSON file used by the embedded Raspberry Pi Imager application to get it to offer your own images.
 You can test this with the standard https://www.raspberrypi.com/software/[Raspberry Pi Imager] application by passing the URL via the `--repo` argument.
 
 Default: `\http://downloads.raspberrypi.org/os_list_imagingutility_v3.json`
@@ -414,11 +416,11 @@ Default: `900`
 
 `NETCONSOLE` duplicates debug messages to the network interface. The IP addresses and ports are defined by the `NETCONSOLE` string.
 
-NOTE: NETCONSOLE blocks until the ethernet link is established or a timeout occurs. The timeout value is `DHCP_TIMEOUT` although DHCP is not attempted unless network boot is requested.
+NOTE: NETCONSOLE blocks until the Ethernet link is established or a timeout occurs. The timeout value is `DHCP_TIMEOUT` although DHCP is not attempted unless network boot is requested.
 
 ===== Format
 
-See https://wiki.archlinux.org/index.php/Netconsole
+For more information, see the https://wiki.archlinux.org/index.php/Netconsole[Netconsole documentation].
 
 [source]
 ----
@@ -438,7 +440,7 @@ One way to view the data is to connect the test Raspberry Pi 4 to another Raspbe
 
 `NETCONSOLE` should not be enabled by default because it may cause network problems. It can be enabled on demand via a GPIO filter:
 
-[source]
+[source,ini]
 ----
 # Enable debug if GPIO 7 is pulled low
 [gpio7=0]
@@ -454,6 +456,8 @@ Max length: 32 characters
 
 The `PARTITION` option may be used to specify the boot partition number, if it has not explicitly been set by the `reboot` command (e.g. `sudo reboot N`) or by `boot_partition=N` in `autoboot.txt`.
 This could be used to boot from a rescue partition if the user presses a button.
+
+[source,ini]
 ----
 # Boot from partition 2 if GPIO 7 is pulled low
 [gpio7=0]
@@ -506,18 +510,11 @@ Default: `2000` (2 seconds)
 
 Raspberry Pi 4 only.
 
-When the Pi is rebooted power USB power is switched off by the hardware. A short power off time can
-cause problems with some USB devices so this parameter may be used to force a longer power off
-as though the cable was physically removed.
+When the Pi is rebooted power USB power is switched off by the hardware. A short power off time can cause problems with some USB devices so this parameter may be used to force a longer power off as though the cable was physically removed.
 
-On Pi4 v1.3 and older the configurable/long power off requires the XHCI controller to be enabled
-so there is actually a short power off followed by a longer configurable power off. The longer
-configurable power off may be skipped by setting this parameter to zero.
+On RaspberryPi 4 version 1.3 and older, the configurable/long power off requires the XHCI controller to be enabled so there is actually a short power off followed by a longer configurable power off. The longer configurable power off may be skipped by setting this parameter to zero.
 
-On newer revisions the hardware ensures that USB power is off from reboot and the bootloader
-only enables power after this timeout has elapsed. This is happens after memory is initialised
-ensuring that USB power is off for at least two seconds. Therefore, this parameter generally
-has no effect on newer hardware revisions.
+On newer revisions the hardware ensures that USB power is off from reboot and the bootloader only enables power after this timeout has elapsed. This is happens after memory is initialised ensuring that USB power is off for at least two seconds. Therefore, this parameter generally has no effect on newer hardware revisions.
 
 Minimum: `0`
 
@@ -554,6 +551,7 @@ Default: `0`
 
 This property is a bit-field which controls the verbosity of USB debug messages for mass storage boot-mode. Enabling all of these messages generates a huge amount of log data which will slow down booting and may even cause boot to fail. For verbose logs it's best to use `NETCONSOLE`.
 
+[cols="1m,3"]
 |===
 | Value | Log
 
@@ -581,6 +579,7 @@ This property is a bit-field which controls the verbosity of USB debug messages 
 
 To combine values, add them together. For example:
 
+[source,ini]
 ----
 # Enable mass storage and USB descriptor logging
 XHCI_DEBUG=0x3
@@ -726,11 +725,20 @@ Default: `0`
 [[program_rpiboot_gpio]]
 ==== `program_rpiboot_gpio`
 
-Since there is no dedicated `nRPIBOOT` jumper on Raspberry Pi 4B or Raspberry Pi 400, an alternative GPIO must be used to select `RPIBOOT` mode by pulling the GPIO low. Only one GPIO may be selected and the available options are `2, 4, 5, 6, 7, 8`. This property does not depend on `secure-boot`, but verify that this GPIO configuration does not conflict with any HATs which might pull the GPIO low during boot.
+Since there is no dedicated `nRPIBOOT` jumper on Raspberry Pi 4B or Raspberry Pi 400, an alternative GPIO must be used to select `RPIBOOT` mode by pulling the GPIO low. Select a single GPIO from the following options:
+
+* `2`
+* `4`
+* `5`
+* `6`
+* `7`
+* `8`
+
+This property does not depend on `secure-boot`, but verify that this GPIO configuration does not conflict with any HATs which might pull the GPIO low during boot.
 
 Since for safety this property can only be programmed via `RPIBOOT`, the bootloader EEPROM must first be cleared using `erase_eeprom`. This causes the BCM2711 ROM to failover to `RPIBOOT` mode, which then allows this option to be set.
 
-Default: ``
+Default: `{nbsp}`
 
 [[program_jtag_lock]]
 ==== `program_jtag_lock`

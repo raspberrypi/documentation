@@ -1,13 +1,40 @@
 [[gpio]]
-== General Purpose I/O (GPIO)
+== GPIO and the 40-pin header
+
+You can find a 40-pin GPIO (general-purpose input/output) header on all current Raspberry Pi boards. The GPIO headers on all boards have a 0.1in (2.54mm) pin pitch.
+
+NOTE: The header is unpopulated (has no headers) on Zero and Pico devices that lack the "H" suffix.
+
+image::images/GPIO-Pinout-Diagram-2.png[alt="GPIO pinout diagram",width="60%"]
 
 General Purpose I/O (GPIO) pins can be configured as either general-purpose input, general-purpose output, or as one of up to six special alternate settings, the functions of which are pin-dependent.
 
-There are three GPIO banks on BCM2835. Each of the three banks has its own VDD input pin. On Raspberry Pi, all GPIO banks are supplied from 3.3V. 
+image::images/GPIO.png[alt="GPIO layout",width="60%"]
 
-WARNING: Connection of a GPIO to a voltage higher than 3.3V will likely destroy the GPIO block within the SoC.
+NOTE: The GPIO pin numbering scheme is not in numerical order. GPIO pins 0 and 1 are present on the board (physical pins 27 and 28), but are reserved for advanced use.
 
-A selection of pins from Bank 0 is available on the P1 header on Raspberry Pi.
+=== Outputs
+
+A GPIO pin designated as an output pin can be set to high (3.3V) or low (0V).
+
+=== Inputs
+
+A GPIO pin designated as an input pin can be read as high (3.3V) or low (0V). This is made easier with the use of internal pull-up or pull-down resistors. Pins GPIO2 and GPIO3 have fixed pull-up resistors, but for other pins this can be configured in software.
+
+=== View a GPIO pinout for your Raspberry Pi
+
+A GPIO reference can be accessed on your Raspberry Pi by opening a terminal window and running the command `pinout`. This tool is provided by the https://gpiozero.readthedocs.io/[GPIO Zero] Python library, which is installed by default in Raspberry Pi OS.
+
+WARNING: While connecting simple components to GPIO pins is safe, be careful how you wire things up. LEDs should have resistors to limit the current passing through them. Do not use 5V for 3.3V components. Do not connect motors directly to the GPIO pins, instead use an https://projects.raspberrypi.org/en/projects/physical-computing/14[H-bridge circuit or a motor controller board].
+
+=== Permissions
+
+In order to use the GPIO ports, your user must be a member of the `gpio` group. The default user account is a member by default, but you must add other users manually using the following command:
+
+[source,console]
+----
+$ sudo usermod -a -G gpio <username>
+----
 
 === GPIO pads
 
@@ -39,7 +66,23 @@ The normal rising/falling edge detection has a small amount of synchronisation b
 
 Almost all of the GPIO pins have alternative functions. Peripheral blocks internal to the SoC can be selected to appear on one or more of a set of GPIO pins, for example the I2C buses can be configured to at least three separate locations. xref:raspberry-pi.adoc#gpio-pads-control[Pad control], such as drive strength or Schmitt filtering, still applies when the pin is configured as an alternate function.
 
+Some functions are available on all pins, others on specific pins:
+
+* PWM (pulse-width modulation)
+ ** Software PWM available on all pins
+ ** Hardware PWM available on GPIO12, GPIO13, GPIO18, GPIO19
+* SPI
+ ** SPI0: MOSI (GPIO10); MISO (GPIO9); SCLK (GPIO11); CE0 (GPIO8), CE1 (GPIO7)
+ ** SPI1: MOSI (GPIO20); MISO (GPIO19); SCLK (GPIO21); CE0 (GPIO18); CE1 (GPIO17); CE2 (GPIO16)
+* I2C
+ ** Data: (GPIO2); Clock (GPIO3)
+ ** EEPROM Data: (GPIO0); EEPROM Clock (GPIO1)
+* Serial
+ ** TX (GPIO14); RX (GPIO15)
+
 === Voltage specifications
+
+Two 5V pins and two 3.3V pins are present on the board, as well as a number of ground pins (GND), which can not be reconfigured. The remaining pins are all general-purpose 3.3V pins, meaning outputs are set to 3.3V and inputs are 3.3V-tolerant.
 
 The table below gives the various voltage specifications for the GPIO pins for BCM2835, BCM2836, BCM2837 and RP3A0-based products (e.g. Raspberry Pi Zero or Raspberry Pi 3+). For information about Compute Modules you should see the xref:compute-module.adoc#specifications[relevant datasheets].
 

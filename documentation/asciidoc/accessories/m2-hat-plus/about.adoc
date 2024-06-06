@@ -45,7 +45,7 @@ Each M.2 HAT+ comes with a ribbon cable, GPIO stacking header, and mounting hard
 $ sudo apt update && sudo apt upgrade
 ----
 
-. Next, xref:../computers/raspberry-pi.adoc#updating-the-bootloader-configuration[ensure that your Raspberry Pi firmware is up-to-date]. Run the following command to see what firmware you're running:
+. Next, xref:../computers/raspberry-pi.adoc#update-the-bootloader-configuration[ensure that your Raspberry Pi firmware is up-to-date]. Run the following command to see what firmware you're running:
 +
 [source,console]
 ----

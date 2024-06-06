@@ -34,17 +34,20 @@ NOTE: Network boot is not supported on Raspberry Pi 3A+ or Zero 2 W.
 
 To enable USB host boot mode, the Raspberry Pi needs to be booted from an SD card with a special option to set the USB host boot mode bit in the one-time programmable (OTP) memory. Once this bit has been set, the SD card is no longer required. 
 
-WARNING: Any change you make to the OTP is permanent and cannot be undone.
-+
+[WARNING]
+====
+Any change you make to the OTP is permanent and cannot be undone.
+
 On Raspberry Pi 3A+, setting the OTP bit to enable USB host boot mode will permanently prevent that Raspberry Pi from booting in USB device mode.
+====
 
 You can use any SD card running Raspberry Pi OS to program the OTP bit.
 
 Enable USB host boot mode:
 
-[,bash]
+[source,console]
 ----
-echo program_usb_boot_mode=1 | sudo tee -a /boot/firmware/config.txt
+$ echo program_usb_boot_mode=1 | sudo tee -a /boot/firmware/config.txt
 ----
 
 This adds `program_usb_boot_mode=1` to the end of xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`].
@@ -53,9 +56,9 @@ Although the option is named `program_usb_boot_mode`, it only enables USB _host_
 
 Reboot the Raspberry Pi with `sudo reboot` and check that the OTP has been programmed:
 
-[,bash]
+[source,console]
 ----
-vcgencmd otp_dump | grep 17:
+$ vcgencmd otp_dump | grep 17:
 17:3020000a
 ----
 

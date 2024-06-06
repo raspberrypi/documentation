@@ -4,7 +4,7 @@ The Compute Module has two CSI-2 camera interfaces: CAM1 and CAM0. This section 
 
 === Update your system
 
-Before configuring a camera, xref:../computers/raspberry-pi.adoc#updating-the-bootloader-configuration[ensure that your Raspberry Pi firmware is up-to-date].:
+Before configuring a camera, xref:../computers/raspberry-pi.adoc#update-the-bootloader-configuration[ensure that your Raspberry Pi firmware is up-to-date].:
 
 [source,console]
 ----

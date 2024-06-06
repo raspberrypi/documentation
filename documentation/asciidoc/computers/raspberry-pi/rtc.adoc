@@ -16,7 +16,7 @@ $ sudo -E rpi-eeprom-config --edit
 
 adding the following two lines.
 
-[source, bash]
+[source,ini]
 ----
 POWER_OFF_ON_HALT=1
 WAKE_ON_GPIO=0
@@ -34,7 +34,6 @@ That will halt the board into a very low-power state, then wake and restart afte
 
 The RTC also provides the time on boot e.g. in `dmesg`, for use cases that lack access to NTP:
 
-[source,bash]
 ----
 [    1.295799] rpi-rtc soc:rpi_rtc: setting system clock to 2023-08-16T15:58:50 UTC (1692201530)
 ----
@@ -58,7 +57,6 @@ The RTC is equipped with a constant-current (3mA) constant-voltage charger.
 
 Charging of the battery is disabled by default. There are `sysfs` files that show the charging voltage and limits:
 
-[source,bash]
 ----
 /sys/devices/platform/soc/soc:rpi_rtc/rtc/rtc0/charging_voltage:0
 /sys/devices/platform/soc/soc:rpi_rtc/rtc/rtc0/charging_voltage_max:4400000
@@ -67,7 +65,7 @@ Charging of the battery is disabled by default. There are `sysfs` files that sho
 
 To charge the battery at a set voltage, add https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README#L279[`rtc_bbat_vchg`] to `/boot/firmware/config.txt`:
 
-[source,bash]
+[source,ini]
 ----
 dtparam=rtc_bbat_vchg=3000000
 ----
