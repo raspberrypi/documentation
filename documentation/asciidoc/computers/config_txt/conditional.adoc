@@ -11,7 +11,7 @@ The `[all]` filter is the most basic filter. It resets all previously set filter
 
 === Model filters
 
-The conditional model filters are applied according to the following table.
+The conditional model filters apply according to the following table.
 
 |===
 | Filter | Applicable model(s)
@@ -60,11 +60,11 @@ The conditional model filters are applied according to the following table.
 These are particularly useful for defining different `kernel`, `initramfs`, and `cmdline` settings, as the Raspberry Pi 1 and Raspberry Pi 2 require different kernels. They can also be useful to define different overclocking settings, as the Raspberry Pi 1 and Raspberry Pi 2 have different default speeds. For example, to define separate `initramfs` images for each:
 
 ----
- [pi1]
- initramfs initrd.img-3.18.7+ followkernel
- [pi2]
- initramfs initrd.img-3.18.7-v7+ followkernel
- [all]
+[pi1]
+initramfs initrd.img-3.18.7+ followkernel
+[pi2]
+initramfs initrd.img-3.18.7-v7+ followkernel
+[all]
 ----
 
 Remember to use the `[all]` filter at the end, so that any subsequent settings aren't limited to Raspberry Pi 2 hardware only.
@@ -87,14 +87,13 @@ When switching between multiple monitors while using a single SD card in your Ra
 
 To view the EDID name of an attached monitor, you need to follow a few steps. Run the following command to see which output devices you have on your Raspberry Pi:
 
-[source]
+[source,console]
 ----
-ls -1 /sys/class/drm/card?-HDMI-A-?/edid
+$ ls -1 /sys/class/drm/card?-HDMI-A-?/edid
 ----
 
 On a Raspberry Pi 4, this will print something like:
 
-[source]
 ----
 /sys/class/drm/card1-HDMI-A-1/edid
 /sys/class/drm/card1-HDMI-A-2/edid
@@ -102,14 +101,13 @@ On a Raspberry Pi 4, this will print something like:
 
 You then need to run `edid-decode` against each of these filenames, for example:
 
-[source]
+[source,console]
 ----
-edid-decode /sys/class/drm/card1-HDMI-A-1/edid
+$ edid-decode /sys/class/drm/card1-HDMI-A-1/edid
 ----
 
 If there's no monitor connected to that particular output device, it'll tell you the EDID was empty; otherwise it will serve you *lots* of information about your monitor's capabilities. You need to look for the lines specifying the `Manufacturer` and the `Display Product Name`. The "EDID name" is then `<Manufacturer>-<Display Product Name>`, with any spaces in either string replaced by underscores. For example, if your `edid-decode` output included:
 
-[source]
 ----
 ....
   Vendor & Product Identification:
@@ -123,7 +121,7 @@ The EDID name for this monitor would be `DEL-DELL_U2422H`.
 
 You can then use this as a conditional-filter to specify settings that only apply when this particular monitor is connected:
 
-[source]
+[source,ini]
 ----
 [EDID=DEL-DELL_U2422H]
 cmdline=cmdline_U2422H.txt
@@ -142,14 +140,13 @@ Sometimes settings should only be applied to a single specific Raspberry Pi, eve
 
 To view the serial number of your Raspberry Pi, run the following command:
 
-[source]
+[source,console]
 ----
-cat /proc/cpuinfo
+$ cat /proc/cpuinfo
 ----
 
 A 16-digit hex value will be displayed near the bottom of the output. Your Raspberry Pi's serial number is the last eight hex-digits. For example, if you see:
 
-[source]
 ----
 Serial          : 0000000012345678
 ----
@@ -160,28 +157,31 @@ NOTE: On some Raspberry Pi models, the first 8 hex-digits contain values other t
 
 You can define settings that will only be applied to this specific Raspberry Pi:
 
-[source]
+[source,ini]
 ----
 [0x12345678]
-# settings here are applied only to the Raspberry Pi with this serial
+# settings here apply only to the Raspberry Pi with this serial
+
 [all]
-# settings here are applied to all hardware
+# settings here apply to all hardware
+
 ----
 
 === The GPIO filter
 
 You can also filter depending on the state of a GPIO. For example:
 
-[source]
+[source,ini]
 ----
 [gpio4=1]
-# Settings here are applied if GPIO 4 is high
+# Settings here apply if GPIO 4 is high
 
 [gpio2=0]
-# Settings here are applied if GPIO 2 is low
+# Settings here apply if GPIO 2 is low
 
 [all]
-# settings here are applied to all hardware
+# settings here apply to all hardware
+
 ----
 
 === Combining conditional filters
@@ -190,15 +190,19 @@ Filters of the same type replace each other, so `[pi2]` overrides `[pi1]`, becau
 
 Filters of different types can be combined by listing them one after the other, for example:
 
-[source]
+[source,ini]
 ----
- # settings here are applied to all hardware
- [EDID=VSC-TD2220]
- # settings here are applied only if monitor VSC-TD2220 is connected
- [pi2]
- # settings here are applied only if monitor VSC-TD2220 is connected *and* on a Raspberry Pi 2
- [all]
- # settings here are applied to all hardware
+# settings here apply to all hardware
+[EDID=VSC-TD2220]
+
+# settings here apply only if monitor VSC-TD2220 is connected
+
+[pi2]
+# settings here apply only if monitor VSC-TD2220 is connected *and* on a Raspberry Pi 2
+
+[all]
+# settings here apply to all hardware
+
 ----
  
 Use the `[all]` filter to reset all previous filters and avoid unintentionally combining different filter types.

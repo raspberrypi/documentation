@@ -28,6 +28,7 @@ By default, HDMI audio output is enabled on all Raspberry Pi models with HDMI ou
 
 To disable HDMI audio output, append `,noaudio` to the end of the `dtoverlay=vc4-kms-v3d` line in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]:
 
+[source,ini]
 ----
 dtoverlay=vc4-kms-v3d,noaudio
 ----
