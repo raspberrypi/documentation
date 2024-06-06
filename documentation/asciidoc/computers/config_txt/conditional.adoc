@@ -184,7 +184,7 @@ You can also filter depending on the state of a GPIO. For example:
 
 ----
 
-=== Combining conditional filters
+=== Combine conditional filters
 
 Filters of the same type replace each other, so `[pi2]` overrides `[pi1]`, because it is not possible for both to be true at once.
 
@@ -193,6 +193,7 @@ Filters of different types can be combined by listing them one after the other, 
 [source,ini]
 ----
 # settings here apply to all hardware
+
 [EDID=VSC-TD2220]
 # settings here apply only if monitor VSC-TD2220 is connected
 

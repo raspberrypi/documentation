@@ -34,16 +34,17 @@ WARNING: Using your own network install image will require you to sign the image
 
 https://github.com/raspberrypi/usbboot/blob/master/Readme.md[`USBBOOT`] has all the tools needed to program public keys. 
 
+[source,console]
 ----
 # Add your PUBLIC key to the eeprom. boot.conf contains your modifications
-rpi-eeprom-config -c boot.conf -p mypubkey.pem -o pieeprom.upd pieeprom.original.bin
+$ rpi-eeprom-config -c boot.conf -p mypubkey.pem -o pieeprom.upd pieeprom.original.bin
 
 # Generate signature for your eeprom
-rpi-eeprom-digest -i pieeprom.upd -o pieeprom.sig
+$ rpi-eeprom-digest -i pieeprom.upd -o pieeprom.sig
 
 # Sign the network install image with your PRIVATE key
 # Put boot.img and boot.sig on your web server
-rpi-eeprom-digest -i boot.img -o boot.sig -k myprivkey.pem
+$ rpi-eeprom-digest -i boot.img -o boot.sig -k myprivkey.pem
 ----
 
 === Certificates
