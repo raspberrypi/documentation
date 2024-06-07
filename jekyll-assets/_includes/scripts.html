@@ -47,8 +47,12 @@
       var target = document.querySelector(selector);
       if (target) {
         setTimeout(function () {
-            target.scrollIntoView();
-        },2);
+          target.scrollIntoView({ behavior: "instant" });
+          setTimeout(function () {
+            target.scrollIntoView({ behavior: "instant" });
+          },100);
+        },1);
+        
         
       } else {
         console.log("Target not found :(");
