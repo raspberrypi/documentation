@@ -6,7 +6,7 @@ Most of the pins of the SoC (GPIO, two CSI camera interfaces, two DSI display in
 
 Compute Modules with the DDR2 SODIMM form factor can use any DDR2 SODIMM socket. However, the pinout is not the same as SODIMM memory modules.
 
-To use the Compute Module, a user must design a motherboard that:
+To use a Compute Module, a user must design a motherboard that:
 
 * provides power to the Compute Module (3.3V and 1.8V at minimum)
 * connects the pins to the required peripherals for the user's application
@@ -27,9 +27,9 @@ Then, we'll explain how to attach an I2C and an SPI peripheral to an IO Board. F
 
 === BCM283x GPIOs
 
-BCM283x has three banks of general-purpose input/output (GPIO) pins: 28 pins on BANK0, 18 pins on BANK1, and 8 pins on BANK2, for a total of 54 pins. These pins can be used as true GPIO pins: software can set them as inputs or outputs, read and/or set state, and use them as interrupts. They also can run alternate functions such as I2C, SPI, I2S, UART, SD card, and others.
+BCM283x has three banks of general-purpose input/output (GPIO) pins: 28 pins on Bank 0, 18 pins on Bank 1, and 8 pins on Bank 2, for a total of 54 pins. These pins can be used as true GPIO pins: software can set them as inputs or outputs, read and/or set state, and use them as interrupts. They also can run alternate functions such as I2C, SPI, I2S, UART, SD card, and others.
 
-You can use BANK0 or BANK1 on any Compute Module. Don't use BANK2: it controls eMMC, HDMI hot plug detect, and ACT LED/USB boot control.
+You can use Bank 0 or Bank 1 on any Compute Module. Don't use Bank 2: it controls eMMC, HDMI hot plug detect, and ACT LED/USB boot control.
 
 Use `pinctrl` to check the voltage and function of the GPIO pins to see if your Device Tree is working as expected.
 
@@ -67,7 +67,7 @@ You can create a full Device Tree for a Compute Module product, but we recommend
 
 Use the `dtoverlay` parameter in `config.txt` to load Device Tree overlays. Raspberry Pi OS assumes that all overlays are located in the `/overlays` directory and use the suffix `-overlay.dtb`. For example, the line `dtoverlay=myoverlay` loads the overlay `/overlays/myoverlay-overlay.dtb`.
 
-To wire peripherals to a Compute Module, describe all hardware attached to the BANK0 and BANK1 GPIOs in an overlay. This allows you to use standard Raspberry Pi OS images, since the overlay is merged into the standard base Device Tree. Alternatively, you can define a custom Device Tree for your application, but you won't be able to use standard Raspberry Pi OS images. Instead, you must create a modified Raspberry Pi OS image that includes your custom device tree for every OS update you wish to distribute. If the base overlay changes, you might need to update your customised Device Tree.
+To wire peripherals to a Compute Module, describe all hardware attached to the Bank 0 and Bank 1 GPIOs in an overlay. This allows you to use standard Raspberry Pi OS images, since the overlay is merged into the standard base Device Tree. Alternatively, you can define a custom Device Tree for your application, but you won't be able to use standard Raspberry Pi OS images. Instead, you must create a modified Raspberry Pi OS image that includes your custom device tree for every OS update you wish to distribute. If the base overlay changes, you might need to update your customised Device Tree.
 
 === `dt-blob.bin`
 
@@ -153,9 +153,9 @@ Use the https://forums.raspberrypi.com/viewforum.php?f=107[Device Tree Raspberry
 
 The following examples use an IO Board with peripherals attached via jumper wires. We assume a CM1+CMIO or CM3+CMIO3, running a clean install of Raspberry Pi OS Lite. The examples here require internet connectivity, so we recommend a USB hub, keyboard, and wireless LAN or Ethernet dongle plugged into the IO Board USB port.
 
-==== Attach an I2C RTC to BANK1 pins
+==== Attach an I2C RTC to Bank 1 pins
 
-In this example, we wire an NXP PCF8523 real time clock (RTC) to the IO Board BANK1 GPIO pins: 3V3, GND, I2C1_SDA on GPIO44 and I2C1_SCL on GPIO45.
+In this example, we wire an NXP PCF8523 real time clock (RTC) to the IO Board Bank 1 GPIO pins: 3V3, GND, I2C1_SDA on GPIO44 and I2C1_SCL on GPIO45.
 
 Download https://datasheets.raspberrypi.com/cm/minimal-cm-dt-blob.dts[`minimal-cm-dt-blob.dts`] and copy it to the boot partition in `/boot/firmware/`.
 
@@ -216,9 +216,9 @@ Once rebooted, you should see an `rtc0` entry in `/dev`. Run the following comma
 $ sudo hwclock
 ----
 
-==== Attach an ENC28J60 SPI Ethernet controller on BANK0
+==== Attach an ENC28J60 SPI Ethernet controller on Bank 0
 
-In this example, we use an overlay already defined in `/boot/firmware/overlays` to add an ENC28J60 SPI Ethernet controller to BANK0. The Ethernet controller uses SPI pins CE0, MISO, MOSI and SCLK (GPIO8-11 respectively), GPIO25 for a falling edge interrupt, in addition to GND and 3.3V.
+In this example, we use an overlay already defined in `/boot/firmware/overlays` to add an ENC28J60 SPI Ethernet controller to Bank 0. The Ethernet controller uses SPI pins CE0, MISO, MOSI and SCLK (GPIO8-11 respectively), GPIO25 for a falling edge interrupt, in addition to GND and 3.3V.
 
 In this example, we won't change `dt-blob.bin`. Instead, add the following line to `/boot/firmware/config.txt`:
 

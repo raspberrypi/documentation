@@ -1,48 +1,66 @@
-== Patching the kernel
+== Patch the kernel
 
-When xref:linux_kernel.adoc#building[building] your custom kernel you may wish to apply patches, or collections of patches (patchsets), to the Linux kernel.
+When building your custom kernel, you may wish to apply patches or collections of patches (patchsets) to the Linux kernel.
 
-Patchsets are often provided with newer hardware as a temporary measure, before the patches are applied to the upstream (mainline) Linux kernel and then propagated down to the Raspberry Pi kernel sources. However, patchsets for other purposes exist, for instance to enable a fully preemptible kernel for real-time usage.
+We often provide patchsets as a temporary measure to support new hardware before the patches make it into the Linux kernel and the Raspberry Pi kernel. However, patchsets for other purposes exist, for instance to enable a fully pre-emptible kernel for real-time usage.
 
-=== Version identification
+=== Identify your kernel version
 
-It's important to check what version of the kernel you have when downloading and applying patches. In a kernel source directory, running `head Makefile -n 3` will show you the version the sources relate to:
+Always check your version of the kernel before applying patches. In a kernel source directory, run the following command to see the kernel version:
 
-[source]
+[source,console]
+----
+$ head Makefile -n 3
+----
+
+You should see output similar to the following:
+
 ----
 VERSION = 6
 PATCHLEVEL = 1
 SUBLEVEL = 38
 ----
 
-In this instance, the sources are for a 6.1.38 kernel. You can see what version you're running on your system with the `uname -r` command.
+In this instance, the sources are for a 6.1.38 kernel.
 
-=== Applying patches
+To check the kernel version currently running on your device, run the following command:
 
-How you apply patches depends on the format in which the patches are made available. Most patches are a single file, and are applied with the `patch` utility. To download and patch our example kernel version with the real-time kernel patches:
-
-[,bash]
+[source,console]
 ----
- wget https://www.kernel.org/pub/linux/kernel/projects/rt/6.1/patch-6.1.38-rt13-rc1.patch.gz
- gunzip patch-6.1.38-rt13-rc1.patch.gz
- cat patch-6.1.38-rt13-rc1.patch | patch -p1
+$ uname -r
 ----
 
-In our example we simply download the file, uncompress it, and then pass it to the `patch` utility using the `cat` tool and a Unix pipe.
+=== Apply patches
 
-Some patchsets come as mailbox-format patchsets, arranged as a folder of patch files. We can use Git to apply these patches to our kernel, but first we must configure Git to let it know who we are when we make these changes:
+Patch application depends on the format used to distribute the patch.
 
-[,bash]
+Kernel developers distribute most patches as a single file. Use the `patch` utility to apply these patches. The following commands download, uncompress, and patch our example kernel version with real-time kernel patches:
+
+[source,console]
 ----
- git config --global user.name "Your name"
- git config --global user.email "your email in here"
-----
-
-Once we've done this we can apply the patches:
-
-[,bash]
-----
- git am -3 /path/to/patches/*
+$ wget https://www.kernel.org/pub/linux/kernel/projects/rt/6.1/patch-6.1.38-rt13-rc1.patch.gz
+$ gunzip patch-6.1.38-rt13-rc1.patch.gz
+$ cat patch-6.1.38-rt13-rc1.patch | patch -p1
 ----
 
-If in doubt, consult with the distributor of the patches, who should tell you how to apply them. Some patchsets will require a specific commit to patch against; follow the details provided by the patch distributor.
+Some kernel developers distribute patches in the *mailbox format*, a folder containing multiple patch files. Use Git to apply these patches.
+
+[NOTE]
+====
+Before using Git to apply mailbox patches, configure your local Git installation with a name and email:
+
+[source,console]
+----
+$ git config --global user.name "Your name"
+$ git config --global user.email "your email in here"
+----
+====
+
+To apply the mailbox formatted patches with Git, run the following command:
+
+[source,console]
+----
+$ git am -3 /path/to/patches/*
+----
+
+Always follow the instructions provided by the patch distributor. For instance, some patchsets require patching at specific commits.

@@ -1,266 +1,361 @@
 [[building]]
-== Building the kernel
+== Build the kernel
 
-The default compilers and linkers that come with an OS are configured to build executables to run on that OS - they are native tools - but that doesn't have to be the case. A cross-compiler is configured to build code for a target other than the one running the build process, and using it is called cross-compilation.
+The default compilers and linkers distributed with an OS are configured to build executables to run on that OS. **Cross-compilation** is the process of building code for a target other than the one running the build process.
 
-Cross-compilation of the Raspberry Pi kernel is useful for two reasons: it allows a 64-bit kernel to be built using a 32-bit OS, and vice versa. It also means that even a modest laptop can cross-compile a Raspberry Pi kernel significantly faster than the Raspberry Pi itself.
+Cross-compilation of the Raspberry Pi kernel allows you to build a 64-bit kernel from a 32-bit OS, and vice versa. Alternatively, you can cross-compile a 32-bit or 64-bit Raspberry Pi kernel from a device other than a Raspberry Pi.
 
-The instructions below are divided into native builds and cross-compilation. Choose the section appropriate for your situation; although there are many common steps between the two, there are also some important differences.
+[NOTE]
+====
+The 32-bit distribution of Raspberry Pi OS on a Raspberry Pi 4B, 5, 400, Compute Module 4, or Compute Module 4S uses a 32-bit userland, but a _64-bit kernel_. To build a 32-bit kernel, set `ARCH=arm`. To boot a 32-bit kernel, set `arm_64bit=0` in `config.txt`.
+====
 
-=== Building the kernel locally
+The instructions below are divided into native builds and cross-compilation. Choose the section appropriate for your situation; although the two processes share many steps, there are also some important differences.
 
-IMPORTANT: Building the 64-bit kernel on the 32-bit distribution of Raspberry Pi OS is a cross-compilation exercise because it requires the installation of the cross-compiler (`gcc-aarch64-linux-gnu`). If you're running the 32-bit distribution of Raspberry Pi OS on a Pi 4B, Pi 400, CM4 or CM4S then you'll be running a 32-bit userland, and 64-bit kernel — so if you want to explicitly build a 32-bit kernel you should set `ARCH=arm`, and to boot this kernel you'll need to set `arm_64bit=0` in `config.txt`. We provide instructions for <<cross-compiling-the-kernel,cross-compiling the kernel>>.  
+=== Native builds
 
-On a Raspberry Pi, first install the latest version of https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-32-bit[Raspberry Pi OS]. Then boot your Raspberry Pi, log in, and ensure you're connected to the internet to give you access to the sources.
+On a Raspberry Pi, install the latest version of xref:os.adoc[Raspberry Pi OS]. Boot your Raspberry Pi, log in, and connect to the Internet.
 
-First install Git and the build dependencies:
+First, install Git and the build dependencies:
 
-[,bash]
+[source,console]
 ----
-sudo apt install git bc bison flex libssl-dev make
-----
-
-Next get the sources, which will take some time:
-
-[,bash]
-----
-git clone --depth=1 https://github.com/raspberrypi/linux
+$ sudo apt install git bc bison flex libssl-dev make
 ----
 
-[[choosing_sources]]
-==== Choosing sources
+==== Download kernel source
 
-The `git clone` command above will download the current active branch (the one we are building Raspberry Pi OS images from) without any history. Omitting the `--depth=1` will download the entire repository, including the full history of all branches, but this takes much longer and occupies much more storage.
+Next, download the source code for the latest Raspberry Pi kernel:
 
-To download a different branch (again with no history), use the `--branch` option:
-
-[,bash]
+[source,console]
 ----
-git clone --depth=1 --branch <branch> https://github.com/raspberrypi/linux
+$ git clone --depth=1 https://github.com/raspberrypi/linux
 ----
 
-where `<branch>` is the name of the branch that you wish to download.
+This can take several minutes.
 
-Refer to the https://github.com/raspberrypi/linux[original GitHub repository] for information about the available branches.
+[TIP]
+====
+The `git clone` command above downloads the current active branch, which we build Raspberry Pi OS images from, without any history. Omit `--depth=1` to download the entire repository, including the full history of all branches. This takes much longer and occupies much more storage.
 
-==== Kernel configuration
+To download a different branch with no history, add the `--branch` option to the command above, replacing `<branch>` with the name of the branch you wish to download:
 
-Configure the kernel; as well as the default configuration, you may wish to xref:linux_kernel.adoc#configuring-the-kernel[configure your kernel in more detail] or xref:linux_kernel.adoc#patching-the-kernel[apply patches from another source], to add or remove required functionality.
-
-[[default_configuration]]
-===== Apply the default configuration
-
-First, prepare the default configuration by running the following commands, depending on your Raspberry Pi model.
-
-For Raspberry Pi 1, Zero and Zero W, and Raspberry Pi Compute Module 1 default (32-bit only) build configuration:
-
-[,bash]
+[source,console]
 ----
-cd linux
-KERNEL=kernel
-make bcmrpi_defconfig
+$ git clone --depth=1 --branch <branch> https://github.com/raspberrypi/linux
 ----
 
-For Raspberry Pi 2, 3, 3+ and Zero 2 W, and Raspberry Pi Compute Modules 3 and 3+ default 32-bit build configuration:
+For a full list of available branches, see the https://github.com/raspberrypi/linux[the Raspberry Pi kernel repository].
+====
 
-[,bash]
-----
-cd linux
-KERNEL=kernel7
-make bcm2709_defconfig
-----
+==== Apply configuration
 
-For Raspberry Pi 4 and 400, and Raspberry Pi Compute Module 4 default 32-bit build configuration:
+[TIP]
+====
+This section describes how to apply the default configuration when you build a kernel. You can also configure your kernel in the following ways:
 
-[,bash]
-----
-cd linux
-KERNEL=kernel7l
-make bcm2711_defconfig
-----
+* xref:linux_kernel.adoc#configure-the-kernel[enable and disable kernel features]
+* xref:linux_kernel.adoc#patch-the-kernel[apply patches from another source]
+====
 
-For Raspberry Pi 3, 3+, 4, 400 and Zero 2 W, and Raspberry Pi Compute Modules 3, 3+ and 4 default 64-bit build configuration:
-[,bash]
-----
-cd linux
-KERNEL=kernel8
-make bcm2711_defconfig
-----
+To prepare the default configuration, run the appropriate commands from the table below for your Raspberry Pi model.
 
-For Raspberry Pi 5 default 64-bit build configuration:
-[,bash]
-----
-cd linux
-KERNEL=kernel_2712
-make bcm2712_defconfig
-----
+[cols="1,2a,6a"]
+|===
+| Architecture | Model | Command
 
-===== Customising the kernel version using `LOCALVERSION`
+.14+^.^| 32-bit
+| Raspberry Pi 1
+.4+.^|
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel
+$ make bcmrpi_defconfig
+----
+| Raspberry Pi Zero
+| Raspberry Pi Zero W
+| Raspberry Pi Compute Module 1
 
-In addition to your kernel configuration changes, you may wish to adjust `LOCALVERSION` to ensure your new kernel does not receive the same version string as the upstream kernel. This clarifies that you are running your own kernel in the output of `uname`, and ensures that existing modules in `/lib/modules` are not overwritten.
+
+| Raspberry Pi 2
+.6+.^|
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel7
+$ make bcm2709_defconfig
+----
+| Raspberry Pi 3
+| Raspberry Pi 3+
+| Raspberry Pi Zero 2 W
+| Raspberry Pi Compute Module 3
+| Raspberry Pi Compute Module 3+
+
+
+| Raspberry Pi 4
+.4+.^|
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel7l
+$ make bcm2711_defconfig
+----
+| Raspberry Pi 400
+| Raspberry Pi Compute Module 4S
+| Raspberry Pi Compute Module 4
+
+
+.10+^.^| 64-bit
+| Raspberry Pi 3
+.9+.^|
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel8
+$ make bcm2711_defconfig
+----
+| Raspberry Pi 3+
+| Raspberry Pi 4
+| Raspberry Pi 400
+| Raspberry Pi Zero 2 W
+| Raspberry Pi Compute Module 3
+| Raspberry Pi Compute Module 3+
+| Raspberry Pi Compute Module 4S
+| Raspberry Pi Compute Module 4
+
+
+| Raspberry Pi 5
+.1+.^|
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel_2712
+$ make bcm2712_defconfig
+----
+|===
+
+===== Customise the kernel version using `LOCALVERSION`
+
+Adjust `LOCALVERSION` to clarify that you are running your own kernel in the output of `uname` and prevent the kernel from overwriting existing modules in `/lib/modules`.
 
 To adjust `LOCALVERSION`, change the following line in `.config`:
 
+[source,ini]
 ----
 CONFIG_LOCALVERSION="-v7l-MY_CUSTOM_KERNEL"
 ----
 
-You can also change this setting graphically as shown in xref:linux_kernel.adoc#configuring-the-kernel[the kernel configuration instructions]. It is located in "General setup" \=> "Local version - append to kernel release".
+You can also change this setting graphically with `menuconfig` at *General setup* > *Local version - append to kernel release*. For more information about `menuconfig`, see xref:linux_kernel.adoc#configure-the-kernel[the kernel configuration instructions].
 
-==== Building the kernel
+==== Build and install the kernel natively
 
-Build and install the kernel, modules, and Device Tree blobs. This step can take a long time depending on the Raspberry Pi model you are using.  For the 32-bit kernel:
+Next, build and install the kernel, modules, and Device Tree blobs into the boot partition of your Raspberry Pi. This step can take a long time depending on the Raspberry Pi model you are using.
 
-[,bash]
+TIP: If you don't want to install the freshly-compiled kernel onto the Raspberry Pi where you run this command, copy the compiled kernel to the boot partition of a separate boot media instead of `/boot/firmware/`.
+
+To build and install the 64-bit kernel, run the following commands:
+
+[source,console]
 ----
-make -j4 zImage modules dtbs
-sudo make modules_install
-# Choose one of the following based on the kernel version
-  # For kernels up to 6.4:
-  sudo cp arch/arm/boot/dts/*.dtb /boot/firmware/
-  # For kernel 6.5 and above:
-  sudo cp arch/arm/boot/dts/broadcom/*.dtb /boot/firmware/
-sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/firmware/overlays/
-sudo cp arch/arm/boot/dts/overlays/README /boot/firmware/overlays/
-sudo cp arch/arm/boot/zImage /boot/firmware/$KERNEL.img
-----
-
-For the 64-bit kernel:
-
-[,bash]
-----
-make -j4 Image.gz modules dtbs
-sudo make modules_install
-sudo cp arch/arm64/boot/dts/broadcom/*.dtb /boot/firmware/
-sudo cp arch/arm64/boot/dts/overlays/*.dtb* /boot/firmware/overlays/
-sudo cp arch/arm64/boot/dts/overlays/README /boot/firmware/overlays/
-sudo cp arch/arm64/boot/Image.gz /boot/firmware/$KERNEL.img
+$ make -j4 Image.gz modules dtbs
+$ sudo make modules_install
+$ sudo cp arch/arm64/boot/dts/broadcom/*.dtb /boot/firmware/
+$ sudo cp arch/arm64/boot/dts/overlays/*.dtb* /boot/firmware/overlays/
+$ sudo cp arch/arm64/boot/dts/overlays/README /boot/firmware/overlays/
+$ sudo cp arch/arm64/boot/Image.gz /boot/firmware/$KERNEL.img
 ----
 
-NOTE: On Raspberry Pi 2, 3, 4 and 5, the `-j4` flag splits the work between all four cores, speeding up compilation significantly.
+To build the 32-bit kernel:
 
-If you now reboot, your Raspberry Pi should be running your freshly-compiled kernel.
+. Run the following commands to build the modules and Device tree blobs:
++
+[source,console]
+----
+$ make -j4 zImage modules dtbs
+$ sudo make modules_install
+----
 
-=== Cross-compiling the kernel
+. Depending on your kernel version, run the following command:
+  * For kernels up to version 6.4:
++
+[source,console]
+----
+$ sudo cp arch/arm/boot/dts/*.dtb /boot/firmware/
+----
+* For kernels version 6.5 and above:
++
+[source,console]
+----
+$ sudo cp arch/arm/boot/dts/broadcom/*.dtb /boot/firmware/
+----
+. Finally, copy over the overlays, README, and image:
++
+[source,console]
+----
+$ sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/firmware/overlays/
+$ sudo cp arch/arm/boot/dts/overlays/README /boot/firmware/overlays/
+$ sudo cp arch/arm/boot/zImage /boot/firmware/$KERNEL.img
+----
 
-First, you will need a suitable Linux cross-compilation host. We tend to use Ubuntu; since Raspberry Pi OS is also a Debian distribution, it means many aspects are similar, such as the command lines.
+TIP: On multi-core Raspberry Pi models, the `-j <n>` option distributes work between cores. This can speed up compilation significantly. Run `nproc` to see how many processors you have; we recommend passing a number 1.5x your number of processors.
 
-You can either do this using VirtualBox (or VMWare) on Windows, or install it directly onto your computer. 
+Run the following command to reboot your Raspberry Pi and run your freshly-compiled kernel:
+
+[source,console]
+----
+$ sudo reboot
+----
+
+=== Cross-compiled builds
+
+First, you will need a suitable Linux cross-compilation host. We tend to use Ubuntu; since Raspberry Pi OS is also a Debian distribution, compilation commands are similar.
 
 ==== Install required dependencies and toolchain
 
-To build the sources for cross-compilation, make sure you have the dependencies needed on your machine by executing:
+To build the sources for cross-compilation, install the required dependencies onto your device. Run the following command to install most dependencies:
 
-[,bash]
+[source,console]
 ----
-sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
-----
-
-===== Install the 32-bit toolchain for a 32-bit kernel
-
-[,bash]
-----
-sudo apt install crossbuild-essential-armhf
+$ sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
 ----
 
-===== Install the 64-bit toolchain for a 64-bit kernel
+Then, install the proper toolchain for the kernel architecture you wish to build:
 
-[,bash]
+* To install the 64-bit toolchain to build a 64-bit kernel, run the following command:
++
+[source,console]
 ----
-sudo apt install crossbuild-essential-arm64
-----
-
-==== Get the kernel sources
-
-To download the minimal source tree for the current branch, run:
-
-[,bash]
-----
-git clone --depth=1 https://github.com/raspberrypi/linux
+$ sudo apt install crossbuild-essential-arm64
 ----
 
-See <<choosing_sources,*Choosing sources*>> above for instructions on how to choose a different branch.
+* To install the 32-bit toolchain to build a 32-bit kernel, run the following command:
++
+[source,console]
+----
+$ sudo apt install crossbuild-essential-armhf
+----
+
+==== Download kernel source
+
+Next, download the source code for the latest Raspberry Pi kernel:
+
+[source,console]
+----
+$ git clone --depth=1 https://github.com/raspberrypi/linux
+----
+
+This can take several minutes.
+
+[TIP]
+====
+The `git clone` command above downloads the current active branch, which we build Raspberry Pi OS images from, without any history. Omit `--depth=1` to download the entire repository, including the full history of all branches. This takes much longer and occupies much more storage.
+
+To download a different branch with no history, add the `--branch` option to the command above, replacing `<branch>` with the name of the branch you wish to download:
+
+[source,console]
+----
+$ git clone --depth=1 --branch <branch> https://github.com/raspberrypi/linux
+----
+
+For a full list of available branches, see the https://github.com/raspberrypi/linux[the Raspberry Pi kernel repository].
+====
 
 ==== Build sources
 
 Enter the following commands to build the sources and Device Tree files:
 
-===== 32-bit configs
+[cols="1,2a,6a"]
+|===
+| Target Architecture | Model | Command
 
-For Raspberry Pi 1, Zero and Zero W, and for Raspberry Pi Compute Module 1:
+.14+^.^| 32-bit
 
-[,bash]
+| Raspberry Pi 1
+.4+.^| [source,console]
 ----
-cd linux
-KERNEL=kernel
-make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
+$ cd linux
+$ KERNEL=kernel
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
+----
+| Raspberry Pi Zero
+| Raspberry Pi Zero W
+| Raspberry Pi Compute Module 1
+
+| Raspberry Pi 2
+.6+.^|
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel7
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
+----
+| Raspberry Pi 3
+| Raspberry Pi 3+
+| Raspberry Pi Zero 2 W
+| Raspberry Pi Compute Module 3
+| Raspberry Pi 3+:
+
+| Raspberry Pi 4
+.4+.^|
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel7l
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
+----
+| Raspberry Pi 400
+| Raspberry Pi Compute Module 4
+| Raspberry Pi Compute Module 4S
+
+
+.8+^.^| 64-bit
+| Raspberry Pi 3
+.8+.^| [source,console]
+----
+$ cd linux
+$ KERNEL=kernel8
+$ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2711_defconfig
+----
+| Raspberry Pi 3+
+| Raspberry Pi 4
+| Raspberry Pi 400
+| Raspberry Pi Zero 2 W
+| Raspberry Pi Compute Modules 3
+| Raspberry Pi Compute Module 4
+| Raspberry Pi Compute Module 4S
+
+| Raspberry Pi 5
+.1+.^|
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel_2712
+$ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2712_defconfig
+----
+|===
+
+==== Build with modules and Device Tree
+
+For 64-bit kernels, pass the image modules and DTB files like so:
+
+[source,console]
+----
+$ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- Image modules dtbs
 ----
 
-For Raspberry Pi 2, 3, 3+ and Zero 2 W, and Raspberry Pi Compute Modules 3 and 3+:
+For 32-bit kernels, pass the image modules and DTB files like so, prefixing each image module with `z`:
 
-[,bash]
+[source,console]
 ----
-cd linux
-KERNEL=kernel7
-make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
 ----
 
-For Raspberry Pi 4 and 400, and Raspberry Pi Compute Module 4:
+==== Install the kernel
 
-[,bash]
-----
-cd linux
-KERNEL=kernel7l
-make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
-----
+Having built the kernel, you need to copy it onto your Raspberry Pi boot media (likely an SD card or SSD) and install the modules.
 
-===== 64-bit configs
-
-For Raspberry Pi 3, 3+, 4, 400 and Zero 2 W, and Raspberry Pi Compute Modules 3, 3+ and 4:
-
-[,bash]
-----
-cd linux
-KERNEL=kernel8
-make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2711_defconfig
-----
-
-For Raspberry Pi 5:
-
-[,bash]
-----
-cd linux
-KERNEL=kernel_2712
-make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2712_defconfig
-----
-
-NOTE: The standard, `bcm2711_defconfig`-based kernel (`kernel8.img`) also runs on Raspberry Pi 5. For best performance you should use `kernel_2712.img`, but for situations where a 4KB page size is required then `kernel8.img` (`kernel=kernel8.img`) should be used.
-
-===== Build with configs
-
-NOTE: To speed up compilation on multiprocessor systems, and get some improvement on single-processor devices, use `-j n`, where n is the number of processors × 1.5. You can use the `nproc` command to see how many processors you have. 
-
-====== For all 32-bit builds
-
-[,bash]
-----
-make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
-----
-
-====== For all 64-bit builds
-
-NOTE: Note the difference between Image target between 32- and 64-bit.
-
-[,bash]
-----
-make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- Image modules dtbs
-----
-
-==== Install directly onto the SD card
-
-Having built the kernel, you need to copy it onto your Raspberry Pi and install the modules. This is best done directly using an SD card reader.
-
-First, use `lsblk` before and after plugging in your SD card to identify it. You should end up with something a lot like this:
+First, run `lsblk`. Then, connect your boot media. Run `lsblk` again; the new device represents your boot media. You should see output similar to the following:
 
 ----
 sdb
@@ -268,75 +363,100 @@ sdb
    sdb2
 ----
 
-with `sdb1` being the `FAT` filesystem (boot) partition, and `sdb2` being the `ext4` filesystem (root) partition.
+If `sdb` represents your boot media, `sdb1` represents the the `FAT32`-formatted **boot partition** and `sdb2` represents the (likely `ext4`-formatted) **root partition**.
 
-Mount these first, adjusting the partition letter as necessary:
+First, mount these partitions as `/mnt/boot` and `/mnt/root`, adjusting the partition letter to match the location of your boot media:
 
-[,bash]
+[source,console]
 ----
-mkdir mnt
-mkdir mnt/fat32
-mkdir mnt/ext4
-sudo mount /dev/sdb1 mnt/fat32
-sudo mount /dev/sdb2 mnt/ext4
-----
-
-NOTE: You should adjust the drive letter appropriately for your setup, e.g. if your SD card appears as `/dev/sdc` instead of `/dev/sdb`.
-
-Next, install the kernel modules onto the SD card:
-
-===== For 32-bit
-
-[,bash]
-----
-sudo env PATH=$PATH make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/ext4 modules_install
+$ mkdir mnt
+$ mkdir mnt/boot
+$ mkdir mnt/root
+$ sudo mount /dev/sdb1 mnt/boot
+$ sudo mount /dev/sdb2 mnt/root
 ----
 
-===== For 64-bit
+Next, install the kernel modules onto the boot media:
 
-[,bash]
+* For 64-bit kernels:
++
+[source,console]
 ----
-sudo env PATH=$PATH make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- INSTALL_MOD_PATH=mnt/ext4 modules_install
-----
-
-Finally, copy the kernel and Device Tree blobs onto the SD card, making sure to back up your old kernel:
-
-===== For 32-bit
-
-[,bash]
-----
-sudo cp mnt/fat32/$KERNEL.img mnt/fat32/$KERNEL-backup.img
-sudo cp arch/arm/boot/zImage mnt/fat32/$KERNEL.img
-# Choose one of the following based on the kernel version
-  # For kernels up to 6.4:
-  sudo cp arch/arm/boot/dts/*.dtb mnt/fat32/
-  # For kernel 6.5 and above:
-  sudo cp arch/arm/boot/dts/broadcom/*.dtb mnt/fat32/
-sudo cp arch/arm/boot/dts/overlays/*.dtb* mnt/fat32/overlays/
-sudo cp arch/arm/boot/dts/overlays/README mnt/fat32/overlays/
-sudo umount mnt/fat32
-sudo umount mnt/ext4
+$ sudo env PATH=$PATH make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- INSTALL_MOD_PATH=mnt/root modules_install
 ----
 
-===== For 64-bit
-
-[,bash]
+* For 32-bit kernels:
++
+[source,console]
 ----
-sudo cp mnt/fat32/$KERNEL.img mnt/fat32/$KERNEL-backup.img
-sudo cp arch/arm64/boot/Image mnt/fat32/$KERNEL.img
-sudo cp arch/arm64/boot/dts/broadcom/*.dtb mnt/fat32/
-sudo cp arch/arm64/boot/dts/overlays/*.dtb* mnt/fat32/overlays/
-sudo cp arch/arm64/boot/dts/overlays/README mnt/fat32/overlays/
-sudo umount mnt/fat32
-sudo umount mnt/ext4
+$ sudo env PATH=$PATH make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/root modules_install
 ----
 
-Another option is to copy the kernel into the same place, but with a different filename - for instance, using `kernel-myconfig.img` - rather than overwriting the `kernel.img` file. You can then edit the `config.txt` file to select the kernel that the Raspberry Pi will boot:
+Next, build and install the kernel, modules, and Device Tree blobs into the boot partition, backing up your original kernel.
 
+* To build and install the 64-bit kernel image, overlays, README, and unmount the partitions, run the following commands:
++
+[source,console]
+----
+$ sudo cp mnt/boot/$KERNEL.img mnt/boot/$KERNEL-backup.img
+$ sudo cp arch/arm64/boot/Image mnt/boot/$KERNEL.img
+$ sudo cp arch/arm64/boot/dts/broadcom/*.dtb mnt/boot/
+$ sudo cp arch/arm64/boot/dts/overlays/*.dtb* mnt/boot/overlays/
+$ sudo cp arch/arm64/boot/dts/overlays/README mnt/boot/overlays/
+$ sudo umount mnt/boot
+$ sudo umount mnt/root
+----
+
+* To build the 32-bit kernel:
++
+. Run the following commands to build the modules and Device tree blobs:
++
+[source,console]
+----
+$ sudo cp mnt/boot/$KERNEL.img mnt/boot/$KERNEL-backup.img
+$ sudo cp arch/arm/boot/zImage mnt/boot/$KERNEL.img
+----
+
+. Depending on your kernel version, run the following command:
+  * For kernels up to version 6.4:
++
+[source,console]
+----
+$ sudo cp arch/arm/boot/dts/*.dtb mnt/boot/
+----
+* For kernels version 6.5 and above:
++
+[source,console]
+----
+$ sudo cp arch/arm/boot/dts/broadcom/*.dtb mnt/boot/
+----
+. Finally, copy over the overlays, README, and image, and unmount the partitions:
++
+[source,console]
+----
+$ sudo cp arch/arm/boot/dts/overlays/*.dtb* mnt/boot/overlays/
+$ sudo cp arch/arm/boot/dts/overlays/README mnt/boot/overlays/
+$ sudo umount mnt/boot
+$ sudo umount mnt/root
+----
+
+TIP: On multi-core Raspberry Pi models, the `-j <n>` option distributes work between cores. This can speed up compilation significantly. Run `nproc` to see how many processors you have; we recommend passing a number 1.5x your number of processors.
+
+[TIP]
+====
+Alternatively, copy the kernel with a different filename (e.g. `kernel-myconfig.img`) instead of overwriting the `kernel.img` file. Then, edit `config.txt` in the boot partition to select your kernel:
+
+[source,ini]
 ----
 kernel=kernel-myconfig.img
 ----
 
-This has the advantage of keeping your custom kernel separate from the stock kernel image managed by the system and any automatic update tools, and allowing you to easily revert to a stock kernel in the event that your kernel cannot boot.
+This has the advantage of keeping your custom kernel separate from the stock kernel image managed by the system. With this arrangement, you can quickly revert to a stock kernel in the event that your kernel cannot boot.
+====
 
-Finally, plug the card into the Raspberry Pi and boot it.
+Connect the boot media to your Raspberry Pi and connect it to power to run your freshly-compiled kernel:
+
+[source,console]
+----
+$ sudo reboot
+----
