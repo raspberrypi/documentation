@@ -1,12 +1,12 @@
 == Kernel
 
-The Raspberry Pi kernel is https://github.com/raspberrypi/linux[hosted on GitHub]; updates lag behind the upstream https://github.com/torvalds/linux[Linux kernel]. The upstream kernel is continuously updating; we take long-term releases of the kernel, which are mentioned on the front page, and integrate the changes into our own Raspberry Pi kernel. We then create a 'next' branch which contains an unstable port of the kernel, and after extensive testing and discussion, we push this to the main branch of our repository.
+The Raspberry Pi kernel is https://github.com/raspberrypi/linux[hosted on GitHub]; updates lag behind the upstream https://github.com/torvalds/linux[Linux kernel]. The upstream kernel updates continuously, whereas Raspberry Pi integrates **long-term releases** of the Linux kernel into the Raspberry Pi kernel. We generate a `next` branch in the Raspberry Pi kernel for each long-term Linux kernel release. After extensive testing and discussion, we merge each `next` branch into the main branch of our repository.
 
-=== Updating your kernel
+=== Update
 
-If you use the standard Raspberry Pi OS xref:os.adoc#update-software[update and upgrade process], this will automatically update the kernel to the latest stable version of our kernel. This is the recommended procedure. However, in certain circumstances, you may wish to update to the latest "bleeding edge" or test kernel. You should only do this if recommended to do so by a Raspberry Pi engineer, or if there is a specific feature only available in this latest software.
+The usual Raspberry Pi OS xref:os.adoc#update-software[update process] automatically updates your kernel to the latest stable release. If you want to try the latest unstable test kernel, you can xref:os.adoc#rpi-update[manually update].
 
-=== Getting your code into the kernel
+=== Contribute
 
 There are many reasons you may want to put something into the kernel:
 
@@ -15,9 +15,14 @@ There are many reasons you may want to put something into the kernel:
 * You've fixed a generic kernel bug
 * You've fixed a Raspberry Pi-specific kernel bug
 
-Initially, you should fork the https://github.com/raspberrypi/linux[Linux repository] and clone that on your build system; this can be either on your Raspberry Pi or on a Linux machine you're using for cross-compiling. You can then make your changes, test them, and commit them into your fork.
+==== Contribute to the Linux kernel
 
-Next, depending upon whether the code is Raspberry Pi-specific or not:
+First, fork the https://github.com/torvalds/linux[Linux kernel repository] and clone it to your development device. You can then make your changes, test them, and commit them into your fork.
 
-* For Raspberry Pi-specific changes or bug fixes, submit a pull request to the kernel.
-* For general Linux kernel changes (i.e. a new driver), these need to be submitted upstream first. Once they've been submitted upstream and accepted, submit the pull request and we'll receive it.
+Then, submit a pull request containing your changes to the https://github.com/torvalds/linux[Linux kernel repository]. Linux kernel contributors will review your contribution and suggest improvements. Once approved, they'll merge in your changes. Eventually, they'll make their way into a long-term release of the Linux kernel. Once we've tested that long-term release for compatibility with the Raspberry Pi kernel, your changes will make their way into a stable release of the Raspberry Pi kernel.
+
+==== Contribute to the Raspberry Pi Kernel
+
+First, fork the https://github.com/raspberrypi/linux[Raspberry Pi kernel repository] and clone it to your development device. You can then make your changes, test them, and commit them into your fork.
+
+Then, submit a pull request containing your changes to the https://github.com/raspberrypi/linux[Raspberry Pi kernel repository]. Raspberry Pi engineers will review your contribution and suggest improvements. Once approved, we'll merge in your changes, and they'll eventually make their way to the stable release of the Raspberry Pi kernel.

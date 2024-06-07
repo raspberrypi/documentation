@@ -1,23 +1,23 @@
 == Kernel headers
 
-If you are compiling a kernel module or similar, you will need the Linux kernel headers. These provide the various function and structure definitions required when compiling code that interfaces with the kernel.
+To compile a kernel module, you need the Linux kernel headers. These provide the function and structure definitions required to compile code that interfaces with the kernel.
 
-If you have cloned the entire kernel from GitHub, the headers are already included in the source tree. If you don't need all the extra files, it is possible to install only the kernel headers from the Raspberry Pi OS repo.
+If you cloned the entire kernel from GitHub, the headers are already included in the source tree. If you don't need all the extra files, you can instead install only the kernel headers with `apt`.
 
-If you are using the 32-bit version of Raspberry Pi OS, run:
+TIP: When a new kernel releases, you need the headers that match that kernel version. It can take several weeks to update the `apt` package to reflect the latest kernel version. For the latest header versions, xref:linux_kernel.adoc#building[clone the kernel].
 
-[,bash]
+If you use a 64-bit version of Raspberry Pi OS, run the following command to install the kernel headers:
+
+[source,console]
 ----
- sudo apt install linux-headers-rpi-{v6,v7,v7l}
-----
-
-Or if you are using the 64-bit version of Raspberry Pi OS, run:
-
-[,bash]
-----
- sudo apt install linux-headers-rpi-v8
+$ sudo apt install linux-headers-rpi-v8
 ----
 
-NOTE: It can take quite a while for this command to complete, as it installs a lot of small files. There is no progress indicator.
+If you use a 32-bit version of Raspberry Pi OS, run the following command to install the kernel headers:
 
-When a new kernel release is made, you will need the headers that match that kernel version. It can take several weeks for the repo to be updated to reflect the latest kernel version. If this happens, the best approach is to xref:linux_kernel.adoc#building[clone the kernel].
+[source,console]
+----
+$ sudo apt install linux-headers-rpi-{v6,v7,v7l}
+----
+
+NOTE: Installation can take several minutes. There is no progress indicator.
