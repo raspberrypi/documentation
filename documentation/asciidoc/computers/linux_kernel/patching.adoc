@@ -6,6 +6,13 @@ Hardware makers sometimes provide patchsets as a temporary measure to support ne
 
 === Identify your kernel version
 
+To check the kernel version currently running on your device, run the following command:
+
+[source,console]
+----
+$ uname -r
+----
+
 Always check your version of the kernel before applying patches. In a kernel source directory, run the following command to see the kernel version:
 
 [source,console]
@@ -22,13 +29,6 @@ SUBLEVEL = 38
 ----
 
 In this instance, the sources are for a 6.1.38 kernel.
-
-To check the kernel version currently running on your device, run the following command:
-
-[source,console]
-----
-$ uname -r
-----
 
 === Apply patches
 
