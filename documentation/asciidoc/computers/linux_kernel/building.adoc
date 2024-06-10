@@ -75,14 +75,14 @@ $ cd linux
 $ KERNEL=kernel8
 $ make bcm2711_defconfig
 ----
+| Raspberry Pi Compute Module 3
 | Raspberry Pi 3+
+| Raspberry Pi Compute Module 3+
+| Raspberry Pi Zero 2 W
 | Raspberry Pi 4
 | Raspberry Pi 400
-| Raspberry Pi Compute Module 3
-| Raspberry Pi Compute Module 3+
-| Raspberry Pi Compute Module 4S
 | Raspberry Pi Compute Module 4
-| Raspberry Pi Zero 2 W
+| Raspberry Pi Compute Module 4S
 
 
 .^| Raspberry Pi 5
@@ -117,8 +117,8 @@ $ KERNEL=kernel7
 $ make bcm2709_defconfig
 ----
 | Raspberry Pi 3
-| Raspberry Pi 3+
 | Raspberry Pi Compute Module 3
+| Raspberry Pi 3+
 | Raspberry Pi Compute Module 3+
 | Raspberry Pi Zero 2 W
 
@@ -132,8 +132,8 @@ $ KERNEL=kernel7l
 $ make bcm2711_defconfig
 ----
 | Raspberry Pi 400
-| Raspberry Pi Compute Module 4S
 | Raspberry Pi Compute Module 4
+| Raspberry Pi Compute Module 4S
 |===
 
 [NOTE]
@@ -296,21 +296,22 @@ Enter the following commands to build the sources and Device Tree files:
 |===
 | Target Architecture | Target Model | Command
 
-.9+^.^| 64-bit
+.10+^.^| 64-bit
 | Raspberry Pi 3
-.8+.^| [source,console]
+.9+.^| [source,console]
 ----
 $ cd linux
 $ KERNEL=kernel8
 $ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2711_defconfig
 ----
+| Raspberry Pi Compute Module 3
 | Raspberry Pi 3+
+| Raspberry Pi Compute Module 3+
+| Raspberry Pi Zero 2 W
 | Raspberry Pi 4
 | Raspberry Pi 400
-| Raspberry Pi Compute Module 3
 | Raspberry Pi Compute Module 4
 | Raspberry Pi Compute Module 4S
-| Raspberry Pi Zero 2 W
 
 .^| Raspberry Pi 5
 .1+.^|
@@ -322,7 +323,7 @@ $ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2712_defconfig
 ----
 
 
-.13+^.^| 32-bit
+.14+^.^| 32-bit
 
 | Raspberry Pi 1
 .4+.^| [source,console]
@@ -336,7 +337,7 @@ $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
 | Raspberry Pi Zero W
 
 | Raspberry Pi 2
-.5+.^|
+.6+.^|
 [source,console]
 ----
 $ cd linux
@@ -344,8 +345,9 @@ $ KERNEL=kernel7
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
 ----
 | Raspberry Pi 3
-| Raspberry Pi 3+
 | Raspberry Pi Compute Module 3
+| Raspberry Pi 3+
+| Raspberry Pi Compute Module 3+
 | Raspberry Pi Zero 2 W
 
 | Raspberry Pi 4
