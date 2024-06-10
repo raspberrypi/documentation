@@ -181,15 +181,6 @@ TIP: On multi-core Raspberry Pi models, the `make -j<n>` option distributes work
 
 Next, install the kernel modules onto the boot media:
 
-* For 64-bit kernels:
-+
-[source,console]
-----
-$ sudo make -j6 modules_install
-----
-
-* For 32-bit kernels:
-+
 [source,console]
 ----
 $ sudo make -j6 modules_install
