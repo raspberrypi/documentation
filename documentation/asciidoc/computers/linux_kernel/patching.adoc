@@ -51,8 +51,8 @@ Before using Git to apply mailbox patches, configure your local Git installation
 
 [source,console]
 ----
-$ git config --global user.name "Your name"
-$ git config --global user.email "your email in here"
+$ git config --global user.name "your name"
+$ git config --global user.email "your email"
 ----
 ====
 
