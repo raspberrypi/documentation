@@ -13,7 +13,7 @@ The `menuconfig` tool requires the `ncurses` development headers to compile prop
 $ sudo apt install libncurses5-dev
 ----
 
-Next, xref:linux_kernel.adoc#download-kernel-source[download your kernel sources]. In particular, ensure you have installed the xref:linux_kernel.adoc#apply-configuration[default configuration].
+Next, xref:linux_kernel.adoc#download-kernel-source[download your kernel sources]. In particular, ensure you have installed the xref:linux_kernel.adoc#native-build-sources[default native configuration] or xref:linux_kernel.adoc#cross-compiled-build-sources[default cross-compilation configuration].
 
 === `menuconfig`
 
@@ -43,12 +43,14 @@ To navigate the `menuconfig` utility, use your keyboard:
 * to navigate directionally, use the *arrow keys*
 * to enter a submenu (indicated by `--->`), press the *Enter* key
 * to go up a level or exit, press *Escape* twice
-* to cycle the state of a binary option, press the *space bar*
+* to toggle the state of a binary option, press the *space bar*
 * to select the state of a multiple choice option, press *Enter* to open a submenu, the *arrow keys* to navigate the submenu, and press *Enter* again to select a state
-* to get help about with an option or menu, press the *H* key
+* to get help with an option or menu, press the *H* key
 
 After a brief compilation, `menuconfig` presents a list of submenus containing all the options you can configure. There are many options, so take your time to read through them. Resist the temptation to enable or disable a lot of things on your first attempt; it's relatively easy to break your configuration, so start small and get comfortable with the configuration and build process.
 
 === Save your changes
 
 Once you're done making changes, press *Escape* until you're prompted to save your new configuration. By default, this saves to the `.config` file. You can save and load configurations by copying this file.
+
+After customising, you should now be ready to xref:linux_kernel.adoc#building[build the kernel].

@@ -2,7 +2,7 @@
 
 When building your custom kernel, you may wish to apply patches or collections of patches (patchsets) to the Linux kernel.
 
-We often provide patchsets as a temporary measure to support new hardware before the patches make it into the Linux kernel and the Raspberry Pi kernel. However, patchsets for other purposes exist, for instance to enable a fully pre-emptible kernel for real-time usage.
+Hardware makers sometimes provide patchsets as a temporary measure to support new hardware before the patches make it into the Linux kernel and the Raspberry Pi kernel. However, patchsets for other purposes exist, for instance to enable a fully pre-emptible kernel for real-time usage.
 
 === Identify your kernel version
 
@@ -32,9 +32,9 @@ $ uname -r
 
 === Apply patches
 
-Patch application depends on the format used to distribute the patch.
+The application of patches depends on the format used to distribute the patch.
 
-Kernel developers distribute most patches as a single file. Use the `patch` utility to apply these patches. The following commands download, uncompress, and patch our example kernel version with real-time kernel patches:
+Developers distribute most patches as a single file. Use the `patch` utility to apply these patches. The following commands download, uncompress, and patch our example kernel version with real-time kernel patches:
 
 [source,console]
 ----
@@ -63,4 +63,4 @@ To apply the mailbox formatted patches with Git, run the following command:
 $ git am -3 /path/to/patches/*
 ----
 
-Always follow the instructions provided by the patch distributor. For instance, some patchsets require patching at specific commits.
+Always follow the instructions provided by the patch distributor. For instance, some patchsets require patching against a specific commit.
