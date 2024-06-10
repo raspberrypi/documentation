@@ -43,7 +43,7 @@ Now that you have the kernel source, build a fresh kernel xref:linux_kernel.adoc
 
 === Natively build a kernel
 
-On a Raspberry Pi, install the latest version of xref:os.adoc[Raspberry Pi OS]. Boot your Raspberry Pi, log in, and connect to the Internet.
+This guide assumes that your Raspberry Pi runs the latest version of xref:os.adoc[Raspberry Pi OS].
 
 First, install the build dependencies:
 
@@ -52,8 +52,8 @@ First, install the build dependencies:
 $ sudo apt install bc bison flex libssl-dev make
 ----
 
-[[native-build-sources]]
-==== Build sources
+[[native-build-configuration]]
+==== Build configuration
 
 This section describes how to apply the default configuration when you build a kernel. You can also configure your kernel in the following ways:
 
@@ -158,22 +158,20 @@ You can also change this setting graphically with `menuconfig` at *General setup
 [[native-build]]
 ==== Build
 
-Next, build the kernel. This step can take a long time, depending on the Raspberry Pi model.
+Next, build the kernel. This step can take a long time, depending on your Raspberry Pi model.
 
-For 64-bit kernels, run the following commands to build a fresh kernel:
-
+* Run the following commands to build a 64-bit kernel:
++
 [source,console]
 ----
 $ make -j6 Image.gz modules dtbs
-$ sudo make modules_install
 ----
 
-For 32-bit kernels, run the following command to build a fresh kernel:
-
+* Run the following command to build a 32-bit kernel:
++
 [source,console]
 ----
 $ make -j6 zImage modules dtbs
-$ sudo make modules_install
 ----
 
 TIP: On multi-core Raspberry Pi models, the `make -j<n>` option distributes work between cores. This can speed up compilation significantly. Run `nproc` to see how many processors you have; we recommend passing a number 1.5x your number of processors.
@@ -189,6 +187,7 @@ To install the 64-bit kernel, run the following commands:
 
 [source,console]
 ----
+$ sudo make modules_install
 $ sudo cp arch/arm64/boot/dts/broadcom/*.dtb /boot/firmware/
 $ sudo cp arch/arm64/boot/dts/overlays/*.dtb* /boot/firmware/overlays/
 $ sudo cp arch/arm64/boot/dts/overlays/README /boot/firmware/overlays/
@@ -197,6 +196,12 @@ $ sudo cp arch/arm64/boot/Image.gz /boot/firmware/$KERNEL.img
 
 To install the 32-bit kernel:
 
+. Install the modules:
++
+[source,console]
+----
+$ sudo make modules_install
+----
 . Depending on your xref:linux_kernel.adoc#identify-your-kernel-version[kernel version], run the following command:
   * For kernels up to version 6.4:
 +
@@ -268,8 +273,8 @@ $ sudo apt install crossbuild-essential-arm64
 $ sudo apt install crossbuild-essential-armhf
 ----
 
-[[cross-compiled-build-sources]]
-==== Build sources
+[[cross-compiled-build-configuration]]
+==== Build configuration
 
 This section describes how to apply the default configuration when you build a kernel. You can also configure your kernel in the following ways:
 
@@ -350,7 +355,7 @@ $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
 [[cross-compiled-customisation]]
 ==== Customise the kernel version using `LOCALVERSION`
 
-Adjust `LOCALVERSION` to clarify that you are running your own kernel in the output of `uname` and prevent the kernel from overwriting existing modules in `/lib/modules`.
+Before you build, adjust `LOCALVERSION` to clarify that you are running your own kernel in the output of `uname` and prevent the kernel from overwriting existing modules in `/lib/modules`.
 
 To adjust `LOCALVERSION`, change the following line in `.config`:
 
@@ -361,19 +366,18 @@ CONFIG_LOCALVERSION="-v7l-MY_CUSTOM_KERNEL"
 
 You can also change this setting graphically with `menuconfig` at *General setup* > *Local version - append to kernel release*. For more information about `menuconfig`, see xref:linux_kernel.adoc#configure-the-kernel[the kernel configuration instructions].
 
-
 [[cross-compiled-build]]
 ==== Build
 
-For 64-bit kernels, run the following command to build:
-
+* Run the following command to build a 64-bit kernel:
++
 [source,console]
 ----
 $ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- Image modules dtbs
 ----
 
-For 32-bit kernels, run the following command to build:
-
+* Run the following command to build a 32-bit kernel:
++
 [source,console]
 ----
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
