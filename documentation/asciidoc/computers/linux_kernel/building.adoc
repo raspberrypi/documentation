@@ -179,28 +179,47 @@ TIP: On multi-core Raspberry Pi models, the `make -j<n>` option distributes work
 [[native-install]]
 ==== Install the kernel
 
-Next, install the kernel, modules, and Device Tree blobs into the boot partition of your Raspberry Pi.
+Next, install the kernel modules onto the boot media:
+
+* For 64-bit kernels:
++
+[source,console]
+----
+$ sudo make -j6 modules_install
+----
+
+* For 32-bit kernels:
++
+[source,console]
+----
+$ sudo make -j6 modules_install
+----
+
+Then, install the kernel and Device Tree blobs into the boot partition, backing up your original kernel.
 
 TIP: If you don't want to install the freshly-compiled kernel onto the Raspberry Pi where you run this command, copy the compiled kernel to the boot partition of a separate boot media instead of `/boot/firmware/`.
 
-To install the 64-bit kernel, run the following commands:
+To install the 64-bit kernel:
 
+* Run the following commands to create a backup image of the current kernel, install the fresh kernel image, overlays, README, and unmount the partitions:
++
 [source,console]
 ----
-$ sudo make modules_install
+$ sudo cp /boot/firmware/$KERNEL.img /boot/firmware/$KERNEL-backup.img
+$ sudo cp arch/arm64/boot/Image.gz /boot/firmware/$KERNEL.img
 $ sudo cp arch/arm64/boot/dts/broadcom/*.dtb /boot/firmware/
 $ sudo cp arch/arm64/boot/dts/overlays/*.dtb* /boot/firmware/overlays/
 $ sudo cp arch/arm64/boot/dts/overlays/README /boot/firmware/overlays/
-$ sudo cp arch/arm64/boot/Image.gz /boot/firmware/$KERNEL.img
 ----
 
 To install the 32-bit kernel:
 
-. Install the modules:
+. Create a backup of your current kernel and install the fresh kernel image:
 +
 [source,console]
 ----
-$ sudo make modules_install
+$ sudo cp /boot/firmware/$KERNEL.img /boot/firmware/$KERNEL-backup.img
+$ sudo cp arch/arm/boot/zImage /boot/firmware/$KERNEL.img
 ----
 . Depending on your xref:linux_kernel.adoc#identify-your-kernel-version[kernel version], run the following command:
   ** For kernels up to version 6.4:
@@ -215,13 +234,19 @@ $ sudo cp arch/arm/boot/dts/*.dtb /boot/firmware/
 ----
 $ sudo cp arch/arm/boot/dts/broadcom/*.dtb /boot/firmware/
 ----
-. Finally, copy over the overlays, README, and image:
+. Finally, copy over the overlays and README:
 +
 [source,console]
 ----
 $ sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/firmware/overlays/
 $ sudo cp arch/arm/boot/dts/overlays/README /boot/firmware/overlays/
-$ sudo cp arch/arm/boot/zImage /boot/firmware/$KERNEL.img
+----
+
+Finally, run the following command to reboot your Raspberry Pi and run your freshly-compiled kernel:
+
+[source,console]
+----
+$ sudo reboot
 ----
 
 [TIP]
@@ -235,13 +260,6 @@ kernel=kernel-myconfig.img
 
 Combine this approach with a custom `LOCALVERSION` to keep your custom kernel separate from the stock kernel image managed by the system. With this arrangement, you can quickly revert to a stock kernel in the event that your kernel cannot boot.
 ====
-
-Run the following command to reboot your Raspberry Pi and run your freshly-compiled kernel:
-
-[source,console]
-----
-$ sudo reboot
-----
 
 === Cross-compile the kernel
 
@@ -285,7 +303,7 @@ Enter the following commands to build the sources and Device Tree files:
 
 [cols="8,<.^20a,60a"]
 |===
-| Target Architecture | Model | Command
+| Target Architecture | Target Model | Command
 
 .9+^.^| 64-bit
 | Raspberry Pi 3
@@ -448,8 +466,8 @@ $ sudo umount mnt/boot
 $ sudo umount mnt/root
 ----
 
-* To install the 32-bit kernel:
-+
+To install the 32-bit kernel:
+
 . Run the following commands to create a backup image of the current kernel and install the fresh kernel image:
 +
 [source,console]
@@ -481,6 +499,9 @@ $ sudo umount mnt/boot
 $ sudo umount mnt/root
 ----
 
+Finally, connect the boot media to your Raspberry Pi and connect it to power to run your freshly-compiled kernel.
+
+
 [TIP]
 ====
 Alternatively, copy the kernel with a different filename (e.g. `kernel-myconfig.img`) instead of overwriting the `kernel.img` file. Then, edit `config.txt` in the boot partition to select your kernel:
@@ -492,5 +513,3 @@ kernel=kernel-myconfig.img
 
 Combine this approach with a custom `LOCALVERSION` to keep your custom kernel separate from the stock kernel image managed by the system. With this arrangement, you can quickly revert to a stock kernel in the event that your kernel cannot boot.
 ====
-
-Connect the boot media to your Raspberry Pi and connect it to power to run your freshly-compiled kernel.
