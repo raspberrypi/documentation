@@ -78,11 +78,11 @@ $ make bcm2711_defconfig
 | Raspberry Pi Compute Module 3
 | Raspberry Pi 3+
 | Raspberry Pi Compute Module 3+
+| Raspberry Pi Zero 2 W
 | Raspberry Pi 4
 | Raspberry Pi 400
 | Raspberry Pi Compute Module 4
 | Raspberry Pi Compute Module 4S
-| Raspberry Pi Zero 2 W
 
 
 .^| Raspberry Pi 5
@@ -307,11 +307,11 @@ $ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2711_defconfig
 | Raspberry Pi Compute Module 3
 | Raspberry Pi 3+
 | Raspberry Pi Compute Module 3+
+| Raspberry Pi Zero 2 W
 | Raspberry Pi 4
 | Raspberry Pi 400
 | Raspberry Pi Compute Module 4
 | Raspberry Pi Compute Module 4S
-| Raspberry Pi Zero 2 W
 
 .^| Raspberry Pi 5
 .1+.^|
