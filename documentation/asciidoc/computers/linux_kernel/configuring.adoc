@@ -13,7 +13,7 @@ The `menuconfig` tool requires the `ncurses` development headers to compile prop
 $ sudo apt install libncurses5-dev
 ----
 
-Next, xref:linux_kernel.adoc#download-kernel-source[download your kernel sources]. In particular, ensure you have installed the xref:linux_kernel.adoc#native-build-sources[default native configuration] or xref:linux_kernel.adoc#cross-compiled-build-sources[default cross-compilation configuration].
+Next, xref:linux_kernel.adoc#download-kernel-source[download your kernel sources]. In particular, ensure you have installed the xref:linux_kernel.adoc#native-build-configuration[default native configuration] or xref:linux_kernel.adoc#cross-compiled-build-configuration[default cross-compilation configuration].
 
 === `menuconfig`
 

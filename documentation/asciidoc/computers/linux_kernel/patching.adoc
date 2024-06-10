@@ -43,7 +43,7 @@ $ gunzip patch-6.1.38-rt13-rc1.patch.gz
 $ cat patch-6.1.38-rt13-rc1.patch | patch -p1
 ----
 
-Some kernel developers distribute patches in the *mailbox format*, a folder containing multiple patch files. Use Git to apply these patches.
+Some developers distribute patches in the *mailbox format*, a folder containing multiple patch files. Use Git to apply these patches.
 
 [NOTE]
 ====
