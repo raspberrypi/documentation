@@ -203,13 +203,13 @@ To install the 32-bit kernel:
 $ sudo make modules_install
 ----
 . Depending on your xref:linux_kernel.adoc#identify-your-kernel-version[kernel version], run the following command:
-  * For kernels up to version 6.4:
+  ** For kernels up to version 6.4:
 +
 [source,console]
 ----
 $ sudo cp arch/arm/boot/dts/*.dtb /boot/firmware/
 ----
-* For kernels version 6.5 and above:
+** For kernels version 6.5 and above:
 +
 [source,console]
 ----
@@ -459,13 +459,13 @@ $ sudo cp arch/arm/boot/zImage mnt/boot/$KERNEL.img
 ----
 
 . Depending on your xref:linux_kernel.adoc#identify-your-kernel-version[kernel version], run the following command to install Device Tree blobs:
-  * For kernels up to version 6.4:
+  ** For kernels up to version 6.4:
 +
 [source,console]
 ----
 $ sudo cp arch/arm/boot/dts/*.dtb mnt/boot/
 ----
-* For kernels version 6.5 and above:
+** For kernels version 6.5 and above:
 +
 [source,console]
 ----
