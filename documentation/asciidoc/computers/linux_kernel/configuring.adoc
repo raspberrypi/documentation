@@ -41,7 +41,7 @@ $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
 To navigate the `menuconfig` utility, use your keyboard:
 
 * to navigate directionally, use the *arrow keys*
-* to enter a submenu (indicated by `--->`), press the *Enter* key
+* to enter a submenu (indicated by `+--->+`), press the *Enter* key
 * to go up a level or exit, press *Escape* twice
 * to toggle the state of a binary option, press the *space bar*
 * to select the state of a multiple choice option, press *Enter* to open a submenu, the *arrow keys* to navigate the submenu, and press *Enter* again to select a state
