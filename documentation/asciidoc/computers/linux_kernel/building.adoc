@@ -144,7 +144,7 @@ The 32-bit distribution of Raspberry Pi OS on a Raspberry Pi 4B, 5, 400, Compute
 [[native-customisation]]
 ==== Customise the kernel version using `LOCALVERSION`
 
-Adjust `LOCALVERSION` to clarify that you are running your own kernel in the output of `uname` and prevent the kernel from overwriting existing modules in `/lib/modules`.
+To prevent the kernel from overwriting existing modules in `/lib/modules` and to clarify that you run your own kernel in `uname` output, adjust `LOCALVERSION`.
 
 To adjust `LOCALVERSION`, change the following line in `.config`:
 
@@ -153,7 +153,7 @@ To adjust `LOCALVERSION`, change the following line in `.config`:
 CONFIG_LOCALVERSION="-v7l-MY_CUSTOM_KERNEL"
 ----
 
-You can also change this setting graphically with `menuconfig` at *General setup* > *Local version - append to kernel release*. For more information about `menuconfig`, see xref:linux_kernel.adoc#configure-the-kernel[the kernel configuration instructions].
+TIP: You can also change this setting graphically with `menuconfig` at *General setup* > *Local version - append to kernel release*. For more information about `menuconfig`, see xref:linux_kernel.adoc#configure-the-kernel[the kernel configuration instructions].
 
 [[native-build]]
 ==== Build
@@ -233,7 +233,7 @@ Alternatively, copy the kernel with a different filename (e.g. `kernel-myconfig.
 kernel=kernel-myconfig.img
 ----
 
-This has the advantage of keeping your custom kernel separate from the stock kernel image managed by the system. With this arrangement, you can quickly revert to a stock kernel in the event that your kernel cannot boot.
+Combine this approach with a custom `LOCALVERSION` to keep your custom kernel separate from the stock kernel image managed by the system. With this arrangement, you can quickly revert to a stock kernel in the event that your kernel cannot boot.
 ====
 
 Run the following command to reboot your Raspberry Pi and run your freshly-compiled kernel:
@@ -355,7 +355,7 @@ $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
 [[cross-compiled-customisation]]
 ==== Customise the kernel version using `LOCALVERSION`
 
-Before you build, adjust `LOCALVERSION` to clarify that you are running your own kernel in the output of `uname` and prevent the kernel from overwriting existing modules in `/lib/modules`.
+To prevent the kernel from overwriting existing modules in `/lib/modules` and to clarify that you run your own kernel in `uname` output, adjust `LOCALVERSION`.
 
 To adjust `LOCALVERSION`, change the following line in `.config`:
 
@@ -364,7 +364,7 @@ To adjust `LOCALVERSION`, change the following line in `.config`:
 CONFIG_LOCALVERSION="-v7l-MY_CUSTOM_KERNEL"
 ----
 
-You can also change this setting graphically with `menuconfig` at *General setup* > *Local version - append to kernel release*. For more information about `menuconfig`, see xref:linux_kernel.adoc#configure-the-kernel[the kernel configuration instructions].
+TIP: You can also change this setting graphically with `menuconfig` at *General setup* > *Local version - append to kernel release*. For more information about `menuconfig`, see xref:linux_kernel.adoc#configure-the-kernel[the kernel configuration instructions].
 
 [[cross-compiled-build]]
 ==== Build
@@ -490,7 +490,7 @@ Alternatively, copy the kernel with a different filename (e.g. `kernel-myconfig.
 kernel=kernel-myconfig.img
 ----
 
-This has the advantage of keeping your custom kernel separate from the stock kernel image managed by the system. With this arrangement, you can quickly revert to a stock kernel in the event that your kernel cannot boot.
+Combine this approach with a custom `LOCALVERSION` to keep your custom kernel separate from the stock kernel image managed by the system. With this arrangement, you can quickly revert to a stock kernel in the event that your kernel cannot boot.
 ====
 
 Connect the boot media to your Raspberry Pi and connect it to power to run your freshly-compiled kernel.
