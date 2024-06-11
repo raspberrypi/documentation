@@ -4,7 +4,7 @@ Raspberry Pi makes computers in several different **series**:
 
 * The *flagship* series, often referred to by the shorthand "Raspberry Pi", offers performant hardware, a full Linux operating system, and a variety of common ports in a form factor roughly the size of a credit card.
 * The *zero* series offers a full Linux operating system and a bare minimum of ports at an affordable price point in a minimal form factor with low power consumption.
-* The *Compute Module* series, often referred to by the shorthand "CM", offers performant hardware and a full Linux operating system in a minimal form factor. Compute Module models have equivalent hardware to the corresponding flagship models, but with fewer ports and no physical GPIO pins, since Compute Modules are traditionally connected to a separate motherboard that provides that functionality.
+* The *Compute Module* series, often referred to by the shorthand "CM", offers performant hardware and a full Linux operating system in a minimal form factor. Compute Module models have equivalent hardware to the corresponding flagship models, but with fewer ports and no onboard GPIO pins, since Compute Modules are traditionally connected to a separate motherboard that provides that functionality.
 
 Additionally, Raspberry Pi makes the *Pico* series of https://en.wikipedia.org/wiki/Microcontroller[microcontrollers], which offer minimal hardware in a minimal form factor. Pico models do not run Linux or allow for removable storage, but instead allow programming by flashing a binary onto onboard flash storage.
 
