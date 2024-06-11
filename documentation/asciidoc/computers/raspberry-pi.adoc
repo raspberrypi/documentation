@@ -1,3 +1,5 @@
+include::raspberry-pi/introduction.adoc[]
+
 include::raspberry-pi/raspberry-pi-schematics.adoc[]
 
 include::raspberry-pi/raspberry-pi-compliance.adoc[]
