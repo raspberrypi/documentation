@@ -11,7 +11,7 @@ Additionally, Raspberry Pi makes the *Pico* series of https://en.wikipedia.org/w
 === Flagship series
 
 *Model B* indicates the presence of an Ethernet port.
-*Model A* indicates a cheaper model with no Ethernet port, reduced RAM, and typically only a single USB port to limit board height.
+*Model A* indicates a cheaper model with no Ethernet port, reduced RAM, and fewer USB ports to limit board height.
 
 [cols="7a,1,2,3,5"]
 |===
@@ -166,7 +166,6 @@ a|
 * 2× micro HDMI
 * USB 2.0
 * 2× USB 3.0
-* 3.5mm AV jack
 * Gigabit Ethernet (1Gb/s)
 * 2.4/5GHz dual-band 802.11ac Wi-Fi (120Mb/s)
 * Bluetooth 5, Bluetooth Low Energy (BLE)
@@ -184,9 +183,10 @@ a|
 * 2× micro HDMI
 * 2× USB 2.0
 * 2× USB 3.0
-* 2× CSI camera/DSI display port
+* 2× CSI camera/DSI display ports
 * single-lane https://datasheets.raspberrypi.com/pcie/pcie-connector-standard.pdf[PCIe FFC connector]
-* UART connector
+* https://datasheets.raspberrypi.com/debug/debug-connector-specification.pdf[UART connector]
+* RTC battery connector
 * xref:raspberry-pi.adoc#fan-connector-pinout[four-pin JST-SH PWM fan connector]
 * PoE+-capable Gigabit Ethernet (1Gb/s)
 * 2.4/5GHz dual-band 802.11ac Wi-Fi 5 (300Mb/s)
@@ -206,7 +206,7 @@ All Zero models have the following connectivity:
 * a microSD card slot
 * a CSI camera port (version 1.3 of the original Zero introduced this port)
 * a mini HDMI port
-* 2× micro USB port (one for input power, one for external devices)
+* 2× micro USB ports (one for input power, one for external devices)
 
 [cols="3a,1,1,1,1"]
 |===
@@ -308,6 +308,7 @@ a|
 
 |===
 
+NOTE: Compute Modules use the physical DDR2 SODIMM form factor, but are not compatible with DDR2 SODIMM electrical specifications.
 
 For more information about Raspberry Pi Compute Modules, see xref:../computers/compute-module.adoc[the Compute Module documentation].
 
