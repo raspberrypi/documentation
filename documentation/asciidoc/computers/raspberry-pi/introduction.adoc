@@ -3,8 +3,8 @@
 Raspberry Pi makes computers in several different **series**:
 
 * The *flagship* series, often referred to by the shorthand "Raspberry Pi", offers performant hardware, a full Linux operating system, and a variety of common ports in a form factor roughly the size of a credit card.
-* The *zero* series offers a full Linux operating system and a bare minimum of ports at an affordable price point in a minimal form factor with low power consumption.
-* The *Compute Module* series, often referred to by the shorthand "CM", offers performant hardware and a full Linux operating system in a minimal form factor. Compute Module models have equivalent hardware to the corresponding flagship models, but with fewer ports and no onboard GPIO pins, since Compute Modules are traditionally connected to a separate motherboard that provides that functionality.
+* The *Zero* series offers a full Linux operating system and minimal ports at an affordable price point in a minimal form factor with low power consumption.
+* The *Compute Module* series, often referred to by the shorthand "CM", offers performant hardware and a full Linux operating system in a minimal form factor. Compute Module models have equivalent hardware to the corresponding flagship models, but with fewer ports and no onboard GPIO pins, since Compute Modules are traditionally connected to a separate baseboard that provides that functionality.
 
 Additionally, Raspberry Pi makes the *Pico* series of https://en.wikipedia.org/wiki/Microcontroller[microcontrollers], which offer minimal hardware in a minimal form factor. Pico models do not run Linux or allow for removable storage, but instead allow programming by flashing a binary onto onboard flash storage.
 
@@ -101,7 +101,7 @@ a|
 * DSI display port
 * 3.5mm AV jack
 * Ethernet (100Mb/s)
-* 2.4 GHz single-band 802.11n Wi-Fi (70Mb/s)
+* 2.4 GHz single-band 802.11n Wi-Fi (35Mb/s)
 * Bluetooth 4.1, Bluetooth Low Energy (BLE)
 * micro SD card slot
 * micro USB power
@@ -157,7 +157,7 @@ a|
 * 2.4/5GHz dual-band 802.11ac Wi-Fi (120Mb/s)
 * Bluetooth 5, Bluetooth Low Energy (BLE)
 * micro SD card slot
-* USB-C power
+* USB-C power (5V, 3A (15W))
 ^.^a|
 .Raspberry Pi 400
 image::images/400.jpg[alt="Raspberry Pi 400"]
@@ -204,7 +204,7 @@ Models containing the *H* suffix have header pins pre-soldered to the GPIO heade
 All Zero models have the following connectivity:
 
 * a microSD card slot
-* a CSI camera port
+* a CSI camera port (version 1.3 of the original Zero introduced this port)
 * a mini HDMI port
 * 2× micro USB port (one for input power, one for external devices)
 
