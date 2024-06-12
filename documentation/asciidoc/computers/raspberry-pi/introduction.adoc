@@ -208,34 +208,34 @@ All Zero models have the following connectivity:
 * a mini HDMI port
 * 2× micro USB ports (one for input power, one for external devices)
 
-[cols="3a,1,1,1,1"]
+[cols="3a,1,1,1,1,1"]
 |===
-| Model | SoC | Memory | Wi-Fi | GPIO
+| Model | SoC | Memory | Wi-Fi | Bluetooth | GPIO
 
 ^.^a|
 .Raspberry Pi Zero
 image::images/zero.jpg[alt="Raspberry Pi Zero"]
-| xref:processors.adoc#bcm2835[BCM2835] | 512MB | no | 40-pin GPIO header (unpopulated)
+| xref:processors.adoc#bcm2835[BCM2835] | 512MB | no | no | 40-pin GPIO header (unpopulated)
 ^.^a|
 .Raspberry Pi Zero W
 image::images/zero-w.jpg[alt="Raspberry Pi Zero W"]
-| xref:processors.adoc#bcm2835[BCM2835] | 512MB | yes | 40-pin GPIO header (unpopulated)
+| xref:processors.adoc#bcm2835[BCM2835] | 512MB | 2.4 GHz single-band 802.11n Wi-Fi (35Mb/s) | Bluetooth 4.0, Bluetooth Low Energy (BLE) | 40-pin GPIO header (unpopulated)
 ^.^a|
 .Raspberry Pi Zero WH
 image::images/zero-wh.jpg[alt="Raspberry Pi Zero WH"]
-| xref:processors.adoc#bcm2835[BCM2835] | 512MB | yes | 40-pin GPIO header
+| xref:processors.adoc#bcm2835[BCM2835] | 512MB | 2.4 GHz single-band 802.11n Wi-Fi (35Mb/s) | Bluetooth 4.0, Bluetooth Low Energy (BLE) | 40-pin GPIO header
 ^.^a|
 .Raspberry Pi Zero 2 W
 image::images/zero-2-w.jpg[alt="Raspberry Pi Zero 2 W"]
-| xref:processors.adoc#rp3a0[RP3A0] | 512MB | yes | 40-pin GPIO header (unpopulated)
+| xref:processors.adoc#rp3a0[RP3A0] | 512MB | 2.4 GHz single-band 802.11n Wi-Fi (35Mb/s) | Bluetooth 4.2, Bluetooth Low Energy (BLE) | 40-pin GPIO header (unpopulated)
 
 |===
 
 === Compute Module series
 
-[cols="3a,1,1,1,1,1"]
+[cols="3a,1,1,1,1,1,1"]
 |===
-| Model | SoC | Memory | Storage | Wi-Fi | Form factor
+| Model | SoC | Memory | Storage | Wi-Fi | Bluetooth | Form factor
 
 ^.^a|
 .Raspberry Pi Compute Module 1
@@ -244,7 +244,7 @@ image::images/compute-module-1.jpg[alt="Raspberry Pi Compute Module 1"]
 a|
 0GB (Lite)
 
-4GB | no | DDR2 SODIMM
+4GB | no | no | DDR2 SODIMM
 ^.^a|
 .Raspberry Pi Compute Module 3
 image::images/compute-module-3.jpg[alt="Raspberry Pi Compute Module 3"]
@@ -252,7 +252,7 @@ image::images/compute-module-3.jpg[alt="Raspberry Pi Compute Module 3"]
 a|
 0GB (Lite)
 
-4GB | no | DR2 SODIMM
+4GB | no | no | DR2 SODIMM
 ^.^a|
 .Raspberry Pi Compute Module 3+
 image::images/compute-module-3-plus.jpg[alt="Raspberry Pi Compute Module 3+"]
@@ -264,7 +264,7 @@ a|
 
 16GB
 
-32GB | no | DDR2 SODIMM
+32GB | no | no | DDR2 SODIMM
 ^.^a|
 .Raspberry Pi Compute Module 4S
 image::images/compute-module-4s.jpg[alt="Raspberry Pi Compute Module 4S"]
@@ -284,7 +284,7 @@ a|
 
 16GB
 
-32GB | no | DDR2 SODIMM
+32GB | no | no | DDR2 SODIMM
 ^.^a|
 .Raspberry Pi Compute Module 4
 image::images/compute-module-4.jpg[alt="Raspberry Pi Compute Module 4"]
@@ -304,7 +304,8 @@ a|
 
 16GB
 
-32GB | optional | dual 100-pin high density connectors
+32GB
+a| optional 2.4/5GHz dual-band 802.11ac Wi-Fi 5 (300Mb/s) | optional Bluetooth 5, Bluetooth Low Energy (BLE) | dual 100-pin high density connectors
 
 |===
 
@@ -316,26 +317,26 @@ For more information about Raspberry Pi Compute Modules, see xref:../computers/c
 
 Models containing the *H* suffix have header pins pre-soldered to the GPIO header. Models that lack the *H* suffix do not come with header pins attached to the GPIO header; the user must solder pins manually or attach a third-party pin kit.
 
-[cols="3,3,2,1,1,5"]
+[cols="3,1,1,1,2,2,2"]
 |===
-| Model | SoC | Memory | Storage | Wi-Fi | GPIO
+| Model | SoC | Memory | Storage | Wi-Fi | Bluetooth | GPIO
 
 a|
 .Raspberry Pi Pico
 image::images/pico.png[alt="Raspberry Pi Pico"]
-| xref:../microcontrollers/rp2040.adoc#welcome-to-rp2040[RP2040] | 264kB | 2MB | no | 40-pin GPIO header (unpopulated)
+| xref:../microcontrollers/rp2040.adoc#welcome-to-rp2040[RP2040] | 264kB | 2MB | no | no | 40-pin GPIO header (unpopulated)
 a|
 .Raspberry Pi Pico H
 image::images/pico-h.png[alt="Raspberry Pi Pico H"]
-| xref:../microcontrollers/rp2040.adoc#welcome-to-rp2040[RP2040] | 264kB | 2MB | no | 40-pin GPIO header
+| xref:../microcontrollers/rp2040.adoc#welcome-to-rp2040[RP2040] | 264kB | 2MB | no | no | 40-pin GPIO header
 a|
 .Raspberry Pi Pico W
 image::images/pico-w.png[alt="Raspberry Pi Pico W"]
-| xref:../microcontrollers/rp2040.adoc#welcome-to-rp2040[RP2040] | 264kB | 2MB | yes | 40-pin GPIO header (unpopulated)
+| xref:../microcontrollers/rp2040.adoc#welcome-to-rp2040[RP2040] | 264kB | 2MB | 2.4 GHz single-band 802.11n Wi-Fi (35Mb/s) | Bluetooth 5.2, Bluetooth Low Energy (BLE) | 40-pin GPIO header (unpopulated)
 a|
 .Raspberry Pi Pico WH
 image::images/pico-wh.png[alt="Raspberry Pi Pico WH"]
-| xref:../microcontrollers/rp2040.adoc#welcome-to-rp2040[RP2040] | 264kB | 2MB | yes | 40-pin GPIO header
+| xref:../microcontrollers/rp2040.adoc#welcome-to-rp2040[RP2040] | 264kB | 2MB | 2.4 GHz single-band 802.11n Wi-Fi (35Mb/s) | Bluetooth 5.2, Bluetooth Low Energy (BLE) | 40-pin GPIO header
 
 |===
 
