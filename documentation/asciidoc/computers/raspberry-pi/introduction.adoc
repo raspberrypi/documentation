@@ -1,4 +1,4 @@
-== Raspberry Pi hardware
+== Introduction
 
 Raspberry Pi makes computers in several different **series**:
 
