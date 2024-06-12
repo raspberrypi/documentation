@@ -332,11 +332,11 @@ image::images/pico-h.png[alt="Raspberry Pi Pico H"]
 a|
 .Raspberry Pi Pico W
 image::images/pico-w.png[alt="Raspberry Pi Pico W"]
-| xref:../microcontrollers/rp2040.adoc#welcome-to-rp2040[RP2040] | 264kB | 2MB | 2.4 GHz single-band 802.11n Wi-Fi (35Mb/s) | Bluetooth 5.2, Bluetooth Low Energy (BLE) | 40-pin GPIO header (unpopulated)
+| xref:../microcontrollers/rp2040.adoc#welcome-to-rp2040[RP2040] | 264kB | 2MB | 2.4 GHz single-band 802.11n Wi-Fi (10Mb/s) | Bluetooth 5.2, Bluetooth Low Energy (BLE) | 40-pin GPIO header (unpopulated)
 a|
 .Raspberry Pi Pico WH
 image::images/pico-wh.png[alt="Raspberry Pi Pico WH"]
-| xref:../microcontrollers/rp2040.adoc#welcome-to-rp2040[RP2040] | 264kB | 2MB | 2.4 GHz single-band 802.11n Wi-Fi (35Mb/s) | Bluetooth 5.2, Bluetooth Low Energy (BLE) | 40-pin GPIO header
+| xref:../microcontrollers/rp2040.adoc#welcome-to-rp2040[RP2040] | 264kB | 2MB | 2.4 GHz single-band 802.11n Wi-Fi (10Mb/s) | Bluetooth 5.2, Bluetooth Low Energy (BLE) | 40-pin GPIO header
 
 |===
 
