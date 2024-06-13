@@ -44,17 +44,16 @@
 
   function scrollToElement(selector) {
     try {
-      // if found, scroll to that id hash
-      console.log("Scrolling to ", selector);
       var target = document.querySelector(selector);
       if (target) {
-        var bbox = target.getBoundingClientRect();
-        var myid = target.getAttribute("id");
-        window.scrollTo({
-          top: bbox.top,
-          left: 0,
-          behavior: "smooth",
-        });
+        setTimeout(function () {
+          target.scrollIntoView({ behavior: "instant" });
+          setTimeout(function () {
+            target.scrollIntoView({ behavior: "instant" });
+          },100);
+        },1);
+        
+        
       } else {
         console.log("Target not found :(");
       }
