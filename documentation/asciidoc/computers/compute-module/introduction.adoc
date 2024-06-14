@@ -19,7 +19,7 @@ image::images/cm4.jpg[alt="Compute Module 4", width="60%"]
 
 The Compute Module 4 (CM4) contains the internals of a Raspberry Pi 4 (the BCM2711 processor and 1GB, 2GB, 4GB, or 8GB of RAM) as well as an optional 0GB (Lite), 8GB, 16GB or 32GB of eMMC flash storage.
 
-Unlike CM1, CM3, and CM3+, CM4 does not use the DDR2 SODIMM form factor. Instead, CM4 uses two 100-pin high density connectors in a smaller physical footprint.
+Unlike CM1, CM3, and CM3+, CM4 does not use the DDR2 SO-DIMM form factor. Instead, CM4 uses two 100-pin high density connectors in a smaller physical footprint.
 This change helped add the following interfaces:
 
 * an additional second HDMI port
@@ -33,7 +33,7 @@ The previous form factor could not have supported these interfaces.
 .Compute Module 4S
 image::images/cm4s.jpg[alt="Compute Module 4S", width="60%"]
 
-The Compute Module 4S (CM4S) contains the internals of a Raspberry Pi 4 (the BCM2711 processor and 1GB, 2GB, 4GB, or 8GB of RAM) as well as an optional 0GB (Lite), 8GB, 16GB or 32GB of eMMC flash storage. Unlike CM4, CM4S comes in same the DDR2 SODIMM form factor as CM1, CM3, and CM3+.
+The Compute Module 4S (CM4S) contains the internals of a Raspberry Pi 4 (the BCM2711 processor and 1GB, 2GB, 4GB, or 8GB of RAM) as well as an optional 0GB (Lite), 8GB, 16GB or 32GB of eMMC flash storage. Unlike CM4, CM4S comes in same the DDR2 SO-DIMM form factor as CM1, CM3, and CM3+.
 
 [[compute-module-3-plus]]
 === Compute Module 3+
