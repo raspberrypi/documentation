@@ -1,0 +1,361 @@
+== Introduction
+
+Raspberry Pi makes computers in several different **series**:
+
+* The *flagship* series, often referred to by the shorthand "Raspberry Pi", offers high-performance hardware, a full Linux operating system, and a variety of common ports in a form factor roughly the size of a credit card.
+* The *Zero* series offers a full Linux operating system and essential ports at an affordable price point in a minimal form factor with low power consumption.
+* The *Compute Module* series, often referred to by the shorthand "CM", offers high-performance hardware and a full Linux operating system in a minimal form factor suitable for industrial and embedded applications. Compute Module models feature hardware equivalent to the corresponding flagship models, but with fewer ports and no on-board GPIO pins. Instead, users should connect Compute Modules to a separate baseboard that provides the ports and pins required for a given application.
+
+Additionally, Raspberry Pi makes the *Pico* series of tiny, versatile https://en.wikipedia.org/wiki/Microcontroller[microcontroller] boards. Pico models do not run Linux or allow for removable storage, but instead allow programming by flashing a binary onto on-board flash storage.
+
+=== Flagship series
+
+*Model B* indicates the presence of an Ethernet port.
+*Model A* indicates a lower-cost model in a smaller form factor with no Ethernet port, reduced RAM, and fewer USB ports to limit board height.
+
+[cols="7a,1,2,3,5"]
+|===
+| Model | SoC | Memory | GPIO | Connectivity
+
+^.^a|
+.Raspberry Pi Model B
+image::images/model-b.jpg[alt="Raspberry Pi Model B"]
+| xref:processors.adoc#bcm2835[BCM2835]
+a|
+256MB
+
+512MB | 26-pin GPIO header
+a|
+* HDMI
+* 2 × USB 2.0
+* CSI camera port
+* DSI display port
+* 3.5mm audio jack
+* RCA composite video
+* Ethernet (100Mb/s)
+* SD card slot
+* micro USB power
+^.^a|
+.Raspberry Pi Model A
+image::images/model-a.jpg[alt="Raspberry Pi Model A",width="80%"]
+| xref:processors.adoc#bcm2835[BCM2835] | 256MB | 26-pin GPIO header
+a|
+* HDMI
+* USB 2.0
+* CSI camera port
+* DSI display port
+* 3.5mm audio jack
+* RCA composite video
+* SD card slot
+* micro USB power
+^.^a|
+.Raspberry Pi Model B+
+image::images/model-b-plus.jpg[alt="Raspberry Pi Model B+"]
+| xref:processors.adoc#bcm2835[BCM2835] | 512MB | 40-pin GPIO header
+a|
+* HDMI
+* 4 × USB 2.0
+* CSI camera port
+* DSI display port
+* 3.5mm AV jack
+* Ethernet (100Mb/s)
+* microSD card slot
+* micro USB power
+^.^a|
+.Raspberry Pi Model A+
+image::images/model-a-plus.jpg[alt="Raspberry Pi Model A+"]
+| xref:processors.adoc#bcm2835[BCM2835]
+a|
+256MB
+
+512MB | 40-pin GPIO header
+a|
+* HDMI
+* USB 2.0
+* CSI camera port
+* DSI display port
+* 3.5mm AV jack
+* microSD card slot
+* micro USB power
+^.^a|
+.Raspberry Pi 2 Model B
+image::images/2-model-b.jpg[alt="Raspberry Pi 2 Model B"]
+| xref:processors.adoc#bcm2836[BCM2836] (in version 1.2, switched to xref:processors.adoc#bcm2837[BCM2837]) | 1 GB | 40-pin GPIO header
+a|
+* HDMI
+* 4 × USB 2.0
+* CSI camera port
+* DSI display port
+* 3.5mm AV jack
+* Ethernet (100Mb/s)
+* microSD card slot
+* micro USB power
+^.^a|
+.Raspberry Pi 3 Model B
+image::images/3-model-b.jpg[alt="Raspberry Pi 3 Model B"]
+| xref:processors.adoc#bcm2837[BCM2837] | 1 GB | 40-pin GPIO header
+a|
+* HDMI
+* 4 × USB 2.0
+* CSI camera port
+* DSI display port
+* 3.5mm AV jack
+* Ethernet (100Mb/s)
+* 2.4GHz single-band 802.11n Wi-Fi (35Mb/s)
+* Bluetooth 4.1, Bluetooth Low Energy (BLE)
+* microSD card slot
+* micro USB power
+^.^a|
+.Raspberry Pi 3 Model B+
+image::images/3-model-b-plus.jpg[alt="Raspberry Pi 3 Model B+"]
+| xref:processors.adoc#bcm2837b0[BCM2837b0] | 1GB | 40-pin GPIO header
+a|
+* HDMI
+* 4 × USB 2.0
+* CSI camera port
+* DSI display port
+* 3.5mm AV jack
+* PoE-capable Ethernet (300Mb/s)
+* 2.4/5GHz dual-band 802.11ac Wi-Fi (100Mb/s)
+* Bluetooth 4.2, Bluetooth Low Energy (BLE)
+* microSD card slot
+* micro USB power
+^.^a|
+.Raspberry Pi 3 Model A+
+image::images/3-model-a-plus.jpg[alt="Raspberry Pi 3 Model A+"]
+| xref:processors.adoc#bcm2837b0[BCM2837b0] | 512 MB | 40-pin GPIO header
+a|
+* HDMI
+* USB 2.0
+* CSI camera port
+* DSI display port
+* 3.5mm AV jack
+* 2.4/5GHz dual-band 802.11ac Wi-Fi (100Mb/s)
+* Bluetooth 4.2, Bluetooth Low Energy (BLE)
+* microSD card slot
+* micro USB power
+^.^a|
+.Raspberry Pi 4 Model B
+image::images/4-model-b.jpg[alt="Raspberry Pi 4 Model B"]
+| xref:processors.adoc#bcm2711[BCM2711]
+a|
+1GB
+
+2GB
+
+4GB
+
+8GB | 40-pin GPIO header
+a|
+* 2 × micro HDMI
+* 2 × USB 2.0
+* 2 × USB 3.0
+* CSI camera port
+* DSI display port
+* 3.5mm AV jack
+* PoE-capable Gigabit Ethernet (1Gb/s)
+* 2.4/5GHz dual-band 802.11ac Wi-Fi (120Mb/s)
+* Bluetooth 5, Bluetooth Low Energy (BLE)
+* microSD card slot
+* USB-C power (5V, 3A (15W))
+^.^a|
+.Raspberry Pi 400
+image::images/400.jpg[alt="Raspberry Pi 400"]
+| xref:processors.adoc#bcm2711[BCM2711] | 4GB | 40-pin GPIO header
+a|
+* 2 × micro HDMI
+* USB 2.0
+* 2 × USB 3.0
+* Gigabit Ethernet (1Gb/s)
+* 2.4/5GHz dual-band 802.11ac Wi-Fi (120Mb/s)
+* Bluetooth 5, Bluetooth Low Energy (BLE)
+* microSD card slot
+* USB-C power (5V, 3A (15W))
+^.^a|
+.Raspberry Pi 5
+image::images/5.jpg[alt="Raspberry Pi 5"]
+| xref:processors.adoc#bcm2712[BCM2712]
+a|
+4GB
+
+8GB | 40-pin GPIO header
+a|
+* 2 × micro HDMI
+* 2 × USB 2.0
+* 2 × USB 3.0
+* 2 × CSI camera/DSI display ports
+* single-lane https://datasheets.raspberrypi.com/pcie/pcie-connector-standard.pdf[PCIe FFC connector]
+* https://datasheets.raspberrypi.com/debug/debug-connector-specification.pdf[UART connector]
+* RTC battery connector
+* xref:raspberry-pi.adoc#fan-connector-pinout[four-pin JST-SH PWM fan connector]
+* PoE+-capable Gigabit Ethernet (1Gb/s)
+* 2.4/5GHz dual-band 802.11ac Wi-Fi 5 (300Mb/s)
+* Bluetooth 5, Bluetooth Low Energy (BLE)
+* microSD card slot
+* USB-C power (5V, 5A (25W) or 5V, 3A (15W) with a 600mA peripheral limit)
+|===
+
+For more information about the ports on the Raspberry Pi flagship series, see the xref:raspberry-pi.adoc#schematics-and-mechanical-drawings[Schematics and mechanical drawings].
+
+=== Zero series
+
+Models with the *H* suffix have header pins pre-soldered to the GPIO header. Models that lack the *H* suffix do not come with header pins attached to the GPIO header; the user must solder pins manually or attach a third-party pin kit.
+
+All Zero models have the following connectivity:
+
+* a microSD card slot
+* a CSI camera port (version 1.3 of the original Zero introduced this port)
+* a mini HDMI port
+* 2 × micro USB ports (one for input power, one for external devices)
+
+[cols="3a,1,1,1,2"]
+|===
+| Model | SoC | Memory | GPIO | Wireless Connectivity
+
+^.^a|
+.Raspberry Pi Zero
+image::images/zero.jpg[alt="Raspberry Pi Zero"]
+| xref:processors.adoc#bcm2835[BCM2835] | 512MB | 40-pin GPIO header (unpopulated) ^| none
+^.^a|
+.Raspberry Pi Zero W
+image::images/zero-w.jpg[alt="Raspberry Pi Zero W"]
+| xref:processors.adoc#bcm2835[BCM2835] | 512MB | 40-pin GPIO header (unpopulated)
+a|
+* 2.4GHz single-band 802.11n Wi-Fi (35Mb/s)
+* Bluetooth 4.0, Bluetooth Low Energy (BLE)
+^.^a|
+.Raspberry Pi Zero WH
+image::images/zero-wh.jpg[alt="Raspberry Pi Zero WH"]
+| xref:processors.adoc#bcm2835[BCM2835] | 512MB | 40-pin GPIO header
+a|
+* 2.4GHz single-band 802.11n Wi-Fi (35Mb/s)
+* Bluetooth 4.0, Bluetooth Low Energy (BLE)
+^.^a|
+.Raspberry Pi Zero 2 W
+image::images/zero-2-w.jpg[alt="Raspberry Pi Zero 2 W"]
+| xref:processors.adoc#rp3a0[RP3A0] | 512MB | 40-pin GPIO header (unpopulated)
+a|
+* 2.4GHz single-band 802.11n Wi-Fi (35Mb/s)
+* Bluetooth 4.2, Bluetooth Low Energy (BLE)
+|===
+
+=== Compute Module series
+
+[cols="3a,1,1,1,1,2"]
+|===
+| Model | SoC | Memory | Storage | Form factor | Wireless Connectivity
+
+^.^a|
+.Raspberry Pi Compute Module 1
+image::images/compute-module-1.jpg[alt="Raspberry Pi Compute Module 1"]
+| xref:processors.adoc#bcm2835[BCM2835] | 512MB
+a|
+0GB (Lite)
+
+4GB | DDR2 SO-DIMM ^| none
+^.^a|
+.Raspberry Pi Compute Module 3
+image::images/compute-module-3.jpg[alt="Raspberry Pi Compute Module 3"]
+| xref:processors.adoc#bcm2837[BCM2837] | 1GB
+a|
+0GB (Lite)
+
+4GB | DDR2 SO-DIMM ^| none
+^.^a|
+.Raspberry Pi Compute Module 3+
+image::images/compute-module-3-plus.jpg[alt="Raspberry Pi Compute Module 3+"]
+| xref:processors.adoc#bcm2837b0[BCM2837b0] | 1GB
+a|
+0GB (Lite)
+
+8GB
+
+16GB
+
+32GB | DDR2 SO-DIMM ^| none
+^.^a|
+.Raspberry Pi Compute Module 4S
+image::images/compute-module-4s.jpg[alt="Raspberry Pi Compute Module 4S"]
+| xref:processors.adoc#bcm2711[BCM2711]
+a|
+1GB
+
+2GB
+
+4GB
+
+8GB
+a|
+0GB (Lite)
+
+8GB
+
+16GB
+
+32GB | DDR2 SO-DIMM ^| none
+^.^a|
+.Raspberry Pi Compute Module 4
+image::images/compute-module-4.jpg[alt="Raspberry Pi Compute Module 4"]
+| xref:processors.adoc#bcm2711[BCM2711]
+a|
+1GB
+
+2GB
+
+4GB
+
+8GB
+a|
+0GB (Lite)
+
+8GB
+
+16GB
+
+32GB
+| dual 100-pin high density connectors
+a| optional:
+
+* 2.4/5GHz dual-band 802.11ac Wi-Fi 5 (300Mb/s)
+* Bluetooth 5, Bluetooth Low Energy (BLE)
+
+|===
+
+NOTE: Several Compute Modules use the physical DDR2 SO-DIMM form factor, but are not compatible with DDR2 SO-DIMM electrical specifications.
+
+For more information about Raspberry Pi Compute Modules, see xref:../computers/compute-module.adoc[the Compute Module documentation].
+
+=== Pico microcontrollers
+
+Models with the *H* suffix have header pins pre-soldered to the GPIO header. Models that lack the *H* suffix do not come with header pins attached to the GPIO header; the user must solder pins manually or attach a third-party pin kit.
+
+[cols="3,1,1,1,1,2"]
+|===
+| Model | SoC | Memory | Storage | GPIO | Wireless Connectivity
+
+a|
+.Raspberry Pi Pico
+image::images/pico.png[alt="Raspberry Pi Pico"]
+| xref:../microcontrollers/rp2040.adoc#welcome-to-rp2040[RP2040] | 264kB | 2MB | 40-pin GPIO header (unpopulated) ^| none
+a|
+.Raspberry Pi Pico H
+image::images/pico-h.png[alt="Raspberry Pi Pico H"]
+| xref:../microcontrollers/rp2040.adoc#welcome-to-rp2040[RP2040] | 264kB | 2MB | 40-pin GPIO header (unpopulated) ^| none
+a|
+.Raspberry Pi Pico W
+image::images/pico-w.png[alt="Raspberry Pi Pico W"]
+| xref:../microcontrollers/rp2040.adoc#welcome-to-rp2040[RP2040] | 264kB | 2MB | 40-pin GPIO header (unpopulated)
+a|
+* 2.4GHz single-band 802.11n Wi-Fi (10Mb/s)
+* Bluetooth 5.2, Bluetooth Low Energy (BLE)
+a|
+.Raspberry Pi Pico WH
+image::images/pico-wh.png[alt="Raspberry Pi Pico WH"]
+| xref:../microcontrollers/rp2040.adoc#welcome-to-rp2040[RP2040] | 264kB | 2MB | 40-pin GPIO header
+a|
+* 2.4GHz single-band 802.11n Wi-Fi (10Mb/s)
+* Bluetooth 5.2, Bluetooth Low Energy (BLE)
+
+|===
+
+For more information about Raspberry Pi Pico models, see xref:../microcontrollers/raspberry-pi-pico.adoc[the Pico documentation].
