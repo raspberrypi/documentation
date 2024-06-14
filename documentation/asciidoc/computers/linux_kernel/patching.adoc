@@ -17,12 +17,13 @@ Always check your version of the kernel before applying patches. In a kernel sou
 
 [source,console]
 ----
-$ head Makefile -n 3
+$ head Makefile -n 4
 ----
 
 You should see output similar to the following:
 
 ----
+# SPDX-License-Identifier: GPL-2.0
 VERSION = 6
 PATCHLEVEL = 1
 SUBLEVEL = 38
