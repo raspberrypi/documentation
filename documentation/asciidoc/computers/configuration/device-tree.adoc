@@ -917,7 +917,7 @@ The following properties are specific to the BCM2711 and BCM2712 SPI EEPROM boot
 | xref:raspberry-pi.adoc#usb-mass-storage-boot[USB boot] using the BCM2711 USB host controller
 
 | 5
-| xref:raspberry-pi.adoc#boot_ramdisk[RAM disk - boot.img]
+| xref:config_txt.adoc#boot_ramdisk[RAM disk - boot.img]
 
 | 6
 | xref:raspberry-pi.adoc#nvme-ssd-boot[NVMe boot]
