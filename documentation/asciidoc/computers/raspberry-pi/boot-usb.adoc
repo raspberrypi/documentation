@@ -24,7 +24,7 @@ The host first sends a structure to the device down control endpoint 0. This con
 
 === USB host boot mode
 
-NOTE: Host boot is available on the xref:raspberry-pi.adoc#compute-module-series[Compute Module series since Compute Module 4 and 4S], xref:raspberry-pi.adoc#zero-series[Zero series since Zero 2 W], Raspberry Pi 2B (version 1.2), Raspberry Pi 3B, and xref:raspberry-pi.adoc#flagship-series[all flagship series devices since Raspberry Pi 3B+]. Raspberry Pi 3A+ supports mass storage boot, but not network boot.
+NOTE: Host boot is available on the xref:raspberry-pi.adoc#compute-module-series[Compute Module series since Compute Module 3], xref:raspberry-pi.adoc#zero-series[Zero series since Zero 2 W], Raspberry Pi 2B (version 1.2), Raspberry Pi 3B, and xref:raspberry-pi.adoc#flagship-series[all flagship series devices since Raspberry Pi 3B+]. Raspberry Pi 3A+ supports mass storage boot, but not network boot.
 
 USB host boot mode uses the following logic:
 
