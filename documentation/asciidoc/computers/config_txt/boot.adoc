@@ -101,3 +101,155 @@ Specifies a subdirectory/prefix from which to load overlays, and defaults to `ov
 
 NOTE: Unless `+${os_prefix}${overlay_prefix}README+` exists, overlays are shared with the main OS (i.e. `os_prefix` is ignored).
 
+=== Configuration Properties
+
+Raspberry Pi 5 requires a `config.txt` file to be present to indicate that the partition is bootable.
+
+[[boot_ramdisk]]
+==== `boot_ramdisk`
+
+If this property is set to `1` then the bootloader will attempt load a ramdisk file called `boot.img` containing the xref:configuration.adoc#boot-folder-contents[boot filesystem]. Subsequent files (e.g. `start4.elf`) are read from the ramdisk instead of the original boot file system.
+
+The primary purpose of `boot_ramdisk` is to support `secure-boot`, however, unsigned `boot.img` files can also be useful to Network Boot or `RPIBOOT` configurations.
+
+* The maximum size for a ramdisk file is 96MB.
+* `boot.img` files are raw disk `.img` files. The recommended format is a plain FAT32 partition with no MBR.
+* The memory for the ramdisk filesystem is released before the operating system is started.
+* If xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT] is selected then the bootloader will search for `tryboot.img` instead of `boot.img`.
+* See also xref:config_txt.adoc#autoboot-txt[autoboot.txt].
+
+For more information about `secure-boot` and creating `boot.img` files please see https://github.com/raspberrypi/usbboot/blob/master/Readme.md[USBBOOT].
+
+Default: `0`
+
+[[boot_load_flags]]
+==== `boot_load_flags`
+
+Experimental property for custom firmware (bare metal).
+
+Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any compatibility checks (e.g. is USB MSD boot supported) and resets PCIe before starting the executable.
+
+Not relevant on Raspberry Pi 5 because there is no `start.elf` file.
+
+Default: `0x0`
+
+[[pciex4_reset]]
+==== `pciex4_reset`
+
+Raspberry Pi 5 only.
+
+By default, the PCIe x4 controller used by `RP1` is reset before starting the operating system. If this parameter is set to `0` then the reset is disabled allowing operating system or bare metal code to inherit the PCIe configuration setup from the bootloader.
+
+Default: `1`
+
+[[uart_2ndstage]]
+==== `uart_2ndstage`
+
+If `uart_2ndstage` is `1` then enable debug logging to the UART. This option also automatically enables UART logging in `start.elf`. This is also described on the xref:config_txt.adoc#boot-options[Boot options] page.
+
+The `BOOT_UART` property also enables bootloader UART logging but does not enable UART logging in `start.elf` unless `uart_2ndstage=1` is also set.
+
+Default: `0`
+
+[[erase_eeprom]]
+==== `erase_eeprom`
+
+If `erase_eeprom` is set to `1` then `recovery.bin` will erase the entire SPI EEPROM instead of flashing the bootloader image. This property has no effect during a normal boot.
+
+Default: `0`
+
+[[eeprom_write_protect]]
+==== `eeprom_write_protect`
+
+Configures the EEPROM `write status register`. This can be set either to mark the entire EEPROM as write-protected, or to clear write-protection.
+
+This option must be used in conjunction with the EEPROM `/WP` pin which controls updates to the EEPROM `Write Status Register`.  Pulling `/WP` low (CM4 `EEPROM_nWP` or on a Raspberry Pi 4 `TP5`) does NOT write-protect the EEPROM unless the `Write Status Register` has also been configured.
+
+See the https://www.winbond.com/resource-files/w25x40cl_f%2020140325.pdf[Winbond W25x40cl] or https://www.winbond.com/hq/product/code-storage-flash-memory/serial-nor-flash/?__locale=en&partNo=W25Q16JV[Winbond W25Q16JV] datasheets for further details.
+
+`eeprom_write_protect` settings in `config.txt` for `recovery.bin`.
+
+|===
+| Value | Description
+
+| 1
+| Configures the write protect regions to cover the entire EEPROM.
+
+| 0
+| Clears the write protect regions.
+
+| -1
+| Do nothing.
+|===
+
+NOTE: `flashrom` does not support clearing of the write-protect regions and will fail to update the EEPROM if write-protect regions are defined.
+
+On Raspberry Pi 5 `/WP` is pulled low by default and consequently write-protect is enabled as soon as the `Write Status Register` is configured. To clear write-protect pull `/WP` high by connecting `TP14` and `TP1`.
+
+Default: `-1`
+
+[[os_check]]
+==== `os_check`
+
+On Raspberry Pi 5 the firmware automatically checks for a compatible Device Tree file before attempting to boot from the current partition. Otherwise, older non-compatible kernels would be loaded and then hang.
+To disable this check (e.g. for bare-metal development), set `os_check=0` in config.txt
+
+Default: `1`
+
+[[bootloader_update]]
+==== `bootloader_update`
+
+This option may be set to 0 to block self-update without requiring the EEPROM configuration to be updated. This is sometimes useful when updating multiple Raspberry Pis via network boot because this option can be controlled per Raspberry Pi (e.g. via a serial number filter in `config.txt`).
+
+Default: `1`
+
+=== Secure Boot configuration properties
+
+[.whitepaper, title="How to use Raspberry Pi Secure Boot", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003466-WP/Boot-Security-Howto.pdf]
+****
+This whitepaper describes how to implement secure boot on devices based on Raspberry Pi 4. For an overview of our approach to implementing secure boot implementation, please see the https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-004651-WP/Raspberry-Pi-4-Boot-Security.pdf[Raspberry Pi 4 Boot Security] whitepaper. The secure boot system is intended for use with `buildroot`-based OS images; using it with Raspberry Pi OS is not recommended or supported.
+****
+
+The following `config.txt` properties are used to program the `secure-boot` OTP settings. These changes are irreversible and can only be programmed via `RPIBOOT` when flashing the bootloader EEPROM image. This ensures that `secure-boot` cannot be set remotely or by accidentally inserting a stale SD card image.
+
+For more information about enabling `secure-boot` please see the https://github.com/raspberrypi/usbboot/blob/master/Readme.md#secure-boot[Secure Boot readme] and the https://github.com/raspberrypi/usbboot/blob/master/secure-boot-example/README.md[Secure Boot tutorial] in the https://github.com/raspberrypi/usbboot[USBBOOT] repo.
+
+[[program_pubkey]]
+==== `program_pubkey`
+
+If this property is set to `1` then `recovery.bin` will write the hash of the public key in the EEPROM image to OTP.  Once set, the bootloader will reject EEPROM images signed with different RSA keys or unsigned images.
+
+Default: `0`
+
+[[revoke_devkey]]
+==== `revoke_devkey`
+
+If this property is set to `1` then `recovery.bin` will write a value to OTP that prevents the ROM from loading old versions of the second stage bootloader which do not support `secure-boot`. This prevents `secure-boot` from being turned off by reverting to an older release of the bootloader.
+
+Default: `0`
+
+[[program_rpiboot_gpio]]
+==== `program_rpiboot_gpio`
+
+Since there is no dedicated `nRPIBOOT` jumper on Raspberry Pi 4B or Raspberry Pi 400, an alternative GPIO must be used to select `RPIBOOT` mode by pulling the GPIO low. Select a single GPIO from the following options:
+
+* `2`
+* `4`
+* `5`
+* `6`
+* `7`
+* `8`
+
+This property does not depend on `secure-boot`, but verify that this GPIO configuration does not conflict with any HATs which might pull the GPIO low during boot.
+
+Since for safety this property can only be programmed via `RPIBOOT`, the bootloader EEPROM must first be cleared using `erase_eeprom`. This causes the BCM2711 ROM to failover to `RPIBOOT` mode, which then allows this option to be set.
+
+Default: `{nbsp}`
+
+[[program_jtag_lock]]
+==== `program_jtag_lock`
+
+If this property is set to `1` then `recovery.bin` will program an OTP value that prevents VideoCore JTAG from being used. This option requires that `program_pubkey` and `revoke_devkey` are also set. This option can prevent failure analysis, and should only be set after the device has been fully tested.
+
+Default: `0`
+
