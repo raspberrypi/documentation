@@ -24,7 +24,7 @@ The host first sends a structure to the device down control endpoint 0. This con
 
 === USB host boot mode
 
-NOTE: Host boot is available on the xref:raspberry-pi.adoc#compute-module-series[Compute Module series], xref:raspberry-pi.adoc#zero-series[Zero series], Raspberry Pi 2B (v1.2 only), Raspberry Pi 3B, and xref:raspberry-pi.adoc#flagship-series[all flagship series devices since Raspberry Pi 3B+]. Raspberry Pi 3A+ supports mass storage boot, but not network boot.
+NOTE: Host boot is available on the xref:raspberry-pi.adoc#compute-module-series[Compute Module series since Compute Module 4 and 4S], xref:raspberry-pi.adoc#zero-series[Zero series since Zero 2 W], Raspberry Pi 2B (version 1.2), Raspberry Pi 3B, and xref:raspberry-pi.adoc#flagship-series[all flagship series devices since Raspberry Pi 3B+]. Raspberry Pi 3A+ supports mass storage boot, but not network boot.
 
 USB host boot mode uses the following logic:
 
@@ -45,3 +45,12 @@ USB host boot mode uses the following logic:
 .. Boot from xref:raspberry-pi.adoc#usb-mass-storage-boot[mass storage device]
 . Go through Ethernet device list
 .. Boot from xref:raspberry-pi.adoc#network-booting[Ethernet]
+
+On Raspberry Pi 3B, 3A+, and 3B+, host boot is disabled by default. To enable USB host boot, add a line containing `program_usb_boot_mode=1` to the end of xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`].
+
+[WARNING]
+====
+Any change you make to the OTP is permanent and cannot be undone.
+
+On Raspberry Pi 3A+, setting the OTP bit to enable USB host boot mode will permanently prevent that Raspberry Pi from booting in USB device mode.
+====

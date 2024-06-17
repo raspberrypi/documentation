@@ -12,12 +12,6 @@ include::raspberry-pi/boot-eeprom-diagnostics.adoc[]
 
 include::raspberry-pi/bootmodes.adoc[]
 
-include::raspberry-pi/bootflow-legacy.adoc[]
-
-include::raspberry-pi/bootflow-eeprom.adoc[]
-
-include::raspberry-pi/eeprom-bootloader.adoc[]
-
 include::raspberry-pi/boot-usb.adoc[]
 
 include::raspberry-pi/boot-msd.adoc[]
@@ -29,6 +23,12 @@ include::raspberry-pi/boot-gpio.adoc[]
 include::raspberry-pi/boot-nvme.adoc[]
 
 include::raspberry-pi/boot-http.adoc[]
+
+include::raspberry-pi/bootflow-legacy.adoc[]
+
+include::raspberry-pi/bootflow-eeprom.adoc[]
+
+include::raspberry-pi/eeprom-bootloader.adoc[]
 
 include::raspberry-pi/display-parallel-interface.adoc[]
 
