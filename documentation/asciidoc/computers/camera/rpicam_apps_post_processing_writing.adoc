@@ -18,8 +18,7 @@ All post-processing stages must implement the following member functions:
 
 In any stage implementation, call `RegisterStage` to register your stage with the system.
 
-Don't forget to add your stage to the post-processing folder's `CMakeLists.txt` too!
-
+Don't forget to add your stage to `meson.build` in the post-processing folder.
 When writing your own stages, keep these tips in mind:
 
 * The `Process` method blocks the imaging pipeline. If it takes too long, the pipeline will stutter. **Always delegate time-consuming algorithms to an asynchronous thread.**
