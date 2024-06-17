@@ -1,6 +1,6 @@
 === `rpicam-detect`
 
-NOTE: Raspberry Pi OS does not include `rpicam-detect`. However, you can build `rpicam-detect` if you have xref:camera_software.adoc#post-processing-with-tensorflow-lite[installed TensorFlow Lite]. For more information, see the xref:camera_software.adoc#build-libcamera-and-rpicam-apps[`rpicam-apps` build instructions]. Don't forget to pass `-DENABLE_TFLITE=1` when you run `cmake`.
+NOTE: Raspberry Pi OS does not include `rpicam-detect`. However, you can build `rpicam-detect` if you have xref:camera_software.adoc#post-processing-with-tensorflow-lite[installed TensorFlow Lite]. For more information, see the xref:camera_software.adoc#build-libcamera-and-rpicam-apps[`rpicam-apps` build instructions]. Don't forget to pass `-Denable_tflite=enabled` when you run `meson`.
 
 `rpicam-detect` displays a preview window and monitors the contents using a Google MobileNet v1 SSD (Single Shot Detector) neural network trained to identify about 80 classes of objects using the Coco dataset. `rpicam-detect` recognises people, cars, cats and many other objects.
 

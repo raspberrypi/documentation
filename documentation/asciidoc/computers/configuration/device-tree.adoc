@@ -917,7 +917,7 @@ The following properties are specific to the BCM2711 and BCM2712 SPI EEPROM boot
 | xref:raspberry-pi.adoc#usb-mass-storage-boot[USB boot] using the BCM2711 USB host controller
 
 | 5
-| xref:raspberry-pi.adoc#boot_ramdisk[RAM disk - boot.img]
+| xref:config_txt.adoc#boot_ramdisk[RAM disk - boot.img]
 
 | 6
 | xref:raspberry-pi.adoc#nvme-ssd-boot[NVMe boot]
@@ -940,10 +940,10 @@ The following properties are specific to the BCM2711 and BCM2712 SPI EEPROM boot
 | Reserved
 
 | 2
-| The ROM development key has been revoked.  See xref:raspberry-pi.adoc#revoke_devkey[revoke_devkey].
+| The ROM development key has been revoked.  See xref:config_txt.adoc#revoke_devkey[revoke_devkey].
 
 | 3
-| The customer public key digest has been written to OTP. See xref:raspberry-pi.adoc#program_pubkey[program_pubkey].
+| The customer public key digest has been written to OTP. See xref:config_txt.adoc#program_pubkey[program_pubkey].
 
 | 4...31
 | Reserved

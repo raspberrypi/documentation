@@ -1,6 +1,7 @@
-== Raspberry Pi 4 and Raspberry Pi 5 boot flow
+== EEPROM boot flow
 
-The main difference between these and previous products is that the second-stage bootloader is loaded from SPI flash xref:raspberry-pi.adoc#raspberry-pi-boot-eeprom[EEPROM] instead of from the `bootcode.bin` file as on previous products.
+Since Raspberry Pi 4, Raspberry Pi flagship devices use an EEPROM bootloader.
+The main difference between these and previous products is that the second-stage bootloader is loaded from SPI flash xref:raspberry-pi.adoc#raspberry-pi-boot-eeprom[EEPROM] instead of the `bootcode.bin` file used on previous products.
 
 === First stage bootloader
 

@@ -1,46 +1,56 @@
 == USB boot modes
 
-WARNING: By default, Raspberry Pi boots from an SD card. This is the recommended method for new and inexperienced users. 
+There are two separate boot modes for USB:
 
-There are two separate boot modes for USB: USB device boot and USB host boot. 
+* USB device boot
+* USB host boot
 
-The choice between the two boot modes is made by the firmware at boot time when it reads the OTP bits. There are two bits to control USB boot. The first enables USB device boot and is enabled by default; the second enables USB host boot. If the USB host boot mode bit is set, then the processor reads the OTGID pin to decide whether to boot as a host (driven to zero as on any Raspberry Pi Model B/B+) or as a device (left floating). The Raspberry Pi Zero has access to this pin through the OTGID pin on the USB connector, and the Compute Module has access to this pin on the edge connector.
+The firmware chooses between the two modes at boot time based on the OTP bits. Two bits control USB boot. The first enables USB device boot and is enabled by default; the second enables USB host boot.
 
-There are also OTP bits that allow certain GPIO pins to be used for selecting which boot modes the Raspberry Pi should attempt to use.
+If the USB host boot mode bit is set, the processor reads the OTGID pin to decide whether to boot as a host (driven to zero as on any Raspberry Pi Model B/B+) or as a device (left floating). The Raspberry Pi Zero has access to the OTGID pin through the USB connector; the Compute Module has access to the OTGID pin on the edge connector.
 
-NOTE: USB boot modes only available on certain models.
+Some other OTP bits allow certain GPIO pins to select the boot modes.
 
 === USB device boot mode
 
-NOTE: Device boot is available on Raspberry Pi Compute Module, Compute Module 3, Raspberry Pi Zero, Zero W, A, A+, and 3A+ only.
+NOTE: USB device boot is available on the xref:raspberry-pi.adoc#compute-module-series[Compute Module series], xref:raspberry-pi.adoc#zero-series[Zero series], and xref:raspberry-pi.adoc#flagship-series[Model A variants of the flagship series].
 
 When this boot mode is activated (usually after a failure to boot from the SD card), the Raspberry Pi puts its USB port into device mode and awaits a USB reset from the host. Example code showing how the host needs to talk to the Raspberry Pi can be found https://github.com/raspberrypi/usbboot[on Github].
 
-The host first sends a structure to the device down control endpoint 0. This contains the size and signature for the boot (security is not enabled, so no signature is required). Secondly, code is transmitted down endpoint 1 (bootcode.bin).  Finally, the device will reply with one of the following codes:
+The host first sends a structure to the device down control endpoint 0. This contains the size and signature for the boot (security is not enabled, so no signature is required). Secondly, code is transmitted down endpoint 1 (`bootcode.bin`). Finally, the device will reply with one of the following codes:
 
 * `0` - Success
 * `0x80` - Failure
 
 === USB host boot mode
 
-NOTE: Host boot is available on Raspberry Pi 3B, 3B+, 3A+, and 2B v1.2 only. Raspberry Pi 3A+ only supports mass storage boot, not network boot.
+NOTE: Host boot is available on the xref:raspberry-pi.adoc#compute-module-series[Compute Module series since Compute Module 4 and 4S], xref:raspberry-pi.adoc#zero-series[Zero series since Zero 2 W], Raspberry Pi 2B (version 1.2), Raspberry Pi 3B, and xref:raspberry-pi.adoc#flagship-series[all flagship series devices since Raspberry Pi 3B+]. Raspberry Pi 3A+ supports mass storage boot, but not network boot.
 
-The USB host boot mode follows this sequence:
+USB host boot mode uses the following logic:
 
-* Enable the USB port and wait for D+ line to be pulled high indicating a USB 2.0 device (we only support USB2.0)
-* If the device is a hub:
- ** Enable power to all downstream ports of the hub
- ** For each port, loop for a maximum of two seconds (or five seconds if `program_usb_boot_timeout=1` has been set)
-  *** Release from reset and wait for D+ to be driven high to indicate that a device is connected
-  *** If a device is detected:
-   **** Send "Get Device Descriptor"
-    ***** If VID == SMSC && PID == 9500
-     ****** Add device to Ethernet device list
-   **** If class interface == mass storage class
-    ***** Add device to mass storage device list
-* Else
- ** Enumerate single device
-* Go through mass storage device list
- ** Boot from xref:raspberry-pi.adoc#usb-mass-storage-boot[mass storage device]
-* Go through Ethernet device list
- ** Boot from xref:raspberry-pi.adoc#network-booting[Ethernet]
+. Enable the USB port and wait for D+ line to be pulled high indicating a USB 2.0 device (we only support USB2.0)
+. If the device is a hub:
+.. Enable power to all downstream ports of the hub
+.. For each port, loop for a maximum of two seconds (or five seconds if `program_usb_boot_timeout=1` has been set)
+... Release from reset and wait for D+ to be driven high to indicate that a device is connected
+... If a device is detected:
+.... Send "Get Device Descriptor"
+..... If `VID == SMSC` && `PID == 9500`
+...... Add device to Ethernet device list
+.... If the class interface is mass storage class
+..... Add device to mass storage device list
+. Else
+.. Enumerate single device
+. Go through mass storage device list
+.. Boot from xref:raspberry-pi.adoc#usb-mass-storage-boot[mass storage device]
+. Go through Ethernet device list
+.. Boot from xref:raspberry-pi.adoc#network-booting[Ethernet]
+
+On Raspberry Pi 3B, 3A+, and 3B+, host boot is disabled by default. To enable USB host boot, add a line containing `program_usb_boot_mode=1` to the end of xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`].
+
+[WARNING]
+====
+Any change you make to the OTP is permanent and cannot be undone.
+
+On Raspberry Pi 3A+, setting the OTP bit to enable USB host boot mode will permanently prevent that Raspberry Pi from booting in USB device mode.
+====

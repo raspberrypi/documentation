@@ -1,4 +1,4 @@
-== Parallel Display Interface
+== Display Parallel Interface (DPI)
 
 [.whitepaper, title="Using a DPI Display on the Raspberry Pi", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003471-WP/Using-a-DPI-display.pdf]
 ****
