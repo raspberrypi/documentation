@@ -248,11 +248,11 @@ The following command replaces the bootloader configuration in `pieeprom.bin` wi
 $ rpi-eeprom-config --config boot.conf --out new.bin pieeprom.bin
 ----
 
-==== recovery.bin
+==== `recovery.bin`
 
 At power on, the ROM found on BCM2711 and BCM2712 looks for a file called `recovery.bin` in the root directory of the boot partition on the SD card. If a valid `recovery.bin` is found then the ROM executes this instead of the contents of the EEPROM. This mechanism ensures that the bootloader flash image can always be reset to a valid image with factory default settings.
 
-See also xref:raspberry-pi.adoc#raspberry-pi-4-and-raspberry-pi-5-boot-flow[Raspberry Pi boot-flow]
+For more information, see xref:raspberry-pi.adoc#eeprom-boot-flow[EEPROM bootflow].
 
 ==== Bootloader update files
 
