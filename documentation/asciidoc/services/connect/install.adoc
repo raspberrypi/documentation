@@ -38,6 +38,6 @@ $ sudo apt install rpi-connect-lite
 
 Reboot your Raspberry Pi to start the Connect service.
 
-Consider xref:connect.adoc#enable-connect-at-all-times[enabling auto-lingering] to make your device accessible even when your user account isn't logged in.
+Consider xref:connect.adoc#enable-remote-shell-at-all-times[enabling user lingering] to make your device accessible even when your user account isn't logged in.
 
 TIP: Lite commands use the same `rpi-connect` name as the full version of Connect. `rpi-connect-lite` is just a package name.

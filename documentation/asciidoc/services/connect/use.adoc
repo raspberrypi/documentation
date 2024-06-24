@@ -164,7 +164,7 @@ image::images/remote-shell-end.png[width="80%"]
 
 ==== Disable remote shell access
 
-To turn off screen sharing, click the Connect system tray icon and unselect **Allow remote shell**. Your Raspberry Pi remains signed into Connect, but you won't be able to create a remote shell session from the Connect dashboard.
+To turn off remote shell access, click the Connect system tray icon and unselect **Allow remote shell**. Your Raspberry Pi remains signed into Connect, but you won't be able to create a remote shell session from the Connect dashboard.
 
 image:images/remote-shell-disabled-desktop.png[width="80%"]
 
@@ -191,17 +191,17 @@ $ rpi-connect shell on
 
 == Manage devices
 
-Connect lists all of the Raspberry Pi devices linked with your Raspberry Pi ID. Each device has a **Connect** button to open a screen sharing session, if screen sharing is enabled on that device. Each device has a list of badges under the device name to indicate available services.
+The Connect dashboard lists all of the Raspberry Pi devices linked with your Raspberry Pi ID and shows you the various ways you can access them.
 
 image::images/list-of-devices.png[width="80%"]
 
-Click on the device name to open the device details page. This screen provides low-level information about your device. You can also edit the device name or remove the device from Connect.
+Click on a device name to open the device details page. This screen provides low-level information about your device. You can also edit the device name or remove the device from Connect.
 
 image::images/device-details.png[width="80%"]
 
 Deleting a device from Connect automatically signs you out of Connect on the device. The Connect system tray icon turns grey and the menu only provides a **Sign in** option.
 
-== Enable Connect at all times
+== Enable remote shell at all times
 
 Connect runs as a user-level service, not as root. As a result, Connect only works when your user account is currently logged in on your Raspberry Pi. This can make your Raspberry Pi unreachable if you reboot with automatic login disabled. To continue running Connect even when you aren't logged into your device, enable **user-lingering**. Run the following command from your user account to enable user-lingering:
 
