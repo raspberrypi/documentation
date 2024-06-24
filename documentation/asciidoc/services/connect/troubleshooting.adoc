@@ -2,13 +2,13 @@
 
 === Known issues
 
-* Connect only supports sharing a single, primary display of your Raspberry Pi. When a Raspberry Pi is connected to multiple HDMI screens, Connect sometimes shares the contents of the secondary screen. You can work around this by right-clicking the desktop and changing the location of the taskbar in **Desktop Preferences...**.
+* Screen sharing only supports sharing a single, primary display of your Raspberry Pi. When a Raspberry Pi is connected to multiple HDMI screens, Connect sometimes shares the contents of the secondary screen. You can work around this by right-clicking the desktop and changing the location of the taskbar in **Desktop Preferences...**.
 
 * Connect does not support on-screen keyboards. For full functionality, use a physical keyboard.
 
 * Connect requires a browser that implements https://caniuse.com/?search=es2020[ECMAScript 2020] (ES11) as it makes use of https://caniuse.com/?feats=mdn-javascript_operators_optional_chaining,mdn-javascript_operators_nullish_coalescing,mdn-javascript_builtins_globalthis,es6-module-dynamic-import,bigint,mdn-javascript_builtins_promise_allsettled,mdn-javascript_builtins_string_matchall,mdn-javascript_statements_export_namespace,mdn-javascript_operators_import_meta[features] unavailable in older browsers.
 
-* Browsers intercept certain keys and key combinations. As a result, you can't type these keys into your Connect window. Connect provides a toolbar to simulate some of the most popular intercepted keys.
+* Browsers intercept certain keys and key combinations. As a result, you can't type these keys into your Connect window. Screen sharing includes a toolbar to simulate some of the most popular intercepted keys.
 
 === Enable enhanced logging
 
@@ -27,6 +27,7 @@ Enter the following lines of configuration between the comments:
 
 [source,bash]
 ----
+ExecStart=
 ExecStart=/usr/bin/rpi-connect-start -v
 ----
 

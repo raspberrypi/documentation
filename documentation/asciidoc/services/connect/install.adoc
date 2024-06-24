@@ -29,7 +29,7 @@ Connect will automatically start the next time you log in to your Raspberry Pi.
 
 === Install Connect Lite
 
-We distribute an alternate *Lite* variant of Connect that only supports remote terminal access, with no ability to screen share.
+We distribute an alternate *Lite* variant of Connect that only supports remote shell access, with no ability to screen share.
 
 Run the following command on your Raspberry Pi to install Connect Lite:
 
@@ -48,6 +48,8 @@ $ sudo reboot
 ----
 
 Connect will automatically start the next time you log in to your Raspberry Pi.
+
+TIP: Consider xref:connect.adoc#enable-connect-at-all-times[enabling auto-lingering] to make your device accessible even when your user account isn't logged in.
 
 === Start Connect
 
