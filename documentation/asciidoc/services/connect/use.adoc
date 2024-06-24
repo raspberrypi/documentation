@@ -144,7 +144,7 @@ image::images/remote-shell-start.png[width="80%"]
 
 TIP: On some operating systems, the browser intercepts key combinations like **Ctrl+Shift+C** and **Ctrl+C**. Instead, you can use the right click menu or **Ctrl+Insert** to copy and **Shift+Insert** to paste.
 
-Once connected, a green dot appears next to the **Remote shell** badge in the Connect portal. This indicates an active remote shell session. Hover to see the current number of screen sharing sessions.
+Once connected, a green dot appears next to the **Remote shell** badge in the Connect portal. This indicates an active remote shell session. Hover to see the current number of remote shell sessions.
 
 image::images/remote-shell-active.png[width="80%"]
 
