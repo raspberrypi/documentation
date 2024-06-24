@@ -55,67 +55,156 @@ image::images/sign-in-email.png[width="70%"]
 
 WARNING: If you receive an email that says a device that you do not recognise has signed into Connect, change your Raspberry Pi ID password immediately. Remove the device from Connect to permanently disassociate it from your account. Consider xref:id.adoc#enable-two-factor-authentication[enabling two-factor authentication] to keep your account secure.
 
-image::images/linked-with.png[width="80%"]
-
-Click the Connect system tray icon to open the Connect menu. This menu shows your current sign in status, an option to sign out, and an option to enable or disable screen sharing.
-
-NOTE: You can also use the terminal command `rpi-connect signout` to remove your Raspberry Pi from Connect.
+Click the Connect system tray icon to open the Connect menu. This menu shows your current sign in status, an option to sign out, and an option to enable or disable screen sharing. You can also use the terminal command `rpi-connect signout` to remove your Raspberry Pi from Connect.
 
 Connect signs communication with your device serial number. Moving your SD card between devices will sign you out of Connect.
 
+=== Enable Connect at all times
+
+Connect runs as a user-level service, not as root. As a result, Connect only works when your user account is currently logged in on your Raspberry Pi. This can make your Raspberry Pi unreachable if you reboot with automatic login disabled. To continue running Connect even when you aren't logged into your device, enable **user-lingering**. Run the following command from your user account to enable user-lingering:
+
+[source,console]
+----
+$ loginctl enable-linger
+----
+
+TIP: We recommend enabling user-lingering on all headless Raspberry Pi OS Lite setups to prevent your device from becoming unreachable after a remote reboot.
+
 === Connect to your Raspberry Pi
 
-Now that your Raspberry Pi is listed in the Connect web portal, you can share your Raspberry Pi's screen anywhere using only a browser.
+Now that your Raspberry Pi is listed in the Connect web portal, you can access your Raspberry Pi from anywhere using only a browser. Connect provides multiple ways to interact with your Raspberry Pi remotely.
+
+==== Screen share from your Raspberry Pi
+
+Connect includes the ability to share your Raspberry Pi's screen in a browser. Use the following instructions to share your Raspberry Pi's screen.
+
+NOTE: Screen sharing requires the **Wayland** window server. By default, Raspberry Pi OS only uses Wayland for **64-bit** distributions of Raspberry Pi OS **Bookworm** on Raspberry Pi 5, 4, or 400. Screen sharing is **not** compatible with Raspberry Pi OS Lite or systems that use the X window server.
 
 Visit https://connect.raspberrypi.com[connect.raspberrypi.com] on any computer.
 
-Connect redirects you to the Raspberry Pi ID service to sign in. After signing in, Connect displays a list of linked devices. Devices available for screen sharing show a grey **Screen sharing** label below the name of the device.
+Connect redirects you to the Raspberry Pi ID service to sign in. After signing in, Connect displays a list of linked devices. Devices available for screen sharing show a grey **Screen sharing** badge below the name of the device.
 
 image::images/list-of-devices.png[width="80%"]
 
-Click the **Connect** button to the right of the device you would like to screen share. This opens a browser window that displays the desktop of your Raspberry Pi.
+Click the **Connect via** button to the right of the device you would like to access. Select the **Screen sharing** option from the menu. This opens a browser window that displays the desktop of your Raspberry Pi.
 
-image::images/connecting.png[width="80%"]
+image::images/screen-sharing-connecting.png[width="80%"]
 
 You can now use your Raspberry Pi as you would locally. For more information about the connection, hover your mouse over the padlock icon immediately to the right of the **Disconnect** button.
 
-image::images/session-start.png[width="80%"]
+image::images/screen-sharing-start.png[width="80%"]
 
-TIP: Use the **Copy from remote** and **Paste to remote** buttons above your desktop to copy between your local and remote clipboards.
+TIP: Use the **Copy from remote** and **Paste to remote** buttons above your desktop to transfer text between your local and remote clipboards.
 
-Once connected, a green dot appears next to the **Screen sharing** label in the Connect portal. This indicates an active screen sharing session. Hover to see the current number of screen sharing sessions.
+Once connected, a green dot appears next to the **Screen sharing** badge in the Connect portal. This indicates an active screen sharing session. Hover to see the current number of screen sharing sessions.
 
-image::images/connect-service-connected.png[width="80%"]
+image::images/screen-sharing-active.png[width="80%"]
 
 The Connect icon in the system tray turns purple and displays a closed circle when a screen sharing session is in progress.
 
-image::images/pi-desktop-connected.png[width="80%"]
+image::images/connected.png[width="80%"]
 
-=== Disconnect from your Raspberry Pi
+===== Disconnect from your Raspberry Pi
 
 To close a screen sharing session, click the **Disconnect** button above your desktop.
 
-image::images/session-end.png[width="80%"]
+image::images/screen-sharing-end.png[width="80%"]
 
-=== Disable screen sharing
+===== Disable screen sharing
 
-To turn off screen sharing, click the Connect system tray icon and unselect **Allow screen sharing**. The lower part of the Connect system tray icon will turn grey. You remain signed into Connect, but your screen cannot be shared.
+To turn off screen sharing, click the Connect system tray icon and unselect **Allow screen sharing**.  Your Raspberry Pi remains signed into Connect, but you won't be able to create a screen sharing session from the Connect dashboard.
 
-image:images/no-sharing.png[width="80%"]
+image:images/screen-sharing-disabled-desktop.png[width="80%"]
 
-In the Connect portal, the **Connect** button next to that Raspberry Pi will disappear and the **Screen sharing** label will appear crossed-out.
+Alternatively, you can disable screen sharing with the following command:
 
-image::images/no-connect-button-ui.png[width="80%"] 
+[source,console]
+----
+$ rpi-connect vnc off
+----
+
+In the Connect portal, the **Screen sharing** badge and the **Screen sharing** option in the **Connect via** menu will appear crossed-out.
+
+image::images/screen-sharing-disabled.png[width="80%"]
 
 To re-enable screen sharing, do one of the following:
 
 * click the Connect system tray icon and select **Allow screen sharing**
-* run the terminal command `rpi-connect vnc on`
+* run the following terminal command:
++
+[source,console]
+----
+$ rpi-connect vnc on
+----
 
+==== Remotely access a terminal shell running on your Raspberry Pi
 
-=== Manage your Raspberry Pis
+Connect includes the ability to access a terminal shell running on your Raspberry Pi from a browser. Use the following instructions to access the remote shell.
 
-Connect lists all of the Raspberry Pis linked with your Raspberry Pi ID. Each device has a **Connect** button to open a screen sharing session, if screen sharing is enabled on that device. Each device has a list of labels under the device name to indicate available services.
+Visit https://connect.raspberrypi.com[connect.raspberrypi.com] on any computer.
+
+Connect redirects you to the Raspberry Pi ID service to sign in. After signing in, Connect displays a list of linked devices. Devices available for remote shell access show a grey **Remote shell** badge below the name of the device.
+
+image::images/list-of-devices.png[width="80%"]
+
+Click the **Connect via** button to the right of the device you would like to access. Select the **Remote shell** option from the menu. This opens a terminal session your Raspberry Pi.
+
+image::images/remote-shell-connecting.png[width="80%"]
+
+You can now use your Raspberry Pi as you would locally. For more information about the connection, hover your mouse over the padlock icon immediately to the right of the **Disconnect** button.
+
+image::images/remote-shell-start.png[width="80%"]
+
+TIP: On some operating systems, the browser intercepts key combinations like **Ctrl+Shift+C** and **Ctrl+C**. Instead, you can use the right click menu or **Ctrl+Insert** to copy and **Shift+Insert** to paste.
+
+Once connected, a green dot appears next to the **Remote shell** badge in the Connect portal. This indicates an active remote shell session. Hover to see the current number of screen sharing sessions.
+
+image::images/remote-shell-active.png[width="80%"]
+
+TIP: Every remote shell connection creates a brand new connection, just like SSH. To persist background commands and configuration across multiple sessions, use `screen` or `tmux`.
+
+The Connect icon in the system tray turns purple and displays a closed circle when a remote shell session is in progress.
+
+image::images/connected.png[width="80%"]
+
+TIP: The `CONNECT_TTY` environment variable indicates that a session uses a remote shell provided by Connect.
+
+===== Disconnect from your Raspberry Pi
+
+To close a remote shell session, run the `exit` command or close the window.
+
+image::images/remote-shell-end.png[width="80%"]
+
+===== Disable remote shell access
+
+To turn off screen sharing, click the Connect system tray icon and unselect **Allow remote shell**. Your Raspberry Pi remains signed into Connect, but you won't be able to create a remote shell session from the Connect dashboard.
+
+image:images/remote-shell-disabled-desktop.png[width="80%"]
+
+Alternatively, you can disable remote shell access with the following command:
+
+[source,console]
+----
+$ rpi-connect shell off
+----
+
+In the Connect portal, the **Remote shell** badge and the **Remote shell** option in the **Connect via** menu will appear crossed-out.
+
+image::images/remote-shell-disabled.png[width="80%"]
+
+To re-enable screen sharing, do one of the following:
+
+* click the Connect system tray icon and select **Allow remote shell**
+* run the following terminal command:
++
+[source,console]
+----
+$ rpi-connect shell on
+----
+
+=== Manage your Raspberry Pi devices
+
+Connect lists all of the Raspberry Pi devices linked with your Raspberry Pi ID. Each device has a **Connect** button to open a screen sharing session, if screen sharing is enabled on that device. Each device has a list of badges under the device name to indicate available services.
 
 image::images/list-of-devices.png[width="80%"]
 
@@ -151,6 +240,6 @@ Run the following command to remove Connect software from a Raspberry Pi:
 $ sudo apt remove --purge rpi-connect
 ----
 
-After uninstalling, the Raspberry Pi's serial number remains linked with your Raspberry Pi ID. The device still appears in the Connect portal, but can't be used for screen sharing. If you install Connect again, even with a different SD card, on the same Raspberry Pi, it will reuse the existing device name in the Connect portal.
+After uninstalling, the serial number of the Raspberry Pi remains linked with your Raspberry Pi ID. The device still appears in the Connect portal, but can't be used for remote access. If you install Connect again, even with a different SD card, on the same Raspberry Pi, it will reuse the existing device name in the Connect portal.
 
 To sever the link between a Raspberry Pi and a Raspberry Pi ID, remove the Raspberry Pi from the list of devices in the Connect portal.
