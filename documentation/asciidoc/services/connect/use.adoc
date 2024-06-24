@@ -1,16 +1,14 @@
-== Use Connect
+== Link a Raspberry Pi with a Raspberry Pi ID
 
 Now that you've installed Connect on your Raspberry Pi, you must associate your Raspberry Pi with your Raspberry Pi ID to use Connect.
 
 If you do not have a Raspberry Pi ID, xref:id.adoc#create-a-raspberry-pi-id[create one].
 
-=== Link your Raspberry Pi and Raspberry Pi ID
-
 To link your Raspberry Pi with your Raspberry Pi ID, use Connect to generate a verification URL. Visit the URL and sign into your Raspberry Pi ID to add your Raspberry Pi to your account.
 
 You can generate the verification URL using the Connect icon on the Raspberry Pi Desktop or with the `rpi-connect` CLI.
 
-==== via the Raspberry Pi Desktop
+=== via the Raspberry Pi Desktop
 
 Once the `rpi-connect` service starts running, the Connect icon appears in the system tray.
 
@@ -20,7 +18,7 @@ Click on the Connect icon and choose "Sign in" from the drop-down menu. This ope
 
 image::images/sign-in.png[width="80%"]
 
-==== via the command line
+=== via the command line
 
 Use the following command to generate a link that will connect your Raspberry Pi with your Raspberry Pi ID:
 
@@ -37,7 +35,7 @@ Complete sign in by visiting https://connect.raspberrypi.com/verify/XXXX-XXXX
 
 Visit the URL on any device to link your Raspberry Pi with your Raspberry Pi ID.
 
-==== Finish linking your Raspberry Pi in Connect
+=== Finish linking your Raspberry Pi
 
 Visit the verification URL generated in the previous step.
 
@@ -57,31 +55,13 @@ WARNING: If you receive an email that says a device that you do not recognise ha
 
 Click the Connect system tray icon to open the Connect menu. This menu shows your current sign in status, an option to sign out, and an option to enable or disable screen sharing.
 
-Alternatively, run the following command to remove your Raspberry Pi from Connect:
+TIP: Connect signs communication with your device serial number. Moving your SD card between devices will sign you out of Connect.
 
-[source,console]
-----
-$ rpi-connect signout
-----
-
-Connect signs communication with your device serial number. Moving your SD card between devices will sign you out of Connect.
-
-=== Enable Connect at all times
-
-Connect runs as a user-level service, not as root. As a result, Connect only works when your user account is currently logged in on your Raspberry Pi. This can make your Raspberry Pi unreachable if you reboot with automatic login disabled. To continue running Connect even when you aren't logged into your device, enable **user-lingering**. Run the following command from your user account to enable user-lingering:
-
-[source,console]
-----
-$ loginctl enable-linger
-----
-
-TIP: We recommend enabling user-lingering on all headless Raspberry Pi OS Lite setups to prevent your device from becoming unreachable after a remote reboot.
-
-=== Connect to your Raspberry Pi
+== Access your Raspberry Pi
 
 Now that your Raspberry Pi is listed in the Connect web portal, you can access your Raspberry Pi from anywhere using only a browser. Connect provides multiple ways to interact with your Raspberry Pi remotely.
 
-==== Screen share from your Raspberry Pi
+=== Screen sharing
 
 Connect includes the ability to share your Raspberry Pi's screen in a browser. Use the following instructions to share your Raspberry Pi's screen.
 
@@ -111,13 +91,13 @@ The Connect icon in the system tray turns purple and displays a closed circle wh
 
 image::images/connected.png[width="80%"]
 
-===== Disconnect from your Raspberry Pi
+==== Stop screen sharing
 
 To close a screen sharing session, click the **Disconnect** button above your desktop.
 
 image::images/screen-sharing-end.png[width="80%"]
 
-===== Disable screen sharing
+==== Disable screen sharing
 
 To turn off screen sharing, click the Connect system tray icon and unselect **Allow screen sharing**.  Your Raspberry Pi remains signed into Connect, but you won't be able to create a screen sharing session from the Connect dashboard.
 
@@ -144,7 +124,7 @@ To re-enable screen sharing, do one of the following:
 $ rpi-connect vnc on
 ----
 
-==== Remotely access a terminal running on your Raspberry Pi
+=== Remote shell
 
 Connect includes the ability to access a shell running on your Raspberry Pi from a browser. Use the following instructions to access the remote shell.
 
@@ -176,13 +156,13 @@ image::images/connected.png[width="80%"]
 
 TIP: The `CONNECT_TTY` environment variable indicates that a session uses a remote shell provided by Connect.
 
-===== Disconnect from your Raspberry Pi
+==== End your remote shell session
 
 To close a remote shell session, run the `exit` command or close the window.
 
 image::images/remote-shell-end.png[width="80%"]
 
-===== Disable remote shell access
+==== Disable remote shell access
 
 To turn off screen sharing, click the Connect system tray icon and unselect **Allow remote shell**. Your Raspberry Pi remains signed into Connect, but you won't be able to create a remote shell session from the Connect dashboard.
 
@@ -209,7 +189,7 @@ To re-enable screen sharing, do one of the following:
 $ rpi-connect shell on
 ----
 
-=== Manage your Raspberry Pi devices
+== Manage your Raspberry Pi devices
 
 Connect lists all of the Raspberry Pi devices linked with your Raspberry Pi ID. Each device has a **Connect** button to open a screen sharing session, if screen sharing is enabled on that device. Each device has a list of badges under the device name to indicate available services.
 
@@ -221,7 +201,18 @@ image::images/device-details.png[width="80%"]
 
 Deleting a device from Connect automatically signs you out of Connect on the device. The Connect system tray icon turns grey and the menu only provides a **Sign in** option.
 
-=== Update Connect
+== Enable Connect at all times
+
+Connect runs as a user-level service, not as root. As a result, Connect only works when your user account is currently logged in on your Raspberry Pi. This can make your Raspberry Pi unreachable if you reboot with automatic login disabled. To continue running Connect even when you aren't logged into your device, enable **user-lingering**. Run the following command from your user account to enable user-lingering:
+
+[source,console]
+----
+$ loginctl enable-linger
+----
+
+TIP: We recommend enabling user-lingering on all headless Raspberry Pi OS Lite setups to prevent your device from becoming unreachable after a remote reboot.
+
+== Update
 
 To update to the latest version of Connect, run the following command:
 
@@ -238,7 +229,16 @@ Reboot your device to put your update into effect:
 $ sudo reboot
 ----
 
-=== Uninstall Connect
+== Disconnect a device from Connect
+
+Alternatively, run the following command to remove your Raspberry Pi from Connect:
+
+[source,console]
+----
+$ rpi-connect signout
+----
+
+== Uninstall
 
 Run the following command to remove Connect software from a Raspberry Pi:
 

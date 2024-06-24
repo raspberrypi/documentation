@@ -10,6 +10,17 @@
 
 * Browsers intercept certain keys and key combinations. As a result, you can't type these keys into your Connect window. Screen sharing includes a toolbar to simulate some of the most popular intercepted keys.
 
+=== Manually start Connect
+
+NOTE: By default, Connect automatically starts at login. You don't need to manually start Connect unless you remove it from your login items.
+
+To start the service manually from the command line, run the following command:
+
+[source,console]
+----
+$ systemctl --user start rpi-connect
+----
+
 === Enable enhanced logging
 
 You can enable debug logging for both `rpi-connect` and its dedicated WayVNC server for a detailed account of local operations on your Raspberry Pi.
