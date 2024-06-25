@@ -31,10 +31,7 @@ def scan_adoc(adoc_filename, apparent_filename, includes, src_images, dest_image
         for image in re.findall(r'image::?(.+?)\[.*\]', contents):
             if not (image.startswith('http:') or image.startswith('https:')):
                 image_filename = resolve_url(adoc_filename, image)
-                # append a hash to the end of the image file name to bust the cache when we change the image
-                image_hash = hashlib.md5(open(os.path.join(input_dir, image_filename),'rb').read()).hexdigest()
-                image_name, image_extension = os.path.splitext(resolve_url(apparent_filename, image))
-                dest_image = image_name + "-" + image_hash + image_extension
+                dest_image = resolve_url(apparent_filename, image)
                 if dest_image in dest_images and dest_images[dest_image] != image_filename:
                     raise Exception("{} and {} would both end up as {}".format(dest_images[dest_image], image_filename, dest_image))
                 src_images[image_filename] = dest_image
@@ -48,10 +45,7 @@ def add_entire_directory(tab_dir, dir_path, pages_set, src_images, dest_images):
                 pages_set.add(os.path.join(dir_path, f))
             elif f.endswith(".png"):
                 image_filename = os.path.join(dir_path, f)
-                # append a hash to the end of the image file name to bust the cache when we change the image
-                image_hash = hashlib.md5(open(os.path.join(input_dir, image_filename),'rb').read()).hexdigest()
-                image_name, image_extension = os.path.splitext(f)
-                dest_image = image_name + "-" + image_hash + image_extension
+                dest_image = image_filename
                 if dest_image in dest_images and dest_images[dest_image] != image_filename:
                     raise Exception("{} and {} would both end up as {}".format(dest_images[dest_image], image_filename, dest_image))
                 src_images[image_filename] = dest_image

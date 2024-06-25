@@ -55,8 +55,7 @@ if __name__ == "__main__":
                 if m:
                     directory = os.path.dirname(os.path.abspath(src_adoc))
                     image_hash = hashlib.md5(open(os.path.join(directory, m.group(2)),'rb').read()).hexdigest()
-                    image_name, image_extension = os.path.splitext(m.group(2))
-                    line = m.group(1) + image_name + '-' + image_hash + image_extension + m.group(3) + "\n"
+                    line = m.group(1) + m.group(2) + '?hash=' + image_hash + m.group(3) + "\n"
             new_contents += line
 
         with open(build_adoc, 'w') as out_fh:
