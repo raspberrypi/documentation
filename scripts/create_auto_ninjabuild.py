@@ -5,7 +5,6 @@ import sys
 import json
 import re
 import yaml
-import hashlib
 
 import ninja_syntax
 
