@@ -103,7 +103,7 @@ image::images/screen-sharing-end.png[width="80%"]
 
 To turn off screen sharing, click the Connect system tray icon and unselect **Allow screen sharing**.  Your Raspberry Pi remains signed into Connect, but you won't be able to create a screen sharing session from the Connect dashboard.
 
-image:images/screen-sharing-disabled-desktop.png[width="80%"]
+image::images/screen-sharing-disabled-desktop.png[width="80%"]
 
 Alternatively, you can disable screen sharing with the following command:
 
@@ -168,7 +168,7 @@ image::images/remote-shell-end.png[width="80%"]
 
 To turn off remote shell access, click the Connect system tray icon and unselect **Allow remote shell**. Your Raspberry Pi remains signed into Connect, but you won't be able to create a remote shell session from the Connect dashboard.
 
-image:images/remote-shell-disabled-desktop.png[width="80%"]
+image::images/remote-shell-disabled-desktop.png[width="80%"]
 
 Alternatively, you can disable remote shell access with the following command:
 

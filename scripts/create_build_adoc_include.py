@@ -4,6 +4,7 @@ import sys
 import os
 import re
 import yaml
+import hashlib
 
 
 def check_no_markdown(filename):
@@ -48,6 +49,13 @@ if __name__ == "__main__":
                     seen_header = True
                     if github_edit is not None:
                         line += edit_text + "\n\n"
+            else:
+                # find all image references, append md5 hash at end to bust the cache if we change the image
+                m = re.match(r'^(image::)(.+)(\[(.+)]\n?)$', line)
+                if m:
+                    directory = os.path.dirname(os.path.abspath(src_adoc))
+                    image_hash = hashlib.md5(open(os.path.join(directory, m.group(2)),'rb').read()).hexdigest()
+                    line = m.group(1) + m.group(2) + '?hash=' + image_hash + m.group(3) + "\n"
             new_contents += line
 
         with open(build_adoc, 'w') as out_fh:
