@@ -21,4 +21,4 @@ Services like xref:remote-access.adoc#nfs[NFS] (Network File System), xref:remot
 To remotely control your Raspberry Pi from any device connected to the Internet, you can:
 
 * Expose xref:remote-access.adoc#ssh[SSH] or xref:remote-access.adoc#vnc[VNC] on your Raspberry Pi over the open internet, within a VPN, or using an external service like RealVNC's cloud https://www.realvnc.com/download/viewer/[VNC Viewer].
-* Use xref:remote-access.adoc#raspberry-pi-connect[Raspberry Pi Connect], a free screen sharing service provided by Raspberry Pi.
+* Use xref:remote-access.adoc#raspberry-pi-connect[Raspberry Pi Connect], a free screen sharing and remote shell service provided by Raspberry Pi.

@@ -193,7 +193,7 @@
                     "subpath": "id.adoc"
                 },
                 {
-                    "title": "Raspberry Pi Connect",
+                    "title": "Raspberry Pi Connect (Beta)",
                     "description": "Connect to your Raspberry Pi from your browser",
                     "image": "full-sized/Connect-BIG.png",
                     "subpath": "connect.adoc"

@@ -1,10 +1,6 @@
 [[install-connect]]
 == Install
 
-Connect requires a **Raspberry Pi** running a **64-bit** distribution of Raspberry Pi OS **Bookworm** that uses the **Wayland** window server. The required OS version requires a Raspberry Pi 5, Raspberry Pi 4, or Raspberry Pi 400.
-
-NOTE: Connect is **not** compatible with Raspberry Pi OS Lite or systems that use the X window server.
-
 To begin installation, open a Terminal window. Run the following command to update your system and packages:
 
 [source,console]
@@ -12,8 +8,6 @@ To begin installation, open a Terminal window. Run the following command to upda
 $ sudo apt update
 $ sudo apt upgrade
 ----
-
-=== Install Connect
 
 Run the following command on your Raspberry Pi to install Connect:
 
@@ -31,14 +25,19 @@ $ sudo reboot
 
 Connect will automatically start the next time you log in to your Raspberry Pi.
 
-=== Start Connect
+=== Connect Lite
 
-NOTE: By default, Connect automatically starts at login. You don't need to manually start Connect unless you remove it from your login items.
+We distribute an alternate *Lite* variant of Connect that only supports remote shell access, with no ability to screen share.
 
-To start the service manually from the command line, run the following command:
+Run the following command on your Raspberry Pi to install Connect Lite:
 
 [source,console]
 ----
-$ systemctl --user start rpi-connect
+$ sudo apt install rpi-connect-lite
 ----
 
+Reboot your Raspberry Pi to start the Connect service.
+
+Consider xref:connect.adoc#enable-remote-shell-at-all-times[enabling user lingering] to make your device accessible even when your user account isn't logged in.
+
+TIP: Lite commands use the same `rpi-connect` name as the full version of Connect. `rpi-connect-lite` is just a package name.
