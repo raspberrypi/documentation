@@ -85,7 +85,7 @@ image::images/screen-sharing-start.png[width="80%"]
 
 TIP: Use the **Copy from remote** and **Paste to remote** buttons above your desktop to transfer text between your local and remote clipboards.
 
-Once connected, a green dot appears next to the **Screen sharing** badge in the Connect portal. This indicates an active screen sharing session. Hover to see the current number of screen sharing sessions.
+Once connected, a green dot appears next to the **Screen sharing** badge in the Connect dashboard. This indicates an active screen sharing session. Hover to see the current number of screen sharing sessions.
 
 image::images/screen-sharing-active.png[width="80%"]
 
@@ -112,7 +112,7 @@ Alternatively, you can disable screen sharing with the following command:
 $ rpi-connect vnc off
 ----
 
-In the Connect portal, the **Screen sharing** badge and the **Screen sharing** option in the **Connect via** menu will appear crossed-out.
+In the Connect dashboard, the **Screen sharing** badge and the **Screen sharing** option in the **Connect via** menu will appear crossed-out.
 
 image::images/screen-sharing-disabled.png[width="80%"]
 
@@ -146,7 +146,7 @@ image::images/remote-shell-start.png[width="80%"]
 
 TIP: On some operating systems, the browser intercepts key combinations like **Ctrl+Shift+C** and **Ctrl+C**. Instead, you can use the right click menu or **Ctrl+Insert** to copy and **Shift+Insert** to paste.
 
-Once connected, a green dot appears next to the **Remote shell** badge in the Connect portal. This indicates an active remote shell session. Hover to see the current number of remote shell sessions.
+Once connected, a green dot appears next to the **Remote shell** badge in the Connect dashboard. This indicates an active remote shell session. Hover to see the current number of remote shell sessions.
 
 image::images/remote-shell-active.png[width="80%"]
 
@@ -177,7 +177,7 @@ Alternatively, you can disable remote shell access with the following command:
 $ rpi-connect shell off
 ----
 
-In the Connect portal, the **Remote shell** badge and the **Remote shell** option in the **Connect via** menu will appear crossed-out.
+In the Connect dashboard, the **Remote shell** badge and the **Remote shell** option in the **Connect via** menu will appear crossed-out.
 
 image::images/remote-shell-disabled.png[width="80%"]
 
@@ -253,6 +253,6 @@ $ sudo apt remove --purge rpi-connect
 
 TIP: If you installed Connect Lite, replace `rpi-connect` with `rpi-connect-lite` in the above command.
 
-After uninstalling, the serial number of the Raspberry Pi remains linked with your Raspberry Pi ID. The device still appears in the Connect portal, but can't be used for remote access. If you install Connect again, even with a different SD card, on the same Raspberry Pi, it will reuse the existing device name in the Connect portal.
+After uninstalling, the serial number of the Raspberry Pi remains linked with your Raspberry Pi ID. The device still appears in the Connect dashboard, but can't be used for remote access. If you install Connect again, even with a different SD card, on the same Raspberry Pi, it will reuse the existing device name in the Connect dashboard.
 
-To sever the link between a Raspberry Pi and a Raspberry Pi ID, remove the Raspberry Pi from the list of devices in the Connect portal.
+To sever the link between a Raspberry Pi and a Raspberry Pi ID, remove the Raspberry Pi from the list of devices in the Connect dashboard.
