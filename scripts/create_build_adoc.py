@@ -71,6 +71,12 @@ if __name__ == "__main__":
                 m = re.match(r'^(include::)(.+)(\[\]\n?)$', line)
                 if m:
                     line = m.group(1) + os.path.join('{includedir}/{parentdir}', m.group(2)) + m.group(3)
+                # find all image references, append md5 hash at end to bust the cache if we change the image
+                m = re.match(r'^(image::)(.+)(\[(.+)]\n?)$', line)
+                if m:
+                    directory = os.path.dirname(os.path.abspath(src_adoc))
+                    image_hash = hashlib.md5(open(os.path.join(directory, m.group(2)),'rb').read()).hexdigest()
+                    line = m.group(1) + m.group(2) + '?hash=' + image_hash + m.group(3) + "\n"
             new_contents += line
 
     with open(build_adoc, 'w') as out_fh:
