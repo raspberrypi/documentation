@@ -55,7 +55,7 @@ image::images/sign-in-email.png[width="70%"]
 
 WARNING: If you receive an email that says a device that you do not recognise has signed into Connect, change your Raspberry Pi ID password immediately. xref:connect.adoc#manage-devices[Remove the device from Connect] to permanently disassociate it from your account. Consider xref:id.adoc#enable-two-factor-authentication[enabling two-factor authentication] to keep your account secure.
 
-Click the Connect system tray icon to open the Connect menu. This menu shows your current sign in status, an option to sign out, and an option to enable or disable remote access methods.
+Click the Connect system tray icon to open the Connect menu. This menu shows your current sign in status, an option to sign out, and options to enable or disable remote access methods.
 
 TIP: Connect signs communication with your device serial number. Moving your SD card between devices will sign you out of Connect.
 
