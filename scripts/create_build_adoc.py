@@ -21,7 +21,6 @@ def check_no_markdown(filename):
         if re.search(r'(\[.+?\]\(.+?\))', asciidoc):
             raise Exception("{} contains a Markdown-style link (i.e. '[title](url)' rather than 'url[title]')".format(filename))
 
-
 if __name__ == "__main__":
     index_json = sys.argv[1]
     config_yaml = sys.argv[2]
