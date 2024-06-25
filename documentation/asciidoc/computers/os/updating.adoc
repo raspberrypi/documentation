@@ -1,6 +1,6 @@
 == Update software
 
-Always keep the software running on your Raspberry Pi updated to the latest version. This keeps your device secure from from https://cve.mitre.org/index.html[vulnerabilities] and ensures that you get the latest bug fixes.
+Always keep the software running on your Raspberry Pi updated to the latest version. This keeps your device secure from https://cve.mitre.org/index.html[vulnerabilities] and ensures that you get the latest bug fixes.
 
 === Manage software packages with APT
 
