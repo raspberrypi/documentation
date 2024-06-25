@@ -16,7 +16,7 @@ Run the following command on your Raspberry Pi to install Connect:
 $ sudo apt install rpi-connect
 ----
 
-After installation, reboot your Raspberry Pi to start the Connect service:
+After installation, reboot your Raspberry Pi or xref:connect.adoc#manually-start-connect[manually start the Connect service] to use Connect:
 
 [source,console]
 ----
@@ -36,8 +36,19 @@ Run the following command on your Raspberry Pi to install Connect Lite:
 $ sudo apt install rpi-connect-lite
 ----
 
-Reboot your Raspberry Pi to start the Connect service.
+Reboot your Raspberry Pi or xref:connect.adoc#manually-start-connect[manually start the Connect service] to use Connect.
 
 Consider xref:connect.adoc#enable-remote-shell-at-all-times[enabling user lingering] to make your device accessible even when your user account isn't logged in.
 
 TIP: Lite commands use the same `rpi-connect` name as the full version of Connect. `rpi-connect-lite` is just a package name.
+
+=== Manually start Connect
+
+NOTE: By default, Connect automatically starts at login. You don't need to manually start Connect after it starts for the first time unless you remove it from your login items.
+
+To start the service manually from the command line, run the following command:
+
+[source,console]
+----
+$ systemctl --user start rpi-connect
+----
