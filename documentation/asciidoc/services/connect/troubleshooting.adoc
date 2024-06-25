@@ -19,7 +19,7 @@ To view the current status of the Connect service, run the following command:
 $ rpi-connect status
 ----
 
-The output of this command indicates whether or not your are currently signed in to Connect, as well as the remote services enabled on your Raspberry Pi.
+The output of this command indicates whether or not you are currently signed in to Connect, as well as the remote services enabled on your Raspberry Pi.
 
 === Manually start Connect
 
