@@ -10,6 +10,17 @@
 
 * Browsers intercept certain keys and key combinations. As a result, you can't type these keys into your Connect window. Screen sharing includes a toolbar to simulate some of the most popular intercepted keys.
 
+=== View Connect status
+
+To view the current status of the Connect service, run the following command:
+
+[source,console]
+----
+$ rpi-connect status
+----
+
+The output of this command indicates whether or not your are currently signed in to Connect, as well as the remote services enabled on your Raspberry Pi.
+
 === Manually start Connect
 
 NOTE: By default, Connect automatically starts at login. You don't need to manually start Connect unless you remove it from your login items.
