@@ -57,7 +57,6 @@ if __name__ == "__main__":
                     image_hash = hashlib.md5(open(os.path.join(directory, m.group(2)),'rb').read()).hexdigest()
                     image_name, image_extension = os.path.splitext(m.group(2))
                     line = m.group(1) + image_name + '-' + image_hash + image_extension + m.group(3) + "\n"
-                    #print(m.group(2) + " replaced with " + line)
             new_contents += line
 
         with open(build_adoc, 'w') as out_fh:
