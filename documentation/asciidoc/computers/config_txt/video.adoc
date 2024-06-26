@@ -4,17 +4,21 @@
 
 To control HDMI settings, use the xref:configuration.adoc#set-resolution-and-rotation[Screen Configuration utility] or xref:configuration.adoc#set-the-kms-display-mode[KMS video settings] in `cmdline.txt`.
 
-==== HDMI Pipeline for Raspberry Pi 4 and 5
+==== HDMI Pipeline for Raspberry Pi 4
 
-In order to support dual displays and modes up to 4k60, the Raspberry Pi 4 and 5 generate 2 output pixels for every clock cycle.
+In order to support dual displays and modes up to 4k60, the Raspberry Pi 4 generate 2 output pixels for every clock cycle.
 
 Every HDMI mode has a list of timings that control all the parameters around sync pulse durations. These are typically defined via a pixel clock, and then a number of active pixels, a front porch, sync pulse, and back porch for each of the horizontal and vertical directions.
 
-Running everything at 2 pixels per clock means that the Raspberry Pi 4 and 5 cannot support a timing where _any_ of the horizontal timings are not divisible by 2. The firmware and Linux kernel filter out any mode that does not fulfil this criteria.
+Running everything at 2 pixels per clock means that the Raspberry Pi 4 cannot support a timing where _any_ of the horizontal timings are not divisible by 2. The firmware and Linux kernel filter out any mode that does not fulfil this criteria.
 
 There is only one incompatible mode in the CEA and DMT standards: DMT mode 81, 1366x768 @ 60Hz. This mode has odd-numbered values for the horizontal sync and back porch timings and a width that indivisible by 8.
 
-If your monitor has this resolution, Raspberry Pi 4 or 5 automatically drops down to the next mode advertised by the monitor; typically 1280x720.
+If your monitor has this resolution, Raspberry Pi 4 automatically drops down to the next mode advertised by the monitor; typically 1280x720.
+
+==== HDMI Pipeline for Raspberry Pi 5
+
+While Pi 5 also works at 2 output pixels per clock cycle, it has special handling for odd timings and can handle these modes directly.
 
 === Composite video mode
 
