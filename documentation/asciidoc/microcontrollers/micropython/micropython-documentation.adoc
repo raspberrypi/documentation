@@ -11,10 +11,11 @@ https://docs.micropython.org/en/latest/library/rp2.html[RP2 Library]:: The offic
 
 image::images/micropython_book.png[width="70%",float=right]
 
-Check out https://store.rpipress.cc/collections/getting-started/products/get-started-with-micropython-on-raspberry-pi-pico-2nd-edition[_Get Started with MicroPython on Raspberry Pi Pico_] to learn how to use the beginner-friendly language MicroPython to make your Raspberry Pi Pico interact with the world around it. Using these skills, you can create your own electro-mechanical projects, whether for fun or to make your life easier.
+Check out https://store.rpipress.cc/collections/getting-started/products/get-started-with-micropython-on-raspberry-pi-pico-2nd-edition[_Get Started with MicroPython on Raspberry Pi Pico_] to learn how your Pico can interact with the world around it using the MicroPython programming language. Fully updated for Raspberry Pi Pico W and the latest version of MicroPython, this book shows you how to:
 
-* Set up your Raspberry Pi Pico and start using it
-* Start writing programs using MicroPython
-* Control and sense electronic components
-* Discover how to use Pico's unique Programmable IO
-* Make a reaction game, burglar alarm, temperature gauge, and more
+* set up your Pico or Pico W and start using it
+* start writing programs using MicroPython
+* control and sense electronic components
+* discover how to use Pico's unique Programmable IO
+* turn Raspberry Pi Pico W into a network-connected node for the Internet of Things
+* link your Pico W to your smartphone, tablet, or another Pico W with Bluetooth Low Energy (BLE)
