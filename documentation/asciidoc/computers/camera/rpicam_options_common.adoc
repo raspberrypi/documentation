@@ -184,12 +184,6 @@ Examples:
 
 Each accepts a single number defining the dimensions, in pixels, of the image displayed in the preview window. Does not effect the preview window dimensions, since images are resized to fit. Does not affect captured still images or videos.
 
-==== `rawfull`
-
-Forces the sensor to capture images in full resolution mode regardless of xref:camera_software.adoc#width-and-height[requested output resolution]. Because larger resolutions require more resources, this can negatively impact framerate. When used with the HQ camera, each frame can take up to 18MB of space (compared with 5MB in 2×2 binned mode). Does not accept a value.
-
-For `rpicam-hello`, has no effect.
-
 ==== `mode`
 
 Allows you to specify a camera mode in the following colon-separated format: `<width>:<height>:<bit-depth>:<packing>`. The system selects the closest available option for the sensor if there is not an exact match for a provided value. You can use the packed (`P`) or unpacked (`U`) packing formats. Impacts the format of stored videos and stills, but not the format of frames passed to the preview window.
