@@ -191,6 +191,17 @@ To re-enable screen sharing, do one of the following:
 $ rpi-connect shell on
 ----
 
+== Enable remote shell at all times
+
+Connect runs as a user-level service, not as root. As a result, Connect only works when your user account is currently logged in on your Raspberry Pi. This can make your Raspberry Pi unreachable if you reboot with automatic login disabled. To continue running Connect even when you aren't logged into your device, enable **user-lingering**. Run the following command from your user account to enable user-lingering:
+
+[source,console]
+----
+$ loginctl enable-linger
+----
+
+TIP: We recommend enabling user-lingering on all headless Raspberry Pi OS Lite setups to prevent your device from becoming unreachable after a remote reboot.
+
 == Manage devices
 
 The Connect dashboard lists all of the Raspberry Pi devices linked with your Raspberry Pi ID and shows you the various ways you can access them.
@@ -202,17 +213,6 @@ Click on a device name to open the device details page. This screen provides low
 image::images/device-details.png[width="80%"]
 
 Deleting a device from Connect automatically signs you out of Connect on the device. The Connect system tray icon turns grey and the menu only provides a **Sign in** option.
-
-== Enable remote shell at all times
-
-Connect runs as a user-level service, not as root. As a result, Connect only works when your user account is currently logged in on your Raspberry Pi. This can make your Raspberry Pi unreachable if you reboot with automatic login disabled. To continue running Connect even when you aren't logged into your device, enable **user-lingering**. Run the following command from your user account to enable user-lingering:
-
-[source,console]
-----
-$ loginctl enable-linger
-----
-
-TIP: We recommend enabling user-lingering on all headless Raspberry Pi OS Lite setups to prevent your device from becoming unreachable after a remote reboot.
 
 == Update
 
