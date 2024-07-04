@@ -39,8 +39,10 @@ Enter the following lines of configuration between the comments:
 [source,bash]
 ----
 ExecStart=
-ExecStart=/usr/bin/rpi-connect-start -v
+ExecStart=/usr/bin/rpi-connectd -socket %t/rpi-connect-wayvnc.sock -v
 ----
+
+NOTE: You need **both** lines that begin with `ExecStart=`.
 
 Finally, restart the service with the following command:
 
