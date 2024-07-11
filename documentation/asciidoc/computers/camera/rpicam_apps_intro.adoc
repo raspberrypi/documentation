@@ -40,6 +40,7 @@ Raspberry Pi's implementation of `libcamera` supports the following cameras:
 ** IMX290
 ** IMX327
 ** IMX378
+** IMX519
 ** OV9281
 
 To extend support to a new sensor, https://git.linuxtv.org/libcamera.git/[contribute to `libcamera`].
