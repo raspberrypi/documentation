@@ -223,7 +223,7 @@ $ sudo cp arch/arm/boot/dts/*.dtb /boot/firmware/
 +
 [source,console]
 ----
-$ sudo cp arch/arm/boot/dts/broadcom/*.dtb /boot/firmware/
+$ sudo cp arch/arm64/boot/dts/broadcom/*.dtb /boot/firmware/
 ----
 . Finally, copy over the overlays and README:
 +
