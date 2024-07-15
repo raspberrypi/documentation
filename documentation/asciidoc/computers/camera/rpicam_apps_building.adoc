@@ -178,6 +178,23 @@ Finally, run the following command to install your freshly-built `rpicam-apps` b
 $ sudo meson install -C build
 ----
 
+[NOTE]
+======
+rpicam-apps is pre-installed on current 64-bit OS distributions. Before the installation steps above you should remove the pre-installed version.
+
+[source,console]
+----
+$ sudo apt-get remove --purge rpicam-apps
+----
+
+After meson install the ldconfig cache is updated automatically. Running ldconfig without any options will update the cache.
+
+[source,console]
+----
+$ sudo ldconfig
+----
+======
+
 Open a new terminal window after installation to ensure that you use the new binary.
 
 Finally, follow the `dtoverlay` and display driver instructions in the  xref:camera_software.adoc#configuration[Configuration section].
