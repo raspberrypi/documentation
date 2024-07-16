@@ -1,12 +1,15 @@
-== Link a Raspberry Pi with a Raspberry Pi ID
+== Link a Raspberry Pi device with a Connect account
 
-Now that you've installed Connect on your Raspberry Pi, you must associate your Raspberry Pi with your Raspberry Pi ID to use Connect.
+Now that you've installed Connect on your Raspberry Pi device, you must associate your device with your Connect account before you can use Connect.
 
-If you do not have a Raspberry Pi ID, xref:id.adoc#create-a-raspberry-pi-id[create one].
+If you do not have a Connect account:
 
-To link your Raspberry Pi with your Raspberry Pi ID, use Connect to generate a verification URL. Visit the URL and sign into your Raspberry Pi ID to add your Raspberry Pi to your account.
+. xref:id.adoc#create-a-raspberry-pi-id[Create a Raspberry Pi ID].
+. Visit https://connect.raspberrypi.com[connect.raspberrypi.com] and create a Connect account using your Raspberry Pi ID.
 
-You can generate the verification URL using the Connect icon on the Raspberry Pi Desktop or with the `rpi-connect` CLI.
+To link your device with your Connect account, use the Connect client software to generate a verification URL. Visit the URL and sign into your Connect account with your Raspberry Pi ID to add your device to your account.
+
+To generate the verification URL, use the Connect icon on the Raspberry Pi Desktop or the `rpi-connect` CLI. Follow the instructions below:
 
 === via the Raspberry Pi Desktop
 
@@ -18,11 +21,11 @@ Click on the Connect icon and choose "Sign in" from the drop-down menu.
 
 image::images/sign-in.png[width="80%"]
 
-This opens a verification URL you can use to link your Raspberry Pi to your Raspberry Pi ID.
+This opens a verification URL you can use to link your device to your Connect account.
 
 === via the command line
 
-Use the following command to generate a link that will connect your Raspberry Pi with your Raspberry Pi ID:
+Use the following command to generate a link that will connect your device with your Connect account:
 
 [source,console]
 ----
@@ -35,7 +38,7 @@ This command should output something like the following:
 Complete sign in by visiting https://connect.raspberrypi.com/verify/XXXX-XXXX
 ----
 
-Visit the verification URL on any device and sign in to link your Raspberry Pi with your Raspberry Pi ID.
+Visit the verification URL on any device and sign in to your Raspberry Pi ID to link your device with your Connect account.
 
 === Finish linking your Raspberry Pi
 
@@ -45,11 +48,11 @@ Sign in to Connect using your xref:id.adoc[Raspberry Pi ID].
 
 image::images/login-with-id.png[width="80%"]
 
-After authenticating, assign a name to your Raspberry Pi. Choose a name that will help you identify your device. Click the **Create device and sign in** button to continue.
+After authenticating, assign a name to your device. Choose a name that uniquely identifies the device. Click the **Create device and sign in** button to continue.
 
 image::images/create-device.png[width="80%"]
 
-You can now remotely connect to your Raspberry Pi. The Connect system tray icon will turn blue to indicate that your Raspberry Pi has been linked to the Connect service. You should receive an email notification indicating that a new device has signed into Connect.
+You can now remotely connect to your device. The Connect system tray icon will turn blue to indicate that your device is now signed in to the Connect service. You should receive an email notification indicating that a new device is linked to your Connect account.
 
 image::images/sign-in-email.png[width="70%"]
 
@@ -59,13 +62,13 @@ Click the Connect system tray icon to open the Connect menu. This menu shows you
 
 TIP: Connect signs communication with your device serial number. Moving your SD card between devices will sign you out of Connect.
 
-== Access your Raspberry Pi
+== Access your Raspberry Pi device
 
-Now that your Raspberry Pi appears on your Connect dashboard, you can access your Raspberry Pi from anywhere using only a browser. Connect provides multiple ways to interact with your Raspberry Pi remotely.
+Now that your device appears on your Connect dashboard, you can access your device from anywhere using only a browser. Connect provides multiple ways to interact with your device remotely.
 
 === Screen sharing
 
-Connect includes the ability to share your Raspberry Pi's screen in a browser. Use the following instructions to share your Raspberry Pi's screen.
+Connect includes the ability to share your device's screen in a browser. Use the following instructions to share your device's screen.
 
 NOTE: Screen sharing requires the **Wayland** window server. By default, Raspberry Pi OS only uses Wayland for **64-bit** distributions of Raspberry Pi OS **Bookworm** on Raspberry Pi 5, 4, or 400. Screen sharing is **not** compatible with Raspberry Pi OS Lite or systems that use the X window server.
 
@@ -75,11 +78,11 @@ Connect redirects you to the Raspberry Pi ID service to sign in. After signing i
 
 image::images/list-of-devices.png[width="80%"]
 
-Click the **Connect via** button to the right of the device you would like to access. Select the **Screen sharing** option from the menu. This opens a browser window that displays the desktop of your Raspberry Pi.
+Click the **Connect via** button to the right of the device you would like to access. Select the **Screen sharing** option from the menu. This opens a browser window that displays your device's desktop.
 
 image::images/screen-sharing-connecting.png[width="80%"]
 
-You can now use your Raspberry Pi as you would locally. For more information about the connection, hover your mouse over the padlock icon immediately to the right of the **Disconnect** button.
+You can now use your device as you would locally. For more information about the connection, hover your mouse over the padlock icon immediately to the right of the **Disconnect** button.
 
 image::images/screen-sharing-start.png[width="80%"]
 
@@ -101,7 +104,7 @@ image::images/screen-sharing-end.png[width="80%"]
 
 ==== Disable screen sharing
 
-To turn off screen sharing, click the Connect system tray icon and unselect **Allow screen sharing**.  Your Raspberry Pi remains signed into Connect, but you won't be able to create a screen sharing session from the Connect dashboard.
+To turn off screen sharing, click the Connect system tray icon and unselect **Allow screen sharing**.  Your device remains signed into Connect, but you won't be able to create a screen sharing session from the Connect dashboard.
 
 image::images/screen-sharing-disabled-desktop.png[width="80%"]
 
@@ -128,7 +131,7 @@ $ rpi-connect vnc on
 
 === Remote shell
 
-Connect includes the ability to access a shell running on your Raspberry Pi from a browser. Use the following instructions to access the remote shell.
+Connect includes the ability to access a shell running on your device from a browser. Use the following instructions to access the remote shell.
 
 Visit https://connect.raspberrypi.com[connect.raspberrypi.com] on any computer.
 
@@ -136,11 +139,11 @@ Connect redirects you to the Raspberry Pi ID service to sign in. After signing i
 
 image::images/list-of-devices.png[width="80%"]
 
-Click the **Connect via** button to the right of the device you would like to access. Select the **Remote shell** option from the menu. This opens a shell session on your Raspberry Pi.
+Click the **Connect via** button to the right of the device you would like to access. Select the **Remote shell** option from the menu. This opens a shell session on your device.
 
 image::images/remote-shell-connecting.png[width="80%"]
 
-You can now use your Raspberry Pi as you would locally.
+You can now use your device as you would locally.
 
 image::images/remote-shell-start.png[width="80%"]
 
@@ -166,7 +169,7 @@ image::images/remote-shell-end.png[width="80%"]
 
 ==== Disable remote shell access
 
-To turn off remote shell access, click the Connect system tray icon and unselect **Allow remote shell**. Your Raspberry Pi remains signed into Connect, but you won't be able to create a remote shell session from the Connect dashboard.
+To turn off remote shell access, click the Connect system tray icon and unselect **Allow remote shell**. Your device remains signed into Connect, but you won't be able to create a remote shell session from the Connect dashboard.
 
 image::images/remote-shell-disabled-desktop.png[width="80%"]
 
@@ -193,7 +196,7 @@ $ rpi-connect shell on
 
 == Enable remote shell at all times
 
-Connect runs as a user-level service, not as root. As a result, Connect only works when your user account is currently logged in on your Raspberry Pi. This can make your Raspberry Pi unreachable if you reboot with automatic login disabled. To continue running Connect even when you aren't logged into your device, enable **user-lingering**. Run the following command from your user account to enable user-lingering:
+Connect runs as a user-level service, not as root. As a result, Connect only works when your user account is currently logged in on your device. This can make your device unreachable if you reboot with automatic login disabled. To continue running Connect even when you aren't logged into your device, enable **user-lingering**. Run the following command from your user account to enable user-lingering:
 
 [source,console]
 ----
@@ -204,7 +207,7 @@ TIP: We recommend enabling user-lingering on all headless Raspberry Pi OS Lite s
 
 == Manage devices
 
-The Connect dashboard lists all of the Raspberry Pi devices linked with your Raspberry Pi ID and shows you the various ways you can access them.
+The Connect dashboard lists all of the devices linked with your Connect account and shows you the various ways you can access them.
 
 image::images/list-of-devices.png[width="80%"]
 
@@ -233,18 +236,18 @@ $ sudo reboot
 
 == Disconnect a device from Connect
 
-Run the following command on your Raspberry Pi to sign out of your Raspberry Pi ID, which will disable your device on the Connect screen:
+Run the following command on your device to sign out of your Raspberry Pi ID, which will disable your device on the Connect screen:
 
 [source,console]
 ----
 $ rpi-connect signout
 ----
 
-TIP: To fully remove a Raspberry Pi from your Connect account, xref:connect.adoc#manage-devices[remove it from the Connect dashboard].
+TIP: To fully remove a device from your Connect account, xref:connect.adoc#manage-devices[remove it from the Connect dashboard].
 
 == Uninstall
 
-Run the following command to remove Connect software from a Raspberry Pi:
+Run the following command to remove Connect software from a device:
 
 [source,console]
 ----
@@ -253,6 +256,6 @@ $ sudo apt remove --purge rpi-connect
 
 TIP: If you installed Connect Lite, replace `rpi-connect` with `rpi-connect-lite` in the above command.
 
-After uninstalling, the serial number of the Raspberry Pi remains linked with your Raspberry Pi ID. The device still appears in the Connect dashboard, but can't be used for remote access. If you install Connect again, even with a different SD card, on the same Raspberry Pi, it will reuse the existing device name in the Connect dashboard.
+After uninstalling, the serial number of the device remains linked with your Connect account. The device still appears in the Connect dashboard, but can't be used for remote access. If you install Connect again, even with a different SD card, on the same device, it will reuse the existing device name in the Connect dashboard.
 
-To sever the link between a Raspberry Pi and a Raspberry Pi ID, remove the Raspberry Pi from the list of devices in the Connect dashboard.
+To sever the link between a device and a Connect account, remove the device from the list of devices in the Connect dashboard.
