@@ -62,7 +62,7 @@ Alternatively you can use a standalone TFTP server like `tftpd-hpa`.
 
 [,bash]
 ----
-$ sudo apt-get install tftpd-hpa
+$ sudo apt install tftpd-hpa
 $ sudo systemctl start tftpd-hpa
 ----
 
@@ -72,7 +72,7 @@ DHCP in IPv6 has changed a lot. We need DHCP to at least tell us the address of 
 
 [,bash]
 ----
-$ sudo apt-get install isc-dhcp-server
+$ sudo apt install isc-dhcp-server
 ----
 
 Modify the configuration in `/etc/default/isc-dhcp-server`
@@ -133,7 +133,7 @@ To use IPv6 you really need a router and ISP that supports IPv6. There are sites
 
 [,bash]
 ----
-sudo apt-get install ndisc6
+sudo apt install ndisc6
 rdisc6 -1 eth0
 ----
 

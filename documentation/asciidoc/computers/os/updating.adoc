@@ -171,7 +171,7 @@ If you update your firmware to the latest release and experience an issue, use t
 
 [source,console]
 ----
-$ sudo apt-get update
+$ sudo apt update
 $ sudo apt install --reinstall raspi-firmware
 ----
 

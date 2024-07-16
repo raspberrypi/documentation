@@ -18,7 +18,7 @@ Raspberry Pi OS includes a pre-installed copy of `rpicam-apps`. Before building 
 
 [source,console]
 ----
-$ sudo apt-get remove --purge rpicam-apps
+$ sudo apt remove --purge rpicam-apps
 ----
 
 ==== Building `rpicam-apps` without building `libcamera`
