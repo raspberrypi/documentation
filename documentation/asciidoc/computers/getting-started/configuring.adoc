@@ -64,6 +64,12 @@ This page lets you select Firefox or Chromium as your default internet browser. 
 
 image::images/initial-setup/browser.png[alt="The Choose Browser page."]
 
+=== Raspberry Pi Connect
+
+This page lets you enable xref:../services/connect.adoc[Raspberry Pi Connect], which provides the ability to access your Raspberry Pi remotely with no manual network configuration.
+
+image::images/initial-setup/connect.png[alt="The Enable Raspberry Pi Connect page."]
+
 === Software updates
 
 Once your Raspberry Pi has internet access, this page helps you update your operating system and software to the latest versions. During the software update process, the wizard will remove the non-default browser if you opted to uninstall it in the browser selection step. Downloading updates may take several minutes.

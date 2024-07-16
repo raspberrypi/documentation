@@ -115,7 +115,7 @@ $ sudo apt remove <package-name>
 TIP: To completely remove all traces of the package, including configuration files, use `purge` instead of `remove`.
 
 `apt` will display the amount of disk space removing the package will free up.
-Enter *Y* and press **Enter** to confirm installation of the package. You can skip this confirmation step by adding the `-y` flag to the command above.
+Enter *Y* and press **Enter** to confirm removal of the package. You can skip this confirmation step by adding the `-y` flag to the command above.
 
 ==== Manage `apt` disk usage
 
