@@ -88,7 +88,7 @@ If you plan to use your Raspberry Pi remotely over your network, check the box n
 
 * Choose the **password authentication** option to SSH into your Raspberry Pi over the network using the username and password you provided in the general tab of OS customisation.
 
-* Choose **Allow public-key authentication only** to preconfigure your Raspberry Pi for passwordless public-key SSH authentication using a private key from the computer you're currently using. If already have an RSA key in your SSH configuration, Imager uses that public key. If you don't, you can click **Run SSH-keygen** to generate a public/private key pair. Imager will use the newly-generated public key.
+* Choose **Allow public-key authentication only** to preconfigure your Raspberry Pi for passwordless public-key SSH authentication using a private key from the computer you're currently using. If already have an RSA key in your SSH configuration, Imager uses that public key. If you don't, you can click **Run SSH-keygen** to generate a public/private key pair. Imager will use the newly-generated public key. Default username to log in via ssh is **pi** `ssh -l pi <here raspberrypi ip address>`. When this option is enabled setting *username* and *password* in *General* tab is *optional*.
 
 image::images/imager/os-customisation-services.png[alt="Services settings in the OS customisation menu."]
 
