@@ -12,6 +12,15 @@ Build `libcamera` and `rpicam-apps` for yourself for the following benefits:
 
 * You can customise or add your own applications derived from `rpicam-apps`
 
+==== Remove pre-installed `rpicam-apps`
+
+Raspberry Pi OS includes a pre-installed copy of `rpicam-apps`. Before building and installing your own version of `rpicam-apps`, you must first remove the pre-installed version. Run the following command to remove the `rpicam-apps` package from your Raspberry Pi:
+
+[source,console]
+----
+$ sudo apt-get remove --purge rpicam-apps
+----
+
 ==== Building `rpicam-apps` without building `libcamera`
 
 To build `rpicam-apps` without first rebuilding `libcamera` and `libepoxy`, install `libcamera`, `libepoxy` and their dependencies with `apt`:
@@ -178,7 +187,24 @@ Finally, run the following command to install your freshly-built `rpicam-apps` b
 $ sudo meson install -C build
 ----
 
-Open a new terminal window after installation to ensure that you use the new binary.
+[TIP]
+====
+The command above should automatically update the `ldconfig` cache. If you have trouble accessing your new `rpicam-apps` build, run the following command to update the cache:
+
+[source,console]
+----
+$ sudo ldconfig
+----
+====
+
+Run the following command to check that your device uses the new binary:
+
+[source,console]
+----
+$ rpicam-still --version
+----
+
+The output should include the date and time of your local `rpicam-apps` build.
 
 Finally, follow the `dtoverlay` and display driver instructions in the  xref:camera_software.adoc#configuration[Configuration section].
 
@@ -205,8 +231,6 @@ Each of the above options (except for `neon_flags`) supports the following value
 * `enabled`: enables the option, fails the build if dependencies are not available
 * `disabled`: disables the option
 * `auto`: enables the option if dependencies are available
-
-
 
 ==== Building `libepoxy`
 
