@@ -46,3 +46,13 @@ https://github.com/RPi-Distro/RTIMULib[RTIMULib] is a {cpp} and Python library t
 The RTIMULibDrive11 example comes pre-compiled to help ensure everything works as intended. It can be launched by running `RTIMULibDrive11` and closed by pressing `Ctrl C`.
 
 NOTE: The C/{cpp} examples can be compiled by running `make` in the appropriate directory.
+
+Calibrate
+Install the necessary software and run the calibration program as follows:
+
+sudo apt update
+sudo apt install octave -y
+cd
+cp /usr/share/librtimulib-utils/RTEllipsoidFit ./ -a
+cd RTEllipsoidFit
+RTIMULibCal
