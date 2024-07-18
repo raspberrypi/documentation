@@ -1,4 +1,5 @@
-== About the TV HAT
+[[tv-hat]]
+== About
 
 .The Raspberry Pi TV HAT
 image::images/tv-hat.jpg[width="80%"]
@@ -23,7 +24,8 @@ Digital Video Broadcasting – Terrestrial (DVB-T) is the DVB European-based con
 .DTT system implemented or adopted (Source: DVB/EBU/BNE DTT Deployment Database, March 2023)
 image::images/dvbt-map.png[width="80%"]
 
-== Setup Instructions
+[[tv-hat-installation]]
+== Install
 
 Follow our xref:../computers/getting-started.adoc[getting started] documentation and set up the Raspberry Pi with the newest version of Raspberry Pi OS.
 

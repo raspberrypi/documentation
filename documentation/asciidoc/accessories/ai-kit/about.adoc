@@ -18,7 +18,7 @@ The Raspberry Pi AI Kit bundles the xref:m2-hat-plus.adoc#m2-hat-plus[Raspberry 
 * M.2 2242 form factor
 
 [[ai-kit-installation]]
-== Installation
+== Install
 
 To use the AI Kit, you will need:
 

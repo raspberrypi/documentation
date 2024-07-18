@@ -428,15 +428,15 @@ src_port@src_ip/dev_name,dst_port@dst_ip/dst_mac
 E.g. 6665@169.254.1.1/,6666@/
 ----
 
-In order to simplify parsing, the bootloader requires every field separator to be present. The source IP address must be specified but the following fields may be left blank and assigned default values.
+In order to simplify parsing, the bootloader requires every field separator to be present. You must specify the source IP address, but you can leave the following fields blank to use their default values:
 
-* src_port - 6665
-* dev_name - "" (the device name is always ignored)
-* dst_port - 6666
-* dst_ip - 255.255.255.255
-* dst_mac - 00:00:00:00:00
+* `src_port` - `6665`
+* `dev_name` - `""` (the device name is always ignored)
+* `dst_port` - `6666`
+* `dst_ip` - `255.255.255.255`
+* `dst_mac` - `00:00:00:00:00`
 
-One way to view the data is to connect the test Raspberry Pi 4 to another Raspberry Pi running WireShark and select "`udp.srcport == 6665`" as a filter and select *Analyze -> Follow -> UDP stream* to view as an ASCII log.
+One way to view the data is to connect the test Raspberry Pi 4 to another Raspberry Pi running WireShark and select `udp.srcport == 6665` as a filter and select *Analyze -> Follow -> UDP stream* to view as an ASCII log.
 
 `NETCONSOLE` should not be enabled by default because it may cause network problems. It can be enabled on demand via a GPIO filter:
 

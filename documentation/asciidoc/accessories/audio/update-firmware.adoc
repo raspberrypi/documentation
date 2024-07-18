@@ -2,7 +2,7 @@
 
 Raspberry Pi Audio Boards use an EEPROM that contains information that is used by the host Raspberry Pi device to select the appropriate driver at boot time. This information is programmed into the EEPROM during manufacture. There are some circumstances where the end user may wish to update the EEPROM contents: this can be done from the command line.
 
-IMPORTANT: Before proceeding, you should update the Raspberry Pi OS running on your Raspberry Pi to the latest version.
+IMPORTANT: Before proceeding, update the version of Raspberry Pi OS running on your Raspberry Pi to the latest version.
 
 === The EEPROM write-protect link
 
