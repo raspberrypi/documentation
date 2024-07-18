@@ -30,7 +30,7 @@ The M.2 HAT+ is _only_ compatible with the https://www.raspberrypi.com/products/
 ** 1 knurled double-flanged drive attachment screw to secure and support the M.2 peripheral
 
 [[m2-hat-plus-installation]]
-== Installation
+== Install
 
 To use the Raspberry Pi M.2 HAT+, you will need:
 

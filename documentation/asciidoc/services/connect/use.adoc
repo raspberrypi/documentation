@@ -38,7 +38,7 @@ This command should output something like the following:
 Complete sign in by visiting https://connect.raspberrypi.com/verify/XXXX-XXXX
 ----
 
-Visit the verification URL on any device and sign in to your Raspberry Pi ID to link your device with your Connect account.
+Visit the verification URL on any device and sign in with your Raspberry Pi ID to link your device with your Connect account.
 
 === Finish linking your Raspberry Pi
 
