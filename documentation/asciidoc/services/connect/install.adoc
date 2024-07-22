@@ -6,7 +6,7 @@ To begin installation, open a Terminal window. Run the following command to upda
 [source,console]
 ----
 $ sudo apt update
-$ sudo apt upgrade
+$ sudo apt full-upgrade
 ----
 
 Run the following command on your Raspberry Pi to install Connect:
