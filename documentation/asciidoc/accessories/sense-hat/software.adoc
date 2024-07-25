@@ -12,7 +12,7 @@ Complete the following steps to get your Raspberry Pi device ready to connect to
 +
 [source,console]
 ----
-$ sudo apt update && sudo apt upgrade
+$ sudo apt update && sudo apt full-upgrade
 ----
 
 . Next, install the `sense-hat` package, which will ensure the kernel is up to date, enable I2C, and install the necessary dependencies:
