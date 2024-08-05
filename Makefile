@@ -80,10 +80,11 @@ clean_doxygen_xml:
 $(ASCIIDOC_DOXYGEN_DIR)/picosdk_index.json $(ASCIIDOC_DOXYGEN_DIR)/index_doxygen.adoc: $(ASCIIDOC_DOXYGEN_DIR) $(DOXYGEN_XML_DIR)/index.xml doxygentoasciidoc/__main__.py doxygentoasciidoc/cli.py doxygentoasciidoc/nodes.py doxygentoasciidoc/helpers.py | $(BUILD_DIR)
 	$(MAKE) clean_ninja
 	python3 -m doxygentoasciidoc -f $(DOXYGEN_XML_DIR)/index.xml > $(ASCIIDOC_DOXYGEN_DIR)/all_groups.adoc
-	# create the sdk introduction
 	python3 -m doxygentoasciidoc -f $(DOXYGEN_XML_DIR)/indexpage.xml -c > $(ASCIIDOC_DOXYGEN_DIR)/index_doxygen.adoc
+	python3 -m doxygentoasciidoc -f $(DOXYGEN_XML_DIR)/examples_page.xml -c > $(ASCIIDOC_DOXYGEN_DIR)/examples_page.adoc
 	python3 $(SCRIPTS_DIR)/postprocess_doxygen_adoc.py $(ASCIIDOC_DOXYGEN_DIR)/all_groups.adoc $(ASCIIDOC_DOXYGEN_DIR)
 	python3 $(SCRIPTS_DIR)/postprocess_doxygen_adoc.py $(ASCIIDOC_DOXYGEN_DIR)/index_doxygen.adoc $(ASCIIDOC_DOXYGEN_DIR)
+	python3 $(SCRIPTS_DIR)/postprocess_doxygen_adoc.py $(ASCIIDOC_DOXYGEN_DIR)/examples_page.adoc $(ASCIIDOC_DOXYGEN_DIR)
 	-cp $(DOXYGEN_XML_DIR)/*.png $(ASCIIDOC_DOXYGEN_DIR)
 
 build_doxygen_adoc: $(ASCIIDOC_DOXYGEN_DIR)/index_doxygen.adoc

@@ -3,15 +3,15 @@ import sys
 import os
 import json
 
-def cleanup_index_page(adoc_file, output_adoc_path):
+def cleanup_text_page(adoc_file, output_adoc_path):
 	script_path = os.path.realpath(__file__)
 	top_dir_path = re.sub(r'/scripts/.*$', "", script_path)
-	output_path = os.path.join(top_dir_path, output_adoc_path, "index_doxygen.adoc")
+	output_path = os.path.join(top_dir_path, adoc_file)
 	with open(adoc_file) as f:
 		adoc_content = f.read()
 	# remove any errant spaces before anchors
 	adoc_content = re.sub(r'( +)(\[\[[^[]*?\]\])', "\\2", adoc_content)
-	with open(adoc_file, 'w') as f:
+	with open(output_path, 'w') as f:
 		f.write(adoc_content)
 	return
 
@@ -108,7 +108,7 @@ def postprocess_doxygen_adoc(adoc_file, output_adoc_path):
 if __name__ == '__main__':
 	adoc_file = sys.argv[1]
 	output_adoc_path = sys.argv[2]
-	if re.search("index_doxygen.adoc", adoc_file) is not None:
-		cleanup_index_page(adoc_file, output_adoc_path)
-	else:
+	if re.search("all_groups.adoc", adoc_file) is not None:
 		postprocess_doxygen_adoc(adoc_file, output_adoc_path)
+	else:
+		cleanup_text_page(adoc_file, output_adoc_path)
