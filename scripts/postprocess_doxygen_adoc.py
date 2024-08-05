@@ -43,13 +43,13 @@ def postprocess_doxygen_adoc(adoc_file, output_adoc_path):
 	adoc_content = re.sub(NONHEADING_RE, f'[.contexttag \\2]*\\2*\n\n\\1\\2\\3', adoc_content)
 
 	# now split the file into top-level sections:
-	# toolchain expects all headings to be one level lower
-	adoc_content = re.sub(r'\n=', "\n", adoc_content)
+	# toolchain expects all headings to be two levels lower
+	adoc_content = re.sub(r'\n==', "\n", adoc_content)
 	# then make it easier to match the chapter breaks
-	adoc_content = re.sub(r'(\[#.*?,reftext=".*?"\])(\s*\n)(== )', "\\1\\3", adoc_content)
+	adoc_content = re.sub(r'(\[#.*?,reftext=".*?"\])(\s*\n)(= )', "\\1\\3", adoc_content)
 	# find all the chapter descriptions, to use later
-	descriptions = re.findall(r'(\[#.*?,reftext=".*?"\])(== .*?\n\s*\n)(.*?)(\n)', adoc_content)
-	CHAPTER_START_RE = re.compile(r'(\[#)(.*?)(,reftext=".*?"\]== )(.*?$)')
+	descriptions = re.findall(r'(\[#.*?,reftext=".*?"\])(= .*?\n\s*\n)(.*?)(\n)', adoc_content)
+	CHAPTER_START_RE = re.compile(r'(\[#)(.*?)(,reftext=".*?"\]= )(.*?$)')
 	# check line by line; if the line matches our chapter break,
 	# then pull all following lines into the chapter list until a new match.
 	current_chapter = None
@@ -76,7 +76,7 @@ def postprocess_doxygen_adoc(adoc_file, output_adoc_path):
 			}
 			sections.append(chapter_dict)
 			# re-split the line into 2
-			start_line = re.sub("== ", "\n== ", line)
+			start_line = re.sub("= ", "\n= ", line)
 			current_chapter.append(start_line)
 			counter += 1
 		else:
@@ -86,7 +86,7 @@ def postprocess_doxygen_adoc(adoc_file, output_adoc_path):
 		with open(chapter_filename, 'w') as f:
 			f.write('\n'.join(current_chapter))
 	build_json(sections, output_path)
-	os.remove(adoc_file)
+	# os.remove(adoc_file)
 	return
 
 if __name__ == '__main__':
