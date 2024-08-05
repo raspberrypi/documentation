@@ -9,20 +9,7 @@ def build_json(sections, output_path):
 		f.write(json.dumps(sections, indent="\t"))
 	return
 
-def postprocess_doxygen_adoc(adoc_file, output_adoc_path):
-	sections = [{
-		"group_id": "index_doxygen",
-		"name": "Introduction",
-		"description": "An introduction to the Pico SDK",
-		"html": "index_doxygen.html",
-		"subitems": []
-	}]
-	script_path = os.path.realpath(__file__)
-	top_dir_path = re.sub(r'/scripts/.*$', "", script_path)
-	output_path = os.path.join(top_dir_path, output_adoc_path)
-	with open(adoc_file) as f:
-		adoc_content = f.read()
-	# first, lets add the tags
+def tag_content(adoc_content):
 	# this is dependent on the same order of attributes every time
 	ids_to_tag = re.findall(r'(\[#)(.*?)(,.*?contextspecific,tag=)(.*?)(,type=)(.*?)(\])', adoc_content)
 	for this_id in ids_to_tag:
@@ -41,6 +28,23 @@ def postprocess_doxygen_adoc(adoc_file, output_adoc_path):
 	adoc_content = re.sub(HEADING_RE, f'\\1\\2\\3 [.contexttag \\2]*\\2*\n', adoc_content)
 	adoc_content = re.sub(H6_HEADING_RE, f'\\1\\2\\3 [.contexttag \\2]*\\2*\n', adoc_content)
 	adoc_content = re.sub(NONHEADING_RE, f'[.contexttag \\2]*\\2*\n\n\\1\\2\\3', adoc_content)
+	return adoc_content
+
+def postprocess_doxygen_adoc(adoc_file, output_adoc_path):
+	sections = [{
+		"group_id": "index_doxygen",
+		"name": "Introduction",
+		"description": "An introduction to the Pico SDK",
+		"html": "index_doxygen.html",
+		"subitems": []
+	}]
+	script_path = os.path.realpath(__file__)
+	top_dir_path = re.sub(r'/scripts/.*$', "", script_path)
+	output_path = os.path.join(top_dir_path, output_adoc_path)
+	with open(adoc_file) as f:
+		adoc_content = f.read()
+	# first, lets add any tags
+	adoc_content = tag_content(adoc_content)
 
 	# now split the file into top-level sections:
 	# toolchain expects all headings to be two levels lower
