@@ -98,7 +98,9 @@ if __name__ == "__main__":
         for tab in data['tabs']:
             nav = []
             if 'path' in tab:
+                print(tab['path'])
                 for subitem in tab['subitems']:
+                    print(subitem)
                     if 'subpath' in subitem:
                         fullpath = os.path.join(tab['path'], subitem['subpath'])
                         if fullpath in available_anchors:
@@ -138,11 +140,13 @@ if __name__ == "__main__":
                                         if min_level <= newlevel <= max_level and not last_line_was_discrete:
                                             entry = {'heading': heading, 'anchor': anchor}
                                             if newlevel > level:
+                                                # if len(nav[-1]['sections']) > 0:
                                                 nav[-1]['sections'][-1]['subsections'] = []
                                             level = newlevel
                                             if level == 2:
                                                 nav[-1]['sections'].append(entry)
                                             elif level == 3:
+                                                # if len(nav[-1]['sections']) > 0:
                                                 nav[-1]['sections'][-1]['subsections'].append(entry)
                                     last_line_was_discrete = False
                                     header_id = None

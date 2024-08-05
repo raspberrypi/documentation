@@ -136,7 +136,7 @@ if __name__ == "__main__":
         ninja.variable('documentation_index', index_json)
         ninja.variable('output_index', os.path.join(output_dir, "_data", "index.json"))
         ninja.variable('site_config', config_yaml)
-        ninja.variable('doxyfile', os.path.join(doxygen_pico_sdk_build_dir, "docs", "Doxyfile"))
+        ninja.variable('doxyfile', os.path.join(doxygen_pico_sdk_build_dir, "combined", "docs", "Doxyfile"))
         ninja.newline()
 
         targets = []
