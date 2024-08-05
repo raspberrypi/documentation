@@ -73,7 +73,7 @@ def postprocess_doxygen_adoc(adoc_file, output_adoc_path):
 			chapter_filename = os.path.join(output_path, group_id+".adoc")
 			chapter_dict = {
 				"group_id": group_id,
-				"html": group_id+".adoc",
+				"html": group_id+".html",
 				"name": m.group(4),
 				"subitems": [],
 				"description": descriptions[counter][2]
@@ -90,7 +90,7 @@ def postprocess_doxygen_adoc(adoc_file, output_adoc_path):
 		with open(chapter_filename, 'w') as f:
 			f.write('\n'.join(current_chapter))
 	build_json(sections, output_path)
-	# os.remove(adoc_file)
+	os.remove(adoc_file)
 	return
 
 if __name__ == '__main__':
