@@ -3,6 +3,10 @@ import sys
 import os
 import json
 
+# TO DO: fix links:
+# collect all link anchors in the file
+# then open each file, find all link, point to the correct anchor
+
 def cleanup_text_page(adoc_file, output_adoc_path):
 	script_path = os.path.realpath(__file__)
 	top_dir_path = re.sub(r'/scripts/.*$', "", script_path)
@@ -60,7 +64,7 @@ def postprocess_doxygen_adoc(adoc_file, output_adoc_path):
 
 	# now split the file into top-level sections:
 	# toolchain expects all headings to be two levels lower
-	adoc_content = re.sub(r'\n==', "\n", adoc_content)
+	adoc_content = re.sub(r'(\n==)(=+ \S+)', "\n\\2", adoc_content)
 	# then make it easier to match the chapter breaks
 	adoc_content = re.sub(r'(\[#.*?,reftext=".*?"\])(\s*\n)(= )', "\\1\\3", adoc_content)
 	# find all the chapter descriptions, to use later

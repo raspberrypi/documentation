@@ -725,6 +725,35 @@ div.videoblock iframe {
   background-color: #50C878;
 }
 
+div.listingblock pre.highlight {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#content div.listingblock table.linenotable {
+  margin-bottom: 0px;
+}
+
+#content td.hdlist1 {
+  line-height: 1.5em;
+}
+
+#content td.hdlist2 > p {
+  margin-bottom: 0px;
+}
+
+#content td.linenos {
+  padding-right: 10px;
+}
+
+.highlight td.code pre {
+  background-color: transparent;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+/* OLD DOXYGEN ELEMENTS */
+
 div.memproto {
   background-color: #dedede;
   padding: 7px;
