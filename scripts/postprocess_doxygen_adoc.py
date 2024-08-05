@@ -3,6 +3,18 @@ import sys
 import os
 import json
 
+def cleanup_index_page(adoc_file, output_adoc_path):
+	script_path = os.path.realpath(__file__)
+	top_dir_path = re.sub(r'/scripts/.*$', "", script_path)
+	output_path = os.path.join(top_dir_path, output_adoc_path, "index_doxygen.adoc")
+	with open(adoc_file) as f:
+		adoc_content = f.read()
+	# remove any errant spaces before anchors
+	adoc_content = re.sub(r'( +)(\[\[[^[]*?\]\])', "\\2", adoc_content)
+	with open(adoc_file, 'w') as f:
+		f.write(adoc_content)
+	return
+
 def build_json(sections, output_path):
 	json_path = os.path.join(output_path, "picosdk_index.json")
 	with open(json_path, 'w') as f:
@@ -96,4 +108,7 @@ def postprocess_doxygen_adoc(adoc_file, output_adoc_path):
 if __name__ == '__main__':
 	adoc_file = sys.argv[1]
 	output_adoc_path = sys.argv[2]
-	postprocess_doxygen_adoc(adoc_file, output_adoc_path)
+	if re.search("index_doxygen.adoc", adoc_file) is not None:
+		cleanup_index_page(adoc_file, output_adoc_path)
+	else:
+		postprocess_doxygen_adoc(adoc_file, output_adoc_path)

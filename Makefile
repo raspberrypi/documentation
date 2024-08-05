@@ -83,6 +83,7 @@ $(ASCIIDOC_DOXYGEN_DIR)/picosdk_index.json $(ASCIIDOC_DOXYGEN_DIR)/index_doxygen
 	# create the sdk introduction
 	python3 -m doxygentoasciidoc -f $(DOXYGEN_XML_DIR)/indexpage.xml -c > $(ASCIIDOC_DOXYGEN_DIR)/index_doxygen.adoc
 	python3 $(SCRIPTS_DIR)/postprocess_doxygen_adoc.py $(ASCIIDOC_DOXYGEN_DIR)/all_groups.adoc $(ASCIIDOC_DOXYGEN_DIR)
+	python3 $(SCRIPTS_DIR)/postprocess_doxygen_adoc.py $(ASCIIDOC_DOXYGEN_DIR)/index_doxygen.adoc $(ASCIIDOC_DOXYGEN_DIR)
 	-cp $(DOXYGEN_XML_DIR)/*.png $(ASCIIDOC_DOXYGEN_DIR)
 
 build_doxygen_adoc: $(ASCIIDOC_DOXYGEN_DIR)/index_doxygen.adoc
