@@ -3,15 +3,8 @@ import sys
 import os
 import json
 
-# TO DO: fix links:
-# collect all link anchors in the file
-# then open each file, find all link, point to the correct anchor
-
 def cleanup_text_page(adoc_file, output_adoc_path, link_targets):
 	filename = os.path.basename(adoc_file)
-	# script_path = os.path.realpath(__file__)
-	# top_dir_path = re.sub(r'/scripts/.*$', "", script_path)
-	# output_path = os.path.join(top_dir_path, adoc_file)
 	with open(adoc_file) as f:
 		adoc_content = f.read()
 	# remove any errant spaces before anchors
