@@ -477,7 +477,7 @@ Specifies the autofocus speed. Accepts the following values:
 
 This option is only supported for certain camera modules.
 
-==== `autofocus-range`
+==== `autofocus-window`
 
 Specifies the autofocus window within the full field of the sensor. Accepts four decimal values, _ranged 0 to 1_, in the following format: `<x>,<y>,<w>,h>`. Each of these values represents a percentage of the available width and heights as a decimal between 0 and 1.
 
