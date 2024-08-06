@@ -7,16 +7,46 @@ import json
 # collect all link anchors in the file
 # then open each file, find all link, point to the correct anchor
 
-def cleanup_text_page(adoc_file, output_adoc_path):
-	script_path = os.path.realpath(__file__)
-	top_dir_path = re.sub(r'/scripts/.*$', "", script_path)
-	output_path = os.path.join(top_dir_path, adoc_file)
+def cleanup_text_page(adoc_file, output_adoc_path, link_targets):
+	filename = os.path.basename(adoc_file)
+	# script_path = os.path.realpath(__file__)
+	# top_dir_path = re.sub(r'/scripts/.*$', "", script_path)
+	# output_path = os.path.join(top_dir_path, adoc_file)
 	with open(adoc_file) as f:
 		adoc_content = f.read()
 	# remove any errant spaces before anchors
 	adoc_content = re.sub(r'( +)(\[\[[^[]*?\]\])', "\\2", adoc_content)
-	with open(output_path, 'w') as f:
+	# collect link targets
+	for line in adoc_content.split('\n'):
+		link_targets = collect_link_target(line, filename)
+	with open(adoc_file, 'w') as f:
 		f.write(adoc_content)
+	return link_targets
+
+def collect_link_target(line, chapter_filename):
+	# collect a list of all link targets, so we can fix internal links
+	l = re.search(r'(#)([^,\]]+)([,\]])', line)
+	if l is not None:
+		link_targets[l.group(2)] = chapter_filename
+	return link_targets
+
+def resolve_links(adoc_file, link_targets):
+	filename = os.path.basename(adoc_file)
+	with open(adoc_file) as f:
+		adoc_content = f.read()
+	output_content = []
+	for line in adoc_content.split('\n'):
+		# e.g., <<examples_page,here>>
+		m = re.search("(<<)([^,]+)(,?[^>]*>>)", line)
+		if m is not None:
+			target = m.group(2)
+			# only resolve link if it points to another file
+			if target in link_targets and link_targets[target] != filename:
+				new_target = link_targets[target]+"#"+target
+				line = re.sub("(<<)([^,]+)(,?[^>]*>>)", f"\\1{new_target}\\3", line)
+		output_content.append(line)
+	with open(adoc_file, 'w') as f:
+		f.write('\n'.join(output_content))
 	return
 
 def build_json(sections, output_path):
@@ -46,7 +76,8 @@ def tag_content(adoc_content):
 	adoc_content = re.sub(NONHEADING_RE, f'[.contexttag \\2]*\\2*\n\n\\1\\2\\3', adoc_content)
 	return adoc_content
 
-def postprocess_doxygen_adoc(adoc_file, output_adoc_path):
+def postprocess_doxygen_adoc(adoc_file, output_adoc_path, link_targets):
+	output_path = re.sub(r'[^/]+$', "", adoc_file)
 	sections = [{
 		"group_id": "index_doxygen",
 		"name": "Introduction",
@@ -54,14 +85,10 @@ def postprocess_doxygen_adoc(adoc_file, output_adoc_path):
 		"html": "index_doxygen.html",
 		"subitems": []
 	}]
-	script_path = os.path.realpath(__file__)
-	top_dir_path = re.sub(r'/scripts/.*$', "", script_path)
-	output_path = os.path.join(top_dir_path, output_adoc_path)
 	with open(adoc_file) as f:
 		adoc_content = f.read()
 	# first, lets add any tags
 	adoc_content = tag_content(adoc_content)
-
 	# now split the file into top-level sections:
 	# toolchain expects all headings to be two levels lower
 	adoc_content = re.sub(r'(\n==)(=+ \S+)', "\n\\2", adoc_content)
@@ -72,21 +99,24 @@ def postprocess_doxygen_adoc(adoc_file, output_adoc_path):
 	CHAPTER_START_RE = re.compile(r'(\[#)(.*?)(,reftext=".*?"\]= )(.*?$)')
 	# check line by line; if the line matches our chapter break,
 	# then pull all following lines into the chapter list until a new match.
+	chapter_filename = "all_groups.adoc"
 	current_chapter = None
 	chapter_dict = {}
 	counter = 0
 	for line in adoc_content.split('\n'):
+		link_targets = collect_link_target(line, chapter_filename)
 		m = CHAPTER_START_RE.match(line)
 		if m is not None:
 			# write the previous chapter
 			if current_chapter is not None:
-				with open(chapter_filename, 'w') as f:
+				with open(chapter_path, 'w') as f:
 					f.write('\n'.join(current_chapter))
 			# start the new chapter
 			current_chapter = []
 			# set the data for this chapter
 			group_id = re.sub("^group_+", "", m.group(2))
-			chapter_filename = os.path.join(output_path, group_id+".adoc")
+			chapter_filename = group_id+".adoc"
+			chapter_path = os.path.join(output_path, chapter_filename)
 			chapter_dict = {
 				"group_id": group_id,
 				"html": group_id+".html",
@@ -103,16 +133,24 @@ def postprocess_doxygen_adoc(adoc_file, output_adoc_path):
 			current_chapter.append(line)
 	# write the last chapter
 	if current_chapter is not None:
-		with open(chapter_filename, 'w') as f:
+		with open(chapter_path, 'w') as f:
 			f.write('\n'.join(current_chapter))
 	build_json(sections, output_path)
 	os.remove(adoc_file)
-	return
+	return link_targets
 
 if __name__ == '__main__':
-	adoc_file = sys.argv[1]
-	output_adoc_path = sys.argv[2]
-	if re.search("all_groups.adoc", adoc_file) is not None:
-		postprocess_doxygen_adoc(adoc_file, output_adoc_path)
-	else:
-		cleanup_text_page(adoc_file, output_adoc_path)
+	output_adoc_path = sys.argv[1]
+	adoc_files = [f for f in os.listdir(output_adoc_path) if re.search(".adoc", f) is not None]
+	link_targets = {}
+	for adoc_file in adoc_files:
+		adoc_filepath = os.path.join(output_adoc_path, adoc_file)
+		if re.search("all_groups.adoc", adoc_file) is not None:
+			link_targets = postprocess_doxygen_adoc(adoc_filepath, output_adoc_path, link_targets)
+		else:
+			link_targets = cleanup_text_page(adoc_filepath, output_adoc_path, link_targets)
+	# now that we have a complete list of all link targets, resolve all internal links
+	adoc_files = [f for f in os.listdir(output_adoc_path) if re.search(".adoc", f) is not None]
+	for adoc_file in adoc_files:
+		adoc_filepath = os.path.join(output_adoc_path, adoc_file)
+		resolve_links(adoc_filepath, link_targets)
