@@ -16,7 +16,7 @@ The second-generation Raspberry Pi Pico family is referred to as Pico 2. Pico 2 
 
 image::images/pico-2.png[width="75%"]
 
-The Raspberry Pi Pico 2 family consists of two boards; Raspberry Pi Pico 2 and Raspberry Pi Pico 2 with headers.
+The Raspberry Pi Pico 2 family consists of two boards; Raspberry Pi Pico 2, and Raspberry Pi Pico 2 with headers.
 
 [[pico-2-technical-specification]]
 === Raspberry Pi Pico 2

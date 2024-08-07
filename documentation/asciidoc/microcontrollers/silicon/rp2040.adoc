@@ -6,7 +6,18 @@ image::images/rp2040.jpg[]
 
 Whether you have a xref:pico-series.adoc#pico-1-technical-specification[Raspberry Pi Pico 1] or another RP2040-based microcontroller board, everything you need to get started is here. You'll find support for getting started with xref:c_sdk.adoc#sdk-setup[C/{cpp}] or xref:micropython.adoc#what-is-micropython[MicroPython] on Raspberry Pi Pico, and links to resources for other boards that use RP2040. There are also links to the technical documentation for both the Raspberry Pi Pico microcontroller board and our RP2040 microcontroller chip.
 
-== Technical Specification
+=== Why is the chip called RP2040?
+
+The post-fix numeral on RP2040 comes from the following,
+
+image::images/rp2040_explanation.svg[width=640]
+
+. Number of processor cores (2)
+. Loosely which type of processor (M0+)
+. floor(log2(ram / 16k))
+. floor(log2(nonvolatile / 16k)) or 0 if no onboard nonvolatile storage
+
+=== Technical Specification
 
 RP2040 is the debut microcontroller from Raspberry Pi. It brings our signature values of high performance, low cost,
 and ease of use to the microcontroller space.
@@ -50,24 +61,12 @@ Even in deep sleep RP2040 draws a typical current of ~180μA, and sleep current 
 For many use cases where minimal current draw is required, the best option is to power off the system (or the RP2040 part of the system) completely if possible. This application note gives a couple of options for how this can be done, and these circuits are simple enough that a designer can adjust them for their own use case.
 ****
 
-=== Why is the chip called RP2040?
-
-The post-fix numeral on RP2040 comes from the following,
-
-image::images/rp2040_explanation.svg[width=640]
-
-. Number of processor cores (2)
-. Loosely which type of processor (M0+)
-. floor(log2(ram / 16k))
-. floor(log2(nonvolatile / 16k)) or 0 if no onboard nonvolatile storage
-
-=== Design Files
+==== Design Files
 
 * Download https://datasheets.raspberrypi.com/rp2040/Minimal-KiCAD.zip[Minimal Viable Board] Design Files (KiCad)
 * Download https://datasheets.raspberrypi.com/rp2040/VGA-KiCAD.zip[VGA Carrier Board] Design Files (KiCad)
 
-
-== RP2040-based Boards
+=== RP2040-based Boards
 
 Designed by Raspberry Pi as both a development board, and as a reference design, the xref:pico-series.adoc[Raspberry Pi Pico 1] is a family of RP2040-based boards. The Pico family currently consists of Raspberry Pi Pico (far left), Pico H (left), Pico W (right), and Pico WH (far right).
 
@@ -80,7 +79,7 @@ Permission to use, copy, modify, and/or distribute this design for any purpose w
 
 THE DESIGN IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS DESIGN INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS DESIGN.
 
-=== Other Boards
+==== Other Boards
 
 You can find discussions around third-party RP2040-based boards on the https://forums.raspberrypi.com/viewforum.php?f=147[Raspberry Pi forums].
 

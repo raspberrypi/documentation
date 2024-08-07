@@ -6,7 +6,18 @@ image::images/rp2350.png[]
 
 Whether you have a xref:pico-series.adoc#pico-2-technical-specification[Raspberry Pi Pico 2] or another RP2350-based microcontroller board, everything you need to get started is here. You'll find support for getting started with xref:c_sdk.adoc#sdk-setup[C/{cpp}] or xref:micropython.adoc#what-is-micropython[MicroPython] on Raspberry Pi Pico, and links to resources for other boards that use RP2350. There are also links to the technical documentation for both the Raspberry Pi Pico 2 microcontroller board and our RP2350 microcontroller chip.
 
-== Technical Specification
+=== Why is the chip called RP2350?
+
+The post-fix numeral on RP2350 comes from the following,
+
+image::images/rp2350_explanation.svg[width=640]
+
+. Number of processor cores (2)
+. Loosely which type of processor (M0+)
+. floor(log2(ram / 16k))
+. floor(log2(nonvolatile / 16k)) or 0 if no onboard nonvolatile storage
+
+=== Technical Specification
 
 RP2350 is a high-performance, secure, low-cost, easy-to-use microcontroller from Raspberry Pi.
 
@@ -36,7 +47,7 @@ Key features include:
 ** 3 Programmable IO (PIO) blocks, 12 state machines total
 
 
-== RP2350-based Boards
+=== RP2350-based Boards
 
 Designed by Raspberry Pi as both a development board, and as a reference design, the xref:pico-series.adoc#pico-2-technical-specification[Raspberry Pi Pico 2] is based on the RP2350.
 
@@ -48,7 +59,7 @@ Permission to use, copy, modify, and/or distribute this design for any purpose w
 
 THE DESIGN IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS DESIGN INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS DESIGN.
 
-=== Other Boards
+==== Other Boards
 
 You can find discussions around third-party RP2350-based boards on the https://forums.raspberrypi.com/viewforum.php?f=147[Raspberry Pi forums].
 
