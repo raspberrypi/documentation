@@ -62,7 +62,7 @@ Possible options for the display type - the first part of the `video=` entry - i
 | Video Option | Display
 
 | HDMI-A-1
-| HDMI 1 (HDMI 0 on silkscreen of Raspberry Pi 4B, HDMI on single HDMI boards)
+| HDMI 1 (HDMI 0 on silkscreen of Raspberry Pi 4B, use HDMI-A-1 on single HDMI boards)
 
 | HDMI-A-2
 | HDMI 2 (HDMI 1 on silkscreen of Raspberry Pi 4B)
