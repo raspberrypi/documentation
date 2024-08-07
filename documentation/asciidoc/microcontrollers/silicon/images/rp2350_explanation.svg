@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   x="0px"
+   y="0px"
+   width="145.087px"
+   height="80px"
+   viewBox="0 0 145.087 80"
+   style="enable-background:new 0 0 145.087 80;"
+   xml:space="preserve"
+   id="svg114"
+   sodipodi:docname="rp2040_explanation.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs118">
+		
+		
+	</defs><sodipodi:namedview
+   id="namedview116"
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1.0"
+   inkscape:pageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   showgrid="false"
+   inkscape:zoom="13.041952"
+   inkscape:cx="54.899758"
+   inkscape:cy="9.9678331"
+   inkscape:window-width="1920"
+   inkscape:window-height="1163"
+   inkscape:window-x="3840"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:#F6F6F6;}
+	.st1{fill:#CA4F62;}
+	.st2{fill:#4A96D2;}
+	.st3{fill:none;}
+	.st4{fill:#1D1D1B;}
+	.st5{font-family:'Roboto-Bold';}
+	.st6{font-size:15px;}
+	.st7{fill:none;stroke:#1D1D1B;stroke-width:0.5;stroke-miterlimit:10;}
+	.st8{font-size:4px;}
+	.st9{fill:none;stroke:#CA4F62;stroke-miterlimit:10;}
+</style>
+<g
+   id="Guides">
+</g>
+<g
+   id="BG">
+	<rect
+   class="st0"
+   width="145.087"
+   height="80"
+   id="rect5" />
+</g>
+<g
+   id="Ref">
+</g>
+<g
+   id="Layer_1">
+	<rect
+   x="13.694"
+   y="8.7620001"
+   class="st3"
+   width="70.167"
+   height="12.116"
+   id="rect9" /><text
+   id="text29"
+   x="12.593029"
+   y="19.9993"><tspan
+     x="12.593029"
+     y="19.9993"
+     class="st4 st5 st6"
+     id="tspan11"
+     dy="0 0 0">RP </tspan></text><text
+   id="text29-3"
+   x="48.967743"
+   y="19.9993"
+   style="text-align:center;text-anchor:middle"><tspan
+     sodipodi:role="line"
+     id="tspan79195"
+     x="40.522919"
+     y="19.9993"><tspan
+       x="40.522919"
+       y="19.9993"
+       class="st4 st5 st6"
+       id="tspan11-6"
+       style="text-align:center;text-anchor:middle">2</tspan></tspan><tspan
+     sodipodi:role="line"
+     id="tspan79197"
+     x="42.020721"
+     y="19.9993"><tspan
+       x="40.522919"
+       y="19.9993"
+       class="st4 st5 st6"
+       dy="0"
+       style="text-align:center;text-anchor:middle"
+       id="tspan79199"> </tspan></tspan></text><text
+   id="text29-3-3"
+   x="51.877296"
+   y="19.786898"
+   style="text-align:center;text-anchor:middle"><tspan
+     sodipodi:role="line"
+     id="tspan82308"
+     x="51.877296"
+     y="19.786898"><tspan
+       x="51.877296"
+       y="19.786898"
+       class="st4 st5 st6"
+       id="tspan11-6-5"
+       style="text-align:center;text-anchor:middle">3</tspan></tspan><tspan
+     sodipodi:role="line"
+     id="tspan82310"
+     x="53.375099"
+     y="19.786898"><tspan
+       x="51.877296"
+       y="19.786898"
+       class="st4 st5 st6"
+       dy="0"
+       style="text-align:center;text-anchor:middle"
+       id="tspan82312"> </tspan></tspan></text><text
+   id="text29-3-3-6"
+   x="63.601402"
+   y="19.786898"
+   style="text-align:center;text-anchor:middle"><tspan
+     sodipodi:role="line"
+     id="tspan85781"
+     x="63.601402"
+     y="19.786898"><tspan
+       x="63.601402"
+       y="19.786898"
+       class="st4 st5 st6"
+       id="tspan11-6-5-2"
+       style="text-align:center;text-anchor:middle">5</tspan></tspan><tspan
+     sodipodi:role="line"
+     id="tspan85783"
+     x="65.099205"
+     y="19.786898"><tspan
+       x="63.601402"
+       y="19.786898"
+       class="st4 st5 st6"
+       dy="0"
+       style="text-align:center;text-anchor:middle"
+       id="tspan85785"> </tspan></tspan></text><text
+   id="text29-3-3-6-9"
+   x="75.065659"
+   y="19.786898"
+   style="text-align:center;text-anchor:middle"><tspan
+     sodipodi:role="line"
+     id="tspan91420"
+     x="75.065659"
+     y="19.786898"><tspan
+       x="75.065659"
+       y="19.786898"
+       class="st4 st5 st6"
+       id="tspan11-6-5-2-1"
+       style="text-align:center;text-anchor:middle">0</tspan></tspan><tspan
+     sodipodi:role="line"
+     id="tspan91422"
+     x="76.563461"
+     y="19.786898"><tspan
+       x="75.065659"
+       y="19.786898"
+       class="st4 st5 st6"
+       dy="0"
+       style="text-align:center;text-anchor:middle"
+       id="tspan91424"> </tspan></tspan></text>
+	<g
+   id="g41">
+		<g
+   id="g39">
+			<line
+   class="st7"
+   x1="23.063"
+   y1="26.239"
+   x2="23.063"
+   y2="67.996"
+   id="line33" />
+			<g
+   id="g37">
+				<polygon
+   class="st4"
+   points="21.674,27.292 23.063,26.702 24.452,27.292 23.063,24     "
+   id="polygon35" />
+			</g>
+		</g>
+	</g>
+	<g
+   id="g51">
+		<g
+   id="g49">
+			<line
+   class="st7"
+   x1="75.14"
+   y1="26.239"
+   x2="75.14"
+   y2="35.998"
+   id="line43" />
+			<g
+   id="g47">
+				<polygon
+   class="st4"
+   points="73.752,27.292 75.14,26.702 76.529,27.292 75.14,24     "
+   id="polygon45" />
+			</g>
+		</g>
+	</g>
+	<rect
+   x="22.56"
+   y="68.995"
+   class="st3"
+   width="26.603"
+   height="7.001"
+   id="rect53" />
+	<text
+   transform="matrix(1 0 0 1 22.5606 71.995)"
+   class="st4 st5 st8"
+   id="text55">Raspberry Pi</text>
+	<line
+   class="st9"
+   x1="14.644"
+   y1="22.123"
+   x2="31.482"
+   y2="22.123"
+   id="line57" />
+	<line
+   class="st9"
+   x1="36.667"
+   y1="22.123"
+   x2="43.976"
+   y2="22.123"
+   id="line59" />
+	<line
+   class="st9"
+   x1="48.194"
+   y1="22.123"
+   x2="55.502"
+   y2="22.123"
+   id="line61" />
+	<line
+   class="st9"
+   x1="71.408"
+   y1="22.123"
+   x2="78.716"
+   y2="22.123"
+   id="line63" />
+	<line
+   class="st9"
+   x1="59.87"
+   y1="22.123"
+   x2="67.179"
+   y2="22.123"
+   id="line65" />
+	<g
+   id="g75">
+		<g
+   id="g73">
+			<line
+   class="st7"
+   x1="40.285"
+   y1="26.239"
+   x2="40.285"
+   y2="59.996"
+   id="line67" />
+			<g
+   id="g71">
+				<polygon
+   class="st4"
+   points="38.897,27.292 40.285,26.702 41.674,27.292 40.285,24     "
+   id="polygon69" />
+			</g>
+		</g>
+	</g>
+	<rect
+   x="39.783"
+   y="60.995"
+   class="st3"
+   width="30.546"
+   height="7.001"
+   id="rect77" />
+	<text
+   transform="matrix(1 0 0 1 39.783 63.995)"
+   class="st4 st5 st8"
+   id="text79">Number of cores</text>
+	<g
+   id="g89">
+		<g
+   id="g87">
+			<line
+   class="st7"
+   x1="51.907"
+   y1="26.239"
+   x2="51.907"
+   y2="51.996"
+   id="line81" />
+			<g
+   id="g85">
+				<polygon
+   class="st4"
+   points="50.518,27.292 51.907,26.702 53.296,27.292 51.907,24     "
+   id="polygon83" />
+			</g>
+		</g>
+	</g>
+	<rect
+   x="51.404"
+   y="52.995"
+   class="st3"
+   width="42.746"
+   height="7.001"
+   id="rect91" />
+	<text
+   transform="translate(51.4046,55.995)"
+   class="st4 st5 st8"
+   id="text93">Type of core (e.g. Cortex-M33)</text>
+	<g
+   id="g103">
+		<g
+   id="g101">
+			<line
+   class="st7"
+   x1="63.534"
+   y1="26.239"
+   x2="63.534"
+   y2="43.998"
+   id="line95" />
+			<g
+   id="g99">
+				<polygon
+   class="st4"
+   points="62.145,27.292 63.534,26.702 64.923,27.292 63.534,24     "
+   id="polygon97" />
+			</g>
+		</g>
+	</g>
+	<rect
+   x="63.031"
+   y="44.996"
+   class="st3"
+   width="42.746"
+   height="7.001"
+   id="rect105" />
+	<text
+   transform="translate(63.0315,47.9957)"
+   class="st4 st5 st8"
+   id="text107">floor(log2(RAM / 16 kB))</text>
+	<rect
+   x="74.635"
+   y="36.996"
+   class="st3"
+   width="53.622"
+   height="7.001"
+   id="rect109" />
+	<text
+   transform="translate(74.6349,39.9961)"
+   class="st4 st5 st8"
+   id="text111">floor(log2(nonvolatile / 128 kB))</text>
+<text
+   xml:space="preserve"
+   style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none"
+   x="38.2201"
+   y="18.437899"
+   id="text22809"><tspan
+     sodipodi:role="line"
+     id="tspan22807"></tspan></text></g>
+</svg>

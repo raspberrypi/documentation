@@ -1,14 +1,26 @@
-// Included from both rp2040.adoc and raspberry-pi-pico.adoc
+// Included from both silicon.adoc and pico-series.adoc
 
 == Documentation
 
-Documentation for Raspberry Pi Pico and other RP2040-based boards.
+Documentation for Pico-series and other Raspberry Pi microcontroller-based boards.
 
-=== RP2040 Device
+=== RP2350
+
+https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf[RP2350 Datasheet]:: A microcontroller by Raspberry Pi
+
+https://datasheets.raspberrypi.com/rp2350/hardware-design-with-rp2350.pdf[Hardware design with RP2350]:: Using RP2350 microcontrollers to build boards and products
+
+=== RP2040
 
 https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf[RP2040 Datasheet]:: A microcontroller by Raspberry Pi
 
 https://datasheets.raspberrypi.com/rp2040/hardware-design-with-rp2040.pdf[Hardware design with RP2040]:: Using RP2040 microcontrollers to build boards and products
+
+=== Raspberry Pi Pico 2
+
+https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf[Raspberry Pi Pico 2 Datasheet]:: An RP2350-based microcontroller board
+
+https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico-series Microcontrollers]:: C/{cpp} development with Raspberry Pi Pico-series devices and other Raspberry Pi microcontroller-based boards
 
 === Raspberry Pi Pico
 
