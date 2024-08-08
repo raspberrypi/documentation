@@ -9,4 +9,4 @@
 
 [submodule "doxygentoasciidoc"]
 	path = doxygentoasciidoc
-	url = git@github.com:raspberrypi/doxygentoasciidoc.git
+	url = https://github.com/raspberrypi/doxygentoasciidoc.git
