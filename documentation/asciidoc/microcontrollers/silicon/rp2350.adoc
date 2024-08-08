@@ -14,8 +14,8 @@ image::images/rp2350_explanation.svg[width=640]
 
 . Number of processor cores (2)
 . Loosely which type of processor (M33)
-. floor(log2(RAM / 16k))
-. floor(log2(nonvolatile / 16k)) or 0 if no onboard nonvolatile storage
+. floor(log2(RAM / 16KB))
+. floor(log2(nonvolatile / 128KB)) or 0 if no onboard nonvolatile storage
 
 === Technical Specification
 
@@ -45,6 +45,18 @@ Key features include:
 ** USB 1.1 controller and PHY, with host and device support
 ** 3 Programmable IO (PIO) blocks, 12 state machines total
 
+==== Security
+
+RP2350 has a comprehensive security architecture, built around Arm TrustZone for Cortex-M, including the following features:
+
+* Signed boot support
+* 8KB of on-chip antifuse one-time-programmable (OTP) memory
+* SHA-256 acceleration
+* A hardware true random number generator (TRNG)
+
+==== Architecture Switching
+
+RP2350 includes a pair of open-hardware Hazard3 RISC-V cores which can be substituted at boot time for the Cortex-M33 cores. Our boot ROM can even auto-detect the architecture for which a second-stage binary has been built and reboot the chip into the appropriate mode. All features of the chip, apart from a handful of security features, and the double-precision floating-point accelerator, are available in RISC-V mode.
 
 === RP2350-based Boards
 
