@@ -14,7 +14,7 @@ image::images/rp2040_explanation.svg[width=640]
 
 . Number of processor cores (2)
 . Loosely which type of processor (M0+)
-. floor(log2(ram / 16k))
+. floor(log2(RAM / 16k))
 . floor(log2(nonvolatile / 16k)) or 0 if no onboard nonvolatile storage
 
 === Technical Specification

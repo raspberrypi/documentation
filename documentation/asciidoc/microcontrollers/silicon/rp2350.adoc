@@ -4,7 +4,7 @@ RP2350 is a microcontroller designed by Raspberry Pi.
 
 image::images/rp2350.png[]
 
-Whether you have a xref:pico-series.adoc#pico-2-technical-specification[Raspberry Pi Pico 2] or another RP2350-based microcontroller board, everything you need to get started is here. You'll find support for getting started with xref:c_sdk.adoc#sdk-setup[C/{cpp}] or xref:micropython.adoc#what-is-micropython[MicroPython] on Raspberry Pi Pico, and links to resources for other boards that use RP2350. There are also links to the technical documentation for both the Raspberry Pi Pico 2 microcontroller board and our RP2350 microcontroller chip.
+Whether you have a xref:pico-series.adoc#pico-2-technical-specification[Raspberry Pi Pico 2] or another RP2350-based microcontroller board, everything you need to get started is here. You'll find support for getting started with xref:c_sdk.adoc#sdk-setup[C/{cpp}] or xref:micropython.adoc#what-is-micropython[MicroPython] on Raspberry Pi Pico 2, and links to resources for other boards that use RP2350. There are also links to the technical documentation for both the Raspberry Pi Pico 2 microcontroller board and our RP2350 microcontroller chip.
 
 === Why is the chip called RP2350?
 
@@ -13,8 +13,8 @@ The post-fix numeral on RP2350 comes from the following,
 image::images/rp2350_explanation.svg[width=640]
 
 . Number of processor cores (2)
-. Loosely which type of processor (M0+)
-. floor(log2(ram / 16k))
+. Loosely which type of processor (M33)
+. floor(log2(RAM / 16k))
 . floor(log2(nonvolatile / 16k)) or 0 if no onboard nonvolatile storage
 
 === Technical Specification
@@ -34,7 +34,6 @@ Key features include:
 * Support for up to 16MB of off-chip Flash memory via dedicated QSPI bus
 * DMA controller
 * Fully-connected AHB crossbar
-* Interpolator and integer divider peripherals
 * On-chip programmable LDO to generate core voltage
 * 2 on-chip PLLs to generate USB and core clocks
 * 30 GPIO pins, 4 of which can be used as analogue inputs
