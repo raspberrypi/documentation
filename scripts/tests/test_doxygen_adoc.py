@@ -2,8 +2,6 @@ import os
 import re
 import unittest
 from pathlib import Path
-from transform_doxygen_html import parse_individual_file
-from transform_doxygen_html import compile_json_mappings
 
 # to run: on the command line, from the /scripts dir: python3 -m unittest tests.test_doxygen_adoc
 
@@ -15,25 +13,6 @@ class TestDoxygenAdoc(unittest.TestCase):
 
 	def tearDown(self):
 		pass
-
-	def test_parse_individual_file(self):
-		updated_links = {}
-		html_path = os.path.join(self.current_dir, "fixtures")
-		adoc_fixture = os.path.join(html_path, "expected_adoc.adoc")
-		html_file = "group__hardware__dma.html"
-		json_dir = os.path.join(self.parent_dir, "doxygen_json_mappings")
-		json_files = os.listdir(json_dir)
-		json_files = [f for f in json_files if re.search(".json", f) is not None]
-		complete_json_mappings = compile_json_mappings(json_dir, json_files)
-		h_json = [{'group_id': 'hardware', 'name': 'Hardware APIs', 'description': 'This group of libraries provides a thin and efficient C API / abstractions to access the RP2040 hardware without having to read and write  hardware registers directly.  ', 'html': 'group__hardware.html', 'subitems': [{'name': 'hardware_dma', 'file': 'group__hardware__dma.adoc', 'html': 'group__hardware__dma.html', 'subitems': []}]}]
-		adoc, h_json = parse_individual_file(html_path, html_file, complete_json_mappings, updated_links, h_json)
-		adoc_cleaned = re.sub("rpip[a-zA-Z0-9]+", "", adoc)
-		expected_json = [{'group_id': 'hardware', 'name': 'Hardware APIs', 'description': 'This group of libraries provides a thin and efficient C API / abstractions to access the RP2040 hardware without having to read and write  hardware registers directly.  ', 'html': 'group__hardware.html', 'subitems': [{'name': 'hardware_dma', 'file': 'group__hardware__dma.adoc', 'html': 'group__hardware__dma.html', 'subitems': [{'name': 'group__channel__config', 'file': 'group__channel__config.adoc', 'html': 'group__channel__config.html', 'subitems': []}]}]}]
-		with open(adoc_fixture) as f:
-			expected_adoc = f.read()
-		expected_adoc_cleaned = re.sub("rpip[a-zA-Z0-9]+", "", expected_adoc)
-		self.assertEqual(expected_json, h_json)
-		self.assertEqual(expected_adoc_cleaned, adoc_cleaned)
 
 	def test_doxygen_adoc_variables(self):
 		# run AFTER the content has been built;

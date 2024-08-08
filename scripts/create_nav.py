@@ -131,6 +131,7 @@ if __name__ == "__main__":
                                         newlevel = len(m.group(1))
                                         # Need to compute anchors for *every* header (updates file_headings)
                                         heading = strip_adoc(m.group(2))
+                                        heading = re.sub(r"(\[\.contexttag )(\S+)(\]\*\S+\*)", "<strong class=\"contexttag \\2\">\\2</strong>", heading)
                                         anchor = heading_to_anchor(top_level_file, heading, header_id)
                                         if anchor in available_anchors[fullpath]:
                                             raise Exception("Anchor {} appears twice in {}".format(anchor, fullpath))

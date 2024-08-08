@@ -6,3 +6,7 @@
 	path = lib/pico-examples
 	url = https://github.com/raspberrypi/pico-examples.git
 	branch = master
+
+[submodule "doxygentoasciidoc"]
+	path = doxygentoasciidoc
+	url = https://github.com/raspberrypi/doxygentoasciidoc.git

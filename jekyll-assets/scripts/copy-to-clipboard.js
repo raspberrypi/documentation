@@ -28,7 +28,7 @@ var hideTooltip = function() {
 };
 
 var extractDoxygenCode = function(node) {
-  var lines = node.querySelectorAll("div.line");
+  var lines = node.querySelectorAll("div.code");
   var preText = "";
   for (var i = 0; i < lines.length; i++) {
     var myText = lines[i].textContent;
@@ -45,8 +45,9 @@ for (var i = 0; i < buttons.length; i++) {
 window.addEventListener('load', function() {
   var clipboard = new ClipboardJS('.copy-button', {
     text: function(trigger) {
-      if (trigger.parentNode.querySelector('div.line')) {
-        var text = extractDoxygenCode(trigger.parentNode);
+      if (trigger.parentNode.querySelector('td.code')) {
+        // var text = extractDoxygenCode(trigger.parentNode);
+        var text = trigger.parentNode.querySelector('td.code pre').textContent;
       } else {
         var text = trigger.parentNode.querySelector('pre').textContent;
         
