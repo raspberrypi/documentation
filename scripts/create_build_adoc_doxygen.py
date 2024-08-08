@@ -16,8 +16,9 @@ def check_no_markdown(filename):
         asciidoc = re.sub(r'----\n.*?\n----', '', asciidoc, flags=re.DOTALL)
         # strip out pass-through blocks
         asciidoc = re.sub(r'\+\+\+\+\n.*?\n\+\+\+\+', '', asciidoc, flags=re.DOTALL)
-        if re.search(r'(?:^|\n)#+', asciidoc):
-            raise Exception("{} contains a Markdown-style header (i.e. '#' rather than '=')".format(filename))
+        # This is messing up the c code blocks
+        # if re.search(r'(?:^|\n)#+', asciidoc):
+        #     raise Exception("{} contains a Markdown-style header (i.e. '#' rather than '=')".format(filename))
         if re.search(r'(\[.+?\]\(.+?\))', asciidoc):
             raise Exception("{} contains a Markdown-style link (i.e. '[title](url)' rather than 'url[title]')".format(filename))
 
@@ -45,10 +46,7 @@ if __name__ == "__main__":
             if 'from_json' in tab and 'directory' in tab and tab['directory'] == output_subdir:
                 filebase = os.path.splitext(adoc_filename)[0]
                 index_title = filebase
-                if filebase != "index_doxygen":
-                    picosdk_filename = re.sub("_", "__", filebase)+".html"
-                else:
-                    picosdk_filename = filebase+".html"
+                picosdk_filename = filebase+".html"
                 for item in picosdk_data:
                     if re.sub("^group__", "", item["html"]) == picosdk_filename:
                         index_title = item['name']
