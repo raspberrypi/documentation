@@ -145,29 +145,23 @@
             "path": "microcontrollers",
             "subitems": [
                 {
-                    "title": "RP2040",
-                    "description": "Raspberry Pi's flagship microcontroller device",
-                    "image": "full-sized/RP2040.png",
-                    "subpath": "rp2040.adoc"
+                    "title": "Silicon",
+                    "description": "Raspberry Pi in-house Silicon",
+                    "image": "full-sized/silicon.png",
+                    "subpath": "silicon.adoc"
                 },
                 {
-                    "title": "Raspberry Pi Pico and Pico W",
-                    "description": "Support for Raspberry Pi Pico, Pico H, Pico W, and Pico WH",
-                    "image": "full-sized/Pico.png",
-                    "subpath": "raspberry-pi-pico.adoc"
+                    "title": "Pico-series Microcontrollers",
+                    "description": "Support for Raspberry Pi Pico-series devices",
+                    "image": "full-sized/pico-series.png",
+                    "subpath": "pico-series.adoc"
                 },
                 {
                     "title": "Raspberry Pi Debug Probe",
                     "description": "Supports Arm Serial Wire Debug (SWD), and acts as a UART bridge",
                     "image": "full-sized/Debug-Probe.png",
                     "subpath": "debug-probe.adoc"
-                },
-                {
-                    "title": "RP1",
-                    "description": "Our southbridge for Raspberry Pi 5",
-                    "image": "full-sized/RP1.png",
-                    "subpath": "rp1.adoc"
-                },				
+                },			
                 {
                     "title": "MicroPython",
                     "description": "Getting started with MicroPython",

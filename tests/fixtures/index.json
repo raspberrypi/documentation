@@ -133,16 +133,16 @@
             "path": "microcontrollers",
             "subitems": [
                 {
-                    "title": "RP2040",
+                    "title": "Silicon",
                     "description": "Raspberry Pi's flagship microcontroller device",
-                    "image": "full-sized/RP2040.png",
-                    "subpath": "rp2040.adoc"
+                    "image": "full-sized/silicon.png",
+                    "subpath": "silicon.adoc"
                 },
                 {
-                    "title": "Raspberry Pi Pico and Pico W",
-                    "description": "Support for Raspberry Pi Pico, Pico H, Pico W, and Pico WH",
-                    "image": "full-sized/Pico.png",
-                    "subpath": "raspberry-pi-pico.adoc"
+                    "title": "Raspberry Pi Pico-series",
+                    "description": "Support for Raspberry Pi Pico-series devices",
+                    "image": "full-sized/pico-series.png",
+                    "subpath": "pico-series.adoc"
                 },
                 {
                     "title": "Raspberry Pi Debug Probe",
