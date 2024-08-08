@@ -47,8 +47,8 @@ image::images/pico-2-r4-pinout.svg[]
 
 * Download the https://datasheets.raspberrypi.com/pico/Pico-2-Pinout.pdf[Pinout Diagram] (PDF)
 * Download https://datasheets.raspberrypi.com/pico/RPi-Pico-2-PUBLIC-20240708.zip[Design Files] (Cadence Allegro)
-* Download https://datasheets.raspberrypi.com/pico/Pico-2-step.zip[STEP File]
-* Download https://datasheets.raspberrypi.com/pico/Pico-2-Fritzing.fzpz[Fritzing Part] for Raspberry Pi Pico
+* Download https://datasheets.raspberrypi.com/pico/Pico-2-step-20240708.zip[STEP File]
+* Download https://datasheets.raspberrypi.com/pico/Pico-2-Fritzing-20240708.fzpz[Fritzing Part] for Raspberry Pi Pico
 
 NOTE: More information on Fritzing is available on the https://fritzing.org/[fritzing.org] website.
 
