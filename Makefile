@@ -41,17 +41,16 @@ $(ASCIIDOC_DOXYGEN_DIR): | $(ASCIIDOC_DIR)
 clean: clean_html clean_doxygen_adoc
 	rm -rf $(BUILD_DIR)
 
-# Initialise doxygentoasciidoc submodule
-$(PICO_SDK_DIR)/CMakeLists.txt $(PICO_SDK_DIR)/docs/index.h: | $(PICO_SDK_DIR)
-	git submodule update --init $(PICO_SDK_DIR)
-	git -C $(PICO_SDK_DIR) submodule update --init
-
 # Initialise pico-sdk submodule (and the subnmodules that it uses)
 $(PICO_SDK_DIR)/CMakeLists.txt $(PICO_SDK_DIR)/docs/index.h: | $(PICO_SDK_DIR)
 	git submodule update --init $(PICO_SDK_DIR)
 	git -C $(PICO_SDK_DIR) submodule update --init
 
 # Initialise pico-examples submodule
+$(PICO_EXAMPLES_DIR)/CMakeLists.txt: | $(PICO_SDK_DIR)/CMakeLists.txt $(PICO_EXAMPLES_DIR)
+	git submodule update --init $(PICO_EXAMPLES_DIR)
+
+# Initialise doxygentoasciidoc submodule
 doxygentoasciidoc/__main__.py:
 	git submodule update --init doxygentoasciidoc
 
