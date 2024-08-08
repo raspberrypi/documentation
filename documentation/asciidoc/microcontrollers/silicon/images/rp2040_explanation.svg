@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="145.087px" height="80px" viewBox="0 0 145.087 80" style="enable-background:new 0 0 145.087 80;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#F6F6F6;}
+	.st1{fill:#CA4F62;}
+	.st2{fill:#4A96D2;}
+	.st3{fill:none;}
+	.st4{fill:#1D1D1B;}
+	.st5{font-family:'Roboto-Bold';}
+	.st6{font-size:15px;}
+	.st7{fill:none;stroke:#1D1D1B;stroke-width:0.5;stroke-miterlimit:10;}
+	.st8{font-size:4px;}
+	.st9{fill:none;stroke:#CA4F62;stroke-miterlimit:10;}
+</style>
+<g id="Guides">
+</g>
+<g id="BG">
+	<rect class="st0" width="145.087" height="80"/>
+</g>
+<g id="Ref">
+</g>
+<g id="Layer_1">
+	<g>
+		<rect x="13.694" y="8.762" class="st3" width="70.167" height="12.116"/>
+		<text transform="matrix(1 0 0 1 13.6934 19.9993)"><tspan x="0" y="0" class="st4 st5 st6">RP</tspan><tspan x="19.248" y="0" class="st4 st5 st6"> </tspan><tspan x="22.248" y="0" class="st4 st5 st6">2</tspan><tspan x="30.854" y="0" class="st4 st5 st6"> </tspan><tspan x="33.854" y="0" class="st4 st5 st6">0</tspan><tspan x="42.46" y="0" class="st4 st5 st6"> </tspan><tspan x="45.46" y="0" class="st4 st5 st6">4</tspan><tspan x="54.066" y="0" class="st4 st5 st6"> </tspan><tspan x="57.066" y="0" class="st4 st5 st6">0</tspan></text>
+	</g>
+	<g>
+		<g>
+			<line class="st7" x1="23.063" y1="26.239" x2="23.063" y2="67.996"/>
+			<g>
+				<polygon class="st4" points="21.674,27.292 23.063,26.702 24.452,27.292 23.063,24 				"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			<line class="st7" x1="75.14" y1="26.239" x2="75.14" y2="35.998"/>
+			<g>
+				<polygon class="st4" points="73.752,27.292 75.14,26.702 76.529,27.292 75.14,24 				"/>
+			</g>
+		</g>
+	</g>
+	<rect x="22.56" y="68.995" class="st3" width="26.603" height="7.001"/>
+	<text transform="matrix(1 0 0 1 22.5606 71.995)" class="st4 st5 st8">Raspberry Pi</text>
+	<line class="st9" x1="14.644" y1="22.123" x2="31.482" y2="22.123"/>
+	<line class="st9" x1="36.667" y1="22.123" x2="43.976" y2="22.123"/>
+	<line class="st9" x1="48.194" y1="22.123" x2="55.502" y2="22.123"/>
+	<line class="st9" x1="71.408" y1="22.123" x2="78.716" y2="22.123"/>
+	<line class="st9" x1="59.87" y1="22.123" x2="67.179" y2="22.123"/>
+	<g>
+		<g>
+			<line class="st7" x1="40.285" y1="26.239" x2="40.285" y2="59.996"/>
+			<g>
+				<polygon class="st4" points="38.897,27.292 40.285,26.702 41.674,27.292 40.285,24 				"/>
+			</g>
+		</g>
+	</g>
+	<rect x="39.783" y="60.995" class="st3" width="30.546" height="7.001"/>
+	<text transform="matrix(1 0 0 1 39.783 63.995)" class="st4 st5 st8">Number of cores</text>
+	<g>
+		<g>
+			<line class="st7" x1="51.907" y1="26.239" x2="51.907" y2="51.996"/>
+			<g>
+				<polygon class="st4" points="50.518,27.292 51.907,26.702 53.296,27.292 51.907,24 				"/>
+			</g>
+		</g>
+	</g>
+	<rect x="51.404" y="52.995" class="st3" width="42.746" height="7.001"/>
+	<text transform="matrix(1 0 0 1 51.4046 55.995)" class="st4 st5 st8">Type of core (e.g. M0+)</text>
+	<g>
+		<g>
+			<line class="st7" x1="63.534" y1="26.239" x2="63.534" y2="43.998"/>
+			<g>
+				<polygon class="st4" points="62.145,27.292 63.534,26.702 64.923,27.292 63.534,24 				"/>
+			</g>
+		</g>
+	</g>
+	<rect x="63.031" y="44.996" class="st3" width="42.746" height="7.001"/>
+	<text transform="matrix(1 0 0 1 63.0315 47.9957)" class="st4 st5 st8">floor(log2(ram / 16k))</text>
+	<rect x="74.635" y="36.996" class="st3" width="53.622" height="7.001"/>
+	<text transform="matrix(1 0 0 1 74.6349 39.9961)" class="st4 st5 st8">floor(log2(nonvolatile / 16k))</text>
+</g>
+</svg>

@@ -28,7 +28,7 @@ Enables audio recording. When enabled, you must also specify an xref:camera_soft
 
 Default value: `aac`
 
-Selects an audio codec for output. For a list of available codecs, run `ffmpeg -codec`.
+Selects an audio codec for output. For a list of available codecs, run `ffmpeg -codecs`.
 
 ==== `audio-bitrate`
 

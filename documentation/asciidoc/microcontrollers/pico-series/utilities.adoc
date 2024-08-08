@@ -1,0 +1,32 @@
+== Software Utilities
+
+=== What is on your Pico-series device?
+
+If you are unsure what is programmed into your Raspberry Pi Pico-series device, and the program was built using the Pico C/{cpp} SDK, it will usually have a name and other useful information embedded into the binary. You can use the https://github.com/raspberrypi/picotool[Picotool] command line utility to find out these details. Full instructions on how to use Picotool to do this are available in our 'https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[getting started]' documentation.
+
+* Go to the https://github.com/raspberrypi/picotool[Picotool Github repository].
+
+=== Debugging using another Pico-series device
+
+CAUTION: Pico 2 is not yet supported by `debuprobe_on_pico` debugging software.
+
+You can use one Pico-series device to debug another Pico-series device. This is possible via `debugprobe`, an application that allows a Pico to act as a USB → SWD and UART converter.
+
+You can find the latest release of the firmware in https://github.com/raspberrypi/debugprobe/releases/latest[the debugprobe GitHub repository].
+
+Download `debugprobe_on_pico.uf2` from the latest release.
+
+Push and hold the BOOTSEL button as you plug the debugger device into your computer to mount a volume called "RPI-RP2".
+
+Copy `debugprobe_on_pico.uf2` onto the volume. The volume will dismount automatically after the file finishes copying onto the device.
+
+Your device will reboot and now runs an updated version of the `debugprobe` firmware. It is now ready for debugging.
+
+TIP: For instructions on how to use the debugger, see https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting Started with Pico-series Microcontrollers].
+
+=== Resetting Flash memory
+
+Pico's BOOTSEL mode lives in read-only memory inside the RP2040 chip, and can't be overwritten accidentally. No matter what, if you hold down the BOOTSEL button when you plug in your Pico, it will appear as a drive onto which you can drag a new UF2 file. There is no way to brick the board through software. However, there are some circumstances where you might want to make sure your Flash memory is empty. You can do this by dragging and dropping a special UF2 binary onto your Pico when it is in mass storage mode.
+
+* Download the https://datasheets.raspberrypi.com/soft/flash_nuke.uf2[UF2 file]
+* See the https://github.com/raspberrypi/pico-examples/blob/master/flash/nuke/nuke.c[code on Github]

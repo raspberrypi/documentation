@@ -39,7 +39,7 @@ $ git clone --depth=1 --branch <branch> https://github.com/raspberrypi/linux
 For a full list of available branches, see the https://github.com/raspberrypi/linux[the Raspberry Pi kernel repository].
 ====
 
-Now that you have the kernel source, build a fresh kernel xref:linux_kernel.adoc#natively-build-a-kernel[natively] or via xref:linux_kernel.adoc#cross-compiled-build[cross-compilation].
+Now that you have the kernel source, build a fresh kernel xref:linux_kernel.adoc#natively-build-a-kernel[natively] or via xref:linux_kernel.adoc#cross-compile-the-kernel[cross-compilation].
 
 === Natively build a kernel
 

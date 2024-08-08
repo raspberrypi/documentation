@@ -25,5 +25,8 @@ RedirectMatch 302 "^/documentation/usage/camera/" "/documentation/accessories/ca
 RedirectMatch 302 "^/documentation/usage/" "/documentation/computers/os.html"
 RedirectMatch 302 "^/documentation/configuration/" "/documentation/computers/configuration.html"
 RedirectMatch 302 "^/documentation/computers/raspberry-pi-5.html" "/documentation/computers/raspberry-pi.html"
+RedirectMatch 302 "^/documentation/microcontrollers/rp1.html" "/documentation/microcontrollers/silicon.html"
+RedirectMatch 302 "^/documentation/microcontrollers/rp2040.html" "/documentation/microcontrollers/silicon.html"
+RedirectMatch 302 "^/documentation/microcontrollers/raspberry-pi-pico.html" "/documentation/microcontrollers/pico-series.html"
 </IfModule>
 
