@@ -22,7 +22,7 @@ def insert_example_code_from_file(combined_content):
 	els = combined_content.doxygen.find_all("programlisting")
 	all_examples = {}
 	# get the examples path
-	examples_path = re.sub(r"/scripts/.*+$", "/lib/pico-examples", os.path.realpath(__file__))
+	examples_path = re.sub(r"/scripts/.+$", "/lib/pico-examples", os.path.realpath(__file__))
 	# get a recursive list of all files in examples
 	for f in os.walk(examples_path):
 		for filename in f[2]:
