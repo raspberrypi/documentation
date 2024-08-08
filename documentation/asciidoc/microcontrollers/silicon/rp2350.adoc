@@ -14,8 +14,8 @@ image::images/rp2350_explanation.svg[width=640]
 
 . Number of processor cores (2)
 . Loosely which type of processor (M33)
-. floor(log2(RAM / 16k))
-. floor(log2(nonvolatile / 16k)) or 0 if no onboard nonvolatile storage
+. floor(log2(RAM / 16KB))
+. floor(log2(nonvolatile / 128KB)) or 0 if no onboard nonvolatile storage
 
 === Technical Specification
 
