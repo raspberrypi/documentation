@@ -85,7 +85,7 @@ $(ASCIIDOC_DOXYGEN_DIR)/picosdk_index.json $(ASCIIDOC_DOXYGEN_DIR)/index_doxygen
 	python3 -m doxygentoasciidoc -f $(DOXYGEN_XML_DIR)/indexpage.xml -c > $(ASCIIDOC_DOXYGEN_DIR)/index_doxygen.adoc
 	python3 -m doxygentoasciidoc -f $(DOXYGEN_XML_DIR)/examples_page.xml -c > $(ASCIIDOC_DOXYGEN_DIR)/examples_page.adoc
 	python3 $(SCRIPTS_DIR)/postprocess_doxygen_adoc.py $(ASCIIDOC_DOXYGEN_DIR)
-	-cp $(DOXYGEN_XML_DIR)/*.png $(ASCIIDOC_DOXYGEN_DIR)
+	-cp $(DOXYGEN_XML_DIR)/*.png $(ASCIIDOC_DOXYGEN_DIR) 2>/dev/null || true
 
 build_doxygen_adoc: $(ASCIIDOC_DOXYGEN_DIR)/index_doxygen.adoc
 
