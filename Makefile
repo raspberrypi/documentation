@@ -26,7 +26,7 @@ JEKYLL_CMD = bundle exec jekyll
 
 .DEFAULT_GOAL := html
 
-.PHONY: clean run_ninja clean_ninja html serve_html clean_html build_doxygen_html clean_doxygen_html build_doxygen_adoc clean_doxygen_adoc fetch_submodules clean_submodules clean_everything
+.PHONY: clean run_ninja clean_ninja html serve_html clean_html build_doxygen_xml clean_doxygen_xml build_doxygen_adoc clean_doxygen_adoc fetch_submodules clean_submodules clean_everything
 
 $(BUILD_DIR):
 	@mkdir -p $@
@@ -54,7 +54,7 @@ $(PICO_EXAMPLES_DIR)/CMakeLists.txt: | $(PICO_SDK_DIR)/CMakeLists.txt $(PICO_EXA
 doxygentoasciidoc/__main__.py:
 	git submodule update --init doxygentoasciidoc
 
-fetch_submodules: $(ALL_SUBMODULE_CMAKELISTS)
+fetch_submodules: $(ALL_SUBMODULE_CMAKELISTS) doxygentoasciidoc/__main__.py
 
 # Get rid of the submodules
 clean_submodules:
@@ -94,7 +94,7 @@ clean_doxygen_adoc:
 	if [ -d $(ASCIIDOC_DOXYGEN_DIR) ]; then $(MAKE) clean_ninja; fi
 	rm -rf $(ASCIIDOC_DOXYGEN_DIR)
 
-clean_everything: clean_submodules clean_doxygen_html clean
+clean_everything: clean_submodules clean_doxygen_xml clean
 
 # AUTO_NINJABUILD contains all the parts of the ninjabuild where the rules themselves depend on other files
 $(AUTO_NINJABUILD): $(SCRIPTS_DIR)/create_auto_ninjabuild.py $(DOCUMENTATION_INDEX) $(SITE_CONFIG) | $(BUILD_DIR)
