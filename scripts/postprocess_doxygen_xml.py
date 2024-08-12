@@ -3,7 +3,7 @@
 import sys
 import re
 import os
-import html
+#import html
 from bs4 import BeautifulSoup
 
 # walk the combined output.
@@ -18,30 +18,31 @@ def compile_id_list(xml_content):
     id_list = [x["id"] for x in els]
     return id_list
 
-def insert_example_code_from_file(combined_content):
-    els = combined_content.doxygen.find_all("programlisting")
-    all_examples = {}
-    # get the examples path
-    examples_path = re.sub(r"/scripts/.+$", "/lib/pico-examples", os.path.realpath(__file__))
-    # get a recursive list of all files in examples
-    for f in os.walk(examples_path):
-        for filename in f[2]:
-            if filename in all_examples:
-                all_examples[filename].append(os.path.join(f[0], filename))
-            else:
-                all_examples[filename] = [os.path.join(f[0], filename)]
-    for el in els:
-        if el.get("filename") is not None:
-            filename = el.get("filename")
-            # find the file here or in examples
-            if filename in all_examples:
-                with open(all_examples[filename][0]) as f:
-                    example_content = f.read()
-                example_lines = example_content.split("\n")
-                for line in example_lines:
-                    codeline = BeautifulSoup("<codeline>"+html.escape(line)+"</codeline>", 'xml')
-                    el.append(codeline)
-    return combined_content
+# Unused code - but kept in case we need it in future
+#def insert_example_code_from_file(combined_content):
+#    els = combined_content.doxygen.find_all("programlisting")
+#    all_examples = {}
+#    # get the examples path
+#    examples_path = re.sub(r"/scripts/.+$", "/lib/pico-examples", os.path.realpath(__file__))
+#    # get a recursive list of all files in examples
+#    for f in os.walk(examples_path):
+#        for filename in f[2]:
+#            if filename in all_examples:
+#                all_examples[filename].append(os.path.join(f[0], filename))
+#            else:
+#                all_examples[filename] = [os.path.join(f[0], filename)]
+#    for el in els:
+#        if el.get("filename") is not None:
+#            filename = el.get("filename")
+#            # find the file here or in examples
+#            if filename in all_examples:
+#                with open(all_examples[filename][0]) as f:
+#                    example_content = f.read()
+#                example_lines = example_content.split("\n")
+#                for line in example_lines:
+#                    codeline = BeautifulSoup("<codeline>"+html.escape(line)+"</codeline>", 'xml')
+#                    el.append(codeline)
+#    return combined_content
 
 def walk_and_tag_xml_tree(el, output_contexts, all_contexts):
     """
@@ -123,7 +124,8 @@ def postprocess_doxygen_xml_file(combined_xmlfile, xmlfiles, output_context_path
     els = combined_content.doxygen.find_all(True, recursive=False)
     for el in els:
         walk_and_tag_xml_tree(el, output_contexts, list(output_context_paths.keys()))
-    combined_content = insert_example_code_from_file(combined_content)
+    # I think this was only needed because the PICO_EXAMPLES_PATH was wrong in the Makefile
+    #combined_content = insert_example_code_from_file(combined_content)
     return str(combined_content)
 
 def postprocess_doxygen_xml(xml_path):
