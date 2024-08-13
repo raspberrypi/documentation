@@ -10,7 +10,7 @@ Instructions on how to checkout the `documentation` repo, and then install the t
 
 ### Checking out the Repository
 
-Install `git` if you don't already have it, and check out the `documentation` repo as follows,
+Install `git` if you don't already have it, and check out the `documentation` repo as follows:
 ```
 $ git clone https://github.com/raspberrypi/documentation.git
 $ cd documentation
@@ -22,13 +22,13 @@ $ cd documentation
 
 This works on both regular Debian or Ubuntu Linux — and has been tested in a minimal Docker container — and also under Raspberry Pi OS if you are working from a Raspberry Pi.
 
-You can install the necessary dependencies on Linux as follows,
+You can install the necessary dependencies on Linux as follows:
 
 ```
 $ sudo apt install -y ruby ruby-dev python3 python3-pip make ninja-build
 ```
 
-then add these lines to the bottom of your `$HOME/.bashrc`,
+then add these lines to the bottom of your `$HOME/.bashrc`:
 ```
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export PATH="$PATH:$GEM_HOME/bin"
@@ -157,14 +157,20 @@ $ make clean
 
 ### Building with Doxygen
 
-If you want to build the Pico C SDK Doxygen documentation alongside the main documentation site you can do so with,
+If you want to build the Pico C SDK Doxygen documentation alongside the main documentation site you will need to install some additional dependencies:
+
+```
+$ sudo apt install -y cmake gcc-arm-none-eabi doxygen graphviz
+```
+
+and then you can build the documentation with:
 
 ```
 $ make build_doxygen_adoc
 $ make
 ```
 
-and clean up afterwards by using,
+You clean up afterwards by using:
 
 ```
 $ make clean_everything
