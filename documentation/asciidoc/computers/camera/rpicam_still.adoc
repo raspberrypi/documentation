@@ -118,7 +118,7 @@ First, create a directory where you can store your time lapse photos:
 $ mkdir timelapse
 ----
 
-Run the following command to create a time lapse over 30 seconds, recording a photo every two seconds, saving output into `image0001.jpg` through `image0014.jpg`:
+Run the following command to create a time lapse over 30 seconds, recording a photo every two seconds, saving output into `image0000.jpg` through `image0013.jpg`:
 
 [source,console]
 ----
