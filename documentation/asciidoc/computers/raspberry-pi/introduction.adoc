@@ -360,7 +360,7 @@ a|
 a|
 .Raspberry Pi Pico 2
 image::images/pico-2.png[alt="Raspberry Pi Pico 2"]
-| xref:../microcontrollers/silicon.adoc#rp2350[RP2350] | 520KB | 2MB | 40-pin GPIO header (unpopulated) ^| none
+| xref:../microcontrollers/silicon.adoc#rp2350[RP2350] | 520KB | 4MB | 40-pin GPIO header (unpopulated) ^| none
 
 |===
 
