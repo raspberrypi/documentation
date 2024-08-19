@@ -575,7 +575,7 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | Sony UK
 
 | c03130
-| Pi 400
+| 400
 | 1.0
 | 4GB
 | Sony UK
