@@ -612,7 +612,7 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 
 | b04170
 | 5
-| 1.0
+| 1.1
 | 2GB
 | Sony UK
 
