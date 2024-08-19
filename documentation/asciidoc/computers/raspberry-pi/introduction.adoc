@@ -174,8 +174,10 @@ a|
 ^.^a|
 .Raspberry Pi 5
 image::images/5.jpg[alt="Raspberry Pi 5"]
-| xref:processors.adoc#bcm2712[BCM2712]
+| xref:processors.adoc#bcm2712[BCM2712] (2GB version uses xref:processors.adoc#bcm2712[BCM2712D0])
 a|
+2GB
+
 4GB
 
 8GB | 40-pin GPIO header
@@ -334,10 +336,6 @@ Models with the *H* suffix have header pins pre-soldered to the GPIO header. Mod
 | Model | SoC | Memory | Storage | GPIO | Wireless Connectivity
 
 a|
-.Raspberry Pi Pico 2
-image::images/pico-2.png[alt="Raspberry Pi Pico 2"]
-| xref:../microcontrollers/silicon.adoc#rp2350[RP2350] | 520KB | 2MB | 40-pin GPIO header (unpopulated) ^| none
-a|
 .Raspberry Pi Pico
 image::images/pico.png[alt="Raspberry Pi Pico"]
 | xref:../microcontrollers/silicon.adoc#rp2040[RP2040] | 264KB | 2MB | 40-pin GPIO header (unpopulated) ^| none
@@ -359,6 +357,10 @@ image::images/pico-wh.png[alt="Raspberry Pi Pico WH"]
 a|
 * 2.4GHz single-band 802.11n Wi-Fi (10Mb/s)
 * Bluetooth 5.2, Bluetooth Low Energy (BLE)
+a|
+.Raspberry Pi Pico 2
+image::images/pico-2.png[alt="Raspberry Pi Pico 2"]
+| xref:../microcontrollers/silicon.adoc#rp2350[RP2350] | 520KB | 2MB | 40-pin GPIO header (unpopulated) ^| none
 
 |===
 
