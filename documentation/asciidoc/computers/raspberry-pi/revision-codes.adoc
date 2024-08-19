@@ -610,6 +610,12 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 512MB
 | Sony UK
 
+| b04170
+| 5
+| 1.0
+| 2GB
+| Sony UK
+
 | c04170
 | 5
 | 1.0
