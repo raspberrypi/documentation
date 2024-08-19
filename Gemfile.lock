@@ -57,7 +57,7 @@ GEM
       jekyll (>= 3.5, < 5.0)
       jekyll-feed (~> 0.9)
       jekyll-seo-tag (~> 2.1)
-    nokogiri (1.16.6)
+    nokogiri (1.16.7)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     pathutil (0.16.2)
@@ -87,7 +87,7 @@ GEM
     tzinfo-data (1.2024.1)
       tzinfo (>= 1.0.0)
     unicode-display_width (2.5.0)
-    wdm (0.1.1)
+    wdm (0.2.0)
     webrick (1.8.1)
 
 PLATFORMS
@@ -103,7 +103,7 @@ DEPENDENCIES
   thread_safe (~> 0.3.5)
   tzinfo (~> 2.0)
   tzinfo-data
-  wdm (~> 0.1.0)
+  wdm (~> 0.2.0)
 
 BUNDLED WITH
    2.3.22

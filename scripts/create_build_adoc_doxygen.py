@@ -16,9 +16,8 @@ def check_no_markdown(filename):
         asciidoc = re.sub(r'----\n.*?\n----', '', asciidoc, flags=re.DOTALL)
         # strip out pass-through blocks
         asciidoc = re.sub(r'\+\+\+\+\n.*?\n\+\+\+\+', '', asciidoc, flags=re.DOTALL)
-        # This is messing up the c code blocks
-        # if re.search(r'(?:^|\n)#+', asciidoc):
-        #     raise Exception("{} contains a Markdown-style header (i.e. '#' rather than '=')".format(filename))
+        if re.search(r'(?:^|\n)#+', asciidoc):
+            raise Exception("{} contains a Markdown-style header (i.e. '#' rather than '=')".format(filename))
         if re.search(r'(\[.+?\]\(.+?\))', asciidoc):
             raise Exception("{} contains a Markdown-style link (i.e. '[title](url)' rather than 'url[title]')".format(filename))
 

@@ -824,7 +824,7 @@ The loading of overlays at runtime is a recent addition to the kernel, and at th
 [[part3.6]]
 ==== Supported overlays and parameters
 
-Please refer to the https://github.com/raspberrypi/firmware/blob/master/boot/firmware/overlays/README[README] file found alongside the overlay `.dtbo` files in `/boot/firmware/overlays`. It is kept up-to-date with additions and changes.
+For a list of supported overlays and parameters, see the https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README[README] file found alongside the overlay `.dtbo` files in `/boot/firmware/overlays`. It is kept up-to-date with additions and changes.
 
 [[part4]]
 === Firmware parameters
