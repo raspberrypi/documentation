@@ -575,7 +575,7 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | Sony UK
 
 | c03130
-| Pi 400
+| 400
 | 1.0
 | 4GB
 | Sony UK
@@ -608,6 +608,12 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | Zero 2 W
 | 1.0
 | 512MB
+| Sony UK
+
+| b04170
+| 5
+| 1.0
+| 2GB
 | Sony UK
 
 | c04170
