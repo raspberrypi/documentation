@@ -62,10 +62,6 @@ RP2350 includes a pair of open-hardware Hazard3 RISC-V cores which can be substi
 
 Designed by Raspberry Pi as both a development board, and as a reference design, the xref:pico-series.adoc#pico-2-technical-specification[Raspberry Pi Pico 2] is based on the RP2350.
 
-The design files for Raspberry Pi Pico 2 are available openly, with no limitations:
-
-* Download https://datasheets.raspberrypi.com/pico/RPi-Pico-2-PUBLIC-20240708.zip[Design Files] for Raspberry Pi Pico 2 (Cadence Allegro)
-
 Permission to use, copy, modify, and/or distribute this design for any purpose with or without fee is hereby granted.
 
 THE DESIGN IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS DESIGN INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS DESIGN.
