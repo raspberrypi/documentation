@@ -41,12 +41,11 @@ The Raspberry Pi Pico 2 comes as a castellated module which allows soldering dir
 
 NOTE: Both boards have a three pin Serial Wire Debug (SWD) header. However, the Pico 2 with headers breaks this out into a small, keyed, https://datasheets.raspberrypi.com/debug/debug-connector-specification.pdf[3-pin connector] while the Pico has three castellated through-hole pins adjacent to the edge of the board.
 
-=== Pinout and design files
+==== Pinout and design files
 
 image::images/pico-2-r4-pinout.svg[]
 
 * Download the https://datasheets.raspberrypi.com/pico/Pico-2-Pinout.pdf[Pinout Diagram] (PDF)
-* Download https://datasheets.raspberrypi.com/pico/RPi-Pico-2-PUBLIC-20240708.zip[Design Files] (KiCad)
 * Download https://datasheets.raspberrypi.com/pico/Pico-2-step-20240708.zip[STEP File]
 * Download https://datasheets.raspberrypi.com/pico/Pico-2-Fritzing-20240708.fzpz[Fritzing Part] for Raspberry Pi Pico
 
