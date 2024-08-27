@@ -1678,7 +1678,7 @@ Increase this value if the text flows off the bottom edge of the screen; decreas
 
 Set `overscan_scale` to `1` to force any non-framebuffer layers to conform to the overscan settings. The default value is `0`.
 
-*NOTE:* this feature is generally not recommended: it can reduce image quality because all layers on the display will be scaled by the GPU. Disabling overscan on the display itself is the recommended option to avoid images being scaled twice (by the GPU and the display).
+NOTE: this feature is generally not recommended: it can reduce image quality because all layers on the display will be scaled by the GPU. Disabling overscan on the display itself is the recommended option to avoid images being scaled twice (by the GPU and the display).
 
 ==== `framebuffer_width`
 
