@@ -12,7 +12,7 @@ GEM
     eventmachine (1.2.7)
     ffi (1.16.3)
     forwardable-extended (2.6.0)
-    google-protobuf (3.25.1)
+    google-protobuf (3.25.1-x86_64-linux)
     http_parser.rb (0.8.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
@@ -71,8 +71,8 @@ GEM
     rexml (3.2.6)
     rouge (4.2.0)
     safe_yaml (1.0.5)
-    sass-embedded (1.69.6)
-      google-protobuf (~> 3.25)
+    sass-embedded (1.69.5)
+      google-protobuf (~> 3.23)
       rake (>= 13.0.0)
     slim (5.2.1)
       temple (~> 0.10.0)
@@ -91,7 +91,7 @@ GEM
     webrick (1.8.1)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   jekyll (~> 4.3.3)
