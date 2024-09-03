@@ -184,7 +184,7 @@ In the Connect dashboard, the **Remote shell** badge and the **Remote shell** op
 
 image::images/remote-shell-disabled.png[width="80%"]
 
-To re-enable screen sharing, do one of the following:
+To re-enable remote shell access, do one of the following:
 
 * click the Connect system tray icon and select **Allow remote shell**
 * run the following command:
