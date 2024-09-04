@@ -36,7 +36,7 @@ Grant `/export` and `/export/users` read, write, and execute permissions (`777`)
 
 [source,console]
 ----
-$ chmod -R 777 777 /export
+$ chmod -R 777 /export
 ----
 
 Next, mount the real `users` directory with:
