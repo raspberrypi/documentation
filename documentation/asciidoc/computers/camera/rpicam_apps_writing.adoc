@@ -3,6 +3,7 @@
 `rpicam-apps` does not provide all of the camera-related features that anyone could ever need. Instead, these applications are small and flexible. Users who require different behaviour can implement it themselves.
 
 All of the `rpicam-apps` use an event loop that receives messages when a new set of frames arrives from the camera system. This set of frames is called a `CompletedRequest`. The `CompletedRequest` contains:
+
 * all images derived from that single camera frame: often a low-resolution image and a full-size output
 * metadata from the camera and post-processing systems
 
