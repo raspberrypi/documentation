@@ -46,7 +46,7 @@ If no `video` entry is present in `cmdline.txt`, Raspberry Pi OS uses the https:
 video=HDMI-A-1:1920x1080M@60
 ----
 
-In addition, it is possible to add rotation and reflect parameters as documented in the standard https://github.com/raspberrypi/linux/blob/rpi-6.1.y/Documentation/fb/modedb.rst[Linux framebuffer documentation]. The following example defines a display named `HDMI-A-` at a resolution of 1080p, a refresh rate of 60Hz, 90 degrees of rotation, and a reflection over the X axis:
+In addition, it is possible to add rotation and reflect parameters as documented in the standard https://github.com/raspberrypi/linux/blob/rpi-6.1.y/Documentation/fb/modedb.rst[Linux framebuffer documentation]. The following example defines a display named `HDMI-A-1` at a resolution of 1080p, a refresh rate of 60Hz, 90 degrees of rotation, and a reflection over the X axis:
 
 [source,bash]
 ----
