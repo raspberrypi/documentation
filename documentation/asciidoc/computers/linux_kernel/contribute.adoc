@@ -18,6 +18,7 @@ Then, submit a pull request containing your changes to the https://github.com/ra
 
 === Contribute to the Linux kernel
 
-First, fork the https://github.com/torvalds/linux[Linux kernel repository] and clone it to your development device. You can then make your changes, test them, and commit them into your fork.
+First, clone the https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git[Linux kernel tree] to your development device. You can then make your changes, test them, and commit them into your local tree.
 
-Then, submit a pull request containing your changes to the https://github.com/torvalds/linux[Linux kernel repository]. Linux kernel contributors will review your contribution and suggest improvements. Once approved, they'll merge in your changes. Eventually, they'll make their way into a long-term release of the Linux kernel. Once we've tested that long-term release for compatibility with the Raspberry Pi kernel, your changes will make their way into a stable release of the Raspberry Pi kernel.
+Once your change is ready you can submit it to the Linux kernel community. Linux kernel development happens on mailing lists, rather than on GitHub. In order for your change to become part of Linux, please email it to the community as a patch. Please follow https://www.kernel.org/doc/html/latest/process/submitting-patches.html[Submitting patches: the essential guide to getting your code into the kernel] and https://www.kernel.org/doc/html/latest/process/coding-style.html[Linux kernel coding style] in the Linux kernel documentation.
+Linux kernel contributors will review your contribution and suggest improvements. Once approved, they'll merge in your changes. Eventually, they'll make their way into a long-term release of the Linux kernel. Once we've tested that long-term release for compatibility with the Raspberry Pi kernel, your changes will make their way into a stable release of the Raspberry Pi kernel.
