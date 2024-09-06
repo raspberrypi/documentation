@@ -551,7 +551,7 @@ Enable or disable the serial connection hardware.
 
 [source,console]
 ----
-$ sudo raspi-config nonint do_serial_hw <0/1/2>
+$ sudo raspi-config nonint do_serial_hw <0/1>
 ----
 
 * `0`: enable serial port
@@ -564,7 +564,7 @@ Enable or disable shell and kernel messages on the serial connection.
 
 [source,console]
 ----
-$ sudo raspi-config nonint do_serial_cons <0/1/2>
+$ sudo raspi-config nonint do_serial_cons <0/1>
 ----
 
 * `0`: enable console over serial port

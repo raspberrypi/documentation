@@ -4,6 +4,8 @@ GEM
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
     asciidoctor (2.0.20)
+    asciidoctor-tabs (1.0.0.beta.6)
+      asciidoctor (>= 2.0.0, < 3.0.0)
     colorator (1.1.0)
     concurrent-ruby (1.2.3)
     em-websocket (0.5.3)
@@ -94,6 +96,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  asciidoctor
+  asciidoctor-tabs (>= 1.0.0.beta.6)
   jekyll (~> 4.3.3)
   jekyll-asciidoc
   jekyll-feed (~> 0.17)
