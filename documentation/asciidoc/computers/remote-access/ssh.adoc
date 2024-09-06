@@ -7,24 +7,26 @@ You can access the terminal of a Raspberry Pi remotely from another computer on 
 
 By default, Raspberry Pi OS disables the SSH server. Enable SSH in one of the following ways:
 
-==== On the desktop
-
+[tabs]
+======
+On the desktop::
++
 . From the *Preferences* menu, launch *Raspberry Pi Configuration*.
 . Navigate to the *Interfaces* tab.
 . Select *Enabled* next to *SSH*.
 . Click *OK*.
 
-==== While flashing a fresh OS image
-
+While flashing a fresh OS image::
++
 To configure SSH on a completely new installation of Raspberry Pi OS:
-
++
 . Follow the instructions in the xref:../computers/getting-started.adoc#raspberry-pi-imager[Install with Imager] guide.
 . During the **OS Customisation** step, navigate to the **Services** tab.
 . Tick the checkbox to **Enable SSH**.
 . Select **password authentication** to log in using the same username and password you use while physically using your Raspberry Pi. Select **Allow public-key authentication only** to xref:remote-access.adoc#configure-ssh-without-a-password[configure an SSH key] for passwordless login.
 
-==== From the terminal
-
+From the terminal::
++
 . Enter `sudo raspi-config` in a terminal window.
 . Select `Interfacing Options`.
 . Navigate to and select `SSH`.
@@ -32,8 +34,8 @@ To configure SSH on a completely new installation of Raspberry Pi OS:
 . Select `Ok`.
 . Choose `Finish`.
 
-==== Manually
-
+Manually::
++
 . Create an empty file named `ssh` in the boot partition:
 +
 [source,console]
@@ -46,6 +48,7 @@ $ sudo touch /boot/firmware/ssh
 ----
 $ sudo reboot
 ----
+======
 
 === Connect to an SSH server
 
