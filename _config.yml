@@ -25,6 +25,7 @@ githubbranch_edit: develop
 # Build settings
 theme: minima
 plugins:
+  - asciidoctor-tabs
   - jekyll-asciidoc
   - jekyll-feed
 
