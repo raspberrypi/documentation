@@ -4,3 +4,4 @@ build
 build-pico-sdk-docs
 documentation/html
 documentation/asciidoc/pico-sdk
+.venv
