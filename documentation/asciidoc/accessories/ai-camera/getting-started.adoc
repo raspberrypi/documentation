@@ -19,15 +19,17 @@ The AI camera must download runtime firmware onto the IMX500 sensor during start
 
 [source,console]
 ----
-$ sudo apt install imx500-firmware imx500-models rpicam-apps-imx500-postprocess python3-opencv
+$ sudo apt install imx500-all
 ----
 
 This command:
 
-* installs the `/lib/firmware/imx500_loader.fpk` and `/lib/firmware/imx500_main.fpk` firmware files required to operate the IMX500 sensor
+* installs the `/lib/firmware/imx500_loader.fpk` and `/lib/firmware/imx500_firmware.fpk` firmware files required to operate the IMX500 sensor
 * places a number of neural network model firmware files in `/usr/share/imx500-models/`
+* installs the IMX500 post-processing software stages in `rpicam-apps`
+* installs the Sony network model packaging tools
 
-NOTE: The IMX500 kernel device driver loads all the firmware files (loader, main, and network) when the camera starts. This may take several minutes if the neural network model firmware has not been previously cached. The demos below display a progress bar on the console to indicate firmware loading progress.
+NOTE: The IMX500 kernel device driver loads all the firmware files when the camera starts. This may take several minutes if the neural network model firmware has not been previously cached. The demos below display a progress bar on the console to indicate firmware loading progress.
 
 === Reboot
 
@@ -44,13 +46,13 @@ Once all the system packages are updated and firmware files installed, we can st
 
 === `rpicam-apps`
 
-The xref:../computers/camera_software.adoc#rpicam-apps[`rpicam-apps` camera applications] include IMX500 object inference and pose estimation stages that can be run in the post-processing pipeline. For more information about the post-processing pipeline, see xref:../computers/camera_software.adoc#post-process-file[the post-processing documentation].
+The xref:../computers/camera_software.adoc#rpicam-apps[`rpicam-apps` camera applications] include IMX500 object detection and pose estimation stages that can be run in the post-processing pipeline. For more information about the post-processing pipeline, see xref:../computers/camera_software.adoc#post-process-file[the post-processing documentation].
 
 The examples on this page use post-processing JSON files located in `/usr/share/rpicam-assets/`.
 
-==== Object inference
+==== Object detection
 
-The MobileNet SSD neural network performs basic object detection, providing bounding boxes and confidence values for each object found. `imx500_mobilenet_ssd.json` contains the configuration parameters for the IMX500 object inferencing post-processing stage using the MobileNet SSD neural network.
+The MobileNet SSD neural network performs basic object detection, providing bounding boxes and confidence values for each object found. `imx500_mobilenet_ssd.json` contains the configuration parameters for the IMX500 object detection post-processing stage using the MobileNet SSD neural network.
 
 `imx500_mobilenet_ssd.json` declares a post-processing pipeline that contains two stages:
 
@@ -77,7 +79,7 @@ To record video with object detection overlays, use `rpicam-vid` instead. The fo
 $ rpicam-vid -t 10s -o output.264 --post-process-file /usr/share/rpicam-assets/imx500_mobilenet_ssd.json --width 1920 --height 1080 --framerate 30
 ----
 
-You can configure the `imx500_object_inference` stage in many ways.
+You can configure the `imx500_object_detection` stage in many ways.
 
 For example, `max_detections` defines the maximum number of objects that the pipeline will detect at any given time. `threshold` defines the minimum confidence value required for the pipeline to consider any input as an object.
 
@@ -105,15 +107,22 @@ image::images/imx500-posenet.jpg[IMX500 PoseNet]
 
 You can configure the `imx500_posenet` stage in many ways.
 
-For example, `max_detections` defines the maximum number of body points that the pipeline will detect at any given time. `threshold` defines the minimum confidence value required for the pipeline to consider input as a body point.
+For example, `max_detections` defines the maximum number of bodies that the pipeline will detect at any given time. `threshold` defines the minimum confidence value required for the pipeline to consider input as a body.
 
 === Picamera2
 
-For examples of image classification, object inference, object segmentation, and pose estimation using Picamera2, see https://github.com/raspberrypi/picamera2-imx500/blob/main/examples/imx500/[the `picamera2-imx500` GitHub repository].
+For examples of image classification, object detection, object segmentation, and pose estimation using Picamera2, see https://github.com/raspberrypi/picamera2/blob/main/examples/imx500/[the `picamera2` GitHub repository].
 
-Download the repository to your Raspberry Pi to run the examples. You'll find example files in the root directory, with additional information in the `README.md` file.
+Most of the examples use OpenCV for some additional processing, so if you haven't done so previously, please run:
 
-Run the following script from the repository to run YOLOv8 object inference:
+[source,console]
+----
+$ sudo apt install python3-opencv python3-munkres
+----
+
+Now download the https://github.com/raspberrypi/picamera2[the `picamera2` repository] to your Raspberry Pi to run the examples. You'll find example files in the root directory, with additional information in the `README.md` file.
+
+Run the following script from the repository to run YOLOv8 object detection:
 
 [source,console]
 ----
@@ -124,5 +133,5 @@ To try pose estimation in Picamera2, run the following script from the repositor
 
 [source,console]
 ----
-$ python imx500_pose_estimation_yolov8n_demo.py --model /usr/share/imx500-models/imx500_network_yolov8n_pose.rpk
+$ python imx500_pose_estimation_higherhrnet_demo.py
 ----

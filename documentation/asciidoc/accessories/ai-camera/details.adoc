@@ -1,6 +1,34 @@
 
 == Under the Hood
 
+=== Overview
+
+The Raspberry Pi AI Camera works rather differently to more traditional AI-based camera image processing systems, as shown in the diagram below.
+
+image::images/imx500-comparison.svg[Traditional versus IMX500 AI camera systems]
+
+On the left is a diagram of a more traditional AI camera system. Here, the camera delivers only images to the Raspberry Pi. The Raspberry Pi processes the images and is then responsible for performing AI inferencing. This may use an optional external AI accelerator, as shown, or it may happen (more slowly) in the CPU.
+
+On the right we have the IMX500-based system. The camera module contains a small ISP which turns the raw camera image data into an _input tensor_ which is fed directly to the AI accelerator within the camera. In turn, this produces an _output tensor_, containing the inferencing results, which is fed back to the Raspberry Pi itself. There is no need for an external accelerator, nor for the Raspberry Pi to run neural network software on the CPU.
+
+Some concepts that may be helpful to understand include:
+
+==== The _Input Tensor_
+
+This is the part of the sensor image that is passed to the AI engine for inferencing. It is produced by a small on-board ISP which also crops and scales the camera image to the dimensions expected by the neural network that has been loaded. The input tensor is not normally made available to applications, though it is possible to access it for debugging purposes.
+
+==== The _Region of Interest_
+
+The Region of Interest (or _ROI_) specifies exactly which part of the sensor image is cropped out before being rescaled to the size demanded by the neural network. It can be queried and set by an application. The units used are always pixels in the full resolution sensor output.
+
+By default, the ROI is set to be the full image received from the sensor (that is, nothing is actally cropped out).
+
+==== The _Output Tensor_
+
+These are the results of inferencing performed by the neural network. The precise number and shape of the outputs will depend on the neural network, and application code will need to understand how to handle them.
+
+=== System Architecture
+
 The diagram below shows the various camera software components (in green) used during our imaging/inference use case with the Raspberry Pi AI Camera module hardware (in red).
 
 image::images/imx500-block-diagram.svg[IMX500 block diagram]
@@ -204,39 +232,39 @@ The IMX500 class in Picamera2 provides the following helper functions:
 | `IMX500.get_full_sensor_resolution()`
 | Return the full sensor resolution of the IMX500.
 
-| `IMX500.config()`
+| `IMX500.config`
 | Returns a dictionary of the neural network configuration.
 
-| `IMX500.convert_inference_coords()`
-| Converts from the input tensor coordinate space to the final ISP output image space.
+| `IMX500.convert_inference_coords(coords, metadata, picamera2)`
+| Converts the coordinates _coords_ from the input tensor coordinate space to the final ISP output image space. Must be passed Picamera2's image metadata for the image, and the Picamera2 object.
 
 There are a number of scaling/cropping/translation operations occurring from the original sensor image to the fully processed ISP output image. This function converts coordinates provided by the output tensor to the equivalent coordinates after performing these operations.
 
 | `IMX500.show_network_fw_progress_bar()`
 | Displays a progress bar on the console showing the progress of the neural network firmware upload to the IMX500.
 
-| `IMX500.get_roi_scaled()`
-| Returns the region of interest (ROI) in the ISP output coordinate space.
+| `IMX500.get_roi_scaled(request)`
+| Returns the region of interest (ROI) in the ISP output image coordinate space.
 
-| `IMX500.get_isp_output_size()`
+| `IMX500.get_isp_output_size(picamera2)`
 | Returns the ISP output image size.
 
-| `IMX5000.get_input_w_h()`
+| `IMX5000.get_input_size()`
 | Returns the input tensor size based on the neural network model used.
 
-| `IMX500.get_outputs()`
-| Returns the output tensors for a given frame request.
+| `IMX500.get_outputs(metadata)`
+| Returns the output tensors from the Picamera2 image metadata metadata.
 
-| `IMX500.get_output_shapes()`
-| Returns the shape of the output tensors for the neural network model used.
+| `IMX500.get_output_shapes(metadata)`
+| Returns the shape of the output tensors from the Picamera2 image metadata for the neural network model used.
 
-| `IMX500.set_inference_roi_abs()`
-| Sets an absolute region of interest (ROI) crop rectangle on the sensor image to use for inferencing on the IMX500.
+| `IMX500.set_inference_roi_abs(rectangle)`
+| Sets the region of interest (ROI) crop rectangle which determines which part of the sensor image is converted to the input tensor that is used for inferencing on the IMX500. The region of interest should be specified in units of pixels at the full sensor resolution, as a `(x_offset, y_offset, width, height)` tuple.
 
-| `IMX500.set_inference_aspect_ratio()`
-| Automatically calculates region of interest (ROI) crop rectangle on the sensor image to preserve the input tensor aspect ratio for a given neural network.
+| `IMX500.set_inference_aspect_ratio(aspect_ratio)`
+| Automatically calculates region of interest (ROI) crop rectangle on the sensor image to preserve the given aspect ratio. To make the ROI aspect ratio exactly match the input tensor for this network, use `imx500.set_inference_aspect_ratio(imx500.get_input_size())`.
 
-| `IMX500.get_kpi_info()`
-| Returns the frame level performance indicators logged by the IMX500.
+| `IMX500.get_kpi_info(metadata)`
+| Returns the frame level performance indicators logged by the IMX500 for the given image metadata.
 
 |===
