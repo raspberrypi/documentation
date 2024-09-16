@@ -9,7 +9,7 @@ To connect a PCIe https://datasheets.raspberrypi.com/hat/hat-plus-specification.
 
 For more information about the PCIe FPC connector pinout and other details needed to create third-party devices, accessories, and HATs, see the https://datasheets.raspberrypi.com/pcie/pcie-connector-standard.pdf[Raspberry Pi Connector for PCIe] standards document. It should be read alongside the https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[Raspberry Pi HAT+ Specification].
 
-NOTE: Enumeration of PCIe devices behind a switch is https://github.com/raspberrypi/firmware/issues/1833[not currently supported].
+NOTE: Starting with version 2020-06-05 of the Raspberry Pi 5 bootloader, Enumeration of PCIe devices behind a switch is preliminary supported. See also this https://github.com/raspberrypi/firmware/issues/1833[issue].
 
 === Enable PCIe
 
