@@ -59,9 +59,78 @@ Python users have long dealt with conflicts between OS package managers like `ap
 
 Starting in Raspberry Pi OS _Bookworm_, packages installed via `pip` _must be installed into a Python virtual environment_ (``venv``). A virtual environment is a container where you can safely install third-party modules so they won't interfere with your system Python.
 
-==== Use pip with virtual environments
+==== Use `pip` with virtual environments
 
-To use a virtual environment, create a container to store the environment. There are several ways you can do this depending on how you want to work with Python.
+To use a virtual environment, create a container to store the environment. There are several ways you can do this depending on how you want to work with Python:
+
+[tabs]
+======
+per-project environments::
++
+Many users create separate virtual environments for each Python project. Locate the virtual environment in the root folder of each project, typically with a shared name like `env`. Run the following command from the root folder of each project to create a virtual environment configuration folder:
++
+[source,console]
+----
+$ python -m venv env
+----
++
+Before you work on a project, run the following command from the root of the project to start using the virtual environment:
++
+[source,console]
+----
+$ source env/bin/activate
+----
++
+You should then see a prompt similar to the following:
++
+[source,console?prompt=(env) $]
+----
+(env) $
+----
++
+When you finish working on a project, run the following command from any directory to leave the virtual environment:
++
+[source,console?prompt=(env) $]
+----
+(env) $ deactivate
+----
+
+per-user environments::
++
+Instead of creating a virtual environment for each of your Python projects, you can create a single virtual environment for your user account. **Activate that virtual environment before running any of your Python code.** This approach can be more convenient for workflows that share many libraries across projects.
++
+When creating a virtual environment for multiple projects across an entire user account, consider locating the virtual environment configuration files in your home directory. Store your configuration in a https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments[folder whose name begins with a period] to hide the folder by default, preventing it from cluttering your home folder.
++
+Use the following command to create a virtual environment in a hidden folder in the current user's home directory:
++
+[source,console]
+----
+$ python -m venv ~/.env
+----
++
+Run the following command from any directory to start using the virtual environment:
++
+[source,console]
+----
+$ source ~/.env/bin/activate
+----
++
+You should then see a prompt similar to the following:
++
+[source,console?prompt=(.env) $]
+----
+(.env) $
+----
++
+To leave the virtual environment, run the following command from any directory:
++
+[source,console?prompt=(.env) $]
+----
+(.env) $ deactivate
+----
+======
+
+===== Create a virtual environment
 
 Run the following command to create a virtual environment configuration folder, replacing `<env-name>` with the name you would like to use for the virtual environment (e.g. `env`):
 
@@ -71,6 +140,8 @@ $ python -m venv <env-name>
 ----
 
 TIP: Pass the `--system-site-packages` flag before the folder name to preload all of the currently installed packages in your system Python installation into the virtual environment.
+
+===== Enter a virtual environment
 
 Then, execute the `bin/activate` script in the virtual environment configuration folder to enter the virtual environment:
 
@@ -101,75 +172,13 @@ setuptools 66.1.1
 
 The list should be much shorter than the list of packages installed in your system Python. You can now safely install packages with `pip`. Any packages you install with `pip` while in a virtual environment only install to that virtual environment. In a virtual environment, the `python` or `python3` commands automatically use the virtual environment's version of Python and installed packages instead of the system Python.
 
+===== Exit a virtual environment
+
 To leave a virtual environment, run the following command:
 
 [source,console?prompt=(<env-name>) $]
 ----
 (<env-name>) $ deactivate
-----
-
-==== Use a separate environment for each project
-
-Many users create separate virtual environments for each Python project. Locate the virtual environment in the root folder of each project, typically with a shared name like `env`. Run the following command from the root folder of each project to create a virtual environment configuration folder:
-
-[source,console]
-----
-$ python -m venv env
-----
-
-Before you work on a project, run the following command from the root of the project to start using the virtual environment:
-
-[source,console]
-----
-$ source env/bin/activate
-----
-
-You should then see a prompt similar to the following:
-
-[source,console?prompt=(env) $]
-----
-(env) $
-----
-
-When you finish working on a project, run the following command from any directory to leave the virtual environment:
-
-[source,console?prompt=(env) $]
-----
-(env) $ deactivate
-----
-
-==== Use a separate environment for each user
-
-Instead of creating a virtual environment for each of your Python projects, you can create a single virtual environment for your user account. **Activate that virtual environment before running any of your Python code.** This approach can be more convenient for workflows that share many libraries across projects.
-
-When creating a virtual environment for multiple projects across an entire user account, consider locating the virtual environment configuration files in your home directory. Store your configuration in a https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory#Unix_and_Unix-like_environments[folder whose name begins with a period] to hide the folder by default, preventing it from cluttering your home folder.
-
-Use the following command to create a virtual environment in a hidden folder in the current user's home directory:
-
-[source,console]
-----
-$ python -m venv ~/.env
-----
-
-Run the following command from any directory to start using the virtual environment:
-
-[source,console]
-----
-$ source ~/.env/bin/activate
-----
-
-You should then see a prompt similar to the following:
-
-[source,console?prompt=(.env) $]
-----
-(.env) $
-----
-
-To leave the virtual environment, run the following command from any directory:
-
-[source,console?prompt=(.env) $]
-----
-(.env) $ deactivate
 ----
 
 === Use the Thonny editor
