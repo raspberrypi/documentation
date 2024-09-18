@@ -4,7 +4,7 @@ Our official C SDK can be used from the command line, or from popular integrated
 
 You can find documentation around the C/{cpp} SDK at:
 
-https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico-series]:: C/{cpp} development with Raspberry Pi Pico, Pico 2, and other Raspberry Pi microcontroller-based boards.
+https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico-series]:: C/{cpp} development with Raspberry Pi Pico, Pico 2, and other Raspberry Pi microcontroller-based boards
 
 https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W]:: Getting Raspberry Pi Pico W online with C/{cpp} or MicroPython
 
@@ -12,9 +12,9 @@ https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi
 
 xref:../pico-sdk/index_doxygen.adoc[API level documentation]:: Documentation for the Raspberry Pi Pico C/{cpp} SDK
 
-https://github.com/raspberrypi/pico-examples[pico-examples repository]:: Example projects
+https://github.com/raspberrypi/pico-examples[The pico-examples repository]:: Example projects
 
-The SDK source code is open source via the https://github.com/raspberrypi/pico-sdk[pico-sdk Github repository].
+SDK source code is open source, available via the https://github.com/raspberrypi/pico-sdk[pico-sdk Github repository].
 
 [NOTE]
 ====
