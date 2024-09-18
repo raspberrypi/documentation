@@ -12,7 +12,7 @@ https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi
 
 xref:../pico-sdk/index_doxygen.adoc[API level documentation]:: Documentation for the Raspberry Pi Pico C/{cpp} SDK
 
-https://github.com/raspberrypi/pico-examples[Github repository]:: Example projects
+https://github.com/raspberrypi/pico-examples[pico-examples repository]:: Example projects
 
 The SDK source code is open source via the https://github.com/raspberrypi/pico-sdk[pico-sdk Github repository].
 
