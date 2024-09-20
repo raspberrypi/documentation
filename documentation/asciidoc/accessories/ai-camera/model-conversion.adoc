@@ -1,39 +1,48 @@
 == Model Conversion
 
-Tools are provided by Sony to allow users to convert pre-existing TensorFlow or PyTorch to run on the Raspberry Pi AI Camera. Additionally, users can also build and train entirely new models to run on the IMX500. 
-
-In order to convert suitable pre-existing models, you need to follow the instructions below.
+Sony provides tools that enable users to convert pre-existing TensorFlow or PyTorch models to run on the Raspberry Pi AI Camera. Additionally, users can also build and train entirely new models for the IMX500.
 
 === Install the IMX500 tools package
 
-The first step is to install the necessary tools:
+First, install the necessary tools:
 
 [source,console]
 ----
-sudo apt install imx500-tools
+$ sudo apt install imx500-tools
 ----
 
 == Convert and package the model
 
-Next, we run the tools to convert and package the model. Assuming a model file resides in the `/<path>/<to>/model/` directory, and the the converter output and package output goes into the `/<path>/<to>/converted/` and `/<path>/<to>/packaged/` directories respectively:
+Next, run the tools to convert and package the model.
+
+The following command converts a model file stored in the `<model-folder>` directory into a converted, IMX500-compatible model stored in `<converted-model-folder>`:
 
 [source,console]
 ----
-imx500-convert.sh -i /<path>/<to>/model/ -o /<path>/<to>/converted/
-imx500-package.sh -i /<path>/<to>/converted/ -o /<path>/<to>/packaged/
+$ imx500-convert.sh -i <model-folder> -o <converted-model-folder>
 ----
 
-=== Prepare the firmware for deployment
 
-The final step is to prepare the firmware for the Raspberry Pi AI Camera. This involves first doing an endian swap on the byte ordering, then appending some sensor register information provided by the model conversion steps above into the firmware file:
+Then, run the following command to package the converted model stored in the `<converted-model-folder>` directory into a package stored in `<packaged-model-folder>`.
 
 [source,console]
 ----
-objcopy -I binary -O binary --reverse-bytes=4 /<path>/<to>/packaged/network.fpk network.fpk.REVERSED
-ni_to_reg /<path>/<to>/packaged/network_info.txt > registers.bin
-cat network.fpk.REVERSED registers.bin > imx500_network.fpk
+$ imx500-package.sh -i <converted-model-folder> -o <packaged-model-folder>
 ----
 
-This final `imx500_network.fpk` can then be loaded into the Raspberry Pi AI Camera using the helper functions as described above.
+=== Prepare firmware for deployment
 
-More specific instructions on these tools, and their constraints is out of scope for this tutorial. For a more comprehensive set of instructions and further specifics on the tools used, please see the official https://developer.sony.com/imx500/[Sony IMX500 developer website].
+Finally, prepare the firmware for the Raspberry Pi AI Camera. This preparation swaps the Endian-ness of the byte ordering, then appends some sensor register information provided by the model conversion steps above into the firmware file.
+
+Run the following commands to prepare the firmware into a file named `imx500_network.fpk`:
+
+[source,console]
+----
+$ objcopy -I binary -O binary --reverse-bytes=4 /<packaged-model>/network.fpk network.fpk.REVERSED
+$ ni_to_reg /<packaged-model>/network_info.txt > registers.bin
+$ cat network.fpk.REVERSED registers.bin > imx500_network.fpk
+----
+
+You can then load the prepared `imx500_network.fpk` file onto your Raspberry Pi AI Camera using the helper functions described above.
+
+For more information about the AI Camera and the tools used to work with it, visit the https://developer.sony.com/imx500/[Sony IMX500 developer website].

@@ -5,17 +5,17 @@ The diagram below shows the various camera software components (in green) used d
 
 image::images/imx500-block-diagram.svg[IMX500 block diagram]
 
-On startup, the IMX500 sensor modules gets loaded with firmware to run a particular neural network model. On streaming, the IMX500 generates an image stream together with an inference stream. This inference stream holds the inputs and outputs of the neural network model, also known as input/output tensors.
+At startup, the IMX500 sensor module loads firmware to run a particular neural network model. During streaming, the IMX500 generates _both_ an image stream and an inference stream. This inference stream holds the inputs and outputs of the neural network model, also known as input/output **tensors**.
 
 === Device drivers
 
-At the lowest level, the camera module is configured over the I2C bus from the IMX500 sensor kernel driver. The CSI2 driver (`CFE` on Pi 5, `Unicam` on all other Pi platforms) sets up the receiver to write the image data stream into a frame buffer, together with the embedded data and inference data streams into another buffer in memory.
+At the lowest level, the the IMX500 sensor kernel driver configures the camera module over the I2C bus. The CSI2 driver (`CFE` on Pi 5, `Unicam` on all other Pi platforms) sets up the receiver to write the image data stream into a frame buffer, together with the embedded data and inference data streams into another buffer in memory.
 
-The firmware files are also transferred over the I2C bus wires with either the standard I2C protocol, or a custom high speed protocol in the case of Pi 5. This is handled through the RP2040 SPI driver in the kernel. The RP2040 microcontroller is responsible for management of the firmware transfer operation on the camera module. It bridges the I2C transfers from the kernel to the IMX500 via a SPI bus. The RP2040 also caches firmware files on the on-board flash chip for fast upload to the IMX500, avoiding the need to transfer the entire firmware blob over the I2C bus.
+The firmware files also transfer over the I2C bus wires. On most devices, this uses the standard I2C protocol, but Raspberry Pi 5 uses a custom high speed protocol. The RP2040 SPI driver in the kernel handles firmware file transfer, since the transfer uses the RP2040 microcontroller. The microcontroller bridges the I2C transfers from the kernel to the IMX500 via a SPI bus. Additionally, the RP2040 caches firmware files in on-board storage. This avoids the need to transfer entire firmware blobs over the I2C bus, significantly speeding up firmware loading for firmware you've already used.
 
-=== libcamera
+=== `libcamera`
 
-Once `libcamera` dequeues the image and inference data buffers from the kernel, the IMX500 specific `cam-helper` library (part of the Raspberry Pi IPA within libcamera), parses the inference buffer to get the input/output tensors. These tensors as packaged as Raspberry Pi vendor specific https://libcamera.org/api-html/namespacelibcamera_1_1controls.html[`libcamera Controls`] to be returned out to the application for consumption. The following controls are returned:
+Once `libcamera` dequeues the image and inference data buffers from the kernel, the IMX500 specific `cam-helper` library (part of the Raspberry Pi IPA within `libcamera`) parses the inference buffer to access the input/output tensors. These tensors are packaged as Raspberry Pi vendor-specific https://libcamera.org/api-html/namespacelibcamera_1_1controls.html[`libcamera` controls]. `libcamera` returns the following controls:
 
 [%header,cols="a,a"]
 |===
@@ -61,9 +61,9 @@ struct CnnInputTensorInfo {
 
 |===
 
-=== rpicam-apps
+=== `rpicam-apps`
 
-`rpicam-apps` provides an IMX500 postprocessing stage base class that implements helpers for IMX500 postprocessing stages - https://github.com/raspberrypi/rpicam-apps/blob/post_processing_stages/imx500_post_processing_stage.hpp[`IMX500PostProcessingStage`]. This base class can be used to derive a new postprocessing stage for any neural network model running on the IMX500. For example, in https://github.com/raspberrypi/rpicam-apps/blob/post_processing_stages/imx500_mobilenet_ssd.cpp[`imx500_mobilenet_ssd.cpp`], the following derived class is instanciated (not complete implementation):
+`rpicam-apps` provides an IMX500 post-processing stage base class that implements helpers for IMX500 post-processing stages: https://github.com/raspberrypi/rpicam-apps/blob/post_processing_stages/imx500_post_processing_stage.hpp[`IMX500PostProcessingStage`]. Use this base class to derive a new post-processing stage for any neural network model running on the IMX500. For an example, see https://github.com/raspberrypi/rpicam-apps/blob/post_processing_stages/imx500_mobilenet_ssd.cpp[`imx500_mobilenet_ssd.cpp`]:
 
 [source,cpp]
 ----
@@ -82,7 +82,7 @@ public:
 };
 ----
 
-On every frame received by the application, the `Process()` function is called (`ObjectInference::Process()` in the above case). In this function, you can extract the output tensor for futher processing and/or analysis by the stage:
+For every frame received by the application, the `Process()` function is called (`ObjectInference::Process()` in the above case). In this function, you can extract the output tensor for further processing or analysis:
 
 [source,cpp]
 ----
@@ -96,7 +96,7 @@ if (!output)
 std::vector<float> output_tensor(output->data(), output->data() + output->size());
 ----
 
-Once this is completed, the final results can either be visualised or saved in metadata and consumed by either another downstream stage, or the top level application itself. In the object inference case:
+Once completed, the final results can either be visualised or saved in metadata and consumed by either another downstream stage, or the top level application itself. In the object inference case:
 
 [source,cpp]
 ----
@@ -104,7 +104,7 @@ if (objects.size())
   completed_request->post_process_metadata.Set("object_detect.results", objects);
 ----
 
-The `object_detect_draw_cv` postprocessing stage running downstream fetches these results from the metadata and draws the bounding boxes onto the image in the `ObjectDetectDrawCvStage::Process()` function:
+The `object_detect_draw_cv` post-processing stage running downstream fetches these results from the metadata and draws the bounding boxes onto the image in the `ObjectDetectDrawCvStage::Process()` function:
 
 [source,cpp]
 ----
@@ -112,7 +112,7 @@ std::vector<Detection> detections;
 completed_request->post_process_metadata.Get("object_detect.results", detections);
 ----
 
-A full list of helper functions provided by `IMX500PostProcessingStage` is listed below:
+The following table contains a full list of helper functions provided by `IMX500PostProcessingStage`:
 
 [%header,cols="a,a"]
 |===
@@ -145,7 +145,7 @@ There are a number of scaling/cropping/translation operations occurring from the
 
 === Picamera2
 
-IMX500 integration in `Picamera2` is very similar to what is available in `rpicam-apps`. `Picamera2` has an IMX500 helper class that provides the same functionality as the `rpicam-apps` `IMX500PostProcessingStage` base class. This can be imported to any python script with:
+IMX500 integration in Picamera2 is very similar to what is available in `rpicam-apps`. Picamera2 has an IMX500 helper class that provides the same functionality as the `rpicam-apps` `IMX500PostProcessingStage` base class. This can be imported to any python script with:
 
 [source,python]
 ----
@@ -155,7 +155,7 @@ from picamera2.devices.imx500 import IMX500
 imx500 = IMX500(model_file)
 ----
 
-To retrieve the output tensors, you fetch them from the controls and use it for for futher processing and/or analysis by the python script.
+To retrieve the output tensors, fetch them from the controls. You can then apply additional processing in your python script.
 
 For example, in an object inference use case such as https://github.com/raspberrypi/picamera2/tree/main/examples/imx500/imx500_object_detection_demo.py[imx500_object_detection_demo.py], the object bounding boxes and confidence values are extracted in `parse_detections()` and draw the boxes on the image in `draw_detections()`:
 
@@ -192,9 +192,9 @@ def parse_detections(request, stream='main'):
     draw_detections(request, detections, stream)
 ----
 
-Note that there is no additional hysteresis or temporal filtering applied to the output like in the `rpicam-apps` example. However this should be easy enough to add to this example if needed.
+Unlike the `rpicam-apps` example, this example applies no additional hysteresis or temporal filtering.
 
-The IMX500 class in `Picamera2` provides the following helper functions:
+The IMX500 class in Picamera2 provides the following helper functions:
 
 [%header,cols="a,a"]
 |===

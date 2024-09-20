@@ -1,3 +1,4 @@
+[[picamera2]]
 === Use `libcamera` from Python with Picamera2
 
 The https://github.com/raspberrypi/picamera2[Picamera2 library] is a `rpicam`-based replacement for Picamera, which was a Python interface to Raspberry Pi's legacy camera stack. Picamera2 presents an easy-to-use Python API.
