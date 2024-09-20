@@ -65,7 +65,7 @@ Enter your account password when prompted.
 
 You should now see the Raspberry Pi command prompt:
 
-[source,console?prompt=<username>@<hostname> ~ $]
+[source,console]
 ----
 <username>@<hostname> ~ $
 ----
