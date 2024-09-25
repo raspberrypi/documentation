@@ -38,6 +38,7 @@ Enter the following lines of configuration between the comments:
 
 [source,bash]
 ----
+[Service]
 ExecStart=
 ExecStart=/usr/bin/rpi-connectd -socket %t/rpi-connect-wayvnc.sock -v
 ----
@@ -64,6 +65,7 @@ Enter the following lines of configuration between the comments:
 
 [source,bash]
 ----
+[Service]
 ExecStart=
 ExecStart=/usr/bin/rpi-connect-env /usr/bin/wayvnc --config /etc/rpi-connect/wayvnc.config --render-cursor --unix-socket --socket=%t/rpi-connect-wayvnc-ctl.sock -Ldebug %t/rpi-connect-wayvnc.sock
 ----
