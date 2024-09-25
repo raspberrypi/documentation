@@ -37,7 +37,7 @@ image::images/vnc-enable.png[In the Interfaces tab, click the VNC toggle into th
 
 ==== Enable the VNC server on the command line
 
-Use using xref:configuration.adoc#raspi-config[raspi-config] to enable the VNC server on the command line.
+Use xref:configuration.adoc#raspi-config[raspi-config] to enable the VNC server on the command line.
 
 . Open `raspi-config` with the following line:
 +
