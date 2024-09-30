@@ -127,6 +127,12 @@
                     "subpath": "ai-kit.adoc"
                 },
                 {
+                    "title": "AI Camera",
+                    "description": "An AI Camera for your Raspberry Pi",
+                    "image": "full-sized/ai-camera.png",
+                    "subpath": "ai-camera.adoc"
+                },
+                {
                     "title": "Raspberry Pi Audio",
                     "description": "High-definition audio with Raspberry Pi",
                     "image": "full-sized/Audio-HATs.png",
