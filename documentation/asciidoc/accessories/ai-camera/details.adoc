@@ -3,33 +3,25 @@
 
 === Overview
 
-The Raspberry Pi AI Camera works rather differently to more traditional AI-based camera image processing systems, as shown in the diagram below.
+The Raspberry Pi AI Camera works differently from traditional AI-based camera image processing systems, as shown in the diagram below:
 
 image::images/imx500-comparison.svg[Traditional versus IMX500 AI camera systems]
 
-On the left is a diagram of a more traditional AI camera system. Here, the camera delivers only images to the Raspberry Pi. The Raspberry Pi processes the images and is then responsible for performing AI inferencing. This may use an optional external AI accelerator, as shown, or it may happen (more slowly) in the CPU.
+The left side demonstrates the architecture of a traditional AI camera system. In such a system, the camera delivers images to the Raspberry Pi. The Raspberry Pi processes the images and then performs AI inference. Traditional systems may use external AI accelerators (as shown) or rely exclusively on the CPU.
 
-On the right we have the IMX500-based system. The camera module contains a small ISP which turns the raw camera image data into an _input tensor_ which is fed directly to the AI accelerator within the camera. In turn, this produces an _output tensor_, containing the inferencing results, which is fed back to the Raspberry Pi itself. There is no need for an external accelerator, nor for the Raspberry Pi to run neural network software on the CPU.
+The right side demonstrates the architecture of a system that uses IMX500. The camera module contains a small Image Signal Processor (ISP) which turns the raw camera image data into an _input tensor_. The camera module sends this tensor directly into the AI accelerator within the camera, which produces an _output tensor_ that contains the inferencing results. The AI accelerator sends this tensor to the Raspberry Pi. There is no need for an external accelerator, nor for the Raspberry Pi to run neural network software on the CPU.
 
-Some concepts that may be helpful to understand include:
+To fully understand this system, familiarise yourself with the following concepts:
 
-==== The _Input Tensor_
+The _Input Tensor_:: The part of the sensor image passed to the AI engine for inferencing. Produced by a small on-board ISP which also crops and scales the camera image to the dimensions expected by the neural network that has been loaded. The input tensor is not normally made available to applications, though it is possible to access it for debugging purposes.
 
-This is the part of the sensor image that is passed to the AI engine for inferencing. It is produced by a small on-board ISP which also crops and scales the camera image to the dimensions expected by the neural network that has been loaded. The input tensor is not normally made available to applications, though it is possible to access it for debugging purposes.
+The _Region of Interest_ (ROI):: Specifies exactly which part of the sensor image is cropped out before being rescaled to the size demanded by the neural network. Can be queried and set by an application. The units used are always pixels in the full resolution sensor output. The default ROI setting uses the full image received from the sensor, cropping no data.
 
-==== The _Region of Interest_
-
-The Region of Interest (or _ROI_) specifies exactly which part of the sensor image is cropped out before being rescaled to the size demanded by the neural network. It can be queried and set by an application. The units used are always pixels in the full resolution sensor output.
-
-By default, the ROI is set to be the full image received from the sensor (that is, nothing is actally cropped out).
-
-==== The _Output Tensor_
-
-These are the results of inferencing performed by the neural network. The precise number and shape of the outputs will depend on the neural network, and application code will need to understand how to handle them.
+The _Output Tensor_:: The results of inferencing performed by the neural network. The precise number and shape of the outputs depend on the neural network. Application code must understand how to handle the tensor.
 
 === System Architecture
 
-The diagram below shows the various camera software components (in green) used during our imaging/inference use case with the Raspberry Pi AI Camera module hardware (in red).
+The diagram below shows the various camera software components (in green) used during our imaging/inference use case with the Raspberry Pi AI Camera module hardware (in red):
 
 image::images/imx500-block-diagram.svg[IMX500 block diagram]
 
