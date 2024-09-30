@@ -9,15 +9,15 @@ image::images/imx500-comparison.svg[Traditional versus IMX500 AI camera systems]
 
 The left side demonstrates the architecture of a traditional AI camera system. In such a system, the camera delivers images to the Raspberry Pi. The Raspberry Pi processes the images and then performs AI inference. Traditional systems may use external AI accelerators (as shown) or rely exclusively on the CPU.
 
-The right side demonstrates the architecture of a system that uses IMX500. The camera module contains a small Image Signal Processor (ISP) which turns the raw camera image data into an _input tensor_. The camera module sends this tensor directly into the AI accelerator within the camera, which produces an _output tensor_ that contains the inferencing results. The AI accelerator sends this tensor to the Raspberry Pi. There is no need for an external accelerator, nor for the Raspberry Pi to run neural network software on the CPU.
+The right side demonstrates the architecture of a system that uses IMX500. The camera module contains a small Image Signal Processor (ISP) which turns the raw camera image data into an **input tensor**. The camera module sends this tensor directly into the AI accelerator within the camera, which produces an **output tensor** that contains the inferencing results. The AI accelerator sends this tensor to the Raspberry Pi. There is no need for an external accelerator, nor for the Raspberry Pi to run neural network software on the CPU.
 
 To fully understand this system, familiarise yourself with the following concepts:
 
-The _Input Tensor_:: The part of the sensor image passed to the AI engine for inferencing. Produced by a small on-board ISP which also crops and scales the camera image to the dimensions expected by the neural network that has been loaded. The input tensor is not normally made available to applications, though it is possible to access it for debugging purposes.
+Input Tensor:: The part of the sensor image passed to the AI engine for inferencing. Produced by a small on-board ISP which also crops and scales the camera image to the dimensions expected by the neural network that has been loaded. The input tensor is not normally made available to applications, though it is possible to access it for debugging purposes.
 
-The _Region of Interest_ (ROI):: Specifies exactly which part of the sensor image is cropped out before being rescaled to the size demanded by the neural network. Can be queried and set by an application. The units used are always pixels in the full resolution sensor output. The default ROI setting uses the full image received from the sensor, cropping no data.
+Region of Interest (ROI):: Specifies exactly which part of the sensor image is cropped out before being rescaled to the size demanded by the neural network. Can be queried and set by an application. The units used are always pixels in the full resolution sensor output. The default ROI setting uses the full image received from the sensor, cropping no data.
 
-The _Output Tensor_:: The results of inferencing performed by the neural network. The precise number and shape of the outputs depend on the neural network. Application code must understand how to handle the tensor.
+Output Tensor:: The results of inferencing performed by the neural network. The precise number and shape of the outputs depend on the neural network. Application code must understand how to handle the tensor.
 
 === System Architecture
 
