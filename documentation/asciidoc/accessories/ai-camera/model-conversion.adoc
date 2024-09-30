@@ -1,32 +1,36 @@
 == Model Deployment
 
-The process of deploying a new neural network model to the Raspberry Pi AI Camera will normally consist of the following steps:
+To deploy a new neural network model to the Raspberry Pi AI Camera, complete the following steps:
 
-. A neural network model must be provided.
-. The model must be quantised and compressed so that it can be run using the resources available in the IMX500 camera.
-. The compressed model must be converted to IMX500 format.
-. Finally, the model must be packaged into a firmware file that can be loaded at runtime into the camera.
+. Provide a neural network model.
+. Quantise and compress the model so that it can run using the resources available on the IMX500 camera module.
+. Convert the compressed model to IMX500 format.
+. Package the model into a firmware file that can be loaded at runtime onto the camera.
 
-The first three steps will normally be performed on a more powerful computer such as a desktop or server, whilst the final packaging step must be performed on a Raspberry Pi.
+The first three steps will normally be performed on a more powerful computer such as a desktop or server. You must run the final packaging step on a Raspberry Pi.
 
 === Model Creation
 
 The creation of neural network models is beyond the scope of this guide. Existing models can be re-used, or new ones created using popular frameworks like TensorFlow or PyTorch.
 
-For more information, readers are referred to the official https://developer.aitrios.sony-semicon.com/en/raspberrypi-ai-camera[AITRIOS Developer] website.
+For more information, see the official https://developer.aitrios.sony-semicon.com/en/raspberrypi-ai-camera[AITRIOS developer website].
 
 === Quantisation and Compression
 
-Models are quantised and compressed using Sony's _Model Compression Toolkit_. This can be installed with
+Models are quantised and compressed using Sony's Model Compression Toolkit. To install the toolkit, run the following command:
 
 [source,console]
 ----
-pip install model_compression_toolkit
+$ pip install model_compression_toolkit
 ----
 
-and information and tutorials can be found at the project's https://github.com/sony/model_optimization[GitHub page].
+For more information, see the https://github.com/sony/model_optimization[Sony model optimization GitHub repository].
 
-The _Model Compression Toolkit_ will genearate a quantised model in either Keras (for TensorFlow) or ONNX (for PyTorch) format.
+The Model Compression Toolkit generates a quantised model in the following formats:
+
+* Keras (TensorFlow)
+* ONNX (PyTorch)
+
 
 === Conversion
 
@@ -48,40 +52,47 @@ pip install imx500-converter[pt]
 
 TIP: If you need to install both these packages, we strongly recommend doing so in separate Python virtual environments (for example, using `python -m venv <virtual-environment-name>`). This avoids any problems with TensorFlow and PyTorch causing conflicts with one another.
 
-Next, we can convert the model. For TensorFlow, use
+Next, convert the model:
 
+[tabs]
+======
+TensorFlow::
++
 [source,console]
 ----
-imxconv-tf -i <compressed Keras model> -o <output folder>
+$ imxconv-tf -i <compressed Keras model> -o <output folder>
 ----
 
-and for PyTorch, use
-
+PyTorch::
++
 [source,console]
 ----
-imxconv-pt -i <compressed ONNX model> -o <output folder>
+$ imxconv-pt -i <compressed ONNX model> -o <output folder>
 ----
+======
 
-In both cases, the output folder will be created containing, among other things, a memory usage report, plus a `packerOut.zip` file which is what we will need to copy to the Pi for the final step.
+Both commands create an output folder that contains a memory usage report and a `packerOut.zip` file.
 
-Again, for more information on the model conversion process, please refer to the official https://developer.aitrios.sony-semicon.com/en/raspberrypi-ai-camera/documentation/imx500-converter[IMX500 Converter] documentation.
+For more information on the model conversion process, see the official https://developer.aitrios.sony-semicon.com/en/raspberrypi-ai-camera/documentation/imx500-converter[Sony IMX500 Converter documentation].
 
 === Packaging
 
-The final step, which we run on a Raspberry Pi, is packaging the model into an _RPK_ file.  This _RPK_ file is then uploaded to the IMX500 camera when running the neural network model. Before proceeding, we must install the necessary tools:
+IMPORTANT: You must run this step on a Raspberry Pi.
+
+The final step packages the model into an RPK file. When running the neural network model, we'll upload this file to the AI Camera. Before proceeding, run the following command to install the necessary tools:
 
 [source,console]
 ----
 $ sudo apt install imx500-tools
 ----
 
-Now we can run
+To package the model into an RPK file, run the following command:
 
 [source,console]
 ----
 imx500-package.sh -i <path to packerOut.zip> -o <output folder>
 ----
 
-The output folder should finally contain a file `network.rpk`, the name of which is what we pass to our IMX500 camera applications.
+This command should create a file named `network.rpk` in the output folder. You'll pass the name of this file to your IMX500 camera applications.
 
-More specific instructions on all these tools, and their constraints is out of scope for this tutorial. For a more comprehensive set of instructions and further specifics on the tools used, please see the official https://developer.aitrios.sony-semicon.com/en/raspberrypi-ai-camera/documentation/imx500-packager[IMX500 Packager] documentation.
+For a more comprehensive set of instructions and further specifics on the tools used, see the https://developer.aitrios.sony-semicon.com/en/raspberrypi-ai-camera/documentation/imx500-packager[Sony IMX500 Packager documentation].
