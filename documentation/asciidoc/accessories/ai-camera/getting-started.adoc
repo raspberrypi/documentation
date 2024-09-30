@@ -65,7 +65,7 @@ The following command runs `rpicam-hello` with object detection post-processing:
 
 [source,console]
 ----
-$ rpicam-hello -t 0s --post-process-file /usr/share/rpicam-assets/imx500_mobilenet_ssd.json --viewfinder-width 1920 --viewfinder-height 1080 --framerate 30
+$ rpicam-hello -t 0s --post-process-file /usr/share/rpi-camera-assets/imx500_mobilenet_ssd.json --viewfinder-width 1920 --viewfinder-height 1080 --framerate 30
 ----
 
 After running the command, you should see a viewfinder that overlays bounding boxes on objects recognised by the neural network:
@@ -76,7 +76,7 @@ To record video with object detection overlays, use `rpicam-vid` instead. The fo
 
 [source,console]
 ----
-$ rpicam-vid -t 10s -o output.264 --post-process-file /usr/share/rpicam-assets/imx500_mobilenet_ssd.json --width 1920 --height 1080 --framerate 30
+$ rpicam-vid -t 10s -o output.264 --post-process-file /usr/share/rpi-camera-assets/imx500_mobilenet_ssd.json --width 1920 --height 1080 --framerate 30
 ----
 
 You can configure the `imx500_object_detection` stage in many ways.
@@ -100,7 +100,7 @@ The following command runs `rpicam-hello` with pose estimation post-processing:
 
 [source,console]
 ----
-$ rpicam-hello -t 0s --post-process-file /usr/share/rpicam-assets/imx500_posenet.json --viewfinder-width 1920 --viewfinder-height 1080 --framerate 30
+$ rpicam-hello -t 0s --post-process-file /usr/share/rpi-camera-assets/imx500_posenet.json --viewfinder-width 1920 --viewfinder-height 1080 --framerate 30
 ----
 
 image::images/imx500-posenet.jpg[IMX500 PoseNet]
