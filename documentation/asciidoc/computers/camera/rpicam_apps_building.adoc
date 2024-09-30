@@ -152,14 +152,14 @@ For desktop-based operating systems like Raspberry Pi OS, configure the `rpicam-
 
 [source,console]
 ----
-$ meson setup build -Denable_libav=enabled -Denable_drm=enabled -Denable_egl=enabled -Denable_qt=enabled -Denable_opencv=disabled -Denable_tflite=disabled
+$ meson setup build -Denable_libav=enabled -Denable_drm=enabled -Denable_egl=enabled -Denable_qt=enabled -Denable_opencv=disabled -Denable_tflite=disabled -Denable_hailo=disabled
 ----
 
 For headless operating systems like Raspberry Pi OS Lite, configure the `rpicam-apps` build with the following `meson` command:
 
 [source,console]
 ----
-$ meson setup build -Denable_libav=disabled -Denable_drm=enabled -Denable_egl=disabled -Denable_qt=disabled -Denable_opencv=disabled -Denable_tflite=disabled
+$ meson setup build -Denable_libav=disabled -Denable_drm=enabled -Denable_egl=disabled -Denable_qt=disabled -Denable_opencv=disabled -Denable_tflite=disabled -Denable_hailo=disabled
 ----
 
 [TIP]
@@ -168,6 +168,7 @@ $ meson setup build -Denable_libav=disabled -Denable_drm=enabled -Denable_egl=di
 * Use `-Dneon_flags=armv8-neon` to enable optimisations for 32-bit OSes on Raspberry Pi 3 or Raspberry Pi 4.
 * Use `-Denable_opencv=enabled` if you have installed OpenCV and wish to use OpenCV-based post-processing stages.
 * Use `-Denable_tflite=enabled` if you have installed TensorFlow Lite and wish to use it in post-processing stages.
+* Use `-Denable_hailo=enabled` if you have installed HailoRT and wish to use it in post-processing stages.
 
 ======
 
@@ -225,6 +226,11 @@ The `meson` build configuration for `rpicam-apps` supports the following flags:
 `-Denable_opencv=enabled`:: Forces OpenCV-based post-processing stages to link or not link. Requires OpenCV to enable. Defaults to `disabled`.
 
 `-Denable_tflite=enabled`:: Enables or disables TensorFlow Lite post-processing stages. Disabled by default. Requires Tensorflow Lite to enable. Depending on how you have built and/or installed TFLite, you may need to tweak the `meson.build` file in the `post_processing_stages` directory.
+
+`-Denable_hailo=enabled`:: Enables or disables HailoRT-based post-processing stages. Requires HailoRT to enable. Defaults to `auto`.
+
+`-Ddownload_hailo_models=true`:: Downloads and installs models for HailoRT post-processing stages. Requires `wget` to be installed. Defaults to `true`.
+
 
 Each of the above options (except for `neon_flags`) supports the following values:
 
