@@ -1,7 +1,7 @@
 [[ai-camera]]
 == About
 
-The Raspberry Pi AI Camera uses the Sony IMX500 imaging sensor to provide low-latency and high-performance AI capabilities to any camera application. The tight integration with https://www.raspberrypi.com/documentation/computers/camera_software.adoc[Raspberry Pi's camera software stack] allows users to deploy their own neural network models with minimal effort.
+The Raspberry Pi AI Camera uses the Sony IMX500 imaging sensor to provide low-latency and high-performance AI capabilities to any camera application. Tight integration with https://www.raspberrypi.com/documentation/computers/camera_software.adoc[Raspberry Pi's camera software stack] allows users to deploy their own neural network models with minimal effort.
 
 image::images/ai-camera.png[The Raspberry Pi AI Camera]
 
