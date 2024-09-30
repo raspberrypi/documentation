@@ -31,11 +31,9 @@ The Model Compression Toolkit generates a quantised model in the following forma
 * Keras (TensorFlow)
 * ONNX (PyTorch)
 
-
 === Conversion
 
-To convert a model, first install the converter tools.
-
+To convert a model, first install the converter tools:
 
 [tabs%sync]
 ======
@@ -96,7 +94,7 @@ To package the model into an RPK file, run the following command:
 
 [source,console]
 ----
-imx500-package.sh -i <path to packerOut.zip> -o <output folder>
+$ imx500-package.sh -i <path to packerOut.zip> -o <output folder>
 ----
 
 This command should create a file named `network.rpk` in the output folder. You'll pass the name of this file to your IMX500 camera applications.
