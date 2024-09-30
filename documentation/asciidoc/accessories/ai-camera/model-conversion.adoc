@@ -34,23 +34,28 @@ The Model Compression Toolkit generates a quantised model in the following forma
 
 === Conversion
 
-First, we must install the necessary converter tools. If you are using TensorFlow, please run
+To convert a model, first install the converter tools.
 
+[tabs]
+======
+TensorFlow::
++
 [source,console]
 ----
-pip install imx500-converter[tf]
+$ pip install imx500-converter[tf]
 ----
++
+TIP: Always use the same version of TensorFlow you used to compress your model.
 
-TIP: Be careful that you have installed the same version of TensorFlow as you used to compress your model. This avoids problems where the above may install a more recent version of TensorFlow that is not compatible with your model.
-
-or if you are using PyTorch, please run
-
+PyTorch::
++
 [source,console]
 ----
-pip install imx500-converter[pt]
+$ pip install imx500-converter[pt]
 ----
+======
 
-TIP: If you need to install both these packages, we strongly recommend doing so in separate Python virtual environments (for example, using `python -m venv <virtual-environment-name>`). This avoids any problems with TensorFlow and PyTorch causing conflicts with one another.
+If you need to install both packages, use two separate Python virtual environments. This prevents TensorFlow and PyTorch from causing conflicts with one another.
 
 Next, convert the model:
 
