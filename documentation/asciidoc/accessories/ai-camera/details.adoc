@@ -83,14 +83,14 @@ struct CnnInputTensorInfo {
 
 === `rpicam-apps`
 
-`rpicam-apps` provides an IMX500 post-processing stage base class that implements helpers for IMX500 post-processing stages: https://github.com/raspberrypi/rpicam-apps/blob/post_processing_stages/imx500_post_processing_stage.hpp[`IMX500PostProcessingStage`]. Use this base class to derive a new post-processing stage for any neural network model running on the IMX500. For an example, see https://github.com/raspberrypi/rpicam-apps/blob/post_processing_stages/imx500_mobilenet_ssd.cpp[`imx500_mobilenet_ssd.cpp`]:
+`rpicam-apps` provides an IMX500 post-processing stage base class that implements helpers for IMX500 post-processing stages: https://github.com/raspberrypi/rpicam-apps/blob/main/post_processing_stages/imx500/imx500_post_processing_stage.hpp[`IMX500PostProcessingStage`]. Use this base class to derive a new post-processing stage for any neural network model running on the IMX500. For an example, see https://github.com/raspberrypi/rpicam-apps/blob/main/post_processing_stages/imx500/imx500_object_detection.cpp[`imx500_object_detection.cpp`]:
 
 [source,cpp]
 ----
-class ObjectInference : public IMX500PostProcessingStage
+class ObjectDetection : public IMX500PostProcessingStage
 {
 public:
-	ObjectInference(RPiCamApp *app) : IMX500PostProcessingStage(app) {}
+	ObjectDetection(RPiCamApp *app) : IMX500PostProcessingStage(app) {}
 
 	char const *Name() const override;
 
@@ -102,7 +102,7 @@ public:
 };
 ----
 
-For every frame received by the application, the `Process()` function is called (`ObjectInference::Process()` in the above case). In this function, you can extract the output tensor for further processing or analysis:
+For every frame received by the application, the `Process()` function is called (`ObjectDetection::Process()` in the above case). In this function, you can extract the output tensor for further processing or analysis:
 
 [source,cpp]
 ----
