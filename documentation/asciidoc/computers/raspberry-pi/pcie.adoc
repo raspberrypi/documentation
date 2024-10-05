@@ -55,7 +55,7 @@ WARNING: The Raspberry Pi 5 is not certified for Gen 3.0 speeds. PCIe Gen 3.0 co
 
 ==== via `config.txt`
 
-The connection is certified for Gen 2.0 speeds (5 GT/sec), but you can force Gen 3.0 (10 GT/sec) speeds. To enable PCIe Gen 3.0 speeds, add the following line to `/boot/firmware/config.txt`:
+The connection is certified for Gen 2.0 speeds (5 GT/sec), but you can force Gen 3.0 (8 GT/sec) speeds. To enable PCIe Gen 3.0 speeds, add the following line to `/boot/firmware/config.txt`:
 
 [source,ini]
 ----
