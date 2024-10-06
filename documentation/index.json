@@ -97,6 +97,12 @@
                     "subpath": "keyboard-and-mouse.adoc"
                 },
                 {
+                    "title": "SD Cards",
+                    "description": "Raspberry Pi's official SD cards",
+                    "image": "full-sized/sd-cards.png",
+                    "subpath": "sd-cards.adoc"
+                },
+                {
                     "title": "Build HAT",
                     "description": "How to use the Build HAT",
                     "image": "full-sized/Build-HAT.png",
@@ -107,12 +113,6 @@
                     "description": "Monitor and visualise sensor data",
                     "image": "full-sized/Sense-HAT.png",
                     "subpath": "sense-hat.adoc"
-                },
-                {
-                    "title": "TV HAT",
-                    "description": "Watch TV on your Raspberry Pi",
-                    "image": "full-sized/TV-HAT.png",
-                    "subpath": "tv-hat.adoc"
                 },
                 {
                     "title": "M.2 HAT+",
@@ -143,6 +143,18 @@
                     "description": "Information on the HAT specification",
                     "image": "full-sized/Designing-a-HAT.png",
                     "url": "https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf"
+                },
+                {
+                    "title": "TV HAT",
+                    "description": "Watch TV on your Raspberry Pi",
+                    "image": "full-sized/TV-HAT.png",
+                    "subpath": "tv-hat.adoc"
+                },
+                {
+                    "title": "Bumper",
+                    "description": "A protective case for your Raspberry Pi 5",
+                    "image": "full-sized/bumper.png",
+                    "subpath": "bumper.adoc"
                 }
             ]
         },
