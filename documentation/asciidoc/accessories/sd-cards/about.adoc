@@ -31,6 +31,6 @@ Random 4K write performance:
 * 1,200 IOPS on Raspberry Pi 4 (DDR50)
 * 2,000 IOPS on Raspberry Pi 5 (SDR104)
 
-Form factor/compatibility: microSDHC / microSDXC
+Form factor: microSDHC/microSDXC
 
 SD specification: SD6.1
