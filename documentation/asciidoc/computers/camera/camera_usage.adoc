@@ -7,6 +7,7 @@ Raspberry Pi produces several official camera modules, including:
 * the 12-megapixel https://raspberrypi.com/products/camera-module-3/[Camera Module 3], with both standard and wide lenses, with or without an infrared filter
 * the 12-megapixel https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[High Quality Camera] with CS and M12 mount variants for use with external lenses
 * the 1.6-megapixel https://www.raspberrypi.com/products/raspberry-pi-global-shutter-camera/[Global Shutter Camera] for fast motion photography
+* the 12-megapixel https://www.raspberrypi.com/products/ai-camera/[AI Camera] uses the Sony IMX500 imaging sensor to provide low-latency, high-performance AI capabilities to any camera application
 
 For more information about camera hardware, see the xref:../accessories/camera.adoc#about-the-camera-modules[camera hardware documentation].
 
