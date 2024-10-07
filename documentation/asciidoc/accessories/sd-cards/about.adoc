@@ -26,7 +26,7 @@ Random 4KB read performance:
 * 3,200 IOPS on Raspberry Pi 4 (DDR50)
 * 5,000 IOPS on Raspberry Pi 5 (SDR104)
 
-Random 4K write performance:
+Random 4KB write performance:
 
 * 1,200 IOPS on Raspberry Pi 4 (DDR50)
 * 2,000 IOPS on Raspberry Pi 5 (SDR104)
