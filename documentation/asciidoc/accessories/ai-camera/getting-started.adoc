@@ -72,7 +72,7 @@ After running the command, you should see a viewfinder that overlays bounding bo
 
 image::images/imx500-mobilenet.jpg[IMX500 MobileNet]
 
-To record video with object detection overlays, use `rpicam-vid` instead. The following command runs `rpicam-hello` with object detection post-processing:
+To record video with object detection overlays, use `rpicam-vid` instead:
 
 [source,console]
 ----
