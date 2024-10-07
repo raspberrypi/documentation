@@ -37,7 +37,11 @@ All the necessary mounting hardware including spacers, screws and connectors is 
 
 === Hardware versions
 
-There are multiple versions of the audio cards, and the version that you possess determines the actions required to configure it. Older IQaudIO-marked boards (black PCB) are electrically equivalent to the Raspberry Pi-branded boards (green PCB) but have different EEPROM contents. The following command can be used to confirm which version you have:
+There are multiple versions of the audio cards. Your specific version determines the actions required for configuration. Older, IQaudIO-branded boards have a black PCB. Newer Raspberry Pi-branded boards have a green PCB. These boards are electrically equivalent, but have different EEPROM contents.
+
+After attaching the HAT and applying power, check that the power LED on your audio card is illuminated, if it has one. For example, the Codec Zero has an LED marked `PWR`.
+
+After establishing the card has power, use the following command to check the version of your board:
 
 [source,console]
 ----
@@ -98,6 +102,21 @@ The following command will set your device to use the on-board MEMS microphone a
 $ sudo alsactl restore -f /home/<username>/Pi-Codec/Codec_Zero_OnboardMIC_record_and_SPK_playback.state
 ----
 
+This command may result in erroneous messages, including the following:
+
+* "failed to import hw"
+* "No state is present for card"
+
+In most cases, these warnings are harmless; you can safely ignore them.
+
+However, the following warnings may indicate a hardware failure:
+
+* "Remote I/O error"
+
+In Linux, the following warnings indicate that the kernel can't communicate with an I2C device:
+
+* "Remote I/O error" (`REMOTEIO`)
+
 In order for your project to operate with your required settings when it is powered on, edit the `/etc/rc.local` file. The contents of this file are run at the end of every boot process, so it is ideal for this purpose. Edit the file:
 
 [source,console]
@@ -109,7 +128,7 @@ Add the chosen script command above the exit 0 line and then *Ctrl X*, *Y* and *
 
 [source,bash]
 ----
-#!/bin/sh -e
+#!/bin/sh
 #
 # rc.local
 #
@@ -151,6 +170,16 @@ pcm.!default {
 ----
 
 Press `Ctrl+X`, then the `Y` key, then *Enter* to save. Reboot once more to complete the configuration:
+
+Modern Linux distributions such as Raspberry Pi OS typically use PulseAudio or PipeWire for audio control. These frameworks are capable of mixing and switching audio from multiple sources. They provide a high-level API for audio applications to use. Many audio apps use these frameworks by default.
+
+Only create `~/.asoundrc` if an audio application needs to:
+
+* communicate directly with ALSA
+* run in an environment where PulseAudio or PipeWire are not present
+
+This file can interfere with the UI's view of underlying audio resources. As a result, we do not recommend creating `~/.asoundrc` when running the Raspberry Pi OS desktop.
+The UI may automatically clean up and remove this file if it exists.
 
 [source,console]
 ----

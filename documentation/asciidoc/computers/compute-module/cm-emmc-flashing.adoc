@@ -103,7 +103,10 @@ To set up software on a Windows host device:
 
 . Connect the IO Board to power. Windows should discover the hardware and configure the required drivers.
 
-. Double-click on `RPiBoot.exe` to run it. After a few seconds, the Compute Module eMMC should appear as a USB mass storage device.
+. On CM4 and later devices, select **Raspberry Pi - Mass Storage Gadget - 64-bit** from the start menu. After a few seconds, the Compute Module eMMC or NVMe will appear as USB mass storage devices. This also provides a debug console as a serial port gadget.
+
+. On CM3 and older devices, select **rpiboot**. Double-click on `RPiBoot.exe` to run it. After a few seconds, the Compute Module eMMC should appear as a USB mass storage device.
+
 
 TIP: Alternatively, you can https://github.com/raspberrypi/usbboot[build `rpiboot` from source].
 
