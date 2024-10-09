@@ -4,7 +4,7 @@ The instructions below describe how to run the pre-packaged MobileNet SSD and Po
 
 === Prerequisites
 
-These instructions assumes you are using the AI Camera attached to either a Raspberry Pi 4 Model B or Raspberry Pi 5 board. With minor changes, you can follow these instructions on other Raspberry Pi models with a camera connector, including the Raspberry Pi Zero 2 W and Raspberry Pi 3 Model B+.
+These instructions assume you are using the AI Camera attached to either a Raspberry Pi 4 Model B or Raspberry Pi 5 board. With minor changes, you can follow these instructions on other Raspberry Pi models with a camera connector, including the Raspberry Pi Zero 2 W and Raspberry Pi 3 Model B+.
 
 First, ensure that your Raspberry Pi runs the latest software. Run the following command to update:
 
@@ -22,7 +22,7 @@ The AI camera must download runtime firmware onto the IMX500 sensor during start
 $ sudo apt install imx500-all
 ----
 
-This command:
+This command
 
 * installs the `/lib/firmware/imx500_loader.fpk` and `/lib/firmware/imx500_firmware.fpk` firmware files required to operate the IMX500 sensor
 * places a number of neural network model firmware files in `/usr/share/imx500-models/`
@@ -94,7 +94,7 @@ The PoseNet neural network performs pose estimation, labelling key points on the
 * `imx500_posenet`, which fetches the raw output tensor from the PoseNet neural network
 * `plot_pose_cv`, which draws line overlays on the image
 
-The AI Camera performs basic detection, but the output tensor requires additional post-processing on your host Raspberry Pi to produce final output.
+The AI Camera performs the basic detection, but the output tensor requires additional post-processing on your host Raspberry Pi to produce a final output.
 
 The following command runs `rpicam-hello` with pose estimation post-processing:
 
