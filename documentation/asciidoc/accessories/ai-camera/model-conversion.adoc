@@ -1,4 +1,4 @@
-== Model Deployment
+== Model deployment
 
 To deploy a new neural network model to the Raspberry Pi AI Camera, complete the following steps:
 
@@ -9,13 +9,13 @@ To deploy a new neural network model to the Raspberry Pi AI Camera, complete the
 
 The first three steps will normally be performed on a more powerful computer such as a desktop or server. You must run the final packaging step on a Raspberry Pi.
 
-=== Model Creation
+=== Model creation
 
 The creation of neural network models is beyond the scope of this guide. Existing models can be re-used, or new ones created using popular frameworks like TensorFlow or PyTorch.
 
 For more information, see the official https://developer.aitrios.sony-semicon.com/en/raspberrypi-ai-camera[AITRIOS developer website].
 
-=== Quantisation and Compression
+=== Quantisation and compression
 
 Models are quantised and compressed using Sony's Model Compression Toolkit. To install the toolkit, run the following command:
 
