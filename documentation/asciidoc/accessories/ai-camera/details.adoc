@@ -165,7 +165,7 @@ There are a number of scaling/cropping/translation operations occurring from the
 
 === Picamera2
 
-IMX500 integration in Picamera2 is very similar to what is available in `rpicam-apps`. Picamera2 has an IMX500 helper class that provides the same functionality as the `rpicam-apps` `IMX500PostProcessingStage` base class. This can be imported to any python script with:
+IMX500 integration in Picamera2 is very similar to what is available in `rpicam-apps`. Picamera2 has an IMX500 helper class that provides the same functionality as the `rpicam-apps` `IMX500PostProcessingStage` base class. This can be imported to any Python script with:
 
 [source,python]
 ----
@@ -175,7 +175,7 @@ from picamera2.devices.imx500 import IMX500
 imx500 = IMX500(model_file)
 ----
 
-To retrieve the output tensors, fetch them from the controls. You can then apply additional processing in your python script.
+To retrieve the output tensors, fetch them from the controls. You can then apply additional processing in your Python script.
 
 For example, in an object inference use case such as https://github.com/raspberrypi/picamera2/tree/main/examples/imx500/imx500_object_detection_demo.py[imx500_object_detection_demo.py], the object bounding boxes and confidence values are extracted in `parse_detections()` and draw the boxes on the image in `draw_detections()`:
 
@@ -257,6 +257,6 @@ There are a number of scaling/cropping/translation operations occurring from the
 | Automatically calculates region of interest (ROI) crop rectangle on the sensor image to preserve the given aspect ratio. To make the ROI aspect ratio exactly match the input tensor for this network, use `imx500.set_inference_aspect_ratio(imx500.get_input_size())`.
 
 | `IMX500.get_kpi_info(metadata)`
-| Returns the frame level performance indicators logged by the IMX500 for the given image metadata.
+| Returns the frame-level performance indicators logged by the IMX500 for the given image metadata.
 
 |===
