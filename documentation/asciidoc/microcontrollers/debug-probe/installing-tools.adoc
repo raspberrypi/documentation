@@ -52,12 +52,10 @@ Run the following command to install `gdb`:
 
 [source,console]
 ----
-$ brew install gdb
+$ brew install arm-none-eabi-gdb
 ----
 
 You can safely ignore the request for "special privileges" messages on installation.
-
-IMPORTANT: GDB does not support `gdb` Arm-based Macs. Instead, either https://gist.github.com/m0sys/711d0ec5e52102c6ba44451caf38bd38[install `gdb` from source] or use `lldb` instead of `gdb`. There is https://inbox.sourceware.org/gdb/3185c3b8-8a91-4beb-a5d5-9db6afb93713@Spark/[no official support] from the developers for running GDB on Arm-based Macs. Support for GDB can be found on the https://inbox.sourceware.org/gdb/[GDB mailing list] on Sourceware.org. `lldb` is installed as part of the Xcode Command Line Tools.
 
 ==== MS Windows
 
