@@ -54,9 +54,9 @@ $ systemctl --user restart rpi-connect
 
 ==== Use Raspberry Pi Connect with Tailscale ====
 
-Due to how Tailscale affects networking, if you use both Raspberry Pi Connect and Tailscale, you may face issues using screen sharing, chances are you will see an empty screen. To fix this you can use Raspberry Pi Connect in mDNS mode. This can be accomplished by editing Raspberry Pi Connect's systemd unit file.
+Due to how Tailscale affects networking, if you use both Raspberry Pi Connect and Tailscale, you may face issues using screen sharing, chances are you will see an empty screen. To fix this, you can use Raspberry Pi Connect in mDNS mode. This can be accomplished by editing Raspberry Pi Connect's systemd unit file.
 
-Open the `rpi-connect` configuration file for editing with the following command:
+To do this, open the `rpi-connect` configuration file for editing with the following command:
 
 [source,console]
 ----
