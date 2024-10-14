@@ -44,7 +44,7 @@ Sets the audio sampling rate in Hz. Accepts numeric input. `0` uses the input sa
 
 ==== `audio-device`
 
-Select an ALSO input device for audio recording. For a list of available devices, run the following command:
+Select an ALSA input device for audio recording. For a list of available devices, run the following command:
 
 [source,console]
 ----
