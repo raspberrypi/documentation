@@ -52,6 +52,37 @@ Finally, restart the service with the following command:
 $ systemctl --user restart rpi-connect
 ----
 
+==== Use Raspberry Pi Connect with Tailscale ====
+
+Due to how Tailscale affects networking, if you use both Raspberry Pi Connect and Tailscale, you may face issues using screen sharing, chances are you will see an empty screen. To fix this you can use Raspberry Pi Connect in mDNS mode. This can be accomplished by editing Raspberry Pi Connect's systemd unit file.
+
+Open the `rpi-connect` configuration file for editing with the following command:
+
+[source,console]
+----
+$ systemctl --user edit rpi-connect-wayvnc
+----
+
+Enter the following lines of configuration between the comments:
+
+[source,bash]
+----
+[Service]
+ExecStart=
+ExecStart=/usr/bin/rpi-connectd -socket %t/rpi-connect-wayvnc.sock -mdns
+----
+
+NOTE: You need **both** lines that begin with `ExecStart=`.
+
+Finally, restart the service with the following command:
+
+[source,console]
+----
+$ systemctl --user restart rpi-connect-wayvnc
+----
+
+Now Screen Sharing should be working perfectly with Tailscale running.
+
 ==== Enable enhanced logging in the dedicated `wayvnc` server
 
 Open the configuration file for the dedicated WayVNC server associated with Connect:
