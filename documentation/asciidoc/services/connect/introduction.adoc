@@ -4,7 +4,7 @@ Raspberry Pi Connect provides secure access to your Raspberry Pi from anywhere i
 
 image::images/hero.png[width="100%"]
 
-To use Connect, xref:connect.adoc#install-connect[install the Connect software] on your Raspberry Pi. Then visit https://connect.raspberrypi.com[connect.raspberrypi.com] to access the desktop or a shell running on your Raspberry Pi in a browser window.
+To use Connect, xref:connect.adoc#install-connect[install the Connect software] and xref:connect.adoc#link-connect[link your device with an account] on your Raspberry Pi. Then visit https://connect.raspberrypi.com[connect.raspberrypi.com] to access the desktop or a shell running on your Raspberry Pi in a browser window.
 
 Connect uses a secure, encrypted connection. By default, Connect communicates directly between your Raspberry Pi and your browser. However, when Connect can't establish a direct connection between your Raspberry Pi and your browser, we use a relay server. In such cases, Raspberry Pi only retains the metadata required to operate Connect.
 
