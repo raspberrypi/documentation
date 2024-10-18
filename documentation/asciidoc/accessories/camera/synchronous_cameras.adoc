@@ -23,7 +23,7 @@ This parameter can only be altered in superuser mode.
 
 Run the following commands to configure the sink:
 
-[[source,console]h]
+[source,console]
 ----
 $ sudo su
 $ echo 2 > /sys/module/imx477/parameters/trigger_mode
