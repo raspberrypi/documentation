@@ -10,6 +10,27 @@
 
 * Browsers intercept certain keys and key combinations. As a result, you can't type these keys into your Connect window. Screen sharing includes a toolbar to simulate some of the most popular intercepted keys.
 
+* When upgrading from version 1 to version 2, ensure to upgrade whichever package you currently have installed before switching between rpi-connect and rpi-connect-lite. This will ensure Connect's services are migrated to the new format, i.e. if you currently have rpi-connect installed:
++
+[source,console]
+----
+$ sudo apt install --only-upgrade rpi-connect
+----
++
+If you have rpi-connect-lite installed:
++
+[source,console]
+----
+$ sudo apt install --only-upgrade rpi-connect-lite
+----
++
+If successful, you should see the following output during the upgrade:
++
+[source,console]
+----
+Replacing globally-enabled rpi-connect services with user-enabled ones...
+----
+
 === Common issues
 
 ==== Screen sharing not available
