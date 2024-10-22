@@ -1,25 +1,41 @@
 <!doctype html>
 <html lang="en">
   <head>
-    {% include head.html %} 
+    {% include head.html %}
   </head>
-  <body>
-    {% include header.html %}      
-    {% include toptitle.html %}
-    {% include tabs.html %}
-
-    <div id="container">
-      {% include mobile_nav.html %}
-      {% include nav.html %}
-
-      <section id="content">
-        <h1>{{ page.sub_title | markdownify | remove: '<p>' | remove: '</p>'}}</h1>
-        {{ content }}
-      </section>
+  <body onload=makeTocAndinitTheme()>
+    <div/>
+    {% include header.html %}
+    {% include theme.html %}
+    <div id="docs-content">
+      <div id="toc-container">
+        <div id="docsearch"></div>
+        {% for item in site.data.index.tabs %}
+          {% if page.dir == item.path or page.dir == "/" and item.default_tab and item.default_tab == "yes" %}
+            <li class="selected category-list-item">
+          {% else %}
+            <li class="category-list-item">
+          {% endif %}
+            <a href="{{ site.baseurl }}{{ item.path }}">{{ item.title }}</a>
+          </li>
+          {% if page.dir == item.path or page.dir == "/" and item.default_tab and item.default_tab == "yes" %}
+            <div id="toc">
+              {{ page.document | tocify_asciidoc: 3 }}
+            </div>
+            <div id="tocbot"></div>
+          {% endif %}  
+        {% endfor %}
+      </div>
+      <div id="docs-container">
+        <section id="content">
+          <h1>{{ page.sub_title | markdownify | remove: '<p>' | remove: '</p>'}}</h1>
+          {{ content }}
+        </section>
+      </div>
     </div>
 
-    {% include copyright.html %} 
-    {% include footer.html %}  
+    {% include copyright.html %}
+    {% include footer.html %}
     {% include scripts.html %}
     {% include search.html %}
 

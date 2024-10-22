@@ -1,5 +1,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ page.title | strip_html}}</title>
 <meta name="description" content="The official documentation for Raspberry Pi computers and microcontrollers">
@@ -17,9 +18,86 @@
 <link rel="preconnect" href="https://IHWGNTJ1NP-dsn.algolia.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"/>
 <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css?ver={{ site.time | date: '%s' }}">
-<link rel="stylesheet" href="{{ site.baseurl }}/css/tabs.css?ver={{ site.time | date: '%s' }}">
 <link rel="stylesheet" href="{{ site.baseurl }}/css/asciidoctor-tabs.css?ver={{ site.time | date: '%s' }}">
 <link rel="stylesheet" href="{{ site.baseurl }}/css/syntax-highlighting.css?ver={{ site.time | date: '%s' }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/css/tocbot.css">
+<script src="{{ site.baseurl }}/scripts/tocbot.js"></script>
+<script>
+  /* Trigger Tocbot dynamic TOC, works with tocbot 3.0.2 */
+  function makeToc() {
+    var oldtoc = document.getElementById('toc').nextElementSibling;
+    var newtoc = document.getElementById('tocbot');
+    newtoc.setAttribute('id', 'tocbot');
+    newtoc.setAttribute('class', 'js-toc');
+    oldtoc.parentNode.replaceChild(newtoc, oldtoc);
+    tocbot.init({ contentSelector: '#content',
+        headingSelector: 'h1, h2, h3, h4',
+        smoothScroll: true,
+        includeHtml: true
+    });
+    var handleTocOnResize = function() {
+        var width = window.innerWidth
+                    || document.documentElement.clientWidth
+                    || document.body.clientWidth;
+        if (width < 768) {
+            tocbot.refresh({ contentSelector: '#content',
+                headingSelector: 'h1, h2, h3, h4',
+                collapseDepth: 6,
+                activeLinkClass: 'ignoreactive',
+                throttleTimeout: 1000,
+                smoothScroll: true });
+        }
+        else {
+            tocbot.refresh({ contentSelector: '#content',
+                headingSelector: 'h1, h2, h3, h4',
+                smoothScroll: true });
+        }
+    };
+    window.addEventListener('resize', handleTocOnResize);
+    handleTocOnResize();
+  }
+
+  // toggles the site theme between dark and light
+  function toggleTheme() {
+    // fetch the theme from local storage (if it exists)
+    var theme = localStorage.getItem('theme');
+    // if theme them has never been set, or is light, set the theme to the dark symbol in local storage to change it
+    if (localStorage.getItem('theme') !== null && theme == '🌝' ) {
+      localStorage.setItem('theme', '🌚');
+    } else {
+      // otherwise, the theme is currently set to dark, so set the theme to the light symbol in local storage to change it
+      localStorage.setItem('theme', '🌝');
+    }
+    // finally, toggle the light option off or on the body to change the display of the theme
+    document.body.classList.toggle('light');
+  }
+
+  // initialises the site theme display
+  // of key interest here: from the user's perspective, the site defaults to the light theme...
+  // ...unless your browser uses prefers-color-scheme to ask for a dark theme
+  // from the site's perspective, we default to a dark theme, but toggle it to a light theme on load if the user doesn't ask for dark.
+  // why do this? To prevent an annoying light 'flash' for dark theme users. light theme users don't really notice or care if there's a dark anti-flash.
+  function initTheme() {
+    // fetch the theme from local storage (if it exists)
+    var theme = localStorage.getItem('theme');
+    console.log('initialising theme')
+    // if the theme has been set to light (null check to short circuit if not set)
+    if(theme !== null && theme === '🌝'
+      // if we can use matchMedia and the browser supports the dark color scheme
+      || (window.matchMedia && !window.matchMedia('(prefers-color-scheme: dark)').matches)
+      && theme !== '🌚') {
+        console.log('setting theme to light')
+        // toggles the theme from the default dark mode to the light version (which actually _shows_ by default to many users)
+        document.body.classList.toggle('light');
+    }
+  }
+
+  // make it easy to call this stuff from onload()
+  function makeTocAndinitTheme() {
+    initTheme();
+    makeToc();
+  }
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180927933-8"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
