@@ -79,10 +79,40 @@
             "default_tab": "no",
             "subitems": [
                 {
+                    "title": "SD Cards",
+                    "description": "Raspberry Pi's official SD cards",
+                    "image": "full-sized/sd-cards.png",
+                    "subpath": "sd-cards.adoc"
+                },
+                {
+                    "title": "SSDs",
+                    "description": "Raspberry Pi's official Solid State Drives",
+                    "image": "full-sized/ssds.png",
+                    "subpath": "ssds.adoc"
+                },
+                {
+                    "title": "SSD Kit",
+                    "description": "Storage for your Raspberry Pi",
+                    "image": "full-sized/ssd-kit.png",
+                    "subpath": "ssd-kit.adoc"
+                },
+                {
+                    "title": "M.2 HAT+",
+                    "description": "Connect storage to your Raspberry Pi via PCIe",
+                    "image": "full-sized/m2-hat-plus.png",
+                    "subpath": "m2-hat-plus.adoc"
+                },
+                {
                     "title": "Camera",
                     "description": "Raspberry Pi camera boards",
                     "image": "full-sized/Camera.png",
                     "subpath": "camera.adoc"
+                },
+                {
+                    "title": "AI Camera",
+                    "description": "An AI Camera for your Raspberry Pi",
+                    "image": "full-sized/ai-cam.png",
+                    "subpath": "ai-camera.adoc"
                 },
                 {
                     "title": "Display",
@@ -97,12 +127,6 @@
                     "subpath": "keyboard-and-mouse.adoc"
                 },
                 {
-                    "title": "SD Cards",
-                    "description": "Raspberry Pi's official SD cards",
-                    "image": "full-sized/sd-cards.png",
-                    "subpath": "sd-cards.adoc"
-                },
-                {
                     "title": "Build HAT",
                     "description": "How to use the Build HAT",
                     "image": "full-sized/Build-HAT.png",
@@ -115,22 +139,10 @@
                     "subpath": "sense-hat.adoc"
                 },
                 {
-                    "title": "M.2 HAT+",
-                    "description": "Connect storage to your Raspberry Pi via PCIe",
-                    "image": "full-sized/m2-hat-plus.png",
-                    "subpath": "m2-hat-plus.adoc"
-                },
-                {
                     "title": "AI Kit",
                     "description": "An NPU for your Raspberry Pi",
                     "image": "full-sized/ai-kit.png",
                     "subpath": "ai-kit.adoc"
-                },
-                {
-                    "title": "AI Camera",
-                    "description": "An AI Camera for your Raspberry Pi",
-                    "image": "full-sized/ai-cam.png",
-                    "subpath": "ai-camera.adoc"
                 },
                 {
                     "title": "Raspberry Pi Audio",
