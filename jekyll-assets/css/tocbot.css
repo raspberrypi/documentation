@@ -57,11 +57,11 @@ a.toc-link {
 
 .is-active-link::before {
 	width: 3px;
-	height: 31px;
+	height: 2em;
 	background-color: var(--brand-colour);
 }
 
 .js-toc {
-	height: 100%;
-	overflow-y: hidden;
+	font-size: .8em;
+	width: 200px;
 }

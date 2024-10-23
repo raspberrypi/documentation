@@ -80,13 +80,11 @@
   function initTheme() {
     // fetch the theme from local storage (if it exists)
     var theme = localStorage.getItem('theme');
-    console.log('initialising theme')
     // if the theme has been set to light (null check to short circuit if not set)
     if(theme !== null && theme === '🌝'
       // if we can use matchMedia and the browser supports the dark color scheme
       || (window.matchMedia && !window.matchMedia('(prefers-color-scheme: dark)').matches)
       && theme !== '🌚') {
-        console.log('setting theme to light')
         // toggles the theme from the default dark mode to the light version (which actually _shows_ by default to many users)
         document.body.classList.toggle('light');
     }

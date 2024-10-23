@@ -16,7 +16,7 @@
 
 .tablist > ul li {
   align-items: center;
-  background-color: #eee;
+  background-color: var(--bg);
   cursor: pointer;
   display: flex;
   font-weight: bold;
@@ -52,18 +52,26 @@
   right: 0;
 }
 
+.tabs:not(.is-loading) .tablist .is-selected {
+  background-color: var(--near-bg);
+  color: var(--textcolor);
+  border-left: 1px solid var(--near-bg);
+  border-right: 1px solid var(--near-bg);
+  border-top: 1px solid var(--near-bg);
+}
+
 .tabs.is-loading .tablist li:not(:first-child),
 .tabs:not(.is-loading) .tablist li:not(.is-selected) {
-  background-color: initial;
-  border-left: 1px solid #eee;
-  border-right: 1px solid #eee;
-  border-top: 1px solid #eee;
+  background-color: var(--bg);
+  color: var(--subtle-text);
+  border-left: 1px solid var(--near-bg);
+  border-right: 1px solid var(--near-bg);
+  border-top: 1px solid var(--near-bg);
 }
 
 .tabs.is-loading .tablist li:first-child::after,
 .tabs:not(.is-loading) .tablist li.is-selected::after {
-  background-color: #eee;
-  border-top: 2px solid var(--red);
+  border-top: 2px solid var(--accent) !important;
 }
 
 /*
@@ -79,7 +87,7 @@
 }
 
 .tabpanel {
-  background-color: #eee;
+  background-color: var(--near-bg);
   padding: 1.25em;
 }
 
