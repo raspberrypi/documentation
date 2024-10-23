@@ -1,27 +1,29 @@
 == Getting Started
 
-This guide will help you set up the Raspberry Pi AI Kit with your Raspberry Pi 5. This will enable you to run `rpicam-apps` camera demos using the Hailo AI neural network accelerator.
+This guide will help you set up a Hailo NPU with your Raspberry Pi 5. This will enable you to run `rpicam-apps` camera demos using an AI neural network accelerator.
 
 === Prerequisites
 
 For this guide, you will need the following:
 
-- a Raspberry Pi 5
-- a Raspberry Pi AI Kit, which includes:
-** an M.2 HAT+
-** a pre-installed Hailo-8L AI module
-- a 64-bit Raspberry Pi OS Bookworm install
-- any official Raspberry Pi camera (e.g. Camera Module 3 or High Quality Camera)
+* a Raspberry Pi 5
+* one of the following NPUs:
+** a xref:../accessories/ai-kit.adoc[Raspberry Pi AI Kit], which includes:
+*** an M.2 HAT+
+*** a pre-installed Hailo-8L AI module
+** a xref:../accessories/ai-hat-plus.adoc[Raspberry Pi AI HAT+]
+* a 64-bit Raspberry Pi OS Bookworm install
+* any official Raspberry Pi camera (e.g. Camera Module 3 or High Quality Camera)
 
 === Hardware setup
 
-. Attach the camera to your Raspberry Pi 5 board following the instructions at xref:camera.adoc#install-a-raspberry-pi-camera[Install a Raspberry Pi Camera]. You can skip reconnecting your Raspberry Pi to power, because you'll need to disconnect your Raspberry Pi from power for the next step.
+. Attach the camera to your Raspberry Pi 5 board following the instructions at xref:../accessories/camera.adoc#install-a-raspberry-pi-camera[Install a Raspberry Pi Camera]. You can skip reconnecting your Raspberry Pi to power, because you'll need to disconnect your Raspberry Pi from power for the next step.
 
-. Follow the xref:ai-kit.adoc#ai-kit-installation[installation instructions] to get your AI Kit hardware connected to your Raspberry Pi 5.
+. Depending on your NPU, follow the installation instructions for the xref:../accessories/ai-kit.adoc#ai-kit-installation[AI Kit] or xref:../accessories/ai-hat-plus.adoc#ai-hat-plus-installation[AI HAT+], to get your hardware connected to your Raspberry Pi 5.
 
-. Follow the instructions to xref:../computers/raspberry-pi.adoc#pcie-gen-3-0[enable PCIe Gen 3.0]. This step is optional, but _highly recommended_ to achieve the best performance with your AI Kit.
+. Follow the instructions to xref:raspberry-pi.adoc#pcie-gen-3-0[enable PCIe Gen 3.0]. This step is optional, but _highly recommended_ to achieve the best performance with your NPU.
 
-. Install the dependencies required to use the AI Kit. Run the following command from a terminal window:
+. Install the dependencies required to use the NPU. Run the following command from a terminal window:
 +
 [source,console]
 ----
@@ -44,7 +46,7 @@ This installs the following dependencies:
 $ hailortcli fw-control identify
 ----
 +
-If you see output similar to the following, you've successfully installed the AI Kit and its software dependencies:
+If you see output similar to the following, you've successfully installed the NPU and its software dependencies:
 +
 ----
 Executing on device: 0000:01:00.0
@@ -90,9 +92,9 @@ This starts the camera and shows a preview window for ten seconds. Once you have
 
 === Demos
 
-The `rpicam-apps` suite of camera applications implements a xref:../computers/camera_software.adoc#post-processing-with-rpicam-apps[post-processing framework]. This section contains a few demo post-processing stages that highlight some of the capabilities of the AI Kit.
+The `rpicam-apps` suite of camera applications implements a xref:camera_software.adoc#post-processing-with-rpicam-apps[post-processing framework]. This section contains a few demo post-processing stages that highlight some of the capabilities of the NPU.
 
-The following demos use xref:../computers/camera_software.adoc#rpicam-hello[`rpicam-hello`], which by default displays a preview window. However, you can use other `rpicam-apps` instead, including xref:../computers/camera_software.adoc#rpicam-vid[`rpicam-vid`] and xref:../computers/camera_software.adoc#rpicam-still[`rpicam-still`]. You may need to add or modify some command line options to make the demo commands compatible with alternative applications.
+The following demos use xref:camera_software.adoc#rpicam-hello[`rpicam-hello`], which by default displays a preview window. However, you can use other `rpicam-apps` instead, including xref:camera_software.adoc#rpicam-vid[`rpicam-vid`] and xref:camera_software.adoc#rpicam-still[`rpicam-still`]. You may need to add or modify some command line options to make the demo commands compatible with alternative applications.
 
 To begin, download the post-processing JSON files required for the demos. These files determine which post-processing stages to run and configure the behaviour of each stage. For example, you can enable, disable, strengthen, or weaken the strength of the temporal filtering in the object detection demos. Or you could enable or disable the output mask drawing in the segmentation demo.
 
@@ -107,7 +109,7 @@ TIP: The commands provided in subsequent sections use the JSON files in this rep
 
 ==== Object Detection
 
-This demo displays bounding boxes around objects detected by a neural network. To disable the viewfinder, use the xref:../computers/camera_software.adoc#nopreview[`-n`] flag. To return purely textual output describing the objects detected, add the `-v 2` option. Run the following command to try the demo on your Raspberry Pi:
+This demo displays bounding boxes around objects detected by a neural network. To disable the viewfinder, use the xref:camera_software.adoc#nopreview[`-n`] flag. To return purely textual output describing the objects detected, add the `-v 2` option. Run the following command to try the demo on your Raspberry Pi:
 
 [source,console]
 ----

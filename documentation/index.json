@@ -54,6 +54,12 @@
                     "subpath": "camera_software.adoc"
                 },
                 {
+                    "title": "AI software",
+                    "description": "Software and libraries for artificial intelligence on a Raspberry Pi hardware",
+                    "image": "full-sized/ai.png",
+                    "subpath": "ai.adoc"
+                },
+                {
                     "title": "Raspberry Pi hardware",
                     "description": "Technical information about Raspberry Pi hardware",
                     "image": "full-sized/Raspberry-Pi-Hardware.png",
@@ -81,7 +87,7 @@
                 {
                     "title": "SD Cards",
                     "description": "Raspberry Pi's official SD cards",
-                    "image": "full-sized/sd-cards.png",
+                    "image": "full-sized/sd-card.png",
                     "subpath": "sd-cards.adoc"
                 },
                 {
@@ -140,9 +146,15 @@
                 },
                 {
                     "title": "AI Kit",
-                    "description": "An NPU for your Raspberry Pi",
+                    "description": "An NPU that connects to your Raspberry Pi via M.2",
                     "image": "full-sized/ai-kit.png",
                     "subpath": "ai-kit.adoc"
+                },
+                {
+                    "title": "AI HAT+",
+                    "description": "An NPU HAT+ for your Raspberry Pi",
+                    "image": "full-sized/ai-hat-plus.png",
+                    "subpath": "ai-hat-plus.adoc"
                 },
                 {
                     "title": "Raspberry Pi Audio",

@@ -87,3 +87,7 @@ image::images/ai-kit-installation-05.png[width="60%"]
 --
 
 WARNING: Always disconnect your Raspberry Pi from power before connecting or disconnecting a device from the M.2 slot.
+
+== Get started with AI on your Raspberry Pi
+
+To start running AI accelerated applications on your Raspberry Pi, check out our xref:../computers/ai.adoc[Getting Started with AI] guide.
