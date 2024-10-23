@@ -1,5 +1,5 @@
 
-== Under the Hood
+== Under the hood
 
 === Overview
 
@@ -19,7 +19,7 @@ Region of Interest (ROI):: Specifies exactly which part of the sensor image is c
 
 Output Tensor:: The results of inferencing performed by the neural network. The precise number and shape of the outputs depend on the neural network. Application code must understand how to handle the tensor.
 
-=== System Architecture
+=== System architecture
 
 The diagram below shows the various camera software components (in green) used during our imaging/inference use case with the Raspberry Pi AI Camera module hardware (in red):
 

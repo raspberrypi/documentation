@@ -1,9 +1,9 @@
 == About
 
-.A 64GB Raspberry Pi SD Card
-image::images/sd-cards.jpg[width="80%"]
+.A Raspberry Pi SD Card inserted into a Raspberry Pi 5
+image::images/sd-hero.jpg[width="80%"]
 
-SD card quality is a critical factor in determining the overall user experience for a Raspberry Pi computer. Slow bus speeds and lack of command queueing can reduce the performance of even the most powerful Raspberry Pi models.
+SD card quality is a critical factor in determining the overall user experience for a Raspberry Pi. Slow bus speeds and lack of command queueing can reduce the performance of even the most powerful Raspberry Pi models.
 
 Raspberry Pi's official microSD cards support DDR50 and SDR104 bus speeds. Additionally, Raspberry Pi SD cards support the command queueing (CQ) extension, which permits some pipelining of random read operations, ensuring optimal performance.
 
@@ -17,20 +17,21 @@ Raspberry Pi SD cards are available in the following sizes:
 
 == Specifications
 
-Raspberry Pi SD cards have the following specifications:
+.A 128GB Raspberry Pi SD Card
+image::images/sd-cards.png[width="80%"]
 
-Speed Class: C10, U3, V30, A2
+Raspberry Pi SD cards use the SD6.1 SD specification.
 
-Random 4KB read performance:
+Raspberry Pi SD cards use the microSDHC/microSDXC form factor.
 
-* 3,200 IOPS on Raspberry Pi 4 (DDR50)
-* 5,000 IOPS on Raspberry Pi 5 (SDR104)
+Raspberry Pi SD cards have the following Speed Class ratings: C10, U3, V30, A2.
 
-Random 4KB write performance:
+The following table describes the read and write speeds of Raspberry Pi SD cards using 4KB of random data:
 
-* 1,200 IOPS on Raspberry Pi 4 (DDR50)
-* 2,000 IOPS on Raspberry Pi 5 (SDR104)
+|===
+| Raspberry Pi Model | Interface | Read Speed | Write Speed
 
-Form factor: microSDHC/microSDXC
+| 4 | DDR50  | 3,200 IOPS | 1,200 IOPS
+| 5 | SDR104 | 5,000 IOPS | 2,000 IOPS
+|===
 
-SD specification: SD6.1

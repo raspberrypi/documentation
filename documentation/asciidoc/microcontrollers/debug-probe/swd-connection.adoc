@@ -59,4 +59,4 @@ $ gdb blink.elf
 GDB doesn't work on all platforms. Use one of the following alternatives instead of `gdb`, depending on your operating system and device:
 
 * On Linux devices that are _not_ Raspberry Pis, use `gdb-multiarch`.
-* On Arm-based macOS devices, use `lldb`.
+* On macOS devices, use `arm-none-eabi-gdb`.
