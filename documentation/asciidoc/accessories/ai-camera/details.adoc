@@ -49,7 +49,7 @@ Once `libcamera` dequeues the image and inference data buffers from the kernel, 
 | Floating point array storing the input tensor.
 
 | `CnnOutputTensorInfo`
-| Network specific parameters describing the output tensors structure:
+| Network specific parameters describing the output tensor's structure:
 
 [source,c]
 ----
@@ -67,7 +67,7 @@ struct CnnOutputTensorInfo {
 ----
 
 | `CnnInputTensorInfo`
-| Network specific parameters describing the input tensors structure:
+| Network specific parameters describing the input tensor's structure:
 
 [source,c]
 ----
@@ -204,7 +204,7 @@ def draw_detections(request, detections, stream="main"):
             cv2.rectangle(m.array, (b.x, b.y), (b.x + b.width, b.y + b.height), (255, 0, 0, 0))
 
 def parse_detections(request, stream='main'):
-    """Parse the output tensor into a number of detected objects, scaled to the ISP out."""
+    """Parse the output tensor into a number of detected objects, scaled to the ISP output."""
     outputs = imx500.get_outputs(request.get_metadata())
     boxes, scores, classes = outputs[0][0], outputs[1][0], outputs[2][0]
     detections = [ Detection(box, category, score, metadata)
@@ -245,7 +245,7 @@ There are a number of scaling/cropping/translation operations occurring from the
 | Returns the input tensor size based on the neural network model used.
 
 | `IMX500.get_outputs(metadata)`
-| Returns the output tensors from the Picamera2 image metadata metadata.
+| Returns the output tensors from the Picamera2 image metadata.
 
 | `IMX500.get_output_shapes(metadata)`
 | Returns the shape of the output tensors from the Picamera2 image metadata for the neural network model used.
