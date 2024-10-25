@@ -147,26 +147,6 @@ div.subtitle p {
   flex-grow: 1;
 }
 
-/* table of contents hide/show logic */
-
-#toc-container ul {list-style: none;}
-#toc-container li {display: block;}
-
-#toc-container .droplist, #toc-container .hide {display: none;}
-
-#toc-container .submenu:focus-within>.hide{display: inline;}
-#toc-container .submenu:focus-within>.show{display: none;}
-#toc-container .submenu:focus-within>.droplist{display: block;}
-    
-#toc-container .hide:focus~.droplist{display: none;}
-#toc-container .hide:focus+.show{display: inline;}
-#toc-container .hide:focus{display: none !important;}
-    
-#toc-container .hide, .show{text-decoration: none;}
-
-
-
-
 #docsearch .DocSearch-Button {
   margin-top: 6px;
   margin-left: auto;
@@ -202,7 +182,7 @@ div.subtitle p {
 
 #docs-content #toc-container-container {
   flex-grow: 0;
-  flex-basis: 300px;
+  flex-basis: 270px;
   background-color: var(--code-bg-colour);
 }
 
@@ -284,12 +264,13 @@ pre {
 #on-this-page-inner {
   position: sticky;
   padding-top: 10px;
+  margin-left: 10px;
   top: 0;
   color: var(--subtle);
 }
 
 /* hide on this page if screen is too small to fit it */
-@media only screen and (max-width: 1529px) {
+@media only screen and (max-width: 1444px) {
   #on-this-page {
     display: none;
   }
@@ -307,6 +288,26 @@ pre {
   overflow-y: auto;
   list-style-type: none;
   padding-left: 20px;
+}
+
+a.level1:hover {
+  color: var(--subtle-text);
+  background-color: var(--subtle);
+}
+
+a.level2:hover {
+  color: var(--subtle-text);
+  background-color: var(--subtle);
+}
+
+a.level3:hover {
+  color: var(--subtle-text);
+  background-color: var(--subtle);
+}
+
+a.level4:hover {
+  color: var(--subtle-text);
+  background-color: var(--subtle);
 }
 
 .sectlevel1 > li > ul {

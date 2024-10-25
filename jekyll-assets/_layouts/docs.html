@@ -18,28 +18,26 @@
             {% if subdir.toc[0] %}
               <div class="itemcontents">
                 <ul class="sectlevel1">
-                  <li class="submenu">
-                    <a href="{{ site.baseurl }}{{ subdir.path }}">{{ subdir.title | markdownify }}</a>
-                    <a href="#" class="hide">[-]</a>
-                    <a href="#" class="show">[+]</a>
+                  <li>
+                    <a class="level1" href="{{ site.baseurl }}{{ subdir.path }}">{{ subdir.title | markdownify }}</a>
                   </li>
                   {% for item in subdir.toc %}
                     <div class="itemcontents">
-                      <ul class="sectlevel1" class="droplist">
+                      <ul class="sectlevel1">
                         <li>
-                          <a href="{{ site.baseurl }}{{ item.path }}">{{ item.title | markdownify }}</a>
+                          <a class="level2" href="{{ site.baseurl }}{{ item.path }}">{{ item.title | markdownify }}</a>
                         </li>
                         {% if item.sections[0] %}
                           <div class="itemcontents">
                             <ul class="sectlevel1">
                               {% for entry in item.sections %}
                                 <li>
-                                  <a href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}">{{ entry.heading | markdownify }}</a>
+                                  <a class="level3" href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}">{{ entry.heading | markdownify }}</a>
                                   {% if entry.subsections[0] %}
                                     <ul>
                                       {% for subentry in entry.subsections %}
                                         <li>
-                                          <a href="{{ site.baseurl }}{{ item.path }}#{{ subentry.anchor }}">{{ subentry.heading | markdownify }}</a>
+                                          <a class="level4" href="{{ site.baseurl }}{{ item.path }}#{{ subentry.anchor }}">{{ subentry.heading | markdownify }}</a>
                                         </li>
                                       {% endfor %}
                                     </ul>
