@@ -9,11 +9,11 @@ If you're using the Connect plugin for the menu bar, clicking "Turn On Raspberry
 
 image::images/browser-sign-in.png[width="80%"]
 
-Alternatively, you can choose "Sign In…" from the dropdown menu:
+Alternatively, you can choose "Sign In..." from the dropdown menu:
 
 image::images/sign-in.png[width="80%"]
 
-If you don't already have a Raspberry Pi ID, you can xref:id.adoc#create-a-raspberry-pi-id[create one] by clicking "create one for free".
+If you don't already have a Raspberry Pi ID, click *create one for free* to xref:id.adoc#create-a-raspberry-pi-id[create one].
 
 === via the command line
 
@@ -201,7 +201,7 @@ Click on a device name to open the device details page. This screen provides low
 
 image::images/device.png[width="80%"]
 
-Deleting a device from Connect automatically signs you out of Connect on the device. The Connect icon in the menu bar turns grey and the menu only provides a **Sign In…** option.
+Deleting a device from Connect automatically signs you out of Connect on the device. The Connect icon in the menu bar turns grey and the menu only provides a **Sign In...** option.
 
 == Update
 
