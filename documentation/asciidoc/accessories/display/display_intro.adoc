@@ -75,22 +75,17 @@ WARNING: When using a micro USB cable to power the display, mount it inside a ch
 
 === Use an on-screen keyboard
 
-In Raspberry Pi OS Bookworm and later, you can use the https://github.com/jjsullivan5196/wvkbd[`wvkbd`] on-screen keyboard as an input device. To install `wvkbd`, run the following command:
+Raspberry Pi OS _Bookworm_ and later include the Squeekboard on-screen keyboard by default. When a touch display is attached, the on-screen keyboard should automatically show when it is possible to enter text and automatically hide when it is not possible to enter text.
 
-[source,console]
-----
-$ sudo apt install wvkbd
-----
+For applications which do not support text entry detection, use the keyboard icon at the right end of the taskbar to manually show and hide the keyboard.
 
-TIP: In Raspberry Pi OS releases prior to Bookworm, you can use `matchbox-keyboard` instead.
+You can also permanently show or hide the on-screen keyboard in the Display tab of Raspberry Pi Configuration or the `Display` section of `raspi-config`.
+
+TIP: In Raspberry Pi OS releases prior to _Bookworm_, use `matchbox-keyboard` instead. If you use the wayfire desktop compositor, use `wvkbd` instead.
 
 === Change screen orientation
 
-If you want to physically rotate the display, or mount it in a specific position, you can use software to adjust the orientation of the screen to better match your setup.
-
-==== Rotate screen from the desktop
-
-To set the screen orientation from the desktop environment, select **Screen Configuration** from the **Preferences** menu. Right-click on the DSI-1 display rectangle in the layout editor, select **Orientation**, then pick the best option to fit your needs. You can also ensure that the touch overlay is assigned to the correct display with the **Touchscreen** option.
+If you want to physically rotate the display, or mount it in a specific position, select **Screen Configuration** from the **Preferences** menu. Right-click on the DSI-1 display rectangle in the layout editor, select **Orientation**, then pick the best option to fit your needs. You can also ensure that the touch overlay is assigned to the correct display with the **Touchscreen** option.
 
 image::images/display-rotation.png[Screenshot of orientation options in screen configuration, width="80%"]
 
@@ -131,27 +126,6 @@ Then, disable automatic display detection by removing the following line from `c
 ----
 display_auto_detect=1
 ----
-
-[NOTE]
-====
-In Raspberry Pi OS _Bookworm_, a bug in https://github.com/WayfireWM/wayfire[Wayfire] currently prevents cursor movement rotation when using WayVNC. There is no workaround for this bug in Wayfire. Instead, you can use https://github.com/labwc/labwc[`labwc`] (currently in beta).
-
-First install `labwc`:
-
-[source,console]
-----
-$ sudo apt install labwc
-----
-
-Then, use the Raspberry Pi Configuration CLI to switch to the `labwc` window compositor. Run the following command to open `raspi-config`:
-
-[source,console]
-----
-$ sudo raspi-config
-----
-
-Go to **Advanced Options**. Select **Wayland**, then select **labwc**. Exit `raspi-config` and reboot with `sudo reboot`. Switching to `labwc` may reset some configuration, including keyboard layout and rotation settings.
-====
 
 ==== Touch Display device tree option reference
 

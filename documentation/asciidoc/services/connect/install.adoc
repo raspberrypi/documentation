@@ -1,7 +1,7 @@
 [[install-connect]]
 == Install
 
-To begin installation, open a Terminal window. Run the following command to update your system and packages:
+If Connect isn't already installed in your version of Raspberry Pi OS, open a Terminal window. Run the following command to update your system and packages:
 
 [source,console]
 ----
@@ -16,14 +16,18 @@ Run the following command on your Raspberry Pi to install Connect:
 $ sudo apt install rpi-connect
 ----
 
-After installation, reboot your Raspberry Pi or xref:connect.adoc#manually-start-connect[manually start the Connect service] to use Connect:
+You can also install Connect from the Recommended Software application.
+
+After installation, use the `rpi-connect` command line interface to start Connect for your current user:
 
 [source,console]
 ----
-$ sudo reboot
+$ rpi-connect on
 ----
 
-Connect will automatically start the next time you log in to your Raspberry Pi.
+Alternatively, click the Connect icon in the menu bar to open a dropdown menu and select *Turn On Raspberry Pi Connect*:
+
+image::images/turn-on-connect.png[width="80%"]
 
 === Connect Lite
 
@@ -36,19 +40,29 @@ Run the following command on your Raspberry Pi to install Connect Lite:
 $ sudo apt install rpi-connect-lite
 ----
 
-Reboot your Raspberry Pi or xref:connect.adoc#manually-start-connect[manually start the Connect service] to use Connect.
-
-Consider xref:connect.adoc#enable-remote-shell-at-all-times[enabling user lingering] to make your device accessible even when your user account isn't logged in.
-
-TIP: Lite commands use the same `rpi-connect` name as the full version of Connect. `rpi-connect-lite` is just a package name.
-
-=== Manually start Connect
-
-NOTE: By default, Connect automatically starts at login. You don't need to manually start Connect after it starts for the first time unless you remove it from your login items.
-
-To start the service manually from the command line, run the following command:
+After installation, use the `rpi-connect` command line interface to start Connect for your current user:
 
 [source,console]
 ----
-$ systemctl --user start rpi-connect
+$ rpi-connect on
+----
+
+xref:connect.adoc#enable-remote-shell-at-all-times[Enable user-lingering] to make your device accessible even when your user account isn't logged in.
+
+TIP: Lite commands use the same `rpi-connect` name as the full version of Connect. `rpi-connect-lite` is just a package name.
+
+=== Manually start and stop Connect
+
+To start Connect from the command line, run the following command:
+
+[source,console]
+----
+$ rpi-connect on
+----
+
+To stop Connect, run the following command:
+
+[source,console]
+----
+$ rpi-connect off
 ----
