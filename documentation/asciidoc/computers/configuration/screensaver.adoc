@@ -27,16 +27,6 @@ $ sudo raspi-config
 
 Use the arrow keys to navigate and the *Enter* key to select. Select `Display Options` > `Screen Blanking`. Choose `yes` with the arrow keys to enable screen blanking, or `no` to disable screen blanking.
 
-Alternatively, you can add or edit the following lines to `~/.config/wayfire.ini`:
-
-[source,ini]
-----
-[idle]
-dpms_timeout=600
-----
-
-The `dpms_timeout` variable controls the number of seconds of inactivity required before Raspberry Pi OS blanks your screen. For example, a value of `600` blanks the screen after 600 seconds, or ten minutes. Set the value to `0` to never blank the screen.
-
 === Console
 
 The `dpms_timeout` screen blanking configuration used by Raspberry Pi Configuration only affects desktop sessions. In *console mode*, when your Raspberry Pi is connected to a monitor and keyboard with only a terminal for input, use the `consoleblank` setting in the kernel command line.

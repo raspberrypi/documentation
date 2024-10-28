@@ -225,9 +225,9 @@ On the Raspberry Pi 4 and later, switch to the latest boot ROM software. Alterna
 
 ==== Wayland
 
-Switch between the X11 and Wayland backends. Raspberry Pi 4 and later use Wayland by default; other models of Raspberry Pi use X11 by default.
+Switch between the X11 and Wayland backends, and choose a window manager. Since Raspberry Pi OS _Bookworm_, all Raspberry Pi models run Wayland using labwc by default.
 
-NOTE: To use Wayland on Raspberry Pi models prior to Raspberry Pi 4, you must also add `wayland=on` to `/boot/firmware/cmdline.txt`.
+NOTE: To use Wayland on Raspberry Pi models prior to Raspberry Pi 4 running a version of Raspberry Pi OS earlier than _Bookworm_, add `wayland=on` to `/boot/firmware/cmdline.txt`.
 
 ==== Audio config
 
@@ -770,17 +770,18 @@ $ sudo raspi-config nonint do_boot_rom <E1/E2>
 
 ==== Wayland
 
-Switch between the X11 and Wayland backends. Raspberry Pi 4 and later use Wayland by default; other models of Raspberry Pi use X11 by default.
+Switch between the X11 and Wayland backends, and choose a window manager. Since Raspberry Pi OS _Bookworm_, all Raspberry Pi models run Wayland using the labwc window manager by default.
+
+NOTE: To use Wayland on Raspberry Pi models prior to Raspberry Pi 4 running a version of Raspberry Pi OS earlier than _Bookworm_, add `wayland=on` to `/boot/firmware/cmdline.txt`.
 
 [source,console]
 ----
 $ sudo raspi-config nonint do_wayland <W1/W2>
 ----
 
-* `W1`: use the X11 backend
-* `W2`: use the Wayland backend
-
-NOTE: To use Wayland on Raspberry Pi models prior to Raspberry Pi 4, you must also add `wayland=on` to `/boot/firmware/cmdline.txt`.
+* `W1`: use the Openbox window manager with X11 backend
+* `W2`: use the wayfire window manager with Wayland backend
+* `W3`: use the labwc window manager with Wayland backend
 
 ==== Audio config
 
