@@ -56,7 +56,7 @@ Now that your device appears on your Connect dashboard, you can access your devi
 
 Connect includes the ability to share your device's screen in a browser. Use the following instructions to share your device's screen.
 
-NOTE: Screen sharing requires the **Wayland** window server. By default, Raspberry Pi OS only uses Wayland for **64-bit** distributions of Raspberry Pi OS **Bookworm** on Raspberry Pi 5, 4, or 400. Screen sharing is **not** compatible with Raspberry Pi OS Lite or systems that use the X window server.
+NOTE: Screen sharing requires the **Wayland** window server. Raspberry Pi OS _Bookworm_ and later use Wayland by default. Screen sharing is **not** compatible with Raspberry Pi OS Lite or systems that use the X window server.
 
 Visit https://connect.raspberrypi.com[connect.raspberrypi.com] on any computer.
 

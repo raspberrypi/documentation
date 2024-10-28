@@ -44,19 +44,11 @@ $ kmsprint | grep Connector
 
 ==== Set a custom resolution
 
-If you run the Wayland desktop compositor, you can set a custom display resolution by editing the `.config/wayfire.ini` file in your home directory. Edit the existing `[output:<device>]` section, or add a new `[output:<device>]` section for your xref:configuration.adoc#determine-display-device-name[display device] if one doesn't exist. To change your display resolution, add a `mode` line. For example, the following example shows a configuration for the device named `HDMI-A-1` with a resolution of 1080p at 60Hz:
-
-[source,ini]
-----
-[output:HDMI-A-1]
-mode = 1920x1080@60
-----
-
-For information about supported modes and the `mode` syntax, see the https://github.com/WayfireWM/wayfire-wiki/blob/master/Configuration.md#output-configuration[Wayfire documentation].
-
-Add the same configuration block to `/usr/share/greeter.ini` to configure the login screen resolution.
+To set a custom resolution, use our Screen Configuration tool, `raindrop`. If your Raspberry Pi OS installation doesn't already include `raindrop` (for instance, if you're still using the previous Screen Configuration tool, `arandr`), you can download `raindrop` from `apt` or the Recommended Software GUI.
 
 ==== Set a custom rotation
+
+To set a custom resolution, use our Screen Configuration tool, `raindrop`. If your Raspberry Pi OS installation doesn't already include `raindrop` (for instance, if you're still using the previous Screen Configuration tool, `arandr`), you can download `raindrop` from `apt` or the Recommended Software GUI.
 
 If you run the Wayland desktop compositor, you can set a custom display rotation with `wlr-randr`. The following commands rotate the display by 0°, 90°, 180°, and 270°:
 
@@ -72,25 +64,7 @@ The `--output` option specifies the device to be rotated.
 
 NOTE: To run this command over SSH, add the following prefix: `WAYLAND_DISPLAY=wayland-1`, e.g. `WAYLAND_DISPLAY=wayland-1 wlr-randr --output HDMI-A-1 --transform 90`.
 
-You can also use one of the following `--transform` options to mirror the display at the same time as rotating it: `flipped`, `flipped-90`, `flipped-180`, `flipped-270`
-
-Alternatively, you can rotate the display using by editing the `.config/wayfire.ini` file in your home directory. Edit the existing `[output:<device>]` section, or add a new `[output:<device>]` section for your xref:configuration.adoc#determine-display-device-name[display device] if one doesn't exist. To rotate your display, add a `transform` line. For example, the following example shows a configuration for the device named `HDMI-A-1` with a resolution of 1080p at 60Hz and a 270° transform:
-
-[source,ini]
-----
-[output:HDMI-A-1]
-mode = 1920x1080@60
-transform = 270
-----
-
-Wayland supports the following `transform` options:
-
-* `normal`
-* `90`
-* `180`
-* `270`
-
-Add the same configuration block to `/usr/share/greeter.ini` to configure the login screen rotation.
+You can also use one of the following `--transform` options to mirror the display at the same time as rotating it: `flipped`, `flipped-90`, `flipped-180`, `flipped-270`.
 
 === Console resolution and rotation
 
