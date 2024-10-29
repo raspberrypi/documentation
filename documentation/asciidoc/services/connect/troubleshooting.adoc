@@ -41,8 +41,8 @@ To find out more about the cause of the issue, run the following commands to che
 
 [source,console]
 ----
-$ systemctl --user status rpi-connect-wayvnc.service
-$ journalctl --user --follow --unit rpi-connect-wayvnc.service
+$ systemctl --user status rpi-connect-wayvnc
+$ journalctl --user --follow --unit rpi-connect-wayvnc
 ----
 
 If the service fails to start or doesn't exist, ensure that your environment meets the following criteria:
@@ -98,7 +98,7 @@ Override the `rpi-connect` service definition with the following command:
 
 [source,console]
 ----
-$ systemctl --user edit rpi-connect.service
+$ systemctl --user edit rpi-connect
 ----
 
 Enter the following lines of configuration between the comments:
@@ -152,5 +152,5 @@ To view logs for the Connect service and its dedicated WayVNC server, run the fo
 
 [source,console]
 ----
-$ journalctl --user --follow --unit rpi-connect.service --unit rpi-connect-wayvnc.service
+$ journalctl --user --follow --unit rpi-connect --unit rpi-connect-wayvnc
 ----
