@@ -251,10 +251,7 @@ a|
 .Raspberry Pi Compute Module 1
 image::images/compute-module-1.jpg[alt="Raspberry Pi Compute Module 1"]
 | xref:processors.adoc#bcm2835[BCM2835] | 512MB
-a|
-0GB (Lite)
-
-4GB | DDR2 SO-DIMM ^| none
+| 4GB | DDR2 SO-DIMM ^| none
 ^.^a|
 .Raspberry Pi Compute Module 3
 image::images/compute-module-3.jpg[alt="Raspberry Pi Compute Module 3"]
