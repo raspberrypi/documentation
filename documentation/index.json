@@ -109,6 +109,12 @@
                     "subpath": "m2-hat-plus.adoc"
                 },
                 {
+                    "title": "Touch Display 2",
+                    "description": "The Raspberry Pi Touch Display 2",
+                    "image": "full-sized/Touch-Display-2.png",
+                    "subpath": "touch-display-2.adoc"
+                },
+                {
                     "title": "Camera",
                     "description": "Raspberry Pi camera boards",
                     "image": "full-sized/Camera.png",
@@ -119,12 +125,6 @@
                     "description": "An AI Camera for your Raspberry Pi",
                     "image": "full-sized/ai-cam.png",
                     "subpath": "ai-camera.adoc"
-                },
-                {
-                    "title": "Display",
-                    "description": "The Raspberry Pi Touch Display",
-                    "image": "full-sized/Display.png",
-                    "subpath": "display.adoc"
                 },
                 {
                     "title": "Keyboard and mouse",
@@ -167,6 +167,12 @@
                     "description": "Information on the HAT specification",
                     "image": "full-sized/Designing-a-HAT.png",
                     "url": "https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf"
+                },
+                {
+                    "title": "Touch Display",
+                    "description": "The Raspberry Pi Touch Display",
+                    "image": "full-sized/Display.png",
+                    "subpath": "display.adoc"
                 },
                 {
                     "title": "TV HAT",

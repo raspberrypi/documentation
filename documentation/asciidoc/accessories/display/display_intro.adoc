@@ -1,15 +1,15 @@
 == Raspberry Pi Touch Display
 
-The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry Pi Touch Display] is an LCD display that connects to the Raspberry Pi using the DSI connector. You can use both the Touch Display and an HDMI display output at the same time.
+The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry Pi Touch Display] is an LCD display that connects to the Raspberry Pi using a DSI connector and GPIO connector.
 
 .The Raspberry Pi 7-inch Touch Display
 image::images/display.png[The Raspberry Pi 7-inch Touch Display, width="70%"]
 
-The Touch Display is compatible with all models of Raspberry Pi except the Raspberry Pi Zero and Zero 2 W, which lack a DSI connector. The earliest Raspberry Pi models lack appropriate mounting holes, requiring additional mounting hardware to fit the stand-offs on the display PCB.
+The Touch Display is compatible with all models of Raspberry Pi from Raspberry Pi 1B+ onwards, except Raspberry Pi Zero and Zero 2 W, which lack a DSI connector. The earliest Raspberry Pi models lack appropriate mounting holes, requiring additional mounting hardware to fit the stand-offs on the display PCB.
 
 The display has the following key features: 
 
-* 800×480 RGB LCD display
+* 800×480px RGB LCD display
 * 24-bit colour
 * Industrial quality: 140 degree viewing angle horizontal, 120 degree viewing angle vertical
 * 10-point multi-touch touchscreen
@@ -85,7 +85,7 @@ TIP: In Raspberry Pi OS releases prior to _Bookworm_, use `matchbox-keyboard` in
 
 === Change screen orientation
 
-If you want to physically rotate the display, or mount it in a specific position, select **Screen Configuration** from the **Preferences** menu. Right-click on the DSI-1 display rectangle in the layout editor, select **Orientation**, then pick the best option to fit your needs. You can also ensure that the touch overlay is assigned to the correct display with the **Touchscreen** option.
+If you want to physically rotate the display, or mount it in a specific position, select **Screen Configuration** from the **Preferences** menu. Right-click on the touch display rectangle (likely DSI-1) in the layout editor, select **Orientation**, then pick the best option to fit your needs.
 
 image::images/display-rotation.png[Screenshot of orientation options in screen configuration, width="80%"]
 
@@ -153,7 +153,7 @@ The `vc4-kms-dsi-7inch` overlay supports the following options:
 | Disables the touch overlay totally
 |===
 
-To specify these options, add them, separated by commas, to your `dtoverlay` line in `/boot/firmware/config.txt`. Boolean values default to true when present, but you can set them to false with the suffix "=0". Integer values require a value, e.g. `sizey=240`. For instance, to set the X resolution to 400 pixels and invert both X and Y coordinates, use the following line:
+To specify these options, add them, separated by commas, to your `dtoverlay` line in `/boot/firmware/config.txt`. Boolean values default to true when present, but you can set them to false using the suffix "=0". Integer values require a value, e.g. `sizey=240`. For instance, to set the X resolution to 400 pixels and invert both X and Y coordinates, use the following line:
 
 [source,ini]
 ----
