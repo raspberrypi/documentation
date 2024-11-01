@@ -172,6 +172,7 @@ secure-boot / file-system encryption is not required, then the device private ke
 See https://gitlab.com/cryptsetup/cryptsetup[Cryptsetup] for more information about open-source disk encryption.
 
 ==== Program a key into OTP with `rpi-otp-private-key`
+NOTE: The `rpi-otp-private-key` script can only be used on devices with the Broadcom BCM2711 or BCM2712 processor.
 
 The https://github.com/raspberrypi/rpi-eeprom/blob/master/tools/rpi-otp-private-key[`rpi-otp-private-key`] script wraps the device private key `vcmailbox` APIs to make it easier to read and write a key in the OpenSSL format.
 
