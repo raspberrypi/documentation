@@ -26,12 +26,12 @@ The Touch Display 2 box contains the following parts (in left to right, top to b
 * GPIO connector cable
 
 .Parts included in the Touch Display 2 box
-image::images/touch-display-2-whats-in-the-booooox.jpg[Parts included in the Touch Display 2 box]
+image::images/touch-display-2-whats-in-the-booooox.jpg["Parts included in the Touch Display 2 box", width="80%"]
 
 == Install
 
-.A Raspberry Pi connected to the Touch Display 2
-image::images/touch-display-2-installation-diagram.png[Image of Raspberry Pi connected to the Touch Display]
+.A Raspberry Pi 5 connected and mounted to the Touch Display 2
+image::images/touch-display-2-installation-diagram.png["A Raspberry Pi 5 connected and mounted to the Touch Display 2", width="80%"]
 
 To connect a Touch Display 2 to a Raspberry Pi, use a Flat Flexible Cable (FFC) and a GPIO connector. The FFC you'll use depends upon your Raspberry Pi model:
 
@@ -95,7 +95,7 @@ For example, a rotation value of `90` rotates the display 90 degrees to the righ
 
 NOTE: It is not possible to rotate the DSI display separately from the HDMI display with `cmdline.txt`. When you use DSI and HDMI simultaneously, they share the same rotation value.
 
-==== Touch Display device tree option reference
+==== Touch Display 2 device tree option reference
 
 The `vc4-kms-dsi-ili9881-7inch` overlay supports the following options:
 
