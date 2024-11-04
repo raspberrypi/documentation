@@ -239,6 +239,13 @@ image::images/zero-2-w.jpg[alt="Raspberry Pi Zero 2 W"]
 a|
 * 2.4GHz single-band 802.11n Wi-Fi (35Mb/s)
 * Bluetooth 4.2, Bluetooth Low Energy (BLE)
+^.^a|
+.Raspberry Pi Zero 2 WH
+image::images/zero-2-wh.png[alt="Raspberry Pi Zero 2 WH"]
+| xref:processors.adoc#rp3a0[RP3A0] | 512MB | 40-pin GPIO header
+a|
+* 2.4GHz single-band 802.11n Wi-Fi (35Mb/s)
+* Bluetooth 4.2, Bluetooth Low Energy (BLE)
 |===
 
 === Compute Module series
@@ -251,10 +258,7 @@ a|
 .Raspberry Pi Compute Module 1
 image::images/compute-module-1.jpg[alt="Raspberry Pi Compute Module 1"]
 | xref:processors.adoc#bcm2835[BCM2835] | 512MB
-a|
-0GB (Lite)
-
-4GB | DDR2 SO-DIMM ^| none
+| 4GB | DDR2 SO-DIMM ^| none
 ^.^a|
 .Raspberry Pi Compute Module 3
 image::images/compute-module-3.jpg[alt="Raspberry Pi Compute Module 3"]
