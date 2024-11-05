@@ -1,6 +1,6 @@
 == About
 
-The https://www.raspberrypi.com/products/raspberry-pi-touch-display-2/[Raspberry Pi Touch Display 2] is a portrait orientation touchscreen LCD display designed for interactive projects like tablets, entertainment systems, and information dashboards.
+The https://www.raspberrypi.com/products/touch-display-2/[Raspberry Pi Touch Display 2] is a portrait orientation touchscreen LCD display designed for interactive projects like tablets, entertainment systems, and information dashboards.
 
 .The Raspberry Pi Touch Display 2
 image::images/touch-display-2-hero.jpg[width="80%"]
