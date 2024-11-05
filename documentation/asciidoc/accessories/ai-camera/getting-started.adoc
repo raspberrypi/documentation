@@ -126,7 +126,7 @@ Run the following script from the repository to run YOLOv8 object detection:
 
 [source,console]
 ----
-$ python imx500_object_detection_demo.py --model /usr/share/imx500-models/imx500_network_yolov8n_pp.rpk --ignore-dash-labels -r
+$ python imx500_object_detection_demo.py --model /usr/share/imx500-models/imx500_network_ssd_mobilenetv2_fpnlite_320x320_pp.rpk
 ----
 
 To try pose estimation in Picamera2, run the following script from the repository:
