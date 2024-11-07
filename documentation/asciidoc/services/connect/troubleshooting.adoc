@@ -61,11 +61,25 @@ For screen sharing, Connect can only share an existing graphical desktop session
 
 ==== Networking and firewall issues
 
-Connect avoids changing your network or firewall in order to establish a connection. However, if you have a restrictive network and experience trouble connecting, check the following:
+Connect avoids changing your network or firewall in order to establish a connection. However, if you have a restrictive network and experience trouble connecting, `rpi-connect` and `rpi-connect-lite` include a `rpi-connect doctor` command to run a series of tests to check that Connect can establish connections properly.
 
-. Can you access the Connect API, which Connect uses for authentication and connection negotiation between your Raspberry Pi and your browser? To check, load https://api.connect.raspberrypi.com/up?[https://api.connect.raspberrypi.com/up?] on your Raspberry Pi.
-. Can you access the Connect STUN server, which Connect uses to obtain a peer-to-peer connection through local or public networks? To check, ping `stun.raspberrypi.com` on UDP port 3478.
-. Can you access our TURN servers, which Connect uses to relay sessions when a peer-to-peer connection fails? To check, ping `turn1.raspberrypi.com`, `turn2.raspberrypi.com` and `turn3.raspberrypi.com` on TCP ports 3478 or 443, or UDP ports 3478, 443 and 49152 -> 65535.
+Specifically:
+
+. Can we make an HTTPS request to the Raspberry Pi Connect API at `api.connect.raspberrypi.com` on port 443 and have it respond successfully?
+. Can we make an authenticated request to the Raspberry Pi Connect API?
+. Can we communicate with the Raspberry Pi Connect STUN or TURN servers at `stun.raspberrypi.com`, `turn1.raspberrypi.com`, `turn2.raspberrypi.com`, or `turn3.raspberrypi.com` on UDP port 3478 and receive a server reflexive candidate?
+. Can we communicate with the Raspberry Pi Connect TURN servers on TCP ports 3478 or 443, and UDP ports 3478, 443, and 49152 -> 65535 and receive a relay candidate?
+
+To run these tests on your device, run the following command:
+
+[source,console]
+----
+$ rpi-connect doctor
+✓ Communication with Raspberry Pi Connect API
+✓ Authentication with Raspberry Pi Connect API
+✓ Peer-to-peer connection candidate via STUN
+✓ Peer-to-peer connection candidate via TURN
+----
 
 === View Connect status
 
