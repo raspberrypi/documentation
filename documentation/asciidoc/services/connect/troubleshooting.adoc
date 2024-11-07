@@ -75,11 +75,34 @@ To run these tests on your device, run the following command:
 [source,console]
 ----
 $ rpi-connect doctor
+----
+
+If Connect can communicate properly on your network, you should see output similar to the following:
+
+----
 ✓ Communication with Raspberry Pi Connect API
 ✓ Authentication with Raspberry Pi Connect API
 ✓ Peer-to-peer connection candidate via STUN
 ✓ Peer-to-peer connection candidate via TURN
 ----
+
+If Connect can't communicate properly on your network, you'll see an "x" instead of a check next to the failing test case. Ask your network administrator to enable the following connections on your network:
+
+* unauthenticated HTTPS requests to the Raspberry Pi Connect API on port 443 of `api.connect.raspberrypi.com` 
+* authenticated requests to the Raspberry Pi Connect API on port 443 of `api.connect.raspberrypi.com`
+* requests to Raspberry Pi Connect STUN or TURN servers on UDP port 3478 of all of the following:
+** `stun.raspberrypi.com`
+** `turn1.raspberrypi.com`
+** `turn2.raspberrypi.com`
+** `turn3.raspberrypi.com`
+* requests to Raspberry Pi Connect TURN servers on TCP ports 3478 or 443 of all of the following:
+** `turn1.raspberrypi.com`
+** `turn2.raspberrypi.com`
+** `turn3.raspberrypi.com`
+* requests to Raspberry Pi Connect TURN servers on UDP ports 3478, 443, or 49152 -> 65535 of all of the following:
+** `turn1.raspberrypi.com`
+** `turn2.raspberrypi.com`
+** `turn3.raspberrypi.com`
 
 === View Connect status
 
