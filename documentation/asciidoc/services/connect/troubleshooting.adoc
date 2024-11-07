@@ -61,7 +61,7 @@ For screen sharing, Connect can only share an existing graphical desktop session
 
 ==== Networking and firewall issues
 
-Connect avoids changing your network or firewall in order to establish a connection. However, if you have a restrictive network and experience trouble connecting, `rpi-connect` and `rpi-connect-lite` include a `rpi-connect doctor` command to run a series of tests to check that Connect can establish connections properly.
+Connect usually communicates between devices without requiring changes to your network or firewall. However, especially restrictive networks can sometimes block Connect communication. To help debug problems with such networks, `rpi-connect` and `rpi-connect-lite` include the `rpi-connect doctor` command. `rpi-connect doctor` runs a series of tests to check that Connect communication functions properly on your network.
 
 Specifically:
 
