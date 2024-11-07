@@ -50,6 +50,7 @@ The following Raspberry Pi models support this flag:
 * Compute Module 3
 * Compute Module 3+
 * Compute Module 4
+* Compute Module 4S
 
 Later models, such as Raspberry Pi 5, _only_ support the 64-bit kernel. Such models do not support this flag.
 
