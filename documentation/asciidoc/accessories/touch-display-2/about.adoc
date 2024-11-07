@@ -1,6 +1,6 @@
 == About
 
-The https://www.raspberrypi.com/products/raspberry-pi-touch-display-2/[Raspberry Pi Touch Display 2] is a portrait orientation touchscreen LCD display designed for interactive projects like tablets, entertainment systems, and information dashboards.
+The https://www.raspberrypi.com/products/touch-display-2/[Raspberry Pi Touch Display 2] is a portrait orientation touchscreen LCD display designed for interactive projects like tablets, entertainment systems, and information dashboards.
 
 .The Raspberry Pi Touch Display 2
 image::images/touch-display-2-hero.jpg[width="80%"]
@@ -42,12 +42,12 @@ Once you have determined the correct FFC for your Raspberry Pi model, complete t
 
 . Disconnect your Raspberry Pi from power.
 . Lift the retaining clips on either side of the FFC connector on the Touch Display 2.
-. Insert one 15-way end of your FFC into the Touch Display 2 FFC connector, with the copper contacts facing upwards, away from the Touch Display 2.
+. Insert one 15-way end of your FFC into the Touch Display 2 FFC connector, with the metal contacts facing upwards, away from the Touch Display 2.
 +
 TIP: If you use the 22-way to 15-way FFC, the 22-way end is the _smaller_ end of the cable. Insert the _larger_ end of the cable into the Touch Display 2.
 . While holding the FFC firmly in place, simultaneously push both retaining clips down on the FFC connector of the Touch Display 2.
 . Lift the retaining clips on either side of the DSI connector of your Raspberry Pi. This port should be marked with some variation of the term `DISPLAY` or `DISP`. If your Raspberry Pi has multiple DSI connectors, prefer the port labelled `1`.
-. Insert the other end of your FFC into the Raspberry Pi DSI connector, with the copper contacts facing towards the Ethernet and USB-A ports.
+. Insert the other end of your FFC into the Raspberry Pi DSI connector, with the metal contacts facing towards the Ethernet and USB-A ports.
 . While holding the FFC firmly in place, simultaneously push both retaining clips down on the DSI connector of the Raspberry Pi.
 . Plug the GPIO connector cable into the port marked `J1` on the Touch Display 2.
 . Connect the other (three-pin) end of the GPIO connector cable to pins 2, 4, and 6 of the xref:../computers/raspberry-pi.adoc#gpio[Raspberry Pi's GPIO]. Connect the red cable (5V power) to pin 2, and the black cable (ground) to pin 6. Viewed from above, with the Ethernet and USB-A ports facing down, these pins are located at the top right of the board, with pin 2 in the top right-most position.
@@ -77,7 +77,7 @@ If you want to physically rotate the display, or mount it in a specific position
 
 ==== Rotate screen without a desktop
 
-To set the screen orientation on a device that lacks a desktop environment, edit the `/boot/firmware/cmdline.txt` configuration file to pass an orientation to the system. Add the following line to `cmdline.txt`:
+To set the screen orientation on a device that lacks a desktop environment, edit the `/boot/firmware/cmdline.txt` configuration file to pass an orientation to the system. Add the following entry to the end of `cmdline.txt`:
 
 [source,ini]
 ----

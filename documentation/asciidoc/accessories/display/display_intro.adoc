@@ -5,7 +5,7 @@ The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry P
 .The Raspberry Pi 7-inch Touch Display
 image::images/display.png[The Raspberry Pi 7-inch Touch Display, width="70%"]
 
-The Touch Display is compatible with all models of Raspberry Pi from Raspberry Pi 1B+ onwards, except Raspberry Pi Zero and Zero 2 W, which lack a DSI connector. The earliest Raspberry Pi models lack appropriate mounting holes, requiring additional mounting hardware to fit the stand-offs on the display PCB.
+The Touch Display is compatible with all models of Raspberry Pi, except Raspberry Pi Zero and Zero 2 W, which lack a DSI connector. The earliest Raspberry Pi models lack appropriate mounting holes, requiring additional mounting hardware to fit the stand-offs on the display PCB.
 
 The display has the following key features: 
 
@@ -113,7 +113,7 @@ NOTE: It is not possible to rotate the DSI display separately from the HDMI disp
 
 WARNING: Rotating touch input via device tree can cause conflicts with your input library. Whenever possible, configure touch event rotation in your input library or desktop.
 
-Rotation of touch input is independent of the orientation of the display itself. To change this you need to manually add a `dtoverlay` instruction in xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`]. Add the following line in `config.txt`:
+Rotation of touch input is independent of the orientation of the display itself. To change this you need to manually add a `dtoverlay` instruction in xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`]. Add the following line at the end of `config.txt`:
 
 [source,ini]
 ----
