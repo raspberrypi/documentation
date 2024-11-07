@@ -307,7 +307,7 @@ Default: `""`
 [[DISABLE_HDMI]]
 ==== `DISABLE_HDMI`
 
-The xref:raspberry-pi.adoc#boot-diagnostics-on-the-raspberry-pi-4[HDMI boot diagnostics] display is disabled if `DISABLE_HDMI=1`. Other non-zero values are reserved for future use.
+The xref:raspberry-pi.adoc#boot-diagnostics[HDMI boot diagnostics] display is disabled if `DISABLE_HDMI=1`. Other non-zero values are reserved for future use.
 
 Default: `0`
 
