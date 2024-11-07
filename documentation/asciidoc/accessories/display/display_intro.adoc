@@ -113,7 +113,7 @@ NOTE: It is not possible to rotate the DSI display separately from the HDMI disp
 
 WARNING: Rotating touch input via device tree can cause conflicts with your input library. Whenever possible, configure touch event rotation in your input library or desktop.
 
-Rotation of touch input is independent of the orientation of the display itself. To change this you need to manually add a `dtoverlay` instruction in xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`]. Add the following entry to the end of `cmdline.txt`:
+Rotation of touch input is independent of the orientation of the display itself. To change this you need to manually add a `dtoverlay` instruction in xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`]. Add the following line at the end of `config.txt`:
 
 [source,ini]
 ----
