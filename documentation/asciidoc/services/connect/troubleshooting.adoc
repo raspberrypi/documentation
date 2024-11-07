@@ -63,12 +63,6 @@ For screen sharing, Connect can only share an existing graphical desktop session
 
 Connect usually communicates between devices without requiring changes to your network or firewall. However, especially restrictive networks can sometimes block Connect communication. To help debug problems with such networks, `rpi-connect` and `rpi-connect-lite` include the `rpi-connect doctor` command. `rpi-connect doctor` runs a series of tests to check that Connect communication functions properly on your network.
 
-Specifically:
-
-. Can we make an HTTPS request to the Raspberry Pi Connect API at `api.connect.raspberrypi.com` on port 443 and have it respond successfully?
-. Can we make an authenticated request to the Raspberry Pi Connect API?
-. Can we communicate with the Raspberry Pi Connect STUN or TURN servers at `stun.raspberrypi.com`, `turn1.raspberrypi.com`, `turn2.raspberrypi.com`, or `turn3.raspberrypi.com` on UDP port 3478 and receive a server reflexive candidate?
-. Can we communicate with the Raspberry Pi Connect TURN servers on TCP ports 3478 or 443, and UDP ports 3478, 443, and 49152 -> 65535 and receive a relay candidate?
 
 To run these tests on your device, run the following command:
 
