@@ -25,7 +25,6 @@ The Raspberry Pi 5 firmware defaults to loading `kernel_2712.img` because this i
 
 === `arm_64bit`
 
-NOTE: This flag has been removed from Raspberry Pi 5, as Raspberry Pi 5 only supports a 64-bit kernel.
 
 If set to 1, the kernel will be started in 64-bit mode. Setting to 0 selects 32-bit mode.
 
