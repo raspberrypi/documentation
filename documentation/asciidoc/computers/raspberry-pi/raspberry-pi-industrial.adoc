@@ -173,6 +173,8 @@ See https://gitlab.com/cryptsetup/cryptsetup[Cryptsetup] for more information ab
 
 ==== Program a key into OTP with `rpi-otp-private-key`
 
+NOTE: The `rpi-otp-private-key` script only works on devices that use the Broadcom xref:processors.adoc#bcm2711[BCM2711] or xref:processors.adoc#bcm2712[BCM2712] processors.
+
 The https://github.com/raspberrypi/rpi-eeprom/blob/master/tools/rpi-otp-private-key[`rpi-otp-private-key`] script wraps the device private key `vcmailbox` APIs to make it easier to read and write a key in the OpenSSL format.
 
 NOTE: The https://github.com/raspberrypi/usbboot[`usbboot`] repository contains all the tools you need, including https://github.com/raspberrypi/rpi-eeprom[`rpi-eeprom`] as a Git submodule.
