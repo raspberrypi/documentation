@@ -209,7 +209,7 @@ Then, please follow the relevant setup instructions for xref:../computers/camera
 | Depends on lens
 
 | Maximum exposure time (seconds)
-| 0.97
+| 3.28
 | 11.76
 | 112
 | 112
