@@ -133,6 +133,12 @@
                     "subpath": "keyboard-and-mouse.adoc"
                 },
                 {
+                    "title": "USB Hub",
+                    "description": "Official Raspberry Pi USB hub",
+                    "image": "full-sized/usb-3-hub.png",
+                    "subpath": "usb-3-hub.adoc"
+                },
+                {
                     "title": "Build HAT",
                     "description": "How to use the Build HAT",
                     "image": "full-sized/Build-HAT.png",
