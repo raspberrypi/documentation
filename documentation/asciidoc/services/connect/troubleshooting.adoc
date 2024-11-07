@@ -61,11 +61,42 @@ For screen sharing, Connect can only share an existing graphical desktop session
 
 ==== Networking and firewall issues
 
-Connect avoids changing your network or firewall in order to establish a connection. However, if you have a restrictive network and experience trouble connecting, check the following:
+Connect usually communicates between devices without requiring changes to your network or firewall. However, especially restrictive networks can sometimes block Connect communication. To help debug problems with such networks, `rpi-connect` and `rpi-connect-lite` include the `rpi-connect doctor` command. `rpi-connect doctor` runs a series of tests to check that Connect communication functions properly on your network.
 
-. Can you access the Connect API, which Connect uses for authentication and connection negotiation between your Raspberry Pi and your browser? To check, load https://api.connect.raspberrypi.com/up?[https://api.connect.raspberrypi.com/up?] on your Raspberry Pi.
-. Can you access the Connect STUN server, which Connect uses to obtain a peer-to-peer connection through local or public networks? To check, ping `stun.raspberrypi.com` on UDP port 3478.
-. Can you access our TURN servers, which Connect uses to relay sessions when a peer-to-peer connection fails? To check, ping `turn1.raspberrypi.com`, `turn2.raspberrypi.com` and `turn3.raspberrypi.com` on TCP ports 3478 or 443, or UDP ports 3478, 443 and 49152 -> 65535.
+
+To run these tests on your device, run the following command:
+
+[source,console]
+----
+$ rpi-connect doctor
+----
+
+If Connect can communicate properly on your network, you should see output similar to the following:
+
+----
+✓ Communication with Raspberry Pi Connect API
+✓ Authentication with Raspberry Pi Connect API
+✓ Peer-to-peer connection candidate via STUN
+✓ Peer-to-peer connection candidate via TURN
+----
+
+If Connect can't communicate properly on your network, you'll see an "x" instead of a check next to the failing test case. Ask your network administrator to enable the following connections on your network:
+
+* unauthenticated HTTPS requests to the Raspberry Pi Connect API on port 443 of `api.connect.raspberrypi.com` 
+* authenticated requests to the Raspberry Pi Connect API on port 443 of `api.connect.raspberrypi.com`
+* requests to Raspberry Pi Connect STUN or TURN servers on UDP port 3478 of all of the following:
+** `stun.raspberrypi.com`
+** `turn1.raspberrypi.com`
+** `turn2.raspberrypi.com`
+** `turn3.raspberrypi.com`
+* requests to Raspberry Pi Connect TURN servers on TCP ports 3478 or 443 of all of the following:
+** `turn1.raspberrypi.com`
+** `turn2.raspberrypi.com`
+** `turn3.raspberrypi.com`
+* requests to Raspberry Pi Connect TURN servers on UDP ports 3478, 443, or 49152 -> 65535 of all of the following:
+** `turn1.raspberrypi.com`
+** `turn2.raspberrypi.com`
+** `turn3.raspberrypi.com`
 
 === View Connect status
 
