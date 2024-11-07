@@ -62,16 +62,16 @@ For further details of configuring the Raspberry Pi 4 bootloader, see xref:raspb
 
 Before configuring network boot, make a note of the serial number and mac address so that the board can be identified by the TFTP/DHCP server.
 
-On Raspberry Pi 4 the MAC address is programmed at manufacture and there is no link between the MAC address and serial number. Both the MAC address and serial numbers are displayed on the bootloader xref:raspberry-pi.adoc#boot-diagnostics-on-the-raspberry-pi-4[HDMI diagnostics] screen.
+On Raspberry Pi 4 and later flagship models, the MAC address is programmed at manufacture and there is no link between the MAC address and serial number. Both the MAC address and serial numbers are displayed on the bootloader xref:raspberry-pi.adoc#boot-diagnostics[HDMI diagnostics] screen.
 
-To find the Ethernet MAC address:
+To find the Ethernet MAC address, run the following command:
 
 [source,console]
 ----
 $ ethtool -P eth0
 ----
 
-To find the serial number:
+To find the serial number, run the following command:
 
 [source,console]
 ----
