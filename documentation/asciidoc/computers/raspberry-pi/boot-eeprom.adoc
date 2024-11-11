@@ -4,9 +4,9 @@ Raspberry Pi 5, Raspberry Pi 4, 400, Compute Module 4, and Compute Module 4S com
 
 NOTE: You can find the scripts and pre-compiled binaries used to create `rpi-eeprom`  in the https://github.com/raspberrypi/rpi-eeprom/[rpi-eeprom GitHub repository].
 
-=== Boot diagnostics
+=== Diagnostics
 
-If an error occurs during boot, then an xref:configuration.adoc#led-warning-flash-codes[error code] will be displayed via the green LED. Newer versions of the bootloader will display a xref:raspberry-pi.adoc#boot-diagnostics-on-the-raspberry-pi-4[diagnostic message] which will be shown on both HDMI displays.
+If an error occurs during boot, then an xref:configuration.adoc#led-warning-flash-codes[error code] will be displayed via the green LED. Newer versions of the bootloader will display a xref:raspberry-pi.adoc#boot-diagnostics[diagnostic message] on all HDMI displays.
 
 [[bootloader_update_stable]]
 === Update the bootloader

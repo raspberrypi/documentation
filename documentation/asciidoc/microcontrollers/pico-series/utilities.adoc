@@ -8,8 +8,6 @@ If you are unsure what is programmed into your Raspberry Pi Pico-series device, 
 
 === Debugging using another Pico-series device
 
-CAUTION: Pico 2 is not yet supported by `debuprobe_on_pico` debugging software.
-
 You can use one Pico-series device to debug another Pico-series device. This is possible via `debugprobe`, an application that allows a Pico to act as a USB → SWD and UART converter.
 
 You can find the latest release of the firmware in https://github.com/raspberrypi/debugprobe/releases/latest[the debugprobe GitHub repository].
