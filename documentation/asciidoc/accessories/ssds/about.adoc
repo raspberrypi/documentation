@@ -19,7 +19,7 @@ Raspberry Pi SSDs are PCIe Gen 3-compliant.
 
 Raspberry Pi SSDs use the NVMe 1.4 register interface and command set.
 
-Raspberry Pi SSDs use the M.2 2230 from factor.
+Raspberry Pi SSDs use the M.2 2230 form factor.
 
 The following table describes the read and write speeds of Raspberry Pi SSDs using 4KB of random data:
 
