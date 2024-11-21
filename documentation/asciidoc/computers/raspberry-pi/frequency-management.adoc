@@ -66,9 +66,9 @@ Raspberry Pi 5 has two official fan options to assist with cooling:
 * https://www.raspberrypi.com/products/active-cooler/[Active Cooler]
 * https://www.raspberrypi.com/products/raspberry-pi-5-case/[Case for Raspberry Pi 5]
 
-Both of these plug into the four-pin JST-SH PWM fan connector located in the upper right of the board between the 40-pin GPIO header and the USB 2 ports. The fan connector pulls from the same current limit as USB peripherals. We recommend the Active Cooler case for overclockers, since it provides better cooling performance.
+Both of the Raspberry Pi 5 fan options plug into the four-pin JST-SH PWM fan connector located in the upper right of the board between the 40-pin GPIO header and the USB 2 ports. The fan connector pulls from the same current limit as USB peripherals. We recommend the Active Cooler case for overclockers, since it provides better cooling performance.
 
-Both of the available official accessories are actively managed by Raspberry Pi firmware. As the temperature of the Raspberry Pi increases, the fan reacts in the following way:
+The fans of the Active Cooler and the Raspberry Pi 5 Case are both actively managed by Raspberry Pi firmware. As the temperature of the Raspberry Pi 5 increases, the fan reacts in the following way:
 
 * below 50°C, the fan does not spin at all (0% speed)
 * at 50°C, the fan turns on at a low speed (30% speed)
@@ -82,7 +82,7 @@ At boot the fan is turned on, and the tachometer input is checked to see if the 
 
 ==== Fan connector pinout
 
-The fan connector is a 1mm pitch JST-SH socket containing the following four pins:
+The Raspberry Pi 5 fan connector is a 1mm pitch JST-SH socket containing the following four pins:
 
 [cols="1,2,2",width="50"%"]
 |===
