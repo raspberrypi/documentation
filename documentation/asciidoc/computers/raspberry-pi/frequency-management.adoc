@@ -59,16 +59,22 @@ Thanks to built-in throttling, heatsinks are not necessary to prevent overheatin
 
 === Fan cases
 
-For the Raspberry Pi 4, you have the option of adding the https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/[Raspberry Pi 4 Case Fan] to the lid of the Raspberry Pi 4 case.
+To ensure the best performance for your Raspberry Pi, use an active cooling solution such as a fan. Raspberry Pi firmware manages fan speeds for all official fans.
 
-Raspberry Pi 5 has two official fan options to assist with cooling:
+==== Raspberry Pi 4 fan
+
+For Raspberry Pi 4, add the https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/[Raspberry Pi 4 Case Fan] to the lid of the Raspberry Pi 4 case.
+
+==== Raspberry Pi 5 fans 
+
+For Raspberry Pi 5, use one of the official fan options:
 
 * https://www.raspberrypi.com/products/active-cooler/[Active Cooler]
 * https://www.raspberrypi.com/products/raspberry-pi-5-case/[Case for Raspberry Pi 5]
 
 Both of the Raspberry Pi 5 fan options plug into the four-pin JST-SH PWM fan connector located in the upper right of the board between the 40-pin GPIO header and the USB 2 ports. The fan connector pulls from the same current limit as USB peripherals. We recommend the Active Cooler case for overclockers, since it provides better cooling performance.
 
-The fans of the Active Cooler and the Raspberry Pi 5 Case are both actively managed by Raspberry Pi firmware. As the temperature of the Raspberry Pi 5 increases, the fan reacts in the following way:
+As the temperature of the Raspberry Pi 5 increases, the fan reacts in the following way:
 
 * below 50°C, the fan does not spin at all (0% speed)
 * at 50°C, the fan turns on at a low speed (30% speed)
@@ -80,7 +86,7 @@ Temperature decreases use the same mapping with a 5°C **hysteresis**; fan speed
 
 At boot the fan is turned on, and the tachometer input is checked to see if the fan is spinning. If it is, then the `cooling_fan` device tree overlay is enabled. This overlay is in `bcm2712-rpi-5-b.dtb` by default, but with `status=disabled`.
 
-==== Fan connector pinout
+==== Raspberry Pi 5 fan connector pinout
 
 The Raspberry Pi 5 fan connector is a 1mm pitch JST-SH socket containing the following four pins:
 
