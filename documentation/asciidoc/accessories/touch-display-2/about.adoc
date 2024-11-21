@@ -81,7 +81,7 @@ To set the screen orientation on a device that lacks a desktop environment, edit
 
 [source,ini]
 ----
-video=DSI-1:1280x720@60,rotate=<rotation-value>
+video=DSI-1:720x1280@60,rotate=<rotation-value>
 ----
 
 Replace the `<rotation-value>` placeholder with one of the following values, which correspond to the degree of rotation relative to the default on your display:
