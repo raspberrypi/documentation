@@ -81,7 +81,7 @@ To set the screen orientation on a device that lacks a desktop environment, edit
 
 [source,ini]
 ----
-video=DSI-1:1280x720@60,rotate=<rotation-value>
+video=DSI-1:720x1280@60,rotate=<rotation-value>
 ----
 
 Replace the `<rotation-value>` placeholder with one of the following values, which correspond to the degree of rotation relative to the default on your display:
@@ -103,10 +103,10 @@ The `vc4-kms-dsi-ili9881-7inch` overlay supports the following options:
 | DT parameter | Action
 
 | `sizex`
-| Sets X resolution (default 1280)
+| Sets X resolution (default 720)
 
 | `sizey`
-| Sets Y resolution (default 720)
+| Sets Y resolution (default 1280)
 
 | `invx`
 | Invert X coordinates
