@@ -59,6 +59,8 @@ Thanks to built-in throttling, heatsinks are not necessary to prevent overheatin
 
 === Fan cases
 
+For the Raspberry Pi 4, you have the option of adding the https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/[Raspberry Pi 4 Case Fan] to the lid of the Raspberry Pi 4 case.
+
 Raspberry Pi 5 has two official fan options to assist with cooling:
 
 * https://www.raspberrypi.com/products/active-cooler/[Active Cooler]
