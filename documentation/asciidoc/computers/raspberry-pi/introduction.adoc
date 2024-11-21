@@ -189,7 +189,7 @@ a|
 * single-lane https://datasheets.raspberrypi.com/pcie/pcie-connector-standard.pdf[PCIe FFC connector]
 * https://datasheets.raspberrypi.com/debug/debug-connector-specification.pdf[UART connector]
 * RTC battery connector
-* xref:raspberry-pi.adoc#fan-connector-pinout[four-pin JST-SH PWM fan connector]
+* xref:raspberry-pi.adoc#raspberry-pi-5-fan-connector-pinout[four-pin JST-SH PWM fan connector]
 * PoE+-capable Gigabit Ethernet (1Gb/s)
 * 2.4/5GHz dual-band 802.11ac Wi-Fi 5 (300Mb/s)
 * Bluetooth 5, Bluetooth Low Energy (BLE)
