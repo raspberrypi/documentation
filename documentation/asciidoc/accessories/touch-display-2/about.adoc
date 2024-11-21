@@ -103,10 +103,10 @@ The `vc4-kms-dsi-ili9881-7inch` overlay supports the following options:
 | DT parameter | Action
 
 | `sizex`
-| Sets X resolution (default 1280)
+| Sets X resolution (default 720)
 
 | `sizey`
-| Sets Y resolution (default 720)
+| Sets Y resolution (default 1280)
 
 | `invx`
 | Invert X coordinates
