@@ -154,6 +154,14 @@ Not relevant on Raspberry Pi 5 because there is no `start.elf` file.
 
 Default: `0x0`
 
+[[enable_rp1_uart]]
+==== `enable_rp1_uart`
+
+If `enable_rp1_uart` is set to `1` then firmware initialises RP1 UART0 to 115200 bps and doesn't reset RP1 before starting the OS (`pciex4_reset=1`).
+This makes it easier to get UART output on the 40-pin header in early boot-code e.g. bare-metal debug.
+
+Default: `0x0`
+
 [[pciex4_reset]]
 ==== `pciex4_reset`
 
