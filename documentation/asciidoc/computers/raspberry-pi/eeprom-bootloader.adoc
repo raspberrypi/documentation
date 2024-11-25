@@ -60,7 +60,7 @@ Raspberry Pi 400 has a dedicated power button which operates even if the process
 
 On Raspberry Pi 5 this places the PMIC in `STANDBY` mode where all outputs are switched off. There is no need to set `WAKE_ON_GPIO` and pressing the xref:raspberry-pi.adoc#power-button[dedicated power button] will boot the device.
 
-Default: `1` on Compute Module 5 and Pi 500, otherwise `0`
+Default: `1` on Compute Modules since Compute Module 5 and Keyboard models since Raspberry Pi 500; otherwise `0`
 
 [[BOOT_ORDER]]
 ==== `BOOT_ORDER`
