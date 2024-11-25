@@ -60,8 +60,7 @@ WARNING: Setting any overclocking parameters to values other than those used by 
 | Forces turbo mode frequencies even when the ARM cores are not busy. Enabling this may set the warranty bit if `over_voltage_*` is also set.
 
 | initial_turbo
-| Enables https://forums.raspberrypi.com/viewtopic.php?f=29&t=6201&start=425#p180099[turbo mode from boot] for the given value in seconds, or until cpufreq sets a frequency. The maximum value is `60`.
-| In newer versions of the firmware (rpi-update 2024/11) the default has been changed to `60` in order to reduce boot time.
+| Enables https://forums.raspberrypi.com/viewtopic.php?f=29&t=6201&start=425#p180099[turbo mode from boot] for the given value in seconds, or until cpufreq sets a frequency. The maximum value is `60`.  In newer versions of the firmware (rpi-update 2024/11) the default has been changed to `60` in order to reduce boot time. In addition, the Kernel CPU performance governor has been switched from `powersave` to `ondemand`.
 
 | arm_freq_min
 | Minimum value of `arm_freq` used for dynamic frequency clocking. Note that reducing this value below the default does not result in any significant power savings, and is not currently supported.
@@ -382,4 +381,4 @@ $ vcgencmd pmic_read_adc EXT5V_V
 
 === Overclocking problems
 
-Most overclocking issues show up immediately with a failure to boot. If this occurs, hold down the `shift` key during the next boot. This will temporarily disable all overclocking, allowing you to boot successfully and then edit your settings.
+Most overclocking issues show up immediately with a failure to boot. If this occurs, remove any clock frequency overrides from `config.txt` then increasing the core-voltage via the `over_voltage_delta` parameter before re-applying over-clocking parameters.
