@@ -18,7 +18,7 @@ For more information about using Wi-Fi and Bluetooth on Raspberry Pi Pico W-seri
 
 For more information about https://github.com/bluekitchen/btstack#supported-protocols-and-profiles[supported Bluetooth protocols and profiles], see the Blue Kitchen https://github.com/bluekitchen/btstack[BTStack] Github repository.
 
-NOTE: MicroPython distributions for other RP2040 and RP2350-based boards are available on the https://micropython.org/download/[MicroPython download page].
+NOTE: MicroPython distributions for other RP2040- and RP2350-based boards are available on the https://micropython.org/download/[MicroPython download page].
 
 To program your device, follow these steps:
 
