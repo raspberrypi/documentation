@@ -385,4 +385,9 @@ $ vcgencmd pmic_read_adc EXT5V_V
 
 === Overclocking problems
 
-Most overclocking issues show up immediately with a failure to boot. If this occurs, remove any clock frequency overrides from `config.txt` then increasing the core-voltage via the `over_voltage_delta` parameter before re-applying over-clocking parameters.
+Most overclocking issues show up immediately, when the device fails to boot. If your device fails to boot due to an overclocking configuration change, use the following steps to return your device to a bootable state:
+
+. Remove any clock frequency overrides from `config.txt`.
+. Increase the core voltage using `over_voltage_delta`.
+. Re-apply overclocking parameters, taking care to avoid the previous known-bad overclocking parameters.
+
