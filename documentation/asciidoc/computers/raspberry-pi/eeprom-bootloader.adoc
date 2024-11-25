@@ -47,7 +47,7 @@ Default: `115200`
 
 If `1` then `sudo halt` will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.
 
-This setting is not relevant on Raspberry Pi 5, CM5 or Pi500 because the xref:raspberry-pi.adoc#power-button[dedicated power button] may always be used to wakeup from `HALT` or `STANDBY`.
+This setting is not relevant on Raspberry Pi 5, Compute Module 5, or Raspberry Pi 500 because the xref:raspberry-pi.adoc#power-button[dedicated power button] may always be used to wake from `HALT` or `STANDBY`.
 
 Default: `1`
 
