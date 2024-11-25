@@ -398,7 +398,14 @@ This setting is ignored and network install is disabled if `DISABLE_HDMI=1` is s
 
 In order to detect the keyboard, network install must initialise the USB controller and enumerate devices. This increases boot time by approximately 1 second so it may be advantageous to disable network install in some embedded applications.
 
-Default: `1` on Raspberry Pi 4 and Raspberry Pi 400, and `0` on Compute Module 4.
+Default: `1` on Raspberry Pi 4 and Raspberry Pi 400, and `0` on Compute Module 4, CM4S and CM5.
+
+[[NET_INSTALL_AT_POWER_ON]]
+==== `NET_INSTALL_AT_POWER_ON`
+If this property is set to `1` then the network install UI will briefly be displayed after a cold boot to make this feature more obvious to new users.
+The default bootloader images set this value to `1` in the bootloader config. It can be disabled via the `Advanced Options` menu in `raspi-config` or by manually deleting the line via `sudo rpi-eeprom-config --edit`
+
+Default: `0`
 
 [[NET_INSTALL_KEYBOARD_WAIT]]
 ==== `NET_INSTALL_KEYBOARD_WAIT`
