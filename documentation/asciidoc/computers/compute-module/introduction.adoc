@@ -145,7 +145,7 @@ a|
 a|
 * CM4
 * CM5 (with reduced functionality)
-* | Compute Module 5 IO Board (CM5IO)
+| Compute Module 5 IO Board (CM5IO)
 a|
 * CM5
 * CM4 (with reduced functionality)
