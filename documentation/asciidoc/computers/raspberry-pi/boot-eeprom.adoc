@@ -23,7 +23,7 @@ There are multiple ways to update the bootloader of your Raspberry Pi.
 
 Raspberry Pi OS automatically updates the bootloader for important bug fixes. To manually update the bootloader or change the boot order, use xref:configuration.adoc#raspi-config[raspi-config].
 
-N.B. On Compute Module 4 and CM4S the bootrom is unable to load the `recovery.bin` file from EMMC and automatic bootloader updates are not enabled.
+NOTE: Compute Module 4 and Compute Module 4S do not support automatic bootloader updates because the bootrom cannot load the `recovery.bin` file from eMMC.
 The recommended update mechanism is `rpiboot` or via `flashrom` - see `rpi-eeprom-update -h` for more information.
 
 [[imager]]

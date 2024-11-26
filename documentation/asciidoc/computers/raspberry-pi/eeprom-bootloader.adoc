@@ -403,7 +403,7 @@ Default: `1` on Raspberry Pi 5, Raspberry Pi 4 and Raspberry Pi 400; `0` on Comp
 [[NET_INSTALL_AT_POWER_ON]]
 ==== `NET_INSTALL_AT_POWER_ON`
 
-When set to `1`, displays the network install UI briefly after a cold boot to make this feature more obvious to new users.
+When set to `1`, displays the network install UI briefly after a cold boot to make this feature more obvious to new users. Overrides `NET_INSTALL_ENABLED` if the settings conflict.
 
 The default bootloader images set this value to `1` in the bootloader config. To disable the brief network install UI display, use the `Advanced Options` menu in `raspi-config` or manually delete this line in `rpi-eeprom-config`:
 
