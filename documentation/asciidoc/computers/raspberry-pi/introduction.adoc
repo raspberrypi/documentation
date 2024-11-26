@@ -27,12 +27,12 @@ a|
 512MB | 26-pin GPIO header
 a|
 * HDMI
-* 2 × USB 2.0
+* 2× USB 2.0
 * CSI camera port
 * DSI display port
 * 3.5mm audio jack
 * RCA composite video
-* Ethernet (100Mb/s)
+* 100Mb/s Ethernet RJ45 with PoE support
 * SD card slot
 * micro USB power
 ^.^a|
@@ -54,11 +54,11 @@ image::images/model-b-plus.jpg[alt="Raspberry Pi Model B+"]
 | xref:processors.adoc#bcm2835[BCM2835] | 512MB | 40-pin GPIO header
 a|
 * HDMI
-* 4 × USB 2.0
+* 4× USB 2.0
 * CSI camera port
 * DSI display port
 * 3.5mm AV jack
-* Ethernet (100Mb/s)
+* 100Mb/s Ethernet RJ45 with PoE support
 * microSD card slot
 * micro USB power
 ^.^a|
@@ -83,11 +83,11 @@ image::images/2-model-b.jpg[alt="Raspberry Pi 2 Model B"]
 | xref:processors.adoc#bcm2836[BCM2836] (in version 1.2, switched to xref:processors.adoc#bcm2837[BCM2837]) | 1 GB | 40-pin GPIO header
 a|
 * HDMI
-* 4 × USB 2.0
+* 4× USB 2.0
 * CSI camera port
 * DSI display port
 * 3.5mm AV jack
-* Ethernet (100Mb/s)
+* 100Mb/s Ethernet RJ45 with PoE support
 * microSD card slot
 * micro USB power
 ^.^a|
@@ -96,11 +96,11 @@ image::images/3-model-b.jpg[alt="Raspberry Pi 3 Model B"]
 | xref:processors.adoc#bcm2837[BCM2837] | 1 GB | 40-pin GPIO header
 a|
 * HDMI
-* 4 × USB 2.0
+* 4× USB 2.0
 * CSI camera port
 * DSI display port
 * 3.5mm AV jack
-* Ethernet (100Mb/s)
+* 100Mb/s Ethernet RJ45 with PoE support
 * 2.4GHz single-band 802.11n Wi-Fi (35Mb/s)
 * Bluetooth 4.1, Bluetooth Low Energy (BLE)
 * microSD card slot
@@ -111,11 +111,11 @@ image::images/3-model-b-plus.jpg[alt="Raspberry Pi 3 Model B+"]
 | xref:processors.adoc#bcm2837b0[BCM2837b0] | 1GB | 40-pin GPIO header
 a|
 * HDMI
-* 4 × USB 2.0
+* 4× USB 2.0
 * CSI camera port
 * DSI display port
 * 3.5mm AV jack
-* PoE-capable Ethernet (300Mb/s)
+* 300Mb/s Ethernet RJ45 with PoE support
 * 2.4/5GHz dual-band 802.11ac Wi-Fi (100Mb/s)
 * Bluetooth 4.2, Bluetooth Low Energy (BLE)
 * microSD card slot
@@ -147,13 +147,13 @@ a|
 
 8GB | 40-pin GPIO header
 a|
-* 2 × micro HDMI
-* 2 × USB 2.0
-* 2 × USB 3.0
+* 2× micro HDMI
+* 2× USB 2.0
+* 2× USB 3.0
 * CSI camera port
 * DSI display port
 * 3.5mm AV jack
-* PoE-capable Gigabit Ethernet (1Gb/s)
+* Gigabit (1Gb/s) Ethernet RJ45 with PoE support
 * 2.4/5GHz dual-band 802.11ac Wi-Fi (120Mb/s)
 * Bluetooth 5, Bluetooth Low Energy (BLE)
 * microSD card slot
@@ -163,10 +163,10 @@ a|
 image::images/400.jpg[alt="Raspberry Pi 400"]
 | xref:processors.adoc#bcm2711[BCM2711] | 4GB | 40-pin GPIO header
 a|
-* 2 × micro HDMI
+* 2× micro HDMI
 * USB 2.0
-* 2 × USB 3.0
-* Gigabit Ethernet (1Gb/s)
+* 2× USB 3.0
+* Gigabit (1Gb/s) Ethernet RJ45
 * 2.4/5GHz dual-band 802.11ac Wi-Fi (120Mb/s)
 * Bluetooth 5, Bluetooth Low Energy (BLE)
 * microSD card slot
@@ -182,15 +182,15 @@ a|
 
 8GB | 40-pin GPIO header
 a|
-* 2 × micro HDMI
-* 2 × USB 2.0
-* 2 × USB 3.0
-* 2 × CSI camera/DSI display ports
+* 2× micro HDMI
+* 2× USB 2.0
+* 2× USB 3.0
+* 2× CSI/DSI combined camera/display ports
 * single-lane https://datasheets.raspberrypi.com/pcie/pcie-connector-standard.pdf[PCIe FFC connector]
 * https://datasheets.raspberrypi.com/debug/debug-connector-specification.pdf[UART connector]
 * RTC battery connector
 * xref:raspberry-pi.adoc#raspberry-pi-5-fan-connector-pinout[four-pin JST-SH PWM fan connector]
-* PoE+-capable Gigabit Ethernet (1Gb/s)
+* Gigabit (1Gb/s) Ethernet RJ45 with PoE+ support
 * 2.4/5GHz dual-band 802.11ac Wi-Fi 5 (300Mb/s)
 * Bluetooth 5, Bluetooth Low Energy (BLE)
 * microSD card slot
@@ -208,7 +208,7 @@ All Zero models have the following connectivity:
 * a microSD card slot
 * a CSI camera port (version 1.3 of the original Zero introduced this port)
 * a mini HDMI port
-* 2 × micro USB ports (one for input power, one for external devices)
+* 2× micro USB ports (one for input power, one for external devices)
 
 [cols="3a,1,1,1,2"]
 |===
