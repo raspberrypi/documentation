@@ -47,7 +47,7 @@ Default: `115200`
 
 If `1` then `sudo halt` will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.
 
-This setting is not relevant on Flagship models since 5, Compute Modules since 5, and Keyboard models since 500 because the xref:raspberry-pi.adoc#power-button[dedicated power button] may always be used to wake from `HALT` or `STANDBY`.
+This setting is not relevant on Flagship models since Raspberry Pi 5, Compute Modules since CM5, and Keyboard models since Pi 500 because the xref:raspberry-pi.adoc#power-button[dedicated power button] may always be used to wake from `HALT` or `STANDBY`.
 
 Default: `1`
 
@@ -60,7 +60,7 @@ Raspberry Pi 400 has a dedicated power button which operates even if the process
 
 On Raspberry Pi 5 this places the PMIC in `STANDBY` mode where all outputs are switched off. There is no need to set `WAKE_ON_GPIO` and pressing the xref:raspberry-pi.adoc#power-button[dedicated power button] will boot the device.
 
-Default: `1` on Compute Modules since 5 and Keyboard models since 400; otherwise `0`
+Default: `1` on Compute Modules since CM5 and Keyboard models since Pi 400; otherwise `0`
 
 [[BOOT_ORDER]]
 ==== `BOOT_ORDER`
@@ -398,7 +398,7 @@ This setting is ignored and network install is disabled if `DISABLE_HDMI=1` is s
 
 In order to detect the keyboard, network install must initialise the USB controller and enumerate devices. This increases boot time by approximately 1 second so it may be advantageous to disable network install in some embedded applications.
 
-Default: `1` on Flagship models since 4 and Keyboard models since 400; `0` on Compute Modules since 4 (including Compute Module 4S).
+Default: `1` on Flagship models since Raspberry Pi 4 and Keyboard models since Pi 400; `0` on Compute Modules since CM4 (including CM4S).
 
 [[NET_INSTALL_AT_POWER_ON]]
 ==== `NET_INSTALL_AT_POWER_ON`
