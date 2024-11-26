@@ -11,7 +11,7 @@ To learn more about Compute Module 5 (CM5) and its corresponding IO Board, see t
 
 Design data for the Compute Module 5 IO Board (CM5IO) can be found in its datasheet:
 
-* https://datasheets.raspberrypi.com/cm5io/cm5io-datasheet.pdf[CM5IO datasheet]
+* https://datasheets.raspberrypi.com/cm5/cm5io-datasheet.pdf[CM5IO datasheet]
 * https://rpltd.co/cm5io-design-files[CM5IO design files]
 
 === Compute Module 4 datasheet
@@ -64,7 +64,7 @@ This white paper helps developers migrate from Compute Module 1 or Compute Modul
 
 === Compute Module IO Board schematics
 
-The Compute Module IO Board (CMIO) provides a variety of interfaces for CM1, CM3, CM3L, and CM3+. The Compute Module IO Board comes in two variants: Version 1 and Version 3. Version 1 is only compatible with CM1. Version 3 is compatible with CM1, CM3, CM3+, and CM4S. Compute Module IO Board Version 3 is sometimes written as the shorthand CMIO3. To learn more about CMIO1 and CMIO3, see the following documents:
+The Compute Module IO Board (CMIO) provides a variety of interfaces for CM1, CM3, CM3+, and CM4S. The Compute Module IO Board comes in two variants: Version 1 and Version 3. Version 1 is only compatible with CM1. Version 3 is compatible with CM1, CM3, CM3+, and CM4S. Compute Module IO Board Version 3 is sometimes written as the shorthand CMIO3. To learn more about CMIO1 and CMIO3, see the following documents:
 
 * https://datasheets.raspberrypi.com/cmio/cmio-schematics.pdf[Schematics for CMIO]
 * https://datasheets.raspberrypi.com/cmio/RPi-CMIO-R1P2.zip[Design documents for CMIO Version 1.2 (CMIO/CMIO1)]
