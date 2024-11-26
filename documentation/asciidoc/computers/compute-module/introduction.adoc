@@ -9,18 +9,25 @@ Compute Modules use the following Raspberry Pi SoCs:
 * BCM2835 for CM1
 * BCM2837 for CM3, CM3+
 * BCM2711 for CM4, CM4S
+* BCM2712 for CM5
+
+=== Compute Module 5
+
+.Compute Module 5
+image::images/cm5.png[alt="Compute Module 5", width="60%"]
+
+The Compute Module 5 (CM5) contains the internals of a Raspberry Pi 5 (the BCM2712 processor and 2GB, 4GB, or 8GB of RAM) as well as an optional 0GB (Lite), 16GB, 32GB or 64GB of eMMC flash storage.
+
+CM5 uses the same form factor as CM4, featuring two 100-pin high density connectors.
 
 === Compute Module 4
-
-The latest version of the Compute Module is the Compute Module 4 (CM4). We recommend CM4 for all future development.
 
 .Compute Module 4
 image::images/cm4.jpg[alt="Compute Module 4", width="60%"]
 
 The Compute Module 4 (CM4) contains the internals of a Raspberry Pi 4 (the BCM2711 processor and 1GB, 2GB, 4GB, or 8GB of RAM) as well as an optional 0GB (Lite), 8GB, 16GB or 32GB of eMMC flash storage.
 
-Unlike CM1, CM3, and CM3+, CM4 does not use the DDR2 SO-DIMM form factor. Instead, CM4 uses two 100-pin high density connectors in a smaller physical footprint.
-This change helped add the following interfaces:
+Unlike CM1, CM3, and CM3+, CM4 does not use the DDR2 SO-DIMM form factor. Instead, CM4 uses two 100-pin high density connectors in a smaller physical footprint. This change helped add the following interfaces:
 
 * an additional second HDMI port
 * PCIe
@@ -63,6 +70,24 @@ Raspberry Pi IO Boards provide a way to connect a single Compute Module to a var
 
 IO Boards are breakout boards intended for development; in production, you should use a smaller, potentially custom board that provides only the ports and peripherals required for your use-case.
 
+=== Compute Module 5 IO Board
+
+.Compute Module 5 IO Board
+image::images/cm5io.png[alt="Compute Module 5 IO Board", width="60%"]
+
+Compute Module 5 IO Board provides the following interfaces:
+
+* HAT footprint with 40-pin GPIO connector and PoE header
+* Two HDMI ports
+* Two USB 2.0 ports
+* Gigabit Ethernet RJ45 with PoE support
+* microSD card slot (only for use with Lite variants with no eMMC)
+* PCIe Gen 2 socket
+* 5V @ 5A power input via USB-C using the same standard as Raspberry Pi 5
+* 2 x MIPI DSI display FPC connectors (22-pin 0.5 mm pitch cable)
+* 2 x MIPI CSI-2 camera FPC connectors (22-pin 0.5 mm pitch cable)
+* Real-time clock with battery socket
+
 === Compute Module 4 IO Board
 
 .Compute Module 4 IO Board
@@ -74,8 +99,9 @@ Compute Module 4 IO Board provides the following interfaces:
 * Two HDMI ports
 * Two USB 2.0 ports
 * Gigabit Ethernet RJ45 with PoE support
-* MicroSD card slot (only for use with Lite variants with no eMMC)
+* microSD card slot (only for use with Lite variants with no eMMC)
 * PCIe Gen 2 socket
+* micro USB upstream port
 * 12V input via barrel jack (supports up to 26V if PCIe unused)
 * 2 x MIPI DSI display FPC connectors (22-pin 0.5 mm pitch cable)
 * 2 x MIPI CSI-2 camera FPC connectors (22-pin 0.5 mm pitch cable)
@@ -118,4 +144,67 @@ a|
 | Compute Module 4 IO Board (CM4IO)
 a|
 * CM4
+* CM5 (with reduced functionality)
+* | Compute Module 5 IO Board (CM5IO)
+a|
+* CM5
+* CM4 (with reduced functionality)
 |===
+
+== CM5 Accessories
+
+=== IO Case
+
+The Compute Module 5 IO Board Case provides physical protection for a CM5IO Board.
+
+.Compute Module 5 IO Board Case
+image::images/cm5io-case.png[alt="Compute Module 5 IO Board Case", width="60%"]
+
+The Case provides cut-outs for all externally-facing ports and LEDs on the CM5IO Board, and an attachment point for a Raspberry Pi Antenna Kit.
+
+.Compute Module 5 IO Board Case ports
+image::images/cm5io-case-front.png[alt="the port selection on the Compute Module 5 IO Board Case", width="60%"]
+
+To mount a CM5IO Board within your Case, position your Board in the bottom section of the case, aligning the four mount points inset slightly from each corner of the Board. Fasten four screws into the mount points. Take care not to over-tighten the screws.
+
+To use the Case fan, connect the fan cable to the FAN (J14) port on the Board.
+
+To close the case, put the top case on top of the bottom case. Facing the front of the case, which has port pass-throughs, carefully align the screw holes on the left and right side of the case and the power button on the back of the case. Tighten four screws into the screw holes. Take care not to over-tighten the screws.
+
+TIP: The Case comes with a fan pre-installed. To mount a Compute Module with the passive Cooler with a Board mounted in the Case, remove the fan. To remove the fan, remove the four screws positioned in the corners of the fan.
+
+.CM5 Case physical specification
+image::images/cm5-case-physical.png[alt="CM5 Case physical specification", width="80%"]
+
+=== Antenna
+
+The Raspberry Pi Antenna Kit provides a certified external antenna to boost wireless reception on a CM4 or CM5.
+
+.CM4 and CM5 Antenna
+image::images/cm4-cm5-antenna.jpg[alt="The Antenna, connected to CM4", width="60%"]
+
+To attach the Antenna to your Compute Module and Case, complete the following steps:
+
+. Connect the https://en.wikipedia.org/wiki/Hirose_U.FL[U.FL connector] on the cable to the U.FL-compatible connector on your Compute Module.
+. Secure the toothed washer onto the male SMA connector at the end of the cable, then insert the SMA connector, with the antenna facing outward, through the hole in the Case.
+. Fasten the SMA connector into place with the retaining hexagonal nut and washer.
+. Tighten the female SMA connector on the Antenna onto the male SMA connector.
+. Adjust the Antenna to its final position by turning it up to 90°.
+
+.CM4 and CM5 Antenna assembly diagram
+image::images/cm4-cm5-antenna-assembly.svg[alt="CM4 and CM5 antenna assembly diagram", width="60%"]
+
+.CM4 and CM5 Antenna physical specification
+image::images/cm4-cm5-antenna-physical.png[alt="CM4 and CM5 antenna physical specification", width="80%"]
+
+=== Cooler
+
+The CM5 Cooler helps dissipate heat from your CM5, improving CPU performance and longevity. To mount the Cooler to your CM5, attach the thermally conductive silicone at the bottom of the Cooler to the top of your CM5. As the CM5 heats, the silicone will attach more securely.
+
+.CM5 Cooler
+image::images/cm5-cooler.png[alt="CM5 Cooler", width="30%"]
+
+.CM5 Cooler physical specification
+image::images/cm5-cooler-physical.png[alt="CM5 Cooler physical specification", width="80%"]
+
+NOTE: The CM5 Cooler is only compatible with the CM5IO Case if you remove the fan from the case.

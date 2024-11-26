@@ -325,9 +325,34 @@ a| optional:
 * 2.4/5GHz dual-band 802.11ac Wi-Fi 5 (300Mb/s)
 * Bluetooth 5, Bluetooth Low Energy (BLE)
 
+^.^a|
+.Raspberry Pi Compute Module 5
+image::images/compute-module-5.png[alt="Raspberry Pi Compute Module 5"]
+| xref:processors.adoc#bcm2712[BCM2712]
+a|
+2GB
+
+4GB
+
+8GB
+
+16GB
+a|
+0GB (Lite)
+
+16GB
+
+32GB
+
+64GB
+| dual 100-pin high density connectors
+a| optional:
+
+* 2.4/5GHz dual-band 802.11ac Wi-Fi 5 (300Mb/s)
+* Bluetooth 5, Bluetooth Low Energy (BLE)
 |===
 
-NOTE: Several Compute Modules use the physical DDR2 SO-DIMM form factor, but are not compatible with DDR2 SO-DIMM electrical specifications.
+NOTE: Compute Modules that use the physical DDR2 SO-DIMM form factor are *not* compatible with DDR2 SO-DIMM electrical specifications.
 
 For more information about Raspberry Pi Compute Modules, see xref:../computers/compute-module.adoc[the Compute Module documentation].
 

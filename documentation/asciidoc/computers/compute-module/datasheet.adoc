@@ -1,5 +1,19 @@
 == Specifications
 
+=== Compute Module 5 datasheet
+
+To learn more about Compute Module 5 (CM5) and its corresponding IO Board, see the following documents:
+
+* https://datasheets.raspberrypi.com/cm5/cm5-datasheet.pdf[CM5 datasheet]
+* https://rpltd.co/cm5-design-files[CM5 design files]
+
+=== Compute Module 5 IO Board datasheet
+
+Design data for the Compute Module 5 IO Board (CM5IO) can be found in its datasheet:
+
+* https://datasheets.raspberrypi.com/cm5io/cm5io-datasheet.pdf[CM5IO datasheet]
+* https://rpltd.co/cm5io-design-files[CM5IO design files]
+
 === Compute Module 4 datasheet
 
 To learn more about Compute Module 4 (CM4) and its corresponding IO Board, see the following documents:

@@ -11,7 +11,7 @@ To use a Compute Module, a user must design a motherboard that:
 * provides power to the Compute Module (3.3V and 1.8V at minimum)
 * connects the pins to the required peripherals for the user's application
 
-Raspberry Pi's IO Boards provide the following functionality:
+Raspberry Pi IO Boards provide the following functionality:
 
 * powers the module
 * wires the GPIO to pin headers
