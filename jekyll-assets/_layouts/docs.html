@@ -9,51 +9,63 @@
     <div id="docs-content">
       <div id="toc-container-container">
         <div id="toc-container">
-          <div id="docs-header">
-            <h1 id="docs-header-title"><a href="/documentation">Documentation</a></h1>
-            {% include theme.html %}
+          <div id="toc-inner">
+            <div id="docs-header">
+              <h1 id="docs-header-title">
+                <a href="/documentation">
+                  Documentation
+                </a>
+              </h1>
+              <label class="mobile-menu-toggle" for="mobile-toggle"><div>≣</div></label>
+              {% include theme.html %}
+            </div>
+            <div id="docsearch">
+              
+            </div>
           </div>
-          <div id="docsearch"></div>
-          {% for subdir in site.data.nav %}
-            {% if subdir.toc[0] %}
-              <div class="itemcontents">
-                <ul class="sectlevel1">
-                  <li>
-                    <a class="level1" href="{{ site.baseurl }}{{ subdir.path }}">{{ subdir.title | markdownify }}</a>
-                  </li>
-                  {% for item in subdir.toc %}
-                    <div class="itemcontents">
-                      <ul class="sectlevel1">
-                        <li>
-                          <a class="level2" href="{{ site.baseurl }}{{ item.path }}">{{ item.title | markdownify }}</a>
-                        </li>
-                        {% if item.sections[0] %}
-                          <div class="itemcontents">
-                            <ul class="sectlevel1">
-                              {% for entry in item.sections %}
-                                <li>
-                                  <a class="level3" href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}">{{ entry.heading | markdownify }}</a>
-                                  {% if entry.subsections[0] %}
-                                    <ul>
-                                      {% for subentry in entry.subsections %}
-                                        <li>
-                                          <a class="level4" href="{{ site.baseurl }}{{ item.path }}#{{ subentry.anchor }}">{{ subentry.heading | markdownify }}</a>
-                                        </li>
-                                      {% endfor %}
-                                    </ul>
-                                  {% endif %}
-                                </li>
-                              {% endfor %}
-                            </ul>
-                          </div>
-                        {% endif %}
-                      </ul>
-                    </div>
-                  {% endfor %}
-                </ul>
-              </div>
-            {% endif %}
-          {% endfor %}
+          <input type="checkbox" id="mobile-toggle">
+          <div class="toc">
+            {% for subdir in site.data.nav %}
+              {% if subdir.toc[0] %}
+                <div class="itemcontents">
+                  <ul class="sectlevel1">
+                    <li>
+                      <a class="level1" href="{{ site.baseurl }}{{ subdir.path }}">{{ subdir.title | markdownify }}</a>
+                    </li>
+                    {% for item in subdir.toc %}
+                      <div class="itemcontents">
+                        <ul class="sectlevel1">
+                          <li>
+                            <a class="level2" href="{{ site.baseurl }}{{ item.path }}">{{ item.title | markdownify }}</a>
+                          </li>
+                          {% if item.sections[0] %}
+                            <div class="itemcontents">
+                              <ul class="sectlevel1">
+                                {% for entry in item.sections %}
+                                  <li>
+                                    <a class="level3" href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}">{{ entry.heading | markdownify }}</a>
+                                    {% if entry.subsections[0] %}
+                                      <ul>
+                                        {% for subentry in entry.subsections %}
+                                          <li>
+                                            <a class="level4" href="{{ site.baseurl }}{{ item.path }}#{{ subentry.anchor }}">{{ subentry.heading | markdownify }}</a>
+                                          </li>
+                                        {% endfor %}
+                                      </ul>
+                                    {% endif %}
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                            </div>
+                          {% endif %}
+                        </ul>
+                      </div>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
         </div>
       </div>
       <div id="docs-container">

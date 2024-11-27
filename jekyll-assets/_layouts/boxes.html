@@ -10,7 +10,7 @@
       <h1><a href="/documentation/">Raspberry Pi Documentation</a></h1>
       <div id="search-theme-toggle-container">
         <div id="docsearch"></div>
-        <a id="theme-toggle-header" alt="toggle site theme" title="toggle site theme" onclick="toggleTheme()"></a>
+        {% include theme.html %}
       </div>
       {% include tabs.html %}
     </div>
@@ -35,8 +35,6 @@
       </section>
     </div>
 
-    {% include contribute.html %}
-    {% include copyright.html %}
     {% include footer.html %}
     {% include search.html %}
 
