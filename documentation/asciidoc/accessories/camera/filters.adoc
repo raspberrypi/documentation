@@ -39,7 +39,7 @@ Both the High Quality Camera and Global Shutter Camera contain an IR filter to r
 
 === Filter Removal
 
-WARNING: *This procedure cannot be reversed:* the adhesive that attaches the filter will not survive being lifted and replaced, and while the IR filter is about 1.1mm thick, it may crack when it is removed. *Removing it will void the warranty on the product*. Nevertheless, removing the filter will be desirable to some users.
+WARNING: *This procedure cannot be reversed:* the adhesive that attaches the filter will not survive being lifted and replaced, and while the IR filter is about 1.1mm thick, it may crack when it is removed. *Removing it will void the warranty on the product*.
 
 You can remove the filter from both the HQ and GS cameras. The HQ camera is shown in the demonstration below.
 
@@ -47,23 +47,23 @@ image:images/FILTER_ON_small.jpg[width="65%"]
 
 NOTE: Make sure to work in a clean and dust-free environment, as the sensor will be exposed to the air. 
 
-1. Unscrew the two 1.5 mm hex lock keys on the underside of the main circuit board. Be careful not to let the washers roll away.
+. Unscrew the two 1.5 mm hex lock keys on the underside of the main circuit board. Be careful not to let the washers roll away.
 +
 image:images/SCREW_REMOVED_small.jpg[width="65%"]
-2. There is a gasket of slightly sticky material between the housing and PCB which will require some force to separate. You may try some ways to weaken the adhesive, such as a little isopropyl alcohol and/or heat (~20-30 C). 
-3. Once the adhesive is loose, lift up the board and place it down on a very clean surface. Make sure the sensor does not touch the surface.
+. There is a gasket of slightly sticky material between the housing and PCB which will require some force to separate. You may try some ways to weaken the adhesive, such as a little isopropyl alcohol and/or heat (~20-30 C). 
+. Once the adhesive is loose, lift up the board and place it down on a very clean surface. Make sure the sensor does not touch the surface.
 +
 image:images/FLATLAY_small.jpg[width="65%"]
-4. Turn the lens mount around so that it is "looking" upwards and place it on a table.
+. Face the lens upwards and place the mount on a flat surface.
 +
 image:images/SOLVENT_small.jpg[width="65%"]
-5. To minimise the risk of breaking the filter, use a pen top or similar soft plastic item to push down on the filter only at the very edges where the glass attaches to the aluminium. The glue will break and the filter will detach from the lens mount.
+. To minimise the risk of breaking the filter, use a pen top or similar soft plastic item to push down on the filter only at the very edges where the glass attaches to the aluminium. The glue will break and the filter will detach from the lens mount.
 +
 image:images/REMOVE_FILTER_small.jpg[width="65%"]
-6. Given that changing lenses will expose the sensor, at this point you could affix a clear filter (for example, OHP plastic) to minimize the chance of dust entering the sensor cavity.
-7. Replace the main housing over the circuit board. Be sure to realign the housing with the gasket, which remains on the circuit board.
-8. Apply the nylon washer first to prevent damage to the circuit board. 
-9. Next, fit the steel washer, which prevents damage to the nylon washer. Screw down the two hex lock keys. As long as the washers have been fitted in the correct order, they do not need to be screwed very tightly.
+. Given that changing lenses will expose the sensor, at this point you could affix a clear filter (for example, OHP plastic) to minimize the chance of dust entering the sensor cavity.
+. Replace the main housing over the circuit board. Be sure to realign the housing with the gasket, which remains on the circuit board.
+. Apply the nylon washer first to prevent damage to the circuit board. 
+. Next, fit the steel washer, which prevents damage to the nylon washer. Screw down the two hex lock keys. As long as the washers have been fitted in the correct order, they do not need to be screwed very tightly.
 +
 image:images/FILTER_OFF_small.jpg[width="65%"]
 
