@@ -32,7 +32,7 @@ a|
 * DSI display port
 * 3.5mm audio jack
 * RCA composite video
-* 100Mb/s Ethernet RJ45 with PoE support
+* 100Mb/s Ethernet RJ45
 * SD card slot
 * micro USB power
 ^.^a|
@@ -58,7 +58,7 @@ a|
 * CSI camera port
 * DSI display port
 * 3.5mm AV jack
-* 100Mb/s Ethernet RJ45 with PoE support
+* 100Mb/s Ethernet RJ45
 * microSD card slot
 * micro USB power
 ^.^a|
@@ -87,7 +87,7 @@ a|
 * CSI camera port
 * DSI display port
 * 3.5mm AV jack
-* 100Mb/s Ethernet RJ45 with PoE support
+* 100Mb/s Ethernet RJ45
 * microSD card slot
 * micro USB power
 ^.^a|
@@ -100,7 +100,7 @@ a|
 * CSI camera port
 * DSI display port
 * 3.5mm AV jack
-* 100Mb/s Ethernet RJ45 with PoE support
+* 100Mb/s Ethernet RJ45
 * 2.4GHz single-band 802.11n Wi-Fi (35Mb/s)
 * Bluetooth 4.1, Bluetooth Low Energy (BLE)
 * microSD card slot
@@ -153,7 +153,7 @@ a|
 * CSI camera port
 * DSI display port
 * 3.5mm AV jack
-* Gigabit (1Gb/s) Ethernet RJ45 with PoE support
+* Gigabit (1Gb/s) Ethernet RJ45 with PoE+ support
 * 2.4/5GHz dual-band 802.11ac Wi-Fi (120Mb/s)
 * Bluetooth 5, Bluetooth Low Energy (BLE)
 * microSD card slot
