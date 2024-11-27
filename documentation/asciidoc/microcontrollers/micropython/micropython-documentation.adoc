@@ -7,15 +7,3 @@ https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.
 https://docs.micropython.org/en/latest/rp2/quickref.html[RP2 Quick Reference]:: The official documentation around the RP2040 port of MicroPython
 https://docs.micropython.org/en/latest/library/rp2.html[RP2 Library]:: The official documentation about the `rp2` module in MicroPython
 
-=== Further reading
-
-image::images/micropython_book.png[width="70%",float=right]
-
-Check out https://store.rpipress.cc/collections/getting-started/products/get-started-with-micropython-on-raspberry-pi-pico-2nd-edition[_Get Started with MicroPython on Raspberry Pi Pico_] to learn how your Pico can interact with the world around it using the MicroPython programming language. Fully updated for Raspberry Pi Pico W and the latest version of MicroPython, this book shows you how to:
-
-* set up your Pico or Pico W and start using it
-* start writing programs using MicroPython
-* control and sense electronic components
-* discover how to use Pico's unique Programmable IO
-* turn Raspberry Pi Pico W into a network-connected node for the Internet of Things
-* link your Pico W to your smartphone, tablet, or another Pico W with Bluetooth Low Energy (BLE)

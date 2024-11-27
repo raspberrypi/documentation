@@ -189,8 +189,3 @@ $ sudo ./eepflash.sh -f=sense.eep -t=24c32 -w
 $ i2cset -y -f 1 0x46 0xf3 0
 ----
 
-[.booklink, booktype="free", link=https://github.com/raspberrypipress/released-pdfs/raw/main/experiment-with-the-sense-hat.pdf, image=image::images/experiment-with-the-sense-hat.png[]]
-
-== Further reading
-
-You can find more information on how to use the Sense HAT in the Raspberry Pi Press book https://github.com/raspberrypipress/released-pdfs/raw/main/experiment-with-the-sense-hat.pdf[Experiment with the Sense HAT]. Written by The Raspberry Pi Foundation's Education Team, it is part of the MagPi Essentials series published by Raspberry Pi Press. The book covers the background of the Astro Pi project, and walks you through how to make use of all the Sense HAT features using the xref:sense-hat.adoc#use-the-sense-hat-with-python[Python library].

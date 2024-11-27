@@ -107,7 +107,7 @@ image::images/CMIO-Cam-Adapter.jpg[alt="Connect the adapter board", width="60%"]
 +
 image:images/CMIO-Cam-GPIO2.jpg[alt="GPIO connection with additional camera", width="60%"]
 
-. _(CM4 only)_: Connect the J6 GPIO pins with two vertical-orientation jumpers.
+. _(CM4 and CM5)_: Connect the J6 GPIO pins with two vertical-orientation jumpers.
 +
 image:images/j6_vertical.jpg[alt="Connect the J6 GPIO pins in vertical orientation", width="60%"]
 
