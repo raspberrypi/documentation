@@ -15,7 +15,7 @@ To flash the Compute Module eMMC, you need the following:
 
 * Another computer, referred to in this guide as the *host device*. You can use Linux (we recommend Raspberry Pi OS or Ubuntu), Windows, or macOS.
 * The Compute Module IO Board xref:compute-module.adoc#io-board-compatibility[that corresponds to your Compute Module model].
-* A micro USB cable, or a USB-C cable for Compute Module models since CM5.
+* A micro USB cable, or a USB-C cable for Compute Module models since CM5IO.
 
 === Set up the IO Board
 
@@ -25,7 +25,7 @@ To begin, physically set up your IO Board. This includes connecting the Compute 
 ======
 Compute Module 5 IO Board::
 +
-To set up the Compute Module 4 IO Board:
+To set up the Compute Module 5 IO Board:
 +
 . Connect the Compute Module to the IO board. When connected, the Compute Module should lie flat.
 . Fit `nRPI_BOOT` to J2 (`disable eMMC Boot`) on the IO board jumper.

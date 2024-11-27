@@ -1,22 +1,20 @@
 Pico-series devices are organised into **families** based on product generation.
 
-The original Raspberry Pi Pico family, referred to as Pico or Pico 1, comes in four variants:
+The original Raspberry Pi Pico family, referred to as Pico or Pico 1, comes in the following variants:
 
-* Raspberry Pi Pico
-* Raspberry Pi Pico H
-* Raspberry Pi Pico W
-* Raspberry Pi Pico WH
+* Pico
+* Pico H
+* Pico W
+* Pico WH
 
-The second-generation Raspberry Pi Pico family is referred to as Pico 2. Pico 2 comes in two variants:
+The second-generation Raspberry Pi Pico family is referred to as Pico 2. Pico 2 comes in the following variants:
 
-* Raspberry Pi Pico 2
-* Raspberry Pi Pico 2 with headers
+* Pico 2
+* Pico 2 W
 
 == Pico 2 family
 
 image::images/pico-2.png[width="75%"]
-
-The Raspberry Pi Pico 2 family consists of two boards; Raspberry Pi Pico 2, and Raspberry Pi Pico 2 with headers.
 
 [[pico-2-technical-specification]]
 === Raspberry Pi Pico 2

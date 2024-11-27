@@ -73,13 +73,13 @@ Raspberry Pi IO Boards provide the following functionality:
 * power the module
 * connects the GPIO to pin headers
 * connects the camera and display interfaces to FFC connectors
-* connects HDMI to an HDMI port
+* connects HDMI to HDMI ports
 * connects USB to USB ports
 * connects activity monitoring to LEDs
 * eMMC programming over USB
 * connects PCIe to connectors used to physically connect storage or peripherals
 
-IO Boards are breakout boards intended for development; in production, you should use a smaller, potentially custom board that provides only the ports and peripherals required for your use-case.
+IO Boards are breakout boards intended for development or personal use; in production, you should use a smaller, potentially custom board that provides only the ports and peripherals required for your use-case.
 
 === Compute Module 5 IO Board
 
@@ -98,8 +98,8 @@ Compute Module 5 IO Board provides the following interfaces:
 * 2× MIPI DSI/CSI-2 combined display/camera FPC connectors (22-pin 0.5 mm pitch cable)
 * Real-time clock with battery socket
 * four-pin JST-SH PWM fan connector
-* 5V @ 5A power input via USB-C using the same standard as Raspberry Pi 5
-* Jumpers to disable features such as eMMC boot, EEPROM write, the power button, and the USB OTG connection
+* USB-C power using the same standard as Raspberry Pi 5 (5V, 5A (25W) or 5V, 3A (15W) with a 600mA peripheral limit)
+* Jumpers to disable features such as eMMC boot, EEPROM write, and the USB OTG connection
 
 === Compute Module 4 IO Board
 
@@ -178,11 +178,11 @@ The Case provides cut-outs for all externally-facing ports and LEDs on the CM5IO
 .Compute Module 5 IO Board Case ports
 image::images/cm5io-case-front.png[alt="the port selection on the Compute Module 5 IO Board Case", width="60%"]
 
-To mount a CM5IO Board within your Case, position your Board in the bottom section of the case, aligning the four mount points inset slightly from each corner of the Board. Fasten four screws into the mount points. Take care not to over-tighten the screws.
+To mount a CM5IO Board within your Case, position your Board in the bottom section of the case, aligning the four mounting points inset slightly from each corner of the Board. Fasten four screws into the mounting points. Take care not to over-tighten the screws.
 
 To use the Case fan, connect the fan cable to the FAN (J14) port on the Board.
 
-To close the case, put the top case on top of the bottom case. Facing the front of the case, which has port pass-throughs, carefully align the screw holes on the left and right side of the case and the power button on the back of the case. Tighten four screws into the screw holes. Take care not to over-tighten the screws.
+To close the case, put the top section of the case on top of the bottom section of the case. Facing the front of the case, which has port pass-throughs, carefully align the screw holes on the left and right side of the case and the power button on the back of the case. Tighten four screws into the screw holes. Take care not to over-tighten the screws.
 
 TIP: The Case comes with a fan pre-installed. To close the case with the passive Cooler attached to your Compute Module, remove the fan. To remove the fan, remove the four screws positioned in the corners of the fan from the bottom of the top case.
 
@@ -224,7 +224,7 @@ The CM5 Cooler helps dissipate heat from your CM5, improving CPU performance, lo
 .CM5 Cooler
 image::images/cm5-cooler.jpg[alt="CM5 Cooler", width="60%"]
 
-To mount the Cooler to your CM5, attach the thermally conductive silicone at the bottom of the Cooler to the top of your CM5. Align the cut-out in the heatsink with the antenna https://en.wikipedia.org/wiki/Hirose_U.FL[U.FL connector]. As the CM5 heats during use, the silicone will gradually attach more securely to the heat sinks on the CM5.
+To mount the Cooler to your CM5, attach the thermally conductive silicone at the bottom of the Cooler to the top of your CM5. Align the cut-out in the heatsink with the antenna https://en.wikipedia.org/wiki/Hirose_U.FL[U.FL connector]. Optionally, fasten screws in the mounting points found in each corner to secure the Cooler. If you omit the screws, the bond between your Cooler and your Compute Module will improve through time, use, and trust.
 
 .CM5 Cooler physical specification
 image::images/cm5-cooler-physical.png[alt="CM5 Cooler physical specification", width="80%"]
