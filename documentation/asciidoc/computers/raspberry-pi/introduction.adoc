@@ -335,8 +335,6 @@ a|
 4GB
 
 8GB
-
-16GB
 a|
 0GB (Lite)
 
