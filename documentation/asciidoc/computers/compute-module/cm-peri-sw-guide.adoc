@@ -1,25 +1,15 @@
 == Wire peripherals
 
-This guide helps developers wire up peripherals to the Compute Module pins. Additionally, this guide explains how to make changes to the software to enable these peripherals.
+This guide helps developers wire up peripherals to the Compute Module pins, and explains how to enable these peripherals in software.
 
-Most of the pins of the SoC (GPIO, two CSI camera interfaces, two DSI display interfaces, HDMI, etc.) are available for wiring. You can can usually leave unused pins disconnected.
+Most of the pins of the SoC, including the GPIO, two CSI camera interfaces, two DSI display interfaces, and HDMI are available for wiring. You can can usually leave unused pins disconnected.
 
-Compute Modules with the DDR2 SODIMM form factor can use any DDR2 SODIMM socket. However, the pinout is not the same as SODIMM memory modules.
+Compute Modules that come in the DDR2 SODIMM form factor are physically compatible with any DDR2 SODIMM socket. However, the pinout is **not** the same as SODIMM memory modules.
 
 To use a Compute Module, a user must design a motherboard that:
 
 * provides power to the Compute Module (3.3V and 1.8V at minimum)
 * connects the pins to the required peripherals for the user's application
-
-Raspberry Pi's IO Boards provide the following functionality:
-
-* powers the module
-* wires the GPIO to pin headers
-* wires the camera and display interfaces to FFC connectors
-* wires HDMI to an HDMI port
-* wires USB to USB ports
-* wires activity monitoring to an 'ACT' LED
-* eMMC programming over USB
 
 This guide first explains the boot process and how Device Tree describes attached hardware.
 
