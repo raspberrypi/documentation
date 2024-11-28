@@ -48,9 +48,9 @@ For more information, see xref:configuration.adoc#change-user-password[Change a 
 Set the visible xref:remote-access.adoc#resolve-raspberrypi-local-with-mdns[mDNS] name for this Raspberry Pi on a network.
 
 [[boot-options]]
-==== Boot/auto login
+==== Boot/Auto Login
 
-Select whether to boot to console or desktop, and whether or not your Raspberry Pi automatically logs into your current user account when powered on.
+Boot to console or desktop with the option of an automatic login to your current user account.
 
 ==== Network at boot
 
@@ -75,7 +75,7 @@ image::images/raspi-display.png[raspi-config display options]
 [[underscan]]
 ==== Underscan
 
-NOTE: Not available when running Wayland.
+NOTE: Unavailable when running Wayland.
 
 If the initial text shown on the screen disappears off the edge, enable overscan to adjust the border. On some displays, particularly monitors, disabling overscan will make the picture fill the whole screen and remove the black border.
 
@@ -106,7 +106,7 @@ Enable and disable various physical and virtual interfaces.
 
 Enable or disable remote terminal access to your Raspberry Pi using SSH.
 
-SSH allows you to remotely access the command line of the Raspberry Pi from another computer. SSH is disabled by default. Read more about using SSH on the xref:remote-access.adoc#ssh[SSH documentation page]. If connecting your Raspberry Pi directly to a public network, you should not enable SSH unless you have set up secure passwords for all users.
+SSH allows you to remotely access the command line of the Raspberry Pi from another computer. SSH is disabled by default. If connecting your Raspberry Pi directly to a public network, set up secure passwords for all users before enabling SSH. Learn more about using SSH on the xref:remote-access.adoc#ssh[SSH documentation page].
 
 [[rpi-connect]]
 ==== RPi Connect
@@ -164,7 +164,7 @@ Enable or disable a read-only filesystem.
 
 ==== Fan
 
-Customise the behaviour of the GPIO-connected https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/[Raspberry Pi 4 Case Fan]. Does not affect the fans in the https://www.raspberrypi.com/products/raspberry-pi-5-case/[Raspberry Pi 5 Case for Raspberry Pi 5] or https://www.raspberrypi.com/products/active-cooler/[Raspberry Pi 5 Active Cooler], which connect using a special four-pin fan header.
+Customise the behaviour of the GPIO-connected https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/[Raspberry Pi 4 Case Fan]. This setting is inapplicable to other fan models.
 
 [[localisation-options]]
 === Localisation options
@@ -216,7 +216,7 @@ Configure the network's proxy settings.
 
 ==== Boot order
 
-On Raspberry Pi 4 and later, specify whether to boot from USB or network if the SD card isn't inserted. For more information, see xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration].
+On Raspberry Pi 4 and later, specify whether to boot from USB or network in absence of an SD card. For more information, see xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration].
 
 ==== Bootloader version
 
@@ -276,7 +276,7 @@ Pass a wireless network name (SSID) and passphrase, if required. The following f
 
 The `<hidden>` option indicates the visibility of the SSID. If the network broadcasts an open SSID, pass `0` or omit the option. If your SSID is hidden, pass `1`. Defaults to `0`.
 
-The `<plain>` option indicates whether or not you intend to pass the passphrase as plaintext. If your passphrase includes a space or a special character like `!`, you must pass `0` and use quotes around your passphrase. Otherwise, you can pass `1` or omit the option. Defaults to `1`.  To pass this option, you must specify a value for `<hidden>`.
+The `<plain>` option indicates whether you intend to pass the passphrase as plaintext. If your passphrase includes a space or a special character like `!`, you must pass `0` and use quotes around your passphrase. Otherwise, you can pass `1` or omit the option. Defaults to `1`.  To pass this option, you must specify a value for `<hidden>`.
 
 For example, run the following commands to connect to a:
 
@@ -343,9 +343,9 @@ $ sudo raspi-config nonint do_hostname <hostname>
 ----
 
 [[boot-options-nonint]]
-==== Boot/auto login
+==== Boot/Auto Login
 
-Select whether to boot to console or desktop, and whether or not your Raspberry Pi automatically logs into your current user account when powered on.
+Boot to console or desktop with the option of an automatic login to your current user account.
 
 [source,console]
 ----
@@ -407,7 +407,7 @@ $ sudo raspi-config nonint do_browser <chromium-browser/firefox>
 [[underscan-nonint]]
 ==== Underscan
 
-NOTE: Not available when running Wayland.
+NOTE: Unavailable when running Wayland.
 
 If the initial text shown on the screen disappears off the edge, enable overscan to adjust the border. On some displays, particularly monitors, disabling overscan will make the picture fill the whole screen and remove the black border.
 
@@ -640,7 +640,7 @@ $ sudo raspi-config nonint do_overlayfs <0/1>
 
 ==== Fan
 
-Customise the behaviour of the GPIO-connected https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/[Raspberry Pi 4 Case Fan]. Does not affect the fans in the https://www.raspberrypi.com/products/raspberry-pi-5-case/[Raspberry Pi 5 Case for Raspberry Pi 5] or https://www.raspberrypi.com/products/active-cooler/[Raspberry Pi 5 Active Cooler], which connect using a special four-pin fan header.
+Customise the behaviour of the GPIO-connected https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/[Raspberry Pi 4 Case Fan]. This setting is inapplicable to other fan models.
 
 [source,console]
 ----
@@ -672,7 +672,7 @@ For a full list of possible `<locale>` values, see the abbreviations used in the
 [[change-timezone-nonint]]
 ==== Time zone
 
-Set your local time zone, starting with the region then selecting a city, e.g. "Europe/London".
+Set your local time zone in the format `Region/City`, for example 'Europe/London'. Type a letter to jump to that letter in the list.
 
 [source,console]
 ----
@@ -744,7 +744,7 @@ $ sudo raspi-config nonint do_proxy <SCHEMES> <ADDRESS>
 
 ==== Boot order
 
-On the Raspberry Pi 4 and later, specify whether to boot from USB or network if the SD card isn't inserted. See the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration] section for more information.
+On the Raspberry Pi 4 and later, specify whether to boot from USB or network in absence of an SD card. See the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration] section for more information.
 
 [source,console]
 ----
