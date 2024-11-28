@@ -21,7 +21,7 @@ To navigate the configuration tool from the terminal:
 * Use the arrow keys to scroll through the settings list.
 * Access the `<Select>` or `<Finish>` options using the **Right** arrow or **Tab**.
 * Return to the settings list using the **Left** arrow or **Tab**.
-* Type a letter to jump ahead alphabetically. For example, type `L` to jump ahead to 'Lisbon' in the time zones list.
+* Type a letter to jump ahead alphabetically. For example, type `E` to jump ahead to 'Europe' in the time zone list.
 
 [[menu-options]]
 === System options
@@ -181,16 +181,16 @@ Select a locale, for example `en_GB.UTF-8 UTF-8`.
 [[change-timezone]]
 ==== Time zone
 
-Sets your local time zone, starting with the region then selecting a city, e.g. "Europe/London". Type a letter to jump to that letter in the list.
+Set your local time zone in the format `Region/City`, for example 'Europe/London'. Type a letter to jump to that letter in the list.
 
 [[change-keyboard-layout]]
 ==== Keyboard
 
-Opens a menu where you can select your keyboard layout. Changes usually take effect immediately, but may require a reboot. Type a letter to jump to that letter in the list.
+Open a menu where you can select your keyboard layout. Changes usually take effect immediately, but may require a reboot. Type a letter to jump to that letter in the list.
 
 ==== WLAN country
 
-Sets the country code for your wireless network.
+Set the country code for your wireless network.
 
 [[advanced-options]]
 === Advanced options
@@ -202,7 +202,7 @@ image::images/raspi-adv.png[raspi-config advanced options]
 [[expand-filesystem]]
 ==== Expand filesystem
 
-Expands your OS partition to fill the whole storage device, giving you more space to use for files. Reboot your Raspberry Pi to complete this action. Normally, Raspberry Pi OS runs this action on first boot. This option can be useful if you clone your OS to a separate storage device with more capacity than the original.
+Expand your OS partition to fill the whole storage device, giving you more space to use for files. Reboot your Raspberry Pi to complete this action. Normally, Raspberry Pi OS runs this action on first boot. This option can be useful if you clone your OS to a separate storage device with more capacity than the original.
 
 WARNING: There is no confirmation step. Selecting the option begins the partition expansion immediately.
 
@@ -245,7 +245,7 @@ Display a description of `raspi-config`.
 [[finish]]
 === Finish
 
-Exits `raspi-config`. If you made changes that require a reboot, `raspi-config` prompts you to reboot. When implementing changes for the first time, it's best to reboot. If you chose to resize your SD card, rebooting may take longer than usual.
+Exit `raspi-config`. If necessary, raspi-config will ask you to reboot when you exit. When implementing changes for the first time, reboot to ensure your changes take effect.
 
 [[raspi-config-cli]]
 == non-interactive `raspi-config`
