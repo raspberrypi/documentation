@@ -1,33 +1,32 @@
 [[raspi-config]]
 == `raspi-config`
 
-TIP: Raspberry Pi Desktop users can access a graphical version of this application at **Preferences** > **Raspberry Pi Configuration**. However, some advanced configuration is only available in `raspi-config`.
+`raspi-config` helps you configure your Raspberry Pi by automating edits to xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] and various Linux configuration files.
 
-`raspi-config` helps you configure your Raspberry Pi.  Available options may differ between Raspberry Pi models. To open the configuration tool, run the following command:
+=== Getting started
+
+To open the configuration tool from the desktop GUI, go to **Preferences** > **Raspberry Pi Configuration**.
+
+Alternatively, to access the configuration tool via the terminal:
 
 [source,console]
 ----
 $ sudo raspi-config
 ----
 
-You should see a blue screen with options in a grey box:
-
 image::images/raspi-config.png[raspi-config main screen]
 
-Use the **Up** and **Down** arrow keys to move the highlighted selection between the options available.
+To navigate the configuration tool from the terminal:
 
-Press the **Right** arrow key or press **Tab** to access the `<Select>` and `<Finish>` buttons. Press **Left** or press **Tab** to return to the options.
-
-`raspi-config` automates edits to xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] and various Linux configuration files. Some options require a reboot to take effect. If you changed any of these, `raspi-config` asks you to reboot when you exit.
-
-TIP: In long lists of option values (like the list of timezone cities), type a letter to skip to that section of the list. For example, enter `L` to skip to Lisbon.
+* Use the arrow keys to scroll through the settings list.
+* Access the `<Select>` or `<Finish>` options using the **Right** arrow or **Tab**.
+* Return to the settings list using the **Left** arrow or **Tab**.
+* Type a letter to jump ahead alphabetically. For example, type `L` to jump ahead to 'Lisbon' in the time zones list.
 
 [[menu-options]]
 === System options
 
-The system options submenu allows you to make configuration changes to various parts of the boot, login and networking process, along with some other system level changes.
-
-image::images/raspi-system.png[raspi-config system options]
+Configure parts of the boot, login, and networking process, along with other system level changes.
 
 ==== Wireless LAN
 
@@ -101,8 +100,6 @@ Enable or disable 4Kp60 resolution for HDMI outputs.
 === Interface options
 
 Enable and disable various physical and virtual interfaces.
-
-image::images/raspi-interface.png[raspi-config interface options]
 
 [[ssh]]
 ==== SSH
