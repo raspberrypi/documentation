@@ -1,7 +1,7 @@
 [[raspi-config]]
 == `raspi-config`
 
-`raspi-config` helps you configure your Raspberry Pi by automating edits to xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] and various Linux configuration files.
+`raspi-config` helps you configure your Raspberry Pi. Changes to `raspi-config` will affect xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] and various Linux configuration files.
 
 === Getting started
 
@@ -194,6 +194,8 @@ Set the country code for your wireless network.
 
 [[advanced-options]]
 === Advanced options
+
+Advanced options are intended for use during troubleshooting. Available options may differ between Raspberry Pi models.
 
 WARNING: Changes to advanced options may prevent your Raspberry Pi from working as intended. Avoid configuring advanced options unless instructed by a Raspberry Pi engineer.
 
@@ -706,6 +708,8 @@ For a full list of possible `<country>` values, see the abbreviations used in th
 
 [[advanced-options-nonint]]
 === Advanced options
+
+Advanced options are intended for use during troubleshooting. Available options may differ between Raspberry Pi models.
 
 WARNING: Changes to advanced options may prevent your Raspberry Pi from working as intended. Avoid configuring advanced options unless instructed by a Raspberry Pi engineer.
 
