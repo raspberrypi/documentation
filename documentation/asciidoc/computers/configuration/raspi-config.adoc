@@ -707,6 +707,8 @@ For a full list of possible `<country>` values, see the abbreviations used in th
 [[advanced-options-nonint]]
 === Advanced options
 
+WARNING: Changes to advanced options may prevent your Raspberry Pi from working as intended. Avoid configuring advanced options unless instructed by a Raspberry Pi engineer.
+
 [[expand-filesystem-nonint]]
 ==== Expand filesystem
 
