@@ -14,14 +14,14 @@ Alternatively, to access the configuration tool via the terminal:
 $ sudo raspi-config
 ----
 
-image::images/raspi-config.png[raspi-config main screen]
-
 To navigate the configuration tool from the terminal:
 
 * Use the arrow keys to scroll through the settings list.
 * Access the `<Select>` or `<Finish>` options using the **Right** arrow or **Tab**.
 * Return to the settings list using the **Left** arrow or **Tab**.
 * Type a letter to jump ahead alphabetically. For example, type `E` to jump ahead to 'Europe' in the time zone list.
+
+image::images/raspi-config.png[raspi-config main screen]
 
 [[menu-options]]
 === System options
@@ -48,7 +48,7 @@ For more information, see xref:configuration.adoc#change-user-password[Change a 
 Set the visible xref:remote-access.adoc#resolve-raspberrypi-local-with-mdns[mDNS] name for this Raspberry Pi on a network.
 
 [[boot-options]]
-==== Boot/Auto Login
+==== Boot/Auto login
 
 Boot to console or desktop with the option of an automatic login to your current user account.
 
@@ -69,8 +69,6 @@ If your Raspberry Pi model allows, change the behaviour of the power LED.
 Change the default web browser.
 
 === Display options
-
-image::images/raspi-display.png[raspi-config display options]
 
 [[underscan]]
 ==== Underscan
@@ -144,8 +142,6 @@ Enable or disable remote access to the GPIO pins.
 
 === Performance options
 
-image::images/raspi-perf.png[raspi-config performance options]
-
 [[overclock]]
 ==== Overclock
 
@@ -170,8 +166,6 @@ Customise the behaviour of the GPIO-connected https://www.raspberrypi.com/produc
 === Localisation options
 
 Configure location and country-related options.
-
-image::images/raspi-l18n.png[raspi-config localisation options]
 
 [[change-locale]]
 ==== Locale
@@ -198,8 +192,6 @@ Set the country code for your wireless network.
 Advanced options are intended for use during troubleshooting. Available options may differ between Raspberry Pi models.
 
 WARNING: Changes to advanced options may prevent your Raspberry Pi from working as intended. Avoid configuring advanced options unless instructed by a Raspberry Pi engineer.
-
-image::images/raspi-adv.png[raspi-config advanced options]
 
 [[expand-filesystem]]
 ==== Expand filesystem
@@ -345,7 +337,7 @@ $ sudo raspi-config nonint do_hostname <hostname>
 ----
 
 [[boot-options-nonint]]
-==== Boot/Auto Login
+==== Boot/Auto login
 
 Boot to console or desktop with the option of an automatic login to your current user account.
 
