@@ -13,9 +13,12 @@ The Compute Module has an on-board eMMC device connected to the primary SD card 
 
 To flash the Compute Module eMMC, you need the following:
 
-* Another computer, referred to in this guide as the *host device*. You can use Linux (we recommend Raspberry Pi OS or Ubuntu), Windows, or macOS.
+* Another computer, referred to in this guide as the *host device*. You can use Linux (we recommend Raspberry Pi OS or Ubuntu), Windows 11, or macOS.
 * The Compute Module IO Board xref:compute-module.adoc#io-board-compatibility[that corresponds to your Compute Module model].
 * A micro USB cable, or a USB-C cable for Compute Module models since CM5IO.
+
+NOTE: If the Compute Module is not recognised then please remove any USB hubs between the *host device* and the Compute Module.
+For more diagnostic tips see https://github.com/raspberrypi/usbboot?tab=readme-ov-file#troubleshooting
 
 === Set up the IO Board
 
@@ -51,6 +54,8 @@ To set up the Compute Module IO Board:
 === Set up the host device
 
 Next, let's set up software on the host device.
+
+The recommended host device is a Raspberry Pi 4 or newer running Raspberry Pi OS 64-bit.
 
 [tabs%sync]
 ======
@@ -89,10 +94,11 @@ $ sudo ./rpiboot
 
 Windows::
 +
-To set up software on a Windows host device:
+To set up software on a Windows 11 host device:
 +
 . Download the https://github.com/raspberrypi/usbboot/raw/master/win32/rpiboot_setup.exe[Windows installer] or https://github.com/raspberrypi/usbboot[build `rpiboot` from source].
-. Double-click on the installer to run it. This installs the drivers and boot tool.
+. Double-click on the installer to run it. This installs the drivers and boot tool. Do not close any driver installation windows which appear in the installation process.
+. Reboot
 . Connect the IO Board to power. Windows should discover the hardware and configure the required drivers.
 . On CM4 and later devices, select **Raspberry Pi - Mass Storage Gadget - 64-bit** from the start menu. After a few seconds, the Compute Module eMMC or NVMe will appear as USB mass storage devices. This also provides a debug console as a serial port gadget.
 . On CM3 and older devices, select **rpiboot**. Double-click on `RPiBoot.exe` to run it. After a few seconds, the Compute Module eMMC should appear as a USB mass storage device.
