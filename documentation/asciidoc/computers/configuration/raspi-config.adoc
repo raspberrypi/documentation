@@ -210,7 +210,7 @@ Configure the network's proxy settings.
 
 ==== Boot order
 
-On Raspberry Pi 4 and later, specify whether to boot from USB or network in absence of an SD card. For more information, see xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration].
+On Raspberry Pi 4 and later, specify whether to boot from USB or network when no SD card or SSD has been detected. For more information, see xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration].
 
 ==== Bootloader version
 
