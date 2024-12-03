@@ -7,7 +7,7 @@
 
 To open the configuration tool from the desktop GUI, go to **Preferences** > **Raspberry Pi Configuration**.
 
-Alternatively, to access the configuration tool via the terminal:
+Alternatively, run the following command to access the configuration tool via the terminal:
 
 [source,console]
 ----
