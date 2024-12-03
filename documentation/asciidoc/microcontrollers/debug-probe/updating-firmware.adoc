@@ -2,7 +2,7 @@
 
 Firmware for the Debug Probe is available as a UF2 file distributed by Raspberry Pi.
 
-The latest version of the Debug Probe firmware is version 2. If you're running an older version, or if you have accidentally overwritten the firmware on your Debug Probe, you can find the latest release of the firmware in https://github.com/raspberrypi/debugprobe/releases/latest[the debugprobe GitHub repository].
+The latest version of the Debug Probe firmware is version 2.2. If you're running an older version, or if you have accidentally overwritten the firmware on your Debug Probe, you can find the latest release of the firmware in https://github.com/raspberrypi/debugprobe/releases/latest[the debugprobe GitHub repository].
 
 Download `debugprobe.uf2` from the latest release.
 
