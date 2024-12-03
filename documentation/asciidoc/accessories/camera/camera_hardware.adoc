@@ -25,7 +25,7 @@ Finally, there is the Global Shutter camera, which was http://raspberrypi.com/ne
 .Global Shutter Camera
 image::images/gs-camera.jpg[GS Camera]
 
-NOTE: Raspberry Pi Camera Modules are compatible with all Raspberry Pi computers with CSI connectors - that is, all models except Raspberry Pi 400 and the 2016 launch version of Zero.
+NOTE: Raspberry Pi Camera Modules are compatible with all Raspberry Pi computers with CSI connectors.
 
 === Rolling or Global shutter?
 
