@@ -160,7 +160,7 @@ Enable or disable a read-only filesystem.
 
 ==== Fan
 
-Customise the behaviour of the GPIO-connected https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/[Raspberry Pi 4 Case Fan]. This setting is inapplicable to other fan models.
+Customise the behaviour of the GPIO-connected https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/[Raspberry Pi 4 Case Fan]. Not applicable to other fan models.
 
 [[localisation-options]]
 === Localisation options
