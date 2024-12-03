@@ -16,7 +16,7 @@ $ sudo raspi-config
 
 To navigate the configuration tool from the terminal:
 
-* Use the arrow keys to scroll through the settings list.
+* Use the up and down arrow keys to scroll through the settings list.
 * Access the `<Select>` or `<Finish>` options using the **Right** arrow or **Tab**.
 * Return to the settings list using the **Left** arrow or **Tab**.
 * Type a letter to jump ahead alphabetically. For example, type `E` to jump ahead to 'Europe' in the time zone list.
