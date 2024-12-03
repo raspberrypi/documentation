@@ -189,7 +189,6 @@ Set the country code for your wireless network.
 [[advanced-options]]
 === Advanced options
 
-Advanced options are intended for use during troubleshooting. Available options may differ between Raspberry Pi models.
 
 WARNING: Changes to advanced options may prevent your Raspberry Pi from working as intended. Avoid configuring advanced options unless instructed by a Raspberry Pi engineer.
 
