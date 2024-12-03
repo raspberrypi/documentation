@@ -104,7 +104,7 @@ Enable and disable various physical and virtual interfaces.
 
 Enable or disable remote terminal access to your Raspberry Pi using SSH.
 
-SSH allows you to remotely access the command line of the Raspberry Pi from another computer. SSH is disabled by default. If connecting your Raspberry Pi directly to a public network, set up secure passwords for all users before enabling SSH. Learn more about using SSH on the xref:remote-access.adoc#ssh[SSH documentation page].
+SSH allows you to remotely access the command line of the Raspberry Pi from another computer. SSH is disabled by default. For more information about SSH, see the xref:remote-access.adoc#ssh[SSH documentation].
 
 [[rpi-connect]]
 ==== RPi Connect
