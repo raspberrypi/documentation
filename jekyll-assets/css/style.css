@@ -18,8 +18,8 @@
   --textcolor: white;
   --subtle-text: #CCC;
   --theme-toggle-label: "☀️";
-  --not-expanded: "&#9658;";
-  --expanded: "&#9660;";
+  --not-expanded-label: "▶";
+  --expanded-label: "▼";
   color: var(--textcolor);
 }
 .light {
@@ -42,8 +42,6 @@
   --textcolor: black;
   --subtle-text: #444;
   --theme-toggle-label: "🌙";
-  --not-expanded: "&#9658;";
-  --expanded: "&#9660;";
   color: var(--textcolor);
 }
 
@@ -206,7 +204,6 @@ div.subtitle p {
   flex-grow: 0;
   flex-basis: 270px;
   background-color: var(--code-bg-colour);
-  height: 100vh;
   top: 0;
   position: sticky;
 }
@@ -215,7 +212,6 @@ div.subtitle p {
   position: sticky;
   top: 0;
   flex-grow: 0;
-  height: 100vh;
 }
 
 h1 code {
@@ -233,6 +229,7 @@ pre {
 #toc-container #docsearch {
   margin-left: 5px;
   margin-right: 5px;
+  padding-bottom: 5px;
 }
 
 #toc-container #tocbot {
@@ -264,6 +261,10 @@ pre {
   align-items: center;
 }
 
+#search-theme-toggle-container #theme-toggle-container::after {
+  height: 100%;
+}
+
 #theme-toggle-header {
   font-family: monospace;
   color: var(--brand-colour);
@@ -280,11 +281,64 @@ pre {
   content: var(--theme-toggle-label);
 }
 
+.toc-toggle-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.toc-item {
+  color: var(--brand-colour);
+  border-radius: 3px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.toc-item p {
+  color: var(--subtle-text);
+  padding-right: 5px;
+}
+
+.toc-item:hover {
+  color: var(--brand-colour);
+  background-color: var(--toc-hover-colour);
+  text-decoration: none;
+}
+
+#toc-toggle-header {
+  font-family: monospace;
+  color: var(--brand-colour);
+}
+
+input:checked + li span label div .toc-item::before {
+  transform: rotate(90deg);
+}
+
+.toc-item.no-dropdown::before {
+  content: '';
+  padding: 6px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.toc-item span {
+  display: none;
+}
+
+.toc-item::before {
+  transition: .1s ease-in;
+  content: var(--not-expanded-label);
+}
+
 #docs-content {
   display: flex;
   width: 100%;
   justify-content: left;
-  overflow-y: clip;
+  height: 100%;
 }
 
 #on-this-page {
@@ -300,6 +354,10 @@ pre {
   color: var(--subtle);
 }
 
+#on-this-page-inner #toc {
+  display: none;
+}
+
 /* hide on this page if screen is too small to fit it */
 @media only screen and (max-width: 1444px) {
   #on-this-page {
@@ -307,32 +365,36 @@ pre {
   }
 }
 
-.itemcontents {
-  height: 100%;
-  
-}
-
 .sectlevel1 {
   flex-grow: 0;
   margin-right: 10px;
   --offset: 1rem;
   align-self: start;
-  position: sticky;
   top: var(--offset);
-  max-height: 100%;
   overflow-x: clip;
-  padding-left: 0px;
+  padding-left: 5px;
   padding-right: 0px;
-  margin-right: 0px;
-  margin-left: 0px;
+  margin: 0px;
   list-style-type: none;
+  background-color: var(--code-bg-colour);
+}
+
+.sectlevel1 li span {
+  display: flex;
+  align-items: center;
+}
+
+.sectlevel1 li span label {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 a.level1 p::before {
   content ">"
 }
 
-a.level1 p {
+a.level1 ~ a p {
   color: var(--subtle-text);
   border-radius: 3px;
   padding-top: 3px;
@@ -340,9 +402,10 @@ a.level1 p {
   padding-bottom: 3px;
   margin-left: 5px;
   margin-right: 5px;
+  width: auto;
 }
 
-a.level2 p {
+a.level2 ~ a p {
   color: var(--subtle-text);
   border-radius: 3px;
   padding-top: 3px;
@@ -350,9 +413,10 @@ a.level2 p {
   padding-bottom: 3px;
   margin-left: 15px;
   margin-right: 5px;
+  width: auto;
 }
 
-a.level3 p {
+a.level3 ~ a p {
   color: var(--subtle-text);
   border-radius: 3px;
   padding-top: 3px;
@@ -360,16 +424,18 @@ a.level3 p {
   padding-bottom: 3px;
   margin-left: 25px;
   margin-right: 5px;
+  width: auto;
 }
 
-a.level4 p {
+a.level4 ~ a p {
   color: var(--subtle-text);
   border-radius: 3px;
   padding-top: 3px;
   padding-left: 2px;
   padding-bottom: 3px;
-  margin-left: 35px;
+  margin-left: 25px;
   margin-right: 5px;
+  width: auto;
 }
 
 a.level1:hover {
@@ -540,7 +606,7 @@ nav#mobile-contents ul {
 nav#contents .itemcontents,
 nav#mobile-contents .contents-inner {
   height: auto;
-  transition: height 1s;
+  transition: height .1s;
 }
 
 nav#contents .itemcontents.hidden,
@@ -701,6 +767,8 @@ h6 .anchor::before {
 #content div.listingblock {
   margin-bottom: 15px;
   position: relative;
+  width: 99%;
+  overflow-x: scroll;
 }
 
 #content div.admonitionblock div.listingblock {
@@ -795,7 +863,7 @@ span.mlabel {
 
 #content table.tableblock th {
   font-size: 0.85em;
-  background-color: var(--subtle);
+  background-color: var(--code-bg-colour);
   text-align: left;
   padding: 5px 7px 5px 7px;
   border: 1px solid var(--subtle-text);
@@ -1189,6 +1257,7 @@ div.legal {
   display: grid;
   align-items: center;
   justify-content: center;
+  background-color: var(--footer-bg);
 }
 
 div.legal + div.legal {
@@ -1266,9 +1335,32 @@ footer {
   display:none;
 }
 
+.toc-toggle-box {
+  display:none;
+}
+
+input:checked + li ~ .itemcontents {
+  visibility: visible;
+  opacity: 1;
+  height: auto;
+}
+
+/* hide all sub-categories when top level collapses */
+input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
+  visibility: hidden !important;
+  height: 0;
+}
+
+.itemcontents {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+}
+
 .toc {
   overflow-y: scroll;
-  height: 89vh;
+  height: 90vh;
+  background-color: var(--code-bg-colour);
 }
 
 #toc-inner {
@@ -1279,6 +1371,34 @@ footer {
 }
 
 @media screen and (max-width: 1024px) {
+  /* docs header always takes up space at page top for mobile screens
+  -- anchors should scroll down a little extra to accommodate */
+  :target::before {
+    content: "";
+    display: block;
+    height: 60px;
+    margin -60px 0 0;
+  }
+
+  /* when the mobile menu is visible, hide all page content so we don't end up with dueling scrollbars */
+  #mobile-toggle:checked ~ #docs-content #docs-container {
+    overflow: hidden;
+  }
+
+  #mobile-toggle:checked ~ .legal {
+    visibility: hidden;
+    height: 0;
+  }
+
+  #mobile-toggle:checked ~ #__rptl-footer {
+    visibility: hidden;
+    height: 0;
+  }
+
+  #mobile-toggle:checked ~ #docs-content .toc {
+    height: 86vh;
+  }
+
   #container {
     justify-content: center;
     flex-wrap: wrap;
@@ -1296,6 +1416,10 @@ footer {
     padding-right: 5px;
   }
 
+  .toc {
+    height: auto;
+  }
+
   .mobile-menu-toggle div {
     transform: translateY(-3px);
   }
@@ -1306,15 +1430,12 @@ footer {
     background-color: var(--toc-hover-colour);
   }
 
-  #mobile-toggle:not(:checked) ~ .toc {
+  #mobile-toggle:not(:checked) ~ #docs-content .toc {
     display: none;
   }
 
   .itemcontents {
     background-color: var(--near-bg);
-    z-index: 101;
-    padding: 5px;
-    width: 100%;
   }
 
   #docs-content {

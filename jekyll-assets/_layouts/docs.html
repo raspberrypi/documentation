@@ -3,9 +3,10 @@
   <head>
     {% include head.html %}
   </head>
-  <body onload=makeTocAndinitTheme()>
-    <div/>
+  <body onload="makeToc()">
+    <script type="text/javascript">initTheme()</script>
     {% include header.html %}
+    <input type="checkbox" id="mobile-toggle" />
     <div id="docs-content">
       <div id="toc-container-container">
         <div id="toc-container">
@@ -20,50 +21,138 @@
               {% include theme.html %}
             </div>
             <div id="docsearch">
-              
             </div>
           </div>
-          <input type="checkbox" id="mobile-toggle">
           <div class="toc">
-            {% for subdir in site.data.nav %}
-              {% if subdir.toc[0] %}
-                <div class="itemcontents">
-                  <ul class="sectlevel1">
-                    <li>
-                      <a class="level1" href="{{ site.baseurl }}{{ subdir.path }}">{{ subdir.title | markdownify }}</a>
-                    </li>
-                    {% for item in subdir.toc %}
+          {% for subdir in site.data.nav %}
+          {% if subdir.toc[0] %}
+            <ul class="sectlevel1">
+              <input class="toc-toggle-box" type="checkbox" id="{{ subdir.path }}"
+                {% if page.url contains subdir.path %}
+                checked=true
+                {% endif %}
+              />
+              <li>
+                <span>
+                  <label class="toc-toggle" for="{{ subdir.path }}" onclick="event.stopPropagation()">
+                    <div class="toc-toggle-container">
+                      <a class="level1" href="{{ site.baseurl }}{{ subdir.path }}">
+                        <a alt="expand documentation category" title="expand documentation category"
+                          {% if page.url contains subdir.path %}
+                          class="bold toc-item"
+                          {% else %}
+                          class="toc-item"
+                          {% endif %}
+                        >
+                          {{ subdir.title | markdownify }}
+                        </a>
+                      </a>
+                    </div>
+                  </label>
+                </span>
+              </li>
+              {% for item in subdir.toc %}
+              <div class="itemcontents">
+                <ul class="sectlevel1">
+                  <input class="toc-toggle-box" type="checkbox" id="{{ item.path }}"
+                    {% if page.url contains item.path %}
+                    checked=true
+                    {% endif %}
+                  />
+                  <li>
+                    <span>
+                      <label class="toc-toggle" for="{{ item.path }}">
+                        <div class="toc-toggle-container">
+                          <a class="level2" href="{{ site.baseurl }}{{ item.path }}">
+                            <a alt="expand documentation category" title="expand documentation category"
+                              {% if page.url contains item.path %}
+                              class="bold toc-item"
+                              {% else %}
+                              class="toc-item" 
+                              {% endif %}
+                            >
+                            {{ item.title | markdownify }}
+                            </a>
+                          </a>
+                        </div>
+                      </label>
+                    </span>
+                  </li>
+                  {% if item.sections[0] %}
+                  {% for entry in item.sections %}
+                  <div class="itemcontents">
+                    <ul class="sectlevel1">
+                      <input class="toc-toggle-box" type="checkbox" id="{{ item.path }}#{{ entry.anchor }}"
+                        {% if endcapture contains entry.anchor %}
+                        checked=true
+                        {% endif %}
+                      />
+                      <li>
+                        <span>
+                          <label class="toc-toggle"
+                            {% if entry.subsections[0] %}
+                            for="{{ item.path }}#{{ entry.anchor }}"
+                            {% else %}
+                            {% endif %}>
+                            <div class="toc-toggle-container">
+                              {% if entry.subsections[0] %}
+                              <a class="level3" href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}" >
+                                <a id="{{ item.path }}#{{entry.anchor}}-toc" class="toc-item" alt="expand documentation category" title="expand documentation category"
+                                >
+                                <style onload="if (window.location.hash.includes('{{ entry.anchor }}')) { document.getElementById('{{ item.path }}#{{entry.anchor}}-toc').setAttribute('style', 'font-weight:bold'); document.getElementById('{{ item.path }}#{{ entry.anchor }}').checked = true; }"></style>
+                                  {{ entry.heading | markdownify }}
+                                </a>
+                              </a>
+                              {% else %}
+                              <a class="level3">
+                                <a id="{{ item.path }}#{{entry.anchor}}-toc" alt="expand documentation category" title="expand documentation category"
+                                  href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}"
+                                  onclick="document.getElementById('mobile-toggle').checked = false;"
+                                  class="toc-item no-dropdown"
+                                  >
+                                  <style onload="if (window.location.hash.includes('{{ entry.anchor }}')) { document.getElementById('{{ item.path }}#{{entry.anchor}}-toc').setAttribute('style', 'font-weight:bold'); document.getElementById('{{ item.path }}#{{ entry.anchor }}').checked = true; }"> </style>
+                                  {{ entry.heading | markdownify }}
+                                </a>
+                              </a>
+                              {% endif %}
+                            </div>
+                          </label>
+                        </span>
+                      </li>
+                      {% if entry.subsections[0] %}
+                      {% for subentry in entry.subsections %}
                       <div class="itemcontents">
                         <ul class="sectlevel1">
                           <li>
-                            <a class="level2" href="{{ site.baseurl }}{{ item.path }}">{{ item.title | markdownify }}</a>
+                            <span>
+                              <label class="toc-toggle">
+                                <div class="toc-toggle-container">
+                                    <a class="level4">
+                                      <a class="toc-item no-dropdown"
+                                        href="{{ site.baseurl }}{{ item.path }}#{{ subentry.anchor }}" onclick="document.getElementById('mobile-toggle').checked = false;"
+                                        id="{{ item.path }}#{{subentry.anchor}}-toc"
+                                      >
+                                      <style onload="if (window.location.hash.includes('{{ subentry.anchor }}')) { document.getElementById('{{ item.path }}#{{subentry.anchor}}-toc').setAttribute('style', 'font-weight:bold'); document.getElementById('{{ item.path }}#{{ entry.anchor }}').checked = true; document.getElementById('{{ item.path }}#{{entry.anchor}}-toc').setAttribute('style', 'font-weight:bold'); }"></style>
+                                        {{ subentry.heading | markdownify }}
+                                      </a>
+                                    </a>
+                                  </div>
+                              </label>
+                            </span>
                           </li>
-                          {% if item.sections[0] %}
-                            <div class="itemcontents">
-                              <ul class="sectlevel1">
-                                {% for entry in item.sections %}
-                                  <li>
-                                    <a class="level3" href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}">{{ entry.heading | markdownify }}</a>
-                                    {% if entry.subsections[0] %}
-                                      <ul>
-                                        {% for subentry in entry.subsections %}
-                                          <li>
-                                            <a class="level4" href="{{ site.baseurl }}{{ item.path }}#{{ subentry.anchor }}">{{ subentry.heading | markdownify }}</a>
-                                          </li>
-                                        {% endfor %}
-                                      </ul>
-                                    {% endif %}
-                                  </li>
-                                {% endfor %}
-                              </ul>
-                            </div>
-                          {% endif %}
                         </ul>
                       </div>
-                    {% endfor %}
-                  </ul>
-                </div>
-              {% endif %}
+                      {% endfor %}
+                      {% endif %}
+                    </ul>
+                  </div>
+                  {% endfor %}
+                  {% endif %}
+                </ul>
+              </div>
+              {% endfor %}
+            </ul>
+            {% endif %}
             {% endfor %}
           </div>
         </div>
