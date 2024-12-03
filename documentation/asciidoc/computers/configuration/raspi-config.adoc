@@ -1,33 +1,34 @@
 [[raspi-config]]
 == `raspi-config`
 
-TIP: Raspberry Pi Desktop users can access a graphical version of this application at **Preferences** > **Raspberry Pi Configuration**. However, some advanced configuration is only available in `raspi-config`.
+`raspi-config` helps you configure your Raspberry Pi. Changes to `raspi-config` will modify xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] and other configuration files.
 
-`raspi-config` helps you configure your Raspberry Pi.  Available options may differ between Raspberry Pi models. To open the configuration tool, run the following command:
+=== Getting started
+
+To open the configuration tool from the desktop GUI, go to **Preferences** > **Raspberry Pi Configuration**.
+
+Alternatively, run the following command to access the configuration tool via the terminal:
 
 [source,console]
 ----
 $ sudo raspi-config
 ----
 
-You should see a blue screen with options in a grey box:
+TIP: Some advanced configuration is available in the `raspi-config` CLI, but not the Raspberry Pi Configuration GUI.
+
+To navigate the configuration tool from the terminal:
+
+* Use the up and down arrow keys to scroll through the settings list.
+* Access the `<Select>` or `<Finish>` options using the **Right** arrow or **Tab**.
+* Return to the settings list using the **Left** arrow or **Tab**.
+* Type a letter to jump ahead alphabetically. For example, type `E` to jump ahead to 'Europe' in the time zone list.
 
 image::images/raspi-config.png[raspi-config main screen]
-
-Use the **Up** and **Down** arrow keys to move the highlighted selection between the options available.
-
-Press the **Right** arrow key or press **Tab** to access the `<Select>` and `<Finish>` buttons. Press **Left** or press **Tab** to return to the options.
-
-`raspi-config` automates edits to xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] and various Linux configuration files. Some options require a reboot to take effect. If you changed any of these, `raspi-config` asks you to reboot when you exit.
-
-TIP: In long lists of option values (like the list of timezone cities), type a letter to skip to that section of the list. For example, enter `L` to skip to Lisbon.
 
 [[menu-options]]
 === System options
 
-The system options submenu allows you to make configuration changes to various parts of the boot, login and networking process, along with some other system level changes.
-
-image::images/raspi-system.png[raspi-config system options]
+Configure parts of the boot, login, and networking process, along with other system level changes.
 
 ==== Wireless LAN
 
@@ -49,9 +50,9 @@ For more information, see xref:configuration.adoc#change-user-password[Change a 
 Set the visible xref:remote-access.adoc#resolve-raspberrypi-local-with-mdns[mDNS] name for this Raspberry Pi on a network.
 
 [[boot-options]]
-==== Boot/auto login
+==== Boot/Auto login
 
-Select whether to boot to console or desktop, and whether or not your Raspberry Pi automatically logs into your current user account when powered on.
+Boot to console or desktop with the option of an automatic login to your current user account.
 
 ==== Network at boot
 
@@ -71,12 +72,10 @@ Change the default web browser.
 
 === Display options
 
-image::images/raspi-display.png[raspi-config display options]
-
 [[underscan]]
 ==== Underscan
 
-NOTE: Not available when running Wayland.
+NOTE: Unavailable when running Wayland.
 
 If the initial text shown on the screen disappears off the edge, enable overscan to adjust the border. On some displays, particularly monitors, disabling overscan will make the picture fill the whole screen and remove the black border.
 
@@ -102,14 +101,12 @@ Enable or disable 4Kp60 resolution for HDMI outputs.
 
 Enable and disable various physical and virtual interfaces.
 
-image::images/raspi-interface.png[raspi-config interface options]
-
 [[ssh]]
 ==== SSH
 
 Enable or disable remote terminal access to your Raspberry Pi using SSH.
 
-SSH allows you to remotely access the command line of the Raspberry Pi from another computer. SSH is disabled by default. Read more about using SSH on the xref:remote-access.adoc#ssh[SSH documentation page]. If connecting your Raspberry Pi directly to a public network, you should not enable SSH unless you have set up secure passwords for all users.
+SSH allows you to remotely access the command line of the Raspberry Pi from another computer. SSH is disabled by default. For more information about SSH, see the xref:remote-access.adoc#ssh[SSH documentation].
 
 [[rpi-connect]]
 ==== RPi Connect
@@ -147,8 +144,6 @@ Enable or disable remote access to the GPIO pins.
 
 === Performance options
 
-image::images/raspi-perf.png[raspi-config performance options]
-
 [[overclock]]
 ==== Overclock
 
@@ -167,14 +162,12 @@ Enable or disable a read-only filesystem.
 
 ==== Fan
 
-Customise the behaviour of the GPIO-connected https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/[Raspberry Pi 4 Case Fan]. Does not affect the fans in the https://www.raspberrypi.com/products/raspberry-pi-5-case/[Raspberry Pi 5 Case for Raspberry Pi 5] or https://www.raspberrypi.com/products/active-cooler/[Raspberry Pi 5 Active Cooler], which connect using a special four-pin fan header.
+Customise the behaviour of the GPIO-connected https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/[Raspberry Pi 4 Case Fan]. Not applicable to other fan models.
 
 [[localisation-options]]
 === Localisation options
 
 Configure location and country-related options.
-
-image::images/raspi-l18n.png[raspi-config localisation options]
 
 [[change-locale]]
 ==== Locale
@@ -184,26 +177,27 @@ Select a locale, for example `en_GB.UTF-8 UTF-8`.
 [[change-timezone]]
 ==== Time zone
 
-Sets your local time zone, starting with the region then selecting a city, e.g. "Europe/London". Type a letter to jump to that letter in the list.
+Set your local time zone in the format `Region/City`, for example 'Europe/London'. Type a letter to jump to that letter in the list.
 
 [[change-keyboard-layout]]
 ==== Keyboard
 
-Opens a menu where you can select your keyboard layout. Changes usually take effect immediately, but may require a reboot. Type a letter to jump to that letter in the list.
+Open a menu where you can select your keyboard layout. Changes usually take effect immediately, but may require a reboot. Type a letter to jump to that letter in the list.
 
 ==== WLAN country
 
-Sets the country code for your wireless network.
+Set the country code for your wireless network.
 
 [[advanced-options]]
 === Advanced options
 
-image::images/raspi-adv.png[raspi-config advanced options]
+
+WARNING: Changes to advanced options may prevent your Raspberry Pi from working as intended. Avoid configuring advanced options unless instructed by a Raspberry Pi engineer.
 
 [[expand-filesystem]]
 ==== Expand filesystem
 
-Expands your OS partition to fill the whole storage device, giving you more space to use for files. Reboot your Raspberry Pi to complete this action. Normally, Raspberry Pi OS runs this action on first boot. This option can be useful if you clone your OS to a separate storage device with more capacity than the original.
+Expand your OS partition to fill the whole storage device, giving you more space to use for files. Reboot your Raspberry Pi to complete this action. Normally, Raspberry Pi OS runs this action on first boot. This option can be useful if you clone your OS to a separate storage device with more capacity than the original.
 
 WARNING: There is no confirmation step. Selecting the option begins the partition expansion immediately.
 
@@ -217,7 +211,7 @@ Configure the network's proxy settings.
 
 ==== Boot order
 
-On Raspberry Pi 4 and later, specify whether to boot from USB or network if the SD card isn't inserted. For more information, see xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration].
+On Raspberry Pi 4 and later, specify whether to boot from USB or network when no SD card or SSD has been detected. For more information, see xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration].
 
 ==== Bootloader version
 
@@ -246,7 +240,7 @@ Display a description of `raspi-config`.
 [[finish]]
 === Finish
 
-Exits `raspi-config`. If you made changes that require a reboot, `raspi-config` prompts you to reboot. When implementing changes for the first time, it's best to reboot. If you chose to resize your SD card, rebooting may take longer than usual.
+Exit `raspi-config`. If necessary, `raspi-config` will ask you to reboot when you exit. When implementing changes for the first time, reboot to ensure your changes take effect.
 
 [[raspi-config-cli]]
 == non-interactive `raspi-config`
@@ -277,7 +271,7 @@ Pass a wireless network name (SSID) and passphrase, if required. The following f
 
 The `<hidden>` option indicates the visibility of the SSID. If the network broadcasts an open SSID, pass `0` or omit the option. If your SSID is hidden, pass `1`. Defaults to `0`.
 
-The `<plain>` option indicates whether or not you intend to pass the passphrase as plaintext. If your passphrase includes a space or a special character like `!`, you must pass `0` and use quotes around your passphrase. Otherwise, you can pass `1` or omit the option. Defaults to `1`.  To pass this option, you must specify a value for `<hidden>`.
+The `<plain>` option indicates whether you intend to pass the passphrase as plaintext. If your passphrase includes a space or a special character like `!`, you must pass `0` and use quotes around your passphrase. Otherwise, you can pass `1` or omit the option. Defaults to `1`.  To pass this option, you must specify a value for `<hidden>`.
 
 For example, run the following commands to connect to a:
 
@@ -344,9 +338,12 @@ $ sudo raspi-config nonint do_hostname <hostname>
 ----
 
 [[boot-options-nonint]]
-==== Boot/auto login
+==== Boot/Auto login
 
-Select whether to boot to console or desktop, and whether or not your Raspberry Pi automatically logs into your current user account when powered on.
+Select the following behaviour at boot time:
+
+* whether to boot to console or desktop
+* whether your Raspberry Pi automatically logs into your current user account when powered on
 
 [source,console]
 ----
@@ -408,7 +405,7 @@ $ sudo raspi-config nonint do_browser <chromium-browser/firefox>
 [[underscan-nonint]]
 ==== Underscan
 
-NOTE: Not available when running Wayland.
+NOTE: Unavailable when running Wayland.
 
 If the initial text shown on the screen disappears off the edge, enable overscan to adjust the border. On some displays, particularly monitors, disabling overscan will make the picture fill the whole screen and remove the black border.
 
@@ -641,7 +638,7 @@ $ sudo raspi-config nonint do_overlayfs <0/1>
 
 ==== Fan
 
-Customise the behaviour of the GPIO-connected https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/[Raspberry Pi 4 Case Fan]. Does not affect the fans in the https://www.raspberrypi.com/products/raspberry-pi-5-case/[Raspberry Pi 5 Case for Raspberry Pi 5] or https://www.raspberrypi.com/products/active-cooler/[Raspberry Pi 5 Active Cooler], which connect using a special four-pin fan header.
+Customise the behaviour of the GPIO-connected https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/[Raspberry Pi 4 Case Fan]. This setting is inapplicable to other fan models.
 
 [source,console]
 ----
@@ -673,7 +670,7 @@ For a full list of possible `<locale>` values, see the abbreviations used in the
 [[change-timezone-nonint]]
 ==== Time zone
 
-Set your local time zone, starting with the region then selecting a city, e.g. "Europe/London".
+Set your local time zone in the format `Region/City`, for example 'Europe/London'. Type a letter to jump to that letter in the list.
 
 [source,console]
 ----
@@ -707,6 +704,9 @@ For a full list of possible `<country>` values, see the abbreviations used in th
 
 [[advanced-options-nonint]]
 === Advanced options
+
+
+WARNING: Changes to advanced options may prevent your Raspberry Pi from working as intended. Avoid configuring advanced options unless instructed by a Raspberry Pi engineer.
 
 [[expand-filesystem-nonint]]
 ==== Expand filesystem
@@ -743,7 +743,7 @@ $ sudo raspi-config nonint do_proxy <SCHEMES> <ADDRESS>
 
 ==== Boot order
 
-On the Raspberry Pi 4 and later, specify whether to boot from USB or network if the SD card isn't inserted. See the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration] section for more information.
+On the Raspberry Pi 4 and later, specify whether to boot from USB or network in absence of an SD card. See the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration] section for more information.
 
 [source,console]
 ----
