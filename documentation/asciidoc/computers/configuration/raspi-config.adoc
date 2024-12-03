@@ -239,7 +239,7 @@ Display a description of `raspi-config`.
 [[finish]]
 === Finish
 
-Exit `raspi-config`. If necessary, raspi-config will ask you to reboot when you exit. When implementing changes for the first time, reboot to ensure your changes take effect.
+Exit `raspi-config`. If necessary, `raspi-config` will ask you to reboot when you exit. When implementing changes for the first time, reboot to ensure your changes take effect.
 
 [[raspi-config-cli]]
 == non-interactive `raspi-config`
