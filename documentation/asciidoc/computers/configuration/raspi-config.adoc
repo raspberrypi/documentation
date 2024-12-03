@@ -339,7 +339,10 @@ $ sudo raspi-config nonint do_hostname <hostname>
 [[boot-options-nonint]]
 ==== Boot/Auto login
 
-Boot to console or desktop with the option of an automatic login to your current user account.
+Select the following behaviour at boot time:
+
+* whether to boot to console or desktop
+* whether your Raspberry Pi automatically logs into your current user account when powered on
 
 [source,console]
 ----
