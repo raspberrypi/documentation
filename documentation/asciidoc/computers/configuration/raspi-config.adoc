@@ -1,7 +1,7 @@
 [[raspi-config]]
 == `raspi-config`
 
-`raspi-config` helps you configure your Raspberry Pi. Changes to `raspi-config` will affect xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] and various Linux configuration files.
+`raspi-config` helps you configure your Raspberry Pi. Changes to `raspi-config` will modify xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] and other configuration files.
 
 === Getting started
 
