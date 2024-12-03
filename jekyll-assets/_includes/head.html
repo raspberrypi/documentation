@@ -7,7 +7,7 @@
 <meta property="og:title" content="{{ page.title }}">
 <meta property="og:description" content="The official documentation for Raspberry Pi computers and microcontrollers">
 <meta property="og:url" content="https://www.raspberrypi.com{{ page.url | relative_url }}">
-<meta property="og:image" content="https://www.raspberrypi.com{{ "/images/opensocial.png" | relative_url }}">
+<meta property="og:image" content="https://www.raspberrypi.com{{ '/images/opensocial.png' | relative_url }}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@Raspberry_Pi">
 <meta name="twitter:title" content="{{ page.title }}">
@@ -20,76 +20,13 @@
 <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css?ver={{ site.time | date: '%s' }}">
 <link rel="stylesheet" href="{{ site.baseurl }}/css/asciidoctor-tabs.css?ver={{ site.time | date: '%s' }}">
 <link rel="stylesheet" href="{{ site.baseurl }}/css/syntax-highlighting.css?ver={{ site.time | date: '%s' }}">
-<link rel="stylesheet" href="{{ site.baseurl }}/css/tocbot.css">
-<script src="{{ site.baseurl }}/scripts/tocbot.js"></script>
-<script>
-  /* Trigger Tocbot dynamic TOC, works with tocbot 3.0.2 */
-  function makeToc() {
-    var oldtoc = document.getElementById('toc').nextElementSibling;
-    var newtoc = document.getElementById('tocbot');
-    newtoc.setAttribute('id', 'tocbot');
-    newtoc.setAttribute('class', 'js-toc');
-    oldtoc.parentNode.replaceChild(newtoc, oldtoc);
-    tocbot.init({ contentSelector: '#content',
-        headingSelector: 'h1, h2, h3, h4',
-        smoothScroll: true,
-        includeHtml: true
-    });
-    var handleTocOnResize = function() {
-        var width = window.innerWidth
-                    || document.documentElement.clientWidth
-                    || document.body.clientWidth;
-        if (width < 768) {
-            tocbot.refresh({ contentSelector: '#content',
-                headingSelector: 'h1, h2, h3, h4',
-                collapseDepth: 6,
-                activeLinkClass: 'ignoreactive',
-                throttleTimeout: 1000,
-                smoothScroll: true });
-        }
-        else {
-            tocbot.refresh({ contentSelector: '#content',
-                headingSelector: 'h1, h2, h3, h4',
-                smoothScroll: true });
-        }
-    };
-    window.addEventListener('resize', handleTocOnResize);
-    handleTocOnResize();
-  }
-
-  // toggles the site theme between dark and light
-  function toggleTheme() {
-    // fetch the theme from local storage (if it exists)
-    var theme = localStorage.getItem('theme');
-    // if theme them has never been set, or is light, set the theme to the dark symbol in local storage to change it
-    if (localStorage.getItem('theme') !== null && theme == '🌝' ) {
-      localStorage.setItem('theme', '🌚');
-    } else {
-      // otherwise, the theme is currently set to dark, so set the theme to the light symbol in local storage to change it
-      localStorage.setItem('theme', '🌝');
-    }
-    // finally, toggle the light option off or on the body to change the display of the theme
-    document.body.classList.toggle('light');
-  }
-
-  // initialises the site theme display
-  // of key interest here: from the user's perspective, the site defaults to the light theme...
-  // ...unless your browser uses prefers-color-scheme to ask for a dark theme
-  // from the site's perspective, we default to a dark theme, but toggle it to a light theme on load if the user doesn't ask for dark.
-  // why do this? To prevent an annoying light 'flash' for dark theme users. light theme users don't really notice or care if there's a dark anti-flash.
-  function initTheme() {
-    // fetch the theme from local storage (if it exists)
-    var theme = localStorage.getItem('theme');
-    // if the theme has been set to light (null check to short circuit if not set)
-    if(theme !== null && theme === '🌝'
-      // if we can use matchMedia and the browser supports the dark color scheme
-      || (window.matchMedia && !window.matchMedia('(prefers-color-scheme: dark)').matches)
-      && theme !== '🌚') {
-        // toggles the theme from the default dark mode to the light version (which actually _shows_ by default to many users)
-        document.body.classList.toggle('light');
-    }
-  }
-</script>
+<link rel="stylesheet" href="{{ site.baseurl }}/css/tocbot.css?ver={{ site.time | date: '%s' }}">
+<script type="text/javascript" src="{{ site.baseurl }}/scripts/theme.js?ver={{ site.time | date: '%s' }}"></script>
+<script type="text/javascript" src="{{ site.baseurl }}/scripts/tocbot.js?ver={{ site.time | date: '%s' }}"></script>
+<script type="text/javascript" src="{{ site.baseurl }}/scripts/toc.js?ver={{ site.time | date: '%s' }}"></script>
+<script type="text/javascript" src="{{ site.baseurl }}/scripts/asciidoctor-tabs.js?ver={{ site.time | date: '%s' }}"></script>
+<script async src="{{ site.baseurl }}/scripts/clipboard.min.js?ver={{ site.time | date: '%s' }}"></script>
+<script async src="{{ site.baseurl }}/scripts/copy-to-clipboard.js?ver={{ site.time | date: '%s' }}"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-V8TFXM3BKJ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];

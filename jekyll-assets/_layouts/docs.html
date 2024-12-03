@@ -99,7 +99,7 @@
                               <a class="level3" href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}" >
                                 <a id="{{ item.path }}#{{entry.anchor}}-toc" class="toc-item" alt="expand documentation category" title="expand documentation category"
                                 >
-                                <style onload="if (window.location.hash.includes('{{ entry.anchor }}')) { document.getElementById('{{ item.path }}#{{entry.anchor}}-toc').setAttribute('style', 'font-weight:bold'); document.getElementById('{{ item.path }}#{{ entry.anchor }}').checked = true; }"></style>
+                                <script type="text/javascript">if (window.location.hash.includes('{{ entry.anchor }}')) { document.getElementById('{{ item.path }}#{{entry.anchor}}-toc').setAttribute('style', 'font-weight:bold'); document.getElementById('{{ item.path }}#{{ entry.anchor }}').checked = true; }</script>
                                   {{ entry.heading | markdownify }}
                                 </a>
                               </a>
@@ -110,7 +110,7 @@
                                   onclick="document.getElementById('mobile-toggle').checked = false;"
                                   class="toc-item no-dropdown"
                                   >
-                                  <style onload="if (window.location.hash.includes('{{ entry.anchor }}')) { document.getElementById('{{ item.path }}#{{entry.anchor}}-toc').setAttribute('style', 'font-weight:bold'); document.getElementById('{{ item.path }}#{{ entry.anchor }}').checked = true; }"> </style>
+                                  <script type="text/javascript">if (window.location.hash.includes('{{ entry.anchor }}')) { document.getElementById('{{ item.path }}#{{entry.anchor}}-toc').setAttribute('style', 'font-weight:bold'); document.getElementById('{{ item.path }}#{{ entry.anchor }}').checked = true; }</script>
                                   {{ entry.heading | markdownify }}
                                 </a>
                               </a>
@@ -132,7 +132,7 @@
                                         href="{{ site.baseurl }}{{ item.path }}#{{ subentry.anchor }}" onclick="document.getElementById('mobile-toggle').checked = false;"
                                         id="{{ item.path }}#{{subentry.anchor}}-toc"
                                       >
-                                      <style onload="if (window.location.hash.includes('{{ subentry.anchor }}')) { document.getElementById('{{ item.path }}#{{subentry.anchor}}-toc').setAttribute('style', 'font-weight:bold'); document.getElementById('{{ item.path }}#{{ entry.anchor }}').checked = true; document.getElementById('{{ item.path }}#{{entry.anchor}}-toc').setAttribute('style', 'font-weight:bold'); }"></style>
+                                      <script type="text/javascript">if (window.location.hash.includes('{{ subentry.anchor }}')) { document.getElementById('{{ item.path }}#{{subentry.anchor}}-toc').setAttribute('style', 'font-weight:bold'); document.getElementById('{{ item.path }}#{{ entry.anchor }}').checked = true; document.getElementById('{{ item.path }}#{{entry.anchor}}-toc').setAttribute('style', 'font-weight:bold'); }</script>
                                         {{ subentry.heading | markdownify }}
                                       </a>
                                     </a>
@@ -176,7 +176,6 @@
     </div>
 
     {% include footer.html %}
-    {% include scripts.html %}
     {% include search.html %}
 
   </body>
