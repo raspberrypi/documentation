@@ -1,22 +1,20 @@
 Pico-series devices are organised into **families** based on product generation.
 
-The original Raspberry Pi Pico family, referred to as Pico or Pico 1, comes in four variants:
+The original Raspberry Pi Pico family, referred to as Pico or Pico 1, comes in the following variants:
 
-* Raspberry Pi Pico
-* Raspberry Pi Pico H
-* Raspberry Pi Pico W
-* Raspberry Pi Pico WH
+* Pico
+* Pico H
+* Pico W
+* Pico WH
 
-The second-generation Raspberry Pi Pico family is referred to as Pico 2. Pico 2 comes in two variants:
+The second-generation Raspberry Pi Pico family is referred to as Pico 2. Pico 2 comes in the following variants:
 
-* Raspberry Pi Pico 2
-* Raspberry Pi Pico 2 with headers
+* Pico 2
+* Pico 2 W
 
 == Pico 2 family
 
 image::images/pico-2.png[width="75%"]
-
-The Raspberry Pi Pico 2 family consists of two boards; Raspberry Pi Pico 2, and Raspberry Pi Pico 2 with headers.
 
 [[pico-2-technical-specification]]
 === Raspberry Pi Pico 2
@@ -50,6 +48,43 @@ image::images/pico-2-r4-pinout.svg[]
 * Download https://datasheets.raspberrypi.com/pico/Pico-2-Fritzing-20240708.fzpz[Fritzing Part] for Raspberry Pi Pico
 
 NOTE: More information on Fritzing is available on the https://fritzing.org/[fritzing.org] website.
+
+[[pico2w-technical-specification]]
+=== Raspberry Pi Pico 2 W
+
+Raspberry Pi Pico 2 W adds on-board single-band 2.4GHz wireless interfaces (802.11n) using the Infineon CYW43439 to the Pico 2 hardware. The on-board 2.4GHz wireless interface has the following features:
+
+* Wireless (802.11n), single-band (2.4 GHz)
+* WPA3
+* Soft access point supporting up to four clients
+* Bluetooth 5.2
+** Support for Bluetooth LE Central and Peripheral roles
+** Support for Bluetooth Classic
+
+The onboard antenna is licensed from ABRACON (formerly ProAnt). The wireless interface is connected via
+SPI to the xref:silicon.adoc#rp2350[RP2350] microcontroller.
+
+Due to pin limitations, some of the wireless interface pins are shared. The CLK is shared with VSYS monitor, so only
+when there isn't an SPI transaction in progress can VSYS be read via the ADC. The Infineon CYW43439 DIN/DOUT and
+IRQ all share one pin on the RP2350. Only when an SPI transaction isn't in progress is it suitable to check for IRQs. The interface typically runs at 33MHz.
+
+For best wireless performance, position the antenna in free space. For instance, metal underneath or nearby the
+antenna can reduce performance both in terms of gain and bandwidth. Adding grounded metal to the sides of the
+antenna can improve the antenna's bandwidth.
+
+`libcyw43` is licensed for non-commercial use. However, Pico 2 W users, and anyone else who builds their product around RP2350 and CYW43439, benefit from a free https://github.com/georgerobotics/cyw43-driver/blob/195dfcc10bb6f379e3dea45147590db2203d3c7b/LICENSE.RP[commercial-use license].
+
+In addition to the https://github.com/bluekitchen/btstack/blob/master/LICENSE[standard BTstack licensing] terms, a https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/pico_btstack/LICENSE.RP[supplemental licence] covers commercial use of BTstack with Raspberry Pi Pico 2 W.
+
+==== Pinout and design files
+
+image::images/pico2w-pinout.svg[]
+
+* https://datasheets.raspberrypi.com/picow/pico-2-w-pinout.pdf[Pinout Diagram] (PDF)
+* https://datasheets.raspberrypi.com/picow/pico-2-w-schematic.pdf[Schematic]
+// TODO: add these when available
+// * Download https://datasheets.raspberrypi.com/pico2w/RPi-PicoW-PUBLIC-20220607.zip[Design Files] (Cadence Allegro)
+// * Download https://datasheets.raspberrypi.com/pico2w/PicoW-step.zip[STEP File]
 
 == Pico 1 family
 
@@ -103,7 +138,7 @@ Raspberry Pi Pico W adds on-board single-band 2.4GHz wireless interfaces (802.11
 ** Support for Bluetooth LE Central and Peripheral roles
 ** Support for Bluetooth Classic
 
-The antenna is an onboard antenna licensed from ABRACON (formerly ProAnt). The wireless interface is connected via
+The antenna is an onboard antenna licensed from ABRACON (formerly ProAnt). The CYW43439 wireless chip is connected via
 SPI to the xref:silicon.adoc#rp2040[RP2040] microcontroller.
 
 Due to pin limitations, some of the wireless interface pins are shared. The CLK is shared with VSYS monitor, so only
@@ -115,11 +150,9 @@ For best wireless performance, the antenna should be in free space. For instance
 antenna can reduce its performance both in terms of gain and bandwidth. Adding grounded metal to the sides of the
 antenna can improve the antenna's bandwidth.
 
-NOTE: The CYW43439 wireless chip is connected via SPI to the RP2040.The CYW43439 supports both 802.11 wireless and Bluetooth over this interface.
+`libcyw43` is licensed for non-commercial use. However, Pico W users, and anyone else who builds their product around RP2040 and CYW43439, benefit from a free https://github.com/georgerobotics/cyw43-driver/blob/195dfcc10bb6f379e3dea45147590db2203d3c7b/LICENSE.RP[commercial-use license].
 
-IMPORTANT: By default `libcyw43` is licensed for non-commercial use, but Pico W users, and anyone else who builds their product around RP2040 and CYW43439, benefit from a free https://github.com/georgerobotics/cyw43-driver/blob/195dfcc10bb6f379e3dea45147590db2203d3c7b/LICENSE.RP[commercial-use license]. 
-
-IMPORTANT: In addition to the https://github.com/bluekitchen/btstack/blob/master/LICENSE[standard BTstack licensing] terms, a https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/pico_btstack/LICENSE.RP[supplemental licence] which covers commercial use of BTstack with Raspberry Pi Pico W or Raspberry Pi Pico WH is provided.
+In addition to the https://github.com/bluekitchen/btstack/blob/master/LICENSE[standard BTstack licensing] terms, a https://github.com/raspberrypi/pico-sdk/blob/master/src/rp2_common/pico_btstack/LICENSE.RP[supplemental licence] covers commercial use of BTstack with Raspberry Pi Pico W or Raspberry Pi Pico WH.
 
 ==== Pinout and design files
 

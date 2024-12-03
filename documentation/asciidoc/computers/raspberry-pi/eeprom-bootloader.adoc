@@ -47,7 +47,7 @@ Default: `115200`
 
 If `1` then `sudo halt` will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.
 
-This setting is not relevant on Raspberry Pi 5 because the xref:raspberry-pi.adoc#power-button[dedicated power button] may always be used to wakeup from `HALT` or `STANDBY`.
+This setting is not relevant on Flagship models since Raspberry Pi 5, Compute Modules since CM5, and Keyboard models since Pi 500 because the xref:raspberry-pi.adoc#power-button[dedicated power button] may always be used to wake from `HALT` or `STANDBY`.
 
 Default: `1`
 
@@ -60,7 +60,7 @@ Raspberry Pi 400 has a dedicated power button which operates even if the process
 
 On Raspberry Pi 5 this places the PMIC in `STANDBY` mode where all outputs are switched off. There is no need to set `WAKE_ON_GPIO` and pressing the xref:raspberry-pi.adoc#power-button[dedicated power button] will boot the device.
 
-Default: `0`
+Default: `1` on Compute Modules since CM5 and Keyboard models since Pi 400; otherwise `0`
 
 [[BOOT_ORDER]]
 ==== `BOOT_ORDER`
@@ -307,7 +307,7 @@ Default: `""`
 [[DISABLE_HDMI]]
 ==== `DISABLE_HDMI`
 
-The xref:raspberry-pi.adoc#boot-diagnostics-on-the-raspberry-pi-4[HDMI boot diagnostics] display is disabled if `DISABLE_HDMI=1`. Other non-zero values are reserved for future use.
+The xref:raspberry-pi.adoc#boot-diagnostics[HDMI boot diagnostics] display is disabled if `DISABLE_HDMI=1`. Other non-zero values are reserved for future use.
 
 Default: `0`
 
@@ -398,7 +398,22 @@ This setting is ignored and network install is disabled if `DISABLE_HDMI=1` is s
 
 In order to detect the keyboard, network install must initialise the USB controller and enumerate devices. This increases boot time by approximately 1 second so it may be advantageous to disable network install in some embedded applications.
 
-Default: `1` on Raspberry Pi 4 and Raspberry Pi 400, and `0` on Compute Module 4.
+Default: `1` on Flagship models since Raspberry Pi 4 and Keyboard models since Pi 400; `0` on Compute Modules since CM4 (including CM4S).
+
+[[NET_INSTALL_AT_POWER_ON]]
+==== `NET_INSTALL_AT_POWER_ON`
+
+When set to `1`, displays the network install UI briefly after a cold boot to make this feature more obvious to new users. Overrides `NET_INSTALL_ENABLED` if the settings conflict.
+
+The default bootloader images set this value to `1` in the bootloader config. To disable the brief network install UI display, use the `Advanced Options` menu in `raspi-config` or manually delete this line in `rpi-eeprom-config`:
+
+[source,console]
+----
+$ sudo rpi-eeprom-config --edit
+----
+
+
+Default: `0`
 
 [[NET_INSTALL_KEYBOARD_WAIT]]
 ==== `NET_INSTALL_KEYBOARD_WAIT`

@@ -77,6 +77,8 @@ $ imxconv-pt -i <compressed ONNX model> -o <output folder>
 
 Both commands create an output folder that contains a memory usage report and a `packerOut.zip` file.
 
+For optimal use of the memory available to the accelerator on the IMX500 sensor, add `--no-input-persistency` to the above commands. However, this will disable input tensor generation and return to the application for debugging purposes.
+
 For more information on the model conversion process, see the official https://developer.aitrios.sony-semicon.com/en/raspberrypi-ai-camera/documentation/imx500-converter[Sony IMX500 Converter documentation].
 
 === Packaging
@@ -94,7 +96,7 @@ To package the model into an RPK file, run the following command:
 
 [source,console]
 ----
-$ imx500-package.sh -i <path to packerOut.zip> -o <output folder>
+$ imx500-package -i <path to packerOut.zip> -o <output folder>
 ----
 
 This command should create a file named `network.rpk` in the output folder. You'll pass the name of this file to your IMX500 camera applications.

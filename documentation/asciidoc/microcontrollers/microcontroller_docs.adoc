@@ -28,13 +28,17 @@ https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf[Raspberry Pi Pico Dat
 
 https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico]:: C/{cpp} development with Raspberry Pi Pico and other RP2040-based microcontroller boards
 
+=== Raspberry Pi Pico 2 W
+
+https://datasheets.raspberrypi.com/picow/pico-2-w-datasheet.pdf[Raspberry Pi Pico 2 W Datasheet]:: An RP2350-based microcontroller board with wireless
+
+https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W-series]:: Getting Raspberry Pi Pico W-series devices online with C/{cpp} or MicroPython
+
 === Raspberry Pi Pico W
 
 https://datasheets.raspberrypi.com/picow/pico-w-datasheet.pdf[Raspberry Pi Pico W Datasheet]:: An RP2040-based microcontroller board with wireless
 
-https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W]:: Getting Raspberry Pi Pico W online with C/{cpp} or MicroPython
-
-NOTE: Documentation introducing working with Wi-Fi and Bluetooth on Raspberry Pi Pico W with C/{cpp} or MicroPython is presented in the https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W] book.
+https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W-series]:: Getting Raspberry Pi Pico W-series devices online with C/{cpp} or MicroPython
 
 === Software Development
 
@@ -43,6 +47,4 @@ https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi
 https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf[Raspberry Pi Pico Python SDK]:: A MicroPython environment for RP2040 microcontrollers
 
 The API level Doxygen documentation for the Raspberry Pi Pico C/{cpp} SDK is also available https://rptl.io/pico-doxygen[as a micro-site].
-
-NOTE: A https://github.com/raspberrypi/pico-setup-windows/releases/latest/download/pico-setup-windows-x64-standalone.exe[one-click installer] for the Pico C/{cpp} SDK for Windows 10 and Windows 11 is available.
 

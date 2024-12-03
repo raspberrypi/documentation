@@ -25,13 +25,34 @@ The Raspberry Pi 5 firmware defaults to loading `kernel_2712.img` because this i
 
 === `arm_64bit`
 
+
 If set to 1, the kernel will be started in 64-bit mode. Setting to 0 selects 32-bit mode.
 
 In 64-bit mode, the firmware will choose an appropriate kernel (e.g. `kernel8.img`), unless there is an explicit `kernel` option defined, in which case that is used instead.
 
-Defaults to 1 on Pi 4s (Pi 4B, Pi 400, CM4 and CM4S), and 0 on all other platforms. However, if the name given in an explicit `kernel` option matches one of the known kernels then `arm_64bit` will be set accordingly.
+Defaults to 1 on Raspberry Pi 4, 400 and Compute Module 4, 4S platforms. Defaults to 0 on all other platforms. However, if the name given in an explicit `kernel` option matches one of the known kernels then `arm_64bit` will be set accordingly.
 
-NOTE: 64-bit kernels may be uncompressed image files or a gzip archive of an image (which can still be called kernel8.img; the bootloader will recognize the archive from the signature bytes at the beginning). The 64-bit kernel will only work on the Raspberry Pi 3, 3+, 4, 400, Zero 2 W and 2B rev 1.2, and Raspberry Pi Compute Modules 3, 3+ and 4. Raspberry Pi 5 only supports a 64-bit kernel, so this parameter has been removed for that device.
+64-bit kernels come in the following forms:
+
+* uncompressed image files
+* gzip archives of an image
+
+Both forms may use the `img` file extension; the bootloader recognizes archives using signature bytes at the start of the file.
+
+The following Raspberry Pi models support this flag:
+
+* 2B rev 1.2
+* 3
+* 3+
+* 4
+* 400
+* Zero 2 W
+* Compute Module 3
+* Compute Module 3+
+* Compute Module 4
+* Compute Module 4S
+
+Later models, such as Raspberry Pi 5, _only_ support the 64-bit kernel. Such models do not support this flag.
 
 === `ramfsfile`
 
@@ -65,7 +86,7 @@ If `disable_splash` is set to `1`, the rainbow splash screen will not be shown o
 
 === `enable_uart`
 
-`enable_uart=1` (in conjunction with `console=serial0` in `cmdline.txt`) requests that the kernel creates a serial console, accessible using GPIOs 14 and 15 (pins 8 and 10 on the 40-pin header). Editing `cmdline.txt` to remove the line `quiet` enables boot messages from the kernel to also appear there. See also `uart_2ndstage`.
+`enable_uart=1` (in conjunction with `console=serial0,115200` in `cmdline.txt`) requests that the kernel creates a serial console, accessible using GPIOs 14 and 15 (pins 8 and 10 on the 40-pin header). Editing `cmdline.txt` to remove the line `quiet` enables boot messages from the kernel to also appear there. See also `uart_2ndstage`.
 
 === `force_eeprom_read`
 
@@ -130,6 +151,14 @@ Experimental property for custom firmware (bare metal).
 Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any compatibility checks (e.g. is USB MSD boot supported) and resets PCIe before starting the executable.
 
 Not relevant on Raspberry Pi 5 because there is no `start.elf` file.
+
+Default: `0x0`
+
+[[enable_rp1_uart]]
+==== `enable_rp1_uart`
+
+When set to `1`, firmware initialises RP1 UART0 to 115200bps and doesn't reset RP1 before starting the OS (separately configurable using `pciex4_reset=1`).
+This makes it easier to get UART output on the 40-pin header in early boot-code, for instance during bare-metal debug.
 
 Default: `0x0`
 

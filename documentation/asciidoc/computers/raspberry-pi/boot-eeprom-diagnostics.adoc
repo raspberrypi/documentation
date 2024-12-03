@@ -1,12 +1,12 @@
-== Boot diagnostics on the Raspberry Pi 4
+== Boot diagnostics
 
-Starting with version 2020-04-16 of the Raspberry Pi 4 bootloader, diagnostic information can be displayed at boot time on an HDMI display. To see this diagnostic information, power down the Raspberry Pi 4, remove the SD card, then power back up. A diagnostic display similar to below should appear on the attached display.
+The bootloader on Raspberry Pi 4 or later flagship models can display diagnostic information at boot time on an HDMI display. To see this diagnostic information, power down the Raspberry Pi, disconnect the boot media (typically an SD card or SSD), then power back up. If your Raspberry Pi is connected to a display, you should see diagnostics similar to the following:
 
 image::images/bootloader-diagnostics.png[Boot diagnostics screen]
 
-This diagnostics page will also appear if the bootloader is unable to boot from an inserted SD card, or is unable to network boot; for example, if there is no bootable image on the card, or if it is defective, or if the network boot parameters are incorrect.
+This diagnostics page will also appear if the bootloader is unable to boot from any boot media or network boot. This can happen if there is no bootable image on the boot media, if the boot media is defective, or if network boot parameters are incorrect.
 
-Once the diagnostics page is displayed, a reboot is only possible by power cycling the device (i.e. unplug then re-plug the power supply).
+To reboot while displaying the diagnostics page, power cycle the device. You can disconnect, then reconnect the power supply, or press and hold the power button, if your device has one.
 
 The top line describes the model of Raspberry Pi and its memory capacity. The QR code is a link to the https://www.raspberrypi.com/software/[downloads page].
 
@@ -20,25 +20,25 @@ The diagnostic information is as follows:
 | Bootloader git version - RO (if EEPROM is write protected) - software build date
 
 | update-ts
-| The timestamp corresponding to when the EEPROM configuration was updated.  This timestamp is checked in xref:raspberry-pi.adoc#ENABLE_SELF_UPDATE[self-update] mode to avoid updating to an old configuration.
+| the timestamp corresponding to when the EEPROM configuration was updated; this timestamp is checked in xref:raspberry-pi.adoc#ENABLE_SELF_UPDATE[self-update] mode to avoid updating to an old configuration
 
 | secure-boot
-| If xref:raspberry-pi.adoc#secure-boot[secure-boot] is enabled, then the processor revision (B0/C0) and xref:configuration.adoc#part4[signed-boot status flags] are displayed. Otherwise, this line is blank.
+| If xref:raspberry-pi.adoc#secure-boot[secure-boot] is enabled, displays the processor revision (B0/C0) and xref:configuration.adoc#part4[signed-boot status flags]; otherwise, this line is blank
 
 | board
 | xref:raspberry-pi.adoc#raspberry-pi-revision-codes[Board revision] - serial number - Ethernet MAC address
 
 | boot
-| *mode* (current boot mode name and number) *order* (the xref:raspberry-pi.adoc#BOOT_ORDER[BOOT ORDER] configuration) *retry* (retry count in the current boot mode) *restart* (number of cycles through the list of boot modes).
+| *mode* (current boot mode name and number) *order* (the xref:raspberry-pi.adoc#BOOT_ORDER[BOOT ORDER] configuration) *retry* (retry count in the current boot mode) *restart* (number of cycles through the list of boot modes)
 
 | SD
 | The SD card detect status (detected/not detected).
 
 | part
-| Master Boot Record primary partitions type:LBA.
+| Master Boot Record primary partitions type:LBA
 
 | fw
-| Filename for `start.elf` and `fixup.dat` if present (e.g. `start4x.elf`, `fixup4x.dat`).
+| Filename for `start.elf` and `fixup.dat` if present (e.g. `start4x.elf`, `fixup4x.dat`)
 
 | net
 | Network boot: link status (up/down), client IP address (ip), subnet (sn), default gateway (gw)
@@ -47,9 +47,7 @@ The diagnostic information is as follows:
 | Network boot: TFTP server IP address
 
 | display
-| Indicates whether hotplug was detected (`HPD=1`) and if so whether the EDID was read successfully (`EDID=ok`) for each HDMI output.
+| Indicates whether hotplug was detected (`HPD=1`) and if so whether the EDID was read successfully (`EDID=ok`) for each HDMI output
 |===
 
-This display can be disabled using the `DISABLE_HDMI` option, see xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[Bootloader configuration].
-
-NOTE: This is purely for diagnosing boot failures; it is not an interactive bootloader. If you require an interactive bootloader, consider using a tool such as U-Boot.
+To disable this diagnostics display, use the `DISABLE_HDMI` option in the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration].

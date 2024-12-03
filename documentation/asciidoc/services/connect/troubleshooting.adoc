@@ -10,6 +10,94 @@
 
 * Browsers intercept certain keys and key combinations. As a result, you can't type these keys into your Connect window. Screen sharing includes a toolbar to simulate some of the most popular intercepted keys.
 
+* To upgrade from version 1 to version 2, you must first upgrade the package you currently have installed before switching between `rpi-connect` and `rpi-connect-lite`. This ensures that Connect's services properly migrate to the version 2 format. If you currently have `rpi-connect` installed, run the following command:
++
+[source,console]
+----
+$ sudo apt install --only-upgrade rpi-connect
+----
++
+Alternatively, if you currently have `rpi-connect-lite` installed, run the following command:
++
+[source,console]
+----
+$ sudo apt install --only-upgrade rpi-connect-lite
+----
++
+You should see output similar to the following during the upgrade, indicating that Connect's services have migrated to the version 2 format:
++
+[source,console]
+----
+Replacing globally-enabled rpi-connect services with user-enabled ones...
+----
+
+=== Common issues
+
+==== Screen sharing not available
+
+If Connect states that screen sharing is unavailable, it cannot connect to the dedicated Connect WayVNC service.
+
+To find out more about the cause of the issue, run the following commands to check the status of the Connect WayVNC service:
+
+[source,console]
+----
+$ systemctl --user status rpi-connect-wayvnc
+$ journalctl --user --follow --unit rpi-connect-wayvnc
+----
+
+If the service fails to start or doesn't exist, ensure that your environment meets the following criteria:
+
+. You use `rpi-connect` version 1.1.0 or later.
+. You do not use `rpi-connect-lite`, which lacks screen sharing support.
+. You use a Wayland compositor such as wayfire or labwc, not X. You can control this setting via ``raspi-config``'s Advanced Options.
+. You use a desktop environment supported by WayVNC, e.g. Raspberry Pi Desktop. For instance, using KDE switches your Wayland compositor to kwin, which is unsupported.
+. You have an active graphical desktop session running as the same user as the one you signed into. For most, this means enabling "Desktop Autologin" via ``raspi-config``'s System Options.
+
+==== Can't connect after restarting or ending SSH session
+
+Connect runs as a user-level service and is therefore only available if there is an active session for the user signed into the service. If you want remote shell access without also running another login session, xref:connect.adoc#enable-remote-shell-at-all-times[enable user-lingering] for your user, which will keep Connect running at all times.
+
+For screen sharing, Connect can only share an existing graphical desktop session: it does not create entirely new sessions. There must already be a desktop session in progress. To start such a session automatically on boot, enable Desktop Autologin via ``raspi-config``'s System Options.
+
+==== Networking and firewall issues
+
+Connect usually communicates between devices without requiring changes to your network or firewall. However, especially restrictive networks can sometimes block Connect communication. To help debug problems with such networks, `rpi-connect` and `rpi-connect-lite` include the `rpi-connect doctor` command. `rpi-connect doctor` runs a series of tests to check that Connect communication functions properly on your network.
+
+
+To run these tests on your device, run the following command:
+
+[source,console]
+----
+$ rpi-connect doctor
+----
+
+If Connect can communicate properly on your network, you should see output similar to the following:
+
+----
+✓ Communication with Raspberry Pi Connect API
+✓ Authentication with Raspberry Pi Connect API
+✓ Peer-to-peer connection candidate via STUN
+✓ Peer-to-peer connection candidate via TURN
+----
+
+If Connect can't communicate properly on your network, you'll see an "x" instead of a check next to the failing test case. Ask your network administrator to enable the following connections on your network:
+
+* unauthenticated HTTPS requests to the Raspberry Pi Connect API on port 443 of `api.connect.raspberrypi.com` 
+* authenticated requests to the Raspberry Pi Connect API on port 443 of `api.connect.raspberrypi.com`
+* requests to Raspberry Pi Connect STUN or TURN servers on UDP port 3478 of all of the following:
+** `stun.raspberrypi.com`
+** `turn1.raspberrypi.com`
+** `turn2.raspberrypi.com`
+** `turn3.raspberrypi.com`
+* requests to Raspberry Pi Connect TURN servers on TCP ports 3478 or 443 of all of the following:
+** `turn1.raspberrypi.com`
+** `turn2.raspberrypi.com`
+** `turn3.raspberrypi.com`
+* requests to Raspberry Pi Connect TURN servers on UDP ports 3478, 443, or 49152 -> 65535 of all of the following:
+** `turn1.raspberrypi.com`
+** `turn2.raspberrypi.com`
+** `turn3.raspberrypi.com`
+
 === View Connect status
 
 To view the current status of the Connect service, run the following command:
@@ -19,7 +107,17 @@ To view the current status of the Connect service, run the following command:
 $ rpi-connect status
 ----
 
+You should see output similar to the following:
+
+----
+Signed in: yes
+Screen sharing: allowed (0 sessions active)
+Remote shell: allowed (0 sessions active)
+----
+
 The output of this command indicates whether or not you are currently signed in to Connect, as well as the remote services enabled on your Raspberry Pi.
+
+If you see output including "Raspberry Pi Connect is not running, run rpi-connect on", run `rpi-connect on` to start Connect.
 
 === Enable enhanced logging
 
@@ -27,7 +125,7 @@ You can enable debug logging for both `rpi-connect` and its dedicated WayVNC ser
 
 ==== Enable enhanced logging in `rpi-connect`
 
-Open the `rpi-connect` configuration file for editing with the following command:
+Override the `rpi-connect` service definition with the following command:
 
 [source,console]
 ----
@@ -45,23 +143,23 @@ ExecStart=/usr/bin/rpi-connectd -socket %t/rpi-connect-wayvnc.sock -v
 
 NOTE: You need **both** lines that begin with `ExecStart=`.
 
-Finally, restart the service with the following command:
+Finally, restart Connect with the following command:
 
 [source,console]
 ----
-$ systemctl --user restart rpi-connect
+$ rpi-connect restart
 ----
 
 ==== Enable enhanced logging in the dedicated `wayvnc` server
 
-Open the configuration file for the dedicated WayVNC server associated with Connect:
+Override the `rpi-connect-wayvnc` service definition with the following command:
 
 [source,console]
 ----
 $ systemctl --user edit rpi-connect-wayvnc
 ----
 
-Enter the following lines of configuration between the comments:
+Enter the following lines of configuration between the comments (including the `-Ldebug` flag):
 
 [source,bash]
 ----
@@ -72,11 +170,11 @@ ExecStart=/usr/bin/rpi-connect-env /usr/bin/wayvnc --config /etc/rpi-connect/way
 
 NOTE: You need **both** lines that begin with `ExecStart=`.
 
-Finally, restart the service with the following command:
+Finally, restart Connect with the following command:
 
 [source,console]
 ----
-$ systemctl --user restart rpi-connect-wayvnc
+$ rpi-connect restart
 ----
 
 === View Connect logs

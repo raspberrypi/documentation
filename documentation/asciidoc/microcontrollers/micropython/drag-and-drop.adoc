@@ -6,18 +6,19 @@ image::images/MicroPython-640x360-v2.gif[]
 
 Download the correct MicroPython UF2 file for your board:
 
-* https://micropython.org/download/rp2-pico/rp2-pico-latest.uf2[Raspberry Pi Pico] 
+* https://micropython.org/download/rp2-pico/rp2-pico-latest.uf2[Pico] 
 
-* https://micropython.org/download/rp2-pico-w/rp2-pico-w-latest.uf2[Raspberry Pi Pico W] with Wi-Fi and Bluetooth LE support
-//(with https://makeblock-micropython-api.readthedocs.io/en/latest/public_library/Third-party-libraries/urequests.html[urequests] and https://docs.micropython.org/en/latest/reference/packages.html[upip] preinstalled)
+* https://micropython.org/download/rp2-pico-w/rp2-pico-w-latest.uf2[Pico W]
 
-//* https://datasheets.raspberrypi.com/soft/micropython-firmware-pico-w-130623.uf2[Raspberry Pi Pico W] with Wi-Fi and Bluetooth LE support
+* https://micropython.org/download/RPI_PICO2/RPI_PICO2-latest.uf2[Pico 2]
 
-//IMPORTANT: Until Bluetooth support is integrated into the upstream repo you should download the beta https://datasheets.raspberrypi.com/soft/micropython-firmware-pico-w-130623.uf2[UF2 firmware] which has both Wi-Fi and Bluetooth support built in. Documentation introducing working with Wi-Fi and Bluetooth on Raspberry Pi Pico W with C/{cpp} or MicroPython is presented in the https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W] book. Full details of https://github.com/bluekitchen/btstack#supported-protocols-and-profiles[supported Bluetooth protocols and profiles] are Blue Kitchen https://github.com/bluekitchen/btstack[BTStack] Github repository.
+* https://downloads.raspberrypi.com/micropython/mp_firmware_unofficial_latest.uf2[Pico 2 W]
 
-To work with Wi-Fi and Bluetooth on Raspberry Pi Pico W with C/{cpp} or MicroPython, see the https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W] book. For details about https://github.com/bluekitchen/btstack#supported-protocols-and-profiles[supported Bluetooth protocols and profiles], see the Blue Kitchen https://github.com/bluekitchen/btstack[BTStack] Github repository.
+For more information about using Wi-Fi and Bluetooth on Raspberry Pi Pico W-series devices with C/{cpp} or MicroPython, see https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W-series].
 
-NOTE: MicroPython distributions for other RP2040-based boards are available on the https://micropython.org/download/[MicroPython download page].
+For more information about https://github.com/bluekitchen/btstack#supported-protocols-and-profiles[supported Bluetooth protocols and profiles], see the Blue Kitchen https://github.com/bluekitchen/btstack[BTStack] Github repository.
+
+NOTE: MicroPython distributions for other RP2040- and RP2350-based boards are available on the https://micropython.org/download/[MicroPython download page].
 
 To program your device, follow these steps:
 
@@ -27,4 +28,4 @@ To program your device, follow these steps:
 
 . Access the REPL via USB Serial.
 
-The https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf[Raspberry Pi Pico Python SDK] book contains step-by-step instructions for connecting to your Pico and programming it in MicroPython using both the command line and the https://thonny.org/[Thonny] IDE.
+The https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf[Raspberry Pi Pico-series Python SDK] book contains step-by-step instructions for connecting to your Pico and programming it in MicroPython using both the command line and the https://thonny.org/[Thonny] IDE.

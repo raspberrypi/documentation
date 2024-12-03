@@ -20,7 +20,7 @@ The Raspberry Pi AI Camera uses the Sony IMX500 imaging sensor to provide low-la
 
 image::images/ai-camera-hero.png[The Raspberry Pi AI Camera]
 
-Finally, there is the Global Shutter camera, which was http://raspberrypi.com/news/new-raspberry-pi-global-shutter-camera[released in 2023]. There is no infrared version of the GS Camera, however the IR Filter can be removed if required.
+Finally, there is the Global Shutter camera, which was http://raspberrypi.com/news/new-raspberry-pi-global-shutter-camera[released in 2023]. There is no infrared version of the GS Camera, however the xref:camera.adoc#filter-removal[IR Filter can be removed] if required.
 
 .Global Shutter Camera
 image::images/gs-camera.jpg[GS Camera]
@@ -209,7 +209,7 @@ Then, please follow the relevant setup instructions for xref:../computers/camera
 | Depends on lens
 
 | Maximum exposure time (seconds)
-| 0.97
+| 3.28
 | 11.76
 | 112
 | 112

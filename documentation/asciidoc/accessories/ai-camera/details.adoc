@@ -9,7 +9,7 @@ image::images/imx500-comparison.svg[Traditional versus IMX500 AI camera systems]
 
 The left side demonstrates the architecture of a traditional AI camera system. In such a system, the camera delivers images to the Raspberry Pi. The Raspberry Pi processes the images and then performs AI inference. Traditional systems may use external AI accelerators (as shown) or rely exclusively on the CPU.
 
-The right side demonstrates the architecture of a system that uses IMX500. The camera module contains a small Image Signal Processor (ISP) which turns the raw camera image data into an **input tensor**. The camera module sends this tensor directly into the AI accelerator within the camera, which produces an **output tensor** that contains the inferencing results. The AI accelerator sends this tensor to the Raspberry Pi. There is no need for an external accelerator, nor for the Raspberry Pi to run neural network software on the CPU.
+The right side demonstrates the architecture of a system that uses IMX500. The camera module contains a small Image Signal Processor (ISP) which turns the raw camera image data into an **input tensor**. The camera module sends this tensor directly into the AI accelerator within the camera, which produces **output tensors** that contain the inferencing results. The AI accelerator sends these tensors to the Raspberry Pi. There is no need for an external accelerator, nor for the Raspberry Pi to run neural network software on the CPU.
 
 To fully understand this system, familiarise yourself with the following concepts:
 
@@ -17,7 +17,7 @@ Input Tensor:: The part of the sensor image passed to the AI engine for inferenc
 
 Region of Interest (ROI):: Specifies exactly which part of the sensor image is cropped out before being rescaled to the size demanded by the neural network. Can be queried and set by an application. The units used are always pixels in the full resolution sensor output. The default ROI setting uses the full image received from the sensor, cropping no data.
 
-Output Tensor:: The results of inferencing performed by the neural network. The precise number and shape of the outputs depend on the neural network. Application code must understand how to handle the tensor.
+Output Tensors:: The results of inferencing performed by the neural network. The precise number and shape of the outputs depend on the neural network. Application code must understand how to handle the tensors.
 
 === System architecture
 
@@ -43,13 +43,13 @@ Once `libcamera` dequeues the image and inference data buffers from the kernel, 
 | Description
 
 | `CnnOutputTensor`
-| Floating point array storing the output tensor.
+| Floating point array storing the output tensors.
 
 | `CnnInputTensor`
 | Floating point array storing the input tensor.
 
 | `CnnOutputTensorInfo`
-| Network specific parameters describing the output tensors structure:
+| Network specific parameters describing the output tensors' structure:
 
 [source,c]
 ----
@@ -67,7 +67,7 @@ struct CnnOutputTensorInfo {
 ----
 
 | `CnnInputTensorInfo`
-| Network specific parameters describing the input tensors structure:
+| Network specific parameters describing the input tensor's structure:
 
 [source,c]
 ----
@@ -204,7 +204,7 @@ def draw_detections(request, detections, stream="main"):
             cv2.rectangle(m.array, (b.x, b.y), (b.x + b.width, b.y + b.height), (255, 0, 0, 0))
 
 def parse_detections(request, stream='main'):
-    """Parse the output tensor into a number of detected objects, scaled to the ISP out."""
+    """Parse the output tensor into a number of detected objects, scaled to the ISP output."""
     outputs = imx500.get_outputs(request.get_metadata())
     boxes, scores, classes = outputs[0][0], outputs[1][0], outputs[2][0]
     detections = [ Detection(box, category, score, metadata)
@@ -245,7 +245,7 @@ There are a number of scaling/cropping/translation operations occurring from the
 | Returns the input tensor size based on the neural network model used.
 
 | `IMX500.get_outputs(metadata)`
-| Returns the output tensors from the Picamera2 image metadata metadata.
+| Returns the output tensors from the Picamera2 image metadata.
 
 | `IMX500.get_output_shapes(metadata)`
 | Returns the shape of the output tensors from the Picamera2 image metadata for the neural network model used.

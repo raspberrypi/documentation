@@ -1,21 +1,29 @@
 == Raspberry Pi boot EEPROM
 
-Raspberry Pi 5, Raspberry Pi 4, 400, Compute Module 4, and Compute Module 4S computers use an EEPROM to boot the system. All other models of Raspberry Pi computer use the `bootcode.bin` file located in the boot filesystem.
+The following Raspberry Pi models use an EEPROM to boot the system:
+
+* Flagship models since Raspberry Pi 4
+* Compute Module models since CM4 (including CM4S)
+* Keyboard models since Pi 400
+
+All other models of Raspberry Pi computer use the `bootcode.bin` file located in the boot filesystem.
 
 NOTE: You can find the scripts and pre-compiled binaries used to create `rpi-eeprom`  in the https://github.com/raspberrypi/rpi-eeprom/[rpi-eeprom GitHub repository].
 
-=== Boot diagnostics
+=== Diagnostics
 
-If an error occurs during boot, then an xref:configuration.adoc#led-warning-flash-codes[error code] will be displayed via the green LED. Newer versions of the bootloader will display a xref:raspberry-pi.adoc#boot-diagnostics-on-the-raspberry-pi-4[diagnostic message] which will be shown on both HDMI displays.
+If an error occurs during boot, then an xref:configuration.adoc#led-warning-flash-codes[error code] will be displayed via the green LED. Newer versions of the bootloader will display a xref:raspberry-pi.adoc#boot-diagnostics[diagnostic message] on all HDMI displays.
 
 [[bootloader_update_stable]]
 === Update the bootloader
 
 There are multiple ways to update the bootloader of your Raspberry Pi.
 
-==== Raspberry Pi 5, Raspberry Pi 4 and Raspberry Pi 400
+==== Flagship models since Raspberry Pi 4; Compute Modules since CM5; Keyboard models since Pi 400
 
 Raspberry Pi OS automatically updates the bootloader for important bug fixes. To manually update the bootloader or change the boot order, use xref:configuration.adoc#raspi-config[raspi-config].
+
+NOTE: Compute Module 4 and Compute Module 4S do not support automatic bootloader updates because the bootrom cannot load the `recovery.bin` file from eMMC. The recommended update mechanism is `rpiboot` or via `flashrom` - see `rpi-eeprom-update -h` for more information.
 
 [[imager]]
 ==== Use Raspberry Pi Imager to update the bootloader

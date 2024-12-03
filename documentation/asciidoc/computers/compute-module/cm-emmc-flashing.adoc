@@ -1,114 +1,109 @@
 [[flash-compute-module-emmc]]
 == Flash an image to a Compute Module
 
+TIP: To flash the same image to multiple Compute Modules, use the https://github.com/raspberrypi/rpi-sb-provisioner[Raspberry Pi Secure Boot Provisioner]. To customise an OS image to flash onto those devices, use https://github.com/RPi-Distro/pi-gen[pi-gen].
+
 [[flashing-the-compute-module-emmc]]
 
 The Compute Module has an on-board eMMC device connected to the primary SD card interface. This guide explains how to flash (write) an operating system image to the eMMC storage of a single Compute Module.
 
-NOTE: **Lite** variants of Compute Modules do not have on-board eMMC. Instead, you can follow the procedure to flash a storage device for other Raspberry Pi devices at xref:../computers/getting-started.adoc#installing-the-operating-system[Install an operating system].
-
-When flashing an image to multiple Compute Modules, consider using the Compute Module Provisioner instead:
-
-[.whitepaper, title="Mass Provision with the Compute Module Provisioner", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003468-WP/Using-the-Compute-Module-Provisioner.pdf]
-****
-The Compute Module Provisioner is a web application that helps developers program many Compute Module devices simultaneously.
-
-It provides a database of kernel images and the ability to run scripts during the flashing process, in addition to automated label printing and firmware updating.
-****
+**Lite** variants of Compute Modules do not have on-board eMMC. Instead, follow the procedure to flash a storage device for other Raspberry Pi devices at xref:../computers/getting-started.adoc#installing-the-operating-system[Install an operating system].
 
 === Prerequisites
 
 To flash the Compute Module eMMC, you need the following:
 
-* Another computer, referred to in this guide as the *host device*. You can use Linux (Raspberry Pi OS or Ubuntu), Windows, or macOS.
+* Another computer, referred to in this guide as the *host device*. You can use Linux (we recommend Raspberry Pi OS or Ubuntu), Windows 11, or macOS.
 * The Compute Module IO Board xref:compute-module.adoc#io-board-compatibility[that corresponds to your Compute Module model].
-* A micro USB cable.
+* A micro USB cable, or a USB-C cable for Compute Module models since CM5IO.
+
+TIP: In some cases, USB hubs can prevent the host device from recognising the Compute Module. If your host device does not recognise the Compute Module, try connecting the Compute Module directly to the host device. For more diagnostic tips, see https://github.com/raspberrypi/usbboot?tab=readme-ov-file#troubleshooting[the usbboot troubleshooting guide].
 
 === Set up the IO Board
 
 To begin, physically set up your IO Board. This includes connecting the Compute Module and host device to the IO Board.
 
-==== with Compute Module 4 IO Board
-
-To set up the Compute Module 4 IO Board:
-
+[tabs%sync]
+======
+Compute Module 5 IO Board::
++
+To set up the Compute Module 5 IO Board:
++
 . Connect the Compute Module to the IO board. When connected, the Compute Module should lie flat.
-
 . Fit `nRPI_BOOT` to J2 (`disable eMMC Boot`) on the IO board jumper.
+. Connect a cable from USB-C slave port J11 on the IO board to the host device.
 
+Compute Module 4 IO Board::
++
+To set up the Compute Module 4 IO Board:
++
+. Connect the Compute Module to the IO board. When connected, the Compute Module should lie flat.
+. Fit `nRPI_BOOT` to J2 (`disable eMMC Boot`) on the IO board jumper.
 . Connect a cable from micro USB slave port J11 on the IO board to the host device.
 
-==== with Compute Module IO Board
-
+Compute Module IO Board::
++
 To set up the Compute Module IO Board:
-
++
 . Connect the Compute Module to the IO board. When connected, the Compute Module should lie parallel to the board, with the engagement clips firmly clicked into place.
-
 . Set J4 (`USB SLAVE BOOT ENABLE`) to 1-2 = (`USB BOOT ENABLED`)
-
 . Connect a cable from micro USB slave port J15 on the IO board to the host device.
+======
 
 === Set up the host device
 
 Next, let's set up software on the host device.
 
-==== on Linux
+TIP: For a host device, we recommend a Raspberry Pi 4 or newer running 64-bit Raspberry Pi OS.
 
+[tabs%sync]
+======
+Linux::
++
 To set up software on a Linux host device:
-
-. Run the following command to install `rpiboot`:
++
+. Run the following command to install `rpiboot` (or, alternatively, https://github.com/raspberrypi/usbboot[build `rpiboot` from source]):
 +
 [source,console]
 ----
 $ sudo apt install rpiboot
 ----
-
 . Connect the IO Board to power.
-
 . Then, run `rpiboot`:
 +
 [source,console]
 ----
 $ sudo rpiboot
 ----
-
 . After a few seconds, the Compute Module should appear as a mass storage device. Check the `/dev/` directory, likely `/dev/sda` or `/dev/sdb`, for the device. Alternatively, run `lsblk` and search for a device with a storage capacity that matches the capacity of your Compute Module.
 
-TIP: Alternatively, you can https://github.com/raspberrypi/usbboot[build `rpiboot` from source].
-
-==== on macOS
-
+macOS::
++
 To set up software on a macOS host device:
-
++
 . First, https://github.com/raspberrypi/usbboot?tab=readme-ov-file#macos[build `rpiboot` from source].
-
 . Connect the IO Board to power.
-
 . Then, run the `rpiboot` executable with the following command:
 +
 [source,console]
 ----
 $ sudo ./rpiboot
 ----
-
 . When the command finishes running, you should see a message stating "The disk you inserted was not readable by this computer." Click **Ignore**. Your Compute Module should now appear as a mass storage device.
 
-==== on Windows
-
-To set up software on a Windows host device:
-
-. Download the https://github.com/raspberrypi/usbboot/raw/master/win32/rpiboot_setup.exe[Windows installer]
-
-. Double-click on the installer to run it. This installs the drivers and boot tool.
-
+Windows::
++
+To set up software on a Windows 11 host device:
++
+. Download the https://github.com/raspberrypi/usbboot/raw/master/win32/rpiboot_setup.exe[Windows installer] or https://github.com/raspberrypi/usbboot[build `rpiboot` from source].
+. Double-click on the installer to run it. This installs the drivers and boot tool. Do not close any driver installation windows which appear during the installation process.
+. Reboot
 . Connect the IO Board to power. Windows should discover the hardware and configure the required drivers.
-
 . On CM4 and later devices, select **Raspberry Pi - Mass Storage Gadget - 64-bit** from the start menu. After a few seconds, the Compute Module eMMC or NVMe will appear as USB mass storage devices. This also provides a debug console as a serial port gadget.
-
 . On CM3 and older devices, select **rpiboot**. Double-click on `RPiBoot.exe` to run it. After a few seconds, the Compute Module eMMC should appear as a USB mass storage device.
 
+======
 
-TIP: Alternatively, you can https://github.com/raspberrypi/usbboot[build `rpiboot` from source].
 
 === Flash the eMMC
 
@@ -134,13 +129,20 @@ You can mount the `/dev/sdX1` and `/dev/sdX2` partitions normally.
 
 === Boot from eMMC
 
-==== with Compute Module 4 IO Board
-
+[tabs%sync]
+======
+Compute Module 5 IO Board::
++
 Disconnect `nRPI_BOOT` from J2 (`disable eMMC Boot`) on the IO board jumper.
 
-==== with Compute Module IO Board
+Compute Module 4 IO Board::
++
+Disconnect `nRPI_BOOT` from J2 (`disable eMMC Boot`) on the IO board jumper.
 
+Compute Module IO Board::
++
 Set J4 (`USB SLAVE BOOT ENABLE`) to 2-3 (`USB BOOT DISABLED`).
+======
 
 ==== Boot
 
@@ -148,7 +150,7 @@ Disconnect the USB slave port. Power-cycle the IO board to boot the Compute Modu
 
 === Known issues
 
-* A small percentage of CM3 experienced booting problems. We have traced these back to the method used to create the FAT32 partition; we believe the problem is due to a difference in timing between the CPU and eMMC. If you have trouble booting your CM3, create the partitions manually with the following commands:
+* A small percentage of CM3 devices may experience problems booting. We have traced these back to the method used to create the FAT32 partition; we believe the problem is due to a difference in timing between the CPU and eMMC. If you have trouble booting your CM3, create the partitions manually with the following commands:
 +
 [source,console]
 ----

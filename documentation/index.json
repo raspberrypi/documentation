@@ -54,6 +54,12 @@
                     "subpath": "camera_software.adoc"
                 },
                 {
+                    "title": "AI software",
+                    "description": "Software and libraries for artificial intelligence on a Raspberry Pi hardware",
+                    "image": "full-sized/ai.png",
+                    "subpath": "ai.adoc"
+                },
+                {
                     "title": "Raspberry Pi hardware",
                     "description": "Technical information about Raspberry Pi hardware",
                     "image": "full-sized/Raspberry-Pi-Hardware.png",
@@ -79,16 +85,46 @@
             "default_tab": "no",
             "subitems": [
                 {
+                    "title": "SD Cards",
+                    "description": "Raspberry Pi's official SD cards",
+                    "image": "full-sized/sd-card.png",
+                    "subpath": "sd-cards.adoc"
+                },
+                {
+                    "title": "SSDs",
+                    "description": "Raspberry Pi's official Solid State Drives",
+                    "image": "full-sized/ssds.png",
+                    "subpath": "ssds.adoc"
+                },
+                {
+                    "title": "SSD Kit",
+                    "description": "Storage for your Raspberry Pi",
+                    "image": "full-sized/ssd-kit.png",
+                    "subpath": "ssd-kit.adoc"
+                },
+                {
+                    "title": "M.2 HAT+",
+                    "description": "Connect storage to your Raspberry Pi via PCIe",
+                    "image": "full-sized/m2-hat-plus.png",
+                    "subpath": "m2-hat-plus.adoc"
+                },
+                {
+                    "title": "Touch Display 2",
+                    "description": "The Raspberry Pi Touch Display 2",
+                    "image": "full-sized/Touch-Display-2.png",
+                    "subpath": "touch-display-2.adoc"
+                },
+                {
                     "title": "Camera",
                     "description": "Raspberry Pi camera boards",
                     "image": "full-sized/Camera.png",
                     "subpath": "camera.adoc"
                 },
                 {
-                    "title": "Display",
-                    "description": "The Raspberry Pi Touch Display",
-                    "image": "full-sized/Display.png",
-                    "subpath": "display.adoc"
+                    "title": "AI Camera",
+                    "description": "An AI Camera for your Raspberry Pi",
+                    "image": "full-sized/ai-cam.png",
+                    "subpath": "ai-camera.adoc"
                 },
                 {
                     "title": "Keyboard and mouse",
@@ -97,10 +133,10 @@
                     "subpath": "keyboard-and-mouse.adoc"
                 },
                 {
-                    "title": "SD Cards",
-                    "description": "Raspberry Pi's official SD cards",
-                    "image": "full-sized/sd-cards.png",
-                    "subpath": "sd-cards.adoc"
+                    "title": "USB Hub",
+                    "description": "Official Raspberry Pi USB hub",
+                    "image": "full-sized/usb-3-hub.png",
+                    "subpath": "usb-3-hub.adoc"
                 },
                 {
                     "title": "Build HAT",
@@ -115,22 +151,16 @@
                     "subpath": "sense-hat.adoc"
                 },
                 {
-                    "title": "M.2 HAT+",
-                    "description": "Connect storage to your Raspberry Pi via PCIe",
-                    "image": "full-sized/m2-hat-plus.png",
-                    "subpath": "m2-hat-plus.adoc"
-                },
-                {
                     "title": "AI Kit",
-                    "description": "An NPU for your Raspberry Pi",
+                    "description": "An NPU that connects to your Raspberry Pi via M.2",
                     "image": "full-sized/ai-kit.png",
                     "subpath": "ai-kit.adoc"
                 },
                 {
-                    "title": "AI Camera",
-                    "description": "An AI Camera for your Raspberry Pi",
-                    "image": "full-sized/ai-cam.png",
-                    "subpath": "ai-camera.adoc"
+                    "title": "AI HAT+",
+                    "description": "An NPU HAT+ for your Raspberry Pi",
+                    "image": "full-sized/ai-hat-plus.png",
+                    "subpath": "ai-hat-plus.adoc"
                 },
                 {
                     "title": "Raspberry Pi Audio",
@@ -143,6 +173,12 @@
                     "description": "Information on the HAT specification",
                     "image": "full-sized/Designing-a-HAT.png",
                     "url": "https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf"
+                },
+                {
+                    "title": "Touch Display",
+                    "description": "The Raspberry Pi Touch Display",
+                    "image": "full-sized/Display.png",
+                    "subpath": "display.adoc"
                 },
                 {
                     "title": "TV HAT",

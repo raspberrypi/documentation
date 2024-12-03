@@ -1,0 +1,32 @@
+== About
+
+.A 512GB Raspberry Pi SSD
+image::images/ssd.png[width="80%"]
+
+SSD quality is a critical factor in determining the overall user experience for a Raspberry Pi.
+Raspberry Pi provides official SSDs that are tested to ensure compatibility with Raspberry Pi models and peripherals.
+
+Raspberry Pi SSDs are available in the following sizes:
+
+* 256GB
+* 512GB
+
+To use an SSD with your Raspberry Pi, you need a Raspberry Pi 5-compatible M.2 adapter, such as the xref:../accessories/m2-hat-plus.adoc[Raspberry Pi M.2 HAT+].
+
+== Specifications
+
+Raspberry Pi SSDs are PCIe Gen 3-compliant.
+
+Raspberry Pi SSDs use the NVMe 1.4 register interface and command set.
+
+Raspberry Pi SSDs use the M.2 2230 form factor.
+
+The following table describes the read and write speeds of Raspberry Pi SSDs using 4KB of random data:
+
+[cols="1,2,2"]
+|===
+| Size | Read Speed | Write Speed
+
+| 256GB | 40,000 IOPS | 70,000 IOPS
+| 512GB | 50,000 IOPS | 90,000 IOPS
+|===

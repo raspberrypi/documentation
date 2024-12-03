@@ -738,7 +738,6 @@ Raspberry Pi models have the following device tree values:
 | Raspberry Pi 5                | `raspberrypi`   | `5-model-b`        | `brcm`     | `bcm2712`
 | Raspberry Pi 400              | `raspberrypi`   | `400`              | `brcm`     | `bcm2711`
 | Raspberry Pi Compute Module 4 | `raspberrypi`   | `4-compute-module` | `brcm`     | `bcm2711`
-| Raspberry Pi 4 Model A        | `raspberrypi`   | `4-model-a`        | `brcm`     | `bcm2711`
 | Raspberry Pi 4 Model B        | `raspberrypi`   | `4-model-b`        | `brcm`     | `bcm2711`
 | Raspberry Pi Compute Module 3 | `raspberrypi`   | `3-compute-module` | `brcm`     | `bcm2837`
 | Raspberry Pi 3 Model A+       | `raspberrypi`   | `3-model-a-plus`   | `brcm`     | `bcm2837`

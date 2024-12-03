@@ -1,0 +1,166 @@
+== Getting Started
+
+This guide will help you set up a Hailo NPU with your Raspberry Pi 5. This will enable you to run `rpicam-apps` camera demos using an AI neural network accelerator.
+
+=== Prerequisites
+
+For this guide, you will need the following:
+
+* a Raspberry Pi 5
+* one of the following NPUs:
+** a xref:../accessories/ai-kit.adoc[Raspberry Pi AI Kit], which includes:
+*** an M.2 HAT+
+*** a pre-installed Hailo-8L AI module
+** a xref:../accessories/ai-hat-plus.adoc[Raspberry Pi AI HAT+]
+* a 64-bit Raspberry Pi OS Bookworm install
+* any official Raspberry Pi camera (e.g. Camera Module 3 or High Quality Camera)
+
+=== Hardware setup
+
+. Attach the camera to your Raspberry Pi 5 board following the instructions at xref:../accessories/camera.adoc#install-a-raspberry-pi-camera[Install a Raspberry Pi Camera]. You can skip reconnecting your Raspberry Pi to power, because you'll need to disconnect your Raspberry Pi from power for the next step.
+
+. Depending on your NPU, follow the installation instructions for the xref:../accessories/ai-kit.adoc#ai-kit-installation[AI Kit] or xref:../accessories/ai-hat-plus.adoc#ai-hat-plus-installation[AI HAT+], to get your hardware connected to your Raspberry Pi 5.
+
+. Follow the instructions to xref:raspberry-pi.adoc#pcie-gen-3-0[enable PCIe Gen 3.0]. This step is optional, but _highly recommended_ to achieve the best performance with your NPU.
+
+. Install the dependencies required to use the NPU. Run the following command from a terminal window:
++
+[source,console]
+----
+$ sudo apt install hailo-all
+----
++
+This installs the following dependencies:
++
+* Hailo kernel device driver and firmware
+* HailoRT middleware software
+* Hailo Tappas core post-processing libraries
+* The `rpicam-apps` Hailo post-processing software demo stages
+
+. Finally, reboot your Raspberry Pi with `sudo reboot` for these settings to take effect.
+
+. To ensure everything is running correctly, run the following command:
++
+[source,console]
+----
+$ hailortcli fw-control identify
+----
++
+If you see output similar to the following, you've successfully installed the NPU and its software dependencies:
++
+----
+Executing on device: 0000:01:00.0
+Identifying board
+Control Protocol Version: 2
+Firmware Version: 4.17.0 (release,app,extended context switch buffer)
+Logger Version: 0
+Board Name: Hailo-8
+Device Architecture: HAILO8L
+Serial Number: HLDDLBB234500054
+Part Number: HM21LB1C2LAE
+Product Name: HAILO-8L AI ACC M.2 B+M KEY MODULE EXT TMP
+----
++
+Additionally, you can run `dmesg | grep -i hailo` to check the kernel logs, which should yield output similar to the following:
++
+----
+[    3.049657] hailo: Init module. driver version 4.17.0
+[    3.051983] hailo 0000:01:00.0: Probing on: 1e60:2864...
+[    3.051989] hailo 0000:01:00.0: Probing: Allocate memory for device extension, 11600
+[    3.052006] hailo 0000:01:00.0: enabling device (0000 -> 0002)
+[    3.052011] hailo 0000:01:00.0: Probing: Device enabled
+[    3.052028] hailo 0000:01:00.0: Probing: mapped bar 0 - 000000000d8baaf1 16384
+[    3.052034] hailo 0000:01:00.0: Probing: mapped bar 2 - 000000009eeaa33c 4096
+[    3.052039] hailo 0000:01:00.0: Probing: mapped bar 4 - 00000000b9b3d17d 16384
+[    3.052044] hailo 0000:01:00.0: Probing: Force setting max_desc_page_size to 4096 (recommended value is 16384)
+[    3.052052] hailo 0000:01:00.0: Probing: Enabled 64 bit dma
+[    3.052055] hailo 0000:01:00.0: Probing: Using userspace allocated vdma buffers
+[    3.052059] hailo 0000:01:00.0: Disabling ASPM L0s
+[    3.052070] hailo 0000:01:00.0: Successfully disabled ASPM L0s
+[    3.221043] hailo 0000:01:00.0: Firmware was loaded successfully
+[    3.231845] hailo 0000:01:00.0: Probing: Added board 1e60-2864, /dev/hailo0
+----
+
+. To ensure the camera is operating correctly, run the following command:
++
+[source,console]
+----
+$ rpicam-hello -t 10s
+----
++
+This starts the camera and shows a preview window for ten seconds. Once you have verified everything is installed correctly, it's time to run some demos.
+
+=== Demos
+
+The `rpicam-apps` suite of camera applications implements a xref:camera_software.adoc#post-processing-with-rpicam-apps[post-processing framework]. This section contains a few demo post-processing stages that highlight some of the capabilities of the NPU.
+
+The following demos use xref:camera_software.adoc#rpicam-hello[`rpicam-hello`], which by default displays a preview window. However, you can use other `rpicam-apps` instead, including xref:camera_software.adoc#rpicam-vid[`rpicam-vid`] and xref:camera_software.adoc#rpicam-still[`rpicam-still`]. You may need to add or modify some command line options to make the demo commands compatible with alternative applications.
+
+To begin, download the post-processing JSON files required for the demos. These files determine which post-processing stages to run and configure the behaviour of each stage. For example, you can enable, disable, strengthen, or weaken the strength of the temporal filtering in the object detection demos. Or you could enable or disable the output mask drawing in the segmentation demo.
+
+To download the entire collection of post-processing JSON files, clone the `rpicam-apps` repo. Run the following command to clone only the most recent commit from the repo, saving space:
+
+[source,console]
+----
+$ git clone --depth 1 https://github.com/raspberrypi/rpicam-apps.git ~/rpicam-apps
+----
+
+TIP: The commands provided in subsequent sections use the JSON files in this repository. To make it easy to reference these files, this command creates the cloned `rpicam-apps` directory in your home folder. If you modify the location of this directory, you must also alter the demo commands below to reference the new location of the JSON files.
+
+==== Object Detection
+
+This demo displays bounding boxes around objects detected by a neural network. To disable the viewfinder, use the xref:camera_software.adoc#nopreview[`-n`] flag. To return purely textual output describing the objects detected, add the `-v 2` option. Run the following command to try the demo on your Raspberry Pi:
+
+[source,console]
+----
+$ rpicam-hello -t 0 --post-process-file ~/rpicam-apps/assets/hailo_yolov6_inference.json --lores-width 640 --lores-height 640
+----
+
+Alternatively, you can try another model with different trade-offs in performance and efficiency.
+
+To run the demo with the Yolov8 model, run the following command:
+
+[source,console]
+----
+$ rpicam-hello -t 0 --post-process-file ~/rpicam-apps/assets/hailo_yolov8_inference.json --lores-width 640 --lores-height 640
+----
+
+To run the demo with the YoloX model, run the following command:
+
+[source,console]
+----
+$ rpicam-hello -t 0 --post-process-file ~/rpicam-apps/assets/hailo_yolox_inference.json --lores-width 640 --lores-height 640
+----
+
+To run the demo with the Yolov5 Person and Face model, run the following command:
+
+[source,console]
+----
+$ rpicam-hello -t 0 --post-process-file ~/rpicam-apps/assets/hailo_yolov5_personface.json --lores-width 640 --lores-height 640
+----
+
+==== Image Segmentation
+
+This demo performs object detection and segments the object by drawing a colour mask on the viewfinder image. Run the following command to try the demo on your Raspberry Pi:
+
+[source,console]
+----
+$ rpicam-hello -t 0 --post-process-file ~/rpicam-apps/assets/hailo_yolov5_segmentation.json --lores-width 640 --lores-height 640 --framerate 20
+----
+
+==== Pose Estimation
+
+This demo performs 17-point human pose estimation, drawing lines connecting the detected points. Run the following command to try the demo on your Raspberry Pi:
+
+[source,console]
+----
+$ rpicam-hello -t 0 --post-process-file ~/rpicam-apps/assets/hailo_yolov8_pose.json --lores-width 640 --lores-height 640
+----
+
+=== Further Resources
+
+Hailo has also created a set of demos that you can run on a Raspberry Pi 5, available in the https://github.com/hailo-ai/hailo-rpi5-examples[hailo-ai/hailo-rpi5-examples GitHub repository].
+
+You can find Hailo's extensive model zoo, which contains a large number of neural networks, in the https://github.com/hailo-ai/hailo_model_zoo/tree/master/docs/public_models/HAILO8L[hailo-ai/hailo_model_zoo GitHub repository].
+
+Check out the https://community.hailo.ai/[Hailo community forums and developer zone] for further discussions on the Hailo hardware and tooling.
