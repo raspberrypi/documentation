@@ -14,6 +14,8 @@ Alternatively, run the following command to access the configuration tool via th
 $ sudo raspi-config
 ----
 
+TIP: Some advanced configuration is available in the `raspi-config` CLI, but not the Raspberry Pi Configuration GUI.
+
 To navigate the configuration tool from the terminal:
 
 * Use the up and down arrow keys to scroll through the settings list.
