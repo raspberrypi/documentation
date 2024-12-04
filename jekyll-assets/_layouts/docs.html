@@ -158,25 +158,25 @@
         </div>
       </div>
       <div id="docs-container">
+        <div id="on-this-page">
+          <div id="on-this-page-inner">
+            <h5>On this page</h5>
+            <div id="toc">
+              {{ page.document | tocify_asciidoc: 3 }}
+            </div>
+            <div id="tocbot">
+            </div>
+          </div>
+        </div>
+
         <section id="content">
           <h1>{{ page.sub_title | markdownify | remove: '<p>' | remove: '</p>'}}</h1>
           {{ content }}
         </section>
-      </div>
-      <div id="on-this-page">
-        <div id="on-this-page-inner">
-          <h5>On this page</h5>
-          <div id="toc">
-            {{ page.document | tocify_asciidoc: 3 }}
-          </div>
-          <div id="tocbot">
-          </div>
-        </div>
+
+        {% include footer.html %}
+        {% include search.html %}
       </div>
     </div>
-
-    {% include footer.html %}
-    {% include search.html %}
-
   </body>
 </html>

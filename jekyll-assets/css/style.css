@@ -19,7 +19,6 @@
   --subtle-text: #CCC;
   --theme-toggle-label: "☀️";
   --not-expanded-label: "▶";
-  --expanded-label: "▼";
   color: var(--textcolor);
 }
 .light {
@@ -30,8 +29,8 @@
   --top-title-colour: #343434;
   --brand-colour: #cd2355;
   --copy-button-colour: #d8d8d8;
-  --code-bg-colour: #dedede;
-  --toc-hover-colour: #eeeeee;
+  --code-bg-colour: #eee;
+  --toc-hover-colour: #fefefe;
   --subtle: #707070;
   --less-subtle: #333;
   --home: #cd2355;
@@ -42,6 +41,7 @@
   --textcolor: black;
   --subtle-text: #444;
   --theme-toggle-label: "🌙";
+  --not-expanded-label: "▶";
   color: var(--textcolor);
 }
 
@@ -176,18 +176,12 @@ div.subtitle p {
 
 #docs-container {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 10px;
-  margin-left: 10px;
   flex-basis: 300px;
   flex-grow: 1;
   overflow: wrap;
   min-width: 0;
   white-space: initial;
   word-break: break-word;
-  max-width: 900px;
 }
 
 #container .section {
@@ -339,27 +333,21 @@ input:checked + li span label div .toc-item::before {
 }
 
 #on-this-page {
-  flex-basis: 0px;
-  flex-shrink: 1;
+  position: sticky;
+  top: 0;
+  float: right;
+  height: calc(1% + 1000px);
 }
 
 #on-this-page-inner {
-  position: sticky;
   padding-top: 10px;
   margin-left: 10px;
-  top: 0;
   color: var(--subtle);
 }
 
+/* hide the non-tocbot non-interactive toctree from view -- just needed to generate tocbot version */
 #on-this-page-inner #toc {
   display: none;
-}
-
-/* hide on this page if screen is too small to fit it */
-@media only screen and (max-width: 1444px) {
-  #on-this-page {
-    display: none;
-  }
 }
 
 .sectlevel1 {
@@ -633,7 +621,9 @@ nav#mobile-contents li {
   max-width: 900px;
   width: 100%;
   margin-left: 20px;
-  padding-bottom: 90vh;
+  padding-bottom: 30vh;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 #content h1 {
@@ -1290,6 +1280,7 @@ p#copyright {
   font-size: 0.85em;
   color: var(--subtle);
   text-align: left;
+  padding-bottom: 10px;
 }
 
 footer {
@@ -1468,10 +1459,6 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
     position: relative;
   }
 
-  #on-this-page {
-    display: none;
-  }
-
   #content {
     max-width: 100%;
     min-width: auto;
@@ -1607,6 +1594,13 @@ div.subtitle.error-message p a {
   white-space: initial;
   word-break: break-word;
   width: 100%;
+}
+
+@media screen and (max-width: 1390px) {
+  /* hide on this page if screen is too small to fit it */
+  #on-this-page {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1219px) {
