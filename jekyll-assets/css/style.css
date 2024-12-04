@@ -7,6 +7,7 @@
   --brand-colour: #cd2355;
   --copy-button-colour: #d8d8d8;
   --code-bg-colour: #252535;
+  --code-bg-colour-transparent: rgba(37, 37, 53, 0.9);
   --toc-hover-colour: #353545;
   --subtle: #707070;
   --less-subtle: #333;
@@ -30,6 +31,7 @@
   --brand-colour: #cd2355;
   --copy-button-colour: #d8d8d8;
   --code-bg-colour: #e5e5e5;
+  --code-bg-colour-transparent: rgba(229, 229, 229, 0.9);
   --toc-hover-colour: #f5f5f5;
   --subtle: #707070;
   --less-subtle: #333;
@@ -1362,6 +1364,7 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
   position: sticky;
   background-color: var(--code-bg-colour);
   z-index: 102;
+  box-shadow: var(--code-bg-colour-transparent) 0px 10px 15px -5px, var(--code-bg-colour-transparent) 0px 10px 10px -5px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -1383,6 +1386,11 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
   #docsearch .DocSearch-Button {
     max-width: 50%;
     float: right;
+  }
+
+  /* no need for box shadow in mobile mode */
+  #toc-inner {
+    box-shadow: var(--code-bg-colour-transparent) 0px;
   }
 
   #mobile-toggle:checked ~ .legal {
