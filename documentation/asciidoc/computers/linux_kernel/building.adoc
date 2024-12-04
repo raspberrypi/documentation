@@ -86,8 +86,6 @@ $ make bcm2711_defconfig
 
 
 .^| Raspberry Pi 5
-| Pi 500
-| Compute Module 5
 .3+.^|
 [source,console]
 ----
@@ -95,6 +93,8 @@ $ cd linux
 $ KERNEL=kernel_2712
 $ make bcm2712_defconfig
 ----
+| Pi 500
+| Compute Module 5
 
 .14+^.^| 32-bit
 | Raspberry Pi 1
