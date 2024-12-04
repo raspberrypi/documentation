@@ -6,8 +6,8 @@
   --red-tint: #d75a64;
   --brand-colour: #cd2355;
   --copy-button-colour: #d8d8d8;
-  --code-bg-colour: #151515;
-  --toc-hover-colour: #252525;
+  --code-bg-colour: #252535;
+  --toc-hover-colour: #353545;
   --subtle: #707070;
   --less-subtle: #333;
   --home: #cd2355;
@@ -29,8 +29,8 @@
   --top-title-colour: #343434;
   --brand-colour: #cd2355;
   --copy-button-colour: #d8d8d8;
-  --code-bg-colour: #eee;
-  --toc-hover-colour: #fefefe;
+  --code-bg-colour: #e5e5e5;
+  --toc-hover-colour: #f5f5f5;
   --subtle: #707070;
   --less-subtle: #333;
   --home: #cd2355;
@@ -172,6 +172,7 @@ div.subtitle p {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  border: 1px solid var(--accent);
 }
 
 #docs-container {
@@ -343,6 +344,10 @@ input:checked + li span label div .toc-item::before {
   padding-top: 10px;
   margin-left: 10px;
   color: var(--subtle);
+}
+
+#on-this-page-inner h5 {
+  margin-bottom: 6px;
 }
 
 /* hide the non-tocbot non-interactive toctree from view -- just needed to generate tocbot version */
@@ -846,7 +851,7 @@ span.mlabel {
 
 #content table.tableblock {
   border-collapse: collapse;
-  border: 1px solid var(--textcolor);
+  border: 1px solid var(--subtle);
 }
 
 #content table.tableblock th {
@@ -854,7 +859,7 @@ span.mlabel {
   background-color: var(--code-bg-colour);
   text-align: left;
   padding: 5px 7px 5px 7px;
-  border: 1px solid var(--subtle-text);
+  border: 1px solid var(--subtle);
 }
 
 #content td.tableblock {
@@ -1372,6 +1377,12 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
   /* when the mobile menu is visible, hide all page content so we don't end up with dueling scrollbars */
   #mobile-toggle:checked ~ #docs-content #docs-container {
     overflow: hidden;
+  }
+
+  /* make the docs search button slightly less aggressively large */
+  #docsearch .DocSearch-Button {
+    max-width: 50%;
+    float: right;
   }
 
   #mobile-toggle:checked ~ .legal {

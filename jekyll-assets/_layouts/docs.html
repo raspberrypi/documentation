@@ -99,7 +99,7 @@
                               <a class="level3" href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}" >
                                 <a id="{{ item.path }}#{{entry.anchor}}-toc" class="toc-item" alt="expand documentation category" title="expand documentation category"
                                 >
-                                <script type="text/javascript">if (window.location.hash.includes('{{ entry.anchor }}')) { document.getElementById('{{ item.path }}#{{entry.anchor}}-toc').setAttribute('style', 'font-weight:bold'); document.getElementById('{{ item.path }}#{{ entry.anchor }}').checked = true; }</script>
+                                <script type="text/javascript">if (window.location.href.includes('{{ item.path }}#{{ entry.anchor }}')) { document.getElementById('{{ item.path }}#{{entry.anchor}}-toc').setAttribute('style', 'font-weight:bold'); document.getElementById('{{ item.path }}#{{ entry.anchor }}').checked = true; }</script>
                                   {{ entry.heading | markdownify }}
                                 </a>
                               </a>
@@ -110,7 +110,7 @@
                                   onclick="document.getElementById('mobile-toggle').checked = false;"
                                   class="toc-item no-dropdown"
                                   >
-                                  <script type="text/javascript">if (window.location.hash.includes('{{ entry.anchor }}')) { document.getElementById('{{ item.path }}#{{entry.anchor}}-toc').setAttribute('style', 'font-weight:bold'); document.getElementById('{{ item.path }}#{{ entry.anchor }}').checked = true; }</script>
+                                  <script type="text/javascript">if (window.location.href.includes('{{ item.path }}#{{ entry.anchor }}')) { document.getElementById('{{ item.path }}#{{entry.anchor}}-toc').setAttribute('style', 'font-weight:bold'); document.getElementById('{{ item.path }}#{{ entry.anchor }}').checked = true; }</script>
                                   {{ entry.heading | markdownify }}
                                 </a>
                               </a>

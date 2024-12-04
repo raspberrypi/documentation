@@ -21,7 +21,7 @@
 }
 
 a.toc-link {
-	color: currentColor;
+	color: var(--subtle-text);
 	height: 100%;
 	line-height: 2em;
 }
@@ -29,7 +29,7 @@ a.toc-link {
 .is-collapsible {
 	max-height: 1000px;
 	overflow: hidden;
-	transition: all 300ms ease-in-out;
+	transition: all 100ms ease-in-out;
 }
 
 .is-collapsed {
