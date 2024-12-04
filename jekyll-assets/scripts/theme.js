@@ -2,7 +2,7 @@
 function toggleTheme() {
   // fetch the theme from local storage (if it exists)
   var theme = localStorage.getItem('theme');
-  // if theme them has never been set, or is light, set the theme to the dark symbol in local storage to change it
+  // if the theme has never been set, or is light, set the theme to the dark symbol in local storage to change it
   if (localStorage.getItem('theme') !== null && theme == '🌝' ) {
     localStorage.setItem('theme', '🌚');
   } else {

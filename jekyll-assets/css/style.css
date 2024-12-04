@@ -12,7 +12,7 @@
   --less-subtle: #333;
   --home: #cd2355;
   --rp2040-context-tag: #50C878;
-  --accent: #cd2355;
+  --accent: #d75a64;
   --docsearch-primary-color: var(--accent);
   --docsearch-logo-color: var(--red-tint);
   --textcolor: white;
@@ -76,7 +76,7 @@ body, article, div, nav, h1, h2, h3, h4, p {
 }
 
 a {
-  color: var(--brand-colour);
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -119,7 +119,7 @@ code {
 }
 
 .toptitle h1 a {
-  color: var(--brand-colour);
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -215,7 +215,7 @@ div.subtitle p {
 }
 
 h1 code {
-  color: var(--brand-colour);
+  color: var(--accent);
 }
 
 pre {
@@ -243,13 +243,11 @@ pre {
 }
 
 #theme-toggle {
-  color: var(--brand-colour);
   border-radius: 3px;
   padding: 5px;
 }
 
 #theme-toggle:hover {
-  color: var(--brand-colour);
   background-color: var(--toc-hover-colour);
   text-decoration: none;
 }
@@ -267,7 +265,6 @@ pre {
 
 #theme-toggle-header {
   font-family: monospace;
-  color: var(--brand-colour);
 }
 
 #theme-toggle-header:after {
@@ -288,7 +285,7 @@ pre {
 }
 
 .toc-item {
-  color: var(--brand-colour);
+  color: var(--accent);
   border-radius: 3px;
   padding: 5px;
   display: flex;
@@ -302,14 +299,14 @@ pre {
 }
 
 .toc-item:hover {
-  color: var(--brand-colour);
+  color: var(--accent);
   background-color: var(--toc-hover-colour);
   text-decoration: none;
 }
 
 #toc-toggle-header {
   font-family: monospace;
-  color: var(--brand-colour);
+  color: var(--accent);
 }
 
 input:checked + li span label div .toc-item::before {
@@ -636,12 +633,13 @@ nav#mobile-contents li {
   max-width: 900px;
   width: 100%;
   margin-left: 20px;
+  padding-bottom: 90vh;
 }
 
 #content h1 {
   font-weight: 700;
   font-size: 34px;
-  color: var(--brand-colour);
+  color: var(--accent);
   margin-top: 16px;
   margin-bottom: 20px;
   position: relative;
@@ -1664,7 +1662,7 @@ ul#tab-container li {
 }
 
 ul#tab-container li.selected {
-  border-bottom-color: var(--brand-colour);
+  border-bottom-color: var(--accent);
 }
 
 ul#tab-container li a {
@@ -1676,7 +1674,7 @@ ul#tab-container li a {
 }
 
 ul#tab-container li.selected a {
-  color: var(--brand-colour);
+  color: var(--accent);
 }
 
 p#release {
