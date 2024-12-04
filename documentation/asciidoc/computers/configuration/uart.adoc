@@ -218,14 +218,14 @@ By default, the primary UART is assigned to the Linux console. If you wish to us
 
 Although the Linux kernel starts the UARTs relatively early in the boot process, it is still long after some critical bits of infrastructure have been set up. A failure in those early stages can be hard to diagnose without access to the kernel log messages from that time. To enable `earlycon` support for one of the UARTs, add one of the following options to `cmdline.txt`, depending on which UART is the primary:
 
-For Raspberry Pi 5, `earlycon` output only appears on the 3-pin debug connector with the following configuration:
+For Raspberry Pi 5, Compute Module 5, and Pi 500, `earlycon` output only appears on the 3-pin debug connector with the following configuration:
 
 [source,ini]
 ----
 earlycon=pl011,0x107d001000,115200n8
 ----
 
-For Raspberry Pi 4, 400 and Compute Module 4:
+For Raspberry Pi 4, Compute Module 4, Compute Module 4S, and Pi 400:
 
 [source,ini]
 ----
@@ -233,7 +233,7 @@ earlycon=uart8250,mmio32,0xfe215040
 earlycon=pl011,mmio32,0xfe201000
 ----
 
-For Raspberry Pi 2, Pi 3 and Compute Module 3:
+For Raspberry Pi 2, 3, 3+, Compute Module 3, and Compute Module 3+:
 
 [source,ini]
 ----
@@ -241,7 +241,7 @@ earlycon=uart8250,mmio32,0x3f215040
 earlycon=pl011,mmio32,0x3f201000
 ----
 
-For Raspberry Pi 1, Pi Zero and Compute Module 1:
+For Raspberry Pi 1, Zero models, and Compute Module 1:
 
 [source,ini]
 ----

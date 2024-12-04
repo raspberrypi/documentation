@@ -10,9 +10,9 @@ The Raspberry Pi 4 Model B continues with the same PCB technology as the Raspber
 
 === Use DVFS
 
-NOTE: Discussion of DVFS applies to Raspberry Pi 4 Model B, Raspberry Pi 400, and Compute Module 4 only.
+NOTE: Discussion of DVFS applies to 4-series devices only (Raspberry Pi 4, Compute Module 4, and Pi 400).
 
-Raspberry Pi 4 devices implement dynamic voltage and frequency scaling (DVFS). This technique allows Raspberry Pi 4 devices to run at lower temperatures whilst still providing the same performance.
+Raspberry Pi 4 devices implement dynamic voltage and frequency scaling (DVFS). This technique allows 4-series devices to run at lower temperatures whilst still providing the same performance.
 
 Various clocks (e.g. Arm, Core, V3D, ISP, H264, HEVC) inside the SoC are monitored by the firmware, and whenever they are not running at full speed, the voltage supplied to the particular part of the chip driven by the clock is reduced relative to the reduction from full speed. In effect, only enough voltage is supplied to keep the block running correctly at the specific speed at which it is running. This can result in significant reductions in power used by the SoC, and therefore in the overall heat being produced.
 
