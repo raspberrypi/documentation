@@ -1,1 +1,3 @@
 include::monitor/monitor_intro.adoc[]
+
+include::monitor/repair.adoc[]

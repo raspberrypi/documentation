@@ -3,34 +3,38 @@
 
 Now that you've installed and started Connect on your Raspberry Pi device, you must associate your device with your Connect account.
 
-=== via the Raspberry Pi Desktop
-
-If you're using the Connect plugin for the menu bar, clicking "Turn On Raspberry Pi Connect" for the first time will open your browser, prompting you to sign in with your Raspberry Pi ID:
-
+[tabs%sync]
+======
+Desktop::
++
+If you're using the Connect plugin for the menu bar, click **Turn On Raspberry Pi Connect** for the first time to open your browser, prompting you to sign in with your Raspberry Pi ID:
++
 image::images/browser-sign-in.png[width="80%"]
-
-Alternatively, you can choose "Sign In..." from the dropdown menu:
-
++
+Alternatively, choose **Sign In...** from the dropdown menu:
++
 image::images/sign-in.png[width="80%"]
-
++
 If you don't already have a Raspberry Pi ID, click *create one for free* to xref:id.adoc#create-a-raspberry-pi-id[create one].
 
-=== via the command line
-
+CLI::
++
 Use the following command to generate a link that will connect your device with your Connect account:
-
++
 [source,console]
 ----
 $ rpi-connect signin
 ----
-
++
 This command should output something like the following:
-
++
 ----
 Complete sign in by visiting https://connect.raspberrypi.com/verify/XXXX-XXXX
 ----
-
++
 Visit the verification URL on any device and sign in with your Raspberry Pi ID to link your device with your Connect account.
+
+======
 
 === Finish linking your Raspberry Pi
 

@@ -117,7 +117,7 @@
                 {
                     "title": "Monitor",
                     "description": "The Raspberry Pi Monitor",
-                    "image": "full-sized/Touch-Display-2.png",
+                    "image": "full-sized/monitor.png",
                     "subpath": "monitor.adoc"
                 },
                 {

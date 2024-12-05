@@ -1,0 +1,119 @@
+=== Raspberry Pi Monitor repair guide
+
+==== Prerequisites
+
+To disassemble the monitor, you will need the following tools:
+
+* A thin pry tool, ideally more than 130mm long for tape removal, similar to the following:
++
+image::images/repair_5.jpeg[Spudger, width="70%"]
+
+* A soft surface that you can set the delicate LCD panel on once removed.
+
+* Two pieces of 20 × 80mm, 0.8mm thick double-adhesive (two-sided) foam or VHB tape.
+
+==== Open the Monitor
+
+WARNING: Cable connections and LCD panels are fragile. Take care not to bend the LCD panel or sever any cable connections while disassembling the Monitor.
+
+Complete the following steps to open up your monitor:
+
+. At the bottom of the Monitor (near the cable notch), gently lift the white front bezel away from the LCD panel:
++
+image::images/repair_1.jpeg[Unclip the bottom of the bezel, width="70%"]
++
+image::images/repair_2.jpeg[Gently slide a fingernail between the LCD panel and the bezel, width="70%"]
+
+. Gently unclip the white front bezel all the way around the LCD panel to detach it from the red rear plastic Monitor housing:
++
+image::images/repair_3.jpeg[Remove the entire white front bezel, width="70%"]
+
+. Flip the white front bezel outward, pivoting at the bottom of the LCD panel. Take care not to damage the speaker connectors at the bottom of the Monitor:
++
+image::images/repair_4.jpeg[Flip the white front bezel outward, width="70%"]
+
+. Use the thin pry tool to carefully reach behind the LCD panel to detach the tape that connects the back of the LCD panel to the red rear plastic Monitor housing. Use the following steps to detach the two pieces of tape:
++
+image::images/repair_6.png[Tape positions on the rear of the LCD panel, width="70%"]
+.. Remove the left-side tape:
+... Insert the pry tool under the LCD panel in the position shown below:
++
+image::images/repair_7.png[Remove the left-side tape, width="70%"]
++
+... Taking care not to bend the LCD panel, push the pry tool until it slices fully through the tape:
++
+--
+image::images/repair_8.png[Remove the left-side tape, continued, width="70%"]
+--
++
+--
+image::images/repair_9.png[Remove the left-side tape, continued continued, width="70%"]
+--
+.. Remove the right-side tape:
+... Insert the pry tool under the LCD panel in the position shown below:
++
+image::images/repair_10.png[Remove the right-side tape, width="70%"]
+... Taking care not to bend the LCD panel, push the pry tool until it slices fully through the tape:
++
+image::images/repair_11.png[Remove the right-side tape, continued, width="70%"]
+
+==== Remove the Monitor innards
+
+Once you have opened the Monitor and removed the tape securing the LCD panel to the red rear plastic Monitor housing, complete the following steps to remove the innards of the Monitor:
+
+. Remove the LCD panel and place it on a soft surface. Take care to avoid attaching the residual tape to your soft surface.
+
+. Remove the two screws that secure the rear metal backing plate to the red rear plastic Monitor housing:
++
+image::images/repair_12.png[Rear metal backing plate screw locations, width="70%"]
++
+image::images/repair_13.png[Unfastening the rear metal backing plate screws, width="70%"]
+
+. Remove the rear metal backing plate. Take care to avoid attaching the residual tape to any surface:
++
+image::images/repair_14.jpeg[Remove the rear metal backing plate, width="70%"]
+
+. Detach the display and speaker cables. To detach the display cable, loosen the black clips that secure each side of the cable by pulling on both sides of the clip simultaneously. When the clips have been loosened, the display cable should detach with very little resistance:
++
+image::images/repair_15.jpeg[Detach the display cable, width="70%"]
+
+
+==== Reassemble the Monitor
+
+To reassemble the monitor, complete the following steps:
+
+. Before reassembly, remove as much residual tape as possible from the back of the LCD panel and the back of the metal plate. Take care not to bend the panel or the metal plate during removal. To remove the most stubborn bits of adhesive, rub the adhesive with your finger.
++
+image::images/repair_16.jpeg[Remove residual tape, width="70%"]
++
+image::images/repair_17.jpeg[Remove stubborn residual tape, width="70%"]
+
+. Place the rear metal backing plate in the red rear plastic Monitor housing.
+
+. Fasten the two rear metal backing plate screws.
+
+. Apply new tape pieces in the positions shown below, taking care not to place tape on the raised dimples of the rear metal backing plate:
++
+image::images/repair_19.jpeg["Place the rear metal backing plate into the red rear plastic Monitor housing, fasten the screws, and apply new tape", width="70%"]
+
+. Position the display cable and speaker cables as shown below:
++
+image::images/repair_20.jpeg[Display and speaker cable positions, width="70%"]
+
+. Seat the black display cable into the channel as shown below:
++
+image::images/repair_21.jpeg[Display cable channel, width="70%"]
+
+. Rest the bottom of the panel on the two notches shown below:
++
+image::images/repair_22.png[Notches, width="70%"]
+
+. Check that the gap between the LCD panel and the red rear plastic Monitor housing is equal on all sides to centre the display in the Monitor.
++
+image::images/repair_23.png[Centre the display, width="70%"]
+
+. Gently press together the white front bezel and the red rear plastic Monitor housing all the way around the display to reconnect the clips:
++
+image::images/repair_25.jpeg[Re-clip the bezel, width="70%"]
+
+Congratulations. You have successfully reassembled the Monitor!
