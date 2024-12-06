@@ -41,7 +41,7 @@ The conditional model filters apply according to the following table.
 | Pi 500 (also sees `[pi5]` contents)
 
 | `[cm1]`
-| Compute Module 4 (also sees `[pi1]` contents)
+| Compute Module 1 (also sees `[pi1]` contents)
 
 | `[cm3]`
 | Compute Module 3 (also sees `[pi3]` contents)

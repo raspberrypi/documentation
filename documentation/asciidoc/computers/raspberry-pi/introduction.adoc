@@ -3,7 +3,7 @@
 Raspberry Pi makes computers in several different **series**:
 
 * The *Flagship* series, often referred to by the shorthand "Raspberry Pi", offers high-performance hardware, a full Linux operating system, and a variety of common ports in a form factor roughly the size of a credit card.
-* The *Keyboard* series, offers high-performance Flagship hardware, a full Linux operating system, and a variety of common ports in a keyboard form factor.
+* The *Keyboard* series, offers high-performance Flagship hardware, a full Linux operating system, and a variety of common ports bundled inside a keyboard form factor.
 * The *Zero* series offers a full Linux operating system and essential ports at an affordable price point in a minimal form factor with low power consumption.
 * The *Compute Module* series, often referred to by the shorthand "CM", offers high-performance hardware and a full Linux operating system in a minimal form factor suitable for industrial and embedded applications. Compute Module models feature hardware equivalent to the corresponding flagship models, but with fewer ports and no on-board GPIO pins. Instead, users should connect Compute Modules to a separate baseboard that provides the ports and pins required for a given application.
 
@@ -182,7 +182,7 @@ a|
 * 2.4/5GHz dual-band 802.11ac Wi-Fi 5 (300Mb/s)
 * Bluetooth 5, Bluetooth Low Energy (BLE)
 * microSD card slot
-* USB-C power (5V, 5A (25W) or 5V, 3A (15W) with a 600mA peripheral limit)
+* USB-C power (5V 5A (25W), or 5V 3A (15W) with a 600mA peripheral limit)
 |===
 
 For more information about the ports on the Raspberry Pi flagship series, see the xref:raspberry-pi.adoc#schematics-and-mechanical-drawings[Schematics and mechanical drawings].
@@ -219,7 +219,7 @@ a|
 * 2.4/5GHz dual-band 802.11ac Wi-Fi 5 (300Mb/s)
 * Bluetooth 5, Bluetooth Low Energy (BLE)
 * microSD card slot
-* USB-C power (5V, 5A (25W) or 5V, 3A (15W) with a 600mA peripheral limit)
+* USB-C power (5V 5A (25W), or 5V 3A (15W) with a 600mA peripheral limit)
 |===
 
 === Zero series

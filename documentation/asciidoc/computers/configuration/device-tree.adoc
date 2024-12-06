@@ -526,8 +526,8 @@ This is an extract from the current map file (see the https://github.com/raspber
 
 Each node has the name of an overlay that requires special handling. The properties of each node are either platform names or one of a small number of special directives. The overlay map supports the following platform names:
 
-* `bcm2835` for all Raspberry Pis built around the BCM2835, BCM2836 and BCM2837 SoCs
-* `bcm2711` for Raspberry Pi 4B, CM4, and Pi 400
+* `bcm2835` for all Raspberry Pis built around the BCM2835, BCM2836, BCM2837, and RP3A0 SoCs
+* `bcm2711` for Raspberry Pi 4B, CM4, CM4S, and Pi 400
 * `bcm2712` for Raspberry Pi 5, CM5, and Pi 500
 
 A platform name with no value (an empty property) indicates that the current overlay is compatible with the platform; for example, `uart5` is compatible with the `bcm2711` platform. A non-empty value for a platform is the name of an alternative overlay to use in place of the requested one; asking for `disable-bt` on BCM2712 results in `disable-bt-pi5` being loaded instead. Any platform not included in an overlay's node is not compatible with that overlay. Any overlay not mentioned in the map is assumed to be compatible with all platforms.

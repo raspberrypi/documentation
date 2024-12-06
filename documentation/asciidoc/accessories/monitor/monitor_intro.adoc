@@ -55,17 +55,17 @@ image::images/drill-hole-template.png[Drill hole template, width="40%"]
 
 === Power the Monitor
 
-The Raspberry Pi Monitor draws power from a 5V https://en.wikipedia.org/wiki/USB_hardware#USB_Power_Delivery[USB Power Delivery] (USB-PD) power source. Many USB-C-to-USB-C cables, including the official power supplies for the Raspberry Pi 4 and Raspberry Pi 5, support this standard.
+The Raspberry Pi Monitor draws power from a 5V https://en.wikipedia.org/wiki/USB_hardware#USB_Power_Delivery[USB Power Delivery] (USB-PD) power source. Many USB-C power supplies, including the official power supplies for the Raspberry Pi 4 and Raspberry Pi 5, support this standard.
 
 When using a power source that provides at least 1.5A of current over USB-PD, the Monitor operates in **Full Power mode**. In Full Power mode, you can use the full range (0%-100%) of display brightness and speaker volume.
 
-When using a power source that does _not_ supply at least 1.5A of current over USB-PD (including all USB-A power sources), the Monitor operates in **Power Saving mode**. Power Saving mode limits the maximum display brightness and the maximum speaker volume to ensure reliable operation. In Power Saving mode, you can use a limited range (0-50%) of display brightness and a limited range (0-60%) of speaker volume. When powered from a Raspberry Pi, the Monitor operates in Power Saving Mode, since Raspberry Pi devices cannot provide 1.5A of current over a USB-A connection.
+When using a power source that does _not_ supply at least 1.5A of current over USB-PD (including all USB-A power sources), the Monitor operates in **Power Saving mode**. Power Saving mode limits the maximum display brightness and the maximum speaker volume to ensure reliable operation. In Power Saving mode, you can use a limited range (0-50%) of display brightness and a limited range (0-60%) of speaker volume. When powered from a Raspberry Pi, the Monitor operates in Power Saving mode, since Raspberry Pi devices cannot provide 1.5A of current over a USB-A connection.
 
-To switch from Power Saving mode to Full Power mode, press and hold the *increase brightness* button for 3 seconds. Alternatively, use the power button to turn the display off, then on again. When the Monitor reboots, it will automatically switch to Full Power mode if you use an adequate power source.
+To switch from Power Saving mode to Full Power mode, press and hold the *increase brightness* button for 3 seconds.
 
 [TIP]
 ====
-If the screen image cuts in and out, your USB power supply is not capable of providing sufficient current to power the monitor. This can happen if you power the Monitor from a Raspberry Pi 5 or Pi 500 with a 5V/3A power supply. Try the following fixes to stop the image from cutting in and out:
+If the Monitor flashes on and off, your USB power supply is not capable of providing sufficient current to power the monitor. This can happen if you power the Monitor from a Raspberry Pi 5 or Pi 500 which is itself powered by a 5V/3A power supply. Try the following fixes to stop the Monitor from flashing on and off:
 
 * reduce the display brightness and volume (you may have to connect your monitor to another power supply to access the settings)
 * switch to a different power source or cable
@@ -88,7 +88,7 @@ Brightness: 250cd/m^2^
 
 Screen coating: Anti-glare 3H hardness
 
-Display area: 344mm × 193mm
+Display area: 344 × 193mm
 
 Dimensions: 237 × 360 × 20mm
 
@@ -110,7 +110,7 @@ Power consumption: 4.5-6.5W during use; < 0.1W at idle
 
 Speakers: 2 × 1.2W (stereo)
 
-Ports: 3.5mm AV jack
+Ports: 3.5mm audio jack
 
 
 === Mechanical drawing

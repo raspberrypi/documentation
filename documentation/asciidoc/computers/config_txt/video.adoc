@@ -55,7 +55,7 @@ Set to `1` to enable composite video output and `0` to disable. On Flagship mode
 |Model
 |Default
 
-|Flagship models since Raspberry Pi 4, Compute Modules since CM4, Keyboard models
+|Flagship models since Raspberry Pi 4B, Compute Modules since CM4, Keyboard models
 |0
 
 |All other models

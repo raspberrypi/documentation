@@ -76,7 +76,7 @@ Various xref:linux_kernel.adoc#kernel[kernel] image files that correspond to Ras
 | `kernel7.img`
 | BCM2836, BCM2837
 | Pi Zero 2 W, Pi 2, Pi 3
-| later revisions of Pi 2 uses the BCM2837
+| Later revisions of Pi 2 use BCM2837
 
 | `kernel7l.img`
 | BCM2711

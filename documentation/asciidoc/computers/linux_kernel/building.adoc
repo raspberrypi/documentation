@@ -118,7 +118,7 @@ $ cd linux
 $ KERNEL=kernel7
 $ make bcm2709_defconfig
 ----
-| 3
+| Raspberry Pi 3
 | Compute Module 3
 | Raspberry Pi 3+
 | Compute Module 3+
@@ -140,7 +140,7 @@ $ make bcm2711_defconfig
 
 [NOTE]
 ====
-The 32-bit distribution of Raspberry Pi OS on Flagship models since Raspberry Pi 4, Compute Modules since CM4 (including CM4S), and Keyboard models uses a 32-bit userland, but a _64-bit kernel_. To build a 32-bit kernel, set `ARCH=arm`. To boot a 32-bit kernel, set `arm_64bit=0` in `config.txt`.
+The 32-bit distribution of Raspberry Pi OS on 4-series devices uses a 32-bit userland, but a _64-bit kernel_. To build a 32-bit kernel, set `ARCH=arm`. To boot a 32-bit kernel, set `arm_64bit=0` in `config.txt`.
 ====
 
 [[native-customisation]]
