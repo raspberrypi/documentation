@@ -670,7 +670,7 @@ For a full list of possible `<locale>` values, see the abbreviations used in the
 [[change-timezone-nonint]]
 ==== Time zone
 
-Set your local time zone in the format `Region/City`, for example 'Europe/London'. Type a letter to jump to that letter in the list.
+Set your local time zone in the format `Region/City`, for example 'Europe/London'.
 
 [source,console]
 ----
