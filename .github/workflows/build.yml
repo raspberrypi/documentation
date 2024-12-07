@@ -11,12 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Log current branches and repositories
+        env:
+          REPO_FULL_NAME: ${{ github.event.pull_request.head.repo.full_name }}
         run: |
           echo "Current ref: $GITHUB_REF"
           echo "Base ref: $GITHUB_BASE_REF"
           echo "Head ref: $GITHUB_HEAD_REF"
           echo "Repository: $GITHUB_REPOSITORY"
-          echo "Head repository: ${{ github.event.pull_request.head.repo.full_name }}"
+          echo "Head repository: $REPO_FULL_NAME"
       - name: Only allow pull requests based on master from the develop branch of the current repository
         if: ${{ github.base_ref == 'master' && !(github.head_ref == 'develop' && github.event.pull_request.head.repo.full_name == github.repository) }}
         run: |
