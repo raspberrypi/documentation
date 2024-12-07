@@ -1,0 +1,67 @@
+.toc {
+	/*overflow-y: auto*/
+}
+
+.toc>.toc-list {
+	overflow: hidden;
+	position: relative;
+}
+
+.toc>.toc-list li {
+  list-style-type: none;
+}
+
+.toc-list-item {	
+  list-style-type: none;
+}
+
+.toc-list {
+	margin: 0;
+	padding-left: 10px;
+}
+
+a.toc-link {
+	color: var(--subtle-text);
+	height: 100%;
+	line-height: 2em;
+}
+
+.is-collapsible {
+	max-height: 1000px;
+	overflow: hidden;
+	transition: all 100ms ease-in-out;
+}
+
+.is-collapsed {
+	max-height: 0;
+}
+
+.is-position-fixed {
+	position: fixed !important;
+	top: 0;
+}
+
+.is-active-link {
+	font-weight: 700;
+}
+
+.toc-link::before {
+	background-color: var(--bg-colour);
+	content: " ";
+	display: inline-block;
+	height: inherit;
+	left: 0;
+	position: absolute;
+	width: 3px;
+}
+
+.is-active-link::before {
+	width: 3px;
+	height: 2em;
+	background-color: var(--brand-colour);
+}
+
+.js-toc {
+	font-size: .8em;
+	width: 200px;
+}

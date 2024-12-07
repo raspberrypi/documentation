@@ -21,7 +21,7 @@
           text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f5f6f9;
+  background: var(--footer-bg);
   overflow: hidden;
 }
 #__rptl-footer .__rptl-footer-container {
@@ -63,7 +63,7 @@
 }
 #__rptl-footer .__rptl-footer-heading {
   font-weight: 700;
-  color: #333333;
+  color: var(--subtle-text);
   margin-bottom: 8px;
 }
 #__rptl-footer .__rptl-footer-list {
@@ -75,11 +75,11 @@
 }
 #__rptl-footer .__rptl-footer-icon {
   margin-right: 0.5em;
-  fill: #333;
+  fill: var(--subtle-text);
 }
 #__rptl-footer .__rptl-footer-link, #__rptl-footer .__rptl-footer-link--with-icon {
   font-weight: 400;
-  color: #333;
+  color: var(--subtle);
   text-decoration: none;
 }
 #__rptl-footer .__rptl-footer-link--with-icon {
@@ -90,6 +90,24 @@
   text-decoration: underline;
 }
 </style>
+
+<div class="legal">
+  <div class="legal-inner">
+    <p id="copyright">
+      You can view and edit the Raspberry Pi documentation source <a href="{{ site.githuburl }}">on Github</a>. Please read our <a href="{{ site.githuburl }}blob/{{ site.githubbranch }}/CONTRIBUTING.md">usage and contributions policy</a> before you make a Pull Request.
+    </p>
+    <p id="copyright">
+      Raspberry Pi documentation is copyright &copy; 2012-{{ site.time | date: '%Y' }} Raspberry Pi Ltd and is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> (CC BY-SA) licence.
+    </p>
+    <p id="copyright">
+      Some content originates from the <a href="http://elinux.org/">eLinux wiki</a>, and is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported</a> licence.
+    </p>
+    <p id="copyright">
+      The terms HDMI, HDMI High-Definition Multimedia Interface, HDMI trade dress and the HDMI Logos are trademarks or registered trademarks of HDMI Licensing Administrator, Inc.
+    </p>
+  </div>
+</div>
+
 <footer id="__rptl-footer">
   <div class="__rptl-footer-container">
     <div class="__rptl-footer-row">
