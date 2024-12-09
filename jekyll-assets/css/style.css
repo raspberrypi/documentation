@@ -341,8 +341,11 @@ input:checked + li span label div .toc-item::before {
 }
 
 .toc-item.no-dropdown::before {
+  transition: .1s ease-in;
   content: '';
-  padding: 6px;
+  width: 13px;
+  height: 13px;
+  clip-path: polygon(0% 0%);
 }
 
 .bold {
@@ -355,9 +358,11 @@ input:checked + li span label div .toc-item::before {
 
 .toc-item::before {
   transition: .1s ease-in;
-  content: var(--not-expanded-label);
-  font-size: 1em !important;
-  font-style: normal !important;
+  content: '';
+  background-color: var(--accent);
+  width: 13px;
+  height: 13px;
+  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
 }
 
 #docs-content {
@@ -1500,6 +1505,7 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
     background-color: var(--code-bg-colour);
     z-index: 100;
     max-height: 50px;
+    width: 300px;
   }
 
   #docs-header {
