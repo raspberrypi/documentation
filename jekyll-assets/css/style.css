@@ -123,7 +123,6 @@ code {
 
 .toptitle {
   text-align: center;
-  width: 100%;
   position: sticky;
   padding-bottom: 10px;
   margin-bottom: 0px;
@@ -1655,7 +1654,6 @@ div.subtitle.error-message p a {
   margin-left: 10px;
   white-space: initial;
   word-break: break-word;
-  width: 100%;
 }
 
 @media screen and (max-width: 1460px) {
