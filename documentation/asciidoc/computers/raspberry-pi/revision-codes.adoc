@@ -342,6 +342,18 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 17: 5
 
+|
+|
+| 18: CM5
+
+|
+|
+| 19: 500
+
+|
+|
+| 1a: CM5 Lite
+
 | RRRR (bits 0-3)
 | Revision
 | 0, 1, 2, etc.
