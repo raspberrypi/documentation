@@ -1648,7 +1648,7 @@ div.subtitle.error-message p a {
   width: 100%;
 }
 
-@media screen and (max-width: 1390px) {
+@media screen and (max-width: 1460px) {
   /* hide on this page if screen is too small to fit it */
   #on-this-page {
     display: none;
