@@ -356,6 +356,8 @@ input:checked + li span label div .toc-item::before {
 .toc-item::before {
   transition: .1s ease-in;
   content: var(--not-expanded-label);
+  font-size: 1em !important;
+  font-style: normal !important;
 }
 
 #docs-content {
