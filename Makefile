@@ -118,7 +118,7 @@ html: run_ninja
 
 # Build the html output files and additionally run a small webserver for local previews
 serve_html: run_ninja
-	$(JEKYLL_CMD) serve
+	$(JEKYLL_CMD) serve --watch
 
 # Delete all the files created by the 'html' target
 clean_html:
