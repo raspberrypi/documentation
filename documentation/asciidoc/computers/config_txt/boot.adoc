@@ -11,7 +11,7 @@ The `start_file` and the `fixup_file` are a matched pair - using unmatched files
 
 NOTE: Cut-down firmware (`start*cd.elf` and `fixup*cd.dat`) cannot be selected this way - the system will fail to boot.  The only way to enable the cut-down firmware is to specify `gpu_mem=16`. The cut-down firmware removes support for codecs, 3D and debug logging as well as limiting the initial early-boot framebuffer to 1080p @16bpp - although KMS can replace this with up to 32bpp 4K framebuffer(s) at a later stage as with any firmware.
 
-NOTE: The Raspberry Pi 5 firmware is self-contained in the bootloader EEPROM.
+NOTE: The Raspberry Pi 5, Compute Module 5, and Raspberry Pi 500 firmware is self-contained in the bootloader EEPROM.
 
 === `cmdline`
 
@@ -21,10 +21,9 @@ NOTE: The Raspberry Pi 5 firmware is self-contained in the bootloader EEPROM.
 
 `kernel` is the alternative filename on the boot partition for loading the kernel. The default value on the Raspberry Pi 1, Zero and Zero W, and Raspberry Pi Compute Module 1 is `kernel.img`. The default value on the Raspberry Pi 2, 3, 3+ and Zero 2 W, and Raspberry Pi Compute Modules 3 and 3+ is `kernel7.img`. The default value on the Raspberry Pi 4 and 400, and Raspberry Pi Compute Module 4 is `kernel8.img`, or `kernel7l.img` if `arm_64bit` is set to 0.
 
-The Raspberry Pi 5 firmware defaults to loading `kernel_2712.img` because this image contains optimisations specific to Raspberry Pi 5 (e.g. 16K page-size). If this file is not present, then the common 64-bit kernel (`kernel8.img`) will be loaded instead.
+The Raspberry Pi 5, Compute Module 5, and Raspberry Pi 500 firmware defaults to loading `kernel_2712.img` because this image contains optimisations specific to those models (e.g. 16K page-size). If this file is not present, then the common 64-bit kernel (`kernel8.img`) will be loaded instead.
 
 === `arm_64bit`
-
 
 If set to 1, the kernel will be started in 64-bit mode. Setting to 0 selects 32-bit mode.
 
@@ -42,9 +41,10 @@ Both forms may use the `img` file extension; the bootloader recognizes archives 
 The following Raspberry Pi models support this flag:
 
 * 2B rev 1.2
-* 3
-* 3+
-* 4
+* 3B
+* 3A+
+* 3B+
+* 4B
 * 400
 * Zero 2 W
 * Compute Module 3
@@ -52,7 +52,7 @@ The following Raspberry Pi models support this flag:
 * Compute Module 4
 * Compute Module 4S
 
-Later models, such as Raspberry Pi 5, _only_ support the 64-bit kernel. Such models do not support this flag.
+Flagship models since Raspberry Pi 5, Compute Modules since CM5, and Keyboard models since Pi 500 _only_ support the 64-bit kernel. Models that only support a 64-bit kernel ignore this flag.
 
 === `ramfsfile`
 
@@ -109,11 +109,12 @@ See also <<overlay_prefix,`overlay_prefix`>> and xref:legacy_config_txt.adoc#ups
 
 USB On-The-Go (often abbreviated to OTG) is a feature that allows supporting USB devices with an appropriate OTG cable to configure themselves as USB hosts. On older Raspberry Pis, a single USB 2 controller was used in both USB host and device mode.
 
-Raspberry Pi 4B and Raspberry Pi 400 (not CM4 or CM4IO) add a high performance USB 3 controller, attached via PCIe, to drive the main USB ports. The legacy USB 2 controller is still available on the USB-C power connector for use as a device (`otg_mode=0`, the default).
+Flagship models since Raspberry Pi 4B and Keyboard models since Pi 400 add a high-performance USB 3 controller, attached via PCIe, to drive the main USB ports. The legacy USB 2 controller is still available on the USB-C power connector for use as a device (`otg_mode=0`, the default). Compute Modules before CM5 do not include this high-performance USB 3 controller.
 
-`otg_mode=1` requests that a more capable XHCI USB 2 controller is used as another host controller on that USB-C connector. 
+`otg_mode=1` requests that a more capable XHCI USB 2 controller is used as an alternative host controller on that USB-C connector.
 
-NOTE: Because CM4 and CM4IO don't include the external USB 3 controller, Raspberry Pi OS images set `otg_mode=1` on CM4 for better performance.
+NOTE: By default, Raspberry Pi OS includes a line in `/boot/firmware/config.txt` that enables this setting on Compute Module 4.
+
 
 [[overlay_prefix]]
 === `overlay_prefix`
@@ -260,7 +261,7 @@ Default: `0`
 [[program_rpiboot_gpio]]
 ==== `program_rpiboot_gpio`
 
-Since there is no dedicated `nRPIBOOT` jumper on Raspberry Pi 4B or Raspberry Pi 400, an alternative GPIO must be used to select `RPIBOOT` mode by pulling the GPIO low. Select a single GPIO from the following options:
+Compute Modules have a dedicated `nRPIBOOT` jumper to select `RPIBOOT` mode. Flagship and Keyboard Raspberry Pi devices with EEPROM lack a dedicated `nRPIBOOT` jumper. To select `RPIBOOT` mode on Flagship and Keyboard devices, pull one of the following GPIO pins low:
 
 * `2`
 * `4`
@@ -269,9 +270,11 @@ Since there is no dedicated `nRPIBOOT` jumper on Raspberry Pi 4B or Raspberry Pi
 * `7`
 * `8`
 
-This property does not depend on `secure-boot`, but verify that this GPIO configuration does not conflict with any HATs which might pull the GPIO low during boot.
+This property does not depend on `secure-boot`. However, you should verify that this GPIO configuration does not conflict with any HATs which might pull the GPIO low during boot.
 
-Since for safety this property can only be programmed via `RPIBOOT`, the bootloader EEPROM must first be cleared using `erase_eeprom`. This causes the BCM2711 ROM to failover to `RPIBOOT` mode, which then allows this option to be set.
+For safety, this property can _only_ be programmed via `RPIBOOT`. As a result, you must first clear the bootloader EEPROM using `erase_eeprom`. This causes the ROM to failover to `RPIBOOT` mode, which then allows this option to be set.
+
+On BCM2712, you can alternatively force `RPIBOOT` mode by holding down the power button while simultaneously connecting a USB-C power supply.
 
 Default: `{nbsp}`
 

@@ -66,7 +66,7 @@ To prepare the default configuration, run the appropriate commands from the tabl
 |===
 | Architecture | Model | Command
 
-.10+^.^| 64-bit
+.12+^.^| 64-bit
 | Raspberry Pi 3
 .9+.^|
 [source,console]
@@ -75,24 +75,26 @@ $ cd linux
 $ KERNEL=kernel8
 $ make bcm2711_defconfig
 ----
-| Raspberry Pi Compute Module 3
+| Compute Module 3
 | Raspberry Pi 3+
-| Raspberry Pi Compute Module 3+
+| Compute Module 3+
 | Raspberry Pi Zero 2 W
 | Raspberry Pi 4
-| Raspberry Pi 400
-| Raspberry Pi Compute Module 4
-| Raspberry Pi Compute Module 4S
+| Pi 400
+| Compute Module 4
+| Compute Module 4S
 
 
 .^| Raspberry Pi 5
-.1+.^|
+.3+.^|
 [source,console]
 ----
 $ cd linux
 $ KERNEL=kernel_2712
 $ make bcm2712_defconfig
 ----
+| Pi 500
+| Compute Module 5
 
 .14+^.^| 32-bit
 | Raspberry Pi 1
@@ -103,9 +105,9 @@ $ cd linux
 $ KERNEL=kernel
 $ make bcmrpi_defconfig
 ----
-| Raspberry Pi Compute Module 1
-| Raspberry Pi Zero
-| Raspberry Pi Zero W
+| Compute Module 1
+| Zero
+| Zero W
 
 
 | Raspberry Pi 2
@@ -117,10 +119,10 @@ $ KERNEL=kernel7
 $ make bcm2709_defconfig
 ----
 | Raspberry Pi 3
-| Raspberry Pi Compute Module 3
+| Compute Module 3
 | Raspberry Pi 3+
-| Raspberry Pi Compute Module 3+
-| Raspberry Pi Zero 2 W
+| Compute Module 3+
+| Zero 2 W
 
 
 | Raspberry Pi 4
@@ -131,14 +133,14 @@ $ cd linux
 $ KERNEL=kernel7l
 $ make bcm2711_defconfig
 ----
-| Raspberry Pi 400
-| Raspberry Pi Compute Module 4
-| Raspberry Pi Compute Module 4S
+| Pi 400
+| Compute Module 4
+| Compute Module 4S
 |===
 
 [NOTE]
 ====
-The 32-bit distribution of Raspberry Pi OS on a Raspberry Pi 4B, 5, 400, Compute Module 4, or Compute Module 4S uses a 32-bit userland, but a _64-bit kernel_. To build a 32-bit kernel, set `ARCH=arm`. To boot a 32-bit kernel, set `arm_64bit=0` in `config.txt`.
+The 32-bit distribution of Raspberry Pi OS on 4-series devices uses a 32-bit userland, but a _64-bit kernel_. To build a 32-bit kernel, set `ARCH=arm`. To boot a 32-bit kernel, set `arm_64bit=0` in `config.txt`.
 ====
 
 [[native-customisation]]

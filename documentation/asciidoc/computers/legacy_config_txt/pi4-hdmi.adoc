@@ -1,4 +1,5 @@
-== Legacy Raspberry Pi 4 HDMI pipeline
+[[raspberry-pi-4-hdmi-pipeline]]
+== Raspberry Pi 4 HDMI pipeline
 
 IMPORTANT: When using the VC4 KMS graphics driver, the complete display pipeline is managed by Linux - this includes the HDMI outputs. These settings only apply to the legacy FKMS and firmware-based graphics driver.
 

@@ -6,7 +6,7 @@ GPIO drive strengths do not indicate a maximum current, but a maximum current un
 
 Inside the pad are a number of drivers in parallel. If the drive strength is set low (`0b000`), most of these are tri-stated so they do not add anything to the output current. If the drive strength is increased, more and more drivers are put in parallel. The diagram shows that behaviour.
 
-WARNING: For Raspberry Pi 4, Raspberry Pi 400 and Compute Module 4 the current level is half the value shown in the diagram.
+WARNING: On 4-series devices, the current level is half the value shown in the diagram.
 
 image::images/pi_gpio_drive_strength_diagram.png[GPIO drive strength diagram]
 

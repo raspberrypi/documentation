@@ -225,7 +225,7 @@ For Raspberry Pi 5, `earlycon` output only appears on the 3-pin debug connector 
 earlycon=pl011,0x107d001000,115200n8
 ----
 
-For Raspberry Pi 4, 400 and Compute Module 4:
+For Raspberry Pi 4, Compute Module 4, Compute Module 4S, and Pi 400:
 
 [source,ini]
 ----
@@ -233,7 +233,7 @@ earlycon=uart8250,mmio32,0xfe215040
 earlycon=pl011,mmio32,0xfe201000
 ----
 
-For Raspberry Pi 2, Pi 3 and Compute Module 3:
+For Raspberry Pi 2, 3, 3+, Zero 2 W, Compute Module 3, and Compute Module 3+:
 
 [source,ini]
 ----
@@ -241,7 +241,7 @@ earlycon=uart8250,mmio32,0x3f215040
 earlycon=pl011,mmio32,0x3f201000
 ----
 
-For Raspberry Pi 1, Pi Zero and Compute Module 1:
+For Raspberry Pi 1, Zero, Zero W, and Compute Module 1:
 
 [source,ini]
 ----

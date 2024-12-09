@@ -2,7 +2,8 @@
 
 Raspberry Pi makes computers in several different **series**:
 
-* The *flagship* series, often referred to by the shorthand "Raspberry Pi", offers high-performance hardware, a full Linux operating system, and a variety of common ports in a form factor roughly the size of a credit card.
+* The *Flagship* series, often referred to by the shorthand "Raspberry Pi", offers high-performance hardware, a full Linux operating system, and a variety of common ports in a form factor roughly the size of a credit card.
+* The *Keyboard* series, offers high-performance Flagship hardware, a full Linux operating system, and a variety of common ports bundled inside a keyboard form factor.
 * The *Zero* series offers a full Linux operating system and essential ports at an affordable price point in a minimal form factor with low power consumption.
 * The *Compute Module* series, often referred to by the shorthand "CM", offers high-performance hardware and a full Linux operating system in a minimal form factor suitable for industrial and embedded applications. Compute Module models feature hardware equivalent to the corresponding flagship models, but with fewer ports and no on-board GPIO pins. Instead, users should connect Compute Modules to a separate baseboard that provides the ports and pins required for a given application.
 
@@ -159,19 +160,6 @@ a|
 * microSD card slot
 * USB-C power (5V, 3A (15W))
 ^.^a|
-.Raspberry Pi 400
-image::images/400.jpg[alt="Raspberry Pi 400"]
-| xref:processors.adoc#bcm2711[BCM2711] | 4GB | 40-pin GPIO header
-a|
-* 2× micro HDMI
-* USB 2.0
-* 2× USB 3.0
-* Gigabit (1Gb/s) Ethernet RJ45
-* 2.4/5GHz dual-band 802.11ac Wi-Fi (120Mb/s)
-* Bluetooth 5, Bluetooth Low Energy (BLE)
-* microSD card slot
-* USB-C power (5V, 3A (15W))
-^.^a|
 .Raspberry Pi 5
 image::images/5.jpg[alt="Raspberry Pi 5"]
 | xref:processors.adoc#bcm2712[BCM2712] (2GB version uses xref:processors.adoc#bcm2712[BCM2712D0])
@@ -194,10 +182,45 @@ a|
 * 2.4/5GHz dual-band 802.11ac Wi-Fi 5 (300Mb/s)
 * Bluetooth 5, Bluetooth Low Energy (BLE)
 * microSD card slot
-* USB-C power (5V, 5A (25W) or 5V, 3A (15W) with a 600mA peripheral limit)
+* USB-C power (5V 5A (25W), or 5V 3A (15W) with a 600mA peripheral limit)
 |===
 
 For more information about the ports on the Raspberry Pi flagship series, see the xref:raspberry-pi.adoc#schematics-and-mechanical-drawings[Schematics and mechanical drawings].
+
+=== Keyboard series
+
+Keyboard series devices use model identifiers of the form `<X00>`, where `X` indicates the corresponding Flagship series device. For instance, "Raspberry Pi 500" is the keyboard version of the Raspberry Pi 5.
+
+[cols="7a,1,2,3,5"]
+|===
+| Model | SoC | Memory | GPIO | Connectivity
+^.^a|
+.Raspberry Pi 400
+image::images/400.jpg[alt="Raspberry Pi 400"]
+| xref:processors.adoc#bcm2711[BCM2711] | 4GB | 40-pin GPIO header
+a|
+* 2× micro HDMI
+* USB 2.0
+* 2× USB 3.0
+* Gigabit (1Gb/s) Ethernet RJ45
+* 2.4/5GHz dual-band 802.11ac Wi-Fi (120Mb/s)
+* Bluetooth 5, Bluetooth Low Energy (BLE)
+* microSD card slot
+* USB-C power (5V, 3A (15W))
+^.^a|
+.Raspberry Pi 500
+image::images/500.png[alt="Raspberry Pi 500"]
+| xref:processors.adoc#bcm2712[BCM2712] | 8GB | 40-pin GPIO header
+a|
+* 2× micro HDMI
+* USB 2.0
+* 2× USB 3.0
+* Gigabit (1Gb/s) Ethernet RJ45
+* 2.4/5GHz dual-band 802.11ac Wi-Fi 5 (300Mb/s)
+* Bluetooth 5, Bluetooth Low Energy (BLE)
+* microSD card slot
+* USB-C power (5V 5A (25W), or 5V 3A (15W) with a 600mA peripheral limit)
+|===
 
 === Zero series
 

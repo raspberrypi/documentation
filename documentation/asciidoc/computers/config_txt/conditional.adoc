@@ -32,16 +32,31 @@ The conditional model filters apply according to the following table.
 | Model 4B, Pi 400, Compute Module 4, Compute Module 4S
 
 | `[pi5]`
-| Raspberry Pi 5
+| Raspberry Pi 5, Compute Module 5, Pi 500
 
 | `[pi400]`
 | Pi 400 (also sees `[pi4]` contents)
+
+| `[pi500]`
+| Pi 500 (also sees `[pi5]` contents)
+
+| `[cm1]`
+| Compute Module 1 (also sees `[pi1]` contents)
+
+| `[cm3]`
+| Compute Module 3 (also sees `[pi3]` contents)
+
+| `[cm3+]`
+| Compute Module 3+ (also sees `[pi3+]` contents)
 
 | `[cm4]`
 | Compute Module 4 (also sees `[pi4]` contents)
 
 | `[cm4s]`
 | Compute Module 4S (also sees `[pi4]` contents)
+
+| `[cm5]`
+| Compute Module 5 (also sees `[pi5]` contents)
 
 | `[pi0]`
 | Zero, Zero W, Zero 2 W
@@ -69,7 +84,13 @@ initramfs initrd.img-3.18.7-v7+ followkernel
 
 Remember to use the `[all]` filter at the end, so that any subsequent settings aren't limited to Raspberry Pi 2 hardware only.
 
-NOTE: Some models of Raspberry Pi (Zero W, Zero 2 W, Model 3B+, Pi 400, Compute Module 4 and Compute Module 4S) see the settings for multiple filters (as listed in the table above). This means that if you want a setting to apply only to (e.g.) a Model 4B without _also_ applying that setting to a Pi 400, then the setting in the `[pi4]` section would need to be reverted by an alternate setting in a following `[pi400]` section - the ordering of such sections is significant. Alternatively, you could use a `[board-type=0x11]` filter which has a one-to-one mapping to different hardware products.
+[NOTE]
+====
+Some models of Raspberry Pi, including Zero, Compute Module, and Keyboard models, read settings from multiple filters. To apply a setting to only one model:
+
+* apply the setting to the base model (e.g. `[pi4]`), then revert the setting for all models that read the base model's filters (e.g. `[pi400]`, `[cm4]`, `[cm4s]`)
+* use the `board-type` filter with a revision code to target a single model (e.g. `[board-type=0x11]`)
+====
 
 === The `[none]` filter
 

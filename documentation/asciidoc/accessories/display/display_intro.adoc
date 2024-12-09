@@ -1,11 +1,11 @@
 == Raspberry Pi Touch Display
 
-The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry Pi Touch Display] is an LCD display that connects to the Raspberry Pi using a DSI connector and GPIO connector.
+The https://www.raspberrypi.com/products/raspberry-pi-touch-display/[Raspberry Pi Touch Display] is an LCD display that connects to a Raspberry Pi using a DSI connector and GPIO connector.
 
 .The Raspberry Pi 7-inch Touch Display
 image::images/display.png[The Raspberry Pi 7-inch Touch Display, width="70%"]
 
-The Touch Display is compatible with all models of Raspberry Pi, except Raspberry Pi Zero and Zero 2 W, which lack a DSI connector. The earliest Raspberry Pi models lack appropriate mounting holes, requiring additional mounting hardware to fit the stand-offs on the display PCB.
+The Touch Display is compatible with all models of Raspberry Pi, except the Zero series and Keyboard series, which lack a DSI connector. The earliest Raspberry Pi models lack appropriate mounting holes, requiring additional mounting hardware to fit the stand-offs on the display PCB.
 
 The display has the following key features: 
 

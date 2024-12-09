@@ -115,6 +115,12 @@
                     "subpath": "touch-display-2.adoc"
                 },
                 {
+                    "title": "Monitor",
+                    "description": "The Raspberry Pi Monitor",
+                    "image": "full-sized/monitor.png",
+                    "subpath": "monitor.adoc"
+                },
+                {
                     "title": "Camera",
                     "description": "Raspberry Pi camera boards",
                     "image": "full-sized/Camera.png",

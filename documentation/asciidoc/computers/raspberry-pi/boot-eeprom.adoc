@@ -2,7 +2,7 @@
 
 The following Raspberry Pi models use an EEPROM to boot the system:
 
-* Flagship models since Raspberry Pi 4
+* Flagship models since Raspberry Pi 4B
 * Compute Module models since CM4 (including CM4S)
 * Keyboard models since Pi 400
 
@@ -19,7 +19,7 @@ If an error occurs during boot, then an xref:configuration.adoc#led-warning-flas
 
 There are multiple ways to update the bootloader of your Raspberry Pi.
 
-==== Flagship models since Raspberry Pi 4; Compute Modules since CM5; Keyboard models since Pi 400
+==== Flagship models since Raspberry Pi 4B; Compute Modules since CM5; Keyboard models since Pi 400
 
 Raspberry Pi OS automatically updates the bootloader for important bug fixes. To manually update the bootloader or change the boot order, use xref:configuration.adoc#raspi-config[raspi-config].
 

@@ -3,7 +3,7 @@
 
 === HDMI mode
 
-NOTE: Because Raspberry Pi 4 and Raspberry Pi 400 have two HDMI ports, some HDMI commands can be applied to either port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternative mechanisms can be found in the HDMI sub-section of the xref:legacy_config_txt.adoc#legacy-conditional-filters[conditionals section] of the documentation.
+NOTE: For devices with multiple HDMI ports, some HDMI commands can be applied to any port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternative mechanisms can be found in the HDMI sub-section of the xref:legacy_config_txt.adoc#legacy-conditional-filters[conditionals section] of the documentation.
 
 ==== `hdmi_safe`
 
@@ -1299,7 +1299,7 @@ These values are valid if `hdmi_group=2` (DMT):
 | 1366x768
 | 60Hz
 | 16:9
-| xref:config_txt.adoc#hdmi-pipeline-for-raspberry-pi-4[NOT on Raspberry Pi 4]
+| xref:legacy_config_txt.adoc#raspberry-pi-4-hdmi-pipeline[NOT on Raspberry Pi 4]
 
 | 82
 | 1920x1080

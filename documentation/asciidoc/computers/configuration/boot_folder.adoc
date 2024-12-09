@@ -76,21 +76,21 @@ Various xref:linux_kernel.adoc#kernel[kernel] image files that correspond to Ras
 | `kernel7.img`
 | BCM2836, BCM2837
 | Pi Zero 2 W, Pi 2, Pi 3
-| Later Pi 2 uses the BCM2837
+| Later revisions of Pi 2 use BCM2837
 
 | `kernel7l.img`
 | BCM2711
-| Pi 4, Pi 400, CM4, CM4S
+| Pi 4, CM4, CM4S, Pi 400
 | Large Physical Address Extension (LPAE)
 
 | `kernel8.img`
 | BCM2837, BCM2711, BCM2712
-| Pi Zero 2 W, Pi 2, Pi 3, Pi 4, Pi 400, CM4, CM4S, Pi 5
-| xref:config_txt.adoc#boot-options[64-bit kernel]. Raspberry Pi 2 with BCM2836 does not support 64-bit kernels.
+| Pi Zero 2 W, Pi 2 (later revisions), Pi 3, CM3, Pi 3+, CM3+, Pi 4, CM4, CM4S, Pi 400, CM5, Pi 5, Pi 500
+| xref:config_txt.adoc#boot-options[64-bit kernel]. Earlier revisions of Raspberry Pi 2 (with BCM2836) do not support 64-bit kernels.
 
 | `kernel_2712.img`
 | BCM2712
-| Pi 5
+| Pi 5, CM5, Pi 500
 | Pi 5-optimized xref:config_txt.adoc#boot-options[64-bit kernel].
 |===
 
