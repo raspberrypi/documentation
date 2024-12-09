@@ -2,19 +2,29 @@
 
 === Common display options
 
-==== `hdmi_enable_4kp60` (Raspberry Pi 4 only)
+==== `hdmi_enable_4kp60`
 
-By default, when connected to a 4K monitor, the Raspberry Pi 4B, 400 and CM4 will select a 30Hz refresh rate. Use this option to allow selection of 60Hz refresh rates. Raspberry Pi 4 does not support 4Kp60 output on both micro HDMI ports simultaneously. Setting `hdmi_enable_4kp60` increases power consumption and temperature.
+NOTE: This option applies only to Raspberry Pi 4, Compute Module 4, Compute Module 4S, and Pi 400.
+
+By default, when connected to a 4K monitor, certain models select a 30Hz refresh rate. Use this option to allow selection of 60Hz refresh rates. Models impacted by this setting do _not_ support 4Kp60 output on both micro HDMI ports simultaneously. Enabling this setting increases power consumption and temperature.
 
 === Common hardware configuration options
 
 ==== `camera_auto_detect`
 
-With this setting enabled (in Raspberry Pi OS it is enabled by default), the firmware will automatically load overlays for CSI cameras that it recognises. Set `camera_auto_detect=0` to disable the setting.
+By default, Raspberry Pi OS includes a line in `/boot/firmware/config.txt` that enables this setting.
+
+When enabled, the firmware will automatically load overlays for recognised CSI cameras.
+
+To disable, set `camera_auto_detect=0`.
 
 ==== `display_auto_detect`
 
-With this setting enabled (it is enabled by default in Raspberry Pi OS), the firmware will automatically load overlays for DSI displays that it recognises. Set `display_auto_detect=0` to disable.
+Enabled by default.
+
+When enabled, the firmware will automatically load overlays for recognised DSI displays.
+
+To disable, set `display_auto_detect=0`.
 
 ==== `dtoverlay`
 
@@ -26,14 +36,24 @@ For more details, see xref:configuration.adoc#part3.1[DTBs, overlays and config.
 
 ==== `dtparam`
 
-Device Tree configuration files for Raspberry Pis support a number of parameters for such things as enabling I2C and SPI interfaces. Many DT overlays are configurable via the use of parameters. Both types of parameters can be supplied using the `dtparam` setting. In addition, overlay parameters can be appended to the `dtoverlay` option, separated by commas, but keep in mind the line length limit of 98 characters.
+Device Tree configuration files for Raspberry Pi devices support various parameters for such things as enabling I2C and SPI interfaces. Many DT overlays are configurable via the use of parameters. Both types of parameters can be supplied using the `dtparam` setting. In addition, overlay parameters can be appended to the `dtoverlay` option, separated by commas, but keep in mind the line length limit of 98 characters.
 
 For more details, see xref:configuration.adoc#part3.1[DTBs, overlays and config.txt].
 
-==== `arm_boost` (Raspberry Pi 4 Only)
+==== `arm_boost`
 
-All Raspberry Pi 400s and newer revisions of the Raspberry Pi 4B are equipped with a second switch-mode power supply for the SoC voltage rail, and this allows the default turbo-mode clock to be increased from 1.5GHz to 1.8GHz. This change is enabled by default in Raspberry Pi OS. Set `arm_boost=0` to disable.
+NOTE: This option applies only to later Raspberry Pi 4B revisions which include two-phase power delivery, and all revisions of Pi 400.
 
-==== `power_force_3v3_pwm` (Raspberry Pi 5 Only)
+By default, Raspberry Pi OS includes a line in `/boot/firmware/config.txt` that enables this setting on supported devices.
 
-Forces PWM when using a 3V3 power supply. Set `power_force_3v3_pwm=0` to disable.
+Some Raspberry Pi devices have a second switch-mode power supply for the SoC voltage rail. When enabled, increases the default turbo-mode clock from 1.5GHz to 1.8GHz.
+
+To disable, set `arm_boost=0`.
+
+==== `power_force_3v3_pwm`
+
+NOTE: This option applies only to Raspberry Pi 5, Compute Module 5, and Pi 500.
+
+Forces PWM on 3.3V output from the GPIO header or CSI connector.
+
+To disable, set `power_force_3v3_pwm=0`.

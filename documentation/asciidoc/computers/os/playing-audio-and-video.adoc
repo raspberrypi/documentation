@@ -88,11 +88,11 @@ Replace the `<alsa-device>` placeholder with one of the following options:
 
 | `sysdefault:CARD=Headphones` | The headphone jack
 
-| `sysdefault:CARD=vc4hdmi` | The HDMI output on a Raspberry Pi Zero, or Raspberry Pi Model 1, 2 or 3
+| `sysdefault:CARD=vc4hdmi` | The HDMI output on devices with a single HDMI port (Zero models, CM4S, Compute Modules prior to CM4, and Flagship models prior to Raspberry Pi 4)
 
-| `sysdefault:CARD=vc4hdmi0` | The HDMI0 output on a Raspberry Pi 4, 5, 400, or Compute Module 4
+| `sysdefault:CARD=vc4hdmi0` | The HDMI0 output on Flagship models since Raspberry Pi 4B, Compute Modules since CM4, and Keyboard models
 
-| `sysdefault:CARD=vc4hdmi1` | The HDMI1 output on a Raspberry Pi 4, 5, 400, or Compute Module 4
+| `sysdefault:CARD=vc4hdmi1` | The HDMI1 output on Flagship models since Raspberry Pi 4B, Compute Modules since CM4, and Keyboard models
 
 |===
 
@@ -122,9 +122,11 @@ Replace the `<drm-device>` placeholder with one of the following options:
 
 | `HDMI-A-1` | The HDMI output on a Raspberry Pi Zero, or Raspberry Pi Model 1, 2 or 3; *or* the HDMI0 output on a Raspberry Pi 4, 5, or 400
 
-| `HDMI-A-2` | The HDMI1 output on a Raspberry Pi 4, 5, or 400
+| `HDMI-A-2` | The HDMI1 output on Flagship models since Raspberry Pi 4B, Compute Modules since CM4 (including CM4S), and Keyboard models
 
-| `DSI-1` | The Raspberry Pi Touch Display
+| `DSI-1` | The Raspberry Pi Touch Display or Raspberry Pi Touch Display 2
+
+| `DSI-2` | The second DSI output for models with multiple DSI ports (Flagship models since Raspberry Pi 5, and Compute Module models since CM5)
 
 |===
 

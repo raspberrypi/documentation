@@ -326,7 +326,7 @@ The minimum core frequency when the system is idle must be fast enough to suppor
 | 550
 |===
 
-NOTE: There is no need to use `hdmi_enable_4kp60` on Raspberry Pi 5; it supports dual-4Kp60 displays by default.
+NOTE: There is no need to use `hdmi_enable_4kp60` on Flagship models since Raspberry Pi 5, Compute Modules since CM5, and Keyboard models since Pi 500; they support dual-4Kp60 displays by default.
 
 * Overclocking requires the latest firmware release.
 * The latest firmware automatically scales up the voltage if the system is overclocked. Manually setting `over_voltage` disables automatic voltage scaling for overclocking.

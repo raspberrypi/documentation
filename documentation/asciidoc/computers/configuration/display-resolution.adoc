@@ -8,28 +8,41 @@ With most HDMI monitors, Raspberry Pi OS uses the highest resolution and refresh
 
 The Raspberry Pi Zero, Zero W and Zero 2 W have a mini HDMI port, so you need a mini-HDMI-to-full-size-HDMI lead or adapter.
 
-Raspberry Pi 4, Raspberry Pi 5 and Raspberry Pi 400 have two micro HDMI ports, so you need a micro-HDMI-to-full-size-HDMI lead or adapter for each display you wish to attach. Connect the cables before turning on the Raspberry Pi.
+Flagship models since Raspberry Pi 4B and Keyboard models have two micro HDMI ports, so you need a micro-HDMI-to-full-size-HDMI lead or adapter for each display you wish to attach. Connect the cables before turning on the Raspberry Pi.
 
-Raspberry Pi 4 and 400 can drive up to two displays, with a resolution up to 1080p at a 60Hz refresh rate. These devices support two 4K displays at a 30Hz refresh rate. You can also drive a single display at 4K with a 60Hz refresh rate if you connect the display to the `HDMI0` port and set the `hdmi_enable_4kp60=1` flag in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`].
+Flagship models since Raspberry Pi 4B, Compute Modules since CM4 (except for CM4S), and Keyboard models can drive up to two displays.
 
-Raspberry Pi 5 can drive up to two displays at 4K resolution at a 60hz refresh rate with no additional configuration.
+4-series devices support resolutions up to 1080p at a 60Hz refresh rate, or two 4K displays at a 30Hz refresh rate. You can also drive a single display at 4K with a 60Hz refresh rate if you connect the display to the `HDMI0` port and set the `hdmi_enable_4kp60=1` flag in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`].
+
+5-series devices support up to two displays at 4K resolution at a 60hz refresh rate with no additional configuration.
 
 === Set resolution and rotation
 
-==== via the desktop
-
 On the Raspberry Pi Desktop, open the *Preferences* menu and select the **Screen Configuration** utility. You should see a graphical representation of the displays connected to the Raspberry Pi. Right click on the display you wish to modify, and select an option. Click **Apply** to and close **Screen Configuration** to save your changes.
 
-==== via CLI
-
-Use the following command to open the **Screen Configuration** utility:
+Alternatively, use the following command to open the **Screen Configuration** utility:
 
 [source,console]
 ----
-$ arandr
+$ raindrop
 ----
 
-You should see a graphical representation of the displays connected to the Raspberry Pi. Right click on the display you wish to modify, and select an option. Click **Apply** to and close **Screen Configuration** to save your changes.
+[TIP]
+====
+If your installation of Raspberry Pi OS doesn't already include `raindrop`, you can install it with the following command:
+
+[source,console]
+----
+$ sudo apt install raindrop
+----
+
+Older versions of Raspberry Pi OS used a different screen configuration utility named `arandr`. To uninstall `arandr`, run the following command:
+
+[source,console]
+----
+$ sudo apt purge arandr
+----
+====
 
 === Manually set resolution and rotation
 

@@ -80,22 +80,27 @@ All Raspberry Pi models with a PoE-capable Ethernet jack require a HAT to draw p
 | 1.6A (600mA if using a 3A power supply)
 | 800mA
 
-| Raspberry Pi 400
+| Pi 400
 | 3.0A
 | 1.2A
 | 800mA
 
-| Raspberry Pi Zero
+| Pi 500
+| 5.0A
+| 1.6A (600mA if using a 3A power supply)
+| 800mA
+
+| Zero
 | 1.2A
 | Limited by PSU, board, and connector ratings only
 | 100mA
 
-| Raspberry Pi Zero W
+| Zero W
 | 1.2A
 | Limited by PSU, board, and connector ratings only.
 | 150mA
 
-| Raspberry Pi Zero 2 W
+| Zero 2 W
 | 2A
 | Limited by PSU, board, and connector ratings only.
 | 350mA

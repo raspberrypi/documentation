@@ -524,7 +524,11 @@ This is an extract from the current map file (see the https://github.com/raspber
 };
 ----
 
-Each node has the name of an overlay that requires special handling. The properties of each node are either platform names or one of a small number of special directives. The current supported platforms are `bcm2835`, which includes all Raspberry Pis built around the BCM2835, BCM2836 and BCM2837 SoCs, `bcm2711` for Raspberry Pi 4B, 400 and CM4, and `bcm2712` for Raspberry Pi 5 and CM5.
+Each node has the name of an overlay that requires special handling. The properties of each node are either platform names or one of a small number of special directives. The overlay map supports the following platform names:
+
+* `bcm2835` for all Raspberry Pis built around the BCM2835, BCM2836, BCM2837, and RP3A0 SoCs
+* `bcm2711` for Raspberry Pi 4B, CM4, CM4S, and Pi 400
+* `bcm2712` for Raspberry Pi 5, CM5, and Pi 500
 
 A platform name with no value (an empty property) indicates that the current overlay is compatible with the platform; for example, `uart5` is compatible with the `bcm2711` platform. A non-empty value for a platform is the name of an alternative overlay to use in place of the requested one; asking for `disable-bt` on BCM2712 results in `disable-bt-pi5` being loaded instead. Any platform not included in an overlay's node is not compatible with that overlay. Any overlay not mentioned in the map is assumed to be compatible with all platforms.
 
@@ -837,7 +841,7 @@ The firmware uses the special https://www.kernel.org/doc/html/latest/devicetree/
 
 `rpi-boardrev-ext`:: The extended board revision code from xref:raspberry-pi.adoc#otp-register-and-bit-definitions[OTP row 33].
 
-`rpi-country-code`:: The country code used used by https://github.com/raspberrypi-ui/piwiz[PiWiz]. Raspberry Pi 400 only.
+`rpi-country-code`:: The country code used used by https://github.com/raspberrypi-ui/piwiz[PiWiz]. Keyboard models only.
 
 `rpi-duid`:: _(string)_ Raspberry Pi 5 only. A string representation of the QR code on the PCB.
 
@@ -1184,7 +1188,7 @@ dtparam=i2c,i2s
 
 `dtdebug`:: If non-zero, turn on some extra logging for the firmware's device tree processing.
 
-`enable_uart`:: Enable the primary/console xref:configuration.adoc#configure-uarts[UART] (ttyS0 on a Raspberry Pi 3, 4, 400, Zero W and Zero 2 W, ttyAMA0 otherwise - unless swapped with an overlay such as miniuart-bt). If the primary UART is ttyAMA0 then `enable_uart` defaults to 1 (enabled), otherwise it defaults to 0 (disabled). This is because it is necessary to stop the core frequency from changing which would make ttyS0 unusable, so `enable_uart=1` implies `core_freq=250` (unless `force_turbo=1`). In some cases this is a performance hit, so it is off by default.
+`enable_uart`:: Enable the xref:configuration.adoc#primary-and-secondary-uart[primary/console UART]. If the primary UART is `ttyAMA0`, `enable_uart` defaults to 1 (enabled), otherwise it defaults to 0 (disabled). This stops the core frequency from changing, which would make `ttyS0` unusable. As a result, `enable_uart=1` implies `core_freq=250` (unless `force_turbo=1`). In some cases this is a performance hit, so it is off by default.
 
 `overlay_prefix`:: Specifies a subdirectory/prefix from which to load overlays - defaults to "overlays/". Note the trailing "/". If desired you can add something after the final "/" to add a prefix to each file, although this is not likely to be needed.
 

@@ -56,11 +56,11 @@ Default: `1`
 
 If `1` and `WAKE_ON_GPIO=0` then `sudo halt` will switch off all PMIC outputs. This is lowest possible power state for halt but may cause problems with some HATs because 5V will still be on. `GLOBAL_EN` must be shorted to ground to boot.
 
-Raspberry Pi 400 has a dedicated power button which operates even if the processor is switched off. This behaviour is enabled by default, however, `WAKE_ON_GPIO=2` may be set to use an external GPIO power button instead of the dedicated power button.
+The dedicated power button on Pi 400 operates even if the processor is switched off. This behaviour is enabled by default, however, `WAKE_ON_GPIO=2` may be set to use an external GPIO power button instead of the dedicated power button.
 
-On Raspberry Pi 5 this places the PMIC in `STANDBY` mode where all outputs are switched off. There is no need to set `WAKE_ON_GPIO` and pressing the xref:raspberry-pi.adoc#power-button[dedicated power button] will boot the device.
+On Flagship models since Raspberry Pi 5 and Keyboard models since Pi 500, this places the PMIC in `STANDBY` mode where all outputs are switched off. There is no need to set `WAKE_ON_GPIO` and pressing the xref:raspberry-pi.adoc#power-button[dedicated power button] boots the device.
 
-Default: `1` on Compute Modules since CM5 and Keyboard models since Pi 400; otherwise `0`
+Default: `1` on Compute Modules since CM5 and Keyboard models; otherwise `0`
 
 [[BOOT_ORDER]]
 ==== `BOOT_ORDER`
@@ -398,7 +398,7 @@ This setting is ignored and network install is disabled if `DISABLE_HDMI=1` is s
 
 In order to detect the keyboard, network install must initialise the USB controller and enumerate devices. This increases boot time by approximately 1 second so it may be advantageous to disable network install in some embedded applications.
 
-Default: `1` on Flagship models since Raspberry Pi 4 and Keyboard models since Pi 400; `0` on Compute Modules since CM4 (including CM4S).
+Default: `1` on Flagship models since Raspberry Pi 4B and Keyboard models; `0` on Compute Modules since CM4 (including CM4S).
 
 [[NET_INSTALL_AT_POWER_ON]]
 ==== `NET_INSTALL_AT_POWER_ON`

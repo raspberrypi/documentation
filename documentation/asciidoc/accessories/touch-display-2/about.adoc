@@ -15,7 +15,7 @@ The Touch Display 2 connects to a Raspberry Pi using a DSI connector and GPIO co
 * powered directly by the host Raspberry Pi, requiring no separate power supply
 * supports up to five points of simultaneous multi-touch
 
-The Touch Display 2 is compatible with all models of Raspberry Pi from Raspberry Pi 1B+ onwards, except Raspberry Pi Zero and Zero 2 W, which lack a DSI connector.
+The Touch Display 2 is compatible with all models of Raspberry Pi from Raspberry Pi 1B+ onwards, except the Zero series and Keyboard series, which lack a DSI connector.
 
 The Touch Display 2 box contains the following parts (in left to right, top to bottom order in the image below):
 

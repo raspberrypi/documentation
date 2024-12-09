@@ -4,21 +4,21 @@
 
 To control HDMI settings, use the xref:configuration.adoc#set-resolution-and-rotation[Screen Configuration utility] or xref:configuration.adoc#set-the-kms-display-mode[KMS video settings] in `cmdline.txt`.
 
-==== HDMI Pipeline for Raspberry Pi 4
+==== HDMI Pipeline for 4-series devices
 
-In order to support dual displays and modes up to 4Kp60, the Raspberry Pi 4 generates 2 output pixels for every clock cycle.
+In order to support dual displays and modes up to 4Kp60, Raspberry Pi 4, Compute Module 4, and Pi 400 generate 2 output pixels for every clock cycle.
 
 Every HDMI mode has a list of timings that control all the parameters around sync pulse durations. These are typically defined via a pixel clock, and then a number of active pixels, a front porch, sync pulse, and back porch for each of the horizontal and vertical directions.
 
-Running everything at 2 pixels per clock means that the Raspberry Pi 4 cannot support a timing where _any_ of the horizontal timings are not divisible by 2. The firmware and Linux kernel filter out any mode that does not fulfil this criteria.
+Running everything at 2 pixels per clock means that the 4-series devices cannot support a timing where _any_ of the horizontal timings are not divisible by 2. The firmware and Linux kernel filter out any mode that does not fulfil this criteria.
 
 There is only one incompatible mode in the CEA and DMT standards: DMT mode 81, 1366x768 @ 60Hz. This mode has odd-numbered values for the horizontal sync and back porch timings and a width that indivisible by 8.
 
-If your monitor has this resolution, Raspberry Pi 4 automatically drops down to the next mode advertised by the monitor; typically 1280x720.
+If your monitor has this resolution, 4-series devices automatically drop down to the next mode advertised by the monitor; typically 1280x720.
 
-==== HDMI Pipeline for Raspberry Pi 5
+==== HDMI Pipeline for 5-series devices
 
-While Raspberry Pi 5 also works at 2 output pixels per clock cycle, it has special handling for odd timings and can handle these modes directly.
+Flagship models since Raspberry Pi 5, Compute Module models since CM5, and Keyboard models since Pi 500 also work at 2 output pixels per clock cycle. These models have special handling for odd timings and can handle these modes directly.
 
 === Composite video mode
 
@@ -43,11 +43,11 @@ Composite video output can be found on each model of Raspberry Pi computer:
 | 3.5mm AV jack
 |===
 
-NOTE: Composite video output is not available on Raspberry Pi 400.
+NOTE: Composite video output is not available on Keyboard models.
 
 ==== `enable_tvout`
 
-Set to `1` to enable composite video output and `0` to disable. On Raspberry Pi 4 and 5, composite output is only available if you set this to `1`, which also disables HDMI output. Composite output is not available on the Raspberry Pi 400.
+Set to `1` to enable composite video output and `0` to disable. On Flagship models since Raspberry Pi 4, Compute Modules since CM4, and Zero models, composite output is only available if you set this to `1`, which also disables HDMI output. Composite output is not available on Keyboard models.
 
 [%header,cols="1,1"]
 
@@ -55,14 +55,14 @@ Set to `1` to enable composite video output and `0` to disable. On Raspberry Pi 
 |Model
 |Default
 
-|Pi 4, 5 and 400
+|Flagship models since Raspberry Pi 4B, Compute Modules since CM4, Keyboard models
 |0
 
 |All other models
 |1
 |===
 
-On all models except Raspberry Pi 4 and 5, HDMI output needs to be disabled in order for composite output to be enabled. HDMI output is disabled when no HDMI display is connected / detected. Set `enable_tvout=0` to prevent composite being enabled when HDMI is disabled.
+On supported models, you must disable HDMI output to enable composite output. HDMI output is disabled when no HDMI display is detected. Set `enable_tvout=0` to prevent composite being enabled when HDMI is disabled.
 
 To enable composite output, append `,composite` to the end of the `dtoverlay=vc4-kms-v3d` line in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]:
 
