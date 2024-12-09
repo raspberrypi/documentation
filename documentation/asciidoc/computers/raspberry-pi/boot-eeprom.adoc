@@ -68,6 +68,13 @@ The `latest` bootloader updates more often to include the latest fixes and impro
 
 Advanced users can switch to the `latest` bootloader to get the latest functionality.
 
+First, ensure that your Raspberry Pi runs the latest software. Run the following command to update:
+
+[source,console]
+----
+$ sudo apt update && sudo apt full-upgrade
+----
+
 Run the following command to start `raspi-config`.
 
 [source,console]
@@ -75,12 +82,7 @@ Run the following command to start `raspi-config`.
 $ sudo raspi-config
 ----
 
-Navigate to `Advanced Options` and then `Bootloader Version`. Select `Latest` and choose `Yes` to confirm. Select `Finish` and confirm you want to reboot. After the reboot, open a command prompt again and update your system:
-
-[source,console]
-----
-$ sudo apt update
-----
+Navigate to `Advanced Options` and then `Bootloader Version`. Select `Latest` and choose `Yes` to confirm. Select `Finish` and confirm you want to reboot.
 
 If you run `sudo rpi-eeprom-update`, you should see that a more recent version of the bootloader is available and it's the `latest` release.
 
@@ -275,7 +277,7 @@ For more information, see xref:raspberry-pi.adoc#eeprom-boot-flow[EEPROM bootflo
 | Bootloader EEPROM image
 
 | `pieeprom.bin`
-| Bootloader EEPROM image - same as pieeprom.upd but changes recovery.bin behaviour
+| Bootloader EEPROM image - same as pieeprom.upd but changes recovery.bin behaviour to not rename itself to `RECOVERY.000`.
 
 | `pieeprom.sig`
 | The sha256 checksum of bootloader image (pieeprom.upd/pieeprom.bin)
