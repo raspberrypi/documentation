@@ -659,7 +659,7 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | Sony UK
 
 | c041a0
-| CM5 lite
+| CM5 Lite
 | 1.0
 | 4GB
 | Sony UK
