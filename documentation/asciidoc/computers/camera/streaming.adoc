@@ -57,6 +57,13 @@ To use VLC to stream video over RTSP using a Raspberry Pi as a server, use the f
 $ rpicam-vid -t 0 --inline -o - | cvlc stream:///dev/stdin --sout '#rtp{sdp=rtsp://:8554/stream1}' :demux=h264
 ----
 
+For the best performance on Raspberry Pi 5, use the following command instead, which adds libav to force the H264 format:
+
+[source,console]
+----
+$ rpicam-vid -t 0 --inline --libav-format h264 -o - | cvlc stream:///dev/stdin --sout '#rtp{sdp=rtsp://:8554/stream1}' :demux=h264
+----
+
 To view video streamed over RTSP using a Raspberry Pi as a client, use the following command:
 
 [source,console]
