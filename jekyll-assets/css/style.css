@@ -1285,7 +1285,7 @@ div.legal {
   display: grid;
   align-items: center;
   justify-content: center;
-  background-color: var(--footer-bg);
+  background-color: var(--rptl-footer-background-color);
 }
 
 div.legal + div.legal {
@@ -1293,7 +1293,12 @@ div.legal + div.legal {
 }
 
 div.legal-inner {
+  color: var(--subtle);
   width: 100%;
+}
+
+.legal-inner p {
+  padding-top: 10px;
 }
 
 div.contribute {
@@ -1415,6 +1420,11 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
     overflow: hidden;
   }
 
+    /* when the mobile menu is visible, hide all page content so we don't end up with dueling scrollbars */
+  #mobile-toggle:checked ~ #__rptl-header {
+    display: none;
+  }
+
   /* make the docs search button slightly less aggressively large */
   #docsearch .DocSearch-Button {
     max-width: 50%;
@@ -1437,7 +1447,7 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
   }
 
   #mobile-toggle:checked ~ #docs-content .toc {
-    height: 86vh;
+    height: 100vh;
   }
 
   #container {

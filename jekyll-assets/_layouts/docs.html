@@ -5,8 +5,8 @@
   </head>
   <body onload="makeToc()">
     <script type="text/javascript">initTheme()</script>
-    {% include header.html %}
     <input type="checkbox" id="mobile-toggle" />
+    {% include header.html %}
     <div id="docs-content">
       <div id="toc-container-container">
         <div id="toc-container">
@@ -175,6 +175,7 @@
           {{ content }}
         </section>
 
+        {% include legal.html %}
         {% include footer.html %}
         {% include search.html %}
 
