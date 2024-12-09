@@ -158,6 +158,7 @@
         </div>
       </div>
       <div id="docs-container">
+
         <div id="on-this-page">
           <div id="on-this-page-inner">
             <h5>On this page</h5>
@@ -176,6 +177,9 @@
 
         {% include footer.html %}
         {% include search.html %}
+
+        <script async src="{{ site.baseurl }}/scripts/clipboard.min.js?ver={{ site.time | date: '%s' }}"></script>
+        <script async src="{{ site.baseurl }}/scripts/copy-to-clipboard.js?ver={{ site.time | date: '%s' }}"></script>
       </div>
     </div>
   </body>

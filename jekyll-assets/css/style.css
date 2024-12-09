@@ -1,11 +1,9 @@
 :root {
   --bg: #000000;
-  --footer-bg: #050609;
   --near-bg: #111;
   --top-title-colour: #343434;
   --red-tint: #d75a64;
   --brand-colour: #cd2355;
-  --copy-button-colour: #d8d8d8;
   --code-bg-colour: #252535;
   --code-bg-colour-transparent: rgba(37, 37, 53, 0.9);
   --toc-hover-colour: #353545;
@@ -16,21 +14,36 @@
   --accent: #d75a64;
   --docsearch-primary-color: var(--accent);
   --docsearch-logo-color: var(--red-tint);
+  --copy-button-bg: #707070;
+  --copy-button-text: #CCC;
   --textcolor: white;
   --subtle-text: #CCC;
   --theme-toggle-label: "☀️";
   --not-expanded-label: "▶";
+
+  /* header and footer styling */
+  --rptl-header-background-color: var(--bg);
+  --rptl-header-border-bottom-color: var(--code-bg-colour);
+  --rptl-header-text-color: var(--textcolor);
+  --rptl-header-burger-stroke-color: var(--textcolor);
+  --rptl-header-subnav-background-color: var(--near-bg);
+  --rptl-header-logo-text-fill: var(--textcolor);
+  --rptl-header-logo-leaf-fill: #46af4b;
+  --rptl-header-logo-berry-fill: var(--brand-colour);
+  --rptl-cookiebanner-background-color: var(--code-bg-colour);
+  --rptl-cookiebanner-text-color: var(--textcolor);
+  --rptl-footer-background-color: #0A0B1F;
+  --rptl-footer-text-color: var(--subtle-text);
+
   color: var(--textcolor);
 }
 .light {
   --bg: #fff;
-  --footer-bg: #f5f6f9;
   --near-bg: #f6f6f6;
   --red-tint: #d75a64;
   --top-title-colour: #343434;
   --brand-colour: #cd2355;
-  --copy-button-colour: #d8d8d8;
-  --code-bg-colour: #e5e5e5;
+  --code-bg-colour: #e5e6e9;
   --code-bg-colour-transparent: rgba(229, 229, 229, 0.9);
   --toc-hover-colour: #f5f5f5;
   --subtle: #707070;
@@ -40,11 +53,29 @@
   --accent: #cd2355;
   --docsearch-primary-color: var(--accent);
   --docsearch-logo-color: var(--red-tint);
+  --copy-button-bg: #f6f6f6;
+  --copy-button-text: #444;
   --textcolor: black;
   --subtle-text: #444;
   --theme-toggle-label: "🌙";
   --not-expanded-label: "▶";
+
+  /* header and footer styling */
+  --rptl-header-background-color: var(--bg);
+  --rptl-header-border-bottom-color: #dedede;
+  --rptl-header-text-color: var(--textcolor);
+  --rptl-header-burger-stroke-color: var(--subtle);
+  --rptl-header-subnav-background-color: #f7f8fa;
+  --rptl-header-logo-text-fill: var(--textcolor);
+  --rptl-header-logo-leaf-fill: #46af4b;
+  --rptl-header-logo-berry-fill: var(--brand-colour);
+  --rptl-cookiebanner-background-color: var(--less-subtle);
+  --rptl-cookiebanner-text-color: var(--bg);
+  --rptl-footer-background-color: #f5f6f9;
+  --rptl-footer-text-color: var(--less-subtle);
+
   color: var(--textcolor);
+
 }
 
 body {
@@ -339,7 +370,7 @@ input:checked + li span label div .toc-item::before {
   position: sticky;
   top: 0;
   float: right;
-  height: calc(1% + 1000px);
+  height: 200vh; /* push element one page height up so it can (almost) never overlap footer */
 }
 
 #on-this-page-inner {
@@ -628,7 +659,7 @@ nav#mobile-contents li {
   max-width: 900px;
   width: 100%;
   margin-left: 20px;
-  padding-bottom: 30vh;
+  padding-bottom: 10vh;
   padding-right: 10px;
   padding-left: 10px;
 }
@@ -777,6 +808,8 @@ h6 .anchor::before {
   border: 1px solid var(--copy-button-border);
   min-width: 27px;
   padding: 3px;
+  background-color: var(--copy-button-bg);
+  color: var(--copy-button-text);
 }
 
 #content div.listingblock button.copy-button.hidden,
