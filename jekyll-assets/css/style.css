@@ -86,7 +86,6 @@ body {
   font-size: initial;
   line-height: initial;
   margin: 0;
-  max-width: 100%;
   background-color: var(--bg);
 }
 
@@ -209,12 +208,12 @@ div.subtitle p {
 
 #docs-container {
   position: relative;
-  flex-basis: 300px;
   flex-grow: 1;
-  overflow: wrap;
-  min-width: 0;
   white-space: initial;
   word-break: break-word;
+  overflow: wrap;
+  padding-right: 0px;
+  margin-right: 0px;
 }
 
 #container .section {
@@ -229,7 +228,7 @@ div.subtitle p {
 
 #docs-content #toc-container-container {
   flex-grow: 0;
-  flex-basis: 270px;
+  flex-basis: 250px;
   background-color: var(--code-bg-colour);
   top: 0;
   position: sticky;
@@ -257,16 +256,6 @@ pre {
   margin-left: 5px;
   margin-right: 5px;
   padding-bottom: 5px;
-}
-
-#toc-container #tocbot {
-  margin-top: 10px;
-  --offset: 1rem;
-  list-style-type: none;
-  padding-left: 10px;
-}
-
-#theme-toggle-container {
 }
 
 #theme-toggle {
@@ -367,9 +356,9 @@ input:checked + li span label div .toc-item::before {
 
 #docs-content {
   display: flex;
-  width: 100%;
   justify-content: left;
   height: 100%;
+  width: fit-content;
 }
 
 #on-this-page {
@@ -664,9 +653,10 @@ nav#mobile-contents li {
   min-width: 600px;
   max-width: 900px;
   width: 100%;
-  margin-left: 20px;
+  margin-left: 0px;
+  margin-right: 0px;
   padding-bottom: 10vh;
-  padding-right: 10px;
+  padding-right: 0px;
   padding-left: 10px;
 }
 
@@ -1292,6 +1282,7 @@ div.legal {
   align-items: center;
   justify-content: center;
   background-color: var(--rptl-footer-background-color);
+  width: 100%;
 }
 
 div.legal + div.legal {
@@ -1336,19 +1327,6 @@ p#copyright {
 
 footer {
   margin-top: 30px;
-}
-
-.c-footer-social__link--facebook {
-    background-image: url(https://www.raspberrypi.com/app/themes/mind-control/images/application/footer/social/facebook.svg);
-}
-.c-footer-social__link--twitter {
-    background-image: url(https://www.raspberrypi.com/app/themes/mind-control/images/application/footer/social/twitter.svg);
-}
-.c-footer-social__link--instagram {
-    background-image: url(https://www.raspberrypi.com/app/themes/mind-control/images/application/footer/social/instagram.svg);
-}
-.c-footer-social__link--youtube {
-    background-image: url(https://www.raspberrypi.com/app/themes/mind-control/images/application/footer/social/youtube.svg);
 }
 
 @media screen and (max-width: 1350px) {
@@ -1401,6 +1379,7 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
   overflow-y: scroll;
   height: 90vh;
   background-color: var(--code-bg-colour);
+  max-width: 25vw;
 }
 
 #toc-inner {
@@ -1454,6 +1433,7 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
 
   #mobile-toggle:checked ~ #docs-content .toc {
     height: 100vh;
+    max-width: 100vw;
   }
 
   #container {
@@ -1495,8 +1475,16 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
     background-color: var(--near-bg);
   }
 
+  #docs-container {
+    max-width: 100vw;
+  }
+
   #docs-content {
     flex-direction: column;
+  }
+
+  #content {
+    padding: 5px;
   }
 
   #toc-container-container {
@@ -1505,7 +1493,6 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
     background-color: var(--code-bg-colour);
     z-index: 100;
     max-height: 50px;
-    width: 300px;
   }
 
   #docs-header {
@@ -1671,21 +1658,6 @@ div.subtitle.error-message p a {
   }
 }
 
-@media screen and (max-width: 1219px) {
-  p#release {
-    width: 800px;
-  }
-}
-
-@media screen and (max-width: 889px) {
-  p#release {
-    text-align: center;
-    padding-right: 0px;
-    width: 100%;
-  }
-}
-
-
 /* documentation category tabs */
 
 * {
@@ -1737,20 +1709,6 @@ ul#tab-container li a {
 
 ul#tab-container li.selected a {
   color: var(--accent);
-}
-
-p#release {
-  text-align: right;
-  padding-top: 10px;
-  color: var(--subtle);
-  font-size: 0.9em;
-  width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-p#release + #container {
-  margin-top: 75px;
 }
 
 @media screen and (max-width: 1219px) {
