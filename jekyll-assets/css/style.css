@@ -386,7 +386,7 @@ input:checked + li span label div .toc-item::before {
   position: sticky;
   top: 0;
   float: right;
-  height: calc(160vh + 1%); /* push element one page height up so it can (almost) never overlap footer */
+  z-index: 2; /* footer should obscure on-this-page */
 }
 
 #on-this-page-inner {
@@ -1304,6 +1304,10 @@ div.legal {
   justify-content: center;
   background-color: var(--rptl-footer-background-color);
   width: 100%;
+  font-size: .7em;
+  /* footer should obscure on-this-page; position required for z-index to work */
+  z-index: 10;
+  position: inherit;
 }
 
 div.legal + div.legal {
@@ -1348,6 +1352,9 @@ p#copyright {
 
 footer {
   margin-top: 30px;
+  /* footer should obscure on-this-page */
+  z-index: 10;
+  position: inherit; /* position required for z-index to function */
 }
 
 @media screen and (max-width: 1350px) {
