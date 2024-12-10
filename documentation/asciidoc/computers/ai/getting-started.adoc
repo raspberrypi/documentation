@@ -60,7 +60,8 @@ Serial Number: HLDDLBB234500054
 Part Number: HM21LB1C2LAE
 Product Name: HAILO-8L AI ACC M.2 B+M KEY MODULE EXT TMP
 ----
-NOTE: The AI HAT+ devices may show `<N/A>` for `Serial Number`, `Part Number` and `Product Name` above. This is expected, and will not affect device functionality.
+
+NOTE: AI HAT+ devices may show `<N/A>` for `Serial Number`, `Part Number` and `Product Name`. This is expected, and does not impact functionality.
 +
 Additionally, you can run `dmesg | grep -i hailo` to check the kernel logs, which should yield output similar to the following:
 +
@@ -97,7 +98,7 @@ The `rpicam-apps` suite of camera applications implements a xref:camera_software
 
 The following demos use xref:camera_software.adoc#rpicam-hello[`rpicam-hello`], which by default displays a preview window. However, you can use other `rpicam-apps` instead, including xref:camera_software.adoc#rpicam-vid[`rpicam-vid`] and xref:camera_software.adoc#rpicam-still[`rpicam-still`]. You may need to add or modify some command line options to make the demo commands compatible with alternative applications.
 
-To begin, ensure you have the latest `rpicam-apps` software package installed with:
+To begin, run the following command to install the latest `rpicam-apps` software package:
 
 [source,console]
 ----
@@ -156,7 +157,7 @@ $ rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov
 
 === Alternative Package Versions
 
-The AI Kit/HAT+ devices will not function if there is a version mismatch between the Hailo software packages and device drivers. In addition, Hailo's neural network tooling may also require particular a version for the generated model file. At the time of writing, the latest package version is 4.19, but if earlier versions are required, the following steps should be followed:
+The AI Kit and AI HAT+ do not function if there is a version mismatch between the Hailo software packages and device drivers. In addition, Hailo's neural network tooling may also require particular a version for the generated model file. If you require an specific version, complete the following steps to install the proper versions of all of the dependencies:
 
 . If you have previously used `apt-mark` to hold any of the relevant packages, you may need to unhold them:
 +
@@ -165,26 +166,37 @@ The AI Kit/HAT+ devices will not function if there is a version mismatch between
 $ sudo apt-mark unhold hailo-tappas-core hailort hailo-dkms
 ----
 
-. Install the required version of the software packages
+. Install the required version of the software packages:
 +
 [tabs%sync]
-====
+======
 v4.18::
+To install version 4.18 of Hailo's neural network tooling:
++
 +
 [source,console]
 ----
 $ sudo apt install hailo-tappas-core=3.29.1 hailort=4.18.0 hailo-dkms=4.18.0-2
+----
++
+[source,console]
+----
 $ sudo apt-mark hold hailo-tappas-core hailort hailo-dkms
 ----
 
 v4.17::
+To install version 4.17 of Hailo's neural network tooling:
 +
 [source,console]
 ----
 $ sudo apt install hailo-tappas-core-3.28.2 hailort=4.17.0 hailo-dkms=4.17.0-1
+----
++
+[source,console]
+----
 $ sudo apt-mark hold hailo-tappas-core hailort hailo-dkms
 ----
-====
+======
 
 === Further Resources
 
