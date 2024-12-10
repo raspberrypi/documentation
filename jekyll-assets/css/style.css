@@ -241,6 +241,14 @@ body > .toptitle > #search-theme-toggle-container > #theme-toggle-container {
   align-items: start;
 }
 
+#docs-content ul {
+  padding-left: 20px;
+}
+
+#docs-content ol {
+  padding-left: 20px;
+}
+
 #docs-content #toc-container-container {
   flex-grow: 0;
   flex-basis: 250px;

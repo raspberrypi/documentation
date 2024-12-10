@@ -13,7 +13,7 @@ Additionally, Raspberry Pi makes the *Pico* series of tiny, versatile https://en
 *Model B* indicates the presence of an Ethernet port.
 *Model A* indicates a lower-cost model in a smaller form factor with no Ethernet port, reduced RAM, and fewer USB ports to limit board height.
 
-[cols="7a,1,2,3,5"]
+[cols="6a,2,2,3,5"]
 |===
 | Model | SoC | Memory | GPIO | Connectivity
 
