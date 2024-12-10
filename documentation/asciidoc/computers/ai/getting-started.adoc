@@ -154,6 +154,38 @@ This demo performs 17-point human pose estimation, drawing lines connecting the 
 $ rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov8_pose.json
 ----
 
+=== Alternative Package Versions
+
+The AI Kit/HAT+ devices will not function if there is a version mismatch between the Hailo software packages and device drivers. In addition, Hailo's neural network tooling may also require particular a version for the generated model file. At the time of writing, the latest package version is 4.19, but if earlier versions are required, the following steps should be followed:
+
+. If you have previously used `apt-mark` to hold any of the relevant packages, you may need to unhold them:
++
+[source,console]
+----
+$ sudo apt-mark unhold hailo-tappas-core hailort hailo-dkms
+----
+
+. Install the required version of the software packages
++
+[tabs%sync]
+====
+v4.18::
++
+[source,console]
+----
+$ sudo apt install hailo-tappas-core=3.29.1 hailort=4.18.0 hailo-dkms=4.18.0-2
+$ sudo apt-mark hold hailo-tappas-core hailort hailo-dkms
+----
+
+v4.17::
++
+[source,console]
+----
+$ sudo apt install hailo-tappas-core-3.28.2 hailort=4.17.0 hailo-dkms=4.17.0-1
+$ sudo apt-mark hold hailo-tappas-core hailort hailo-dkms
+----
+====
+
 === Further Resources
 
 Hailo has also created a set of demos that you can run on a Raspberry Pi 5, available in the https://github.com/hailo-ai/hailo-rpi5-examples[hailo-ai/hailo-rpi5-examples GitHub repository].
