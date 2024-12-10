@@ -157,7 +157,7 @@ $ rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov
 
 === Alternative Package Versions
 
-The AI Kit and AI HAT+ do not function if there is a version mismatch between the Hailo software packages and device drivers. In addition, Hailo's neural network tooling may also require particular a version for the generated model file. If you require an specific version, complete the following steps to install the proper versions of all of the dependencies:
+The AI Kit and AI HAT+ do not function if there is a version mismatch between the Hailo software packages and device drivers. In addition, Hailo's neural network tooling may require a particular version for generated model files. If you require an specific version, complete the following steps to install the proper versions of all of the dependencies:
 
 . If you have previously used `apt-mark` to hold any of the relevant packages, you may need to unhold them:
 +
