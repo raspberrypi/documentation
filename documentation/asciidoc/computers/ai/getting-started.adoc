@@ -102,7 +102,7 @@ To begin, run the following command to install the latest `rpicam-apps` software
 
 [source,console]
 ----
-$ sudo apt install rpicam-apps
+$ sudo apt update && sudo apt install rpicam-apps
 ----
 
 ==== Object Detection
