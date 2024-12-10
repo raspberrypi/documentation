@@ -28,8 +28,8 @@
   --rptl-header-burger-stroke-color: var(--textcolor);
   --rptl-header-subnav-background-color: var(--near-bg);
   --rptl-header-logo-text-fill: var(--textcolor);
-  --rptl-header-logo-leaf-fill: #46af4b;
-  --rptl-header-logo-berry-fill: var(--brand-colour);
+  --rptl-header-logo-leaf-fill: var(--bg);
+  --rptl-header-logo-berry-fill: var(--bg);
   --rptl-cookiebanner-background-color: var(--code-bg-colour);
   --rptl-cookiebanner-text-color: var(--textcolor);
   --rptl-footer-background-color: #0A0B1F;
@@ -150,7 +150,7 @@ code {
 }
 
 .toptitle h1 a {
-  color: var(--accent);
+  color: var(--textcolor);
   text-decoration: none;
 }
 
@@ -204,6 +204,11 @@ div.subtitle p {
   margin-right: auto;
   width: 100%;
   border: 1px solid var(--accent);
+}
+
+#main-window {
+  display: flex;
+  justify-content: center;
 }
 
 /* boxes page, constrain search bar/theme toggle line to a reasonable size */
@@ -382,10 +387,10 @@ input:checked + li span label div .toc-item::before {
 }
 
 #on-this-page {
+  align-self: flex-start; /* otherwise, uses the same height as all other flex items -- including content! */
   position: sticky;
   top: 0;
-  float: right;
-  z-index: 2; /* footer should obscure on-this-page */
+  flex-shrink: 0;
 }
 
 #on-this-page-inner {
@@ -678,6 +683,7 @@ nav#mobile-contents li {
   padding-bottom: 10vh;
   padding-right: 0px;
   padding-left: 19px;
+  flex-grow: 0;
 }
 
 #content h1 {
@@ -1304,9 +1310,6 @@ div.legal {
   background-color: var(--rptl-footer-background-color);
   width: 100%;
   font-size: .7em;
-  /* footer should obscure on-this-page; position required for z-index to work */
-  z-index: 10;
-  position: inherit;
 }
 
 div.legal + div.legal {
@@ -1351,9 +1354,6 @@ p#copyright {
 
 footer {
   margin-top: 30px;
-  /* footer should obscure on-this-page */
-  z-index: 10;
-  position: inherit; /* position required for z-index to function */
 }
 
 @media screen and (max-width: 1350px) {

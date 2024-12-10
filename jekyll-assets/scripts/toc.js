@@ -61,34 +61,38 @@ function initialiseCurrentToc(parentID, parentInputID = null, childID = null) {
 }
 
 function updateCurrentToc(parentID, parentInputID = null, childID = null) {
-    // if a parent input id is specified, but no child, expand the parent element
-    // why no child? because if someone clicks the child within a parent, they don't want the parent section to collapse!
-    if (parentInputID && childID == null) {
-        var newParentInput = document.getElementById(parentInputID);
-        newParentInput.click();
-        currentParentInputID = parentInputID;
-    }
+    if (currentParentID == null && currentChildID == null) {
+        initialiseCurrentToc(parentID, parentInputID, childID)
+    } else {
+        // if a parent input id is specified, but no child, expand the parent element
+        // why no child? because if someone clicks the child within a parent, they don't want the parent section to collapse!
+        if (parentInputID && childID == null) {
+            var newParentInput = document.getElementById(parentInputID);
+            newParentInput.click();
+            currentParentInputID = parentInputID;
+        }
 
-    // if this is a new parent id, de-highlight the old parent and highlight the new one
-    if (currentParentID != parentID) {
-        var oldParent = document.getElementById(currentParentID);
-        oldParent.style.removeProperty('font-weight');
-        var newParent = document.getElementById(parentID);
-        newParent.setAttribute('style', 'font-weight:bold');
-        currentParentID = parentID;
-    }
+        // if this is a new parent id, de-highlight the old parent and highlight the new one
+        if (currentParentID != parentID) {
+            var oldParent = document.getElementById(currentParentID);
+            oldParent.style.removeProperty('font-weight');
+            var newParent = document.getElementById(parentID);
+            newParent.setAttribute('style', 'font-weight:bold');
+            currentParentID = parentID;
+        }
 
-    // if there is an old child highlighted, un-highlight it
-    if (currentChildID) {
-        var oldChild = document.getElementById(currentChildID);
-        oldChild.style.removeProperty('font-weight');
-    }
+        // if there is an old child highlighted, un-highlight it
+        if (currentChildID) {
+            var oldChild = document.getElementById(currentChildID);
+            oldChild.style.removeProperty('font-weight');
+        }
 
-    // if there is a new child, highlight it
-    if (childID != null) {
-        var newChild = document.getElementById(childID);
+        // if there is a new child, highlight it
+        if (childID != null) {
+            var newChild = document.getElementById(childID);
 
-        newChild.setAttribute('style', 'font-weight:bold');
+            newChild.setAttribute('style', 'font-weight:bold');
+        }
+        currentChildID = childID;
     }
-    currentChildID = childID;
 }
