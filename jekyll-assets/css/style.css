@@ -287,7 +287,6 @@ pre {
 }
 
 #theme-toggle-container {
-  flex-grow: 1;
   align-self: center;
   align-items: start;
 }
