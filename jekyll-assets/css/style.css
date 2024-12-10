@@ -358,7 +358,7 @@ input:checked + li span label div .toc-item::before {
   display: flex;
   justify-content: left;
   height: 100%;
-  width: fit-content;
+  width: 100%;
 }
 
 #on-this-page {
