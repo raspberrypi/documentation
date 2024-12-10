@@ -1474,7 +1474,7 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
   }
 
   .mobile-menu-toggle {
-    font-size: 2em;
+    font-size: 3em;
     display: block;
     padding-left: 5px;
     padding-right: 5px;
