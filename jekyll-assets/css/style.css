@@ -132,7 +132,7 @@ code {
 
 .toptitle h1 {
   font-size: 2.5em;
-  font-weight: normal;
+  font-weight: lighter;
   letter-spacing: 1px;
   color: var(--bg);
   position: relative;
@@ -1643,7 +1643,7 @@ a.box {
   height: 275px;
   width: 350px;
   text-decoration: none;
-  background-color: var(--near-bg);
+  background-color: var(--code-bg-colour);
   padding: 30px 30px;
   margin-left: 15px;
   margin-right: 15px;
@@ -1709,7 +1709,6 @@ div.subtitle.error-message p a {
 div#tab-menu {
   width: 100%;
   height: 80px;
-  margin-top: -20px;
   margin-bottom: -28px;
 }
 
