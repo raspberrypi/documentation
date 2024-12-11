@@ -104,7 +104,7 @@ After installation, example code can be found under `/usr/src/sense-hat/examples
 
 Complete documentation for the library can be found at https://sense-hat.readthedocs.io/en/latest/[sense-hat.readthedocs.io].
 
-=== Use the Sense HAT with {cpp}
+=== Use the Sense HAT with C++
 
 https://github.com/RPi-Distro/RTIMULib[RTIMULib] is a {cpp} and Python library that makes it easy to use 9-dof and 10-dof IMUs with embedded Linux systems. A pre-calibrated settings file is provided in `/etc/RTIMULib.ini`, which is also copied and used by `sense-hat`. The included examples look for `RTIMULib.ini` in the current working directory, so you may wish to copy the file there to get more accurate data.
 

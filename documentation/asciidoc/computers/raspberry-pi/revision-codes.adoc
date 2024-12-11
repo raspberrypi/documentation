@@ -342,6 +342,18 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 17: 5
 
+|
+|
+| 18: CM5
+
+|
+|
+| 19: 500
+
+|
+|
+| 1a: CM5 Lite
+
 | RRRR (bits 0-3)
 | Revision
 | 0, 1, 2, etc.
@@ -624,6 +636,48 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 
 | d04170
 | 5
+| 1.0
+| 8GB
+| Sony UK
+
+| b04180
+| CM5
+| 1.0
+| 2GB
+| Sony UK
+
+| c04180
+| CM5
+| 1.0
+| 4GB
+| Sony UK
+
+| d04180
+| CM5
+| 1.0
+| 8GB
+| Sony UK
+
+| d04190
+| 500
+| 1.0
+| 8GB
+| Sony UK
+
+| b041a0
+| CM5 Lite
+| 1.0
+| 2GB
+| Sony UK
+
+| c041a0
+| CM5 Lite
+| 1.0
+| 4GB
+| Sony UK
+
+| d041a0
+| CM5 Lite
 | 1.0
 | 8GB
 | Sony UK
