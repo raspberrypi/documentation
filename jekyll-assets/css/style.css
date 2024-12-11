@@ -215,6 +215,7 @@ div.subtitle p {
 body > .toptitle > #search-theme-toggle-container {
   width: 50%;
   margin: auto;
+  max-width: 900px;
 }
 
 body > .toptitle > #search-theme-toggle-container > #theme-toggle-container {
