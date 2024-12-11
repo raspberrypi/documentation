@@ -400,6 +400,7 @@ input:checked + li span label div .toc-item::before {
   position: sticky;
   top: 0;
   flex-shrink: 0;
+  margin-left: 3px;
 }
 
 #on-this-page-inner {
