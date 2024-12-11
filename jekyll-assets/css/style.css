@@ -4,8 +4,9 @@
   --top-title-colour: #343434;
   --red-tint: #d75a64;
   --brand-colour: #cd2355;
-  --code-bg-colour: #252535;
-  --code-bg-colour-transparent: rgba(37, 37, 53, 0.9);
+  --code-bg-colour: #121212;
+  --code-bg-colour-transparent: rgba(18, 18, 18, 0.9);
+  --tab-bg-colour: #252535;
   --toc-hover-colour: #353545;
   --subtle: #707070;
   --less-subtle: #333;
@@ -43,8 +44,9 @@
   --red-tint: #d75a64;
   --top-title-colour: #343434;
   --brand-colour: #cd2355;
-  --code-bg-colour: #f5f7fc;
-  --code-bg-colour-transparent: rgba(245, 247, 252, 0.9);
+  --code-bg-colour: #f7f8fa;
+  --code-bg-colour-transparent: rgba(247, 248, 250, 0.9);
+  --tab-bg-colour: #eff1f6;
   --toc-hover-colour: #f5f5f5;
   --subtle: #707070;
   --less-subtle: #333;
@@ -394,8 +396,6 @@ input:checked + li span label div .toc-item::before {
   justify-content: left;
   height: 100%;
   width: 100%;
-  max-width: 2200px;
-  margin: auto;
 }
 
 #on-this-page {

@@ -52,20 +52,20 @@
 }
 
 .tabs:not(.is-loading) .tablist .is-selected {
-  background-color: var(--near-bg);
+  background-color: var(--tab-bg-colour);
   color: var(--textcolor);
-  border-left: 1px solid var(--near-bg);
-  border-right: 1px solid var(--near-bg);
-  border-top: 1px solid var(--near-bg);
+  border-left: 1px solid var(--tab-bg-colour);
+  border-right: 1px solid var(--tab-bg-colour);
+  border-top: 1px solid var(--tab-bg-colour);
 }
 
 .tabs.is-loading .tablist li:not(:first-child),
 .tabs:not(.is-loading) .tablist li:not(.is-selected) {
   background-color: var(--bg);
   color: var(--subtle-text);
-  border-left: 1px solid var(--near-bg);
-  border-right: 1px solid var(--near-bg);
-  border-top: 1px solid var(--near-bg);
+  border-left: 1px solid var(--tab-bg-colour);
+  border-right: 1px solid var(--tab-bg-colour);
+  border-top: 1px solid var(--tab-bg-colour);
 }
 
 .tabs.is-loading .tablist li:first-child::after,
@@ -86,7 +86,7 @@
 }
 
 .tabpanel {
-  background-color: var(--near-bg);
+  background-color: var(--tab-bg-colour);
   padding: 1.25em;
 }
 
