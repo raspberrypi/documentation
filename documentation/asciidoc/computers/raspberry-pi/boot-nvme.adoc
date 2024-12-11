@@ -1,6 +1,6 @@
 == NVMe SSD boot
 
-NVMe (Non-Volatile Memory express) is a standard for external storage access over a PCIe bus. You can connect NVMe drives via the PCIe slot on a IO Boards since Compute Module 4 and or Raspberry Pi 5 using an M.2 HAT+. With some additional configuration, you can boot from an NVMe drive.
+NVMe (Non-Volatile Memory express) is a standard for external storage access over a PCIe bus. You can connect NVMe drives via the PCIe slot on Compute Module 4 IO Board, the M.2 slots on Compute Module 5 IO Board, and Raspberry Pi 5 using an M.2 HAT+. With some additional configuration, you can boot from an NVMe drive.
 
 === Prerequisites
 
